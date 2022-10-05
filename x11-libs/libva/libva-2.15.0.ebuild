@@ -63,7 +63,6 @@ multilib_src_configure() {
 
 pkg_postinst() {
 	optfeature_header
-	optfeature "NVIDIA GPU support" x11-libs/libva-vdpau-driver
 	optfeature "Older Intel GPU support" x11-libs/libva-intel-driver
 	optfeature "Newer Intel GPU support" x11-libs/libva-intel-media-driver
 }
