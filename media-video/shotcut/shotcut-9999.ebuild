@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qmake-utils xdg
+inherit cmake flag-o-matic xdg
 
 DESCRIPTION="A free, open source, cross-platform video editor"
 HOMEPAGE="https://www.shotcut.org/ https://github.com/mltframework/shotcut/"
@@ -24,19 +24,16 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 "
 COMMON_DEPEND="
-	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5[widgets]
-	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
-	dev-qt/qtprintsupport:5
 	dev-qt/qtquickcontrols2:5
 	dev-qt/qtsql:5
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	>=media-libs/mlt-7.6.0[ffmpeg,frei0r,fftw(+),jack,opengl,qt5,sdl,xml]
+	>=media-libs/mlt-7.8.0[ffmpeg,frei0r,fftw(+),jack,opengl,qt5,sdl,xml]
 	media-video/ffmpeg
 "
 DEPEND="${COMMON_DEPEND}
@@ -45,22 +42,15 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	dev-qt/qtgraphicaleffects:5
-	dev-qt/qtquickcontrols:5
 	virtual/jack
 "
 
 src_configure() {
-	local myqmakeargs=(
-		PREFIX="${EPREFIX}/usr"
-		SHOTCUT_VERSION="${PV}"
-		DEFINES+=SHOTCUT_NOUPGRADE
+	CMAKE_BUILD_TYPE=$(usex debug Debug Release)
+	local mycmakeargs=(
+		-DSHOTCUT_VERSION="${PV}"
 	)
-	use debug || myqmakeargs+=(DEFINES+=NDEBUG)
-
-	eqmake5 "${myqmakeargs[@]}"
-}
-
-src_install() {
-	emake INSTALL_ROOT="${D}" install
-	einstalldocs
+	use debug || append-cxxflags "-DNDEBUG"
+	append-cxxflags "-DSHOTCUT_NOUPGRADE"
+	cmake_src_configure
 }
