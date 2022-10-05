@@ -7,14 +7,10 @@ inherit cmake
 
 PATCHLEVEL=42
 DESCRIPTION="Standard Linux telnet client and server"
-#old HOMEPAGE="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/"
-# This might be the best HOMEPAGE now?
-HOMEPAGE="https://launchpad.net/netkit-telnet"
+HOMEPAGE="https://wiki.linuxfoundation.org/networking/netkit"
 # http://packages.debian.org/stablesource/netkit-telnet
 # http://packages.debian.org/testing/source/netkit-telnet
-# No upstream mirror exists anymore?
-# old ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/netkit-telnet-${PV}.tar.gz
-SRC_URI="mirror://gentoo/netkit-telnet-${PV}.tar.gz
+SRC_URI="http://ftp.linux.org.uk/pub/linux/Networking/netkit/netkit-telnet-${PV}.tar.gz
 	mirror://debian/pool/main/n/netkit-telnet/netkit-telnet_0.17-${PATCHLEVEL}.debian.tar.xz"
 
 LICENSE="BSD"
