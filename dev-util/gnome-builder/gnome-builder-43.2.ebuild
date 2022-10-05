@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 DISABLE_AUTOFORMATTING=1
 FORCE_PRINT_ELOG=1
 
@@ -15,7 +15,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Builder https://gitlab.gnome.org/GNOME/gno
 LICENSE="GPL-3+ GPL-2+ LGPL-3+ LGPL-2+ MIT CC-BY-SA-3.0 CC0-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="clang +devhelp doc flatpak +git +glade gtk-doc spell +sysprof test +webkit"
+IUSE="clang +devhelp doc +d-spy flatpak +git +glade gtk-doc spell +sysprof test +webkit"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	flatpak? ( git )
@@ -24,7 +24,7 @@ REQUIRED_USE="
 
 # When bumping, pay attention to all the included plugins/*/meson.build (and other) build files and the requirements within.
 # `grep -rI dependency * --include='meson.build'` can give a good initial idea for external deps and their double checking.
-# The listed RDEPEND order shold roughly match that output as well, with toplevel one first then sorted by file path.
+# The listed RDEPEND order should roughly match that output as well, with toplevel one first then sorted by file path.
 # Most plugins have no extra requirements and default to enabled; we need to handle the ones with extra requirements. Many of
 # them have optional runtime dependencies, for which we try to at least notify the user via DOC_CONTENTS (but not all small
 # things); `grep -rI -e 'command-pattern.*=' -e 'push_arg'` can give a (spammy) idea, plus python imports in try/except.
@@ -34,33 +34,33 @@ REQUIRED_USE="
 
 # TODO: Handle llvm slots via llvm.eclass; see plugins/clang/meson.build
 RDEPEND="
+	>=dev-libs/libdazzle-3.37.0[introspection]
 	>=dev-libs/glib-2.73.3:2
 	>=gui-libs/gtk-4.7.1:4[introspection]
+	>=gui-libs/gtksourceview-5.5.2:5[introspection]
 	>=gui-libs/libadwaita-1.2.0:1
 	>=gui-libs/libpanel-1.0.0:1
-	>=gui-libs/gtksourceview-5.5.2:5[introspection]
-	>=gui-libs/libhandy-1.5.0:1[introspection]
 	>=dev-libs/json-glib-1.2.0
 	>=dev-libs/jsonrpc-glib-3.42.0
 	>=dev-libs/libpeas-1.34.0[python,${PYTHON_SINGLE_USEDEP}]
 	dev-libs/libportal:=[gtk,introspection]
 	>=dev-libs/template-glib-3.36.0[introspection]
-	>=gui-libs/vte-0.70.0:2.91-gtk4[introspection]
+	>=x11-libs/vte-0.70.0:2.91-gtk4[introspection]
 	>=dev-libs/libxml2-2.9.0
-	webkit? ( >=net-libs/webkit-gtk-2.38:5=[introspection] )
+	webkit? ( >=net-libs/webkit-gtk-2.38.0:5=[introspection] )
 	sysprof? (
-		>=dev-util/sysprof-capture-3.37.1:4
-		>=dev-util/sysprof-3.37.1:0/4[gtk]
+		>=dev-util/sysprof-capture-3.46.0:4
+		>=dev-util/sysprof-3.46.0:0/4[gtk]
 	)
 	>=app-text/cmark-0.29.0:0=
 	flatpak? (
 		dev-util/ostree
-		>=net-libs/libsoup-2.52.0:2.4
+		>=net-libs/libsoup-3:3.0
 		>=sys-apps/flatpak-1.10.2
 	)
 	git? (
 		dev-libs/libgit2:=[ssh,threads]
-		>=dev-libs/libgit2-glib-0.28.0.1[ssh]
+		>=dev-libs/libgit2-glib-1.1.0[ssh]
 	)
 	dev-libs/libpcre:3
 	dev-libs/libpcre2
@@ -74,8 +74,8 @@ RDEPEND="
 	devhelp? ( >=dev-util/devhelp-3.25.1:= )
 	glade? ( >=dev-util/glade-3.22.0:3.10= )
 	spell? (
-		>=app-text/gspell-1.8:0=
 		app-text/enchant:2
+		dev-libs/icu
 	)
 "
 DEPEND="${RDEPEND}"
@@ -142,6 +142,7 @@ pkg_setup() {
 
 src_configure() {
 	local emesonargs=(
+		-Ddevelopment=false
 		-Dtracing=false
 		-Dprofiling=false # not passing -pg to CFLAGS
 		-Dtcmalloc=false
@@ -149,8 +150,6 @@ src_configure() {
 		-Dwith_safe_path=''
 
 		-Dgnome_sdk_version=master
-
-		-Dchannel=other
 
 		$(meson_use doc help)
 		$(meson_use gtk-doc docs)
@@ -162,8 +161,8 @@ src_configure() {
 		$(meson_feature webkit)
 
 		-Dplugin_autotools=true
-		-Dplugin_blueprint=true
 		-Dplugin_bash_language_server=true
+		-Dplugin_blueprint=true
 		-Dplugin_buildstream=true
 		-Dplugin_c_pack=true
 		-Dplugin_cargo=true
@@ -176,8 +175,8 @@ src_configure() {
 		-Dplugin_copyright=true
 		-Dplugin_ctags=true
 		-Dplugin_deviced=false # libdeviced not packaged?
-		-Dplugin_dspy=false
-		-Dplugin_editorconfig=false # needs libpcre
+		$(meson_use d-spy plugin_dspy)
+		-Dplugin_editorconfig=true # needs libpcre
 		-Dplugin_eslint=true
 		-Dplugin_file_search=true
 		$(meson_use flatpak plugin_flatpak)
@@ -189,24 +188,26 @@ src_configure() {
 		-Dplugin_gradle=true
 		-Dplugin_grep=true
 		-Dplugin_html_completion=true
-		-Dplugin_html_preview=false
+		$(meson_use webkit plugin_html_preview)
 		-Dplugin_intelephense=true
 		-Dplugin_jdtls=true
 		-Dplugin_jedi_language_server=true
 		-Dplugin_jhbuild=true
 		-Dplugin_make=true
-		-Dplugin_markdown_preview=false
+		-Dplugin_make_templates=true
+		$(meson_use webkit plugin_markdown_preview)
 		-Dplugin_maven=true
 		-Dplugin_meson=true
 		-Dplugin_meson_templates=true
 		-Dplugin_modelines=true
 		-Dplugin_mono=true
-		-Dplugin_pygi=true
 		-Dplugin_newcomers=true
 		-Dplugin_notification=true
 		-Dplugin_npm=true
 		-Dplugin_phpize=true
 		-Dplugin_podman=true
+		-Dplugin_pygi=true
+		# -Dplugin_python_lsp_server=true # isn't recognized by meson even though it's in meson.build and meson-options.txt. See also: https://gitlab.gnome.org/GNOME/gnome-builder/-/issues/1842
 		-Dplugin_qemu=true
 		-Dplugin_quick_highlight=true
 		-Dplugin_retab=true
@@ -215,7 +216,7 @@ src_configure() {
 		-Dplugin_rust_analyzer=false # rust-analyzer not packaged
 		-Dplugin_shellcmd=true
 		$(meson_use spell plugin_spellcheck)
-		-Dplugin_sphinx_preview=false
+		$(meson_use webkit plugin_sphinx_preview)
 		-Dplugin_stylelint=true
 		$(meson_use sysprof plugin_sysprof)
 		-Dplugin_sysroot=true
@@ -251,11 +252,6 @@ pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
 	readme.gentoo_print_elog
-
-	optfeature_header "Code beautifiers"
-	optfeature "Python" dev-python/autopep8
-	optfeature "C/C++/Java" dev-util/uncrustify
-	optfeature "HTML" app-text/htmltidy
 
 	optfeature_header "Language support"
 	optfeature "Rust's Cargo build system" virtual/rust
