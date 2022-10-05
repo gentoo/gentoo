@@ -1,0 +1,14 @@
+diff --git a/include/plugin_interface/SC_SndBuf.h b/include/plugin_interface/SC_SndBuf.h
+index daccfef..618d1b4 100644
+--- a/include/plugin_interface/SC_SndBuf.h
++++ b/include/plugin_interface/SC_SndBuf.h
+@@ -21,8 +21,7 @@
+ #pragma once
+ 
+ #include <stdint.h>
+-
+-typedef struct SNDFILE_tag SNDFILE;
++#include <sndfile.h>
+ 
+ #ifdef SUPERNOVA
+ 
