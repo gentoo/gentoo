@@ -18,7 +18,7 @@ SRC_URI="https://github.com/easymock/easymock/archive/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="2.5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
