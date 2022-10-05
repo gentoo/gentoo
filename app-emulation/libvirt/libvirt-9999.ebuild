@@ -86,7 +86,7 @@ RDEPEND="
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( >=sys-block/open-iscsi-1.18.0 )
 	iscsi-direct? ( >=net-libs/libiscsi-1.18.0 )
-	libssh? ( >=net-libs/libssh-0.7:= )
+	libssh? ( >=net-libs/libssh-0.8.1:= )
 	libssh2? ( >=net-libs/libssh2-1.3 )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
 	lxc? ( !sys-apps/systemd[cgroup-hybrid(-)] )
