@@ -20,17 +20,18 @@ RESTRICT="bindist mirror splitdebug test"
 IUSE="swiftshader system-ffmpeg"
 
 QA_PREBUILT="*"
-# libasound2 (>= 1.0.16), libatk-bridge2.0-0 (>= 2.5.3), libatk1.0-0 (>= 2.2.0), libatspi2.0-0 (>= 2.9.90), libc6 (>= 2.17), libcairo2 (>= 1.10.0)
+# libasound2 (>= 1.0.16), libatk-bridge2.0-0 (>= 2.5.3), libatk1.0-0 (>= 2.2.0), libatspi2.0-0 (>= 2.9.90), libc6 (>= 2.17), libcairo2 (>= 1.10.0),
 # libcups2 (>= 1.7.0), libdrm2 (>= 2.4.38), libexpat1 (>= 2.0.1), libgbm1 (>= 17.1.0~rc2), libgcc1 (>= 1:3.0), libgdk-pixbuf2.0-0 (>= 2.22.0),
 # libglib2.0-0 (>= 2.39.4), libgtk-3-0 (>= 3.19.12), libnspr4 (>= 2:4.9-2~), libnss3 (>= 2:3.22), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0),
 # libx11-6 (>= 2:1.4.99.1), libx11-xcb1, libxcb-dri3-0, libxcb1 (>= 1.6), libxcomposite1 (>= 1:0.3-1), libxcursor1 (>> 1.1.2), libxdamage1 (>= 1:1.1),
 # libxext6, libxfixes3, libxi6 (>= 2:1.2.99.4), libxrandr2, libxrender1, libxtst6, apt-transport-https, libfontconfig1 (>= 2.11.0), libdbus-1-3 (>= 1.6.18),
 # libstdc++6 (>= 4.8.1)
 RDEPEND="
-	app-accessibility/at-spi2-core:2
-	app-accessibility/at-spi2-atk:2
+        || (
+                >=app-accessibility/at-spi2-core-2.46.0:2
+                ( app-accessibility/at-spi2-atk dev-libs/atk )
+        )
 	app-crypt/libsecret
-	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib
 	dev-libs/nspr
