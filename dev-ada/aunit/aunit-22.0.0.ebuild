@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-ADA_COMPAT=( gnat_202{0..1} )
+ADA_COMPAT=( gnat_202{0..1} gcc_12_2_0 )
 inherit ada multiprocessing
 
 DESCRIPTION="Ada unit testing framework"
@@ -22,7 +22,10 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
-PATCHES=( "${FILESDIR}"/${PN}-2016-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2016-gentoo.patch
+	"${FILESDIR}"/${P}-redundant.patch
+)
 
 src_compile() {
 	emake GPRBUILD="gprbuild -j$(makeopts_jobs) -v"

@@ -1,0 +1,28 @@
+From 7372e83edf47cf26dc64a49850b6fd80aaea5495 Mon Sep 17 00:00:00 2001
+From: Vasiliy Fofanov <fofanov@adacore.com>
+Date: Mon, 13 Dec 2021 18:54:17 +0100
+Subject: [PATCH] Remove redundant "with" of parent unit
+
+This fixes a warning raised by recent GNAT toolchains.
+
+TN: UC13-054
+---
+ test/src/aunit-test_suites-tests.ads | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/test/src/aunit-test_suites-tests.ads b/test/src/aunit-test_suites-tests.ads
+index 0d3ea33..377c0c3 100644
+--- a/test/src/aunit-test_suites-tests.ads
++++ b/test/src/aunit-test_suites-tests.ads
+@@ -1,10 +1,9 @@
+ --
+---  Copyright (C) 2009-2010, AdaCore
++--  Copyright (C) 2009-2021, AdaCore
+ --
+ 
+ with AUnit.Test_Fixtures;
+ with AUnit.Test_Results;
+-with AUnit.Test_Suites;
+ 
+ package AUnit.Test_Suites.Tests is
+ 
