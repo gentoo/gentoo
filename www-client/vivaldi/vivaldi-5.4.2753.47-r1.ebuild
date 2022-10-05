@@ -97,7 +97,7 @@ else
 	DEB_REV=1
 fi
 
-KEYWORDS="-* ~amd64 ~arm ~arm64"
+KEYWORDS="-* amd64 ~arm ~arm64"
 VIVALDI_BASE_URI="https://downloads.vivaldi.com/${VIVALDI_PN#vivaldi-}/${VIVALDI_PN}_${PV%_p*}-${DEB_REV}_"
 
 RE="\bamd64\b"; [[ ${KEYWORDS} =~ ${RE} ]] && SRC_URI+=" amd64? ( ${VIVALDI_BASE_URI}amd64.deb )"
@@ -111,9 +111,10 @@ IUSE="proprietary-codecs widevine"
 RESTRICT="bindist mirror"
 
 RDEPEND="
-	app-accessibility/at-spi2-atk:2
-	app-accessibility/at-spi2-core:2
-	dev-libs/atk
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		( app-accessibility/at-spi2-atk dev-libs/atk )
+	)
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
