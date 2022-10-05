@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,9 +6,8 @@ EAPI=7
 inherit pam toolchain-funcs fcaps
 
 DESCRIPTION="Netkit's Remote Shell Suite: rexec{,d} rlogin{,d} rsh{,d}"
-HOMEPAGE="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/"
-SRC_URI="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/${P}.tar.gz
-	mirror://gentoo/rexec-1.5.tar.gz"
+HOMEPAGE="https://wiki.linuxfoundation.org/networking/netkit"
+SRC_URI="http://ftp.linux.org.uk/pub/linux/Networking/netkit/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
