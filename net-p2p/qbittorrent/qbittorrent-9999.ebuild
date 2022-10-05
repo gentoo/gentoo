@@ -57,14 +57,8 @@ src_prepare() {
 src_configure() {
 	multibuild_src_configure() {
 		local mycmakeargs=(
-			-DDBUS=$(usex dbus)
-
 			# musl lacks execinfo.h
 			-DSTACKTRACE=$(usex !elibc_musl)
-
-			# We always want to install unit files
-			-DSYSTEMD=ON
-			-DSYSTEMD_SERVICES_INSTALL_DIR=$(systemd_get_systemunitdir)
 
 			# More verbose build logs are preferable for bug reports
 			-DVERBOSE_CONFIGURE=ON
@@ -80,9 +74,20 @@ src_configure() {
 		if [[ ${MULTIBUILD_VARIANT} == gui ]] ; then
 			# We do this in multibuild, see bug #839531 for why.
 			# Fedora has to do the same thing.
-			mycmakeargs+=( -DGUI=ON )
+			mycmakeargs+=(
+				-DGUI=ON
+				-DDBUS=$(usex dbus)
+				-DSYSTEMD=OFF
+			)
 		else
-			mycmakeargs+=( -DGUI=OFF )
+			mycmakeargs+=(
+				-DGUI=OFF
+				-DDBUS=OFF
+				# The systemd service calls qbittorrent-nox, which is only
+				# installed when GUI=OFF.
+				-DSYSTEMD=ON
+				-DSYSTEMD_SERVICES_INSTALL_DIR="$(systemd_get_systemunitdir)"
+			)
 		fi
 
 		cmake_src_configure
@@ -106,11 +111,5 @@ src_test() {
 
 src_install() {
 	multibuild_foreach_variant cmake_src_install
-
-	if ! use webui ; then
-		# No || die deliberately as it doesn't always exist
-		rm "${D}/$(systemd_get_systemunitdir)"/qbittorrent-nox*.service
-	fi
-
 	einstalldocs
 }
