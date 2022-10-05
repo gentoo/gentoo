@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<doc>https://felix.apache.org/documentation/documentation.html</doc>
+		<remote-id type="github">apache/felix-dev</remote-id>
+	</upstream>
+</pkgmetadata>

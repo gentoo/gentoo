@@ -56,10 +56,17 @@ DEPEND="
 	${RDEPEND}
 "
 
+# TODO: relax libbytesize condition once it has gained py3.11 support
 BDEPEND+="
 	dev-util/gtk-doc-am
 	gtk-doc? ( dev-util/gtk-doc )
 	introspection? ( >=dev-libs/gobject-introspection-1.3.0 )
+	test? (
+		$(python_gen_cond_dep '
+			dev-libs/libbytesize[python,${PYTHON_USEDEP}]
+		' python3_{8..10} )
+		sys-block/targetcli-fb
+	)
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}

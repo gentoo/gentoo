@@ -205,6 +205,7 @@ app-portage/g-sorcery bson
 # Michał Górny <mgorny@gentoo.org> (2017-03-24)
 # libcxx fails to compile on ppc*, #595744.
 sys-devel/clang default-libcxx
+sys-devel/clang-common default-libcxx
 sys-devel/clang-runtime libcxx
 
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)

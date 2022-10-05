@@ -173,7 +173,6 @@ src_prepare() {
 	fi
 
 	if use jit; then
-		export NATIVE_FULL_AOT=1
 		find lisp -type f -name "*.elc" -delete || die
 
 		# These files ignore LDFLAGS. We assign the variable here, because
@@ -352,7 +351,7 @@ src_configure() {
 		$(use_with games gameuser ":gamestat") \
 		$(use_with gmp libgmp) \
 		$(use_with gpm) \
-		$(use_with jit native-compilation) \
+		$(use_with jit native-compilation aot) \
 		$(use_with json) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with lcms lcms2) \

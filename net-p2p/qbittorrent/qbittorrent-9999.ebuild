@@ -47,8 +47,9 @@ BDEPEND="dev-qt/linguist-tools:5
 DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md )
 
 src_prepare() {
-	MULTIBUILD_VARIANTS=( base )
-	use webui && MULTIBUILD_VARIANTS+=( webui )
+	MULTIBUILD_VARIANTS=()
+	use gui && MULTIBUILD_VARIANTS+=( gui )
+	use webui && MULTIBUILD_VARIANTS+=( nogui )
 
 	cmake_src_prepare
 }
@@ -71,22 +72,17 @@ src_configure() {
 			# Not yet in ::gentoo
 			-DQT6=OFF
 
-			# We do these in multibuild, see bug #839531 for why.
-			# Fedora has to do the same thing.
-			-DGUI=$(usex gui)
+			-DWEBUI=$(usex webui)
 
 			-DTESTING=$(usex test)
 		)
 
-		if [[ ${MULTIBUILD_VARIANT} == webui ]] ; then
-			mycmakeargs+=(
-				# Need to specify GUI here to allow webui settings
-				# to appear in the GUI. bug #864731.
-				-DGUI=$(usex gui)
-				-DWEBUI=ON
-			)
+		if [[ ${MULTIBUILD_VARIANT} == gui ]] ; then
+			# We do this in multibuild, see bug #839531 for why.
+			# Fedora has to do the same thing.
+			mycmakeargs+=( -DGUI=ON )
 		else
-			mycmakeargs+=( -DWEBUI=OFF )
+			mycmakeargs+=( -DGUI=OFF )
 		fi
 
 		cmake_src_configure

@@ -17,6 +17,7 @@
   day.
 </longdescription>
 <upstream>
+  <remote-id type="github">brandon-rhodes/pyephem</remote-id>
   <remote-id type="pypi">pyephem</remote-id>
 </upstream>
 </pkgmetadata>

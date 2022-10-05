@@ -1,0 +1,24 @@
+From cdc5768fb8db416e4eede97639f381a537ae9336 Mon Sep 17 00:00:00 2001
+From: Charles Pigott <charlespigott@googlemail.com>
+Date: Wed, 10 Nov 2021 20:42:12 +0000
+Subject: [PATCH] Use collections.abc.Sequence as the alias is set to be
+ removed
+
+Alias has been in place since Py 3.3, and minimum (test) version is 3.7.
+---
+ langkit/templates/python_api/module_py.mako | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/langkit/templates/python_api/module_py.mako b/langkit/templates/python_api/module_py.mako
+index 831fb6044..65373fdbc 100644
+--- a/langkit/templates/python_api/module_py.mako
++++ b/langkit/templates/python_api/module_py.mako
+@@ -1503,7 +1503,7 @@ class ${root_astnode_name}:
+         if isinstance(ast_type_or_pred, type):
+             sought_type = ast_type_or_pred
+             pred = lambda node: isinstance(node, sought_type)
+-        elif isinstance(ast_type_or_pred, collections.Sequence):
++        elif isinstance(ast_type_or_pred, collections.abc.Sequence):
+             sought_types = ast_type_or_pred
+             pred = lambda node: isinstance(node, tuple(sought_types))
+         else:

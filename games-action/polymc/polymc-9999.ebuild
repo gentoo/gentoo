@@ -13,10 +13,10 @@ if [[ ${PV} == 9999 ]]; then
 
 	EGIT_REPO_URI="
 		https://github.com/PolyMC/PolyMC
-		https://github.com/PolyMC/libnbtplusplus
 	"
 
-	EGIT_SUBMODULES=( 'depends/libnbtplusplus' )
+	# TODO: Add tomlplusplus as a system library, like quazip
+	EGIT_SUBMODULES=( '*' '-libraries/quazip' )
 else
 	MY_PN="PolyMC"
 
@@ -34,6 +34,7 @@ fi
 # Apache-2.0 for MultiMC (PolyMC is forked from it)
 # GPL-3 for PolyMC
 # LGPL-3+ for libnbtplusplus
+# MIT for tomlplusplus
 # See the rest of PolyMC's libraries at https://github.com/PolyMC/PolyMC/tree/develop/libraries
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2+ GPL-3 ISC LGPL-2.1+ LGPL-3+ MIT"
 

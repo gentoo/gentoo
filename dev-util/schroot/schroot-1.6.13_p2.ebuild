@@ -14,7 +14,7 @@ SRC_URI="https://codeberg.org/shelter/reschroot/archive/release/re${P/%_p*}.tar.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 IUSE="btrfs +dchroot debug doc lvm nls pam test zfs"
 RESTRICT="!test? ( test )"
 

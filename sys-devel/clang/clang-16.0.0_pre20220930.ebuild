@@ -41,7 +41,6 @@ BDEPEND="
 	xml? ( virtual/pkgconfig )
 "
 PDEPEND="
-	sys-devel/clang-common
 	sys-devel/clang-toolchain-symlinks:${SLOT}
 	~sys-devel/clang-runtime-${PV}
 "

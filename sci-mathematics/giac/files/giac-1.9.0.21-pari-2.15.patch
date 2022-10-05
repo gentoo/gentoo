@@ -1,0 +1,17 @@
+--- a/src/pari.cc
++++ b/src/pari.cc
+@@ -39,6 +39,14 @@ using namespace std;
+ #endif
+ 
+ #ifdef HAVE_LIBPARI
++#if !defined ANYARG
++// Anyarg disappeared from PARI 2.15.0
++#ifdef __cplusplus
++#  define ANYARG ...
++#else
++#  define ANYARG
++#endif
++#endif
+ 
+ #ifdef HAVE_PTHREAD_H
+ #include <pthread.h>

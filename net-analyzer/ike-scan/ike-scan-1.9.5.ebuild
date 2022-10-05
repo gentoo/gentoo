@@ -19,6 +19,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.5-clang-16.patch
+	"${FILESDIR}"/${PN}-1.9.5-openssl-libdir.patch
 )
 
 src_prepare() {
@@ -33,7 +34,8 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with ssl openssl)
+	econf \
+		$(use_with ssl openssl "${ESYSROOT}"/usr)
 }
 
 src_install() {

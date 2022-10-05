@@ -1,0 +1,68 @@
+From f13ab4d288d0b790f6f1c515a6c0ea45e9615748 Mon Sep 17 00:00:00 2001
+From: Florimond Manca <florimond.manca@protonmail.com>
+Date: Thu, 25 Aug 2022 12:23:04 +0200
+Subject: [PATCH] Replace cgi which will be deprecated in Python 3.11 (#2309)
+
+* Replace cgi which will be deprecated in Python 3.11
+
+* Update httpx/_utils.py
+---
+ httpx/_models.py | 8 ++------
+ httpx/_utils.py  | 9 +++++++++
+ 2 files changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/httpx/_models.py b/httpx/_models.py
+index fd1d7fe9a..7a3b5885d 100644
+--- a/httpx/_models.py
++++ b/httpx/_models.py
+@@ -1,4 +1,3 @@
+-import cgi
+ import datetime
+ import email.message
+ import json as jsonlib
+@@ -47,6 +46,7 @@
+     normalize_header_key,
+     normalize_header_value,
+     obfuscate_sensitive_headers,
++    parse_content_type_charset,
+     parse_header_links,
+ )
+ 
+@@ -608,11 +608,7 @@ def charset_encoding(self) -> typing.Optional[str]:
+         if content_type is None:
+             return None
+ 
+-        _, params = cgi.parse_header(content_type)
+-        if "charset" not in params:
+-            return None
+-
+-        return params["charset"].strip("'\"")
++        return parse_content_type_charset(content_type)
+ 
+     def _get_content_decoder(self) -> ContentDecoder:
+         """
+diff --git a/httpx/_utils.py b/httpx/_utils.py
+index e01c050df..ecce4f417 100644
+--- a/httpx/_utils.py
++++ b/httpx/_utils.py
+@@ -1,4 +1,5 @@
+ import codecs
++import email.message
+ import logging
+ import mimetypes
+ import netrc
+@@ -209,6 +210,14 @@ def parse_header_links(value: str) -> typing.List[typing.Dict[str, str]]:
+     return links
+ 
+ 
++def parse_content_type_charset(content_type: str) -> typing.Optional[str]:
++    # We used to use `cgi.parse_header()` here, but `cgi` became a dead battery.
++    # See: https://peps.python.org/pep-0594/#cgi
++    msg = email.message.Message()
++    msg["content-type"] = content_type
++    return msg.get_content_charset(failobj=None)
++
++
+ SENSITIVE_HEADERS = {"authorization", "proxy-authorization"}
+ 
+ 

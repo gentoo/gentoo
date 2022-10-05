@@ -7,5 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="osdn">nkf</remote-id>
+		<remote-id type="github">nurse/nkf</remote-id>
+		<remote-id type="github">fumiyas/python-nkf</remote-id>
 	</upstream>
 </pkgmetadata>

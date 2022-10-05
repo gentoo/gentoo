@@ -11,7 +11,7 @@ SRC_URI="https://github.com/badaix/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~riscv x86"
 IUSE="+client +expat +flac +opus +server tremor +vorbis +zeroconf"
 REQUIRED_USE="|| ( server client )"
 

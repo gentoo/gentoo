@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription>
+		The Open Lighting Architecture is a framework for lighting control information.
+		It supports a range of protocols and over a dozen USB devices. It can run as a
+		standalone service, which is useful for converting signals between protocols,
+		or alternatively using the OLA API, it can be used as the backend for lighting
+		control software. OLA runs on many different platforms including ARM, which
+		makes it a perfect fit for low cost Ethernet to DMX gateways.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">OpenLightingProject/ola</remote-id>
+	</upstream>
+	<use>
+		<flag name="ftdi">Support FTDI devices</flag>
+		<flag name="http">Enable built-in Web UI</flag>
+		<flag name="rdm-tests">Install RDM responder tests</flag>
+	</use>
+</pkgmetadata>

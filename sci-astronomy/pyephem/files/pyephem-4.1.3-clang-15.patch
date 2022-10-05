@@ -1,0 +1,36 @@
+https://github.com/brandon-rhodes/pyephem/commit/df7bba8e27208fbe335b0ac2f79ae77818f52dd3
+https://bugs.gentoo.org/874543
+
+From df7bba8e27208fbe335b0ac2f79ae77818f52dd3 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Wed, 31 Aug 2022 02:58:26 -0700
+Subject: [PATCH] Don't set tp_print on Python 3 (#245)
+
+In 3.8 it produces a compilation warning; in earlier versions it is ignored.
+--- a/extensions/_libastro.c
++++ b/extensions/_libastro.c
+@@ -372,7 +372,11 @@ static PyTypeObject AngleType = {
+      sizeof(AngleObject),
+      0,
+      0,				/* tp_dealloc */
++#if PY_MAJOR_VERSION < 3
+      Angle_print,		/* tp_print */
++#else
++     0,				/* reserved in 3.x */
++#endif
+      0,				/* tp_getattr */
+      0,				/* tp_setattr */
+      0,				/* tp_compare */
+@@ -669,7 +673,11 @@ static PyTypeObject DateType = {
+      sizeof(PyFloatObject),
+      0,
+      0,				/* tp_dealloc */
++#if PY_MAJOR_VERSION < 3
+      Date_print,		/* tp_print */
++#else
++     0,				/* tp_print slot is reserved and unused in Python 3 */
++#endif
+      0,				/* tp_getattr */
+      0,				/* tp_setattr */
+      0,				/* tp_compare */
+

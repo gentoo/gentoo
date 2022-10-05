@@ -38,6 +38,7 @@ BDEPEND="test? (
 		dev-ml/camomile
 		dev-ml/ocaml-ctypes
 		dev-ada/e3-testsuite
+		<dev-lang/ocaml-4.14
 	)"
 
 pkg_setup() {

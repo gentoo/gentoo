@@ -1,0 +1,18 @@
+From: Sam James <sam@gentoo.org>
+Date: Sun, 2 Oct 2022 23:55:21 +0100
+Subject: [PATCH] Fix crypt() implicit function declaration
+
+crypt() is POSIX and setting _XOPEN_SOURCE makes glibc inhibit
+defining it w/o _DEFAULT_SOURCE.
+
+Bug: https://bugs.gentoo.org/871492
+--- a/src/backend_pgsql.c
++++ b/src/backend_pgsql.c
+@@ -8,7 +8,6 @@
+  * William Grzybowski <william@agencialivre.com.br>
+  */
+ 
+-#define _XOPEN_SOURCE 500
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <stdarg.h>

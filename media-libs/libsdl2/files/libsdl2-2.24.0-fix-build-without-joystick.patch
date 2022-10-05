@@ -1,0 +1,32 @@
+# https://github.com/libsdl-org/SDL/commit/71fb91f7e43c5f046a037bf5ca59214d93fe2d51
+From 71fb91f7e43c5f046a037bf5ca59214d93fe2d51 Mon Sep 17 00:00:00 2001
+From: Cameron Gutman <aicommander@gmail.com>
+Date: Mon, 26 Sep 2022 21:38:09 -0500
+Subject: [PATCH] evdev: Fix build with libudev and joystick subsystem disabled
+
+---
+ src/core/linux/SDL_evdev_capabilities.h | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/core/linux/SDL_evdev_capabilities.h b/src/core/linux/SDL_evdev_capabilities.h
+index 26fa7400485b..990ebe01b872 100644
+--- a/src/core/linux/SDL_evdev_capabilities.h
++++ b/src/core/linux/SDL_evdev_capabilities.h
+@@ -25,8 +25,6 @@
+ #ifndef SDL_evdev_capabilities_h_
+ #define SDL_evdev_capabilities_h_
+ 
+-#if HAVE_LIBUDEV_H || defined(SDL_JOYSTICK_LINUX)
+-
+ #include <linux/input.h>
+ 
+ /* A device can be any combination of these classes */
+@@ -53,8 +51,6 @@ extern int SDL_EVDEV_GuessDeviceClass(unsigned long bitmask_ev[NBITS(EV_MAX)],
+                                       unsigned long bitmask_key[NBITS(KEY_MAX)],
+                                       unsigned long bitmask_rel[NBITS(REL_MAX)]);
+ 
+-#endif /* HAVE_LIBUDEV_H || defined(SDL_JOYSTICK_LINUX) */
+-
+ #endif /* SDL_evdev_capabilities_h_ */
+ 
+ /* vi: set ts=4 sw=4 expandtab: */

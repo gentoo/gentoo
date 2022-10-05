@@ -74,7 +74,7 @@ SLOT="0"
 LICENSE="Apache-2.0"
 LICENSE+=" Apache-2.0-with-LLVM-exceptions BSD MIT Unicode-DFS-2016"
 LICENSE+=" Unlicense"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 ~riscv ~s390 ~sparc ~x86"
 
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]

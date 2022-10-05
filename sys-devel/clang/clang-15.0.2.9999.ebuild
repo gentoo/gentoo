@@ -16,10 +16,7 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS=""
-IUSE="
-	debug default-compiler-rt default-libcxx default-lld doc
-	llvm-libunwind +pie +static-analyzer test xml
-"
+IUSE="debug doc +pie +static-analyzer test xml"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -32,6 +29,7 @@ DEPEND="
 RDEPEND="
 	${PYTHON_DEPS}
 	${DEPEND}
+	>=sys-devel/clang-common-${PV}
 "
 BDEPEND="
 	${PYTHON_DEPS}
@@ -43,16 +41,8 @@ BDEPEND="
 	xml? ( virtual/pkgconfig )
 "
 PDEPEND="
-	sys-devel/clang-common
 	sys-devel/clang-toolchain-symlinks:${SLOT}
 	~sys-devel/clang-runtime-${PV}
-	default-compiler-rt? (
-		=sys-libs/compiler-rt-${PV%_*}*
-		llvm-libunwind? ( sys-libs/llvm-libunwind )
-		!llvm-libunwind? ( sys-libs/libunwind )
-	)
-	default-libcxx? ( >=sys-libs/libcxx-${PV} )
-	default-lld? ( sys-devel/lld )
 "
 
 LLVM_COMPONENTS=(
@@ -65,7 +55,7 @@ LLVM_TEST_COMPONENTS=(
 	llvm/utils/{lit,llvm-lit,unittest}
 	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
 )
-LLVM_PATCHSET=9999-r3
+LLVM_PATCHSET=15.0.1-r104
 LLVM_USE_TARGETS=llvm
 llvm.org_set_globals
 
@@ -261,6 +251,7 @@ multilib_src_configure() {
 		-DLLVM_CMAKE_PATH="${EPREFIX}/usr/lib/llvm/${SLOT}/$(get_libdir)/cmake/llvm"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
+		-DCLANG_CONFIG_FILE_SYSTEM_DIR="${EPREFIX}/etc/clang"
 		# relative to bindir
 		-DCLANG_RESOURCE_DIR="../../../../lib/clang/${clang_version}"
 
@@ -283,12 +274,7 @@ multilib_src_configure() {
 		# disable using CUDA to autodetect GPU, just build for all
 		-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=ON
 
-		# override default stdlib and rtlib
-		-DCLANG_DEFAULT_CXX_STDLIB=$(usex default-libcxx libc++ "")
-		-DCLANG_DEFAULT_RTLIB=$(usex default-compiler-rt compiler-rt "")
-		-DCLANG_DEFAULT_LINKER=$(usex default-lld lld "")
 		-DCLANG_DEFAULT_PIE_ON_LINUX=$(usex pie)
-		-DCLANG_DEFAULT_UNWINDLIB=$(usex default-compiler-rt libunwind "")
 
 		-DCLANG_ENABLE_ARCMT=$(usex static-analyzer)
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)

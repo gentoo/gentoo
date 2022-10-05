@@ -7,7 +7,7 @@ MODULES_OPTIONAL_USE="driver"
 inherit desktop flag-o-matic linux-mod multilib readme.gentoo-r1 \
 	systemd toolchain-funcs unpacker user-info
 
-NV_KERNEL_MAX="5.19"
+NV_KERNEL_MAX="6.0"
 NV_PIN="515.65.01"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
@@ -36,7 +36,7 @@ COMMON_DEPEND="
 		net-libs/libtirpc:=
 	)
 	tools? (
-		dev-libs/atk
+		|| ( >=app-accessibility/at-spi2-core-2.46:2 dev-libs/atk )
 		dev-libs/glib:2
 		dev-libs/jansson:=
 		media-libs/harfbuzz:=
@@ -168,6 +168,7 @@ pkg_setup() {
 	fi
 
 	if kernel_is -ge 5 18 13; then
+		# https://github.com/NVIDIA/open-gpu-kernel-modules/issues/341
 		if linux_chkconfig_present FB_SIMPLE; then
 			warn+=(
 				"  CONFIG_FB_SIMPLE: is set, recommended to disable and switch to FB_EFI"

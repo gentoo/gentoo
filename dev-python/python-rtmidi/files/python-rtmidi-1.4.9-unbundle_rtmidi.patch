@@ -9,25 +9,24 @@
  elif exists(join(SRC_DIR, "_rtmidi.cpp")):
      cythonize = lambda x: x  # noqa
      sources = [join(SRC_DIR, "_rtmidi.cpp"), join(SRC_DIR, "rtmidi", "RtMidi.cpp")]
-@@ -145,18 +145,18 @@
+@@ -145,18 +145,13 @@
  
  
  if sys.platform.startswith('linux'):
 -    if alsa and find_library('asound'):
 -        define_macros.append(("__LINUX_ALSA__", None))
 -        libraries.append('asound')
--
--    if jack:
--        check_for_jack(define_macros, libraries)
--
-     if not find_library('pthread'):
-         sys.exit("The 'pthread' library is required to build python-rtmidi on"
-                  "Linux. Please install the libc6 development package.")
 +    if not find_library('rtmidi'):
 +        sys.exit("Failed to find librtmidi")
  
-     libraries.append("pthread")
-+
+-    if jack:
+-        check_for_jack(define_macros, libraries)
+-
+-    if not find_library('pthread'):
+-        sys.exit("The 'pthread' library is required to build python-rtmidi on"
+-                 "Linux. Please install the libc6 development package.")
+-
+-    libraries.append("pthread")
 +    res = subprocess.check_output(['pkg-config', '--variable', 'includedir', 'rtmidi'])
 +    rtmidi_include_dir = res.decode().strip()
 +    include_dirs.append(rtmidi_include_dir)
@@ -35,7 +34,7 @@
  elif sys.platform.startswith('darwin'):
      if jack:
          check_for_jack(define_macros, libraries)
-@@ -197,7 +197,7 @@
+@@ -197,7 +192,7 @@
  # Finally, set up our distribution
  setup(
      packages=['rtmidi'],
