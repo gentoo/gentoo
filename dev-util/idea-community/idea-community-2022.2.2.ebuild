@@ -39,7 +39,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-jdk.patch"
 )
 
-post_src_unpack() {
+src_unpack() {
+
+	default_src_unpack
 	if [ ! -d "$S" ]; then
 		einfo "Renaming source directory to predictable name..."
 		mv $(ls "${WORKDIR}") "idea-IC-${PV}" || die
