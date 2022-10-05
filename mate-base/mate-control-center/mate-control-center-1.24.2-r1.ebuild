@@ -18,7 +18,10 @@ SLOT="0"
 IUSE="accountsservice appindicator debug"
 
 COMMON_DEPEND="
-	dev-libs/atk
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		dev-libs/atk
+	)
 	>=dev-libs/dbus-glib-0.73
 	>=dev-libs/glib-2.50:2
 	dev-libs/libxml2:2
