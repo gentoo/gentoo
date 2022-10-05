@@ -8,18 +8,20 @@ MULTILIB_COMPAT=( abi_x86_64 )
 inherit desktop multilib-build optfeature pax-utils unpacker xdg
 
 DESCRIPTION="Team collaboration tool"
-HOMEPAGE="https://www.slack.com"
+HOMEPAGE="https://slack.com"
 SRC_URI="https://downloads.slack-edge.com/releases/linux/${PV}/prod/x64/${PN}-desktop-${PV}-amd64.deb"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="appindicator suid"
+IUSE="appindicator +seccomp suid wayland"
 RESTRICT="bindist mirror"
 
-RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
-	app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
-	dev-libs/atk:0[${MULTILIB_USEDEP}]
+RDEPEND="
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		( app-accessibility/at-spi2-atk dev-libs/atk )
+	)
 	dev-libs/expat:0[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
@@ -71,7 +73,19 @@ src_prepare() {
 	if use appindicator ; then
 		sed -i '/Exec/s|=|=env XDG_CURRENT_DESKTOP=Unity |' \
 			usr/share/applications/slack.desktop \
-			|| die "sed failed for slack.desktop"
+			|| die "sed failed for appindicator"
+	fi
+
+	if ! use seccomp ; then
+		sed -i '/Exec/s/%U/%U --disable-seccomp-filter-sandbox/' \
+			usr/share/applications/slack.desktop \
+			|| die "sed failed for seccomp"
+	fi
+
+	if use wayland ; then
+		sed -i '/Exec/s/%U/%U --enable-features=WebRTCPipeWireCapturer/' \
+			usr/share/applications/slack.desktop \
+			|| die "sed failed for wayland"
 	fi
 
 	rm usr/lib/slack/LICENSE{,S-linux.json} \
