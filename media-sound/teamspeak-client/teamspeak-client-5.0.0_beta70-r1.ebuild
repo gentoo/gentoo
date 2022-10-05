@@ -15,7 +15,10 @@ LICENSE="teamspeak5 || ( GPL-2 GPL-3 LGPL-3 )"
 SLOT="5"
 
 RDEPEND="
-	app-accessibility/at-spi2-atk:2
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		( app-accessibility/at-spi2-atk dev-libs/atk )
+	)
 	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib:2
