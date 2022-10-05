@@ -25,7 +25,7 @@ BDEPEND="
 "
 RDEPEND="
 	dev-cpp/yaml-cpp:=
-	dev-libs/boost:=
+	>=dev-libs/boost-1.70.0:=
 	media-libs/alsa-lib
 	sys-libs/readline:0=
 	virtual/libudev:=
@@ -62,10 +62,8 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.10.2-no-ccache.patch
 	"${FILESDIR}"/${P}-fewer-qt-deps.patch # Upstream PR 4991
-	"${FILESDIR}"/${P}-fix-libscsynth-linker-issue.patch # Upstream issue 4992
-	"${FILESDIR}"/${P}-boost-1.74.patch # bug 760489
+	"${FILESDIR}"/${P}-remove-sndfile-redefinition.patch
 )
 
 S="${WORKDIR}/SuperCollider-${PV}-Source"
