@@ -16,23 +16,23 @@
 # This usually involves packages requiring Python at build-time
 # but having no other relevance to it.
 #
-# This eclass provides a minimal PYTHON_DEPS variable with a dependency
+# This eclass provides a minimal ``PYTHON_DEPS`` variable with a dependency
 # string on any of the supported Python implementations. It also exports
-# pkg_setup() which finds the best supported implementation and sets it
+# ``pkg_setup()`` which finds the best supported implementation and sets it
 # as the active one.
 #
-# Optionally, you can define a python_check_deps() function. It will
-# be called by the eclass with EPYTHON set to each matching Python
+# Optionally, you can define a ``python_check_deps()`` function. It will
+# be called by the eclass with ``EPYTHON`` set to each matching Python
 # implementation and it is expected to check whether the implementation
 # fulfills the package requirements. You can use the locally exported
-# PYTHON_USEDEP or PYTHON_SINGLE_USEDEP to check USE-dependencies
+# ``PYTHON_USEDEP`` or ``PYTHON_SINGLE_USEDEP`` to check USE-dependencies
 # of relevant packages. It should return a true value (0) if the Python
 # implementation fulfills the requirements, a false value (non-zero)
 # otherwise.
 #
-# Please note that python-any-r1 will always inherit python-utils-r1
+# Please note that ``python-any-r1`` will always inherit ``python-utils-r1``
 # as well. Thus, all the functions defined there can be used in the
-# packages using python-any-r1, and there is no need ever to inherit
+# packages using ``python-any-r1``, and there is no need ever to inherit
 # both.
 #
 # For more information, please see the Python Guide:
@@ -62,7 +62,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @REQUIRED
 # @DESCRIPTION:
 # This variable contains a list of Python implementations the package
-# supports. It must be set before the `inherit' call. It has to be
+# supports. It must be set before the ``inherit`` call. It has to be
 # an array.
 #
 # Example:
@@ -75,13 +75,13 @@ EXPORT_FUNCTIONS pkg_setup
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This variable can be used when working with ebuilds to override
-# the in-ebuild PYTHON_COMPAT. It is a string naming the implementation
+# the in-ebuild ``PYTHON_COMPAT``. It is a string naming the implementation
 # which will be used to build the package. It needs to be specified
 # in the calling environment, and not in ebuilds.
 #
 # It should be noted that in order to preserve metadata immutability,
-# PYTHON_COMPAT_OVERRIDE does not affect dependencies. The value of
-# EPYTHON and eselect-python preferences are ignored. Dependencies need
+# ``PYTHON_COMPAT_OVERRIDE`` does not affect dependencies. The value of
+# ``EPYTHON`` and ``eselect-python`` preferences are ignored. Dependencies need
 # to be satisfied manually.
 #
 # Example:
@@ -94,7 +94,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @DESCRIPTION:
 # The list of USEflags required to be enabled on the Python
 # implementations, formed as a USE-dependency string. It should be valid
-# for all implementations in PYTHON_COMPAT, so it may be necessary to
+# for all implementations in ``PYTHON_COMPAT``, so it may be necessary to
 # use USE defaults.
 #
 # Example:
@@ -111,7 +111,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Python dependency string for all
-# implementations listed in PYTHON_COMPAT.
+# implementations listed in ``PYTHON_COMPAT``.
 #
 # Any of the supported interpreters will satisfy the dependency.
 #
@@ -130,11 +130,11 @@ EXPORT_FUNCTIONS pkg_setup
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # An eclass-generated USE-dependency string for the currently tested
-# implementation. It is set locally for python_check_deps() call.
+# implementation. It is set locally for ``python_check_deps()`` call.
 #
 # The generated USE-flag list is compatible with packages using
-# python-r1 eclass. For python-single-r1 dependencies,
-# use PYTHON_SINGLE_USEDEP.
+# ``python-r1`` eclass. For ``python-single-r1`` dependencies,
+# use ``PYTHON_SINGLE_USEDEP``.
 #
 # Example use:
 # @CODE
@@ -152,11 +152,11 @@ EXPORT_FUNCTIONS pkg_setup
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # An eclass-generated USE-dependency string for the currently tested
-# implementation. It is set locally for python_check_deps() call.
+# implementation. It is set locally for ``python_check_deps()`` call.
 #
 # The generated USE-flag list is compatible with packages using
-# python-single-r1 eclass. For python-r1 dependencies,
-# use PYTHON_USEDEP.
+# ``python-single-r1`` eclass. For ``python-r1`` dependencies,
+# use ``PYTHON_USEDEP``.
 #
 # Example use:
 # @CODE
@@ -212,12 +212,12 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 # @USAGE: <dependency-block>
 # @DESCRIPTION:
 # Generate an any-of dependency that enforces a version match between
-# the Python interpreter and Python packages. <dependency-block> needs
-# to list one or more dependencies with verbatim '${PYTHON_USEDEP}'
-# or '${PYTHON_SINGLE_USEDEP}' references (quoted!) that will get
+# the Python interpreter and Python packages. ``<dependency-block>`` needs
+# to list one or more dependencies with verbatim ``'${PYTHON_USEDEP}'``
+# or ``'${PYTHON_SINGLE_USEDEP}'`` references (quoted!) that will get
 # expanded inside the function.
 #
-# This should be used along with an appropriate python_check_deps()
+# This should be used along with an appropriate ``python_check_deps()``
 # that checks which of the any-of blocks were matched.
 #
 # Example use:
@@ -276,7 +276,7 @@ python_gen_any_dep() {
 # Determine what the best installed (and supported) Python
 # implementation is, and set the Python build environment up for it.
 #
-# This function will call python_check_deps() if defined.
+# This function will call ``python_check_deps()`` if defined.
 python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -339,10 +339,10 @@ python_setup() {
 
 # @FUNCTION: python-any-r1_pkg_setup
 # @DESCRIPTION:
-# Runs python_setup during from-source installs.
+# Runs ``python_setup`` during from-source installs.
 #
-# In a binary package installs is a no-op. If you need Python in pkg_*
-# phases of a binary package, call python_setup directly.
+# In a binary package installs is a no-op. If you need Python in ``pkg_*``
+# phases of a binary package, call ``python_setup`` directly.
 python-any-r1_pkg_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
