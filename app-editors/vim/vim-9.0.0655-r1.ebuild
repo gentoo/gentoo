@@ -64,6 +64,7 @@ BDEPEND="
 	lua? ( ${LUA_DEPS} )
 	nls? ( sys-devel/gettext )
 "
+PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug #82186.
