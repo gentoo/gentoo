@@ -67,7 +67,8 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/linuxcontainers.asc
 
 DOCS=( AUTHORS CONTRIBUTING MAINTAINERS README.md doc/FAQ.txt )
 
-PATCHES=( "${FILESDIR}"/lxc-5.0.1-glibc-2.36.patch )
+PATCHES=( "${FILESDIR}"/lxc-5.0.1-glibc-2.36.patch
+	"${FILESDIR}"/lxc-5.0.1-use-sd_bus_call_method_async-insteaf-of-asyncv.patch )
 
 pkg_setup() {
 	linux-info_pkg_setup
