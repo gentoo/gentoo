@@ -10,7 +10,11 @@ HOMEPAGE="https://www.brain-dump.org/projects/dvtm/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://repo.or.cz/dvtm.git"
+	EGIT_REPO_URI="
+		https://github.com/martanne/dvtm
+		https://git.sr.ht/~martanne/dvtm
+		https://repo.or.cz/dvtm.git
+	"
 else
 	SRC_URI="https://www.brain-dump.org/projects/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
