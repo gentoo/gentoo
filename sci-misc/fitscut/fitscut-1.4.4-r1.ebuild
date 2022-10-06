@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-asinh.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
