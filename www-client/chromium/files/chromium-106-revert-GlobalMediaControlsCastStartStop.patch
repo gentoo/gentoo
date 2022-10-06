@@ -1,0 +1,32 @@
+From b58f0f2725a8c1a8a131f9984b5fd53b54119dba Mon Sep 17 00:00:00 2001
+From: Muyao Xu <muyaoxu@google.com>
+Date: Thu, 20 Jan 2022 23:46:21 +0000
+Subject: [PATCH] [Zenith] Enable GlobalMediaControlsCastStartStop flag by
+ default
+
+The feature is rolled out to 100% stable through finch for M96+.
+This CL enables it by default and fixes some unit tests failures.
+
+Bug: 1287242, 1287305
+Change-Id: I7e5c9625b77379fef253c41ef292a0dd6fc366fb
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/3388416
+Reviewed-by: Takumi Fujimoto <takumif@chromium.org>
+Commit-Queue: Muyao Xu <muyaoxu@google.com>
+Cr-Commit-Position: refs/heads/main@{#961658}
+---
+ chrome/browser/media/router/media_router_feature.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/chrome/browser/media/router/media_router_feature.cc b/chrome/browser/media/router/media_router_feature.cc
+index dcb025a..f7ea08a 100644
+--- a/chrome/browser/media/router/media_router_feature.cc
++++ b/chrome/browser/media/router/media_router_feature.cc
+@@ -48,7 +48,7 @@ const base::Feature kGlobalMediaControlsCastStartStop{
+     "GlobalMediaControlsCastStartStop", base::FEATURE_DISABLED_BY_DEFAULT};
+ #else
+ const base::Feature kGlobalMediaControlsCastStartStop{
+-    "GlobalMediaControlsCastStartStop", base::FEATURE_ENABLED_BY_DEFAULT};
++    "GlobalMediaControlsCastStartStop", base::FEATURE_DISABLED_BY_DEFAULT};
+ #endif  // BUILDFLAG(IS_CHROMEOS)
+ 
+ #endif  // !BUILDFLAG(IS_ANDROID)
