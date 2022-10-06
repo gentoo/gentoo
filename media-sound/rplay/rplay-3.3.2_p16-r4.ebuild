@@ -8,9 +8,10 @@ inherit autotools
 DESCRIPTION="Play sounds on remote Unix systems without data transfer"
 HOMEPAGE="http://rplay.doit.org/"
 SRC_URI="
-	http://rplay.doit.org/dist/${P}.tar.gz
-	mirror://debian/pool/main/r/${PN}/${PN}_${PV}-16.debian.tar.xz
+	http://rplay.doit.org/dist/${PN}-$(ver_cut 1-3).tar.gz
+	mirror://debian/pool/main/r/${PN}/${PN}_$(ver_cut 1-3)-$(ver_cut 5).debian.tar.xz
 "
+S="${WORKDIR}"/${PN}-$(ver_cut 1-3)
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,8 +25,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${WORKDIR}/debian/patches"
-	"${FILESDIR}/${P}-built-in_function_exit-r1.patch"
+	"${WORKDIR}"/debian/patches
+	"${FILESDIR}"/${PN}-$(ver_cut 1-3)-built-in_function_exit-r1.patch
 )
 
 src_prepare() {
