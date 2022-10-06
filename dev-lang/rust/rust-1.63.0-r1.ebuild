@@ -340,7 +340,7 @@ src_configure() {
 	# https://bugs.gentoo.org/732632
 	if tc-is-clang; then
 		local clang_slot="$(clang-major-version)"
-		if { has_version "sys-devel/clang:${clang_slot}[default-libcxx]" || is-flagq -stdlib=libc++; }; then
+		if { has_version "sys-devel/clang:${clang_slot}[default-libcxx(-)]" || has_version "sys-devel/clang-common:${clang_slot}[default-libcxx(-)]" || is-flagq -stdlib=libc++; }; then
 			use_libcxx="true"
 		fi
 	fi
