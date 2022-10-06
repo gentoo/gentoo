@@ -43,7 +43,7 @@ src_prepare() {
 	export DOTNET_NOLOGO=1
 	export DOTNET_CONFIGURATION=$(usex debug Debug Release)
 	export DOTNET_OUTPUT="${WORKDIR}"/${P}_net${DOTNET_COMPAT}_${DOTNET_CONFIGURATION}/${PN}
-	export NUGET_PACKAGES="${S}"/nuget_packages
+	export NUGET_PACKAGES="${S}"/Source/nuget_packages
 
 	default
 
@@ -68,7 +68,8 @@ src_prepare() {
 }
 
 src_configure() {
-	edob dotnet restore -p:TargetFramework=net${DOTNET_COMPAT} "${S}"/Source
+	edob dotnet restore "${S}"/Source \
+		--source "${NUGET_PACKAGES}" -p:TargetFramework=net${DOTNET_COMPAT}
 }
 
 src_compile() {
