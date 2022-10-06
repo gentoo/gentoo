@@ -200,8 +200,10 @@ src_prepare() {
 	fi
 
 	# src/3rdparty/gn fails with libc++ due to passing of `-static-libstdc++`
-	if tc-is-clang && has_version 'sys-devel/clang[default-libcxx]'; then
-		eapply "${FILESDIR}/${PN}-5.15.2_p20210521-clang-libc++.patch"
+	if tc-is-clang ; then
+		if has_version 'sys-devel/clang[default-libcxx(-)]' || has_version 'sys-devel/clang-common[default-libcxx(-)]' ; then
+			eapply "${FILESDIR}/${PN}-5.15.2_p20210521-clang-libc++.patch"
+		fi
 	fi
 
 	if use system-ffmpeg && has_version '>=media-video/ffmpeg-5'; then
