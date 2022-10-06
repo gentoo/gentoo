@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-10-07)
+# Unstable release. Masked for testing.
+>=x11-libs/cairo-1.17
+
 # Sam James <sam@gentoo.org> (2022-10-07)
 # Ancient K&R C codebase which fails to compile with modern Clang; surface
 # level fixes are doable, but then get into various dangerous constructs
