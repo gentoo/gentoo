@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-respectflags-r1.patch
 	"${FILESDIR}"/fix-Wformat-security-warnings.patch
 	"${FILESDIR}"/support-ar-variable.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_compile() {
