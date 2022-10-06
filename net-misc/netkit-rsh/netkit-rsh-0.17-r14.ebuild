@@ -7,7 +7,8 @@ inherit pam toolchain-funcs fcaps
 
 DESCRIPTION="Netkit's Remote Shell Suite: rexec{,d} rlogin{,d} rsh{,d}"
 HOMEPAGE="https://wiki.linuxfoundation.org/networking/netkit"
-SRC_URI="http://ftp.linux.org.uk/pub/linux/Networking/netkit/${P}.tar.gz"
+SRC_URI="http://ftp.linux.org.uk/pub/linux/Networking/netkit/${P}.tar.gz
+	mirror://gentoo/rexec-1.5.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
