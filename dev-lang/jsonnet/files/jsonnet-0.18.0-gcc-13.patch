@@ -1,0 +1,18 @@
+https://github.com/google/jsonnet/pull/1020
+From: WANG Xuerui <git@xen0n.name>
+Date: Thu, 6 Oct 2022 15:04:47 +0800
+Subject: [PATCH] Add #include <cstdint> for gcc-13 builds
+
+See https://gcc.gnu.org/gcc-13/porting_to.html#header-dep-changes.
+
+This fixes Gentoo bug https://bugs.gentoo.org/875569.
+--- a/include/libjsonnet++.h
++++ b/include/libjsonnet++.h
+@@ -17,6 +17,7 @@ limitations under the License.
+ #ifndef CPP_JSONNET_H_
+ #define CPP_JSONNET_H_
+ 
++#include <cstdint>
+ #include <cstring>
+ #include <functional>
+ #include <map>
