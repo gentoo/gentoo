@@ -9,19 +9,19 @@
 # @SUPPORTED_EAPIS: 6 7
 # @BLURB: An eclass for Ada packages
 # @DESCRIPTION:
-# This eclass set the IUSE and REQUIRED_USE to request the ADA_TARGET
-# when the inheriting ebuild can be supported by more than one Ada
-# implementation. It also set ADA_USEDEP and ADA_DEPS with a suitable form.
+# This eclass set the ``IUSE`` and ``REQUIRED_USE`` to request the
+# ``ADA_TARGET`` when the inheriting ebuild can be supported by more than one
+# Ada implementation. It also set ADA_USEDEP and ADA_DEPS with a suitable form.
 # A common eclass providing helper functions to build and install
 # packages supporting Ada implementations.
 #
-# This eclass sets correct IUSE. Modification of REQUIRED_USE has to
-# be done by the author of the ebuild (but ADA_REQUIRED_USE is
-# provided for convenience, see below). ada exports ADA_DEPS
-# and ADA_USEDEP so you can create correct dependencies for your
+# This eclass sets correct ``IUSE``. Modification of ``REQUIRED_USE`` has to
+# be done by the author of the ebuild (but ``ADA_REQUIRED_USE`` is
+# provided for convenience, see below). ada exports ``ADA_DEPS``
+# and ``ADA_USEDEP`` so you can create correct dependencies for your
 # package easily.
 #
-# Mostly copied from python-single-r1.eclass
+# Mostly copied from ``python-single-r1.eclass``
 
 case "${EAPI:-0}" in
 	0|1|2|3|4|5)
@@ -41,9 +41,9 @@ EXPORT_FUNCTIONS pkg_setup
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Ada dependency string for all
-# implementations listed in ADA_COMPAT.
+# implementations listed in ``ADA_COMPAT``.
 #
-# The dependency string is conditional on ADA_TARGET.
+# The dependency string is conditional on ``ADA_TARGET``.
 #
 # Example use:
 # @CODE
@@ -67,7 +67,7 @@ readonly _ADA_ALL_IMPLS
 # @USAGE: <impl>
 # @INTERNAL
 # @DESCRIPTION:
-# Check whether the implementation <impl> (ADA_COMPAT-form)
+# Check whether the implementation <impl> (``ADA_COMPAT``-form)
 # is still supported.
 #
 # Returns 0 if the implementation is valid and supported. If it is
@@ -98,20 +98,20 @@ _ada_impl_supported() {
 # @FUNCTION: _ada_set_impls
 # @INTERNAL
 # @DESCRIPTION:
-# Check ADA_COMPAT for well-formedness and validity, then set
+# Check ``ADA_COMPAT`` for well-formedness and validity, then set
 # two global variables:
 #
-# - _ADA_SUPPORTED_IMPLS containing valid implementations supported
-#   by the ebuild (ADA_COMPAT - dead implementations),
+# - ``_ADA_SUPPORTED_IMPLS`` containing valid implementations supported
+#   by the ebuild (``ADA_COMPAT`` - dead implementations),
 #
-# - and _ADA_UNSUPPORTED_IMPLS containing valid implementations that
+# - and ``_ADA_UNSUPPORTED_IMPLS`` containing valid implementations that
 #   are not supported by the ebuild.
 #
 # Implementations in both variables are ordered using the pre-defined
 # eclass implementation ordering.
 #
 # This function must be called once in global scope by an eclass
-# utilizing ADA_COMPAT.
+# utilizing ``ADA_COMPAT``.
 _ada_set_impls() {
 	local i
 
@@ -167,12 +167,12 @@ _ada_set_impls() {
 # as parameters.
 #
 # The optional first parameter may specify the requested Ada
-# implementation (either as ADA_TARGETS value, e.g. ada2_7,
-# or an EADA one, e.g. ada2.7). If no implementation passed,
-# the current one will be obtained from ${EADA}.
+# implementation (either as ``ADA_TARGETS`` value, e.g. ``ada2_7``,
+# or an ``EADA`` one, e.g. ``ada2.7``). If no implementation passed,
+# the current one will be obtained from ``${EADA}``.
 #
-# The variables which can be exported are: GCC, EADA, GNATMAKE.
-# They are described more completely in the eclass
+# The variables which can be exported are: ``GCC``, ``EADA``,
+# ``GNATMAKE``. They are described more completely in the eclass
 # variable documentation.
 ada_export() {
 	debug-print-function ${FUNCNAME} "${@}"
@@ -349,11 +349,11 @@ unset -f _ada_single_set_globals
 # @USAGE: [<path> [<impl>]]
 # @DESCRIPTION:
 # Create proper 'ada' executable wrappers
-# in the directory named by <path>. Set up PATH
-# appropriately. <path> defaults to ${T}/${EADA}.
+# in the directory named by ``<path>``. Set up PATH
+# appropriately. ``<path>`` defaults to ``${T}/${EADA}``.
 #
-# The wrappers will be created for implementation named by <impl>,
-# or for one named by ${EADA} if no <impl> passed.
+# The wrappers will be created for implementation named by ``<impl>``,
+# or for one named by ``${EADA}`` if no ``<impl>`` passed.
 #
 # If the named directory contains a ada symlink already, it will
 # be assumed to contain proper wrappers already and only environment
@@ -472,7 +472,7 @@ ada_setup() {
 
 # @FUNCTION: ada_pkg_setup
 # @DESCRIPTION:
-# Runs ada_setup.
+# Runs ``ada_setup``.
 ada_pkg_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 

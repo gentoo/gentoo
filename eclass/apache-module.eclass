@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: apache-module.eclass
@@ -10,15 +10,16 @@
 # This eclass handles apache modules in a sane way.
 #
 # To make use of this eclass simply call one of the need/want_apache functions
-# described in depend.apache.eclass. Make sure you use the need/want_apache call
-# after you have defined DEPEND and RDEPEND. Also note that you can not rely on
-# the automatic RDEPEND=DEPEND that portage does if you use this eclass.
+# described in ``depend.apache.eclass``. Make sure you use the need/want_apache
+# call after you have defined ``DEPEND`` and ``RDEPEND``. Also note that you
+# can not rely on the automatic ``RDEPEND=DEPEND`` that portage does if you use
+# this eclass.
 #
 # See Bug 107127 for more information.
 #
 # @EXAMPLE:
 #
-# Here is a simple example of an ebuild for mod_foo:
+# Here is a simple example of an ebuild for ``mod_foo``:
 #
 # @CODE
 # APACHE2_MOD_CONF="42_mod_foo"
@@ -61,44 +62,44 @@ inherit depend.apache
 
 # @VARIABLE: APXS2_S
 # @DESCRIPTION:
-# Path to temporary build directory. (Defaults to `${S}/src' if it exists,
-# `${S}' otherwise)
+# Path to temporary build directory. (Defaults to ``${S}/src`` if it exists,
+# ``${S}`` otherwise)
 
 # @VARIABLE: APXS2_ARGS
 # @DESCRIPTION:
-# Arguments to pass to the apxs tool. (Defaults to `-c ${PN}.c')
+# Arguments to pass to the ``apxs`` tool. (Defaults to ``-c ${PN}.c``)
 
 # @VARIABLE: APACHE2_EXECFILES
 # @DESCRIPTION:
-# List of files that will be installed into ${APACHE_MODULE_DIR} beside
-# ${APACHE2_MOD_FILE}. In addition, this function also sets the executable
+# List of files that will be installed into ``${APACHE_MODULE_DIR}`` beside
+# ``${APACHE2_MOD_FILE}``. In addition, this function also sets the executable
 # permission on those files.
 
 # @VARIABLE: APACHE2_MOD_CONF
 # @DESCRIPTION:
-# Module configuration file installed by src_install (minus the .conf suffix and
-# relative to ${FILESDIR}).
+# Module configuration file installed by ``src_install`` (minus the ``.conf``
+# suffix and relative to ``${FILESDIR}``).
 
 # @VARIABLE: APACHE2_MOD_DEFINE
 # @DESCRIPTION:
-# Name of define (e.g. FOO) to use in conditional loading of the installed
+# Name of define (e.g. ``FOO``) to use in conditional loading of the installed
 # module/its config file, multiple defines should be space separated.
 
 # @VARIABLE: APACHE2_MOD_FILE
 # @DESCRIPTION:
-# Name of the module that src_install installs minus the .so suffix. (Defaults
-# to `${APXS2_S}/.libs/${PN}.so')
+# Name of the module that ``src_install`` installs minus the ``.so`` suffix.
+# (Defaults to ``${APXS2_S}/.libs/${PN}.so``)
 
 # @VARIABLE: APACHE2_VHOST_CONF
 # @DESCRIPTION:
-# Virtual host configuration file installed by src_install (minus the .conf
-# suffix and relative to ${FILESDIR}).
+# Virtual host configuration file installed by ``src_install`` (minus the
+# ``.conf`` suffix and relative to ``${FILESDIR}``).
 
 # @VARIABLE: DOCFILES
 # @DESCRIPTION:
-# If the exported src_install() is being used, and ${DOCFILES} is non-zero, some
-# sed-fu is applied to split out html documentation (if any) from normal
-# documentation, and dodoc'd or dohtml'd.
+# If the exported ``src_install`` is being used, and ``${DOCFILES}`` is
+# non-zero, some sed-fu is applied to split out html documentation (if any)
+# from normal documentation, and dodoc'd or dohtml'd.
 
 # ==============================================================================
 # INTERNAL FUNCTIONS
@@ -158,9 +159,9 @@ apache_doc_magic() {
 
 # @FUNCTION: apache-module_src_compile
 # @DESCRIPTION:
-# The default action is to call ${APXS} with the value of ${APXS2_ARGS}. If a
-# module requires a different build setup than this, use ${APXS} in your own
-# src_compile routine.
+# The default action is to call ``${APXS}`` with the value of ``${APXS2_ARGS}``.
+# If a module requires a different build setup than this, use ``${APXS}`` in
+# your own ``src_compile`` routine.
 apache-module_src_compile() {
 	debug-print-function $FUNCNAME $*
 
@@ -174,12 +175,12 @@ apache-module_src_compile() {
 # @FUNCTION: apache-module_src_install
 # @DESCRIPTION:
 # This installs the files into apache's directories. The module is installed
-# from a directory chosen as above (apache_cd_dir). In addition, this function
-# can also set the executable permission on files listed in
-# ${APACHE2_EXECFILES}.  The configuration file name is listed in
-# ${APACHE2_MOD_CONF} without the .conf extensions, so if you configuration is
-# 55_mod_foo.conf, APACHE2_MOD_CONF would be 55_mod_foo. ${DOCFILES} contains
-# the list of files you want filed as documentation.
+# from a directory chosen as above (``apache_cd_dir``). In addition, this
+# function can also set the executable permission on files listed in
+# ``${APACHE2_EXECFILES}``.  The configuration file name is listed in
+# ``${APACHE2_MOD_CONF}`` without the .conf extensions, so if you configuration
+# is ``55_mod_foo.conf``, ``APACHE2_MOD_CONF`` would be ``55_mod_foo``.
+# ``${DOCFILES}`` contains the list of files you want filed as documentation.
 apache-module_src_install() {
 	debug-print-function $FUNCNAME $*
 

@@ -10,20 +10,20 @@
 # @PROVIDES: cmake multilib-minimal
 # @BLURB: cmake wrapper for multilib builds
 # @DESCRIPTION:
-# The cmake-multilib.eclass provides a glue between cmake.eclass(5)
-# and multilib-minimal.eclass(5), aiming to provide a convenient way
+# The ``cmake-multilib.eclass`` provides a glue between ``cmake.eclass``
+# and ``multilib-minimal.eclass``, aiming to provide a convenient way
 # to build packages using cmake for multiple ABIs.
 #
-# Inheriting this eclass sets IUSE and exports default multilib_src_*()
+# Inheriting this eclass sets ``IUSE`` and exports default ``multilib_src_*()``
 # sub-phases that call cmake phase functions for each ABI enabled.
-# The multilib_src_*() functions can be defined in ebuild just like
-# in multilib-minimal, yet they ought to call appropriate cmake
-# phase rather than 'default'.
+# The ``multilib_src_*()`` functions can be defined in ebuild just like
+# in ``multilib-minimal``, yet they ought to call appropriate cmake
+# phase rather than ``default``.
 
 # @ECLASS_VARIABLE: CMAKE_ECLASS
 # @DEPRECATED: none
 # @DESCRIPTION:
-# Only "cmake" is supported.
+# Only ``cmake`` is supported.
 : ${CMAKE_ECLASS:=cmake}
 
 case ${EAPI} in

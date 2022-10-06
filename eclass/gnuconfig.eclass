@@ -10,11 +10,11 @@
 # @BLURB: Refresh bundled gnuconfig files (config.guess, config.sub)
 # @DESCRIPTION:
 # This eclass is used to automatically update files that typically come with
-# automake to the newest version available on the system. The most common use
-# of this is to update config.guess and config.sub when configure dies from
-# misguessing your canonical system name (CHOST). It can also be used to update
-# other files that come with automake, e.g. depcomp, mkinstalldirs, etc.
-#
+# ``automake`` to the newest version available on the system. The most common
+# use of this is to update ``config.guess`` and ``config.sub`` when configure
+# dies from misguessing your canonical system name (``CHOST``). It can also be
+# used to update other files that come with ``automake``, e.g. ``depcomp``,
+# ``mkinstalldirs``, etc.
 
 case ${EAPI:-0} in
 	5|6|7|8) ;;
@@ -31,16 +31,16 @@ BDEPEND="sys-devel/gnuconfig"
 # @FUNCTION: gnuconfig_update
 # @USAGE: [file1 file2 ...]
 # @DESCRIPTION:
-# if called without arguments, config.guess and config.sub will be updated.
-# All files in the source tree ($S) with the given name(s) will be replaced
-# with the newest available versions chosen from the list of locations in
-# gnuconfig_findnewest(), below.
+# If called without arguments, ``config.guess`` and ``config.sub`` will be
+# updated. All files in the source tree (``${S}``) with the given name(s) will
+# be replaced with the newest available versions chosen from the list of
+# locations in ``gnuconfig_findnewest()``, below.
 #
-# gnuconfig_update should generally be called from src_unpack()
+# ``gnuconfig_update`` should generally be called from ``src_unpack()``.
 #
-# Wrapper function for gnuconfig_do_update. If no arguments are given, update
-# config.sub and config.guess (old default behavior), otherwise update the
-# named files.
+# Wrapper function for ``gnuconfig_do_update``. If no arguments are given,
+# update ``config.sub`` and ``config.guess`` (old default behavior), otherwise
+# update the named files.
 gnuconfig_update() {
 	local startdir	# declared here ... used in gnuconfig_do_update
 

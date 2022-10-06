@@ -9,7 +9,7 @@
 # @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: ocamlfind (a.k.a. findlib) eclass
 # @DESCRIPTION:
-# ocamlfind (a.k.a. findlib) eclass
+# ``ocamlfind`` (a.k.a. ``findlib``) eclass
 
 case ${EAPI:-0} in
 	[678]) ;;
@@ -44,8 +44,8 @@ check_ocamlfind() {
 
 # @FUNCTION: findlib_src_preinst
 # @DESCRIPTION:
-# Prepare the image for a findlib installation.
-# We use the stublibs style, so no ld.conf needs to be
+# Prepare the image for a ``findlib`` installation.
+# We use the stublibs style, so no ``ld.conf`` needs to be
 # updated when a package installs C shared libraries.
 findlib_src_preinst() {
 	check_ocamlfind
@@ -66,7 +66,7 @@ findlib_src_preinst() {
 
 # @FUNCTION: findlib_src_install
 # @DESCRIPTION:
-# Install with a properly setup findlib
+# Install with a properly setup ``findlib``
 findlib_src_install() {
 	findlib_src_preinst
 	make DESTDIR="${D}" "$@" install || die "make failed"

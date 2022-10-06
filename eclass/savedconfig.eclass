@@ -17,18 +17,18 @@
 # Typically you can create your own configuration files quickly by
 # doing:
 #
-# 1. Build the package with FEATURES=noclean USE=savedconfig.
+# 1. Build the package with ``FEATURES=noclean USE=savedconfig``.
 #
 # 2. Go into the build dir and edit the relevant configuration system
-# (e.g. `make menuconfig` or `nano config-header.h`).  You can look
-# at the files in /etc/portage/savedconfig/ to see what files get
-# loaded/restored.
+#    (e.g. ``make menuconfig`` or ``nano config-header.h``).  You can look
+#    at the files in ``/etc/portage/savedconfig/`` to see what files get
+#    loaded/restored.
 #
 # 3. Copy the modified configuration files out of the workdir and to
-# the paths in /etc/portage/savedconfig/.
+#    the paths in ``/etc/portage/savedconfig/``.
 #
-# 4. Emerge the package with just USE=savedconfig to get the custom
-# build.
+# 4. Emerge the package with just ``USE=savedconfig`` to get the custom
+#    build.
 
 inherit portability
 
@@ -44,7 +44,7 @@ esac
 # @DESCRIPTION:
 # Use this function to save the package's configuration file into the
 # right location.  You may specify any number of configuration files,
-# but just make sure you call save_config with all of them at the same
+# but just make sure you call ``save_config`` with all of them at the same
 # time in order for things to work properly.
 save_config() {
 	if [[ ${EBUILD_PHASE} != "install" ]]; then
@@ -80,7 +80,7 @@ save_config() {
 # @DESCRIPTION:
 # Restores the package's configuration file probably with user edits.
 # You can restore a single file or a whole bunch, just make sure you call
-# restore_config with all of the files to restore at the same time.
+# ``restore_config`` with all of the files to restore at the same time.
 #
 # Config files can be laid out as:
 # @CODE

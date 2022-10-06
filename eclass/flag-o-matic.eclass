@@ -194,7 +194,8 @@ _filter-var() {
 # @FUNCTION: filter-flags
 # @USAGE: <flags>
 # @DESCRIPTION:
-# Remove particular <flags> from {C,CPP,CXX,CCAS,F,FC,LD}FLAGS.  Accepts shell globs.
+# Remove particular <flags> from ``{C,CPP,CXX,CCAS,F,FC,LD}FLAGS``.  Accepts
+# shell globs.
 filter-flags() {
 	_filter-hardened "$@"
 	local v
@@ -229,7 +230,7 @@ filter-lto() {
 # @FUNCTION: filter-ldflags
 # @USAGE: <flags>
 # @DESCRIPTION:
-# Remove particular <flags> from LDFLAGS.  Accepts shell globs.
+# Remove particular ``<flags>`` from ``LDFLAGS``.  Accepts shell globs.
 filter-ldflags() {
 	_filter-var LDFLAGS "$@"
 	return 0
@@ -238,7 +239,7 @@ filter-ldflags() {
 # @FUNCTION: append-cppflags
 # @USAGE: <flags>
 # @DESCRIPTION:
-# Add extra <flags> to the current CPPFLAGS.
+# Add extra ``<flags>`` to the current ``CPPFLAGS``.
 append-cppflags() {
 	[[ $# -eq 0 ]] && return 0
 	export CPPFLAGS+=" $*"
@@ -248,8 +249,9 @@ append-cppflags() {
 # @FUNCTION: append-cflags
 # @USAGE: <flags>
 # @DESCRIPTION:
-# Add extra <flags> to the current CFLAGS.  If a flag might not be supported
-# with different compilers (or versions), then use test-flags-CC like so:
+# Add extra ``<flags>`` to the current ``CFLAGS``.  If a flag might not be
+# supported with different compilers (or versions), then use ``test-flags-CC``
+# like so:
 # @CODE
 # append-cflags $(test-flags-CC -funky-flag)
 # @CODE
@@ -263,8 +265,9 @@ append-cflags() {
 # @FUNCTION: append-cxxflags
 # @USAGE: <flags>
 # @DESCRIPTION:
-# Add extra <flags> to the current CXXFLAGS.  If a flag might not be supported
-# with different compilers (or versions), then use test-flags-CXX like so:
+# Add extra ``<flags>`` to the current ``CXXFLAGS``.  If a flag might not be
+# supported with different compilers (or versions), then use ``test-flags-CXX``
+# like so:
 # @CODE
 # append-cxxflags $(test-flags-CXX -funky-flag)
 # @CODE
@@ -278,8 +281,9 @@ append-cxxflags() {
 # @FUNCTION: append-fflags
 # @USAGE: <flags>
 # @DESCRIPTION:
-# Add extra <flags> to the current {F,FC}FLAGS.  If a flag might not be supported
-# with different compilers (or versions), then use test-flags-F77 like so:
+# Add extra ``<flags>`` to the current ``{F,FC}FLAGS``.  If a flag might not be
+# supported with different compilers (or versions), then use ``test-flags-F77``
+# like so:
 # @CODE
 # append-fflags $(test-flags-F77 -funky-flag)
 # @CODE
@@ -304,7 +308,7 @@ append-lfs-flags() {
 # @FUNCTION: append-ldflags
 # @USAGE: <flags>
 # @DESCRIPTION:
-# Add extra <flags> to the current LDFLAGS.
+# Add extra ``<flags>`` to the current ``LDFLAGS``.
 append-ldflags() {
 	[[ $# -eq 0 ]] && return 0
 	local flag
@@ -320,7 +324,7 @@ append-ldflags() {
 # @FUNCTION: append-flags
 # @USAGE: <flags>
 # @DESCRIPTION:
-# Add extra <flags> to your current {C,CXX,F,FC}FLAGS.
+# Add extra ``<flags>`` to your current ``{C,CXX,F,FC}FLAGS``.
 append-flags() {
 	[[ $# -eq 0 ]] && return 0
 	case " $* " in
@@ -337,7 +341,7 @@ append-flags() {
 # @FUNCTION: replace-flags
 # @USAGE: <old> <new>
 # @DESCRIPTION:
-# Replace the <old> flag with <new>.  Accepts shell globs for <old>.
+# Replace the ``<old>`` flag with ``<new>``.  Accepts shell globs for ``<old>``.
 replace-flags() {
 	[[ $# != 2 ]] && die "Usage: replace-flags <old flag> <new flag>"
 
@@ -362,8 +366,9 @@ replace-flags() {
 # @FUNCTION: replace-cpu-flags
 # @USAGE: <old> <new>
 # @DESCRIPTION:
-# Replace cpu flags (like -march/-mcpu/-mtune) that select the <old> cpu
-# with flags that select the <new> cpu.  Accepts shell globs for <old>.
+# Replace cpu flags (like ``-march``/``-mcpu``/``-mtune``) that select the
+# ``<old>`` cpu with flags that select the ``<new>`` cpu.  Accepts shell globs
+# for ``<old>``.
 replace-cpu-flags() {
 	local newcpu="$#" ; newcpu="${!newcpu}"
 	while [ $# -gt 1 ] ; do
@@ -393,7 +398,8 @@ _is_flagq() {
 # @FUNCTION: is-flagq
 # @USAGE: <flag>
 # @DESCRIPTION:
-# Returns shell true if <flag> is in {C,CXX,F,FC}FLAGS, else returns shell false.  Accepts shell globs.
+# Returns shell ``true`` if ``<flag>`` is in ``{C,CXX,F,FC}FLAGS``, else returns
+# shell ``false``.  Accepts shell globs.
 is-flagq() {
 	[[ -n $2 ]] && die "Usage: is-flag <flag>"
 
@@ -407,7 +413,7 @@ is-flagq() {
 # @FUNCTION: is-flag
 # @USAGE: <flag>
 # @DESCRIPTION:
-# Echo's "true" if flag is set in {C,CXX,F,FC}FLAGS.  Accepts shell globs.
+# Echo's ``true`` if flag is set in ``{C,CXX,F,FC}FLAGS``.  Accepts shell globs.
 is-flag() {
 	is-flagq "$@" && echo true
 }
@@ -415,7 +421,8 @@ is-flag() {
 # @FUNCTION: is-ldflagq
 # @USAGE: <flag>
 # @DESCRIPTION:
-# Returns shell true if <flag> is in LDFLAGS, else returns shell false.  Accepts shell globs.
+# Returns shell ``true`` if ``<flag>`` is in ``LDFLAGS``, else returns shell
+# ``false``.  Accepts shell globs.
 is-ldflagq() {
 	[[ -n $2 ]] && die "Usage: is-ldflag <flag>"
 	_is_flagq LDFLAGS $1
@@ -424,7 +431,7 @@ is-ldflagq() {
 # @FUNCTION: is-ldflag
 # @USAGE: <flag>
 # @DESCRIPTION:
-# Echo's "true" if flag is set in LDFLAGS.  Accepts shell globs.
+# Echo's ``true`` if flag is set in ``LDFLAGS``.  Accepts shell globs.
 is-ldflag() {
 	is-ldflagq "$@" && echo true
 }
@@ -432,9 +439,9 @@ is-ldflag() {
 # @FUNCTION: filter-mfpmath
 # @USAGE: <math types>
 # @DESCRIPTION:
-# Remove specified math types from the fpmath flag.  For example, if the user
-# has -mfpmath=sse,386, running `filter-mfpmath sse` will leave the user with
-# -mfpmath=386.
+# Remove specified math types from the ``fpmath`` flag.  For example, if the
+# user has ``-mfpmath=sse,386``, running ``filter-mfpmath sse`` will leave the
+# user with ``-mfpmath=386``.
 filter-mfpmath() {
 	local orig_mfpmath new_math prune_math
 
@@ -467,8 +474,8 @@ filter-mfpmath() {
 
 # @FUNCTION: strip-flags
 # @DESCRIPTION:
-# Strip *FLAGS of everything except known good/safe flags.  This runs over all
-# flags returned by all_flag_vars().
+# Strip ``*FLAGS`` of everything except known good/safe flags.  This runs over all
+# flags returned by ``all_flag_vars()``.
 strip-flags() {
 	[[ $# -ne 0 ]] && die "strip-flags takes no arguments"
 	local x y var
@@ -510,8 +517,8 @@ strip-flags() {
 # @USAGE: <compiler> <flag>
 # @INTERNAL
 # @DESCRIPTION:
-# Returns shell true if <flag> is supported by given <compiler>,
-# else returns shell false.
+# Returns shell ``true`` if ``<flag>`` is supported by given ``<compiler>``,
+# else returns shell ``false``.
 test-flag-PROG() {
 	[[ ${EAPI} == [67] ]] ||
 		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
@@ -522,8 +529,8 @@ test-flag-PROG() {
 # @USAGE: <compiler> <flag>
 # @INTERNAL
 # @DESCRIPTION:
-# Returns shell true if <flag> is supported by given <compiler>,
-# else returns shell false.
+# Returns shell ``true`` if ``<flag>`` is supported by given ``<compiler>``,
+# else returns shell ``false``.
 _test-flag-PROG() {
 	local comp=$1
 	local lang=$2
@@ -629,31 +636,36 @@ _test-flag-PROG() {
 # @FUNCTION: test-flag-CC
 # @USAGE: <flag>
 # @DESCRIPTION:
-# Returns shell true if <flag> is supported by the C compiler, else returns shell false.
+# Returns shell ``true`` if ``<flag>`` is supported by the C compiler, else
+# returns shell ``false``.
 test-flag-CC() { _test-flag-PROG CC c "$@"; }
 
 # @FUNCTION: test-flag-CXX
 # @USAGE: <flag>
 # @DESCRIPTION:
-# Returns shell true if <flag> is supported by the C++ compiler, else returns shell false.
+# Returns shell ``true`` if ``<flag>`` is supported by the C++ compiler, else
+# returns shell ``false``.
 test-flag-CXX() { _test-flag-PROG CXX c++ "$@"; }
 
 # @FUNCTION: test-flag-F77
 # @USAGE: <flag>
 # @DESCRIPTION:
-# Returns shell true if <flag> is supported by the Fortran 77 compiler, else returns shell false.
+# Returns shell ``true`` if ``<flag>`` is supported by the Fortran 77 compiler,
+# else returns shell ``false``.
 test-flag-F77() { _test-flag-PROG F77 f77 "$@"; }
 
 # @FUNCTION: test-flag-FC
 # @USAGE: <flag>
 # @DESCRIPTION:
-# Returns shell true if <flag> is supported by the Fortran 90 compiler, else returns shell false.
+# Returns shell ``true`` if ``<flag>`` is supported by the Fortran 90 compiler,
+# else returns shell ``false``.
 test-flag-FC() { _test-flag-PROG FC f95 "$@"; }
 
 # @FUNCTION: test-flag-CCLD
 # @USAGE: <flag>
 # @DESCRIPTION:
-# Returns shell true if <flag> is supported by the C compiler and linker, else returns shell false.
+# Returns shell ``true`` if ``<flag>`` is supported by the C compiler and
+# linker, else returns shell ``false``.
 test-flag-CCLD() { _test-flag-PROG CC c+ld "$@"; }
 
 # @FUNCTION: test-flags-PROG
@@ -710,45 +722,50 @@ _test-flags-PROG() {
 # @FUNCTION: test-flags-CC
 # @USAGE: <flags>
 # @DESCRIPTION:
-# Returns shell true if <flags> are supported by the C compiler, else returns shell false.
+# Returns shell ``true`` if ``<flags>`` are supported by the C compiler, else
+# returns shell ``false``.
 test-flags-CC() { _test-flags-PROG CC "$@"; }
 
 # @FUNCTION: test-flags-CXX
 # @USAGE: <flags>
 # @DESCRIPTION:
-# Returns shell true if <flags> are supported by the C++ compiler, else returns shell false.
+# Returns shell ``true`` if ``<flags>`` are supported by the C++ compiler, else
+# returns shell ``false``.
 test-flags-CXX() { _test-flags-PROG CXX "$@"; }
 
 # @FUNCTION: test-flags-F77
 # @USAGE: <flags>
 # @DESCRIPTION:
-# Returns shell true if <flags> are supported by the Fortran 77 compiler, else returns shell false.
+# Returns shell ``true`` if ``<flags>`` are supported by the Fortran 77
+# compiler, else returns shell ``false``.
 test-flags-F77() { _test-flags-PROG F77 "$@"; }
 
 # @FUNCTION: test-flags-FC
 # @USAGE: <flags>
 # @DESCRIPTION:
-# Returns shell true if <flags> are supported by the Fortran 90 compiler, else returns shell false.
+# Returns shell ``true`` if ``<flags>`` are supported by the Fortran 90
+# compiler, else returns shell ``false``.
 test-flags-FC() { _test-flags-PROG FC "$@"; }
 
 # @FUNCTION: test-flags-CCLD
 # @USAGE: <flags>
 # @DESCRIPTION:
-# Returns shell true if <flags> are supported by the C compiler and default linker, else returns shell false.
+# Returns shell ``true`` if ``<flags>`` are supported by the C compiler and
+# default linker, else returns shell ``false``.
 test-flags-CCLD() { _test-flags-PROG CCLD "$@"; }
 
 # @FUNCTION: test-flags
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Short-hand that should hopefully work for both C and C++ compiler, but
-# its really only present due to the append-flags() abomination.
+# its really only present due to the ``append-flags()`` abomination.
 test-flags() { test-flags-CC "$@"; }
 
 # @FUNCTION: test_version_info
 # @USAGE: <version>
 # @DESCRIPTION:
-# Returns shell true if the current C compiler version matches <version>, else returns shell false.
-# Accepts shell globs.
+# Returns shell ``true`` if the current C compiler version matches ``<version>``,
+# else returns shell ``false``. Accepts shell globs.
 test_version_info() {
 	if [[ $($(tc-getCC) --version 2>&1) == *$1* ]]; then
 		return 0
@@ -759,7 +776,7 @@ test_version_info() {
 
 # @FUNCTION: strip-unsupported-flags
 # @DESCRIPTION:
-# Strip {C,CXX,F,FC}FLAGS of any flags not supported by the active toolchain.
+# Strip ``{C,CXX,F,FC}FLAGS`` of any flags not supported by the active toolchain.
 strip-unsupported-flags() {
 	[[ $# -ne 0 ]] && die "strip-unsupported-flags takes no arguments"
 	export CFLAGS=$(test-flags-CC ${CFLAGS})
@@ -795,7 +812,8 @@ get-flag() {
 
 # @FUNCTION: replace-sparc64-flags
 # @DESCRIPTION:
-# Sets mcpu to v8 and uses the original value as mtune if none specified.
+# Sets ``mcpu`` to ``v8`` and uses the original value as ``mtune`` if none
+# specified.
 replace-sparc64-flags() {
 	[[ $# -ne 0 ]] && die "replace-sparc64-flags takes no arguments"
 	local SPARC64_CPUS="ultrasparc3 ultrasparc v9"
@@ -826,9 +844,9 @@ replace-sparc64-flags() {
 # @FUNCTION: append-libs
 # @USAGE: <libs>
 # @DESCRIPTION:
-# Add extra <libs> to the current LIBS. All arguments should be prefixed with
-# either -l or -L.  For compatibility, if arguments are not prefixed as
-# options, they are given a -l prefix automatically.
+# Add extra ``<libs>`` to the current ``LIBS``. All arguments should be
+# prefixed with either ``-l`` or ``-L``.  For compatibility, if arguments are
+# not prefixed as options, they are given a ``-l`` prefix automatically.
 append-libs() {
 	[[ $# -eq 0 ]] && return 0
 	local flag
@@ -856,11 +874,11 @@ append-libs() {
 # @FUNCTION: raw-ldflags
 # @USAGE: [flags]
 # @DESCRIPTION:
-# Turn C style ldflags (-Wl,-foo) into straight ldflags - the results
-# are suitable for passing directly to 'ld'; note LDFLAGS is usually passed
-# to gcc where it needs the '-Wl,'.
+# Turn C style ldflags (``-Wl,-foo``) into straight ldflags - the results
+# are suitable for passing directly to ``ld``; note ``LDFLAGS`` is usually
+# passed to ``gcc`` where it needs the ``-Wl,``.
 #
-# If no flags are specified, then default to ${LDFLAGS}.
+# If no flags are specified, then default to ``${LDFLAGS}``.
 raw-ldflags() {
 	local x input="$@"
 	[[ -z ${input} ]] && input=${LDFLAGS}
@@ -879,7 +897,7 @@ raw-ldflags() {
 }
 
 # @FUNCTION: no-as-needed
-# @RETURN: Flag to disable asneeded behavior for use with append-ldflags.
+# @RETURN: Flag to disable ``asneeded`` behavior for use with ``append-ldflags``.
 no-as-needed() {
 	[[ $# -ne 0 ]] && die "no-as-needed takes no arguments"
 	case $($(tc-getLD) -v 2>&1 </dev/null) in

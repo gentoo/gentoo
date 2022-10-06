@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: font-ebdftopcf.eclass
@@ -9,8 +9,8 @@
 # @SUPPORTED_EAPIS: 7
 # @BLURB: Eclass to make PCF font generator from BDF uniform and optimal
 # @DESCRIPTION:
-# The manpage for this eclass is in media-gfx/ebdftopcf.
-# Inherit this eclass after font.eclass
+# The manpage for this eclass is in ``media-gfx/ebdftopcf``.
+# Inherit this eclass after ``font.eclass``
 
 case ${EAPI} in
 	7) ;;
@@ -30,7 +30,7 @@ BDEPEND="X? ( media-gfx/ebdftopcf )"
 # @FUNCTION: ebdftopcf
 # @USAGE: <list of BDF files to convert>
 # @DESCRIPTION:
-# Convert BDF to PCF. This implicitly requires USE="X" to be enabled.
+# Convert BDF to PCF. This implicitly requires ``USE="X"`` to be enabled.
 ebdftopcf() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -44,8 +44,8 @@ ebdftopcf() {
 
 # @FUNCTION: font-ebdftopcf_src_compile
 # @DESCRIPTION:
-# Default phase function to convert BDF to PCF. If USE="-X", this amounts to
-# a no-op, since bdftopcf requires Xorg.
+# Default phase function to convert BDF to PCF. If ``USE="-X"``, this amounts to
+# a no-op, since ``bdftopcf`` requires Xorg.
 font-ebdftopcf_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 

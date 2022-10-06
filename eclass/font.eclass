@@ -22,28 +22,28 @@ EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_postrm
 # @REQUIRED
 # @DESCRIPTION:
 # Space delimited list of font suffixes to install.
-FONT_SUFFIX=${FONT_SUFFIX:-}
+: ${FONT_SUFFIX:=}
 
 # @ECLASS_VARIABLE: FONT_S
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Directory containing the fonts.  If unset, ${S} is used instead.
+# Directory containing the fonts.  If unset, ``${S}`` is used instead.
 # Can also be an array of several directories.
 
 # @ECLASS_VARIABLE: FONT_PN
 # @DESCRIPTION:
-# Font name (ie. last part of FONTDIR).
-FONT_PN=${FONT_PN:-${PN}}
+# Font name (ie. last part of ``FONTDIR``).
+: ${FONT_PN:=${PN}}
 
 # @ECLASS_VARIABLE: FONTDIR
 # @DESCRIPTION:
 # Full path to installation directory.
-FONTDIR=${FONTDIR:-/usr/share/fonts/${FONT_PN}}
+: ${FONTDIR:=/usr/share/fonts/${FONT_PN}}
 
 # @ECLASS_VARIABLE: FONT_CONF
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Array containing fontconfig conf files to install.
+# Array containing ``fontconfig`` conf files to install.
 FONT_CONF=( "" )
 
 if [[ ${CATEGORY}/${PN} != media-fonts/encodings ]]; then
@@ -56,7 +56,7 @@ fi
 
 # @FUNCTION: font_xfont_config
 # @DESCRIPTION:
-# Generate Xorg font files (mkfontscale/mkfontdir).
+# Generate Xorg font files (``mkfontscale`` / ``mkfontdir``).
 font_xfont_config() {
 	local dir_name
 	if in_iuse X && use X ; then
@@ -75,7 +75,7 @@ font_xfont_config() {
 
 # @FUNCTION: font_fontconfig
 # @DESCRIPTION:
-# Install fontconfig conf files given in FONT_CONF.
+# Install ``fontconfig`` conf files given in ``FONT_CONF``.
 font_fontconfig() {
 	local conffile
 	if [[ -n ${FONT_CONF[@]} ]]; then
@@ -134,7 +134,7 @@ font_cleanup_dirs() {
 
 # @FUNCTION: font_pkg_setup
 # @DESCRIPTION:
-# The font pkg_setup function.
+# The font ``pkg_setup`` function.
 # Collision protection
 font_pkg_setup() {
 	# make sure we get no collisions
@@ -146,7 +146,7 @@ font_pkg_setup() {
 
 # @FUNCTION: font_src_install
 # @DESCRIPTION:
-# The font src_install function.
+# The font ``src_install`` function.
 font_src_install() {
 	local dir suffix commondoc
 
@@ -184,7 +184,7 @@ font_src_install() {
 
 # @FUNCTION: _update_fontcache
 # @DESCRIPTION:
-# Updates fontcache if !prefix and media-libs/fontconfig installed
+# Updates ``fontcache`` if ``!prefix`` and ``media-libs/fontconfig`` installed
 _update_fontcache() {
 	# unreadable font files = fontconfig segfaults
 	find "${EROOT}"/usr/share/fonts/ -type f '!' -perm 0644 \
@@ -207,7 +207,7 @@ _update_fontcache() {
 
 # @FUNCTION: font_pkg_postinst
 # @DESCRIPTION:
-# The font pkg_postinst function.
+# The font ``pkg_postinst`` function.
 font_pkg_postinst() {
 	if [[ -n ${FONT_CONF[@]} ]]; then
 		local conffile
@@ -226,7 +226,7 @@ font_pkg_postinst() {
 
 # @FUNCTION: font_pkg_postrm
 # @DESCRIPTION:
-# The font pkg_postrm function.
+# The font ``pkg_postrm`` function.
 font_pkg_postrm() {
 	font_cleanup_dirs
 	_update_fontcache

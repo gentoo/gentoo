@@ -14,9 +14,9 @@
 # @BLURB: common ebuild functions for cmake-based packages
 # @DESCRIPTION:
 # The cmake eclass makes creating ebuilds for cmake-based packages much easier.
-# It provides all inherited features (DOCS, HTML_DOCS, PATCHES) along with
-# out-of-source builds (default), in-source builds and an implementation of the
-# well-known use_enable function for CMake.
+# It provides all inherited features (``DOCS``, ``HTML_DOCS``, ``PATCHES``)
+# along with out-of-source builds (default), in-source builds and an
+# implementation of the well-known ``use_enable`` function for CMake.
 
 case ${EAPI} in
 	7|8) ;;
@@ -32,9 +32,9 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Build directory where all cmake processed files should be generated.
-# For in-source build it's fixed to ${CMAKE_USE_DIR}.
+# For in-source build it's fixed to ``${CMAKE_USE_DIR}``.
 # For out-of-source build it can be overridden, by default it uses
-# ${CMAKE_USE_DIR}_build (in EAPI-7: ${WORKDIR}/${P}_build).
+# ``${CMAKE_USE_DIR}_build`` (in EAPI=7: ``${WORKDIR}/${P}_build``).
 [[ ${EAPI} == 7 ]] && : ${BUILD_DIR:=${WORKDIR}/${P}_build}
 # EAPI-8: set inside _cmake_check_build_dir
 
@@ -46,11 +46,11 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 [[ ${EAPI} == 7 ]] && : ${CMAKE_BUILD_TYPE:=Gentoo}
 # @ECLASS_VARIABLE: CMAKE_BUILD_TYPE
 # @DESCRIPTION:
-# Set to override default CMAKE_BUILD_TYPE. Only useful for packages
-# known to make use of "if (CMAKE_BUILD_TYPE MATCHES xxx)".
-# If about to be set - needs to be set before invoking cmake_src_configure.
+# Set to override default ``CMAKE_BUILD_TYPE``. Only useful for packages
+# known to make use of ``if (CMAKE_BUILD_TYPE MATCHES xxx)``.
+# If about to be set - needs to be set before invoking ``cmake_src_configure``.
 #
-# The default is RelWithDebInfo as that is least likely to append undesirable
+# The default is ``RelWithDebInfo`` as that is least likely to append undesirable
 # flags. However, you may still need to sed CMake files or choose a different
 # build type to achieve desirable results.
 #
@@ -67,17 +67,17 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specify a makefile generator to be used by cmake.
-# At this point only "emake" and "ninja" are supported.
-# The default is set to "ninja".
+# At this point only ``emake`` and ``ninja`` are supported.
+# The default is set to ``ninja``.
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 
 # @ECLASS_VARIABLE: CMAKE_REMOVE_MODULES_LIST
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Array of .cmake modules to be removed in ${CMAKE_USE_DIR} (in EAPI-7: ${S})
-# during src_prepare, in order to force packages to use the system version.
-# By default, contains "FindBLAS" and "FindLAPACK".
+# Array of .cmake modules to be removed in ``${CMAKE_USE_DIR}`` (in EAPI-7:
+# ``${S}``) during ``src_prepare``, in order to force packages to use the
+# system version. By default, contains ``FindBLAS`` and ``FindLAPACK``.
 # Set to empty to disable removing modules entirely.
 if [[ ${CMAKE_REMOVE_MODULES_LIST} ]]; then
 	if [[ ${EAPI} != 7 ]]; then
@@ -94,34 +94,34 @@ fi
 # @DESCRIPTION:
 # Sets the directory where we are working with cmake, for example when
 # application uses autotools and only one plugin needs to be done by cmake.
-# By default it uses current working directory (in EAPI-7: ${S}).
+# By default it uses current working directory (in EAPI-7: ``${S}``).
 
 # @ECLASS_VARIABLE: CMAKE_VERBOSE
 # @DESCRIPTION:
-# Set to OFF to disable verbose messages during compilation
+# Set to ``OFF`` to disable verbose messages during compilation
 : ${CMAKE_VERBOSE:=ON}
 
 # @ECLASS_VARIABLE: CMAKE_WARN_UNUSED_CLI
 # @DESCRIPTION:
 # Warn about variables that are declared on the command line
 # but not used. Might give false-positives.
-# "no" to disable (default) or anything else to enable.
+# ``no`` to disable (default) or anything else to enable.
 : ${CMAKE_WARN_UNUSED_CLI:=yes}
 
 # @ECLASS_VARIABLE: CMAKE_EXTRA_CACHE_FILE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Specifies an extra cache file to pass to cmake. This is the analog of EXTRA_ECONF
-# for econf and is needed to pass TRY_RUN results when cross-compiling.
-# Should be set by user in a per-package basis in /etc/portage/package.env.
+# Specifies an extra cache file to pass to cmake. This is the analog of ``EXTRA_ECONF``
+# for ``econf`` and is needed to pass ``TRY_RUN`` results when cross-compiling.
+# Should be set by user in a per-package basis in ``/etc/portage/package.env``.
 
 # @ECLASS_VARIABLE: CMAKE_QA_SRC_DIR_READONLY
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# After running cmake_src_prepare, sets ${CMAKE_USE_DIR} (in EAPI-7: ${S}) to
-# read-only. This is a user flag and should under _no circumstances_ be set in
+# After running ``cmake_src_prepare``, sets ``${CMAKE_USE_DIR}`` (in EAPI-7: ``${S}``) to
+# read-only. This is a user flag and should under *no circumstances* be set in
 # the ebuild. Helps in improving QA of build systems that write to source tree.
 
 [[ ${CMAKE_MIN_VERSION} ]] && die "CMAKE_MIN_VERSION is banned; if necessary, set BDEPEND=\">=dev-util/cmake-${CMAKE_MIN_VERSION}\" directly"
@@ -167,7 +167,8 @@ cmake_run_in() {
 # @FUNCTION: cmake_comment_add_subdirectory
 # @USAGE: <subdirectory>
 # @DESCRIPTION:
-# Comment out one or more add_subdirectory calls in CMakeLists.txt in the current directory
+# Comment out one or more ``add_subdirectory`` calls in ``CMakeLists.txt`` in
+# the current directory
 cmake_comment_add_subdirectory() {
 	if [[ -z ${1} ]]; then
 		die "${FUNCNAME[0]} must be passed at least one directory name to comment"
@@ -186,7 +187,7 @@ cmake_comment_add_subdirectory() {
 # @FUNCTION: comment_add_subdirectory
 # @INTERNAL
 # @DESCRIPTION:
-# Banned. Use cmake_comment_add_subdirectory instead.
+# Banned. Use ``cmake_comment_add_subdirectory`` instead.
 comment_add_subdirectory() {
 	die "comment_add_subdirectory is banned. Use cmake_comment_add_subdirectory instead"
 }
@@ -194,11 +195,11 @@ comment_add_subdirectory() {
 # @FUNCTION: cmake_use_find_package
 # @USAGE: <USE flag> <package name>
 # @DESCRIPTION:
-# Based on use_enable. See ebuild(5).
+# Based on ``use_enable``. See ebuild(5).
 #
-# `cmake_use_find_package foo LibFoo` echoes -DCMAKE_DISABLE_FIND_PACKAGE_LibFoo=OFF
-# if foo is enabled and -DCMAKE_DISABLE_FIND_PACKAGE_LibFoo=ON if it is disabled.
-# This can be used to make find_package optional.
+# ``cmake_use_find_package foo LibFoo`` echoes ``-DCMAKE_DISABLE_FIND_PACKAGE_LibFoo=OFF``
+# if foo is enabled and ``-DCMAKE_DISABLE_FIND_PACKAGE_LibFoo=ON`` if it is disabled.
+# This can be used to make ``find_package`` optional.
 cmake_use_find_package() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -342,7 +343,7 @@ _cmake_modify-cmakelists() {
 
 # @FUNCTION: cmake_src_prepare
 # @DESCRIPTION:
-# Apply ebuild and user patches. *MUST* be run or cmake_src_configure will fail.
+# Apply ebuild and user patches. *MUST* be run or ``cmake_src_configure`` will fail.
 cmake_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -403,7 +404,7 @@ cmake_src_prepare() {
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # User-controlled environment variable containing arguments to be passed to
-# cmake in cmake_src_configure.
+# cmake in ``cmake_src_configure``.
 
 # @FUNCTION: cmake_src_configure
 # @DESCRIPTION:
@@ -622,8 +623,8 @@ cmake_src_compile() {
 # @FUNCTION: cmake_build
 # @DESCRIPTION:
 # Function for building the package. Automatically detects the build type.
-# All arguments are passed to eninja (default) or emake depending on the value
-# of CMAKE_MAKEFILE_GENERATOR.
+# All arguments are passed to ``eninja`` (default) or ``emake`` depending on
+# the value of ``CMAKE_MAKEFILE_GENERATOR``.
 cmake_build() {
 	debug-print-function ${FUNCNAME} "$@"
 

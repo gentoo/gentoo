@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: alternatives.eclass
@@ -19,23 +19,27 @@
 # the desired symlink.
 #
 # There are two ways to use this eclass. First is by declaring two variables
-# $SOURCE and $ALTERNATIVES where $SOURCE is the symlink to be created and
-# $ALTERNATIVES is a list of alternatives. Second way is the use the function
-# alternatives_makesym() like the example below.
+# ``$SOURCE`` and ``$ALTERNATIVES`` where ``$SOURCE`` is the symlink to be
+# created and ``$ALTERNATIVES`` is a list of alternatives. Second way is the
+# use the function ``alternatives_makesym`` like the example below.
+#
 # @EXAMPLE:
+# @CODE
 # pkg_postinst() {
 #     alternatives_makesym "/usr/bin/python" "/usr/bin/python2.3" "/usr/bin/python2.2"
 # }
+# @CODE
 #
-# The above example will create a symlink at /usr/bin/python to either
-# /usr/bin/python2.3 or /usr/bin/python2.2. It will choose python2.3 over
-# python2.2 if both exist.
+# The above example will create a symlink at ``/usr/bin/python`` to either
+# ``/usr/bin/python2.3`` or ``/usr/bin/python2.2``. It will choose
+# ``python2.3`` over ``python2.2`` if both exist.
 #
 # Alternatively, you can use this function:
-#
+# @CODE
 # pkg_postinst() {
 #    alternatives_auto_makesym "/usr/bin/python" "/usr/bin/python[0-9].[0-9]"
 # }
+# @CODE
 #
 # This will use bash pathname expansion to fill a list of alternatives it can
 # link to. It is probably more robust against version upgrades. You should
@@ -137,7 +141,7 @@ alternatives_makesym() {
 
 # @FUNCTION: alternatives_pkg_postinst
 # @DESCRIPTION:
-# The alternatives pkg_postinst, this function will be exported
+# The alternatives ``pkg_postinst``, this function will be exported
 alternatives_pkg_postinst() {
 	if [ -n "${ALTERNATIVES}" -a -n "${SOURCE}" ]; then
 		alternatives_makesym ${SOURCE} ${ALTERNATIVES}
@@ -146,7 +150,7 @@ alternatives_pkg_postinst() {
 
 # @FUNCTION: alternatives_pkg_postrm
 # @DESCRIPTION:
-# The alternatives pkg_postrm, this function will be exported
+# The alternatives ``pkg_postrm``, this function will be exported
 alternatives_pkg_postrm() {
 	if [ -n "${ALTERNATIVES}" -a -n "${SOURCE}" ]; then
 		alternatives_makesym ${SOURCE} ${ALTERNATIVES}

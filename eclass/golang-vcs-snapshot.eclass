@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: golang-vcs-snapshot.eclass
@@ -9,40 +9,40 @@
 # @BLURB: eclass to unpack VCS snapshot tarballs for Go software
 # @DEPRECATED: go-module.eclass
 # @DESCRIPTION:
-# This eclass provides a convenience src_unpack() which unpacks the
-# first tarball mentioned in SRC_URI to its appropriate location in
-# ${WORKDIR}/${P}, treating ${WORKDIR}/${P} as a go workspace.
+# This eclass provides a convenience ``src_unpack() ``which unpacks the
+# first tarball mentioned in ``SRC_URI`` to its appropriate location in
+# ``${WORKDIR}/${P}``, treating ``${WORKDIR}/${P}`` as a go workspace.
 # Also, it provides a downstream method of vendoring packages.
 #
 # The location where the tarball is extracted is defined as
-# ${WORKDIR}/${P}/src/${EGO_PN}. The location of vendored packages is
-# defined as ${WORKDIR}/${P}/src/${EGO_PN%/*}/vendor to match Go's
+# ``${WORKDIR}/${P}/src/${EGO_PN}``. The location of vendored packages is
+# defined as ``${WORKDIR}/${P}/src/${EGO_PN%/*}/vendor`` to match Go's
 # vendoring setup.
 #
 # The typical use case is VCS snapshots coming from github, bitbucket
 # and similar services.
 #
 # Please note that this eclass currently handles only tarballs
-# (.tar.gz), but support for more formats may be added in the future.
+# (``.tar.gz``), but support for more formats may be added in the future.
 #
 # @EXAMPLE:
 #
 # @CODE
 # EGO_PN=github.com/user/package
 # EGO_VENDOR=(
-#	"github.com/xenolf/lego 6cac0ea7d8b28c889f709ec7fa92e92b82f490dd"
-# "golang.org/x/crypto 453249f01cfeb54c3d549ddb75ff152ca243f9d8 github.com/golang/crypto"
+#    "github.com/xenolf/lego 6cac0ea7d8b28c889f709ec7fa92e92b82f490dd"
+#    "golang.org/x/crypto 453249f01cfeb54c3d549ddb75ff152ca243f9d8 github.com/golang/crypto"
 # )
 #
 # inherit golang-vcs-snapshot
 #
 # SRC_URI="https://github.com/example/${PN}/tarball/v${PV} -> ${P}.tar.gz
-# ${EGO_VENDOR_URI}"
+#     ${EGO_VENDOR_URI}"
 # @CODE
 #
 # The above example will extract the tarball to
-# ${WORKDIR}/${P}/src/github.com/user/package
-# and add the vendored tarballs to ${WORKDIR}/src/${EGO_PN}/vendor
+# ``${WORKDIR}/${P}/src/github.com/user/package``
+# and add the vendored tarballs to ``${WORKDIR}/src/${EGO_PN}/vendor``
 
 inherit golang-base
 
@@ -90,7 +90,8 @@ _golang-vcs-snapshot_dovendor() {
 
 # @FUNCTION: golang-vcs-snapshot_src_unpack
 # @DESCRIPTION:
-# Extract the first archive from ${A} to the appropriate location for GOPATH.
+# Extract the first archive from ``${A}`` to the appropriate location for
+# ``GOPATH``.
 golang-vcs-snapshot_src_unpack() {
 	local lib vendor_path x
 	ego_pn_check

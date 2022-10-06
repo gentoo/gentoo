@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome.org.eclass
@@ -10,7 +10,7 @@
 # @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Helper eclass for gnome.org hosted archives
 # @DESCRIPTION:
-# Provide a default SRC_URI for tarball hosted on gnome.org mirrors.
+# Provide a default ``SRC_URI`` for tarball hosted on gnome.org mirrors.
 
 case ${EAPI} in
 	5|6|7|8) ;;
@@ -26,9 +26,9 @@ _GNOME_ORG_ECLASS=1
 # @ECLASS_VARIABLE: GNOME_TARBALL_SUFFIX
 # @PRE_INHERIT
 # @DESCRIPTION:
-# Most projects hosted on gnome.org mirrors provide tarballs as tar.bz2 or
-# tar.xz. This eclass defaults to xz. This is because the GNOME mirrors are
-# moving to only have xz tarballs for new releases.
+# Most projects hosted on gnome.org mirrors provide tarballs as ``tar.bz2`` or
+# ``tar.xz``. This eclass defaults to ``xz``. This is because the GNOME mirrors
+# are moving to only have ``xz`` tarballs for new releases.
 : ${GNOME_TARBALL_SUFFIX:="xz"}
 
 # Even though xz-utils are in @system, they must still be added to BDEPEND; see

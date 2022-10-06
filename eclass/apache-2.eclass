@@ -4,11 +4,11 @@
 # @ECLASS: apache-2.eclass
 # @MAINTAINER:
 # polynomial-c@gentoo.org
-# @SUPPORTED_EAPIS: 6 7
-# @BLURB: Provides a common set of functions for apache-2.x ebuilds
+# @SUPPORTED_EAPIS: 7
+# @BLURB: Provides a common set of functions for ``apache-2.x`` ebuilds
 # @DESCRIPTION:
-# This eclass handles apache-2.x ebuild functions such as LoadModule generation
-# and inter-module dependency checking.
+# This eclass handles ``apache-2.x`` ebuild functions such as ``LoadModule``
+# generation and inter-module dependency checking.
 
 LUA_COMPAT=( lua5-{1..4} )
 inherit autotools flag-o-matic lua-single multilib ssl-cert toolchain-funcs
@@ -16,10 +16,9 @@ inherit autotools flag-o-matic lua-single multilib ssl-cert toolchain-funcs
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6)
-		die "This eclass is banned for EAPI<7"
-	;;
+case ${EAPI} in
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} is not supported" ;;
 esac
 
 # settings which are version specific go in here:
@@ -41,16 +40,18 @@ esac
 # This internal variable contains the prefix for the patch tarball.
 # Defaults to the full name and version (including revision) of the package.
 # If you want to override this in an ebuild, use:
+# @CODE
 # ORIG_PR="(revision of Gentoo stuff you want)"
 # GENTOO_PATCHNAME="gentoo-${PN}-${PV}${ORIG_PR:+-${ORIG_PR}}"
-[[ -n "${GENTOO_PATCHNAME}" ]] || GENTOO_PATCHNAME="gentoo-${PF}"
+# @CODE
+: ${GENTOO_PATCHNAME:=gentoo-${PF}}
 
 # @ECLASS_VARIABLE: GENTOO_PATCHDIR
 # @DESCRIPTION:
 # This internal variable contains the working directory where patches and config
 # files are located.
 # Defaults to the patchset name appended to the working directory.
-[[ -n "${GENTOO_PATCHDIR}" ]] || GENTOO_PATCHDIR="${WORKDIR}/${GENTOO_PATCHNAME}"
+: ${GENTOO_PATCHDIR:=${WORKDIR}/${GENTOO_PATCHNAME}}
 
 # @VARIABLE: GENTOO_DEVELOPER
 # @DESCRIPTION:
@@ -66,7 +67,7 @@ esac
 # @DESCRIPTION:
 # This variable should contain the entire filename of patch tarball.
 # Defaults to the name of the patchset, with a datestamp.
-[[ -n "${GENTOO_PATCH_A}" ]] || GENTOO_PATCH_A="${GENTOO_PATCHNAME}-${GENTOO_PATCHSTAMP}.tar.bz2"
+: ${GENTOO_PATCH_A:=${GENTOO_PATCHNAME}-${GENTOO_PATCHSTAMP}.tar.bz2}
 
 SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
 	https://dev.gentoo.org/~${GENTOO_DEVELOPER}/dist/apache/${GENTOO_PATCH_A}"
@@ -204,12 +205,14 @@ unset -f _apache2_set_module_depends
 
 # @ECLASS_VARIABLE: MY_MPM
 # @DESCRIPTION:
-# This internal variable contains the selected MPM after a call to setup_mpm()
+# This internal variable contains the selected MPM after a call to
+# ``setup_mpm()``
 
 # @FUNCTION: setup_mpm
 # @DESCRIPTION:
-# This internal function makes sure that only one of APACHE2_MPMS was selected
-# or a default based on USE=threads is selected if APACHE2_MPMS is empty
+# This internal function makes sure that only one of ``APACHE2_MPMS`` was
+# selected or a default based on ``USE=threads`` is selected if ``APACHE2_MPMS``
+# is empty
 setup_mpm() {
 	MY_MPM=""
 	for x in ${IUSE_MPMS} ; do
@@ -270,18 +273,18 @@ check_module_critical() {
 
 # @ECLASS_VARIABLE: MY_CONF
 # @DESCRIPTION:
-# This internal variable contains the econf options for the current module
-# selection after a call to setup_modules()
+# This internal variable contains the ``econf`` options for the current module
+# selection after a call to ``setup_modules``
 
 # @ECLASS_VARIABLE: MY_MODS
 # @DESCRIPTION:
 # This internal variable contains a sorted, space separated list of currently
-# selected modules after a call to setup_modules()
+# selected modules after a call to ``setup_modules``
 
 # @FUNCTION: setup_modules
 # @DESCRIPTION:
 # This internal function selects all built-in modules based on USE flags and
-# APACHE2_MODULES USE_EXPAND flags
+# ``APACHE2_MODULES`` ``USE_EXPAND`` flags
 setup_modules() {
 	local mod_type= x=
 
@@ -369,13 +372,13 @@ setup_modules() {
 # @DESCRIPTION:
 # This variable needs to be set in the ebuild and contains a space-separated
 # list of tokens each mapping a module to a runtime define which can be
-# specified in APACHE2_OPTS in /etc/conf.d/apache2 to enable this particular
-# module.
+# specified in ``APACHE2_OPTS`` in ``/etc/conf.d/apache2`` to enable this
+# particular module.
 
 # @FUNCTION: generate_load_module
 # @DESCRIPTION:
-# This internal function generates the LoadModule lines for httpd.conf based on
-# the current module selection and MODULE_DEFINES
+# This internal function generates the ``LoadModule`` lines for ``httpd.conf``
+# based on the current module selection and ``MODULE_DEFINES``
 generate_load_module() {
 	local def= endit=0 m= mod_lines= mod_dir="${ED%/}/usr/$(get_libdir)/apache2/modules"
 
@@ -410,9 +413,9 @@ generate_load_module() {
 # @FUNCTION: check_upgrade
 # @DESCRIPTION:
 # This internal function checks if the previous configuration file for built-in
-# modules exists in ROOT and prevents upgrade in this case. Users are supposed
-# to convert this file to the new APACHE2_MODULES USE_EXPAND variable and remove
-# it afterwards.
+# modules exists in ``ROOT`` and prevents upgrade in this case. Users are
+# supposed to convert this file to the new ``APACHE2_MODULES`` ``USE_EXPAND``
+# variable and remove it afterwards.
 check_upgrade() {
 	if [[ -e "${EROOT}"etc/apache2/apache2-builtin-mods ]]; then
 		eerror "The previous configuration file for built-in modules"
@@ -434,7 +437,7 @@ check_upgrade() {
 # @FUNCTION: apache-2_pkg_setup
 # @DESCRIPTION:
 # This function selects built-in modules, the MPM and other configure options,
-# creates the apache user and group and informs about CONFIG_SYSVIPC being
+# creates the apache user and group and informs about ``CONFIG_SYSVIPC`` being
 # needed (we don't depend on kernel sources and therefore cannot check).
 apache-2_pkg_setup() {
 	check_upgrade
@@ -535,8 +538,8 @@ apache-2_src_prepare() {
 
 # @FUNCTION: apache-2_src_configure
 # @DESCRIPTION:
-# This function adds compiler flags and runs econf and emake based on MY_MPM and
-# MY_CONF
+# This function adds compiler flags and runs econf and emake based on
+# ``MY_MPM`` and ``MY_CONF``
 apache-2_src_configure() {
 	tc-export PKG_CONFIG
 
@@ -581,8 +584,8 @@ apache-2_src_configure() {
 
 # @FUNCTION: apache-2_src_install
 # @DESCRIPTION:
-# This function runs `emake install' and generates, installs and adapts the gentoo
-# specific configuration files found in the tarball
+# This function runs ``emake install`` and generates, installs and adapts the
+# gentoo specific configuration files found in the tarball
 apache-2_src_install() {
 	emake DESTDIR="${D}" MKINSTALLDIRS="mkdir -p" install
 
@@ -671,9 +674,10 @@ apache-2_src_install() {
 # @FUNCTION: apache-2_pkg_postinst
 # @DESCRIPTION:
 # This function creates test certificates if SSL is enabled and installs the
-# default index.html to /var/www/localhost if it does not exist. We do this here
-# because the default webroot is a copy of the files that exist elsewhere and we
-# don't want them to be managed/removed by portage when apache is upgraded.
+# default ``index.html`` to ``/var/www/localhost`` if it does not exist. We do
+# this here because the default webroot is a copy of the files that exist
+# elsewhere and we don't want them to be managed/removed by portage when apache
+# is upgraded.
 apache-2_pkg_postinst() {
 	if use ssl && [[ ! -e "${EROOT}/etc/ssl/apache2/server.pem" ]]; then
 		SSL_ORGANIZATION="${SSL_ORGANIZATION:-Apache HTTP Server}"

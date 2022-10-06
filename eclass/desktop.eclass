@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: desktop.eclass
@@ -12,20 +12,23 @@ _DESKTOP_ECLASS=1
 # @FUNCTION: make_desktop_entry
 # @USAGE: <command> [name] [icon] [type] [fields]
 # @DESCRIPTION:
-# Make a .desktop file.
+# Make a ``.desktop`` file.
 #
-# @CODE
-# binary:   what command does the app run with ?
-# name:     the name that will show up in the menu
-# icon:     the icon to use in the menu entry
-#           this can be relative (to /usr/share/pixmaps) or
-#           a full path to an icon
-# type:     what kind of application is this?
-#           for categories:
-#           https://specifications.freedesktop.org/menu-spec/latest/apa.html
-#           if unset, function tries to guess from package's category
-# fields:	extra fields to append to the desktop file; a printf string
-# @CODE
+# binary:
+#   what command does the app run with ?
+# name:
+#   the name that will show up in the menu
+# icon:
+#   the icon to use in the menu entry.
+#   this can be relative (to ``/usr/share/pixmaps``) or a full path to an icon
+# type:
+#   what kind of application is this?
+#
+#   for categories: https://specifications.freedesktop.org/menu-spec/latest/apa.html
+#
+#   if unset, function tries to guess from package's category
+# fields:
+#   extra fields to append to the desktop file; a printf string
 make_desktop_entry() {
 	[[ -z $1 ]] && die "make_desktop_entry: You must specify the executable"
 
@@ -213,10 +216,10 @@ make_desktop_entry() {
 # @FUNCTION: make_session_desktop
 # @USAGE: <title> <command> [command args...]
 # @DESCRIPTION:
-# Make a GDM/KDM Session file.  The title is the file to execute to start the
-# Window Manager.  The command is the name of the Window Manager.
+# Make a GDM/KDM Session file.  The ``title`` is the file to execute to start
+# the Window Manager.  The ``command`` is the name of the Window Manager.
 #
-# You can set the name of the file via the ${wm} variable.
+# You can set the name of the file via the ``${wm}`` variable.
 make_session_desktop() {
 	[[ -z $1 ]] && eerror "$0: You must specify the title" && return 1
 	[[ -z $2 ]] && eerror "$0: You must specify the command" && return 1
@@ -247,8 +250,8 @@ make_session_desktop() {
 # @FUNCTION: domenu
 # @USAGE: <menus>
 # @DESCRIPTION:
-# Install the list of .desktop menu files into the appropriate directory
-# (/usr/share/applications).
+# Install the list of ``.desktop`` menu files into the appropriate directory
+# (``/usr/share/applications``).
 domenu() {
 	(
 	# wrap the env here so that the 'insinto' call
@@ -272,7 +275,7 @@ domenu() {
 # @FUNCTION: newmenu
 # @USAGE: <menu> <newname>
 # @DESCRIPTION:
-# Like all other new* functions, install the specified menu as newname.
+# Like all other ``new*`` functions, install the specified menu as newname.
 newmenu() {
 	(
 	# wrap the env here so that the 'insinto' call
@@ -354,24 +357,27 @@ _iconins() {
 # @FUNCTION: doicon
 # @USAGE: [options] <icons>
 # @DESCRIPTION:
-# Install icon into the icon directory /usr/share/icons or into
-# /usr/share/pixmaps if "--size" is not set.
+# Install icon into the icon directory ``/usr/share/icons`` or into
+# ``/usr/share/pixmaps`` if ``--size`` is not set.
 # This is useful in conjunction with creating desktop/menu files.
 #
+# options:
+#   ``-s, --size``
+#     **!!! must specify to install into /usr/share/icons/... !!!**
+#
+#     Size of the icon, like ``48`` or ``48x48``.
+#
+#     Supported icon sizes are:
+#     ``16 22 24 32 36 48 64 72 96 128 192 256 512 scalable``
+#   ``-c, --context``
+#     defaults to ``apps``
+#   ``-t, --theme``
+#     defaults to ``hicolor``
+#
+# icons:
+#   list of icons
+#
 # @CODE
-#  options:
-#  -s, --size
-#    !!! must specify to install into /usr/share/icons/... !!!
-#    size of the icon, like 48 or 48x48
-#    supported icon sizes are:
-#    16 22 24 32 36 48 64 72 96 128 192 256 512 scalable
-#  -c, --context
-#    defaults to "apps"
-#  -t, --theme
-#    defaults to "hicolor"
-#
-# icons: list of icons
-#
 # example 1: doicon foobar.png fuqbar.svg suckbar.png
 # results in: insinto /usr/share/pixmaps
 #             doins foobar.png fuqbar.svg suckbar.png
@@ -387,7 +393,7 @@ doicon() {
 # @FUNCTION: newicon
 # @USAGE: [options] <icon> <newname>
 # @DESCRIPTION:
-# Like doicon, install the specified icon as newname.
+# Like ``doicon``, install the specified icon as newname.
 #
 # @CODE
 # example 1: newicon foobar.png NEWNAME.png

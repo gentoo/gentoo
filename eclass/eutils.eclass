@@ -25,6 +25,10 @@ emktemp() {
 	die "emktemp is banned"
 }
 
+# @FUNCTION: path_exists
+# @INTERNAL
+# @DESCRIPTION:
+#
 path_exists() {
 	eerror "path_exists has been removed.  Please see the following post"
 	eerror "for a replacement snippet:"

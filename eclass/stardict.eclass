@@ -9,12 +9,17 @@
 # @SUPPORTED_EAPIS: 8
 # @BLURB: Convenience class to do stardict dictionary installations.
 # @DESCRIPTION:
-# Usage:
-#   - Variables to set :
-#      * FROM_LANG     -  From this language
-#      * TO_LANG       -  To this language
-#      * DICT_PREFIX   -  SRC_URI prefix, like "dictd_www.mova.org_"
-#      * DICT_SUFFIX   -  SRC_URI after the prefix.
+# **Usage**:
+#
+# Set the following variables:
+#
+# - ``FROM_LANG``
+#
+# - ``TO_LANG``
+#
+# - ``DICT_PREFIX``
+#
+# - ``DICT_SUFFIX``
 
 case ${EAPI} in
 	8) ;;
@@ -28,11 +33,29 @@ inherit edo
 
 RESTRICT="strip"
 
+# @ECLASS_VARIABLE: FROM_LANG
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# From this language name
+
+# @ECLASS_VARIABLE: TO_LANG
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# From this language name
+
+# @ECLASS_VARIABLE: DICT_PREFIX
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# ``SRC_URI`` prefix, like ``dictd_www.mova.org_``.
+
 # @ECLASS_VARIABLE: DICT_SUFFIX
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Suffix used for dictionaries.
+# ``SRC_URI`` suffix used for dictionaries.
 : ${DICT_SUFFIX:=${PN#stardict-[[:lower:]]*-}}
 
 # @ECLASS_VARIABLE: DICT_P

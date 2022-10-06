@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: bzr.eclass
@@ -12,12 +12,12 @@
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: generic fetching functions for the Bazaar VCS
 # @DESCRIPTION:
-# The bzr.eclass provides functions to fetch and unpack sources from
+# The ``bzr.eclass`` provides functions to fetch and unpack sources from
 # repositories of the Bazaar distributed version control system.
-# The eclass was originally derived from git.eclass.
+# The eclass was originally derived from ``git.eclass``.
 #
-# Note: Just set EBZR_REPO_URI to the URI of the branch and src_unpack()
-# of this eclass will export the branch to ${WORKDIR}/${P}.
+# Note: Just set ``EBZR_REPO_URI`` to the URI of the branch and ``src_unpack``
+# of this eclass will export the branch to ``${WORKDIR}/${P}``.
 
 case ${EAPI} in
 	7|8) ;;
@@ -43,7 +43,7 @@ EXPORT_FUNCTIONS src_unpack
 
 # @ECLASS_VARIABLE: EBZR_INIT_REPO_CMD
 # @DESCRIPTION:
-# The Bazaar command to initialise a shared repository.
+# The Bazaar command to initialize a shared repository.
 : ${EBZR_INIT_REPO_CMD:="brz init-shared-repository --no-trees"}
 
 # @ECLASS_VARIABLE: EBZR_FETCH_CMD
@@ -85,32 +85,32 @@ EXPORT_FUNCTIONS src_unpack
 # @ECLASS_VARIABLE: EBZR_PROJECT
 # @DESCRIPTION:
 # The project name of your ebuild.  Normally, the branch will be stored
-# in the ${EBZR_STORE_DIR}/${EBZR_PROJECT} directory.
+# in the ``${EBZR_STORE_DIR}/${EBZR_PROJECT}`` directory.
 #
-# If EBZR_BRANCH is set (see below), then a shared repository will be
+# If ``EBZR_BRANCH`` is set (see below), then a shared repository will be
 # created in that directory, and the branch will be located in
-# ${EBZR_STORE_DIR}/${EBZR_PROJECT}/${EBZR_BRANCH}.
+# ``${EBZR_STORE_DIR}/${EBZR_PROJECT}/${EBZR_BRANCH}``.
 : ${EBZR_PROJECT:=${PN}}
 
 # @ECLASS_VARIABLE: EBZR_BRANCH
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The directory where to store the branch within a shared repository,
-# relative to ${EBZR_STORE_DIR}/${EBZR_PROJECT}.
+# relative to ``${EBZR_STORE_DIR}/${EBZR_PROJECT}``.
 #
 # This variable should be set if there are several live ebuilds for
 # different branches of the same upstream project.  The branches can
-# then share the same repository in EBZR_PROJECT, which will save both
+# then share the same repository in ``EBZR_PROJECT``, which will save both
 # data traffic volume and disk space.
 #
-# If there is only a live ebuild for one single branch, EBZR_BRANCH
+# If there is only a live ebuild for one single branch, ``EBZR_BRANCH``
 # needs not be set.  In this case, the branch will be stored in a
-# stand-alone repository directly in EBZR_PROJECT.
+# stand-alone repository directly in ``EBZR_PROJECT``.
 
 # @ECLASS_VARIABLE: EBZR_REVISION
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Revision to fetch, defaults to the latest (see brz help revisionspec).
+# Revision to fetch, defaults to the latest (see ``brz help revisionspec``).
 
 # @ECLASS_VARIABLE: EBZR_OFFLINE
 # @USER_VARIABLE
@@ -127,7 +127,7 @@ EXPORT_FUNCTIONS src_unpack
 # Set this variable to a custom umask.  This is intended to be set by
 # users.  By setting this to something like 002, it can make life easier
 # for people who do development as non-root (but are in the portage
-# group), and then switch over to building with FEATURES=userpriv.
+# group), and then switch over to building with ``FEATURES=userpriv``.
 # Or vice-versa.  Shouldn't be a security issue here as anyone who has
 # portage group write access already can screw the system over in more
 # creative ways.
@@ -135,8 +135,8 @@ EXPORT_FUNCTIONS src_unpack
 # @ECLASS_VARIABLE: EBZR_WORKDIR_CHECKOUT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# If this variable is set to a non-empty value, EBZR_CHECKOUT_CMD will
-# be used instead of EBZR_EXPORT_CMD to copy the sources to WORKDIR.
+# If this variable is set to a non-empty value, ``EBZR_CHECKOUT_CMD`` will
+# be used instead of ``EBZR_EXPORT_CMD`` to copy the sources to ``WORKDIR``.
 
 # @FUNCTION: _bzr_initial_fetch
 # @USAGE: <repository URI> <branch directory>
@@ -251,7 +251,7 @@ bzr_fetch() {
 
 # @FUNCTION: bzr_src_unpack
 # @DESCRIPTION:
-# Default src_unpack(), calls bzr_fetch.
+# Default ``src_unpack``, calls ``bzr_fetch``.
 bzr_src_unpack() {
 	bzr_fetch
 }

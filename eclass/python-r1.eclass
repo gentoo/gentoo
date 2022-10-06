@@ -15,16 +15,16 @@
 # packages supporting being installed for multiple Python
 # implementations.
 #
-# This eclass sets correct IUSE. Modification of REQUIRED_USE has to
-# be done by the author of the ebuild (but PYTHON_REQUIRED_USE is
-# provided for convenience, see below). python-r1 exports PYTHON_DEPS
-# and PYTHON_USEDEP so you can create correct dependencies for your
+# This eclass sets correct ``IUSE``. Modification of ``REQUIRED_USE`` has to
+# be done by the author of the ebuild (but ``PYTHON_REQUIRED_USE`` is
+# provided for convenience, see below). ``python-r1`` exports ``PYTHON_DEPS``
+# and ``PYTHON_USEDEP`` so you can create correct dependencies for your
 # package easily. It also provides methods to easily run a command for
 # each enabled Python implementation and duplicate the sources for them.
 #
-# Please note that python-r1 will always inherit python-utils-r1 as
+# Please note that ``python-r1`` will always inherit ``python-utils-r1`` as
 # well. Thus, all the functions defined there can be used
-# in the packages using python-r1, and there is no need ever to inherit
+# in the packages using ``python-r1``, and there is no need ever to inherit
 # both.
 #
 # For more information, please see the Python Guide:
@@ -58,7 +58,7 @@ fi
 # @REQUIRED
 # @DESCRIPTION:
 # This variable contains a list of Python implementations the package
-# supports. It must be set before the `inherit' call. It has to be
+# supports. It must be set before the ``inherit`` call. It has to be
 # an array.
 #
 # Example:
@@ -76,14 +76,14 @@ fi
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This variable can be used when working with ebuilds to override
-# the in-ebuild PYTHON_COMPAT. It is a string listing all
+# the in-ebuild ``PYTHON_COMPAT``. It is a string listing all
 # the implementations which package will be built for. It need be
 # specified in the calling environment, and not in ebuilds.
 #
 # It should be noted that in order to preserve metadata immutability,
-# PYTHON_COMPAT_OVERRIDE does not affect IUSE nor dependencies.
-# The state of PYTHON_TARGETS is ignored, and all the implementations
-# in PYTHON_COMPAT_OVERRIDE are built. Dependencies need to be satisfied
+# ``PYTHON_COMPAT_OVERRIDE`` does not affect ``IUSE`` nor dependencies.
+# The state of ``PYTHON_TARGETS`` is ignored, and all the implementations
+# in ``PYTHON_COMPAT_OVERRIDE`` are built. Dependencies need to be satisfied
 # manually.
 #
 # Example:
@@ -96,10 +96,10 @@ fi
 # @DESCRIPTION:
 # The list of USEflags required to be enabled on the chosen Python
 # implementations, formed as a USE-dependency string. It should be valid
-# for all implementations in PYTHON_COMPAT, so it may be necessary to
+# for all implementations in ``PYTHON_COMPAT``, so it may be necessary to
 # use USE defaults.
 #
-# This should be set before calling `inherit'.
+# This should be set before calling ``inherit``.
 #
 # Example:
 # @CODE
@@ -115,12 +115,12 @@ fi
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated Python dependency string for all
-# implementations listed in PYTHON_COMPAT.
+# implementations listed in ``PYTHON_COMPAT``.
 #
 # Example use:
 # @CODE
 # RDEPEND="${PYTHON_DEPS}
-#	dev-foo/mydep"
+#     dev-foo/mydep"
 # BDEPEND="${PYTHON_DEPS}"
 # @CODE
 #
@@ -137,9 +137,9 @@ fi
 # depend on another Python package being built for the same Python
 # implementations.
 #
-# The generate USE-flag list is compatible with packages using python-r1
-# and python-distutils-ng eclasses. It must not be used on packages
-# using python.eclass.
+# The generate USE-flag list is compatible with packages using ``python-r1``
+# and ``python-distutils-ng`` eclasses. It must not be used on packages
+# using ``python.eclass``.
 #
 # Example use:
 # @CODE
@@ -155,11 +155,11 @@ fi
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # An eclass-generated USE-dependency string for the currently tested
-# implementation. It is set locally for python_check_deps() call.
+# implementation. It is set locally for ``python_check_deps()`` call.
 #
 # The generated USE-flag list is compatible with packages using
-# python-single-r1 eclass. For python-r1 dependencies,
-# use PYTHON_USEDEP.
+# ``python-single-r1`` eclass. For ``python-r1`` dependencies,
+# use ``PYTHON_USEDEP``.
 #
 # Example use:
 # @CODE
@@ -180,7 +180,7 @@ fi
 # least one Python implementation has been enabled.
 #
 # This expression should be utilized in an ebuild by including it in
-# REQUIRED_USE, optionally behind a use flag.
+# ``REQUIRED_USE``, optionally behind a use flag.
 #
 # Example use:
 # @CODE
@@ -315,11 +315,11 @@ _python_gen_usedep() {
 # @USAGE: [<pattern>...]
 # @DESCRIPTION:
 # Output a list of USE flags for Python implementations which
-# are both in PYTHON_COMPAT and match any of the patterns passed
+# are both in ``PYTHON_COMPAT`` and match any of the patterns passed
 # as parameters to the function.
 #
-# For the pattern syntax, please see _python_impl_matches
-# in python-utils-r1.eclass.
+# For the pattern syntax, please see ``_python_impl_matches``
+# in ``python-utils-r1.eclass``.
 #
 # Example:
 # @CODE
@@ -350,14 +350,14 @@ python_gen_useflags() {
 # @USAGE: <dependency> [<pattern>...]
 # @DESCRIPTION:
 # Output a list of <dependency>-ies made conditional to USE flags
-# of Python implementations which are both in PYTHON_COMPAT and match
+# of Python implementations which are both in ``PYTHON_COMPAT`` and match
 # any of the patterns passed as the remaining parameters.
 #
-# For the pattern syntax, please see _python_impl_matches
-# in python-utils-r1.eclass.
+# For the pattern syntax, please see ``_python_impl_matches``
+# in ``python-utils-r1.eclass``.
 #
 # In order to enforce USE constraints on the packages, verbatim
-# '${PYTHON_USEDEP}' (quoted!) may be placed in the dependency
+# ``'${PYTHON_USEDEP}'`` (quoted!) may be placed in the dependency
 # specification. It will get expanded within the function into a proper
 # USE dependency string.
 #
@@ -415,13 +415,13 @@ python_gen_cond_dep() {
 # patterns are passed, the output dependencies will be generated only
 # for the implementations matching them.
 #
-# For the pattern syntax, please see _python_impl_matches
-# in python-utils-r1.eclass.
+# For the pattern syntax, please see ``_python_impl_matches``
+# in ``python-utils-r1.eclass``.
 #
 # Use this function when you need to request different USE flags
 # on the Python interpreter depending on package's USE flags. If you
 # only need a single set of interpreter USE flags, just set
-# PYTHON_REQ_USE and use ${PYTHON_DEPS} globally.
+# ``PYTHON_REQ_USE`` and use ``${PYTHON_DEPS}`` globally.
 #
 # Example:
 # @CODE
@@ -460,20 +460,20 @@ python_gen_impl_dep() {
 # @USAGE: [<dependency-block> [<impl-pattern>...]]
 # @DESCRIPTION:
 # Generate an any-of dependency that enforces a version match between
-# the Python interpreter and Python packages. <dependency-block> may
-# list one or more dependencies with verbatim '${PYTHON_USEDEP}'
-# or '${PYTHON_SINGLE_USEDEP}' references (quoted!) that will get
-# expanded inside the function. If <dependency-block> is an empty string
+# the Python interpreter and Python packages. ``<dependency-block>`` may
+# list one or more dependencies with verbatim ``'${PYTHON_USEDEP}'``
+# or ``'${PYTHON_SINGLE_USEDEP}'`` references (quoted!) that will get
+# expanded inside the function. If ``<dependency-block>`` is an empty string
 # (or no arguments are passed), a pure dependency on any Python
 # interpreter will be generated.
 #
 # Optionally, patterns may be specified to restrict the dependency to
 # a subset of Python implementations supported by the ebuild.
-# For the pattern syntax, please see _python_impl_matches
-# in python-utils-r1.eclass.
+# For the pattern syntax, please see ``_python_impl_matches``
+# in ``python-utils-r1.eclass``.
 #
-# This should be used along with an appropriate python_check_deps()
-# that checks which of the any-of blocks were matched, and python_setup
+# This should be used along with an appropriate ``python_check_deps()``
+# that checks which of the any-of blocks were matched, and ``python_setup``
 # call that enables use of the matched implementation.
 #
 # Example use:
@@ -543,12 +543,12 @@ python_gen_any_dep() {
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The current build directory. In global scope, it is supposed to
-# contain an initial build directory; if unset, it defaults to ${S}.
+# contain an initial build directory; if unset, it defaults to ``${S}``.
 #
-# In functions run by python_foreach_impl(), the BUILD_DIR is locally
+# In functions run by ``python_foreach_impl()``, the ``BUILD_DIR`` is locally
 # set to an implementation-specific build directory. That path is
 # created through appending a hyphen and the implementation name
-# to the final component of the initial BUILD_DIR.
+# to the final component of the initial ``BUILD_DIR``.
 #
 # Example value:
 # @CODE
@@ -560,9 +560,9 @@ python_gen_any_dep() {
 # Create a single copy of the package sources for each enabled Python
 # implementation.
 #
-# The sources are always copied from initial BUILD_DIR (or S if unset)
-# to implementation-specific build directory matching BUILD_DIR used by
-# python_foreach_abi().
+# The sources are always copied from initial ``BUILD_DIR`` (or ``S`` if unset)
+# to implementation-specific build directory matching ``BUILD_DIR`` used by
+# ``python_foreach_abi()``.
 python_copy_sources() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -621,7 +621,7 @@ _python_multibuild_wrapper() {
 # Otherwise, the return code from first failing invocation will
 # be returned.
 #
-# For each command being run, EPYTHON, PYTHON and BUILD_DIR are set
+# For each command being run, ``EPYTHON``, ``PYTHON`` and ``BUILD_DIR`` are set
 # locally, and the former two are exported to the command environment.
 python_foreach_impl() {
 	debug-print-function ${FUNCNAME} "${@}"
@@ -658,29 +658,29 @@ python_foreach_impl() {
 # for that implementation. This function has two modes of operation:
 # pure and any-of dep.
 #
-# The pure mode is used if python_check_deps() function is not declared.
+# The pure mode is used if ``python_check_deps()`` function is not declared.
 # In this case, an implementation is considered suitable if it is
-# supported (in PYTHON_COMPAT), enabled (via USE flags) and matches
-# at least one of the patterns passed (or '*' if no patterns passed).
+# supported (in ``PYTHON_COMPAT``), enabled (via USE flags) and matches
+# at least one of the patterns passed (or ``'*'`` if no patterns passed).
 #
 # Implementation restrictions in the pure mode need to be accompanied
-# by appropriate REQUIRED_USE constraints. Otherwise, the eclass may
+# by appropriate ``REQUIRED_USE`` constraints. Otherwise, the eclass may
 # fail at build time due to unsatisfied dependencies.
 #
-# The any-of dep mode is used if python_check_deps() is declared.
+# The any-of dep mode is used if ``python_check_deps()`` is declared.
 # In this mode, an implementation is considered suitable if it is
-# supported, matches at least one of the patterns and python_check_deps()
+# supported, matches at least one of the patterns and ``python_check_deps()``
 # has successful return code. USE flags are not considered.
 #
-# The python_check_deps() function in the any-of mode needs to be
+# The ``python_check_deps()`` function in the any-of mode needs to be
 # accompanied by appropriate any-of dependencies.
 #
-# For the pattern syntax, please see _python_impl_matches
-# in python-utils-r1.eclass.
+# For the pattern syntax, please see ``_python_impl_matches``
+# in ``python-utils-r1.eclass``.
 #
 # This function needs to be used when Python is being called outside
-# of python_foreach_impl calls (e.g. for shared processes like doc
-# building). python_foreach_impl sets up the build environment itself.
+# of ``python_foreach_impl`` calls (e.g. for shared processes like doc
+# building). ``python_foreach_impl`` sets up the build environment itself.
 #
 # Pure mode example:
 # @CODE
@@ -776,7 +776,7 @@ python_setup() {
 # Copy the given script to variants for all enabled Python
 # implementations, then replace it with a symlink to the wrapper.
 #
-# All specified files must start with a 'python' shebang. A file not
+# All specified files must start with a ``python`` shebang. A file not
 # having a matching shebang will be refused.
 python_replicate_script() {
 	debug-print-function ${FUNCNAME} "${@}"

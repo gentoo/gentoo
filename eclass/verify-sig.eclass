@@ -7,7 +7,7 @@
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass to verify upstream signatures on distfiles
 # @DESCRIPTION:
-# verify-sig eclass provides a streamlined approach to verifying
+# ``verify-sig`` eclass provides a streamlined approach to verifying
 # upstream signatures on distfiles.  Its primary purpose is to permit
 # developers to easily verify signatures while bumping packages.
 # The eclass removes the risk of developer forgetting to perform
@@ -16,12 +16,12 @@
 # the developer's work.
 #
 # To use the eclass, start by packaging the upstream's key
-# as app-crypt/openpgp-keys-*.  Then inherit the eclass, add detached
-# signatures to SRC_URI and set VERIFY_SIG_OPENPGP_KEY_PATH.  The eclass
-# provides verify-sig USE flag to toggle the verification.
+# as ``app-crypt/openpgp-keys-*``.  Then inherit the eclass, add detached
+# signatures to ``SRC_URI`` and set ``VERIFY_SIG_OPENPGP_KEY_PATH``.  The
+# eclass provides ``verify-sig`` USE flag to toggle the verification.
 #
-# If you need to use signify, you may want to copy distfiles into WORKDIR to
-# work around "Too many levels of symbolic links" error.
+# If you need to use ``signify``, you may want to copy distfiles into
+# ``WORKDIR`` to work around "Too many levels of symbolic links" error.
 #
 # A more complete guide can be found at:
 # https://mgorny.pl/articles/verify-sig-by-example.html
@@ -56,8 +56,11 @@ IUSE="verify-sig"
 # @DESCRIPTION:
 # Signature verification method to use.  The allowed value are:
 #
-# - openpgp -- verify PGP signatures using app-crypt/gnupg (the default)
-# - signify -- verify signatures with Ed25519 public key using app-crypt/signify
+# openpgp
+#    verify PGP signatures using ``app-crypt/gnupg`` (the default)
+#
+# signify
+#    verify signatures with Ed25519 public key using ``app-crypt/signify``
 : ${VERIFY_SIG_METHOD:=openpgp}
 
 case ${VERIFY_SIG_METHOD} in
@@ -80,11 +83,11 @@ esac
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Path to key bundle used to perform the verification.  This is required
-# when using default src_unpack.  Alternatively, the key path can be
+# when using default ``src_unpack``.  Alternatively, the key path can be
 # passed directly to the verification functions.
 #
 # NB: this variable is also used for non-OpenPGP signatures.  The name
-# contains "OPENPGP" for historical reasons.
+# contains ``OPENPGP`` for historical reasons.
 
 # @ECLASS_VARIABLE: VERIFY_SIG_OPENPGP_KEYSERVER
 # @DEFAULT_UNSET
@@ -98,8 +101,8 @@ esac
 # @ECLASS_VARIABLE: VERIFY_SIG_OPENPGP_KEY_REFRESH
 # @USER_VARIABLE
 # @DESCRIPTION:
-# Attempt to refresh keys via WKD/keyserver.  Set it to "yes"
-# in make.conf to enable.  Note that this requires working Internet
+# Attempt to refresh keys via WKD/keyserver.  Set it to ``yes``
+# in ``make.conf`` to enable.  Note that this requires working Internet
 # connection.
 #
 # Supported for OpenPGP only.
@@ -108,9 +111,9 @@ esac
 # @FUNCTION: verify-sig_verify_detached
 # @USAGE: <file> <sig-file> [<key-file>]
 # @DESCRIPTION:
-# Read the detached signature from <sig-file> and verify <file> against
-# it.  <key-file> can either be passed directly, or it defaults
-# to VERIFY_SIG_OPENPGP_KEY_PATH.  The function dies if verification
+# Read the detached signature from ``<sig-file>`` and verify ``<file>`` against
+# it.  ``<key-file>`` can either be passed directly, or it defaults
+# to ``VERIFY_SIG_OPENPGP_KEY_PATH``.  The function dies if verification
 # fails.
 verify-sig_verify_detached() {
 	local file=${1}
@@ -155,11 +158,11 @@ verify-sig_verify_detached() {
 # @FUNCTION: verify-sig_verify_message
 # @USAGE: <file> <output-file> [<key-file>]
 # @DESCRIPTION:
-# Verify that the file ('-' for stdin) contains a valid, signed PGP
-# message and write the message into <output-file> ('-' for stdout).
-# <key-file> can either be passed directly, or it defaults
-# to VERIFY_SIG_OPENPGP_KEY_PATH.  The function dies if verification
-# fails.  Note that using output from <output-file> is important as it
+# Verify that the file (``'-'`` for stdin) contains a valid, signed PGP
+# message and write the message into ``<output-file>`` (``'-'`` for stdout).
+# ``<key-file>`` can either be passed directly, or it defaults
+# to ``VERIFY_SIG_OPENPGP_KEY_PATH``.  The function dies if verification
+# fails.  Note that using output from ``<output-file>`` is important as it
 # prevents the injection of unsigned data.
 verify-sig_verify_message() {
 	local file=${1}
@@ -205,18 +208,18 @@ verify-sig_verify_message() {
 # @USAGE: <checksum-file> <algo> <files>
 # @DESCRIPTION:
 # Verify the checksums for all files listed in the space-separated list
-# <files> (akin to ${A}) using a <checksum-file>.  <algo> specifies
-# the checksum algorithm (e.g. sha256).  <checksum-file> can be "-"
-# for stdin.
+# ``<files>`` (akin to ``${A}``) using a ``<checksum-file>``.  ``<algo>``
+# specifies the checksum algorithm (e.g. sha256).  ``<checksum-file>`` can be
+# ``"-"`` for stdin.
 #
 # The function dies if one of the files does not match checksums or
 # is missing from the checksum file.
 #
 # Note that this function itself can only verify integrity of the files.
-# In order to verify their authenticity, the <checksum-file> must
+# In order to verify their authenticity, the ``<checksum-file>`` must
 # be verified against a signature first, e.g. using
-# verify-sig_verify_detached.  If it contains inline signature, use
-# verify-sig_verify_signed_checksums instead.
+# ``verify-sig_verify_detached``.  If it contains inline signature, use
+# ``verify-sig_verify_signed_checksums`` instead.
 verify-sig_verify_unsigned_checksums() {
 	local checksum_file=${1}
 	local algo=${2}
@@ -280,9 +283,9 @@ _gpg_verify_signed_checksums() {
 # @USAGE: <checksum-file> <algo> <files> [<key-file>]
 # @DESCRIPTION:
 # Verify the checksums for all files listed in the space-separated list
-# <files> (akin to ${A}) using a signed <checksum-file>.  <algo> specifies
-# the checksum algorithm (e.g. sha256).  <key-file> can either be passed
-# directly, or it defaults to VERIFY_SIG_OPENPGP_KEY_PATH.
+# ``<files>`` (akin to ``${A}``) using a signed ``<checksum-file>``.  ``<algo>``
+# specifies the checksum algorithm (e.g. sha256).  ``<key-file>`` can either be
+# passed directly, or it defaults to ``VERIFY_SIG_OPENPGP_KEY_PATH``.
 #
 # The function dies if signature verification fails, the checksum file
 # contains unsigned data, one of the files do not match checksums or
@@ -312,10 +315,10 @@ verify-sig_verify_signed_checksums() {
 
 # @FUNCTION: verify-sig_src_unpack
 # @DESCRIPTION:
-# Default src_unpack override that verifies signatures for all
-# distfiles if 'verify-sig' flag is enabled.  The function dies if any
+# Default ``src_unpack`` override that verifies signatures for all
+# distfiles if ``verify-sig`` flag is enabled.  The function dies if any
 # of the signatures fails to verify or if any distfiles are not signed.
-# Please write src_unpack() yourself if you need to perform partial
+# Please write ``src_unpack()`` yourself if you need to perform partial
 # verification.
 verify-sig_src_unpack() {
 	if use verify-sig; then

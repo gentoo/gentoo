@@ -10,7 +10,7 @@
 # @BLURB: Some functions for cron
 # @DESCRIPTION:
 # Purpose: The main motivation for this eclass was to simplify
-# the jungle known as src_install() in cron ebuilds. Using these
+# the jungle known as ``src_install()`` in cron ebuilds. Using these
 # functions also ensures that permissions are *always* reset,
 # preventing the accidental installation of files with wrong perms.
 #
@@ -41,12 +41,15 @@ done
 # @DESCRIPTION:
 # Creates crontab directory
 #
-#	Both arguments are optional.  Everything after 'dir' is considered
-#   the permissions (same format as insopts).
+# Both arguments are optional.  Everything after ``dir`` is considered
+# the permissions (same format as ``insopts``).
 #
-# ex: docrondir /some/dir -m 0770 -o 0 -g cron
-#     docrondir /some/dir (uses default perms)
-#     docrondir -m0700 (uses default dir)
+# Example:
+# @CODE
+# 	docrondir /some/dir -m 0770 -o 0 -g cron
+# 	docrondir /some/dir (uses default perms)
+# 	docrondir -m0700 (uses default dir)
+# @CODE
 docrondir() {
 	# defaults
 	local perms="-m0750 -o 0 -g cron" dir="/var/spool/cron/crontabs"
@@ -76,10 +79,13 @@ docrondir() {
 # @DESCRIPTION:
 # Install cron executable
 #
-#    Both arguments are optional.
+# Both arguments are optional.
 #
-# ex: docron -m 0700 -o 0 -g root ('exe' defaults to "cron")
-#     docron crond -m 0110
+# Example:
+# @CODE
+# 	docron -m 0700 -o 0 -g root # 'exe' defaults to "cron"
+# 	docron crond -m 0110
+# @CODE
 docron() {
 	local cron="cron" perms="-m 0750 -o 0 -g wheel"
 
@@ -109,7 +115,7 @@ docron() {
 # @DESCRIPTION:
 # Install crontab executable
 #
-#   Uses same semantics as docron.
+# Uses same semantics as ``docron``.
 docrontab() {
 	local crontab="crontab" perms="-m 4750 -o 0 -g cron"
 
@@ -142,8 +148,9 @@ docrontab() {
 
 # @FUNCTION: cron_pkg_postinst
 # @DESCRIPTION:
-# Outputs a message about system crontabs
-# daemons that have a true system crontab set CRON_SYSTEM_CRONTAB="yes"
+# Outputs a message about system crontabs.
+#
+# Daemons that have a true system crontab set ``CRON_SYSTEM_CRONTAB="yes"``.
 cron_pkg_postinst() {
 	echo
 	#  daemons that have a true system crontab set CRON_SYSTEM_CRONTAB="yes"

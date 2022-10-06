@@ -12,10 +12,14 @@
 # @DESCRIPTION:
 # This eclass provides a set of auxiliary functions needed by most XDG
 # compliant packages.
+#
 # It provides XDG stack related functions such as:
-#  * GTK/Qt5 icon theme cache management
-#  * XDG .desktop files cache management
-#  * XDG mime information database management
+#
+# - GTK/Qt5 icon theme cache management
+#
+# - XDG ``.desktop`` files cache management
+#
+# - XDG mime information database management
 
 case ${EAPI} in
 	5|6|7|8) ;;
@@ -25,13 +29,13 @@ esac
 # @ECLASS_VARIABLE: DESKTOP_DATABASE_DIR
 # @INTERNAL
 # @DESCRIPTION:
-# Directory where .desktop files database is stored
+# Directory where ``.desktop`` files database is stored
 : ${DESKTOP_DATABASE_DIR="/usr/share/applications"}
 
 # @ECLASS_VARIABLE: MIMEINFO_DATABASE_DIR
 # @INTERNAL
 # @DESCRIPTION:
-# Directory where .desktop files database is stored
+# Directory where ``.desktop`` files database is stored
 : ${MIMEINFO_DATABASE_DIR:="/usr/share/mime"}
 
 # @FUNCTION: xdg_environment_reset
@@ -55,7 +59,7 @@ xdg_environment_reset() {
 
 # @FUNCTION: xdg_desktop_database_update
 # @DESCRIPTION:
-# Updates the .desktop files database.
+# Updates the ``.desktop`` files database.
 # Generates a list of mimetypes linked to applications that can handle them
 xdg_desktop_database_update() {
 	if [[ ${EBUILD_PHASE} != post* ]]; then
@@ -74,8 +78,9 @@ xdg_desktop_database_update() {
 
 # @FUNCTION: xdg_icon_cache_update
 # @DESCRIPTION:
-# Updates icon theme cache files under /usr/share/icons.
-# This function should be called from pkg_postinst and pkg_postrm.
+# Updates icon theme cache files under ``/usr/share/icons``.
+#
+# This function should be called from ``pkg_postinst`` and ``pkg_postrm``.
 xdg_icon_cache_update() {
 	if [[ ${EBUILD_PHASE} != post* ]]; then
 		die "xdg_icon_cache_update must be used in pkg_post* phases."

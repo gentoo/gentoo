@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fortran-2.eclass
@@ -11,20 +11,22 @@
 # @BLURB: Simplify fortran compiler management
 # @DESCRIPTION:
 # If you need a fortran compiler, then you should be inheriting this eclass.
-# In case you only need optional support, please export FORTRAN_NEEDED before
-# inheriting the eclass.
+# In case you only need optional support, please export ``FORTRAN_NEEDED``
+# before inheriting the eclass.
 #
 # The eclass tests for working fortran compilers
 # and exports the variables FC and F77.
 # Optionally, it checks for extended capabilities based on
 # the variable options selected in the ebuild
-# The only phase function exported is fortran-2_pkg_setup.
+# The only phase function exported is ``fortran-2_pkg_setup``.
 # @EXAMPLE:
+# @CODE
 # FORTRAN_NEEDED="lapack fortran"
 #
 # inherit fortran-2
 #
 # FORTRAN_NEED_OPENMP=1
+# @CODE
 
 inherit toolchain-funcs
 
@@ -41,8 +43,8 @@ if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 
 # @ECLASS_VARIABLE: FORTRAN_NEED_OPENMP
 # @DESCRIPTION:
-# Set to "1" in order to automatically have the eclass abort if the fortran
-# compiler lacks openmp support.
+# Set to ``1`` in order to automatically have the eclass abort if the fortran
+# compiler lacks ``openmp`` support.
 : ${FORTRAN_NEED_OPENMP:=0}
 
 # @ECLASS_VARIABLE: FORTRAN_STANDARD
@@ -50,7 +52,7 @@ if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 # Set this, if a special dialect needs to be supported.
 # Generally not needed as default is sufficient.
 #
-# Valid settings are any combination of: 77 90 95 2003
+# Valid settings are any combination of: ``77`` ``90`` ``95`` ``2003``
 : ${FORTRAN_STANDARD:=77}
 
 # @ECLASS_VARIABLE: FORTRAN_NEEDED
@@ -59,11 +61,13 @@ if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 # to the space separated list of USE triggering the fortran
 # dependency.
 #
-# e.g. FORTRAN_NEEDED=lapack would result in
+# e.g. ``FORTRAN_NEEDED=lapack`` would result in
 #
+# @CODE
 # DEPEND="lapack? ( virtual/fortran )"
+# @CODE
 #
-# If unset, we always depend on virtual/fortran.
+# If unset, we always depend on ``virtual/fortran``.
 : ${FORTRAN_NEEDED:=always}
 
 for _f_use in ${FORTRAN_NEEDED}; do
@@ -284,7 +288,7 @@ _fortran-2_pkg_setup() {
 # @FUNCTION: fortran-2_pkg_setup
 # @DESCRIPTION:
 # Setup functionality,
-# checks for a valid fortran compiler and optionally for its openmp support.
+# checks for a valid fortran compiler and optionally for its ``openmp`` support.
 fortran-2_pkg_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 

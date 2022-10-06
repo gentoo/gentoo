@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: golang-build.eclass
@@ -9,7 +9,7 @@
 # @BLURB: Eclass for compiling go packages.
 # @DEPRECATED: go-module.eclass
 # @DESCRIPTION:
-# This eclass provides default  src_compile, src_test and src_install
+# This eclass provides default ``src_compile``, ``src_test`` and ``src_install``
 # functions for software written in the Go programming language.
 
 inherit golang-base
@@ -32,8 +32,8 @@ _GOLANG_BUILD=1
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # This allows you to pass build flags to the Go compiler. These flags
-# are common to the "go build" and "go install" commands used below.
-# Please emerge dev-lang/go and run "go help build" for the
+# are common to the ``go build`` and ``go install`` commands used below.
+# Please emerge ``dev-lang/go`` and run ``go help build`` for the
 # documentation for these flags.
 #
 # Example:
@@ -45,7 +45,7 @@ _GOLANG_BUILD=1
 # @REQUIRED
 # @DESCRIPTION:
 # This is the import path for the go package(s) to build. Please emerge
-# dev-lang/go and read "go help importpath" for syntax.
+# ``dev-lang/go`` and read ``go help importpath`` for syntax.
 #
 # Example:
 # @CODE

@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: eapi8-dosym.eclass
@@ -65,9 +65,9 @@ _dosym8_canonicalize() {
 # Create a symbolic link <link>, pointing to <target>.  If the
 # directory containing the new link does not exist, create it.
 #
-# If called with option -r, expand <target> relative to the apparent
-# path of the directory containing <link>.  For example, "dosym8 -r
-# /bin/foo /usr/bin/foo" will create a link named "../../bin/foo".
+# If called with option ``-r``, expand <target> relative to the apparent
+# path of the directory containing <link>.  For example, ``dosym8 -r
+# /bin/foo /usr/bin/foo`` will create a link named ``../../bin/foo``.
 dosym8() {
 	local option_r
 

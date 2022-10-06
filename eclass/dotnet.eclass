@@ -9,8 +9,8 @@
 # @DESCRIPTION:
 # The dotnet eclass contains common environment settings that are useful for
 # dotnet packages.  Currently, it provides no functions, just exports
-# MONO_SHARED_DIR and sets LC_ALL in order to prevent errors during compilation
-# of dotnet packages.
+# ``MONO_SHARED_DIR`` and sets ``LC_ALL`` in order to prevent errors during
+# compilation of dotnet packages.
 
 case ${EAPI} in
 	6)
@@ -30,7 +30,7 @@ inherit mono-env
 # @ECLASS_VARIABLE: USE_DOTNET
 # @PRE_INHERIT
 # @DESCRIPTION:
-# Use flags added to IUSE
+# Use flags added to ``IUSE``
 
 # SET default use flags according on DOTNET_TARGETS
 for x in ${USE_DOTNET}; do
@@ -44,7 +44,7 @@ done
 
 # @FUNCTION: dotnet_pkg_setup
 # @DESCRIPTION:
-# This function set FRAMEWORK.
+# This function set ``FRAMEWORK``.
 dotnet_pkg_setup() {
 	for x in ${USE_DOTNET} ; do
 		case ${x} in
@@ -88,7 +88,7 @@ unset MONO_AOT_CACHE
 
 # @FUNCTION: exbuild
 # @DESCRIPTION:
-# Run xbuild with Release configuration and configurated FRAMEWORK.
+# Run ``xbuild`` with Release configuration and configurated ``FRAMEWORK``.
 exbuild() {
 	elog "xbuild ""$@"" /p:Configuration=Release /tv:4.0 /p:TargetFrameworkVersion=v""${FRAMEWORK}"" || die"
 	xbuild "$@" /p:Configuration=Release /tv:4.0 /p:TargetFrameworkVersion=v"${FRAMEWORK}" || die
@@ -96,7 +96,7 @@ exbuild() {
 
 # @FUNCTION: egacinstall
 # @DESCRIPTION:
-# Install package to GAC.
+# Install package to ``GAC``.
 egacinstall() {
 	gacutil -i "${1}" \
 		-root "${ED}"/usr/$(get_libdir) \

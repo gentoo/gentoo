@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fcaps.eclass
@@ -8,21 +8,21 @@
 # @BLURB: function to set POSIX file-based capabilities
 # @DESCRIPTION:
 # This eclass provides a function to set file-based capabilities on binaries.
-# This is not the same as USE=caps which controls runtime capability changes,
-# often via packages like libcap.
+# This is not the same as ``USE=caps`` which controls runtime capability changes,
+# often via packages like ``libcap``.
 #
 # Due to probable capability-loss on moving or copying, this happens in
-# pkg_postinst phase (at least for now).
+# ``pkg_postinst`` phase (at least for now).
 #
 # @EXAMPLE:
-# You can manually set the caps on ping and ping6 by doing:
+# You can manually set the caps on ``ping`` and ``ping6`` by doing:
 # @CODE
 # pkg_postinst() {
 # 	fcaps cap_net_raw bin/ping bin/ping6
 # }
 # @CODE
 #
-# Or set it via the global ebuild var FILECAPS:
+# Or set it via the global ebuild var ``FILECAPS``:
 # @CODE
 # FILECAPS=(
 # 	cap_net_raw bin/ping bin/ping6
@@ -49,10 +49,10 @@ esac
 # @ECLASS_VARIABLE: FILECAPS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# An array of fcap arguments to use to automatically execute fcaps.  See that
-# function for more details.
+# An array of ``fcap`` arguments to use to automatically execute ``fcaps``.
+# See that function for more details.
 #
-# All args are consumed until the '--' marker is found.  So if you have:
+# All args are consumed until the ``--`` marker is found.  So if you have:
 # @CODE
 # 	FILECAPS=( moo cow -- fat cat -- chubby penguin )
 # @CODE
@@ -64,26 +64,27 @@ esac
 # 	fcaps chubby penguin
 # @CODE
 #
-# Note: If you override pkg_postinst, you must call fcaps_pkg_postinst yourself.
+# Note: If you override ``pkg_postinst``, you must call ``fcaps_pkg_postinst``
+# yourself.
 
 # @FUNCTION: fcaps
 # @USAGE: [-o <owner>] [-g <group>] [-m <mode>] [-M <caps mode>] <capabilities> <file[s]>
 # @DESCRIPTION:
 # Sets the specified capabilities on the specified files.
 #
-# The caps option takes the form as expected by the cap_from_text(3) man page.
-# If no action is specified, then "=ep" will be used as a default.
+# The caps option takes the form as expected by the ``cap_from_text``(3) man page.
+# If no action is specified, then ``=ep`` will be used as a default.
 #
-# If the file is a relative path (e.g. bin/foo rather than /bin/foo), then the
-# appropriate path var ($D/$ROOT/etc...) will be prefixed based on the current
-# ebuild phase.
+# If the file is a relative path (e.g. ``bin/foo`` rather than ``/bin/foo``),
+# then the appropriate path var (``$D/$ROOT/etc``...) will be prefixed based on
+# the current ebuild phase.
 #
 # The caps mode (default 711) is used to set the permission on the file if
 # capabilities were properly set on the file.
 #
 # If the system is unable to set capabilities, it will use the specified user,
-# group, and mode (presumably to make the binary set*id).  The defaults there
-# are 0:0 and 4711.  Otherwise, the ownership and permissions will be
+# group, and mode (presumably to make the binary ``set*id``).  The defaults
+# there are 0:0 and 4711.  Otherwise, the ownership and permissions will be
 # unchanged.
 fcaps() {
 	debug-print-function ${FUNCNAME} "$@"
@@ -178,7 +179,7 @@ fcaps() {
 
 # @FUNCTION: fcaps_pkg_postinst
 # @DESCRIPTION:
-# Process the FILECAPS array.
+# Process the ``FILECAPS`` array.
 fcaps_pkg_postinst() {
 	local arg args=()
 	for arg in "${FILECAPS[@]}" "--" ; do

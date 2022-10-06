@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome2.eclass
@@ -9,12 +9,12 @@
 # @BLURB: Provides phases for Gnome/Gtk+ based packages.
 # @DESCRIPTION:
 # Exports portage base functions used by ebuilds written for packages using the
-# GNOME framework. For additional functions, see gnome2-utils.eclass.
+# GNOME framework. For additional functions, see ``gnome2-utils.eclass``.
 
 # @ECLASS_VARIABLE: GNOME2_EAUTORECONF
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Run eautoreconf instead of only elibtoolize
+# Run ``eautoreconf`` instead of only ``elibtoolize``
 GNOME2_EAUTORECONF=${GNOME2_EAUTORECONF:-""}
 
 [[ ${GNOME2_EAUTORECONF} == 'yes' ]] && inherit autotools
@@ -34,14 +34,14 @@ esac
 # @ECLASS_VARIABLE: ELTCONF
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Extra options passed to elibtoolize
+# Extra options passed to ``elibtoolize``
 ELTCONF=${ELTCONF:-""}
 
 # @ECLASS_VARIABLE: G2CONF
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Extra configure opts passed to econf.
-# Deprecated, pass extra arguments to gnome2_src_configure.
+# Extra configure opts passed to ``econf``.
+# Deprecated, pass extra arguments to ``gnome2_src_configure``.
 # Banned in eapi6 and newer.
 if has ${EAPI} 5; then
 	G2CONF=${G2CONF:-""}
@@ -52,13 +52,14 @@ fi
 # @DESCRIPTION:
 # Whether to handle debug or not.
 # Some gnome applications support various levels of debugging (yes, no, minimum,
-# etc), but using --disable-debug also removes g_assert which makes debugging
-# harder. This variable should be set to yes for such packages for the eclass
-# to handle it properly. It will enable minimal debug with USE=-debug.
-# Note that this is most commonly found in configure.ac as GNOME_DEBUG_CHECK.
+# etc), but using ``--disable-debug`` also removes ``g_assert`` which makes
+# debugging harder.  This variable should be set to yes for such packages for
+# the eclass to handle it properly.  It will enable minimal debug with
+# ``USE=-debug``.  Note that this is most commonly found in ``configure.ac`` as
+# ``GNOME_DEBUG_CHECK``.
 #
 # Banned since eapi6 as upstream is moving away from this obsolete macro in favor
-# of autoconf-archive macros, that do not expose this issue (bug #270919)
+# of ``autoconf-archive`` macros, that do not expose this issue (bug #270919)
 if has ${EAPI} 5; then
 	if [[ ${GCONF_DEBUG} != "no" ]]; then
 		IUSE="debug"
@@ -72,11 +73,16 @@ fi
 
 # @ECLASS_VARIABLE: GNOME2_LA_PUNT
 # @DESCRIPTION:
-# In EAPIs 5 and 6, it relies on prune_libtool_files (from ltprune.eclass) for
-# this. Later EAPIs use find ... -delete. Available values for GNOME2_LA_PUNT:
-# - "no": will not clean any .la files
-# - "yes": will run prune_libtool_files --modules
-# - If it is not set, it will run prune_libtool_files
+# In EAPIs 5 and 6, it relies on ``prune_libtool_files`` (from
+# ``ltprune.eclass``) for this. Later EAPIs use ``find ... -delete``.
+#
+# Available values for ``GNOME2_LA_PUNT``:
+#
+# - ``no``: will not clean any ``.la`` files
+#
+# - ``yes``: will run ``prune_libtool_files --modules``
+#
+# - If it is not set, it will run ``prune_libtool_files``
 GNOME2_LA_PUNT=${GNOME2_LA_PUNT:-""}
 
 # @FUNCTION: gnome2_src_unpack
@@ -93,8 +99,8 @@ gnome2_src_unpack() {
 
 # @FUNCTION: gnome2_src_prepare
 # @DESCRIPTION:
-# Prepare environment for build, fix build of scrollkeeper documentation,
-# run elibtoolize.
+# Prepare environment for build, fix build of ``scrollkeeper`` documentation,
+# run ``elibtoolize``.
 gnome2_src_prepare() {
 	[[ ${EAPI} != 5 ]] && default
 
@@ -210,7 +216,7 @@ gnome2_src_configure() {
 
 # @FUNCTION: gnome2_src_compile
 # @DESCRIPTION:
-# Only default src_compile for now
+# Only default ``src_compile`` for now
 gnome2_src_compile() {
 	if has ${EAPI} 5; then
 		emake
@@ -222,7 +228,7 @@ gnome2_src_compile() {
 # @FUNCTION: gnome2_src_install
 # @DESCRIPTION:
 # Gnome specific install. Handles typical GConf and scrollkeeper setup
-# in packages and removal of .la files if requested
+# in packages and removal of ``.la`` files if requested
 gnome2_src_install() {
 	# we must delay gconf schema installation due to sandbox
 	export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL="1"
@@ -281,7 +287,7 @@ gnome2_src_install() {
 
 # @FUNCTION: gnome2_pkg_preinst
 # @DESCRIPTION:
-# Finds Icons, GConf and GSettings schemas for later handling in pkg_postinst
+# Finds Icons, GConf and GSettings schemas for later handling in ``pkg_postinst``
 gnome2_pkg_preinst() {
 	xdg_pkg_preinst
 	gnome2_gconf_savelist

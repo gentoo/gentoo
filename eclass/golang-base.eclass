@@ -10,7 +10,7 @@
 # @DESCRIPTION:
 # This eclass provides base functions for software written in the Go
 # programming language; it also provides the build-time dependency on
-# dev-lang/go.
+# ``dev-lang/go``.
 
 case "${EAPI:-0}" in
 	5|6|7)
@@ -44,7 +44,7 @@ export GO111MODULE=auto
 # @REQUIRED
 # @DESCRIPTION:
 # This is the import path for the go package to build. Please emerge
-# dev-lang/go and read "go help importpath" for syntax.
+# ``dev-lang/go`` and read ``go help importpath`` for syntax.
 #
 # Example:
 # @CODE
@@ -53,7 +53,7 @@ export GO111MODULE=auto
 
 # @FUNCTION: ego_pn_check
 # @DESCRIPTION:
-# Make sure EGO_PN has a value.
+# Make sure ``EGO_PN`` has a value.
 ego_pn_check() {
 	[[ -z "${EGO_PN}" ]] &&
 		die "${ECLASS}.eclass: EGO_PN is not set"
@@ -71,7 +71,7 @@ get_golibdir() {
 # @FUNCTION: get_golibdir_gopath
 # @DESCRIPTION:
 # Return the library directory where Go packages should be installed
-# This is the prefixed version which should be included in GOPATH
+# This is the prefixed version which should be included in ``GOPATH``
 get_golibdir_gopath() {
 	echo "${EPREFIX}$(get_golibdir)"
 }
@@ -79,7 +79,7 @@ get_golibdir_gopath() {
 # @FUNCTION: golang_install_pkgs
 # @DESCRIPTION:
 # Install Go packages.
-# This function assumes that $cwd is a Go workspace.
+# This function assumes that ``${PWD}`` is a Go workspace.
 golang_install_pkgs() {
 	debug-print-function ${FUNCNAME} "$@"
 

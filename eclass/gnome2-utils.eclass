@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome2-utils.eclass
@@ -11,9 +11,12 @@
 # This eclass provides a set of auxiliary functions needed by most Gnome
 # packages. It may be used by non-Gnome packages as needed for handling various
 # Gnome stack related functions such as:
-#  * GSettings schemas management
-#  * GConf schemas management
-#  * scrollkeeper (old Gnome help system) management
+#
+# - GSettings schemas management
+#
+# - GConf schemas management
+#
+# - scrollkeeper (old Gnome help system) management
 
 [[ ${EAPI} == 5 ]] && inherit multilib
 # toolchain-funs.eclass: tc-is-cross-compiler
@@ -28,25 +31,25 @@ esac
 # @ECLASS_VARIABLE: GCONFTOOL_BIN
 # @INTERNAL
 # @DESCRIPTION:
-# Path to gconftool-2
+# Path to ``gconftool-2``
 : ${GCONFTOOL_BIN:="/usr/bin/gconftool-2"}
 
 # @ECLASS_VARIABLE: SCROLLKEEPER_DIR
 # @INTERNAL
 # @DESCRIPTION:
-# Directory where scrollkeeper-update should do its work
+# Directory where ``scrollkeeper-update`` should do its work
 : ${SCROLLKEEPER_DIR:="/var/lib/scrollkeeper"}
 
 # @ECLASS_VARIABLE: SCROLLKEEPER_UPDATE_BIN
 # @INTERNAL
 # @DESCRIPTION:
-# Path to scrollkeeper-update
+# Path to ``scrollkeeper-update``
 : ${SCROLLKEEPER_UPDATE_BIN:="/usr/bin/scrollkeeper-update"}
 
 # @ECLASS_VARIABLE: GLIB_COMPILE_SCHEMAS
 # @INTERNAL
 # @DESCRIPTION:
-# Path to glib-compile-schemas
+# Path to ``glib-compile-schemas``
 : ${GLIB_COMPILE_SCHEMAS:="/usr/bin/glib-compile-schemas"}
 
 # @ECLASS_VARIABLE: GNOME2_ECLASS_SCHEMAS
@@ -77,12 +80,12 @@ esac
 # @INTERNAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# List of gdk-pixbuf loaders provided by the package
+# List of ``gdk-pixbuf`` loaders provided by the package
 
 
 # @FUNCTION: gnome2_environment_reset
 # @DESCRIPTION:
-# Reset various variables inherited from root's evironment to a reasonable
+# Reset various variables inherited from root's environment to a reasonable
 # default for ebuilds to help avoid access violations and test failures.
 gnome2_environment_reset() {
 	xdg_environment_reset
@@ -108,8 +111,9 @@ gnome2_environment_reset() {
 # @FUNCTION: gnome2_gconf_savelist
 # @DESCRIPTION:
 # Find the GConf schemas that are about to be installed and save their location
-# in the GNOME2_ECLASS_SCHEMAS environment variable.
-# This function should be called from pkg_preinst.
+# in the ``GNOME2_ECLASS_SCHEMAS`` environment variable.
+#
+# This function should be called from ``pkg_preinst``.
 gnome2_gconf_savelist() {
 	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_SCHEMAS=$(find 'etc/gconf/schemas/' -name '*.schemas' 2> /dev/null)
@@ -119,8 +123,9 @@ gnome2_gconf_savelist() {
 # @FUNCTION: gnome2_gconf_install
 # @DESCRIPTION:
 # Applies any schema files installed by the current ebuild to Gconf's database
-# using gconftool-2.
-# This function should be called from pkg_postinst.
+# using ``gconftool-2``.
+#
+# This function should be called from ``pkg_postinst``.
 gnome2_gconf_install() {
 	local updater="${EROOT%/}${GCONFTOOL_BIN}"
 
@@ -214,8 +219,9 @@ gnome2_gconf_uninstall() {
 # @FUNCTION: gnome2_omf_fix
 # @DESCRIPTION:
 # Workaround applied to Makefile rules in order to remove redundant
-# calls to scrollkeeper-update and sandbox violations.
-# This function should be called from src_prepare.
+# calls to ``scrollkeeper-update`` and sandbox violations.
+#
+# This function should be called from ``src_prepare``.
 gnome2_omf_fix() {
 	local omf_makefiles filename
 
@@ -265,8 +271,9 @@ gnome2_omf_fix() {
 # @FUNCTION: gnome2_scrollkeeper_savelist
 # @DESCRIPTION:
 # Find the scrolls that are about to be installed and save their location
-# in the GNOME2_ECLASS_SCROLLS environment variable.
-# This function should be called from pkg_preinst.
+# in the ``GNOME2_ECLASS_SCROLLS`` environment variable.
+#
+# This function should be called from ``pkg_preinst``.
 gnome2_scrollkeeper_savelist() {
 	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_SCROLLS=$(find 'usr/share/omf' -type f -name "*.omf" 2> /dev/null)
@@ -276,7 +283,8 @@ gnome2_scrollkeeper_savelist() {
 # @FUNCTION: gnome2_scrollkeeper_update
 # @DESCRIPTION:
 # Updates the global scrollkeeper database.
-# This function should be called from pkg_postinst and pkg_postrm.
+#
+# This function should be called from ``pkg_postinst`` and ``pkg_postrm``.
 gnome2_scrollkeeper_update() {
 	local updater="${EROOT%/}${SCROLLKEEPER_UPDATE_BIN}"
 
@@ -306,9 +314,10 @@ gnome2_scrollkeeper_update() {
 # @FUNCTION: gnome2_schemas_savelist
 # @DESCRIPTION:
 # Find if there is any GSettings schema to install and save the list in
-# GNOME2_ECLASS_GLIB_SCHEMAS variable. This is only necessary for eclass
-# implementations that call gnome2_schemas_update conditionally.
-# This function should be called from pkg_preinst.
+# ``GNOME2_ECLASS_GLIB_SCHEMAS`` variable. This is only necessary for eclass
+# implementations that call ``gnome2_schemas_update`` conditionally.
+#
+# This function should be called from ``pkg_preinst``.
 gnome2_schemas_savelist() {
 	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_GLIB_SCHEMAS=$(find 'usr/share/glib-2.0/schemas' -name '*.gschema.xml' 2>/dev/null)
@@ -318,7 +327,8 @@ gnome2_schemas_savelist() {
 # @FUNCTION: gnome2_schemas_update
 # @DESCRIPTION:
 # Updates GSettings schemas.
-# This function should be called from pkg_postinst and pkg_postrm.
+#
+# This function should be called from ``pkg_postinst`` and ``pkg_postrm``.
 gnome2_schemas_update() {
 	local updater="${EROOT%/}${GLIB_COMPILE_SCHEMAS}"
 
@@ -343,8 +353,9 @@ gnome2_schemas_update() {
 # @FUNCTION: gnome2_gdk_pixbuf_savelist
 # @DESCRIPTION:
 # Find if there is any gdk-pixbuf loader to install and save the list in
-# GNOME2_ECLASS_GDK_PIXBUF_LOADERS variable.
-# This function should be called from pkg_preinst.
+# ``GNOME2_ECLASS_GDK_PIXBUF_LOADERS`` variable.
+#
+# This function should be called from ``pkg_preinst``.
 gnome2_gdk_pixbuf_savelist() {
 	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_GDK_PIXBUF_LOADERS=$(find usr/lib*/gdk-pixbuf-2.0 -type f 2>/dev/null)
@@ -353,8 +364,10 @@ gnome2_gdk_pixbuf_savelist() {
 
 # @FUNCTION: gnome2_gdk_pixbuf_update
 # @DESCRIPTION:
-# Updates gdk-pixbuf loader cache if GNOME2_ECLASS_GDK_PIXBUF_LOADERS has some.
-# This function should be called from pkg_postinst and pkg_postrm.
+# Updates ``gdk-pixbuf`` loader cache if ``GNOME2_ECLASS_GDK_PIXBUF_LOADERS``
+# has some.
+#
+# This function should be called from ``pkg_postinst`` and ``pkg_postrm``.
 gnome2_gdk_pixbuf_update() {
 	local updater="${EROOT%/}/usr/bin/${CHOST}-gdk-pixbuf-query-loaders"
 	[[ -x ${updater} ]] || updater="${EROOT%/}/usr/bin/gdk-pixbuf-query-loaders"
@@ -425,7 +438,8 @@ gnome2_query_immodules_gtk3() {
 # @FUNCTION: gnome2_giomodule_cache_update
 # @DESCRIPTION:
 # Updates glib's gio modules cache.
-# This function should be called from pkg_postinst and pkg_postrm.
+#
+# This function should be called from ``pkg_postinst`` and ``pkg_postrm``.
 gnome2_giomodule_cache_update() {
 	local updater="${EROOT%/}/usr/bin/${CHOST}-gio-querymodules"
 	[[ -x ${updater} ]] || updater="${EROOT%/}/usr/bin/gio-querymodules"
@@ -451,7 +465,8 @@ gnome2_giomodule_cache_update() {
 # @FUNCTION: gnome2_disable_deprecation_warning
 # @DESCRIPTION:
 # Disable deprecation warnings commonly found in glib based packages.
-# Should be called from src_prepare.
+#
+# Should be called from ``src_prepare``.
 gnome2_disable_deprecation_warning() {
 	local retval=0
 	local fails=( )
@@ -494,10 +509,11 @@ case ${EAPI} in
 # @FUNCTION: gnome2_icon_savelist
 # @DESCRIPTION:
 # Find the icons that are about to be installed and save their location
-# in the GNOME2_ECLASS_ICONS environment variable. This is only
+# in the ``GNOME2_ECLASS_ICONS`` environment variable. This is only
 # necessary for eclass implementations that call
-# gnome2_icon_cache_update conditionally.
-# This function should be called from pkg_preinst.
+# ``gnome2_icon_cache_update`` conditionally.
+#
+# This function should be called from ``pkg_preinst``.
 gnome2_icon_savelist() {
 	pushd "${ED}" > /dev/null || die
 	export GNOME2_ECLASS_ICONS=$(find 'usr/share/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null)
@@ -506,8 +522,8 @@ gnome2_icon_savelist() {
 
 # @FUNCTION: gnome2_icon_cache_update
 # @DESCRIPTION:
-# Updates Gtk+ icon cache files under /usr/share/icons.
-# Deprecated. Please use xdg_icon_cache_update from xdg-utils.eclass
+# Updates Gtk+ icon cache files under ``/usr/share/icons``.
+# Deprecated. Please use ``xdg_icon_cache_update`` from ``xdg-utils.eclass``
 gnome2_icon_cache_update() {
 	xdg_icon_cache_update
 }

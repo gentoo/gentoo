@@ -13,12 +13,12 @@
 # @DESCRIPTION:
 # A simple eclass providing functions to build Python packages using
 # the distutils build system. It exports phase functions for all
-# the src_* phases. Each of the phases runs two pseudo-phases:
-# python_..._all() (e.g. python_prepare_all()) once in ${S}, then
-# python_...() (e.g. python_prepare()) for each implementation
-# (see: python_foreach_impl() in python-r1).
+# the ``src_* phases``. Each of the phases runs two pseudo-phases:
+# ``python_..._all()`` (e.g. ``python_prepare_all()``) once in ``${S}``, then
+# ``python_...()`` (e.g. ``python_prepare()``) for each implementation
+# (see: ``python_foreach_impl()`` in ``python-r1``).
 #
-# In distutils-r1_src_prepare(), the 'all' function is run before
+# In ``distutils-r1_src_prepare()``, the 'all' function is run before
 # per-implementation ones (because it creates the implementations),
 # per-implementation functions are run in a random order.
 #
@@ -28,18 +28,18 @@
 # ones).
 #
 # If the ebuild doesn't specify a particular pseudo-phase function,
-# the default one will be used (distutils-r1_...). Defaults are provided
-# for all per-implementation pseudo-phases, python_prepare_all()
-# and python_install_all(); whenever writing your own pseudo-phase
+# the default one will be used (``distutils-r1_...``). Defaults are provided
+# for all per-implementation pseudo-phases, ``python_prepare_all()``
+# and ``python_install_all()``; whenever writing your own pseudo-phase
 # functions, you should consider calling the defaults (and especially
-# distutils-r1_python_prepare_all).
+# ``distutils-r1_python_prepare_all``).
 #
-# Please note that distutils-r1 sets RDEPEND and BDEPEND (or DEPEND
-# in earlier EAPIs) unconditionally for you.
+# Please note that ``distutils-r1`` sets ``RDEPEND`` and ``BDEPEND`` (or
+# ``DEPEND`` in earlier EAPIs) unconditionally for you.
 #
-# Also, please note that distutils-r1 will always inherit python-r1
+# Also, please note that ``distutils-r1`` will always inherit ``python-r1``
 # as well. Thus, all the variables defined and documented there are
-# relevant to the packages using distutils-r1.
+# relevant to the packages using ``distutils-r1``.
 #
 # For more information, please see the Python Guide:
 # https://projects.gentoo.org/python/guide/
@@ -62,19 +62,19 @@ esac
 # be considered optional. No dependencies will be added and no phase
 # functions will be exported.
 #
-# If you enable DISTUTILS_OPTIONAL, you have to set proper dependencies
-# for your package (using ${PYTHON_DEPS}) and to either call
-# distutils-r1 default phase functions or call the build system
+# If you enable ``DISTUTILS_OPTIONAL``, you have to set proper dependencies
+# for your package (using ``${PYTHON_DEPS}``) and to either call
+# ``distutils-r1`` default phase functions or call the build system
 # manually.
 
 # @ECLASS_VARIABLE: DISTUTILS_SINGLE_IMPL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set to a non-null value, the ebuild will support setting a single
-# Python implementation only. It will effectively replace the python-r1
-# eclass inherit with python-single-r1.
+# Python implementation only. It will effectively replace the ``python-r1``
+# eclass inherit with ``python-single-r1``.
 #
-# Note that inheriting python-single-r1 will cause pkg_setup()
+# Note that inheriting ``python-single-r1`` will cause ``pkg_setup()``
 # to be exported. It must be run in order for the eclass functions
 # to function properly.
 
@@ -83,9 +83,9 @@ esac
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Enable the PEP 517 mode for the specified build system.  In this mode,
-# the complete build and install is done in python_compile(),
-# a venv-style install tree is provided to python_test(),
-# and python_install() just merges the temporary install tree
+# the complete build and install is done in ``python_compile()``,
+# a venv-style install tree is provided to ``python_test()``,
+# and ``python_install()`` just merges the temporary install tree
 # into the real fs.
 #
 # This mode is recommended for Python packages.  However, some packages
@@ -126,37 +126,37 @@ esac
 # The variable needs to be set before the inherit line.  The eclass
 # adds appropriate build-time dependencies and verifies the value.
 #
-# The special value "no" indicates that the package has no build system.
-# This is not equivalent to unset DISTUTILS_USE_PEP517 (legacy mode).
+# The special value ``no`` indicates that the package has no build system.
+# This is not equivalent to unset ``DISTUTILS_USE_PEP517`` (legacy mode).
 # It causes the eclass not to include any build system dependencies
-# and to disable default python_compile() and python_install()
+# and to disable default ``python_compile()`` and ``python_install()``
 # implementations.  Baseline Python deps and phase functions will still
-# be set (depending on the value of DISTUTILS_OPTIONAL).  Most of
+# be set (depending on the value of ``DISTUTILS_OPTIONAL``).  Most of
 # the other eclass functions will work.  Testing venv will be provided
-# in ${BUILD_DIR}/install after python_compile(), and if any (other)
-# files are found in ${BUILD_DIR}/install after python_install(), they
-# will be merged into ${D}.
+# in ``${BUILD_DIR}/install`` after ``python_compile()``, and if any (other)
+# files are found in ``${BUILD_DIR}/install`` after ``python_install()``, they
+# will be merged into ``${D}``.
 
 # @ECLASS_VARIABLE: DISTUTILS_USE_SETUPTOOLS
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
-# Controls adding dev-python/setuptools dependency.  The allowed values
+# Controls adding ``dev-python/setuptools`` dependency.  The allowed values
 # are:
 #
 # - no -- do not add the dependency (pure distutils package)
 #
-# - bdepend -- add it to BDEPEND (the default)
+# - bdepend -- add it to ``BDEPEND`` (the default)
 #
-# - rdepend -- add it to BDEPEND+RDEPEND (e.g. when using pkg_resources)
+# - rdepend -- add it to ``BDEPEND+RDEPEND`` (e.g. when using pkg_resources)
 #
-# - pyproject.toml -- use pyproject2setuptools to install a project
-#   using pyproject.toml (flit, poetry...)
+# - pyproject.toml -- use ``pyproject2setuptools`` to install a project
+#   using ``pyproject.toml`` (flit, poetry...)
 #
 # - manual -- do not add the dependency and suppress the checks
 #   (assumes you will take care of doing it correctly)
 #
-# This variable is effective only if DISTUTILS_OPTIONAL is disabled.
+# This variable is effective only if ``DISTUTILS_OPTIONAL`` is disabled.
 # It is available only in non-PEP517 mode.  It needs to be set before
 # the inherit line.
 
@@ -164,8 +164,8 @@ esac
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # This is an eclass-generated build-time dependency string for the build
-# system packages.  This string is automatically appended to BDEPEND
-# unless DISTUTILS_OPTIONAL is used.  This variable is available only
+# system packages.  This string is automatically appended to ``BDEPEND``
+# unless ``DISTUTILS_OPTIONAL`` is used.  This variable is available only
 # in PEP 517 mode.
 #
 # Example use:
@@ -355,9 +355,9 @@ unset -f _distutils_set_globals
 # @ECLASS_VARIABLE: DOCS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# An array containing documents installed using dodoc. The files listed
+# An array containing documents installed using ``dodoc``. The files listed
 # there must exist in the directory from which
-# distutils-r1_python_install_all() is run (${S} by default).
+# ``distutils-r1_python_install_all()`` is run (``${S}`` by default).
 #
 # If unset, the function will instead look up files matching default
 # filename pattern list (from the Package Manager Specification),
@@ -371,9 +371,9 @@ unset -f _distutils_set_globals
 # @ECLASS_VARIABLE: HTML_DOCS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# An array containing documents installed using dohtml. The files
+# An array containing documents installed using ``dohtml``. The files
 # and directories listed there must exist in the directory from which
-# distutils-r1_python_install_all() is run (${S} by default).
+# ``distutils-r1_python_install_all()`` is run (``${S}`` by default).
 #
 # If unset, no HTML docs will be installed.
 #
@@ -386,34 +386,34 @@ unset -f _distutils_set_globals
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set to a non-null value, in-source builds will be enabled.
-# If unset, the default is to use in-source builds when python_prepare()
+# If unset, the default is to use in-source builds when ``python_prepare()``
 # is declared, and out-of-source builds otherwise.
 #
 # If in-source builds are used, the eclass will create a copy of package
-# sources for each Python implementation in python_prepare_all(),
+# sources for each Python implementation in ``python_prepare_all()``,
 # and work on that copy afterwards.
 #
 # If out-of-source builds are used, the eclass will instead work
-# on the sources directly, prepending setup.py arguments with
-# 'build --build-base ${BUILD_DIR}' to enforce keeping & using built
+# on the sources directly, prepending ``setup.py`` arguments with
+# ``build --build-base ${BUILD_DIR}`` to enforce keeping & using built
 # files in the specific root.
 
 # @ECLASS_VARIABLE: DISTUTILS_ALL_SUBPHASE_IMPLS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # An array of patterns specifying which implementations can be used
-# for *_all() sub-phase functions. If undefined, defaults to '*'
+# for ``*_all()`` sub-phase functions. If undefined, defaults to ``*``
 # (allowing any implementation). If multiple values are specified,
 # implementations matching any of the patterns will be accepted.
 #
-# For the pattern syntax, please see _python_impl_matches
-# in python-utils-r1.eclass.
+# For the pattern syntax, please see ``_python_impl_matches``
+# in ``python-utils-r1.eclass``.
 #
 # If the restriction needs to apply conditionally to a USE flag,
 # the variable should be set conditionally as well (e.g. in an early
 # phase function or other convenient location).
 #
-# Please remember to add a matching || block to REQUIRED_USE,
+# Please remember to add a matching ``||`` block to ``REQUIRED_USE``,
 # to ensure that at least one implementation matching the patterns will
 # be enabled.
 #
@@ -433,13 +433,13 @@ unset -f _distutils_set_globals
 # Supported by a subset of build systems used by the eclass.
 #
 # For setuptools, the arguments will be passed as first parameters
-# to setup.py invocations (via esetup.py), as well as to the PEP517
+# to ``setup.py`` invocations (via ``esetup.py``), as well as to the PEP517
 # backend.  For future compatibility, only global options should be used
 # and specifying commands should be avoided.
 #
 # For sip, the options are passed to the PEP517 backend in a form
 # resembling sip-build calls.  Options taking arguments need to
-# be specified in the "--key=value" form, while flag options as "--key".
+# be specified in the ``--key=value`` form, while flag options as ``--key``.
 # If an option takes multiple arguments, it can be specified multiple
 # times, same as for sip-build.
 #
@@ -453,29 +453,29 @@ unset -f _distutils_set_globals
 # @FUNCTION: distutils_enable_sphinx
 # @USAGE: <subdir> [--no-autodoc | <plugin-pkgs>...]
 # @DESCRIPTION:
-# Set up IUSE, BDEPEND, python_check_deps() and python_compile_all() for
-# building HTML docs via dev-python/sphinx.  python_compile_all() will
-# append to HTML_DOCS if docs are enabled.
+# Set up ``IUSE``, ``BDEPEND``, ``python_check_deps()`` and
+# ``python_compile_all()`` for building HTML docs via ``dev-python/sphinx``.
+# ``python_compile_all()`` will append to ``HTML_DOCS`` if docs are enabled.
 #
 # This helper is meant for the most common case, that is a single Sphinx
 # subdirectory with standard layout, building and installing HTML docs
-# behind USE=doc.  It assumes it's the only consumer of the three
+# behind ``USE=doc``.  It assumes it's the only consumer of the three
 # aforementioned functions.  If you need to use a custom implemention,
 # you can't use it.
 #
 # If your package uses additional Sphinx plugins, they should be passed
-# (without PYTHON_USEDEP) as <plugin-pkgs>.  The function will take care
-# of setting appropriate any-of dep and python_check_deps().
+# (without ``PYTHON_USEDEP``) as <plugin-pkgs>.  The function will take care
+# of setting appropriate any-of dep and ``python_check_deps()``.
 #
 # If no plugin packages are specified, the eclass will still utilize
-# any-r1 API to support autodoc (documenting source code).
-# If the package uses neither autodoc nor additional plugins, you should
-# pass --no-autodoc to disable this API and simplify the resulting code.
+# ``any-r1`` API to support ``autodoc`` (documenting source code).
+# If the package uses neither ``autodoc`` nor additional plugins, you should
+# pass ``--no-autodoc`` to disable this API and simplify the resulting code.
 #
 # This function must be called in global scope.  Take care not to
 # overwrite the variables set by it.  If you need to extend
-# python_compile_all(), you can call the original implementation
-# as sphinx_compile_all.
+# ``python_compile_all()``, you can call the original implementation
+# as ``sphinx_compile_all``.
 distutils_enable_sphinx() {
 	debug-print-function ${FUNCNAME} "${@}"
 	[[ ${#} -ge 1 ]] || die "${FUNCNAME} takes at least one arg: <subdir>"
@@ -556,20 +556,20 @@ distutils_enable_sphinx() {
 # @FUNCTION: distutils_enable_tests
 # @USAGE: [--install] <test-runner>
 # @DESCRIPTION:
-# Set up IUSE, RESTRICT, BDEPEND and python_test() for running tests
-# with the specified test runner.  Also copies the current value
-# of RDEPEND to test?-BDEPEND.  The test-runner argument must be one of:
+# Set up ``IUSE``, ``RESTRICT``, ``BDEPEND`` and ``python_test()`` for running
+# tests with the specified test runner.  Also copies the current value
+# of ``RDEPEND`` to ``test?-BDEPEND``.  The test-runner argument must be one of:
 #
-# - nose: nosetests (dev-python/nose)
+# - nose: nosetests (``dev-python/nose``)
 #
-# - pytest: dev-python/pytest
+# - pytest: ``dev-python/pytest``
 #
-# - setup.py: setup.py test (no deps included)
+# - setup.py: ``setup.py`` test (no deps included)
 #
 # - unittest: for built-in Python unittest module
 #
-# Additionally, if --install is passed as the first parameter,
-# 'distutils_install_for_testing --via-root' is called before running
+# Additionally, if ``--install`` is passed as the first parameter,
+# ``distutils_install_for_testing --via-root``` is called before running
 # the test suite.
 #
 # This function is meant as a helper for common use cases, and it only
@@ -577,7 +577,7 @@ distutils_enable_sphinx() {
 # dependencies manually.  If you have uncommon use case, you should
 # not use it and instead enable tests manually.
 #
-# This function must be called in global scope, after RDEPEND has been
+# This function must be called in global scope, after ``RDEPEND`` has been
 # declared.  Take care not to overwrite the variables set by it.
 distutils_enable_tests() {
 	debug-print-function ${FUNCNAME} "${@}"
@@ -642,20 +642,20 @@ distutils_enable_tests() {
 # @FUNCTION: esetup.py
 # @USAGE: [<args>...]
 # @DESCRIPTION:
-# Run setup.py using currently selected Python interpreter
-# (if ${EPYTHON} is set; fallback 'python' otherwise).
+# Run ``setup.py`` using currently selected Python interpreter
+# (if ``${EPYTHON}`` is set; fallback ``python`` otherwise).
 #
-# setup.py will be passed the following, in order:
+# ``setup.py`` will be passed the following, in order:
 #
-# 1. ${DISTUTILS_ARGS[@]}
+# 1. ``${DISTUTILS_ARGS[@]}``
 #
-# 2. ${mydistutilsargs[@]} (deprecated)
+# 2. ``${mydistutilsargs[@]}`` (deprecated)
 #
-# 3. additional arguments passed to the esetup.py function.
+# 3. additional arguments passed to the ``esetup.py`` function.
 #
-# Please note that setup.py will respect defaults (unless overridden
-# via command-line options) from setup.cfg that is created
-# in distutils-r1_python_compile and in distutils-r1_python_install.
+# Please note that ``setup.py`` will respect defaults (unless overridden
+# via command-line options) from ``setup.cfg`` that is created
+# in ``distutils-r1_python_compile`` and in ``distutils-r1_python_install``.
 #
 # This command dies on failure.
 esetup.py() {
@@ -699,27 +699,27 @@ esetup.py() {
 # @USAGE: [--via-root|--via-home|--via-venv] [<args>...]
 # @DESCRIPTION:
 # Install the package into a temporary location for running tests.
-# Update PYTHONPATH appropriately and set TEST_DIR to the test
-# installation root. The Python packages will be installed in 'lib'
-# subdir, and scripts in 'scripts' subdir (like in BUILD_DIR).
+# Update ``PYTHONPATH`` appropriately and set ``TEST_DIR`` to the test
+# installation root. The Python packages will be installed in ``lib``
+# subdir, and scripts in ``scripts`` subdir (like in ``BUILD_DIR``).
 #
 # Please note that this function should be only used if package uses
 # namespaces (and therefore proper install needs to be done to enforce
-# PYTHONPATH) or tests rely on the results of install command.
-# For most of the packages, tests built in BUILD_DIR are good enough.
+# ``PYTHONPATH``) or tests rely on the results of install command.
+# For most of the packages, tests built in ``BUILD_DIR`` are good enough.
 #
 # The function supports three install modes.  These are:
 #
-# --via-root (the default) that uses 'setup.py install --root=...'
-# combined with PYTHONPATH and is recommended for the majority
+# ``--via-root`` (the default) that uses ``setup.py install --root=...``
+# combined with ``PYTHONPATH`` and is recommended for the majority
 # of packages.
 #
-# --via-venv that creates a (non-isolated) venv and installs the package
-# into it via 'setup.py install'.  This mode does not use PYTHONPATH
-# but requires python to be called via PATH.  It may solve a few corner
-# cases that --via-root do not support.
+# ``--via-venv`` that creates a (non-isolated) venv and installs the package
+# into it via ``setup.py install``.  This mode does not use ``PYTHONPATH``
+# but requires python to be called via ``PATH``.  It may solve a few corner
+# cases that ``--via-root`` do not support.
 #
-# --via-home that uses 'setup.py install --home=...'.  This is
+# ``--via-home`` that uses ``setup.py install --home=...``.  This is
 # a historical mode that was mostly broken by setuptools 50.3.0+.
 # If your package does not work with the other two modes but works with
 # this one, please report a bug.
@@ -818,11 +818,11 @@ distutils_install_for_testing() {
 # @FUNCTION: distutils_write_namespace
 # @USAGE: <namespace>...
 # @DESCRIPTION:
-# Write the __init__.py file for the requested namespace into PEP517
+# Write the ``__init__.py`` file for the requested namespace into PEP517
 # install tree, in order to fix running tests when legacy namespace
-# packages are installed (dev-python/namespace-*).
+# packages are installed (``dev-python/namespace-*``).
 #
-# This function must only be used in python_test().  The created file
+# This function must only be used in ``python_test()``.  The created file
 # will automatically be removed upon leaving the test phase.
 distutils_write_namespace() {
 	debug-print-function ${FUNCNAME} "${@}"
@@ -1013,8 +1013,8 @@ _distutils-r1_print_package_versions() {
 
 # @FUNCTION: distutils-r1_python_prepare_all
 # @DESCRIPTION:
-# The default python_prepare_all(). It applies the patches from PATCHES
-# array, then user patches and finally calls python_copy_sources to
+# The default ``python_prepare_all()``. It applies the patches from ``PATCHES``
+# array, then user patches and finally calls ``python_copy_sources`` to
 # create copies of resulting sources for each Python implementation.
 #
 # At some point in the future, it may also apply eclass-specific
@@ -1397,19 +1397,19 @@ distutils_pep517_install() {
 # @FUNCTION: distutils-r1_python_compile
 # @USAGE: [additional-args...]
 # @DESCRIPTION:
-# The default python_compile().
+# The default ``python_compile()``.
 #
-# If DISTUTILS_USE_PEP517 is set to "no", a no-op.
+# If ``DISTUTILS_USE_PEP517`` is set to ``no``, a no-op.
 #
-# If DISTUTILS_USE_PEP517 is set to any other value, builds a wheel
-# using the PEP517 backend and installs it into ${BUILD_DIR}/install.
-# May additionally call build_ext prior to that when using setuptools
+# If ``DISTUTILS_USE_PEP517`` is set to any other value, builds a wheel
+# using the PEP517 backend and installs it into ``${BUILD_DIR}/install``.
+# May additionally call ``build_ext`` prior to that when using ``setuptools``
 # and the eclass detects a potential benefit from parallel extension
 # builds.
 #
-# In legacy mode, runs 'esetup.py build'. Any parameters passed to this
-# function will be appended to setup.py invocation, i.e. passed
-# as options to the 'build' command.
+# In legacy mode, runs ``esetup.py build``. Any parameters passed to this
+# function will be appended to ``setup.py`` invocation, i.e. passed
+# as options to the ``build`` command.
 distutils-r1_python_compile() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -1535,11 +1535,11 @@ _distutils-r1_wrap_scripts() {
 # @FUNCTION: distutils-r1_python_test
 # @USAGE: [additional-args...]
 # @DESCRIPTION:
-# The python_test() implementation used by distutils_enable_tests.
+# The ``python_test()`` implementation used by ``distutils_enable_tests``.
 # Runs tests using the specified test runner, possibly installing them
 # first.
 #
-# This function is used only if distutils_enable_tests is called.
+# This function is used only if ``distutils_enable_tests`` is called.
 distutils-r1_python_test() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -1579,14 +1579,14 @@ distutils-r1_python_test() {
 # @FUNCTION: distutils-r1_python_install
 # @USAGE: [additional-args...]
 # @DESCRIPTION:
-# The default python_install().
+# The default ``python_install()``.
 #
-# In PEP517 mode, merges the files from ${BUILD_DIR}/install
+# In PEP517 mode, merges the files from ``${BUILD_DIR}/install``
 # (if present) to the image directory.
 #
-# In the legacy mode, calls `esetup.py install` to install the package.
+# In the legacy mode, calls ``esetup.py install`` to install the package.
 # Any parameters passed to this function will be appended
-# to the setup.py invocation (i.e. as options to the 'install' command).
+# to the ``setup.py`` invocation (i.e. as options to the ``install`` command).
 distutils-r1_python_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -1703,7 +1703,7 @@ distutils-r1_python_install() {
 
 # @FUNCTION: distutils-r1_python_install_all
 # @DESCRIPTION:
-# The default python_install_all(). It installs the documentation.
+# The default ``python_install_all()``. It installs the documentation.
 distutils-r1_python_install_all() {
 	debug-print-function ${FUNCNAME} "${@}"
 	_distutils-r1_check_all_phase_mismatch

@@ -62,13 +62,14 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # @PRE_INHERIT
 # @DESCRIPTION:
 # bash string containing all crates package wants to download
-# used by cargo_crate_uris()
+# used by ``cargo_crate_uris()``
+#
 # Example:
 # @CODE
 # CRATES="
-# metal-1.2.3
-# bar-4.5.6
-# iron_oxide-0.0.1
+# 	metal-1.2.3
+# 	bar-4.5.6
+# 	iron_oxide-0.0.1
 # "
 # inherit cargo
 # ...
@@ -79,26 +80,26 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
-# If set to a non-null value, before inherit cargo part of the ebuild will
+# If set to a non-null value, before ``inherit cargo`` part of the ebuild will
 # be considered optional. No dependencies will be added and no phase
 # functions will be exported.
 #
-# If you enable CARGO_OPTIONAL, you have to set BDEPEND on virtual/rust
-# for your package and call at least cargo_gen_config manually before using
-# other src_ functions of this eclass.
-# note that cargo_gen_config is automatically called by cargo_src_unpack.
+# If you enable ``CARGO_OPTIONAL``, you have to set ``BDEPEND`` on ``virtual/rust``
+# for your package and call at least ``cargo_gen_config`` manually before using
+# other ``src_*`` functions of this eclass.
+# note that ``cargo_gen_config`` is automatically called by ``cargo_src_unpack``.
 
 # @ECLASS_VARIABLE: myfeatures
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Optional cargo features defined as bash array.
-# Should be defined before calling cargo_src_configure().
+# Should be defined before calling ``cargo_src_configure``.
 #
-# Example package that has x11 and wayland as features, and disables default.
+# Example package that has x11 and wayland as features, and disables default:
 # @CODE
 # src_configure() {
 # 	local myfeatures=(
-#		$(usex X x11 '')
+# 		$(usex X x11 '')
 # 		$(usev wayland)
 # 	)
 # 	cargo_src_configure --no-default-features
@@ -110,19 +111,19 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Storage directory for cargo registry.
-# Used by cargo_live_src_unpack to cache downloads.
+# Used by ``cargo_live_src_unpack`` to cache downloads.
 # This is intended to be set by users.
 # Ebuilds must not set it.
 #
-# Defaults to "${DISTDIR}/cargo-registry" it not set.
+# Defaults to ``${DISTDIR}/cargo-registry`` if not set.
 
 # @ECLASS_VARIABLE: ECARGO_OFFLINE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If non-empty, this variable prevents online operations in
-# cargo_live_src_unpack.
-# Inherits value of EVCS_OFFLINE if not set explicitly.
+# ``cargo_live_src_unpack``.
+# Inherits value of ``EVCS_OFFLINE`` if not set explicitly.
 
 # @ECLASS_VARIABLE: EVCS_UMASK
 # @USER_VARIABLE
@@ -131,14 +132,14 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # Set this variable to a custom umask. This is intended to be set by
 # users. By setting this to something like 002, it can make life easier
 # for people who use cargo in a home directory, but are in the portage
-# group, and then switch over to building with FEATURES=userpriv.
+# group, and then switch over to building with ``FEATURES=userpriv``.
 # Or vice-versa.
 
 # @FUNCTION: cargo_crate_uris
 # @DESCRIPTION:
-# Generates the URIs to put in SRC_URI to help fetch dependencies.
+# Generates the URIs to put in ``SRC_URI`` to help fetch dependencies.
 # Uses first argument as crate list.
-# If no argument provided, uses CRATES variable.
+# If no argument provided, uses ``CRATES`` variable.
 cargo_crate_uris() {
 	local -r regex='^([a-zA-Z0-9_\-]+)-([0-9]+\.[0-9]+\.[0-9]+.*)$'
 	local crate crates
@@ -164,14 +165,14 @@ cargo_crate_uris() {
 
 # @FUNCTION: cargo_gen_config
 # @DESCRIPTION:
-# Generate the $CARGO_HOME/config necessary to use our local registry and settings.
+# Generate the ``$CARGO_HOME/config`` necessary to use our local registry and settings.
 # Cargo can also be configured through environment variables in addition to the TOML syntax below.
-# For each configuration key below of the form foo.bar the environment variable CARGO_FOO_BAR
+# For each configuration key below of the form ``foo.bar`` the environment variable ``CARGO_FOO_BAR``
 # can also be used to define the value.
 # Environment variables will take precedence over TOML configuration,
 # and currently only integer, boolean, and string keys are supported.
-# For example the build.jobs key can also be defined by CARGO_BUILD_JOBS.
-# Or setting CARGO_TERM_VERBOSE=false in make.conf will make build quieter.
+# For example the ``build.jobs`` key can also be defined by ``CARGO_BUILD_JOBS``.
+# Or setting ``CARGO_TERM_VERBOSE=false`` in ``make.conf`` will make build quieter.
 cargo_gen_config() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -243,7 +244,7 @@ cargo_src_unpack() {
 
 # @FUNCTION: cargo_live_src_unpack
 # @DESCRIPTION:
-# Runs 'cargo fetch' and vendors downloaded crates for offline use, used in live ebuilds
+# Runs ``cargo fetch`` and vendors downloaded crates for offline use, used in live ebuilds
 cargo_live_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -337,24 +338,24 @@ cargo_live_src_unpack() {
 # will be passed to cargo in all phases.
 # Make sure all cargo subcommands support flags passed here.
 #
-# Example for package that explicitly builds only 'baz' binary and
-# enables 'barfeature' and optional 'foo' feature.
-# will pass '--features barfeature --features foo --bin baz'
-# in src_{compile,test,install}
+# Example for package that explicitly builds only ``baz`` binary and
+# enables ``barfeature`` and optional ``foo`` feature.
+# will pass ``--features barfeature --features foo --bin baz``
+# in ``src_{compile,test,install}``
 #
 # @CODE
 # src_configure() {
-#	local myfeatures=(
-#		barfeature
-#		$(usev foo)
-#	)
+# 	local myfeatures=(
+# 		barfeature
+# 		$(usev foo)
+# 	)
 # 	cargo_src_configure --bin baz
 # }
 # @CODE
 #
-# In some cases crates may need '--no-default-features' option,
+# In some cases crates may need ``--no-default-features`` option,
 # as there is no way to disable single feature, except disabling all.
-# It can be passed directly to cargo_src_configure().
+# It can be passed directly to ``cargo_src_configure()``.
 cargo_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -395,10 +396,10 @@ cargo_src_compile() {
 
 # @FUNCTION: cargo_src_install
 # @DESCRIPTION:
-# Installs the binaries generated by cargo
-# In come case workspaces need alternative --path parameter
-# default is '--path ./' if nothing specified.
-# '--path ./somedir' can be passed directly to cargo_src_install()
+# Installs the binaries generated by cargo.
+# In come case workspaces need alternative ``--path`` parameter,
+# default is ``--path ./`` if nothing specified.
+# ``--path ./somedir`` can be passed directly to ``cargo_src_install()``
 cargo_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 

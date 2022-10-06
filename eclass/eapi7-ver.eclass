@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: eapi7-ver.eclass
@@ -22,9 +22,9 @@
 # The functions support arbitrary version strings consisting of version
 # components interspersed with (possibly empty) version separators.
 #
-# A version component can either consist purely of digits ([0-9]+)
-# or purely of uppercase and lowercase letters ([A-Za-z]+).  A version
-# separator is either a string of any other characters ([^A-Za-z0-9]+),
+# A version component can either consist purely of digits (``[0-9]+``)
+# or purely of uppercase and lowercase letters (``[A-Za-z]+``).  A version
+# separator is either a string of any other characters (``[^A-Za-z0-9]+``),
 # or it occurs at the transition between a sequence of letters
 # and a sequence of digits, or vice versa.  In the latter case,
 # the version separator is an empty string.
@@ -51,8 +51,8 @@
 #
 # @SUBSECTION Ranges
 #
-# A range can be specified as 'm' for m-th version component, 'm-'
-# for all components starting with m-th or 'm-n' for components starting
+# A range can be specified as ``m`` for m-th version component, ``m-``
+# for all components starting with m-th or ``m-n`` for components starting
 # at m-th and ending at n-th (inclusive).  If the range spans outside
 # the version string, it is truncated silently.
 
@@ -117,7 +117,7 @@ _ver_split() {
 # @DESCRIPTION:
 # Print the substring of the version string containing components
 # defined by the <range> and the version separators between them.
-# Processes <version> if specified, ${PV} otherwise.
+# Processes <version> if specified, ``${PV}`` otherwise.
 #
 # For the syntax of versions and ranges, please see the eclass
 # description.
@@ -143,9 +143,9 @@ ver_cut() {
 # @USAGE: <range> <repl> [<range> <repl>...] [<version>]
 # @DESCRIPTION:
 # Print the version string after substituting the specified version
-# separators at <range> with <repl> (string).  Multiple '<range> <repl>'
+# separators at <range> with <repl> (string).  Multiple ``<range> <repl>``
 # pairs can be specified.  Processes <version> if specified,
-# ${PV} otherwise.
+# ``${PV}`` otherwise.
 #
 # For the syntax of versions and ranges, please see the eclass
 # description.
@@ -279,9 +279,9 @@ _ver_compare() {
 # @USAGE: [<v1>] <op> <v2>
 # @DESCRIPTION:
 # Check if the relation <v1> <op> <v2> is true.  If <v1> is not specified,
-# default to ${PVR}.  <op> can be -gt, -ge, -eq, -ne, -le, -lt.
-# Both versions must conform to the PMS version syntax (with optional
-# revision parts), and the comparison is performed according to
+# default to ``${PVR}``.  <op> can be ``-gt``, ``-ge``, ``-eq``, ``-ne``,
+# ``-le``, ``-lt``.  Both versions must conform to the PMS version syntax
+# (with optional revision parts), and the comparison is performed according to
 # the algorithm specified in the PMS.
 ver_test() {
 	local va op vb
