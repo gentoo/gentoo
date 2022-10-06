@@ -3,20 +3,22 @@
 
 EAPI=8
 
-DESCRIPTION="An ANSI C library for parsing GNU-style command-line options with minimal fuss"
-HOMEPAGE="http://argtable.sourceforge.net/"
-
 MY_PV="$(ver_rs 1 '-')"
 MY_P=${PN}${MY_PV}
 
+DESCRIPTION="An ANSI C library for parsing GNU-style command-line options with minimal fuss"
+HOMEPAGE="http://argtable.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="doc debug examples static-libs"
 
-S="${WORKDIR}"/${MY_P}
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.13-Fix-implicit-function-declaration.patch
+)
 
 src_configure() {
 	econf \
@@ -25,20 +27,19 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	rm -rf "${D}"/usr/share/doc/${PF}/
+	default
 
-	dodoc AUTHORS ChangeLog NEWS README
+	rm -rf "${ED}"/usr/share/doc/${PF}/
 
 	if use doc ; then
-		cd "${S}/doc"
+		cd "${S}"/doc || die
 		dodoc *.pdf *.ps
 		docinto html
 		dodoc *.html *.gif
 	fi
 
 	if use examples ; then
-		cd "${S}/example"
+		cd "${S}"/example || die
 		docinto examples
 		dodoc Makefile *.[ch] README.txt
 	fi
