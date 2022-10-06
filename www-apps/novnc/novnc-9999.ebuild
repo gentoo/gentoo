@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{7..10} )
 inherit distutils-r1
 
 DESCRIPTION="noVNC is a VNC client implemented using HTML5 technologies"
-HOMEPAGE="https://kanaka.github.com/noVNC/"
+HOMEPAGE="https://kanaka.github.io/noVNC/"
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
