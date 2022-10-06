@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-inherit cmake flag-o-matic llvm llvm.org python-any-r1
+inherit cmake flag-o-matic llvm llvm.org multilib python-any-r1
 
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="https://llvm.org/"
@@ -12,11 +12,12 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug test"
+IUSE="debug test zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	~sys-devel/llvm-${PV}
+	~sys-devel/llvm-${PV}[zstd=]
+	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="
 	${DEPEND}
