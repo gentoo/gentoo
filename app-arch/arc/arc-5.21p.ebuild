@@ -6,7 +6,7 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Create & extract files from DOS .ARC files"
-HOMEPAGE="http://arc.sourceforge.net"
+HOMEPAGE="https://arc.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
