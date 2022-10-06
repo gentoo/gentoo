@@ -26,7 +26,6 @@ maint_pkg_create() {
 	local ver=$(gawk '{ gsub(/-/, "", $1); print $1; exit }' ChangeLog)
 	[[ ${#ver} != 8 ]] && die "invalid version '${ver}'"
 
-
 	local tar="${T}/gnuconfig-${ver}.tar.xz"
 	tar -Jcf "${tar}" ./* || die "creating tar failed"
 	einfo "Packaged tar now available:"
@@ -44,7 +43,6 @@ src_unpack() {
 
 src_prepare() {
 	default
-
 }
 
 src_test() {
