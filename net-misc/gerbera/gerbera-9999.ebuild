@@ -28,7 +28,7 @@ RDEPEND="
 	<dev-libs/libfmt-9.0.0:=
 	dev-libs/pugixml
 	dev-libs/spdlog:=
-	>=net-libs/libupnp-1.14.12:=[ipv6,reuseaddr,-blocking-tcp]
+	>=net-libs/libupnp-1.14.12:=[ipv6(+),reuseaddr,-blocking-tcp]
 	sys-apps/util-linux
 	sys-libs/zlib
 	virtual/libiconv
