@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="Icecast OGG streaming client, supports on the fly re-encoding"
 HOMEPAGE="https://icecast.org/ices/"
 SRC_URI="http://downloads.xiph.org/releases/${PN}/${P}.tar.bz2"
@@ -21,6 +23,17 @@ RDEPEND="
 	media-libs/libvorbis"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-libogg-test.patch
+	"${FILESDIR}"/${P}-gettimeofday.patch
+)
+
+src_prepare() {
+	default
+
+	eautoreconf #740794,870973
+}
 
 src_configure() {
 	econf --sysconfdir="${EPREFIX}"/etc/ices2
