@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit savedconfig toolchain-funcs
 
@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]]; then
 	"
 else
 	SRC_URI="https://www.brain-dump.org/projects/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
@@ -30,7 +30,7 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-gentoo.patch
-	"${FILESDIR}"/${PN}-0.15-stop-installing-terminfo.patch
+	"${FILESDIR}"/${PN}-9999-stop-installing-terminfo.patch
 )
 
 src_prepare() {
