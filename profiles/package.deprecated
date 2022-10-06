@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Petr Vaněk <arkamar@atlas.cz> (2022-10-06)
+# Obsolete virtual.
+# Only one provider is left (net-libs/c-client), please change dependency to
+# that instead.
+virtual/imap-c-client
+
 # Matt Turner <mattst88@gentoo.org> (2022-10-02)
 # Dummy packages, now merged into app-accessibility/at-spi2-core.
 app-accessibility/at-spi2-atk
