@@ -14,7 +14,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gtk gtk-doc +introspection +sqlite tracker test transcode"
 RESTRICT="!test? ( test )"
 
-
 # x11-libs/libX11 from qa-vdb
 DEPEND="
 	>=net-libs/gupnp-1.5.2:1.6=[vala]
