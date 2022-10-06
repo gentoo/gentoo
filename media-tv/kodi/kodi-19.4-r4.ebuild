@@ -31,7 +31,7 @@ else
 	S=${WORKDIR}/xbmc-${MY_PV}
 fi
 
-inherit autotools cmake desktop linux-info pax-utils python-single-r1 xdg
+inherit autotools cmake desktop libtool linux-info pax-utils python-single-r1 xdg
 
 PATCHES=(
 	"${FILESDIR}/${P}-fmt-9.patch"
