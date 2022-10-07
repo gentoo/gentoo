@@ -1,33 +1,38 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit toolchain-funcs
 
 DESCRIPTION="redirects TCP connections from one IP address and port to another"
-HOMEPAGE="http://www.boutell.com/rinetd/"
-SRC_URI="http://www.boutell.com/rinetd/http/rinetd.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
-
-S=${WORKDIR}/${PN}
 
 src_prepare() {
 	default
-	sed -i -e "s:gcc:$(tc-getCC) \$(CFLAGS) \$(LDFLAGS):" Makefile
+
+	sed -i '/gcc rinetd/d' Makefile || die
 }
 
 src_compile() {
-	emake CFLAGS="${CFLAGS} -DLINUX" LDFLAGS="${LDFLAGS}"
+	tc-export CC
+
+	emake CFLAGS="${CFLAGS} -DLINUX"
 }
 
 src_install() {
 	dosbin rinetd
-	newinitd "${FILESDIR}"/rinetd.rc rinetd
 	doman rinetd.8
-	dodoc CHANGES README index.html
+	einstalldocs
+
+	docinto html
+	dodoc index.html
+
+	newinitd "${FILESDIR}"/rinetd.rc rinetd
 }
