@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit multilib-minimal autotools virtualx
 
 DESCRIPTION="Provides a C++ API for D-BUS"
 HOMEPAGE="https://sourceforge.net/projects/dbus-cplusplus/"
@@ -24,7 +24,8 @@ DEPEND="${RDEPEND}
 	dev-util/cppunit[${MULTILIB_USEDEP}]"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+	test? ( sys-apps/dbus[X,${MULTILIB_USEDEP}] )"
 
 S="${WORKDIR}/lib${P}"
 
@@ -32,7 +33,13 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc-4.7.patch #424707
 	"${FILESDIR}"/${PN}-gcc7.patch #622790
 	"${FILESDIR}"/${P}-gcc12.patch
+	"${FILESDIR}"/${PN}-0.9.0-enable-tests.patch #873487
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 multilib_src_configure() {
 	# TODO : add ecore multilib support if/when it is multilibified
@@ -53,6 +60,10 @@ multilib_src_configure() {
 			ln -s "${S}"/doc/${d} "${BUILD_DIR}"/doc/${d} || die
 		done
 	fi
+}
+
+src_test() {
+	virtx multilib-minimal_src_test
 }
 
 multilib_src_install_all() {
