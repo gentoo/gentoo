@@ -123,7 +123,7 @@ net-irc/quassel urlpreview
 net-analyzer/suricata hyperscan
 
 # Yixun Lan <dlan@gentoo.org> (2021-08-29)
-#  sys-apps/fwupd not tested, USE=spi,uefi,dell
+# sys-apps/fwupd not tested, USE=spi,uefi
 sys-apps/fwupd spi uefi
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-23)
