@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
+# sys-libs/libsmbios is available here.
+app-laptop/pbbuttonsd -macbook
+sys-apps/fwupd -dell
+
 # Alfredo Tupone <tupone@gentoo.org> (2022-08-30)
 # ada bootstrap currently only available on amd64/x86
 sys-devel/gcc -ada
