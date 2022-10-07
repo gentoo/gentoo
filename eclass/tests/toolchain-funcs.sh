@@ -198,4 +198,26 @@ for compiler in gcc clang not-really-a-compiler; do
 	fi
 done
 
+if type -P gcc &>/dev/null; then
+	tbegin "tc-get-cxx-stdlib (gcc)"
+	[[ $(CXX=g++ tc-get-cxx-stdlib) == libstdc++ ]]
+	tend $?
+fi
+
+if type -P clang &>/dev/null; then
+	for stdlib in libc++ libstdc++; do
+		if clang++ -stdlib=${stdlib} -x c++ -E -P - &>/dev/null \
+			<<<'#include <ciso646>'
+		then
+			tbegin "tc-get-cxx-stdlib (clang, ${stdlib})"
+			[[ $(CXX=clang++ CXXFLAGS="-stdlib=${stdlib}" tc-get-cxx-stdlib) == ${stdlib} ]]
+			tend $?
+		fi
+	done
+
+	tbegin "tc-get-cxx-stdlib (clang, invalid)"
+	! CXX=clang++ CXXFLAGS="-stdlib=invalid" tc-get-cxx-stdlib
+	tend $?
+fi
+
 texit
