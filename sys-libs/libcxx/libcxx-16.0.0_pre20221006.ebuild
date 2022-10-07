@@ -23,14 +23,13 @@ RDEPEND="
 	)
 	!libcxxabi? ( >=sys-devel/gcc-4.7:=[cxx] )
 "
-LLVM_MAX_SLOT=${PV%%.*}
 DEPEND="
 	${RDEPEND}
-	sys-devel/llvm:${LLVM_MAX_SLOT}
+	sys-devel/llvm:${LLVM_MAJOR}
 "
 BDEPEND="
 	clang? (
-		sys-devel/clang:${LLVM_MAX_SLOT}
+		sys-devel/clang:${LLVM_MAJOR}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -55,7 +54,7 @@ pkg_setup() {
 	# bootstrap-prefix to set the appropriate path vars to LLVM instead
 	# of using llvm_pkg_setup.
 	if [[ ${CHOST} != *-darwin* ]] || has_version dev-lang/llvm; then
-		llvm_pkg_setup
+		LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	fi
 	python-any-r1_pkg_setup
 
