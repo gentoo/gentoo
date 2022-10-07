@@ -29,7 +29,7 @@ BDEPEND="
 	)
 "
 PDEPEND="
-	sys-devel/lld-toolchain-symlinks:${PV%%.*}
+	sys-devel/lld-toolchain-symlinks:${LLVM_MAJOR}
 "
 
 LLVM_COMPONENTS=( lld cmake libunwind/include/mach-o )
@@ -41,7 +41,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
+	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	use test && python-any-r1_pkg_setup
 }
 
