@@ -19,7 +19,7 @@ SRC_URI="https://github.com/jeremyevans/erubi/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/minitest dev-ruby/minitest-global_expectations )"
