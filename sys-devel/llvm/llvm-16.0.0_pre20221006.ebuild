@@ -385,15 +385,24 @@ multilib_src_configure() {
 		-DOCAMLFIND=NO
 	)
 
+	local suffix=
+	if [[ -n ${EGIT_VERSION} && ${EGIT_BRANCH} != release/* ]]; then
+		# the ABI of the main branch is not stable, so let's include
+		# the commit id in the SOVERSION to contain the breakage
+		suffix+="git${EGIT_VERSION::8}"
+	fi
 	if is_libcxx_linked; then
 		# Smart hack: alter version suffix -> SOVERSION when linking
 		# against libc++. This way we won't end up mixing LLVM libc++
 		# libraries with libstdc++ clang, and the other way around.
+		suffix+="+libcxx"
 		mycmakeargs+=(
-			-DLLVM_VERSION_SUFFIX="libcxx"
 			-DLLVM_ENABLE_LIBCXX=ON
 		)
 	fi
+	mycmakeargs+=(
+		-DLLVM_VERSION_SUFFIX="${suffix}"
+	)
 
 #	Note: go bindings have no CMake rules at the moment
 #	but let's kill the check in case they are introduced
