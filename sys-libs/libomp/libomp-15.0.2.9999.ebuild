@@ -71,7 +71,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	use offload && LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
+	use offload && LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	use test && python-any-r1_pkg_setup
 }
 
