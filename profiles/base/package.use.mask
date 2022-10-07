@@ -6,6 +6,13 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2022-08-07)
+# media-sound/rplay is masked for removal.
+x11-wm/fvwm3 rplay
+x11-wm/ctwm rplay
+x11-wm/fvwm rplay
+x11-wm/vtwm rplay
+
 # Viorel Munteanu <ceamac.paragon@gmail.com> (2022-10-07)
 # Cannot test and fix pax-kernel related bugs on a current grsec kernel
 # Mask the flag for now
