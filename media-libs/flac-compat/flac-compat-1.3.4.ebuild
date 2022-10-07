@@ -12,7 +12,7 @@ S="${WORKDIR}/${P/-compat}"
 
 LICENSE="BSD FDL-1.2 GPL-2 LGPL-2.1"
 SLOT="8.3.0"
-KEYWORDS="~amd64 arm ~x86"
+KEYWORDS="~amd64 arm x86"
 IUSE="+cxx ogg cpu_flags_x86_sse"
 
 RDEPEND="
