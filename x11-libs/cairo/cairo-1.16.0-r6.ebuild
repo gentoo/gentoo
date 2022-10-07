@@ -110,7 +110,7 @@ multilib_src_configure() {
 		$(use_enable glib gobject) \
 		$(use_enable opengl gl) \
 		$(use_enable static-libs static) \
-		$(use_enable svg) \
+		--enable-svg \
 		$(use_enable utils trace) \
 		$(use_enable valgrind) \
 		--enable-ft \
