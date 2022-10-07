@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/libffi:=
 	>=dev-libs/gobject-introspection-1.66.1:=
 	>=dev-lang/spidermonkey-102.2.0:102
-	cairo? ( x11-libs/cairo[X,glib,svg] )
+	cairo? ( x11-libs/cairo[X,glib] )
 	readline? ( sys-libs/readline:0= )
 "
 DEPEND="${RDEPEND}
