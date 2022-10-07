@@ -37,7 +37,7 @@ LLVM_USE_TARGETS=llvm
 llvm.org_set_globals
 
 pkg_setup() {
-	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
+	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	python-any-r1_pkg_setup
 }
 
