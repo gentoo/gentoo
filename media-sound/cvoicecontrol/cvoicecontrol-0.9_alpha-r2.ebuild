@@ -1,21 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
 MY_P="${P/_/}"
 
 DESCRIPTION="Console based speech recognition system"
-HOMEPAGE="http://www.kiecza.net/daniel/linux"
+HOMEPAGE="http://www.kiecza.net/daniel/linux/"
 SRC_URI="http://www.kiecza.net/daniel/linux/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 
-S="${WORKDIR}/${MY_P}"
+RDEPEND="sys-libs/ncurses:="
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo-2.patch
@@ -26,11 +28,12 @@ PATCHES=(
 
 src_prepare() {
 	default
-	mv configure.{in,ac} || die
+
 	eautoreconf
 }
 
 src_install() {
-	HTML_DOCS=( cvoicecontrol/docs/en/*.html )
+	local HTML_DOCS=( cvoicecontrol/docs/en/*.html )
+
 	default
 }
