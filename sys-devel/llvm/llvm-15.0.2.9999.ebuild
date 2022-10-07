@@ -17,7 +17,7 @@ HOMEPAGE="https://llvm.org/"
 # 4. ConvertUTF.h: TODO.
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA BSD public-domain rc"
-SLOT="$(ver_cut 1)"
+SLOT="${LLVM_MAJOR}"
 KEYWORDS=""
 IUSE="+binutils-plugin debug doc exegesis libedit +libffi ncurses test xar xml z3"
 RESTRICT="!test? ( test )"
@@ -43,7 +43,7 @@ BDEPEND="
 	>=dev-util/cmake-3.16
 	sys-devel/gnuconfig
 	kernel_Darwin? (
-		<sys-libs/libcxx-$(ver_cut 1-3).9999
+		<sys-libs/libcxx-${LLVM_VERSION}.9999
 		>=sys-devel/binutils-apple-5.1
 	)
 	doc? ( $(python_gen_any_dep '
@@ -60,8 +60,8 @@ RDEPEND="
 "
 PDEPEND="
 	sys-devel/llvm-common
-	sys-devel/llvm-toolchain-symlinks:${SLOT}
-	binutils-plugin? ( >=sys-devel/llvmgold-${SLOT} )
+	sys-devel/llvm-toolchain-symlinks:${LLVM_MAJOR}
+	binutils-plugin? ( >=sys-devel/llvmgold-${LLVM_MAJOR} )
 "
 
 LLVM_COMPONENTS=( llvm cmake third-party )
@@ -342,7 +342,7 @@ multilib_src_configure() {
 		# disable appending VCS revision to the version to improve
 		# direct cache hit ratio
 		-DLLVM_APPEND_VC_REV=OFF
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${SLOT}"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 
 		-DBUILD_SHARED_LIBS=OFF
@@ -406,7 +406,7 @@ multilib_src_configure() {
 		if llvm_are_manpages_built; then
 			build_docs=ON
 			mycmakeargs+=(
-				-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
+				-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/share/man"
 				-DLLVM_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
 				-DSPHINX_WARNINGS_AS_ERRORS=OFF
 			)
@@ -425,7 +425,7 @@ multilib_src_configure() {
 	fi
 
 	if tc-is-cross-compiler; then
-		local tblgen="${EPREFIX}/usr/lib/llvm/${SLOT}/bin/llvm-tblgen"
+		local tblgen="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/bin/llvm-tblgen"
 		[[ -x "${tblgen}" ]] \
 			|| die "${tblgen} not found or usable"
 		mycmakeargs+=(
@@ -452,7 +452,7 @@ multilib_src_configure() {
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 	cmake_src_configure
 
-	grep -q -E "^CMAKE_PROJECT_VERSION_MAJOR(:.*)?=$(ver_cut 1)$" \
+	grep -q -E "^CMAKE_PROJECT_VERSION_MAJOR(:.*)?=${LLVM_MAJOR}$" \
 			CMakeCache.txt ||
 		die "Incorrect version, did you update _LLVM_MASTER_MAJOR?"
 	multilib_is_native_abi && check_distribution_components
@@ -480,7 +480,7 @@ multilib_src_test() {
 
 src_install() {
 	local MULTILIB_CHOST_TOOLS=(
-		/usr/lib/llvm/${SLOT}/bin/llvm-config
+		/usr/lib/llvm/${LLVM_MAJOR}/bin/llvm-config
 	)
 
 	local MULTILIB_WRAPPED_HEADERS=(
@@ -491,7 +491,7 @@ src_install() {
 	multilib-minimal_src_install
 
 	# move wrapped headers back
-	mv "${ED}"/usr/include "${ED}"/usr/lib/llvm/${SLOT}/include || die
+	mv "${ED}"/usr/include "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/include || die
 }
 
 multilib_src_install() {
@@ -499,28 +499,28 @@ multilib_src_install() {
 
 	# move headers to /usr/include for wrapping
 	rm -rf "${ED}"/usr/include || die
-	mv "${ED}"/usr/lib/llvm/${SLOT}/include "${ED}"/usr/include || die
+	mv "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/include "${ED}"/usr/include || die
 
-	LLVM_LDPATHS+=( "${EPREFIX}/usr/lib/llvm/${SLOT}/$(get_libdir)" )
+	LLVM_LDPATHS+=( "${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)" )
 }
 
 multilib_src_install_all() {
-	local revord=$(( 9999 - ${SLOT} ))
+	local revord=$(( 9999 - ${LLVM_MAJOR} ))
 	newenvd - "60llvm-${revord}" <<-_EOF_
-		PATH="${EPREFIX}/usr/lib/llvm/${SLOT}/bin"
+		PATH="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/bin"
 		# we need to duplicate it in ROOTPATH for Portage to respect...
-		ROOTPATH="${EPREFIX}/usr/lib/llvm/${SLOT}/bin"
-		MANPATH="${EPREFIX}/usr/lib/llvm/${SLOT}/share/man"
+		ROOTPATH="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/bin"
+		MANPATH="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/share/man"
 		LDPATH="$( IFS=:; echo "${LLVM_LDPATHS[*]}" )"
 	_EOF_
 
-	docompress "/usr/lib/llvm/${SLOT}/share/man"
+	docompress "/usr/lib/llvm/${LLVM_MAJOR}/share/man"
 	llvm_install_manpages
 }
 
 pkg_postinst() {
 	elog "You can find additional opt-viewer utility scripts in:"
-	elog "  ${EROOT}/usr/lib/llvm/${SLOT}/share/opt-viewer"
+	elog "  ${EROOT}/usr/lib/llvm/${LLVM_MAJOR}/share/opt-viewer"
 	elog "To use these scripts, you will need Python along with the following"
 	elog "packages:"
 	elog "  dev-python/pygments (for opt-viewer)"
