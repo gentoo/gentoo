@@ -6,6 +6,7 @@
 		<name>Gentoo TeX Project</name>
 	</maintainer>
 	<upstream>
+		<changelog>http://hutchinson.belmont.ma.us/tth/CHANGES</changelog>
 		<remote-id type="sourceforge">tth</remote-id>
 	</upstream>
 </pkgmetadata>
