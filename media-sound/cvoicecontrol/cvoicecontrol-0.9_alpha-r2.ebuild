@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-tinfo.patch #64716
 	# Handle documentation with HTML_DOCS instead
 	"${FILESDIR}"/${P}-automake.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
