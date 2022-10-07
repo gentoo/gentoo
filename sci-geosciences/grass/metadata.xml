@@ -20,7 +20,6 @@
 	</longdescription>
 	<use>
 		<flag name="geos">Use <pkg>sci-libs/geos</pkg> for v.buffer and adds extended options to the v.select module</flag>
-		<flag name="liblas">Include support for LAS and LAZ encoded LiDAR files through <pkg>sci-geosciences/liblas</pkg></flag>
 		<flag name="las">Include support for LAS and LAZ encoded LiDAR files through <pkg>sci-geosciences/liblas</pkg></flag>
 		<flag name="opencl">Enable OpenCL support</flag>
 		<flag name="pdal">Enable support for PDAL for point clouds via <pkg>sci-libs/pdal</pkg></flag>
