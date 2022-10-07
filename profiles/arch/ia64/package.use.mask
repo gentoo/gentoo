@@ -282,10 +282,6 @@ media-video/mplayer dvdnav
 media-video/ffmpeg libv4l
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-07-20)
-# pulls in unkeyworded java
-sci-libs/gdal mdb
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2017-07-20)
 # pulls in unkeyworded lapack
 sci-libs/gdal armadillo
 

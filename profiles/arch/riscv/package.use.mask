@@ -158,8 +158,6 @@ net-libs/libproxy spidermonkey
 app-text/texlive pdfannotextractor
 #  - JDK
 media-libs/rubberband jni
-#  - dev-java/jackcess
-sci-libs/gdal mdb
 
 # Yixun Lan <dlan@gentoo.org> (2021-08-05)
 # Boost.Context can be built on riscv

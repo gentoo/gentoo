@@ -191,10 +191,6 @@ sys-devel/clang-runtime openmp sanitize
 # Dropping ppc from sci-libs/armadillo, bug 555896
 sci-libs/gdal armadillo
 
-## Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
-# sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
-sci-libs/gdal mdb
-
 # Michał Górny <mgorny@gentoo.org> (2016-11-18)
 # libomp does not support 32-bit PPC, #600148.
 sys-devel/clang-runtime openmp

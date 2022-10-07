@@ -188,10 +188,6 @@ dev-php/PEAR-Text_Password test
 # The go flag requires stable masked dev-lang/go[gccgo].
 www-servers/uwsgi go uwsgi_plugins_alarm_xmpp
 
-# Michael Palimaka <kensington@gentoo.org> (2017-09-30)
-# Required dependeny is not stable
-sci-libs/gdal mdb
-
 # Tim Harder <radhermit@gentoo.org> (2017-09-11)
 # Requires guile-2 which is still unstable.
 >=net-irc/weechat-1.7 guile
