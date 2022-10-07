@@ -29,7 +29,7 @@ KEYWORDS="amd64 ~hppa ppc ppc64 x86"
 IUSE="doc"
 
 RDEPEND+=" >=media-gfx/imagemagick-6.9.0:="
-DEPEND+=" test? ( >=media-gfx/imagemagick-7.1.0:=[jpeg,lqr,lcms,postscript,tiff,webp] )"
+DEPEND+=" >=media-gfx/imagemagick-6.9.0 test? ( >=media-gfx/imagemagick-7.1.0:=[jpeg,lqr,lcms,postscript,tiff,webp] )"
 
 PATCHES=( "${FILESDIR}/${P}-empty-rpath.patch" )
 
