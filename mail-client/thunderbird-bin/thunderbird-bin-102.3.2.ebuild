@@ -272,14 +272,6 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	if ! has_version 'gnome-base/gconf' || ! has_version 'gnome-base/orbit' \
-		|| ! has_version 'net-misc/curl'; then
-		einfo
-		einfo "For using the crashreporter, you need gnome-base/gconf,"
-		einfo "gnome-base/orbit and net-misc/curl emerged."
-		einfo
-	fi
-
 	use ffmpeg || ewarn "USE=-ffmpeg : HTML5 video will not render without media-video/ffmpeg installed"
 
 	local HAS_AUDIO=0
