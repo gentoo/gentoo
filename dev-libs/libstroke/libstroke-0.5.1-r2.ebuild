@@ -22,6 +22,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-m4_syntax.patch
 	"${FILESDIR}"/${P}-no_gtk1.patch
 	"${FILESDIR}"/${P}-autotools.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
