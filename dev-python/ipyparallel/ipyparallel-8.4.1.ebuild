@@ -33,7 +33,7 @@ RDEPEND="
 	dev-python/psutil[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.1[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
-	>=www-servers/tornado-5.1[${PYTHON_USEDEP}]
+	>=dev-python/tornado-5.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/flit_core[${PYTHON_USEDEP}]

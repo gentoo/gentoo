@@ -17,7 +17,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	dev-ros/dynamic_reconfigure
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/image_proc

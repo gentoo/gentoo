@@ -10,5 +10,5 @@ TWISTD_OPTS=""
 
 # Optional specific python version to run in
 # (if not the system default version)
-# ie: RUNTIME_PYTHON="/usr/bin/python2.7"
+# ie: RUNTIME_PYTHON="/usr/bin/python3.8"
 RUNTIME_PYTHON=""

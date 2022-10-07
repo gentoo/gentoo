@@ -1,0 +1,61 @@
+From e7144693e2446f21ee68c95676ecf65d1351d13e Mon Sep 17 00:00:00 2001
+From: Binbin <binloveplay1314@qq.com>
+Date: Wed, 27 Jul 2022 19:58:25 +0800
+Subject: [PATCH] Fix bgsaveerr issue in psync wrong offset test (#11043)
+
+The kill above is sometimes successful and sometimes already too late.
+The PING in pysnc wrong offset test got rejected by bgsaveerr because
+lastbgsave_status is C_ERR.
+
+In theory, using diskless can avoid PING being affected, because when
+the replica is dropped, we will kill the child with SIGUSR1, and this
+will not affect lastbgsave_status.
+
+Anyway, this kill is not particularly needed here, dropping the kill
+is the best one, since we do have the waitForBgsave, so just let it
+take care of the bgsave. No need for fast termination.
+---
+
+This patch is backported from upstream, see PR #11043.
+
+Upstream-PR: https://github.com/redis/redis/pull/11043
+
+diff --git a/tests/integration/replication.tcl b/tests/integration/replication.tcl
+index d60c91918..457c3150e 100644
+--- a/tests/integration/replication.tcl
++++ b/tests/integration/replication.tcl
+@@ -1289,7 +1289,6 @@ start_server {tags {"repl" "external:skip"}} {
+         verify_log_message 0 "*Replica generated a reply to command 'ping', disconnecting it: *" $lines
+ 
+         $rd close
+-        catch {exec kill -9 [get_child_pid 0]}
+         waitForBgsave r
+     }
+ 
+@@ -1307,7 +1306,6 @@ start_server {tags {"repl" "external:skip"}} {
+         verify_log_message 0 "*Replica generated a reply to command 'xinfo|help', disconnecting it: *" $lines
+ 
+         $rd close
+-        catch {exec kill -9 [get_child_pid 0]}
+         waitForBgsave r
+     }
+ 
+@@ -1328,7 +1326,6 @@ start_server {tags {"repl" "external:skip"}} {
+         verify_log_message 0 "*Replica can't interact with the keyspace*" $lines
+ 
+         $rd close
+-        catch {exec kill -9 [get_child_pid 0]}
+         waitForBgsave r
+     }
+ 
+@@ -1347,7 +1344,6 @@ start_server {tags {"repl" "external:skip"}} {
+         verify_log_message 0 "*Replica generated a reply to command 'slowlog|get', disconnecting it: *" $lines
+ 
+         $rd close
+-        catch {exec kill -9 [get_child_pid 0]}
+         waitForBgsave r
+     }
+ 
+-- 
+2.35.1
+

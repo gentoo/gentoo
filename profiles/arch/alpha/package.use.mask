@@ -1,6 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2022-09-30)
+# Per Sam: avoid app-emacs/flycheck deptree, bug #873541
+dev-util/pkgcheck emacs
+
+# matoro <matoro_gentoo@matoro.tk> (2022-09-22)
+# Unable to test due to mask, bug #763963
+net-misc/openntpd constraints
+
 # Matthew Smith <matthew@gentoo.org> (2022-07-10)
 # Needs unkeyworded app-doc/halibut
 >=net-misc/putty-0.77 doc
@@ -25,10 +33,6 @@ media-libs/imlib2 svg heif jpegxl
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
 app-text/enchant nuspell
-
-# Matt Turner <mattst88@gentoo.org> (2022-04-16)
-# sys-auth/seatd is not keyworded
-dev-libs/weston seatd
 
 # Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
 # gnome-base/librsvg missing keywords

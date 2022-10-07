@@ -1,0 +1,41 @@
+Adjust to unbundle a few extras.
+
+zstd changes only needed because of https://bugs.gentoo.org/872254
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -54,3 +54,4 @@
+ 	set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-	add_subdirectory(3rdparty/gtest EXCLUDE_FROM_ALL)
++	find_package(GTest REQUIRED)
++	alias_library(gtest_main GTest::gtest_main)
+ 	add_subdirectory(tests/ctest)
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -177,3 +177,3 @@
+ set(ACTUALLY_ENABLE_TESTS ${ENABLE_TESTS})
+-if(ENABLE_TESTS)
++if(0)
+ 	if(NOT EXISTS "${CMAKE_SOURCE_DIR}/3rdparty/gtest/CMakeLists.txt")
+@@ -210,7 +210,4 @@
+ find_optional_system_library(ryml 3rdparty/rapidyaml/rapidyaml 0.4.0)
+-find_optional_system_library(zstd 3rdparty/zstd 1.4.5)
+-if (${zstd_TYPE} STREQUAL System)
+-	alias_library(Zstd::Zstd zstd::libzstd_shared)
+-	alias_library(pcsx2-zstd zstd::libzstd_shared)
+-endif()
++pkg_check_modules(zstd REQUIRED IMPORTED_TARGET libzstd)
++alias_library(Zstd::Zstd PkgConfig::zstd)
+ find_optional_system_library(libzip 3rdparty/libzip 1.8.0)
+@@ -243,3 +240,4 @@
+ add_subdirectory(3rdparty/lzma EXCLUDE_FROM_ALL)
+-add_subdirectory(3rdparty/libchdr EXCLUDE_FROM_ALL)
++pkg_check_modules(chdr REQUIRED IMPORTED_TARGET libchdr)
++alias_library(chdr-static PkgConfig::chdr)
+ 
+@@ -269,5 +267,3 @@
+ if(CUBEB_API)
+-	add_subdirectory(3rdparty/cubeb EXCLUDE_FROM_ALL)
+-	target_compile_options(cubeb PRIVATE "-w")
+-	target_compile_options(speex PRIVATE "-w")
++	find_package(cubeb REQUIRED)
+ endif()

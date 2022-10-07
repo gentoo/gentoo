@@ -1,0 +1,226 @@
+https://github.com/mgieseki/dvisvgm/commit/629544928877362d0c6d64f20695f7df3073c5eb
+https://github.com/mgieseki/dvisvgm/commit/0213b9252e4aa44034520112dd59a8d5d2ca4e85
+https://github.com/mgieseki/dvisvgm/commit/9bf81fd0b6e7876e5079e917ed7e12163b9e7f7f
+https://bugs.gentoo.org/873961
+
+From 629544928877362d0c6d64f20695f7df3073c5eb Mon Sep 17 00:00:00 2001
+From: Martin Gieseking <martin.gieseking@uos.de>
+Date: Thu, 22 Sep 2022 10:41:11 +0200
+Subject: [PATCH] fixed compilation error when DISABLE_GS is set
+
+--- a/src/Ghostscript.hpp
++++ b/src/Ghostscript.hpp
+@@ -47,8 +47,8 @@ struct Ghostscript {
+ 	Ghostscript (int argc, const char **argv, void *caller=0) {}
+ 	bool init (int argc, const char **argv, void *caller=0) {return false;}
+ 	bool available () {return false;}
+-	bool revision (gsapi_revision_t *r) {return false;}
+-	int revision () {return 0;}
++	bool revision (gsapi_revision_t *r) const {return false;}
++	int revision () const {return 0;}
+ 	std::string revisionstr () {return "";}
+ 	int set_stdio (Stdin in, Stdout out, Stderr err) {return 0;}
+ 	int run_string_begin (int user_errors, int *pexit_code) {return 0;}
+
+From 0213b9252e4aa44034520112dd59a8d5d2ca4e85 Mon Sep 17 00:00:00 2001
+From: Martin Gieseking <martin.gieseking@uos.de>
+Date: Fri, 23 Sep 2022 19:59:01 +0200
+Subject: [PATCH] updated ierrors.h
+
+--- a/src/ierrors.h
++++ b/src/ierrors.h
+@@ -1,22 +1,26 @@
+-/* Copyright (C) 2001-2006 Artifex Software, Inc.
++/* Copyright (C) 2001-2022 Artifex Software, Inc.
+    All Rights Reserved.
+-  
++
+    This software is provided AS-IS with no warranty, either express or
+    implied.
+ 
+-   This software is distributed under license and may not be copied, modified
+-   or distributed except as expressly authorized under the terms of that
+-   license.  Refer to licensing information at http://www.artifex.com/
+-   or contact Artifex Software, Inc.,  7 Mt. Lassen Drive - Suite A-134,
+-   San Rafael, CA  94903, U.S.A., +1(415)492-9861, for further information.
++   This software is distributed under license and may not be copied,
++   modified or distributed except as expressly authorized under the terms
++   of the license contained in the file LICENSE in this distribution.
++
++   Refer to licensing information at http://www.artifex.com or contact
++   Artifex Software, Inc.,  1305 Grant Avenue - Suite 200, Novato,
++   CA 94945, U.S.A., +1(415)492-9861, for further information.
+ */
+ 
+-/* $Id: ierrors.h 8022 2007-06-05 22:23:38Z giles $ */
++
+ /* Definition of error codes */
+ 
+ #ifndef ierrors_INCLUDED
+ #  define ierrors_INCLUDED
+ 
++//#include "gserrors.h"
++
+ /*
+  * DO NOT USE THIS FILE IN THE GRAPHICS LIBRARY.
+  * THIS FILE IS PART OF THE POSTSCRIPT INTERPRETER.
+@@ -33,33 +37,7 @@
+ /* Define the error name table */
+ extern const char *const gs_error_names[];
+ 
+-		/* ------ PostScript Level 1 errors ------ */
+-
+-#define e_unknownerror (-1)	/* unknown error */
+-#define e_dictfull (-2)
+-#define e_dictstackoverflow (-3)
+-#define e_dictstackunderflow (-4)
+-#define e_execstackoverflow (-5)
+-#define e_interrupt (-6)
+-#define e_invalidaccess (-7)
+-#define e_invalidexit (-8)
+-#define e_invalidfileaccess (-9)
+-#define e_invalidfont (-10)
+-#define e_invalidrestore (-11)
+-#define e_ioerror (-12)
+-#define e_limitcheck (-13)
+-#define e_nocurrentpoint (-14)
+-#define e_rangecheck (-15)
+-#define e_stackoverflow (-16)
+-#define e_stackunderflow (-17)
+-#define e_syntaxerror (-18)
+-#define e_timeout (-19)
+-#define e_typecheck (-20)
+-#define e_undefined (-21)
+-#define e_undefinedfilename (-22)
+-#define e_undefinedresult (-23)
+-#define e_unmatchedmark (-24)
+-#define e_VMerror (-25)		/* must be the last Level 1 error */
++                /* ------ PostScript Level 1 errors ------ */
+ 
+ #define LEVEL1_ERROR_NAMES\
+  "unknownerror", "dictfull", "dictstackoverflow", "dictstackunderflow",\
+@@ -69,85 +47,26 @@ extern const char *const gs_error_names[];
+  "stackunderflow", "syntaxerror", "timeout", "typecheck", "undefined",\
+  "undefinedfilename", "undefinedresult", "unmatchedmark", "VMerror"
+ 
+-	/* ------ Additional Level 2 errors (also in DPS) ------ */
+-
+-#define e_configurationerror (-26)
+-#define e_undefinedresource (-27)
+-#define e_unregistered (-28)
++        /* ------ Additional Level 2 errors (also in DPS) ------ */
+ 
+ #define LEVEL2_ERROR_NAMES\
+  "configurationerror", "undefinedresource", "unregistered"
+ 
+-	/* ------ Additional DPS errors ------ */
+-
+-#define e_invalidcontext (-29)
+-/* invalidid is for the NeXT DPS extension. */
+-#define e_invalidid (-30)
++        /* ------ Additional DPS errors ------ */
+ 
+ #define DPS_ERROR_NAMES\
+  "invalidcontext", "invalidid"
+ 
+-#define ERROR_NAMES\
+- LEVEL1_ERROR_NAMES, LEVEL2_ERROR_NAMES, DPS_ERROR_NAMES
+-
+-	/* ------ Pseudo-errors used internally ------ */
+-
+-/*
+- * Internal code for a fatal error.
+- * gs_interpret also returns this for a .quit with a positive exit code.
+- */
+-#define e_Fatal (-100)
+-
+-/*
+- * Internal code for the .quit operator.
+- * The real quit code is an integer on the operand stack.
+- * gs_interpret returns this only for a .quit with a zero exit code.
+- */
+-#define e_Quit (-101)
+-
+-/*
+- * Internal code for a normal exit from the interpreter.
+- * Do not use outside of interp.c.
+- */
+-#define e_InterpreterExit (-102)
+-
+-/*
+- * Internal code that indicates that a procedure has been stored in the
+- * remap_proc of the graphics state, and should be called before retrying
+- * the current token.  This is used for color remapping involving a call
+- * back into the interpreter -- inelegant, but effective.
+- */
+-#define e_RemapColor (-103)
+-
+-/*
+- * Internal code to indicate we have underflowed the top block
+- * of the e-stack.
+- */
+-#define e_ExecStackUnderflow (-104)
+-
+-/*
+- * Internal code for the vmreclaim operator with a positive operand.
+- * We need to handle this as an error because otherwise the interpreter
+- * won't reload enough of its state when the operator returns.
+- */
+-#define e_VMreclaim (-105)
+-
+-/*
+- * Internal code for requesting more input from run_string.
+- */
+-#define e_NeedInput (-106)
++#define PDF_ERROR_NAMES\
++ "pdf_stackoverflow", "pdf_circular_reference"
+ 
+-/*
+- * Internal code for a normal exit when usage info is displayed.
+- * This allows Window versions of Ghostscript to pause until
+- * the message can be read.
+- */
+-#define e_Info (-110)
++#define ERROR_NAMES\
++ LEVEL1_ERROR_NAMES, LEVEL2_ERROR_NAMES, DPS_ERROR_NAMES, PDF_ERROR_NAMES
+ 
+ /*
+  * Define which error codes require re-executing the current object.
+  */
+-#define ERROR_IS_INTERRUPT(ecode)\
+-  ((ecode) == e_interrupt || (ecode) == e_timeout)
++#define GS_ERROR_IS_INTERRUPT(ecode)\
++  ((ecode) == gs_error_interrupt || (ecode) == gs_error_timeout)
+ 
+ #endif /* ierrors_INCLUDED */
+
+From 9bf81fd0b6e7876e5079e917ed7e12163b9e7f7f Mon Sep 17 00:00:00 2001
+From: Martin Gieseking <martin.gieseking@uos.de>
+Date: Fri, 23 Sep 2022 20:01:46 +0200
+Subject: [PATCH] dropped usage of gs_error_names() because it's no longer
+ accessible as of GS 10.0.0 (closes #195)
+
+--- a/src/Ghostscript.cpp
++++ b/src/Ghostscript.cpp
+@@ -375,19 +375,9 @@ const char* Ghostscript::error_name (int code) {
+ 	if (code < 0)
+ 		code = -code;
+ 	const char *error_names[] = { ERROR_NAMES };
+-	if (code == 0 || (size_t)code > sizeof(error_names)/sizeof(error_names[0]))
++	if (code == 0 || size_t(code) > sizeof(error_names)/sizeof(error_names[0]))
+ 		return nullptr;
+-#if defined(HAVE_LIBGS)
+-	// use array defined in libgs to avoid linking the error strings into the binary
+-	return gs_error_names[code-1];
+-#elif defined(_WIN32)
+-	// gs_error_names is private in the Ghostscript DLL so we can't access it here
+ 	return error_names[code-1];
+-#else
+-	if (auto error_names = loadSymbol<const char**>("gs_error_names"))
+-		return error_names[code-1];
+-	return nullptr;
+-#endif
+ }
+ 
+ #endif  // !DISABLE_GS
+

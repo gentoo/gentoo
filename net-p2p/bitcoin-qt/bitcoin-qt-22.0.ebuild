@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ DESCRIPTION="An end-user Qt GUI for the Bitcoin crypto-currency"
 HOMEPAGE="https://bitcoincore.org/ https://bitcoinknots.org/"
 SRC_URI="
 	https://github.com/bitcoin/bitcoin/archive/${BITCOINCORE_COMMITHASH}.tar.gz -> bitcoin-v${PV}.tar.gz
-	https://bitcoinknots.org/files/22.x/${KNOTS_PV}/${KNOTS_P}.patches.txz -> ${KNOTS_P}.patches.tar.xz
+	https://bitcoinknots.org/files/$(ver_cut 1).x/${KNOTS_PV}/${KNOTS_P}.patches.txz -> ${KNOTS_P}.patches.tar.xz
 "
 
 LICENSE="MIT"
@@ -30,7 +30,7 @@ REQUIRED_USE="
 	wallet? ( || ( berkdb sqlite ) )
 "
 RDEPEND="
-	>=dev-libs/boost-1.64.0:=[threads(+)]
+	dev-libs/boost:=
 	>dev-libs/libsecp256k1-0.1_pre20200911:=[recovery,schnorr]
 	>=dev-libs/univalue-1.0.4:=
 	dev-qt/qtcore:5

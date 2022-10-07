@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="X interface to Z-code based text games"
 HOMEPAGE="https://www.eblong.com/zarf/xzip.html"
-SRC_URI="https://www.eblong.com/zarf/ftp/xzip182.tar.Z"
+SRC_URI="https://www.eblong.com/zarf/ftp/xzip$(ver_rs 1-3 '').tar.Z"
 
 LICENSE="GPL-2"
 SLOT="0"

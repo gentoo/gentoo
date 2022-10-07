@@ -7,10 +7,11 @@ DESCRIPTION="GNU Wget2 is a file and recursive website downloader"
 HOMEPAGE="https://gitlab.com/gnuwget/wget2"
 SRC_URI="mirror://gnu/wget/${P}.tar.gz"
 
-LICENSE="GPL-3"
+# LGPL for libwget
+LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/0" # subslot = libwget.so version
 QA_PKGCONFIG_VERSION="2.1.0" # libwget pkg-config versioning
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="brotli bzip2 doc +gnutls gpgme +http2 idn lzip lzma openssl pcre psl +ssl test valgrind xattr zlib"
 REQUIRED_USE="valgrind? ( test )"
 

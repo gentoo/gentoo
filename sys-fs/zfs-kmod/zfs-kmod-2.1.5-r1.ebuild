@@ -27,7 +27,7 @@ else
 	ZFS_KERNEL_DEP="${ZFS_KERNEL_DEP%%.*}.$(( ${ZFS_KERNEL_DEP##*.} + 1))"
 
 	if [[ ${PV} != *_rc* ]]; then
-		KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
+		KEYWORDS="amd64 arm64 ppc64 ~riscv"
 	fi
 fi
 
@@ -35,9 +35,7 @@ LICENSE="CDDL MIT debug? ( GPL-2+ )"
 SLOT="0/${PVR}"
 IUSE="custom-cflags debug +rootfs"
 
-RDEPEND="${DEPEND}
-	!sys-kernel/spl
-"
+RDEPEND="${DEPEND}"
 
 BDEPEND="
 	dev-lang/perl

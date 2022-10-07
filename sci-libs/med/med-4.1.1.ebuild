@@ -16,7 +16,7 @@ LICENSE="LGPL-3"
 S="${WORKDIR}/${P}_SRC"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc fortran mpi python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test ) python? ( test )"

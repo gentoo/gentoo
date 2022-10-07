@@ -5,7 +5,6 @@
     <email>jsmolic@gentoo.org</email>
     <name>Jakov Smolić</name>
   </maintainer>
-  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">sdispater/pendulum</remote-id>
     <remote-id type="pypi">pendulum</remote-id>

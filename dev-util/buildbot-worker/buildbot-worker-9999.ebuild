@@ -44,6 +44,14 @@ resulting directories are owned by the \"buildbot\" user and point
 \"${ROOT}/etc/conf.d/buildbot_worker.myinstance\" at the right location.
 The scripts can	run as a different user if desired."
 
+src_prepare() {
+	# Remove shipped windows start script
+	sed -e "/'buildbot_worker_windows_service=buildbot_worker.scripts.windows_service:HandleCommandLine',/d" \
+		-i setup.py || die
+
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	"${EPYTHON}" -m twisted.trial buildbot_worker || die "Tests failed with ${EPYTHON}"
 }

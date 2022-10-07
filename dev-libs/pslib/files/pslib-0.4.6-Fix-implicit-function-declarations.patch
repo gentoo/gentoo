@@ -1,0 +1,29 @@
+From ffd2e04b8e32d916cc513e73e92afa98348d3a73 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 4 Oct 2022 06:37:32 +0100
+Subject: [PATCH] Fix implicit function declarations
+
+Bug: https://bugs.gentoo.org/871300
+--- a/src/bmp.c
++++ b/src/bmp.c
+@@ -34,6 +34,9 @@
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+ #endif
++
++#include <ps_error.h>
++
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+--- a/src/ps_error.h
++++ b/src/ps_error.h
+@@ -1,5 +1,8 @@
+ #ifndef __PS_ERROR_H__
+ #define __PS_ERROR_H__
++
++#include "ps_intern.h"
++
+ void _ps_errorhandler(PSDoc *p, int error, const char *str, void *data);
+ void ps_error(PSDoc *p, int type, const char *fmt, ...);
+ #endif

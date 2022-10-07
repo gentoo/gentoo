@@ -16,7 +16,7 @@ inherit myspell-r2
 
 DESCRIPTION="German (traditional orthography) dictionaries for myspell/hunspell"
 HOMEPAGE="http://extensions.libreoffice.org/extension-center/german-de-de-1901-old-spelling-dictionaries"
-SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/dict-de-de-1901-oldspell-2017-06-22.oxt"
+SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/dict-de-de-1901-oldspell-${PV:0:4}-${PV:4:2}-${PV:6:2}.oxt"
 
 LICENSE="LGPL-3"
 SLOT="0"

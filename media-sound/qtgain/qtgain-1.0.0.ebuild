@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="QtGain"
-inherit desktop qmake-utils
+inherit desktop optfeature qmake-utils
 
 DESCRIPTION="Simple frontend to mp3gain, vorbisgain and metaflac"
 HOMEPAGE="https://www.linux-apps.com/content/show.php/QtGain?content=56842"
@@ -20,9 +20,8 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 "
-DEPEND="${RDEPEND}
-	app-arch/unzip
-"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${PN}"
 
@@ -37,11 +36,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Additional features can be enabled by installing optional packages:"
-	elog ""
-	elog "media-libs/flac - flac support"
-	elog "media-sound/aacgain - aac support"
-	elog "media-sound/mp3gain - mp3 support"
-	elog "media-sound/vorbisgain - vorbis support"
-	elog "media-sound/id3v2 - mass renamer and cover downloader"
+	optfeature "FLAC support" media-libs/flac
+	optfeature "AAC support" media-sound/aacgain
+	optfeature "MP3 support" media-sound/mp3gain
+	optfeature "Vorbis support" media-sound/vorbisgain
+	optfeature "Mass renamer and cover downloader" media-sound/id3v2
 }

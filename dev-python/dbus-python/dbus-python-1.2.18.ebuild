@@ -37,8 +37,8 @@ BDEPEND="
 "
 
 python_check_deps() {
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-	has_version "dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" \
+		"dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {

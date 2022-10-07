@@ -3,20 +3,18 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
-PYTHON_REQ_USE='threads(+)'
-inherit meson-multilib python-any-r1
+inherit meson-multilib
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/drobilla/sord.git"
 else
-	SRC_URI="http://download.drobilla.net/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	SRC_URI="https://download.drobilla.net/${P}.tar.xz"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
 fi
 
 DESCRIPTION="Library for storing RDF data in memory"
-HOMEPAGE="http://drobilla.net/software/sord/"
+HOMEPAGE="https://drobilla.net/software/sord.html"
 
 LICENSE="ISC"
 SLOT="0"
@@ -31,9 +29,7 @@ RDEPEND="
 	dev-libs/libpcre
 	dev-libs/serd
 "
-DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
-"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default

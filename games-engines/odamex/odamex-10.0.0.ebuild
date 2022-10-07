@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${PN}-src-${PV}.
 
 LICENSE="GPL-2+ MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+client hidpi master +odalaunch portmidi server upnp X"
 REQUIRED_USE="|| ( client master server )"
 

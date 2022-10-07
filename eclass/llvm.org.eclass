@@ -51,18 +51,42 @@ _LLVM_MASTER_MAJOR=16
 # @INTERNAL
 # @DESCRIPTION:
 # The newest release of LLVM for which manpages were generated.
-_LLVM_NEWEST_MANPAGE_RELEASE=14.0.6
+_LLVM_NEWEST_MANPAGE_RELEASE=15.0.2
 
 # @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
 # @DESCRIPTION:
-# Source type to use: 'git' or 'tar'.
+# Source type to use: 'git', 'tar' or 'snapshot'.
 if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
-	if [[ ${PV} == *.9999 ]]; then
-		_LLVM_SOURCE_TYPE=git
-	else
-		_LLVM_SOURCE_TYPE=tar
-	fi
+	case ${PV} in
+		*.9999)
+			_LLVM_SOURCE_TYPE=git
+			;;
+		*_pre*)
+			_LLVM_SOURCE_TYPE=snapshot
+
+			case ${PV} in
+				16.0.0_pre20220915)
+					EGIT_COMMIT=02a27b38909edc46c41732f79a837c95c9992d5a
+					;;
+				16.0.0_pre20220918)
+					EGIT_COMMIT=303526ef3aa211c1930be2885deae15eeeda3b18
+					;;
+				16.0.0_pre20220930)
+					EGIT_COMMIT=215c9fa4deac9ec6b4e504843830551f03b60620
+					;;
+				16.0.0_pre20221006)
+					EGIT_COMMIT=5a0722e0469894564dd9b0ee1d4f8c291d09c776
+					;;
+				*)
+					die "Unknown snapshot: ${PV}"
+					;;
+			esac
+			;;
+		*)
+			_LLVM_SOURCE_TYPE=tar
+			;;
+	esac
 fi
 
 [[ ${_LLVM_SOURCE_TYPE} == git ]] && inherit git-r3
@@ -72,7 +96,7 @@ fi
 
 inherit multiprocessing
 
-if ver_test -ge 14.0.5; then
+if [[ ${_LLVM_SOURCE_TYPE} == tar ]] && ver_test -ge 14.0.5; then
 	inherit verify-sig
 fi
 
@@ -193,33 +217,42 @@ llvm.org_set_globals() {
 		fi
 	fi
 
-	if [[ ${_LLVM_SOURCE_TYPE} == git ]]; then
-		EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+	case ${_LLVM_SOURCE_TYPE} in
+		git)
+			EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
 
-		[[ ${PV} != ${_LLVM_MASTER_MAJOR}.* ]] &&
-			EGIT_BRANCH="release/${PV%%.*}.x"
-	elif [[ ${_LLVM_SOURCE_TYPE} == tar ]]; then
-		if ver_test -ge 14.0.5; then
+			[[ ${PV} != ${_LLVM_MASTER_MAJOR}.* ]] &&
+				EGIT_BRANCH="release/${PV%%.*}.x"
+			;;
+		tar)
+			if ver_test -ge 14.0.5; then
+				SRC_URI+="
+					https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz
+					verify-sig? (
+						https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz.sig
+					)
+				"
+				BDEPEND+="
+					verify-sig? (
+						>=sec-keys/openpgp-keys-llvm-15
+					)
+				"
+				VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/llvm.asc
+			else
+				SRC_URI+="
+					https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz
+				"
+			fi
+			;;
+		snapshot)
 			SRC_URI+="
-				https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz
-				verify-sig? (
-					https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz.sig
-				)
+				https://github.com/llvm/llvm-project/archive/${EGIT_COMMIT}.tar.gz
+					-> llvm-project-${EGIT_COMMIT}.tar.gz
 			"
-			BDEPEND+="
-				verify-sig? (
-					>=sec-keys/openpgp-keys-llvm-15
-				)
-			"
-			VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/llvm.asc
-		else
-			SRC_URI+="
-				https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz
-			"
-		fi
-	else
-		die "Invalid _LLVM_SOURCE_TYPE: ${LLVM_SOURCE_TYPE}"
-	fi
+			;;
+		*)
+			die "Invalid _LLVM_SOURCE_TYPE: ${LLVM_SOURCE_TYPE}"
+	esac
 
 	S=${WORKDIR}/${LLVM_COMPONENTS[0]}
 
@@ -295,38 +328,52 @@ llvm.org_src_unpack() {
 		components+=( "${LLVM_TEST_COMPONENTS[@]}" )
 	fi
 
-	if [[ ${_LLVM_SOURCE_TYPE} == git ]]; then
-		git-r3_fetch
-		git-r3_checkout '' . '' "${components[@]}"
-		default_src_unpack
-	else
-		local archive=llvmorg-${PV/_/-}.tar.gz
-		if ver_test -ge 14.0.5; then
-			archive=llvm-project-${PV/_/}.src.tar.xz
-			if use verify-sig; then
-				verify-sig_verify_detached \
-					"${DISTDIR}/${archive}" "${DISTDIR}/${archive}.sig"
+	local archive=
+	case ${_LLVM_SOURCE_TYPE} in
+		git)
+			git-r3_fetch
+			git-r3_checkout '' . '' "${components[@]}"
+			;;
+		tar)
+			archive=llvmorg-${PV/_/-}.tar.gz
+			if ver_test -ge 14.0.5; then
+				archive=llvm-project-${PV/_/}.src.tar.xz
+				if use verify-sig; then
+					verify-sig_verify_detached \
+						"${DISTDIR}/${archive}" "${DISTDIR}/${archive}.sig"
+				fi
 			fi
-		fi
 
-		ebegin "Unpacking from ${archive}"
-		if ver_test -ge 14.0.5; then
-			tar -x -J -o --strip-components 1 \
-				-f "${DISTDIR}/${archive}" \
-				"${components[@]/#/${archive%.tar*}/}" || die
-		else
+			ebegin "Unpacking from ${archive}"
+			if ver_test -ge 14.0.5; then
+				tar -x -J -o --strip-components 1 \
+					-f "${DISTDIR}/${archive}" \
+					"${components[@]/#/${archive%.tar*}/}" || die
+			else
+				tar -x -z -o --strip-components 1 \
+					-f "${DISTDIR}/${archive}" \
+					"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
+			fi
+			eend ${?}
+			;;
+		snapshot)
+			archive=llvm-project-${EGIT_COMMIT}.tar.gz
+			ebegin "Unpacking from ${archive}"
 			tar -x -z -o --strip-components 1 \
 				-f "${DISTDIR}/${archive}" \
-				"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
-		fi
-		eend ${?}
+				"${components[@]/#/${archive%.tar*}/}" || die
+			eend ${?}
+			;;
+		*)
+			die "Invalid _LLVM_SOURCE_TYPE: ${LLVM_SOURCE_TYPE}"
+			;;
+	esac
 
-		# unpack all remaining distfiles
-		local x
-		for x in ${A}; do
-			[[ ${x} != ${archive} ]] && unpack "${x}"
-		done
-	fi
+	# unpack all remaining distfiles
+	local x
+	for x in ${A}; do
+		[[ ${x} != ${archive} ]] && unpack "${x}"
+	done
 
 	if [[ -n ${LLVM_PATCHSET} ]]; then
 		local nocomp=$(grep -r -L "^Gentoo-Component:" \

@@ -10,6 +10,10 @@
 		currently compatible with LADSPA, LV2 and LinuxVST formats.
 	</longdescription>
 	<use>
-		<flag name="lv2">build lv2 plugins</flag>
+		<flag name="lv2">Build lv2 plugins</flag>
+		<flag name="vst">Support LinuxVST plugins</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">sadko4u/lsp-plugins</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Boogie is an intermediate verification language (IVL), intended as a layer
+    on which to build program verifiers for other languages. Several program
+    verifiers have been built in this way, including the VCC and HAVOC
+    verifiers for C and the verifiers for Dafny, Chalice, and Spec#. For a
+    sample verifier for a toy language built on top of Boogie, see Forro.
+    Boogie is also the name of a tool. The tool accepts the Boogie language as
+    input, optionally infers some invariants in the given Boogie program, and
+    then generates verification conditions that are passed to an SMT solver.
+    The default SMT solver is Z3.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/boogie-org/boogie/issues/</bugs-to>
+    <remote-id type="github">boogie-org/boogie</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -7,7 +7,7 @@ inherit myspell-r2
 
 DESCRIPTION="English dictionaries for myspell/hunspell"
 HOMEPAGE="https://extensions.libreoffice.org/extensions/english-dictionaries"
-SRC_URI="https://extensions.libreoffice.org/assets/downloads/41/1656659156/dict-en-20220701_lo.oxt"
+SRC_URI="https://extensions.libreoffice.org/assets/downloads/41/1656659156/dict-en-${PV}_lo.oxt"
 
 LICENSE="BSD MIT LGPL-3+"
 SLOT="0"

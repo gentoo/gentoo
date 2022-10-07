@@ -52,7 +52,6 @@
 			Support management of VirtualBox virtualisation (<pkg>app-emulation/virtualbox</pkg>)
 		</flag>
 		<!-- Miscellaneous flags -->
-		<flag name="apparmor">Enable AppArmor support</flag>
 		<flag name="dtrace">Enable dtrace support via <pkg>dev-util/systemtap</pkg></flag>
 		<flag name="fuse">Allow LXC to use <pkg>sys-fs/fuse</pkg> for mountpoints</flag>
 		<flag name="numa">

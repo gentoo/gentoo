@@ -11,7 +11,7 @@ SRC_URI="https://github.com/openstack/liberasurecode/archive/${PV}.tar.gz -> ${P
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc static-libs"
 
 DEPEND="doc? ( app-doc/doxygen )"

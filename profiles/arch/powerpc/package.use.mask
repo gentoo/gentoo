@@ -1,6 +1,15 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-08-09)
+# dev-java/jaxws-api not keyworded
+>=dev-java/jmock-2.12.0 test
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-23)
+# Only PyQt5 is keyworded on pcc64 at the moment.
+# Mask the other Qt4Python implementations
+dev-python/QtPy pyside2 pyqt6 pyside6
+
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
 app-text/enchant nuspell
@@ -196,6 +205,7 @@ app-portage/g-sorcery bson
 # Michał Górny <mgorny@gentoo.org> (2017-03-24)
 # libcxx fails to compile on ppc*, #595744.
 sys-devel/clang default-libcxx
+sys-devel/clang-common default-libcxx
 sys-devel/clang-runtime libcxx
 
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
@@ -206,11 +216,6 @@ games-emulation/dosbox glide
 # Enable numa support on supported architectures
 dev-db/mysql -numa
 dev-db/percona-server -numa
-
-# Davide Pesavento <pesa@gentoo.org> (2016-07-28)
-# The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
-# keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 bluetooth location speech
 
 # Michael Palimaka <kensington@gentoo.org> (2016-07-07)
 # Requires unkeyworded dependencies
@@ -246,7 +251,6 @@ gnome-extra/sushi office
 # test dependencies need keywording
 dev-haskell/dlist test
 dev-haskell/haskell-src-exts test
-dev-util/bnfc test
 
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-16)
 # Ultimately pulls in nodejs which is broken.
@@ -269,7 +273,8 @@ dev-ruby/actionpack test
 sys-block/fio rbd
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2014-06-14)
-# dependency sci-libs/vtk not keyworded on ppc yet
+# dependency sci-libs/vtk not keyworded on ppc yet, bug #778293
+sci-mathematics/maxima vtk
 media-libs/opencv vtk
 
 # Pacho Ramos <pacho@gentoo.org> (2013-02-22)

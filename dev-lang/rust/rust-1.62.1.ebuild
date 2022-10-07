@@ -73,7 +73,7 @@ LLVM_DEPEND+=" )
 # most of the time previous versions fail to bootstrap with newer
 # for example 1.47.x, requires at least 1.46.x, 1.47.x is ok,
 # but it fails to bootstrap with 1.48.x
-# https://github.com/rust-lang/rust/blob/${PV}/src/stage0.txt
+# https://github.com/rust-lang/rust/blob/${PV}/src/stage0.json
 RUST_DEP_PREV="$(ver_cut 1).$(($(ver_cut 2) - 1))*"
 RUST_DEP_CURR="$(ver_cut 1).$(ver_cut 2)*"
 BOOTSTRAP_DEPEND="||
@@ -222,6 +222,17 @@ llvm_check_deps() {
 	has_version -r "sys-devel/llvm:${LLVM_SLOT}[${LLVM_TARGET_USEDEPS// /,}]"
 }
 
+# Is LLVM being linked against libc++?
+is_libcxx_linked() {
+	local code='#include <ciso646>
+#if defined(_LIBCPP_VERSION)
+	HAVE_LIBCXX
+#endif
+'
+	local out=$($(tc-getCXX) ${CXXFLAGS} ${CPPFLAGS} -x c++ -E -P - <<<"${code}") || return 1
+	[[ ${out} == *HAVE_LIBCXX* ]]
+}
+
 pkg_pretend() {
 	pre_build_checks
 }
@@ -256,9 +267,9 @@ src_prepare() {
 }
 
 src_configure() {
-	use system-llvm && filter-flags '-flto*' # https://bugs.gentoo.org/862109
+	filter-flags '-flto*' # https://bugs.gentoo.org/862109
 
-	local rust_target="" rust_targets="" arch_cflags use_libcxx="false"
+	local rust_target="" rust_targets="" arch_cflags
 
 	# Collect rust target names to compile standard libs for all ABIs.
 	for v in $(multilib_get_enabled_abi_pairs); do
@@ -307,14 +318,6 @@ src_configure() {
 
 	rust_target="$(rust_abi)"
 
-	# https://bugs.gentoo.org/732632
-	if tc-is-clang; then
-		local clang_slot="$(clang-major-version)"
-		if { has_version "sys-devel/clang:${clang_slot}[default-libcxx]" || is-flagq -stdlib=libc++; }; then
-			use_libcxx="true"
-		fi
-	fi
-
 	local cm_btype="$(usex debug DEBUG RELEASE)"
 	cat <<- _EOF_ > "${S}"/config.toml
 		changelog-seen = 2
@@ -327,7 +330,8 @@ src_configure() {
 		targets = "${LLVM_TARGETS// /;}"
 		experimental-targets = ""
 		link-shared = $(toml_usex system-llvm)
-		$(if [[ ${use_libcxx} == true ]]; then
+		$(if is_libcxx_linked; then
+			# https://bugs.gentoo.org/732632
 			echo "use-libcxx = true"
 			echo "static-libstdcpp = false"
 		fi)

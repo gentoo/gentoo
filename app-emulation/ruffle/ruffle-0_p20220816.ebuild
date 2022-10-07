@@ -506,7 +506,8 @@ pkg_postinst() {
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog "${PN} is experimental software that is still under heavy development"
 		elog "and only receiving nightly releases. Plans in Gentoo is to update"
-		elog "roughly every two weeks if no known major regressions."
+		elog "roughly every months if no known major regressions (feel free to"
+		elog "report if you feel a newer nightly is needed ahead of time)."
 		elog
 		elog "There is currently no plans to support wasm builds / browser"
 		elog "extensions, this provides the desktop viewer and other tools."

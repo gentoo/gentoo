@@ -34,10 +34,9 @@ RESTRICT="
 	!test? ( test )
 "
 
-CLANG_SLOT=${SLOT%%.*}
-# llvm-6 for new lit options
+LLVM_MAX_SLOT=${SLOT%%.*}
 DEPEND="
-	>=sys-devel/llvm-6
+	sys-devel/llvm:${LLVM_MAX_SLOT}
 	virtual/libcrypt[abi_x86_32(-)?,abi_x86_64(-)?]
 "
 BDEPEND="
@@ -45,9 +44,9 @@ BDEPEND="
 	clang? ( sys-devel/clang )
 	elibc_glibc? ( net-libs/libtirpc )
 	test? (
-		!<sys-apps/sandbox-2.13
+		!!<sys-apps/sandbox-2.13
 		$(python_gen_any_dep ">=dev-python/lit-5[\${PYTHON_USEDEP}]")
-		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
+		=sys-devel/clang-${PV%_*}*:${LLVM_MAX_SLOT}
 		sys-libs/compiler-rt:${SLOT}
 	)
 	!test? (
@@ -160,14 +159,14 @@ src_configure() {
 			-DLLVM_LIT_ARGS="$(get_lit_flags)"
 
 			# they are created during src_test()
-			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${CLANG_SLOT}/bin/clang"
-			-DCOMPILER_RT_TEST_CXX_COMPILER="${BUILD_DIR}/lib/llvm/${CLANG_SLOT}/bin/clang++"
+			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${LLVM_MAX_SLOT}/bin/clang"
+			-DCOMPILER_RT_TEST_CXX_COMPILER="${BUILD_DIR}/lib/llvm/${LLVM_MAX_SLOT}/bin/clang++"
 		)
 
 		# same flags are passed for build & tests, so we need to strip
 		# them down to a subset supported by clang
-		CC=${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang \
-		CXX=${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang++ \
+		CC=${EPREFIX}/usr/lib/llvm/${LLVM_MAX_SLOT}/bin/clang \
+		CXX=${EPREFIX}/usr/lib/llvm/${LLVM_MAX_SLOT}/bin/clang++ \
 		strip-unsupported-flags
 	fi
 
@@ -194,17 +193,17 @@ src_configure() {
 
 		# copy clang over since resource_dir is located relatively to binary
 		# therefore, we can put our new libraries in it
-		mkdir -p "${BUILD_DIR}"/lib/{llvm/${CLANG_SLOT}/{bin,$(get_libdir)},clang/${SLOT}/include} || die
-		cp "${EPREFIX}"/usr/lib/llvm/${CLANG_SLOT}/bin/clang{,++} \
-			"${BUILD_DIR}"/lib/llvm/${CLANG_SLOT}/bin/ || die
+		mkdir -p "${BUILD_DIR}"/lib/{llvm/${LLVM_MAX_SLOT}/{bin,$(get_libdir)},clang/${SLOT}/include} || die
+		cp "${EPREFIX}"/usr/lib/llvm/${LLVM_MAX_SLOT}/bin/clang{,++} \
+			"${BUILD_DIR}"/lib/llvm/${LLVM_MAX_SLOT}/bin/ || die
 		cp "${EPREFIX}"/usr/lib/clang/${SLOT}/include/*.h \
 			"${BUILD_DIR}"/lib/clang/${SLOT}/include/ || die
 		cp "${sys_dir}"/*builtins*.a \
 			"${BUILD_DIR}/lib/clang/${SLOT}/lib/${sys_dir##*/}/" || die
 		# we also need LLVMgold.so for gold-based tests
-		if [[ -f ${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/$(get_libdir)/LLVMgold.so ]]; then
-			ln -s "${EPREFIX}"/usr/lib/llvm/${CLANG_SLOT}/$(get_libdir)/LLVMgold.so \
-				"${BUILD_DIR}"/lib/llvm/${CLANG_SLOT}/$(get_libdir)/ || die
+		if [[ -f ${EPREFIX}/usr/lib/llvm/${LLVM_MAX_SLOT}/$(get_libdir)/LLVMgold.so ]]; then
+			ln -s "${EPREFIX}"/usr/lib/llvm/${LLVM_MAX_SLOT}/$(get_libdir)/LLVMgold.so \
+				"${BUILD_DIR}"/lib/llvm/${LLVM_MAX_SLOT}/$(get_libdir)/ || die
 		fi
 	fi
 }

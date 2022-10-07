@@ -62,22 +62,13 @@ src_install() {
 	doenvd "${FILESDIR}"/50slib
 
 	# guile
-	if has_version '=dev-scheme/guile-3.0*'; then
-		dodir /usr/share/guile/3.0
-		dosym -r /usr/share/${PN}/ /usr/share/guile/3.0/${PN}
-	elif has_version '=dev-scheme/guile-2.2*'; then
-		dodir /usr/share/guile/2.2
-		dosym -r /usr/share/${PN}/ /usr/share/guile/2.2/${PN}
-	elif has_version '=dev-scheme/guile-2.0*'; then
-		dodir /usr/share/guile/2.0
-		dosym -r /usr/share/${PN}/ /usr/share/guile/2.0/${PN}
-	else
-		dodir /usr/share/guile/1.8
-		dosym -r /usr/share/${PN}/ /usr/share/guile/1.8/${PN}
-	fi
-
-	# gambit
-	use gambit && dodir /usr/share/gambc
+	for guile_version in 3.0 2.2 2.0 1.8 ; do
+		if has_version "=dev-scheme/guile-${guile_version}*" ; then
+			dodir /usr/share/guile/${guile_version}
+			dosym -r /usr/share/${PN}/ /usr/share/guile/${guile_version}/${PN}
+			break
+		fi
+	done
 
 	# backwards compatibility
 	dodir /usr/lib/
@@ -109,6 +100,7 @@ pkg_postinst() {
 	#	fi
 
 	if use gambit ; then
+		mkdir -p "${ROOT}"/usr/share/gambc || die
 		gsi -e "$(_new_catalog gambit)" || die
 	fi
 

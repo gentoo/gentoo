@@ -13,7 +13,7 @@ SRC_URI="https://github.com/pytest-dev/pytest-twisted/archive/v${PV}.tar.gz -> $
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv"
 
 RDEPEND="
 	dev-python/decorator[${PYTHON_USEDEP}]

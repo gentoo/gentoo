@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="PowerShell - binary precompiled for glibc"
-HOMEPAGE="https://powershell.org/"
+HOMEPAGE="https://microsoft.com/powershell"
 BASE_URI="https://github.com/PowerShell/PowerShell/releases/download"
 SRC_URI="
 	amd64? ( ${BASE_URI}/v${PV}/powershell-${PV}-linux-x64.tar.gz )

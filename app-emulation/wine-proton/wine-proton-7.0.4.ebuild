@@ -12,20 +12,32 @@ WINE_GECKO=2.47.3
 WINE_MONO=7.3.0
 WINE_PV=$(ver_rs 2 -)
 
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/ValveSoftware/wine.git"
+	EGIT_BRANCH="experimental_$(ver_cut 1-2)"
+else
+	SRC_URI="https://github.com/ValveSoftware/wine/archive/refs/tags/proton-wine-${WINE_PV}.tar.gz"
+	S="${WORKDIR}/${PN}-wine-${WINE_PV}"
+	KEYWORDS="-* ~amd64 ~x86"
+fi
+
 DESCRIPTION="Valve Software's fork of Wine"
 HOMEPAGE="https://github.com/ValveSoftware/wine/"
-SRC_URI="https://github.com/ValveSoftware/wine/archive/refs/tags/proton-wine-${WINE_PV}.tar.gz"
-S="${WORKDIR}/${PN}-wine-${WINE_PV}"
 
 LICENSE="LGPL-2.1+ BSD-2 IJG MIT ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
-KEYWORDS="-* ~amd64 ~x86"
 IUSE="
 	+abi_x86_32 +abi_x86_64 +alsa crossdev-mingw custom-cflags debug
 	+fontconfig +gecko +gstreamer llvm-libunwind +mono nls openal
 	osmesa perl pulseaudio +sdl selinux +ssl udev udisks +unwind usb
 	v4l +vkd3d +xcomposite xinerama"
 
+# tests are non-trivial to run, can hang easily, don't play well with
+# sandbox, and several need real opengl/vulkan or network access
+RESTRICT="test"
+
+# `grep WINE_CHECK_SONAME configure.ac` + if not directly linked
 WINE_DLOPEN_DEPEND="
 	dev-libs/gmp:=[${MULTILIB_USEDEP}]
 	dev-libs/libgcrypt:=[${MULTILIB_USEDEP}]
@@ -94,9 +106,10 @@ IDEPEND=">=app-eselect/eselect-wine-1.2.2-r1"
 QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-7.0.4-llvm-libunwind.patch
+	"${FILESDIR}"/${PN}-7.0.4-musl.patch
 	"${FILESDIR}"/${PN}-7.0.4-noexecstack.patch
 	"${FILESDIR}"/${PN}-7.0.4-restore-menubuilder.patch
+	"${FILESDIR}"/${PN}-7.0.4-unwind.patch
 )
 
 pkg_pretend() {
@@ -105,25 +118,29 @@ pkg_pretend() {
 	if use crossdev-mingw && [[ ! -v MINGW_BYPASS ]]; then
 		local mingw=-w64-mingw32
 		for mingw in $(usev abi_x86_64 x86_64${mingw}) $(usev abi_x86_32 i686${mingw}); do
-			type -P ${mingw}-gcc >/dev/null && continue
-			eerror "With USE=crossdev-mingw, you must prepare the MinGW toolchain"
-			eerror "yourself by installing sys-devel/crossdev then running:"
-			eerror
-			eerror "    crossdev --target ${mingw}"
-			eerror
-			eerror "For more information, please see: https://wiki.gentoo.org/wiki/Mingw"
-			eerror "--> Note that mingw builds are default for ${PN} even without this USE."
-			die "USE=crossdev-mingw is enabled, but ${mingw}-gcc was not found"
+			if ! type -P ${mingw}-gcc >/dev/null; then
+				eerror "With USE=crossdev-mingw, you must prepare the MinGW toolchain"
+				eerror "yourself by installing sys-devel/crossdev then running:"
+				eerror
+				eerror "    crossdev --target ${mingw}"
+				eerror
+				eerror "For more information, please see: https://wiki.gentoo.org/wiki/Mingw"
+				eerror "--> Note that mingw builds are default for ${PN} even without this USE."
+				die "USE=crossdev-mingw is enabled, but ${mingw}-gcc was not found"
+			fi
 		done
 	fi
 }
 
 src_prepare() {
 	# sanity check, bumping these has a history of oversights
-	local geckomono="$(sed -En '/^#define (GECKO|MONO)_VER/{s/[^0-9.]//gp}' \
-		dlls/appwiz.cpl/addons.c || die)"
-	[[ ${WINE_GECKO}$'\n'${WINE_MONO} == "${geckomono}" ]] ||
-		die "gecko/mono mismatch, has:" ${geckomono}
+	local geckomono=$(sed -En '/^#define (GECKO|MONO)_VER/{s/[^0-9.]//gp}' \
+		dlls/appwiz.cpl/addons.c || die)
+	if [[ ${WINE_GECKO}$'\n'${WINE_MONO} != "${geckomono}" ]]; then
+		local gmfatal=
+		[[ ${PV} == *9999 ]] && gmfatal=nonfatal
+		${gmfatal} die -n "gecko/mono mismatch in ebuild, has: " ${geckomono} " (please file a bug)"
+	fi
 
 	default
 
@@ -133,10 +150,10 @@ src_prepare() {
 	# similarly to staging, append to `wine --version` for identification
 	sed -i "s/wine_build[^1]*1/& (Proton-${WINE_PV})/" configure.ac || die
 
-	# source has outdated auto-generated files, update like Proton's Makefile
+	# always update for patches (including user's wrt #432348)
 	eautoreconf
 	tools/make_requests || die # perl
-	dlls/winevulkan/make_vulkan -x vk.xml || die # python
+	dlls/winevulkan/make_vulkan -x vk.xml || die # python, needed for proton's
 }
 
 src_configure() {
@@ -161,7 +178,6 @@ src_configure() {
 
 		# ...and disable most options unimportant for games and unused by
 		# Proton rather than expose as volatile USEs with little support
-		--disable-tests # does not build and is disabled in Proton's Makefile
 		--without-capi
 		--without-cups
 		--without-gphoto
@@ -176,13 +192,14 @@ src_configure() {
 
 		$(use_enable gecko mshtml)
 		$(use_enable mono mscoree)
+		--disable-tests
 		$(use_with alsa)
 		$(use_with fontconfig)
 		$(use_with gstreamer)
 		$(use_with nls gettext)
 		$(use_with openal)
 		$(use_with osmesa)
-		--without-oss # media-sound/oss is not packaged
+		--without-oss # media-sound/oss is not packaged (OSSv4)
 		$(use_with pulseaudio pulse)
 		$(use_with sdl)
 		$(use_with ssl gnutls)
@@ -219,13 +236,15 @@ src_configure() {
 				$(usev abi_x86_64 --with-wine64=../build64)
 				TARGETFLAGS=-m32 # for widl
 			)
-			# _setup is optional, but use over Wine's auto-detect (+bug 472038)
+			# _setup is optional, but use over Wine's auto-detect (+#472038)
 			multilib_toolchain_setup x86
 		fi
 		: "${CROSSCC:=${CROSSCC_x86:-i686-w64-mingw32-gcc}}"
 
 		# use *FLAGS for mingw, but strip unsupported (e.g. --hash-style=gnu)
-		: "${CROSSCFLAGS:=$(CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"
+		: "${CROSSCFLAGS:=$(
+			filter-flags '-fstack-protector*' #870136
+			CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"
 		: "${CROSSLDFLAGS:=$(
 			filter-flags '-fuse-ld=*'
 			CC=${CROSSCC} test-flags-CCLD ${LDFLAGS})}"
@@ -261,8 +280,7 @@ src_install() {
 	use perl || rm "${ED}"${WINE_DATADIR}/man/man1/wine{dump,maker}.1 \
 		"${ED}"${WINE_PREFIX}/bin/{function_grep.pl,wine{dump,maker}} || die
 
-	# create variant wrappers for eselect-wine, quotes are
-	# enough to prevent bug #615218 if it somehow happens
+	# create variant wrappers for eselect-wine
 	local bin
 	for bin in "${ED}"${WINE_PREFIX}/bin/*; do
 		make_wrapper "${bin##*/}-${P#wine-}" "${bin#"${ED}"}"

@@ -54,6 +54,7 @@ DEPEND="
 	)
 	pam? ( sys-libs/pam )
 	sasl? ( dev-libs/cyrus-sasl )
+	selinux? ( sys-libs/libselinux )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
 	ssl? ( dev-libs/openssl:0= )
 	sssd? ( sys-auth/sssd[sudo] )

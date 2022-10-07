@@ -20,5 +20,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">mlterm</remote-id>
+		<remote-id type="github">arakiken/mlterm</remote-id>
 	</upstream>
 </pkgmetadata>

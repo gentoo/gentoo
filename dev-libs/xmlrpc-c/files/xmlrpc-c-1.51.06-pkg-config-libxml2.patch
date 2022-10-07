@@ -1,0 +1,225 @@
+https://sourceforge.net/p/xmlrpc-c/code/3151
+https://bugs.gentoo.org/870253
+--- a/common.mk
++++ b/common.mk
+@@ -281,7 +281,7 @@
+         -L$(BLDDIR)/lib/expat/xmlparse -lxmlrpc_xmlparse \
+         -L$(BLDDIR)/lib/expat/xmltok   -lxmlrpc_xmltok
+ else
+-  LDLIBS_XML = $(shell xml2-config --libs)
++  LDLIBS_XML = $(shell ${PKG_CONFIG} libxml-2.0 --libs)
+ endif
+ 
+ # LIBXMLRPC_UTIL_LIBDEP is the string of linker options you need on the link
+--- a/configure
++++ b/configure
+@@ -628,9 +628,8 @@
+ CC_WARN_FLAGS
+ CXX_COMPILER_GNU
+ C_COMPILER_GNU
++HAVE_LIBWWW_SSL_DEFINE
+ ENABLE_LIBXML2_BACKEND
+-have_xml2_config
+-HAVE_LIBWWW_SSL_DEFINE
+ HAVE_ABYSS_OPENSSL_DEFINE
+ MUST_BUILD_ABYSS_OPENSSL
+ HAVE_OPENSSL
+@@ -781,8 +780,8 @@
+ enable_cplusplus
+ enable_abyss_threads
+ enable_abyss_openssl
++enable_libxml2_backend
+ with_libwww_ssl
+-enable_libxml2_backend
+ '
+       ac_precious_vars='build_alias
+ host_alias
+@@ -6053,62 +6053,39 @@
+ fi
+
+
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for Libxml2 library" >&5
++$as_echo_n "checking for Libxml2 library... " >&6; }
++
++if ${PKG_CONFIG} libxml-2.0; then
++  HAVE_LIBXML2=yes
++else
++  HAVE_LIBXML2=no
++fi
++
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $HAVE_LIBXML2" >&5
++$as_echo "$HAVE_LIBXML2" >&6; }
++
++# Check whether --enable-libxml2-backend was given.
++if test "${enable_libxml2_backend+set}" = set; then :
++  enableval=$enable_libxml2_backend;
++else
++  enable_libxml2_backend=no
++fi
++
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether to build the libxml2 backend" >&5
++$as_echo_n "checking whether to build the libxml2 backend... " >&6; }
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $enable_libxml2_backend" >&5
++$as_echo "$enable_libxml2_backend" >&6; }
++
++if test $enable_libxml2_backend = yes; then
++  if test $HAVE_LIBXML2 = no; then
++    as_fn_error $? "You specified --enable-libxml2_backend, but don't appear to have libxml2 installed (no pkg-config file for it in your pkg-config search path), so we cannot not build for libxml2" "$LINENO" 5
++  fi
++fi
++
++ENABLE_LIBXML2_BACKEND=$enable_libxml2_backend
++
++
+-# Check whether --enable-libxml2-backend was given.
+-if test "${enable_libxml2_backend+set}" = set; then :
+-  enableval=$enable_libxml2_backend;
+-else
+-  enable_libxml2_backend=no
+-fi
+-
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether to build the libxml2 backend" >&5
+-$as_echo_n "checking whether to build the libxml2 backend... " >&6; }
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $enable_libxml2_backend" >&5
+-$as_echo "$enable_libxml2_backend" >&6; }
+-
+-if test $enable_libxml2_backend = yes; then
+-  # Extract the first word of "xml2-config", so it can be a program name with args.
+-set dummy xml2-config; ac_word=$2
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+-$as_echo_n "checking for $ac_word... " >&6; }
+-if ${ac_cv_prog_have_xml2_config+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  if test -n "$have_xml2_config"; then
+-  ac_cv_prog_have_xml2_config="$have_xml2_config" # Let the user override the test.
+-else
+-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-    for ac_exec_ext in '' $ac_executable_extensions; do
+-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_prog_have_xml2_config="yes"
+-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-  done
+-IFS=$as_save_IFS
+-
+-  test -z "$ac_cv_prog_have_xml2_config" && ac_cv_prog_have_xml2_config="no"
+-fi
+-fi
+-have_xml2_config=$ac_cv_prog_have_xml2_config
+-if test -n "$have_xml2_config"; then
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $have_xml2_config" >&5
+-$as_echo "$have_xml2_config" >&6; }
+-else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-fi
+-
+-
+-  if test $have_xml2_config = no; then
+-    as_fn_error $? "You specified --enable-libxml2_backend, but don't appear to have libxml2 installed (no working xml2-config in your command search path), so we cannot not build for libxml2" "$LINENO" 5
+-  fi
+-fi
+-ENABLE_LIBXML2_BACKEND=$enable_libxml2_backend
+ 
+ 
+ C_COMPILER_GNU=$ac_cv_c_compiler_gnu
+--- a/configure.in
++++ b/configure.in
+@@ -742,6 +742,36 @@
+ 
+ 
+ dnl =======================================================================
++dnl Finding Libxml2
++dnl =======================================================================
++
++AC_MSG_CHECKING(for Libxml2 library)
++
++if ${PKG_CONFIG} libxml-2.0; then
++  HAVE_LIBXML2=yes
++else
++  HAVE_LIBXML2=no
++fi
++
++AC_MSG_RESULT($HAVE_LIBXML2)
++
++AC_ARG_ENABLE(libxml2-backend,
++  [  --enable-libxml2-backend  Use libxml2 instead of built-in expat], ,
++enable_libxml2_backend=no)
++AC_MSG_CHECKING(whether to build the libxml2 backend)
++AC_MSG_RESULT($enable_libxml2_backend)
++
++if test $enable_libxml2_backend = yes; then
++  if test $HAVE_LIBXML2 = no; then
++    AC_MSG_ERROR([You specified --enable-libxml2_backend, but don't appear to have libxml2 installed (no pkg-config file for it in your pkg-config search path), so we cannot not build for libxml2])
++  fi
++fi
++
++ENABLE_LIBXML2_BACKEND=$enable_libxml2_backend
++AC_SUBST(ENABLE_LIBXML2_BACKEND)
++
++
++dnl =======================================================================
+ dnl Checks for build options.
+ dnl =======================================================================
+ 
+@@ -763,22 +793,6 @@
+ fi
+ AC_SUBST(HAVE_LIBWWW_SSL_DEFINE)
+ 
+-dnl Check to see if we should build the libxml2 backend.
+-AC_ARG_ENABLE(libxml2-backend,
+-  [  --enable-libxml2-backend  Use libxml2 instead of built-in expat], ,
+-enable_libxml2_backend=no)
+-AC_MSG_CHECKING(whether to build the libxml2 backend)
+-AC_MSG_RESULT($enable_libxml2_backend)
+-
+-if test $enable_libxml2_backend = yes; then
+-  AC_CHECK_PROG(have_xml2_config, xml2-config, yes, no)
+-  if test $have_xml2_config = no; then
+-    AC_MSG_ERROR([You specified --enable-libxml2_backend, but don't appear to have libxml2 installed (no working xml2-config in your command search path), so we cannot not build for libxml2])
+-  fi
+-fi
+-ENABLE_LIBXML2_BACKEND=$enable_libxml2_backend
+-AC_SUBST(ENABLE_LIBXML2_BACKEND)
+-
+ dnl =======================================================================
+ dnl Compiler information
+ dnl =======================================================================
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -68,7 +68,7 @@
+ 
+ ifeq ($(ENABLE_LIBXML2_BACKEND),yes)
+   XMLRPC_XML_PARSER = xmlrpc_libxml2
+-  XML_PARSER_LIBDEP = $(shell xml2-config --libs)
++  XML_PARSER_LIBDEP = $(shell ${PKG_CONFIG} libxml-2.0 --libs)
+   XML_PARSER_LIBDEP_DEP =
+   XML_PKGCONFIG_REQ = libxml-2.0
+ else
+@@ -276,7 +276,7 @@
+   -Isrcdir/lib/util/include \
+ 
+ ifeq ($(ENABLE_LIBXML2_BACKEND),yes)
+-  LIBXML_INCLUDES = $(shell xml2-config --cflags)
++  LIBXML_INCLUDES = $(shell ${PKG_CONFIG} libxml-2.0 --cflags)
+ else
+   LIBXML_INCLUDES = -Isrcdir/lib/expat/xmlparse
+ endif
+--- a/src/cpp/Makefile
++++ b/src/cpp/Makefile
+@@ -46,7 +46,7 @@
+ endif
+ 
+ ifeq ($(ENABLE_LIBXML2_BACKEND),yes)
+-  XML_PARSER_LIBDEP = $(shell xml2-config --libs)
++  XML_PARSER_LIBDEP = $(shell ${PKG_CONFIG} libxml-2.0 --libs)
+ else
+   XML_PARSER_LIBDEP = \
+     -L$(BLDDIR)/lib/expat/xmlparse -lxmlrpc_xmlparse \

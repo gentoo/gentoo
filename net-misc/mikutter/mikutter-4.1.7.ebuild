@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby27"
 
 inherit desktop ruby-ng
 

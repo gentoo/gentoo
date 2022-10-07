@@ -537,6 +537,7 @@ setup_env() {
 		einfo "Overriding clang configuration, since it won't work here"
 
 		export CC="${current_gcc_path}/gcc"
+		export CPP="${current_gcc_path}/cpp"
 		export CXX="${current_gcc_path}/g++"
 		export LD="${current_binutils_path}/ld.bfd"
 		export AR="${current_binutils_path}/ar"

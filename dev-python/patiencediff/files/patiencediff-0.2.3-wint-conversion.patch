@@ -1,0 +1,84 @@
+https://github.com/breezy-team/patiencediff/commit/24e26cd2929e01dc8ef47fb71b3b87536ad43947
+
+From 24e26cd2929e01dc8ef47fb71b3b87536ad43947 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 26 Sep 2022 21:49:47 +0100
+Subject: [PATCH] Use designated initialiser syntax for PyTypeObject
+
+Fixes build with Clang. Switch to the more readable designated
+initialiser syntax to avoid having to lookup member order.
+
+Before, Clang would complain:
+```
+clang -Wno-unused-result -Wsign-compare -Wunreachable-code -DNDEBUG -O2 -pipe -fdiagnostics-color=always -frecord-gcc-switches -fPIC -I/usr/include/python3.10 -c patiencediff/_patiencediff_c.c -o build/temp.linux-x86_64-cpython-310/patiencediff/_patiencediff_c.o
+patiencediff/_patiencediff_c.c:1175:5: error: incompatible pointer to integer conversion initializing 'Py_ssize_t' (aka 'long') with an expression of type 'void *' [-Wint-conversion]
+    NULL, /* tp_print */
+    ^~~~
+/usr/include/wchar.h:46:14: note: expanded from macro 'NULL'
+             ^~~~~~~~~~
+```
+
+This is because some of PyTypeObject's members are actually
+Py_ssize_t so chucking a NULL in looks like a codesmell to Clang.
+
+See https://docs.python.org/3/c-api/typeobj.html#quick-reference
+and https://docs.python.org/3/c-api/typeobj.html#examples.
+
+Bug: https://bugs.gentoo.org/869995
+Closes: https://github.com/breezy-team/patiencediff/issues/12
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/patiencediff/_patiencediff_c.c
++++ b/patiencediff/_patiencediff_c.c
+@@ -1168,44 +1168,13 @@ static char PatienceSequenceMatcher_doc[] =
+ 
+ static PyTypeObject PatienceSequenceMatcherType = {
+     PyVarObject_HEAD_INIT(NULL, 0)
+-    "PatienceSequenceMatcher",  /* tp_name */
+-    sizeof(PatienceSequenceMatcher), /* tp_basicsize */
+-    0, /* tp_itemsize */
+-    (destructor)PatienceSequenceMatcher_dealloc, /* tp_dealloc */
+-    NULL, /* tp_print */
+-    NULL, /* tp_getattr */
+-    NULL, /* tp_setattr */
+-    NULL, /* tp_compare */
+-    NULL, /* tp_repr */
+-    NULL, /* tp_as_number */
+-    NULL, /* tp_as_sequence */
+-    NULL, /* tp_as_mapping */
+-    NULL, /* tp_hash */
+-    NULL, /* tp_call */
+-    NULL, /* tp_str */
+-    NULL, /* tp_getattro */
+-    NULL, /* tp_setattro */
+-    NULL, /* tp_as_buffer */
+-    Py_TPFLAGS_DEFAULT, /* tp_flags */
+-    PatienceSequenceMatcher_doc, /* tp_doc */
+-    NULL, /* tp_traverse */
+-    NULL, /* tp_clear */
+-    NULL, /* tp_richcompare */
+-    0, /* tp_weaklistoffset */
+-    NULL, /* tp_iter */
+-    NULL, /* tp_iternext */
+-    PatienceSequenceMatcher_methods, /* tp_methods */
+-    NULL, /* tp_members */
+-    NULL, /* tp_getset */
+-    NULL, /* tp_base */
+-    NULL, /* tp_dict */
+-    NULL, /* tp_descr_get */
+-    NULL, /* tp_descr_set */
+-    0, /* tp_dictoffset */
+-    NULL, /* tp_init */
+-    NULL, /* tp_alloc */
+-    PatienceSequenceMatcher_new, /* NULL */
+-    NULL, /* tp_free */
++    .tp_name = "PatienceSequenceMatcher",
++    .tp_basicsize = sizeof(PatienceSequenceMatcher),
++    .tp_dealloc = (destructor)PatienceSequenceMatcher_dealloc,
++    .tp_flags = Py_TPFLAGS_DEFAULT,
++    .tp_doc = PatienceSequenceMatcher_doc,
++    .tp_methods = PatienceSequenceMatcher_methods,
++    .tp_new = PatienceSequenceMatcher_new,
+ };
+ 
+ 
+

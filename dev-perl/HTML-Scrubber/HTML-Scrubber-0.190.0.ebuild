@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for scrubbing/sanitizing html"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc ppc64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

@@ -1,0 +1,44 @@
+https://gitlab.gnome.org/GNOME/epiphany/-/issues/1842
+
+From 3fdab3173f64f8a8778ddc7f99167489f72c9eb0 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sun, 2 Oct 2022 23:24:40 -0400
+Subject: [PATCH] Revert "tests: Set locale for the encodings test"
+
+This reverts commit e54889f2aaae3f647dbdfdd7b40b8d43d19e7889.
+---
+ tests/ephy-encodings-test.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/tests/ephy-encodings-test.c b/tests/ephy-encodings-test.c
+index a3ea7e781..a6bf38ab9 100644
+--- a/tests/ephy-encodings-test.c
++++ b/tests/ephy-encodings-test.c
+@@ -28,7 +28,6 @@
+ #include "ephy-shell.h"
+ 
+ #include <gtk/gtk.h>
+-#include <locale.h>
+ 
+ /* TODO: don't hardcode the number of encodings in ephy-encodings.c here! */
+ #define NUM_ENCODINGS 78
+@@ -44,7 +43,7 @@ test_ephy_encodings_create (void)
+   g_assert_cmpstr (ephy_encoding_get_encoding (encoding), ==, "UTF-8");
+   g_assert_cmpstr (ephy_encoding_get_title (encoding), ==, "Unicode (UTF-8)");
+   g_assert_cmpstr (ephy_encoding_get_title_elided (encoding), ==, "Unicode (UTF-8)");
+-  g_assert_cmpstr (ephy_encoding_get_collation_key (encoding), ==, "\311\263\307\276\307\205\305\271\310\215\306\202\306\216\311\263\311\250\306\245\305\237\001\035\035\035\035\035\035\035\035\035\035\035\001\007\002\002\002\002\002\002\007\007\007\002\001\001\346\244\273\001\346\215\264\001\346\211\243\001\346\204\235\001\346\216\257\001\346\205\217\001\346\206\212\001\343\265\233\001\343\265\242\001\346\244\273\001\346\244\231\001\346\234\257\001\343\265\247\001\345\277\241\001\343\265\243");
++  g_assert_cmpstr (ephy_encoding_get_collation_key (encoding), ==, "Unicode (UTF-8)");
+   g_assert_cmpint (ephy_encoding_get_language_groups (encoding), ==, LG_UNICODE);
+ 
+   g_object_unref (encoding);
+@@ -80,7 +79,6 @@ main (int   argc,
+   int ret;
+ 
+   gtk_test_init (&argc, &argv);
+-  setlocale (LC_ALL, "");
+ 
+   ephy_debug_init ();
+ 
+-- 
+2.35.1
+

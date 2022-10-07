@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 BDEPEND="
-	>=dev-libs/boost-1.70.0:=[zlib,threads(+)]
+	dev-libs/boost:=[zlib]
 	>=sci-libs/libcifpp-2.0.0
 "
 DEPEND=""

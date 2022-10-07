@@ -1,0 +1,25 @@
+From 48a16a67ec072428339cc165743fedab6264edfe Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 26 Sep 2022 20:01:41 -0400
+Subject: [PATCH 1/4] includes/drush.inc: support application/gzip MIME type.
+
+This type is actually registered, as opposed to application/x-gzip.
+---
+ includes/drush.inc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/includes/drush.inc b/includes/drush.inc
+index f869b37..a748a0c 100644
+--- a/includes/drush.inc
++++ b/includes/drush.inc
+@@ -930,6 +930,7 @@ function drush_file_is_tarball($path) {
+   $content_type = drush_mime_content_type($path);
+   $supported = array(
+     'application/x-bzip2',
++    'application/gzip',
+     'application/x-gzip',
+     'application/x-tar',
+     'application/x-zip',
+-- 
+2.35.1
+

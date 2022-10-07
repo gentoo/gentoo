@@ -25,7 +25,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-	if [[ ${PKGDEV_DOCS_PREBUILT} == 1 ]] ; then
+	if [[ ${PKGDEV_DOCS_PREBUILT} -eq 1 ]] ; then
 		SRC_URI+=" !doc? ( https://dev.gentoo.org/~${PKGDEV_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${PKGDEV_DOCS_VERSION}-docs.tar.xz )"
 	fi
 
@@ -53,8 +53,8 @@ else
 	# https://github.com/pkgcore/pkgdev/blob/main/requirements/install.txt
 	RDEPEND="
 		>=dev-python/snakeoil-0.9.12[${PYTHON_USEDEP}]
-		>=dev-util/pkgcheck-0.10.0[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.12.13[${PYTHON_USEDEP}]
+		>=dev-util/pkgcheck-0.10.15[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.12.14[${PYTHON_USEDEP}]
 	"
 fi
 

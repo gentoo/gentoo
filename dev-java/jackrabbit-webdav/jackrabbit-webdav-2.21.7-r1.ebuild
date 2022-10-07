@@ -13,7 +13,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Generic WebDAV Library"
-HOMEPAGE="http://jackrabbit.apache.org/jackrabbit-webdav/"
+HOMEPAGE="https://jackrabbit.apache.org"
 SRC_URI="mirror://apache/jackrabbit/${PV}/jackrabbit-${PV}-src.zip"
 
 LICENSE="Apache-2.0"

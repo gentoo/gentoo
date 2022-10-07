@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit autotools java-pkg-opt-2
 
 DESCRIPTION="XSB is a logic programming and deductive database system"
 HOMEPAGE="http://xsb.sourceforge.net"
-SRC_URI="mirror://sourceforge/xsb/XSB-4-0-0.tar.gz
+SRC_URI="mirror://sourceforge/xsb/XSB-$(ver_rs 1-3 -).tar.gz
 	https://dev.gentoo.org/~keri/distfiles/xsb/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"

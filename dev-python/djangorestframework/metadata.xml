@@ -5,7 +5,9 @@
 		<email>python@gentoo.org</email>
 		<name>Python</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">djangorestframework</remote-id>
+		<remote-id type="github">encode/django-rest-framework</remote-id>
 	</upstream>
 </pkgmetadata>

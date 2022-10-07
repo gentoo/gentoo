@@ -11,7 +11,7 @@ SRC_URI="https://invisible-island.net/archives/vile/current/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~ia64 ppc ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="perl iconv"
 
 RDEPEND=">=sys-libs/ncurses-5.2:=

@@ -16,7 +16,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/rosconsole
 	>=media-libs/opencv-3:=[contrib(+),png,jpeg,tiff]
-	$(python_gen_cond_dep "dev-libs/boost:=[threads(+),python,\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-libs/boost:=[python,\${PYTHON_USEDEP}]")
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}

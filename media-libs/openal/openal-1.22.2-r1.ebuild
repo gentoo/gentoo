@@ -19,7 +19,7 @@ S="${WORKDIR}"/${MY_P}
 # Some components are under BSD
 LICENSE="LGPL-2+ BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="
 	alsa coreaudio debug jack oss pipewire portaudio pulseaudio sdl sndio qt5
 	cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1

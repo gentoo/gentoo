@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ inherit toolchain-funcs
 MY_P=${P/netkit-}
 
 DESCRIPTION="Netkit - bootp"
-HOMEPAGE="ftp://ftp.uk.linux.org/pub/linux/Networking/netboot/"
-SRC_URI="ftp://ftp.uk.linux.org/pub/linux/Networking/netboot/${MY_P}.tar.gz"
+HOMEPAGE="http://ftp.linux.org.uk/pub/linux/Networking/netboot/"
+SRC_URI="http://ftp.linux.org.uk/pub/linux/Networking/netboot/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

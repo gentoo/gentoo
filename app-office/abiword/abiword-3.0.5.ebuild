@@ -43,7 +43,7 @@ RDEPEND="
 	eds? ( >=gnome-extra/evolution-data-server-3.6.0:= )
 	goffice? ( >=x11-libs/goffice-0.10.2:0.10 )
 	introspection? ( >=dev-libs/gobject-introspection-1.0.0:= )
-	map? ( >=media-libs/libchamplain-0.12:0.12 )
+	map? ( >=media-libs/libchamplain-0.12:0.12[gtk] )
 	plugins? (
 		collab? (
 			>=dev-libs/libxml2-2.4:2
@@ -84,6 +84,7 @@ PATCHES=(
 	"${WORKDIR}"/patches/${PN}-3.0.4-pygobject.patch
 	"${WORKDIR}"/patches/${PN}-3.0.4-asio-standalone-placeholders.patch
 	"${WORKDIR}"/patches/${PN}-3.0.4-c++17-dynamic-exception-specifications.patch
+	"${FILESDIR}"/${PN}-3.0.5-musl-lose-precision-fix.patch
 )
 
 src_prepare() {

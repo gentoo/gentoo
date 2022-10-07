@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info multilib-minimal tmpfiles udev
+inherit autotools flag-o-matic linux-info multilib-minimal tmpfiles udev
 
 DESCRIPTION="TCG Trusted Platform Module 2.0 Software Stack"
 HOMEPAGE="https://github.com/tpm2-software/tpm2-tss"
@@ -59,6 +59,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# tests fail with LTO enabbled. See bug 865275 and 865279
+	filter-lto
+
 	ECONF_SOURCE=${S} econf \
 		--localstatedir=/var \
 		$(multilib_native_use_enable doc doxygen-doc) \

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal toolchain-funcs
+inherit multilib multilib-minimal toolchain-funcs
 
 DESCRIPTION="Network Audio System"
 HOMEPAGE="https://radscan.com/nas.html"
@@ -24,12 +24,14 @@ RDEPEND="
 	x11-libs/libXmu
 	x11-libs/libXpm
 	x11-libs/libXt[${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="
 	app-text/rman
 	sys-devel/bison
 	sys-devel/flex
-	x11-base/xorg-proto
+	sys-devel/gcc
 	x11-misc/gccmakedep
 	riscv? ( x11-misc/xorg-cf-files )
 	>=x11-misc/imake-1.0.8-r1"
@@ -52,7 +54,8 @@ multilib_src_configure() {
 	econf
 	popd || die
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die
+		IMAKECPP="${IMAKECPP:-$(get_abi_CHOST ${DEFAULT_ABI})-gcc $(get_abi_CFLAGS) -E}" \
+		xmkmf -a || die
 }
 
 multilib_src_compile() {

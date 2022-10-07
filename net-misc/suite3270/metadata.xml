@@ -7,7 +7,7 @@
   </maintainer>
   <maintainer type="project">
     <email>s390@gentoo.org</email>
-    <name>Gentoo Linux s390 Development</name>
+    <name>s390 architecture team</name>
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">x3270</remote-id>

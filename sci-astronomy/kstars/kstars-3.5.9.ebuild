@@ -4,6 +4,7 @@
 EAPI=8
 
 ECM_HANDBOOK="forceoptional"
+ECM_TEST="true"
 KFMIN=5.82.0
 QTMIN=5.15.2
 inherit ecm kde.org optfeature
@@ -73,6 +74,8 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-obsolete-header.patch" ) # bug 867814
+
 src_configure() {
 	local mycmakeargs=(
 		-DFETCH_TRANSLATIONS=OFF
@@ -87,6 +90,15 @@ src_configure() {
 	)
 
 	ecm_src_configure
+}
+
+src_test() {
+	# bug 842768, test declared unstable by upstream
+	local myctestargs=(
+		-E "(TestKSPaths)"
+	)
+
+	ecm_src_test
 }
 
 pkg_postinst() {

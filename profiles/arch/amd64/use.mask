@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
+# matoro <matoro_gentoo@matoro.tk> (2022-09-29)
+# dev-util/google-perftools is supported here
+-tcmalloc
+
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # dev-util/sysprof-capture is keyworded on amd64
 -sysprof
@@ -108,6 +112,7 @@
 -input_devices_wacom
 -video_cards_ast
 -video_cards_crocus
+-video_cards_d3d12
 -video_cards_i915
 -video_cards_i965
 -video_cards_intel

@@ -57,6 +57,7 @@ is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
 
+
 # @FUNCTION: tc_version_is_at_least
 # @USAGE: ver1 [ver2]
 # @DESCRIPTION:
@@ -138,6 +139,32 @@ GCCMINOR=$(ver_cut 2 ${GCC_PV})
 # GCC micro version.
 GCCMICRO=$(ver_cut 3 ${GCC_PV})
 
+tc_use_major_version_only() {
+	local use_major_version_only=0
+
+	if ! tc_version_is_at_least 10 ; then
+		return 1
+	fi
+
+	if [[ ${GCCMAJOR} -eq 10 ]] && ver_test ${PV} -ge 10.4.1_p20220929 ; then
+		use_major_version_only=1
+	elif [[ ${GCCMAJOR} -eq 11 ]] && ver_test ${PV} -ge 11.3.1_p20220930 ; then
+		use_major_version_only=1
+	elif [[ ${GCCMAJOR} -eq 12 ]] && ver_test ${PV} -ge 12.2.1_p20221001 ; then
+		use_major_version_only=1
+	elif [[ ${GCCMAJOR} -eq 13 ]] && ver_test ${PV} -ge 13.0.0_pre20221002 ; then
+		use_major_version_only=1
+	elif [[ ${GCCMAJOR} -gt 13 ]] ; then
+		use_major_version_only=1
+	fi
+
+	if [[ ${use_major_version_only} -eq 1 ]] ; then
+		return 0
+	fi
+
+	return 1
+}
+
 # @ECLASS_VARIABLE: GCC_CONFIG_VER
 # @INTERNAL
 # @DESCRIPTION:
@@ -145,7 +172,11 @@ GCCMICRO=$(ver_cut 3 ${GCC_PV})
 # of binary and gcc-config names not directly tied to upstream
 # versioning. In practice it's hard to untangle from gcc/BASE-VER
 # (GCC_RELEASE_VER) value.
-GCC_CONFIG_VER=${GCC_RELEASE_VER}
+if tc_use_major_version_only ; then
+	GCC_CONFIG_VER=${GCCMAJOR}
+else
+	GCC_CONFIG_VER=${GCC_RELEASE_VER}
+fi
 
 # Pre-release support. Versioning schema:
 # 1.0.0_pre9999: live ebuild
@@ -288,6 +319,13 @@ BDEPEND="
 	)"
 DEPEND="${RDEPEND}"
 
+if [[ ${PN} == gcc && ${PV} == *_p* ]] ; then
+	# Snapshots don't contain info pages.
+	# If they start to, adjust gcc_cv_prog_makeinfo_modern logic in toolchain_src_configure.
+	# Needed unless/until https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 is fixed
+	BDEPEND+=" sys-apps/texinfo"
+fi
+
 if tc_has_feature gcj ; then
 	DEPEND+="
 		gcj? (
@@ -328,6 +366,14 @@ if tc_has_feature valgrind ; then
 	BDEPEND+=" valgrind? ( dev-util/valgrind )"
 fi
 
+# TODO: Add a pkg_setup & pkg_pretend check for whether the active compiler
+# supports Ada.
+if tc_has_feature ada ; then
+	BDEPEND+=" ada? ( || ( sys-devel/gcc[ada] dev-lang/gnat-gpl[ada] ) )"
+fi
+
+# TODO: Add a pkg_setup & pkg_pretend check for whether the active compiler
+# supports D.
 if tc_has_feature d && tc_version_is_at_least 12.0 ; then
 	# D in 12+ is self-hosting and needs D to bootstrap.
 	# TODO: package some binary we can use, like for Ada
@@ -991,6 +1037,10 @@ toolchain_src_configure() {
 		--with-pkgversion="${BRANDING_GCC_PKGVERSION}"
 	)
 
+	if tc_use_major_version_only ; then
+		confgcc+=( --with-gcc-major-version-only )
+	fi
+
 	# If we want hardened support with the newer PIE patchset for >=gcc 4.4
 	if tc_version_is_at_least 4.4 && want_minispecs && in_iuse hardened ; then
 		confgcc+=( $(use_enable hardened esp) )
@@ -1417,9 +1467,22 @@ toolchain_src_configure() {
 		)
 	fi
 
-	# Disable gcc info regeneration -- it ships with generated info pages
-	# already.  Our custom version/urls/etc... trigger it. bug #464008
-	export gcc_cv_prog_makeinfo_modern=no
+	if [[ ${PV} != *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
+		# Disable gcc info regeneration -- it ships with generated info pages
+		# already.  Our custom version/urls/etc... trigger it. bug #464008
+		export gcc_cv_prog_makeinfo_modern=no
+	else
+		# Allow a fallback so we don't accidentally install no docs
+		# bug #834845
+		ewarn "No pre-generated info pages in tarball. Allowing regeneration with texinfo..."
+
+		if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
+			# Safeguard against https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 being fixed
+			# without corresponding ebuild changes.
+			eqawarn "Snapshot release with pre-generated info pages found!"
+			eqawarn "The BDEPEND in the ebuild should be updated to drop texinfo."
+		fi
+	fi
 
 	# Do not let the X detection get in our way.  We know things can be found
 	# via system paths, so no need to hardcode things that'll break multilib.

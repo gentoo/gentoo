@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    OutputCheck is a tool for checking the output of console programs that is
+    inspired by the FileCheck tool used by LLVM. It has its own small language
+    (Check Directives) for describing the expected output of a tool that is
+    considerably more convenient and more powerful than GNU grep.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/stp/OutputCheck/issues/</bugs-to>
+    <remote-id type="github">stp/OutputCheck</remote-id>
+    <remote-id type="pypi">OutputCheck</remote-id>
+  </upstream>
+</pkgmetadata>

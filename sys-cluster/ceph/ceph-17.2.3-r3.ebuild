@@ -99,7 +99,7 @@ DEPEND="
 	rdma? ( sys-cluster/rdma-core:= )
 	spdk? ( dev-util/cunit )
 	sqlite? ( dev-db/sqlite:= )
-	system-boost? ( >=dev-libs/boost-1.72:=[threads(+),context,python,${PYTHON_USEDEP},zlib] )
+	system-boost? ( dev-libs/boost:=[context,python,${PYTHON_USEDEP},zlib] )
 	uring? ( sys-libs/liburing:= )
 	xfs? ( sys-fs/xfsprogs:= )
 	zbd? ( sys-block/libzbd:= )

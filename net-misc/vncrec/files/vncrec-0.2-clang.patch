@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/740826
+--- a/vncpasswd/vncpasswd.c
++++ b/vncpasswd/vncpasswd.c
+@@ -86,3 +86,3 @@
+ 	passwd[i] = passwd1[i] = '\0';
+-      return;
++      return 0;
+     }

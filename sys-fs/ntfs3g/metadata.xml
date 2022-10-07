@@ -25,5 +25,6 @@
 		<bugs-to>http://tuxera.com/forum/</bugs-to>
 		<remote-id type="cpe">cpe:/a:ntfs-3g:ntfs-3g</remote-id>
 		<remote-id type="sourceforge">ntfs-3g</remote-id>
+		<remote-id type="github">tuxera/ntfs-3g</remote-id>
 	</upstream>
 </pkgmetadata>

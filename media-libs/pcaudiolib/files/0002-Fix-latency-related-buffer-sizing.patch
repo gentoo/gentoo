@@ -1,0 +1,78 @@
+From 72da4a54a5afbbdadfa6d8131e0f4a9f08cf4394 Mon Sep 17 00:00:00 2001
+From: Nicolas Pitre <nico@fluxnic.net>
+Date: Wed, 6 Jul 2022 00:30:42 -0400
+Subject: [PATCH] Fix latency-related buffer sizing
+
+Turns out that eSpeak-NG (the main user of this lib) enforces a minimum
+buffer size of 60ms which is also the default size. This explains why
+smaller LATENCY values were inducing choppiness in the audio on some
+systems. Adjust the comment accordingly,.
+
+Also make sure computed buffer sizes don't land in the middle of a
+sample frame. Doing (samplerate * channels * LATENCY) / 1000 is wrong.
+
+Both ALSA and PulseAudio provide nice abstractions for buffer sizing
+so let's use them directly. In the ALSA case in particular, we want the
+period to be 60ms, not the whole buffer, so to interleave speech audio
+computation and audio playback.
+---
+ src/alsa.c       | 5 +++--
+ src/audio_priv.h | 5 +----
+ src/pulseaudio.c | 2 +-
+ 3 files changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/src/alsa.c b/src/alsa.c
+index c856788..a0da0f0 100644
+--- a/src/alsa.c
++++ b/src/alsa.c
+@@ -99,7 +99,8 @@ alsa_object_open(struct audio_object *object,
+ 
+ 	snd_pcm_hw_params_t *params = NULL;
+ 	snd_pcm_hw_params_malloc(&params);
+-	snd_pcm_uframes_t bufsize = (rate * channels * LATENCY) / 1000;
++	unsigned int period_time = LATENCY * 1000;
++	int dir = 0;
+ 
+ 	int err = 0;
+ 	if ((err = snd_pcm_open(&self->handle, self->device ? self->device : "default", SND_PCM_STREAM_PLAYBACK, 0)) < 0)
+@@ -114,7 +115,7 @@ alsa_object_open(struct audio_object *object,
+ 		goto error;
+ 	if ((err = snd_pcm_hw_params_set_channels(self->handle, params, channels)) < 0)
+ 		goto error;
+-	if ((err = snd_pcm_hw_params_set_buffer_size_near(self->handle, params, &bufsize)) < 0)
++	if ((err = snd_pcm_hw_params_set_period_time_near(self->handle, params, &period_time, &dir)) < 0)
+ 		goto error;
+ 	if ((err = snd_pcm_hw_params(self->handle, params)) < 0)
+ 		goto error;
+diff --git a/src/audio_priv.h b/src/audio_priv.h
+index 0c2ce3c..dbccb1c 100644
+--- a/src/audio_priv.h
++++ b/src/audio_priv.h
+@@ -52,10 +52,7 @@ struct audio_object
+ 	                         int error);
+ };
+ 
+-/* We try to aim for 10ms cancelation latency, which will be perceived as
+- * "snappy" by users. However, some systems (e.g. RPi) do produce chopped
+- * audio when this value is smaller than 60.
+- */
++/* 60ms is the minimum and default buffer size used by eSpeak */
+ #define LATENCY 60
+ 
+ #if defined(_WIN32) || defined(_WIN64)
+diff --git a/src/pulseaudio.c b/src/pulseaudio.c
+index 2f80c62..da6c49f 100644
+--- a/src/pulseaudio.c
++++ b/src/pulseaudio.c
+@@ -80,7 +80,7 @@ pulseaudio_object_open(struct audio_object *object,
+ 	battr.maxlength = (uint32_t) -1;
+ 	battr.minreq = (uint32_t) -1;
+ 	battr.prebuf = (uint32_t) -1;
+-	battr.tlength = pa_bytes_per_second(&self->ss) * LATENCY / 1000;
++	battr.tlength = pa_usec_to_bytes(LATENCY * 1000, &self->ss);
+ 	self->s = pa_simple_new(NULL,
+ 	                        self->application_name,
+ 	                        PA_STREAM_PLAYBACK,
+-- 
+2.35.1
+

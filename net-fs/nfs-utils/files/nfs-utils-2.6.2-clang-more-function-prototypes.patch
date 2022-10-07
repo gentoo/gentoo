@@ -1,0 +1,39 @@
+https://patchwork.kernel.org/project/linux-nfs/patch/20220916214300.2820117-1-sam@gentoo.org/
+
+From daf6aa9b659078aebd202fffff59bd9a0ab685ce Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 16 Sep 2022 22:35:23 +0100
+Subject: [PATCH] Fix more function prototypes
+
+```
+regex.c:545:43: error: a function declaration without a prototype is deprecated in all versions of C [-Werror,-Wstrict-prototypes]
+struct trans_func *libnfsidmap_plugin_init()
+                                          ^
+                                           void
+1 error generated.
+```
+
+See: 167f2336b06e1bcbf26f45f2ddc4a535fed4d393
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/support/nfsidmap/regex.c
++++ b/support/nfsidmap/regex.c
+@@ -542,7 +542,7 @@ struct trans_func regex_trans = {
+ 	.gss_princ_to_grouplist	= regex_gss_princ_to_grouplist,
+ };
+ 
+-struct trans_func *libnfsidmap_plugin_init()
++struct trans_func *libnfsidmap_plugin_init(void)
+ {
+ 	return (&regex_trans);
+ }
+--- a/utils/idmapd/idmapd.c
++++ b/utils/idmapd/idmapd.c
+@@ -867,7 +867,7 @@ nfsdreopen_one(struct idmap_client *ic)
+ }
+ 
+ static void
+-nfsdreopen()
++nfsdreopen(void)
+ {
+ 	nfsdreopen_one(&nfsd_ic[IC_NAMEID]);
+ 	nfsdreopen_one(&nfsd_ic[IC_IDNAME]);

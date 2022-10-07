@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ponty/pyscreenshot/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 RDEPEND="
 	dev-python/easyprocess[${PYTHON_USEDEP}]

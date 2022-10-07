@@ -1,0 +1,16 @@
+Building these is broken with clang16 and they are primarily
+intended to be looked rather rather than built.
+
+https://bugs.gentoo.org/870706
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -7,3 +7,2 @@
+ 	man \
+-	examples \
+ 	doc 
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -196,3 +196,2 @@
+ 	man \
+-	examples \
+ 	doc 

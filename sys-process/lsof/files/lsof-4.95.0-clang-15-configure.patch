@@ -1,0 +1,134 @@
+https://github.com/lsof-org/lsof/pull/248
+
+From 52f2c48790ced81aeef98807363ec94a867bbd88 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 12 Sep 2022 19:02:14 +0100
+Subject: [PATCH] Configure: fix configure tests broken with Clang 15
+ (-Wimplicit-int)
+
+Clang 15 makes -Wimplicit-int an error by default.
+
+Before this fix, configure would think localtime() and strftime() support
+was not present.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Configure
++++ b/Configure
+@@ -681,7 +681,7 @@ case $LSOF_TGT in	# {
+ 
+ 	  rm -f ${LSOF_TMPC}.*
+ 	  echo "#include <sys/systemcfg.h>" > ${LSOF_TMPC}.c
+-	  echo 'main(){ if (__KERNEL_32()) printf("32\\n");' >> ${LSOF_TMPC}.c
++	  echo 'int main(){ if (__KERNEL_32()) printf("32\\n");' >> ${LSOF_TMPC}.c
+ 	  echo 'else if (__KERNEL_64()) printf("64\\n");' >> ${LSOF_TMPC}.c
+ 	  echo 'else printf("0\\n");' >> ${LSOF_TMPC}.c
+ 	  echo "return(0); }" >> ${LSOF_TMPC}.c
+@@ -778,7 +778,7 @@ case $LSOF_TGT in	# {
+ 	  rm -f ${LSOF_TMPC}.*
+ 	  echo "#include <stddef.h>" > ${LSOF_TMPC}.c
+ 	  echo "#include <sys/user.h>" >> ${LSOF_TMPC}.c
+-	  echo "main(){exit((offsetof(struct user, U_irss) & 0x7) ? 1 : 0);}" >>${LSOF_TMPC}.c
++	  echo "int main(){exit((offsetof(struct user, U_irss) & 0x7) ? 1 : 0);}" >>${LSOF_TMPC}.c
+ 	  echo "Testing user.h with $LSOF_CC"
+ 	  $LSOF_CC ${LSOF_TMPC}.c -o ${LSOF_TMPC}.x
+ 	  if ! ${LSOF_TMPC}.x	# {
+@@ -811,7 +811,7 @@ case $LSOF_TGT in	# {
+       # Get xlc version number
+ 
+       rm -f ${LSOF_TMPC}.*
+-      echo "main(){}" > ${LSOF_TMPC}.c
++      echo "int main(){}" > ${LSOF_TMPC}.c
+       echo "Getting version number of ${LSOF_CC}."
+       $LSOF_CC -c ${LSOF_TMPC}.c -I${LSOF_INCLUDE} -o ${LSOF_TMPC}.o -qlist > /dev/null 2>&1
+       LSOF_CCV=`head -1 ${LSOF_TMPC}.lst | sed 's/\(.*\) ---.*/\1/'`
+@@ -1783,7 +1783,7 @@ kernel generation process.
+ 	  cat > ${LSOF_TMPC}.c << .LSOF_END_HERE_DOC3
+ #undef _KERNEL
+ #include <sys/types.h>
+-main() {
++int main() {
+ cpumask_t c;
+ }
+ .LSOF_END_HERE_DOC3
+@@ -2400,7 +2400,7 @@ LOCKF_OWNER4
+     # Test for "const void" support.
+ 
+     rm -f ${LSOF_TMPC}.*
+-    echo "main() { const void *x; return(0); }" >> $LSOF_TMPC.c
++    echo "int main() { const void *x; return(0); }" >> $LSOF_TMPC.c
+     $LSOF_CC $LSOF_TMPC.c -o $LSOF_TMPC.x > /dev/null 2>&1
+     if test $? -eq 0	# {
+     then
+@@ -2532,7 +2532,7 @@ LOCKF_OWNER4
+ 	      echo ""
+ 	      echo "Testing $LSOF_CC for 64 bit support"
+ 	      rm -f ${LSOF_TMPC}.*
+-	      echo "main(){}" > ${LSOF_TMPC}.c
++	      echo "int main(){}" > ${LSOF_TMPC}.c
+ 	      LSOF_TMP1=""
+ 	      $LSOF_CC ${LSOF_TMPC}.c -o ${LSOF_TMPC}.x > /dev/null 2>&1
+ 	      if test $? -eq 0	# {
+@@ -4605,7 +4605,7 @@ return(0); }
+ 	rm -f ${LSOF_TMPC}.*
+ 	echo "#define _KMEMUSER" > ${LSOF_TMPC}.c
+ 	echo "#include <sys/proc/prdata.h>" >> ${LSOF_TMPC}.c
+-	echo "main(){" >> ${LSOF_TMPC}.c
++	echo "int main(){" >> ${LSOF_TMPC}.c
+ 	echo "enum prnodetype p=PR_GWINDOWS;}" >> ${LSOF_TMPC}.c
+ 	echo "Testing prdata.h for PR_GWINDOWS, using $LSOF_CC"
+ 	echo $LSOF_CC | grep gcc > /dev/null
+@@ -4630,7 +4630,7 @@ return(0); }
+ 	rm -f ${LSOF_TMPC}.*
+ 	echo "#define _KMEMUSER" > ${LSOF_TMPC}.c
+ 	echo "#include <sys/proc/prdata.h>" >> ${LSOF_TMPC}.c
+-	echo "main(){" >> ${LSOF_TMPC}.c
++	echo "int main(){" >> ${LSOF_TMPC}.c
+ 	echo "enum prnodetype p=PR_LDT;}" >> ${LSOF_TMPC}.c
+ 	echo "Testing prdata.h for PR_LDT, using $LSOF_CC"
+ 	echo $LSOF_CC | grep gcc > /dev/null
+@@ -4675,7 +4675,7 @@ return(0); }
+ 
+ 	    echo "Testing $LSOF_CC for 64 bit support"
+ 	    rm -f ${LSOF_TMPC}.*
+-	    echo "main(){}" > ${LSOF_TMPC}.c
++	    echo "int main(){}" > ${LSOF_TMPC}.c
+ 	    LSOF_TMP1=""
+ 
+ 	# First try gcc's -m64 option -- it's the most current possibility.
+@@ -4695,7 +4695,7 @@ return(0); }
+ 
+ 	    # Try using the older -mcpu=v9 option with gcc instead of -m64.
+ 
+-	      echo "main(){}" > ${LSOF_TMPC}.c
++	      echo "int main(){}" > ${LSOF_TMPC}.c
+ 	      $LSOF_CC ${LSOF_TMPC}.c -mcpu=v9 -o ${LSOF_TMPC}.x > /dev/null 2>&1
+ 	      if test $? -eq 0	# {
+ 	      then
+@@ -4751,7 +4751,7 @@ return(0); }
+ 	      echo "Testing $LSOF_CC for 64 bit $LSOF_TMP2 support"
+ 	      rm -f ${LSOF_TMPC}.*
+ 	      LSOF_TMP3="-xarch=$LSOF_TMP1"
+-	      echo "main(){}" > ${LSOF_TMPC}.c
++	      echo "int main(){}" > ${LSOF_TMPC}.c
+ 	      LSOF_TMP4=`$LSOF_CC ${LSOF_TMPC}.c $LSOF_TMP3 -o ${LSOF_TMPC}.x 2>&1`
+ 	      if test $? -eq 0	# {
+ 	      then
+@@ -5003,7 +5003,7 @@ return(0); }
+     then
+       rm -f ${LSOF_TMPC}.*
+       echo "#include <sys/vnode.h>" > ${LSOF_TMPC}.c
+-      echo "main(){" >> ${LSOF_TMPC}.c
++      echo "int main(){" >> ${LSOF_TMPC}.c
+       echo "enum vtype p=VSOCK;}" >> ${LSOF_TMPC}.c
+       echo "Testing vnode.h for VSOCK, using $LSOF_CC"
+       echo $LSOF_CC | grep gcc > /dev/null
+@@ -5490,7 +5490,7 @@ fi	# }
+ rm -f ${LSOF_TMPC}.*
+ cat > $LSOF_TMPC.c << .LSOF_END_HERE_DOC2
+ #include <time.h>
+-main(){
++int main(){
+   time_t cl;
+   struct tm *ts;
+   char bf[32];
+

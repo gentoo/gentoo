@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>herb@hlmjr.com</email>
-		<name>Herb Miller Jr.</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		lighttpd (pronounced /lighty/) is a secure, fast, compliant, and very
 		flexible web server that has been optimized for high-performance
@@ -31,4 +24,7 @@
 		<flag name="zlib">Enable output compression via gzip or deflate algorithms from <pkg>sys-libs/zlib</pkg></flag>
 		<flag name="zstd">Enable output compression via Zstandard (<pkg>app-arch/zstd</pkg>) algorithm</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">lighttpd/lighttpd1.4</remote-id>
+	</upstream>
 </pkgmetadata>

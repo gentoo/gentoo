@@ -19,6 +19,7 @@
 		<flag name="pic">Disable optimized assembly code that is not PIC friendly</flag>
 		<flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
 		<flag name="suid">Build the SUID sandbox, which is only needed on CONFIG_USER_NS=n kernels</flag>
+		<flag name="system-av1">Use system libaom and dav1d instead of the bundled one.</flag>
 		<flag name="system-ffmpeg">Use system ffmpeg instead of the bundled one</flag>
 		<flag name="system-harfbuzz">Use system harfbuzz instead of the bundled one.</flag>
 		<flag name="system-icu">Use system icu instead of the bundled one</flag>

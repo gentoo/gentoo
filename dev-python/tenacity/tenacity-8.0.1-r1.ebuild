@@ -22,7 +22,7 @@ KEYWORDS="amd64 ~arm64 ~riscv x86"
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
-		www-servers/tornado[${PYTHON_USEDEP}]
+		dev-python/tornado[${PYTHON_USEDEP}]
 	)
 "
 

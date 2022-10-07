@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30"
+USE_RUBY="ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_EXTRADOC="History.md README.md"
 
@@ -25,7 +25,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/rspec:3
 	>=dev-ruby/launchy-2.4.0
 	|| ( dev-ruby/selenium-webdriver:4 >=dev-ruby/selenium-webdriver-3.142.7:3 )
-	dev-ruby/sinatra:2
+	|| ( dev-ruby/sinatra:3 dev-ruby/sinatra:2 )
 	www-servers/puma
 )"
 

@@ -14,9 +14,6 @@
 		<name>Georgy Yakovlev</name>
 	</maintainer>
 	<use>
-		<flag name="apparmor">
-			Enable AppArmor support.
-		</flag>
 		<flag name="kmem">
 			Enable Kernel Memory Accounting.
 		</flag>

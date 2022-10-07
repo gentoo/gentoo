@@ -180,13 +180,22 @@ fi
 # )
 : ${CABAL_CHDEPS:=}
 
-
 # @ECLASS_VARIABLE: CABAL_LIVE_VERSION
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this to any value to prevent SRC_URI from being set automatically.
 : ${CABAL_LIVE_VERSION:=}
+
+# @ECLASS_VARIABLE: GHC_BOOTSTRAP_PACKAGES
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Extra packages that need to be exposed when compiling Setup.hs
+# @EXAMPLE:
+# GHC_BOOTSTRAP_PACKAGES=(
+#	cabal-doctest
+# )
+: ${GHC_BOOTSTRAP_PACKAGES:=}
 
 # 'dev-haskell/cabal' passes those options with ./configure-based
 # configuration, but most packages don't need/don't accept it:
@@ -269,6 +278,10 @@ cabal-version() {
 			# We ask portage, not ghc, so that we only pick up
 			# portage-installed cabal versions.
 			_CABAL_VERSION_CACHE="$(ghc-extract-pm-version dev-haskell/cabal)"
+			# exception for live (9999) version
+			if [[ "${_CABAL_VERSION_CACHE}" == 9999 ]]; then
+				_CABAL_VERSION_CACHE="$(ghc-cabal-version)"
+			fi
 		fi
 	fi
 	echo "${_CABAL_VERSION_CACHE}"
@@ -301,8 +314,42 @@ cabal-bootstrap() {
 		setup_bootstrap_args+=(-threaded)
 	fi
 
+	# The packages available when compiling Setup.hs need to be controlled,
+	# otherwise module name collisions are possible.
+	local -a bootstrap_pkg_args=(-hide-all-packages)
+
+	# Expose common packages bundled with GHC
+	# See: <https://gitlab.haskell.org/ghc/ghc/-/wikis/commentary/libraries/version-history>
+	local default_exposed_pkgs="
+		Cabal
+		base
+		binary
+		bytestring
+		containers
+		deepseq
+		directory
+		exceptions
+		filepath
+		haskeline
+		mtl
+		parsec
+		pretty
+		process
+		stm
+		template-haskell
+		terminfo
+		text
+		transformers
+		unix
+		xhtml
+	"
+
+	for pkg in $default_exposed_pkgs ${GHC_BOOTSTRAP_PACKAGES[*]}; do
+		bootstrap_pkg_args+=(-package "$pkg")
+	done
+
 	make_setup() {
-		set -- -package "${cabalpackage}" --make "${setupmodule}" \
+		set -- "${bootstrap_pkg_args[@]}" --make "${setupmodule}" \
 			$(ghc-make-args) \
 			"${setup_bootstrap_args[@]}" \
 			${HCFLAGS} \
@@ -390,9 +437,9 @@ cabal-configure() {
 		# it generates for ghc's base and other packages.
 		local p=${EPREFIX}/usr/bin/haddock-ghc-$(ghc-version)
 		if [[ -f $p ]]; then
-			cabalconf+=(--with-haddock="${p}")
+			cabalconf+=( --with-haddock="${p}" )
 		else
-			cabalconf+=(--with-haddock=${EPREFIX}/usr/bin/haddock)
+			cabalconf+=( --with-haddock="${EPREFIX}"/usr/bin/haddock )
 		fi
 	fi
 	if [[ -n "${CABAL_USE_PROFILE}" ]] && use profile; then
@@ -702,7 +749,7 @@ cabal_src_install() {
 	# if it does not exist (dummy libraries and binaries w/o libraries)
 	local ghc_confdir_with_prefix="$(ghc-confdir)"
 	# remove EPREFIX
-	dodir ${ghc_confdir_with_prefix#${EPREFIX}}
+	dodir "${ghc_confdir_with_prefix#${EPREFIX}}"
 	local hint_db="${D}/$(ghc-confdir)"
 	local hint_file="${hint_db}/gentoo-empty-${CATEGORY}-${PF}.conf"
 	mkdir -p "${hint_db}" || die

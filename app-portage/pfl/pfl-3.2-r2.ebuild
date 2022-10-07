@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8,9,10} )
-PYTHON_REQ_USE="xml"
+PYTHON_COMPAT=( python3_{8,9,10,11} )
+PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 systemd
 

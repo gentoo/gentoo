@@ -1,0 +1,13 @@
+diff --git a/macrostep-test.el b/macrostep-test.el
+index 9de1fae..c49ac0a 100644
+--- a/macrostep-test.el
++++ b/macrostep-test.el
+@@ -410,7 +410,7 @@
+      (should (macrostep-lax-looking-at ,string))
+      (macrostep-collapse)))
+ 
+-(ert-deftest macrostep-expand-c-macros ()
++(defun macrostep-expand-c-macros ()
+   (with-temp-buffer
+     (insert
+      ;; A random example adapted from Emacs's src/lisp.h.

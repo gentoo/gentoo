@@ -1,0 +1,16 @@
+https://sourceforge.net/p/linuxquota/patches/56/
+
+configure: WARNING: tcpd.h not found
+./configure: 8453: test: X: unexpected operator
+checking that generated files are newer than configure... done
+--- a/configure.ac
++++ b/configure.ac
+@@ -283,7 +283,7 @@ AC_ARG_WITH([pid-dir],
+     [AS_HELP_STRING([--with-pid-dir=DIRECTORY], [Create PID files in this directory instead of /var/run])],
+     [with_pid_dir="$withval"]
+ )
+-AS_IF([test "X$with_pid_dir" == "X" -o "$with_pid_dir" == "yes" -o "$with_pid_dir" == "no"],[
++AS_IF([test "X$with_pid_dir" = "X" -o "$with_pid_dir" = "yes" -o "$with_pid_dir" = "no"],[
+     with_pid_dir="/var/run"
+ ])
+ AC_DEFINE_UNQUOTED([PID_DIR], ["$with_pid_dir"], [Directory for PID files])

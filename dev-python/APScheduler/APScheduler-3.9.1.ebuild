@@ -25,7 +25,7 @@ BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
-		www-servers/tornado[${PYTHON_USEDEP}]
+		dev-python/tornado[${PYTHON_USEDEP}]
 	)
 "
 

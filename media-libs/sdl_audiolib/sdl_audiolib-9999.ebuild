@@ -25,7 +25,7 @@ IUSE="doc flac fluidsynth libsamplerate modplug mpg123 musepack openmpt opus snd
 RDEPEND="
 	dev-libs/libfmt:=
 	media-libs/libsdl2[sound]
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	fluidsynth? ( media-sound/fluidsynth:= )
 	libsamplerate? ( media-libs/libsamplerate )
 	modplug? ( media-libs/libmodplug )

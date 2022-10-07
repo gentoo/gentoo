@@ -52,4 +52,5 @@ src_test() {
 src_install() {
 	default
 	dodoc doc/*.txt *.txt
+	find "${ED}" -type f -name "*.la" -delete || die
 }

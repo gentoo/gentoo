@@ -117,7 +117,6 @@ src_compile() {
 
 src_install() {
 	dosbin haproxy
-	dosym ../sbin/haproxy /usr/bin/haproxy
 
 	newconfd "${FILESDIR}/${PN}.confd-r1" ${PN}
 	newinitd "${FILESDIR}/${PN}.initd-r8" ${PN}

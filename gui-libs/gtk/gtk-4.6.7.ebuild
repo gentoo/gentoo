@@ -17,7 +17,7 @@ REQUIRED_USE="
 	test? ( introspection )
 "
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 COMMON_DEPEND="
 	>=dev-libs/fribidi-0.19.7

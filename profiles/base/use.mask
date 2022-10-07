@@ -4,6 +4,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Patrick Lauer <patrick@gentoo.org> (2022-10-06)
+# Postgres:15 is RC
+postgres_targets_postgres15
+
+# Brian Evans <grknight@gentoo.org> (2022-09-30)
+# PHP 8.2 is in RC
+php_targets_php8-2
+
 # Sam James <sam@gentoo.org> (2022-08-02)
 # Masked for testing. The split of some packages may still
 # change. bug #838970.

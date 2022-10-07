@@ -28,9 +28,6 @@ PATCHES=(
 
 pkg_setup() {
 	if use kernel_linux ; then
-		if kernel_is lt 2 6 9 ; then
-			die "Your kernel is too old."
-		fi
 		CONFIG_CHECK="~FUSE_FS"
 		WARNING_FUSE_FS="You need to have FUSE module built to use user-mode utils"
 		linux-info_pkg_setup

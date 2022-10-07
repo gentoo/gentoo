@@ -5,11 +5,6 @@
 		<email>perfinion@gentoo.org</email>
 		<name>Jason Zaman</name>
 	</maintainer>
-
-	<use>
-		<flag name="daemon">Uses <pkg>app-misc/screen</pkg> to daemonize this application</flag>
-	</use>
-
 	<upstream>
 		<remote-id type="github">rakshasa/rtorrent</remote-id>
 	</upstream>

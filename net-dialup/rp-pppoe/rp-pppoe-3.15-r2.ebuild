@@ -17,7 +17,7 @@ SRC_URI="https://dianne.skoll.ca/projects/rp-pppoe/download/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="tk"
 
 RDEPEND="
@@ -26,6 +26,7 @@ RDEPEND="
 	tk? ( dev-lang/tk:= )
 "
 DEPEND=">=sys-kernel/linux-headers-2.6.25
+	elibc_musl? ( net-libs/ppp-defs )
 	${RDEPEND}"
 
 DOC_CONTENTS="Use pppoe-setup to configure your dialup connection"

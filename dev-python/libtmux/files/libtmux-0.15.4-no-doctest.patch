@@ -1,0 +1,13 @@
+diff --git a/setup.cfg b/setup.cfg
+index 2547e73..3659616 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -19,7 +19,7 @@ line_length = 88
+ [tool:pytest]
+ filterwarnings =
+     ignore:.* Use packaging.version.*:DeprecationWarning::
+-addopts = --tb=short --no-header --showlocals --doctest-docutils-modules --reruns 2 -p no:doctest
++addopts = --tb=short --no-header --showlocals --reruns 2 -p no:doctest
+ doctest_optionflags = ELLIPSIS NORMALIZE_WHITESPACE
+ testpaths =
+ 	src/libtmux

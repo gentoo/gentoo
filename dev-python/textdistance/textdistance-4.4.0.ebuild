@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 
 BDEPEND="
 	test? (
@@ -23,8 +23,8 @@ BDEPEND="
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/isort[${PYTHON_USEDEP}]
 		dev-python/jellyfish[${PYTHON_USEDEP}]
+		dev-python/Levenshtein[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/python-levenshtein[${PYTHON_USEDEP}]
 		dev-python/pyxDamerauLevenshtein[${PYTHON_USEDEP}]
 	)"
 

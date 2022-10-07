@@ -10,7 +10,7 @@ if [[ ${PV#9999} != ${PV} ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://downloads.videolan.org/pub/videolan/libbluray/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
 fi
 
 DESCRIPTION="Blu-ray playback libraries"

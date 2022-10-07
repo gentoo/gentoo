@@ -8,4 +8,7 @@
 	<use>
 		<flag name="resolvconf">Enable support for DNS managing framework <pkg>net-dns/openresolv</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">streambinder/vpnc</remote-id>
+	</upstream>
 </pkgmetadata>

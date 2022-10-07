@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # James Le Cuirot <chewi@gentoo.org> (2021-09-04)
@@ -62,7 +62,7 @@ games-arcade/gish-demo
 games-arcade/jardinains
 games-arcade/thinktanks-demo
 games-emulation/gens
-<games-emulation/pcsx2-9999
+<games-emulation/pcsx2-1.7
 games-emulation/vgba
 games-emulation/zinc
 games-emulation/zsnes

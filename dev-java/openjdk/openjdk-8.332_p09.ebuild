@@ -5,14 +5,19 @@ EAPI=7
 
 inherit check-reqs eapi8-dosym flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-funcs
 
-# we need latest -ga tag from git, but want to keep build number as well
-# as _p component of the gentoo version string.
-
+# don't change versioning scheme
+# to find correct _p number, look at
+# https://github.com/openjdk/jdk${SLOT}u/tags
+# you will see, for example, jdk-17.0.4.1-ga and jdk-17.0.4.1+1, both point
+# to exact same commit sha. we should always use the full version.
+# -ga tag is just for humans to easily identify General Availability release tag.
+# we need -ga tag to fetch tarball and unpack it, but exact number everywhere else to
+# set build version properly
 MY_PV="$(ver_rs 1 'u' 2 '-' ${PV%_p*}-ga)"
 SLOT="${PV%%[.+]*}"
 
 DESCRIPTION="Open source implementation of the Java programming language"
-HOMEPAGE="https://openjdk.java.net"
+HOMEPAGE="https://openjdk.org"
 SRC_URI="https://github.com/openjdk/jdk${SLOT}u/archive/refs/tags/jdk${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

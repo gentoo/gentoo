@@ -57,7 +57,7 @@ X_DEPEND="x11-libs/libICE
 		media-libs/freetype
 		x11-libs/libXft
 		x11-libs/libXrender
-		cairo? ( >=x11-libs/cairo-1.12.18 )
+		cairo? ( >=x11-libs/cairo-1.12.18[X] )
 		harfbuzz? ( media-libs/harfbuzz:0= )
 		m17n-lib? (
 			>=dev-libs/libotf-0.9.4
@@ -101,7 +101,10 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	gmp? ( dev-libs/gmp:0= )
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
-	jit? ( sys-devel/gcc:=[jit(-)] )
+	jit? (
+		sys-devel/gcc:=[jit(-)]
+		sys-libs/zlib
+	)
 	json? ( dev-libs/jansson:= )
 	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
@@ -170,7 +173,6 @@ src_prepare() {
 	fi
 
 	if use jit; then
-		export NATIVE_FULL_AOT=1
 		find lisp -type f -name "*.elc" -delete || die
 
 		# These files ignore LDFLAGS. We assign the variable here, because
@@ -221,6 +223,14 @@ src_configure() {
 	# For X11 there is the further choice of toolkits GTK, Motif,
 	# Athena (Lucid), or no toolkit. They are enabled (in order of
 	# preference) with the "gtk", "motif", "Xaw3d", and "athena" flags.
+
+	if use jit; then
+		use zlib || ewarn \
+			"USE flag \"jit\" overrides \"-zlib\"; enabling zlib support."
+		myconf+=" --with-zlib"
+	else
+		myconf+=" $(use_with zlib)"
+	fi
 
 	if ! use gui; then
 		einfo "Configuring to build without window system support"
@@ -341,7 +351,7 @@ src_configure() {
 		$(use_with games gameuser ":gamestat") \
 		$(use_with gmp libgmp) \
 		$(use_with gpm) \
-		$(use_with jit native-compilation) \
+		$(use_with jit native-compilation aot) \
 		$(use_with json) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with lcms lcms2) \
@@ -353,7 +363,6 @@ src_configure() {
 		$(use_with systemd libsystemd) \
 		$(use_with threads) \
 		$(use_with wide-int) \
-		$(use_with zlib) \
 		${myconf}
 }
 

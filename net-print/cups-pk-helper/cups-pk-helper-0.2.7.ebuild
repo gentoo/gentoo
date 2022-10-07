@@ -11,7 +11,8 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 ~riscv ~sparc x86"
+RESTRICT="test" # bug #864949
 
 DEPEND="
 	>=dev-libs/glib-2.36.0:2

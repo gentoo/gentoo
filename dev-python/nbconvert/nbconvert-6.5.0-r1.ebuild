@@ -38,7 +38,7 @@ RDEPEND="
 	dev-python/pygments[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-5.1.1[${PYTHON_USEDEP}]
 	dev-python/testpath[${PYTHON_USEDEP}]
-	www-servers/tornado[${PYTHON_USEDEP}]
+	dev-python/tornado[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (

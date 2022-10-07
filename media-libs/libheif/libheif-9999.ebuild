@@ -41,10 +41,6 @@ DEPEND="
 	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.12.0-fix-bashism.patch
-)
-
 src_prepare() {
 	default
 

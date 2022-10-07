@@ -42,7 +42,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/boost-1.49
+	dev-libs/boost
 "
 RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtquickcontrols-${QTMIN}:5

@@ -8,7 +8,7 @@ inherit toolchain-funcs
 MY_PN="${PN/netkit/bsd}"
 MY_PN="${MY_PN/rd/r}"
 DESCRIPTION="Netkit - fingerd and finger client"
-HOMEPAGE="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/"
+HOMEPAGE="https://wiki.linuxfoundation.org/networking/netkit"
 SRC_URI="mirror://debian/pool/main/b/${MY_PN}/${MY_PN}_${PV}.orig.tar.bz2"
 
 LICENSE="BSD"

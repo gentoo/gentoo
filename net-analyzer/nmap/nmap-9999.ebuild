@@ -5,7 +5,8 @@ EAPI=8
 
 LUA_COMPAT=( lua5-3 )
 LUA_REQ_USE="deprecated"
-inherit autotools lua-single toolchain-funcs
+PYTHON_COMPAT=( python3_{8..11} )
+inherit autotools lua-single python-any-r1 toolchain-funcs
 
 DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
@@ -51,7 +52,10 @@ RDEPEND="
 	system-lua? ( ${LUA_DEPS} )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	${PYTHON_DEPS}
+	virtual/pkgconfig
+"
 
 if [[ ${PV} != *9999* ]] ; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-nmap )"
@@ -71,6 +75,8 @@ PATCHES=(
 )
 
 pkg_setup() {
+	python-any-r1_pkg_setup
+
 	use system-lua && lua-single_pkg_setup
 }
 
@@ -96,6 +102,9 @@ src_prepare() {
 }
 
 src_configure() {
+	export ac_cv_path_PYTHON="${PYTHON}"
+	export am_cv_pathless_PYTHON="${EPYTHON}"
+
 	# The bundled libdnet is incompatible with the version available in the
 	# tree, so we cannot use the system library here.
 	econf \

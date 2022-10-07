@@ -1,0 +1,108 @@
+From https://developer.blender.org/rB74caf773619bbf6a0f95c598b66261a6bef392ee
+From: Brecht Van Lommel <brecht@blender.org>
+Date: Mon, 29 Aug 2022 19:12:15 +0200
+Subject: [PATCH 001/539] Cycles: add option to specify OptiX runtime root
+ directory
+
+This allows individual users or Linux distributions to specify a directory
+Cycles will automatically look for the OptiX include folder, to compile kernels
+at runtime.
+
+It is still possible to override this with the OPTIX_ROOT_DIR environment
+variable at runtime.
+
+Based on patch by Sebastian Parborg.
+
+Ref D15792
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -435,10 +435,16 @@ if(NOT APPLE)
+   option(WITH_CYCLES_CUBIN_COMPILER    "Build cubins with nvrtc based compiler instead of nvcc" OFF)
+   option(WITH_CYCLES_CUDA_BUILD_SERIAL "Build cubins one after another (useful on machines with limited RAM)" OFF)
+   option(WITH_CUDA_DYNLOAD             "Dynamically load CUDA libraries at runtime (for developers, makes cuda-gdb work)" ON)
++
++  set(OPTIX_ROOT_DIR                   "" CACHE PATH "Path to the OptiX SDK root directory, for building Cycles OptiX kernels.")
++  set(CYCLES_RUNTIME_OPTIX_ROOT_DIR    "" CACHE PATH "Path to the OptiX SDK root directory. When set, this path will be used at runtime to compile OptiX kernels.")
++
+   mark_as_advanced(CYCLES_CUDA_BINARIES_ARCH)
+   mark_as_advanced(WITH_CYCLES_CUBIN_COMPILER)
+   mark_as_advanced(WITH_CYCLES_CUDA_BUILD_SERIAL)
+   mark_as_advanced(WITH_CUDA_DYNLOAD)
++  mark_as_advanced(OPTIX_ROOT_DIR)
++  mark_as_advanced(CYCLES_RUNTIME_OPTIX_ROOT_DIR)
+ endif()
+ 
+ # AMD HIP
+--- a/intern/cycles/device/CMakeLists.txt
++++ b/intern/cycles/device/CMakeLists.txt
+@@ -19,6 +19,8 @@ if(WITH_CYCLES_DEVICE_OPTIX OR WITH_CYCLES_DEVICE_CUDA)
+     )
+     add_definitions(-DCYCLES_CUDA_NVCC_EXECUTABLE="${CUDA_NVCC_EXECUTABLE}")
+   endif()
++
++  add_definitions(-DCYCLES_RUNTIME_OPTIX_ROOT_DIR="${CYCLES_RUNTIME_OPTIX_ROOT_DIR}")
+ endif()
+ 
+ if(WITH_CYCLES_DEVICE_HIP AND WITH_HIP_DYNLOAD)
+--- a/intern/cycles/device/optix/device_impl.cpp
++++ b/intern/cycles/device/optix/device_impl.cpp
+@@ -342,15 +342,29 @@ BVHLayoutMask OptiXDevice::get_bvh_layout_mask() const
+   return BVH_LAYOUT_OPTIX;
+ }
+ 
++static string get_optix_include_dir()
++{
++  const char *env_dir = getenv("OPTIX_ROOT_DIR");
++  const char *default_dir = CYCLES_RUNTIME_OPTIX_ROOT_DIR;
++
++  if (env_dir && env_dir[0]) {
++    const string env_include_dir = path_join(env_dir, "include");
++    return env_include_dir;
++  }
++  else if (default_dir[0]) {
++    const string default_include_dir = path_join(default_dir, "include");
++    return default_include_dir;
++  }
++
++  return string();
++}
++
+ string OptiXDevice::compile_kernel_get_common_cflags(const uint kernel_features)
+ {
+   string common_cflags = CUDADevice::compile_kernel_get_common_cflags(kernel_features);
+ 
+   /* Add OptiX SDK include directory to include paths. */
+-  const char *optix_sdk_path = getenv("OPTIX_ROOT_DIR");
+-  if (optix_sdk_path) {
+-    common_cflags += string_printf(" -I\"%s/include\"", optix_sdk_path);
+-  }
++  common_cflags += string_printf(" -I\"%s/include\"", get_optix_include_dir().c_str());
+ 
+   /* Specialization for shader raytracing. */
+   if (kernel_features & KERNEL_FEATURE_NODE_RAYTRACE) {
+@@ -460,10 +474,19 @@ bool OptiXDevice::load_kernels(const uint kernel_features)
+                              "lib/kernel_optix_shader_raytrace.ptx" :
+                              "lib/kernel_optix.ptx");
+     if (use_adaptive_compilation() || path_file_size(ptx_filename) == -1) {
+-      if (!getenv("OPTIX_ROOT_DIR")) {
++      std::string optix_include_dir = get_optix_include_dir();
++      if (optix_include_dir.empty()) {
+         set_error(
+-            "Missing OPTIX_ROOT_DIR environment variable (which must be set with the path to "
+-            "the Optix SDK to be able to compile Optix kernels on demand).");
++            "Unable to compile OptiX kernels at runtime. Set OPTIX_ROOT_DIR environment variable "
++            "to a directory containing the OptiX SDK.");
++        return false;
++      }
++      else if (!path_is_directory(optix_include_dir)) {
++        set_error(string_printf(
++            "OptiX headers not found at %s, unable to compile OptiX kernels at runtime. Install "
++            "OptiX SDK in the specified location, or set OPTIX_ROOT_DIR environment variable to a "
++            "directory containing the OptiX SDK.",
++            optix_include_dir.c_str()));
+         return false;
+       }
+       ptx_filename = compile_kernel(
+-- 
+2.37.3
+

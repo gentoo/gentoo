@@ -17,7 +17,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="examples static-libs"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="sys-devel/gettext
+	virtual/pkgconfig"
 RDEPEND=">=sys-fs/fuse-common-3.3.0-r1"
 
 PATCHES=(
@@ -28,9 +29,6 @@ PATCHES=(
 
 pkg_setup() {
 	if use kernel_linux ; then
-		if kernel_is lt 2 6 9 ; then
-			die "Your kernel is too old."
-		fi
 		CONFIG_CHECK="~FUSE_FS"
 		WARNING_FUSE_FS="You need to have FUSE module built to use user-mode utils"
 		linux-info_pkg_setup

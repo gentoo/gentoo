@@ -19,6 +19,7 @@ BDEPEND="dev-lang/perl"
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
 	"${FILESDIR}"/${P}-no-fixmacps.patch
+	"${FILESDIR}"/${P}-clang-implicit-int.patch
 )
 
 src_compile() {

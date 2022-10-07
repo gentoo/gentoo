@@ -27,6 +27,10 @@ BDEPEND="virtual/pkgconfig"
 
 DOCS=( "README.md" "TESTED.md" )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.2.3-musl-fixes.patch
+)
+
 pkg_pretend() {
 	local CHECK_CONFIG="~HID_LOGITECH ~HID_LOGITECH_HIDPP"
 

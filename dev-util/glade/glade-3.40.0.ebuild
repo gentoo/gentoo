@@ -11,7 +11,7 @@ HOMEPAGE="https://glade.gnome.org https://gitlab.gnome.org/GNOME/glade"
 
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="3.10/13" # subslot = suffix of libgladeui-2.so
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 
 IUSE="gjs gtk-doc +introspection python webkit"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

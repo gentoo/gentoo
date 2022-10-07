@@ -33,7 +33,7 @@ RDEPEND="
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	dev-python/pyjwt[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
+	dev-util/buildbot-worker[${PYTHON_USEDEP}]
 	crypt? (
 		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
 		dev-python/service_identity[${PYTHON_USEDEP}]

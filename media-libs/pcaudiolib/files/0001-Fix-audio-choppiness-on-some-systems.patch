@@ -1,0 +1,36 @@
+From 478bb69d51a945123a18dedf4bee7a3bede67f40 Mon Sep 17 00:00:00 2001
+From: Nicolas Pitre <nico@fluxnic.net>
+Date: Sat, 2 Apr 2022 22:04:30 -0400
+Subject: [PATCH] Fix audio choppiness on some systems
+
+Commit a41d46e816d2 ("Fix cancellation snappiness") made espeak unusable
+on the RaspberryPi due to extreme audio choppiness. This can sometimes
+be observed on some PC-type systems as well, albeit much less
+prominently.
+
+Relax the timing to the smallest value that makes it work again on the
+RaspberryPi.
+---
+ src/audio_priv.h | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/audio_priv.h b/src/audio_priv.h
+index 669a037..0c2ce3c 100644
+--- a/src/audio_priv.h
++++ b/src/audio_priv.h
+@@ -53,8 +53,10 @@ struct audio_object
+ };
+ 
+ /* We try to aim for 10ms cancelation latency, which will be perceived as
+- * "snappy" by users */
+-#define LATENCY 10
++ * "snappy" by users. However, some systems (e.g. RPi) do produce chopped
++ * audio when this value is smaller than 60.
++ */
++#define LATENCY 60
+ 
+ #if defined(_WIN32) || defined(_WIN64)
+ 
+-- 
+2.35.1
+

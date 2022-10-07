@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Polychromatic is a vendor agnostic front-end for managing lighting, RGB
+    effects and some special functionality for keyboards, mice, keypads and
+    just about any other gaming peripheral on your GNU/Linux system. The
+    software aims to make it easy to create and co-ordinate lighting effects
+    that work across all compatible hardware, even if you switch to another
+    brand also supported by Polychromatic.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://gitlab.com/polychromatic/polychromatic/-/issues/</bugs-to>
+    <remote-id type="gitlab">polychromatic/polychromatic</remote-id>
+  </upstream>
+</pkgmetadata>

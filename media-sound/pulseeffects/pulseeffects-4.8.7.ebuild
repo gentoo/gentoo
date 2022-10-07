@@ -21,7 +21,7 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="bs2b calf +doc rnnoise rubberband webrtc zamaudio"
 
-COMMON=">=dev-libs/boost-1.72:=
+COMMON="dev-libs/boost:=
 	>=dev-cpp/glibmm-2.56.0:2
 	>=dev-cpp/gtkmm-3.24:3.0
 	>=dev-libs/glib-2.56:2

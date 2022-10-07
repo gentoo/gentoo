@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2022-09-30)
+# No ruby on ia64 for dev-ruby/asciidoctor
+net-misc/chrony html
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
 # deps not keyworded
 dev-util/pkgcheck emacs
@@ -26,10 +30,6 @@ app-text/enchant nuspell
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # net-misc/freerdp is not keyworded
 dev-libs/weston rdp
-
-# Matt Turner <mattst88@gentoo.org> (2022-04-16)
-# sys-auth/seatd is not keyworded
-dev-libs/weston seatd
 
 # Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
 # gnome-base/librsvg missing keywords

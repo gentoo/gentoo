@@ -48,7 +48,7 @@ RDEPEND="
 		dev-python/pycairo[${PYTHON_USEDEP}]
 	')
 	sys-apps/dbus
-	x11-libs/gtk+:3[introspection]
+	x11-libs/gtk+:3[introspection,X]
 	x11-libs/libnotify[introspection]
 	|| (
 		x11-themes/adwaita-icon-theme

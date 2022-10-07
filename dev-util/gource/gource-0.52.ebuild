@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 COMMON_DEPEND="
-	>=dev-libs/boost-1.46:=[threads(+)]
+	dev-libs/boost:=
 	>=media-libs/glew-1.5:0=
 	>=media-libs/libpng-1.2:0=
 	media-libs/libsdl2[video,opengl,X]

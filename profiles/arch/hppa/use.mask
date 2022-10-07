@@ -98,10 +98,6 @@ luajittex
 # Mask USE=systemtap generally until proper kernel support is in place
 systemtap
 
-# Jeroen Roovers <jer@gentoo.org> (2014-05-20)
-# USE=tcmalloc needs dev-util/google-perftools
-tcmalloc
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-11-10)
 # sys-devel/llvm is not keyworded, bug #320221
 llvm

@@ -13,10 +13,10 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 
 IUSE="clisp clozurecl clozurecl64 cmucl ecls emacs gcl gui nls +sbcl vtk X test"
-RESTRICT="!test? ( test )"
+RESTRICT="test" # bug 838202
 
 # Languages
 LANGS="de es pt pt_BR"

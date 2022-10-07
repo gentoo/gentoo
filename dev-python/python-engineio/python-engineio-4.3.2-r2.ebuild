@@ -35,8 +35,8 @@ BDEPEND="
 		' python3_{8,9} )
 
 		dev-python/gevent[${PYTHON_USEDEP}]
+		dev-python/tornado[${PYTHON_USEDEP}]
 		dev-python/websockets[${PYTHON_USEDEP}]
-		www-servers/tornado[${PYTHON_USEDEP}]
 	)
 "
 

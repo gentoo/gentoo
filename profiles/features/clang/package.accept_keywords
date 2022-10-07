@@ -1,5 +1,0 @@
-# Copyright 2022 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# this version contains the path fix for portage needed for stage1 builds
-=sys-apps/portage-3.0.33 ~amd64

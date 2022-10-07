@@ -1,0 +1,365 @@
+https://bugs.gentoo.org/870412
+https://git.savannah.gnu.org/cgit/autoconf.git/commit/?id=8b5e2016c7ed2d67f31b03a3d2e361858ff5299b
+
+Backport the K&R decls fix to 2.69 to avoid configure tests
+failing (often "silently", i.e. doesn't fail the build of
+the package overall, just leads to wrong results) with
+newer compilers like the upcoming Clang 16.
+
+From e6f401b94b58bb9bb58cd668a996e27663d3e6c7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Mon, 19 Sep 2022 12:11:24 +0200
+Subject: [PATCH] backport K&R decl fixes
+
+--- a/lib/autoconf/c.m4
++++ b/lib/autoconf/c.m4
+@@ -97,7 +97,7 @@ m4_define([AC_LANG_PROGRAM(C)],
+ m4_ifdef([_AC_LANG_PROGRAM_C_F77_HOOKS], [_AC_LANG_PROGRAM_C_F77_HOOKS])[]dnl
+ m4_ifdef([_AC_LANG_PROGRAM_C_FC_HOOKS], [_AC_LANG_PROGRAM_C_FC_HOOKS])[]dnl
+ int
+-main ()
++main (void)
+ {
+ dnl Do *not* indent the following line: there may be CPP directives.
+ dnl Don't move the `;' right after for the same reason.
+@@ -130,7 +130,7 @@ m4_if([$2], [main], ,
+ #ifdef __cplusplus
+ extern "C"
+ #endif
+-char $2 ();])], [return $2 ();])])
++char $2 (void);])], [return $2 ();])])
+ 
+ 
+ # AC_LANG_FUNC_LINK_TRY(C)(FUNCTION)
+@@ -154,7 +154,7 @@ m4_define([AC_LANG_FUNC_LINK_TRY(C)],
+ #define $1 innocuous_$1
+ 
+ /* System header to define __stub macros and hopefully few prototypes,
+-    which can conflict with char $1 (); below.
++    which can conflict with char $1 (void); below.
+     Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
+     <limits.h> exists even on freestanding compilers.  */
+ 
+@@ -172,7 +172,7 @@ m4_define([AC_LANG_FUNC_LINK_TRY(C)],
+ #ifdef __cplusplus
+ extern "C"
+ #endif
+-char $1 ();
++char $1 (void);
+ /* The GNU C library defines this for functions which it implements
+     to always fail with ENOSYS.  Some functions are actually named
+     something starting with __ and the normal name is an alias.  */
+@@ -201,8 +201,8 @@ return test_array @<:@0@:>@;
+ # But we include them only after the EXPRESSION has been evaluated.
+ m4_define([AC_LANG_INT_SAVE(C)],
+ [AC_LANG_PROGRAM([$1
+-static long int longval () { return $2; }
+-static unsigned long int ulongval () { return $2; }
++static long int longval (void) { return $2; }
++static unsigned long int ulongval (void) { return $2; }
+ @%:@include <stdio.h>
+ @%:@include <stdlib.h>],
+ [
+@@ -1625,8 +1625,8 @@ for ac_kw in inline __inline__ __inline; do
+   AC_COMPILE_IFELSE([AC_LANG_SOURCE(
+ [#ifndef __cplusplus
+ typedef int foo_t;
+-static $ac_kw foo_t static_foo () {return 0; }
+-$ac_kw foo_t foo () {return 0; }
++static $ac_kw foo_t static_foo (void) {return 0; }
++$ac_kw foo_t foo (void) {return 0; }
+ #endif
+ ])],
+ 		    [ac_cv_c_inline=$ac_kw])
+@@ -1949,7 +1949,7 @@ m4_define([_AC_LANG_OPENMP(C)],
+  choke me
+ #endif
+ #include <omp.h>
+-int main () { return omp_get_num_threads (); }
++int main (void) { return omp_get_num_threads (); }
+ ])
+ 
+ # _AC_LANG_OPENMP(C++)
+--- a/lib/autoconf/functions.m4
++++ b/lib/autoconf/functions.m4
+@@ -463,9 +463,6 @@ AC_CACHE_CHECK([whether closedir returns void],
+ 	       [ac_cv_func_closedir_void],
+ [AC_RUN_IFELSE([AC_LANG_PROGRAM([AC_INCLUDES_DEFAULT
+ #include <$ac_header_dirent>
+-#ifndef __cplusplus
+-int closedir ();
+-#endif
+ ],
+ 				[[return closedir (opendir (".")) != 0;]])],
+ 	       [ac_cv_func_closedir_void=no],
+@@ -893,7 +890,7 @@ AC_CACHE_CHECK([for GNU libc compatible malloc], ac_cv_func_malloc_0_nonnull,
+ [[#if defined STDC_HEADERS || defined HAVE_STDLIB_H
+ # include <stdlib.h>
+ #else
+-char *malloc ();
++char *malloc (long);
+ #endif
+ ]],
+ 		 [return ! malloc (0);])],
+@@ -1029,7 +1026,7 @@ static const char *tz_strings[] = {
+ /* Return 0 if mktime fails to convert a date in the spring-forward gap.
+    Based on a problem report from Andreas Jaeger.  */
+ static int
+-spring_forward_gap ()
++spring_forward_gap (void)
+ {
+   /* glibc (up to about 1998-10-07) failed this test. */
+   struct tm tm;
+@@ -1066,7 +1063,7 @@ mktime_test (time_t now)
+ }
+ 
+ static int
+-irix_6_4_bug ()
++irix_6_4_bug (void)
+ {
+   /* Based on code from Ariel Faigon.  */
+   struct tm tm;
+@@ -1108,7 +1105,7 @@ bigtime_test (int j)
+ }
+ 
+ static int
+-year_2050_test ()
++year_2050_test (void)
+ {
+   /* The correct answer for 2050-02-01 00:00:00 in Pacific time,
+      ignoring leap seconds.  */
+@@ -1138,7 +1135,7 @@ year_2050_test ()
+ }
+ 
+ int
+-main ()
++main (void)
+ {
+   time_t t, delta;
+   int i, j;
+@@ -1232,7 +1229,7 @@ AC_CACHE_CHECK([for working mmap], [ac_cv_func_mmap_fixed_mapped],
+ #include <sys/mman.h>
+ 
+ #if !defined STDC_HEADERS && !defined HAVE_STDLIB_H
+-char *malloc ();
++char *malloc (void *, long);
+ #endif
+ 
+ /* This mess was copied from the GNU getpagesize.h.  */
+@@ -1268,7 +1265,7 @@ char *malloc ();
+ #endif /* no HAVE_GETPAGESIZE */
+ 
+ int
+-main ()
++main (void)
+ {
+   char *data, *data2, *data3;
+   const char *cdata2;
+@@ -1398,7 +1395,7 @@ AC_CACHE_CHECK([for GNU libc compatible realloc], ac_cv_func_realloc_0_nonnull,
+ [[#if defined STDC_HEADERS || defined HAVE_STDLIB_H
+ # include <stdlib.h>
+ #else
+-char *realloc ();
++char *realloc (void *, long);
+ #endif
+ ]],
+ 		 [return ! realloc (0, 0);])],
+@@ -1547,11 +1544,8 @@ AC_DEFUN([AC_FUNC_STRTOD],
+ AC_CACHE_CHECK(for working strtod, ac_cv_func_strtod,
+ [AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ ]AC_INCLUDES_DEFAULT[
+-#ifndef strtod
+-double strtod ();
+-#endif
+ int
+-main()
++main(void)
+ {
+   {
+     /* Some versions of Linux strtod mis-parse strings with leading '+'.  */
+@@ -1645,8 +1639,7 @@ AC_CACHE_CHECK([whether strerror_r returns char *],
+       # former has a strerror_r that returns char*, while the latter
+       # has a strerror_r that returns `int'.
+       # This test should segfault on the DEC system.
+-      AC_RUN_IFELSE([AC_LANG_PROGRAM([AC_INCLUDES_DEFAULT
+-	extern char *strerror_r ();],
++      AC_RUN_IFELSE([AC_LANG_PROGRAM([AC_INCLUDES_DEFAULT],
+ 	[[char buf[100];
+ 	  char x = *strerror_r (0, buf, sizeof buf);
+ 	  return ! isalpha (x);]])],
+@@ -1879,7 +1872,7 @@ sparc_address_test (arg) int arg;
+ }
+ 
+ int
+-main ()
++main (void)
+ {
+   pid_t parent = getpid ();
+   pid_t child;
+@@ -1985,7 +1978,7 @@ AC_CACHE_CHECK([for wait3 that fills in rusage],
+ #include <sys/wait.h>
+ /* HP-UX has wait3 but does not fill in rusage at all.  */
+ int
+-main ()
++main (void)
+ {
+   struct rusage r;
+   int i;
+--- a/lib/autoconf/headers.m4
++++ b/lib/autoconf/headers.m4
+@@ -712,7 +712,7 @@ if test $ac_cv_header_stdc = yes; then
+ 
+ #define XOR(e, f) (((e) && !(f)) || (!(e) && (f)))
+ int
+-main ()
++main (void)
+ {
+   int i;
+   for (i = 0; i < 256; i++)
+--- a/lib/autoconf/specific.m4
++++ b/lib/autoconf/specific.m4
+@@ -257,7 +257,7 @@ void ucatch (dummy) int dummy; { }
+ #endif
+ 
+ int
+-main ()
++main (void)
+ {
+   int i = fork (), status;
+ 
+--- a/lib/autoconf/types.m4
++++ b/lib/autoconf/types.m4
+@@ -267,7 +267,7 @@ AC_CACHE_CHECK(type of array argument to getgroups, ac_cv_type_getgroups,
+ #define MAX(x, y) ((x) > (y) ? (x) : (y))
+ 
+ int
+-main ()
++main (void)
+ {
+   gid_t gidset[NGID];
+   int i, n;
+--- a/tests/c.at
++++ b/tests/c.at
+@@ -354,7 +354,7 @@ AT_DATA([foo.c],
+ #endif
+ #include <stdio.h>
+ 
+-int main ()
++int main (void)
+ {
+ #ifdef _OPENMP
+ #pragma omp parallel
+@@ -404,7 +404,7 @@ foo.@OBJEXT@: foo.cpp
+ ]])
+ 
+ AT_DATA([foo.cpp],
+-[[int main ()
++[[int main (void)
+ {
+   return 0;
+ }
+--- a/tests/compile.at
++++ b/tests/compile.at
+@@ -124,7 +124,7 @@ AC_PROG_CC
+ AC_COMPILE_IFELSE([AC_LANG_SOURCE([[#ifndef PACKAGE_NAME
+ choke me
+ #endif
+-int main ()
++int main (void)
+ {
+   return 0;
+ }
+@@ -150,7 +150,7 @@ AC_LANG([C++])
+ AC_COMPILE_IFELSE([AC_LANG_SOURCE([[#ifndef PACKAGE_NAME
+ choke me
+ #endif
+-int main ()
++int main (void)
+ {
+   return 0;
+ }
+@@ -249,7 +249,7 @@ AT_CHECK([sed -n 's/ *$//; /#define PACKAGE/,$p' stdout], [],
+ 
+ const char hw[] = "Hello, World\n";
+ int
+-main ()
++main (void)
+ {
+ fputs (hw, stdout);
+   ;
+@@ -269,7 +269,7 @@ AT_KEYWORDS([AC_LANG_DEFINES_PROVIDED])
+ 
+ AT_DATA([configure.ac],
+ [[AC_INIT
+-AC_COMPILE_IFELSE([int main () { return 0; }], [],
++AC_COMPILE_IFELSE([int main (void) { return 0; }], [],
+   [AC_MSG_ERROR([compiling trivial program failed])])
+ ]])
+ 
+@@ -280,7 +280,7 @@ AT_CHECK_CONFIGURE([-q])
+ 
+ AT_DATA([configure.ac],
+ [[AC_INIT
+-AC_COMPILE_IFELSE([AC_LANG_DEFINES_PROVIDED()int main () { return 0; }], [],
++AC_COMPILE_IFELSE([AC_LANG_DEFINES_PROVIDED()int main (void) { return 0; }], [],
+   [AC_MSG_ERROR([compiling trivial program failed])])
+ ]])
+ 
+@@ -324,7 +324,7 @@ test $estatus != 2 &&
+   AC_MSG_ERROR([did not get as 2 exit status: $estatus])])
+ 
+ # The old stinky one.
+-AC_TRY_RUN([int main () { return 3; }],
++AC_TRY_RUN([int main (void) { return 3; }],
+ 	   [AC_MSG_ERROR([saw `return 3' as a success])],
+ 	   [estatus=$?
+ test $estatus != 3 &&
+--- a/tests/fortran.at
++++ b/tests/fortran.at
+@@ -223,7 +223,7 @@ void FOOBAR_F77 (double *x, double *y);
+ #  ifdef __cplusplus
+      extern "C"
+ #  endif
+-   int F77_DUMMY_MAIN () { return 1; }
++   int F77_DUMMY_MAIN (void) { return 1; }
+ #endif
+ 
+ int main(int argc, char *argv[])
+@@ -301,7 +301,7 @@ void FOOBAR_FC(double *x, double *y);
+ #  ifdef __cplusplus
+      extern "C"
+ #  endif
+-   int FC_DUMMY_MAIN () { return 1; }
++   int FC_DUMMY_MAIN (void) { return 1; }
+ #endif
+ 
+ int main (int argc, char *argv[])
+@@ -533,7 +533,7 @@ void @foobar@ (int *x);
+ #  ifdef __cplusplus
+      extern "C"
+ #  endif
+-   int F77_DUMMY_MAIN () { return 1; }
++   int F77_DUMMY_MAIN (void) { return 1; }
+ #endif
+ 
+ int main(int argc, char *argv[])
+@@ -607,7 +607,7 @@ void @foobar@ (int *x);
+ #  ifdef __cplusplus
+      extern "C"
+ #  endif
+-   int FC_DUMMY_MAIN () { return 1; }
++   int FC_DUMMY_MAIN (void) { return 1; }
+ #endif
+ 
+ int main(int argc, char *argv[])
+--- a/tests/semantics.at
++++ b/tests/semantics.at
+@@ -107,7 +107,7 @@ AT_CHECK_MACRO([AC_CHECK_DECLS],
+ 		 [[int yes = 1;
+ 		   enum { myenum };
+ 		   struct { int x[20]; } mystruct;
+-		   extern int myfunc();
++		   extern int myfunc (void);
+ 		   #define mymacro1(arg) arg
+ 		   #define mymacro2]])
+   # The difference in space-before-open-paren is intentional.

@@ -14,7 +14,7 @@ HOMEPAGE="https://www.yesodweb.com/book/shakespearean-templates"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="<dev-haskell/aeson-3:=[profile?]
 	dev-haskell/blaze-html:=[profile?]

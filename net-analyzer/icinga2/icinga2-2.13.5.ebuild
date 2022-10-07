@@ -7,7 +7,7 @@ inherit cmake systemd
 
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Icinga/icinga2.git"
@@ -23,7 +23,7 @@ IUSE="console jumbo-build lto mail mariadb minimal +mysql nano-syntax +plugins p
 # Add accounts to DEPEND because of fowners in src_install
 DEPEND="
 	dev-libs/openssl:0=
-	>=dev-libs/boost-1.66.0:=[context]
+	dev-libs/boost:=[context]
 	console? ( dev-libs/libedit )
 	mariadb? ( dev-db/mariadb-connector-c:= )
 	mysql? ( dev-db/mysql-connector-c:= )

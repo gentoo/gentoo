@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}/scripts"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86"
 
 # Requires python packages to check tools we don't need anyway
 RESTRICT="test"

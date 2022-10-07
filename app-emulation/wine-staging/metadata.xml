@@ -13,35 +13,26 @@ Think of Wine as a compatibility layer for running Windows programs. Wine does n
 This variant of the Wine packaging includes the Wine-Staging patchset.
 	</longdescription>
 	<use>
-		<flag name="capi">Enable ISDN support via CAPI</flag>
+		<flag name="capi">Enable ISDN support using <pkg>net-libs/libcapi</pkg></flag>
 		<flag name="crossdev-mingw">
 			Use <pkg>sys-devel/crossdev</pkg> for the toolchain rather than
 			<pkg>dev-util/mingw64-toolchain</pkg> (requires manual setting up)
 		</flag>
-		<flag name="custom-cflags">Bypass strip-flags; use at your own peril</flag>
 		<flag name="dos">Pull in <pkg>games-emulation/dosbox</pkg> to run DOS applications</flag>
-		<flag name="gecko">Add support for the Gecko engine when using iexplore</flag>
-		<flag name="gssapi">Use GSSAPI (Kerberos SSP support)</flag>
-		<flag name="gstreamer">Use <pkg>media-libs/gstreamer</pkg> to provide DirectShow functionality;</flag>
-		<flag name="mingw">Build PE files using a MinGW cross compiler</flag>
-		<flag name="mono">Add support for .NET using Wine's Mono add-on</flag>
-		<flag name="netapi">Use libnetapi from <pkg>net-fs/samba</pkg> to support Windows networks in netapi32.dll</flag>
+		<flag name="gecko">Enable mshtml support using <pkg>app-emulation/wine-gecko</pkg></flag>
+		<flag name="mingw">Build PE files using a MinGW toolchain for better compatibility</flag>
+		<flag name="mono">Enable .NET support using <pkg>app-emulation/wine-mono</pkg></flag>
+		<flag name="netapi">Enable support for configuring remote shares using <pkg>net-fs/samba</pkg></flag>
 		<flag name="opencl">Enable OpenCL support</flag>
-		<flag name="osmesa">Add support for OpenGL in bitmaps using libOSMesa</flag>
+		<flag name="osmesa">Enable off-screen rendering (OpenGL in bitmaps) support</flag>
 		<flag name="pcap">Support packet capture software (e.g. wireshark)</flag>
-		<flag name="perl">Install helpers written in perl (winedump/winemaker)</flag>
+		<flag name="perl">Install helpers that require perl (winedump/winemaker)</flag>
 		<flag name="pipelight">Apply Wine-Staging patches for Pipelight/Silverlight support</flag>
 		<flag name="realtime">Pull in <pkg>sys-auth/rtkit</pkg> for low-latency pulseaudio support</flag>
 		<flag name="run-exes">Use Wine to open and run .EXE and .MSI files</flag>
-		<flag name="samba">Add support for NTLM auth. See:
-						https://web.archive.org/web/20160108123008/http://wiki.winehq.org:80/NtlmAuthSetupGuide and
-						https://web.archive.org/web/20150906013746/http://wiki.winehq.org/NtlmSigningAndSealing
-						(these pages are not currently in the updated WineHQ Wiki).</flag>
-		<flag name="sdl">Add support for gamepad detection using SDL</flag>
+		<flag name="samba">Pull in <pkg>net-fs/samba</pkg> with winbind for NTLM auth support</flag>
+		<flag name="sdl">Enable gamepad support using <pkg>media-libs/libsdl2</pkg></flag>
 		<flag name="staging">Apply Wine-Staging patches for advanced feature support that haven't made it into upstream Wine yet</flag>
-		<flag name="udev">Use <pkg>virtual/libudev</pkg> to provide plug and play support</flag>
-		<flag name="unwind">Use <pkg>sys-libs/libunwind</pkg> to unwind the stack</flag>
-		<flag name="usb">Use <pkg>virtual/libusb</pkg> to provide USB support</flag>
 		<flag name="vulkan">Enable Vulkan drivers</flag>
 	</use>
 	<upstream>

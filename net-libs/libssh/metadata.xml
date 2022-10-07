@@ -15,5 +15,6 @@
 	</use>
 	<upstream>
 		<remote-id type="gitlab">libssh/libssh-mirror</remote-id>
+		<remote-id type="cpe">cpe:/a:libssh:libssh</remote-id>
 	</upstream>
 </pkgmetadata>

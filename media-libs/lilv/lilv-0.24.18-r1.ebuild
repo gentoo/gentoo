@@ -9,12 +9,12 @@ PYTHON_REQ_USE='threads(+)'
 inherit meson-multilib python-single-r1
 
 DESCRIPTION="Library to make the use of LV2 plugins as simple as possible for applications"
-HOMEPAGE="http://drobilla.net/software/lilv/"
-SRC_URI="http://download.drobilla.net/${P}.tar.xz"
+HOMEPAGE="https://drobilla.net/software/lilv.html"
+SRC_URI="https://download.drobilla.net/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc python test tools"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"

@@ -80,6 +80,7 @@ pkg_pretend() {
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-4.3-gentoo.patch"
 	eapply "${FILESDIR}/${PN}-4.17-use-system-libltdl.patch"
+	eapply "${FILESDIR}/${PN}-4.17-fix-libxml2-2.10.0.patch"
 
 	sed -i -e 's:/usr/local/squid/etc:/etc/squid:' \
 		INSTALL QUICKSTART \

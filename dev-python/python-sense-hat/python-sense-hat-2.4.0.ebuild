@@ -14,7 +14,7 @@ SRC_URI="https://github.com/astro-pi/python-sense-hat/archive/v${PV}.tar.gz -> $
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~arm ~arm64"
+KEYWORDS="arm arm64"
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]

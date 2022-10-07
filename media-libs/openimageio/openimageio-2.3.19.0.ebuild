@@ -23,7 +23,7 @@ LICENSE="BSD"
 # TODO: drop .1 on next SONAME change (2.3 -> 2.4?) as we needed to nudge it
 # for changing to openexr 3 which broke ABI.
 SLOT="0/$(ver_cut 1-2).1"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 
 X86_CPU_FEATURES=(
 	aes:aes sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2
@@ -48,7 +48,7 @@ BDEPEND="
 	)
 "
 RDEPEND="
-	>=dev-libs/boost-1.62:=
+	dev-libs/boost:=
 	dev-cpp/robin-map
 	dev-libs/libfmt:=
 	dev-libs/pugixml:=

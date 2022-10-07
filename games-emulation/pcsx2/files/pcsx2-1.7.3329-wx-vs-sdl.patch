@@ -1,0 +1,9 @@
+This check is unnecessary, bit dodgy (ldd+grep), and requires -DSDL2_API=1
+/only/ if wxGTK was built with USE=sdl or else get a cmake unused options
+warning. Test code also fails with -Werror=strict-prototypes (clang16).
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -191,3 +191,2 @@
+ if(NOT PCSX2_CORE)
+-	WX_vs_SDL()
+ endif()

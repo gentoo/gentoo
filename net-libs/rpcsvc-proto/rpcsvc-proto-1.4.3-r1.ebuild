@@ -19,9 +19,18 @@ BDEPEND="sys-devel/gettext"
 src_prepare() {
 	default
 
-	# Use ${CHOST}-cpp, not 'cpp': bug #718138
-	# Ideally we should use @CPP@ but rpcgen makes it hard to use '${CHOST}-gcc -E'
-	sed -i -s "s/CPP = \"cpp\";/CPP = \"${CHOST}-cpp\";/" rpcgen/rpc_main.c || die
+	# Search for a valid 'cpp' command.
+	# The CPP envvar might contain '${CC} -E', which does not work for rpcgen.
+	# Bug 718138, 870031, 870061.
+	local x cpp=
+	for x in {${CHOST}-,}{,clang-}cpp; do
+		if type -P "${x}" >/dev/null; then
+			cpp=${x}
+			break
+		fi
+	done
+	[[ -n ${cpp} ]] || die "Unable to find cpp"
+	sed -i -e "s/CPP = \"cpp\";/CPP = \"${cpp}\";/" rpcgen/rpc_main.c || die
 }
 
 src_install() {

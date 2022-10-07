@@ -21,7 +21,7 @@ RDEPEND="
 	dev-ros/visp_bridge
 	dev-ros/visp_tracker
 	sci-libs/ViSP:=[dmtx,zbar]
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	media-libs/opencv:=
 "
 DEPEND="${RDEPEND}

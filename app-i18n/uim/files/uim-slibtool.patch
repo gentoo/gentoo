@@ -7,7 +7,7 @@
 -                @abs_top_builddir@/replace/.libs @abs_top_builddir@/uim/.libs
 -LIBS += -lreplace -luim -luim-scm
 +                @abs_top_builddir@/replace/.libs @abs_top_builddir@/uim/.libs \
-+		@abs_top_builddir@/sigscheme/libgcroots/.libs
++                @abs_top_builddir@/sigscheme/libgcroots/.libs
 +LIBS += -lreplace -luim -luim-scm -lgcroots
  !win32:!embedded:!mac {
      LIBS += -luim-x-util

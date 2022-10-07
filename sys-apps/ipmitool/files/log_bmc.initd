@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="log_bmc"
+description="Add SEL entries to indicate OS Boot status"
+command=/usr/libexec/log_bmc.sh
+command_args=""
+: "${DEVICENUM:=0}" # which BMC
+required_files=/dev/ipmi${DEVICENUM}
+
+depend() {
+  use modules
+  after ipmievd # to capture our own log event
+  keyword -docker -lxc -prefix -systemd-nspawn
+}
+
+start() {
+  # TODO: should this keep start so it only fires once per boot?
+  "${command}" os_boot
+}
+
+stop() {
+  "${command}" os_shutdown
+}

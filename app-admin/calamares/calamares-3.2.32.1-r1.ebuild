@@ -24,7 +24,7 @@ BDEPEND="
 COMMON_DEPEND="${PYTHON_DEPS}
 	dev-cpp/yaml-cpp:=
 	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.55:=[python,${PYTHON_USEDEP}]
+		dev-libs/boost:=[python,${PYTHON_USEDEP}]
 		dev-libs/libpwquality[${PYTHON_USEDEP}]
 	')
 	dev-qt/qtconcurrent:5

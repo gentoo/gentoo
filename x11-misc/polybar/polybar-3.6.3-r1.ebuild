@@ -11,7 +11,7 @@ DESCRIPTION="A fast and easy-to-use tool for creating status bars"
 HOMEPAGE="https://github.com/polybar/polybar"
 SRC_URI="https://github.com/polybar/${PN}/releases/download/${PV}/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="MIT"
 SLOT="0"
 IUSE="alsa curl doc i3wm ipc mpd network pulseaudio"

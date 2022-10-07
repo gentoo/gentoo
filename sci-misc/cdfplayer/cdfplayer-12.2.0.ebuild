@@ -6,7 +6,7 @@ EAPI=6
 inherit desktop multilib versionator
 
 DESCRIPTION="Wolfram Player for the interactive Computable Document Format (CDF)"
-SRC_URI="WolframPlayer_12.2.0_LINUX.sh"
+SRC_URI="WolframPlayer_${PV}_LINUX.sh"
 HOMEPAGE="http://www.wolfram.com/cdf-player/"
 
 LICENSE="WolframCDFPlayer"

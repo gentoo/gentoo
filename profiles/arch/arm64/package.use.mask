@@ -1,6 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-08-09)
+# dev-java/jaxws-api not keyworded
+>=dev-java/jmock-2.12.0 test
+
+# Alexey Shvetsov <alexxy@gentoo.org> (2022-09-15)
+# Mask nvml use flag for slurm
+sys-cluster/slurm nvml
+
 # Sam James <sam@gentoo.org> (2022-07-08)
 # Unmask galera for dev-db/mariadb
 >=dev-db/mariadb-10.1.0 -galera
@@ -316,7 +324,7 @@ dev-libs/boost -context
 
 # Michał Górny <mgorny@gentoo.org> (2018-03-03)
 # Requires masked dependent flags.
-net-fs/samba addc addns ads cluster python test
+net-fs/samba addns cluster test
 
 # Michał Górny <mgorny@gentoo.org> (2018-03-03)
 # Some more unkeyworded dependencies.

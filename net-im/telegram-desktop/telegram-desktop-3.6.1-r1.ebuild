@@ -158,5 +158,5 @@ pkg_postinst() {
 		ewarn
 	fi
 	optfeature_header
-	optfeature "shop payment support (requires USE=dbus enabled)" net-libs/webkit-gtk
+	optfeature "shop payment support (requires USE=dbus enabled)" net-libs/webkit-gtk:4
 }

@@ -1,0 +1,10 @@
+[Unit]
+Description=sccache-dist server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/sccache-dist server --config /etc/sccache/server.conf
+
+[Install]
+WantedBy=multi-user.target

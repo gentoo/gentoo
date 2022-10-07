@@ -5,7 +5,15 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@tastytea.de</email>
+		<name>Ronny (tastytea) Gutbrod</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<stabilize-allarches />
 	<upstream>
 		<remote-id type="github">adobe-fonts/source-han-sans</remote-id>
 	</upstream>

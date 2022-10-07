@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-23)
+# The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
+# keyword them solely because of PyQt5 while there are no other in-tree users.
+dev-python/PyQt5 bluetooth location speech
+
 # Andrey Grozin <grozin@gentoo.org> (2022-09-02)
 # dev-libs/capstone not keyworded
 dev-lisp/sbcl capstone
@@ -27,7 +32,7 @@ media-libs/freetype svg
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # sys-auth/seatd is not keyworded
-dev-libs/weston seatd
+<=dev-libs/weston-10.0.0 seatd
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2022-03-14)
 # Now requires dev-java/rhino which is not keyworded
@@ -105,6 +110,7 @@ media-libs/gd avif heif
 # compiler-rt* has no support for ppc32 (yet?)
 # bug #708344
 sys-devel/clang-runtime compiler-rt sanitize
+sys-devel/clang-common default-compiler-rt
 sys-devel/clang default-compiler-rt
 
 # Florian Schmaus <flo@geekplace.eu> (2020-12-03)

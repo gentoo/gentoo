@@ -1,0 +1,29 @@
+https://gitlab.freedesktop.org/cairo/cairo/-/commit/74f2da7b70179a363b5a4649b9c5d6fd18d9cbc0
+https://bugs.gentoo.org/868405
+
+From 24996e6ee241ebcd303dd34a2b06b37a6dd0c217 Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@debian.org>
+Date: Wed, 13 Jul 2022 21:26:57 +0100
+Subject: [PATCH] Fix build with newer binutils-dev installed
+
+It seems the PTR typedef (or macro?) has been removed from newer versions
+of libbfd.
+
+Resolves: https://gitlab.freedesktop.org/cairo/cairo/-/issues/581
+Signed-off-by: Simon McVittie <smcv@debian.org>
+--- a/util/cairo-trace/lookup-symbol.c
++++ b/util/cairo-trace/lookup-symbol.c
+@@ -106,10 +106,10 @@ _symtab_init (struct symtab *symtab, const char *filename)
+     if (! bfd_check_format_matches (symtab->bfd, bfd_object, &matching))
+ 	goto BAIL;
+ 
+-    symcount = bfd_read_minisymbols (symtab->bfd, false, (PTR) &symtab->syms, &size);
++    symcount = bfd_read_minisymbols (symtab->bfd, false, (void **) &symtab->syms, &size);
+     if (symcount == 0) {
+ 	symcount = bfd_read_minisymbols (symtab->bfd, true /* dynamic */ ,
+-		(PTR) &symtab->syms, &size);
++		(void **) &symtab->syms, &size);
+     }
+     if (symcount < 0)
+ 	goto BAIL;
+GitLab

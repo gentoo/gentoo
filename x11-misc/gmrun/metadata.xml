@@ -14,13 +14,13 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-		A run utility intended to replace grun or gnome-run. Most prominent
+		A run utility intended to replace <pkg>x11-misc/grun</pkg> or gnome-run. Most prominent
 		features include slim design and bash style auto-completion.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">WdesktopX/gmrun</remote-id>
+		<remote-id type="github">wdlkmpx/gmrun</remote-id>
 	</upstream>
 	<use>
-		<flag name="xdg">Enable xdf spec for configuration and history file location</flag>
+		<flag name="xdg">Enable xdg spec for configuration and history files location</flag>
 	</use>
 </pkgmetadata>

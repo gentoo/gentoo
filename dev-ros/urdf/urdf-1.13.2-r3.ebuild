@@ -14,7 +14,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	>=dev-libs/urdfdom-3.0.1:=
 	dev-libs/urdfdom_headers
 	dev-ros/urdf_parser_plugin

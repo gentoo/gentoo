@@ -6,6 +6,58 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2022-10-02)
+# USE=compat / possibly allowing sys-libs/zlib needs to be figured out,
+# but packages want to use the actual zlib-ng library, so we need to
+# mask it and can't hold the whole thing up on the compat effort.
+sys-libs/zlib-ng compat
+sys-libs/minizip-ng compat
+
+# Matt Turner <mattst88@gentoo.org> (2022-09-26)
+# Requires nautilus-43.0 which is not in tree yet.
+>=x11-terms/gnome-terminal-3.46 nautilus
+
+# Pascal Jaeger <pascal.jaeger@leimstift.de> (2022-09-21)
+# Versions >=43.0 of evince only work with <gnome-base/nautilus-42.2.
+# Allowing that use flag for >=43.0 would stop users from updating nautilus
+>=app-text/evince-43.0 nautilus
+
+# Yiyang Wu <xgreenlandforwyy@gmail.com> (2022-09-21)
+# Intolerable mathematical errors found on AMD Radeon VII GPU during src_test,
+# may lead to incorrect results in computation.
+# https://github.com/ROCmSoftwarePlatform/rocFFT/issues/369
+=sci-libs/rocFFT-5.1.3 amdgpu_targets_gfx906
+=sci-libs/hipFFT-5.1.3 amdgpu_targets_gfx906
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-17)
+# po4a crashes while translating
+# mask for now
+=dev-util/schroot-1.6.13_p2 nls
+
+# Sam James <sam@gentoo.org> (2022-09-15)
+# Doesn't work on e.g. glibc systems. Unmasked on the LLVM profiles.
+# It doesn't matter much as llvm-libunwind has different semantics
+# to other packages, i.e. -llvm-libunwind doesn't force use of sys-libs/libunwind
+# on glibc, so it doesn't prevent usage of llvm-libunwind for other packages.
+# bug #870211.
+dev-lang/rust llvm-libunwind
+
+# Matt Jolly <Matt.Jolly@footclan.ninja> (2022-09-09)
+# app-antivirus/clamav JIT support requires LLVM <=13
+# ebuild support is there but currently failing to link
+app-antivirus/clamav jit
+
+# Sam James <sam@gentoo.org> (2022-09-06)
+# Incompatible with merged-usr and is a fundamentally flaky approach.
+# - app-arch/lbzip2: bug #868318 (possible solution in bug #868651)
+# - app-arch/pigz: bug #868312 (possible solution in bug #868648)
+# It's suggested that users who want this feature use a wrapper
+# script in /usr/local (or otherwise on PATH), or configure tools
+# like tar to use lbzip2 & pigz respectively using EXTRA_ECONF.
+app-arch/lbzip2 symlink
+app-arch/pbzip2 symlink
+app-arch/pigz symlink
+
 # Sam James <sam@gentoo.org> (2022-08-26)
 # Broken at runtime for now (bug #865113).
 sys-devel/binutils gprofng
@@ -324,7 +376,7 @@ x11-libs/colord-gtk doc
 # Qt libraries; see https://github.com/ProtonMail/proton-bridge/issues/16
 # The qt module itself apparently can be made to build against system Qt5
 # but making it do so while vendored is a non-trivial task.
-mail-mta/protonmail-bridge gui
+mail-mta/proton-mail-bridge gui
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-27)
 # The respective dependencies are masked for removal.

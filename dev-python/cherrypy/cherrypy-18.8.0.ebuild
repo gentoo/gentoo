@@ -21,7 +21,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="ssl test"
 
 RDEPEND="
@@ -40,7 +40,7 @@ BDEPEND="
 		dev-python/routes[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
 		dev-python/objgraph[${PYTHON_USEDEP}]
-		dev-python/path-py[${PYTHON_USEDEP}]
+		dev-python/path[${PYTHON_USEDEP}]
 		dev-python/requests-toolbelt[${PYTHON_USEDEP}]
 		dev-python/pytest-services[${PYTHON_USEDEP}]
 	)

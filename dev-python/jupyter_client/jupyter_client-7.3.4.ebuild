@@ -27,7 +27,7 @@ RDEPEND="
 	>=dev-python/nest_asyncio-1.5.4[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.8.2[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-23.0[${PYTHON_USEDEP}]
-	>=www-servers/tornado-6.0[${PYTHON_USEDEP}]
+	>=dev-python/tornado-6.0[${PYTHON_USEDEP}]
 	dev-python/traitlets[${PYTHON_USEDEP}]
 "
 BDEPEND="

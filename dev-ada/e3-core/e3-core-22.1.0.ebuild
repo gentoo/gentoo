@@ -48,7 +48,3 @@ src_compile() {
 	$(tc-getCC) ${CFLAGS} -o src/e3/os/data/rlimit-${PLATFORM} tools/rlimit/rlimit.c ${LDFLAGS}
 	distutils-r1_src_compile
 }
-
-python_test() {
-	epytest -p no:markdown
-}

@@ -21,7 +21,7 @@ else
 	S="${WORKDIR}/${PN}-${MY_PV}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+		KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 	fi
 fi
 
@@ -37,7 +37,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # Depend on opencascade:0 to get unslotted variant (so we know path to it), bug #833301
 COMMON_DEPEND="
 	!sci-electronics/kicad-i18n
-	>=dev-libs/boost-1.61:=[context,nls]
+	dev-libs/boost:=[context,nls]
 	media-libs/freeglut
 	media-libs/glew:0=
 	>=media-libs/glm-0.9.9.1
@@ -46,7 +46,7 @@ COMMON_DEPEND="
 	>=x11-libs/pixman-0.30
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.61:=[context,nls,python,${PYTHON_USEDEP}]
+		dev-libs/boost:=[context,nls,python,${PYTHON_USEDEP}]
 		dev-python/wxpython:4.0[${PYTHON_USEDEP}]
 	')
 	${PYTHON_DEPS}

@@ -1,0 +1,79 @@
+https://gitlab.gnome.org/GNOME/eog-plugins/-/merge_requests/8
+
+From 00d734931a911e072c22b60028f361ee3f6cad14 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sat, 24 Sep 2022 11:25:25 -0400
+Subject: [PATCH] build: Use correct variables
+
+Bug: https://bugs.gentoo.org/858089
+---
+ plugins/fit-to-width/meson.build | 2 +-
+ plugins/light-theme/meson.build  | 2 +-
+ plugins/map/meson.build          | 4 ++--
+ plugins/send-by-mail/meson.build | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/plugins/fit-to-width/meson.build b/plugins/fit-to-width/meson.build
+index 37732d1..e9654c0 100644
+--- a/plugins/fit-to-width/meson.build
++++ b/plugins/fit-to-width/meson.build
+@@ -46,7 +46,7 @@ if appstream_util.found()
+     args: [
+       'validate',
+       '--nonet',
+-      exifdisplay_appdata.full_path(),
++      fittowidth_appdata.full_path(),
+     ]
+   )
+ endif
+diff --git a/plugins/light-theme/meson.build b/plugins/light-theme/meson.build
+index 044b08a..fb86cdc 100644
+--- a/plugins/light-theme/meson.build
++++ b/plugins/light-theme/meson.build
+@@ -46,7 +46,7 @@ if appstream_util.found()
+     args: [
+       'validate',
+       '--nonet',
+-      exifdisplay_appdata.full_path(),
++      lighttheme_appdata.full_path(),
+     ]
+   )
+ endif
+diff --git a/plugins/map/meson.build b/plugins/map/meson.build
+index d969e96..c8f5c41 100644
+--- a/plugins/map/meson.build
++++ b/plugins/map/meson.build
+@@ -36,7 +36,7 @@ i18n.merge_file(
+   install_dir: pluginlibdir,
+ )
+ 
+-exifdisplay_appdata = i18n.merge_file(
++map_appdata = i18n.merge_file(
+   input: 'eog-map.appdata.xml.in',
+   output: '@BASENAME@',
+   po_dir: src_root / 'po',
+@@ -52,7 +52,7 @@ if appstream_util.found()
+     args: [
+       'validate',
+       '--nonet',
+-      exifdisplay_appdata.full_path(),
++      map_appdata.full_path(),
+     ]
+   )
+ endif
+diff --git a/plugins/send-by-mail/meson.build b/plugins/send-by-mail/meson.build
+index f7eb0fb..7bba7a1 100644
+--- a/plugins/send-by-mail/meson.build
++++ b/plugins/send-by-mail/meson.build
+@@ -47,7 +47,7 @@ if appstream_util.found()
+     args: [
+       'validate',
+       '--nonet',
+-      exifdisplay_appdata.full_path(),
++      sendbymail_appdata.full_path(),
+     ]
+   )
+ endif
+-- 
+2.35.1
+

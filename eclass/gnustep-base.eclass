@@ -256,7 +256,7 @@ EOF
 	if [[ -d ${EPREFIX}/usr/share/GNUstep/Makefiles ]]; then
 		exeinto /usr/bin
 	else
-		exeinto ${GNUSTEP_SYSTEM_TOOLS#${EPREFIX}}/Gentoo
+		exeinto "${GNUSTEP_SYSTEM_TOOLS#${EPREFIX}}"/Gentoo
 	fi
 	doexe "${T}"/${cfile}
 }

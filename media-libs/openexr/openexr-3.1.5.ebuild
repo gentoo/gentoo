@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 MY_PN=OpenEXR
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/
 LICENSE="BSD"
 SLOT="0/30" # based on SONAME
 # -ppc -sparc because broken on big endian, bug #818424
-KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong -ppc ~ppc64 ~riscv -sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong -ppc ~ppc64 ~riscv -sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="cpu_flags_x86_avx doc examples large-stack utils test threads"
 RESTRICT="!test? ( test )"
 
@@ -30,7 +30,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-3.1.1-0003-disable-failing-test.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1.1-0003-disable-failing-test.patch
+	"${FILESDIR}"/${P}-Add-missing-include-cstdint-required-by-gcc-13-1264.patch
+	"${FILESDIR}"/${P}-add-missed-include-cstdint-statement.patch
+)
 
 DOCS=( CHANGES.md GOVERNANCE.md PATENTS README.md SECURITY.md docs/SymbolVisibility.md )
 
@@ -39,10 +43,18 @@ src_prepare() {
 	sed -e "s:/var/tmp/:${T}:" \
 		-i "${S}"/src/test/${MY_PN}{,Fuzz,Util}Test/tmpDir.h || die "failed to set temp path for tests"
 
+	if use x86; then
+		eapply "${FILESDIR}"/${P}-drop-failing-testDwaLookups.patch
+	fi
+
 	cmake_src_prepare
 }
 
 src_configure() {
+	if use x86; then
+		replace-cpu-flags native i686
+	fi
+
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
 		-DDOCS=$(usex doc)

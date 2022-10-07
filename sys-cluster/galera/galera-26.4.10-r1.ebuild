@@ -27,7 +27,7 @@ RESTRICT="test"
 
 COMMON_DEPEND="
 	dev-libs/openssl:0=
-	>=dev-libs/boost-1.41:0=
+	dev-libs/boost:=
 "
 
 DEPEND="

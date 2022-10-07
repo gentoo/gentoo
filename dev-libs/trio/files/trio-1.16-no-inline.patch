@@ -1,8 +1,0 @@
-Let compiler decide what to inline (fixes build with -Os).
-https://bugs.gentoo.org/792075
---- a/triodef.h
-+++ b/triodef.h
-@@ -315,2 +315,3 @@
- #endif
-+#undef TRIO_INLINE
- #if !defined(TRIO_INLINE)

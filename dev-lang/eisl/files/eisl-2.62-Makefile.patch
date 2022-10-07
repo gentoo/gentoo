@@ -1,0 +1,33 @@
+--- a/makefile
++++ b/makefile
+@@ -31,7 +31,7 @@ else
+ 		endif
+ 	endif
+ endif
+-CFLAGS := $(INCS) -Wall -Wextra -D_FORTIFY_SOURCE=2 $(CURSES_CFLAGS) -U_XOPEN_SOURCE -D_XOPEN_SOURCE=700 -Inana/src
++CFLAGS += $(INCS) -Wall -Wextra $(CURSES_CFLAGS) -U_XOPEN_SOURCE -D_XOPEN_SOURCE=700 -Inana/src
+ DFLAGS := --preview=all --de -w --O3 --release --betterC
+ SRC_CII := cii/src/except.c cii/src/fmt.c cii/src/str.c cii/src/text.c
+ SRC_D := dextension.d disl.d
+@@ -57,7 +57,7 @@ ifeq ($(DEBUG),1)
+ 		LDFLAGS := -fsanitize=undefined
+ 	endif
+ else
+-	CFLAGS += -O3 -flto -DNDEBUG=1 -DWITHOUT_NANA=1
++	CFLAGS += -DNDEBUG=1 -DWITHOUT_NANA=1
+ 	SRC_CII += cii/src/mem.c
+ endif
+ OBJ_CII := $(SRC_CII:.c=.o)
+@@ -75,11 +75,10 @@ ifeq  ($(shell uname -n),raspberrypi)
+ 	CFLAGS += -D__rpi__
+ endif
+ ifneq ($(DEBUG),1)
+-	LDFLAGS += -flto
+ 	ifeq  ($(shell uname),Darwin)
+ 		LDFLAGS += -Wl,-S,-x
+ 	else
+-		LDFLAGS += -s
++		LDFLAGS +=
+ 	endif
+ endif
+ PREFIX := /usr/local

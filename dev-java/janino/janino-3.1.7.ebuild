@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="An embedded compiler for run-time compilation purposes"
 HOMEPAGE="https://janino-compiler.github.io/janino/"
-SRC_URI="https://github.com/janino-compiler/janino/archive/v3.1.7.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janino-compiler/janino/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

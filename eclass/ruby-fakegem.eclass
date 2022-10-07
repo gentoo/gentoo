@@ -552,7 +552,7 @@ each_fakegem_test() {
 
 	case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		rake)
-			${RUBY} --disable=did_you_mean -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
+			MT_NO_PLUGINS=true ${RUBY} --disable=did_you_mean -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
 			;;
 		rspec)
 			RSPEC_VERSION=2 ruby-ng_rspec

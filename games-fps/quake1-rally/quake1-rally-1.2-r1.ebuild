@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit edos2unix
 
 DESCRIPTION="TC which turns Quake into a Rally racing game"
 HOMEPAGE="http://wiki.quakeworld.nu/Quake_Rally"
-SRC_URI="http://ehall.freeshell.org/quake/qr12.zip
+SRC_URI="http://ehall.freeshell.org/quake/qr$(ver_rs 1-2 '').zip
 	http://ehall.freeshell.org/quake/qrlo1.zip"
 S="${WORKDIR}"
 

@@ -26,7 +26,7 @@
 -  # Work around some old, broken detection by CMake for knowing when to use the
 -  # isystem flag.  Apple's compilers have supported this for quite some time
 -  # now.
--  if(CMAKE_COMPILER_IS_GNUCC)
+-  if(CMAKE_C_COMPILER_ID MATCHES "GNU")
 -    set(CMAKE_INCLUDE_SYSTEM_FLAG_C "-isystem ")
 -  endif()
 -endif()

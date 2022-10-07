@@ -25,7 +25,7 @@ KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux 
 IUSE="debug +io-restrictions tiff X"
 
 DEPEND="
-	>=dev-libs/boost-1.50.0:=[threads(+)]
+	dev-libs/boost:=
 	media-libs/libpng:0
 	sys-libs/zlib
 	virtual/jpeg:0

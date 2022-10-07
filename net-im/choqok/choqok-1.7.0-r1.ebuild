@@ -60,6 +60,7 @@ PATCHES=(
 	"${WORKDIR}/${P}-choqokplugin.patch"
 	"${WORKDIR}/${P}-fix-layout-of-tweets.patch" # KDE-bug 424938
 	"${WORKDIR}/${P}-fix-partially-static-signatures.patch" # KDE-bug 417297
+	"${FILESDIR}/${P}-fix-KCModule-warning.patch" # bug 871546, git master
 )
 
 src_configure() {

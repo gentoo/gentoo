@@ -1,0 +1,29 @@
+Fix install location to meet FHS, and remove useless symlink
+===================================================================
+--- hipFFT-rocm-5.1.3.orig/library/CMakeLists.txt
++++ hipFFT-rocm-5.1.3/library/CMakeLists.txt
+@@ -81,7 +81,7 @@ target_include_directories( hipfft
+   PUBLIC  $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/library/include>
+   $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>
+   $<BUILD_INTERFACE:${HIP_INCLUDE_DIRS}>
+-  $<INSTALL_INTERFACE:include>
++  $<INSTALL_INTERFACE:include/hipfft>
+   ${HIP_INCLUDE_DIRS}
+   )
+
+@@ -142,13 +142,11 @@ if( ROCM_FOUND )
+   rocm_install_targets( TARGETS hipfft
+     INCLUDE
+     ${CMAKE_SOURCE_DIR}/library/include
+-    ${CMAKE_BINARY_DIR}/include
+-    PREFIX hipfft )
++    ${CMAKE_BINARY_DIR}/include )
+   rocm_export_targets( TARGETS hip::hipfft
+-    PREFIX hipfft
++    PREFIX .
+     DEPENDS PACKAGE hip
+     NAMESPACE hip:: )
+-  rocm_install_symlink_subdir( hipfft )
+
+   # Package specific CPACK vars
+   if( NOT BUILD_WITH_LIB STREQUAL "CUDA" )

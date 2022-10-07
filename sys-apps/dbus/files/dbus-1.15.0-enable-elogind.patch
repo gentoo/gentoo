@@ -1,0 +1,75 @@
+https://gitlab.freedesktop.org/dbus/dbus/-/merge_requests/53
+https://bugs.gentoo.org/599494
+--- a/configure.ac
++++ b/configure.ac
+@@ -215,6 +215,7 @@ AC_ARG_ENABLE(inotify, AS_HELP_STRING([--enable-inotify],[build with inotify sup
+ AC_ARG_ENABLE(kqueue, AS_HELP_STRING([--enable-kqueue],[build with kqueue support]),enable_kqueue=$enableval,enable_kqueue=auto)
+ AC_ARG_ENABLE(console-owner-file, AS_HELP_STRING([--enable-console-owner-file],[enable console owner file]),enable_console_owner_file=$enableval,enable_console_owner_file=auto)
+ AC_ARG_ENABLE(launchd, AS_HELP_STRING([--enable-launchd],[build with launchd auto-launch support]),enable_launchd=$enableval,enable_launchd=auto)
++AC_ARG_ENABLE(elogind, AS_HELP_STRING([--enable-elogind],[build with elogind user seat support]),enable_elogind=$enableval,enable_elogind=auto)
+ AC_ARG_ENABLE(systemd, AS_HELP_STRING([--enable-systemd],[build with systemd at_console support]),enable_systemd=$enableval,enable_systemd=auto)
+ AC_ARG_ENABLE(traditional-activation, AS_HELP_STRING([--disable-traditional-activation], [Do not build support for service activation without using SystemdService]), enable_traditional_activation="$enableval", enable_traditional_activation=yes)
+ 
+@@ -904,6 +905,24 @@ fi
+ 
+ AM_CONDITIONAL(HAVE_CONSOLE_OWNER_FILE, test x$have_console_owner_file = xyes)
+ 
++dnl elogind detection
++if test x$enable_elogind = xno ; then
++    have_elogind=no;
++else
++    PKG_CHECK_MODULES([ELOGIND],
++        [libelogind >= 209],
++        [have_elogind=yes],
++        [have_elogind=no])
++fi
++
++if test x$have_elogind = xyes; then
++    AC_DEFINE(HAVE_ELOGIND,1,[Have elogind])
++fi
++
++if test x$enable_elogind = xyes -a x$have_elogind != xyes ; then
++    AC_MSG_ERROR([Explicitly requested elogind support, but libelogind not found])
++fi
++
+ dnl systemd detection
+ if test x$enable_systemd = xno ; then
+     have_systemd=no;
+@@ -1024,7 +1043,7 @@ if test x$with_valgrind != xno; then
+ fi
+ 
+ #### Set up final flags
+-LIBDBUS_LIBS="$THREAD_LIBS $NETWORK_libs $SYSTEMD_LIBS"
++LIBDBUS_LIBS="$THREAD_LIBS $NETWORK_libs $SYSTEMD_LIBS $ELOGIND_LIBS"
+ AC_SUBST([LIBDBUS_LIBS])
+ 
+ ### X11 detection
+@@ -1731,6 +1750,7 @@ echo "
+         Building AppArmor support: ${have_apparmor}
+         Building inotify support: ${have_inotify}
+         Building kqueue support:  ${have_kqueue}
++        Building elogind support: ${have_elogind}
+         Building systemd support: ${have_systemd}
+         Traditional activation:   ${enable_traditional_activation}
+         Building X11 code:        ${have_x11}
+--- a/dbus/dbus-userdb-util.c
++++ b/dbus/dbus-userdb-util.c
+@@ -39,6 +39,9 @@
+ #ifdef HAVE_SYSTEMD
+ #include <systemd/sd-login.h>
+ #endif
++#if HAVE_ELOGIND
++#include <elogind/sd-login.h>
++#endif
+ 
+ /**
+  * @addtogroup DBusInternalsUtils
+@@ -65,7 +68,7 @@ dbus_bool_t
+ _dbus_is_console_user (dbus_uid_t uid,
+ 		       DBusError *error)
+ {
+-#ifdef HAVE_SYSTEMD
++#if defined(HAVE_SYSTEMD) || defined(HAVE_ELOGIND)
+   /* check if we have logind */
+   if (access ("/run/systemd/seats/", F_OK) >= 0)
+     {

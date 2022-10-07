@@ -16,5 +16,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">sddm/sddm</remote-id>
+		<remote-id type="cpe">cpe:/a:sddm_project:sddm</remote-id>
 	</upstream>
 </pkgmetadata>

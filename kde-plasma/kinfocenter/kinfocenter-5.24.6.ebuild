@@ -71,6 +71,7 @@ pkg_postinst() {
 		optfeature "advanced CPU information module" sys-apps/util-linux
 	fi
 	optfeature "Wayland information module" app-misc/wayland-utils
+	optfeature "Firmware security module" "app-text/aha sys-apps/fwupd"
 	optfeature "OpenGL information module" x11-apps/mesa-progs
 	optfeature "PCI devices information module" sys-apps/pciutils
 	optfeature "X Server information module" x11-apps/xdpyinfo

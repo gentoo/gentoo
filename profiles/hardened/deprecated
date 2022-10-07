@@ -1,5 +1,0 @@
-
-Note that the hardened/arches profiles have been deprecated in
-favor of the hardened/linux/arches profiles.  Please use a supported
-profile which you can list using "eselect profile list" and select
-with "eselect profile set #".

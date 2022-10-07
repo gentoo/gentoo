@@ -27,7 +27,7 @@ fi
 
 SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_PATCH}.tar.xz )"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE="acl caps gmp hostname kill multicall nls selinux +split-usr static test vanilla xattr"
 RESTRICT="!test? ( test )"

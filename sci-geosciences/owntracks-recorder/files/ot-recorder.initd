@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 2022 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+name="OwnTracks Recorder"
+pidfile="/run/${RC_SVCNAME}.pid"
+command="/usr/sbin/ot-recorder"
+command_user="owntracks"
+command_background="yes"

@@ -1,0 +1,23 @@
+From https://developer.blender.org/rB74477149dddfddeca71be6770d520f870c0b5bc9
+From: Josh Whelchel <soundofjw>
+Date: Tue, 6 Sep 2022 15:39:39 +0200
+Subject: [PATCH 663/965] Fix T100845: wrong Cycles OptiX runtime compilation
+ include path
+
+Causing OptiX kernel build errors on Arch Linux.
+
+Differential Revision: https://developer.blender.org/D15891
+--- a/intern/cycles/device/optix/device_impl.cpp
++++ b/intern/cycles/device/optix/device_impl.cpp
+@@ -364,7 +364,7 @@ string OptiXDevice::compile_kernel_get_common_cflags(const uint kernel_features)
+   string common_cflags = CUDADevice::compile_kernel_get_common_cflags(kernel_features);
+ 
+   /* Add OptiX SDK include directory to include paths. */
+-  common_cflags += string_printf(" -I\"%s/include\"", get_optix_include_dir().c_str());
++  common_cflags += string_printf(" -I\"%s\"", get_optix_include_dir().c_str());
+ 
+   /* Specialization for shader raytracing. */
+   if (kernel_features & KERNEL_FEATURE_NODE_RAYTRACE) {
+-- 
+2.37.3
+

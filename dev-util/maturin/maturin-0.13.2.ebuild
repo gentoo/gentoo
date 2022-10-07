@@ -345,7 +345,7 @@ LICENSE="
 	BSD CC0-1.0 ISC MIT MPL-2.0 openssl unicode
 	doc? ( CC-BY-4.0 OFL-1.1 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~riscv ~s390 ~sparc ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 

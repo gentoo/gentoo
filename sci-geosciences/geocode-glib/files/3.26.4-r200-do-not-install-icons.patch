@@ -1,0 +1,27 @@
+geocode-glib-3.26.4 in SLOT="2" has file collissions with geocode-glib-3.26.4 with SLOT="0".
+These file collissions are only 11 svg-files. We do not install them with SLOT="2" and instead only install them with SLOT="0" and
+SLOT="2" depends on SLOT="0" to make sure users that try to only install SLOT="2" get the files regardless.
+
+2022-09-24 - Pascal Jaeger (Schievel) <pascal.jaeger@leimstift.de>
+
+---
+
+diff --git a/icons/meson.build b/icons/meson.build
+index 8d58886..edecbed 100644
+--- a/icons/meson.build
++++ b/icons/meson.build
+@@ -10,14 +10,3 @@ public_icons = [ 'poi-airport.svg',
+                  'poi-restaurant.svg',
+                  'poi-bar.svg',
+                  'poi-light-rail-station.svg' ]
+-
+-foreach icon : public_icons
+-    file = join_paths('maki' , icon)
+-    install_dir = join_paths(get_option('datadir'),
+-                             'icons',
+-                             'hicolor',
+-                             'scalable',
+-                             'places')
+-
+-    install_data(file, install_dir: install_dir)
+-endforeach

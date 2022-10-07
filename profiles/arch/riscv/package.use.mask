@@ -1,6 +1,21 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Yixun Lan <dlan@gentoo.org> (2022-01-27)
+# This target supports ASAN/etc...
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-09-25)
+# Moved here from default/linux/...
+sys-devel/gcc -sanitize
+
+# Alexey Shvetsov <alexxy@gentoo.org> (2022-09-15)
+# Mask nvml use flag for slurm
+sys-cluster/slurm nvml
+
+# Jakov Smolić <jsmolic@gentoo.org> (2022-09-07)
+# Unkeyworded dependencies (xen-tools, aws stack), masking to reduce
+# the dependency graph
+net-analyzer/netdata xen kinesis
+
 # Jakov Smolić <jsmolic@gentoo.org> (2022-08-27)
 # depends on <sys-libs/libfaketime-0.9.7 which is not available on riscv
 app-admin/rsyslog jemalloc
@@ -34,10 +49,6 @@ sys-devel/clang-runtime sanitize
 # upstream only for amd64/x86 and arm
 net-wireless/gr-osmosdr sdrplay
 
-# Yixun Lan <dlan@gentoo.org> (2022-04-30)
-# net-misc/memcached has test failure (bug #811477)
-net-ftp/proftpd memcache
-
 # Jakov Smolić <jsmolic@gentoo.org> (2022-04-24)
 # sys-libs/db is being deprecated (bug #837629)
 # so avoid keywording 4.8 slot
@@ -52,11 +63,6 @@ sys-block/fio rbd
 # sys-process/criu doesn't support riscv (bug #835975)
 # Upstream bug for criu: https://github.com/checkpoint-restore/criu/issues/1702
 app-containers/crun criu
-
-# Jakov Smolić <jsmolic@gentoo.org> (2022-03-24)
-# Depends on net-misc/memcached which has concerning test
-# failures on riscv (bug #811477)
-dev-python/pytest-services test
 
 # Alex Fan <alex.fan.q@gmail.com> (2022-02-28)
 # dev-libs/vc is a dummy implementation on this arch
@@ -111,10 +117,6 @@ kde-apps/marble webengine
 kde-plasma/kdeplasma-addons webengine
 kde-plasma/libksysguard webengine
 net-irc/quassel urlpreview
-
-# Marek Szuba <marecki@gentoo.org> (2021-09-07)
-# net-misc/memcached not keyworded yet due to failing tests (Bug #811477)
-dev-ruby/dalli test
 
 # Jonathan Davies <jpds@protonmail.com> (2021-09-03)
 # Requires CPU with SSSE3 support

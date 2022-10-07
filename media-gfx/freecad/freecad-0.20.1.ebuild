@@ -18,7 +18,7 @@ if [[ ${PV} = *9999 ]]; then
 	S="${WORKDIR}/freecad-${PV}"
 else
 	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	S="${WORKDIR}/FreeCAD-${PV}"
 fi
 
@@ -80,7 +80,7 @@ RDEPEND="
 	openscad? ( media-gfx/openscad )
 	pcl? ( >=sci-libs/pcl-1.8.1:=[opengl,openni2,qt5,vtk] )
 	$(python_gen_cond_dep '
-		dev-libs/boost:=[python,threads(+),${PYTHON_USEDEP}]
+		dev-libs/boost:=[python,${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]

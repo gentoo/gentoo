@@ -8,6 +8,8 @@
 	<use>
 		<flag name="keybinder">Enable support for global hotkeys using
 			<pkg>dev-libs/keybinder</pkg>.</flag>
+		<flag name="libcanberra">Enable sound event support using
+			<pkg>media-libs/libcanberra</pkg></flag>
 		<flag name="wnck">Enable experimental support for raising media
 			player windows using <pkg>x11-libs/libwnck</pkg>.</flag>
 	</use>

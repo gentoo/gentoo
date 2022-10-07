@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="$(python_gen_cond_dep '
-		www-servers/tornado[${PYTHON_USEDEP}]
+		dev-python/tornado[${PYTHON_USEDEP}]
 	')"
 
 distutils_enable_tests pytest

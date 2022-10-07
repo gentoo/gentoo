@@ -23,7 +23,7 @@ SLOT="0/2"
 IUSE="+boost mpi sparse"
 
 RDEPEND="
-	boost? ( dev-libs/boost:0= )
+	boost? ( dev-libs/boost:= )
 	mpi? ( sys-cluster/ampi:0= )
 	sparse? ( sci-libs/colpack:0= )"
 DEPEND="${RDEPEND}"

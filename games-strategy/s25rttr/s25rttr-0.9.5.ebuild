@@ -20,7 +20,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="${LUA_DEPS}
 	app-arch/bzip2
-	>=dev-libs/boost-1.73:0=[nls]
+	dev-libs/boost:=[nls]
 	>=media-libs/libsamplerate-0.1.9
 	>=media-libs/libsdl2-2.0.10-r2[opengl,sound,video]
 	media-libs/libsndfile

@@ -17,7 +17,7 @@ SRC_URI="https://github.com/xerial/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="1.1"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # Tests require org.apache.hadoop:hadoop-common:2.7.*, which is yet to be
 # packaged.  Some extra steps are required before running the tests:

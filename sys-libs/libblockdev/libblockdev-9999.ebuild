@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit autotools python-single-r1 xdg-utils
 
 DESCRIPTION="A library for manipulating block devices"
@@ -16,11 +16,8 @@ if [[ "${PV}" == *9999 ]] ; then
 	"
 else
 	MY_PV="${PV}-1"
-	#MY_P="${PN}-${MY_PV}"
-	#SRC_URI="https://github.com/storaged-project/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 	SRC_URI="https://github.com/storaged-project/${PN}/releases/download/${MY_PV}/${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-	#S="${WORKDIR}/${MY_P}"
 fi
 LICENSE="LGPL-2+"
 SLOT="0"

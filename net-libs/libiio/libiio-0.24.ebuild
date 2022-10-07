@@ -22,7 +22,7 @@ IUSE="+aio +zeroconf"
 RDEPEND="dev-libs/libxml2:=
 	virtual/libusb:1=
 	aio? ( dev-libs/libaio )
-	zeroconf? ( net-dns/avahi )"
+	zeroconf? ( net-dns/avahi[dbus] )"
 DEPEND="${RDEPEND}"
 
 src_configure() {

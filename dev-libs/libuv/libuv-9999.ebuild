@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools multilib-minimal
+inherit autotools
 
 DESCRIPTION="Cross-platform asychronous I/O"
 HOMEPAGE="https://github.com/libuv/libuv"
@@ -34,25 +34,20 @@ src_prepare() {
 		eapply "${FILESDIR}"/${PN}-1.41.0-darwin.patch
 	fi
 
-	# upstream fails to ship a configure script
+	# Upstream fails to ship a configure script
 	eautoreconf
 }
 
-multilib_src_configure() {
+src_configure() {
 	local myeconfargs=(
-		--disable-static
 		cc_cv_cflags__g=no
 	)
 
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	econf "${myeconfargs[@]}"
 }
 
-multilib_src_test() {
-	cp -pPR "${S}"/test/fixtures "${BUILD_DIR}"/test/fixtures || die
+src_install() {
 	default
-}
 
-multilib_src_install_all() {
-	einstalldocs
 	find "${ED}" -name '*.la' -delete || die
 }

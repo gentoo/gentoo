@@ -15,10 +15,10 @@ SRC_URI="https://github.com/nm-l2tp/${MY_PN}/releases/download/${PV}/${MY_P}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnome static-libs"
+IUSE="gtk static-libs"
 
 RDEPEND="
-	>=net-misc/networkmanager-1.20[ppp]
+	>=net-misc/networkmanager-1.2[ppp]
 	dev-libs/dbus-glib
 	net-dialup/ppp:=[eap-tls]
 	net-dialup/xl2tpd
@@ -27,7 +27,7 @@ RDEPEND="
 		net-vpn/strongswan
 		net-vpn/libreswan
 	)
-	gnome? (
+	gtk? (
 		x11-libs/gtk+:3
 		app-crypt/libsecret
 		gnome-extra/nm-applet
@@ -54,9 +54,14 @@ src_configure() {
 	local myeconfargs=(
 		--localstatedir=/var
 		--with-pppd-plugin-dir=/usr/$(get_libdir)/pppd/${PPPD_VER}
-		$(use_with gnome)
+		$(use_with gtk gnome)
 		$(use_enable static-libs static)
 	)
 
 	econf "${myeconfargs[@]}"
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }

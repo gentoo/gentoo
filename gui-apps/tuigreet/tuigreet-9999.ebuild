@@ -1,10 +1,9 @@
-# Copyright 2017-2021 Gentoo Authors
+# Copyright 2017-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-CRATES="
-"
+CRATES=""
 
 inherit cargo
 
@@ -34,4 +33,14 @@ QA_FLAGS_IGNORED="usr/bin/tuigreet"
 LICENSE="Apache-2.0 Boost-1.0 GPL-3 MIT"
 SLOT="0"
 
-RDEPEND="gui-libs/greetd"
+RDEPEND="acct-group/greetd
+	acct-user/greetd
+	gui-libs/greetd"
+DEPEND="${RDEPEND}"
+
+src_install() {
+	dodir /var/cache/${PN}
+	fowners greetd:greetd /var/cache/${PN}
+
+	cargo_src_install
+}

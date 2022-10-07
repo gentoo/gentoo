@@ -1,0 +1,53 @@
+https://github.com/openzfs/zfs/commit/d30577c9dd811688f2609ad532b011b99bceb485
+
+From d30577c9dd811688f2609ad532b011b99bceb485 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=D0=BD=D0=B0=D0=B1?= <nabijaczleweli@nabijaczleweli.xyz>
+Date: Sat, 12 Mar 2022 00:26:46 +0100
+Subject: [PATCH] fgrep -> grep -F
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Reviewed-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Reviewed-by: John Kennedy <john.kennedy@delphix.com>
+Reviewed-by: Ryan Moeller <ryan@iXsystems.com>
+Signed-off-by: Ahelenia Ziemiańska <nabijaczleweli@nabijaczleweli.xyz>
+Closes #13259
+--- a/config/kernel.m4
++++ b/config/kernel.m4
+@@ -394,11 +394,11 @@ AC_DEFUN([ZFS_AC_KERNEL], [
+ 	utsrelease1=$kernelbuild/include/linux/version.h
+ 	utsrelease2=$kernelbuild/include/linux/utsrelease.h
+ 	utsrelease3=$kernelbuild/include/generated/utsrelease.h
+-	AS_IF([test -r $utsrelease1 && fgrep -q UTS_RELEASE $utsrelease1], [
++	AS_IF([test -r $utsrelease1 && grep -qF UTS_RELEASE $utsrelease1], [
+ 		utsrelease=$utsrelease1
+-	], [test -r $utsrelease2 && fgrep -q UTS_RELEASE $utsrelease2], [
++	], [test -r $utsrelease2 && grep -qF UTS_RELEASE $utsrelease2], [
+ 		utsrelease=$utsrelease2
+-	], [test -r $utsrelease3 && fgrep -q UTS_RELEASE $utsrelease3], [
++	], [test -r $utsrelease3 && grep -qF UTS_RELEASE $utsrelease3], [
+ 		utsrelease=$utsrelease3
+ 	])
+ 
+--- a/config/zfs-build.m4
++++ b/config/zfs-build.m4
+@@ -173,7 +173,7 @@ AC_DEFUN([ZFS_AC_DEBUG_KMEM_TRACKING], [
+ ])
+ 
+ AC_DEFUN([ZFS_AC_DEBUG_INVARIANTS_DETECT_FREEBSD], [
+-	AS_IF([sysctl -n kern.conftxt | fgrep -qx $'options\tINVARIANTS'],
++	AS_IF([sysctl -n kern.conftxt | grep -Fqx $'options\tINVARIANTS'],
+ 		[enable_invariants="yes"],
+ 		[enable_invariants="no"])
+ ])
+--- a/tests/zfs-tests/tests/functional/cli_root/zpool_wait/zpool_wait.kshlib
++++ b/tests/zfs-tests/tests/functional/cli_root/zpool_wait/zpool_wait.kshlib
+@@ -120,5 +120,5 @@ function check_while_waiting
+ # Whether any vdev in the given pool is initializing
+ function is_vdev_initializing # pool
+ {
+-	zpool status -i "$1" | grep 'initialized, started' >/dev/null
++	zpool status -i "$1" | grep -q 'initialized, started'
+ }
+

@@ -20,7 +20,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz
 		-> ${CABAL_DISTFILE}"
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="examples"
 
 RDEPEND=">=dev-haskell/ansi-terminal-0.9.1:=[profile?] <dev-haskell/ansi-terminal-0.12:=[profile?]

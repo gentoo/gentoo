@@ -1,0 +1,37 @@
+Ideally would want to enable -DNeedFunctionPrototypes=1
+but it leads to more issues not handled here.
+
+https://bugs.gentoo.org/870412
+--- a/eyedude.c
++++ b/eyedude.c
+@@ -51,2 +51,3 @@
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <math.h>
+--- a/include/intro.h
++++ b/include/intro.h
+@@ -84,2 +84,3 @@
+ void DrawIntroTitle(Display *display, Window window, int x, int y);
++void HandleBlink(Display *display, Window window);
+ #else
+@@ -92,2 +93,3 @@
+ void DoIntroTitle();
++void HandleBlink();
+ #endif
+--- a/include/level.h
++++ b/include/level.h
+@@ -74,2 +74,3 @@
+ void DisplayLevelInfo(Display *display, Window window, u_long level);
++void DisplayLevelNumber(Display *display, Window window, u_long level);
+ void CheckGameRules(Display *display, Window window);
+@@ -113,2 +114,3 @@
+ void DisplayLevelInfo();
++void DisplayLevelNumber();
+ void CheckGameRules();
+--- a/main.c
++++ b/main.c
+@@ -231,3 +231,3 @@
+ {
+-	static oldx = 0;
++	static int oldx = 0;
+ 	int x, y;

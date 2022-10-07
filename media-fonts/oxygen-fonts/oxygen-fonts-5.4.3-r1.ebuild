@@ -1,13 +1,13 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake font kde.org xdg-utils
 
 DESCRIPTION="Desktop/GUI font family for integrated use with the KDE Plasma desktop"
 HOMEPAGE="https://invent.kde.org/unmaintained/oxygen-fonts"
-SRC_URI="mirror://kde/unstable/plasma/$(ver_cut 1-3)/${P}.tar.xz"
+SRC_URI="mirror://kde/Attic/plasma/${PV}/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="5"

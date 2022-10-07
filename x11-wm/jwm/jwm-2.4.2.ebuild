@@ -11,7 +11,7 @@ SRC_URI="https://github.com/joewing/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc x86"
 IUSE="svg debug iconv jpeg nls png pango truetype xinerama xpm"
 
 RDEPEND="dev-libs/expat

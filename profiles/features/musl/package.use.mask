@@ -1,25 +1,47 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-10-04)
+# sys-libs/libtermcap-compat is masked on musl
+dev-scheme/scm readline
+
+# Sam James <sam@gentoo.org> (2022-10-04)
+# sys-auth/sssd is masked on musl
+app-admin/sudo sssd
+
+# Sam James <sam@gentoo.org> (2022-10-04)
+# sys-libs/libsmbios is masked on musl
+sys-apps/fwupd dell
+
+# Sam James <sam@gentoo.org> (2022-10-04)
+# Needs masked net-misc/netkit-telnetd
+net-irc/ngircd test
+
+# Sam James <sam@gentoo.org> (2022-10-04)
+# Rolling mask for all USE flags which pull in a masked binary package
+# (linked against glibc). Use for all such packages.
+kde-apps/kdenetwork-meta dropbox
+media-video/ffmpeg amf
+net-fs/openafs tsm
+net-analyzer/nagios-plugin-check_raid megaraid-sas
+sys-apps/hwloc gl
+www-client/qutebrowser widevine
+
+# Sam James <sam@gentoo.org> (2022-10-03)
+# Needs systemd which is masked on musl
+net-analyzer/wireshark sdjournal
+sys-apps/ipmitool openbmc
+sys-auth/pambase homed
+
 # Alfred Persson Forsberg <cat@catcream.org> (2022-07-27)
 # Firefox does not build with these flags enabled on musl libc.
 # See bug #829033
 www-client/firefox clang pgo
 
-# Ionen Wolkens <ionen@gentoo.org (2022-06-08)
-# Depends on www-plugins/chrome-binary-plugins which is masked here.
-www-client/qutebrowser widevine
-
 # Petr Vaněk <arkamar@atlas.cz> (2022-03-15)
 # musl package does not currently provide gencat binary, which is needed for
 # nls support, see bug #712828
 x11-wm/fluxbox nls
-
-# Marco Genasci <fedeliallalinea@gmail.com> (2022-01-06)
-# Pulls dev-db/oracle-instantclient which doesn't work on musl
-app-metrics/collectd collectd_plugins_oracle
-dev-lang/php oci8-instant-client
-dev-qt/qtsql oci8
 
 # Ulrich Müller <ulm@gentoo.org> (2022-01-04)
 # musl iconv doesn't know about shift-jis which is needed for Japanese
@@ -36,8 +58,22 @@ net-misc/iputils rarpd
 
 # Sam James <sam@gentoo.org> (2021-11-20)
 # Pulls in po4a which doesn't seem to work on musl (wants /usr/bin/locale)
+app-arch/dpkg nls
+app-emulation/guestfs-tools doc
+app-emulation/libguestfs doc
+app-text/bibletime doc
+dev-util/debhelper l10n_de l10n_es l10n_fr
+dev-util/schroot nls
+media-video/mkvtoolnix nls
+sci-electronics/kicad-meta doc
+sys-apps/fakeroot nls
 sys-apps/man-db nls
+sys-apps/man-pages l10n_cs l10n_da l10n_de l10n_el l10n_es l10n_fi l10n_fr l10n_hu
+sys-apps/man-pages l10n_id l10n_it l10n_mk l10n_nb l10n_nl l10n_pl l10n_pt-BR l10n_ro
+sys-apps/man-pages l10n_sr l10n_sv l10n_uk l10n_vi
+sys-apps/man-pages l10n_ja l10n_ru l10n_zh-CN
 sys-apps/sysvinit nls
+sys-auth/sssd man
 
 # Sam James <sam@gentoo.org> (2021-11-07)
 # Disable some sanitizers for LLVM, see bug #753935
@@ -50,7 +86,7 @@ sys-libs/compiler-rt-sanitizers gwp-asan
 
 # Andreas K. Hüttel <dilfridge@gentoo.org>
 # Restore mask here that is gone elsewhere
-sys-libs/libxcrypt split-usr system
+<sys-libs/libxcrypt-4.4.28-r2 split-usr system
 
 # James Le Cuirot <chewi@gentoo.org> (2020-05-16)
 # execinfo.h is required for debug.

@@ -35,7 +35,8 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
-PATCHES=( "${FILESDIR}/${PN}-4.1.20-musl.patch" )
+PATCHES=( "${FILESDIR}/${PN}-4.1.20-musl.patch"
+		"${FILESDIR}/${PN}-drop-nullptr-definition.patch" )
 
 src_prepare() {
 	eapply ${PATCHES[@]}
@@ -43,6 +44,9 @@ src_prepare() {
 }
 
 src_configure() {
+	#fails to compile with -flto (bug #860405)
+	filter-lto
+
 	append-cxxflags $(test-flags-CXX -std=c++14)
 	local myconf=""
 

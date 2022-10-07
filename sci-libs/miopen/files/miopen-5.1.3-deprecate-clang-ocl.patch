@@ -1,0 +1,55 @@
+This is a cherry picked PR on 5.1.3, which replace clang-ocl with clang
+From 98f001dfe61208af04ecf7690023efd772ee7d43 Mon Sep 17 00:00:00 2001
+From: Jehandad Khan <jahandad@gmail.com>
+Date: Tue, 19 Jul 2022 17:24:05 -0500
+Subject: [PATCH] Remove clang-ocl  and replace with clang
+
+---
+ CMakeLists.txt              | 7 +------
+ README.md                   | 1 -
+ src/hipoc/hipoc_program.cpp | 7 ++++++-
+ 3 files changed, 7 insertions(+), 8 deletions(-)
+
+Index: MIOpen-rocm-5.1.3/CMakeLists.txt
+===================================================================
+--- MIOpen-rocm-5.1.3.orig/CMakeLists.txt
++++ MIOpen-rocm-5.1.3/CMakeLists.txt
+@@ -241,7 +241,7 @@ if( MIOPEN_BACKEND STREQUAL "HIP" OR MIO
+     # miopentensile default off
+     set(MIOPEN_USE_MIOPENTENSILE OFF CACHE BOOL "")
+ 
+-    find_program(HIP_OC_COMPILER clang-ocl
++    find_program(HIP_OC_COMPILER clang
+         PATH_SUFFIXES bin
+         PATHS
+             /opt/rocm
+Index: MIOpen-rocm-5.1.3/README.md
+===================================================================
+--- MIOpen-rocm-5.1.3.orig/README.md
++++ MIOpen-rocm-5.1.3/README.md
+@@ -14,7 +14,6 @@ MIOpen supports two programming models -
+   * OpenCL - OpenCL libraries and header files
+   * HIP - 
+     * HIP and HCC libraries and header files
+-    * [clang-ocl](https://github.com/RadeonOpenCompute/clang-ocl) -- **required**
+ * [MIOpenGEMM](https://github.com/ROCmSoftwarePlatform/MIOpenGEMM) to enable various functionalities including transposed and dilated convolutions. This is optional on the HIP backend. Users can enable this library using the cmake configuration flag `-DMIOPEN_USE_MIOPENGEMM=On`.
+ * ROCm cmake modules can be installed from [here](https://github.com/RadeonOpenCompute/rocm-cmake)
+ * [Half](http://half.sourceforge.net/) - IEEE 754-based half-precision floating point library
+Index: MIOpen-rocm-5.1.3/src/hipoc/hipoc_program.cpp
+===================================================================
+--- MIOpen-rocm-5.1.3.orig/src/hipoc/hipoc_program.cpp
++++ MIOpen-rocm-5.1.3/src/hipoc/hipoc_program.cpp
+@@ -255,7 +255,12 @@ void HIPOCProgramImpl::BuildCodeObjectIn
+         if(miopen::IsEnabled(MIOPEN_DEBUG_OPENCL_WAVE64_NOWGP{}))
+             params += " -mwavefrontsize64 -mcumode";
+         WriteFile(src, dir->path / filename);
+-        dir->Execute(HIP_OC_COMPILER, params + " " + filename + " -o " + hsaco_file.string());
++        params += " -target amdgcn-amd-amdhsa -x cl -D__AMD__=1  -O3";
++        params += " -cl-kernel-arg-info -cl-denorms-are-zero";
++        params += " -cl-std=CL1.2 -mllvm -amdgpu-early-inline-all";
++        params += " -mllvm -amdgpu-internalize-symbols ";
++        params += " " + filename + " -o " + hsaco_file.string();
++        dir->Execute(HIP_OC_COMPILER, params);
+     }
+     if(!boost::filesystem::exists(hsaco_file))
+         MIOPEN_THROW("Cant find file: " + hsaco_file.string());

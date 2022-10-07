@@ -30,7 +30,7 @@ SRC_URI="
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="cairo doc excel examples gtk3 latex qt5 tk webagg wxwidgets"
 
 # internal copy of pycxx highly patched
@@ -77,7 +77,7 @@ RDEPEND="
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 	)
 	webagg? (
-		>=www-servers/tornado-6.0.4[${PYTHON_USEDEP}]
+		>=dev-python/tornado-6.0.4[${PYTHON_USEDEP}]
 	)
 	wxwidgets? (
 		$(python_gen_cond_dep '
@@ -113,7 +113,7 @@ BDEPEND="
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		>=dev-python/pygobject-3.40.1-r1:3[cairo?,${PYTHON_USEDEP}]
-		>=www-servers/tornado-6.0.4[${PYTHON_USEDEP}]
+		>=dev-python/tornado-6.0.4[${PYTHON_USEDEP}]
 		x11-libs/gtk+:3[introspection]
 	)
 "

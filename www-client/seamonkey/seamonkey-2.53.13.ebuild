@@ -179,6 +179,9 @@ src_unpack() {
 }
 
 src_prepare() {
+	# Hotfix for bug: 869143
+	sed -e '/^#include <stddef.h>/a #include <utility>' -i mfbt/tests/TestUniquePtr.cpp || die
+
 	# Apply our patches
 	eapply "${WORKDIR}"/gentoo-${PN}-patches-${PV}/${PN}
 

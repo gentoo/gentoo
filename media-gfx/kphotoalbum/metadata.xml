@@ -10,6 +10,9 @@
 	</upstream>
 	<use>
 		<flag name="map">Enable map display support using <pkg>kde-apps/marble</pkg></flag>
+		<flag name="phonon">Enable <pkg>media-libs/phonon</pkg> video backend (known to crash on some video formats)</flag>
+		<flag name="qtav">Enable <pkg>media-libs/qtav</pkg> video backend (audio and video may get out of sync)</flag>
 		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>
+		<flag name="vlc">Enable <pkg>media-video/vlc</pkg> video backend (recommended for X11)</flag>
 	</use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ NEED_EMACS=25
 
 inherit elisp
 
-DESCRIPTION="Use the Emacsclient as the \$EDITOR of child processes"
+DESCRIPTION="Transient commands abstraction for GNU Emacs"
 HOMEPAGE="https://magit.vc/manual/transient"
 SRC_URI="https://github.com/magit/transient/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

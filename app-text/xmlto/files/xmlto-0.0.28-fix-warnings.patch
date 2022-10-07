@@ -1,0 +1,116 @@
+https://bugs.gentoo.org/869080
+
+https://pagure.io/xmlto/c/1375e2df75530cd198bd16ac3de38e2b0d126276?branch=master
+https://pagure.io/xmlto/c/412f97cdc00d2bbf7e8121012b49fc07b3fe3d2b?branch=master
+https://pagure.io/xmlto/c/8e34f087bf410bcc5fe445933d6ad9bae54f24b5?branch=master
+https://pagure.io/xmlto/c/6fa6a0e07644f20abf2596f78a60112713e11cbe?branch=master
+
+From 1375e2df75530cd198bd16ac3de38e2b0d126276 Mon Sep 17 00:00:00 2001
+From: Thomas Kuehne <thomas@kuehne.cn>
+Date: Dec 11 2021 20:45:45 +0000
+Subject: fix -Wimplicit-int for ifsense
+
+
+fixes:
+xmlif/xmlif.l:46:8: warning: type defaults to ‘int’ in declaration of ‘ifsense’ [-Wimplicit-int]
+   46 | static ifsense;                 /* sense of last `if' or unless seen */
+      |        ^~~~~~~
+
+Signed-off-by: Thomas Kuehne <thomas@kuehne.cn>
+
+--- a/xmlif/xmlif.l
++++ b/xmlif/xmlif.l
+@@ -43,7 +43,7 @@
+ 
+ static char **selections;	/* selection tokens */
+ static int nselections;		/* number of selections */
+-static ifsense;			/* sense of last `if' or unless seen */
++static int ifsense;		/* sense of last `if' or unless seen */
+ static char *attribute;		/* last attribute scanned */
+ 
+ struct stack_t {
+
+
+From 412f97cdc00d2bbf7e8121012b49fc07b3fe3d2b Mon Sep 17 00:00:00 2001
+From: Thomas Kuehne <thomas@kuehne.cn>
+Date: Dec 11 2021 20:45:59 +0000
+Subject: fix extra ‘;’ outside of a function
+
+
+Fixes:
+xmlif/xmlif.l:240:24: warning: ISO C does not allow extra ‘;’ outside of a function [-Wpedantic]
+  240 | int yywrap() {exit(0);};
+      |                        ^
+
+Signed-off-by: Thomas Kuehne <thomas@kuehne.cn>
+
+--- a/xmlif/xmlif.l
++++ b/xmlif/xmlif.l
+@@ -237,7 +237,7 @@ WS		[ \t\n]*
+ 
+ #include "config.h"
+ 
+-int yywrap() {exit(0);};
++int yywrap() {exit(0);}
+ 
+ main(int argc, char *argv[])
+ {
+
+
+From 8e34f087bf410bcc5fe445933d6ad9bae54f24b5 Mon Sep 17 00:00:00 2001
+From: Thomas Kuehne <thomas@kuehne.cn>
+Date: Dec 11 2021 20:56:00 +0000
+Subject: Fix return type of main function
+
+
+Fixes:
+xmlif/xmlif.l:242:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+  242 | main(int argc, char *argv[])
+      | ^~~~
+
+Signed-off-by: Thomas Kuehne <thomas@kuehne.cn>
+
+--- a/xmlif/xmlif.l
++++ b/xmlif/xmlif.l
+@@ -239,7 +239,7 @@ WS		[ \t\n]*
+ 
+ int yywrap() {exit(0);}
+ 
+-main(int argc, char *argv[])
++int main(int argc, char *argv[])
+ {
+     int i;
+ 
+@@ -265,7 +265,7 @@ main(int argc, char *argv[])
+ 	    exit(1);
+ 	}
+ 
+-    yylex();
++    return yylex();
+ }
+ 
+ /*
+
+From 6fa6a0e07644f20abf2596f78a60112713e11cbe Mon Sep 17 00:00:00 2001
+From: Thomas Kuehne <thomas@kuehne.cn>
+Date: Dec 11 2021 21:03:42 +0000
+Subject: add strings.h import
+
+
+Fixes:
+xmlif/xmlif.l:162:13: warning: implicit declaration of function ‘strncasecmp’; did you mean ‘strncmp’? [-Wimplicit-function-declaration]
+  162 |         if (strncasecmp(selections[i], attr, eqoffset) == 0)
+      |             ^~~~~~~~~~~
+
+Signed-off-by: Thomas Kuehne <thomas@kuehne.cn>
+
+--- a/xmlif/xmlif.l
++++ b/xmlif/xmlif.l
+@@ -37,6 +37,7 @@
+  */
+ #include <string.h>
+ #include <stdlib.h>
++#include <strings.h>
+ 
+ #define TRUE	1
+ #define FALSE	0

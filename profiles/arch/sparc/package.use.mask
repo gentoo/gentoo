@@ -38,10 +38,6 @@ app-text/enchant nuspell
 # net-misc/freerdp is not keyworded
 dev-libs/weston rdp
 
-# Matt Turner <mattst88@gentoo.org> (2022-04-16)
-# sys-auth/seatd is not keyworded
-dev-libs/weston seatd
-
 # Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
 # gnome-base/librsvg missing keywords
 media-libs/freetype svg
@@ -103,6 +99,7 @@ dev-cpp/eigen test
 # Sam James <sam@gentoo.org> (2021-04-27)
 # Deps not yet tested/keyworded.
 sys-devel/clang default-compiler-rt default-lld
+sys-devel/clang-common default-compiler-rt default-lld
 sys-devel/clang-runtime compiler-rt
 sys-devel/llvm z3
 

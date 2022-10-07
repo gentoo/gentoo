@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit pam
+inherit autotools toolchain-funcs pam
 
 DESCRIPTION="Simple module to authenticate users against their ssh-agent keys"
 HOMEPAGE="http://pamsshagentauth.sourceforge.net"
@@ -12,30 +12,48 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/jbeverly/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://sourceforge/pamsshagentauth/${PN}/v${PV}/${P}.tar.bz2
-	https://dev.gentoo.org/~juippis/distfiles/tmp/pam_ssh_agent_auth-0.10.3-openssl-1.1.1.patch"
+	ED25519_DONNA_COMMIT="8757bd4cd209cb032853ece0ce413f122eef212c"
+	SRC_URI="https://github.com/jbeverly/pam_ssh_agent_auth/archive/refs/tags/${P}.tar.gz"
+	SRC_URI+=" https://github.com/floodyberry/ed25519-donna/archive/${ED25519_DONNA_COMMIT}.tar.gz -> ${PN}-ed25519-donna.tar.gz"
+	S="${WORKDIR}"/${PN}-${P}
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
+
+DEPEND="
+	dev-libs/openssl:=
+	sys-libs/pam
+"
+RDEPEND="
+	${DEPEND}
+	virtual/ssh
+"
+# Needed for pod2man
+BDEPEND="dev-lang/perl"
 
 PATCHES=(
-	"${DISTDIR}/${P}-openssl-1.1.1.patch"
+	"${FILESDIR}"/${PN}-0.10.4-0001-Fix-function-prototypes-in-configure.patch
+	"${FILESDIR}"/${PN}-0.10.4-0002-Add-missing-includes-implicit-function-declarations.patch
 )
-DEPEND="sys-libs/pam
-	dev-libs/openssl:0="
 
-RDEPEND="${DEPEND}
-	virtual/ssh"
+src_prepare() {
+	default
 
-# needed for pod2man
-DEPEND="${DEPEND}
-	dev-lang/perl"
+	# Missing from tag
+	rm -r ed25519-donna || die
+	ln -s "${WORKDIR}"/ed25519-donna-${ED25519_DONNA_COMMIT} "${S}"/ed25519-donna || die
+
+	# For configure patches
+	eautoreconf
+}
 
 src_configure() {
 	pammod_hide_symbols
+
+	# bug #725720
+	export AR="$(type -P $(tc-getAR))"
 
 	econf \
 		--without-openssl-header-check \

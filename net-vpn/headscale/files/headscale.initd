@@ -29,7 +29,7 @@ start_pre() {
 		/var/log/headscale.log \
 		/etc/headscale/config.yaml
 
-	if [[ -f ${private_key} ]]; then
+	if [ -f ${private_key} ]; then
 		checkpath -f -m 600 -o "${user}" ${private_key}
 	fi
 }

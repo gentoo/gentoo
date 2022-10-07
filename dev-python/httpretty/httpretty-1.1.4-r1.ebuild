@@ -27,7 +27,7 @@ BDEPEND="
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		>=dev-python/requests-1.1[${PYTHON_USEDEP}]
 		dev-python/sure[${PYTHON_USEDEP}]
-		>=www-servers/tornado-2.2[${PYTHON_USEDEP}]
+		>=dev-python/tornado-2.2[${PYTHON_USEDEP}]
 	)
 "
 # These are optional test deps, that are used to test compatibility

@@ -7,8 +7,8 @@ inherit multilib-minimal toolchain-funcs verify-sig
 DESCRIPTION="Multi-format archive and compression library"
 HOMEPAGE="https://www.libarchive.org/"
 SRC_URI="
-	https://www.libarchive.de/downloads/${P}.tar.gz
-	verify-sig? ( https://www.libarchive.de/downloads/${P}.tar.gz.asc )
+	https://www.libarchive.de/downloads/${P}.tar.xz
+	verify-sig? ( https://www.libarchive.de/downloads/${P}.tar.xz.asc )
 "
 
 LICENSE="BSD BSD-2 BSD-4 public-domain"

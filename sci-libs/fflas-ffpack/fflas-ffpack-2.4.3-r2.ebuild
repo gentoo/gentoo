@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,16 +42,14 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
-pkg_setup() {
-	tc-export PKG_CONFIG
-}
-
 src_prepare() {
 	default
 	eautoreconf
 }
 
 src_configure() {
+	tc-export PKG_CONFIG
+
 	econf \
 		--enable-precompilation \
 		$(use_enable openmp) \

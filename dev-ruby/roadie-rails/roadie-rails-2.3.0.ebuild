@@ -25,7 +25,7 @@ ruby_add_rdepend ">=dev-ruby/roadie-3.1:4
 ruby_add_bdepend "
 	test? (
 		dev-ruby/bundler
-		|| ( dev-ruby/rails:7.0 dev-ruby/rails:6.1 dev-ruby/rails:6.0 dev-ruby/rails:5.2 )
+		dev-ruby/rails:7.0 dev-ruby/rails:6.0 dev-ruby/rails:5.2
 		dev-ruby/rspec-rails
 		dev-ruby/rspec-collection_matchers )"
 

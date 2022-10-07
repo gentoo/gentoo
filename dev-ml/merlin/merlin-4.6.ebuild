@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}"
 # because it breaks merlin builds.
 # https://github.com/ocaml/merlin/issues/1500
 BDEPEND="
-	!<dev-ml/seq-0.3
+	!!<dev-ml/seq-0.3
 	test? ( app-misc/jq )
 "
 

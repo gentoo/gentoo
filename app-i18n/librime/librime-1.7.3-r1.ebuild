@@ -30,7 +30,7 @@ BDEPEND="dev-libs/capnproto:0"
 RDEPEND="app-i18n/opencc:0=
 	>=dev-cpp/glog-0.3.5:0=
 	dev-cpp/yaml-cpp:0=
-	dev-libs/boost:0=[threads(+)]
+	dev-libs/boost:=
 	dev-libs/capnproto:0=
 	dev-libs/leveldb:0=
 	dev-libs/marisa:0="

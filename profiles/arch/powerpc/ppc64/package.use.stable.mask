@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-23)
+# The corresponding Qt5 modules are not stable keyworded on ppc64, and we don't want to
+# keyword them solely because of PyQt5 while there are no other in-tree users.
+dev-python/PyQt5 bluetooth
+
 # Matt Turner <mattst88@gentoo.org> (2022-07-28)
 # kde-frameworks/plasma not stable on ppc64
 app-i18n/uim kde

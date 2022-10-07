@@ -22,7 +22,7 @@ RESTRICT="test"
 
 RDEPEND="
 	>=dev-python/pytest-3.0[${PYTHON_USEDEP}]
-	>=www-servers/tornado-5.0[${PYTHON_USEDEP}]
+	>=dev-python/tornado-5.0[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Grilo"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.3/0" # subslot is libgrilo-0.3 soname suffix
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 IUSE="gtk gtk-doc +introspection +playlist test vala"
 REQUIRED_USE="vala? ( introspection )"

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake git-r3 xdg-utils
+inherit cmake git-r3 xdg
 
 DESCRIPTION="Small, lightweight file manager based on pure Qt"
 HOMEPAGE="https://qtfm.eu/"
@@ -14,10 +14,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+dbus ffmpeg imagemagick"
 
-BDEPEND="
-	app-arch/unzip
-	dev-qt/linguist-tools:5
-"
 RDEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
@@ -30,8 +26,10 @@ RDEPEND="
 	imagemagick? ( >=media-gfx/imagemagick-7:= )
 "
 DEPEND="${RDEPEND}"
-
-PATCHES=( "${FILESDIR}"/${PN}-99999-cmake.patch )
+BDEPEND="
+	app-arch/unzip
+	dev-qt/linguist-tools:5
+"
 
 src_configure() {
 	local mycmakeargs=(
@@ -40,14 +38,4 @@ src_configure() {
 		-DENABLE_MAGICK=$(usex imagemagick)
 	)
 	cmake_src_configure
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
 }

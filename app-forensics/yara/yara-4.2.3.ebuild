@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${PV/_/-}"
 LICENSE="Apache-2.0"
 SLOT="0/8"
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~amd64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~ppc64 x86"
 fi
 IUSE="+dex +dotnet +cuckoo +macho +magic profiling python test"
 RESTRICT="!test? ( test )"

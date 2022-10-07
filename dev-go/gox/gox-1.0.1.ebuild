@@ -10,7 +10,7 @@ SRC_URI="https://github.com/mitchellh/gox/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0/${PVR}"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 RESTRICT+=" test"
 

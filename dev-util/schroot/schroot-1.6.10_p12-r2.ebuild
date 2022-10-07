@@ -19,7 +19,7 @@ IUSE="btrfs +dchroot debug doc lvm nls pam test zfs"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
-	>=dev-libs/boost-1.42.0:=
+	dev-libs/boost:=
 	>=sys-apps/util-linux-2.16
 	btrfs? ( >=sys-fs/btrfs-progs-0.19-r2 )
 	lvm? ( sys-fs/lvm2 )

@@ -1,5 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors.
+# Copyright 1999-2022 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-10-04)
+# net-misc/netkit-rsh is masked on musl and USE=-crypt depends on it
+sys-cluster/torque crypt
 
 # Esteve Varela Colominas <esteve.varela@gmail.com> (2022-02-19)
 # The musl allocator works well with telegram
@@ -7,7 +11,7 @@ net-im/telegram-desktop -jemalloc
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
 # Do not force system install for libxcrypt here
->=sys-libs/libxcrypt-4.4.23-r1 -system -compat
+<sys-libs/libxcrypt-4.4.28-r2 -system -compat
 
 # Force system-libevent use flag on mozilla packages, since the building of
 # bundled libevent cannot accomodate a system without sysctl.h

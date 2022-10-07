@@ -15,7 +15,7 @@ KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 LICENSE="GPL-2"
 SLOT="0"
 
-RDEPEND="dev-python/python-levenshtein[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/Levenshtein[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/pycodestyle[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest

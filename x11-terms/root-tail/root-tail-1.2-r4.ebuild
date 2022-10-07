@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,11 +16,12 @@ IUSE="kde debug"
 
 RDEPEND="x11-libs/libXext
 	x11-libs/libX11"
-DEPEND="${RDEPEND}"
-BDEPEND=">=x11-misc/imake-1.0.8-r1
-	app-text/rman
-	x11-base/xorg-proto
-	x11-misc/gccmakedep"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
+BDEPEND="app-text/rman
+	sys-devel/gcc
+	x11-misc/gccmakedep
+	>=x11-misc/imake-1.0.8-r1"
 
 src_prepare() {
 	use kde && eapply "${FILESDIR}"/${P}-kde.patch
@@ -29,7 +30,7 @@ src_prepare() {
 
 src_configure() {
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die
+		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf -a || die
 }
 
 src_compile() {

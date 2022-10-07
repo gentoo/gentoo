@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 _IUSE_QT_MODULES="
 	designer +gui help multimedia +network opengl positioning
@@ -27,11 +27,7 @@ _IUSE_QT_MODULES="
 IUSE="+pyqt5 pyqt6 pyside2 pyside6 ${_IUSE_QT_MODULES}"
 unset _IUSE_QT_MODULES
 
-# PySide6 is not yet ready for python3_11
-REQUIRED_USE="
-	|| ( pyqt5 pyqt6 pyside2 pyside6 )
-	pyside6? ( !python_targets_python3_11 )
-"
+REQUIRED_USE="|| ( pyqt5 pyqt6 pyside2 pyside6 )"
 
 # These flags are currently *not* common to the PySide2/6 and PyQt5/6 ebuilds
 # Disable them for now, please check periodically if this is still up to date.
@@ -95,14 +91,12 @@ RDEPEND="
 		dev-python/pyside2[sql?,svg?,testlib?,webchannel?,webengine?,websockets?]
 		dev-python/pyside2[widgets?,xml?]
 	)
-	!python_targets_python3_11? (
 	pyside6? (
 		dev-python/pyside6[${PYTHON_USEDEP}]
 		dev-python/pyside6[designer?,gui?,help?,multimedia?,network?,opengl?]
 		dev-python/pyside6[positioning?,printsupport?,qml?,quick?,serialport?]
 		dev-python/pyside6[sql?,svg?,testlib?,webchannel?,webengine?,websockets?]
 		dev-python/pyside6[widgets?,xml?]
-	)
 	)
 "
 
@@ -136,14 +130,12 @@ BDEPEND="
 			dev-python/pyside2[webchannel,webengine,websockets,widgets,x11extras]
 			dev-python/pyside2[xml,xmlpatterns]
 		)
-		!python_targets_python3_11? (
 		pyside6? (
 			dev-python/pyside6[${PYTHON_USEDEP}]
 			dev-python/pyside6[concurrent,dbus,designer,gui,help,multimedia]
 			dev-python/pyside6[network,opengl,positioning,printsupport,qml]
 			dev-python/pyside6[quick,quick3d,serialport,sql,svg,testlib]
 			dev-python/pyside6[webchannel,webengine,websockets,widgets,xml]
-		)
 		)
 	)
 "

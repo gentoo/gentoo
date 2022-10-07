@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DEB_PATCH_VER=28
 DESCRIPTION="Collection of games from NetBSD"
 HOMEPAGE="https://www.polyomino.org.uk/computer/software/bsd-games/"
 #SRC_URI="https://www.polyomino.org.uk/computer/software/bsd-games/${PN}-$(ver_cut 1-2).tar.gz"
-SRC_URI="http://deb.debian.org/debian/pool/main/b/bsdgames/bsdgames_2.17.orig.tar.gz"
+SRC_URI="http://deb.debian.org/debian/pool/main/b/bsdgames/bsdgames_$(ver_cut 1-2).orig.tar.gz"
 SRC_URI+=" mirror://debian/pool/main/b/bsdgames/bsdgames_$(ver_cut 1-2)-${DEB_PATCH_VER}.debian.tar.xz"
 S="${WORKDIR}/${PN}-$(ver_cut 1-2)"
 

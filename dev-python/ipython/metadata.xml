@@ -44,7 +44,7 @@
   <stabilize-allarches/>
   <use>
     <flag name="matplotlib">Add support for <pkg>dev-python/matplotlib</pkg></flag>
-    <flag name="notebook">Install requirements for the web notebook based on <pkg>www-servers/tornado</pkg></flag>
+    <flag name="notebook">Install requirements for the web notebook based on <pkg>dev-python/tornado</pkg></flag>
     <flag name="nbconvert">Enable support for converting notebooks to various formats using <pkg>app-text/pandoc</pkg></flag>
   </use>
   <upstream>

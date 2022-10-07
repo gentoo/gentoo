@@ -1,0 +1,14 @@
+ftp-ls.c:319:22: error: call to undeclared library function 'strdup' with type 'char *(const char *)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+                      cur.linkto = xstrdup (p + 4);
+                                   ^
+--- a/src/ftp-ls.c
++++ b/src/ftp-ls.c
+@@ -29,7 +29,7 @@ file, but you are not obligated to do so.  If you do not wish to do
+ so, delete this exception statement from your version.  */
+ 
+ #include "config.h"
+-#define _XOPEN_SOURCE
++#define _XOPEN_SOURCE 600
+ #include <time.h>
+ #include <stdio.h>
+ #include <stdlib.h>

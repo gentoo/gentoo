@@ -17,7 +17,7 @@ inherit toolchain-autoconf
 DESCRIPTION="Used to create autoconfiguration files"
 HOMEPAGE="https://www.gnu.org/software/autoconf/autoconf.html"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="${PV}"
 IUSE="emacs"
 

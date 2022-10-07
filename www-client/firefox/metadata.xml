@@ -13,8 +13,7 @@
 		downloaded and kept up-to-date in user profiles</flag>
 	<flag name="hwaccel">Force-enable hardware-accelerated rendering (Mozilla bug 594876)</flag>
 	<flag name="libproxy">Enable libproxy support</flag>
-	<flag name="lto">Enable Link Time Optimization (LTO) - Uses BFD linker with GCC and LLD 
-		linker with Clang</flag>
+	<flag name="lto">Enable Link Time Optimization (LTO)</flag>
 	<flag name="openh264">Use <pkg>media-libs/openh264</pkg> for H264 support
 		instead of downloading binary blob from Mozilla at runtime</flag>
 	<flag name="pgo">Add support for profile-guided optimization for faster binaries - this

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="unified interface to mail representations"
 
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ppc64 x86"
+KEYWORDS="amd64 ~mips ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	virtual/perl-Carp

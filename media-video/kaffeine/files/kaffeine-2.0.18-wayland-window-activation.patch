@@ -1,0 +1,35 @@
+From 389c812c3afffc5184492039a80bee24a8104815 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 15 May 2022 18:38:07 +0200
+Subject: [PATCH] Fix activating existing window
+
+Also raise window when no arguments were passed
+
+Use KWindowSystem API that also works on Wayland
+---
+ src/main.cpp | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index 68677fd..b5a07dc 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -178,12 +178,11 @@ KaffeineApplication::KaffeineApplication(int &argc, char **argv) : QApplication(
+ void KaffeineApplication::activateRequested(const QStringList &arguments,
+ 					    const QString &workingDirectory)
+ {
+-	if (arguments.isEmpty())
+-		return;
+-
+ 	parser.parse(arguments);
++
++	KWindowSystem::updateStartupId(mainWindow->windowHandle());
++	KWindowSystem::activateWindow(mainWindow->windowHandle());
+-	KStartupInfo::setNewStartupId(mainWindow, KStartupInfo::startupId());
+ 	KWindowSystem::forceActiveWindow(mainWindow->winId());
+ 	mainWindow->parseArgs(workingDirectory);
+ }
+ 
+-- 
+GitLab
+

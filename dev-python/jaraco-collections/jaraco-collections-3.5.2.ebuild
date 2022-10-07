@@ -19,7 +19,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ia64 ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	dev-python/jaraco-classes[${PYTHON_USEDEP}]

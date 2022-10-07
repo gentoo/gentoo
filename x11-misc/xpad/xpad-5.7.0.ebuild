@@ -14,8 +14,10 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ppc x86"
 
 RDEPEND="
-	app-accessibility/at-spi2-atk
-	dev-libs/atk
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		( app-accessibility/at-spi2-atk dev-libs/atk )
+	)
 	>=dev-libs/glib-2.58:2
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:3[X]

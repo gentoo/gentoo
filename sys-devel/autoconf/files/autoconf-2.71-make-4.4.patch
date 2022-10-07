@@ -1,0 +1,25 @@
+https://git.savannah.gnu.org/cgit/autoconf.git/commit/?id=31f673434ee402258b45e958c88acc8725d82b1a
+https://savannah.gnu.org/bugs/?63040
+https://bugs.gentoo.org/869257
+
+From 31f673434ee402258b45e958c88acc8725d82b1a Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Fri, 9 Sep 2022 16:54:11 -0500
+Subject: Port to GNU make 4.4
+
+* cfg.mk (PATH): Assign eagerly, and simplify shell use, avoiding
+use of the shell entirely if PWD is set, as it should be.
+Problem reported by Sergei Trofimovich in:
+https://lists.gnu.org/r/autoconf-patches/2022-09/msg00007.html
+--- a/cfg.mk
++++ b/cfg.mk
+@@ -18,7 +18,7 @@
+ # This file is '-include'd into GNUmakefile.
+ 
+ # Build with our own versions of these tools, when possible.
+-export PATH = $(shell echo "`pwd`/tests:$$PATH")
++export PATH := $(or $(PWD),$(shell pwd))/tests:$(PATH)
+ 
+ # Remove the autoreconf-provided INSTALL, so that we regenerate it.
+ _autoreconf = autoreconf -i -v && rm -f INSTALL
+cgit v1.1

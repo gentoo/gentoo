@@ -22,7 +22,7 @@ RDEPEND="
 	dev-libs/ocl-icd
 	dev-util/rocm-clang-ocl:${SLOT}
 	sci-libs/rocBLAS:${SLOT}
-	>=dev-libs/boost-1.72
+	dev-libs/boost
 "
 
 DEPEND="${RDEPEND}"

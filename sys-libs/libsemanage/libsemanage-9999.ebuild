@@ -26,7 +26,8 @@ LICENSE="GPL-2"
 SLOT="0/2"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND=">=sys-libs/libsepol-${PV}:=[${MULTILIB_USEDEP}]
+RDEPEND="app-arch/bzip2[${MULTILIB_USEDEP}]
+	>=sys-libs/libsepol-${PV}:=[${MULTILIB_USEDEP}]
 	>=sys-libs/libselinux-${PV}:=[${MULTILIB_USEDEP}]
 	>=sys-process/audit-2.2.2[${MULTILIB_USEDEP}]
 	${PYTHON_DEPS}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,6 +25,7 @@ RDEPEND="
 	tk? ( dev-lang/tk:= )
 "
 DEPEND=">=sys-kernel/linux-headers-2.6.25
+	elibc_musl? ( net-libs/ppp-defs )
 	${RDEPEND}"
 
 DOC_CONTENTS="Use pppoe-setup to configure your dialup connection"

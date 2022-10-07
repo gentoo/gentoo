@@ -13,7 +13,7 @@ SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86 ~x86-solaris"
+KEYWORDS="-* ~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv x86 ~x86-solaris"
 IUSE="selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-dmidecode )"

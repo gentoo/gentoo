@@ -1,0 +1,37 @@
+Also issues with implicit basename(3), but that is handled from the ebuild.
+https://bugs.gentoo.org/861644
+https://bugs.gentoo.org/870838
+--- a/mixer.c
++++ b/mixer.c
+@@ -29,4 +29,5 @@
+ #include "audio_proc.h"
+ #include "controls.h"
++#include "url.h"
+ 
+ 
+@@ -40,4 +41,5 @@
+ #include <time.h>
+ 
++int parse_file_metadata(char *filename,char **title,char **artist,char **album,char **url);
+ 
+ short audio_buffer[BUF_SIZE];  
+--- a/mixer.h
++++ b/mixer.h
+@@ -157,2 +157,3 @@
+ void write_logfile(cptr ch);
+ void execute_update_script(cptr ch);
++void shout_streamer(void);
+--- a/streams.c
++++ b/streams.c
+@@ -32,4 +32,5 @@
+ #include "serverlib.h"
+ #include "audio_proc.h"
++#include "mixer.h"
+ 
+ #ifdef SOUNDCARD_SUPPORT
+--- a/url.h
++++ b/url.h
+@@ -11,2 +11,3 @@
+ int string_contains(char *string,char *seek);
+ void strtoupper(char *string);
++char *url_encode(char *str, char **result_p);

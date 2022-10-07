@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
-	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
-	</maintainer>
-	<upstream>
-		<remote-id type="github">microsoft/TypeScript</remote-id>
-	</upstream>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    TypeScript is a language for application-scale JavaScript. TypeScript adds
+    optional types to JavaScript that support tools for large-scale JavaScript
+    applications for any browser, for any host, on any OS. TypeScript compiles
+    to readable, standards-based JavaScript
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/microsoft/TypeScript/issues/</bugs-to>
+    <remote-id type="github">microsoft/TypeScript</remote-id>
+  </upstream>
 </pkgmetadata>

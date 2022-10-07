@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/870457
+--- a/server.c
++++ b/server.c
+@@ -61,2 +61,3 @@
+ #include "list.h"
++#include "mylog.h"
+ #include "unix2tcp.h"
+--- a/unix2tcp.c
++++ b/unix2tcp.c
+@@ -62,2 +62,3 @@
+ #include "list.h"
++#include "mylog.h"
+ #include "server.h"
+--- a/utelnet.c
++++ b/utelnet.c
+@@ -23,2 +23,3 @@
+ #include <stdio.h>
++#include <stdlib.h>
+ #ifdef HAVE_SYS_TYPES_H

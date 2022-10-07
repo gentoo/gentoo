@@ -15,7 +15,7 @@ SRC_URI="https://github.com/nghttp2/nghttp2/releases/download/v${PV}/${P}.tar.xz
 LICENSE="MIT"
 SLOT="0/1.14" # <C++>.<C> SONAMEs
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="cxx debug hpack-tools jemalloc static-libs test +threads utils xml"
+IUSE="cxx debug hpack-tools jemalloc static-libs test utils xml"
 
 RESTRICT="!test? ( test )"
 
@@ -25,7 +25,7 @@ SSL_DEPEND="
 RDEPEND="
 	cxx? (
 		${SSL_DEPEND}
-		dev-libs/boost:=[${MULTILIB_USEDEP},threads(+)]
+		dev-libs/boost:=[${MULTILIB_USEDEP}]
 	)
 	hpack-tools? ( >=dev-libs/jansson-2.5:= )
 	jemalloc? ( dev-libs/jemalloc:=[${MULTILIB_USEDEP}] )
@@ -55,13 +55,13 @@ multilib_src_configure() {
 		--disable-failmalloc
 		--disable-python-bindings
 		--disable-werror
+		--enable-threads
 		--without-cython
 		$(use_enable cxx asio-lib)
 		$(use_enable debug)
 		$(multilib_native_use_enable hpack-tools)
 		$(use_enable static-libs static)
 		$(use_with test cunit)
-		$(use_enable threads)
 		$(multilib_native_use_enable utils app)
 		$(multilib_native_use_with jemalloc)
 		$(multilib_native_use_with xml libxml2)

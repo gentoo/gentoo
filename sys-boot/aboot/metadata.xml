@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<maintainer type="project">
 		<email>alpha@gentoo.org</email>
-		<name>Gentoo Linux Alpha Development</name>
+		<name>Alpha architecture team</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">mattst88/aboot</remote-id>

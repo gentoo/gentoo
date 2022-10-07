@@ -16,7 +16,7 @@ IUSE="debug test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/boost-1.54:=[nls]
+	dev-libs/boost:=[nls]
 	>=dev-libs/leatherman-0.9.3:=
 "
 DEPEND="${DEPEND}

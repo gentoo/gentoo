@@ -7,7 +7,10 @@ VERIFY_SIG_METHOD="signify"
 inherit toolchain-funcs verify-sig
 
 DESCRIPTION="Cryptographically sign and verify files"
-HOMEPAGE="http://www.openbsd.org/ https://github.com/aperezdc/signify"
+HOMEPAGE="
+	https://www.openbsd.org/
+	https://github.com/aperezdc/signify/
+"
 SRC_URI="
 	https://github.com/aperezdc/${PN}/releases/download/v${PV}/${P}.tar.xz
 	verify-sig? (
@@ -17,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD-1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="!net-mail/signify
 	>=dev-libs/libbsd-0.7"

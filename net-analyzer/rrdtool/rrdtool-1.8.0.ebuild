@@ -159,13 +159,13 @@ lua_src_compile() {
 	# We do need the CMOD-dir path here, otherwise libtool complains.
 	# Use the real one (i.e. not within ${ED}) just in case.
 	local myemakeargs=(
-		LUA_CFLAGS=$(lua_get_CFLAGS)
+		LUA_CFLAGS="$(lua_get_CFLAGS)"
 		LUA_INSTALL_CMOD="$(lua_get_cmod_dir)"
 	)
 
 	emake "${myemakeargs[@]}"
 
-	popd
+	popd || die
 }
 
 python_compile() {

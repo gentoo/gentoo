@@ -11,7 +11,7 @@ SRC_URI="https://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux"
+KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 ~riscv x86 ~amd64-linux"
 
 src_prepare() {
 	default

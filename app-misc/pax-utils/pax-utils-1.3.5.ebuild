@@ -19,7 +19,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}.tar.xz
 		https://dev.gentoo.org/~vapier/dist/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -50,6 +50,10 @@ REQUIRED_USE="
 RESTRICT="
 	!test? ( test )
 "
+
+PATCHES=(
+	"${FILESDIR}/pax-utils-1.3.5-man-reorder-xmlto-arguments.patch"
+)
 
 pkg_setup() {
 	if use test || use python; then

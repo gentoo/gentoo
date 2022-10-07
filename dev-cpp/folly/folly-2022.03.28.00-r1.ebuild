@@ -22,7 +22,7 @@ RDEPEND="app-arch/bzip2
 	app-arch/zstd:=
 	dev-cpp/gflags:=
 	dev-cpp/glog:=[gflags]
-	dev-libs/boost:=[context,threads(+)]
+	dev-libs/boost:=[context]
 	dev-libs/double-conversion:=
 	dev-libs/libaio
 	dev-libs/libevent:=

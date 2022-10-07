@@ -13,13 +13,13 @@ SRC_URI="https://github.com/arvidn/libtorrent/releases/download/v${PV}/${P}.tar.
 
 LICENSE="BSD"
 SLOT="0/2.0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+dht debug gnutls python ssl test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '

@@ -34,9 +34,11 @@ BDEPEND="
 "
 
 python_check_deps() {
-	if use test ; then
-		has_version -b "dev-python/cython[${PYTHON_USEDEP}]" || return 1
-	fi
+	python_has_version "dev-python/cython[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
 }
 
 src_configure() {

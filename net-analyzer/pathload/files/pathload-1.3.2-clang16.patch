@@ -1,0 +1,10 @@
+configure.ac is missing, so need to edit this manually
+
+https://bugs.gentoo.org/870661
+--- a/configure
++++ b/configure
+@@ -630,3 +630,3 @@
+ 
+-main(){return(0);}
++int main(void){return(0);}
+ EOF

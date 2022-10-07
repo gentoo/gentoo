@@ -43,7 +43,7 @@ CDEPEND="
 	app-arch/zstd
 	app-arch/xz-utils
 	fortran? ( dev-lang/cfortran )
-	dev-cpp/nlohmann_json
+	<dev-cpp/nlohmann_json-3.11
 	dev-libs/libpcre:3
 	dev-libs/xxhash
 	media-fonts/dejavu

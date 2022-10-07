@@ -25,7 +25,7 @@ REQUIRED_USE="dbus? ( gui )
 	|| ( gui webui )"
 
 RDEPEND="
-	>=dev-libs/boost-1.71:=
+	dev-libs/boost:=
 	>=dev-libs/openssl-1.1.1:=
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl]
@@ -47,8 +47,9 @@ BDEPEND="dev-qt/linguist-tools:5
 DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md )
 
 src_prepare() {
-	MULTIBUILD_VARIANTS=( base )
-	use webui && MULTIBUILD_VARIANTS+=( webui )
+	MULTIBUILD_VARIANTS=()
+	use gui && MULTIBUILD_VARIANTS+=( gui )
+	use webui && MULTIBUILD_VARIANTS+=( nogui )
 
 	cmake_src_prepare
 }
@@ -56,14 +57,8 @@ src_prepare() {
 src_configure() {
 	multibuild_src_configure() {
 		local mycmakeargs=(
-			-DDBUS=$(usex dbus)
-
 			# musl lacks execinfo.h
 			-DSTACKTRACE=$(usex !elibc_musl)
-
-			# We always want to install unit files
-			-DSYSTEMD=ON
-			-DSYSTEMD_SERVICES_INSTALL_DIR=$(systemd_get_systemunitdir)
 
 			# More verbose build logs are preferable for bug reports
 			-DVERBOSE_CONFIGURE=ON
@@ -71,22 +66,28 @@ src_configure() {
 			# Not yet in ::gentoo
 			-DQT6=OFF
 
-			# We do these in multibuild, see bug #839531 for why.
-			# Fedora has to do the same thing.
-			-DGUI=$(usex gui)
+			-DWEBUI=$(usex webui)
 
 			-DTESTING=$(usex test)
 		)
 
-		if [[ ${MULTIBUILD_VARIANT} == webui ]] ; then
+		if [[ ${MULTIBUILD_VARIANT} == gui ]] ; then
+			# We do this in multibuild, see bug #839531 for why.
+			# Fedora has to do the same thing.
 			mycmakeargs+=(
-				# Need to specify GUI here to allow webui settings
-				# to appear in the GUI. bug #864731.
-				-DGUI=$(usex gui)
-				-DWEBUI=ON
+				-DGUI=ON
+				-DDBUS=$(usex dbus)
+				-DSYSTEMD=OFF
 			)
 		else
-			mycmakeargs+=( -DWEBUI=OFF )
+			mycmakeargs+=(
+				-DGUI=OFF
+				-DDBUS=OFF
+				# The systemd service calls qbittorrent-nox, which is only
+				# installed when GUI=OFF.
+				-DSYSTEMD=ON
+				-DSYSTEMD_SERVICES_INSTALL_DIR="$(systemd_get_systemunitdir)"
+			)
 		fi
 
 		cmake_src_configure
@@ -110,11 +111,5 @@ src_test() {
 
 src_install() {
 	multibuild_foreach_variant cmake_src_install
-
-	if ! use webui ; then
-		# No || die deliberately as it doesn't always exist
-		rm "${D}/$(systemd_get_systemunitdir)"/qbittorrent-nox*.service
-	fi
-
 	einstalldocs
 }

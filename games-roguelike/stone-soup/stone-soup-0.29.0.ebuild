@@ -37,7 +37,7 @@ fi
 # Public Domain|CC0: most of tiles
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="advpng debug ncurses sound test +tiles"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
@@ -142,7 +142,9 @@ src_compile() {
 		BUILD_LUA=
 		AR="$(tc-getAR)"
 		CFOPTIMIZE=''
-		CFOTHERS="${CXXFLAGS}"
+		# -DLUA_COMPAT_OPENLIB=1 is required to enable the
+		# deprecated (in 5.1) luaL_openlib API (#869671)
+		CFOTHERS="${CXXFLAGS} -DLUA_COMPAT_OPENLIB=1"
 		CONTRIBS=
 		DATADIR="/usr/share/${PN}-${SLOT}"
 		FORCE_CC="$(tc-getCC)"

@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE='threads(+)'
 PLOCALES="cs de el en_GB es eu fr it ja nn pl pt pt_PT ru sv zh"
-inherit eutils toolchain-funcs flag-o-matic plocale python-any-r1 waf-utils desktop xdg
+inherit toolchain-funcs flag-o-matic plocale python-any-r1 waf-utils desktop xdg
 
 DESCRIPTION="Digital Audio Workstation"
 HOMEPAGE="https://ardour.org/"
@@ -34,7 +34,7 @@ RDEPEND="
 	>=gnome-base/libgnomecanvas-2
 	media-libs/alsa-lib
 	media-libs/aubio
-	media-libs/flac
+	media-libs/flac:=
 	media-libs/freetype:2
 	media-libs/libart_lgpl
 	media-libs/liblo
@@ -58,7 +58,7 @@ RDEPEND="
 	media-libs/lilv
 	media-libs/sratom
 	dev-libs/sord
-	media-libs/suil[gtk]
+	|| ( >=media-libs/suil-0.10.16-r1[gtk2] <media-libs/suil-0.10.16-r1[gtk] )
 	media-libs/lv2"
 #	!bundled-libs? ( media-sound/fluidsynth ) at least libltc is missing to be able to unbundle...
 

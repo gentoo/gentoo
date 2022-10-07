@@ -52,7 +52,7 @@ RDEPEND="
 	dbus? ( dev-qt/qtdbus:5 )
 	enca? ( app-i18n/enca )
 	ffmpeg? ( media-video/ffmpeg:= )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	game? ( media-libs/game-music-emu )
 	jack? (
 		media-libs/libsamplerate

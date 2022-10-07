@@ -6,7 +6,7 @@
 # Distribution Kernel Project <dist-kernel@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: dist-kernel-utils
 # @BLURB: Installation mechanics for Distribution Kernels
 # @DESCRIPTION:
@@ -30,15 +30,9 @@
 
 if [[ ! ${_KERNEL_INSTALL_ECLASS} ]]; then
 
-case "${EAPI:-0}" in
-	0|1|2|3|4|5|6)
-		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
-		;;
-	7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit dist-kernel-utils mount-boot toolchain-funcs
@@ -51,14 +45,18 @@ RESTRICT+="
 	arm? ( test )
 "
 
-# install-DEPEND actually
 # note: we need installkernel with initramfs support!
-RDEPEND="
+_INSTALL_DEPEND="
 	|| (
 		sys-kernel/installkernel-gentoo
 		sys-kernel/installkernel-systemd-boot
 	)
 	initramfs? ( >=sys-kernel/dracut-049-r3 )"
+if [[ ${EAPI} == 7 ]]; then
+	RDEPEND="${_INSTALL_DEPEND}"
+else
+	IDEPEND="${_INSTALL_DEPEND}"
+fi
 # needed by objtool that is installed along with the kernel and used
 # to build external modules
 # NB: linux-mod.eclass also adds this dep but it's cleaner to have
@@ -417,6 +415,12 @@ kernel-install_pkg_preinst() {
 		eerror "          found: ${release}"
 		eerror "Please verify that you are applying the correct patches."
 		die "Kernel release mismatch (${release} instead of ${PV}*)"
+	fi
+	if [[ -L ${EROOT}/lib && ${EROOT}/lib -ef ${EROOT}/usr/lib ]]; then
+		# Adjust symlinks for merged-usr.
+		rm "${ED}/lib/modules/${ver}"/{build,source} || die
+		dosym "../../../src/linux-${ver}" "/usr/lib/modules/${ver}/build"
+		dosym "../../../src/linux-${ver}" "/usr/lib/modules/${ver}/source"
 	fi
 }
 

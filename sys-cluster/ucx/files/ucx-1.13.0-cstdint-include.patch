@@ -1,0 +1,20 @@
+https://github.com/openucx/ucx/pull/8517
+
+From 8f70e898b43d1bde1ff3fae56bf0ac5aac285997 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 9 Sep 2022 11:35:03 +0100
+Subject: [PATCH] TEST/SOCKADDR: Add missing <cstdint> include for GCC 13
+
+Closes: https://github.com/openucx/ucx/issues/8347
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/test/apps/sockaddr/sa_util.h
++++ b/test/apps/sockaddr/sa_util.h
+@@ -7,6 +7,7 @@
+ #ifndef SA_UTIL_H_
+ #define SA_UTIL_H_
+ 
++#include <cstdint>
+ #include <iostream>
+ #include <sstream>
+ #include <string>
+

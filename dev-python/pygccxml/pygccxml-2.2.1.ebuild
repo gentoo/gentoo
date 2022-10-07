@@ -13,7 +13,7 @@ SRC_URI="https://github.com/CastXML/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="doc"
 
 distutils_enable_sphinx docs dev-python/sphinx_rtd_theme

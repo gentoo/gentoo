@@ -1,0 +1,39 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -10,7 +10,6 @@ bindir=@bindir@
+ all clean:
+ 	cd po && $(MAKE) $(MAKEDEFS) $@
+ 	cd src && $(MAKE) $(MAKEDEFS) $@
+-	cd doc && $(MAKE) $(MAKEDEFS) $@
+
+ win-clean:
+ 	cd src && $(MAKE) $(MAKEDEFS) $@
+@@ -20,9 +20,9 @@ install: all
+ 	install -m0755 -d $(destdir)$(bindir)
+ 	install -m0755 -d $(destdir)$(mandir)
+ 	install -m0755 wput $(destdir)$(bindir)
+-	install -m0644 doc/wput.1.gz $(destdir)$(mandir)
++	install -m0644 doc/wput.1 $(destdir)$(mandir)
+ 	cd $(destdir)$(bindir) && ln -s wput wdel
+-	install -m0644 doc/wdel.1.gz $(destdir)$(mandir)
++	install -m0644 doc/wdel.1 $(destdir)$(mandir)
+ 	@echo "----------------"
+ 	@echo "Wput and Wdel installed. See 'wput/wdel -h' or 'man wput/wdel' for"
+ 	@echo "usage information."
+@@ -34,6 +34,6 @@ install: all
+ uninstall:
+ 	rm -f $(destdir)$(bindir)/wput
+ 	rm -f $(destdir)$(bindir)/wdel
+-	rm -f $(destdir)$(mandir)/wput.1.gz
+-	rm -f $(destdir)$(mandir)/wdel.1.gz
++	rm -f $(destdir)$(mandir)/wput.1
++	rm -f $(destdir)$(mandir)/wdel.1
+ 
+--- a/doc/Makefile
++++ /dev/null
+@@ -1,5 +0,0 @@
+-all:
+-	gzip < wput.1 > wput.1.gz
+-	gzip < wdel.1 > wdel.1.gz
+-clean:
+-	rm -f wput.1.gz wdel.1.gz

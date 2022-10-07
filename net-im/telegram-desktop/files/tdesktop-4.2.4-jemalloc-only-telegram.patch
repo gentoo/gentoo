@@ -1,0 +1,43 @@
+Only link jemalloc for the Telegram binary
+
+Some combination of factors is making the different codegen tools hang when
+jemalloc is linked for those, and they're ran under portage's sandbox. Since
+this is only used during build-time, and jemalloc is merely necessary to
+improve runtime memory use, it's unnecessary to use it for anything else.
+
+https://bugs.gentoo.org/802624
+
+--- tdesktop-4.2.4-full.orig/Telegram/CMakeLists.txt
++++ tdesktop-4.2.4-full/Telegram/CMakeLists.txt
+@@ -1478,6 +1478,14 @@
+             desktop-app::external_wayland_client
+         )
+     endif()
++
++    if (NOT DESKTOP_APP_DISABLE_JEMALLOC)
++        target_link_libraries(Telegram
++        INTERFACE
++            $<TARGET_OBJECTS:desktop-app::linux_jemalloc_helper>
++            $<LINK_ONLY:desktop-app::external_jemalloc>
++        )
++    endif()
+ endif()
+ 
+ if (build_macstore)
+--- tdesktop-4.2.4-full.orig/cmake/options_linux.cmake
++++ tdesktop-4.2.4-full/cmake/options_linux.cmake
+@@ -78,14 +78,6 @@
+     )
+ endif()
+ 
+-if (NOT DESKTOP_APP_DISABLE_JEMALLOC)
+-	target_link_libraries(common_options
+-	INTERFACE
+-	    $<TARGET_OBJECTS:desktop-app::linux_jemalloc_helper>
+-	    $<LINK_ONLY:desktop-app::external_jemalloc>
+-	)
+-endif()
+-
+ if (DESKTOP_APP_USE_ALLOCATION_TRACER)
+     target_link_options(common_options
+     INTERFACE

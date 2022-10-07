@@ -1,15 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit toolchain-funcs
 
-MY_P="${PN}-src-6013ce"
+MY_P="${PN}-src-${PV//.}ce"
 
 DESCRIPTION="A webserver log analyzer"
 HOMEPAGE="https://www.c-amie.co.uk/software/analog/"
-SRC_URI="http://www.c-amie.co.uk/static/analog/6013/${MY_P}.zip"
+SRC_URI="http://www.c-amie.co.uk/static/analog/${PV//.}/${MY_P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

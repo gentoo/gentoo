@@ -3,12 +3,12 @@
 
 EAPI=7
 
-inherit elisp-common libtool flag-o-matic gnuconfig strip-linguas toolchain-funcs
+inherit libtool flag-o-matic gnuconfig strip-linguas toolchain-funcs
 
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 LICENSE="GPL-3+"
-IUSE="cet default-gold doc emacs +gold multitarget +nls pgo +plugins static-libs test vanilla"
+IUSE="cet default-gold doc +gold multitarget +nls pgo +plugins static-libs test vanilla"
 REQUIRED_USE="default-gold? ( gold )"
 
 # Variables that can be set here  (ignored for live ebuilds)
@@ -52,7 +52,6 @@ is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 RDEPEND="
 	>=sys-devel/binutils-config-3
 	sys-libs/zlib
-	emacs? ( >=app-editors/emacs-23.1:* )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -312,8 +311,6 @@ src_compile() {
 		emake V=1 info
 	fi
 
-	! is_cross && use emacs && elisp-compile "${S}"/binutils/dwarf-mode.el
-
 	# we nuke the manpages when we're left with junk
 	# (like when we bootstrap, no perl -> no manpages)
 	find . -name '*.1' -a -size 0 -delete
@@ -406,11 +403,6 @@ src_install() {
 		dodoc opcodes/ChangeLog*
 	fi
 
-	if ! is_cross && use emacs ; then
-		elisp-install ${PN} "${S}"/binutils/dwarf-mode.el{,c}
-		elisp-site-file-install "${FILESDIR}/50${PN}-gentoo.el"
-	fi
-
 	# Remove shared info pages
 	rm -f "${ED}"/${DATAPATH}/info/{dir,configure.info,standards.info}
 
@@ -422,8 +414,6 @@ pkg_postinst() {
 	# Make sure this ${CTARGET} has a binutils version selected
 	[[ -e ${EROOT}/etc/env.d/binutils/config-${CTARGET} ]] && return 0
 	binutils-config ${CTARGET}-${PV}
-
-	! is_cross && use emacs && elisp-site-regen
 }
 
 pkg_postrm() {
@@ -447,8 +437,6 @@ pkg_postrm() {
 	elif [[ $(CHOST=${CTARGET} binutils-config -c) == ${CTARGET}-${PV} ]] ; then
 		binutils-config ${CTARGET}-${PV}
 	fi
-
-	! is_cross && use emacs && elisp-site-regen
 }
 
 # Note [slotting support]

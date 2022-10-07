@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MYP=Img-${PV}-Source
 
 DESCRIPTION="Adds a lot of image formats to Tcl/Tk"
 HOMEPAGE="http://tkimg.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/1.4/${PN}%20${PV}/${MYP}.tar.gz
+SRC_URI="mirror://sourceforge/${PN}/${PN}/$(ver_cut 1-2)/${PN}%20${PV}/${MYP}.tar.gz
 	https://dev.gentoo.org/~tupone/distfiles/${PN}-1.4.7-patchset-1.tar.xz"
 
 LICENSE="BSD"

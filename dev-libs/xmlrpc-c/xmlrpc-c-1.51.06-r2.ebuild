@@ -10,7 +10,7 @@ inherit multilib-minimal
 # 2. SVN tagging of releases seems spotty: http://svn.code.sf.net/p/xmlrpc-c/code/release_number/
 # Because of this, we are following the "Super Stable" release channel
 
-DESCRIPTION="A lightweigt RPC library based on XML and HTTP"
+DESCRIPTION="A lightweight RPC library based on XML and HTTP"
 HOMEPAGE="http://xmlrpc-c.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 

@@ -1,0 +1,10 @@
+--- a/lib/Unix_util_stubs.c	2022-09-20 19:53:44.445778566 +0200
++++ b/lib/Unix_util_stubs.c	2022-09-20 19:54:03.521504343 +0200
+@@ -24,6 +24,7 @@
+   vincenzo_ml@yahoo.it
+ */
+ 
++#include <unistd.h>
+ #include <stddef.h>
+ #include <string.h>
+ #include <errno.h>

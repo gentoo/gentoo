@@ -12,7 +12,7 @@ inherit myspell-r2
 
 DESCRIPTION="Turkish dictionaries for myspell/hunspell"
 HOMEPAGE="https://extensions.libreoffice.org/en/extensions/show/turkish-spellcheck-dictionary"
-SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/oo-turkish-dict-v1-2.oxt"
+SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/oo-turkish-dict-v$(ver_rs 1-2 -).oxt"
 
 LICENSE="LGPL-3+"
 SLOT="0"

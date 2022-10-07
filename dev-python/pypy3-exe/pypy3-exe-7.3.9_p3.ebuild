@@ -22,14 +22,14 @@ S="${WORKDIR}/${MY_P}-src"
 LICENSE="MIT"
 SLOT="3.9-${PYPY_PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 +jit low-memory ncurses cpu_flags_x86_sse2"
+IUSE="+jit low-memory ncurses cpu_flags_x86_sse2"
 
 RDEPEND="
-	>=sys-libs/zlib-1.1.3:0=
-	dev-libs/libffi:0=
-	virtual/libintl:0=
+	app-arch/bzip2:0=
 	dev-libs/expat:0=
-	bzip2? ( app-arch/bzip2:0= )
+	dev-libs/libffi:0=
+	>=sys-libs/zlib-1.1.3:0=
+	virtual/libintl:0=
 	ncurses? ( sys-libs/ncurses:0= )
 	!dev-python/pypy3-exe-bin:${SLOT}
 "
@@ -120,23 +120,9 @@ src_configure() {
 		${jit_backend}
 
 		pypy/goal/targetpypystandalone
+		--withmod-bz2
+		$(usex ncurses --with{,out}mod-_minimal_curses)
 	)
-
-	# Avoid linking against libraries disabled by use flags
-	local opts=(
-		bzip2:bz2
-		ncurses:_minimal_curses
-	)
-
-	local opt
-	for opt in "${opts[@]}"; do
-		local flag=${opt%:*}
-		local mod=${opt#*:}
-
-		args+=(
-			$(usex ${flag} --withmod --withoutmod)-${mod}
-		)
-	done
 
 	local interp=( "${EPYTHON}" )
 	if use low-memory; then

@@ -99,7 +99,7 @@ PATCHES=(
 
 pkg_setup() {
 	python-single-r1_pkg_setup
-	vala_setup
+
 	if use nvme ; then
 		kernel_is -ge 4 4 || die "NVMe support requires kernel >= 4.4"
 	fi
@@ -107,6 +107,8 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	vala_setup
 
 	# c.f. https://github.com/fwupd/fwupd/issues/1414
 	sed -e "/test('thunderbolt-self-test', e, env: test_env, timeout : 120)/d" \
@@ -193,9 +195,11 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	use minimal || udev_reload
 }
 
 pkg_postrm() {
+	xdg_pkg_postrm
 	use minimal || udev_reload
 }

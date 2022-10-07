@@ -179,15 +179,16 @@ pkg_postinst() {
 	optfeature "Import Matlab workspace files in the Variable Explorer" dev-python/scipy
 	optfeature "Run Cython files in the IPython console" dev-python/cython
 	optfeature "The hdf5/h5py plugin" dev-python/h5py
-	# optfeature "The line profiler plugin" dev-python/spyder-line-profiler
-	# optfeature "The memory profiler plugin" dev-python/spyder-memory-profiler
-	# spyder-autopep8 does not have a release (yet)
-	# and are not compatible with >=spyder-4.0.0 at the moment
-	# optfeature "The autopep8 plugin" dev-python/spyder-autopep8
-	# optfeature "Vim key bindings" dev-python/spyder-vim
+	optfeature "The line profiler plugin" dev-python/spyder-line-profiler
+	optfeature "Vim key bindings" dev-python/spyder-vim
 	optfeature "Unittest support" dev-python/spyder-unittest
-	# optfeature "Jupyter notebook support" dev-python/spyder-notebook
 	optfeature "System terminal inside spyder" dev-python/spyder-terminal
+	optfeature "Jupyter notebook support" dev-python/spyder-notebook
+	# spyder-memory-profiler is not compatible with spyder-5.2+ yet
+	# optfeature "The memory profiler plugin" dev-python/spyder-memory-profiler
 	# spyder-reports not yet updated to >=spyder-4.0.0
 	# optfeature "Markdown reports using Pweave" dev-python/spyder-reports
+	# Plugins with no release yet:
+	# optfeature "Manage virtual environments and packages" dev-python/spyder-env-manager
+	# optfeature "VCS (e.g. git) integration" dev-python/spyder-vcs
 }

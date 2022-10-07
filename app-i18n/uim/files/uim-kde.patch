@@ -29,7 +29,15 @@
  AC_ARG_ENABLE(pref,
    AC_HELP_STRING([--disable-pref],
      [do not build graphical utility to edit user settings]),
-@@ -1948,12 +1970,15 @@
+@@ -1883,7 +1905,6 @@
+   cmake_option="-DCMAKE_BUILD_TYPE=${cmake_build_type}"
+   cmake_option="${cmake_option} -DCMAKE_INSTALL_PREFIX=${prefix}"
+   cmake_option="${cmake_option} -DCMAKE_SKIP_RPATH=true"
+-  cmake_option="${cmake_option} -DKDE4_USE_ALWAYS_FULL_RPATH=false"
+ fi
+ 
+ if test "x$with_qt4" = xyes; then
+@@ -1948,12 +1969,15 @@
      qt5_immodule_option="DEFINES+=QT5_IMMODULE"
    fi
    set -e
@@ -51,7 +59,7 @@
    ${QMAKE5} -o ${ac_abs_top_builddir}/qt5/candwin/Makefile.qmake \
      ${ac_abs_top_builddir}/qt5/candwin/uim-candwin-qt5.pro
    ${QMAKE5} -o ${ac_abs_top_builddir}/qt5/chardict/Makefile.qmake \
-@@ -2007,6 +2032,7 @@
+@@ -2007,6 +2031,7 @@
     Qt5 immodule    : ${with_qt5_immodule}
     KDE3 Applet     : ${enable_kde_applet}
     KDE4 Applet     : ${enable_kde4_applet}

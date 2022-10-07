@@ -1,0 +1,26 @@
+From bc80093354457d8f057115a75877ce330e65e79e Mon Sep 17 00:00:00 2001
+From: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Date: Fri, 1 Jul 2022 22:04:52 +0300
+Subject: [PATCH] engine.h no longer available with latest KF5
+
+* asturm 2022-10-05: Cleanup unrelated style changes.
+
+---
+ Tests/kstars_ui/test_catalog_download.cpp | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/Tests/kstars_ui/test_catalog_download.cpp b/Tests/kstars_ui/test_catalog_download.cpp
+index 111e5a70f..d94c99f5f 100644
+--- a/Tests/kstars_ui/test_catalog_download.cpp
++++ b/Tests/kstars_ui/test_catalog_download.cpp
+@@ -4,7 +4,6 @@
+ #include "test_kstars_startup.h"
+ 
+ #include "Options.h"
+-#include <engine.h>
+ #include <KNS3/DownloadWidget>
+ #include <KNS3/Button>
+ #include <KMessageBox>
+-- 
+GitLab
+

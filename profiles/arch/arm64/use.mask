@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
+# matoro <matoro_gentoo@matoro.tk> (2022-09-29)
+# dev-util/google-perftools is supported here
+-tcmalloc
+
 # Mike Gilbert <floppym@gentoo.org> (2022-08-31)
 # Requires the following packages to be keyworded/stable:
 # sys-libs/libapparmor

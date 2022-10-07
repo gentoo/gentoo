@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">osslsigncode</remote-id>
+		<remote-id type="github">mtrojnar/osslsigncode</remote-id>
 	</upstream>
 </pkgmetadata>

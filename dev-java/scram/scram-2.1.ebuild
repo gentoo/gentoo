@@ -7,7 +7,7 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="com.ongres.scram:common:2.1"
+MAVEN_ID="com.ongres.scram:client:2.1"
 JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple

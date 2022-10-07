@@ -13,10 +13,10 @@ if [[ ${PV} == 9999 ]]; then
 
 	EGIT_REPO_URI="
 		https://github.com/PolyMC/PolyMC
-		https://github.com/PolyMC/libnbtplusplus
 	"
 
-	EGIT_SUBMODULES=( 'depends/libnbtplusplus' )
+	# TODO: Add tomlplusplus as a system library, like quazip
+	EGIT_SUBMODULES=( '*' '-libraries/quazip' )
 else
 	MY_PN="PolyMC"
 
@@ -33,36 +33,47 @@ fi
 
 # Apache-2.0 for MultiMC (PolyMC is forked from it)
 # GPL-3 for PolyMC
-# LGPL-3 for libnbtplusplus
+# LGPL-3+ for libnbtplusplus
+# MIT for tomlplusplus
 # See the rest of PolyMC's libraries at https://github.com/PolyMC/PolyMC/tree/develop/libraries
-LICENSE="Apache-2.0 Boost-1.0 BSD BSD-2 GPL-2+ GPL-3 LGPL-3 OFL-1.1 MIT"
+LICENSE="Apache-2.0 BSD BSD-2 GPL-2+ GPL-3 ISC LGPL-2.1+ LGPL-3+ MIT"
 
 SLOT="0"
 
-IUSE="debug lto test"
+IUSE="debug lto qt6 test"
 REQUIRED_USE="
 	lto? ( !debug )
 "
 
 RESTRICT="!test? ( test )"
 
-MIN_QT="5.12.0"
-QT_SLOT=5
+MIN_QT_5_VERSION="5.12.0"
+MIN_QT_6_VERSION="6.0.0"
 
 QT_DEPS="
-	>=dev-qt/qtconcurrent-${MIN_QT}:${QT_SLOT}
-	>=dev-qt/qtcore-${MIN_QT}:${QT_SLOT}
-	>=dev-qt/qtgui-${MIN_QT}:${QT_SLOT}
-	>=dev-qt/qtnetwork-${MIN_QT}:${QT_SLOT}
-	>=dev-qt/qttest-${MIN_QT}:${QT_SLOT}
-	>=dev-qt/qtwidgets-${MIN_QT}:${QT_SLOT}
-	>=dev-qt/qtxml-${MIN_QT}:${QT_SLOT}
+	!qt6? (
+		>=dev-qt/qtconcurrent-${MIN_QT_5_VERSION}:5
+		>=dev-qt/qtcore-${MIN_QT_5_VERSION}:5
+		>=dev-qt/qtgui-${MIN_QT_5_VERSION}:5
+		>=dev-qt/qtnetwork-${MIN_QT_5_VERSION}:5
+		>=dev-qt/qttest-${MIN_QT_5_VERSION}:5
+		>=dev-qt/qtwidgets-${MIN_QT_5_VERSION}:5
+		>=dev-qt/qtxml-${MIN_QT_5_VERSION}:5
+	)
+
+	qt6? (
+		>=dev-qt/qtbase-${MIN_QT_6_VERSION}:6[concurrent,gui,network,widgets,xml(+)]
+		>=dev-qt/qt5compat-${MIN_QT_6_VERSION}:6
+	)
 "
 
 # Required at both build-time and run-time
 COMMON_DEPENDS="
 	${QT_DEPS}
-	>=dev-libs/quazip-1.3:=
+
+	!qt6? ( >=dev-libs/quazip-1.3:=[qt5(+)] )
+	 qt6? ( >=dev-libs/quazip-1.3:=[qt6(-)] )
+
 	sys-libs/zlib
 "
 
@@ -81,9 +92,17 @@ DEPEND="
 # And we need more than just the GL headers
 RDEPEND="
 	${COMMON_DEPENDS}
+
+	!qt6? ( >=dev-qt/qtsvg-${MIN_QT_5_VERSION}:5 )
+	 qt6? ( >=dev-qt/qtsvg-${MIN_QT_6_VERSION}:6 )
+
 	>=virtual/jre-1.8.0:*
 	virtual/opengl
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.1-include_QDebug.patch
+)
 
 src_prepare() {
 	cmake_src_prepare
@@ -98,8 +117,7 @@ src_configure(){
 		-DCMAKE_INSTALL_PREFIX="/usr"
 		# Resulting binary is named polymc
 		-DLauncher_APP_BINARY_NAME="${PN}"
-		# Force Qt5 to avoid accidentaly building the Qt6 version and breaking things
-		-DLauncher_QT_VERSION_MAJOR=${QT_SLOT}
+		-DLauncher_QT_VERSION_MAJOR=$(usex qt6 6 5)
 
 		-DENABLE_LTO=$(usex lto)
 		-DBUILD_TESTING=$(usex test)
@@ -122,7 +140,7 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	# https://github.com/PolyMC/PolyMC/issues/227
-	optfeature "old Minecraft (<= 1.12.2) support" x11-libs/libXrandr
+	optfeature "old Minecraft (<= 1.12.2) support" x11-apps/xrandr
 
 	optfeature "built-in MangoHud support" games-util/mangohud
 	optfeature "built-in Feral Gamemode support" games-util/gamemode

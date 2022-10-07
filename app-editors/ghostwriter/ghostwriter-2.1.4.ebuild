@@ -11,7 +11,7 @@ SRC_URI="https://github.com/wereturtle/ghostwriter/archive/refs/tags/${PV}.tar.g
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 BDEPEND="dev-qt/linguist-tools:5"

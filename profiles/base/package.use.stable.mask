@@ -4,6 +4,16 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Marek Szuba <marecki@gentoo.org> (2022-09-25)
+# This depends on app-admin/ansible-molecule, which is not stable yet.
+# Moreover, all but the most recent versions of ansible-molecule
+# depend in turn on subprocess-tee.
+dev-python/subprocess-tee test-full
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-09-16)
+# app-emacs/flycheck is not stable
+dev-util/pkgcheck emacs
+
 # Matthew Smith <matthew@gentoo.org> (2022-08-25)
 # sci-electronics/ngspice is not stable and may not be for a while due
 # to outstanding bugs.

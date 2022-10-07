@@ -12,12 +12,12 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.tartarus.org/simon/putty.git"
 else
 	SRC_URI+=" https://the.earth.li/~sgtatham/${PN}/${PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 sparc x86"
 fi
 LICENSE="MIT"
 
 SLOT="0"
-IUSE="debug doc +gtk gtk2 ipv6 gssapi"
+IUSE="debug doc +gtk gtk2 gssapi"
 
 RDEPEND="
 	!net-misc/pssh
@@ -55,7 +55,7 @@ src_configure() {
 		-DPUTTY_DEBUG="$(usex debug)"
 		-DPUTTY_GSSAPI="$(usex gssapi DYNAMIC OFF)"
 		-DPUTTY_GTK_VERSION=$(usex gtk $(usex gtk2 2 3 ) '')
-		-DPUTTY_IPV6="$(usex ipv6)"
+		-DPUTTY_IPV6=yes
 	)
 	cmake_src_configure
 }

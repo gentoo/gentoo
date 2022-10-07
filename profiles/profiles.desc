@@ -202,15 +202,6 @@ mips		default/linux/mips/17.0/mipsel/multilib/n64			exp
 mips		default/linux/mips/17.0/mipsel/multilib/n64/systemd		exp
 mips		default/linux/mips/17.0/mipsel/multilib/n64/systemd/merged-usr	exp
 
-
-# Deprecated PPC32 Profiles
-# @MAINTAINER: ppc@gentoo.org
-ppc		default/linux/powerpc/ppc32/17.0			exp
-ppc		default/linux/powerpc/ppc32/17.0/desktop		exp
-ppc		default/linux/powerpc/ppc32/17.0/desktop/gnome		exp
-ppc		default/linux/powerpc/ppc32/17.0/desktop/gnome/systemd	exp
-ppc		default/linux/powerpc/ppc32/17.0/developer		exp
-
 # Deprecated PPC64 Profiles
 # @MAINTAINER: ppc64@gentoo.org
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland				stable
@@ -218,11 +209,6 @@ ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop			stable
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome		stable
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/desktop/gnome/systemd	stable
 ppc		default/linux/powerpc/ppc64/17.0/32bit-userland/developer		exp
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland				exp
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop			exp
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome		exp
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome/systemd	exp
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/developer		exp
 
 # PPC profiles
 # @MAINTAINER: gyakovlev@gentoo.org, ppc@gentoo.org, musl@gentoo.org
@@ -260,6 +246,8 @@ ppc64		default/linux/ppc64le/17.0/desktop/gnome/systemd/merged-usr	dev
 ppc64		default/linux/ppc64le/17.0/desktop/plasma			stable
 ppc64		default/linux/ppc64le/17.0/desktop/plasma/systemd		stable
 ppc64		default/linux/ppc64le/17.0/desktop/plasma/systemd/merged-usr	dev
+ppc64		default/linux/ppc64le/17.0/desktop/systemd			stable
+ppc64		default/linux/ppc64le/17.0/desktop/systemd/merged-usr		dev
 ppc64		default/linux/ppc64le/17.0/systemd				stable
 ppc64		default/linux/ppc64le/17.0/systemd/merged-usr			dev
 ppc64		default/linux/ppc64le/17.0/developer				exp
@@ -350,12 +338,10 @@ arm		default/linux/arm/17.0/musl/armv7a/hardened/selinux	exp
 arm64		default/linux/arm64/17.0/musl				exp
 arm64		default/linux/arm64/17.0/musl/hardened			exp
 arm64		default/linux/arm64/17.0/musl/hardened/selinux		exp
-mips		default/linux/musl/mips					exp
-mips		hardened/linux/musl/mips				exp
-mips		default/linux/musl/mips/mipsel				exp
-mips		hardened/linux/musl/mips/mipsel				exp
-ppc		default/linux/powerpc/ppc32/17.0/musl			exp
-ppc		default/linux/powerpc/ppc32/17.0/musl/hardened		exp
+mips		default/linux/mips/17.0/musl/o32			exp
+mips		default/linux/mips/17.0/musl/n64			exp
+mips		default/linux/mips/17.0/musl/mipsel/o32			exp
+mips		default/linux/mips/17.0/musl/mipsel/n64			exp
 riscv		default/linux/riscv/20.0/rv64gc/lp64d/musl		exp
 riscv		default/linux/riscv/20.0/rv64gc/lp64/musl		exp
 x86		default/linux/x86/17.0/musl				exp

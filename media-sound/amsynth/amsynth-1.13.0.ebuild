@@ -11,10 +11,10 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/release-${PV}/${P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="alsa dssi gtk jack lash lv2 nsm oss vst"
 
-REQUIRED_USE="dssi? ( gtk ) lv2? ( gtk )"
+REQUIRED_USE="dssi? ( gtk ) lv2? ( gtk ) vst? ( gtk )"
 
 BDEPEND="
 	dev-util/intltool

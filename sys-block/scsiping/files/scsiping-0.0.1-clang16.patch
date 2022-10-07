@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/870445
+--- a/main.c
++++ b/main.c
+@@ -2,2 +2,4 @@
+ #include <stdio.h>
++#include <stdlib.h>
++#include <sys/ioctl.h>
+ #include <string.h>

@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-PYTHON_REQ_USE="sqlite,ssl,xml"
+PYTHON_REQ_USE="sqlite,ssl,xml(+)"
 
 inherit distutils-r1 optfeature
 
@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mikf/${PN}.git"
 else
 	SRC_URI="https://github.com/mikf/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 hppa ppc ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-2"

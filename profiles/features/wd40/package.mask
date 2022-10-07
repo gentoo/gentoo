@@ -4,6 +4,7 @@
 # Various packages requiring Rust.
 app-admin/ansible
 app-admin/ansible-core
+>=app-antivirus/clamav-0.105.1
 app-crypt/acme
 app-crypt/certbot
 app-crypt/certbot-nginx
@@ -49,6 +50,7 @@ dev-python/spur
 dev-python/sshtunnel
 dev-python/tempest
 dev-python/trustme
+>=dev-python/trio-0.22.0
 dev-python/twine
 dev-python/watchfiles
 dev-ros/roswtf
@@ -56,6 +58,7 @@ dev-util/cargo-c
 dev-util/cbindgen
 dev-util/git-delta
 dev-util/maturin
+dev-util/tree-sitter-cli
 gnome-base/gdm
 >=gnome-base/gnome-core-apps-3.36.5
 >=gnome-base/gnome-core-libs-3.36.5

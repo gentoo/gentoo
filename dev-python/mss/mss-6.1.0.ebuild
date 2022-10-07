@@ -13,7 +13,7 @@ SRC_URI="https://github.com/BoboTiG/python-mss/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 S="${WORKDIR}/python-${PN}-${PV}"
 

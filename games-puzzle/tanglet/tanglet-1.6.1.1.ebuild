@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit qmake-utils xdg
 
 DESCRIPTION="Single player word finding game based on Boggle"
 HOMEPAGE="https://gottcode.org/tanglet/"
-SRC_URI="https://gottcode.org/tanglet/tanglet-1.6.1.1-src.tar.bz2"
+SRC_URI="https://gottcode.org/tanglet/${P}-src.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

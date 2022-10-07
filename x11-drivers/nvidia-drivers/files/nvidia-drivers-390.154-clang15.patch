@@ -1,0 +1,83 @@
+Kernel's makefiles pass -Werror=strict-prototypes which
+trigger errors with clang15+
+https://bugs.gentoo.org/870238
+--- a/kernel/nvidia/nvlink_linux.c
++++ b/kernel/nvidia/nvlink_linux.c
+@@ -639 +639 @@
+-void * NVLINK_API_CALL nvlink_allocLock()
++void * NVLINK_API_CALL nvlink_allocLock(void)
+--- a/kernel/nvidia/os-interface.c
++++ b/kernel/nvidia/os-interface.c
+@@ -879 +879 @@
+-NV_STATUS NV_API_CALL os_flush_cpu_cache()
++NV_STATUS NV_API_CALL os_flush_cpu_cache(void)
+@@ -886 +886 @@
+-NV_STATUS NV_API_CALL os_flush_cpu_cache_all()
++NV_STATUS NV_API_CALL os_flush_cpu_cache_all(void)
+@@ -944 +944 @@
+-void NV_API_CALL os_flush_cpu_write_combine_buffer()
++void NV_API_CALL os_flush_cpu_write_combine_buffer(void)
+@@ -1073 +1073 @@
+-NvU32 NV_API_CALL os_get_cpu_number()
++NvU32 NV_API_CALL os_get_cpu_number(void)
+@@ -1080 +1080 @@
+-NvU32 NV_API_CALL os_get_cpu_count()
++NvU32 NV_API_CALL os_get_cpu_count(void)
+@@ -1155 +1155 @@
+-void NV_API_CALL os_dump_stack()
++void NV_API_CALL os_dump_stack(void)
+--- a/kernel/nvidia-uvm/uvm8_lock.c
++++ b/kernel/nvidia-uvm/uvm8_lock.c
+@@ -312 +312 @@
+-bool __uvm_thread_check_all_unlocked()
++bool __uvm_thread_check_all_unlocked(void)
+--- a/kernel/nvidia-uvm/uvm8_perf_heuristics.c
++++ b/kernel/nvidia-uvm/uvm8_perf_heuristics.c
+@@ -29 +29 @@
+-NV_STATUS uvm_perf_heuristics_init()
++NV_STATUS uvm_perf_heuristics_init(void)
+@@ -44 +44 @@
+-void uvm_perf_heuristics_exit()
++void uvm_perf_heuristics_exit(void)
+--- a/kernel/nvidia-uvm/uvm8_perf_prefetch.c
++++ b/kernel/nvidia-uvm/uvm8_perf_prefetch.c
+@@ -462 +462 @@
+-NV_STATUS uvm_perf_prefetch_init()
++NV_STATUS uvm_perf_prefetch_init(void)
+@@ -500 +500 @@
+-void uvm_perf_prefetch_exit()
++void uvm_perf_prefetch_exit(void)
+--- a/kernel/nvidia-uvm/uvm8_perf_thrashing.c
++++ b/kernel/nvidia-uvm/uvm8_perf_thrashing.c
+@@ -1324 +1324 @@
+-NV_STATUS uvm_perf_thrashing_init()
++NV_STATUS uvm_perf_thrashing_init(void)
+@@ -1401 +1401 @@
+-void uvm_perf_thrashing_exit()
++void uvm_perf_thrashing_exit(void)
+--- a/kernel/nvidia-uvm/uvm8_procfs.c
++++ b/kernel/nvidia-uvm/uvm8_procfs.c
+@@ -61 +61 @@
+-NV_STATUS uvm_procfs_init()
++NV_STATUS uvm_procfs_init(void)
+@@ -77 +77 @@
+-void uvm_procfs_exit()
++void uvm_procfs_exit(void)
+@@ -106 +106 @@
+-struct proc_dir_entry *uvm_procfs_get_gpu_base_dir()
++struct proc_dir_entry *uvm_procfs_get_gpu_base_dir(void)
+--- a/kernel/nvidia-uvm/uvm8_push.c
++++ b/kernel/nvidia-uvm/uvm8_push.c
+@@ -103 +103 @@
+-bool uvm_push_info_is_tracking_descriptions()
++bool uvm_push_info_is_tracking_descriptions(void)
+--- a/kernel/nvidia-uvm/uvm8_tools.c
++++ b/kernel/nvidia-uvm/uvm8_tools.c
+@@ -2041 +2041 @@
+-void uvm_tools_flush_events()
++void uvm_tools_flush_events(void)
+--- a/kernel/nvidia-uvm/uvm_common.c
++++ b/kernel/nvidia-uvm/uvm_common.c
+@@ -63 +63 @@
+-bool uvm_debug_prints_enabled()
++bool uvm_debug_prints_enabled(void)

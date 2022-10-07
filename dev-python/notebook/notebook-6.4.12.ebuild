@@ -22,7 +22,7 @@ RDEPEND="
 	dev-python/argon2-cffi[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	>=dev-python/terminado-0.8.3[${PYTHON_USEDEP}]
-	>=www-servers/tornado-6.0[${PYTHON_USEDEP}]
+	>=dev-python/tornado-6.0[${PYTHON_USEDEP}]
 	dev-python/ipython_genutils[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-4.2.1[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_core-4.6.1[${PYTHON_USEDEP}]

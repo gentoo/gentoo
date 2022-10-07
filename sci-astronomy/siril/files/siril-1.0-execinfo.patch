@@ -1,0 +1,22 @@
+commit c009c4c1800086e7f4c4e80939e9ddc8964c8e12
+Author: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date:   Thu Aug 4 00:27:08 2022 +0200
+
+    Include execinfo.h only if available
+
+Bug: https://bugs.gentoo.org/873016
+Upstream: https://gitlab.com/free-astro/siril/-/merge_requests/284
+
+diff --git a/src/core/signals.c b/src/core/signals.c
+index 74100b3a..0eefd460 100644
+--- a/src/core/signals.c
++++ b/src/core/signals.c
+@@ -25,7 +25,7 @@
+ #ifdef _WIN32
+ #include <windows.h>
+ #include <dbghelp.h>
+-#else
++#elif HAVE_EXECINFO_H
+ #include <execinfo.h>
+ #endif
+ 

@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/solid-${KFMIN}:5
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/boost-1.71
+	dev-libs/boost
 "
 RDEPEND="${COMMON_DEPEND}
 	!dev-libs/botan[gmp(-)]

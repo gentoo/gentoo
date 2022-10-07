@@ -1,0 +1,42 @@
+From 2fe60c9684f93b67f549ed3d70f883a9a098fc7b Mon Sep 17 00:00:00 2001
+From: Jan-Piet Mens <jp@mens.de>
+Date: Fri, 23 Sep 2022 22:10:48 +0200
+Subject: [PATCH] FIX: now compiles without MQTT 	addresses #401
+
+---
+ recorder.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/recorder.c b/recorder.c
+index 12fa921..c65acef 100644
+--- a/recorder.c
++++ b/recorder.c
+@@ -494,10 +494,12 @@ void do_request(struct udata *ud, UT_string *username, UT_string *device, char *
+ 			return;
+ 		}
+ 
++#ifdef WITH_MQTT
+ 		if ((js = json_stringify(resp, "  ")) != NULL) {
+ 			publish(ud, UB(fulltopic), js);
+ 			free(js);
+ 		}
++#endif
+ 		json_delete(resp);
+ 
+ 	} else if (strcmp(request_type, "tours") == 0) {
+@@ -558,10 +560,12 @@ void do_request(struct udata *ud, UT_string *username, UT_string *device, char *
+ 			return;
+ 		}
+ 
++#ifdef WITH_MQTT
+ 		if ((js = json_stringify(resp, "  ")) != NULL) {
+ 			publish(ud, UB(fulltopic), js);
+ 			free(js);
+ 		}
++#endif
+ 
+ 		json_delete(resp);
+ 
+-- 
+2.37.2
+

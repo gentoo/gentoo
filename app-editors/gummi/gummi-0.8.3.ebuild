@@ -11,7 +11,7 @@ SRC_URI="https://github.com/alexandervdm/${PN}/releases/download/${PV}/${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 RDEPEND="
 	app-text/gtkspell:3

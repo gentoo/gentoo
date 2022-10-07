@@ -16,7 +16,7 @@ else
 fi
 LICENSE="MIT"
 SLOT="0/1"
-IUSE="builtin elogind +server systemd"
+IUSE="builtin elogind server systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="

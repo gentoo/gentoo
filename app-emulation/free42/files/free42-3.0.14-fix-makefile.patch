@@ -1,0 +1,26 @@
+diff -Naur free42-nologo-3.0.14.orig/gtk/Makefile free42-nologo-3.0.14/gtk/Makefile
+--- free42-nologo-3.0.14.orig/gtk/Makefile	2022-08-13 23:55:44.000000000 +0200
++++ free42-nologo-3.0.14/gtk/Makefile	2022-09-23 20:46:30.096874563 +0200
+@@ -40,10 +40,11 @@
+ 	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS=1 \
+ 	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS_ACCESS_FUNCTIONS=1
+ 
+-CXXFLAGS = $(CFLAGS) \
++CXXFLAGS := $(CFLAGS) \
+ 	 -fno-exceptions \
+ 	 -fno-rtti \
+-	 -D_WCHAR_T_DEFINED
++	 -D_WCHAR_T_DEFINED \
++	 ${CXXFLAGS}
+ 
+ LIBS = gcc111libbid.a $(shell $(PKG_CONFIG) --libs gtk+-3.0)
+ 
+@@ -118,7 +119,7 @@
+ 	./keymap2cc
+ 
+ gcc111libbid.a:
+-	sh ./build-intel-lib.sh
++	+sh ./build-intel-lib.sh
+ 	ln -s IntelRDFPMathLib20U1/TESTS/readtest.c
+ 
+ symlinks:

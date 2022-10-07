@@ -26,7 +26,9 @@
 # If the software has a directory named vendor in its
 # top level directory, the only thing you need to do is inherit the
 # eclass. If it doesn't, you need to also create a dependency tarball and
-# host it somewhere, for example in your dev space.
+# host it somewhere, for example in your dev space. It's recommended that
+# a format supporting parallel decompression is used and developers should
+# use higher levels of compression like '-9' for xz.
 #
 # Here is an example of how to create a dependency tarball.
 # The base directory in the GOMODCACHE setting must be go-mod in order
@@ -36,7 +38,7 @@
 #
 # $ cd /path/to/project
 # $ GOMODCACHE="${PWD}"/go-mod go mod download -modcacherw
-# $ tar -acf project-1.0-deps.tar.xz go-mod
+# $ XZ_OPT='-T0 -9' tar -acf project-1.0-deps.tar.xz go-mod
 #
 # @CODE
 #

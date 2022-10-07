@@ -16,7 +16,7 @@ S="${WORKDIR}/PyDev.Debugger-${MY_P}"
 
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 # After removing and recompiling the prebuilt lib the tests fail?
 # For some reason the test suite is executing a slightly different gdb command

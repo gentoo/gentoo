@@ -10,7 +10,6 @@
 		Lilv is the successor to SLV2, rewritten to be significantly faster and have minimal dependencies.
 	</longdescription>
 	<use>
-		<flag name="dyn-manifest">Add LV2 Dynamic Manifest support. See http://lv2plug.in/ns/ext/dynmanifest/</flag>
 		<flag name="tools">Build command line utilities</flag>
 	</use>
 </pkgmetadata>
