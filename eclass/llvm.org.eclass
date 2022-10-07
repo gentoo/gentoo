@@ -216,6 +216,14 @@ ALL_LLVM_TARGET_FLAGS=(
 	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]/#/llvm_targets_}"
 )
 
+# @ECLASS_VARIABLE: LLVM_SOABI
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# The current ABI version of LLVM dylib, in a form suitable for use
+# as a subslot.  This is equal to LLVM_MAJOR for releases, and to PV
+# for the main branch.
+LLVM_SOABI=${LLVM_MAJOR}
+[[ ${LLVM_MAJOR} == ${_LLVM_MASTER_MAJOR} ]] && LLVM_SOABI=${PV}
 
 # == global scope logic ==
 
