@@ -202,6 +202,10 @@ if type -P gcc &>/dev/null; then
 	tbegin "tc-get-cxx-stdlib (gcc)"
 	[[ $(CXX=g++ tc-get-cxx-stdlib) == libstdc++ ]]
 	tend $?
+
+	tbegin "tc-get-c-rtlib (gcc)"
+	[[ $(CC=gcc tc-get-c-rtlib) == libgcc ]]
+	tend $?
 fi
 
 if type -P clang &>/dev/null; then
@@ -218,6 +222,12 @@ if type -P clang &>/dev/null; then
 	tbegin "tc-get-cxx-stdlib (clang, invalid)"
 	! CXX=clang++ CXXFLAGS="-stdlib=invalid" tc-get-cxx-stdlib
 	tend $?
+
+	for rtlib in compiler-rt libgcc; do
+		tbegin "tc-get-c-rtlib (clang, ${rtlib})"
+		[[ $(CC=clang CFLAGS="--rtlib=${rtlib}" tc-get-c-rtlib) == ${rtlib} ]]
+		tend $?
+	done
 fi
 
 texit

@@ -1209,4 +1209,32 @@ tc-get-cxx-stdlib() {
 	return 0
 }
 
+# @FUNCTION: tc-get-c-rtlib
+# @DESCRIPTION:
+# Attempt to identify the runtime used by the C/C++ compiler.
+# If the runtime is identifed, the function returns 0 and prints one
+# of the following:
+#
+# - ``compiler-rt`` for ``sys-libs/compiler-rt``
+# - ``libgcc`` for ``sys-devel/gcc``'s libgcc
+#
+# If the runtime is not recognized, the function returns 1.
+tc-get-c-rtlib() {
+	local res=$(
+		$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} \
+			-print-libgcc-file-name 2>/dev/null
+	)
+
+	case ${res} in
+		*libclang_rt*)
+			echo compiler-rt;;
+		*libgcc*)
+			echo libgcc;;
+		*)
+			return 1;;
+	esac
+
+	return 0
+}
+
 fi
