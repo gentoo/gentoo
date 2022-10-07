@@ -20,13 +20,12 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	!sys-libs/libunwind
 "
-LLVM_MAX_SLOT=${PV%%.*}
 DEPEND="
-	sys-devel/llvm:${LLVM_MAX_SLOT}
+	sys-devel/llvm:${LLVM_MAJOR}
 "
 BDEPEND="
 	clang? (
-		sys-devel/clang:${LLVM_MAX_SLOT}
+		sys-devel/clang:${LLVM_MAJOR}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -46,7 +45,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	llvm_pkg_setup
+	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	python-any-r1_pkg_setup
 }
 
