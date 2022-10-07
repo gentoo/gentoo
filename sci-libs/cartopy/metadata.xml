@@ -14,5 +14,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">SciTools/cartopy</remote-id>
+		<remote-id type="pypi">Cartopy</remote-id>
 	</upstream>
 </pkgmetadata>
