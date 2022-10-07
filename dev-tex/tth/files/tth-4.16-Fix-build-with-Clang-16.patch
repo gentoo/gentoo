@@ -1,0 +1,19 @@
+From 70244cb4546e6114e08b7bdcf8459daddc9bca8b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 7 Oct 2022 18:33:03 +0100
+Subject: [PATCH] Fix build with Clang 16
+
+--- a/tthsplit.c
++++ b/tthsplit.c
+@@ -6,9 +6,8 @@ Copyright 1997 I.H.Hutchinson.
+ #define LINELEN 256
+ #include <stdio.h>
+ #include <string.h>
+-main(argc,argv)
+-int argc;
+-char *argv[];
++#include <stdlib.h>
++int main(int argc, char *argv[])
+ {
+ int slen;
+ char *ch,*ch2;
