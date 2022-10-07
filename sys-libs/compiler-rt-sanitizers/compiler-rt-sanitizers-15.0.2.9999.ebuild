@@ -10,7 +10,7 @@ DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
-SLOT="$(ver_cut 1-3)"
+SLOT="${LLVM_VERSION}"
 KEYWORDS=""
 IUSE="+abi_x86_32 abi_x86_64 +clang debug test"
 # base targets
@@ -34,9 +34,8 @@ RESTRICT="
 	!test? ( test )
 "
 
-LLVM_MAX_SLOT=${SLOT%%.*}
 DEPEND="
-	sys-devel/llvm:${LLVM_MAX_SLOT}
+	sys-devel/llvm:${LLVM_MAJOR}
 	virtual/libcrypt[abi_x86_32(-)?,abi_x86_64(-)?]
 "
 BDEPEND="
@@ -46,8 +45,8 @@ BDEPEND="
 	test? (
 		!!<sys-apps/sandbox-2.13
 		$(python_gen_any_dep ">=dev-python/lit-15[\${PYTHON_USEDEP}]")
-		=sys-devel/clang-${PV%_*}*:${LLVM_MAX_SLOT}
-		sys-libs/compiler-rt:${SLOT}
+		=sys-devel/clang-${LLVM_VERSION}*:${LLVM_MAJOR}
+		sys-libs/compiler-rt:${LLVM_VERSION}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -77,7 +76,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	check_space
-	llvm_pkg_setup
+	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	python-any-r1_pkg_setup
 }
 
@@ -126,10 +125,10 @@ src_configure() {
 	done
 
 	local mycmakeargs=(
-		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${SLOT}"
+		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${LLVM_VERSION}"
 		# use a build dir structure consistent with install
 		# this makes it possible to easily deploy test-friendly clang
-		-DCOMPILER_RT_OUTPUT_DIR="${BUILD_DIR}/lib/clang/${SLOT}"
+		-DCOMPILER_RT_OUTPUT_DIR="${BUILD_DIR}/lib/clang/${LLVM_VERSION}"
 
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
 		# builtins & crt installed by sys-libs/compiler-rt
@@ -159,14 +158,14 @@ src_configure() {
 			-DLLVM_LIT_ARGS="$(get_lit_flags)"
 
 			# they are created during src_test()
-			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${LLVM_MAX_SLOT}/bin/clang"
-			-DCOMPILER_RT_TEST_CXX_COMPILER="${BUILD_DIR}/lib/llvm/${LLVM_MAX_SLOT}/bin/clang++"
+			-DCOMPILER_RT_TEST_COMPILER="${BUILD_DIR}/lib/llvm/${LLVM_MAJOR}/bin/clang"
+			-DCOMPILER_RT_TEST_CXX_COMPILER="${BUILD_DIR}/lib/llvm/${LLVM_MAJOR}/bin/clang++"
 		)
 
 		# same flags are passed for build & tests, so we need to strip
 		# them down to a subset supported by clang
-		CC=${EPREFIX}/usr/lib/llvm/${LLVM_MAX_SLOT}/bin/clang \
-		CXX=${EPREFIX}/usr/lib/llvm/${LLVM_MAX_SLOT}/bin/clang++ \
+		CC=${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/bin/clang \
+		CXX=${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/bin/clang++ \
 		strip-unsupported-flags
 	fi
 
@@ -187,23 +186,23 @@ src_configure() {
 	cmake_src_configure
 
 	if use test; then
-		local sys_dir=( "${EPREFIX}"/usr/lib/clang/${SLOT}/lib/* )
+		local sys_dir=( "${EPREFIX}"/usr/lib/clang/${LLVM_VERSION}/lib/* )
 		[[ -e ${sys_dir} ]] || die "Unable to find ${sys_dir}"
 		[[ ${#sys_dir[@]} -eq 1 ]] || die "Non-deterministic compiler-rt install: ${sys_dir[*]}"
 
 		# copy clang over since resource_dir is located relatively to binary
 		# therefore, we can put our new libraries in it
-		mkdir -p "${BUILD_DIR}"/lib/{llvm/${LLVM_MAX_SLOT}/{bin,$(get_libdir)},clang/${SLOT}/include} || die
-		cp "${EPREFIX}"/usr/lib/llvm/${LLVM_MAX_SLOT}/bin/clang{,++} \
-			"${BUILD_DIR}"/lib/llvm/${LLVM_MAX_SLOT}/bin/ || die
-		cp "${EPREFIX}"/usr/lib/clang/${SLOT}/include/*.h \
-			"${BUILD_DIR}"/lib/clang/${SLOT}/include/ || die
+		mkdir -p "${BUILD_DIR}"/lib/{llvm/${LLVM_MAJOR}/{bin,$(get_libdir)},clang/${LLVM_VERSION}/include} || die
+		cp "${EPREFIX}"/usr/lib/llvm/${LLVM_MAJOR}/bin/clang{,++} \
+			"${BUILD_DIR}"/lib/llvm/${LLVM_MAJOR}/bin/ || die
+		cp "${EPREFIX}"/usr/lib/clang/${LLVM_VERSION}/include/*.h \
+			"${BUILD_DIR}"/lib/clang/${LLVM_VERSION}/include/ || die
 		cp "${sys_dir}"/*builtins*.a \
-			"${BUILD_DIR}/lib/clang/${SLOT}/lib/${sys_dir##*/}/" || die
+			"${BUILD_DIR}/lib/clang/${LLVM_VERSION}/lib/${sys_dir##*/}/" || die
 		# we also need LLVMgold.so for gold-based tests
-		if [[ -f ${EPREFIX}/usr/lib/llvm/${LLVM_MAX_SLOT}/$(get_libdir)/LLVMgold.so ]]; then
-			ln -s "${EPREFIX}"/usr/lib/llvm/${LLVM_MAX_SLOT}/$(get_libdir)/LLVMgold.so \
-				"${BUILD_DIR}"/lib/llvm/${LLVM_MAX_SLOT}/$(get_libdir)/ || die
+		if [[ -f ${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)/LLVMgold.so ]]; then
+			ln -s "${EPREFIX}"/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)/LLVMgold.so \
+				"${BUILD_DIR}"/lib/llvm/${LLVM_MAJOR}/$(get_libdir)/ || die
 		fi
 	fi
 }
