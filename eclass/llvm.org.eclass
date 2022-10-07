@@ -82,6 +82,7 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 					die "Unknown snapshot: ${PV}"
 					;;
 			esac
+			export EGIT_VERSION=${EGIT_COMMIT}
 			;;
 		*)
 			_LLVM_SOURCE_TYPE=tar
