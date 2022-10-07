@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit optfeature
-
 MY_PV="${PV}"
 
 DESCRIPTION=".NET is a free, cross-platform, open-source developer platform"
@@ -25,6 +23,7 @@ QA_PREBUILT="*"
 RESTRICT+=" splitdebug"
 RDEPEND="
 	app-crypt/mit-krb5:0/0
+	dev-libs/icu
 	dev-util/lttng-ust:0
 	sys-libs/zlib:0/1
 	dotnet-symlink? (
@@ -50,10 +49,4 @@ src_install() {
 		echo "DOTNET_ROOT=/${dest}" > "${T}/90${PN}-${SLOT}" || die
 		doenvd "${T}/90${PN}-${SLOT}"
 	fi
-}
-
-pkg_postinst() {
-	# For bug #833281 Also, MS docs:
-	# https://docs.microsoft.com/en-us/dotnet/core/runtime-config/globalization
-	optfeature "globalization support" dev-libs/icu
 }

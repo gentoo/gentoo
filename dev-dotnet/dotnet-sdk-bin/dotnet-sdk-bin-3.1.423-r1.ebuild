@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit optfeature
-
 MY_PV="${PV}"
 
 DESCRIPTION=".NET is a free, cross-platform, open-source developer platform"
@@ -17,7 +15,7 @@ arm? ( https://dotnetcli.azureedge.net/dotnet/Sdk/${MY_PV}/dotnet-sdk-${MY_PV}-l
 arm64? ( https://dotnetcli.azureedge.net/dotnet/Sdk/${MY_PV}/dotnet-sdk-${MY_PV}-linux-arm64.tar.gz )
 "
 
-SLOT="6.0"
+SLOT="3.1"
 KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="+dotnet-symlink"
 REQUIRED_USE="elibc_glibc"
@@ -25,13 +23,10 @@ QA_PREBUILT="*"
 RESTRICT+=" splitdebug"
 RDEPEND="
 	app-crypt/mit-krb5:0/0
+	dev-libs/icu
 	dev-util/lttng-ust:0
 	sys-libs/zlib:0/1
-	dotnet-symlink? (
-		!dev-dotnet/dotnet-sdk[dotnet-symlink(+)]
-		!dev-dotnet/dotnet-sdk-bin:3.1[dotnet-symlink(+)]
-		!dev-dotnet/dotnet-sdk-bin:5.0[dotnet-symlink(+)]
-	)
+	dotnet-symlink? ( !dev-dotnet/dotnet-sdk[dotnet-symlink(+)] )
 "
 
 S=${WORKDIR}
@@ -39,11 +34,6 @@ S=${WORKDIR}
 src_install() {
 	local dest="opt/${PN}-${SLOT}"
 	dodir "${dest%/*}"
-
-	# Create a magic workloads file, bug #841896
-	local featureband="$(ver_cut 3 | sed "s/[0-9]/0/2g")"
-	local workloads="metadata/workloads/${SLOT}.${featureband}"
-	{ mkdir -p "${S}/${workloads}" && touch "${S}/${workloads}/userlocal"; } || die
 
 	{ mv "${S}" "${ED}/${dest}" && mkdir "${S}" && fperms 0755 "/${dest}"; } || die
 	dosym "../../${dest}/dotnet" "/usr/bin/dotnet-bin-${SLOT}"
@@ -56,10 +46,4 @@ src_install() {
 		echo "DOTNET_ROOT=/${dest}" > "${T}/90${PN}-${SLOT}" || die
 		doenvd "${T}/90${PN}-${SLOT}"
 	fi
-}
-
-pkg_postinst() {
-	# For bug #833281 Also, MS docs:
-	# https://docs.microsoft.com/en-us/dotnet/core/runtime-config/globalization
-	optfeature "globalization support" dev-libs/icu
 }
