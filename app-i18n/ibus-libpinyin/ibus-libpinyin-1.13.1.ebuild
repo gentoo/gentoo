@@ -13,7 +13,7 @@ SRC_URI="https://github.com/libpinyin/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="boost lua opencc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	lua? ( ${LUA_REQUIRED_USE} )"
