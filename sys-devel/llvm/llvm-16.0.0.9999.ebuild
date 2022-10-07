@@ -4,8 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-inherit cmake llvm.org multilib multilib-minimal pax-utils \
-	python-any-r1 toolchain-funcs
+inherit cmake llvm.org multilib-minimal pax-utils python-any-r1 \
+	toolchain-funcs
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
