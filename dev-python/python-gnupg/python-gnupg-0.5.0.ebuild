@@ -13,7 +13,7 @@ HOMEPAGE="https://docs.red-dove.com/python-gnupg/"
 SRC_URI="https://github.com/vsajip/python-gnupg/releases/download/${PV}/${P}.tar.gz"
 SRC_URI+=" verify-sig? ( https://github.com/vsajip/python-gnupg/releases/download/${PV}/${P}.tar.gz.asc )"
 
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 LICENSE="BSD"
 SLOT="0"
 
