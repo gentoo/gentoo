@@ -10,7 +10,7 @@ DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
-SLOT="0"
+SLOT="0/${LLVM_SOABI}"
 KEYWORDS=""
 IUSE="debug test zstd"
 RESTRICT="!test? ( test )"
