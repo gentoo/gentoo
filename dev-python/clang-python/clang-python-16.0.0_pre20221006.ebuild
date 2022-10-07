@@ -30,7 +30,7 @@ RDEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	test? (
-		sys-devel/clang:${PV%%.*}
+		sys-devel/clang:${LLVM_MAJOR}
 	)
 "
 
@@ -40,7 +40,7 @@ llvm.org_set_globals
 python_test() {
 	# tests rely on results from a specific clang version, so override
 	# the search path
-	local -x CLANG_LIBRARY_PATH=${BROOT}/usr/lib/llvm/${PV%%.*}/$(get_libdir)
+	local -x CLANG_LIBRARY_PATH=${BROOT}/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)
 	"${EPYTHON}" -m unittest discover -v || die "Tests fail with ${EPYTHON}"
 }
 
