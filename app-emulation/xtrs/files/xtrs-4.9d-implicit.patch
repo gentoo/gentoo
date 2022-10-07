@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/875674
+
+--- xtrs-4.9d/trs_disk.c
++++ xtrs-4.9d/trs_disk.c
+@@ -3137,7 +3137,7 @@
+ }
+ 
+ void
+-real_restore(curdrive)
++real_restore(int curdrive)
+ {
+ #if __linux
+   DiskState *d = &disk[curdrive];
+--- xtrs-4.9d/trs_memory.c
++++ xtrs-4.9d/trs_memory.c
+@@ -153,7 +153,7 @@
+     memory_map = which + (trs_model << 4) + (romin << 2);
+ }
+ 
+-void mem_romin(state)
++void mem_romin(int state)
+ {
+     romin = (state & 1);
+     memory_map = (memory_map & ~4) + (romin << 2);
+--- xtrs-4.9d/trs_printer.c
++++ xtrs-4.9d/trs_printer.c
+@@ -18,7 +18,7 @@
+ #include "z80.h"
+ #include "trs.h"
+ 
+-void trs_printer_write(value)
++void trs_printer_write(int value)
+ {
+     if(value == 0x0D)
+     {
