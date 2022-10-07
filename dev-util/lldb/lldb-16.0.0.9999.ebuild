@@ -56,7 +56,7 @@ LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
 llvm.org_set_globals
 
 pkg_setup() {
-	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
+	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	python-single-r1_pkg_setup
 }
 
@@ -86,7 +86,7 @@ src_configure() {
 		# of -ltinfo)
 		-DCURSES_NEED_NCURSES=ON
 
-		-DLLDB_EXTERNAL_CLANG_RESOURCE_DIR="${BROOT}/usr/lib/clang/${PV%_*}"
+		-DLLDB_EXTERNAL_CLANG_RESOURCE_DIR="${BROOT}/usr/lib/clang/${LLVM_VERSION}"
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
