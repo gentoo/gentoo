@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-arrays.patch
 	"${FILESDIR}"/${P}-audio.patch
 	"${FILESDIR}"/${P}-speed.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_compile() {
