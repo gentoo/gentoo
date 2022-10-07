@@ -71,6 +71,7 @@ RDEPEND="${COMMON_DEPEND}
 
 src_prepare() {
 	cmake_src_prepare
+	# https://github.com/transmission/transmission/issues/3901
 	rm -f libtransmission/version.h || die
 }
 
