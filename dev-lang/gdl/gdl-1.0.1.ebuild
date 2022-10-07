@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/expat
 	net-libs/libtirpc:=
 	sci-libs/gsl:0=
-	sci-libs/plplot:0=[cxx,-dynamic,wxwidgets?]
+	sci-libs/plplot:0=[X,cxx,-dynamic,wxwidgets?]
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
 	sys-libs/zlib
