@@ -22,9 +22,9 @@ IUSE="doc"
 
 BDEPEND="
 	test? (
-		dev-python/bcrypt[${PYTHON_USEDEP}]
 		dev-python/scrypt[${PYTHON_USEDEP}]
 		!alpha? ( !arm? ( !hppa? ( !ia64? ( !s390? ( !sparc? (
+			dev-python/bcrypt[${PYTHON_USEDEP}]
 			dev-python/cryptography[${PYTHON_USEDEP}]
 		) ) ) ) ) )
 	)"
