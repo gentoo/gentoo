@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Gjs"
 
 LICENSE="MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )"
 SLOT="0"
-IUSE="+cairo examples gtk readline +sysprof test"
+IUSE="+cairo examples readline +sysprof test"
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ppc ppc64 sparc x86"
 RESTRICT="!test? ( test )"
 
