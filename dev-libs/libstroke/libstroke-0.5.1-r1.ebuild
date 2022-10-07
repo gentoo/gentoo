@@ -1,13 +1,13 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
-DESCRIPTION="A Stroke and Gesture recognition Library"
-HOMEPAGE="http://www.etla.net/libstroke/"
-SRC_URI="http://www.etla.net/libstroke/${P}.tar.gz"
+DESCRIPTION="Stroke and Gesture recognition Library"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -26,15 +26,12 @@ PATCHES=(
 
 src_prepare() {
 	default
-	mv configure.{in,ac} || die
-	eautoreconf
-}
 
-src_configure() {
-	econf --disable-static
+	eautoreconf
 }
 
 src_install() {
 	default
-	find "${ED}" -name '*.la' -delete || die
+
+	find "${ED}" -type f -name '*.la' -delete || die
 }
