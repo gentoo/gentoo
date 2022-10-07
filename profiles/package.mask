@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-10-07)
+# Ancient K&R C codebase which fails to compile with modern Clang; surface
+# level fixes are doable, but then get into various dangerous constructs
+# in the async code which is non-trivial to port to modern compilers.
+# bug #731070, bug #802108, bug #875164.
+# Use media-sound/mpd if looking for a modern alternative. Removal on 2022-11-07.
+media-sound/rplay
+
 # Mike Gilbert <floppym@gentoo.org> (2022-10-05)
 # Implements the obsolete BOOTP protocol; use DHCP instead.
 # No activity upstream for over two decades.
