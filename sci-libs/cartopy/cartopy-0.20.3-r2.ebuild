@@ -31,7 +31,7 @@ RDEPEND="
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/shapely[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
-		dev-python/matplotlib[${PYTHON_USEDEP}]
+		<dev-python/matplotlib-3.6[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
 		dev-python/pillow[jpeg,${PYTHON_USEDEP}]
 		dev-python/pyproj[${PYTHON_USEDEP}]
