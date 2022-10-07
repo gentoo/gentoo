@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${COMMITHASH}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
