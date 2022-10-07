@@ -25,7 +25,7 @@ REQUIRED_USE="${ADA_REQUIRED_USE}"
 S="${WORKDIR}"/${MYP}
 
 src_compile() {
-	gnatmake -v gnatsymbolize -cargs ${ADAFLAGS} || die
+	gnatmake -v gnatsymbolize -cargs ${ADAFLAGS} -largs ${LDFLAGS} || die
 }
 
 src_install() {
