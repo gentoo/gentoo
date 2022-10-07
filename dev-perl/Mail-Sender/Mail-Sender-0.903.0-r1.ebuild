@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Module for sending mails with attachments through an SMTP server"
 
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="minimal"
 
 RDEPEND="
