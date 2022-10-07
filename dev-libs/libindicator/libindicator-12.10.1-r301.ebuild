@@ -11,7 +11,7 @@ SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="3"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
