@@ -14,6 +14,10 @@ LICENSE="GPL-2+ GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-clang16.patch
+)
+
 src_prepare() {
 	default
 

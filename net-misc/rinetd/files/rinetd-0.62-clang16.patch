@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/871060
+--- a/rinetd.c
++++ b/rinetd.c
+@@ -12,2 +12,3 @@
+ #include <netinet/in.h>
++#include <arpa/inet.h>
+ #include <getopt.h>
+@@ -25,2 +26,3 @@
+ #include <ctype.h>
++#include <unistd.h>
+ 
