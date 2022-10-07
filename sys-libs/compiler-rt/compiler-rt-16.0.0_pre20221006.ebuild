@@ -10,21 +10,20 @@ DESCRIPTION="Compiler runtime library for clang (built-in part)"
 HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
-SLOT="$(ver_cut 1-3)"
+SLOT="${LLVM_VERSION}"
 KEYWORDS=""
 IUSE="+abi_x86_32 abi_x86_64 +clang debug test"
 RESTRICT="!test? ( test ) !clang? ( test )"
 
-LLVM_MAX_SLOT=${SLOT%%.*}
 DEPEND="
-	sys-devel/llvm:${LLVM_MAX_SLOT}
+	sys-devel/llvm:${LLVM_MAJOR}
 "
 BDEPEND="
 	>=dev-util/cmake-3.16
 	clang? ( sys-devel/clang )
 	test? (
 		$(python_gen_any_dep ">=dev-python/lit-15[\${PYTHON_USEDEP}]")
-		=sys-devel/clang-${PV%_*}*:${LLVM_MAX_SLOT}
+		=sys-devel/clang-${LLVM_VERSION}*:${LLVM_MAJOR}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -52,7 +51,7 @@ pkg_setup() {
 	# bootstrap-prefix to set the appropriate path vars to LLVM instead
 	# of using llvm_pkg_setup.
 	if [[ ${CHOST} != *-darwin* ]] || has_version dev-lang/llvm; then
-		llvm_pkg_setup
+		LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	fi
 	python-any-r1_pkg_setup
 }
@@ -97,7 +96,7 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${SLOT}"
+		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${LLVM_VERSION}"
 
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
 		-DCOMPILER_RT_BUILD_LIBFUZZER=OFF
@@ -135,8 +134,8 @@ src_configure() {
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 			-DLLVM_LIT_ARGS="$(get_lit_flags)"
 
-			-DCOMPILER_RT_TEST_COMPILER="${EPREFIX}/usr/lib/llvm/${LLVM_MAX_SLOT}/bin/clang"
-			-DCOMPILER_RT_TEST_CXX_COMPILER="${EPREFIX}/usr/lib/llvm/${LLVM_MAX_SLOT}/bin/clang++"
+			-DCOMPILER_RT_TEST_COMPILER="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/bin/clang"
+			-DCOMPILER_RT_TEST_CXX_COMPILER="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/bin/clang++"
 		)
 	fi
 
