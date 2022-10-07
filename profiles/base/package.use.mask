@@ -6,6 +6,13 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Viorel Munteanu <ceamac.paragon@gmail.com> (2022-10-07)
+# Cannot test and fix pax-kernel related bugs on a current grsec kernel
+# Mask the flag for now
+# Bugs: #643466, #674872, #832161, #855722
+app-emulation/virtualbox pax-kernel
+app-emulation/virtualbox-modules pax-kernel
+
 # Sam James <sam@gentoo.org> (2022-10-02)
 # USE=compat / possibly allowing sys-libs/zlib needs to be figured out,
 # but packages want to use the actual zlib-ng library, so we need to
