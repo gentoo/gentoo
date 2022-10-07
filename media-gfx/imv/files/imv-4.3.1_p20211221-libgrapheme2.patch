@@ -1,13 +1,12 @@
-Changed with v2 and would become an error with clang16.
 --- a/src/console.c
 +++ b/src/console.c
 @@ -54,3 +54,3 @@
    if (buffer[position] != 0) {
 -    return position + grapheme_next_character_break(buffer + position, SIZE_MAX);
-+    return position + grapheme_next_character_break((uint_least32_t *)buffer + position, SIZE_MAX);
++    return position + grapheme_next_character_break_utf8(buffer + position, SIZE_MAX);
    } else {
 @@ -87,3 +87,3 @@
    do {
 -    step = grapheme_next_character_break(buffer + result, SIZE_MAX);
-+    step = grapheme_next_character_break((uint_least32_t *)buffer + result, SIZE_MAX);
++    step = grapheme_next_character_break_utf8(buffer + result, SIZE_MAX);
      if (result + step >= position)
