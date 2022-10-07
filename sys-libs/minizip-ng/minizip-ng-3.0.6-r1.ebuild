@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# Worth keeping an eye on 'develop' branch upstream for possible backports,
+# as they copied this practice from sys-libs/zlib upstream.
+
 inherit cmake
 
 DESCRIPTION="Fork of the popular zip manipulation library found in the zlib distribution"
