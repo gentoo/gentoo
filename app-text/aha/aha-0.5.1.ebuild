@@ -9,7 +9,7 @@ SRC_URI="https://github.com/theZiz/aha/archive/refs/tags/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="LGPL-2+ MPL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv"
 
 PATCHES=(
 	"${FILESDIR}/${P}-null-ptr-dereference-fix.patch"
