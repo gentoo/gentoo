@@ -79,4 +79,5 @@ ros-meta/ros_comm
 sci-geosciences/gnome-maps
 >=sys-apps/bat-0.18.1
 virtual/rust
+www-apps/radicale
 >=x11-themes/adwaita-icon-theme-3.36
