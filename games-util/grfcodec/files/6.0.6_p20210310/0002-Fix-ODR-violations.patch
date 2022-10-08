@@ -1,0 +1,63 @@
+From f2e16cca87e8a324ce7ccc9cc2d82235b1e490c1 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Sat, 8 Oct 2022 16:29:44 +0200
+Subject: [PATCH 2/2] Fix ODR violations
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* When compiling with `-flto`, ODR violations pop up:
+
+  src/escapes.h:98:1: error: type ‘struct esc’ violates the C++ One Definition Rule [-Werror=odr]
+     98 | START_ESCAPES()
+        | ^
+  src/escapes.h:98:1: note: a different type is defined in another translation unit
+     98 | START_ESCAPES()
+        | ^
+  src/escapes.h:98:1: note: the first difference of corresponding definitions is field ‘additional’
+     98 | START_ESCAPES()
+        | ^
+  src/escapes.h:98:1: note: a type with different number of fields is defined in another translation unit
+     98 | START_ESCAPES()
+        | ^
+
+  by wrapping the `struct esc` definitions in unnamed namespaces, we can avoid running afoul of ODR.
+
+Bug: https://bugs.gentoo.org/859310
+---
+ src/escapes.h | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/escapes.h b/src/escapes.h
+index 91da82f..d3d2bea 100644
+--- a/src/escapes.h
++++ b/src/escapes.h
+@@ -8,6 +8,7 @@
+ #ifndef GRFCODEC
+ 
+ #define START_ESCAPES()\
++	namespace {\
+ 	const struct esc{\
+ 		char byte;\
+ 		char*str;\
+@@ -30,6 +31,7 @@
+ #else	/* GRFCODEC */
+ 
+ #define START_ESCAPES()\
++	namespace {\
+ 	const struct esc{\
+ 		char byte;\
+ 		char*str;\
+@@ -59,7 +61,8 @@
+ #endif /* GRFCODEC */
+ 
+ #define END_ESCAPES() };\
+-	static const unsigned int num_esc=sizeof(escapes)/sizeof(escapes[0]);
++	static const unsigned int num_esc=sizeof(escapes)/sizeof(escapes[0]);\
++	}
+ 
+ #ifdef GRFCODEC
+ 
+-- 
+2.38.0
+
