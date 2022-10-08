@@ -179,13 +179,9 @@ net-analyzer/rrdtool rados
 sys-fs/multipath-tools rbd
 www-servers/uwsgi uwsgi_plugins_rados
 
-# Anthony G. Basile <blueness@gentoo.org> (2019-03-08)
-# hipe code is missing in erlang for arm
-dev-lang/erlang hipe
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-25)
-# (SM)BIOS/Thunderbolt outside of amd64/x86? - citation needed
-sys-apps/fwupd dell thunderbolt
+# (SM)BIOS outside of amd64/x86? - citation needed
+sys-apps/fwupd dell
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
 # Requires www-client/firefox which isn't available on ARM yet

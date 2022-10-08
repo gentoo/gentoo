@@ -98,11 +98,6 @@ dev-python/QtPy pyqt6 pyside6
 # Doesn't compile with 'Xaw3d' use flag, #849947.
 app-text/xdvik Xaw3d
 
-# Joonas Niilola <juippis@gentoo.org> (2022-07-13)
-# Depends on an older enigmail that only supports python2, which is
-# being removed soon. #758344
-www-client/seamonkey crypt
-
 # Sam James <sam@gentoo.org> (2022-07-10)
 # TBB support is deprecated/broken upstream, needs older version,
 # and upstream are inclined to remove it entirely. bug #820827.
