@@ -175,6 +175,7 @@ sys-block/megacli
 sys-power/dptfxtract
 www-apps/chromedriver-bin
 www-apps/jellyfin
+www-apps/kibana-bin
 www-client/chromium-bin
 www-client/google-chrome
 www-client/google-chrome-beta
