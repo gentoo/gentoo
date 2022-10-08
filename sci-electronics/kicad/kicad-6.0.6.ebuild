@@ -159,7 +159,6 @@ pkg_postinst() {
 	optfeature "Component footprints library" sci-electronics/kicad-footprints
 	optfeature "3D models of components " sci-electronics/kicad-packages3d
 	optfeature "Project templates" sci-electronics/kicad-templates
-	optfeature "Different languages for GUI" sci-electronics/kicad-i18n
 	optfeature "Extended documentation" app-doc/kicad-doc
 	optfeature "Creating 3D models of components" media-gfx/wings
 
