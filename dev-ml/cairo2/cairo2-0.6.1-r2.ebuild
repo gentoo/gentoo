@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86"
 IUSE="+ocamlopt"
 
 DEPEND="
-	x11-libs/cairo:=[svg]
+	x11-libs/cairo:=[svg(+)]
 	dev-ml/dune-configurator:=
 "
 RDEPEND="${DEPEND}"
