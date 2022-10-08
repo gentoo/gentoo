@@ -27,11 +27,11 @@ RDEPEND="
 		dev-libs/openssl:0=
 	)
 	tcpd? ( sys-apps/tcp-wrappers )
+	websockets? ( net-libs/libwebsockets[lejp] )
 "
 DEPEND="
 	${RDEPEND}
 	test? ( dev-util/cunit )
-	websockets? ( net-libs/libwebsockets[lejp] )
 "
 BDEPEND="
 	test? ( ${PYTHON_DEPS} )
