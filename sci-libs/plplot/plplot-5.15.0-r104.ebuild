@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 # fails with ninja, due to USE=java missing swig output dependencies
 CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit cmake flag-o-matic fortran-2 java-pkg-opt-2 lua-single python-single-r1 toolchain-funcs virtualx wxwidgets
+inherit cmake flag-o-matic fortran-2 java-pkg-opt-2 lua-single python-single-r1 virtualx wxwidgets
 
 DESCRIPTION="Multi-language scientific plotting library"
 HOMEPAGE="http://plplot.sourceforge.net/"
@@ -36,7 +36,7 @@ RESTRICT="
 "
 
 RDEPEND="
-	cairo? ( x11-libs/cairo:0=[svg?,X] )
+	cairo? ( x11-libs/cairo:0=[svg(+)?,X] )
 	gd? ( media-libs/gd:2=[jpeg?,png?] )
 	java? ( >=virtual/jre-1.8:* )
 	latex? (
