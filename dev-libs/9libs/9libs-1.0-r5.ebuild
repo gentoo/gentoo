@@ -23,6 +23,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-va_list.patch # Bug 385387
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
