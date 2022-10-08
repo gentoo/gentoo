@@ -60,20 +60,22 @@ tbegin "tc-ld-is-gold (ld=bfd cc=bfd)"
 LD=ld.bfd LDFLAGS=-fuse-ld=bfd tc-ld-is-gold && ret=1 || ret=0
 tend ${ret}
 
-tbegin "tc-ld-is-gold (ld=gold cc=default)"
-LD=ld.gold tc-ld-is-gold
-ret=$?
-tend ${ret}
+if type -P ld.gold &>/dev/null; then
+	tbegin "tc-ld-is-gold (ld=gold cc=default)"
+	LD=ld.gold tc-ld-is-gold
+	ret=$?
+	tend ${ret}
 
-tbegin "tc-ld-is-gold (ld=gold cc=bfd)"
-LD=ld.gold LDFLAGS=-fuse-ld=bfd tc-ld-is-gold
-ret=$?
-tend ${ret}
+	tbegin "tc-ld-is-gold (ld=gold cc=bfd)"
+	LD=ld.gold LDFLAGS=-fuse-ld=bfd tc-ld-is-gold
+	ret=$?
+	tend ${ret}
 
-tbegin "tc-ld-is-gold (ld=bfd cc=gold)"
-LD=ld.bfd LDFLAGS=-fuse-ld=gold tc-ld-is-gold
-ret=$?
-tend ${ret}
+	tbegin "tc-ld-is-gold (ld=bfd cc=gold)"
+	LD=ld.bfd LDFLAGS=-fuse-ld=gold tc-ld-is-gold
+	ret=$?
+	tend ${ret}
+fi
 
 #
 # TEST: tc-ld-disable-gold
@@ -87,23 +89,25 @@ tc-ld-disable-gold
 )
 tend $?
 
-tbegin "tc-ld-disable-gold (ld=gold)"
-(
-export LD=ld.gold LDFLAGS=
-ewarn() { :; }
-tc-ld-disable-gold
-[[ ${LD} == "ld.bfd" || ${LDFLAGS} == *"-fuse-ld=bfd"* ]]
-)
-tend $?
+if type -P ld.gold &>/dev/null; then
+	tbegin "tc-ld-disable-gold (ld=gold)"
+	(
+	export LD=ld.gold LDFLAGS=
+	ewarn() { :; }
+	tc-ld-disable-gold
+	[[ ${LD} == "ld.bfd" || ${LDFLAGS} == *"-fuse-ld=bfd"* ]]
+	)
+	tend $?
 
-tbegin "tc-ld-disable-gold (cc=gold)"
-(
-export LD= LDFLAGS="-fuse-ld=gold"
-ewarn() { :; }
-tc-ld-disable-gold
-[[ ${LD} == *"/ld.bfd" || ${LDFLAGS} == "-fuse-ld=gold -fuse-ld=bfd" ]]
-)
-tend $?
+	tbegin "tc-ld-disable-gold (cc=gold)"
+	(
+	export LD= LDFLAGS="-fuse-ld=gold"
+	ewarn() { :; }
+	tc-ld-disable-gold
+	[[ ${LD} == *"/ld.bfd" || ${LDFLAGS} == "-fuse-ld=gold -fuse-ld=bfd" ]]
+	)
+	tend $?
+fi
 
 unset CPP
 
