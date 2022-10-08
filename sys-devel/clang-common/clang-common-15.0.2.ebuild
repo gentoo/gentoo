@@ -16,7 +16,7 @@ IUSE="default-compiler-rt default-libcxx default-lld llvm-libunwind"
 PDEPEND="
 	sys-devel/clang:*
 	default-compiler-rt? (
-		=sys-libs/compiler-rt-${PV%_*}*
+		sys-devel/clang-runtime[compiler-rt]
 		llvm-libunwind? ( sys-libs/llvm-libunwind )
 		!llvm-libunwind? ( sys-libs/libunwind )
 	)
