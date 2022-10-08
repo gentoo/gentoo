@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-10-08)
+# Obsolete after Plasma 5.25 release, merged into KWin.
+# Removal on 2022-10-22.
+kde-plasma/kwayland-server
+
 # Michał Górny <mgorny@gentoo.org> (2022-10-08)
 # Repository and SRC_URI gone.  Last release in 2012 (guessing
 # by filename).
