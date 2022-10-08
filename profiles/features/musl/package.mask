@@ -49,6 +49,7 @@ sys-libs/libsmbios
 # Sam James <sam@gentoo.org> (2022-04-23)
 # Compatibility packages for binary/pre-built software shouldn't
 # be needed on musl (and these fail to build anyway).
+sys-apps/byld
 sys-libs/libtermcap-compat
 sys-libs/libstdc++-v3
 
@@ -93,6 +94,7 @@ app-benchmarks/geekbench
 app-crypt/rainbowcrack
 app-editors/vscode
 app-editors/vscodium
+app-emulation/crossover-bin
 app-misc/kryoflux-dtc
 app-office/libreoffice-bin
 app-office/libreoffice-bin-debug
@@ -110,12 +112,35 @@ dev-php/PEAR-MDB2_Driver_oci8
 dev-python/pyzotero
 dev-util/idea-community
 games-action/a-story-about-my-uncle
+games-action/badland
+games-action/brutal-legend-gog
+games-action/brutal-legend-hb
+games-action/descent3
+games-action/descent3-demo
 games-action/minecraft-launcher
 games-action/psychonauts2-hb
+games-action/shadowgrounds-bin
+games-action/shadowgrounds-survivor-bin
 games-action/trine
 games-action/trine-enchanted-edition
 games-action/trine2
+games-arcade/barbarian-bin
+games-arcade/jardinains
+games-emulation/zinc
+games-fps/etqw-bin
+games-fps/etqw-data
+games-fps/etqw-demo
+games-fps/glxquake-bin
+games-fps/legends
+games-fps/soldieroffortune
 games-fps/transfusion-bin
+games-fps/tribes2
+games-fps/ut2003
+games-fps/ut2003-bonuspack-cm
+games-fps/ut2003-bonuspack-de
+games-fps/ut2003-bonuspack-epic
+games-fps/ut2003-data
+games-fps/ut2003-demo
 games-fps/ut2004
 games-fps/ut2004-bonuspack-cbp1
 games-fps/ut2004-bonuspack-cbp2
@@ -127,9 +152,16 @@ games-puzzle/world-of-goo-demo
 games-puzzle/world-of-goo-gog
 games-puzzle/world-of-goo-hb
 games-server/bedrock-server
+games-server/etqw-ded
+games-server/mtavc
 games-server/steamcmd
 games-server/ut2004-ded
 games-simulation/slime-rancher
+games-strategy/darwinia
+games-strategy/darwinia-demo
+games-strategy/defcon-demo
+games-strategy/knights-demo
+games-strategy/majesty-demo
 gnome-extra/nautilus-dropbox
 kde-apps/dolphin-plugins-dropbox
 mate-extra/caja-dropbox
@@ -163,6 +195,7 @@ net-misc/yandex-disk
 net-p2p/resilio-sync
 net-print/cnijfilter2
 net-print/hplip-plugin
+sci-chemistry/cara-bin
 sci-electronics/eagle
 sci-electronics/labone
 sci-mathematics/gimps
