@@ -180,7 +180,7 @@ gnome-base/nautilus previewer
 # needs libgdata[gnome-online-accounts], depends on net-libs/webkit-gtk
 gnome-base/gvfs google
 # needs app-text/libgepub which depends on webkit-gtk
-xfce-extra/tumbler epub
+xfce-base/tumbler epub
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Requires dev-python/networkx.

@@ -20,6 +20,7 @@ RDEPEND="
 	>=xfce-base/libxfce4util-4.16
 	>=xfce-base/thunar-4.16
 	>=xfce-base/thunar-volman-4.16
+	>=xfce-base/tumbler-4.16
 	>=xfce-base/xfce4-appfinder-4.16
 	>=xfce-base/xfce4-panel-4.16
 	>=xfce-base/xfce4-session-4.16
@@ -28,7 +29,6 @@ RDEPEND="
 	>=xfce-base/xfconf-4.16
 	>=xfce-base/xfdesktop-4.16
 	>=xfce-base/xfwm4-4.16
-	>=xfce-extra/tumbler-4.16
 	!minimal? (
 		media-fonts/dejavu
 		virtual/freedesktop-icon-theme
