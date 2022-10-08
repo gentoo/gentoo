@@ -23,3 +23,11 @@ src_install() {
 	xorg-3_src_install
 	rm -r "${ED}"/punt || die
 }
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
+}
