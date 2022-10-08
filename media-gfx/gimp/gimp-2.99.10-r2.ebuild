@@ -206,16 +206,16 @@ src_compile() {
 # for https://bugs.gentoo.org/664938
 _rename_plugins() {
 	einfo 'Renaming plug-ins to not collide with pre-2.10.6 file layout (bug #664938)...'
-	local prepend=gimp-org-
+	local prefix=gimp-org-
 	(
 		cd "${ED}"/usr/$(get_libdir)/gimp/2.99/plug-ins || exit 1
 		for plugin_slash in $(ls -d1 */); do
 		    plugin=${plugin_slash%/}
 		    if [[ -f ${plugin}/${plugin} ]]; then
 			# NOTE: Folder and file name need to match for Gimp to load that plug-in
-			#       so "file-svg/file-svg" becomes "${prepend}file-svg/${prepend}file-svg"
-			mv ${plugin}/{,${prepend}}${plugin} || exit 1
-			mv {,${prepend}}${plugin} || exit 1
+			#       so "file-svg/file-svg" becomes "${prefix}file-svg/${prefix}file-svg"
+			mv ${plugin}/{,${prefix}}${plugin} || exit 1
+			mv {,${prefix}}${plugin} || exit 1
 		    fi
 		done
 	)
