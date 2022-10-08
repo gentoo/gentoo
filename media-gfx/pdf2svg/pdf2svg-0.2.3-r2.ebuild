@@ -13,7 +13,7 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=app-text/poppler-0.12.3-r3[cairo]
-	>=x11-libs/cairo-1.2.6:=[svg]
+	>=x11-libs/cairo-1.2.6:=[svg(+)]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
