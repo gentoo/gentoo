@@ -46,9 +46,10 @@ DEPEND="${RDEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 	test? ( >=dev-libs/libzip-1.6.0:= )
 "
+# app-arch/rar is binary only
 BDEPEND="
 	sys-devel/gettext
-	test? ( amd64? ( app-arch/rar ) x86? ( app-arch/rar ) )
+	elibc_glibc? ( test? ( amd64? ( app-arch/rar ) x86? ( app-arch/rar ) ) )
 "
 
 src_configure() {
