@@ -24,7 +24,7 @@ DEPEND="
 	media-libs/fontconfig
 	media-libs/freetype
 	x11-libs/cairo[X,xcb(+)]
-	x11-libs/libxcb:=[xkb]
+	x11-libs/libxcb:=
 	x11-libs/xcb-util
 	x11-libs/xcb-util-cursor
 	x11-libs/xcb-util-image
