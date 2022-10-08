@@ -335,7 +335,7 @@ arm		default/linux/arm/17.0/musl/armv6j/hardened/selinux	exp
 arm		default/linux/arm/17.0/musl/armv7a			exp
 arm		default/linux/arm/17.0/musl/armv7a/hardened		exp
 arm		default/linux/arm/17.0/musl/armv7a/hardened/selinux	exp
-arm64		default/linux/arm64/17.0/musl				exp
+arm64		default/linux/arm64/17.0/musl				dev
 arm64		default/linux/arm64/17.0/musl/hardened			exp
 arm64		default/linux/arm64/17.0/musl/hardened/selinux		exp
 mips		default/linux/mips/17.0/musl/o32			exp
