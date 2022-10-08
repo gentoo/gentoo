@@ -26,7 +26,7 @@ RESTRICT="test" # No tests
 
 RDEPEND="
 	>=x11-libs/libdrm-2.4.52[video_cards_intel,${MULTILIB_USEDEP}]
-	>=x11-libs/libva-2.4.0:=[X?,wayland?,drm,${MULTILIB_USEDEP}]
+	>=x11-libs/libva-2.4.0:=[X?,wayland?,${MULTILIB_USEDEP}]
 
 	hybrid? (
 		>=x11-libs/intel-hybrid-codec-driver-2.0.0[X?,wayland?]
