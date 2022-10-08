@@ -3,6 +3,12 @@
 
 EAPI=8
 
+# Maintainers should:
+# 1. Join the "Gentoo" project at https://dev.gnupg.org/project/view/27/
+# 2. Subscribe to release tasks like https://dev.gnupg.org/T6159
+# (find the one for the current release then subscribe to it +
+# any subsequent ones linked within so you're covered for a while.)
+
 PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_OPTIONAL=1
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnupg.asc
