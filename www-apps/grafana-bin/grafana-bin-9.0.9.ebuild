@@ -21,7 +21,8 @@ KEYWORDS="~amd64"
 DEPEND="acct-group/grafana
 	acct-user/grafana"
 RDEPEND="${DEPEND}
-	media-libs/fontconfig"
+	media-libs/fontconfig
+	sys-libs/glibc"
 
 QA_PREBUILT="usr/bin/grafana-*"
 QA_PRESTRIPPED=${QA_PREBUILT}
