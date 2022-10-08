@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit autotools gnome.org python-r1 xdg
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.gnumeric.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+introspection libgda perl"
 REQUIRED_USE="introspection? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -40,7 +40,7 @@ RDEPEND="
 	>=x11-libs/pango-1.24.0:=
 
 	>=x11-libs/gtk+-3.8.7:3
-	x11-libs/cairo:=[svg]
+	x11-libs/cairo:=[svg(+)]
 
 	introspection? (
 		${PYTHON_DEPS}
@@ -55,6 +55,10 @@ BDEPEND="
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.35.0
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${P}-slibtool.patch" # 791610
+)
 
 src_prepare() {
 	default
