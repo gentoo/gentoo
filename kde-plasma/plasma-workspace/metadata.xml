@@ -11,7 +11,9 @@
 	<use>
 		<flag name="appstream">Enable AppStream software metadata support</flag>
 		<flag name="geolocation">Enables dataengine providing location information</flag>
-		<flag name="policykit">Build the Users KCM using <pkg>sys-apps/accountsservice</pkg> and <pkg>sys-auth/polkit</pkg></flag>
+		<flag name="policykit">Enable locale generation and Users KCM using <pkg>sys-auth/polkit</pkg> and <pkg>sys-apps/accountsservice</pkg></flag>
+		<flag name="screencast">Enable screencast portal using <pkg>kde-plasma/kpipewire</pkg></flag>
 		<flag name="telemetry">Enable User Feedback control module for <pkg>kde-plasma/systemsettings</pkg></flag>
+		<flag name="wallpaper-metadata">Show metadata for image wallpaper plugin using <pkg>kde-apps/libkexiv2</pkg></flag>
 	</use>
 </pkgmetadata>
