@@ -3,10 +3,10 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic versionator virtualx
+inherit autotools eapi7-ver flag-o-matic virtualx
 
-POVRAY_MAJOR_VER=$(get_version_component_range 1-3)
-POVRAY_MINOR_VER=$(get_version_component_range 4)
+POVRAY_MAJOR_VER=$(ver_cut 1-3)
+POVRAY_MINOR_VER=$(ver_cut 4)
 if [ -n "$POVRAY_MINOR_VER" ]; then
 	POVRAY_MINOR_VER=${POVRAY_MINOR_VER/rc/RC}
 	MY_PV="${POVRAY_MAJOR_VER}.${POVRAY_MINOR_VER}"
