@@ -1,36 +1,32 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 KV_MIN=2.6.39
 
-inherit linux-info multilib-minimal toolchain-funcs udev
+inherit autotools linux-info multilib-minimal toolchain-funcs
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/eudev-project/eudev.git"
-	inherit autotools git-r3
+	inherit git-r3
 else
-	MY_PV=${PV/_pre/-pre}
-	SRC_URI="https://github.com/eudev-project/eudev/releases/download/v${MY_PV}/${PN}-${MY_PV}.tar.gz"
-	S="${WORKDIR}"/${PN}-${MY_PV}
-
-	if [[ ${PV} != *_pre* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-	fi
+	SRC_URI="https://github.com/eudev-project/eudev/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
-HOMEPAGE="https://github.com/eudev-project/eudev"
+HOMEPAGE="https://github.com/gentoo/eudev"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
-IUSE="+kmod rule-generator selinux split-usr static-libs test"
+IUSE="+kmod introspection rule-generator selinux split-usr static-libs test"
 RESTRICT="!test? ( test )"
 
 DEPEND=">=sys-apps/util-linux-2.20
 	>=sys-kernel/linux-headers-${KV_MIN}
 	virtual/libcrypt:=
+	introspection? ( >=dev-libs/gobject-introspection-1.38 )
 	kmod? ( >=sys-apps/kmod-16 )
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
 	!sys-apps/gentoo-systemd-integration
@@ -46,10 +42,8 @@ RDEPEND="${DEPEND}
 BDEPEND="dev-util/gperf
 	virtual/os-headers
 	virtual/pkgconfig
-	test? (
-		app-text/tree
-		dev-lang/perl
-	)"
+	>=sys-devel/make-3.82-r4
+	test? ( app-text/tree dev-lang/perl )"
 PDEPEND=">=sys-fs/udev-init-scripts-26"
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -58,7 +52,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 pkg_pretend() {
 	ewarn
-	ewarn "As of 2013-01-29, ${PN} provides the new interface renaming functionality,"
+	ewarn "As of 2013-01-29, ${P} provides the new interface renaming functionality,"
 	ewarn "as described in the URL below:"
 	ewarn "https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames"
 	ewarn
@@ -85,15 +79,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
-
-	# Change rules back to group uucp instead of dialout for now
+	# change rules back to group uucp instead of dialout for now
 	sed -e 's/GROUP="dialout"/GROUP="uucp"/' -i rules/*.rules \
 		|| die "failed to change group dialout to uucp"
 
-	if [[ ${PV} == 9999* ]] ; then
-		eautoreconf
-	fi
+	default
+	eautoreconf
 }
 
 rootprefix() {
@@ -110,13 +101,14 @@ multilib_src_configure() {
 	# bug #502950
 	export cc_cv_CFLAGS__flto=no
 
-	local myeconfargs=(
+	# Keep sorted by ./configure --help and only pass --disable flags
+	# when *required* to avoid external deps or unnecessary compile
+	local econf_args
+	econf_args=(
 		ac_cv_search_cap_init=
 		ac_cv_header_sys_capability_h=yes
-
 		DBUS_CFLAGS=' '
 		DBUS_LIBS=' '
-
 		--with-rootprefix="${EPREFIX}$(rootprefix)"
 		--with-rootrundir=/run
 		--exec-prefix="${EPREFIX}"
@@ -131,17 +123,19 @@ multilib_src_configure() {
 
 	# Only build libudev for non-native_abi, and only install it to libdir,
 	# that means all options only apply to native_abi
-	if multilib_is_native_abi ; then
-		myeconfargs+=(
+	if multilib_is_native_abi; then
+		econf_args+=(
 			--with-rootlibdir="${EPREFIX}$(rootprefix)/$(get_libdir)"
+			$(use_enable introspection)
 			$(use_enable kmod)
 			$(use_enable static-libs static)
 			$(use_enable selinux)
 			$(use_enable rule-generator)
 		)
 	else
-		myeconfargs+=(
+		econf_args+=(
 			--disable-static
+			--disable-introspection
 			--disable-kmod
 			--disable-selinux
 			--disable-rule-generator
@@ -149,11 +143,11 @@ multilib_src_configure() {
 		)
 	fi
 
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf "${econf_args[@]}"
 }
 
 multilib_src_compile() {
-	if multilib_is_native_abi ; then
+	if multilib_is_native_abi; then
 		emake
 	else
 		emake -C src/shared
@@ -162,21 +156,22 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	# Make sandbox get out of the way.
-	# These are safe because there is a fake root filesystem put in place,
+	# make sandbox get out of the way
+	# these are safe because there is a fake root filesystem put in place,
 	# but sandbox seems to evaluate the paths of the test i/o instead of the
-	# paths of the actual i/o that results. Also only test for native abi
-	if multilib_is_native_abi ; then
+	# paths of the actual i/o that results.
+	# also only test for native abi
+	if multilib_is_native_abi; then
 		addread /sys
 		addwrite /dev
 		addwrite /run
 
-		default
+		default_src_test
 	fi
 }
 
 multilib_src_install() {
-	if multilib_is_native_abi ; then
+	if multilib_is_native_abi; then
 		emake DESTDIR="${D}" install
 	else
 		emake -C src/libudev DESTDIR="${D}" install
@@ -192,13 +187,7 @@ multilib_src_install_all() {
 	use rule-generator && doinitd "${FILESDIR}"/udev-postmount
 }
 
-pkg_postrm() {
-	udev_reload
-}
-
 pkg_postinst() {
-	udev_reload
-
 	mkdir -p "${EROOT}"/run
 
 	# "losetup -f" is confused if there is an empty /dev/loop/, Bug #338766

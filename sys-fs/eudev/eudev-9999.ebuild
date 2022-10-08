@@ -25,7 +25,7 @@ HOMEPAGE="https://github.com/eudev-project/eudev"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
-IUSE="+kmod rule-generator selinux static-libs test"
+IUSE="+kmod rule-generator selinux split-usr static-libs test"
 RESTRICT="!test? ( test )"
 
 DEPEND=">=sys-apps/util-linux-2.20
@@ -96,6 +96,14 @@ src_prepare() {
 	fi
 }
 
+rootprefix() {
+	usex split-usr '' /usr
+}
+
+sbindir() {
+	usex split-usr sbin bin
+}
+
 multilib_src_configure() {
 	# bug #463846
 	tc-export CC
@@ -109,14 +117,15 @@ multilib_src_configure() {
 		DBUS_CFLAGS=' '
 		DBUS_LIBS=' '
 
-		--with-rootprefix=
+		--with-rootprefix="${EPREFIX}$(rootprefix)"
 		--with-rootrundir=/run
 		--exec-prefix="${EPREFIX}"
-		--bindir="${EPREFIX}"/bin
+		--bindir="${EPREFIX}$(rootprefix)/bin"
+		--sbindir="${EPREFIX}$(rootprefix)/$(sbindir)"
 		--includedir="${EPREFIX}"/usr/include
-		--libdir="${EPREFIX}"/usr/$(get_libdir)
-		--with-rootlibexecdir="${EPREFIX}"/lib/udev
-		--enable-split-usr
+		--libdir="${EPREFIX}/usr/$(get_libdir)"
+		--with-rootlibexecdir="${EPREFIX}$(rootprefix)/lib/udev"
+		$(use_enable split-usr)
 		--enable-manpages
 	)
 
@@ -124,7 +133,7 @@ multilib_src_configure() {
 	# that means all options only apply to native_abi
 	if multilib_is_native_abi ; then
 		myeconfargs+=(
-			--with-rootlibdir="${EPREFIX}"/$(get_libdir)
+			--with-rootlibdir="${EPREFIX}$(rootprefix)/$(get_libdir)"
 			$(use_enable kmod)
 			$(use_enable static-libs static)
 			$(use_enable selinux)
@@ -177,7 +186,7 @@ multilib_src_install() {
 multilib_src_install_all() {
 	find "${ED}" -name '*.la' -delete || die
 
-	insinto /lib/udev/rules.d
+	insinto "$(rootprefix)/lib/udev/rules.d"
 	doins "${FILESDIR}"/40-gentoo.rules
 
 	use rule-generator && doinitd "${FILESDIR}"/udev-postmount
