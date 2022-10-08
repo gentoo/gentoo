@@ -7,6 +7,8 @@ inherit udev xorg-3
 
 DESCRIPTION="VMWare mouse input driver"
 
+KEYWORDS="~amd64 ~x86"
+
 DEPEND="x11-base/xorg-proto"
 
 src_configure() {
