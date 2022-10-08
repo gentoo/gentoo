@@ -41,7 +41,7 @@ RDEPEND="
 	dbi? ( dev-db/libdbi[static-libs(+)?] )
 	graph? (
 		media-libs/libpng:0=[static-libs(+)?]
-		x11-libs/cairo[svg,static-libs(+)?]
+		x11-libs/cairo[svg(+),static-libs(+)?]
 		x11-libs/pango
 	)
 	lua? ( ${LUA_DEPS} )
