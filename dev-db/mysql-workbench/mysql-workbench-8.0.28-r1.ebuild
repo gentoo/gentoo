@@ -38,7 +38,7 @@ CDEPEND="${PYTHON_DEPS}
 		x11-libs/pango
 		x11-libs/gtk+:3
 		gnome-base/libglade:2.0
-		>=x11-libs/cairo-1.5.12[glib,svg]
+		>=x11-libs/cairo-1.5.12[glib,svg(+)]
 		>=dev-libs/rapidjson-1.1.0
 		dev-libs/libsigc++:2
 		dev-libs/boost[nls]
