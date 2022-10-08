@@ -11,7 +11,7 @@ index dddaf875..ede8d73c 100644
 -#include "thirdparty/dumb/dumb.h"
 +#include <dumb.h>
  #include <filesystem>
-
+ 
  using namespace slade;
 diff --git a/src/Audio/ModMusic.cpp b/src/Audio/ModMusic.cpp
 index cc4b60cf..6d54516d 100644
@@ -23,7 +23,7 @@ index cc4b60cf..6d54516d 100644
  #include "ModMusic.h"
 -#include "thirdparty/dumb/dumb.h"
 +#include <dumb.h>
-
+ 
  using namespace slade;
  using namespace audio;
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
@@ -42,7 +42,7 @@ index fef3d009..00dbb018 100644
  		install(FILES "${SLADE_OUTPUT_DIR}/slade.pk3"
  			DESTINATION share/slade3
  			)
--
+-		
 +
  		install(FILES "${PROJECT_SOURCE_DIR}/dist/res/logo_icon.png"
  			DESTINATION share/icons/
@@ -57,9 +57,9 @@ index 460a7852..5e171446 100644
  #include "Utility/StringUtils.h"
 -#include "thirdparty/fmt/include/fmt/format.h"
 +#include <fmt/format.h>
-
+ 
  using namespace slade;
-
+ 
 diff --git a/src/General/Log.cpp b/src/General/Log.cpp
 index 9ad0718f..8d39f644 100644
 --- a/src/General/Log.cpp
@@ -73,7 +73,7 @@ index 9ad0718f..8d39f644 100644
 +#include <fmt/chrono.h>
 +#include <fmt/format.h>
  #include <fstream>
-
+ 
  using namespace slade;
 diff --git a/src/TextEditor/TextStyle.cpp b/src/TextEditor/TextStyle.cpp
 index 09f4e405..ad51ec0a 100644
@@ -85,9 +85,9 @@ index 09f4e405..ad51ec0a 100644
  #include "Utility/Tokenizer.h"
 -#include "thirdparty/fmt/include/fmt/format.h"
 +#include <fmt/format.h>
-
+ 
  using namespace slade;
-
+ 
 diff --git a/src/UI/Browser/BrowserItem.cpp b/src/UI/Browser/BrowserItem.cpp
 index 89c0f39c..3f056f71 100644
 --- a/src/UI/Browser/BrowserItem.cpp
@@ -98,7 +98,7 @@ index 89c0f39c..3f056f71 100644
  			text_box_ = std::make_unique<TextBox>(
 -				fmt::format("{}\n{}", index_, name_.c_str()), font, ui::scalePx(144), ui::scalePx(16));
 +				fmt::format("{}\n{}", index_, name_.mb_str()), font, ui::scalePx(144), ui::scalePx(16));
-
+ 
  		int top = y;
  		top += ((size - text_box_->height()) * 0.5);
 diff --git a/src/UI/SToolBar/SToolBar.cpp b/src/UI/SToolBar/SToolBar.cpp
@@ -106,7 +106,7 @@ index f38710ad..c002bf97 100644
 --- a/src/UI/SToolBar/SToolBar.cpp
 +++ b/src/UI/SToolBar/SToolBar.cpp
 @@ -219,7 +219,7 @@ void SToolBarGroup::hide(bool hide)
-
+ 
  	// Update 'hidden toolbars' cvar
  	string tb_hidden = toolbars_hidden;
 -	auto   name      = fmt::format("[{}]", name_.c_str());
@@ -120,11 +120,11 @@ index 8c3c4b3b..d66cbc04 100644
 +++ b/src/common.h
 @@ -129,7 +129,7 @@
  #endif
-
+ 
  // fmt
 -#include "thirdparty/fmt/include/fmt/core.h"
 +#include <fmt/core.h>
-
+ 
  // Sigslot
  #include "thirdparty/sigslot/signal.hpp"
 diff --git a/thirdparty/CMakeLists.txt b/thirdparty/CMakeLists.txt
@@ -134,7 +134,7 @@ index f84cfc8a..6cb9e0af 100644
 @@ -6,20 +6,33 @@ find_package(BZip2 REQUIRED)
  set(ZLIB_LIBRARY ${ZLIB_LIBRARY} PARENT_SCOPE)
  set(BZIP2_LIBRARIES ${BZIP2_LIBRARIES} PARENT_SCOPE)
-
+ 
 +option(USE_SYSTEM_DUMB "Use system DUMB library" OFF)
 +if(USE_SYSTEM_DUMB)
 +	pkg_check_modules(DUMB REQUIRED IMPORTED_TARGET dumb>=1.0)
@@ -154,7 +154,7 @@ index f84cfc8a..6cb9e0af 100644
 +	${DUMB_SOURCES}
  	${SLADE_HEADERS}
  	)
-
+ 
  # Add fmt
 -add_subdirectory(fmt)
 +option(USE_SYSTEM_FMT "Use system fmt library" OFF)
@@ -164,12 +164,12 @@ index f84cfc8a..6cb9e0af 100644
 +	add_subdirectory(fmt)
 +	target_include_directories(fmt INTERFACE ${CMAKE_CURRENT_LIST_DIR}/fmt/include)
 +endif()
-
+ 
  # Add lunasvg
  add_library(lunasvg STATIC)
 @@ -29,5 +42,11 @@ add_subdirectory(lunasvg/3rdparty/software)
  add_subdirectory(lunasvg/3rdparty/plutovg)
-
+ 
  add_library(external STATIC ${EXTERNAL_SOURCES})
 -target_link_libraries(external ${ZLIB_LIBRARY} lunasvg fmt ${CMAKE_DL_LIBS})
 +target_link_libraries(external ${ZLIB_LIBRARY} lunasvg fmt::fmt ${CMAKE_DL_LIBS})
