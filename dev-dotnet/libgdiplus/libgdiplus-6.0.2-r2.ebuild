@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils dotnet
+inherit autotools dotnet
 
 DESCRIPTION="Library for using System.Drawing with Mono"
 HOMEPAGE="https://www.mono-project.com"
@@ -21,13 +21,13 @@ RDEPEND="dev-libs/glib
 	media-libs/fontconfig
 	>=media-libs/giflib-5.1.2
 	media-libs/libexif
-	media-libs/libpng:0=
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
 	media-libs/tiff
 	x11-libs/cairo[X]
 	x11-libs/libX11
 	x11-libs/libXrender
 	x11-libs/libXt
-	virtual/jpeg:0
 	!cairo? ( x11-libs/pango )"
 DEPEND="${RDEPEND}"
 
