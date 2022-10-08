@@ -861,7 +861,7 @@ make_gcc_hard() {
 # Most other distros use the logic (including mainline gcc):
 #    lib   - 32bit binaries (x86)
 #    lib64 - 64bit binaries (x86_64)
-# Over time, Gentoo is migrating to the latter form.
+# Over time, Gentoo is migrating to the latter form (17.1 profiles).
 #
 # Unfortunately, due to distros picking the lib32 behavior, newer gcc
 # versions will dynamically detect whether to use lib or lib32 for its
