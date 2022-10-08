@@ -193,6 +193,10 @@ src_install() {
 	insinto /usr/include
 	doins include/libnetlink.h
 
+	# Collides with net-analyzer/ifstat
+	# https://bugs.gentoo.org/868321
+	mv "${ED}"/sbin/ifstat{,-iproute2} || die
+
 	if use split-usr ; then
 		# Can remove compatibility symlink in a year: 2023-05-28.
 		# bug #547264
