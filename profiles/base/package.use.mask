@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam Jame <sam@gentoo.org> (2022-10-08)
+# Older versions of libvirt need a vulnerable version of wireshark
+<app-emulation/libvirt-8.0.0 wireshark-plugins
+
 # Sam James <sam@gentoo.org> (2022-08-07)
 # media-sound/rplay is masked for removal.
 x11-wm/fvwm3 rplay
