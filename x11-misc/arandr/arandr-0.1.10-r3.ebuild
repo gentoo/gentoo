@@ -3,9 +3,8 @@
 
 EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS="no"
-PYTHON_COMPAT=( python3_{8..10} )
-
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 DESCRIPTION="Another XRandR GUI"
@@ -21,7 +20,6 @@ RDEPEND="
 	x11-libs/gtk+:3[introspection]
 	x11-apps/xrandr
 "
-
 BDEPEND="dev-python/docutils[${PYTHON_USEDEP}]"
 
 PATCHES=( "${FILESDIR}/${PN}-0.1.10-manpages.patch" )
