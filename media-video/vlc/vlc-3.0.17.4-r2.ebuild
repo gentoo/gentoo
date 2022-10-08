@@ -20,7 +20,7 @@ else
 	else
 		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 	fi
-	KEYWORDS="amd64 ~arm arm64 ppc ppc64 ~riscv -sparc x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv -sparc x86"
 fi
 inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
 
@@ -127,7 +127,7 @@ RDEPEND="
 		sys-libs/libraw1394
 	)
 	jack? ( virtual/jack )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:0 )
 	kate? ( media-libs/libkate )
 	libass? (
 		media-libs/fontconfig:1.0
@@ -199,7 +199,7 @@ RDEPEND="
 	)
 	twolame? ( media-sound/twolame )
 	udev? ( virtual/udev )
-	upnp? ( net-libs/libupnp:=[ipv6] )
+	upnp? ( net-libs/libupnp:=[ipv6(+)] )
 	v4l? ( media-libs/libv4l:= )
 	vaapi? ( x11-libs/libva:=[drm(+),wayland?,X?] )
 	vdpau? ( x11-libs/libvdpau )
