@@ -49,9 +49,11 @@ RDEPEND="
 	dev-libs/nspr
 	>=dev-libs/nss-3.26
 	media-libs/alsa-lib
+	media-libs/dav1d:0/6
 	media-libs/flac:0/10-12
 	media-libs/fontconfig
 	>=media-libs/freetype-2.11.0-r1
+	>=media-libs/libaom-3.4.0
 	media-libs/libjpeg-turbo
 	media-libs/libwebp
 	media-libs/mesa[gbm(+)]
