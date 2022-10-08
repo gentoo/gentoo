@@ -3,14 +3,13 @@
 
 EAPI=7
 
-inherit desktop eutils
+inherit desktop wrapper
 
-SLOT=0
-
-SRC_URI="https://download.jetbrains.com/go/${P}.tar.gz"
 DESCRIPTION="Golang IDE by JetBrains"
 HOMEPAGE="https://www.jetbrains.com/go"
+SRC_URI="https://download.jetbrains.com/go/${P}.tar.gz"
 
+SLOT="0"
 # JetBrains supports officially only x86_64 even though some 32bit binaries are
 # provided. See https://www.jetbrains.com/go/download/#section=linux
 KEYWORDS="~amd64"
