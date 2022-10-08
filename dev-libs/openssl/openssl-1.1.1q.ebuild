@@ -123,6 +123,7 @@ src_prepare() {
 	# it's still relevant:
 	# - https://github.com/llvm/llvm-project/issues/55255
 	# - https://github.com/openssl/openssl/issues/18225
+	# - https://github.com/openssl/openssl/issues/18663#issuecomment-1181478057
 	# Don't remove the no strict aliasing bits below!
 	filter-flags -fstrict-aliasing
 	append-flags -fno-strict-aliasing
