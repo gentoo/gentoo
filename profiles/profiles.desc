@@ -220,7 +220,7 @@ ppc		default/linux/ppc/17.0/desktop/gnome/systemd/merged-usr	dev
 ppc		default/linux/ppc/17.0/systemd				stable
 ppc		default/linux/ppc/17.0/systemd/merged-usr		dev
 ppc		default/linux/ppc/17.0/developer			exp
-ppc		default/linux/ppc/17.0/musl				exp
+ppc		default/linux/ppc/17.0/musl				dev
 ppc		default/linux/ppc/17.0/musl/hardened			exp
 
 # PPC64 profiles
