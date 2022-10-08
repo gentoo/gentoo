@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
-inherit eutils python-r1 desktop xdg-utils
+PYTHON_COMPAT=( python3_{8,9,10} )
+inherit python-r1 desktop wrapper xdg-utils
 
 DESCRIPTION="GUI for lossless cropping of jpeg images"
 HOMEPAGE="https://emergent.unpythonic.net/01248401946"
