@@ -1,0 +1,41 @@
+https://git.savannah.gnu.org/cgit/bash.git/commit/?h=devel&id=22f21b760ed90eb77c3756e6ccf39b73c84f532a
+
+--- subst.c
++++ subst.c
+@@ -1798,6 +1798,9 @@ extract_heredoc_dolbrace_string (string, sindex, quoted, flags)
+   return (result);
+ }
+ 
++#define PARAMEXPNEST_MAX	32	// for now
++static int dbstate[PARAMEXPNEST_MAX];
++
+ /* Extract a parameter expansion expression within ${ and } from STRING.
+    Obey the Posix.2 rules for finding the ending `}': count braces while
+    skipping over enclosed quoted strings and command substitutions.
+@@ -1828,6 +1831,8 @@ extract_dollar_brace_string (string, sindex, quoted, flags)
+   if (quoted == Q_HERE_DOCUMENT && dolbrace_state == DOLBRACE_QUOTE && (flags & SX_NOALLOC) == 0)
+     return (extract_heredoc_dolbrace_string (string, sindex, quoted, flags));
+ 
++  dbstate[0] = dolbrace_state;
++
+   pass_character = 0;
+   nesting_level = 1;
+   slen = strlen (string + *sindex) + *sindex;
+@@ -1852,6 +1857,8 @@ extract_dollar_brace_string (string, sindex, quoted, flags)
+ 
+       if (string[i] == '$' && string[i+1] == LBRACE)
+ 	{
++	  if (nesting_level < PARAMEXPNEST_MAX)
++	    dbstate[nesting_level] = dolbrace_state;
+ 	  nesting_level++;
+ 	  i += 2;
+ 	  if (dolbrace_state == DOLBRACE_QUOTE || dolbrace_state == DOLBRACE_WORD)
+@@ -1864,6 +1871,7 @@ extract_dollar_brace_string (string, sindex, quoted, flags)
+ 	  nesting_level--;
+ 	  if (nesting_level == 0)
+ 	    break;
++	  dolbrace_state = (nesting_level < PARAMEXPNEST_MAX) ? dbstate[nesting_level] : dbstate[0];	/* Guess using initial state */
+ 	  i++;
+ 	  continue;
+ 	}
+
