@@ -1,44 +1,43 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit autotools toolchain-funcs
+EAPI=8
 
-DESCRIPTION="A package of Plan 9 compatibility libraries"
-HOMEPAGE="https://www.netlib.org/research/9libs/9libs-1.0.README"
-SRC_URI="https://www.netlib.org/research/9libs/${P}.tar.bz2"
+inherit autotools
+
+DESCRIPTION="Plan 9 compatibility libraries"
+HOMEPAGE="https://netlib.org/research/9libs/9libs-1.0.README"
+SRC_URI="https://netlib.org/research/9libs/${P}.tar.bz2"
 
 LICENSE="PLAN9"
 SLOT="0"
 KEYWORDS="amd64 ~riscv x86"
 
-DEPEND="
-	>=x11-libs/libX11-1.0.0
-	>=x11-libs/libXt-1.0.0
-"
 RDEPEND="
+	x11-libs/libX11
+	x11-libs/libXt"
+DEPEND="
 	${DEPEND}
-"
-DOCS=(
-	README
-)
+	x11-base/xorg-proto"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-va_list.patch # Bug 385387
 )
 
 src_prepare() {
 	default
+
 	eautoreconf
 }
 
 src_configure() {
-	tc-export CC
-
-	econf \
-		--enable-shared \
-		--disable-static \
-		--includedir=/usr/include/9libs \
+	local econfargs=(
+		--enable-shared
+		--includedir="${EPREFIX}"/usr/include/9libs
 		--with-x
+	)
+
+	econf "${econfargs[@]}"
 }
 
 src_install() {
@@ -47,8 +46,8 @@ src_install() {
 	# rename some man pages to avoid collisions with dev-libs/libevent
 	local f
 	for f in add balloc bitblt cachechars event frame graphics rgbpix; do
-		mv "${D}"/usr/share/man/man3/${f}.{3,3g} || die
+		mv "${ED}"/usr/share/man/man3/${f}.{3,3g} || die
 	done
 
-	find "${ED}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 }
