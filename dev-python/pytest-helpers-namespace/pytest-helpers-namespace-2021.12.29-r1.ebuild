@@ -26,7 +26,6 @@ RDEPEND="
 	>=dev-python/pytest-6.0.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools-declarative-requirements[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-forked[${PYTHON_USEDEP}]
