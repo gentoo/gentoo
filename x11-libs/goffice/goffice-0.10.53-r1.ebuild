@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/goffice/"
 
 LICENSE="GPL-2"
 SLOT="0.10"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
 IUSE="+introspection"
 
 # FIXME: add lasem to tree
@@ -20,7 +20,7 @@ RDEPEND="
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.22:2
 	>=gnome-extra/libgsf-1.14.24:=[introspection?]
-	>=x11-libs/cairo-1.10:=[svg]
+	>=x11-libs/cairo-1.10:=[svg(+)]
 	>=x11-libs/gdk-pixbuf-2.22:2
 	>=x11-libs/gtk+-3.20:3
 	>=x11-libs/pango-1.24:=
