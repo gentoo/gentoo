@@ -233,7 +233,7 @@ ppc64		default/linux/ppc64/17.0/desktop/gnome/systemd/merged-usr	dev
 ppc64		default/linux/ppc64/17.0/systemd				stable
 ppc64		default/linux/ppc64/17.0/systemd/merged-usr			dev
 ppc64		default/linux/ppc64/17.0/developer				exp
-ppc64		default/linux/ppc64/17.0/musl					exp
+ppc64		default/linux/ppc64/17.0/musl					dev
 ppc64		default/linux/ppc64/17.0/musl/hardened				exp
 
 # PPC64LE profiles
@@ -251,7 +251,7 @@ ppc64		default/linux/ppc64le/17.0/desktop/systemd/merged-usr		dev
 ppc64		default/linux/ppc64le/17.0/systemd				stable
 ppc64		default/linux/ppc64le/17.0/systemd/merged-usr			dev
 ppc64		default/linux/ppc64le/17.0/developer				exp
-ppc64		default/linux/ppc64le/17.0/musl					exp
+ppc64		default/linux/ppc64le/17.0/musl					dev
 ppc64		default/linux/ppc64le/17.0/musl/hardened			exp
 
 # RISC-V Profiles
