@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	>=media-libs/harfbuzz-2.2.0:=
 	>=media-libs/libepoxy-1.4[X(+)?,${MULTILIB_USEDEP}]
 	virtual/libintl[${MULTILIB_USEDEP}]
-	>=x11-libs/cairo-1.14[aqua?,glib,svg,X?,${MULTILIB_USEDEP}]
+	>=x11-libs/cairo-1.14[aqua?,glib,svg(+),X?,${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.30:2[introspection?,${MULTILIB_USEDEP}]
 	>=x11-libs/pango-1.44.0[introspection?,${MULTILIB_USEDEP}]
 	x11-misc/shared-mime-info
