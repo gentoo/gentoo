@@ -16,7 +16,7 @@ IUSE="libobjc2 native-exceptions"
 DEPEND="${GNUSTEP_CORE_DEPEND}
 	>=sys-devel/make-3.75
 	libobjc2? ( gnustep-base/libobjc2
-		sys-devel/clang )
+		sys-devel/clang:* )
 	!libobjc2? ( !!gnustep-base/libobjc2
 		|| (
 			>=sys-devel/gcc-3.3:*[objc]
