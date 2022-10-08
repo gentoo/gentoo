@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Plan 9 compatibility libraries"
 HOMEPAGE="https://netlib.org/research/9libs/9libs-1.0.README"
@@ -32,6 +32,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-flags -fno-strict-aliasing #855665
+
 	local econfargs=(
 		--enable-shared
 		--includedir="${EPREFIX}"/usr/include/9libs
