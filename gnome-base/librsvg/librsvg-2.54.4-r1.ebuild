@@ -21,7 +21,7 @@ REQUIRED_USE="
 RESTRICT="test" # Lots of issues on 32bit builds, 64bit build seems to get into an infinite compilation sometimes, etc.
 
 RDEPEND="
-	>=x11-libs/cairo-1.16.0[glib,svg,${MULTILIB_USEDEP}]
+	>=x11-libs/cairo-1.16.0[glib,svg(+),${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.9:2[${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.20:2[introspection?,${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.50.0:2[${MULTILIB_USEDEP}]
