@@ -1,0 +1,115 @@
+From ef22aade1ae5299367b5cfb4d828c8849839caf2 Mon Sep 17 00:00:00 2001
+From: Alexander Lohnau <alexander.lohnau@gmx.de>
+Date: Sat, 17 Sep 2022 15:51:41 +0200
+Subject: [PATCH] Port away from deprecated KDeclarative::setupEngine
+
+We do not need this, because we neither do network requests from QML
+and also do not use the "image://icon" icon provider that is set up by this method.
+---
+ .kde-ci.yml                     | 1 -
+ CMakeLists.txt                  | 1 -
+ src/CMakeLists.txt              | 2 +-
+ src/coredump/gui/CMakeLists.txt | 1 -
+ src/coredump/gui/main.cpp       | 2 --
+ src/drkonqidialog.cpp           | 2 --
+ 6 files changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/.kde-ci.yml b/.kde-ci.yml
+index 93680ef6..83a819f3 100644
+--- a/.kde-ci.yml
++++ b/.kde-ci.yml
+@@ -11,7 +11,6 @@ Dependencies:
+     'frameworks/kconfig': '@latest'
+     'frameworks/kcoreaddons': '@latest'
+     'frameworks/kcrash': '@latest'
+-    'frameworks/kdeclarative': '@latest'
+     'frameworks/ki18n': '@latest'
+     'frameworks/kidletime': '@latest'
+     'frameworks/kio': '@latest'
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7d22ee73..92fa795b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -44,7 +44,6 @@ find_package(
+         CoreAddons
+         Config
+         Service
+-        Declarative
+         JobWidgets
+         KIO
+         Crash
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index fb03182b..112d97f7 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -95,6 +95,7 @@ target_link_libraries(
+     KF5::WindowSystem
+     Qt::DBus
+     Qt::Concurrent
++    Qt::Qml
+     KF5::WidgetsAddons
+     KF5::Wallet
+     KF5::Notifications # for status notifier
+@@ -102,7 +103,6 @@ target_link_libraries(
+     KF5::SyntaxHighlighting # Backtrace Highlighting
+     drkonqi_backtrace_parser
+     qbugzilla
+-    KF5::Declarative
+     KUserFeedbackCore
+ )
+ 
+diff --git a/src/coredump/gui/CMakeLists.txt b/src/coredump/gui/CMakeLists.txt
+index f9eebfa9..8c964e1a 100644
+--- a/src/coredump/gui/CMakeLists.txt
++++ b/src/coredump/gui/CMakeLists.txt
+@@ -8,7 +8,6 @@ target_compile_definitions(drkonqi-coredump-gui
+ 
+ target_link_libraries(drkonqi-coredump-gui
+     DrKonqiInternal
+-    KF5::Declarative
+     Qt::Quick
+     KF5::I18n
+     drkonqi-coredump
+diff --git a/src/coredump/gui/main.cpp b/src/coredump/gui/main.cpp
+index 8d5b479a..03164572 100644
+--- a/src/coredump/gui/main.cpp
++++ b/src/coredump/gui/main.cpp
+@@ -10,7 +10,6 @@
+ 
+ #include <KAboutData>
+ #include <KConfigGroup>
+-#include <KDeclarative/KDeclarative>
+ #include <KLocalizedString>
+ 
+ #include <config-drkonqi.h>
+@@ -53,7 +52,6 @@ int main(int argc, char *argv[])
+ 
+     QQmlApplicationEngine engine;
+     engine.rootContext()->setContextObject(&i18nContext);
+-    KDeclarative::KDeclarative::setupEngine(&engine);
+ 
+     const QUrl url(QStringLiteral("qrc:/main.qml"));
+     QObject::connect(
+diff --git a/src/drkonqidialog.cpp b/src/drkonqidialog.cpp
+index e93521c0..78b9d09e 100644
+--- a/src/drkonqidialog.cpp
++++ b/src/drkonqidialog.cpp
+@@ -9,7 +9,6 @@
+ 
+ #include "drkonqidialog.h"
+ 
+-#include <KDeclarative/KDeclarative>
+ #include <KLocalizedString>
+ #include <KWindowConfig>
+ 
+@@ -57,7 +56,6 @@ void DrKonqiDialog::show()
+     static auto l10nContext = new KLocalizedContext(engine);
+     l10nContext->setTranslationDomain(QStringLiteral(TRANSLATION_DOMAIN));
+     engine->rootContext()->setContextObject(l10nContext);
+-    KDeclarative::KDeclarative::setupEngine(engine);
+ 
+     qmlRegisterType<BugzillaManager>("org.kde.drkonqi", 1, 0, "Bugzilla");
+     qmlRegisterType<DuplicateModel>("org.kde.drkonqi", 1, 0, "DuplicateModel");
+-- 
+GitLab
+
