@@ -47,7 +47,7 @@ PATCHES=(
 
 python_check_deps() {
 	if use profile; then
-		has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]"
+		python_has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]"
 	fi
 }
 
