@@ -955,6 +955,11 @@ chromium_configure() {
 			third_party/crc32c/src/src/crc32c_arm64.cc || die
 	fi
 
+	# skipping typecheck is only supported on amd64, bug #876157
+	if ! use amd64; then
+		myconf_gn+=" devtools_skip_typecheck=false"
+	fi
+
 	einfo "Configuring Chromium..."
 	set -- gn gen --args="${myconf_gn} ${EXTRA_GN}" out/Release
 	echo "$@"
