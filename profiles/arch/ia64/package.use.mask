@@ -135,7 +135,8 @@ media-libs/libsdl2 fcitx4
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-09-18)
 # media-libs/libilbc is not ported to ia64
-net-analyzer/wireshark ilbc
+# nor is Qt
+net-analyzer/wireshark gui ilbc
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan

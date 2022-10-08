@@ -42,7 +42,7 @@ RDEPEND="
 	acct-group/pcap
 	>=dev-libs/glib-2.50.0:2
 	dev-libs/libpcre2
-	>=net-dns/c-ares-1.14.0:=
+	>=net-dns/c-ares-1.13.0:=
 	>=dev-libs/libgcrypt-1.8.0:=
 	media-libs/speexdsp
 	bcg729? ( media-libs/bcg729 )
@@ -221,6 +221,11 @@ src_configure() {
 
 src_test() {
 	cmake_build test-programs
+
+	EPYTEST_DESELECT=(
+		# TODO: investigate
+		suite_follow_multistream.py::case_follow_multistream::test_follow_http2_multistream
+	)
 
 	# https://www.wireshark.org/docs/wsdg_html_chunked/ChTestsRunPytest.html
 	epytest \
