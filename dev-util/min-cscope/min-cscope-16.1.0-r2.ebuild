@@ -15,10 +15,14 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="debug"
 
+RDEPEND="sys-libs/ncurses:="
+DEPEND="${RDEPEND}"
+
 DOCS=( AUTHORS README{,.cscope} TODO )
 
 PATCHES=(
 	"${FILESDIR}/${P}-tinfo.patch" # bug #678886
+	"${FILESDIR}/${P}-pointer-type.patch"
 )
 
 src_prepare() {
@@ -29,7 +33,8 @@ src_prepare() {
 }
 
 src_configure() {
-	append-flags -I"${S}"/sort
+	# -D_GNU_SOURCE for qsort_r, bug #871162
+	append-cppflags -I"${S}"/sort -D_GNU_SOURCE
 
 	cmake_src_configure
 }
