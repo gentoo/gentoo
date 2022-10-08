@@ -24,7 +24,7 @@ BDEPEND="
 	)
 "
 RDEPEND="
-	>=x11-libs/cairo-1.15.10[svg]
+	>=x11-libs/cairo-1.15.10[svg(+)]
 "
 DEPEND="${RDEPEND}"
 
