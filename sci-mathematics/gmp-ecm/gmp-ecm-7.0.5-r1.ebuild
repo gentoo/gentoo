@@ -14,16 +14,13 @@ SRC_URI="https://gitlab.inria.fr/zimmerma/ecm/uploads/89f6f0d65d3e980cef33dc9220
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~ppc-macos ~x64-macos"
-IUSE="cuda +custom-tune openmp static-libs cpu_flags_x86_sse2"
+IUSE="+custom-tune openmp cpu_flags_x86_sse2"
 
-DEPEND="dev-libs/gmp:=
-	cuda? (
-		dev-util/nvidia-cuda-toolkit
-		x11-drivers/nvidia-drivers
-	)
-"
+DEPEND="dev-libs/gmp:="
 RDEPEND="${DEPEND}"
-# xsltproc is used to produce the manppage in combination with the appropriate stylesheet
+
+# xsltproc is used to produce the manppage in combination with the
+# appropriate stylesheet
 BDEPEND="dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets"
 
@@ -52,16 +49,12 @@ src_compile() {
 src_configure() {
 	econf \
 		--enable-shared \
-		$(use_enable static-libs static) \
 		$(use_enable openmp) \
-		$(use_enable cuda gpu) \
 		$(use_enable cpu_flags_x86_sse2 sse2) \
 		$(use_enable custom-tune asm-redc)
 }
 
 src_install() {
 	default
-
-	# remove .la file
 	find "${ED}" -name '*.la' -delete || die
 }
