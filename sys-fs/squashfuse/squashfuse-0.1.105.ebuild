@@ -6,7 +6,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="FUSE filesystem to mount squashfs archives"
 HOMEPAGE="https://github.com/vasi/squashfuse"
-SRC_URI="https://github.com/vasi/squashfuse/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/vasi/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
