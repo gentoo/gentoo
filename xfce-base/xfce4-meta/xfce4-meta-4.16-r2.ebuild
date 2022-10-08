@@ -35,5 +35,5 @@ RDEPEND="
 		)
 	pulseaudio? ( xfce-extra/xfce4-pulseaudio-plugin )
 	svg? ( gnome-base/librsvg )
-	upower? ( >=xfce-extra/xfce4-power-manager-4.16 )
+	upower? ( >=xfce-base/xfce4-power-manager-4.16 )
 "

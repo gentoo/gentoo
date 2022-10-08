@@ -22,3 +22,4 @@ move www-servers/tornado dev-python/tornado
 move dev-python/path-py dev-python/path
 move xfce-extra/thunar-volman xfce-base/thunar-volman
 move xfce-extra/tumbler xfce-base/tumbler
+move xfce-extra/xfce4-power-manager xfce-base/xfce4-power-manager
