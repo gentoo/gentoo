@@ -14,7 +14,7 @@ SRC_URI="https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-re
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris"
 IUSE="+cairo devil doc examples gtk2 gts guile lasi nls pdf perl postscript python qt5 ruby svg tcl webp X"
 
 REQUIRED_USE="
@@ -28,16 +28,16 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-libs/expat-2
 	>=dev-libs/glib-2.11.1:2
-	dev-libs/libltdl:0
+	dev-libs/libltdl
 	>=media-libs/fontconfig-2.3.95
 	>=media-libs/freetype-2.1.10
 	>=media-libs/gd-2.0.34:=[fontconfig,jpeg,png,truetype,zlib]
 	media-libs/libjpeg-turbo:=
-	>=media-libs/libpng-1.2:0=
+	>=media-libs/libpng-1.2:=
 	sys-libs/zlib
 	virtual/libiconv
 	cairo? (
-		>=x11-libs/cairo-1.1.10[svg]
+		>=x11-libs/cairo-1.1.10[svg(+)]
 		>=x11-libs/pango-1.12
 	)
 	devil? ( media-libs/devil[png,jpeg] )
@@ -60,7 +60,7 @@ RDEPEND="
 	)
 	ruby? ( dev-lang/ruby:* )
 	svg? ( gnome-base/librsvg )
-	tcl? ( >=dev-lang/tcl-8.3:0= )
+	tcl? ( >=dev-lang/tcl-8.3:= )
 	webp? ( media-libs/libwebp:= )
 	X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}
@@ -137,6 +137,11 @@ BDEPEND="
 #   needs x11-libs/gtkglext, gnome-base/libglade, media-libs/freeglut
 #   sci-libs/gts, x11-libs/gtk.  Also needs 'gtk','glade','glut','gts' and 'png'
 #   with flags enabled at configure time
+
+PATCHES=(
+	# backport
+	"${FILESDIR}"/${P}-private-ghostscript-symbols.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
