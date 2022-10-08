@@ -11,7 +11,7 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="curl epub ffmpeg gstreamer jpeg odf pdf raw"
 
 DEPEND="
