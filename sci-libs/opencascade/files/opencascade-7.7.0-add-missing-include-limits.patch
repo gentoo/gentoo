@@ -1,0 +1,19 @@
+From 44a30819131496bf41f2e1dcfd362b23173db6fb Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Wed, 5 Oct 2022 21:55:06 +0200
+Subject: [PATCH] add missing #include <limits>
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/src/ViewerTest/ViewerTest_CmdParser.cxx
++++ b/src/ViewerTest/ViewerTest_CmdParser.cxx
+@@ -21,6 +21,7 @@
+ 
+ #include <algorithm>
+ #include <iostream>
++#include <limits>
+ 
+ namespace
+ {
+-- 
+2.38.0
+

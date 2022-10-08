@@ -1,0 +1,33 @@
+From 4eb2236370134117729bc4d55191fce736bf4df6 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Thu, 6 Oct 2022 18:53:41 +0200
+Subject: [PATCH] fix installation of cmake config files
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1265,7 +1265,7 @@ foreach (OCCT_CONFIGURATION ${CMAKE_CONFIGURATION_TYPES})
+ endforeach()
+ # install OpenCASCADE config file with compile definitions and C/C++ flags ONLY for current configuration
+ install (CODE "string (TOLOWER \"\${CMAKE_INSTALL_CONFIG_NAME}\" CMAKE_INSTALL_CONFIG_NAME_LOWER)")
+-install (CODE "file(INSTALL FILES \"${CMAKE_BINARY_DIR}/OpenCASCADECompileDefinitionsAndFlags-\${CMAKE_INSTALL_CONFIG_NAME_LOWER}.cmake\" DESTINATION \"${INSTALL_DIR}/${INSTALL_DIR_CMAKE}/\" TYPE FILE)")
++install (FILES "${CMAKE_BINARY_DIR}/OpenCASCADECompileDefinitionsAndFlags-\${CMAKE_INSTALL_CONFIG_NAME_LOWER}.cmake" DESTINATION "${INSTALL_DIR_CMAKE}")
+ 
+ foreach (OCCT_MODULE ${OCCT_MODULES})
+   if (BUILD_MODULE_${OCCT_MODULE})
+diff --git a/adm/cmake/occt_macros.cmake b/adm/cmake/occt_macros.cmake
+index 4a060665..8ab5e39c 100755
+--- a/adm/cmake/occt_macros.cmake
++++ b/adm/cmake/occt_macros.cmake
+@@ -590,7 +590,7 @@ macro (OCCT_UPDATE_TARGET_FILE)
+ 
+   install (CODE
+   "string (TOLOWER \"\${CMAKE_INSTALL_CONFIG_NAME}\" CMAKE_INSTALL_CONFIG_NAME_LOWERCASE)
+-  file (GLOB ALL_OCCT_TARGET_FILES \"${INSTALL_DIR}/${INSTALL_DIR_CMAKE}/OpenCASCADE*Targets-\${CMAKE_INSTALL_CONFIG_NAME_LOWERCASE}.cmake\")
++  file (GLOB ALL_OCCT_TARGET_FILES \"${INSTALL_DIR_CMAKE}/OpenCASCADE*Targets-\${CMAKE_INSTALL_CONFIG_NAME_LOWERCASE}.cmake\")
+   foreach(TARGET_FILENAME \${ALL_OCCT_TARGET_FILES})
+     file (STRINGS \"\${TARGET_FILENAME}\" TARGET_FILE_CONTENT)
+     file (REMOVE \"\${TARGET_FILENAME}\")
+-- 
+2.38.0
+
