@@ -28,7 +28,6 @@ RDEPEND="
 	dev-python/distro[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools-declarative-requirements[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pip[${PYTHON_USEDEP}]
