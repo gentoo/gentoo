@@ -13,8 +13,6 @@ RUBY_FAKEGEM_DOCDIR="doc"
 
 RUBY_FAKEGEM_EXTRADOC="AUTHORS NEWS"
 
-RUBY_FAKEGEM_EXTENSIONS=(ext/cairo/extconf.rb)
-
 inherit multilib ruby-fakegem
 
 DESCRIPTION="Ruby bindings for cairo"
@@ -24,14 +22,12 @@ IUSE=""
 
 SLOT="0"
 LICENSE="|| ( Ruby-BSD GPL-2 )"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 RDEPEND="${RDEPEND}
-	>=x11-libs/cairo-1.2.0[svg]"
+	>=x11-libs/cairo-1.2.0[svg(+)]"
 DEPEND="${DEPEND}
-	>=x11-libs/cairo-1.2.0[svg]"
-
-ruby_add_rdepend "dev-ruby/red-colors"
+	>=x11-libs/cairo-1.2.0[svg(+)]"
 
 ruby_add_bdepend "
 	>=dev-ruby/pkg-config-1.2.2
@@ -48,10 +44,17 @@ all_ruby_prepare() {
 
 	# Avoid test that requires unpackaged fixture
 	sed -i -e '/sub_test_case..FreeTypeFontFace/,/^  end/ s:^:#:' test/test_font_face.rb || die
+}
 
-	# Bug 790131
-	sed -i -e '/^install-headers:/s!$! $(TIMESTAMP_DIR)/.sitearchdir.time!' \
-		ext/cairo/depend || die
+each_ruby_configure() {
+	${RUBY} -Cext/cairo extconf.rb || die "extconf failed"
+}
+
+each_ruby_compile() {
+	emake V=1 -Cext/cairo
+
+	# again, try to make it more standard, to install it more easily.
+	cp ext/cairo/cairo$(get_modname) lib/ || die
 }
 
 each_ruby_test() {
