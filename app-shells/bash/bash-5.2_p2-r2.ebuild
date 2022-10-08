@@ -33,7 +33,7 @@ is_release() {
 
 # The version of readline this bash normally ships with.
 # Note: right now, we don't use the system copy of readline for bash for non-releases.
-READLINE_VER="8.2"
+READLINE_VER="8.2_p1"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
