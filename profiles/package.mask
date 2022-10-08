@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-10-08)
+# The test suite is broken since at least March.  No revdeps.
+# Removal on 2022-11-07.  Bug #834656.
+dev-python/kazoo
+
 # Matt Turner <mattst88@gentoo.org> (2022-10-07)
 # Unstable release. Masked for testing.
 >=x11-libs/cairo-1.17
