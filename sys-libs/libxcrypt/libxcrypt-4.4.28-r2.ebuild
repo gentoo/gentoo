@@ -174,6 +174,13 @@ multilib_src_configure() {
 		--mandir="$(get_xcmandir)"
 	)
 
+	if use elibc_musl; then
+		# musl declares getcontext and swapcontext in ucontext.h,
+		# but does not implement them in libc.
+		# https://bugs.gentoo.org/838172
+		myconf+=( ac_cv_header_ucontext_h=no )
+	fi
+
 	case "${MULTIBUILD_ID}" in
 		xcrypt_compat-*)
 			myconf+=(
