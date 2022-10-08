@@ -25,7 +25,7 @@ RDEPEND="
 	media-libs/freetype:2
 	virtual/opengl
 	x11-libs/libX11
-	>=x11-libs/libxcb-1.10[xkb]
+	>=x11-libs/libxcb-1.10
 "
 
 S="${WORKDIR}/Telegram"
