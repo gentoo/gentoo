@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils flag-o-matic toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Linux Point-to-Point Tunnelling Protocol Server"
 HOMEPAGE="http://poptop.sourceforge.net/"
@@ -31,7 +31,7 @@ PATCHES=(
 
 src_prepare() {
 	# Match pptpd-logwtmp.so's version with pppd's version (#89895)
-	local PPPD_VER=`best_version net-dialup/ppp`
+	local PPPD_VER=$(best_version net-dialup/ppp)
 	PPPD_VER=${PPPD_VER#*/*-} #reduce it to ${PV}-${PR}
 	PPPD_VER=${PPPD_VER%%[_-]*} # main version without beta/pre/patch/revision
 	sed -i -e "s:\\(#define[ \\t]*VERSION[ \\t]*\\)\".*\":\\1\"${PPPD_VER}\":" plugins/patchlevel.h || die
