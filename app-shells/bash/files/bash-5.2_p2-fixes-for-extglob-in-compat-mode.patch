@@ -1,0 +1,320 @@
+https://bugs.gentoo.org/873931
+https://lists.gnu.org/archive/html/bug-bash/2022-10/msg00001.html
+https://git.savannah.gnu.org/cgit/bash.git/commit/?h=devel&id=22f21b760ed90eb77c3756e6ccf39b73c84f532a
+
+--- MANIFEST
++++ MANIFEST
+@@ -1131,6 +1131,7 @@ tests/extglob4.sub	f
+ tests/extglob5.sub	f
+ tests/extglob6.sub	f
+ tests/extglob7.sub	f
++tests/extglob8.sub	f
+ tests/func.tests	f
+ tests/func.right	f
+ tests/func1.sub		f
+--- builtins/common.h
++++ builtins/common.h
+@@ -257,6 +257,10 @@ extern int print_shift_error;
+ extern int expand_once_flag;
+ #endif
+ 
++#if defined (EXTENDED_GLOB)
++extern int extglob_flag;
++#endif
++
+ /* variables from source.def */
+ extern int source_searches_cwd;
+ extern int source_uses_path;
+--- builtins/shopt.def
++++ builtins/shopt.def
+@@ -1,7 +1,7 @@
+ This file is shopt.def, from which is created shopt.c.
+ It implements the Bash `shopt' builtin.
+ 
+-Copyright (C) 1994-2021 Free Software Foundation, Inc.
++Copyright (C) 1994-2022 Free Software Foundation, Inc.
+ 
+ This file is part of GNU Bash, the Bourne Again SHell.
+ 
+@@ -149,6 +149,11 @@ static int shopt_set_complete_direxpand PARAMS((char *, int));
+ static int set_assoc_expand PARAMS((char *, int));
+ #endif
+ 
++#if defined (EXTENDED_GLOB)
++int extglob_flag = EXTGLOB_DEFAULT;
++static int shopt_set_extglob PARAMS((char *, int));
++#endif
++
+ static int shopt_set_debug_mode PARAMS((char *, int));
+ 
+ static int shopt_login_shell;
+@@ -203,7 +208,7 @@ static struct {
+   { "extdebug", &debugging_mode, shopt_set_debug_mode },
+ #endif
+ #if defined (EXTENDED_GLOB)
+-  { "extglob", &extended_glob, (shopt_set_func_t *)NULL },
++  { "extglob", &extglob_flag, shopt_set_extglob },
+ #endif
+   { "extquote", &extended_quote, (shopt_set_func_t *)NULL },
+   { "failglob", &fail_glob_expansion, (shopt_set_func_t *)NULL },
+@@ -374,7 +379,7 @@ reset_shopt_options ()
+ #endif
+ 
+ #if defined (EXTENDED_GLOB)
+-  extended_glob = EXTGLOB_DEFAULT;
++  extended_glob = extglob_flag = EXTGLOB_DEFAULT;
+ #endif
+ 
+ #if defined (ARRAY_VARS)
+@@ -631,11 +636,24 @@ shopt_set_debug_mode (option_name, mode)
+   return (0);
+ }
+ 
++#if defined (EXTENDED_GLOB)
++static int
++shopt_set_extglob (option_name, mode)
++     char *option_name;
++     int mode;
++{
++  extended_glob = extglob_flag;
++  return 0;
++}
++#endif
++
+ #if defined (READLINE)
+ static int
+ shopt_enable_hostname_completion (option_name, mode)
+      char *option_name;
+      int mode;
++
++
+ {
+   return (enable_hostname_completion (mode));
+ }
+--- execute_cmd.c
++++ execute_cmd.c
+@@ -3990,13 +3990,11 @@ execute_cond_node (cond)
+       else
+ #endif /* COND_REGEXP */
+ 	{
+-	  int oe;
+-	  oe = extended_glob;
+ 	  extended_glob = 1;
+ 	  result = binary_test (cond->op->word, arg1, arg2, TEST_PATMATCH|TEST_ARITHEXP|TEST_LOCALE)
+ 				  ? EXECUTION_SUCCESS
+ 				  : EXECUTION_FAILURE;
+-	  extended_glob = oe;
++	  extended_glob = extglob_flag;
+ 	}
+       if (arg1 != nullstr)
+ 	free (arg1);
+--- parse.y
++++ parse.y
+@@ -125,7 +125,7 @@ do { \
+ } while (0)
+ 
+ #if defined (EXTENDED_GLOB)
+-extern int extended_glob;
++extern int extended_glob, extglob_flag;
+ #endif
+ 
+ #if defined (TRANSLATABLE_STRINGS)
+@@ -312,8 +312,6 @@ static int token_before_that;
+ /* The token read prior to token_before_that. */
+ static int two_tokens_ago;
+ 
+-static int global_extglob;
+-
+ /* The line number in a script where the word in a `case WORD', `select WORD'
+    or `for WORD' begins.  This is a nested command maximum, since the array
+    index is decremented after a case, select, or for command is parsed. */
+@@ -3304,7 +3302,7 @@ reset_parser ()
+ #if defined (EXTENDED_GLOB)
+   /* Reset to global value of extended glob */
+   if (parser_state & (PST_EXTPAT|PST_CMDSUBST))
+-    extended_glob = global_extglob;
++    extended_glob = extglob_flag;
+ #endif
+ 
+   parser_state = 0;
+@@ -4118,10 +4116,10 @@ parse_comsub (qc, open, close, lenp, flags)
+     expand_aliases = posixly_correct != 0;
+ #if defined (EXTENDED_GLOB)
+   /* If (parser_state & PST_EXTPAT), we're parsing an extended pattern for a
+-     conditional command and have already set global_extglob appropriately. */
++     conditional command and have already set extended_glob appropriately. */
+   if (shell_compatibility_level <= 51 && was_extpat == 0)
+     {
+-      local_extglob = global_extglob = extended_glob;
++      local_extglob = extended_glob;
+       extended_glob = 1;
+     }
+ #endif
+@@ -4229,7 +4227,7 @@ xparse_dolparen (base, string, indp, flags)
+ {
+   sh_parser_state_t ps;
+   sh_input_line_state_t ls;
+-  int orig_ind, nc, sflags, start_lineno;
++  int orig_ind, nc, sflags, start_lineno, local_extglob;
+   char *ret, *ep, *ostring;
+ 
+ /*debug_parser(1);*/
+@@ -4272,7 +4270,7 @@ xparse_dolparen (base, string, indp, flags)
+      old value will be restored by restore_parser_state(). */
+   expand_aliases = 0;
+ #if defined (EXTENDED_GLOB)
+-  global_extglob = extended_glob;		/* for reset_parser() */
++  local_extglob = extended_glob;
+ #endif
+ 
+   token_to_read = DOLPAREN;			/* let's trick the parser */
+@@ -4290,6 +4288,9 @@ xparse_dolparen (base, string, indp, flags)
+   restore_input_line_state (&ls);
+   restore_parser_state (&ps);
+ 
++#if defined (EXTENDED_GLOB)
++  extended_glob = local_extglob;
++#endif
+   token_to_read = 0;
+ 
+   /* If parse_string returns < 0, we need to jump to top level with the
+@@ -4724,12 +4725,16 @@ cond_term ()
+ 	}
+ 
+       /* rhs */
++#if defined (EXTENDED_GLOB)
+       local_extglob = extended_glob;
+       if (parser_state & PST_EXTPAT)
+ 	extended_glob = 1;
++#endif
+       tok = read_token (READ);
++#if defined (EXTENDED_GLOB)
+       if (parser_state & PST_EXTPAT)
+ 	extended_glob = local_extglob;
++#endif
+       parser_state &= ~(PST_REGEXP|PST_EXTPAT);
+ 
+       if (tok == WORD)
+@@ -4776,7 +4781,6 @@ parse_cond_command ()
+ {
+   COND_COM *cexp;
+ 
+-  global_extglob = extended_glob;
+   cexp = cond_expr ();
+   return (make_cond_command (cexp));
+ }
+--- patchlevel.h
++++ patchlevel.h
+@@ -1,6 +1,6 @@
+ /* patchlevel.h -- current bash patch level */
+ 
+-/* Copyright (C) 2001-2021 Free Software Foundation, Inc.
++/* Copyright (C) 2001-2022 Free Software Foundation, Inc.
+ 
+    This file is part of GNU Bash, the Bourne Again SHell.
+ 
+--- subst.c
++++ subst.c
+@@ -1798,6 +1798,9 @@ extract_heredoc_dolbrace_string (string, sindex, quoted, flags)
+   return (result);
+ }
+ 
++#define PARAMEXPNEST_MAX	32	// for now
++static int dbstate[PARAMEXPNEST_MAX];
++
+ /* Extract a parameter expansion expression within ${ and } from STRING.
+    Obey the Posix.2 rules for finding the ending `}': count braces while
+    skipping over enclosed quoted strings and command substitutions.
+@@ -1828,6 +1831,8 @@ extract_dollar_brace_string (string, sindex, quoted, flags)
+   if (quoted == Q_HERE_DOCUMENT && dolbrace_state == DOLBRACE_QUOTE && (flags & SX_NOALLOC) == 0)
+     return (extract_heredoc_dolbrace_string (string, sindex, quoted, flags));
+ 
++  dbstate[0] = dolbrace_state;
++
+   pass_character = 0;
+   nesting_level = 1;
+   slen = strlen (string + *sindex) + *sindex;
+@@ -1852,6 +1857,8 @@ extract_dollar_brace_string (string, sindex, quoted, flags)
+ 
+       if (string[i] == '$' && string[i+1] == LBRACE)
+ 	{
++	  if (nesting_level < PARAMEXPNEST_MAX)
++	    dbstate[nesting_level] = dolbrace_state;
+ 	  nesting_level++;
+ 	  i += 2;
+ 	  if (dolbrace_state == DOLBRACE_QUOTE || dolbrace_state == DOLBRACE_WORD)
+@@ -1864,6 +1871,7 @@ extract_dollar_brace_string (string, sindex, quoted, flags)
+ 	  nesting_level--;
+ 	  if (nesting_level == 0)
+ 	    break;
++	  dolbrace_state = (nesting_level < PARAMEXPNEST_MAX) ? dbstate[nesting_level] : dbstate[0];	/* Guess using initial state */
+ 	  i++;
+ 	  continue;
+ 	}
+--- tests/extglob.right
++++ tests/extglob.right
+@@ -182,3 +182,10 @@ no dotglob: .a .foo bar
+ ? . .. .a .foo
+ *
+ bar
++extglob        	off
++x
++extglob        	off
++extglob        	off
++extglob        	off
++extglob        	off
++extglob        	off
+--- tests/extglob.tests
++++ tests/extglob.tests
+@@ -386,5 +386,6 @@ ${THIS_SH} ./extglob4.sub
+ ${THIS_SH} ./extglob5.sub
+ ${THIS_SH} ./extglob6.sub
+ ${THIS_SH} ./extglob7.sub
++${THIS_SH} ./extglob8.sub
+ 
+ exit 0
+--- /dev/null
++++ tests/extglob8.sub
+@@ -0,0 +1,33 @@
++#   This program is free software: you can redistribute it and/or modify
++#   it under the terms of the GNU General Public License as published by
++#   the Free Software Foundation, either version 3 of the License, or
++#   (at your option) any later version.
++#
++#   This program is distributed in the hope that it will be useful,
++#   but WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#   GNU General Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License
++#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++# extglob option interaction with other parts of the shell that force
++# extended_glob on; only an issue in compatibility mode
++
++shopt -u extglob
++
++BASH_COMPAT=50
++shopt extglob
++
++echo $(echo $(echo $(echo $(echo $(echo x) ) ) ) )
++shopt extglob
++
++shopt -u extglob
++
++[[ '' = $(shopt extglob >&2) ]]
++shopt extglob
++
++shopt -u extglob
++
++[[ foo = $(: $(shopt extglob >&2)) ]]
++shopt extglob
+--- tests/run-extglob
++++ tests/run-extglob
+@@ -1,4 +1,4 @@
+ PATH=$PATH:`pwd`
+ export PATH
+-${THIS_SH} ./extglob.tests | grep -v '^expect' > ${BASH_TSTOUT}
++${THIS_SH} ./extglob.tests 2>&1 | grep -v '^expect' > ${BASH_TSTOUT}
+ diff ${BASH_TSTOUT} extglob.right && rm -f ${BASH_TSTOUT}
+
