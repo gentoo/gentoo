@@ -68,6 +68,8 @@ SRC_URI="!binary? (
 	https://downloads.haskell.org/ghc/${PV/_/-}/${GHC_P}-src.tar.xz
 	test? ( https://downloads.haskell.org/ghc/${PV/_/-}/${GHC_P}-testsuite.tar.xz )
 )"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-riscv64-llvm.patch.xz"
+
 S="${WORKDIR}"/${GHC_P}
 
 [[ -n $arch_binaries ]] && SRC_URI+=" !ghcbootstrap? ( $arch_binaries )"
@@ -539,7 +541,7 @@ src_prepare() {
 		eapply "${FILESDIR}"/${PN}-9.0.2-disable-unboxed-arrays.patch
 		eapply "${FILESDIR}"/${PN}-9.0.2-llvm-13.patch
 		eapply "${FILESDIR}"/latomic-subword
-		eapply "${FILESDIR}"/${PN}-9.0.2-riscv64-llvm.patch
+		eapply "${WORKDIR}"/${P}-riscv64-llvm.patch
 
 		# mingw32 target
 		pushd "${S}/libraries/Win32"
