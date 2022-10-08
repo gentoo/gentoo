@@ -21,7 +21,7 @@ SRC_URI="
 RESTRICT="mirror test"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="-* ~amd64"
 DEPEND="acct-user/jellyfin"
 RDEPEND="${DEPEND}
 	media-video/ffmpeg[vpx,x264]

@@ -21,7 +21,7 @@ SRC_URI="
 RESTRICT="mirror test"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="-* ~amd64 ~arm64"
 DEPEND="acct-user/jellyfin"
 RDEPEND="${DEPEND}
 	dev-libs/icu
