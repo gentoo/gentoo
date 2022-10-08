@@ -21,7 +21,7 @@ COMMON_DEPEND="dev-libs/glib:2
 	dev-libs/libpcre2
 	dev-libs/yajl:=
 	x11-libs/cairo[X,xcb(+)]
-	x11-libs/libxcb:=[xkb]
+	x11-libs/libxcb:=
 	x11-libs/libxkbcommon[X]
 	x11-libs/pango[X]
 	x11-libs/startup-notification
