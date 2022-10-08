@@ -27,7 +27,6 @@ BDEPEND="
 		app-arch/brotli[python,${PYTHON_USEDEP}]
 		>=dev-python/boto3-1.4.4[${PYTHON_USEDEP}]
 		>=dev-python/case-1.5.2[${PYTHON_USEDEP}]
-		dev-python/kazoo[${PYTHON_USEDEP}]
 		>=dev-python/msgpack-0.3.0[${PYTHON_USEDEP}]
 		dev-python/pycurl[${PYTHON_USEDEP}]
 		>=dev-python/pymongo-3.3.0[${PYTHON_USEDEP}]
