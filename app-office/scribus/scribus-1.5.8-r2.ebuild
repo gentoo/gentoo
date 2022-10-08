@@ -50,7 +50,7 @@ DEPEND="${PYTHON_DEPS}
 	media-libs/tiff:0
 	net-print/cups
 	sys-libs/zlib[minizip]
-	x11-libs/cairo[X,svg]
+	x11-libs/cairo[X,svg(+)]
 	boost? ( dev-libs/boost:= )
 	graphicsmagick? ( media-gfx/graphicsmagick:= )
 	hunspell? ( app-text/hunspell:= )
