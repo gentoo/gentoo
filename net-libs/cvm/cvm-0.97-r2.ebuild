@@ -19,7 +19,7 @@ RDEPEND="dev-db/cdb:=
 	>=dev-libs/bglibs-2.04:0=
 	virtual/libcrypt:=
 	mysql? ( dev-db/mysql-connector-c:0= )
-	postgres? ( dev-db/postgresql[server] )
+	postgres? ( dev-db/postgresql:*[server] )
 	vpopmail? ( net-mail/vpopmail )"
 DEPEND="${RDEPEND}
 	test? (
