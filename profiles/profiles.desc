@@ -344,7 +344,7 @@ mips		default/linux/mips/17.0/musl/mipsel/o32			exp
 mips		default/linux/mips/17.0/musl/mipsel/n64			exp
 riscv		default/linux/riscv/20.0/rv64gc/lp64d/musl		dev
 riscv		default/linux/riscv/20.0/rv64gc/lp64/musl		dev
-x86		default/linux/x86/17.0/musl				exp
+x86		default/linux/x86/17.0/musl				dev
 x86		default/linux/x86/17.0/musl/selinux			exp
 
 # These are Gentoo Prefix profiles, maintained by the Prefix team
