@@ -12,6 +12,7 @@ SRC_URI="https://netlib.org/research/9libs/${P}.tar.bz2"
 LICENSE="PLAN9"
 SLOT="0"
 KEYWORDS="amd64 ~riscv x86"
+RESTRICT="test" # interactive, hangs with virtx and fails without (bug #403539)
 
 RDEPEND="
 	x11-libs/libX11
