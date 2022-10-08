@@ -133,7 +133,7 @@ PATCHES=(
 
 python_check_deps() {
 	use test || return 0
-	has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
