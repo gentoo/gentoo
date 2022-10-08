@@ -50,13 +50,6 @@ dev-python/kazoo
 # Use media-sound/mpd if looking for a modern alternative. Removal on 2022-11-07.
 media-sound/rplay
 
-# Mike Gilbert <floppym@gentoo.org> (2022-10-05)
-# Implements the obsolete BOOTP protocol; use DHCP instead.
-# No activity upstream for over two decades.
-# Fails to build with -Werror=implicit-function-declaration (#875536).
-# Removal on 2022-11-04.
-net-misc/netkit-bootpd
-
 # Matt Turner <mattst88@gentoo.org> (2022-10-01)
 # Unmaintained upstream. Last commit was 10 years ago today.
 # Unclear if it does anything useful. Many open bugs: #584352, #833102,
