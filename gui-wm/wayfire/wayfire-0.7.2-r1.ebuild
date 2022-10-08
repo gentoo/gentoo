@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,20 +21,20 @@ SLOT="0"
 IUSE="debug +gles +system-wfconfig +system-wlroots X"
 
 DEPEND="
-	dev-libs/libinput:=
+	dev-libs/libevdev
+	dev-libs/libinput
 	dev-libs/wayland
 	gui-libs/gtk-layer-shell
 	media-libs/glm
 	media-libs/mesa:=[gles2,wayland,X?]
 	media-libs/libglvnd[X?]
-	media-libs/libjpeg-turbo:=
-	media-libs/libpng:=
+	media-libs/libjpeg-turbo
+	media-libs/libpng
 	media-libs/freetype:=[X?]
 	x11-libs/libdrm
 	x11-libs/gtk+:3=[wayland,X?]
-	x11-libs/cairo[X?,svg]
-	x11-libs/libxkbcommon[X?]
-	x11-libs/pango
+	x11-libs/cairo:=[X?,svg(+)]
+	x11-libs/libxkbcommon:=[X?]
 	x11-libs/pixman
 	X? (
 		x11-base/xwayland
@@ -46,7 +46,8 @@ DEPEND="
 	)
 	!system-wfconfig? ( !gui-libs/wf-config )
 	system-wlroots? (
-		gui-libs/wlroots:0/15[X?]
+		>=gui-libs/wlroots-0.14.0:=[X?]
+		<gui-libs/wlroots-0.15.0:=
 	)
 	!system-wlroots? ( !gui-libs/wlroots )
 "

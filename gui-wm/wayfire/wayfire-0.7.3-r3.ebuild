@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
 else
 	SRC_URI="https://github.com/WayfireWM/${PN}/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
@@ -21,20 +21,20 @@ SLOT="0"
 IUSE="debug +gles +system-wfconfig +system-wlroots X"
 
 DEPEND="
-	dev-libs/libevdev
-	dev-libs/libinput
+	dev-libs/libinput:=
 	dev-libs/wayland
 	gui-libs/gtk-layer-shell
 	media-libs/glm
 	media-libs/mesa:=[gles2,wayland,X?]
 	media-libs/libglvnd[X?]
-	media-libs/libjpeg-turbo
-	media-libs/libpng
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
 	media-libs/freetype:=[X?]
 	x11-libs/libdrm
 	x11-libs/gtk+:3=[wayland,X?]
-	x11-libs/cairo:=[X?,svg]
-	x11-libs/libxkbcommon:=[X?]
+	x11-libs/cairo[X?,svg(+)]
+	x11-libs/libxkbcommon[X?]
+	x11-libs/pango
 	x11-libs/pixman
 	X? (
 		x11-base/xwayland
@@ -46,8 +46,7 @@ DEPEND="
 	)
 	!system-wfconfig? ( !gui-libs/wf-config )
 	system-wlroots? (
-		>=gui-libs/wlroots-0.14.0:=[X?]
-		<gui-libs/wlroots-0.15.0:=
+		>=gui-libs/wlroots-0.15.1:0/15[X?]
 	)
 	!system-wlroots? ( !gui-libs/wlroots )
 "
