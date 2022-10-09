@@ -1,0 +1,14 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 1c54f03..db187eb 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,7 +1,7 @@
+ #dinincludedir = $(pkgsrcdir)
+ 
+-AM_CXXFLAGS = -I /usr/include/tcl8.6 -Wall -D_THREAD_SAFE -DHAVE_OPENGL -D__LICENSED__ -D__SVG__ -D__GPL20__ -D__BOOST_TIME__ -DPREFIX=\"@prefix@\"
+-LIBS +=  -ltcl8.6 -lSDL -lGL -lpthread -lasound
++AM_CXXFLAGS = -Wall -D_THREAD_SAFE -DHAVE_OPENGL -D__LICENSED__ -D__SVG__ -D__GPL20__ -D__BOOST_TIME__ -DPREFIX=\"@prefix@\"
++LIBS +=  -ltcl -lSDL -lGL -lpthread -lasound
+ 
+ bin_PROGRAMS = din
+ 
