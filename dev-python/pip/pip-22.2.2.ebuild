@@ -41,7 +41,7 @@ LICENSE="MIT"
 LICENSE+=" Apache-2.0 BSD BSD-2 ISC LGPL-2.1+ MPL-2.0 PSF-2"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 SLOT="0"
-IUSE="vanilla"
+IUSE="test-rust vanilla"
 
 RDEPEND="
 	>=dev-python/setuptools-39.2.0[${PYTHON_USEDEP}]
@@ -57,9 +57,9 @@ BDEPEND="
 			dev-python/tomli-w[${PYTHON_USEDEP}]
 			dev-python/werkzeug[${PYTHON_USEDEP}]
 			dev-python/wheel[${PYTHON_USEDEP}]
-			!alpha? ( !arm? ( !hppa? ( !ia64? ( !s390? ( !sparc? (
+			test-rust? (
 				dev-python/cryptography[${PYTHON_USEDEP}]
-			) ) ) ) ) )
+			)
 		' "${PYTHON_TESTED[@]}")
 	)
 "
