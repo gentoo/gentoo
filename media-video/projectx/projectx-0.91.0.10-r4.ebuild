@@ -11,7 +11,7 @@ XDG_P="xdg-20100731"
 
 DESCRIPTION="Converts, splits and demuxes DVB and other MPEG recordings"
 HOMEPAGE="http://project-x.sourceforge.net/"
-SRC_URI="https://dev.gentoo.org/~billie/distfiles/${P}.tar.xz
+SRC_URI="https://dev.gentoo.org/~billie/distfiles/${PF}.tar.xz
 	https://dev.gentoo.org/~billie/distfiles/${PN}-idctfast.tar.xz
 	https://dev.gentoo.org/~billie/distfiles/${XDG_P}.java.xz
 	https://dev.gentoo.org/~billie/distfiles/${PN}-icon.png"
@@ -33,7 +33,6 @@ DEPEND="
 	${COMMON_DEPEND}
 	>=virtual/jdk-1.8:*
 	app-arch/xz-utils
-	virtual/libiconv
 "
 
 S="${WORKDIR}/Project-X"
@@ -73,13 +72,6 @@ src_prepare() {
 
 	# convert CRLF to LF
 	edos2unix *.txt MANIFEST.MF
-
-	# convert docs to utf-8
-	if [ -x "$(type -p iconv)" ]; then
-		for X in zutun.txt; do
-			iconv -f LATIN1 -t UTF8 -o "${X}~" "${X}" && mv -f "${X}~" "${X}" || die
-		done
-	fi
 
 	# merge/remove resources depending on USE="X"
 	if use X; then
