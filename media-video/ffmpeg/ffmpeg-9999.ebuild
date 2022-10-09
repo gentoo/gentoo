@@ -498,14 +498,7 @@ multilib_src_configure() {
 		$(multilib_native_enable manpages)
 	)
 
-	# Fixed in 5.0.1? Waiting for verification from someone who hit the issue.
-	local extra_libs
-	if use arm || use ppc || use mips || [[ ${CHOST} == *i486* ]] ; then
-		# bug #782811
-		# bug #790590
-		extra_libs+="$(test-flags-CCLD -latomic) "
-	fi
-
+	# Use --extra-libs if needed for LIBS
 	set -- "${S}/configure" \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
@@ -521,7 +514,6 @@ multilib_src_configure() {
 		--ranlib="$(tc-getRANLIB)" \
 		--pkg-config="$(tc-getPKG_CONFIG)" \
 		--optflags="${CFLAGS}" \
-		--extra-libs="${extra_libs}" \
 		$(use_enable static-libs static) \
 		"${myconf[@]}" \
 		${EXTRA_FFMPEG_CONF}
