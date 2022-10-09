@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="4"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 ~riscv x86"
 IUSE=""
 
 BDEPEND="virtual/pkgconfig"
