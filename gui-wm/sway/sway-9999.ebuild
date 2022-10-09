@@ -26,7 +26,7 @@ DEPEND="
 	>=dev-libs/json-c-0.13:0=
 	>=dev-libs/libinput-1.6.0:0=
 	sys-auth/seatd:=
-	dev-libs/libpcre
+	dev-libs/libpcre2
 	>=dev-libs/wayland-1.20.0
 	x11-libs/cairo
 	x11-libs/libxkbcommon
