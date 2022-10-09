@@ -21,7 +21,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="socks5"
+IUSE="socks5 test-rust"
 
 RDEPEND="
 	>=dev-python/certifi-2017.4.17[${PYTHON_USEDEP}]
@@ -36,9 +36,9 @@ BDEPEND="
 		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		>=dev-python/PySocks-1.5.6[${PYTHON_USEDEP}]
-		!alpha? ( !hppa? ( !ia64? (
+		test-rust? (
 			dev-python/trustme[${PYTHON_USEDEP}]
-		) ) )
+		)
 	)
 "
 
