@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="User-space implementation of L2TP for Linux and other UNIX systems"
 HOMEPAGE="https://sourceforge.net/projects/rp-l2tp/"
@@ -22,6 +22,8 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	eautoreconf #871210
 
 	tc-export AR CC
 }
