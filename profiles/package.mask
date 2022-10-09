@@ -513,6 +513,7 @@ net-libs/webkit-gtk:5
 >=net-misc/rygel-0.42
 sci-geosciences/geocode-glib:2
 >=sci-geosciences/gnome-maps-43
+>=sys-apps/osinfo-db-tools-1.10.0-r1
 >=sys-libs/libosinfo-1.10.0-r1
 >=www-client/epiphany-43
 >=x11-wm/mutter-43
