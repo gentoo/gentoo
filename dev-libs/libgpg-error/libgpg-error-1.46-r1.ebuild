@@ -67,7 +67,12 @@ multilib_src_configure() {
 		# required for sys-power/suspend[crypt], bug 751568
 		$(use_enable static-libs static)
 		$(use_enable test tests)
+
+		# See bug #699206 and its duplicates wrt gpgme-config
+		# Upstream no longer install this by default and we should
+		# seek to disable it at some point.
 		--enable-install-gpg-error-config
+
 		--enable-threads
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		$("${S}/configure" --help | grep -o -- '--without-.*-prefix')
