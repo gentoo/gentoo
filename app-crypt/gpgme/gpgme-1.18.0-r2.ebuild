@@ -31,10 +31,16 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~
 IUSE="common-lisp static-libs +cxx python qt5 test"
 RESTRICT="!test? ( test )"
 
-# Note: On each bump, update dep bounds on each version from configure.ac!
+# - On each bump, update dep bounds on each version from configure.ac!
+# - Quirky libgpg-error dep for bug #699206 (change in recent libgpg-error
+#   made gpgme stop installing gpgme-config)
 RDEPEND=">=app-crypt/gnupg-2
 	>=dev-libs/libassuan-2.5.3:=
 	>=dev-libs/libgpg-error-1.36:=
+	|| (
+		>=dev-libs/libgpg-error-1.46-r1
+		<dev-libs/libgpg-error-1.46
+	)
 	python? ( ${PYTHON_DEPS} )
 	qt5? ( dev-qt/qtcore:5 )"
 	#doc? ( app-doc/doxygen[dot] )
