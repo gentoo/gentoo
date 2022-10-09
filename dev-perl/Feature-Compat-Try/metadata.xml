@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+    <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+This module makes syntax support for try/catch control flow easily available.
+
+Perl added such syntax at version 5.34.0, and extended it to support optional finally blocks at 5.35.9, which is enabled by
+
+use feature 'try';
+On that version of perl or later, this module simply enables the core feature equivalent to using it directly. On such perls, this module will install with no non-core dependencies, and requires no C compiler.
+
+On older versions of perl before such syntax is available, it is currently provided instead using the Syntax::Keyword::Try module, imported with a special set of options to configure it to recognise exactly and only the same syntax as the core perl feature, thus ensuring that any code using it will still continue to function on that newer perl.
+</longdescription>
+   <upstream>
+     <remote-id type="cpan">Feature::Compat::Try</remote-id>
+     <remote-id type="cpan-module">Feature::Compat::Try</remote-id>
+   </upstream>
+</pkgmetadata>
