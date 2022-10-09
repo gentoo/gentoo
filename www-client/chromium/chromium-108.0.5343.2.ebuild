@@ -253,7 +253,7 @@ pre_build_checks() {
 		[[ ${EBUILD_PHASE_FUNC} == pkg_setup ]] && ( use lto || use pgo ) && llvm_pkg_setup
 
 		local -x CPP="$(tc-getCXX) -E"
-		if tc-is-gcc && ! ver_test "$(gcc-version)" -ge 9.2; then
+		if tc-is-gcc && ! ver_test "$(gcc-version)" -ge 10.4; then
 			die "At least gcc 10.4 is required"
 		fi
 		if use pgo && tc-is-cross-compiler; then
