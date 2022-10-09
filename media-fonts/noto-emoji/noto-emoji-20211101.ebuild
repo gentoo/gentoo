@@ -42,7 +42,7 @@ python_check_deps() {
 
 pkg_setup() {
 	font_pkg_setup
-	python-any-r1_pkg_setup
+	use buildfont && python-any-r1_pkg_setup
 }
 
 src_prepare() {
