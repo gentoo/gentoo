@@ -37,4 +37,6 @@ all_ruby_prepare() {
 	sed -i -e 's/git ls-files -z/find * -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	sed -i -e '/datetime.*created_at/ s:^:#:' test/helper.rb || die
+
+	sed -i -e '/bundler/ s:^:#:' Rakefile || die
 }
