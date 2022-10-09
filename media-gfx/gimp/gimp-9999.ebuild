@@ -14,7 +14,7 @@ DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
 EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
 SRC_URI=""
-LICENSE="GPL-3 LGPL-3"
+LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
 
 IUSE="X aalib alsa doc gnome heif javascript jpeg2k jpegxl lua mng openexr postscript python test udev unwind vala vector-icons webp wmf xpm"
