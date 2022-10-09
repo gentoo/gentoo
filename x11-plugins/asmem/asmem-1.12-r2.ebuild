@@ -29,15 +29,17 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/respect-ldflags.patch
-	"${FILESDIR}"/configure-implicit-func-decls.patch
+	"${FILESDIR}"/configure-implicits.patch
 )
 
 src_configure() {
+	tc-export CC # old autoconf
+
 	econf $(use_enable jpeg)
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}"
+	emake LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
