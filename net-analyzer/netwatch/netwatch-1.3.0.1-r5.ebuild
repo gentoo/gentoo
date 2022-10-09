@@ -1,26 +1,25 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit autotools
+EAPI=8
 
-MY_PV=$(ver_cut 1-3)-$(ver_cut 4)
+inherit autotools flag-o-matic
 
 DESCRIPTION="Ethernet/PPP IP Packet Monitor"
-HOMEPAGE="http://www.slctech.org/~mackay/netwatch.html"
-SRC_URI="http://www.slctech.org/~mackay/NETWATCH/${PN}-${MY_PV}.tgz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${PN}-$(ver_rs 3 -).tgz"
+S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="doc"
 
-RDEPEND="sys-libs/ncurses"
+RDEPEND="sys-libs/ncurses:="
 DEPEND="
 	${RDEPEND}
-	sys-kernel/linux-headers
-	virtual/pkgconfig
-"
+	sys-kernel/linux-headers"
+BDEPEND="virtual/pkgconfig"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-append_ldflags.patch
 	"${FILESDIR}"/${P}-open.patch
@@ -29,22 +28,23 @@ PATCHES=(
 	"${FILESDIR}"/${P}-includes.patch
 	"${FILESDIR}"/${P}-tinfo.patch
 	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-lto-mismatch.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
-S=${WORKDIR}/${PN}-$(ver_cut 1-3)
 
 src_prepare() {
 	default
+
 	eautoreconf
+
+	append-flags -fno-strict-aliasing #861203
 }
 
 src_install() {
 	dosbin netresolv netwatch
-
 	doman netwatch.1
-	dodoc BUGS CHANGES README* TODO
+	einstalldocs
 
-	if use doc; then
-		docinto html
-		dodoc NetwatchKeyCommands.html
-	fi
+	docinto html
+	dodoc NetwatchKeyCommands.html
 }
