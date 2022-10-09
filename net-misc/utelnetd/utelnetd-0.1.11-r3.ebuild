@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Small telnet daemon derived from the Axis tools"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -22,6 +22,8 @@ src_prepare() {
 		-e "/^CC/s|=.*|= $(tc-getCC)|" \
 		-e "/fomit-frame-pointer/d" \
 		-i Makefile || die
+
+	append-cppflags -D_GNU_SOURCE #871195
 }
 
 src_install() {
