@@ -20,6 +20,10 @@ RDEPEND="
 	media-libs/libogg"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-clang16.patch
+)
+
 src_prepare() {
 	default
 
