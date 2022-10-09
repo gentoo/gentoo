@@ -75,12 +75,17 @@ src_install() {
 		# It is used to specify the selected GCC installation.
 	EOF
 
+	newins - gentoo-common.cfg <<-EOF
+		# This file contains flags common to clang, clang++ and clang-cpp.
+		@gentoo-runtimes.cfg
+		@gentoo-gcc-install.cfg
+	EOF
+
 	local tool
 	for tool in clang{,++,-cpp}; do
 		newins - "${tool}.cfg" <<-EOF
 			# This configuration file is used by ${tool} driver.
-			@gentoo-runtimes.cfg
-			@gentoo-gcc-install.cfg
+			@gentoo-common.cfg
 		EOF
 	done
 }
