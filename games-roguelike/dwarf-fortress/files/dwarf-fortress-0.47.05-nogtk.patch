@@ -1,7 +1,5 @@
 Removes hard dependency on GTK in favour of stdin calls.
 
-diff --git a/g_src/KeybindingScreen.cpp b/g_src/KeybindingScreen.cpp
-index 5dd3f2f..4d1a108 100644
 --- a/g_src/KeybindingScreen.cpp
 +++ b/g_src/KeybindingScreen.cpp
 @@ -1,7 +1,9 @@
@@ -15,8 +13,6 @@ index 5dd3f2f..4d1a108 100644
  #endif
  
  #include "GL/glew.h"
-diff --git a/g_src/enabler.cpp b/g_src/enabler.cpp
-index 897d56a..4ea9458 100644
 --- a/g_src/enabler.cpp
 +++ b/g_src/enabler.cpp
 @@ -1,7 +1,9 @@
@@ -30,7 +26,7 @@ index 897d56a..4ea9458 100644
  #endif
  
  #include <cassert>
-@@ -715,7 +717,7 @@ int main (int argc, char* argv[]) {
+@@ -713,7 +715,7 @@ int main (int argc, char* argv[]) {
  #ifdef unix
    setlocale(LC_ALL, "");
  #endif
@@ -39,7 +35,7 @@ index 897d56a..4ea9458 100644
    bool gtk_ok = false;
    if (getenv("DISPLAY"))
      gtk_ok = gtk_init_check(&argc, &argv);
-@@ -736,6 +738,7 @@ int main (int argc, char* argv[]) {
+@@ -734,6 +736,7 @@ int main (int argc, char* argv[]) {
    init.begin(); // Load init.txt settings
    
  #if !defined(__APPLE__) && defined(unix)
@@ -47,7 +43,7 @@ index 897d56a..4ea9458 100644
    if (!gtk_ok && !init.display.flag.has_flag(INIT_DISPLAY_FLAG_TEXT)) {
      puts("Display not found and PRINT_MODE not set to TEXT, aborting.");
      exit(EXIT_FAILURE);
-@@ -745,6 +748,7 @@ int main (int argc, char* argv[]) {
+@@ -743,6 +746,7 @@ int main (int argc, char* argv[]) {
      puts("Graphical tiles are not compatible with text output, sorry");
      exit(EXIT_FAILURE);
    }
@@ -55,8 +51,6 @@ index 897d56a..4ea9458 100644
  #endif
  
    // Initialize video, if we /use/ video
-diff --git a/g_src/renderer_curses.cpp b/g_src/renderer_curses.cpp
-index d93061d..f873784 100644
 --- a/g_src/renderer_curses.cpp
 +++ b/g_src/renderer_curses.cpp
 @@ -1,3 +1,7 @@
@@ -67,20 +61,6 @@ index d93061d..f873784 100644
  static bool curses_initialized = false;
  
  static void endwin_void() {
-diff --git a/g_src/ttf_manager.cpp b/g_src/ttf_manager.cpp
-index aeebc14..ce48a03 100644
---- a/g_src/ttf_manager.cpp
-+++ b/g_src/ttf_manager.cpp
-@@ -2,6 +2,7 @@
- #include "init.h"
- #include <cmath>
- #include <iostream>
-+#include <cmath>
- 
- using namespace std;
- 
-diff --git a/g_src/win32_compat.cpp b/g_src/win32_compat.cpp
-index 44d6ace..02582c7 100644
 --- a/g_src/win32_compat.cpp
 +++ b/g_src/win32_compat.cpp
 @@ -13,7 +13,11 @@
@@ -104,7 +84,7 @@ index 44d6ace..02582c7 100644
      // Have X, will dialog
      GtkWidget *dialog = gtk_message_dialog_new(NULL,
                                                 GTK_DIALOG_DESTROY_WITH_PARENT,
-@@ -141,13 +146,30 @@ int MessageBox(HWND *dummy, const char *text, const char *caption, UINT type)
+@@ -141,6 +146,23 @@ int MessageBox(HWND *dummy, const char *text, const char *caption, UINT type)
          break;
        }
      }
@@ -128,14 +108,6 @@ index 44d6ace..02582c7 100644
    } else {
      // Use curses
      init_curses();
-     erase();
-     gps.force_full_display_count = 1;
-     wattrset(*stdscr_p, A_NORMAL | COLOR_PAIR(1));
--    
-+
-     mvwaddstr(*stdscr_p, 0, 5, caption);
-     mvwaddstr(*stdscr_p, 2, 2, text);
-     nodelay(*stdscr_p, false);
 @@ -173,7 +195,7 @@ int MessageBox(HWND *dummy, const char *text, const char *caption, UINT type)
      }
      nodelay(*stdscr_p, -1);
