@@ -10,7 +10,7 @@
 # Older versions of libvirt need a vulnerable version of wireshark
 <app-emulation/libvirt-8.0.0 wireshark-plugins
 
-# Sam James <sam@gentoo.org> (2022-08-07)
+# Sam James <sam@gentoo.org> (2022-10-07)
 # media-sound/rplay is masked for removal.
 x11-wm/fvwm3 rplay
 x11-wm/ctwm rplay

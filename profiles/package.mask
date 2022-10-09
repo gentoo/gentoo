@@ -91,7 +91,7 @@ dev-python/jarowinkler
 =sys-kernel/vanilla-kernel-5.19.12
 =virtual/dist-kernel-5.19.12
 
-# Sam Jaems <sam@gentoo.org> (2022-10-04)
+# Sam James <sam@gentoo.org> (2022-10-04)
 # Please upgrade to >= portage-3.0.38.1 for binpkg fixes.
 # bug #870283, bug #874771.
 =sys-apps/portage-3.0.31
