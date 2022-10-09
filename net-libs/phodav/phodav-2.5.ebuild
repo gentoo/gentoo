@@ -27,6 +27,7 @@ BDEPEND="
 	app-text/xmlto
 	sys-devel/gettext
 	virtual/pkgconfig
+	gtk-doc? ( dev-util/gtk-doc )
 	test? ( gnome-base/dconf )
 "
 
