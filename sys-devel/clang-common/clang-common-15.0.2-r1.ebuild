@@ -11,7 +11,10 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos"
-IUSE="default-compiler-rt default-libcxx default-lld llvm-libunwind"
+IUSE="
+	default-compiler-rt default-libcxx default-lld llvm-libunwind
+	stricter
+"
 
 PDEPEND="
 	sys-devel/clang:*
@@ -81,6 +84,26 @@ src_install() {
 		@gentoo-runtimes.cfg
 		@gentoo-gcc-install.cfg
 	EOF
+
+	if use stricter; then
+		newins - gentoo-stricter.cfg <<-EOF
+			# This file increases the strictness of older clang versions
+			# to match the newest upstream version.
+
+			# clang-16 defaults
+			-Werror=implicit-function-declaration
+			-Werror=implicit-int
+			-Werror=incompatible-function-pointer-types
+
+			# constructs banned by C2x
+			-Werror=strict-prototypes
+			-Werror=deprecated-non-prototype
+		EOF
+
+		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
+			@gentoo-stricter.cfg
+		EOF
+	fi
 
 	local tool
 	for tool in clang{,++,-cpp}; do
