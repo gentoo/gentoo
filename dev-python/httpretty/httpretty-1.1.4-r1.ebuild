@@ -18,6 +18,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 SLOT="0"
 LICENSE="MIT"
 KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
+IUSE="test-rust"
 
 RDEPEND="
 	dev-python/urllib3[${PYTHON_USEDEP}]
@@ -36,9 +37,9 @@ BDEPEND="
 # We're skipping redis entirely since it requires a running server.
 BDEPEND+="
 	test? (
-		!arm? ( !sparc? (
+		test-rust? (
 			dev-python/pyopenssl[${PYTHON_USEDEP}]
-		) )
+		)
 		$(python_gen_cond_dep '
 			>=dev-python/boto3-1.17.72[${PYTHON_USEDEP}]
 			dev-python/httplib2[${PYTHON_USEDEP}]
