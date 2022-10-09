@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit font
 
@@ -16,5 +16,9 @@ KEYWORDS="amd64 ~loong ~riscv x86"
 IUSE="X"
 
 BDEPEND="app-arch/unzip"
+RDEPEND="
+	!media-fonts/paratype-astra-sans
+	!media-fonts/paratype-astra-serif
+"
 
 FONT_SUFFIX="ttf"
