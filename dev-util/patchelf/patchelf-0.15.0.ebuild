@@ -9,7 +9,7 @@ DESCRIPTION="Small utility to modify the dynamic linker and RPATH of ELF executa
 HOMEPAGE="https://github.com/NixOS/patchelf"
 SRC_URI="https://github.com/NixOS/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~riscv-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~riscv-linux ~x86-linux"
 LICENSE="GPL-3"
 
 src_prepare() {
