@@ -61,11 +61,7 @@ src_compile() {
 	# -DDEBUG is recognized to give additional debug output
 	append-cppflags -D$(usev !debug N)DEBUG
 
-	if use gui; then
-		emake -f "${FILESDIR}"/Makefile.native
-	else
-		emake -f "${FILESDIR}"/Makefile.native HAVE_GTK=0
-	fi
+	emake -f "${FILESDIR}"/Makefile.native HAVE_GTK=$(usex gui 1 0)
 }
 
 src_install() {
