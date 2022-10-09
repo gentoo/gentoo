@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-asciiview.patch
 	"${FILESDIR}"/${P}-includes.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
