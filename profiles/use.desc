@@ -311,6 +311,7 @@ tcmalloc - Use the dev-util/google-perftools libraries to replace the malloc() i
 tcpd - Add support for TCP wrappers
 telemetry - Send anonymized usage information to upstream so they can better understand our users
 test - Enable dependencies and/or preparations necessary to run tests (usually controlled by FEATURES=test but can be toggled independently)
+test-rust - Enable important test dependencies that require Rust toolchain
 theora - Add support for the Theora Video Compression Codec
 threads - Add threads support for various packages. Usually pthreads
 tidy - Add support for HTML Tidy

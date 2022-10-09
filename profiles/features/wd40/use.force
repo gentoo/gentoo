@@ -1,0 +1,6 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2022-10-09)
+# Disable tests requiring Rust.
+-test-rust

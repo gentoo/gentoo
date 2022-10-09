@@ -3,6 +3,10 @@
 
 rust
 
+# Michał Górny <mgorny@gentoo.org> (2022-10-09)
+# Disable tests requiring Rust.
+test-rust
+
 # Sam James <sam@gentoo.org> (2022-08-26)
 # >=media-gfx/libimagequant-4 requires Rust.
 imagequant
