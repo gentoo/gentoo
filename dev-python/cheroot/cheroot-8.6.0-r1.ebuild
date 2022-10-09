@@ -19,6 +19,7 @@ SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ~ppc64 ~riscv ~sparc x86"
+IUSE="test-rust"
 
 RDEPEND="
 	>=dev-python/six-1.11.0[${PYTHON_USEDEP}]
@@ -36,7 +37,7 @@ BDEPEND="
 		dev-python/requests-toolbelt[${PYTHON_USEDEP}]
 		dev-python/requests-unixsocket[${PYTHON_USEDEP}]
 		dev-python/urllib3[${PYTHON_USEDEP}]
-		!ia64? (
+		test-rust? (
 			dev-python/pyopenssl[${PYTHON_USEDEP}]
 			dev-python/trustme[${PYTHON_USEDEP}]
 		)
