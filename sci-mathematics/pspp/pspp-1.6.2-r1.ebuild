@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 # Note: can drop test infra + which dep in next release!
 IUSE="doc examples gtk ncurses nls perl postgres test"
 RESTRICT="!test? ( test )"
