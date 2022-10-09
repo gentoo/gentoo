@@ -52,10 +52,12 @@ LICENSE="MIT"
 SLOT="3.9-${PV%_p*}"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
+# sys-devel/gcc for libgcc_s.so
 RDEPEND="
 	app-arch/bzip2:0/1
 	dev-libs/expat:0/0
 	dev-libs/libffi:0/8
+	sys-devel/gcc
 	sys-libs/ncurses:0/6
 	>=sys-libs/zlib-1.1.3:0/1
 	virtual/libintl:0/0
