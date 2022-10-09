@@ -475,6 +475,7 @@ sys-devel/automake:1.11
 # Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
 >=app-arch/file-roller-43
 >=app-text/libgepub-0.7.0
+>=app-misc/tracker-miners-3.4.0-r1
 >=dev-libs/gjs-1.74
 >=dev-libs/libgweather-4.2.0
 >=dev-python/nautilus-python-4.0
