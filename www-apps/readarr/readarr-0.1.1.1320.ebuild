@@ -24,7 +24,9 @@ RDEPEND="
 	acct-user/readarr
 	dev-libs/icu
 	dev-util/lttng-ust:0
-	dev-db/sqlite"
+	dev-db/sqlite
+	sys-libs/glibc
+"
 
 QA_PREBUILT="*"
 
