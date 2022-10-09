@@ -10,7 +10,7 @@ inherit autotools gnome2 toolchain-funcs virtualx
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
 SRC_URI="mirror://gimp/v2.10/${P}.tar.bz2"
-LICENSE="GPL-3 LGPL-3"
+LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/2"
 KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ppc64 ~riscv x86"
 
