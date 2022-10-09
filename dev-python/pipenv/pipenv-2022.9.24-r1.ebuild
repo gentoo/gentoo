@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 
 PATCHES=(
-	"${FILESDIR}/${MY_PV}/pipenv-2022.9.24-inject-site-packages.patch"
+	"${FILESDIR}/pipenv-2022.9.24-inject-site-packages.patch"
 )
 
 RDEPEND="
