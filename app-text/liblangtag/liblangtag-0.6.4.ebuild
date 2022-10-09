@@ -11,7 +11,7 @@ SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 
 LICENSE="|| ( LGPL-3 MPL-2.0 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE="debug doc introspection test"
 
 # Upstream expect liblangtag to be installed when one runs tests...
