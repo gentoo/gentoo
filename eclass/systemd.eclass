@@ -132,6 +132,14 @@ systemd_get_systempresetdir() {
 	_systemd_get_dir systemdsystempresetdir /lib/systemd/system-preset
 }
 
+# @FUNCTION: systemd_get_sleepdir
+# @DESCRIPTION:
+# Output the path for the system sleep directory.
+systemd_get_sleepdir() {
+	debug-print-function ${FUNCNAME} "${@}"
+	_systemd_get_dir systemdsleepdir /lib/systemd/system-sleep
+}
+
 # @FUNCTION: systemd_dounit
 # @USAGE: <unit>...
 # @DESCRIPTION:
