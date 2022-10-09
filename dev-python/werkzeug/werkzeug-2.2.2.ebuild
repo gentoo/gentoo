@@ -22,6 +22,7 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+IUSE="test-rust"
 
 RDEPEND="
 	>=dev-python/markupsafe-2.1.1[${PYTHON_USEDEP}]
@@ -34,12 +35,9 @@ BDEPEND="
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/pytest-xprocess[${PYTHON_USEDEP}]
 		dev-python/watchdog[${PYTHON_USEDEP}]
-		!alpha? ( !arm? ( !hppa? ( !ia64? ( !s390? (
-			$(python_gen_cond_dep '
-				dev-python/cryptography[${PYTHON_USEDEP}]
-			' python3_{8..11} pypy3 # TODO: add py3.11 when ported
-			)
-		) ) ) ) )
+		test-rust? (
+			dev-python/cryptography[${PYTHON_USEDEP}]
+		)
 		!hppa? ( !ia64? ( !loong? (
 			$(python_gen_cond_dep '
 				dev-python/greenlet[${PYTHON_USEDEP}]
