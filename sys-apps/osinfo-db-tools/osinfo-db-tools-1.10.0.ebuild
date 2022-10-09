@@ -39,6 +39,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-use-libsoup-2.4.patch
+)
+
 python_check_deps() {
 	use test && \
 		has_version "dev-python/pytest[${PYTHON_USEDEP}]" && \
