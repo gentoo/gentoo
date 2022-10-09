@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need localmount
+}
+
+start() {
+	if get_bootparam "nogui" || get_bootparam "nox"; then
+		touch /run/.nogui
+	fi
+}
