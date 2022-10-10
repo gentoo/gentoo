@@ -184,18 +184,6 @@ src_prepare() {
 	llvm.org_src_prepare
 }
 
-# Is LLVM being linked against libc++?
-is_libcxx_linked() {
-	local code='#include <ciso646>
-#if defined(_LIBCPP_VERSION)
-	HAVE_LIBCXX
-#endif
-'
-	local out=$($(tc-getCXX) ${CXXFLAGS} ${CPPFLAGS} -x c++ -E -P - <<<"${code}") || return 1
-
-	[[ ${out} == *HAVE_LIBCXX* ]]
-}
-
 get_distribution_components() {
 	local sep=${1-;}
 
@@ -391,7 +379,7 @@ multilib_src_configure() {
 		# the commit id in the SOVERSION to contain the breakage
 		suffix+="git${EGIT_VERSION::8}"
 	fi
-	if is_libcxx_linked; then
+	if [[ $(tc-get-cxx-stdlib) == libc++ ]]; then
 		# Smart hack: alter version suffix -> SOVERSION when linking
 		# against libc++. This way we won't end up mixing LLVM libc++
 		# libraries with libstdc++ clang, and the other way around.
