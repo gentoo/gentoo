@@ -28,7 +28,6 @@ DEPEND="
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/kdbusaddons-${KFMIN}:5
-	>=kde-frameworks/kdeclarative-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/kitemviews-${KFMIN}:5
@@ -56,6 +55,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=dev-qt/qtquickcontrols-${QTMIN}:5
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
+	>=kde-frameworks/kdeclarative-${KFMIN}:5
 	>=kde-frameworks/kirigami-${KFMIN}:5
 	>=kde-frameworks/kquickcharts-${KFMIN}:5
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
@@ -64,6 +64,8 @@ BDEPEND="
 	>=kde-frameworks/kcmutils-${KFMIN}:5
 	virtual/pkgconfig
 "
+
+PATCHES=( "${FILESDIR}/${P}-unused-dep.patch" )
 
 src_prepare() {
 	ecm_src_prepare

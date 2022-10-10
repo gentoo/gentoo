@@ -1,0 +1,62 @@
+From 6f6958586e5a89ad5ff597550894a5770b5fb7cf Mon Sep 17 00:00:00 2001
+From: Volker Krause <vkrause@kde.org>
+Date: Wed, 5 Oct 2022 16:38:37 +0200
+Subject: [PATCH] Remove deprecated KDeclarative use
+
+The icon image engine seems not required here.
+---
+ CMakeLists.txt     | 1 -
+ kcm/CMakeLists.txt | 1 -
+ kcm/kcm.cpp        | 5 -----
+ 3 files changed, 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6495c735..c245f60e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -40,7 +40,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
+     ConfigWidgets
+     Completion
+     CoreAddons
+-    Declarative
+     DBusAddons
+     KIO
+     I18n
+diff --git a/kcm/CMakeLists.txt b/kcm/CMakeLists.txt
+index cbd7ad32..8f3e60d3 100755
+--- a/kcm/CMakeLists.txt
++++ b/kcm/CMakeLists.txt
+@@ -16,7 +16,6 @@ target_link_libraries(kcm_networkmanagement
+     plasmanm_internal
+     plasmanm_editor
+     KF5::ConfigWidgets
+-    KF5::Declarative
+     KF5::I18n
+     KF5::Service
+     Qt::Quick
+diff --git a/kcm/kcm.cpp b/kcm/kcm.cpp
+index 11663fe9..e350be54 100644
+--- a/kcm/kcm.cpp
++++ b/kcm/kcm.cpp
+@@ -20,7 +20,6 @@
+ #include <KPluginFactory>
+ #include <KPluginMetaData>
+ #include <KSharedConfig>
+-#include <kdeclarative/kdeclarative.h>
+ 
+ #include <NetworkManagerQt/ActiveConnection>
+ #include <NetworkManagerQt/Connection>
+@@ -58,10 +57,6 @@ KCMNetworkmanagement::KCMNetworkmanagement(QWidget *parent, const QVariantList &
+     auto mainWidget = new QWidget(this);
+     m_ui->setupUi(mainWidget);
+ 
+-    KDeclarative::KDeclarative kdeclarative;
+-    kdeclarative.setDeclarativeEngine(m_ui->connectionView->engine());
+-    kdeclarative.setupEngine(m_ui->connectionView->engine());
+-
+     KLocalizedContext *l10nContext = new KLocalizedContext(m_ui->connectionView->engine());
+     l10nContext->setTranslationDomain(QStringLiteral(TRANSLATION_DOMAIN));
+     m_ui->connectionView->engine()->rootContext()->setContextObject(l10nContext);
+-- 
+2.38.0
+
