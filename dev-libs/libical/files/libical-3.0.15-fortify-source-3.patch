@@ -1,0 +1,43 @@
+https://github.com/libical/libical/commit/d67034b31cebe0db3ca65342813336b123921a15
+https://github.com/libical/libical/issues/603
+https://bugs.gentoo.org/876625
+
+From: Allen Winter <allen.winter@kdab.com>
+Date: Fri, 7 Oct 2022 09:43:32 -0400
+Subject: [PATCH] fix problem found with gcc fortify builds
+
+fixes: #603
+--- a/src/libical/icaltz-util.c
++++ b/src/libical/icaltz-util.c
+@@ -732,7 +732,7 @@ icalcomponent *icaltzutil_fetch_timezone(const char *location)
+     for (i = 0; i < num_trans; i++) {
+         int by_day = 0;
+         time_t start;
+-        enum icalrecurrencetype_weekday dow;
++        enum icalrecurrencetype_weekday dow = ICAL_NO_WEEKDAY;
+ 
+         prev_idx = idx;
+         idx = trans_idx[i];
+--- a/src/libicalss/icalbdbset.c
++++ b/src/libicalss/icalbdbset.c
+@@ -529,7 +529,7 @@ int icalbdbset_get_key(DBC *dbcp, DBT *key, DBT *data)
+ int icalbdbset_delete(DB *dbp, DBT *key)
+ {
+     DB_TXN *tid;
+-    int ret;
++    int ret = 0;
+     int done = 0;
+     int retry = 0;
+ 
+--- a/src/test/regression.c
++++ b/src/test/regression.c
+@@ -2322,7 +2322,7 @@ void test_fblist()
+         char *strp = out_str;
+ 
+         for (i = 0; foo[i] != -1; i++) {
+-            snprintf(strp, 79, "%1d", foo[i]);
++            snprintf(strp, 79-i, "%1d", foo[i]);
+             strp++;
+         }
+         str_is("Checking freebusy validity", out_str, "1121110");
+
