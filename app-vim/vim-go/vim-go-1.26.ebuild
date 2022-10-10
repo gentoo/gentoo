@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/fatih/vim-go"
 SRC_URI="https://github.com/fatih/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
 RDEPEND="dev-go/gopls"
