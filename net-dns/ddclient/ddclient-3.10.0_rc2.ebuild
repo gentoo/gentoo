@@ -66,12 +66,12 @@ pkg_postinst() {
 	if [[ ${REPLACING_VERSIONS} ]]; then
 		for v in ${REPLACING_VERSIONS}; do
 			if ver_test "${v}" -lt 3.10.0; then
-				cp /etc/ddclient/ddclient.conf /etc/ddclient.conf || die
-
-				ewarn "Your DDClient configuration has been copied from"
-				ewarn "'/etc/ddclient/ddclient.conf' to '/etc/ddclient.conf'."
-				ewarn "Please check your configuration."
-
+				if [ -f "${EROOT}/etc/ddclient/ddclient.conf" ]; then
+					cp /etc/ddclient/ddclient.conf /etc/ddclient.conf || die
+					ewarn "Your DDClient configuration has been copied from"
+					ewarn "'/etc/ddclient/ddclient.conf' to '/etc/ddclient.conf'."
+					ewarn "Please check your configuration."
+				fi
 				break
 			fi
 		done
