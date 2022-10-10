@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit autotools
 
 DESCRIPTION="a system tray dockapp with the ability to display more than just four tray icons"
@@ -16,7 +16,8 @@ DEPEND="x11-libs/libXext
 	x11-libs/libXfixes
 	x11-libs/libXmu
 	x11-libs/libXpm"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	media-fonts/font-misc-misc"
 
 PATCHES=( "${FILESDIR}"/${P}-ar.patch )
 
