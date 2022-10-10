@@ -14,7 +14,7 @@ SRC_URI="https://github.com/kana/vim-${PN}/archive/refs/tags/v${PV}.tar.gz -> ${
 S="${WORKDIR}/vim-${P}"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
