@@ -63,6 +63,8 @@ BDEPEND="${PYTHON_DEPS}
 	kde? ( kde-frameworks/extra-cmake-modules:5 )
 "
 
+PATCHES=( "${FILESDIR}/${P}-musl.patch" )
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
