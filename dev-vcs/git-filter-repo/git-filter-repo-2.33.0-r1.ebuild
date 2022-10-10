@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..10} )
-inherit python-single-r1
+inherit distutils-r1
 
 DESCRIPTION="Quickly rewrite git repository history (filter-branch replacement)"
 HOMEPAGE="https://github.com/newren/git-filter-repo/"
@@ -20,16 +20,17 @@ RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-vcs/git-2.24.0"
 
-src_compile() {
-	:
+S="${S}/release"
+
+src_prepare() {
+	eapply_user
+	cat > PKG-INFO <<EOF
+Metadata-Version: 2.1
+Name: git-filter-repo
+Version: ${PV}
+EOF
 }
 
 src_test() {
 	bash t/run_tests || die
-}
-
-src_install() {
-	python_fix_shebang git-filter-repo
-	dobin git-filter-repo
-	doman Documentation/man1/git-filter-repo.1
 }
