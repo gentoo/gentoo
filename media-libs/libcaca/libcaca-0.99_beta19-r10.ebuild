@@ -36,6 +36,7 @@ DEPEND="
 		>=x11-libs/libXt-1.1.4
 	)
 "
+RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	doc? (
