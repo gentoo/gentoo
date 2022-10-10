@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="The no nonsense TFTP/FTP server"
 HOMEPAGE="https://github.com/troglobit/uftpd"
@@ -32,7 +32,6 @@ src_test() {
 	# can't run the tests in parallel since the order matters
 	emake -j 1 check
 }
-
 
 src_install() {
 	default
