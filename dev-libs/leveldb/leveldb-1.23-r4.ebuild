@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	dev-libs/crc32c
 	snappy? ( app-arch/snappy:= )
-	tcmalloc? ( dev-util/google-perftools:= )
+	tcmalloc? ( dev-util/google-perftools:=[-minimal] )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="test? ( dev-cpp/gtest )"
