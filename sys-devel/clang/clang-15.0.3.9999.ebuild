@@ -16,7 +16,7 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
 KEYWORDS=""
-IUSE="debug doc +pie +static-analyzer test xml"
+IUSE="debug doc +extra +pie +static-analyzer test xml"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -194,42 +194,43 @@ get_distribution_components() {
 			clang-offload-bundler
 			clang-offload-packager
 			clang-offload-wrapper
-			clang-pseudo
 			clang-refactor
 			clang-repl
 			clang-rename
 			clang-scan-deps
 			diagtool
 			hmaptool
-
-			# extra tools
-			clang-apply-replacements
-			clang-change-namespace
-			clang-doc
-			clang-include-fixer
-			clang-move
-			clang-query
-			clang-reorder-fields
-			clang-tidy
-			clang-tidy-headers
-			clangd
-			find-all-symbols
-			modularize
-			pp-trace
 		)
 
-		if llvm_are_manpages_built; then
+		if use extra; then
 			out+=(
-				# manpages
-				docs-clang-man
-				docs-clang-tools-man
+				# extra tools
+				clang-apply-replacements
+				clang-change-namespace
+				clang-doc
+				clang-include-fixer
+				clang-move
+				clang-pseudo
+				clang-query
+				clang-reorder-fields
+				clang-tidy
+				clang-tidy-headers
+				clangd
+				find-all-symbols
+				modularize
+				pp-trace
 			)
 		fi
 
-		use doc && out+=(
-			docs-clang-html
-			docs-clang-tools-html
-		)
+		if llvm_are_manpages_built; then
+			out+=( docs-clang-man )
+			use extra && out+=( docs-clang-tools-man )
+		fi
+
+		if use doc; then
+			out+=( docs-clang-html )
+			use extra && out+=( docs-clang-tools-html )
+		fi
 
 		use static-analyzer && out+=(
 			clang-check
@@ -292,13 +293,21 @@ multilib_src_configure() {
 				-DLLVM_BUILD_DOCS=ON
 				-DLLVM_ENABLE_SPHINX=ON
 				-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
-				-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
 				-DSPHINX_WARNINGS_AS_ERRORS=OFF
 			)
+			if use extra; then
+				mycmakeargs+=(
+					-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
+				)
+			fi
 		fi
 		mycmakeargs+=(
-			-DLLVM_EXTERNAL_CLANG_TOOLS_EXTRA_SOURCE_DIR="${WORKDIR}"/clang-tools-extra
 			-DCLANG_INCLUDE_DOCS=${build_docs}
+		)
+	fi
+	if multilib_native_use extra; then
+		mycmakeargs+=(
+			-DLLVM_EXTERNAL_CLANG_TOOLS_EXTRA_SOURCE_DIR="${WORKDIR}"/clang-tools-extra
 			-DCLANG_TOOLS_EXTRA_INCLUDE_DOCS=${build_docs}
 		)
 	else
@@ -346,9 +355,14 @@ multilib_src_compile() {
 multilib_src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
-	cmake_build check-clang
-	multilib_is_native_abi &&
-		cmake_build check-clang-tools check-clangd
+	local test_targets=( check-clang )
+	if multilib_native_use extra; then
+		test_targets+=(
+			check-clang-tools
+			check-clangd
+		)
+	fi
+	cmake_build "${test_targets[@]}"
 }
 
 src_install() {
@@ -361,7 +375,9 @@ src_install() {
 	# Move runtime headers to /usr/lib/clang, where they belong
 	mv "${ED}"/usr/include/clangrt "${ED}"/usr/lib/clang || die
 	# move (remaining) wrapped headers back
-	mv "${T}"/clang-tidy "${ED}"/usr/include/ || die
+	if use extra; then
+		mv "${T}"/clang-tidy "${ED}"/usr/include/ || die
+	fi
 	mv "${ED}"/usr/include "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/include || die
 
 	# Apply CHOST and version suffix to clang tools
@@ -403,7 +419,7 @@ multilib_src_install() {
 	rm -rf "${ED}"/usr/include || die
 	mv "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/include "${ED}"/usr/include || die
 	mv "${ED}"/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)/clang "${ED}"/usr/include/clangrt || die
-	if multilib_is_native_abi; then
+	if multilib_native_use extra; then
 		# don't wrap clang-tidy headers, the list is too long
 		# (they're fine for non-native ABI but enabling the targets is problematic)
 		mv "${ED}"/usr/include/clang-tidy "${T}/" || die
@@ -431,9 +447,11 @@ pkg_postinst() {
 
 	elog "You can find additional utility scripts in:"
 	elog "  ${EROOT}/usr/lib/llvm/${LLVM_MAJOR}/share/clang"
-	elog "Some of them are vim integration scripts (with instructions inside)."
-	elog "The run-clang-tidy.py script requires the following additional package:"
-	elog "  dev-python/pyyaml"
+	if use extra; then
+		elog "Some of them are vim integration scripts (with instructions inside)."
+		elog "The run-clang-tidy.py script requires the following additional package:"
+		elog "  dev-python/pyyaml"
+	fi
 }
 
 pkg_postrm() {
