@@ -189,7 +189,7 @@ stop_pre() {
 stop_post() {
 	# switch back to original vt
 	if [ -n "${curvt}" ]; then
-		if type chvt >/dev/null 2>&1; then
+		if command -v chvt >/dev/null 2>&1; then
 			chvt "${curvt}"
 		else
 			vidcontrol -s "$((curvt + 1))"

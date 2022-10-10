@@ -22,7 +22,7 @@ RDEPEND="
 
 src_install() {
 	newinitd "${FILESDIR}"/display-manager-setup.initd-r1 display-manager-setup
-	newinitd "${FILESDIR}"/display-manager.initd-r3 display-manager
+	newinitd "${FILESDIR}"/display-manager.initd-r4 display-manager
 	newinitd "${FILESDIR}"/xdm.initd xdm
 	newconfd "${FILESDIR}"/display-manager.confd display-manager
 	newbin "${FILESDIR}"/startDM-r1 startDM
