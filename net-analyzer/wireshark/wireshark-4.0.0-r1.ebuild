@@ -29,7 +29,7 @@ IUSE="androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmo
 IUSE+=" +dumpcap +editcap +gui http2 ilbc kerberos libxml2 lto lua lz4 maxminddb"
 IUSE+=" +mergecap +minizip +netlink opus +plugins +pcap qt6 +randpkt"
 IUSE+=" +randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl"
-IUSE+=" sdjournal test +text2pcap tfshark +tshark +udpdump zlib +zstd"
+IUSE+=" sdjournal test +text2pcap tfshark +tshark +udpdump wifi zlib +zstd"
 
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -37,7 +37,6 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
-# TODO: wifidump/libssh automagic?
 # bug #753062 for speexdsp
 RDEPEND="
 	acct-group/pcap
@@ -84,6 +83,7 @@ RDEPEND="
 	spandsp? ( media-libs/spandsp:= )
 	sshdump? ( >=net-libs/libssh-0.6:= )
 	ssl? ( >=net-libs/gnutls-3.5.8:= )
+	wifi? ( >=net-libs/libssh-0.6:= )
 	zlib? ( sys-libs/zlib )
 	zstd? ( app-arch/zstd:= )
 "
@@ -219,6 +219,7 @@ src_configure() {
 		-DENABLE_SMI=$(usex smi)
 		-DENABLE_SNAPPY=$(usex snappy)
 		-DENABLE_SPANDSP=$(usex spandsp)
+		-DBUILD_wifidump=$(usex wifi)
 		-DENABLE_ZLIB=$(usex zlib)
 		-DENABLE_ZSTD=$(usex zstd)
 	)
