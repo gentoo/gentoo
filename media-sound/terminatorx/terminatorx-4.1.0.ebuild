@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,9 +7,9 @@ inherit gnome2
 MY_P=${P/terminatorx/terminatorX}
 
 DESCRIPTION="Realtime audio synthesizer allowing you to 'scratch' on sampled audio data"
-HOMEPAGE="https://www.terminatorx.org/"
+HOMEPAGE="https://terminatorx.org/"
 # this is the original location but there is an issue with their certificate so mirroring the file
-#SRC_URI="https://www.terminatorx.org/dist/${MY_P}.tar.bz2"
+#SRC_URI="https://terminatorx.org/dist/${MY_P}.tar.bz2"
 SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
