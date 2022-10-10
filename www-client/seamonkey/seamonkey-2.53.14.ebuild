@@ -57,6 +57,7 @@ BDEPEND="
 	app-arch/zip
 	>=dev-lang/nasm-2.13
 	dev-lang/perl
+	dev-util/cbindgen
 	>=sys-devel/binutils-2.16.1
 	virtual/pkgconfig
 	<=virtual/rust-1.63.0
@@ -146,7 +147,7 @@ pkg_setup() {
 		ewarn "Those belong to upstream: https://bugzilla.mozilla.org"
 	fi
 
-	if ver_test $(rustc -V | cut -d" " -f2) -ge "1.64"; then
+	if ver_test $(rustc -V | tr -cd '[0-9.]' | cut -d" " -f2) -ge "1.64"; then
 	    ewarn "Rust-1.64 is currently unsupported for building ${P}."
 	    ewarn "Please use 'eselect rust' to switch to a lower version, then resume"
 	    ewarn "building ${PN}."
