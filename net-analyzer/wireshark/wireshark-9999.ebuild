@@ -87,7 +87,14 @@ RDEPEND="
 	zlib? ( sys-libs/zlib )
 	zstd? ( app-arch/zstd:= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	gui? (
+		!qt6? (
+			dev-qt/qtdeclarative:5
+		)
+	)
+"
 # TODO: 4.0.0_rc1 release notes say:
 # "Perl is no longer required to build Wireshark, but may be required to build some source code files and run code analysis checks."
 BDEPEND="
@@ -117,12 +124,7 @@ BDEPEND="
 "
 RDEPEND="
 	${RDEPEND}
-	gui? (
-		virtual/freedesktop-icon-theme
-		!qt6? (
-			dev-qt/qtdeclarative:5
-		)
-	)
+	gui? ( virtual/freedesktop-icon-theme )
 	selinux? ( sec-policy/selinux-wireshark )
 "
 
