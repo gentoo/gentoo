@@ -208,7 +208,7 @@ CRATES="
 	windows_i686_msvc-0.36.1
 	windows_x86_64_gnu-0.36.1
 	windows_x86_64_msvc-0.36.1
-	winit-0.27.3
+	winit-0.27.4
 	winreg-0.10.1
 	wio-0.2.2
 	ws2_32-sys-0.2.1
@@ -249,7 +249,7 @@ COMMON_DEPEND="
 	media-libs/fontconfig:=
 	media-libs/freetype:2
 	x11-libs/libxkbcommon
-	X? ( x11-libs/libxcb:=[xkb] )
+	X? ( x11-libs/libxcb:= )
 "
 
 DEPEND="
