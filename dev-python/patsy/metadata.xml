@@ -16,5 +16,6 @@
 </longdescription>
   <upstream>
     <remote-id type="pypi">patsy</remote-id>
+    <remote-id type="github">pydata/patsy</remote-id>
   </upstream>
 </pkgmetadata>
