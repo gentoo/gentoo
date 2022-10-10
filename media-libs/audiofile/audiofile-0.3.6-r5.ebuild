@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.6-mingw32.patch
 	"${FILESDIR}"/${PN}-0.3.6-CVE-2017-68xx.patch
 	"${FILESDIR}"/${PN}-0.3.6-CVE-2018-13440-CVE-2018-17095.patch
+	"${FILESDIR}"/${PN}-0.3.6-strict-prototypes.patch
 )
 
 src_prepare() {
