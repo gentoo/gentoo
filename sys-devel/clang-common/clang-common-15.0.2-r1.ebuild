@@ -115,12 +115,12 @@ src_install() {
 }
 
 pkg_preinst() {
-	# TODO: move this to gcc-config and call it here?
-
-	local gcc_path=$(gcc-config --get-lib-path 2>/dev/null)
-	if [[ -n ${gcc_path} ]]; then
-		cat >> "${ED}/etc/clang/gentoo-gcc-install.cfg" <<-EOF
-			--gcc-install-dir="${gcc_path%%:*}"
-		EOF
+	if has_version sys-devel/gcc-config; then
+		local gcc_path=$(gcc-config --get-lib-path 2>/dev/null)
+		if [[ -n ${gcc_path} ]]; then
+			cat >> "${ED}/etc/clang/gentoo-gcc-install.cfg" <<-EOF
+				--gcc-install-dir="${gcc_path%%:*}"
+			EOF
+		fi
 	fi
 }
