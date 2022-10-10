@@ -63,15 +63,9 @@ multilib_src_configure() {
 		strip-unsupported-flags
 	fi
 
-	# link against compiler-rt instead of libgcc if this is what clang does
-	local want_compiler_rt=OFF
-	if tc-is-clang; then
-		local compiler_rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
-			${LDFLAGS} -print-libgcc-file-name)
-		if [[ ${compiler_rt} == *libclang_rt* ]]; then
-			want_compiler_rt=ON
-		fi
-	fi
+	# link to compiler-rt
+	local use_compiler_rt=OFF
+	[[ $(tc-get-c-rtlib) == compiler-rt ]] && use_compiler_rt=ON
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
@@ -83,7 +77,7 @@ multilib_src_configure() {
 		-DLIBCXXABI_ENABLE_SHARED=ON
 		-DLIBCXXABI_ENABLE_STATIC=$(usex static-libs)
 		-DLIBCXXABI_INCLUDE_TESTS=$(usex test)
-		-DLIBCXXABI_USE_COMPILER_RT=${want_compiler_rt}
+		-DLIBCXXABI_USE_COMPILER_RT=${use_compiler_rt}
 
 		# upstream is omitting standard search path for this
 		# probably because gcc & clang are bundling their own unwind.h
