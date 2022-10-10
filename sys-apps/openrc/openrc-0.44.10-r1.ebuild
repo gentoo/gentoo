@@ -42,10 +42,12 @@ RDEPEND="${COMMON_DEPEND}
 			!sys-apps/systemd[sysv-utils(-)]
 			!sys-apps/sysvinit
 		)
-		!sysv-utils? ( || (
-			>=sys-apps/sysvinit-2.86-r6[selinux?]
-			sys-apps/s6-linux-init[sysv-utils(-)]
-		) )
+		!sysv-utils? (
+			|| (
+				>=sys-apps/sysvinit-2.86-r6[selinux?]
+				sys-apps/s6-linux-init[sysv-utils(-)]
+			)
+		)
 		virtual/tmpfiles
 	)
 	selinux? (
