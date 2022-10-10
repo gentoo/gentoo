@@ -17,6 +17,10 @@ BDEPEND="
 	>=sys-devel/gcc-8
 "
 
+PATCHES=(
+	"${FILESDIR}/876319-verbose-makefile.patch"
+)
+
 pkg_setup() {
 	if [[ "${MERGE_TYPE}" != "binary" ]]; then
 		if ! tc-is-gcc ; then
@@ -34,7 +38,7 @@ src_prepare() {
 
 src_compile() {
 	# Disable btop optimization flags, since we have our flags in CXXFLAGS
-	emake OPTFLAGS="" CXX="$(tc-getCXX)"
+	emake VERBOSE=true OPTFLAGS="" CXX="$(tc-getCXX)"
 }
 
 src_install() {
