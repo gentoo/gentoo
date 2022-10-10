@@ -51,7 +51,6 @@ pkg_setup() {
 }
 
 multilib_src_configure() {
-	local use_compiler_rt=OFF
 	local libdir=$(get_libdir)
 
 	# https://github.com/llvm/llvm-project/issues/56825
@@ -66,13 +65,8 @@ multilib_src_configure() {
 
 	# link to compiler-rt
 	# https://github.com/gentoo/gentoo/pull/21516
-	if tc-is-clang; then
-		local compiler_rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
-		   ${LD_FLAGS} -print-libgcc-file-name)
-		if [[ ${compiler_rt} == *libclang_rt* ]]; then
-			use_compiler_rt=ON
-		fi
-	fi
+	local use_compiler_rt=OFF
+	[[ $(tc-get-c-rtlib) == compiler-rt ]] && use_compiler_rt=ON
 
 	local mycmakeargs=(
 		-DCMAKE_CXX_COMPILER_TARGET="${CHOST}"
