@@ -69,9 +69,6 @@ src_configure() {
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 
-		# disable go bindings
-		-DGO_EXECUTABLE=GO_EXECUTABLE-NOTFOUND
-
 		# TODO: ocamldoc
 	)
 
