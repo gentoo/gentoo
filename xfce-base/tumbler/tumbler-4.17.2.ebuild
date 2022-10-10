@@ -39,6 +39,7 @@ RDEPEND="
 "
 BDEPEND="
 	dev-util/gdbus-codegen
+	dev-util/glib-utils
 	dev-util/gtk-doc-am
 	dev-util/intltool
 	sys-devel/gettext
