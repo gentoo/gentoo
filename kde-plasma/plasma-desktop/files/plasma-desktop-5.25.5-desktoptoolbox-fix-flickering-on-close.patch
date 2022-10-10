@@ -1,0 +1,30 @@
+From 5f384e75bef57231fe01155da479375c315a9706 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Wed, 21 Sep 2022 20:06:08 +0800
+Subject: [PATCH] desktoptoolbox: fix flickering on closing
+
+The visible property needs to keep true until opacity becomes 0,
+otherwise the toolbox will flicker on closing.
+
+BUG: 417849
+FIXED-IN: 5.26 5.24.7
+---
+ toolboxes/desktoptoolbox/contents/ui/ToolBoxContent.qml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/toolboxes/desktoptoolbox/contents/ui/ToolBoxContent.qml b/toolboxes/desktoptoolbox/contents/ui/ToolBoxContent.qml
+index 2cdea674b..b3f306e8c 100644
+--- a/toolboxes/desktoptoolbox/contents/ui/ToolBoxContent.qml
++++ b/toolboxes/desktoptoolbox/contents/ui/ToolBoxContent.qml
+@@ -32,7 +32,7 @@ Item {
+     }
+     transformOrigin: Item.Center
+     opacity: plasmoid.editMode
+-    visible: plasmoid.editMode
++    visible: opacity > 0
+     Behavior on opacity {
+         OpacityAnimator {
+             duration: PlasmaCore.Units.longDuration
+-- 
+GitLab
+
