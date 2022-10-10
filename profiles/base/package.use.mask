@@ -12,7 +12,7 @@
 # fails: bug #873211.
 ~net-libs/gnutls-3.7.8 verify-sig
 
-# Sam Jame <sam@gentoo.org> (2022-10-08)
+# Sam James <sam@gentoo.org> (2022-10-08)
 # Older versions of libvirt need a vulnerable version of wireshark
 <app-emulation/libvirt-8.0.0 wireshark-plugins
 
