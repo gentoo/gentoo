@@ -23,6 +23,7 @@ IUSE="test +threads"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
+	"${FILESDIR}/${P}-fix-clang16.patch"
 	"${FILESDIR}/${P}-fix-single-threaded.patch"
 	"${FILESDIR}/${P}-fix-riscv.patch"
 	"${FILESDIR}/${P}-fix-bad-hostname-segfault.patch"
@@ -59,6 +60,7 @@ src_configure() {
 		-DZIG_USE_CCACHE=OFF
 		-DZIG_PREFER_CLANG_CPP_DYLIB=ON
 		-DZIG_SINGLE_THREADED="$(usex !threads)"
+		-DCMAKE_PREFIX_PATH=$(get_llvm_prefix ${LLVM_MAX_SLOT})
 	)
 
 	cmake_src_configure
