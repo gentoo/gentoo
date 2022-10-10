@@ -70,6 +70,7 @@ RDEPEND="
 		)
 		!qt6? (
 			dev-qt/qtcore:5
+			dev-qt/qtconcurrent:5
 			dev-qt/qtgui:5
 			dev-qt/qtmultimedia:5
 			dev-qt/qtprintsupport:5
@@ -116,7 +117,12 @@ BDEPEND="
 "
 RDEPEND="
 	${RDEPEND}
-	gui? ( virtual/freedesktop-icon-theme )
+	gui? (
+		virtual/freedesktop-icon-theme
+		!qt6? (
+			dev-qt/qtdeclarative:5
+		)
+	)
 	selinux? ( sec-policy/selinux-wireshark )
 "
 
