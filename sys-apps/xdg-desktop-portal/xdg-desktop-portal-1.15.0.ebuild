@@ -43,3 +43,17 @@ src_configure() {
 	)
 	econf "${myeconfargs[@]}"
 }
+
+pkg_postinst() {
+	if ! has_version gui-libs/xdg-desktop-portal-lxqt && ! has_version gui-libs/xdg-desktop-portal-wlr && \
+		! has_version kde-plasma/xdg-desktop-portal-kde && ! has_version sys-apps/xdg-desktop-portal-gnome && \
+		! has_version sys-apps/xdg-desktop-portal-gtk; then
+		elog "${PN} is not usable without any of the following XDP"
+		elog "implementations installed:"
+		elog "  gui-libs/xdg-desktop-portal-lxqt"
+		elog "  gui-libs/xdg-desktop-portal-wlr"
+		elog "  kde-plasma/xdg-desktop-portal-kde"
+		elog "  sys-apps/xdg-desktop-portal-gnome"
+		elog "  sys-apps/xdg-desktop-portal-gtk"
+	fi
+}
