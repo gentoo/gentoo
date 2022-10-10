@@ -1,0 +1,58 @@
+From 8a947c7a586e16a048894e1a0a73d154435e90ef Mon Sep 17 00:00:00 2001
+Message-Id: <8a947c7a586e16a048894e1a0a73d154435e90ef.1665385831.git.mprivozn@redhat.com>
+From: Haiyue Wang <haiyue.wang@intel.com>
+Date: Tue, 22 Feb 2022 00:24:01 +0800
+Subject: [PATCH] aio-posix: fix build failure io_uring 2.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The io_uring fixed "Don't truncate addr fields to 32-bit on 32-bit":
+https://git.kernel.dk/cgit/liburing/commit/?id=d84c29b19ed0b130000619cff40141bb1fc3615b
+
+This leads to build failure:
+../util/fdmon-io_uring.c: In function ‘add_poll_remove_sqe’:
+../util/fdmon-io_uring.c:182:36: error: passing argument 2 of ‘io_uring_prep_poll_remove’ makes integer from pointer without a cast [-Werror=int-conversion]
+  182 |     io_uring_prep_poll_remove(sqe, node);
+      |                                    ^~~~
+      |                                    |
+      |                                    AioHandler *
+In file included from /root/io/qemu/include/block/aio.h:18,
+                 from ../util/aio-posix.h:20,
+                 from ../util/fdmon-io_uring.c:49:
+/usr/include/liburing.h:415:17: note: expected ‘__u64’ {aka ‘long long unsigned int’} but argument is of type ‘AioHandler *’
+  415 |           __u64 user_data)
+      |           ~~~~~~^~~~~~~~~
+cc1: all warnings being treated as errors
+
+Use LIBURING_HAVE_DATA64 to check whether the io_uring supports 64-bit
+variants of the get/set userdata, to convert the paramter to the right
+data type.
+
+Signed-off-by: Haiyue Wang <haiyue.wang@intel.com>
+Message-Id: <20220221162401.45415-1-haiyue.wang@intel.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ util/fdmon-io_uring.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/util/fdmon-io_uring.c b/util/fdmon-io_uring.c
+index 1461dfa407..ab43052dd7 100644
+--- a/util/fdmon-io_uring.c
++++ b/util/fdmon-io_uring.c
+@@ -179,7 +179,11 @@ static void add_poll_remove_sqe(AioContext *ctx, AioHandler *node)
+ {
+     struct io_uring_sqe *sqe = get_sqe(ctx);
+ 
++#ifdef LIBURING_HAVE_DATA64
++    io_uring_prep_poll_remove(sqe, (__u64)(uintptr_t)node);
++#else
+     io_uring_prep_poll_remove(sqe, node);
++#endif
+ }
+ 
+ /* Add a timeout that self-cancels when another cqe becomes ready */
+-- 
+2.35.1
+

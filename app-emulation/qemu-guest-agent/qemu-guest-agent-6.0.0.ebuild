@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.0.0-aio-posix-fix-build-failure-io_uring-2.2.patch
+)
+
 src_configure() {
 	tc-export AR LD OBJCOPY RANLIB
 
