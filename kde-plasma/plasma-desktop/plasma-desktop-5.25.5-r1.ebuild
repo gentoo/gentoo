@@ -77,7 +77,7 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	x11-libs/libXfixes
 	x11-libs/libXi
-	x11-libs/libxcb[xkb]
+	x11-libs/libxcb
 	x11-libs/libxkbfile
 	emoji? (
 		app-i18n/ibus[emoji]
@@ -121,6 +121,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${WORKDIR}/${XORGHDRS}/${PN}-5.24.6-override-include-dirs.patch" # downstream patch
 	"${FILESDIR}/${P}-desktoptoolbox-fix-flickering-on-close.patch" # KDE-bug 417849
+	"${FILESDIR}/${P}-folderview-fix-grid-overflow-property.patch" # KDE-bug 419878
 )
 
 src_prepare() {
