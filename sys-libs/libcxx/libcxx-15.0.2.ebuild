@@ -95,15 +95,9 @@ multilib_src_configure() {
 		strip-unsupported-flags
 	fi
 
-	# link against compiler-rt instead of libgcc if this is what clang does
-	local want_compiler_rt=OFF
-	if tc-is-clang; then
-		local compiler_rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
-			${LDFLAGS} -print-libgcc-file-name)
-		if [[ ${compiler_rt} == *libclang_rt* ]]; then
-			want_compiler_rt=ON
-		fi
-	fi
+	# link to compiler-rt
+	local use_compiler_rt=OFF
+	[[ $(tc-get-c-rtlib) == compiler-rt ]] && use_compiler_rt=ON
 
 	# bootstrap: cmake is unhappy if compiler can't link to stdlib
 	local nolib_flags=( -nodefaultlibs -lc )
@@ -131,7 +125,7 @@ multilib_src_configure() {
 		-DLIBCXX_HAS_MUSL_LIBC=$(usex elibc_musl)
 		-DLIBCXX_INCLUDE_BENCHMARKS=OFF
 		-DLIBCXX_INCLUDE_TESTS=$(usex test)
-		-DLIBCXX_USE_COMPILER_RT=${want_compiler_rt}
+		-DLIBCXX_USE_COMPILER_RT=${use_compiler_rt}
 	)
 
 	if use test; then
