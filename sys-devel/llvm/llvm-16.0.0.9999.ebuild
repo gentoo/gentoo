@@ -404,14 +404,6 @@ multilib_src_configure() {
 		-DLLVM_VERSION_SUFFIX="${suffix}"
 	)
 
-#	Note: go bindings have no CMake rules at the moment
-#	but let's kill the check in case they are introduced
-#	if ! multilib_is_native_abi || ! use go; then
-		mycmakeargs+=(
-			-DGO_EXECUTABLE=GO_EXECUTABLE-NOTFOUND
-		)
-#	fi
-
 	use test && mycmakeargs+=(
 		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 	)
