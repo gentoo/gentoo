@@ -89,10 +89,14 @@ multilib_src_configure() {
 		extra_libs+=( -lunwind )
 		# if we're using libunwind and clang with compiler-rt, we want
 		# to link to compiler-rt instead of -lgcc_s
-		if [[ $(tc-get-c-rtlib) == compiler-rt ]]; then
-			want_gcc_s=OFF
-			want_compiler_rt=ON
-			extra_libs+=( "${compiler_rt}" )
+		if tc-is-clang; then
+			local compiler_rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
+			   ${LDFLAGS} -print-libgcc-file-name)
+			if [[ ${compiler_rt} == *libclang_rt* ]]; then
+				want_gcc_s=OFF
+				want_compiler_rt=ON
+				extra_libs+=( "${compiler_rt}" )
+			fi
 		fi
 	elif [[ ${CHOST} == *-darwin* ]] && tc-is-clang; then
 		# clang-based darwin prefix disables libunwind useflag during
