@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 MY_P="${PN}-${PV/_p/c}"
 
@@ -22,10 +22,12 @@ BDEPEND="sys-devel/m4"
 PATCHES=(
 	"${FILESDIR}"/${P}-skip-examples.patch
 	"${FILESDIR}"/${P}-clang16.patch
+	"${FILESDIR}"/${P}-cbuild-env.patch
 )
 
 src_configure() {
 	append-cflags -std=gnu89 # old codebase, will break with c2x
+	tc-export_build_env BUILD_CC # see cbuild-env.patch
 
 	default
 }
