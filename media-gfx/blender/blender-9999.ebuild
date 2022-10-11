@@ -26,10 +26,10 @@ SLOT="${PV%.*}"
 LICENSE="|| ( GPL-3 BL )"
 IUSE="+bullet +dds +fluid +openexr +tbb \
 	alembic collada +color-management cuda +cycles \
-	debug doc +embree +ffmpeg +fftw +gmp headless jack jemalloc jpeg2k \
+	debug doc +embree +ffmpeg +fftw +gmp jack jemalloc jpeg2k \
 	man +nanovdb ndof nls openal +oidn +openimageio +openmp +opensubdiv \
 	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile \
-	test +tiff valgrind"
+	test +tiff valgrind wayland X"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -70,11 +70,6 @@ RDEPEND="${PYTHON_DEPS}
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp )
-	!headless? (
-		x11-libs/libX11
-		x11-libs/libXi
-		x11-libs/libXxf86vm
-	)
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
@@ -106,6 +101,18 @@ RDEPEND="${PYTHON_DEPS}
 	tbb? ( dev-cpp/tbb:= )
 	tiff? ( media-libs/tiff )
 	valgrind? ( dev-util/valgrind )
+	wayland? (
+		>=dev-libs/wayland-1.12
+		>=dev-libs/wayland-protocols-1.15
+		>=x11-libs/libxkbcommon-0.2.0
+		media-libs/mesa[wayland]
+		sys-apps/dbus
+	)
+	X? (
+		x11-libs/libX11
+		x11-libs/libXi
+		x11-libs/libXxf86vm
+	)
 "
 
 DEPEND="${RDEPEND}
@@ -124,6 +131,9 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 	)
 	nls? ( sys-devel/gettext )
+	wayland? (
+		dev-util/wayland-scanner
+	)
 "
 
 blender_check_requirements() {
@@ -227,10 +237,15 @@ src_configure() {
 		-DWITH_CYCLES_STANDALONE_GUI=OFF
 		-DWITH_DOC_MANPAGE=$(usex man)
 		-DWITH_FFTW3=$(usex fftw)
+		-DWITH_GHOST_WAYLAND=$(usex wayland)
+		-DWITH_GHOST_WAYLAND_DBUS=$(usex wayland)
+		-DWITH_GHOST_WAYLAND_DYNLOAD=OFF
+		-DWITH_GHOST_WAYLAND_LIBDECOR=OFF
+		-DWITH_GHOST_X11=$(usex X)
 		-DWITH_GMP=$(usex gmp)
 		-DWITH_GTESTS=$(usex test)
 		-DWITH_HARU=$(usex pdf)
-		-DWITH_HEADLESS=$(usex headless)
+		-DWITH_HEADLESS=$($(use X || use wayland) && echo OFF || echo ON)
 		-DWITH_INSTALL_PORTABLE=OFF
 		-DWITH_IMAGE_DDS=$(usex dds)
 		-DWITH_IMAGE_OPENEXR=$(usex openexr)
