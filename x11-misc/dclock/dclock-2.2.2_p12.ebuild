@@ -45,6 +45,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
+
 	if use xft; then
 		append-cppflags \
 			-DXFT_SUPPORT \
