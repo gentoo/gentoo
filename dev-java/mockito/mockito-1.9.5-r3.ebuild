@@ -27,3 +27,5 @@ DEPEND=">=virtual/jdk-1.8:*
 RDEPEND=">=virtual/jre-1.8:*
 	${CP_DEPEND}"
 BDEPEND="app-arch/unzip"
+
+JAVADOC_ARGS="-source 8"
