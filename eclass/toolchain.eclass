@@ -6,6 +6,10 @@
 # Toolchain Ninjas <toolchain@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: Common code for sys-devel/gcc ebuilds
+# @DESCRIPTION:
+# Common code for sys-devel/gcc ebuilds (and occasionally GCC forks, like
+# GNAT for Ada). If not building GCC itself, please use toolchain-funcs.eclass
+# instead.
 
 case ${EAPI} in
 	7) inherit eutils ;;
