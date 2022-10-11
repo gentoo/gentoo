@@ -8,4 +8,8 @@
 	<longdescription>
 		Apache Commons Daemon software is a set of utilities and Java support classes for running Java applications as server processes. These are commonly known as 'daemon' processes in Unix terminology (hence the name). On Windows they are called 'services'
 	</longdescription>
+	<upstream>
+		<doc>https://cwiki.apache.org/confluence/display/commons/Daemon</doc>
+		<bugs-to>https://issues.apache.org/jira/browse/DAEMON</bugs-to>
+	</upstream>
 </pkgmetadata>
