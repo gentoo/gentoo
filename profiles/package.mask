@@ -515,6 +515,7 @@ media-libs/libshumate
 >=net-libs/gnome-online-accounts-3.46
 >=net-libs/gssdp-1.6
 >=net-libs/gupnp-1.6
+>=net-misc/gupnp-tools-0.12
 net-libs/libsoup:3.0
 net-libs/phodav:3.0
 net-libs/rest:1.0
