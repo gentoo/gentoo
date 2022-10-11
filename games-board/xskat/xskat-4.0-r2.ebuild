@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop toolchain-funcs
+inherit desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="Famous german card game"
 HOMEPAGE="http://www.xskat.de/xskat.html"
@@ -24,10 +24,15 @@ DEPEND="
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-clang16.patch
+)
+
 src_configure() { :; }
 
 src_compile() {
 	tc-export CC
+	append-cflags -std=gnu89 # old codebase, will break with c2x
 
 	local emakeargs=(
 		CFLAGS="${CFLAGS} ${CPPFLAGS} $($(tc-getPKG_CONFIG) --cflags x11 || die)"
