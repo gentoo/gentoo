@@ -301,7 +301,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=virtual/rust-1.58[${MULTILIB_USEDEP}]
+	>=virtual/rust-1.58
+	x11-libs/gdk-pixbuf
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')
 	gtk-doc? ( dev-util/gi-docgen )
