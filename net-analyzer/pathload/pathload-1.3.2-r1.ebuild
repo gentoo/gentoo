@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Non-intrusive utility for estimation of available bandwidth of Internet paths"
 HOMEPAGE="https://www.cc.gatech.edu/fac/constantinos.dovrolis/bw-est/pathload.html"
@@ -21,6 +21,7 @@ PATCHES=(
 
 src_configure() {
 	tc-export CC
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 
 	default
 }
