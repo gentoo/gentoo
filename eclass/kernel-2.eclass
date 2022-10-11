@@ -281,7 +281,7 @@
 # If you do change them, there is a chance that we will not fix resulting bugs;
 # that of course does not mean we're not willing to help.
 
-inherit estack toolchain-funcs
+inherit estack multiprocessing toolchain-funcs
 
 case ${EAPI} in
 	7|8) ;;
@@ -1065,7 +1065,7 @@ unipatch() {
 			extention=${extention/:*/}
 			PIPE_CMD=""
 			case ${extention} in
-				     xz) PIPE_CMD="xz -dc";;
+				     xz) PIPE_CMD="xz -T$(makeopts_jobs) -dc";;
 				   lzma) PIPE_CMD="lzma -dc";;
 				    bz2) PIPE_CMD="bzip2 -dc";;
 				 patch*) PIPE_CMD="cat";;
