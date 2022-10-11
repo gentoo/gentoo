@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name> 
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+This modules provides a function which escapes HTML's special characters. It performs a similar function to PHP's htmlspecialchars.
+
+This module uses XS for better performance, but it also provides a pure perl version.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">HTML::Escape</remote-id>
+    <remote-id type="cpan-module">HTML::Escape</remote-id>
+    <remote-id type="cpan-module">HTML::Escape::PurePerl</remote-id>
+  </upstream>
+</pkgmetadata>
