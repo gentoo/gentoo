@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 MY_P="clit${PV//./}"
 
@@ -29,6 +29,7 @@ PATCHES=(
 
 src_compile() {
 	tc-export AR CC
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 
 	emake -C lib
 	emake -C ${MY_P}
