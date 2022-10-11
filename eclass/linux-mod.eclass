@@ -150,8 +150,8 @@
 # It's a read-only variable. It contains the extension of the kernel modules.
 
 case ${EAPI:-0} in
-	[67]) 
-		inherit eutils 
+	[67])
+		inherit eutils
 		;;
 	8)
 		;;
@@ -361,8 +361,8 @@ generate_modulesd() {
 	debug-print-function ${FUNCNAME} $*
 	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
 
-	local 	currm_path currm currm_t t myIFS myVAR
-	local 	module_docs module_enabled module_aliases \
+	local currm_path currm currm_t t myIFS myVAR
+	local module_docs module_enabled module_aliases \
 			module_additions module_examples module_modinfo module_opts
 
 	for currm_path in ${@}
@@ -380,9 +380,9 @@ generate_modulesd() {
 		module_additions="$(eval echo \${#MODULESD_${currm_t}_ADDITIONS[*]})"
 		module_examples="$(eval echo \${#MODULESD_${currm_t}_EXAMPLES[*]})"
 
-		[[ ${module_aliases} -eq 0 ]] 	&& unset module_aliases
+		[[ ${module_aliases} -eq 0 ]]	&& unset module_aliases
 		[[ ${module_additions} -eq 0 ]]	&& unset module_additions
-		[[ ${module_examples} -eq 0 ]] 	&& unset module_examples
+		[[ ${module_examples} -eq 0 ]]  && unset module_examples
 
 		# If we specify we dont want it, then lets exit, otherwise we assume
 		# that if its set, we do want it.
