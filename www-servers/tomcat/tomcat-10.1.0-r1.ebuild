@@ -29,12 +29,16 @@ IUSE="extra-webapps"
 RESTRICT="test" # can we run them on a production system?
 
 ECJ_SLOT="4.22"
-SAPI_SLOT="6.0"
+SERVLET_API_SLOT="6.0"
+JSP_API_SLOT="3.1"
+EL_API_SLOT="5.0"
 
 COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
 	dev-java/glassfish-xmlrpc-api:0
 	dev-java/jakartaee-migration:0
-	~dev-java/tomcat-servlet-api-${PV}:${SAPI_SLOT}
+	~dev-java/tomcat-el-api-${PV}:${EL_API_SLOT}
+	~dev-java/tomcat-jsp-api-${PV}:${JSP_API_SLOT}
+	~dev-java/tomcat-servlet-api-${PV}:${SERVLET_API_SLOT}
 	dev-java/wsdl4j:0"
 RDEPEND="${COMMON_DEP}
 	acct-group/tomcat
@@ -87,7 +91,7 @@ src_prepare() {
 JAVA_ANT_REWRITE_CLASSPATH="true"
 
 EANT_BUILD_TARGET="deploy"
-EANT_GENTOO_CLASSPATH="eclipse-ecj-${ECJ_SLOT},jakartaee-migration,tomcat-servlet-api-${SAPI_SLOT},wsdl4j"
+EANT_GENTOO_CLASSPATH="eclipse-ecj-${ECJ_SLOT},jakartaee-migration,tomcat-servlet-api-${SERVLET_API_SLOT},tomcat-jsp-api-${JSP_API_SLOT},tomcat-el-api-${EL_API_SLOT},wsdl4j"
 EANT_TEST_GENTOO_CLASSPATH="easymock-3.2"
 EANT_GENTOO_CLASSPATH_EXTRA="${S}/output/classes"
 EANT_NEEDS_TOOLS="true"
