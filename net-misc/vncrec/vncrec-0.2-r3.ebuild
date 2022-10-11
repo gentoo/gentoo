@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="VNC session recorder and player"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -42,6 +42,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# XtErrorHandler usage matches docs (seems right), but headers "may" add
+	# __attribute__((noreturn)) giving an incompatible type error with clang-16
+	# (could alternatively use private _X_NORETURN but this may be fragile).
+	append-cflags -Wno-error=incompatible-function-pointer-types #871000
+
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
 		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf -a || die
 }
