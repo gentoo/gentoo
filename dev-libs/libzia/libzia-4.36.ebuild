@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Platform abstraction code for tucnak package"
 HOMEPAGE="http://tucnak.nagano.cz"
@@ -18,7 +18,8 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/gtk+:2
 	media-libs/libsdl
 	media-libs/libpng:0
-	ftdi? ( dev-embedded/libftdi:1 )"
+	ftdi? ( dev-embedded/libftdi:1 )
+	elibc_musl? ( sys-libs/libunwind )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
@@ -32,10 +33,15 @@ src_prepare() {
 	# Fix QA-Warning "QA Notice: pkg-config files with wrong LDFLAGS detected"
 	sed -i -e 's/@LDFLAGS@//' libzia.pc.in || die
 
+	# fix build for MUSL (bug #832235)
+	if use elibc_musl ; then
+		sed -i -e "s/ backtrace(/ unw_backtrace(/" src/zbfd.c || die
+	fi
 	eautoreconf
 }
 
 src_configure() {
+	use elibc_musl && append-libs -lunwind
 	econf \
 		$(use_with ftdi) --with-sdl \
 		--with-png --without-bfd \
