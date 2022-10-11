@@ -98,6 +98,13 @@ kernel-build_src_configure() {
 		export ZSTD_NBTHREADS="$(makeopts_jobs)"
 	fi
 
+	# pigz needs to take an argument, not an env var,
+	# for its options, which won't work because of how the kernel build system
+	# uses the variables (e.g. passes directly to tar as an executable).
+	if type -P pigz ; then
+		MAKEARGS+=( KGZIP="pigz" )
+	fi
+
 	restore_config .config
 	[[ -f .config ]] || die "Ebuild error: please copy default config into .config"
 
