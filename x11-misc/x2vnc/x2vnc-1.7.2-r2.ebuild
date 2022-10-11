@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit flag-o-matic
+
 DESCRIPTION="Control a remote computer running VNC from X"
 HOMEPAGE="https://fredrik.hubbe.net/x2vnc.html"
 SRC_URI="https://fredrik.hubbe.net/x2vnc/${P}.tar.gz"
@@ -30,6 +32,12 @@ PATCHES=(
 	"${FILESDIR}"/expectk.patch
 	"${FILESDIR}"/${P}-clang16.patch
 )
+
+src_configure() {
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
+
+	default
+}
 
 src_install() {
 	dodir /usr/share /usr/bin
