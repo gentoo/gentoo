@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="very nice backgammon game for X"
 HOMEPAGE="http://fawn.unibw-hamburg.de/steuer/xgammon/xgammon.html"
@@ -34,6 +34,8 @@ PATCHES=(
 )
 
 src_configure() {
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
+
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
 		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 }
