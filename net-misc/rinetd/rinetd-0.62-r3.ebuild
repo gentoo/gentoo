@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="redirects TCP connections from one IP address and port to another"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -26,6 +26,7 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 
 	emake CFLAGS="${CFLAGS} -DLINUX"
 }
