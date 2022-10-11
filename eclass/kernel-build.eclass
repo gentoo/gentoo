@@ -98,11 +98,17 @@ kernel-build_src_configure() {
 		export ZSTD_NBTHREADS="$(makeopts_jobs)"
 	fi
 
-	# pigz needs to take an argument, not an env var,
-	# for its options, which won't work because of how the kernel build system
+	# pigz/pbzip2/lbzip2 all need to take an argument, not an env var,
+	# for their options, which won't work because of how the kernel build system
 	# uses the variables (e.g. passes directly to tar as an executable).
 	if type -P pigz ; then
 		MAKEARGS+=( KGZIP="pigz" )
+	fi
+
+	if type -P pbzip2 ; then
+		MAKEARGS+=( KBZIP2="pbzip2" )
+	elif type -P lbzip2 ; then
+		MAKEARGS+=( KBZIP2="lbzip2" )
 	fi
 
 	restore_config .config
