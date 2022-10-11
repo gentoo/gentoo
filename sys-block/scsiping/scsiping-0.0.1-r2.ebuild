@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="SCSIPing pings a host on the SCSI-chain"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -24,7 +24,9 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${CPPFLAGS}" LDFLAGS="${LDFLAGS}"
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
+
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
