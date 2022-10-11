@@ -24,7 +24,7 @@ DEPEND="
 	>=app-text/gspell-1.4.0[introspection]
 	x11-libs/pango[introspection]
 	app-crypt/libsecret[introspection]
-	net-libs/libsoup:2.4[introspection]
+	net-libs/libsoup:3.0[introspection]
 	net-im/telepathy-logger[introspection]
 "
 RDEPEND="${DEPEND}
