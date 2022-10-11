@@ -14,9 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+man +vclient vsim"
 
-RDEPEND="dev-libs/libxml2:2"
-DEPEND="${RDEPEND}
-	man? ( dev-python/docutils )"
+DEPEND="dev-libs/libxml2:2"
+RDEPEND="${DEPEND}"
+BDEPEND="man? ( dev-python/docutils )"
 
 src_prepare() {
 	sed "s/@VERSION@/${PV}/" "src/version.h.in" \
