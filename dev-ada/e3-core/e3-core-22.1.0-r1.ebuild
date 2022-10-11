@@ -42,6 +42,11 @@ PATCHES=(
 
 distutils_enable_tests pytest
 
+python_compile() {
+	distutils-r1_python_compile
+	find "${BUILD_DIR}" -name '*.pth' -delete || die
+}
+
 src_compile() {
 	local PLATFORM=x86_64-linux
 	rm src/e3/os/data/rlimit* || die
