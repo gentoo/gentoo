@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Program to interactively take a 'snapshot' of a region of the screen"
 HOMEPAGE="ftp://ftp.ac-grenoble.fr/ge/Xutils/"
@@ -52,6 +52,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
+
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
 		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 }
