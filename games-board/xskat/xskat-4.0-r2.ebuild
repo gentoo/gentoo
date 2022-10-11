@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,13 +15,14 @@ LICENSE="freedist"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
-DEPEND="x11-libs/libX11"
+COMMON_DEPEND="x11-libs/libX11"
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	media-fonts/font-misc-misc"
-BDEPEND="
-	virtual/pkgconfig
+DEPEND="
+	${COMMON_DEPEND}
 	x11-base/xorg-proto"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() { :; }
 
@@ -29,7 +30,8 @@ src_compile() {
 	tc-export CC
 
 	local emakeargs=(
-		CFLAGS="${CFLAGS} ${CPPFLAGS}"
+		CFLAGS="${CFLAGS} ${CPPFLAGS} $($(tc-getPKG_CONFIG) --cflags x11 || die)"
+		CPPFLAGS= # force everywhere above, but avoid implicit duplication
 		LDFLAGS="${LDFLAGS} $($(tc-getPKG_CONFIG) --libs x11 || die)"
 	)
 
