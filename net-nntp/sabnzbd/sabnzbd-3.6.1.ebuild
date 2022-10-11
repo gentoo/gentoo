@@ -6,7 +6,7 @@ EAPI="8"
 PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="sqlite"
 
-inherit python-single-r1 systemd
+inherit optfeature python-single-r1 systemd
 
 MY_PV="${PV/_rc/RC}"
 MY_PV="${MY_PV//_pre*}"
@@ -21,14 +21,10 @@ SRC_URI="https://github.com/sabnzbd/sabnzbd/releases/download/${MY_PV}/${MY_P}-s
 LICENSE="GPL-2 BSD LGPL-2 MIT BSD-1"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+7za +rar unzip test"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
-# Is this still correct? The article has disappeared from the wiki!
-# Sabnzbd is installed to /usr/share/ as upstream makes it clear they should not
-# be in python's sitedir.  See: https://sabnzbd.org/wiki/advanced/unix-packaging
-
-COMMON_DEPS="
+DEPEND="
 	acct-user/sabnzbd
 	acct-group/sabnzbd
 	${PYTHON_DEPS}
@@ -47,15 +43,10 @@ COMMON_DEPS="
 	')
 "
 
-DEPEND="${COMMON_DEPS}"
-
 RDEPEND="
-	${COMMON_DEPS}
+	${DEPEND}
 	>=app-arch/par2cmdline-0.4
 	net-misc/wget
-	7za? ( app-arch/p7zip )
-	rar? ( || ( app-arch/unrar app-arch/rar ) )
-	unzip? ( >=app-arch/unzip-5.5.2 )
 "
 
 BDEPEND="
@@ -78,7 +69,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	MY_HOMEDIR="/var/lib/${PN}"
 	python-single-r1_pkg_setup
 }
 
@@ -123,25 +113,16 @@ src_test() {
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		# This is a new installation
-		einfo "Default directory: ${MY_HOMEDIR}"
+		einfo "Default directory: /var/lib/${PN}"
 		einfo
 		einfo "To add a user to the sabnzbd group so it can edit SABnzbd+ files, run:"
 		einfo
 		einfo "    usermod -a -G sabnzbd <user>"
 		einfo
 		einfo "By default, SABnzbd will listen on TCP port 8080."
-	else
-		local v
-		for v in ${REPLACING_VERSIONS}; do
-			if ver_test "${v}" -lt 3; then
-				ewarn
-				ewarn "Due to changes in this release, the queue will be converted when ${PN}"
-				ewarn "is started for the first time. Job order, settings and data will be"
-				ewarn "preserved, but all jobs will be unpaused and URLs that did not finish"
-				ewarn "fetching before the upgrade will be lost!"
-				ewarn
-				break
-			fi
-		done
 	fi
+
+	optfeature "7z archive support" app-arch/p7zip
+	optfeature "rar archive support" app-arch/unrar app-arch/rar
+	optfeature "zip archive support" app-arch/unzip
 }
