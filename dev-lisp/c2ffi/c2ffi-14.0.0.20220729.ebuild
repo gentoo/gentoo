@@ -16,6 +16,8 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64"
 
+LLVM_MAX_SLOT=14
+
 DEPEND="sys-devel/clang:14
 	sys-devel/llvm:14"
 RDEPEND="${DEPEND}"
