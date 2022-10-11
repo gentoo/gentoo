@@ -719,7 +719,11 @@ linux-mod_src_install() {
 			xz -T$(makeopts_jobs) ${modulename}.${KV_OBJ}
 			doins ${modulename}.${KV_OBJ}.xz || die "doins ${modulename}.${KV_OBJ}.xz failed"
 		elif linux_chkconfig_present MODULE_COMPRESS_GZIP; then
-			gzip ${modulename}.${KV_OBJ}
+			if type -P pigz ; then
+				pigz -n$(makeopts_jobs) ${modulename}.${KV_OBJ}
+			else
+				gzip ${modulename}.${KV_OBJ}
+			fi
 			doins ${modulename}.${KV_OBJ}.gz || die "doins ${modulename}.${KV_OBJ}.gz failed"
 		elif linux_chkconfig_present MODULE_COMPRESS_ZSTD; then
 			zstd -T$(makeopts_jobs) ${modulename}.${KV_OBJ}
