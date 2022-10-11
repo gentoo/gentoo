@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+This module provides a locale object you can use to localise your output. The localisation data comes from the Unicode Common Locale Data Repository. Most of this code can be used with Perl version 5.10.1 or above. There are a few parts of the code that require version 5.18 or above.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">Locale::CLDR</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::CalendarPreferences</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::Collator</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::CollatorBase</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::Currencies</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::EraBoundaries</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::LikelySubtags</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::Locales::En</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::Locales::En::Any</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::Locales::En::Any::Us</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::Locales::Root</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::MeasurementSystem</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::NumberFormatter</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::Plurals</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::RegionContainment</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::ValidCodes</remote-id>
+    <remote-id type="cpan-module">Locale::CLDR::WeekData</remote-id>
+  </upstream>
+</pkgmetadata>
