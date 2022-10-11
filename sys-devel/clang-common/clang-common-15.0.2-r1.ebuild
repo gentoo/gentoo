@@ -26,6 +26,10 @@ PDEPEND="
 	default-libcxx? ( >=sys-libs/libcxx-${PV} )
 	default-lld? ( sys-devel/lld )
 "
+IDEPEND="
+	!default-compiler-rt? ( sys-devel/gcc-config )
+	!default-libcxx? ( sys-devel/gcc-config )
+"
 
 LLVM_COMPONENTS=( clang/utils )
 llvm.org_set_globals
@@ -115,7 +119,8 @@ src_install() {
 }
 
 pkg_preinst() {
-	if has_version sys-devel/gcc-config; then
+	if has_version -b sys-devel/gcc-config && has_version sys-devel/gcc
+	then
 		local gcc_path=$(gcc-config --get-lib-path 2>/dev/null)
 		if [[ -n ${gcc_path} ]]; then
 			cat >> "${ED}/etc/clang/gentoo-gcc-install.cfg" <<-EOF
