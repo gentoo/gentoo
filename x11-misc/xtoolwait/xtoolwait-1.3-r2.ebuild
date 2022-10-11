@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Xtoolwait notably decreases the startup time of an X session"
 HOMEPAGE="http://ftp.x.org/contrib/utilities/xtoolwait-1.3.README"
@@ -25,6 +25,8 @@ BDEPEND="
 	>=x11-misc/imake-1.0.8-r1"
 
 src_configure() {
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
+
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
 		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 }
