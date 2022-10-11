@@ -35,6 +35,7 @@ BDEPEND="
 DOCS=( README defining.txt hierarchy.txt sgi-microsoft.txt )
 PATCHES=(
 	"${FILESDIR}"/${P/_p*}-Imakefile.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 S=${WORKDIR}/${P/_p*}
 
