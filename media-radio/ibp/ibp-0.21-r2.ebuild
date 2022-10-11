@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Shows currently transmitting beacons of the International Beacon Project (IBP)"
 HOMEPAGE="http://www.pa3fwm.nl/software/ibp/"
@@ -37,6 +37,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
+
 	if use X ;then
 		CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
 			IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
