@@ -716,22 +716,22 @@ linux-mod_src_install() {
 		# and similarily compress the module being built if != NONE.
 
 		if linux_chkconfig_present MODULE_COMPRESS_XZ; then
-			xz -T$(makeopts_jobs) ${modulename}.${KV_OBJ}
-			doins ${modulename}.${KV_OBJ}.xz || die "doins ${modulename}.${KV_OBJ}.xz failed"
+			xz -T$(makeopts_jobs) ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with xz failed"
+			doins ${modulename}.${KV_OBJ}.xz
 		elif linux_chkconfig_present MODULE_COMPRESS_GZIP; then
 			if type -P pigz ; then
-				pigz -n$(makeopts_jobs) ${modulename}.${KV_OBJ}
+				pigz -n$(makeopts_jobs) ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with pigz failed"
 			else
-				gzip ${modulename}.${KV_OBJ}
+				gzip ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with gzip failed"
 			fi
-			doins ${modulename}.${KV_OBJ}.gz || die "doins ${modulename}.${KV_OBJ}.gz failed"
+			doins ${modulename}.${KV_OBJ}.gz
 		elif linux_chkconfig_present MODULE_COMPRESS_ZSTD; then
-			zstd -T$(makeopts_jobs) ${modulename}.${KV_OBJ}
-			doins ${modulename}.${KV_OBJ}.zst || die "doins ${modulename}.${KV_OBJ}.zst failed"
+			zstd -T$(makeopts_jobs) ${modulename}.${KV_OBJ} || "Compressing ${modulename}.${KV_OBJ} with zstd failed"
+			doins ${modulename}.${KV_OBJ}.zst
 		else
-			doins ${modulename}.${KV_OBJ} || die "doins ${modulename}.${KV_OBJ} failed"
+			doins ${modulename}.${KV_OBJ}
 		fi
-		cd "${OLDPWD}"
+		cd "${OLDPWD}" || die "${OLDPWD} does not exist"
 
 		generate_modulesd "${objdir}/${modulename}"
 	done
