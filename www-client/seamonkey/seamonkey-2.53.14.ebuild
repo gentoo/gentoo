@@ -202,6 +202,10 @@ src_prepare() {
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
 
+	# Fix wrong include, as suggested by SM upstream.
+	sed -e 's|#include \"RemoteSpellCheckEngineChild.h\"|#include \"mozilla/RemoteSpellCheckEngineChild.h\"|' \
+		-i extensions/spellcheck/src/mozSpellChecker.h || die
+
 	# Ensure that are plugins dir is enabled as default
 	sed -i -e "s:/usr/$(get_libdir)/mozilla/plugins:/usr/$(get_libdir)/${PN}/plugins:" \
 		xpcom/io/nsAppFileLocationProvider.cpp || die
