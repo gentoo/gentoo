@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+This module adds support for class attributes to Moo. Class attributes are attributes whose values are not associated with any particular instance of the class.
+
+For example, the Person class might have a class attribute "binomial_name"; its value "Homo sapiens" is not associated with any particular individual, but the class as a whole.
+
+Class attributes may be defined in roles, however they cannot be called as methods using the role package name. Instead the role must be composed with a class; the class attributes will be installed into that class.
+
+This module mostly tries to behave like MooseX::ClassAttribute.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">MooX::ClassAttribute</remote-id>
+    <remote-id type="cpan-module">Method::Generate::ClassAccessor</remote-id>
+    <remote-id type="cpan-module">MooX::CaptainHook</remote-id>
+    <remote-id type="cpan-module">MooX::ClassAttribute</remote-id>
+    <remote-id type="cpan-module">MooX::ClassAttribute::HandleMoose</remote-id>
+  </upstream>
+</pkgmetadata>
