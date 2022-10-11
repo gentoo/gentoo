@@ -45,7 +45,8 @@ src_configure() {
 	# XtErrorHandler usage matches docs (seems right), but headers "may" add
 	# __attribute__((noreturn)) giving an incompatible type error with clang-16
 	# (could alternatively use private _X_NORETURN but this may be fragile).
-	append-cflags -Wno-error=incompatible-function-pointer-types #871000
+	append-cflags -Wno-error=incompatible-pointer-types #871000
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
 		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf -a || die
