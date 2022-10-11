@@ -14,7 +14,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="qt6">Add support for the Qt 6 application and UI framework</flag>
 		<flag name="vulkan">Enable support for Vulkan</flag>
 	</use>
 	<upstream>
