@@ -20,10 +20,12 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 
+EL_API_SLOT="5.0"
+
 DEPEND="
 	dev-java/injection-api:0
 	dev-java/jakarta-annotations-api:0
-	dev-java/jakarta-el-api:5.0
+	dev-java/jakarta-el-api:${EL_API_SLOT}
 	dev-java/jakarta-interceptors:0
 	>=virtual/jdk-11:*
 "
@@ -58,7 +60,7 @@ src_compile() {
 	JAVA_CLASSPATH_EXTRA="
 		injection-api
 		jakarta-annotations-api
-		jakarta-el-api
+		jakarta-el-api-${EL_API_SLOT}
 		jakarta-interceptors
 	"
 	JAVA_SRC_DIR="lang-model/src/main/java"
