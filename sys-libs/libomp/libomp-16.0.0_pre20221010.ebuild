@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-inherit flag-o-matic cmake-multilib linux-info llvm llvm.org python-any-r1
+inherit flag-o-matic cmake-multilib linux-info llvm llvm.org python-single-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
@@ -13,12 +13,16 @@ LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0/${LLVM_SOABI}"
 KEYWORDS=""
 IUSE="
-	debug hwloc offload ompt test
+	debug gdb-plugin hwloc offload ompt test
 	llvm_targets_AMDGPU llvm_targets_NVPTX
+"
+REQUIRED_USE="
+	gdb-plugin? ( ${PYTHON_REQUIRED_USE} )
 "
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	gdb-plugin? ( ${PYTHON_DEPS} )
 	hwloc? ( >=sys-apps/hwloc-2.5:0=[${MULTILIB_USEDEP}] )
 	offload? (
 		virtual/libelf:=[${MULTILIB_USEDEP}]
@@ -41,17 +45,16 @@ BDEPEND="
 		virtual/pkgconfig
 	)
 	test? (
-		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			dev-python/lit[${PYTHON_USEDEP}]
+		')
 		sys-devel/clang
 	)
 "
 
 LLVM_COMPONENTS=( openmp cmake llvm/include )
 llvm.org_set_globals
-
-python_check_deps() {
-	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
-}
 
 kernel_pds_check() {
 	if use kernel_linux && kernel_is -lt 4 15 && kernel_is -ge 4 13; then
@@ -72,7 +75,9 @@ pkg_pretend() {
 
 pkg_setup() {
 	use offload && LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
-	use test && python-any-r1_pkg_setup
+	if use gdb-plugin || use test; then
+		python-single-r1_pkg_setup
+	fi
 }
 
 multilib_src_configure() {
@@ -87,6 +92,7 @@ multilib_src_configure() {
 		-DOPENMP_LIBDIR_SUFFIX="${libdir#lib}"
 
 		-DLIBOMP_USE_HWLOC=$(usex hwloc)
+		-DLIBOMP_OMPD_GDB_SUPPORT=$(multilib_native_usex gdb-plugin)
 		-DLIBOMP_OMPT_SUPPORT=$(usex ompt)
 
 		-DOPENMP_ENABLE_LIBOMPTARGET=$(usex offload)
@@ -95,8 +101,6 @@ multilib_src_configure() {
 		-DLIBOMP_INSTALL_ALIASES=OFF
 		# disable unnecessary hack copying stuff back to srcdir
 		-DLIBOMP_COPY_EXPORTS=OFF
-		# disable until upstream fixes it to use positive logic
-		-DDISABLE_OMPD_GDB_PLUGIN=ON
 	)
 
 	if use offload; then
