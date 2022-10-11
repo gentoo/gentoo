@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="C language utilities"
 HOMEPAGE="http://www.sigala.it/sandro/software.php#cutils"
@@ -13,11 +13,15 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
-BDEPEND="sys-devel/flex"
+BDEPEND="
+	sys-devel/flex
+	virtual/yacc"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-infopage.patch
 	"${FILESDIR}"/${P}-case-insensitive.patch
+	"${FILESDIR}"/${P}-ar.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
@@ -39,10 +43,14 @@ src_prepare() {
 		-i src/cundecl/cundecl.1 || die
 	sed -e "/Nm/s/cdecl/cutils-cdecl/" \
 		-i src/cdecl/cutils-cdecl.1 || die
+
+	eautoreconf #871402
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" -j1
+	tc-export AR #724270
+
+	emake -j1
 }
 
 src_install() {
