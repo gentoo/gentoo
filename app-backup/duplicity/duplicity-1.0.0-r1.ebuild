@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Secure backup system using gnupg to encrypt data"
 HOMEPAGE="https://duplicity.gitlab.io/"
-SRC_URI="https://gitlab.com/duplicity/duplicity/-/archive/rel.${PV}/duplicity-rel.${PV}.tar.bz2"
+SRC_URI="https://files.pythonhosted.org/packages/source/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -40,8 +40,6 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}/${P}-fix-docs-cmd.patch"
 )
-
-S="${WORKDIR}/duplicity-rel.${PV}"
 
 python_test() {
 	esetup.py test
