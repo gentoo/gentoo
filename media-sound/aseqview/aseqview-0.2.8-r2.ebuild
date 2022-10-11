@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit flag-o-matic
+
 DESCRIPTION="ALSA sequencer event viewer/filter"
 HOMEPAGE="https://github.com/tiwai/aseqview"
 SRC_URI="https://ftp.suse.com/pub/people/tiwai/${PN}/${P}.tar.gz"
@@ -23,5 +25,7 @@ PATCHES=(
 )
 
 src_configure() {
+	append-cflags -std=gnu89 # old codebase, and configure fails with c2x
+
 	econf --disable-alsatest --disable-gtktest --enable-gtk2
 }
