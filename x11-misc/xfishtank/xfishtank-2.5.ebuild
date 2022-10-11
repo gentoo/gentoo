@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit toolchain-funcs
+
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Turns your root window into an aquarium"
 HOMEPAGE="https://jim.rees.org/computers/xfishtank.html"
@@ -29,6 +30,8 @@ BDEPEND="
 S=${WORKDIR}/${PN}
 
 src_configure() {
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
+
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
 		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 }
