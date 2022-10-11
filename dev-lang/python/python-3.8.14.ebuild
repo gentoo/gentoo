@@ -190,6 +190,51 @@ src_configure() {
 	local -x LDFLAGS_NODIST=${LDFLAGS}
 	local -x CFLAGS= LDFLAGS=
 
+	if tc-is-cross-compiler ; then
+		# We need to build our own Python on CBUILD first, and feed it in.
+		# bug #847910 and bug #864911.
+		local myeconfargs_cbuild=(
+			"${myeconfargs[@]}"
+
+			# As minimal as possible for the mini CBUILD Python
+			# we build just for cross.
+			--without-lto
+			--disable-optimizations
+		)
+
+		# Point the imminent CHOST build to the Python we just
+		# built for CBUILD.
+		export PATH="${WORKDIR}/${P}-${CBUILD}:${PATH}"
+
+		mkdir "${WORKDIR}"/${P}-${CBUILD} || die
+		pushd "${WORKDIR}"/${P}-${CBUILD} &> /dev/null || die
+		ECONF_SOURCE="${S}" econf_build "${myeconfargs_cbuild[@]}"
+
+		# Avoid as many dependencies as possible for the cross build.
+		cat >> Makefile <<-EOF || die
+			MODULE_NIS=disabled
+			MODULE__DBM=disabled
+			MODULE__GDBM=disabled
+			MODULE__DBM=disabled
+			MODULE__SQLITE3=disabled
+			MODULE__HASHLIB=disabled
+			MODULE__SSL=disabled
+			MODULE__CURSES=disabled
+			MODULE__CURSES_PANEL=disabled
+			MODULE_READLINE=disabled
+			MODULE__TKINTER=disabled
+			MODULE_PYEXPAT=disabled
+			MODULE_ZLIB=disabled
+		EOF
+
+		# Unfortunately, we do have to build this immediately, and
+		# not in src_compile, because CHOST configure for Python
+		# will check the existence of the Python it was pointed to
+		# immediately.
+		emake
+		popd &> /dev/null || die
+	fi
+
 	econf "${myeconfargs[@]}"
 
 	if grep -q "#define POSIX_SEMAPHORES_NOT_ENABLED 1" pyconfig.h; then
