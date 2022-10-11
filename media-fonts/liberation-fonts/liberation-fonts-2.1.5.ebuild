@@ -13,7 +13,7 @@ SRC_URI="fontforge? ( https://github.com/liberationfonts/liberation-fonts/files/
 	!fontforge? ( https://github.com/liberationfonts/liberation-fonts/files/7261482/${PN}-ttf-${PV}.tar.gz )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~m68k ppc ppc64 ~riscv x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-solaris"
 SLOT="0"
 LICENSE="OFL-1.1"
 IUSE="fontforge X"
