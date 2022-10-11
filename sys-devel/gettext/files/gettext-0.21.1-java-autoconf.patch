@@ -63,3 +63,38 @@ gt_JAVACOMP_DISABLED inline.
    JAR=
    BUILDJAVA=no
  ])
+diff --git a/gettext-runtime/configure b/gettext-runtime/configure
+index 5e2d593..cf579ff 100755
+--- a/gettext-runtime/configure
++++ b/gettext-runtime/configure
+@@ -7070,7 +7070,11 @@ fi
+ 
+ else $as_nop
+ 
+-  gt_JAVACOMP_DISABLED
++  CONF_JAVAC=
++  HAVE_JAVAC_ENVVAR=
++  HAVE_GCJ_C=
++  HAVE_JAVAC=
++  HAVE_JIKES=
+   JAR=
+   BUILDJAVA=no
+ 
+diff --git a/gettext-tools/configure b/gettext-tools/configure
+index f897bc3..3af54cd 100755
+--- a/gettext-tools/configure
++++ b/gettext-tools/configure
+@@ -8718,8 +8718,11 @@ fi
+ 
+ else $as_nop
+ 
+-  gt_JAVAEXEC_DISABLED
+-  gt_JAVACOMP_DISABLED
++  CONF_JAVAC=
++  HAVE_JAVAC_ENVVAR=
++  HAVE_GCJ_C=
++  HAVE_JAVAC=
++  HAVE_JIKES=
+   JAR=
+   BUILDJAVA=no
+ 
