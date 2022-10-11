@@ -1,0 +1,44 @@
+clang does not have syslimits.h, it is gcc specific
+and it is useless anyway since <limits.h> is already included
+so just remove it
+
+Cannot use PFNRT here on clang because of the exception specification
+
+--- a/src/VBox/ExtPacks/VBoxDTrace/include/VBoxDTraceLibCWrappers.h
++++ b/src/VBox/ExtPacks/VBoxDTrace/include/VBoxDTraceLibCWrappers.h
+@@ -34,8 +34,6 @@
+ # include <limits.h>        /* Workaround for syslimit.h bug in gcc 4.8.3 on gentoo. */
+ # ifdef RT_OS_DARWIN
+ #  include <sys/syslimits.h> /* PATH_MAX */
+-# elif !defined(RT_OS_SOLARIS) && !defined(RT_OS_FREEBSD)
+-#  include <syslimits.h>    /* PATH_MAX */
+ # endif
+ # include <libgen.h>        /* basename */
+ # include <unistd.h>
+--- a/src/VBox/Devices/Graphics/DevVGA-SVGA3d-glLdr.h
++++ b/src/VBox/Devices/Graphics/DevVGA-SVGA3d-glLdr.h
+@@ -97,7 +97,11 @@
+ /** Load OpenGL library and initialize function pointers. */
+ int glLdrInit(PPDMDEVINS pDevIns);
+ /** Resolve an OpenGL function name. */
++#ifdef __clang__
++void* glLdrGetProcAddress(const char *pszSymbol);
++#else	// !__clang__
+ PFNRT glLdrGetProcAddress(const char *pszSymbol);
++#endif	// !__clang__
+ /** Get pointers to extension function. They are available on Windows only when OpenGL context is set. */
+ int glLdrGetExtFunctions(PPDMDEVINS pDevIns);
+ 
+--- a/src/VBox/Devices/Graphics/DevVGA-SVGA3d-glLdr.cpp
++++ b/src/VBox/Devices/Graphics/DevVGA-SVGA3d-glLdr.cpp
+@@ -35,6 +35,10 @@
+ #include <iprt/ldr.h>
+ #include <iprt/log.h>
+ 
++#ifdef __clang__
++# define PFNRT void*
++#endif
++
+ #ifdef RT_OS_WINDOWS
+ # define OGLGETPROCADDRESS MyWinGetProcAddress
+ DECLINLINE(PFNRT) MyWinGetProcAddress(const char *pszSymbol)
