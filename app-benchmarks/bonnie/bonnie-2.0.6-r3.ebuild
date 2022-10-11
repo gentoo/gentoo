@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Performance Test of Filesystem I/O using standard C library calls"
 HOMEPAGE="https://www.textuality.com/bonnie/"
@@ -22,6 +22,7 @@ PATCHES=(
 
 src_compile() {
 	tc-export CC
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 
 	emake -f /dev/null Bonnie
 }
