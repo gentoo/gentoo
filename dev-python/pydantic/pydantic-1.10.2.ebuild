@@ -29,7 +29,9 @@ RDEPEND="
 	>=dev-python/typing-extensions-4.1.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/cython[${PYTHON_USEDEP}]
+	native-extensions? (
+		dev-python/cython[${PYTHON_USEDEP}]
+	)
 	test? (
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
