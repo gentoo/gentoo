@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="A utility to connect the mouse and keyboard to another X"
 HOMEPAGE="https://github.com/dottedmag/x2x"
@@ -31,7 +31,10 @@ DOCS=( README AUTHORS INSTALL ChangeLog ChangeLog.old )
 
 src_prepare() {
 	default
+
 	eautoreconf
+
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 }
 
 src_compile() {
