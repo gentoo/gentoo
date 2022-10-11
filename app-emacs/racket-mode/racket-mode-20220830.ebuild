@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}-${H}
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="dev-scheme/racket:=[-minimal]"
 BDEPEND="${RDEPEND}"
