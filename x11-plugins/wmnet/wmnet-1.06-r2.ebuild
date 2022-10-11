@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="WMnet is a dock.app network monitor"
 HOMEPAGE="https://www.dockapps.net/wmnet"
@@ -28,6 +28,8 @@ BDEPEND="
 PATCHES=( "${WORKDIR}"/${P}-misc.patch )
 
 src_configure() {
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
+
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
 		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die "xmkmf failed"
 }
