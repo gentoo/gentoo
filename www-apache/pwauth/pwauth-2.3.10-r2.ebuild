@@ -59,6 +59,8 @@ pkg_setup() {
 
 	use ignore-case && append-cppflags -DIGNORE_CASE
 	use domain-aware && append-cppflags -DOMAIN_AWARE
+
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 }
 
 src_compile() {
