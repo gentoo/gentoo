@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Tiling window manager for X11, based on 9wm by David Hogan"
 HOMEPAGE="http://www.fnurt.net/larswm/"
@@ -25,6 +25,8 @@ BDEPEND="app-text/rman
 	>=x11-misc/imake-1.0.8-r1"
 
 src_configure() {
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
+
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
 		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf -a || die
 }
