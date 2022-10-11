@@ -16,7 +16,9 @@ LICENSE="Apache-2.0"
 SLOT="3.1"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 
-CP_DEPEND="~dev-java/tomcat-el-api-${PV}:3.0"
+# we can't use the exact same version of el as tomcat 9 implements the same slot and
+# it would prevent from installing both tomcat 8.5 and 9 at the same time
+CP_DEPEND=">=dev-java/tomcat-el-api-${PV}:3.0"
 
 DEPEND="
 	>=virtual/jdk-11:*
