@@ -257,6 +257,7 @@ python - Add optional support/bindings for the Python language
 qdbm - Add support for the qdbm (Quick Database Manager) library
 qmail-spp - Add support for qmail SMTP plugins
 qt5 - Add support for the Qt 5 application and UI framework
+qt6 - Add support for the Qt 6 application and UI framework
 quicktime - Add support for OpenQuickTime
 radius - Add support for RADIUS authentication
 raw - Add support for raw image formats
