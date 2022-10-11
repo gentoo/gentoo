@@ -65,7 +65,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-DLLVM_INCLUDE_TESTS=$(usex test)
-		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
