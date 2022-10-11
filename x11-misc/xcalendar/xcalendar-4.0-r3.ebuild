@@ -42,6 +42,7 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 
 	if use motif; then
 		append-cppflags $($(tc-getPKG_CONFIG) --cflags x11 xmu xt || die)
