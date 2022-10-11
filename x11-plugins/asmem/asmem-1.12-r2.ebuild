@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Monitor the utilization level of memory, cache and swap space"
 HOMEPAGE="http://www.tigr.net/"
@@ -34,6 +34,7 @@ PATCHES=(
 
 src_configure() {
 	tc-export CC # old autoconf
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 
 	econf $(use_enable jpeg)
 }
