@@ -18,7 +18,7 @@ KEYWORDS="amd64 x86 ~amd64-linux"
 
 DEPEND="
 	sys-apps/pciutils
-	sys-cluster/rdma-core
+	>=sys-cluster/rdma-core-32.0
 "
 RDEPEND="${DEPEND}"
 
