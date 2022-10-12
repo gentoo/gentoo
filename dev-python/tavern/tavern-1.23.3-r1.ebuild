@@ -16,24 +16,20 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	$(python_gen_any_dep '
-		dev-python/jmespath[${PYTHON_USEDEP}]
-		dev-python/paho-mqtt[${PYTHON_USEDEP}]
-		dev-python/pyjwt[${PYTHON_USEDEP}]
-		dev-python/pykwalify[${PYTHON_USEDEP}]
-		dev-python/python-box[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
-		dev-python/stevedore[${PYTHON_USEDEP}]
-	')"
-
+	dev-python/jmespath[${PYTHON_USEDEP}]
+	dev-python/paho-mqtt[${PYTHON_USEDEP}]
+	dev-python/pyjwt[${PYTHON_USEDEP}]
+	dev-python/pykwalify[${PYTHON_USEDEP}]
+	dev-python/pytest[${PYTHON_USEDEP}]
+	dev-python/python-box[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/stevedore[${PYTHON_USEDEP}]
+"
 BDEPEND="
 	test? (
-		$(python_gen_any_dep '
-			dev-python/colorlog[${PYTHON_USEDEP}]
-			dev-python/Faker[${PYTHON_USEDEP}]
-			dev-python/pytest[${PYTHON_USEDEP}]
-		')
+		dev-python/colorlog[${PYTHON_USEDEP}]
+		dev-python/Faker[${PYTHON_USEDEP}]
 	)
 "
 
