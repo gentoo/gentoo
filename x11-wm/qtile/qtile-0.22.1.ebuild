@@ -10,11 +10,17 @@ inherit distutils-r1 virtualx
 
 DESCRIPTION="A full-featured, hackable tiling window manager written in Python"
 HOMEPAGE="http://qtile.org/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/qtile/qtile.git"
+else
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~riscv ~x86"
+fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86"
 
 RDEPEND=">=dev-python/cairocffi-0.9.0[${PYTHON_USEDEP}]
 	>=dev-python/cffi-1.1.0[${PYTHON_USEDEP}]
