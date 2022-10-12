@@ -14,8 +14,7 @@ KEYWORDS="-* ~amd64 ~x86"
 
 RDEPEND="
 	app-admin/eselect
-	dev-util/desktop-file-utils
-	!app-emulation/wine:0"
+	dev-util/desktop-file-utils"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-proton.patch
