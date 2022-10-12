@@ -29,12 +29,9 @@ RDEPEND="
 	dev-libs/json-glib:=
 	dev-libs/libassuan:=
 	>=dev-util/ostree-2020.8:=[gpg(+)]
-	|| (
-		dev-util/ostree[curl]
-		dev-util/ostree[soup]
-	)
+	dev-util/ostree[curl]
 	>=gnome-base/dconf-0.26:=
-	>=net-libs/libsoup-2.4:=
+	net-misc/curl:=
 	sys-apps/bubblewrap
 	sys-apps/dbus
 	>=sys-fs/fuse-2.9.9:0=
