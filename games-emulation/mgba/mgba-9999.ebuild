@@ -18,11 +18,10 @@ DESCRIPTION="Game Boy Advance Emulator"
 HOMEPAGE="https://mgba.io/"
 
 LICENSE="MPL-2.0 BSD LGPL-2.1+ public-domain discord? ( MIT )"
-SLOT="0/10"
-IUSE="debug discord elf ffmpeg gles2 gles3 gui libretro lua opengl +sdl sqlite test"
+SLOT="0/$(ver_cut 1-2)"
+IUSE="debug discord elf ffmpeg gles2 gles3 gui libretro lua +opengl +sdl +sqlite test"
 REQUIRED_USE="
-	|| ( gui sdl )
-	gui? ( || ( gles2 gles3 opengl ) )
+	gui? ( || ( gles2 gles3 opengl ) sqlite )
 	lua? ( ${LUA_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
@@ -43,12 +42,16 @@ RDEPEND="
 		dev-qt/qtnetwork:5
 		dev-qt/qtwidgets:5
 	)
-	sdl? ( media-libs/libsdl2[sound,joystick,opengl?,video] )
+	sdl? ( media-libs/libsdl2[sound,joystick,gles2?,opengl?,video] )
 	sqlite? ( dev-db/sqlite:3 )"
 DEPEND="
 	${RDEPEND}
 	test? ( dev-util/cmocka )"
 BDEPEND="lua? ( virtual/pkgconfig )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.10.0-optional-updater.patch
+)
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
@@ -62,8 +65,9 @@ src_configure() {
 		-DBUILD_GLES3=$(usex gles3)
 		-DBUILD_LIBRETRO=$(usex libretro)
 		-DBUILD_QT=$(usex gui)
-		-DBUILD_SDL=$(usex sdl)
+		-DBUILD_SDL=$(usex sdl) # also used for gamepads in QT build
 		-DBUILD_SUITE=$(usex test)
+		-DBUILD_UPDATER=OFF
 		-DENABLE_SCRIPTING=$(usex lua)
 		-DMARKDOWN=OFF #752048
 		-DUSE_DEBUGGERS=$(usex debug)
