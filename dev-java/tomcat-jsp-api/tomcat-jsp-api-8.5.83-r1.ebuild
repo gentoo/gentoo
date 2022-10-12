@@ -22,11 +22,11 @@ CP_DEPEND="
 "
 
 DEPEND="
-	>=virtual/jdk-11:*
+	>=virtual/jdk-1.8:*
 	${CP_DEPEND}"
 
 RDEPEND="
-	>=virtual/jre-11:*
+	>=virtual/jre-1.8:*
 	${CP_DEPEND}"
 
 S="${WORKDIR}/apache-tomcat-${PV}-src"
