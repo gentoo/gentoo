@@ -6,7 +6,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gettext.asc
-inherit java-pkg-opt-2 multilib-minimal verify-sig
+inherit java-pkg-opt-2 libtool multilib-minimal verify-sig
 
 DESCRIPTION="GNU locale utilities"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
@@ -78,6 +78,15 @@ src_prepare() {
 	java-pkg-opt-2_src_prepare
 
 	default
+
+	# gettext-0.21.1-java-autoconf.patch changes
+	# gettext-{runtime,tools}/configure.ac and the corresponding
+	# configure scripts. Avoid regenerating other autotools output.
+	touch -c gettext-{runtime,tools}/{aclocal.m4,Makefile.in,config.h.in,configure} || die
+
+	# Makefile.am adds a dependency on gettext-{runtime,tools}/configure.ac
+	touch -c configure || die
+
 	elibtoolize
 
 	use elibc_musl && eapply "${FILESDIR}"/${PN}-0.21-musl-omit_setlocale_lock.patch
