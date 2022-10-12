@@ -282,12 +282,6 @@ net-nds/nsscache
 dev-python/python-etcd
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-09-10)
-# Python 3.8 only package, with capped old dependencies, and open
-# bugs and issues.
-# Removal: 2022-10-10.  Bugs #869506, #695090, #792219, #809272.
-net-misc/electrum-ltc
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2022-09-10)
 # Upstream repository archived. Python 3.8 only, with issues for
 # newer targets. No reverse dependencies in tree.
 # Removal: 2022-10-10.  Bugs #869503, #747997, #832242.
