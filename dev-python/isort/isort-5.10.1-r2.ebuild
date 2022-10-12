@@ -9,17 +9,22 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="A python utility/library to sort imports"
-HOMEPAGE="https://pypi.org/project/isort/"
+HOMEPAGE="
+	https://github.com/PyCQA/isort/
+	https://pypi.org/project/isort/
+"
 SRC_URI="
 	https://github.com/PyCQA/isort/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz"
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
-	dev-python/toml[${PYTHON_USEDEP}]"
+	dev-python/tomli[${PYTHON_USEDEP}]
+"
 BDEPEND="
 	test? (
 		dev-python/black[${PYTHON_USEDEP}]
@@ -35,7 +40,7 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
-	# unbundle toml
+	# unbundle tomli
 	sed -i -e 's:from ._vendored ::' isort/settings.py || die
 	rm -r isort/_vendored || die
 	# remove upper bounds from example plugin deps
