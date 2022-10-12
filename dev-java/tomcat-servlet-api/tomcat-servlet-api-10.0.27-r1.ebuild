@@ -19,11 +19,11 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-solaris ~x
 CP_DEPEND="~dev-java/tomcat-el-api-${PV}:4.0"
 
 DEPEND="
-	>=virtual/jdk-8:*
+	>=virtual/jdk-1.8:*
 	${CP_DEPEND}"
 
 RDEPEND="
-	>=virtual/jre-8:*
+	>=virtual/jre-1.8:*
 	${CP_DEPEND}"
 
 S="${WORKDIR}/apache-tomcat-${PV}-src"
