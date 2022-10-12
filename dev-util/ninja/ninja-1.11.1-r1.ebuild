@@ -59,6 +59,8 @@ src_compile() {
 	# configure.py appends CFLAGS to CXXFLAGS
 	unset CFLAGS
 
+	append-lfs-flags
+
 	run_for_build ${EPYTHON} configure.py --bootstrap --verbose || die
 
 	if tc-is-cross-compiler; then
