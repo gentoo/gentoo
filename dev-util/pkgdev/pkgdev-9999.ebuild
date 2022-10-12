@@ -3,18 +3,8 @@
 
 EAPI=8
 
-# Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-pkgdev-docs
-# Set to 1 if prebuilt, 0 if not
-# (the construct below is to allow overriding from env for script)
-: ${PKGDEV_DOCS_PREBUILT:=1}
-
-PKGDEV_DOCS_PREBUILT_DEV=sam
-PKGDEV_DOCS_VERSION=$(ver_cut 1-3)
-# Default to generating docs (inc. man pages) if no prebuilt; overridden later
-PKGDEV_DOCS_USEFLAG="+doc"
-
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..11} )
-DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
@@ -24,11 +14,6 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-
-	if [[ ${PKGDEV_DOCS_PREBUILT} -eq 1 ]] ; then
-		SRC_URI+=" !doc? ( https://dev.gentoo.org/~${PKGDEV_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${PKGDEV_DOCS_VERSION}-docs.tar.xz )"
-	fi
-
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
 fi
 
@@ -37,10 +22,7 @@ HOMEPAGE="https://github.com/pkgcore/pkgdev"
 
 LICENSE="BSD MIT"
 SLOT="0"
-
-[[ ${PKGDEV_DOCS_PREBUILT} == 1 ]] && PKGDEV_DOCS_USEFLAG="doc"
-
-IUSE="${PKGDEV_DOCS_USEFLAG}"
+IUSE="doc"
 
 if [[ ${PV} == *9999 ]] ; then
 	# https://github.com/pkgcore/pkgdev/blob/main/requirements/dev.txt
@@ -74,10 +56,10 @@ python_compile_all() {
 
 python_install_all() {
 	# If USE=doc, there'll be newly generated docs which we install instead.
-	if use doc ; then
+	if use doc; then
 		doman doc/_build/man/*
-	elif ! use doc && [[ ${PKGDEV_DOCS_PREBUILT} == 1 ]] ; then
-		doman "${WORKDIR}"/${PN}-${PKGDEV_DOCS_VERSION}-docs/man/*.[0-8]
+	elif [[ ${PV} != *9999 ]]; then
+		doman man/*.[0-8]
 	fi
 
 	distutils-r1_python_install_all
