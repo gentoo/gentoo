@@ -20,8 +20,8 @@ MY_PM="${MY_PM/.}"
 
 if [[ ${PV} =~ "9999" ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
 	SLOT="0/8.3"
+	EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
 else
 	MY_P="${P/_rc/RC}"
 	SLOT="0/$(ver_cut 1-2 ${PV})"
@@ -276,8 +276,6 @@ os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
 
 pkg_postinst() {
 	use X && xdg_pkg_postinst
-	ewarn 'Starting with version 8.0.2 the "liblas" USE flag has been renamed'
-	ewarn 'to "las" in order to match dev-games/openscenegraph (Bug 680854)'
 }
 
 pkg_postrm() {

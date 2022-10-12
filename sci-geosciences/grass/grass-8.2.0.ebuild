@@ -274,8 +274,6 @@ os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
 
 pkg_postinst() {
 	use X && xdg_pkg_postinst
-	ewarn 'Starting with version 8.0.2 the "liblas" USE flag has been renamed'
-	ewarn 'to "las" in order to match dev-games/openscenegraph (Bug 680854)'
 }
 
 pkg_postrm() {
