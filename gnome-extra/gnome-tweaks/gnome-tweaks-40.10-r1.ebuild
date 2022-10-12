@@ -1,8 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
+EAPI=8
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit gnome.org gnome2-utils meson python-single-r1 xdg
 
@@ -29,7 +29,6 @@ RDEPEND="${DEPEND}
 	>=x11-libs/gtk+-3.12:3[introspection]
 	>=gnome-base/gnome-desktop-3.30:3[introspection]
 	gui-libs/libhandy:1[introspection]
-	net-libs/libsoup:2.4[introspection]
 	x11-libs/libnotify[introspection]
 
 	>=gnome-base/gsettings-desktop-schemas-40.0
