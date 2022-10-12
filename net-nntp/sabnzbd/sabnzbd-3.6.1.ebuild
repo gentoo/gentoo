@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"
 
 inherit optfeature python-single-r1 systemd
@@ -16,6 +16,7 @@ MY_P="${PN/sab/SAB}-${MY_PV}"
 DESCRIPTION="Binary newsgrabber with web-interface"
 HOMEPAGE="https://sabnzbd.org/"
 SRC_URI="https://github.com/sabnzbd/sabnzbd/releases/download/${MY_PV}/${MY_P}-src.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 # Sabnzbd is GPL-2 but bundles software with the following licenses.
 LICENSE="GPL-2 BSD LGPL-2 MIT BSD-1"
@@ -23,6 +24,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	acct-user/sabnzbd
@@ -42,13 +44,11 @@ DEPEND="
 		<dev-python/sabyenc-6[${PYTHON_USEDEP}]
 	')
 "
-
 RDEPEND="
 	${DEPEND}
 	>=app-arch/par2cmdline-0.4
 	net-misc/wget
 "
-
 BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
@@ -69,14 +69,6 @@ BDEPEND="
 		www-apps/chromedriver-bin
 	)
 "
-
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
-S="${WORKDIR}/${MY_P}"
-
-pkg_setup() {
-	python-single-r1_pkg_setup
-}
 
 src_test() {
 	local EPYTEST_IGNORE=(
@@ -109,31 +101,29 @@ src_test() {
 		'tests/test_functional_misc.py::TestQueueRepair::test_queue_repair'
 		'tests/test_functional_misc.py::TestDaemonizing::test_daemonizing'
 	)
+
 	epytest -s
 }
 
-
-
 src_install() {
 	local d
-
 	for d in email icons interfaces locale po sabnzbd scripts tools; do
-		insinto "/usr/share/${PN}/${d}"
+		insinto /usr/share/${PN}/${d}
 		doins -r ${d}/*
 	done
 
-	exeinto "/usr/share/${PN}"
+	exeinto /usr/share/${PN}
 	doexe SABnzbd.py
 
-	python_fix_shebang "${ED}/usr/share/${PN}"
-	python_optimize "${ED}/usr/share/${PN}"
+	python_fix_shebang "${ED}"/usr/share/${PN}
+	python_optimize "${ED}"/usr/share/${PN}
 
-	newinitd "${FILESDIR}/${PN}-r1.initd" "${PN}"
-	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
+	newinitd "${FILESDIR}"/${PN}-r1.initd ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 
-	diropts -o "${PN}" -g "${PN}"
-	dodir "/etc/${PN}"
-	keepdir "/var/log/${PN}"
+	diropts -o ${PN} -g ${PN}
+	dodir /etc/${PN}
+	keepdir /var/log/${PN}
 
 	insinto "/etc/${PN}"
 	insopts -m 0600 -o "${PN}" -g "${PN}"
