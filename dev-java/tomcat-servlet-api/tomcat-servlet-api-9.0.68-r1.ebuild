@@ -4,7 +4,7 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source"
-MAVEN_ID="org.apache.tomcat:tomcat-servlet-api:8.5.83"
+MAVEN_ID="org.apache.tomcat:tomcat-servlet-api:9.0.68"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -13,19 +13,17 @@ HOMEPAGE="https://tomcat.apache.org/"
 SRC_URI="mirror://apache/tomcat/tomcat-$(ver_cut 1)/v${PV}/src/apache-tomcat-${PV}-src.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="3.1"
+SLOT="4.0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 
-# we can't use the exact same version of el as tomcat 9 implements the same slot and
-# it would prevent from installing both tomcat 8.5 and 9 at the same time
-CP_DEPEND=">=dev-java/tomcat-el-api-${PV}:3.0"
+CP_DEPEND="~dev-java/tomcat-el-api-${PV}:3.0"
 
 DEPEND="
-	>=virtual/jdk-11:*
+	>=virtual/jdk-8:*
 	${CP_DEPEND}"
 
 RDEPEND="
-	>=virtual/jre-11:*
+	>=virtual/jre-8:*
 	${CP_DEPEND}"
 
 S="${WORKDIR}/apache-tomcat-${PV}-src"

@@ -4,7 +4,7 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source"
-MAVEN_ID="org.apache.tomcat:tomcat-servlet-api:10.0.27"
+MAVEN_ID="org.apache.tomcat:tomcat-servlet-api:8.5.83"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -13,31 +13,33 @@ HOMEPAGE="https://tomcat.apache.org/"
 SRC_URI="mirror://apache/tomcat/tomcat-$(ver_cut 1)/v${PV}/src/apache-tomcat-${PV}-src.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="5.0"
+SLOT="3.1"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 
-CP_DEPEND="~dev-java/tomcat-el-api-${PV}:4.0"
+# we can't use the exact same version of el as tomcat 9 implements the same slot and
+# it would prevent from installing both tomcat 8.5 and 9 at the same time
+CP_DEPEND=">=dev-java/tomcat-el-api-${PV}:3.0"
 
 DEPEND="
-	>=virtual/jdk-11:*
+	>=virtual/jdk-8:*
 	${CP_DEPEND}"
 
 RDEPEND="
-	>=virtual/jre-11:*
+	>=virtual/jre-8:*
 	${CP_DEPEND}"
 
 S="${WORKDIR}/apache-tomcat-${PV}-src"
 
 JAVA_RESOURCE_DIRS="resources"
-JAVA_SRC_DIR="java/jakarta/servlet"
+JAVA_SRC_DIR="java/javax/servlet"
 
 src_prepare() {
 	default
 	# remove anything related to "el" or "jsp"
-	find java/jakarta \( -name 'el' -o -name 'jsp' \) \
+	find java/javax \( -name 'el' -o -name 'jsp' \) \
 		-exec rm -rf {} + || die "removing jsp failed"
 
 	mkdir resources || "creating \"resources\" failed"
-	cp -r java/jakarta resources || "cannot copy to \"resources\" dir"
+	cp -r java/javax resources || "cannot copy to \"resources\" dir"
 	find resources -name '*.java' -exec rm -rf {} + || die "removing *.java files failed"
 }
