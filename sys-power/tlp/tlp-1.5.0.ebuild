@@ -6,24 +6,21 @@ EAPI=8
 inherit udev optfeature
 
 DESCRIPTION="Optimize laptop battery life"
-
 HOMEPAGE="https://linrunner.de/tlp/"
-
 SRC_URI="https://github.com/linrunner/TLP/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-
 S="${WORKDIR}/TLP-${PV}"
 
 LICENSE="GPL-2"
-
 SLOT="0"
-
 KEYWORDS="~amd64"
 
 # It's uncertain if elogind/systemd is actually required, however, without the sleep
 # hooks working, which require one of them, it doesn't seem like this app is very useful.
-RDEPEND="virtual/udev
+RDEPEND="
 	dev-lang/perl
-	|| ( sys-auth/elogind sys-apps/systemd )"
+	virtual/udev
+	|| ( sys-auth/elogind sys-apps/systemd )
+"
 
 src_install() {
 	emake \
@@ -33,9 +30,9 @@ src_install() {
 		TLP_WITH_SYSTEMD=1 \
 		install install-man
 
-	fperms 444 "/usr/share/tlp/defaults.conf" # manpage says this file should not be edited
+	fperms 444 /usr/share/tlp/defaults.conf # manpage says this file should not be edited
 	newinitd "${FILESDIR}/tlp.init" tlp
-	keepdir "/var/lib/tlp" # created by Makefile, probably important
+	keepdir /var/lib/tlp # created by Makefile, probably important
 }
 
 pkg_postinst() {
