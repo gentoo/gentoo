@@ -43,6 +43,7 @@ net-im/empathy
 # Upstream has withdrawn these releases because of a (yet unexplained)
 # "significant regression".
 # See https://mta.openssl.org/pipermail/openssl-announce/2022-October/000237.html.
+# and https://github.com/openssl/openssl/issues/19389.
 =dev-libs/openssl-1.1.1r
 =dev-libs/openssl-3.0.6
 
