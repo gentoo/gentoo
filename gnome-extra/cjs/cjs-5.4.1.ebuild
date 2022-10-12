@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/gobject-introspection-1.66.1:=
 	>=dev-libs/libffi-3.3:0=
 
-	cairo? ( x11-libs/cairo[glib,svg,X] )
+	cairo? ( x11-libs/cairo[glib,svg(+),X] )
 	readline? ( sys-libs/readline:0= )
 "
 DEPEND="
