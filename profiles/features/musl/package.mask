@@ -192,6 +192,7 @@ net-misc/dropbox-cli
 net-misc/ipmiview
 net-misc/teamviewer
 net-misc/yandex-disk
+net-nntp/sabnzbd
 net-p2p/resilio-sync
 net-print/cnijfilter2
 net-print/hplip-plugin
