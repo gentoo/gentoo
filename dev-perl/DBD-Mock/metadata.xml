@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+Testing with databases can be tricky. If you are developing a system married to a single database then you can make some assumptions about your environment and ask the user to provide relevant connection information. But if you need to test a framework that uses DBI, particularly a framework that uses different types of persistence schemes, then it may be more useful to simply verify what the framework is trying to do -- ensure the right SQL is generated and that the correct parameters are bound. DBD::Mock makes it easy to just modify your configuration (presumably held outside your code) and just use it instead of DBD::Foo (like DBD::Pg or DBD::mysql) in your framework.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">DBD::Mock</remote-id>
+    <remote-id type="cpan-module">DBD::Mock</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::Pool</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::Pool::db</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::Session</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::StatementTrack</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::StatementTrack::Iterator</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::db</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::dr</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::st</remote-id>
+  </upstream>
+</pkgmetadata>
