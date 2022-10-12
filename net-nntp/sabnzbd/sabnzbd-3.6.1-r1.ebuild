@@ -41,7 +41,7 @@ DEPEND="
 		dev-python/notify2[${PYTHON_USEDEP}]
 		dev-python/portend[${PYTHON_USEDEP}]
 		dev-python/puremagic[${PYTHON_USEDEP}]
-		<dev-python/sabyenc-6[${PYTHON_USEDEP}]
+		~dev-python/sabyenc-5.4.3[${PYTHON_USEDEP}]
 	')
 "
 RDEPEND="
