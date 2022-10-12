@@ -27,7 +27,7 @@ DEPEND="virtual/libusb:1"
 RDEPEND="${DEPEND}"
 
 # https://github.com/greatscottgadgets/hackrf/issues/1193
-PATCHES=( "${FILESDIR}/hackrf-disable-static-${PV}.patch" )
+PATCHES=( "${FILESDIR}/hackrf-disable-static-2022.09.1.patch" )
 
 src_configure() {
 	local mycmakeargs=(
