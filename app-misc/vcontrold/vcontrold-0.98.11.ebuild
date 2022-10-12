@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..11} )
 
-inherit cmake python-any-r1
+inherit cmake
 
 DESCRIPTION="Daemon for communication with Viessmann Vito heatings"
 HOMEPAGE="https://github.com/openv/vcontrold/"
@@ -17,7 +16,7 @@ IUSE="+man +vclient vsim"
 
 DEPEND="dev-libs/libxml2:2"
 RDEPEND="${DEPEND}"
-BDEPEND="man? ( $(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]') )"
+BDEPEND="man? ( dev-python/docutils )"
 
 src_prepare() {
 	sed "s/@VERSION@/${PV}/" "src/version.h.in" \
