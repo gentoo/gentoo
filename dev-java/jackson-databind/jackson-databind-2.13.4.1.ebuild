@@ -7,7 +7,7 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source"
-MAVEN_ID="com.fasterxml.jackson.core:jackson-databind:2.13.4"
+MAVEN_ID="com.fasterxml.jackson.core:jackson-databind:2.13.4.1"
 # No tests because of not yet packaged powermock
 # JAVA_TESTING_FRAMEWORKS="junit-4"
 
@@ -27,8 +27,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 # com.fasterxml.jackson.core:jackson-core:2.13.4 -> >=dev-java/jackson-core-2.13.4:0
 
 CP_DEPEND="
-	~dev-java/jackson-annotations-${PV}:2
-	~dev-java/jackson-core-${PV}:0
+	~dev-java/jackson-annotations-2.13.4:2
+	~dev-java/jackson-core-2.13.4:0
 "
 
 # Compile dependencies
