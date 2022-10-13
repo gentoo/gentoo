@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/project/browserlaunch2/browserlaunche
 
 LICENSE="LGPL-2.1"
 SLOT="1.0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ppc64 ~x86"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
