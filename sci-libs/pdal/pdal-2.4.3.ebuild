@@ -37,6 +37,10 @@ DEPEND="
 
 S="${WORKDIR}/PDAL-${PV}-src"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-test.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_PLUGIN_PGPOINTCLOUD="$(usex postgres)"
