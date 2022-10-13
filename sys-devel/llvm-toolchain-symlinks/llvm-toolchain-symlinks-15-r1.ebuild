@@ -13,7 +13,7 @@ S=${WORKDIR}
 LICENSE="public-domain"
 SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos"
-IUSE="+native-symlinks"
+IUSE="multilib-symlinks +native-symlinks"
 
 RDEPEND="
 	sys-devel/llvm:${SLOT}
@@ -26,17 +26,23 @@ src_install() {
 		addr2line ar dlltool nm objcopy objdump ranlib readelf size
 		strings strip windres
 	)
+	local chosts=( "${CHOST}" )
+	if use multilib-symlinks; then
+		local abi
+		for abi in $(get_all_abis); do
+			chosts+=( "$(get_abi_CHOST "${abi}")" )
+		done
+	fi
 
-	local abi t
+	local chost t
 	local dest=/usr/lib/llvm/${SLOT}/bin
 	dodir "${dest}"
 	for t in "${tools[@]}"; do
 		dosym "llvm-${t}" "${dest}/${t}"
 	done
-	for abi in $(get_all_abis); do
-		local abi_chost=$(get_abi_CHOST "${abi}")
+	for chost in "${chosts[@]}"; do
 		for t in "${tools[@]}"; do
-			dosym "llvm-${t}" "${dest}/${abi_chost}-${t}"
+			dosym "llvm-${t}" "${dest}/${chost}-${t}"
 		done
 	done
 }
