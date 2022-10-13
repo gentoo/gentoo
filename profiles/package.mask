@@ -173,6 +173,9 @@ media-plugins/gmpc-tagedit
 # Matt Turner <mattst88@gentoo.org> (2022-10-01)
 # Metapackage that has outlived its purpose. Made some sense in the immediate
 # aftermath of X.Org modularization 15 years ago.
+# Use these instead if desired:
+# - x11-base/xorg-apps
+# - x11-base/xorg-fonts
 # Removal on 2022-11-01. Bugs #755233, #872119.
 x11-base/xorg-x11
 
