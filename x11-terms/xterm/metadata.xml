@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <!-- maintainer-needed -->
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="openpty">Use openpty() in preference to posix_openpt()</flag>
 		<flag name="sixel">Enable sixel graphics support</flag>
