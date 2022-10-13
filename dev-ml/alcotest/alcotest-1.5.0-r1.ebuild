@@ -17,7 +17,7 @@ IUSE="+ocamlopt"
 RDEPEND="
 	>=dev-ml/dune-2.8:=
 	dev-ml/astring:=
-	dev-ml/async_unix:=
+	dev-ml/async_unix:0/0.14.0
 	dev-ml/cmdliner:=
 	dev-ml/core:=
 	dev-ml/core_kernel:=

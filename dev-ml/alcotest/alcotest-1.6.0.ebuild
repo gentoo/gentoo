@@ -18,6 +18,7 @@ RDEPEND="
 	>=dev-ml/dune-2.8:=
 	dev-ml/astring:=
 	dev-ml/async_kernel:=
+	dev-ml/async:=
 	>=dev-ml/async_unix-0.15.0:=
 	dev-ml/base:=
 	dev-ml/cmdliner:=
