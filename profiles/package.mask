@@ -246,12 +246,6 @@ media-sound/pulseaudio-modules-bt
 # in 30 days. #870355
 x11-themes/e-flat-theme
 
-# Joonas Niilola <juippis@gentoo.org> (2022-09-15)
-# Upstream split this font into separate packages: media-fonts/
-# source-code-pro, source-sans, source-serif. The current non-split
-# version is broken. Removal in 30 days. #865103
-media-fonts/source-pro
-
 # Mike Gilbert <floppym@gentoo.org> (2022-09-12)
 # repoman is no longer maintained and has been removed from the portage
 # git repository. Please use dev-util/pkgcheck and dev-util/pkgdev instead.
