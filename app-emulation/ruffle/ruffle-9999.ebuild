@@ -40,7 +40,7 @@ src_unpack() {
 }
 
 src_compile() {
-	filter-lto # undefined references with ring crate and more
+	filter-lto # does not play well with C code in crates
 
 	cargo_src_compile --bins # note: configure --bins would skip tests
 }
