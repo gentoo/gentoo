@@ -5,7 +5,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit gnome.org meson python-single-r1
+inherit gnome.org meson python-single-r1 xdg
 
 DESCRIPTION="A graphical diff and merge tool"
 HOMEPAGE="http://meldmerge.org/"
@@ -61,4 +61,14 @@ src_install() {
 	meson_src_install
 	python_optimize
 	python_fix_shebang "${ED}"/usr/bin/meld
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
 }
