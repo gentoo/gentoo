@@ -66,6 +66,7 @@ BDEPEND="
 			dev-python/werkzeug[${PYTHON_USEDEP}]
 			dev-python/xmltodict[${PYTHON_USEDEP}]
 		')
+		app-arch/p7zip
 		www-apps/chromedriver-bin
 	)
 "
