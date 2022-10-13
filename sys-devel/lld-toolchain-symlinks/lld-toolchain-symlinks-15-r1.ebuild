@@ -12,9 +12,8 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="${PV}"
-KEYWORDS=""
-PROPERTIES="live"
-IUSE="+native-symlinks"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+IUSE="multilib-symlinks +native-symlinks"
 
 RDEPEND="
 	sys-devel/lld
@@ -23,12 +22,18 @@ RDEPEND="
 src_install() {
 	use native-symlinks || return
 
-	local abi
+	local chosts=( "${CHOST}" )
+	if use multilib-symlinks; then
+		local abi
+		for abi in $(get_all_abis); do
+			chosts+=( "$(get_abi_CHOST "${abi}")" )
+		done
+	fi
+
 	local dest=/usr/lib/llvm/${SLOT}/bin
 	dodir "${dest}"
 	dosym ../../../../bin/ld.lld "${dest}/ld"
-	for abi in $(get_all_abis); do
-		local abi_chost=$(get_abi_CHOST "${abi}")
-		dosym ../../../../bin/ld.lld "${dest}/${abi_chost}-ld"
+	for chost in "${chosts[@]}"; do
+		dosym ../../../../bin/ld.lld "${dest}/${chost}-ld"
 	done
 }
