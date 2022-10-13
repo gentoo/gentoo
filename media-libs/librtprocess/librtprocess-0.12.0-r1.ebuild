@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake toolchain-funcs
 
 DESCRIPTION="Algorithms for RAW processing from RawTherapee"
 HOMEPAGE="https://github.com/CarVac/librtprocess/"
