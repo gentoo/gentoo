@@ -12,9 +12,8 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="${PV}"
-KEYWORDS=""
-PROPERTIES="live"
-IUSE="gcc-symlinks +native-symlinks"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x64-macos"
+IUSE="gcc-symlinks multilib-symlinks +native-symlinks"
 
 # Blocker for bug #872416
 RDEPEND="
@@ -39,16 +38,23 @@ src_install() {
 		)
 	fi
 
-	local abi t
+	local chosts=( "${CHOST}" )
+	if use multilib-symlinks; then
+		local abi
+		for abi in $(get_all_abis); do
+			chosts+=( "$(get_abi_CHOST "${abi}")" )
+		done
+	fi
+
+	local chost t
 	local dest=/usr/lib/llvm/${SLOT}/bin
 	dodir "${dest}"
 	for t in "${tools[@]}"; do
 		dosym "${t#*:}" "${dest}/${t%:*}"
 	done
-	for abi in $(get_all_abis); do
-		local abi_chost=$(get_abi_CHOST "${abi}")
+	for chost in "${chosts[@]}"; do
 		for t in "${tools[@]}"; do
-			dosym "${t#*:}" "${dest}/${abi_chost}-${t%:*}"
+			dosym "${t#*:}" "${dest}/${chost}-${t%:*}"
 		done
 	done
 }
