@@ -59,6 +59,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-no-mouse-build.patch
+)
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 
