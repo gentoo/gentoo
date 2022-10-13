@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome.org meson
+inherit gnome.org meson xdg
 
 DESCRIPTION="D-spy is a blisteringly fast D-Bus debugger"
 HOMEPAGE="https://wiki.gnome.org/Apps/d-spy https://gitlab.gnome.org/GNOME/d-spy"
@@ -31,4 +31,14 @@ BDEPEND="
 src_install() {
 	meson_src_install
 	mv "${ED}"/usr/share/appdata "${ED}"/usr/share/metainfo || die
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
 }
