@@ -59,6 +59,12 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+
+	python-any-r1_pkg_setup
+}
+
 src_configure() {
 	local emesonargs=(
 		-D88-colors=true
