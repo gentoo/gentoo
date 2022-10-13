@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-10-13)
+# Depends on vulnerable version of Rust. See bug #877005.
+# Will be unmasked once dependency is updated.
+www-client/seamonkey
+
 # Joshua Kinard <kumba@gentoo.org> (2022-10-13)
 # Difficult-to-resolve build issues on modern toolchains,
 # not publicly maintained, developer contact is difficult,
