@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -10,13 +10,17 @@ MY_P="${P/-/_}"
 DESCRIPTION="Library for downloading files via HTTP using the GET method"
 HOMEPAGE="http://http-fetcher.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
-LICENSE="LGPL-2.1"
 
+LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc x86"
 IUSE="debug"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.0-underquoted-http-fetcher-macro.patch
+)
 
 src_prepare() {
 	default
@@ -26,7 +30,6 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-strict \
-		--disable-static \
 		$(use_enable debug)
 }
 

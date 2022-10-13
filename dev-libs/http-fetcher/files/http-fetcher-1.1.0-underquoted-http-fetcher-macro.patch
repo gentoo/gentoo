@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/876911
+https://bugs.gentoo.org/299940
+--- a/http-fetcher.m4
++++ b/http-fetcher.m4
+@@ -10,7 +10,7 @@ dnl  understanding is that this should only be done if necessary.
+ dnl  The macro also adds the appropriate -L and -I values to CFLAGS so that
+ dnl  headers are found and libraries are linked.
+ dnl
+-AC_DEFUN(AC_PATH_HFETCHER,
++AC_DEFUN([AC_PATH_HFETCHER],
+ [dnl
+ 
+ darwin=no;
