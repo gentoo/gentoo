@@ -31,7 +31,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9999-llvm.patch"
+	"${FILESDIR}/${PN}-1.18.0-llvm.patch"
 )
 
 CMAKE_BUILD_TYPE="RelWithDebInfo"
