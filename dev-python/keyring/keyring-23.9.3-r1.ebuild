@@ -24,6 +24,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
 
 RDEPEND="
 	>=dev-python/secretstorage-3.2[${PYTHON_USEDEP}]
+	dev-python/jaraco-classes[${PYTHON_USEDEP}]
 	>=dev-python/jeepney-0.4.2[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/importlib_metadata-3.6[${PYTHON_USEDEP}]
