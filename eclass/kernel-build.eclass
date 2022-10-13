@@ -90,24 +90,24 @@ kernel-build_src_configure() {
 		ARCH=$(tc-arch-kernel)
 	)
 
-	if type -P xz ; then
+	if type -P xz &>/dev/null ; then
 		export XZ_OPT="-T$(makeopts_jobs)"
 	fi
 
-	if type -P zstd ; then
+	if type -P zstd &>/dev/null ; then
 		export ZSTD_NBTHREADS="$(makeopts_jobs)"
 	fi
 
 	# pigz/pbzip2/lbzip2 all need to take an argument, not an env var,
 	# for their options, which won't work because of how the kernel build system
 	# uses the variables (e.g. passes directly to tar as an executable).
-	if type -P pigz ; then
+	if type -P pigz &>/dev/null ; then
 		MAKEARGS+=( KGZIP="pigz" )
 	fi
 
-	if type -P pbzip2 ; then
+	if type -P pbzip2 &>/dev/null ; then
 		MAKEARGS+=( KBZIP2="pbzip2" )
-	elif type -P lbzip2 ; then
+	elif type -P lbzip2 &>/dev/null ; then
 		MAKEARGS+=( KBZIP2="lbzip2" )
 	fi
 
