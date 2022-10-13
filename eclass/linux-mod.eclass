@@ -719,7 +719,7 @@ linux-mod_src_install() {
 			xz -T$(makeopts_jobs) ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with xz failed"
 			doins ${modulename}.${KV_OBJ}.xz
 		elif linux_chkconfig_present MODULE_COMPRESS_GZIP; then
-			if type -P pigz ; then
+			if type -P pigz &>/dev/null ; then
 				pigz -n$(makeopts_jobs) ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with pigz failed"
 			else
 				gzip ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with gzip failed"
