@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+XORG_PACKAGE_NAME="sun-misc"
 inherit xorg-3
 
 DESCRIPTION="X.Org Sun fonts"
