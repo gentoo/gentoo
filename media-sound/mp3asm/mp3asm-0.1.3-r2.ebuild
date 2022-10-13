@@ -18,6 +18,7 @@ KEYWORDS="amd64 ppc sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-autotools.patch
+	"${FILESDIR}"/${P}-log.patch
 )
 
 src_prepare() {
