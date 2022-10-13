@@ -97,10 +97,6 @@ src_install() {
 			-Werror=implicit-function-declaration
 			-Werror=implicit-int
 			-Werror=incompatible-function-pointer-types
-
-			# constructs banned by C2x
-			-Werror=strict-prototypes
-			-Werror=deprecated-non-prototype
 		EOF
 
 		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
