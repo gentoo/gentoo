@@ -46,6 +46,8 @@ src_prepare() {
 	# remove upper bounds from example plugin deps
 	# (already removed upstream)
 	sed -i -e 's:\^:>=:' example*/pyproject.toml || die
+	# leftover toml import used to determine .toml support
+	sed -i -e 's:import toml:toml = True:' tests/unit/test_isort.py || die
 
 	distutils-r1_src_prepare
 }
