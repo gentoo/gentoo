@@ -5,8 +5,12 @@ EAPI=8
 
 # Sometimes there's no dist tarball available post-release and upstream
 # encourage distros to make their own. Set to 1 if none is available, 0 otherwise.
-MAN_PAGES_GENTOO_DIST=1
+MAN_PAGES_GENTOO_DIST=0
 GENTOO_PATCH=2
+
+if [[ ${PV} != 6.00 ]] ; then
+	die "Please use 9999 as a template for the next bump for SRC_URI fixes."
+fi
 
 DESCRIPTION="A somewhat comprehensive collection of Linux man pages"
 HOMEPAGE="https://www.kernel.org/doc/man-pages/"
@@ -20,11 +24,11 @@ elif [[ ${PV} == *_rc* ]] ; then
 	S="${WORKDIR}"/${MY_P}
 else
 	if [[ ${MAN_PAGES_GENTOO_DIST} -eq 1 ]] ; then
-		SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}.tar.xz"
+		SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-gentoo.tar.xz"
 	else
 		SRC_URI="
-			https://www.kernel.org/pub/linux/docs/man-pages/Archive/${P}.tar.xz
-			https://www.kernel.org/pub/linux/docs/man-pages/${P}.tar.xz
+			https://www.kernel.org/pub/linux/docs/man-pages/Archive/${P}.tar.xz -> ${P}-upstream.tar.xz
+			https://www.kernel.org/pub/linux/docs/man-pages/${P}.tar.xz -> ${P}-upstream.tar.xz
 		"
 	fi
 
