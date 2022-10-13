@@ -99,7 +99,6 @@ src_install() {
 			-Werror=incompatible-function-pointer-types
 
 			# constructs banned by C2x
-			-Werror=strict-prototypes
 			-Werror=deprecated-non-prototype
 		EOF
 
