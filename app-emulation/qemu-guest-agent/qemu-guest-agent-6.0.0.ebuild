@@ -71,4 +71,9 @@ src_install() {
 pkg_postinst() {
 	elog "You should add 'qemu-guest-agent' to the default runlevel."
 	elog "e.g. rc-update add qemu-guest-agent default"
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }
