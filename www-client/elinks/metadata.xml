@@ -18,4 +18,7 @@
 		<flag name="tre">Enable support for regex searches via <pkg>dev-libs/tre</pkg></flag>
 		<flag name="xml">Enable support for bookmarks via <pkg>dev-libs/expat</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">rkd77/elinks</remote-id>
+	</upstream>
 </pkgmetadata>
