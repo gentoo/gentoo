@@ -36,3 +36,10 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# sterilize build flags
+	sed -i -e '/CMAKE_INTERPROCEDURAL_OPTIMIZATION/d' CMakeLists.txt || die
+
+	distutils-r1_src_prepare
+}
