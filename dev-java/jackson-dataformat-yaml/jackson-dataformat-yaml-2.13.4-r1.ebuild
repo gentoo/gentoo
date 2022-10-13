@@ -22,8 +22,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 DEPEND="
 	~dev-java/jackson-core-${PV}:0
-	~dev-java/jackson-databind-${PV}:0
-	>=dev-java/snakeyaml-1.30-r1:0
+	~dev-java/jackson-databind-${PV}.1:0
+	dev-java/snakeyaml:0
 	>=virtual/jdk-11:*
 "
 
