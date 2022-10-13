@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Joshua Kinard <kumba@gentoo.org> (2022-10-13)
+# Difficult-to-resolve build issues on modern toolchains,
+# not publicly maintained, developer contact is difficult,
+# and project website has SSL certificate issues.
+# Bug #838109.
+# Removal on 2022-11-13
+net-misc/spread
+
 # Matt Turner <mattst88@gentoo.org> (2022-10-12)
 # Unmaintained and archived upstream. Last release in 2017.
 # Bug #597960.
