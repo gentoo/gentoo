@@ -1,2 +1,3 @@
 move x11-libs/libva media-libs/libva
 move x11-libs/libva-compat media-libs/libva-compat
+move x11-libs/libva-intel-driver media-libs/libva-intel-driver
