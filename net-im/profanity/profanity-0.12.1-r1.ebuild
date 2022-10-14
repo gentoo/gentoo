@@ -9,7 +9,7 @@ SRC_URI="https://profanity-im.github.io/tarballs/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="libnotify omemo otr gpg test xscreensaver"
 RESTRICT="!test? ( test )"
