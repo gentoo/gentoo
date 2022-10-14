@@ -28,7 +28,7 @@ REQUIRES_EXCLUDE="
 	libgssapi_krb5.so.2 libkrb5.so.3
 "
 # we have binaries which wouls still support gstreamer:0.10
-REQUIRES_EXCLUDE="$REQUIRES_EXCLUDE
+REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 	libgstapp-0.10.so.0
 	libgstbase-0.10.so.0
 	libgstinterfaces-0.10.so.0
@@ -36,7 +36,7 @@ REQUIRES_EXCLUDE="$REQUIRES_EXCLUDE
 	libgstreamer-0.10.so.0
 "
 # we have binaries which depend on some ancient libunwind
-REQUIRES_EXCLUDE="$REQUIRES_EXCLUDE
+REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 	libunwind.so.1
 "
 
