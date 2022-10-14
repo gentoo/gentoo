@@ -74,6 +74,7 @@ gnome-base/libgnomecanvas
 gnome-extra/gconf-editor
 x11-libs/gtksourceview:2.0
 x11-libs/libwnck:1
+x11-libs/vte:0
 x11-themes/gnome-icon-theme-extras
 x11-themes/gnome-icon-theme-symbolic
 x11-themes/gtk-chtheme
