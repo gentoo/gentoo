@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+    <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+Starman is a PSGI perl web server that has unique features such as:
+
+High Performance
+Uses the fast XS/C HTTP header parser
+
+Preforking
+Spawns workers preforked like most high performance UNIX servers do. Starman also reaps dead children and automatically restarts the worker pool.
+
+Signals
+Supports HUP for graceful worker restarts, and TTIN/TTOU to dynamically increase or decrease the number of worker processes, as well as QUIT to gracefully shutdown the worker processes.
+
+Superdaemon aware
+Supports Server::Starter for hot deploy and graceful restarts.
+
+Multiple interfaces and UNIX Domain Socket support
+Able to listen on multiple interfaces including UNIX sockets.
+
+Small memory footprint
+Preloading the applications with --preload-app command line option enables copy-on-write friendly memory management. Also, the minimum memory usage Starman requires for the master process is 7MB and children (workers) is less than 3.0MB.
+
+PSGI compatible
+Can run any PSGI applications and frameworks
+
+HTTP/1.1 support
+Supports chunked requests and responses, keep-alive and pipeline requests.
+
+UNIX only
+This server does not support Win32.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">Starman</remote-id>
+    <remote-id type="cpan-module">HTTP::Server::PSGI::Net::Server::PreFork</remote-id>
+    <remote-id type="cpan-module">Plack::Handler::Starman</remote-id>
+    <remote-id type="cpan-module">Starman</remote-id>
+    <remote-id type="cpan-module">Starman::Server</remote-id>
+  </upstream>
+</pkgmetadata>
