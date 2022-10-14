@@ -91,7 +91,7 @@ CPU_REQUIRED_USE="
 RDEPEND="
 	mmal? ( media-libs/raspberrypi-userland )
 	opus? ( >=media-libs/opus-1.0.2-r2 )
-	vaapi? ( >=x11-libs/libva-1.2.1-r1:0= )
+	vaapi? ( >=media-libs/libva-1.2.1-r1:0= )
 	video_cards_nvidia? ( >=media-libs/nv-codec-headers-9.1.23.1 )
 	vdpau? ( >=x11-libs/libvdpau-0.7 )
 	vulkan? ( >=media-libs/vulkan-loader-1.2.189:= )

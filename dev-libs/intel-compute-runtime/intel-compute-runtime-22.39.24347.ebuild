@@ -33,7 +33,7 @@ DEPEND="
 	l0? ( >=dev-libs/level-zero-1.8.5:= )
 	vaapi? (
 		x11-libs/libdrm[video_cards_intel]
-		x11-libs/libva
+		media-libs/libva
 	)
 "
 

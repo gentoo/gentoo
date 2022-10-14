@@ -94,7 +94,7 @@ COMMON_DEPEND="
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	sdl? ( media-libs/libsdl2[sound,threads,video] )
 	sndio? ( media-sound/sndio )
-	vaapi? ( x11-libs/libva:=[drm(+)?,X?,wayland?] )
+	vaapi? ( media-libs/libva:=[drm(+)?,X?,wayland?] )
 	vdpau? ( x11-libs/libvdpau )
 	vulkan? (
 		>=media-libs/libplacebo-4.192.1:=[vulkan]

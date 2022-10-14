@@ -50,7 +50,7 @@ GL_DEPS="
 RDEPEND="
 	>=media-libs/gst-plugins-base-${GST_REQ}:${SLOT}[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-bad-${GST_REQ}:${SLOT}[${MULTILIB_USEDEP}]
-	>=x11-libs/libva-1.4.0:=[drm(+)?,wayland?,X?,${MULTILIB_USEDEP}]
+	>=media-libs/libva-1.4.0:=[drm(+)?,wayland?,X?,${MULTILIB_USEDEP}]
 	drm? (
 		>=virtual/libudev-208:=[${MULTILIB_USEDEP}]
 		>=x11-libs/libdrm-2.4.98[${MULTILIB_USEDEP}]

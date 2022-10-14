@@ -18,7 +18,7 @@ media-sound/qmmp xmp
 
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
 # Need intel-hybrid-codec-driver, which only works on amd64
-x11-libs/libva-intel-driver hybrid
+media-libs/libva-intel-driver hybrid
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
 # This is only for bringing in the not-upstreamed-yet LoongArch patchset;

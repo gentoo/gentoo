@@ -15,7 +15,7 @@ KEYWORDS="amd64 arm64 ~riscv x86"
 IUSE="debug opengl"
 
 RDEPEND="
-	>=x11-libs/libva-1.2.1-r1:=[X,opengl?,${MULTILIB_USEDEP}]
+	>=media-libs/libva-1.2.1-r1:=[X,opengl?,${MULTILIB_USEDEP}]
 	>=x11-libs/libvdpau-0.8[${MULTILIB_USEDEP}]
 	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
 "

@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 BDEPEND="virtual/pkgconfig"
 DEPEND="
 	>=x11-libs/libdrm-2.4.23[video_cards_intel]
-	>=x11-libs/libva-2.0.0
+	>=media-libs/libva-2.0.0
 "
 RDEPEND="${DEPEND}"
 

@@ -31,9 +31,9 @@ DEPEND="
 	X? ( >=x11-libs/libX11-1.6.2 )
 "
 if [[ ${PV} = *9999 ]] ; then
-	DEPEND+="~x11-libs/libva-${PV}:=[drm(+),wayland?,X?]"
+	DEPEND+="~media-libs/libva-${PV}:=[drm(+),wayland?,X?]"
 else
-	DEPEND+=">=x11-libs/libva-$(ver_cut 1-2).0:=[drm(+),wayland?,X?]"
+	DEPEND+=">=media-libs/libva-$(ver_cut 1-2).0:=[drm(+),wayland?,X?]"
 fi
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"

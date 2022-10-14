@@ -215,7 +215,7 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	readme.gentoo_print_elog
 
-	elog "For VA-API support you need to install x11-libs/libva with"
+	elog "For VA-API support you need to install media-libs/libva with"
 	elog "USE=X enabled."
 	elog
 	elog "VA-API is disabled by default at runtime. You have to enable it"

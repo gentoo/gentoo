@@ -20,8 +20,8 @@ IUSE="debug"
 RDEPEND="
 	media-video/vdr
 	media-video/ffmpeg[vaapi,X]
-	x11-libs/libva[X]
-	x11-libs/libva-intel-driver[X]
+	media-libs/libva[X]
+	media-libs/libva-intel-driver[X]
 	x11-libs/libX11
 	x11-libs/libxcb
 	x11-libs/xcb-util

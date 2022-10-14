@@ -72,7 +72,7 @@ COMMON_SNAPSHOT_DEPEND="
 		pulseaudio? ( media-sound/pulseaudio:= )
 		sys-apps/pciutils:=
 		kerberos? ( virtual/krb5 )
-		vaapi? ( >=x11-libs/libva-2.7:=[X?,wayland?] )
+		vaapi? ( >=media-libs/libva-2.7:=[X?,wayland?] )
 		X? (
 			x11-libs/libX11:=
 			x11-libs/libXext:=

@@ -22,7 +22,7 @@ BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	>=x11-libs/cmrt-1.0.6
 	>=x11-libs/libdrm-2.4.45
-	>=x11-libs/libva-1.0.16[${MULTILIB_USEDEP}]
+	>=media-libs/libva-1.0.16[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 

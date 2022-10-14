@@ -61,7 +61,7 @@ virtual/dist-kernel
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
 # buggy on big-endian
-x11-libs/libva
+media-libs/libva
 media-video/libva-utils
 media-plugins/gst-plugins-vaapi
 

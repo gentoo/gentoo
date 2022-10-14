@@ -52,14 +52,14 @@ RDEPEND="
 		net-libs/phodav:2.0
 		>=net-libs/libsoup-2.49.91:2.4 )
 "
-# TODO: spice-gtk has an automagic dependency on x11-libs/libva without a
+# TODO: spice-gtk has an automagic dependency on media-libs/libva without a
 # configure knob. The package is relatively lightweight so we just depend
 # on it unconditionally for now. It would be cleaner to transform this into
 # a USE="vaapi" conditional and patch the buildsystem...
 RDEPEND="${RDEPEND}
-	amd64? ( x11-libs/libva:= )
-	arm64? ( x11-libs/libva:= )
-	x86? ( x11-libs/libva:= )
+	amd64? ( media-libs/libva:= )
+	arm64? ( media-libs/libva:= )
+	x86? ( media-libs/libva:= )
 "
 DEPEND="${RDEPEND}
 	>=app-emulation/spice-protocol-0.14.3
