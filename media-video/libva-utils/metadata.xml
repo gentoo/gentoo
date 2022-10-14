@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>aballier@gentoo.org</email>
-    <name>Alexis Ballier</name>
+  <maintainer type="project">
+    <email>vaapi@gentoo.org</email>
+    <name>VA-API Project</name>
   </maintainer>
   <use>
     <flag name="examples">Build and install decode, encode, videoprocess and other VA-API examples.</flag>
