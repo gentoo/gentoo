@@ -18,5 +18,6 @@ DEPEND="
 	>=dev-lang/ocaml-4.08.0:=[ocamlopt=]
 	dev-ml/base:=
 	dev-ml/ppx_jane:=
+	=dev-ml/ppx_compare-0.14*:=
 "
 RDEPEND="${DEPEND}"
