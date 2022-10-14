@@ -26,7 +26,12 @@ RDEPEND="
 	dev-python/jaraco-context[${PYTHON_USEDEP}]
 	dev-python/jaraco-functools[${PYTHON_USEDEP}]
 	dev-python/more-itertools[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# stray dep
+	sed -i -e '/toml/d' setup.cfg || die
+	distutils-r1_src_prepare
+}
