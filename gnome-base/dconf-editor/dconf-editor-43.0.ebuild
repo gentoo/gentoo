@@ -17,7 +17,7 @@ RDEPEND="
 	>=gnome-base/dconf-0.26.1
 	>=dev-libs/glib-2.55.1:2
 	>=x11-libs/gtk+-3.22.27:3
-	>=gui-libs/libhandy-1.6.0:1
+	>=gui-libs/libhandy-1.6.0:1[vala]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
