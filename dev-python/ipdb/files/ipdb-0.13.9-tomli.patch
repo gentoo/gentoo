@@ -1,0 +1,54 @@
+From bc06e22817f2644c6ecc838f60c93fbedb9e0016 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 12 Oct 2022 16:57:24 +0200
+Subject: [PATCH] Support tomllib/tomli in newer Python versions
+
+Support the built-in `tomllib` module from Python 3.11 and the modern
+TOML processing library `tomli` in newer versions of Python 3.  The old
+`toml` package is unmaintained and does not implement TOML 1.0
+correctly.
+---
+ ipdb/__main__.py | 14 ++++++++++++--
+ setup.py         |  4 ++--
+ 2 files changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/ipdb/__main__.py b/ipdb/__main__.py
+index ea2ae88..2c3f675 100644
+--- a/ipdb/__main__.py
++++ b/ipdb/__main__.py
+@@ -176,8 +176,18 @@ def get_config():
+                     read_func(f)
+             # To use on pyproject.toml, put [tool.ipdb] section
+             elif filepath.endswith('pyproject.toml'):
+-                import toml
+-                toml_file = toml.load(filepath)
++                try:
++                    if sys.version_info >= (3, 11):
++                        import tomllib
++                    else:
++                        import tomli as tomllib
++
++                    with open(filepath, "rb") as f:
++                        toml_file = tomllib.load(f)
++                except ImportError:
++                    import toml
++                    toml_file = toml.load(filepath)
++
+                 if "tool" in toml_file and "ipdb" in toml_file["tool"]:
+                     if not parser.has_section("ipdb"):
+                         parser.add_section("ipdb")
+diff --git a/setup.py b/setup.py
+index 6ce51c0..04f594c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -64,8 +64,8 @@
+           # FTR, `decorator` is also a dependency of Ipython.
+           ':python_version == "3.4"': ['ipython >= 6.0.0, < 7.0.0', 'toml >= 0.10.2', 'decorator < 5.0.0'],
+           ':python_version == "3.5"': ['ipython >= 7.0.0, < 7.10.0', 'toml >= 0.10.2', 'decorator'],
+-          ':python_version == "3.6"': ['ipython >= 7.10.0, < 7.17.0', 'toml >= 0.10.2', 'decorator'],
+-          ':python_version > "3.6"': ['ipython >= 7.17.0', 'toml >= 0.10.2', 'decorator'],
++          ':python_version == "3.6"': ['ipython >= 7.10.0, < 7.17.0', 'tomli', 'decorator'],
++          ':python_version > "3.6"': ['ipython >= 7.17.0', 'tomli', 'decorator'],
+       },
+       tests_require=[
+           'mock; python_version<"3"'
