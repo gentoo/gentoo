@@ -167,12 +167,23 @@ get_xcpkgconfigdir() {
 
 multilib_src_configure() {
 	local -a myconf=(
+		--host=${CTARGET}
 		--disable-werror
 		--libdir=$(get_xclibdir)
 		--with-pkgconfigdir=$(get_xcpkgconfigdir)
 		--includedir=$(get_xcincludedir)
 		--mandir="$(get_xcmandir)"
 	)
+
+	tc-export PKG_CONFIG
+
+	if is_cross; then
+		if tc-is-clang; then
+			export CC="${CTARGET}-clang"
+		else
+			export CC="${CTARGET}-gcc"
+		fi
+	fi
 
 	if use elibc_musl; then
 		# musl declares getcontext and swapcontext in ucontext.h,
