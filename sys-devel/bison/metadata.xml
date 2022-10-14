@@ -6,6 +6,7 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:gnu:bison</remote-id>
 		<remote-id type="github">akimd/bison</remote-id>
 	</upstream>
 </pkgmetadata>
