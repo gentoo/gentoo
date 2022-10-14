@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="BibTeX-compatible bibliography processor"
 HOMEPAGE="https://pybtex.org https://pypi.org/project/pybtex/"
-SRC_URI="https://files.pythonhosted.org/packages/source/p/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
