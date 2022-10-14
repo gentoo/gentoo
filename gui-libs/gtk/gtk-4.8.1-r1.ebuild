@@ -105,8 +105,6 @@ src_prepare() {
 	default
 	xdg_environment_reset
 
-	# dev-python/docutils installs rst2man.py, not rst2man
-	sed -i -e "s/'rst2man'/'rst2man.py'/" docs/reference/gtk/meson.build || die
 	# Nothing should use gtk4-update-icon-cache and an unversioned one is shipped by dev-util/gtk-update-icon-cache
 	sed -i -e '/gtk4-update-icon-cache/d' tools/meson.build || die
 	# Workaround RWX ELF sections, https://gitlab.gnome.org/GNOME/gtk/-/issues/4598
