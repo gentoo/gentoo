@@ -268,11 +268,6 @@ x11-themes/e-flat-theme
 # Removal on 2022-11-11. Bug #835013.
 app-portage/repoman
 
-# Michał Górny <mgorny@gentoo.org> (2022-09-11)
-# Bad quality package with failing tests.  No revdeps.
-# Removal on 2022-10-11.  Bug #869650.
-dev-python/pytest-pylint
-
 # Matthias Schwarzott <zzam@gentoo.org> (2022-09-08)
 # Breaks kernel builds with BTF enabled.
 # Bug #868762.
