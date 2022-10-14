@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+    <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+  This role is used by classes that want to add callback hooks to allow users to add new behaviors to their objects. These hooks are called "events". A subscriber registers a callback for an event using the "subscribe" or "on" methods. Then, the class can call those callbacks by emitting an event with the emit() method.
+
+Using the Beam::Event class, subscribers can stop an event from being processed, or prevent the default action from happening.</longdescription>
+  <upstream>
+    <remote-id type="cpan">Beam::Emitter</remote-id>
+    <remote-id type="cpan-module">Beam::Emitter</remote-id>
+    <remote-id type="cpan-module">Beam::Event</remote-id>
+    <remote-id type="cpan-module">Beam::Listener</remote-id>
+  </upstream>
+</pkgmetadata>
