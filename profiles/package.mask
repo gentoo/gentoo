@@ -33,6 +33,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-10-14)
+# Needs upstream work to modernize codebase. Depends on lots of unmaintained
+# packages:
+# 	- app-text/rarian
+# 	- gnome-base/gconf
+# 	- gnome-base/libglade
+# 	- net-libs/gnet:2
+# 	- x11-libs/gtk+:2
+# 	- x11-libs/vte:0
+# Bugs #670904, #873859
+# Removal on 2022-11-14
+games-mud/gnome-mud
+
 # Sam James <sam@gentoo.org> (2022-10-13)
 # Depends on vulnerable version of Rust. See bug #877005.
 # Will be unmasked once dependency is updated.
