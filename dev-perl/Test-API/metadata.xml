@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+    <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+This simple test module checks the subroutines provided by a module. This is useful for confirming a planned API in testing and ensuring that other functions aren't unintentionally included via import.</longdescription>
+  <upstream>
+    <remote-id type="cpan">Test::API</remote-id>
+    <remote-id type="cpan-module">Test::API</remote-id>
+  </upstream>
+</pkgmetadata>
