@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+    <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+This toolbox is an extensible Perl interface allowing for direct read/write
+pperations on files which comply with OASIS Open Document Format for Office
+Applications (ODF).
+
+It provides a high-level document-oriented language and isolates the programmer
+from the details of the file format.  It can process different document classes
+(texts, spreadsheets, presentations, and drawings).  It can retrieve and update
+styles and images, document metadata, and text content.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">OpenOffice::OODoc</remote-id>
+    <remote-id type="cpan-module">OpenOffice::OODoc</remote-id>
+    <remote-id type="cpan-module">OpenOffice::OODoc::Document</remote-id>
+    <remote-id type="cpan-module">OpenOffice::OODoc::File</remote-id>
+    <remote-id type="cpan-module">OpenOffice::OODoc::Image</remote-id>
+    <remote-id type="cpan-module">OpenOffice::OODoc::Meta</remote-id>
+    <remote-id type="cpan-module">OpenOffice::OODoc::Styles</remote-id>
+    <remote-id type="cpan-module">OpenOffice::OODoc::Text</remote-id>
+    <remote-id type="cpan-module">OpenOffice::OODoc::XPath</remote-id>
+  </upstream>
+</pkgmetadata>
