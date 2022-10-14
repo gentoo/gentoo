@@ -1,3 +1,4 @@
+https://lists.sr.ht/~exec64/imv-devel/patches/35908
 --- a/src/console.c
 +++ b/src/console.c
 @@ -54,3 +54,3 @@
