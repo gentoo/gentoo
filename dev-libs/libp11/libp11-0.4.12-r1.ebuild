@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="doc static-libs"
 
-RDEPEND="dev-libs/openssl:="
+RDEPEND="dev-libs/openssl:=[bindist(+)]"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
