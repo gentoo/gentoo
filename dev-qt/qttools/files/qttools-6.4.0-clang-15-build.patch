@@ -1,0 +1,73 @@
+Gentoo Bug: https://bugs.gentoo.org/873640
+Qt Bug: https://bugreports.qt.io/browse/QTBUG-106224
+Patch: https://codereview.qt-project.org/c/qt/qttools/+/436135
+
+From 6495329e6de803025e6e4e8291b648f94893551c Mon Sep 17 00:00:00 2001
+From: =?utf8?q?Bj=C3=B6rn=20Sch=C3=A4pers?= <bjoern@hazardy.de>
+Date: Sat, 1 Oct 2022 07:19:52 +0200
+Subject: [PATCH] lupdate: Fix build with clang 15+
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf8
+Content-Transfer-Encoding: 8bit
+
+The signature of InclusionDirective changed for clang 15.
+
+Pick-to: 6.4
+Change-Id: Ic259b3508088671b40f6f615524137ce8837c487
+Reviewed-by: JÃ¶rg Bornemann <joerg.bornemann@qt.io>
+---
+ src/linguist/lupdate/lupdatepreprocessoraction.cpp | 13 +++++++++++--
+ src/linguist/lupdate/lupdatepreprocessoraction.h   |  7 ++++++-
+ 2 files changed, 17 insertions(+), 3 deletions(-)
+
+diff --git a/src/linguist/lupdate/lupdatepreprocessoraction.cpp b/src/linguist/lupdate/lupdatepreprocessoraction.cpp
+index abfab34e5c..d963747d8e 100644
+--- a/src/linguist/lupdate/lupdatepreprocessoraction.cpp
++++ b/src/linguist/lupdate/lupdatepreprocessoraction.cpp
+@@ -156,14 +156,23 @@ void LupdatePPCallbacks::SourceRangeSkipped(clang::SourceRange sourceRange,
+ // To list the included files
+ void LupdatePPCallbacks::InclusionDirective(clang::SourceLocation /*hashLoc*/,
+     const clang::Token & /*includeTok*/, clang::StringRef /*fileName*/, bool /*isAngled*/,
+-    clang::CharSourceRange /*filenameRange*/, const clang::FileEntry *file,
++    clang::CharSourceRange /*filenameRange*/,
++#if (LUPDATE_CLANG_VERSION >= LUPDATE_CLANG_VERSION_CHECK(15,0,0))
++    const clang::Optional<clang::FileEntryRef> file,
++#else
++    const clang::FileEntry *file,
++#endif
+     clang::StringRef /*searchPath*/, clang::StringRef /*relativePath*/,
+     const clang::Module */*imported*/, clang::SrcMgr::CharacteristicKind /*fileType*/)
+ {
+     if (!file)
+         return;
+ 
+-    clang::StringRef fileNameRealPath = file->tryGetRealPathName();
++    clang::StringRef fileNameRealPath = file->
++#if (LUPDATE_CLANG_VERSION >= LUPDATE_CLANG_VERSION_CHECK(15,0,0))
++        getFileEntry().
++#endif
++        tryGetRealPathName();
+     if (!LupdatePrivate::isFileSignificant(fileNameRealPath.str()))
+         return;
+ 
+diff --git a/src/linguist/lupdate/lupdatepreprocessoraction.h b/src/linguist/lupdate/lupdatepreprocessoraction.h
+index b1ee468d4e..3e44cee839 100644
+--- a/src/linguist/lupdate/lupdatepreprocessoraction.h
++++ b/src/linguist/lupdate/lupdatepreprocessoraction.h
+@@ -51,7 +51,12 @@ private:
+     void SourceRangeSkipped(clang::SourceRange sourceRange, clang::SourceLocation endifLoc) override;
+     void InclusionDirective(clang::SourceLocation /*hashLoc*/, const clang::Token &/*includeTok*/,
+                             clang::StringRef /*fileName*/, bool /*isAngled*/,
+-                            clang::CharSourceRange /*filenameRange*/, const clang::FileEntry *file,
++                            clang::CharSourceRange /*filenameRange*/,
++#if (LUPDATE_CLANG_VERSION >= LUPDATE_CLANG_VERSION_CHECK(15,0,0))
++                            const clang::Optional<clang::FileEntryRef> file,
++#else
++                            const clang::FileEntry *file,
++#endif
+                             clang::StringRef /*searchPath*/, clang::StringRef /*relativePath*/,
+                             const clang::Module */*imported*/,
+                             clang::SrcMgr::CharacteristicKind /*fileType*/) override;
+-- 
+2.16.3
+
