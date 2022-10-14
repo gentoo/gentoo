@@ -6,24 +6,37 @@ EAPI=8
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8..10} ) # python3_11 fails to compile
 
 inherit cmake cuda elisp-common fortran-2 python-single-r1 toolchain-funcs
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
-SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 
 IUSE="+X aqua +asimage c++14 +c++17 cuda cudnn +davix debug emacs
 	+examples fits fftw fortran +gdml graphviz +gsl http libcxx +minuit
 	mpi mysql odbc +opengl oracle postgres pythia6 pythia8 +python
 	qt5 R +roofit +root7 shadow sqlite +ssl +tbb test +tmva +unuran uring
 	vc +xml xrootd"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
+PROPERTIES="test_network"
 
-SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
+if [[ ${PV} =~ "9999" ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/root-project/root.git"
+	if [[ ${PV} == "9999" ]]; then
+		SLOT="0"
+	else
+		SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
+		EGIT_BRANCH="v$(ver_cut 1)-$(ver_cut 2)-00-patches"
+	fi
+else
+	SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
+	KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
+fi
+
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
-KEYWORDS="~amd64 ~x86"
 
 REQUIRED_USE="
 	^^ ( c++14 c++17 )
@@ -209,7 +222,7 @@ src_configure() {
 		-Dcocoa=$(usex aqua)
 		-Dcuda=$(usex cuda)
 		-Dcudnn=$(usex cudnn)
-		-Dcxxmodules=OFF
+		-Dcxxmodules=OFF # requires clang, unstable
 		-Ddataframe=ON
 		-Ddavix=$(usex davix)
 		-Ddcache=OFF
@@ -286,7 +299,12 @@ src_install() {
 	cmake_src_install
 
 	ROOTSYS=${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)
-	ROOTENV="$((9999 - $(ver_cut 2)))${PN}-$(ver_cut 1-2)"
+
+	if [[ ${PV} == "9999" ]]; then
+		ROOTENV="9900${PN}-git"
+	else
+		ROOTENV="$((9999 - $(ver_cut 2)))${PN}-$(ver_cut 1-2)-git"
+	fi
 
 	cat > ${ROOTENV} <<- EOF || die
 	MANPATH="${ROOTSYS}/share/man"
@@ -314,8 +332,10 @@ src_install() {
 	fi
 
 	# create versioned symlinks for binaries
-	cd bin;
-	for exe in *; do
-		dosym "${exe}" "/usr/lib/${PN}/$(ver_cut 1-2)/bin/${exe}-$(ver_cut 1-2)"
-	done
+	if [[ ! ${PV} == "9999" ]]; then
+		cd bin;
+		for exe in *; do
+			dosym "${exe}" "/usr/lib/${PN}/$(ver_cut 1-2)/bin/${exe}-$(ver_cut 1-2)"
+		done
+	fi
 }
