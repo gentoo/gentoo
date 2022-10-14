@@ -533,6 +533,7 @@ sys-devel/automake:1.11
 >=media-gfx/gnome-photos-43
 media-libs/libshumate
 >=net-irc/polari-43
+net-libs/dleyna
 >=net-libs/gnome-online-accounts-3.46
 >=net-libs/gssdp-1.6
 >=net-libs/gupnp-1.6
