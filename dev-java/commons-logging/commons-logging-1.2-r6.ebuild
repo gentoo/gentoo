@@ -27,7 +27,7 @@ CDEPEND="
 		dev-java/log4j-api:2
 		dev-java/log4j-core:2
 	)
-	servletapi? ( dev-java/tomcat-servlet-api:4.0 )"
+	servletapi? ( dev-java/jakarta-servlet-api:4 )"
 
 RDEPEND="
 	${CDEPEND}
@@ -92,7 +92,7 @@ src_prepare() {
 	fi
 
 	if use servletapi; then
-		echo "servletapi.jar=$(java-pkg_getjar tomcat-servlet-api-4.0 servlet-api.jar)" >> build.properties || die
+		echo "servletapi.jar=$(java-pkg_getjars jakarta-servlet-api-4 )" >> build.properties || die
 	fi
 }
 
