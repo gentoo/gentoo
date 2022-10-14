@@ -31,8 +31,6 @@ RDEPEND="
 	>=dev-libs/libpeas-1.17
 	dev-libs/libportal:0=[gtk]
 	>=gnome-extra/evolution-data-server-3.33.2:=[gtk]
-	net-libs/rest:0.7
-	dev-libs/json-glib
 	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
 "
 DEPEND="${RDEPEND}"
