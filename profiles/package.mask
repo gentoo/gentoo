@@ -504,6 +504,7 @@ sys-devel/automake:1.11
 >=app-backup/deja-dup-43
 >=app-misc/tracker-3.4.0-r1
 >=app-misc/tracker-miners-3.4.0-r1
+>=app-text/gtranslator-42
 >=app-text/libgepub-0.7.0
 >=dev-libs/gjs-1.74
 >=dev-libs/libgweather-4.2.0
