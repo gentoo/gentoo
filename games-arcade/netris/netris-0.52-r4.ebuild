@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DEB_VER="10"
 DESCRIPTION="Classic networked version of T*tris"
@@ -26,6 +26,7 @@ src_prepare() {
 
 	eapply "${S}"/../debian/patches/[01]*
 	eapply "${FILESDIR}"/${P}-tinfo.patch
+	eapply "${FILESDIR}"/${P}-clang16.patch
 
 	# bug #185332
 	sed -i \
@@ -53,6 +54,10 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
+	append-cppflags -D_DEFAULT_SOURCE #874021, for on_exit()
+	append-cflags ${CPPFLAGS}
+
 	bash ./Configure -O || die
 }
 
