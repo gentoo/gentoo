@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2022-10-13)
+# <OpenSSL-1.1.1 are EOL and contain known vulnerabilities. Users should
+# migrate to a newer branch.
+<dev-libs/openssl-1.1.1
+
 # Sam James <sam@gentoo.org> (2022-10-13)
 # Depends on vulnerable version of Rust. See bug #877005.
 # Will be unmasked once dependency is updated.
