@@ -23,7 +23,8 @@ SLOT="0"
 
 RDEPEND="
 	>=dev-python/pycodestyle-2.9.1[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]"
+	dev-python/tomli[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
 
@@ -34,4 +35,5 @@ EPYTEST_DESELECT=(
 
 PATCHES=(
 	"${FILESDIR}"/autopep8-1.6.0-lib2to3-deprecation-pytest.patch
+	"${FILESDIR}"/${P}-tomli.patch
 )
