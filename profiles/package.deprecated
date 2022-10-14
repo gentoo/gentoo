@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-10-14)
+# The toml package is unmaintained (last release in 2020) and does not
+# implement TOML 1.0.  The recommended alternatives include the built-in
+# tomllib module, dev-python/tomli, dev-python/tomli-w
+# and dev-python/tomlkit.  Please consult Guide for porting tips:
+# https://projects.gentoo.org/python/guide/porting.html#replacing-the-toml-package
+dev-python/toml
+
 # Petr Vaněk <arkamar@atlas.cz> (2022-10-06)
 # Obsolete virtual.
 # Only one provider is left (net-libs/c-client), please change dependency to
