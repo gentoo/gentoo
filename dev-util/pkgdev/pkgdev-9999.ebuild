@@ -34,9 +34,9 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	# https://github.com/pkgcore/pkgdev/blob/main/requirements/install.txt
 	RDEPEND="
-		>=dev-python/snakeoil-0.9.12[${PYTHON_USEDEP}]
-		>=dev-util/pkgcheck-0.10.15[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.12.14[${PYTHON_USEDEP}]
+		>=dev-python/snakeoil-0.10.1[${PYTHON_USEDEP}]
+		>=dev-util/pkgcheck-0.10.16[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.12.16[${PYTHON_USEDEP}]
 	"
 fi
 
