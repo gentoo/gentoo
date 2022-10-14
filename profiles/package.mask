@@ -273,12 +273,6 @@ app-portage/repoman
 # Removal on 2022-10-11.  Bug #869650.
 dev-python/pytest-pylint
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2022-09-10)
-# Python 3.8 only package. Tests are disabled. Newer targets fail
-# more tests then 3.8 target.
-# Removal: 2022-10-10.  Bug #869521.
-net-nds/nsscache
-
 # Matthias Schwarzott <zzam@gentoo.org> (2022-09-08)
 # Breaks kernel builds with BTF enabled.
 # Bug #868762.
