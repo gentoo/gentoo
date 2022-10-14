@@ -10,6 +10,7 @@
 		<flag name="quadmath">Enable 128bit floating point arithmetic via libquadmath</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:perl:perl</remote-id>
 		<remote-id type="github">Perl/perl5</remote-id>
 		<remote-id type="github">arsv/perl-cross</remote-id>
 	</upstream>
