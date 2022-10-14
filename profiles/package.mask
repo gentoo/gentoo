@@ -256,12 +256,6 @@ dev-libs/satyr
 # Removal: 2022-10-18.
 media-sound/pulseaudio-modules-bt
 
-# Joonas Niilola <juippis@gentoo.org> (2022-09-16)
-# This theme has been incorporated to enlightenment-0.25, and with
-# 0.24 removed from Gentoo's git tree, this ebuild is useless. Removal
-# in 30 days. #870355
-x11-themes/e-flat-theme
-
 # Mike Gilbert <floppym@gentoo.org> (2022-09-12)
 # repoman is no longer maintained and has been removed from the portage
 # git repository. Please use dev-util/pkgcheck and dev-util/pkgdev instead.
