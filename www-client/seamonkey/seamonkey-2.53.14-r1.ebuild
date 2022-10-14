@@ -60,7 +60,7 @@ BDEPEND="
 	dev-util/cbindgen
 	>=sys-devel/binutils-2.16.1
 	virtual/pkgconfig
-	<=virtual/rust-1.63.0
+	<virtual/rust-1.65.0
 	amd64? ( >=dev-lang/yasm-1.1 )
 	lto? ( sys-devel/binutils[gold] )
 	x86? ( >=dev-lang/yasm-1.1 )
@@ -147,11 +147,11 @@ pkg_setup() {
 		ewarn "Those belong to upstream: https://bugzilla.mozilla.org"
 	fi
 
-	if ver_test $(rustc -V | tr -cd '[0-9.]' | cut -d" " -f2) -ge "1.64"; then
-	    ewarn "Rust-1.64 is currently unsupported for building ${P}."
+	if ver_test $(rustc -V | tr -cd '[0-9.]' | cut -d" " -f2) -ge "1.65"; then
+	    ewarn "Rust-1.65 or newer is currently unsupported for building ${P}."
 	    ewarn "Please use 'eselect rust' to switch to a lower version, then resume"
 	    ewarn "building ${PN}."
-	    die "Rust-1.64 detected. Use eselect rust to choose <1.64"
+	    die "Rust-1.65 or newer detected. Use eselect rust to choose <1.65"
 	fi
 
 	moz_pkgsetup
@@ -382,32 +382,13 @@ src_configure() {
 	# use startup-cache for faster startup time
 	mozconfig_annotate '' --enable-startupcache
 
-	# Elf-hack is known to be broken on x86 and arm64.
+	# Elf-hack is known to be broken on multiple archs.
+	# Disable it by default, because on the archs that still work,
+	# it also gives more problems than it solves.
 	# https://bugs.gentoo.org/851933
 	# https://bugzilla.mozilla.org/show_bug.cgi?id=1706264
-	if use x86 || use arm64 ; then
-		mozconfig_annotate 'elf-hack is broken on x86 and arm64' --disable-elf-hack
-	fi
-
-	# Elf hack should be enabled by default on architectures that support it.
-	# On archs that don't support it, it should not be enabled by default.
-	# www-client/firefox says building with clang breaks elf hack on archs that
-	# support it, so they disable that. We assume this is the same for www-client/seamonkey.
-	# The code below is copied over from www-client/firefox.
-	if tc-is-clang ; then
-		# https://bugzilla.mozilla.org/show_bug.cgi?id=1482204
-		# https://bugzilla.mozilla.org/show_bug.cgi?id=1483822
-		# toolkit/moz.configure Elfhack section: target.cpu in ('arm', 'x86', 'x86_64')
-		local disable_elf_hack=
-		if use amd64 ; then
-			disable_elf_hack=yes
-		elif use arm ; then
-			disable_elf_hack=yes
-		fi
-
-		if [[ -n ${disable_elf_hack} ]] ; then
-			mozconfig_annotate 'elf-hack is broken when using Clang' --disable-elf-hack
-		fi
+	if use x86 || use arm64 || use arm || use amd64 ; then
+		mozconfig_annotate 'elf-hack is broken' --disable-elf-hack
 	fi
 
 	# Disabled by default. See bug 836319 , comment 17.

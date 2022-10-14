@@ -195,15 +195,6 @@ mozconfig_init() {
 	# Strip optimization so it does not end up in compile string
 	filter-flags '-O*'
 
-	# elf-hack is broken on x86 and disabled by default.
-	if is-flagq '-g*' ; then
-		case "${ARCH}" in
-		amd64 | arm)
-			mozconfig_annotate 'elf-hack is broken with -g* flags' --disable-elf-hack
-			;;
-		esac
-	fi
-
 	# Strip over-aggressive CFLAGS
 	use custom-cflags || strip-flags
 
