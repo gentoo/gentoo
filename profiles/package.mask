@@ -366,6 +366,7 @@ dev-python/PyQt6
 dev-python/PyQt6-WebEngine
 dev-qt/qt5compat:6
 dev-qt/qtbase:6
+dev-qt/qtcharts:6
 dev-qt/qtdeclarative:6
 dev-qt/qtimageformats:6
 dev-qt/qtlocation:6
