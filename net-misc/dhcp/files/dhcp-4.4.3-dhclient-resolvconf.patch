@@ -1,5 +1,5 @@
---- dhcp-4.3.6/client/scripts/bsdos
-+++ dhcp-4.3.6/client/scripts/bsdos
+--- a/client/scripts/bsdos
++++ b/client/scripts/bsdos
 @@ -1,27 +1,25 @@
  #!/bin/sh
  
@@ -55,10 +55,10 @@
 +      chmod 644 /etc/resolv.conf
 +    fi
    fi
- }
- 
---- dhcp-4.3.6/client/scripts/freebsd
-+++ dhcp-4.3.6/client/scripts/freebsd
+   # If we're making confs, may as well make an ntp.conf too
+   make_ntp_conf
+--- a/client/scripts/freebsd
++++ b/client/scripts/freebsd
 @@ -11,54 +11,23 @@
  fi
  
@@ -160,9 +160,9 @@
 +      chmod 644 /etc/resolv.conf
      fi
    fi
- }
---- dhcp-4.3.6/client/scripts/linux
-+++ dhcp-4.3.6/client/scripts/linux
+   # If we're making confs, may as well make an ntp.conf too
+--- a/client/scripts/linux
++++ b/client/scripts/linux
 @@ -35,16 +35,16 @@
  # update /etc/resolv.conf based on received values
  # This updated version mostly follows Debian script by Andrew Pollock et al.
@@ -248,10 +248,10 @@
  	fi
 -        mv -f $new_resolv_conf /etc/resolv.conf
      fi
- }
  
---- dhcp-4.3.6/client/scripts/netbsd
-+++ dhcp-4.3.6/client/scripts/netbsd
+     # If we're making confs, may as well make an ntp.conf too
+--- a/client/scripts/netbsd
++++ b/client/scripts/netbsd
 @@ -1,27 +1,25 @@
  #!/bin/sh
  
@@ -308,10 +308,10 @@
 +      chmod 644 /etc/resolv.conf
 +    fi
    fi
- }
- 
---- dhcp-4.3.6/client/scripts/openbsd
-+++ dhcp-4.3.6/client/scripts/openbsd
+   # If we're making confs, may as well make an ntp.conf too
+   make_ntp_conf
+--- a/client/scripts/openbsd
++++ b/client/scripts/openbsd
 @@ -1,27 +1,25 @@
  #!/bin/sh
  
@@ -369,10 +369,10 @@
 +      chmod 644 /etc/resolv.conf
 +    fi
    fi
- }
- 
---- dhcp-4.3.6/client/scripts/solaris
-+++ dhcp-4.3.6/client/scripts/solaris
+   # If we're making confs, may as well make an ntp.conf too
+   make_ntp_conf
+--- a/client/scripts/solaris
++++ b/client/scripts/solaris
 @@ -1,21 +1,39 @@
  #!/bin/sh  
  
@@ -418,5 +418,5 @@
 +      chmod 644 /etc/resolv.conf
 +    fi
    fi
- }
- 
+   # If we're making confs, may as well make an ntp.conf too
+   make_ntp_conf

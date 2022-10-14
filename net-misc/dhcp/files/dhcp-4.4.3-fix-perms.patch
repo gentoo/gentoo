@@ -1,6 +1,6 @@
 --- a/server/dhcpd.c
 +++ b/server/dhcpd.c
-@@ -602,6 +602,12 @@
+@@ -892,6 +892,12 @@
  	if (lftest)
  		exit (0);
  
@@ -11,5 +11,5 @@
 +#endif /* PARANOIA */
 +
  	/* Discover all the network interfaces and initialize them. */
- 	discover_interfaces (DISCOVER_SERVER);
- 
+ #if defined(DHCPv6) && defined(DHCP4o6)
+ 	if (dhcpv4_over_dhcpv6) {

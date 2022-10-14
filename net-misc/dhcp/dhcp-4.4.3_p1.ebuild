@@ -50,26 +50,26 @@ src_unpack() {
 PATCHES=(
 	# Gentoo patches - these will probably never be accepted upstream
 	# Fix some permission issues
-	"${FILESDIR}/${PN}-3.0-fix-perms.patch"
+	"${FILESDIR}/${PN}-4.4.3-fix-perms.patch"
 
 	# Enable dhclient to equery NTP servers
-	"${FILESDIR}/${PN}-4.3.6-dhclient-ntp.patch"
-	"${FILESDIR}/${PN}-4.3.6-dhclient-resolvconf.patch"
+	"${FILESDIR}/${PN}-4.4.3-dhclient-ntp.patch"
+	"${FILESDIR}/${PN}-4.4.3-dhclient-resolvconf.patch"
 
 	# Enable dhclient to get extra configuration from stdin
-	"${FILESDIR}/${PN}-4.2.2-dhclient-stdin-conf.patch"
+	"${FILESDIR}/${PN}-4.4.3-dhclient-stdin-conf.patch"
 	# bug #265531
-	"${FILESDIR}/${PN}-4.3.6-nogateway.patch"
+	"${FILESDIR}/${PN}-4.4.3-nogateway.patch"
 	# bug #296921
-	"${FILESDIR}/${PN}-4.3.6-quieter-ping.patch"
+	"${FILESDIR}/${PN}-4.4.3-quieter-ping.patch"
 	# bug #437108
-	"${FILESDIR}/${PN}-4.4.0-always-accept-4.patch"
+	"${FILESDIR}/${PN}-4.4.3-always-accept-4.patch"
 	# bug #480636
-	"${FILESDIR}/${PN}-4.3.6-iproute2-path.patch"
+	"${FILESDIR}/${PN}-4.4.3-iproute2-path.patch"
 	# bug #471142
-	"${FILESDIR}/${PN}-4.2.5-bindtodevice-inet6.patch"
+	"${FILESDIR}/${PN}-4.4.3-bindtodevice-inet6.patch"
 	# bug #559832
-	"${FILESDIR}/${PN}-4.3.3-ldap-ipv6-client-id.patch"
+	"${FILESDIR}/${PN}-4.4.3-ldap-ipv6-client-id.patch"
 
 	# Possible upstream candidates
 )
