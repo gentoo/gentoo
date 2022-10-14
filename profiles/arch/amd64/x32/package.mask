@@ -3,7 +3,7 @@
 
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-26)
 # intel-hybrid-codec-driver does not work on x32
-x11-libs/intel-hybrid-codec-driver
+media-libs/intel-hybrid-codec-driver
 
 # Jonas Licht <jonas.licht@gmail.com> (2022-05-01)
 # Requires net-libs/nodejs, plus mask all reverse-dependecies.

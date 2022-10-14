@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-26)
-# Dependency x11-libs/intel-hybrid-codec-driver does not work on x32
+# Dependency media-libs/intel-hybrid-codec-driver does not work on x32
 media-libs/libva-intel-driver hybrid
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)

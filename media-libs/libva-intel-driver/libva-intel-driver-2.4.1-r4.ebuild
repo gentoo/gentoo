@@ -29,7 +29,7 @@ RDEPEND="
 	>=media-libs/libva-2.4.0:=[X?,wayland?,${MULTILIB_USEDEP}]
 
 	hybrid? (
-		>=x11-libs/intel-hybrid-codec-driver-2.0.0[X?,wayland?]
+		>=media-libs/intel-hybrid-codec-driver-2.0.0[X?,wayland?]
 	)
 
 	wayland? (
