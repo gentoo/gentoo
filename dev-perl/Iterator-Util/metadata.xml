@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+    <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+This module implements many useful functions for creating and manipulating iterator objects.
+
+An "iterator" is an object, represented as a code block that generates the "next value" of a sequence, and generally implemented as a closure. For further information, including a tutorial on using iterator objects, see the Iterator documentation.</longdescription>
+  <upstream>
+    <remote-id type="cpan">Iterator::Util</remote-id>
+    <remote-id type="cpan-module">Iterator::Util</remote-id>
+  </upstream>
+</pkgmetadata>
