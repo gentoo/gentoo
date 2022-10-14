@@ -22,6 +22,7 @@ DOCS=( API AUTHORS ChangeLog README TODO )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.0-ldconfig.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
