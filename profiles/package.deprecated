@@ -69,6 +69,7 @@ dev-libs/libcroco
 dev-libs/libIDL
 dev-libs/libunique:1
 gnome-base/gconf
+gnome-base/libglade
 gnome-base/libgnomecanvas
 gnome-extra/gconf-editor
 x11-libs/gtksourceview:2.0
