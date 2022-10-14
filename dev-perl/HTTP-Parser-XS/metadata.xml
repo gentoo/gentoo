@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+    <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+A fast, primitive HTTP request/response parser.
+
+This can be used for writing either synchronous HTTP servers or
+event-driven counterparts.  The response parser can be used for
+writing HTTP clients.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">HTTP::Parser::XS</remote-id>
+    <remote-id type="cpan-module">HTTP::Parser::XS</remote-id>
+    <remote-id type="cpan-module">HTTP::Parser::XS::PP</remote-id>
+  </upstream>
+</pkgmetadata>
