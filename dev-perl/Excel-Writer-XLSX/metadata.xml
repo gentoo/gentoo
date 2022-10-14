@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+    <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+  This module provides a comprehensive toolkit for writing the 2007+ Excel
+  XLSX file format.  One can create multiple workbooks, add images and charts
+  and much more.
+  </longdescription>
+  <upstream>
+    <remote-id type="cpan">Excel::Writer::XLS</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Chart</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Chart::Area</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Chart::Bar</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Chart::Column</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Chart::Donut</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Chart::Line</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Chart::Pie</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Chart::Radar</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Chart::Scatter</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Chart::Stock</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Chartsheet</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Drawing</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Examples</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Format</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Package::App</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Package::Comments</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Package::ContentTypes</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Package::Core</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Package::Custom</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Package::Metadata</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Package::Packager</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Package::Relationship</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Package::SharedStrings</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Package::Styles</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Package::Table</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Package::Theme</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Package::XML</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Package::XMLWriter</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Shape</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Utility</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Workbook</remote-id>
+    <remote-id type="cpan-module">Excel::Writer::XLS::Worksheet</remote-id>
+  </upstream>
+</pkgmetadata>
