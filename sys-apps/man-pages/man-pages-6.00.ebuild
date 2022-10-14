@@ -20,6 +20,10 @@ EAPI=8
 MAN_PAGES_GENTOO_DIST=0
 GENTOO_PATCH=2
 
+if [[ ${PV} != 6.00 ]] ; then
+	die "Please use 9999 as a template for the next bump for SRC_URI fixes."
+fi
+
 DESCRIPTION="A somewhat comprehensive collection of Linux man pages"
 HOMEPAGE="https://www.kernel.org/doc/man-pages/"
 if [[ ${PV} == 9999 ]] ; then
