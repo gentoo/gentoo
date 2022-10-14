@@ -20,6 +20,26 @@ ICAROOT="/opt/Citrix/ICAClient"
 
 QA_PREBUILT="${ICAROOT#/}/*"
 
+# we have binaries for two conflicting kerberos implementations
+# https://bugs.gentoo.org/792090
+# https://bugs.gentoo.org/775995
+REQUIRES_EXCLUDE="
+	libgssapi.so.3
+	libgssapi_krb5.so.2 libkrb5.so.3
+"
+# we have binaries which wouls still support gstreamer:0.10
+REQUIRES_EXCLUDE="$REQUIRES_EXCLUDE
+	libgstapp-0.10.so.0
+	libgstbase-0.10.so.0
+	libgstinterfaces-0.10.so.0
+	libgstpbutils-0.10.so.0
+	libgstreamer-0.10.so.0
+"
+# we have binaries which depend on some ancient libunwind
+REQUIRES_EXCLUDE="$REQUIRES_EXCLUDE
+	libunwind.so.1
+"
+
 RDEPEND="
 	app-crypt/libsecret
 	dev-libs/atk
