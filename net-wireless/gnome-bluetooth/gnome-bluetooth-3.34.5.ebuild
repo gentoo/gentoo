@@ -47,8 +47,8 @@ PATCHES=(
 
 python_check_deps() {
 	if use test; then
-		has_version -b "dev-python/python-dbusmock[${PYTHON_USEDEP}]" &&
-		has_version -b "dev-python/dbus-python[${PYTHON_USEDEP}]"
+		python_has_version -b "dev-python/python-dbusmock[${PYTHON_USEDEP}]" &&
+		python_has_version -b "dev-python/dbus-python[${PYTHON_USEDEP}]"
 	fi
 }
 
