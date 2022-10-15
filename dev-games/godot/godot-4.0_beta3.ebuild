@@ -76,6 +76,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0-musl.patch
 	"${FILESDIR}"/${PN}-4.0_alpha14-scons.patch
+	"${FILESDIR}"/${PN}-4.0_beta3-headless-header.patch
 )
 
 src_prepare() {
