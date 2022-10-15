@@ -155,5 +155,21 @@ dist-kernel_reinstall_initramfs() {
 		"${kernel_dir}/System.map"
 }
 
+# @FUNCTION: dist-kernel_PV_to_KV
+# @USAGE: <pv>
+# @DESCRIPTION:
+# Convert a Gentoo-style ebuild version to kernel "x.y.z[-rcN]" version.
+dist-kernel_PV_to_KV() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${#} -ne 1 ]] && die "${FUNCNAME}: invalid arguments"
+	local pv=${1}
+
+	local kv=${pv%%_*}
+	[[ -z $(ver_cut 3- "${kv}") ]] && kv+=".0"
+	[[ ${pv} == *_* ]] && kv+=-${pv#*_}
+	echo "${kv}"
+}
+
 _DIST_KERNEL_UTILS=1
 fi
