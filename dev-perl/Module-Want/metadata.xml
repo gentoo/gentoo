@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+    <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">Sometimes you want to lazy load a module for use in, say, a loop or function. First you do the eval-require but then realize if the module is not available it will re-search @INC each time. So then you add a lexical boolean to your eval and do the same simple logic all over the place. On and on it goes :)
+
+This module encapsulates that logic so that have_mod() is like eval { require X; 1 } but if the module can't be loaded it will remember that fact and not look in @INC again on subsequent calls.</longdescription>
+  <upstream>
+    <remote-id type="cpan">Module::Want</remote-id>
+    <remote-id type="cpan-module">Module::Want</remote-id>
+  </upstream>
+</pkgmetadata>
