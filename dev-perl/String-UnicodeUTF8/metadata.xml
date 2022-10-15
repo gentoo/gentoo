@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+    <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+Unicode is awesome. utf-8 is also awesome. They are related but different. That difference and all the little twiggles in between make it appear to be too hard but its really not, honest!
+
+The unicode problem is a solved one. </longdescription>
+  <upstream>
+    <remote-id type="cpan">String::Unicode::UTF8</remote-id>
+    <remote-id type="cpan-module">String::Unicode::UTF8</remote-id>
+  </upstream>
+</pkgmetadata>
