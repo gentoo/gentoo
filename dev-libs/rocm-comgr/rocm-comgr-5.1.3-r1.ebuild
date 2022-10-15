@@ -34,7 +34,7 @@ SLOT="0/$(ver_cut 1-2)"
 RDEPEND=">=dev-libs/rocm-device-libs-${PV}
 	sys-devel/clang:${LLVM_MAX_SLOT}=
 	sys-devel/clang-runtime:=
-	sys-devel/lld"
+	sys-devel/lld:${LLVM_MAX_SLOT}="
 DEPEND="${RDEPEND}"
 
 CMAKE_BUILD_TYPE=Release
