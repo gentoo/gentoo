@@ -47,7 +47,7 @@ BDEPEND="
 
 python_check_deps() {
 	if use test; then
-		python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]" &&
+		python_has_version ">=dev-python/python-dbusmock-0.26.0[${PYTHON_USEDEP}]" &&
 		python_has_version "dev-python/dbus-python[${PYTHON_USEDEP}]"
 	fi
 }
