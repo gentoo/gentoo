@@ -23,6 +23,9 @@ DEPEND=">=dev-libs/librdkafka-0.9.4
 	json? ( dev-libs/yajl )"
 RDEPEND="${DEPEND}"
 
+# tests require a running kafka cluster
+RESTRICT="test"
+
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_configure() {
