@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,7 +37,7 @@ found at https://bitbucket.org/skskeyserver/sks-keyserver/wiki/Peering"
 RDEPEND="
 	acct-user/sks
 	acct-group/sks
-	>=dev-lang/ocaml-4.0:=
+	<dev-lang/ocaml-4.13:=
 	dev-ml/camlp4:=
 	dev-ml/cryptokit:=
 	dev-ml/num:=
@@ -62,8 +62,6 @@ src_prepare() {
 		-e "s:^BDBLIB=.*$:BDBLIB=-L/usr/$(get_libdir):g" \
 		-e "s:^BDBINCLUDE=.*$:BDBINCLUDE=-I/usr/include/db5.3/:g" \
 		-e "s:^LIBDB=.*$:LIBDB=-ldb-5.3:g" \
-		-e "s:^PREFIX=.*$:PREFIX=${D}/usr:g" \
-		-e "s:^MANDIR=.*$:MANDIR=${D}/usr/share/man:g" \
 		Makefile.local || die
 	sed -i \
 		-e 's:/usr/sbin/sks:/usr/bin/sks:g' \
@@ -89,6 +87,11 @@ src_test() {
 }
 
 src_install() {
+	sed -i \
+		-e "s:^PREFIX=.*$:PREFIX=${ED}/usr:g" \
+		-e "s:^MANDIR=.*$:MANDIR=${ED}/usr/share/man:g" \
+		Makefile.local || die
+
 	if use optimize; then
 		emake install.bc
 		dosym sks.bc usr/bin/sks
