@@ -19,7 +19,7 @@ else
 	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
-LICENSE="BSD GPL-2"
+LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
 IUSE="+espeak"
 
