@@ -227,6 +227,7 @@ openal - Add support for the Open Audio Library
 openexr - Support for the OpenEXR graphics file format
 opengl - Add support for OpenGL (3D graphics)
 openmp - Build support for the OpenMP (support parallel computing), requires >=sys-devel/gcc-4.2 built with USE="openmp"
+opentype-compat - Convert BDF and PCF bitmap fonts to OTB wrapper format
 opus - Enable Opus audio codec support
 oracle - Enable Oracle Database support
 orc - Use dev-lang/orc for just-in-time optimization of array operations
