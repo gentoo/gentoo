@@ -1,0 +1,47 @@
+https://github.com/pkgcore/pkgdev/commit/640c78d7
+
+doc: fix generating of code when built in PEP517 mode
+
+When in PEP517 mode, the source code is located in a different location,
+so use better relative fallback place. Also cleanup a little the code
+handling to use pathlib.
+
+Bug: https://bugs.gentoo.org/877189
+Signed-off-by: Arthur Zamarin <arthurzam@gentoo.org>
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -16,13 +16,17 @@
+ import os
+ import sys
+ from importlib import import_module
++from pathlib import Path
+
+ # If extensions (or modules to document with autodoc) are in another directory,
+ # add these directories to sys.path here. If the directory is relative to the
+ # documentation root, use os.path.abspath to make it absolute, like shown here.
+-libdir = os.path.abspath(os.path.join('..', 'build', 'lib'))
+-if os.path.exists(libdir):
+-    sys.path.insert(0, libdir)
++
++if (src_path := Path(__file__).parent.parent / 'src').is_dir():
++    sys.path.insert(0, str(src_path.resolve()))
++
++if (libdir := Path(__file__).parent.parent / 'build/lib').is_dir():
++    sys.path.insert(0, str(libdir.resolve()))
+
+ os.environ['PKGDIST_REPODIR'] = os.path.abspath('..')
+ from snakeoil.dist import distutils_extensions as pkgdist
+@@ -241,11 +245,9 @@
+
+ # -- Options for manual page output ---------------------------------------
+
+-bin_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'bin')
+-scripts = os.listdir(bin_path)
+-
+ generated_man_pages = [
+-    (f"{project}.scripts.{s.replace('-', '_')}", s) for s in scripts
++    (f"{project}.scripts.{s.name.replace('-', '_')}", s.name)
++    for s in (Path(__file__).parent.parent / 'bin').iterdir()
+ ]
+
+ # One entry per manual page. List of tuples
