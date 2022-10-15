@@ -22,7 +22,9 @@ else
 		ftp://ftp.isc.org/isc/kea/${MY_PV}/${MY_P}.tar.gz"
 	# odd minor version = development release
 	if [[ $(( $(ver_cut 2) % 2 )) -ne 1 ]] ; then
-		[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || KEYWORDS="~amd64 ~arm64 ~x86"
+		if ! [[ "${PV}" == *_beta* || "${PV}" == *_rc* ]] ; then
+			 KEYWORDS="~amd64 ~arm64 ~x86"
+		fi
 	fi
 fi
 
@@ -36,8 +38,9 @@ COMMON_DEPEND="
 	dev-libs/log4cplus
 	doc? (
 		$(python_gen_cond_dep '
-		  dev-python/sphinx[${PYTHON_USEDEP}]
-		  dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]')
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+		')
 	)
 	mysql? ( dev-db/mysql-connector-c )
 	!openssl? ( dev-libs/botan:2= )
@@ -68,7 +71,7 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	cp "${FILESDIR}"/ax_gtest.m4 "${S}"/m4macros/ax_gtest.m4
+	cp "${FILESDIR}"/ax_gtest.m4 "${S}"/m4macros/ax_gtest.m4 || die 'Replace gtest m4 macro failed'
 
 	# brand the version with Gentoo
 	sed -i \
