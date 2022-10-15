@@ -24,12 +24,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-util/spirv-headers-1.3.216
-	test? (
-		dev-cpp/gtest
-		$(python_gen_any_dep 'dev-python/nose[${PYTHON_USEDEP}]')
-	)
+	test? ( dev-cpp/gtest )
 "
-BDEPEND="doc? ( dev-ruby/asciidoctor )"
+BDEPEND="doc? ( dev-ruby/asciidoctor )
+	test? ( $(python_gen_any_dep 'dev-python/nose[${PYTHON_USEDEP}]') )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2020.4-fix-build.patch
@@ -40,7 +39,7 @@ RESTRICT=test
 
 python_check_deps() {
 	if use test; then
-		has_version --host-root "dev-python/nose[${PYTHON_USEDEP}]"
+		python_has_version "dev-python/nose[${PYTHON_USEDEP}]"
 	fi
 }
 
