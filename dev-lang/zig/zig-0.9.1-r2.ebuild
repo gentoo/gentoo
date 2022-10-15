@@ -32,10 +32,9 @@ PATCHES=(
 BUILD_DIR="${S}/build"
 
 DEPEND="
-	sys-devel/clang:${LLVM_MAX_SLOT}
-	>=sys-devel/lld-${LLVM_MAX_SLOT}
-	<sys-devel/lld-$((${LLVM_MAX_SLOT} + 1))
-	sys-devel/llvm:${LLVM_MAX_SLOT}
+	sys-devel/clang:${LLVM_MAX_SLOT}=
+	sys-devel/lld:${LLVM_MAX_SLOT}=
+	sys-devel/llvm:${LLVM_MAX_SLOT}=
 	>=sys-libs/zlib-1.2.12
 "
 
