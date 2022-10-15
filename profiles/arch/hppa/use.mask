@@ -7,6 +7,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sam James <sam@gentoo.org> (2022-10-15)
+# x11-apps/fonttosfnt is not keyworded here
+opentype-compat
+
 # Matt Turner <mattst88gentoo.org> (2022-02-21)
 # app-crypt/tpm2-tss is not keyworded here
 tpm
