@@ -14,19 +14,12 @@
 # kinds of Distribution Kernel packages, including both kernels built
 # from source and distributed as binaries.  The eclass relies on the
 # ebuild installing a subset of built kernel tree into
-# /usr/src/linux-${PV} containing the kernel image in its standard
-# location and System.map.
+# /usr/src/linux-${KV_FULL}${KV_LOCALVERSION} containing the kernel
+# image in its standard location and System.map.
 #
 # The eclass exports src_test, pkg_postinst and pkg_postrm.
 # Additionally, the inherited mount-boot eclass exports pkg_pretend.
 # It also stubs out pkg_preinst and pkg_prerm defined by mount-boot.
-
-# @ECLASS_VARIABLE: KV_LOCALVERSION
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# A string containing the kernel LOCALVERSION, e.g. '-gentoo'.
-# Needs to be set only when installing binary kernels,
-# kernel-build.eclass obtains it from kernel config.
 
 if [[ ! ${_KERNEL_INSTALL_ECLASS} ]]; then
 
@@ -36,6 +29,19 @@ case ${EAPI} in
 esac
 
 inherit dist-kernel-utils mount-boot toolchain-funcs
+
+# @ECLASS_VARIABLE: KV_FULL
+# @DESCRIPTION:
+# The "x.y.z[-rcN]" kernel version.  The default is derived from PV
+# following upstream kernel versioning rules.
+: "${KV_FULL:=$(dist-kernel_PV_to_KV "${PV}")}"
+
+# @ECLASS_VARIABLE: KV_LOCALVERSION
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# A string containing the kernel LOCALVERSION, e.g. '-gentoo'.
+# Needs to be set only when installing binary kernels,
+# kernel-build.eclass obtains it from kernel config.
 
 SLOT="${PV}"
 IUSE="+initramfs test"
@@ -403,18 +409,18 @@ kernel-install_src_test() {
 kernel-install_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local ver="${PV}${KV_LOCALVERSION}"
+	local ver="${KV_FULL}${KV_LOCALVERSION}"
 	local kdir="${ED}/usr/src/linux-${ver}"
 	local relfile="${kdir}/include/config/kernel.release"
 	[[ ! -d ${kdir} ]] && die "Kernel directory ${kdir} not installed!"
 	[[ ! -f ${relfile} ]] && die "Release file ${relfile} not installed!"
 	local release="$(<"${relfile}")"
-	if [[ ${release} != ${PV}* ]]; then
+	if [[ ${release} != ${KV_FULL}* ]]; then
 		eerror "Kernel release mismatch!"
-		eerror "  expected (PV): ${PV}*"
-		eerror "          found: ${release}"
+		eerror "  expected (KV_FULL): ${KV_FULL}*"
+		eerror "               found: ${release}"
 		eerror "Please verify that you are applying the correct patches."
-		die "Kernel release mismatch (${release} instead of ${PV}*)"
+		die "Kernel release mismatch (${release} instead of ${KV_FULL}*)"
 	fi
 	if [[ -L ${EROOT}/lib && ${EROOT}/lib -ef ${EROOT}/usr/lib ]]; then
 		# Adjust symlinks for merged-usr.
@@ -476,7 +482,7 @@ kernel-install_install_all() {
 kernel-install_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local ver="${PV}${KV_LOCALVERSION}"
+	local ver="${KV_FULL}${KV_LOCALVERSION}"
 	kernel-install_update_symlink "${EROOT}/usr/src/linux" "${ver}"
 
 	if [[ -z ${ROOT} ]]; then
@@ -500,7 +506,7 @@ kernel-install_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if [[ -z ${ROOT} ]] && use initramfs; then
-		local ver="${PV}${KV_LOCALVERSION}"
+		local ver="${KV_FULL}${KV_LOCALVERSION}"
 		local image_path=$(dist-kernel_get_image_path)
 		ebegin "Removing initramfs"
 		rm -f "${EROOT}/usr/src/linux-${ver}/${image_path%/*}"/initrd{,.uefi} &&
@@ -515,7 +521,7 @@ kernel-install_pkg_postrm() {
 kernel-install_pkg_config() {
 	[[ -z ${ROOT} ]] || die "ROOT!=/ not supported currently"
 
-	kernel-install_install_all "${PV}${KV_LOCALVERSION}"
+	kernel-install_install_all "${KV_FULL}${KV_LOCALVERSION}"
 }
 
 _KERNEL_INSTALL_ECLASS=1
