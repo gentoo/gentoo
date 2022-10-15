@@ -150,7 +150,7 @@ kernel-build_src_test() {
 	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
 		INSTALL_MOD_PATH="${T}" "${targets[@]}"
 
-	local ver="${PV}${KV_LOCALVERSION}"
+	local ver="${KV_FULL}${KV_LOCALVERSION}"
 	kernel-install_test "${ver}" \
 		"${WORKDIR}/build/$(dist-kernel_get_image_path)" \
 		"${T}/lib/modules/${ver}"
@@ -159,7 +159,7 @@ kernel-build_src_test() {
 # @FUNCTION: kernel-build_src_install
 # @DESCRIPTION:
 # Install the built kernel along with subset of sources
-# into /usr/src/linux-${PV}.  Install the modules.  Save the config.
+# into /usr/src/linux-${KV_FULL}.  Install the modules.  Save the config.
 kernel-build_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -177,7 +177,7 @@ kernel-build_src_install() {
 	# note: we're using mv rather than doins to save space and time
 	# install main and arch-specific headers first, and scripts
 	local kern_arch=$(tc-arch-kernel)
-	local ver="${PV}${KV_LOCALVERSION}"
+	local ver="${KV_FULL}${KV_LOCALVERSION}"
 	dodir "/usr/src/linux-${ver}/arch/${kern_arch}"
 	mv include scripts "${ED}/usr/src/linux-${ver}/" || die
 	mv "arch/${kern_arch}/include" \
