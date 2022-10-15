@@ -8,7 +8,7 @@ EGIT_COMMIT="edead0c17e2818bc0fee0ea644f85ab81bbe6f7a"
 
 inherit autotools multilib-minimal
 
-DESCRIPTION="Libva support for partially hardware accelerated encode and decode on Haswell and newer"
+DESCRIPTION="Libva support for older hardware accelerated encode/decode on Haswell and newer"
 HOMEPAGE="https://github.com/intel/intel-hybrid-driver"
 SRC_URI="https://github.com/intel/intel-hybrid-driver/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/intel-hybrid-driver-${EGIT_COMMIT}"
