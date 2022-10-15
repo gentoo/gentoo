@@ -165,6 +165,7 @@ get_xcpkgconfigdir() {
 
 multilib_src_configure() {
 	local -a myconf=(
+		--host=${CTARGET}
 		--disable-werror
 		--libdir=$(get_xclibdir)
 		--with-pkgconfigdir=$(get_xcpkgconfigdir)
@@ -195,6 +196,16 @@ multilib_src_configure() {
 		;;
 		*) die "Unexpected MULTIBUILD_ID: ${MULTIBUILD_ID}";;
 	esac
+
+	tc-export PKG_CONFIG
+
+	if is_cross; then
+		if tc-is-clang; then
+			export CC="${CTARGET}-clang"
+		else
+			export CC="${CTARGET}-gcc"
+		fi
+	fi
 
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 }

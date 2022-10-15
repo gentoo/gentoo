@@ -62,7 +62,7 @@ BDEPEND="
 DOCS=() # meson installs docs itself
 
 python_check_deps() {
-	use test && has_version "dev-util/dogtail[${PYTHON_USEDEP}]"
+	use test && python_has_version "dev-util/dogtail[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

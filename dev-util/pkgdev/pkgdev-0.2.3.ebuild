@@ -8,8 +8,6 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
-	PKGDEV_DOCS_PREBUILT=0
-
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/pkgcore/pkgdev.git
 		https://github.com/pkgcore/pkgdev.git"
 	inherit git-r3
@@ -48,8 +46,14 @@ RDEPEND+="dev-vcs/git"
 distutils_enable_sphinx doc
 distutils_enable_tests setup.py
 
+PATCHES=(
+	"${FILESDIR}/pkgdev-0.2.3-docs-path.patch"
+)
+
 python_compile_all() {
-	use doc && emake -C doc man
+	if use doc; then
+		"${EPYTHON}" setup.py build_man -f || die
+	fi
 
 	# HTML pages only
 	sphinx_compile_all
@@ -58,7 +62,7 @@ python_compile_all() {
 python_install_all() {
 	# If USE=doc, there'll be newly generated docs which we install instead.
 	if use doc; then
-		doman doc/_build/man/*
+		doman build/sphinx/man/*
 	elif [[ ${PV} != *9999 ]]; then
 		doman man/*.[0-8]
 	fi

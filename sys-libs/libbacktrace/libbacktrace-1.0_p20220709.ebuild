@@ -5,7 +5,7 @@ EAPI=8
 
 inherit autotools
 
-DESCRIPTION="A C library that may be linked into a C/C++ program to produce symbolic backtraces"
+DESCRIPTION="C library that may be linked into a C/C++ program to produce symbolic backtraces"
 HOMEPAGE="https://github.com/ianlancetaylor/libbacktrace"
 
 COMMITHASH="8602fda64e78f1f46563220f2ee9f7e70819c51d"

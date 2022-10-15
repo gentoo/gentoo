@@ -45,8 +45,8 @@ PATCHES=(
 
 python_check_deps() {
 	use test && \
-		has_version "dev-python/pytest[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/requests[${PYTHON_USEDEP}]"
+		python_has_version "dev-python/pytest[${PYTHON_USEDEP}]" && \
+		python_has_version "dev-python/requests[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

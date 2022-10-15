@@ -7,7 +7,7 @@ LUA_COMPAT=( lua5-1 luajit )
 
 inherit cmake lua-single
 
-DESCRIPTION="This is the package for people who want to create Solarus quests. It expands the player's package with game-making tools."
+DESCRIPTION="A graphical user interface to create and modify quests for the Solarus engine"
 HOMEPAGE="https://www.solarus-games.org"
 
 if [[ ${PV} == 9999 ]]; then

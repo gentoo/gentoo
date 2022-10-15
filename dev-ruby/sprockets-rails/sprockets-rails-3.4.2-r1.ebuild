@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27 ruby30"
+USE_RUBY="ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -35,5 +35,5 @@ all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' Rakefile || die
 
 	# It looks like tests are order dependent
-	sed -i -e '/test_order/ s/:alpha/:random/' test/test_helper.rb || die
+	sed -i -e '/test_order/ s/:random/:alpha/' test/test_helper.rb || die
 }

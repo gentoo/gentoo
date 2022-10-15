@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 MY_P="${P/rev/REV}"
 
-DESCRIPTION="REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb"
+DESCRIPTION="REV LADSPA plugins package, stereo reverb plugin based on the well-known greverb"
 HOMEPAGE="http://kokkinizita.linuxaudio.org/linuxaudio/"
 SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}/source"

@@ -6,8 +6,8 @@ EAPI=7
 inherit cmake-multilib
 
 DESCRIPTION="Small event-driven (SAX-style) JSON parser"
-HOMEPAGE="https://lloyd.github.com/yajl/"
-SRC_URI="https://github.com/lloyd/yajl/tarball/${PV} -> ${P}.tar.gz"
+HOMEPAGE="https://lloyd.github.com/yajl"
+SRC_URI="https://github.com/lloyd/yajl/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/lloyd-yajl-66cb08c"
 
 LICENSE="ISC"

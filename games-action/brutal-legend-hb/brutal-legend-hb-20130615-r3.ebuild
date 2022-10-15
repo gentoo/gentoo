@@ -7,7 +7,7 @@ CHECKREQS_DISK_BUILD="8600M"
 inherit check-reqs desktop unpacker xdg
 
 MY_PN="${PN%-hb}"
-DESCRIPTION="Rock-themed action-adventure that marries visceral action combat with open-world freedom"
+DESCRIPTION="Rock-themed action-adventure that marries visceral action combat with open-world"
 HOMEPAGE="https://www.humblebundle.com/store/brutal-legend"
 SRC_URI="BrutalLegend-Linux-${PV:0:4}-${PV:4:2}-${PV:6:2}-setup.bin"
 

@@ -5,10 +5,6 @@
 	<email>nerdboy@gentoo.org</email>
 	<name>Steve Arnold</name>
 </maintainer>
-<longdescription lang="en">
-	Lightweight repository manager using yaml config files instead of xml
-	manifest or git submodules.
-</longdescription>
 <upstream>
 	<remote-id type="github">sarnold/repolite</remote-id>
 </upstream>
