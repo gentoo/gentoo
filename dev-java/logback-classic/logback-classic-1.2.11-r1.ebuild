@@ -14,7 +14,7 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="logback-classic module"
-HOMEPAGE="http://logback.qos.ch"
+HOMEPAGE="https://logback.qos.ch"
 SRC_URI="https://github.com/qos-ch/logback/archive/v_${PV}.tar.gz -> logback-${PV}.tar.gz"
 
 LICENSE="EPL-1.0 LGPL-3"
@@ -32,9 +32,9 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 CP_DEPEND="
 	dev-java/janino:0
 	dev-java/javax-mail:0
-	dev-java/logback-core:0
+	~dev-java/logback-core-${PV}:0
 	dev-java/reflections:0
-	dev-java/slf4j-api:0
+	dev-java/slf4j-api:1
 	java-virtuals/servlet-api:3.1
 "
 
