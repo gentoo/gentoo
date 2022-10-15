@@ -463,7 +463,13 @@ xorg-3_src_install() {
 	# Don't install libtool archives (even for modules)
 	find "${D}" -type f -name '*.la' -delete || die
 
-	[[ -n ${FONT} ]] && remove_font_metadata
+	if [[ -n ${FONT} ]] ; then
+		if [[ -n ${FONT_OPENTYPE_COMPAT} ]] && in_iuse opentype-compat && use opentype-compat ; then
+			font_wrap_opentype_compat
+		fi
+
+		remove_font_metadata
+	fi
 }
 
 # @FUNCTION: xorg-3_pkg_postinst
