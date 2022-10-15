@@ -118,7 +118,7 @@ src_configure() {
 	einfo "${configure}"
 	${configure} || die "./configure failed"
 
-	IMPNOTES="file://${ROOT%/}/usr/share/doc/${PN}-${PVR}/html/impnotes.html"
+	IMPNOTES="file://${EPREFIX}/usr/share/doc/${PN}-${PVR}/html/impnotes.html"
 	sed -i "s,http://clisp.cons.org/impnotes/,${IMPNOTES},g" \
 		"${BUILDDIR}"/config.lisp || die "Cannot fix link to implementation notes"
 }
