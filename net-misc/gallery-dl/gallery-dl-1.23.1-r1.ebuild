@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite,ssl,xml(+)"
 
@@ -15,8 +16,8 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mikf/${PN}.git"
 else
-	SRC_URI="https://github.com/mikf/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm arm64 hppa ppc ppc64 ~riscv x86"
+	SRC_URI="https://github.com/mikf/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-2"
