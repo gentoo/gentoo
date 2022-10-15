@@ -56,7 +56,7 @@ COMDEPEND="
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.41.3:= )
 	screencast? ( >=media-video/pipewire-0.3.0:= )
-	sysprof? ( >=dev-util/sysprof-capture-3.35.2:4 )
+	sysprof? ( >=dev-util/sysprof-capture-3.35.2:3 )
 	udev? ( >=virtual/libudev-228:=
 	        >=dev-libs/libgudev-232 )
 "
@@ -65,6 +65,8 @@ RDEPEND="${COMDEPEND}
 "
 DEPEND="${COMDEPEND}
 	x11-base/xorg-proto
+
+	sysprof? ( dev-util/sysprof-common )
 "
 BDEPEND="
 	dev-util/gdbus-codegen
