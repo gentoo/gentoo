@@ -11,7 +11,7 @@ SRC_URI="http://www.iozone.org/src/current/${PN}${PV/./_}.tar"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="amd64 arm ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 arm ~ia64 ppc ppc64 ~riscv ~sparc x86"
 
 S="${WORKDIR}/${PN}${PV/./_}"
 
@@ -32,14 +32,14 @@ src_configure() {
 	tc-export CC
 
 	case ${ARCH} in
-		x86|alpha)  PLATFORM="linux";;
-		arm)        PLATFORM="linux-arm";;
-		ppc)        PLATFORM="linux-powerpc";;
-		ppc64)      PLATFORM="linux-powerpc64";;
-		amd64)      PLATFORM="linux-AMD64";;
-		ia64)       PLATFORM="linux-ia64";;
-		s390)       PLATFORM="linux-S390";;
-		*)          PLATFORM="linux-${ARCH}";;
+		x86|alpha|riscv)  PLATFORM="linux";;
+		arm)              PLATFORM="linux-arm";;
+		ppc)              PLATFORM="linux-powerpc";;
+		ppc64)            PLATFORM="linux-powerpc64";;
+		amd64)            PLATFORM="linux-AMD64";;
+		ia64)             PLATFORM="linux-ia64";;
+		s390)             PLATFORM="linux-S390";;
+		*)                PLATFORM="linux-${ARCH}";;
 	esac
 
 	# makefile uses $(GCC) in a few places, probably
