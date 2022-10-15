@@ -5,7 +5,7 @@ EAPI=8
 
 inherit meson
 
-DESCRIPTION="dLeyna is a set of services and D-Bus APIs that aim to simplify access to UPnP and DLNA media devices in a network"
+DESCRIPTION="A set of services and D-Bus APIs to simplify access to UPnP/DLNA media devices"
 HOMEPAGE="https://gitlab.gnome.org/World/dLeyna"
 SRC_URI="https://gitlab.gnome.org/World/dLeyna/-/archive/v0.8.0/dLeyna-v${PV}.tar.bz2"
 
