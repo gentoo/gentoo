@@ -16,13 +16,17 @@ S="${WORKDIR}"/${PN}-${H}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 
 DOCS=( README.org docs/transient.org )
 SITEFILE="50${PN}-gentoo.el"
 ELISP_TEXINFO="docs/*.texi"
 
-BDEPEND="sys-apps/texinfo"
+RDEPEND="app-emacs/compat"
+BDEPEND="
+	${RDEPEND}
+	sys-apps/texinfo
+"
 
 src_prepare() {
 	mv lisp/*.el . || die
