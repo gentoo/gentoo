@@ -1,0 +1,46 @@
+commit fa75285ff2d2bc6e34075724d0c216c0f86d745f
+Author: Chris Travers <chris.travers@gmail.com>
+Date:   Sun Oct 9 06:14:07 2022 +0200
+
+    Adding openrc configuration.
+
+diff --git a/doc/conf/openrc/conf.d/ledgersmb_starman b/doc/conf/openrc/conf.d/ledgersmb_starman
+new file mode 100644
+index 000000000..c1c0dc01f
+--- /dev/null
++++ b/doc/conf/openrc/conf.d/ledgersmb_starman
+@@ -0,0 +1,8 @@
++# Startup configuration for LedgerSMB on Starman
++
++host=localhost
++port=5762
++# If you want to specify workers you could do so here, like
++# starman_args="--workers 32 --preload-app"
++# but note --reload_app if used must be at the end
++starman_args=--preload-app
+diff --git a/doc/conf/openrc/init.d/ledgersmb_starman b/doc/conf/openrc/init.d/ledgersmb_starman
+new file mode 100755
+index 000000000..bcb85b3c4
+--- /dev/null
++++ b/doc/conf/openrc/init.d/ledgersmb_starman
+@@ -0,0 +1,20 @@
++#!/sbin/openrc-run
++# Copyright 2022 Gentoo Authors
++# Distributed under the terms of the GNU General Public License v2
++
++name="ledgersmb daemon, running via starman"
++description=""
++command=/usr/bin/starman 
++command_background="yes"
++ssd=/sbin/start-stop-daemon
++pidfile=/var/run/ledgersmb-1.9
++working_dir=/usr/share/ledgersmb-1.9
++output_log="/var/log/ledgersmb/lsmb-1.9.log"
++error_log="/var/log/ledgersmb/lsmb-1.9.err"
++start_stop_daemon_args="-d $working_dir -u ledgersmb -g ledgersmb -b\
++    -p ${pidfile} -S -x $command"
++command_args="-Ilib -Iold/lib --listen ${host}:${port} ${starman_args} \
++    bin/ledgersmb-server.psgi"
++
++
++

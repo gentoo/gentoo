@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription lang="en">The LedgerSMB project provides small and mid-size businesses with open source accounting software: integrating invoicing, order processing, quotations and more (ERP). LedgerSMB aims to provide a strong (multi-currency accounting) basis to build your business on -- without vendor lock-in.</longdescription>
+  <slots>
+    <slot name="1.9">Version 1.9.x</slot>
+    <slot name="1.10">Version 1.10.x</slot>
+  </slots>
+  <use>
+    <flag name="edi">EDI/X12 support, mostly of interest in electronic interchange of inventory or invoicing in North America.</flag>
+    <flag name="starman">Build with the Starman web server.  This is the default.  Without this flag, LedgerSMB can still be installed, but you will have to set up fcgi or similar yourself.  By default, we only listen on localhost.</flag>
+    <flag name="latex">Include LaTeX support, for generating PDFs of invoices, etc.</flag>
+    <flag name="xetex">Include XeTeX support, for generating pdfs of invoices using system fonts and unicode characters.  TeXLive in Gentoo may not allow both LaTeX and XeTeX support so you should choose one.</flag>
+    <flag name="excel">Include the ability to export reports in Excel (XLS/XLSX) format.</flag>
+    <flag name="openoffice">Include the ability to export reports in OpenOffice format</flag>
+  </use>
+</pkgmetadata>
