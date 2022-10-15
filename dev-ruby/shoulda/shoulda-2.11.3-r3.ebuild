@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Making tests easy on the fingers and eyes"
 HOMEPAGE="http://thoughtbot.com/projects/shoulda"
-SRC_URI="https://github.com/thoughtbot/${PN}/tarball/v${PV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/thoughtbot/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="thoughtbot-${PN}-*"
 
 LICENSE="MIT"
