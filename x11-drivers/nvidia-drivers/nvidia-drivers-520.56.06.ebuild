@@ -473,7 +473,8 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 	done < .manifest || die
 
 	# MODULE:installer non-skipped extras
-	exeinto /lib/systemd/system-sleep
+	: "$(systemd_get_sleepdir)"
+	exeinto "${_#"${EPREFIX}"}"
 	doexe systemd/system-sleep/nvidia
 	dobin systemd/nvidia-sleep.sh
 	systemd_dounit systemd/system/nvidia-{hibernate,resume,suspend}.service
