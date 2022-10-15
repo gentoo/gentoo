@@ -74,15 +74,17 @@ src_install() {
 		newpamd "${FILESDIR}"/at.pamd-3.1.13-r1 atd
 	fi
 
+	systemd_dounit "${FILESDIR}/atd.service"
+	keepdir /var/spool/at/atspool
+}
+
+pkg_preinst() {
 	# Preserve existing .SEQ files (bug #386625)
 	local seq_file="${EROOT}/var/spool/at/atjobs/.SEQ"
 	if [[ -f "${seq_file}" ]] ; then
 		einfo "Preserving existing .SEQ file (bug #386625)."
 		cp -p "${seq_file}" "${ED}"/var/spool/at/atjobs/ || die
 	fi
-
-	systemd_dounit "${FILESDIR}/atd.service"
-	keepdir /var/spool/at/atspool
 }
 
 pkg_postinst() {
