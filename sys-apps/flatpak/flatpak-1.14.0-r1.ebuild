@@ -31,6 +31,7 @@ RDEPEND="
 	>=dev-util/ostree-2020.8:=[gpg(+)]
 	dev-util/ostree[curl]
 	>=gnome-base/dconf-0.26:=
+	gnome-base/gsettings-desktop-schemas
 	net-misc/curl:=
 	sys-apps/bubblewrap
 	sys-apps/dbus

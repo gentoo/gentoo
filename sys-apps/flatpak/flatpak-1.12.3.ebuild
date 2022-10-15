@@ -33,6 +33,7 @@ RDEPEND="
 		dev-util/ostree[soup]
 	)
 	>=gnome-base/dconf-0.26:=
+	gnome-base/gsettings-desktop-schemas
 	>=net-libs/libsoup-2.4:=
 	sys-apps/bubblewrap
 	sys-apps/dbus
