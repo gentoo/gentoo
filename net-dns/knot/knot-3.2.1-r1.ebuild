@@ -5,12 +5,15 @@ EAPI=8
 
 inherit flag-o-matic systemd
 
+# subslot: libknot major.libdnssec major.libzscanner major
+KNOT_SUBSLOT="13.9.4"
+
 DESCRIPTION="High-performance authoritative-only DNS server"
 HOMEPAGE="https://www.knot-dns.cz/"
 SRC_URI="https://secure.nic.cz/files/knot-dns/${P/_/-}.tar.xz"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/${KNOT_SUBSLOT}"
 KEYWORDS="~amd64 ~riscv ~x86"
 
 KNOT_MODULES=(

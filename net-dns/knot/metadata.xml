@@ -64,4 +64,9 @@
 			Enable eXpress Data Path
 		</flag>
 	</use>
+	<slots>
+		<subslots>
+			Reflect sonames of libknot, libdnssec, and libzscanner.
+		</subslots>
+	</slots>
 </pkgmetadata>
