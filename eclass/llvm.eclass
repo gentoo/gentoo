@@ -214,6 +214,30 @@ llvm_fix_clang_version() {
 	${shopt_save}
 }
 
+# @FUNCTION: llvm_fix_tool_path
+# @USAGE: <variable-name>...
+# @DESCRIPTION:
+# Fix the LLVM tools referenced in the specified variables to their
+# current location, to prevent PATH alterations from forcing older
+# versions being used.
+llvm_fix_tool_path() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local shopt_save=$(shopt -p -o noglob)
+	set -f
+	local var
+	for var; do
+		local split=( ${!var} )
+		local path=$(type -P ${split[0]} 2>/dev/null)
+		# if it resides in one of the LLVM prefixes, it's an LLVM tool!
+		if [[ ${path} == "${BROOT}/usr/lib/llvm"* ]]; then
+			split[0]=${path}
+			declare -g "${var}=${split[*]}"
+		fi
+	done
+	${shopt_save}
+}
+
 # @FUNCTION: llvm_pkg_setup
 # @DESCRIPTION:
 # Prepend the appropriate executable directory for the newest
@@ -233,6 +257,9 @@ llvm_pkg_setup() {
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		llvm_fix_clang_version CC CPP CXX
+		# keep in sync with profiles/features/llvm/make.defaults!
+		llvm_fix_tool_path ADDR2LINE AR AS LD NM OBJCOPY OBJDUMP RANLIB
+		llvm_fix_tool_path READELF STRINGS STRIP
 
 		local llvm_path=$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin
 		local IFS=:
