@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="+boost debug examples graphicsmagick hunspell +minimal osg +pdf scripts +templates tk"
+IUSE="antiword +boost debug examples graphicsmagick hunspell +minimal osg +pdf scripts +templates tk"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	tk? ( scripts )"
@@ -63,6 +63,7 @@ DEPEND="${PYTHON_DEPS}
 	)
 "
 RDEPEND="${DEPEND}
+	antiword? ( app-text/antiword )
 	app-text/ghostscript-gpl
 "
 BDEPEND="
