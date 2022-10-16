@@ -25,7 +25,6 @@ RDEPEND="
 	gdb-plugin? ( ${PYTHON_DEPS} )
 	hwloc? ( >=sys-apps/hwloc-2.5:0=[${MULTILIB_USEDEP}] )
 	offload? (
-		virtual/libelf:=[${MULTILIB_USEDEP}]
 		dev-libs/libffi:=[${MULTILIB_USEDEP}]
 		~sys-devel/llvm-${PV}[${MULTILIB_USEDEP}]
 	)
