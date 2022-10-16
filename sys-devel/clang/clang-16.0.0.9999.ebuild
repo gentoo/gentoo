@@ -256,7 +256,6 @@ multilib_src_configure() {
 		-DLLVM_DISTRIBUTION_COMPONENTS=$(get_distribution_components)
 
 		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
-		-DLLVM_BUILD_TESTS=$(usex test)
 
 		# these are not propagated reliably, so redefine them
 		-DLLVM_ENABLE_EH=ON
@@ -278,6 +277,7 @@ multilib_src_configure() {
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 	use test && mycmakeargs+=(
+		-DLLVM_BUILD_TESTS=ON
 		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 	)
 
