@@ -2,15 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>media-video@gentoo.org</email>
-	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>k2k@narod.ru</email>
-		<name>Evgeny Grin</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>conikost@gentoo.org</email>
-		<name>Conrad Kostecki</name>
+		<email>vaapi@gentoo.org</email>
+		<name>VA-API Project</name>
 	</maintainer>
 	<use>
 		<flag name="custom-cflags">Do not override user CFLAGS like -march, -msse and similar with lib defaults. Not tested by upstream.</flag>
