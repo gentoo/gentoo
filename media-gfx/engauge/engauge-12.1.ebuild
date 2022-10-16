@@ -28,6 +28,7 @@ RDEPEND="dev-qt/qtcore:5
 	jpeg2k? ( media-libs/openjpeg:2 )
 	pdf? ( app-text/poppler[qt5] )"
 DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/qthelp:5"
 
 S=${WORKDIR}/engauge-digitizer-${PV}
 
@@ -58,7 +59,7 @@ src_configure() {
 		$(usex pdf "CONFIG+=pdf PKGCONFIG+=poppler-qt5" "") \
 		engauge.pro
 	pushd help >/dev/null || die
-	./build_qt5_12_0.bash || die
+	$(qt5_get_bindir)/qhelpgenerator engauge.qhp || die
 	popd >/dev/null || die
 }
 
@@ -68,7 +69,7 @@ src_install() {
 	make_desktop_entry engauge "Engauge Digitizer" engauge-digitizer Graphics
 
 	# Install qt help files
-	dodoc bin/documentation/engauge.qch
+	dodoc help/engauge.qch
 	docompress -x "${EPREFIX}"/usr/share/doc/${PF}/engauge.qch
 
 	use doc && dodoc -r doc/.
