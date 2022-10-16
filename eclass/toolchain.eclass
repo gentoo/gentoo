@@ -2756,11 +2756,11 @@ toolchain_death_notice() {
 		pushd "${WORKDIR}"/build >/dev/null
 		(echo '' | $(tc-getCC ${CTARGET}) ${CFLAGS} -v -E - 2>&1) > gccinfo.log
 		[[ -e "${T}"/build.log ]] && cp "${T}"/build.log .
-		tar jcf "${WORKDIR}"/gcc-build-logs.tar.bz2 \
+		tar -acf "${WORKDIR}"/gcc-build-logs.tar.xz \
 			gccinfo.log build.log $(find -name config.log)
 		rm gccinfo.log build.log
 		eerror
-		eerror "Please include ${WORKDIR}/gcc-build-logs.tar.bz2 in your bug report."
+		eerror "Please include ${WORKDIR}/gcc-build-logs.tar.xz in your bug report."
 		eerror
 		popd >/dev/null
 	fi
