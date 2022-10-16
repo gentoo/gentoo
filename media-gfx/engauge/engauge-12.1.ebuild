@@ -33,7 +33,7 @@ BDEPEND="dev-qt/qthelp:5"
 S=${WORKDIR}/engauge-digitizer-${PV}
 
 src_prepare() {
-	default
+	xdg_src_prepare
 
 	# Make sure the documentation is looked for in the proper directory
 	sed -e "s:engauge-digitizer/engauge.qhc:${PF}/engauge.qhc:" \
