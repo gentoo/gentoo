@@ -17,6 +17,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	~sys-devel/llvm-${PV}
+	sys-libs/zlib:=
 "
 RDEPEND="
 	${DEPEND}

@@ -17,6 +17,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	~sys-devel/llvm-${PV}[zstd=]
+	sys-libs/zlib:=
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="
