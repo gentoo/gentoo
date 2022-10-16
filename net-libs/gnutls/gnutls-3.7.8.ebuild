@@ -48,7 +48,7 @@ BDEPEND="
 		net-dialup/ppp
 		net-misc/socat
 	)
-	verify-sig? ( >=sec-keys/openpgp-keys-gnutls-20220320 )"
+	verify-sig? ( >=sec-keys/openpgp-keys-gnutls-20221017 )"
 
 DOCS=( README.md doc/certtool.cfg )
 
