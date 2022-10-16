@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2022-10-16)
+# Only supported on MIPS.
+dev-lang/gnat-gpl fixed-point
+sys-devel/gcc fixed-point
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
 # sys-libs/libsmbios unavailable on most arches (requires the very low-level
 # <sys/io.h> header that is only ever present on alpha, amd64, ia64 and x86),

@@ -80,7 +80,6 @@ cpu_flags_ppc_vsx3
 ppcsha1
 
 # mips arch specific USE flags
-fixed-point
 loongson2f
 mipsdspr1
 mipsdspr2
