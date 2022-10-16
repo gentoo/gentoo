@@ -24,7 +24,7 @@ IUSE="debug"
 DEPEND="
 	dev-libs/opencl-clang:${LLVM_MAX_SLOT}=
 	dev-util/spirv-tools
-	=sys-devel/lld-${LLVM_MAX_SLOT}*
+	sys-devel/lld:${LLVM_MAX_SLOT}=
 	sys-devel/llvm:${LLVM_MAX_SLOT}=
 "
 
