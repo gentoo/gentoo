@@ -21,10 +21,6 @@ sys-devel/clang pie
 dev-java/openjdk:11 system-bootstrap
 dev-java/openjdk:17 system-bootstrap
 
-# Joonas Niilola <juippis@gentoo.org> (2022-01-08)
-# -xft broken, investigate in bug #830777
-~x11-misc/xscreensaver-6.02 xft
-
 # Michał Górny <mgorny@gentoo.org> (2021-11-04)
 # Enable all LLVM targets unconditionally.  Unfortunately, disabling
 # targets tend to break reverse dependencies (e.g. Rust) and we are yet
