@@ -14,7 +14,4 @@
 	<upstream>
 		<remote-id type="github">oshazard/gtkdialog</remote-id>
 	</upstream>
-	<use>
-		<flag name="gtk2">Build with GTK+2 instead of GTK+3</flag>
-	</use>
 </pkgmetadata>
