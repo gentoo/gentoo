@@ -8,6 +8,7 @@ inherit desktop flag-o-matic toolchain-funcs
 DESCRIPTION="The ultimate old-school single player dungeon exploration game"
 HOMEPAGE="https://www.nethack.org/"
 SRC_URI="https://nethack.org/download/${PV}/nethack-${PV//.}-src.tgz -> ${P}.tar.gz"
+S="${WORKDIR}/NetHack-NetHack-${PV}_Released"
 
 LICENSE="nethack"
 SLOT="0"
@@ -18,6 +19,7 @@ RDEPEND="
 	acct-group/gamestat
 	sys-libs/ncurses:0=
 	X? (
+		x11-libs/libX11
 		x11-libs/libXaw
 		x11-libs/libXpm
 		x11-libs/libXt
@@ -36,25 +38,35 @@ BDEPEND="
 	)
 "
 
-S="${WORKDIR}/NetHack-NetHack-${PV}_Released"
+PATCHES=(
+	"${FILESDIR}/${PN}-3.6.3-recover.patch"
+	"${FILESDIR}/${PN}-3.6.6-wunused-result.patch" # bug 830556
+	"${FILESDIR}/${PN}-3.6.6-clang16.patch"
+)
 
 src_prepare() {
-	eapply "${FILESDIR}/${PN}-3.6.3-recover.patch"
-	eapply "${FILESDIR}/${PN}-3.6.6-wunused-result.patch" # bug 830556
-	eapply_user
+	default
 
 	cp "${FILESDIR}/${PN}-3.6.3-hint-$(usex X x11 tty)" hint || die "Failed to copy hint file"
 	sys/unix/setup.sh hint || die "Failed to run setup.sh"
 }
 
 src_compile() {
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 	append-cflags -I../include -DDLB -DSECURE -DTIMED_DELAY -DVISION_TABLES -DDUMPLOG -DSCORE_ON_BOTL
 	append-cflags '-DCOMPRESS=\"${EPREFIX}/bin/gzip\"' '-DCOMPRESS_EXTENSION=\".gz\"'
 	append-cflags "-DHACKDIR=\\\"${EPREFIX}/usr/$(get_libdir)/nethack\\\"" "-DVAR_PLAYGROUND=\\\"${EPREFIX}/var/games/nethack\\\""
 	append-cflags "-DDEF_PAGER=\\\"${PAGER}\\\""
 	append-cflags -DSYSCF "-DSYSCF_FILE=\\\"${EPREFIX}/etc/nethack.sysconf\\\""
 
-	use X && append-cflags -DX11_GRAPHICS -DUSE_XPM
+	if use X; then
+		append-cflags -DX11_GRAPHICS -DUSE_XPM
+
+		# XtErrorHandler usage seems right, but headers "may" add ((noreturn))
+		# giving an incompatible type error with clang-16 (could alternatively
+		# use private _X_NORETURN but this may be fragile)
+		append-cflags -Wno-error=incompatible-pointer-types #874462
+	fi
 
 	LOCAL_MAKEOPTS=(
 		CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LFLAGS="${LDFLAGS}"

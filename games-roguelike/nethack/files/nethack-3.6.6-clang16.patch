@@ -1,0 +1,10 @@
+https://bugs.gentoo.org/874462
+--- a/win/tty/wintty.c
++++ b/win/tty/wintty.c
+@@ -26,2 +26,6 @@
+ 
++#ifdef DEF_PAGER
++#include <fcntl.h>
++#endif
++
+ #ifndef NO_TERMS
