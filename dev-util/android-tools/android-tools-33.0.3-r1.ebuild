@@ -45,10 +45,16 @@ DOCS=()
 
 src_prepare() {
 	eapply "${DISTDIR}/${PN}-31.0.3-no-gtest.patch"
+
 	cd "${S}/vendor/core" || die
 	eapply "${S}/patches/core/0011-Remove-the-useless-dependency-on-gtest.patch"
+
 	cd "${S}/vendor/libziparchive" || die
 	eapply "${S}/patches/libziparchive/0004-Remove-the-useless-dependency-on-gtest.patch"
+
+	cd "${S}/vendor/adb" || die
+	eapply "${FILESDIR}/${P}-adb-0023-Update-usage-of-usbdevfs_urb-to-match-new-kernel-UAP.patch"
+
 	cd "${S}"
 	rm -r patches || die
 	cmake_src_prepare
