@@ -1,0 +1,11 @@
+--- a/wrappers/python/build.py.in	2022-10-16 17:54:18.406418600 +0200
++++ b/wrappers/python/build.py.in	2022-10-16 17:54:31.926612653 +0200
+@@ -20,7 +20,7 @@
+ ## Include args
+ incargs = " ".join("-I{}".format(d) for d in incdirs)
+ incargs += " -I@prefix@/include"
+-incargs += " @CPPFLAGS@"
++incargs += " @CPPFLAGS@ @CXXFLAGS@ @LDFLAGS@"
+ 
+ ## Compile args
+ cmpargs = ""  #"@PYEXT_CXXFLAGS@"
