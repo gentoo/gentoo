@@ -8,7 +8,4 @@
   and whatever windows might be visible within it, are simple
   point-and-click operations within a scaled representation of the
   workspace.</longdescription>
-  <use>
-    <flag name="rplay">Enable rplay support, needed for sound.</flag>
-  </use>
 </pkgmetadata>
