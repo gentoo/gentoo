@@ -202,11 +202,3 @@ gen_shared_ldscript() {
 
 	gen_ldscript "${deps[*]}" > lib/libc++.so || die
 }
-
-pkg_postinst() {
-	elog "This package (${PN}) is mainly intended as a replacement for the C++"
-	elog "standard library when using clang."
-	elog "To use it, instead of libstdc++, use:"
-	elog "    clang++ -stdlib=libc++"
-	elog "to compile your C++ programs."
-}
