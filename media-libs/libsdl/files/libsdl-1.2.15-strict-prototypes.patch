@@ -1,0 +1,316 @@
+https://github.com/libsdl-org/SDL-1.2/pull/869
+https://github.com/libsdl-org/SDL-1.2/commit/ff3516b9ddbb4f8a87d9c3546c0a4fb6eb491cfe
+https://github.com/libsdl-org/SDL-1.2/commit/e738cfffced8a006094d55337d917386582ada47
+
+From ff3516b9ddbb4f8a87d9c3546c0a4fb6eb491cfe Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 15 Oct 2022 14:35:38 -0700
+Subject: [PATCH 1/2] Xxf86vm: Fix function definitions without a prototype
+
+This is not supported with the upcoming clang 16.
+
+error: a function definition without a prototype is deprecated in all versions of C and is not supported in C2x [-Werror,-Wdeprecated-non-prototype]
+
+reference: https://archives.gentoo.org/gentoo-dev/message/dd9f2d3082b8b6f8dfbccb0639e6e240
+---
+ src/video/Xext/Xxf86vm/XF86VMode.c | 128 +++++++++++++++--------------
+ 1 file changed, 65 insertions(+), 63 deletions(-)
+
+diff --git a/src/video/Xext/Xxf86vm/XF86VMode.c b/src/video/Xext/Xxf86vm/XF86VMode.c
+index 5cb21905a..c3bd26716 100644
+--- a/src/video/Xext/Xxf86vm/XF86VMode.c
++++ b/src/video/Xext/Xxf86vm/XF86VMode.c
+@@ -102,9 +102,11 @@ static XEXT_GENERATE_CLOSE_DISPLAY (close_display, xf86vidmode_info)
+  *****************************************************************************/
+ 
+ Bool
+-SDL_NAME(XF86VidModeQueryExtension) (dpy, event_basep, error_basep)
+-    Display *dpy;
+-    int *event_basep, *error_basep;
++SDL_NAME(XF86VidModeQueryExtension)(
++    Display *dpy,
++    int *event_basep,
++    int *error_basep
++)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+ 
+@@ -118,10 +120,11 @@ SDL_NAME(XF86VidModeQueryExtension) (dpy, event_basep, error_basep)
+ }
+ 
+ Bool
+-SDL_NAME(XF86VidModeQueryVersion)(dpy, majorVersion, minorVersion)
+-    Display* dpy;
+-    int* majorVersion; 
+-    int* minorVersion;
++SDL_NAME(XF86VidModeQueryVersion)(
++    Display *dpy,
++    int *majorVersion,
++    int *minorVersion
++)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86VidModeQueryVersionReply rep;
+@@ -215,11 +218,12 @@ SDL_NAME(XF86VidModeGetGamma)(Display *dpy, int screen, SDL_NAME(XF86VidModeGamm
+ }
+ 
+ Bool
+-SDL_NAME(XF86VidModeGetModeLine)(dpy, screen, dotclock, modeline)
+-    Display* dpy;
+-    int screen;
+-    int* dotclock; 
+-    SDL_NAME(XF86VidModeModeLine)* modeline;
++SDL_NAME(XF86VidModeGetModeLine)(
++    Display *dpy,
++    int screen,
++    int *dotclock,
++    SDL_NAME(XF86VidModeModeLine) *modeline
++)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86VidModeGetModeLineReply rep;
+@@ -292,11 +296,12 @@ SDL_NAME(XF86VidModeGetModeLine)(dpy, screen, dotclock, modeline)
+ }
+ 
+ Bool
+-SDL_NAME(XF86VidModeGetAllModeLines)(dpy, screen, modecount, modelinesPtr)
+-    Display* dpy;
+-    int screen;
+-    int* modecount; 
+-    SDL_NAME(XF86VidModeModeInfo) ***modelinesPtr;
++SDL_NAME(XF86VidModeGetAllModeLines)(
++    Display *dpy,
++    int screen,
++    int *modecount,
++    SDL_NAME(XF86VidModeModeInfo) ***modelinesPtr
++)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86VidModeGetAllModeLinesReply rep;
+@@ -456,11 +461,12 @@ SDL_NAME(XF86VidModeGetAllModeLines)(dpy, screen, modecount, modelinesPtr)
+ #endif
+ 
+ Bool
+-SDL_NAME(XF86VidModeAddModeLine) (dpy, screen, newmodeline, aftermodeline)
+-    Display *dpy;
+-    int screen;
+-    SDL_NAME(XF86VidModeModeInfo)* newmodeline;
+-    SDL_NAME(XF86VidModeModeInfo)* aftermodeline;
++SDL_NAME(XF86VidModeAddModeLine)(
++    Display *dpy,
++    int screen,
++    SDL_NAME(XF86VidModeModeInfo) *newmodeline,
++    SDL_NAME(XF86VidModeModeInfo) *aftermodeline
++)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86VidModeAddModeLineReq *req;
+@@ -569,10 +575,11 @@ SDL_NAME(XF86VidModeAddModeLine) (dpy, screen, newmodeline, aftermodeline)
+ }
+ 
+ Bool
+-SDL_NAME(XF86VidModeDeleteModeLine) (dpy, screen, modeline)
+-    Display *dpy;
+-    int screen;
+-    SDL_NAME(XF86VidModeModeInfo)* modeline;
++SDL_NAME(XF86VidModeDeleteModeLine)(
++    Display *dpy,
++    int screen,
++    SDL_NAME(XF86VidModeModeInfo) *modeline
++)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86VidModeDeleteModeLineReq *req;
+@@ -633,10 +640,11 @@ SDL_NAME(XF86VidModeDeleteModeLine) (dpy, screen, modeline)
+ }
+ 
+ Bool
+-SDL_NAME(XF86VidModeModModeLine) (dpy, screen, modeline)
+-    Display *dpy;
+-    int screen;
+-    SDL_NAME(XF86VidModeModeLine)* modeline;
++SDL_NAME(XF86VidModeModModeLine)(
++    Display *dpy,
++    int screen,
++    SDL_NAME(XF86VidModeModeLine) *modeline
++)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86VidModeModModeLineReq *req;
+@@ -695,10 +703,11 @@ SDL_NAME(XF86VidModeModModeLine) (dpy, screen, modeline)
+ }
+ 
+ Status
+-SDL_NAME(XF86VidModeValidateModeLine) (dpy, screen, modeline)
+-    Display *dpy;
+-    int screen;
+-    SDL_NAME(XF86VidModeModeInfo)* modeline;
++SDL_NAME(XF86VidModeValidateModeLine)(
++    Display *dpy,
++    int screen,
++    SDL_NAME(XF86VidModeModeInfo) *modeline
++)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86VidModeValidateModeLineReq *req;
+@@ -766,10 +775,7 @@ SDL_NAME(XF86VidModeValidateModeLine) (dpy, screen, modeline)
+ }
+ 
+ Bool
+-SDL_NAME(XF86VidModeSwitchMode)(dpy, screen, zoom)
+-    Display* dpy;
+-    int screen;
+-    int zoom;
++SDL_NAME(XF86VidModeSwitchMode)(Display *dpy, int screen, int zoom)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86VidModeSwitchModeReq *req;
+@@ -788,10 +794,11 @@ SDL_NAME(XF86VidModeSwitchMode)(dpy, screen, zoom)
+ }
+     
+ Bool
+-SDL_NAME(XF86VidModeSwitchToMode)(dpy, screen, modeline)
+-    Display* dpy;
+-    int screen;
+-    SDL_NAME(XF86VidModeModeInfo)* modeline;
++SDL_NAME(XF86VidModeSwitchToMode)(
++    Display *dpy,
++    int screen,
++    SDL_NAME(XF86VidModeModeInfo) *modeline
++)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86VidModeSwitchToModeReq *req;
+@@ -877,10 +884,7 @@ SDL_NAME(XF86VidModeSwitchToMode)(dpy, screen, modeline)
+ }
+     
+ Bool
+-SDL_NAME(XF86VidModeLockModeSwitch)(dpy, screen, lock)
+-    Display* dpy;
+-    int screen;
+-    int lock;
++SDL_NAME(XF86VidModeLockModeSwitch)(Display *dpy, int screen, int lock)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86VidModeLockModeSwitchReq *req;
+@@ -899,10 +903,11 @@ SDL_NAME(XF86VidModeLockModeSwitch)(dpy, screen, lock)
+ }
+     
+ Bool
+-SDL_NAME(XF86VidModeGetMonitor)(dpy, screen, monitor)
+-    Display* dpy;
+-    int screen;
+-    SDL_NAME(XF86VidModeMonitor)* monitor;
++SDL_NAME(XF86VidModeGetMonitor)(
++    Display *dpy,
++    int screen,
++    SDL_NAME(XF86VidModeMonitor) *monitor
++)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86VidModeGetMonitorReply rep;
+@@ -1000,10 +1005,7 @@ SDL_NAME(XF86VidModeGetMonitor)(dpy, screen, monitor)
+ }
+ 
+ Bool
+-SDL_NAME(XF86VidModeGetViewPort)(dpy, screen, x, y)
+-    Display* dpy;
+-    int screen;
+-    int *x, *y;
++SDL_NAME(XF86VidModeGetViewPort)(Display *dpy, int screen, int *x, int *y)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86VidModeGetViewPortReply rep;
+@@ -1053,10 +1055,7 @@ SDL_NAME(XF86VidModeGetViewPort)(dpy, screen, x, y)
+ }
+ 
+ Bool
+-SDL_NAME(XF86VidModeSetViewPort)(dpy, screen, x, y)
+-    Display* dpy;
+-    int screen;
+-    int x, y;
++SDL_NAME(XF86VidModeSetViewPort)(Display *dpy, int screen, int x, int y)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86VidModeSetViewPortReq *req;
+@@ -1077,11 +1076,14 @@ SDL_NAME(XF86VidModeSetViewPort)(dpy, screen, x, y)
+ }
+ 
+ Bool
+-SDL_NAME(XF86VidModeGetDotClocks)(dpy, screen,
+-	    flagsPtr, numclocksPtr, maxclocksPtr, clocksPtr)
+-    Display* dpy;
+-    int screen;
+-    int *flagsPtr, *numclocksPtr, *maxclocksPtr, *clocksPtr[]; 
++SDL_NAME(XF86VidModeGetDotClocks)(
++    Display *dpy,
++    int screen,
++    int *flagsPtr,
++    int *numclocksPtr,
++    int *maxclocksPtr,
++    int *clocksPtr[]
++)
+ {
+     XExtDisplayInfo *info = find_display (dpy);
+     xXF86VidModeGetDotClocksReply rep;
+
+From e738cfffced8a006094d55337d917386582ada47 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 15 Oct 2022 15:10:48 -0700
+Subject: [PATCH 2/2] Xext: Fix function declarations without a prototype
+
+This is not supported with the upcoming clang 16.
+
+error: a function declaration without a prototype is deprecated in all versions of C and is treated as a zero-parameter prototype in C2x, conflicting with a subsequent definition [-Werror,-Wdeprecated-non-prototype]
+
+reference: https://archives.gentoo.org/gentoo-dev/message/dd9f2d3082b8b6f8dfbccb0639e6e240
+---
+ src/video/Xext/XME/xme.c           | 2 +-
+ src/video/Xext/Xinerama/Xinerama.c | 3 ++-
+ src/video/Xext/Xv/Xv.c             | 6 +++---
+ 3 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/src/video/Xext/XME/xme.c b/src/video/Xext/XME/xme.c
+index 2cead35ad..bb8d04d48 100644
+--- a/src/video/Xext/XME/xme.c
++++ b/src/video/Xext/XME/xme.c
+@@ -206,7 +206,7 @@ static char *xigmisc_extension_name = XIGMISC_PROTOCOL_NAME;
+ /*
+  * find_display - locate the display info block
+  */
+-static int XiGMiscCloseDisplay();
++static int XiGMiscCloseDisplay(Display*, XExtCodes*);
+ 
+ static XExtensionHooks xigmisc_extension_hooks = {
+     NULL,                               /* create_gc */
+diff --git a/src/video/Xext/Xinerama/Xinerama.c b/src/video/Xext/Xinerama/Xinerama.c
+index 4ff42ebfe..57f64b9c3 100644
+--- a/src/video/Xext/Xinerama/Xinerama.c
++++ b/src/video/Xext/Xinerama/Xinerama.c
+@@ -50,7 +50,8 @@ static /* const */ char *panoramiX_extension_name = PANORAMIX_PROTOCOL_NAME;
+ #define PanoramiXSimpleCheckExtension(dpy,i) \
+   XextSimpleCheckExtension (dpy, i, panoramiX_extension_name)
+ 
+-static int close_display();
++static int close_display(Display*, XExtCodes*);
++
+ static /* const */ XExtensionHooks panoramiX_extension_hooks = {
+     NULL,				/* create_gc */
+     NULL,				/* copy_gc */
+diff --git a/src/video/Xext/Xv/Xv.c b/src/video/Xext/Xv/Xv.c
+index 7147b9e8c..c254a1dc2 100644
+--- a/src/video/Xext/Xv/Xv.c
++++ b/src/video/Xext/Xv/Xv.c
+@@ -63,9 +63,9 @@ static char *xv_extension_name = XvName;
+ #define XvCheckExtension(dpy, i, val) \
+   XextCheckExtension(dpy, i, xv_extension_name, val)
+ 
+-static char *xv_error_string();
+-static int xv_close_display();
+-static Bool xv_wire_to_event();
++static char *xv_error_string(Display*, int, XExtCodes*, char*, int);
++static int xv_close_display(Display*, XExtCodes*);
++static Bool xv_wire_to_event(Display*, XEvent*, xEvent*);
+ 
+ static XExtensionHooks xv_extension_hooks = {
+     NULL,                               /* create_gc */
