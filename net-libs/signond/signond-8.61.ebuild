@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	doc? (
 		app-doc/doxygen[dot]
-		dev-qt/qdoc:5
+		dev-qt/qthelp:5
 	)
 "
 
