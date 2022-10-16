@@ -119,6 +119,13 @@ qt6-build_src_configure() {
 	cmake_src_configure
 }
 
+# @FUNCTION: qt6-build_src_install
+# @DESCRIPTION:
+# Runs cmake_src_install and anything else that might be needed here.
+qt6-build_src_install() {
+	cmake_src_install
+}
+
 ######  Public helpers  ######
 
 # @FUNCTION: qt_feature
