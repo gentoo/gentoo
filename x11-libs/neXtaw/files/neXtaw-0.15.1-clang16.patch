@@ -7,12 +7,12 @@ https://bugs.gentoo.org/871489
  #include <X11/Xos.h>
 --- a/X11/neXtaw/laygram.y
 +++ b/X11/neXtaw/laygram.y
-@@ -253,2 +253,5 @@
+@@ -14,2 +14,5 @@
  
 +void yyerror(char *s);
 +int yylex(void);
 +
- int yywrap ()
+ %}
 --- a/X11/neXtaw/laylex.l
 +++ b/X11/neXtaw/laylex.l
 @@ -88,2 +88,3 @@
