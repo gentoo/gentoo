@@ -249,12 +249,12 @@ src_configure() {
 		# Available from 2.35 on
 		--enable-textrel-check=warning
 
-		# Available from 2.39 on
-		--enable-warn-execstack
-		--enable-warn-rwx-segments
-		# TODO: Available from 2.39+ on but let's try the warning on for a bit
-		# first... (--enable-warn-execstack)
-		# Could put it under USE=hardened?
+		# These hardening options are available from 2.39+ but
+		# they unconditionally enable the behaviour even on arches
+		# where e.g. execstacks can't be avoided.
+		# See https://sourceware.org/bugzilla/show_bug.cgi?id=29592.
+		#--enable-warn-execstack
+		#--enable-warn-rwx-segments
 		#--disable-default-execstack (or is it --enable-default-execstack=no? docs are confusing)
 
 		# Things to think about
