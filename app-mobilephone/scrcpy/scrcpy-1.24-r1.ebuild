@@ -15,10 +15,12 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
-RDEPEND="media-libs/libsdl2[X]
+DEPEND="media-libs/libsdl2[X]
 	media-video/ffmpeg
 	virtual/libusb:1"
-DEPEND="${RDEPEND}"
+# Manual install for ppc64 until bug #723528 is fixed
+RDEPEND="${DEPEND}
+	!ppc64? ( dev-util/android-tools )"
 BDEPEND=""
 
 src_configure() {
