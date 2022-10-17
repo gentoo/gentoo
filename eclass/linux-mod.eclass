@@ -716,7 +716,7 @@ linux-mod_src_install() {
 		# and similarily compress the module being built if != NONE.
 
 		if linux_chkconfig_present MODULE_COMPRESS_XZ; then
-			xz -T$(makeopts_jobs) ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with xz failed"
+			xz -T$(makeopts_jobs) --memlimit-compress=50% ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with xz failed"
 			doins ${modulename}.${KV_OBJ}.xz
 		elif linux_chkconfig_present MODULE_COMPRESS_GZIP; then
 			if type -P pigz &>/dev/null ; then
