@@ -95,6 +95,7 @@ waf-utils_src_configure() {
 	tc-export AR CC CPP CXX RANLIB
 
 	local CMD=(
+		PYTHONHASHSEED=1
 		CCFLAGS="${CFLAGS}"
 		LINKFLAGS="${CFLAGS} ${LDFLAGS}"
 		PKGCONFIG="$(tc-getPKG_CONFIG)"
@@ -119,6 +120,8 @@ waf-utils_src_compile() {
 	local _mywafconfig
 	[[ ${WAF_VERBOSE} == ON ]] && _mywafconfig="--verbose"
 
+	export PYTHONHASHSEED=1
+
 	local jobs="--jobs=$(makeopts_jobs)"
 	echo "\"${WAF_BINARY}\" build ${_mywafconfig} ${jobs} ${*}"
 	"${WAF_BINARY}" ${_mywafconfig} ${jobs} "${@}" || die "build failed"
@@ -129,6 +132,8 @@ waf-utils_src_compile() {
 # Function for installing the package.
 waf-utils_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	export PYTHONHASHSEED=1
 
 	echo "\"${WAF_BINARY}\" --jobs=1 --destdir=\"${D}\" ${*} install"
 	"${WAF_BINARY}" --jobs=1 --destdir="${D}" "${@}" install || die "Make install failed"
