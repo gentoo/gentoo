@@ -28,6 +28,7 @@ src_configure() {
 }
 
 src_install() {
+	# TODO: drop on next release (https://github.com/ekenberg/quotatool/commit/5529c8084a06d4d95905f76e47d2621564876081)
 	dodir /usr/sbin /usr/share/man/man8
 	default
 }
