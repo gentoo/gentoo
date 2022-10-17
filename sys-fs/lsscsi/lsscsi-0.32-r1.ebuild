@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="SCSI sysfs query tool"
 HOMEPAGE="http://sg.danny.cz/scsi/lsscsi.html"
-SRC_URI="http://sg.danny.cz/scsi/${P}.tgz"
+SRC_URI="http://sg.danny.cz/scsi/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
