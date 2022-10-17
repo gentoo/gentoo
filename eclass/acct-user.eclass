@@ -511,28 +511,35 @@ acct-user_pkg_postinst() {
 acct-user_pkg_prerm() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	if [[ -n ${REPLACED_BY_VERSION} ]]; then
+		return
+	fi
+
 	if [[ ${EUID} -ne 0 ]]; then
 		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
-		return 0
+		return
 	fi
 
 	if [[ ${ACCT_USER_ID} -eq 0 ]]; then
 		elog "Refusing to lock out the superuser (UID 0)"
-		return 0
+		return
 	fi
 
-	if [[ -z ${REPLACED_BY_VERSION} ]]; then
-		if [[ -z $(egetent passwd "${ACCT_USER_NAME}") ]]; then
-			ewarn "User account not found: ${ACCT_USER_NAME}"
-			ewarn "Locking process will be skipped."
-			return
-		fi
-
-		esetshell "${ACCT_USER_NAME}" -1
-		esetcomment "${ACCT_USER_NAME}" \
-			"$(egetcomment "${ACCT_USER_NAME}"); user account removed @ $(date +%Y-%m-%d)"
-		elockuser "${ACCT_USER_NAME}"
+	if [[ -n ${ACCT_USER_NO_MODIFY} ]]; then
+		elog "Not locking user ${ACCT_USER_NAME} due to ACCT_USER_NO_MODIFY"
+		return
 	fi
+
+	if ! egetent passwd "${ACCT_USER_NAME}" >/dev/null; then
+		ewarn "User account not found: ${ACCT_USER_NAME}"
+		ewarn "Locking process will be skipped."
+		return
+	fi
+
+	esetshell "${ACCT_USER_NAME}" -1
+	esetcomment "${ACCT_USER_NAME}" \
+		"$(egetcomment "${ACCT_USER_NAME}"); user account removed @ $(date +%Y-%m-%d)"
+	elockuser "${ACCT_USER_NAME}"
 }
 
 fi
