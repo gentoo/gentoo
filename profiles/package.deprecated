@@ -26,7 +26,6 @@
 #
 # Case is also unmaintained (since 2018).  Nose-random has had last
 # commit in 2016 and was not even released to pypi!
-dev-python/case
 dev-python/nose
 dev-python/nose-random
 
