@@ -10,7 +10,11 @@ HOMEPAGE="
 	https://www.xfce.org/projects/
 	https://docs.xfce.org/xfce/thunar/start
 "
-SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="
+	https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2
+	https://gitlab.xfce.org/xfce/thunar/-/commit/697e188d1847aaf37a755f39625bfaa3e1979c7e.patch
+		-> ${P}-no-libnotify.patch
+"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0/3"
@@ -49,6 +53,10 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${DISTDIR}/${P}-no-libnotify.patch"
+)
 
 src_configure() {
 	local myconf=(
