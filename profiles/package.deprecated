@@ -17,6 +17,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-10-17)
+# Nosetests are no longer maintained (since 2015!), are completely
+# broken with Python 3.11, and we were already patching it to make it
+# work with prior Python versions.  If your package still needs it
+# (sic!), then either port it to use a maintained test framework (pytest
+# preferably) or last rite it.
+#
+# Case is also unmaintained (since 2018).  Nose-random has had last
+# commit in 2016 and was not even released to pypi!
+dev-python/case
+dev-python/nose
+dev-python/nose-random
+
 # Michał Górny <mgorny@gentoo.org> (2022-10-14)
 # The toml package is unmaintained (last release in 2020) and does not
 # implement TOML 1.0.  The recommended alternatives include the built-in
