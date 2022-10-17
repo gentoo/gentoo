@@ -91,7 +91,7 @@ kernel-build_src_configure() {
 	)
 
 	if type -P xz &>/dev/null ; then
-		export XZ_OPT="-T$(makeopts_jobs)"
+		export XZ_OPT="-T$(makeopts_jobs) --memlimit-compress=50%"
 	fi
 
 	if type -P zstd &>/dev/null ; then
