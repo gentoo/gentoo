@@ -40,7 +40,7 @@ case ${EAPI:-0} in
 	*) die "EAPI=${EAPI:-0} not supported";;
 esac
 
-inherit user
+inherit user-info
 
 [[ ${CATEGORY} == acct-group ]] ||
 	die "Ebuild error: this eclass can be used only in acct-group category!"
@@ -156,8 +156,32 @@ acct-group_src_install() {
 acct-group_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	enewgroup ${ACCT_GROUP_ENFORCE_ID:+-F} "${ACCT_GROUP_NAME}" \
-		"${_ACCT_GROUP_ID}"
+	if [[ ${EUID} -ne 0 ]]; then
+		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
+		return
+	fi
+
+	if egetent group "${ACCT_GROUP_NAME}" >/dev/null; then
+		elog "Group ${ACCT_GROUP_NAME} already exists"
+		return
+	fi
+
+	local opts=( --system )
+
+	if [[ -z ${ACCT_GROUP_ENFORCE_ID} ]]; then
+		opts+=( --force )
+	fi
+
+	if [[ ${_ACCT_GROUP_ID} -ne -1 ]]; then
+		opts+=( --gid "${_ACCT_GROUP_ID}" )
+	fi
+
+	if [[ -n ${ROOT} ]]; then
+		opts+=( --prefix "${ROOT}" )
+	fi
+
+	elog "Adding group ${ACCT_GROUP_NAME}"
+	groupadd "${opts[@]}" "${ACCT_GROUP_NAME}" || die
 }
 
 fi
