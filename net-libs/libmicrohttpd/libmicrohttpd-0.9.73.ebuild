@@ -12,7 +12,8 @@ HOMEPAGE="https://www.gnu.org/software/libmicrohttpd/"
 SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
-PATCHES=( "${FILESDIR}"/${PN}-0.9.73-test-ssl3.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.9.73-test-ssl3.patch
+          "${FILESDIR}"/${PN}-0.9.75-fix-testsuite-with-lto.patch )
 
 LICENSE="LGPL-2.1+"
 SLOT="0/12"
