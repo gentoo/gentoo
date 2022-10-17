@@ -9,7 +9,7 @@ DESCRIPTION="Draw any kind of boxes around your text"
 HOMEPAGE="https://boxes.thomasjensen.com/ https://github.com/ascii-boxes/boxes"
 SRC_URI="https://github.com/ascii-boxes/boxes/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
