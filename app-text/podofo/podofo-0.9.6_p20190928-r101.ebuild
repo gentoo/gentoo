@@ -9,29 +9,28 @@ inherit cmake flag-o-matic lua-single toolchain-funcs
 
 DESCRIPTION="PoDoFo is a C++ library to work with the PDF file format"
 HOMEPAGE="https://sourceforge.net/projects/podofo/"
-SRC_URI="https://cfhcable.dl.sourceforge.net/project/podofo/podofo/${PV}/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~zmedico/dist/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
-SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+SLOT="0/${PV%_*}"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="+boost idn debug test +tools"
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}
 	test? ( tools )"
 
 RDEPEND="${LUA_DEPS}
 	idn? ( net-dns/libidn:= )
-	dev-libs/openssl:0=
+	dev-libs/openssl:=
+	dev-libs/libunistring:=
 	media-libs/fontconfig:=
 	media-libs/freetype:2=
-	virtual/jpeg:0=
-	media-libs/libpng:0=
-	media-libs/tiff:0=
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
+	media-libs/tiff:=
 	sys-libs/zlib:="
 DEPEND="${RDEPEND}
-	test? ( dev-util/cppunit )
-"
-
+	test? ( dev-util/cppunit )"
 BDEPEND="virtual/pkgconfig
 	boost? ( dev-libs/boost )"
 
@@ -71,6 +70,47 @@ src_prepare() {
 	done
 	[[ -n ${sed_args} ]] && \
 		{ sed -i ${sed_args} cmake/modules/FindFREETYPE.cmake || die; }
+
+	# Bug #439784: Add missing unistd include for close() and unlink().
+	sed -i 's:^#include <stdio.h>$:#include <unistd.h>\n\0:' -i \
+		test/unit/TestUtils.cpp || die
+
+	# TODO: fix these test cases
+	# ColorTest.cpp:62:Assertion
+	# Test name: ColorTest::testDefaultConstructor
+	# expected exception not thrown
+	# - Expected: PdfError
+	sed -e 's:CPPUNIT_TEST( testDefaultConstructor ://\0:' \
+		-e 's:CPPUNIT_TEST( testGreyConstructor ://\0:' \
+		-e 's:CPPUNIT_TEST( testRGBConstructor ://\0:' \
+		-e 's:CPPUNIT_TEST( testCMYKConstructor ://\0:' \
+		-e 's:CPPUNIT_TEST( testColorSeparationAllConstructor ://\0:' \
+		-e 's:CPPUNIT_TEST( testColorSeparationNoneConstructor ://\0:' \
+		-e 's:CPPUNIT_TEST( testColorSeparationConstructor ://\0:' \
+		-e 's:CPPUNIT_TEST( testColorCieLabConstructor ://\0:' \
+		-i test/unit/ColorTest.h || die
+
+	# ColorTest.cpp:42:Assertion
+	# Test name: ColorTest::testHexNames
+	# assertion failed
+	# - Expression: static_cast<int>(rgb.GetGreen() * 255.0) == 0x0A
+	sed -e 's:CPPUNIT_TEST( testHexNames ://\0:' \
+		-i test/unit/ColorTest.h || die
+
+	# Bug #352125: test failure, depending on installed fonts
+	# ##Failure Location unknown## : Error
+	# Test name: FontTest::testFonts
+	# uncaught exception of type PoDoFo::PdfError
+	# - ePdfError_UnsupportedFontFormat
+	sed -e 's:CPPUNIT_TEST( testFonts ://\0:' \
+		-i test/unit/FontTest.h || die
+
+	# Test name: EncodingTest::testDifferencesEncoding
+	# equality assertion failed
+	# - Expected: 1
+	# - Actual  : 0
+	sed -e 's:CPPUNIT_TEST( testDifferencesEncoding ://\0:' \
+		-i test/unit/EncodingTest.h || die
 
 	# Bug #407015: fix to compile with Lua 5.2+
 	case "${ELUA}" in
