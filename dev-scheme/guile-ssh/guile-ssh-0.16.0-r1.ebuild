@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-scheme/guile-2.0.0:=
-	net-libs/libssh:0=[server]
+	net-libs/libssh:0=[server,sftp]
 "
 DEPEND="${RDEPEND}"
 
