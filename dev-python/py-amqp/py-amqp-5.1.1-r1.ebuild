@@ -19,11 +19,11 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="extras"
 
-BDEPEND="
+RDEPEND="
 	>=dev-python/vine-5.0.0[${PYTHON_USEDEP}]
+"
+BDEPEND="
 	test? (
-		>=dev-python/case-1.3.1[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		>=dev-python/pytest-rerunfailures-6.0[${PYTHON_USEDEP}]
 	)
 "
