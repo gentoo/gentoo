@@ -36,7 +36,7 @@ RDEPEND="
 	x11-apps/viewres
 	x11-apps/x11perf
 	x11-apps/xauth
-	x11-apps/xbacklight
+	|| ( x11-apps/xbacklight sys-power/acpilight )
 	x11-apps/xbiff
 	x11-apps/xcalc
 	x11-apps/xclipboard
