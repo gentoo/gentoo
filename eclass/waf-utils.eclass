@@ -99,6 +99,7 @@ waf-utils_src_configure() {
 		LINKFLAGS="${CFLAGS} ${LDFLAGS}"
 		PKGCONFIG="$(tc-getPKG_CONFIG)"
 		"${WAF_BINARY}"
+		"--jobs=1"
 		"--prefix=${EPREFIX}/usr"
 		"${conf_args[@]}"
 		"${@}"
@@ -129,8 +130,8 @@ waf-utils_src_compile() {
 waf-utils_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	echo "\"${WAF_BINARY}\" --destdir=\"${D}\" ${*} install"
-	"${WAF_BINARY}" --destdir="${D}" "${@}" install  || die "Make install failed"
+	echo "\"${WAF_BINARY}\" --jobs=1 --destdir=\"${D}\" ${*} install"
+	"${WAF_BINARY}" --jobs=1 --destdir="${D}" "${@}" install || die "Make install failed"
 
 	# Manual document installation
 	einstalldocs
