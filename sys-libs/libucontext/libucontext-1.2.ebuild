@@ -12,7 +12,7 @@ S="${WORKDIR}"/${PN}-${P}
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc"
 IUSE="+man"
 
 BDEPEND="man? ( app-text/scdoc )"
