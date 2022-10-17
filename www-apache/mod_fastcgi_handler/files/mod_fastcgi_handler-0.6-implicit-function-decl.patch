@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/875701
+--- a/fcgi_request.c
++++ b/fcgi_request.c
+@@ -10,6 +10,7 @@
+ 
+ #include "fcgi_header.h"
+ #include "fcgi_request.h"
++#include "fcgi_server.h"
+ 
+ #include "mod_fastcgi_handler.h"
+ 
+--- a/fcgi_server.c
++++ b/fcgi_server.c
+@@ -7,6 +7,7 @@
+ #include <httpd.h>
+ #include <http_config.h>
+ #include <http_log.h>
++#include <http_request.h>
+ #include <util_filter.h>
+ #include <util_script.h>
+ 
+@@ -424,6 +425,8 @@ int fcgi_server_parse_headers(fcgi_request_t *fr, uint16_t request_id,
+ 		 */
+ 		return HTTP_MOVED_TEMPORARILY;
+ 	}
++
++	return ret;
+ }
+ 
+ int fcgi_server_recv_stdout_stderr_record(fcgi_request_t *fr,

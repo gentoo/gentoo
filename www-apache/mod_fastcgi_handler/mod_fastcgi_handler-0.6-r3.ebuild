@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,6 +17,10 @@ APACHE2_MOD_CONF="20_${PN}"
 APACHE2_MOD_DEFINE="FASTCGI_HANDLER"
 
 APXS2_ARGS="-o ${PN}.so -c *.c"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.6-implicit-function-decl.patch
+)
 
 need_apache2
 
