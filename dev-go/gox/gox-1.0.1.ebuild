@@ -11,7 +11,7 @@ SRC_URI+=" https://dev.gentoo.org/~jsmolic/gox-riscv.patch"
 
 LICENSE="MPL-2.0"
 SLOT="0/${PVR}"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RESTRICT+=" test"
 
