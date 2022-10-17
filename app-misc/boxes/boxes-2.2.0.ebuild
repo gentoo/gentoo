@@ -12,18 +12,25 @@ SRC_URI="https://github.com/ascii-boxes/boxes/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/libpcre2[pcre32]"
+RDEPEND="
+	dev-libs/libpcre2[pcre32]
+	dev-libs/libunistring:=
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
+	test? ( app-editors/vim-core )
 "
 
 PATCHES=( "${FILESDIR}/${P}-fix-clang16-build.patch" )
 
 src_prepare() {
 	default
+
 	sed \
 		-e 's:STRIP=true:STRIP=false:g' \
 		-i src/Makefile || die
