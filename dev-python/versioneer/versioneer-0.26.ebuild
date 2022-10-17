@@ -35,6 +35,14 @@ BDEPEND="
 	)
 "
 
+python_compile() {
+	cat > "${T}"/versioneer.py <<-EOF || die
+		raise ImportError("Please pretend I'm not here!")
+	EOF
+	local -x PYTHONPATH=${T}:${PYTHONPATH}
+	distutils-r1_python_compile
+}
+
 python_test() {
 	esetup.py make_versioneer
 
