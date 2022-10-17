@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-RELEASE_${PV}"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 ~arm ~arm64"
 IUSE="openssl"
 
 DEPEND="
