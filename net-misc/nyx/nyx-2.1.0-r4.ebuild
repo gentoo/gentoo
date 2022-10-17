@@ -26,3 +26,10 @@ RDEPEND="
 	net-vpn/tor"
 
 distutils_enable_tests unittest
+
+python_install_all() {
+	distutils-r1_python_install_all
+
+	# bug #645336
+	doman nyx.1
+}
