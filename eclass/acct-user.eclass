@@ -93,6 +93,13 @@ readonly ACCT_USER_NAME
 # to an already existing user.
 : ${ACCT_USER_NO_MODIFY:=}
 
+# @ECLASS_VARIABLE: ACCT_USER_COMMENT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The comment to use for the user.  If not specified, the package
+# DESCRIPTION will be used.  This can be overridden in make.conf through
+# ACCT_USER_<UPPERCASE_USERNAME>_COMMENT variable.
+
 # @ECLASS_VARIABLE: ACCT_USER_SHELL
 # @DESCRIPTION:
 # The shell to use for the user.  If not specified, a 'nologin' variant
@@ -373,6 +380,9 @@ acct-user_pkg_pretend() {
 acct-user_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	# Replace reserved characters in comment
+	: ${ACCT_USER_COMMENT:=${DESCRIPTION//[:,=]/;}}
+
 	# serialize for override support
 	local ACCT_USER_GROUPS=${ACCT_USER_GROUPS[*]}
 
@@ -380,7 +390,7 @@ acct-user_src_install() {
 	local override_name=${ACCT_USER_NAME^^}
 	override_name=${override_name//-/_}
 	local var
-	for var in ACCT_USER_{ID,SHELL,HOME{,_OWNER,_PERMS},GROUPS}; do
+	for var in ACCT_USER_{ID,COMMENT,SHELL,HOME{,_OWNER,_PERMS},GROUPS}; do
 		local var_name=ACCT_USER_${override_name}_${var#ACCT_USER_}
 		if [[ -n ${!var_name} ]]; then
 			ewarn "${var_name}=${!var_name} override in effect, support will not be provided."
@@ -393,6 +403,10 @@ acct-user_src_install() {
 	if [[ -n ${!var_name} ]]; then
 		ewarn "${var_name}=${!var_name} override in effect, support will not be provided."
 		_ACCT_USER_GROUPS+=" ${!var_name}"
+	fi
+
+	if [[ -n ${_ACCT_USER_COMMENT//[^:,=]} ]]; then
+		die "Invalid characters in user comment: '${_ACCT_USER_COMMENT//[^:,=]}'"
 	fi
 
 	# deserialize into an array
@@ -409,7 +423,7 @@ acct-user_src_install() {
 		printf "u\t%q\t%q\t%q\t%q\t%q\n" \
 			"${ACCT_USER_NAME}" \
 			"${_ACCT_USER_ID/#-*/-}:${groups[0]}" \
-			"${DESCRIPTION//[:,=]/;}" \
+			"${_ACCT_USER_COMMENT}" \
 			"${_ACCT_USER_HOME}" \
 			"${_ACCT_USER_SHELL/#-*/-}"
 		if [[ ${#groups[@]} -gt 1 ]]; then
@@ -487,7 +501,7 @@ acct-user_pkg_postinst() {
 	esetshell "${ACCT_USER_NAME}" "${_ACCT_USER_SHELL}"
 	esetgroups "${ACCT_USER_NAME}" "${_ACCT_USER_GROUPS// /,}"
 	# comment field can not contain colons
-	esetcomment "${ACCT_USER_NAME}" "${DESCRIPTION//[:,=]/;}"
+	esetcomment "${ACCT_USER_NAME}" "${_ACCT_USER_COMMENT}"
 	eunlockuser "${ACCT_USER_NAME}"
 }
 
