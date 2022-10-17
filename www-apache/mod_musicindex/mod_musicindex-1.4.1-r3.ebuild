@@ -38,6 +38,8 @@ pkg_setup() {
 
 src_configure() {
 	econf \
+		--with-vorbis-libraries="${ESYSROOT}/usr/$(get_libdir)" \
+		--with-libFLAC-libraries="${ESYSROOT}/usr/$(get_libdir)" \
 		$(use_enable mp3) \
 		$(use_enable mp4) \
 		$(use_enable flac) \
