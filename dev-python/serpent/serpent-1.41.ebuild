@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
+
 inherit distutils-r1
 
 DESCRIPTION="A simple serialization library based on ast.literal_eval"
-HOMEPAGE="https://pypi.org/project/serpent/
-	https://github.com/irmen/Serpent"
+HOMEPAGE="
+	https://github.com/irmen/Serpent/
+	https://pypi.org/project/serpent/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
