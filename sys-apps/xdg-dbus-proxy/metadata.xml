@@ -5,4 +5,7 @@
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">flatpak/xdg-dbus-proxy</remote-id>
+	</upstream>
 </pkgmetadata>
