@@ -24,7 +24,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.9.73-test-ssl3.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.9.73-test-ssl3.patch
+          "${FILESDIR}"/${PN}-0.9.75-fix-testsuite-with-lto.patch )
 
 S=${WORKDIR}/${MY_P}
 
