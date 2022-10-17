@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,12 @@ KEYWORDS="amd64 ~arm ~arm64 ppc x86"
 
 RDEPEND="sys-fs/quota"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.4.13-fix-buildsystem.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.13-fix-buildsystem.patch
+	"${FILESDIR}"/${P}-clang16.patch
+	"${FILESDIR}"/${P}-fix-autoconf.patch
+	"${FILESDIR}"/${P}-warnings.patch
+)
 
 src_configure() {
 	tc-export CC
