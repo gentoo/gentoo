@@ -19,10 +19,13 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 
-BDEPEND="
-	test? (
-		>=dev-python/case-1.3.1[${PYTHON_USEDEP}]
-	)
-"
-
 distutils_enable_tests pytest
+
+src_prepare() {
+	# remove the dep on dead dev-python/case package
+	sed -i -e 's:from case:from unittest.mock:' t/unit/*.py || die
+	# also removed upstream
+	rm t/unit/conftest.py || die
+
+	distutils-r1_src_prepare
+}
