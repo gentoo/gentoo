@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-10-17)
+# Hostile takeover ongoing, integrity of the live version
+# cannot be guaranteed. Please use the release version, or
+# use games-action/polymc-bin instead.
+# https://bugs.gentoo.org/877495
+=games-action/polymc-9999
+
 # Michał Górny <mgorny@gentoo.org> (2022-10-17)
 # Unmaintained since 2018.  Requires dev-python/nose.  No revdeps left.
 # Removal on 2022-11-16.  Bug #877375.
