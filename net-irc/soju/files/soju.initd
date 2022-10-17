@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+supervisor=supervise-daemon
+
+name="soju"
+description="User-friendly IRC bouncer"
+
+: ${command_args:="-config /etc/soju/config"}
+: ${error_log:=/var/log/soju.log}
+
+command=/usr/bin/soju
+command_user=soju:soju
+directory="/var/lib/$RC_SVCNAME"
+
+extra_started_commands="reload"
+description_reload="Reload TLS certificate"
+
+depend() {
+	need net localmount
+}
+
+start_pre() {
+	checkpath -d -o $command_user "$directory"
+	checkpath -f -o $command_user "$error_log"
+}
+
+reload() {
+	ebegin "Reloading TLS certificate"
+	$supervisor $RC_SVCNAME --signal HUP
+	eend $?
+}
