@@ -32,7 +32,7 @@ IUSE="
 	llvm-libunwind debug custom-cflags +fontconfig +gecko gphoto2
 	+gstreamer kerberos ldap +mingw +mono netapi nls odbc openal
 	opencl +opengl osmesa pcap perl pulseaudio samba scanner +sdl
-	selinux +ssl +truetype udev udisks +unwind usb v4l +vulkan xattr
+	selinux +ssl +truetype udev udisks +unwind usb v4l +vulkan
 	+xcomposite xinerama"
 REQUIRED_USE="
 	X? ( truetype )
@@ -94,8 +94,7 @@ WINE_COMMON_DEPEND="
 		llvm-libunwind? ( sys-libs/llvm-libunwind[${MULTILIB_USEDEP}] )
 		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
 	)
-	usb? ( dev-libs/libusb:1[${MULTILIB_USEDEP}] )
-	xattr? ( sys-apps/attr[${MULTILIB_USEDEP}] )"
+	usb? ( dev-libs/libusb:1[${MULTILIB_USEDEP}] )"
 RDEPEND="
 	${WINE_COMMON_DEPEND}
 	app-emulation/wine-desktop-common
@@ -241,7 +240,6 @@ src_configure() {
 		$(use_with usb)
 		$(use_with v4l v4l2)
 		$(use_with vulkan)
-		$(use_with xattr)
 		$(use_with xcomposite)
 		$(use_with xinerama)
 		$(usev !odbc ac_cv_lib_soname_odbc=)
