@@ -5,4 +5,7 @@
     <email>x11@gentoo.org</email>
     <name>X11</name>
   </maintainer>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">mesa/glu</remote-id>
+  </upstream>
 </pkgmetadata>
