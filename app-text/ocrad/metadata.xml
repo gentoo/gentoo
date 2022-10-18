@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-<longdescription>GNU Ocrad is an OCR (Optical Character Recognition)
+  <!-- maintainer-needed -->
+  <longdescription>GNU Ocrad is an OCR (Optical Character Recognition)
 program impleme nted as a filter and based on a feature extraction
 method. It reads a bitmap ima ge in pbm format and outputs text in
 ISO-8859-1 (Latin-1) charset.</longdescription>
+  <upstream>
+    <remote-id type="savannah-nongnu">ocrad</remote-id>
+  </upstream>
 </pkgmetadata>
