@@ -10,7 +10,7 @@ MY_P="${PN}${PV//./}"
 LHA_VER="6.2.1"
 
 DESCRIPTION="Lund Monte Carlo high-energy physics event generator"
-HOMEPAGE="https://pythia8.hepforge.org/"
+HOMEPAGE="https://pythia.org/"
 SRC_URI="https://pythia.org/download/${PN}${MV//./}/${MY_P}.tgz
 	test? ( lhapdf? (
 		https://www.hepforge.org/archive/lhapdf/pdfsets/v6.backup/${LHA_VER}/CT10.tar.gz
@@ -154,6 +154,7 @@ src_install() {
 	dobin bin/pythia8-config
 	doheader -r include/*
 	dolib.so lib/libpythia8.so
+	use lhapdf && dolib.so lib/libpythia8lhapdf6.so
 	insinto "${PYTHIADIR}"
 	doins -r share/Pythia8/xmldoc examples/Makefile.inc
 
