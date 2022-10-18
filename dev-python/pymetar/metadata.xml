@@ -10,12 +10,12 @@ This library downloads the weather report for a given station
 ID (get yours from http://www.nws.noaa.gov/tg/siteloc.shtml),
 decodes it and provides easy access to all the data found in the
 report. Documentation and a small example app are inside the tarball.
-</longdescription>
+	</longdescription>
 	<longdescription lang="ja">
 このライブラリは指定したステーションID( http://www.nws.noaa.gov/tg/siteloc.shtml で入手)から天気予報結果をダウンロードし、解読し、予報データから検索するのに簡単
 なアクセス手段を提供します。ドキュメンテーションと単純なサンプル・アプリケーショ
 ンはtarballファイルの中です。
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="github">klausman/pymetar</remote-id>
 		<remote-id type="pypi">pymetar</remote-id>
