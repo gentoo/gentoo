@@ -6,14 +6,14 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<longdescription>
-industri is a Quake based, single player game using a modified version of the 
-Tenebrae 1.x engine. The Tenebrae engine is an Open Source (GNU GPL) modification 
-of Quake that brings per-pixel lighting, stencil shadows, hi-res textures, 
-bumpmap and normalmaps to the gaming experince.
+	industri is a Quake based, single player game using a modified version of the
+	Tenebrae 1.x engine. The Tenebrae engine is an Open Source (GNU GPL) modification
+	of Quake that brings per-pixel lighting, stencil shadows, hi-res textures,
+	bumpmap and normalmaps to the gaming experince.
 
-The focus of industri is a rich single-player game and engine. There is no 
-multi-player at all.
-</longdescription>
+	The focus of industri is a rich single-player game and engine. There is no
+	multi-player at all.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">industri</remote-id>
 	</upstream>
