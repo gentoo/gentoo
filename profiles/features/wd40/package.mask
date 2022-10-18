@@ -72,6 +72,7 @@ media-libs/libavif
 media-video/rav1e
 >=net-irc/polari-3.37
 net-libs/quiche
+net-misc/electrum-ltc
 net-misc/gsutil
 net-news/newsboat
 net-p2p/deluge
