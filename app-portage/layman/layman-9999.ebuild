@@ -25,9 +25,7 @@ SLOT="0"
 IUSE="cvs darcs +git gpg g-sorcery mercurial sqlite squashfs subversion sync-plugin-portage test"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( dev-vcs/subversion )
-	"
-
+BDEPEND="test? ( dev-vcs/subversion )"
 RDEPEND="
 	cvs? ( dev-vcs/cvs )
 	darcs? ( dev-vcs/darcs )
@@ -39,7 +37,11 @@ RDEPEND="
 	sync-plugin-portage? ( >=sys-apps/portage-2.2.16[${PYTHON_USEDEP}] )
 	!sync-plugin-portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
 	>=dev-python/ssl-fetch-0.4[${PYTHON_USEDEP}]
-	"
+"
+
+if [[ ${PV} == *9999 ]]; then
+	BDEPEND+=" app-text/asciidoc"
+fi
 
 layman_check_kernel_config() {
 	local CONFIG_CHECK
