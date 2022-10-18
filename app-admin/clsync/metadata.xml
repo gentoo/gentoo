@@ -13,7 +13,7 @@
   and multicast notifing clsync instances on another nodes to prevent loop
   syncing. Clsync can use advanced features for isolation: capabilities, cgroups,
   namespaces, seccomp, code hardening.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="apidoc">Provide doxygen generated API docs.</flag>
     <flag name="clsync">Build clsync binary. Most likely you want it. However it is possible to build only libclsync without clsync itself. </flag>
