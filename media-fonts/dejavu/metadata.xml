@@ -15,7 +15,7 @@
 	Available families (Sans = sans serif, Mono = monospaced): DejaVu Sans,
 	DejaVu Sans Mono, DejaVu Sans Condensed (experimental), DejaVu Serif, DejaVu
 	Serif Condensed
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">dejavu</remote-id>
 	</upstream>
