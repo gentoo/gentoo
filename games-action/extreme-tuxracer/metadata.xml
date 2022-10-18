@@ -6,9 +6,9 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<longdescription lang="en">
-Extreme Tux Racer is an open source racing game featuring Tux the Linux Penguin.
-ETRacer continues in the tracks of Tux Racer and its forks.
-</longdescription>
+	Extreme Tux Racer is an open source racing game featuring Tux the Linux Penguin.
+	ETRacer continues in the tracks of Tux Racer and its forks.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">extremetuxracer</remote-id>
 	</upstream>
