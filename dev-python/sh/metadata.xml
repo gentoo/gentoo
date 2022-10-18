@@ -18,7 +18,7 @@
 	print ifconfig("eth0")
 
 	sh is not a collection of system commands implemented in Python.
-</longdescription>
+	</longdescription>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">sh</remote-id>
