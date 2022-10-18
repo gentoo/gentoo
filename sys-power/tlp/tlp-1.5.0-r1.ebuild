@@ -26,6 +26,7 @@ src_install() {
 	emake \
 		DESTDIR="${D}" \
 		TLP_NO_INIT=1 \
+		TLP_ELOD=/$(get_libdir)/elogind/system-sleep \
 		TLP_WITH_ELOGIND=1 \
 		TLP_WITH_SYSTEMD=1 \
 		install install-man
