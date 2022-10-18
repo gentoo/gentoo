@@ -8,4 +8,7 @@
   <use>
     <flag name="xspice">Include Xspice, a standard X server that is also a Spice server</flag>
   </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">xorg/driver/xf86-video-qxl</remote-id>
+  </upstream>
 </pkgmetadata>
