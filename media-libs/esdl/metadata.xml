@@ -3,13 +3,13 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <longdescription>
-ESDL - What is that?
+  ESDL - What is that?
 
-It is library that gives you access to SDL and Opengl 
-functionality in your erlang program.
-SDL handles 2d graphics, user events and audio while 
-Opengl handles 3d graphics. More information. 
-</longdescription>
+  It is library that gives you access to SDL and Opengl
+  functionality in your erlang program.
+  SDL handles 2d graphics, user events and audio while
+  Opengl handles 3d graphics. More information.
+  </longdescription>
   <use>
     <flag name="image">Enable image support</flag>
   </use>
