@@ -6,9 +6,9 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <longdescription>
-Rack provides a common API for connecting web frameworks, web servers and layers
-of software inbetween.
-</longdescription>
+  Rack provides a common API for connecting web frameworks, web servers and layers
+  of software inbetween.
+  </longdescription>
   <upstream>
     <remote-id type="github">rkh/rack-protection</remote-id>
   </upstream>
