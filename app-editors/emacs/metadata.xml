@@ -18,7 +18,7 @@
      project planner, mail and news reader, debugger interface, calendar, and
      more. Many of these extensions are distributed with GNU Emacs; others are
      available separately.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="athena">Enable the MIT Athena widget set
     (<pkg>x11-libs/libXaw</pkg>)</flag>
