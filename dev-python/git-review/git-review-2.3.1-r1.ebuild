@@ -32,3 +32,9 @@ python_prepare_all() {
 	sed -i -e '/manpages/,+1d' setup.cfg || die
 	distutils-r1_python_prepare_all
 }
+
+python_install_all() {
+	doman git-review.1
+
+	distutils-r1_python_install_all
+}
