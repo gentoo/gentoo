@@ -6,18 +6,18 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<longdescription>
-AdvanceMAME and AdvanceMESS are unofficial MAME and MESS versions with an advanced video support for 
-helping the use with TVs, Arcade Monitors, Fixed Frequencies Monitors and also for PC Monitors.
+	AdvanceMAME and AdvanceMESS are unofficial MAME and MESS versions with an advanced video support for
+	helping the use with TVs, Arcade Monitors, Fixed Frequencies Monitors and also for PC Monitors.
 
-They run in GNU/Linux, Mac OS X, DOS, Windows and in all the other platforms supported by the SDL library.
+	They run in GNU/Linux, Mac OS X, DOS, Windows and in all the other platforms supported by the SDL library.
 
-The main difference compared with the official emulators is that the Advance versions program directly the 
-video board to always get a video mode with the correct size and frequency.
+	The main difference compared with the official emulators is that the Advance versions program directly the
+	video board to always get a video mode with the correct size and frequency.
 
-Generally the Advance emulators are able to use a video mode which doesn't require any stretching or other 
-unneeded effects to match the original arcade display. When the stretching is required by hardware 
-limitations you can anyway choice from different types of stretch.
-</longdescription>
+	Generally the Advance emulators are able to use a video mode which doesn't require any stretching or other
+	unneeded effects to match the original arcade display. When the stretching is required by hardware
+	limitations you can anyway choice from different types of stretch.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">advancemame</remote-id>
 	</upstream>
