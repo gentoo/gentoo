@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
- <email>toolchain@gentoo.org</email>
- <name>Gentoo Toolchain Project</name>
-</maintainer>
-<use>
- <flag name="libopts">install the libopts tarball (a few packages want this for developing)</flag>
-</use>
+  <maintainer type="project">
+    <email>toolchain@gentoo.org</email>
+    <name>Gentoo Toolchain Project</name>
+  </maintainer>
+  <use>
+    <flag name="libopts">install the libopts tarball (a few packages want this for developing)</flag>
+  </use>
+  <upstream>
+    <remote-id type="savannah">autogen</remote-id>
+  </upstream>
 </pkgmetadata>
