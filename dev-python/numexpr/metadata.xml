@@ -17,7 +17,7 @@
   writing the expression in C and compiling it with a specialized
   just-in-time (JIT) compiler, i.e. it does not require a compiler at
   runtime.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">numexpr</remote-id>
     <remote-id type="github">pydata/numexpr</remote-id>
