@@ -6,15 +6,15 @@
 		<name>Gentoo TeX Project</name>
 	</maintainer>
 	<longdescription>
-DjVu is a web-centric format and software platform for distributing documents
-and images. DjVu can advantageously replace PDF, PS, TIFF, JPEG, and GIF for
-distributing scanned documents, digital documents, or high-resolution pictures.
-DjVu content downloads faster, displays and renders faster, looks nicer on a
-screen, and consume less client resources than competing formats. DjVu images
-display instantly and can be smoothly zoomed and panned with no lengthy
-re-rendering. DjVu is used by hundreds of academic, commercial, governmental,
-and non-commercial web sites around the world.
-</longdescription>
+	DjVu is a web-centric format and software platform for distributing documents
+	and images. DjVu can advantageously replace PDF, PS, TIFF, JPEG, and GIF for
+	distributing scanned documents, digital documents, or high-resolution pictures.
+	DjVu content downloads faster, displays and renders faster, looks nicer on a
+	screen, and consume less client resources than competing formats. DjVu images
+	display instantly and can be smoothly zoomed and panned with no lengthy
+	re-rendering. DjVu is used by hundreds of academic, commercial, governmental,
+	and non-commercial web sites around the world.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">djvu</remote-id>
 	</upstream>
