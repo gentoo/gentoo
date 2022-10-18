@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>tamiko@gentoo.org</email>
-	<name>Matthias Maier</name>
-</maintainer>
+  <maintainer type="person">
+    <email>tamiko@gentoo.org</email>
+    <name>Matthias Maier</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="savannah">barcode</remote-id>
+  </upstream>
 </pkgmetadata>
