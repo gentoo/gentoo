@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://github.com/BestImageViewer/geeqie.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug doc djvu exif ffmpegthumbnailer gpu-accel heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp xmp zip"
+IUSE="debug doc djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp xmp zip"
 
 RDEPEND="gnome-extra/zenity
 	virtual/libintl
@@ -24,7 +24,6 @@ RDEPEND="gnome-extra/zenity
 	doc? ( app-text/yelp-tools )
 	exif? ( >=media-gfx/exiv2-0.17:=[xmp?] )
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
-	gpu-accel? ( media-libs/clutter-gtk )
 	heif? ( >=media-libs/libheif-1.3.2 )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.0:2 )
 	jpeg? ( media-libs/libjpeg-turbo:= )
@@ -32,7 +31,8 @@ RDEPEND="gnome-extra/zenity
 	lcms? ( media-libs/lcms:2 )
 	lua? ( ${LUA_DEPS}
 		doc? ( app-doc/doxygen ) )
-	map? ( media-libs/libchamplain:0.12 )
+	map? ( media-libs/clutter-gtk
+		media-libs/libchamplain:0.12[gtk] )
 	pdf? ( >=app-text/poppler-0.62[cairo] )
 	raw? ( >=media-libs/libraw-0.20 )
 	spell? ( app-text/gspell )
@@ -47,12 +47,16 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig"
 
-REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
-	map? ( gpu-accel )"
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0.1-allow_xxdi.patch"
 )
+
+pkg_setup() {
+	# Do not require setting LUA_SINGLE_TARGET if lua is not used
+	use lua && lua-single_pkg_setup
+}
 
 src_prepare() {
 	default
@@ -66,22 +70,23 @@ src_configure() {
 		-Dgq_helpdir="share/doc/${PF}"
 		-Dgq_htmldir="share/doc/${PF}/html"
 		$(meson_use debug)
-		$(meson_feature zip archive)
-		$(meson_feature lcms cms)
 		$(meson_feature djvu)
+		$(meson_feature doc)
 		$(meson_feature exif exiv2)
 		$(meson_feature ffmpegthumbnailer videothumbnailer)
-		$(meson_feature gpu-accel gps-map)
 		$(meson_feature heif)
-		$(meson_feature jpeg2k j2k)
 		$(meson_feature jpeg)
+		$(meson_feature jpeg2k j2k)
 		$(meson_feature jpegxl)
-		$(meson_feature raw libraw)
+		$(meson_feature lcms cms)
 		$(meson_feature lua)
+		$(meson_feature map gps-map)
 		$(meson_feature pdf)
+		$(meson_feature raw libraw)
 		$(meson_feature spell)
 		$(meson_feature tiff)
 		$(meson_feature webp)
+		$(meson_feature zip archive)
 	)
 
 	meson_src_configure
@@ -100,10 +105,9 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	optfeature "Camera import and tethered photography plugins" media-gfx/gphoto2
-	optfeature "Export JPEG plugin" media-gfx/exiv2
 	optfeature "Lens ID plugin" media-libs/exiftool
-	optfeature "Image crop plugin" "media-gfx/exiv2 media-libs/exiftool media-gfx/imagemagick"
-	optfeature "Image rotate plugin (JPEG)" "media-gfx/exiv2 media-gfx/fbida"
-	optfeature "Image rotate plugin (TIFF/PNG)" "media-gfx/exiv2 media-gfx/imagemagick"
+	optfeature "Image crop plugin" "media-libs/exiftool media-gfx/imagemagick"
+	optfeature "Image rotate plugin (JPEG)" media-gfx/fbida
+	optfeature "Image rotate plugin (TIFF/PNG)" media-gfx/imagemagick
 	optfeature "Print preview functionality" app-text/evince
 }
