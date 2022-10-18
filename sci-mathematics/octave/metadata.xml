@@ -6,8 +6,8 @@
     <name>Gentoo Mathematics Project</name>
   </maintainer>
   <longdescription lang="en">
-	Octave is a high-level language, primarily intended for numerical computations. It provides a convenient command line interface for solving linear and nonlinear problems numerically, and for performing other numerical experiments. It may also be used as a batch-oriented language.
-	</longdescription>
+  Octave is a high-level language, primarily intended for numerical computations. It provides a convenient command line interface for solving linear and nonlinear problems numerically, and for performing other numerical experiments. It may also be used as a batch-oriented language.
+  </longdescription>
   <use>
     <flag name="glpk">Add support for <pkg>sci-mathematics/glpk</pkg> for linear programming</flag>
     <flag name="json">Allow using jsonencode and jsondecode commands via <pkg>dev-libs/rapidjson</pkg></flag>
