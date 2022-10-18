@@ -6,10 +6,10 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<longdescription lang="en">
-This is the Phalanx chess engine. Phalanx's playing style is quite human-like;
-when it plays at full strength, it may be compared to a intermediate-to-strong
-player; beginners will be right at home with it, too.
-</longdescription>
+	This is the Phalanx chess engine. Phalanx's playing style is quite human-like;
+	when it plays at full strength, it may be compared to a intermediate-to-strong
+	player; beginners will be right at home with it, too.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">phalanx</remote-id>
 	</upstream>
