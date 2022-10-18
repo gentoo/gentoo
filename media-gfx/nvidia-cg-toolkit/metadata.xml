@@ -3,10 +3,10 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <longdescription>
-The Cg Toolkit provides a compiler for the Cg language, runtime libraries for
-use with both leading graphics APIs, runtime libraries for CgFX, example
-applications, and extensive documentation. Supporting over 20 different OpenGL
-and DirectX profile targets, Cg will allow you to incorporate stunning
-interactive effects into your 3D applications.
-</longdescription>
+  The Cg Toolkit provides a compiler for the Cg language, runtime libraries for
+  use with both leading graphics APIs, runtime libraries for CgFX, example
+  applications, and extensive documentation. Supporting over 20 different OpenGL
+  and DirectX profile targets, Cg will allow you to incorporate stunning
+  interactive effects into your 3D applications.
+  </longdescription>
 </pkgmetadata>
