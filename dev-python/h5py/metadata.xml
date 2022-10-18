@@ -17,7 +17,7 @@
   (as used with Numpy recarray types), HDF5 attributes, hyperslab and
   point-based I/O, and more recent features in HDF 1.8 like resizable
   datasets and recursive iteration over entire files.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="google-code">h5py</remote-id>
     <remote-id type="pypi">h5py</remote-id>
