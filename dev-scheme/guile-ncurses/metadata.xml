@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-
 <pkgmetadata>
   <maintainer type="project">
     <email>scheme@gentoo.org</email>
@@ -12,4 +11,7 @@
     interface functionality is built on the ncurses libraries: curses, form,
     panel, and menu.
   </longdescription>
+  <upstream>
+    <remote-id type="savannah">guile-ncurses</remote-id>
+  </upstream>
 </pkgmetadata>
