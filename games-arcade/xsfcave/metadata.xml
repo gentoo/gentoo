@@ -6,10 +6,10 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<longdescription lang="en">
-xsfcave is a X11 sfcave clone. The game consist of surviving in a tunel by not
-hitting in the walls and obstacles. The first versions of the game are greatly
-influenced by the Java version of this game.
-</longdescription>
+	xsfcave is a X11 sfcave clone. The game consist of surviving in a tunel by not
+	hitting in the walls and obstacles. The first versions of the game are greatly
+	influenced by the Java version of this game.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">scrap</remote-id>
 	</upstream>
