@@ -23,4 +23,7 @@
     (<pkg>virtual/cblas</pkg>) instead of shipped internal version</flag>
     <flag name="deprecated">Enable deprecated functions</flag>
   </use>
+  <upstream>
+    <remote-id type="savannah">gsl</remote-id>
+  </upstream>
 </pkgmetadata>
