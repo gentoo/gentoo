@@ -16,7 +16,7 @@
   interface that, combined with natural naming and C-code generated
   from Pyrex sources, makes it a fast, yet extremely easy to use tool
   for interactively save and retrieve large amounts of data.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">tables</remote-id>
   </upstream>
