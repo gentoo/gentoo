@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<use>
-<flag name="units-cur">Install the units_cur python script that updates currencies</flag>
-</use>
+  <!-- maintainer-needed -->
+  <use>
+    <flag name="units-cur">Install the units_cur python script that updates currencies</flag>
+  </use>
+  <upstream>
+    <remote-id type="savannah">units</remote-id>
+  </upstream>
 </pkgmetadata>
