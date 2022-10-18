@@ -41,7 +41,4 @@
     <bugs-to>https://savannah.gnu.org/bugs/?group=denemo&amp;func=additem</bugs-to>
     <remote-id type="savannah">denemo</remote-id>
   </upstream>
-  <upstream>
-    <remote-id type="savannah">denemo</remote-id>
-  </upstream>
 </pkgmetadata>
