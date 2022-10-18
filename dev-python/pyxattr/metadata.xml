@@ -5,7 +5,7 @@
   pyxattr is an Python extension module wrapper for libattr. You can
   use this module to query, list, add and remove extended attributes
   from files and directories
-</longdescription>
+  </longdescription>
   <maintainer type="person">
     <email>robbat2@gentoo.org</email>
   </maintainer>
