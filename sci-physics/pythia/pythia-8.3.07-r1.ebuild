@@ -5,32 +5,32 @@ EAPI=8
 
 inherit toolchain-funcs
 
-MV=$(ver_cut 1)
+MV=$(ver_cut 1-2)
 MY_P="${PN}${PV//./}"
-LHA_VER="6.1"
+LHA_VER="6.2.1"
 
 DESCRIPTION="Lund Monte Carlo high-energy physics event generator"
 HOMEPAGE="https://pythia.org/"
-SRC_URI="http://home.thep.lu.se/~torbjorn/${PN}${MV}/${MY_P}.tgz
+SRC_URI="https://pythia.org/download/${PN}${MV//./}/${MY_P}.tgz
 	test? ( lhapdf? (
-		https://www.hepforge.org/archive/lhapdf/pdfsets/${LHA_VER}/CT10.tar.gz
-		https://www.hepforge.org/archive/lhapdf/pdfsets/${LHA_VER}/MRST2007lomod.tar.gz
-		https://www.hepforge.org/archive/lhapdf/pdfsets/${LHA_VER}/NNPDF23_nlo_as_0119_qed_mc.tar.gz
-		https://www.hepforge.org/archive/lhapdf/pdfsets/${LHA_VER}/NNPDF23_nnlo_as_0119_qed_mc.tar.gz
-		https://www.hepforge.org/archive/lhapdf/pdfsets/${LHA_VER}/cteq66.tar.gz
-		https://www.hepforge.org/archive/lhapdf/pdfsets/${LHA_VER}/cteq6l1.tar.gz
-		https://www.hepforge.org/archive/lhapdf/pdfsets/${LHA_VER}/unvalidated/MRST2004qed.tar.gz
+		https://www.hepforge.org/archive/lhapdf/pdfsets/v6.backup/${LHA_VER}/CT10.tar.gz
+		https://www.hepforge.org/archive/lhapdf/pdfsets/v6.backup/${LHA_VER}/MRST2007lomod.tar.gz
+		https://www.hepforge.org/archive/lhapdf/pdfsets/v6.backup/${LHA_VER}/NNPDF23_nlo_as_0119_qed_mc.tar.gz
+		https://www.hepforge.org/archive/lhapdf/pdfsets/v6.backup/${LHA_VER}/NNPDF23_nnlo_as_0119_qed_mc.tar.gz
+		https://www.hepforge.org/archive/lhapdf/pdfsets/v6.backup/${LHA_VER}/cteq66.tar.gz
+		https://www.hepforge.org/archive/lhapdf/pdfsets/v6.backup/${LHA_VER}/cteq6l1.tar.gz
+		https://www.hepforge.org/archive/lhapdf/pdfsets/v6.backup/${LHA_VER}/unvalidated/MRST2004qed.tar.gz
 	) )"
 
 SLOT="8"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64"
 IUSE="doc examples fastjet +hepmc lhapdf root test zlib"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	fastjet? ( sci-physics/fastjet )
-	hepmc? ( sci-physics/hepmc:2= )
+	hepmc? ( sci-physics/hepmc:3= )
 	lhapdf? ( sci-physics/lhapdf:= )
 	zlib? ( sys-libs/zlib )"
 # ROOT is used only when building related tests
@@ -91,10 +91,6 @@ src_prepare() {
 	# ask cflags from root
 	sed -i "s|root-config|root-config --cflags|g" examples/Makefile || die
 
-	sed -i \
-		-e '/TARGETS=$(LOCAL_LIB)\/libpythia8\.a/d' \
-		-e 's|libpythia8\.a$|libpythia8$(LIB_SUFFIX)|g' \
-		Makefile || die
 	sed -i 's|libpythia8\.a|libpythia8$(LIB_SUFFIX)|g' \
 		examples/Makefile || die
 }
@@ -108,13 +104,12 @@ src_configure() {
 	./configure \
 		--arch=Linux \
 		--cxx="$(tc-getCXX)" \
-		--enable-shared \
 		--prefix="${EPREFIX}/usr" \
 		--prefix-lib="$(get_libdir)" \
 		--prefix-share="${EPYTHIADIR}" \
 		$(usex fastjet "--with-fastjet3" "") \
 		$(usex zlib "--with-gzip" "") \
-		$(usex hepmc "--with-hepmc2" "") \
+		$(usex hepmc "--with-hepmc3" "") \
 		$(usex lhapdf "--with-lhapdf6
 			--with-lhapdf6-plugin=LHAPDF6.h
 			--with-lhapdf6-lib=${EPREFIX}/usr/$(get_libdir)" "") \
