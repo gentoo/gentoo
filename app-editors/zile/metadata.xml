@@ -10,7 +10,7 @@
   footprint installations (e.g. on floppy disk), machines with little memory,
   or quick editing sessions, especially on remote machines or as a different
   user, e.g. root.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="savannah">zile</remote-id>
   </upstream>
