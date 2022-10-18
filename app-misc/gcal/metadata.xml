@@ -17,4 +17,7 @@
   the Chinese and Japanese calendar, the Hebrew calendar and the civil Islamic
   calendar, too.
 </longdescription>
+  <upstream>
+    <remote-id type="savannah">gcal</remote-id>
+  </upstream>
 </pkgmetadata>
