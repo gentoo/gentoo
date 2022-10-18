@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-10-18)
+# Dead package, use dev-util/nvidia-cuda-toolkit instead. Examples were
+# removed in 11.6, no revdeps left. Removal on 2022-11-17.
+# Bug #722092, #749900, #762169, #840656, #845381, #858392, #866701.
+dev-util/nvidia-cuda-sdk
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-10-17)
 # Hostile takeover ongoing, integrity of the live version
 # cannot be guaranteed. Use the release version only if you
