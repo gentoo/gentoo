@@ -10,11 +10,11 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <longdescription lang="en">
-Pyfa is the Python Fitting Assistant, a standalone application for creating
-fittings for the EVE Online SciFi MMORPG. It provides many advanced features
-such as graphs and full calculations of any possible combination of modules,
-fits, etc.
-</longdescription>
+  Pyfa is the Python Fitting Assistant, a standalone application for creating
+  fittings for the EVE Online SciFi MMORPG. It provides many advanced features
+  such as graphs and full calculations of any possible combination of modules,
+  fits, etc.
+  </longdescription>
   <upstream>
     <remote-id type="github">pyfa-org/Pyfa</remote-id>
   </upstream>
