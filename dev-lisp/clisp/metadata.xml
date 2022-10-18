@@ -6,18 +6,18 @@
 		<name>Gentoo Common Lisp Project</name>
 	</maintainer>
 	<longdescription>
-CLISP is a Common Lisp implementation. It mostly supports the Lisp
-described in the ANSI Common Lisp standard.  It includes an
-interpreter, a compiler, almost all of CLOS, a foreign language
-interface and a socket interface. An X11 interface is available
-through CLX and Garnet. Command line editing is provided by readline.
-CLISP runs on microcomputers (OS/2, Windows 95/98/NT/2000/XP, Amiga
-500-4000, Acorn RISC PC) as well as on Unix workstations (GNU/Linux,
-BSD, SVR4, Sun4, DEC Alpha OSF, HP-UX, NeXTstep, SGI, AIX, Sun3 and
-others) and needs only 2 MB of RAM.  The user interface comes in
-German, English, French, Spanish, Dutch and Russian, and can be
-changed at run time.
-</longdescription>
+	CLISP is a Common Lisp implementation. It mostly supports the Lisp
+	described in the ANSI Common Lisp standard.  It includes an
+	interpreter, a compiler, almost all of CLOS, a foreign language
+	interface and a socket interface. An X11 interface is available
+	through CLX and Garnet. Command line editing is provided by readline.
+	CLISP runs on microcomputers (OS/2, Windows 95/98/NT/2000/XP, Amiga
+	500-4000, Acorn RISC PC) as well as on Unix workstations (GNU/Linux,
+	BSD, SVR4, Sun4, DEC Alpha OSF, HP-UX, NeXTstep, SGI, AIX, Sun3 and
+	others) and needs only 2 MB of RAM.  The user interface comes in
+	German, English, French, Spanish, Dutch and Russian, and can be
+	changed at run time.
+	</longdescription>
 	<use>
 		<flag name="hyperspec">Use local hyperspec instead of online version</flag>
 		<flag name="svm">Build CLISP with support for the Support Vector Machine module</flag>
