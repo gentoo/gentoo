@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -90,7 +90,8 @@ src_install() {
 	doins -r etc
 
 	# Install the manpage
-	doman usr/share/man/man1/SpiderOakONE.1.gz
+	gzip -d usr/share/man/man1/SpiderOakONE.1.gz || die
+	doman usr/share/man/man1/SpiderOakONE.1
 
 	if use X; then
 		domenu usr/share/applications/SpiderOakONE.desktop
