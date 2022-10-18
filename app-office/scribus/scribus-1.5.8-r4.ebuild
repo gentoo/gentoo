@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="tk?"
-inherit cmake desktop flag-o-matic python-single-r1 xdg
+inherit cmake desktop flag-o-matic optfeature python-single-r1 xdg
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="https://www.scribus.net/"
@@ -161,4 +161,10 @@ src_install() {
 	newicon -s 64 resources/iconsets/artwork/icon_32x32@2x.png scribus.png
 	doicon resources/iconsets/*/scribus.png
 	domenu scribus.desktop
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	optfeature "MS Word .doc file import filter support" app-text/antiword
 }
