@@ -6,12 +6,12 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<longdescription>
-Tenebrae is a modification of the quake source that adds stencil shadows 
-and per pixel lights to quake. Stencil shadows allow for realistic 
-shadow effects on every object in the game world. Per pixel lighting 
-allows you to have fine surface details correctly lit. These are 
-essentially the same algorithms as used by the new Doom game.
-</longdescription>
+	Tenebrae is a modification of the quake source that adds stencil shadows
+	and per pixel lights to quake. Stencil shadows allow for realistic
+	shadow effects on every object in the game world. Per pixel lighting
+	allows you to have fine surface details correctly lit. These are
+	essentially the same algorithms as used by the new Doom game.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">tenebrae</remote-id>
 	</upstream>
