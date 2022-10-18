@@ -37,7 +37,7 @@
 # Hostile takeover ongoing, integrity of the live version
 # cannot be guaranteed. Use the release version only if you
 # change the meta server setting.
-# Use games-action/polymc-bin instead to be completely safe.
+# Use games-action/multimc-bin instead to be completely safe.
 # https://bugs.gentoo.org/877495
 games-action/polymc
 
