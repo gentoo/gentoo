@@ -30,4 +30,7 @@ session is detached from the users terminal.
     <flag name="multiuser">Enable multiuser support (by setting correct permissions)</flag>
     <flag name="nethack">Express error messages in nethack style</flag>
   </use>
+  <upstream>
+    <remote-id type="savannah">screen</remote-id>
+  </upstream>
 </pkgmetadata>
