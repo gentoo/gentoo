@@ -14,5 +14,5 @@
     https://github.com/php/pecl-php-uploadprogress/tree/master/examples for
     examples. It is known to work on apache with mod_php and, beginning with 2.0,
     php-fpm with apache and nginx; other servers and SAPIs are not known to work.
-</longdescription>
+  </longdescription>
 </pkgmetadata>
