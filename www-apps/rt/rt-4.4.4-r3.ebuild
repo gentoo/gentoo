@@ -227,7 +227,7 @@ src_compile() { :; }
 
 src_install() {
 	webapp_src_preinst
-	emake install
+	emake DESTDIR="${D}" install
 
 	dodoc -r docs/*
 	# Disable compression because `perldoc` doesn't decompress transparently
