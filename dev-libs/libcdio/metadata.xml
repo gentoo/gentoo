@@ -12,4 +12,7 @@
     none of the command-line utilities are built, nor is the CDDA library.
   </flag>
   </use>
+  <upstream>
+    <remote-id type="savannah">libcdio</remote-id>
+  </upstream>
 </pkgmetadata>
