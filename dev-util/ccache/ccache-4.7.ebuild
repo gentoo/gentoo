@@ -64,10 +64,9 @@ src_configure() {
 		-DENABLE_DOCUMENTATION=$(usex doc)
 		-DENABLE_TESTING=$(usex test)
 		-DZSTD_FROM_INTERNET=OFF
+		-DHIREDIS_FROM_INTERNET=OFF
 		-DREDIS_STORAGE_BACKEND=$(usex redis)
 	)
-
-	use redis && mycmakeargs+=( -DHIREDIS_FROM_INTERNET_DEFAULT=OFF )
 
 	cmake_src_configure
 }
