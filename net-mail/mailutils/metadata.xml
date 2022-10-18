@@ -4,11 +4,14 @@
   <maintainer type="person">
     <email>eras@gentoo.org</email>
     <name>Eray Aslan</name>
- </maintainer>
-<use>
-  <flag name="tokyocabinet">Enable Tokyo Cabinet database support</flag>
-  <flag name="kyotocabinet">Enable Kyoto Cabinet database support</flag>
-  <flag name="clients">Build client programs - frm maidag mail sieve messages readmsg dotlock movemail mimeview mh</flag>
-  <flag name="servers">Build server programs - imap4d pop3d comsatd</flag>
-</use>
+  </maintainer>
+  <use>
+    <flag name="tokyocabinet">Enable Tokyo Cabinet database support</flag>
+    <flag name="kyotocabinet">Enable Kyoto Cabinet database support</flag>
+    <flag name="clients">Build client programs - frm maidag mail sieve messages readmsg dotlock movemail mimeview mh</flag>
+    <flag name="servers">Build server programs - imap4d pop3d comsatd</flag>
+  </use>
+  <upstream>
+    <remote-id type="savannah">mailutils</remote-id>
+  </upstream>
 </pkgmetadata>
