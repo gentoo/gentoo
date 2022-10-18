@@ -13,7 +13,7 @@
     Dask is a simple task scheduling system that uses directed acyclic
     graphs (DAGs) of tasks to break up large computations into many
     small ones.
-</longdescription>
+  </longdescription>
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">dask</remote-id>
