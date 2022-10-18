@@ -3,11 +3,11 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <longdescription lang="en">
-libSieve provides a library to interpret Sieve scripts, and to execute those
-scripts over a given set of messages. The return codes from the libSieve
-functions let your program know how to handle the message, and then it's up to
-you to make it so.
-</longdescription>
+  libSieve provides a library to interpret Sieve scripts, and to execute those
+  scripts over a given set of messages. The return codes from the libSieve
+  functions let your program know how to handle the message, and then it's up to
+  you to make it so.
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">libsieve</remote-id>
   </upstream>
