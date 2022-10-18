@@ -11,14 +11,14 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<longdescription>
-WenQuanYi project intends to provide the open-source community with the most
-complete, standard compliant, high-quality Chinese fonts and resources. TrueType
-and bitmap fonts at various sizes/styles will be developed and freely available
-to users.
+	WenQuanYi project intends to provide the open-source community with the most
+	complete, standard compliant, high-quality Chinese fonts and resources. TrueType
+	and bitmap fonts at various sizes/styles will be developed and freely available
+	to users.
 
-WenQuanYi Bitmap Song font for complete CJK Unified Ideographics, including 9,
-10, 11 and 12 point. It provides medium and bold weight.
-</longdescription>
+	WenQuanYi Bitmap Song font for complete CJK Unified Ideographics, including 9,
+	10, 11 and 12 point. It provides medium and bold weight.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">wqy</remote-id>
 	</upstream>
