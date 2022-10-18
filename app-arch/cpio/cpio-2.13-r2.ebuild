@@ -19,6 +19,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.12-non-gnu-compilers.patch #275295
 	"${WORKDIR}"/${P}-CVE-2021-38185.patch
 	"${FILESDIR}"/${PN}-2.13-sysmacros-glibc-2.26.patch
+	"${FILESDIR}"/${PN}-2.13-fix-no-absolute-filenames-revert-CVE-2015-1197-handling.patch
 )
 
 src_prepare() {
