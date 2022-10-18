@@ -11,7 +11,7 @@
   completely written in Java. Scheme functions and files are automatically
   compiled into Java byte-codes. Kawa does some optimizations, and the
   compiled code runs at reasonable speed.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="awt">Assume AWT is available</flag>
     <flag name="frontend">Build "kawa" front-end program using
