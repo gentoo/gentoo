@@ -10,14 +10,14 @@
     <name>Gentoo Perl Project</name>
   </maintainer>
   <longdescription lang="en">
- The Perl Data Language  gives standard perl the ability to compactly
- store and speedily manipulate the large N-dimensional data arrays 
- which are the bread and butter of scientific computing.  The idea 
- is to turn perl in to a free, array-oriented, numerical language 
- in the same sense as commercial packages like IDL and MatLab. One
- can write simple perl expressions to manipulate entire numerical
- arrays all at once.
-</longdescription>
+  The Perl Data Language  gives standard perl the ability to compactly
+  store and speedily manipulate the large N-dimensional data arrays
+  which are the bread and butter of scientific computing.  The idea
+  is to turn perl in to a free, array-oriented, numerical language
+  in the same sense as commercial packages like IDL and MatLab. One
+  can write simple perl expressions to manipulate entire numerical
+  arrays all at once.
+  </longdescription>
   <use>
     <flag name="badval">Enable bad values support</flag>
     <flag name="hdf">Enable HDF (version 4) format support</flag>
