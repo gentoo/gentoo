@@ -11,17 +11,17 @@
   </maintainer>
   <use>
     <flag name="device-mapper">
-			Enable device-mapper support from <pkg>sys-fs/lvm2</pkg>
-			in parted
-		</flag>
+    Enable device-mapper support from <pkg>sys-fs/lvm2</pkg>
+    in parted
+    </flag>
     <flag name="debug">
-			Enable debugging as encouraged by upstream: [The default
-			configuration] includes --enable-debug (by default), which
-			contains many assertions.  Obviously, these "waste" space,
-			but in the past, they have caught potentially dangerous bugs
-			before they would have done damage, so we think it's worth
-			it.  Also, it means we get more bug reports ;)
-		</flag>
+    Enable debugging as encouraged by upstream: [The default
+    configuration] includes --enable-debug (by default), which
+    contains many assertions.  Obviously, these "waste" space,
+    but in the past, they have caught potentially dangerous bugs
+    before they would have done damage, so we think it's worth
+    it.  Also, it means we get more bug reports ;)
+   </flag>
   </use>
   <upstream>
     <remote-id type="savannah">parted</remote-id>
