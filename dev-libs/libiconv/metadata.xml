@@ -6,10 +6,10 @@
     <name>Prefix Project</name>
   </maintainer>
   <longdescription lang="en">
-libiconv is a standalone package which implements the iconv() related
-functions as glibc already embed. Libraries and applications needs it
-when built in a non-glibc system.
-</longdescription>
+  libiconv is a standalone package which implements the iconv() related
+  functions as glibc already embed. Libraries and applications needs it
+  when built in a non-glibc system.
+  </longdescription>
   <upstream>
     <remote-id type="savannah">libiconv</remote-id>
   </upstream>
