@@ -15,7 +15,7 @@
   mean a graph with weights (fields, properties) on nodes and/or edges.
   The potential audience for NetworkX includes: mathematicians, physicists,
   biologists, computer scientists, social scientists.
-</longdescription>
+  </longdescription>
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">networkx</remote-id>
