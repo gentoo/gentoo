@@ -7,6 +7,7 @@ inherit desktop java-utils-2 xdg
 
 DESCRIPTION="Java-based editor for the OpenStreetMap project"
 HOMEPAGE="https://josm.openstreetmap.de/"
+# PV should be stable here https://josm.openstreetmap.de/wiki/StartupPage
 SRC_URI="https://josm.openstreetmap.de/download/josm-snapshot-${PV}.jar"
 S="${WORKDIR}"
 
