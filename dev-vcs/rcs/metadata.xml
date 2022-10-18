@@ -6,12 +6,12 @@
     <name>Aaron W. Swenson</name>
   </maintainer>
   <longdescription>
-		The Revision Control System (RCS) is a system for managing
-		multiple versions of files. RCS automates the storage, retrieval,
-		logging, identification and merging of file revisions. RCS is useful
-		for text files that are revised frequently (for example, programs,
-		documentation, graphics, papers and form letters).
-	</longdescription>
+  The Revision Control System (RCS) is a system for managing
+  multiple versions of files. RCS automates the storage, retrieval,
+  logging, identification and merging of file revisions. RCS is useful
+  for text files that are revised frequently (for example, programs,
+  documentation, graphics, papers and form letters).
+  </longdescription>
   <upstream>
     <remote-id type="savannah">rcs</remote-id>
   </upstream>
