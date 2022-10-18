@@ -19,7 +19,7 @@
   All of these modules are implemented as C extension modules based on
   standard sparse and dense matrix libraries (UMFPACK/AMD, SuperLU,
   BLAS/LAPACK) for maximum performance and robustness.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">emcee</remote-id>
   </upstream>
