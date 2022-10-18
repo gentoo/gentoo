@@ -3,8 +3,8 @@
 <pkgmetadata>
 	<!--maintainer-needed-->
 	<longdescription lang="en">
-Pspdftool is a tool for preprinting preparation of documents. It supports PostScript and PDF files and allows users do several transformations (for example rotation, scale, miror ...) and pages selections.
-</longdescription>
+	Pspdftool is a tool for preprinting preparation of documents. It supports PostScript and PDF files and allows users do several transformations (for example rotation, scale, miror ...) and pages selections.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">pspdftool</remote-id>
 	</upstream>
