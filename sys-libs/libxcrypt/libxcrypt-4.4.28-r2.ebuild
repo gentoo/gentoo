@@ -21,7 +21,7 @@ fi
 LICENSE="LGPL-2.1+ public-domain BSD BSD-2"
 SLOT="0/1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="+compat split-usr static-libs system test"
+IUSE="+compat split-usr static-libs system test headers-only"
 REQUIRED_USE="split-usr? ( system )"
 RESTRICT="!test? ( test )"
 
@@ -209,10 +209,18 @@ multilib_src_configure() {
 		*) die "Unexpected MULTIBUILD_ID: ${MULTIBUILD_ID}";;
 	esac
 
-	ECONF_SOURCE="${S}" econf "${myconf[@]}"
+	if use headers-only; then
+		# Nothing is compiled here which would affect the headers for the target.
+		# So forcing CC is sane.
+		headers_only_flags="CC=$(tc-getBUILD_CC)"
+	fi
+
+	ECONF_SOURCE="${S}" econf "${myconf[@]}" "${headers_only_flags}"
 }
 
 src_compile() {
+	use headers-only && return
+
 	multibuild_foreach_variant multilib-minimal_src_compile
 }
 
@@ -227,6 +235,7 @@ src_test() {
 src_install() {
 	multibuild_foreach_variant multilib-minimal_src_install
 
+	use headers-only || \
 	(
 		shopt -s failglob || die "failglob failed"
 
@@ -250,6 +259,11 @@ src_install() {
 }
 
 multilib_src_install() {
+	if use headers-only; then
+		emake DESTDIR="${D}" install-nodist_includeHEADERS
+		return
+	fi
+
 	emake DESTDIR="${D}" install
 
 	# Don't install the libcrypt.so symlink for the "compat" version
