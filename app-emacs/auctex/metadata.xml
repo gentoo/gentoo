@@ -18,7 +18,7 @@
   component of your editing workflow by visualizing selected source chunks
   (such as single formulas or graphics) directly as images in the source
   buffer.
-</longdescription>
+  </longdescription>
   <stabilize-allarches/>
   <use>
     <flag name="preview-latex">Use bundled preview-latex</flag>
