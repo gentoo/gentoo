@@ -1,0 +1,12 @@
+--- a/am/ax_compile_check_rettype.m4
++++ b/am/ax_compile_check_rettype.m4
+@@ -70,6 +70,7 @@ AC_CACHE_VAL(AC_CV_NAME,
+ [for ac_type in char short int long "long long" $4
+  do 
+   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ $3
+ ]], [[switch (0) case 0: case (sizeof ($1($2)) == sizeof ($ac_type)):;]])], [AC_CV_NAME=$ac_type])
+ 
+ 
