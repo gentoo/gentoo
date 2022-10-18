@@ -49,7 +49,7 @@ DEPEND="${RDEPEND}
 RDEPEND+="
 	python? (
 		${PYTHON_DEPS}
-		$(python_gen_any_dep 'dev-python/pandas[${PYTHON_USEDEP}]')
+		dev-python/pandas[${PYTHON_USEDEP}]
 	)
 	gnuplot? ( sci-visualization/gnuplot )"
 
@@ -58,10 +58,6 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/fio-2.2.13-libmtd.patch
 )
-
-python_check_deps() {
-	has_version "dev-python/pandas[${PYTHON_USEDEP}]"
-}
 
 src_prepare() {
 	default

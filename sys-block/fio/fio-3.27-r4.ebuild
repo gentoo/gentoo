@@ -48,7 +48,7 @@ DEPEND="${RDEPEND}
 RDEPEND+="
 	python? (
 		${PYTHON_DEPS}
-		$(python_gen_any_dep 'dev-python/pandas[${PYTHON_USEDEP}]')
+		dev-python/pandas[${PYTHON_USEDEP}]
 	)
 	gnuplot? ( sci-visualization/gnuplot )"
 
@@ -59,10 +59,6 @@ PATCHES=(
 	# Upstream patch, should be able to drop in the next release
 	"${FILESDIR}"/fio-3.27-drop-raw.patch
 )
-
-python_check_deps() {
-	has_version "dev-python/pandas[${PYTHON_USEDEP}]"
-}
 
 src_prepare() {
 	default
