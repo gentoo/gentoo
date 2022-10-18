@@ -10,13 +10,13 @@ This is a library for making SSH2 connections (client or server).
 Emphasis is on using SSH2 as an alternative to SSL for making secure
 connections between python scripts.  All major ciphers and hash methods
 are supported. SFTP client mode is now supported too.
-</longdescription>
+  </longdescription>
   <longdescription lang="ja">
 これはSSH2コネクション(クライアントとサーバー)を作り出すためのライブラリです。注
 目点はPython言語スクリプト間のセキュアなコネクションを作り出すSSLの代用にSSHを利
 用している所です。有名なCipherとHash処理の全てがサポートされています。SFTPクライ
 アントもサポートされています。
-</longdescription>
+  </longdescription>
   <stabilize-allarches/>
   <use>
     <flag name="server">Enable server feature</flag>
