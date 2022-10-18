@@ -19,7 +19,10 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA BSD public-domain rc"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
 KEYWORDS=""
-IUSE="+binutils-plugin debug doc exegesis libedit +libffi ncurses test xar xml z3"
+IUSE="
+	+binutils-plugin debug doc exegesis libedit +libffi ncurses test xar
+	xml z3 zstd
+"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -32,6 +35,7 @@ RDEPEND="
 	xar? ( app-arch/xar )
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	z3? ( >=sci-mathematics/z3-4.7.1:0=[${MULTILIB_USEDEP}] )
+	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="
 	${RDEPEND}
@@ -353,6 +357,7 @@ multilib_src_configure() {
 		-DLLVM_ENABLE_EH=ON
 		-DLLVM_ENABLE_RTTI=ON
 		-DLLVM_ENABLE_Z3_SOLVER=$(usex z3)
+		-DLLVM_ENABLE_ZSTD=$(usex zstd)
 
 		-DLLVM_HOST_TRIPLE="${CHOST}"
 
