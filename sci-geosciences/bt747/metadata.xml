@@ -14,7 +14,7 @@ BT747 is software that can:
   * Runs on Desktops (Windows, MacOSX, Linux flavors)
   * Configure MTK Chipset Based Devices and Loggers
   * Upload AGPS(EPO) data to MTK II Chipset Based Devices and Loggers
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">bt747</remote-id>
   </upstream>
