@@ -215,6 +215,112 @@ eislocked() {
 	esac
 }
 
+# @FUNCTION: elockuser
+# @USAGE: <user>
+# @INTERNAL
+# @DESCRIPTION:
+# Lock the specified user account, using the available platform-specific
+# functions.  This should prevent any login to the account.
+#
+# Established lock can be reverted using eunlockuser.
+#
+# This function returns 0 if locking succeeded, 2 if it is not supported
+# by the platform code or dies if it fails.
+elockuser() {
+	[[ $# -eq 1 ]] || die "usage: ${FUNCNAME} <user>"
+
+	if [[ ${EUID} -ne 0 ]]; then
+		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
+		return 0
+	fi
+
+	eislocked "$1"
+	[[ $? -eq 0 ]] && return 0
+
+	local opts
+	[[ -n ${ROOT} ]] && opts=( --prefix "${ROOT}" )
+
+	case ${CHOST} in
+	*-freebsd*|*-dragonfly*)
+		pw lock "${opts[@]}" "$1" || die "Locking account $1 failed"
+		pw user mod "${opts[@]}" "$1" -e 1 || die "Expiring account $1 failed"
+		;;
+
+	*-netbsd*)
+		if [[ -n "${ROOT}" ]]; then
+			ewarn "NetBSD's usermod does not support --prefix <dir> option."
+			ewarn "Please use: usermod ${opts[@]} -e 1 -C yes \"$1\" in a chroot"
+		else
+			usermod "${opts[@]}" -e 1 -C yes "$1" || die "Locking account $1 failed"
+		fi
+		;;
+
+	*-openbsd*)
+		return 2
+		;;
+
+	*)
+		usermod "${opts[@]}" -e 1 -L "$1" || die "Locking account $1 failed"
+		;;
+	esac
+
+	elog "User account $1 locked"
+	return 0
+}
+
+# @FUNCTION: eunlockuser
+# @USAGE: <user>
+# @INTERNAL
+# @DESCRIPTION:
+# Unlock the specified user account, using the available platform-
+# specific functions.
+#
+# This function returns 0 if unlocking succeeded, 1 if it is not
+# supported by the platform code or dies if it fails.
+eunlockuser() {
+	[[ $# -eq 1 ]] || die "usage: ${FUNCNAME} <user>"
+
+	if [[ ${EUID} -ne 0 ]]; then
+		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
+		return 0
+	fi
+
+	eislocked "$1"
+	[[ $? -eq 1 ]] && return 0
+
+	local opts
+	[[ -n ${ROOT} ]] && opts=( --prefix "${ROOT}" )
+
+	case ${CHOST} in
+	*-freebsd*|*-dragonfly*)
+		pw user mod "${opts[@]}" "$1" -e 0 || die "Unexpiring account $1 failed"
+		pw unlock "${opts[@]}" "$1" || die "Unlocking account $1 failed"
+		;;
+
+	*-netbsd*)
+		if [[ -n "${ROOT}" ]]; then
+			ewarn "NetBSD's usermod does not support --prefix <dir> option."
+			ewarn "Please use: \"usermod ${opts[@]} -e 0 -C no $1\" in a chroot"
+		else
+			usermod "${opts[@]}" -e 0 -C no "$1" || die "Unlocking account $1 failed"
+		fi
+		;;
+
+	*-openbsd*)
+		return 1
+		;;
+
+	*)
+		# silence warning if account does not have a password
+		usermod "${opts[@]}" -e "" -U "$1" 2>/dev/null || die "Unlocking account $1 failed"
+		;;
+	esac
+
+	ewarn "User account $1 unlocked after reinstating."
+	return 0
+}
+
+
 # << Phase functions >>
 EXPORT_FUNCTIONS pkg_pretend src_install pkg_preinst pkg_postinst \
 	pkg_prerm
