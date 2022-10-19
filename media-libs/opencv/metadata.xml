@@ -3,10 +3,10 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
-OpenCV (Open Source Computer Vision) is a library of programming functions mainly aimed at real time computer vision.
-Example applications of the OpenCV library are Human-Computer Interaction (HCI); Object Identification, Segmentation and Recognition;
-Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Understanding; Structure From Motion (SFM); and Mobile Robotics.
-</longdescription>
+	OpenCV (Open Source Computer Vision) is a library of programming functions mainly aimed at real time computer vision.
+	Example applications of the OpenCV library are Human-Computer Interaction (HCI); Object Identification, Segmentation and Recognition;
+	Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Understanding; Structure From Motion (SFM); and Mobile Robotics.
+	</longdescription>
 	<use>
 		<flag name="contrib">Install user contributed scripts from opencv_contrib (Experimental!)</flag>
 		<flag name="cuda">Enable NVIDIA Cuda computations support (Experimental!)</flag>
