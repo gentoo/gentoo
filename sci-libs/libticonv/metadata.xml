@@ -9,7 +9,7 @@
   The libticonv package is a library which handles the various TI
   charsets and conversion to/from UTF-8/16 through a set of functions
   which constitutes a common API.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">tilp</remote-id>
   </upstream>
