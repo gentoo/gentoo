@@ -15,7 +15,7 @@
   fragmentation and decay. It is largely based on original research,
   but also borrows many formulae and other knowledge from the
   literature.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="fastjet">Build jets using the <pkg>sci-physics/fastjet</pkg> package</flag>
     <flag name="hepmc">Adds support for High Energy Physics Monte Carlo Generators <pkg>sci-physics/hepmc</pkg></flag>
