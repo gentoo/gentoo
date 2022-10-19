@@ -17,5 +17,5 @@
   djbfft provides power-of-2 complex FFTs, real FFTs at twice the speed,
   and fast multiplication of complex arrays. Single precision and double
   precision are equally supported.
-</longdescription>
+  </longdescription>
 </pkgmetadata>
