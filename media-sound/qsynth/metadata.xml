@@ -6,13 +6,13 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<longdescription>
-QSynth is a fluidsynth GUI front-end application written in C++ around the
-Qt toolkit using Qt Designer. Eventually it may evolve into a softsynth
-management application allowing the user to control and manage a variety of
-command line softsynth but for the moment it wraps the excellent FluidSynth.
-FluidSynth is a command line software synthesiser based on the Soundfont
-specification.
-</longdescription>
+	QSynth is a fluidsynth GUI front-end application written in C++ around the
+	Qt toolkit using Qt Designer. Eventually it may evolve into a softsynth
+	management application allowing the user to control and manage a variety of
+	command line softsynth but for the moment it wraps the excellent FluidSynth.
+	FluidSynth is a command line software synthesiser based on the Soundfont
+	specification.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">qsynth</remote-id>
 	</upstream>
