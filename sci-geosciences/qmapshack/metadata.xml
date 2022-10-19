@@ -14,7 +14,7 @@
   all the GPS recordings of your past exciting adventures.
   QMapShack is the next generation of the famous QLandkarte GT application.
   And of course it's even better and easier to use.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="github">Maproom/qmapshack</remote-id>
     <remote-id type="bitbucket">maproom/qmapshack</remote-id>
