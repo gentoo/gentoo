@@ -6,11 +6,11 @@
 		<name>Bernard Cafarelli</name>
 	</maintainer>
 	<longdescription>
-wmCoinCoin is a WindowMaker dockapp that lets you see the latest news from 
-linuxfr.org. It also graphically represents some statistics about the oneliner 
-and the clients used to post on it. It also has the ability to post a 
-customized message to this oneliner. 
-</longdescription>
+	wmCoinCoin is a WindowMaker dockapp that lets you see the latest news from
+	linuxfr.org. It also graphically represents some statistics about the oneliner
+	and the clients used to post on it. It also has the ability to post a
+	customized message to this oneliner.
+	</longdescription>
 	<upstream>
 		<remote-id type="github">d-torrance/wmcoincoin</remote-id>
 	</upstream>
