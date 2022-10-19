@@ -6,18 +6,18 @@
     <name>Gentoo Printing Project</name>
   </maintainer>
   <longdescription>
-GNU libxmi is a C/C++ function library for rasterizing 2-D vector graphics. It
-can draw 2-D graphical primitives, including wide polygonal lines and circular
-and elliptical arcs, into a user-supplied matrix of pixels. Sophisticated line
-styles, such as multicolored dashing patterns, can be specified. There is also
-support for filling and texturing polygons.
+  GNU libxmi is a C/C++ function library for rasterizing 2-D vector graphics. It
+  can draw 2-D graphical primitives, including wide polygonal lines and circular
+  and elliptical arcs, into a user-supplied matrix of pixels. Sophisticated line
+  styles, such as multicolored dashing patterns, can be specified. There is also
+  support for filling and texturing polygons.
 
-It can be used as a drop-in rendering module in any application that needs to
-scan-convert 2-D vector graphics. It is highly customizable. For example, the
-`pixel' datatype can be redefined at compile time. The algorithm used for
-compositing pixels can be redefined too. By default, libxmi uses the
-Painter's Algorithm (a new pixel value replaces an old one). But it would be
-trivial to install it so that it uses alpha compositing instead. The package,
-and its header file xmi.h, include full documentation.
-</longdescription>
+  It can be used as a drop-in rendering module in any application that needs to
+  scan-convert 2-D vector graphics. It is highly customizable. For example, the
+  `pixel' datatype can be redefined at compile time. The algorithm used for
+  compositing pixels can be redefined too. By default, libxmi uses the
+  Painter's Algorithm (a new pixel value replaces an old one). But it would be
+  trivial to install it so that it uses alpha compositing instead. The package,
+  and its header file xmi.h, include full documentation.
+  </longdescription>
 </pkgmetadata>
