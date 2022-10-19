@@ -3,15 +3,15 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
-connect is the simple relaying command to make network connection via
-SOCKS and https proxy. It is mainly intended to be used as proxy
-command of OpenSSH.
-</longdescription>
+	connect is the simple relaying command to make network connection via
+	SOCKS and https proxy. It is mainly intended to be used as proxy
+	command of OpenSSH.
+	</longdescription>
 	<longdescription lang="ja">
-Connect は SOCKS 経由のネットワーク接続と HTTP プロクシを実現する単純な
-中継用コマンドです。主に OpenSSH のプロクシ・コマンドとして利用されるこ
-とを想定してます。
-</longdescription>
+	Connect は SOCKS 経由のネットワーク接続と HTTP プロクシを実現する単純な
+	中継用コマンドです。主に OpenSSH のプロクシ・コマンドとして利用されるこ
+	とを想定してます。
+	</longdescription>
 	<upstream>
 		<remote-id type="github">gotoh/ssh-connect</remote-id>
 	</upstream>
