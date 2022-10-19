@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit db-use toolchain-funcs multilib pam systemd
+inherit db-use toolchain-funcs pam systemd
 
 IUSE="arc berkdb +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl
 dsn exiscan-acl gdbm gnutls idn ipv6 ldap lmtp maildir mbx
@@ -97,18 +97,13 @@ DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
 	!mail-mta/courier
 	!mail-mta/esmtp
-	!mail-mta/mini-qmail
-	!<mail-mta/msmtp-1.4.19-r1
-	!>=mail-mta/msmtp-1.4.19-r1[mta]
+	!mail-mta/msmtp[mta]
 	!mail-mta/netqmail
 	!mail-mta/nullmailer
 	!mail-mta/postfix
-	!mail-mta/qmail-ldap
 	!mail-mta/sendmail
 	!mail-mta/opensmtpd
-	!<mail-mta/ssmtp-2.64-r2
-	!>=mail-mta/ssmtp-2.64-r2[mta]
-	!net-mail/mailwrapper
+	!mail-mta/ssmtp[mta]
 	>=net-mail/mailbase-0.00-r5
 	virtual/logger
 	dcc? ( mail-filter/dcc )
@@ -126,6 +121,7 @@ src_prepare() {
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
 	eapply     "${FILESDIR}"/exim-4.94-localscan_dlopen.patch
 	eapply     "${FILESDIR}"/exim-4.94.2-fix-crash-resolve.patch # 799368 upstr
+	eapply     "${FILESDIR}"/exim-4.94-CVE-2022-3559.patch  # 877607 upstr
 
 	# for this reason we have a := dep on opendmarc, they changed their
 	# API in a minor release
