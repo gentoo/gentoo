@@ -10,4 +10,7 @@
     <flag name="booke">Include support for Book-E memory management</flag>
     <flag name="xen">Enable extended xen support</flag>
   </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:kernel:kexec-tools</remote-id>
+  </upstream>
 </pkgmetadata>
