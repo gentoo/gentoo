@@ -14,7 +14,7 @@
   to spacecraft a few meters across. A 'point-and-goto' interface
   is used to navigate through the universe to the object you
   want to visit.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="github">CelestiaProject/Celestia</remote-id>
     <remote-id type="sourceforge">celestia</remote-id>
