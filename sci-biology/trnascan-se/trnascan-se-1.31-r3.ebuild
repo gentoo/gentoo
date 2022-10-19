@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit perl-functions toolchain-funcs
+inherit flag-o-matic perl-functions toolchain-funcs
 
 DESCRIPTION="tRNA detection in large-scale genome sequences"
 HOMEPAGE="http://lowelab.ucsc.edu/tRNAscan-SE/"
@@ -20,10 +20,12 @@ BDEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
 	"${FILESDIR}"/${P}-portable-perl-shebangs.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_configure() {
 	tc-export CC
+	append-cflags -std=gnu89 # mid-migration from K&R C, incompatible with c2x
 }
 
 src_test() {
