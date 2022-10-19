@@ -6,12 +6,12 @@
     <name>Gentoo Base System</name>
   </maintainer>
   <longdescription>
-NTP is a protocol designed to synchronize the clocks of computers over a network. NTP 
-version 3 is an internet draft standard, formalized in RFC 1305. NTP version 4 is a 
-significant revision of the NTP standard, and is the current development version, but 
-has not been formalized in an RFC. Simple NTP (SNTP) version 4 is described in RFC 
-2030.
-</longdescription>
+  NTP is a protocol designed to synchronize the clocks of computers over a network. NTP
+  version 3 is an internet draft standard, formalized in RFC 1305. NTP version 4 is a
+  significant revision of the NTP standard, and is the current development version, but
+  has not been formalized in an RFC. Simple NTP (SNTP) version 4 is described in RFC
+  2030.
+  </longdescription>
   <use>
     <flag name="openntpd">Allow ntp to be installed alongside openntpd</flag>
     <flag name="parse-clocks">Add support for PARSE clocks</flag>
