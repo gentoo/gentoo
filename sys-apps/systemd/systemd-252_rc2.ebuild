@@ -235,7 +235,6 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
-		"${FILESDIR}/252-rc1-cryptsetup.patch"
 	)
 
 	if ! use vanilla; then
