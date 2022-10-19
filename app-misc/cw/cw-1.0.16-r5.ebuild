@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+WANT_AUTOMAKE="none"
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="A non-intrusive real-time ANSI color wrapper for common unix-based commands"
 HOMEPAGE="http://cwrapper.sourceforge.net"
@@ -19,12 +20,18 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-collision.patch
 	"${FILESDIR}"/${PV}-format-security.patch
 	"${FILESDIR}"/${P}-replace-isastream-with-fcntl.patch
+	"${FILESDIR}"/${P}-fix-configure-for-newer-autotools.patch
 )
 
 src_unpack() {
 	default
 
 	gunzip "${S}"/man/*.gz || die
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {
