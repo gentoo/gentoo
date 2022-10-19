@@ -10,17 +10,17 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <longdescription>
-FVWM-Crystal is a set of configuration files for FVWM window manager,
-with additional programs and scripts. Some of it's features are:
- * quick launching of a terminal with just one click on a desktop
- * a specially configured terminal window, similar to a console from FPP games
- * builtin control over XMMS player and over aumix mixer from the keyboard and 
-   buttons on the screen
- * very good ability to control the desktop from the keyboard, including window
-   switching, moving, shading/unshading, maximizing, resizing, moving between
-   desktop pages
- * transparent window titlebars, menus and panels on the desktop
-</longdescription>
+  FVWM-Crystal is a set of configuration files for FVWM window manager,
+  with additional programs and scripts. Some of it's features are:
+   * quick launching of a terminal with just one click on a desktop
+   * a specially configured terminal window, similar to a console from FPP games
+   * builtin control over XMMS player and over aumix mixer from the keyboard and
+     buttons on the screen
+   * very good ability to control the desktop from the keyboard, including window
+     switching, moving, shading/unshading, maximizing, resizing, moving between
+     desktop pages
+   * transparent window titlebars, menus and panels on the desktop
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">fvwm-crystal</remote-id>
     <remote-id type="github">fvwm-crystal/fvwm-crystal</remote-id>
