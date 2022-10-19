@@ -12,7 +12,7 @@
   communications. The kernel of the library consists of generic vector
   and matrix classes, and a set of accompanying routines. Such a
   kernel makes IT++ similar to MATLAB or GNU Octave .
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">itpp</remote-id>
   </upstream>
