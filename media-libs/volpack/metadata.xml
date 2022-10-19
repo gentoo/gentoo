@@ -9,7 +9,7 @@
   The VolPack Volume Rendering Library is a portable software library for
   volume rendering based on a new family of fast volume rendering
   algorithms using a Shear-Warp Factorization (proceedings of SIGGRAPH94).
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">amide</remote-id>
   </upstream>
