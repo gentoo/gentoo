@@ -20,7 +20,7 @@
   support PAC files. The idea behind pacparser is to make it easy to
   add this PAC file parsing capability to  any program (C and Python
   supported right now).
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="github">pacparser/pacparser</remote-id>
   </upstream>
