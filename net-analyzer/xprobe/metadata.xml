@@ -6,11 +6,11 @@
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
 	<longdescription>
-Active OS fingerprinting tool. This is the new xprobe, called xprobe2, due to
-xprobe1 being obsoleted. xprobe2 has a different approach to OS fingerprinting.
-xprobe2 relies on fuzzy signature matching, probabilistic guesses, multiple
-matches simultaneously, and a signature database.
-</longdescription>
+	Active OS fingerprinting tool. This is the new xprobe, called xprobe2, due to
+	xprobe1 being obsoleted. xprobe2 has a different approach to OS fingerprinting.
+	xprobe2 relies on fuzzy signature matching, probabilistic guesses, multiple
+	matches simultaneously, and a signature database.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">xprobe</remote-id>
 	</upstream>
