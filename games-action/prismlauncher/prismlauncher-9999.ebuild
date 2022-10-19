@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	"
 
 	# TODO: Add tomlplusplus as a system library, like quazip
-	EGIT_SUBMODULES=( '*' '-libraries/quazip' )
+	EGIT_SUBMODULES=( '*' '-libraries/quazip' '-libraries/filesystem' )
 else
 	MY_PN="PrismLauncher"
 
@@ -77,8 +77,12 @@ COMMON_DEPENDS="
 	sys-libs/zlib
 "
 
+# The gulrak-filesystem dependency is only needed at build time, because we don't actually use it on Linux,
+# only on legacy macOS. Still, we need it present at build time to appease CMake, and having it like this
+# makes it easier to maintain than patching the CMakeLists file directly.
 BDEPEND="
 	app-text/scdoc
+	dev-cpp/gulrak-filesystem
 	kde-frameworks/extra-cmake-modules:5
 "
 
