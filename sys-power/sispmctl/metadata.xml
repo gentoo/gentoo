@@ -3,11 +3,11 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
-sispmctl is an application enabling the use of the GEMBIRD
-SilverShield PowerManager (SiS-PM) device under Linux.
-The SiS-PM is an intelligent advanced surge protector with
-4 of 6 sockets being manageable from the PC via USB.
-</longdescription>
+	sispmctl is an application enabling the use of the GEMBIRD
+	SilverShield PowerManager (SiS-PM) device under Linux.
+	The SiS-PM is an intelligent advanced surge protector with
+	4 of 6 sockets being manageable from the PC via USB.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">sispmctl</remote-id>
 	</upstream>
