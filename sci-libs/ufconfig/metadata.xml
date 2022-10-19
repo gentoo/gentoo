@@ -6,8 +6,8 @@
 		<name>Gentoo Science Project</name>
 	</maintainer>
 	<longdescription lang="en">
-UFconfig is a set of configuration files for the SuiteSparse matrix libraries
-from CISE at University of Florida. It contains some headers and
-makefiles.
-</longdescription>
+	UFconfig is a set of configuration files for the SuiteSparse matrix libraries
+	from CISE at University of Florida. It contains some headers and
+	makefiles.
+	</longdescription>
 </pkgmetadata>
