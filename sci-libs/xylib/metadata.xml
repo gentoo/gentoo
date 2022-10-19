@@ -9,7 +9,7 @@
   xylib is a portable C++ library for reading files that contain x-y
   data from powder diffraction, spectroscopy or other experimental
   methods. It supports many formats.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">xylib</remote-id>
   </upstream>
