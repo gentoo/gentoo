@@ -81,7 +81,7 @@ cpio
 bar
 dump/restore
 
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">disktype</remote-id>
   </upstream>
