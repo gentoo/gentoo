@@ -9,7 +9,7 @@
   Bullet is a professional open source multi-threaded 
   3D Collision Detection and Rigid Body Dynamics Library
   for games and animation.
-</longdescription>
+  </longdescription>
   <use>
     <flag restrict="&lt;=sci-physics/bullet-3.17" name="extras">Build the extras</flag>
     <flag name="double-precision">Build libraries in double precision</flag>
