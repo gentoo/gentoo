@@ -15,7 +15,7 @@
   (Flexible Image Transport System).  It also includes a PGPLOT-based routine,
   PGSBOX, for drawing general curvilinear coordinate graticules and a number of
   utility programs.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="fits">
     Enable support for the FITS format through <pkg>sci-libs/cfitsio</pkg>
