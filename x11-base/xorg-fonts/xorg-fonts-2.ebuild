@@ -23,7 +23,6 @@ RDEPEND="
 	media-fonts/font-bh-75dpi
 	media-fonts/font-bh-lucidatypewriter-100dpi
 	media-fonts/font-bh-lucidatypewriter-75dpi
-	media-fonts/font-bh-type1
 	media-fonts/font-bitstream-100dpi
 	media-fonts/font-bitstream-75dpi
 	media-fonts/font-bitstream-speedo
@@ -50,5 +49,5 @@ RDEPEND="
 "
 
 pkg_postinst() {
-	optfeature "Bigelow & Holmes TrueType fonts (non-free)" media-fonts/font-bh-ttf
+	optfeature "Bigelow & Holmes TrueType fonts (non-free)" media-fonts/font-bh-ttf media-fonts/font-bh-type1
 }
