@@ -7,8 +7,8 @@
 		<flag name="memtrace">Enable leefs to create a report regarding the memory allocation. This feature should be used for debugging purposes to avoid performance degradation</flag>
 	</use>
 	<longdescription lang="en">
-Data deduplication (often called “intelligent compression” or “single-instance storage”) is a method of reducing storage needs by eliminating redundant data. Data deduplication is often used for backup purposes and for virtual machine image storage. lessfs can determine if data is redundant by calculating a unique (192 bit) tiger hash of each block of data that is written. When lessfs has determined that a block of data needs to be stored it first compresses the block with LZO or QUICKLZ compression. The combination of these two techniques results in a very high overall compression rate for many types of data. Multimedia files like mp3, avi or jpg files can not be compressed by lessfs when they are only stored once on the filesystem.
-</longdescription>
+	Data deduplication (often called “intelligent compression” or “single-instance storage”) is a method of reducing storage needs by eliminating redundant data. Data deduplication is often used for backup purposes and for virtual machine image storage. lessfs can determine if data is redundant by calculating a unique (192 bit) tiger hash of each block of data that is written. When lessfs has determined that a block of data needs to be stored it first compresses the block with LZO or QUICKLZ compression. The combination of these two techniques results in a very high overall compression rate for many types of data. Multimedia files like mp3, avi or jpg files can not be compressed by lessfs when they are only stored once on the filesystem.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">lessfs</remote-id>
 	</upstream>
