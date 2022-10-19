@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Python module for calculations with uncertainties"
@@ -20,7 +20,7 @@ BDEPEND="${RDEPEND}
 	test? (	dev-python/numpy[${PYTHON_USEDEP}] )
 "
 
-distutils_enable_tests nose
+distutils_enable_tests pytest
 distutils_enable_sphinx doc --no-autodoc
 
 pkg_postinst() {
