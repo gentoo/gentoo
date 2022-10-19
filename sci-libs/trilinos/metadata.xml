@@ -10,10 +10,10 @@
 		<name>Gentoo Science Project</name>
 	</maintainer>
 	<longdescription lang="en">
-The Trilinos Project is an effort to develop algorithms and enabling
-technologies within an object-oriented software framework for the solution
-of large-scale, complex multi-physics engineering and scientific problems.
-</longdescription>
+	The Trilinos Project is an effort to develop algorithms and enabling
+	technologies within an object-oriented software framework for the solution
+	of large-scale, complex multi-physics engineering and scientific problems.
+	</longdescription>
 	<use>
 		<flag name="adolc">Add support for adolc (<pkg>sci-libs/adolc</pkg>)</flag>
 		<flag name="all-packages">Enable all supported Trilinos packages (per default only a subset is built)</flag>
@@ -28,8 +28,8 @@ of large-scale, complex multi-physics engineering and scientific problems.
 		<flag name="hypre">Add support for hypre (<pkg>sci-libs/hypre</pkg>)</flag>
 		<flag name="matio">Add support for matio (<pkg>sci-libs/matio</pkg>)</flag>
 		<flag name="metis">
-Add support for metis (<pkg>sci-libs/metis</pkg> or <pkg>sci-libs/parmetis</pkg>)
-</flag>
+			Add support for metis (<pkg>sci-libs/metis</pkg> or <pkg>sci-libs/parmetis</pkg>)
+		</flag>
 		<flag name="mkl">Add support for mkl (<pkg>sci-libs/mkl</pkg>)</flag>
 		<flag name="mumps">Add support for mumps (<pkg>sci-libs/mumps</pkg>)</flag>
 		<flag name="netcdf">Add support for netcdf (<pkg>sci-libs/netcdf</pkg>)</flag>
