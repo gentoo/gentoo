@@ -10,7 +10,7 @@
   Standards, a filesystem-based, column-oriented database format for
   time-ordered binary data. The Dirfile database format is designed to
   provide a fast, simple format for storing and reading data.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">getdata</remote-id>
   </upstream>
