@@ -5,7 +5,12 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..10} )
 
-inherit python-single-r1 wrapper
+DOCS_BUILDER="mkdocs"
+DOCS_DEPEND="
+	dev-python/mkdocs-material
+"
+
+inherit python-single-r1 docs wrapper
 
 DESCRIPTION="A GDB Enhanced Features for exploit devs & reversers"
 HOMEPAGE="https://github.com/hugsy/gef"
@@ -20,7 +25,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="doc test"
+IUSE="test"
 # Seem to hang right now?
 RESTRICT="!test? ( test ) test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -37,16 +42,14 @@ RDEPEND="
 	')"
 
 BDEPEND="
-	doc? (
-		dev-python/mkdocs
-		dev-python/mkdocs-material
-	)
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/pytest[${PYTHON_USEDEP}]
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		')
 	)"
+
+DOCS=( README.md )
 
 src_prepare() {
 	default
@@ -57,6 +60,8 @@ src_prepare() {
 src_compile() {
 	# Tries to compile tests
 	:
+
+	docs_compile
 }
 
 src_install() {
@@ -68,15 +73,7 @@ src_install() {
 	make_wrapper "gdb-gef" \
 		"gdb -x \"/usr/share/${PN}/gef.py\"" || die
 
-	if use doc; then
-		# TODO: docs.eclass?
-		mkdocs build -d html || die
-
-		rm "${WORKDIR}/${P}/html/sitemap.xml.gz" || die
-		dodoc -r html/
-	fi
-
-	dodoc README.md
+	einstalldocs
 }
 
 pkg_postinst() {
