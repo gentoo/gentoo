@@ -23,5 +23,5 @@ assumed to behave like rigid bodies.
 Requirements: a matrix in the "i j non-zero-ij-matrix-element" format. 
 A file with the coordinates of the system, in the PDB or "x y z mass 
 block-number" format.
-</longdescription>
+	</longdescription>
 </pkgmetadata>
