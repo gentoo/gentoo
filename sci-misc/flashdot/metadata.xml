@@ -6,7 +6,7 @@
 		<name>Gentoo Science Project</name>
 	</maintainer>
 	<longdescription lang="en">
-FlashDot is a program for generating and presenting visual perceptual experiments that require a high temporal
-precision.
-</longdescription>
+	FlashDot is a program for generating and presenting visual perceptual experiments that require a high temporal
+	precision.
+	</longdescription>
 </pkgmetadata>
