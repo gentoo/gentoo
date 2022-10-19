@@ -13,7 +13,7 @@
   applications. Benchmarks, performed on a variety of platforms, show
   that FFTW's performance is typically superior to that of other
   publicly available FFT software.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="zbus">Adds support for ZBus cycle-counter of mips</flag>
   </use>
