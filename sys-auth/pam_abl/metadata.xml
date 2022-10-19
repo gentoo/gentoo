@@ -3,15 +3,15 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <longdescription lang="en">
-PAM module that provides auto blacklisting of hosts and users responsible for repeated failed authentication attempts.
-Once a host is blacklisted it is guaranteed to fail authentication even if the correct credentials are provided.
-Hosts which stop attempting to authenticate will, after a period of time, be un-blacklisted. 
-</longdescription>
+  PAM module that provides auto blacklisting of hosts and users responsible for repeated failed authentication attempts.
+  Once a host is blacklisted it is guaranteed to fail authentication even if the correct credentials are provided.
+  Hosts which stop attempting to authenticate will, after a period of time, be un-blacklisted.
+  </longdescription>
   <longdescription lang="it">
-Modulo Pam che permette di mantenere automaticamente una blacklist di host ed utenti responsabili di ripetuti tentativi di autenticazione falliti.
-Gli host soggetti a blacklist vedranno fallire i tentativi di login anche qualora le corrette credenziali vengano fornite.
-Una volta cessati i tentativi di autenticazione, dopo un certo periodo di tempo, gli host verranno riabilitati.
-</longdescription>
+  Modulo Pam che permette di mantenere automaticamente una blacklist di host ed utenti responsabili di ripetuti tentativi di autenticazione falliti.
+  Gli host soggetti a blacklist vedranno fallire i tentativi di login anche qualora le corrette credenziali vengano fornite.
+  Una volta cessati i tentativi di autenticazione, dopo un certo periodo di tempo, gli host verranno riabilitati.
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">pam-abl</remote-id>
   </upstream>
