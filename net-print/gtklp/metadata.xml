@@ -10,7 +10,7 @@
 	It is used to have an easy (and graphical) access to all of the many options
 	of cups-managed printers. Package also includes GtkLPQ - a graphical
 	frontend for CUPS-Printqueues.
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">gtklp</remote-id>
 	</upstream>
