@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="curl nls"
 
-RDEPEND="sys-libs/readline:0=
+RDEPEND="sys-libs/readline:=
 	curl? ( net-misc/curl )"
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
@@ -25,11 +25,14 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fixes-for-Wall-warnings.patch
 	"${FILESDIR}"/${P}-fix-parsing-of-sample-config-file.patch
 	"${FILESDIR}"/${P}-fix-submit_dummy_list-re-declaration.patch
+	"${FILESDIR}"/${PN}-0.9.9-Include-stdlib.h-for-free.patch
 )
 
 src_prepare() {
 	default
-	gunzip doc/${PN}.1.gz
+
+	gunzip doc/${PN}.1.gz || die
+
 	sed -i -e "s/${PN}.1.gz/${PN}.1/g" \
 		-e "s/\/mang/\/man1/g" doc/Makefile* || die
 }

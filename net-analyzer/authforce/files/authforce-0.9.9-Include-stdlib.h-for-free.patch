@@ -1,0 +1,16 @@
+From e5e62f92c53f5f8cca9380ad3225c84be5eec04f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 19 Oct 2022 03:33:51 +0100
+Subject: [PATCH] Include <stdlib.h> for free()
+
+Bug: https://bugs.gentoo.org/871222
+--- a/src/debug.c
++++ b/src/debug.c
+@@ -3,6 +3,7 @@
+ #include <config.h>
+ #include <stdio.h>
+ #include <stdarg.h>
++#include <stdlib.h>
+ #ifdef MEMWATCH
+ #include "memwatch.h"
+ #endif /* MEMWATCH*/
