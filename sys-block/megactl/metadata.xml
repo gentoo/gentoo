@@ -7,10 +7,10 @@
 		<name>Gentoo Sysadmin Project</name>
 	</maintainer>
 	<longdescription>
-This project is a small collection of programs for examining configuration and
-status of LSI megaraid adapters, especially Dell PERC RAID adapters, and
-attached storage devices.
-</longdescription>
+	This project is a small collection of programs for examining configuration and
+	status of LSI megaraid adapters, especially Dell PERC RAID adapters, and
+	attached storage devices.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">megactl</remote-id>
 	</upstream>
