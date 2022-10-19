@@ -15,7 +15,7 @@
   scanning probe microscopy techniques (AFM, MFM, STM, NSOM), but
   generally it can be used for any other height field analysis or
   image analysis.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="sourceview">
       Enable support for <pkg>x11-libs/gtksourceview</pkg>
