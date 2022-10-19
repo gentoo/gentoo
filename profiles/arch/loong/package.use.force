@@ -14,7 +14,6 @@ sys-devel/llvm llvm_targets_LoongArch
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
 # Force-enable experimental-loong on packages; we're loong.
-dev-libs/libffi experimental-loong
-sys-kernel/linux-headers experimental-loong
-sys-libs/glibc experimental-loong
+<dev-libs/libffi-3.4.3 experimental-loong
+<sys-libs/glibc-2.36 experimental-loong
 sys-libs/libseccomp experimental-loong
