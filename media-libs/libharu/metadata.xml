@@ -16,7 +16,7 @@
    6. Creating encrypted PDF files.
    7. Using various character sets (ISO8859-1~16, MSCP1250~8, KOI8-R).
    8. Supporting CJK fonts and encodings. 
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="github">libharu/libharu</remote-id>
   </upstream>
