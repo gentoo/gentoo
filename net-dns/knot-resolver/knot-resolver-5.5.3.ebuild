@@ -86,5 +86,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	tmpfiles_process knot-resolver.conf
+	use systemd && tmpfiles_process knot-resolver.conf
 }
