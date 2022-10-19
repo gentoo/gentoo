@@ -6,8 +6,8 @@
     <name>Mark Wright</name>
   </maintainer>
   <longdescription lang="en">
-Twelf is an implementation of the logical framework LF. It is used for
-logic programming and for the formalization of programming language
-theory.
-</longdescription>
+  Twelf is an implementation of the logical framework LF. It is used for
+  logic programming and for the formalization of programming language
+  theory.
+  </longdescription>
 </pkgmetadata>
