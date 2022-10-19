@@ -10,5 +10,5 @@
   files. FITS, PNG, and JPEG output types are supported.
   When multiple input files are specified and the output type is PNG or
   JPEG the resulting image is an RGB color image. 
-</longdescription>
+  </longdescription>
 </pkgmetadata>
