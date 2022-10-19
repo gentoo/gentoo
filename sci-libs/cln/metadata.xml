@@ -12,5 +12,5 @@
   various precisions (including unlimited), rationals, complex numbers
   and polynomials. The kernel is written in assembly language. It uses
   automatic garbage collection.
-</longdescription>
+  </longdescription>
 </pkgmetadata>
