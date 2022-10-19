@@ -10,11 +10,11 @@
 		<name>Gentoo Science Project</name>
 	</maintainer>
 	<longdescription lang="en">
-deal.II is a C++ program library targeted at the computational solution
-of partial differential equations using adaptive finite elements. It uses
-state-of-the-art programming techniques to offer you a modern interface
-to the complex data structures and algorithms required.
-</longdescription>
+	deal.II is a C++ program library targeted at the computational solution
+	of partial differential equations using adaptive finite elements. It uses
+	state-of-the-art programming techniques to offer you a modern interface
+	to the complex data structures and algorithms required.
+	</longdescription>
 	<use>
 		<flag name="adolc">Adds support for ADOL-C (<pkg>sci-libs/adolc</pkg>)</flag>
 		<flag name="arborx">Adds support for ARBORX (<pkg>sci-libs/arborx</pkg>)</flag>
