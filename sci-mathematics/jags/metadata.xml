@@ -14,7 +14,7 @@
   * To be extensible, allowing users to write their own functions,
     distributions and samplers.
   * To be a plaftorm for experimentation with ideas in Bayesian modelling
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">mcmc-jags</remote-id>
   </upstream>
