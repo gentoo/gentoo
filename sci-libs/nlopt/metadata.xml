@@ -17,7 +17,7 @@
     * Both derivative-free and gradient-based optimization algorithms.
     * Algorithms for unconstrained optimization, bound-constrained
     optimization, and general nonlinear inequality constraints.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="octave">Add plugin for <pkg>sci-mathematics/octave</pkg></flag>
   </use>
