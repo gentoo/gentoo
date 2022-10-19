@@ -16,13 +16,17 @@ LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 IUSE="+yt-dlp"
+# tests need deprecated nose, and given upstream is still refusing to make new
+# releases or modernize anything (wants to support old python more) it will
+# likely be last rited along with any revdeps that still can't use yt-dlp
+RESTRICT="test"
 
 RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	yt-dlp? ( >=net-misc/yt-dlp-2022.2.4-r1 )
 	!yt-dlp? ( !net-misc/yt-dlp )"
 
-distutils_enable_tests nose
+#distutils_enable_tests nose
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
