@@ -1,0 +1,92 @@
+diff --git a/.travis.yml b/.travis.yml
+index ec50a82bbe..858a6105b2 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -28,8 +28,7 @@ addons:
+       - gir1.2-glib-2.0
+       - libgirepository1.0-dev
+       - gir1.2-gnomedesktop-3.0
+-      - gir1.2-webkit2-4.0
+-      - gir1.2-notify-0.7
++      - gir1.2-webkit2-4.1
+       - at-spi2-core
+ before_install:
+   - "export DISPLAY=:99.0"
+diff --git a/INSTALL.rst b/INSTALL.rst
+index 94d5cc756a..a83cc0b629 100644
+--- a/INSTALL.rst
++++ b/INSTALL.rst
+@@ -12,7 +12,7 @@ Lutris manually, it requires the following components:
+ 
+     * Python >= 3.7
+     * PyGObject
+-    * PyGObject bindings for: Gtk, Gdk, GnomeDesktop, Webkit2, Notify
++    * PyGObject bindings for: Gtk, Gdk, GnomeDesktop, Webkit2
+     * python3-requests
+     * python3-pillow
+     * python3-yaml
+@@ -41,8 +41,8 @@ To install all those dependencies (except for Wine and graphics drivers)
+ on Ubuntu based systems, you can run::
+ 
+     sudo apt install python3-yaml python3-requests python3-pil python3-gi \
+-      gir1.2-gtk-3.0 gir1.2-gnomedesktop-3.0 gir1.2-webkit2-4.0 \
+-      gir1.2-notify-0.7 psmisc cabextract unzip p7zip curl fluid-soundfont-gs \
++      gir1.2-gtk-3.0 gir1.2-gnomedesktop-3.0 gir1.2-webkit2-4.1 \
++      psmisc cabextract unzip p7zip curl fluid-soundfont-gs \
+       x11-xserver-utils python3-evdev libc6-i386 lib32gcc1 libgirepository1.0-dev \
+       python3-setproctitle python3-distro
+ 
+diff --git a/debian/control b/debian/control
+index bf0eb2121f..c74a523fed 100644
+--- a/debian/control
++++ b/debian/control
+@@ -26,8 +26,7 @@ Depends: ${misc:Depends},
+          python3-distro,
+          python3-dbus,
+          gir1.2-gtk-3.0,
+-         gir1.2-webkit2-4.0,
+-         gir1.2-notify-0.7,
++         gir1.2-webkit2-4.1,
+          psmisc,
+          cabextract,
+          unzip,
+diff --git a/lutris.spec b/lutris.spec
+index 13763266b0..fb430ef206 100644
+--- a/lutris.spec
++++ b/lutris.spec
+@@ -43,7 +43,7 @@ BuildRequires:  hicolor-icon-theme
+ BuildRequires:  python3-setuptools
+ Requires:       (python3-gobject-Gdk or python3-gobject)
+ Requires:       python3-PyYAML, cabextract, typelib-1_0-Gtk-3_0
+-Requires:       typelib-1_0-GnomeDesktop-3_0, typelib-1_0-WebKit2-4_0, typelib-1_0-Notify-0_7
++Requires:       typelib-1_0-GnomeDesktop-3_0, typelib-1_0-WebKit2-4_1
+ Requires:       fluid-soundfont-gm, python3-Pillow, python3-requests
+ %endif
+ 
+diff --git a/lutris/gui/dialogs/webconnect_dialog.py b/lutris/gui/dialogs/webconnect_dialog.py
+index a7c5aa653a..195e1f6788 100644
+--- a/lutris/gui/dialogs/webconnect_dialog.py
++++ b/lutris/gui/dialogs/webconnect_dialog.py
+@@ -3,7 +3,7 @@
+ from gettext import gettext as _
+ 
+ import gi
+-gi.require_version("WebKit2", "4.0")
++gi.require_version("WebKit2", "4.1")
+ from gi.repository import WebKit2
+ 
+ from lutris.gui.dialogs import ModalDialog
+diff --git a/snap/snapcraft.yaml b/snap/snapcraft.yaml
+index babf66ff9c..515981f250 100644
+--- a/snap/snapcraft.yaml
++++ b/snap/snapcraft.yaml
+@@ -90,8 +90,7 @@ parts:
+       - gir1.2-glib-2.0
+       - gir1.2-gnomedesktop-3.0
+       - gir1.2-gtk-3.0
+-      - gir1.2-notify-0.7
+-      - gir1.2-webkit2-4.0
++      - gir1.2-webkit2-4.1
+       - libgnutls30
+       - libvulkan1
+       - libxrandr2
