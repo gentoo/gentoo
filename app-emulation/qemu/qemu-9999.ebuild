@@ -308,7 +308,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
 	"${FILESDIR}"/${PN}-6.0.0-make.patch
 	"${FILESDIR}"/${PN}-7.1.0-also-build-virtfs-proxy-helper.patch
-	"${FILESDIR}"/${PN}-7.1.0-strings.patch
 )
 
 QA_PREBUILT="
@@ -454,7 +453,7 @@ src_prepare() {
 	sed -i -e 's/-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2//' configure || die
 
 	# Remove bundled modules
-	rm -r dtc meson roms/*/ slirp || die
+	rm -r dtc meson roms/*/ || die
 }
 
 ##
@@ -581,7 +580,7 @@ qemu_src_configure() {
 		$(conf_notuser sdl)
 		$(conf_softmmu sdl-image)
 		$(conf_notuser seccomp)
-		$(conf_notuser slirp slirp system)
+		$(conf_notuser slirp)
 		$(conf_notuser smartcard)
 		$(conf_notuser snappy)
 		$(conf_notuser spice)
