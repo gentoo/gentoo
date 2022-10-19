@@ -6,17 +6,17 @@
 		<name>Gentoo Chemistry Project</name>
 	</maintainer>
 	<longdescription>
-Suitename is a new C program that supports the ROC RNA Ontology Consortium 
-consensus RNA backbone nomenclature and conformer-list development (see our RNA 
-backbone rotamer section.
-From dihedral-angle input for a specific RNA structure (usually from Dangle), 
-Suitename categorizes the RNA backbone geometry of each suite (the 
-sugar-to-sugar version of a residue) either as an outlier ("!!") or as belonging
-to one of the 53 defined conformer bins. The output is either a 
-one-line-per-suite report, or a linear conformer string (as shown below the 
-image here) in one of several variant formats. Suitename is built into 
-MolProbity, producing entries in the multi-criterion chart for an RNA model and 
-also a suitestring file. The Suitename code is made available here for bulk or 
-individual command-line use.
-</longdescription>
+	Suitename is a new C program that supports the ROC RNA Ontology Consortium
+	consensus RNA backbone nomenclature and conformer-list development (see our RNA
+	backbone rotamer section.
+	From dihedral-angle input for a specific RNA structure (usually from Dangle),
+	Suitename categorizes the RNA backbone geometry of each suite (the
+	sugar-to-sugar version of a residue) either as an outlier ("!!") or as belonging
+	to one of the 53 defined conformer bins. The output is either a
+	one-line-per-suite report, or a linear conformer string (as shown below the
+	image here) in one of several variant formats. Suitename is built into
+	MolProbity, producing entries in the multi-criterion chart for an RNA model and
+	also a suitestring file. The Suitename code is made available here for bulk or
+	individual command-line use.
+	</longdescription>
 </pkgmetadata>
