@@ -22,6 +22,7 @@ DEPEND="
 	>=dev-ml/ppxlib-0.20.0:=
 	dev-ml/findlib:=
 	dev-ml/result:=
+	dev-ml/sexplib0:=
 "
 RDEPEND="${DEPEND}"
 DEPEND="${RDEPEND}
