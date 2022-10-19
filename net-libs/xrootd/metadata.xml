@@ -12,7 +12,7 @@
   concept of directory.
   It is usually used with <pkg>sci-physics/root</pkg> and its PROOF
   facilities for cluster computing in high energy physics.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="fuse">Enable the <pkg>sys-fs/fuse</pkg> filesystem driver</flag>
     <flag name="http">Enable http protocol support</flag>
