@@ -6,6 +6,6 @@
     <name>Gentoo Geosciences Project</name>
   </maintainer>
   <longdescription lang="en">
-FoxtrotGPS is an offshoot of Marcus Bauer's excellent Free &amp; Open Source tangoGPS application, with a focus on cooperation and fostering community innovation. FoxtrotGPS is freely available to the public for use, redistribution, and modification under the terms of the GNU General Public License 2.0 (GPLv2). 
-</longdescription>
+  FoxtrotGPS is an offshoot of Marcus Bauer's excellent Free &amp; Open Source tangoGPS application, with a focus on cooperation and fostering community innovation. FoxtrotGPS is freely available to the public for use, redistribution, and modification under the terms of the GNU General Public License 2.0 (GPLv2).
+  </longdescription>
 </pkgmetadata>
