@@ -6,30 +6,30 @@
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
 	<longdescription lang="en">
-Libcrafter is a high level library for C++ designed to facilitate the creation
-and decoding of network packets. It is able to craft or decode packets of most
-common networks protocols, send them on the wire, capture them and match
-requests and replies.
-It enables the creation of networking tools in a few lines with a interface
-very similar to <pkg>net-analyzer/scapy</pkg>.
-A packet is described as layers that you stack one upon the other. Fields of
-each layer have useful default values that you can overload.
+	Libcrafter is a high level library for C++ designed to facilitate the creation
+	and decoding of network packets. It is able to craft or decode packets of most
+	common networks protocols, send them on the wire, capture them and match
+	requests and replies.
+	It enables the creation of networking tools in a few lines with a interface
+	very similar to <pkg>net-analyzer/scapy</pkg>.
+	A packet is described as layers that you stack one upon the other. Fields of
+	each layer have useful default values that you can overload.
 
-The library is designed to be used in multithreaded programs where you can
-combine several tasks simultaneously. For example, you can easily design
-something that sniffs, mangles, and sends at the same time you are doing an
-ARP-Spoofing attack.
-It also contains a very naive implementation of the TCP/IP stack (fragmentation
-is no handled yet) at user level that enables working with TCP streams. This
-facilitates the creation of tools for data injection on arbitrary connections,
-IP spoofing and TCP/IP session hijacking.
+	The library is designed to be used in multithreaded programs where you can
+	combine several tasks simultaneously. For example, you can easily design
+	something that sniffs, mangles, and sends at the same time you are doing an
+	ARP-Spoofing attack.
+	It also contains a very naive implementation of the TCP/IP stack (fragmentation
+	is no handled yet) at user level that enables working with TCP streams. This
+	facilitates the creation of tools for data injection on arbitrary connections,
+	IP spoofing and TCP/IP session hijacking.
 
-Supported protocols are:
+	Supported protocols are:
 
-Ethernet, SLL (Linux cooked-mode capture), ARP, DHCP, DHCP options, IP, IP
-options, IPv6, ICMP, ICMPv6, ICMP extensions, ICMPv6 extensions, TCP, TCP
-options, UDP and DNS
-</longdescription>
+	Ethernet, SLL (Linux cooked-mode capture), ARP, DHCP, DHCP options, IP, IP
+	options, IPv6, ICMP, ICMPv6, ICMP extensions, ICMPv6 extensions, TCP, TCP
+	options, UDP and DNS
+	</longdescription>
 	<upstream>
 		<remote-id type="github">pellegre/libcrafter</remote-id>
 	</upstream>
