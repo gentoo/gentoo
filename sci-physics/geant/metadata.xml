@@ -13,7 +13,7 @@
   the script used to perform this linking step.
   Geant 4 is a complete rewrite in C++ with addition of other modern
   features and detectors.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="c++11">Build using the C++11 standard</flag>
     <flag name="c++14">Build using the C++14 standard</flag>
