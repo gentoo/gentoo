@@ -6,10 +6,10 @@
 		<name>Yixun Lan</name>
 	</maintainer>
 	<longdescription lang="en">
-Thermald is a Linux user mode daemon to system developers, reducing time to market with
-controlled thermal management using P-states, T-states, and the Intel power clamp driver.
-The Thermal Daemon uses the existing Linux kernel infrastructure and can be easily enhanced
-</longdescription>
+	Thermald is a Linux user mode daemon to system developers, reducing time to market with
+	controlled thermal management using P-states, T-states, and the Intel power clamp driver.
+	The Thermal Daemon uses the existing Linux kernel infrastructure and can be easily enhanced
+	</longdescription>
 	<upstream>
 		<remote-id type="github">01org/thermal_daemon</remote-id>
 	</upstream>
