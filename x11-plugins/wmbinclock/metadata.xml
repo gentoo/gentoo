@@ -6,11 +6,11 @@
 		<name>Bernard Cafarelli</name>
 	</maintainer>
 	<longdescription>
-The windowmaker Binary Clock applet shows the
-actual system time as a binary clock. You have to
-add up the bits to get the time. The clock has a
-24-hour format.
-</longdescription>
+	The windowmaker Binary Clock applet shows the
+	actual system time as a binary clock. You have to
+	add up the bits to get the time. The clock has a
+	24-hour format.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">wmbinclock</remote-id>
 	</upstream>
