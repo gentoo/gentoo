@@ -6,23 +6,23 @@
     <name>Gentoo Chemistry Project</name>
   </maintainer>
   <longdescription>
-Nmrglue has the ability to read, write and convert between a number of NMR file 
-formats including Agilent/Varian, Bruker, NMRPipe, Sparky, SIMPSON, Rowland NMR 
-Toolkit files. The files, which are represented in Python as dictionaries of 
-spectral parameters and NumPy ndarray objects, can be easily examined, modified 
-and processed as desired.
+  Nmrglue has the ability to read, write and convert between a number of NMR file
+  formats including Agilent/Varian, Bruker, NMRPipe, Sparky, SIMPSON, Rowland NMR
+  Toolkit files. The files, which are represented in Python as dictionaries of
+  spectral parameters and NumPy ndarray objects, can be easily examined, modified
+  and processed as desired.
 
-Nmrglue provides a number of functions for processing NMR data such as 
-apodization, spectral shifting, Fourier and other transformations, baseline 
-smoothing and flattening, and linear prediction modeling and extrapolation. 
-In addition new processing schemes can be implemented easily using the nmrglue 
-provided functions and the multitude of numerical routines provided by the NumPy
-and SciPy packages.
+  Nmrglue provides a number of functions for processing NMR data such as
+  apodization, spectral shifting, Fourier and other transformations, baseline
+  smoothing and flattening, and linear prediction modeling and extrapolation.
+  In addition new processing schemes can be implemented easily using the nmrglue
+  provided functions and the multitude of numerical routines provided by the NumPy
+  and SciPy packages.
 
-When used in conjunction with the matplotlib (or other) python plotting library 
-nmrglue can be used to create publication quality figures of NMR spectrum or 
-examine data interactively.
-</longdescription>
+  When used in conjunction with the matplotlib (or other) python plotting library
+  nmrglue can be used to create publication quality figures of NMR spectrum or
+  examine data interactively.
+  </longdescription>
   <upstream>
     <remote-id type="github">jjhelmus/nmrglue</remote-id>
   </upstream>
