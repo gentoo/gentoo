@@ -4,6 +4,7 @@
 # @ECLASS: acct-user.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
+# Mike Gilbert <floppym@gentoo.org>
 # @AUTHOR:
 # Michael Orlitzky <mjo@gentoo.org>
 # Michał Górny <mgorny@gentoo.org>
