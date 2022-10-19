@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/874057
+
+From dafa483ba52e334cdc138a4f9e5999d2d5cc5d9b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 19 Oct 2022 02:58:47 +0100
+Subject: [PATCH] Add missing <string.h> for memcpy
+
+--- a/bing_probes.c
++++ b/bing_probes.c
+@@ -10,6 +10,7 @@
+ #include <errno.h>
+ #include <malloc.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ /* types.h provides u_short on HPUX10 and Solaris */
+ #include <sys/types.h>
