@@ -11,6 +11,7 @@
 		channels and a clean syntax.  
 	</longdescription>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:golang:go</remote-id>
 		<remote-id type="github">golang/go</remote-id>
 	</upstream>
 </pkgmetadata>
