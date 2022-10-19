@@ -10,7 +10,7 @@
   for TI calculators. It currently supports all cables on i386,
   including the USB one. Supported cables may vary depending on your
   architecture.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">tilp</remote-id>
   </upstream>
