@@ -24,6 +24,10 @@ BDEPEND="${PYTHON_DEPS}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.1.0-configure-Avoid-using-strings-binary.patch
+)
+
 src_configure() {
 	tc-export AR LD OBJCOPY RANLIB
 
