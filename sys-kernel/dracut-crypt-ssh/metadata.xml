@@ -6,6 +6,6 @@
 		<name>Jakov Smolić</name>
 	</maintainer>
 	<longdescription lang="en">
-crypt-ssh is a dracut module which allows remote unlocking of block devices encrypted with LUKS via ssh, during the initramfs stage of the boot.
-</longdescription>
+	crypt-ssh is a dracut module which allows remote unlocking of block devices encrypted with LUKS via ssh, during the initramfs stage of the boot.
+	</longdescription>
 </pkgmetadata>
