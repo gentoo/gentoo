@@ -6,19 +6,19 @@
     <name>Gentoo Chemistry Project</name>
   </maintainer>
   <longdescription>
-TM-align is a computer algorithm for protein structure alignment using dynamic 
-programming and TM-score rotation matrix. An optimal alignment between two 
-proteins, as well as the TM-score, will be reported for each comparison. The 
-value of TM-score lies in (0,1]. In general, a comparison of TM-score smaller
-0.2 indicates that there is no similarity between two structures; a TM-score 
-greater 0.5 means the structures share the same fold.
+  TM-align is a computer algorithm for protein structure alignment using dynamic
+  programming and TM-score rotation matrix. An optimal alignment between two
+  proteins, as well as the TM-score, will be reported for each comparison. The
+  value of TM-score lies in (0,1]. In general, a comparison of TM-score smaller
+  0.2 indicates that there is no similarity between two structures; a TM-score
+  greater 0.5 means the structures share the same fold.
 
-What is the difference between TM-score and TM-align? The TM-score program 
-is to compare two models based on their given and known residue equivalency. 
-It is usually NOT applied to compare two proteins of different sequences. The 
-TM-align is a structural alignment program for comparing two proteins whose 
-sequences can be different. The TM-align will first find the best equivalent 
-residues of two proteins based on the structure similarity and then output a 
-TM-score. The TM-score values in both programs have the same definition.
-</longdescription>
+  What is the difference between TM-score and TM-align? The TM-score program
+  is to compare two models based on their given and known residue equivalency.
+  It is usually NOT applied to compare two proteins of different sequences. The
+  TM-align is a structural alignment program for comparing two proteins whose
+  sequences can be different. The TM-align will first find the best equivalent
+  residues of two proteins based on the structure similarity and then output a
+  TM-score. The TM-score values in both programs have the same definition.
+  </longdescription>
 </pkgmetadata>
