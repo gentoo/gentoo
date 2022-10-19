@@ -25,5 +25,6 @@ DEPEND="
 	>=dev-ml/ppxlib-0.22.0:=
 	>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
 	dev-ml/cinaps:=
+	dev-ml/sexplib0:=
 "
 RDEPEND="${DEPEND}"
