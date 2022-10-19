@@ -10,7 +10,7 @@
   vectorized BDD operations,dynamic variable reordering,automated
   garbage collection,a C++ interface with automatic reference
   counting,and much more.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">buddy</remote-id>
   </upstream>
