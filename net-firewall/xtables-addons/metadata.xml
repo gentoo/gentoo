@@ -6,14 +6,14 @@
 		<name>Anthony G. Basile</name>
 	</maintainer>
 	<longdescription>
-Xtables-addons is the successor to patch-o-matic(-ng). Likewise, it contains
-extensions that were not, or are not yet, accepted in the main kernel/iptables
-packages.
+	Xtables-addons is the successor to patch-o-matic(-ng). Likewise, it contains
+	extensions that were not, or are not yet, accepted in the main kernel/iptables
+	packages.
 
-Xtables-addons is different from patch-o-matic in that you do not have to patch
-or recompile the kernel, sometimes recompiling iptables is also not needed. But
-please see the INSTALL file for the minimum requirements of this package.
-</longdescription>
+	Xtables-addons is different from patch-o-matic in that you do not have to patch
+	or recompile the kernel, sometimes recompiling iptables is also not needed. But
+	please see the INSTALL file for the minimum requirements of this package.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">xtables-addons</remote-id>
 	</upstream>
