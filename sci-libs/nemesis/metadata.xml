@@ -6,17 +6,17 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <longdescription lang="en">
-NEMESIS is an enhancement to the EXODUSII finite element database
-model used to store and retrieve data for unstructured parallel finite
-element analyses. NEMESIS adds data structures which facilitate the
-partitioning of a scalar (standard serial) EXODUSII file onto parallel
-disk systems found on many parallel computers. Since the NEMESIS
-application programming interface (API) can be used to append
-information to an existing EXODUSII database, any existing software
-that reads EXODUSII files can be used on files which contain NEMESIS
-information. The NEMESIS information is written and read via C or C++
-callable functions which compromise the NEMESIS I API.
-</longdescription>
+  NEMESIS is an enhancement to the EXODUSII finite element database
+  model used to store and retrieve data for unstructured parallel finite
+  element analyses. NEMESIS adds data structures which facilitate the
+  partitioning of a scalar (standard serial) EXODUSII file onto parallel
+  disk systems found on many parallel computers. Since the NEMESIS
+  application programming interface (API) can be used to append
+  information to an existing EXODUSII database, any existing software
+  that reads EXODUSII files can be used on files which contain NEMESIS
+  information. The NEMESIS information is written and read via C or C++
+  callable functions which compromise the NEMESIS I API.
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">exodusii</remote-id>
   </upstream>
