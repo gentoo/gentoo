@@ -3,26 +3,26 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
-A nameserver basically responds to a query. Interoperability is an obvious
-requirement here. The standard protocol behaviour of different DNS
-implementations is expected to be the same.
+	A nameserver basically responds to a query. Interoperability is an obvious
+	requirement here. The standard protocol behaviour of different DNS
+	implementations is expected to be the same.
 
-Requirements for protocol behaviour of DNS implementations is widely documented
-in the case of 'common' dns messages. The DNS protocol is over 20 years old and
-since its inception, there have been over 40 independent DNS implementations,
-while some implementations have over 20 versions.
+	Requirements for protocol behaviour of DNS implementations is widely documented
+	in the case of 'common' dns messages. The DNS protocol is over 20 years old and
+	since its inception, there have been over 40 independent DNS implementations,
+	while some implementations have over 20 versions.
 
-The methodology used to identify individual nameserver implementations is based
-on "borderline" protocol behaviour. The DNS protocol offers a multitude of
-message bits, response types, opcodes, classes, query types and label types in a
-fashion that makes some mutually exclusive while some are not used in a query
-messages at all. Not every implementation offers the full set of features the
-DNS protocol set currently has. Some implementations offer features outside the
-protocol set, and there are implementations that do not conform to standards.
+	The methodology used to identify individual nameserver implementations is based
+	on "borderline" protocol behaviour. The DNS protocol offers a multitude of
+	message bits, response types, opcodes, classes, query types and label types in a
+	fashion that makes some mutually exclusive while some are not used in a query
+	messages at all. Not every implementation offers the full set of features the
+	DNS protocol set currently has. Some implementations offer features outside the
+	protocol set, and there are implementations that do not conform to standards.
 
-Also, new features added to - or bugs removed allow for differentiations between
-versions of an implementation.
-</longdescription>
+	Also, new features added to - or bugs removed allow for differentiations between
+	versions of an implementation.
+	</longdescription>
 	<upstream>
 		<remote-id type="github">kirei/fpdns</remote-id>
 	</upstream>
