@@ -5,25 +5,32 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_USE_PEP517=setuptools
+
 inherit distutils-r1
 
 DESCRIPTION="Bootstrap-based Sphinx theme from the PyData community"
-HOMEPAGE="https://github.com/pydata/pydata-sphinx-theme"
-SRC_URI="https://github.com/pydata/pydata-sphinx-theme/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/pydata/pydata-sphinx-theme/
+	https://pypi.org/project/pydata-sphinx-theme/
+"
+SRC_URI="
+	https://github.com/pydata/pydata-sphinx-theme/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD-with-disclosure"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 
+RDEPEND="
+	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
+	dev-python/docutils[${PYTHON_USEDEP}]
+	dev-python/sphinx[${PYTHON_USEDEP}]
+"
 BDEPEND="
 	test? (
-		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/pytest-regressions[${PYTHON_USEDEP}]
-	)"
-
-RDEPEND="
-	dev-python/sphinx[${PYTHON_USEDEP}]
-	dev-python/docutils[${PYTHON_USEDEP}]
+	)
 "
 
 # TODO: fix this: Sandbox violation to /usr/local/share
