@@ -48,7 +48,7 @@ case ${EAPI:-0} in
 	*) die "EAPI=${EAPI:-0} not supported";;
 esac
 
-inherit user-info
+inherit user
 
 [[ ${CATEGORY} == acct-user ]] ||
 	die "Ebuild error: this eclass can be used only in acct-user category!"
@@ -105,7 +105,7 @@ readonly ACCT_USER_NAME
 # The shell to use for the user.  If not specified, a 'nologin' variant
 # for the system is used.  This can be overriden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_SHELL variable.
-: ${ACCT_USER_SHELL:=/sbin/nologin}
+: ${ACCT_USER_SHELL:=-1}
 
 # @ECLASS_VARIABLE: ACCT_USER_HOME
 # @DESCRIPTION:
@@ -437,51 +437,27 @@ acct-user_src_install() {
 acct-user_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if [[ ${EUID} -ne 0 ]]; then
-		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
-		return
+	# check if user already exists
+	_ACCT_USER_ALREADY_EXISTS=
+	if [[ -n $(egetent passwd "${ACCT_USER_NAME}") ]]; then
+		_ACCT_USER_ALREADY_EXISTS=1
 	fi
+	readonly _ACCT_USER_ALREADY_EXISTS
 
-	if egetent passwd "${ACCT_USER_NAME}" >/dev/null; then
-		elog "User ${ACCT_USER_NAME} already exists"
-		return
-	fi
-
-	local groups=( ${_ACCT_USER_GROUPS} )
-	local aux_groups=${groups[*]:1}
-	local opts=(
-		--system
-		--no-create-home
-		--no-user-group
-		--comment "${_ACCT_USER_COMMENT}"
-		--home-dir "${_ACCT_USER_HOME}"
-		--shell "${_ACCT_USER_SHELL}"
-		--gid "${groups[0]}"
-		--groups "${aux_groups// /,}"
-	)
-
-	if [[ ${_ACCT_USER_ID} -ne -1 ]] &&
-		! egetent passwd "${_ACCT_USER_ID}" >/dev/null; then
-		opts+=( --uid "${_ACCT_USER_ID}" )
-	fi
-
-	if [[ -n ${ROOT} ]]; then
-		opts+=( --prefix "${ROOT}" )
-	fi
-
-	elog "Adding user ${ACCT_USER_NAME}"
-	useradd "${opts[@]}" "${ACCT_USER_NAME}" || die
-	_ACCT_USER_ADDED=1
+	enewuser ${ACCT_USER_ENFORCE_ID:+-F} -M "${ACCT_USER_NAME}" \
+		"${_ACCT_USER_ID}" "${_ACCT_USER_SHELL}" "${_ACCT_USER_HOME}" \
+		"${_ACCT_USER_GROUPS// /,}"
 
 	if [[ ${_ACCT_USER_HOME} != /dev/null ]]; then
 		# default ownership to user:group
 		if [[ -z ${_ACCT_USER_HOME_OWNER} ]]; then
-			if [[ -n ${ROOT} ]]; then
+			local group_array=( ${_ACCT_USER_GROUPS} )
+			if [[ -n "${ROOT}" ]]; then
 				local euid=$(egetent passwd ${ACCT_USER_NAME} | cut -d: -f3)
 				local egid=$(egetent passwd ${ACCT_USER_NAME} | cut -d: -f4)
 				_ACCT_USER_HOME_OWNER=${euid}:${egid}
 			else
-				_ACCT_USER_HOME_OWNER=${ACCT_USER_NAME}:${groups[0]}
+				_ACCT_USER_HOME_OWNER=${ACCT_USER_NAME}:${group_array[0]}
 			fi
 		fi
 		# Path might be missing due to INSTALL_MASK, etc.
@@ -504,48 +480,26 @@ acct-user_pkg_preinst() {
 acct-user_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if [[ -n ${_ACCT_USER_ADDED} ]]; then
-		# We just added the user; no need to update it
-		return
-	fi
-
 	if [[ ${EUID} -ne 0 ]]; then
 		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
-		return
+		return 0
 	fi
 
-	if [[ -n ${ACCT_USER_NO_MODIFY} ]]; then
+	if [[ -n ${ACCT_USER_NO_MODIFY} && -n ${_ACCT_USER_ALREADY_EXISTS} ]]; then
+		eunlockuser "${ACCT_USER_NAME}"
+
 		ewarn "User ${ACCT_USER_NAME} already exists; Not touching existing user"
 		ewarn "due to set ACCT_USER_NO_MODIFY."
-		return
+		return 0
 	fi
 
-	local groups=( ${_ACCT_USER_GROUPS} )
-	local aux_groups=${groups[*]:1}
-	local opts=(
-		--comment "${_ACCT_USER_COMMENT}"
-		--home "${_ACCT_USER_HOME}"
-		--shell "${_ACCT_USER_SHELL}"
-		--gid "${groups[0]}"
-		--groups "${aux_groups// /,}"
-	)
-
-	if eislocked "${ACCT_USER_NAME}"; then
-		opts+=( --expiredate "" --unlock )
-	fi
-
-	if [[ -n ${ROOT} ]]; then
-		opts+=( --prefix "${ROOT}" )
-	fi
-
-	elog "Updating user ${ACCT_USER_NAME}"
-	if ! usermod "${opts[@]}" "${ACCT_USER_NAME}" 2>"${T}/usermod-error.log"; then
-		# usermod outputs a warning if unlocking the account would result in an
-		# empty password. Hide stderr in a text file and display it if usermod
-		# fails.
-		cat "${T}/usermod-error.log" >&2
-		die
-	fi
+	# NB: eset* functions check current value
+	esethome "${ACCT_USER_NAME}" "${_ACCT_USER_HOME}"
+	esetshell "${ACCT_USER_NAME}" "${_ACCT_USER_SHELL}"
+	esetgroups "${ACCT_USER_NAME}" "${_ACCT_USER_GROUPS// /,}"
+	# comment field can not contain colons
+	esetcomment "${ACCT_USER_NAME}" "${_ACCT_USER_COMMENT}"
+	eunlockuser "${ACCT_USER_NAME}"
 }
 
 # @FUNCTION: acct-user_pkg_prerm
@@ -579,19 +533,10 @@ acct-user_pkg_prerm() {
 		return
 	fi
 
-	local opts=(
-		--expiredate 1
-		--lock
-		--comment "$(egetcomment "${ACCT_USER_NAME}"); user account removed @ $(date +%Y-%m-%d)"
-		--shell /sbin/nologin
-	)
-
-	if [[ -n ${ROOT} ]]; then
-		opts+=( --prefix "${ROOT}" )
-	fi
-
-	elog "Locking user ${ACCT_USER_NAME}"
-	usermod "${opts[@]}" "${ACCT_USER_NAME}" || die
+	esetshell "${ACCT_USER_NAME}" -1
+	esetcomment "${ACCT_USER_NAME}" \
+		"$(egetcomment "${ACCT_USER_NAME}"); user account removed @ $(date +%Y-%m-%d)"
+	elockuser "${ACCT_USER_NAME}"
 }
 
 fi
