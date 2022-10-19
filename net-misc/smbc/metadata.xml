@@ -6,8 +6,8 @@
 		<name>Samba</name>
 	</maintainer>
 	<longdescription>
-Samba Commander is a text mode SMB network commander. In SMBC, you can browse the local network or you can use the search function to find the files. You can also download/upload files and directories or create them both locally and remotely. SMBC has a resume function and supports UTF-8 characters.
-</longdescription>
+	Samba Commander is a text mode SMB network commander. In SMBC, you can browse the local network or you can use the search function to find the files. You can also download/upload files and directories or create them both locally and remotely. SMBC has a resume function and supports UTF-8 characters.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">smbc</remote-id>
 	</upstream>
