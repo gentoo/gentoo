@@ -20,6 +20,7 @@ RDEPEND="
 	dev-libs/libuv:=
 	dev-ml/ocaml-ctypes:=[ocamlopt?]
 	dev-ml/result:=[ocamlopt?]
+	dev-ml/integers:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/gnuconfig
