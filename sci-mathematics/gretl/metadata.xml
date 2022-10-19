@@ -16,7 +16,7 @@
   reads RATS 4 databases. It has a built-in spreadsheet for editing
   data, and uses gnuplot for graphing. It can output regression results
   in LaTeX format.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="extras">Build and install add-ons bundled with gretl</flag>
     <flag name="R">Enable support for <pkg>dev-lang/R</pkg></flag>
