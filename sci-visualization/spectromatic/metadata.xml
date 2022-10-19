@@ -15,5 +15,5 @@
   Spectromatic reads its input as mono or stereo 16-bit wave files, and
   writes the output image to an elongated PNG image (colour for stereo,
   grayscale for mono audio). 
-</longdescription>
+  </longdescription>
 </pkgmetadata>
