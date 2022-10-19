@@ -23,7 +23,7 @@
   equality constraints, modeling error of x coordinate of points
   (eg. zero-shift of instrument), handling series of datasets,
   automation of common tasks with scripts, and more.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="nlopt">Enable optimization with <pkg>sci-libs/nlopt</pkg></flag>
   </use>
