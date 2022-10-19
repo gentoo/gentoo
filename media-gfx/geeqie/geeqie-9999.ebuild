@@ -49,10 +49,6 @@ BDEPEND="
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.0.1-allow_xxdi.patch"
-)
-
 pkg_setup() {
 	# Do not require setting LUA_SINGLE_TARGET if lua is not used
 	use lua && lua-single_pkg_setup
