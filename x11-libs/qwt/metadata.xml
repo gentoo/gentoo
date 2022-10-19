@@ -11,7 +11,7 @@
   Besides a 2D plot widget it provides scales, sliders, dials,
   compasses, thermometers, wheels and knobs to control or display
   values, arrays or ranges of type double.  
-</longdescription>
+  </longdescription>
   <use>
     <flag name="designer">Installs <pkg>dev-qt/designer</pkg> plugin.</flag>
     <flag name="mathml">Use the MathML renderer of the Qt solutions package.</flag>
