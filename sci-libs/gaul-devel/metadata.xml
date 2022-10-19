@@ -14,7 +14,7 @@
   algorithms. Additional stochastic algorithms are provided for
   comparison to the genetic algorithms. Much of the functionality is
   also available through a simple S-Lang interface.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">gaul</remote-id>
   </upstream>
