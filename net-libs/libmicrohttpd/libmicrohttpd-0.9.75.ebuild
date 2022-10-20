@@ -12,8 +12,6 @@ HOMEPAGE="https://www.gnu.org/software/libmicrohttpd/"
 SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
-PATCHES=( "${FILESDIR}"/${P}-fix-testsuite-with-lto.patch )
-
 LICENSE="LGPL-2.1+"
 SLOT="0/12"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
@@ -27,6 +25,8 @@ DEPEND="${RDEPEND}
 BDEPEND="ssl? ( virtual/pkgconfig )"
 
 DOCS=( AUTHORS NEWS COPYING README ChangeLog )
+
+PATCHES=( "${FILESDIR}"/${P}-fix-testsuite-with-lto.patch )
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
