@@ -1,0 +1,11 @@
+--- a2ps-4.14/man/Makefile.maint
++++ a2ps-4.14/man/Makefile.maint
+@@ -4,7 +4,7 @@
+ HELP2MAN-run = $(PERL) -w -- $(srcdir)/$(HELP2MAN)
+ 
+ # Depend on configure.in to get version number changes.
+-$(man_MANS): $(top_srcdir)/configure.in common.x
++$(man_MANS): $(top_srcdir)/configure.ac common.x
+ 
+ # Depend on the source file containing the --help text.
+ # Filter out irregular cases.
