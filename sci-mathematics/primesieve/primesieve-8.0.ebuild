@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/kimwalisch/primesieve"
 SRC_URI="https://github.com/kimwalisch/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0/10"  # subslot is first component of libprimesieve.so version
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc +executable test"
 RESTRICT="!test? ( test )"
 
