@@ -45,6 +45,9 @@ dev-util/nvidia-cuda-sdk
 # Use games-action/multimc-bin or games-action/prismlauncher instead
 # to be completely safe.
 # https://bugs.gentoo.org/877495
+#
+# Update (2022-10-20)
+# Removal in 15 days, please install games-action/prismlauncher instead
 games-action/polymc
 
 # Michał Górny <mgorny@gentoo.org> (2022-10-17)
