@@ -7,7 +7,7 @@ inherit meson
 
 DESCRIPTION="A set of services and D-Bus APIs to simplify access to UPnP/DLNA media devices"
 HOMEPAGE="https://gitlab.gnome.org/World/dLeyna"
-SRC_URI="https://gitlab.gnome.org/World/dLeyna/-/archive/v0.8.0/dLeyna-v${PV}.tar.bz2"
+SRC_URI="https://gitlab.gnome.org/World/dLeyna/-/archive/v${PV}/dLeyna-v${PV}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="1.0/6" # soname of libdleyna-core-1.0.so
