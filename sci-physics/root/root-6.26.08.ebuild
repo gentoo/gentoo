@@ -56,7 +56,7 @@ CDEPEND="
 	app-arch/zstd
 	app-arch/xz-utils
 	fortran? ( dev-lang/cfortran )
-	<dev-cpp/nlohmann_json-3.11
+	dev-cpp/nlohmann_json
 	dev-libs/libpcre:3
 	dev-libs/xxhash
 	media-fonts/dejavu
@@ -167,6 +167,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_C_COMPILER="$(tc-getCC)"
 		-DCMAKE_CXX_COMPILER="$(tc-getCXX)"
+		-DLLVM_BUILD_TYPE=$(usex debug RelWithDebInfo Release)
+		-DCMAKE_BUILD_TYPE=$(usex debug RelWithDebInfo Release)
 		-DCMAKE_CUDA_HOST_COMPILER="$(tc-getCXX)"
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
@@ -291,7 +293,6 @@ src_configure() {
 		${EXTRA_ECONF}
 	)
 
-	CMAKE_BUILD_TYPE=$(usex debug Debug Release) \
 	cmake_src_configure
 }
 
