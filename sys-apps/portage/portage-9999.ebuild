@@ -212,7 +212,7 @@ python_install_all() {
 		esetup.py "${targets[@]}"
 	fi
 
-	dotmpfiles "${FILESDIR}"/portage-ccache.conf
+	dotmpfiles "${FILESDIR}"/portage-{ccache,tmpdir}.conf
 
 	# Due to distutils/python-exec limitations
 	# these must be installed to /usr/bin.
