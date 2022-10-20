@@ -75,6 +75,7 @@ RDEPEND="
 		>=media-libs/libva-1.7.3:=[${MULTILIB_USEDEP}]
 	)
 	vdpau? ( >=x11-libs/libvdpau-1.1:=[${MULTILIB_USEDEP}] )
+	xvmc? ( >=x11-libs/libXvMC-1.0.8:=[${MULTILIB_USEDEP}] )
 	selinux? ( sys-libs/libselinux[${MULTILIB_USEDEP}] )
 	wayland? (
 		>=dev-libs/wayland-1.18.0:=[${MULTILIB_USEDEP}]
