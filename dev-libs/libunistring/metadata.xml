@@ -17,6 +17,7 @@
     manipulating C strings according to the Unicode standard.
   </longdescription>
   <upstream>
+    <remote-id type="cpe">cpe:/a:gnu:libunistring</remote-id>
     <remote-id type="savannah">libunistring</remote-id>
   </upstream>
 </pkgmetadata>
