@@ -12,7 +12,7 @@ inherit lua-single meson python-single-r1 vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
-SRC_URI="mirror://gimp/v2.99/${P}.tar.xz"
+SRC_URI="mirror://gimp/v$(ver_cut 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"

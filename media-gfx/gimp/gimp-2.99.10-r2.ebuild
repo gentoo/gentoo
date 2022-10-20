@@ -13,7 +13,7 @@ inherit gnome2 lua-single python-single-r1 toolchain-funcs vala virtualx
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
-SRC_URI="mirror://gimp/v2.99/${P}.tar.bz2"
+SRC_URI="mirror://gimp/v$(ver_cut 1-2)/${P}.tar.bz2"
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
 
