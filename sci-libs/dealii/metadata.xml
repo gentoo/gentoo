@@ -20,10 +20,6 @@
 		<flag name="arborx">Adds support for ARBORX (<pkg>sci-libs/arborx</pkg>)</flag>
 		<flag name="arpack">Adds support for ARPACK (<pkg>sci-libs/arpack</pkg>)</flag>
 		<flag name="cgal">Adds support for CGAL (<pkg>sci-mathematics/cgal</pkg>)</flag>
-		<flag name="debug">
-Build an additional debug library with extra debug codepaths, like asserts
-and extra output. If you want to get meaningful backtraces see
-&lt;https://www.gentoo.org/proj/en/qa/backtraces.xml&gt;</flag>
 		<flag name="gmsh">Add support for gmsh (<pkg>sci-libs/gmsh</pkg>)</flag>
 		<flag name="metis">Add support for metis (<pkg>sci-libs/metis</pkg>)</flag>
 		<flag name="muparser">Add support for muparser (<pkg>dev-cpp/muParser</pkg>)</flag>
