@@ -4,13 +4,15 @@
 EAPI=8
 
 NEED_EMACS=26.1
+DISTUTILS_USE_PEP517=no
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit elisp
+inherit elisp distutils-r1
 
 DESCRIPTION="Tree style project file explorer"
 HOMEPAGE="https://github.com/Alexander-Miller/treemacs/"
 SRC_URI="https://github.com/Alexander-Miller/${PN}/archive/${PV}.tar.gz
-			-> ${P}.tar.gz"
+	-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64"
@@ -33,23 +35,34 @@ BDEPEND="
 "
 
 DOCS=( Changelog.org Extensions.org README.org screenshots )
-PATCHES=( "${FILESDIR}"/${PN}-icons-icon-directory.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.9.5-tests.patch
+	"${FILESDIR}"/${PN}-async-scripts.patch
+	"${FILESDIR}"/${PN}-icons-icon-directory.patch
+)
 
 BYTECOMPFLAGS="-L . -L src/elisp"
 SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
-	elisp_src_prepare
+	distutils-r1_src_prepare
 
-	sed "s|@SITEETC@|${SITEETC}/${PN}|" -i src/elisp/${PN}-icons.el || die
+	sed "s|@SITEETC@|${SITEETC}/${PN}|g"        \
+		-i src/elisp/${PN}-icons.el             \
+		-i src/elisp/${PN}-async.el || die
+}
+
+python_compile() {
+	python_optimize "${S}"/src/scripts
 }
 
 src_compile() {
+	distutils-r1_src_compile
 	elisp-compile src/elisp/*.el
 }
 
 src_test() {
-	buttercup ${BYTECOMPFLAGS} -L test --traceback full || die
+	buttercup ${BYTECOMPFLAGS} -L test --traceback full || die "tests failed"
 }
 
 src_install() {
@@ -58,4 +71,5 @@ src_install() {
 
 	insinto ${SITEETC}/${PN}
 	doins -r icons
+	doins -r src/scripts
 }
