@@ -143,7 +143,7 @@ multilib_src_install() {
 		# we need realpath on /usr/bin/* symlink return version-appended binary path.
 		# so /usr/bin/rustc should point to /opt/rust-bin-<ver>/bin/rustc-<ver>
 		local ver_i="${i}-bin-${PV}"
-		ln -v "${ED}/opt/${P}/bin/${i}" "${ED}/opt/${P}/bin/${ver_i}"
+		ln -v "${ED}/opt/${P}/bin/${i}" "${ED}/opt/${P}/bin/${ver_i}" || die
 		dosym "../../opt/${P}/bin/${ver_i}" "/usr/bin/${ver_i}"
 	done
 
