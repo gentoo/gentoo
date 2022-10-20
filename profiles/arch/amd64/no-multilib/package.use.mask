@@ -22,12 +22,6 @@ dev-embedded/urjtag ftd2xx
 # GLEP 73 Immutability, USE=ovmf requires hvm
 app-emulation/xen-tools ovmf
 
-# Adam Feldman <NP-Hardass@gentoo.org> (2017-07-11)
-# GLEP 73 Immutability, USE=test requires
-# abi_x86_32 at this time.
-app-emulation/wine-vanilla test
-app-emulation/wine-staging test
-
 # Mike Frysinger <vapier@gentoo.org> (2016-08-12)
 # Requires sys-boot/grub:0 which is masked here.
 sys-apps/memtest86+ floppy

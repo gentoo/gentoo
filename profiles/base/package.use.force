@@ -179,10 +179,6 @@ net-misc/netkit-bootparamd libtirpc
 sci-astronomy/esomidas libtirpc
 sys-cluster/glusterfs libtirpc
 
-# Adam Feldman <NP-Hardass@gentoo.org> (2017-04-10)
-# Always force patch on appropriate variant
-app-emulation/wine-staging staging
-
 # David Seifert <soap@gentoo.org> (2017-03-07)
 # Only ever use system ffmpeg, allow kodi bundled ffmpeg
 # only for debug pruposes.
