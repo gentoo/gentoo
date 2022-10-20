@@ -97,6 +97,7 @@ multilib_src_install() {
 	use clippy && components="${components},clippy-preview"
 	use rls && components="${components},rls-preview,${analysis}"
 	use rustfmt && components="${components},rustfmt-preview"
+	use rust-analyzer && components="${components},rust-analyzer-preview"
 	# Rust component 'rust-src' is extracted from separate archive
 	if use rust-src; then
 		einfo "Combining rust and rust-src installers"
