@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc ~x86"
+KEYWORDS="~amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 IUSE="alsa ao emacs flac gtk jack motif nas ncurses ogg oss selinux slang speex tk vorbis X Xaw3d"
 
 REQUIRED_USE="tk? ( X )"
