@@ -7,15 +7,15 @@ inherit cmake xdg-utils
 
 DESCRIPTION="A full featured webcam capture application"
 HOMEPAGE="https://webcamoid.github.io"
-SRC_URI="https://github.com/webcamoid/webcamoid/archive/refs/tags/${PV}.tar.gz"
+SRC_URI="https://github.com/webcamoid/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 RESTRICT="mirror"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 CMAKE_USE_DIR="${WORKDIR}/${PF}"
-BUILD_DIR="${CMAKE_USE_DIR}/webcamoid-build"
+BUILD_DIR="${CMAKE_USE_DIR}/${PN}-build"
 
-IUSE="alsa -coreaudio ffmpeg gstreamer jack libuvc oss pulseaudio qtaudio v4lutils videoeffects debug headers v4l -pipewire vlc"
+IUSE="alsa coreaudio ffmpeg gstreamer jack libuvc oss pulseaudio qtaudio v4lutils videoeffects debug headers v4l"
 
 REQUIRED_USE="v4lutils? ( v4l )"
 
@@ -36,7 +36,6 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	qtaudio? ( dev-qt/qtmultimedia:5 )
 	v4l? ( media-libs/libv4l )
-	pipewire? ( media-video/pipewire )
 "
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-3.6
@@ -58,19 +57,19 @@ src_configure() {
 		"-DNOMEDIAFOUNDATION=1"
 		"-DNOAVFOUNDATION=1"
 		"-DNODSHOW=1"
-		"-DNOWASAPI=1"
+		"-DNOWASAPI=1"	
+		"-DNOVLC=1"
+		"-DNOPIPEWIRE=1"
 		"-DNOALSA=$(usex alsa 0 1)"
 		"-DNOCOREAUDIO=$(usex coreaudio 0 1)"
 		"-DNOFFMPEG=$(usex ffmpeg 0 1)"
 		"-DNOGSTREAMER=$(usex gstreamer 0 1)"
 		"-DNOJACK=$(usex jack 0 1)"
 		"-DNOLIBUVC=$(usex libuvc 0 1)"
-		"-DNOPIPEWIRE=$(usex pipewire 0 1)"
 		"-DNOPULSEAUDIO=$(usex pulseaudio 0 1)"
 		"-DNOV4L2=$(usex v4l 0 1)"
 		"-DNOV4LUTILS=$(usex v4lutils 0 1)"
 		"-DNOVIDEOEFFECTS=$(usex videoeffects 0 1)"
-		"-DNOVLC=$(usex vlc 0 1)"
 	)
 	cmake_src_configure
 }
