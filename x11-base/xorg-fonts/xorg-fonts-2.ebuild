@@ -49,5 +49,6 @@ RDEPEND="
 "
 
 pkg_postinst() {
-	optfeature "Bigelow & Holmes TrueType fonts (non-free)" media-fonts/font-bh-ttf media-fonts/font-bh-type1
+	optfeature "Bigelow & Holmes Luxi fonts (non-free)" \
+		media-fonts/font-bh-ttf media-fonts/font-bh-type1
 }
