@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_REMOVE_MODULES_LIST="${CMAKE_REMOVE_MODULES_LIST} FindRuby"
-inherit cmake flag-o-matic
+inherit cmake
 
 DESCRIPTION="Dislocker is used to read BitLocker encrypted partitions"
 HOMEPAGE="https://github.com/Aorimn/dislocker"
