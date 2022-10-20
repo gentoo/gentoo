@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit autotools desktop python-any-r1 xdg
 
@@ -19,11 +19,11 @@ else
 fi
 
 SLOT="0"
+QA_PKGCONFIG_VERSION="${PV}.0"
 LICENSE="GPL-3"
 
-IUSE="+appindicator archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls gtk2 +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
+IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
-	appindicator? ( notification )
 	libcanberra? ( notification )
 	libnotify? ( notification )
 	networkmanager? ( dbus )
@@ -36,6 +36,7 @@ COMMONDEPEND="
 	sys-libs/zlib:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2[jpeg]
+	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/pango
 	archive? (
@@ -54,11 +55,6 @@ COMMONDEPEND="
 	gdata? ( >=dev-libs/libgdata-0.17.2 )
 	dillo? ( www-client/dillo )
 	gnutls? ( >=net-libs/gnutls-3.0 )
-	!gtk2? (
-		x11-libs/gtk+:3
-		webkit? ( net-libs/webkit-gtk:4 )
-	)
-	gtk2? ( >=x11-libs/gtk+-2.24:2 )
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7:= )
 	litehtml? (
@@ -71,11 +67,7 @@ COMMONDEPEND="
 	nntp? ( >=net-libs/libetpan-0.57 )
 	notification? (
 		dev-libs/glib:2
-		appindicator? ( dev-libs/libindicate:3[gtk] )
-		libcanberra? (
-			!gtk2? ( media-libs/libcanberra[gtk3] )
-			gtk2? ( media-libs/libcanberra[gtk2] )
-		)
+		libcanberra? (  media-libs/libcanberra[gtk3] )
 		libnotify? ( x11-libs/libnotify )
 	)
 	pdf? ( app-text/poppler[cairo] )
@@ -90,6 +82,7 @@ COMMONDEPEND="
 	startup-notification? ( x11-libs/startup-notification )
 	svg? ( >=gnome-base/librsvg-2.40.5 )
 	valgrind? ( dev-util/valgrind )
+	webkit? ( net-libs/webkit-gtk:4 )
 "
 
 DEPEND="${COMMONDEPEND}
@@ -117,12 +110,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.17.5-enchant-2_default.patch"
 )
 
-pkg_setup() {
-	if [[ "${PV}" == 9999 ]] && ! use gtk2 ; then
-		EGIT_BRANCH="gtk3"
-	fi
-}
-
 src_prepare() {
 	default
 	eautoreconf
@@ -136,12 +123,14 @@ src_configure() {
 		--disable-bsfilter-plugin
 		--disable-generic-umpc
 		--disable-jpilot #735118
+		--disable-python-plugin
 		--enable-acpi_notifier-plugin
 		--enable-address_keeper-plugin
 		--enable-alternate-addressbook
 		--enable-att_remover-plugin
 		--enable-attachwarner-plugin
 		--enable-fetchinfo-plugin
+		--enable-ipv6
 		--enable-mailmbox-plugin
 		--enable-newmail-plugin
 		--enable-tnef_parse-plugin
@@ -156,7 +145,6 @@ src_configure() {
 		$(use_enable doc manual)
 		$(use_enable gdata gdata-plugin)
 		$(use_enable gnutls)
-		$(use_enable ipv6)
 		$(use_enable ldap)
 		$(use_enable litehtml litehtml_viewer-plugin)
 		$(use_enable networkmanager)
@@ -167,7 +155,6 @@ src_configure() {
 		$(use_enable pgp pgpcore-plugin)
 		$(use_enable pgp pgpinline-plugin)
 		$(use_enable pgp pgpmime-plugin)
-		--disable-python-plugin
 		$(use_enable rss rssyl-plugin)
 		$(use_enable session libsm)
 		$(use_enable sieve managesieve-plugin)
@@ -178,6 +165,7 @@ src_configure() {
 		$(use_enable startup-notification)
 		$(use_enable svg)
 		$(use_enable valgrind valgrind)
+		$(use_enable webkit fancy-plugin)
 		$(use_enable xface compface)
 	)
 
@@ -186,12 +174,6 @@ src_configure() {
 		myeconfargs+=( --enable-libetpan )
 	else
 		myeconfargs+=( --disable-libetpan )
-	fi
-
-	if use gtk2 ; then
-		myeconfargs+=( --disable-fancy-plugin )
-	else
-		myeconfargs+=( $(use_enable webkit fancy-plugin) )
 	fi
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
@@ -228,8 +210,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! use gtk2 ; then
-		ewarn "When upgrading from version 3.x please re-load any plugin you use"
-	fi
+	ewarn "When upgrading from version 3.x please re-load any plugin you use"
 	xdg_pkg_postinst
 }
