@@ -35,11 +35,6 @@ REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 	libgstpbutils-0.10.so.0
 	libgstreamer-0.10.so.0
 "
-# we have binaries which depend on some ancient libunwind
-REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
-	libunwind.so.1
-"
-
 RDEPEND="
 	app-crypt/libsecret
 	dev-libs/atk
@@ -65,6 +60,7 @@ RDEPEND="
 	sys-apps/util-linux
 	sys-libs/libcxx
 	sys-libs/libcxxabi
+	sys-libs/llvm-libunwind
 	sys-libs/zlib
 	virtual/krb5
 	virtual/libudev
