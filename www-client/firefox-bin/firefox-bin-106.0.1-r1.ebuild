@@ -61,7 +61,10 @@ DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
 	!www-client/firefox-bin:0
 	!www-client/firefox-bin:esr
-	dev-libs/atk
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		dev-libs/atk
+	)
 	dev-libs/dbus-glib
 	>=dev-libs/glib-2.26:2
 	media-libs/alsa-lib
