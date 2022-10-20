@@ -33,11 +33,27 @@ BDEPEND=">=dev-util/gperf-2.7.2
 
 SITEFILE="50${PN}-gentoo.el"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.13c-locale-gentoo.diff
+	"${FILESDIR}"/${PN}-4.13c-fnmatch-replacement.patch
+	"${FILESDIR}"/${P}-psset.patch
+	"${FILESDIR}"/${PN}-4.13c-emacs.patch
+	"${FILESDIR}"/${PN}-4.13-manpage-chmod.patch
+	"${FILESDIR}"/${P}-check-mempcpy.patch
+	"${FILESDIR}"/${P}-fix-stpcpy-proto.patch
+	"${FILESDIR}"/${P}-ptrdiff_t.patch
+	"${FILESDIR}"/${P}-texinfo-5.x.patch
+	"${FILESDIR}"/${P}-CVE-2014-0466.patch
+	"${FILESDIR}"/${P}-CVE-2001-1593.patch
+	"${FILESDIR}"/${P}-texinfo-6.7-encoding.patch
+	"${FILESDIR}"/${P}-function-decl.patch
+	"${FILESDIR}"/${P}-configure.ac.patch
+)
+
 src_prepare() {
 	default
 
-	eapply "${FILESDIR}"/${PN}-4.13c-locale-gentoo.diff
-	use vanilla || eapply -p0 "${FILESDIR}"/${PN}-4.13-stdout.diff
+	use vanilla || eapply "${FILESDIR}"/${P}-stdout.patch
 	if use cjk; then
 		eapply "${WORKDIR}"/${P}-ja_nls.patch
 		# bug #335803
@@ -45,45 +61,6 @@ src_prepare() {
 	else
 		eapply "${FILESDIR}"/${P}-cleanup.patch
 	fi
-
-	# fix fnmatch replacement, bug #134546
-	eapply "${FILESDIR}"/${PN}-4.13c-fnmatch-replacement.patch
-
-	# bug #122026
-	eapply "${FILESDIR}"/${P}-psset.patch
-
-	# fix emacs printing, bug #114627
-	eapply "${FILESDIR}"/a2ps-4.13c-emacs.patch
-
-	# fix chmod error, #167670
-	eapply "${FILESDIR}"/a2ps-4.13-manpage-chmod.patch
-
-	# add configure check for mempcpy, bug 216588
-	eapply "${FILESDIR}"/${P}-check-mempcpy.patch
-
-	# fix compilation error due to invalid stpcpy() prototype, bug 216588
-	eapply -p0 "${FILESDIR}"/${P}-fix-stpcpy-proto.patch
-
-	# fix compilation error due to obstack.h issue, bug 269638
-	eapply "${FILESDIR}"/${P}-ptrdiff_t.patch
-
-	# fix compilation error due to texinfo 5.x, bug 482748
-	eapply "${FILESDIR}"/${P}-texinfo-5.x.patch
-
-	# fix CVE-2014-0466, bug 506352
-	eapply "${FILESDIR}"/${P}-CVE-2014-0466.patch
-
-	# fix CVE-2001-1593, bug 507024
-	eapply "${FILESDIR}"/${P}-CVE-2001-1593.patch
-
-	# specify encoding explicitly, bug #695918
-	eapply "${FILESDIR}"/${P}-texinfo-6.7-encoding.patch
-
-	# fix function declaration, bug 870763
-	eapply "${FILESDIR}"/${P}-function-decl.patch
-
-	# update reference in man/Makefile.maint
-	eapply "${FILESDIR}"/${P}-configure.ac.patch
 
 	# fix building with sys-devel/automake >= 1.12, bug 420503
 	rm -f {.,ogonkify}/aclocal.m4 || die

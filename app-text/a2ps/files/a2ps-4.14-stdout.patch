@@ -1,8 +1,8 @@
---- lib/printers.c.orig       Tue Oct 12 00:01:59 1999
-+++ lib/printers.c    Wed May  2 11:23:25 2001
+--- a2ps-4.14/lib/printers.c
++++ a2ps-4.14/lib/printers.c
 @@ -315,8 +315,8 @@
-   res->ppd = NULL;           /* Printer's ppd are not read yet */
-
+   res->ppd = NULL;		/* Printer's ppd are not read yet */
+ 
    /* Output */
 -  /* Default is to send to default printer */
 -  res->flag_output_is_printer = true;

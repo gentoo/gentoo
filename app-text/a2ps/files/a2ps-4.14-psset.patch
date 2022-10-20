@@ -1,4 +1,5 @@
-diff -Naur a2ps-4.14.orig/contrib/psset.in a2ps-4.14/contrib/psset.in
+https://bugs.gentoo.org/122026
+
 --- a2ps-4.14.orig/contrib/psset.in	2007-12-29 12:29:01.000000000 +0900
 +++ a2ps-4.14/contrib/psset.in	2009-04-12 12:17:43.000000000 +0900
 @@ -219,7 +219,7 @@
