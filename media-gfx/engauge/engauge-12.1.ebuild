@@ -11,7 +11,7 @@ SRC_URI="https://github.com/markummitchell/engauge-digitizer/archive/v${PV}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc examples jpeg2k pdf"
 
 RDEPEND="dev-qt/qtcore:5
