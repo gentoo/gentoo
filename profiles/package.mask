@@ -40,10 +40,10 @@
 dev-util/nvidia-cuda-sdk
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-10-17)
-# Hostile takeover ongoing, integrity of the live version
-# cannot be guaranteed. Use the release version only if you
-# change the meta server setting.
-# Use games-action/multimc-bin instead to be completely safe.
+# Hostile takeover ongoing, integrity cannot be guaranteed.
+# Use the release version only if you change the meta server setting.
+# Use games-action/multimc-bin or games-action/prismlauncher instead
+# to be completely safe.
 # https://bugs.gentoo.org/877495
 games-action/polymc
 
