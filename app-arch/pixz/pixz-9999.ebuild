@@ -45,3 +45,10 @@ src_configure() {
 
 	econf
 }
+
+src_install() {
+	default
+
+	# https://github.com/vasi/pixz/issues/94
+	[[ ${PV} == "9999" ]] || doman src/pixz.1
+}

@@ -52,5 +52,6 @@ src_configure() {
 src_install() {
 	default
 
-	 [[ ${PV} == "9999" ]] || doman src/pixz.1
+	# https://github.com/vasi/pixz/issues/94
+	[[ ${PV} == "9999" ]] || doman src/pixz.1
 }
