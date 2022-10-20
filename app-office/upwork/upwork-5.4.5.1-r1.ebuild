@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,8 +8,8 @@ inherit desktop pax-utils rpm xdg-utils
 DESCRIPTION="Project collaboration and tracking software for upwork.com"
 HOMEPAGE="https://www.upwork.com/"
 SRC_URI="
-	amd64? ( https://updates-desktopapp.upwork.com/binaries/v5_4_5_1_941af939eff74e21/upwork-5.4.5.1-1fc24.x86_64.rpm -> ${P}_x86_64.rpm )
-	x86? ( https://updates-desktopapp.upwork.com/binaries/v5_4_5_1_941af939eff74e21/upwork-5.4.5.1-1fc24.i386.rpm -> ${P}_i386.rpm )"
+	amd64? ( https://updates-desktopapp.upwork.com/binaries/v${PV//./_}_941af939eff74e21/${P}-1fc24.x86_64.rpm -> ${P}_x86_64.rpm )
+	x86? ( https://updates-desktopapp.upwork.com/binaries/v${PV//./_}_941af939eff74e21/${P}-1fc24.i386.rpm -> ${P}_i386.rpm )"
 
 LICENSE="ODESK"
 SLOT="0"
