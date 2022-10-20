@@ -6,9 +6,10 @@ EAPI=8
 inherit flag-o-matic cmake
 
 DESCRIPTION="Neko is a high-level dynamically typed programming language"
-HOMEPAGE="https://nekovm.org/"
+HOMEPAGE="https://nekovm.org/
+	https://github.com/HaxeFoundation/neko/"
 
-if [[ "${PV}" == *9999* ]]; then
+if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/HaxeFoundation/${PN}.git"
 else
@@ -23,8 +24,8 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 IUSE="apache mysql sqlite ssl"
 
-DEPEND="
-	dev-libs/boehm-gc:=
+RDEPEND="
+	dev-libs/boehm-gc:=[threads]
 	dev-libs/libpcre:=
 	sys-libs/zlib:=
 	apache? ( www-servers/apache:2= )
@@ -35,7 +36,7 @@ DEPEND="
 		net-libs/mbedtls:=
 	)
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 src_configure() {
 	# -Werror=strict-aliasing warnings, bug #855641
