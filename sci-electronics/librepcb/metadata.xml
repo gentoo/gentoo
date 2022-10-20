@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+   <maintainer type="project" proxied="proxy">
+     <email>sci-electronics@gentoo.org</email>
+     <description>Gentoo Electronics Project</description>
+   </maintainer>
+   <maintainer type="person" proxied="yes">
+     <email>ktrace@yandex.ru</email>
+     <name>Victor V. Kustov</name>
+   </maintainer>
+   <longdescription lang="en">
+    LibrePCB is a free EDA software to develop printed circuit boards.
+    Cross-platform, multilingual (both application and library elements), intuitive, modern and easy-to-use graphical user interface.
+      - All-In-One: project management + library/schematic/board editors
+      - Very powerful library design with some innovative concepts
+      - Human-readable file formats for both libraries and projects
+      - Multi-PCB feature (different PCB variants of the same schematic)
+      - Automatic netlist synchronisation between schematic and board
+   </longdescription>
 </pkgmetadata>
