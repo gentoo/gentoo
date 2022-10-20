@@ -51,6 +51,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	$(python_gen_cond_dep 'dev-python/jsonschema[${PYTHON_USEDEP}]')
 	dev-libs/spdlog
+	dev-libs/libfmt:=
 	sci-libs/fftw:3.0=
 	sci-libs/mpir:=
 	sci-libs/volk:=
