@@ -63,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}"/wxGTK-${SLOT}-translation-domain.patch
 	"${FILESDIR}"/wxGTK-ignore-c++-abi.patch #676878
 	"${FILESDIR}/${PN}-configure-tests.patch"
+	"${FILESDIR}"/wxGTK-implicit-function-declaration.patch
 )
 
 src_prepare() {

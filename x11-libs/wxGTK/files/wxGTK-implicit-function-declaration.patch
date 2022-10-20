@@ -1,0 +1,89 @@
+conftest.c:58:37: error: implicit declaration of function 'exit' [-Werror=implicit-function-declaration]
+
+reference: https://archives.gentoo.org/gentoo-dev/message/dd9f2d3082b8b6f8dfbccb0639e6e240
+
+--- a/configure
++++ b/configure
+@@ -22278,27 +23224,30 @@ fi
+ 
+ ZLIB_LINK=
+ if test "$wxUSE_ZLIB" != "no" ; then
+-    $as_echo "#define wxUSE_ZLIB 1" >>confdefs.h
++    printf "%s\n" "#define wxUSE_ZLIB 1" >>confdefs.h
+ 
+ 
+     if test "$wxUSE_ZLIB" = "sys" -o "$wxUSE_ZLIB" = "yes" ; then
+                                                 if test "$USE_DARWIN" = 1; then
+             system_zlib_h_ok="yes"
+         else
+-                                                                                    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for zlib.h >= 1.1.4" >&5
+-$as_echo_n "checking for zlib.h >= 1.1.4... " >&6; }
+-if ${ac_cv_header_zlib_h+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  if test "$cross_compiling" = yes; then :
++                                                                                    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for zlib.h >= 1.1.4" >&5
++printf %s "checking for zlib.h >= 1.1.4... " >&6; }
++if test ${ac_cv_header_zlib_h+y}
++then :
++  printf %s "(cached) " >&6
++else $as_nop
++  if test "$cross_compiling" = yes
++then :
+                       unset ac_cv_header_zlib_h
+ 
+-else
++else $as_nop
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+                         #include <zlib.h>
+                         #include <stdio.h>
++                        #include <stdlib.h>
+ 
+                         int main()
+                         {
+@@ -22397,30 +23347,33 @@ fi
+ 
+ PNG_LINK=
+ if test "$wxUSE_LIBPNG" != "no" ; then
+-    $as_echo "#define wxUSE_LIBPNG 1" >>confdefs.h
++    printf "%s\n" "#define wxUSE_LIBPNG 1" >>confdefs.h
+ 
+ 
+             if test "$wxUSE_LIBPNG" = "sys" -a "$wxUSE_ZLIB" != "sys" ; then
+-        { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: system png library doesn't work without system zlib, will use built-in instead" >&5
+-$as_echo "$as_me: WARNING: system png library doesn't work without system zlib, will use built-in instead" >&2;}
++        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: system png library doesn't work without system zlib, will use built-in instead" >&5
++printf "%s\n" "$as_me: WARNING: system png library doesn't work without system zlib, will use built-in instead" >&2;}
+         wxUSE_LIBPNG=builtin
+     fi
+ 
+     if test "$wxUSE_LIBPNG" = "sys" -o "$wxUSE_LIBPNG" = "yes" ; then
+-                        { $as_echo "$as_me:${as_lineno-$LINENO}: checking for png.h > 0.90" >&5
+-$as_echo_n "checking for png.h > 0.90... " >&6; }
+-if ${ac_cv_header_png_h+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  if test "$cross_compiling" = yes; then :
++                        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for png.h > 0.90" >&5
++printf %s "checking for png.h > 0.90... " >&6; }
++if test ${ac_cv_header_png_h+y}
++then :
++  printf %s "(cached) " >&6
++else $as_nop
++  if test "$cross_compiling" = yes
++then :
+                   unset ac_cv_header_png_h
+ 
+-else
++else $as_nop
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+                     #include <png.h>
+                     #include <stdio.h>
++                    #include <stdlib.h>
+ 
+                     int main()
+                     {
