@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..11} )
 
 inherit bash-completion-r1 distutils-r1 systemd udev
@@ -29,6 +30,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	# https://github.com/phillipberndt/autorandr/pull/306
+	"${FILESDIR}"/autorandr-Makefile-fix-install_udev-target-by-s-TARGETS-MAKECM.patch
+)
 
 src_compile() {
 	distutils-r1_src_compile
@@ -59,6 +65,12 @@ src_install() {
 }
 
 pkg_postinst() {
+	if use udev; then
+		udev_reload
+	fi
+}
+
+pkg_postrm() {
 	if use udev; then
 		udev_reload
 	fi
