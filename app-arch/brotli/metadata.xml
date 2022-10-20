@@ -16,6 +16,7 @@
     deflate but offers denser compression.
   </longdescription>
   <upstream>
+    <remote-id type="cpe">cpe:/a:google:brotli</remote-id>
     <remote-id type="github">google/brotli</remote-id>
   </upstream>
 </pkgmetadata>
