@@ -6,7 +6,7 @@ EAPI=8
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..10} ) # python3_11 fails to compile
 
 inherit cmake cuda elisp-common fortran-2 python-single-r1 toolchain-funcs
 
@@ -167,6 +167,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_C_COMPILER="$(tc-getCC)"
 		-DCMAKE_CXX_COMPILER="$(tc-getCXX)"
+		-DLLVM_BUILD_TYPE=$(usex debug RelWithDebInfo Release)
+		-DCMAKE_BUILD_TYPE=$(usex debug RelWithDebInfo Release)
 		-DCMAKE_CUDA_HOST_COMPILER="$(tc-getCXX)"
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
@@ -291,14 +293,7 @@ src_configure() {
 		${EXTRA_ECONF}
 	)
 
-	CMAKE_BUILD_TYPE=$(usex debug Debug Release) \
 	cmake_src_configure
-}
-
-src_compile() {
-	# needed for hsimple.root
-	addwrite /dev/random
-	cmake_src_compile
 }
 
 src_install() {
