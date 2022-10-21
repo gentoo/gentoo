@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Utility to generate hashcash tokens"
 HOMEPAGE="http://www.hashcash.org"
@@ -25,7 +25,6 @@ src_prepare() {
 
 src_compile() {
 	tc-export AR CC
-	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 
 	emake generic
 }
