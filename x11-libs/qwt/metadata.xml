@@ -15,6 +15,7 @@
   <use>
     <flag name="designer">Installs <pkg>dev-qt/designer</pkg> plugin.</flag>
     <flag name="mathml">Use the MathML renderer of the Qt solutions package.</flag>
+    <flag name="polar">Install the QwtPolar headers</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">qwt</remote-id>
