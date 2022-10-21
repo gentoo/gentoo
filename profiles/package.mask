@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-10-21)
+# Barely maintained upstream.  Still lacking support for Python 3.10.
+# All revdeps in Gentoo were pure test deps, and only optional
+# (because they would otherwise block Python 3.10).
+# Removal on 2022-11-20.  Bug #845723.
+dev-python/eventlet
+
 # David Seifert <soap@gentoo.org> (2022-10-18)
 # Dead package, use dev-util/nvidia-cuda-toolkit instead. Examples were
 # removed in 11.6, no revdeps left. Removal on 2022-11-17.
