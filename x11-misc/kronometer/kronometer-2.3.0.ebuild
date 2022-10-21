@@ -12,11 +12,11 @@ inherit ecm kde.org
 
 DESCRIPTION="Stopwatch application"
 HOMEPAGE="https://apps.kde.org/kronometer https://userbase.kde.org/Kronometer"
-SRC_URI="mirror://kde/unstable/${PN}/${PV}/src/${P}.tar.xz"
+SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="5"
-# KEYWORDS="~amd64"
+KEYWORDS="~amd64"
 
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
