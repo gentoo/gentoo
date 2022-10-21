@@ -8,8 +8,6 @@ PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
-# TODO: pkgmove me
-MY_P=${PN//-/_}-${PV}
 DESCRIPTION="Validate Swagger specs against Swagger 1.1 or 2.0 specification"
 HOMEPAGE="
 	https://github.com/Yelp/swagger_spec_validator/
@@ -17,9 +15,8 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/Yelp/swagger_spec_validator/archive/v${PV}.tar.gz
-		-> ${MY_P}.gh.tar.gz
+		-> ${P}.gh.tar.gz
 "
-S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
