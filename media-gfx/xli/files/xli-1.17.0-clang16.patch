@@ -1,4 +1,11 @@
 https://bugs.gentoo.org/870790
+--- a/send.c
++++ b/send.c
+@@ -37,3 +37,3 @@
+ {
+-  int         (*old_handler)();
++  int         (*old_handler)(Display *, XErrorEvent *);
+   Pixmap        pixmap;
 --- a/window.c
 +++ b/window.c
 @@ -211,3 +211,3 @@

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 SNAPSHOT="2005-02-27"
 DESCRIPTION="X Load Image: view images or load them to root window"
@@ -61,8 +61,6 @@ src_prepare() {
 }
 
 src_configure() {
-	append-cflags -std=gnu89 # old codebase, incompatible with c2x
-
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
 		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 }
