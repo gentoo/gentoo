@@ -45,9 +45,6 @@ BDEPEND+="
 			dev-python/httplib2[${PYTHON_USEDEP}]
 			>=dev-python/httpx-0.18.1[${PYTHON_USEDEP}]
 		' python3_{8..11})
-		$(python_gen_cond_dep '
-			>=dev-python/eventlet-0.25.1[${PYTHON_USEDEP}]
-		' python3_{8..9})
 	)
 "
 
@@ -63,11 +60,12 @@ python_test() {
 		tests/bugfixes/pytest/test_426_mypy_segfault.py
 		# passthrough tests require Internet access
 		tests/functional/test_passthrough.py
+		# eventlet is masked for removal
+		tests/bugfixes/nosetests/test_eventlet.py
 	)
 
 	local ignore_by_dep=(
 		dev-python/boto3:tests/bugfixes/nosetests/test_416_boto3.py
-		dev-python/eventlet:tests/bugfixes/nosetests/test_eventlet.py
 		dev-python/httplib2:tests/functional/test_httplib2.py
 		dev-python/httpx:tests/bugfixes/nosetests/test_414_httpx.py
 		dev-python/pyopenssl:tests/bugfixes/nosetests/test_417_openssl.py
