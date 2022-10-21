@@ -38,15 +38,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.3-systemd_service_bin_path.patch
 )
 
-# test_borgmatic_version_matches_news_version tries to run the 'borgmatic'
-# executable so making it work would require passing --install
-# to distutils_enable_tests. Given that this is the only test requiring
-# this and that all it does is make sure the NEWS file has been updated
-# for the current version, just skip it.
-EPYTEST_DESELECT=(
-	tests/integration/commands/test_borgmatic.py::test_borgmatic_version_matches_news_version
-)
-
 distutils_enable_tests pytest
 
 src_install() {
