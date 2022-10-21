@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit flag-o-matic
-
 DESCRIPTION="Use structural criteria to grep and index text, SGML, XML and HTML and filter"
 HOMEPAGE="https://www.cs.helsinki.fi/u/jjaakkol/sgrep.html"
 SRC_URI="ftp://ftp.cs.helsinki.fi/pub/Software/Local/Sgrep/${P}.tar.gz"
@@ -24,8 +22,6 @@ src_prepare() {
 }
 
 src_configure() {
-	append-cflags -std=gnu89 # old codebase, incompatible with c2x
-
 	econf --datadir="${EPREFIX}"/etc
 }
 
