@@ -30,3 +30,10 @@ RDEPEND="
 distutils_enable_tests pytest
 distutils_enable_sphinx docs/source \
 	dev-python/sphinx_rtd_theme
+
+EPYTEST_DESELECT=(
+	# network (resolver)
+	tests/util/validate_spec_url_test.py::test_raise_SwaggerValidationError_on_urlopen_error
+	tests/validator12/validate_spec_url_test.py::test_raise_SwaggerValidationError_on_urlopen_error
+	tests/validator20/validate_spec_url_test.py::test_raise_SwaggerValidationError_on_urlopen_error
+)
