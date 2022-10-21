@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit cmake java-pkg-opt-2 python-single-r1
 
 DESCRIPTION="Translator library for raster geospatial data formats (includes OGR support)"
@@ -228,7 +228,7 @@ src_test() {
 
 src_install() {
 	cmake_src_install
-
+	use python && python_optimize
 	# TODO: install docs?
 }
 
