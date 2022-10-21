@@ -32,9 +32,6 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/pbr-2.2.0[${PYTHON_USEDEP}]
 	test? (
-		$(python_gen_cond_dep '
-			>=dev-python/eventlet-0.23.0[${PYTHON_USEDEP}]
-		' python3_{8..9})
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
@@ -47,9 +44,7 @@ distutils_enable_tests unittest
 
 python_compile() {
 	distutils-r1_python_compile
-	if ! has "${EPYTHON}" python3.{8..9}; then
-		find "${BUILD_DIR}"/install -name '*eventletutils*' -delete || die
-	fi
+	find "${BUILD_DIR}"/install -name '*eventletutils*' -delete || die
 }
 
 python_test() {
