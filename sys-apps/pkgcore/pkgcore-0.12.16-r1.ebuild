@@ -39,6 +39,13 @@ BDEPEND="
 
 distutils_enable_tests setup.py
 
+src_prepare() {
+	# force Gentoo's prefix
+	sed -e "/INSTALL_PREFIX =/s@= .*\$@= '${EPREFIX}/usr'@" -i setup.py || die
+
+	distutils-r1_src_prepare
+}
+
 src_test() {
 	# With PYTHONDONTWRITEBYTECODE=, python will try rebuild all sorts of modules.
 	# https://bugs.gentoo.org/840266
