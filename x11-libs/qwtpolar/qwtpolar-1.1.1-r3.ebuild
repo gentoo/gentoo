@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ RDEPEND="
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	x11-libs/qwt:6=[designer,qt5(+),svg]
+	<x11-libs/qwt-6.2:6=[designer,qt5(+),svg,-polar(-)]
 "
 DEPEND="${RDEPEND}
 	dev-qt/qtconcurrent:5
