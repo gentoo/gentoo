@@ -25,7 +25,7 @@ HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle pdal polar postgres python qml serial test"
+IUSE="3d examples +georeferencer grass hdf5 mapserver netcdf opencl oracle pdal polar postgres python qml serial test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	mapserver? ( python )
