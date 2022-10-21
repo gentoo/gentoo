@@ -15,7 +15,7 @@ else
 
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://poppler.freedesktop.org/${P}.tar.xz.sig )"
-	KEYWORDS="arm64 ppc ppc64 ~ppc-macos"
+	KEYWORDS="ppc64"
 	SLOT="0/122"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
