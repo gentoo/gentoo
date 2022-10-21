@@ -44,9 +44,6 @@ BDEPEND="
 		dev-python/pytest-localserver[${PYTHON_USEDEP}]
 		dev-python/werkzeug[${PYTHON_USEDEP}]
 		dev-python/zope-event[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/eventlet[${PYTHON_USEDEP}]
-		' python3_{8..9})
 	)
 "
 
