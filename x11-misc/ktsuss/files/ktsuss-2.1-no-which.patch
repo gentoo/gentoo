@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/781185
+--- a/configure.ac
++++ b/configure.ac
+@@ -25,3 +25,3 @@
+ 		AC_MSG_CHECKING([whether we can locate the su program])
+-		supath=`which su 2>/dev/null`
++		supath=`command -v su 2>/dev/null`
+ 		if test "x$supath" = "x"; then
+@@ -36,3 +36,3 @@
+ 		AC_MSG_CHECKING([whether we can locate the sudo program])
+-		sudopath=`which sudo 2>/dev/null`
++		sudopath=`command -v sudo 2>/dev/null`
+ 		if test "x$sudopath" = "x"; then
