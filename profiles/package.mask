@@ -466,13 +466,6 @@ dev-util/patdiff:0/0.15
 sys-devel/automake:1.13
 sys-devel/automake:1.15
 
-# John Helmert III <ajak@gentoo.org> (2022-03-13)
-# Arti is not a production-ready Tor client. According to upstream, "do
-# not use this program yet if you seriously need anonymity, privacy,
-# security, or stability." Feel free to unmask if this is not a
-# necessity.
-<net-p2p/arti-1.0.0
-
 # Anton Fischl <github@fischl-online.de> (2022-02-23)
 # Version 2.5.* is not meant for production according to upstream
 =app-backup/burp-2.5*
