@@ -45,7 +45,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-8.5.7-simplify-build.patch"
 )
 
-_src_prepare() {
+src_prepare() {
 	echo "__version__ = '${PV}'"> gentoo_version.py || die
 	distutils-r1_src_prepare
 }
