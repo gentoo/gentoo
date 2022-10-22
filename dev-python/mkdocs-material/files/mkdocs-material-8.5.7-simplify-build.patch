@@ -1,0 +1,27 @@
+From: Arthur Zamarin <arthurzam@gentoo.org>
+
+Simplify dependencies used for metadata generation.
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -19,7 +19,7 @@
+ # IN THE SOFTWARE.
+
+ [build-system]
+-requires = ["hatchling", "hatch-requirements-txt", "hatch-nodejs-version>=0.3.0"]
++requires = ["hatchling"]
+ build-backend = "hatchling.build"
+
+ [project]
+@@ -55,10 +55,7 @@ tags = "material.plugins.tags.plugin:TagsPlugin"
+ material = "material"
+
+ [tool.hatch.version]
+-source = "nodejs"
+-
+-[tool.hatch.metadata.hooks.nodejs]
+-fields = ["license", "description", "authors", "keywords", "urls"]
++path = "gentoo_version.py"
+
+ [tool.hatch.metadata.hooks.requirements_txt]
+ filename = "requirements.txt"
