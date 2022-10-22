@@ -10,11 +10,11 @@ inherit distutils-r1
 
 DESCRIPTION="A fake file system that mocks the Python file system modules"
 HOMEPAGE="
-	https://github.com/jmcgeheeiv/pyfakefs/
+	https://github.com/pytest-dev/pyfakefs/
 	https://pypi.org/project/pyfakefs/
 "
 SRC_URI="
-	https://github.com/jmcgeheeiv/${PN}/archive/v${PV}.tar.gz
+	https://github.com/pytest-dev/pyfakefs/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
