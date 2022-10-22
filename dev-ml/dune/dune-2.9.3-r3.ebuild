@@ -13,7 +13,7 @@ LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="emacs test"
-RESTRICT="!test? ( test )"
+RESTRICT="strip !test? ( test )"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.08:=
