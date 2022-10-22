@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-10-22)
+# Last release upstream 10 years ago. No longer compiles with latest
+# clang (bug #875254) and doubtful that this actually works with recent
+# ruby versions.
+# Masked for removal in 30 days.
+dev-ruby/ruby-sdl
+
 # Michał Górny <mgorny@gentoo.org> (2022-10-21)
 # Barely maintained upstream.  Still lacking support for Python 3.10.
 # All revdeps in Gentoo were pure test deps, and only optional
