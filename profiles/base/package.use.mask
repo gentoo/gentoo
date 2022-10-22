@@ -638,10 +638,6 @@ sci-libs/linux-gpib php
 # Mask ruby20-only compatible packages
 ~media-libs/libcaca-0.99_beta19 ruby
 
-# Matthias Maier <tamiko@gentoo.org> (2017-05-11)
-# Globally mask pie use flag. Selectively unmask on specific profiles.
-sys-devel/gcc pie
-
 # Mike Gilbert <floppym@gentoo.org> (2017-02-16)
 # Multiple test failures.
 sys-boot/grub:2 test
