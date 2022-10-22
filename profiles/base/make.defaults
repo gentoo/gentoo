@@ -108,7 +108,7 @@ RUBY_TARGETS="ruby27"
 # These USE flags are what is common between the various sub-profiles. Stages 2
 # and 3 are built against these, so be careful what you add.
 # Moved here from releases/
-USE="acl gdbm nptl unicode"
+USE="acl bzip2 gdbm nptl unicode"
 
 # Enable extended filesystem attribute support by default.
 # https://archives.gentoo.org/gentoo-dev/message/ba0e3457e4b807e79816f0df03566af0
