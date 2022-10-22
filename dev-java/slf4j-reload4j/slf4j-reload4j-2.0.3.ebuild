@@ -73,3 +73,10 @@ src_prepare() {
 	#         at org.slf4j.reload4j.EventFieldsTest.testWhetherEventsFieldsAreSet(EventFieldsTest.java:35)
 	rm src/test/java/org/slf4j/reload4j/EventFieldsTest.java || die "cannot remove test"
 }
+
+src_test() {
+	if use ppc64; then #877903
+		JAVA_TEST_EXCLUDES+=( org.slf4j.reload4j.Reload4jMultithreadedInitializationTest )
+	fi
+	java-pkg-simple_src_test
+}
