@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Jaco Kroon <jaco@uls.co.za> (2022-10-22)
+# Some potentially breaking changes here, please check the UPGRADE.txt file.
+# Most important:  chan_sip no longer builds by default, if you've migrated to
+# PJSIP you should be OK and most likely you should be able to safely unmask.
+# For now to prevent accidental upgrades and to allow proper testing this will
+# be in place for minimum six months (2023-04-22).
+=net-misc/asterisk-20*
+
 # David Seifert <soap@gentoo.org> (2022-10-18)
 # Dead package, use dev-util/nvidia-cuda-toolkit instead. Examples were
 # removed in 11.6, no revdeps left. Removal on 2022-11-17.
