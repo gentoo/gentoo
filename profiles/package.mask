@@ -40,6 +40,7 @@
 # For now to prevent accidental upgrades and to allow proper testing this will
 # be in place for minimum six months (2023-04-22).
 =net-misc/asterisk-20*
+=net-misc/asterisk-opus-20*
 
 # David Seifert <soap@gentoo.org> (2022-10-18)
 # Dead package, use dev-util/nvidia-cuda-toolkit instead. Examples were
