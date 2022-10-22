@@ -26,7 +26,17 @@ pkg_setup() {
 	linux-mod_pkg_setup
 
 	BUILD_TARGETS="modules"
-	BUILD_PARAMS="CC=$(tc-getCC) KERNEL_BUILD=${KERNEL_DIR}"
+	BUILD_PARAMS="KERNEL_BUILD=${KERNEL_DIR}"
+	if linux_chkconfig_present CC_IS_CLANG; then
+	  BUILD_PARAMS+=" CC=${CHOST}-clang"
+	  if linux_chkconfig_present LD_IS_LLD; then
+	    BUILD_PARAMS+=' LD=ld.lld'
+	    if linux_chkconfig_present LTO_CLANG_THIN; then
+	      # kernel enables cache by default leading to sandbox violations
+	      BUILD_PARAMS+=' ldflags-y=--thinlto-cache-dir= LDFLAGS_MODULE=--thinlto-cache-dir='
+	    fi
+	  fi
+	fi
 }
 
 src_install() {
