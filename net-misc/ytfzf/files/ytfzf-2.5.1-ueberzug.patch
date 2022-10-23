@@ -1,0 +1,10 @@
+https://github.com/pystardust/ytfzf/issues/592
+--- a/ytfzf
++++ b/ytfzf
+@@ -1698,4 +1698,4 @@
+ 			mkfifo "$UEBERZUG_FIFO"
+-			ueberzug layer --parser json < "$UEBERZUG_FIFO"  &
+-			exec 3> "$UEBERZUG_FIFO" > "$thumbnail_debug_log" 2>&1 # to keep the fifo open
++			ueberzug layer --parser json < "$UEBERZUG_FIFO" > "$thumbnail_debug_log" 2>&1 &
++			exec 3> "$UEBERZUG_FIFO" # to keep the fifo open
+ 			;;
