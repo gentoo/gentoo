@@ -8,7 +8,7 @@ PHP_EXT_ZENDEXT="no"
 DOCS=( CREDITS NEWS README.md )
 PHP_EXT_ECONF_ARGS=( --enable-${PN} )
 
-USE_PHP="php7-3 php7-4 php8-0 php8-1"
+USE_PHP="php7-4 php8-0 php8-1"
 
 inherit php-ext-source-r3
 
