@@ -44,6 +44,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.28.0-drop-dependency-warnings.patch
+	# https://github.com/psf/requests/pull/6261
+	"${FILESDIR}"/${PN}-2.28.1-fix-charsetnormalizer-assert.patch
 )
 
 distutils_enable_tests pytest
