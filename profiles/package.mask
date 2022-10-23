@@ -302,11 +302,6 @@ games-sports/torcs
 # Removal on 2022-10-25.
 dev-python/ssh2-python
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-09-23)
-# Unmaintained upstream, obsolete after introduction of kde-misc/markdownpart.
-# Removal on 2022-10-23.
-kde-misc/kmarkdownwebview
-
 # John Helmert III <ajak@gentoo.org> (2022-09-18)
 # Unfixed root privilege escalation, bug #631552
 sys-cluster/slurm
