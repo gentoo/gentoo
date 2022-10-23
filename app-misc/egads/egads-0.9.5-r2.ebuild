@@ -1,12 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Entropy Gathering And Distribution System"
-HOMEPAGE="http://www.securesoftware.com/download_egads.htm"
+HOMEPAGE="http://www.securesoftware.com"
 SRC_URI="http://www.securesoftware.com/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -15,7 +15,13 @@ KEYWORDS="~amd64 ~ppc x86"
 
 EGADS_DATADIR=/var/run/egads
 
+PATCHES=(
+	"${FILESDIR}"/egads-0.9.5-make-build-work-with-clang16.patch
+)
+
 src_prepare() {
+	aclocal || die
+	eautoreconf
 	default
 	sed -i \
 		-e '/^BINDIR/d' \
