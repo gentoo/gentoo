@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit mount-boot readme.gentoo-r1
 
@@ -59,7 +59,7 @@ pkg_preinst() {
 
 		if [[ -n "${msg}" ]] ; then
 			msg="This package installs following files: ${msg}."
-			msg="${msg} Please remove (backup) your copies durning install"
+			msg="${msg} Please remove (backup) your copies during install"
 			msg="${msg} and merge settings afterwards."
 			msg="${msg} Further updates will be CONFIG_PROTECTed."
 			die "${msg}"
