@@ -8,14 +8,21 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python PAM module"
-HOMEPAGE="https://github.com/FirefighterBlu3/python-pam"
-SRC_URI="https://github.com/FirefighterBlu3/python-pam/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/FirefighterBlu3/python-pam/
+	https://pypi.org/project/python-pam/
+"
+SRC_URI="
+	https://github.com/FirefighterBlu3/python-pam/archive/v${PV}.tar.gz
+		-> ${P}.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~riscv x86"
 
-RDEPEND="dev-python/six[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/six[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
