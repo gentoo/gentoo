@@ -1,12 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs flag-o-matic
 
 DESCRIPTION="Entropy Gathering And Distribution System"
-HOMEPAGE="http://www.securesoftware.com/download_egads.htm"
+HOMEPAGE="http://www.securesoftware.com"
 SRC_URI="http://www.securesoftware.com/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -15,21 +15,31 @@ KEYWORDS="~amd64 ~ppc x86"
 
 EGADS_DATADIR=/var/run/egads
 
+PATCHES=(
+	"${FILESDIR}"/${P}-make-build-work-with-clang16.patch
+)
+
 src_prepare() {
 	default
+
+	rm aclocal.m4 || die
+
+	eautoreconf
+
 	sed -i \
 		-e '/^BINDIR/d' \
 		-e '/^LIBDIR/d' \
 		-e '/^INCLUDEDIR/d' \
 		"${S}"/Makefile.in || die "Failed to fix Makefile.in"
-	tc-export CC AR RANLIB
 }
 
 src_configure() {
-	econf \
-		--with-egads-datadir="${EGADS_DATADIR}" \
-		--with-bindir="${EPREFIX}"/usr/sbin \
-		--disable-static
+	tc-export CC AR RANLIB
+
+	# bug #312983
+	append-flags -fno-strict-aliasing
+
+	econf --with-egads-datadir="${EGADS_DATADIR}"
 }
 
 src_compile() {
@@ -39,6 +49,7 @@ src_compile() {
 src_install() {
 	keepdir ${EGADS_DATADIR}
 	fperms +t ${EGADS_DATADIR}
+
 	# NOT parallel safe, and no DESTDIR support
 	emake -j1 install \
 		BINDIR="${D}"/usr/sbin \

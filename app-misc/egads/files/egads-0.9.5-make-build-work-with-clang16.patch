@@ -1,0 +1,16 @@
+Clang16 does not allow K&R C function declarations by default. This changes the declaration to a modern C function declaration.
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/sha1.c
++++ b/sha1.c
+@@ -131,8 +131,7 @@ void SHAInit(SHA_CTX *shsInfo)
+
+    Note that this corrupts the shsInfo->data area */
+
+-static void SHSTransform( digest, data )
+-     UINT4 *digest, *data ;
++static void SHSTransform(UINT4 *digest,UINT4 *data)
+     {
+     UINT4 A, B, C, D, E;     /* Local vars */
+     UINT4 eData[ 16 ];       /* Expanded data */
