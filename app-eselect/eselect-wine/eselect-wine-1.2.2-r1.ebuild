@@ -10,12 +10,11 @@ S="${WORKDIR}/NP-Hardass-eselect-wine-f18b76f9c90c"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 
 RDEPEND="
 	app-admin/eselect
-	dev-util/desktop-file-utils
-	!app-emulation/wine:0"
+	dev-util/desktop-file-utils"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-proton.patch

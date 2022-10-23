@@ -8,7 +8,7 @@ DESCRIPTION="haproxy dataplane api / sidecar"
 HOMEPAGE="https://github.com/haproxytech/dataplaneapi https://www.haproxy.com/documentation/dataplaneapi/latest/"
 
 SRC_URI="https://github.com/haproxytech/dataplaneapi/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	http://gentooexperimental.org/~patrick/haproxy-dataplaneapi-2.5.1-deps.tar.xz"
+	http://gentooexperimental.org/~patrick/${P}-deps.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"

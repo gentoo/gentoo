@@ -39,7 +39,7 @@ src_compile() {
 	ln -s Makefile.unix config/Makefile || die
 
 	# Make
-	emake -j1 RANLIB="$(tc-getRANLIB)"
+	emake -j1 RANLIB="$(tc-getRANLIB)" CPP="$(tc-getPROG CPP cpp)"
 }
 
 src_test() {

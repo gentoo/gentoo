@@ -10,7 +10,7 @@
   initio effective core potentials, using a mixture of generated, recursive
   code and Gauss-Chebyshev quadrature. It is designed to be standalone and
   generic.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="github">robashaw/libecpint</remote-id>
   </upstream>

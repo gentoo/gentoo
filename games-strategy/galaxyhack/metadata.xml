@@ -6,23 +6,23 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<longdescription lang="en">
-GalaxyHack allows you to design a fleet of spaceships which can then be tested
-in AI script based battles against fleets designed by other players. Though
-battles take place in real time, the strategy comes before hand, both in
-writing short AI scripts in a simple scripting language, and also in the set up
-and selection of your fleet. You don't actually have any control over your
-units at all mid-battle, but rather use the time to see where the set up of
-your fleets is working, where your fleets' weaknesses lie and changes are
-needed, and perhaps also to learn from the strategy of your opponent.
+	GalaxyHack allows you to design a fleet of spaceships which can then be tested
+	in AI script based battles against fleets designed by other players. Though
+	battles take place in real time, the strategy comes before hand, both in
+	writing short AI scripts in a simple scripting language, and also in the set up
+	and selection of your fleet. You don't actually have any control over your
+	units at all mid-battle, but rather use the time to see where the set up of
+	your fleets is working, where your fleets' weaknesses lie and changes are
+	needed, and perhaps also to learn from the strategy of your opponent.
 
-The game revolves around very large capital ships, from which smaller ships are
-launched, but which are not designed for attacking themselves, and which cannot
-be moved mid-battle. To win a battle you must destroy of all of your opponent's
-capital ships before they destroy yours.
+	The game revolves around very large capital ships, from which smaller ships are
+	launched, but which are not designed for attacking themselves, and which cannot
+	be moved mid-battle. To win a battle you must destroy of all of your opponent's
+	capital ships before they destroy yours.
 
-There can be hundreds of units in any one battle, but there is no harvesting,
-resource management or base building.
-</longdescription>
+	There can be hundreds of units in any one battle, but there is no harvesting,
+	resource management or base building.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">galaxyhack</remote-id>
 	</upstream>

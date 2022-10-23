@@ -1,0 +1,85 @@
+From 8706a81bccfbaf9d06a3aedf9f968d760757af07 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 14 May 2021 12:38:57 +0200
+Subject: [PATCH] Use BUILD_TESTING to make tests optional
+
+Variable is provided by KDECMakeSettings and default enabled.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                                     | 4 ++++
+ libdiscover/CMakeLists.txt                         | 4 +++-
+ libdiscover/backends/DummyBackend/CMakeLists.txt   | 4 +++-
+ libdiscover/backends/FlatpakBackend/CMakeLists.txt | 4 +++-
+ libdiscover/backends/KNSBackend/CMakeLists.txt     | 4 +++-
+ 5 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 13fe64228..7453c8bfb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,6 +25,10 @@ include(KDEGitCommitHooks)
+ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Widgets Test Network Xml Concurrent DBus Quick)
+ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG OPTIONAL_COMPONENTS WebView)
+ 
++if(BUILD_TESTING)
++    find_package(Qt${QT_MAJOR_VERSION}Test ${QT_MIN_VERSION} CONFIG REQUIRED)
++endif()
++
+ find_package(PkgConfig REQUIRED)
+ 
+ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED CoreAddons Config Crash DBusAddons I18n Archive XmlGui KIO Declarative KCMUtils IdleTime Notifications Purpose)
+diff --git a/libdiscover/CMakeLists.txt b/libdiscover/CMakeLists.txt
+index 023b110fd..7778fab0c 100644
+--- a/libdiscover/CMakeLists.txt
++++ b/libdiscover/CMakeLists.txt
+@@ -4,7 +4,9 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config-paths.h.cmake ${CMAKE_CURRENT_
+ 
+ add_subdirectory(backends)
+ add_subdirectory(notifiers)
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(discovercommon_SRCS
+     Category/Category.cpp
+diff --git a/libdiscover/backends/DummyBackend/CMakeLists.txt b/libdiscover/backends/DummyBackend/CMakeLists.txt
+index 5b4aef10c..38377d808 100644
+--- a/libdiscover/backends/DummyBackend/CMakeLists.txt
++++ b/libdiscover/backends/DummyBackend/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(dummy-backend_SRCS
+     DummyResource.cpp
+diff --git a/libdiscover/backends/FlatpakBackend/CMakeLists.txt b/libdiscover/backends/FlatpakBackend/CMakeLists.txt
+index eac5a3241..e9ee78fd0 100644
+--- a/libdiscover/backends/FlatpakBackend/CMakeLists.txt
++++ b/libdiscover/backends/FlatpakBackend/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ set(flatpak-backend_SRCS
+     FlatpakResource.cpp
+diff --git a/libdiscover/backends/KNSBackend/CMakeLists.txt b/libdiscover/backends/KNSBackend/CMakeLists.txt
+index d52bee9d0..7d5ba8dc9 100644
+--- a/libdiscover/backends/KNSBackend/CMakeLists.txt
++++ b/libdiscover/backends/KNSBackend/CMakeLists.txt
+@@ -1,4 +1,6 @@
+-add_subdirectory(tests)
++if(BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ 
+ add_library(kns-backend MODULE
+     KNSBackend.cpp
+-- 
+2.37.3
+

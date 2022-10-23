@@ -31,6 +31,7 @@ RDEPEND="dev-db/sqlite:3
 	~net-misc/seafile-${PV}
 	sys-libs/zlib
 	virtual/opengl
+	elibc_musl? ( sys-libs/fts-standalone )
 	shibboleth? ( dev-qt/qtwebengine:5[widgets] )"
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )"
@@ -48,5 +49,7 @@ src_configure() {
 		-DBUILD_SHIBBOLETH_SUPPORT="$(usex shibboleth)"
 		-DBUILD_TESTING="$(usex test)"
 	)
+	# 863554
+	use elibc_musl && mycmakeargs+=( -DCMAKE_CXX_STANDARD_LIBRARIES="-lfts" )
 	cmake_src_configure
 }

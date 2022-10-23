@@ -13,7 +13,6 @@ if [[ ${PV} == 9999 ]]; then
 
 	EGIT_REPO_URI="
 		https://github.com/PolyMC/PolyMC
-		https://github.com/PolyMC/libnbtplusplus
 	"
 
 	EGIT_SUBMODULES=( 'depends/libnbtplusplus' )

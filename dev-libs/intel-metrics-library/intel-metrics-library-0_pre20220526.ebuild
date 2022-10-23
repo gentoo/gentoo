@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 inherit cmake
 
-DESCRIPTION="A user mode driver helper library that provides access to GPU performance counters"
+DESCRIPTION="User mode driver helper library that provides access to GPU performance counters"
 HOMEPAGE="https://github.com/intel/metrics-library"
 SRC_URI="https://github.com/intel/${MY_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${EGIT_COMMIT}"

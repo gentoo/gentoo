@@ -15,9 +15,9 @@
     <bugs-to>https://github.com/sarugaku/resolvelib/issues</bugs-to>
   </upstream>
   <longdescription lang="en">
-ResolveLib at the highest level provides a Resolver class that includes
-dependency resolution logic. You give it some things, and a little
-information on how it should interact with them, and it will spit out
-a resolution result.
-</longdescription>
+  ResolveLib at the highest level provides a Resolver class that includes
+  dependency resolution logic. You give it some things, and a little
+  information on how it should interact with them, and it will spit out
+  a resolution result.
+  </longdescription>
 </pkgmetadata>

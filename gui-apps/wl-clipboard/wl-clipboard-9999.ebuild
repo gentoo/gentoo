@@ -22,4 +22,4 @@ IUSE=""
 
 DEPEND="dev-libs/wayland"
 RDEPEND="${DEPEND}"
-BDEPEND=""
+BDEPEND="dev-util/wayland-scanner"

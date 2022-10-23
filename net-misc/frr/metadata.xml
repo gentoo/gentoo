@@ -17,4 +17,7 @@
 		<flag name="pam">Add support for PAM (via <pkg>sys-libs/pam</pkg>) to the Virtual Terminal Interface Shell (vtysh)</flag>
 		<flag name="ospfapi">Build OSPFAPI support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">FRRouting/frr</remote-id>
+	</upstream>
 </pkgmetadata>

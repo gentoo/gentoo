@@ -1,4 +1,6 @@
-diff -Naurp a2ps-4.13.orig/lib/fnmatch.c a2ps-4.13/lib/fnmatch.c
+fix fnmatch replacement
+https://bugs.gentoo.org/134546
+
 --- a2ps-4.13.orig/lib/fnmatch.c	2002-03-04 12:46:25 -0600
 +++ a2ps-4.13/lib/fnmatch.c	2006-05-27 11:41:15 -0500
 @@ -27,18 +27,6 @@

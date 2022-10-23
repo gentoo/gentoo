@@ -31,8 +31,8 @@ BDEPEND="
 		!hppa? ( !sparc? ( !s390? (
 			sys-apps/dbus
 			virtual/secret-service
-		)
-	) ) )
+		) ) )
+	)
 "
 
 distutils_enable_tests unittest

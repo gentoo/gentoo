@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="sqlite"
 
 # We only package the LTS releases right now
@@ -27,12 +27,17 @@ LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
 IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle pdal polar postgres python qml serial test"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	mapserver? ( python )
+	test? ( postgres )
+"
 
 # Disabling test suite because upstream disallow running from install path
 RESTRICT="!test? ( test )"
 
-# See bug #850787 re sip-6.6.
+# At some point the dependency on qwtpolar should be
+# replaced with a dependency on qwt[polar]. Currently
+# it does not build with qwt-6.2[polar] though.
 COMMON_DEPEND="
 	app-crypt/qca:2[qt5(+),ssl]
 	>=dev-db/spatialite-4.2.0
@@ -91,7 +96,7 @@ COMMON_DEPEND="
 			dev-python/pyyaml[${PYTHON_USEDEP}]
 			>=dev-python/qscintilla-python-2.10.1[qt5(+),${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
-			<dev-python/sip-6.6:=[${PYTHON_USEDEP}]
+			dev-python/sip:=[${PYTHON_USEDEP}]
 			dev-python/six[${PYTHON_USEDEP}]
 			postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 		')
@@ -122,6 +127,16 @@ BDEPEND="
 
 src_prepare() {
 	cmake_src_prepare
+	# Tests want to be run inside a git repo
+	if [[ ${PV} != *9999* ]]; then
+		if use test; then
+			git init -q || die
+			git config user.email "larry@gentoo.org" || die
+			git config user.name "Larry the Cow" || die
+			git add . || die
+			git commit -m "init" || die
+		fi
+	fi
 }
 
 src_configure() {

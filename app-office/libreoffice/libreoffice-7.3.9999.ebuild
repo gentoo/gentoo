@@ -44,8 +44,6 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	# not packaged in Gentoo, https://github.com/efficient/libcuckoo/
-	"${ADDONS_URI}/libcuckoo-93217f8d391718380c508a722ab9acd5e9081233.tar.gz"
 	# broken against latest upstream release, too many patches on top:
 	# https://github.com/tdf/libcmis/pull/43
 	"${ADDONS_URI}/libcmis-0.5.2.tar.xz"
@@ -511,7 +509,6 @@ src_configure() {
 		--with-help="html"
 		--without-helppack-integration
 		--with-system-gpgmepp
-		--without-system-cuckoo
 		--without-system-jfreereport
 		--without-system-libcmis
 		--without-system-sane

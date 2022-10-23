@@ -6,11 +6,11 @@
 		<name>Gentoo Chemistry Project</name>
 	</maintainer>
 	<longdescription>
-Clashlist is a simple UNIX script which uses the awk facility along with
-the programs Probe and Cluster to build lists of van der Waals clashes
-from an input PDB-format molecular data file (with H atoms). These lists
-are organized such that collections of interacting residues are grouped
-together, sorted by the worst clash. For the purposes of this analysis,
-a clash is defined as a van der Waals overlap &gt;= 0.4 A.
-</longdescription>
+	Clashlist is a simple UNIX script which uses the awk facility along with
+	the programs Probe and Cluster to build lists of van der Waals clashes
+	from an input PDB-format molecular data file (with H atoms). These lists
+	are organized such that collections of interacting residues are grouped
+	together, sorted by the worst clash. For the purposes of this analysis,
+	a clash is defined as a van der Waals overlap &gt;= 0.4 A.
+	</longdescription>
 </pkgmetadata>

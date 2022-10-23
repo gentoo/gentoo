@@ -9,7 +9,7 @@ DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 
 LICENSE="GPL-3+"
-IUSE="cet default-gold doc gold gprofng multitarget +nls pgo +plugins static-libs test vanilla"
+IUSE="cet default-gold doc gold gprofng multitarget +nls pgo +plugins static-libs test vanilla zstd"
 REQUIRED_USE="default-gold? ( gold )"
 
 # Variables that can be set here  (ignored for live ebuilds)
@@ -53,6 +53,7 @@ is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 RDEPEND="
 	>=sys-devel/binutils-config-3
 	sys-libs/zlib
+	zstd? ( app-arch/zstd:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -248,12 +249,12 @@ src_configure() {
 		# Available from 2.35 on
 		--enable-textrel-check=warning
 
-		# Available from 2.39 on
-		--enable-warn-execstack
-		--enable-warn-rwx-segments
-		# TODO: Available from 2.39+ on but let's try the warning on for a bit
-		# first... (--enable-warn-execstack)
-		# Could put it under USE=hardened?
+		# These hardening options are available from 2.39+ but
+		# they unconditionally enable the behaviour even on arches
+		# where e.g. execstacks can't be avoided.
+		# See https://sourceware.org/bugzilla/show_bug.cgi?id=29592.
+		#--enable-warn-execstack
+		#--enable-warn-rwx-segments
 		#--disable-default-execstack (or is it --enable-default-execstack=no? docs are confusing)
 
 		# Things to think about
@@ -267,6 +268,8 @@ src_configure() {
 		--with-bugurl="$(toolchain-binutils_bugurl)"
 		--with-pkgversion="$(toolchain-binutils_pkgversion)"
 		$(use_enable static-libs static)
+		$(use_with zstd)
+
 		# Disable modules that are in a combined binutils/gdb tree, bug #490566
 		--disable-{gdb,libdecnumber,readline,sim}
 		# Strip out broken static link flags.

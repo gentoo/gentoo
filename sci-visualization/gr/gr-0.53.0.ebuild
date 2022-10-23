@@ -38,6 +38,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-musl.patch"
 )
 
+REQUIRED_USE="cairo? ( truetype )"
+
 src_configure() {
 	use cairo || mycmakeargs+=( -DCAIRO_LIBRARY= )
 	use postscript || mycmakeargs+=( -DGS_LIBRARY= )

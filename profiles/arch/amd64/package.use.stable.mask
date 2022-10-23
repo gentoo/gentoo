@@ -18,9 +18,9 @@
 #--- END OF EXAMPLES ---
 
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
-# Dependency x11-libs/intel-hybrid-codec-driver is only available on unstable
+# Dependency media-libs/intel-hybrid-codec-driver is only available on unstable
 # branch
-x11-libs/libva-intel-driver hybrid
+media-libs/libva-intel-driver hybrid
 
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # needs stabilizing

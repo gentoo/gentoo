@@ -19,6 +19,10 @@ IUSE="doc"
 
 BDEPEND="doc? ( dev-python/sphinx )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-clang-15.patch
+)
+
 EPYTEST_DESELECT=(
 	# Can't find its test files (class not loaded properly in test env?)
 	# bug #855461

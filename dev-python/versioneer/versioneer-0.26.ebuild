@@ -22,7 +22,7 @@ S=${WORKDIR}/${MY_P}
 
 SLOT="0"
 LICENSE="Unlicense"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -34,6 +34,14 @@ BDEPEND="
 		!!dev-python/nose[${PYTHON_USEDEP}]
 	)
 "
+
+python_compile() {
+	cat > "${T}"/versioneer.py <<-EOF || die
+		raise ImportError("Please pretend I'm not here!")
+	EOF
+	local -x PYTHONPATH=${T}:${PYTHONPATH}
+	distutils-r1_python_compile
+}
 
 python_test() {
 	esetup.py make_versioneer

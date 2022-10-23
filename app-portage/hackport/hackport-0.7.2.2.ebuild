@@ -14,7 +14,7 @@ HOMEPAGE="https://hackage.haskell.org/package/hackport"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/async-2.0:=
 	>=dev-haskell/base16-bytestring-0.1.1:=

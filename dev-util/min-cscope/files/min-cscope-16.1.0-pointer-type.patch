@@ -1,0 +1,11 @@
+Fix build with -Werror=incompatible-pointer-types that's due
+to become a default on clang16.
+
+https://bugs.gentoo.org/871162
+--- a/src/exec.c
++++ b/src/exec.c
+@@ -75,3 +75,3 @@
+ 	int	exitcode = -1;	/* initialize, to avoid warning */
+-	const char	*argv[BUFSIZ];
++	char	*argv[BUFSIZ];
+ 	pid_t	p;

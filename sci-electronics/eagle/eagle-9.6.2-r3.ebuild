@@ -11,7 +11,7 @@ SRC_URI="https://eagle-updates.circuits.io/downloads/${PV//./_}/Autodesk_EAGLE_$
 
 LICENSE="Autodesk"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 QA_PREBUILT="opt/${PN}/*"
 RESTRICT="mirror bindist"

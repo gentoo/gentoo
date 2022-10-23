@@ -7,7 +7,7 @@ inherit gnome2
 
 DESCRIPTION="Grisbi is a personal accounting application for Linux"
 HOMEPAGE="http://www.grisbi.org https://github.com/grisbi/grisbi"
-SRC_URI="mirror://sourceforge/${PN}/grisbi%20stable/2.0.x/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/grisbi%20stable/$(ver_cut 1-2).x/${P}.tar.bz2"
 IUSE="goffice nls ofx ssl"
 
 LICENSE="GPL-2"

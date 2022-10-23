@@ -12,6 +12,7 @@
 	<flag name="slattach">build the slattach tool (for working with old serial ports)</flag>
 </use>
 <upstream>
+	<remote-id type="cpe">cpe:/a:net-tools_project:net-tools</remote-id>
 	<remote-id type="sourceforge">net-tools</remote-id>
 </upstream>
 </pkgmetadata>

@@ -10,7 +10,7 @@ DESCRIPTION="The LLVM debugger"
 HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
-SLOT="0"
+SLOT="0/${LLVM_SOABI}"
 KEYWORDS=""
 IUSE="debug +libedit lzma ncurses +python test +xml"
 RESTRICT="test"
@@ -51,12 +51,12 @@ BDEPEND="
 	)
 "
 
-LLVM_COMPONENTS=( lldb cmake )
-LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
+LLVM_COMPONENTS=( lldb cmake llvm/utils )
+LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support )
 llvm.org_set_globals
 
 pkg_setup() {
-	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
+	LLVM_MAX_SLOT=${LLVM_MAJOR} llvm_pkg_setup
 	python-single-r1_pkg_setup
 }
 
@@ -86,13 +86,12 @@ src_configure() {
 		# of -ltinfo)
 		-DCURSES_NEED_NCURSES=ON
 
-		-DLLDB_EXTERNAL_CLANG_RESOURCE_DIR="${BROOT}/usr/lib/clang/${PV%_*}"
+		-DLLDB_EXTERNAL_CLANG_RESOURCE_DIR="${BROOT}/usr/lib/clang/${LLVM_VERSION}"
 
+		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 	use test && mycmakeargs+=(
-		-DLLVM_BUILD_TESTS=$(usex test)
-		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 	)

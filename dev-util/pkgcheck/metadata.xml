@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>arthurzam@gentoo.org</email>
-		<name>Arthur Zamarin</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>mgorny@gentoo.org</email>
-		<name>Michał Górny</name>
+	<maintainer type="project">
+		<email>pkgcore@gentoo.org</email>
+		<name>Pkgcore</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="gentoo">proj/pkgcore/pkgcheck</remote-id>
 		<remote-id type="github">pkgcore/pkgcheck</remote-id>
 		<remote-id type="pypi">pkgcheck</remote-id>
 	</upstream>

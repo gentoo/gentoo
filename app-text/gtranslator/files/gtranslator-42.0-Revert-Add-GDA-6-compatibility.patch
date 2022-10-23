@@ -1,0 +1,28 @@
+https://gitlab.gnome.org/GNOME/gtranslator/-/merge_requests/127
+
+From 9d8f92d37a7af3eca6985de72f52b45a21f9c91d Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Thu, 22 Sep 2022 08:20:11 +0200
+Subject: [PATCH] Revert "Add GDA 6 compatibility"
+
+This reverts commit 27c3f164422c193246aa4f71facf77d2a97ee94c
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 076812bd..f734e496 100644
+--- a/meson.build
++++ b/meson.build
+@@ -111,7 +111,7 @@ gtr_deps = [
+   glib_dep,
+   gtk_dep,
+   libhandy_dep,
+-  dependency('libgda-6.0'),
++  dependency('libgda-5.0'),
+   dependency('gio-2.0', version: '>= 2.36.0'),
+   dependency('gsettings-desktop-schemas'),
+   dependency('gspell-1', version: '>= 1.2.0'),
+-- 
+2.35.1
+

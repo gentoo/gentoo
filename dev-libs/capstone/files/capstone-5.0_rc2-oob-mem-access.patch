@@ -1,0 +1,40 @@
+Author: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date:   Mon Aug 22 18:52:19 2022 +0200
+
+    PPC: fix out of bound memory access
+    
+    closes #1912
+
+Bug: https://bugs.gentoo.org/865151
+Upstream: https://github.com/capstone-engine/capstone/pull/1913
+
+diff --git a/arch/PowerPC/PPCInstPrinter.c b/arch/PowerPC/PPCInstPrinter.c
+index 22eef4ee..a5a30a8b 100644
+--- a/arch/PowerPC/PPCInstPrinter.c
++++ b/arch/PowerPC/PPCInstPrinter.c
+@@ -1116,7 +1116,8 @@ static char *stripRegisterPrefix(const char *RegName)
+ 				char *name = cs_strdup(RegName + 2);
+ 
+ 				// also strip the last 2 letters
+-				name[strlen(name) - 2] = '\0';
++				if(strlen(name) > 2)
++					name[strlen(name) - 2] = '\0';
+ 
+ 				return name;
+ 			}
+diff --git a/suite/cstest/issues.cs b/suite/cstest/issues.cs
+index e4fb6cfa..3183f43f 100644
+--- a/suite/cstest/issues.cs
++++ b/suite/cstest/issues.cs
+@@ -1,3 +1,11 @@
++!# issue 1912 PPC register name
++!# CS_ARCH_PPC, CS_MODE_BIG_ENDIAN, None
++0x2d,0x03,0x00,0x80 == cmpwi cr2, r3, 0x80
++
++!# issue 1912 PPC no register name
++!# CS_ARCH_PPC, CS_MODE_BIG_ENDIAN, CS_OPT_SYNTAX_NOREGNAME
++0x2d,0x03,0x00,0x80 == cmpwi 2, 3, 0x80
++
+ !# issue 1839 AArch64 Incorrect detailed disassembly of ldr
+ !# CS_ARCH_ARM64, CS_MODE_ARM, CS_OPT_DETAIL
+ 0x41,0x00,0x40,0xf9 == ldr x1, [x2] ; operands[0].access: WRITE ; operands[1].access: READ

@@ -25,7 +25,8 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="bluetooth dbus netlink rdma remote static-libs usb yydebug"
+IUSE="bluetooth dbus netlink rdma remote static-libs test usb yydebug"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	bluetooth? ( net-wireless/bluez:=[${MULTILIB_USEDEP}] )
@@ -83,6 +84,11 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	emake all shared
+	use test && emake testprogs
+}
+
+multilib_src_test() {
+	testprogs/findalldevstest || die
 }
 
 multilib_src_install_all() {

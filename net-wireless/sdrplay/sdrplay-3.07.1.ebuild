@@ -64,3 +64,11 @@ multilib_src_install() {
 	dosym libsdrplay_api.so.${MY_PV_12} "/usr/$(get_libdir)/libsdrplay_api.so.${MY_PV_1}"
 	dosym libsdrplay_api.so.${MY_PV_1} "/usr/$(get_libdir)/libsdrplay_api.so"
 }
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
+}

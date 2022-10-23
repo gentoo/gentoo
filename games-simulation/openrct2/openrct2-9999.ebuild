@@ -12,8 +12,8 @@ MY_PN="OpenRCT2"
 MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
 MY_PN_TS="title-sequences"
-MY_PV_OBJ="1.3.2"
-MY_PV_RPL="0.0.67"
+MY_PV_OBJ="1.3.5"
+MY_PV_RPL="0.0.69"
 MY_PV_TS="0.4.0"
 
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
@@ -27,7 +27,7 @@ SRC_URI="
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="dedicated +flac +lightfx +opengl scripting test +truetype +vorbis"
+IUSE="dedicated +flac +opengl scripting test +truetype +vorbis"
 
 COMMON_DEPEND="
 	dev-libs/icu:=
@@ -119,7 +119,6 @@ src_configure() {
 		-DDOWNLOAD_OBJECTS=OFF
 		-DDOWNLOAD_REPLAYS=OFF
 		-DDOWNLOAD_TITLE_SEQUENCES=OFF
-		-DENABLE_LIGHTFX=$(usex lightfx)
 		-DENABLE_SCRIPTING=$(usex scripting)
 		-DOPENRCT2_USE_CCACHE=OFF
 		-DPORTABLE=OFF

@@ -10,8 +10,8 @@
 		<name>Markus Meier</name>
 	</maintainer>
 	<longdescription lang="en">
-The project provides a database of photographic lenses and a library that allows advanced access to the database including functions to correct images based on intimate knowledge of lens characteristics and calibration data.
-</longdescription>
+	The project provides a database of photographic lenses and a library that allows advanced access to the database including functions to correct images based on intimate knowledge of lens characteristics and calibration data.
+	</longdescription>
 	<upstream>
 		<remote-id type="github">lensfun/lensfun</remote-id>
 	</upstream>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-1 )
 LUA_REQ_USE="deprecated"
 
-inherit lua-single
+inherit flag-o-matic lua-single
 
 DESCRIPTION="A framework for 2D games in Lua"
 HOMEPAGE="https://love2d.org/"
@@ -38,6 +38,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.8.0-freetype2.patch
 	"${FILESDIR}"/${PN}-0.8.0-opengl_glext_prototypes.patch
 )
+
+src_prepare() {
+	default
+	append-cppflags -DLUA_COMPAT_OPENLIB
+}
 
 src_install() {
 	DOCS="readme.md changes.txt" \

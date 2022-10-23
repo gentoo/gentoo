@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua-single.eclass
@@ -52,7 +52,7 @@
 # "
 # BDEPEND="virtual/pkgconfig"
 #
-# # Only neeed if the setup phase has to do more than just call lua-single_pkg_setup
+# # Only need if the setup phase has to do more than just call lua-single_pkg_setup
 # pkg_setup() {
 #     lua-single_pkg_setup
 #     [...]

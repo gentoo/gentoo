@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/aristidb/aws"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="examples"
 
 RESTRICT=test # requires aws account

@@ -35,7 +35,7 @@ COMMON_DEPEND="
 			dbus? ( dev-libs/dbus-glib dev-libs/glib:2 )
 			jpeg? ( virtual/jpeg:* )
 			opengl? ( virtual/opengl )
-			vaapi? ( x11-libs/libva >=media-libs/xine-lib-1.2[vaapi] )
+			vaapi? ( media-libs/libva >=media-libs/xine-lib-1.2[vaapi] )
 			vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2[vdpau] )
 			xinerama? ( x11-libs/libXinerama )
 		)

@@ -6,14 +6,14 @@
     <name>Gentoo Games Project</name>
   </maintainer>
   <longdescription>
-Allegro is a game programming library for C/C++ developers distributed
-freely, supporting the following platforms: DOS, Unix (Linux, FreeBSD,
-Irix, Solaris, Darwin), Windows, QNX, BeOS and MacOS X. It provides many
-functions for graphics, sounds, player input (keyboard, mouse and joystick)
-and timers. It also provides fixed and floating point mathematical
-functions, 3d functions, file management functions, compressed datafile
-and a GUI.
-</longdescription>
+  Allegro is a game programming library for C/C++ developers distributed
+  freely, supporting the following platforms: DOS, Unix (Linux, FreeBSD,
+  Irix, Solaris, Darwin), Windows, QNX, BeOS and MacOS X. It provides many
+  functions for graphics, sounds, player input (keyboard, mouse and joystick)
+  and timers. It also provides fixed and floating point mathematical
+  functions, 3d functions, file management functions, compressed datafile
+  and a GUI.
+  </longdescription>
   <use>
     <flag name="dumb">Enable <pkg>media-libs/dumb</pkg> module library support</flag>
     <flag name="physfs">Enable physfs support</flag>

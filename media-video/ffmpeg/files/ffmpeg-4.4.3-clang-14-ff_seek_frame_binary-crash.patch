@@ -1,0 +1,46 @@
+https://github.com/FFmpeg/FFmpeg/commit/ab792634197e364ca1bb194f9abe36836e42f12d
+
+(Rebased for 4.4.x in Gentoo.)
+
+From ab792634197e364ca1bb194f9abe36836e42f12d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Storsj=C3=B6?= <martin@martin.st>
+Date: Mon, 18 Oct 2021 12:31:38 +0300
+Subject: [PATCH] seek: Fix crashes in ff_seek_frame_binary if built with
+ latest Clang 14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Passing an uninitialized variable as argument to a function is
+undefined behaviour (UB). The compiler can assume that UB does not
+happen.
+
+Hence, the compiler can assume that the variables are never
+uninitialized when passed as argument, which means that the codepaths
+that initializes them must be taken.
+
+In ff_seek_frame_binary, this means that the compiler can assume
+that the codepaths that initialize pos_min and pos_max are taken,
+which means that the conditions "if (sti->index_entries)" and
+"if (index >= 0)" can be optimized out.
+
+Current Clang git versions (upcoming Clang 14) enabled an optimization
+that does this, which broke the current version of this function
+(which intentionally left the variables uninitialized, but silencing
+warnings about being uninitialized). See [1] for discussion on
+the matter.
+
+[1] https://reviews.llvm.org/D105169#3069555
+
+Signed-off-by: Martin Storsjö <martin@martin.st>
+--- a/libavformat/utils.c
++++ b/libavformat/utils.c
+@@ -2146,7 +2146,7 @@ int ff_seek_frame_binary(AVFormatContext *s, int stream_index,
+                          int64_t target_ts, int flags)
+ {
+     const AVInputFormat *avif = s->iformat;
+-    int64_t av_uninit(pos_min), av_uninit(pos_max), pos, pos_limit;
++    int64_t pos_min = 0, pos_max = 0, pos, pos_limit;
+     int64_t ts_min, ts_max, ts;
+     int index;
+     int64_t ret;

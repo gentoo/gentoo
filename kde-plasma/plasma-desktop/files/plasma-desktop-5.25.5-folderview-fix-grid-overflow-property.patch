@@ -1,0 +1,40 @@
+From cb3cbbe3b07da0c9e35cdef69343d32f7659f550 Mon Sep 17 00:00:00 2001
+From: Arjen Hiemstra <ahiemstra@heimr.nl>
+Date: Thu, 15 Sep 2022 17:08:00 +0200
+Subject: [PATCH] folderview: Fix grid overflow property so it properly reports
+ overflow state
+
+In some cases, viewportArea.widthRatio or heightRatio can be 0 when it's
+not actually overflowing. So account for that to ensure we properly
+report the overflow state.
+
+BUG: 419878
+
+
+(cherry picked from commit 754e229b83708c1b8c7be547ef2dcf5645bafc21)
+---
+ containments/desktop/package/contents/ui/FolderView.qml | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/containments/desktop/package/contents/ui/FolderView.qml b/containments/desktop/package/contents/ui/FolderView.qml
+index 72ae4903a..a057a5099 100644
+--- a/containments/desktop/package/contents/ui/FolderView.qml
++++ b/containments/desktop/package/contents/ui/FolderView.qml
+@@ -657,7 +657,13 @@ FocusScope {
+                 property bool ctrlPressed: false
+                 property bool shiftPressed: false
+ 
+-                property bool overflowing: (visibleArea.heightRatio < 1.0 || visibleArea.widthRatio < 1.0)
++                property bool overflowing: {
++                    // widthRatio or heightRatio may be 0 when it's not actually
++                    // overflowing, so account for that.
++                    let widthOverflow =  visibleArea.widthRatio > 0.0 && visibleArea.widthRatio < 1.0
++                    let heightOverflow = visibleArea.heightRatio > 0.0 && visibleArea.heightRatio < 1.0
++                    return widthOverflow || heightOverflow
++                }
+ 
+                 property bool scrollLeft: false
+                 property bool scrollRight: false
+-- 
+GitLab
+

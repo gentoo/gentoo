@@ -104,6 +104,7 @@ src_prepare() {
 }
 
 src_configure() {
+	filter-lto # bug #877343
 	tc-getCC ${CTARGET}
 
 	just_headers && export CC=true

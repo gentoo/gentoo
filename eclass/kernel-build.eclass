@@ -29,7 +29,7 @@ esac
 
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit python-any-r1 savedconfig toolchain-funcs kernel-install
+inherit multiprocessing python-any-r1 savedconfig toolchain-funcs kernel-install
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -90,6 +90,27 @@ kernel-build_src_configure() {
 		ARCH=$(tc-arch-kernel)
 	)
 
+	if type -P xz &>/dev/null ; then
+		export XZ_OPT="-T$(makeopts_jobs) --memlimit-compress=50% -q"
+	fi
+
+	if type -P zstd &>/dev/null ; then
+		export ZSTD_NBTHREADS="$(makeopts_jobs)"
+	fi
+
+	# pigz/pbzip2/lbzip2 all need to take an argument, not an env var,
+	# for their options, which won't work because of how the kernel build system
+	# uses the variables (e.g. passes directly to tar as an executable).
+	if type -P pigz &>/dev/null ; then
+		MAKEARGS+=( KGZIP="pigz" )
+	fi
+
+	if type -P pbzip2 &>/dev/null ; then
+		MAKEARGS+=( KBZIP2="pbzip2" )
+	elif type -P lbzip2 &>/dev/null ; then
+		MAKEARGS+=( KBZIP2="lbzip2" )
+	fi
+
 	restore_config .config
 	[[ -f .config ]] || die "Ebuild error: please copy default config into .config"
 
@@ -129,7 +150,7 @@ kernel-build_src_test() {
 	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
 		INSTALL_MOD_PATH="${T}" "${targets[@]}"
 
-	local ver="${PV}${KV_LOCALVERSION}"
+	local ver="${KV_FULL}${KV_LOCALVERSION}"
 	kernel-install_test "${ver}" \
 		"${WORKDIR}/build/$(dist-kernel_get_image_path)" \
 		"${T}/lib/modules/${ver}"
@@ -138,7 +159,7 @@ kernel-build_src_test() {
 # @FUNCTION: kernel-build_src_install
 # @DESCRIPTION:
 # Install the built kernel along with subset of sources
-# into /usr/src/linux-${PV}.  Install the modules.  Save the config.
+# into /usr/src/linux-${KV_FULL}.  Install the modules.  Save the config.
 kernel-build_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -156,7 +177,7 @@ kernel-build_src_install() {
 	# note: we're using mv rather than doins to save space and time
 	# install main and arch-specific headers first, and scripts
 	local kern_arch=$(tc-arch-kernel)
-	local ver="${PV}${KV_LOCALVERSION}"
+	local ver="${KV_FULL}${KV_LOCALVERSION}"
 	dodir "/usr/src/linux-${ver}/arch/${kern_arch}"
 	mv include scripts "${ED}/usr/src/linux-${ver}/" || die
 	mv "arch/${kern_arch}/include" \

@@ -12,4 +12,7 @@
 	<upstream>
 		<remote-id type="github">linuxmint/muffin</remote-id>
 	</upstream>
+	<use>
+		<flag name="sysprof">Enable profiling data capture support using <pkg>dev-util/sysprof-capture</pkg></flag>
+	</use>
 </pkgmetadata>

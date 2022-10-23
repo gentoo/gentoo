@@ -15,7 +15,7 @@
 	around their processing. It is transport agnostic in that the concepts can
 	be used within the same process, over sockets, over http, or in many various
 	message passing environments. It uses JSON (RFC 4627) as data format.
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">json-rpc</remote-id>
 		<remote-id type="github">pavlov99/json-rpc</remote-id>

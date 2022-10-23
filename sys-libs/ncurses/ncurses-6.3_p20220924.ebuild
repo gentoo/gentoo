@@ -250,6 +250,10 @@ do_configure() {
 	mkdir "${BUILD_DIR}/${target}" || die
 	cd "${BUILD_DIR}/${target}" || die
 
+	# https://lists.gnu.org/archive/html/bug-ncurses/2022-09/msg00024.html
+	export EGREP="grep -E"
+	export FGREP="grep -F"
+
 	local conf=(
 		# We need the basic terminfo files in /etc, bug #37026.  We will
 		# add '--with-terminfo-dirs' and then populate /etc/terminfo in

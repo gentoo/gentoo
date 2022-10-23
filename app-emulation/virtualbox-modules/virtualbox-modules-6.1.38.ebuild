@@ -16,7 +16,7 @@ SRC_URI="https://github.com/ceamac/virtualbox-modules-dist/releases/download/v${
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="pax-kernel"
 
 S="${WORKDIR}"

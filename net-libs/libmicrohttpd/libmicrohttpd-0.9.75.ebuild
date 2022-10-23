@@ -26,6 +26,8 @@ BDEPEND="ssl? ( virtual/pkgconfig )"
 
 DOCS=( AUTHORS NEWS COPYING README ChangeLog )
 
+PATCHES=( "${FILESDIR}"/${P}-fix-testsuite-with-lto.patch )
+
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
 	econf \

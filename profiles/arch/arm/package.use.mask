@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-08-09)
+# dev-java/jaxws-api not keyworded
+>=dev-java/jmock-2.12.0 test
+
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2022-09-16)
 # dev-libs/optix depends on x11-drivers/nvidia-drivers,
 # which lacks arm support
@@ -175,13 +179,9 @@ net-analyzer/rrdtool rados
 sys-fs/multipath-tools rbd
 www-servers/uwsgi uwsgi_plugins_rados
 
-# Anthony G. Basile <blueness@gentoo.org> (2019-03-08)
-# hipe code is missing in erlang for arm
-dev-lang/erlang hipe
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-25)
-# (SM)BIOS/Thunderbolt outside of amd64/x86? - citation needed
-sys-apps/fwupd dell thunderbolt
+# (SM)BIOS outside of amd64/x86? - citation needed
+sys-apps/fwupd dell
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-12)
 # Requires www-client/firefox which isn't available on ARM yet
@@ -247,10 +247,6 @@ dev-libs/libsecp256k1 -asm
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
 # DOSBox + OpenGLide is untested on this arch.
 games-emulation/dosbox glide
-
-# Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
-# sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
->=sci-libs/gdal-2.0.3 mdb
 
 # Ettore Di Giacinto <mudler@gentoo.org> (2016-11-10)
 # Dependency has no stable keyword

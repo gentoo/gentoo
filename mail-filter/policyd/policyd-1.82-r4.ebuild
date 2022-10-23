@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Policy daemon for postfix and other MTAs"
 HOMEPAGE="https://wiki.policyd.org"
-SRC_URI="https://download.policyd.org/v1.82/${P}.tar.gz"
+SRC_URI="https://download.policyd.org/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

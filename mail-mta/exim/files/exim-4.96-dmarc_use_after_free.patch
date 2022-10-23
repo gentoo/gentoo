@@ -1,0 +1,31 @@
+From 12fb3842f81bcbd4a4519d5728f2d7e0e3ca1445 Mon Sep 17 00:00:00 2001
+From: Lorenz Brun <lorenz@brun.one>
+Date: Fri, 14 Oct 2022 21:02:51 +0200
+Subject: [PATCH] DMARC: fix use-after-free in dmarc_dns_lookup
+
+This fixes a use-after-free in dmarc_dns_lookup where the result
+of dns_lookup in dnsa is freed before the required data is copied out.
+
+Fixes: 9258363 ("DNS: explicit alloc/free of workspace")
+---
+ src/src/dmarc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/src/dmarc.c b/src/src/dmarc.c
+index ad0c26c91..53c2752ac 100644
+--- a/src/src/dmarc.c
++++ b/src/src/dmarc.c
+@@ -230,8 +230,9 @@ if (rc == DNS_SUCCEED)
+        rr = dns_next_rr(dnsa, &dnss, RESET_NEXT))
+     if (rr->type == T_TXT && rr->size > 3)
+       {
++      uschar *record = string_copyn_taint(US rr->data, rr->size, GET_TAINTED);
+       store_free_dns_answer(dnsa);
+-      return string_copyn_taint(US rr->data, rr->size, GET_TAINTED);
++      return record;
+       }
+ store_free_dns_answer(dnsa);
+ return NULL;
+-- 
+2.30.2
+

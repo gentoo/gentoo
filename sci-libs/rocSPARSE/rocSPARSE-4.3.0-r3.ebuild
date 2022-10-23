@@ -62,7 +62,7 @@ PATCHES=( "${FILESDIR}/${PN}-4.3.0-remove-matrices-unpacking.patch" )
 
 python_check_deps() {
 	if use test; then
-		has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
+		python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
 	fi
 }
 

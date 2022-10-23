@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-  <email>gnu-emacs@gentoo.org</email>
-  <name>Gentoo GNU Emacs project</name>
-</maintainer>
-<maintainer type="project">
-  <email>tex@gentoo.org</email>
-  <name>Gentoo TeX Project</name>
-</maintainer>
-<longdescription>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>tex@gentoo.org</email>
+    <name>Gentoo TeX Project</name>
+  </maintainer>
+  <longdescription>
   AUCTeX is an extensible package for writing and formatting TeX files
   in GNU Emacs and XEmacs. It supports many different TeX macro packages,
   including AMS-TeX, LaTeX, Texinfo, ConTeXt, and docTeX (dtx files).
@@ -18,9 +18,12 @@
   component of your editing workflow by visualizing selected source chunks
   (such as single formulas or graphics) directly as images in the source
   buffer.
-</longdescription>
-<stabilize-allarches/>
-<use>
-  <flag name="preview-latex">Use bundled preview-latex</flag>
-</use>
+  </longdescription>
+  <stabilize-allarches/>
+  <use>
+    <flag name="preview-latex">Use bundled preview-latex</flag>
+  </use>
+  <upstream>
+    <remote-id type="savannah">auctex</remote-id>
+  </upstream>
 </pkgmetadata>

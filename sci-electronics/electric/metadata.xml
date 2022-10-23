@@ -14,4 +14,7 @@
     * Programmable logic (FPGAs)
     * ...and much more.
   </longdescription>
+  <upstream>
+    <remote-id type="savannah">electric</remote-id>
+  </upstream>
 </pkgmetadata>

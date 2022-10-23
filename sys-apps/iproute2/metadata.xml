@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>base-system@gentoo.org</email>
-	<name>Gentoo Base System</name>
-</maintainer>
-<use>
-	<flag name="berkdb">build programs that use berkdb (just arpd)</flag>
-	<flag name="bpf">Use <pkg>dev-libs/libbpf</pkg></flag>
-	<flag name="elf">support loading eBPF programs from ELFs (e.g. LLVM's eBPF backend)</flag>
-	<flag name="iptables">include support for iptables filtering</flag>
-	<flag name="libbsd">Use <pkg>dev-libs/libbsd</pkg> instead of internal funcs</flag>
-	<flag name="minimal">only install ip and tc programs, without eBPF support</flag>
-	<flag name="nfs">Support RPC lookups via <pkg>net-libs/libtirpc</pkg> in ss</flag>
-</use>
-<upstream>
-	<remote-id type="cpe">cpe:/a:iproute2_project:iproute2</remote-id>
-</upstream>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="berkdb">build programs that use berkdb (just arpd)</flag>
+		<flag name="bpf">Use <pkg>dev-libs/libbpf</pkg></flag>
+		<flag name="elf">support loading eBPF programs from ELFs (e.g. LLVM's eBPF backend)</flag>
+		<flag name="iptables">include support for iptables filtering</flag>
+		<flag name="libbsd">Use <pkg>dev-libs/libbsd</pkg> instead of internal funcs</flag>
+		<flag name="minimal">only install ip and tc programs, without eBPF support</flag>
+		<flag name="nfs">Support RPC lookups via <pkg>net-libs/libtirpc</pkg> in ss</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:iproute2_project:iproute2</remote-id>
+		<remote-id type="github">shemminger/iproute2</remote-id>
+	</upstream>
 </pkgmetadata>

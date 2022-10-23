@@ -11,6 +11,7 @@
 		automatically create networks from all links found in a given initial URL.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">socnetv/app</remote-id>
 		<remote-id type="sourceforge">socnetv</remote-id>
 	</upstream>
 </pkgmetadata>

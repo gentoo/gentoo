@@ -18,6 +18,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 SLOT="0"
 LICENSE="MIT"
 KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
+IUSE="test-rust"
 
 RDEPEND="
 	dev-python/urllib3[${PYTHON_USEDEP}]
@@ -27,7 +28,7 @@ BDEPEND="
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		>=dev-python/requests-1.1[${PYTHON_USEDEP}]
 		dev-python/sure[${PYTHON_USEDEP}]
-		>=www-servers/tornado-2.2[${PYTHON_USEDEP}]
+		>=dev-python/tornado-2.2[${PYTHON_USEDEP}]
 	)
 "
 # These are optional test deps, that are used to test compatibility
@@ -36,17 +37,14 @@ BDEPEND="
 # We're skipping redis entirely since it requires a running server.
 BDEPEND+="
 	test? (
-		!arm? ( !sparc? (
+		test-rust? (
 			dev-python/pyopenssl[${PYTHON_USEDEP}]
-		) )
+		)
 		$(python_gen_cond_dep '
 			>=dev-python/boto3-1.17.72[${PYTHON_USEDEP}]
 			dev-python/httplib2[${PYTHON_USEDEP}]
 			>=dev-python/httpx-0.18.1[${PYTHON_USEDEP}]
 		' python3_{8..11})
-		$(python_gen_cond_dep '
-			>=dev-python/eventlet-0.25.1[${PYTHON_USEDEP}]
-		' python3_{8..9})
 	)
 "
 
@@ -62,11 +60,12 @@ python_test() {
 		tests/bugfixes/pytest/test_426_mypy_segfault.py
 		# passthrough tests require Internet access
 		tests/functional/test_passthrough.py
+		# eventlet is masked for removal
+		tests/bugfixes/nosetests/test_eventlet.py
 	)
 
 	local ignore_by_dep=(
 		dev-python/boto3:tests/bugfixes/nosetests/test_416_boto3.py
-		dev-python/eventlet:tests/bugfixes/nosetests/test_eventlet.py
 		dev-python/httplib2:tests/functional/test_httplib2.py
 		dev-python/httpx:tests/bugfixes/nosetests/test_414_httpx.py
 		dev-python/pyopenssl:tests/bugfixes/nosetests/test_417_openssl.py

@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>chromium@gentoo.org</email>
-		<name>Chromium in Gentoo Project</name>
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">ninja-build/ninja</remote-id>

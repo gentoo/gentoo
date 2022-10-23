@@ -27,5 +27,6 @@
 		<bugs-to>mailto:bug-bash@gnu.org</bugs-to>
 		<changelog>https://tiswww.case.edu/php/chet/bash/NEWS</changelog>
 		<remote-id type="cpe">cpe:/a:gnu:bash</remote-id>
+		<remote-id type="savannah">bash</remote-id>
 	</upstream>
 </pkgmetadata>

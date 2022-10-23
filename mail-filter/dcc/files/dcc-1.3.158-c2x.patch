@@ -1,0 +1,21 @@
+This is the only K&R-style functions in the source, incompatible with C2x.
+--- a/dcclib/inet_ntop.c
++++ b/dcclib/inet_ntop.c
+@@ -88,7 +88,3 @@
+  */
+-static const char *
+-inet_ntop4(src, dst, size)
+-	const u_char *src;
+-	char *dst;
+-	size_t size;
++static const char *inet_ntop4(const u_char *src, char *dst, size_t size)
+ {
+@@ -115,7 +111,3 @@
+  */
+-static const char *
+-inet_ntop6(src, dst, size)
+-	const u_char *src;
+-	char *dst;
+-	size_t size;
++static const char *inet_ntop6(const u_char *src, char *dst, size_t size)
+ {

@@ -20,7 +20,3 @@ media-gfx/gimp heif
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
 # app-text/libwpd and app-text/libwpg are not keyworded
 media-gfx/inkscape cdr visio wpg
-
-# Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
-# sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
-sci-libs/gdal mdb

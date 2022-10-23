@@ -1,3 +1,6 @@
+fix emacs printing
+https://bugs.gentoo.org/114627
+
 --- a2ps-4.13/contrib/emacs/a2ps-print.el.orig	2005-12-05 08:03:48.000000000 +0100
 +++ a2ps-4.13/contrib/emacs/a2ps-print.el	2005-12-06 16:38:14.000000000 +0100
 @@ -93,6 +93,7 @@

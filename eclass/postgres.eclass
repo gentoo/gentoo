@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EXPORT_FUNCTIONS pkg_setup
@@ -27,7 +27,7 @@ esac
 # @DESCRIPTION:
 # List of versions to reverse sort POSTGRES_COMPAT slots
 
-_POSTGRES_ALL_VERSIONS=( 9999 14 13 12 11 10 )
+_POSTGRES_ALL_VERSIONS=( 9999 15 14 13 12 11 10 )
 
 
 

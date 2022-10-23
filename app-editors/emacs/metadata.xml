@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-  <email>gnu-emacs@gentoo.org</email>
-  <name>Gentoo GNU Emacs project</name>
-</maintainer>
-<longdescription>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
   GNU Emacs is an extensible, customizable text editor - and more. At its core
   is an interpreter for Emacs Lisp, a dialect of the Lisp programming language
   with extensions to support text editing. The features of GNU Emacs include:
@@ -18,43 +18,46 @@
      project planner, mail and news reader, debugger interface, calendar, and
      more. Many of these extensions are distributed with GNU Emacs; others are
      available separately.
-</longdescription>
-<use>
-  <flag name="athena">Enable the MIT Athena widget set
+  </longdescription>
+  <use>
+    <flag name="athena">Enable the MIT Athena widget set
     (<pkg>x11-libs/libXaw</pkg>)</flag>
-  <flag name="dynamic-loading">Enable loading of dynamic libraries (modules)
+    <flag name="dynamic-loading">Enable loading of dynamic libraries (modules)
     at runtime</flag>
-  <flag name="games">Support shared score files for games</flag>
-  <flag name="gconf">Use <pkg>gnome-base/gconf</pkg> to read the system
+    <flag name="games">Support shared score files for games</flag>
+    <flag name="gconf">Use <pkg>gnome-base/gconf</pkg> to read the system
     font name</flag>
-  <flag name="gfile">Use gfile (<pkg>dev-libs/glib</pkg>) for file
+    <flag name="gfile">Use gfile (<pkg>dev-libs/glib</pkg>) for file
     notification</flag>
-  <flag name="gmp">Use the GNU multiple precision arithmetic library
+    <flag name="gmp">Use the GNU multiple precision arithmetic library
     (<pkg>dev-libs/gmp</pkg>) instead of the bundled mini-gmp subset</flag>
-  <flag name="gsettings">Use gsettings (<pkg>dev-libs/glib</pkg>) to read the
+    <flag name="gsettings">Use gsettings (<pkg>dev-libs/glib</pkg>) to read the
     system font name</flag>
-  <flag name="gzip-el">Compress bundled Emacs Lisp source</flag>
-  <flag name="harfbuzz">Use <pkg>media-libs/harfbuzz</pkg> as text shaping
+    <flag name="gzip-el">Compress bundled Emacs Lisp source</flag>
+    <flag name="harfbuzz">Use <pkg>media-libs/harfbuzz</pkg> as text shaping
     engine</flag>
-  <flag name="imagemagick">Use <pkg>media-gfx/imagemagick</pkg> for image
+    <flag name="imagemagick">Use <pkg>media-gfx/imagemagick</pkg> for image
     processing</flag>
-  <flag name="jit">Compile with Emacs Lisp native compiler support via
+    <flag name="jit">Compile with Emacs Lisp native compiler support via
     libgccjit</flag>
-  <flag name="json">Compile with native JSON support using
+    <flag name="json">Compile with native JSON support using
     <pkg>dev-libs/jansson</pkg></flag>
-  <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> to parse XML instead
+    <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> to parse XML instead
     of the internal Lisp implementations</flag>
-  <flag name="mailutils">Retrieve e-mail using <pkg>net-mail/mailutils</pkg>
+    <flag name="mailutils">Retrieve e-mail using <pkg>net-mail/mailutils</pkg>
     instead of the internal movemail substitute</flag>
-  <flag name="source">Install C source files and make them available for
+    <flag name="source">Install C source files and make them available for
     find-function</flag>
-  <flag name="threads">Add elisp threading support</flag>
-  <flag name="toolkit-scroll-bars">Use the selected toolkit's scrollbars in
+    <flag name="threads">Add elisp threading support</flag>
+    <flag name="toolkit-scroll-bars">Use the selected toolkit's scrollbars in
     preference to Emacs' own scrollbars</flag>
-  <flag name="wide-int">Prefer wide Emacs integers (typically 62-bit).
+    <flag name="wide-int">Prefer wide Emacs integers (typically 62-bit).
     This option has an effect only on architectures where "long" and
     "long long" types have different size.</flag>
-  <flag name="xwidgets">Enable use of GTK widgets in Emacs buffers
+    <flag name="xwidgets">Enable use of GTK widgets in Emacs buffers
     (requires GTK3)</flag>
-</use>
+  </use>
+  <upstream>
+    <remote-id type="savannah">emacs</remote-id>
+  </upstream>
 </pkgmetadata>

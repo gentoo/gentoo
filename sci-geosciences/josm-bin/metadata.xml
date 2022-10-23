@@ -13,4 +13,7 @@
     <email>sci-geosciences@gentoo.org</email>
     <name>Gentoo Geosciences Project</name>
   </maintainer>
+  <upstream>
+    <changelog>https://josm.openstreetmap.de/wiki/StartupPage</changelog>
+  </upstream>
 </pkgmetadata>

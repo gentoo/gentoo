@@ -3,15 +3,15 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
-Wings 3D is a polygon mesh modeler inspired by Nendo and 
-Mirai from Izware.
+	Wings 3D is a polygon mesh modeler inspired by Nendo and
+	Mirai from Izware.
 
-It is possible to assign materials, vertex color, UV 
-coordinates and textures, but there will be improvements 
-in those features before Wings goes 1.0.
+	It is possible to assign materials, vertex color, UV
+	coordinates and textures, but there will be improvements
+	in those features before Wings goes 1.0.
 
-There is no support in Wings for doing animations.
-</longdescription>
+	There is no support in Wings for doing animations.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">wings</remote-id>
 	</upstream>

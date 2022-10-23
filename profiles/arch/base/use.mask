@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2022-09-29)
+# Pulls in dev-util/google-perftools, which is arch-specific
+# Unmask on supported arches.
+tcmalloc
+
 # Michał Górny <mgorny@gentoo.org> (2021-01-07)
 # Prebuilt kernels are not supported on all architectures.
 dist-kernel
@@ -75,7 +80,6 @@ cpu_flags_ppc_vsx3
 ppcsha1
 
 # mips arch specific USE flags
-fixed-point
 loongson2f
 mipsdspr1
 mipsdspr2

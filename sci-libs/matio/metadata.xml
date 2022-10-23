@@ -8,7 +8,7 @@
   <longdescription lang="en">
   matio is an ISO C library (with a limited Fortran 90 interface) for
   reading and writing Matlab MAT files.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="sparse">Extend formats for sparse matrix (not matlab)</flag>
   </use>

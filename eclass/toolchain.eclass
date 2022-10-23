@@ -6,6 +6,10 @@
 # Toolchain Ninjas <toolchain@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: Common code for sys-devel/gcc ebuilds
+# @DESCRIPTION:
+# Common code for sys-devel/gcc ebuilds (and occasionally GCC forks, like
+# GNAT for Ada). If not building GCC itself, please use toolchain-funcs.eclass
+# instead.
 
 case ${EAPI} in
 	7) inherit eutils ;;
@@ -56,6 +60,7 @@ fi
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
+
 
 # @FUNCTION: tc_version_is_at_least
 # @USAGE: ver1 [ver2]
@@ -138,6 +143,32 @@ GCCMINOR=$(ver_cut 2 ${GCC_PV})
 # GCC micro version.
 GCCMICRO=$(ver_cut 3 ${GCC_PV})
 
+tc_use_major_version_only() {
+	local use_major_version_only=0
+
+	if ! tc_version_is_at_least 10 ; then
+		return 1
+	fi
+
+	if [[ ${GCCMAJOR} -eq 10 ]] && ver_test ${PV} -ge 10.4.1_p20220929 ; then
+		use_major_version_only=1
+	elif [[ ${GCCMAJOR} -eq 11 ]] && ver_test ${PV} -ge 11.3.1_p20220930 ; then
+		use_major_version_only=1
+	elif [[ ${GCCMAJOR} -eq 12 ]] && ver_test ${PV} -ge 12.2.1_p20221001 ; then
+		use_major_version_only=1
+	elif [[ ${GCCMAJOR} -eq 13 ]] && ver_test ${PV} -ge 13.0.0_pre20221002 ; then
+		use_major_version_only=1
+	elif [[ ${GCCMAJOR} -gt 13 ]] ; then
+		use_major_version_only=1
+	fi
+
+	if [[ ${use_major_version_only} -eq 1 ]] ; then
+		return 0
+	fi
+
+	return 1
+}
+
 # @ECLASS_VARIABLE: GCC_CONFIG_VER
 # @INTERNAL
 # @DESCRIPTION:
@@ -145,7 +176,11 @@ GCCMICRO=$(ver_cut 3 ${GCC_PV})
 # of binary and gcc-config names not directly tied to upstream
 # versioning. In practice it's hard to untangle from gcc/BASE-VER
 # (GCC_RELEASE_VER) value.
-GCC_CONFIG_VER=${GCC_RELEASE_VER}
+if tc_use_major_version_only ; then
+	GCC_CONFIG_VER=${GCCMAJOR}
+else
+	GCC_CONFIG_VER=${GCC_RELEASE_VER}
+fi
 
 # Pre-release support. Versioning schema:
 # 1.0.0_pre9999: live ebuild
@@ -830,7 +865,7 @@ make_gcc_hard() {
 # Most other distros use the logic (including mainline gcc):
 #    lib   - 32bit binaries (x86)
 #    lib64 - 64bit binaries (x86_64)
-# Over time, Gentoo is migrating to the latter form.
+# Over time, Gentoo is migrating to the latter form (17.1 profiles).
 #
 # Unfortunately, due to distros picking the lib32 behavior, newer gcc
 # versions will dynamically detect whether to use lib or lib32 for its
@@ -1005,6 +1040,10 @@ toolchain_src_configure() {
 		--with-bugurl=https://bugs.gentoo.org/
 		--with-pkgversion="${BRANDING_GCC_PKGVERSION}"
 	)
+
+	if tc_use_major_version_only ; then
+		confgcc+=( --with-gcc-major-version-only )
+	fi
 
 	# If we want hardened support with the newer PIE patchset for >=gcc 4.4
 	if tc_version_is_at_least 4.4 && want_minispecs && in_iuse hardened ; then
@@ -1975,16 +2014,20 @@ toolchain_src_install() {
 		fi
 	done
 
-	# We remove the generated fixincludes, as they can cause things to break
-	# (ncurses, openssl, etc).  We do not prevent them from being built, as
-	# in the following commit which we revert:
-	# https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/toolchain.eclass?r1=1.647&r2=1.648
-	# This is because bsd userland needs fixedincludes to build gcc, while
-	# linux does not.  Both can dispose of them afterwards.
-	while read x ; do
-		grep -q 'It has been auto-edited by fixincludes from' "${x}" \
-			&& rm -f "${x}"
-	done < <(find gcc/include*/ -name '*.h')
+	# Re-enable fixincludes for >= GCC 13
+	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=107128
+	if [[ ${GCCMAJOR} -lt 13 ]] ; then
+		# We remove the generated fixincludes, as they can cause things to break
+		# (ncurses, openssl, etc).  We do not prevent them from being built, as
+		# in the following commit which we revert:
+		# https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/toolchain.eclass?r1=1.647&r2=1.648
+		# This is because bsd userland needs fixedincludes to build gcc, while
+		# linux does not.  Both can dispose of them afterwards.
+		while read x ; do
+			grep -q 'It has been auto-edited by fixincludes from' "${x}" \
+				&& rm -f "${x}"
+		done < <(find gcc/include*/ -name '*.h')
+	fi
 
 	if is_jit ; then
 		# See https://gcc.gnu.org/onlinedocs/gcc-11.3.0/jit/internals/index.html#packaging-notes
@@ -2713,11 +2756,11 @@ toolchain_death_notice() {
 		pushd "${WORKDIR}"/build >/dev/null
 		(echo '' | $(tc-getCC ${CTARGET}) ${CFLAGS} -v -E - 2>&1) > gccinfo.log
 		[[ -e "${T}"/build.log ]] && cp "${T}"/build.log .
-		tar jcf "${WORKDIR}"/gcc-build-logs.tar.bz2 \
+		tar -acf "${WORKDIR}"/gcc-build-logs.tar.xz \
 			gccinfo.log build.log $(find -name config.log)
 		rm gccinfo.log build.log
 		eerror
-		eerror "Please include ${WORKDIR}/gcc-build-logs.tar.bz2 in your bug report."
+		eerror "Please include ${WORKDIR}/gcc-build-logs.tar.xz in your bug report."
 		eerror
 		popd >/dev/null
 	fi

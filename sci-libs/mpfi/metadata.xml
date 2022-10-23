@@ -17,5 +17,5 @@
   roundings provided by MPFR. Further advantages of using MPFR are its
   portability and compliance with the IEEE 754 standard for
   floating-point arithmetic.
-</longdescription>
+  </longdescription>
 </pkgmetadata>

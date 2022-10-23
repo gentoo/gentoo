@@ -33,7 +33,6 @@
     <flag name="snapcast">Snapcast audio plugin</flag>
     <flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
     <flag name="soundcloud">Build plugin to access soundcloud</flag>
-    <flag name="tidal">Build plugin to access tidal</flag>
     <flag name="systemd">Enable support for systemd socket activation</flag>
     <flag name="twolame">Support twolame MPEG-2 encoding</flag>
     <flag name="webdav">Enable using music from a WebDAV share</flag>

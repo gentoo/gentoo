@@ -1,0 +1,38 @@
+From 30087f85bb8d19586350c2a64648c0578c5c096c Mon Sep 17 00:00:00 2001
+From: Matthew Smith <matthew@gentoo.org>
+Date: Sun, 16 Oct 2022 13:44:40 +0100
+Subject: [PATCH] build: Add nghttp2 and openssl options
+
+--- a/meson.build
++++ b/meson.build
+@@ -87,8 +87,8 @@ group = get_option('group')
+ 
+ ## Optional dependencies
+ message('--- optional dependencies ---')
+-nghttp2 = dependency('libnghttp2', required: false)
+-openssl = dependency('openssl', required: false)
++nghttp2 = dependency('libnghttp2', required: get_option('nghttp2'))
++openssl = dependency('openssl', required: get_option('openssl'))
+ 
+ have_asprintf = meson.get_compiler('c').has_function('asprintf',
+   prefix: '#define _GNU_SOURCE\n#include <stdio.h>')
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -205,3 +205,17 @@ option(
+   value: 'auto',
+   description: 'cmocka unit tests',
+ )
++
++option(
++  'nghttp2',
++  type: 'feature',
++  value: 'auto',
++  description: 'dns over https support',
++)
++
++option(
++  'openssl',
++  type: 'feature',
++  value: 'auto',
++  description: 'auxiliary debug library for http module',
++)

@@ -51,7 +51,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	has_version "dev-util/Tensile[${PYTHON_USEDEP}]"
+	python_has_version "dev-util/Tensile[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {

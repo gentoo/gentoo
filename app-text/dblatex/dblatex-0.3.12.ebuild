@@ -14,7 +14,8 @@ SRC_URI="https://downloads.sourceforge.net/project/dblatex/dblatex/${P}/${PN}3-$
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="inkscape"
+IUSE="inkscape test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-text/docbook-xml-dtd:4.5
@@ -34,6 +35,8 @@ RDEPEND="
 	inkscape? ( media-gfx/inkscape )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}
+	test? ( ~${CATEGORY}/${P} )"
 
 S="${WORKDIR}/${PN}3-${PV}"
 
@@ -57,4 +60,8 @@ python_install_all() {
 	distutils-r1_python_install_all
 	# Move package documentation to a folder name containing version number
 	mv "${D}"/usr/share/doc/${PN} "${D}"/usr/share/doc/${PF} || die
+}
+
+python_test_all() {
+	emake -C tests/mathml
 }

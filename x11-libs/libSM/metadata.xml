@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>x11@gentoo.org</email>
-	<name>X11</name>
-</maintainer>
-<use>
-	<flag name="uuid">Use UUID for session identification instead of IP address
-		and system time.
-	</flag>
-</use>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
+  <use>
+    <flag name="uuid">Use UUID for session identification instead of IP address and system time.</flag>
+  </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libSM</remote-id>
+  </upstream>
 </pkgmetadata>

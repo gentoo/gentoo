@@ -37,8 +37,8 @@ PATCHES=(
 )
 
 python_check_deps() {
-	has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/ply[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]" \
+		"dev-python/ply[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {

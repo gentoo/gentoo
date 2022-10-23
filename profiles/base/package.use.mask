@@ -6,6 +6,35 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2022-10-08)
+# Older versions of libvirt need a vulnerable version of wireshark
+<app-emulation/libvirt-8.0.0 wireshark-plugins
+
+# Sam James <sam@gentoo.org> (2022-10-07)
+# media-sound/rplay is masked for removal.
+x11-wm/fvwm3 rplay
+x11-wm/ctwm rplay
+x11-wm/fvwm rplay
+x11-wm/vtwm rplay
+
+# Viorel Munteanu <ceamac.paragon@gmail.com> (2022-10-07)
+# Cannot test and fix pax-kernel related bugs on a current grsec kernel
+# Mask the flag for now
+# Bugs: #643466, #674872, #832161, #855722
+app-emulation/virtualbox pax-kernel
+app-emulation/virtualbox-modules pax-kernel
+
+# Sam James <sam@gentoo.org> (2022-10-02)
+# USE=compat / possibly allowing sys-libs/zlib needs to be figured out,
+# but packages want to use the actual zlib-ng library, so we need to
+# mask it and can't hold the whole thing up on the compat effort.
+sys-libs/zlib-ng compat
+sys-libs/minizip-ng compat
+
+# Matt Turner <mattst88@gentoo.org> (2022-09-26)
+# Requires nautilus-43.0 which is not in tree yet.
+>=x11-terms/gnome-terminal-3.46 nautilus
+
 # Pascal Jaeger <pascal.jaeger@leimstift.de> (2022-09-21)
 # Versions >=43.0 of evince only work with <gnome-base/nautilus-42.2.
 # Allowing that use flag for >=43.0 would stop users from updating nautilus
@@ -72,11 +101,6 @@ dev-python/QtPy pyqt6 pyside6
 # Joonas Niilola <juippis@gentoo.org> (2022-08-02)
 # Doesn't compile with 'Xaw3d' use flag, #849947.
 app-text/xdvik Xaw3d
-
-# Joonas Niilola <juippis@gentoo.org> (2022-07-13)
-# Depends on an older enigmail that only supports python2, which is
-# being removed soon. #758344
-www-client/seamonkey crypt
 
 # Sam James <sam@gentoo.org> (2022-07-10)
 # TBB support is deprecated/broken upstream, needs older version,

@@ -6,31 +6,31 @@
     <name>Gentoo Games Project</name>
   </maintainer>
   <longdescription>
-FreedroidRPG is an open source role playing game
+  FreedroidRPG is an open source role playing game
 
-The game tells the story of a world destroyed by a conflict between robots and
-their human masters. Play as Tux in a quest to save the world from the
-murderous rebel bots who know no mercy. You get to choose which path you wish
-to follow, and freedom of choice is everywhere in the game.
+  The game tells the story of a world destroyed by a conflict between robots and
+  their human masters. Play as Tux in a quest to save the world from the
+  murderous rebel bots who know no mercy. You get to choose which path you wish
+  to follow, and freedom of choice is everywhere in the game.
 
-FreedroidRPG features a real time combat system with melee and ranged weapons,
-fairly similar to the proprietary game Diablo. There is an innovative system of
-programs that can be run in order to take control of enemy robots, alter their
-behavior, or improve one's characteristics. You can use over 50 different kinds
-of items and fight countless enemies on your way to your destiny. An advanced
-dialog system provides story background and immersive role playing situations.
+  FreedroidRPG features a real time combat system with melee and ranged weapons,
+  fairly similar to the proprietary game Diablo. There is an innovative system of
+  programs that can be run in order to take control of enemy robots, alter their
+  behavior, or improve one's characteristics. You can use over 50 different kinds
+  of items and fight countless enemies on your way to your destiny. An advanced
+  dialog system provides story background and immersive role playing situations.
 
-The game is complete, fully playable, and can provide about 10 hours of fun. It
-is still being actively developed, and help is welcome in many areas. People
-having - or trying to acquire - programming, map editing, or writing skills
-will find FreedroidRPG to be an exciting, fast-moving project in which they can
-fully express their creativity.
-</longdescription>
-<use>
-  <flag name="devtools">Compile the additional dev tools</flag>
-  <flag name="profile">Enable the integration of the ingame real-time profiler</flag>
-</use>
-<upstream>
-  <remote-id type="gitlab">freedroid/freedroid-src</remote-id>
-</upstream>
+  The game is complete, fully playable, and can provide about 10 hours of fun. It
+  is still being actively developed, and help is welcome in many areas. People
+  having - or trying to acquire - programming, map editing, or writing skills
+  will find FreedroidRPG to be an exciting, fast-moving project in which they can
+  fully express their creativity.
+  </longdescription>
+  <use>
+    <flag name="devtools">Compile the additional dev tools</flag>
+    <flag name="profile">Enable the integration of the ingame real-time profiler</flag>
+  </use>
+  <upstream>
+    <remote-id type="gitlab">freedroid/freedroid-src</remote-id>
+  </upstream>
 </pkgmetadata>

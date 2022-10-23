@@ -55,20 +55,20 @@ pkg_setup() {
 }
 
 src_configure() {
-	local dynmodules="pipe bind" # the default backends, always enabled
+	local cnf_dynmodules="pipe bind" # the default backends, always enabled
 
-	#use db2 && dynmodules+=" db2"
-	use ldap && dynmodules+=" ldap"
-	use lmdb && dynmodules+=" lmdb"
-	use mydns && dynmodules+=" mydns"
-	use mysql && dynmodules+=" gmysql"
-	#use oracle && dynmodules+=" goracle oracle"
-	use postgres && dynmodules+=" gpgsql"
-	use remote && dynmodules+=" remote"
-	use sqlite && dynmodules+=" gsqlite3"
-	use tinydns && dynmodules+=" tinydns"
-	use geoip && dynmodules+=" geoip"
-	#use xdb && dynmodules+=" xdb"
+	#use db2 && cnf_dynmodules+=" db2"
+	use ldap && cnf_dynmodules+=" ldap"
+	use lmdb && cnf_dynmodules+=" lmdb"
+	use mydns && cnf_dynmodules+=" mydns"
+	use mysql && cnf_dynmodules+=" gmysql"
+	#use oracle && cnf_dynmodules+=" goracle oracle"
+	use postgres && cnf_dynmodules+=" gpgsql"
+	use remote && cnf_dynmodules+=" remote"
+	use sqlite && cnf_dynmodules+=" gsqlite3"
+	use tinydns && cnf_dynmodules+=" tinydns"
+	use geoip && cnf_dynmodules+=" geoip"
+	#use xdb && cnf_dynmodules+=" xdb"
 
 	econf \
 		--disable-static \
@@ -77,7 +77,7 @@ src_configure() {
 		--with-service-user=pdns \
 		--with-service-group=pdns \
 		--with-modules= \
-		--with-dynmodules="${dynmodules}" \
+		--with-dynmodules="${cnf_dynmodules}" \
 		--with-mysql-lib=/usr/$(get_libdir) \
 		--with-lua="${ELUA}" \
 		$(use_enable debug verbose-logging) \

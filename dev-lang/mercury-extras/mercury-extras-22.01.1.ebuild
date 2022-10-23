@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils multilib vcs-clean
+inherit multilib vcs-clean
 
 PATCHSET_VER="1"
 MY_P=mercury-srcdist-${PV}

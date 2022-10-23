@@ -117,6 +117,9 @@ src_prepare() {
 	# separate tests resources from tests src
 	find tests/*/resources -type f -name '*.java' -exec rm -rf {} + || die
 	find ../tools/misc/resources -type f -name '*.java' -exec rm -rf {} + || die
+
+	# 874576
+	rm resources/core/src/META-INF/MANIFEST.MF || die
 }
 
 src_compile() {

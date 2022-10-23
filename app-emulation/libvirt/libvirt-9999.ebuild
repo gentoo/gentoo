@@ -12,7 +12,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libvirt.org.asc
-inherit meson bash-completion-r1 linux-info python-any-r1 readme.gentoo-r1 tmpfiles verify-sig
+inherit meson linux-info python-any-r1 readme.gentoo-r1 tmpfiles verify-sig
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -86,7 +86,7 @@ RDEPEND="
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( >=sys-block/open-iscsi-1.18.0 )
 	iscsi-direct? ( >=net-libs/libiscsi-1.18.0 )
-	libssh? ( >=net-libs/libssh-0.7:= )
+	libssh? ( >=net-libs/libssh-0.8.1:= )
 	libssh2? ( >=net-libs/libssh2-1.3 )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
 	lxc? ( !sys-apps/systemd[cgroup-hybrid(-)] )

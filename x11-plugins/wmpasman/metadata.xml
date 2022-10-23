@@ -6,12 +6,12 @@
 		<name>Bernard Cafarelli</name>
 	</maintainer>
 	<longdescription>
-wmpasman stores passwords and makes them available
-for pasting (both via the middle-click primary
-selection and the clipboard selection) at the
-click of a button. It also contains a digital
-clock. Access is controlled by a passphrase.
-</longdescription>
+	wmpasman stores passwords and makes them available
+	for pasting (both via the middle-click primary
+	selection and the clipboard selection) at the
+	click of a button. It also contains a digital
+	clock. Access is controlled by a passphrase.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">wmpasman</remote-id>
 	</upstream>

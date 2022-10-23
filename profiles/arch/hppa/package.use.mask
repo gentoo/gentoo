@@ -237,10 +237,6 @@ dev-ruby/asciidoctor test
 # libgo needs an explicit port to hppa: bug #686624
 sys-devel/gcc go
 
-# Jeroen Roovers (jer@gentoo.org) (2018-03-22)
-# HiPE does not work on HPPA
-dev-lang/erlang hipe
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-07-04)
 # dev-libs/xxhash not keyworded for hppa
 app-admin/rsyslog xxhash
@@ -356,7 +352,7 @@ sci-mathematics/octave hdf5 qhull
 
 # Jeroen Roovers <jer@gentoo.org> (2012-07-08)
 # media-libs/devil has not been fully tested on HPPA
-media-gfx/graphviz devil lefty
+media-gfx/graphviz devil
 
 # Jeroen Roovers <jer@gentoo.org> (2012-07-03)
 # Mask USE=connman for net-libs/gupnp (bug #424225)

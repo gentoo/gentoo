@@ -9,7 +9,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A Ruby library for testing your library against different versions of dependencies"
+DESCRIPTION="Ruby library for testing your library against different versions of dependencies"
 HOMEPAGE="https://github.com/thoughtbot/appraisal"
 
 LICENSE="MIT"

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -103,12 +103,12 @@ src_prepare() {
 		GNATLS="${gnatpath}/${GNATLS}"
 	fi
 	mkdir bin || die
-	ln -s $(which ${GCC}) bin/gcc || die
-	ln -s $(which ${CXX}) bin/g++ || die
-	ln -s $(which ${GNATMAKE}) bin/gnatmake || die
-	ln -s $(which ${GNATBIND}) bin/gnatbind || die
-	ln -s $(which ${GNATLINK}) bin/gnatlink || die
-	ln -s $(which ${GNATLS}) bin/gnatls || die
+	ln -s $(type -P ${GCC}) bin/gcc || die
+	ln -s $(type -P ${CXX}) bin/g++ || die
+	ln -s $(type -P ${GNATMAKE}) bin/gnatmake || die
+	ln -s $(type -P ${GNATBIND}) bin/gnatbind || die
+	ln -s $(type -P ${GNATLINK}) bin/gnatlink || die
+	ln -s $(type -P ${GNATLS}) bin/gnatls || die
 
 	cd ..
 	mv ${GNATDIR}/src/ada ${MYP}/gcc/ || die

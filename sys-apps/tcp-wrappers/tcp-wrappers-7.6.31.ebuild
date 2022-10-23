@@ -8,10 +8,12 @@ inherit flag-o-matic toolchain-funcs multilib-minimal usr-ldscript
 MY_PV=$(ver_cut 1-2)
 DEB_PV=$(ver_cut 3)
 MY_P="${PN//-/_}_${MY_PV}"
+
 DESCRIPTION="TCP Wrappers"
 HOMEPAGE="http://ftp.porcupine.org/pub/security"
 SRC_URI="http://ftp.porcupine.org/pub/security/${MY_P}.tar.gz
-	mirror://debian/pool/main/t/${PN}/${PN}_${MY_PV}.q-${DEB_PV}.debian.tar.xz"
+	mirror://debian/pool/main/t/${PN}/${PN}_${MY_PV}.q-${DEB_PV}.debian.tar.xz
+	https://dev.gentoo.org/~soap/distfiles/${P}-patches.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="tcp_wrappers_license"
@@ -22,10 +24,7 @@ IUSE="ipv6 netgroups"
 RDEPEND="netgroups? ( net-libs/libnsl:= )"
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-7.6-redhat-bug11881.patch"
-	"${FILESDIR}/${PN}-7.6.28-no-external-malloc.patch"
-)
+PATCHES=( "${WORKDIR}"/gentoo-patches/ )
 
 src_prepare() {
 	# Apply Debian patchset except for the series file which just lists

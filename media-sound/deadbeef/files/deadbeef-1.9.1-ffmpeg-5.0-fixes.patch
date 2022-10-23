@@ -1,0 +1,37 @@
+From 7b52bac5a69abeab6d8b6601fd9e36803842d9c1 Mon Sep 17 00:00:00 2001
+From: xuzhen <xuzhen@users.noreply.github.com>
+Date: Sun, 2 Oct 2022 12:23:02 +0800
+Subject: [PATCH] Fix build with ffmpeg 5.0+
+
+av_iformat_next was replaced with av_demuxer_iterate. https://trac.ffmpeg.org/wiki/Bump59
+---
+ plugins/ffmpeg/ffmpeg.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/plugins/ffmpeg/ffmpeg.c b/plugins/ffmpeg/ffmpeg.c
+index 5409cc482..bfc9b6f6f 100644
+--- a/plugins/ffmpeg/ffmpeg.c
++++ b/plugins/ffmpeg/ffmpeg.c
+@@ -802,7 +802,12 @@ ffmpeg_init_exts (void) {
+          * encoding purpose, because ffmpeg will guess the output format from
+          * the file name specified by users.
+          */
++#if LIBAVFORMAT_VERSION_MAJOR >= 59
++        void *iter = NULL;
++        while ((ifmt = av_demuxer_iterate(&iter))) {
++#else
+         while ((ifmt = av_iformat_next(ifmt))) {
++#endif
+ #ifdef AV_IS_INPUT_DEVICE
+             if (ifmt->priv_class && AV_IS_INPUT_DEVICE(ifmt->priv_class->category))
+                 continue; // Skip all input devices
+@@ -849,7 +854,9 @@ ffmpeg_message (uint32_t id, uintptr_t ctx, uint32_t p1, uint32_t p2) {
+ static int
+ ffmpeg_start (void) {
+     ffmpeg_init_exts ();
++#if LIBAVFORMAT_VERSION_MAJOR < 58
+     av_register_all ();
++#endif
+     return 0;
+ }
+ 

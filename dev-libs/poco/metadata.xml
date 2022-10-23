@@ -42,6 +42,7 @@ done quickly and working on the features that make their application unique.
 		<flag name="net">Classes to write network clients &amp; servers</flag>
 		<flag name="pagecompiler">Simple compiler translating HTML pages containing embedded C++ code into HTTPRequestHandler classes</flag>
 		<flag name="pocodoc">POCO documentation generator</flag>
+		<flag name="prometheus">Add prometheus monitoring system support</flag>
 		<flag name="util">Several utility classes (like logger, timer, config file parser)</flag>
 		<flag name="zip">Add support for the zip &amp; gz archive formats</flag>
 	</use>

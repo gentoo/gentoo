@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -17,7 +17,6 @@ ORIG_CFLAGS="$CFLAGS"
+ CFLAGS="$CFLAGS -Wall"
+ AC_TRY_COMPILE(,[return 0;],AC_MSG_RESULT(yes),AC_MSG_RESULT(no);CFLAGS="$ORIG_CFLAGS")
+ AC_CONFIG_HEADER(config.h)
+-AC_REQUIRE([AC_HEADER_STDC])
+ AC_CHECK_LIB(util, openpty)
+ AC_CHECK_FILE("/dev/ptmx", AC_DEFINE(HAVE_DEV_PTMX, 1, Have /dev/ptmx.))
+ AC_CHECK_FUNCS(getpt isatty isxdigit openpty putenv regcomp setenv setproctitle setsid sigaction sscanf uname unsetenv vsnprintf waitpid)

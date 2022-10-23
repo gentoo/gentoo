@@ -9,4 +9,7 @@
     <flag name="sha1">Use OpenSSL for sha1 encrypted passwords.</flag>
     <flag name="shadow">Enable /etc/shadow authentication</flag>
   </use>
+  <upstream>
+    <remote-id type="savannah-nongnu">tpop3d</remote-id>
+  </upstream>
 </pkgmetadata>

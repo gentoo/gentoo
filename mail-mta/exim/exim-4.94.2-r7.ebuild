@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit db-use toolchain-funcs multilib pam systemd
+inherit db-use toolchain-funcs pam systemd
 
 IUSE="arc +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn exiscan-acl gnutls idn ipv6 ldap lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs +srs-alt srs-native +ssl syslog tcpd +tpda X"
 REQUIRED_USE="
@@ -89,18 +89,13 @@ DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
 	!mail-mta/courier
 	!mail-mta/esmtp
-	!mail-mta/mini-qmail
-	!<mail-mta/msmtp-1.4.19-r1
-	!>=mail-mta/msmtp-1.4.19-r1[mta]
+	!mail-mta/msmtp[mta]
 	!mail-mta/netqmail
 	!mail-mta/nullmailer
 	!mail-mta/postfix
-	!mail-mta/qmail-ldap
 	!mail-mta/sendmail
 	!mail-mta/opensmtpd
-	!<mail-mta/ssmtp-2.64-r2
-	!>=mail-mta/ssmtp-2.64-r2[mta]
-	!net-mail/mailwrapper
+	!mail-mta/ssmtp[mta]
 	>=net-mail/mailbase-0.00-r5
 	virtual/logger
 	dcc? ( mail-filter/dcc )

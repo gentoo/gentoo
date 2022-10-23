@@ -19,6 +19,8 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/openssl:=
 	media-libs/alsa-lib
+	media-libs/fontconfig
+	media-libs/freetype
 	sys-libs/zlib:=
 	x11-libs/gtk+:3
 	x11-libs/libxcb:="
@@ -27,7 +29,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	virtual/jre:*
 	virtual/pkgconfig
-	>=virtual/rust-1.63"
+	>=virtual/rust-1.64"
 
 QA_FLAGS_IGNORED="
 	usr/bin/${PN}
@@ -40,7 +42,7 @@ src_unpack() {
 }
 
 src_compile() {
-	filter-lto # undefined references with ring crate and more
+	filter-lto # does not play well with C code in crates
 
 	cargo_src_compile --bins # note: configure --bins would skip tests
 }

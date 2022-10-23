@@ -4,8 +4,8 @@
 EAPI="7"
 
 DESCRIPTION="A client for signing certificates with an ACME-server"
-HOMEPAGE="https://github.com/lukas2511/dehydrated"
-SRC_URI="https://github.com/lukas2511/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/dehydrated-io/dehydrated"
+SRC_URI="https://github.com/dehydrated-io/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

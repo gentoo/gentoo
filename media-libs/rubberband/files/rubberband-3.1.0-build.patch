@@ -1,0 +1,169 @@
+diff --git a/meson.build b/meson.build
+index c3de854..3dd5637 100644
+--- a/meson.build
++++ b/meson.build
+@@ -117,25 +117,31 @@ sleef_dep = dependency('sleef', version: '>= 3.3.0', required: false)
+ sleefdft_dep = dependency('sleefdft', version: '>= 3.3.0', required: false)
+ samplerate_dep = dependency('samplerate', version: '>= 0.1.8', required: false)
+ speexdsp_dep = dependency('speexdsp', version: '>= 1.0.0', required: false)
+-sndfile_dep = dependency('sndfile', version: '>= 1.0.16', required: false)
+-vamp_dep = dependency('vamp-sdk', version: '>= 2.9', required: false)
++if get_option('programs')
++  sndfile_dep = dependency('sndfile', version: '>= 1.0.16', required: true)
++endif
++if get_option('vamp')
++  vamp_dep = dependency('vamp-sdk', version: '>= 2.9', required: true)
++endif
+ 
+ boost_unit_test_dep = dependency('boost', modules: ['unit_test_framework'], version: '>= 1.73', required: false)
+ thread_dep = dependency('threads')
+-have_ladspa = cpp.has_header('ladspa.h', args: extra_include_args)
++if get_option('ladspa')
++  have_ladspa = cpp.has_header('ladspa.h', args: extra_include_args)
++endif
+ have_lv2 = cpp.has_header('lv2.h', args: extra_include_args)
+ have_sincos = cpp.has_function('sincos',
+                                prefix: '#define _GNU_SOURCE\n#include <math.h>',
+                                args: '-lm')
+ 
+-javac = find_program('javac', required: false)
+-jar = find_program('jar', required: false)
+-
+ # Look for JNI only if javac and jar are found. This is because the
+ # auto-JNI-dependency module in Meson 0.62 and 0.63 appears to bail
+ # out of the build completely if it can't find javac, even when
+ # required is false
+-if javac.found() and jar.found()
++if get_option('jni')
++  javac = find_program('javac', required: true)
++  jar = find_program('jar', required: true)
++
+   jni_dep = dependency('jni', version: '>= 7.0.0', required: false)
+   if not jni_dep.found()
+     if cpp.has_header('jni.h', args: extra_include_args)
+@@ -362,37 +368,41 @@ if ipp_needed
+   endif
+ endif # ipp_needed
+ 
+-if not vamp_dep.found()
+-  vamp_dep = cpp.find_library('VampPluginSDK',
+-                              dirs: get_option('extra_lib_dirs'),
+-                              has_headers: ['vamp-sdk.h'],
+-                              header_args: extra_include_args,
+-                              required: false)
++if get_option('vamp')
+   if not vamp_dep.found()
+-    vamp_dep = cpp.find_library('vamp-sdk',
++    vamp_dep = cpp.find_library('VampPluginSDK',
+                                 dirs: get_option('extra_lib_dirs'),
+                                 has_headers: ['vamp-sdk.h'],
+                                 header_args: extra_include_args,
+                                 required: false)
++    if not vamp_dep.found()
++      vamp_dep = cpp.find_library('vamp-sdk',
++                                  dirs: get_option('extra_lib_dirs'),
++                                  has_headers: ['vamp-sdk.h'],
++                                  header_args: extra_include_args,
++                                  required: false)
++    endif
+   endif
++  have_vamp = true
+ endif
+-have_vamp = vamp_dep.found()
+ 
+-if not sndfile_dep.found()
+-  sndfile_dep = cpp.find_library('sndfile',
+-                                 dirs: get_option('extra_lib_dirs'),
+-                                 has_headers: ['sndfile.h'],
+-                                 header_args: extra_include_args,
+-                                 required: false)
++if get_option('programs')
+   if not sndfile_dep.found()
+-    sndfile_dep = cpp.find_library('sndfile-1',
++    sndfile_dep = cpp.find_library('sndfile',
+                                    dirs: get_option('extra_lib_dirs'),
+                                    has_headers: ['sndfile.h'],
+                                    header_args: extra_include_args,
+                                    required: false)
++    if not sndfile_dep.found()
++      sndfile_dep = cpp.find_library('sndfile-1',
++                                     dirs: get_option('extra_lib_dirs'),
++                                     has_headers: ['sndfile.h'],
++                                     header_args: extra_include_args,
++                                     required: false)
++    endif
+   endif
++  have_sndfile = true
+ endif
+-have_sndfile = sndfile_dep.found()
+ 
+ have_boost_unit_test = boost_unit_test_dep.found()
+ 
+@@ -601,7 +611,7 @@ if get_option('default_library') != 'shared' and rubberband_additional_static_li
+   )
+ endif
+ 
+-if jni_dep.found() and javac.found() and jar.found()
++if get_option('jni')
+   target_summary += { 'JNI library': [ true, 'Name: ' + rubberband_jni_name ] }
+   message('Will build Java Native Interface')
+   rubberband_jni = shared_library(
+@@ -637,7 +647,7 @@ if jni_dep.found() and javac.found() and jar.found()
+   )
+ else
+   target_summary += { 'JNI library': false }
+-  if not (javac.found() and jar.found())
++  if not get_option('jni')
+     message('Not building Java Native Interface: Java compiler or archiver missing')
+   else
+     message('Not building Java Native Interface: JNI header not found')
+@@ -651,7 +661,7 @@ install_headers(
+   subdir: 'rubberband'
+ )
+ 
+-if have_ladspa
++if get_option('ladspa')
+   target_summary += { 'LADSPA plugin': [ true, 'Name: ' + rubberband_ladspa_name ] }
+   message('Will build LADSPA plugin')
+   rubberband_ladspa = shared_library(
+@@ -718,7 +728,7 @@ else
+   message('Not building LV2 plugin: lv2.h header not found')
+ endif
+ 
+-if have_vamp
++if get_option('vamp')
+   target_summary += { 'Vamp plugin': [ true, 'Name: ' + rubberband_vamp_name ] }
+   message('Will build Vamp plugin')
+   rubberband_vamp = shared_library(
+@@ -750,7 +760,7 @@ else
+   message('Not building Vamp plugin: Vamp dependency not found')
+ endif
+ 
+-if have_sndfile
++if get_option('programs')
+   message('Will build command-line utilities')
+   target_summary += { 'Command-line utility (R2)': [ true, 'Name: ' + rubberband_program_name ] }
+   rubberband_program = executable(
+diff --git a/meson_options.txt b/meson_options.txt
+index e44837c..4e4ca29 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -26,3 +26,18 @@ option('extra_lib_dirs',
+        value: [],
+        description: 'Additional local library directories to search for dependencies.')
+ 
++option('jni',
++       type: 'boolean',
++       value: 'false')
++
++option('ladspa',
++       type: 'boolean',
++       value: 'false')
++
++option('programs',
++       type: 'boolean',
++       value: 'false')
++
++option('vamp',
++       type: 'boolean',
++       value: 'false')

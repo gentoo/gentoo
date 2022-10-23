@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="cpe">cpe:/a:kde:kate</remote-id>
 	</upstream>
 	<use>
 		<flag name="activities">Enable Plasma Activities support via <pkg>kde-frameworks/kactivities</pkg></flag>

@@ -6,11 +6,11 @@
 		<name>Gentoo Common Lisp Project</name>
 	</maintainer>
 	<longdescription>
-ECL (Embeddable Common Lisp) is an implementation of the Common Lisp language as
-described in the X3J13 Ansi specification, featuring CLOS (Common Lisp Object
-System), conditions, loops, etc, plus a translator to C, which can produce
-standalone executables.
-</longdescription>
+	ECL (Embeddable Common Lisp) is an implementation of the Common Lisp language as
+	described in the X3J13 Ansi specification, featuring CLOS (Common Lisp Object
+	System), conditions, loops, etc, plus a translator to C, which can produce
+	standalone executables.
+	</longdescription>
 	<use>
 		<flag name="gengc">Use generational garbage collection (experimental)</flag>
 		<flag name="precisegc">Use type information during garbage collection (experimental)</flag>

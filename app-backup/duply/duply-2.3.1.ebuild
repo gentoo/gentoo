@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="A shell frontend for duplicity"
 HOMEPAGE="https://duply.net"
-SRC_URI="https://jztkft.dl.sourceforge.net/project/ftplicity/${PN}%20%28simple%20duplicity%29/2.3.x/${PN}_${PV}.tgz"
+SRC_URI="https://jztkft.dl.sourceforge.net/project/ftplicity/${PN}%20%28simple%20duplicity%29/$(ver_cut 1-2).x/${PN}_${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

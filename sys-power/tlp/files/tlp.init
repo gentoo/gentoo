@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+command=/usr/sbin/tlp
+name="TLP"
+extra_started_commands="reload stat"
+
+depend() {
+	need udev
+}
+
+start() {
+	ebegin "Starting tlp..."
+	$command init start
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading tlp's configuration..."
+	$command start
+	eend $?
+}
+
+stop() {
+	elog "Reboot to stop tlp."
+}
+
+stat() {
+	/usr/bin/tlp-stat
+}

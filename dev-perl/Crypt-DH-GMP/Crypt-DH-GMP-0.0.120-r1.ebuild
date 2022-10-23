@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Crypt::DH Using GMP Directly"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

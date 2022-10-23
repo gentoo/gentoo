@@ -1,0 +1,90 @@
+From 4c9ed77d3629a69febdaa14d153d3db869b58e4f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 12 Oct 2022 16:37:40 +0200
+Subject: [PATCH] Use tomllib/tomli for reading .toml configs
+
+Use the built-in `tomllib` module in Python 3.11 and the modern `tomli`
+package in older Python versions to read .toml configs instead of
+the unmaintained and broken `toml` package.
+
+Fixes #599
+Fixes #600
+---
+ docs/release_notes.rst   |  1 +
+ requirements/runtime.txt |  2 +-
+ requirements/tests.txt   |  1 -
+ setup.py                 |  2 +-
+ src/pydocstyle/config.py | 20 ++++++++++++--------
+ 5 files changed, 15 insertions(+), 11 deletions(-)
+
+diff --git a/requirements/runtime.txt b/requirements/runtime.txt
+index 80302751..b4e9ca76 100644
+--- a/requirements/runtime.txt
++++ b/requirements/runtime.txt
+@@ -1,2 +1,2 @@
+ snowballstemmer==1.2.1
+-toml==0.10.2
++tomli==2.0.1; python_version < "3.11"
+diff --git a/setup.py b/setup.py
+index a9c5df1c..6c0671c7 100644
+--- a/setup.py
++++ b/setup.py
+@@ -8,7 +8,7 @@
+     'snowballstemmer',
+ ]
+ extra_requirements = {
+-    'toml': ['toml'],
++    'toml': ['tomli; python_version < "3.11"'],
+ }
+ 
+ 
+diff --git a/src/pydocstyle/config.py b/src/pydocstyle/config.py
+index ed00c874..db7ed1b6 100644
+--- a/src/pydocstyle/config.py
++++ b/src/pydocstyle/config.py
+@@ -4,6 +4,7 @@
+ import itertools
+ import operator
+ import os
++import sys
+ from collections import namedtuple
+ from collections.abc import Set
+ from configparser import NoOptionError, NoSectionError, RawConfigParser
+@@ -13,10 +14,13 @@
+ from .utils import __version__, log
+ from .violations import ErrorRegistry, conventions
+ 
+-try:
+-    import toml
+-except ImportError:  # pragma: no cover
+-    toml = None  # type: ignore
++if sys.version_info >= (3, 11):
++    import tomllib
++else:
++    try:
++        import tomli as tomllib
++    except ImportError:  # pragma: no cover
++        tomllib = None  # type: ignore
+ 
+ 
+ def check_initialized(method):
+@@ -59,15 +63,15 @@ def read(self, filenames, encoding=None):
+         read_ok = []
+         for filename in filenames:
+             try:
+-                with open(filename, encoding=encoding) as fp:
+-                    if not toml:
++                with open(filename, "rb") as fp:
++                    if not tomllib:
+                         log.warning(
+                             "The %s configuration file was ignored, "
+-                            "because the `toml` package is not installed.",
++                            "because the `tomli` package is not installed.",
+                             filename,
+                         )
+                         continue
+-                    self._config.update(toml.load(fp))
++                    self._config.update(tomllib.load(fp))
+             except OSError:
+                 continue
+             if isinstance(filename, os.PathLike):

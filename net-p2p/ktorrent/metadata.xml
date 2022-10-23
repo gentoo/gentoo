@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="cpe">cpe:/a:ktorrent:ktorrent</remote-id>
 	</upstream>
 	<use>
 		<flag name="bwscheduler">Schedule upload and download limits over a period of a week</flag>

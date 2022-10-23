@@ -17,7 +17,7 @@
   confident that users will be able to view it naturally and
   easily. One simply includes MathJax and some mathematics in a web
   page, and MathJax does the rest.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="github">mathjax/MathJax</remote-id>
   </upstream>

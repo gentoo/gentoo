@@ -1,0 +1,70 @@
+From bfb12093ad7a0624aa0b779bacf1377bd86c551d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Novomesk=C3=BD?= <dnovomesky@gmail.com>
+Date: Sat, 15 Oct 2022 20:03:56 +0200
+Subject: [PATCH] avif: indicate when all frames have been read
+
+---
+ src/imageformats/avif.cpp | 13 ++++++++++---
+ src/imageformats/avif_p.h |  1 +
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/src/imageformats/avif.cpp b/src/imageformats/avif.cpp
+index 24aec84..cd3a08b 100644
+--- a/src/imageformats/avif.cpp
++++ b/src/imageformats/avif.cpp
+@@ -43,7 +43,7 @@ bool QAVIFHandler::canRead() const
+     if (m_parseState != ParseAvifError) {
+         setFormat("avif");
+ 
+-        if (m_parseState == ParseAvifSuccess && m_decoder->imageIndex >= m_decoder->imageCount - 1) {
++        if (m_parseState == ParseAvifFinished) {
+             return false;
+         }
+ 
+@@ -74,7 +74,7 @@ bool QAVIFHandler::canRead(QIODevice *device)
+ 
+ bool QAVIFHandler::ensureParsed() const
+ {
+-    if (m_parseState == ParseAvifSuccess || m_parseState == ParseAvifMetadata) {
++    if (m_parseState == ParseAvifSuccess || m_parseState == ParseAvifMetadata || m_parseState == ParseAvifFinished) {
+         return true;
+     }
+     if (m_parseState == ParseAvifError) {
+@@ -88,7 +88,7 @@ bool QAVIFHandler::ensureParsed() const
+ 
+ bool QAVIFHandler::ensureOpened() const
+ {
+-    if (m_parseState == ParseAvifSuccess) {
++    if (m_parseState == ParseAvifSuccess || m_parseState == ParseAvifFinished) {
+         return true;
+     }
+     if (m_parseState == ParseAvifError) {
+@@ -459,6 +459,13 @@ bool QAVIFHandler::read(QImage *image)
+     *image = m_current_image;
+     if (imageCount() >= 2) {
+         m_must_jump_to_next_image = true;
++        if (m_decoder->imageIndex >= m_decoder->imageCount - 1) {
++            // all frames in animation have been read
++            m_parseState = ParseAvifFinished;
++        }
++    } else {
++        // the static image has been read
++        m_parseState = ParseAvifFinished;
+     }
+     return true;
+ }
+diff --git a/src/imageformats/avif_p.h b/src/imageformats/avif_p.h
+index 83fb547..46156bd 100644
+--- a/src/imageformats/avif_p.h
++++ b/src/imageformats/avif_p.h
+@@ -55,6 +55,7 @@ private:
+         ParseAvifNotParsed = 0,
+         ParseAvifSuccess = 1,
+         ParseAvifMetadata = 2,
++        ParseAvifFinished = 3,
+     };
+ 
+     ParseAvifState m_parseState;
+-- 
+GitLab
+

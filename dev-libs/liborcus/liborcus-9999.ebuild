@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit autotools python-single-r1
 
@@ -22,7 +22,7 @@ else
 fi
 
 LICENSE="MIT"
-SLOT="0/0.17" # based on SONAME of liborcus.so
+SLOT="0/0.18" # based on SONAME of liborcus.so
 IUSE="python +spreadsheet-model test tools"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

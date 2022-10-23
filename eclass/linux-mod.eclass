@@ -150,8 +150,8 @@
 # It's a read-only variable. It contains the extension of the kernel modules.
 
 case ${EAPI:-0} in
-	[67]) 
-		inherit eutils 
+	[67])
+		inherit eutils
 		;;
 	8)
 		;;
@@ -163,7 +163,7 @@ _LINUX_MOD_ECLASS=1
 
 # TODO: When adding support for future EAPIs, please audit this list
 # for unused inherits and conditionalise them.
-inherit linux-info multilib toolchain-funcs
+inherit linux-info multilib multiprocessing toolchain-funcs
 
 case ${MODULES_OPTIONAL_USE_IUSE_DEFAULT:-n} in
   [nNfF]*|[oO][fF]*|0|-) _modules_optional_use_iuse_default='' ;;
@@ -361,8 +361,8 @@ generate_modulesd() {
 	debug-print-function ${FUNCNAME} $*
 	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
 
-	local 	currm_path currm currm_t t myIFS myVAR
-	local 	module_docs module_enabled module_aliases \
+	local currm_path currm currm_t t myIFS myVAR
+	local module_docs module_enabled module_aliases \
 			module_additions module_examples module_modinfo module_opts
 
 	for currm_path in ${@}
@@ -380,9 +380,9 @@ generate_modulesd() {
 		module_additions="$(eval echo \${#MODULESD_${currm_t}_ADDITIONS[*]})"
 		module_examples="$(eval echo \${#MODULESD_${currm_t}_EXAMPLES[*]})"
 
-		[[ ${module_aliases} -eq 0 ]] 	&& unset module_aliases
+		[[ ${module_aliases} -eq 0 ]]	&& unset module_aliases
 		[[ ${module_additions} -eq 0 ]]	&& unset module_additions
-		[[ ${module_examples} -eq 0 ]] 	&& unset module_examples
+		[[ ${module_examples} -eq 0 ]]  && unset module_examples
 
 		# If we specify we dont want it, then lets exit, otherwise we assume
 		# that if its set, we do want it.
@@ -712,22 +712,26 @@ linux-mod_src_install() {
 		cd "${objdir}" || die "${objdir} does not exist"
 		insinto "${INSTALL_MOD_PATH}"/lib/modules/${KV_FULL}/${libdir}
 
-		# check here for CONFIG_MODULE_COMPRESS_<compression option> (NONE, GZIP, XZ, ZSTD) 
+		# check here for CONFIG_MODULE_COMPRESS_<compression option> (NONE, GZIP, XZ, ZSTD)
 		# and similarily compress the module being built if != NONE.
 
 		if linux_chkconfig_present MODULE_COMPRESS_XZ; then
-			xz ${modulename}.${KV_OBJ} 
-			doins ${modulename}.${KV_OBJ}.xz || die "doins ${modulename}.${KV_OBJ}.xz failed"
+			xz -T$(makeopts_jobs) --memlimit-compress=50% -q ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with xz failed"
+			doins ${modulename}.${KV_OBJ}.xz
 		elif linux_chkconfig_present MODULE_COMPRESS_GZIP; then
-			gzip ${modulename}.${KV_OBJ}
-			doins ${modulename}.${KV_OBJ}.gz || die "doins ${modulename}.${KV_OBJ}.gz failed"
+			if type -P pigz &>/dev/null ; then
+				pigz -p$(makeopts_jobs) ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with pigz failed"
+			else
+				gzip ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with gzip failed"
+			fi
+			doins ${modulename}.${KV_OBJ}.gz
 		elif linux_chkconfig_present MODULE_COMPRESS_ZSTD; then
-			zstd ${modulename}.${KV_OBJ}
-			doins ${modulename}.${KV_OBJ}.zst || die "doins ${modulename}.${KV_OBJ}.zst failed"
+			zstd -T$(makeopts_jobs) ${modulename}.${KV_OBJ} || "Compressing ${modulename}.${KV_OBJ} with zstd failed"
+			doins ${modulename}.${KV_OBJ}.zst
 		else
-			doins ${modulename}.${KV_OBJ} || die "doins ${modulename}.${KV_OBJ} failed"
+			doins ${modulename}.${KV_OBJ}
 		fi
-		cd "${OLDPWD}"
+		cd "${OLDPWD}" || die "${OLDPWD} does not exist"
 
 		generate_modulesd "${objdir}/${modulename}"
 	done

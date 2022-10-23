@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/871204
+--- a/remote.c
++++ b/remote.c
+@@ -22,2 +22,3 @@
+ 
++#include <ctype.h>
+ #include <sys/time.h>

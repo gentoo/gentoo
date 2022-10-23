@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/863257
+https://bugs.gentoo.org/871423
+--- a/mace2/anldp.c
++++ b/mace2/anldp.c
+@@ -51,2 +51,4 @@
+ 
++#include "../source/header.h"
++
+ int First_order;        /* used by dp.c */
+--- a/source/formed/display.c
++++ b/source/formed/display.c
+@@ -588,3 +588,3 @@
+ 
+-setup_operator_pixmaps(font_string)
++void setup_operator_pixmaps(font_string)
+ char font_string[];
+--- a/source/formed/formed.c
++++ b/source/formed/formed.c
+@@ -15,3 +15,3 @@
+ 
+-main(argc, argv)
++int main(argc, argv)
+ int argc;

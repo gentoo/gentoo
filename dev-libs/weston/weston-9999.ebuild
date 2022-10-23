@@ -36,6 +36,7 @@ REQUIRED_USE="
 	test? ( desktop headless xwayland )
 	wayland-compositor? ( gles2 )
 	|| ( drm headless rdp wayland-compositor X )
+	|| ( seatd systemd )
 "
 
 RDEPEND="

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Distributed Checksum Clearinghouse"
 HOMEPAGE="https://www.rhyolite.com/dcc/"
@@ -35,6 +35,8 @@ dcc_rundir=var/run/dcc
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.140-freebsd.patch
 	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-clang16.patch
+	"${FILESDIR}"/${P}-c2x.patch
 )
 
 src_configure() {

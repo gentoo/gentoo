@@ -5,6 +5,10 @@
 
 EAPI=7
 
+if [[ ${PV} != 0.21 ]] ; then
+	die "Please check if https://savannah.gnu.org/bugs/?63193 is fixed before bumping!"
+fi
+
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gettext.asc
 inherit mono-env libtool java-pkg-opt-2 multilib-minimal verify-sig
 

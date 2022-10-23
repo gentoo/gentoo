@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">nbclassic</remote-id>
-		<remote-id type="github">jupyterlab/nbclassic</remote-id>
+		<remote-id type="github">jupyter/nbclassic</remote-id>
 	</upstream>
 </pkgmetadata>

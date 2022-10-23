@@ -16,7 +16,7 @@ SRC_URI="https://github.com/bazelbuild/${PN}/archive/${H}.tar.gz
 S="${WORKDIR}"/${PN}-${H}
 
 LICENSE="Apache-2.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 
 DOCS=( CONTRIBUTING.md README.md )

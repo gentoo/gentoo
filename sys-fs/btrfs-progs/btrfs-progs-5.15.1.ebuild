@@ -131,5 +131,5 @@ src_install() {
 }
 
 pkg_postrm() {
-	[[ -n ${REPLACED_BY_VERSION} ]] || udev_reload
+	udev_reload
 }

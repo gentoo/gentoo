@@ -14,7 +14,7 @@
   "labeled" data both easy and intuitive. It aims to be the
   fundamental high-level building block for doing practical, real
   world data analysis in Python. 
-</longdescription>
+  </longdescription>
   <use>
     <flag name="full-support">Pull all packages to give pandas full support</flag>
   </use>

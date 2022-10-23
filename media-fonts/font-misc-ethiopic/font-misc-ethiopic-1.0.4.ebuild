@@ -4,6 +4,7 @@
 EAPI=7
 FONT_DIR="OTF"
 
+XORG_PACKAGE_NAME="misc-ethiopic"
 inherit xorg-3
 
 DESCRIPTION="Miscellaneous Ethiopic fonts"

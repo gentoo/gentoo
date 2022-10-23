@@ -5,4 +5,7 @@
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
+  <use>
+    <flag name="webkit">Build with GepubWidget based on Webkit</flag>
+  </use>
 </pkgmetadata>

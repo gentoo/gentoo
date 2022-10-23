@@ -41,7 +41,7 @@ BDEPEND="
 	' 'python*')
 	test? (
 		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
-		>=www-servers/tornado-5.0.2[${PYTHON_USEDEP}]
+		>=dev-python/tornado-5.0.2[${PYTHON_USEDEP}]
 	)
 "
 

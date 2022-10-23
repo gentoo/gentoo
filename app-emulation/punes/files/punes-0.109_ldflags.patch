@@ -1,0 +1,33 @@
+https://github.com/punesemu/puNES/commit/b79efed1b6e350076ea7a459dafd6c2f995bcb51
+
+From b79efed1b6e350076ea7a459dafd6c2f995bcb51 Mon Sep 17 00:00:00 2001
+From: fhorse <punes.development@gmail.com>
+Date: Tue, 7 Jun 2022 09:16:59 +0200
+Subject: [PATCH] https://github.com/punesemu/puNES/issues/213
+
+This commit allows compilation with Flatpak's build tools.
+---
+ src/extra/lib7zip-53abfeb/configure | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/extra/lib7zip-53abfeb/configure b/src/extra/lib7zip-53abfeb/configure
+index ca28ab144..504c02f6e 100755
+--- a/src/extra/lib7zip-53abfeb/configure
++++ b/src/extra/lib7zip-53abfeb/configure
+@@ -344,11 +344,11 @@ fi
+ 
+ # Unlike CFLAGS/CXXFLAGS/CC/CXX, LDFLAGS isn't handled by CMake, so we
+ # need to parse it here.
+-if [ "x${LDFLAGS}" != "x" ]; then
+-    for varname in EXE MODULE SHARED STATIC; do
+-        CMAKE_ARGS="$CMAKE_ARGS -DCMAKE_${varname}_LINKER_FLAGS=$(quote "$LDFLAGS")"
+-    done
+-fi
++#if [ "x${LDFLAGS}" != "x" ]; then
++#    for varname in EXE MODULE SHARED STATIC; do
++#        CMAKE_ARGS="$CMAKE_ARGS -DCMAKE_${varname}_LINKER_FLAGS=$(quote "$LDFLAGS")"
++#    done
++#fi
+ 
+ #eval "${CMAKE_CMD}" "${TOP_SRCDIR}" -DCMAKE_BUILD_TYPE="${BUILD_TYPE}" -DCMAKE_INSTALL_PREFIX="${PREFIX}" -DCMAKE_INSTALL_LIBDIR="${LIBDIR}" ${CMAKE_ARGS}
+ #eval "${CMAKE_CMD}" "${TOP_SRCDIR}" -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON -DBUILD_SHARED_LIB="OFF" -DP7ZIP_SOURCE_DIR="${P7ZIP_SOURCE_DIR}" ${CMAKE_ARGS}

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ RDEPEND="
 	gif? ( media-libs/libnsgif )
 	heif? ( media-libs/libheif:= )
 	icu? ( dev-libs/icu:= )
-	!icu? ( dev-libs/libgrapheme )
+	!icu? ( >=dev-libs/libgrapheme-2:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( media-libs/libpng:= )
 	svg? ( >=gnome-base/librsvg-2.44:2 )
@@ -52,6 +52,11 @@ DEPEND="
 BDEPEND="
 	app-text/asciidoc
 	wayland? ( dev-util/wayland-scanner )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.3.1_p20211221-animated-gif.patch
+	"${FILESDIR}"/${PN}-4.3.1_p20211221-libgrapheme2.patch
+)
 
 src_prepare() {
 	default

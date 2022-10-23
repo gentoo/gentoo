@@ -32,7 +32,7 @@ media-libs/freetype svg
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # sys-auth/seatd is not keyworded
-dev-libs/weston seatd
+<=dev-libs/weston-10.0.0 seatd
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2022-03-14)
 # Now requires dev-java/rhino which is not keyworded
@@ -110,6 +110,7 @@ media-libs/gd avif heif
 # compiler-rt* has no support for ppc32 (yet?)
 # bug #708344
 sys-devel/clang-runtime compiler-rt sanitize
+sys-devel/clang-common default-compiler-rt
 sys-devel/clang default-compiler-rt
 
 # Florian Schmaus <flo@geekplace.eu> (2020-12-03)
@@ -189,10 +190,6 @@ sys-devel/clang-runtime openmp sanitize
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-13)
 # Dropping ppc from sci-libs/armadillo, bug 555896
 sci-libs/gdal armadillo
-
-## Thomas Deutschmann <whissi@gentoo.org> (2016-12-04)
-# sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
-sci-libs/gdal mdb
 
 # Michał Górny <mgorny@gentoo.org> (2016-11-18)
 # libomp does not support 32-bit PPC, #600148.

@@ -18,12 +18,13 @@ RDEPEND="x11-libs/libXaw"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/rman
+	sys-devel/gcc
 	x11-misc/gccmakedep
 	>=x11-misc/imake-1.0.8-r1"
 
 src_configure() {
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die
+		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf -a || die
 }
 
 src_compile() {

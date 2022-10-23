@@ -15,7 +15,10 @@ S="${WORKDIR}/${PN}-${MY_PV:-${PV}}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+
+# remove keywords until build works:
+# https://github.com/iovisor/bpftrace/issues/2349
+#KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="fuzzing test"
 
 # lots of fixing needed
@@ -52,7 +55,6 @@ PATCHES=(
 	"${FILESDIR}/bpftrace-0.16.0-install-libs.patch"
 	"${FILESDIR}/bpftrace-0.15.0-dont-compress-man.patch"
 	"${FILESDIR}/bpftrace-0.11.4-old-kernels.patch"
-	"${FILESDIR}/bpftrace-0.16.0-link.patch"
 )
 
 pkg_pretend() {

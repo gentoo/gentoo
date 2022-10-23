@@ -12,4 +12,7 @@
 		<flag name="peruse">Enable PERUSE interface</flag>
 		<flag name="romio">Build the ROMIO MPI-IO component</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">open-mpi/ompi</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -165,12 +165,20 @@ get_xcpkgconfigdir() {
 
 multilib_src_configure() {
 	local -a myconf=(
+		--host=${CTARGET}
 		--disable-werror
 		--libdir=$(get_xclibdir)
 		--with-pkgconfigdir=$(get_xcpkgconfigdir)
 		--includedir=$(get_xcincludedir)
 		--mandir="$(get_xcmandir)"
 	)
+
+	if use elibc_musl; then
+		# musl declares getcontext and swapcontext in ucontext.h,
+		# but does not implement them in libc.
+		# https://bugs.gentoo.org/838172
+		myconf+=( ac_cv_header_ucontext_h=no )
+	fi
 
 	case "${MULTIBUILD_ID}" in
 		xcrypt_compat-*)
@@ -188,6 +196,16 @@ multilib_src_configure() {
 		;;
 		*) die "Unexpected MULTIBUILD_ID: ${MULTIBUILD_ID}";;
 	esac
+
+	tc-export PKG_CONFIG
+
+	if is_cross; then
+		if tc-is-clang; then
+			export CC="${CTARGET}-clang"
+		else
+			export CC="${CTARGET}-gcc"
+		fi
+	fi
 
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 }

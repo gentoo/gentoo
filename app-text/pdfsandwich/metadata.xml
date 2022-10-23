@@ -6,19 +6,19 @@
 		<name>Tupone Alfredo</name>
 	</maintainer>
 	<longdescription>
-pdfsandwich generates "sandwich" OCR pdf files, i.e. pdf files which
-contain only images (no text) will be processed by optical character
-recognition (OCR) and the text will be added to each page invisibly
-"behind" the images.
+	pdfsandwich generates "sandwich" OCR pdf files, i.e. pdf files which
+	contain only images (no text) will be processed by optical character
+	recognition (OCR) and the text will be added to each page invisibly
+	"behind" the images.
 
-pdfsandwich is a command line tool which is supposed to be useful to
-OCR scanned books or journals. It is able to recognize the page layout
-even for multicolumn text.
+	pdfsandwich is a command line tool which is supposed to be useful to
+	OCR scanned books or journals. It is able to recognize the page layout
+	even for multicolumn text.
 
-Essentially, pdfsandwich is a wrapper script which calls the following
-binaries: unpaper, convert, gs, and tesseract. It supports
-parallel processing on multiprocessor systems.
-</longdescription>
+	Essentially, pdfsandwich is a wrapper script which calls the following
+	binaries: unpaper, convert, gs, and tesseract. It supports
+	parallel processing on multiprocessor systems.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">pdfsandwich</remote-id>
 	</upstream>

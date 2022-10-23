@@ -24,7 +24,7 @@ Togl does almost no OpenGL drawing itself, instead it manages OpenGL
 drawing by calling various Tcl commands (a.k.a., callback functions). Those
 commands can be C functions that call OpenGL (in)directly or another Tcl
 package (e.g., Tcl3D).
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">togl</remote-id>
 	</upstream>

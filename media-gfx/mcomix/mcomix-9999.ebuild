@@ -21,7 +21,8 @@ RDEPEND="${DEPEND}
 	>=dev-python/pillow-6.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pycairo-1.16.0[${PYTHON_USEDEP}]
 	>=dev-python/pygobject-3.36.0[${PYTHON_USEDEP}]
-	media-libs/libjpeg-turbo:0"
+	media-libs/libjpeg-turbo:0
+	x11-libs/gtk+:3[introspection]"
 BDEPEND="sys-devel/gettext"
 # Most tests are quite old and do not run
 RESTRICT="test"

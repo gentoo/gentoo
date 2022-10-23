@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:nih:libzip</remote-id>
+		<remote-id type="github">nih-at/libzip</remote-id>
 	</upstream>
 	<use>
 		<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as TLS provider</flag>

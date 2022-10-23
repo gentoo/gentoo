@@ -9,6 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">canonicaljson</remote-id>
 		<remote-id type="github">matrix-org/python-canonicaljson</remote-id>

@@ -1,0 +1,49 @@
+https://bugs.gentoo.org/870946
+--- a/clit18/display.c
++++ b/clit18/display.c
+@@ -24,2 +24,3 @@
+ #include <stdlib.h>
++#include <string.h>
+ #include "litlib.h"
+--- a/clit18/drm5.c
++++ b/clit18/drm5.c
+@@ -32,2 +32,3 @@
+ #include <string.h>
++#include <ctype.h>
+ #include <assert.h>
+--- a/clit18/explode.c
++++ b/clit18/explode.c
+@@ -26,2 +26,3 @@
+ #include <string.h>
++#include <sys/stat.h>
+ #include "clit.h"
+--- a/clit18/hexdump.c
++++ b/clit18/hexdump.c
+@@ -18,2 +18,3 @@
+ #include <stdlib.h>
++#include <string.h>
+ 
+--- a/clit18/manifest.c
++++ b/clit18/manifest.c
+@@ -25,2 +25,3 @@
+ #include <stdlib.h>
++#include <string.h>
+ #include "litlib.h"
+--- a/clit18/transmute.c
++++ b/clit18/transmute.c
+@@ -24,2 +24,3 @@
+ #include <stdlib.h>
++#include <string.h>
+ #include "litlib.h"
+--- a/lib/litsections.c
++++ b/lib/litsections.c
+@@ -33,2 +33,3 @@
+ #include "litinternal.h"
++#include "lzx/lzx.h"
+ #include "lzx.h"
+--- a/lib/newlzx/lzxglue.c
++++ b/lib/newlzx/lzxglue.c
+@@ -30,2 +30,3 @@
+ #include <stdlib.h>
++#include <string.h>
+ #include "litlib.h"

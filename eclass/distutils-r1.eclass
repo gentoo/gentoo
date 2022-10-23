@@ -150,9 +150,6 @@ esac
 #
 # - rdepend -- add it to BDEPEND+RDEPEND (e.g. when using pkg_resources)
 #
-# - pyproject.toml -- use pyproject2setuptools to install a project
-#   using pyproject.toml (flit, poetry...)
-#
 # - manual -- do not add the dependency and suppress the checks
 #   (assumes you will take care of doing it correctly)
 #
@@ -205,7 +202,7 @@ _distutils_set_globals() {
 		fi
 
 		bdep='
-			>=dev-python/gpep517-8[${PYTHON_USEDEP}]
+			>=dev-python/gpep517-9[${PYTHON_USEDEP}]
 		'
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
@@ -215,22 +212,22 @@ _distutils_set_globals() {
 				;;
 			flit_scm)
 				bdep+='
-					dev-python/flit_scm[${PYTHON_USEDEP}]
+					>=dev-python/flit_scm-1.7.0[${PYTHON_USEDEP}]
 				'
 				;;
 			hatchling)
 				bdep+='
-					>=dev-python/hatchling-1.3.1[${PYTHON_USEDEP}]
+					>=dev-python/hatchling-1.8.1[${PYTHON_USEDEP}]
 				'
 				;;
 			jupyter)
 				bdep+='
-					>=dev-python/jupyter_packaging-0.12.0-r1[${PYTHON_USEDEP}]
+					>=dev-python/jupyter_packaging-0.12.3[${PYTHON_USEDEP}]
 				'
 				;;
 			maturin)
 				bdep+='
-					>=dev-util/maturin-0.12.20[${PYTHON_USEDEP}]
+					>=dev-util/maturin-0.13.2[${PYTHON_USEDEP}]
 				'
 				;;
 			no)
@@ -239,27 +236,27 @@ _distutils_set_globals() {
 				;;
 			meson-python)
 				bdep+='
-					dev-python/meson-python[${PYTHON_USEDEP}]
+					>=dev-python/meson-python-0.9.0[${PYTHON_USEDEP}]
 				'
 				;;
 			pbr)
 				bdep+='
-					>=dev-python/pbr-5.9.0[${PYTHON_USEDEP}]
+					>=dev-python/pbr-5.10.0[${PYTHON_USEDEP}]
 				'
 				;;
 			pdm)
 				bdep+='
-					>=dev-python/pdm-pep517-1.0.2[${PYTHON_USEDEP}]
+					>=dev-python/pdm-pep517-1.0.4[${PYTHON_USEDEP}]
 				'
 				;;
 			poetry)
 				bdep+='
-					>=dev-python/poetry-core-1.0.8[${PYTHON_USEDEP}]
+					>=dev-python/poetry-core-1.2.0[${PYTHON_USEDEP}]
 				'
 				;;
 			setuptools)
 				bdep+='
-					>=dev-python/setuptools-62.6.0[${PYTHON_USEDEP}]
+					>=dev-python/setuptools-65.3.0[${PYTHON_USEDEP}]
 					dev-python/wheel[${PYTHON_USEDEP}]
 				'
 				;;
@@ -280,7 +277,7 @@ _distutils_set_globals() {
 			eqawarn "is enabled."
 		fi
 	else
-		local setuptools_dep='>=dev-python/setuptools-42.0.2[${PYTHON_USEDEP}]'
+		local setuptools_dep='>=dev-python/setuptools-65.3.0[${PYTHON_USEDEP}]'
 
 		case ${DISTUTILS_USE_SETUPTOOLS:-bdepend} in
 			no|manual)
@@ -293,7 +290,7 @@ _distutils_set_globals() {
 				rdep+=" ${setuptools_dep}"
 				;;
 			pyproject.toml)
-				bdep+=' >=dev-python/pyproject2setuppy-22[${PYTHON_USEDEP}]'
+				die "DISTUTILS_USE_SETUPTOOLS=pyproject.toml is no longer supported, use DISTUTILS_USE_PEP517"
 				;;
 			*)
 				die "Invalid DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}"
@@ -600,7 +597,7 @@ distutils_enable_tests() {
 			test_pkg=">=dev-python/nose-1.3.7_p20211111_p1-r1"
 			;;
 		pytest)
-			test_pkg=">=dev-python/pytest-7.1.2"
+			test_pkg=">=dev-python/pytest-7.1.3"
 			;;
 		setup.py)
 			;;
@@ -668,9 +665,7 @@ esetup.py() {
 	fi
 
 	local setup_py=( setup.py )
-	if [[ ${DISTUTILS_USE_SETUPTOOLS} == pyproject.toml ]]; then
-		setup_py=( -m pyproject2setuppy )
-	elif [[ ! -f setup.py ]]; then
+	if [[ ! -f setup.py ]]; then
 		if [[ ! -f setup.cfg ]]; then
 			die "${FUNCNAME}: setup.py nor setup.cfg not found"
 		fi
@@ -728,8 +723,8 @@ esetup.py() {
 # to unmerge the package first.
 #
 # This function is not available in PEP517 mode.  The eclass provides
-# a venv-style install unconditionally therefore, and therefore it
-# should no longer be necessary.
+# a venv-style install unconditionally and therefore it should no longer
+# be necessary.
 distutils_install_for_testing() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -883,12 +878,10 @@ _distutils-r1_handle_pyproject_toml() {
 	[[ ${DISTUTILS_USE_SETUPTOOLS} == manual ]] && return
 
 	if [[ ! -f setup.py && -f pyproject.toml ]]; then
-		if [[ ${DISTUTILS_USE_SETUPTOOLS} != pyproject.toml ]]; then
-			eerror "No setup.py found but pyproject.toml is present.  Please migrate"
-			eerror "the package to use DISTUTILS_USE_PEP517. See:"
-			eerror "  https://projects.gentoo.org/python/guide/distutils.html"
-			die "No setup.py found and PEP517 mode not enabled"
-		fi
+		eerror "No setup.py found but pyproject.toml is present.  Please migrate"
+		eerror "the package to use DISTUTILS_USE_PEP517. See:"
+		eerror "  https://projects.gentoo.org/python/guide/distutils.html"
+		die "No setup.py found and PEP517 mode not enabled"
 	fi
 }
 
@@ -1454,22 +1447,13 @@ distutils-r1_python_compile() {
 			fi
 			;;
 		maturin)
-			if has_version '>=dev-util/maturin-0.13'; then
-				# auditwheel may auto-bundle libraries (bug #831171),
-				# also support cargo.eclass' IUSE=debug if available
-				local -x MATURIN_PEP517_ARGS="
-					--jobs=$(makeopts_jobs)
-					--skip-auditwheel
-					$(in_iuse debug && usex debug --profile=dev '')
-				"
-			else
-				# legacy support, can cleanup when depend on >=0.13
-				local -x MATURIN_PEP517_ARGS="
-					--skip-auditwheel
-					$(in_iuse debug && usex debug \
-						--cargo-extra-args=--profile=dev '')
-				"
-			fi
+			# auditwheel may auto-bundle libraries (bug #831171),
+			# also support cargo.eclass' IUSE=debug if available
+			local -x MATURIN_PEP517_ARGS="
+				--jobs=$(makeopts_jobs)
+				--skip-auditwheel
+				$(in_iuse debug && usex debug --profile=dev '')
+			"
 			;;
 		no)
 			return
@@ -2030,21 +2014,19 @@ _distutils-r1_check_namespace_pth() {
 	done < <(find "${ED%/}" -name '*-nspkg.pth' -print0)
 
 	if [[ ${pth[@]} ]]; then
-		ewarn "The following *-nspkg.pth files were found installed:"
-		ewarn
+		eerror "The following *-nspkg.pth files were found installed:"
+		eerror
 		for f in "${pth[@]}"; do
-			ewarn "  ${f#${ED%/}}"
+			eerror "  ${f#${ED%/}}"
 		done
-		ewarn
-		ewarn "The presence of those files may break namespaces in Python 3.5+. Please"
-		ewarn "read our documentation on reliable handling of namespaces and update"
-		ewarn "the ebuild accordingly:"
-		ewarn
-		ewarn "  https://projects.gentoo.org/python/guide/concept.html#namespace-packages"
+		eerror
+		eerror "The presence of those files may break namespaces in Python 3.5+. Please"
+		eerror "read our documentation on reliable handling of namespaces and update"
+		eerror "the ebuild accordingly:"
+		eerror
+		eerror "  https://projects.gentoo.org/python/guide/concept.html#namespace-packages"
 
-		if ! has "${EAPI}" 6 7 8; then
-			die "*-nspkg.pth files are banned in EAPI ${EAPI}"
-		fi
+		die "Installing *-nspkg.pth files is banned"
 	fi
 }
 

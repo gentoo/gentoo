@@ -99,8 +99,8 @@ src_test() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		optfeature "Markdown text previews" kde-misc/markdownpart:${SLOT} kde-misc/kmarkdownwebview:${SLOT}
-		optfeature "DOT graph file previews" media-gfx/kgraphviewer
+		optfeature "Markdown text previews" "kde-misc/markdownpart:${SLOT}"
+		optfeature "DOT graph file previews" "media-gfx/kgraphviewer"
 	fi
 	ecm_pkg_postinst
 }

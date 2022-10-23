@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/871054
+--- a/libstroke/stroke.c
++++ b/libstroke/stroke.c
+@@ -13,2 +13,3 @@
+ #include <stdio.h>
++#include <string.h>
+ #include <math.h>

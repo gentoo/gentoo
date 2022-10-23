@@ -10,6 +10,7 @@
 	</maintainer>
 	<use>
 		<flag name="cuda">Build CUDA offloading plugin (only with USE=offload)</flag>
+		<flag name="gdb-plugin">Build OMPD GDB plugin</flag>
 		<flag name="hwloc">Enable CPU affinity support via hwloc</flag>
 		<flag name="offload">Support offloading OpenMP using libomptarget</flag>
 		<flag name="ompt">Enable OpenMP Tools Interface support</flag>

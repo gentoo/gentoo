@@ -14,6 +14,5 @@
 		<flag name="jpegxl">Support for JPEG XL image format</flag>
 		<flag name="mypaint-brush-engine">Enable MyPaint brush engine support <pkg>media-libs/libmypaint</pkg></flag>
 		<flag name="qtmedia">Enable sound support for animations via <pkg>dev-qt/qtmultimedia</pkg></flag>
-		<flag name="vc">Enable support for <pkg>dev-libs/vc</pkg>, could be a significant speed boost</flag>
 	</use>
 </pkgmetadata>

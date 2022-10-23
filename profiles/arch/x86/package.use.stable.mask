@@ -82,7 +82,7 @@ dev-ruby/haml test
 
 # Adam Feldman <NP-Hardass@gentoo.org> (2017-09-27)
 # patchset variants are not stable
-virtual/wine staging
+virtual/wine proton staging
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-26)
 # Stable mask some fabrics (bug #525534)

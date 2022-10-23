@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
 		<email>mate@gentoo.org</email>
@@ -8,4 +8,8 @@
 	<upstream>
 		<remote-id type="github">mate-desktop/mate-system-monitor</remote-id>
 	</upstream>
+	<use>
+		<flag name="wnck">Enable experimental support 
+		using <pkg>x11-libs/libwnck</pkg>.</flag>
+	</use>
 </pkgmetadata>

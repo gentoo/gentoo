@@ -5,9 +5,6 @@
   <email>toolchain@gentoo.org</email>
   <name>Gentoo Toolchain Project</name>
 </maintainer>
-<use>
-  <flag name="experimental-loong">Add experimental LoongArch patchset</flag>
-</use>
 <upstream>
   <remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
 </upstream>

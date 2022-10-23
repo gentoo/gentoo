@@ -7,7 +7,7 @@ GIT_COMMIT=f6ccccb1c082a432c2a5814aaedaca56af33d9ea
 inherit golang-vcs-snapshot
 
 DESCRIPTION="Docker container networking"
-HOMEPAGE="https://github.com/docker/libnetwork" 
+HOMEPAGE="https://github.com/docker/libnetwork"
 SRC_URI="https://github.com/moby/libnetwork/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

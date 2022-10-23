@@ -15,7 +15,7 @@
   * Inverse Discrete Wavelet Transform (1D and 2D)
   * Stationary Wavelet Transform
   * Wavelet Packets decomposition and reconstruction
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">PyWavelets</remote-id>
     <remote-id type="github">PyWavelets/pywt</remote-id>

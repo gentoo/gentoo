@@ -201,9 +201,9 @@ RDEPEND="
 	)
 	twolame? ( media-sound/twolame )
 	udev? ( virtual/udev )
-	upnp? ( net-libs/libupnp:=[ipv6] )
+	upnp? ( net-libs/libupnp:=[ipv6(+)] )
 	v4l? ( media-libs/libv4l:= )
-	vaapi? ( x11-libs/libva:=[drm(+),wayland?,X?] )
+	vaapi? ( media-libs/libva:=[drm(+),wayland?,X?] )
 	vdpau? ( x11-libs/libvdpau )
 	vnc? ( net-libs/libvncserver )
 	vpx? ( media-libs/libvpx:= )
@@ -213,7 +213,7 @@ RDEPEND="
 	)
 	X? (
 		x11-libs/libX11
-		x11-libs/libxcb[xkb]
+		x11-libs/libxcb
 		x11-libs/libXcursor
 		x11-libs/libxkbcommon[X]
 		x11-libs/xcb-util

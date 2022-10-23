@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -70,7 +70,7 @@ SRC_URI="
 		https://dev.gentoo.org/~gienah/files/dist/${P}-gentoo-binary.tar.xz )"
 LICENSE="BSD"
 SLOT="${SV}/${PV}"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="binary emacs"
 

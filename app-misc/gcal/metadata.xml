@@ -16,5 +16,8 @@
   most civil purposes. Gcal supports some other calendar systems, for example
   the Chinese and Japanese calendar, the Hebrew calendar and the civil Islamic
   calendar, too.
-</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="savannah">gcal</remote-id>
+  </upstream>
 </pkgmetadata>

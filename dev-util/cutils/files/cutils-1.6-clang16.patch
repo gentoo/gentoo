@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/871402
+--- a/src/cdecl/parser.y
++++ b/src/cdecl/parser.y
+@@ -46,2 +46,3 @@
+ extern FILE *output_file;
++extern int yylex(void);
+ 
+--- a/src/cundecl/parser.y
++++ b/src/cundecl/parser.y
+@@ -47,2 +47,3 @@
+ extern FILE *output_file;
++extern int yylex(void);
+ 
+--- a/src/yyref/parser.y
++++ b/src/yyref/parser.y
+@@ -50,2 +50,3 @@
+ extern int lineno;
++extern int yylex(void);
+ 

@@ -38,3 +38,17 @@
  #include <sys/wait.h>
  #include <stdio.h>
  #include <stdlib.h>
+diff --git a/watchd.c b/watchd.c
+index 842e186..49edb64 100644
+--- a/watchd.c
++++ b/watchd.c
+@@ -52,6 +52,9 @@ Syntax   : watchd
+ #define FL_LOG_MAIL		256
+ #define FL_LOG_ALWAYS		512
+ 
++int isdir(char *name);
++void ini_close(inifile *i);
++
+ typedef struct Twatchfolder 
+ 		{
+ 		 char* runprg;

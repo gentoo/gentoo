@@ -11,7 +11,6 @@ inherit ros-catkin
 DESCRIPTION="A WebSocket interface to rosbridge"
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
 
 RDEPEND="
 	dev-ros/rosbridge_library[${PYTHON_SINGLE_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
@@ -20,9 +19,11 @@ RDEPEND="
 	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosauth[${PYTHON_SINGLE_USEDEP}]
 
-	$(python_gen_cond_dep "www-servers/tornado[\${PYTHON_USEDEP}]")
-	$(python_gen_cond_dep "dev-python/autobahn[\${PYTHON_USEDEP}]")
-	$(python_gen_cond_dep "dev-python/twisted[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep '
+		dev-python/autobahn[${PYTHON_USEDEP}]
+		dev-python/tornado[${PYTHON_USEDEP}]
+		dev-python/twisted[${PYTHON_USEDEP}]
+	')
 	"
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest[${PYTHON_SINGLE_USEDEP}] )

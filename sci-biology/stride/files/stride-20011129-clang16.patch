@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/874069
+--- a/hydrbond.c
++++ b/hydrbond.c
+@@ -293,3 +293,3 @@
+   int dc, ac, ccd, cca, cc, hc=0, i;
+-  void (*HBOND_Energy)();
++  void (*HBOND_Energy)(float*, float*, float*, float*, float*, COMMAND*, HBOND*);
+   BUFFER Text;
+--- a/p_atom.c
++++ b/p_atom.c
+@@ -11,3 +11,3 @@
+   RESIDUE *r;
+-  register i;
++  register int i;
+ 

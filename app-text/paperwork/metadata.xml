@@ -6,12 +6,12 @@
     <name>Bernard Cafarelli</name>
   </maintainer>
   <longdescription lang="en">
-Paperwork is a personal document manager for scanned documents (and PDFs).
+  Paperwork is a personal document manager for scanned documents (and PDFs).
 
-It's designed to be easy and fast to use. The idea behind Paperwork is "scan and forget": You should be able to just scan a new document and forget about it until the day you need it again.
+  It's designed to be easy and fast to use. The idea behind Paperwork is "scan and forget": You should be able to just scan a new document and forget about it until the day you need it again.
 
-In other words, let the machine do most of the work for you.
-</longdescription>
+  In other words, let the machine do most of the work for you.
+  </longdescription>
   <upstream>
     <remote-id type="pypi">paperwork-backend</remote-id>
   </upstream>

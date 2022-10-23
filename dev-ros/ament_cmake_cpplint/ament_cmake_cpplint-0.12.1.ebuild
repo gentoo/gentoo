@@ -45,9 +45,9 @@ BDEPEND="
 "
 
 python_check_deps() {
-	{ use !test || has_version -b "dev-ros/ament_copyright[${PYTHON_USEDEP}]"; } && \
-		has_version -b "dev-python/catkin_pkg[${PYTHON_USEDEP}]" && \
-		has_version -b "dev-python/ament_package[${PYTHON_USEDEP}]"
+	{ use !test || python_has_version "dev-ros/ament_copyright[${PYTHON_USEDEP}]"; } && \
+		python_has_version "dev-python/catkin_pkg[${PYTHON_USEDEP}]" \
+			"dev-python/ament_package[${PYTHON_USEDEP}]"
 }
 
 src_configure() {

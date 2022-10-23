@@ -83,18 +83,22 @@ LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
 
-BDEPEND="test? ( dev-python/toml[${PYTHON_USEDEP}] )"
-
 distutils_enable_tests pytest
 
 QA_FLAGS_IGNORED=".*/adblock.*.so"
 
 DOCS=( CHANGELOG.md README.md )
 
+EPYTEST_IGNORE=(
+	# not very meaningful here (e.g. validates changelog),
+	# and needs the deprecated dev-python/toml
+	tests/test_metadata.py
+)
+
 src_compile() {
 	distutils-r1_src_compile
 
-	# tests try to find Cargo.toml + adblock/adblock.pyi in current
-	# directory but will fail if pytest finds init in ./adblock
+	# prevent pytest from using ./adblock that lack the built module
+	# but the keep directory given tests check ./adblock/adblock.pyi
 	rm adblock/__init__.py || die
 }

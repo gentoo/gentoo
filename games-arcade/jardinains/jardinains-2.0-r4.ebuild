@@ -17,6 +17,7 @@ RESTRICT="strip"
 
 RDEPEND="
 	acct-group/gamestat
+	sys-libs/glibc
 	sys-libs/libstdc++-v3:5
 	>=virtual/opengl-7.0-r1[abi_x86_32(-)]
 	>=virtual/glu-9.0-r1[abi_x86_32(-)]

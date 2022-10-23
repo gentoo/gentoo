@@ -4,5 +4,6 @@
   <!-- maintainer-needed -->
   <upstream>
     <remote-id type="sourceforge">extract-xiso</remote-id>
+    <remote-id type="github">XboxDev/extract-xiso</remote-id>
   </upstream>
 </pkgmetadata>

@@ -11,7 +11,7 @@ DESCRIPTION="Cinnamons's main interface to configure various aspects of the desk
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-control-center"
 SRC_URI="https://github.com/linuxmint/cinnamon-control-center/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2+"
+LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+ MIT"
 SLOT="0"
 IUSE="+colord input_devices_wacom +networkmanager +modemmanager gnome-online-accounts systemd test"
 REQUIRED_USE="modemmanager? ( networkmanager )"

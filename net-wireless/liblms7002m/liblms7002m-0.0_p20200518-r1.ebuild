@@ -28,7 +28,7 @@ BDEPEND="
 "
 
 python_check_deps() {
-	has_version "dev-python/cheetah3[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/cheetah3[${PYTHON_USEDEP}]"
 }
 
 src_configure() {

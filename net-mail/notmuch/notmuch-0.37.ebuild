@@ -250,8 +250,8 @@ src_install() {
 
 	if use nmbug; then
 		# TODO: those guys need proper deps
-		python_fix_shebang devel/nmbug/{nmbug,notmuch-report}
-		dobin devel/nmbug/{nmbug,notmuch-report}
+		python_fix_shebang devel/nmbug/notmuch-report
+		dobin devel/nmbug/notmuch-report
 	fi
 
 	if use mutt; then

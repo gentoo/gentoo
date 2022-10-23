@@ -20,7 +20,7 @@
     * Specialized solvers for bundle adjustment problems in computer vision
     * Iterative linear solvers for general sparse and bundle
       adjustment problems
-</longdescription>
+  </longdescription>
   <use>
     <flag name="cxsparse">Enable simple support for sparse matrix algebra from
   <pkg>sci-libs/cxsparse</pkg> with no LAPACK dependencies</flag>

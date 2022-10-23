@@ -53,12 +53,8 @@ multilib_src_configure() {
 
 	# link against compiler-rt instead of libgcc if we are using clang with libunwind
 	local want_compiler_rt=OFF
-	if use libunwind && tc-is-clang; then
-		local compiler_rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
-			${LDFLAGS} -print-libgcc-file-name)
-		if [[ ${compiler_rt} == *libclang_rt* ]]; then
-			want_compiler_rt=ON
-		fi
+	if use libunwind && [[ $(tc-get-c-rtlib) == compiler-rt ]]; then
+		want_compiler_rt=ON
 	fi
 
 	local libdir=$(get_libdir)

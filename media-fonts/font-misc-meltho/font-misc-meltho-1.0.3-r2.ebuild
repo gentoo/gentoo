@@ -4,6 +4,7 @@
 EAPI=7
 FONT_DIR="OTF"
 
+XORG_PACKAGE_NAME="misc-meltho"
 inherit xorg-3
 
 DESCRIPTION="X.Org Syriac fonts"

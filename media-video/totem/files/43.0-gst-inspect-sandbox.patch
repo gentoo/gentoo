@@ -1,0 +1,30 @@
+# From abb91b315f407b7e180bc00eb96f1cd6bb0ab25d Mon Sep 17 00:00:00 2001
+# From: Gilles Dartiguelongue <eva@gentoo.org>
+# Date: Thu, 7 Jun 2018 23:47:48 +0200
+# Subject: [PATCH] Make gst-inspect calls optional at build-time
+#
+# Crashes on Gentoo due to plugins trying to access dri nodes which are sandboxed
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -6,3 +6,4 @@ option('with-plugins', type: 'combo', choices: ['all', 'none', 'auto'], value: '
+ option('enable-gtk-doc', type: 'boolean', value: false, description: 'use gtk-doc to build documentation')
+ option('profile', type: 'combo', choices: ['default', 'development'], value: 'default', description: 'Build profiles')
+ option('inspector-page', type:'boolean', value: false, description: 'Whether to build the optional GTK inspector page')
++option('gst-inspect', type: 'boolean', value: true, description: 'build-time test of available gstreamer plugins')
+--- a/src/backend/meson.build
++++ b/src/backend/meson.build
+@@ -1,5 +1,6 @@
+ backend_inc = include_directories('.')
+
++if get_option('gst-inspect')
+ gst_inspect = find_program(
+   'gst-inspect-1.0',
+   join_paths(gst_dep.get_pkgconfig_variable('toolsdir'), 'gst-inspect-1.0'),
+@@ -32,6 +33,7 @@ foreach plugin: gst_good_plugins
+   assert(r.returncode() == 0,
+          'Cannot find required GStreamer-1.0 plugin "' + plugin + '". It should be part of gst-plugins-good. Please install it.')
+ endforeach
++endif
+
+ sources = files(
+   'bacon-time-label.c',

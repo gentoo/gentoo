@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/nbformat[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	www-servers/tornado[${PYTHON_USEDEP}]
+	dev-python/tornado[${PYTHON_USEDEP}]
 	webtools? ( net-libs/nodejs[npm] )"
 BDEPEND="
 	test? (

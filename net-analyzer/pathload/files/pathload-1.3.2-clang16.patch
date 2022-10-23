@@ -1,0 +1,34 @@
+configure.ac is missing, so need to edit this manually
+
+https://bugs.gentoo.org/870661
+--- a/configure
++++ b/configure
+@@ -630,3 +630,3 @@
+ 
+-main(){return(0);}
++int main(void){return(0);}
+ EOF
+--- a/pathload_rcv.h
++++ b/pathload_rcv.h
+@@ -85,3 +85,3 @@
+ EXTERN l_int32 get_sndr_time_interval(double snd_time[],double *sum);
+-EXTERN void sig_alrm();
++EXTERN void sig_alrm(int __attribute__((__unused__)) unused);
+ EXTERN void terminate_gracefully(struct timeval exp_start_time);
+@@ -100,3 +100,3 @@
+ EXTERN void help();
+-EXTERN void sig_sigusr1() ;
++EXTERN void sig_sigusr1(int __attribute__((__unused__)) unused) ;
+ 
+--- a/pathload_rcv_func.c
++++ b/pathload_rcv_func.c
+@@ -669,3 +669,3 @@
+ 
+-void sig_sigusr1()
++void sig_sigusr1(int __attribute__((__unused__)) unused)
+ {
+@@ -674,3 +674,3 @@
+ 
+-void sig_alrm()
++void sig_alrm(int __attribute__((__unused__)) unused)
+ {

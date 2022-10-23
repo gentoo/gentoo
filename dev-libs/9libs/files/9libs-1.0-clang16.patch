@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/871183
+--- a/libXg/gcs.c
++++ b/libXg/gcs.c
+@@ -163,3 +163,3 @@
+ 	static GC gc0, gcn;
+-	static clipset = 0;
++	static int clipset = 0;
+ 	GC g;

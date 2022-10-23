@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="a C client library to the memcached server"
 HOMEPAGE="https://libmemcached.org/libMemcached.html"
-SRC_URI="https://launchpad.net/${PN}/1.0/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://launchpad.net/${PN}/$(ver_cut 1-2)/${PV}/+download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

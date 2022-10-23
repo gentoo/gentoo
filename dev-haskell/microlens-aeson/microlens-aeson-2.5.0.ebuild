@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/fosskers/microlens-aeson/"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/aeson-2.0:=[profile?]
 	>=dev-haskell/attoparsec-0.10:=[profile?]

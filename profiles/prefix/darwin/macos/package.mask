@@ -1,8 +1,2 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Fabian Groffen <grobian@gentoo.org> (2022-06-14)
-# timer_create build-failure, corrected upstream in 5067
-# https://github.com/vim/vim/commit/f78b52ba24d8d294869cd013dcc4cd5d4a65cea7
-~app-editors/vim-8.2.5066
-~app-editors/vim-core-8.2.5066

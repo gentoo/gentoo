@@ -28,7 +28,7 @@ BDEPEND="
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/nose2[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
-		www-servers/tornado[${PYTHON_USEDEP}]
+		dev-python/tornado[${PYTHON_USEDEP}]
 		net-misc/rabbitmq-server
 	)
 "

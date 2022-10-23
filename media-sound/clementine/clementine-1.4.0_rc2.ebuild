@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	S="${WORKDIR}/Clementine-${PV/_}"
 	SRC_URI="https://github.com/clementine-player/Clementine/archive/refs/tags/${PV/_}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 fi
 
 LICENSE="GPL-3"

@@ -16,6 +16,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 IUSE="examples static-libs"
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/netfilter.org.asc
 
+DEPEND="elibc_musl? ( sys-libs/queue-standalone )"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 
 src_configure() {

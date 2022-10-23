@@ -8,4 +8,7 @@
   <use>
     <flag name="experimental">Build experimental utilities (mdiff, unify, wdiff2)</flag>
   </use>
+  <upstream>
+    <remote-id type="savannah">wdiff</remote-id>
+  </upstream>
 </pkgmetadata>

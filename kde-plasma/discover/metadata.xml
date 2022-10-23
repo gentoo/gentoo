@@ -7,9 +7,11 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="cpe">cpe:/a:kde:discover</remote-id>
 	</upstream>
 	<use>
 		<flag name="firmware">Enable support for firmware upgrades using <pkg>sys-apps/fwupd</pkg></flag>
 		<flag name="flatpak">Enable support for flatpak repositories using <pkg>sys-apps/flatpak</pkg></flag>
+		<flag name="webengine">Enable webflow support using <pkg>dev-qt/qtwebview</pkg> and <pkg>dev-qt/qtwebengine</pkg> instead of default URL handler</flag>
 	</use>
 </pkgmetadata>

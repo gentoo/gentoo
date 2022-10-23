@@ -6,9 +6,9 @@
 		<name>Embedded Gentoo</name>
 	</maintainer>
 	<longdescription>
-Jal is a high-level language for a number of Microchip (TM) PIC microcontrollers (16c84, 16f84, 12c508, 
-12c509, 16F877) and Ubicom SX (SX18 and SX28) microcontrollers
-</longdescription>
+	Jal is a high-level language for a number of Microchip (TM) PIC microcontrollers (16c84, 16f84, 12c508,
+	12c509, 16F877) and Ubicom SX (SX18 and SX28) microcontrollers
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">jal</remote-id>
 	</upstream>

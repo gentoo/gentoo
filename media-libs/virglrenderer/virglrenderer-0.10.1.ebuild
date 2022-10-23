@@ -11,7 +11,9 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_P="${PN}-${P}"
 	SRC_URI="https://gitlab.freedesktop.org/virgl/${PN}/-/archive/${P}/${MY_P}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	S="${WORKDIR}/${MY_P}"
+
+	KEYWORDS="amd64 ~arm64 ~riscv x86"
 fi
 
 DESCRIPTION="library used implement a virtual 3D GPU used by qemu"
@@ -27,11 +29,9 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-# Most of the testuiste cannot run in our sandboxed environment, just don't
+# Most of the testsuite cannot run in our sandboxed environment, just don't
 # deal with it for now.
 RESTRICT="test"
-
-S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	local emesonargs=(

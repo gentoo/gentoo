@@ -1,0 +1,41 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -601,6 +601,7 @@ if test "x$ac_cv_func_snprintf" = xyes; then
+ 	AC_RUN_IFELSE(
+ 		[AC_LANG_SOURCE([[
+ #include <stdio.h>
++#include <stdlib.h>
+ int main(void){char b[5];snprintf(b,5,"123456789");exit(b[4]!='\0');}
+ 		]])],
+ 		[AC_MSG_RESULT(yes)],
+--- a/m4/openssl.m4
++++ b/m4/openssl.m4
+@@ -76,6 +76,7 @@ AC_MSG_CHECKING([OpenSSL header version])
+ AC_RUN_IFELSE(
+ 	[AC_LANG_SOURCE([[
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <openssl/opensslv.h>
+ #define DATA "conftest.sslincver"
+@@ -156,7 +157,9 @@ AC_ARG_WITH(openssl-header-check,
+ AC_MSG_CHECKING([whether OpenSSL's headers match the library])
+ AC_RUN_IFELSE(
+ 	[AC_LANG_SOURCE([[
++#include <stdlib.h>
+ #include <string.h>
++#include <openssl/crypto.h>
+ #include <openssl/opensslv.h>
+ int main(void) { exit(SSLeay() == OPENSSL_VERSION_NUMBER ? 0 : 1); }
+ 	]])],
+@@ -220,8 +223,8 @@ int main(void) { DTLSv1_method(); }
+ AC_MSG_CHECKING([if programs using OpenSSL functions will link])
+ AC_LINK_IFELSE(
+ 	[AC_LANG_SOURCE([[
+-#include <openssl/evp.h>
+-int main(void) { SSLeay_add_all_algorithms(); }
++#include <openssl/crypto.h>
++int main(void) { OpenSSL_version_num(); }
+ 	]])],
+ 	[
+ 		AC_MSG_RESULT(yes)

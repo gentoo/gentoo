@@ -16,9 +16,6 @@
   </maintainer>
 
   <use>
-    <flag name="cuda">
-      Use NVidia's cuda toolkit for computations
-    </flag>
     <flag name="custom-tune">
       Improve performance of some operations by selecting
       machine-specific defaults

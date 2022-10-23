@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ DIST_EXAMPLES=( "examples/*" )
 if [[ "${PV}" != "9999" ]]; then
 	DIST_VERSION=${PV%.0}
 	DIST_AUTHOR=AKHUETTEL
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	inherit perl-module
 else
 	EGIT_REPO_URI="https://github.com/lab-measurement/Lab-Measurement.git"

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-
 <pkgmetadata>
   <maintainer type="project">
     <email>scheme@gentoo.org</email>
@@ -11,4 +10,7 @@
     the shell interface, as well as a Guile library for parsing shell scripts.
     Gash is designed to bootstrap Bash as part of the Guix bootstrap process.
   </longdescription>
+  <upstream>
+    <remote-id type="savannah-nongnu">gash</remote-id>
+  </upstream>
 </pkgmetadata>

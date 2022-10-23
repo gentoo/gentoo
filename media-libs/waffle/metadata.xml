@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>x11@gentoo.org</email>
-	<name>X11</name>
-</maintainer>
-<use>
-	<flag name="egl">Enable EGL support</flag>
-	<flag name="gbm">Enable support for the Generic Buffer Manager (gbm)</flag>
-	<flag name="wayland">Enable Wayland support</flag>
-</use>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
+  <use>
+    <flag name="egl">Enable EGL support</flag>
+    <flag name="gbm">Enable support for the Generic Buffer Manager (gbm)</flag>
+    <flag name="wayland">Enable Wayland support</flag>
+  </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">mesa/waffle</remote-id>
+  </upstream>
 </pkgmetadata>

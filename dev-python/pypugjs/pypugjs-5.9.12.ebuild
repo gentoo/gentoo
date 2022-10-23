@@ -28,7 +28,7 @@ BDEPEND="
 		dev-python/django[${PYTHON_USEDEP}]
 		>=dev-python/jinja-3.1.1[${PYTHON_USEDEP}]
 		>=dev-python/mako-1.1.3[${PYTHON_USEDEP}]
-		>=www-servers/tornado-6.0.4[${PYTHON_USEDEP}]
+		>=dev-python/tornado-6.0.4[${PYTHON_USEDEP}]
 	)
 "
 
@@ -44,5 +44,5 @@ pkg_postinst() {
 	optfeature "converting to Django output" dev-python/django
 	optfeature "converting to Jinja2 output" dev-python/jinja
 	optfeature "converting to Mako output" dev-python/mako
-	optfeature "converting to Tornado output" www-servers/tornado
+	optfeature "converting to Tornado output" dev-python/tornado
 }

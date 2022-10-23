@@ -18,7 +18,7 @@ SRC_URI="https://github.com/stefanbirkner/${PN}/archive/${P}.tar.gz"
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 # Common dependencies
 # POM: pom.xml
@@ -33,7 +33,7 @@ CP_DEPEND="dev-java/junit:4"
 # test? org.assertj:assertj-core:1.7.1 -> >=dev-java/assertj-core-2.3.0:2
 # test? org.mockito:mockito-core:1.10.19 -> >=dev-java/mockito-4.4.0:4
 
-# Restricting to jdk:1.8 since it doesn't work with java 11 or higher. 
+# Restricting to jdk:1.8 since it doesn't work with java 11 or higher.
 DEPEND="
 	virtual/jdk:1.8
 	${CP_DEPEND}

@@ -1,0 +1,87 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/94a857550b566472e5ab51191e1b34098e5a9506
+
+From 94a857550b566472e5ab51191e1b34098e5a9506 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Mon, 3 Oct 2022 09:44:32 +0200
+Subject: [PATCH] filter-chain: alloc port data per handle.
+
+--- a/src/modules/module-filter-chain.c
++++ b/src/modules/module-filter-chain.c
+@@ -1501,7 +1501,6 @@ static int load_node(struct graph *graph, struct spa_json *json)
+ 	bool have_config = false;
+ 	uint32_t i;
+ 	int res;
+-	float *data;
+ 
+ 	while (spa_json_get_string(json, key, sizeof(key)) > 0) {
+ 		if (spa_streq("type", key)) {
+@@ -1576,14 +1575,6 @@ static int load_node(struct graph *graph, struct spa_json *json)
+ 		port->idx = i;
+ 		port->external = SPA_ID_INVALID;
+ 		port->p = desc->output[i];
+-		if ((data = port->audio_data[i]) == NULL) {
+-			data = calloc(1, MAX_SAMPLES * sizeof(float));
+-			if (data == NULL) {
+-				pw_log_error("cannot create port data: %m");
+-				return -errno;
+-			}
+-		}
+-		port->audio_data[i] = data;
+ 		spa_list_init(&port->link_list);
+ 	}
+ 	for (i = 0; i < desc->n_control; i++) {
+@@ -1629,6 +1620,26 @@ static void node_cleanup(struct node *node)
+ 	}
+ }
+ 
++static int port_ensure_data(struct port *port, uint32_t i)
++{
++	float *data;
++	if ((data = port->audio_data[i]) == NULL) {
++		data = calloc(1, MAX_SAMPLES * sizeof(float));
++		if (data == NULL) {
++			pw_log_error("cannot create port data: %m");
++			return -errno;
++		}
++	}
++	port->audio_data[i] = data;
++	return 0;
++}
++
++static void port_free_data(struct port *port, uint32_t i)
++{
++	free(port->audio_data[i]);
++	port->audio_data[i] = NULL;
++}
++
+ static void node_free(struct node *node)
+ {
+ 	uint32_t i, j;
+@@ -1636,7 +1647,7 @@ static void node_free(struct node *node)
+ 	spa_list_remove(&node->link);
+ 	for (i = 0; i < node->n_hndl; i++) {
+ 		for (j = 0; j < node->desc->n_output; j++)
+-			free(node->output_port[j].audio_data[i]);
++			port_free_data(&node->output_port[j], i);
+ 	}
+ 	node_cleanup(node);
+ 	descriptor_unref(node->desc);
+@@ -1688,6 +1699,8 @@ static int graph_instantiate(struct graph *graph)
+ 
+ 				spa_list_for_each(link, &port->link_list, input_link) {
+ 					struct port *peer = link->output;
++					if ((res = port_ensure_data(peer, i)) < 0)
++						goto error;
+ 					pw_log_info("connect input port %s[%d]:%s %p",
+ 							node->name, i, d->ports[port->p].name,
+ 							peer->audio_data[i]);
+@@ -1696,6 +1709,8 @@ static int graph_instantiate(struct graph *graph)
+ 			}
+ 			for (j = 0; j < desc->n_output; j++) {
+ 				port = &node->output_port[j];
++				if ((res = port_ensure_data(port, i)) < 0)
++					goto error;
+ 				pw_log_info("connect output port %s[%d]:%s %p",
+ 						node->name, i, d->ports[port->p].name,
+ 						port->audio_data[i]);
+GitLab

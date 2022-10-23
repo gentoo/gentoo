@@ -81,8 +81,10 @@ src_configure() {
 
 			if [[ ${CHOST} == *hppa* ]] ; then
 				chostarch=parisc
-			elif [[ ${PROFILE_ARCH} == sparc64 ]] ; then
-				chostarch="sparc32-v9"
+			elif [[ ${ABI} == sparc64 ]] ; then
+				chostarch="sparc64"
+			elif [[ ${ABI} == sparc32 ]] ; then
+				chostarch="sparc32"
 			fi
 			;;
 	esac

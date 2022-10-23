@@ -1,6 +1,18 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Bernard Cafarelli <voyageur@gentoo.org> (2022-10-17)
+# media-libs/libheif not keyworded
+media-gfx/geeqie heif
+
+# Sam James <sam@gentoo.org> (2022-10-16)
+# dev-cpp/notcurses not keyworded here
+media-sound/snd notcurses
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-08-09)
+# dev-java/jaxws-api not keyworded
+>=dev-java/jmock-2.12.0 test
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-23)
 # Only PyQt5 is keyworded on pcc64 at the moment.
 # Mask the other Qt4Python implementations
@@ -201,6 +213,7 @@ app-portage/g-sorcery bson
 # Michał Górny <mgorny@gentoo.org> (2017-03-24)
 # libcxx fails to compile on ppc*, #595744.
 sys-devel/clang default-libcxx
+sys-devel/clang-common default-libcxx
 sys-devel/clang-runtime libcxx
 
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
@@ -246,7 +259,6 @@ gnome-extra/sushi office
 # test dependencies need keywording
 dev-haskell/dlist test
 dev-haskell/haskell-src-exts test
-dev-util/bnfc test
 
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-16)
 # Ultimately pulls in nodejs which is broken.

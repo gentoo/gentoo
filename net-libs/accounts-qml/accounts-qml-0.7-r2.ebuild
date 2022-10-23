@@ -35,6 +35,7 @@ BDEPEND="
 	doc? (
 		app-doc/doxygen
 		dev-qt/qdoc:5
+		dev-qt/qthelp:5
 	)
 "
 

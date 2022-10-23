@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pyfakefs</remote-id>
-		<remote-id type="github">jmcgeheeiv/pyfakefs</remote-id>
+		<remote-id type="github">pytest-dev/pyfakefs</remote-id>
 	</upstream>
 </pkgmetadata>

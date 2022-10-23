@@ -34,7 +34,7 @@ DEPEND="
 		dev-qt/qtopengl:5
 		dev-qt/qtwidgets:5
 	)
-	vaapi? ( x11-libs/libva:0= )
+	vaapi? ( media-libs/libva:0= )
 "
 RDEPEND="
 	${DEPEND}

@@ -9,7 +9,8 @@
 	<use>
 		<flag name="ffmpegthumbnailer">Enable video thumbnail support with <pkg>media-video/ffmpegthumbnailer</pkg></flag>
 		<flag name="gpu-accel">Enable GPU acceleration support - experimental</flag>
-		<flag name="gtk3">Link against <pkg>x11-libs/gtk+</pkg>:3 instead of <pkg>x11-libs/gtk+</pkg>:2</flag>
-		<flag name="map">Enable items map display - experimental</flag>
+		<flag name="heif">Enable support for ISO/IEC 23008-12:2017 HEIF/HEIC image format using <pkg>media-libs/libheif</pkg></flag>
+		<flag name="jpegxl">Enable support for JPEG XL image format</flag>
+		<flag name="map">Enable items GPS map display</flag>
 	</use>
 </pkgmetadata>

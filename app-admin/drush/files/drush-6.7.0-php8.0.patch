@@ -1,0 +1,87 @@
+From 7be49f4d78111372fc58d91132daf6c4230b08ba Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 26 Sep 2022 19:08:09 -0400
+Subject: [PATCH 1/3] includes/drush.inc: replace create_function() with
+ function(){...}
+
+---
+ includes/drush.inc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/includes/drush.inc b/includes/drush.inc
+index a748a0c..7b8dda3 100644
+--- a/includes/drush.inc
++++ b/includes/drush.inc
+@@ -987,9 +987,9 @@ function drush_tarball_extract($path, $destination = FALSE, $listing = FALSE, $t
+       // Remove the header line.
+       array_shift($output);
+       // Remove the prefix verb from each line.
+-      $output = array_map(create_function('$str', 'return substr($str, strpos($str, ":") + 3 + ' . strlen($destination) . ');'), $output);
++      $output = array_map(function($str){ return substr($str, strpos($str, ":") + 3 + strlen($destination)) ; }, $output);
+       // Remove any remaining blank lines.
+-      $return = array_filter($output, create_function('$str', 'return $str != "";'));
++      $return = array_filter($output, function($str){return $str != "";});
+     }
+   }
+   // Otherwise we have a possibly-compressed Tar file.
+-- 
+2.35.1
+
+From f118117814ef690ec71f484dc3c4906f82d9c726 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 26 Sep 2022 19:32:13 -0400
+Subject: [PATCH 2/3] includes/backend.inc: replace usage of each().
+
+---
+ includes/backend.inc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/includes/backend.inc b/includes/backend.inc
+index d004850..0ca010d 100644
+--- a/includes/backend.inc
++++ b/includes/backend.inc
+@@ -355,8 +355,8 @@ function _drush_backend_proc_open($cmds, $process_limit, $context = NULL) {
+     if (count($cmds) && (count($open_processes) < $process_limit)) {
+       // Pop the site and command (key / value) from the cmds array
+       end($cmds);
+-      list($site, $cmd) = each($cmds);
+-      unset($cmds[$site]);
++      $site = key($cmds);
++      $cmd = array_pop($cmds);
+ 
+       if (is_array($cmd)) {
+         $c = $cmd['cmd'];
+-- 
+2.35.1
+
+From 7d718639b68bd09c262005cff133d24ffdf800f1 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 26 Sep 2022 19:36:29 -0400
+Subject: [PATCH 3/3] includes/environment.inc: default fifth parameter in
+ error handler.
+
+The fifth parameter was removed in php-8.0:
+
+  https://www.php.net/manual/en/function.set-error-handler.php
+
+We now default it to the empty array in drush_error_handler().
+---
+ includes/environment.inc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/includes/environment.inc b/includes/environment.inc
+index 7837104..8f2f414 100644
+--- a/includes/environment.inc
++++ b/includes/environment.inc
+@@ -24,7 +24,7 @@ define('CONSOLE_TABLE_BASE_URL', 'https://github.com/RobLoach/Console_Table/arch
+  * Log PHP errors to the Drush log. This is in effect until Drupal's error
+  * handler takes over.
+  */
+-function drush_error_handler($errno, $message, $filename, $line, $context) {
++function drush_error_handler($errno, $message, $filename, $line, $context=[]) {
+   // E_DEPRECATED was added in PHP 5.3. Drupal 6 will not fix all the
+   // deprecated errors, but suppresses them. So we suppress them as well.
+   if (defined('E_DEPRECATED')) {
+-- 
+2.35.1
+

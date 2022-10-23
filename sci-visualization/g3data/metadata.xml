@@ -9,7 +9,7 @@
   g3data is used for extracting data from graphs. In publications graphs are
   often included, but the actual data is not. g3data makes the extraction
   process much easier.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="github">pn2200/g3data</remote-id>
   </upstream>

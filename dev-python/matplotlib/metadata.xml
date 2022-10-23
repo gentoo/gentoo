@@ -18,7 +18,7 @@
 	<use>
 		<flag name="excel">Pull <pkg>dev-python/xlwt</pkg> for the exceltools toolkit</flag>
 		<flag name="gtk3">Enable <pkg>x11-libs/gtk+</pkg>:3 support</flag>
-		<flag name="webagg">Enable webagg backend that uses <pkg>www-servers/tornado</pkg></flag>
+		<flag name="webagg">Enable webagg backend that uses <pkg>dev-python/tornado</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="pypi">matplotlib</remote-id>

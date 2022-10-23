@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/870436
+--- a/portlib.c
++++ b/portlib.c
+@@ -22,2 +22,3 @@
+ #include <string.h>
++#include <pthread.h>
+ #include "portlib.h"

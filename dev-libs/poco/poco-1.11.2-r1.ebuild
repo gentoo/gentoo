@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-${P}-release"
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE="7z activerecord cppparser +crypto +data examples +file2pagecompiler iodbc +json mariadb +mongodb mysql +net odbc +pagecompiler pdf pocodoc sqlite +ssl test +util +xml +zip"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -100,6 +100,7 @@ src_configure() {
 		-DENABLE_DATA_MYSQL="$(usex mysql)"
 		-DENABLE_DATA_ODBC="$(usex odbc)"
 		-DENABLE_DATA_SQLITE="$(usex sqlite)"
+		-DENABLE_DATA_POSTGRESQL=OFF
 		-DENABLE_JSON="$(usex util)"
 		-DENABLE_MONGODB="$(usex mongodb)"
 		-DENABLE_NET="$(usex net)"

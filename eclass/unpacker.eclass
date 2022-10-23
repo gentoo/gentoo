@@ -4,7 +4,7 @@
 # @ECLASS: unpacker.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: helpers for extraneous file formats and consistent behavior across EAPIs
 # @DESCRIPTION:
 # Some extraneous file formats are not part of PMS, or are only in certain
@@ -16,21 +16,22 @@
 #  - support partial unpacks?
 
 case ${EAPI:-0} in
-	[5678]) ;;
+	[678]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_UNPACKER_ECLASS} ]]; then
 _UNPACKER_ECLASS=1
 
-inherit toolchain-funcs
+inherit multiprocessing toolchain-funcs
 
 # @ECLASS_VARIABLE: UNPACKER_BZ2
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Utility to use to decompress bzip2 files.  Will dynamically pick between
-# `pbzip2` and `bzip2`.  Make sure your choice accepts the "-dc" options.
+# `lbzip2`, `pbzip2` and `bzip2`.  Make sure your choice accepts the "-dc"
+# options.
 # Note: this is meant for users to set, not ebuilds.
 
 # @ECLASS_VARIABLE: UNPACKER_LZIP
@@ -217,6 +218,14 @@ unpack_makeself() {
 				skip=$(head -n ${skip} "${src}" | wc -c)
 				exe="dd"
 				;;
+			2.4.5)
+				# e.g.: skip="713"
+				skip=$(
+					sed -n -e '/^skip=/{s:skip="\(.*\)":\1:p;q}' "${src}"
+				)
+				skip=$(head -n "${skip}" "${src}" | wc -c)
+				exe="dd"
+				;;
 			*)
 				eerror "I'm sorry, but I was unable to support the Makeself file."
 				eerror "The version I detected was '${ver}'."
@@ -234,30 +243,43 @@ unpack_makeself() {
 	esac
 
 	# lets grab the first few bytes of the file to figure out what kind of archive it is
-	local filetype tmpfile="${T}/${FUNCNAME}"
-	"${exe[@]}" 2>/dev/null | head -c 512 > "${tmpfile}"
-	filetype=$(file -b "${tmpfile}") || die
+	local decomp= filetype suffix
+	filetype=$("${exe[@]}" 2>/dev/null | head -c 512 | file -b -) || die
 	case ${filetype} in
 		*tar\ archive*)
-			"${exe[@]}" | tar --no-same-owner -xf -
+			decomp=cat
 			;;
 		bzip2*)
-			"${exe[@]}" | bzip2 -dc | tar --no-same-owner -xf -
+			suffix=bz2
 			;;
 		gzip*)
-			"${exe[@]}" | tar --no-same-owner -xzf -
+			suffix=gz
 			;;
 		compress*)
-			"${exe[@]}" | gunzip | tar --no-same-owner -xf -
+			suffix=z
 			;;
 		XZ*)
-			"${exe[@]}" | unxz | tar --no-same-owner -xf -
+			suffix=xz
+			;;
+		Zstandard*)
+			suffix=zst
+			;;
+		lzop*)
+			suffix=lzo
+			;;
+		LZ4*)
+			suffix=lz4
+			;;
+		"ASCII text"*)
+			decomp='base64 -d'
 			;;
 		*)
-			eerror "Unknown filetype \"${filetype}\" ?"
-			false
+			die "Unknown filetype \"${filetype}\", for makeself ${src##*/} ('${ver}' +${skip})"
 			;;
 	esac
+
+	[[ -z ${decomp} ]] && decomp=$(_unpacker_get_decompressor ".${suffix}")
+	"${exe[@]}" | ${decomp} | tar --no-same-owner -xf -
 	assert "failure unpacking (${filetype}) makeself ${src##*/} ('${ver}' +${skip})"
 }
 
@@ -272,31 +294,39 @@ unpack_deb() {
 
 	unpack_banner "${deb}"
 
-	# on AIX ar doesn't work out as their ar used a different format
-	# from what GNU ar (and thus what .deb files) produce
-	if [[ -n ${EPREFIX} ]] ; then
-		{
-			read # global header
-			[[ ${REPLY} = "!<arch>" ]] || die "${deb} does not seem to be a deb archive"
-			local f timestamp uid gid mode size magic
-			while read f timestamp uid gid mode size magic ; do
-				[[ -n ${f} && -n ${size} ]] || continue # ignore empty lines
-				if [[ ${f} = "data.tar"* ]] ; then
-					head -c "${size}" > "${f}"
-				else
-					head -c "${size}" > /dev/null # trash it
-				fi
-			done
-		} < "${deb}"
-	else
-		$(tc-getBUILD_AR) x "${deb}" || die
-	fi
-
-	unpacker ./data.tar*
-
-	# Clean things up #458658.  No one seems to actually care about
-	# these, so wait until someone requests to do something else ...
-	rm -f debian-binary {control,data}.tar*
+	{
+		# on AIX ar doesn't work out as their ar used a different format
+		# from what GNU ar (and thus what .deb files) produce
+		if [[ -n ${EPREFIX} ]] ; then
+			{
+				read # global header
+				[[ ${REPLY} = "!<arch>" ]] || die "${deb} does not seem to be a deb archive"
+				local f timestamp uid gid mode size magic
+				while read f timestamp uid gid mode size magic ; do
+					[[ -n ${f} && -n ${size} ]] || continue # ignore empty lines
+					# GNU ar uses / as filename terminator (and .deb permits that)
+					f=${f%/}
+					if [[ ${f} = "data.tar"* ]] ; then
+						local decomp=$(_unpacker_get_decompressor "${f}")
+						head -c "${size}" | ${decomp:-cat}
+						assert "unpacking ${f} from ${deb} failed"
+						break
+					else
+						head -c "${size}" > /dev/null # trash it
+					fi
+				done
+			} < "${deb}"
+		else
+			local f=$(
+				$(tc-getBUILD_AR) t "${deb}" | grep ^data.tar
+				assert "data not found in ${deb}"
+			)
+			local decomp=$(_unpacker_get_decompressor "${f}")
+			$(tc-getBUILD_AR) p "${deb}" "${f}" | ${decomp:-cat}
+			assert "unpacking ${f} from ${deb} failed"
+		fi
+	} | tar --no-same-owner -x
+	assert "unpacking ${deb} failed"
 }
 
 # @FUNCTION: unpack_cpio
@@ -344,8 +374,11 @@ unpack_7z() {
 
 	local p7z=$(find_unpackable_file "$1")
 	unpack_banner "${p7z}"
-	local output="$(7z x -y "${p7z}")"
 
+	# warning: putting local and command substitution in a single call
+	# discards the exit status!
+	local output
+	output="$(7z x -y "${p7z}")"
 	if [ $? -ne 0 ]; then
 		echo "${output}" >&2
 		die "unpacking ${p7z} failed (arch=unpack_7z)"
@@ -376,6 +409,73 @@ unpack_lha() {
 	lha xfq "${lha}" || die "unpacking ${lha} failed (arch=unpack_lha)"
 }
 
+# @FUNCTION: _unpacker_get_decompressor
+# @INTERNAL
+# @USAGE: <filename>
+# @DESCRIPTION:
+# Get decompressor command for specified filename.
+_unpacker_get_decompressor() {
+	case ${1} in
+	*.bz2|*.tbz|*.tbz2)
+		local bzcmd=${PORTAGE_BZIP2_COMMAND:-$(
+			type -P lbzip2 || type -P pbzip2 || type -P bzip2
+		)}
+		local bzuncmd=${PORTAGE_BUNZIP2_COMMAND:-${bzcmd} -d}
+		: ${UNPACKER_BZ2:=${bzuncmd}}
+		echo "${UNPACKER_BZ2} -c"
+		;;
+	*.z|*.gz|*.tgz)
+		echo "gzip -dc" ;;
+	*.lzma|*.xz|*.txz)
+		echo "xz -T$(makeopts_jobs) -dc" ;;
+	*.lz)
+		: ${UNPACKER_LZIP:=$(type -P plzip || type -P pdlzip || type -P lzip)}
+		echo "${UNPACKER_LZIP} -dc" ;;
+	*.zst)
+		echo "zstd -dc" ;;
+	*.lz4)
+		echo "lz4 -dc" ;;
+	*.lzo)
+		echo "lzop -dc" ;;
+	esac
+}
+
+# @FUNCTION: unpack_gpkg
+# @USAGE: <gpkg file>
+# @DESCRIPTION:
+# Unpack the image subarchive of a GPKG package on-the-fly, preserving
+# the original directory structure (i.e. into <gpkg-dir>/image).
+unpack_gpkg() {
+	[[ $# -eq 1 ]] || die "Usage: ${FUNCNAME} <file>"
+
+	local gpkg=$(find_unpackable_file "$1")
+	unpack_banner "${gpkg}"
+
+	local l images=()
+	while read -r l; do
+		case ${l} in
+			*/image.tar*.sig)
+				;;
+			*/image.tar*)
+				images+=( "${l}" )
+				;;
+		esac
+	done < <(tar -tf "${gpkg}" || die "unable to list ${gpkg}")
+
+	if [[ ${#images[@]} -eq 0 ]]; then
+		die "No image.tar found in ${gpkg}"
+	elif [[ ${#images[@]} -gt 1 ]]; then
+		die "More than one image.tar found in ${gpkg}"
+	fi
+
+	local decomp=$(_unpacker_get_decompressor "${images[0]}")
+	local dirname=${images[0]%/*}
+	mkdir -p "${dirname}" || die
+	tar -xOf "${gpkg}" "${images[0]}" | ${decomp:-cat} |
+		tar --no-same-owner -xC "${dirname}"
+	assert "Unpacking ${gpkg} failed"
+}
+
 # @FUNCTION: _unpacker
 # @USAGE: <one archive to unpack>
 # @INTERNAL
@@ -386,32 +486,17 @@ _unpacker() {
 	[[ $# -eq 1 ]] || die "Usage: ${FUNCNAME} <file>"
 
 	local a=$1
-	local m=$(echo "${a}" | tr '[:upper:]' '[:lower:]')
+	local m=${a,,}
 	a=$(find_unpackable_file "${a}")
 
 	# first figure out the decompression method
-	local comp=""
-	case ${m} in
-	*.bz2|*.tbz|*.tbz2)
-		local bzcmd=${PORTAGE_BZIP2_COMMAND:-$(type -P pbzip2 || type -P bzip2)}
-		local bzuncmd=${PORTAGE_BUNZIP2_COMMAND:-${bzcmd} -d}
-		: ${UNPACKER_BZ2:=${bzuncmd}}
-		comp="${UNPACKER_BZ2} -c"
-		;;
-	*.z|*.gz|*.tgz)
-		comp="gzip -dc" ;;
-	*.lzma|*.xz|*.txz)
-		comp="xz -dc" ;;
-	*.lz)
-		: ${UNPACKER_LZIP:=$(type -P plzip || type -P pdlzip || type -P lzip)}
-		comp="${UNPACKER_LZIP} -dc" ;;
-	*.zst)
-		comp="zstd -dfc" ;;
-	esac
+	local comp=$(_unpacker_get_decompressor "${m}")
 
 	# then figure out if there are any archiving aspects
 	local arch=""
 	case ${m} in
+	*.gpkg.tar)
+		arch="unpack_gpkg" ;;
 	*.tgz|*.tbz|*.tbz2|*.txz|*.tar.*|*.tar)
 		arch="tar --no-same-owner -xof" ;;
 	*.cpio.*|*.cpio)
@@ -437,13 +522,13 @@ _unpacker() {
 	esac
 
 	# 7z, rar and lha/lzh are handled by package manager in EAPI < 8
-	if [[ ${EAPI} != [567] ]]; then
+	if [[ ${EAPI} != [67] ]]; then
 		case ${m} in
 		*.7z)
 			arch="unpack_7z" ;;
-		*.rar|*.RAR)
+		*.rar)
 			arch="unpack_rar" ;;
-		*.LHA|*.LHa|*.lha|*.lzh)
+		*.lha|*.lzh)
 			arch="unpack_lha" ;;
 		esac
 	fi
@@ -459,11 +544,11 @@ _unpacker() {
 	if [[ -z ${arch} ]] ; then
 		# Need to decompress the file into $PWD #408801
 		local _a=${a%.*}
-		${comp} "${a}" > "${_a##*/}"
+		${comp} < "${a}" > "${_a##*/}"
 	elif [[ -z ${comp} ]] ; then
 		${arch} "${a}"
 	else
-		${comp} "${a}" | ${arch} -
+		${comp} < "${a}" | ${arch} -
 	fi
 
 	assert "unpacking ${a} failed (comp=${comp} arch=${arch})"
@@ -506,10 +591,11 @@ unpacker_src_uri_depends() {
 	fi
 
 	for uri in "$@" ; do
-		case ${uri} in
+		local m=${uri,,}
+		case ${m} in
 		*.cpio.*|*.cpio)
 			d="app-arch/cpio" ;;
-		*.rar|*.RAR)
+		*.rar)
 			d="app-arch/unrar" ;;
 		*.7z)
 			d="app-arch/p7zip" ;;
@@ -521,8 +607,12 @@ unpacker_src_uri_depends() {
 			d="|| ( app-arch/plzip app-arch/pdlzip app-arch/lzip )" ;;
 		*.zst)
 			d="app-arch/zstd" ;;
-		*.LHA|*.LHa|*.lha|*.lzh)
+		*.lha|*.lzh)
 			d="app-arch/lha" ;;
+		*.lz4)
+			d="app-arch/lz4" ;;
+		*.lzo)
+			d="app-arch/lzop" ;;
 		esac
 		deps+=" ${d}"
 	done

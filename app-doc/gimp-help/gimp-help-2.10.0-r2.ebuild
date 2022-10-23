@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit python-any-r1
 
 DESCRIPTION="GNU Image Manipulation Program help files"
@@ -29,7 +29,7 @@ BDEPEND="
 PATCHES=( "${FILESDIR}/${P}-python3.patch" )
 
 python_check_deps() {
-	has_version -b "dev-libs/libxml2[python,${PYTHON_USEDEP}]"
+	python_has_version "dev-libs/libxml2[python,${PYTHON_USEDEP}]"
 }
 
 src_configure() {
@@ -39,6 +39,6 @@ src_configure() {
 src_compile() {
 	# See bug: 833566
 	python_export_utf8_locale
-	# If affected with bug: 677198 then set "emake -j1"
-	emake
+	# Affected with bugs: 677198, 876205. Set "emake -j1"
+	emake -j1
 }

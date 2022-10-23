@@ -16,6 +16,7 @@
 		<flag name="glpk">Use GNU Linear Programming Kit <pkg>sci-mathematics/glpk</pkg></flag>
 		<flag name="gshhs">Add support for projection adn continent maps with <pkg>sci-geosciences/gshhs-data</pkg></flag>
 		<flag name="proj">Add support for <pkg>sci-libs/proj</pkg> (geographic projections)</flag>
+		<flag name="shapelib">Add support for manipulating ESRI Shapefiles with <pkg>sci-libs/shapelib</pkg></flag>
 		<flag name="udunits">Add support for manipulating units of physical quantities</flag>
 	</use>
 	<upstream>

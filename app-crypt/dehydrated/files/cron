@@ -1,2 +1,0 @@
-# dehydrated cron job
-#0 2 * * * dehydrated /usr/bin/dehydrated --cron

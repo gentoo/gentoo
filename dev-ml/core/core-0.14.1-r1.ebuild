@@ -25,7 +25,8 @@ RDEPEND="
 	<dev-ml/sexplib-0.15:=
 	dev-ml/spawn:=
 	dev-ml/stdio:=
-	dev-ml/timezone:=
+	=dev-ml/timezone-0.14*:=
 	<dev-ml/jane-street-headers-0.15:=
+	!>=dev-ml/core_unix-0.15
 "
 DEPEND="${RDEPEND}"

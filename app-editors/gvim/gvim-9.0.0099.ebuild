@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby27 ruby30 ruby31"
 
-inherit vim-doc flag-o-matic xdg-utils bash-completion-r1 prefix lua-single python-single-r1 ruby-single
+inherit vim-doc flag-o-matic xdg-utils bash-completion-r1 prefix lua-single python-single-r1 toolchain-funcs ruby-single
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -209,6 +209,10 @@ src_configure() {
 	)
 
 	if use lua; then
+		# -DLUA_COMPAT_OPENLIB=1 is required to enable the
+		# deprecated (in 5.1) luaL_openlib API (#874690)
+		use lua_single_target_lua5-1 && append-cppflags -DLUA_COMPAT_OPENLIB=1
+
 		myconf+=(
 			--enable-luainterp
 			$(use_with lua_single_target_luajit luajit)

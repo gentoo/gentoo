@@ -16,6 +16,7 @@
     <flag name="uuid">Support UUID lookups in rpc.mountd</flag>
   </use>
   <upstream>
+    <remote-id type="cpe">cpe:/a:linux-nfs:nfs-utils</remote-id>
     <remote-id type="sourceforge">nfs</remote-id>
   </upstream>
 </pkgmetadata>

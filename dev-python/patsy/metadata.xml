@@ -13,8 +13,9 @@
   A Python package for describing statistical models and for building
   design matrices. It is closely inspired by and compatible with the
   'formula' mini-language used in R and S.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">patsy</remote-id>
+    <remote-id type="github">pydata/patsy</remote-id>
   </upstream>
 </pkgmetadata>

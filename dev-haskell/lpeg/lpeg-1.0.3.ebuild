@@ -14,7 +14,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="rely-on-shared-lpeg-library"
 
 RDEPEND=">=dev-haskell/lua-2.1:=[profile?] <dev-haskell/lua-2.3:=[profile?]

@@ -8,7 +8,7 @@ NEED_EMACS=26.1
 
 inherit elisp
 
-DESCRIPTION="Extensible Emacs dashboard, with sections for bookmarks, projects, agenda and more"
+DESCRIPTION="Extensible Emacs dashboard, with sections like bookmarks, agenda and more"
 HOMEPAGE="https://github.com/emacs-dashboard/emacs-dashboard/"
 SRC_URI="https://github.com/emacs-dashboard/emacs-${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/emacs-${PN}-${H}

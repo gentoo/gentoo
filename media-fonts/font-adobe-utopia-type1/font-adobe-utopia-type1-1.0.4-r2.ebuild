@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+XORG_PACKAGE_NAME="adobe-utopia-type1"
 inherit xorg-3
 
 DESCRIPTION="X.Org Adobe Utopia Type 1 fonts"

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<use>
+		<flag name="icu">Enable legacy charset support using <pkg>dev-libs/icu</pkg></flag>
+		<flag name="systemd">Support moving terminal child processes to their own systemd user scopes
+			to avoid terminal getting killed due to child causing OOM</flag>
+	</use>
+</pkgmetadata>

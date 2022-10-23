@@ -1,24 +1,27 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit toolchain-funcs
 
 DESCRIPTION="Non-intrusive utility for estimation of available bandwidth of Internet paths"
 HOMEPAGE="https://www.cc.gatech.edu/fac/constantinos.dovrolis/bw-est/pathload.html"
 SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.gz"
+S="${WORKDIR}/${P/-/_}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-S=${WORKDIR}/${PN}_${PV}
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.3.2-make.patch
+	"${FILESDIR}"/${P}-make.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_configure() {
 	tc-export CC
+
 	default
 }
 

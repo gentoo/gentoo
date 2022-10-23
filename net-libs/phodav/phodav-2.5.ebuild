@@ -23,9 +23,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/asciidoc
+	app-text/docbook-xml-dtd:4.5
 	app-text/xmlto
 	sys-devel/gettext
 	virtual/pkgconfig
+	gtk-doc? ( dev-util/gtk-doc )
 	test? ( gnome-base/dconf )
 "
 

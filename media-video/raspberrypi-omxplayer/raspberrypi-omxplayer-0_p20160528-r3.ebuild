@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit flag-o-matic toolchain-funcs
 GIT_COMMIT="791d7df"
 DESCRIPTION="Command line media player for the Raspberry Pi"
 HOMEPAGE="https://github.com/popcornmix/omxplayer"
-SRC_URI="https://github.com/popcornmix/omxplayer/tarball/${GIT_COMMIT} -> ${P}.tar.gz"
+SRC_URI="https://github.com/popcornmix/omxplayer/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

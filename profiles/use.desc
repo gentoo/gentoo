@@ -257,6 +257,7 @@ python - Add optional support/bindings for the Python language
 qdbm - Add support for the qdbm (Quick Database Manager) library
 qmail-spp - Add support for qmail SMTP plugins
 qt5 - Add support for the Qt 5 application and UI framework
+qt6 - Add support for the Qt 6 application and UI framework
 quicktime - Add support for OpenQuickTime
 radius - Add support for RADIUS authentication
 raw - Add support for raw image formats
@@ -311,6 +312,7 @@ tcmalloc - Use the dev-util/google-perftools libraries to replace the malloc() i
 tcpd - Add support for TCP wrappers
 telemetry - Send anonymized usage information to upstream so they can better understand our users
 test - Enable dependencies and/or preparations necessary to run tests (usually controlled by FEATURES=test but can be toggled independently)
+test-rust - Enable important test dependencies that require Rust toolchain
 theora - Add support for the Theora Video Compression Codec
 threads - Add threads support for various packages. Usually pthreads
 tidy - Add support for HTML Tidy

@@ -1,0 +1,71 @@
+From 09c37c1c312991d08c10c7af94a83902150cb3ad Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Mon, 27 Jun 2022 16:46:08 +0100
+Subject: [PATCH] Avoid combining smart pointers and qobject parent ownership
+
+Devices are stored as QSharedPointer<Device> mDevices. If something has
+the memory managed explicitly we don't want QObject parents to also try
+and do the same job.
+
+BUG: 439192
+---
+ src/lib/device.cpp  | 4 ++--
+ src/lib/device.h    | 2 +-
+ src/lib/manager.cpp | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/lib/device.cpp b/src/lib/device.cpp
+index b79d029..94964be 100644
+--- a/src/lib/device.cpp
++++ b/src/lib/device.cpp
+@@ -45,10 +45,10 @@ Device::Device(const QDBusObjectPath &path, QObject *parent)
+ 
+ Device::~Device() = default;
+ 
+-QSharedPointer<Device> Device::create(const QDBusObjectPath &path, QObject *parent)
++QSharedPointer<Device> Device::create(const QDBusObjectPath &path)
+ {
+     try {
+-        return QSharedPointer<Device>::create(path, parent);
++        return QSharedPointer<Device>::create(path);
+     } catch (const DBusException &e) {
+         qCWarning(log_libkbolt, "%s", e.what());
+         return {};
+diff --git a/src/lib/device.h b/src/lib/device.h
+index 9b7e0f0..d183b12 100644
+--- a/src/lib/device.h
++++ b/src/lib/device.h
+@@ -46,7 +46,7 @@ class KBOLT_EXPORT Device : public QObject, public QEnableSharedFromThis<Device>
+     friend class Manager;
+ 
+ public:
+-    static QSharedPointer<Device> create(const QDBusObjectPath &path, QObject *parent = nullptr);
++    static QSharedPointer<Device> create(const QDBusObjectPath &path);
+     explicit Device(QObject *parent = nullptr);
+     ~Device() override;
+ 
+diff --git a/src/lib/manager.cpp b/src/lib/manager.cpp
+index 683c28c..99f1732 100644
+--- a/src/lib/manager.cpp
++++ b/src/lib/manager.cpp
+@@ -26,7 +26,7 @@ Manager::Manager(QObject *parent)
+     }
+ 
+     connect(mInterface.get(), &ManagerInterface::DeviceAdded, this, [this](const QDBusObjectPath &path) {
+-        if (auto device = Device::create(path, this)) {
++        if (auto device = Device::create(path)) {
+             mDevices.push_back(device);
+             qCDebug(log_libkbolt,
+                     "New Thunderbolt device %s (%s) added, status=%s",
+@@ -46,7 +46,7 @@ Manager::Manager(QObject *parent)
+ 
+     const auto devicePaths = mInterface->ListDevices().argumentAt<0>();
+     for (const auto &devicePath : devicePaths) {
+-        if (auto device = Device::create(devicePath, this)) {
++        if (auto device = Device::create(devicePath)) {
+             qCDebug(log_libkbolt,
+                     "Discovered Thunderbolt device %s (%s), status=%s",
+                     qUtf8Printable(device->uid()),
+-- 
+GitLab
+

@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>x11@gentoo.org</email>
-		<name>X11</name>
-	</maintainer>
-	<use>
-		<flag name="sna">Enable SandyBridge's New Acceleration (useful on all chipsets, not just SandyBridge)</flag>
-		<flag name="tools">Build the intel-virtual-output tool</flag>
-		<flag name="uxa">Enable UMA Acceleration Architecture</flag>
-		<flag name="xvmc">Enables X-Video Motion Compensation support</flag>
-	</use>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
+  <use>
+    <flag name="sna">Enable SandyBridge's New Acceleration (useful on all chipsets, not just SandyBridge)</flag>
+    <flag name="tools">Build the intel-virtual-output tool</flag>
+    <flag name="uxa">Enable UMA Acceleration Architecture</flag>
+    <flag name="xvmc">Enables X-Video Motion Compensation support</flag>
+  </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">xorg/driver/xf86-video-intel</remote-id>
+  </upstream>
 </pkgmetadata>

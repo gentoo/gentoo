@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 optfeature
 
 DESCRIPTION="AMQP Messaging Framework for Python"
-HOMEPAGE="https://pypi.org/project/kombu/ https://github.com/celery/kombu"
+HOMEPAGE="
+	https://github.com/celery/kombu/
+	https://pypi.org/project/kombu/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -26,8 +29,6 @@ BDEPEND="
 	test? (
 		app-arch/brotli[python,${PYTHON_USEDEP}]
 		>=dev-python/boto3-1.4.4[${PYTHON_USEDEP}]
-		>=dev-python/case-1.5.2[${PYTHON_USEDEP}]
-		dev-python/kazoo[${PYTHON_USEDEP}]
 		>=dev-python/msgpack-0.3.0[${PYTHON_USEDEP}]
 		dev-python/pycurl[${PYTHON_USEDEP}]
 		>=dev-python/pymongo-3.3.0[${PYTHON_USEDEP}]

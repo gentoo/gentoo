@@ -35,9 +35,8 @@
     8 through 11.
   * seadata is needed by ellap for large primes.
   * nftables is a repackaging of the historical megrez number field
-tables (errors fixed, 1/10th the size, easier to use).
-
-</longdescription>
+    tables (errors fixed, 1/10th the size, easier to use).
+  </longdescription>
   <use>
     <flag name="data">Add additional data (elldata, galdata, seadata, nftables)</flag>
   </use>

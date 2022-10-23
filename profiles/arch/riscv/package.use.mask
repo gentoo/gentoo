@@ -1,6 +1,10 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Xin Yang <yangmame@icloud.com> (2022-10-18)
+# requires qtwebengine, bug #876301
+app-i18n/fcitx-libpinyin dictionary-manager
+
 # Yixun Lan <dlan@gentoo.org> (2022-01-27)
 # This target supports ASAN/etc...
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-09-25)
@@ -64,11 +68,6 @@ sys-block/fio rbd
 # Upstream bug for criu: https://github.com/checkpoint-restore/criu/issues/1702
 app-containers/crun criu
 
-# Alex Fan <alex.fan.q@gmail.com> (2022-02-28)
-# dev-libs/vc is a dummy implementation on this arch
-# krita fails to build with it
-media-gfx/krita vc
-
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
 # Mask AMF keyword on non-amd64 arches
 # It is unusable, for now, in other arches
@@ -114,6 +113,7 @@ dev-ruby/capybara test
 #  - dev-qt/qtwebengine (bdepend)
 dev-python/ipython qt5
 kde-apps/marble webengine
+kde-plasma/discover webengine
 kde-plasma/kdeplasma-addons webengine
 kde-plasma/libksysguard webengine
 net-irc/quassel urlpreview
@@ -123,7 +123,7 @@ net-irc/quassel urlpreview
 net-analyzer/suricata hyperscan
 
 # Yixun Lan <dlan@gentoo.org> (2021-08-29)
-#  sys-apps/fwupd not tested, USE=spi,uefi,dell
+# sys-apps/fwupd not tested, USE=spi,uefi
 sys-apps/fwupd spi uefi
 
 # Marek Szuba <marecki@gentoo.org> (2021-08-23)
@@ -158,8 +158,6 @@ net-libs/libproxy spidermonkey
 app-text/texlive pdfannotextractor
 #  - JDK
 media-libs/rubberband jni
-#  - dev-java/jackcess
-sci-libs/gdal mdb
 
 # Yixun Lan <dlan@gentoo.org> (2021-08-05)
 # Boost.Context can be built on riscv

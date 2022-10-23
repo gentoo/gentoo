@@ -11,6 +11,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">Olivine-Labs/say</remote-id>
+		<remote-id type="github">lunarmodules/say</remote-id>
 	</upstream>
 </pkgmetadata>

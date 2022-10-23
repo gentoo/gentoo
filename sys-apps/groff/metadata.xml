@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>base-system@gentoo.org</email>
-	<name>Gentoo Base System</name>
-</maintainer>
-<use>
-	<flag name="uchardet">Enable automatic encoding detection via <pkg>app-i18n/uchardet</pkg></flag>
-</use>
+  <maintainer type="project">
+    <email>base-system@gentoo.org</email>
+    <name>Gentoo Base System</name>
+  </maintainer>
+  <use>
+    <flag name="uchardet">Enable automatic encoding detection via <pkg>app-i18n/uchardet</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:gnu:groff</remote-id>
+    <remote-id type="savannah">groff</remote-id>
+  </upstream>
 </pkgmetadata>

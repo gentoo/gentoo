@@ -1,0 +1,24 @@
+From https://github.com/PDAL/PDAL/commit/88d6825751434a97795d0f65b28d66e3a986f2c4.patch Mon Sep 17 00:00:00 2001
+From: Howard Butler <hobu.inc@gmail.com>
+Date: Fri, 16 Sep 2022 08:10:16 -0500
+Subject: [PATCH 01/39] relax WKT checking test now that PROJ 9+ adds AUTHORITY
+ bits to more things
+
+---
+ test/unit/io/LasReaderTest.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/unit/io/LasReaderTest.cpp b/test/unit/io/LasReaderTest.cpp
+index cbc8fab04d..5715039f90 100644
+--- a/test/unit/io/LasReaderTest.cpp
++++ b/test/unit/io/LasReaderTest.cpp
+@@ -270,7 +270,7 @@ TEST(LasReaderTest, inspect)
+     // This string is common for WKT1 and WKT2.  When we move to WKT2
+     // completely, this can be fixed.
+     std::string testWkt {
+-         R"(GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433)"
++         R"(GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]])"
+     };
+ 
+     EXPECT_TRUE(Utils::startsWith(qi.m_srs.getWKT(), testWkt));
+

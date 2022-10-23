@@ -28,7 +28,7 @@
   string processing. Julia programs are organized around defining
   functions, and overloading them for different combinations of
   argument types (which can also be user-defined).
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="github">JuliaLang/julia</remote-id>
   </upstream>

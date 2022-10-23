@@ -21,7 +21,7 @@ HOMEPAGE="https://inkscape.org/ https://gitlab.com/inkscape/inkscape/"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="cdr dia exif graphicsmagick imagemagick inkjar jemalloc jpeg
+IUSE="cdr dia exif graphicsmagick imagemagick inkjar jpeg
 openmp postscript readline spell svg2 test visio wpg X"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -76,7 +76,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
 		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	)
-	jemalloc? ( dev-libs/jemalloc )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	readline? ( sys-libs/readline:= )
 	spell? ( app-text/gspell )
@@ -149,7 +148,7 @@ src_configure() {
 		-DWITH_GRAPHICS_MAGICK=$(usex graphicsmagick $(usex imagemagick)) # both must be enabled to use GraphicsMagick
 		-DWITH_GNU_READLINE=$(usex readline)
 		-DWITH_GSPELL=$(usex spell)
-		-DWITH_JEMALLOC=$(usex jemalloc)
+		-DWITH_JEMALLOC=OFF
 		-DENABLE_LCMS=ON
 		-DWITH_OPENMP=$(usex openmp)
 		-DBUILD_SHARED_LIBS=ON

@@ -86,12 +86,14 @@ multilib_src_configure() {
 	if multilib_is_native_abi; then
 		emesonargs+=(
 			-Dwith-sd-bus-provider=$(usex systemd systemd elogind)
+			-Dwith-util=true
 		)
 	else
 		emesonargs+=(
 			-Dwith-sd-bus-provider=no-daemon
 			-Dwith-pam-renicing=false
 			-Dwith-examples=false
+			-Dwith-util=false
 		)
 	fi
 

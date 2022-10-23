@@ -10,7 +10,7 @@
   1. a library of C/C++ functions for efficient evaluation of several
   kinds of two-body molecular integrals over Gaussian functions;
   2. the optimizing compiler that generates a Libint library.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="github">evaleev/libint</remote-id>
   </upstream>

@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/849722
+https://github.com/InBetweenNames/gentooLTO/issues/846
+https://github.com/vaeth/portage-bashrc-mv/issues/11
+--- a/gcc/gcc/configure
++++ b/gcc/gcc/configure
+@@ -5389,7 +5388,0 @@
+-# Remove the -O2: for historical reasons, unless bootstrapping we prefer
+-# optimizations to be activated explicitly by the toplevel.
+-case "$CC" in
+-  */prev-gcc/xgcc*) ;;
+-  *) CFLAGS=`echo "$CFLAGS " | sed -e "s/-Ofast[ 	]//" -e "s/-O[gs][ 	]//" -e "s/-O[0-9]*[ 	]//" `
+-     CXXFLAGS=`echo "$CXXFLAGS " | sed -e "s/-Ofast[ 	]//" -e "s/-O[gs][ 	]//" -e "s/-O[0-9]*[ 	]//" ` ;;
+-esac
+--- a/gcc/gcc/configure.ac
++++ b/gcc/gcc/configure.ac
+@@ -443,7 +442,0 @@
+-# Remove the -O2: for historical reasons, unless bootstrapping we prefer
+-# optimizations to be activated explicitly by the toplevel.
+-case "$CC" in
+-  */prev-gcc/xgcc*) ;;
+-  *) CFLAGS=`echo "$CFLAGS " | sed -e "s/-Ofast[[ 	]]//" -e "s/-O[[gs]][[ 	]]//" -e "s/-O[[0-9]]*[[ 	]]//" `
+-     CXXFLAGS=`echo "$CXXFLAGS " | sed -e "s/-Ofast[[ 	]]//" -e "s/-O[[gs]][[ 	]]//" -e "s/-O[[0-9]]*[[ 	]]//" ` ;;
+-esac

@@ -1,4 +1,4 @@
-# Copyright 2011-2021 Gentoo Authors
+# Copyright 2011-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: systemd.eclass
@@ -53,20 +53,21 @@ _systemd_get_dir() {
 
 	if $(tc-getPKG_CONFIG) --exists systemd; then
 		d=$($(tc-getPKG_CONFIG) --variable="${variable}" systemd) || die
-		d=${d#${EPREFIX}}
 	else
-		d=${fallback}
+		d="${EPREFIX}${fallback}"
 	fi
 
 	echo "${d}"
 }
 
-# @FUNCTION: _systemd_get_systemunitdir
+# @FUNCTION: _systemd_unprefix
+# @USAGE: <function-name>
 # @INTERNAL
 # @DESCRIPTION:
-# Get unprefixed unitdir.
-_systemd_get_systemunitdir() {
-	_systemd_get_dir systemdsystemunitdir /lib/systemd/system
+# Calls the specified function and removes ${EPREFIX} from the result.
+_systemd_unprefix() {
+	local d=$("${@}")
+	echo "${d#"${EPREFIX}"}"
 }
 
 # @FUNCTION: systemd_get_systemunitdir
@@ -77,7 +78,7 @@ _systemd_get_systemunitdir() {
 systemd_get_systemunitdir() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	echo "${EPREFIX}$(_systemd_get_systemunitdir)"
+	_systemd_get_dir systemdsystemunitdir /lib/systemd/system
 }
 
 # @FUNCTION: systemd_get_unitdir
@@ -89,14 +90,6 @@ systemd_get_unitdir() {
 	systemd_get_systemunitdir
 }
 
-# @FUNCTION: _systemd_get_userunitdir
-# @INTERNAL
-# @DESCRIPTION:
-# Get unprefixed userunitdir.
-_systemd_get_userunitdir() {
-	_systemd_get_dir systemduserunitdir /usr/lib/systemd/user
-}
-
 # @FUNCTION: systemd_get_userunitdir
 # @DESCRIPTION:
 # Output the path for the systemd user unit directory (not including
@@ -105,15 +98,7 @@ _systemd_get_userunitdir() {
 systemd_get_userunitdir() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	echo "${EPREFIX}$(_systemd_get_userunitdir)"
-}
-
-# @FUNCTION: _systemd_get_utildir
-# @INTERNAL
-# @DESCRIPTION:
-# Get unprefixed utildir.
-_systemd_get_utildir() {
-	_systemd_get_dir systemdutildir /lib/systemd
+	_systemd_get_dir systemduserunitdir /usr/lib/systemd/user
 }
 
 # @FUNCTION: systemd_get_utildir
@@ -124,15 +109,7 @@ _systemd_get_utildir() {
 systemd_get_utildir() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	echo "${EPREFIX}$(_systemd_get_utildir)"
-}
-
-# @FUNCTION: _systemd_get_systemgeneratordir
-# @INTERNAL
-# @DESCRIPTION:
-# Get unprefixed systemgeneratordir.
-_systemd_get_systemgeneratordir() {
-	_systemd_get_dir systemdsystemgeneratordir /lib/systemd/system-generators
+	_systemd_get_dir systemdutildir /lib/systemd
 }
 
 # @FUNCTION: systemd_get_systemgeneratordir
@@ -142,15 +119,7 @@ _systemd_get_systemgeneratordir() {
 systemd_get_systemgeneratordir() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	echo "${EPREFIX}$(_systemd_get_systemgeneratordir)"
-}
-
-# @FUNCTION: _systemd_get_systempresetdir
-# @INTERNAL
-# @DESCRIPTION:
-# Get unprefixed systempresetdir.
-_systemd_get_systempresetdir() {
-	_systemd_get_dir systemdsystempresetdir /lib/systemd/system-preset
+	_systemd_get_dir systemdsystemgeneratordir /lib/systemd/system-generators
 }
 
 # @FUNCTION: systemd_get_systempresetdir
@@ -160,7 +129,15 @@ _systemd_get_systempresetdir() {
 systemd_get_systempresetdir() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	echo "${EPREFIX}$(_systemd_get_systempresetdir)"
+	_systemd_get_dir systemdsystempresetdir /lib/systemd/system-preset
+}
+
+# @FUNCTION: systemd_get_sleepdir
+# @DESCRIPTION:
+# Output the path for the system sleep directory.
+systemd_get_sleepdir() {
+	debug-print-function ${FUNCNAME} "${@}"
+	_systemd_get_dir systemdsleepdir /lib/systemd/system-sleep
 }
 
 # @FUNCTION: systemd_dounit
@@ -172,7 +149,7 @@ systemd_dounit() {
 
 	(
 		insopts -m 0644
-		insinto "$(_systemd_get_systemunitdir)"
+		insinto "$(_systemd_unprefix systemd_get_systemunitdir)"
 		doins "${@}"
 	)
 }
@@ -186,7 +163,7 @@ systemd_newunit() {
 
 	(
 		insopts -m 0644
-		insinto "$(_systemd_get_systemunitdir)"
+		insinto "$(_systemd_unprefix systemd_get_systemunitdir)"
 		newins "${@}"
 	)
 }
@@ -200,7 +177,7 @@ systemd_douserunit() {
 
 	(
 		insopts -m 0644
-		insinto "$(_systemd_get_userunitdir)"
+		insinto "$(_systemd_unprefix systemd_get_userunitdir)"
 		doins "${@}"
 	)
 }
@@ -215,7 +192,7 @@ systemd_newuserunit() {
 
 	(
 		insopts -m 0644
-		insinto "$(_systemd_get_userunitdir)"
+		insinto "$(_systemd_unprefix systemd_get_userunitdir)"
 		newins "${@}"
 	)
 }
@@ -262,7 +239,7 @@ systemd_enable_service() {
 
 	local target=${1}
 	local service=${2}
-	local ud=$(_systemd_get_systemunitdir)
+	local ud=$(_systemd_unprefix systemd_get_systemunitdir)
 	local destname=${service##*/}
 
 	dodir "${ud}"/"${target}".wants && \
@@ -306,7 +283,7 @@ systemd_enable_ntpunit() {
 
 	(
 		insopts -m 0644
-		insinto "$(_systemd_get_utildir)"/ntp-units.d
+		insinto "$(_systemd_unprefix systemd_get_utildir)"/ntp-units.d
 		doins "${T}"/${ntpunit_name}.list
 	)
 	local ret=${?}

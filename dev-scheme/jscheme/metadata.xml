@@ -9,7 +9,7 @@
 	JScheme is a dialect of Scheme with a very simple interface to Java, called
 	the Javadot notation . This notation provides a transparent access to all
 	Java classes, constructors, methods, and fields on the classpath.
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">jscheme</remote-id>
 	</upstream>

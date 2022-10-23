@@ -9,4 +9,7 @@
     <flag name="zippy">Enable experimental zippy client</flag>
     <flag name="default-font">Install the default font that xboard uses</flag>
   </use>
+  <upstream>
+    <remote-id type="savannah">xboard</remote-id>
+  </upstream>
 </pkgmetadata>

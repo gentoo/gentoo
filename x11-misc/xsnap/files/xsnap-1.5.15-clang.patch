@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/870811
+--- a/xsnap.c
++++ b/xsnap.c
+@@ -150,2 +150,3 @@
+ Window win;
++int init_cursor;
+ {
+@@ -1706,3 +1707,3 @@
+    static Window win0 = None;
+-   static w0 = 0, h0 = 0;
++   static int w0 = 0, h0 = 0;
+    int i, j, d, w, h;
+@@ -2254,3 +2255,3 @@
+ 	if (op_mode == 0)
+-	    exitXsnap (NULL, NULL, snap_pixmap, copy_gc);
++	    exitXsnap ((Window)0, (Window)0, snap_pixmap, copy_gc);
+ 

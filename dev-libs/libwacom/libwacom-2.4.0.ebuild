@@ -35,9 +35,9 @@ BDEPEND="
 "
 
 python_check_deps() {
-	has_version -b "dev-python/python-libevdev[${PYTHON_USEDEP}]" &&
-	has_version -b "dev-python/pyudev[${PYTHON_USEDEP}]" &&
-	has_version -b "dev-python/pytest[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/python-libevdev[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/pyudev[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

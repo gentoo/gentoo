@@ -1,0 +1,121 @@
+From a6f0587d8cbbb246c33423d19f2aabf6ea9d7417 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 8 May 2022 16:59:25 +0200
+Subject: [PATCH] Remove pointless/broken icons
+
+The distribute-horizontal-page icon doesn't serve any apparent purpose
+
+The portrait/landscape icons don't exist in any theme
+
+(cherry picked from commit 7b214252ec5f486912944d987581f207c7b03681)
+---
+ CMakeLists.txt                          |  1 -
+ src/part/CMakeLists.txt                 |  2 +-
+ src/part/KgvPageLayoutSize.cpp          | 10 ----------
+ src/part/simpleprintingpagesetup.cpp    |  4 ----
+ src/part/simpleprintingpagesetupbase.ui | 10 ----------
+ 5 files changed, 1 insertion(+), 26 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fd715d2..238a9dd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -27,7 +27,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+     DocTools
+     Parts
+     WidgetsAddons
+-    IconThemes
+ )
+ 
+ find_package(Boost 1.36 REQUIRED)
+diff --git a/src/part/CMakeLists.txt b/src/part/CMakeLists.txt
+index 0e70be8..922e5c5 100644
+--- a/src/part/CMakeLists.txt
++++ b/src/part/CMakeLists.txt
+@@ -64,7 +64,7 @@ ki18n_wrap_ui(kgraphviewerlib_LIB_SRCS ${kgraphviewerprinting_UI} )
+ 
+ add_library(kgraphviewerlib ${kgraphviewerlib_LIB_SRCS})
+ 
+-target_link_libraries(kgraphviewerlib Qt5::Core Qt5::Svg Qt5::PrintSupport Qt5::Svg KF5::WidgetsAddons KF5::IconThemes KF5::XmlGui KF5::I18n KF5::Parts ${graphviz_LIBRARIES})
++target_link_libraries(kgraphviewerlib Qt5::Core Qt5::Svg Qt5::PrintSupport Qt5::Svg KF5::WidgetsAddons KF5::XmlGui KF5::I18n KF5::Parts ${graphviz_LIBRARIES})
+ 
+ set_target_properties(kgraphviewerlib PROPERTIES VERSION ${PROJECT_VERSION} SOVERSION ${KGRAPHVIEWER_SOVERSION} OUTPUT_NAME kgraphviewer )
+ 
+diff --git a/src/part/KgvPageLayoutSize.cpp b/src/part/KgvPageLayoutSize.cpp
+index bb8b3d1..4053a20 100644
+--- a/src/part/KgvPageLayoutSize.cpp
++++ b/src/part/KgvPageLayoutSize.cpp
+@@ -42,7 +42,6 @@
+ #include <QHBoxLayout>
+ #include <QGridLayout>
+ #include <QPixmap>
+-#include <KIconTheme>
+ #include "klocalizedstring.h"
+ 
+ KgvPageLayoutSize::KgvPageLayoutSize(
+@@ -148,19 +147,10 @@ KgvPageLayoutSize::KgvPageLayoutSize(
+ //     m_orientGroup->setInsideSpacing( KDialog::spacingHint() );
+     grid1->addWidget( m_orientGroup, 2, 0 );
+ 
+-    const int iconSize = KIconTheme(KIconTheme::current()).defaultSize(KIconLoader::Small);
+-    QLabel* lbPortrait = new QLabel( m_orientGroup );
+-    lbPortrait->setPixmap( QPixmap( QIcon::fromTheme( "koPortrait" ).pixmap(iconSize, iconSize) ) );
+-    lbPortrait->setMaximumWidth( lbPortrait->pixmap()->width() );
+-    lay3->addWidget(lbPortrait);
+     QRadioButton* rbPortrait = new QRadioButton( i18n("&Portrait"), m_orientGroup );
+     lay3->addWidget(rbPortrait);
+     m_orientButtons.addButton(rbPortrait);
+   
+-    QLabel* lbLandscape = new QLabel( m_orientGroup );
+-    lbLandscape->setPixmap( QPixmap( QIcon::fromTheme( "koLandscape" ).pixmap(iconSize, iconSize) ) );
+-    lbLandscape->setMaximumWidth( lbLandscape->pixmap()->width() );
+-    lay3->addWidget(lbLandscape);
+     QRadioButton* rbLandscape = new QRadioButton( i18n("La&ndscape"), m_orientGroup );
+     lay3->addWidget(rbLandscape);
+     m_orientGroup->setLayout(lay3);
+diff --git a/src/part/simpleprintingpagesetup.cpp b/src/part/simpleprintingpagesetup.cpp
+index 9882fbf..cd707b9 100644
+--- a/src/part/simpleprintingpagesetup.cpp
++++ b/src/part/simpleprintingpagesetup.cpp
+@@ -57,7 +57,6 @@
+ #include <QPixmap>
+ #include <QVBoxLayout>
+ #include <klocalizedstring.h>
+-#include <KIconTheme>
+ #include <iostream>
+ 
+ namespace KGraphViewer
+@@ -109,9 +108,6 @@ KGVSimplePrintingPageSetup::KGVSimplePrintingPageSetup(
+ 	connect(m_contents->printPreviewButton, &QPushButton::clicked,
+                 this, &KGVSimplePrintingPageSetup::slotPrintPreview);
+ 
+-	m_contents->iconLabel->setFixedWidth(32+6);
+-    const int iconSize = KIconTheme(KIconTheme::current()).defaultSize(KIconLoader::Small);
+-  m_contents->iconLabel->setPixmap(QIcon::fromTheme("distribute-horizontal-page").pixmap(iconSize, iconSize));
+ 	m_contents->headerTitleFontButton->setText(i18n("Font..."));
+ 	m_contents->headerTitleFontButton->setWhatsThis(i18n("Changes font for title text."));
+ 	connect(m_contents->headerTitleFontButton, &QPushButton::clicked,
+diff --git a/src/part/simpleprintingpagesetupbase.ui b/src/part/simpleprintingpagesetupbase.ui
+index ddc6ee0..719a7d6 100644
+--- a/src/part/simpleprintingpagesetupbase.ui
++++ b/src/part/simpleprintingpagesetupbase.ui
+@@ -157,16 +157,6 @@
+        </item>
+       </layout>
+      </item>
+-     <item>
+-      <widget class="QLabel" name="iconLabel">
+-       <property name="text">
+-        <string/>
+-       </property>
+-       <property name="alignment">
+-        <set>Qt::AlignVCenter</set>
+-       </property>
+-      </widget>
+-     </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox4">
+        <property name="title">
+-- 
+2.37.3
+

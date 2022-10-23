@@ -35,7 +35,7 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_configure() {
-	export UJSON_BUILD_DC_INCLUDES="/usr/include/double-conversion"
+	export UJSON_BUILD_DC_INCLUDES="${EPREFIX}/usr/include/double-conversion"
 	export UJSON_BUILD_DC_LIBS="-ldouble-conversion"
 	export UJSON_BUILD_NO_STRIP=1
 }

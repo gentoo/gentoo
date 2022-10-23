@@ -16,7 +16,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 #keep in sync with ghc-9.0.2
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="debug +lukko +native-dns"
 
 RDEPEND=">=dev-haskell/async-2.0:= <dev-haskell/async-2.3:=

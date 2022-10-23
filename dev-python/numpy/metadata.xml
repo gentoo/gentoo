@@ -16,7 +16,7 @@
   arrays. There are also basic facilities for discrete fourier transform,
   basic linear algebra and random number generation.
   It is the successor of Numeric and numarray.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="github">numpy/numpy</remote-id>
     <remote-id type="pypi">numpy</remote-id>

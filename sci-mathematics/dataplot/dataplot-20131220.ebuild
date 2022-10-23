@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,6 +34,7 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 RDEPEND="${COMMON_DEPEND}
 	X? ( x11-misc/xdg-utils )"
+BDEPEND="media-libs/gd"
 
 S_AUX="${WORKDIR}/${MY_P_AUX}"
 

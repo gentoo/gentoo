@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/871165
+
+From 065e349d0a0e1db9fda99f90ff825b7934f191da Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 16 Oct 2022 18:18:58 +0100
+Subject: [PATCH] Include <string.h> for strcmp
+
+--- a/hpwd.c
++++ b/hpwd.c
+@@ -24,6 +24,7 @@
+ # endif
+ 
+ # include <stdio.h>
++# include <string.h>
+ 
+ # include "hfs.h"
+ # include "hcwd.h"

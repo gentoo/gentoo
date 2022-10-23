@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE="doc test"
 
 RDEPEND="
@@ -24,7 +24,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-util/spirv-headers-1.3.224
-	test? (	dev-cpp/gtest	)
+	test? (	dev-cpp/gtest )
 "
 BDEPEND="doc? ( dev-ruby/asciidoctor )
 	test? (	$(python_gen_any_dep 'dev-python/nose[${PYTHON_USEDEP}]') )

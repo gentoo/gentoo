@@ -9,6 +9,10 @@
 		<email>python@gentoo.org</email>
 		<name>Python</name>
 	</maintainer>
+	<longdescription lang="en">
+		Updated Python implementation of Mustache, a framework-agnostic and
+		logic-free templating system supporting both Markdown and rSt.
+	</longdescription>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">PennyDreadfulMTG/pystache</remote-id>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -59,7 +59,7 @@ src_compile() {
 
 	# Make a binary that will use fixed path for the db
 	cp -v file_system_resources.go{,.bak} || die
-	local share="${EROOT}/usr/share/licenseclassifier"
+	local share="${EPREFIX}/usr/share/licenseclassifier"
 	sed -i "s@= lcRoot()@= \"${share}\", error(nil)@" file_system_resources.go || die
 	go build -o build ./... || die
 

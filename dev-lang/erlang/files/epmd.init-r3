@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the Erlang Public License 1.1
+
+name="Erlang Port Mapper Daemon"
+
+command="/usr/bin/epmd"
+command_user="epmd"
+command_group="epmd"
+
+command_background=yes
+pidfile="/var/run/epmd.pid"
+
+depend() {
+	use net
+	before sshd
+}
+
+stop() {
+	ebegin "Stopping ${name}"
+	${command} -kill >/dev/null
+	eend $?
+}

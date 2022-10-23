@@ -28,16 +28,11 @@ RDEPEND="
 	dev-python/websocket-client[${PYTHON_USEDEP}]
 "
 # Can use eventlet, werkzeug, or gevent, but no tests for werkzeug
-# eventlet doesn't yet support Python 3.10, so let's work around it
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep '
-			dev-python/eventlet[${PYTHON_USEDEP}]
-		' python3_{8,9} )
-
 		dev-python/gevent[${PYTHON_USEDEP}]
+		dev-python/tornado[${PYTHON_USEDEP}]
 		dev-python/websockets[${PYTHON_USEDEP}]
-		www-servers/tornado[${PYTHON_USEDEP}]
 	)
 "
 
@@ -45,19 +40,15 @@ distutils_enable_tests pytest
 distutils_enable_sphinx docs \
 	dev-python/alabaster
 
-python_test() {
-	if ! has_version "dev-python/eventlet[${PYTHON_USEDEP}]"; then
-		local EPYTEST_IGNORE=(
-			tests/common/test_async_eventlet.py
-		)
+EPYTEST_IGNORE=(
+	# eventlet is masked for removal
+	tests/common/test_async_eventlet.py
+)
 
-		local EPYTEST_DESELECT=(
-			tests/common/test_server.py::TestServer::test_async_mode_eventlet
-			tests/common/test_server.py::TestServer::test_connect
-			tests/common/test_server.py::TestServer::test_service_task_started
-			tests/common/test_server.py::TestServer::test_upgrades
-		)
-	fi
-
-	epytest
-}
+EPYTEST_DESELECT=(
+	# also eventlet
+	tests/common/test_server.py::TestServer::test_async_mode_eventlet
+	tests/common/test_server.py::TestServer::test_connect
+	tests/common/test_server.py::TestServer::test_service_task_started
+	tests/common/test_server.py::TestServer::test_upgrades
+)

@@ -6,6 +6,6 @@
 		<name>Piotr Karbowski</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">eribertomota/axel</remote-id>
+		<remote-id type="github">axel-download-accelerator/axel</remote-id>
 	</upstream>
 </pkgmetadata>

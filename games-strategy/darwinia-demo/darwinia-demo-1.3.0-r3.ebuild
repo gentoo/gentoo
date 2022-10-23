@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,7 @@ RDEPEND="
 	media-libs/libsdl[abi_x86_32(-)]
 	media-libs/libvorbis[abi_x86_32(-)]
 	virtual/glu[abi_x86_32(-)]
+	sys-libs/glibc
 	sys-libs/libstdc++-v3:5
 	virtual/opengl[abi_x86_32(-)]"
 

@@ -10,7 +10,7 @@ inherit distutils-r1 prefix
 
 if [[ ${PV} = 9999* ]]
 then
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/${PN}.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/proj/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.bz2"

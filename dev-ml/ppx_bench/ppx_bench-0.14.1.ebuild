@@ -17,8 +17,9 @@ IUSE="+ocamlopt"
 DEPEND="
 	>=dev-ml/ppx_inline_test-0.14.1:=
 	>=dev-ml/ppxlib-0.18.0:=
-		>=dev-ml/stdio-0.14.0:=
-		>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
-			dev-ml/cinaps:=
+	>=dev-ml/stdio-0.14.0:=
+	>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
+	dev-ml/cinaps:=
+	dev-ml/sexplib0:=
 "
 RDEPEND="${DEPEND}"

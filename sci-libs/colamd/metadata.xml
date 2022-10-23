@@ -14,5 +14,5 @@
   COLAMD, available as a MATLAB-callable function. It constructs a
   matrix M such that M\'*M has the same pattern as A, and then uses
   COLAMD to compute a column ordering of M.
-</longdescription>
+  </longdescription>
 </pkgmetadata>

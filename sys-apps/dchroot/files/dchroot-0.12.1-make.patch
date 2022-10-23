@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/722920
+https://bugs.gentoo.org/824542
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -4,8 +4,9 @@
+ 
+ INSTALL=install
+-CFLAGS=-Wl,-z,now -O2 -Wall -Wstrict-prototypes -Werror -g \
++CC := @CC@
++CFLAGS := @CFLAGS@ @CPPFLAGS@ @LDFLAGS@ \
+ 	-DDCHROOT_VERSION="\"@DCHROOT_VERSION@\""
+ 
+-all: dchroot
++all: dchroot docs
+ 
+ docs: dchroot.1

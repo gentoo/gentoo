@@ -1,0 +1,19 @@
+https://github.com/opencv/opencv/issues/22418
+https://github.com/opencv/opencv/commit/496eed950f6d0e7fd92619d47e3cec8f06e96ace
+https://bugs.gentoo.org/876748
+
+From: Jochen Sprickerhof <jspricke@debian.org>
+Date: Mon, 8 Aug 2022 21:10:13 +0200
+Subject: [PATCH] Add missing header for LIBAVCODEC_VERSION_INT
+
+--- a/modules/videoio/src/ffmpeg_codecs.hpp
++++ b/modules/videoio/src/ffmpeg_codecs.hpp
+@@ -60,6 +60,7 @@ extern "C" {
+ #include <errno.h>
+ #endif
+ 
++#include <libavcodec/version.h>
+ #include <libavformat/avformat.h>
+ 
+ #ifdef __cplusplus
+

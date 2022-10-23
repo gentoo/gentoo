@@ -15,7 +15,7 @@
     <bugs-to>https://github.com/ansible/ansible/issues</bugs-to>
   </upstream>
   <longdescription lang="en">
-Radically simple deployment, model-driven configuration management, and 
-command execution framework.
-</longdescription>
+  Radically simple deployment, model-driven configuration management, and
+  command execution framework.
+  </longdescription>
 </pkgmetadata>

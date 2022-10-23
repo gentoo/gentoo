@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-  <email>sound@gentoo.org</email>
-  <name>Gentoo Sound project</name>
-</maintainer>
-<use>
-  <flag name="s7">Enable the s7 extension language (a version of Scheme)</flag>
-</use>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<use>
+		<flag name="notcurses">Terminal interface via <pkg>dev-cpp/notcurses</pkg></flag>
+		<flag name="s7">Enable the s7 extension language (a version of Scheme)</flag>
+	</use>
 </pkgmetadata>

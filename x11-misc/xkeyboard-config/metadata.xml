@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>x11@gentoo.org</email>
-	<name>X11</name>
-</maintainer>
-<upstream>
-	<remote-id type="cpe">cpe:/a:xkeyboard_config_project:xkeyboard-config</remote-id>
-</upstream>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:xkeyboard_config_project:xkeyboard-config</remote-id>
+    <remote-id type="freedesktop-gitlab">xkeyboard-config/xkeyboard-config</remote-id>
+  </upstream>
 </pkgmetadata>

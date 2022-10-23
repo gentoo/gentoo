@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="-* ~x86"
 RESTRICT="bindist mirror"
 
-RDEPEND="sys-libs/libstdc++-v3:5"
+RDEPEND="sys-libs/glibc
+	sys-libs/libstdc++-v3:5"
 
 QA_PREBUILT="/opt/${PN}/MTAServer"
 QA_EXECSTACK="/opt/${PN}/MTAServer"

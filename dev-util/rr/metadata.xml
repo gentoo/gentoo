@@ -10,6 +10,6 @@
 		<name>Luca Barbato</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">mozilla/rr</remote-id>
+		<remote-id type="github">rr-debugger/rr</remote-id>
 	</upstream>
 </pkgmetadata>

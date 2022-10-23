@@ -2,4 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
+  <upstream>
+    <remote-id type="freedesktop-gitlab">xorg/driver/xf86-video-vbox</remote-id>
+  </upstream>
 </pkgmetadata>

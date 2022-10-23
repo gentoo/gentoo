@@ -148,10 +148,6 @@ media-video/mpv raspberry-pi
 # net-misc/libteam is not yet stable on arm
 net-misc/networkmanager teamd
 
-# Pacho Ramos <pacho@gentoo.org> (2015-10-03)
-# Missing stable, bug #529462
-media-gfx/graphviz java
-
 # Markus Meier <maekke@gentoo.org> (2015-07-19)
 # Missing stable
 media-libs/gegl umfpack

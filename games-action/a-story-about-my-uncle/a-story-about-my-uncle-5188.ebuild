@@ -8,7 +8,7 @@ inherit check-reqs desktop prefix xdg
 
 MY_PN="ASAMU"
 MY_P="${MY_PN}_${PV}"
-DESCRIPTION="First person platforming adventure game about a boy who searches for his lost uncle"
+DESCRIPTION="First person platforming adventure about a boy who searches for his lost uncle"
 HOMEPAGE="https://www.humblebundle.com/store/a-story-about-my-uncle"
 SRC_URI="Linux-NoDRM-${MY_P}.zip
 	fetch+https://dev.gentoo.org/~chewi/distfiles/${MY_PN}.png"

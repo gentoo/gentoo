@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake udev
 
@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	S="${WORKDIR}/hackrf-${PV}/host/libhackrf"
 	SRC_URI="https://github.com/greatscottgadgets/hackrf/releases/download/v${PV}/hackrf-${PV}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~ppc ~x86"
+	KEYWORDS="~amd64 ~arm ~ppc ~riscv ~x86"
 fi
 
 LICENSE="BSD"
@@ -25,6 +25,9 @@ IUSE="+udev"
 
 DEPEND="virtual/libusb:1"
 RDEPEND="${DEPEND}"
+
+# https://github.com/greatscottgadgets/hackrf/issues/1193
+PATCHES=( "${FILESDIR}/hackrf-disable-static-2022.09.1.patch" )
 
 src_configure() {
 	local mycmakeargs=(
@@ -39,6 +42,17 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_compile() {
+	cmake_build hackrf
+}
+
 pkg_postinst() {
-	use udev && einfo "Users in the usb group can use hackrf."
+	if use udev; then
+		einfo "Users in the usb group can use hackrf."
+		udev_reload
+	fi
+}
+
+pkg_postrm() {
+	udev_reload
 }

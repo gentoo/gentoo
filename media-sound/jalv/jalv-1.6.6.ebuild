@@ -9,7 +9,7 @@ inherit python-any-r1 qmake-utils waf-utils
 
 DESCRIPTION="Simple but fully featured LV2 host for Jack"
 HOMEPAGE="https://drobilla.net/software/jalv.html"
-SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
+SRC_URI="https://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="ISC"
 SLOT="0"

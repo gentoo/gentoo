@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
- <email>x11@gentoo.org</email>
- <name>X11</name>
-</maintainer>
-<use>
- <flag name="chamelium">Enables support for building Chamelium tests</flag>
- <flag name="overlay">Build the intel-gpu-overlay utility</flag>
- <flag name="runner">Build the test runner</flag>
- <flag name="tests">Build and install tests</flag>
- <flag name="valgrind">Support valgrind annotations</flag>
- <flag name="xv">Enable intel-gpu-overlay xv backend</flag>
- <flag name="X">Enable intel-gpu-overlay xlib/cairo backend</flag>
-</use>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
+  <use>
+    <flag name="chamelium">Enables support for building Chamelium tests</flag>
+    <flag name="overlay">Build the intel-gpu-overlay utility</flag>
+    <flag name="runner">Build the test runner</flag>
+    <flag name="tests">Build and install tests</flag>
+    <flag name="valgrind">Support valgrind annotations</flag>
+    <flag name="xv">Enable intel-gpu-overlay xv backend</flag>
+    <flag name="X">Enable intel-gpu-overlay xlib/cairo backend</flag>
+  </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">drm/igt-gpu-tools</remote-id>
+  </upstream>
 </pkgmetadata>

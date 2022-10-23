@@ -30,8 +30,9 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 python_check_deps() {
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/breathe[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" \
+		"dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]" \
+		"dev-python/breathe[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

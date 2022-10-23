@@ -13,8 +13,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="sys-apps/attr"
-RDEPEND="${DEPEND}"
+RDEPEND="sys-apps/attr"
+DEPEND="
+	${RDEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-libtool.patch # bug #731162

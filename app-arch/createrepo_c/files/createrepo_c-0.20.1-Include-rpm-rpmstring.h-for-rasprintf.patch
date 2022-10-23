@@ -1,0 +1,20 @@
+https://github.com/rpm-software-management/createrepo_c/pull/328
+
+From cddd4c161523cf4340aa59f832d130e7c34ffd14 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 19 Oct 2022 03:10:06 +0100
+Subject: [PATCH] Include <rpm/rpmstring.h> for rasprintf
+
+Fixes build with Clang 16.
+
+Bug: https://bugs.gentoo.org/875698
+--- a/src/xml_file.c
++++ b/src/xml_file.c
+@@ -20,6 +20,7 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ #include <assert.h>
++#include <rpm/rpmstring.h>
+ #include "xml_file.h"
+ #include <errno.h>
+ #include "error.h"

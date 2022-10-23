@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Syndication feed auto-discovery"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	dev-perl/Class-ErrorHandler

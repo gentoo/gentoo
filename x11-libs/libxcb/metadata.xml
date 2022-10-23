@@ -10,5 +10,6 @@
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:x:libxcb</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libxcb</remote-id>
   </upstream>
 </pkgmetadata>

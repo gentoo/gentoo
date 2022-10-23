@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+l0 +vaapi"
 
 RDEPEND=">=media-libs/gmmlib-22.1.7:="
@@ -33,7 +33,7 @@ DEPEND="
 	l0? ( >=dev-libs/level-zero-1.8.5:= )
 	vaapi? (
 		x11-libs/libdrm[video_cards_intel]
-		x11-libs/libva
+		media-libs/libva
 	)
 "
 

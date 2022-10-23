@@ -6,7 +6,7 @@ SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
 
-inherit eutils systemd flag-o-matic prefix toolchain-funcs \
+inherit systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
 # Patch version

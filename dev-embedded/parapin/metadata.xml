@@ -6,12 +6,12 @@
 		<name>Embedded Gentoo</name>
 	</maintainer>
 	<longdescription>
-Parapin makes it easy to write C code under Linux that controls individual pins on a PC parallel port. This kind of control is very useful for 
-electronics projects that use the PC's parallel port as a generic digital I/O interface. Parapin goes to great lengths to insulate the programmer 
-from the somewhat complex parallel port programming interface provided by the PC hardware, making it easy to use the parallel port for digital 
-I/O. By the same token, this abstraction also makes Parapin less useful in applications that need to actually use the parallel port as a parallel 
-port (e.g., for talking to a printer).
-</longdescription>
+	Parapin makes it easy to write C code under Linux that controls individual pins on a PC parallel port. This kind of control is very useful for
+	electronics projects that use the PC's parallel port as a generic digital I/O interface. Parapin goes to great lengths to insulate the programmer
+	from the somewhat complex parallel port programming interface provided by the PC hardware, making it easy to use the parallel port for digital
+	I/O. By the same token, this abstraction also makes Parapin less useful in applications that need to actually use the parallel port as a parallel
+	port (e.g., for talking to a printer).
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">parapin</remote-id>
 	</upstream>

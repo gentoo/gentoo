@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>x11@gentoo.org</email>
-	<name>X11</name>
-</maintainer>
-<use>
-	<flag name="dmx">Builds support for Distributed Multiheaded X
-		<pkg>x11-base/xorg-server</pkg></flag>
-</use>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
+  <use>
+    <flag name="dmx">Builds support for Distributed Multiheaded X <pkg>x11-base/xorg-server</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">xorg/app/xdpyinfo</remote-id>
+  </upstream>
 </pkgmetadata>

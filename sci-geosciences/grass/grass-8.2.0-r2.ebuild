@@ -27,7 +27,7 @@ else
 	SLOT="0/$(ver_cut 1-2 ${PV})"
 	SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~x86"
+		KEYWORDS="amd64 ~x86"
 	fi
 
 	S="${WORKDIR}/${MY_P}"
@@ -281,8 +281,6 @@ os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
 
 pkg_postinst() {
 	use X && xdg_pkg_postinst
-	ewarn 'Starting with version 8.0.2 the "liblas" USE flag has been renamed'
-	ewarn 'to "las" in order to match dev-games/openscenegraph (Bug 680854)'
 }
 
 pkg_postrm() {

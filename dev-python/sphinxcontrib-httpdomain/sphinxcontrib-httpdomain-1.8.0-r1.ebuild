@@ -31,7 +31,7 @@ BDEPEND="
 	test? (
 		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/bottle[${PYTHON_USEDEP}]
-		www-servers/tornado[${PYTHON_USEDEP}]
+		dev-python/tornado[${PYTHON_USEDEP}]
 	)
 "
 

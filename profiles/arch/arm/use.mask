@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -arm
 
+# matoro <matoro_gentoo@matoro.tk> (2022-09-29)
+# dev-util/google-perftools is supported here
+-tcmalloc
+
 # Michał Górny <mgorny@gentoo.org> (2021-01-07)
 # Prebuilt kernels are supported here.
 -dist-kernel

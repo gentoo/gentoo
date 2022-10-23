@@ -18,7 +18,6 @@
   <flag name="cpuid">Enable the cpuid-based architecture specific support (x86 component)</flag>
   <flag name="cuda">Enable CUDA device discovery using libcudart</flag>
   <flag name="gl">Enable GL display device discovery (NVCtrl)</flag> 
-  <flag name="netloc">Enable Netloc</flag>
   <flag name="numa">Add support for numa memory allocation</flag>
   <flag name="nvml">Enable the NVML device discovery</flag>
   <flag name="pci">Enable PCI device discovery using libpci</flag>

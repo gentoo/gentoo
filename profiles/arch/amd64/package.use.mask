@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
+# sys-libs/libsmbios is available here.
+app-laptop/pbbuttonsd -macbook
+sys-apps/fwupd -dell
+
 # Alfredo Tupone <tupone@gentoo.org> (2022-08-30)
 # ada bootstrap currently only available on amd64/x86
 sys-devel/gcc -ada
@@ -35,7 +40,7 @@ media-sound/qmmp -xmp
 
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
 # Need intel-hybrid-codec-driver, which only works on amd64
-x11-libs/libva-intel-driver -hybrid
+media-libs/libva-intel-driver -hybrid
 
 # James Le Cuirot <chewi@gentoo.org> (2021-10-22)
 # The JIT feature only works on amd64 and x86.
@@ -217,11 +222,6 @@ dev-util/catalyst -system-bootloader
 # Vulkan support is only available on few selected arches atm.
 # Mask everywhere, unmask where appropriate.
 media-video/mpv -vulkan
-
-# Nick Sarnie <sarnex@gentoo.org> (2018-04-29)
-# media-libs/vulkan-loader and app-emulation/vkd3d are keyworded on amd64
-app-emulation/wine-staging -vulkan
-app-emulation/wine-vanilla -vkd3d -vulkan
 
 # Richard Yao <ryao@gentoo.org> (2018-04-16)
 # sys-fs/zfs is keyworded on amd64

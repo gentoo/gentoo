@@ -38,7 +38,7 @@ RDEPEND="${PYTHON_DEPS}
 	')
 "
 DEPEND="${RDEPEND}"
-#zip an gzip are directly used by the build system
+#zip and gzip are directly used by the build system
 BDEPEND="
 	doc? ( app-doc/doxygen )
 	$(python_gen_cond_dep '
@@ -96,9 +96,11 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	python_optimize
-	use utils && python_fix_shebang "${ED}"/usr/$(get_libdir)/${PN}/utils/
-	if [[ "${PV}" != "9999" ]]; then
-		rm -r "${ED}/usr/bin/uhd_images_downloader" || die
+	if use utils; then
+		python_fix_shebang "${ED}"/usr/$(get_libdir)/${PN}/utils/
+		if [[ "${PV}" != "9999" ]]; then
+			rm -r "${ED}/usr/bin/uhd_images_downloader" || die
+		fi
 	fi
 	# do not install test files (bug #857492)
 	if use test; then

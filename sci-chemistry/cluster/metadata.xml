@@ -6,13 +6,13 @@
     <name>Gentoo Chemistry Project</name>
   </maintainer>
   <longdescription>
-Cluster is a simple UNIX C++ program to build lists of collections
-of interacting items from records containing interacting pairs
-and larger fragments.
+  Cluster is a simple UNIX C++ program to build lists of collections
+  of interacting items from records containing interacting pairs
+  and larger fragments.
 
-It reads in lines consisting of two or more names and output
-connected clusters of names. Each line of output is
-prefixed with a cluster number, the size of the cluster
-and an optional name string.
-</longdescription>
+  It reads in lines consisting of two or more names and output
+  connected clusters of names. Each line of output is
+  prefixed with a cluster number, the size of the cluster
+  and an optional name string.
+  </longdescription>
 </pkgmetadata>

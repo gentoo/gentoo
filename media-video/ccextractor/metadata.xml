@@ -6,8 +6,8 @@
 		<name>Gentoo Video project</name>
 	</maintainer>
 	<longdescription lang="en">
-A tool that analyzes video files and produces independent subtitle files from the closed captions data.  Exports to SRT subtitle format.
-</longdescription>
+	A tool that analyzes video files and produces independent subtitle files from the closed captions data.  Exports to SRT subtitle format.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">ccextractor</remote-id>
 	</upstream>

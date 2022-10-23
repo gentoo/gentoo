@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/execnet[${PYTHON_USEDEP}]
-	dev-python/path-py[${PYTHON_USEDEP}]
+	dev-python/path[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/termcolor[${PYTHON_USEDEP}]
 "

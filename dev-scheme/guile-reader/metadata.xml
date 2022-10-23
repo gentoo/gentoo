@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-
 <pkgmetadata>
   <maintainer type="project">
     <email>scheme@gentoo.org</email>
@@ -17,4 +16,7 @@
     hopefully more powerful and flexible (for instance, one may instantiate as
     many readers as needed).
   </longdescription>
+  <upstream>
+    <remote-id type="savannah-nongnu">guile-reader</remote-id>
+  </upstream>
 </pkgmetadata>

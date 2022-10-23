@@ -45,6 +45,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/mingw64-runtime-10.0.0-tmp-files-clash.patch
 	"${FILESDIR}"/gcc-11.3.0-plugin-objdump.patch
+	"${FILESDIR}"/gcc-12.2.0-drop-cflags-sed.patch
 )
 
 pkg_pretend() {
@@ -187,6 +188,7 @@ src_compile() {
 				# cross-compiling, cleanup and let ./configure handle it
 				unset AR AS CC CPP CXX LD NM OBJCOPY OBJDUMP RANLIB RC STRIP
 				CHOST=${CTARGET}
+				filter-flags '-fstack-clash-protection' #758914
 				filter-flags '-fstack-protector*' #870136
 				filter-flags '-fuse-ld=*'
 				strip-unsupported-flags

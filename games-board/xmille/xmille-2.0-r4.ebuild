@@ -18,22 +18,22 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
 	app-text/rman
+	sys-devel/gcc
 	>=x11-misc/imake-1.0.8-r1
 "
 RDEPEND="x11-libs/libXext"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	default
-	eapply "${WORKDIR}"/${PN}_${PV}-${DEB_PATCH_VER}.diff
-}
+PATCHES=(
+	"${WORKDIR}"/${PN}_${PV}-${DEB_PATCH_VER}.diff
+)
 
 src_configure() {
 	# bug #858620
 	filter-lto
 
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
+		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 }
 
 src_compile() {

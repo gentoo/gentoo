@@ -4,6 +4,12 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Marek Szuba <marecki@gentoo.org> (2022-09-25)
+# This depends on app-admin/ansible-molecule, which is not stable yet.
+# Moreover, all but the most recent versions of ansible-molecule
+# depend in turn on subprocess-tee.
+dev-python/subprocess-tee test-full
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-09-16)
 # app-emacs/flycheck is not stable
 dev-util/pkgcheck emacs
@@ -16,11 +22,6 @@ sci-electronics/kicad ngspice
 # Matt Turner <mattst88@gentoo.org> (2022-05-11)
 # app-text/pandoc is not stable
 app-text/nuspell doc
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-05-05)
-# fop[test] depends on mockito:4, which is not yet stable (bug #727504),
-# and itself blocked by libffi stabilization (bug #813756).
-dev-java/fop test
 
 # Sam James <sam@gentoo.org> (2022-02-11)
 # Needs glibc-2.35(?) (or <2.34) which is not yet even keyworded but
@@ -186,10 +187,6 @@ dev-php/PEAR-Text_Password test
 # Requires unmaintained unstable dependency net-libs/gloox.
 # The go flag requires stable masked dev-lang/go[gccgo].
 www-servers/uwsgi go uwsgi_plugins_alarm_xmpp
-
-# Michael Palimaka <kensington@gentoo.org> (2017-09-30)
-# Required dependeny is not stable
-sci-libs/gdal mdb
 
 # Tim Harder <radhermit@gentoo.org> (2017-09-11)
 # Requires guile-2 which is still unstable.

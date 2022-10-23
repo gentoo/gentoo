@@ -20,7 +20,7 @@
 		<flag name="iproute2">Use <pkg>sys-apps/iproute2</pkg> instead of <pkg>sys-apps/net-tools</pkg> for interaction.</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://sourceforge.net/p/ddclient/bugs/</bugs-to>
-		<remote-id type="sourceforge">ddclient</remote-id>
+		<bugs-to>https://github.com/ddclient/ddclient/issues</bugs-to>
+		<remote-id type="github">ddclient/ddclient</remote-id>
 	</upstream>
 </pkgmetadata>

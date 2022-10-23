@@ -21,7 +21,9 @@ S="${WORKDIR}/wxWidgets-${PV}"
 LICENSE="wxWinLL-3 GPL-2 doc? ( wxWinFDL-3 )"
 SLOT="${WXRELEASE}"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
-IUSE="+X doc debug gstreamer libnotify opengl pch sdl tiff webkit"
+IUSE="+X doc debug gstreamer libnotify opengl pch sdl test tiff webkit"
+REQUIRED_USE="test? ( tiff ) tiff? ( X )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=app-eselect/eselect-wxwidgets-20131230
@@ -52,6 +54,7 @@ DEPEND="${RDEPEND}
 	opengl? ( virtual/glu[${MULTILIB_USEDEP}] )
 	X? ( x11-base/xorg-proto )"
 BDEPEND="
+	test? ( >=dev-util/cppunit-1.8.0 )
 	>=app-eselect/eselect-wxwidgets-20131230
 	virtual/pkgconfig"
 
@@ -59,6 +62,7 @@ PATCHES=(
 	"${WORKDIR}"/wxGTK-3.0.5_p20210214/
 	"${FILESDIR}"/wxGTK-${SLOT}-translation-domain.patch
 	"${FILESDIR}"/wxGTK-ignore-c++-abi.patch #676878
+	"${FILESDIR}/${PN}-configure-tests.patch"
 )
 
 src_prepare() {
@@ -72,7 +76,7 @@ src_prepare() {
 		-e "s:aclocal):aclocal/wxwin${WXRELEASE_NODOT}.m4):" \
 		-e "s:wxstd.mo:wxstd${WXRELEASE_NODOT}.mo:" \
 		-e "s:wxmsw.mo:wxmsw${WXRELEASE_NODOT}.mo:" \
-		Makefile.in || die
+		Makefile.in tests/Makefile.in || die
 
 	sed -i \
 		-e "s:\(WX_RELEASE = \).*:\1${WXRELEASE}:"\
@@ -128,12 +132,18 @@ multilib_src_configure() {
 		$(use_with libnotify)
 		$(use_with opengl)
 		$(use_with tiff libtiff sys)
+		$(use_enable test tests)
 	)
 
 	# wxBase options
 	! use X && myeconfargs+=( --disable-gui )
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+multilib_src_test() {
+	emake -C tests
+	(cd tests && ./test) || die
 }
 
 multilib_src_install_all() {

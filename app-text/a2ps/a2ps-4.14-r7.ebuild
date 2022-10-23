@@ -37,7 +37,7 @@ src_prepare() {
 	default
 
 	eapply "${FILESDIR}"/${PN}-4.13c-locale-gentoo.diff
-	use vanilla || eapply -p0 "${FILESDIR}"/${PN}-4.13-stdout.diff
+	use vanilla || eapply "${FILESDIR}"/${P}-stdout.patch
 	if use cjk; then
 		eapply "${WORKDIR}"/${P}-ja_nls.patch
 		# bug #335803
@@ -62,7 +62,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${P}-check-mempcpy.patch
 
 	# fix compilation error due to invalid stpcpy() prototype, bug 216588
-	eapply -p0 "${FILESDIR}"/${P}-fix-stpcpy-proto.patch
+	eapply "${FILESDIR}"/${P}-fix-stpcpy-proto.patch
 
 	# fix compilation error due to obstack.h issue, bug 269638
 	eapply "${FILESDIR}"/${P}-ptrdiff_t.patch

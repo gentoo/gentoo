@@ -12,7 +12,7 @@
   <longdescription lang="en">
 jsonschema is an implementation of JSON Schema (currently in Draft 3) for
 Python (supporting 2.6+ including Python 3).
-</longdescription>
+  </longdescription>
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">jsonschema</remote-id>

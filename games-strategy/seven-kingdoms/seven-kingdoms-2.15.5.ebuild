@@ -16,7 +16,7 @@ SRC_URI="https://github.com/the3dfxdude/${MY_PN}/releases/download/v${MY_PV}/${M
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 DEPEND="net-libs/enet:1.3=
 	media-libs/libsdl2[X,video]

@@ -14,7 +14,7 @@ SRC_URI="https://linuxcontainers.org/downloads/lxcfs/${P}.tar.gz
 
 LICENSE="Apache-2.0 LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 IUSE="doc test"
 
 DEPEND="sys-fs/fuse:3"

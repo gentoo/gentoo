@@ -1,0 +1,11 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7ffe1065d5c..2ea9a5125e1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -708,3 +708,6 @@ add_tags(ctags
+   EXCLUDE_OPTS ${CTAG_EXCLUDES}
+   EXCLUDES "*.js" "*.css" ".tox" "python-common/build")
+ add_custom_target(tags DEPENDS ctags)
++
++# suppress warning in cmake.eclass
++set(UNUSED_VAR "${CMAKE_INSTALL_LIBDIR}")

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27 ruby30"
+USE_RUBY="ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_TASK_TEST="MT_NO_PLUGINS=true"
 
@@ -37,4 +37,6 @@ all_ruby_prepare() {
 	sed -i -e 's/git ls-files -z/find * -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	sed -i -e '/datetime.*created_at/ s:^:#:' test/helper.rb || die
+
+	sed -i -e '/bundler/ s:^:#:' Rakefile || die
 }

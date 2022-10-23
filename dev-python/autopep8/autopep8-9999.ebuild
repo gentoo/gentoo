@@ -24,6 +24,7 @@ SLOT="0"
 
 RDEPEND="
 	>=dev-python/pycodestyle-2.8.0[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]"
+	dev-python/tomli[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests unittest

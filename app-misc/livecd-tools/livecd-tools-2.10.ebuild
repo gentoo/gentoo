@@ -6,7 +6,7 @@ EAPI=7
 inherit linux-info
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/livecd-tools.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/proj/livecd-tools.git"
 	inherit git-r3
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/livecd-tools.git/snapshot/${P}.tar.bz2"

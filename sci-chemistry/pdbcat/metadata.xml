@@ -6,19 +6,19 @@
     <name>Gentoo Chemistry Project</name>
   </maintainer>
   <longdescription>
-The Brookhaven Protein Data Bank stores atomic coordinate information
-for protein structures in a column based format.  This is designed to
-be read easily read by FORTRAN programs.  Indeed, if you get the
-format description (from anonymous ftp to ftp.pdb.bnl.gov, the file
-/pub/format.desc.ps) they show the single input line needed to read
-each record type.
-However, I am a C/C++ programmer in the Unix environment.  It is a
-easier for me to deal with field based input than column based ones.
-If the fields are white space delimited I can easily use awk and perl
-to manipulate the coordinate information.  So I needed some way to
-convert the ATOM and HETATM records of PDB files from the standard
-column based format to a field based one and back again.  It needed
-to denote missing fields if they exist.
-That converter is `pdbcat'.
-</longdescription>
+  The Brookhaven Protein Data Bank stores atomic coordinate information
+  for protein structures in a column based format.  This is designed to
+  be read easily read by FORTRAN programs.  Indeed, if you get the
+  format description (from anonymous ftp to ftp.pdb.bnl.gov, the file
+  /pub/format.desc.ps) they show the single input line needed to read
+  each record type.
+  However, I am a C/C++ programmer in the Unix environment.  It is a
+  easier for me to deal with field based input than column based ones.
+  If the fields are white space delimited I can easily use awk and perl
+  to manipulate the coordinate information.  So I needed some way to
+  convert the ATOM and HETATM records of PDB files from the standard
+  column based format to a field based one and back again.  It needed
+  to denote missing fields if they exist.
+  That converter is `pdbcat'.
+  </longdescription>
 </pkgmetadata>

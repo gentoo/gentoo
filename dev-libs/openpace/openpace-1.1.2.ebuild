@@ -21,8 +21,9 @@ DEPEND="dev-libs/openssl:="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-openssl.patch
-	"${FILESDIR}"/${P}-openssl-3.0.patch
+	"${FILESDIR}"/${P}-openssl-3.0-1.patch
+	"${FILESDIR}"/${P}-openssl-3.0-2.patch
+	"${FILESDIR}"/${P}-openssl-3.0-3.patch
 )
 
 src_prepare() {

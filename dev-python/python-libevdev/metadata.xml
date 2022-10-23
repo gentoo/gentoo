@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>x11@gentoo.org</email>
-		<name>X11</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>python@gentoo.org</email>
-		<name>Python</name>
-	</maintainer>
-	<stabilize-allarches/>
-	<upstream>
-		<remote-id type="pypi">libevdev</remote-id>
-	</upstream>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">libevdev/python-libevdev</remote-id>
+    <remote-id type="pypi">libevdev</remote-id>
+  </upstream>
 </pkgmetadata>

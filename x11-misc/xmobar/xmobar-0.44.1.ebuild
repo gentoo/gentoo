@@ -15,7 +15,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="alsa dbus mpd mpris +rtsopts timezone uvmeter +weather wifi xft xpm"
 
 RDEPEND=">=dev-haskell/aeson-1.4.7.1:=[profile?]

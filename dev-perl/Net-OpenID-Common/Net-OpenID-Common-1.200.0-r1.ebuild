@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Libraries shared between Net::OpenID::Consumer and Net::OpenID::Server"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-perl/Crypt-DH-GMP-0.0.110

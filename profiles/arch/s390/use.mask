@@ -13,10 +13,6 @@
 mongodb
 
 # Sam James <sam@gentoo.org> (2022-04-24)
-# Avoid unkeyworded dev-util/google-perftools
-tcmalloc
-
-# Sam James <sam@gentoo.org> (2022-04-24)
 # Desktopy stacks not currently keyworded
 alsa
 gstreamer

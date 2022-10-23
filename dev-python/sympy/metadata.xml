@@ -18,12 +18,12 @@
     <name>Python</name>
   </maintainer>
   <longdescription>
- SymPy is a Python library for symbolic mathematics (manipulation). It
- aims to become a full-featured computer algebra system (CAS) while keeping
- the code as simple as possible in order to be comprehensible and easily
- extensible. SymPy is written entirely in Python and does not require
- any external libraries, except optionally for plotting support.
-</longdescription>
+  SymPy is a Python library for symbolic mathematics (manipulation). It
+  aims to become a full-featured computer algebra system (CAS) while keeping
+  the code as simple as possible in order to be comprehensible and easily
+  extensible. SymPy is written entirely in Python and does not require
+  any external libraries, except optionally for plotting support.
+  </longdescription>
   <stabilize-allarches/>
   <use>
     <flag name="aesara">Add support for <pkg>dev-python/aesara</pkg></flag>

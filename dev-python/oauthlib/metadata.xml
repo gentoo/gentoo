@@ -7,6 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:oauthlib_project:oauthlib</remote-id>
 		<remote-id type="pypi">oauthlib</remote-id>
 		<remote-id type="github">oauthlib/oauthlib</remote-id>
 	</upstream>

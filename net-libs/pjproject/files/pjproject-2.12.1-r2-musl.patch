@@ -1,0 +1,102 @@
+From aa54bd7ae0d60461cb5f434da1338faf315314f6 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sun, 9 Oct 2022 23:17:34 -0700
+Subject: [PATCH] Fix the build with musl
+
+The execinfo.h header is GNU specific and is not available with musl.
+
+This commit is based on a patch from Alpine Linux.
+
+https://git.alpinelinux.org/aports/tree/main/pjproject/execinfo.patch?h=3.16-stable
+
+Gentoo Issue: https://bugs.gentoo.org/867343
+---
+ pjlib-util/src/pjlib-util-test/main.c | 2 +-
+ pjlib/src/pjlib-test/main.c           | 2 +-
+ pjmedia/src/test/main.c               | 2 +-
+ pjnath/src/pjnath-test/main.c         | 2 +-
+ pjsip-apps/src/pjsua/main.c           | 2 +-
+ pjsip/src/test/main.c                 | 2 +-
+ 6 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/pjlib-util/src/pjlib-util-test/main.c b/pjlib-util/src/pjlib-util-test/main.c
+index 4aeb3e07d..780db4d33 100644
+--- a/pjlib-util/src/pjlib-util-test/main.c
++++ b/pjlib-util/src/pjlib-util-test/main.c
+@@ -33,7 +33,7 @@ static void init_signals()
+     sigaction(SIGALRM, &act, NULL);
+ }
+ 
+-#elif PJ_LINUX || PJ_DARWINOS
++#elif __GLIBC__ || PJ_DARWINOS
+ 
+ #include <execinfo.h>
+ #include <signal.h>
+diff --git a/pjlib/src/pjlib-test/main.c b/pjlib/src/pjlib-test/main.c
+index d5f853a60..76a077037 100644
+--- a/pjlib/src/pjlib-test/main.c
++++ b/pjlib/src/pjlib-test/main.c
+@@ -54,7 +54,7 @@ static void init_signals()
+     sigaction(SIGALRM, &act, NULL);
+ }
+ 
+-#elif PJ_LINUX || PJ_DARWINOS
++#elif __GLIBC__ || PJ_DARWINOS
+ 
+ #include <execinfo.h>
+ #include <signal.h>
+diff --git a/pjmedia/src/test/main.c b/pjmedia/src/test/main.c
+index 8d6353b15..b16023761 100644
+--- a/pjmedia/src/test/main.c
++++ b/pjmedia/src/test/main.c
+@@ -32,7 +32,7 @@
+ #endif
+ 
+ 
+-#if PJ_LINUX || PJ_DARWINOS
++#if __GLIBC__ || PJ_DARWINOS
+ 
+ #include <execinfo.h>
+ #include <signal.h>
+diff --git a/pjnath/src/pjnath-test/main.c b/pjnath/src/pjnath-test/main.c
+index d783669e5..f6c906166 100644
+--- a/pjnath/src/pjnath-test/main.c
++++ b/pjnath/src/pjnath-test/main.c
+@@ -32,7 +32,7 @@ static void init_signals()
+     sigaction(SIGALRM, &act, NULL);
+ }
+ 
+-#elif PJ_LINUX || PJ_DARWINOS
++#elif __GLIBC__ || PJ_DARWINOS
+ 
+ #include <execinfo.h>
+ #include <signal.h>
+diff --git a/pjsip-apps/src/pjsua/main.c b/pjsip-apps/src/pjsua/main.c
+index bb8ddc345..fcc1e8f34 100644
+--- a/pjsip-apps/src/pjsua/main.c
++++ b/pjsip-apps/src/pjsua/main.c
+@@ -80,7 +80,7 @@ static void setup_signal_handler(void)
+     SetConsoleCtrlHandler(&CtrlHandler, TRUE);
+ }
+ 
+-#elif PJ_LINUX || PJ_DARWINOS
++#elif __GLIBC__ || PJ_DARWINOS
+ 
+ #include <execinfo.h>
+ #include <signal.h>
+diff --git a/pjsip/src/test/main.c b/pjsip/src/test/main.c
+index 18e4c9255..255667dda 100644
+--- a/pjsip/src/test/main.c
++++ b/pjsip/src/test/main.c
+@@ -36,7 +36,7 @@ static void usage(void)
+     list_tests();
+ }
+ 
+-#if PJ_LINUX || PJ_DARWINOS
++#if __GLIBC__ || PJ_DARWINOS
+ 
+ #include <execinfo.h>
+ #include <signal.h>
+-- 
+2.35.1
+

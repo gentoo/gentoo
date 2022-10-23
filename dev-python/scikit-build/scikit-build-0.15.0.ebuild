@@ -28,7 +28,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/cython[${PYTHON_USEDEP}]
-		dev-python/path-py[${PYTHON_USEDEP}]
+		dev-python/path[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]

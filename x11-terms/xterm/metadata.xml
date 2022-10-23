@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>x11@gentoo.org</email>
-		<name>X11</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="openpty">Use openpty() in preference to posix_openpt()</flag>
 		<flag name="sixel">Enable sixel graphics support</flag>

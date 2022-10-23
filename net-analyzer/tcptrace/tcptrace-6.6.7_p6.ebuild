@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ DESCRIPTION="A Tool for analyzing network packet dumps"
 HOMEPAGE="http://www.tcptrace.org/"
 SRC_URI="
 	http://www.tcptrace.org/download/${P/_p*}.tar.gz
-	http://www.tcptrace.org/download/old/6.6/${P/_p*}.tar.gz
+	http://www.tcptrace.org/download/old/$(ver_cut 1-2)/${P/_p*}.tar.gz
 	mirror://debian/pool/main/t/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz
 "
 

@@ -1,0 +1,51 @@
+From f475a4b24a166d7582163753bc2f4f254257daed Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Novomesk=C3=BD?= <dnovomesky@gmail.com>
+Date: Tue, 11 Oct 2022 14:36:17 +0200
+Subject: [PATCH] avif: revert 9ac923ad09316dcca0fc11e0be6b3dfc6cce6ca0 commit
+
+Changes to libavif's avifImageRGBToYUV() API were reverted too.
+---
+ src/imageformats/avif.cpp | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
+
+diff --git a/src/imageformats/avif.cpp b/src/imageformats/avif.cpp
+index ccb4c56..7721c1b 100644
+--- a/src/imageformats/avif.cpp
++++ b/src/imageformats/avif.cpp
+@@ -336,7 +336,7 @@ bool QAVIFHandler::decode_one_frame()
+         rgb.format = AVIF_RGB_FORMAT_ARGB;
+ #endif
+ 
+-#if (AVIF_VERSION >= 80400) && (AVIF_VERSION <= 100100)
++#if AVIF_VERSION >= 80400
+         if (m_decoder->imageCount > 1) {
+             /* accelerate animated AVIF */
+             rgb.chromaUpsampling = AVIF_CHROMA_UPSAMPLING_FASTEST;
+@@ -351,12 +351,7 @@ bool QAVIFHandler::decode_one_frame()
+     rgb.rowBytes = result.bytesPerLine();
+     rgb.pixels = result.bits();
+ 
+-#if AVIF_VERSION >= 100101
+-    // use faster decoding for animations
+-    avifResult res = avifImageYUVToRGB(m_decoder->image, &rgb, (m_decoder->imageCount > 1) ? AVIF_CHROMA_UPSAMPLING_NEAREST : AVIF_YUV_TO_RGB_DEFAULT);
+-#else
+     avifResult res = avifImageYUVToRGB(m_decoder->image, &rgb);
+-#endif
+     if (res != AVIF_RESULT_OK) {
+         qWarning("ERROR in avifImageYUVToRGB: %s", avifResultToString(res));
+         return false;
+@@ -782,11 +777,7 @@ bool QAVIFHandler::write(const QImage &image)
+             }
+         }
+ 
+-#if AVIF_VERSION >= 100101
+-        res = avifImageRGBToYUV(avif, &rgb, AVIF_RGB_TO_YUV_DEFAULT);
+-#else
+         res = avifImageRGBToYUV(avif, &rgb);
+-#endif
+         if (res != AVIF_RESULT_OK) {
+             qWarning("ERROR in avifImageRGBToYUV: %s", avifResultToString(res));
+             return false;
+-- 
+GitLab
+

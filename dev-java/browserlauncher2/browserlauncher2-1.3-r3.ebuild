@@ -8,12 +8,12 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A library that facilitates opening a browser from a Java application"
-HOMEPAGE="http://browserlaunch2.sourceforge.net/"
+HOMEPAGE="https://browserlaunch2.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/project/browserlaunch2/browserlauncher2/${PV}/BrowserLauncher2-all-${PV//./_}.jar"
 
 LICENSE="LGPL-2.1"
 SLOT="1.0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"

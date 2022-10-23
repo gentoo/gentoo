@@ -17,7 +17,8 @@ IUSE="+ocamlopt"
 DEPEND="
 	dev-ml/base:=
 	dev-ml/ppxlib:=
-		dev-ml/ocaml-migrate-parsetree:=
-		dev-ml/result:=
+	dev-ml/ocaml-migrate-parsetree:=
+	dev-ml/result:=
+	dev-ml/sexplib0:=
 "
 RDEPEND="${DEPEND}"

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>x11@gentoo.org</email>
-	<name>X11</name>
-</maintainer>
-<maintainer type="person">
-	<email>marecki@gentoo.org</email>
-	<name>Marek Szuba</name>
-</maintainer>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>marecki@gentoo.org</email>
+    <name>Marek Szuba</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">KhronosGroup/OpenCL-CLHPP</remote-id>
+  </upstream>
 </pkgmetadata>

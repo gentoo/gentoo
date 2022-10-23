@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2022-09-30)
+# No ruby on ia64 for dev-ruby/asciidoctor
+net-misc/chrony html
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
 # deps not keyworded
 dev-util/pkgcheck emacs
@@ -26,10 +30,6 @@ app-text/enchant nuspell
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # net-misc/freerdp is not keyworded
 dev-libs/weston rdp
-
-# Matt Turner <mattst88@gentoo.org> (2022-04-16)
-# sys-auth/seatd is not keyworded
-dev-libs/weston seatd
 
 # Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
 # gnome-base/librsvg missing keywords
@@ -135,7 +135,8 @@ media-libs/libsdl2 fcitx4
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-09-18)
 # media-libs/libilbc is not ported to ia64
-net-analyzer/wireshark ilbc
+# nor is Qt
+net-analyzer/wireshark gui ilbc
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
@@ -181,7 +182,7 @@ gnome-base/nautilus previewer
 # - net-libs/gnome-online-accounts: depends on webkit-gtk
 gnome-base/gvfs google
 # app-text/libgepub depends on webkit-gtk.
-xfce-extra/tumbler epub
+xfce-base/tumbler epub
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-15)
 # Mask USE=libtesseract, app-text/tesseract is not keyworded
@@ -279,10 +280,6 @@ media-video/mplayer dvdnav
 # Michał Górny <mgorny@gentoo.org> (2017-08-07)
 # Requires USE=v4l that is masked in this profile.
 media-video/ffmpeg libv4l
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2017-07-20)
-# pulls in unkeyworded java
-sci-libs/gdal mdb
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-07-20)
 # pulls in unkeyworded lapack

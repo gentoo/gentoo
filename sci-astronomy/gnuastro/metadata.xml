@@ -17,4 +17,7 @@
     installing and command-line user interaction that they have seen
     in all the other GNU software that they use.
   </longdescription>
+  <upstream>
+    <remote-id type="savannah">gnuastro</remote-id>
+  </upstream>
 </pkgmetadata>

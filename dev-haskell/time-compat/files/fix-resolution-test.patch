@@ -1,0 +1,49 @@
+https://github.com/haskellari/time-compat/pull/33
+
+From 9f7aa0a5937b800402359c3e82f4bee296ae8e06 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Fri, 16 Sep 2022 11:19:20 -0400
+Subject: [PATCH] Backport 6516a35 "fix resolution test" from time
+
+The upstream version of time was incorrect in newer versions until
+https://github.com/haskell/time/commit/6516a35b3d8cad14a21a559a5d2fc22ddda32fcc.
+Because the compat implementation was correct and the upstream version
+of time is now logically identical, simply replace both versions with
+the current upstream time implementation.
+
+See https://github.com/haskellari/time-compat/issues/31 for details on
+which platforms the distinction matters.  Does NOT close that issue
+though, because the original issue is for platforms on which the actual
+resolution is less precise than the expected, and this will only fix
+platforms on which the actual resolution is more precise.
+---
+ test/main/Test/Clock/Resolution.hs | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/test/main/Test/Clock/Resolution.hs b/test/main/Test/Clock/Resolution.hs
+index aab756b..4c0b1dd 100644
+--- a/test/main/Test/Clock/Resolution.hs
++++ b/test/main/Test/Clock/Resolution.hs
+@@ -25,7 +25,7 @@ gcdAll :: Real a => [a] -> a
+ gcdAll = foldr gcd' 0
+ 
+ testResolution :: (Show dt, Real dt) => String -> (at -> at -> dt) -> (dt, IO at) -> TestTree
+-testResolution name timeDiff (res, getTime) =
++testResolution name timeDiff (reportedRes, getTime) =
+     testCase name $ do
+         t0 <- getTime
+         times0 <-
+@@ -53,11 +53,8 @@ testResolution name timeDiff (res, getTime) =
+                 threadDelay 1000 -- 1ms
+                 getTime
+         let times = fmap (\t -> timeDiff t t0) $ times0 ++ times1 ++ times2 ++ times3 ++ times4
+-#if MIN_VERSION_time(1,8,0)
+-        assertEqual "resolution" res $ gcdAll times
+-#else
+-        assertBool ("resolution " ++ show (res, gcdAll times)) (res >= gcdAll times)
+-#endif
++            foundGrid = gcdAll times
++        assertBool ("resolution " ++ show (reportedRes, foundGrid)) (foundGrid <= reportedRes)
+ 
+ testResolutions :: TestTree
+ testResolutions =

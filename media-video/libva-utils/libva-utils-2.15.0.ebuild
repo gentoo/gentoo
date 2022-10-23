@@ -12,7 +12,7 @@ if [[ ${PV} = *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/intel/libva-utils"
 else
 	SRC_URI="https://github.com/intel/libva-utils/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm64 ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"
@@ -31,9 +31,9 @@ DEPEND="
 	X? ( >=x11-libs/libX11-1.6.2 )
 "
 if [[ ${PV} = *9999 ]] ; then
-	DEPEND+="~x11-libs/libva-${PV}:=[drm(+),wayland?,X?]"
+	DEPEND+="~media-libs/libva-${PV}:=[drm(+),wayland?,X?]"
 else
-	DEPEND+=">=x11-libs/libva-$(ver_cut 1-2).0:=[drm(+),wayland?,X?]"
+	DEPEND+=">=media-libs/libva-$(ver_cut 1-2).0:=[drm(+),wayland?,X?]"
 fi
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"

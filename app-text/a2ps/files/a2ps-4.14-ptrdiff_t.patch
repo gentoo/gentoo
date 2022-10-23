@@ -1,4 +1,6 @@
-diff -uNr a2ps-4.14/lib/obstack.h a2ps-4.14.test/lib/obstack.h
+fix compilation error due to obstack.h issue
+https://bugs.gentoo.org/269638
+
 --- a2ps-4.14/lib/obstack.h	2007-12-29 09:37:59.000000000 +0800
 +++ a2ps-4.14.test/lib/obstack.h	2009-06-10 18:49:45.000000000 +0900
 @@ -138,9 +138,9 @@

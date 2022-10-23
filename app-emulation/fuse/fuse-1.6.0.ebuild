@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic xdg
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/fuse-emulator/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 IUSE="alsa ao backend-X backend-fbcon +backend-gtk3 backend-sdl backend-svga gpm joystick memlimit png pulseaudio +xml +zlib"
 
 # TODO:
@@ -64,7 +64,8 @@ _fuse_audio_driver() {
 }
 
 src_prepare() {
-	xdg_src_prepare
+	default
+	xdg_environment_reset
 	eautoreconf
 
 	# Bug #854522

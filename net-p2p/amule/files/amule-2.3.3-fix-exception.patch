@@ -1,0 +1,12 @@
+diff --git a/src/libs/common/MuleDebug.cpp b/src/libs/common/MuleDebug.cpp
+index 4b023815c..19c172e61 100644
+--- a/src/libs/common/MuleDebug.cpp
++++ b/src/libs/common/MuleDebug.cpp
+@@ -55,6 +55,7 @@
+ #endif
+ 
+ #include <vector>
++#include <exception>
+ 
+ 
+ /**

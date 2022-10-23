@@ -15,7 +15,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/hslua-aeson-2.2:=[profile?] <dev-haskell/hslua-aeson-2.3:=[profile?]
 	>=dev-haskell/hslua-classes-2.2:=[profile?] <dev-haskell/hslua-classes-2.3:=[profile?]

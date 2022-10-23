@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-10-04)
+# net-misc/netkit-rsh is masked on musl and USE=-crypt depends on it
+sys-cluster/torque crypt
+
 # Esteve Varela Colominas <esteve.varela@gmail.com> (2022-02-19)
 # The musl allocator works well with telegram
 net-im/telegram-desktop -jemalloc

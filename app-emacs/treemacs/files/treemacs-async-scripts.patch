@@ -1,0 +1,29 @@
+--- a/src/elisp/treemacs-async.el
++++ b/src/elisp/treemacs-async.el
+@@ -43,22 +43,22 @@
+ (defconst treemacs--dirs-to-collapse.py
+   (if (member "treemacs-dirs-to-collapse.py" (directory-files treemacs-dir))
+       (treemacs-join-path treemacs-dir "treemacs-dirs-to-collapse.py")
+-    (treemacs-join-path treemacs-dir "src/scripts/treemacs-dirs-to-collapse.py")))
++    (treemacs-join-path treemacs-dir "@SITEETC@/scripts/treemacs-dirs-to-collapse.py")))
+ 
+ (defconst treemacs--git-status.py
+   (if (member "treemacs-git-status.py" (directory-files treemacs-dir))
+       (treemacs-join-path treemacs-dir "treemacs-git-status.py")
+-    (treemacs-join-path treemacs-dir "src/scripts/treemacs-git-status.py")))
++    (treemacs-join-path treemacs-dir "@SITEETC@/scripts/treemacs-git-status.py")))
+ 
+ (defconst treemacs--single-file-git-status.py
+   (if (member "treemacs-single-file-git-status.py" (directory-files treemacs-dir))
+       (treemacs-join-path treemacs-dir "treemacs-single-file-git-status.py")
+-    (treemacs-join-path treemacs-dir "src/scripts/treemacs-single-file-git-status.py")))
++    (treemacs-join-path treemacs-dir "@SITEETC@/scripts/treemacs-single-file-git-status.py")))
+ 
+ (defconst treemacs--find-ignored-files.py
+   (if (member "treemacs-find-ignored-files.py" (directory-files treemacs-dir))
+       (treemacs-join-path treemacs-dir "treemacs-find-ignored-files.py")
+-    (treemacs-join-path treemacs-dir "src/scripts/treemacs-find-ignored-files.py")))
++    (treemacs-join-path treemacs-dir "@SITEETC@/scripts/treemacs-find-ignored-files.py")))
+ 
+ (defvar treemacs--git-cache-max-size 60
+   "Maximum size for `treemacs--git-cache'.

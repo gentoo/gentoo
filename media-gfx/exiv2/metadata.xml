@@ -15,5 +15,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">Exiv2/exiv2</remote-id>
+		<remote-id type="cpe">cpe:/a:exiv2:exiv2</remote-id>
 	</upstream>
 </pkgmetadata>

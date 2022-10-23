@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'https://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>jay@jvf.cc</email>
+		<name>Jay Faulkner</name>
+	</maintainer>
+		<maintainer type="person" proxied="yes">
+		<email>duje.mihanovic@skole.hr</email>
+		<name>Duje Mihanović</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		TLP is a command line utility for Linux to optimize laptop battery life. Primarily by tweaking
+		kernel settings that affect power consumption.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">linrunner/TLP</remote-id>
+	</upstream>
+</pkgmetadata>

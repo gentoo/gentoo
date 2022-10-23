@@ -13,5 +13,5 @@
   that has found extensive use in the scientific community.
   This package installs the reference C implementation from Netlib,
   generated from f2c. 
-</longdescription>
+  </longdescription>
 </pkgmetadata>

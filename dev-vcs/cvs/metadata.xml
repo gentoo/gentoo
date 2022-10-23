@@ -5,4 +5,7 @@
   <use>
     <flag name="server">Enable server support</flag>
   </use>
+  <upstream>
+    <remote-id type="savannah">cvs</remote-id>
+  </upstream>
 </pkgmetadata>

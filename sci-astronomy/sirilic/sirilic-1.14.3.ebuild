@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-V${PV//./_}"
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND="dev-python/wxpython:4.0[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"

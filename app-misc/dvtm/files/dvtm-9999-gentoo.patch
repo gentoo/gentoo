@@ -1,6 +1,6 @@
 --- a/config.mk
 +++ b/config.mk
-@@ -7,8 +7,8 @@
+@@ -7,8 +7,9 @@ MANPREFIX = ${PREFIX}/share/man
  TERMINFO := ${DESTDIR}${PREFIX}/share/terminfo
  
  INCS = -I.
@@ -8,6 +8,7 @@
 -CPPFLAGS = -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -D_XOPEN_SOURCE_EXTENDED
 +LIBS = -lc -lutil $(shell $(PKG_CONFIG) --libs ncursesw)
 +CPPFLAGS += -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -D_XOPEN_SOURCE_EXTENDED
++CPPFLAGS += $(shell $(PKG_CONFIG) --cflags ncursesw)
  CFLAGS += -std=c99 ${INCS} -DNDEBUG ${CPPFLAGS}
  
  CC ?= cc

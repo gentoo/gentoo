@@ -18,7 +18,7 @@ S="${WORKDIR}/CGNS-${PV}"
 
 LICENSE="ZLIB"
 SLOT="0/4"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="base-scope debug examples fortran hdf5 legacy mpi scoping szip test tools"
 
 RDEPEND="

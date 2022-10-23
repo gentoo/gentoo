@@ -139,6 +139,7 @@ src_prepare() {
 	# it's still relevant:
 	# - https://github.com/llvm/llvm-project/issues/55255
 	# - https://github.com/openssl/openssl/issues/18225
+	# - https://github.com/openssl/openssl/issues/18663#issuecomment-1181478057
 	# Don't remove the no strict aliasing bits below!
 	filter-flags -fstrict-aliasing
 	append-flags -fno-strict-aliasing
@@ -177,6 +178,18 @@ multilib_src_configure() {
 	use_ssl() { usex $1 "enable-${2:-$1}" "no-${2:-$1}" " ${*:3}" ; }
 
 	local krb5=$(has_version app-crypt/mit-krb5 && echo "MIT" || echo "Heimdal")
+
+	# See if our toolchain supports __uint128_t.  If so, it's 64bit
+	# friendly and can use the nicely optimized code paths, bug #460790.
+	#local ec_nistp_64_gcc_128
+	#
+	# Disable it for now though (bug #469976)
+	# Do NOT re-enable without substantial discussion first!
+	#
+	#echo "__uint128_t i;" > "${T}"/128.c
+	#if ${CC} ${CFLAGS} -c "${T}"/128.c -o /dev/null >&/dev/null ; then
+	#       ec_nistp_64_gcc_128="enable-ec_nistp_64_gcc_128"
+	#fi
 
 	local sslout=$(./gentoo.config)
 	einfo "Using configuration: ${sslout:-(openssl knows best)}"

@@ -35,7 +35,7 @@ BDEPEND="
 "
 
 python_check_deps() {
-	has_version "ros-meta/ament_cmake[${PYTHON_USEDEP}]"
+	python_has_version "ros-meta/ament_cmake[${PYTHON_USEDEP}]"
 }
 
 src_configure() {

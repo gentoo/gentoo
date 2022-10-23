@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit edo bash-completion-r1 elisp-common python-any-r1 toolchain-funcs
+inherit edo bash-completion-r1 elisp-common flag-o-matic python-any-r1 toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ninja-build/ninja.git"
@@ -58,6 +58,8 @@ src_compile() {
 
 	# configure.py appends CFLAGS to CXXFLAGS
 	unset CFLAGS
+
+	append-lfs-flags
 
 	run_for_build ${EPYTHON} configure.py --bootstrap --verbose || die
 

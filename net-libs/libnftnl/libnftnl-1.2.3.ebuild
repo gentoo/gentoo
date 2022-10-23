@@ -17,7 +17,7 @@ else
 		https://netfilter.org/projects/${PN}/files/${P}.tar.bz2
 		verify-sig? ( https://netfilter.org/projects/${PN}/files/${P}.tar.bz2.sig )
 	"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 fi

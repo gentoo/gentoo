@@ -1,0 +1,21 @@
+Python3.10 related fix taken from upstream [1,2].
+
+[1] https://github.com/cea-hpc/clustershell/pull/487
+[2] https://github.com/cea-hpc/clustershell/commit/5ac85daf74056ec7e60778efec94c746a150142c
+
+diff --git a/tests/CLIConfigTest.py b/tests/CLIConfigTest.py
+index 2853398..db6cec5 100644
+--- a/tests/CLIConfigTest.py
++++ b/tests/CLIConfigTest.py
+@@ -229,7 +229,7 @@ class CLIClushConfigTest(unittest.TestCase):
+         display = Display(options, config)
+ 
+         # force a lower soft limit
+-        resource.setrlimit(resource.RLIMIT_NOFILE, (hard2/2, hard))
++        resource.setrlimit(resource.RLIMIT_NOFILE, (hard2//2, hard))
+         # max_fdlimit should increase soft limit again
+         set_fdlimit(config.fd_max, display)
+         # verify
+-- 
+2.35.1
+

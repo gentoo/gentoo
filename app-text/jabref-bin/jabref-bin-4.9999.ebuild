@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils java-pkg-2
+inherit desktop java-pkg-2
 
 DESCRIPTION="Java GUI manages bibliographies in a BibTeX database"
 HOMEPAGE="http://www.jabref.org/"

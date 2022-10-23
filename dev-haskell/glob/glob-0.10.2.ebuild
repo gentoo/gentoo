@@ -24,7 +24,7 @@ SRC_URI="https://hackage.haskell.org/package/${CABAL_P}/${CABAL_P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND=">=dev-haskell/dlist-0.4:=[profile?]
 	>=dev-haskell/transformers-compat-0.3:=[profile?]

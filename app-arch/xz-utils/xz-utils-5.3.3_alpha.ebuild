@@ -38,10 +38,6 @@ LICENSE="public-domain LGPL-2.1+ GPL-2+"
 SLOT="0"
 IUSE="+extra-filters nls static-libs"
 
-RDEPEND="!<app-arch/lzma-4.63
-	!<app-arch/p7zip-4.57
-	!<app-i18n/man-pages-de-2.16"
-DEPEND="${RDEPEND}"
 if [[ ${PV} != 9999 ]] ; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-lassecollin )"
 fi

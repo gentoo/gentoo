@@ -35,6 +35,10 @@ DEPEND="${RDEPEND}
 	abi_x86_64? ( ${ASM_DEP} )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.0.0-fix-avx2-flags.patch"
+)
+
 src_prepare() {
 	default
 	sed -e "/^dist_doc_DATA/s/COPYING //" -i Makefile.am || die

@@ -15,7 +15,7 @@
   blockwise iLU(k) factorization that can be used as a parallel
   preconditioner using approximated supernodes to build a coarser
   block structure of the incomplete factors.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="cuda">Enable GPU support using CUDA kernels</flag>
     <flag name="fortran">Install the Fortran interface</flag>

@@ -22,15 +22,15 @@ RDEPEND="
 	<dev-ml/jst-config-0.15.0
 	>=dev-ml/ppx_optcomp-0.14.3:=
 	dev-ml/base:=
-	dev-ml/base_bigstring:=
+	=dev-ml/base_bigstring-0.14*:=
 	dev-ml/base_quickcheck:=
 	dev-ml/bin_prot:=
 	dev-ml/fieldslib:=
 	dev-ml/jane-street-headers:=
 	dev-ml/ocaml-migrate-parsetree:=
-	dev-ml/ppx_assert:=
-	dev-ml/ppx_base:=
-	dev-ml/ppx_hash:=
+	=dev-ml/ppx_assert-0.14*:=
+	=dev-ml/ppx_base-0.14*:=
+	=dev-ml/ppx_hash-0.14*:=
 	dev-ml/ppx_inline_test:=
 	dev-ml/ppx_jane:=
 	dev-ml/ppx_sexp_conv:=

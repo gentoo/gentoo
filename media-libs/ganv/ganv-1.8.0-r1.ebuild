@@ -7,8 +7,8 @@ PYTHON_REQ_USE='threads(+)'
 inherit flag-o-matic waf-utils python-any-r1
 
 DESCRIPTION="A GTK+ widget for interactive graph-like environments"
-HOMEPAGE="http://drobilla.net/software/ganv/"
-SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
+HOMEPAGE="https://drobilla.net/software/ganv.html"
+SRC_URI="https://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"

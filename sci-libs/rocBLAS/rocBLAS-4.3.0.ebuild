@@ -38,8 +38,8 @@ DEPEND="
 RESTRICT="!test? ( test )"
 
 python_check_deps() {
-	has_version "dev-python/pyyaml[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/msgpack[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/msgpack[${PYTHON_USEDEP}]"
 }
 
 S="${WORKDIR}"/${PN}-rocm-${PV}

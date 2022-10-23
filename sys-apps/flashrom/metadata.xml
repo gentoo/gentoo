@@ -56,4 +56,7 @@
 		Speed. flashrom is often much faster than most vendor flash tools.
 		Portability. Supports DOS, Linux, FreeBSD, NetBSD, OpenBSD, DragonFly BSD, Solaris, Mac OS X, and other Unix-like OSes. Partial Windows support is available (no internal programmer support at the moment, hence no "BIOS flashing").
 	</longdescription>
+	<upstream>
+		<remote-id type="github">flashrom/flashrom</remote-id>
+	</upstream>
 </pkgmetadata>

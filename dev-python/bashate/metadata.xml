@@ -16,5 +16,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">bashate</remote-id>
+		<remote-id type="github">openstack/bashate</remote-id>
 	</upstream>
 </pkgmetadata>

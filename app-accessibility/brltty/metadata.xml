@@ -17,6 +17,7 @@
 </use>
 <upstream>
   <remote-id type="cpe">cpe:/a:mielke:brltty</remote-id>
+  <remote-id type="github">brltty/brltty</remote-id>
 </upstream>
 <longdescription lang="en">
 BRLTTY is a background process (daemon) which provides access to the Linux/Unix

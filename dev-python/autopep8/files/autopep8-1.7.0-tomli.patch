@@ -1,0 +1,57 @@
+From d0836947df66a052a1d18925a64feb0374598f02 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 6 Apr 2022 18:30:11 +0200
+Subject: [PATCH] Use tomli in place of unmaintained toml package
+
+Use the modern `tomli` TOML parser instead of `toml`.  The latter
+package is no longer maintained and does not support TOML 1.0.
+---
+ autopep8.py | 10 +++++-----
+ setup.py    |  2 +-
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/autopep8.py b/autopep8.py
+index d856f711..ab1a88ac 100755
+--- a/autopep8.py
++++ b/autopep8.py
+@@ -4040,13 +4040,13 @@ def read_config(args, parser):
+ 
+ def read_pyproject_toml(args, parser):
+     """Read pyproject.toml and load configuration."""
+-    import toml
++    import tomli
+ 
+     config = None
+ 
+     if os.path.exists(args.global_config):
+-        with open(args.global_config) as fp:
+-            config = toml.load(fp)
++        with open(args.global_config, "rb") as fp:
++            config = tomli.load(fp)
+ 
+     if not args.ignore_local_config:
+         parent = tail = args.files and os.path.abspath(
+@@ -4054,8 +4054,8 @@ def read_pyproject_toml(args, parser):
+         while tail:
+             pyproject_toml = os.path.join(parent, "pyproject.toml")
+             if os.path.exists(pyproject_toml):
+-                with open(pyproject_toml) as fp:
+-                    config = toml.load(fp)
++                with open(pyproject_toml, "rb") as fp:
++                    config = tomli.load(fp)
+                     break
+             (parent, tail) = os.path.split(parent)
+ 
+diff --git a/setup.py b/setup.py
+index caa639bf..4849574a 100755
+--- a/setup.py
++++ b/setup.py
+@@ -10,7 +10,7 @@
+ 
+ 
+ INSTALL_REQUIRES = (
+-    ['pycodestyle >= 2.9.1', 'toml']
++    ['pycodestyle >= 2.9.1', 'tomli']
+ )
+ 
+ 

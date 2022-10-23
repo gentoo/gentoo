@@ -12,7 +12,7 @@ HOMEPAGE="http://www.formbuilder.org/ https://metacpan.org/release/CGI-FormBuild
 # Explicit declaration by upstream
 LICENSE="|| ( Artistic GPL-1 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

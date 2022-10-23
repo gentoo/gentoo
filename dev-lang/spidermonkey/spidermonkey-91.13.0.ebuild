@@ -132,7 +132,7 @@ llvm_check_deps() {
 
 python_check_deps() {
 	if use test ; then
-		has_version "dev-python/six[${PYTHON_USEDEP}]"
+		python_has_version "dev-python/six[${PYTHON_USEDEP}]"
 	fi
 }
 

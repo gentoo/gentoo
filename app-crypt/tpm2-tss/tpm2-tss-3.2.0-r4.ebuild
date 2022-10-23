@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info multilib-minimal tmpfiles udev
+inherit autotools flag-o-matic linux-info multilib-minimal tmpfiles udev
 
 DESCRIPTION="TCG Trusted Platform Module 2.0 Software Stack"
 HOMEPAGE="https://github.com/tpm2-software/tpm2-tss"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/tpm2-software/${PN}/releases/download/${PV}/${P}.tar
 
 LICENSE="BSD-2"
 SLOT="0/3"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
 IUSE="doc +fapi +openssl mbedtls static-libs test"
 
 RESTRICT="!test? ( test )"
@@ -38,6 +38,7 @@ BDEPEND="sys-apps/acl
 PATCHES=(
 	"${FILESDIR}/${PN}-3.2.0-Dont-run-systemd-sysusers-in-Makefile.patch"
 	"${FILESDIR}/${PN}-3.2.0-slibtool.patch" # 858674
+	"${FILESDIR}/${PN}-3.2.0-test-fix-usage-of-FILE-in-unit-test-fapi-io.patch"
 )
 
 pkg_setup() {
@@ -60,6 +61,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# tests fail with LTO enabbled. See bug 865275 and 865279
+	filter-lto
+
 	ECONF_SOURCE=${S} econf \
 		--localstatedir=/var \
 		$(multilib_native_use_enable doc doxygen-doc) \

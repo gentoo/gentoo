@@ -1,0 +1,21 @@
+From 64249a5b7e2aaa4b53e41deb767a164cf5b68421 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 20 Oct 2022 04:48:48 +0100
+Subject: [PATCH] Respect CPPFLAGS
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -19,11 +19,11 @@ all:
+ 
+ cw:
+ 	@$(ECHO) "* Compiling cw(color wrapper)..."
+-	$(CC) $(CFLAGS) $(LDFLAGS) src/cw.c -o bin/cw @CFLAGS@ @LIBS@ @DEFS@
++	$(CC) $(CPPFLAGS) @DEFS@ $(CFLAGS) @CFLAGS@ $(LDFLAGS) src/cw.c -o bin/cw @LIBS@
+ 
+ cwu:
+ 	@$(ECHO) "* Compiling cwu(color wrapper directive updater)..."
+-	$(CC) $(CFLAGS) $(LDFLAGS) src/cwu.c -o bin/cwu
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) src/cwu.c -o bin/cwu
+ 
+ local: cw cwu
+ 

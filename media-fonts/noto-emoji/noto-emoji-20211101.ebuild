@@ -36,12 +36,13 @@ RESTRICT="binchecks strip"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 python_check_deps() {
-	has_version -b "dev-python/fonttools[${PYTHON_USEDEP}]" &&
-	has_version -b "dev-python/nototools[${PYTHON_USEDEP}]"
+	python_has_version ">=dev-python/fonttools-4.7.0[${PYTHON_USEDEP}]" \
+		">=dev-python/nototools-0.2.13[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
 	font_pkg_setup
+	use buildfont && python-any-r1_pkg_setup
 }
 
 src_prepare() {

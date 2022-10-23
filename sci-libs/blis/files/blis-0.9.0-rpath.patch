@@ -1,0 +1,15 @@
+diff -Nur a/common.mk b/common.mk
+--- a/common.mk	2022-09-29 16:54:14.414899248 +0800
++++ b/common.mk	2022-09-29 16:54:32.915666662 +0800
+@@ -591,9 +591,9 @@
+ LDFLAGS        += -Wl,-rpath,@executable_path/../../../$(BASE_LIB_PATH)
+ else
+ # rpath for test_libblis.x
+-LDFLAGS        += -Wl,-rpath,'$$ORIGIN/$(BASE_LIB_PATH)'
++#LDFLAGS        += -Wl,-rpath,'$$ORIGIN/$(BASE_LIB_PATH)'
+ # rpath for BLAS tests
+-LDFLAGS        += -Wl,-rpath,'$$ORIGIN/../../../$(BASE_LIB_PATH)'
++#LDFLAGS        += -Wl,-rpath,'$$ORIGIN/../../../$(BASE_LIB_PATH)'
+ endif
+ endif
+ endif

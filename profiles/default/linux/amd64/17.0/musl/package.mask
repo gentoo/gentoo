@@ -1,5 +1,10 @@
-# Copyright 2020 Gentoo Authors.
+# Copyright 2020-2022 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-10-08)
+# openjdk-bin is available on amd64 musl
+-dev-java/openjdk-bin
+dev-java/openjdk-bin:8
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-28)
 # rust-bin is available on amd64 musl

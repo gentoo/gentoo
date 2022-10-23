@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Subclass of LWP::UserAgent that protects you from harm"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	dev-perl/libwww-perl

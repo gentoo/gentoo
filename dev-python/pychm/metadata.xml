@@ -10,12 +10,12 @@ The chm package provides three modules, chm, chmlib and extra, which
 provide access to the API implemented by the C library chmlib and some
 additional classes and functions. They are used to access MS-ITSS
 encoded files - Compressed Html Help files (.chm).
-</longdescription>
+	</longdescription>
 	<longdescription lang="ja">
 Chmパッケージは、C言語ライブラリChmのAPI実装とそれに幾つか拡張されたクラスと関数
 にアクセスする手段のchm, chmlib, extraの3つのモジュールを提供します。MS-ITSSエン
 コード・ファイルに使われています。-- Compressed Html Help ファイル (.chm)。
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">gnochm</remote-id>
 		<remote-id type="pypi">pychm</remote-id>

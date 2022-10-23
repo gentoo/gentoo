@@ -1,43 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person" proxied="yes">
-	<email>waebbl-gentoo@posteo.net</email>
-	<name>Bernd Waibel</name>
-</maintainer>
-<maintainer type="project" proxied="proxy">
-	<email>proxy-maint@gentoo.org</email>
-	<name>Proxy Maintainers</name>
-</maintainer>
-<longdescription>
-	Denemo is a music notation editor which uses
-	<pkg>media-sound/lilypond</pkg> to typeset music notation with LaTeX.
-</longdescription>
-<use>
-	<flag name="alsa">
-		Enable alsa support through <pkg>media-libs/alsa-lib</pkg>
-	</flag>
-	<flag name="aubio">
-		Enable <pkg>media-libs/aubio</pkg> support
-	</flag>
-	<flag name="fluidsynth">
-		Enable Fluidsynth MIDI software synthesis using
-		<pkg>media-sound/fluidsynth</pkg>
-	</flag>
-	<flag name="jack">
-		Enable jack support through <pkg>virtual/jack</pkg>
-	</flag>
-	<flag name="portaudio">
-		Enable support for <pkg>media-libs/portaudio</pkg>
-	</flag>
-	<flag name="portmidi">
-		Enable support for the <pkg>media-libs/portmidi</pkg> backend
-	</flag>
-	<flag name="rubberband">
-		Enable support for <pkg>media-libs/rubberband</pkg>
-	</flag>
-</use>
-<upstream>
-	<bugs-to>https://savannah.gnu.org/bugs/?group=denemo&amp;func=additem</bugs-to>
-</upstream>
+  <maintainer type="person" proxied="yes">
+    <email>waebbl-gentoo@posteo.net</email>
+    <name>Bernd Waibel</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+  Denemo is a music notation editor which uses
+  <pkg>media-sound/lilypond</pkg> to typeset music notation with LaTeX.
+  </longdescription>
+  <use>
+    <flag name="alsa">
+      Enable alsa support through <pkg>media-libs/alsa-lib</pkg>
+    </flag>
+    <flag name="aubio">
+      Enable <pkg>media-libs/aubio</pkg> support
+    </flag>
+    <flag name="fluidsynth">
+      Enable Fluidsynth MIDI software synthesis using
+      <pkg>media-sound/fluidsynth</pkg>
+    </flag>
+    <flag name="jack">
+      Enable jack support through <pkg>virtual/jack</pkg>
+    </flag>
+    <flag name="portaudio">
+      Enable support for <pkg>media-libs/portaudio</pkg>
+    </flag>
+    <flag name="portmidi">
+      Enable support for the <pkg>media-libs/portmidi</pkg> backend
+    </flag>
+    <flag name="rubberband">
+      Enable support for <pkg>media-libs/rubberband</pkg>
+    </flag>
+  </use>
+  <upstream>
+    <bugs-to>https://savannah.gnu.org/bugs/?group=denemo&amp;func=additem</bugs-to>
+    <remote-id type="savannah">denemo</remote-id>
+  </upstream>
 </pkgmetadata>

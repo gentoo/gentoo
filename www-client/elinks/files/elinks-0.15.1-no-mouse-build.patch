@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/876953
+https://github.com/rkd77/elinks/issues/189
+https://github.com/rkd77/elinks/commit/d229ebe89cb2a5e08e9d0af98faaa59ba2089fb3
+
+From d229ebe89cb2a5e08e9d0af98faaa59ba2089fb3 Mon Sep 17 00:00:00 2001
+From: Witold Filipczyk <witekfl@poczta.onet.pl>
+Date: Fri, 9 Sep 2022 11:30:21 +0200
+Subject: [PATCH] [options] Do not compile-in mouse related functions when
+ mouse support is disabled. Refs #189
+
+--- a/src/config/options.c
++++ b/src/config/options.c
+@@ -896,6 +896,7 @@ change_hook_ui_double_esc(struct session *ses, struct option *current, struct op
+ 	return 0;
+ }
+ 
++#ifdef CONFIG_MOUSE
+ static int
+ change_hook_ui_mouse_disable(struct session *ses, struct option *current, struct option *changed)
+ {
+@@ -911,7 +912,7 @@ change_hook_ui_mouse_disable(struct session *ses, struct option *current, struct
+ 	}
+ 	return 0;
+ }
+-
++#endif
+ 
+ /** Make option templates visible or invisible in the option manager.
+  * This is called once on startup, and then each time the value of the
+@@ -988,7 +989,9 @@ static const struct change_hook_info change_hooks[] = {
+ 	{ "ui.colors",			change_hook_ui_colors },
+ 	{ "ui.double_esc",		change_hook_ui_double_esc },
+ 	{ "ui.language",		change_hook_language },
++#ifdef CONFIG_MOUSE
+ 	{ "ui.mouse_disable",	change_hook_ui_mouse_disable },
++#endif
+ 	{ "ui",				change_hook_ui },
+ 	{ NULL,				NULL },
+ };
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit autotools wxwidgets
 
 DESCRIPTION="A phylogenetic tree viewer"
 HOMEPAGE="http://darwin.zoology.gla.ac.uk/~rpage/treeviewx/"
-SRC_URI="http://darwin.zoology.gla.ac.uk/~rpage/${PN}/download/0.5/tv-${PV}.tar.gz"
+SRC_URI="http://darwin.zoology.gla.ac.uk/~rpage/${PN}/download/$(ver_cut 1-2)/tv-${PV}.tar.gz"
 S="${WORKDIR}/tv-${PV}"
 
 LICENSE="GPL-2"

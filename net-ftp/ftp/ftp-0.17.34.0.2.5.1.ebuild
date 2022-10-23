@@ -13,8 +13,9 @@ DEB_PN="${MY_PN}-ssl"
 DEB_PV="$(ver_cut 1-3)+$(ver_cut 4-5)-$(ver_cut 6-7)"
 
 DESCRIPTION="Standard Linux FTP client"
-HOMEPAGE="http://www.hcs.harvard.edu/~dholland/computers/netkit.html"
-SRC_URI="ftp://sunsite.unc.edu/pub/Linux/system/network/netkit/${MY_P}.tar.gz
+HOMEPAGE="https://wiki.linuxfoundation.org/networking/netkit"
+SRC_URI="http://ftp.linux.org.uk/pub/linux/Networking/netkit/${MY_P}.tar.gz
+	ftp://sunsite.unc.edu/pub/Linux/system/network/netkit/${MY_P}.tar.gz
 	mirror://debian/pool/main/n/${DEB_PN}/${DEB_PN}_${DEB_PV}.debian.tar.xz
 	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${MY_P}-patches-${PATCH_VER}.tar.bz2"
 S="${WORKDIR}"/${MY_P}

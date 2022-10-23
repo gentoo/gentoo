@@ -12,7 +12,7 @@ S="${WORKDIR}"/s.el-${PV}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 DOCS=( README.md )
 SITEFILE="50${PN}-gentoo.el"

@@ -105,7 +105,7 @@ LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 
 [[ ${MY_PV} == *9999* ]] || \
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86 ~amd64-linux"
+KEYWORDS="arm64"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip

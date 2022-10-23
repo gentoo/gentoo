@@ -33,7 +33,7 @@ S="${WORKDIR}"/${PN^^}-archived-${PV}
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 python_check_deps() {
-	has_version "dev-python/toml[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/toml[${PYTHON_USEDEP}]"
 }
 
 src_configure() {

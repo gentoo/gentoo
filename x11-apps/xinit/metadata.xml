@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>x11@gentoo.org</email>
-		<name>X11</name>
-	</maintainer>
-	<use>
-		<flag name="twm">
-			Control dependencies on legacy apps (xterm, twm, ...). Safe to
-			disable if you use a modern desktop environment.
-		</flag>
-	</use>
-	<upstream>
-		<remote-id type="cpe">cpe:/a:x.org:xinit</remote-id>
-	</upstream>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
+  <use>
+    <flag name="twm">Control dependencies on legacy apps (xterm, twm, ...). Safe to disable if you use a modern desktop environment.</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:x.org:xinit</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/app/xinit</remote-id>
+  </upstream>
 </pkgmetadata>

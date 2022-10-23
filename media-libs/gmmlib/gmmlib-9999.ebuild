@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/intel/gmmlib"
 SRC_URI=""
 
 LICENSE="MIT"
-SLOT="0/12.1"
+SLOT="0/12.2"
 IUSE="test +custom-cflags"
 RESTRICT="!test? ( test )"
 

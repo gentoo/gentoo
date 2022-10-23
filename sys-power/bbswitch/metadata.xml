@@ -20,7 +20,7 @@
 	<longdescription>
 	Kernel module which automatically detects the required ACPI calls for two
 	kinds of Optimus laptops for safe disabling/enabling the discrete graphics card.
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="github">Bumblebee-Project/bbswitch</remote-id>
 	</upstream>

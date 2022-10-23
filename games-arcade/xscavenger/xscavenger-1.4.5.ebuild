@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,6 +29,7 @@ PATCHES=(
 
 src_compile() {
 	tc-export CC
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 
 	# skip using imake for simplicity
 	local cppargs=(

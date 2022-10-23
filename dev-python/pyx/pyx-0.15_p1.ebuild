@@ -47,8 +47,8 @@ PATCHES=( "${FILESDIR}"/pyx-0.14.1-unicode-latex.patch )
 
 python_check_deps() {
 	use doc || return 0
-	has_version "dev-python/sphinx[latex,${PYTHON_USEDEP}]" &&
-	has_version "dev-python/sphinx_selective_exclude[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/sphinx[latex,${PYTHON_USEDEP}]" \
+		"dev-python/sphinx_selective_exclude[${PYTHON_USEDEP}]"
 }
 
 src_unpack() {

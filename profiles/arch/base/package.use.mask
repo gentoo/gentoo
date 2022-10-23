@@ -1,6 +1,19 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2022-10-16)
+# Only supported on MIPS.
+dev-lang/gnat-gpl fixed-point
+sys-devel/gcc fixed-point
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
+# sys-libs/libsmbios unavailable on most arches (requires the very low-level
+# <sys/io.h> header that is only ever present on alpha, amd64, ia64 and x86),
+# only unmask on relevant arches.
+# bug #875830
+app-laptop/pbbuttonsd macbook
+sys-apps/fwupd dell
+
 # Conrad Kostecki <conikost@gentoo.org> (2022-07-19)
 # www-servers/nginx requires keywording
 www-servers/nginx nginx_modules_http_security
@@ -10,7 +23,7 @@ media-sound/qmmp xmp
 
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
 # Need intel-hybrid-codec-driver, which only works on amd64
-x11-libs/libva-intel-driver hybrid
+media-libs/libva-intel-driver hybrid
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
 # This is only for bringing in the not-upstreamed-yet LoongArch patchset;
@@ -18,9 +31,8 @@ x11-libs/libva-intel-driver hybrid
 # In the meantime, force-enable on loong only.
 # This is not inside use.mask, because crossdev toolchain packages would
 # want to have the flag enabled without hassle.
-dev-libs/libffi experimental-loong
-sys-kernel/linux-headers experimental-loong
-sys-libs/glibc experimental-loong
+<dev-libs/libffi-3.4.3 experimental-loong
+<sys-libs/glibc-2.36 experimental-loong
 sys-libs/libseccomp experimental-loong
 
 # James Le Cuirot <chewi@gentoo.org> (2022-02-24)
@@ -203,11 +215,6 @@ dev-util/catalyst system-bootloader
 # Vulkan support is only available on few selected arches atm.
 # Mask everywhere, unmask where appropriate.
 media-video/mpv vulkan
-
-# Nick Sarnie <sarnex@gentoo.org> (2018-04-29)
-# media-libs/vulkan-loader and app-emulation/vkd3d are not available everywhere
-app-emulation/wine-staging vulkan
-app-emulation/wine-vanilla vkd3d vulkan
 
 # Richard Yao <ryao@gentoo.org> (2018-04-16)
 # sys-fs/zfs is not available everywhere.

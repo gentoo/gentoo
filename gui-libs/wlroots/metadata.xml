@@ -21,6 +21,7 @@
 		wlroots is developed under the direction of the <pkg>gui-wm/sway</pkg> project.
 	</longdescription>
 	<use>
+		<flag name="tinywl">Install the minimal wayland client, tinywl</flag>
 		<flag name="vulkan">Enable support for the vulkan backend renderer</flag>
 		<flag name="x11-backend">Enable support for handling input/output devices through <pkg>x11-libs/libxcb</pkg></flag>
 		<flag name="X">Enable support for X11 applications (XWayland)</flag>

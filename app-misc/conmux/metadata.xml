@@ -3,11 +3,11 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <longdescription lang="en">
-CONMUX is a console abstractor.  Presenting any console with a
-consistent location, naming and semantic.  Access to the console,
-and hardreset of the machine is the same regardless of the underlying
-access methodology.
-</longdescription>
+  CONMUX is a console abstractor.  Presenting any console with a
+  consistent location, naming and semantic.  Access to the console,
+  and hardreset of the machine is the same regardless of the underlying
+  access methodology.
+  </longdescription>
   <upstream>
     <remote-id type="github">autotest/autotest</remote-id>
   </upstream>

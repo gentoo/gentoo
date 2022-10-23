@@ -6,35 +6,35 @@
 		<name>Java</name>
 	</maintainer>
 	<longdescription>
-The Tcl/Java project's goal is to make integrating the Java platform and the
-Tcl scripting language as easy as possible. The project actually consists of
-two distinct packages, called Tcl Blend and Jacl. It is important to
-understand what each package provides and in what situations one might choose
-to use Jacl or Tcl Blend.
+	The Tcl/Java project's goal is to make integrating the Java platform and the
+	Tcl scripting language as easy as possible. The project actually consists of
+	two distinct packages, called Tcl Blend and Jacl. It is important to
+	understand what each package provides and in what situations one might choose
+	to use Jacl or Tcl Blend.
 
-Tcl Blend is a Tcl extension that makes use of JNI to facilitate communication
-between a Java interpreter and a Tcl interpreter. Tcl Blend is typically used
-to load a Java interpreter into an existing Tcl process, so that functionality
-implemented in Java can be accessed via Tcl. One can also load Tcl Blend and
-Tcl into a Java process, which is a great way to add scripting functionality
-to an existing Java application. Because Tcl Blend is a normal Tcl extension,
-one can use it with other popular Tcl extensions like Tk, Expect, and Itcl.
+	Tcl Blend is a Tcl extension that makes use of JNI to facilitate communication
+	between a Java interpreter and a Tcl interpreter. Tcl Blend is typically used
+	to load a Java interpreter into an existing Tcl process, so that functionality
+	implemented in Java can be accessed via Tcl. One can also load Tcl Blend and
+	Tcl into a Java process, which is a great way to add scripting functionality
+	to an existing Java application. Because Tcl Blend is a normal Tcl extension,
+	one can use it with other popular Tcl extensions like Tk, Expect, and Itcl.
 
-Jacl is a self-contained implementation of a Tcl interpreter, written entirely
-in Java. Jacl also includes features that facilitate communication between a
-Java interpreter and a Tcl interpreter. Jacl is typically used to incorporate
-scripting functionality into an existing Java application. For users who want
-to avoid adding any native code to their Java applications, Jacl is the ideal
-solution.
+	Jacl is a self-contained implementation of a Tcl interpreter, written entirely
+	in Java. Jacl also includes features that facilitate communication between a
+	Java interpreter and a Tcl interpreter. Jacl is typically used to incorporate
+	scripting functionality into an existing Java application. For users who want
+	to avoid adding any native code to their Java applications, Jacl is the ideal
+	solution.
 
-Tcl Blend and Jacl define both a Tcl API and a Java API that make it easy to
-call Java code from Tcl or call Tcl code from Java. For example, one could
-allocate a Java object in a Tcl script and interactively invoke Java methods
-on the object. It is also easy to use the supplied API to evaluate a Tcl
-procedure from a Java method or implement Tcl procudures in Java. The flexible
-API and wealth of implementation options provided by the Tcl/Java project make
-integrating Tcl and Java easy.
-</longdescription>
+	Tcl Blend and Jacl define both a Tcl API and a Java API that make it easy to
+	call Java code from Tcl or call Tcl code from Java. For example, one could
+	allocate a Java object in a Tcl script and interactively invoke Java methods
+	on the object. It is also easy to use the supplied API to evaluate a Tcl
+	procedure from a Java method or implement Tcl procudures in Java. The flexible
+	API and wealth of implementation options provided by the Tcl/Java project make
+	integrating Tcl and Java easy.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">tcljava</remote-id>
 	</upstream>

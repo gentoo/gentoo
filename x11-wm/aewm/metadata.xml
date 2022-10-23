@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<!-- maintainer-needed -->
 	<longdescription>
 	aewm is a minimalist window manager for X11. It has no nifty features, 
 	but is light on resources and extremely simple in appearance. It should 

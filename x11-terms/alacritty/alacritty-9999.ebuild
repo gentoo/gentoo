@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	media-libs/fontconfig:=
 	media-libs/freetype:2
 	x11-libs/libxkbcommon
-	X? ( x11-libs/libxcb:=[xkb] )
+	X? ( x11-libs/libxcb:= )
 "
 
 DEPEND="

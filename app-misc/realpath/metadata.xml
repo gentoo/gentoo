@@ -8,5 +8,5 @@
   <longdescription lang="en">
   The realpath utility finds the canonicalized absolute pathname of its
   arguments in a similar way to readlink -f.
-</longdescription>
+  </longdescription>
 </pkgmetadata>

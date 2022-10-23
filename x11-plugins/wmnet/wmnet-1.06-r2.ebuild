@@ -18,17 +18,18 @@ IUSE=""
 RDEPEND="x11-libs/libX11
 	x11-libs/libXext"
 DEPEND="${RDEPEND}
+	x11-base/xorg-proto
 	elibc_musl? ( net-libs/ppp-defs )"
 BDEPEND="
-	x11-base/xorg-proto
-	>=x11-misc/imake-1.0.8-r1
-	app-text/rman"
+	app-text/rman
+	sys-devel/gcc
+	>=x11-misc/imake-1.0.8-r1"
 
 PATCHES=( "${WORKDIR}"/${P}-misc.patch )
 
 src_configure() {
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die "xmkmf failed"
+		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die "xmkmf failed"
 }
 
 src_compile() {

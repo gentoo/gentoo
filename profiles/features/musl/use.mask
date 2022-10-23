@@ -5,9 +5,34 @@
 -elibc_musl
 elibc_glibc
 
-# Marco Genasci <fedeliallalinea@gmail.com> (2022-01-06)
-# Pulls dev-db/oracle-instantclient which doesn't work on musl
+# Sam James <sam@gentoo.org> (2022-10-04)
+# sci-libs/opencascade is masked on musl
+occ
+opencascade
+
+# Sam James <sam@gentoo.org> (2022-10-04)
+# Mask USE flags which pull in a binary package linked against glibc (rolling
+# mask, use for all such packages)
+collectd_plugins_oracle
+lcd_devices_luise
 oracle
+oci8
+oci8-instant-client
+
+# Sam James <sam@gentoo.org> (2022-10-03)
+# x11-drivers/nvidia-drivers is a binary package linked against glibc
+# and is masked on musl. (We give nvidia its own block given they're
+# all related).
+cuda
+cudnn
+collectd_plugins_gpu_nvidia
+nvenc
+nvdec
+nvidia
+nvml
+optix
+video_cards_nvidia
 
 # sys-apps/systemd is masked
 systemd
+uwsgi_plugins_systemd_logger

@@ -1173,4 +1173,68 @@ gen_usr_ldscript() {
 	done
 }
 
+# @FUNCTION: tc-get-cxx-stdlib
+# @DESCRIPTION:
+# Attempt to identify the C++ standard library used by the compiler.
+# If the library is identified, the function returns 0 and prints one
+# of the following:
+#
+# - ``libc++`` for ``sys-libs/libcxx``
+# - ``libstdc++`` for ``sys-devel/gcc``'s libstdc++
+#
+# If the library is not recognized, the function returns 1.
+tc-get-cxx-stdlib() {
+	local code='#include <ciso646>
+
+#if defined(_LIBCPP_VERSION)
+	HAVE_LIBCXX
+#elif defined(__GLIBCXX__)
+	HAVE_LIBSTDCPP
+#endif
+'
+	local res=$(
+		$(tc-getCXX) ${CXXFLAGS} ${CPPFLAGS} -x c++ -E -P - \
+			<<<"${code}" 2>/dev/null
+	)
+
+	case ${res} in
+		*HAVE_LIBCXX*)
+			echo libc++;;
+		*HAVE_LIBSTDCPP*)
+			echo libstdc++;;
+		*)
+			return 1;;
+	esac
+
+	return 0
+}
+
+# @FUNCTION: tc-get-c-rtlib
+# @DESCRIPTION:
+# Attempt to identify the runtime used by the C/C++ compiler.
+# If the runtime is identifed, the function returns 0 and prints one
+# of the following:
+#
+# - ``compiler-rt`` for ``sys-libs/compiler-rt``
+# - ``libgcc`` for ``sys-devel/gcc``'s libgcc
+#
+# If the runtime is not recognized, the function returns 1.
+tc-get-c-rtlib() {
+	local res=$(
+		$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} \
+			-print-libgcc-file-name 2>/dev/null
+	)
+
+	case ${res} in
+		*libclang_rt*)
+			echo compiler-rt;;
+		*libgcc*)
+			echo libgcc;;
+		*)
+			return 1;;
+	esac
+
+	return 0
+}
+
 fi

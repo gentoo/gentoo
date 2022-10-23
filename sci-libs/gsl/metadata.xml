@@ -17,10 +17,13 @@
   numbers, least-squares fitting, fast Fourier transforms (FFT),
   differential equations, quadrature, Monte Carlo integration, special
   functions, physical constants, and much more. 
-</longdescription>
+  </longdescription>
   <use>
     <flag name="cblas-external">Link gsl with external cblas provided by
     (<pkg>virtual/cblas</pkg>) instead of shipped internal version</flag>
     <flag name="deprecated">Enable deprecated functions</flag>
   </use>
+  <upstream>
+    <remote-id type="savannah">gsl</remote-id>
+  </upstream>
 </pkgmetadata>

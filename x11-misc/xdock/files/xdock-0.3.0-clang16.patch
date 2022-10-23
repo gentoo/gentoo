@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/871549
+--- a/src/docks/xdcalendar.c
++++ b/src/docks/xdcalendar.c
+@@ -1,2 +1,3 @@
+ #include <xdock.h>
++#include <ctype.h>
+ #include <getopt.h>
+--- a/src/docks/xdmemory.c
++++ b/src/docks/xdmemory.c
+@@ -1,2 +1,3 @@
+ #include <xdock.h>
++#include <ctype.h>
+ #include <getopt.h>
+--- a/src/lib/network.c
++++ b/src/lib/network.c
+@@ -10,2 +10,3 @@
+ #	include <fcntl.h>
++#	include <unistd.h>
+ #	define INVALID_SOCKET -1

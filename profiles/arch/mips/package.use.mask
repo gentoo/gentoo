@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2022-10-16)
+# Only supported on MIPS.
+dev-lang/gnat-gpl -fixed-point
+sys-devel/gcc -fixed-point
+
 # matoro <matoro_gentoo@matoro.tk> (2022-09-14)
 # Not broken, but better wait on profiles: bug #515694
 dev-lang/rust system-llvm

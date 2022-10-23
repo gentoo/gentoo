@@ -6,13 +6,19 @@ PYTHON_COMPAT=( python3_{8..11} )
 
 inherit meson-multilib python-any-r1 vala
 
+if [[ ${PV} = 9999* ]]; then
+	EGIT_REPO_URI="https://github.com/martinpitt/${PN}.git"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/martinpitt/umockdev/releases/download/${PV}/${P}.tar.xz"
+	KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+fi
+
 DESCRIPTION="Mock hardware devices for creating unit tests"
 HOMEPAGE="https://github.com/martinpitt/umockdev/"
-SRC_URI="https://github.com/martinpitt/umockdev/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

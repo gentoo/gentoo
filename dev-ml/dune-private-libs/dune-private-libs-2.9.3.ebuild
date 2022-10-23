@@ -32,6 +32,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-test.patch )
+
 # TODO for test deps:
 # Add cram?
 # Add dev-ml/js_of_ocaml once dev-ml/ocaml-base64 is ported to Dune
@@ -71,6 +73,11 @@ src_prepare() {
 		test/blackbox-tests/test-cases/merlin/server.t
 		test/blackbox-tests/test-cases/github1946.t
 		test/blackbox-tests/test-cases/github759.t
+		test/blackbox-tests/test-cases/merlin/default-based-context.t
+		otherlibs/site/test/run.t
+
+		# Deprecated warnings
+		test/blackbox-tests/test-cases/toplevel-integration.t
 
 		# Wants nodejs!
 		test/blackbox-tests/test-cases/jsoo/simple.t
@@ -90,6 +97,8 @@ src_prepare() {
 		test/blackbox-tests/test-cases/coq/ml-lib.t
 		test/blackbox-tests/test-cases/coq/extract.t
 		test/blackbox-tests/test-cases/coq/compose-plugin.t
+		test/blackbox-tests/test-cases/coq/flags.t
+		test/blackbox-tests/test-cases/coq/env.t
 
 		# Unpackaged dependencies (a rabbit hole for now)
 		# utop -> lambda-term, zed

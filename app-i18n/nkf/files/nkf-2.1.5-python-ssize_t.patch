@@ -1,0 +1,71 @@
+https://github.com/nurse/nkf/commit/8246108073f739d45a21ef42ad2d9342fa3c6c28
+
+From 8246108073f739d45a21ef42ad2d9342fa3c6c28 Mon Sep 17 00:00:00 2001
+From: slic <slic-io@users.noreply.github.com>
+Date: Sun, 6 Mar 2022 18:05:54 +0900
+Subject: [PATCH] fix: python3 extention ABI # variant when parsing warning
+
+--- a/NKF.python3/NKF_python.c
++++ b/NKF.python3/NKF_python.c
+@@ -20,6 +20,8 @@ Changes.
+ **    THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE.
+ ***************************************************************************/
+ 
++#define PY_SSIZE_T_CLEAN
++
+ #include "Python.h"
+ #include <setjmp.h>
+ 
+@@ -33,7 +35,7 @@ Changes.
+ #undef FALSE
+ #define putchar(c)      pynkf_putchar(c)
+ 
+-static int pynkf_ibufsize, pynkf_obufsize;
++static Py_ssize_t pynkf_ibufsize, pynkf_obufsize;
+ static unsigned char *pynkf_inbuf, *pynkf_outbuf;
+ static int pynkf_icount,pynkf_ocount;
+ static unsigned char *pynkf_iptr, *pynkf_optr;
+@@ -62,7 +64,7 @@ pynkf_ungetc(int c, FILE *f)
+ static void
+ pynkf_putchar(int c)
+ {
+-  size_t size;
++  Py_ssize_t size;
+   unsigned char *p;
+ 
+   if (pynkf_guess_flag) {
+@@ -89,7 +91,7 @@ pynkf_putchar(int c)
+ #include "../nkf.c"
+ 
+ static PyObject *
+-pynkf_convert(unsigned char* str, int strlen, char* opts, int optslen)
++pynkf_convert(unsigned char* str, Py_ssize_t strlen, char* opts, Py_ssize_t optslen)
+ {
+   PyObject * res;
+ 
+@@ -157,12 +159,12 @@ static
+ PyObject *pynkf_nkf(PyObject *self, PyObject *args)
+ {
+   unsigned char *str;
+-  int strlen;
++  Py_ssize_t strlen;
+   char *opts;
+-  int optslen;
++  Py_ssize_t optslen;
+   PyObject* res;
+ 
+-  if (!PyArg_ParseTuple(args, "s#y#", &opts, &optslen, &str, &strlen)) {
++  if (!PyArg_ParseTuple(args, "s#s#", &opts, &optslen, &str, &strlen)) {
+     return NULL;
+   }
+   res = pynkf_convert(str, strlen, opts, optslen);
+@@ -178,7 +180,7 @@ PyObject *pynkf_guess(PyObject *self, PyObject *args)
+   int strlen;
+   PyObject* res;
+ 
+-  if (!PyArg_ParseTuple(args, "y#", &str, &strlen)) {
++  if (!PyArg_ParseTuple(args, "s#", &str, &strlen)) {
+     return NULL;
+   }
+   res = pynkf_convert_guess(str, strlen);
+

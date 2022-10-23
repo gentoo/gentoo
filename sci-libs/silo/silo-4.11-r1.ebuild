@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic fortran-2
+inherit flag-o-matic fortran-2 qmake-utils
 
 DESCRIPTION="A mesh and field I/O library and scientific database"
 HOMEPAGE="https://wci.llnl.gov/simulation/computer-codes/silo"
@@ -25,6 +25,7 @@ RDEPEND="
 	hdf5? ( sci-libs/hdf5 )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-hdf5.patch
@@ -32,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-tests.patch
 	"${FILESDIR}"/${P}-testsuite-python-write.patch
 	"${FILESDIR}"/${P}-widgets.patch
+	"${FILESDIR}"/${P}-qtbindir.patch
 )
 
 src_configure() {
@@ -39,6 +41,8 @@ src_configure() {
 	# see https://github.com/LLNL/Silo/issues/234
 	append-fflags $(test-flags-F77 -fallow-argument-mismatch)
 
+	QMAKE=$(qt5_get_bindir)/qmake \
+	QT_BIN_DIR=$(qt5_get_bindir) \
 	econf \
 		--enable-install-lite-headers \
 		--enable-shared \

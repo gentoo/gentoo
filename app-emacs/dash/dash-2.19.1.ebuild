@@ -11,7 +11,7 @@ SRC_URI="https://github.com/magnars/dash.el/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 BDEPEND="sys-apps/texinfo"
 

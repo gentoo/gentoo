@@ -12,7 +12,7 @@ S="${WORKDIR}"/${P}/c++
 
 LICENSE="MIT"
 SLOT="0/091"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ssl test zlib"
 
 RESTRICT="!test? ( test )"

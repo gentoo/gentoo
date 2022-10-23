@@ -1,0 +1,24 @@
+Index: ROCm-OpenCL-Runtime-rocm-5.1.3/CMakeLists.txt
+===================================================================
+--- ROCm-OpenCL-Runtime-rocm-5.1.3.orig/CMakeLists.txt
++++ ROCm-OpenCL-Runtime-rocm-5.1.3/CMakeLists.txt
+@@ -16,7 +16,6 @@ option(EMU_ENV "Enable building for emul
+ set(OPENCL_ICD_LOADER_HEADERS_DIR "${CMAKE_CURRENT_LIST_DIR}/khronos/headers/opencl2.2" CACHE PATH "")
+ add_subdirectory(khronos/icd)
+ add_subdirectory(amdocl)
+-add_subdirectory(tools/clinfo)
+ add_subdirectory(tools/cltrace)
+ if(BUILD_TESTS)
+   add_subdirectory(tests/ocltst)
+Index: ROCm-OpenCL-Runtime-rocm-5.1.3/packaging/CMakeLists.txt
+===================================================================
+--- ROCm-OpenCL-Runtime-rocm-5.1.3.orig/packaging/CMakeLists.txt
++++ ROCm-OpenCL-Runtime-rocm-5.1.3/packaging/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(CPACK_COMPONENTS_ALL binary dev icd)
+ set(CPACK_DEB_COMPONENT_INSTALL ON)
+ set(CPACK_RPM_COMPONENT_INSTALL ON)
+ 
+-install(TARGETS clinfo DESTINATION bin COMPONENT binary)
+ install(TARGETS amdocl DESTINATION lib COMPONENT binary)
+ install(FILES ${CMAKE_SOURCE_DIR}/LICENSE.txt DESTINATION share/doc/${CMAKE_PROJECT_NAME} COMPONENT binary)
+ 

@@ -18,7 +18,7 @@ KEYWORDS="amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-python/pytest-3.6[${PYTHON_USEDEP}]
-	>=www-servers/tornado-5[${PYTHON_USEDEP}]
+	>=dev-python/tornado-5[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests --install pytest

@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">gphoto</remote-id>
+		<remote-id type="github">gphoto/libgphoto2</remote-id>
 	</upstream>
 </pkgmetadata>

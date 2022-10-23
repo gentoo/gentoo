@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>sci-mathematics@gentoo.org</email>
-		<name>Gentoo Mathematics Project</name>
-	</maintainer>
-	<longdescription lang="en">
-	Octave is a high-level language, primarily intended for numerical computations. It provides a convenient command line interface for solving linear and nonlinear problems numerically, and for performing other numerical experiments. It may also be used as a batch-oriented language.
-	</longdescription>
-	<use>
-		<flag name="glpk">Add support for <pkg>sci-mathematics/glpk</pkg> for linear programming</flag>
-		<flag name="json">Allow using jsonencode and jsondecode commands via <pkg>dev-libs/rapidjson</pkg></flag>
-		<flag name="qhull">Add support for <pkg>media-libs/qhull</pkg>, to allow `delaunay', `convhull', and related functions</flag>
-		<flag name="qrupdate">Add support for <pkg>sci-libs/qrupdate</pkg>for QR and Cholesky update functions</flag>
-		<flag name="sparse">Add enhanced support for sparse matrix algebra with SuiteSparse</flag>
-		<flag name="sundials">Enable the ode15i and ode15s ODE solvers using <pkg>sci-libs/sundials</pkg></flag>
-	</use>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  Octave is a high-level language, primarily intended for numerical computations. It provides a convenient command line interface for solving linear and nonlinear problems numerically, and for performing other numerical experiments. It may also be used as a batch-oriented language.
+  </longdescription>
+  <use>
+    <flag name="glpk">Add support for <pkg>sci-mathematics/glpk</pkg> for linear programming</flag>
+    <flag name="json">Allow using jsonencode and jsondecode commands via <pkg>dev-libs/rapidjson</pkg></flag>
+    <flag name="qhull">Add support for <pkg>media-libs/qhull</pkg>, to allow `delaunay', `convhull', and related functions</flag>
+    <flag name="qrupdate">Add support for <pkg>sci-libs/qrupdate</pkg>for QR and Cholesky update functions</flag>
+    <flag name="sparse">Add enhanced support for sparse matrix algebra with SuiteSparse</flag>
+    <flag name="sundials">Enable the ode15i and ode15s ODE solvers using <pkg>sci-libs/sundials</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="savannah">octave</remote-id>
+  </upstream>
 </pkgmetadata>

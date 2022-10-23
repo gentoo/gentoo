@@ -13,7 +13,7 @@ QEMU_DOCS_VERSION="${PV}"
 # bug #830088
 QEMU_DOC_USEFLAG="+doc"
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8,9,10,11} )
 PYTHON_REQ_USE="ncurses,readline"
 
 FIRMWARE_ABI_VERSION="7.1.0"
@@ -41,7 +41,7 @@ else
 	fi
 
 	S="${WORKDIR}/${MY_P}"
-	#KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -303,11 +303,11 @@ RDEPEND="${CDEPEND}
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
 	"${FILESDIR}"/${PN}-6.0.0-make.patch
 	"${FILESDIR}"/${PN}-7.1.0-also-build-virtfs-proxy-helper.patch
 	"${FILESDIR}"/${PN}-7.1.0-strings.patch
+	"${FILESDIR}"/${PN}-7.1.0-capstone-include-path.patch
 )
 
 QA_PREBUILT="
@@ -590,8 +590,6 @@ qemu_src_configure() {
 		$(conf_notuser usbredir usb-redir)
 		$(conf_notuser vde)
 		$(conf_notuser vhost-net)
-		# $(conf_notuser vhost-user-fs)
-		# $(conf_tools vhost-user-fs virtiofsd)
 		$(conf_notuser virgl virglrenderer)
 		$(conf_softmmu virtfs)
 		$(conf_notuser vnc)
@@ -624,6 +622,7 @@ qemu_src_configure() {
 		conf_opts+=(
 			--enable-linux-user
 			--disable-system
+			--disable-blobs
 			--disable-tools
 		)
 		local static_flag="static-user"
@@ -632,7 +631,6 @@ qemu_src_configure() {
 		conf_opts+=(
 			--disable-linux-user
 			--enable-system
-			--disable-blobs
 			--disable-tools
 		)
 		local static_flag="static"
@@ -698,6 +696,11 @@ src_configure() {
 			softmmu_targets+=",${target}-softmmu"
 			softmmu_bins+=( "qemu-system-${target}" )
 
+			# Needed to rework vhost-user-fs handling thanks to https://gitlab.com/qemu-project/qemu/-/commit/5166dab
+			# The option was converted into being configurable by
+			# Kconfig's. So, to enable it, we insert the necessary
+			# options into each arch's softmmu target gentoo.mak file,
+			# then configure with --with-devices-${target}=gentoo.
 			if use vhost-user-fs; then
 				echo "CONFIG_VHOST_USER_FS=y for ${target}-softmmu" || die
 				echo "CONFIG_VIRTIO=y" >> "configs/devices/${target}-softmmu/gentoo.mak" || die

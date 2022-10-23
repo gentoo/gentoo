@@ -11,7 +11,7 @@
   atmosphere. It is designed to simulate both the absorption/emission
   of radiation and the dispersion (i.e., the frequency dependent
   refractive index of the atmosphere).
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="launchpad">aatm</remote-id>
   </upstream>

@@ -15,7 +15,7 @@ SRC_URI="https://artifacts.elastic.co/downloads/${MY_PN}/${MY_P}-linux-x86_64.ta
 # source: LICENSE.txt and NOTICE.txt
 LICENSE="Apache-2.0 Artistic-2 BSD BSD-2 CC-BY-3.0 CC-BY-4.0 Elastic-2.0 icu ISC MIT MPL-2.0 OFL-1.1 openssl public-domain Unlicense WTFPL-2 ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="-* ~amd64"
 
 RDEPEND="
 	acct-group/kibana
@@ -24,6 +24,7 @@ RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
 	>=net-libs/nodejs-16.13.0
+	sys-libs/glibc
 "
 
 # Do not complain about CFLAGS etc since we don't use them

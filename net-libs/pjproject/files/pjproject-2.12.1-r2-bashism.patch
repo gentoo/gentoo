@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/865719
+https://github.com/pjsip/pjproject/pull/3220
+https://github.com/pjsip/pjproject/commit/bae7e5f4ff9047170e7e160ab52f6d9993aeae80
+
+From 84c7a5a6a050fcd51c7f5cada51df27ab00b7332 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Fri, 19 Aug 2022 11:20:10 +0200
+Subject: [PATCH] aconfigure: fix bashism.
+
+${var//string/replacement} is considered a bashism and should be avoided
+in configure scripts.
+
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+ aconfigure    | 2 +-
+ aconfigure.ac | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/aconfigure b/aconfigure
+index b15c133e2e..5ce01f5057 100755
+--- a/aconfigure
++++ b/aconfigure
+@@ -7986,7 +7986,7 @@ printf "%s\n" "not found" >&6; }
+ 			ac_sdl_cflags=`$SDL_CONFIG --cflags`
+ 			ac_sdl_cflags="-DPJMEDIA_VIDEO_DEV_HAS_SDL=1 $ac_sdl_cflags"
+ 			ac_sdl_ldflags=`$SDL_CONFIG --libs`
+-			ac_sdl_ldflags=${ac_sdl_ldflags//-mwindows/}
++			ac_sdl_ldflags=`echo "${ac_sdl_ldflags}" | sed -e 's/-mwindows//g'`
+ 			LIBS="$LIBS $ac_sdl_ldflags"
+ 		  else
+ 			{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: Unsupported SDL version" >&5
+diff --git a/aconfigure.ac b/aconfigure.ac
+index 9fc32d0bf9..2b6227711e 100644
+--- a/aconfigure.ac
++++ b/aconfigure.ac
+@@ -1295,7 +1295,7 @@ AC_ARG_ENABLE(sdl,
+ 			ac_sdl_cflags=`$SDL_CONFIG --cflags`
+ 			ac_sdl_cflags="-DPJMEDIA_VIDEO_DEV_HAS_SDL=1 $ac_sdl_cflags"
+ 			ac_sdl_ldflags=`$SDL_CONFIG --libs`
+-			ac_sdl_ldflags=${ac_sdl_ldflags//-mwindows/}
++			ac_sdl_ldflags=`echo "${ac_sdl_ldflags}" | sed -e 's/-mwindows//g'`
+ 			LIBS="$LIBS $ac_sdl_ldflags"
+ 		  else
+ 			AC_MSG_RESULT([Unsupported SDL version])
