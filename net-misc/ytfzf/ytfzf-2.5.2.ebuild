@@ -25,10 +25,6 @@ RDEPEND="
 		net-misc/yt-dlp
 	)"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-ueberzug.patch
-)
-
 src_prepare() {
 	default
 
