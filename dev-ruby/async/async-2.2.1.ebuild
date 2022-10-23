@@ -3,10 +3,10 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby31"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
-RUBY_FAKEGEM_EXTRADOC="README.md"
+RUBY_FAKEGEM_EXTRADOC="readme.md"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem
@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~sparc"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/console-1.10:1
-	>=dev-ruby/nio4r-2.3:2
+	dev-ruby/io-event:1.1
 	>=dev-ruby/timers-4.1:4"
 
 ruby_add_bdepend "test? (
@@ -32,9 +32,11 @@ ruby_add_bdepend "test? (
 all_ruby_prepare() {
 	sed -i -E 's/require_relative "(.+)"/require File.expand_path("\1")/g' "${RUBY_FAKEGEM_GEMSPEC}" || die
 
-	# Avoid network tests
-	sed -i -e '/can fetch website using Net::HTTP/askip "requires network"' spec/async/scheduler_spec.rb || die
+	# network tests
+	rm -f \
+		"spec/net/http_spec.rb" \
+		"spec/async/scheduler/address_spec.rb" \
+		"spec/async/scheduler/io_spec.rb" || die
 
-	# Avoid test dependency on unpackaged covered
-	sed -i -e '/covered/ s:^:#:' spec/spec_helper.rb || die
+	sed -i -E 's/require '"'"'covered\/rspec'"'"'//g' "spec/spec_helper.rb" || die
 }
