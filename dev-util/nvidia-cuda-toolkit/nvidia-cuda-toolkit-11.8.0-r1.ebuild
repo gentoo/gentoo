@@ -67,7 +67,7 @@ src_install() {
 	local builddirs=(
 		builds/cuda_{cccl,cudart,cuobjdump,cuxxfilt,memcheck,nvcc,nvdisasm,nvml_dev,nvprune,nvrtc,nvtx}
 		builds/lib{cublas,cufft,curand,cusolver,cusparse,npp,nvjpeg}
-		$(usex profiler "builds/cuda_nvprof builds/cuda_cupti" "")
+		$(usex profiler "builds/cuda_nvprof builds/cuda_cupti builds/cuda_profiler_api" "")
 		$(usex vis-profiler "builds/cuda_nvvp" "")
 		$(usex debugger "builds/cuda_gdb" "")
 	)
