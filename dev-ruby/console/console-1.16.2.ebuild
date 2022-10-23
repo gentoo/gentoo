@@ -30,7 +30,7 @@ all_ruby_prepare() {
 	rm -f config/sus.rb || die
 
 	# Avoid sandbox violation during tests
-	sed -i -e 's:/tmp/:'${TMPDIR}'/:' test/console/output.rb || die
+	sed -i -e 's:/tmp/:'"${TMPDIR}"'/:' test/console/output.rb || die
 }
 
 each_ruby_test() {
