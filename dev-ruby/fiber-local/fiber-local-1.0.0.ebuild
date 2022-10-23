@@ -22,6 +22,6 @@ IUSE=""
 
 all_ruby_prepare() {
 	sed -i -E 's/require_relative "(.+)"/require File.expand_path("\1")/g' "${RUBY_FAKEGEM_GEMSPEC}" || die
-	rm -f "gems.rb" || die
-	sed -i -E 's/require '"'"'covered\/rspec'"'"'//g' "spec/spec_helper.rb" || die
+
+	sed -i -e '/\(bundler\|covered\)/ s:^:#:' spec/spec_helper.rb || die
 }
