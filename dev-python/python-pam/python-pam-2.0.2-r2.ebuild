@@ -14,7 +14,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/FirefighterBlu3/python-pam/archive/v${PV}.tar.gz
-		-> ${P}.tar.gz
+		-> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"
