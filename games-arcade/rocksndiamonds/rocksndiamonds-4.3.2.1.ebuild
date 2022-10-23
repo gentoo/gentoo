@@ -47,6 +47,7 @@ RDEPEND="
 	media-libs/smpeg
 "
 DEPEND="${RDEPEND}"
+BDEPEND="$(unpacker_src_uri_depends)"
 
 PATCHES=(
 	# From Fedora:
