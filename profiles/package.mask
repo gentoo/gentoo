@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Anton Fischl <github@fischl-online.de> (2022-10-23)
+# Version 3.1.* is not meant for production according to upstream
+=app-backup/burp-3.1*
+
 # Hans de Graaff <graaff@gentoo.org> (2022-10-22)
 # Last release upstream 10 years ago. No longer compiles with latest
 # clang (bug #875254) and doubtful that this actually works with recent
