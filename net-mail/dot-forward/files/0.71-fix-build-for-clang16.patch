@@ -1,0 +1,1662 @@
+Clang16 will not suppert implicit int and implicit function declaraions.
+This patch makes the source code ready for clang16. 
+See also: https://bugs.gentoo.org/870412
+
+Bug: https://bugs.gentoo.org/870856
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/alloc.c
++++ b/alloc.c
+@@ -1,6 +1,6 @@
+ #include "alloc.h"
+ #include "error.h"
+-extern char *malloc();
++extern char *malloc(int n);
+ extern void free();
+ 
+ #define ALIGNMENT 16 /* XXX: assuming that this alignment is enough */
+@@ -11,8 +11,7 @@ static aligned realspace[SPACE / ALIGNMENT];
+ #define space ((char *) realspace)
+ static unsigned int avail = SPACE; /* multiple of ALIGNMENT; 0<=avail<=SPACE */
+ 
+-/*@null@*//*@out@*/char *alloc(n)
+-unsigned int n;
++/*@null@*//*@out@*/char *alloc(unsigned int n)
+ {
+   char *x;
+   n = ALIGNMENT + n - (n & (ALIGNMENT - 1)); /* XXX: could overflow */
+@@ -22,8 +21,7 @@ unsigned int n;
+   return x;
+ }
+ 
+-void alloc_free(x)
+-char *x;
++void alloc_free(char *x)
+ {
+   if (x >= space)
+     if (x < space + SPACE)
+--- a/alloc.h
++++ b/alloc.h
+@@ -1,8 +1,8 @@
+ #ifndef ALLOC_H
+ #define ALLOC_H
+ 
+-extern /*@null@*//*@out@*/char *alloc();
+-extern void alloc_free();
+-extern int alloc_re();
++extern /*@null@*//*@out@*/char *alloc(unsigned int n);
++extern void alloc_free(char *x);
++extern int alloc_re(char **x,unsigned int m,unsigned int n);
+ 
+ #endif
+--- a/alloc_re.c
++++ b/alloc_re.c
+@@ -1,10 +1,7 @@
+ #include "alloc.h"
+ #include "byte.h"
+ 
+-int alloc_re(x,m,n)
+-char **x;
+-unsigned int m;
+-unsigned int n;
++int alloc_re(char **x,unsigned int m,unsigned int n)
+ {
+   char *y;
+  
+--- a/auto-str.c
++++ b/auto-str.c
+@@ -1,19 +1,17 @@
+ #include "substdio.h"
+ #include "readwrite.h"
+ #include "exit.h"
++#include <unistd.h>
+ 
+ char buf1[256];
+-substdio ss1 = SUBSTDIO_FDBUF(write,1,buf1,sizeof(buf1));
++substdio ss1 = SUBSTDIO_FDBUF((int(*)())write,1,buf1,sizeof(buf1));
+ 
+-void puts(s)
+-char *s;
++void puts(char *s)
+ {
+   if (substdio_puts(&ss1,s) == -1) _exit(111);
+ }
+ 
+-void main(argc,argv)
+-int argc;
+-char **argv;
++int main(int argc,char **argv)
+ {
+   char *name;
+   char *value;
+@@ -29,7 +27,7 @@ char **argv;
+   puts(name);
+   puts("[] = \"\\\n");
+ 
+-  while (ch = *value++) {
++  while ((ch = *value++)) {
+     puts("\\");
+     octal[3] = 0;
+     octal[2] = '0' + (ch & 7); ch >>= 3;
+--- a/byte.h
++++ b/byte.h
+@@ -1,10 +1,10 @@
+ #ifndef BYTE_H
+ #define BYTE_H
+ 
+-extern unsigned int byte_chr();
++extern unsigned int byte_chr(char *s,register unsigned int n,int c);
+ extern unsigned int byte_rchr();
+-extern void byte_copy();
+-extern void byte_copyr();
++extern void byte_copy(register char *to,register unsigned int n,register char *from);
++extern void byte_copyr(register char *to,register unsigned int n,register char *from);
+ extern int byte_diff();
+ extern void byte_zero();
+ 
+--- a/byte_chr.c
++++ b/byte_chr.c
+@@ -1,9 +1,6 @@
+ #include "byte.h"
+ 
+-unsigned int byte_chr(s,n,c)
+-char *s;
+-register unsigned int n;
+-int c;
++unsigned int byte_chr(char *s,register unsigned int n,int c)
+ {
+   register char ch;
+   register char *t;
+--- a/byte_copy.c
++++ b/byte_copy.c
+@@ -1,9 +1,6 @@
+ #include "byte.h"
+ 
+-void byte_copy(to,n,from)
+-register char *to;
+-register unsigned int n;
+-register char *from;
++void byte_copy(register char *to,register unsigned int n,register char *from)
+ {
+   for (;;) {
+     if (!n) return; *to++ = *from++; --n;
+--- a/byte_cr.c
++++ b/byte_cr.c
+@@ -1,9 +1,6 @@
+ #include "byte.h"
+ 
+-void byte_copyr(to,n,from)
+-register char *to;
+-register unsigned int n;
+-register char *from;
++void byte_copyr(register char *to,register unsigned int n,register char *from)
+ {
+   to += n;
+   from += n;
+--- a/case.h
++++ b/case.h
+@@ -4,7 +4,7 @@
+ extern void case_lowers();
+ extern void case_lowerb();
+ extern int case_diffs();
+-extern int case_diffb();
++extern int case_diffb(register char *s,unsigned int len,register char *t);
+ extern int case_starts();
+ extern int case_startb();
+ 
+--- a/case_diffb.c
++++ b/case_diffb.c
+@@ -1,9 +1,6 @@
+ #include "case.h"
+ 
+-int case_diffb(s,len,t)
+-register char *s;
+-unsigned int len;
+-register char *t;
++int case_diffb(register char *s,unsigned int len,register char *t)
+ {
+   register unsigned char x;
+   register unsigned char y;
+--- a/conf-cc
++++ b/conf-cc
+@@ -1,3 +1 @@
+-cc -O2
+-
+-This will be used to compile .c files.
++clang  -march=skylake -mtune=skylake -O2 -pipe 
+--- a/conf-ld
++++ b/conf-ld
+@@ -1,3 +1 @@
+-cc -s
+-
+-This will be used to link .o files into an executable.
++clang  -Wl,-O1 -Wl,--as-needed
+--- a/control.c
++++ b/control.c
+@@ -7,14 +7,14 @@
+ #include "control.h"
+ #include "alloc.h"
+ #include "scan.h"
++#include <unistd.h>
+ 
+ static char inbuf[64];
+ static stralloc line = {0};
+ static stralloc me = {0};
+ static int meok = 0;
+ 
+-static void striptrailingwhitespace(sa)
+-stralloc *sa;
++static void striptrailingwhitespace(stralloc *sa)
+ {
+  while (sa->len > 0)
+    switch(sa->s[sa->len - 1])
+@@ -27,7 +27,7 @@ stralloc *sa;
+     }
+ }
+ 
+-int control_init()
++int control_init(void)
+ {
+  int r;
+  r = control_readline(&me,"control/me");
+@@ -35,11 +35,7 @@ int control_init()
+  return r;
+ }
+ 
+-int control_rldef(sa,fn,flagme,def)
+-stralloc *sa;
+-char *fn;
+-int flagme;
+-char *def;
++int control_rldef(stralloc *sa,char *fn,int flagme,char *def)
+ {
+  int r;
+  r = control_readline(sa,fn);
+@@ -49,9 +45,7 @@ char *def;
+  return r;
+ }
+ 
+-int control_readline(sa,fn)
+-stralloc *sa;
+-char *fn;
++int control_readline(stralloc *sa,char *fn)
+ {
+  substdio ss;
+  int fd;
+@@ -60,7 +54,7 @@ char *fn;
+  fd = open_read(fn);
+  if (fd == -1) { if (errno == error_noent) return 0; return -1; }
+  
+- substdio_fdbuf(&ss,read,fd,inbuf,sizeof(inbuf));
++ substdio_fdbuf(&ss,(int (*)())read,fd,inbuf,sizeof(inbuf));
+ 
+  if (getln(&ss,sa,&match,'\n') == -1) { close(fd); return -1; }
+ 
+@@ -69,9 +63,7 @@ char *fn;
+  return 1;
+ }
+ 
+-int control_readint(i,fn)
+-int *i;
+-char *fn;
++int control_readint(int *i,char *fn)
+ {
+  unsigned long u;
+  switch(control_readline(&line,fn))
+@@ -85,10 +77,7 @@ char *fn;
+  return 1;
+ }
+ 
+-int control_readfile(sa,fn,flagme)
+-stralloc *sa;
+-char *fn;
+-int flagme;
++int control_readfile(stralloc *sa,char *fn,int flagme)
+ {
+  substdio ss;
+  int fd;
+@@ -112,7 +101,7 @@ int flagme;
+    return -1;
+   }
+ 
+- substdio_fdbuf(&ss,read,fd,inbuf,sizeof(inbuf));
++ substdio_fdbuf(&ss,(int (*)())read,fd,inbuf,sizeof(inbuf));
+ 
+  for (;;)
+   {
+--- a/control.h
++++ b/control.h
+@@ -1,10 +1,12 @@
+ #ifndef CONTROL_H
+ #define CONTROL_H
+ 
+-extern int control_init();
+-extern int control_readline();
+-extern int control_rldef();
+-extern int control_readint();
+-extern int control_readfile();
++#include "stralloc.h"
++
++extern int control_init(void);
++extern int control_readline(stralloc *sa,char *fn);
++extern int control_rldef(stralloc *sa,char *fn,int flagme,char *def);
++extern int control_readint(int *i,char *fn);
++extern int control_readfile(stralloc *sa,char *fn,int flagme);
+ 
+ #endif
+--- a/dot-forward.c
++++ b/dot-forward.c
+@@ -16,6 +16,10 @@
+ #include "control.h"
+ #include "qmail.h"
+ #include "auto_qmail.h"
++#include <unistd.h>
++#include "sig.h"
++#include "fd.h"
++#include "case.h"
+ 
+ #define FATAL "dot-forward: fatal: "
+ #define INFO "dot-forward: info: "
+@@ -55,15 +59,13 @@ substdio ssmess;
+ char childbuf[1024];
+ substdio sschild;
+ 
+-int blindwrite(fd,buf,len)
+-int fd; char *buf; int len;
++int blindwrite(int fd, char *buf, int len)
+ {
+   write(fd,buf,len);
+   return len;
+ }
+ 
+-void run(cmd)
+-char *cmd;
++void run(char *cmd)
+ {
+   int child;
+   int pi[2];
+@@ -93,7 +95,7 @@ char *cmd;
+ 
+   close(pi[0]);
+ 
+-  substdio_fdbuf(&ssmess,read,0,messbuf,sizeof messbuf);
++  substdio_fdbuf(&ssmess,(int (*)())read,0,messbuf,sizeof messbuf);
+   substdio_fdbuf(&sschild,blindwrite,pi[1],childbuf,sizeof childbuf);
+ 
+   substdio_puts(&sschild,ufline);
+@@ -302,8 +304,7 @@ unsigned long qp;
+ char *qqx;
+ char strnum[FMT_ULONG];
+ 
+-int mywrite(fd,buf,len)
+-int fd; char *buf; int len;
++int mywrite(int fd, char *buf, int len)
+ {
+   qmail_put(&qq,buf,len);
+   return len;
+@@ -314,8 +315,7 @@ substdio ssqq = SUBSTDIO_FDBUF(mywrite,-1,qqbuf,sizeof qqbuf);
+ 
+ char inbuf[256];
+ 
+-void try(fn)
+-char *fn;
++void try(char *fn)
+ {
+   int fd;
+   int match;
+@@ -331,7 +331,7 @@ char *fn;
+   flagacted = 0;
+   flagdirect = 0;
+ 
+-  substdio_fdbuf(&ss,read,fd,inbuf,sizeof inbuf);
++  substdio_fdbuf(&ss,(int (*)())read,fd,inbuf,sizeof inbuf);
+ 
+   for (;;) {
+     if (getln(&ss,&line,&match,'\n') == -1)
+@@ -351,7 +351,7 @@ char *fn;
+       qp = qmail_qp(&qq);
+       qmail_puts(&qq,dtline);
+ 
+-      substdio_fdbuf(&ssmess,read,0,messbuf,sizeof messbuf);
++      substdio_fdbuf(&ssmess,(int (*)())read,0,messbuf,sizeof messbuf);
+       if (substdio_copy(&ssqq,&ssmess) != 0) die_readmess();
+       substdio_flush(&ssqq);
+ 
+@@ -379,9 +379,7 @@ char *fn;
+   _exit(99);
+ }
+ 
+-void main(argc,argv)
+-int argc;
+-char **argv;
++void main(int argc,char **argv)
+ {
+   int opt;
+   int fddir;
+--- a/env.h
++++ b/env.h
+@@ -7,10 +7,10 @@ extern int env_init();
+ extern int env_put();
+ extern int env_put2();
+ extern int env_unset();
+-extern /*@null@*/char *env_get();
++extern /*@null@*/char *env_get(char *s);
+ extern char *env_pick();
+ extern void env_clear();
+-extern char *env_findeq();
++extern char *env_findeq(char *s);
+ 
+ extern char **environ;
+ 
+--- a/envread.c
++++ b/envread.c
+@@ -1,8 +1,7 @@
+ #include "env.h"
+ #include "str.h"
+ 
+-extern /*@null@*/char *env_get(s)
+-char *s;
++extern /*@null@*/char *env_get(char *s)
+ {
+   int i;
+   unsigned int slen;
+@@ -20,8 +19,7 @@ extern char *env_pick()
+   return environ[0];
+ }
+ 
+-extern char *env_findeq(s)
+-char *s;
++extern char *env_findeq(char *s)
+ {
+   for (;*s;++s)
+     if (*s == '=')
+--- a/error.h
++++ b/error.h
+@@ -17,7 +17,7 @@ extern int error_pipe;
+ extern int error_perm;
+ extern int error_acces;
+ 
+-extern char *error_str();
++extern char *error_str(int i);
+ extern int error_temp();
+ 
+ #endif
+--- a/error_str.c
++++ b/error_str.c
+@@ -3,8 +3,7 @@
+ 
+ #define X(e,s) if (i == e) return s;
+ 
+-char *error_str(i)
+-int i;
++char *error_str(int i)
+ {
+   X(0,"no error")
+   X(error_intr,"interrupted system call")
+--- a/exit.h
++++ b/exit.h
+@@ -1,6 +1,6 @@
+ #ifndef EXIT_H
+ #define EXIT_H
+ 
+-extern void _exit();
++extern void _exit(int i);
+ 
+ #endif
+--- a/fd.h
++++ b/fd.h
+@@ -1,7 +1,7 @@
+ #ifndef FD_H
+ #define FD_H
+ 
+-extern int fd_copy();
+-extern int fd_move();
++extern int fd_copy(int to,int from);
++extern int fd_move(int to,int from);
+ 
+ #endif
+--- a/fd_copy.c
++++ b/fd_copy.c
+@@ -1,9 +1,8 @@
+ #include <fcntl.h>
++#include <unistd.h>
+ #include "fd.h"
+ 
+-int fd_copy(to,from)
+-int to;
+-int from;
++int fd_copy(int to,int from)
+ {
+   if (to == from) return 0;
+   if (fcntl(from,F_GETFL,0) == -1) return -1;
+--- a/fd_move.c
++++ b/fd_move.c
+@@ -1,8 +1,7 @@
+ #include "fd.h"
++#include <unistd.h>
+ 
+-int fd_move(to,from)
+-int to;
+-int from;
++int fd_move(int to,int from)
+ {
+   if (to == from) return 0;
+   if (fd_copy(to,from) == -1) return -1;
+--- a/fmt.h
++++ b/fmt.h
+@@ -11,7 +11,7 @@ extern unsigned int fmt_nbbint();
+ extern unsigned int fmt_ushort();
+ extern unsigned int fmt_xshort();
+ extern unsigned int fmt_nbbshort();
+-extern unsigned int fmt_ulong();
++unsigned int fmt_ulong(register char *s, register unsigned long u);
+ extern unsigned int fmt_xlong();
+ extern unsigned int fmt_nbblong();
+ 
+--- a/fmt_ulong.c
++++ b/fmt_ulong.c
+@@ -1,6 +1,6 @@
+ #include "fmt.h"
+ 
+-unsigned int fmt_ulong(s,u) register char *s; register unsigned long u;
++unsigned int fmt_ulong(register char *s, register unsigned long u)
+ {
+   register unsigned int len; register unsigned long q;
+   len = 1; q = u;
+--- a/gen_allocdefs.h
++++ b/gen_allocdefs.h
+@@ -2,7 +2,7 @@
+ #define GEN_ALLOC_DEFS_H
+ 
+ #define GEN_ALLOC_ready(ta,type,field,len,a,i,n,x,base,ta_ready) \
+-int ta_ready(x,n) register ta *x; register unsigned int n; \
++int ta_ready(register ta *x, register unsigned int n) \
+ { register unsigned int i; \
+   if (x->field) { \
+     i = x->a; \
+@@ -15,7 +15,7 @@ int ta_ready(x,n) register ta *x; register unsigned int n; \
+   return !!(x->field = (type *) alloc((x->a = n) * sizeof(type))); }
+ 
+ #define GEN_ALLOC_readyplus(ta,type,field,len,a,i,n,x,base,ta_rplus) \
+-int ta_rplus(x,n) register ta *x; register unsigned int n; \
++int ta_rplus(register ta *x, register unsigned int n) \
+ { register unsigned int i; \
+   if (x->field) { \
+     i = x->a; n += x->len; \
+@@ -28,7 +28,7 @@ int ta_rplus(x,n) register ta *x; register unsigned int n; \
+   return !!(x->field = (type *) alloc((x->a = n) * sizeof(type))); }
+ 
+ #define GEN_ALLOC_append(ta,type,field,len,a,i,n,x,base,ta_rplus,ta_append) \
+-int ta_append(x,i) register ta *x; register type *i; \
++int ta_append(register ta *x,register type *i) \
+ { if (!ta_rplus(x,1)) return 0; x->field[x->len++] = *i; return 1; }
+ 
+ #endif
+--- a/getln.c
++++ b/getln.c
+@@ -3,11 +3,7 @@
+ #include "stralloc.h"
+ #include "getln.h"
+ 
+-int getln(ss,sa,match,sep)
+-register substdio *ss;
+-register stralloc *sa;
+-int *match;
+-int sep;
++int getln(register substdio *ss,register stralloc *sa,int *match,int sep)
+ {
+   char *cont;
+   unsigned int clen;
+--- a/getln.h
++++ b/getln.h
+@@ -1,7 +1,10 @@
+ #ifndef GETLN_H
+ #define GETLN_H
+ 
+-extern int getln();
+-extern int getln2();
++#include "stralloc.h"
++#include "substdio.h"
++
++extern int getln(register substdio *ss,register stralloc *sa,int *match,int sep);
++extern int getln2(register substdio *ss,register stralloc *sa,/*@out@*/char **cont,/*@out@*/unsigned int *clen,int sep);
+ 
+ #endif
+--- a/getln2.c
++++ b/getln2.c
+@@ -3,12 +3,7 @@
+ #include "byte.h"
+ #include "getln.h"
+ 
+-int getln2(ss,sa,cont,clen,sep)
+-register substdio *ss;
+-register stralloc *sa;
+-/*@out@*/char **cont;
+-/*@out@*/unsigned int *clen;
+-int sep;
++int getln2(register substdio *ss,register stralloc *sa,/*@out@*/char **cont,/*@out@*/unsigned int *clen,int sep)
+ {
+   register char *x;
+   register unsigned int i;
+--- a/hier.c
++++ b/hier.c
+@@ -1,6 +1,6 @@
+ #include "auto_qmail.h"
+ 
+-void hier()
++void hier(void)
+ {
+   h(auto_qmail,-1,-1,0755);
+ 
+--- a/install.c
++++ b/install.c
+@@ -11,11 +11,7 @@ extern void hier();
+ 
+ int fdsourcedir = -1;
+ 
+-void h(home,uid,gid,mode)
+-char *home;
+-int uid;
+-int gid;
+-int mode;
++void h(char *home,int uid,int gid,int mode)
+ {
+   if (mkdir(home,0700) == -1)
+     if (errno != error_exist)
+@@ -26,12 +22,7 @@ int mode;
+     strerr_die4sys(111,FATAL,"unable to chmod ",home,": ");
+ }
+ 
+-void d(home,subdir,uid,gid,mode)
+-char *home;
+-char *subdir;
+-int uid;
+-int gid;
+-int mode;
++void d(char *home,char *subdir,int uid,int gid,int mode)
+ {
+   if (chdir(home) == -1)
+     strerr_die4sys(111,FATAL,"unable to switch to ",home,": ");
+@@ -49,13 +40,7 @@ char outbuf[SUBSTDIO_OUTSIZE];
+ substdio ssin;
+ substdio ssout;
+ 
+-void c(home,subdir,file,uid,gid,mode)
+-char *home;
+-char *subdir;
+-char *file;
+-int uid;
+-int gid;
+-int mode;
++void c(char *home,char *subdir,char *file,int uid,int gid,int mode)
+ {
+   int fdin;
+   int fdout;
+--- a/instcheck.c
++++ b/instcheck.c
+@@ -5,20 +5,12 @@
+ #include "readwrite.h"
+ #include "exit.h"
+ 
+-extern void hier();
++extern void hier(void);
+ 
+ #define FATAL "instcheck: fatal: "
+ #define WARNING "instcheck: warning: "
+ 
+-void perm(prefix1,prefix2,prefix3,file,type,uid,gid,mode)
+-char *prefix1;
+-char *prefix2;
+-char *prefix3;
+-char *file;
+-int type;
+-int uid;
+-int gid;
+-int mode;
++void perm(char *prefix1,char *prefix2,char *prefix3,char *file,int type,int uid,int gid,int mode)
+ {
+   struct stat st;
+ 
+@@ -40,11 +32,7 @@ int mode;
+     strerr_warn6(WARNING,prefix1,prefix2,prefix3,file," has wrong type",0);
+ }
+ 
+-void h(home,uid,gid,mode)
+-char *home;
+-int uid;
+-int gid;
+-int mode;
++void h(char *home,int uid,int gid,int mode)
+ {
+   perm("","","",home,S_IFDIR,uid,gid,mode);
+ }
+@@ -61,13 +49,7 @@ int mode;
+   perm("",home,"/",subdir,S_IFDIR,uid,gid,mode);
+ }
+ 
+-void c(home,subdir,file,uid,gid,mode)
+-char *home;
+-char *subdir;
+-char *file;
+-int uid;
+-int gid;
+-int mode;
++void c(char *home,char *subdir,char *file,int uid,int gid,int mode)
+ {
+   if (chdir(home) == -1)
+     strerr_die4sys(111,FATAL,"unable to switch to ",home,": ");
+--- a/make-makelib.sh
++++ b/make-makelib.sh
+@@ -1,6 +1,6 @@
+ echo 'main="$1"; shift'
+ echo 'rm -f "$main"'
+-echo 'ar cr "$main" ${1+"$@"}'
++echo 'x86_64-pc-linux-gnu-ar cr "$main" ${1+"$@"}'
+ 
+ case "$1" in
+ sunos-5.*) ;;
+@@ -11,6 +11,6 @@ dgux-*) ;;
+ hp-ux-*) ;;
+ sco*) ;;
+ *)
+-  echo 'ranlib "$main"'
++  echo 'x86_64-pc-linux-gnu-ranlib "$main"'
+   ;;
+ esac
+--- a/open.h
++++ b/open.h
+@@ -1,10 +1,10 @@
+ #ifndef OPEN_H
+ #define OPEN_H
+ 
+-extern int open_read();
++extern int open_read(char *fn);
+ extern int open_excl();
+ extern int open_append();
+-extern int open_trunc();
++extern int open_trunc(char *fn);
+ extern int open_write();
+ 
+ #endif
+--- a/open_read.c
++++ b/open_read.c
+@@ -2,5 +2,5 @@
+ #include <fcntl.h>
+ #include "open.h"
+ 
+-int open_read(fn) char *fn;
++int open_read(char *fn)
+ { return open(fn,O_RDONLY | O_NDELAY); }
+--- a/open_trunc.c
++++ b/open_trunc.c
+@@ -2,5 +2,5 @@
+ #include <fcntl.h>
+ #include "open.h"
+ 
+-int open_trunc(fn) char *fn;
++int open_trunc(char *fn)
+ { return open(fn,O_WRONLY | O_NDELAY | O_TRUNC | O_CREAT,0644); }
+--- a/qmail.c
++++ b/qmail.c
+@@ -6,11 +6,11 @@
+ #include "fd.h"
+ #include "qmail.h"
+ #include "auto_qmail.h"
++#include <unistd.h>
+ 
+ static char *binqqargs[2] = { "bin/qmail-queue", 0 } ;
+ 
+-int qmail_open(qq)
+-struct qmail *qq;
++int qmail_open(struct qmail *qq)
+ {
+   int pim[2];
+   int pie[2];
+@@ -35,50 +35,49 @@ struct qmail *qq;
+ 
+   qq->fdm = pim[1]; close(pim[0]);
+   qq->fde = pie[1]; close(pie[0]);
+-  substdio_fdbuf(&qq->ss,write,qq->fdm,qq->buf,sizeof(qq->buf));
++  substdio_fdbuf(&qq->ss,(int (*)())write,qq->fdm,qq->buf,sizeof(qq->buf));
+   qq->flagerr = 0;
+   return 0;
+ }
+ 
+-unsigned long qmail_qp(qq) struct qmail *qq;
++unsigned long qmail_qp(struct qmail *qq)
+ {
+   return qq->pid;
+ }
+ 
+-void qmail_fail(qq) struct qmail *qq;
++void qmail_fail(struct qmail *qq)
+ {
+   qq->flagerr = 1;
+ }
+ 
+-void qmail_put(qq,s,len) struct qmail *qq; char *s; int len;
++void qmail_put(struct qmail *qq, char *s, int len)
+ {
+   if (!qq->flagerr) if (substdio_put(&qq->ss,s,len) == -1) qq->flagerr = 1;
+ }
+ 
+-void qmail_puts(qq,s) struct qmail *qq; char *s;
++void qmail_puts(struct qmail *qq, char *s)
+ {
+   if (!qq->flagerr) if (substdio_puts(&qq->ss,s) == -1) qq->flagerr = 1;
+ }
+ 
+-void qmail_from(qq,s) struct qmail *qq; char *s;
++void qmail_from(struct qmail *qq, char *s)
+ {
+   if (substdio_flush(&qq->ss) == -1) qq->flagerr = 1;
+   close(qq->fdm);
+-  substdio_fdbuf(&qq->ss,write,qq->fde,qq->buf,sizeof(qq->buf));
++  substdio_fdbuf(&qq->ss,(int (*)())write,qq->fde,qq->buf,sizeof(qq->buf));
+   qmail_put(qq,"F",1);
+   qmail_puts(qq,s);
+   qmail_put(qq,"",1);
+ }
+ 
+-void qmail_to(qq,s) struct qmail *qq; char *s;
++void qmail_to(struct qmail *qq, char *s)
+ {
+   qmail_put(qq,"T",1);
+   qmail_puts(qq,s);
+   qmail_put(qq,"",1);
+ }
+ 
+-char *qmail_close(qq)
+-struct qmail *qq;
++char *qmail_close(struct qmail *qq)
+ {
+   int wstat;
+   int exitcode;
+--- a/qmail.h
++++ b/qmail.h
+@@ -12,13 +12,13 @@ struct qmail {
+   char buf[1024];
+ } ;
+ 
+-extern int qmail_open();
+-extern void qmail_put();
+-extern void qmail_puts();
+-extern void qmail_from();
+-extern void qmail_to();
+-extern void qmail_fail();
+-extern char *qmail_close();
+-extern unsigned long qmail_qp();
++extern int qmail_open(struct qmail *qq);
++extern void qmail_put(struct qmail *qq, char *s, int len);
++extern void qmail_puts(struct qmail *qq, char *s);
++extern void qmail_from(struct qmail *qq, char *s);
++extern void qmail_to(struct qmail *qq, char *s);
++extern void qmail_fail(struct qmail *qq);
++extern char *qmail_close(struct qmail *qq);
++extern unsigned long qmail_qp(struct qmail *qq);
+ 
+ #endif
+--- a/readwrite.h
++++ b/readwrite.h
+@@ -1,7 +1,7 @@
+ #ifndef READWRITE_H
+ #define READWRITE_H
+ 
+-extern int read();
+-extern int write();
++/* extern int read(); */
++/* extern int write(); */
+ 
+ #endif
+--- a/scan.h
++++ b/scan.h
+@@ -7,7 +7,7 @@ extern unsigned int scan_nbbint();
+ extern unsigned int scan_ushort();
+ extern unsigned int scan_xshort();
+ extern unsigned int scan_nbbshort();
+-extern unsigned int scan_ulong();
++extern unsigned int scan_ulong(register char *s, register unsigned long *u);
+ extern unsigned int scan_xlong();
+ extern unsigned int scan_nbblong();
+ 
+--- a/scan_ulong.c
++++ b/scan_ulong.c
+@@ -1,6 +1,6 @@
+ #include "scan.h"
+ 
+-unsigned int scan_ulong(s,u) register char *s; register unsigned long *u;
++unsigned int scan_ulong(register char *s, register unsigned long *u)
+ {
+   register unsigned int pos; register unsigned long result;
+   register unsigned long c;
+--- a/seek.h
++++ b/seek.h
+@@ -5,7 +5,7 @@ typedef unsigned long seek_pos;
+ 
+ extern seek_pos seek_cur();
+ 
+-extern int seek_set();
++extern int seek_set(int fd, seek_pos pos);
+ extern int seek_end();
+ 
+ extern int seek_trunc();
+--- a/seek_set.c
++++ b/seek_set.c
+@@ -1,7 +1,8 @@
+ #include <sys/types.h>
++#include <unistd.h>
+ #include "seek.h"
+ 
+ #define SET 0 /* sigh */
+ 
+-int seek_set(fd,pos) int fd; seek_pos pos;
++int seek_set(int fd, seek_pos pos)
+ { if (lseek(fd,(off_t) pos,SET) == -1) return -1; return 0; }
+--- a/sgetopt.c
++++ b/sgetopt.c
+@@ -16,7 +16,7 @@ Documentation in sgetopt.3.
+ #define SUBGETOPTNOSHORT
+ #include "subgetopt.h"
+ 
+-#define getopt sgetoptmine
++/* #define getopt sgetoptmine */
+ #define optind subgetoptind
+ #define opterr sgetopterr
+ #define optproblem subgetoptproblem
+@@ -25,10 +25,7 @@ Documentation in sgetopt.3.
+ int opterr = 1;
+ char *optprogname = 0;
+ 
+-int getopt(argc,argv,opts)
+-int argc;
+-char **argv;
+-char *opts;
++int sgetoptmine(int argc,char **argv,char *opts)
+ {
+   int c;
+   char *s;
+--- a/sgetopt.h
++++ b/sgetopt.h
+@@ -2,7 +2,7 @@
+ #define SGETOPT_H
+ 
+ #ifndef SGETOPTNOSHORT
+-#define getopt sgetoptmine
++/* #define getopt sgetoptmine */
+ #define optarg subgetoptarg
+ #define optind subgetoptind
+ #define optpos subgetoptpos
+@@ -14,7 +14,7 @@
+ 
+ #include "subgetopt.h"
+ 
+-extern int sgetoptmine();
++extern int sgetoptmine(int argc,char **argv,char *opts);
+ extern int sgetopterr;
+ extern char *sgetoptprogname;
+ 
+--- a/sig.h
++++ b/sig.h
+@@ -1,7 +1,7 @@
+ #ifndef SIG_H
+ #define SIG_H
+ 
+-extern void sig_catch();
++extern void sig_catch(int sig,void (*f)());
+ extern void sig_block();
+ extern void sig_unblock();
+ extern void sig_blocknone();
+@@ -12,8 +12,8 @@ extern void sig_dfl();
+ extern void sig_miscignore();
+ extern void sig_bugcatch();
+ 
+-extern void sig_pipeignore();
+-extern void sig_pipedefault();
++extern void sig_pipeignore(void);
++extern void sig_pipedefault(void);
+ 
+ extern void sig_contblock();
+ extern void sig_contunblock();
+--- a/sig_catch.c
++++ b/sig_catch.c
+@@ -2,10 +2,7 @@
+ #include "sig.h"
+ #include "hassgact.h"
+ 
+-void sig_catch(sig,f)
+-int sig;
+-void (*f)();
+-{
++void sig_catch(int sig,void (*f)()){
+ #ifdef HASSIGACTION
+   struct sigaction sa;
+   sa.sa_handler = f;
+--- a/sig_pipe.c
++++ b/sig_pipe.c
+@@ -1,5 +1,5 @@
+ #include <signal.h>
+ #include "sig.h"
+ 
+-void sig_pipeignore() { sig_catch(SIGPIPE,SIG_IGN); }
+-void sig_pipedefault() { sig_catch(SIGPIPE,SIG_DFL); }
++void sig_pipeignore(void) { sig_catch(SIGPIPE,SIG_IGN); }
++void sig_pipedefault(void) { sig_catch(SIGPIPE,SIG_DFL); }
+--- a/str.h
++++ b/str.h
+@@ -3,8 +3,8 @@
+ 
+ extern unsigned int str_copy();
+ extern int str_diff();
+-extern int str_diffn();
+-extern unsigned int str_len();
++extern int str_diffn(register char *s,register char *t,unsigned int len);
++extern unsigned int str_len(register char *s);
+ extern unsigned int str_chr();
+ extern unsigned int str_rchr();
+ extern int str_start();
+--- a/str_diffn.c
++++ b/str_diffn.c
+@@ -1,9 +1,6 @@
+ #include "str.h"
+ 
+-int str_diffn(s,t,len)
+-register char *s;
+-register char *t;
+-unsigned int len;
++int str_diffn(register char *s,register char *t,unsigned int len)
+ {
+   register char x;
+ 
+--- a/str_len.c
++++ b/str_len.c
+@@ -1,7 +1,6 @@
+ #include "str.h"
+ 
+-unsigned int str_len(s)
+-register char *s;
++unsigned int str_len(register char *s)
+ {
+   register char *t;
+ 
+--- a/stralloc.h
++++ b/stralloc.h
+@@ -5,15 +5,15 @@
+ 
+ GEN_ALLOC_typedef(stralloc,char,s,len,a)
+ 
+-extern int stralloc_ready();
+-extern int stralloc_readyplus();
+-extern int stralloc_copy();
+-extern int stralloc_cat();
+-extern int stralloc_copys();
+-extern int stralloc_cats();
+-extern int stralloc_copyb();
+-extern int stralloc_catb();
+-extern int stralloc_append(); /* beware: this takes a pointer to 1 char */
++extern int stralloc_ready(stralloc *sa,unsigned int n);
++extern int stralloc_readyplus(stralloc *sa,unsigned int n);
++extern int stralloc_copy(stralloc *sato,stralloc *safrom);
++extern int stralloc_cat(stralloc *sato,stralloc *safrom);
++extern int stralloc_copys(stralloc *sa,char *s);
++extern int stralloc_cats(stralloc *sa,char *s);
++extern int stralloc_copyb(stralloc *sa,char *s,unsigned int n);
++extern int stralloc_catb(stralloc *sa,char *s,unsigned int n);
++extern int stralloc_append(stralloc *line, char *s); /* beware: this takes a pointer to 1 char */
+ extern int stralloc_starts();
+ 
+ #define stralloc_0(sa) stralloc_append(sa,"")
+--- a/stralloc_cat.c
++++ b/stralloc_cat.c
+@@ -1,9 +1,7 @@
+ #include "byte.h"
+ #include "stralloc.h"
+ 
+-int stralloc_cat(sato,safrom)
+-stralloc *sato;
+-stralloc *safrom;
++int stralloc_cat(stralloc *sato,stralloc *safrom)
+ {
+   return stralloc_catb(sato,safrom->s,safrom->len);
+ }
+--- a/stralloc_catb.c
++++ b/stralloc_catb.c
+@@ -1,10 +1,7 @@
+ #include "stralloc.h"
+ #include "byte.h"
+ 
+-int stralloc_catb(sa,s,n)
+-stralloc *sa;
+-char *s;
+-unsigned int n;
++int stralloc_catb(stralloc *sa,char *s,unsigned int n)
+ {
+   if (!sa->s) return stralloc_copyb(sa,s,n);
+   if (!stralloc_readyplus(sa,n + 1)) return 0;
+--- a/stralloc_cats.c
++++ b/stralloc_cats.c
+@@ -2,9 +2,7 @@
+ #include "str.h"
+ #include "stralloc.h"
+ 
+-int stralloc_cats(sa,s)
+-stralloc *sa;
+-char *s;
++int stralloc_cats(stralloc *sa,char *s)
+ {
+   return stralloc_catb(sa,s,str_len(s));
+ }
+--- a/stralloc_copy.c
++++ b/stralloc_copy.c
+@@ -1,9 +1,7 @@
+ #include "byte.h"
+ #include "stralloc.h"
+ 
+-int stralloc_copy(sato,safrom)
+-stralloc *sato;
+-stralloc *safrom;
++int stralloc_copy(stralloc *sato,stralloc *safrom)
+ {
+   return stralloc_copyb(sato,safrom->s,safrom->len);
+ }
+--- a/stralloc_opyb.c
++++ b/stralloc_opyb.c
+@@ -1,10 +1,7 @@
+ #include "stralloc.h"
+ #include "byte.h"
+ 
+-int stralloc_copyb(sa,s,n)
+-stralloc *sa;
+-char *s;
+-unsigned int n;
++int stralloc_copyb(stralloc *sa,char *s,unsigned int n)
+ {
+   if (!stralloc_ready(sa,n + 1)) return 0;
+   byte_copy(sa->s,n,s);
+--- a/stralloc_opys.c
++++ b/stralloc_opys.c
+@@ -2,9 +2,7 @@
+ #include "str.h"
+ #include "stralloc.h"
+ 
+-int stralloc_copys(sa,s)
+-stralloc *sa;
+-char *s;
++int stralloc_copys(stralloc *sa,char *s)
+ {
+   return stralloc_copyb(sa,s,str_len(s));
+ }
+--- a/strerr.h
++++ b/strerr.h
+@@ -11,11 +11,11 @@ struct strerr
+ ;
+ 
+ extern struct strerr strerr_sys;
+-extern void strerr_sysinit();
++extern void strerr_sysinit(void);
+ 
+ extern char *strerr();
+-extern void strerr_warn();
+-extern void strerr_die();
++extern void strerr_warn(char *x1, char *x2, char *x3, char *x4, char *x5, char *x6, struct strerr *se);
++extern void strerr_die(int e,char *x1, char *x2, char *x3, char *x4, char *x5, char *x6,struct strerr *se);
+ 
+ #define STRERR(r,se,a) \
+ { se.who = 0; se.x = a; se.y = 0; se.z = 0; return r; }
+--- a/strerr_die.c
++++ b/strerr_die.c
+@@ -3,9 +3,7 @@
+ #include "exit.h"
+ #include "strerr.h"
+ 
+-void strerr_warn(x1,x2,x3,x4,x5,x6,se)
+-char *x1; char *x2; char *x3; char *x4; char *x5; char *x6;
+-struct strerr *se;
++void strerr_warn(char *x1, char *x2, char *x3, char *x4, char *x5, char *x6, struct strerr *se)
+ {
+   strerr_sysinit();
+  
+@@ -27,10 +25,7 @@ struct strerr *se;
+   substdio_flush(subfderr);
+ }
+ 
+-void strerr_die(e,x1,x2,x3,x4,x5,x6,se)
+-int e;
+-char *x1; char *x2; char *x3; char *x4; char *x5; char *x6;
+-struct strerr *se;
++void strerr_die(int e,char *x1, char *x2, char *x3, char *x4, char *x5, char *x6,struct strerr *se)
+ {
+   strerr_warn(x1,x2,x3,x4,x5,x6,se);
+   _exit(e);
+--- a/strerr_sys.c
++++ b/strerr_sys.c
+@@ -3,7 +3,7 @@
+ 
+ struct strerr strerr_sys;
+ 
+-void strerr_sysinit()
++void strerr_sysinit(void)
+ {
+   strerr_sys.who = 0;
+   strerr_sys.x = error_str(errno);
+--- a/subfderr.c
++++ b/subfderr.c
+@@ -1,7 +1,8 @@
+ #include "readwrite.h"
+ #include "substdio.h"
+ #include "subfd.h"
++#include <unistd.h>
+ 
+ char subfd_errbuf[256];
+-static substdio it = SUBSTDIO_FDBUF(write,2,subfd_errbuf,256);
++static substdio it = SUBSTDIO_FDBUF((int(*)())write,2,subfd_errbuf,256);
+ substdio *subfderr = &it;
+--- a/subgetopt.c
++++ b/subgetopt.c
+@@ -25,10 +25,7 @@ char *optarg = 0;
+ int optproblem = 0;
+ int optdone = SUBGETOPTDONE;
+ 
+-int sgopt(argc,argv,opts)
+-int argc;
+-char **argv;
+-char *opts;
++int sgopt(int argc,char **argv,char *opts)
+ {
+   int c;
+   char *s;
+--- a/subgetopt.h
++++ b/subgetopt.h
+@@ -13,7 +13,7 @@
+ 
+ #define SUBGETOPTDONE -1
+ 
+-extern int subgetopt();
++extern int subgetopt(int argc,char **argv,char *opts);
+ extern char *subgetoptarg;
+ extern int subgetoptind;
+ extern int subgetoptpos;
+--- a/substdi.c
++++ b/substdi.c
+@@ -2,11 +2,9 @@
+ #include "byte.h"
+ #include "error.h"
+ 
+-static int oneread(op,fd,buf,len)
+-register int (*op)();
+-register int fd;
+-register char *buf;
+-register int len;
++void (*op)(int );
++
++static int oneread(register int (*op)(int fd, char *buf, int len),register int fd,register char *buf,register int len)
+ {
+   register int r;
+ 
+@@ -17,10 +15,7 @@ register int len;
+   }
+ }
+ 
+-static int getthis(s,buf,len)
+-register substdio *s;
+-register char *buf;
+-register int len;
++static int getthis(register substdio *s,register char *buf,register int len)
+ {
+   register int r;
+   register int q;
+@@ -33,8 +28,7 @@ register int len;
+   return r;
+ }
+ 
+-int substdio_feed(s)
+-register substdio *s;
++int substdio_feed(register substdio *s)
+ {
+   register int r;
+   register int q;
+@@ -50,10 +44,7 @@ register substdio *s;
+   return r;
+ }
+ 
+-int substdio_bget(s,buf,len)
+-register substdio *s;
+-register char *buf;
+-register int len;
++int substdio_bget(register substdio *s,register char *buf,register int len)
+ {
+   register int r;
+  
+@@ -63,10 +54,7 @@ register int len;
+   return getthis(s,buf,len);
+ }
+ 
+-int substdio_get(s,buf,len)
+-register substdio *s;
+-register char *buf;
+-register int len;
++int substdio_get(register substdio *s,register char *buf,register int len)
+ {
+   register int r;
+  
+@@ -76,15 +64,12 @@ register int len;
+   return getthis(s,buf,len);
+ }
+ 
+-char *substdio_peek(s)
+-register substdio *s;
++char *substdio_peek(register substdio *s)
+ {
+   return s->x + s->n;
+ }
+ 
+-void substdio_seek(s,len)
+-register substdio *s;
+-register int len;
++void substdio_seek(register substdio *s,register int len)
+ {
+   s->n += len;
+   s->p -= len;
+--- a/substdio.c
++++ b/substdio.c
+@@ -1,11 +1,6 @@
+ #include "substdio.h"
+ 
+-void substdio_fdbuf(s,op,fd,buf,len)
+-register substdio *s;
+-register int (*op)();
+-register int fd;
+-register char *buf;
+-register int len;
++void substdio_fdbuf(register substdio *s,register int (*op)(),register int fd,register char *buf,register int len)
+ {
+   s->x = buf;
+   s->fd = fd;
+--- a/substdio.h
++++ b/substdio.h
+@@ -11,22 +11,22 @@ typedef struct substdio {
+ 
+ #define SUBSTDIO_FDBUF(op,fd,buf,len) { (buf), 0, (len), (fd), (op) }
+ 
+-extern void substdio_fdbuf();
++extern void substdio_fdbuf(register substdio *s,register int (*op)(),register int fd,register char *buf,register int len);
+ 
+-extern int substdio_flush();
+-extern int substdio_put();
+-extern int substdio_bput();
+-extern int substdio_putflush();
+-extern int substdio_puts();
+-extern int substdio_bputs();
+-extern int substdio_putsflush();
++extern int substdio_flush(register substdio *s);
++extern int substdio_put(register substdio *s,register char *buf,register int len);
++extern int substdio_bput(register substdio *s,register char *buf,register int len);
++extern int substdio_putflush(register substdio *s,register char *buf,register int len);
++extern int substdio_puts(register substdio *s,register char *buf);
++extern int substdio_bputs(register substdio *s,register char *buf);
++extern int substdio_putsflush(register substdio *s,register char *buf);
+ 
+-extern int substdio_get();
+-extern int substdio_bget();
+-extern int substdio_feed();
++extern int substdio_get(register substdio *s,register char *buf,register int len);
++extern int substdio_bget(register substdio *s,register char *buf,register int len);
++extern int substdio_feed(register substdio *s);
+ 
+-extern char *substdio_peek();
+-extern void substdio_seek();
++extern char *substdio_peek(register substdio *s);
++extern void substdio_seek(register substdio *s,register int len);
+ 
+ #define substdio_fileno(s) ((s)->fd)
+ 
+@@ -42,6 +42,6 @@ extern void substdio_seek();
+     : substdio_bput((s),&(c),1) \
+   )
+ 
+-extern int substdio_copy();
++extern int substdio_copy(register substdio *ssout,register substdio *ssin);
+ 
+ #endif
+--- a/substdio_copy.c
++++ b/substdio_copy.c
+@@ -1,8 +1,6 @@
+ #include "substdio.h"
+ 
+-int substdio_copy(ssout,ssin)
+-register substdio *ssout;
+-register substdio *ssin;
++int substdio_copy(register substdio *ssout,register substdio *ssin)
+ {
+   register int n;
+   register char *x;
+--- a/substdo.c
++++ b/substdo.c
+@@ -3,11 +3,7 @@
+ #include "byte.h"
+ #include "error.h"
+ 
+-static int allwrite(op,fd,buf,len)
+-register int (*op)();
+-register int fd;
+-register char *buf;
+-register int len;
++static int allwrite(register int (*op)(int fd, char *buf, int len),register int fd,register char *buf,register int len)
+ {
+   register int w;
+ 
+@@ -17,15 +13,14 @@ register int len;
+       if (errno == error_intr) continue;
+       return -1; /* note that some data may have been written */
+     }
+-    if (w == 0) ; /* luser's fault */
++    /* if (w == 0) ; /\* luser's fault *\/ */
+     buf += w;
+     len -= w;
+   }
+   return 0;
+ }
+ 
+-int substdio_flush(s)
+-register substdio *s;
++int substdio_flush(register substdio *s)
+ {
+   register int p;
+  
+@@ -35,10 +30,7 @@ register substdio *s;
+   return allwrite(s->op,s->fd,s->x,p);
+ }
+ 
+-int substdio_bput(s,buf,len)
+-register substdio *s;
+-register char *buf;
+-register int len;
++int substdio_bput(register substdio *s,register char *buf,register int len)
+ {
+   register int n;
+  
+@@ -52,10 +44,7 @@ register int len;
+   return 0;
+ }
+ 
+-int substdio_put(s,buf,len)
+-register substdio *s;
+-register char *buf;
+-register int len;
++int substdio_put(register substdio *s,register char *buf,register int len)
+ {
+   register int n;
+  
+@@ -77,32 +66,23 @@ register int len;
+   return 0;
+ }
+ 
+-int substdio_putflush(s,buf,len)
+-register substdio *s;
+-register char *buf;
+-register int len;
++int substdio_putflush(register substdio *s,register char *buf,register int len)
+ {
+   if (substdio_flush(s) == -1) return -1;
+   return allwrite(s->op,s->fd,buf,len);
+ }
+ 
+-int substdio_bputs(s,buf)
+-register substdio *s;
+-register char *buf;
++int substdio_bputs(register substdio *s,register char *buf)
+ {
+   return substdio_bput(s,buf,str_len(buf));
+ }
+ 
+-int substdio_puts(s,buf)
+-register substdio *s;
+-register char *buf;
++int substdio_puts(register substdio *s,register char *buf)
+ {
+   return substdio_put(s,buf,str_len(buf));
+ }
+ 
+-int substdio_putsflush(s,buf)
+-register substdio *s;
+-register char *buf;
++int substdio_putsflush(register substdio *s,register char *buf)
+ {
+   return substdio_putflush(s,buf,str_len(buf));
+ }
+--- a/token822.c
++++ b/token822.c
+@@ -6,8 +6,7 @@
+ 
+ static struct token822 comma = { TOKEN822_COMMA };
+ 
+-void token822_reverse(ta)
+-token822_alloc *ta;
++void token822_reverse(token822_alloc *ta)
+ {
+  int i;
+  int n;
+@@ -26,9 +25,7 @@ GEN_ALLOC_ready(token822_alloc,struct token822,t,len,a,i,n,x,30,token822_ready)
+ GEN_ALLOC_readyplus(token822_alloc,struct token822,t,len,a,i,n,x,30,token822_readyplus)
+ GEN_ALLOC_append(token822_alloc,struct token822,t,len,a,i,n,x,30,token822_readyplus,token822_append)
+ 
+-static int needspace(t1,t2)
+-int t1;
+-int t2;
++static int needspace(int t1, int t2)
+ {
+  if (!t1) return 0;
+  if (t1 == TOKEN822_COLON) return 1;
+@@ -48,8 +45,7 @@ int t2;
+  return 0;
+ }
+ 
+-static int atomok(ch)
+-char ch;
++static int atomok(char ch)
+ {
+  switch(ch)
+   {
+@@ -62,8 +58,7 @@ char ch;
+  return 1;
+ }
+ 
+-static void atomcheck(t)
+-struct token822 *t;
++static void atomcheck(struct token822 *t)
+ {
+  int i;
+  char ch;
+@@ -78,10 +73,7 @@ struct token822 *t;
+   }
+ }
+ 
+-int token822_unparse(sa,ta,linelen)
+-stralloc *sa;
+-token822_alloc *ta;
+-unsigned int linelen;
++int token822_unparse(stralloc *sa,token822_alloc *ta,unsigned int linelen)
+ {
+  struct token822 *t;
+  int len;
+@@ -179,9 +171,7 @@ unsigned int linelen;
+  return 1;
+ }
+ 
+-int token822_unquote(sa,ta)
+-stralloc *sa;
+-token822_alloc *ta;
++int token822_unquote(stralloc *sa,token822_alloc *ta)
+ {
+  struct token822 *t;
+  int len;
+@@ -235,10 +225,7 @@ token822_alloc *ta;
+  return 1;
+ }
+ 
+-int token822_parse(ta,sa,buf)
+-token822_alloc *ta;
+-stralloc *sa;
+-stralloc *buf;
++int token822_parse(token822_alloc *ta,stralloc *sa,stralloc *buf)
+ {
+  int i;
+  int salen;
+@@ -398,10 +385,7 @@ stralloc *buf;
+  return 1;
+ }
+ 
+-static int gotaddr(taout,taaddr,callback)
+-token822_alloc *taout;
+-token822_alloc *taaddr;
+-int (*callback)();
++static int gotaddr(token822_alloc *taout,token822_alloc *taaddr,int (*callback)(token822_alloc *taaddr))
+ {
+  int i;
+ 
+@@ -418,11 +402,7 @@ int (*callback)();
+  return 1;
+ }
+ 
+-int token822_addrlist(taout,taaddr,ta,callback)
+-token822_alloc *taout;
+-token822_alloc *taaddr;
+-token822_alloc *ta;
+-int (*callback)();
++int token822_addrlist(token822_alloc *taout,token822_alloc *taaddr,token822_alloc *ta,int (*callback)())
+ {
+  struct token822 *t;
+  struct token822 *beginning;
+--- a/token822.h
++++ b/token822.h
+@@ -1,6 +1,8 @@
+ #ifndef TOKEN822_H
+ #define TOKEN822_H
+ 
++#include "stralloc.h"
++
+ struct token822
+  {
+   int type;
+@@ -12,15 +14,15 @@ struct token822
+ #include "gen_alloc.h"
+ GEN_ALLOC_typedef(token822_alloc,struct token822,t,len,a)
+ 
+-extern int token822_parse();
+-extern int token822_addrlist();
+-extern int token822_unquote();
+-extern int token822_unparse();
++extern int token822_parse(token822_alloc *ta,stralloc *sa,stralloc *buf);
++extern int token822_addrlist(token822_alloc *taout,token822_alloc *taaddr,token822_alloc *ta,int (*callback)());
++extern int token822_unquote(stralloc *sa,token822_alloc *ta);
++extern int token822_unparse(stralloc *sa,token822_alloc *ta,unsigned int linelen);
+ extern void token822_free();
+-extern void token822_reverse();
+-extern int token822_ready();
+-extern int token822_readyplus();
+-extern int token822_append();
++extern void token822_reverse(token822_alloc *ta);
++extern int token822_ready(token822_alloc *ta, unsigned int numtoks);
++extern int token822_readyplus(token822_alloc *ta, unsigned int len);
++extern int token822_append(token822_alloc *ta, struct token822 *t);
+ 
+ #define TOKEN822_ATOM 1
+ #define TOKEN822_QUOTE 2
+--- a/tryvfork.c
++++ b/tryvfork.c
+@@ -1,3 +1,4 @@
++#include <unistd.h>
+ void main()
+ {
+   vfork();
+--- a/wait.h
++++ b/wait.h
+@@ -1,7 +1,7 @@
+ #ifndef WAIT_H
+ #define WAIT_H
+ 
+-extern int wait_pid();
++extern int wait_pid(int *wstat, int pid);
+ extern int wait_nohang();
+ extern int wait_stop();
+ extern int wait_stopnohang();
+--- a/wait_pid.c
++++ b/wait_pid.c
+@@ -5,7 +5,7 @@
+ 
+ #ifdef HASWAITPID
+ 
+-int wait_pid(wstat,pid) int *wstat; int pid;
++int wait_pid(int *wstat, int pid)
+ {
+   int r;
+ 
+@@ -22,7 +22,7 @@ int wait_pid(wstat,pid) int *wstat; int pid;
+ static int oldpid = 0;
+ static int oldwstat; /* defined if(oldpid) */
+ 
+-int wait_pid(wstat,pid) int *wstat; int pid;
++int wait_pid(int *wstat, int pid)
+ {
+   int r;
+ 
