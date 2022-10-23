@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
@@ -19,12 +19,17 @@ DEPEND=">=sys-libs/readline-4.1:="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-build-for-clang16.patch
+)
+
 src_prepare() {
-	default
 
 	# For some reason, this tarball has binary files in it for x86.
 	# Make clean so we can rebuild for our arch and optimization.
 	emake clean
+
+	default
 
 	sed -i \
 		-e 's|-g ||' \
