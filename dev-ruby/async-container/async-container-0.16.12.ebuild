@@ -3,18 +3,20 @@
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31"
+
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
+
 inherit ruby-fakegem
 
 DESCRIPTION="Abstract container-based parallelism using threads and processes"
 HOMEPAGE="https://github.com/socketry/async-container"
-SRC_URI="https://github.com/socketry/async-container/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/socketry/async-container/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="$(ver_cut 1)/$(ver_cut 1-2)"
+SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~sparc"
 IUSE=""
 
@@ -33,7 +35,8 @@ all_ruby_prepare() {
 	# so we can't just wipe out gems.rb as usual.  also must remove covered from gemspec
 	# for this reason.
 	sed -i -E 's/gem ".+"//g' "gems.rb" || die
-	sed -i -E 's/spec.add_development_dependency "covered"//g' "${RUBY_FAKEGEM_GEMSPEC}" || die
+	sed -i -e '/spec.add_development_dependency "covered"/ s:^:#:' ${RUBY_FAKEGEM_GEMSPEC} || die
 
-	sed -i -E 's/require '"'"'covered\/rspec'"'"'//g' "spec/spec_helper.rb" || die
+	# Avoid test dependency on unpackaged covered
+	sed -i -e '/covered/ s:^:#:' spec/spec_helper.rb || die
 }
