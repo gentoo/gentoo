@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="igbinary +json lz4 +session zstd"
 
 DEPEND="
-	igbinary? ( >=dev-php/igbinary-3.0.1-r1[php_targets_php7-4(-)?,php_targets_php8-0(-)?,php_targets_php8-1(-)?],php_targets_php8-2(-)?] )
+	igbinary? ( >=dev-php/igbinary-3.0.1-r1[php_targets_php7-4(-)?,php_targets_php8-0(-)?,php_targets_php8-1(-)?,php_targets_php8-2(-)?] )
 	lz4? ( app-arch/lz4:= )
 	zstd? ( app-arch/zstd:= )
 "
