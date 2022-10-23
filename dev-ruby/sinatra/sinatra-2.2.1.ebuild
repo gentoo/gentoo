@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30"
 
 RUBY_FAKEGEM_TASK_TEST="MT_NO_PLUGINS=true test:core"
 
@@ -20,10 +20,6 @@ LICENSE="MIT"
 SLOT="2"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE=""
-
-# https://github.com/sinatra/sinatra/pull/1519
-# https://github.com/sinatra/sinatra/issues/1774
-PATCHES=( "${FILESDIR}/backport-pr-1519.patch" )
 
 ruby_add_rdepend "
 	dev-ruby/mustermann:1
