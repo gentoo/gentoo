@@ -28,8 +28,11 @@ all_ruby_prepare() {
 
 	# Avoid dependency on covered.
 	rm -f config/sus.rb || die
+
+	# Avoid sandbox violation during tests
+	sed -i -e 's:/tmp/:'${TMPDIR}'/:' test/console/output.rb || die
 }
 
 each_ruby_test() {
-	${RUBY} -S sus || die
+	${RUBY} -S sus-parallel || die
 }
