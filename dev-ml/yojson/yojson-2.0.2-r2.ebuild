@@ -15,8 +15,10 @@ KEYWORDS="~amd64"
 IUSE="examples +ocamlopt test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-lang/ocaml-4.07:=[ocamlopt?]
-	!dev-ml/seq"
+RDEPEND="
+	>=dev-lang/ocaml-4.07:=[ocamlopt?]
+	!!<dev-ml/seq-0.3
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-ml/cppo-1.6.1
