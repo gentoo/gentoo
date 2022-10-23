@@ -18,11 +18,11 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-lang/ocaml-4.08:=[ocamlopt?]
 	>=dev-ml/cmdliner-1.1.1:=
+	>=dev-ml/yojson-2.0.2:=
 	dev-ml/biniou:=
 	dev-ml/easy-format:=
 	dev-ml/menhir:=
 	dev-ml/re:=
-	dev-ml/yojson:=
 "
 DEPEND="${RDEPEND}"
 
