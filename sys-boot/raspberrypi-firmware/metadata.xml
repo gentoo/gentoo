@@ -12,5 +12,7 @@
 	<upstream>
 		<bugs-to>https://github.com/raspberrypi/firmware/issues</bugs-to>
 		<remote-id type="github">raspberrypi/firmware</remote-id>
+		<remote-id type="cpe">cpe:/o:raspberrypi:raspberry_pi_4_model_b_firmware</remote-id>
+		<remote-id type="cpe">cpe:/o:raspberrypi:raspberry_pi_3_model_b%2b_firmware</remote-id>
 	</upstream>
 </pkgmetadata>
