@@ -171,9 +171,7 @@ multilib_src_install() {
 	if use minizip ; then
 		emake -C contrib/minizip install DESTDIR="${D}"
 		sed_macros "${ED}"/usr/include/minizip/*.h
-	fi
 
-	if use minizip; then
 		# This might not exist if slibtool is used.
 		# bug #816756
 		rm -f "${ED}"/usr/$(get_libdir)/libminizip.la || die
@@ -187,5 +185,9 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc FAQ README ChangeLog doc/*.txt
-	use minizip && dodoc contrib/minizip/*.txt
+
+	if use minizip ; then
+		dodoc contrib/minizip/*.txt
+		doman contrib/minizip/*.1
+	fi
 }
