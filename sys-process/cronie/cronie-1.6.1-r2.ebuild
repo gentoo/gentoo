@@ -16,7 +16,6 @@ IUSE="+anacron +inotify pam selinux"
 BDEPEND="acct-group/crontab"
 
 DEPEND="
-	${BDEPEND}
 	pam? ( sys-libs/pam )
 	anacron? (
 		!sys-process/anacron
@@ -25,7 +24,9 @@ DEPEND="
 	)
 	selinux? ( sys-libs/libselinux )
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${BDEPEND}
+	${DEPEND}
 	sys-apps/debianutils
 "
 
