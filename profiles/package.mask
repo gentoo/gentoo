@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-10-24)
+# Non-free licence which prohibits any patching. Fails to build with Clang 16.
+# Removal on 2022-10-24.
+dev-util/sgb
+sci-misc/gt-itm
+
+# Sam James <sam@gentoo.org> (2022-10-24)
 # Fails to build with Clang 16 (code quality issues), no upstream activity
 # in 7 years. Removal on 2022-11-23. bug #874486, bug #791604.
 games-fps/qudos
