@@ -26,7 +26,6 @@ BDEPEND="
         acct-user/dhcp"
 
 DEPEND="
-	${BDEPEND}
 	client? (
 		kernel_linux? (
 			ipv6? ( sys-apps/iproute2 )
@@ -37,7 +36,9 @@ DEPEND="
 		net-nds/openldap:=
 		ssl? ( dev-libs/openssl:= )
 	)"
-RDEPEND="${DEPEND}
+RDEPEND="
+	${BDEPEND}
+	${DEPEND}
 	selinux? ( sec-policy/selinux-dhcp )
 	vim-syntax? ( app-vim/dhcpd-syntax )"
 
