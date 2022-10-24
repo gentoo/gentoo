@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-10-23)
+# Dead package, upstream gone, GTK+2, fails to build with Clang 16 and
+# tests fail. Removal on 2022-11-22. Bug #741200, #875686.
+sci-calculators/grpn
+
 # Hans de Graaff <graaff@gentoo.org> (2022-10-22)
 # Last release upstream 10 years ago. No longer compiles with latest
 # clang (bug #875254) and doubtful that this actually works with recent
@@ -147,11 +152,6 @@ net-im/empathy
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-10-10)
 # Unused Java library. Removal on 2022-11-10.
 dev-java/objenesis-test
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-10-08)
-# Obsolete after Plasma 5.25 release, merged into KWin.
-# Removal on 2022-10-22.
-kde-plasma/kwayland-server
 
 # Michał Górny <mgorny@gentoo.org> (2022-10-08)
 # Repository and SRC_URI gone.  Last release in 2012 (guessing
@@ -296,17 +296,6 @@ games-sports/torcs
 # No package in tree depends on dev-python/ssh2-python. Masked for removal.
 # Removal on 2022-10-25.
 dev-python/ssh2-python
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-09-23)
-# Unmaintained upstream, obsolete after introduction of kde-misc/markdownpart.
-# Removal on 2022-10-23.
-kde-misc/kmarkdownwebview
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-09-23)
-# Broken after Google stopped accepting "Less Secure Apps".
-# https://github.com/Intika-KDE-Plasmoids/plasmoid-ultimate-gmail-feed/issues/32
-# Use kde-misc/gmail-feed instead; removal on 2022-10-23.
-kde-misc/ultimate-gmail-feed
 
 # John Helmert III <ajak@gentoo.org> (2022-09-18)
 # Unfixed root privilege escalation, bug #631552
