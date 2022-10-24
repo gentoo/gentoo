@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 
 inherit meson python-single-r1 xdg
 
-DESCRIPTION="GTK configuration application for libratbag"
+DESCRIPTION="GTK application to configure gaming devices"
 HOMEPAGE="https://github.com/libratbag/piper"
 SRC_URI="https://github.com/libratbag/piper/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
