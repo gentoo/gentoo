@@ -206,6 +206,7 @@ get_distribution_components() {
 				clang-apply-replacements
 				clang-change-namespace
 				clang-doc
+				clang-include-cleaner
 				clang-include-fixer
 				clang-move
 				clang-pseudo
