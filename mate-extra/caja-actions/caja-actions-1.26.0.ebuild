@@ -25,13 +25,11 @@ COMMON_DEPEND="
 	>=mate-base/caja-1.17
 	x11-libs/libSM
 	virtual/libintl
-	"
-
+"
 RDEPEND="${COMMON_DEPEND}"
-
-BEPEND="${COMMON_DEPEND}
+BDEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.19.8
 	>=sys-devel/autoconf-2.53:*
 	>=sys-devel/libtool-2.2.6:2
 	virtual/pkgconfig
-	"
+"
