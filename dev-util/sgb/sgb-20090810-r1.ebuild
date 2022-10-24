@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,7 @@ S="${WORKDIR}"
 PATCHES=(
 	"${FILESDIR}"/sgb-20030623-parallel-make-fix.patch
 	"${FILESDIR}"/sgb-20030623-destdir.patch
+	"${FILESDIR}"/sgb-20090810-Fix-build-with-Clang-16.patch
 )
 
 src_compile() {
