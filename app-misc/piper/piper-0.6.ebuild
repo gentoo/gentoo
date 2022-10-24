@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit meson python-single-r1 xdg
 
@@ -46,6 +46,8 @@ DEPEND="
 	dev-libs/libevdev
 	virtual/libudev
 "
+
+PATCHES=( "${FILESDIR}/${P}-fix-tests.patch" )
 
 src_configure() {
 	python_setup
