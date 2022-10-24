@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person" proxied="yes">
-    <email>alex@1stleg.com</email>
-    <name>Alex Barker</name>
-  </maintainer>
-  <maintainer type="project" proxied="proxy">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="github">libratbag/piper</remote-id>
-  </upstream>
+	<maintainer type="person" proxied="yes">
+		<email>alex@1stleg.com</email>
+		<name>Alex Barker</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Piper is a graphical user interface to configure gaming mice.
+		Configuration options include changing the resolution (DPI) of the
+		mouse, adding and removing profiles, setting LED colors and changing
+		button behaviors.
+
+		Piper requires libratbag’s ratbagd, the daemon to actually communicate with the
+		mice. Piper is merely a front end to ratbagd, ratbagd must be
+		installed and running when Piper is launched.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">libratbag/piper</remote-id>
+		<bugs-to>https://github.com/libratbag/piper/issues</bugs-to>
+		<doc lang="en">https://github.com/libratbag/piper/wiki</doc>
+	</upstream>
 </pkgmetadata>
