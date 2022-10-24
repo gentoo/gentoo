@@ -1,0 +1,15 @@
+From 76aef29111d0b8c5e5fffe80833d0c227cca1127 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 24 Oct 2022 17:54:38 +0100
+Subject: [PATCH 4/5] Respect CC
+
+--- a/Makefile
++++ b/Makefile
+@@ -60,7 +60,6 @@ PREFIX?=	$(LOCALBASE)
+ DATADIR?=	$(LOCALBASE)/share/quake2
+ LIBDIR?=	$(LOCALBASE)/lib/QuDos
+ 
+-CC?=		gcc
+ TYPE?=		release
+ 
+ OGG_LDFLAGS=	-lvorbisfile -lvorbis -logg

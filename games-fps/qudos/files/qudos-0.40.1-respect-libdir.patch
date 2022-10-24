@@ -1,0 +1,53 @@
+From 1dc6681ee4eea2d1b6e7edd04cf84fd10c407d28 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 24 Oct 2022 17:54:12 +0100
+Subject: [PATCH 3/5] Respect libdir
+
+--- a/Makefile
++++ b/Makefile
+@@ -55,7 +55,6 @@ WITH_XMMS?=YES		# Enable XMMS support (thanks AprQ2).
+ 
+ # General variables.
+ LOCALBASE?=	/usr/local
+-X11BASE?=	/usr/X11R6
+ PREFIX?=	$(LOCALBASE)
+ 
+ DATADIR?=	$(LOCALBASE)/share/quake2
+@@ -98,34 +97,19 @@ GAME_NAME=	game$(ARCH).$(SHLIB_EXT)
+ endif
+ 
+ # Compilation flags.
+-CFLAGS+=	-I/usr/include -I$(LOCALBASE)/include -I$(X11BASE)/include \
++CFLAGS+=	-I/usr/include -I$(LOCALBASE)/include \
+ 		-DGAME_NAME='"$(GAME_NAME)"' -DQUDOS_VERSION='"$(VERSION)"'
+ 
+ WARNS=	-Wshadow -Wpointer-arith -Wcast-align -Waggregate-return -Wstrict-prototypes -Wredundant-decls -Wnested-externs
+ 
+-ifeq ($(TYPE),debug)
+-CFLAGS+=	-Wall -Werror -g -ggdb -DDEBUGGING # $(WARNS)
+-else
+-  ifeq ($(TYPE),profile)
+-CFLAGS+=	-pg
+-  else
+-CFLAGS+=	-O3 -ffast-math -funroll-loops -fomit-frame-pointer \
+-		-fexpensive-optimizations
+-    ifeq ($(ARCH),i386)
+-CFLAGS+=	-falign-loops=2 -falign-jumps=2 -falign-functions=2 \
+-		-fno-strict-aliasing
+-    endif
+-  endif
+-endif
+-
+ # Linker flags.
+-LDFLAGS+=	-L/usr/lib -L$(LOCALBASE)/lib -L$(X11BASE)/lib -lm
++LDFLAGS+=	-lm
+ 
+ ifeq ($(OSTYPE),Linux)
+ LDFLAGS+=	-ldl
+ endif
+ 
+-REF_LDFLAGS=	-L/usr/X11R6/lib -lX11 -lXext -lXxf86vm -lGLU -ljpeg -lpng
++REF_LDFLAGS=	-lX11 -lXext -lXxf86vm -lGLU -ljpeg -lpng
+ 
+ ifeq ($(strip $(WITH_DGA_MOUSE)),YES)
+ REF_LDFLAGS+= -lXxf86dga

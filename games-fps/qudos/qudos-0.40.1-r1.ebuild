@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop flag-o-matic toolchain-funcs
 
@@ -20,21 +20,26 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cdinstall debug dedicated demo dga ipv6 joystick mods opengl qmax oss sdl textures"
 
-DEPEND="opengl? (
-		virtual/opengl
-		virtual/glu )
-	sdl? ( media-libs/libsdl[joystick?,opengl,sound,video]
-		virtual/opengl
-		virtual/glu )
-	virtual/jpeg:0
+DEPEND="
 	media-libs/libogg
-	media-libs/libpng:0
+	media-libs/libjpeg-turbo
+	media-libs/libpng
 	media-libs/libvorbis
 	sys-libs/zlib
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXxf86dga
-	x11-libs/libXxf86vm"
+	x11-libs/libXxf86vm
+	opengl? (
+		virtual/opengl
+		virtual/glu
+	)
+	sdl? (
+		media-libs/libsdl[joystick?,opengl,sound,video]
+		virtual/opengl
+		virtual/glu
+	)
+"
 RDEPEND="
 	${DEPEND}
 	cdinstall? ( games-fps/quake2-data )
@@ -45,8 +50,14 @@ RDEPEND="
 dir=usr/share/${MY_PN}
 
 PATCHES=(
-	"${FILESDIR}"/${P}-libpng15.patch
+	"${FILESDIR}"/${P}-libpng.patch
 	"${FILESDIR}"/${P}-gnusource.patch
+	"${FILESDIR}"/${P}-zlib-build.patch
+	"${FILESDIR}"/${P}-libjpeg-clash.patch
+	"${FILESDIR}"/${P}-respect-libdir.patch
+	"${FILESDIR}"/${P}-respect-cc.patch
+	"${FILESDIR}"/${P}-use-pkg-config.patch
+	"${FILESDIR}"/${P}-no-bits-nan.patch
 )
 
 default_client() {
@@ -81,38 +92,19 @@ pkg_setup() {
 
 	if default_client ; then
 		elog "Selected the ${snd_drv} sound driver as the default."
-		echo
 	fi
-}
-
-src_unpack() {
-	unpack "${FILE_STEM}.tar.bz2"
 }
 
 src_prepare() {
 	rm docs/gnu.txt || die
+
+	default
 
 	# Change default sound driver and its location
 	sed -i \
 		-e "s:\"oss\":\"${snd_drv}\":" \
 		-e "s:\"\./snd:\"/usr/$(get_libdir)/${PN}/snd:" \
 		src/client/snd_dma.c || die
-
-	sed -i \
-		-e 's:jpeg_mem_src:qudos_jpeg_mem_src:g' \
-		src/ref_gl/gl_image.c || die
-
-	if has_version '>=sys-libs/zlib-1.2.5.1-r1' ; then
-		sed -i \
-			-e '1i#define OF(x) x' \
-			src/qcommon/unzip/ioapi.h || die
-	fi
-
-	sed -i -e '106,119 s/CFL/LED/' Makefile || die
-
-	sed -i -e 's:-L/usr/lib -L$(LOCALBASE)/lib :: ' Makefile || die
-
-	default
 }
 
 src_configure() {
@@ -122,7 +114,7 @@ src_configure() {
 
 src_compile() {
 	yesno() {
-		usex ${1} YES NO;
+		usex ${1} YES NO
 	}
 
 	local client="YES"
@@ -131,36 +123,39 @@ src_compile() {
 	local type="release"
 	use debug && type="debug"
 
-	emake \
-		BUILD_QUAKE2="${client}" \
-		BUILD_DEDICATED=$(yesno dedicated) \
-		BUILD_GLX=$(yesno opengl) \
-		BUILD_SDLGL=$(yesno sdl) \
-		BUILD_ALSA_SND=NO \
-		BUILD_SDL_SND=$(yesno sdl) \
-		BUILD_OSS_SND=$(yesno oss) \
-		WITH_XMMS=NO \
-		WITH_DGA_MOUSE=$(yesno dga) \
-		WITH_JOYSTICK=$(yesno joystick) \
-		TYPE="${type}" \
-		DATADIR="${dir}" \
-		LOCALBASE=/usr \
-		LIBDIR="/usr/$(get_libdir)"/${PN} \
-		WITH_QMAX=$(yesno qmax) \
-		BUILD_3ZB2=$(yesno mods) \
-		BUILD_CTF=$(yesno mods) \
-		BUILD_JABOT=$(yesno mods) \
-		BUILD_ROGUE=$(yesno mods) \
-		BUILD_XATRIX=$(yesno mods) \
-		BUILD_ZAERO=$(yesno mods) \
-		WITH_BOTS=$(yesno mods) \
-		HAVE_IPV6=$(yesno ipv6) \
-		CC="$(tc-getCC)" \
-		WITH_X86_ASM=NO \
-		WITH_DATADIR=YES \
-		WITH_LIBDIR=YES \
-		BUILD_DEBUG_DIR=release \
+	local myemakeargs=(
+		BUILD_QUAKE2="${client}"
+		BUILD_DEDICATED=$(yesno dedicated)
+		BUILD_GLX=$(yesno opengl)
+		BUILD_SDLGL=$(yesno sdl)
+		BUILD_ALSA_SND=NO
+		BUILD_SDL_SND=$(yesno sdl)
+		BUILD_OSS_SND=$(yesno oss)
+		WITH_XMMS=NO
+		WITH_DGA_MOUSE=$(yesno dga)
+		WITH_JOYSTICK=$(yesno joystick)
+		TYPE="${type}"
+		DATADIR="${dir}"
+		LOCALBASE=/usr
+		LIBDIR="/usr/$(get_libdir)"/${PN}
+		WITH_QMAX=$(yesno qmax)
+		BUILD_3ZB2=$(yesno mods)
+		BUILD_CTF=$(yesno mods)
+		BUILD_JABOT=$(yesno mods)
+		BUILD_ROGUE=$(yesno mods)
+		BUILD_XATRIX=$(yesno mods)
+		BUILD_ZAERO=$(yesno mods)
+		WITH_BOTS=$(yesno mods)
+		HAVE_IPV6=$(yesno ipv6)
+		CC="$(tc-getCC)"
+		WITH_X86_ASM=NO
+		WITH_DATADIR=YES
+		WITH_LIBDIR=YES
+		BUILD_DEBUG_DIR=release
 		BUILD_RELEASE_DIR=release
+	)
+
+	emake "${myemakeargs[@]}"
 }
 
 src_install() {
