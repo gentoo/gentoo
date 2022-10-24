@@ -3,18 +3,20 @@
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31"
+
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
+
 inherit ruby-fakegem
 
 DESCRIPTION="A concurrency framework for Ruby"
 HOMEPAGE="https://github.com/socketry/async"
-SRC_URI="https://github.com/socketry/async/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/socketry/async/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="$(ver_cut 1)/$(ver_cut 1-2)"
+SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~sparc"
 IUSE=""
 
@@ -30,11 +32,9 @@ ruby_add_bdepend "test? (
 all_ruby_prepare() {
 	sed -i -E 's/require_relative "(.+)"/require File.expand_path("\1")/g' "${RUBY_FAKEGEM_GEMSPEC}" || die
 
-	# network tests
-	rm -f "spec/async/scheduler_spec.rb" "spec/async/scheduler/address_spec.rb" "spec/async/scheduler/io_spec.rb" || die
+	# Avoid network tests
+	sed -i -e '/can fetch website using Net::HTTP/askip "requires network"' spec/async/scheduler_spec.rb || die
 
-	# broken on ruby 3.x
-	rm -f "spec/async/condition_spec.rb" "spec/async/notification_spec.rb" || die
-
-	sed -i -E 's/require '"'"'covered\/rspec'"'"'//g' "spec/spec_helper.rb" || die
+	# Avoid test dependency on unpackaged covered
+	sed -i -e '/covered/ s:^:#:' spec/spec_helper.rb || die
 }

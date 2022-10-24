@@ -61,8 +61,11 @@ src_prepare() {
 	# Handle installation via the eclass
 	rm emacs/dune || die
 
-	# This test runs only inside a git repo
-	rm -r tests/test-dirs/occurrences/issue1404.t || die
+	# This test runs only inside a git repo,
+	# it is not included in merlin release for ocaml 4.12.
+	if [[ -f tests/test-dirs/occurrences/issue1404.t ]] ; then
+		rm tests/test-dirs/occurrences/issue1404.t || die
+	fi
 }
 
 src_compile() {
