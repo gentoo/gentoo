@@ -10,17 +10,17 @@ inherit distutils-r1
 
 DESCRIPTION="A fake file system that mocks the Python file system modules"
 HOMEPAGE="
-	https://github.com/jmcgeheeiv/pyfakefs/
+	https://github.com/pytest-dev/pyfakefs/
 	https://pypi.org/project/pyfakefs/
 "
 SRC_URI="
-	https://github.com/jmcgeheeiv/${PN}/archive/v${PV}.tar.gz
+	https://github.com/pytest-dev/pyfakefs/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 distutils_enable_tests pytest
 
