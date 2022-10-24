@@ -9,7 +9,7 @@ SRC_URI="https://github.com/jimjag/${PN}/archive/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 BDEPEND="
 	app-arch/unzip
