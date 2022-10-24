@@ -3,9 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
+DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1
+inherit distutils-r1 bash-completion-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/${PN}/borg.git"
@@ -44,4 +45,12 @@ DEPEND="
 src_install() {
 	distutils-r1_src_install
 	doman docs/man/*
+
+	dobashcomp scripts/shell_completions/bash/borg
+
+	insinto /usr/share/zsh/site-functions
+	doins scripts/shell_completions/zsh/_borg
+
+	insinto /usr/share/fish/vendor_completions.d
+	doins scripts/shell_completions/fish/borg.fish
 }
