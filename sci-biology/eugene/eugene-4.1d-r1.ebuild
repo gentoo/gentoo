@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.1d-fix-c++14.patch
 	"${FILESDIR}"/${PN}-4.1d-Wformat.patch
 	"${FILESDIR}"/${PN}-4.1d-portable-getopt.patch
+	"${FILESDIR}"/${PN}-4.1d-clang16.patch
 )
 
 src_prepare() {

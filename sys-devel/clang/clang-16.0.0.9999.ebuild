@@ -52,8 +52,7 @@ LLVM_COMPONENTS=(
 LLVM_MANPAGES=1
 LLVM_TEST_COMPONENTS=(
 	llvm/lib/Testing/Support
-	llvm/utils/{lit,llvm-lit,unittest}
-	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
+	llvm/utils
 )
 LLVM_PATCHSET=9999-r4
 LLVM_USE_TARGETS=llvm
