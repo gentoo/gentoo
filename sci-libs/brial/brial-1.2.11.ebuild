@@ -12,7 +12,7 @@ SRC_URI="https://github.com/BRiAl/BRiAl/releases/download/${PV}/${P}.tar.bz2"
 # The top-level license is GPL2+, but cudd/LICENSE is BSD.
 LICENSE="BSD GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="png"
 
 BDEPEND="virtual/pkgconfig"

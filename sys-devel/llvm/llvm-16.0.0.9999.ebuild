@@ -237,6 +237,7 @@ get_distribution_components() {
 			llvm-cxxdump
 			llvm-cxxfilt
 			llvm-cxxmap
+			llvm-debuginfo-analyzer
 			llvm-debuginfod
 			llvm-debuginfod-find
 			llvm-diff
