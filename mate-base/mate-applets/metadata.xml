@@ -9,6 +9,7 @@
 		<flag name="cpupower">
 			Enable support for cpu frequency manipulation using <pkg>sys-power/cpupower</pkg>
 		</flag>
+		<flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">mate-desktop/mate-applets</remote-id>
