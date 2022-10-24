@@ -111,9 +111,13 @@ src_install() {
 		newinitd "${FILESDIR}"/psybnc.initd psybnc
 	fi
 
+	if use scripting ; then
+		dodoc SCRIPTING
+	fi
+
 	newconfd "${FILESDIR}"/psybnc.confd psybnc
 
-	dodoc CHANGES FAQ README SCRIPTING TODO
+	dodoc CHANGES FAQ README TODO
 	docinto example-script
 	dodoc scripts/example/DEFAULT.SCRIPT
 }
