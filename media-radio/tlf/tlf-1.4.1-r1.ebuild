@@ -28,6 +28,7 @@ DEPEND="
 
 PATCHES=( "${FILESDIR}/${P}-zone_nr.patch"
 	  "${FILESDIR}/${P}-musl.patch"
+	  "${FILESDIR}/${P}-missing-include.patch"
 	)
 
 src_prepare() {
@@ -42,5 +43,6 @@ src_prepare() {
 src_configure() {
 	use elibc_musl && append-libs argp
 	append-ldflags -L/usr/$(get_libdir)/hamlib
+	filter-lto		# bug # 876418
 	econf --enable-fldigi-xmlrpc
 }
