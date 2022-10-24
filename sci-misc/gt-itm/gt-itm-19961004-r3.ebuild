@@ -1,15 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Routines to generate / analyze graphs using models for internetwork topology"
 HOMEPAGE="http://www.cc.gatech.edu/fac/Ellen.Zegura/graphs.html
 		http://www.isi.edu/nsnam/ns/ns-topogen.html#gt-itm"
 SRC_URI="http://www.cc.gatech.edu/fac/Ellen.Zegura/gt-itm/gt-itm.tar.gz -> ${P}.tar.gz
 		http://www.isi.edu/nsnam/dist/sgb2ns.tar.gz -> sgb2ns-${PV}.tar.gz"
+S="${WORKDIR}/${PN}"
+S2="${WORKDIR}/sgb2ns"
 
 LICENSE="all-rights-reserved sgb2ns"
 SLOT="0"
@@ -20,10 +22,13 @@ IUSE="doc"
 DEPEND="dev-util/sgb"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${PN}"
-S2="${WORKDIR}/sgb2ns"
+PATCHES=(
+	"${FILESDIR}"/${PN}-19961004-gentoo.patch
+	"${FILESDIR}"/${PN}-implicits.patch
+	"${FILESDIR}"/${PN}-19961004-Fix-build-with-Clang-16.patch
+	"${FILESDIR}"/${PN}-19961004-Fix-musl-build.patch
+)
 
-PATCHES=( "${FILESDIR}"/${PN}-implicits.patch )
 DOCS=( README docs/. )
 
 src_unpack() {
@@ -35,32 +40,16 @@ src_unpack() {
 }
 
 src_prepare() {
-	sed -ri -e '/^[[:alnum:]]+\.o:/d' \
-		-e 's|LIBS = -lm -lgb.*|LIBS = -lm -lgb|' \
-		-e 's/\$\(CC\)/& \$\(LDFLAGS\)/g' \
-		src/Makefile || die
-	sed -ri -e '/^SYS = -DSYSV/d' \
-		-e 's|LIBS = -lm -lgb.*|LIBS = -lm -lgb|' \
-		-e 's/\$\(CC\)/& \$\(LDFLAGS\)/g' \
-		"${S2}"/Makefile  || die
-
 	rm -f lib/* || die
 
-	while IFS="" read -d $'\0' -r file; do
-		sed -i -re 's|(\.\./)+bin/||g' "$file" || die
-	done < <(find sample-graphs/ -perm /a+x -type f -name 'Run*' -print0)
-
-	sed -i -e 's|sys/types.h|sys/param.h|' src/geog.c || die
-	sed -i -e '162 s/connected $/connected \\/' src/eval.c || die
-
-	# fix implicit function declarations
-	sed -i -e '/stdio.h/ a\#include <stdlib.h>' \
-		"${S2}/sgb2comns.c" "${S2}/sgb2hierns.c" || die
-	sed -i -e "s/<strings.h>/<string.h>/g" "${S2}/sgb2hierns.c" || die
+	cd "${WORKDIR}" || die
 	default
+	cd "${S}" || die
 }
 
 src_compile() {
+	append-cflags -std=gnu89
+
 	emake -C src CFLAGS="${CFLAGS} -I../include" LDFLAGS="${LDFLAGS}" \
 		CC="$(tc-getCC)"
 
@@ -70,11 +59,13 @@ src_compile() {
 
 src_install() {
 	dobin bin/*
+
 	einstalldocs
 	newdoc "${S2}"/README README.sgb2ns
+
 	if use doc; then
 		dodoc -r sample-graphs
 		dodoc "${S2}"/*.{tcl,gb}
-		docompress -x "/usr/share/doc/${PF}/sample-graphs"
+		docompress -x /usr/share/doc/${PF}/sample-graphs
 	fi
 }
