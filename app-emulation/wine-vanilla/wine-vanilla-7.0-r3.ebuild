@@ -246,6 +246,7 @@ src_configure() {
 		# use *FLAGS for mingw, but strip unsupported (e.g. --hash-style=gnu)
 		if use mingw; then
 			: "${CROSSCFLAGS:=$(
+				filter-flags '-fstack-clash-protection' #758914
 				filter-flags '-fstack-protector*' #870136
 				CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"
 			: "${CROSSLDFLAGS:=$(

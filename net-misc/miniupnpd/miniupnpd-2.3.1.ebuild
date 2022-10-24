@@ -2,16 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit toolchain-funcs verify-sig
 
-MY_P=${P/_rc/-RC}
 DESCRIPTION="MiniUPnP IGD Daemon"
-HOMEPAGE="http://miniupnp.free.fr/"
-SRC_URI="
-	http://miniupnp.free.fr/files/${MY_P}.tar.gz
-	verify-sig? ( http://miniupnp.free.fr/files/${MY_P}.tar.gz.sig )
+HOMEPAGE="
+	http://miniupnp.free.fr/
+	https://miniupnp.tuxfamily.org/
+	https://github.com/miniupnp/miniupnp/
 "
-S=${WORKDIR}/${MY_P}
+SRC_URI="
+	https://miniupnp.tuxfamily.org/files/${P}.tar.gz
+	verify-sig? (
+		https://miniupnp.tuxfamily.org/files/${P}.tar.gz.sig
+	)
+"
 
 LICENSE="BSD"
 SLOT="0"

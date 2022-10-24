@@ -37,7 +37,6 @@ CDEPEND="${PYTHON_DEPS}
 		>=net-libs/libssh-0.8.5[server]
 		x11-libs/pango
 		x11-libs/gtk+:3
-		gnome-base/libglade:2.0
 		>=x11-libs/cairo-1.5.12[glib,svg(+)]
 		>=dev-libs/rapidjson-1.1.0
 		dev-libs/libsigc++:2

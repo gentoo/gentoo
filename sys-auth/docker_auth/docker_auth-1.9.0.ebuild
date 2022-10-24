@@ -21,25 +21,25 @@ DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
 RESTRICT=" test"
+S="${S}/auth_server"
 
 src_compile() {
-	pushd auth_server || die
 	# see the upstream Makefile for how to generate the VERSION and
 	# BUILD_ID values.
 	emake \
 		VERSION=2022022022 \
 		BUILD_ID=20220220-221158/1.9.0@636c09af \
 		build
-	popd || die
 }
 
 src_install() {
+	cd ..
+	dobin auth_server/auth_server
 	dodoc README.md docs/*
 	insinto /usr/share/${PF}
 	doins -r examples
 	insinto /etc/docker_auth/
 	newins examples/reference.yml config.yml.example
-	dobin auth_server/auth_server
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	insinto /etc/logrotate.d

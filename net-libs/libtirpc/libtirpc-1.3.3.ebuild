@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
 LICENSE="BSD BSD-2 BSD-4 LGPL-2.1+"
 SLOT="0/3" # subslot matches SONAME major
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="ipv6 kerberos static-libs"
+IUSE="kerberos static-libs"
 
 RDEPEND="kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
@@ -34,7 +34,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		$(use_enable ipv6)
 		$(use_enable kerberos gssapi)
 		$(use_enable static-libs static)
 	)
