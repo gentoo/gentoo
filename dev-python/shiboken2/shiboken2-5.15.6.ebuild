@@ -40,10 +40,11 @@ RESTRICT="test"
 QT_PV="$(ver_cut 1-2):5"
 
 # Since Clang is required at both build- and runtime, BDEPEND is omitted here.
+LLVM_MAX_SLOT=15
 RDEPEND="${PYTHON_DEPS}
 	>=dev-qt/qtcore-${QT_PV}
-	sys-devel/clang:=
-	sys-devel/clang-runtime:=
+	<sys-devel/clang-16:=
+	<sys-devel/clang-runtime-16:=
 	docstrings? (
 		>=dev-libs/libxml2-2.6.32
 		>=dev-libs/libxslt-1.1.19
@@ -123,7 +124,7 @@ src_configure() {
 			-DUSE_PYTHON_VERSION="${EPYTHON#python}"
 		)
 		# CMakeLists.txt expects LLVM_INSTALL_DIR as an environment variable.
-		local -x LLVM_INSTALL_DIR="$(get_llvm_prefix)"
+		local -x LLVM_INSTALL_DIR="$(get_llvm_prefix "${LLVM_MAX_SLOT}")"
 		cmake_src_configure
 	}
 	python_foreach_impl shiboken2_configure
