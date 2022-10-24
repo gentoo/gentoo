@@ -5,7 +5,7 @@ EAPI=7
 
 EGIT_REPO_URI="https://git.postgresql.org/git/pgpool2.git"
 
-POSTGRES_COMPAT=( 9.6 {10..13} )
+POSTGRES_COMPAT=( 9.6 {10..15} )
 
 inherit autotools git-r3 postgres-multi
 
@@ -45,7 +45,7 @@ src_prepare() {
 		"${FILESDIR}/pgpool-4.2.0-configure-memcached.patch" \
 		"${FILESDIR}/pgpool-configure-pam.patch" \
 		"${FILESDIR}/pgpool-4.2.0-configure-pthread.patch" \
-		"${FILESDIR}/pgpool-4.2.0-run_paths.patch"
+		"${FILESDIR}/pgpool-9999-run_paths.patch"
 
 	eautoreconf
 
@@ -70,7 +70,7 @@ src_compile() {
 	# of that directory built, too.
 	postgres-multi_foreach emake
 	postgres-multi_foreach emake -C src/sql
-	use doc && postgres-multi_forbest emake DESTDIR="${D}" -C doc
+	use doc && postgres-multi_forbest emake -C doc
 }
 
 src_install() {
