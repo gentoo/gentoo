@@ -1,0 +1,28 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index c5bd914c0..3757e983b 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -19,7 +19,7 @@
+ # IN THE SOFTWARE.
+ 
+ [build-system]
+-requires = ["hatchling", "hatch-requirements-txt", "hatch-nodejs-version>=0.3.0"]
++requires = ["hatchling"]
+ build-backend = "hatchling.build"
+ 
+ [project]
+@@ -55,13 +55,7 @@ tags = "material.plugins.tags.plugin:TagsPlugin"
+ material = "material"
+ 
+ [tool.hatch.version]
+-source = "nodejs"
+-
+-[tool.hatch.metadata.hooks.nodejs]
+-fields = ["license", "description", "authors", "keywords", "urls"]
+-
+-[tool.hatch.metadata.hooks.requirements_txt]
+-filename = "requirements.txt"
++path = "gentoo_version.py"
+ 
+ [tool.hatch.build.targets.wheel]
+ include = ["/material"]

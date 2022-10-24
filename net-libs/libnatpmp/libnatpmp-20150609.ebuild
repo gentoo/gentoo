@@ -6,8 +6,12 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="An alternative protocol to UPnP IGD specification"
-HOMEPAGE="http://miniupnp.free.fr/libnatpmp.html"
-SRC_URI="http://miniupnp.free.fr/files/download.php?file=${P}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	http://miniupnp.free.fr/libnatpmp.html
+	https://miniupnp.tuxfamily.org/libnatpmp.html
+	https://github.com/miniupnp/libnatpmp/
+"
+SRC_URI="https://miniupnp.tuxfamily.org/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
