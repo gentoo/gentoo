@@ -114,6 +114,8 @@ if [[ ${PV} == "9999" ]]; then
 	BDEPEND+=" >=dev-python/docutils-0.12"
 fi
 
+PATCHES=( "${FILESDIR}"/${P}-5004-hostname.patch )
+
 CONFIG_CHECK="~INOTIFY_USER"
 WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"
 

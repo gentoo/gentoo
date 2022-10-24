@@ -15,7 +15,10 @@ LICENSE="Broadcom"
 SLOT="0"
 KEYWORDS="~arm ~arm64"
 
-RDEPEND="!sys-kernel/linux-firmware[-savedconfig]"
+RDEPEND="
+	net-wireless/wireless-regdb
+	!sys-kernel/linux-firmware[-savedconfig]
+"
 
 pkg_pretend() {
 	local -a BADFILES=()

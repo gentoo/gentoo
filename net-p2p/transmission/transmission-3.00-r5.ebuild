@@ -68,6 +68,7 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}"/cmake-unused-command-line.patch
 	"${FILESDIR}"/transmission-3.00-openssl-3.patch
+	"${FILESDIR}"/transmission-3.00-horizontal-progress-bars.patch
 )
 
 src_configure() {
