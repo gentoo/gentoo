@@ -51,8 +51,8 @@ BDEPEND="
 	)
 "
 
-LLVM_COMPONENTS=( lldb cmake )
-LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
+LLVM_COMPONENTS=( lldb cmake llvm/utils )
+LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support )
 llvm.org_set_globals
 
 pkg_setup() {
@@ -88,11 +88,10 @@ src_configure() {
 
 		-DLLDB_EXTERNAL_CLANG_RESOURCE_DIR="${BROOT}/usr/lib/clang/${LLVM_VERSION}"
 
+		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 	use test && mycmakeargs+=(
-		-DLLVM_BUILD_TESTS=$(usex test)
-		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 	)

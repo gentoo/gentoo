@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="The ultimate lightweight window manager"
 HOMEPAGE="https://www.jfc.org.uk/software/lwm.html"
@@ -32,8 +32,6 @@ src_prepare() {
 }
 
 src_configure() {
-	append-cflags -std=gnu89 # old codebase, incompatible with c2x
-
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
 		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 }

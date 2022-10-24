@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 MY_PV=$(ver_rs 3 "")
 
@@ -33,6 +33,5 @@ src_prepare() {
 	default
 
 	tc-export CC RANLIB
-	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 	export AR="$(tc-getAR) ru" #720706
 }

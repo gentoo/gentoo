@@ -8,10 +8,6 @@
 	<use>
 		<flag name="fusefs">Enable the Fuse Filesystem</flag>
 		<flag name="json">Enable the JSON API of Fossil's wiki</flag>
-		<flag name="miniz">
-			Use the bundled miniz for compression instead of
-			zlib. Incompatible with ssl.
-		</flag>
 		<flag name="system-sqlite">
 			Use the system SQLite instead of the bundled one
 		</flag>

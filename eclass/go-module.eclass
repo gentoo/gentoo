@@ -358,6 +358,10 @@ go-module_src_unpack() {
 		die "Please update this ebuild"
 	else
 		default
+		if [[ ! -d "${S}"/vendor ]]; then
+			cd "${S}"
+			ego mod verify
+		fi
 	fi
 }
 

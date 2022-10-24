@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="amd64"
@@ -28,7 +28,7 @@ LDFLAGS_amd64="-m elf_x86_64"
 CHOST_amd64="x86_64-pc-linux-gnu"
 
 # 32bit specific settings.
-CFLAGS_x86="-m32"
+CFLAGS_x86="-m32 -mfpmath=sse"
 LDFLAGS_x86="-m elf_i386"
 CHOST_x86="i686-pc-linux-gnu"
 

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Audio video multiplexer for 8 audio channels"
 HOMEPAGE="http://panteltje.com/panteltje/dvd/"
@@ -26,8 +26,6 @@ src_prepare() {
 }
 
 src_compile() {
-	append-cflags -std=gnu89 # old codebase, incompatible with c2x
-
 	emake CC="$(tc-getCC)"
 }
 

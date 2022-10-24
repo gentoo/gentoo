@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="User-space implementation of L2TP for Linux and other UNIX systems"
 HOMEPAGE="https://sourceforge.net/projects/rp-l2tp/"
@@ -26,7 +26,6 @@ src_prepare() {
 	eautoreconf #871210
 
 	tc-export AR CC
-	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 }
 
 src_install() {

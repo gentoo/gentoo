@@ -54,7 +54,6 @@ src_prepare() {
 }
 
 src_configure() {
-	append-cflags -std=gnu89 # old codebase, incompatible with c2x
 	append-cppflags -D_DEFAULT_SOURCE #874021, for on_exit()
 	append-cflags ${CPPFLAGS}
 
