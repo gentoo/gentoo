@@ -1,13 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 PHP_EXT_NAME="parallel"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
+PHP_EXT_NEEDED_USE="threads"
 
-USE_PHP="php7-3 php7-4"
+USE_PHP="php7-4"
+SLOT="7"
 
 inherit php-ext-pecl-r3
 
@@ -17,12 +19,3 @@ KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="A succint parallel concurrency API for PHP"
 LICENSE="PHP-3.01"
-SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
-
-RDEPEND="
-	php_targets_php7-3? ( dev-lang/php:7.3[threads] )
-	php_targets_php7-4? ( dev-lang/php:7.4[threads] )
-"
-DEPEND="test? ( ${RDEPEND} )"
