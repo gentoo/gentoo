@@ -22,9 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/atk
 	>=dev-libs/glib-2.50:2
-	$(python_gen_cond_dep \
-		dev-python/pygobject:3[${PYTHON_USEDEP}]
-	)
+	$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
 	>=mate-base/caja-1.19.1
 	mate-extra/caja-extensions
 	media-libs/fontconfig:1.0
