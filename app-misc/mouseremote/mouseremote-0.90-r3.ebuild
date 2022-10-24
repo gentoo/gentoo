@@ -1,36 +1,34 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
 DESCRIPTION="X10 MouseRemote"
 HOMEPAGE="http://www4.pair.com/gribnif/ha/"
 SRC_URI="http://www4.pair.com/gribnif/ha/MouseRemote.tar.gz"
+S="${WORKDIR}"/MouseRemote
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 
-DEPEND="virtual/perl-Time-HiRes"
+RDEPEND="virtual/perl-Time-HiRes"
 
-S="${WORKDIR}/MouseRemote"
-
-src_prepare() {
-	eapply -p0 "${FILESDIR}"/${P}-makefile.diff
-	eapply "${FILESDIR}"/${P}-gentoo.diff
-	eapply -p0 "${FILESDIR}"/${P}-fix-warnings.diff
-
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-fix-warnings.patch
+	"${FILESDIR}"/${P}-fix-clang-16.patch
+)
 
 src_compile() {
-	cd MultiMouse && emake \
+	emake -C MultiMouse \
 		CC="$(tc-getCC)" \
 		PREFIX=/usr \
 		LOCKDIR=/var/lock \
-	    JMANDIR=/usr/share/man/ja_JP.ujis
+		JMANDIR=/usr/share/man/ja_JP.ujis
 }
 
 src_install() {
@@ -48,8 +46,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	[ -e /dev/mumse ] || mkfifo "${ROOT}"/dev/mumse
-	[ -e /dev/x10fifo ] || mkfifo "${ROOT}"/dev/x10fifo
+	[[ -e /dev/mumse ]] || mkfifo "${ROOT}"/dev/mumse
+	[[ -e /dev/x10fifo ]] || mkfifo "${ROOT}"/dev/x10fifo
 
 	elog "To use the mouse function in X, add the following to your XF86Config"
 	elog "Section \"InputDevice\""
@@ -64,7 +62,7 @@ pkg_postinst() {
 	elog
 	elog "Enable the daemon with \"rc-update add mouseremote default\"."
 	elog
-	elog "Configure the daemon is run in /etc/conf.d/mouseremote."
+	elog "Configure the daemon is run in ${EROOT}/etc/conf.d/mouseremote."
 	elog
-	elog "See /usr/share/doc/${PF} on how to configure the buttons."
+	elog "See ${EROOT}/usr/share/doc/${PF} on how to configure the buttons."
 }

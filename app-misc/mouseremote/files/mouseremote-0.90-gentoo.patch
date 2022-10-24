@@ -1,6 +1,5 @@
-diff -Naur MouseRemote.ORG/client/MouseRemote.conf MouseRemote/client/MouseRemote.conf
---- MouseRemote.ORG/client/MouseRemote.conf	Sat Oct  9 21:03:42 1999
-+++ MouseRemote/client/MouseRemote.conf	Sat May  4 16:04:43 2002
+--- a/client/MouseRemote.conf
++++ b/client/MouseRemote.conf
 @@ -61,3 +61,35 @@
  
  # Definitions for the DVD device
@@ -37,9 +36,8 @@ diff -Naur MouseRemote.ORG/client/MouseRemote.conf MouseRemote/client/MouseRemot
 +TxtOff
 +TxtTrns
 +Rec
-diff -Naur MouseRemote.ORG/client/MouseRemoteKeys.pl MouseRemote/client/MouseRemoteKeys.pl
---- MouseRemote.ORG/client/MouseRemoteKeys.pl	Sun Oct 10 00:09:42 1999
-+++ MouseRemote/client/MouseRemoteKeys.pl	Sat May  4 15:58:58 2002
+--- a/client/MouseRemoteKeys.pl
++++ b/client/MouseRemoteKeys.pl
 @@ -11,6 +11,7 @@
  	play =>		0x0d,
  	stop =>		0x0e,
