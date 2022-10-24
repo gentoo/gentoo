@@ -14,4 +14,4 @@ diff -Naur geeqie-2.0.1.orig/scripts/generate-ClayRGB1998-icc-h.sh geeqie-2.0.1/
  cd "$(dirname "$1")" || return 1
  
 -xxd -i "$(basename "$1")" "$build_dir/$2"
-+${XXD} "$(basename "$1")" "$build_dir/$2"
++${XXD} "$(basename "$1")" > "$build_dir/$2"

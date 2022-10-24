@@ -55,6 +55,9 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# Fix xxdi.pl support
+	sed -e 's/"$build_dir/> \0/' scripts/generate-ClayRGB1998-icc-h.sh || die
+
 	# Disable doc build - not useful most of the time per upstream
 	sed -e "/subdir('doc')/d" -i meson.build || die
 
