@@ -46,7 +46,7 @@ BDEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
-		!!dev-python/requests-toolbelt
+		!!<dev-python/requests-toolbelt-0.10.1
 	)
 "
 
