@@ -225,11 +225,6 @@ src_configure() {
 
 	# disable implicit optimization/debugging flags
 	local -x OPT=
-	# pass system CFLAGS & LDFLAGS as _NODIST, otherwise they'll get
-	# propagated to sysconfig for built extensions
-	local -x CFLAGS_NODIST=${CFLAGS}
-	local -x LDFLAGS_NODIST=${LDFLAGS}
-	local -x CFLAGS= LDFLAGS=
 
 	if tc-is-cross-compiler ; then
 		# pass system CFLAGS & LDFLAGS as _NODIST, otherwise they'll get
