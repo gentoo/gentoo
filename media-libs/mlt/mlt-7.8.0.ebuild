@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit python-single-r1 cmake
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
