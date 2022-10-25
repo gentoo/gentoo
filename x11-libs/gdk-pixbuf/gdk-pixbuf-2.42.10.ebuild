@@ -43,9 +43,6 @@ MULTILIB_CHOST_TOOLS=(
 src_prepare() {
 	default
 	xdg_environment_reset
-
-	# dev-python/docutils installs rst2man.py, not rst2man
-	sed -i -e "s/'rst2man'/'rst2man.py'/" docs/meson.build || die
 }
 
 multilib_src_configure() {
