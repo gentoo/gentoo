@@ -15,4 +15,7 @@
   <use>
     <flag name="debug">Enable debug</flag>
   </use>
+  <upstream>
+    <remote-id type="github">hanslub42/rlwrap</remote-id>
+  </upstream>
 </pkgmetadata>
