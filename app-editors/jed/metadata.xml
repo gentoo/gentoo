@@ -12,4 +12,7 @@
   Jed has a multitude of programming modes and couples with the Slang library
   for powerful extensions.
 </longdescription>
+<upstream>
+  <remote-id type="github">jedsoft/jed</remote-id>
+</upstream>
 </pkgmetadata>
