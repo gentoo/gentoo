@@ -1,0 +1,25 @@
+From aba21403014d3a0c4886b930ce3e7c07e2df5169 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 25 Oct 2022 13:34:28 +0100
+Subject: [PATCH] Fix implicit function declaration
+
+Bug: https://bugs.gentoo.org/871225
+--- a/cstream.c
++++ b/cstream.c
+@@ -92,6 +92,8 @@
+ 
+ #ifndef NOSOUND
+ 
++#include <sys/ioctl.h>
++
+ #ifdef HAVE_MACHINE_SOUNDCARD_H
+ #include <machine/soundcard.h>
+ #define WANT_SOUND 1
+@@ -103,7 +105,6 @@
+ #ifdef HAVE_LINUX_SOUNDCARD_H
+ #include <linux/soundcard.h>
+ #define WANT_SOUND 1
+-#include <sys/ioctl.h>
+ #endif /* linux/soundcard.h */
+ #endif /* either soundcard.h */
+ #endif /* either soundcard.h */

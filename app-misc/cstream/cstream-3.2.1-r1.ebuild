@@ -13,6 +13,10 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.2.1-Fix-implicit-function-declaration.patch
+)
+
 src_prepare() {
 	default
 
