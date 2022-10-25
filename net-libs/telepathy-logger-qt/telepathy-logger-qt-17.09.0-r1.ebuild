@@ -1,10 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} )
-QTMIN=5.12.3
+PYTHON_COMPAT=( python3_{8..11} )
 inherit ecm kde.org python-any-r1
 
 DESCRIPTION="Qt bindings for the Telepathy logger"
@@ -19,15 +18,15 @@ LICENSE="LGPL-2.1"
 SLOT="5"
 IUSE=""
 
-BDEPEND="${PYTHON_DEPS}"
 DEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib:2
 	dev-libs/libxml2
-	>=dev-qt/qtdbus-${QTMIN}:5
+	dev-qt/qtdbus:5
 	net-im/telepathy-logger
 	net-libs/telepathy-glib
-	net-libs/telepathy-qt[qt5(+)]
+	net-libs/telepathy-qt
 	sys-apps/dbus
 "
 RDEPEND="${DEPEND}"
+BDEPEND="${PYTHON_DEPS}"
