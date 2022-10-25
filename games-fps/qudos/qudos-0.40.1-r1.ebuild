@@ -46,6 +46,7 @@ RDEPEND="
 	demo? ( games-fps/quake2-demodata[symlink] )
 	textures? ( games-fps/quake2-textures )
 "
+BDEPEND="virtual/pkgconfig"
 
 dir=usr/share/${MY_PN}
 
