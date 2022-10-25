@@ -17,5 +17,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">slrn</remote-id>
+		<remote-id type="github">jedsoft/slrn</remote-id>
 	</upstream>
 </pkgmetadata>
