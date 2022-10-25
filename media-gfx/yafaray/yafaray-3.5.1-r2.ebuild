@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 # doesn't build with ninja when qt5 and python USE flags are both enabled
 CMAKE_MAKEFILE_GENERATOR="emake"
@@ -19,7 +19,7 @@ S="${WORKDIR}/libYafaRay-${PV}"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+fastmath +fasttrig jpeg opencv openexr png python qt5 tiff truetype"
+IUSE="+fastmath +fasttrig jpeg opencv png python qt5 tiff truetype"
 RESTRICT="test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -28,9 +28,8 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
 	dev-libs/libxml2:2
 	sys-libs/zlib
-	jpeg? ( virtual/jpeg )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	opencv? ( media-libs/opencv:= )
-	openexr? ( <media-libs/openexr-3.0.0:0= )
 	png? ( media-libs/libpng:= )
 	python? ( ${PYTHON_DEPS} )
 	qt5? ( dev-qt/qtwidgets:5 )
@@ -73,7 +72,7 @@ src_configure() {
 		-DWITH_Freetype=$(usex truetype)
 		-DWITH_JPEG=$(usex jpeg)
 		-DWITH_OpenCV=$(usex opencv)
-		-DWITH_OpenEXR=$(usex openexr)
+		-DWITH_OpenEXR=OFF # bug #877865
 		-DWITH_PNG=$(usex png)
 		-DWITH_QT=$(usex qt5)
 		-DWITH_TIFF=$(usex tiff)
