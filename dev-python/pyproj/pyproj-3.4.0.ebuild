@@ -39,6 +39,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-proj-9.1.patch
+)
+
 distutils_enable_sphinx docs \
 	dev-python/furo
 distutils_enable_tests pytest
