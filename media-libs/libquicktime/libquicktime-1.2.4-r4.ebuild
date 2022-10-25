@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ RDEPEND="
 	dv? ( >=media-libs/libdv-1.0.0-r3[${MULTILIB_USEDEP}] )
 	ffmpeg? ( >=media-video/ffmpeg-3.2.6:0=[${MULTILIB_USEDEP}] )
 	gtk? ( x11-libs/gtk+:2 )
-	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	lame? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
 	opengl? ( virtual/opengl )
 	png? ( >=media-libs/libpng-1.6.10:0[${MULTILIB_USEDEP}] )
@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-ffmpeg29.patch
 	"${FILESDIR}"/${P}-CVE-2016-2399.patch
 	"${FILESDIR}"/${P}-CVE-2017-9122_et_al.patch
+	"${FILESDIR}"/${P}-implicit-func-decl.patch
 )
 
 src_prepare() {
