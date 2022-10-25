@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit meson python-r1 vala
 
 DESCRIPTION="GLib binding for the D-Bus API provided by signond"
@@ -38,6 +38,11 @@ BDEPEND="$(python_gen_any_dep)
 	test? ( dev-libs/check )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-docs-optional.patch"
+	"${FILESDIR}/${P}-meson-0.61.patch"
+)
+
 python_check_deps() { return 0; }
 
 pkg_setup() {
@@ -46,9 +51,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	vala_src_prepare
-
-	use doc || sed -e "/^subdir('docs')$/d" -i meson.build || die
+	vala_setup
 
 	cp libsignon-glib/*.xml libsignon-glib/interfaces || die
 }
@@ -57,6 +60,7 @@ src_configure() {
 	myconfigure() {
 		local emesonargs=(
 			-Ddebugging=$(usex debug true false)
+			-Ddocumentation=$(usex doc true false)
 			-Dintrospection=$(usex introspection true false)
 			-Dpython=$(usex python true false)
 			-Dtests=$(usex test true false)
