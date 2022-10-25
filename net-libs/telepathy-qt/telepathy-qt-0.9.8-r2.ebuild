@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="xml(+)"
 inherit python-any-r1 cmake virtualx
 
@@ -17,7 +17,6 @@ KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 IUSE="debug farstream test"
 
 REQUIRED_USE="test? ( farstream )"
-
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -46,6 +45,8 @@ BDEPEND="${PYTHON_DEPS}
 		')
 	)
 "
+
+PATCHES=( "${FILESDIR}/${P}-fix-tests-finding-glib-2.patch" )
 
 python_check_deps() {
 	use test || return 0
