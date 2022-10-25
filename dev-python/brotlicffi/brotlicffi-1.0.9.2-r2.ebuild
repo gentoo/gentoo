@@ -37,6 +37,7 @@ RDEPEND="
 	' 'python*')
 "
 DEPEND="
+	${RDEPEND}
 	test? (
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 	)
