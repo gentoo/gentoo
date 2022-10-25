@@ -1,6 +1,5 @@
-diff -ruN a/t/net.t b/t/net.t
---- a/t/net.t	2022-08-16 15:55:29.000000000 +0200
-+++ b/t/net.t	2022-09-14 14:22:52.954918347 +0200
+--- a/t/net.t
++++ b/t/net.t
 @@ -54,9 +54,15 @@
    my @rbl;
    $rbl[0] = "dnsbltest.spamassassin.org";

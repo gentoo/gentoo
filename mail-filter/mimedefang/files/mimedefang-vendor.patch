@@ -1,6 +1,5 @@
-diff -ruN a/Makefile.in b/Makefile.in
---- a/Makefile.in	2022-05-19 09:31:36.000000000 +0200
-+++ b/Makefile.in	2022-08-28 02:54:01.337116642 +0200
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -42,7 +42,7 @@
  PERLINSTALLSITELIB=@PERLINSTALLSITELIB@
  PERLINSTALLPRIVLIB=@PERLINSTALLPRIVLIB@
@@ -10,9 +9,8 @@ diff -ruN a/Makefile.in b/Makefile.in
  LDFLAGS=@LDFLAGS@
  IP_HEADER=@IP_HEADER@
  SPOOLDIR=@SPOOLDIR@
-diff -ruN a/configure b/configure
---- a/configure	2022-08-06 10:43:38.000000000 +0200
-+++ b/configure	2022-08-28 02:53:17.006104021 +0200
+--- a/configure
++++ b/configure
 @@ -662,6 +662,7 @@
  PERLINSTALLPRIVLIB
  PERLINSTALLARCHLIB
