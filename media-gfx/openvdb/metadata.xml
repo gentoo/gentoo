@@ -31,9 +31,6 @@
 		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="numpy">
 			Build pyopenvdb with support for <pkg>dev-python/numpy</pkg>
 		</flag>
-		<flag restrict="&lt;=media-gfx/openvdb-7.1.0" name="abi5-compat">
-			Disables newer features to maintain compatibility with ABI5.
-		</flag>
 		<flag restrict="&gt;=media-gfx/openvdb-6.0.0" name="abi6-compat">
 			Disables newer features to maintain compatibility with ABI6.
 		</flag>
