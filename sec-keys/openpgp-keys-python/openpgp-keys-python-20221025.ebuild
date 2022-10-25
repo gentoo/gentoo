@@ -9,7 +9,7 @@ SRC_URI="
 	https://keybase.io/pablogsal/pgp_keys.asc?fingerprint=a035c8c19219ba821ecea86b64e628f8d684696d
 		-> a035c8c19219ba821ecea86b64e628f8d684696d.asc
 	https://keybase.io/ambv/pgp_keys.asc?fingerprint=e3ff2839c048b25c084debe9b26995e310250568
-		-> e3ff2839c048b25c084debe9b26995e310250568.asc
+		-> e3ff2839c048b25c084debe9b26995e310250568-r1.asc
 	https://keybase.io/nad/pgp_keys.asc?fingerprint=0d96df4d4110e5c43fbfb17f2d347ea6aa65421d
 		-> 0d96df4d4110e5c43fbfb17f2d347ea6aa65421d.asc
 	https://keybase.io/nad/pgp_keys.asc?fingerprint=c9b104b3dd3aa72d7ccb1066fb9921286f5e1540
