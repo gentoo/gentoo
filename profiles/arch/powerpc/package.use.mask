@@ -97,10 +97,6 @@ media-video/obs-studio nvenc
 # No deps keyworded
 dev-python/pbr test
 
-# Benda Xu <heroxbd@gentoo.org> (2020-04-27)
-# tests optionally depend on dev-python/hypothesis
-dev-python/numpy test
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-19)
 # Unsupported on ppc/ppc64
 www-client/chromium widevine
