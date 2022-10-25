@@ -22,11 +22,12 @@ SLOT="0"
 QA_PKGCONFIG_VERSION="${PV}.0"
 LICENSE="GPL-3"
 
-IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
+IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
 	libcanberra? ( notification )
 	libnotify? ( notification )
 	networkmanager? ( dbus )
+	oauth? ( gnutls )
 	smime? ( pgp )
 "
 
@@ -150,6 +151,7 @@ src_configure() {
 		$(use_enable networkmanager)
 		$(use_enable nls)
 		$(use_enable notification notification-plugin)
+		$(use_enable oauth oauth2)
 		$(use_enable pdf pdf_viewer-plugin)
 		$(use_enable perl perl-plugin)
 		$(use_enable pgp pgpcore-plugin)
