@@ -43,10 +43,10 @@ DEPEND="
 	<dev-libs/libfmt-9.0.0:=
 	media-libs/glew:0=
 	media-libs/libepoxy
+	media-libs/libjpeg-turbo:0=
 	media-libs/libpng:0=
 	sys-libs/zlib:=
 	virtual/glu
-	virtual/jpeg:0
 	virtual/opengl
 	ffmpeg? ( media-video/ffmpeg:0 )
 	glut? ( media-libs/freeglut )
