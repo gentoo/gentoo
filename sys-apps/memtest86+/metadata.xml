@@ -17,4 +17,7 @@
 	<flag name="iso64">Compile a 64bit ISO image</flag>
 	<flag name="serial">Compile with serial console support</flag>
 </use>
+<upstream>
+	<remote-id type="github">memtest86plus/memtest86plus</remote-id>
+</upstream>
 </pkgmetadata>
