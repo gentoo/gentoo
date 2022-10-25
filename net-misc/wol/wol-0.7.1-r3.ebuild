@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Implements Wake On LAN (Magic Paket) functionality in a small program"
 HOMEPAGE="http://ahh.sourceforge.net/wol/"
@@ -14,7 +14,18 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
 IUSE="nls"
 
-PATCHES=( "${FILESDIR}/${P}-musl.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-musl.patch"
+	"${FILESDIR}/${P}-Fix-config.h-test-consumption.patch"
+	"${FILESDIR}/${P}-Fix-malloc-detection.patch"
+)
+
+src_prepare() {
+	default
+
+	# bug #874420
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(
