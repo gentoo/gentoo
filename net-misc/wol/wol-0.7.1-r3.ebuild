@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Implements Wake On LAN (Magic Paket) functionality in a small program"
 HOMEPAGE="http://ahh.sourceforge.net/wol/"
