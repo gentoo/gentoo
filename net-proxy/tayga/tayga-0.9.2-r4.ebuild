@@ -1,26 +1,23 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit autotools
 
-DESCRIPTION="out-of-kernel stateless NAT64 implementation based on TUN"
+DESCRIPTION="Out-of-kernel stateless NAT64 implementation based on TUN"
 HOMEPAGE="http://www.litech.org/tayga/"
 SRC_URI="http://www.litech.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv"
-IUSE=""
-
-DEPEND=""
-RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-static-EAM.patch
 	"${FILESDIR}"/${P}-manpage-RFC.patch
 	"${FILESDIR}"/${P}-release-reserved-addr.patch
+	"${FILESDIR}"/${PN}-0.9.2-Fix-implicit-function-declaration.patch
 )
 
 src_prepare() {

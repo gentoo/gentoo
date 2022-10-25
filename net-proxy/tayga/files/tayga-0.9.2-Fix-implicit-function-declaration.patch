@@ -1,0 +1,16 @@
+From 64b2c3859304c595e7099dd157596951ec21562b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 25 Oct 2022 12:54:31 +0100
+Subject: [PATCH] Fix implicit function declaration
+
+Bug: https://bugs.gentoo.org/871678
+--- a/nat64.c
++++ b/nat64.c
+@@ -16,6 +16,7 @@
+  */
+ 
+ #include <tayga.h>
++#include <sys/uio.h>
+ 
+ extern struct config *gcfg;
+ 
