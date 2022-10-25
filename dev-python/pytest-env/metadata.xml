@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">MobileDynasty/pytest-env</remote-id>
+		<remote-id type="github">pytest-dev/pytest-env</remote-id>
 		<remote-id type="pypi">pytest-env</remote-id>
 	</upstream>
 </pkgmetadata>
