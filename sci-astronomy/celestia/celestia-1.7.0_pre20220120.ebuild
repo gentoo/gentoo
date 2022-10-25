@@ -5,7 +5,7 @@ EAPI=8
 CMAKE_IN_SOURCE_BUILD="yes"
 LUA_COMPAT=( lua5-{1..3} luajit )
 
-inherit desktop flag-o-matic lua-single xdg cmake
+inherit desktop lua-single xdg cmake
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/CelestiaProject/Celestia.git"
