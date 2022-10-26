@@ -6,7 +6,8 @@ EAPI=8
 inherit cmake flag-o-matic xdg
 
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
-HOMEPAGE="https://keepassxc.org"
+HOMEPAGE="https://keepassxc.org/
+	https://github.com/keepassxreboot/keepassxc/"
 
 if [[ "${PV}" != *9999 ]] ; then
 	if [[ "${PV}" == *_beta* ]] ; then
@@ -67,7 +68,7 @@ src_prepare() {
 		printf '%s' "${PV}" > .version || die
 	fi
 
-	 cmake_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
