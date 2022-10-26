@@ -65,5 +65,5 @@ src_install() {
 	insinto /lib/firmware/cypress
 	doins debian/config/brcm80211/cypress/*
 
-	dodoc debian/config/brcm80211/LICENSE debian/changelog
+	dodoc debian/changelog
 }
