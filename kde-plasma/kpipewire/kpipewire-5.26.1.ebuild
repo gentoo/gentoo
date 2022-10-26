@@ -12,7 +12,7 @@ DESCRIPTION="Components relating to Flatpak pipewire use in Plasma"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 IUSE=""
 
 COMMON_DEPEND="
