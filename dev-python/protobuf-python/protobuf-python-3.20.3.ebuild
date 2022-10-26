@@ -57,6 +57,7 @@ PARENT_PATCHES=(
 
 # Here for patches within "python/" subdirectory.
 PATCHES=(
+	"${FILESDIR}"/${PN}-3.20.3-python311.patch
 )
 
 python_prepare_all() {
