@@ -59,8 +59,8 @@ RDEPEND="
 		)
 	)
 	webdav? (
-		net-libs/phodav:2.0
-		>=net-libs/libsoup-2.49.91:2.4
+		net-libs/phodav:3.0
+		net-libs/libsoup:3.0
 	)
 "
 # TODO: spice-gtk has an automagic dependency on media-libs/libva without a
