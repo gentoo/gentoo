@@ -1,0 +1,32 @@
+Fix implicit function declarations as they are not supported by clang16 with standard settings.
+
+Bug: https://bugs.gentoo.org/874717
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/callbacks.c
++++ b/callbacks.c
+@@ -33,6 +33,12 @@ gpointer create_progressbar_window (ChData *data);
+ gboolean update_progress(gpointer data);
+ gpointer async_lengthy_func(gpointer data);
+
++extern void scale_box_sensitive (ChData *data, gboolean sensitive);
++extern gshort move_earth_true (ChData *data);
++extern void get_and_set_options (ChData *data);
++extern gshort get_map_position (ChData *data);
++extern gboolean is_peters (ChData *data);
++extern void button_sensitive (ChData *data, gboolean sensitive);
+ /***************************************
+        Window Callbacks
+ ***************************************/
+--- a/sunlight.c
++++ b/sunlight.c
+@@ -19,6 +19,8 @@
+
+ #include "support.h"
+
++extern void change_wallpaper (ChData *data);
++
+ void initialize_variables (ChData *data){
+        data->var.gi_rd1 = 1;
+        data->var.gi_rd2 = 1;
