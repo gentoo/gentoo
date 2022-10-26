@@ -1,0 +1,418 @@
+pacemaker 2.1 changed output of "crmadmin -S"
+https://github.com/ClusterLabs/crmsh/issues/970
+
+Signed-off-by: Christian Richter <motzned@gmail.com>
+
+--- a/crmsh/utils.py	2022-02-17 05:38:34.000000000 +0100
++++ b/crmsh/utils.py	2022-10-21 20:02:45.648865656 +0200
+@@ -837,10 +837,8 @@
+         return False
+ 
+ 
+-def get_dc(timeout=None):
+-    cmd = "crmadmin -D"
+-    if timeout:
+-        cmd += " -t {}".format(timeout)
++def get_dc():
++    cmd = "crmadmin -D -t 1"
+     rc, s, _ = get_stdout_stderr(add_sudo(cmd))
+     if rc != 0:
+         return None
+@@ -895,15 +893,10 @@
+             return False
+         cmd = "crmadmin -S %s" % dc
+         rc, s = get_stdout(add_sudo(cmd))
+-        if not s.startswith("Status"):
+-            logger.warning("%s unexpected output: %s (exit code: %d)", cmd, s, rc)
+-            return False
+-        try:
+-            dc_status = s.split()[-2]
+-        except:
+-            logger.warning("%s unexpected output: %s", cmd, s)
++        if rc != 0:
++            logger.error("Exit code of command {} is {}".format(cmd, rc))
+             return False
+-        if dc_status == "S_IDLE":
++        if re.search("S_IDLE.*ok", s):
+             if output_started:
+                 sys.stderr.write(" done\n")
+             return True
+@@ -1008,7 +1001,7 @@
+     }
+     if not t:
+         return -1
+-    r = re.match(r"\s*(\d+)\s*([a-zA-Z]+)?", t)
++    r = re.match(r"\s*(\d+)\s*([a-zA-Z]+)?", str(t))
+     if not r:
+         return -1
+     if not r.group(2):
+@@ -1471,7 +1464,6 @@
+         if rc != 0:
+             logger.error("%s exited with %d [err: %s][out: %s]", cmd, rc, err, s)
+         else:
+-            logger.debug("pacemaker version: [err: %s][out: %s]", err, s)
+             if err.startswith("CRM Version:"):
+                 version = s.split()[0]
+             else:
+@@ -2009,8 +2001,13 @@
+     """
+     Detect if in AWS
+     """
+-    system_version = get_stdout_or_raise_error("dmidecode -s system-version")
+-    return re.search(r".*amazon.*", system_version) is not None
++    # will match on xen instances
++    xen_test = get_stdout_or_raise_error("dmidecode -s system-version").lower()
++    # will match on nitro/kvm instances
++    kvm_test = get_stdout_or_raise_error("dmidecode -s system-manufacturer").lower()
++    if "amazon" in xen_test or "amazon" in kvm_test:
++        return True
++    return False
+ 
+ 
+ def detect_azure():
+@@ -2487,19 +2484,19 @@
+         return False
+ 
+ 
+-def check_file_content_included(source_file, target_file):
++def check_file_content_included(source_file, target_file, remote=None, source_local=False):
+     """
+     Check whether target_file includes contents of source_file
+     """
+-    if not os.path.exists(source_file):
++    if not detect_file(source_file, remote=None if source_local else remote):
+         raise ValueError("File {} not exist".format(source_file))
+-    if not os.path.exists(target_file):
++    if not detect_file(target_file, remote=remote):
+         return False
+ 
+-    with open(target_file, 'r') as target_fd:
+-        target_data = target_fd.read()
+-    with open(source_file, 'r') as source_fd:
+-        source_data = source_fd.read()
++    cmd = "cat {}".format(target_file)
++    target_data = get_stdout_or_raise_error(cmd, remote=remote)
++    cmd = "cat {}".format(source_file)
++    source_data = get_stdout_or_raise_error(cmd, remote=None if source_local else remote)
+     return source_data in target_data
+ 
+ 
+@@ -2516,6 +2513,7 @@
+             "is_active": "is-active",
+             "is_available": "list-unit-files"
+             }
++    IGNORE_ERRORS_IN_PARALLAX = ["is_enabled", "is_active", "is_available"]
+ 
+     def __init__(self, service_name, remote_addr=None, node_list=[]):
+         """
+@@ -2523,8 +2521,15 @@
+         When node_list set, execute action between nodes in parallel
+         """
+         self.service_name = service_name
++        if remote_addr and node_list:
++            raise ValueError("Cannot assign remote_addr and node_list at the same time")
+         self.remote_addr = remote_addr
++        self.target_node = remote_addr or this_node()
+         self.node_list = node_list
++        self.rc = False
++        self.parallax_res = None
++        self.nodes_dict = {}
++        self.success_nodes = []
+ 
+     def _do_action(self, action_type):
+         """
+@@ -2535,40 +2540,33 @@
+ 
+         cmd = "systemctl {} {}".format(action_type, self.service_name)
+         if self.node_list:
+-            cluster_run_cmd(cmd, self.node_list)
+-            return True, None
++            self.parallax_res = parallax.parallax_call(self.node_list, cmd, strict=False)
++            return
+         elif self.remote_addr and self.remote_addr != this_node():
+             prompt_msg = "Run \"{}\" on {}".format(cmd, self.remote_addr)
+-            rc, output, err = run_cmd_on_remote(cmd, self.remote_addr, prompt_msg)
++            rc, _, err = run_cmd_on_remote(cmd, self.remote_addr, prompt_msg)
+         else:
+-            rc, output, err = get_stdout_stderr(cmd)
++            rc, _, err = get_stdout_stderr(cmd)
+         if rc != 0 and err:
+             raise ValueError("Run \"{}\" error: {}".format(cmd, err))
+-        return rc == 0, output
+-
+-    @property
+-    def is_available(self):
+-        return self.service_name in self._do_action(self.ACTION_MAP["is_available"])[1]
+-
+-    @property
+-    def is_enabled(self):
+-        return self._do_action(self.ACTION_MAP["is_enabled"])[0]
+-
+-    @property
+-    def is_active(self):
+-        return self._do_action(self.ACTION_MAP["is_active"])[0]
++        self.rc = rc == 0
+ 
+-    def start(self):
+-        self._do_action(self.ACTION_MAP["start"])
+-
+-    def stop(self):
+-        self._do_action(self.ACTION_MAP["stop"])
+-
+-    def enable(self):
+-        self._do_action(self.ACTION_MAP["enable"])
++    def _handle_action_result(self, action):
++        if self.parallax_res:
++            for host, result in self.parallax_res:
++                if isinstance(result, parallax.Error):
++                    if action not in self.IGNORE_ERRORS_IN_PARALLAX:
++                        logger.error("Failed to %s %s on %s: %s", action, self.service_name, host, str(result))
++                    self.nodes_dict[host] = False
++                else:
++                    self.nodes_dict[host] = True
++        else:
++            self.nodes_dict[self.target_node] = self.rc
++        self.success_nodes = [node for node in self.nodes_dict if self.nodes_dict[node]]
+ 
+-    def disable(self):
+-        self._do_action(self.ACTION_MAP["disable"])
++    def action_and_handle_result(self, action):
++        self._do_action(self.ACTION_MAP[action])
++        self._handle_action_result(action)
+ 
+     @classmethod
+     def service_is_available(cls, name, remote_addr=None):
+@@ -2576,7 +2574,8 @@
+         Check whether service is available
+         """
+         inst = cls(name, remote_addr)
+-        return inst.is_available
++        inst.action_and_handle_result("is_available")
++        return inst.nodes_dict[inst.target_node]
+ 
+     @classmethod
+     def service_is_enabled(cls, name, remote_addr=None):
+@@ -2584,7 +2583,8 @@
+         Check whether service is enabled
+         """
+         inst = cls(name, remote_addr)
+-        return inst.is_enabled
++        inst.action_and_handle_result("is_enabled")
++        return inst.nodes_dict[inst.target_node]
+ 
+     @classmethod
+     def service_is_active(cls, name, remote_addr=None):
+@@ -2592,45 +2592,56 @@
+         Check whether service is active
+         """
+         inst = cls(name, remote_addr)
+-        return inst.is_active
++        inst.action_and_handle_result("is_active")
++        return inst.nodes_dict[inst.target_node]
+ 
+     @classmethod
+     def start_service(cls, name, enable=False, remote_addr=None, node_list=[]):
+         """
+         Start service
++        Return success node list
+         """
+         inst = cls(name, remote_addr, node_list)
+         if enable:
+-            inst.enable()
+-        inst.start()
++            inst.action_and_handle_result("enable")
++        inst.action_and_handle_result("start")
++        return inst.success_nodes
+ 
+     @classmethod
+     def stop_service(cls, name, disable=False, remote_addr=None, node_list=[]):
+         """
+         Stop service
++        Return success node list
+         """
+         inst = cls(name, remote_addr, node_list)
+         if disable:
+-            inst.disable()
+-        inst.stop()
++            inst.action_and_handle_result("disable")
++        inst.action_and_handle_result("stop")
++        return inst.success_nodes
+ 
+     @classmethod
+     def enable_service(cls, name, remote_addr=None, node_list=[]):
+         """
+         Enable service
++        Return success node list
+         """
+         inst = cls(name, remote_addr, node_list)
+-        if inst.is_available and not inst.is_enabled:
+-            inst.enable()
++        inst.action_and_handle_result("enable")
++        return inst.success_nodes
+ 
+     @classmethod
+     def disable_service(cls, name, remote_addr=None, node_list=[]):
+         """
+         Disable service
++        Return success node list
+         """
+         inst = cls(name, remote_addr, node_list)
+-        if inst.is_available and inst.is_enabled:
+-            inst.disable()
++        inst.action_and_handle_result("is_available")
++        if not inst.success_nodes:
++            return []
++        inst.node_list = inst.success_nodes
++        inst.action_and_handle_result("disable")
++        return inst.success_nodes
+ 
+ 
+ service_is_available = ServiceManager.service_is_available
+@@ -2967,14 +2978,13 @@
+         raise ValueError("Failed to get quorate status from corosync-quorumtool")
+ 
+ 
+-def is_2node_cluster_without_qdevice(removing=False):
++def is_2node_cluster_without_qdevice():
+     """
+     Check if current cluster has two nodes without qdevice
+     """
+     current_num = len(list_cluster_nodes())
+-    remove_num = 1 if removing else 0
+     qdevice_num = 1 if is_qdevice_configured() else 0
+-    return (current_num - remove_num + qdevice_num) == 2
++    return (current_num + qdevice_num) == 2
+ 
+ 
+ def get_pcmk_delay_max(two_node_without_qdevice=False):
+@@ -2986,26 +2996,21 @@
+     return 0
+ 
+ 
+-def get_property(name):
++def get_property(name, property_type="crm_config"):
+     """
+     Get cluster properties
++
++    "property_type" can be crm_config|rsc_defaults|op_defaults
+     """
+-    cmd = "crm configure get_property " + name
++    if property_type == "crm_config":
++        cib_path = os.getenv('CIB_file', constants.CIB_RAW_FILE)
++        cmd = "CIB_file={} crm configure get_property {}".format(cib_path, name)
++    else:
++        cmd = "crm_attribute -t {} -n {} -Gq".format(property_type, name)
+     rc, stdout, _ = get_stdout_stderr(cmd)
+     return stdout if rc == 0 else None
+ 
+ 
+-def set_property(**kwargs):
+-    """
+-    Set cluster properties
+-    """
+-    set_str = ""
+-    for key, value in kwargs.items():
+-        set_str += "{}={} ".format(key, value)
+-    cmd = "crm configure property " + set_str.strip().replace('_', '-')
+-    get_stdout_or_raise_error(cmd)
+-
+-
+ def check_no_quorum_policy_with_dlm():
+     """
+     Give warning when no-quorum-policy not freeze while configured DLM
+@@ -3017,15 +3022,24 @@
+         logger.warning("The DLM cluster best practice suggests to set the cluster property \"no-quorum-policy=freeze\"")
+ 
+ 
+-def set_property_conditionally(property_name, value_from_calculation):
++def set_property(property_name, property_value, property_type="crm_config", conditional=False):
+     """
+-    Set cluster property if calculated value is larger then current cib value
++    Set property for cluster, resource and operator
++
++    "property_type" can be crm_config|rsc_defaults|op_defaults
++    When "conditional" is True, set the property if given "property_value" is larger then value from cib
+     """
+-    _value = get_property(property_name)
+-    value_from_cib = int(_value.strip('s')) if _value else 0
+-    if value_from_cib < value_from_calculation:
+-        cmd = "crm configure property {}={}".format(property_name, value_from_calculation)
+-        get_stdout_or_raise_error(cmd)
++    origin_value = get_property(property_name, property_type)
++    if origin_value and str(origin_value) == str(property_value):
++        return
++    if conditional:
++        if crm_msec(origin_value) >= crm_msec(property_value):
++            return
++    if origin_value and str(origin_value) != str(property_value):
++        logger.warning("\"{}\" in {} is set to {}, it was {}".format(property_name, property_type, property_value, origin_value))
++    property_sub_cmd = "property" if property_type == "crm_config" else property_type
++    cmd = "crm configure {} {}={}".format(property_sub_cmd, property_name, property_value)
++    get_stdout_or_raise_error(cmd)
+ 
+ 
+ def get_systemd_timeout_start_in_sec(time_res):
+@@ -3075,7 +3089,13 @@
+     """
+     # In cibconfig.py, _patch_cib method doesn't include status section
+     # So here should make a function to handle common cases
+-    cmd = "crm_diff -u -O '{}' -N '{}'".format(orig_cib_str, current_cib_str)
++    from . import tmpfiles
++    orig_cib_file = str2tmp(orig_cib_str, suffix=".xml")
++    current_cib_file = str2tmp(current_cib_str, suffix=".xml")
++    tmpfiles.add(orig_cib_file)
++    tmpfiles.add(current_cib_file)
++
++    cmd = "crm_diff -u -o '{}' -n '{}'".format(orig_cib_file, current_cib_file)
+     rc, cib_diff, err = get_stdout_stderr(cmd)
+     if rc == 0: # no difference
+         return True
+@@ -3088,4 +3108,48 @@
+         logger.error("Failed to patch")
+         return False
+     return True
++
++
++def read_from_file(infile):
++    """
++    Read data from file in a save way, to avoid UnicodeDecodeError
++    """
++    data = None
++    with open(infile, 'rt', encoding='utf-8', errors='replace') as f:
++        data = f.read()
++    return to_ascii(data)
++
++
++def has_dup_value(_list):
++    return _list and len(_list) != len(set(_list))
++
++
++def detect_file(_file, remote=None):
++    """
++    Detect if file exists, support both local and remote
++    """
++    rc = False
++    if not remote:
++        rc = os.path.exists(_file)
++    else:
++        cmd = "ssh {} root@{} 'test -f {}'".format(SSH_OPTION, remote, _file)
++        code, _, _ = get_stdout_stderr(cmd)
++        rc = code == 0
++    return rc
++
++
++def check_function_with_timeout(check_function, wait_timeout=30, interval=1):
++    """
++    Run check_function in a loop
++    Return when check_function is true
++    Raise TimeoutError when timeout
++    """
++    current_time = int(time.time())
++    timeout = current_time + wait_timeout
++    while current_time <= timeout:
++        if check_function():
++            return
++        time.sleep(interval)
++        current_time = int(time.time())
++    raise TimeoutError
+ # vim:ts=4:sw=4:et:
