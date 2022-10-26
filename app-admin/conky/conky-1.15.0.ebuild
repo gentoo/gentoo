@@ -60,8 +60,8 @@ RDEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	doc? ( virtual/pandoc dev-python/pyyaml )
-	extras? ( virtual/pandoc )
+	doc? ( virtual/pandoc dev-python/pyyaml dev-python/jinja )
+	extras? ( dev-python/pyyaml dev-python/jinja )
 "
 
 REQUIRED_USE="
