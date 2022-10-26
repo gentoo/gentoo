@@ -1,0 +1,16 @@
+Option "VERSION=1.2" is not recognized by automake anymore.
+
+Bug:https://bugs.gentoo.org/722356
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,7 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ # Source: $Id: Makefile.am,v 1.2 2000/11/05 21:50:25 cph Exp $
+
+-AUTOMAKE_OPTIONS = "VERSION=1.2"
+ bin_PROGRAMS = tpconfig
+ tpconfig_SOURCES = tpconfig.c synaptics.c ALPS.c utils.c
+ MAINTAINERCLEANFILES =  Makefile.in configure aclocal.m4 \

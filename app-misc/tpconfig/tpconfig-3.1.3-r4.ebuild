@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit toolchain-funcs
+EAPI=8
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour"
 HOMEPAGE="http://www.compass.com/synaptics/"
@@ -12,8 +12,18 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-automake-unrecognized-option.patch
+	"${FILESDIR}"/${P}-fix-clang16-build.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_compile() {
-	emake CC="$(tc-getCC)"
+	emake
 }
 
 src_install() {
