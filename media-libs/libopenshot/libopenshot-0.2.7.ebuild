@@ -20,6 +20,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/jsoncpp:0=
+	dev-libs/protobuf:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5[widgets]
