@@ -1,0 +1,116 @@
+From d734f2872745dd1ab5aab9dafb144130d7e9fdcc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Novomesk=C3=BD?= <dnovomesky@gmail.com>
+Date: Tue, 18 Oct 2022 15:20:16 +0200
+Subject: [PATCH] jxl: indicate when all frames have been read
+
+and return correct loop count
+---
+ src/imageformats/jxl.cpp | 23 ++++++++++++++++++++---
+ src/imageformats/jxl_p.h |  1 +
+ 2 files changed, 21 insertions(+), 3 deletions(-)
+
+diff --git a/src/imageformats/jxl.cpp b/src/imageformats/jxl.cpp
+index da2cd2e..2501086 100644
+--- a/src/imageformats/jxl.cpp
++++ b/src/imageformats/jxl.cpp
+@@ -48,6 +48,11 @@ bool QJpegXLHandler::canRead() const
+ 
+     if (m_parseState != ParseJpegXLError) {
+         setFormat("jxl");
++
++        if (m_parseState == ParseJpegXLFinished) {
++            return false;
++        }
++
+         return true;
+     }
+     return false;
+@@ -72,7 +77,7 @@ bool QJpegXLHandler::canRead(QIODevice *device)
+ 
+ bool QJpegXLHandler::ensureParsed() const
+ {
+-    if (m_parseState == ParseJpegXLSuccess || m_parseState == ParseJpegXLBasicInfoParsed) {
++    if (m_parseState == ParseJpegXLSuccess || m_parseState == ParseJpegXLBasicInfoParsed || m_parseState == ParseJpegXLFinished) {
+         return true;
+     }
+     if (m_parseState == ParseJpegXLError) {
+@@ -90,7 +95,7 @@ bool QJpegXLHandler::ensureALLCounted() const
+         return false;
+     }
+ 
+-    if (m_parseState == ParseJpegXLSuccess) {
++    if (m_parseState == ParseJpegXLSuccess || m_parseState == ParseJpegXLFinished) {
+         return true;
+     }
+ 
+@@ -401,7 +406,15 @@ bool QJpegXLHandler::decode_one_frame()
+             if (!rewind()) {
+                 return false;
+             }
++
++            // all frames in animation have been read
++            m_parseState = ParseJpegXLFinished;
++        } else {
++            m_parseState = ParseJpegXLSuccess;
+         }
++    } else {
++        // the static image has been read
++        m_parseState = ParseJpegXLFinished;
+     }
+ 
+     return true;
+@@ -860,6 +873,7 @@ bool QJpegXLHandler::jumpToNextImage()
+         }
+     }
+ 
++    m_parseState = ParseJpegXLSuccess;
+     return true;
+ }
+ 
+@@ -874,12 +888,14 @@ bool QJpegXLHandler::jumpToImage(int imageNumber)
+     }
+ 
+     if (imageNumber == m_currentimage_index) {
++        m_parseState = ParseJpegXLSuccess;
+         return true;
+     }
+ 
+     if (imageNumber > m_currentimage_index) {
+         JxlDecoderSkipFrames(m_decoder, imageNumber - m_currentimage_index);
+         m_currentimage_index = imageNumber;
++        m_parseState = ParseJpegXLSuccess;
+         return true;
+     }
+ 
+@@ -891,6 +907,7 @@ bool QJpegXLHandler::jumpToImage(int imageNumber)
+         JxlDecoderSkipFrames(m_decoder, imageNumber);
+     }
+     m_currentimage_index = imageNumber;
++    m_parseState = ParseJpegXLSuccess;
+     return true;
+ }
+ 
+@@ -914,7 +931,7 @@ int QJpegXLHandler::loopCount() const
+     }
+ 
+     if (m_basicinfo.have_animation) {
+-        return 1;
++        return (m_basicinfo.animation.num_loops > 0) ? m_basicinfo.animation.num_loops - 1 : -1;
+     } else {
+         return 0;
+     }
+diff --git a/src/imageformats/jxl_p.h b/src/imageformats/jxl_p.h
+index 8339d7e..7a4af0b 100644
+--- a/src/imageformats/jxl_p.h
++++ b/src/imageformats/jxl_p.h
+@@ -57,6 +57,7 @@ private:
+         ParseJpegXLNotParsed = 0,
+         ParseJpegXLSuccess = 1,
+         ParseJpegXLBasicInfoParsed = 2,
++        ParseJpegXLFinished = 3,
+     };
+ 
+     ParseJpegXLState m_parseState;
+-- 
+GitLab
+
