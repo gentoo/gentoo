@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2022-10-26)
+# Dead upstream, open bugs.
+# Removal after 2022-12-24.  Bug #878337.
+app-misc/tpconfig
+
 # Sam James <sam@gentoo.org> (2022-10-25)
 # Fails to build with Clang 16 but also modern linux-headers. No activity upstream.
 # Removal on 2022-10-25. bug #874420.
