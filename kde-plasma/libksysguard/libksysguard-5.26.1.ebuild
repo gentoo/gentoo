@@ -14,7 +14,7 @@ DESCRIPTION="Task management and system monitoring library"
 
 LICENSE="LGPL-2+"
 SLOT="5/9"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE="webengine X"
 
 COMMON_DEPEND="
