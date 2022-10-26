@@ -15,7 +15,7 @@ DESCRIPTION="KDE Plasma workspace"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE="appstream +calendar +fontconfig geolocation gps +policykit
 screencast +semantic-desktop telemetry +wallpaper-metadata"
 
