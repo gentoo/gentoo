@@ -12,6 +12,6 @@ HOMEPAGE="https://invent.kde.org/plasma/oxygen-sounds"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 RDEPEND="!<kde-plasma/oxygen-5.24.80"
