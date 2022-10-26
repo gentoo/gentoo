@@ -13,7 +13,7 @@ HOMEPAGE="https://invent.kde.org/plasma/plymouth-kcm"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE=""
 
 DEPEND="
