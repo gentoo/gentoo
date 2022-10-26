@@ -7,7 +7,7 @@ MULTILIB_COMPAT=( abi_x86_{32,64} )
 inherit autotools flag-o-matic multilib multilib-build toolchain-funcs wrapper
 
 WINE_GECKO=2.47.3
-WINE_MONO=7.3.0
+WINE_MONO=7.4.0
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
