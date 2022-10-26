@@ -69,6 +69,7 @@ PATCHES=(
 	"${FILESDIR}/deadbeef-use-ffmpeg-plugin-for-ape-by-default.patch"
 	"${FILESDIR}/deadbeef-1.9.2-drop-Werror.patch"
 	"${FILESDIR}/deadbeef-1.9.1-ffmpeg-5.0-fixes.patch"
+	"${FILESDIR}/deadbeef-1.9.2-cdda-plugin-clang-16-fixes.patch"
 )
 
 src_prepare() {
