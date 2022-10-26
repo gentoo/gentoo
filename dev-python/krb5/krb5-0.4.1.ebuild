@@ -26,7 +26,6 @@ BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
 		dev-python/k5test[${PYTHON_USEDEP}]
-		sys-apps/which
 	)
 "
 
