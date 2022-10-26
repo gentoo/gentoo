@@ -55,20 +55,16 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.03.06-example.conf.in.patch
 
 	# For upstream -- review and forward:
-	#"${FILESDIR}"/${PN}-2.02.63-always-make-static-libdm.patch # FIXME: breaks libdm/dm-tools build
 	"${FILESDIR}"/${PN}-2.02.56-lvm2create_initrd.patch
 	"${FILESDIR}"/${PN}-2.02.67-createinitrd.patch #301331
 	"${FILESDIR}"/${PN}-2.02.99-locale-muck.patch #330373
-	#"${FILESDIR}"/${PN}-2.02.178-asneeded.patch # -Wl,--as-needed
 	"${FILESDIR}"/${PN}-2.03.12-dynamic-static-ldflags.patch #332905
 	"${FILESDIR}"/${PN}-2.03.14-static-pkgconfig-libs.patch #370217, #439414 + blkid
 	"${FILESDIR}"/${PN}-2.03.12-static-pkgconfig-libs-2.patch
 	"${FILESDIR}"/${PN}-2.03.05-pthread-pkgconfig.patch #492450
 	"${FILESDIR}"/${PN}-2.03.12-static-libm.patch #617756
 	"${FILESDIR}"/${PN}-2.02.166-HPPA-no-O_DIRECT.patch #657446
-	#"${FILESDIR}"/${PN}-2.02.145-mkdev.patch #580062 # Merged upstream
 	"${FILESDIR}"/${PN}-2.03.05-dmeventd-no-idle-exit.patch
-	#"${FILESDIR}"/${PN}-2.02.184-allow-reading-metadata-with-invalid-creation_time.patch #682380 # merged upstream
 	"${FILESDIR}"/${PN}-2.02.184-mksh_build.patch #686652
 	"${FILESDIR}"/${PN}-2.03.14-r1-add-fcntl.patch
 	"${FILESDIR}"/${PN}-2.03.14-r1-fopen-to-freopen.patch
