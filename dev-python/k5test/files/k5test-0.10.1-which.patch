@@ -1,0 +1,41 @@
+From cff2138124cb7461fe2b1a270d0c0132e6f66f6b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 26 Oct 2022 05:31:22 +0200
+Subject: [PATCH] Use built-in shutil.which() instead of which(1) tool
+
+Use the built-in shutil.which() function that is available since Python
+3.3 instead of the external which(1) program.  The latter is not part
+of POSIX and may be missing entirely (Gentoo is activately working
+towards removing it)>
+---
+ k5test/realm.py | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/k5test/realm.py b/k5test/realm.py
+index 8b24141..2260258 100644
+--- a/k5test/realm.py
++++ b/k5test/realm.py
+@@ -68,16 +68,13 @@ def _cfg_merge(cfg1, cfg2):
+ 
+ 
+ def _discover_path(name, default, paths):
+-    stderr_out = subprocess.DEVNULL
+-    try:
+-        path = subprocess.check_output(["which", name], stderr=stderr_out).strip()
+-        path = path.decode(sys.getfilesystemencoding() or sys.getdefaultencoding())
++    path = shutil.which(name)
++    if path is not None:
+         _LOG.debug(f"Using discovered path for {name} ({path})")
+-        return path
+-    except subprocess.CalledProcessError as e:
++    else:
+         path = paths.get(name, default)
+         _LOG.debug(f"Using default path for {name} ({path}): {e}")
+-        return path
++    return path
+ 
+ 
+ class K5Realm(metaclass=abc.ABCMeta):
+-- 
+2.38.1
+

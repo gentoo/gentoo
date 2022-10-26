@@ -19,6 +19,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
-RDEPEND="
-	sys-apps/which
-"
+PATCHES=(
+	"${FILESDIR}"/${P}-which.patch
+)
