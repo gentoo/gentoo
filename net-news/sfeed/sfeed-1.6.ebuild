@@ -1,11 +1,11 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs savedconfig optfeature
 
-DESCRIPTION="simple RSS and Atom parser"
+DESCRIPTION="Simple RSS and Atom parser"
 HOMEPAGE="https://codemadness.org/sfeed-simple-feed-parser.html"
 SRC_URI="https://codemadness.org/releases/${PN}/${P}.tar.gz"
 
