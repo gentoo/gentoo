@@ -201,6 +201,8 @@ src_compile() {
 
 	if use device-mapper-only ; then
 		emake V=1 device-mapper
+		# https://bugs.gentoo.org/878131
+		emake -C libdm/dm-tools V=1 device-mapper
 	else
 		emake V=1
 		emake V=1 CC="$(tc-getCC)" -C scripts #lvm2_activation_generator_systemd_red_hat
