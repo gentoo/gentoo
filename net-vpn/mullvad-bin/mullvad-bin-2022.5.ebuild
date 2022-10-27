@@ -22,18 +22,15 @@ src_unpack() {
     rpm_src_unpack ${A}
 }
 
-pkg_preinst() {
-    doinitd ${FILESDIR}/mullvadd
-    doinitd ${FILESDIR}/mullvadd-early-boot-blocking   
-}
-
 src_install() {
-    cp -r ${S}/* ${D} || die "Install failed!"
+    doinitd "${FILESDIR}/mullvadd"
+    doinitd "${FILESDIR}/mullvadd-early-boot-blocking"
+    cp -r "${S}"/* "${D}" || die "Install failed!"
 }
 
 pkg_postinst() {
     INIT_SYS="$(ps -p 1 -o comm=)"
-	
+
     case $INIT_SYS in
         init)
             rc-service mullvadd start

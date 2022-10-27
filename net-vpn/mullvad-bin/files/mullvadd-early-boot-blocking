@@ -2,6 +2,7 @@
 
 description="Mullvad early boot network blocker"
 depend() {
+    need net
 }
 
 supervisor="supervise-daemon"
