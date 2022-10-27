@@ -8,6 +8,7 @@ inherit flag-o-matic libtool multilib-minimal toolchain-funcs
 DESCRIPTION="The Fast Lexical Analyzer"
 HOMEPAGE="https://github.com/westes/flex"
 SRC_URI="https://github.com/westes/${PN}/releases/download/v${PV}/${P}.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-implicit-func-decl.patch.xz"
 
 LICENSE="FLEX"
 SLOT="0"
@@ -24,7 +25,7 @@ BDEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.4-libobjdir.patch
 	"${FILESDIR}"/${PN}-2.6.4-fix-build-with-glibc2.6+.patch
-	"${FILESDIR}"/${P}-implicit-func-decl.patch
+	"${WORKDIR}"/${P}-implicit-func-decl.patch
 )
 
 src_prepare() {
