@@ -1,0 +1,32 @@
+From c052f26112c17068ece2f52058e3130dd328269b Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Thu, 27 Oct 2022 09:48:15 +0200
+Subject: [PATCH] allow configuration of install dirs
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/cmake/pcl_utils.cmake
++++ b/cmake/pcl_utils.cmake
+@@ -101,14 +101,18 @@ macro(SET_INSTALL_DIRS)
+       set(INCLUDE_INSTALL_ROOT "include") # Android, don't put into subdir
+     endif()
+     set(INCLUDE_INSTALL_DIR "${INCLUDE_INSTALL_ROOT}/pcl")
+-    set(DOC_INSTALL_DIR "share/doc/${PROJECT_NAME_LOWER}-${PCL_VERSION_MAJOR}.${PCL_VERSION_MINOR}")
++    if(NOT DEFINED DOC_INSTALL_DIR)
++      set(DOC_INSTALL_DIR "share/doc/${PROJECT_NAME_LOWER}-${PCL_VERSION_MAJOR}.${PCL_VERSION_MINOR}")
++    endif()
+     set(BIN_INSTALL_DIR "bin")
+     set(PKGCFG_INSTALL_DIR "${LIB_INSTALL_DIR}/pkgconfig")
+-    if(WIN32 AND NOT MINGW)
++    if(NOT DEFINED PCLCONFIG_INSTALL_DIR)
++      if(WIN32 AND NOT MINGW)
+         set(PCLCONFIG_INSTALL_DIR "cmake")
+       else()
+         set(PCLCONFIG_INSTALL_DIR "share/${PROJECT_NAME_LOWER}-${PCL_VERSION_MAJOR}.${PCL_VERSION_MINOR}")
+       endif()
++    endif()
+ endmacro()
+ 
+ 
+-- 
+2.38.1
+
