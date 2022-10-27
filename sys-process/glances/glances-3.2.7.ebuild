@@ -64,7 +64,7 @@ python_install_all() {
 
 pkg_postinst() {
 	#optfeature "Action script feature" dev-python/pystache
-	optfeature "Autodiscover mode" dev-python/zeroconf
+	optfeature "Autodiscover mode" dev-python/python-zeroconf
 	optfeature "Cloud support" dev-python/requests
 	optfeature "Docker monitoring support" dev-python/docker-py
 	#optfeature "Export module" \
