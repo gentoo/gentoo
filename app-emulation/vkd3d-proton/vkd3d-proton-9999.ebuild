@@ -17,15 +17,17 @@ if [[ ${PV} == 9999 ]]; then
 		subprojects/dxil-spirv/third_party/spirv-headers # skip cross/tools
 	)
 else
-	VKD3D_HASH=3e5aab6fb3e18f81a71b339be4cb5cdf55140980 # match tag on bumps
-	DXIL_HASH=b537bbb91bccdbc695cb7e5211d608f8d1c205bd
-	SPIRV_HASH=ae217c17809fadb232ec94b29304b4afcd417bb4
-	VULKAN_HASH=83e1a9ed8ce289cebb1c02c8167d663dc1befb24
+	HASH_VKD3D=4df366172e025c23621c8df5a794de90de165d97 # match tag on bumps
+	HASH_DXIL=2166bc7ea0ceb2d7ff6d787d9b007f7eb7d4aaa8
+	HASH_SPIRV=ae217c17809fadb232ec94b29304b4afcd417bb4
+	HASH_SPIRV_DXIL=87d5b782bec60822aa878941e6b13c0a9a954c9b
+	HASH_VULKAN=5177b119bbdf463b7b909855a83230253c2d8b68
 	SRC_URI="
 		https://github.com/HansKristian-Work/vkd3d-proton/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/HansKristian-Work/dxil-spirv/archive/${DXIL_HASH}.tar.gz -> ${P}-dxil-spirv.tar.gz
-		https://github.com/KhronosGroup/SPIRV-Headers/archive/${SPIRV_HASH}.tar.gz -> ${P}-vulkan-headers.tar.gz
-		https://github.com/KhronosGroup/Vulkan-Headers/archive/${VULKAN_HASH}.tar.gz -> ${P}-spirv-headers.tar.gz"
+		https://github.com/HansKristian-Work/dxil-spirv/archive/${HASH_DXIL}.tar.gz -> ${PN}-dxil-spirv-${HASH_DXIL::10}.tar.gz
+		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV}.tar.gz -> ${PN}-spirv-headers-${HASH_SPIRV::10}.tar.gz
+		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV_DXIL}.tar.gz -> ${PN}-spirv-headers-${HASH_SPIRV_DXIL::10}.tar.gz
+		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz -> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 
@@ -51,11 +53,11 @@ pkg_pretend() {
 				eerror "For instructions, please see: https://wiki.gentoo.org/wiki/Mingw"
 				use abi_x86_32 && use abi_x86_64 &&
 					eerror "Also, with USE=abi_x86_32, will need both i686 and x86_64 toolchains."
-				die "USE=crossdev-mingw is set but ${tool} was not found"
+				die "USE=crossdev-mingw is enabled, but ${tool} was not found"
 			elif [[ ! $(LC_ALL=C ${tool} -v 2>&1) =~ "Thread model: posix" ]]; then
 				eerror "${PN} requires GCC to be built with --enable-threads=posix"
 				eerror "Please see: https://wiki.gentoo.org/wiki/Mingw#POSIX_threads_for_Windows"
-				die "USE=crossdev-mingw is set but ${tool} does not use POSIX threads"
+				die "USE=crossdev-mingw is enabled, but ${tool} does not use POSIX threads"
 			fi
 		done
 		tool=-w64-mingw32-widl
@@ -72,11 +74,16 @@ pkg_pretend() {
 src_prepare() {
 	if [[ ${PV} != 9999 ]]; then
 		rmdir subprojects/{{SPIRV,Vulkan}-Headers,dxil-spirv} || die
-		mv ../dxil-spirv-${DXIL_HASH} subprojects/dxil-spirv || die
-		mv ../SPIRV-Headers-${SPIRV_HASH} subprojects/SPIRV-Headers || die
-		mv ../Vulkan-Headers-${VULKAN_HASH} subprojects/Vulkan-Headers || die
-		ln -s ../../../SPIRV-Headers/include \
+		mv ../dxil-spirv-${HASH_DXIL} subprojects/dxil-spirv || die
+		mv ../SPIRV-Headers-${HASH_SPIRV} subprojects/SPIRV-Headers || die
+		mv ../Vulkan-Headers-${HASH_VULKAN} subprojects/Vulkan-Headers || die
+
+		# dxil and vkd3d's spirv headers currently mismatch and incompatible
+		rmdir subprojects/dxil-spirv/third_party/spirv-headers || die
+		mv ../SPIRV-Headers-${HASH_SPIRV_DXIL} \
 			subprojects/dxil-spirv/third_party/spirv-headers || die
+#		ln -s ../../../SPIRV-Headers/include \
+#			subprojects/dxil-spirv/third_party/spirv-headers || die
 	fi
 
 	default
@@ -85,8 +92,8 @@ src_prepare() {
 
 	if [[ ${PV} != 9999 ]]; then
 		# without .git, meson sets vkd3d_build as 0x${PV} leading to failure
-		sed -i "s/@VCS_TAG@/${VKD3D_HASH::15}/" vkd3d_build.h.in || die
-		sed -i "s/@VCS_TAG@/${VKD3D_HASH::7}/" vkd3d_version.h.in || die
+		sed -i "s/@VCS_TAG@/${HASH_VKD3D::15}/" vkd3d_build.h.in || die
+		sed -i "s/@VCS_TAG@/${HASH_VKD3D::7}/" vkd3d_version.h.in || die
 	fi
 }
 
@@ -160,7 +167,7 @@ pkg_postinst() {
 	# don't try to keep wine-*[vulkan] in RDEPEND, but still give a warning
 	local wine
 	for wine in app-emulation/wine-{vanilla,staging}; do
-		has_version ${wine} && ! has_version ${wine}[vulkan] &&
+		has_version ${wine} && ! has_version "${wine}[vulkan]" &&
 			ewarn "${wine} was not built with USE=vulkan, ${PN} will not be usable with it"
 	done
 }
