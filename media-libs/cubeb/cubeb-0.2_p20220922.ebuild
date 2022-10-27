@@ -72,6 +72,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_RUST_LIBS=$(usex rust)
 		-DBUILD_TESTS=$(usex test)
+		-DBUILD_TOOLS=no # semi-broken without most backends and not needed
 		-DCHECK_ALSA=$(usex alsa)
 		-DCHECK_JACK=$(usex jack)
 		-DCHECK_PULSE=$(usex pulseaudio)
@@ -108,8 +109,4 @@ src_install() {
 	cmake_src_install
 
 	use doc && dodoc -r "${BUILD_DIR}"/docs/html
-
-	# the basic test tool users could use to check if audio works is rather
-	# limited and has a tendency to segfault if some backends are disabled
-	rm "${ED}"/usr/bin/cubeb-test || die
 }
