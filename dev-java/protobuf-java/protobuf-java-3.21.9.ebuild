@@ -4,7 +4,7 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="com.google.protobuf:protobuf-java:3.21.8"
+MAVEN_ID="com.google.protobuf:protobuf-java:3.21.9"
 # Tests not enabled, depend on com.google.truth which is not packaged
 # https://github.com/protocolbuffers/protobuf/blob/v3.21.6/java/core/pom.xml#L35-L39"
 # JAVA_TESTING_FRAMEWORKS="junit-4"
