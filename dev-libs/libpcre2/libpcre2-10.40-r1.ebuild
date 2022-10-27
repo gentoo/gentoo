@@ -4,7 +4,7 @@
 EAPI=7
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/philiphazel.asc
-inherit libtool multilib-minimal usr-ldscript verify-sig
+inherit flag-o-matic libtool multilib-minimal usr-ldscript verify-sig
 
 PATCH_SET="${PN}-10.36-patchset-01.tar.xz"
 MY_P="pcre2-${PV/_rc/-RC}"
@@ -66,6 +66,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	append-lfs-flags
+
 	local myeconfargs=(
 		--enable-pcre2-8
 		--enable-shared
