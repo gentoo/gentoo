@@ -37,13 +37,11 @@ pkg_postinst() {
             rc-update add mullvadd default
             echo "added mullvadd to runlevel default"
             ;;
-
         systemd)
             systemctl start mullvad-daemon
             systemctl enable mullvad-daemon
             echo "added mullvad-daemon to runlevel default"
             ;;
-        
         *)
             "Couldn't find a supported init system"
             ;;
