@@ -3,9 +3,6 @@
 <pkgmetadata>
   <maintainer type="project" proxied="proxy">
     <email>jek1@hexity.org</email>
-    <name>jek1</name>
+    <name>Dikshant Chandel</name>
   </maintainer>
-  <longdescription>
-    Official Mullvad VPN CLI for Linux with added support for OpenRC init system.
-  </longdescription>
 </pkgmetadata>
