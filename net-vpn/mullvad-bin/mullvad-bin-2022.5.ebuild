@@ -5,7 +5,7 @@ EAPI=8
 inherit rpm xdg-utils
 
 MY_PN="mullvad-bin"  
-DESCRIPTION="Mullvad is a VPN service that helps keep your online activity, identity, and location private."
+DESCRIPTION="Official Mullvad VPN CLI for Linux"
 HOMEPAGE="https://mullvad.net"
 SRC_URI="https://github.com/mullvad/mullvadvpn-app/releases/download/${PV}/MullvadVPN-${PV}_x86_64.rpm"
 LICENSE="GPL-3"
@@ -19,7 +19,7 @@ S="${WORKDIR}"
 RESTRICT="strip"
 
 src_unpack() {
-    rpm_src_unpack ${A}
+    rpm_src_unpack "${A}"
 }
 
 src_install() {

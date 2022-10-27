@@ -5,4 +5,7 @@
     <email>jek1@hexity.org</email>
     <name>jek1</name>
   </maintainer>
+  <longdescription>
+    Official Mullvad VPN CLI for Linux with added support for OpenRC init system.
+  </longdescription>
 </pkgmetadata>
