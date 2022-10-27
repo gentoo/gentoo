@@ -34,6 +34,7 @@ BDEPEND="
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/ipykernel[${PYTHON_USEDEP}]
 		dev-python/ipywidgets[${PYTHON_USEDEP}]
+		dev-python/nbconvert[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
 		dev-python/xmltodict[${PYTHON_USEDEP}]
 	)
