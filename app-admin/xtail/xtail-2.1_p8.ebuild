@@ -17,7 +17,7 @@ S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ppc sparc x86"
 
 BDEPEND="app-arch/unzip"
 
