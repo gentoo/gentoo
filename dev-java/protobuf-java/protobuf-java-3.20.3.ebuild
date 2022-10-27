@@ -89,7 +89,7 @@ src_prepare() {
 	# Copy resources from ../src/google/protobuf according to
 	# https://github.com/protocolbuffers/protobuf/blob/v3.20.2/java/core/pom.xml#L45-L61
 	mkdir -p "${JAVA_RESOURCE_DIRS}/google/protobuf/compiler" || die
-	cp "../src/google/protobuf/${core_protos[@]}.proto" \
+	cp $(for proto in "${core_protos[@]}"; do echo "../src/google/protobuf/${proto}.proto"; done) \
 		"${JAVA_RESOURCE_DIRS}/google/protobuf" || die
 	cp {../src,"${JAVA_RESOURCE_DIRS}"}/google/protobuf/compiler/plugin.proto || die
 
