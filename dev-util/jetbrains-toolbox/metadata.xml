@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>jek1@hexity.org</email>
+    <name>jek1</name>
+  </maintainer>
+  <longdescription lang="en">
+    An app to manage JetBrains IDEs with ease.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">notjek1/stillawake-overlay</remote-id>
+    <bugs-to>https://github.com/notjek1/stillawake-overlay/issues</bugs-to>
+  </upstream>
+</pkgmetadata>
