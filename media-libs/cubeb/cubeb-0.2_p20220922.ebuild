@@ -33,7 +33,7 @@ S="${WORKDIR}/${PN}-${HASH_CUBEB}"
 
 LICENSE="ISC pulseaudio? ( rust? ( || ( Apache-2.0 MIT ) ) )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="alsa doc jack pulseaudio +rust sndio test"
 RESTRICT="!test? ( test )"
 
