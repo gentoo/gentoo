@@ -24,7 +24,7 @@ HOMEPAGE="https://transmissionbt.com/"
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
-IUSE="appindicator cli gtk lightweight nls mbedtls qt5 systemd test web"
+IUSE="appindicator cli gtk lightweight nls mbedtls qt5 systemd test"
 RESTRICT="!test? ( test )"
 
 ACCT_DEPEND="
@@ -82,7 +82,7 @@ src_configure() {
 		-DENABLE_GTK=$(usex gtk ON OFF)
 		-DENABLE_QT=$(usex qt5 ON OFF)
 		-DENABLE_MAC=OFF
-		-DENABLE_WEB=$(usex web ON OFF)
+		-DENABLE_WEB=OFF
 		-DENABLE_CLI=$(usex cli ON OFF)
 		-DENABLE_TESTS=$(usex test ON OFF)
 		-DENABLE_LIGHTWEIGHT=$(usex lightweight ON OFF)
