@@ -25,30 +25,31 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/attrs-19.2.0[${PYTHON_USEDEP}]
-	>=dev-python/automat-0.3.0[${PYTHON_USEDEP}]
-	>=dev-python/constantly-15.1.0[${PYTHON_USEDEP}]
+	>=dev-python/automat-0.8.0[${PYTHON_USEDEP}]
+	>=dev-python/constantly-15.1[${PYTHON_USEDEP}]
 	>=dev-python/hyperlink-17.1.1[${PYTHON_USEDEP}]
 	>=dev-python/incremental-21.3.0[${PYTHON_USEDEP}]
-	>=dev-python/pyhamcrest-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-3.6.5[${PYTHON_USEDEP}]
 	>=dev-python/zope-interface-4.4.2[${PYTHON_USEDEP}]
 	conch? (
 		>=dev-python/appdirs-1.4.0[${PYTHON_USEDEP}]
-		dev-python/bcrypt[${PYTHON_USEDEP}]
-		>=dev-python/cryptography-1.5.0[${PYTHON_USEDEP}]
+		>=dev-python/bcrypt-3.0.0[${PYTHON_USEDEP}]
+		>=dev-python/cryptography-2.6[${PYTHON_USEDEP}]
 		dev-python/pyasn1[${PYTHON_USEDEP}]
 	)
 	http2? (
-		>=dev-python/h2-3.0.0[${PYTHON_USEDEP}]
 		<dev-python/h2-5.0.0[${PYTHON_USEDEP}]
-		>=dev-python/priority-1.1.0[${PYTHON_USEDEP}]
+		>=dev-python/h2-3.0.0[${PYTHON_USEDEP}]
 		<dev-python/priority-2.0[${PYTHON_USEDEP}]
+		>=dev-python/priority-1.1.0[${PYTHON_USEDEP}]
 	)
-	serial? ( >=dev-python/pyserial-3.0[${PYTHON_USEDEP}] )
+	serial? (
+		>=dev-python/pyserial-3.0[${PYTHON_USEDEP}]
+	)
 	ssl? (
-		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
-		dev-python/service_identity[${PYTHON_USEDEP}]
-		>=dev-python/idna-0.6[${PYTHON_USEDEP}]
+		>=dev-python/pyopenssl-21.0.0[${PYTHON_USEDEP}]
+		>=dev-python/service_identity-18.1.0[${PYTHON_USEDEP}]
+		>=dev-python/idna-2.4[${PYTHON_USEDEP}]
 	)
 "
 BDEPEND="
@@ -57,18 +58,19 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			>=dev-python/appdirs-1.4.0[${PYTHON_USEDEP}]
 			>=dev-python/constantly-15.1.0[${PYTHON_USEDEP}]
-			dev-python/cython-test-exception-raiser[${PYTHON_USEDEP}]
-			dev-python/idna[${PYTHON_USEDEP}]
+			>=dev-python/cython-test-exception-raiser-1.0.2[${PYTHON_USEDEP}]
+			>=dev-python/idna-2.4[${PYTHON_USEDEP}]
 			dev-python/pyasn1[${PYTHON_USEDEP}]
-			dev-python/pyserial[${PYTHON_USEDEP}]
+			>=dev-python/pyhamcrest-1.9.0[${PYTHON_USEDEP}]
+			>=dev-python/pyserial-3.0[${PYTHON_USEDEP}]
 			net-misc/openssh
 			conch? (
-				dev-python/bcrypt[${PYTHON_USEDEP}]
-				>=dev-python/cryptography-1.5.0[${PYTHON_USEDEP}]
+				>=dev-python/bcrypt-3.0.0[${PYTHON_USEDEP}]
+				>=dev-python/cryptography-2.6[${PYTHON_USEDEP}]
 			)
 			ssl? (
-				>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
-				dev-python/service_identity[${PYTHON_USEDEP}]
+				>=dev-python/pyopenssl-21.0.0[${PYTHON_USEDEP}]
+				>=dev-python/service_identity-18.1.0[${PYTHON_USEDEP}]
 			)
 		' python3_{8..10} pypy3)
 		$(python_gen_cond_dep '
