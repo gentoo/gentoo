@@ -56,15 +56,6 @@ src_configure() {
 }
 
 multilib_src_configure() {
-	if tc-is-cross-compiler ; then
-		# Similar to workaround for procps:
-		# - bug #705800
-		# - https://sourceforge.net/p/psmisc/bugs/71/
-		# - https://lists.gnu.org/archive/html/autoconf/2011-04/msg00019.html
-		export ac_cv_func_malloc_0_nonnull=yes \
-			ac_cv_func_realloc_0_nonnull=yes
-	fi
-
 	# Do not install shared libs, #503522
 	ECONF_SOURCE="${S}" econf \
 		CC_FOR_BUILD="$(tc-getBUILD_CC)" \
