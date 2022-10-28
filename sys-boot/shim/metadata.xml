@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:redhat:shim</remote-id>
+		<remote-id type="github">rhboot/shim</remote-id>
 	</upstream>
 </pkgmetadata>
