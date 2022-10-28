@@ -16,5 +16,5 @@
 	<upstream>
 		<changelog>https://downloads.apache.org/commons/bcel/RELEASE-NOTES.txt</changelog>
 		<remote-id type="github">apache/commons-bcel</remote-id>
-		</upstream>
+	</upstream>
 </pkgmetadata>
