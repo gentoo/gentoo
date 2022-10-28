@@ -30,6 +30,7 @@
 		</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:python:python</remote-id>
 		<remote-id type="github">python/cpython</remote-id>
 	</upstream>
 </pkgmetadata>
