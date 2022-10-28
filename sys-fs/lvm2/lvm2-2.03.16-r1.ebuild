@@ -1,54 +1,57 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 TMPFILES_OPTIONAL=1
 inherit autotools linux-info systemd toolchain-funcs tmpfiles udev flag-o-matic
 
 DESCRIPTION="User-land utilities for LVM2 (device-mapper) software"
 HOMEPAGE="https://sourceware.org/lvm2/"
-SRC_URI="ftp://sourceware.org/pub/lvm2/${PN/lvm/LVM}.${PV}.tgz
-	ftp://sourceware.org/pub/lvm2/old/${PN/lvm/LVM}.${PV}.tgz"
+SRC_URI="https://sourceware.org/ftp/lvm2/${PN^^}.${PV}.tgz"
+S="${WORKDIR}/${PN^^}.${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="readline static static-libs systemd lvm2create-initrd sanlock selinux +udev +thin device-mapper-only"
-REQUIRED_USE="device-mapper-only? ( !lvm2create-initrd !sanlock !thin )
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+IUSE="+lvm lvm2create-initrd readline sanlock selinux static static-libs systemd +thin +udev"
+REQUIRED_USE="
 	static? ( !systemd !udev )
 	static-libs? ( static !udev )
 	systemd? ( udev )"
 
 DEPEND_COMMON="
-	dev-libs/libaio[static-libs?]
-	static? ( dev-libs/libaio[static-libs] )
-	!static? ( dev-libs/libaio[static-libs?] )
-	readline? ( sys-libs/readline:0= )
-	sanlock? ( sys-cluster/sanlock )
-	systemd? ( >=sys-apps/systemd-205:0= )
-	udev? ( >=virtual/libudev-208:= )"
+	udev? ( virtual/libudev:= )
+	lvm? (
+		dev-libs/libaio
+		sys-apps/util-linux
+		readline? ( sys-libs/readline:= )
+		sanlock? ( sys-cluster/sanlock )
+		systemd? ( sys-apps/systemd:= )
+	)"
 # /run is now required for locking during early boot. /var cannot be assumed to
 # be available -- thus, pull in recent enough baselayout for /run.
 # This version of LVM is incompatible with cryptsetup <1.1.2.
 RDEPEND="${DEPEND_COMMON}
 	>=sys-apps/baselayout-2.2
-	>=sys-apps/util-linux-2.16
-	lvm2create-initrd? ( sys-apps/makedev )
-	!device-mapper-only? ( virtual/tmpfiles )
-	thin? ( >=sys-block/thin-provisioning-tools-0.3.0 )"
+	lvm? (
+		virtual/tmpfiles
+		lvm2create-initrd? ( sys-apps/makedev )
+		thin? ( sys-block/thin-provisioning-tools )
+	)"
 # note: thin- 0.3.0 is required to avoid --disable-thin_check_needs_check
 DEPEND="${DEPEND_COMMON}
 	static? (
-		readline? ( sys-libs/readline[static-libs] )
+		lvm? (
+			dev-libs/libaio[static-libs]
+			sys-apps/util-linux[static-libs]
+			readline? ( sys-libs/readline[static-libs] )
+		)
 		selinux? ( sys-libs/libselinux[static-libs] )
-		>=sys-apps/util-linux-2.16[static-libs]
 	)"
 BDEPEND="
 	sys-devel/autoconf-archive
-	virtual/pkgconfig
-"
-
-S="${WORKDIR}/${PN/lvm/LVM}.${PV}"
+	virtual/pkgconfig"
 
 PATCHES=(
 	# Gentoo specific modification(s):
@@ -65,12 +68,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.03.12-static-libm.patch #617756
 	"${FILESDIR}"/${PN}-2.02.166-HPPA-no-O_DIRECT.patch #657446
 	"${FILESDIR}"/${PN}-2.03.05-dmeventd-no-idle-exit.patch
-	"${FILESDIR}"/${PN}-2.02.184-mksh_build.patch #686652
 	"${FILESDIR}"/${PN}-2.03.14-r1-add-fcntl.patch
 	"${FILESDIR}"/${PN}-2.03.14-r1-fopen-to-freopen.patch
 	"${FILESDIR}"/${PN}-2.03.14-r1-mallinfo.patch
 	"${FILESDIR}"/${PN}-2.03.14-freopen_n2.patch
+	"${FILESDIR}"/${PN}-2.03.16-readelf.patch
 )
+
+QA_CONFIGURE_OPTIONS="--disable-static"
 
 pkg_setup() {
 	local CONFIG_CHECK="~SYSVIPC"
@@ -101,7 +106,7 @@ src_prepare() {
 
 	# Users without systemd get no auto-activation of any logical volume
 	if ! use systemd ; then
-		eapply "${FILESDIR}"/${PN}-2.03.14-dm_lvm_rules_no_systemd.patch
+		eapply "${FILESDIR}"/${PN}-2.03.16-dm_lvm_rules_no_systemd.patch
 	fi
 
 	sed -i \
@@ -114,7 +119,7 @@ src_prepare() {
 	sed -i -e "s:/usr/bin/true:$(type -P true):" scripts/blk_availability_systemd_red_hat.service.in || die #517514
 
 	# Don't install thin man page when not requested
-	if ! use thin ; then
+	if ! use lvm || ! use thin ; then
 		sed -i -e 's/^\(MAN7+=.*\) $(LVMTHINMAN) \(.*\)$/\1 \2/' man/Makefile.in || die
 	fi
 
@@ -133,26 +138,26 @@ src_configure() {
 	# The build options are tristate, and --without is NOT supported
 	# options: 'none', 'internal', 'shared'
 	myeconfargs+=(
-		$(use_enable !device-mapper-only dmfilemapd)
-		$(use_enable !device-mapper-only dmeventd)
-		$(use_enable !device-mapper-only cmdlib)
-		$(use_enable !device-mapper-only fsadm)
-		$(use_enable !device-mapper-only lvmpolld)
-		$(usex device-mapper-only --disable-udev-systemd-background-jobs '')
+		$(use_enable lvm dmfilemapd)
+		$(use_enable lvm dmeventd)
+		$(use_enable lvm cmdlib)
+		$(use_enable lvm fsadm)
+		$(use_enable lvm lvmpolld)
+		$(usev !lvm --disable-udev-systemd-background-jobs)
 
 		# This only causes the .static versions to become available
-		$(usex static --enable-static_link '')
+		$(usev static --enable-static_link)
 
 		# dmeventd requires mirrors to be internal, and snapshot available
 		# so we cannot disable them
-		--with-mirrors="$(usex device-mapper-only none internal)"
-		--with-snapshots="$(usex device-mapper-only none internal)"
+		--with-mirrors="$(usex lvm internal none)"
+		--with-snapshots="$(usex lvm internal none)"
 
 		# disable O_DIRECT support on hppa, breaks pv detection (#99532)
-		$(usex hppa --disable-o_direct '')
+		$(usev hppa --disable-o_direct)
 	)
 
-	if use thin; then
+	if use lvm && use thin; then
 		myeconfargs+=( --with-thin=internal --with-cache=internal )
 		local texec
 		for texec in check dump repair restore; do
@@ -163,6 +168,7 @@ src_configure() {
 		myeconfargs+=( --with-thin=none --with-cache=none )
 	fi
 
+	export READELF="$(tc-getREADELF)"
 	myeconfargs+=(
 		$(use_enable readline)
 		$(use_enable selinux)
@@ -180,30 +186,29 @@ src_configure() {
 		$(use_enable udev udev_rules)
 		$(use_enable udev udev_sync)
 		$(use_with udev udevdir "${EPREFIX}$(get_udevdir)"/rules.d)
-		$(use_enable sanlock lvmlockd-sanlock)
+		# USE=sanlock requires USE=lvm
+		$(use_enable $(usex lvm sanlock lvm) lvmlockd-sanlock)
 		$(use_enable systemd udev-systemd-background-jobs)
 		$(use_enable systemd notify-dbus)
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		CLDFLAGS="${LDFLAGS}"
+		READELF="${READELF}"
 	)
 	# Hard-wire this to bash as some shells (dash) don't know
 	# "-o pipefail" #682404
-	CONFIG_SHELL="/bin/bash" \
-	econf "${myeconfargs[@]}"
+	CONFIG_SHELL="${BROOT}/bin/bash" econf "${myeconfargs[@]}"
 }
 
 src_compile() {
-	pushd include >/dev/null
-	emake V=1
-	popd >/dev/null
+	emake V=1 -C include
 
-	if use device-mapper-only ; then
+	if use lvm ; then
+		emake V=1
+		emake V=1 CC="$(tc-getCC)" -C scripts
+	else
 		emake V=1 device-mapper
 		# https://bugs.gentoo.org/878131
-		emake -C libdm/dm-tools V=1 device-mapper
-	else
-		emake V=1
-		emake V=1 CC="$(tc-getCC)" -C scripts lvm2_activation_generator_systemd_red_hat
+		emake V=1 -C libdm/dm-tools device-mapper
 	fi
 }
 
@@ -213,17 +218,21 @@ src_test() {
 }
 
 src_install() {
-	local inst
-	local INSTALL_TARGETS=( install install_tmpfiles_configuration )
-	# install systemd related files only when requested, bug #522430
-	use systemd && INSTALL_TARGETS+=( SYSTEMD_GENERATOR_DIR="$(systemd_get_systemgeneratordir)" install_systemd_units install_systemd_generators )
-	use device-mapper-only && INSTALL_TARGETS=( install_device-mapper )
+	local INSTALL_TARGETS=(
+		# full LVM2
+		$(usev lvm "install install_tmpfiles_configuration")
+		# install systemd related files only when requested, bug #522430
+		$(usev $(usex lvm systemd lvm) "SYSTEMD_GENERATOR_DIR=$(systemd_get_systemgeneratordir) install_systemd_units install_systemd_generators")
+
+		# install dm unconditionally
+		install_device-mapper
+	)
 	emake V=1 DESTDIR="${D}" "${INSTALL_TARGETS[@]}"
 
 	newinitd "${FILESDIR}"/device-mapper.rc-2.02.105-r2 device-mapper
 	newconfd "${FILESDIR}"/device-mapper.conf-1.02.22-r3 device-mapper
 
-	if use !device-mapper-only ; then
+	if use lvm ; then
 		newinitd "${FILESDIR}"/dmeventd.initd-2.02.184-r2 dmeventd
 		newinitd "${FILESDIR}"/lvm.rc-2.02.187 lvm
 		newconfd "${FILESDIR}"/lvm.confd-2.02.184-r3 lvm
@@ -231,33 +240,33 @@ src_install() {
 			# We keep the variable but remove udev from it.
 			sed -r -i \
 				-e '/^rc_need=/s/\<udev\>//g' \
-				"${ED}/etc/conf.d/lvm" || die "Could not drop udev from rc_need"
+				"${ED}"/etc/conf.d/lvm || die "Could not drop udev from rc_need"
 		fi
 
 		newinitd "${FILESDIR}"/lvm-monitoring.initd-2.02.105-r2 lvm-monitoring
 		newinitd "${FILESDIR}"/lvmpolld.initd-2.02.183 lvmpolld
-	fi
 
-	if use sanlock; then
-		newinitd "${FILESDIR}"/lvmlockd.initd-2.02.166-r1 lvmlockd
+		if use lvm2create-initrd; then
+			dosbin scripts/lvm2create_initrd/lvm2create_initrd
+			doman scripts/lvm2create_initrd/lvm2create_initrd.8
+			newdoc scripts/lvm2create_initrd/README README.lvm2create_initrd
+		fi
+
+		if use sanlock; then
+			newinitd "${FILESDIR}"/lvmlockd.initd-2.02.166-r1 lvmlockd
+		fi
 	fi
 
 	if use static-libs; then
 		dolib.a libdm/ioctl/libdevmapper.a
-		if use !device-mapper-only; then
+		if use lvm; then
 			# depends on lvmetad
 			dolib.a libdaemon/client/libdaemonclient.a #462908
 			# depends on dmeventd
 			dolib.a daemons/dmeventd/libdevmapper-event.a
 		fi
 	else
-		rm -f "${ED}"/usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a
-	fi
-
-	if use lvm2create-initrd; then
-		dosbin scripts/lvm2create_initrd/lvm2create_initrd
-		doman scripts/lvm2create_initrd/lvm2create_initrd.8
-		newdoc scripts/lvm2create_initrd/README README.lvm2create_initrd
+		rm -f "${ED}"/usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a || die
 	fi
 
 	insinto /etc
@@ -267,9 +276,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! use device-mapper-only; then
-		tmpfiles_process lvm2.conf
-	fi
+	use lvm && tmpfiles_process lvm2.conf
 
 	if use udev; then
 		udev_reload

@@ -4,16 +4,15 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-LUA_COMPAT=( lua5-{3..4} )
+LUA_COMPAT=( lua5-3 )
 
-inherit check-reqs bash-completion-r1 cmake flag-o-matic lua-single \
-		python-r1 udev readme.gentoo-r1 toolchain-funcs systemd tmpfiles
+CMAKE_MAKEFILE_GENERATOR=emake
 
-SRC_URI="
-	https://download.ceph.com/tarballs/${P}.tar.gz
-	parquet? ( https://github.com/xtensor-stack/xsimd/archive/aeec9c872c8b475dedd7781336710f2dd2666cb2.tar.gz -> ceph-xsimd-${PV}.tar.gz )
-"
-KEYWORDS="~amd64 ~arm64"
+inherit check-reqs bash-completion-r1 cmake python-r1 flag-o-matic \
+		lua-single udev readme.gentoo-r1 toolchain-funcs systemd tmpfiles
+
+SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 DESCRIPTION="Ceph distributed filesystem"
 HOMEPAGE="https://ceph.com/"
@@ -25,9 +24,9 @@ CPU_FLAGS_X86=(avx2 avx512f pclmul sse{,2,3,4_1,4_2} ssse3)
 
 IUSE="
 	babeltrace +cephfs custom-cflags diskprediction dpdk fuse grafana
-	jemalloc jaeger kafka kerberos ldap lttng +mgr +parquet pmdk rabbitmq
+	jemalloc jaeger kafka kerberos ldap lttng +mgr numa pmdk rabbitmq
 	+radosgw rbd-rwl rbd-ssd rdma rgw-lua +ssl spdk +sqlite +system-boost
-	systemd +tcmalloc test +uring xfs zbd zfs
+	systemd +tcmalloc test uring xfs zbd zfs
 "
 
 IUSE+="$(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
@@ -49,19 +48,16 @@ DEPEND="
 	dev-cpp/gflags:=
 	<dev-libs/leveldb-1.23:=[snappy,tcmalloc(-)?]
 	dev-libs/libaio:=
-	>=dev-libs/libfmt-6.2.1:=
 	<dev-libs/libfmt-9:=
 	dev-libs/libnl:3=
 	dev-libs/libxml2:=
 	dev-libs/libevent:=
-	dev-libs/libutf8proc:=
 	dev-libs/openssl:=
 	<dev-libs/rocksdb-6.15:=
-	dev-libs/thrift:=
 	dev-libs/xmlsec:=[openssl]
 	dev-cpp/yaml-cpp:=
 	dev-libs/nss:=
-	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-libs/protobuf:=
 	net-dns/c-ares:=
 	net-libs/gnutls:=
 	sys-auth/oath-toolkit:=
@@ -69,6 +65,7 @@ DEPEND="
 	sys-apps/hwloc:=
 	sys-apps/keyutils:=
 	sys-apps/util-linux:=
+	sys-apps/util-linux
 	sys-libs/libcap-ng:=
 	sys-libs/ncurses:0=
 	sys-libs/zlib:=
@@ -79,15 +76,11 @@ DEPEND="
 	fuse? ( sys-fs/fuse:3= )
 	jemalloc? ( dev-libs/jemalloc:= )
 	!jemalloc? ( >=dev-util/google-perftools-2.6.1:= )
-	jaeger? (
-		dev-cpp/nlohmann_json:=
-		dev-cpp/opentelemetry-cpp:=[jaeger]
-	)
+	jaeger? ( dev-cpp/nlohmann_json:= )
 	kafka? ( dev-libs/librdkafka:= )
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap:= )
 	lttng? ( dev-util/lttng-ust:= )
-	parquet? ( dev-libs/re2:= )
 	pmdk? ( dev-libs/pmdk:= )
 	rabbitmq? ( net-libs/rabbitmq-c:= )
 	radosgw? (
@@ -99,7 +92,8 @@ DEPEND="
 	rdma? ( sys-cluster/rdma-core:= )
 	spdk? ( dev-util/cunit )
 	sqlite? ( dev-db/sqlite:= )
-	system-boost? ( dev-libs/boost:=[context,python,${PYTHON_USEDEP},zlib] )
+	system-boost? ( dev-libs/boost:=[context,python,${PYTHON_USEDEP,zlib}] )
+	!system-boost? ( $(python_gen_impl_dep '' 3.8 3.9) )
 	uring? ( sys-libs/liburing:= )
 	xfs? ( sys-fs/xfsprogs:= )
 	zbd? ( sys-block/libzbd:= )
@@ -147,7 +141,7 @@ RDEPEND="
 	sys-block/parted
 	sys-fs/cryptsetup
 	sys-fs/lsscsi
-	sys-fs/lvm2[-device-mapper-only(-)]
+	sys-fs/lvm2[lvm]
 	virtual/awk
 	dev-python/bcrypt[${PYTHON_USEDEP}]
 	dev-python/cherrypy[${PYTHON_USEDEP}]
@@ -157,6 +151,7 @@ RDEPEND="
 	dev-python/pecan[${PYTHON_USEDEP}]
 	dev-python/prettytable[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	mgr? (
@@ -178,11 +173,18 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	${LUA_REQUIRED_USE}
 	?? ( jemalloc tcmalloc )
+	jaeger? ( !system-boost )
 	diskprediction? ( mgr )
 	kafka? ( radosgw )
 	mgr? ( cephfs )
 	rabbitmq? ( radosgw )
-	rgw-lua? ( radosgw )
+	!system-boost? (
+		python_targets_python3_10
+		|| (
+			python_targets_python3_8
+			python_targets_python3_9
+		)
+	)
 "
 
 RESTRICT="
@@ -192,6 +194,9 @@ RESTRICT="
 # tests need root access, and network access
 RESTRICT+="test"
 
+# create a non-debug release
+CMAKE_BUILD_TYPE=RelWithDebInfo
+
 # false positives unless all USE flags are on
 CMAKE_WARN_UNUSED_CLI=no
 
@@ -200,26 +205,19 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.0-cflags.patch"
 	"${FILESDIR}/ceph-12.2.4-boost-build-none-options.patch"
 	"${FILESDIR}/ceph-16.2.2-cflags.patch"
-	"${FILESDIR}/ceph-17.2.1-no-virtualenvs.patch"
+	"${FILESDIR}/ceph-16.2.8-no-virtualenvs.patch"
 	"${FILESDIR}/ceph-13.2.2-dont-install-sysvinit-script.patch"
 	"${FILESDIR}/ceph-14.2.0-dpdk-cflags.patch"
+	"${FILESDIR}/ceph-14.2.0-cython-0.29.patch"
 	"${FILESDIR}/ceph-16.2.0-rocksdb-cmake.patch"
+	"${FILESDIR}/ceph-15.2.3-spdk-compile.patch"
 	"${FILESDIR}/ceph-16.2.0-spdk-tinfo.patch"
 	"${FILESDIR}/ceph-16.2.0-jaeger-system-boost.patch"
 	"${FILESDIR}/ceph-16.2.0-liburing.patch"
-	"${FILESDIR}/ceph-17.2.0-cyclic-deps.patch"
-	"${FILESDIR}/ceph-17.2.0-pybind-boost-1.74.patch"
-	"${FILESDIR}/ceph-17.2.0-findre2.patch"
-	"${FILESDIR}/ceph-17.2.0-install-dbstore.patch"
-	"${FILESDIR}/ceph-17.2.0-deprecated-boost.patch"
-	"${FILESDIR}/ceph-17.2.0-system-opentelemetry.patch"
+	"${FILESDIR}/ceph-16.2.2-system-zstd.patch"
+	"${FILESDIR}/ceph-16.2.7-string-includes.patch"
 	"${FILESDIR}/ceph-17.2.0-fuse3.patch"
-	"${FILESDIR}/ceph-17.2.0-osd_class_dir.patch"
-	"${FILESDIR}/ceph-17.2.1-python310.patch"
-	"${FILESDIR}/ceph-17.2.3-gcc12.patch"
-	"${FILESDIR}/ceph-17.2.0-gcc12-dout.patch"
-	"${FILESDIR}/ceph-17.2.0-gcc12-header.patch"
-	"${FILESDIR}/ceph-17.2.3-flags.patch"
+	"${FILESDIR}/ceph-16.2.9-python310.patch"
 )
 
 check-reqs_export_vars() {
@@ -240,7 +238,11 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	python_setup
+	if ! use system-boost; then
+		python_setup 3.8 3.9
+	else
+		python_setup
+	fi
 	lua_setup
 	check-reqs_export_vars
 	check-reqs_pkg_setup
@@ -268,7 +270,11 @@ src_prepare() {
 	sed -r -e "s:DESTINATION .+\\):DESTINATION $(get_bashcompdir)\\):" \
 		-i src/bash_completion/CMakeLists.txt || die
 
-	sed -e "s:objdump -p:$(tc-getOBJDUMP) -p:" -i CMakeLists.txt || die
+	sed  -e "s:objdump -p:$(tc-getOBJDUMP) -p:" -i CMakeLists.txt || die
+
+	if ! use diskprediction; then
+		rm -rf src/pybind/mgr/diskprediction_local || die
+	fi
 
 	# force lua version to use selected version
 	local lua_version
@@ -312,10 +318,9 @@ ceph_src_configure() {
 		-DWITH_ZFS:BOOL=$(usex zfs)
 		-DENABLE_SHARED:BOOL=ON
 		-DALLOCATOR:STRING=$(usex tcmalloc 'tcmalloc' "$(usex jemalloc 'jemalloc' 'libc')")
-		-DWITH_SYSTEM_PMDK:BOOL=$(usex pmdk 'YES' "$(usex rbd-rwl '')")
+		-DWITH_SYSTEM_PMDK:BOOL=$(usex pmdk 'YES' "$(usex rbd-rwl)")
 		-DWITH_SYSTEM_BOOST:BOOL=$(usex system-boost)
 		-DWITH_SYSTEM_ROCKSDB:BOOL=ON
-		-DWITH_SYSTEM_ZSTD:BOOL=ON
 		-DWITH_RDMA:BOOL=$(usex rdma)
 		-DCMAKE_INSTALL_DOCDIR:PATH="${EPREFIX}/usr/share/doc/${PN}-${PVR}"
 		-DCMAKE_INSTALL_SYSCONFDIR:PATH="${EPREFIX}/etc"
@@ -326,12 +331,10 @@ ceph_src_configure() {
 	if [[ ${EBUILD_PHASE} == configure ]]; then
 		mycmakeargs+=(
 			-DWITH_JAEGER:BOOL=$(usex jaeger)
-			-DWITH_RADOSGW_SELECT_PARQUET:BOOL=$(usex parquet)
 		)
 	else
 		mycmakeargs+=(
 			-DWITH_RADOSGW_SELECT_PARQUET:BOOL=OFF
-			-DWITH_JAEGER:BOOL=OFF
 			# don't want to warn about unused CLI when reconfiguring for python
 			-DCMAKE_WARN_UNUSED_CLI:BOOL=OFF
 		)
@@ -339,7 +342,7 @@ ceph_src_configure() {
 
 	# conditionally used cmake args
 	use test && mycmakearts+=( -DWITH_SYSTEM_GTEST:BOOL=$(usex test) )
-	use systemd && mycmakeargs+=( -DSYSTEMD_SYSTEM_UNIT_DIR:PATH=$(systemd_get_systemunitdir) )
+	use systemd && mycmakeargs+=( -DCMAKE_INSTALL_SYSTEMD_SERVICEDIR:PATH=$(systemd_get_systemunitdir) )
 
 	if use amd64 || use x86; then
 		local flag
@@ -364,9 +367,6 @@ ceph_src_configure() {
 	rm -f "${BUILD_DIR:-${S}}/CMakeCache.txt" \
 		|| die "failed to remove cmake cache"
 
-	# hopefully this will not be necessary in the next release
-	use parquet && export ARROW_XSIMD_URL="file:///${DISTDIR}/ceph-xsimd-${PV}.tar.gz"
-
 	cmake_src_configure
 
 	# bug #630232
@@ -381,7 +381,7 @@ src_configure() {
 }
 
 src_compile() {
-	cmake_build all
+	cmake_build VERBOSE=1 all
 
 	# we have to do this here to prevent from building everything multiple times
 	python_copy_sources
@@ -392,7 +392,14 @@ python_compile() {
 	local CMAKE_USE_DIR="${S}"
 	ceph_src_configure
 
-	cmake_build src/pybind/CMakeFiles/cython_modules
+	pushd "${BUILD_DIR}/src/pybind" >/dev/null || die
+	cmake_build VERBOSE=1 clean
+	cmake_build VERBOSE=1 all
+
+	# python modules are only compiled with "make install" so we need to do this to
+	# prevent doing a bunch of compilation in src_install
+	DESTDIR="${T}" cmake_build VERBOSE=1 install
+	popd >/dev/null || die
 }
 
 src_install() {
@@ -455,7 +462,9 @@ src_install() {
 
 python_install() {
 	local CMAKE_USE_DIR="${S}"
-	DESTDIR="${ED}" cmake_build src/pybind/install
+	pushd "${BUILD_DIR}/src/pybind" >/dev/null || die
+	DESTDIR="${ED}" cmake_build VERBOSE=1 install
+	popd >/dev/null || die
 
 	python_optimize
 }
