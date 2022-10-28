@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="cpe">cpe:/a:tcl:tcl</remote-id>
 		<remote-id type="sourceforge">tcl</remote-id>
+		<remote-id type="github">tcltk/tcl</remote-id>
 	</upstream>
 </pkgmetadata>
