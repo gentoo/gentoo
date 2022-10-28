@@ -82,6 +82,10 @@ REQUIRED_USE="
 
 MAKEOPTS+=" SAMPLES="
 
+PATCHES=(
+	"${FILESDIR}"/${P}-mips-build.patch
+)
+
 src_prepare() {
 	default
 
