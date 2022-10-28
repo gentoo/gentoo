@@ -22,10 +22,6 @@ sys-devel/gcc -ada
 # media-libs/qtav not keyworded yet
 media-gfx/kphotoalbum qtav
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-04-25)
-# Mask tests until test dependencies are keyworded.
-app-text/pdftk test
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
 # deps not keyworded
 dev-util/pkgcheck emacs
