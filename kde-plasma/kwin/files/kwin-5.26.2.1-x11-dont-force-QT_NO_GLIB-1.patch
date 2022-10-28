@@ -1,0 +1,34 @@
+From 4c5830ba149ec4462587a95f78624dfc981d281c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C5=81ukasz=20Patron?= <priv.luk@gmail.com>
+Date: Tue, 25 Oct 2022 15:49:27 +0200
+Subject: [PATCH] x11: Don't force QT_NO_GLIB=1
+
+This breaks certain apps, e.g. KDE System Settings when launched from
+overview effect.
+
+BUG: 460980
+
+
+(cherry picked from commit c2b4f03f9671c0ad9fc1929426df5f79db414aa7)
+---
+ src/main_x11.cpp | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/main_x11.cpp b/src/main_x11.cpp
+index 21cfab94b3..c175d8729e 100644
+--- a/src/main_x11.cpp
++++ b/src/main_x11.cpp
+@@ -337,10 +337,6 @@ int main(int argc, char *argv[])
+ 
+     signal(SIGPIPE, SIG_IGN);
+ 
+-    // Disable the glib event loop integration, since it seems to be responsible
+-    // for several bug reports about high CPU usage (bug #239963)
+-    setenv("QT_NO_GLIB", "1", true);
+-
+     // enforce xcb plugin, unfortunately command line switch has precedence
+     setenv("QT_QPA_PLATFORM", "xcb", true);
+ 
+-- 
+GitLab
+

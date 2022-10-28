@@ -1,0 +1,30 @@
+From 8633f9952507c3e99175a43b4d813cc1669f8db9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C5=81ukasz=20Patron?= <priv.luk@gmail.com>
+Date: Thu, 27 Oct 2022 00:42:24 +0200
+Subject: [PATCH] x11: Don't force QT_QPA_PLATFORM=xcb
+
+This is basically a cherry pick of 77ec43d5e (Don't force
+QT_QPA_PLATFORM=wayland), except for X11.
+
+
+(cherry picked from commit a9acef8573ca44ce9649a6ced42e19ef6d4ee3fd)
+---
+ src/main_x11.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/main_x11.cpp b/src/main_x11.cpp
+index 086ba79dba..21cfab94b3 100644
+--- a/src/main_x11.cpp
++++ b/src/main_x11.cpp
+@@ -361,6 +361,8 @@ int main(int argc, char *argv[])
+ 
+     KWin::ApplicationX11 a(argc, argv);
+     a.setupTranslator();
++    // reset QT_QPA_PLATFORM so we don't propagate it to our children (e.g. apps launched from the overview effect)
++    qunsetenv("QT_QPA_PLATFORM");
+ 
+     KSignalHandler::self()->watchSignal(SIGTERM);
+     KSignalHandler::self()->watchSignal(SIGINT);
+-- 
+GitLab
+

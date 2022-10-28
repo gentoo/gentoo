@@ -1,0 +1,35 @@
+From 2339f7bfb7872e05fbdbd931850a74a3441b3292 Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@gmail.com>
+Date: Wed, 26 Oct 2022 21:43:41 +0200
+Subject: [PATCH] x11window: revert more from 3a28c02f
+
+BUG: 461032
+
+
+(cherry picked from commit 2997fb24bb8171145ce1107df85eb3a3a4c0cf74)
+---
+ src/x11window.cpp | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/src/x11window.cpp b/src/x11window.cpp
+index c02d33b338..b7a180d317 100644
+--- a/src/x11window.cpp
++++ b/src/x11window.cpp
+@@ -4519,11 +4519,10 @@ void X11Window::changeMaximize(bool horizontal, bool vertical, bool adjust)
+                 }
+             }
+             r.moveTopLeft(rules()->checkPosition(r.topLeft()));
+-            // The above code tries to center align the window followed by setting top and bottom
+-            // it's possible that we're in between two pixels
+-            r.setX(Xcb::nativeFloor(r.x()));
+-            r.setY(Xcb::nativeFloor(r.y()));
+         }
++        // The above code tries to center align the window followed by setting top and bottom
++        // it's possible that we're in between two pixels
++        r = Xcb::nativeFloor(r);
+ 
+         moveResize(r);
+         if (options->electricBorderMaximize() && r.top() == clientArea.top()) {
+-- 
+GitLab
+
