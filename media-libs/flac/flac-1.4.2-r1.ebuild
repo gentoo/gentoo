@@ -25,8 +25,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/xz-utils
 	sys-devel/gettext
-	virtual/pkgconfig
-	abi_x86_32? ( dev-lang/nasm )"
+	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.2-macro-wstrict-prototypes.patch
