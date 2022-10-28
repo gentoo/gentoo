@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-10-28)
+# Please upgrade to >=media-libs/fontconfig-2.14.1-r1 for fixed
+# cache dir to avoid sandbox violation errors, bug #878471.
+=media-libs/fontconfig-2.14.1
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-10-28)
 # Unmaintained upstream, no reverse dependencies, fails tests
 # Removal in 30 days
