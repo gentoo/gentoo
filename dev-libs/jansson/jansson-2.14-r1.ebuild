@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="C library for encoding, decoding and manipulating JSON data"
 HOMEPAGE="https://www.digip.org/jansson/"
@@ -18,23 +18,23 @@ BDEPEND="doc? ( dev-python/sphinx )"
 
 PATCHES=( "${FILESDIR}/${P}-test-symbols.patch" )
 
-multilib_src_configure() {
+src_configure() {
 	tc-ld-force-bfd
 
-	ECONF_SOURCE="${S}" econf $(use_enable static-libs static)
+	econf $(use_enable static-libs static)
 }
 
-multilib_src_compile() {
+src_compile() {
 	default
 
-	if multilib_is_native_abi && use doc ; then
+	if use doc ; then
 		emake html
 		HTML_DOCS=( "${BUILD_DIR}"/doc/_build/html/. )
 	fi
 }
 
-multilib_src_install() {
+src_install() {
 	default
 
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
