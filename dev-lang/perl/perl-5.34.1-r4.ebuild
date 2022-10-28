@@ -600,8 +600,11 @@ src_configure() {
 
 	# modifying 'optimize' prevents cross configure script from appending required flags
 	if tc-is-cross-compiler; then
-		append-cflags "-fwrapv -fno-strict-aliasing"
+		append-cflags "-fwrapv"
 	fi
+
+	# bug #877659, bug #821577
+	append-cflags -fno-strict-aliasing
 
 	# Autodiscover all old version directories, some of them will even be newer
 	# if you downgrade
