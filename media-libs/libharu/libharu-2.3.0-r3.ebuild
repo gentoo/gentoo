@@ -4,7 +4,7 @@
 EAPI=7
 
 MYP=RELEASE_${PV//./_}
-inherit cmake-multilib
+inherit cmake
 
 DESCRIPTION="C/C++ library for PDF generation"
 HOMEPAGE="http://www.libharu.org/"
@@ -13,11 +13,10 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${MYP}.tar.gz -> ${P}.tar.gz"
 LICENSE="ZLIB"
 SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
 DEPEND="
-	media-libs/libpng:0=[${MULTILIB_USEDEP}]
-	sys-libs/zlib:=[${MULTILIB_USEDEP}]
+	media-libs/libpng:=
+	sys-libs/zlib:=
 "
 RDEPEND="${DEPEND}"
 
@@ -30,7 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-4-Add-support-for-free-form-triangle-Shading-objects.patch
 )
 
-multilib_src_configure() {
+src_configure() {
 	local mycmakeargs=(
 		-DLIBHPDF_EXAMPLES=NO # Doesn't work
 		-DLIBHPDF_STATIC=NO
