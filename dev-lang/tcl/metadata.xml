@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<maintainer type="project">
 		<email>tcltk@gentoo.org</email>
-		<name>TCL/TK Herd.</name>
+		<name>TCL/TK project</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:tcl:tcl</remote-id>
