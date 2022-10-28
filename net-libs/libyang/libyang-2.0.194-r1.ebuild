@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake
 
 DESCRIPTION="YANG data modeling language library"
 HOMEPAGE="https://github.com/CESNET/libyang"
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/libpcre2[${MULTILIB_USEDEP}]"
+RDEPEND="dev-libs/libpcre2"
 DEPEND="
 	${RDEPEND}
 	test? ( dev-util/cmocka )
@@ -25,7 +25,7 @@ BDEPEND="
 	doc? ( app-doc/doxygen[dot] )
 "
 
-multilib_src_configure() {
+src_configure() {
 	local mycmakeargs=(
 		-DENABLE_TESTS=$(usex test)
 		-DENABLE_VALGRIND_TESTS=OFF
@@ -33,12 +33,14 @@ multilib_src_configure() {
 	cmake_src_configure
 }
 
-multilib_src_compile() {
+src_compile() {
 	cmake_src_compile
 
-	multilib_is_native_abi && use doc && cmake_src_compile doc
+	use doc && cmake_src_compile doc
 }
 
-multilib_src_install_all() {
+src_install() {
+	cmake_src_install
+
 	use doc && dodoc -r doc/.
 }
