@@ -4,7 +4,7 @@
 # @ECLASS: scons-utils.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: helper functions to deal with SCons buildsystem
 # @DESCRIPTION:
 # This eclass provides a set of function to help developers sanely call
@@ -38,7 +38,7 @@
 # PYTHON_COMPAT=( python2_7 )
 # inherit python-any-r1 scons-utils toolchain-funcs
 #
-# EAPI=5
+# EAPI=7
 #
 # src_configure() {
 # 	MYSCONS=(
@@ -64,14 +64,6 @@
 # @DESCRIPTION:
 # The minimal version of SCons required for the build to work.
 
-# @VARIABLE: myesconsargs
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# DEPRECATED, EAPI 0..5 ONLY: pass options to escons instead
-#
-# List of package-specific options to pass to all SCons calls. Supposed to be
-# set in src_configure().
-
 # @ECLASS_VARIABLE: SCONSOPTS
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -88,24 +80,10 @@
 # Much like EXTRA_EMAKE, this is not supposed to be used in make.conf
 # and not in ebuilds!
 
-# @ECLASS_VARIABLE: USE_SCONS_TRUE
-# @DESCRIPTION:
-# DEPRECATED: use usex instead
-#
-# The default value for truth in scons-use() (1 by default).
-: ${USE_SCONS_TRUE:=1}
-
-# @ECLASS_VARIABLE: USE_SCONS_FALSE
-# @DESCRIPTION:
-# DEPRECATED: use usex instead
-#
-# The default value for false in scons-use() (0 by default).
-: ${USE_SCONS_FALSE:=0}
-
 # -- EAPI support check --
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6|7) ;;
+	7) ;;
 	*) die "EAPI ${EAPI} unsupported."
 esac
 
@@ -132,26 +110,18 @@ elif [[ ${_PYTHON_SINGLE_R1} ]]; then
 	BDEPEND="
 		$(python_gen_cond_dep "${SCONS_DEPEND}[\${PYTHON_USEDEP}]")
 		${PYTHON_DEPS}"
-elif [[ ${EAPI:-0} == [0123456] ]]; then
-	# in older EAPIs, just force Python 2.7
-	BDEPEND="${SCONS_DEPEND}[python_targets_python2_7]"
 elif [[ ${_PYTHON_R1} ]]; then
 	# when using python-r1, you need to depend on scons yourself
 	# (depending on whether you need any-r1 or full -r1 API)
 	# -- since this is a breaking API change, it applies to EAPI 7+ only
 	BDEPEND=""
-elif [[ ${EAPI:-0} != [0123456] ]]; then
-	# in EAPI 7+, require appropriate eclass use
+else
+	# require appropriate eclass use
 	eerror "Using scons-utils.eclass without any python-r1 suite eclass is not supported."
 	eerror "Please make sure to configure and inherit appropriate -r1 eclass."
 	eerror "For more information and examples, please see:"
 	eerror "    https://wiki.gentoo.org/wiki/Project:Python/scons-utils_integration"
 	die "Invalid use of scons-utils.eclass"
-fi
-
-if [[ ${EAPI:-0} == [0123456] ]]; then
-	DEPEND=${BDEPEND}
-	unset BDEPEND
 fi
 
 # -- public functions --
@@ -160,33 +130,24 @@ fi
 # @USAGE: [<args>...]
 # @DESCRIPTION:
 # Call scons, passing the supplied arguments. Like emake, this function
-# does die on failure in EAPI 4. Respects nonfatal in EAPI 6 and newer.
+# dies on failure, unless nonfatal is used.
 escons() {
 	local ret
 
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if [[ ! ${EPYTHON} ]]; then
-		if [[ ${EAPI:-0} != [0123456] ]]; then
-			eerror "EPYTHON is unset while calling escons. This most likely means that"
-			eerror "the ebuild did not call the appropriate eclass function before calling scons."
-			if [[ ${_PYTHON_ANY_R1} ]]; then
-				eerror "Please ensure that python-any-r1_pkg_setup is called in pkg_setup()."
-			elif [[ ${_PYTHON_SINGLE_R1} ]]; then
-				eerror "Please ensure that python-single-r1_pkg_setup is called in pkg_setup()."
-			else # python-r1
-				eerror "Please ensure that python_setup is called before escons, or that escons"
-				eerror "is used within python_foreach_impl as appropriate."
-			fi
-			die "EPYTHON unset in escons"
-		else
-			local -x EPYTHON=python2.7
+		eerror "EPYTHON is unset while calling escons. This most likely means that"
+		eerror "the ebuild did not call the appropriate eclass function before calling scons."
+		if [[ ${_PYTHON_ANY_R1} ]]; then
+			eerror "Please ensure that python-any-r1_pkg_setup is called in pkg_setup()."
+		elif [[ ${_PYTHON_SINGLE_R1} ]]; then
+			eerror "Please ensure that python-single-r1_pkg_setup is called in pkg_setup()."
+		else # python-r1
+			eerror "Please ensure that python_setup is called before escons, or that escons"
+			eerror "is used within python_foreach_impl as appropriate."
 		fi
-	fi
-
-	# Use myesconsargs in EAPI 5 and older
-	if [[ ${EAPI} == [012345] ]]; then
-		set -- "${myesconsargs[@]}" "${@}"
+		die "EPYTHON unset in escons"
 	fi
 
 	# if SCONSOPTS are _unset_, use cleaned MAKEOPTS
@@ -200,22 +161,7 @@ escons() {
 
 	set -- scons ${SCONSOPTS} ${EXTRA_ESCONS} "${@}"
 	echo "${@}" >&2
-	"${@}"
-	ret=${?}
-
-	if [[ ${ret} -ne 0 ]]; then
-		case "${EAPI:-0}" in
-			0|1|2|3) # nonfatal in EAPIs 0 through 3
-				;;
-			4|5) # 100% fatal in 4 & 5
-				die "escons failed."
-				;;
-			*) # respect nonfatal in 6 onwards
-				die -n "escons failed."
-				;;
-		esac
-	fi
-	return ${ret}
+	"${@}" || die -n "escons failed."
 }
 
 # @FUNCTION: _scons_clean_makeopts
@@ -307,42 +253,4 @@ _scons_clean_makeopts() {
 	SCONSOPTS=${new_makeopts[*]}
 	_SCONS_CACHE_SCONSOPTS=${SCONSOPTS}
 	debug-print "New SCONSOPTS: [${SCONSOPTS}]"
-}
-
-# @FUNCTION: use_scons
-# @USAGE: <use-flag> [var-name] [var-opt-true] [var-opt-false]
-# @DESCRIPTION:
-# DEPRECATED, EAPI 0..5 ONLY: use usex instead
-#
-# Output a SCons parameter with value depending on the USE flag state.
-# If the USE flag is set, output <var-name>=<var-opt-true>; otherwise
-# <var-name>=<var-opt-false>.
-#
-# If <var-name> is omitted, <use-flag> will be used instead. However,
-# if <use-flag> starts with an exclamation mark (!flag), 'no' will be
-# prepended to the name (e.g. noflag).
-#
-# If <var-opt-true> and/or <var-opt-false> are omitted,
-# ${USE_SCONS_TRUE} and/or ${USE_SCONS_FALSE} will be used instead.
-use_scons() {
-	[[ ${EAPI} == [012345] ]] \
-		|| die "${FUNCNAME} is banned in EAPI ${EAPI}, use usex instead"
-
-	local flag=${1}
-	local varname=${2:-${flag/\!/no}}
-	local vartrue=${3:-${USE_SCONS_TRUE}}
-	local varfalse=${4:-${USE_SCONS_FALSE}}
-
-	debug-print-function ${FUNCNAME} "${@}"
-
-	if [[ ${#} -eq 0 ]]; then
-		eerror "Usage: scons-use <use-flag> [var-name] [var-opt-true] [var-opt-false]"
-		die 'scons-use(): not enough arguments'
-	fi
-
-	if use "${flag}"; then
-		echo "${varname}=${vartrue}"
-	else
-		echo "${varname}=${varfalse}"
-	fi
 }
