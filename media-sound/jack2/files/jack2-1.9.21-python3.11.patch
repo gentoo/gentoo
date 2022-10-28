@@ -1,0 +1,19 @@
+'U' is default and deprecated since python-3.3, becomes a failure in 3.11.
+
+Just a quick fix (rather than bump waf) while waiting for upstream's
+plans to migrate to meson:
+https://github.com/jackaudio/jack2/issues/898
+--- a/waflib/ConfigSet.py
++++ b/waflib/ConfigSet.py
+@@ -314,3 +314,3 @@
+ 		tbl = self.table
+-		code = Utils.readf(filename, m='rU')
++		code = Utils.readf(filename, m='r')
+ 		for m in re_imp.finditer(code):
+--- a/waflib/Context.py
++++ b/waflib/Context.py
+@@ -664,3 +664,3 @@
+ 	try:
+-		code = Utils.readf(path, m='rU', encoding=encoding)
++		code = Utils.readf(path, m='r', encoding=encoding)
+ 	except EnvironmentError:
