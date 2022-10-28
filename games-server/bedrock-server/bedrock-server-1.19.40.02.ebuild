@@ -41,7 +41,7 @@ src_install() {
 
 	insinto /opt/bedrock-server
 	doins {allowlist,permissions}.json server.properties
-	doins -r {behavior,resource}_packs definitions structures
+	doins -r {behavior,resource}_packs definitions
 
 	dodir /opt/bin
 	dosym ../bedrock-server/bedrock_server /opt/bin/bedrock-server
