@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 	x11-misc/gccmakedep
 	x11-misc/imake"
 
-BDEPEND="
+BDEPEND="sys-apps/which
 	virtual/pkgconfig"
 
 S="${WORKDIR}/nx-libs-${PV}"
