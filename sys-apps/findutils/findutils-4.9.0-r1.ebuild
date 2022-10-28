@@ -18,12 +18,19 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 IUSE="nls selinux static test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="selinux? ( sys-libs/libselinux )
-	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	test? ( ${PYTHON_DEPS} )"
-BDEPEND="nls? ( sys-devel/gettext )
-	verify-sig? ( sec-keys/openpgp-keys-findutils )"
+RDEPEND="
+	selinux? ( sys-libs/libselinux )
+	nls? ( virtual/libintl )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	nls? ( sys-devel/gettext )
+	test? (
+		${PYTHON_DEPS}
+		dev-util/dejagnu
+	)
+	verify-sig? ( sec-keys/openpgp-keys-findutils )
+"
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
@@ -45,6 +52,8 @@ src_configure() {
 		append-flags -pthread
 		append-ldflags -static
 	fi
+
+	append-lfs-flags
 
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# https://lists.gnu.org/archive/html/bug-findutils/2021-01/msg00050.html
