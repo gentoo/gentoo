@@ -4,7 +4,7 @@
 # @ECLASS: scons-utils.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: helper functions to deal with SCons buildsystem
 # @DESCRIPTION:
 # This eclass provides a set of function to help developers sanely call
@@ -35,10 +35,10 @@
 #
 # @EXAMPLE:
 # @CODE
-# PYTHON_COMPAT=( python2_7 )
+# PYTHON_COMPAT=( python3_{8..11} )
 # inherit python-any-r1 scons-utils toolchain-funcs
 #
-# EAPI=7
+# EAPI=8
 #
 # src_configure() {
 # 	MYSCONS=(
@@ -83,7 +83,7 @@
 # -- EAPI support check --
 
 case ${EAPI:-0} in
-	7) ;;
+	7|8) ;;
 	*) die "EAPI ${EAPI} unsupported."
 esac
 
