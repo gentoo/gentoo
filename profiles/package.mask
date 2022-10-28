@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-10-28)
+# Unmaintained upstream, no reverse dependencies, fails tests
+# Removal in 30 days
+dev-python/pweave
+
 # Michał Górny <mgorny@gentoo.org> (2022-10-28)
 # Originally last rited in Aug 2020 due to lack of Python 3 support.
 # The last rites were undone, however this package never got fixed.
