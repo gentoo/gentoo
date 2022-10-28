@@ -8,6 +8,7 @@
 	<longdescription>Pygments is a syntax highlighting package written in Python. Pygments can output to html, bbcode, latex, rtf and other formats.</longdescription>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:pygments:pygments</remote-id>
 		<remote-id type="pypi">Pygments</remote-id>
 		<remote-id type="github">pygments/pygments</remote-id>
 	</upstream>
