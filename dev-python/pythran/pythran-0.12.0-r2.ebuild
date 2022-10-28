@@ -49,6 +49,7 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.10.0-tests-werror.patch
+	"${FILESDIR}"/${PN}-0.12.0-gcc13.patch
 )
 
 src_configure() {
