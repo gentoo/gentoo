@@ -222,6 +222,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.4-cyclic-deps.patch"
 	# https://bugs.gentoo.org/866165
 	"${FILESDIR}/ceph-17.2.5-suppress-cmake-warning.patch"
+	"${FILESDIR}/ceph-17.2.5-gcc13.patch"
 )
 
 check-reqs_export_vars() {
