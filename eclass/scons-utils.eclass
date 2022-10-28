@@ -16,12 +16,13 @@
 # and use appropriate Python suite eclass to select the implementation.
 # The eclass needs to be inherited before scons-utils, and scons-utils
 # will automatically take advantage of it. For more details, please see:
-# https://wiki.gentoo.org/wiki/Project:Python/scons-utils_integration
+# https://projects.gentoo.org/python/guide/buildsys.html#scons
 #
 # Please note that SCons is more like a 'build system creation kit',
 # and requires a lot of upstream customization to be used sanely.
-# You will often need to request fixes upstream and/or patch the build
-# system. In particular:
+# We attempt to force sane behavior via custom patching but this is not
+# guaranteed to work. You will sometimes need to request fixes upstream
+# and/or patch the build system. In particular, normally:
 #
 # 1. There are no 'standard' variables. To respect CC, CXX, CFLAGS,
 # CXXFLAGS, CPPFLAGS, LDFLAGS, upstream needs to define appropriate
