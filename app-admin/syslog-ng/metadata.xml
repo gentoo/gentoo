@@ -22,6 +22,6 @@
 		<flag name="spoof-source">Enable support for spoofed source addresses</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">balabit/syslog-ng</remote-id>
+		<remote-id type="github">syslog-ng/syslog-ng</remote-id>
 	</upstream>
 </pkgmetadata>
