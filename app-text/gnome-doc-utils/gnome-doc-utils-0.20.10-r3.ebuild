@@ -1,20 +1,19 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python3_{7..10} )
+EAPI=8
+PYTHON_COMPAT=( python3_{8..11} )
 
-inherit gnome2 multibuild python-r1
+inherit gnome2 python-r1
 
 DESCRIPTION="A collection of documentation utilities for the Gnome project"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeDocUtils"
-SRC_URI+=" https://dev.gentoo.org/~juippis/distfiles/tmp/gnome-doc-utils-0.20.10-python3.patch"
+SRC_URI+=" https://dev.gentoo.org/~juippis/distfiles/tmp/${P}-python3.patch"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
-IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
@@ -24,6 +23,8 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.4
 	app-text/scrollkeeper-dtd
+"
+BDEPEND="
 	>=dev-util/intltool-0.35
 	sys-devel/gettext
 	virtual/awk
@@ -38,6 +39,10 @@ src_prepare() {
 	# Stop build from relying on installed package
 	eapply "${FILESDIR}"/${P}-fix-out-of-tree-build.patch
 	eapply "${DISTDIR}"/${P}-python3.patch
+
+	# Empty py-compile, so it doesn't write its own pyo/pyc files
+	echo > "${S}"/py-compile
+	chmod a+x "${S}"/py-compile || die
 
 	gnome2_src_prepare
 
