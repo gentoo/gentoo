@@ -18,5 +18,6 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:heinz_mauelshagen:lvm2</remote-id>
+		<remote-id type="github">lvmteam/lvm2</remote-id>
 	</upstream>
 </pkgmetadata>
