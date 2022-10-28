@@ -6,6 +6,7 @@
 		<name>TCL/TK Herd.</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:tcl:tcl</remote-id>
 		<remote-id type="sourceforge">tcl</remote-id>
 	</upstream>
 </pkgmetadata>
