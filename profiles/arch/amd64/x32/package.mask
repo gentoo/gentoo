@@ -99,7 +99,6 @@ kde-apps/pim-data-exporter:5
 kde-apps/pim-sieve-editor:5
 kde-apps/plasma-telepathy-meta:5
 >=kde-misc/kio-gdrive-22.04.3-r1
-kde-misc/kmarkdownwebview:5
 kde-misc/tellico:5
 kde-misc/zanshin:5
 mail-client/kube
