@@ -8,7 +8,7 @@ inherit flag-o-matic libtool multilib-minimal toolchain-funcs
 DESCRIPTION="The Fast Lexical Analyzer"
 HOMEPAGE="https://github.com/westes/flex"
 SRC_URI="https://github.com/westes/${PN}/releases/download/v${PV}/${P}.tar.gz"
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-implicit-func-decl.patch.xz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-autotools-regenerate.patch.xz"
 
 LICENSE="FLEX"
 SLOT="0"
@@ -16,20 +16,26 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~
 IUSE="nls static test"
 RESTRICT="!test? ( test )"
 
-# We want bison explicitly and not yacc in general, bug #381273
 RDEPEND="sys-devel/m4"
-BDEPEND="${RDEPEND}
+# We want bison explicitly and not yacc in general, bug #381273
+BDEPEND="
+	${RDEPEND}
 	nls? ( sys-devel/gettext )
-	test? ( sys-devel/bison )"
+	test? ( sys-devel/bison )
+"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.6.4-libobjdir.patch
-	"${FILESDIR}"/${PN}-2.6.4-fix-build-with-glibc2.6+.patch
-	"${WORKDIR}"/${P}-implicit-func-decl.patch
+	"${FILESDIR}"/${P}-libobjdir.patch
+	"${FILESDIR}"/${P}-fix-build-with-glibc2.26.patch
+
+	"${WORKDIR}"/${P}-autotools-regenerate.patch
 )
 
 src_prepare() {
 	default
+
+	# Drop on next release when we can remove ${P}-autotools-regenerate.patch
+	touch configure.ac aclocal.m4 Makefile.in configure src/config.h.in || die
 
 	# Disable running in the tests/ subdir as it has a bunch of built sources
 	# that cannot be made conditional (automake limitation). bug #568842
