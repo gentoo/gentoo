@@ -47,8 +47,11 @@ src_configure() {
 	# on solaris -lintl is needed to compile
 	[[ ${CHOST} == *-solaris* ]] && append-libs "-lintl"
 
-	# --without-included-gettext means we always use system headers
-	# and library
+	# -fanalyzer substantially slows down the build and isn't useful for
+	# us. It's useful for upstream as it's static analysis, but it's not
+	# useful when just getting something built.
+	export gl_cv_warn_c__fanalyzer=no
+
 	econf \
 		$(use_enable nls) \
 		--disable-static
