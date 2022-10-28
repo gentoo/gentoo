@@ -10,6 +10,7 @@
 		<name>Bernd Waibel</name>
 	</maintainer>
 	<use>
+		<flag name="charts">Build QtCharts module</flag>
 		<flag name="concurrent">Build QtConcurrent module</flag>
 		<flag name="designer">Build QtDesigner and QtUiTools modules</flag>
 		<flag name="gles2-only">Build QtGui "QOpenGL*" classes</flag>
@@ -17,6 +18,7 @@
 		<flag name="help">Build QtHelp module</flag>
 		<flag name="multimedia">Build QtMultimedia and QtMultimediaWidgets modules</flag>
 		<flag name="network">Build QtNetwork module</flag>
+		<flag name="network-auth">Build QtNetworkAuth module</flag>
 		<flag name="positioning">Build QtPositioning module</flag>
 		<flag name="printsupport">Build QtPrintSupport module</flag>
 		<flag name="qml">Build QtQml module</flag>
