@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,10 +20,11 @@ KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND="sys-apps/net-tools"
-DEPEND=${RDEPEND}
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${WORKDIR}"/${P/-/_}-1.diff
+	"${FILESDIR}"/${PN}-0.4-Fix-build-with-Clang-16.patch
 )
 
 src_compile() {
