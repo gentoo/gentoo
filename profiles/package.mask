@@ -649,12 +649,6 @@ media-plugins/kodi-game-libretro-dosbox
 # bug #705554, bug #689408.
 >=dev-scheme/guile-3.0.4
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
-# Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
-# (Mask should remain after ebuilds are deleted, until 2021-03-01 or
-# until new upstream release with proper versioning.)
-~app-i18n/scim-sunpinyin-3.0.0_rc1
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths
 # when being called with --no-absolute-filenames
