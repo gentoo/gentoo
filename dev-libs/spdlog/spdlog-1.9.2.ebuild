@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/gabime/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	# Temporary for bug #811750
 	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-update-catch-glibc-2.34.patch.bz2 )"
-	KEYWORDS="amd64 ~arm arm64 ppc ppc64 x86"
+	KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 fi
 
 LICENSE="MIT"
