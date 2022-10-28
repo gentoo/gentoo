@@ -13,6 +13,7 @@
 		<doc lang="en">https://crawl.develz.org</doc>
 		<bugs-to>https://crawl.develz.org/mantis</bugs-to>
 		<remote-id type="sourceforge">crawl-ref</remote-id>
+		<remote-id type="github">crawl/crawl</remote-id>
 	</upstream>
 	<use>
 		<flag name="advpng">Use alternate png optimization.
