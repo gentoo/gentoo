@@ -18,6 +18,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-musl.patch"
 	"${FILESDIR}/${P}-Fix-config.h-test-consumption.patch"
 	"${FILESDIR}/${P}-Fix-malloc-detection.patch"
+	"${FILESDIR}/${P}-linux-headers.patch"
 )
 
 src_prepare() {
@@ -28,6 +29,8 @@ src_prepare() {
 }
 
 src_configure() {
+	export jm_cv_func_working_{re,m}alloc=yes
+
 	local myeconfargs=(
 		--disable-rpath
 		$(use_enable nls)
