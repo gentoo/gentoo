@@ -124,6 +124,7 @@ multilib_src_configure() {
 		$(meson_feature test tests)
 
 		-Dcache-build=disabled
+		-Dcache-dir="${EPREFIX}"/var/cache/fontconfig
 		-Ddefault-fonts-dirs="${EPREFIX}"/usr/share/fonts
 		-Dadditional-fonts-dirs=$(IFS=, ; echo "${addfonts[*]}" )
 		-Dtemplate-dir="${EPREFIX}"/etc/fonts/conf.avail
