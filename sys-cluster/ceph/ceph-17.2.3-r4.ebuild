@@ -47,7 +47,6 @@ DEPEND="
 	app-misc/jq:=
 	dev-libs/crypto++:=
 	dev-cpp/gflags:=
-	dev-lang/jsonnet:=
 	<dev-libs/leveldb-1.23:=[snappy,tcmalloc(-)?]
 	dev-libs/libaio:=
 	>=dev-libs/libfmt-6.2.1:=
@@ -56,13 +55,12 @@ DEPEND="
 	dev-libs/libxml2:=
 	dev-libs/libevent:=
 	dev-libs/libutf8proc:=
-	dev-libs/nss:=
 	dev-libs/openssl:=
 	<dev-libs/rocksdb-6.15:=
 	dev-libs/thrift:=
 	dev-libs/xmlsec:=[openssl]
 	dev-cpp/yaml-cpp:=
-	dev-python/natsort[${PYTHON_USEDEP}]
+	dev-libs/nss:=
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	net-dns/c-ares:=
 	net-libs/gnutls:=
@@ -149,7 +147,7 @@ RDEPEND="
 	sys-block/parted
 	sys-fs/cryptsetup
 	sys-fs/lsscsi
-	sys-fs/lvm2[-device-mapper-only(-)]
+	sys-fs/lvm2[lvm]
 	virtual/awk
 	dev-python/bcrypt[${PYTHON_USEDEP}]
 	dev-python/cherrypy[${PYTHON_USEDEP}]
@@ -217,9 +215,11 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.0-system-opentelemetry.patch"
 	"${FILESDIR}/ceph-17.2.0-fuse3.patch"
 	"${FILESDIR}/ceph-17.2.0-osd_class_dir.patch"
+	"${FILESDIR}/ceph-17.2.1-python310.patch"
+	"${FILESDIR}/ceph-17.2.3-gcc12.patch"
+	"${FILESDIR}/ceph-17.2.0-gcc12-dout.patch"
 	"${FILESDIR}/ceph-17.2.0-gcc12-header.patch"
 	"${FILESDIR}/ceph-17.2.3-flags.patch"
-	"${FILESDIR}/ceph-17.2.4-cyclic-deps.patch"
 )
 
 check-reqs_export_vars() {

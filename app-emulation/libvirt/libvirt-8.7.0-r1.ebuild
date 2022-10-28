@@ -21,7 +21,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://libvirt.org/sources/${P}.tar.xz
 		verify-sig? ( https://libvirt.org/sources/${P}.tar.xz.asc )"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 fi
 
 DESCRIPTION="C toolkit to manipulate virtual machines"
@@ -86,9 +86,9 @@ RDEPEND="
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( >=sys-block/open-iscsi-1.18.0 )
 	iscsi-direct? ( >=net-libs/libiscsi-1.18.0 )
-	libssh? ( >=net-libs/libssh-0.8.1:= )
+	libssh? ( >=net-libs/libssh-0.7:= )
 	libssh2? ( >=net-libs/libssh2-1.3 )
-	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
+	lvm? ( >=sys-fs/lvm2-2.02.48-r2[lvm] )
 	lxc? ( !sys-apps/systemd[cgroup-hybrid(-)] )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
@@ -97,7 +97,7 @@ RDEPEND="
 	)
 	parted? (
 		>=sys-block/parted-1.8[device-mapper]
-		sys-fs/lvm2[-device-mapper-only(-)]
+		sys-fs/lvm2[lvm]
 	)
 	pcap? ( >=net-libs/libpcap-1.8.0 )
 	policykit? (
