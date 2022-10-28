@@ -48,7 +48,6 @@ BDEPEND="$(python_gen_cond_dep '
 		>=dev-python/ansi2html-1.6.0[${PYTHON_USEDEP}]
 		dev-python/filelock[${PYTHON_USEDEP}]
 		<dev-python/pexpect-5[${PYTHON_USEDEP}]
-		>=dev-python/pytest-html-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-3.3.1[${PYTHON_USEDEP}]
 		>=dev-python/pytest-plus-0.2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-testinfra-6.1.0[${PYTHON_USEDEP}]
