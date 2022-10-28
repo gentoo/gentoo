@@ -9,7 +9,7 @@ MAVEN_ID="com.google.protobuf:protobuf-java:3.21.9"
 # https://github.com/protocolbuffers/protobuf/blob/v3.21.6/java/core/pom.xml#L35-L39"
 # JAVA_TESTING_FRAMEWORKS="junit-4"
 
-inherit java-pkg-2 java-pkg-simple
+inherit edo java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Google's Protocol Buffers - Java bindings"
 HOMEPAGE="https://developers.google.com/protocol-buffers/"
@@ -44,17 +44,25 @@ JAVA_TEST_SRC_DIR="core/src/test/java"
 src_prepare() {
 	default
 	java-pkg-2_src_prepare
+
+	# There is also compiler/plugin, but not in this list because in a subdirectory
+	core_protos=( any api descriptor duration empty field_mask source_context struct timestamp type wrappers )
+
 	# Copy resources from ../src/google/protobuf according to
 	# https://github.com/protocolbuffers/protobuf/blob/v3.21.6/java/core/pom.xml#L45-L61
-	mkdir -p core/src/main/resources/google/protobuf/compiler || die
-	cp {../src,core/src/main/resources}/google/protobuf/compiler/plugin.proto || die
-	cp ../src/google/protobuf/{any,api,descriptor,duration,empty,field_mask,source_context,struct,timestamp,type,wrappers}.proto \
-		"${JAVA_RESOURCE_DIRS}/google/protobuf" || die
+	mkdir -p "${JAVA_RESOURCE_DIRS}/google/protobuf/compiler" || die
+	local core_proto
+	for core_proto in "${core_protos[@]}"; do
+		cp "../src/google/protobuf/${core_proto}.proto" \
+		   "${JAVA_RESOURCE_DIRS}/google/protobuf" \
+			|| die
+	done
+	cp {../src,"${JAVA_RESOURCE_DIRS}"}/google/protobuf/compiler/plugin.proto || die
 
 	# Generate 146 .java files according to
-	# https://github.com/protocolbuffers/protobuf/blob/v3.21.6/java/core/generate-sources-build.xml
-	for proto in any api compiler/plugin descriptor duration empty field_mask source_context struct timestamp type wrappers; do
-		"${BROOT}/usr/bin/protoc" \
-			--java_out=core/src/main/java -I../src ../src/google/protobuf/$proto.proto || die
+	# https://github.com/protocolbuffers/protobuf/blob/v21.7/java/core/generate-sources-build.xml
+	for core_proto in "${core_protos[@]}" compiler/plugin; do
+		edo "${BROOT}/usr/bin/protoc" \
+			--java_out="${JAVA_SRC_DIR}" -I../src ../src/google/protobuf/"${core_proto}".proto
 	done
 }

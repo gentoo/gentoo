@@ -12,7 +12,7 @@ MAVEN_ID="com.google.protobuf:${PN}:3.21.7"
 # https://github.com/protocolbuffers/protobuf/blob/v21.7/java/core/pom.xml#L35-L40
 # JAVA_TESTING_FRAMEWORKS="junit-4"
 
-inherit java-pkg-2 java-pkg-simple
+inherit edo java-pkg-2 java-pkg-simple
 
 PARENT_PN="${PN/-java/}"
 PARENT_PV="${PV}"
@@ -92,14 +92,18 @@ src_prepare() {
 	# Copy resources from ../src/google/protobuf according to
 	# https://github.com/protocolbuffers/protobuf/blob/v21.7/java/core/pom.xml#L45-L61
 	mkdir -p "${JAVA_RESOURCE_DIRS}/google/protobuf/compiler" || die
-	cp "../src/google/protobuf/${core_protos[@]}.proto" \
-		"${JAVA_RESOURCE_DIRS}/google/protobuf" || die
+	local core_proto
+	for core_proto in "${core_protos[@]}"; do
+		cp "../src/google/protobuf/${core_proto}.proto" \
+		   "${JAVA_RESOURCE_DIRS}/google/protobuf" \
+			|| die
+	done
 	cp {../src,"${JAVA_RESOURCE_DIRS}"}/google/protobuf/compiler/plugin.proto || die
 
 	# Generate 146 .java files according to
 	# https://github.com/protocolbuffers/protobuf/blob/v21.7/java/core/generate-sources-build.xml
-	for proto in "${core_protos[@]}" compiler/plugin; do
-		"${BROOT}/usr/bin/protoc" \
-			--java_out="${JAVA_SRC_DIR}" -I../src ../src/google/protobuf/"${proto}".proto || die
+	for core_proto in "${core_protos[@]}" compiler/plugin; do
+		edo "${BROOT}/usr/bin/protoc" \
+			--java_out="${JAVA_SRC_DIR}" -I../src ../src/google/protobuf/"${core_proto}".proto
 	done
 }
