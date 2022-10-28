@@ -11,7 +11,7 @@ SRC_URI="http://www.litech.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-static-EAM.patch
