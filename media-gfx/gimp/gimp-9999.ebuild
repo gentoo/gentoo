@@ -109,7 +109,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-DOCS=( "AUTHORS" "devel-docs/CODING_STYLE.md" "devel-docs/HACKING.md" "NEWS" "README" "README.i18n" )
+DOCS=( "AUTHORS" "devel-docs/HACKING.md" "NEWS" "README" "README.i18n" )
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
