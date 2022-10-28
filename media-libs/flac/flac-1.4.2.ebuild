@@ -25,8 +25,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/xz-utils
 	sys-devel/gettext
-	virtual/pkgconfig
-	abi_x86_32? ( dev-lang/nasm )"
+	virtual/pkgconfig"
 
 multilib_src_configure() {
 	local myeconfargs=(
