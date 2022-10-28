@@ -167,9 +167,11 @@ case ${KDE_BUILD_TYPE} in
 		;;
 	*)
 		if [[ -n ${KDE_ORG_COMMIT} ]]; then
-			SRC_URI="https://invent.kde.org/${KDE_ORG_CATEGORY}/${KDE_ORG_NAME}/-/"
+			_KDE_ORG_TARFILE="${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
+			SRC_URI="mirror://gentoo/${_KDE_ORG_TARFILE}"
+			SRC_URI+=" https://invent.kde.org/${KDE_ORG_CATEGORY}/${KDE_ORG_NAME}/-/"
 			SRC_URI+="archive/${KDE_ORG_COMMIT}/${KDE_ORG_NAME}-${KDE_ORG_COMMIT}.tar.gz"
-			SRC_URI+=" -> ${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
+			SRC_URI+=" -> ${_KDE_ORG_TARFILE}"
 		fi
 		[[ ${KDE_ORG_UNRELEASED} == true ]] && RESTRICT+=" fetch"
 		debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
