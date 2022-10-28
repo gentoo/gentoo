@@ -64,6 +64,7 @@
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The minimal version of SCons required for the build to work.
+: "${SCONS_MIN_VERSION:=4.4.0}"
 
 # @ECLASS_VARIABLE: SCONSOPTS
 # @USER_VARIABLE
@@ -92,11 +93,7 @@ inherit multiprocessing
 
 # -- ebuild variables setup --
 
-if [[ -n ${SCONS_MIN_VERSION} ]]; then
-	SCONS_DEPEND=">=dev-util/scons-${SCONS_MIN_VERSION}"
-else
-	SCONS_DEPEND="dev-util/scons"
-fi
+SCONS_DEPEND=">=dev-util/scons-${SCONS_MIN_VERSION}"
 
 if [[ ${_PYTHON_ANY_R1} ]]; then
 	# when using python-any-r1, use any-of dep API
