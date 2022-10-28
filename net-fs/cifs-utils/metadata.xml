@@ -13,6 +13,9 @@
 		part of Samba was problematic and it was deemed better to split
 		them off into their own package
 	</longdescription>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:samba:cifs-utils</remote-id>
+	</upstream>
 	<use>
 		<flag name="ads">Enable Active Directory support and create cifs.idmap binary - idmap support</flag>
 		<flag name="caps">Enable <pkg>sys-libs/libcap-ng</pkg> support</flag>
