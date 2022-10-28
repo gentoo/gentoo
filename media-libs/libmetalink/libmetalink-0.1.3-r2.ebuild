@@ -1,9 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-inherit multilib-minimal
+EAPI=8
 
 DESCRIPTION="Library for handling Metalink files"
 HOMEPAGE="https://launchpad.net/libmetalink"
@@ -14,23 +12,25 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="expat static-libs test xml"
 
-RDEPEND="expat? ( >=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}] )
-	 xml? ( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )"
+RDEPEND="expat? ( >=dev-libs/expat-2.1.0-r3 )
+	 xml? ( >=dev-libs/libxml2-2.9.1-r4 )"
 DEPEND="${RDEPEND}
-	test? ( >=dev-util/cunit-2.1_p2[${MULTILIB_USEDEP}] )"
+	test? ( >=dev-util/cunit-2.1_p2 )"
 
 REQUIRED_USE="^^ ( expat xml )"
 RESTRICT="!test? ( test )"
 
-multilib_src_configure() {
+src_configure() {
 	local myeconfargs=(
 		$(use_with expat libexpat)
 		$(use_with xml libxml2)
 		$(use_enable static-libs static)
 	)
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	econf "${myeconfargs[@]}"
 }
 
-multilib_src_install_all() {
+src_install() {
+	default
+
 	find "${ED}" -type f -name "*.la" -delete || die
 }
