@@ -24,10 +24,10 @@ RDEPEND="${DEPEND}"
 src_install() {
 	cmake_src_install
 
-	cp -r ../${PN}-${DATA_PV}/data/{music,sfx} ${ED}/usr/share/games/abuse/ || die
-	cp -r ../${PN}-${DATA_PV}/data/addon/{aliens,claudio,leon,newart,twist} ${ED}/usr/share/games/abuse/addon/ || die
-	cp -r ../${PN}-${DATA_PV}/data/levels/frabs* ${ED}/usr/share/games/abuse/levels/ || die
-        
+	cp -r ../${PN}-${DATA_PV}/data/{music,sfx} "${ED}"/usr/share/games/abuse/ || die
+	cp -r ../${PN}-${DATA_PV}/data/addon/{aliens,claudio,leon,newart,twist} "${ED}"/usr/share/games/abuse/addon/ || die
+	cp -r ../${PN}-${DATA_PV}/data/levels/frabs* "${ED}"/usr/share/games/abuse/levels/ || die
+
 	doicon data/freedesktop/com.github.Xenoveritas.abuse.png
 	domenu data/freedesktop/com.github.Xenoveritas.abuse.desktop
 	insinto /usr/share/metainfo
