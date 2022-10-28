@@ -61,11 +61,6 @@ app-i18n/scim-sunpinyin
 # Removal after 2022-12-24.  Bug #878337.
 app-misc/tpconfig
 
-# Sam James <sam@gentoo.org> (2022-10-25)
-# Fails to build with Clang 16 but also modern linux-headers. No activity upstream.
-# Removal on 2022-10-25. bug #874420.
-net-misc/wol
-
 # Sam James <sam@gentoo.org> (2022-10-24)
 # Non-free licence which prohibits any patching. Fails to build with Clang 16.
 # Removal on 2022-10-24.
