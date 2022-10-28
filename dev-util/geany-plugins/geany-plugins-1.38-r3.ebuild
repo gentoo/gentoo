@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-1 )
 
-inherit lua-single
+inherit flag-o-matic lua-single
 
 DESCRIPTION="A collection of different plugins for Geany"
 HOMEPAGE="https://plugins.geany.org"
@@ -52,6 +52,10 @@ pkg_setup() {
 }
 
 src_configure() {
+	# -DLUA_COMPAT_OPENLIB=1 is required to enable the
+	# deprecated (in 5.1) luaL_openlib API (#878529)
+	use lua_single_target_lua5-1 && append-cppflags -DLUA_COMPAT_OPENLIB=1
+
 	local myeconfargs=(
 		--disable-cppcheck
 		--disable-extra-c-warnings
