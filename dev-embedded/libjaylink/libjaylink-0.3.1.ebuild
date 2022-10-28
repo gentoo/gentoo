@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.zapb.de/libjaylink/libjaylink/-/archive/${PV}/${P}.tar.b
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~riscv x86"
+KEYWORDS="amd64 arm ~riscv x86"
 
 DEPEND="virtual/libusb:1"
 RDEPEND="${DEPEND}"
