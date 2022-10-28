@@ -32,7 +32,7 @@ RDEPEND="
 		media-libs/libpng:0
 		media-libs/freetype
 		media-libs/fontconfig
-		virtual/jpeg:0
+		media-libs/libjpeg-turbo:0=
 		x11-libs/libX11
 		opengl? ( virtual/opengl )
 	)
