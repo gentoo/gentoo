@@ -30,6 +30,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-test_resource.patch
+)
+
 distutils_enable_tests pytest
 
 python_prepare_all() {
