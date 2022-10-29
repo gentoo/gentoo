@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription>Template-GLib is a templating library for GLib. It includes a simple template
-		format along with integration into GObject-Introspection for properties and
-		methods. It separates the parsing of templates and the expansion of templates
-		for faster expansion. You can also define scope, custom functions, and more
-		with the embedded expression language.</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription>
+    Template-GLib is a templating library for GLib. It includes a simple
+    template format along with integration into GObject-Introspection for
+    properties and methods. It separates the parsing of templates and the
+    expansion of templates for faster expansion. You can also define scope,
+    custom functions, and more with the embedded expression language.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/template-glib</remote-id>
+  </upstream>
 </pkgmetadata>
