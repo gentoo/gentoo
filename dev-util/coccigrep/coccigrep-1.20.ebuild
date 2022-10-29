@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1 elisp-common optfeature
 
 DESCRIPTION="A semantic grep for the C language"
-HOMEPAGE="http://home.regit.org/software/coccigrep/"
+HOMEPAGE="https://home.regit.org/software/coccigrep/"
 SRC_URI="https://github.com/regit/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
