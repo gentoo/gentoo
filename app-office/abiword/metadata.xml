@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>soap@gentoo.org</email>
-		<name>David Seifert</name>
-	</maintainer>
-	<use>
-		<flag name="collab">Enable collaborative editing plugin</flag>
-		<flag name="goffice">Enable goffice plugin</flag>
-		<flag name="grammar">Enable grammar checking via <pkg>dev-libs/link-grammar</pkg></flag>
-		<flag name="map">Enable world map support through <pkg>media-libs/libchamplain</pkg></flag>
-		<flag name="math">Enable support for <pkg>x11-libs/gtkmathview</pkg></flag>
-		<flag name="ots">Enable Text Summarizer plugin</flag>
-		<flag name="plugins">Enable plugins build (see http://www.abisource.com/wiki/PluginMatrix for more information). If your file cannot be opened due lack of support, try enabling this.</flag>
-		<flag name="redland">Enables support redland and raptor libs.</flag>
-		<flag name="thesaurus">Enable thesaurus support</flag>
-		<flag name="wordperfect">Enable wordperfect file support via <pkg>app-text/libwpd</pkg></flag>
-	</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>soap@gentoo.org</email>
+    <name>David Seifert</name>
+  </maintainer>
+  <use>
+    <flag name="collab">Enable collaborative editing plugin</flag>
+    <flag name="goffice">Enable goffice plugin</flag>
+    <flag name="grammar">Enable grammar checking via <pkg>dev-libs/link-grammar</pkg></flag>
+    <flag name="map">Enable world map support through <pkg>media-libs/libchamplain</pkg></flag>
+    <flag name="math">Enable support for <pkg>x11-libs/gtkmathview</pkg></flag>
+    <flag name="ots">Enable Text Summarizer plugin</flag>
+    <flag name="plugins">Enable plugins build (see http://www.abisource.com/wiki/PluginMatrix for more information). If your file cannot be opened due lack of support, try enabling this.</flag>
+    <flag name="redland">Enables support redland and raptor libs.</flag>
+    <flag name="thesaurus">Enable thesaurus support</flag>
+    <flag name="wordperfect">Enable wordperfect file support via <pkg>app-text/libwpd</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">World/abiword</remote-id>
+  </upstream>
 </pkgmetadata>
