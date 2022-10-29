@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="flickr">Ensure runtime Flickr support</flag>
-</use>
-<longdescription lang="en">
-	Access, organize and share your photos on GNOME. A simple and elegant
-	replacement for using a file manager to deal with photos. Enhance, crop
-	and edit in a snap. Seamless cloud integration is offered through GNOME
-	Online Accounts.
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="flickr">Ensure runtime Flickr support</flag>
+  </use>
+  <longdescription lang="en">
+    Access, organize and share your photos on GNOME. A simple and elegant
+    replacement for using a file manager to deal with photos. Enhance, crop
+    and edit in a snap. Seamless cloud integration is offered through GNOME
+    Online Accounts.
 
-	You can:
-	- Automatically find all your pictures
-	- View recent local and online photos
-	- Access your Facebook or Flickr pictures
-	- View photos on TVs, laptops or other DLNA renderers on your local network
-	- Set pictures as your desktop background
-	- Print photos
-	- Select favorites
-	- Easily edit your pictures in the app, or send to a full featured editor for more advanced changes
-</longdescription>
+    You can:
+    - Automatically find all your pictures
+    - View recent local and online photos
+    - Access your Facebook or Flickr pictures
+    - View photos on TVs, laptops or other DLNA renderers on your local network
+    - Set pictures as your desktop background
+    - Print photos
+    - Select favorites
+    - Easily edit your pictures in the app, or send to a full featured editor for more advanced changes
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gnome-photos</remote-id>
+  </upstream>
 </pkgmetadata>
