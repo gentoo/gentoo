@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit autotools bash-completion-r1 elisp-common python-single-r1
 
 DESCRIPTION="Program matching and transformation engine"
-HOMEPAGE="http://coccinelle.lip6.fr/"
+HOMEPAGE="https://coccinelle.gitlabpages.inria.fr/website/"
 SRC_URI="https://gitlab.inria.fr/coccinelle/coccinelle/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
