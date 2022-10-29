@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ DESCRIPTION="Parse a X.509 certificate"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~riscv"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
