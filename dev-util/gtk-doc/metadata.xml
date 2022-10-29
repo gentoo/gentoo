@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<longdescription lang="en">
-	GTK-Doc is used to document C code.
-	It is typically used to document the public API of libraries,
-	such as the GTK+ and GNOME libraries, but it can also be used
-	to document application code.
-</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    GTK-Doc is used to document C code.
+    It is typically used to document the public API of libraries,
+    such as the GTK+ and GNOME libraries, but it can also be used
+    to document application code.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gtk-doc</remote-id>
+  </upstream>
 </pkgmetadata>
