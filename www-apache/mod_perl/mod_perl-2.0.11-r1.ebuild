@@ -11,7 +11,7 @@ SRC_URI="mirror://apache/perl/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="1"
-KEYWORDS="amd64 ~arm ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~riscv x86"
 IUSE="debug ithreads test"
 RESTRICT="!test? ( test )"
 
