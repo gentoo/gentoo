@@ -9,4 +9,7 @@
     <email>freedesktop-bugs@gentoo.org</email>
     <name>Gentoo Freedesktop Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/libnotify</remote-id>
+  </upstream>
 </pkgmetadata>
