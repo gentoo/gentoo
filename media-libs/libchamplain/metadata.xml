@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription lang="en">
-		libchamplain is a Gtk widget displaying zoomable and pannable maps that can be
-		loaded from various network sources. It supports overlay layers, markers, and
-		custom elements displayed on top of the maps. The library is written in C but
-		other language mappings are also available thanks to GObject-introspection.
-	</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    libchamplain is a Gtk widget displaying zoomable and pannable maps that can be
+    loaded from various network sources. It supports overlay layers, markers, and
+    custom elements displayed on top of the maps. The library is written in C but
+    other language mappings are also available thanks to GObject-introspection.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/libchamplain</remote-id>
+  </upstream>
 </pkgmetadata>
