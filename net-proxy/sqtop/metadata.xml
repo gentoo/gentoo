@@ -12,4 +12,7 @@
 	<longdescription lang="en">
 		SquidTop is a program that connects with Squid and shows a live, top-like display as to what Squid is busy processing.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">paleg/sqtop</remote-id>
+	</upstream>
 </pkgmetadata>
