@@ -9,4 +9,7 @@
 		<email>virtualization@gentoo.org</email>
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">spice/usbredir</remote-id>
+	</upstream>
 </pkgmetadata>
