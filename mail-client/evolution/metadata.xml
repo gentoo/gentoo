@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<use>
-		<flag name="archive">Enable archives support in attachments via
-			<pkg>app-arch/gnome-autoar</pkg></flag>
-		<flag name="bogofilter">Build <pkg>mail-filter/bogofilter</pkg> plugin</flag>
-		<flag name="geolocation">Enable support for displaying contacts on a map
-			inside evolution using <pkg>media-libs/libchamplain</pkg></flag>
-		<flag name="highlight">Enable text highlighting
-			plugin</flag>
-		<flag name="ldap">Enable support for fetching contacts from an LDAP or
-			Active Directory server using <pkg>net-nds/openldap</pkg></flag>
-		<flag name="spamassassin">Build <pkg>mail-filter/spamassassin</pkg>
-			plugin</flag>
-		<flag name="weather">Enable optional weather calendar support</flag>
-		<flag name="ytnef">Enable optional TNEF attachments parser support using
-			<pkg>net-mail/ytnef</pkg></flag>
-	</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="archive">Enable archives support in attachments via <pkg>app-arch/gnome-autoar</pkg></flag>
+    <flag name="bogofilter">Build <pkg>mail-filter/bogofilter</pkg> plugin</flag>
+    <flag name="geolocation">Enable support for displaying contacts on a map inside evolution using <pkg>media-libs/libchamplain</pkg></flag>
+    <flag name="highlight">Enable text highlighting plugin</flag>
+    <flag name="ldap">Enable support for fetching contacts from an LDAP or Active Directory server using <pkg>net-nds/openldap</pkg></flag>
+    <flag name="spamassassin">Build <pkg>mail-filter/spamassassin</pkg> plugin</flag>
+    <flag name="weather">Enable optional weather calendar support</flag>
+    <flag name="ytnef">Enable optional TNEF attachments parser support using <pkg>net-mail/ytnef</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/evolution</remote-id>
+  </upstream>
 </pkgmetadata>
