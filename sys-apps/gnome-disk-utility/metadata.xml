@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="fat">Include FAT16/FAT32 support
-		(<pkg>sys-fs/dosfstools</pkg>)</flag>
-</use>
-<longdescription lang="en">
-	Disks provides an easy way to inspect, format, partition, and configure disks
-	and block devices. Using Disks, you can view SMART data, manage devices,
-	benchmark physical disks, and image USB sticks.
-</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="fat">Include FAT16/FAT32 support (<pkg>sys-fs/dosfstools</pkg>)</flag>
+  </use>
+  <longdescription lang="en">
+    Disks provides an easy way to inspect, format, partition, and configure disks
+    and block devices. Using Disks, you can view SMART data, manage devices,
+    benchmark physical disks, and image USB sticks.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gnome-disk-utility</remote-id>
+  </upstream>
 </pkgmetadata>
