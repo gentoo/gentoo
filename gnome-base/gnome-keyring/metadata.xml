@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription lang="en">
-		GNOME Keyring is a collection of components in GNOME that store
-		secrets, passwords, keys, certificates and make them available to
-		applications. It is integrated with the user's login, so that
-		their secret storage can be unlocked when the user logins into their
-		session. It is based around a standard called PKCS#11, which is a
-		standard way for applications to manage certificates and keys on
-		smart cards or secure storage.
-	</longdescription>
-	<use>
-		<flag name="ssh-agent">Use GNOME Keyring to unlock SSH keys.
-			Recommended unless you are using ECDSA or Ed25519 keys.</flag>
-	</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    GNOME Keyring is a collection of components in GNOME that store
+    secrets, passwords, keys, certificates and make them available to
+    applications. It is integrated with the user's login, so that
+    their secret storage can be unlocked when the user logins into their
+    session. It is based around a standard called PKCS#11, which is a
+    standard way for applications to manage certificates and keys on
+    smart cards or secure storage.
+  </longdescription>
+  <use>
+    <flag name="ssh-agent">Use GNOME Keyring to unlock SSH keys. Recommended unless you are using ECDSA or Ed25519 keys.</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gnome-keyring</remote-id>
+  </upstream>
 </pkgmetadata>
