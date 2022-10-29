@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<use>
-		<flag name="heif">Enable support for ISO/IEC 23008-12:2017 HEIF/HEIC image format using <pkg>media-libs/libheif</pkg></flag>
-		<flag name="http">Enable webservice integration through <pkg>net-libs/webkit-gtk</pkg></flag>
-		<flag name="jpegxl">Support for JPEG XL image format</flag>
-		<flag name="slideshow">Enable slideshow plugin</flag>
-	</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="heif">Enable support for ISO/IEC 23008-12:2017 HEIF/HEIC image format using <pkg>media-libs/libheif</pkg></flag>
+    <flag name="http">Enable webservice integration through <pkg>net-libs/webkit-gtk</pkg></flag>
+    <flag name="jpegxl">Support for JPEG XL image format</flag>
+    <flag name="slideshow">Enable slideshow plugin</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gthumb</remote-id>
+  </upstream>
 </pkgmetadata>
