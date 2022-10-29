@@ -24,10 +24,11 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
 	qt5? ( dev-qt/qtgui:5 )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-libs/gobject-introspection-common
-	dev-util/gtk-doc
 	virtual/pkgconfig
+	gtk-doc? ( dev-util/gtk-doc )
 	vala? ( $(vala_depend) )
 "
 
