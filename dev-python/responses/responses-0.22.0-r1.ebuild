@@ -16,6 +16,8 @@ HOMEPAGE="
 SRC_URI="
 	https://github.com/getsentry/responses/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
+	https://github.com/getsentry/responses/pull/596.patch
+		-> ${P}-tomli.patch
 "
 
 LICENSE="Apache-2.0"
@@ -25,7 +27,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 RDEPEND="
 	<dev-python/requests-3[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.22.0[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
+	dev-python/tomli[${PYTHON_USEDEP}]
+	dev-python/tomli-w[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.25.10[${PYTHON_USEDEP}]
 "
 
@@ -36,3 +39,7 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${DISTDIR}"/${P}-tomli.patch
+)
