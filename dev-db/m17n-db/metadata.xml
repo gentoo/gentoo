@@ -5,4 +5,7 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="savannah-nongnu">m17n</remote-id>
+	</upstream>
 </pkgmetadata>
