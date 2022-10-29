@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<longdescription>
-	GNOME Shell provides core user interface functions for the GNOME 3
-	desktop, like switching to windows and launching applications.
-	GNOME Shell takes advantage of the capabilities of modern graphics
-	hardware and introduces innovative user interface concepts to
-	provide a visually attractive and easy to use experience.
-</longdescription>
-<use>
-	<flag name="browser-extension">Ensure the presence of extensions.gnome.org
-		native connector <pkg>gnome-extra/gnome-browser-connector</pkg></flag>
-	<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking
-		and suspend support.</flag>
-	<flag name="ibus">Enable support for enhanced input methods through
-		<pkg>app-i18n/ibus</pkg></flag>
-	<flag name="telepathy">Ensure presence of telepathy chat integration</flag>
-</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription>
+    GNOME Shell provides core user interface functions for the GNOME 3
+    desktop, like switching to windows and launching applications.
+    GNOME Shell takes advantage of the capabilities of modern graphics
+    hardware and introduces innovative user interface concepts to
+    provide a visually attractive and easy to use experience.
+  </longdescription>
+  <use>
+    <flag name="browser-extension">Ensure the presence of extensions.gnome.org native connector <pkg>gnome-extra/gnome-browser-connector</pkg></flag>
+    <flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking and suspend support.</flag>
+    <flag name="ibus">Enable support for enhanced input methods through <pkg>app-i18n/ibus</pkg></flag>
+    <flag name="telepathy">Ensure presence of telepathy chat integration</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gnome-shell</remote-id>
+  </upstream>
 </pkgmetadata>
