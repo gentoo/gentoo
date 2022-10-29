@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Compact many CSS files into one big file"
 # License note: "perl 5.8.3 or later" bug https://bugs.gentoo.org/718946
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
