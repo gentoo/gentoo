@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="
-	>=media-libs/libopenraw-0.1.0[gtk]
+	>=media-libs/libopenraw-0.1.0:=[gtk]
 	>=x11-libs/gdk-pixbuf-2:2
 	>=dev-libs/glib-2.26:2
 	!media-gfx/raw-thumbnailer
