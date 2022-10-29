@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<use>
-		<flag name="pkcs11">Enable PKCS#11 support in certificate chooser via <pkg>app-crypt/gcr</pkg></flag>
-	</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="pkcs11">Enable PKCS#11 support in certificate chooser via <pkg>app-crypt/gcr</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/libnma</remote-id>
+  </upstream>
 </pkgmetadata>
