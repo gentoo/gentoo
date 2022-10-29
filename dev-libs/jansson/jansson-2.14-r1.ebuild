@@ -29,7 +29,7 @@ src_compile() {
 
 	if use doc ; then
 		emake html
-		HTML_DOCS=( "${BUILD_DIR}"/doc/_build/html/. )
+		HTML_DOCS=( doc/_build/html/. )
 	fi
 }
 
