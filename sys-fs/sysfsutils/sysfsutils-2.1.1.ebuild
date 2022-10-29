@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools usr-ldscript
 
 DESCRIPTION="System Utilities Based on Sysfs"
-HOMEPAGE="http://linux-diag.sourceforge.net/Sysfsutils.html https://github.com/linux-ras/sysfsutils"
+HOMEPAGE="https://linux-diag.sourceforge.net/Sysfsutils.html https://github.com/linux-ras/sysfsutils"
 SRC_URI="https://github.com/linux-ras/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
