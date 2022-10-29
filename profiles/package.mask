@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-10-29)
+# Unmaintained in Gentoo.  Last release in 2018, very little upstream
+# activity since.  No revdeps left.
+# Removal on 2022-11-28.  Bug #842873.
+dev-libs/cloog
+
 # Sam James <sam@gentoo.org> (2022-10-28)
 # Please upgrade to >=media-libs/fontconfig-2.14.1-r1 for fixed
 # cache dir to avoid sandbox violation errors, bug #878471.
