@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<slots>
-		<subslots>libqmi-glib.so soname version</subslots>
-	</slots>
-	<use>
-		<flag name="mbim">Support QMI over Mobile Broadband Interface Model (MBIM)</flag>
-		<flag name="qrtr">Support QMI over IPC Router bus (QRTR)</flag>
-	</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <slots>
+    <subslots>libqmi-glib.so soname version</subslots>
+  </slots>
+  <use>
+    <flag name="mbim">Support QMI over Mobile Broadband Interface Model (MBIM)</flag>
+    <flag name="qrtr">Support QMI over IPC Router bus (QRTR)</flag>
+  </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">mobile-broadband/libqmi</remote-id>
+  </upstream>
 </pkgmetadata>
