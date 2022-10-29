@@ -1,0 +1,93 @@
+https://github.com/brailcom/speechd/commit/db21e5fe4b3155734f60a67c8ab5da6b53174e1b
+https://github.com/brailcom/speechd/pull/783
+https://bugs.gentoo.org/877339
+
+From db21e5fe4b3155734f60a67c8ab5da6b53174e1b Mon Sep 17 00:00:00 2001
+From: Bernard Cafarelli <bernard.cafarelli@gmail.com>
+Date: Mon, 17 Oct 2022 15:28:37 +0200
+Subject: [PATCH] Fix audio plugin loading with dlopen
+
+dlopen needs the full name including .so extension
+Set SPD_AUDIO_PLUGIN_ENTRY to correct name (ltdl adds a prefix)
+--- a/src/audio/alsa.c
++++ b/src/audio/alsa.c
+@@ -37,7 +37,11 @@
+ #include <alsa/asoundlib.h>
+ #include <alsa/pcm.h>
+ 
++#ifdef USE_DLOPEN
++#define SPD_AUDIO_PLUGIN_ENTRY spd_audio_plugin_get
++#else
+ #define SPD_AUDIO_PLUGIN_ENTRY spd_alsa_LTX_spd_audio_plugin_get
++#endif
+ #include <spd_audio_plugin.h>
+ 
+ typedef struct {
+--- a/src/audio/libao.c
++++ b/src/audio/libao.c
+@@ -32,7 +32,11 @@
+ #include <glib.h>
+ #include <ao/ao.h>
+ 
++#ifdef USE_DLOPEN
++#define SPD_AUDIO_PLUGIN_ENTRY spd_audio_plugin_get
++#else
+ #define SPD_AUDIO_PLUGIN_ENTRY spd_libao_LTX_spd_audio_plugin_get
++#endif
+ #include <spd_audio_plugin.h>
+ 
+ /* send a packet of XXX bytes to the sound device */
+--- a/src/audio/nas.c
++++ b/src/audio/nas.c
+@@ -32,7 +32,11 @@
+ 
+ #include <pthread.h>
+ 
++#ifdef USE_DLOPEN
++#define SPD_AUDIO_PLUGIN_ENTRY spd_audio_plugin_get
++#else
+ #define SPD_AUDIO_PLUGIN_ENTRY spd_nas_LTX_spd_audio_plugin_get
++#endif
+ #include <spd_audio_plugin.h>
+ 
+ typedef struct {
+--- a/src/audio/oss.c
++++ b/src/audio/oss.c
+@@ -39,7 +39,11 @@
+ 
+ #include <sys/soundcard.h>
+ 
++#ifdef USE_DLOPEN
++#define SPD_AUDIO_PLUGIN_ENTRY spd_audio_plugin_get
++#else
+ #define SPD_AUDIO_PLUGIN_ENTRY spd_oss_LTX_spd_audio_plugin_get
++#endif
+ #include <spd_audio_plugin.h>
+ 
+ typedef struct {
+--- a/src/audio/pulse.c
++++ b/src/audio/pulse.c
+@@ -51,7 +51,11 @@
+ #include <pulse/simple.h>
+ #include <pulse/error.h>
+ 
++#ifdef USE_DLOPEN
++#define SPD_AUDIO_PLUGIN_ENTRY spd_audio_plugin_get
++#else
+ #define SPD_AUDIO_PLUGIN_ENTRY spd_pulse_LTX_spd_audio_plugin_get
++#endif
+ #include <spd_audio_plugin.h>
+ 
+ typedef struct {
+--- a/src/common/spd_audio.c
++++ b/src/common/spd_audio.c
+@@ -120,7 +120,7 @@ AudioID *spd_audio_open(const char *name, void **pars, char **error)
+ 		plugin_dir = PLUGIN_DIR;
+ 
+ #ifdef USE_DLOPEN
+-	libname = g_strdup_printf("%s/" SPD_AUDIO_LIB_PREFIX "%s", plugin_dir, name);
++	libname = g_strdup_printf("%s/" SPD_AUDIO_LIB_PREFIX "%s.so", plugin_dir, name);
+ 	dlhandle = dlopen(libname, RTLD_NOW | RTLD_GLOBAL);
+ 
+ 	g_free(libname);
+
