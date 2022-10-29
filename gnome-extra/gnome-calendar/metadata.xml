@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription lang="en">GNOME Calendar is a simple and beautiful calendar application designed to
-perfectly fit the GNOME desktop. By reusing the components which the GNOME
-desktop is built on, Calendar nicely integrates with the GNOME ecosystem.</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    GNOME Calendar is a simple and beautiful calendar application designed to
+    perfectly fit the GNOME desktop. By reusing the components which the GNOME
+    desktop is built on, Calendar nicely integrates with the GNOME ecosystem.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gnome-calendar</remote-id>
+  </upstream>
 </pkgmetadata>
