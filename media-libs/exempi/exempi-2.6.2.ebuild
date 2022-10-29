@@ -32,6 +32,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.2-iconv.patch
+	"${FILESDIR}"/${PN}-2.6.2-arm-static-build.patch
 )
 
 src_prepare() {
