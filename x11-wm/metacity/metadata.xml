@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="libcanberra">Enable sound event support using <pkg>media-libs/libcanberra</pkg></flag>
-	<flag name="vulkan">Enable Vulkan based compositor support via META_COMPOSITOR=vulkan environment variable</flag>
-</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="libcanberra">Enable sound event support using <pkg>media-libs/libcanberra</pkg></flag>
+    <flag name="vulkan">Enable Vulkan based compositor support via META_COMPOSITOR=vulkan environment variable</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/metacity</remote-id>
+  </upstream>
 </pkgmetadata>
