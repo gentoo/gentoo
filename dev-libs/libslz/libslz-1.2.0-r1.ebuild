@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="MIT"
 SLOT="0/1"
-KEYWORDS="amd64 arm ~arm64 ~ppc x86"
+KEYWORDS="amd64 arm ~arm64 ppc x86"
 IUSE="tools"
 
 src_compile() {
