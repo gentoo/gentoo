@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-10-29)
+# Last upstream commit in 2016, no tests, implements functions
+# which are implemented by pathlib Python module. No reverse
+# dependencies in gentoo tree for a long time.
+# Removal: 2022-11-28.  Bug #878733.
+dev-python/pathtools
+
 # Michał Górny <mgorny@gentoo.org> (2022-10-29)
 # Unmaintained in Gentoo.  Last release in 2018, very little upstream
 # activity since.  No revdeps left.
