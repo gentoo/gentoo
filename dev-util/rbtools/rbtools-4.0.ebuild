@@ -31,7 +31,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( >=dev-python/kgb-6.1[${PYTHON_USEDEP}] dev-python/pytest-env[${PYTHON_USEDEP}] )
+	test? (
+		>=dev-python/kgb-6.1[${PYTHON_USEDEP}]
+		dev-python/pytest-env[${PYTHON_USEDEP}]
+		dev-vcs/git
+		dev-vcs/mercurial
+	)
 "
 
 DOCS=( AUTHORS NEWS README.md )
