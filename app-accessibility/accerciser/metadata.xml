@@ -10,4 +10,7 @@
 
   In essence, Accerciser is a next generation at-poke tool.
   </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/accerciser</remote-id>
+  </upstream>
 </pkgmetadata>
