@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<use>
-		<flag name="elogind">Rely on <pkg>sys-auth/elogind</pkg> as runtime logind provider</flag>
-		<flag name="modemmanager">Enable WWAN support via <pkg>net-misc/modemmanager</pkg></flag>
-		<flag name="systemd">Rely on <pkg>sys-apps/systemd</pkg> as runtime logind provider</flag>
-	</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="elogind">Rely on <pkg>sys-auth/elogind</pkg> as runtime logind provider</flag>
+    <flag name="modemmanager">Enable WWAN support via <pkg>net-misc/modemmanager</pkg></flag>
+    <flag name="systemd">Rely on <pkg>sys-apps/systemd</pkg> as runtime logind provider</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gnome-settings-daemon</remote-id>
+  </upstream>
 </pkgmetadata>
