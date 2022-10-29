@@ -36,9 +36,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	doc? (
-		virtual/latex-base
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsextra
+		virtual/latex-base
 	)
 "
 
