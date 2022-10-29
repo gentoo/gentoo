@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="chromaprint">Enable Chromaprint support</flag>
-	<flag name="daap">Enable dmap support through <pkg>net-libs/libdmapsharing</pkg></flag>
-	<flag name="flickr">Enable Flickr support</flag>
-	<flag name="freebox">Build support for viewing TV channels using Freebox</flag>
-	<flag name="gnome-online-accounts">Enable <pkg>net-libs/gnome-online-accounts</pkg> support</flag>
-	<flag name="thetvdb">Build support for thetvdb.com</flag>
-	<flag name="tracker">Build support for content discovery using the <pkg>app-misc/tracker</pkg> indexer</flag>
-	<flag name="youtube">Build support for YouTube content discovery using <pkg>dev-libs/libgdata</pkg></flag>
-</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="chromaprint">Enable Chromaprint support</flag>
+    <flag name="daap">Enable dmap support through <pkg>net-libs/libdmapsharing</pkg></flag>
+    <flag name="flickr">Enable Flickr support</flag>
+    <flag name="freebox">Build support for viewing TV channels using Freebox</flag>
+    <flag name="gnome-online-accounts">Enable <pkg>net-libs/gnome-online-accounts</pkg> support</flag>
+    <flag name="thetvdb">Build support for thetvdb.com</flag>
+    <flag name="tracker">Build support for content discovery using the <pkg>app-misc/tracker</pkg> indexer</flag>
+    <flag name="youtube">Build support for YouTube content discovery using <pkg>dev-libs/libgdata</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/grilo-plugins</remote-id>
+  </upstream>
 </pkgmetadata>
