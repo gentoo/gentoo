@@ -160,7 +160,7 @@ multilib_src_install_all() {
 	fi
 
 	if [[ -e ${ED}/usr/share/doc/fontconfig/ ]] ;  then
-		mv "${ED}"/usr/share/doc/fontconfig/* "${ED}"/usr/share/doc/${P} || die
+		mv "${ED}"/usr/share/doc/fontconfig/* "${ED}"/usr/share/doc/${PF} || die
 		rm -rf "${ED}"/usr/share/doc/fontconfig || die
 	fi
 
