@@ -1,8 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit multilib-minimal
+EAPI=8
+
+inherit multilib multilib-minimal
 
 DESCRIPTION="A library to play a wide range of module formats"
 HOMEPAGE="http://mikmod.sourceforge.net/"
@@ -15,23 +16,27 @@ IUSE="+alsa coreaudio cpu_flags_ppc_altivec debug nas openal oss pulseaudio cpu_
 
 REQUIRED_USE="|| ( alsa coreaudio nas openal oss pulseaudio )"
 
-RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.27.2:=[${MULTILIB_USEDEP}] )
+RDEPEND="
+	!${CATEGORY}/${PN}:2
+	alsa? ( >=media-libs/alsa-lib-1.0.27.2:=[${MULTILIB_USEDEP}] )
 	nas? ( >=media-libs/nas-1.9.4:=[${MULTILIB_USEDEP}] )
 	openal? ( >=media-libs/openal-1.15.1-r1[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-sound/pulseaudio-5.0[${MULTILIB_USEDEP}] )
-	!${CATEGORY}/${PN}:2"
+"
 DEPEND="${RDEPEND}
-	sys-apps/texinfo
-	oss? ( virtual/os-headers )"
+	oss? ( virtual/os-headers )
+"
+BDEPEND="sys-apps/texinfo"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/libmikmod-config
 )
 
 src_prepare() {
+	default
+
 	# USE=debug enables Werror, bug #621688
 	sed -i -e 's/-Werror//' configure || die
-	default
 }
 
 multilib_src_configure() {
@@ -44,8 +49,7 @@ multilib_src_configure() {
 	fi
 
 	# sdl, sdl2: missing multilib supported ebuilds, temporarily disabled, remember to update REQUIRED_USE
-	ECONF_SOURCE=${S} \
-	econf \
+	ECONF_SOURCE=${S} econf \
 		$(use_enable alsa) \
 		$(use_enable nas) \
 		$(use_enable pulseaudio) \
@@ -70,5 +74,6 @@ multilib_src_install_all() {
 	dodoc AUTHORS NEWS README TODO
 	docinto html
 	dodoc docs/*.html
+
 	find "${ED}" -name '*.la' -delete || die
 }
