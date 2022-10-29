@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<upstream>
-	<remote-id type="cpe">cpe:/a:libndp:libndp</remote-id>
-</upstream>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:libndp:libndp</remote-id>
+    <remote-id type="github">jpirko/libndp</remote-id>
+  </upstream>
 </pkgmetadata>
