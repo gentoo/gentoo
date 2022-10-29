@@ -3,12 +3,11 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..11} )
 inherit autotools bash-completion-r1 elisp-common python-single-r1
 
 DESCRIPTION="Program matching and transformation engine"
-HOMEPAGE="https://coccinelle.gitlabpages.inria.fr/website/"
+HOMEPAGE="https://coccinelle.gitlabpages.inria.fr/website/ https://gitlab.inria.fr/coccinelle/coccinelle"
 SRC_URI="https://gitlab.inria.fr/coccinelle/coccinelle/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
