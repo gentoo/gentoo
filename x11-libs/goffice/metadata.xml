@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>soap@gentoo.org</email>
-		<name>David Seifert</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription lang="en">
-		GOffice is a library of document-centric objects and utilities building
-		on top of GLib and Gtk+ and used by software such as Gnumeric.
-	</longdescription>
+  <maintainer type="person">
+    <email>soap@gentoo.org</email>
+    <name>David Seifert</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    GOffice is a library of document-centric objects and utilities building
+    on top of GLib and Gtk+ and used by software such as Gnumeric.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/goffice</remote-id>
+  </upstream>
 </pkgmetadata>
