@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription lang="en">
-	GParted is the Gnome Partition Editor. It can create, grow, shrink, move and
-	copy various filesystems.
-	</longdescription>
-	<longdescription lang="fr">
-	GParted est l'éditeur de partition de Gnome. Il peut créer, redimensionner,
-	déplacer et copier différents systèmes de fichiers.
-	</longdescription>
-	<use>
-		<flag name="wayland">Enable interim workaround to allow running GParted under
-		Wayland by granting permission to the X11 display using <pkg>x11-apps/xhost</pkg>.</flag>
-	</use>
-	<upstream>
-		<remote-id type="sourceforge">gparted</remote-id>
-		<remote-id type="cpe">cpe:/a:gparted:gparted</remote-id>
-	</upstream>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    GParted is the Gnome Partition Editor. It can create, grow, shrink, move and
+    copy various filesystems.
+    </longdescription>
+  <longdescription lang="fr">
+    GParted est l'éditeur de partition de Gnome. Il peut créer, redimensionner,
+    déplacer et copier différents systèmes de fichiers.
+  </longdescription>
+  <use>
+    <flag name="wayland">Enable interim workaround to allow running GParted under Wayland by granting permission to the X11 display using <pkg>x11-apps/xhost</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">gparted</remote-id>
+    <remote-id type="cpe">cpe:/a:gparted:gparted</remote-id>
+    <remote-id type="gnome-gitlab">GNOME/gparted</remote-id>
+  </upstream>
 </pkgmetadata>
