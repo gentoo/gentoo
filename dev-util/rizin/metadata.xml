@@ -9,4 +9,7 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">rizinorg/rizin</remote-id>
+	</upstream>
 </pkgmetadata>
