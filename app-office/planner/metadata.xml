@@ -8,4 +8,7 @@
   <use>
     <flag name="libgda">Database/GDA support</flag>
   </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">World/planner</remote-id>
+  </upstream>
 </pkgmetadata>
