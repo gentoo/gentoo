@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
+DISTUTILS_USE_PEP517=setuptools
 
 if [[ ${PV} = *9999* ]]; then
 	scm_eclass=git-r3
@@ -37,8 +38,3 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-
-PATCHES=(
-	# https://github.com/Becksteinlab/GromacsWrapper/issues/182
-	"${FILESDIR}"/${P}-tests-package.patch
-)
