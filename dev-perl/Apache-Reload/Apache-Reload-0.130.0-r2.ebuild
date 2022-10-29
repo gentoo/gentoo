@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ DESCRIPTION="Automatically reload changed modules without restarting Apache"
 
 SLOT="0"
 LICENSE="Apache-2.0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~riscv x86"
 
 RDEPEND="www-apache/mod_perl"
 BDEPEND="${RDEPEND}
