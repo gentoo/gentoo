@@ -47,11 +47,6 @@ BDEPEND="
 
 S="${WORKDIR}/${P#*-}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-no-mqtt.patch
-	"${FILESDIR}"/${PN}-build.patch
-)
-
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 }
