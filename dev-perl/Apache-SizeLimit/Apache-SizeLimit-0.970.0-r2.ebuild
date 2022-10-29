@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Graceful exit for large children"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~riscv x86"
 LICENSE="Apache-2.0"
 IUSE="test"
 RESTRICT="!test? ( test )"
