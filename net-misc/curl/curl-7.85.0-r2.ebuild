@@ -58,7 +58,7 @@ RDEPEND="ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 		net-libs/nghttp3[${MULTILIB_USEDEP}]
 		net-libs/ngtcp2[ssl,${MULTILIB_USEDEP}]
 	)
-	quiche? ( >=net-libs/quiche-0.3.0[${MULTILIB_USEDEP}] )
+	quiche? ( >=net-libs/quiche-0.15.0[${MULTILIB_USEDEP}] )
 	idn? ( net-dns/libidn2:0=[static-libs?,${MULTILIB_USEDEP}] )
 	adns? ( net-dns/c-ares:0=[${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
