@@ -1,9 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-VALA_USE_DEPEND="vapigen"
-PYTHON_COMPAT=( python3_{7..10} )
+EAPI=7
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit gnome.org meson-multilib python-single-r1 vala xdg
