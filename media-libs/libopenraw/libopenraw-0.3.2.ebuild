@@ -69,7 +69,6 @@ BDEPEND="
 src_configure() {
 	econf \
 		--with-boost="${EPREFIX}"/usr \
-		--disable-static \
 		$(use_enable gtk gnome)
 }
 
