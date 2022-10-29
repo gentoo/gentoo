@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-<flag name="valgrind">Compile in valgrind memory hints</flag>
-</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="valgrind">Compile in valgrind memory hints</flag>
+  </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">farstream/farstream</remote-id>
+  </upstream>
 </pkgmetadata>
