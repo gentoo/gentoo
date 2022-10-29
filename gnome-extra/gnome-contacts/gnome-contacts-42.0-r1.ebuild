@@ -27,7 +27,7 @@ VALA_DEPEND="
 "
 RDEPEND="
 	>=gnome-extra/evolution-data-server-3.30:=[gnome-online-accounts]
-	>=dev-libs/folks-0.11.4:=[eds,telepathy?]
+	>=dev-libs/folks-0.14.0:=[eds,telepathy?]
 	>=dev-libs/glib-2.58:2
 	>=dev-libs/libgee-0.10:0.8
 	net-libs/gnome-online-accounts:=
@@ -35,6 +35,7 @@ RDEPEND="
 	gui-libs/libadwaita:1
 	telepathy? ( >=net-libs/telepathy-glib-0.22 )
 	>=gui-libs/libhandy-1.0.0:1
+	>=dev-libs/libportal-0.6:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
