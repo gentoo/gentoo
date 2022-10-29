@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="unwind">Use <pkg>sys-libs/libunwind</pkg> to unwind the stack</flag>
-</use>
-<longdescription lang="en">
-	Sysprof is a sampling CPU profiler for Linux that profiles the entire system,
-	not just a single application.
-	Sysprof handles shared libraries and applications do not need to be recompiled.
-	In fact they don't even have to be restarted.
-</longdescription>
-<slots>
-	<subslots>sysprof and sysprof-ui API version</subslots>
-</slots>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="unwind">Use <pkg>sys-libs/libunwind</pkg> to unwind the stack</flag>
+  </use>
+  <longdescription lang="en">
+    Sysprof is a sampling CPU profiler for Linux that profiles the entire
+    system, not just a single application.
+    Sysprof handles shared libraries and applications do not need to be
+    recompiled. In fact they don't even have to be restarted.
+  </longdescription>
+  <slots>
+    <subslots>sysprof and sysprof-ui API version</subslots>
+  </slots>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/sysprof</remote-id>
+  </upstream>
 </pkgmetadata>
