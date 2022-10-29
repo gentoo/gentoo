@@ -30,14 +30,14 @@ COMMON_DEPEND="
 	>=x11-misc/shared-mime-info-0.20
 	exif? (
 		>=media-libs/libexif-0.6.14
-		virtual/jpeg:0
+		media-libs/libjpeg-turbo:=
 	)
 	imagemagick? ( >=media-gfx/imagemagick-6.2.6 )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.3:= )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	lcms? ( media-libs/lcms:2 )
 	svg? ( >=gnome-base/librsvg-2.36.2:2 )
-	xmp? ( >=media-libs/exempi-1.99.5:2 )
+	xmp? ( >=media-libs/exempi-1.99.5:2= )
 "
 
 RDEPEND="${COMMON_DEPEND}
