@@ -43,6 +43,12 @@ src_configure() {
 		$(use_enable nls)
 		$(use_with selinux)
 		$(use_with xattr xattrs)
+
+		# autoconf looks for gtar before tar (in configure scripts), hence
+		# in Prefix it is important that it is there, otherwise, a gtar from
+		# the host system (FreeBSD, Solaris, Darwin) will be found instead
+		# of the Prefix provided (GNU) tar
+		--program-prefix=g
 	)
 
 	FORCE_UNSAFE_CONFIGURE=1 econf "${myeconfargs[@]}"
@@ -55,30 +61,24 @@ src_install() {
 	exeinto /etc
 	doexe "${FILESDIR}"/rmt
 
-	mv "${ED}"/usr/sbin/backup{,-tar} || die
-	mv "${ED}"/usr/sbin/restore{,-tar} || die
+	mv "${ED}"/usr/sbin/{gbackup,backup-tar} || die
+	mv "${ED}"/usr/sbin/{grestore,restore-tar} || die
+	mv "${ED}"/usr/sbin/{g,}backup.sh || die
+	mv "${ED}"/usr/sbin/{g,}dump-remind || die
 
 	if use minimal ; then
 		find "${ED}"/etc "${ED}"/*bin/ "${ED}"/usr/*bin/ \
-			-type f -a '!' '(' -name tar -o -name tar ')' \
+			-type f -a '!' -name gtar \
 			-delete || die
 	fi
 
-	# autoconf looks for gtar before tar (in configure scripts), hence
-	# in Prefix it is important that it is there, otherwise, a gtar from
-	# the host system (FreeBSD, Solaris, Darwin) will be found instead
-	# of the Prefix provided (GNU) tar
-	# rename tar to gtar, and make tar a symlink
-	mv "${ED}"/bin/{,g}tar || die
+	# make tar a symlink
 	dosym gtar /bin/tar
 
 	if ! use minimal; then
-		mv "${ED}"/usr/sbin/{,g}rmt || die
 		dosym grmt /usr/sbin/rmt
 	fi
 
-	mv "${ED}"/usr/share/man/man1/{,g}tar.1 || die
 	dosym gtar.1 /usr/share/man/man1/tar.1
-	mv "${ED}"/usr/share/man/man8/{,g}rmt.8 || die
 	dosym grmt.8 /usr/share/man/man8/rmt.8
 }
