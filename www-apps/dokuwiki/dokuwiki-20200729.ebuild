@@ -23,7 +23,7 @@ DESCRIPTION="DokuWiki is a simple to use Wiki aimed at a small company's documen
 HOMEPAGE="https://wiki.dokuwiki.org"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~sparc ~x86"
 IUSE="gd"
 
 DEPEND=""
