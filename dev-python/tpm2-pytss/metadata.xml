@@ -14,5 +14,6 @@
 	</use>
 	<upstream>
 		<remote-id type="pypi">tpm2-pytss</remote-id>
+		<remote-id type="github">tpm2-software/tpm2-pytss</remote-id>
 	</upstream>
 </pkgmetadata>
