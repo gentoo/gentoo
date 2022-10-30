@@ -11,4 +11,7 @@
 		<flag name="udev">Use <pkg>virtual/libudev</pkg> rules to handle devices' permissions and hotplug support. Unless you know what you're doing do not disable this flag on Linux kernels. This is provided as an option for completeness.</flag>
 		<flag name="policykit">Uses <pkg>sys-auth/polkit</pkg> to restrict access to smartcard readers or smartcards to given users.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">LudovicRousseau/PCSC</remote-id>
+	</upstream>
 </pkgmetadata>

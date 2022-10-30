@@ -6,5 +6,6 @@
 </maintainer>
 <upstream>
 	<remote-id type="cpe">cpe:/a:xfs:acl</remote-id>
+	<remote-id type="savannah-nongnu">acl</remote-id>
 </upstream>
 </pkgmetadata>

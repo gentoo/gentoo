@@ -1,0 +1,22 @@
+https://copr-dist-git.fedorainfracloud.org/cgit/@fedora-llvm-team/clang-rpm-config/clang-rpm-config.git/tree/zziplib-0001-Fix-Wint-conversion-warning.patch
+https://bugs.gentoo.org/869980
+https://github.com/gdraheim/zziplib/issues/140
+
+From 1189f99a7f84d6a5e66a6057abfe0543de48ec82 Mon Sep 17 00:00:00 2001
+From: Tom Stellard <tstellar@redhat.com>
+Date: Wed, 26 Oct 2022 05:32:17 +0000
+Subject: [PATCH] Fix -Wint-conversion warning
+
+/builddir/build/BUILD/zziplib-0.13.72/zzip/mmapped.c:685:24: error: incompatible integer to pointer conversion assigning to 'Bytef *' (aka 'unsigned char *') from 'off_t' (aka 'long') [-Wint-conversion]
+    file->zlib.next_in = offset;
+--- a/zzip/mmapped.c
++++ b/zzip/mmapped.c
+@@ -682,7 +682,7 @@ zzip_disk_entry_fopen(ZZIP_DISK * disk, ZZIP_DISK_ENTRY * entry)
+     file->zlib.zalloc = Z_NULL;
+     file->zlib.zfree = Z_NULL;
+     file->zlib.avail_in = csize;
+-    file->zlib.next_in = offset;
++    file->zlib.next_in = (Bytef*)offset;
+     ____;
+ 
+     DBG2("compressed size %i", (int) file->zlib.avail_in);

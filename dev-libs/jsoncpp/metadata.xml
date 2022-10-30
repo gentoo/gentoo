@@ -6,6 +6,7 @@
     <name>Michał Górny</name>
   </maintainer>
   <upstream>
+    <remote-id type="cpe">cpe:/a:jsoncpp_project:jsoncpp</remote-id>
     <remote-id type="github">open-source-parsers/jsoncpp</remote-id>
     <remote-id type="sourceforge">jsoncpp</remote-id>
   </upstream>

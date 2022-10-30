@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>soap@gentoo.org</email>
-		<name>David Seifert</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription lang="en">
-		The Link Grammar Parser is a syntactic parser of English, Russian, Arabic and Persian (and other languages as well),
-		based on Link Grammar, an original theory of syntax and morphology. Given a sentence, the system assigns to it a
-		syntactic structure, which consists of a set of labelled links connecting pairs of words. The parser also produces a "constituent" 
-		(HPSG style phrase tree) representation of a sentence (showing noun phrases, verb phrases, etc.).
-	</longdescription>
-	<use>
-		<flag name="aspell">Adds support for <pkg>app-text/aspell</pkg> spell checker</flag>
-		<flag name="hunspell">Adds support for <pkg>app-text/hunspell</pkg> spell checker</flag>
-	</use>
+  <maintainer type="person">
+    <email>soap@gentoo.org</email>
+    <name>David Seifert</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    The Link Grammar Parser is a syntactic parser of English, Russian, Arabic
+    and Persian (and other languages as well), based on Link Grammar, an
+    original theory of syntax and morphology. Given a sentence, the system
+    assigns to it a syntactic structure, which consists of a set of labelled
+    links connecting pairs of words. The parser also produces a "constituent"
+    (HPSG style phrase tree) representation of a sentence (showing noun phrases,
+    verb phrases, etc.).
+  </longdescription>
+  <use>
+    <flag name="aspell">Adds support for <pkg>app-text/aspell</pkg> spell checker</flag>
+    <flag name="hunspell">Adds support for <pkg>app-text/hunspell</pkg> spell checker</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">opencog/link-grammar</remote-id>
+  </upstream>
 </pkgmetadata>

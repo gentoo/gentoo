@@ -8,4 +8,7 @@
   <use>
     <flag name="webkit">Build with GepubWidget based on Webkit</flag>
   </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/libgepub</remote-id>
+  </upstream>
 </pkgmetadata>

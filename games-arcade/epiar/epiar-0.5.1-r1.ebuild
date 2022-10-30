@@ -4,6 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-1 )
+LUA_REQ_USE="deprecated"
 inherit autotools flag-o-matic lua-single
 
 DESCRIPTION="Space adventure/combat game"

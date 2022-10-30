@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}/jsonnet-0.16.0-libdir.patch"
 	"${FILESDIR}/jsonnet-0.16.0-cp-var.patch"
 	"${FILESDIR}/jsonnet-0.18.0-unbundle.patch"
+	"${FILESDIR}/jsonnet-0.18.0-gcc-13.patch"
 )
 
 distutils_enable_tests unittest

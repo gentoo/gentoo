@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<use>
-		<flag name="dvi">Enable the built-in DVI viewer</flag>
-		<flag name="nautilus">Enable property page extension in <pkg>gnome-base/nautilus</pkg></flag>
-		<flag name="postscript" restrict="&gt;=app-text/evince-3.26">Enable support for PostScript and Adobe Illustrator documents with <pkg>app-text/libspectre</pkg></flag>
-		<flag name="spell">Enable inline spell check for annotations via <pkg>app-text/gspell</pkg></flag>
-		<flag name="xps">Enable XPS viewer using <pkg>app-text/libgxps</pkg></flag>
-	</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="dvi">Enable the built-in DVI viewer</flag>
+    <flag name="nautilus">Enable property page extension in <pkg>gnome-base/nautilus</pkg></flag>
+    <flag name="postscript" restrict="&gt;=app-text/evince-3.26">Enable support for PostScript and Adobe Illustrator documents with <pkg>app-text/libspectre</pkg></flag>
+    <flag name="spell">Enable inline spell check for annotations via <pkg>app-text/gspell</pkg></flag>
+    <flag name="xps">Enable XPS viewer using <pkg>app-text/libgxps</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/evince</remote-id>
+  </upstream>
 </pkgmetadata>

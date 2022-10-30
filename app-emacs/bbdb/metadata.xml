@@ -18,5 +18,6 @@
 </use>
 <upstream>
   <remote-id type="sourceforge">bbdb</remote-id>
+  <remote-id type="savannah-nongnu">bbdb</remote-id>
 </upstream>
 </pkgmetadata>

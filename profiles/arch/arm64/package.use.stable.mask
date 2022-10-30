@@ -10,10 +10,6 @@ sci-mathematics/octave sundials
 # nor is sys-cluster/slurm yet
 sys-cluster/openmpi openmpi_rm_pbs openmpi_rm_slurm
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-03-03)
-# dev-util/kdevelop-php is not yet stable, bug #834530
-<kde-apps/umbrello-21.11.80 php
-
 # Michał Górny <mgorny@gentoo.org> (2021-12-31)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.

@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription>libdazzle is a collection of fancy features for GLib and Gtk+ that aren't quite
-		ready or generic enough for use inside those libraries. This is often a proving
-		ground for new widget prototypes. Applications such as Builder tend to drive
-		development of this project.</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription>
+    libdazzle is a collection of fancy features for GLib and Gtk+ that aren't
+    quite ready or generic enough for use inside those libraries. This is
+    often a proving ground for new widget prototypes. Applications such as
+    Builder tend to drive development of this project.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/libdazzle</remote-id>
+  </upstream>
 </pkgmetadata>

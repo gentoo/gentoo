@@ -12,15 +12,21 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="ipv6 nls selinux X"
+IUSE="ipv6 nls selinux test X"
+RESTRICT="!test? ( test )"
 
-RDEPEND="!=app-i18n/man-pages-l10n-4.0.0-r0
-	>=sys-libs/ncurses-5.7-r7:0=
+RDEPEND="
+	!=app-i18n/man-pages-l10n-4.0.0-r0
+	>=sys-libs/ncurses-5.7-r7:=
 	nls? ( virtual/libintl )
-	selinux? ( sys-libs/libselinux )"
+	selinux? ( sys-libs/libselinux )
+"
 DEPEND="${RDEPEND}"
-BDEPEND=">=sys-devel/libtool-2.2.6b
-	nls? ( sys-devel/gettext )"
+BDEPEND="
+	>=sys-devel/libtool-2.2.6b
+	nls? ( sys-devel/gettext )
+	test? ( dev-util/dejagnu )
+"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
@@ -39,6 +45,9 @@ src_configure() {
 		export ac_cv_func_malloc_0_nonnull=yes \
 			ac_cv_func_realloc_0_nonnull=yes
 	fi
+
+	# bug #802414
+	touch testsuite/global-conf.exp || die
 
 	local myeconfargs=(
 		--disable-harden-flags

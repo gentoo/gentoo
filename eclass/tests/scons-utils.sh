@@ -3,6 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+_PYTHON_R1=1
 source tests-common.sh || exit
 
 inherit scons-utils

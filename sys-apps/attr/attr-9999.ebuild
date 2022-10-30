@@ -3,9 +3,7 @@
 
 EAPI=8
 
-# autotools inherit only needed for 2.5.1-r1 patch for symvers
-# hopefully in next release
-inherit autotools flag-o-matic toolchain-funcs multilib-minimal usr-ldscript
+inherit flag-o-matic toolchain-funcs multilib-minimal usr-ldscript
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/${PN}.git"
@@ -27,7 +25,7 @@ IUSE="debug nls static-libs"
 BDEPEND="nls? ( sys-devel/gettext )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.5.1-fix-symver.patch
+	"${FILESDIR}"/${PN}-2.5.1-r2-fix-symver.patch
 )
 
 src_prepare() {
@@ -39,10 +37,7 @@ src_prepare() {
 		eautoreconf
 	else
 		# bug #580792
-		#elibtoolize
-
-		# Temporarily for 2.5.1-r1 for symver patch
-		eautoreconf
+		elibtoolize
 	fi
 }
 

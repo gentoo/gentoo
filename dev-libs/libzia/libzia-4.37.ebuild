@@ -25,7 +25,12 @@ BDEPEND="virtual/pkgconfig"
 
 MAKEOPTS+=" -j1"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.37-configure.patch"
+	)
+
 src_prepare() {
+	eapply ${PATCHES[@]}
 	eapply_user
 	sed -i -e "s/docsdir/#docsdir/g" \
 		-e "s/docs_/#docs_/g" Makefile.am || die

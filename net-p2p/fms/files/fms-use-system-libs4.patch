@@ -1,5 +1,5 @@
---- /CMakeLists.txt	2016-06-04 22:18:20.000000000 +0200
-+++ /CMakeLists.txt.new	2018-11-25 14:05:45.000000000 +0100
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -373,11 +373,17 @@
  ENDIF(AUDIO_CAPTCHA)
  
@@ -23,18 +23,3 @@
  
  	IF(FROST_SUPPORT)
  		ADD_DEFINITIONS(-DFROST_SUPPORT)
-@@ -405,3 +411,14 @@
- IF(BUILD_PLUGIN)
- 	ADD_SUBDIRECTORY(plugin)
- ENDIF(BUILD_PLUGIN)
-+
-+MESSAGE(STATUS "<<< Gentoo configuration >>>
-+Build type      ${CMAKE_BUILD_TYPE}
-+Install path    ${CMAKE_INSTALL_PREFIX}
-+Compiler flags:
-+C               ${CMAKE_C_FLAGS}
-+C++             ${CMAKE_CXX_FLAGS}
-+Linker flags:
-+Executable      ${CMAKE_EXE_LINKER_FLAGS}
-+Module          ${CMAKE_MODULE_LINKER_FLAGS}
-+Shared          ${CMAKE_SHARED_LINKER_FLAGS}\n")

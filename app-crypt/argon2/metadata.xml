@@ -17,6 +17,7 @@
 		<subslots>Reflect ABI of libargon2.so.</subslots>
 	</slots>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:argon2_project:argon2</remote-id>
 		<remote-id type="github">P-H-C/phc-winner-argon2</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">xmltoman</remote-id>
+		<remote-id type="github">atsb/xmltoman</remote-id>
 	</upstream>
 </pkgmetadata>

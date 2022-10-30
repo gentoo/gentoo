@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
@@ -46,6 +46,13 @@ PATCHES=(
 distutils_enable_sphinx docs \
 	dev-python/furo
 distutils_enable_tests pytest
+
+src_configure() {
+	# Avoid greedily trying -L/usr/lib, etc
+	# https://github.com/pyproj4/pyproj/blob/main/setup.py#L76
+	export PROJ_LIBDIR="${ESYSROOT}/usr/$(get_libdir)"
+	export PROJ_INCDIR="${ESYSROOT}/usr/include"
+}
 
 python_test() {
 	rm -rf pyproj || die

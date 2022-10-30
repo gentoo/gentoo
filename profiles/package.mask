@@ -33,15 +33,45 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-10-29)
+# Old slot with no reverse dependencies.
+# Removal on 2022-11-29
+dev-libs/libgweather:2
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-10-29)
+# Last upstream commit in 2016, no tests, implements functions
+# which are implemented by pathlib Python module. No reverse
+# dependencies in gentoo tree for a long time.
+# Removal: 2022-11-28.  Bug #878733.
+dev-python/pathtools
+
+# Michał Górny <mgorny@gentoo.org> (2022-10-29)
+# Unmaintained in Gentoo.  Last release in 2018, very little upstream
+# activity since.  No revdeps left.
+# Removal on 2022-11-28.  Bug #842873.
+dev-libs/cloog
+
+# Sam James <sam@gentoo.org> (2022-10-28)
+# Please upgrade to >=media-libs/fontconfig-2.14.1-r1 for fixed
+# cache dir to avoid sandbox violation errors, bug #878471.
+=media-libs/fontconfig-2.14.1
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-10-28)
+# Unmaintained upstream, no reverse dependencies, fails tests
+# Removal in 30 days
+dev-python/pweave
+
+# Michał Górny <mgorny@gentoo.org> (2022-10-28)
+# Originally last rited in Aug 2020 due to lack of Python 3 support.
+# The last rites were undone, however this package never got fixed.
+# Instead, it has been covered by incorrect "downgrade" mask since then.
+# Removal on 2022-11-11.  Bug #695010.
+app-i18n/scim-sunpinyin
+
 # Jonas Stein <jstein@gentoo.org> (2022-10-26)
 # Dead upstream, open bugs.
 # Removal after 2022-12-24.  Bug #878337.
 app-misc/tpconfig
-
-# Sam James <sam@gentoo.org> (2022-10-25)
-# Fails to build with Clang 16 but also modern linux-headers. No activity upstream.
-# Removal on 2022-10-25. bug #874420.
-net-misc/wol
 
 # Sam James <sam@gentoo.org> (2022-10-24)
 # Non-free licence which prohibits any patching. Fails to build with Clang 16.
@@ -641,12 +671,6 @@ media-plugins/kodi-game-libretro-dosbox
 # Guile in Gentoo is not slotted, so let's be cautious.
 # bug #705554, bug #689408.
 >=dev-scheme/guile-3.0.4
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-09-01)
-# Mismatched version (bug #695022). Masked to force upgrade to 2.0.4_pre20200306162733.
-# (Mask should remain after ebuilds are deleted, until 2021-03-01 or
-# until new upstream release with proper versioning.)
-~app-i18n/scim-sunpinyin-3.0.0_rc1
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths

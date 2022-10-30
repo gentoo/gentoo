@@ -1,5 +1,5 @@
---- /src/core/CLucene/queryParser/QueryParser.cpp.original	2018-08-02 15:11:33.157174224 +0200
-+++ /src/core/CLucene/queryParser/QueryParser.cpp	2018-08-02 15:12:33.189175705 +0200
+--- a/src/core/CLucene/queryParser/QueryParser.cpp
++++ b/src/core/CLucene/queryParser/QueryParser.cpp
 @@ -79,7 +79,7 @@
      _T("<RANGEEX_GOOP>")
  };
@@ -9,8 +9,8 @@
  const int32_t QueryParser::jj_la1_1[] = {0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x1,0x0,0x1,0x0,0x0,0x0,0x0};
  
  struct QueryParser::JJCalls {
---- /src/core/CLucene/queryParser/QueryParserTokenManager.cpp.original	2018-08-02 15:14:27.104178515 +0200
-+++ /src/core/CLucene/queryParser/QueryParserTokenManager.cpp	2018-08-02 15:15:10.399179583 +0200
+--- a/src/core/CLucene/queryParser/QueryParserTokenManager.cpp
++++ b/src/core/CLucene/queryParser/QueryParserTokenManager.cpp
 @@ -15,9 +15,9 @@
  
  CL_NS_DEF(queryParser)
@@ -23,8 +23,8 @@
  };
  const int32_t QueryParserTokenManager::jjnextStates[]={
  		15, 17, 18, 29, 32, 23, 33, 30, 20, 21, 32, 23, 33, 31, 34, 27,
---- /src/core/CLucene/document/DateTools.cpp.original	2018-08-02 15:20:28.903187441 +0200
-+++ /src/core/CLucene/document/DateTools.cpp	2018-08-02 15:20:35.441187602 +0200
+--- a/src/core/CLucene/document/DateTools.cpp
++++ b/src/core/CLucene/document/DateTools.cpp
 @@ -8,6 +8,7 @@
  
  #include "DateTools.h"

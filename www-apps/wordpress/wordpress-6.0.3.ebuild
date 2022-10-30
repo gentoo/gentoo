@@ -10,7 +10,7 @@ HOMEPAGE="https://wordpress.org/"
 SRC_URI="https://wordpress.org/${P/_rc/-RC}.tar.gz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="virtual/httpd-php
 	|| ( dev-lang/php[mysql] dev-lang/php[mysqli] )"

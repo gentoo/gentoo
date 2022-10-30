@@ -18,7 +18,7 @@ SRC_URI="https://github.com/stefanbirkner/${PN}/archive/${P}.tar.gz"
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 # Common dependencies
 # POM: pom.xml

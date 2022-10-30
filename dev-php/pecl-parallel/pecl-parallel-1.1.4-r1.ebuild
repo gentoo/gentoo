@@ -16,4 +16,4 @@ SRC_URI="${SRC_URI} -> ${P}.tgz"
 
 LICENSE="PHP-3.01"
 SLOT="7"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"

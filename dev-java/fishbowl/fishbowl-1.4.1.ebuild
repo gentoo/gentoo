@@ -19,7 +19,7 @@ SRC_URI="https://github.com/stefanbirkner/${PN}/archive/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 # Compile dependencies
 # POM: pom.xml

@@ -1,6 +1,5 @@
-diff -ru fox-1.7.67/lib/FXFont.cpp /var/tmp/portage/x11-libs/fox-1.7.67/work/fox-1.7.67/lib/FXFont.cpp
---- fox-1.7.67/lib/FXFont.cpp	2019-05-08 05:21:21.000000000 +0200
-+++ /var/tmp/portage/x11-libs/fox-1.7.67/work/fox-1.7.67/lib/FXFont.cpp	2019-12-16 22:19:32.510138232 +0100
+--- a/lib/FXFont.cpp
++++ b/lib/FXFont.cpp
 @@ -829,26 +829,26 @@
  
        // Weight
@@ -43,4 +42,3 @@ diff -ru fox-1.7.67/lib/FXFont.cpp /var/tmp/portage/x11-libs/fox-1.7.67/work/fox
          }
  
        FXTRACE((160,"%4d: dweight=%-3d dsize=%3d dslant=%d dsetwidth=%d dscalable=%d dpolymorph=%d xres=%-3d yres=%-3d xlfd=\"%s\"\n",f,dweight,dsize,dslant,dsetwidth,dscalable,dpolymorph,xres,yres,fontnames[f]));
-

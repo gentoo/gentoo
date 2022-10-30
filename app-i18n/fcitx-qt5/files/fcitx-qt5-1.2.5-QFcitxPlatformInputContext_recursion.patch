@@ -1,7 +1,7 @@
 https://github.com/fcitx/fcitx-qt5/commit/6f2033c497fe0da1fd197bc3be35695b11eafd93
 
---- /platforminputcontext/qfcitxplatforminputcontext.cpp
-+++ /platforminputcontext/qfcitxplatforminputcontext.cpp
+--- a/platforminputcontext/qfcitxplatforminputcontext.cpp
++++ b/platforminputcontext/qfcitxplatforminputcontext.cpp
 @@ -291,8 +291,21 @@
          return;
      }

@@ -150,16 +150,20 @@ kernel-build_src_test() {
 	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
 		INSTALL_MOD_PATH="${T}" "${targets[@]}"
 
-	local ver="${KV_FULL}${KV_LOCALVERSION}"
-	kernel-install_test "${ver}" \
+	local dir_ver=${PV}${KV_LOCALVERSION}
+	local relfile=${WORKDIR}/build/include/config/kernel.release
+	local module_ver
+	module_ver=$(<"${relfile}") || die
+
+	kernel-install_test "${module_ver}" \
 		"${WORKDIR}/build/$(dist-kernel_get_image_path)" \
-		"${T}/lib/modules/${ver}"
+		"${T}/lib/modules/${module_ver}"
 }
 
 # @FUNCTION: kernel-build_src_install
 # @DESCRIPTION:
 # Install the built kernel along with subset of sources
-# into /usr/src/linux-${KV_FULL}.  Install the modules.  Save the config.
+# into /usr/src/linux-${PV}.  Install the modules.  Save the config.
 kernel-build_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -177,14 +181,15 @@ kernel-build_src_install() {
 	# note: we're using mv rather than doins to save space and time
 	# install main and arch-specific headers first, and scripts
 	local kern_arch=$(tc-arch-kernel)
-	local ver="${KV_FULL}${KV_LOCALVERSION}"
-	dodir "/usr/src/linux-${ver}/arch/${kern_arch}"
-	mv include scripts "${ED}/usr/src/linux-${ver}/" || die
+	local dir_ver=${PV}${KV_LOCALVERSION}
+	local kernel_dir=/usr/src/linux-${dir_ver}
+	dodir "${kernel_dir}/arch/${kern_arch}"
+	mv include scripts "${ED}${kernel_dir}/" || die
 	mv "arch/${kern_arch}/include" \
-		"${ED}/usr/src/linux-${ver}/arch/${kern_arch}/" || die
+		"${ED}${kernel_dir}/arch/${kern_arch}/" || die
 	# some arches need module.lds linker script to build external modules
 	if [[ -f arch/${kern_arch}/kernel/module.lds ]]; then
-		insinto "/usr/src/linux-${ver}/arch/${kern_arch}/kernel"
+		insinto "${kernel_dir}/arch/${kern_arch}/kernel"
 		doins "arch/${kern_arch}/kernel/module.lds"
 	fi
 
@@ -192,7 +197,7 @@ kernel-build_src_install() {
 	find -type f '!' '(' -name 'Makefile*' -o -name 'Kconfig*' ')' \
 		-delete || die
 	find -type l -delete || die
-	cp -p -R * "${ED}/usr/src/linux-${ver}/" || die
+	cp -p -R * "${ED}${kernel_dir}/" || die
 
 	cd "${WORKDIR}" || die
 	# strip out-of-source build stuffs from modprep
@@ -203,31 +208,35 @@ kernel-build_src_install() {
 			'(' -name '.*' -a -not -name '.config' ')' \
 		')' -delete || die
 	rm modprep/source || die
-	cp -p -R modprep/. "${ED}/usr/src/linux-${ver}"/ || die
+	cp -p -R modprep/. "${ED}${kernel_dir}"/ || die
 
 	# install the kernel and files needed for module builds
-	insinto "/usr/src/linux-${ver}"
+	insinto "${kernel_dir}"
 	doins build/{System.map,Module.symvers}
 	local image_path=$(dist-kernel_get_image_path)
-	cp -p "build/${image_path}" "${ED}/usr/src/linux-${ver}/${image_path}" || die
+	cp -p "build/${image_path}" "${ED}${kernel_dir}/${image_path}" || die
 
 	# building modules fails with 'vmlinux has no symtab?' if stripped
-	use ppc64 && dostrip -x "/usr/src/linux-${ver}/${image_path}"
+	use ppc64 && dostrip -x "${kernel_dir}/${image_path}"
 
 	# Install vmlinux with debuginfo when requested
 	if use debug; then
 		if [[ "${image_path}" != "vmlinux" ]]; then
-			mv "build/vmlinux" "${ED}/usr/src/linux-${ver}/vmlinux" || die
+			mv "build/vmlinux" "${ED}${kernel_dir}/vmlinux" || die
 		fi
-		dostrip -x "/usr/src/linux-${ver}/vmlinux"
+		dostrip -x "${kernel_dir}/vmlinux"
 	fi
 
 	# strip empty directories
 	find "${D}" -type d -empty -exec rmdir {} + || die
 
+	local relfile=${ED}${kernel_dir}/include/config/kernel.release
+	local module_ver
+	module_ver=$(<"${relfile}") || die
+
 	# fix source tree and build dir symlinks
-	dosym ../../../usr/src/linux-${ver} /lib/modules/${ver}/build
-	dosym ../../../usr/src/linux-${ver} /lib/modules/${ver}/source
+	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/build"
+	dosym "../../../${kernel_dir}" "/lib/modules/${module_ver}/source"
 
 	save_config build/.config
 }

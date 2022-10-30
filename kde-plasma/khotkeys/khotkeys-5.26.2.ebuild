@@ -13,7 +13,7 @@ DESCRIPTION="KDE Plasma workspace hotkey module"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
 IUSE=""
 
 COMMON_DEPEND="

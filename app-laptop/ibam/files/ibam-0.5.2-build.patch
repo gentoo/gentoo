@@ -1,5 +1,5 @@
---- /Makefile
-+++ /Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -17,8 +17,8 @@
  #
  IBAM_VERSION=0.5.2

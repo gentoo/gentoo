@@ -17,7 +17,7 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${XORGHDRS}.tar.xz"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
 IUSE="emoji ibus +kaccounts scim screencast +semantic-desktop telemetry"
 
 COMMON_DEPEND="

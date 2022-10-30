@@ -23,11 +23,14 @@ RESTRICT="!test? ( test )"
 
 BUILD_DIR="${S}/build"
 
+# Zig requires zstd and zlib compression support in LLVM, if using LLVM backend (non-LLVM backends don't require these).
+# They are not required "on their own", so please don't add them here.
+# You can check https://github.com/ziglang/zig-bootstrap in future, to see
+# options that are passed to LLVM CMake building (excluding "static" ofc).
 DEPEND="
 	sys-devel/clang:${LLVM_MAX_SLOT}=
 	sys-devel/lld:${LLVM_MAX_SLOT}=
-	sys-devel/llvm:${LLVM_MAX_SLOT}=
-	>=sys-libs/zlib-1.2.12
+	sys-devel/llvm:${LLVM_MAX_SLOT}=[zstd]
 "
 
 RDEPEND="

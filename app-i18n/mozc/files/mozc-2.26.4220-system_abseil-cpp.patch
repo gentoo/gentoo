@@ -1,7 +1,7 @@
 https://github.com/google/mozc/issues/490
 
---- /src/base/absl.gyp
-+++ /src/base/absl.gyp
+--- a/src/base/absl.gyp
++++ b/src/base/absl.gyp
 @@ -28,119 +28,209 @@
  # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  
@@ -301,8 +301,8 @@ https://github.com/google/mozc/issues/490
        ],
      },
    ],
---- /src/config/config_test.gyp
-+++ /src/config/config_test.gyp
+--- a/src/config/config_test.gyp
++++ b/src/config/config_test.gyp
 @@ -36,6 +36,7 @@
          'config_handler_test.cc',
        ],
@@ -319,8 +319,8 @@ https://github.com/google/mozc/issues/490
          '../testing/testing.gyp:gtest_main',
          'config.gyp:character_form_manager',
        ],
---- /src/gyp/common.gypi
-+++ /src/gyp/common.gypi
+--- a/src/gyp/common.gypi
++++ b/src/gyp/common.gypi
 @@ -194,7 +194,13 @@
      'include_dirs': [
        '<(abs_depth)',
@@ -336,8 +336,8 @@ https://github.com/google/mozc/issues/490
      ],
      'mac_framework_headers': [],
      'target_conditions': [
---- /src/gyp/common_win.gypi
-+++ /src/gyp/common_win.gypi
+--- a/src/gyp/common_win.gypi
++++ b/src/gyp/common_win.gypi
 @@ -307,10 +307,16 @@
      'include_dirs': [
        '<(abs_depth)',
@@ -356,8 +356,8 @@ https://github.com/google/mozc/issues/490
      'msvs_configuration_attributes': {
        'CharacterSet': '<(win_char_set_unicode)',
      },
---- /src/gyp/defines.gypi
-+++ /src/gyp/defines.gypi
+--- a/src/gyp/defines.gypi
++++ b/src/gyp/defines.gypi
 @@ -63,6 +63,10 @@
      # use_libibus represents if ibus library is used or not.
      # This option is only for Linux.
@@ -369,8 +369,8 @@ https://github.com/google/mozc/issues/490
    },
    'target_defaults': {
      'defines': [
---- /src/gyp/directories.gypi
-+++ /src/gyp/directories.gypi
+--- a/src/gyp/directories.gypi
++++ b/src/gyp/directories.gypi
 @@ -31,7 +31,12 @@
    'variables': {
      # Top directory of third party libraries.
@@ -385,8 +385,8 @@ https://github.com/google/mozc/issues/490
  
      # Top directory of additional third party libraries.
      'ext_third_party_dir%': '<(abs_depth)/third_party',
---- /src/session/session_test.gyp
-+++ /src/session/session_test.gyp
+--- a/src/session/session_test.gyp
++++ b/src/session/session_test.gyp
 @@ -221,6 +221,7 @@
          'internal/key_event_transformer_test.cc',
        ],
@@ -395,8 +395,8 @@ https://github.com/google/mozc/issues/490
          '../base/base.gyp:base',
          '../converter/converter_base.gyp:converter_mock',
          '../engine/engine.gyp:mock_converter_engine',
---- /src/storage/storage_test.gyp
-+++ /src/storage/storage_test.gyp
+--- a/src/storage/storage_test.gyp
++++ b/src/storage/storage_test.gyp
 @@ -41,6 +41,7 @@
          'tiny_storage_test.cc',
        ],

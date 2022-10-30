@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="ldap">Enable seahorse to manipulate GPG keys on a LDAP server.</flag>
-</use>
-<longdescription>Seahorse is a GNOME application for managing encryption keys.
-It also integrates with nautilus, gedit and other places for encryption operations.
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="ldap">Enable seahorse to manipulate GPG keys on a LDAP server.</flag>
+  </use>
+  <longdescription>
+    Seahorse is a GNOME application for managing encryption keys.
+    It also integrates with nautilus, gedit and other places for encryption operations.
 
-With seahorse you can create and manage PGP keys, create and manage SSH keys,
-publish and retrieve keys from key servers, cache your passphrase so you
-don't have to keep typing it and backup your keys and keyring.
-</longdescription>
+    With seahorse you can create and manage PGP keys, create and manage SSH keys,
+    publish and retrieve keys from key servers, cache your passphrase so you
+    don't have to keep typing it and backup your keys and keyring.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/seahorse</remote-id>
+  </upstream>
 </pkgmetadata>

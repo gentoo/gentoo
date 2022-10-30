@@ -21,8 +21,10 @@ IUSE="doc"
 #RESTRICT="test" # bug 675854
 
 RDEPEND="~sys-libs/libapparmor-${PV}"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-lang/perl
+	sys-apps/which
 	sys-devel/bison
 	sys-devel/gettext
 	sys-devel/flex

@@ -24,7 +24,12 @@ RDEPEND="dev-libs/glib:2
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.37-configure.patch"
+	)
+
 src_prepare() {
+	eapply ${PATCHES[@]}
 	eapply_user
 	# fix destop file
 	sed -i -e "s/HamRadio/HamRadio;/" share/applications/tucnak.desktop || die
