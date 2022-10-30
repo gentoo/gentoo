@@ -38,11 +38,11 @@ BDEPEND="
 		>=dev-python/pymongo-4.1.1[${PYTHON_USEDEP}]
 		dev-python/Pyro4[${PYTHON_USEDEP}]
 		dev-python/pytest-freezegun[${PYTHON_USEDEP}]
+		dev-python/python-zstandard[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
 		>=dev-python/redis-py-4.2.2[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
-		dev-python/zstandard[${PYTHON_USEDEP}]
 	)
 "
 
@@ -90,5 +90,5 @@ pkg_postinst() {
 	optfeature "yaml backend" dev-python/pyyaml
 	optfeature "MessagePack (de)serializer for Python" dev-python/msgpack
 	optfeature "brotli compression" "app-arch/brotli[python]"
-	optfeature "zstd compression" dev-python/zstandard
+	optfeature "zstd compression" dev-python/python-zstandard
 }
