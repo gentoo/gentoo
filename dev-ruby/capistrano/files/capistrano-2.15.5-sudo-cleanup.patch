@@ -1,6 +1,5 @@
-diff -ur /usr/lib/ruby/gems/1.9.1/gems/capistrano-2.15.5/lib/capistrano/recipes/deploy.rb ./lib/capistrano/recipes/deploy.rb
---- ./lib/capistrano/recipes/deploy.rb	2014-08-13 15:11:31.423773610 +0200
-+++ /usr/lib/ruby/gems/1.9.1/gems/capistrano-2.15.5/lib/capistrano/recipes/deploy.rb	2014-05-04 11:40:39.000000000 +0200
+--- a/lib/capistrano/recipes/deploy.rb
++++ b/lib/capistrano/recipes/deploy.rb
 @@ -462,7 +462,7 @@
    DESC
    task :cleanup, :except => { :no_release => true } do
