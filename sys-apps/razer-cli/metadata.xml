@@ -14,7 +14,7 @@
     Pywal's colors.
   </longdescription>
   <upstream>
-    <bugs-to>https://gitlab.com/LoLei/razer-cli/-/issues/</bugs-to>
-    <remote-id type="gitlab">LoLei/razer-cli</remote-id>
+    <bugs-to>https://github.com/LoLei/razer-cli/-/issues/</bugs-to>
+    <remote-id type="github">LoLei/razer-cli</remote-id>
   </upstream>
 </pkgmetadata>
