@@ -11,5 +11,6 @@
 	<upstream>
 		<remote-id type="pypi">pycdio</remote-id>
 		<remote-id type="github">rocky/pycdio</remote-id>
+		<remote-id type="savannah">libcdio</remote-id>
 	</upstream>
 </pkgmetadata>
