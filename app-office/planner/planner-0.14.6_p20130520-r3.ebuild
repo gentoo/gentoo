@@ -58,7 +58,7 @@ src_configure() {
 }
 
 src_install() {
-	gnome2_src_install
+	MAKEOPTS="${MAKEOPTS} -j1" gnome2_src_install
 	mv "${ED}"/usr/share/doc/planner "${ED}"/usr/share/doc/${PF} || die
 	if ! use examples; then
 		rm -rf "${D}/usr/share/doc/${PF}/examples"
