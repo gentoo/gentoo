@@ -2,8 +2,8 @@ https://github.com/google/glog/issues/649
 https://github.com/google/glog/pull/650
 https://github.com/google/glog/commit/86fea1ab254c463cbb72e5ce8bcc6855bc4e1e9c
 
---- /src/glog/vlog_is_on.h.in
-+++ /src/glog/vlog_is_on.h.in
+--- a/src/glog/vlog_is_on.h.in
++++ b/src/glog/vlog_is_on.h.in
 @@ -81,10 +81,10 @@
  // parsing of --vmodule flag and/or SetVLOGLevel calls.
  #define VLOG_IS_ON(verboselevel)                                \
@@ -41,8 +41,8 @@ https://github.com/google/glog/commit/86fea1ab254c463cbb72e5ce8bcc6855bc4e1e9c
      @ac_google_namespace@::int32* site_default,
      const char* fname,
      @ac_google_namespace@::int32 verbose_level);
---- /src/logging_unittest.cc
-+++ /src/logging_unittest.cc
+--- a/src/logging_unittest.cc
++++ b/src/logging_unittest.cc
 @@ -98,6 +98,7 @@
  static void TestRawLogging();
  static void LogWithLevels(int v, int severity, bool err, bool alsoerr);
@@ -84,8 +84,8 @@ https://github.com/google/glog/commit/86fea1ab254c463cbb72e5ce8bcc6855bc4e1e9c
  TEST(DeathRawCHECK, logging) {
    ASSERT_DEATH(RAW_CHECK(false, "failure 1"),
                 "RAW: Check false failed: failure 1");
---- /src/vlog_is_on.cc
-+++ /src/vlog_is_on.cc
+--- a/src/vlog_is_on.cc
++++ b/src/vlog_is_on.cc
 @@ -125,6 +125,8 @@
  // Pointer to head of the VModuleInfo list.
  // It's a map from module pattern to logging level for those module(s).
