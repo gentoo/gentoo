@@ -11,10 +11,10 @@ inherit distutils-r1
 DESCRIPTION="Meson PEP 517 Python build backend"
 HOMEPAGE="
 	https://pypi.org/project/meson-python/
-	https://github.com/FFY00/meson-python/
+	https://github.com/mesonbuild/meson-python/
 "
 SRC_URI="
-	https://github.com/FFY00/meson-python/archive/${PV}.tar.gz
+	https://github.com/mesonbuild/meson-python/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
