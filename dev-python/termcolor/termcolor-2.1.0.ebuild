@@ -13,7 +13,8 @@ HOMEPAGE="
 	https://github.com/termcolor/termcolor/
 	https://pypi.org/project/termcolor/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+# rename is for avoiding conflict with dev-cpp/termcolor
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz -> python-${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
