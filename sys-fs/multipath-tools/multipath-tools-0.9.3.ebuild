@@ -29,11 +29,9 @@ BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="~DM_MULTIPATH"
 
-PATCHES=( )
-
 src_prepare() {
 	default
-	# life is too short for some trivial patches
+
 	sed -r -i -e '/^(CPPFLAGS|CFLAGS)\>/s,^(CPPFLAGS|CFLAGS)\>[[:space:]]+:=,\1 := $(GENTOO_\1),' \
 		"${S}"/Makefile.inc || die
 }
@@ -55,7 +53,9 @@ src_compile() {
 
 src_install() {
 	dodir /sbin
-	# upstream makefile has terrible $(prefix) choices
+
+	# Please clean this up > 0.9.3: https://github.com/opensvc/multipath-tools/pull/53
+	# $(prefix) doesn't work correctly in makefile in 0.9.3.
 	emake \
 		DESTDIR="${ED}" \
 		prefix="${EPREFIX}" \
@@ -67,6 +67,7 @@ src_install() {
 		GENTOO_CFLAGS="${CFLAGS}" \
 		GENTOO_CPPFLAGS="${CPPFLAGS}" \
 		install
+
 	rmdir "${ED}"/usr/include
 	rmdir "${ED}"/usr/share
 	mv "${ED}"/include "${ED}"/usr/include || die
