@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-info systemd toolchain-funcs udev
+inherit linux-info systemd toolchain-funcs udev tmpfiles
 
 DESCRIPTION="Device mapper target autoconfig"
 HOMEPAGE="http://christophe.varoqui.free.fr/"
@@ -34,7 +34,7 @@ PATCHES=( )
 src_prepare() {
 	default
 	# life is too short for some trivial patches
-	sed -r -i -e '/^(CPPFLAGS|CFLAGS)/s,:=,+=,' \
+	sed -r -i -e '/^(CPPFLAGS|CFLAGS)\>/s,^(CPPFLAGS|CFLAGS)\>[[:space:]]+:=,\1 := $(GENTOO_\1),' \
 		"${S}"/Makefile.inc || die
 }
 
@@ -44,23 +44,33 @@ src_compile() {
 	# LIBDM_API_FLUSH involves grepping files in /usr/include,
 	# so force the test to go the way we want #411337.
 	emake \
-		prefix="${EPREFIX}" \
+		prefix="${EPREFIX}/usr" \
 		LIB="$(get_libdir)" \
 		LIBDM_API_FLUSH=1 \
-		PKGCONFIG="$(tc-getPKG_CONFIG)"
+		PKGCONFIG="$(tc-getPKG_CONFIG)" \
+		GENTOO_CFLAGS="${CFLAGS}" \
+		GENTOO_CPPFLAGS="${CPPFLAGS}" \
+		FAKEVAR=1
 }
 
 src_install() {
-	dodir /sbin /usr/share/man/man{3,5,8}
+	dodir /sbin
+	# upstream makefile has terrible $(prefix) choices
 	emake \
-		DESTDIR="${D}" \
+		DESTDIR="${ED}" \
 		prefix="${EPREFIX}" \
 		LIB="$(get_libdir)" \
 		RUN=run \
 		unitdir="$(systemd_get_systemunitdir)" \
-		libudevdir='$(prefix)'/$(get_udevdir) \
-		pkgconfdir='$(prefix)/usr/$(LIB)/pkgconfig' \
+		libudevdir="${EPREFIX}/$(get_udevdir)" \
+		pkgconfdir="${EPREFIX}/usr/$(get_libdir)/pkgconfig" \
+		GENTOO_CFLAGS="${CFLAGS}" \
+		GENTOO_CPPFLAGS="${CPPFLAGS}" \
 		install
+	rmdir "${ED}"/usr/include
+	rmdir "${ED}"/usr/share
+	mv "${ED}"/include "${ED}"/usr/include || die
+	mv "${ED}"/share "${ED}"/usr/share || die
 	einstalldocs
 
 	newinitd "${FILESDIR}"/multipathd-r1.rc multipathd
@@ -70,6 +80,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process /usr/lib/tmpfiles.d/multipath.conf
 	udev_reload
 
 	if [[ -z ${REPLACING_VERSIONS} ]] ; then
