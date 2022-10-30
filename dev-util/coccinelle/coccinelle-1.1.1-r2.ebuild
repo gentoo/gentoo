@@ -40,6 +40,7 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsextra
 		virtual/latex-base
+		dev-tex/hevea
 	)
 "
 
