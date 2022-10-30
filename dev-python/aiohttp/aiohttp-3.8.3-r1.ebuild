@@ -69,6 +69,9 @@ src_prepare() {
 	# which(1)...
 	sed -i -e 's:which:command -v:' Makefile || die
 
+	# remove upper bound from charset-normalizer
+	sed -i -e '/charset-normalizer/s:, < 3\.0::' setup.cfg || die
+
 	distutils-r1_src_prepare
 }
 
