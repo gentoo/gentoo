@@ -1,7 +1,7 @@
 https://github.com/google/mozc/issues/471
 
---- /src/ipc/ipc_path_manager.cc
-+++ /src/ipc/ipc_path_manager.cc
+--- a/src/ipc/ipc_path_manager.cc
++++ b/src/ipc/ipc_path_manager.cc
 @@ -340,9 +340,21 @@
      return false;
    }

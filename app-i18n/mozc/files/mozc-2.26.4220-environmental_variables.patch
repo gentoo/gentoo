@@ -1,7 +1,7 @@
 https://github.com/google/mozc/issues/470
 
---- /src/base/system_util.cc
-+++ /src/base/system_util.cc
+--- a/src/base/system_util.cc
++++ b/src/base/system_util.cc
 @@ -226,6 +226,11 @@
  
  std::string UserProfileDirectoryImpl::GetUserProfileDirectory() const {
