@@ -74,7 +74,7 @@ CRATES="
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit cargo distutils-r1
+inherit cargo distutils-r1 multiprocessing
 
 DESCRIPTION="Terra is the foundation on which Qiskit is built"
 HOMEPAGE="https://github.com/Qiskit/qiskit-terra"
@@ -115,6 +115,7 @@ BDEPEND="
 		>=dev-python/ddt-1.4.4[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-4.24.3[${PYTHON_USEDEP}]
 		>=dev-python/networkx-2.2[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/qiskit-aer[${PYTHON_USEDEP}]
 		>=sci-libs/scikit-learn-0.20.0[${PYTHON_USEDEP}]
 	)
@@ -135,7 +136,7 @@ python_test() {
 	# Some small tests are failing which test optional features.
 	# Why they fail is still under investigation.
 	# transpiler_equivalence tests take too long time, they are also skipped.
-	epytest -k 'not (TestOptions and test_copy) and not TestUnitarySynthesisPlugin and not test_transpiler_equivalence and not (TestPauliSumOp and test_to_instruction)'
+	epytest -n "$(makeopts_jobs)" -k 'not (TestOptions and test_copy) and not TestUnitarySynthesisPlugin and not test_transpiler_equivalence and not (TestPauliSumOp and test_to_instruction)'
 
 	mv qiskit.hidden qiskit || die
 }
