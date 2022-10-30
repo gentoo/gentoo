@@ -26,6 +26,8 @@ BDEPEND="
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
 
+PATCHES=( "${FILESDIR}"/${P}-sphinx.patch )
+
 SITEFILE="50${PN}-gentoo.el"
 
 python_compile_all() {
