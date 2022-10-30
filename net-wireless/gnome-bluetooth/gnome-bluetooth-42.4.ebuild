@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}
 	sendto? ( !net-wireless/gnome-bluetooth:2 )
 "
 BDEPEND="
-	${PYHTHON_DEPS}
+	${PYTHON_DEPS}
 	dev-libs/libxml2:2
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
