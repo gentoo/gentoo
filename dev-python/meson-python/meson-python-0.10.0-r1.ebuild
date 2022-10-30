@@ -44,3 +44,10 @@ distutils_enable_sphinx docs \
 	dev-python/furo \
 	dev-python/sphinx-autodoc-typehints
 distutils_enable_tests pytest
+
+src_prepare() {
+	# strip dependency on ninja -- we provide ninja via Gentoo package
+	# rather than the Python wheel, so we don't have .dist-info there
+	sed -i -e '/ninja/d' pyproject.toml || die
+	distutils-r1_src_prepare
+}
