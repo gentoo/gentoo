@@ -30,7 +30,7 @@ RDEPEND="${CDEPEND}
 	acct-group/utmp
 	selinux? ( sec-policy/selinux-screen )"
 DEPEND="${CDEPEND}
-	sys-apps/texinfo"
+	sys-apps/texinfo[nls]"
 
 PATCHES=(
 	# Don't use utempter even if it is found on the system.
