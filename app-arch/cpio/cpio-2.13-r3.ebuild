@@ -34,6 +34,8 @@ src_configure() {
 		$(use_enable nls)
 		--bindir="${EPREFIX}"/bin
 		--with-rmt="${EPREFIX}"/usr/sbin/rmt
+		# install as gcpio for better compatibility with non-GNU userland
+		--program-prefix=g
 	)
 
 	econf "${myeconfargs[@]}"
@@ -41,10 +43,8 @@ src_configure() {
 
 src_install() {
 	default
-	# install as gcpio for better compatibility with non-GNU userland
-	# and make cpio as a symlink
-	mv "${ED}"/bin/{,g}cpio || die
+
+	# make cpio a symlink
 	dosym gcpio /bin/cpio
-	mv "${ED}"/usr/share/man/man1/{,g}cpio.1 || die
 	dosym gcpio.1 /usr/share/man/man1/cpio.1
 }
