@@ -47,6 +47,13 @@ distutils_enable_sphinx docs \
 	dev-python/furo
 distutils_enable_tests pytest
 
+src_configure() {
+	# Avoid greedily trying -L/usr/lib, etc
+	# https://github.com/pyproj4/pyproj/blob/main/setup.py#L76
+	export PROJ_LIBDIR="${ESYSROOT}/usr/$(get_libdir)"
+	export PROJ_INCDIR="${ESYSROOT}/usr/include"
+}
+
 python_test() {
 	rm -rf pyproj || die
 	epytest -m "not network" test
