@@ -23,7 +23,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.0-implicit-function-declarations.patch
 	"${FILESDIR}"/${PN}-0.5.0-clang-15-configure.patch
-	#"${FILESDIR}"/${PN}-0.5.0-fix-macro-clang16.patch
+	"${FILESDIR}"/${PN}-0.5.0-fix-macro-clang16.patch
 )
 
 src_prepare() {
