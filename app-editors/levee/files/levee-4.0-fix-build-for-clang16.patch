@@ -1,0 +1,2263 @@
+Clang16 will not allow implicit function declarations and implicit integers etc.
+This patch overhauls the whole source code for modern C.
+
+Bug: https://bugs.gentoo.org/875740
+Bug: https://bugs.gentoo.org/870889
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/configure.inc
++++ b/configure.inc
+@@ -1686,9 +1686,7 @@ cat > ngc$$.c << \EOF
+ #include <stdio.h>
+
+ int
+-main(argc, argv)
+-int argc;
+-char **argv;
++main(int argc,char **argv)
+ {
+     char *p;
+ 
+--- a/display.c
++++ b/display.c
+@@ -30,10 +30,11 @@
+
+ #define MAXCOLS 320
+
++void dgotoxy(int x,int y);
++
+ /* do a gotoXY -- allowing -1 for same row/column
+  */
+-void
+-dgotoxy(x,y)
++void dgotoxy(int x,int y)
+ {
+     if (y == -1)
+ 	y = curpos.y;
+@@ -64,9 +65,7 @@ dgotoxy(x,y)
+ /* write a single character to output w/o the assistance
+  * of stdio.
+  */
+-static int
+-tputs_putc(c)
+-char c;
++static int tputs_putc(char c)
+ {
+     char s[1];
+     s[0] = c;
+@@ -76,9 +75,7 @@ char c;
+ #endif
+
+
+-void
+-dwrite(s,len)
+-char *s;
++void dwrite(char *s,int len)
+ {
+     if ( len <= 0 )
+ 	return;
+@@ -98,9 +95,7 @@ char *s;
+
+ /* write a string to our display
+  */
+-void
+-dputs(s)
+-char *s;
++void dputs(char *s)
+ {
+     if ( s )
+ 	dwrite(s, strlen(s));
+@@ -109,8 +104,7 @@ char *s;
+
+ /* write a character to our display
+  */
+-void
+-dputc(char c)
++void dputc(char c)
+ {
+     char s[1];
+     s[0] = c;
+@@ -120,8 +114,7 @@ dputc(char c)
+
+ /* add a blank line to the screen at our current row
+  */
+-void
+-dopenline()
++void dopenline()
+ {
+     unless ( os_openline() )
+ 	dputs(OL);
+@@ -130,8 +123,7 @@ dopenline()
+
+ /* spit out a newline
+  */
+-void
+-dnewline()
++void dnewline()
+ {
+     unless ( os_newline() )
+ 	dputs("\r\n");
+@@ -140,8 +132,7 @@ dnewline()
+
+ /* clear the screen
+  */
+-void
+-dclearscreen()
++void dclearscreen()
+ {
+     unless ( os_clearscreen() )
+ 	dputs(CL);
+@@ -150,8 +141,7 @@ dclearscreen()
+
+ /* clear to end of line
+  */
+-void
+-dclear_to_eol()
++void dclear_to_eol()
+ {
+     unless ( os_clear_to_eol() )
+ 	dputs(CE);
+@@ -160,8 +150,7 @@ dclear_to_eol()
+
+ /* turn the cursor off or on
+  */
+-void
+-d_cursor(visible)
++void d_cursor(int visible)
+ {
+     unless ( os_cursor(visible) )
+ 	dputs(visible ? CURon : CURoff);
+@@ -170,8 +159,7 @@ d_cursor(visible)
+
+ /* highlight text
+  */
+-void
+-d_highlight(yes_or_no)
++void d_highlight(int yes_or_no)
+ {
+     unless ( os_highlight(yes_or_no) ) {
+ 	if ( SO && SE )
+@@ -182,10 +170,7 @@ d_highlight(yes_or_no)
+
+ /* get the screensize
+  */
+-void
+-dscreensize(x,y)
+-int *x;
+-int *y;
++void dscreensize(int *x,int *y)
+ {
+     int li, co;
+
+@@ -207,8 +192,7 @@ int *y;
+
+ /* initialize everything
+  */
+-void
+-dinitialize()
++void dinitialize()
+ {
+     static char tcbuf[4096];
+ #if USING_STDIO
+@@ -274,8 +258,7 @@ dinitialize()
+
+ /* restore everything back to normal
+  */
+-void
+-drestore()
++void drestore()
+ {
+     os_restore();
+ }
+@@ -283,8 +266,7 @@ drestore()
+
+ /* ring the bell
+  */
+-void
+-Ping()
++void Ping()
+ {
+     unless (bell)	/* if the bell is turned off, do nothing */
+ 	return;
+@@ -295,8 +277,7 @@ Ping()
+
+ /* convert a number to a string, w/o using sprintf
+  */
+-char *
+-ntoa (int n)
++char *ntoa (int n)
+ {
+     static char bfr[(7+(8*sizeof(int)))/3] = { 0 };
+     int i;
+@@ -317,9 +298,7 @@ ntoa (int n)
+
+ /* print out a number, w/o using printf
+  */
+-void
+-printi(num)
+-int num;
++void printi(int num)
+ {
+     prints(ntoa(num));
+ }
+@@ -327,8 +306,7 @@ int num;
+
+ /* do a newline, updating x & y
+  */
+-void
+-println()
++void println()
+ {
+     curpos.x = 0;
+     curpos.y = Min(curpos.y+1, LINES-1);
+@@ -341,10 +319,7 @@ println()
+  *    spaces for <tab>
+  *    normal for everything else
+  */
+-int
+-format(out,c)
+-register char *out;
+-register unsigned c;
++int format(register char *out,register unsigned c)
+ {
+     static char hexdig[] = "0123456789ABCDEF";
+     register int i;
+@@ -373,9 +348,7 @@ register unsigned c;
+
+ /* print a formatted block of text
+  */
+-void
+-printbuf(s, len)
+-char *s;
++void printbuf(char *s,int len)
+ {
+     int size,oxp = curpos.x;
+     char buf[MAXCOLS+1];
+@@ -396,9 +369,7 @@ char *s;
+
+ /* print a formatted character
+  */
+-void
+-printch(c)
+-char c;
++void printch(int c)
+ {
+     register int size;
+     char buf[MAXCOLS];
+@@ -413,9 +384,7 @@ char c;
+
+ /* print a formatted string
+  */
+-void
+-prints(s)
+-char *s;
++void prints(char *s)
+ {
+     printbuf(s, strlen(s));
+ }
+@@ -423,9 +392,7 @@ char *s;
+
+ /* print a line of editor content
+  */
+-void
+-writeline(y,x,start)
+-int y,x,start;
++void writeline(int y,int x,int start)
+ {
+     int endd,oxp;
+
+@@ -447,10 +414,7 @@ int y,x,start;
+
+ /* redraw && refresh the screen
+  */
+-void
+-refresh(y,x,start,endd,rest)
+-int y,x,start,endd;
+-bool rest;
++void refresh(int y,int x,int start,int endd,bool rest)
+ {
+     int sp;
+
+@@ -481,18 +445,14 @@ bool rest;
+
+ /* redraw everything */
+
+-void
+-redisplay(flag)
+-bool flag;
++void redisplay(bool flag)
+ {
+     if (flag)
+ 	clrprompt();
+     refresh(0, 0, ptop, pend, TRUE);
+ }
+
+-void
+-scrollback(curr)
+-int curr;
++void scrollback(int curr)
+ {
+     dgotoxy(0,0);		/* move to the top line */
+     do {
+@@ -504,9 +464,7 @@ int curr;
+     setend();
+ }
+
+-void
+-scrollforward(curr)
+-int curr;
++void scrollforward(int curr)
+ {
+     do {
+ 	writeline(LINES-1, 0, pend+1);
+@@ -518,9 +476,7 @@ int curr;
+
+ /* find if the number of lines between top && bottom is less than dofscroll */
+
+-bool
+-ok_to_scroll(top,bottom)
+-int top,bottom;
++bool ok_to_scroll(int top,int bottom)
+ {
+     int nl, i;
+
+@@ -539,10 +495,7 @@ clrprompt()
+     dclear_to_eol();
+ }
+
+-void
+-prompt(toot,s)
+-bool toot;
+-char *s;
++void prompt(bool toot,char *s)
+ {
+     if (toot)
+ 	error();
+--- a/find.c
++++ b/find.c
+@@ -29,10 +29,7 @@ void patsize(char**);
+
+ static int arg;		/* arguments inside of a RE */
+
+-int
+-REmatch(pattern, start, end)
+-char *pattern;
+-int start,end;
++int REmatch(char *pattern, int start,int end)
+ {
+     char *endp = &core[end];
+
+@@ -44,9 +41,7 @@ int start,end;
+     return start;
+ }
+
+-int
+-omatch(pattern, cp, endp)
+-char *pattern, **cp, *endp;
++int omatch(char *pattern,char **cp,char *endp)
+ {
+     register int flag;
+     extern int ignorecase;
+@@ -93,8 +88,6 @@ char *pattern, **cp, *endp;
+     return FALSE;
+ }
+
+-int
+-amatch(pattern,start,endp)
+-char *pattern, *endp, *start;
++int amatch(char *pattern,char *start,char *endp)
+ {
+     int sarg = arg;	/* save old arg match count for errors */
+
+@@ -134,9 +127,7 @@ char *pattern, *endp, *start;
+
+ /*  increment pattern by the size of the token being scanned
+  */
+-void
+-patsize(pattern)
+-register char **pattern;
++void patsize(register char **pattern)
+ {
+     register int count;
+
+@@ -155,11 +146,8 @@ register char **pattern;
+     }
+ }
+
+-int
+-locate(pattern,linep)
++int locate(char *pattern,register char *linep)
+ /* locate: find a character in a closure */
+-char *pattern;
+-register char *linep;
+ {
+     register char *p = 1+pattern;
+     register int count;
+@@ -173,18 +161,14 @@ register char *linep;
+ }
+ char *p;
+
+-void
+-concatch(c)
++void concatch(char c)
+ /* add a character to the pattern */
+-char c;
+ {
+     if (p < &pattern[MAXPAT-1])
+ 	*p++ = c;
+ }
+
+-char
+-esc(s)
+-char **s;
++char esc(char **s)
+ {
+     if (**s != ESCAPE || *(1+*s) == 0)
+ 	return **s;
+@@ -196,10 +180,8 @@ char **s;
+     return **s;
+ }
+
+-char *
+-dodash(src)
++char *dodash(char *src)
+ /* parse the innards of a [] */
+-char *src;
+ {
+     int k;
+     char *start = src;
+@@ -222,12 +204,10 @@ char *src;
+     return src;
+ }
+
+-char *
+-badccl(src)
++char *badccl(char *src)
+ /* a [] was encountered. is it a CCL (match one of the included
+  *  characters); or is it a NCCL (match all but the included characters)?
+  */
+-char *src;
+ {
+     char *jstart;
+
+@@ -247,9 +227,7 @@ char *src;
+ 	/* patterns that cannot be closed */
+ char badclose[] = { LSTART, LEND, CLOSURE, 0 };
+
+-char *
+-makepat(string,delim)
+-char *string, delim;
++char *makepat(char *string,int delim)
+ /* make up the pattern string for find	-- ripped from 'Software Tools' */
+ {
+     char *cp = 0, *oldcp;
+@@ -320,11 +298,8 @@ char *string, delim;
+     return (*string == delim)?(string+1):(string);
+ }
+
+-int
+-findfwd(pattern,start,endp)
++int findfwd(char *pattern,int start,int endp)
+ /* look for a regular expression forward */
+-char *pattern;
+-int start, endp;
+ {
+     int ep;
+
+@@ -336,11 +311,8 @@ int start, endp;
+      return ERR_NOMATCH;
+  }
+
+-int
+-findback(pattern,start,endp)
++int findback(char *pattern,int start,int endp)
+ /* look for a regular expression backwards */
+-char *pattern;
+-int start, endp;
+ {
+     int ep,i;
+
+@@ -354,8 +326,7 @@ int start, endp;
+ }
+
+
+-char *
+-expr_errstring(errno)
++char *expr_errstring(int errno)
+ {
+     switch (errno) {
+     case ERR_NOMATCH:	return "Pattern not found";
+@@ -371,11 +342,9 @@ expr_errstring(errno)
+
+ bool s_wrapped = 0;
+
+-int
+-search(start, bufp)
++int search(int start,char **bufp)
+ /* get a token for find & find it in the buffer
+  */
+-char **bufp;
+ {
+     int  pos;
+     char marker = **bufp;
+@@ -411,10 +380,8 @@ char **bufp;
+     return start;
+ }
+
+-static int
+-address_fragment(start, bufp, offset)
++static int address_fragment(int start,char **bufp,int offset)
+ /* parse part of an address (a /pattern/, ?pattern?, [0-9]*, 0, $) */
+-char **bufp;
+ {
+     int addr;
+
+@@ -471,9 +438,7 @@ char **bufp;
+ }
+
+
+-int
+-findparse(start, bufp, offset) /* driver for ?, /, && : lineranges */
+-char **bufp;
++int findparse(int start,char **bufp,int offset) /* driver for ?, /, && : lineranges */
+ {
+     int addr;
+     char c;
+@@ -517,10 +482,7 @@ char **bufp;
+     return addr;
+ }
+
+-int
+-nextline(advance,dest,count)
+-bool advance;
+-int dest,count;
++int nextline(bool advance,int dest,int count)
+ {
+     int start = dest;
+     int ocount= count;
+@@ -543,9 +505,7 @@ int dest,count;
+     return(dest);
+ }
+
+-int
+-fseekeol(origin)
+-int origin;
++int fseekeol(int origin)
+ {
+ #if 0
+     char *res = memchr(core+origin, EOL, bufmax-origin);
+@@ -559,19 +519,14 @@ int origin;
+     return(origin + scan(bufmax-origin-1,'=',EOL,&core[origin]));
+ }
+
+-int
+-bseekeol(origin)
+-int origin;
++int bseekeol(int origin)
+ {
+     return(origin + scan(-origin,'=',EOL,&core[origin-1]));
+ }
+
+ /* get something from the context table */
+
+-int
+-lvgetcontext(c,begline)
+-char c;
+-bool begline;
++int lvgetcontext(int c, bool begline)
+ {
+     int i;
+ 
+
+
+--- a/blockio.c
++++ b/blockio.c
+@@ -17,6 +17,7 @@
+  * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR
+  * PURPOSE.
+  */
++#include <stdio.h>
+ #include "levee.h"
+ #include "extern.h"
+ 
+@@ -24,11 +25,7 @@
+ 			    FALSE-- file too big
+ */
+ 
+-int 
+-addfile(f, start, endd, size)
+-FILE *f;
+-int start;
+-int endd, *size;
++int addfile(FILE *f, int start, int endd,int *size)
+ {
+     register int chunk;
+ 
+@@ -41,10 +38,7 @@ int endd, *size;
+ 
+ /* write out a file -- return TRUE if ok. */
+ 
+-bool 
+-putfile(f, start, endd)
+-register FILE *f;
+-register int start, endd;
++bool putfile(register FILE *f, register int start,register int endd)
+ {
+     int size = (endd-start);
+     int ok;
+--- a/editcor.c
++++ b/editcor.c
+@@ -36,8 +36,7 @@ extern int affirm;	/* override file is modified checks (exec.c) */
+ 
+ /* called when we enter editcore or do something that invalidates the screen
+  */
+-void
+-maybe_refresh_screen(redraw)
++void maybe_refresh_screen(int redraw)
+ {
+     logit(("maybe_refresh_screen(%d) curr = %d, ptop = %d, pend = %d", redraw, curr, ptop, pend));
+ 
+@@ -56,10 +55,7 @@ maybe_refresh_screen(redraw)
+ 
+ /* move a line of text right || left */
+ 
+-void
+-adjuster(sleft, endd, sw)
+-bool sleft;
+-int endd, sw;
++void adjuster(bool sleft,int endd,int sw)
+ {
+     bool noerror;
+     int np, ts,
+@@ -108,9 +104,7 @@ int endd, sw;
+ 
+ /* join <count> lines together */
+ 
+-void
+-join(count)
+-int count;
++void join(int count)
+ {
+     bool ok;
+     int lp, first;
+@@ -138,11 +132,7 @@ int count;
+ 	error();
+ }
+ 
+-void
+-squiggle(endp, c, dorepl)
+-int endp;
+-char c;
+-bool dorepl;
++void squiggle(int endp, char c, bool dorepl)
+ {
+     int i;
+ 
+@@ -164,8 +154,7 @@ bool dorepl;
+     }
+ }
+ 
+-void
+-bigreplace()
++void bigreplace(void)
+ {
+     int len, tsiz;
+ 
+@@ -180,9 +169,7 @@ bigreplace()
+ 	}
+ }
+ 
+-bool
+-put(before)
+-bool before;
++bool put(bool before)
+ {
+     endY = setY(curr);
+     if (!before)
+@@ -196,8 +183,7 @@ bool before;
+     return(putback(curr, &newend));
+ }
+ 
+-bool
+-execute(start, end)
++bool execute(int start,int end)
+ {
+     FILEDESC tf;
+     FILE *f;
+@@ -240,8 +226,7 @@ execute(start, end)
+     return ret;
+ }
+ 
+-void
+-vitag()
++void vitag(void)
+ {
+     int start, endd;
+     int newfile, rc;
+@@ -285,8 +270,7 @@ vitag()
+ }
+ 
+ 
+-void
+-goback()
++void goback(void)
+ {
+     Camefrom *loc = pop_tag();
+ 
+@@ -311,8 +295,7 @@ goback()
+     error();
+ }
+ 
+-void
+-gcount()
++void gcount(void)
+ {
+     do {
+ 	count = (count*10) + (ch-'0');
+@@ -320,9 +303,7 @@ gcount()
+     } while ( count >= 0 && isdigit(ch) );
+ }
+ 
+-void
+-docommand(cmd)
+-cmdtype cmd;
++void docommand(cmdtype cmd)
+ {
+     cmdtype movecmd;	/* movement command for y, d, c */
+     char    cmdch;
+@@ -534,8 +515,7 @@ killredo:
+ 
+ /* Initialize && execute a macro */
+ 
+-void
+-exmacro()
++void exmacro(void)
+ {
+     int mp;
+ 
+@@ -551,9 +531,7 @@ exmacro()
+ 
+ /* redraw the screen w.r.t. the cursor */
+ 
+-void
+-zdraw(code)
+-unsigned char code;
++void zdraw(unsigned char code)
+ {
+     int nl = ERR,
+ 	np = (count>0)?to_index(count):curr;
+@@ -576,8 +554,7 @@ unsigned char code;
+ 
+ /* start up a built-in macro */
+ 
+-void
+-macrocommand()
++void macrocommand(void)
+ {
+     if (count > 1)
+ 	strcpy(gcb, ntoa(count));
+@@ -616,9 +593,7 @@ macrocommand()
+ 
+ /* scroll the window up || down */
+ 
+-void
+-scroll(down)
+-bool down;
++void scroll(bool down)
+ {
+     int i;
+ 
+@@ -654,8 +629,7 @@ bool down;
+     dgotoxy(xp, yp);		/* go there */
+ }
+ 
+-exec_type
+-editcore()
++exec_type editcore(void)
+ {
+     cmdtype cmd;
+     extern bool s_wrapped;
+--- a/insert.c
++++ b/insert.c
+@@ -20,10 +20,7 @@
+ #include "levee.h"
+ #include "extern.h"
+ 
+-int
+-insertion(count, openflag, dp, yp, visual)
+-int count, openflag, *dp, *yp;
+-bool visual;
++int insertion(int count,int openflag,int *dp,int *yp, bool visual)
+ {
+     char cmd, c;
+     int rp;		/* number of spaces to diddle */
+--- a/exec.c
++++ b/exec.c
+@@ -7,9 +7,9 @@
+ #include <errno.h>
+ #endif
+ 
+-void undefine();
+-void fixupline();
+-void doinput();
++void undefine(int i);
++void fixupline(int dft);
++void doinput(int fileptr);
+ 
+ /* CAUTION: these make exec not quite recursive */
+ int  high,low;		/* low && high end of command range */
+@@ -23,10 +23,7 @@ static char noalloc[] = " (out of memory)";
+  */
+ #define exprintln()	(zotscreen=YES),println()
+ 
+-void
+-plural(num,string)
+-int num;
+-char *string;
++void plural(int num, char *string)
+ {
+     printi(num);
+     prints(string);
+@@ -35,17 +32,14 @@ char *string;
+ } /* plural */
+ 
+ 
+-void
+-clrmsg()
++void clrmsg(void)
+ {
+     dgotoxy(0, -1);
+     dclear_to_eol();
+ } /* clrmsg */
+ 
+ 
+-void
+-errmsg(msg)
+-char *msg;
++void errmsg(char *msg)
+ {
+     dgotoxy(0, -1);
+     prints(msg);
+@@ -57,14 +51,12 @@ char *msg;
+ 
+ static char *execstr;
+ 
+-void
+-setarg(char *s)
++void setarg(char *s)
+ {
+     execstr = s;
+ }
+ 
+-static char *
+-getarg()
++static char * getarg(void)
+ {
+     char *rv;
+     rv = execstr;
+@@ -79,8 +71,7 @@ getarg()
+ } /* getarg */
+ 
+ 
+-void
+-version()
++void version(void)
+ /* version: print which version of levee we are... */
+ {
+     errmsg("levee (c)");prints(codeversion);
+@@ -88,9 +79,7 @@ version()
+ 
+ 
+ /* figure out a address range for a command */
+-char *
+-findbounds(ip)
+-char *ip;
++char * findbounds(char *ip)
+ {
+     /* get the low address */
+     logit(("findbounds: low (%d,&[%s],0)", curr, ip));
+@@ -124,8 +113,7 @@ char *ip;
+ }
+ 
+ 
+-void
+-show_args()
++void show_args(void)
+ /* show_args: print the argument list */
+ {
+     register int i;
+@@ -145,8 +133,7 @@ show_args()
+     }
+ } /* show_args */
+ 
+-void
+-setcmd()
++void setcmd(void)
+ {
+     bool no = NO,b;
+     char *arg, *num;
+@@ -236,9 +223,7 @@ setcmd()
+ 
+ 
+ /* print a macro */
+-void
+-printone(i)
+-int i;
++void printone(int i)
+ {
+     if (i >= 0) {
+ 	exprintln();
+@@ -254,8 +239,7 @@ int i;
+ 
+ 
+ /* print all the macros */
+-void
+-printall()
++void printall(void)
+ {
+     int i;
+     for (i = 0; i < MAXMACROS; i++)
+@@ -265,9 +249,7 @@ printall()
+ 
+ 
+ /* :map ch text */
+-void
+-map(insert)
+-bool insert;
++void map(bool insert)
+ {
+     char *macro, c;
+     int i;
+@@ -304,9 +286,7 @@ bool insert;
+ } /* map */
+ 
+ 
+-void
+-undefine(i)
+-int i;
++void undefine(int i)
+ {
+     char *p;
+     if (i >= 0) {
+@@ -319,8 +299,7 @@ int i;
+ } /* undefine */
+ 
+ 
+-int
+-unmap()
++int unmap(void)
+ {
+     int i;
+     char *arg;
+@@ -342,9 +321,7 @@ unmap()
+ 
+ 
+ /* return argument # of a filename */
+-int
+-findarg(name)
+-register char *name;
++int findarg(register char *name)
+ {
+     int j;
+     for (j = 0; j < args.gl_pathc; j++)
+@@ -355,9 +332,7 @@ register char *name;
+ 
+ 
+ /* add a filename to the arglist */
+-int
+-addarg(name)
+-register char *name;
++int addarg(register char *name)
+ {
+     int where;
+     int rc;
+@@ -372,8 +347,7 @@ register char *name;
+ 
+ /* s/[src]/dst[/options] */
+ /* s& */
+-void
+-cutandpaste()
++void cutandpaste(void)
+ {
+     bool askme  = NO,
+ 	 printme= NO,
+@@ -454,8 +428,7 @@ cutandpaste()
+ 
+ /* quietly read in a file (and mark it in the undo stack)
+  */
+-int
+-insertfile(FILE *f, int insert, int at, int *fsize)
++int insertfile(FILE *f, int insert, int at, int *fsize)
+ {
+     int high,
+ 	onright,
+@@ -486,10 +459,7 @@ insertfile(FILE *f, int insert, int at, int *fsize)
+ 
+ 
+ 
+-void
+-inputf(fname, newbuf)
+-register char *fname;
+-bool newbuf;
++void inputf(register char *fname, bool newbuf)
+ {
+     FILE *f;
+     int fsize,		/* bytes read in */
+@@ -555,9 +525,7 @@ bool newbuf;
+ 
+ 
+ /* Change a file's name (for autocopy). */
+-void
+-backup(name)
+-char *name;
++void backup(char *name)
+ {
+     char *back, *expanded;
+     int ok = NO;
+@@ -582,9 +550,7 @@ char *name;
+ } /* backup */
+ 
+ 
+-bool
+-outputf(fname, entire_file)
+-char *fname;
++bool outputf(char *fname,int entire_file)
+ {
+     bool whole;
+     FILE *f;
+@@ -630,10 +596,9 @@ char *fname;
+ } /* outputf */
+ 
+ 
+-int
+-oktoedit(writeold)
++int oktoedit(int writeold)
+ /* check and see if it is ok to edit a new file */
+-int writeold;	/* automatically write out changes? */
++/* automatically write out changes? */
+ {
+     unless (modified)			/* no modifications?  Yes. */			/* otherwise?  Yes. */
+ 	return YES;
+@@ -659,8 +624,7 @@ int writeold;	/* automatically write out changes? */
+ 
+ 
+ /* write out all || part of a file */
+-bool
+-writefile()
++bool writefile(void)
+ {
+     char *name;
+     int fileptr = filenm;
+@@ -688,8 +652,7 @@ writefile()
+ }
+ 
+ 
+-void
+-editfile()
++void editfile(void)
+ {
+     char *name;	/* file to edit */
+     int newpc = F_UNSET;
+@@ -727,8 +690,7 @@ editfile()
+ }
+ 
+ 
+-void
+-dotag()
++void dotag(void)
+ {
+     char *tag;
+     Tag result;
+@@ -757,8 +719,7 @@ dotag()
+ }
+ 
+ 
+-void
+-poptag()
++void poptag(void)
+ {
+     Camefrom *loc = pop_tag();
+ 
+@@ -784,9 +745,7 @@ poptag()
+ }
+ 
+ 
+-void
+-doinput(fileptr)
+-int fileptr;
++void doinput(int fileptr)
+ {
+     inputf(args.gl_pathv[fileptr], YES);
+ 
+@@ -797,9 +756,7 @@ int fileptr;
+ }
+ 
+ 
+-void
+-toedit(count)
+-int count;
++void toedit(int count)
+ {
+     if (count > 1) {
+ 	printi(count);
+@@ -808,8 +765,7 @@ int count;
+ }
+ 
+ 
+-void
+-readfile()
++void readfile(void)
+ {
+     char *name;
+ 
+@@ -820,9 +776,7 @@ readfile()
+ }
+ 
+ 
+-void
+-nextfile(prev)
+-bool prev;
++void nextfile(bool prev)
+ {
+     char *name = getarg();
+     int rc, i, current;
+@@ -904,9 +858,7 @@ bool prev;
+ /*
+  * set up low, high; set dot to high
+  */
+-void
+-fixupline(dft)
+-int dft;
++void fixupline(int dft)
+ {
+     int newpos;
+ 
+@@ -933,8 +885,7 @@ int dft;
+ }
+ 
+ 
+-void
+-whatline()
++void whatline(void)
+ {
+     printi(to_line((low < 0) ? (bufmax-1) : low));
+     if (high >= 0) {
+@@ -944,8 +895,7 @@ whatline()
+ }
+ 
+ 
+-void
+-print()
++void print(void)
+ {
+     goto justwrite;
+     do {
+@@ -961,10 +911,7 @@ print()
+ /* execute lines from a :sourced || .lvrc file */
+ 
+ 
+-bool
+-do_file(fname,mode)
+-char *fname;
+-exec_type *mode;
++bool do_file(char *fname,exec_type *mode)
+ {
+     char line[120];
+     FILE *fp;
+@@ -986,9 +933,7 @@ exec_type *mode;
+ }
+ 
+ 
+-void
+-doins(flag)
+-bool flag;
++void doins(bool flag)
+ {
+     int i;
+     curr = low;
+@@ -1000,10 +945,7 @@ bool flag;
+ }
+ 
+ /* parse the command line for lineranges && a command */
+-static int
+-parse(inp, default_cmd)
+-char **inp;
+-char *default_cmd;
++static int parse(char **inp, char *default_cmd)
+ {
+     int j,k;
+     char *cmd, *token;
+@@ -1077,8 +1019,7 @@ int expand_err;
+ #define EXP_FILE 2	/* tried to expand % w/o filename */
+ #define EXP_MEM 3	/* ran out of memory during expansion */
+ 
+-char *
+-expand_line(char *cmd)
++char *expand_line(char *cmd)
+ {
+     static char *expanded = 0;
+     static int sz_expanded = 0;
+@@ -1161,10 +1102,7 @@ expand_line(char *cmd)
+  /* inner loop of execmode: returns TRUE if it expects to do more
+   * editing, FALSE if it received a quit command.
+   */
+-int
+-exec(cmd, mode)
+-char *cmd;
+-exec_type *mode;
++int exec(char *cmd,exec_type *mode)
+ {
+     int  what;
+     int  exit_now = NO;
+--- a/main.c
++++ b/main.c
+@@ -33,10 +33,7 @@ copyright()
+ }
+ 
+ 
+-void
+-initialize(argc, argv)
+-int argc;
+-char **argv;
++void initialize(int argc,char **argv)
+ /* initialize: set up everything I can in levee */
+ {
+     int i;
+@@ -175,9 +172,7 @@ char **argv;
+     }
+ }
+ 
+-bool
+-execmode(emode)
+-exec_type emode;
++bool execmode(exec_type emode)
+ {
+     bool more;			/* used [more] at end of line */
+     exec_type mode;
+@@ -215,10 +210,7 @@ exec_type emode;
+     return YES;
+ }
+ 
+-int
+-main(argc,argv)
+-int argc;
+-char **argv;
++int main(int argc, char **argv)
+ {
+     initialize(argc, argv);
+ 
+--- a/misc.c
++++ b/misc.c
+@@ -23,9 +23,7 @@
+ #include <ctype.h>
+ #include <errno.h>
+ 
+-bool
+-lvgetline(str, size)
+-char *str;
++bool lvgetline(char *str,int size)
+ {
+     int len;
+     char flag;
+@@ -42,8 +40,7 @@ char *str;
+ } /* lvgetline */
+ 
+ 
+-char
+-readchar()
++char readchar(void)
+ {
+     ch = peekc();		/* get the peeked character */
+     needchar = TRUE;		/* force a read on next readchar/peekc */
+@@ -58,8 +55,7 @@ readchar()
+ 
+ 
+ /* look at next input character without actually using it */
+-char
+-peekc()
++char peekc(void)
+ {
+     if (needchar) {				/* if buffer is empty, */
+ 	if (macro >= 0) {			/* if a macro */
+@@ -83,9 +79,7 @@ peekc()
+ /* find the amount of leading whitespace between start && limit.
+    endd is the last bit of whitespace found.
+ */
+-int
+-findDLE(start, endd, limit, dle)
+-int start, *endd, limit, dle;
++int findDLE(int start,int *endd,int limit,int dle)
+ {
+     while ((core[start] == '\t' || core[start] == ' ') && start < limit) {
+ 	if (core[start] == '\t')
+@@ -99,9 +93,7 @@ int start, *endd, limit, dle;
+ } /* findDLE */
+ 
+ 
+-int
+-skipws(loc)
+-int loc;
++int skipws(int loc)
+ {
+     while ((core[loc] == '\t' || core[loc] == ' ') && loc <= bufmax)
+ 	loc++;
+@@ -109,9 +101,7 @@ int loc;
+ } /* skipws */
+ 
+ 
+-int
+-setX(cp)
+-int cp;
++int setX(int cp)
+ {
+     int top, xp;
+ 
+@@ -138,9 +128,7 @@ int cp;
+ } /* setX */
+ 
+ 
+-int
+-setY(cp)
+-int cp;
++int setY(int cp)
+ {
+     int yp, ix;
+ 
+@@ -155,9 +143,7 @@ int cp;
+ } /* setY */
+ 
+ 
+-int
+-to_line(cp)
+-int cp;
++int to_line(int cp)
+ {
+     int tdx,line;
+     tdx = 0;
+@@ -170,9 +156,7 @@ int cp;
+ } /* to_line */
+ 
+ 
+-int
+-to_index(line)
+-int line;
++int to_index(int line)
+ {
+     int cp = 0;
+     while (cp < bufmax && line > 1) {
+@@ -183,9 +167,7 @@ int line;
+ } /* to_index */
+ 
+ 
+-void
+-swap(a,b)
+-int *a,*b;
++void swap(int *a,int *b)
+ {
+     int c;
+ 
+@@ -195,8 +177,7 @@ int *a,*b;
+ } /* swap */
+ 
+ 
+-void
+-error()
++void error(void)
+ {
+     indirect = 0;
+     macro = -1;
+@@ -209,10 +190,7 @@ error()
+ 
+ 
+ /* the dirty work to start up a macro */
+-void
+-insertmacro(cmdstr, count)
+-char *cmdstr;
+-int count;
++void insertmacro(char *cmdstr, int count)
+ {
+     if (macro >= NMACROS)
+ 	error();
+@@ -225,9 +203,7 @@ int count;
+ } /* insertmacro */
+ 
+ 
+-int
+-lookup(c)
+-char c;
++int lookup(int c)
+ {
+     int ix = MAXMACROS;
+ 
+@@ -237,9 +213,7 @@ char c;
+ } /* lookup */
+ 
+ 
+-void
+-fixmarkers(base,offset)
+-int base,offset;
++void fixmarkers(int base,int offset)
+ {
+     unsigned char c;
+ 
+@@ -253,8 +227,7 @@ int base,offset;
+ } /* fixmarkers */
+ 
+ 
+-void
+-wr_stat()
++void wr_stat(void)
+ {
+     clrprompt();
+     if ( filenm != F_UNSET ) {
+@@ -288,9 +261,7 @@ static int  tabptr,
+ 	    tabstack[20],
+ 	    ixp;
+ 
+-void
+-back_up(c)
+-char c;
++void back_up(char c)
+ {
+     int original_xp = ixp, count;
+ 
+@@ -330,10 +301,7 @@ char c;
+  *    ESC : ended with an ESC
+  *    EOL : ended with an '\r'
+  */
+-char
+-line(s, start, endd, size)
+-char *s;
+-int start, endd, *size;
++char line(char *s, int start,int endd,int *size)
+ {
+     int col0,
+ 	ip;
+@@ -403,9 +371,7 @@ int start, endd, *size;
+ 
+ 
+ /* move to core[loc] */
+-void
+-setpos(loc)
+-int loc;
++void setpos(int loc)
+ {
+     lstart = bseekeol(loc);
+     lend = fseekeol(loc);
+@@ -414,8 +380,7 @@ int loc;
+ } /* setpos */
+ 
+ 
+-void
+-resetX()
++void resetX(void)
+ {
+     if (deranged) {
+ 	xp = setX(curr);
+@@ -426,8 +391,7 @@ resetX()
+ 
+ 
+ /* set end of window */
+-int
+-setend()
++int setend(void)
+ {
+     int bottom, count;
+     int lines = 0;
+@@ -447,9 +411,7 @@ setend()
+ /*  set top of window
+  *  return the number of lines actually between curr && ptop.
+  */
+-int
+-settop(lines)
+-int lines;
++int settop(int lines)
+ {
+     int top, yp;
+ 
+@@ -467,16 +429,14 @@ int lines;
+ 
+ 
+ 
+-int
+-Max(a,b)
++int Max(int a,int b)
+ {
+     return (a>b) ? a : b;
+ }
+ 
+ 
+ 
+-int
+-Min(a,b)
++int Min(int a,int b)
+ {
+     return (a<b) ? a : b;
+ }
+@@ -485,8 +445,7 @@ Min(a,b)
+ /*
+  * return a tempfile name in malloc()ed memory
+  */
+-char *
+-lvtempfile(char *template)
++char *lvtempfile(char *template)
+ {
+     int length=40;
+     char *file = malloc(length);
+@@ -514,9 +473,7 @@ lvtempfile(char *template)
+ 
+ 
+ #if !HAVE_STRDUP
+-char *
+-strdup(s)
+-char *s;
++char *strdup(char *s)
+ {
+     char *p;
+ 
+--- a/modify.c
++++ b/modify.c
+@@ -27,9 +27,7 @@
+ 
+ /* put stuff into the yank buffer */
+ 
+-bool
+-doyank(low, high)
+-int low, high;
++bool doyank(int low,int high)
+ {
+     FILEDESC f;
+     register int sz;
+@@ -50,9 +48,7 @@ int low, high;
+     return TRUE;
+ }
+ 
+-bool
+-deletion(low, high)
+-int low,high;
++bool deletion(int low,int high)
+ {
+     if (doyank(low, high))		/* fill yank buffer */
+ 	return delete_to_undo(&undo, low, high-low);
+@@ -61,9 +57,7 @@ int low,high;
+ 
+ /* move stuff from the yank buffer into core */
+ 
+-bool
+-putback(start, newend)
+-int start, *newend;
++bool putback(int start,int *newend)
+ {
+     int siz, st;
+     FILEDESC f;
+@@ -94,11 +88,8 @@ int start, *newend;
+ 
+ #define DSIZE 1024
+ 
+-int
+-makedest(str,start,ssize,size)
++int makedest(char *str, int start,int ssize,int size)
+ /* makedest: make the replacement string for an regular expression */
+-char *str;
+-int start, ssize, size;
+ {
+     char *fr = dst;
+     char *to = str;
+@@ -135,10 +126,7 @@ int start, ssize, size;
+     return to-str;
+ }
+ 
+-int
+-chop(start,endd,visual,query)
+-int start,*endd;
+-bool visual, *query;
++int chop(int start,int *endd,bool visual,bool *query)
+ {
+     int i,retval;
+     char c;
+--- a/move.c
++++ b/move.c
+@@ -30,10 +30,7 @@ int fchar(int,int), bchar(int,int);
+ 
+ /* driver for movement commands */
+ 
+-findstates
+-findCP(curp,newpos,cmd)
+-int curp, *newpos;
+-cmdtype cmd;
++findstates findCP(int curp,int  *newpos,cmdtype cmd)
+ {
+     static char chars[2] = {'/','?'};
+     char tsearch;
+@@ -192,9 +189,7 @@ cmdtype cmd;
+ 
+ /* this procedure handles all movement in visual mode */
+ 
+-void
+-movearound(cmd)
+-cmdtype cmd;
++void movearound(cmdtype cmd)
+ {
+     int cp;
+ 
+@@ -245,9 +240,7 @@ cmdtype cmd;
+     dgotoxy(xp, yp);
+ }
+ 
+-int
+-findcol(ip, col)
+-int ip, col;
++int findcol(int ip,int col)
+ {
+     int tcol, endd;
+ 
+@@ -277,9 +270,7 @@ char dstpatt[]="[](){}", srcpatt[]="][)(}{";
+ 
+ /* find matching [], (), {} */
+ 
+-int
+-match(p)
+-int p;
++int match(int p)
+ {
+     char srcchar, dstchar;
+     int lev, step;
+@@ -303,10 +294,8 @@ int p;
+     return (-1);
+ }
+ 
+-char *
+-class(c)
++char *class(int c)
+ /* find the character class of a char -- for word movement */
+-char c;
+ {
+     if (strchr(wordset,c))
+ 	return wordset;
+@@ -316,23 +305,16 @@ char c;
+ 	return (char*)NULL;
+ }
+ 
+-int
+-skip(chars,cp,step)
++int skip(char *chars,register int cp,int step)
+ /* skip past characters in a character class */
+-char *chars;
+-register int cp;
+-int step;
+ {
+     while (cp >= 0 && cp < bufmax && strchr(chars,core[cp]))
+ 	cp += step;
+     return cp;
+ }
+ 
+-int
+-tow(cp,step)
++int tow(register int cp,register int step)
+ /* skip to the start of the next word */
+-register int cp;
+-register int step;
+ {
+     while (cp >= 0 && cp < bufmax
+ 		 && !(strchr(wordset,core[cp]) || strchr(spaces,core[cp])))
+@@ -340,11 +322,8 @@ register int step;
+     return cp;
+ }
+ 
+-int
+-moveword(cp,forwd,toword)
++int moveword(int cp,bool forwd,bool toword)
+ /* word movement */
+-int cp;
+-bool forwd, toword;
+ {
+     int step;
+     char *ccl;
+@@ -378,9 +357,7 @@ bool forwd, toword;
+ 
+ /* find a character forward on current line */
+ 
+-int
+-fchar(pos,npos)
+-int pos,npos;
++int fchar(int pos,int npos)
+ {
+     do
+ 	pos += scan(lend-pos-1,'=',ch, &core[pos+1]) + 1;
+@@ -392,9 +369,7 @@ int pos,npos;
+ 
+ /* find a character backward on the current line */
+ 
+-int
+-bchar(pos,npos)
+-int pos,npos;
++int bchar(int pos,int npos)
+ {
+     do
+ 	pos += scan(-pos+lstart/*+1*/,'=',ch, &core[pos-1]) - 1;
+@@ -407,9 +382,7 @@ int pos,npos;
+ 
+ /* look for the end of a sentence forward */
+ 
+-int
+-ahead(i)
+-int i;
++int ahead(int i)
+ {
+     char c;
+ 
+@@ -424,9 +397,7 @@ int i;
+ 
+ /* look for the end of a sentence backwards. */
+ 
+-int
+-back(i)
+-int i;
++int back(int i)
+ {
+     char c;
+ 
+@@ -443,10 +414,7 @@ int i;
+     Sentences are delimited by ., !, or ? followed by a space.
+ */
+ 
+-int
+-sentence(start,forwd)
+-int start;
+-bool forwd;
++int sentence(int start, bool forwd)
+ {
+     do {
+ 	if (forwd)
+--- a/ucsd.c
++++ b/ucsd.c
+@@ -22,10 +22,7 @@
+ 
+ #ifndef moveleft
+ 
+-void
+-moveleft(src,dest,length)
+-register char *src,*dest;
+-register int length;
++void moveleft(register char *src, register char *dest, register int length)
+ {
+     while (--length >= 0)
+ 	*(dest++) = *(src++);
+@@ -35,10 +32,7 @@ register int length;
+ 
+ #ifndef moveright
+ 
+-void
+-moveright(src,dest,length)
+-register char *src,*dest;
+-register int length;
++void moveright(register char *src, register char *dest, register int length)
+ {
+     src = &src[length];
+     dest = &dest[length];
+@@ -50,10 +44,7 @@ register int length;
+ 
+ #ifndef fillchar
+ 
+-void
+-fillchar(src,length,ch)
+-register char *src,ch;
+-register int length;
++void fillchar(register char *src, register int length, register char ch)
+ {
+     while (--length >= 0)
+ 	*(src++) = ch;
+@@ -61,10 +52,7 @@ register int length;
+ 
+ #endif
+ 
+-int
+-scan(length,tst,ch,src)
+-int length;
+-register char tst,ch,*src;
++int scan(int length, register int tst, register int ch,register char *src)
+ {
+     register int inc,l;
+ 
+--- a/undo.c
++++ b/undo.c
+@@ -24,9 +24,7 @@
+ #define AVAIL(x)	((x)<<1)
+ #define INDEX(x)	((1+x)>>1)
+ 
+-bool
+-pushblock(u)
+-struct undostack *u;
++bool pushblock(struct undostack *u)
+ {
+     if (u->blockp == 0)
+ 	if ( (uwrite = OPEN_NEW(undobuf)) == NOWAY )
+@@ -39,10 +37,7 @@ struct undostack *u;
+     return FALSE;
+ }
+ 
+-bool
+-pushw(u, i)
+-struct undostack *u;
+-int i;
++bool pushw(struct undostack *u, int i)
+ {
+     if (u->ptr >= PAGESIZE && !pushblock(u))
+ 	return FALSE;
+@@ -50,10 +45,7 @@ int i;
+     return TRUE;
+ }
+ 
+-bool
+-pushmem(u, start, size)
+-struct undostack *u;
+-int start,size;
++bool pushmem(struct undostack *u, int start, int size)
+ {
+     int chunk;
+     bool ok;
+@@ -72,9 +64,7 @@ int start,size;
+     return ok;
+ }
+ 
+-void
+-zerostack(u)
+-struct undostack *u;
++void zerostack(struct undostack *u)
+ {
+     if (u->blockp > 0)
+ 	CLOSE_FILE(uwrite);
+@@ -82,19 +72,12 @@ struct undostack *u;
+     u->ptr = 0;
+ }
+ 
+-bool
+-uputcmd(u, size, start, cmd)
+-struct undostack *u;
+-int size,start;
+-char cmd;
++bool uputcmd(struct undostack *u, int size, int start, int cmd)
+ {
+     return(pushw(u, size) && pushw(u, start) && pushw(u, cmd));
+ }
+ 
+-void
+-insert_to_undo(u, start, size)
+-struct undostack *u;
+-int start,size;
++void insert_to_undo(struct undostack *u, int start, int size)
+ {
+     if (uputcmd(u, size, start, U_DELC)) {
+ 	fixmarkers(start, size);
+@@ -106,10 +89,7 @@ int start,size;
+ 
+ /* delete stuff from the buffer && put it into the undo stack */
+ 
+-bool
+-delete_to_undo(u, start, lump)
+-struct undostack *u;
+-int start, lump;
++bool delete_to_undo(struct undostack *u, int start, int lump)
+ {
+     if (lump <= 0)
+ 	return TRUE;
+@@ -125,17 +105,12 @@ int start, lump;
+ 
+ /* copy stuff into the undo buffer */
+ 
+-bool
+-move_to_undo(u, start, lump)
+-struct undostack *u;
+-int start,lump;
++bool move_to_undo(struct undostack *u, int start, int lump)
+ {
+     return pushmem(u, start, lump) && uputcmd(u,lump,start,U_MOVEC);
+ }
+ 
+-bool
+-popblock(u)
+-struct undostack *u;
++bool popblock(struct undostack *u)
+ {
+     if (u->blockp > 0) {
+ 	if (SEEK_POSITION(uread, (long)((--u->blockp)*BUFSZ), 0) < 0)
+@@ -148,10 +123,7 @@ struct undostack *u;
+     return FALSE;
+ }
+ 
+-bool
+-popw(u, i)
+-struct undostack *u;
+-int *i;
++bool popw(struct undostack *u, int *i)
+ {
+     if (u->ptr < 1 && !popblock(u))
+ 	return FALSE;
+@@ -159,10 +131,7 @@ int *i;
+     return TRUE;
+ }
+ 
+-bool
+-popmem(u, start, size)
+-struct undostack *u;
+-int start, size;
++bool popmem(struct undostack *u, int start, int size)
+ {
+     int chunk, loc;
+     bool ok;
+@@ -184,10 +153,7 @@ int start, size;
+ 
+ /* delete (I)nserted text */
+ 
+-bool
+-takeout(save_undo,curp)
+-struct undostack *save_undo;
+-int *curp;
++bool takeout(struct undostack *save_undo, int *curp)
+ {
+     int lump;
+ 
+@@ -195,10 +161,7 @@ int *curp;
+ 			    && delete_to_undo(save_undo,*curp,lump);
+ }
+ 
+-bool
+-copyover(save_undo,curp)
+-struct undostack *save_undo;
+-int *curp;
++bool copyover(struct undostack *save_undo, int *curp)
+ {
+     int lump;
+ 
+@@ -207,10 +170,7 @@ int *curp;
+ 			     && popmem(&undo, *curp, lump);
+ }
+ 
+-bool
+-putin(save_undo,curp)
+-struct undostack *save_undo;
+-int *curp;
++bool putin(struct undostack *save_undo, int *curp)
+ {
+     int lump;
+ 
+@@ -227,9 +187,7 @@ int *curp;
+ 
+ /* driver for undo -- returns last address modified || -1 if error */
+ 
+-int
+-fixcore(topp)
+-int *topp;
++int fixcore(int *topp)
+ {
+     int curp;
+     static struct undostack save_undo;
+--- a/unixcall.c
++++ b/unixcall.c
+@@ -48,124 +48,104 @@
+ 
+ 
+ /* **** FILE IO ABSTRACTIONS **** */
+-FILEDESC
+-OPEN_OLD(char *name)
++FILEDESC OPEN_OLD(char *name)
+ {
+     int fd = open(name, O_RDONLY);
+ 
+     return (fd == -1) ? NOWAY : (FILEDESC)fd;
+ }
+ 
+-FILEDESC
+-OPEN_NEW(char *name)
++FILEDESC OPEN_NEW(char *name)
+ {
+     int fd = open(name, O_WRONLY|O_CREAT|O_TRUNC, 0666);
+ 
+     return (fd == -1) ? NOWAY : (FILEDESC)fd;
+ }
+ 
+-int
+-CLOSE_FILE(FILEDESC f)
++int CLOSE_FILE(FILEDESC f)
+ {
+     return close( (int)f );
+ }
+ 
+-long
+-SEEK_POSITION(FILEDESC f, long offset, int mode)
++long SEEK_POSITION(FILEDESC f, long offset, int mode)
+ {
+     return lseek((int)f, offset, mode);
+ }
+ 
+-int
+-READ_TEXT(FILEDESC f, void *buf, int size)
++int READ_TEXT(FILEDESC f, void *buf, int size)
+ {
+     return read((int)f, buf, size);
+ }
+ 
+-int
+-WRITE_TEXT(FILEDESC f, void *buf, int size)
++int WRITE_TEXT(FILEDESC f, void *buf, int size)
+ {
+     return write((int)f, buf, size);
+ }
+ 
+ 
+ /* *** UNIX-SPECIFIC CONSOLE I/O *** */
+-int
+-os_write(s,len)
+-char *s;
++int os_write(char *s,int len)
+ {
+     return 0;
+ }
+ 
+ 
+-int
+-os_gotoxy(x,y)
++int os_gotoxy(int x, int y)
+ {
+     return 0;
+ }
+ 
+ 
+-int
+-os_clearscreen()
++int os_clearscreen(void)
+ {
+     return 0;
+ }
+ 
+ 
+-int
+-os_clear_to_eol()
++int os_clear_to_eol(void)
+ {
+     return 0;
+ }
+ 
+ 
+-int
+-os_cursor(int visible)
++int os_cursor(int visible)
+ {
+     return 0;
+ }
+ 
+ 
+-int
+-os_scrollback()
++int os_scrollback(void)
+ {
+     return 0;
+ }
+ 
+ 
+-int
+-os_newline()
++int os_newline(void)
+ {
+     return 0;
+ }
+ 
+ 
+-int
+-os_openline()
++int os_openline(void)
+ {
+     return 0;
+ }
+ 
+ 
+-int
+-os_highlight(int yes_or_no)
++int os_highlight(int yes_or_no)
+ {
+     return 0;
+ }
+ 
+ 
+-int
+-os_Ping()
++int os_Ping(void)
+ {
+     return 0;
+ }
+ 
+ /* get the screensize, if we can
+  */
+-int
+-os_screensize(x,y)
+-int *x;
+-int *y;
++int os_screensize(int *x,int *y)
+ {
+ #if defined(TIOCGSIZE)
+ 	struct ttysize tty;
+@@ -199,8 +179,7 @@ int *y;
+ static struct termios old;
+ 
+ 
+-int
+-os_initialize()
++int os_initialize(void)
+ {
+     tcgetattr(0, &old);	/* get editing keys */
+ 
+@@ -211,29 +190,25 @@ os_initialize()
+ }
+ 
+ 
+-int
+-os_restore()
++int os_restore(void)
+ {
+     return 1;
+ }
+ 
+ 
+-int
+-os_rename(char *from, char *to)
++int os_rename(char *from, char *to)
+ {
+     return rename(from, to);
+ }
+ 
+ 
+-int
+-os_unlink(char *file)
++int os_unlink(char *file)
+ {
+     return unlink(file);
+ }
+ 
+ 
+-int
+-os_mktemp(char *dest, int size, const char *template)
++int os_mktemp(char *dest, int size, const char *template)
+ {
+ #if USING_MKTEMP
+     static char Xes[] = ".XXXXXX";
+@@ -267,8 +242,7 @@ os_mktemp(char *dest, int size, const char *template)
+ /*
+  * implement the glob() command (with GLOB_NOSORT always set)
+  */
+-int
+-os_glob(const char* pattern, int flags, glob_t *result)
++int os_glob(const char* pattern, int flags, glob_t *result)
+ {
+ #if USING_GLOB
+     return glob(pattern, flags|GLOB_NOSORT, 0, result);
+@@ -334,8 +308,7 @@ os_glob(const char* pattern, int flags, glob_t *result)
+ /*
+  * clean up a glob_t after use.
+  */
+-void
+-os_globfree(glob_t *collection)
++void os_globfree(glob_t *collection)
+ {
+ #if USING_GLOB
+     globfree(collection);
+@@ -357,8 +330,7 @@ os_globfree(glob_t *collection)
+ /*
+  * do ~username expansions on a filename
+  */
+-char *
+-os_tilde(char *path)
++char *os_tilde(char *path)
+ {
+ #if HAVE_PWD_H
+     char *name, *slash, *expanded;
+@@ -424,8 +396,7 @@ os_tilde(char *path)
+ /*
+  * return the backup name for a file
+  */
+-char *
+-os_backupname(char *file)
++char *os_backupname(char *file)
+ {
+     int size;
+     char *p;
+@@ -444,8 +415,7 @@ os_backupname(char *file)
+ /*
+  * implement the :! command
+  */
+-int
+-os_subshell(char *commandline)
++int os_subshell(char *commandline)
+ {
+     return system(commandline);
+ }
+@@ -455,8 +425,7 @@ os_subshell(char *commandline)
+  * plumbing for the ! command: fork off a child process to process
+  * a workfile, return a FILE* that will hold the output.
+  */
+-FILE *
+-os_cmdopen(char *cmdline, char *workfile, os_pid_t *child)
++FILE *os_cmdopen(char *cmdline, char *workfile, os_pid_t *child)
+ {
+     os_pid_t job;
+     int io[2];
+@@ -502,8 +471,7 @@ os_cmdopen(char *cmdline, char *workfile, os_pid_t *child)
+  * plumbing for the ! command: wait for the child to clean up, the
+  * return exit status.
+  */
+-int
+-os_cmdclose(FILE *input, os_pid_t child)
++int os_cmdclose(FILE *input, os_pid_t child)
+ {
+     int status;
+ 
+@@ -514,8 +482,7 @@ os_cmdclose(FILE *input, os_pid_t child)
+ }
+ 
+ 
+-int
+-os_cclass(unsigned int c)
++int os_cclass(unsigned int c)
+ {
+     if (c == '\t' && !list)
+ 	return CC_TAB;
+@@ -529,8 +496,7 @@ os_cclass(unsigned int c)
+ 
+ /* put the terminal into raw mode
+  */
+-void
+-set_input()
++void set_input(void)
+ {
+     struct termios new = old;
+ 
+@@ -544,8 +510,7 @@ set_input()
+ 
+ /* reset the terminal to what is was before
+  */
+-void
+-reset_input()
++void reset_input(void)
+ {
+ #if USING_STDIO
+     fflush(stdout);
+@@ -556,8 +521,7 @@ reset_input()
+ 
+ /* what does our dotfile look like
+  */
+-char *
+-dotfile()
++char * dotfile(void)
+ {
+     /* should expand username */
+ 
+@@ -567,8 +531,7 @@ dotfile()
+ 
+ /* get a single keypress from the console
+  */
+-int
+-getKey()
++int getKey(void)
+ {
+     unsigned char c[1];
+     fd_set input;

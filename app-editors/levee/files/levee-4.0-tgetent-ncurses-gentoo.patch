@@ -1,0 +1,19 @@
+On Gentoo the tinfo library is built out of the libncurses source tree,
+therefore we need to look into libtinfo.so for the terminfo functions.
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/configure.sh
++++ b/configure.sh
+@@ -118,9 +118,9 @@ else
+     fi
+ 
+     if [ "$USE_TERMCAP" ]; then
+-	LIBORDER="-ltermcap -lcurses -lncurses"
++	LIBORDER="-ltermcap -lcurses $(${PKG_CONFIG:-pkg-config} --libs ncurses)"
+     else
+-	LIBORDER="-lcurses -lncurses -ltermcap"
++	LIBORDER="-lcurses $(${PKG_CONFIG:-pkg-config} --libs ncurses) -ltermcap"
+     fi
+ 
+     AC_CHECK_HEADERS termcap.h || AC_FAIL "levee needs <termcap.h>"
