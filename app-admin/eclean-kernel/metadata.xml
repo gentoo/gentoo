@@ -11,7 +11,7 @@
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
     </maintainer>
-    <bugs-to>https://github.com/mgorny/eclean-kernel2/issues/</bugs-to>
-    <remote-id type="github">mgorny/eclean-kernel2</remote-id>
+    <bugs-to>https://github.com/projg2/eclean-kernel2/issues/</bugs-to>
+    <remote-id type="github">projg2/eclean-kernel2</remote-id>
   </upstream>
 </pkgmetadata>

@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Remove outdated built kernels"
-HOMEPAGE="https://github.com/mgorny/eclean-kernel/"
-EGIT_REPO_URI="https://github.com/mgorny/eclean-kernel.git"
+HOMEPAGE="https://github.com/projg2/eclean-kernel/"
+EGIT_REPO_URI="https://github.com/projg2/eclean-kernel.git"
 
 LICENSE="BSD"
 SLOT="0"
