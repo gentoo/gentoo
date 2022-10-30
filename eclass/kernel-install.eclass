@@ -491,7 +491,7 @@ kernel-install_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local dir_ver=${PV}${KV_LOCALVERSION}
-	kernel-install_update_symlink "${EROOT}/usr/src/linux" "${ver}"
+	kernel-install_update_symlink "${EROOT}/usr/src/linux" "${dir_ver}"
 
 	if [[ -z ${ROOT} ]]; then
 		kernel-install_install_all "${dir_ver}"
