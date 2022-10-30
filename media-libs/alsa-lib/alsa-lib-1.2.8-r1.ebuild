@@ -34,6 +34,7 @@ BDEPEND="doc? ( >=app-doc/doxygen-1.2.6 )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.6-missing_files.patch" # bug #652422
+	"${FILESDIR}/${PN}-1.2.8-clang16-macro.patch"
 )
 
 pkg_setup() {
