@@ -178,8 +178,8 @@ src_install() {
 		# Prepare a directory for the chrony.drift file (a la ntpsec)
 		# Ensures the environment is sane on new installs
 		# bug #711058
-		fowners ntp:ntp /var/{lib,log}/chrony
-		fperms 770 /var/lib/chrony
+		fowners -R ntp:ntp /var/{lib,log}/chrony
+		fperms -R 770 /var/lib/chrony
 	fi
 
 	insinto /etc/logrotate.d
@@ -243,7 +243,7 @@ pkg_postinst() {
 
 	if [[ ${show_seccomp_enable_msg} -eq 1 ]] ; then
 		elog "To enable seccomp in a stricter mode, please modify:"
-		elog "- /etc/conf.d/chronyd for OpenRC"
+		elog "- ${EROOT}/etc/conf.d/chronyd for OpenRC"
 		elog "- systemctl edit chronyd for systemd"
 		elog "to use -F 1 or -F -1 instead of -F 2 (see man chronyd)"
 		elog "By default, we now use -F 2 which is a baseline/minimal filter."
