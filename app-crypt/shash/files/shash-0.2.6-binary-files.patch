@@ -1,5 +1,5 @@
---- shash-0.2.6/src/shash.c
-+++ shash-0.2.6/src/shash.c
+--- a/src/shash.c
++++ b/src/shash.c
 @@ -631,11 +631,11 @@
  
  		if (nosalt == FALSE && hmac == 1) {
