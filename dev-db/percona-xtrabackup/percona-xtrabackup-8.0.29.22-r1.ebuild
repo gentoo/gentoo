@@ -31,6 +31,7 @@ DEPEND="
 	dev-libs/libedit
 	dev-libs/libev
 	dev-libs/libevent:0=
+	dev-libs/libfido2:=
 	dev-libs/libgcrypt:0=
 	dev-libs/libgpg-error
 	dev-libs/openssl:0=
