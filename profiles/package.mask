@@ -156,15 +156,6 @@ dev-python/nose_warnings_filters
 x11-terms/lilyterm
 
 # Matt Turner <mattst88@gentoo.org> (2022-10-14)
-# Unmaintained upstream with last commit in 2013. No reverse dependencies.
-# Depends on unmaintained packages:
-# 	- x11-libs/gtk+:2
-# 	- x11-libs/vte:0
-# Bugs #769131, #875704.
-# Removal on 2022-11-14
-x11-misc/gtkdialog
-
-# Matt Turner <mattst88@gentoo.org> (2022-10-14)
 # Unmaintained upstream. Last release in 2008. Only reverse dependency is
 # gnome-mud, which is masked for removal.
 # Bugs #349301, #713152, #802723, #808435, #870730, #877079.
