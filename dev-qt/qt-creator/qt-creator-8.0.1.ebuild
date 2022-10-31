@@ -71,6 +71,7 @@ QT_PV="5.15.2:5"
 BDEPEND="
 	>=dev-qt/linguist-tools-${QT_PV}
 	doc? ( >=dev-qt/qdoc-${QT_PV} )
+	help? ( !webengine? ( virtual/pkgconfig ) )
 "
 CDEPEND="
 	clang? (
@@ -213,7 +214,8 @@ src_prepare() {
 
 	if use help && ! use webengine; then
 		# unbundled gumbo doesn't use cmake
-		local gumbo_dep='pkg_check_modules(gumbo REQUIRED IMPORTED_TARGET gumbo)\n'
+		local gumbo_dep='find_package(PkgConfig REQUIRED)\n'
+		gumbo_dep+='pkg_check_modules(gumbo REQUIRED IMPORTED_TARGET gumbo)\n'
 		sed -i -e '/^\s*gumbo/s|gumbo|PkgConfig::gumbo|' \
 			-e "/^find_package(litehtml/s|^|${gumbo_dep}|" \
 			src/libs/qlitehtml/src/CMakeLists.txt || die
