@@ -221,7 +221,7 @@ src_install() {
 	fi
 	# Makefile installs xscreensaver.service regardless of --without-systemd
 	if ! use systemd; then
-		rm "${ED}/usr/share/xscreensaver.service" || die
+		rm "${ED}/usr/share/${PN}/xscreensaver.service" || die
 	fi
 }
 
