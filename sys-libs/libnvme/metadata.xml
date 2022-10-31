@@ -5,6 +5,10 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<maintainer type="person">
+		<name>Patrick McLean</name>
+		<email>chutzpah@gentoo.org</email>
+	</maintainer>
 	<use>
 		<flag name="json">Support JSON output via <pkg>dev-libs/json-c</pkg></flag>
 		<flag name="uuid">UUID support via <pkg>sys-apps/util-linux</pkg></flag>
