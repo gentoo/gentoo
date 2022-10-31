@@ -191,6 +191,7 @@ src_compile() {
 				filter-flags '-fstack-clash-protection' #758914
 				filter-flags '-fstack-protector*' #870136
 				filter-flags '-fuse-ld=*'
+				filter-flags '-mfunction-return=thunk*' #878849
 				strip-unsupported-flags
 				mwt-build "${@:2}"
 			)
