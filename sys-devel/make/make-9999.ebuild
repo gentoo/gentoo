@@ -15,8 +15,8 @@ elif [[ $(ver_cut 3) -ge 90 ]] ; then
 	SRC_URI="https://alpha.gnu.org/gnu/make/${P}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://alpha.gnu.org/gnu/make/${P}.tar.gz.sig )"
 else
-	SRC_URI="mirror://gnu//make/${P}.tar.gz"
-	SRC_URI+=" verify-sig? ( mirror://gnu//make/${P}.tar.gz.sig )"
+	SRC_URI="mirror://gnu/make/${P}.tar.gz"
+	SRC_URI+=" verify-sig? ( mirror://gnu/make/${P}.tar.gz.sig )"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
