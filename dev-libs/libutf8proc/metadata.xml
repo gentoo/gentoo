@@ -5,4 +5,7 @@
 		<email>hattya@gentoo.org</email>
 		<name>Akinori Hattori</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">JuliaStrings/utf8proc</remote-id>
+	</upstream>
 </pkgmetadata>
