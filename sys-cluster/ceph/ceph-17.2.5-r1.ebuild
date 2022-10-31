@@ -280,7 +280,7 @@ src_prepare() {
 		-i src/CMakeLists.txt
 
 	if use spdk; then
-		# bug #871942
+		# https://bugs.gentoo.org/871942
 		sed -i 's/[#]ifndef HAVE_ARC4RANDOM/#if 0/' src/spdk/lib/iscsi/iscsi.c || die
 	fi
 
