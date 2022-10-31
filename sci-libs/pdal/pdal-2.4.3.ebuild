@@ -54,6 +54,7 @@ src_test() {
 	local myctestargs=(
 		--exclude-regex '(pgpointcloudtest|pdal_io_bpf_base_test|pdal_io_bpf_zlib_test|pdal_filters_overlay_test|pdal_filters_stats_test|pdal_app_plugin_test|pdal_merge_test)'
 		--output-on-failure
+		-j1
 	)
 
 	cmake_src_test
