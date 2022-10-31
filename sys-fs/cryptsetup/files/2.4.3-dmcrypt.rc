@@ -5,6 +5,7 @@
 depend() {
 	use modules
 	before checkfs fsck
+	after dev-settle
 
 	if grep -qs ^swap= "${conf_file}" ; then
 		before swap
