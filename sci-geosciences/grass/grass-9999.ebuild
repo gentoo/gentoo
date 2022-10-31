@@ -5,9 +5,8 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
-WX_GTK_VER="3.0-gtk3"
 
-inherit desktop python-single-r1 toolchain-funcs wxwidgets xdg
+inherit desktop python-single-r1 toolchain-funcs xdg
 
 DESCRIPTION="A free GIS with raster and vector functionality, as well as 3D vizualization"
 HOMEPAGE="https://grass.osgeo.org/"
@@ -149,11 +148,6 @@ src_prepare() {
 }
 
 src_configure() {
-	if use X; then
-		local WX_BUILD=yes
-		setup-wxwidgets
-	fi
-
 	addwrite /dev/dri/renderD128
 
 	local myeconfargs=(
@@ -187,7 +181,6 @@ src_configure() {
 		$(use_with opencl)
 		$(use_with pdal pdal "${EPREFIX}"/usr/bin/pdal-config)
 		$(use_with las liblas "${EPREFIX}"/usr/bin/liblas-config)
-		$(use_with X wxwidgets "${WX_CONFIG}")
 		$(use_with netcdf netcdf "${EPREFIX}"/usr/bin/nc-config)
 		$(use_with geos geos "${EPREFIX}"/usr/bin/geos-config)
 		$(use_with X x)
@@ -260,8 +253,7 @@ os.environ\[\"GRASS_PYTHON\"\] = \"${EPYTHON}\":" \
 		-i "${ED}"${gisbase}/demolocation/.grassrc${GVERSION//.} || die
 
 	if use X; then
-		local GUI="-gui"
-		[[ ${WX_BUILD} == yes ]] && GUI="-wxpython"
+		local GUI="--gui"
 		make_desktop_entry "/usr/bin/grass ${GUI}" "${PN}" "${PN}-48x48" "Science;Education"
 		doicon -s 48 gui/icons/${PN}-48x48.png
 	fi
