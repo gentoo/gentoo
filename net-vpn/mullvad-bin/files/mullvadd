@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+
+description="Mullvad VPN Service"
+depend() {
+    need net
+}
+
+supervisor="supervise-daemon"
+command="/usr/bin/mullvad-daemon"
+command_args="${MULLVPN_OPTS}"
+pidfile="/run/${RC_SVCNAME}.pid"
+command_background=true
