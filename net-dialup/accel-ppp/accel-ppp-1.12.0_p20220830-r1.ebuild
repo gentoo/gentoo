@@ -71,6 +71,8 @@ src_prepare() {
 src_configure() {
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
+		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
+		-DCMAKE_INSTALL_LOCALSTATEDIR="${EPREFIX}/var"
 		-DLIB_SUFFIX="${libdir#lib}"
 		-DBUILD_IPOE_DRIVER="$(usex ipoe)"
 		-DBUILD_PPTP_DRIVER=no
@@ -109,5 +111,6 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}d
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}d
 
+	keepdir /var/lib/accel-ppp
 	keepdir /var/log/accel-ppp
 }
