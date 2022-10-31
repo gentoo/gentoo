@@ -120,7 +120,7 @@ REQUIRED_USE="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.19_pre20201231-0003-Gentoo-specific-don-t-check-vcs.patch
+	"${FILESDIR}"/${PN}-0.19.4-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-0.19.1-0001-Gentoo-specific-Remove-ccache-usage.patch
 )
 
@@ -137,6 +137,8 @@ pkg_setup() {
 src_prepare() {
 	# Fix desktop file
 	sed -e 's/Exec=FreeCAD/Exec=freecad/' -i src/XDGData/org.freecadweb.FreeCAD.desktop || die
+
+	find "${S}" -type f -exec dos2unix -q {} \; || die "failed to convert to unix line endings"
 
 	cmake_src_prepare
 }
