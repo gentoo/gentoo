@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-10-30)
+# Dead package, last release 10 years ago. No reverse dependencies.
+# Removal on 2022-11-30
+media-gfx/gnome-raw-thumbnailer
+
 # Matt Turner <mattst88@gentoo.org> (2022-10-29)
 # Old slot with no reverse dependencies.
 # Removal on 2022-11-29
