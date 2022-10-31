@@ -246,6 +246,7 @@ src_configure() {
 			: "${CROSSCFLAGS:=$(
 				filter-flags '-fstack-clash-protection' #758914
 				filter-flags '-fstack-protector*' #870136
+				filter-flags '-mfunction-return=thunk*' #878849
 				CC=${CROSSCC} test-flags-CC ${CFLAGS:--O2})}"
 			: "${CROSSLDFLAGS:=$(
 				filter-flags '-fuse-ld=*'
