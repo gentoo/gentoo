@@ -15,8 +15,8 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="examples selinux"
-RESTRICT="test"
+IUSE="examples selinux test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-group/ddclient
@@ -30,14 +30,25 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-ddclient )
 "
 
+BDEPEND="
+	test? (
+		dev-perl/HTTP-Daemon
+		dev-perl/HTTP-Daemon-SSL
+		dev-perl/Plack
+		dev-perl/Test-MockModule
+		dev-perl/Test-Warnings
+	)
+"
+
 src_prepare() {
 	default
 
 	# Remove PID setting, to reliably setup the environment for the init script
 	sed -e '/^pid/d' -i ddclient.conf.in || die
 
+	# Disable 'get_ip_from_if.pl' test, as it fails with network-sandbox
 	# Don't create cache directory, as it's created by init script / tmpfiles
-	sed -e '/MKDIR_P/d' -i Makefile.am || die
+	sed -e '/get_ip_from_if.pl/d' -e '/MKDIR_P/d' -i Makefile.am || die
 
 	# Remove windows executable
 	if use examples; then
