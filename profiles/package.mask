@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-10-31)
+# EAPI 6, last release over 17 years ago, requires <ghostscript-gpl-10
+# drivers, relies on -Wimplicit-function-declaration.
+# Removal on 2022-11-30. Bug #871216, #876382.
+media-gfx/peps
+
 # Matt Turner <mattst88@gentoo.org> (2022-10-30)
 # Dead package, last release 10 years ago. No reverse dependencies.
 # Removal on 2022-11-30
