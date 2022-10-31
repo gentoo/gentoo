@@ -1,10 +1,12 @@
 #!/sbin/openrc-run
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+PIDDIR="${PIDDIR:-/run/MIMEDefang}"
+PID="${PIDDIR}/mimedefang.pid"
+MXPID="${PIDDIR}/mimedefang-multiplexor.pid"
+
 SPOOLDIR="${SPOOLDIR:-/var/spool/MIMEDefang}"
-PID="${SPOOLDIR}/mimedefang.pid"
-MXPID="${SPOOLDIR}/mimedefang-multiplexor.pid"
 LOCK="${SPOOLDIR}/mimedefang.lock"
 MXLOCK="${SPOOLDIR}/mimedefang-multiplexor.lock"
 
@@ -21,6 +23,7 @@ depend() {
 }
 
 checkconfig() {
+	checkpath -d "${PIDDIR}"
 	checkpath -d "${SPOOLDIR}"
 	einfo "multiplexor socket: ${MX_SOCKET}"
 	einfo "sendmail socket: ${SOCKET}"

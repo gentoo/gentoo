@@ -4,7 +4,7 @@
 EAPI=7
 
 GNOME_ORG_MODULE="gtk+"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit gnome.org python-single-r1

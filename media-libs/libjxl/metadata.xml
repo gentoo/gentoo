@@ -16,6 +16,5 @@
   </longdescription>
   <use>
     <flag name="gdk-pixbuf">Build a gdk-pixbuf loader</flag>
-    <flag name="gimp210">Enable plugin for GIMP 2.10.x series</flag>
   </use>
 </pkgmetadata>

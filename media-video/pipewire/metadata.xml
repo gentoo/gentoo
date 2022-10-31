@@ -13,6 +13,7 @@
 		<bugs-to>https://gitlab.freedesktop.org/pipewire/pipewire/-/issues</bugs-to>
 		<changelog>https://gitlab.freedesktop.org/pipewire/pipewire/-/releases</changelog>
 		<doc>https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/home</doc>
+		<remote-id type="freedesktop-gitlab">pipewire/pipewire</remote-id>
 	</upstream>
 	<use>
 		<flag name="echo-cancel">Enable WebRTC-based echo canceller via <pkg>media-libs/webrtc-audio-processing</pkg></flag>

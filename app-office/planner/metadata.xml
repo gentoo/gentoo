@@ -5,4 +5,10 @@
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
+  <use>
+    <flag name="libgda">Database/GDA support</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">World/planner</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -14,4 +14,7 @@
     <flag name="playlist">Add support for playlists</flag>
     <flag name="xps">Add support for XPS file format through <pkg>app-text/libgxps</pkg>.</flag>
   </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/tracker-miners</remote-id>
+  </upstream>
 </pkgmetadata>

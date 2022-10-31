@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
-# vala-0.36 fails to build, https://bugs.gentoo.org/692538
-VALA_MIN_API_VERSION="0.40"
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit gnome.org gnome2-utils meson python-r1 vala xdg-utils
 

@@ -14,7 +14,7 @@ S="${WORKDIR}/libjxl-libjxl-${COMMIT:0:7}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
 IUSE="openexr"
 
 DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]

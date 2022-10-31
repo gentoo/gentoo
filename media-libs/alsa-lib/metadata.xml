@@ -9,6 +9,7 @@
 		<flag name="thread-safety">thread-safe API functions</flag>
 	</use>
 	<upstream>
+		<changelog>https://www.alsa-project.org/wiki/Main_Page_News</changelog>
 		<remote-id type="cpe">cpe:/a:alsa-project:alsa-lib</remote-id>
 		<remote-id type="github">alsa-project/alsa-lib</remote-id>
 	</upstream>

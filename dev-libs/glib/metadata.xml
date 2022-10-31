@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<use>
-		<flag name="dbus">
-			Enable dependencies required by glib libraries
-			using dbus service to manage settings saving
-		</flag>
-		<flag name="elf">
-			Enable support for listing and extracting from
-			ELF resource files with gresource tool
-		</flag>
-		<flag name="mime">
-			Pull in shared MIME database that many glib-based
-			applications require at runtime to detect or open files. Warning:
-			do not disable this flag unless installing on a headless server.
-		</flag>
-		<flag name="systemtap">
-			Build support for profiling and tracing using
-			<pkg>dev-util/systemtap</pkg>
-		</flag>
-		<flag name="sysprof">
-			Enable profiling data capture support using
-			<pkg>dev-util/sysprof-capture</pkg>
-		</flag>
-		<flag name="utils">
-			Install gtester-report utility to generate test
-			report files for your software; build gresource utility with
-			ELF support.
-		</flag>
-	</use>
-	<upstream>
-		<remote-id type="cpe">cpe:/a:gnome:glib</remote-id>
-	</upstream>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="dbus">
+      Enable dependencies required by glib libraries
+      using dbus service to manage settings saving
+    </flag>
+    <flag name="elf">
+      Enable support for listing and extracting from
+      ELF resource files with gresource tool
+    </flag>
+    <flag name="mime">
+      Pull in shared MIME database that many glib-based
+      applications require at runtime to detect or open files. Warning:
+      do not disable this flag unless installing on a headless server.
+    </flag>
+    <flag name="systemtap">
+      Build support for profiling and tracing using
+      <pkg>dev-util/systemtap</pkg>
+    </flag>
+    <flag name="sysprof">
+      Enable profiling data capture support using
+      <pkg>dev-util/sysprof-capture</pkg>
+    </flag>
+    <flag name="utils">
+      Install gtester-report utility to generate test
+      report files for your software; build gresource utility with
+      ELF support.
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:gnome:glib</remote-id>
+    <remote-id type="gnome-gitlab">GNOME/glib</remote-id>
+  </upstream>
 </pkgmetadata>

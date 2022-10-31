@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-if [[ ${PV} = *9999 ]]; then
+if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/Exiv2/exiv2.git"
 	inherit git-r3
 else
@@ -12,7 +12,7 @@ else
 	S="${WORKDIR}/${P}-Source"
 fi
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit cmake-multilib python-any-r1
 
 DESCRIPTION="EXIF, IPTC and XMP metadata C++ library and command line utility"
@@ -24,16 +24,6 @@ SLOT="0/27.5"
 IUSE="+bmff doc examples nls +png test webready +xmp"
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	doc? (
-		${PYTHON_DEPS}
-		app-doc/doxygen
-		dev-libs/libxslt
-		media-gfx/graphviz
-		virtual/pkgconfig
-	)
-	nls? ( sys-devel/gettext )
-"
 RDEPEND="
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
@@ -45,13 +35,22 @@ RDEPEND="
 	xmp? ( dev-libs/expat[${MULTILIB_USEDEP}] )
 "
 DEPEND="${DEPEND}
-	test? ( dev-cpp/gtest )"
+	test? ( dev-cpp/gtest )
+"
+BDEPEND="
+	doc? (
+		${PYTHON_DEPS}
+		app-doc/doxygen
+		dev-libs/libxslt
+		media-gfx/graphviz
+		virtual/pkgconfig
+	)
+	nls? ( sys-devel/gettext )
+"
 
 DOCS=( README.md doc/ChangeLog doc/cmd.txt )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.27.5-musl-tests.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-0.27.5-musl-tests.patch )
 
 pkg_setup() {
 	use doc && python-any-r1_pkg_setup

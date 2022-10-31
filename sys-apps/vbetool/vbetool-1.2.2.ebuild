@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~ionen/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-libs/libx86

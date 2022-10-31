@@ -3,8 +3,9 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="network-cron">
-		Monthly cronjob to update hddtemp.db.
-	</flag>
+		<flag name="network-cron">Monthly cronjob to update hddtemp.db.</flag>
 	</use>
+	<upstream>
+		<remote-id type="savannah-nongnu">hddtemp</remote-id>
+	</upstream>
 </pkgmetadata>

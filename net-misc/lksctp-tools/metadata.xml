@@ -14,5 +14,6 @@
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">lksctp</remote-id>
+    <remote-id type="github">sctp/lksctp-tools</remote-id>
   </upstream>
 </pkgmetadata>

@@ -8,7 +8,7 @@ inherit qt5-build
 DESCRIPTION="Module for displaying web content in a QML application using the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 fi
 
 IUSE=""

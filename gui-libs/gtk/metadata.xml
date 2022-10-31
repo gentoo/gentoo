@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<use>
-		<flag name="broadway">Enable the GDK Broadway backend.</flag>
-		<flag name="colord">Use <pkg>x11-misc/colord</pkg> for color management
-			in printing</flag>
-		<flag name="sysprof">Enable profiling data capture support using
-			<pkg>dev-util/sysprof-capture</pkg></flag>
-		<flag name="vulkan">Enable support for the Vulkan graphics API</flag>
-	</use>
-	<upstream>
-		<remote-id type="cpe">cpe:/a:gtk:gtk</remote-id>
-	</upstream>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="broadway">Enable the GDK Broadway backend.</flag>
+    <flag name="colord">Use <pkg>x11-misc/colord</pkg> for color management in printing</flag>
+    <flag name="sysprof">Enable profiling data capture support using <pkg>dev-util/sysprof-capture</pkg></flag>
+    <flag name="vulkan">Enable support for the Vulkan graphics API</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:gtk:gtk</remote-id>
+    <remote-id type="gnome-gitlab">GNOME/gtk</remote-id>
+  </upstream>
 </pkgmetadata>

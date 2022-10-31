@@ -1,0 +1,172 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+MULTILIB_COMPAT=( abi_x86_{32,64} )
+inherit flag-o-matic meson-multilib toolchain-funcs
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/HansKristian-Work/vkd3d-proton.git"
+	EGIT_SUBMODULES=(
+		# uses hacks / recent features and easily breaks, keep bundled headers
+		# (also cross-compiled and -I/usr/include is troublesome)
+		subprojects/{SPIRV,Vulkan}-Headers
+		subprojects/dxil-spirv
+		subprojects/dxil-spirv/third_party/spirv-headers # skip cross/tools
+	)
+else
+	HASH_VKD3D=4df366172e025c23621c8df5a794de90de165d97 # match tag on bumps
+	HASH_DXIL=2166bc7ea0ceb2d7ff6d787d9b007f7eb7d4aaa8
+	HASH_SPIRV=ae217c17809fadb232ec94b29304b4afcd417bb4
+	HASH_SPIRV_DXIL=87d5b782bec60822aa878941e6b13c0a9a954c9b
+	HASH_VULKAN=5177b119bbdf463b7b909855a83230253c2d8b68
+	SRC_URI="
+		https://github.com/HansKristian-Work/vkd3d-proton/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/HansKristian-Work/dxil-spirv/archive/${HASH_DXIL}.tar.gz -> ${PN}-dxil-spirv-${HASH_DXIL::10}.tar.gz
+		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV}.tar.gz -> ${PN}-spirv-headers-${HASH_SPIRV::10}.tar.gz
+		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV_DXIL}.tar.gz -> ${PN}-spirv-headers-${HASH_SPIRV_DXIL::10}.tar.gz
+		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz -> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz"
+	KEYWORDS="-* ~amd64 ~x86"
+fi
+
+DESCRIPTION="Fork of VKD3D, development branches for Proton's Direct3D 12 implementation"
+HOMEPAGE="https://github.com/HansKristian-Work/vkd3d-proton/"
+
+LICENSE="LGPL-2.1+ Apache-2.0 MIT"
+SLOT="0"
+IUSE="+abi_x86_32 crossdev-mingw debug extras"
+
+BDEPEND="
+	dev-util/glslang
+	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} == binary ]] && return
+
+	if use crossdev-mingw && [[ ! -v MINGW_BYPASS ]]; then
+		local tool=-w64-mingw32-g++
+		for tool in $(usev abi_x86_64 x86_64${tool}) $(usev abi_x86_32 i686${tool}); do
+			if ! type -P ${tool} >/dev/null; then
+				eerror "With USE=crossdev-mingw, it is necessary to setup the mingw toolchain."
+				eerror "For instructions, please see: https://wiki.gentoo.org/wiki/Mingw"
+				use abi_x86_32 && use abi_x86_64 &&
+					eerror "Also, with USE=abi_x86_32, will need both i686 and x86_64 toolchains."
+				die "USE=crossdev-mingw is enabled, but ${tool} was not found"
+			elif [[ ! $(LC_ALL=C ${tool} -v 2>&1) =~ "Thread model: posix" ]]; then
+				eerror "${PN} requires GCC to be built with --enable-threads=posix"
+				eerror "Please see: https://wiki.gentoo.org/wiki/Mingw#POSIX_threads_for_Windows"
+				die "USE=crossdev-mingw is enabled, but ${tool} does not use POSIX threads"
+			fi
+		done
+		tool=-w64-mingw32-widl
+		for tool in $(usev abi_x86_64 x86_64${tool}) $(usev abi_x86_32 i686${tool}); do
+			if ! type -P widl >/dev/null && ! type -P ${tool} >/dev/null; then
+				eerror "With USE=crossdev-mingw, you need to provide the widl compiler by either"
+				eerror "building crossdev mingw64-runtime with USE=tools or installing wine."
+				die "USE=crossdev-mingw is set but neither widl nor ${tool} were found"
+			fi
+		done
+	fi
+}
+
+src_prepare() {
+	if [[ ${PV} != 9999 ]]; then
+		rmdir subprojects/{{SPIRV,Vulkan}-Headers,dxil-spirv} || die
+		mv ../dxil-spirv-${HASH_DXIL} subprojects/dxil-spirv || die
+		mv ../SPIRV-Headers-${HASH_SPIRV} subprojects/SPIRV-Headers || die
+		mv ../Vulkan-Headers-${HASH_VULKAN} subprojects/Vulkan-Headers || die
+
+		# dxil and vkd3d's spirv headers currently mismatch and incompatible
+		rmdir subprojects/dxil-spirv/third_party/spirv-headers || die
+		mv ../SPIRV-Headers-${HASH_SPIRV_DXIL} \
+			subprojects/dxil-spirv/third_party/spirv-headers || die
+	fi
+
+	default
+
+	sed -i "/^basedir=/s|=.*|=${EPREFIX}/usr/lib/${PN}|" setup_vkd3d_proton.sh || die
+
+	if [[ ${PV} != 9999 ]]; then
+		# without .git, meson sets vkd3d_build as 0x${PV} leading to failure
+		sed -i "s/@VCS_TAG@/${HASH_VKD3D::15}/" vkd3d_build.h.in || die
+		sed -i "s/@VCS_TAG@/${HASH_VKD3D::7}/" vkd3d_version.h.in || die
+	fi
+}
+
+src_configure() {
+	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
+
+	if [[ ${CHOST} != *-mingw* ]]; then
+		if [[ ! -v MINGW_BYPASS ]]; then
+			unset AR CC CXX RC STRIP WIDL
+			filter-flags '-fstack-clash-protection' #758914
+			filter-flags '-fstack-protector*' #870136
+			filter-flags '-fuse-ld=*'
+			filter-flags '-mfunction-return=thunk*' #878849
+		fi
+
+		CHOST_amd64=x86_64-w64-mingw32
+		CHOST_x86=i686-w64-mingw32
+		CHOST=$(usex x86 ${CHOST_x86} ${CHOST_amd64})
+
+		# preferring meson eclass' cross file over upstream's but, unlike
+		# dxvk, we lose static options in the process (from build-win*.txt)
+		append-ldflags -static -static-libgcc -static-libstdc++
+
+		strip-unsupported-flags
+	fi
+
+	multilib-minimal_src_configure
+}
+
+multilib_src_configure() {
+	# multilib's ${CHOST_amd64}-gcc -m32 is unusable with crossdev,
+	# unset again so meson eclass will set ${CHOST}-gcc + others
+	use crossdev-mingw && [[ ! -v MINGW_BYPASS ]] && unset AR CC CXX STRIP WIDL
+
+	# prefer ${CHOST}'s widl (mingw) over wine's as used by upstream if
+	# possible, but eclasses don't handle that so setup machine files
+	local widl=$(tc-getPROG WIDL widl)
+	use amd64 && [[ ${widl} == widl && ${ABI} == x86 ]] && widl="widl','-m32"
+	printf "[binaries]\nwidl = ['${widl}']\n" > "${T}"/widl.${ABI}.ini || die
+
+	local emesonargs=(
+		--prefix="${EPREFIX}"/usr/lib/${PN}
+		--{bin,lib}dir=x${ABI: -2}
+		--{cross,native}-file="${T}"/widl.${ABI}.ini
+		$(meson_use {,enable_}extras)
+		$(meson_use debug enable_trace)
+		$(usev !debug --strip) # portage won't strip .dll, so allow it here
+		-Denable_tests=false # needs wine/vulkan and is intended for manual use
+	)
+
+	meson_src_configure
+}
+
+multilib_src_install_all() {
+	dobin setup_vkd3d_proton.sh
+	einstalldocs
+
+	# unnecesasry files, see package-release.sh
+	rm "${ED}"/usr/lib/${PN}/x*/libvkd3d-proton-utils-3.dll || die
+	find "${ED}" -type f -name '*.a' -delete || die
+}
+
+pkg_postinst() {
+	if [[ ! ${REPLACING_VERSIONS} ]]; then
+		elog "To enable ${PN} on a wine prefix, you can run the following command:"
+		elog
+		elog "	WINEPREFIX=/path/to/prefix setup_vkd3d_proton.sh install --symlink"
+		elog
+		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
+	fi
+
+	# don't try to keep wine-*[vulkan] in RDEPEND, but still give a warning
+	local wine
+	for wine in app-emulation/wine-{vanilla,staging}; do
+		has_version ${wine} && ! has_version "${wine}[vulkan]" &&
+			ewarn "${wine} was not built with USE=vulkan, ${PN} will not be usable with it"
+	done
+}

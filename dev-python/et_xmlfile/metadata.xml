@@ -8,5 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">et-xmlfile</remote-id>
+    <remote-id type="heptapod">openpyxl/et_xmlfile</remote-id>
   </upstream>
 </pkgmetadata>

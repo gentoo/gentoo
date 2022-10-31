@@ -14,7 +14,7 @@ SRC_URI="https://github.com/snowballstem/snowball/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~ppc-macos ~sparc-solaris ~sparc64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~ppc-macos ~sparc-solaris ~sparc64-solaris"
 IUSE="static-libs test"
 
 DEPEND=""

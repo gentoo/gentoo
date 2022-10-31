@@ -73,7 +73,6 @@ x11-wm/mutter -video_cards_nvidia
 # Only maxima makes a distinction between the 32-bit and 64-bit
 # USE flags.
 sci-mathematics/fricas -clozurecl
-<sci-mathematics/maxima-5.44.0-r5 -clozurecl
 sci-mathematics/maxima -clozurecl64
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)

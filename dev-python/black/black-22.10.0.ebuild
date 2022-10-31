@@ -3,9 +3,8 @@
 
 EAPI=8
 
-# py3.11 blocked by mypy_extensions
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1 optfeature
 

@@ -88,7 +88,7 @@ RDEPEND="
 	iscsi-direct? ( >=net-libs/libiscsi-1.18.0 )
 	libssh? ( >=net-libs/libssh-0.8.1:= )
 	libssh2? ( >=net-libs/libssh2-1.3 )
-	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
+	lvm? ( >=sys-fs/lvm2-2.02.48-r2[lvm] )
 	lxc? ( !sys-apps/systemd[cgroup-hybrid(-)] )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
@@ -97,7 +97,7 @@ RDEPEND="
 	)
 	parted? (
 		>=sys-block/parted-1.8[device-mapper]
-		sys-fs/lvm2[-device-mapper-only(-)]
+		sys-fs/lvm2[lvm]
 	)
 	pcap? ( >=net-libs/libpcap-1.8.0 )
 	policykit? (

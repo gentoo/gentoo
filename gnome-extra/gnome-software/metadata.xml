@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<use>
-		<flag name="firmware">Enable firmware update support through <pkg>sys-apps/fwupd</pkg></flag>
-		<flag name="flatpak">Enable support for flatpak applications using <pkg>sys-apps/flatpak</pkg></flag>
-		<flag name="sysprof">Enable profiling data capture support using <pkg>dev-util/sysprof-capture</pkg></flag>
-	</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="firmware">Enable firmware update support through <pkg>sys-apps/fwupd</pkg></flag>
+    <flag name="flatpak">Enable support for flatpak applications using <pkg>sys-apps/flatpak</pkg></flag>
+    <flag name="sysprof">Enable profiling data capture support using <pkg>dev-util/sysprof-capture</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gnome-software</remote-id>
+  </upstream>
 </pkgmetadata>

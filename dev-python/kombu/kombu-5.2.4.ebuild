@@ -33,11 +33,11 @@ BDEPEND="
 		dev-python/pycurl[${PYTHON_USEDEP}]
 		>=dev-python/pymongo-3.3.0[${PYTHON_USEDEP}]
 		dev-python/Pyro4[${PYTHON_USEDEP}]
+		dev-python/python-zstandard[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
 		>=dev-python/redis-py-3.3.11[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
-		dev-python/zstandard[${PYTHON_USEDEP}]
 	)
 "
 
@@ -76,5 +76,5 @@ pkg_postinst() {
 	optfeature "Zookeeper backend" dev-python/kazoo
 	optfeature "MessagePack (de)serializer for Python" dev-python/msgpack
 	optfeature "brotli compression" "app-arch/brotli[python]"
-	optfeature "zstd compression" dev-python/zstandard
+	optfeature "zstd compression" dev-python/python-zstandard
 }

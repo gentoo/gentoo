@@ -44,10 +44,10 @@ DEPEND="
 	media-libs/glew:0=
 	media-libs/libepoxy
 	media-libs/libglvnd
+	media-libs/libjpeg-turbo:0=
 	media-libs/libpng:0=
 	sys-libs/zlib:=
 	virtual/glu
-	virtual/jpeg:0
 	virtual/opengl
 	ffmpeg? ( media-video/ffmpeg )
 	glut? ( media-libs/freeglut )

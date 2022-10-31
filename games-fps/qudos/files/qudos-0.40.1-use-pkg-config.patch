@@ -1,0 +1,30 @@
+From 372cfdd9c81043667451fc46bcb8daaa5a5e3620 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 24 Oct 2022 17:56:14 +0100
+Subject: [PATCH 5/5] Use pkg-config
+
+--- a/Makefile
++++ b/Makefile
+@@ -64,9 +64,9 @@ TYPE?=		release
+ 
+ OGG_LDFLAGS=	-lvorbisfile -lvorbis -logg
+ 
+-SDL_CONFIG?=	sdl-config
+-SDL_CFLAGS=	$(shell $(SDL_CONFIG) --cflags)
+-SDL_LDFLAGS=	$(shell $(SDL_CONFIG) --libs)
++PKG_CONFIG?=   pkg-config
++SDL_CFLAGS=	$(shell ${PKG_CONFIG} --cflags sdl)
++SDL_LDFLAGS=	$(shell ${PKG_CONFIG} --libs sdl)
+ 
+ ifeq ($(OSTYPE),Linux)
+ ALSA_LDFLAGS=	-lasound
+@@ -96,8 +95,7 @@ GAME_NAME=	game$(ARCH).$(SHLIB_EXT)
+ endif
+ 
+ # Compilation flags.
+-CFLAGS+=	-I/usr/include -I$(LOCALBASE)/include \
+-		-DGAME_NAME='"$(GAME_NAME)"' -DQUDOS_VERSION='"$(VERSION)"'
++CFLAGS+=	-DGAME_NAME='"$(GAME_NAME)"' -DQUDOS_VERSION='"$(VERSION)"'
+ 
+ WARNS=	-Wshadow -Wpointer-arith -Wcast-align -Waggregate-return -Wstrict-prototypes -Wredundant-decls -Wnested-externs
+ 

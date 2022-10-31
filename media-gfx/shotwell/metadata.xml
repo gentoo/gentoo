@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Project</name>
-	</maintainer>
-	<use>
-		<flag name="opencv">Enable face detection via <pkg>media-libs/opencv</pkg></flag>
-	</use>
-	<longdescription lang="en">
-		Shotwell is a digital photo manager designed for the GNOME desktop
-		environment.  It allows you to import photos from disk or camera,
-		organize them by keywords and events, view them in full-window or fullscreen
-		mode, and share them with others via social networking and more.
-	</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Project</name>
+  </maintainer>
+  <use>
+    <flag name="opencv">Enable face detection via <pkg>media-libs/opencv</pkg></flag>
+  </use>
+  <longdescription lang="en">
+    Shotwell is a digital photo manager designed for the GNOME desktop
+    environment.  It allows you to import photos from disk or camera,
+    organize them by keywords and events, view them in full-window or fullscreen
+    mode, and share them with others via social networking and more.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/shotwell</remote-id>
+  </upstream>
 </pkgmetadata>

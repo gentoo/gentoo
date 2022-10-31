@@ -1,0 +1,21 @@
+http://git.annexia.org/?p=ocaml-augeas.git;a=patch;h=56c0602e972f1fae336198eb9587d71f1e36daff
+
+From 56c0602e972f1fae336198eb9587d71f1e36daff Mon Sep 17 00:00:00 2001
+From: "Richard W.M. Jones" <rjones@redhat.com>
+Date: Tue, 20 Aug 2019 15:06:57 +0100
+Subject: [PATCH] Use ocamlopt -g option.
+
+Originally from Fedora.
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -34,8 +34,8 @@ LIBS		= @AUGEAS_LIBS@ @LIBXML2_LIBS@ @LIBS@
+ 
+ OCAMLCFLAGS	= -g
+ OCAMLCPACKAGES	=
+-OCAMLOPTFLAGS	=
+-OCAMLOPTPACKAGES =
++OCAMLOPTFLAGS	= $(OCAMLCFLAGS)
++OCAMLOPTPACKAGES = $(OCAMLCPACKAGES)
+ 
+ OCAMLDOCFLAGS	= -html -sort
+ 

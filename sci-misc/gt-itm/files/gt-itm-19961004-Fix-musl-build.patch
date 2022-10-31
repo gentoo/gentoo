@@ -1,0 +1,69 @@
+From 15670744cc6a182cf0d2a4ed16748255ac1ff5c8 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 24 Oct 2022 18:48:48 +0100
+Subject: [PATCH 2/2] Fix musl build
+
+Bug: https://bugs.gentoo.org/832835
+--- a/gt-itm/src/dfs.c
++++ b/gt-itm/src/dfs.c
+@@ -19,22 +19,22 @@ static char dfsID[]="$Id: dfs.c,v 1.1 1996/10/04 13:36:32 calvert Exp $";
+ 
+ #define NBBY 8
+ 
+-int dfs(Graph *G,int n,u_char *vis);
++int dfs(Graph *G,int n,unsigned char *vis);
+ 
+ /* check connectivity of graph g                        */
+ /* uses depth-first search.                             */
+ int isconnected(Graph *G)
+ {
+-u_char *vis;
++unsigned char *vis;
+ Vertex *vp;
+ int i,nbytes;
+ 
+     nbytes = (G->n/NBBY)+ (G->n%NBBY?1:0);
+ 
+     if (nbytes < STACKMAX) {	/* for small amounts we use stack frame */
+-        vis = (u_char *) alloca(nbytes);
++        vis = (unsigned char *) alloca(nbytes);
+     } else {
+-        vis = (u_char *) malloc(nbytes);
++        vis = (unsigned char *) malloc(nbytes);
+     }
+ 
+     for (i=0; i<nbytes; i++) vis[i]=0;
+@@ -54,7 +54,7 @@ int i,nbytes;
+ /* trivial depth-first search. */
+ /* Returns number of newly-visited nodes in subtree rooted at node n. */
+ int
+-dfs(Graph *G,int n,u_char *vis)
++dfs(Graph *G,int n,unsigned char *vis)
+ {
+ int nvis, i, nextn;
+ Vertex *vp;
+--- a/gt-itm/src/geog.c
++++ b/gt-itm/src/geog.c
+@@ -148,7 +148,7 @@ Graph *
+ geo(long seed, geo_parms *pp)
+ {
+ double p,d,L,radius,r;
+-u_char *occ;
++unsigned char *occ;
+ int scale;
+ unsigned nbytes, index, x, y;
+ u_long units,pertrange;
+@@ -189,10 +189,10 @@ char namestr[128];
+     nbytes = ((scale*scale)%NBBY ? (scale*scale/NBBY)+1 : (scale*scale)/NBBY);
+ 
+     if (nbytes < STACKMAX) {	/* small amount - just do it in the stack */
+-        occ = (u_char *) alloca(nbytes);
++        occ = (unsigned char *) alloca(nbytes);
+         mallocd = 0;
+     } else {
+-        occ = (u_char *) malloc(nbytes);
++        occ = (unsigned char *) malloc(nbytes);
+         mallocd = 1;
+     }
+ 
+

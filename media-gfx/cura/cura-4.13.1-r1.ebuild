@@ -52,7 +52,7 @@ RDEPEND="${PYTHON_DEPS}
 			dev-python/shapely[${PYTHON_USEDEP}]
 			dev-python/trimesh[${PYTHON_USEDEP}]
 			usb? ( dev-python/pyserial[${PYTHON_USEDEP}] )
-			zeroconf? ( dev-python/zeroconf[${PYTHON_USEDEP}] )
+			zeroconf? ( dev-python/python-zeroconf[${PYTHON_USEDEP}] )
 	')"
 DEPEND="${RDEPEND}"
 

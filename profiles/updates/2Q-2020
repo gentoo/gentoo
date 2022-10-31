@@ -2,7 +2,6 @@ move dev-libs/yaml-cpp dev-cpp/yaml-cpp
 move dev-python/rnc2rng app-text/rnc2rng
 move games-puzzle/world-of-goo games-puzzle/world-of-goo-hb
 slotmove =dev-ruby/shoulda-matchers-4.3.0* 3 4
-move kde-misc/gmailfeed kde-misc/ultimate-gmail-feed
 move dev-vcs/cli dev-util/github-cli
 move mail-filter/pypolicyd-spf mail-filter/spf-engine
 move dev-python/mimeparse dev-python/python-mimeparse

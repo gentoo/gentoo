@@ -38,7 +38,7 @@ else
 	S="${WORKDIR}"/${MY_P}
 
 	if [[ ${PV} != *rc* ]] ; then
-		KEYWORDS="~amd64 ~arm64 -hppa ~ppc64 ~riscv"
+		KEYWORDS="~amd64 ~arm ~arm64 -hppa ~ppc ~ppc64 ~riscv ~s390 ~x86"
 	fi
 fi
 
@@ -88,7 +88,7 @@ src_unpack() {
 	fi
 }
 
-src_configure() {
+python_configure_all() {
 	export SCIPY_USE_PYTHRAN=$(usex pythran 1 0)
 }
 

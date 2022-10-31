@@ -41,9 +41,6 @@ if [[ ${PV} != 9999 ]] ; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-lassecollin )"
 fi
 
-# Tests currently do not account for smaller feature set
-RESTRICT="!extra-filters? ( test )"
-
 src_prepare() {
 	default
 

@@ -5,4 +5,7 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<upstream>
+	<remote-id type="sourceforge">diskinfo-di</remote-id>
+</upstream>
 </pkgmetadata>

@@ -14,13 +14,12 @@ SRC_URI="https://github.com/BestImageViewer/${PN}/releases/download/v${PV}/${P}.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="debug doc djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp xmp zip"
+IUSE="debug djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp xmp zip"
 
 RDEPEND="gnome-extra/zenity
 	virtual/libintl
 	x11-libs/gtk+:3
 	djvu? ( app-text/djvu )
-	doc? ( app-text/yelp-tools )
 	exif? ( >=media-gfx/exiv2-0.17:=[xmp?] )
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
 	heif? ( >=media-libs/libheif-1.3.2 )
@@ -28,8 +27,7 @@ RDEPEND="gnome-extra/zenity
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpegxl? ( >=media-libs/libjxl-0.3.7 )
 	lcms? ( media-libs/lcms:2 )
-	lua? ( ${LUA_DEPS}
-		doc? ( app-doc/doxygen ) )
+	lua? ( ${LUA_DEPS} )
 	map? ( media-libs/clutter-gtk
 		media-libs/libchamplain:0.12[gtk] )
 	pdf? ( >=app-text/poppler-0.62[cairo] )
@@ -61,6 +59,9 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# Disable doc build - not useful most of the time per upstream
+	sed -e "/subdir('doc')/d" -i meson.build || die
+
 	# Lua version
 	sed -e "s/lua5.[0-9]/${LUA_SINGLE_TARGET/-/.}/" -i meson.build || die
 }
@@ -71,7 +72,6 @@ src_configure() {
 		-Dgq_htmldir="share/doc/${PF}/html"
 		$(meson_use debug)
 		$(meson_feature djvu)
-		$(meson_feature doc)
 		$(meson_feature exif exiv2)
 		$(meson_feature ffmpegthumbnailer videothumbnailer)
 		$(meson_feature heif)

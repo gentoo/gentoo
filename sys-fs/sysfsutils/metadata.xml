@@ -7,5 +7,6 @@
 </maintainer>
 <upstream>
 	<remote-id type="sourceforge">linux-diag</remote-id>
+	<remote-id type="github">linux-ras/sysfsutils</remote-id>
 </upstream>
 </pkgmetadata>

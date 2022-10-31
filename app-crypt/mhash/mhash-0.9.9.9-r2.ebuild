@@ -25,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-force64bit-tiger.patch
 	"${FILESDIR}"/${P}-align.patch
 	"${FILESDIR}"/${P}-alignment.patch
+	"${FILESDIR}"/${P}-no-malloc-check.patch
 )
 
 DOCS=( doc/example.c doc/skid2-authentication )
@@ -45,9 +46,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# https://sourceforge.net/p/mhash/patches/11/
-	export ac_cv_func_malloc_0_nonnull=yes
-
 	econf $(use_enable static-libs static)
 }
 

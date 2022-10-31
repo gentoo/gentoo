@@ -68,6 +68,7 @@ src_configure() {
 		filter-flags '-fstack-clash-protection' #758914
 		filter-flags '-fstack-protector*' #870136
 		filter-flags '-fuse-ld=*'
+		filter-flags '-mfunction-return=thunk*' #878849
 	fi
 	local CHOST=${CTARGET}
 	strip-unsupported-flags

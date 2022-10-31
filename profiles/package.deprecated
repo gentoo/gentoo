@@ -84,6 +84,7 @@ gnome-base/gconf
 gnome-base/libglade
 gnome-base/libgnomecanvas
 gnome-extra/gconf-editor
+media-libs/libart_lgpl
 x11-libs/gtksourceview:2.0
 x11-libs/libwnck:1
 x11-libs/vte:0

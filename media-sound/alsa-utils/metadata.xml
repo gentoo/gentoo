@@ -10,6 +10,7 @@
 		<flag name="ncurses">install utils that use ncurses (e.g. alsamixer)</flag>
 	</use>
 	<upstream>
+		<changelog>https://www.alsa-project.org/wiki/Main_Page_News</changelog>
 		<remote-id type="github">alsa-project/alsa-utils</remote-id>
 	</upstream>
 </pkgmetadata>

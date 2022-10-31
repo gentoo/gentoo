@@ -16,12 +16,11 @@ SRC_URI="mirror://pypi/${P::1}/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-# currently keeping defaults in sync with qtbase (no extra deps), but trying
-# to stay minimal'ish given each builds relatively slowly (subject to change,
-# perhaps more or less depending on consumers and if qtbase is ever split)
+# defaults match what is provided with qtbase by default (except testlib),
+# reduces the need to set flags but does increase build time a fair amount
 IUSE="
 	+dbus debug qml designer examples gles2-only +gui help multimedia
-	+network opengl positioning printsupport quick quick3d serialport
+	+network opengl positioning +printsupport quick quick3d serialport
 	+sql +ssl svg testlib webchannel websockets +widgets +xml"
 # see `grep -r "%Import " sip` and `grep qmake_QT project.py`
 REQUIRED_USE="

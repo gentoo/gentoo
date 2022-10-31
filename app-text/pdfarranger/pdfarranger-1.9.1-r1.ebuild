@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{7..11} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1 optfeature xdg desktop
 

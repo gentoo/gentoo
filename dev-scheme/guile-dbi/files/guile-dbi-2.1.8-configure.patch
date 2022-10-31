@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -62,7 +62,7 @@ LTDL_INIT
+ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])], [AC_SUBST([AM_DEFAULT_VERBOSITY],1)])
+ 
+ 
+-CFLAGS="$LTDLINCL `$GUILECONFIG compile`"
++CFLAGS="$CFLAGS $LTDLINCL `$GUILECONFIG compile`"
+ LIBS="$LIBLTDL `$GUILECONFIG link`"
+ GUILE_SITE=`$GUILECONFIG info sitedir`
+ 

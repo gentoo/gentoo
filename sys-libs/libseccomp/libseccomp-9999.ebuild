@@ -37,7 +37,7 @@ BDEPEND="${DEPEND}
 	python? ( dev-python/cython[${PYTHON_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}"/libseccomp-python-shared.patch
+	"${FILESDIR}"/libseccomp-2.6.0-python-shared.patch
 	"${FILESDIR}"/libseccomp-2.5.3-skip-valgrind.patch
 )
 

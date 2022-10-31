@@ -11,7 +11,7 @@ SRC_URI="http://ferm.foo-projects.org/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 # Uses Internet connection while testing.
 RESTRICT="test"

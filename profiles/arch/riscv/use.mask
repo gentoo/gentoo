@@ -59,7 +59,6 @@ video_cards_nv
 video_cards_omap
 video_cards_qxl
 video_cards_r128
-video_cards_radeonsi
 video_cards_siliconmotion
 video_cards_tegra
 video_cards_vc4

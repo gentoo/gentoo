@@ -88,7 +88,7 @@ src_unpack() {
 	fi
 }
 
-src_configure() {
+python_configure_all() {
 	export SCIPY_USE_PYTHRAN=$(usex pythran 1 0)
 }
 

@@ -12,4 +12,7 @@
 			be only possible to use venv `--without-pip`)
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="heptapod">pypy/pypy</remote-id>
+	</upstream>
 </pkgmetadata>

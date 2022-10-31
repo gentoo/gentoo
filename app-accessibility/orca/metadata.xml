@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="braille">Enable braille support</flag>
-</use>
-<longdescription>
-	Orca is a flexible, extensible, and powerful assistive technology
-	for people with visual impairments. Using various combinations of
-	speech synthesis, braille, and magnification, Orca helps provide
-	access to applications and toolkits that support the AT-SPI (e.g.,
-	the GNOME desktop).
-</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="braille">Enable braille support</flag>
+  </use>
+  <longdescription>
+    Orca is a flexible, extensible, and powerful assistive technology
+    for people with visual impairments. Using various combinations of
+    speech synthesis, braille, and magnification, Orca helps provide
+    access to applications and toolkits that support the AT-SPI (e.g.,
+    the GNOME desktop).
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/orca</remote-id>
+  </upstream>
 </pkgmetadata>

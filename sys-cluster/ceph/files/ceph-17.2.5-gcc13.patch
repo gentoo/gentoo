@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/878531
+https://github.com/ceph/ceph/pull/48661
+
+From 74794f9d6f5c6671438085bdba730b504901a7c0 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 28 Oct 2022 16:47:38 +0100
+Subject: [PATCH] common: fix build with GCC 13 (missing <cstdint> include)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Needed for uint8_t. Only worked by chance before (see
+https://www.gnu.org/software/gcc/gcc-13/porting_to.html).
+
+```
+FAILED: src/CMakeFiles/common-objs.dir/mds/FSMapUser.cc.o
+/usr/bin/x86_64-pc-linux-gnu-g++ -DBOOST_ASIO_DISABLE_THREAD_KEYWORD_EXTENSION -DHAVE_CONFIG_H -D_FILE_OFFSET_BITS=64 -D_FORTIFY_SOURCE=2 -D_GNU_SOURCE -D_REENTRANT -D_THREAD_SAFE -D__CEPH__ -D__STDC_FORMAT_MACROS -D__linux__ -I/var/tmp/portage/sys-cluster/ceph-17.2.5/work/ceph-17.2.5_build/src/include -I/var/tmp/portage/sys-cluster/ceph-17.2.5/work/ceph-17.2.5/src -isystem /var/tmp/portage/sys-cluster/ceph-17.2.5/work/ceph-17.2.5_build/include -isystem /var/tmp/portage/sys-cluster/ceph-17.2.5/work/ceph-17.2.5/src/xxHash -isystem /var/tmp/portage/sys-cluster/ceph-17.2.5/work/ceph-17.2.5/src/rapidjson/include  -O2 -march=native -pipe -fPIC   -U_FORTIFY_SOURCE -Wall -fno-strict-aliasing -fsigned-char -Wtype-limits -Wignored-qualifiers -Wpointer-arith -Werror=format-security -Winit-self -Wno-unknown-pragmas -Wnon-virtual-dtor -Wno-ignored-qualifiers -ftemplate-depth-1024 -Wpessimizing-move -Wredundant-move -Wstrict-null-sentinel -Woverloaded-virtual -fno-new-ttp-matching -fstack-protector-strong -fdiagnostics-color=auto -fno-builtin-malloc -fno-builtin-calloc -fno-builtin-realloc -fno-builtin-free -std=c++17 -MD -MT src/CMakeFiles/common-objs.dir/mds/FSMapUser.cc.o -MF src/CMakeFiles/common-objs.dir/mds/FSMapUser.cc.o.d -o src/CMakeFiles/common-objs.dir/mds/FSMapUser.cc.o -c /var/tmp/portage/sys-cluster/ceph-17.2.5/work/ceph-17.2.5/src/mds/FSMapUser.cc
+In file included from /var/tmp/portage/sys-cluster/ceph-17.2.5/work/ceph-17.2.5/src/log/SubsystemMap.h:12,
+                 from /var/tmp/portage/sys-cluster/ceph-17.2.5/work/ceph-17.2.5/src/common/config.h:23,
+                 from /var/tmp/portage/sys-cluster/ceph-17.2.5/work/ceph-17.2.5/src/mds/mdstypes.h:13,
+                 from /var/tmp/portage/sys-cluster/ceph-17.2.5/work/ceph-17.2.5/src/mds/FSMapUser.h:21,
+                 from /var/tmp/portage/sys-cluster/ceph-17.2.5/work/ceph-17.2.5/src/mds/FSMapUser.cc:1:
+/var/tmp/portage/sys-cluster/ceph-17.2.5/work/ceph-17.2.5/src/common/subsys_types.h:56:23: error: ‘uint8_t’ in namespace ‘std’ does not name a type; did you mean ‘wint_t’?
+```
+
+Bug: https://bugs.gentoo.org/878531
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/common/subsys_types.h
++++ b/src/common/subsys_types.h
+@@ -17,6 +17,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <cstdint>
+ 
+ enum ceph_subsys_id_t {
+   ceph_subsys_,   // default

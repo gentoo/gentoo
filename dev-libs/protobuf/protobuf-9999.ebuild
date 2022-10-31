@@ -5,24 +5,23 @@ EAPI=8
 
 inherit autotools elisp-common flag-o-matic multilib-minimal toolchain-funcs
 
-if [[ "${PV}" == "9999" ]]; then
+if [[ "${PV}" == *9999 ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/protocolbuffers/protobuf"
+	EGIT_REPO_URI="https://github.com/protocolbuffers/protobuf.git"
 	EGIT_SUBMODULES=()
-fi
-
-DESCRIPTION="Google's Protocol Buffers - Extensible mechanism for serializing structured data"
-HOMEPAGE="https://developers.google.com/protocol-buffers/ https://github.com/protocolbuffers/protobuf"
-if [[ "${PV}" == "9999" ]]; then
-	SRC_URI=""
 else
-	SRC_URI="https://github.com/protocolbuffers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
+DESCRIPTION="Google's Protocol Buffers - Extensible mechanism for serializing structured data"
+HOMEPAGE="
+	https://developers.google.com/protocol-buffers/
+"
+
 LICENSE="BSD"
-SLOT="0/31"
+SLOT="0/32"
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
 
@@ -115,6 +114,12 @@ multilib_src_test() {
 
 multilib_src_install_all() {
 	find "${ED}" -name "*.la" -delete || die
+
+	if [[ ! -f "${ED}/usr/$(get_libdir)/libprotobuf.so.${SLOT#*/}" ]]; then
+		eerror "No matching library found with SLOT variable, currently set: ${SLOT}\n" \
+			"Expected value: ${ED}/usr/$(get_libdir)/libprotobuf.so.${SLOT#*/}"
+		die "Please update SLOT variable"
+	fi
 
 	insinto /usr/share/vim/vimfiles/syntax
 	doins editors/proto.vim

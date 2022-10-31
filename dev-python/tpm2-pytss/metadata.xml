@@ -12,4 +12,8 @@
 	<use>
 		<flag name="fapi">Enable feature API (requires tpm2-tss be compile with thes same)</flag>
 	</use>
+	<upstream>
+		<remote-id type="pypi">tpm2-pytss</remote-id>
+		<remote-id type="github">tpm2-software/tpm2-pytss</remote-id>
+	</upstream>
 </pkgmetadata>

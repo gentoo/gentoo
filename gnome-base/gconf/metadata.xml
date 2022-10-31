@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="ldap">Build backend which enables default mail accounts,
-	addressbooks and calendars for Evolution to be configured using each
-	user's LDAP entry."</flag>
-</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="ldap">Build backend which enables default mail accounts, addressbooks and calendars for Evolution to be configured using each user's LDAP entry."</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">Archive/gconf</remote-id>
+  </upstream>
 </pkgmetadata>

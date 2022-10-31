@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit autotools pam python-r1 usr-ldscript
 
 DESCRIPTION="Library for password quality checking and generating random passwords"

@@ -138,7 +138,6 @@ src_configure() {
 	)
 	use pam && myconf+=( --with-pam_dir=$(getpam_mod_dir) )
 	use mysql || myconf+=( --without-mysql_config )
-	use amd64 && myconf+=( $(use_with netloc) )
 	econf "${myconf[@]}" \
 		$(use_enable debug) \
 		$(use_enable lua) \

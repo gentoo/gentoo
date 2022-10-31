@@ -1,5 +1,5 @@
---- /root/configure	2015-03-09 16:39:03.921516152 +0800
-+++ src/configure	2015-03-09 16:39:08.455516081 +0800
+--- a/configure
++++ b/configure
 @@ -2133,12 +2133,6 @@
  
  ac_config_headers="$ac_config_headers config.h"

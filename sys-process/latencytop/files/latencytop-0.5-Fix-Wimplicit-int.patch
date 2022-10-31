@@ -1,0 +1,16 @@
+From 709d3927d54d7f379aa663f6be1ca1dc507d5346 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 28 Oct 2022 07:11:10 +0100
+Subject: [PATCH] Fix -Wimplicit-int
+
+--- a/gtk_display.c
++++ b/gtk_display.c
+@@ -594,7 +594,7 @@ static void create_targets_window(void)
+ 			 G_CALLBACK(freeze_toggled), NULL);
+ }
+ 
+-static load_icons(void)
++static void load_icons(void)
+ {
+ 	GError *err;
+ 

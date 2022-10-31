@@ -27,7 +27,7 @@ BDEPEND=">=dev-python/cython-0.27.1[${PYTHON_USEDEP}]
 	)"
 
 RDEPEND="
-	>=dev-python/retworkx-0.10.1[${PYTHON_USEDEP}]
+	>=dev-python/rustworkx-0.10.1[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.17[${PYTHON_USEDEP}]
 	>=dev-python/ply-3.10[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5[${PYTHON_USEDEP}]

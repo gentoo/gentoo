@@ -21,9 +21,11 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="+client ipv6 ldap selinux +server ssl vim-syntax"
 
-DEPEND="
+BDEPEND="
 	acct-group/dhcp
-	acct-user/dhcp
+	acct-user/dhcp"
+
+DEPEND="
 	client? (
 		kernel_linux? (
 			ipv6? ( sys-apps/iproute2 )
@@ -34,7 +36,9 @@ DEPEND="
 		net-nds/openldap:=
 		ssl? ( dev-libs/openssl:= )
 	)"
-RDEPEND="${DEPEND}
+RDEPEND="
+	${BDEPEND}
+	${DEPEND}
 	selinux? ( sec-policy/selinux-dhcp )
 	vim-syntax? ( app-vim/dhcpd-syntax )"
 

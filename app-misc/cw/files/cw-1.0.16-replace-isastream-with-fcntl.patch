@@ -1,5 +1,5 @@
---- /var/tmp/portage/app-misc/cw-1.0.16-r3/work/cw-1.0.16/src/cw.c
-+++ cw-1.0.16/src/cw.c
+--- a/src/cw.c
++++ b/src/cw.c
 @@ -1173,7 +1173,7 @@
    close(master);
    return(0);

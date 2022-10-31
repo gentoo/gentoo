@@ -1,0 +1,54 @@
+https://github.com/pyproj4/pyproj/commit/831209477286f55b6c3ac777e1df3e947cfb12be
+https://github.com/pyproj4/pyproj/commit/2c0abe3d8d2c1632751f093baf421b93f65783a8
+
+From 831209477286f55b6c3ac777e1df3e947cfb12be Mon Sep 17 00:00:00 2001
+From: "Alan D. Snow" <alansnow21@gmail.com>
+Date: Sat, 17 Sep 2022 11:23:10 -0500
+Subject: [PATCH] TST: update test_get_transform_grid_list__contains expectd
+ output (#1147)
+
+--- a/test/test_sync.py
++++ b/test/test_sync.py
+@@ -82,7 +82,7 @@ def test_get_transform_grid_list__contains():
+     source_ids = set()
+     for grid in grids:
+         source_ids.add(grid["properties"]["source_id"])
+-    assert sorted(source_ids) == ["no_kv", "nz_linz"]
++    assert sorted(source_ids) == ["nz_linz"]
+ 
+ 
+ @pytest.mark.network
+
+From 2c0abe3d8d2c1632751f093baf421b93f65783a8 Mon Sep 17 00:00:00 2001
+From: "Alan D. Snow" <alansnow21@gmail.com>
+Date: Sat, 17 Sep 2022 12:06:32 -0500
+Subject: [PATCH] TST: adjust test_transformer_group__get_transform_crs for
+ nl_nsgi_nlgeo2018 and PROJ 9.1 (#1148)
+
+--- a/test/test_transformer.py
++++ b/test/test_transformer.py
+@@ -695,12 +695,19 @@ def get_transformer_group():
+ @pytest.mark.grid
+ def test_transformer_group__get_transform_crs():
+     tg = TransformerGroup("epsg:4258", "epsg:7415")
+-    if not grids_available("nl_nsgi_rdtrans2018.tif"):
+-        assert len(tg.transformers) == 1
+-    elif PROJ_GTE_91:
++    if grids_available(
++        "nl_nsgi_nlgeo2018.tif", "nl_nsgi_rdtrans2018.tif", check_all=True
++    ):
++        if PROJ_GTE_91:
++            assert len(tg.transformers) == 2
++        else:
++            assert len(tg.transformers) == 6
++    elif not PROJ_GTE_91 and grids_available("nl_nsgi_rdtrans2018.tif"):
+         assert len(tg.transformers) == 2
++    elif not PROJ_GTE_91 and grids_available("nl_nsgi_nlgeo2018.tif"):
++        assert len(tg.transformers) == 4
+     else:
+-        assert len(tg.transformers) == 6
++        assert len(tg.transformers) == 1
+ 
+ 
+ def test_transformer__area_of_interest():
+

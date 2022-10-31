@@ -10,6 +10,7 @@
 		<flag name="libatomic">Use libatomic instead of builtin atomic operations</flag>
 	</use>
 	<upstream>
+		<remote-id type="savannah-nongnu">libunwind</remote-id>
 		<remote-id type="github">libunwind/libunwind</remote-id>
 	</upstream>
 </pkgmetadata>

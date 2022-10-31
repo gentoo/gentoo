@@ -35,7 +35,6 @@ DEPEND="
 	app-text/ghostscript-gpl
 	dev-libs/libpcre2:=
 	>=dev-libs/tre-0.8.0_p20210321[approx]
-	net-libs/libtirpc
 	net-misc/curl
 	virtual/blas
 	sys-libs/zlib[minizip]
@@ -49,6 +48,7 @@ DEPEND="
 	)
 	icu? ( dev-libs/icu:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
+	kernel_linux? ( net-libs/libtirpc )
 	lapack? ( virtual/lapack )
 	perl? ( dev-lang/perl )
 	png? ( media-libs/libpng:= )

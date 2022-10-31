@@ -1,0 +1,201 @@
+--- a/gt-itm/sample-graphs/rand/r10/Runconvert
++++ b/gt-itm/sample-graphs/rand/r10/Runconvert
+@@ -1,5 +1,5 @@
+ #!/bin/csh
+ 
+ foreach i (0 1 2)
+-   ../../../bin/sgb2alt r10-$i.gb r10-$i.alt 
++   sgb2alt r10-$i.gb r10-$i.alt 
+ end
+--- a/gt-itm/sample-graphs/rand/r10/Runeval
++++ b/gt-itm/sample-graphs/rand/r10/Runeval
+@@ -1,5 +1,5 @@
+ #!/bin/csh
+ 
+ foreach i (0 1 2)
+-   ../../../bin/edriver r10-$i -nd -hh -ll -hl
++   edriver r10-$i -nd -hh -ll -hl
+ end
+--- a/gt-itm/sample-graphs/rand/r100/Runconvert
++++ b/gt-itm/sample-graphs/rand/r100/Runconvert
+@@ -1,5 +1,5 @@
+ #!/bin/csh
+ 
+ foreach i (0 1 2 3 4 5 6 7 8 9)
+-   ../../../bin/sgb2alt r100-$i.gb r100-$i.alt 
++   sgb2alt r100-$i.gb r100-$i.alt 
+ end
+--- a/gt-itm/sample-graphs/rand/r100/Runeval
++++ b/gt-itm/sample-graphs/rand/r100/Runeval
+@@ -1,5 +1,5 @@
+ #!/bin/csh
+ 
+ foreach i (0 1 2 3 4 5 6 7 8 9)
+-   ../../../bin/edriver r100-$i -nd -hh -ll -hl
++   edriver r100-$i -nd -hh -ll -hl
+ end
+--- a/gt-itm/sample-graphs/ts/ts100/Runconvert
++++ b/gt-itm/sample-graphs/ts/ts100/Runconvert
+@@ -1,5 +1,5 @@
+ #!/bin/csh
+ 
+ foreach i (0 1 2 3 4 5 6 7 8 9)
+-   ../../bin/sgb2alt ts100-$i.gb ts100-$i.alt 
++   sgb2alt ts100-$i.gb ts100-$i.alt 
+ end
+--- a/gt-itm/sample-graphs/ts/ts100/Runeval
++++ b/gt-itm/sample-graphs/ts/ts100/Runeval
+@@ -1,5 +1,5 @@
+ #!/bin/csh
+ 
+ foreach i (0 1 2 3 4 5 6 7 8 9)
+-   ../../../bin/edriver ts100-$i -nd -hh -ll -hl
++   edriver ts100-$i -nd -hh -ll -hl
+ end
+--- a/gt-itm/sample-graphs/ts/ts600/Runconvert
++++ b/gt-itm/sample-graphs/ts/ts600/Runconvert
+@@ -1,5 +1,5 @@
+ #!/bin/csh
+ 
+ foreach i (0 1 2 3 4 5 6 7 8 9)
+-   ../../bin/sgb2alt ts600-$i.gb ts600-$i.alt 
++   sgb2alt ts600-$i.gb ts600-$i.alt 
+ end
+--- a/gt-itm/sample-graphs/ts/ts600/Runeval
++++ b/gt-itm/sample-graphs/ts/ts600/Runeval
+@@ -1,5 +1,5 @@
+ #!/bin/csh
+ 
+ foreach i (0 1 2 3 4 5 6 7 8 9)
+-   ../../../bin/edriver ts600-$i -nd -hh -ll -hl
++   edriver ts600-$i -nd -hh -ll -hl
+ end
+--- a/gt-itm/src/Makefile
++++ b/gt-itm/src/Makefile
+@@ -9,10 +9,10 @@
+ # 
+ # For Solaris: uncomment the next two lines
+ #SYS = -DSYSV
+-#LIBS = -lm -lgb5
++#LIBS = -lm -lgb
+ 
+ # For SunOS: uncomment the next line
+-LIBS = -lm -lgb4
++LIBS = -lm -lgb
+  
+ 
+ IDIR = ../include
+@@ -35,29 +35,22 @@ EH = $(IDIR)/gb_graph.h $(IDIR)/gb_save.h $(IDIR)/gb_dijk.h \
+ all:	itm sgb2alt edriver
+ 
+ itm:	$(GO)
+-	$(CC) $(CFLAGS) -o $(BDIR)/itm $(GO) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BDIR)/itm $(GO) $(LIBS)
+ 
+-itm.o:	$(GH)
+ 
+-geog.o:	$(GH)
+ 
+-ts.o: $(GH)	
+ 
+-dfs.o: $(GH)
+ 
+ 
+ sgb2alt: $(CO)
+-	$(CC) $(CFLAGS) -o $(BDIR)/sgb2alt $(CO) $(LIBS) 
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BDIR)/sgb2alt $(CO) $(LIBS) 
+ 
+-sgb2alt.o: $(CH)
+ 
+ 
+ edriver: $(EO)
+-	$(CC) $(CFLAGS) -o $(BDIR)/edriver $(EO) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BDIR)/edriver $(EO) $(LIBS)
+ 
+-edriver.o: $(EH)
+ 
+-eval.o: $(IDIR)/gb_graph.h $(IDIR)/gb_dijk.h $(IDIR)/eval.h
+ 
+ 	
+ clean:  
+--- a/gt-itm/src/eval.c
++++ b/gt-itm/src/eval.c
+@@ -159,7 +159,7 @@ int bicomp(Graph *g,int verbose)
+ 			if (u == &dummy) {
+ 			    if (verbose) {
+ 			    if (artic_pt)
+-				printf(" and %d (this ends a connected 
++				printf(" and %d (this ends a connected \
+ 				component of the graph)\n", idx(g, artic_pt));
+ 			    else
+ 				printf("Isolated vertex %d\n", idx(g, v));
+--- a/gt-itm/src/geog.c
++++ b/gt-itm/src/geog.c
+@@ -6,7 +6,7 @@
+  */
+ 
+ #include <stdio.h>
+-#include <sys/types.h>		/* for NBBY */
++#include <sys/param.h>		/* for NBBY */
+ #include <alloca.h>
+ #include <assert.h>
+ #include <string.h>		/* for strchr() */
+--- a/sgb2ns/Makefile
++++ b/sgb2ns/Makefile
+@@ -8,11 +8,10 @@
+ #       uncomment the two Solaris lines below, and comment the SunOS line.
+ # 
+ # For Solaris: uncomment the next two lines
+-SYS = -DSYSV
+-LIBS = -lm -lgb5
++LIBS = -lm -lgb
+ 
+ # For SunOS: uncomment the next line
+-#LIBS = -lm -lgb4
++#LIBS = -lm -lgb
+ 
+ GT_ITM = ../gt-itm
+ IDIR = $(GT_ITM)/include
+@@ -33,16 +32,16 @@ CH = $(IDIR)/geog.h $(IDIR)/gb_graph.h $(IDIR)/gb_save.h
+ all:	sgb2comns sgb2hierns sgb2ns ts2ns
+ 
+ sgb2ns: $(CN)
+-	$(CC) $(CFLAGS) -o $(BDIR)/sgb2ns $(CN) $(LIBS) 
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BDIR)/sgb2ns $(CN) $(LIBS) 
+ 
+ ts2ns: $(CN)
+-	$(CC) $(CFLAGS) -o $(BDIR)/ts2ns $(CN) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BDIR)/ts2ns $(CN) $(LIBS)
+ 
+ sgb2hierns: $(HN)
+-	$(CC) $(CFLAGS) -o $(BDIR)/sgb2hierns $(HN) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BDIR)/sgb2hierns $(HN) $(LIBS)
+ 
+ sgb2comns: $(COM)
+-	$(CC) $(CFLAGS) -o $(BDIR)/sgb2comns $(COM) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $(BDIR)/sgb2comns $(COM) $(LIBS)
+ 
+ sgb2ns.o: $(CH)
+ sgb2hierns.o: $(CH)
+--- a/sgb2ns/sgb2comns.c
++++ b/sgb2ns/sgb2comns.c
+@@ -49,6 +49,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <strings.h>
+ #include <string.h>
+ #include "gb_graph.h"
+--- a/sgb2ns/sgb2hierns.c
++++ b/sgb2ns/sgb2hierns.c
+@@ -34,7 +34,8 @@
+  */
+ 
+ #include <stdio.h>
+-#include <strings.h>
++#include <stdlib.h>
++#include <string.h>
+ #include "gb_graph.h"
+ #include "gb_save.h"
+ #include "geog.h"

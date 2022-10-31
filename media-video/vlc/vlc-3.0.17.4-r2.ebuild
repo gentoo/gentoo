@@ -232,6 +232,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
 	"${FILESDIR}"/${PN}-3.0.14-fix-live-address-api.patch # bug 835072
 	"${FILESDIR}"/${PN}-3.0.17.3-dav1d-1.0.0.patch # bug 835787
+	"${FILESDIR}"/${PN}-3.0.17.4-gcc13.patch # bug 875785
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )

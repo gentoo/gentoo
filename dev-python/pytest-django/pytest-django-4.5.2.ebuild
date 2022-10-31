@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 DESCRIPTION="A Django plugin for py.test"
@@ -29,6 +29,10 @@ BDEPEND="
 		dev-python/django-configurations[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-pytest-7.patch
+)
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 

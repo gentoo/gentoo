@@ -5,7 +5,7 @@
 		<email>python@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">FFY00/meson-python</remote-id>
+		<remote-id type="github">mesonbuild/meson-python</remote-id>
 		<remote-id type="pypi">meson-python</remote-id>
 	</upstream>
 </pkgmetadata>

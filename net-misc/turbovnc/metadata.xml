@@ -18,6 +18,7 @@
 		By The VirtualGL Project.
 	</longdescription>
 	<upstream>
+		<remote-id type="sourceforge">turbovnc</remote-id>
 		<remote-id type="github">TurboVNC/turbovnc</remote-id>
 	</upstream>
 </pkgmetadata>

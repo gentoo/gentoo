@@ -1,0 +1,147 @@
+From 2465dfe8ce94e1afeed3e3210adef9019e76383b Mon Sep 17 00:00:00 2001
+From: Kai Uwe Broulik <kai_uwe.broulik@mbition.io>
+Date: Fri, 28 Oct 2022 10:28:32 +0200
+Subject: [PATCH] nightcolormanager: Emit timing change only when they have
+ actually changed
+
+Avoids pointless DBus traffic.
+
+Signed-off-by: Victoria Fischer <victoria.fischer@mbition.io>
+
+
+(cherry picked from commit 0902d91a4254c4b3076e07b8479bb516884b21e4)
+---
+ src/plugins/nightcolor/nightcolormanager.cpp | 93 ++++++++++----------
+ 1 file changed, 47 insertions(+), 46 deletions(-)
+
+diff --git a/src/plugins/nightcolor/nightcolormanager.cpp b/src/plugins/nightcolor/nightcolormanager.cpp
+index ffa8ee8291..725623ed87 100644
+--- a/src/plugins/nightcolor/nightcolormanager.cpp
++++ b/src/plugins/nightcolor/nightcolormanager.cpp
+@@ -518,17 +518,15 @@ void NightColorManager::updateTargetTemperature()
+ 
+ void NightColorManager::updateTransitionTimings(bool force)
+ {
++    const auto oldPrev = m_prev;
++    const auto oldNext = m_next;
++
+     if (m_mode == NightColorMode::Constant) {
+         m_next = DateTimes();
+         m_prev = DateTimes();
+-        Q_EMIT previousTransitionTimingsChanged();
+-        Q_EMIT scheduledTransitionTimingsChanged();
+-        return;
+-    }
+-
+-    const QDateTime todayNow = QDateTime::currentDateTime();
++    } else if (m_mode == NightColorMode::Timings) {
++        const QDateTime todayNow = QDateTime::currentDateTime();
+ 
+-    if (m_mode == NightColorMode::Timings) {
+         const QDateTime nextMorB = QDateTime(todayNow.date().addDays(m_morning < todayNow.time()), m_morning);
+         const QDateTime nextMorE = nextMorB.addSecs(m_trTime * 60);
+         const QDateTime nextEveB = QDateTime(todayNow.date().addDays(m_evening < todayNow.time()), m_evening);
+@@ -543,58 +541,61 @@ void NightColorManager::updateTransitionTimings(bool force)
+             m_next = DateTimes(nextMorB, nextMorE);
+             m_prev = DateTimes(nextEveB.addDays(-1), nextEveE.addDays(-1));
+         }
+-        Q_EMIT previousTransitionTimingsChanged();
+-        Q_EMIT scheduledTransitionTimingsChanged();
+-        return;
+-    }
+-
+-    double lat, lng;
+-    if (m_mode == NightColorMode::Automatic) {
+-        lat = m_latAuto;
+-        lng = m_lngAuto;
+     } else {
+-        lat = m_latFixed;
+-        lng = m_lngFixed;
+-    }
++        const QDateTime todayNow = QDateTime::currentDateTime();
+ 
+-    if (!force) {
+-        // first try by only switching the timings
+-        if (m_prev.first.date() == m_next.first.date()) {
+-            // next is evening
+-            m_daylight = true;
+-            m_prev = m_next;
+-            m_next = getSunTimings(todayNow, lat, lng, false);
++        double lat, lng;
++        if (m_mode == NightColorMode::Automatic) {
++            lat = m_latAuto;
++            lng = m_lngAuto;
+         } else {
+-            // next is morning
+-            m_daylight = false;
+-            m_prev = m_next;
+-            m_next = getSunTimings(todayNow.addDays(1), lat, lng, true);
++            lat = m_latFixed;
++            lng = m_lngFixed;
+         }
+-    }
+ 
+-    if (force || !checkAutomaticSunTimings()) {
+-        // in case this fails, reset them
+-        DateTimes morning = getSunTimings(todayNow, lat, lng, true);
+-        if (todayNow < morning.first) {
+-            m_daylight = false;
+-            m_prev = getSunTimings(todayNow.addDays(-1), lat, lng, false);
+-            m_next = morning;
+-        } else {
+-            DateTimes evening = getSunTimings(todayNow, lat, lng, false);
+-            if (todayNow < evening.first) {
++        if (!force) {
++            // first try by only switching the timings
++            if (m_prev.first.date() == m_next.first.date()) {
++                // next is evening
+                 m_daylight = true;
+-                m_prev = morning;
+-                m_next = evening;
++                m_prev = m_next;
++                m_next = getSunTimings(todayNow, lat, lng, false);
+             } else {
++                // next is morning
+                 m_daylight = false;
+-                m_prev = evening;
++                m_prev = m_next;
+                 m_next = getSunTimings(todayNow.addDays(1), lat, lng, true);
+             }
+         }
++
++        if (force || !checkAutomaticSunTimings()) {
++            // in case this fails, reset them
++            DateTimes morning = getSunTimings(todayNow, lat, lng, true);
++            if (todayNow < morning.first) {
++                m_daylight = false;
++                m_prev = getSunTimings(todayNow.addDays(-1), lat, lng, false);
++                m_next = morning;
++            } else {
++                DateTimes evening = getSunTimings(todayNow, lat, lng, false);
++                if (todayNow < evening.first) {
++                    m_daylight = true;
++                    m_prev = morning;
++                    m_next = evening;
++                } else {
++                    m_daylight = false;
++                    m_prev = evening;
++                    m_next = getSunTimings(todayNow.addDays(1), lat, lng, true);
++                }
++            }
++        }
+     }
+ 
+-    Q_EMIT previousTransitionTimingsChanged();
+-    Q_EMIT scheduledTransitionTimingsChanged();
++    if (oldPrev != m_prev) {
++        Q_EMIT previousTransitionTimingsChanged();
++    }
++    if (oldNext != m_next) {
++        Q_EMIT scheduledTransitionTimingsChanged();
++    }
+ }
+ 
+ DateTimes NightColorManager::getSunTimings(const QDateTime &dateTime, double latitude, double longitude, bool morning) const
+-- 
+GitLab
+

@@ -1,0 +1,25 @@
+diff -Nuar LVM2.2.03.16.orig/libdm/Makefile.in LVM2.2.03.16/libdm/Makefile.in
+--- LVM2.2.03.16.orig/libdm/Makefile.in	2022-05-18 09:24:20.000000000 -0700
++++ LVM2.2.03.16/libdm/Makefile.in	2022-10-27 10:09:29.283631020 -0700
+@@ -59,6 +59,10 @@
+ 
+ PROGS_CFLAGS = $(UDEV_CFLAGS)
+ 
++ifeq ($(strip $(READELF)),)
++READELF := readelf
++endif
++
+ device-mapper: $(TARGETS)
+ 
+ dm-tools.device-mapper: device-mapper
+@@ -71,8 +75,8 @@
+ # also the older symbol is built-in
+ .symver_check: $(LIB_SHARED)
+ 	@echo "    [CHECK] $<"
+-	$(Q) if readelf -Ws $< | grep -q dm_stats_create_region@@; then \
+-	SYM=$$(readelf -Ws $< | grep dm_stats_create_region@DM_1_02_106); \
++	$(Q) if $(READELF) -Ws $< | grep -q dm_stats_create_region@@; then \
++	SYM=$$( $(READELF) -Ws $< | grep dm_stats_create_region@DM_1_02_106); \
+ 	if test -n "$$SYM"; then touch $@; \
+ 	else echo >&2 "Missing versioned symbols in $<"; false; fi; \
+ 	else touch $@; fi

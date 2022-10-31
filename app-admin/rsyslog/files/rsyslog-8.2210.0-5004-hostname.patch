@@ -1,0 +1,40 @@
+From e2beca531157a4c0a27bcdda689bc53373e305b3 Mon Sep 17 00:00:00 2001
+From: Rainer Gerhards <rgerhards@adiscon.com>
+Date: Thu, 20 Oct 2022 18:08:11 +0200
+Subject: [PATCH] core bugfix: local hostname invalid if no global() config
+ object given
+
+The local hostname is invalidly set to "[localhost]" on rsyslog startup
+if no global() config object is present in rsyslog.conf. Sending a HUP
+corrects the hostname.
+
+This is a regression from ba00a9f25293f
+
+closes https://github.com/rsyslog/rsyslog/issues/4975,
+closes https://github.com/rsyslog/rsyslog/issues/4825
+---
+ runtime/glbl.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/runtime/glbl.c b/runtime/glbl.c
+index 3a9350b903..ed9a307804 100644
+--- a/runtime/glbl.c
++++ b/runtime/glbl.c
+@@ -1396,6 +1396,7 @@ glblDoneLoadCnf(void)
+ 		stddbg = -1;
+ 	}
+ 
++finalize_it:
+ 	/* we have now read the config. We need to query the local host name now
+ 	 * as it was set by the config.
+ 	 *
+@@ -1404,8 +1405,7 @@ glblDoneLoadCnf(void)
+ 	 * are taken from that queue, the hostname will be adapted.
+ 	 */
+ 	queryLocalHostname();
+-
+-finalize_it:	RETiRet;
++	RETiRet;
+ }
+ 
+ 

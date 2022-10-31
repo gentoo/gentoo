@@ -1,0 +1,30 @@
+--- a/src/ref_gl/gl_local.h
++++ b/src/ref_gl/gl_local.h
+@@ -29,6 +29,7 @@
+ #include <GL/glu.h>
+ #include <GL/glext.h>
+ 
++#include <zlib.h> /* Z_DEFAULT_COMPRESSION */
+ #include <png.h>
+ #include <jpeglib.h>
+ 
+Subject: [PATCH] Fix build with libpng 1.4.0
+
+From the 1.4.0 release notes:
+```
+   m. The function png_set_gray_1_2_4_to_8() was removed. It has been
+      deprecated since libpng-1.0.18 and 1.2.9, when it was replaced with
+      png_set_expand_gray_1_2_4_to_8() because the former function also
+      expanded palette images.
+```
+--- a/src/ref_gl/gl_image.c
++++ b/src/ref_gl/gl_image.c
+@@ -1186,7 +1186,7 @@ LoadPNG(char *filename, byte ** pic, int *width, int *height)
+ 	if (my_png->ColorType == PNG_COLOR_TYPE_PALETTE)
+ 		png_set_palette_to_rgb(png);
+ 	if (my_png->ColorType == PNG_COLOR_TYPE_GRAY && my_png->BitDepth < 8)
+-		png_set_gray_1_2_4_to_8(png);
++		png_set_expand_gray_1_2_4_to_8(png);
+ 
+ 	/* Add alpha channel if present */
+ 	if (png_get_valid(png, pnginfo, PNG_INFO_tRNS))

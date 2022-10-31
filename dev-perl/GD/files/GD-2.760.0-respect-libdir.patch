@@ -1,0 +1,39 @@
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -56,12 +56,6 @@ END
+ 
+ @LIBS    = qw(-lgd) unless @LIBS;
+ 
+-# support for AMD64 libraries
+-if (-d '/usr/lib64') {
+-  my @libs64 = map {my $a = $_; $a=~ s/lib$/lib64/; $a} @LIBPATH;
+-  @LIBPATH = (@LIBPATH,@libs64);
+-}
+-
+ #############################################################################################
+ # Build options passed in to script to support reproducible builds via Makefiles
+ #############################################################################################
+@@ -219,12 +213,6 @@ if( ! defined($lib_gd_path) )
+   $PREFIX = prompt('Where is libgd installed?','/usr/lib');
+ }
+ 
+-unless ($AUTOCONFIG || $PREFIX eq '/usr/lib') {
+-  $PREFIX =~ s!/lib$!!;
+-  unshift @INC,"-I$PREFIX/include";
+-  unshift @LIBPATH,"-L$PREFIX/lib";
+-}
+-
+ # FEATURE FLAGS
+ 
+ ##################################################################################################################
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -514,7 +514,7 @@ sub try_to_autoconfigure {
+   unless ($config) {
+       my %config;
+       require ExtUtils::PkgConfig;
+-      %config = ExtUtils::PkgConfig->find ("$prefix/lib/pkgconfig/gdlib.pc") if $prefix;
++      %config = ExtUtils::PkgConfig->find ("$lib_gd_path/pkgconfig/gdlib.pc") if $prefix;
+       %config = ExtUtils::PkgConfig->find ("gdlib") unless %config;
+       return unless %config;
+       $version  = $config{modversion};

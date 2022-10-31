@@ -12,7 +12,7 @@ SRC_URI="https://github.com/linuxmint/muffin/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="GPL-1 GPL-2+ LGPL-2+ MIT || ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"
 IUSE="input_devices_wacom +introspection test xinerama"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.37.3:2[dbus]

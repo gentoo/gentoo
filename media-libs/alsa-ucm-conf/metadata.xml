@@ -5,6 +5,7 @@
 		<email>alsa-bugs@gentoo.org</email>
 	</maintainer>
 	<upstream>
+		<changelog>https://www.alsa-project.org/wiki/Main_Page_News</changelog>
 		<remote-id type="cpe">cpe:/a:alsa-project:alsa-ucm-conf</remote-id>
 		<remote-id type="github">alsa-project/alsa-ucm-conf</remote-id>
 	</upstream>

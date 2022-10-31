@@ -33,12 +33,12 @@ RDEPEND="dev-libs/libxml2
 
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
-	x11-libs/libfontenc
+	x11-libs/libfontenc"
+
+BDEPEND="sys-apps/which
+	virtual/pkgconfig
 	x11-misc/gccmakedep
 	x11-misc/imake"
-
-BDEPEND="
-	virtual/pkgconfig"
 
 S="${WORKDIR}/nx-libs-${PV}"
 

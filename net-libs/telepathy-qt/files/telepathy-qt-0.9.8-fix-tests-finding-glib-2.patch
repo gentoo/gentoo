@@ -1,0 +1,23 @@
+From 188dece432d090809c5ad88a91cd573c5af61c09 Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Mon, 6 Jun 2022 09:44:53 +0200
+Subject: [PATCH] Fix build with newer glib
+
+gunixconnection.h is now at /usr/include/glib-2.0/gio/gunixconnection.h
+---
+ cmake/modules/FindGIOUnix.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/modules/FindGIOUnix.cmake b/cmake/modules/FindGIOUnix.cmake
+index 263c093e..7f5513b3 100644
+--- a/cmake/modules/FindGIOUnix.cmake
++++ b/cmake/modules/FindGIOUnix.cmake
+@@ -21,7 +21,7 @@ pkg_check_modules(PC_LibGIOUnix gio-unix-2.0)
+ find_path(GIOUNIX_MAIN_INCLUDE_DIR
+           NAMES gio/gunixconnection.h
+           HINTS ${PC_LibGIOUnix_INCLUDEDIR}
+-          PATH_SUFFIXES gio-unix-2.0)
++          PATH_SUFFIXES gio-unix-2.0 glib-2.0)
+ 
+ set(GIOUNIX_INCLUDE_DIR "${GIOUNIX_MAIN_INCLUDE_DIR}")
+ 

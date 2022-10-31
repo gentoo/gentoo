@@ -12,7 +12,6 @@
 
 # Things without support yet
 java
-llvm
 luajittex
 lua_single_target_luajit
 lua_targets_luajit

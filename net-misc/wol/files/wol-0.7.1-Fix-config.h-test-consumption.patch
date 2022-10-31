@@ -1,0 +1,35 @@
+From 1c16d04a3fc03a5f4c0cd54ff6f207de1062e9bd Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 25 Oct 2022 13:54:04 +0100
+Subject: [PATCH] Fix config.h test consumption
+
+Bug: https://bugs.gentoo.org/874420
+--- a/lib/ether.h
++++ b/lib/ether.h
+@@ -35,7 +35,7 @@
+ 
+ #include "magic.h"
+ 
+-#if !HAVE_STRUCT_ETHER_ADDR_ETHER_ADDR_OCTET && !HAVE_STRUCT_ETHER_ADDR_OCTET
++#if !defined(HAVE_STRUCT_ETHER_ADDR_ETHER_ADDR_OCTET) && !defined(HAVE_STRUCT_ETHER_ADDR_OCTET)
+ 
+ struct
+ ether_addr
+@@ -45,7 +45,7 @@ ether_addr
+ 
+ #define ETHER_ADDR_OCTET ether_addr_octet
+ 
+-#else /* HAVE_STRUCT_ETHER_ADDR_ETHER_ADDR_OCTET || HAVE_STRUCT_ETHER_ADDR_OCTET */
++#else /* defined(HAVE_STRUCT_ETHER_ADDR_ETHER_ADDR_OCTET) || defined(HAVE_STRUCT_ETHER_ADDR_OCTET) */
+ 
+ #if HAVE_STRUCT_ETHER_ADDR_OCTET
+ #define ETHER_ADDR_OCTET octet
+@@ -55,7 +55,7 @@ ether_addr
+ #define ETHER_ADDR_OCTET ether_addr_octet
+ #endif /* HAVE_STRUCT_ETHER_ADDR_ETHER_ADDR_OCTET */
+ 
+-#endif /* !HAVE_STRUCT_ETHER_ADDR_ETHER_ADDR_OCTET && !HAVE_STRUCT_ETHER_ADDR_OCTET */
++#endif /* !defined(HAVE_STRUCT_ETHER_ADDR_ETHER_ADDR_OCTET) && !defined(HAVE_STRUCT_ETHER_ADDR_OCTET) */
+ 
+ 
+ #if !defined(HAVE_ETHER_HOSTTON)

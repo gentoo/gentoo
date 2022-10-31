@@ -74,11 +74,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-python/pycryptodome[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.3.1[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
+		dev-python/python-zeroconf[${PYTHON_USEDEP}]
 		>=dev-python/PyQt5-5.15.5_pre2107091435[gui,svg,widgets,network,printsupport,${PYTHON_USEDEP}]
 		>=dev-python/PyQt-builder-1.10.3[${PYTHON_USEDEP}]
 		>=dev-python/PyQtWebEngine-5.15.5_pre2108100905[${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]
-		dev-python/zeroconf[${PYTHON_USEDEP}]
 	')
 	dev-qt/qtcore:5=
 	dev-qt/qtdbus:5=

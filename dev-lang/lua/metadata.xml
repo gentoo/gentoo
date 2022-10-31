@@ -12,4 +12,7 @@
 	<use>
 		<flag name="deprecated">make deprecated data structures/routines available</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">lua/lua</remote-id>
+	</upstream>
 </pkgmetadata>

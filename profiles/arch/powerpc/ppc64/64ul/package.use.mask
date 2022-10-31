@@ -49,10 +49,6 @@ mail-client/thunderbird clang
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-11)
-# vc not keyworded on ppc64
-media-gfx/krita vc
-
 # Joonas Niilola <juippis@gentoo.org> (2020-02-01)
 # luajit not keyworded on ppc64, #696222
 dev-libs/efl lua_single_target_luajit

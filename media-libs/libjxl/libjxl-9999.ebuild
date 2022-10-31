@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib git-r3
+inherit cmake-multilib flag-o-matic git-r3
 
 DESCRIPTION="JPEG XL image format reference implementation"
 HOMEPAGE="https://github.com/libjxl/libjxl"
@@ -13,26 +13,26 @@ EGIT_SUBMODULES=(third_party/skcms)
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="gdk-pixbuf gimp210 openexr"
+IUSE="gdk-pixbuf openexr"
 
 DEPEND="app-arch/brotli:=[${MULTILIB_USEDEP}]
-	dev-cpp/gflags:=[${MULTILIB_USEDEP}]
 	>=dev-cpp/highway-1.0.0[${MULTILIB_USEDEP}]
 	media-libs/giflib:=[${MULTILIB_USEDEP}]
+	media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
 	media-libs/libpng:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
-	media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
 	>=x11-misc/shared-mime-info-2.2
 	gdk-pixbuf? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf:2
 	)
-	gimp210? ( >=media-gfx/gimp-2.10.28:0/2 )
 	openexr? ( media-libs/openexr:= )
 "
 RDEPEND="${DEPEND}"
 
 multilib_src_configure() {
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_TESTING=OFF
 		-DJPEGXL_ENABLE_BENCHMARK=OFF
@@ -58,7 +58,7 @@ multilib_src_configure() {
 			-DJPEGXL_ENABLE_OPENEXR=$(usex openexr)
 			-DJPEGXL_ENABLE_PLUGINS=ON
 			-DJPEGXL_ENABLE_PLUGIN_GDKPIXBUF=$(usex gdk-pixbuf)
-			-DJPEGXL_ENABLE_PLUGIN_GIMP210=$(usex gimp210)
+			-DJPEGXL_ENABLE_PLUGIN_GIMP210=OFF
 			-DJPEGXL_ENABLE_PLUGIN_MIME=OFF
 		)
 	else

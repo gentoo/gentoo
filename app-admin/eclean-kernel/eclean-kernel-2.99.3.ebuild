@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Remove outdated built kernels"
-HOMEPAGE="https://github.com/mgorny/eclean-kernel/"
-SRC_URI="https://github.com/mgorny/eclean-kernel/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/projg2/eclean-kernel/"
+SRC_URI="https://github.com/projg2/eclean-kernel/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -21,7 +21,7 @@ RDEPEND="
 	kernel_linux? ( dev-python/pymountboot[${PYTHON_USEDEP}] )
 	lz4? ( dev-python/lz4[${PYTHON_USEDEP}] )
 	lzo? ( dev-python/python-lzo[${PYTHON_USEDEP}] )
-	zstd? ( dev-python/zstandard[${PYTHON_USEDEP}] )
+	zstd? ( dev-python/python-zstandard[${PYTHON_USEDEP}] )
 "
 
 distutils_enable_tests pytest

@@ -9,6 +9,7 @@
 		<bugs-to>https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues</bugs-to>
 		<changelog>https://gitlab.freedesktop.org/pipewire/wireplumber/-/releases</changelog>
 		<!--doc>https://gitlab.freedesktop.org/pipewire/wireplumber/-/wikis/home</doc-->
+		<remote-id type="freedesktop-gitlab">pipewire/wireplumber</remote-id>
 	</upstream>
 	<use>
 		<flag name="system-service">Install systemd unit files for running as a system service. Not recommended.</flag>

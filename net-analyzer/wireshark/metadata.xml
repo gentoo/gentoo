@@ -69,6 +69,7 @@
 		<flag name="wifi">Install wifidump, to dump and analyse 802.11 traffic</flag>
 	</use>
 	<upstream>
+		<changelog>https://www.wireshark.org/news/</changelog>
 		<remote-id type="github">wireshark/wireshark</remote-id>
 		<remote-id type="gitlab">wireshark/wireshark</remote-id>
 	</upstream>

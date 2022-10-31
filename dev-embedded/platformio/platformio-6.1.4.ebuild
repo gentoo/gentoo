@@ -37,11 +37,11 @@ RDEPEND="
 		dev-python/twisted[${PYTHON_USEDEP}]
 		>=dev-python/pyelftools-0.25[${PYTHON_USEDEP}]
 		<dev-python/pyelftools-1[${PYTHON_USEDEP}]
+		>=dev-python/python-zeroconf-0.37[${PYTHON_USEDEP}]
 		>=dev-python/marshmallow-2.20.5[${PYTHON_USEDEP}]
 		=dev-python/starlette-0.18*[${PYTHON_USEDEP}]
 		=dev-python/uvicorn-0.17*[${PYTHON_USEDEP}]
 		dev-python/wsproto[${PYTHON_USEDEP}]
-		>=dev-python/zeroconf-0.37[${PYTHON_USEDEP}]
 	')
 	virtual/udev"
 DEPEND="virtual/udev"

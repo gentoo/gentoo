@@ -22,7 +22,7 @@ VALA_DEPEND="
 	>=dev-libs/libportal-0.6:=[vala]
 "
 RDEPEND="
-	>=dev-libs/folks-0.11.4:=[eds]
+	>=dev-libs/folks-0.14.0:=[eds]
 	>=dev-libs/libgee-0.10:0.8=
 	>=dev-libs/glib-2.58:2
 	net-libs/gnome-online-accounts:=
