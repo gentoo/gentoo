@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-10-31)
+# Upstream seems dead, last activities in Nov 2017.
+# Doesn't work, bug #857663. Removal on 2022-11-30.
+net-p2p/vuze
+net-p2p/vuze-coreplugins
+
 # David Seifert <soap@gentoo.org> (2022-10-31)
 # EAPI 6, last release over 17 years ago, requires <ghostscript-gpl-10
 # drivers, relies on -Wimplicit-function-declaration.
