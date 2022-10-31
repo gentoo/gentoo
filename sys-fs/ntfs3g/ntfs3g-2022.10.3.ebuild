@@ -8,9 +8,8 @@ inherit autotools toolchain-funcs
 MY_P="ntfs-3g_ntfsprogs-${PV}"
 
 DESCRIPTION="Open source read-write NTFS driver that runs under FUSE"
-HOMEPAGE="http://www.tuxera.com/community/ntfs-3g-download/"
-HOMEPAGE="https://jp-andre.pagesperso-orange.fr/advanced-ntfs-3g.html"
-SRC_URI="http://tuxera.com/opensource/${MY_P}.tgz"
+HOMEPAGE="https://github.com/tuxera/ntfs-3g"
+SRC_URI="https://download.tuxera.com/opensource/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 # The subslot matches the SONAME major #.
