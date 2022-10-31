@@ -99,6 +99,7 @@ src_configure() {
 			filter-flags '-fstack-clash-protection' #758914
 			filter-flags '-fstack-protector*' #870136
 			filter-flags '-fuse-ld=*'
+			filter-flags '-mfunction-return=thunk*' #878849
 		fi
 
 		CHOST_amd64=x86_64-w64-mingw32
