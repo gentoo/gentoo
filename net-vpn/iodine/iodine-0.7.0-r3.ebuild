@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit linux-info toolchain-funcs
 
 DESCRIPTION="IP over DNS tunnel"
-HOMEPAGE="http://code.kryo.se/iodine/"
-SRC_URI="http://code.kryo.se/${PN}/${P}.tar.gz"
+HOMEPAGE="https://code.kryo.se/iodine/"
+SRC_URI="https://code.kryo.se/${PN}/${P}.tar.gz"
 
 CONFIG_CHECK="~TUN"
 
