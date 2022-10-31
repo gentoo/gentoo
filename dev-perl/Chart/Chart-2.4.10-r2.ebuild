@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ DESCRIPTION="The Perl Chart Module"
 # https://bugs.gentoo.org/724570
 LICENSE="|| ( Artistic GPL-1+ ) || ( MIT ( GPL-1 GPL-2 ) )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
