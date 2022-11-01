@@ -330,7 +330,6 @@ media-plugins/gmpc-alarm
 media-plugins/gmpc-albumview
 media-plugins/gmpc-avahi
 media-plugins/gmpc-awn
-media-plugins/gmpc-discogs
 
 # Brian Evans <grknight@gentoo.org> (2022-09-30)
 # Mask RC versions for initial testing
