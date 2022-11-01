@@ -404,7 +404,6 @@ dev-python/pyproject2setuppy
 app-admin/abrt
 app-admin/gnome-abrt
 dev-libs/libreport
-dev-libs/satyr
 
 # Mike Gilbert <floppym@gentoo.org> (2022-09-12)
 # repoman is no longer maintained and has been removed from the portage
