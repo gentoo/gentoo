@@ -40,7 +40,7 @@ BDEPEND="
 		sys-devel/bc
 		sys-process/procps
 	)
-	verify-sig? ( sec-keys/openpgp-keys-openssl )"
+	verify-sig? ( >=sec-keys/openpgp-keys-openssl-20221101 )"
 
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
