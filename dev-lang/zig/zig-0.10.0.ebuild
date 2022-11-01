@@ -18,8 +18,6 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test +threads"
-RESTRICT="!test? ( test )"
 
 BUILD_DIR="${S}/build"
 
@@ -43,7 +41,7 @@ llvm_check_deps() {
 }
 
 # see https://ziglang.org/download/0.10.0/release-notes.html#Self-Hosted-Compiler
-# 0.10.0 release - 9.6 GiB, since we use compiler written in C++ for bootstrapping
+# 0.10.0 release - ~9.6 GiB, since we use compiler written in C++ for bootstrapping
 # 0.11.0 release - ~2.8 GiB, since we will (at least according to roadmap) use self-hosted compiler
 # (transpiled to C via C backend) for bootstrapping
 CHECKREQS_MEMORY="10G"
@@ -57,7 +55,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DZIG_USE_CCACHE=OFF
 		-DZIG_SHARED_LLVM=ON
-		-DZIG_SINGLE_THREADED="$(usex !threads)"
 		-DCMAKE_PREFIX_PATH=$(get_llvm_prefix ${LLVM_MAX_SLOT})
 	)
 
@@ -70,4 +67,15 @@ src_test() {
 }
 
 # see https://github.com/ziglang/zig/issues/3382
+# For now, Zig doesn't support CFLAGS/LDFLAGS/etc.
 QA_FLAGS_IGNORED="usr/bin/zig"
+
+pkg_postinst() {
+	elog "0.10.0 release introduces self-hosted compiler for general use by default"
+	elog "It means that your code can be un-compilable since this compiler has some new or removed features and new or fixed bugs"
+	elog "Upstream recommends using stage1 if experiencing such breakage,"
+	elog "until bugfix release 0.10.1 or release 0.11.0 where old compiler will be fully replaced"
+	elog "You can use old compiler by using '-fstage1' flag"
+	elog "Also see: https://ziglang.org/download/0.10.0/release-notes.html#Self-Hosted-Compiler"
+	elog "and https://ziglang.org/download/0.10.0/release-notes.html#How-to-Upgrade"
+}
