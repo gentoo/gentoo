@@ -60,7 +60,9 @@ BDEPEND="
 # non-optional, so put it into RDEPEND.
 # We can use both libnl:1.1 and libnl:3, but if you have both installed, the
 # package will use 3 by default. Since we don't have slot pinning in an API,
-# we must go with the most recent
+# we must go with the most recent.
+# The 'circular' dependency on dev-python/libvirt-python is because of
+# virt-qemu-qmp-proxy.
 RDEPEND="
 	acct-user/qemu
 	app-misc/scrub
@@ -107,6 +109,7 @@ RDEPEND="
 	qemu? (
 		>=app-emulation/qemu-4.2
 		>=dev-libs/yajl-2.0.3:=
+		dev-python/libvirt-python
 	)
 	rbd? ( sys-cluster/ceph )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.26 )
