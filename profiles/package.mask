@@ -327,7 +327,6 @@ dev-python/jarowinkler
 # Removal on 2022-11-01
 media-sound/gmpc
 media-plugins/gmpc-alarm
-media-plugins/gmpc-albumview
 
 # Brian Evans <grknight@gentoo.org> (2022-09-30)
 # Mask RC versions for initial testing
