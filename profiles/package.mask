@@ -402,7 +402,6 @@ dev-python/pyproject2setuppy
 # ABRT environment keeps breaking more and more on non-Fedora systems.
 # Removal: 2022-10-18.  Bugs #849305, #849092, #849095, #713858.
 app-admin/abrt
-app-admin/gnome-abrt
 
 # Mike Gilbert <floppym@gentoo.org> (2022-09-12)
 # repoman is no longer maintained and has been removed from the portage

@@ -6,7 +6,6 @@
 # The following are its reverse dependencies.
 sys-apps/systemd
 app-admin/abrt
-app-admin/gnome-abrt
 app-admin/systemdgenie
 dev-python/python-systemd
 games-util/gamemode
