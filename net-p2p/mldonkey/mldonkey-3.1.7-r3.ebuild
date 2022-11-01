@@ -54,12 +54,7 @@ RDEPEND="dev-lang/perl
 # https://github.com/ygrek/mldonkey/issues/46
 DEPEND="${RDEPEND}
 	<dev-lang/ocaml-4.10:=[ocamlopt?]
-	bittorrent? (
-		|| (
-			<dev-lang/ocaml-4.06[ocamlopt?]
-			dev-ml/num
-		)
-	)"
+	bittorrent? ( dev-ml/num )"
 
 RESTRICT="!ocamlopt? ( strip )"
 
