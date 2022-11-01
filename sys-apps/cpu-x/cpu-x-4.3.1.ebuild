@@ -8,7 +8,7 @@ MY_PN="CPU-X"
 inherit cmake gnome2-utils xdg
 
 DESCRIPTION="A Free software that gathers information on CPU, motherboard and more"
-HOMEPAGE="https://x0rg.github.io/CPU-X/"
+HOMEPAGE="https://thetumultuousunicornofdarkness.github.io/CPU-X/"
 SRC_URI="https://github.com/X0rg/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
