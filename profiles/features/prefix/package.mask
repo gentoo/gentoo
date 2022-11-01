@@ -5,7 +5,6 @@
 # systemd is set to invade pid 1, which is not possible for Prefix.
 # The following are its reverse dependencies.
 sys-apps/systemd
-app-admin/abrt
 app-admin/systemdgenie
 dev-python/python-systemd
 games-util/gamemode

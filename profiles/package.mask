@@ -398,11 +398,6 @@ sys-cluster/slurm
 # Removal on 2022-10-18.  Bug #871522.
 dev-python/pyproject2setuppy
 
-# Pacho Ramos <pacho@gentoo.org> (2022-09-18)
-# ABRT environment keeps breaking more and more on non-Fedora systems.
-# Removal: 2022-10-18.  Bugs #849305, #849092, #849095, #713858.
-app-admin/abrt
-
 # Mike Gilbert <floppym@gentoo.org> (2022-09-12)
 # repoman is no longer maintained and has been removed from the portage
 # git repository. Please use dev-util/pkgcheck and dev-util/pkgdev instead.
