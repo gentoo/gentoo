@@ -58,6 +58,7 @@ dev-ruby/ruby-gdk3
 dev-ruby/ruby-gegl
 dev-ruby/ruby-gnome2
 dev-ruby/ruby-gnumeric
+dev-ruby/ruby-goffice
 dev-ruby/ruby-gsf
 dev-ruby/ruby-gstreamer
 dev-ruby/ruby-gtk3
