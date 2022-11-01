@@ -1,0 +1,34 @@
+Clang16 will not suppert implicit int and implicit function declarations.
+This patch makes the source code ready for clang16. 
+See also: https://bugs.gentoo.org/870412
+
+Bug: https://bugs.gentoo.org/874102
+
+This patch is already merged upstream, see: https://github.com/folkertvanheusden/multitail/pull/10
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/misc.c
++++ b/misc.c
+@@ -477,7 +477,7 @@ void heartbeat(void)
+ 	mydoupdate();
+ }
+ 
+-void do_check_for_mail()
++void do_check_for_mail(dtime_t time)
+ {
+ 	if (check_for_mail > 0 && mail_spool_file != NULL)
+ 	{
+diff --git a/misc.h b/misc.h
+index febf11a..5566519 100644
+--- a/misc.h
++++ b/misc.h
+@@ -1,5 +1,7 @@
++#import "mt.h"
++
+ void info(void);
+ void statistics_menu(void);
+ void heartbeat(void);
+-void do_check_for_mail();
++void do_check_for_mail(dtime_t time);
+ void store_statistics(proginfo *cur, dtime_t now);
