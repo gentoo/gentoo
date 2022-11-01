@@ -45,6 +45,9 @@
 		<flag name="queryacl">
 			Enable the module for query access control
 		</flag>
+		<flag name="quic">
+			Enable the DNS over QUIC (DoQ) module using libngtcp2
+		</flag>
 		<flag name="rrl">
 			Enable the response rate limiting module
 		</flag>
