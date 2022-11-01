@@ -12,7 +12,7 @@ else
 	IMV_HASH=4448fb6104d67e3dfff3e71babe257992fce556
 	SRC_URI="https://git.sr.ht/~exec64/imv/archive/${IMV_HASH}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${IMV_HASH}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Minimal image viewer designed for tiling window manager users"
