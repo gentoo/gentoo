@@ -428,11 +428,6 @@ app-portage/repoman
 # https://bugs.gentoo.org/868567
 =sys-apps/gawk-5.2.0
 
-# Marc Schiffbauer <mschiff@gentoo.org> (2022-09-02)
-# Dead upstream, open bugs, removal in 30 days
-# bugs #829447, #836227, #862504
-mail-filter/sigh
-
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
 # haskell-cabal.eclass)
