@@ -1,6 +1,10 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-11-01)
+# qtwebengine isn't available on loong yet
+webengine
+
 # Unmask the flag which corresponds to ARCH.
 -loong
 
