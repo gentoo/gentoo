@@ -333,7 +333,6 @@ media-plugins/gmpc-awn
 media-plugins/gmpc-discogs
 media-plugins/gmpc-extraplaylist
 media-plugins/gmpc-jamendo
-media-plugins/gmpc-last-fm
 
 # Brian Evans <grknight@gentoo.org> (2022-09-30)
 # Mask RC versions for initial testing
