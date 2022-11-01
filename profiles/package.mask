@@ -337,7 +337,6 @@ media-plugins/gmpc-last-fm
 media-plugins/gmpc-libnotify
 media-plugins/gmpc-lyrics
 media-plugins/gmpc-lyricwiki
-media-plugins/gmpc-magnatune
 
 # Brian Evans <grknight@gentoo.org> (2022-09-30)
 # Mask RC versions for initial testing
