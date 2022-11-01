@@ -8,8 +8,8 @@ HOMEPAGE="https://www.openssl.net/"
 # See https://www.openssl.org/source/ and https://www.openssl.org/community/omc.html
 # Mirrored from https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x8657ABB260F056B1E5190839D9C4D26D0E604491 etc (unstable results)
 SRC_URI="
-	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/openssl-8657ABB260F056B1E5190839D9C4D26D0E604491.asc
-	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/openssl-7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/openssl-${PV}-8657ABB260F056B1E5190839D9C4D26D0E604491.asc
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/openssl-${PV}-7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C.asc
 "
 
 LICENSE="public-domain"
