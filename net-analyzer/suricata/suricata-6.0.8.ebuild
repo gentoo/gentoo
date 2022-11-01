@@ -128,6 +128,8 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 	python_optimize
+	# Bug #878855
+	python_fix_shebang "${ED}"/usr/bin/
 
 	if use bpf; then
 		rm -f ebpf/Makefile.{am,in} || die
