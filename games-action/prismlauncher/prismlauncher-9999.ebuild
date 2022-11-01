@@ -97,8 +97,6 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPENDS}
 
-	!games-action/polymc
-
 	!qt6? ( >=dev-qt/qtsvg-${MIN_QT_5_VERSION}:5 )
 	 qt6? ( >=dev-qt/qtsvg-${MIN_QT_6_VERSION}:6 )
 
