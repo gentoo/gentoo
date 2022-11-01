@@ -392,12 +392,6 @@ dev-python/ssh2-python
 # Unfixed root privilege escalation, bug #631552
 sys-cluster/slurm
 
-# Michał Górny <mgorny@gentoo.org> (2022-09-18)
-# Obsolete in favor of building via PEP517 mode.  Buggy.  No revdeps
-# left in ::gentoo.
-# Removal on 2022-10-18.  Bug #871522.
-dev-python/pyproject2setuppy
-
 # Mike Gilbert <floppym@gentoo.org> (2022-09-12)
 # repoman is no longer maintained and has been removed from the portage
 # git repository. Please use dev-util/pkgcheck and dev-util/pkgdev instead.
