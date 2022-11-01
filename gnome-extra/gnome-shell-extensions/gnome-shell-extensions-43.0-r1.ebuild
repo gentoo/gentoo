@@ -17,14 +17,14 @@ DEPEND="
 	>=app-eselect/eselect-gnome-shell-extensions-20111211
 "
 RDEPEND="${DEPEND}
+	>=app-accessibility/at-spi2-core-2.46.0[introspection]
 	>=dev-libs/gjs-1.29
 	dev-libs/gobject-introspection:=
-	dev-libs/atk[introspection]
 	gnome-base/gnome-menus:3[introspection]
 	=gnome-base/gnome-shell-$(ver_cut 1)*
+	gui-libs/libadwaita[introspection]
 	media-libs/clutter:1.0[introspection]
-	net-libs/telepathy-glib[introspection]
-	x11-libs/gdk-pixbuf:2[introspection]
+	media-libs/graphene[introspection]
 	x11-libs/gtk+:3[introspection]
 	x11-libs/pango[introspection]
 	x11-themes/adwaita-icon-theme
