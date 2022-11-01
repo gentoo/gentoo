@@ -47,7 +47,6 @@ RDEPEND="
 	>=dev-python/pyparsing-2.2.1[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.7[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
-	>=dev-python/six-1.14.0[${PYTHON_USEDEP}]
 	media-fonts/dejavu
 	media-fonts/stix-fonts
 	media-libs/freetype:2
@@ -140,11 +139,6 @@ python_prepare_all() {
 #	)
 #	rm -r agg24 CXX || die
 #	rm -r agg24 || die
-
-#	cat > lib/${PN}/externals/six.py <<-EOF
-#	from __future__ import absolute_import
-#	from six import *
-#	EOF
 
 	# Affects installed _version.py, bug #854600
 	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
