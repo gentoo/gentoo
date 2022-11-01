@@ -14,7 +14,7 @@
 		<flag name="browser">Enables browser plugin support</flag>
 		<flag name="keeshare">Enable KeeShare sharing integration</flag>
 		<flag name="network">Enable network support</flag>
-		<flag name="yubikey">Enable database unlocking via YubiKey.</flag>
+		<flag name="yubikey">Enable database unlocking via hardware keys supporting YubiKey-style HMAC-SHA1 protocol</flag>
 	</use>
 	<longdescription>
 		KeePassXC provides a safe location for your passwords and similar
