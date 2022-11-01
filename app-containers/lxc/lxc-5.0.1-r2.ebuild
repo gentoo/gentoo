@@ -76,6 +76,8 @@ pkg_setup() {
 
 src_configure() {
 	local emesonargs=(
+		--localstatedir "${EPREFIX}/var"
+
 		-Dcoverity-build=false
 		-Doss-fuzz=false
 
