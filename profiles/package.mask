@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2022-11-01)
+# Dead slot. No reverse dependencies that are not masked for removal.
+# Removal on 2022-12-01
+x11-libs/gnome-pty-helper
+x11-libs/vte:0
+
+# Matt Turner <mattst88@gentoo.org> (2022-11-01)
 # No reverse dependencies. Depends on deprecated and unmaintained packages:
 # 	- media-libs/clutter
 # 	- media-libs/clutter-gst
