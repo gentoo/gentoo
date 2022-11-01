@@ -17,7 +17,7 @@ SRC_URI="http://download.augeas.net/ruby/${P}.gem"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ~ppc64 ~riscv ~sparc x86"
 IUSE=""
 
 RDEPEND=">=app-admin/augeas-1.1.0"
