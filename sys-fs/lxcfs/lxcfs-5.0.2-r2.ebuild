@@ -49,6 +49,8 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
+		--localstatedir "${EPREFIX}/var"
+
 		$(meson_use doc docs)
 		$(meson_use test tests)
 
