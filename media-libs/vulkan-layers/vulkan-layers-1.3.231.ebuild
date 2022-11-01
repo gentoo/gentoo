@@ -24,8 +24,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="wayland X"
 
+PATCHES=( "${FILESDIR}/${P}-cmake-Cleanup-find_package-SPIRV-code.patch" )
+
 BDEPEND=">=dev-util/cmake-3.10.2"
-RDEPEND="~dev-util/spirv-tools-99999999:=[${MULTILIB_USEDEP}]"
+RDEPEND="~dev-util/spirv-tools-${PV}:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-cpp/robin-hood-hashing-3.11.5
