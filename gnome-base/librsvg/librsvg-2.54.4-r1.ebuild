@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/LibRsvg https://gitlab.gnome.org/GNOME
 
 LICENSE="LGPL-2+"
 SLOT="2"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
 
 IUSE="gtk-doc +introspection +vala"
 REQUIRED_USE="
