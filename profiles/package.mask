@@ -33,6 +33,38 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-11-01)
+# No reverse dependencies. Depends on deprecated and unmaintained packages:
+# 	- media-libs/clutter
+# 	- media-libs/clutter-gst
+# 	- media-libs/clutter-gtk
+# 	- x11-libs/gtksourceview:2.0
+# 	- x11-libs/gtksourceview:3.0
+# 	- x11-libs/gtksourceview:4
+# 	- x11-libs/vte:0
+# Bug #877153
+# Removal on 2022-12-01
+dev-ruby/ruby-clutter
+dev-ruby/ruby-clutter-gdk
+dev-ruby/ruby-clutter-gstreamer
+dev-ruby/ruby-clutter-gtk
+dev-ruby/ruby-gdk3
+dev-ruby/ruby-gegl
+dev-ruby/ruby-gnome2
+dev-ruby/ruby-gnumeric
+dev-ruby/ruby-gsf
+dev-ruby/ruby-gstreamer
+dev-ruby/ruby-gtk3
+dev-ruby/ruby-gtksourceview
+dev-ruby/ruby-gtksourceview3
+dev-ruby/ruby-gtksourceview4
+dev-ruby/ruby-libsecret
+dev-ruby/ruby-rsvg
+dev-ruby/ruby-vte
+dev-ruby/ruby-vte3
+dev-ruby/ruby-webkit2-gtk
+dev-ruby/ruby-wnck3
+
 # Anton Fischl <github@fischl-online.de> (2022-10-23)
 # Version 3.1.* is not meant for production according to upstream
 =app-backup/burp-3.1*
