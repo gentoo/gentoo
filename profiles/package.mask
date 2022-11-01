@@ -314,19 +314,6 @@ dev-python/jarowinkler
 =sys-apps/portage-3.0.37
 =sys-apps/portage-3.0.38
 
-# Matt Turner <mattst88@gentoo.org> (2022-10-01)
-# Depends on lots of unmaintained packages:
-# 	- app-text/gnome-doc-utils
-# 	- dev-libs/libunique:1
-# 	- dev-util/gob
-# 	- x11-libs/gtk+:2
-# Last commit to upstream repository in 2015. Most plugins saw their last
-# upstream commit 10+ years ago. Unmaintained in Gentoo since 2016. Many open
-# bugs: #582138, #686800, #689364, #721246, #799263, #808447, #808450, #808456,
-# #831024.
-# Removal on 2022-11-01
-media-sound/gmpc
-
 # Brian Evans <grknight@gentoo.org> (2022-09-30)
 # Mask RC versions for initial testing
 <dev-lang/php-8.2.0:8.2
