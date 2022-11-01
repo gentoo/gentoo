@@ -180,6 +180,8 @@ src_prepare() {
 		src/libs/CMakeLists.txt
 	cmake_use_remove_addsubdirectory qml advanceddockingsystem \
 		src/libs/CMakeLists.txt
+	cmake_use_remove_addsubdirectory clang clangtools \
+		src/plugins/CMakeLists.txt
 	cmake_use_remove_addsubdirectory test test \
 		src/plugins/mcusupport/CMakeLists.txt
 
@@ -338,7 +340,6 @@ src_configure() {
 		# Clang stuff
 		-DBUILD_PLUGIN_CLANGCODEMODEL=$(usex clang)
 		-DBUILD_PLUGIN_CLANGFORMAT=$(usex clang)
-		-DBUILD_PLUGIN_CLANGTOOLS=$(usex clang)
 
 		# QML stuff
 		# -DBUILD_PLUGIN_QMLDESIGNER=$(usex qml) #Qt6 only
@@ -362,6 +363,7 @@ src_configure() {
 			-DClang_DIR="${CLANG_PREFIX}/$(get_libdir)/cmake/clang"
 			-DLLVM_DIR="${CLANG_PREFIX}/$(get_libdir)/cmake/llvm"
 			-DCLANGTOOLING_LINK_CLANG_DYLIB=YES
+			-DBUILD_PLUGIN_CLANGTOOLS=YES
 		)
 	fi
 	if use help; then
