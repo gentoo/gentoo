@@ -403,7 +403,6 @@ dev-python/pyproject2setuppy
 # Removal: 2022-10-18.  Bugs #849305, #849092, #849095, #713858.
 app-admin/abrt
 app-admin/gnome-abrt
-dev-libs/libreport
 
 # Mike Gilbert <floppym@gentoo.org> (2022-09-12)
 # repoman is no longer maintained and has been removed from the portage
