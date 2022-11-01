@@ -6,7 +6,7 @@
 		<name>Jonas Stein</name>
 	</maintainer>
 	<upstream>
-		<changelog>http://mama.indstate.edu/users/ice/tree/changes.html</changelog>
+		<changelog>https://gitlab.com/OldManProgrammer/unix-tree/-/blob/master/CHANGES</changelog>
 		<remote-id type="gitlab">OldManProgrammer/unix-tree</remote-id>
 		<remote-id type="github">Old-Man-Programmer/tree</remote-id>
 	</upstream>
