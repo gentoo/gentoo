@@ -359,12 +359,6 @@ x11-base/xorg-x11
 <dev-lang/php-8.2.0:8.2
 virtual/httpd-php:8.2
 
-# Michał Górny <mgorny@gentoo.org> (2022-09-29)
-# Unfetchable mirror-restricted distfile.  No action from maintainer
-# in over a year.
-# Removal on 2022-10-29.  Bug #789477.
-games-simulation/bcs-demo
-
 # Stephan Hartmann <sultan@gentoo.org> (2022-09-29)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
