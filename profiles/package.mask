@@ -33,15 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2022-11-01)
-# glib 2.74.1 has a bug causing gnome-base/gnome-keyring's gnome-keyring-daemon
-# to spin at 100% CPU. Under active discussion upstream but they're not yet
-# decided on the best fix. See https://gitlab.gnome.org/GNOME/glib/-/issues/2795
-# bug #878351
-=dev-libs/glib-2.74.1
-=dev-util/glib-utils-2.74.1
-=dev-util/gdbus-codegen-2.74.1
-
 # Matt Turner <mattst88@gentoo.org> (2022-11-01)
 # Added by a proxied maintainer in 2018 who then never touched it again before
 # disappearing. Doesn't build with Python 3.9. Depends on gnome-base/gconf.
