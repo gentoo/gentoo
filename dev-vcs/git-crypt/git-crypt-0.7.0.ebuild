@@ -30,6 +30,6 @@ src_configure() {
 }
 
 src_install() {
-	mkdir -p "${D}"/usr/bin || die
+	dodir /usr/bin
 	emake PREFIX="${D}"/usr install
 }
