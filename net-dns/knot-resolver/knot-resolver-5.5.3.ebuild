@@ -44,7 +44,10 @@ DEPEND="
 		  dev-util/cmocka
 	)
 "
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-knot-resolver )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.3-docdir.patch
