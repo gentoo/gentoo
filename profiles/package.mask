@@ -326,7 +326,6 @@ dev-python/jarowinkler
 # #831024.
 # Removal on 2022-11-01
 media-sound/gmpc
-media-plugins/gmpc-alarm
 
 # Brian Evans <grknight@gentoo.org> (2022-09-30)
 # Mask RC versions for initial testing
