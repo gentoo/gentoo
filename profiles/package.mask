@@ -339,7 +339,6 @@ media-plugins/gmpc-lyrics
 media-plugins/gmpc-lyricwiki
 media-plugins/gmpc-magnatune
 media-plugins/gmpc-mdcover
-media-plugins/gmpc-mmkeys
 
 # Brian Evans <grknight@gentoo.org> (2022-09-30)
 # Mask RC versions for initial testing
