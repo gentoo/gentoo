@@ -9,7 +9,7 @@ inherit qt5-build
 DESCRIPTION="Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 fi
 
 IUSE="qml"
