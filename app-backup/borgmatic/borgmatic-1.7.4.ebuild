@@ -38,6 +38,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.3-systemd_service_bin_path.patch
 )
 
+# A fragile test whose only purpose is to make sure the NEWS file
+# has been updated for the current version.
+EPYTEST_DESELECT=(
+	tests/integration/commands/test_borgmatic.py::test_borgmatic_version_matches_news_version
+)
+
 distutils_enable_tests pytest
 
 src_install() {
