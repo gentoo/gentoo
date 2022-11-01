@@ -19,7 +19,7 @@ inherit distutils-r1 verify-sig
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/libvirt/libvirt-python.git"
-	RDEPEND="app-emulation/libvirt:=[-python(-)]"
+	RDEPEND="app-emulation/libvirt:="
 else
 	SRC_URI="https://libvirt.org/sources/python/${MY_P}.tar.gz
 		verify-sig? ( https://libvirt.org/sources/python/${MY_P}.tar.gz.asc )"
