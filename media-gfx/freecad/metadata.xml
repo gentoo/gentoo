@@ -26,6 +26,13 @@
 			Build the FEM module and workbench which provides Finite Element 
 			Analysis (FEA) workflows
 		</flag>
+		<flag name="gui">
+			Build FreeCAD with a Qt based GUI. If built without setting this
+			USE flag, FreeCAD can be used in a headless mode, for server-side
+			instances.
+			The Python modules are available, without their GUI parts though,
+			if this is unset.
+		</flag>
 		<flag name="headless">
 			Build FreeCAD without a GUI, usable for server-side instances.
 			The Python modules are still available, without their GUI parts though.
