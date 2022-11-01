@@ -332,7 +332,6 @@ media-plugins/gmpc-avahi
 media-plugins/gmpc-awn
 media-plugins/gmpc-discogs
 media-plugins/gmpc-extraplaylist
-media-plugins/gmpc-jamendo
 
 # Brian Evans <grknight@gentoo.org> (2022-09-30)
 # Mask RC versions for initial testing
