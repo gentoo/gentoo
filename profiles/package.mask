@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2022-11-01)
+# Added by a proxied maintainer in 2018 who then never touched it again before
+# disappearing. Doesn't build with Python 3.9. Depends on gnome-base/gconf.
+# Bugs #846233, #873877
+# Removal on 2022-12-01
+sci-electronics/drahnr-oregano
+
+# Matt Turner <mattst88@gentoo.org> (2022-11-01)
 # Dead slot. No reverse dependencies that are not masked for removal.
 # Removal on 2022-12-01
 x11-libs/gnome-pty-helper
