@@ -383,11 +383,6 @@ games-simulation/bcs-demo
 # Removal on 2022-10-26.  Bug #253517.
 games-sports/torcs
 
-# Piotr Karbowski <slashbeast@gentoo.org> (2022-09-25)
-# No package in tree depends on dev-python/ssh2-python. Masked for removal.
-# Removal on 2022-10-25.
-dev-python/ssh2-python
-
 # John Helmert III <ajak@gentoo.org> (2022-09-18)
 # Unfixed root privilege escalation, bug #631552
 sys-cluster/slurm
