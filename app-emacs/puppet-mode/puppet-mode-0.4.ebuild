@@ -11,7 +11,7 @@ SRC_URI="https://github.com/voxpupuli/puppet-mode/archive/${PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
 
 DOCS="CHANGES.md README.md"
 SITEFILE="50${PN}-1-gentoo.el"
