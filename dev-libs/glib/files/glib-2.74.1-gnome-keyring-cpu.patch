@@ -1,0 +1,131 @@
+https://gitlab.gnome.org/GNOME/glib/-/merge_requests/3029
+https://gitlab.gnome.org/GNOME/glib/-/merge_requests/3039 (backport PR we've used)
+https://bugs.gentoo.org/878995
+https://bugs.gentoo.org/878351
+
+From e2f283d7c8c5ab3aeb2f281a27ec7c0f24b86868 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Fri, 28 Oct 2022 11:21:04 -0400
+Subject: [PATCH 1/2] Revert "Handling collision between standard i/o file
+ descriptors and newly created ones"
+
+g_unix_open_pipe tries to avoid the standard io fd range
+when getting pipe fds. This turns out to be a bad idea because
+certain buggy programs rely on it using that range.
+
+This reverts commit d9ba6150909818beb05573f54f26232063492c5b
+--- a/glib/glib-unix.c
++++ b/glib/glib-unix.c
+@@ -108,17 +108,6 @@ g_unix_open_pipe (int     *fds,
+     ecode = pipe2 (fds, pipe2_flags);
+     if (ecode == -1 && errno != ENOSYS)
+       return g_unix_set_error_from_errno (error, errno);
+-    /* Don't reassign pipes to stdin, stdout, stderr if closed meanwhile */
+-    else if (fds[0] < 3 || fds[1] < 3)
+-      {
+-        int old_fds[2] = { fds[0], fds[1] };
+-        gboolean result = g_unix_open_pipe (fds, flags, error);
+-        close (old_fds[0]);
+-        close (old_fds[1]);
+-
+-        if (!result)
+-          g_unix_set_error_from_errno (error, errno);
+-      }
+     else if (ecode == 0)
+       return TRUE;
+     /* Fall through on -ENOSYS, we must be running on an old kernel */
+@@ -127,19 +116,6 @@ g_unix_open_pipe (int     *fds,
+   ecode = pipe (fds);
+   if (ecode == -1)
+     return g_unix_set_error_from_errno (error, errno);
+-  /* Don't reassign pipes to stdin, stdout, stderr if closed meanwhile */
+-  else if (fds[0] < 3 || fds[1] < 3)
+-    {
+-      int old_fds[2] = { fds[0], fds[1] };
+-      gboolean result = g_unix_open_pipe (fds, flags, error);
+-      close (old_fds[0]);
+-      close (old_fds[1]);
+-
+-      if (!result)
+-        g_unix_set_error_from_errno (error, errno);
+-
+-      return result;
+-    }
+ 
+   if (flags == 0)
+     return TRUE;
+GitLab
+From 4526620d8c485f5dfba6ddca33f91670982f82eb Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Mon, 31 Oct 2022 09:17:55 -0400
+Subject: [PATCH 2/2] glib-unix: Add test to make sure g_unix_open_pipe will
+ intrude standard range
+
+Now that we know it's a bad idea to avoid the standard io fd range
+when getting pipe fds for g_unix_open_pipe, we should test to make sure
+we don't inadvertently try to do it again.
+
+This commit adds that test.
+--- a/glib/tests/unix.c
++++ b/glib/tests/unix.c
+@@ -24,8 +24,11 @@
+ #include "config.h"
+ 
+ #include "glib-unix.h"
++#include "gstdio.h"
++
+ #include <string.h>
+ #include <pwd.h>
++#include <unistd.h>
+ 
+ static void
+ test_pipe (void)
+@@ -52,6 +55,39 @@ test_pipe (void)
+   g_assert (g_str_has_prefix (buf, "hello"));
+ }
+ 
++static void
++test_pipe_stdio_overwrite (void)
++{
++  GError *error = NULL;
++  int pipefd[2], ret;
++  gboolean res;
++  int stdin_fd;
++
++  stdin_fd = dup (STDIN_FILENO);
++  g_assert_cmpint (stdin_fd, >, 0);
++
++  g_close (STDIN_FILENO, &error);
++  g_assert_no_error (error);
++
++  res = g_unix_open_pipe (pipefd, FD_CLOEXEC, &error);
++  g_assert_no_error (error);
++  g_assert_true (res);
++
++  g_assert_cmpint (pipefd[0], ==, STDIN_FILENO);
++
++  g_close (pipefd[0], &error);
++  g_assert_no_error (error);
++
++  g_close (pipefd[1], &error);
++  g_assert_no_error (error);
++
++  ret = dup2 (stdin_fd, STDIN_FILENO);
++  g_assert_cmpint (ret, >=, 0);
++
++  g_close (stdin_fd, &error);
++  g_assert_no_error (error);
++}
++
+ static void
+ test_error (void)
+ {
+@@ -337,6 +373,7 @@ main (int   argc,
+   g_test_init (&argc, &argv, NULL);
+ 
+   g_test_add_func ("/glib-unix/pipe", test_pipe);
++  g_test_add_func ("/glib-unix/pipe-stdio-overwrite", test_pipe_stdio_overwrite);
+   g_test_add_func ("/glib-unix/error", test_error);
+   g_test_add_func ("/glib-unix/nonblocking", test_nonblocking);
+   g_test_add_func ("/glib-unix/sighup", test_sighup);
+GitLab
