@@ -32,7 +32,6 @@
 		symboles.
 	</longdescription>
 	<use>
-		<flag name="gtk2">Use GTK+2 instead of GTK+3</flag>
 		<flag name="vte">Enable Terminal support (<pkg>x11-libs/vte</pkg>)</flag>
 	</use>
 </pkgmetadata>
