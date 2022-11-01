@@ -26,7 +26,7 @@ fi
 # examples are licensed CC-BY-SA (without note of specific version)
 LICENSE="LGPL-2 CC-BY-SA-4.0"
 SLOT="0"
-IUSE="debug designer headless test"
+IUSE="debug designer +gui test"
 
 FREECAD_EXPERIMENTAL_MODULES="cloud pcl"
 FREECAD_STABLE_MODULES="addonmgr fem idf image inspection material
@@ -159,7 +159,7 @@ src_configure() {
 		-DBUILD_FLAT_MESH=ON
 		-DBUILD_FORCE_DIRECTORY=ON				# force building in a dedicated directory
 		-DBUILD_FREETYPE=ON						# automagic dep
-		-DBUILD_GUI=$(usex !headless)
+		-DBUILD_GUI=$(usex gui)
 		-DBUILD_IDF=$(usex idf)
 		-DBUILD_IMAGE=$(usex image)
 		-DBUILD_IMPORT=ON						# import module for various file formats
@@ -196,6 +196,8 @@ src_configure() {
 		-DCMAKE_INSTALL_PREFIX=/usr/$(get_libdir)/${PN}
 
 		-DFREECAD_BUILD_DEBIAN=OFF
+
+		-DFREECAD_QT_VERSION="5"
 
 		-DFREECAD_USE_EXTERNAL_KDL=ON
 		-DFREECAD_USE_EXTERNAL_SMESH=OFF		# no package in Gentoo
@@ -235,7 +237,7 @@ src_configure() {
 
 # We use the FreeCADCmd binary instead of the FreeCAD binary here
 # for two reasons:
-# 1. It works out of the box with USE=headless as well, not needing a guard
+# 1. It works out of the box with USE=-gui as well, not needing a guard
 # 2. We don't need virtualx.eclass and it's dependencies
 # The exported environment variables are needed, so freecad does know
 # where to save it's temporary files, and where to look and write it's
@@ -255,7 +257,7 @@ src_install() {
 
 	dobin src/Tools/freecad-thumbnailer
 
-	if ! use headless; then
+	if use gui; then
 		dosym -r /usr/$(get_libdir)/${PN}/bin/FreeCAD /usr/bin/freecad
 		mv "${ED}"/usr/$(get_libdir)/${PN}/share/* "${ED}"/usr/share || die "failed to move shared resources"
 	fi
