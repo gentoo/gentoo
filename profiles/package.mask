@@ -342,7 +342,6 @@ media-plugins/gmpc-mdcover
 media-plugins/gmpc-mmkeys
 media-plugins/gmpc-mserver
 media-plugins/gmpc-playlistsort
-media-plugins/gmpc-shout
 
 # Brian Evans <grknight@gentoo.org> (2022-09-30)
 # Mask RC versions for initial testing
