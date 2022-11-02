@@ -36,7 +36,7 @@ sys-block/fio -io-uring -zbc
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-18)
 # We never had non-deprecated libcrypt support from glibc, so disable compat
 # from libxcrypt for a world without libcrypt.so.1
->=sys-libs/libxcrypt-4.4.23-r1 compat
+sys-libs/libxcrypt compat
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-18)
 # Catalyst has support for assembling bootloader on this arch

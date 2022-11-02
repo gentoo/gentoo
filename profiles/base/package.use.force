@@ -130,7 +130,7 @@ sys-kernel/vanilla-kernel initramfs
 # distribution and rely on external providers like libxcrypt.
 # Here we are following that path too.
 <sys-libs/glibc-2.33-r2 crypt
->=sys-libs/libxcrypt-4.4.23-r1 system compat
+sys-libs/libxcrypt system compat
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd, so force USE=guile2

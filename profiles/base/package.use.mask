@@ -486,7 +486,6 @@ dev-python/statsmodels doc
 # distribution and rely on external providers like libxcrypt.
 # Here we are following that path too.
 >=sys-libs/glibc-2.33-r2 crypt
-<sys-libs/libxcrypt-4.4.23-r1 split-usr system
 
 # Craig Andrews <candrews@gentoo.org> (2019-09-12)
 # OpenSSL (as of version 1.1.1) doesn't have APIs for QUIC support
