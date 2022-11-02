@@ -58,6 +58,13 @@ pkg_pretend() {
 	fi
 }
 
+src_configure() {
+	unlink "${S}"/debian/config/brcm80211/brcm/brcmfmac43455-sdio.bin || die
+	ln -rs \
+		"${S}"/debian/config/brcm80211/cypress/cyfmac43455-sdio-standard.bin \
+		"${S}"/debian/config/brcm80211/brcm/brcmfmac43455-sdio.bin || die
+}
+
 src_install() {
 	insinto /lib/firmware/brcm
 	doins debian/config/brcm80211/brcm/*
