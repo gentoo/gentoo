@@ -9,7 +9,7 @@ DISTUTILS_USE_PEP517=setuptools
 inherit optfeature xdg distutils-r1
 
 # Commit of documentation to fetch
-DOCS_PV="9156f446a9225446a2a752ecb669cc3db30094a8"
+DOCS_PV="bb9b308b66cc90e47f43418f079bf098eb4efe6c"
 
 DESCRIPTION="The Scientific Python Development Environment"
 HOMEPAGE="
@@ -51,7 +51,6 @@ RDEPEND="
 	>=dev-python/pyxdg-0.26[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-22.1.0[${PYTHON_USEDEP}]
 	>=dev-python/qdarkstyle-3.0.2[${PYTHON_USEDEP}]
-	<dev-python/qdarkstyle-3.1[${PYTHON_USEDEP}]
 	>=dev-python/qstylizer-0.1.10[${PYTHON_USEDEP}]
 	>=dev-python/qtawesome-1.0.2[${PYTHON_USEDEP}]
 	>=dev-python/qtconsole-5.3.2[${PYTHON_USEDEP}]
@@ -89,6 +88,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.0-build.patch"
 	"${FILESDIR}/${PN}-5.2.0-doc-theme-renamed.patch"
+	"${FILESDIR}/${PN}-5.3.3-unpin-qdarkstyle.patch"
 )
 
 DOCS=(
