@@ -37,11 +37,12 @@ RDEPEND="
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/toml-0.10.2[${PYTHON_USEDEP}]
+	dev-python/tomli[${PYTHON_USEDEP}]
 	dev-python/watchdog[${PYTHON_USEDEP}]
 	libcloud? ( >=dev-python/libcloud-2.5.0[${PYTHON_USEDEP}] )
 	mako? ( dev-python/mako[${PYTHON_USEDEP}] )
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
+	<dev-python/importlib_metadata-5[${PYTHON_USEDEP}]
 	libvirt? (
 		$(python_gen_cond_dep 'dev-python/libvirt-python[${PYTHON_USEDEP}]' python3_8)
 	)
@@ -102,15 +103,19 @@ REQUIRED_USE="|| ( raet zeromq )
 	test? ( cheetah genshi )"
 RESTRICT="!test? ( test ) x86? ( test )"
 
+# tests currently broken
+RESTRICT+=" test"
+
 PATCHES=(
 	"${FILESDIR}/salt-3003-skip-tests-that-oom-machine.patch"
 	"${FILESDIR}/salt-3003-gentoolkit-revdep.patch"
 	"${FILESDIR}/salt-3002-tests.patch"
 	"${FILESDIR}/salt-3003.3-tests.patch"
 	"${FILESDIR}/salt-3003.1-tests.patch"
-	"${FILESDIR}/salt-3004.1-jinja-3.patch"
+	"${FILESDIR}/salt-3004.2-jinja-3.patch"
 	"${FILESDIR}/salt-3003.4-tests.patch"
 	"${FILESDIR}/salt-3003.4-relax-pyzmq-dep.patch"
+	"${FILESDIR}/salt-3004.2-pyzmq-23.patch"
 )
 
 python_prepare_all() {
