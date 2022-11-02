@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>x11@gentoo.org</email>
-		<name>X11</name>
-	</maintainer>
-	<maintainer type="project">
 		<email>llvm@gentoo.org</email>
 	</maintainer>
 	<upstream>
