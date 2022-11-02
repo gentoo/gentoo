@@ -13,15 +13,16 @@ KEYWORDS="~amd64 ~arm64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+DEPEND="
 	>=dev-libs/libite-1.5
 	>=dev-libs/libuev-2.2"
-
-DEPEND="
-	${RDEPEND}
+RDEPEND="
+	${DEPEND}
 	!net-misc/uftp
 	!net-ftp/atftp
-	!net-ftp/tftp-hpa[server(+)]
+	!net-ftp/tftp-hpa[server(+)]"
+BDEPEND="
+	virtual/pkgconfig
 	test? (
 		net-ftp/ftp
 		net-ftp/tnftp
