@@ -6,7 +6,7 @@
 		<name>Anthony G. Basile</name>
 	</maintainer>
 	<longdescription lang="en">
-NTPsec project - a secure, hardened, and improved implementation of Network Time Protocol derived from NTP Classic, Dave Mills’s original.
+	NTPsec project - a secure, hardened, and improved implementation of Network Time Protocol derived from NTP Classic, Dave Mills’s original.
 	</longdescription>
 	<use>
 		<flag name="early">Drop root privileges early</flag>
@@ -31,6 +31,5 @@ NTPsec project - a secure, hardened, and improved implementation of Network Time
 		<flag name="rclock_modem">NIST/USNO/PTB Modem Time Services</flag>
 		<flag name="rclock_local">Support for undisciplined local clock (not recommended)</flag>
 		<flag name="smear">Specify the interval over which a leap second is applied (experimental)</flag>
-		<flag name="tests">Enable tests</flag>
 	</use>
 </pkgmetadata>
