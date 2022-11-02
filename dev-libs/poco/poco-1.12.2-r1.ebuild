@@ -47,7 +47,7 @@ RDEPEND="
 		dev-libs/openssl:0=
 	)
 	xml? ( dev-libs/expat )
-	zip? ( sys-libs/zlib )
+	zip? ( sys-libs/zlib:= )
 "
 DEPEND="${RDEPEND}"
 
