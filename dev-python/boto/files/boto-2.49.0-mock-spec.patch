@@ -1,0 +1,12 @@
+diff -ur boto-2.49.0.orig/tests/unit/ec2/test_volume.py boto-2.49.0/tests/unit/ec2/test_volume.py
+--- boto-2.49.0.orig/tests/unit/ec2/test_volume.py	2022-11-02 22:22:36.173725700 -0000
++++ boto-2.49.0/tests/unit/ec2/test_volume.py	2022-11-02 22:24:26.502590025 -0000
+@@ -55,7 +55,7 @@
+     @mock.patch("boto.resultset.ResultSet")
+     def test_startElement_with_name_tagSet_calls_ResultSet(self, ResultSet, startElement):
+         startElement.return_value = None
+-        result_set = mock.Mock(ResultSet([("item", Tag)]))
++        result_set = ResultSet([("item", Tag)])
+         volume = Volume()
+         volume.tags = result_set
+         retval = volume.startElement("tagSet", None, None)
