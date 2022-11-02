@@ -34,6 +34,7 @@ dev-python/osc-lib
 dev-python/paramiko
 >=dev-python/pyopenssl-22
 dev-python/pyspnego
+>=dev-python/pytest-trio-0.8.0
 dev-python/python-daemon
 dev-python/python-glanceclient
 dev-python/python-ironicclient
