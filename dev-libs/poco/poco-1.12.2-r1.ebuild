@@ -13,12 +13,13 @@ S="${WORKDIR}/${PN}-${P}-release"
 LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="7z activerecord cppparser +crypto +data examples +file2pagecompiler iodbc +json mariadb +mongodb mysql +net odbc +pagecompiler pdf pocodoc postgres prometheus sqlite +ssl test +util +xml +zip"
+IUSE="7z activerecord cppparser +crypto +data examples +file2pagecompiler iodbc +json jwt mariadb +mongodb mysql +net odbc +pagecompiler pdf pocodoc postgres prometheus sqlite +ssl test +util +xml +zip"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	7z? ( xml )
 	file2pagecompiler? ( pagecompiler )
 	iodbc? ( odbc )
+	jwt? ( json ssl )
 	mongodb? ( data )
 	mysql? ( data )
 	odbc? ( data )
@@ -98,6 +99,7 @@ src_configure() {
 		-DENABLE_DATA_POSTGRESQL="$(usex postgres)"
 		-DENABLE_DATA_SQLITE="$(usex sqlite)"
 		-DENABLE_JSON="$(usex util)"
+		-DENABLE_JWT="$(usex jwt)"
 		-DENABLE_MONGODB="$(usex mongodb)"
 		-DENABLE_NET="$(usex net)"
 		-DENABLE_NETSSL="$(usex ssl)"
