@@ -24,6 +24,7 @@
     <flag name="speex">Build with Speex noise suppression filter support.</flag>
     <flag name="ssl">Build with TLS/SSL support for RTMPS connections.</flag>
     <flag name="vlc">Build with VLC media source support.</flag>
+    <flag name="websocket">Build with WebSocket API support.</flag>
   </use>
   <upstream>
     <remote-id type="github">obsproject/obs-studio</remote-id>
