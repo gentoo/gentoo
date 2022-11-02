@@ -543,6 +543,7 @@ sys-devel/automake:1.11
 >=app-arch/file-roller-43
 >=app-backup/deja-dup-43
 >=app-crypt/seahorse-43
+>=app-misc/bijiben-40.1-r1
 >=app-misc/tracker-3.4.0-r1
 >=app-misc/tracker-miners-3.4.0-r1
 >=app-text/gtranslator-42
