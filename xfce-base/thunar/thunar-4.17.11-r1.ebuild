@@ -56,7 +56,7 @@ src_configure() {
 		$(use_enable udisks gudev)
 		$(use_enable libnotify notifications)
 		$(use_enable exif)
-		$(use_enable pcre)
+		$(use_enable pcre pcre2)
 		$(use_enable trash-panel-plugin tpa-plugin)
 	)
 
