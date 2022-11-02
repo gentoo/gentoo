@@ -1,22 +1,16 @@
 # Copyright 2004-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-# NEED_BOOTSTRAP is for developers to quickly generate a tarball
-# for publishing to the tree.
-NEED_BOOTSTRAP="no"
-inherit eapi8-dosym multibuild multilib python-any-r1 flag-o-matic toolchain-funcs multilib-minimal
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/libxcrypt.asc
+inherit multilib python-any-r1 flag-o-matic toolchain-funcs multibuild multilib-minimal verify-sig
 
 DESCRIPTION="Extended crypt library for descrypt, md5crypt, bcrypt, and others"
 HOMEPAGE="https://github.com/besser82/libxcrypt"
-if [[ ${NEED_BOOTSTRAP} == "yes" ]] ; then
-	inherit autotools
-	SRC_URI="https://github.com/besser82/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-else
-	SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-autotools.tar.xz"
-fi
+SRC_URI="https://github.com/besser82/libxcrypt/releases/download/v${PV}/${P}.tar.xz"
+SRC_URI+=" verify-sig? ( https://github.com/besser82/libxcrypt/releases/download/v${PV}/${P}.tar.xz.asc )"
 
 LICENSE="LGPL-2.1+ public-domain BSD BSD-2"
 SLOT="0/1"
@@ -37,7 +31,8 @@ is_cross() {
 	[[ "${#enabled_abis[@]}" -le 1 ]] && [[ ${CHOST} != ${CTARGET} ]]
 }
 
-DEPEND="system? (
+DEPEND="
+	system? (
 		elibc_glibc? (
 			${CATEGORY}/glibc[-crypt(+)]
 			!${CATEGORY}/glibc[crypt(+)]
@@ -48,19 +43,22 @@ DEPEND="system? (
 	)
 "
 RDEPEND="${DEPEND}"
-BDEPEND="dev-lang/perl
-	test? ( $(python_gen_any_dep 'dev-python/passlib[${PYTHON_USEDEP}]') )"
+BDEPEND="
+	dev-lang/perl
+	test? ( $(python_gen_any_dep 'dev-python/passlib[${PYTHON_USEDEP}]') )
+	verify-sig? ( >=sec-keys/openpgp-keys-libxcrypt-${PV} )
+"
 
 python_check_deps() {
 	python_has_version "dev-python/passlib[${PYTHON_USEDEP}]"
 }
 
 pkg_pretend() {
-	if has "distcc" ${FEATURES} ; then
+	if has distcc ${FEATURES} ; then
 		ewarn "Please verify all distcc nodes are using the same versions of GCC (>= 10) and Binutils!"
 		ewarn "Older/mismatched versions of GCC may lead to a misbehaving library: bug #823179."
 
-		if [[ ${BUILD_TYPE} != "binary" ]] && tc-is-gcc && [[ $(gcc-major-version) -lt 10 ]] ; then
+		if [[ ${BUILD_TYPE} != binary ]] && tc-is-gcc && [[ $(gcc-major-version) -lt 10 ]] ; then
 			die "libxcrypt is known to fail to build or be broken at runtime with < GCC 10 (bug #823179)!"
 		fi
 	fi
@@ -68,8 +66,8 @@ pkg_pretend() {
 
 pkg_setup() {
 	MULTIBUILD_VARIANTS=(
-		$(usex compat 'xcrypt_compat' '')
-		xcrypt_nocompat
+		$(usev compat 'xcrypt_compat')
+		xcrypt_modern
 	)
 
 	use test && python-any-r1_pkg_setup
@@ -113,11 +111,6 @@ src_prepare() {
 	#
 	#	* diff the build system changes!
 	#
-	if [[ ${NEED_BOOTSTRAP} == "yes" ]] ; then
-		# Facilitate our split variant build for compat + non-compat
-		eapply "${FILESDIR}"/${PN}-4.4.19-multibuild.patch
-		eautoreconf
-	fi
 }
 
 src_configure() {
@@ -168,11 +161,11 @@ get_xcpkgconfigdir() {
 multilib_src_configure() {
 	local -a myconf=(
 		--host=${CTARGET}
-		--disable-werror
 		--libdir=$(get_xclibdir)
 		--with-pkgconfigdir=$(get_xcpkgconfigdir)
 		--includedir=$(get_xcincludedir)
 		--mandir="$(get_xcmandir)"
+		--disable-werror
 	)
 
 	tc-export PKG_CONFIG
@@ -193,13 +186,15 @@ multilib_src_configure() {
 				--enable-obsolete-api=yes
 			)
 			;;
-		xcrypt_nocompat-*)
+		xcrypt_modern-*)
 			myconf+=(
 				--enable-obsolete-api=no
 				$(use_enable static-libs static)
 			)
-		;;
-		*) die "Unexpected MULTIBUILD_ID: ${MULTIBUILD_ID}";;
+			;;
+		*)
+			die "Unexpected MULTIBUILD_ID: ${MULTIBUILD_ID}"
+			;;
 	esac
 
 	if use headers-only; then
@@ -217,10 +212,6 @@ src_compile() {
 	multibuild_foreach_variant multilib-minimal_src_compile
 }
 
-multilib_src_test() {
-	emake check
-}
-
 src_test() {
 	multibuild_foreach_variant multilib-minimal_src_test
 }
@@ -228,22 +219,24 @@ src_test() {
 src_install() {
 	multibuild_foreach_variant multilib-minimal_src_install
 
-	use headers-only || \
-	(
-		shopt -s failglob || die "failglob failed"
+	if ! use headers-only ; then
+		(
+			shopt -s failglob || die "failglob failed"
 
-		# Make sure our man pages do not collide with glibc or man-pages.
-		for manpage in "${D}$(get_xcmandir)"/man3/crypt{,_r}.?*; do
-			mv -n "${manpage}" "$(dirname "${manpage}")/xcrypt_$(basename "${manpage}")" \
-				|| die "mv failed"
-		done
-	) || die "failglob error"
+			# Make sure our man pages do not collide with glibc or man-pages.
+			local manpage
+			for manpage in "${D}$(get_xcmandir)"/man3/crypt{,_r}.?*; do
+				mv -n "${manpage}" "$(dirname "${manpage}")/xcrypt_$(basename "${manpage}")" \
+					|| die "mv failed"
+			done
+		)
+	fi
 
 	# Remove useless stuff from installation
 	find "${ED}"/usr/share/doc/${PF} -type l -delete || die
 	find "${ED}" -name '*.la' -delete || die
 
-	# workaround broken upstream cross-* --docdir by installing files in proper locations
+	# Workaround broken upstream cross-* --docdir by installing files in proper locations
 	if is_cross; then
 		insinto "$(get_xcprefix)"/usr/share
 		doins -r "${ED}"/usr/share/doc
@@ -259,13 +252,12 @@ multilib_src_install() {
 
 	emake DESTDIR="${D}" install
 
-	# Don't install the libcrypt.so symlink for the "compat" version
 	case "${MULTIBUILD_ID}" in
 		xcrypt_compat-*)
-			rm "${D}"$(get_xclibdir)/libcrypt$(get_libname) \
-				|| die "failed to remove extra compat libraries"
-		;;
-		xcrypt_nocompat-*)
+			rm "${D}"$(get_xclibdir)/libcrypt$(get_libname) || die "failed to remove extra compat libraries"
+			;;
+
+		xcrypt_modern-*)
 			if use split-usr; then
 				(
 					if use static-libs; then
@@ -276,8 +268,7 @@ multilib_src_install() {
 
 						if [[ -n ${static_libs[*]} ]]; then
 							dodir "/usr/$(get_xclibdir)"
-							mv "${static_libs[@]}" "${ED}/usr/$(get_xclibdir)" \
-								|| die "Moving static libs failed"
+							mv "${static_libs[@]}" "${ED}/usr/$(get_xclibdir)" || die "Moving static libs failed"
 						fi
 					fi
 
@@ -295,15 +286,17 @@ multilib_src_install() {
 							local libdir_no_prefix=$(get_xclibdir)
 							libdir_no_prefix=${libdir_no_prefix#${EPREFIX}}
 							libdir_no_prefix=${libdir_no_prefix%/usr}
-							dosym8 -r "/$(get_libdir)/${lib_file_target}" "/usr/${libdir_no_prefix}/${lib_file_basename}"
+							dosym -r "/$(get_libdir)/${lib_file_target}" "/usr/${libdir_no_prefix}/${lib_file_basename}"
 						done
 
 						rm "${D}"$(get_xclibdir)/*$(get_libname) || die "Removing symlinks in incorrect location failed"
 					fi
 				)
 			fi
-		;;
-		*) die "Unexpected MULTIBUILD_ID: ${MULTIBUILD_ID}";;
+			;;
+		*)
+			die "Unexpected MULTIBUILD_ID: ${MULTIBUILD_ID}"
+			;;
 	esac
 }
 
