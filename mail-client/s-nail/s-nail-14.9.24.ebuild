@@ -62,7 +62,7 @@ src_configure() {
 }
 
 src_compile() {
-	TMPDIR=/tmp emake build
+	emake build
 }
 
 src_install() {
