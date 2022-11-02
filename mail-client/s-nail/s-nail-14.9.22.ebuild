@@ -57,7 +57,8 @@ src_configure() {
 
 	tc-is-cross-compiler && confopts+=( OPT_CROSS_BUILD=yes )
 
-	emake "${confopts[@]}" config
+	# Cannot use emake or bad options saved Bug 879065
+	make "${confopts[@]}" config || die
 }
 
 src_compile() {
