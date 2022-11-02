@@ -1,0 +1,1755 @@
+Clang16 will not allow implicit function declarations and implicit integers etc.
+This patch overhauls the source code for modern C.
+
+Bug: https://bugs.gentoo.org/871072
+Bug: https://bugs.gentoo.org/879639
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/config.c
++++ b/config.c
+@@ -4,6 +4,7 @@
+ #include	<signal.h>
+ #include	<stdlib.h>
+ #include	<string.h>
++#include    <unistd.h>
+ 
+ /*#define DEBUG		/* Provides extra debugging info */
+ 
+@@ -14,9 +15,9 @@
+ #define W_OK	2
+ #define R_OK	4
+ 
+-int exists(dir, file)
+-char *dir;
+-char *file;
++int grep(char *dir, char *file, char *word);
++
++int exists(char *dir, char *file)
+ {
+ 	struct stat statbuf;
+ 	char buffer[BUFSIZ];
+@@ -29,9 +30,7 @@ char *file;
+ }
+ 
+ 
+-main(argc, argv)
+-int argc;
+-char *argv[];
++int main(int argc, char *argv[])
+ {
+ 	int  irix=0, solaris=0, verbose=0, write_utmp;
+ 	char cflags[BUFSIZ], ldflags[BUFSIZ];
+@@ -254,10 +253,7 @@ char *argv[];
+ 
+ /* Yeesh.  I have to write a word grep function.... */
+ 
+-int grep(dir, file, word)
+-char *dir;
+-char *file;
+-char *word;
++int grep(char *dir, char *file, char *word)
+ {
+ 	FILE *fp;
+ 	char *wptr, *ptr, buffer[BUFSIZ];
+--- a/cut-paste.c
++++ b/cut-paste.c
+@@ -22,12 +22,7 @@ extern struct physical physical;
+ static int lastdirection=0;
+ 
+ /* This function assumes that it alone will print selected text */
+-static void put_sel_char(win, x, y, oldattr, on, direction)
+-window *win;
+-int x, y;
+-int *oldattr;
+-unsigned char *on;
+-int direction;
++static void put_sel_char(window *win, int x, int y, int *oldattr, unsigned char *on, int direction)
+ {
+ 	int c, selected=0;
+ 
+@@ -84,11 +79,7 @@ end:
+ 
+ /* If this function returns 0, no selection was made */
+ 
+-static char *extract_sel(win, buf, len, mark1, mark2)
+-window *win;
+-char *buf;
+-int len;
+-position *mark1, *mark2;
++static char *extract_sel(window *win, char *buf, int len, position *mark1, position *mark2)
+ {
+ 	position startsel, endsel;
+ 
+@@ -123,9 +114,7 @@ position *mark1, *mark2;
+ 	return(buf);
+ }
+ 
+-static void line_down(win, cursor)
+-window *win;
+-position *cursor;
++static void line_down(window *win, position *cursor)
+ {
+ 	int j;
+ 
+@@ -147,9 +136,7 @@ position *cursor;
+ 	}
+ }
+ 
+-static void line_up(win, cursor)
+-window *win;
+-position *cursor;
++static void line_up(window *win, position *cursor)
+ {
+ 	int j;
+ 
+@@ -173,9 +160,7 @@ position *cursor;
+ 	}
+ }
+ 
+-static void move_left(win, cursor)
+-window *win;
+-position *cursor;
++static void move_left(window *win, position *cursor)
+ {
+ 	if ( cursor->y > 1 ) {
+ 		if ( marked ) {
+@@ -186,9 +171,7 @@ position *cursor;
+ 	}
+ }
+ 
+-static void move_right(win, cursor)
+-window *win;
+-position *cursor;
++static void move_right(window *win, position *cursor)
+ {
+ 	if ( cursor->y < win->cols ) {
+ 		if ( marked )
+@@ -200,9 +183,9 @@ position *cursor;
+ }
+ 
+ static int use_xcb=0;	/* Do we use xcb to access X selection buffers? */
+-void vt_initsel()
++void vt_initsel(void)
+ {
+-	extern char *pathsearch();	/* From misc.c */
++	extern char *pathsearch(char *command, int secure);	/* From misc.c */
+ 
+ #ifdef USE_XCB
+ 	char *display;
+@@ -216,9 +199,9 @@ void vt_initsel()
+ }
+ 
+ static char selbuf[BUFSIZ];
+-char *vt_getselbuf()
++char *vt_getselbuf(void)
+ {
+-	FILE *safe_popen();		/* From misc.c */
++	FILE *safe_popen(char *command, char *type); /* From misc.c */
+ 	FILE *xcb;
+ 	char buffer[BUFSIZ];
+ 	int len;
+@@ -236,10 +219,9 @@ char *vt_getselbuf()
+ 	}
+ 	return(selbuf);
+ }
+-char *vt_setselbuf(buffer)
+-char *buffer;
++char *vt_setselbuf(char *buffer)
+ {
+-	FILE *safe_popen();		/* From misc.c */
++	FILE *safe_popen(char *command, char *type);		/* From misc.c */
+ 	FILE *xcb;
+ 	
+ 	strncpy(selbuf, buffer, BUFSIZ-1);
+@@ -252,10 +234,7 @@ char *buffer;
+ }
+ 
+ /* Get a window selection */
+-char *vt_getsel(win, buf, len)
+-int win;
+-char *buf;
+-int len;
++char *vt_getsel(int win, char *buf, int len)
+ {
+ 	int c;
+ 	position here, cursor, mark1, mark2;
+@@ -319,11 +298,7 @@ int len;
+ 
+ 
+ /* Set a window selection */
+-char *vt_setsel(buf, len, startx, endx, starty, endy)
+-char *buf;
+-int len;
+-int startx, starty;
+-int endx, endy;
++char *vt_setsel(char *buf, int len, int startx, int endx, int starty, int endy)
+ {
+ 	window *thiswin;
+ 
+--- a/lock.c
++++ b/lock.c
+@@ -29,8 +29,7 @@ extern void (*do_input)(), normal_input();
+ /* Since this function is called as an input function, we need to handle
+    all state here. 
+ */
+-void lock_screen(c)
+-char c;
++void lock_screen(char c)
+ {
+ 	char message[512];
+ 
+--- a/misc.c
++++ b/misc.c
+@@ -45,15 +45,13 @@ extern int WU_lines, WL_lines, W_columns;	/* From vt100.c */
+ #define UPPER	0		/* Upper window definition */
+ #define LOWER	1		/* Lower window definition */
+ 
+-int pty_open(argv, childpid, win)
+-char *argv[];
+-int *childpid;
+-int win;		/* 0 for upper, 1 for lower */
++int pty_open(char *argv[], int *childpid, int win)
++/* 0 for upper, 1 for lower */
+ {
+ 
+-	void dropctty(), pty_setwin();
++	void dropctty(), pty_setwin(int fd, int win);
+ 	int get_master_pty(), get_slave_pty();
+-	char *get_ttyname(), *myputenv();
++	char *get_ttyname(), *myputenv(char *string);
+ 
+ #ifndef TIOCGWINSZ
+ 	char LINES[12], COLUMNS[12];
+@@ -152,7 +150,7 @@ int master_fd;
+ char tty_name[64]={'\0'};
+ char pty_name[64]={'\0'};
+ 
+-char *get_ttyname()
++char *get_ttyname(void)
+ {
+ 	if ( tty_name[0] )
+ 		return(tty_name);
+@@ -161,9 +159,9 @@ char *get_ttyname()
+ 
+ #ifdef IRIX	/* IRIX System V for SGI machines */
+ 
+-extern char *_getpty();
++extern char *_getpty(void);
+ 
+-int get_master_pty()
++int get_master_pty(void)
+ {
+ 
+ 	char 	*ttyptr;
+@@ -181,7 +179,7 @@ int get_master_pty()
+  * Open the slave half of a pseudo-terminal.
+  */
+ 
+-int get_slave_pty()
++int get_slave_pty(void)
+ {
+ 	int	slave_fd;
+ 	char	*slavename;
+@@ -213,9 +211,9 @@ int get_slave_pty()
+ 
+ #endif
+ 
+-extern char *ptsname();
++extern char *ptsname (int __fd);
+ 
+-int get_master_pty()
++int get_master_pty(void)
+ {
+ 
+ 	char 	*ttyptr;
+@@ -259,7 +257,7 @@ int get_master_pty()
+  * Open the slave half of a pseudo-terminal.
+  */
+ 
+-int get_slave_pty()
++int get_slave_pty(void)
+ {
+ 	int	slave_fd;
+ 	char	*slavename;
+@@ -310,13 +308,13 @@ int get_slave_pty()
+ 
+ jmp_buf next;
+ 
+-void trynext()
++void trynext(void)
+ {
+ 	longjmp(next, 2);
+ }
+ 
+ 
+-int get_master_pty()
++int get_master_pty(void)
+ {
+ 	int i, master_fd;
+ 	char *ptr;
+@@ -381,7 +379,7 @@ int get_master_pty()
+ 
+ /* Open the slave half of a pseudo-terminal. */
+ 
+-int get_slave_pty()
++int get_slave_pty(void)
+ {
+ 	int slave_fd;
+ 
+@@ -402,16 +400,12 @@ int get_slave_pty()
+      Thanks!
+ */
+ 
+-void d_copy(src, dst, len)
+-    register char *src, *dst;
+-    register int len;
++void d_copy(register char *src, register char *dst, register int len)
+     {
+ 	while (--len >= 0) *dst++ = *src++;
+     }
+ 
+-void d_zero(dst, len)
+-    register char *dst;
+-    register int len;
++void d_zero(register char *dst, register int len)
+     {
+ 	while (--len >= 0) *dst++ = 0;
+     }
+@@ -462,8 +456,7 @@ void dropctty()
+ struct termio tty_mode;  /* Save tty mode here */
+ static int tty_init=0;
+ 
+-int tty_getmode(fd)
+-int fd;
++int tty_getmode(int fd)
+ {
+ 	d_zero((char *)&tty_mode, sizeof(struct termio));
+ 	tty_init=1;	/* Flag: we have initialized the tty_mode struct */
+@@ -489,8 +482,7 @@ int fd;
+ 
+ /* Set a tty to a sane mode */
+ 
+-int tty_sane(fd)
+-int fd;
++int tty_sane(int fd)
+ {
+ 	struct termio temp_mode;
+ 
+@@ -533,8 +525,8 @@ int fd;
+ 
+ /* Set a terminal in raw mode */
+ 
+-int tty_raw(fd)
+-int fd;     /* of tty device */
++int tty_raw(int fd)
++/* of tty device */
+ {
+ 	struct termio temp_mode;
+ 
+@@ -568,8 +560,7 @@ int fd;     /* of tty device */
+ /* Restore terminal's mode to whatever it was on the most
+    recent call to the tty_getmode() function. */
+ 
+-int tty_reset(fd)
+-int fd;
++int tty_reset(int fd)
+ {
+ 	if ( ! tty_init )
+ 		return(-1);
+@@ -590,8 +581,7 @@ int fd;
+ 
+ /* Set a tty to a sane mode */
+ 
+-int tty_sane(fd)
+-int fd;
++int tty_sane(int fd)
+ {
+ 	struct sgttyb temp_mode;
+ 
+@@ -616,8 +606,7 @@ int fd;
+ 
+ static struct sgttyb	tty_mode;	/* save tty mode here */
+ 
+-int tty_getmode(fd)
+-int fd;
++int tty_getmode(int fd)
+ {
+ 	if ( ! isatty(fd) )
+ 		return(0);
+@@ -635,8 +624,8 @@ int fd;
+  * (also in this file) when it's done with raw mode.
+  */
+ 
+-int tty_raw(fd)
+-int	fd;		/* of terminal device */
++int tty_raw(int	fd)
++/* of terminal device */
+ {
+ 	struct sgttyb	temp_mode;
+ 
+@@ -658,8 +647,8 @@ int	fd;		/* of terminal device */
+  * recent call to the tty_getmode() function above.
+  */
+ 
+-int tty_reset(fd)
+-int	fd;		/* of terminal device */
++int tty_reset(int fd)
++/* of terminal device */
+ {
+ 	if ( ! isatty(fd) )
+ 		return(0);
+@@ -683,9 +672,9 @@ static struct /* winsize */ {
+ 		unsigned short	ws_ypixel;	/* vertical size - not used */
+ 	} mywinz;
+ 
+-void pty_setwin(fd, win)
+-int fd;			/* The pty file descriptor */
+-int win;		/* 0 for upper, 1 for lower window */
++void pty_setwin(int fd, int win)
++/* The pty file descriptor */
++/* 0 for upper, 1 for lower window */
+ {
+ 	if ( win == UPPER )
+ 		mywinz.ws_row=WU_lines;
+@@ -698,9 +687,7 @@ int win;		/* 0 for upper, 1 for lower window */
+ }
+ 
+ #else
+-void pty_setwin(fd, win)
+-int fd;
+-int win;
++void pty_setwin(int fd, int win)
+ {
+ 	/* Bogus routine */
+ }
+@@ -711,10 +698,7 @@ int win;
+  * Use in place of write() when fd is a stream socket.
+  */
+ 
+-int writen(fd, ptr, nbytes)
+-register int	fd;
+-register char	*ptr;
+-register int	nbytes;
++int writen(register int fd,register char *ptr,register int nbytes)
+ {
+ 	int	nleft, nwritten;
+ 
+@@ -736,8 +720,7 @@ register int	nbytes;
+    Returns a pointer to the environment string or NULL if malloc() fails.
+  */
+ 
+-char *myputenv(string)
+-char *string;
++char *myputenv(char *string)
+ {
+ 	extern char **environ;	/* The process environment strings */
+ 
+@@ -773,9 +756,7 @@ char *string;
+ 
+ /* * * * * * * Routines to parse a line into an array of tokens * * * * * * */
+ 
+-static int istoken(c, tokens)
+-char c;
+-char *tokens;
++static int istoken(char c, char *tokens)
+ {
+ 	while ( *tokens ) {
+ 		if ( c == *(tokens++) )
+@@ -786,11 +767,7 @@ char *tokens;
+ 
+ /* This version of tokenize is destructive to the line it parses. */
+ 
+-void tokenize(array, size, line, tokens)
+-char *array[];
+-int size;
+-char *line;
+-char *tokens;
++void tokenize(char *array[], int size, char *line, char *tokens)
+ {
+ 	char *head;
+ 	int i=0;
+@@ -813,9 +790,7 @@ char *tokens;
+ /* Return the pathname of the command, or NULL if it's not in our PATH */
+ /* Warning: We use a static buffer that is overwritten at each invocation. */
+ 
+-char *pathsearch(command, secure)
+-char *command;
+-int secure;
++char *pathsearch(char *command, int secure)
+ {
+ #ifndef S_IFREG
+ #define S_IFREG 0100000
+@@ -874,9 +849,7 @@ int secure;
+ 
+ /* Safe version of popen() and pclose(), they reset the uid and gid. */
+ 
+-FILE *safe_popen(command, type)
+-char *command;
+-char *type;
++FILE *safe_popen(char *command, char *type)
+ {
+ 	char *argv[4];
+ 	int pipe_fds[2];
+@@ -939,8 +912,7 @@ char *type;
+ 	return(fdopen(pipe_fds[rw], type));
+ }
+ 
+-int safe_pclose(pipefp)
+-FILE *pipefp;
++int safe_pclose(FILE *pipefp)
+ {
+ 	int status;
+ 
+--- a/parserc.c
++++ b/parserc.c
+@@ -16,7 +16,7 @@
+ 
+ #define SPLITVTRC "/.splitvtrc"
+ 
+-extern char *myputenv();  /* Portable setenv() function in misc.c */
++extern char *myputenv(char *string);  /* Portable setenv() function in misc.c */
+ 
+ /* These are used only here in this file. */
+ char *startupfile=NULL;
+@@ -25,16 +25,14 @@ char *rcfile_buf;
+ static int lineno=0;	/* The current line in the startup file */
+ 
+ 
+-static void warn(message)
+-char *message;
++static void warn(char *message)
+ {
+ 	fprintf(stderr, "Warning in %s, line %d\n", rcfile_buf, lineno);
+ 	fprintf(stderr, "\t%s\n", message);
+ 	sleep(2);
+ }
+ 
+-static char extract(arg)	/* get a char from x/^x format */
+-char *arg;
++static char extract(char *arg)	/* get a char from x/^x format */
+ {
+ 	if ( ! *arg ) {
+ 		warn("Couldn't extract control character");
+@@ -54,8 +52,7 @@ char *arg;
+ }
+ 
+ 
+-static void set_something(args)
+-char *args[];
++static void set_something(char *args[])
+ {
+ 	int i;
+ 
+@@ -113,8 +110,7 @@ char *args[];
+ 		warn("Invalid parameter to 'set'");
+ }
+ 
+-static void set_argv(args)
+-char *args[];
++static void set_argv(char *args[])
+ {
+ 	int i;
+ 
+@@ -165,8 +161,7 @@ char *args[];
+ /* Um, some security routines --
+ 	Note: if these are truly secure, they can be freely re-used elsewhere.
+ */
+-static int safe_chdir(directory)
+-char *directory;
++static int safe_chdir(char *directory)
+ {
+ 	extern int errno;
+ 
+@@ -215,7 +210,7 @@ char *directory;
+ 
+ 
+ /* The main cazunga, the reason we are here at all... */
+-void splitvtrc()
++void splitvtrc(void)
+ {
+ 	struct passwd *pwd;
+ 	char *home;
+--- a/splitvt.c
++++ b/splitvt.c
+@@ -58,15 +58,15 @@ static char upper_tty[64]={'\0'};	/* tty_name of the upper window */
+ static char lower_tty[64]={'\0'};	/* tty_name of the lower window */	
+ static struct passwd *pw=NULL;		/* Our passwd entry pointer */
+ 
+-static void finish(), move_bar(), winch();
+-extern void lock_screen();		/* From lock.c */
+-void normal_input();
+-static int  insert_dash();
+-static int  isalive();
+-char extract();
+-void splitvtrc();
++static void finish(int sig), move_bar(int howfar), winch(int sig);
++extern void lock_screen(char c);		/* From lock.c */
++void normal_input(char c);
++static int  insert_dash(char *args[]);
++static int  isalive(void);
++char extract(char *arg);
++void splitvtrc(void);
+ 
+-void (*do_input)() = normal_input;
++void (*do_input)(int c) = (void(*)())normal_input;
+ 
+ static char selection[BUFSIZ];		/* Screen selection buffer */
+ 
+@@ -89,8 +89,7 @@ int upper_empty=1, lower_empty=1;
+ 
+ int force_height=0;
+ 
+-void print_usage(argv)
+-char *argv;
++void print_usage(char *argv)
+ {
+ 	fprintf(stderr, "\nUsage: %s [options] [shell]\n\n", argv);
+ 	fprintf(stderr, "Options:\n");
+@@ -113,9 +112,7 @@ char *argv;
+ }
+ 
+  
+-int main(argc, argv)
+-int argc;
+-char *argv[];
++int main(int argc, char *argv[])
+ {
+ 	extern int errno, optind;
+ 	extern char *optarg;
+@@ -509,15 +506,14 @@ char *argv[];
+ 	exit(0);
+ }
+ 
+-void reset_bar(sleeptime)
+-int sleeptime;
++void reset_bar(int sleeptime)
+ {
+ 	sleep(sleeptime);
+ 	vt_info(NULL);
+ }
+ 
+ /* Print out a help screen for the escapes */
+-void print_help()
++void print_help(void)
+ {
+ 	static char *help[] = {
+ "Escape commands: ", 
+@@ -536,8 +532,7 @@ NULL
+ 	vt_showscreen("Splitvt HELP screen:", help);
+ }
+ 
+-void normal_input(c)
+-char c;
++void normal_input(char c)
+ {
+ 	char message[BUFSIZ];
+ 	int pid;
+@@ -593,7 +588,7 @@ promptch:
+ 				  break;
+ 			/* Lock the screen */
+ 			case 'x': vt_info("Enter password: ");
+-				  do_input=lock_screen;
++				  do_input=(void(*)())lock_screen;
+ 				  break;
+ 			/* Repaint the screen */
+ 			case 'r': vt_redraw();
+@@ -630,7 +625,7 @@ promptch:
+ /* A better child checker. :)  It gathers the status of the child,
+    rendering it free and un-zombied. :) */
+ 
+-static int isalive()
++static int isalive(void)
+ {
+ 	int status;
+ 
+@@ -695,8 +690,7 @@ static int isalive()
+ 
+ 	
+ /* Cleanup routine */
+-static void finish(sig)
+-int sig;
++static void finish(int sig)
+ {
+ 	/* Only call this routine after tty_getmode() has been called */
+ 	/* The tty_reset() call flushes the tty's input buffers. */
+@@ -723,8 +717,7 @@ int sig;
+    init_vt100() properly refreshes the screen (we hope) ;-)
+ */
+ 
+-static void move_bar(howfar)
+-int howfar;
++static void move_bar(int howfar)
+ {
+ 	int tmp_uulines;
+ 
+@@ -750,8 +743,7 @@ int howfar;
+    Ah hah!  As of 1.6.0, the window is refreshed. :)
+  */
+ 
+-static void winch(sig)
+-int sig;
++static void winch(int sig)
+ {
+ 	char *ptr;
+ 
+@@ -768,8 +760,7 @@ int sig;
+ 		pty_setwin(bottomfd, LOWER);
+ }
+ 
+-static int insert_dash(args)
+-char *args[];
++static int insert_dash(char *args[])
+ {
+ 	char *temp;
+ 
+--- a/splitvt.h
++++ b/splitvt.h
+@@ -36,7 +36,7 @@ extern int UU_lines;
+ extern int stbottom;
+ 
+ /* Functions exported from splitvt.c */
+-extern void reset_bar();
++extern void reset_bar(int sleeptime);
+ 
+ /* If set, allow resizing to less than 3 lines */
+ extern int force_height;
+--- a/terminal.c
++++ b/terminal.c
+@@ -99,8 +99,7 @@ static char termcap_area[2048];		/* Static buffer for capabilities */
+ static char *tp=termcap_area;		/* Used in tgetent() calls */
+ static char *terminal_type;             /* type of terminal */
+ 
+-char *termcap_init(termtype)
+-char *termtype;
++char *termcap_init(char *termtype)
+ {
+ 	static char errmesg[BUFSIZ];
+ 	char *value;
+@@ -128,12 +127,9 @@ char *termtype;
+ 	}
+ 	return(NULL);
+ }
+-int outc(c) int c; { return putchar(c); }
++int outc(int c) { return putchar(c); }
+ 
+-void vt_rows_cols(termtype, rows, cols)
+-char *termtype;
+-int *rows;
+-int *cols;
++void vt_rows_cols(char *termtype, int *rows, int *cols)
+ {
+ 	if ( rows ) {
+ 		if ( (*rows=tgetnum("li")) <= 0 )
+@@ -144,61 +140,56 @@ int *cols;
+ 			*cols=80;
+ 	}
+ }
+-void vt_bold(on)
+-int on;
++void vt_bold(int on)
+ {
+ 	if ( on && capabilities[md].value ) 
+ 		tputs(capabilities[md].value, 1, outc);
+ 	else
+ 		printf("\033[%sm", (on ? "1" : "22"));
+ }
+-void vt_underline(on)
+-int on;
++void vt_underline(int on)
+ {
+ 	if ( capabilities[on ? us : ue].value ) 
+ 		tputs(capabilities[on ? us : ue].value, 1, outc);
+ 	else
+ 		printf("\033[%sm", on ? "4" : "24");
+ }
+-void vt_blink(on)
+-int on;
++void vt_blink(int on)
+ {
+ 	if ( on && capabilities[mb].value ) 
+ 		tputs(capabilities[mb].value, 1, outc);
+ 	else
+ 		printf("\033[%sm", on ? "5" : "25");
+ }
+-void vt_reverse(on)
+-int on;
++void vt_reverse(int on)
+ {
+ 	if ( on && capabilities[mr].value ) 
+ 		tputs(capabilities[mr].value, 1, outc);
+ 	else
+ 		printf("\033[%sm", on ? "7" : "27");
+ }
+-void vt_resetattr()
++void vt_resetattr(void)
+ {
+ 	if ( capabilities[me].value ) 
+ 		tputs(capabilities[me].value, 1, outc);
+ 	else
+ 		printf("\033[m");
+ }
+-void vt_widemode(on)
+-int on;
++void vt_widemode(int on)
+ {
+ 	if ( on && capabilities[ZF].value ) 
+ 		tputs(capabilities[ZF].value, 1, outc);
+ 	else
+ 		printf("\033[?3%c", on ? 'h' : 'l');
+ }
+-void vt_savecursor()
++void vt_savecursor(void)
+ {
+ 	if ( capabilities[sc].value )
+ 		tputs(capabilities[sc].value, 1, outc);
+ 	else
+ 		printf("\0337");
+ }
+-void vt_restcursor()
++void vt_restcursor(void)
+ {
+ 	if ( capabilities[rc].value )
+ 		tputs(capabilities[rc].value, 1, outc);
+@@ -206,15 +197,11 @@ void vt_restcursor()
+ 		printf("\0338");
+ }
+ #else
+-char *termcap_init(termtype)
+-char *termtype;
++char *termcap_init(char *termtype)
+ {
+ 	return(NULL);
+ }
+-void vt_rows_cols(termtype, rows, cols)
+-char *termtype;
+-int *rows;
+-int *cols;
++void vt_rows_cols(char *termtype, int *rows, int *cols)
+ {
+ 	if ( cols ) {
+ 		if ( strcmp("vt100-w", termtype) == 0 )
+@@ -226,51 +213,43 @@ int *cols;
+ 	if ( rows )
+ 		*rows = 24;
+ }
+-void vt_bold(on)
+-int on;
++void vt_bold(int on)
+ {
+ 	printf("\033[%sm", (on ? "1" : "22"));
+ }
+-void vt_underline(on)
+-int on;
++void vt_underline(int on)
+ {
+ 	printf("\033[%sm", on ? "4" : "24");
+ }
+-void vt_blink(on)
+-int on;
++void vt_blink(int on)
+ {
+ 	printf("\033[%sm", on ? "5" : "25");
+ }
+-void vt_reverse(on)
+-int on;
++void vt_reverse(int on)
+ {
+ 	printf("\033[%sm", on ? "7" : "27");
+ }
+-void vt_resetattr()
++void vt_resetattr(void)
+ {
+ 	printf("\033[m");
+ }
+-void vt_widemode(on)
+-int on;
++void vt_widemode(int on)
+ {
+ 	printf("\033[?3%c", on ? 'h' : 'l');
+ }
+-void vt_savecursor()
++void vt_savecursor(void)
+ {
+ 	printf("\0337");
+ }
+-void vt_restcursor()
++void vt_restcursor(void)
+ {
+ 	printf("\0338");
+ }
+ #endif
+ 		/* vt100 compatible versions of the screen update routines */
+-char *vt_initterm(terminal_type, rows, cols)
+-char *terminal_type;
+-int *rows;
+-int *cols;
++char *vt_initterm(char *terminal_type, int *rows, int *cols)
+ {
+-	extern char *getenv();
++	extern char *getenv(const char *name);
+ 	static char *termtype=NULL, *error=NULL;
+ 
+ 	if ( (termtype=getenv("TERM")) == NULL )
+@@ -293,76 +272,67 @@ int *cols;
+ 		strcpy(terminal_type, termtype);
+ 	return(NULL);
+ }
+-void vt_bell()
++void vt_bell(void)
+ {
+ 	printf("\007");
+ }
+-void vt_goto(row, col)
+-int row, col;
++void vt_goto(int row, int col)
+ {
+ 	printf("\033[%d;%dH", row, col);
+ }
+-void vt_up(numrows)
+-int numrows;
++void vt_up(int numrows)
+ {
+ 	printf("\033[%dA", numrows);
+ }
+-void vt_down(numrows)
+-int numrows;
++void vt_down(int numrows)
+ {
+ 	printf("\033[%dB", numrows);
+ }
+-void vt_right(numcols)
+-int numcols;
++void vt_right(int numcols)
+ {
+ 	printf("\033[%dC", numcols);
+ }
+-void vt_left(numcols)
+-int numcols;
++void vt_left(int numcols)
+ {
+ 	printf("\033[%dD", numcols);
+ }
+-void vt_clrscr()
++void vt_clrscr(void)
+ {
+ 	printf("\033[2J");
+ }
+-void vt_clreos()
++void vt_clreos(void)
+ {
+ 	printf("\033[J");
+ }
+-void vt_clrbgs()
++void vt_clrbgs(void)
+ {
+ 	printf("\033[1J");
+ }
+-void vt_clrline()
++void vt_clrline(void)
+ {
+ 	printf("\033[2K");
+ }
+-void vt_clreol()
++void vt_clreol(void)
+ {
+ 	printf("\033[K");
+ }
+-void vt_clrbgl()
++void vt_clrbgl(void)
+ {
+ 	printf("\033[1K");
+ }
+-void vt_delunder(num)
+-int num;
++void vt_delunder(int num)
+ {
+ 	printf("\033[%dP", num);
+ }
+-void vt_delline(num)
+-int num;
++void vt_delline(int num)
+ {
+ 	printf("\033[%dM", num);
+ }
+-void vt_insline(num)
+-int num;
++void vt_insline(int num)
+ {
+ 	printf("\033[%dL", num);
+ }
+-void vt_setattr(textattr)
+-int textattr;
++void vt_setattr(int textattr)
+ {
+ 	vt_resetattr();
+ 	
+@@ -375,19 +345,15 @@ int textattr;
+ 	if ( textattr&REVERSE )
+ 		vt_reverse(1);
+ }
+-void vt_setfg(color)
+-int color;
++void vt_setfg(int color)
+ {
+ 	printf("\033[%dm", color+30);
+ }
+-void vt_setbg(color)
+-int color;
++void vt_setbg(int color)
+ {
+ 	printf("\033[%dm", color+40);
+ }
+-void vt_altcharset(charset, type)
+-int charset;
+-int type;
++void vt_altcharset(int charset, int type)
+ {
+ 	switch (type) {
+ 		case UK_CHARSET:
+@@ -402,8 +368,7 @@ int type;
+ 		default:	break;
+ 	}
+ }
+-void vt_setscroll(upper, lower)
+-int upper, lower;
++void vt_setscroll(int upper, int lower)
+ {
+ 	if ( !upper && !lower ) {
+ 		printf("\033[r");
+@@ -411,12 +376,11 @@ int upper, lower;
+ 		printf("\033[%d;%dr", upper, lower);
+ 	}
+ }
+-void vt_revscroll()
++void vt_revscroll(void)
+ {
+ 	printf("\033M");
+ }
+-void vt_keystate(application)
+-int application;
++void vt_keystate(int application)
+ {
+ 	/* Set and reset the numeric keypad and arrowkeys */
+ 	if ( application )
+@@ -424,15 +388,15 @@ int application;
+ 	else
+ 		printf("\033>\033[?1l");
+ }
+-void vt_insertchar(numcols)
++void vt_insertchar(int numcols)
+ {
+ 	printf("\033[%d@", numcols);
+ }
+-void vt_reset()
++void vt_reset(void)
+ {
+ 	printf("\033c");
+ }
+-void vt_update()
++void vt_update(void)
+ {
+ 	fflush(stdout);
+ }
+--- a/terminal.h
++++ b/terminal.h
+@@ -3,37 +3,37 @@
+    exported for use in vt100.c
+ */
+ 
+-extern char *vt_initterm();	/* Initialize the termcap, return NULL if successful */
+-extern void vt_bell();		/* Sound the terminal bell */
+-extern void vt_goto();		/* Goto a specific x y coordinate */
+-extern void vt_up();		/* Move cursor up */
+-extern void vt_down();		/* Move cursor down */
+-extern void vt_right();		/* Move cursor right */
+-extern void vt_left();		/* Move cursor left */
+-extern void vt_clrscr();	/* Clear whole screen */
+-extern void vt_clreos();	/* Clear to end of screen, include currline */
+-extern void vt_clrbgs();	/* Clear to beginning of screen, include currline */
+-extern void vt_clrline();	/* Clear line under cursor */
+-extern void vt_clreol();	/* Clear to the end of line */
+-extern void vt_clrbgl();	/* Clear to the beginning of line, including cursor */
+-extern void vt_delline();	/* Delete line under cursor */
+-extern void vt_delunder();	/* Delete character under cursor */
+-extern void vt_insline();	/* Insert open line under cursor */
+-extern void vt_bold();		/* Toggle bold display */
+-extern void vt_underline();	/* Toggle underlined display */
+-extern void vt_blink();		/* Toggle blinking display */
+-extern void vt_reverse();	/* Toggle reversed display */
+-extern void vt_setattr();	/* Set display attributes */
+-extern void vt_setfg();		/* Set foreground color */
+-extern void vt_setbg();		/* Set background color */
+-extern void vt_resetattr();	/* Reset display attributes */
+-extern void vt_setscroll();	/* Set scrolling region */
+-extern void vt_revscroll();	/* Reverse scroll */
+-extern void vt_altcharset();	/* Toggle alternate character set (graphics) */
+-extern void vt_savecursor();	/* Save current hardware cursor position */
+-extern void vt_restcursor();	/* Restore saved hardware cursor position */
+-extern void vt_keystate();	/* Set and reset application mode keys */
+-extern void vt_widemode();	/* Set and reset 132 column mode */
+-extern void vt_rows_cols();	/* Return the rows and cols from termcap */
+-extern void vt_insertchar();	/* Insert character in line */
+-extern void vt_update();	/* Flush any pending output */
++extern char *vt_initterm(char *terminal_type, int *rows, int *cols);	/* Initialize the termcap, return NULL if successful */
++extern void vt_bell(void);		/* Sound the terminal bell */
++extern void vt_goto(int row, int col);		/* Goto a specific x y coordinate */
++extern void vt_up(int numrows);		/* Move cursor up */
++extern void vt_down(int numrows);		/* Move cursor down */
++extern void vt_right(int numcols);		/* Move cursor right */
++extern void vt_left(int numcols);		/* Move cursor left */
++extern void vt_clrscr(void);	/* Clear whole screen */
++extern void vt_clreos(void);	/* Clear to end of screen, include currline */
++extern void vt_clrbgs(void);	/* Clear to beginning of screen, include currline */
++extern void vt_clrline(void);	/* Clear line under cursor */
++extern void vt_clreol(void);	/* Clear to the end of line */
++extern void vt_clrbgl(void);	/* Clear to the beginning of line, including cursor */
++extern void vt_delline(int num);	/* Delete line under cursor */
++extern void vt_delunder(int num);	/* Delete character under cursor */
++extern void vt_insline(int num);	/* Insert open line under cursor */
++extern void vt_bold(int on);		/* Toggle bold display */
++extern void vt_underline(int on);	/* Toggle underlined display */
++extern void vt_blink(int on);		/* Toggle blinking display */
++extern void vt_reverse(int on);	/* Toggle reversed display */
++extern void vt_setattr(int textattr);	/* Set display attributes */
++extern void vt_setfg(int color);		/* Set foreground color */
++extern void vt_setbg(int color);		/* Set background color */
++extern void vt_resetattr(void);	/* Reset display attributes */
++extern void vt_setscroll(int upper, int lower);	/* Set scrolling region */
++extern void vt_revscroll(void);	/* Reverse scroll */
++extern void vt_altcharset(int charset, int type);	/* Toggle alternate character set (graphics) */
++extern void vt_savecursor(void);	/* Save current hardware cursor position */
++extern void vt_restcursor(void);	/* Restore saved hardware cursor position */
++extern void vt_keystate(int application);	/* Set and reset application mode keys */
++extern void vt_widemode(int on);	/* Set and reset 132 column mode */
++extern void vt_rows_cols(char *termtype, int *rows, int *cols);	/* Return the rows and cols from termcap */
++extern void vt_insertchar(int numcols);	/* Insert character in line */
++extern void vt_update(void);	/* Flush any pending output */
+--- a/utmp.c
++++ b/utmp.c
+@@ -29,7 +29,7 @@ static struct utmp saved_utmp;
+ static int utmp_saved=0;
+ static char saved_tty[128];
+ 
+-int remove_me()
++int remove_me(void)
+ {
+ 	struct utmp ut;
+ 	char *tty;
+@@ -66,16 +66,14 @@ int remove_me()
+ }
+ 
+ 
+-int replace_me()
++int replace_me(void)
+ {
+ 	if ( utmp_saved )
+ 		return(set_utmp(saved_tty, &saved_utmp));
+ 	return(0);
+ }
+ 	
+-int get_utmp(tty, save)
+-char *tty;
+-struct utmp *save;
++int get_utmp(char *tty, struct utmp *save)
+ {
+ 	int fd;
+ 	char *ttyptr;
+@@ -110,9 +108,7 @@ struct utmp *save;
+ 	return(-1);
+ }
+ 
+-int set_utmp(tty, save)
+-char *tty;
+-struct utmp *save;
++int set_utmp(char *tty, struct utmp *save)
+ {
+ 	int fd, found=0;
+ 	char *ttyptr;
+@@ -159,10 +155,10 @@ struct utmp *save;
+ 	
+ /* Set up a utmp entry and tty for a user */
+ 
+-int addutmp(user, uid, tty)
+-char *user;		/* The user to add to the utmp file */
+-int uid;		/* The uid corresponding to user */
+-char *tty;		/* /dev/ttyxx */
++int addutmp(char *user, int uid, char *tty)
++/*char *user;		/* The user to add to the utmp file */
++/*int uid;		/* The uid corresponding to user */
++/*char *tty;		/* /dev/ttyxx */
+ {
+ #if !defined(SOLARIS) && !defined(IRIX) && !defined(__GLIBC__)
+ 	struct stat sb;
+@@ -218,9 +214,8 @@ char *tty;		/* /dev/ttyxx */
+ 
+ /* End a utmp entry and tty for a user and a tty */
+ 
+-int delutmp(user, tty)
+-char *user;
+-char *tty;		/* /dev/ttyxx */
++int delutmp(char *user, char *tty)
++/*char *tty;		/* /dev/ttyxx */
+ {
+ 	struct stat sb;
+ 	struct utmp ut;
+--- a/video.h
++++ b/video.h
+@@ -52,15 +52,16 @@ extern int TABSTOP;			/* Default value for tabstops */
+ #define REVERSE		0x08
+ #define SELECTED	0xF0
+ 
+-int **alloc_video();		/* Allocate a video memory buffer */
+-void copy_video();		/* Copy a video buffer to an empty one */
+-void add_video();		/* Add a character to a video buffer */
+-void erase_video();		/* Erase a two-dimensional section */
+-void scroll_video();		/* Scroll a section of the buffer */
+-void revscroll_video();		/* Reverse-scroll a section of the buffer */
+-void rshift_video();		/* Shift part of a line right */
+-void paint_video();		/* Repaint the video buffer onto the screen */
+-void getsel_video();		/* Get a selection from the video buffer */
+-void clrsel_video();		/* Clear a selection from the video buffer */
+-void put_video();		/* Set a character in the video buffer */
+-int  get_video();		/* Get a character from the video buffer */
++
++int **alloc_video(int rows, int cols);		/* Allocate a video memory buffer */
++void copy_video(window *win, int **newarea, int rows, int cols, position *newcursor);		/* Copy a video buffer to an empty one */
++void add_video(window *win, char c);		/* Add a character to a video buffer */
++void erase_video(window *win, int x1, int x2, int y1, int y2);		/* Erase a two-dimensional section */
++void scroll_video(window *win, int numlines);		/* Scroll a section of the buffer */
++void revscroll_video(window *win, int numlines);		/* Reverse-scroll a section of the buffer */
++void rshift_video(window *win, int numcols);		/* Shift part of a line right */
++void paint_video(window *win);		/* Repaint the video buffer onto the screen */
++void getsel_video(window *win, char *buf, int maxlen, int x1, int x2, int y1, int y2);		/* Get a selection from the video buffer */
++void clrsel_video(window *win);		/* Clear a selection from the video buffer */
++void put_video(int c, window *win, int x, int y);		/* Set a character in the video buffer */
++int get_video(window *win, int x, int y);		/* Get a character from the video buffer */
+--- a/videomem.c
++++ b/videomem.c
+@@ -13,9 +13,7 @@
+    memory is not freed if the function fails.
+  */
+ 
+-int **alloc_video(rows, cols)
+-int rows;
+-int cols;
++int **alloc_video(int rows, int cols)
+ {
+ 	int **videomem;
+ 	int i, j;
+@@ -36,12 +34,7 @@ int cols;
+ 
+ /* This function copies an existing window to a new buffer, 
+    truncating lines if necessary, and translates the cursor position  */
+-void copy_video(win, newarea, rows, cols, newcursor)
+-window *win;
+-int **newarea;
+-int rows;
+-int cols;
+-position *newcursor;
++void copy_video(window *win, int **newarea, int rows, int cols, position *newcursor)
+ {
+ 	int i, j, ni, nj;
+ 
+@@ -61,9 +54,7 @@ position *newcursor;
+ }
+ 
+ /* This function adds a character to the video memory at the cursor position */
+-void add_video(win, c)
+-window *win;
+-char c;
++void add_video(window *win, char c)
+ {
+ 	win->videomem[win->cursor.x - 1][win->cursor.y - 1] = (int)c;
+ 	win->videomem[win->cursor.x - 1][win->cursor.y - 1] |= 
+@@ -71,18 +62,13 @@ char c;
+ }
+ 
+ /* This function returns a character from video at a specific position */
+-int get_video(win, x, y)
+-window *win;
+-int x, y;
++int get_video(window *win, int x, int y)
+ {
+ 	return(win->videomem[x-1][y-1]);
+ }
+ 
+ /* This function sets a character position in video memory */
+-void put_video(c, win, x, y)
+-int c;
+-window *win;
+-int x, y;
++void put_video(int c, window *win, int x, int y)
+ {
+ 	win->videomem[x-1][y-1]=c;
+ }
+@@ -90,9 +76,7 @@ int x, y;
+ /* This function returns the array index of the end of the specified line
+    in the specified window.  lineno should start as 1 for the first line.
+ */
+-static int video_eol(win, lineno)
+-window *win;
+-int lineno;
++static int video_eol(window *win, int lineno)
+ {
+ 	int eol=(-1), j;
+ 
+@@ -108,12 +92,7 @@ int lineno;
+ /* x1 is the first line, x2 is the second line, y1 is the y on the first
+    line, and y2 is the y on the last line.
+ */
+-void getsel_video(win, buf, maxlen, x1, x2, y1, y2)
+-window *win;
+-char *buf;
+-int maxlen;
+-int x1, x2;
+-int y1, y2;
++void getsel_video(window *win, char *buf, int maxlen, int x1, int x2, int y1, int y2)
+ {
+ 	int l=0, i, j, eol, eos=0;
+ 
+@@ -144,8 +123,7 @@ int y1, y2;
+ }
+ 
+ /* This function clears the SELECTED bit in a whole window */
+-void clrsel_video(win)
+-window *win;
++void clrsel_video(window *win)
+ {
+ 	int i, j;
+ 
+@@ -158,10 +136,7 @@ window *win;
+ }
+ 
+ /* This function erases a specified section of video memory */
+-void erase_video(win, x1, x2, y1, y2)
+-window *win;
+-int x1, x2;
+-int y1, y2;
++void erase_video(window *win, int x1, int x2, int y1, int y2)
+ {
+ 	int i, j;
+ 
+@@ -173,9 +148,7 @@ int y1, y2;
+ }
+ 
+ /* This function "scrolls" video memory forward */
+-void scroll_video(win, numlines)
+-window *win;
+-int numlines;
++void scroll_video(window *win, int numlines)
+ {
+ 	int i, n, *tmp;
+ 
+@@ -200,9 +173,7 @@ int numlines;
+ }
+ 
+ /* This function "scrolls" video memory backward */
+-void revscroll_video(win, numlines)
+-window *win;
+-int numlines;
++void revscroll_video(window *win, int numlines)
+ {
+ 	int i, n, *tmp;
+ 
+@@ -227,9 +198,7 @@ int numlines;
+ }
+ 
+ /* This function inserts nulls in a line, shifting everything right */
+-void rshift_video(win, numcols)
+-window *win;
+-int numcols;
++void rshift_video(window *win, int numcols)
+ {
+ 	int i;
+ 
+@@ -242,10 +211,7 @@ int numcols;
+ 	}
+ }
+ 
+-int check_attr(pixel, lastattr, currattr)
+-int pixel;
+-int lastattr;
+-unsigned char *currattr;
++int check_attr(int pixel, int lastattr, unsigned char *currattr)
+ {
+ 	unsigned char simplepixel, lastpixel;
+ 	unsigned char change;
+@@ -318,8 +284,7 @@ checkchange:
+ 	return(pixel);
+ }
+ 
+-void paint_video(win)
+-window *win;
++void paint_video(window *win)
+ {
+ 	unsigned char on=NORMAL;
+ 	int i, j, oldattr=0;
+--- a/vt100.c
++++ b/vt100.c
+@@ -42,8 +42,9 @@ static char terminal_type[BUFSIZ];	/* Our terminal type */
+ static char *sep;	        	/* The window separator string */
+ 
+ /* The various output processing functions, based on state */
+-void scan_for_esc();
+-void E_(), E_brac(), E_brac_Q(), E_lparen(), E_rparen(), E_pound();
++void scan_for_esc(int c, int *source);
++void E_(int c, int *source), E_brac(int c, int *source), E_brac_Q(int c, int *source),
++	E_lparen(int c, int *source), E_rparen(int c, int *source), E_pound(int c, int *source);
+ 
+ /* Make these four variables accessable to the calling program */
+ int UU_lines=0;         /* The user requested lines for the upper window */
+@@ -55,8 +56,7 @@ static int LU_lines;    /* A local copy of UU_lines that is modified */
+ 
+ /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ /* Reset the escape scanning sequence: */
+-static void reset_escape(win)
+-window *win;
++static void reset_escape(window *win)
+ {
+ 	int i;
+ 
+@@ -66,13 +66,12 @@ window *win;
+ 	win->param_idx=0;
+ 	win->cur_param=(&win->esc_param[win->param_idx]);
+ }
+-static void reset_esc()
++static void reset_esc(void)
+ {
+ 	reset_escape(curwin);
+ }
+ /* Initialize a window structure: */
+-static void vt_resetwin(win)
+-window *win;
++static void vt_resetwin(window *win)
+ {
+ 	win->cursor.x=1;
+ 	win->cursor.y=1;
+@@ -91,8 +90,7 @@ window *win;
+ 	reset_escape(win);
+ }
+ /* Check to make sure the window cursor values are sane. */
+-static void vt_checkwin(win)
+-window *win;
++static void vt_checkwin(window *win)
+ {
+ 	if ( win->cursor.x > win->rows )
+ 		win->cursor.x=win->rows;
+@@ -103,8 +101,7 @@ window *win;
+ }
+ /* Set the current window: */
+ static int lastwin = (-1);
+-void set_win(which)
+-int which;
++void set_win(int which)
+ {
+ 	window *other;
+ 	int i;
+@@ -135,8 +132,7 @@ int which;
+ 
+ /* Set the terminal attributes to those of the specified window */
+ /* This must be called _after_ vt_restcursor(), or it won't work */
+-static void set_attr(win)
+-window *win;
++static void set_attr(window *win)
+ {
+ 	unsigned char on=NORMAL;
+ 
+@@ -146,9 +142,7 @@ window *win;
+ 
+ /* Process the ^[[X;Xm escape.  Made into a separate routine to support
+    ansi color. */
+-static void process_m(win, n)
+-window *win;
+-int n;
++static void process_m(window *win, int n)
+ {
+ 	switch (n) {
+ 		case 0:	/* Turn all attributes off */
+@@ -218,9 +212,7 @@ int n;
+ 	}
+ }
+ /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+-void scan_for_esc(c, source)
+-int c;
+-int *source;
++void scan_for_esc(int c, int *source)
+ {
+ 	int i;
+ 
+@@ -288,9 +280,7 @@ int *source;
+ 	}
+ 	return;
+ }
+-void E_(c, source)
+-int c;
+-int *source;
++void E_(int c, int *source)
+ {
+ 	/* Return inside the switch to prevent reset_esc() */
+ 	switch (c) {
+@@ -371,9 +361,7 @@ int *source;
+ 	}
+ 	reset_esc();
+ }
+-void E_brac(c, source)
+-int c;
+-int *source;
++void E_brac(int c, int *source)
+ {
+ 	int newx, newy, i;
+ 	char reply[128];
+@@ -662,9 +650,7 @@ int *source;
+ 	}
+ 	reset_esc();
+ }
+-void E_brac_Q(c, source)
+-int c;
+-int *source;
++void E_brac_Q(int c, int *source)
+ {
+ 	/* Check for numeric argument first */
+ 	if ( isdigit(c) ) {
+@@ -767,9 +753,7 @@ int *source;
+ 	}
+ 	reset_esc();
+ }
+-void E_lparen(c, source)
+-int c;
+-int *source;
++void E_lparen(int c, int *source)
+ {
+ 	/* Return inside the switch to prevent reset_esc() */
+ 	switch (c) {
+@@ -796,9 +780,7 @@ int *source;
+ 	}
+ 	reset_esc();
+ }
+-void E_rparen(c, source)
+-int c;
+-int *source;
++void E_rparen(int c, int *source)
+ {
+ 	/* Return inside the switch to prevent reset_esc() */
+ 	switch (c) {
+@@ -824,9 +806,7 @@ int *source;
+ 	}
+ 	reset_esc();
+ }
+-void E_pound(c, source)
+-int c;
+-int *source;
++void E_pound(int c, int *source)
+ {
+ 	switch (c) {   /* Line attributes not supported */
+ 		case '3':	/* Double height (top half) */
+@@ -846,8 +826,7 @@ int *source;
+ 
+ static int setup_vt100 = 0;	/* Have we initialized the vt100 system? */
+ 
+-char *init_vt100(reread_tsize)
+-int reread_tsize;
++char *init_vt100(int reread_tsize)
+ {
+ #ifdef TIOCGWINSZ
+ 	struct /* winsize */ {
+@@ -1013,11 +992,11 @@ int reread_tsize;
+ 	return(NULL);
+ }
+ 
+-int vt_write(win, data, len, source)
+-int win;		/* The window; 0 if top, 1 if bottom */
+-char *data;		/* The data to write */
+-int len;		/* The amount of data to write */
+-int *source;		/* File descriptor through which to reply to Esc-Z */
++int vt_write(int win, char *data, int len, int *source)
++/*int win;		 The window; 0 if top, 1 if bottom
++char *data;		 The data to write
++int len;		 The amount of data to write
++int *source;		 File descriptor through which to reply to Esc-Z */
+ {
+ 	int i;
+ 
+@@ -1035,8 +1014,7 @@ int *source;		/* File descriptor through which to reply to Esc-Z */
+    return it.  (Assume a one line prompt)
+ */
+ 
+-char vt_prompt(prompt)
+-char *prompt;
++char vt_prompt(char *prompt)
+ {
+ 	char format[BUFSIZ], buff[1];
+ 
+@@ -1071,8 +1049,7 @@ char *prompt;
+ 
+ /* Print out information at the bottom of the screen */
+ 
+-void vt_info(info)
+-char *info;
++void vt_info(char *info)
+ {
+ 	char format[80];
+ 
+@@ -1099,7 +1076,7 @@ char *info;
+ }
+ 
+ /* Repaint both of the screens */
+-void vt_redraw()
++void vt_redraw(void)
+ {
+ 	/* We need to paint current window last so scrolling works */
+ 	vt_clrscr();
+@@ -1112,9 +1089,7 @@ void vt_redraw()
+ }
+ 
+ /* Show a (help) screen, wait, then refresh the screen */
+-void vt_showscreen(title, text)
+-char *title;
+-char *text[];
++void vt_showscreen(char *title, char *text[])
+ {
+ 	int i;
+ 
+@@ -1136,7 +1111,7 @@ char *text[];
+ }
+ 
+ /* Clean up the screen and clear the scrolling regions */
+-void end_vt100()
++void end_vt100(void)
+ {
+ 	int i;
+ 
+--- a/vt100.h
++++ b/vt100.h
+@@ -1,17 +1,17 @@
+ 
+ /* Global functions exported by vt100.c */
+ 
+-extern char *init_vt100();		/* Initialize the window */
+-extern void  set_win();			/* Move the cursor to current window */
+-extern int   vt_write();		/* Write a buffer to a window */
+-extern char  vt_prompt();		/* Prompt the user and return a char */
+-extern void  vt_info();			/* Print out an info message */
+-extern char *vt_getsel();		/* Get a selection on the window */
+-extern char *vt_setselbuf();		/* Set the selection buffer */
+-extern char *vt_getselbuf();		/* Get the selection buffer */
+-extern void  vt_redraw();		/* Repaint a window from RAM */
+-extern void  vt_showscreen();		/* Show a (help) screen */
+-extern void  end_vt100();		/* End the vt100 scrolling and such */
++extern char *init_vt100(int reread_tsize);		/* Initialize the window */
++extern void  set_win(int which);			/* Move the cursor to current window */
++extern int   vt_write(int win, char *data, int len, int *source);		/* Write a buffer to a window */
++extern char  vt_prompt(char *prompt);		/* Prompt the user and return a char */
++extern void  vt_info(char *info);			/* Print out an info message */
++extern char *vt_getsel(int win, char *buf, int len);		/* Get a selection on the window */
++extern char *vt_setselbuf(char *buffer);		/* Set the selection buffer */
++extern char *vt_getselbuf(void);		/* Get the selection buffer */
++extern void  vt_redraw(void);		/* Repaint a window from RAM */
++extern void  vt_showscreen(char *title, char *text[]);		/* Show a (help) screen */
++extern void  end_vt100(void);		/* End the vt100 scrolling and such */
+ 
+ /* Handy definitions, sometimes passed to vt100.c functions */
+ 
+--- a/vtmouse.c
++++ b/vtmouse.c
+@@ -15,10 +15,10 @@
+ #include "vtmouse.h"
+ #include "splitvt.h"
+ 
+-extern FILE *safe_popen();		/* From misc.c */
++extern FILE *safe_popen(char *command, char *type); /* From misc.c */
+ 
+ #ifdef MAIN
+-void event_loop()
++void event_loop(void)
+ {
+ 	int c, event_flag;
+ 	struct event X_event;
+@@ -92,7 +92,7 @@ static int set_title=0;
+ static char *old_title=NULL;
+ int terminal_input=0;		/* Is there pending terminal input? */
+ 
+-static char *get_xtitle()
++static char *get_xtitle(void)
+ {
+ 	char buffer[512], *title;
+ 	FILE *pipe;
+@@ -120,16 +120,13 @@ static char *get_xtitle()
+ 	strcpy(title, buffer);
+ 	return(title);
+ }
+-static void set_xtitle(titlebar)
+-char *titlebar;
++static void set_xtitle(char *titlebar)
+ {
+ 	fprintf(xt_output, "\033]0;%s\07", titlebar);
+ 	fflush(xt_output);
+ }
+ 
+-int event_init(input, output, titlebar)
+-FILE *input, *output;
+-char *titlebar;
++int event_init(FILE *input, FILE *output, char *titlebar)
+ {
+ 	char *termtype;
+ 
+@@ -158,8 +155,7 @@ char *titlebar;
+ 	return(0);
+ }
+ 
+-int event_getc(X_event)
+-struct event *X_event;
++int event_getc(struct event *X_event)
+ {
+ #ifdef REPORT_SELECTION
+ 	static int last_row, last_col;
+@@ -280,7 +276,7 @@ struct event *X_event;
+ 	return(0);
+ }
+ 
+-void event_quit()
++void event_quit(void)
+ {
+ 	if ( have_xterm ) {
+ #ifdef REPORT_SELECTION
+--- a/vtmouse.h
++++ b/vtmouse.h
+@@ -4,6 +4,8 @@
+ #include "video.h"
+ #endif
+ 
++#include <stdio.h>
++
+ #define REPORT_SELECTION
+ 
+ /* Definitions for button_state bitmasks */
+@@ -35,6 +37,6 @@ struct event {
+    
+ extern int terminal_input;	/* Set true if event_getc() can read input */
+ 
+-extern int  event_init();
+-extern int  event_getc();
+-extern void event_quit();
++extern int  event_init(FILE *input, FILE *output, char *titlebar);
++extern int  event_getc(struct event *X_event);
++extern void event_quit(void);
+--- a/utmp.c
++++ b/utmp.c
+@@ -197,7 +197,7 @@ int addutmp(char *user, int uid, char *tty)
+ 		ut.ut_host[sizeof(ut.ut_host)-1]='\0';
+ 	}
+ #endif
+-	(void) time(&ut.ut_time);
++	(void) time((time_t *)&ut.ut_time);
+ 
+ #if !defined(SOLARIS) && !defined(IRIX) && !defined(__GLIBC__)
+ 	/* Solaris and Irix and GLIBC machines do this automatically */
+@@ -232,7 +232,7 @@ int delutmp(char *user, char *tty)
+ #if defined(HAVE_UTHOST)
+ 		ut.ut_host[0]='\0';
+ #endif
+-		(void) time(&ut.ut_time);
++		(void) time((time_t *)&ut.ut_time);
+ 		retval=set_utmp(tty, &ut);
+ 	}
+ 
