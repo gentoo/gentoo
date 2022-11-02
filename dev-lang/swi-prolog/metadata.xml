@@ -7,7 +7,10 @@
 </maintainer>
 <use>
 	<flag name="archive">Use libarchive for extension packs</flag>
-	<flag name="uuid">Use ossp-uuid for UUID pack</flag>
+	<flag name="cli" restrict="&gt;=dev-lang/swi-prolog-8.5.20">Add support for CLI interfaces based on readline and libedit</flag>
+	<flag name="ipc" restrict="&gt;=dev-lang/swi-prolog-8.5.20">Add support for TIPC inter-process communication</flag>
+	<flag name="pgo" restrict="&gt;=dev-lang/swi-prolog-8.5.20">Optimize the build using Profile Guided Optimization (PGO)</flag>
+	<flag name="uuid" restrict="&lt;dev-lang/swi-prolog-8.5.20">Use ossp-uuid for UUID pack</flag>
 	<flag name="yaml">Use libyaml for YAML pack</flag>
 </use>
 </pkgmetadata>
