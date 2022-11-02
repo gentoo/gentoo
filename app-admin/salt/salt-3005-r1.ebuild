@@ -40,8 +40,9 @@ RDEPEND="
 	>=dev-python/markupsafe-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/toml-0.10.2[${PYTHON_USEDEP}]
+	dev-python/tomli[${PYTHON_USEDEP}]
 	dev-python/watchdog[${PYTHON_USEDEP}]
+	<dev-python/importlib_metadata-5[${PYTHON_USEDEP}]
 	libcloud? (
 		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/aiosignal[${PYTHON_USEDEP}]
