@@ -37,11 +37,12 @@ RDEPEND="
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
+	dev-python/tomli[${PYTHON_USEDEP}]
 	dev-python/watchdog[${PYTHON_USEDEP}]
 	libcloud? ( >=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}] )
 	mako? ( dev-python/mako[${PYTHON_USEDEP}] )
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
+	<dev-python/importlib_metadata-5[${PYTHON_USEDEP}]
 	libvirt? (
 		$(python_gen_cond_dep 'dev-python/libvirt-python[${PYTHON_USEDEP}]' python3_8)
 	)
