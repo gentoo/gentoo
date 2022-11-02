@@ -37,6 +37,7 @@ done quickly and working on the features that make their application unique.
 		<flag name="data">Database abstraction layer to easily send/retrieve data to/from various databases</flag>
 		<flag name="file2pagecompiler">Utility to convert ordinary files to Page Compiler source files</flag>
 		<flag name="json">Add JSON support</flag>
+		<flag name="jwt" restrict="&gt;=dev-libs/poco-1.12.2-r1">Add JSON Web Token support</flag>
 		<flag name="mariadb">Prefer <pkg>dev-db/mariadb-connector-c</pkg> over <pkg>dev-db/mysql-connector-c</pkg></flag>
 		<flag name="mongodb">Add <pkg>dev-db/mongodb</pkg> support</flag>
 		<flag name="net">Classes to write network clients &amp; servers</flag>
