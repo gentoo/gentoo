@@ -43,7 +43,6 @@ RDEPEND="
 	sys-libs/zlib:=
 	fontconfig? ( media-libs/fontconfig )
 	gui? (
-		dev-util/glslang
 		media-libs/alsa-lib
 		media-libs/libglvnd[X]
 		media-libs/vulkan-loader[X]
@@ -66,10 +65,7 @@ RDEPEND="
 	webp? ( media-libs/libwebp:= )"
 DEPEND="
 	${RDEPEND}
-	gui? (
-		dev-util/vulkan-headers
-		x11-base/xorg-proto
-	)
+	gui? ( x11-base/xorg-proto )
 	tools? ( test? ( dev-cpp/doctest ) )"
 BDEPEND="virtual/pkgconfig"
 
@@ -91,9 +87,9 @@ src_prepare() {
 
 	# use of builtin_ switches can be messy (see below), delete to be sure
 	local unbundle=(
-		doctest embree freetype glslang graphite harfbuzz icu4c libogg libpng
-		libtheora libvorbis libwebp mbedtls miniupnpc pcre2 recastnavigation
-		volk vulkan/include wslay zlib zstd
+		doctest embree freetype graphite harfbuzz icu4c libogg
+		libpng libtheora libvorbis libwebp mbedtls miniupnpc
+		pcre2 recastnavigation volk wslay zlib zstd
 		# certs: unused by generated header, but scons panics if not found
 	)
 	rm -r "${unbundle[@]/#/thirdparty/}" || die
@@ -138,7 +134,7 @@ src_compile() {
 		builtin_embree=$(usex !gui yes $(usex !tools yes $(usex !raycast)))
 		builtin_enet=yes # bundled copy is patched for IPv6+DTLS support
 		builtin_freetype=no
-		builtin_glslang=$(usex !gui)
+		builtin_glslang=yes #879111
 		builtin_graphite=no
 		builtin_harfbuzz=no
 		builtin_icu=no
@@ -162,11 +158,10 @@ src_compile() {
 		#	amd-fsr, basis_universal, cvtt, etcpak, fonts, glad,
 		#	jpeg-compressor, meshoptimizer, minimp3, minizip (patched to
 		#	seek in archives), noise, oidn, openxr, spirv-reflect, thorvg,
-		#	tinyexr, vhacd, vulkan (minus include/) and the misc directory.
+		#	tinyexr, vhacd, vulkan, and the misc directory.
 
 		# modules with optional dependencies, "possible" to disable more but
 		# gets messy and breaks all sorts of features (expected enabled)
-		module_glslang_enabled=$(usex gui)
 		module_gridmap_enabled=$(usex deprecated) # fails without deprecated
 		module_mono_enabled=no # unhandled
 		# note raycast is only enabled on amd64+arm64, see raycast/config.py
