@@ -22,7 +22,7 @@ BDEPEND="dev-libs/libxslt"
 
 src_configure() {
 	# bug #805545, https://github.com/AGWA/git-crypt/issues/232
-	append-cppflags -DOPENSSL_API_COMPAT=0x30000000L
+	append-cppflags -DOPENSSL_API_COMPAT=10101
 	tc-export CXX
 
 	# bug #689180
