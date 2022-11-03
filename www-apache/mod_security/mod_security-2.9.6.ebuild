@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} )
 
-inherit autotools apache-module lua-single
+inherit autotools apache-module depend.apache lua-single
 
 MY_PN=modsecurity
 MY_P=${MY_PN}-${PV}
@@ -54,8 +54,7 @@ PATCHES=(
 need_apache2
 
 pkg_setup() {
-	_init_apache2
-	_init_apache2_late
+	depend.apache_pkg_setup
 	use lua && lua-single_pkg_setup
 }
 
@@ -86,6 +85,7 @@ src_compile() {
 }
 
 src_install() {
+	APACHE_MODULESDIR="/usr/$(get_libdir)/apache2/modules"
 	apache-module_src_install
 
 	dodoc CHANGES README.md modsecurity.conf-recommended unicode.mapping
