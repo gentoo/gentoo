@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/kstars/ https://edu.kde.org/kstars/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2+ GPL-3+"
