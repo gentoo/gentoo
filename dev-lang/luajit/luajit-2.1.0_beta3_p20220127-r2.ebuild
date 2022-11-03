@@ -53,7 +53,7 @@ src_compile() {
 
 src_install() {
 	_emake install
-dosym luajit-2.1.0-beta3 /usr/bin/luajit
+	dosym luajit-2.1.0-beta3 /usr/bin/luajit
 	pax-mark m "${ED}/usr/bin/luajit-${MY_PV}"
 
 	HTML_DOCS="doc/." einstalldocs
