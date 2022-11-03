@@ -6,7 +6,10 @@ EAPI=8
 inherit xdg-utils
 
 DESCRIPTION="Notification daemon for the Xfce desktop environment"
-HOMEPAGE="https://goodies.xfce.org/projects/applications/xfce4-notifyd"
+HOMEPAGE="
+	https://docs.xfce.org/apps/notifyd/start
+	https://gitlab.xfce.org/apps/xfce4-notifyd/
+"
 SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -31,6 +34,10 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-appinfo-crash.patch
+)
 
 src_install() {
 	default

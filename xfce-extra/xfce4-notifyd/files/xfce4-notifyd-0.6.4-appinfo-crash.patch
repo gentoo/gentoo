@@ -1,0 +1,27 @@
+From ddf469fe567f1c2f17013f3baa9bd3721cdd32a5 Mon Sep 17 00:00:00 2001
+From: Guido Falsi <mad@madpilot.net>
+Date: Fri, 2 Sep 2022 21:24:34 +0200
+Subject: [PATCH] Fix segfault crash.
+
+---
+ common/xfce-notify-log.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/common/xfce-notify-log.c b/common/xfce-notify-log.c
+index d42dc1e..7ccfd42 100644
+--- a/common/xfce-notify-log.c
++++ b/common/xfce-notify-log.c
+@@ -149,7 +149,9 @@ notify_get_from_desktop_file (const gchar *desktop_file, const gchar *key)
+ 
+             match = matches[0];
+             appinfo = g_desktop_app_info_new (match[0]);
+-            value = notify_read_from_desktop_file (g_desktop_app_info_get_filename (appinfo), key);
++            if (appinfo != NULL) {
++                value = notify_read_from_desktop_file (g_desktop_app_info_get_filename (appinfo), key);
++            }
+ 
+             for (gchar ***p = matches; *p != NULL; p++)
+                 g_strfreev (*p);
+-- 
+GitLab
+
