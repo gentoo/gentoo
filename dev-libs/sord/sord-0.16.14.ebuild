@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/drobilla/sord.git"
 else
 	SRC_URI="https://download.drobilla.net/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="Library for storing RDF data in memory"
