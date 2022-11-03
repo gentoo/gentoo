@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">greenmail-mail-test/greenmail</remote-id>
+	</upstream>
 </pkgmetadata>
