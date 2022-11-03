@@ -59,6 +59,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BDEPEND="
+	${DISTUTILS_DEPS}
 	sys-apps/groff
 	virtual/pkgconfig
 	virtual/awk
