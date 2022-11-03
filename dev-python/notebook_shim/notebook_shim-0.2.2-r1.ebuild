@@ -36,3 +36,8 @@ python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -p pytest_tornasync.plugin
 }
+
+src_install() {
+	distutils-r1_src_install
+	mv "${ED}/usr/etc" "${ED}/etc" || die
+}
