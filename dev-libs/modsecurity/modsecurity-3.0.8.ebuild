@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc fuzzyhash geoip geoip2 json lmdb lua pcre2"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
@@ -38,17 +38,6 @@ DOCS=( AUTHORS CHANGES README.md modsecurity.conf-recommended unicode.mapping )
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
-}
-
-src_prepare() {
-	default
-
-	# 2 tests fail without portage too
-	# https://github.com/SpiderLabs/ModSecurity/issues/2772
-	sed -i '/test\/test-cases\/regression\/auditlog.json \\/d' Makefile.in || die
-	sed -i '/test\/test-cases\/regression\/issue-2000.json \\/d' Makefile.in || die
-	sed -i '/test\/test-cases\/regression\/config-secremoterules.json \\/d' Makefile.in || die
-	sed -i '/test\/test-cases\/regression\/operator-ipMatchFromFile.json \\/d' Makefile.in || die
 }
 
 src_configure() {
