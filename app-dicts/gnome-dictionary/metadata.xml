@@ -9,6 +9,6 @@
     <subslots>libgdict-1.0 soname version</subslots>
   </slots>
   <upstream>
-    <remote-id type="gnome-gitlab">GNOME/gnome-dictionary</remote-id>
+    <remote-id type="gnome-gitlab">Archive/gnome-dictionary</remote-id>
   </upstream>
 </pkgmetadata>
