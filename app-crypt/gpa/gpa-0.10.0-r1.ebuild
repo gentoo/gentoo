@@ -13,7 +13,7 @@ SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-autoconf
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ppc ppc64 sparc ~x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc ~x86"
 IUSE="nls"
 
 RDEPEND="
