@@ -4,9 +4,9 @@
 EAPI=8
 
 FONT_PN=OpenImageIO
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
-TEST_OIIO_IMAGE_COMMIT="b85d7a3a10a3256b50325ad310c33e7f7cf2c6cb"
+TEST_OIIO_IMAGE_COMMIT="245e50edede2792205080eadc1dedce33ff5c1e4"
 TEST_OEXR_IMAGE_COMMIT="f17e353fbfcde3406fe02675f4d92aeae422a560"
 inherit cmake font python-single-r1
 
@@ -20,10 +20,8 @@ SRC_URI+=" test? (
 S="${WORKDIR}/oiio-${PV}"
 
 LICENSE="BSD"
-# TODO: drop .1 on next SONAME change (2.3 -> 2.4?) as we needed to nudge it
-# for changing to openexr 3 which broke ABI.
-SLOT="0/$(ver_cut 1-2).1"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 X86_CPU_FEATURES=(
 	aes:aes sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2
@@ -35,7 +33,7 @@ IUSE="dicom doc ffmpeg gif jpeg2k opencv opengl openvdb ptex python qt5 raw test
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Not quite working yet
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )" # test"
 
 BDEPEND="
 	doc? (
@@ -127,6 +125,7 @@ src_configure() {
 		-DVERBOSE=ON
 		-DBUILD_TESTING=$(usex test)
 		-DOIIO_BUILD_TESTS=$(usex test)
+		-DOIIO_DOWNLOAD_MISSING_TESTDATA=OFF
 		-DINSTALL_FONTS=OFF
 		-DBUILD_DOCS=$(usex doc)
 		-DINSTALL_DOCS=$(usex doc)
@@ -149,6 +148,7 @@ src_configure() {
 		-DUSE_FREETYPE=$(usex truetype)
 		-DUSE_SIMD=$(local IFS=','; echo "${mysimd[*]}")
 	)
+
 	if use python; then
 		mycmakeargs+=(
 			-DPYTHON_VERSION=${EPYTHON#python}
@@ -157,6 +157,15 @@ src_configure() {
 	fi
 
 	cmake_src_configure
+}
+
+src_test() {
+	# TODO: investigate failures
+	local myctestargs=(
+		-E "(oiiotool|maketx|oiiotool-maketx|texture-crop|texture-crop.batch|texture-half|texture-half.batch|texture-uint16|texture-uint16.batch|texture-interp-bilinear|texture-interp-bilinear.batch|texture-interp-closest|texture-interp-closest.batch|texture-levels-stochaniso|texture-levels-stochaniso.batch|texture-levels-stochmip|texture-levels-stochmip.batch|texture-mip-onelevel|texture-mip-onelevel.batch|texture-mip-stochastictrilinear|texture-mip-stochastictrilinear.batch|texture-mip-stochasticaniso|texture-mip-stochasticaniso.batch|texture-uint8|texture-uint8.batch|texture-skinny|texture-skinny.batch|texture-icwrite|texture-icwrite.batch|jpeg2000-broken|openexr-damaged|openvdb-broken|texture-texture3d-broken|texture-texture3d-broken.batch|psd|ptex-broken|raw-broken|targa|tiff-depths|zfile|unit_simd|cineon|dds|openvdb.batch-broken|texture-texture3d.batch-broken)"
+	)
+
+	cmake_src_test
 }
 
 src_install() {
