@@ -23,6 +23,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+BDEPEND="
+	dev-lang/swig
+"
+
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
@@ -44,14 +48,16 @@ python_compile() {
 
 src_compile() {
 	meson_src_compile
-	python_copy_sources
 
-	use python && python_foreach_impl python_compile
+	if use python; then
+		python_copy_sources
+		python_foreach_impl python_compile
+	fi
 }
 
 python_install() {
 	meson_src_install
-	python_optimize
+	use python && python_optimize
 }
 
 src_install() {
