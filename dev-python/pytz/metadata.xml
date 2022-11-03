@@ -16,5 +16,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">pytz</remote-id>
+    <remote-id type="launchpad">pytz</remote-id>
   </upstream>
 </pkgmetadata>
