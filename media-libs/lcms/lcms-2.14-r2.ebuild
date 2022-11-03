@@ -35,7 +35,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		--enable-threads
+		--with-threads
 		$(use_with jpeg)
 		$(use_enable static-libs static)
 		$(use_with tiff)
