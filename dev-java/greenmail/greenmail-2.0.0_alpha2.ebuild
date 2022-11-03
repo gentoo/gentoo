@@ -19,7 +19,7 @@ SRC_URI="https://github.com/greenmail-mail-test/greenmail/archive/release-${PV/_
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 # Common dependencies
 # POM: pom.xml
