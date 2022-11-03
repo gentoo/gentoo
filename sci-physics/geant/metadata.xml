@@ -30,4 +30,7 @@
     <flag name="vrml">Enable output of geant4 in vrml formats</flag>
     <flag name="vtk">Use <pkg>sci-libs/vtk</pkg> for visualization (experimental)</flag>
   </use>
+  <upstream>
+    <remote-id type="github">Geant4/geant4</remote-id>
+  </upstream>
 </pkgmetadata>
