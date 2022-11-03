@@ -12,7 +12,7 @@ SRC_URI="http://code.x2go.org/releases/source/${PN}/${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
 # TODO: minimal USE flag in net-misc/nx, we only need nxproxy/nxcomp
 RDEPEND="
