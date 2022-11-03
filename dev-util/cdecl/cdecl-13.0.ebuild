@@ -3,11 +3,9 @@
 
 EAPI=8
 
-inherit autotools
-
 DESCRIPTION='Composing and deciphering C (or C++) declarations or casts, aka "gibberish."'
 HOMEPAGE="https://github.com/paul-j-lucas/cdecl"
-SRC_URI="https://github.com/paul-j-lucas/${PN}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/paul-j-lucas/cdecl/releases/download/${P}/${P}.tar.gz -> ${P}.release.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -23,13 +21,6 @@ BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
 "
-
-S="${WORKDIR}/${PN}-${P}"
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	econf \
