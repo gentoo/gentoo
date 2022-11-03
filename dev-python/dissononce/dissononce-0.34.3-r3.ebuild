@@ -3,14 +3,14 @@
 
 EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS="bdepend"
+DISTUTILS_USE_PEP517="setuptools"
 PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="A python implementation for Noise Protocol Framework"
 HOMEPAGE="https://github.com/tgalal/dissononce"
-SRC_URI="https://github.com/tgalal/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tgalal/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
