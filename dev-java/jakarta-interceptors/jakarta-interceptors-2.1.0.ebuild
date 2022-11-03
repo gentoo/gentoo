@@ -17,7 +17,7 @@ SRC_URI="https://github.com/jakartaee/interceptors/archive/${PV}-RELEASE.tar.gz 
 
 LICENSE="EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 DEPEND="
 	dev-java/jakarta-annotations-api:0
