@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-test-fixes.patch #146592
 	"${FILESDIR}"/${P}-perl-5.26.patch
 	"${FILESDIR}"/${P}-K-R-decls-clang.patch
+	"${FILESDIR}"/${P}-Clang-16-fixes-for-various-tests.patch
 )
 
 src_configure() {
