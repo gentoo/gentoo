@@ -5,6 +5,7 @@
 		<email>java@gentoo.org</email>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">FasterXML/woodstox</remote-id>
 		<bugs-to>https://github.com/FasterXML/woodstox/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
