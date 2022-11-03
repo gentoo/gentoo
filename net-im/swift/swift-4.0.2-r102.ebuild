@@ -12,7 +12,7 @@ DESCRIPTION="An elegant, secure, adaptable and intuitive XMPP Client"
 HOMEPAGE="https://www.swift.im/"
 SRC_URI="
 	https://swift.im/downloads/releases/${P}/${P}.tar.gz
-	https://dev.gentoo.org/~conikost/distfiles/patches/swift-4.0.2-python3-compatibility.patch.gz"
+	https://dev.gentoo.org/~conikost/distfiles/patches/${P}-python3-compatibility.patch.gz"
 
 LICENSE="BSD BSD-1 CC-BY-3.0 GPL-3 OFL-1.1"
 SLOT="4/0"
