@@ -14,7 +14,7 @@ SRC_URI="https://docs.osgi.org/download/r$(ver_cut 1)/${PN/-/.}-${PV}.jar -> ${P
 
 LICENSE="Apache-2.0 OSGi-Specification-2.0"
 SLOT="8"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 CP_DEPEND="
 	dev-java/cdi-api:0
