@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS="no"
+DISTUTILS_USE_PEP517="setuptools"
 PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1 gnome2-utils xdg-utils
