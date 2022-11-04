@@ -11,5 +11,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">reflink</remote-id>
+		<remote-id type="gitlab">rubdos/pyreflink</remote-id>
 	</upstream>
 </pkgmetadata>
