@@ -81,6 +81,10 @@ PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 # various failures (bugs #630042 and #682320)
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/vim-0.0.0828-configure-clang16.patch
+)
+
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug 82186.
 	unset LANG LC_ALL
