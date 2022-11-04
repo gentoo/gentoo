@@ -103,7 +103,7 @@ IUSE_SANE_BACKENDS=(
 	xerox_mfp
 )
 
-IUSE="gphoto2 ipv6 snmp systemd threads usb v4l xinetd +zeroconf"
+IUSE="gphoto2 snmp systemd threads usb v4l xinetd +zeroconf"
 
 for GBACKEND in ${IUSE_SANE_BACKENDS[@]}; do
 	case ${GBACKEND} in
@@ -254,14 +254,15 @@ multilib_src_configure() {
 	# that break in many ways, bug #636202, #668232, #668350
 	# People can refer to the "Programmer's Documentation" at http://www.sane-project.org/docs.html
 	myconf+=(
+		--enable-ipv6
 		--disable-locking
 		$(use_with gphoto2)
 		$(multilib_native_use_with systemd)
 		$(use_with v4l)
-		$(use_enable ipv6)
 		$(use_enable threads pthread)
 		$(use_with zeroconf avahi)
 	)
+
 	ECONF_SOURCE="${S}" \
 	SANEI_JPEG="sanei_jpeg.o" SANEI_JPEG_LO="sanei_jpeg.lo" \
 	BACKENDS="${lbackends}" \
