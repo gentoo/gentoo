@@ -1,0 +1,331 @@
+https://marc.info/?l=freeipmi-devel&m=166752785904895&w=2
+
+From e89f234b9032ce5b2a9477c91a25ce982e14cc63 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 4 Nov 2022 02:05:53 +0000
+Subject: [PATCH 3/3] configure.ac: Use AC_USE_SYSTEM_EXTENSIONS instead of
+ appending -D_GNU_SOURCE
+
+This achieves the same effect as it'll use -D_GNU_SOURCE when possible
+but it ensures we never forget it in an individual Makefile.am.
+
+AC_USE_SYSTEM_EXTENSIONS was introduced in autoconf 2.60, so we bump
+the requirement from 2.57->2.60. Given the comment mentions "modern
+autoconf and automake", we could really justify bumping this to 2.69
+which itself is not exactly brand new, if we want.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/bmc-device/Makefile.am
++++ b/bmc-device/Makefile.am
+@@ -7,7 +7,6 @@ bmc_device_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ bmc_device_LDADD = \
+--- a/bmc-info/Makefile.am
++++ b/bmc-info/Makefile.am
+@@ -7,7 +7,6 @@ bmc_info_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ bmc_info_LDADD = \
+--- a/bmc-watchdog/Makefile.am
++++ b/bmc-watchdog/Makefile.am
+@@ -7,7 +7,6 @@ bmc_watchdog_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT \
+ 	-DBMC_WATCHDOG_LOCALSTATEDIR='"$(localstatedir)"'
+ 
+--- a/common/debugutil/Makefile.am
++++ b/common/debugutil/Makefile.am
+@@ -5,7 +5,6 @@ libdebugutil_la_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ libdebugutil_la_SOURCES = \
+--- a/common/miscutil/Makefile.am
++++ b/common/miscutil/Makefile.am
+@@ -2,7 +2,6 @@ noinst_LTLIBRARIES = \
+ 	libmiscutil.la
+ 
+ libmiscutil_la_CPPFLAGS = \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ libmiscutil_la_SOURCES = \
+--- a/common/parsecommon/Makefile.am
++++ b/common/parsecommon/Makefile.am
+@@ -5,7 +5,6 @@ libparsecommon_la_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ libparsecommon_la_SOURCES = \
+--- a/common/pingtool/Makefile.am
++++ b/common/pingtool/Makefile.am
+@@ -6,7 +6,6 @@ libpingtool_la_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/toolcommon \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ libpingtool_la_SOURCES = \
+--- a/common/portability/Makefile.am
++++ b/common/portability/Makefile.am
+@@ -16,7 +16,6 @@ noinst_LTLIBRARIES = \
+ 	libportability.la
+ 
+ libportability_la_CPPFLAGS = \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ libportability_la_SOURCES = \
+--- a/common/toolcommon/Makefile.am
++++ b/common/toolcommon/Makefile.am
+@@ -11,7 +11,6 @@ libtoolcommon_la_CPPFLAGS = \
+ 	-I$(top_builddir)/libipmidetect \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ libtoolcommon_la_SOURCES = \
+--- a/configure.ac
++++ b/configure.ac
+@@ -12,7 +12,7 @@ AC_SUBST(FREEIPMI_PACKAGE_VERSION_MINOR)
+ AC_SUBST(FREEIPMI_PACKAGE_VERSION_PATCH)
+ 
+ dnl We require a modern autoconf and automake
+-AC_PREREQ([2.57])
++AC_PREREQ([2.60])
+ 
+ AC_CONFIG_AUX_DIR([config])
+ 
+@@ -304,6 +304,8 @@ AM_CONDITIONAL(WITH_GNU_LD, test "$with_gnu_ld" = "yes")
+ AC_PROG_MAKE_SET
+ AC_PROG_LN_S
+ 
++AC_USE_SYSTEM_EXTENSIONS
++
+ dnl Enable error tracing. Lower level calls will spit error messages
+ dnl on to the console
+ AC_ARG_ENABLE([trace],
+--- a/ipmi-chassis/Makefile.am
++++ b/ipmi-chassis/Makefile.am
+@@ -7,7 +7,6 @@ ipmi_chassis_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ ipmi_chassis_LDADD = \
+--- a/ipmi-config/Makefile.am
++++ b/ipmi-config/Makefile.am
+@@ -13,7 +13,6 @@ ipmi_config_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ ipmi_config_LDADD = \
+--- a/ipmi-dcmi/Makefile.am
++++ b/ipmi-dcmi/Makefile.am
+@@ -7,7 +7,6 @@ ipmi_dcmi_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ ipmi_dcmi_LDADD = \
+--- a/ipmi-fru/Makefile.am
++++ b/ipmi-fru/Makefile.am
+@@ -7,7 +7,6 @@ ipmi_fru_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ ipmi_fru_LDADD = \
+--- a/ipmi-locate/Makefile.am
++++ b/ipmi-locate/Makefile.am
+@@ -7,7 +7,6 @@ ipmi_locate_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/miscutil \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ ipmi_locate_LDADD = \
+--- a/ipmi-oem/Makefile.am
++++ b/ipmi-oem/Makefile.am
+@@ -7,7 +7,6 @@ ipmi_oem_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ ipmi_oem_LDADD = \
+--- a/ipmi-pet/Makefile.am
++++ b/ipmi-pet/Makefile.am
+@@ -7,7 +7,6 @@ ipmi_pet_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ ipmi_pet_LDADD = \
+--- a/ipmi-raw/Makefile.am
++++ b/ipmi-raw/Makefile.am
+@@ -7,7 +7,6 @@ ipmi_raw_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ ipmi_raw_LDADD = \
+--- a/ipmi-sel/Makefile.am
++++ b/ipmi-sel/Makefile.am
+@@ -8,7 +8,6 @@ ipmi_sel_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ ipmi_sel_LDADD = \
+--- a/ipmi-sensors/Makefile.am
++++ b/ipmi-sensors/Makefile.am
+@@ -9,7 +9,6 @@ ipmi_sensors_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ ipmi_sensors_LDADD = \
+--- a/ipmiconsole/Makefile.am
++++ b/ipmiconsole/Makefile.am
+@@ -8,7 +8,6 @@ ipmiconsole_CPPFLAGS = \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+ 	-I$(top_builddir)/libipmiconsole/ \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ 
+--- a/ipmidetect/Makefile.am
++++ b/ipmidetect/Makefile.am
+@@ -10,7 +10,6 @@ ipmidetect_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/miscutil \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libipmidetect/ \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ ipmidetect_LDADD = \
+--- a/ipmidetectd/Makefile.am
++++ b/ipmidetectd/Makefile.am
+@@ -12,7 +12,6 @@ ipmidetectd_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT \
+ 	-DIPMIDETECTD_LOCALSTATEDIR='"$(localstatedir)"'
+ 
+--- a/ipmiping/Makefile.am
++++ b/ipmiping/Makefile.am
+@@ -5,8 +5,7 @@ ipmiping_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/debugutil \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+-	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE
++	-I$(top_srcdir)/libfreeipmi/include
+ 
+ ipmiping_LDADD = \
+ 	$(top_builddir)/common/pingtool/libpingtool.la \
+--- a/ipmipower/Makefile.am
++++ b/ipmipower/Makefile.am
+@@ -11,7 +11,6 @@ ipmipower_CPPFLAGS = \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+ 	-DWITH_LSD_FATAL_ERROR_FUNC=1 \
+ 	-DWITH_LSD_NOMEM_ERROR_FUNC=1 \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ ipmipower_LDADD = \
+--- a/ipmiseld/Makefile.am
++++ b/ipmiseld/Makefile.am
+@@ -13,7 +13,6 @@ ipmiseld_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT \
+ 	-DIPMISELD_LOCALSTATEDIR='"$(localstatedir)"'
+ 
+--- a/libfreeipmi/Makefile.am
++++ b/libfreeipmi/Makefile.am
+@@ -25,7 +25,6 @@ libfreeipmi_la_CPPFLAGS = \
+ 	-I$(top_srcdir)/libfreeipmi \
+ 	-DIPMI_IPCKEY=\"$(localstatedir)/lib/$(PACKAGE_NAME)/ipckey\" \
+ 	-DIPMI_DEBUG_IPCKEY=\"$(top_builddir)/libfreeipmi/driver/ipmi-semaphores.h\" \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ libfreeipmi_la_LDFLAGS = \
+--- a/libipmiconsole/Makefile.am
++++ b/libipmiconsole/Makefile.am
+@@ -21,7 +21,6 @@ libipmiconsole_la_CPPFLAGS = \
+         -I$(top_builddir)/libfreeipmi/include \
+         -I$(top_srcdir)/libfreeipmi/include \
+ 	-DWITH_PTHREADS=1 \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ libipmiconsole_la_LDFLAGS = \
+--- a/libipmimonitoring/Makefile.am
++++ b/libipmimonitoring/Makefile.am
+@@ -30,7 +30,6 @@ libipmimonitoring_la_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+ 	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE \
+ 	-D_REENTRANT
+ 
+ libipmimonitoring_la_LDFLAGS = \
+--- a/rmcpping/Makefile.am
++++ b/rmcpping/Makefile.am
+@@ -5,8 +5,7 @@ rmcpping_CPPFLAGS = \
+ 	-I$(top_srcdir)/common/debugutil \
+ 	-I$(top_srcdir)/common/portability \
+ 	-I$(top_builddir)/libfreeipmi/include \
+-	-I$(top_srcdir)/libfreeipmi/include \
+-	-D_GNU_SOURCE
++	-I$(top_srcdir)/libfreeipmi/include
+ 
+ rmcpping_LDADD = \
+ 	$(top_builddir)/common/pingtool/libpingtool.la \
