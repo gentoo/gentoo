@@ -4,7 +4,7 @@
 EAPI=7
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gnupg.asc
-inherit autotools flag-o-matic multilib-minimal toolchain-funcs verify-sig
+inherit autotools flag-o-matic linux-info multilib-minimal toolchain-funcs verify-sig
 
 DESCRIPTION="General purpose crypto library based on the code used in GnuPG"
 HOMEPAGE="https://www.gnupg.org/"
@@ -51,6 +51,27 @@ PATCHES=(
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/libgcrypt-config
 )
+
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} == buildonly ]]; then
+		return
+	fi
+	if use kernel_linux && use getentropy; then
+		unset KV_FULL
+		get_running_version
+		if [[ -n ${KV_FULL} ]] && kernel_is -lt 3 17; then
+			eerror "The getentropy function requires the getrandom syscall."
+			eerror "This was introduced in Linux 3.17."
+			eerror "Your system is currently running Linux ${KV_FULL}."
+			eerror "Disable the 'getentropy' USE flag or upgrade your kernel."
+			die "Kernel is too old for getentropy"
+		fi
+	fi
+}
+
+pkg_setup() {
+	:
+}
 
 src_prepare() {
 	default
