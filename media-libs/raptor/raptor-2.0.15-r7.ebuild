@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-use-pkg-config-icu.patch"
 	"${FILESDIR}/${P}-use-pkg-config-libxslt.patch"
 	"${FILESDIR}/${P}-clang-pointer-integer-warning.patch"
+	"${FILESDIR}/${P}-configure-clang16.patch"
 )
 
 src_prepare() {
