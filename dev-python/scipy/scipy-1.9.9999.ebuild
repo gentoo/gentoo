@@ -3,6 +3,7 @@
 
 EAPI=8
 
+FORTRAN_NEEDED=fortran
 DISTUTILS_USE_PEP517=meson-python
 PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
@@ -44,7 +45,7 @@ fi
 
 LICENSE="BSD LGPL-2"
 SLOT="0"
-IUSE="doc +pythran"
+IUSE="doc +fortran"
 
 # umfpack is technically optional but it's preferred to have it available.
 DEPEND="
@@ -66,7 +67,7 @@ BDEPEND="
 	dev-util/patchelf
 	virtual/pkgconfig
 	doc? ( app-arch/unzip )
-	pythran? ( dev-python/pythran[${PYTHON_USEDEP}] )
+	fortran? ( dev-python/pythran[${PYTHON_USEDEP}] )
 	test? ( dev-python/pytest-xdist[${PYTHON_USEDEP}] )"
 
 PATCHES=(
@@ -89,7 +90,7 @@ src_unpack() {
 }
 
 python_configure_all() {
-	export SCIPY_USE_PYTHRAN=$(usex pythran 1 0)
+	export SCIPY_USE_PYTHRAN=$(usex fortran 1 0)
 }
 
 python_test() {
