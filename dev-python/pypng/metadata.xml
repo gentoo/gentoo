@@ -12,5 +12,6 @@
 		</maintainer>
 		<remote-id type="pypi">pypng</remote-id>
 		<remote-id type="github">drj11/pypng</remote-id>
+		<remote-id type="gitlab">drj11/pypng</remote-id>
 	</upstream>
 </pkgmetadata>
