@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -815,7 +815,7 @@ IF(ENABLE_XLSX)
+      # TODO: switch to something like vcpkg or conan, and plain find_package,
+      # without the fallback of cmake downloading the dep itself.
+      # But some libraries are not available there yet.
+-     CPMFindPackage(NAME QXlsx
++     CPMFindPackage(NAME QXlsxQt${QT_VERSION_MAJOR}
+ 	 URL https://github.com/QtExcel/QXlsx/archive/refs/tags/v1.4.4.zip
+ 	 URL_HASH SHA256=3efbd6f63a1ffd521c535dce7b5a5a7e9ebd23db51e6ae8e3e2eb89796e57675
+ 	 DOWNLOAD_ONLY yes

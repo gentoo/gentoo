@@ -22,9 +22,12 @@
 	<use>
 		<flag name="deep-sky">Install extra deep sky objects catalog (may affect performance)</flag>
 		<flag name="media">Enable sound and video support</flag>
+		<flag name="scripting">Enable JS scripting via <pkg>dev-qt/qtscript</pkg> in Qt5 or using Qml via <pkg>dev-qt/qtdeclarative</pkg> in Qt6</flag>
+		<flag name="show-my-sky">Enable a better atmosphere model via <pkg>sci-astronomy/calcmysky</pkg></flag>
 		<flag name="stars">Install extra star catalogs</flag>
 		<flag name="telescope">Enable telescope control via <pkg>sci-libs/indilib</pkg></flag>
 		<flag name="webengine">Show online results about the selected star in an embedded window using <pkg>dev-qt/qtwebengine</pkg></flag>
+		<flag name="xlsx">Support XLSX (Excel) files via <pkg>dev-libs/qxlsx</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">Stellarium/stellarium</remote-id>
