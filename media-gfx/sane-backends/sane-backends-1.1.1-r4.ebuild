@@ -182,6 +182,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.30-add_hpaio_epkowa_dll.conf.patch
 	# https://gitlab.com/sane-project/backends/-/merge_requests/688
 	"${FILESDIR}"/${PN}-1.1.1-genesys-gl845-crash.patch
+	"${FILESDIR}"/${P}-gcc12-tests.patch
 )
 
 MULTILIB_CHOST_TOOLS=(
