@@ -43,6 +43,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
+	"${FILESDIR}"/mingw64-runtime-10.0.0-msvcr-extra-race.patch
 	"${FILESDIR}"/mingw64-runtime-10.0.0-tmp-files-clash.patch
 	"${FILESDIR}"/gcc-11.3.0-plugin-objdump.patch
 	"${FILESDIR}"/gcc-12.2.0-drop-cflags-sed.patch
@@ -214,7 +215,7 @@ src_compile() {
 
 		einfo "Building ${id}${2+ ${2}} in ${build_dir} ..."
 
-		mkdir "${build_dir}" || die
+		mkdir -p "${build_dir}" || die
 		pushd "${build_dir}" >/dev/null || die
 
 		edo "${conf[@]}"
@@ -226,6 +227,9 @@ src_compile() {
 
 		popd >/dev/null || die
 	}
+
+	# workaround race condition with out-of-source crt build (bug #879537)
+	mkdir -p mingw64_runtime-build/mingw-w64-crt/lib{32,64} || die
 
 	# build with same ordering that crossdev would do + stage3 for pthreads
 	mwt-build binutils
