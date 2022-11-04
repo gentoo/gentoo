@@ -8,7 +8,7 @@ inherit autotools multilib-minimal multilib prefix toolchain-funcs virtualx
 MY_P="${PN}${PV/_beta/b}"
 
 DESCRIPTION="Tk Widget Set"
-HOMEPAGE="http://www.tcl.tk/"
+HOMEPAGE="https://www.tcl.tk/"
 SRC_URI="mirror://sourceforge/tcl/${MY_P}-src.tar.gz"
 
 LICENSE="tcltk"
