@@ -5,8 +5,11 @@
 		<email>aballier@gentoo.org</email>
 		<name>Alexis Ballier</name>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">TeX-Live/texlive-source</remote-id>
+	</upstream>
 </pkgmetadata>
