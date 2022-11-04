@@ -35,6 +35,10 @@ SRC_URI="${SRC_URI} ) "
 
 TEXMF_PATH=/usr/share/texmf-dist
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.3.3_p20210325-Fix-Wimplicit-function-declaration.patch
+)
+
 src_prepare() {
 	default
 	cd "${WORKDIR}/texlive-${PV#*_p}-source" || die

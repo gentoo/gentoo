@@ -1,0 +1,12 @@
+diff --git a/configure b/configure
+index be42b2e..6a7efb0 100755
+--- a/configure
++++ b/configure
+@@ -13920,6 +13920,7 @@ else
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
++#include <stdlib.h>
+ int fork() { exit(1); }
+                                                  int vfork() { exit(1); }
+                                                  extern char *getcwd();
