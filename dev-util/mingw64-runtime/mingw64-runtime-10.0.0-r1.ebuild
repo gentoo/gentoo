@@ -19,6 +19,7 @@ RESTRICT="strip"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.0-fortify-only-ssp.patch
+	"${FILESDIR}"/${P}-msvcr-extra-race.patch
 )
 
 pkg_setup() {
