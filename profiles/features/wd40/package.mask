@@ -5,6 +5,8 @@
 app-admin/ansible
 app-admin/ansible-core
 >=app-antivirus/clamav-0.105.1
+app-backup/borgbackup
+app-backup/borgmatic
 app-crypt/acme
 app-crypt/certbot
 app-crypt/certbot-nginx
@@ -32,9 +34,10 @@ dev-python/openstacksdk
 dev-python/os-client-config
 dev-python/osc-lib
 dev-python/paramiko
+dev-python/pyfuse3
 >=dev-python/pyopenssl-22
 dev-python/pyspnego
->=dev-python/pytest-trio-0.8.0
+dev-python/pytest-trio
 dev-python/python-daemon
 dev-python/python-glanceclient
 dev-python/python-ironicclient
@@ -51,9 +54,10 @@ dev-python/spur
 dev-python/sshtunnel
 dev-python/tempest
 dev-python/trustme
->=dev-python/trio-0.22.0
+dev-python/trio
 dev-python/twine
 dev-python/watchfiles
+dev-python/watchgod
 dev-ros/roswtf
 dev-util/cargo-c
 dev-util/cbindgen

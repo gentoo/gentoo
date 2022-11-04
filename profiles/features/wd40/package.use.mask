@@ -13,6 +13,7 @@ dev-python/libtmux test
 dev-python/locket test
 dev-python/pyjwt test
 dev-python/python-keystoneclient test
+dev-python/python-socks test
 
 # Michał Górny <mgorny@gentoo.org> (2022-07-29)
 # More packages requiring dev-python/pyopenssl or its revdeps.
