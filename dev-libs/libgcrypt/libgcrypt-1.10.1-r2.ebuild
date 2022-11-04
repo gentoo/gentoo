@@ -14,7 +14,7 @@ SRC_URI+=" verify-sig? ( mirror://gnupg/${PN}/${P}.tar.bz2.sig )"
 LICENSE="LGPL-2.1 MIT"
 SLOT="0/20" # subslot = soname major version
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+asm cpu_flags_arm_neon cpu_flags_arm_aes cpu_flags_arm_sha1 cpu_flags_arm_sha2 cpu_flags_ppc_altivec cpu_flags_ppc_vsx2 cpu_flags_ppc_vsx3 cpu_flags_x86_aes cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_padlock cpu_flags_x86_sha cpu_flags_x86_sse4_1 doc static-libs"
+IUSE="+asm cpu_flags_arm_neon cpu_flags_arm_aes cpu_flags_arm_sha1 cpu_flags_arm_sha2 cpu_flags_ppc_altivec cpu_flags_ppc_vsx2 cpu_flags_ppc_vsx3 cpu_flags_x86_aes cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_padlock cpu_flags_x86_sha cpu_flags_x86_sse4_1 doc +getentropy static-libs"
 
 # Build system only has --disable-arm-crypto-support right now
 # If changing this, update src_configure logic too.
@@ -30,7 +30,13 @@ REQUIRED_USE="
 	cpu_flags_ppc_vsx2? ( cpu_flags_ppc_altivec )
 "
 
-RDEPEND=">=dev-libs/libgpg-error-1.25[${MULTILIB_USEDEP}]"
+RDEPEND=">=dev-libs/libgpg-error-1.25[${MULTILIB_USEDEP}]
+	getentropy? (
+		kernel_linux? (
+			elibc_glibc? ( >=sys-libs/glibc-2.25 )
+			elibc_musl? ( >=sys-libs/musl-1.1.20 )
+		)
+	)"
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( virtual/texi2dvi )
 	verify-sig? ( sec-keys/openpgp-keys-gnupg )"
@@ -108,6 +114,13 @@ multilib_src_configure() {
 
 		GPG_ERROR_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpg-error-config"
 	)
+
+	if use kernel_linux; then
+		# --enable-random=getentropy requires getentropy/getrandom.
+		# --enable-random=linux enables legacy code that tries getrandom
+		# and falls back to reading /dev/random.
+		myeconfargs+=( --enable-random=$(usex getentropy getentropy linux) )
+	fi
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}" \
 		$("${S}/configure" --help | grep -o -- '--without-.*-prefix')
