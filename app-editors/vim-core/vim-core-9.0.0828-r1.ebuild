@@ -30,6 +30,10 @@ IUSE="nls acl minimal"
 DEPEND=">=sys-libs/ncurses-5.2-r2:0"
 BDEPEND="sys-devel/autoconf"
 
+PATCHES=(
+	"${FILESDIR}"/vim-0.0.0828-configure-clang16.patch
+)
+
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug #82186.
 	unset LANG LC_ALL
