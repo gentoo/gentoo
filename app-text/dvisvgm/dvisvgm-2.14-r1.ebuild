@@ -47,12 +47,17 @@ PATCHES=(
 	"${FILESDIR}"/${P}-ghostscript.patch
 	"${FILESDIR}"/${P}-Add-missing-cstdint-includes-for-GCC-13.patch
 	"${FILESDIR}"/${PN}-2.14-configure-clang16.patch
+	"${FILESDIR}"/${PN}-2.14-configure-autoreconf.patch
 )
 
 src_prepare() {
-	default
-
 	# Drop once configure patch merged for clang 16
+	local macro
+	for macro in ax_check_compile_flag.m4 ax_code_coverage.m4 ax_cxx_compile_stdcxx.m4 ; do
+		cp "${BROOT}"/usr/share/aclocal/${macro} m4/ || die
+	done
+
+	default
 	eautoreconf
 }
 
