@@ -7,5 +7,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">flake8-polyfill</remote-id>
+		<remote-id type="gitlab">pycqa/flake8-polyfill</remote-id>
 	</upstream>
 </pkgmetadata>
