@@ -9,27 +9,28 @@ MY_P="${MY_PN}-${PV}"
 inherit cmake flag-o-matic readme.gentoo-r1 toolchain-funcs xdg
 
 DESCRIPTION="Nintendo DS emulator, sorta"
-HOMEPAGE="
-	http://melonds.kuribo64.net
-	https://github.com/Arisotura/melonDS
-"
+HOMEPAGE="http://melonds.kuribo64.net
+	https://github.com/Arisotura/melonDS"
 
-if [[ "${PV}" == *9999* ]]; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Arisotura/${MY_PN}.git"
 else
-	SRC_URI="https://github.com/Arisotura/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+	SRC_URI="https://github.com/Arisotura/${MY_PN}/archive/${PV}.tar.gz
+		-> ${MY_P}.tar.gz"
+	S="${WORKDIR}"/${MY_P}
 	KEYWORDS="~amd64"
-	S="${WORKDIR}/${MY_P}"
 fi
 
 IUSE="+jit +opengl"
 LICENSE="BSD-2 GPL-2 GPL-3 Unlicense"
 SLOT="0"
 
-DEPEND="
+# MelonDS bundles libteakra with many changes,
+# for now we have to block dev-libs/teakra
+RDEPEND="
+	!dev-libs/teakra
 	app-arch/libarchive
-	dev-libs/teakra
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -39,7 +40,7 @@ DEPEND="
 	net-libs/libslirp
 	opengl? ( media-libs/libepoxy )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 # used for JIT recompiler
 QA_EXECSTACK="usr/bin/melonDS"
@@ -74,8 +75,10 @@ src_compile() {
 }
 
 src_install() {
-	cmake_src_install
 	readme.gentoo_create_doc
+	cmake_src_install
+
+	dolib.so "${BUILD_DIR}"/src/teakra/src/libteakra.so
 }
 
 pkg_postinst() {
