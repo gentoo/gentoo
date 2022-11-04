@@ -48,7 +48,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-libs/boost:=[python,${PYTHON_USEDEP}]')
 	dev-libs/log4cpp:=
-	$(python_gen_cond_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	$(python_gen_cond_dep 'dev-python/jsonschema[${PYTHON_USEDEP}]')
 	dev-libs/spdlog
 	dev-libs/libfmt:=
