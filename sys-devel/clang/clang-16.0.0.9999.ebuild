@@ -30,6 +30,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	${DEPEND}
 	>=sys-devel/clang-common-${PV}
+	~sys-devel/clang-runtime-${PV}
 "
 BDEPEND="
 	${PYTHON_DEPS}
@@ -42,7 +43,6 @@ BDEPEND="
 "
 PDEPEND="
 	sys-devel/clang-toolchain-symlinks:${LLVM_MAJOR}
-	~sys-devel/clang-runtime-${PV}
 "
 
 LLVM_COMPONENTS=(
