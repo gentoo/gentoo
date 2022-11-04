@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-11-04)
+# Upstream repository is gone. Uses internally python 2 code, which
+# we patch into python 3. Only ebuild uses snapshot tarball from the
+# dead repo. Doesn't use PEP517 mode. Has issues with python 3.11.
+# No reverse dependencies in tree.
+# Removal: 2022-12-04.  Bug #879613.
+dev-python/tempita
+
 # Michał Górny <mgorny@gentoo.org> (2022-11-04)
 # NIH version of dev-python/watchdog that was used by dev-python/uvicorn
 # only, and was replaced by rustified dev-python/watchfiles.
