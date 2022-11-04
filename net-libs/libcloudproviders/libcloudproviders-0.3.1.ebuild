@@ -13,7 +13,7 @@ SLOT="0"
 IUSE="gtk-doc +introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 DEPEND=">=dev-libs/glib-2.51.2:2"
 RDEPEND="${DEPEND}"
