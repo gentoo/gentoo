@@ -38,6 +38,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-flags -std=gnu89
+
 	append-cppflags \
 		-DLARGE_FILE_SUPPORT \
 		-DUIDGID_NOT_16BIT \
