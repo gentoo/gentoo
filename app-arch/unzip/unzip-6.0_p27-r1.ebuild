@@ -73,6 +73,8 @@ src_configure() {
 		*) die "Unknown target; please update the ebuild to handle ${CHOST}	" ;;
 	esac
 
+	append-flags -std=gnu89
+
 	[[ ${CHOST} == *linux* ]] && append-cppflags -DNO_LCHMOD
 	use bzip2 && append-cppflags -DUSE_BZIP2
 	use unicode && append-cppflags -DUNICODE_SUPPORT -DUNICODE_WCHAR -DUTF8_MAYBE_NATIVE -DUSE_ICONV_MAPPING
