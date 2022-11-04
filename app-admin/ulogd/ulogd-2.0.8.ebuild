@@ -40,6 +40,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		app-text/linuxdoc-tools
+		app-text/openjade
 		app-text/texlive-core
 		dev-texlive/texlive-fontsrecommended
 		virtual/latex-base
