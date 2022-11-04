@@ -66,6 +66,10 @@ BDEPEND="
 "
 PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
+PATCHES=(
+	"${FILESDIR}"/vim-0.0.0828-configure-clang16.patch
+)
+
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug #82186.
 	unset LANG LC_ALL
@@ -76,7 +80,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-
 	if [[ ${PV} != 9999* ]] ; then
 		# Gentoo patches to fix runtime issues, cross-compile errors, etc
 		eapply "${WORKDIR}"/vim-patches-vim-9.0.0049-patches
