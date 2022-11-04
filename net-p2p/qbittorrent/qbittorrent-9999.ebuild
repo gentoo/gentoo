@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake multibuild systemd xdg
+inherit cmake edo multibuild systemd xdg
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
 HOMEPAGE="https://www.qbittorrent.org"
@@ -13,35 +13,50 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/qbittorrent/qBittorrent/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 	S="${WORKDIR}"/qBittorrent-release-${PV}
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+dbus +gui test webui"
+IUSE="+dbus +gui qt6 test webui"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="dbus? ( gui )
-	|| ( gui webui )"
+REQUIRED_USE="|| ( gui webui )"
 
 RDEPEND="
 	dev-libs/boost:=
 	>=dev-libs/openssl-1.1.1:=
-	dev-qt/qtcore:5
-	dev-qt/qtnetwork:5[ssl]
-	dev-qt/qtsql:5
-	dev-qt/qtxml:5
-	>=net-libs/libtorrent-rasterbar-1.2.14:=
+	>=net-libs/libtorrent-rasterbar-1.2.18:=
 	>=sys-libs/zlib-1.2.11
-	dbus? ( dev-qt/qtdbus:5 )
+	virtual/libiconv
 	gui? (
 		dev-libs/geoip
-		dev-qt/qtgui:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
+		!qt6? (
+			dev-qt/qtgui:5
+			dev-qt/qtsvg:5
+			dev-qt/qtwidgets:5
+			dbus? ( dev-qt/qtdbus:5 )
+		)
+		qt6? (
+			dev-qt/qtbase:6[dbus?,gui,widgets]
+			dev-qt/qtsvg:6
+		)
+	)
+	qt6? ( dev-qt/qtbase:6[network,ssl,sql,sqlite,xml(+)] )
+	!qt6? (
+		dev-qt/qtcore:5
+		dev-qt/qtnetwork:5[ssl]
+		dev-qt/qtsql:5[sqlite]
+		dev-qt/qtxml:5
 	)"
-DEPEND="${RDEPEND}"
-BDEPEND="dev-qt/linguist-tools:5
+DEPEND="${RDEPEND}
+	test? (
+		!qt6? ( dev-qt/qttest:5 )
+		qt6? ( dev-qt/qtbase:6[test] )
+	)"
+BDEPEND="
+	!qt6? ( dev-qt/linguist-tools:5 )
+	qt6? ( dev-qt/qttools:6[linguist] )
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md )
@@ -55,7 +70,7 @@ src_prepare() {
 }
 
 src_configure() {
-	multibuild_src_configure() {
+	my_src_configure() {
 		local mycmakeargs=(
 			# musl lacks execinfo.h
 			-DSTACKTRACE=$(usex !elibc_musl)
@@ -63,15 +78,14 @@ src_configure() {
 			# More verbose build logs are preferable for bug reports
 			-DVERBOSE_CONFIGURE=ON
 
-			# Not yet in ::gentoo
-			-DQT6=OFF
+			-DQT6=$(usex qt6)
 
 			-DWEBUI=$(usex webui)
 
 			-DTESTING=$(usex test)
 		)
 
-		if [[ ${MULTIBUILD_VARIANT} == gui ]] ; then
+		if [[ ${MULTIBUILD_VARIANT} == "gui" ]]; then
 			# We do this in multibuild, see bug #839531 for why.
 			# Fedora has to do the same thing.
 			mycmakeargs+=(
@@ -93,7 +107,7 @@ src_configure() {
 		cmake_src_configure
 	}
 
-	multibuild_foreach_variant multibuild_src_configure
+	multibuild_foreach_variant my_src_configure
 }
 
 src_compile() {
@@ -101,12 +115,12 @@ src_compile() {
 }
 
 src_test() {
-	qbittorrent_run_tests() {
+	my_src_test() {
 		cd "${BUILD_DIR}"/test || die
-		ctest . || die
+		edo ctest .
 	}
 
-	multibuild_foreach_variant qbittorrent_run_tests
+	multibuild_foreach_variant my_src_test
 }
 
 src_install() {
