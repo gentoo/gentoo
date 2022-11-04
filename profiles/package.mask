@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-11-04)
+# NIH version of dev-python/watchdog that was used by dev-python/uvicorn
+# only, and was replaced by rustified dev-python/watchfiles.
+# Removal on 2022-12-04.  Bug #879515.
+dev-python/watchgod
+
 # Ionen Wolkens <ionen@gentoo.org> (2022-11-02)
 # glslang breaks ABI (leading to crashes until consumers are rebuilt)
 # and prevents re-building packages which used this part of the ABI
