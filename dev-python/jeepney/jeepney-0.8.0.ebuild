@@ -9,7 +9,10 @@ PYTHON_COMPAT=( pypy3 python3_{8..11} )
 inherit distutils-r1
 
 DESCRIPTION="Low-level, pure Python DBus protocol wrapper"
-HOMEPAGE="https://gitlab.com/takluyver/jeepney/"
+HOMEPAGE="
+	https://gitlab.com/takluyver/jeepney/
+	https://pypi.org/project/jeepney/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -23,10 +26,6 @@ BDEPEND="
 		>=dev-python/pytest-asyncio-0.7.1[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
 		sys-apps/dbus
-		$(python_gen_cond_dep '
-			dev-python/pytest-trio[${PYTHON_USEDEP}]
-			dev-python/trio[${PYTHON_USEDEP}]
-		' 'python3*')
 	)
 "
 
@@ -48,8 +47,7 @@ src_test() {
 
 python_test() {
 	local EPYTEST_IGNORE=()
-	# keep in sync with python_gen_cond_dep!
-	if [[ ${EPYTHON} != python3* ]]; then
+	if ! has_version "dev-python/pytest-trio[${PYTHON_USEDEP}]"; then
 		EPYTEST_IGNORE+=( jeepney/io/tests/test_trio.py )
 	fi
 	epytest
