@@ -360,14 +360,24 @@ src_test() {
 		)
 	fi
 
+	# workaround docutils breaking tests
+	cat > Lib/docutils.py <<-EOF || die
+		raise ImportError("Thou shalt not import!")
+	EOF
+
 	# bug 660358
 	local -x COLUMNS=80
 	local -x PYTHONDONTWRITEBYTECODE=
 	# workaround https://bugs.gentoo.org/775416
 	addwrite "/usr/lib/python${PYVER}/site-packages"
 
-	emake test EXTRATESTOPTS="${test_opts[*]}" \
-		CPPFLAGS= CFLAGS= LDFLAGS= < /dev/tty || die "emake test failed"
+	nonfatal emake test EXTRATESTOPTS="${test_opts[*]}" \
+		CPPFLAGS= CFLAGS= LDFLAGS= < /dev/tty
+	local ret=${?}
+
+	rm Lib/docutils.py || die
+
+	[[ ${ret} -eq 0 ]] || die "emake test failed"
 }
 
 src_install() {
