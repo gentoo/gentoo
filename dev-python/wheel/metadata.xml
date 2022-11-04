@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">wheel</remote-id>
+		<remote-id type="github">pypa/wheel</remote-id>
 	</upstream>
 </pkgmetadata>
