@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..11} )
-inherit distutils-r1 optfeature xdg
+inherit distutils-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -21,7 +21,7 @@ HOMEPAGE="https://www.qutebrowser.org/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+adblock widevine"
+IUSE="+adblock pdf widevine"
 
 RDEPEND="
 	dev-qt/qtcore:5[icu]
@@ -37,6 +37,7 @@ RDEPEND="
 		dev-python/pyyaml[${PYTHON_USEDEP},libyaml(+)]
 		dev-python/zipp[${PYTHON_USEDEP}]
 		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )')
+	pdf? ( <www-plugins/pdfjs-3 )
 	widevine? ( www-plugins/chrome-binary-plugins )"
 BDEPEND="
 	$(python_gen_cond_dep '
@@ -58,6 +59,11 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	distutils-r1_src_prepare
+
+	if use pdf; then
+		sed '/^content.pdfjs:/,+1s/false/true/' \
+			-i ${PN}/config/configdata.yml || die
+	fi
 
 	if use widevine; then
 		local widevine=${EPREFIX}/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so
@@ -115,8 +121,6 @@ python_install_all() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-
-	optfeature "PDF display support" www-plugins/pdfjs
 
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog "Note that optional scripts in ${EROOT}/usr/share/${PN}/{user,}scripts"

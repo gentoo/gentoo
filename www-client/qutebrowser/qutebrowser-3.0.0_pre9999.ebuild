@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..11} )
-inherit distutils-r1 multiprocessing optfeature xdg
+inherit distutils-r1 multiprocessing xdg
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -22,7 +22,7 @@ HOMEPAGE="https://www.qutebrowser.org/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+adblock +qt6 widevine"
+IUSE="+adblock pdf +qt6 widevine"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -40,6 +40,7 @@ RDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/PyQt6[${PYTHON_USEDEP},dbus,gui,network,opengl,printsupport,qml,sql,widgets]
 			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets]')
+		pdf? ( www-plugins/pdfjs )
 	)
 	!qt6? (
 		dev-qt/qtcore:5[icu]
@@ -47,6 +48,7 @@ RDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/PyQt5[${PYTHON_USEDEP},dbus,declarative,gui,network,opengl,printsupport,sql,widgets]
 			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]')
+		pdf? ( <www-plugins/pdfjs-3 )
 	)
 	widevine? ( www-plugins/chrome-binary-plugins )"
 BDEPEND="
@@ -72,6 +74,11 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	distutils-r1_src_prepare
+
+	if use pdf; then
+		sed '/^content.pdfjs:/,+1s/false/true/' \
+			-i ${PN}/config/configdata.yml || die
+	fi
 
 	if use widevine; then
 		# Qt6 knows Gentoo's, but pass to ensure libdir, EPREFIX, and for Qt5
@@ -145,8 +152,6 @@ pkg_preinst() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-
-	optfeature "PDF display support" www-plugins/pdfjs
 
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog "Note that optional scripts in ${EROOT}/usr/share/${PN}/{user,}scripts"
