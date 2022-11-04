@@ -103,6 +103,7 @@ src_prepare() {
 
 	local PATCHES=(
 		"${WORKDIR}/${PATCHSET}"
+		"${FILESDIR}"/python-2.7.18_p15-0001-Fix-Wimplicit-int-Wimplicit-function-declaration.patch
 	)
 
 	default
