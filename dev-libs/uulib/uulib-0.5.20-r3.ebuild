@@ -18,6 +18,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x
 
 PATCHES=(
 	"${FILESDIR}"/${P}-libtool.patch # 780018
+	"${FILESDIR}"/${PN}-0.5.20-Fix-Wimplicit-function-declaration-for-strerror.patch
 )
 
 src_prepare() {
