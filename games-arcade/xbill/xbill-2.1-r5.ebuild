@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,6 +24,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${P}-gtk2.patch
 	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
