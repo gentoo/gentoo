@@ -94,7 +94,7 @@ RDEPEND="
 	X? (
 		x11-libs/libX11
 		x11-libs/libXext
-		x11-libs/libxcb
+		x11-libs/libxcb:=
 	)
 	xinerama? ( x11-libs/libXinerama )
 	xv? ( x11-libs/libXv )
