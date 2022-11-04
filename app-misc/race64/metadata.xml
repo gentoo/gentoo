@@ -6,6 +6,6 @@
 		<name>Matthew Smith</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">skeeto/hastyhex</remote-id>
+		<remote-id type="github">skeeto/race64</remote-id>
 	</upstream>
 </pkgmetadata>
