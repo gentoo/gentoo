@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="Converts DVI files to SVG"
 HOMEPAGE="https://dvisvgm.de/"
 SRC_URI="https://github.com/mgieseki/dvisvgm/releases/download/${PV}/${P}.tar.gz"
@@ -43,8 +45,16 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-ghostscript.patch
-	"${FILESDIR}"/${PN}-2.14-Add-missing-cstdint-includes-for-GCC-13.patch
+	"${FILESDIR}"/${P}-Add-missing-cstdint-includes-for-GCC-13.patch
+	"${FILESDIR}"/${PN}-2.14-configure-clang16.patch
 )
+
+src_prepare() {
+	default
+
+	# Drop once configure patch merged for clang 16
+	eautoreconf
+}
 
 src_configure() {
 	local myargs=(
