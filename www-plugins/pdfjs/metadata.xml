@@ -5,6 +5,7 @@
 		<email>voyageur@gentoo.org</email>
 		<name>Bernard Cafarelli</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">mozilla/pdf.js</remote-id>
 	</upstream>
