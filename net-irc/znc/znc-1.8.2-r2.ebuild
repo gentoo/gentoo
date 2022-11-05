@@ -30,7 +30,7 @@ LICENSE="Apache-2.0"
 # "If you upgrade your ZNC version, you must recompile all your modules."
 # - https://wiki.znc.in/Compiling_modules
 SLOT="0/${PV}"
-IUSE="+ipv6 +icu nls perl python +ssl sasl tcl test +zlib"
+IUSE="+icu nls perl python +ssl sasl tcl test +zlib"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} icu )"
@@ -40,11 +40,11 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	perl? (
-		>=dev-lang/swig-3.0.0
+		>=dev-lang/swig-4.0.1
 		>=dev-lang/perl-5.10
 	)
 	python? (
-		>=dev-lang/swig-3.0.0
+		>=dev-lang/swig-4.0.1
 		>=dev-lang/perl-5.10
 	)
 	test? (
@@ -75,6 +75,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-add-libera.patch
 	"${FILESDIR}"/${P}-fix-python-3.10.patch
 	"${FILESDIR}"/${P}-fix-odr-violation.patch
+	"${FILESDIR}"/${P}-fix-swig.patch
 )
 
 pkg_setup() {
@@ -103,7 +104,7 @@ src_configure() {
 		-DWANT_SYSTEMD=yes  # Causes -DSYSTEMD_DIR to be used.
 		-DSYSTEMD_DIR="$(systemd_get_systemunitdir)"
 		-DWANT_ICU="$(usex icu)"
-		-DWANT_IPV6="$(usex ipv6)"
+		-DWANT_IPV6=yes
 		-DWANT_I18N="$(usex nls)"
 		-DWANT_PERL="$(usex perl)"
 		-DWANT_PYTHON="$(usex python)"
