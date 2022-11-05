@@ -15,6 +15,8 @@
 		<flag name="numpy">Run tests depending on
 			<pkg>dev-python/numpy</pkg>, <pkg>dev-python/pandas</pkg>
 		</flag>
+		<flag name="gevent">Use <pkg>dev-python/gevent</pkg> for GeventServer
+		</flag>
 		<flag name="gdb">Run tests depending on <pkg>sys-devel/gdb</pkg>
 		</flag>
 	</use>
