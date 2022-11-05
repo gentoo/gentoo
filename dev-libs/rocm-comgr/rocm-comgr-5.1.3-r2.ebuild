@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake llvm prefix
 
-LLVM_MAX_SLOT=14
+LLVM_MAX_SLOT=15
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/"
@@ -24,6 +24,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.1.3-clang-fix-include.patch"
 	"${FILESDIR}/${PN}-5.1.3-rocm-path.patch"
 	"${FILESDIR}/0001-COMGR-changes-needed-for-upstream-llvm.patch"
+	"${FILESDIR}/${PN}-5.1.3-llvm-15-remove-zlib-gnu"
+	"${FILESDIR}/${PN}-5.1.3-llvm-15-args-changed"
 )
 
 DESCRIPTION="Radeon Open Compute Code Object Manager"
