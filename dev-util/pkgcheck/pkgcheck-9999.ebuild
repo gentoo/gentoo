@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_IN_SOURCE_BUILD=1
 inherit elisp-common distutils-r1 optfeature
 
