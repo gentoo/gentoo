@@ -14,5 +14,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">vde</remote-id>
+    <remote-id type="github">virtualsquare/vde-2</remote-id>
   </upstream>
 </pkgmetadata>
