@@ -20,7 +20,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
-IUSE="python"
+IUSE="python udev"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # dev-libs/libpcre only required for e2fsdroid
@@ -34,7 +34,7 @@ DEPEND="
 	virtual/libusb:1=
 "
 RDEPEND="${DEPEND}
-	dev-util/android-udev-rules
+	udev? ( dev-util/android-udev-rules )
 	python? ( ${PYTHON_DEPS} )
 "
 BDEPEND="
