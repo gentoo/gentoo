@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 llvm prefix
 
-LLVM_MAX_SLOT=14
+LLVM_MAX_SLOT=15
 
 DESCRIPTION="Stretching GPU performance for GEMMs and tensor contractions"
 HOMEPAGE="https://github.com/ROCmSoftwarePlatform/Tensile"
@@ -23,10 +23,10 @@ SLOT="0/$(ver_cut 1-2)"
 RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
+	sys-devel/clang:${LLVM_MAX_SLOT}
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
 	>=dev-util/rocm-smi-4.3.0
-	>=sys-devel/clang-14.0.6-r1:${LLVM_MAX_SLOT}=
 "
 DEPEND="${RDEPEND}
 	dev-util/hip
