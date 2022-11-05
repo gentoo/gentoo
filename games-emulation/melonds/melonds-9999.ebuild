@@ -26,13 +26,11 @@ IUSE="+jit +opengl"
 LICENSE="BSD-2 GPL-2 GPL-3 Unlicense"
 SLOT="0"
 
-# MelonDS bundles libteakra with many changes,
-# for now we have to block dev-libs/teakra
 RDEPEND="
-	!dev-libs/teakra
 	app-arch/libarchive
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	media-libs/libsdl2[sound,video]
@@ -63,6 +61,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS=OFF
 		-DENABLE_JIT=$(usex jit)
 		-DENABLE_OGLRENDERER=$(usex opengl)
 	)
@@ -77,8 +76,6 @@ src_compile() {
 src_install() {
 	readme.gentoo_create_doc
 	cmake_src_install
-
-	dolib.so "${BUILD_DIR}"/src/teakra/src/libteakra.so
 }
 
 pkg_postinst() {
