@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 MY_PN="ck"
 MY_P="${MY_PN}-${PV}"
@@ -22,6 +22,9 @@ KEYWORDS="amd64 ~arm ~arm64 x86"
 RDEPEND="!sys-cluster/charm"
 
 src_configure() {
+	# https://github.com/concurrencykit/ck/issues/200
+	append-cflags -fno-strict-aliasing
+
 	tc-export AR CC LD
 
 	local myeconfargs=(
