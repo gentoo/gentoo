@@ -37,14 +37,3 @@ python_prepare_all() {
 
 	distutils-r1_python_prepare_all
 }
-
-python_install() {
-	distutils-r1_python_install
-
-	# install and optimize yamlpath/patches/aliasstyle.py
-	local sitedir=$(python_get_sitedir)
-	[[ -d ${D}${sitedir} ]] || die "${D}${sitedir}: No such directory"
-	insinto "${sitedir}/yamlpath"
-	doins -r "${S}/yamlpath/patches"
-	python_optimize "${D}${sitedir}"
-}
