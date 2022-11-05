@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 
 inherit cmake python-any-r1 systemd
 
@@ -37,6 +37,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 "
 PDEPEND="webui? ( www-apps/airdcpp-webui )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-odr.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
