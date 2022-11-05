@@ -35,7 +35,7 @@ ruby_add_rdepend "
 # memcache-client, nokogiri, builder, and redis are not strictly needed,
 # but there are tests using this code.
 ruby_add_bdepend "test? (
-	>=dev-ruby/dalli-2.2.1
+	>=dev-ruby/dalli-3.0.1
 	dev-ruby/connection_pool
 	>=dev-ruby/nokogiri-1.8.1
 	>=dev-ruby/builder-3.1.0
