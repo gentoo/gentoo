@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd
+inherit pax-utils systemd
 
 DESCRIPTION="Jellyfin puts you in control of managing and streaming your media"
 HOMEPAGE="https://jellyfin.readthedocs.io/en/latest/"
@@ -56,4 +56,5 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}.init-r1" "${PN}"
 	newconfd "${FILESDIR}"/${PN}.confd "${PN}"
 	systemd_dounit "${FILESDIR}/${PN}.service"
+	pax-mark -m "${ED}${INST_DIR}/jellyfin"
 }
