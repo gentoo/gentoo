@@ -62,6 +62,9 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# bug #875692
+	sed -e '/#include/s/cmath/math.h/' -i trio/*.c || die
+
 	eautoreconf
 
 	elibtoolize # for Darwin bundles

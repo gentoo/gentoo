@@ -60,6 +60,9 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# bug #875692
+	sed -e '/#include/s/cmath/math.h/' -i trio/*.c || die
+
 	gnulib-tool --update || die
 
 	chmod +x build-aux/git-version-gen || die
