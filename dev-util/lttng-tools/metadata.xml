@@ -8,4 +8,7 @@
 	<use>
 		<flag name="ust">Support LTTng-UST (Userspace Tracing)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">lttng/lttng-tools</remote-id>
+	</upstream>
 </pkgmetadata>
