@@ -22,7 +22,7 @@ RDEPEND="virtual/libcrypt:=
 		x11-libs/libX11
 	)
 	bidi? ( dev-libs/fribidi )
-	brltty? ( app-accessibility/brltty )
+	brltty? ( app-accessibility/brltty[api(+)] )
 	cairo? ( x11-libs/cairo[X(+)] )
 	fbcon? ( media-fonts/unifont )
 	fcitx? ( app-i18n/fcitx )
