@@ -13,7 +13,7 @@ MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
 MY_PN_TS="title-sequences"
 MY_PV_OBJ="1.3.5"
-MY_PV_RPL="0.0.69"
+MY_PV_RPL="0.0.70"
 MY_PV_TS="0.4.0"
 
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
