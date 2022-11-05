@@ -7,7 +7,7 @@ ROCM_VERSION=${PV}
 
 inherit cmake flag-o-matic llvm rocm
 
-LLVM_MAX_SLOT=14
+LLVM_MAX_SLOT=15
 
 DESCRIPTION="AMD's Machine Intelligence Library"
 HOMEPAGE="https://github.com/ROCmSoftwarePlatform/MIOpen"
