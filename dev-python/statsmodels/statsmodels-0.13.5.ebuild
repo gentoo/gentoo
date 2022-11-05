@@ -71,6 +71,7 @@ python_test() {
 
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	epytest ${PN} -n "$(makeopts_jobs)"
+	rm -r ${PN}/.pytest_cache || die
 }
 
 python_install_all() {
