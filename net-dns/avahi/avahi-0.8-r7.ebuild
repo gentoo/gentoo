@@ -74,6 +74,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-dependency-error.patch"
 	"${FILESDIR}/${P}-null-pointer-crash.patch"
 	"${FILESDIR}/${P}-potentially-undefined-fix.patch"
+	"${FILESDIR}/${P}-strict-prototypes.patch"
 # These patches do not apply cleanly but may need to be re-instated.
 # I'll leave them commented out for now.
 #	"${FILESDIR}/${PN}-0.7-qt5.patch"
