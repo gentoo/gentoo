@@ -28,9 +28,6 @@ BDEPEND="
 			>=dev-python/cython-0.29.30[${PYTHON_USEDEP}]
 		' 'python*')
 	)
-	test? (
-		dev-python/six[${PYTHON_USEDEP}]
-	)
 "
 
 distutils_enable_tests pytest
