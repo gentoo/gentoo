@@ -63,6 +63,10 @@ BDEPEND="
 
 S="${WORKDIR}/lib${P}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-musl-allperms.patch
+)
+
 src_prepare() {
 	default
 
