@@ -413,6 +413,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
+
 	optfeature_header \
 		"Some enabled plugins require optional dependencies for functionality:"
 	use android && optfeature "android device support" \
