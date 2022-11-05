@@ -21,7 +21,7 @@ else
 		https://znc.in/releases/archive/${MY_P}.tar.gz
 		test? ( ${GTEST_URL} )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 	S=${WORKDIR}/${MY_P}
 fi
 
@@ -30,7 +30,7 @@ LICENSE="Apache-2.0"
 # "If you upgrade your ZNC version, you must recompile all your modules."
 # - https://wiki.znc.in/Compiling_modules
 SLOT="0/${PV}"
-IUSE="+ipv6 +icu nls perl python +ssl sasl tcl test +zlib"
+IUSE="+icu nls perl python +ssl sasl tcl test +zlib"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} icu )"
@@ -40,11 +40,11 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	perl? (
-		>=dev-lang/swig-3.0.0
+		>=dev-lang/swig-4.0.1
 		>=dev-lang/perl-5.10
 	)
 	python? (
-		>=dev-lang/swig-3.0.0
+		>=dev-lang/swig-4.0.1
 		>=dev-lang/perl-5.10
 	)
 	test? (
@@ -98,7 +98,7 @@ src_configure() {
 		-DWANT_SYSTEMD=yes  # Causes -DSYSTEMD_DIR to be used.
 		-DSYSTEMD_DIR="$(systemd_get_systemunitdir)"
 		-DWANT_ICU="$(usex icu)"
-		-DWANT_IPV6="$(usex ipv6)"
+		-DWANT_IPV6=yes
 		-DWANT_I18N="$(usex nls)"
 		-DWANT_PERL="$(usex perl)"
 		-DWANT_PYTHON="$(usex python)"
