@@ -17,10 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Ionen Wolkens <ionen@gentoo.org> (2022-11-04)
-# www-plugins/pdfjs is not stable yet
-www-client/qutebrowser pdf
-
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
 # Dependency media-libs/intel-hybrid-codec-driver is only available on unstable
 # branch
