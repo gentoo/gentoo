@@ -70,6 +70,7 @@ PATCHES=(
 	"${FILESDIR}/rspamd-3.0-cmake-lua-version.patch"
 	"${FILESDIR}/rspamd-3.2-unbundle-lua.patch"
 	"${FILESDIR}/rspamd-2.5-unbundle-snowball.patch"
+	"${FILESDIR}/rspamd-3.3-remove-test-case.patch"
 )
 
 src_prepare() {
