@@ -5,6 +5,7 @@
 		<email>pkgcore@gentoo.org</email>
 		<name>Pkgcore</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">pkgcore/pkgcore</remote-id>
 		<remote-id type="pypi">pkgcore</remote-id>
