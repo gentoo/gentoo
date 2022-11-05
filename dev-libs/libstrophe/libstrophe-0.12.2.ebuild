@@ -4,7 +4,11 @@
 EAPI=7
 DESCRIPTION="A simple, lightweight C library for writing XMPP clients"
 HOMEPAGE="http://strophe.im/libstrophe/"
-SRC_URI="https://github.com/strophe/${PN}/releases/download/${PV}/${P}.tar.xz"
+# 2nd SRC is a backport of the /bin/sh -> dash fix, #877049, #879533
+SRC_URI="
+	https://github.com/strophe/${PN}/releases/download/${PV}/${P}.tar.xz
+	https://github.com/strophe/libstrophe/commit/7352bd5cdbacf98771fdc0d32a606c4b6718077c.patch -> ${PN}-fix-configure-bashisms.patch
+"
 LICENSE="|| ( MIT GPL-3 )"
 # Subslot: ${SONAME}.1 to differentiate from previous versions without SONAME
 SLOT="0/0.1"
@@ -24,6 +28,11 @@ BDEPEND="
 "
 
 DOCS=( ChangeLog )
+
+PATCHES=(
+	# https://github.com/strophe/libstrophe/pull/218
+	"${DISTDIR}/${PN}-fix-configure-bashisms.patch"
+)
 
 src_configure() {
 	# shellcheck disable=SC2207
