@@ -9,7 +9,7 @@ DOCS_DEPEND="media-gfx/graphviz"
 
 inherit cmake docs llvm prefix python-any-r1
 
-LLVM_MAX_SLOT=14
+LLVM_MAX_SLOT=15
 
 DESCRIPTION="C++ Heterogeneous-Compute Interface for Portability"
 HOMEPAGE="https://github.com/ROCm-Developer-Tools/hipamd"
@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.1.3-correct-sample-install-location.patch"
 	"${FILESDIR}/${PN}-5.1.3-remove-cmake-doxygen-commands.patch"
 	"${FILESDIR}/0001-SWDEV-316128-HIP-surface-API-support.patch"
+	"${FILESDIR}/${PN}-5.1.3-llvm-15-noinline-keyword.patch"
 )
 
 python_check_deps() {
