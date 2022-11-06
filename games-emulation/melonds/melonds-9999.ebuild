@@ -39,6 +39,7 @@ RDEPEND="
 	opengl? ( media-libs/libepoxy )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="kde-frameworks/extra-cmake-modules:5"
 
 # used for JIT recompiler
 QA_EXECSTACK="usr/bin/melonDS"
