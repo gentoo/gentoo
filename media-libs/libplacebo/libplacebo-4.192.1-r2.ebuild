@@ -26,11 +26,15 @@ IUSE="glslang lcms +opengl +shaderc test unwind +vulkan"
 REQUIRED_USE="vulkan? ( || ( glslang shaderc ) )"
 RESTRICT="!test? ( test )"
 
-RDEPEND="glslang? ( dev-util/glslang[${MULTILIB_USEDEP}] )
+# Build broken with newer glslang due to struct TBuiltInResource changes
+# (also breaks ABI wrt https://github.com/KhronosGroup/glslang/issues/3052).
+# Fixed in next libplacebo version, but this older one is needed for stable
+# mpv. Note glslang can be disabled, shaderc provides same functionality.
+RDEPEND="glslang? ( <dev-util/glslang-1.3.231:=[${MULTILIB_USEDEP}] )
 	lcms? ( media-libs/lcms:2[${MULTILIB_USEDEP}] )
 	opengl? ( media-libs/libepoxy[${MULTILIB_USEDEP}] )
 	shaderc? ( >=media-libs/shaderc-2017.2[${MULTILIB_USEDEP}] )
-	unwind? ( sys-libs/libunwind:= )
+	unwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
 	vulkan? (
 		dev-util/vulkan-headers
 		media-libs/vulkan-loader[${MULTILIB_USEDEP}]
@@ -43,7 +47,10 @@ BDEPEND="virtual/pkgconfig
 		$(python_gen_any_dep 'dev-python/mako[${PYTHON_USEDEP}]')
 	)"
 
-PATCHES=( "${FILESDIR}"/libplacebo-2.72.2-fix-vulkan-undeclared.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.72.2-fix-vulkan-undeclared.patch
+	"${FILESDIR}"/${P}-python-executable.patch
+)
 
 python_check_deps() {
 	has_version -b "dev-python/mako[${PYTHON_USEDEP}]"
@@ -55,6 +62,7 @@ pkg_setup() {
 
 multilib_src_configure() {
 	local emesonargs=(
+		-Ddemos=false #851927
 		$(meson_feature glslang)
 		$(meson_feature lcms)
 		$(meson_feature opengl)
@@ -63,7 +71,7 @@ multilib_src_configure() {
 		$(meson_feature vulkan)
 		$(meson_use test tests)
 		# hard-code path from dev-util/vulkan-headers
-		-Dvulkan-registry=/usr/share/vulkan/registry/vk.xml
+		-Dvulkan-registry="${ESYSROOT}"/usr/share/vulkan/registry/vk.xml
 	)
 	meson_src_configure
 }
