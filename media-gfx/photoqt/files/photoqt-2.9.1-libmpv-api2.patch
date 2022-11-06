@@ -1,0 +1,20 @@
+https://gitlab.com/lspies/photoqt/-/merge_requests/10
+From: Ionen Wolkens <ionen@gentoo.org>
+Date: Sun, 6 Nov 2022 13:22:36 -0500
+Subject: [PATCH] [libmpv] drop gl_init_params' deprecated parameter for api
+ 2.0
+
+Fixes build issue with upcoming mpv-0.35.0 (libmpv.so.2),
+and remains compatible with current.
+--- a/cplusplus/libmpv/mpvobject.cpp
++++ b/cplusplus/libmpv/mpvobject.cpp
+@@ -74,7 +74,7 @@ public:
+     QOpenGLFramebufferObject * createFramebufferObject(const QSize &size) {
+         // init mpv_gl:
+         if (!obj->mpv_gl) {
+-            mpv_opengl_init_params gl_init_params{get_proc_address_mpv, nullptr, nullptr};
++            mpv_opengl_init_params gl_init_params{get_proc_address_mpv, nullptr};
+             mpv_render_param params[]{
+                 {MPV_RENDER_PARAM_API_TYPE, const_cast<char *>(MPV_RENDER_API_TYPE_OPENGL)},
+                 {MPV_RENDER_PARAM_OPENGL_INIT_PARAMS, &gl_init_params},
+GitLab

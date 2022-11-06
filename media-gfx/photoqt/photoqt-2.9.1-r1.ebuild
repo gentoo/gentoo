@@ -37,7 +37,7 @@ COMMON_DEPEND="
 		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
 		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	)
-	mpv? ( media-video/mpv[libmpv] )
+	mpv? ( media-video/mpv:=[libmpv] )
 	pdf? ( app-text/poppler[qt5] )
 	raw? ( media-libs/libraw:= )
 "
@@ -50,6 +50,10 @@ RDEPEND="${COMMON_DEPEND}
 	dev-qt/qtquickcontrols2:5
 "
 BDEPEND="dev-qt/linguist-tools:5"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-libmpv-api2.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
