@@ -25,7 +25,6 @@ RDEPEND="
 	>=dev-python/filelock-3.4.1[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-2.4[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-63.2.0[${PYTHON_USEDEP}]
-	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 "
 # coverage is used somehow magically in virtualenv, maybe it actually
 # tests something useful
@@ -38,6 +37,7 @@ BDEPEND="
 		>=dev-python/pytest-freezegun-0.4.2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-3.6.1[${PYTHON_USEDEP}]
 		>=dev-python/pytest-timeout-2.1[${PYTHON_USEDEP}]
+		>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
 		>=dev-python/packaging-20.0[${PYTHON_USEDEP}]
 	)
