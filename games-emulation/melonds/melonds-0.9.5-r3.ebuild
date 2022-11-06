@@ -28,6 +28,7 @@ SLOT="0"
 
 RDEPEND="
 	app-arch/libarchive
+	dev-libs/wayland
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
