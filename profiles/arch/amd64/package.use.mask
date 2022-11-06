@@ -220,7 +220,7 @@ dev-util/catalyst -system-bootloader
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2018-06-17)
 # Vulkan support is only available on few selected arches atm.
 # Mask everywhere, unmask where appropriate.
-media-video/mpv -vulkan
+media-video/mpv -libplacebo -vulkan
 
 # Richard Yao <ryao@gentoo.org> (2018-04-16)
 # sys-fs/zfs is keyworded on amd64
