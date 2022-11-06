@@ -6,11 +6,10 @@ EAPI=8
 inherit autotools flag-o-matic
 
 MY_P=${P/opensp/OpenSP}
-
 DESCRIPTION="A free, object-oriented toolkit for SGML parsing and entity management"
-HOMEPAGE="http://openjade.sourceforge.net/"
-SRC_URI="mirror://sourceforge/openjade/${MY_P}.tar.gz"
-S="${WORKDIR}"/${MY_P}
+HOMEPAGE="https://openjade.sourceforge.net/"
+SRC_URI="https://downloads.sourceforge.net/project/openjade/opensp/${PV}/${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
