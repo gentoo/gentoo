@@ -94,6 +94,7 @@ COMMON_DEPEND="
 	vdpau? ( x11-libs/libvdpau )
 	vulkan? (
 		>=media-libs/libplacebo-3.104.0:=[vulkan]
+		<media-libs/libplacebo-5
 		media-libs/shaderc
 	)
 	wayland? (
