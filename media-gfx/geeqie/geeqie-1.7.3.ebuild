@@ -91,5 +91,4 @@ pkg_postinst() {
 
 	elog "Some plugins may require additional packages"
 	elog "- Image rotate plugin: media-gfx/fbida (JPEG), media-gfx/imagemagick (TIFF/PNG)"
-	elog "- RAW images plugin: media-gfx/ufraw"
 }
