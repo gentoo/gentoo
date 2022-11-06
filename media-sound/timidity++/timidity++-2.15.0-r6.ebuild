@@ -67,7 +67,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.15.0-pkg-config.patch
 	"${FILESDIR}"/${PN}-2.14.0-CVE-2017-1154{6,7}.patch
 	"${FILESDIR}"/${PN}-2.15.0-lto-workaround.patch
-	"${FILESDIR}"/${PN}-2.15.0-clang-15-configure.patch
+	"${FILESDIR}"/${PN}-2.15.0-clang-16-configure.patch
 )
 
 src_prepare() {
