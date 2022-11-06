@@ -15,10 +15,10 @@ KEYWORDS="amd64 ~arm64 ~ppc64"
 
 RDEPEND=">=dev-libs/glib-2.44
 	>=x11-libs/gtk+-3.22.23:3
-	>=media-video/mpv-0.32[libmpv]
+	>=media-video/mpv-0.32:=[libmpv]
 	media-libs/libepoxy"
-DEPEND="${RDEPEND}
-	dev-util/glib-utils
+DEPEND="${RDEPEND}"
+BDEPEND="dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig"
 
