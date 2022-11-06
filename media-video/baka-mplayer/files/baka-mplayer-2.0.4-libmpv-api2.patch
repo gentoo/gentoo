@@ -1,0 +1,78 @@
+https://github.com/u8sand/Baka-MPlayer/commit/7864f248c3f
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Mon, 21 Feb 2022 18:50:46 +0800
+Subject: [PATCH] Port away from deprecated/removed APIs in mpv 2.0
+
+Register observers as MPV_EVENT_IDLE is deprecated and
+MPV_EVENT_PAUSE/MPV_EVENT_UNPAUSE have been removed.
+--- a/src/mpvhandler.cpp
++++ b/src/mpvhandler.cpp
+@@ -41,6 +41,8 @@ MpvHandler::MpvHandler(int64_t wid, QObject *parent):
+     mpv_observe_property(mpv, 0, "sub-visibility", MPV_FORMAT_FLAG);
+     mpv_observe_property(mpv, 0, "mute", MPV_FORMAT_FLAG);
+     mpv_observe_property(mpv, 0, "core-idle", MPV_FORMAT_FLAG);
++    mpv_observe_property(mpv, 0, "idle-active", MPV_FORMAT_FLAG);
++    mpv_observe_property(mpv, 0, "pause", MPV_FORMAT_FLAG);
+     mpv_observe_property(mpv, 0, "paused-for-cache", MPV_FORMAT_FLAG);
+ 
+     // setup callback event handling
+@@ -191,6 +193,31 @@ bool MpvHandler::event(QEvent *event)
+                             ShowText(QString(), 0);
+                     }
+                 }
++                else if(QString(prop->name) == "idle-active")
++                {
++                    if(prop->format == MPV_FORMAT_FLAG)
++                    {
++                        if((bool)*(unsigned*)prop->data)
++                        {
++                            fileInfo.length = 0;
++                            setTime(0);
++                            setPlayState(Mpv::Idle);
++                        }
++                    }
++                }
++                else if(QString(prop->name) == "pause")
++                {
++                    if(prop->format == MPV_FORMAT_FLAG)
++                    {
++                        if((bool)*(unsigned*)prop->data)
++                        {
++                            setPlayState(Mpv::Paused);
++                            ShowText(QString(), 0);
++                        }
++                        else
++                            setPlayState(Mpv::Playing);
++                    }
++                }
+                 else if(QString(prop->name) == "paused-for-cache")
+                 {
+                     if(prop->format == MPV_FORMAT_FLAG)
+@@ -203,12 +230,7 @@ bool MpvHandler::event(QEvent *event)
+                 }
+                 break;
+             }
+-            case MPV_EVENT_IDLE:
+-                fileInfo.length = 0;
+-                setTime(0);
+-                setPlayState(Mpv::Idle);
+-                break;
+-                // these two look like they're reversed but they aren't. the names are misleading.
++            // these two look like they're reversed but they aren't. the names are misleading.
+             case MPV_EVENT_START_FILE:
+                 setPlayState(Mpv::Loaded);
+                 break;
+@@ -216,13 +238,6 @@ bool MpvHandler::event(QEvent *event)
+                 setPlayState(Mpv::Started);
+                 LoadFileInfo();
+                 SetProperties();
+-            case MPV_EVENT_UNPAUSE:
+-                setPlayState(Mpv::Playing);
+-                break;
+-            case MPV_EVENT_PAUSE:
+-                setPlayState(Mpv::Paused);
+-                ShowText(QString(), 0);
+-                break;
+             case MPV_EVENT_END_FILE:
+                 if(playState == Mpv::Loaded)
+                     ShowText(tr("File couldn't be opened"));
