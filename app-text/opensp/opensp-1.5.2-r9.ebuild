@@ -34,14 +34,11 @@ BDEPEND="nls? ( sys-devel/gettext )
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-segfault.patch
 	"${FILESDIR}"/${P}-c11-using.patch
-	"${FILESDIR}"/${P}-configure-clang16.patch
 )
 
 src_prepare() {
 	default
-
-	# Needed for Clang 16
-	eautoreconf
+	use prefix && eautoreconf
 }
 
 src_configure() {
