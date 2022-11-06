@@ -58,7 +58,6 @@ RDEPEND="
 		dev-python/twisted[${PYTHON_USEDEP}]
 		media-libs/opencv[python,png,jpeg,${PYTHON_USEDEP}]
 		media-video/ffmpeg
-		media-video/mpv[libmpv,${PYTHON_USEDEP}]
 
 		>=dev-python/QtPy-1.9.0-r4[pyside2,${PYTHON_USEDEP}]
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
