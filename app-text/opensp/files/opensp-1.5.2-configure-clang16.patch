@@ -1,0 +1,13 @@
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -9,8 +9,9 @@ changequote([, ])dnl
+ AC_MSG_CHECKING(size of $1)
+ AC_CACHE_VAL(AC_CV_NAME,
+ [AC_TRY_RUN([#include <stdio.h>
++#include <stdlib.h>
+ #include <$2>
+-main()
++int main(void)
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);

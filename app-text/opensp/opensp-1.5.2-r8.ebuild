@@ -34,11 +34,14 @@ BDEPEND="nls? ( sys-devel/gettext )
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-segfault.patch
 	"${FILESDIR}"/${P}-c11-using.patch
+	"${FILESDIR}"/${P}-configure-clang16.patch
 )
 
 src_prepare() {
 	default
-	use prefix && eautoreconf
+
+	# Needed for Clang 16
+	eautoreconf
 }
 
 src_configure() {
@@ -50,6 +53,8 @@ src_configure() {
 	# docbook-sgml-utils among other things.
 	#ALLOWED_FLAGS="-O -O1 -O2 -pipe -g -march"
 	strip-flags
+
+	append-cxxflags -std=gnu++11
 
 	econf \
 		--enable-http \
