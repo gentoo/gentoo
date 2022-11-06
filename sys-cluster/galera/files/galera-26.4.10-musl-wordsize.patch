@@ -1,0 +1,22 @@
+# Correct includes for WORDSIZE
+# Patch from Alpine Linux
+# https://git.alpinelinux.org/aports/tree/testing/galera/musl-wordsize.patch
+#
+# Cloese: https://bugs.gentoo.org/829176
+--- a/galerautils/src/gu_arch.h
++++ b/galerautils/src/gu_arch.h
+@@ -50,9 +50,13 @@
+ #elif defined(__APPLE__) || defined(__FreeBSD__)
+ # include <stdint.h>
+ # define GU_WORDSIZE __WORDSIZE
+-#else
++#elif defined(__GLIBC__)
+ # include <bits/wordsize.h>
+ # define GU_WORDSIZE __WORDSIZE
++#else  /* use this instead of bits/wordsize.h */
++# include <stdint.h>
++# include <bits/user.h>
++# define GU_WORDSIZE __WORDSIZE
+ #endif
+
+ #include <stdint.h>

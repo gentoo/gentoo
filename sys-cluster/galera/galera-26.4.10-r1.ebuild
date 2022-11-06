@@ -44,6 +44,10 @@ RDEPEND="${COMMON_DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}"-26.4.6-strip-extra-cflags.patch
 	"${FILESDIR}/${PN}"-26.4.8-respect-toolchain.patch
+	"${FILESDIR}/${PN}"-26.4.10-gcomm-test-check-fix.patch
+	"${FILESDIR}/${PN}"-26.4.10-musl-page_size-redef.patch
+	"${FILESDIR}/${PN}"-26.4.10-musl-sched-param.patch
+	"${FILESDIR}/${PN}"-26.4.10-musl-wordsize.patch
 )
 
 S="${WORKDIR}/${MY_P}"

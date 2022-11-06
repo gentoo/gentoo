@@ -1,0 +1,18 @@
+# Fix building on musl
+# Patch taken from Alpine Linux
+# https://git.alpinelinux.org/aports/tree/testing/galera/musl-sched_param.patch
+--- a/galerautils/src/gu_thread.cpp
++++ b/galerautils/src/gu_thread.cpp
+@@ -86,8 +86,11 @@ void gu::thread_set_schedparam(pthread_t thd, const gu::ThreadSchedparam& sp)
+     if (schedparam_not_supported) return;
+ #if defined(__sun__)
+     struct sched_param spstr = { sp.prio(), { 0, } /* sched_pad array */};
+-#else
++#elif defined(__GLIBC__)
+     struct sched_param spstr = { sp.prio() };
++#else
++    /* musl has some reserved fields in sched_param... */
++    struct sched_param spstr = { sp.prio(), 0, 0, 0, 0, 0, 0 };
+ #endif
+     int err;
+     if ((err = pthread_setschedparam(thd, sp.policy(), &spstr)) != 0)

@@ -1,0 +1,12 @@
+# Patches from Alpine linux:
+# https://git.alpinelinux.org/aports/tree/testing/galera/fix_gcomm-test-check_evs2.patch
+--- a/gcomm/test/check_evs2.cpp
++++ b/gcomm/test/check_evs2.cpp
+@@ -2583,6 +2583,7 @@ START_TEST(test_representative_incarnation_change)
+     gu::datetime::SimClock::inc_time(300 * gu::datetime::MSec);
+     evs_from_dummy(dn[1])->handle_timers();
+     evs_from_dummy(dn[2])->handle_timers();
++    prop.propagate_until_empty();
+     ck_assert(evs_from_dummy(dn[1])->state() == gcomm::evs::Proto::S_GATHER);
+     ck_assert(evs_from_dummy(dn[2])->state() == gcomm::evs::Proto::S_GATHER);
+
