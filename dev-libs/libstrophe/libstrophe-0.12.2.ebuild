@@ -3,7 +3,7 @@
 
 EAPI=7
 DESCRIPTION="A simple, lightweight C library for writing XMPP clients"
-HOMEPAGE="http://strophe.im/libstrophe/"
+HOMEPAGE="https://strophe.im/libstrophe/"
 # 2nd SRC is a backport of the /bin/sh -> dash fix, #877049, #879533
 SRC_URI="
 	https://github.com/strophe/${PN}/releases/download/${PV}/${P}.tar.xz
