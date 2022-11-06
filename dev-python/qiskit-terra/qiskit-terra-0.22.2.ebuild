@@ -132,6 +132,9 @@ BDEPEND="
 	)
 "
 
+# Files built without CFLAGS/LDFLAGS, acceptable for rust
+QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/qiskit/_accelerate.*.so"
+
 distutils_enable_tests pytest
 
 src_prepare() {
