@@ -6,8 +6,9 @@
 	<name>Steve Arnold</name>
 </maintainer>
 <longdescription lang="en">
-	Create a fancy changelog from git log history (in rst or md) and
-	customize your config with Python callables and regex.
+	Create a fancy changelog from git log history (in rst or md). You can
+	customize your config with Python callables and custom regex, as well
+	as built-in or custom template files.
 </longdescription>
 <upstream>
 	<remote-id type="github">sarnold/gitchangelog</remote-id>
