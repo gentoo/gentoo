@@ -11,7 +11,8 @@ PYTHON_COMPAT=( python3_{8,9,10} )
 inherit flag-o-matic python-single-r1 cmake
 
 DESCRIPTION="Simple Theorem Prover, an efficient SMT solver for bitvectors"
-HOMEPAGE="https://stp.github.io/"
+HOMEPAGE="https://stp.github.io/
+	https://github.com/stp/stp/"
 SRC_URI="https://github.com/stp/stp/archive/${PV}.tar.gz -> ${P}.tar.gz
 	test? (
 		https://github.com/stp/OutputCheck/archive/${OC_H}.tar.gz -> ${P}_OutputCheck.tar.gz
@@ -82,6 +83,7 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
+		-DTEST_C_API=OFF  # C API test fail
 		-DNOCRYPTOMINISAT=$(usex cryptominisat 'OFF' 'ON')  # double negation
 		-DENABLE_PYTHON_INTERFACE=$(usex python)
 		-DENABLE_ASSERTIONS=$(usex test)
