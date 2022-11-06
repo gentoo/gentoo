@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Michał Górny <mgorny@gentoo.org> (2022-11-06)
+# Unmask the target on python-exec while it's masked elsewhere.
+dev-lang/python-exec -python_targets_python3_11
+
 # Marek Szuba <marecki@gentoo.org> (2022-09-25)
 # This depends on app-admin/ansible-molecule, which is not stable yet.
 # Moreover, all but the most recent versions of ansible-molecule
