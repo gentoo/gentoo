@@ -79,7 +79,9 @@ src_install() {
 	doexe *.so *.so.* "${MY_PN}"
 
 	dosym -r "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
-	find "/opt/${MY_PN}/resources" -type l -name python3 -exec dosym -r "${PYTHON}" "{}" \; || die
+	pushd "${ED}" || die
+	find "opt/${MY_PN}/resources" -type l -name python3 -exec dosym -r "${PYTHON}" "{}" \; || die
+	popd || die
 
 	make_desktop_entry "${MY_PN}" Mattermost "${MY_PN}"
 
