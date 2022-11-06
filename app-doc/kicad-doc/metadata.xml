@@ -19,6 +19,6 @@
 		diagrams and printed circuit board artwork.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">KiCad/kicad-doc</remote-id>
+		<remote-id type="gitlab">kicad/services/kicad-doc</remote-id>
 	</upstream>
 </pkgmetadata>
