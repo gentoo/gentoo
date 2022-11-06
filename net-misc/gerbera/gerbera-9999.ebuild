@@ -25,7 +25,7 @@ RDEPEND="
 	acct-user/gerbera
 	dev-db/sqlite
 	dev-libs/libebml:=
-	<dev-libs/libfmt-9.0.0:=
+	dev-libs/libfmt:=
 	dev-libs/pugixml
 	dev-libs/spdlog:=
 	>=net-libs/libupnp-1.14.12:=[ipv6(+),reuseaddr,-blocking-tcp]
