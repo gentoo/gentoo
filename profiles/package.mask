@@ -210,17 +210,6 @@ dev-python/eventlet
 # Bug #722092, #749900, #762169, #840656, #845381, #858392, #866701.
 dev-util/nvidia-cuda-sdk
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-10-17)
-# Hostile takeover ongoing, integrity cannot be guaranteed.
-# Use the release version only if you change the meta server setting.
-# Use games-action/multimc-bin or games-action/prismlauncher instead
-# to be completely safe.
-# https://bugs.gentoo.org/877495
-#
-# Update (2022-10-20)
-# Removal in 15 days, please install games-action/prismlauncher instead
-games-action/polymc
-
 # Michał Górny <mgorny@gentoo.org> (2022-10-17)
 # Unmaintained since 2018.  Requires dev-python/nose.  No revdeps left.
 # Removal on 2022-11-16.  Bug #877375.
