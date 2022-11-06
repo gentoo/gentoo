@@ -128,6 +128,11 @@ distutils_enable_tests pytest
 # and an exact comparison of float switched to approximate comparison.
 #PATCHES=( "${FILESDIR}/qiskit-terra-0.19.2-test-corrections.patch" )
 
+src_prepare() {
+	find -name '*.py' -exec sed -i -e 's:retworkx:rustworkx:' {} + || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	# We have to hide the source code directory so tests
 	# do not use these, but instead the compiled library.
