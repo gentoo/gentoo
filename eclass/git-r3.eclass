@@ -887,6 +887,11 @@ git-r3_checkout() {
 			cp "${orig_repo}"/packed-refs "${GIT_DIR}"/packed-refs || die
 		fi
 
+		# mark this directory as "safe" so that src_install() can access it
+		# https://bugs.gentoo.org/879353
+		git config --global --add safe.directory \
+			"$(cd "${out_dir}" && echo "${PWD}")" || die
+
 		# (no need to copy HEAD, we will set it via checkout)
 
 		if [[ -f ${orig_repo}/shallow ]]; then
