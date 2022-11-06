@@ -123,25 +123,22 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-# Small issues with the tests.
-# qiskit.Aer module depends on qiskit-terra, it cannot be used,
-# and an exact comparison of float switched to approximate comparison.
-#PATCHES=( "${FILESDIR}/qiskit-terra-0.19.2-test-corrections.patch" )
-
 src_prepare() {
 	find -name '*.py' -exec sed -i -e 's:retworkx:rustworkx:' {} + || die
 	distutils-r1_src_prepare
 }
 
 python_test() {
-	# We have to hide the source code directory so tests
-	# do not use these, but instead the compiled library.
-	mv qiskit qiskit.hidden || die
+	local EPYTEST_DESELECT=(
+		# TODO
+		test/python/transpiler/test_unitary_synthesis_plugin.py::TestUnitarySynthesisPlugin
+		test/python/transpiler/test_unitary_synthesis.py::TestUnitarySynthesis::test_two_qubit_synthesis_not_pulse_optimal
+	)
+	local EPYTEST_IGNORE=(
+		# TODO, also apparently slow
+		test/randomized/test_transpiler_equivalence.py
+	)
 
-	# Some small tests are failing which test optional features.
-	# Why they fail is still under investigation.
-	# transpiler_equivalence tests take too long time, they are also skipped.
-	epytest -n "$(makeopts_jobs)" -k 'not (TestOptions and test_copy) and not TestUnitarySynthesisPlugin and not test_transpiler_equivalence and not (TestPauliSumOp and test_to_instruction)'
-
-	mv qiskit.hidden qiskit || die
+	rm -rf qiskit || die
+	epytest -p xdist -n "$(makeopts_jobs)"
 }
