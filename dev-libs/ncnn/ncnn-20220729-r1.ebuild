@@ -21,7 +21,7 @@ RESTRICT="test"
 RDEPEND="
 	tools? ( dev-libs/protobuf:= )
 	vulkan? (
-		dev-util/glslang
+		dev-util/glslang:=
 		media-libs/vulkan-loader
 	)"
 DEPEND="
