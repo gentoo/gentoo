@@ -42,7 +42,7 @@ DEPEND="
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	media-libs/libsdl2
-	media-video/mpv[libmpv]
+	media-video/mpv:=[libmpv]
 	sys-libs/zlib
 	virtual/opengl
 	x11-libs/libX11
