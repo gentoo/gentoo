@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit flag-o-matic autotools
+inherit autotools
 
 PATCHREV="r0"
 PATCHSET="gentoo-${PVR}/${PATCHREV}"
