@@ -42,7 +42,8 @@ BDEPEND="dev-lang/perl
 
 PATCHES=(
 	# bug #501010
-	"${FILESDIR}/libvpx-1.3.0-sparc-configure.patch"
+	"${FILESDIR}/${PN}-1.3.0-sparc-configure.patch"
+	"${FILESDIR}/${P}-configure-clang16.patch"
 )
 
 src_configure() {
