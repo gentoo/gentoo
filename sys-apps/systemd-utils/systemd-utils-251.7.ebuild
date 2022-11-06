@@ -108,6 +108,7 @@ src_prepare() {
 		# Breaks Clang. Revert the commit for now and force off F_S=3.
 		"${FILESDIR}/251-revert-fortify-source-3-fix.patch"
 		"${FILESDIR}/251-gpt-auto-no-cryptsetup.patch"
+		"${FILESDIR}/251-meson-0.64.patch"
 	)
 
 	if use elibc_musl; then
