@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 xdg
 
@@ -23,7 +23,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	>=media-video/mpv-0.25[libmpv]
+	>=media-video/mpv-0.25:=[libmpv]
 "
 RDEPEND="${DEPEND}
 	>=dev-python/PyQt5-5.7[dbus,multimedia,widgets,${PYTHON_USEDEP}]
@@ -37,5 +37,5 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_install() {
 	distutils-r1_src_install
-	mv "${ED}/usr/share/doc/${PN}" "${ED}/usr/share/doc/${P}"
+	mv "${ED}"/usr/share/doc/{${PN},${PF}} || die
 }
