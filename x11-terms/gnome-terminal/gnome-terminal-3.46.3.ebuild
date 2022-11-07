@@ -16,7 +16,7 @@ IUSE="debug +gnome-shell +nautilus vanilla"
 SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.gz"
 SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${PN}-3.46.2-cntr-ntfy-autottl-ts.patch.xz )"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # FIXME: automagic dependency on gtk+[X], just transitive but needs proper control, bug 624960
 RDEPEND="
