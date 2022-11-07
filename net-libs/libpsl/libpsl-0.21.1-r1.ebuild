@@ -38,7 +38,8 @@ pkg_pretend() {
 }
 
 multilib_src_configure() {
-	append-lfs-flags # bug 880077
+	# bug #880077, https://github.com/rockdaboot/libpsl/pull/189
+	append-lfs-flags
 
 	local myeconfargs=(
 		--disable-asan
