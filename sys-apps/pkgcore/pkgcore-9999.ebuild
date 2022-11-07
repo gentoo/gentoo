@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=standalone
 PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
@@ -32,29 +32,25 @@ else
 	RDEPEND+=" >=dev-python/snakeoil-0.10.1[${PYTHON_USEDEP}]"
 fi
 BDEPEND="
+	>=dev-python/flit_core-3.8[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/pytest-6[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)
 "
 
-distutils_enable_tests setup.py
+distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# fail because of forcing Gentoo's prefix
+	tests/ebuild/test_eapi.py::TestEAPI::test_register
+	tests/ebuild/test_eapi.py::TestEAPI::test_is_supported
+)
 
 src_prepare() {
 	# force Gentoo's prefix
-	sed -e "/INSTALL_PREFIX =/s@= .*\$@= '${EPREFIX}/usr'@" -i setup.py || die
+	sed -e "/INSTALL_PREFIX =/s@= .*\$@= '${EPREFIX}/usr'@" -i py_build.py || die
 
 	distutils-r1_src_prepare
-}
-
-src_test() {
-	# With PYTHONDONTWRITEBYTECODE=, python will try rebuild all sorts of modules.
-	# https://bugs.gentoo.org/840266
-	local -x SANDBOX_PREDICT=${SANDBOX_PREDICT}
-	addpredict /
-
-	local -x PYTHONDONTWRITEBYTECODE=
-	distutils-r1_src_test
 }
 
 python_install_all() {
