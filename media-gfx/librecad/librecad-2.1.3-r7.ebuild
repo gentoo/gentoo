@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PLOCALES="ar ca cs da de el en en_au es es_ar es_bo es_cl es_co es_cr es_do es_ec es_gt es_hn es_mx es_ni es_pa es_pe es_pr es_py es_sv es_us es_uy es_ve et eu fi fr gl hi hu id_ID it ja ko lv mk nl no pa pl pt_br pt_pt ro_ro ru sk sl sq_al sv ta tr uk zh_cn zh_tw"
+PLOCALES="ar ca cs da de el en en_au es es_ar es_bo es_cl es_co es_cr es_do es_ec es_gt es_hn es_mx es_ni es_pa es_pe es_pr es_py es_sv es_us es_uy es_ve et eu fi fr gl hi hu id_ID it ja ko lv nl no pa pl pt_br pt_pt ro_ro ru sk sl sq_al sv ta tr uk zh_cn zh_tw"
 
 inherit desktop edo plocale qmake-utils
 
@@ -13,7 +13,9 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/LibreCAD/LibreCAD.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/LibreCAD/LibreCAD/archive/${PV/_/}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/LibreCAD/LibreCAD/archive/${PV/_/}.tar.gz -> ${P}.tar.gz
+		https://github.com/Fat-Zer/librecad-gentoo-CVE-patches/archive/v${PV/_/}.tar.gz -> librecad-gentoo-CVE-patches-${PV}.tar.gz
+	"
 	S="${WORKDIR}/LibreCAD-${PV}"
 	KEYWORDS="~amd64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
@@ -40,8 +42,20 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-qt-5.11.patch"
+	"${FILESDIR}/${P}-gcc-9.patch"
+	"${FILESDIR}/${P}-qt-5.15.patch"
+	"${FILESDIR}/${P}-boost-1.76.patch" # bug 788706, upstream PR#1345
+)
+
 src_prepare() {
 	default
+
+	# Note: the CVE patches are borrowed from debian packaging; some of the
+	# patches are too big for the tree; move them to a separate repo/
+	# see bug #825362 and bug #832210
+	eapply "${WORKDIR}/librecad-gentoo-CVE-patches-${PV}"
 
 	# Stock script doesn't work correctly on gentoo (see bug #847394)
 	# and also it compiles all translations regardles of selected locales.
@@ -79,7 +93,7 @@ src_install() {
 	doins -r unix/resources/*
 	use doc && docinto html && dodoc -r librecad/support/doc/*
 	insinto /usr/share/metainfo
-	doins unix/appdata/org.librecad.librecad.appdata.xml
+	doins unix/appdata/librecad.appdata.xml
 	doicon librecad/res/main/${PN}.png
 	make_desktop_entry ${PN} LibreCAD ${PN} Graphics
 }
