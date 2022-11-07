@@ -10,7 +10,7 @@ HOMEPAGE="https://chromium.googlesource.com/catapult/+/refs/heads/main/web_page_
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 
 SRC_URI="https://github.com/elkablo/web_page_replay_go/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/elkablo/web_page_replay_go/releases/download/v${PV}/web_page_replay_go-${PV}-deps.tar.xz"
