@@ -26,7 +26,7 @@ KEYWORDS="~amd64 ~arm ~arm64"
 CP_DEPEND="~dev-java/felix-framework-${PV}:0"
 
 DEPEND="
-	>=virtual/jdk-1.8:*
+	>=virtual/jdk-11:*
 	${CP_DEPEND}
 "
 
