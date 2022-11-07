@@ -37,11 +37,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 
 # Minimal supported version of Qt.
-QT_PV="$(ver_cut 1-2):6"
+QT_PV="$(ver_cut 1-2)*:6"
 
 # Since Clang is required at both build- and runtime, BDEPEND is omitted here.
 RDEPEND="${PYTHON_DEPS}
-	>=dev-qt/qtbase-${QT_PV}
+	=dev-qt/qtbase-${QT_PV}
 	sys-devel/clang:=
 	sys-devel/clang-runtime:=
 	docstrings? (
@@ -52,7 +52,7 @@ RDEPEND="${PYTHON_DEPS}
 	vulkan? ( dev-util/vulkan-headers )
 "
 DEPEND="${RDEPEND}
-	test? ( >=dev-qt/qtbase-${QT_PV}[gui] )
+	test? ( =dev-qt/qtbase-${QT_PV}[gui] )
 "
 # testlib is toggled by the gui flag on qtbase
 
