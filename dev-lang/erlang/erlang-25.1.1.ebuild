@@ -84,6 +84,10 @@ src_configure() {
 src_compile() {
 	emake
 
+	if use doc ; then
+		emake docs DOC_TARGETS=chunks
+	fi
+
 	if use emacs ; then
 		pushd lib/tools/emacs &>/dev/null || die
 		elisp-compile *.el
@@ -110,6 +114,8 @@ src_install() {
 	emake INSTALL_PREFIX="${D}" install
 
 	if use doc ; then
+		emake INSTALL_PREFIX="${D}" install-docs DOC_TARGETS=chunks
+
 		# Note: we explicitly install docs into:
 		#     /usr/share/doc/${PF}/{doc,lib,erts-*}
 		# To maintain that layout we gather everything in 'html-docs'.
