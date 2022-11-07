@@ -166,11 +166,6 @@ src_configure() {
 	# PKG_CONFIG needed for cross.
 	tc-export CXX PKG_CONFIG
 
-	# Fix implicit declarations on cross and prefix builds. Bug #674070.
-	if use ncurses; then
-		append-cppflags -I"${ESYSROOT}"/usr/include/ncursesw
-	fi
-
 	local dbmliborder=
 	if use gdbm; then
 		dbmliborder+="${dbmliborder:+:}gdbm"
@@ -288,6 +283,11 @@ src_configure() {
 	local -x CFLAGS_NODIST=${CFLAGS}
 	local -x LDFLAGS_NODIST=${LDFLAGS}
 	local -x CFLAGS= LDFLAGS=
+
+	# Fix implicit declarations on cross and prefix builds. Bug #674070.
+	if use ncurses; then
+		append-cppflags -I"${ESYSROOT}"/usr/include/ncursesw
+	fi
 
 	econf "${myeconfargs[@]}"
 
