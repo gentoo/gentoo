@@ -239,6 +239,7 @@ src_prepare() {
 		# bug #841770.
 		"${FILESDIR}/251-revert-fortify-source-3-fix.patch"
 		"${FILESDIR}/251-gpt-auto-no-cryptsetup.patch"
+		"${FILESDIR}/251-meson-0.64.patch"
 	)
 
 	if ! use vanilla; then
