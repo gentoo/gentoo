@@ -112,10 +112,11 @@ multilib_src_configure() {
 	# TODO: in the future, we may want to add wolfssl (https://www.wolfssl.com/)
 	local myconf=()
 
-	myconf+=( --without-gnutls --without-mbedtls --without-nss --without-ssl )
 	myconf+=( --without-ca-fallback --with-ca-bundle="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt  )
 	#myconf+=( --without-default-ssl-backend )
 	if use ssl ; then
+		myconf+=( -without-gnutls --without-mbedtls --without-nss )
+
 		if use gnutls || use curl_ssl_gnutls; then
 			einfo "SSL provided by gnutls"
 			myconf+=( --with-gnutls --with-nettle )
@@ -150,6 +151,7 @@ multilib_src_configure() {
 		fi
 
 	else
+		myconf+=( --without-ssl )
 		einfo "SSL disabled"
 	fi
 
