@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>llvm@gentoo.org</email>
+	</maintainer>
+	<longdescription>flang is:
+	Flang is a ground-up implementation of a Fortran front end written in modern C++. It started off as the f18 project (https://github.com/flang-compiler/f18) with an aim to replace the previous flang project (https://github.com/flang-compiler/flang) and address its various deficiencies. F18 was subsequently accepted into the LLVM project and rechristened as Flang.
+	</longdescription>
+	<use>
+		<flag name="clang">Switch to clang/clang++ compiler instead of system wide compiler</flag>
+	</use>
+</pkgmetadata>
