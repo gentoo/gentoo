@@ -14,7 +14,7 @@ SRC_URI="https://github.com/python-lsp/docstring-to-markdown/archive/refs/tags/v
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 distutils_enable_tests pytest
 
