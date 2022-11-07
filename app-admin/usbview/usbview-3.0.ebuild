@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-info
+inherit linux-info xdg
 
 DESCRIPTION="Display the topology of devices on the USB bus"
 HOMEPAGE="http://www.kroah.com/linux-usb/ https://github.com/gregkh/usbview"
