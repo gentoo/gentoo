@@ -40,10 +40,11 @@ RESTRICT="test"
 QT_PV="$(ver_cut 1-2)*:6"
 
 # Since Clang is required at both build- and runtime, BDEPEND is omitted here.
+LLVM_MAX_SLOT=15
 RDEPEND="${PYTHON_DEPS}
 	=dev-qt/qtbase-${QT_PV}
-	sys-devel/clang:=
-	sys-devel/clang-runtime:=
+	<sys-devel/clang-16:=
+	<sys-devel/clang-runtime-16:=
 	docstrings? (
 		>=dev-libs/libxml2-2.6.32
 		>=dev-libs/libxslt-1.1.19
