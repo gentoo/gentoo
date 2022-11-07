@@ -265,7 +265,7 @@ src_configure() {
 		popd &> /dev/null || die
 	fi
 
-        # Fix implicit declarations on cross and prefix builds. Bug #674070.
+	# Fix implicit declarations on cross and prefix builds. Bug #674070.
 	if use ncurses; then
 		append-cppflags -I"${ESYSROOT}"/usr/include/ncursesw
 	fi
