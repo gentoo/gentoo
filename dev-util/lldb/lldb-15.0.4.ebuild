@@ -53,7 +53,7 @@ BDEPEND="
 
 LLVM_COMPONENTS=( lldb cmake )
 LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
-LLVM_PATCHSET=${PV}
+LLVM_PATCHSET=${PV}-r1
 llvm.org_set_globals
 
 pkg_setup() {
