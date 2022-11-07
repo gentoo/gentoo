@@ -25,9 +25,10 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="+X test transfer wayland"
 REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	|| ( X wayland )
-	${PYTHON_REQUIRED_USE}"
-RESTRICT="!X? ( test ) !test? ( test ) !transfer? ( test ) !wayland? ( test )"
+	test? ( X transfer wayland )"
+RESTRICT="!test? ( test )"
 
 # dlopen: fontconfig,libglvnd
 RDEPEND="
