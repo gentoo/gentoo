@@ -89,8 +89,8 @@ src_prepare() {
 	# bug #653400
 	append-cxxflags -std=c++11
 
-	# bug #601902
-	append-libs "$($(tc-getPKG_CONFIG) --libs ncurses)"
+	# bug #601902, bug #825058
+	use ncurses && append-libs $($(tc-getPKG_CONFIG) --libs tinfow || die)
 
 	# fix docs install path, bug 543870#c14
 	sed -i "s/libcaca-dev/${PF}/g" doc/Makefile.am || die
