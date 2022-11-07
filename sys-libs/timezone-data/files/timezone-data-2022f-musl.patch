@@ -1,0 +1,181 @@
+https://github.com/eggert/tz/commit/a91830b783db3bb481930c67914d3c16b821f717
+https://github.com/eggert/tz/commit/dbe87fe421f76a3d1ac31082868ce60dfcbdefc4
+https://github.com/eggert/tz/commit/b037132599996358fe4774912b7405db0f5b0ee1
+https://github.com/eggert/tz/commit/317cc2c05a0acd02597e9db2b97af078630c1dde
+https://github.com/eggert/tz/commit/f4808ee8fa61b0df82337e8f0fa02ca3db598cb8
+
+From a91830b783db3bb481930c67914d3c16b821f717 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Fri, 28 Oct 2022 22:55:10 -0700
+Subject: [PATCH] Fix tzalloc bug on platforms lacking tm_zone
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Problem reported by Đoàn Trần Công Danh in:
+https://mm.icann.org/pipermail/tz/2022-October/032153.html
+* zdump.c (tzalloc) [!USE_LOCALTIME_RZ && HAVE_SETENV]:
+Return a nonnull pointer.
+--- a/zdump.c
++++ b/zdump.c
+@@ -234,7 +234,7 @@ tzalloc(char const *val)
+     exit(EXIT_FAILURE);
+   }
+   tzset();
+-  return NULL;
++  return &progname;  /* Any valid non-null char ** will do.  */
+ # else
+   enum { TZeqlen = 3 };
+   static char const TZeq[TZeqlen] = "TZ=";
+
+From dbe87fe421f76a3d1ac31082868ce60dfcbdefc4 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Fri, 28 Oct 2022 23:22:26 -0700
+Subject: [PATCH] Port struct tm guessing to musl
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Prompted by report from Đoàn Trần Công Danh in:
+https://mm.icann.org/pipermail/tz/2022-October/032153.html
+* private.h (TM_GMTOFF, TM_ZONE): By default, assume they
+work on musl, which #defines __tm_zone.
+--- a/private.h
++++ b/private.h
+@@ -613,6 +613,7 @@ time_t posix2time(time_t);
+ /* Infer TM_ZONE on systems where this information is known, but suppress
+    guessing if NO_TM_ZONE is defined.  Similarly for TM_GMTOFF.  */
+ #if (defined __GLIBC__ \
++     || defined __tm_zone /* musl */ \
+      || defined __FreeBSD__ || defined __NetBSD__ || defined __OpenBSD__ \
+      || (defined __APPLE__ && defined __MACH__))
+ # if !defined TM_GMTOFF && !defined NO_TM_GMTOFF
+
+From b037132599996358fe4774912b7405db0f5b0ee1 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Fri, 28 Oct 2022 23:52:59 -0700
+Subject: [PATCH] =?UTF-8?q?Don=E2=80=99t=20assume=20nonempty=20argv?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Don’t dump core if argv[0] is NULL, which is allowed on
+GNU/Linux if the invoker is sufficiently perverse.
+* zdump.c (progname): Now char const *, so that it can be given
+the address of a string constant.
+(tzalloc): Use optarg, not progname, since progname’s type is no
+longer correct.
+* zdump.c, zic.c (main): Initialize progname to non-null.
+--- a/zdump.c
++++ b/zdump.c
+@@ -84,7 +84,7 @@ static time_t const absolute_max_time =
+    ? (((time_t) 1 << atime_shift) - 1 + ((time_t) 1 << atime_shift))
+    : -1);
+ static int	longest;
+-static char *	progname;
++static char const *progname;
+ static bool	warned;
+ static bool	errout;
+ 
+@@ -234,7 +234,7 @@ tzalloc(char const *val)
+     exit(EXIT_FAILURE);
+   }
+   tzset();
+-  return &progname;  /* Any valid non-null char ** will do.  */
++  return &optarg;  /* Any valid non-null char ** will do.  */
+ # else
+   enum { TZeqlen = 3 };
+   static char const TZeq[TZeqlen] = "TZ=";
+@@ -463,7 +463,7 @@ main(int argc, char *argv[])
+ # endif /* defined TEXTDOMAINDIR */
+ 	textdomain(TZ_DOMAIN);
+ #endif /* HAVE_GETTEXT */
+-	progname = argv[0];
++	progname = argv[0] ? argv[0] : "zdump";
+ 	for (i = 1; i < argc; ++i)
+ 		if (strcmp(argv[i], "--version") == 0) {
+ 			printf("zdump %s%s\n", PKGVERSION, TZVERSION);
+--- a/zic.c
++++ b/zic.c
+@@ -943,7 +943,7 @@ main(int argc, char **argv)
+ 	textdomain(TZ_DOMAIN);
+ #endif /* HAVE_GETTEXT */
+ 	main_argv = argv;
+-	progname = argv[0];
++	progname = argv[0] ? argv[0] : "zic";
+ 	if (TYPE_BIT(zic_t) < 64) {
+ 		fprintf(stderr, "%s: %s\n", progname,
+ 			_("wild compilation-time specification of zic_t"));
+
+From 317cc2c05a0acd02597e9db2b97af078630c1dde Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Mon, 31 Oct 2022 12:41:48 -0700
+Subject: [PATCH] Port better to old Linux kernels
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Problem reported by Igor Ivanov in:
+https://mm.icann.org/pipermail/tz/2022-October/032192.html
+* zic.c (get_rand_u64): Don’t use clock_gettime; it’s too much of
+a configuration hassle.
+---
+ zic.c | 15 +++------------
+ 2 files changed, 5 insertions(+), 15 deletions(-)
+
+diff --git a/zic.c b/zic.c
+index a85f2a4c..14393a3d 100644
+--- a/zic.c
++++ b/zic.c
+@@ -1210,21 +1210,12 @@ get_rand_u64(void)
+ #endif
+ 
+   /* getrandom didn't work, so fall back on portable code that is
+-     not the best because the seed doesn't necessarily have enough bits,
+-     the seed isn't cryptographically random on platforms lacking
+-     getrandom, and 'rand' might not be cryptographically secure.  */
++     not the best because the seed isn't cryptographically random and
++     'rand' might not be cryptographically secure.  */
+   {
+     static bool initialized;
+     if (!initialized) {
+-      unsigned seed;
+-#ifdef CLOCK_REALTIME
+-      struct timespec now;
+-      clock_gettime (CLOCK_REALTIME, &now);
+-      seed = now.tv_sec ^ now.tv_nsec;
+-#else
+-      seed = time(NULL);
+-#endif
+-      srand(seed);
++      srand(time(NULL));
+       initialized = true;
+     }
+   }
+
+
+From f4808ee8fa61b0df82337e8f0fa02ca3db598cb8 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Fri, 4 Nov 2022 19:57:00 -0700
+Subject: [PATCH] Fix unlikely conversion bug in zic
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* zic.c (puttzcode): Arg is zic_t, not int_fast32_t.  This fixes a
+portability bug on platforms where int_fast32_t is a 32-bit ones’
+complement or signed-magnitude integer, and where the argument is
+-2**31 before conversion to int_fast32_t.  Although I don’t know
+of any such platforms, the C standard allows them.
+--- a/zic.c
++++ b/zic.c
+@@ -2216,7 +2216,7 @@ convert64(uint_fast64_t val, char *buf)
+ }
+ 
+ static void
+-puttzcode(const int_fast32_t val, FILE *const fp)
++puttzcode(zic_t val, FILE *fp)
+ {
+ 	char	buf[4];
+ 
+
