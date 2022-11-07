@@ -79,11 +79,37 @@ src_install() {
 }
 
 pkg_postinst() {
+	optfeature_header "Optional package dependencies for certain graphs:"
 	optfeature "disk drive temperatures and health" app-admin/hddtemp
 	optfeature "email reports/statics" mail-mta/postfix mail-mta/sendmail
 	optfeature "lm-sensors and GPU temperatures" sys-apps/lm-sensors
+	optfeature "ZFS statistics" sys-fs/zfs
+	optfeature "Tinyproxy statistics" "net-proxy/tinyproxy dev-perl/XML-LibXML"
+	optfeature "Libvirt statistics" app-emulation/libvirt
+	optfeature "System services demand" mail-filter/MailScanner mail-filter/amavisd-new
+	optfeature "Mail statistics" mail-filter/MailScanner mail-filter/amavisd-new
+	optfeature "FTP statistics" net-ftp/proftpd net-ftp/vsftpd net-ftp/pure-ftpd
+	optfeature "Apache statistics" www-servers/apache
+	optfeature "Nginx statistics" www-servers/nginx
+	optfeature "Lighttpd statistics" www-servers/lighttpd
+	optfeature "MySQL statistics" dev-db/mysql
+	optfeature "PostgreSQL statistics" dev-db/postgresql
+	optfeature "MongoDB statistics" dev-db/mongodb
+	optfeature "Varnish cache statistics" www-servers/varnish
+	optfeature "Squid Proxy Web Cache" net-proxy/squid
+	optfeature "NFS client/server statistics" net-fs/nfs-utils
+	optfeature "BIND statistics" "net-dns/bind dev-perl/XML-LibXML"
+	optfeature "Unbound statistics" net-dns/unbound
+	optfeature "NTP statistics"  net-misc/ntp
+	optfeature "Chrony statistics" net-misc/chrony
+	optfeature "Fail2ban statistics" net-analyzer/fail2ban
+	optfeature "Icecast Streaming Media Server" net-misc/icecast
+	optfeature "Memcached statistics" net-misc/memcached
+	optfeature "Redis statistics" dev-db/redis
 	optfeature "APC UPS statistics" sys-power/apcupsd
 	optfeature "Network UPS Tools statistics" sys-power/nut
+	optfeature "Monitoring the Internet traffic of your LAN" "net-firewall/iptables dev-perl/Net-IP"
+
 	elog
 	elog "If you wish to use your own web server:"
 	elog "  Web data can be found at: ${EROOT}/var/lib/${PN}/www/"
