@@ -75,33 +75,33 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RESTRICT="test"
 
 # Minimal supported version of Qt.
-QT_PV="$(ver_cut 1-2):6"
+QT_PV="$(ver_cut 1-2)*:6"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-python/shiboken6-${PV}[${PYTHON_USEDEP}]
-	>=dev-qt/qtbase-${QT_PV}[concurrent?,dbus?,gles2-only=,network?,opengl?,sql?,widgets?,xml?]
-	charts? ( >=dev-qt/qtcharts-${QT_PV} )
-	designer? ( >=dev-qt/qttools-${QT_PV}[designer] )
+	~dev-python/shiboken6-${PV}[${PYTHON_USEDEP}]
+	=dev-qt/qtbase-${QT_PV}[concurrent?,dbus?,gles2-only=,network?,opengl?,sql?,widgets?,xml?]
+	charts? ( =dev-qt/qtcharts-${QT_PV} )
+	designer? ( =dev-qt/qttools-${QT_PV}[designer] )
 	gui? (
-		>=dev-qt/qtbase-${QT_PV}[gui,jpeg]
+		=dev-qt/qtbase-${QT_PV}[gui,jpeg]
 		x11-libs/libxkbcommon
 	)
-	help? ( >=dev-qt/qttools-${QT_PV}[assistant] )
-	multimedia? ( >=dev-qt/qtmultimedia-${QT_PV}[qml(+)?,gles2-only(-)=,widgets(+)?] )
-	network-auth? ( >=dev-qt/qtnetworkauth-${QT_PV} )
-	positioning? ( >=dev-qt/qtpositioning-${QT_PV} )
-	printsupport? ( >=dev-qt/qtbase-${QT_PV}[gui,widgets] )
-	qml? ( >=dev-qt/qtdeclarative-${QT_PV}[widgets?] )
-	quick3d? ( >=dev-qt/qtquick3d-${QT_PV} )
-	serialport? ( >=dev-qt/qtserialport-${QT_PV} )
-	svg? ( >=dev-qt/qtsvg-${QT_PV} )
-	testlib? ( >=dev-qt/qtbase-${QT_PV}[gui] )
-	webchannel? ( >=dev-qt/qtwebchannel-${QT_PV} )
-	webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets?] )
-	websockets? ( >=dev-qt/qtwebsockets-${QT_PV} )
+	help? ( =dev-qt/qttools-${QT_PV}[assistant] )
+	multimedia? ( =dev-qt/qtmultimedia-${QT_PV}[qml(+)?,gles2-only(-)=,widgets(+)?] )
+	network-auth? ( =dev-qt/qtnetworkauth-${QT_PV} )
+	positioning? ( =dev-qt/qtpositioning-${QT_PV} )
+	printsupport? ( =dev-qt/qtbase-${QT_PV}[gui,widgets] )
+	qml? ( =dev-qt/qtdeclarative-${QT_PV}[widgets?] )
+	quick3d? ( =dev-qt/qtquick3d-${QT_PV} )
+	serialport? ( =dev-qt/qtserialport-${QT_PV} )
+	svg? ( =dev-qt/qtsvg-${QT_PV} )
+	testlib? ( =dev-qt/qtbase-${QT_PV}[gui] )
+	webchannel? ( =dev-qt/qtwebchannel-${QT_PV} )
+	webengine? ( =dev-qt/qtwebengine-${QT_PV}[widgets?] )
+	websockets? ( =dev-qt/qtwebsockets-${QT_PV} )
 "
 DEPEND="${RDEPEND}
-	test? ( >=dev-qt/qtbase-${QT_PV}[gui] )
+	test? ( =dev-qt/qtbase-${QT_PV}[gui] )
 "
 # testlib is toggled by the gui flag on qtbase
 

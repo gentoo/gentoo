@@ -71,28 +71,28 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RESTRICT="test"
 
 # Minimal supported version of Qt.
-QT_PV="$(ver_cut 1-2):6"
+QT_PV="$(ver_cut 1-2)*:6"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-python/shiboken6-${PV}[${PYTHON_USEDEP}]
-	>=dev-qt/qtbase-${QT_PV}[dbus?,opengl?,gles2-only=,sql?,network?,concurrent?,widgets?,xml(+)?]
-	designer? ( >=dev-qt/qttools-${QT_PV}[designer] )
-	gui? ( >=dev-qt/qtbase-${QT_PV}[gui,jpeg] )
-	help? ( >=dev-qt/qttools-${QT_PV}[assistant] )
-	multimedia? ( >=dev-qt/qtmultimedia-${QT_PV}[qml(+)?,gles2-only(-)=,widgets(+)?] )
-	positioning? ( >=dev-qt/qtpositioning-${QT_PV}[qml(+)?] )
-	printsupport? ( >=dev-qt/qtbase-${QT_PV}[gui,widgets] )
-	qml? ( >=dev-qt/qtdeclarative-${QT_PV}[widgets?] )
-	quick3d? ( >=dev-qt/qtquick3d-${QT_PV} )
-	serialport? ( >=dev-qt/qtserialport-${QT_PV} )
-	svg? ( >=dev-qt/qtsvg-${QT_PV} )
-	testlib? ( >=dev-qt/qtbase-${QT_PV}[gui] )
-	webchannel? ( >=dev-qt/qtwebchannel-${QT_PV}[qml(+)?] )
-	webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets?] )
-	websockets? ( >=dev-qt/qtwebsockets-${QT_PV} )
+	~dev-python/shiboken6-${PV}[${PYTHON_USEDEP}]
+	=dev-qt/qtbase-${QT_PV}[dbus?,opengl?,gles2-only=,sql?,network?,concurrent?,widgets?,xml(+)?]
+	designer? ( =dev-qt/qttools-${QT_PV}[designer] )
+	gui? ( =dev-qt/qtbase-${QT_PV}[gui,jpeg] )
+	help? ( =dev-qt/qttools-${QT_PV}[assistant] )
+	multimedia? ( =dev-qt/qtmultimedia-${QT_PV}[qml(+)?,gles2-only(-)=,widgets(+)?] )
+	positioning? ( =dev-qt/qtpositioning-${QT_PV}[qml(+)?] )
+	printsupport? ( =dev-qt/qtbase-${QT_PV}[gui,widgets] )
+	qml? ( =dev-qt/qtdeclarative-${QT_PV}[widgets?] )
+	quick3d? ( =dev-qt/qtquick3d-${QT_PV} )
+	serialport? ( =dev-qt/qtserialport-${QT_PV} )
+	svg? ( =dev-qt/qtsvg-${QT_PV} )
+	testlib? ( =dev-qt/qtbase-${QT_PV}[gui] )
+	webchannel? ( =dev-qt/qtwebchannel-${QT_PV}[qml(+)?] )
+	webengine? ( =dev-qt/qtwebengine-${QT_PV}[widgets?] )
+	websockets? ( =dev-qt/qtwebsockets-${QT_PV} )
 "
 DEPEND="${RDEPEND}
-	test? ( >=dev-qt/qtbase-${QT_PV}[gui] )
+	test? ( =dev-qt/qtbase-${QT_PV}[gui] )
 "
 # testlib is toggled by the gui flag on qtbase
 
