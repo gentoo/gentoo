@@ -583,7 +583,7 @@ src_prepare() {
 		keeplibs+=( third_party/libpng )
 	fi
 	if ! use system-av1; then
-		keep_libs+=(
+		keeplibs+=(
 			third_party/dav1d
 			third_party/libaom
 			third_party/libaom/source/libaom/third_party/fastfeat
