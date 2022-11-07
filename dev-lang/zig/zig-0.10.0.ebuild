@@ -36,15 +36,19 @@ RDEPEND="
 	!dev-lang/zig-bin
 "
 
-llvm_check_deps() {
-	has_version "sys-devel/clang:${LLVM_SLOT}"
-}
+# see https://github.com/ziglang/zig/issues/3382
+# For now, Zig doesn't support CFLAGS/LDFLAGS/etc.
+QA_FLAGS_IGNORED="usr/bin/zig"
 
 # see https://ziglang.org/download/0.10.0/release-notes.html#Self-Hosted-Compiler
 # 0.10.0 release - ~9.6 GiB, since we use compiler written in C++ for bootstrapping
 # 0.11.0 release - ~2.8 GiB, since we will (at least according to roadmap) use self-hosted compiler
 # (transpiled to C via C backend) for bootstrapping
 CHECKREQS_MEMORY="10G"
+
+llvm_check_deps() {
+	has_version "sys-devel/clang:${LLVM_SLOT}"
+}
 
 pkg_setup() {
 	llvm_pkg_setup
@@ -65,10 +69,6 @@ src_test() {
 	cd "${BUILD_DIR}" || die
 	./zig2 build test -Dstatic-llvm=false -Denable-llvm=true -Dskip-non-native=true || die
 }
-
-# see https://github.com/ziglang/zig/issues/3382
-# For now, Zig doesn't support CFLAGS/LDFLAGS/etc.
-QA_FLAGS_IGNORED="usr/bin/zig"
 
 pkg_postinst() {
 	elog "0.10.0 release introduces self-hosted compiler for general use by default"
