@@ -11,7 +11,7 @@ SRC_URI="http://www.kroah.com/linux-usb/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~sparc x86"
 
 RDEPEND="
 	dev-libs/glib:2
