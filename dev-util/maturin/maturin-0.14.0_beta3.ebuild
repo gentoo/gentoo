@@ -339,6 +339,8 @@ CRATES="
 	zip-0.6.3
 	zvariant-2.10.0
 	zvariant_derive-2.10.0"
+# additional crates used by test-crates/* test packages,
+# `grep test-crates tests/run.rs` to see which are needed
 CRATES_TEST="
 	libc-0.2.134
 	parking_lot_core-0.9.4
