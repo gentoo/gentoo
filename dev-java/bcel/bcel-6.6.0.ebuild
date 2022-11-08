@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple verify-sig
 
 DESCRIPTION="Apache Commons Bytecode Engineering Library"
 HOMEPAGE="https://commons.apache.org/proper/commons-bcel/"
-SRC_URI="mirror://apache/commons/${PN}/source/${P}-src.tar.gz
+SRC_URI="https://archive.apache.org/dist/commons/bcel/source/bcel-${PV}-src.tar.gz
 	verify-sig? ( https://downloads.apache.org/commons/bcel/source/bcel-${PV}-src.tar.gz.asc )"
 
 LICENSE="Apache-2.0"
