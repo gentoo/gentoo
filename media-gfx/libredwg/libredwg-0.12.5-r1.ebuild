@@ -19,7 +19,7 @@ SRC_URI="
 	https://github.com/zserge/jsmn/archive/${JSMN_COMMIT}.tar.gz -> ${PN}-${JSMN_COMMIT}.tar.gz
 "
 
-LICENSE="GPL-3 MIT"
+LICENSE="GPL-3+ MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
