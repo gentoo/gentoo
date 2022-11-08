@@ -14,7 +14,7 @@ SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~ppc64 ~riscv"
 
 COMMON_DEPEND="acct-group/gitlab-runner
 	acct-user/gitlab-runner"
