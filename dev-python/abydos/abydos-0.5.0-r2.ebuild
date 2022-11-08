@@ -13,7 +13,7 @@ SRC_URI="https://github.com/chrislit/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 
 # Requires access to the internet
 RESTRICT="test"
