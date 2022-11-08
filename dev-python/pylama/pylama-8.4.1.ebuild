@@ -28,6 +28,7 @@ BDEPEND="
 		dev-python/mypy[${PYTHON_USEDEP}]
 		dev-python/pylint[${PYTHON_USEDEP}]
 		dev-python/radon[${PYTHON_USEDEP}]
+		dev-python/toml[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)
 "
