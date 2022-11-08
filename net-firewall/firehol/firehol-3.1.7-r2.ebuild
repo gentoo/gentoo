@@ -14,16 +14,22 @@ SLOT="0"
 IUSE="doc ipv6 ipset"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 
-RDEPEND="net-firewall/iptables
+# Set the dependency versions to aid cross-compiling. Keep them at their
+# minimums as the configure script merely checks whether they are sufficient.
+MY_BASH_VERSION=4.0
+MY_IPRANGE_VERSION=1.0.2
+
+RDEPEND="
+	app-arch/gzip
+	>=app-shells/bash-${MY_BASH_VERSION}:0
+	net-analyzer/traceroute
+	net-firewall/iptables
+	>=net-misc/iprange-${MY_IPRANGE_VERSION}:0
+	net-misc/iputils[ipv6(+)?]
 	sys-apps/iproute2[-minimal,ipv6(+)?]
 	sys-apps/kmod[tools]
-	net-misc/iputils[ipv6(+)?]
-	net-misc/iprange
-	net-analyzer/traceroute
-	app-arch/gzip
-	ipset? (
-		net-firewall/ipset
-	)"
+	ipset? ( net-firewall/ipset )
+"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
@@ -50,6 +56,9 @@ pkg_setup() {
 }
 
 src_configure() {
+	# This erroneously checks for BASH_VERSION_PATH rather than BASH_VERSION.
+	BASH_VERSION_PATH=${MY_BASH_VERSION} \
+	IPRANGE_VERSION=${MY_IPRANGE_VERSION} \
 	econf \
 		--disable-vnetbuild \
 		$(use_enable ipset update-ipsets) \
