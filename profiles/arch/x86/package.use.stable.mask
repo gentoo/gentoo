@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-11-06)
+# Unmask the target on python-exec while it's masked elsewhere.
+dev-lang/python-exec -python_targets_python3_11
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-09-14)
 # sci-libs/vtk is not stable on x86 and we don't want to complicate
 # newer maxima stabilisation, bug #867547
