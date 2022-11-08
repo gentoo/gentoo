@@ -1,0 +1,26 @@
+--- chromium-101.0.4951.54/third_party/swiftshader/third_party/llvm-10.0/BUILD.gn.orig	2022-05-15 10:30:50.887333316 +0200
++++ chromium-101.0.4951.54/third_party/swiftshader/third_party/llvm-10.0/BUILD.gn	2022-05-15 10:31:43.477318032 +0200
+@@ -131,7 +131,6 @@
+   if (is_ubsan_vptr) {
+     sources = [
+       "llvm/lib/MC/MCWasmObjectTargetWriter.cpp",
+-      "llvm/lib/MC/MCXCOFFObjectTargetWriter.cpp",
+       "llvm/lib/Target/ARM/MCTargetDesc/ARMTargetStreamer.cpp",
+       "llvm/lib/Target/TargetIntrinsicInfo.cpp",
+     ]
+@@ -579,6 +578,7 @@
+     "llvm/lib/MC/MCAsmInfoCOFF.cpp",
+     "llvm/lib/MC/MCAsmInfoDarwin.cpp",
+     "llvm/lib/MC/MCAsmInfoELF.cpp",
++    "llvm/lib/MC/MCAsmInfoXCOFF.cpp",
+     "llvm/lib/MC/MCAsmMacro.cpp",
+     "llvm/lib/MC/MCAsmStreamer.cpp",
+     "llvm/lib/MC/MCAssembler.cpp",
+@@ -633,6 +633,7 @@
+     "llvm/lib/MC/MCWin64EH.cpp",
+     "llvm/lib/MC/MCWinCOFFStreamer.cpp",
+     "llvm/lib/MC/MCWinEH.cpp",
++    "llvm/lib/MC/MCXCOFFObjectTargetWriter.cpp",
+     "llvm/lib/MC/MCXCOFFStreamer.cpp",
+     "llvm/lib/MC/MachObjectWriter.cpp",
+     "llvm/lib/MC/StringTableBuilder.cpp",
