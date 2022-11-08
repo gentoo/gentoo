@@ -11,4 +11,7 @@
 		It is based on libusb, thus it requires no HID support in the kernel
 		and provides means to take control over a device even if the kernel governs it.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">libusb/hidapi</remote-id>
+	</upstream>
 </pkgmetadata>
