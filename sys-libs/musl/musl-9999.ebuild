@@ -52,10 +52,8 @@ QA_PRESTRIPPED="usr/lib/crtn.o"
 if [[ ${CATEGORY} == cross-* ]] ; then
 	IUSE="${IUSE/crypt/+crypt}"
 else
-	RDEPEND="
-		crypt? ( !sys-libs/libxcrypt[system] )
-		!crypt? ( sys-libs/libxcrypt[system] )
-	"
+	RDEPEND="crypt? ( !sys-libs/libxcrypt[system] )"
+	PDEPEND="!crypt? ( sys-libs/libxcrypt[system] )"
 fi
 
 is_crosscompile() {
