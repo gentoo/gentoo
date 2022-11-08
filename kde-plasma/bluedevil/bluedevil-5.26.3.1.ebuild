@@ -41,9 +41,3 @@ RDEPEND="${DEPEND}
 	>=kde-plasma/kde-cli-tools-${PVCUT}:5
 "
 BDEPEND=">=kde-frameworks/kcmutils-${KFMIN}:5"
-
-src_prepare() {
-	ecm_src_prepare
-	# fix missing upstream version bump
-	sed -e "/^set(PROJECT_VERSION/s/5.26.2/${PV}/" -i CMakeLists.txt || die
-}
