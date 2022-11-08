@@ -9,9 +9,9 @@ KFMIN=5.82.0
 QTMIN=5.15.5
 inherit ecm kde.org optfeature
 
-# if [[ ${KDE_BUILD_TYPE} = release ]]; then
-# 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-# fi
+if [[ ${KDE_BUILD_TYPE} = release ]]; then
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+fi
 
 DESCRIPTION="Advanced twin-panel (commander-style) file-manager with many extras"
 HOMEPAGE="https://krusader.org/"
