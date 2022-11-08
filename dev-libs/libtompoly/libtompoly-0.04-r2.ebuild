@@ -5,7 +5,7 @@ EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="portable ISO C library for polynomial basis arithmetic"
+DESCRIPTION="Portable ISO C library for polynomial basis arithmetic"
 HOMEPAGE="https://www.libtom.net/"
 SRC_URI="https://github.com/libtom/libtompoly/releases/download/${PV}/ltp-${PV}.tar.bz2"
 
