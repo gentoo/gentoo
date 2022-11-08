@@ -32,6 +32,6 @@ src_configure() {
 }
 
 src_install() {
-	emake install INSTALL_DIR="${ED}/usr/share/fonts/jmk"
+	emake install INSTDATFLAGS="-m 0644" INSTALL_DIR="${ED}/usr/share/fonts/jmk"
 	einstalldocs
 }
