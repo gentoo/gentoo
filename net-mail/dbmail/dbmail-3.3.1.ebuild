@@ -78,7 +78,6 @@ src_install() {
 		d /run/dbmail 0755 dbmail dbmail -
 	EOF
 
-
 	dobin contrib/mailbox2dbmail/mailbox2dbmail
 	doman contrib/mailbox2dbmail/mailbox2dbmail.1
 
