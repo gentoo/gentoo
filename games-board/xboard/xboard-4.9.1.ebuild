@@ -9,7 +9,7 @@ DESCRIPTION="GUI for gnuchess and for internet chess servers"
 HOMEPAGE="https://www.gnu.org/software/xboard/"
 SRC_URI="mirror://gnu/xboard/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="+default-font gtk nls Xaw3d zippy"
