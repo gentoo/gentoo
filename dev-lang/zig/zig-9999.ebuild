@@ -18,8 +18,6 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test +threads"
-RESTRICT="!test? ( test )"
 
 BUILD_DIR="${S}/build"
 
@@ -60,7 +58,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DZIG_USE_CCACHE=OFF
 		-DZIG_SHARED_LLVM=ON
-		-DZIG_SINGLE_THREADED="$(usex !threads)"
 		-DCMAKE_PREFIX_PATH=$(get_llvm_prefix ${LLVM_MAX_SLOT})
 	)
 
