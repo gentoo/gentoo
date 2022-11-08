@@ -41,6 +41,9 @@ src_configure() {
 }
 
 src_compile() {
+	# Compile the "microcode" first, bug #879901
+	emake -C microcode
+
 	# Fails with multiple make-jobs, at least it compiles relatively fast.
 	emake -j1
 }
@@ -53,7 +56,7 @@ src_compile() {
 # runtime/test-flonum.com
 
 src_test() {
-	FAST=y emake check
+	FAST=y emake check -j1
 }
 
 src_install() {
