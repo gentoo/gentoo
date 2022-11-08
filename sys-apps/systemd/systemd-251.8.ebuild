@@ -235,6 +235,7 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
+		"${FILESDIR}/251-gpt-auto-no-cryptsetup.patch"
 	)
 
 	if ! use vanilla; then
