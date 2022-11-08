@@ -17,7 +17,7 @@ fi
 DESCRIPTION="GNU GPL'd Pico clone with more functionality"
 HOMEPAGE="https://www.nano-editor.org/ https://wiki.gentoo.org/wiki/Nano/Basics_Guide"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+ LGPL-2.1+ || ( GPL-3+ FDL-1.2+ )"
 SLOT="0"
 IUSE="debug justify magic minimal ncurses nls +spell +split-usr static unicode"
 
