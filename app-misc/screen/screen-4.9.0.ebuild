@@ -18,7 +18,7 @@ else
 	S="${WORKDIR}"/${P}/src
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE="debug nethack pam selinux multiuser"
 
