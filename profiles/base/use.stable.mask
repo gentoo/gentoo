@@ -8,11 +8,6 @@
 # Postgres:15 is not stable yet
 postgres_targets_postgres15
 
-# Michał Górny <mgorny@gentoo.org> (2022-05-08)
-# Mask until dev-lang/python:3.11 becomes stable.
-python_targets_python3_11
-python_single_target_python3_11
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-13)
 # dev-vcs/darcs (dev-lang/ghc) has no stable keywords.
 darcs
