@@ -186,12 +186,6 @@ font_src_install() {
 # @DESCRIPTION:
 # Updates fontcache if !prefix and media-libs/fontconfig installed
 _update_fontcache() {
-	if [[ -d "${EROOT}"/usr/share/fonts ]] ; then
-		# unreadable font files = fontconfig segfaults
-		find "${EROOT}"/usr/share/fonts/ -type f '!' -perm 0644 \
-			-exec chmod -v 0644 2>/dev/null {} + || die "failed to fix font files perms"
-	fi
-
 	if [[ -z ${ROOT} ]] ; then
 		if has_version media-libs/fontconfig ; then
 			ebegin "Updating global fontcache"
