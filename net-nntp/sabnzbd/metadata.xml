@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
 	<use>
 		<flag name="7za">Add support for extracting 7za files</flag>
 		<flag name="rar">Add support for extracting rar files</flag>
 		<flag name="unzip">Add support for extracting zip files</flag>
 	</use>
+	<maintainer type="person" proxied="yes">
+		<email>joe@wt.gd</email>
+		<name>Joe Kappus</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">sabnzbd/sabnzbd</remote-id>
 	</upstream>
