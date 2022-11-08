@@ -32,17 +32,21 @@ BDEPEND="virtual/pkgconfig"
 
 DOCS=( "HISTORY" "README" "TODO" "docs/." )
 
-PATCHES=( "${FILESDIR}/${PN}-2.0.3-imagemagick7.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.0.3-clang.patch"
+	"${FILESDIR}/${PN}-2.0.3-cpp.patch"
+	"${FILESDIR}/${PN}-2.0.3-imagemagick7.patch"
+)
 
 src_prepare() {
 	default
 
 	# Change '/usr/local/' to '/usr'
 	# Change '/usr/lib' to '/usr/$(get_libdir)'
-	sed -e "34s:/usr/local:/usr:" -e "37s:/lib:/$(get_libdir):" -i Make.config || die
+	sed -e "22s:/usr/local:/usr:" -e "25s:/lib:/$(get_libdir):" -i Make.config || die
 
 	# Fix newer GCC version with the Futaba MDM166A lcd driver
-	sed -e "s:0xff7f0004:(int) 0xff7f0004:" -i glcddrivers/futabaMDM166A.c || die
+	sed -e "s:0xff7f0004:(int) 0xff7f0004:" -i glcddrivers/futabaMDM166A.cpp || die
 
 	tc-export CC CXX
 }
@@ -50,27 +54,27 @@ src_prepare() {
 src_configure() {
 	# Build optional drivers
 	if use lcd_devices_ax206dpf; then
-		sed -e "78s:#::" -i Make.config || die
+		sed -e "66s:#::" -i Make.config || die
 	fi
 	if use lcd_devices_picolcd_256x64; then
-		sed -e "81s:#::" -i Make.config || die
+		sed -e "69s:#::" -i Make.config || die
 	fi
 	if ! use lcd_devices_vnc; then
-		sed -e "72s:1:0:" -i Make.config || die
+		sed -e "60s:1:0:" -i Make.config || die
 	fi
 
 	# Build optional features
 	if ! use freetype; then
-		sed -e "59s:HAVE:#HAVE:" -i Make.config || die
+		sed -e "47s:HAVE:#HAVE:" -i Make.config || die
 	fi
 	if ! use fontconfig; then
-		sed -e "62s:HAVE:#HAVE:" -i Make.config || die
+		sed -e "50s:HAVE:#HAVE:" -i Make.config || die
 	fi
 	if use graphicsmagick; then
-		sed -e "69s:#::" -i Make.config || die
+		sed -e "57s:#::" -i Make.config || die
 	fi
 	if use imagemagick; then
-		sed -e "68s:#::" -i Make.config || die
+		sed -e "56s:#::" -i Make.config || die
 	fi
 }
 
