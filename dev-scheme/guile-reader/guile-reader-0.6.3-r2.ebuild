@@ -27,6 +27,10 @@ src_prepare() {
 	find "${S}" -name "*.scm" -exec touch {} + || die
 }
 
+src_compile() {
+	emake -j1
+}
+
 src_install() {
 	default
 
