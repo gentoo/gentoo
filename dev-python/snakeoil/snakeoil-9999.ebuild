@@ -25,5 +25,8 @@ SLOT="0"
 RDEPEND="
 	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	>=dev-python/flit_core-3.8[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
