@@ -1,19 +1,7 @@
-#!/sbin/runscript
-#
-# chkconfig: - 91 35
-# description: Starts and stops dbmail-timsieved
+#!/sbin/openrc-run
 #
 
-PROGRAM=dbmail-timsieved
-
-BIN_DIR=/usr/sbin
-PID_DIR=/run/dbmail
-PID=pid
-
-# Where is the dbmail.conf file located?
-CONFIG=/etc/dbmail/dbmail.conf
-
-PIDFILE="/run/dbmail-timsieved.pid"
+PIDFILE="/run/dbmail/dbmail-timsieved.pid"
 
 depend() {
 	need net

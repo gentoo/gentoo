@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit systemd readme.gentoo-r1
+inherit tmpfiles systemd readme.gentoo-r1
 
 DESCRIPTION="Fast and scalable sql based email services"
 HOMEPAGE="https://www.dbmail.org/"
@@ -16,9 +16,8 @@ IUSE="+doc jemalloc ldap sieve ssl static systemd"
 
 DEPEND="dev-db/libzdb
 	sieve? ( >=mail-filter/libsieve-2.2.1 )
-	ldap? ( >=net-nds/openldap-2.3.33:= )
-	jemalloc? ( dev-libs/jemalloc:= )
-	elibc_musl? ( sys-libs/queue-standalone )
+	ldap? ( >=net-nds/openldap-2.3.33 )
+	jemalloc? ( dev-libs/jemalloc )
 	app-text/asciidoc
 	app-text/xmlto
 	app-crypt/mhash
@@ -28,13 +27,13 @@ DEPEND="dev-db/libzdb
 	dev-libs/libevent:=
 	virtual/libcrypt:=
 	ssl? (
-		dev-libs/openssl:=
+		dev-libs/openssl:0=
 	)"
 RDEPEND="${DEPEND}
 	acct-group/dbmail
 	acct-user/dbmail"
-DEPEND+=" elibc_musl? ( sys-libs/queue-standalone )"
 DOCS=( AUTHORS README.md INSTALL THANKS UPGRADING )
+PATCHES="${FILESDIR}/dbmail-3.2.5-crypt.patch"
 
 README_GENTOO_SUFFIX=""
 
@@ -76,6 +75,9 @@ src_install() {
 	newinitd "${FILESDIR}/dbmail-lmtpd.initd" dbmail-lmtpd
 	newinitd "${FILESDIR}/dbmail-pop3d.initd" dbmail-pop3d
 	newinitd "${FILESDIR}/dbmail-timsieved.initd" dbmail-timsieved
+	newtmpfiles - dbmail.conf <<-EOF
+		d /run/dbmail 0755 dbmail dbmail -
+	EOF
 
 	dobin contrib/mailbox2dbmail/mailbox2dbmail
 	doman contrib/mailbox2dbmail/mailbox2dbmail.1
@@ -94,5 +96,6 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process dbmail.conf
 	readme.gentoo_print_elog
 }
