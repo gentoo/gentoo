@@ -70,7 +70,7 @@ RDEPEND="${PYTHON_DEPS}
 	gif? ( media-libs/giflib )
 	gsl? ( sci-libs/gsl:= )
 	jpegxl? ( >=media-libs/libjxl-0.7.0_pre20220825 )
-	heif? ( >=media-libs/libheif-1.11:= )
+	heif? ( >=media-libs/libheif-1.11:=[x265] )
 	mypaint-brush-engine? ( media-libs/libmypaint:= )
 	openexr? ( media-libs/openexr:= )
 	pdf? ( app-text/poppler[qt5] )
