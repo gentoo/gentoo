@@ -111,7 +111,6 @@ PACKAGES_UNPACK_2020=(
 	stemmers/rslp
 	taggers/averaged_perceptron_tagger
 	taggers/averaged_perceptron_tagger_ru
-	tokenizers/punkt
 )
 
 PACKAGES_UNPACK_2021_12=(
@@ -125,6 +124,10 @@ PACKAGES_UNPACK_2021_12=(
 PACKAGES_UNPACK_2022=(
 	corpora/stopwords
 	taggers/universal_tagset
+)
+
+PACKAGES_UNPACK_2022_11=(
+	tokenizers/punkt
 )
 
 PACKAGES_UNPACK_EXTRA_2020=(
@@ -165,6 +168,7 @@ add_data() {
 add_data 20200312 "${PACKAGES_ZIP_2020[@]}" "${PACKAGES_UNPACK_2020[@]}"
 add_data 20211221 "${PACKAGES_UNPACK_2021_12[@]}"
 add_data 20220704 "${PACKAGES_UNPACK_2022[@]}"
+add_data 20221108 "${PACKAGES_UNPACK_2022_11[@]}"
 SRC_URI+="
 	extra? ("
 add_data 20200312 "${PACKAGES_UNPACK_EXTRA_2020[@]}"
@@ -194,6 +198,7 @@ src_unpack() {
 	unpack_data 20211023 "${PACKAGES_UNPACK_2021[@]}"
 	unpack_data 20211221 "${PACKAGES_UNPACK_2021_12[@]}"
 	unpack_data 20220704 "${PACKAGES_UNPACK_2022[@]}"
+	unpack_data 20221108 "${PACKAGES_UNPACK_2022_11[@]}"
 	if use extra; then
 		unpack_data 20200312 "${PACKAGES_UNPACK_EXTRA_2020[@]}"
 	fi
