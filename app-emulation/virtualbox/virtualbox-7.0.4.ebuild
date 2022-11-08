@@ -309,6 +309,11 @@ src_prepare() {
 		-e 's/&larr;/\&#8592;/g' \
 		-e 's/&rarr;/\&#8594;/g' \
 		-e 's/&harr;/\&#8596;/g' {} \+ || die
+
+	# 489208
+	# Cannot patch the whole text, many translations.  Use sed instead to replace the command
+	find src/VBox/Frontends/VirtualBox/nls -name \*.ts -exec sed -i 's/&apos;[^&]*\(vboxdrv setup\|vboxconfig\)&apos;/\&apos;emerge -1 virtualbox-modules\&apos;/' {} \+ || die
+	sed -i "s:'/sbin/vboxconfig':'emerge -1 virtualbox-modules':" src/VBox/Frontends/VirtualBox/src/main.cpp src/VBox/VMM/VMMR3/VM.cpp
 }
 
 src_configure() {
