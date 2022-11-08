@@ -359,7 +359,7 @@ Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
  {
      register int flag;
      extern int ignorecase;
-@@ -93,8 +88,6 @@ char *pattern, **cp, *endp;
+@@ -93,9 +88,7 @@ char *pattern, **cp, *endp;
      return FALSE;
  }
 
