@@ -12,6 +12,6 @@
 	<use>
 		<flag name="fluidsynth">Compile with support for FluidSynth</flag>
 		<flag name="sdl2">Use libsdl2 instead of libsdl</flag>
-		<flag name="tools">Enable tools</flag>
+		<flag name="tools">Enable tools, usercode compiler and mods support</flag>
 	</use>
 </pkgmetadata>
