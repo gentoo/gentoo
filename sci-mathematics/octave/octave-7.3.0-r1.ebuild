@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic fortran-2 java-pkg-opt-2 pax-utils qmake-utils toolchain-funcs xdg
+inherit autotools fortran-2 java-pkg-opt-2 pax-utils qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="High-level interactive language for numerical computations"
 HOMEPAGE="https://www.gnu.org/software/octave/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"
-IUSE="curl doc fftw +glpk gnuplot gui hdf5 java json opengl portaudio postscript +qhull +qrupdate readline sndfile +sparse ssl static-libs sundials X zlib"
+IUSE="curl doc fftw fltk +glpk gnuplot gui hdf5 imagemagick java json opengl portaudio postscript +qhull +qrupdate readline sndfile +sparse ssl sundials X zlib"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 # Although it is listed in INSTALL.OCTAVE as a build tool, Octave runs
@@ -20,6 +20,11 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 #
 # (un)zip isn't mentioned, but there's a test that uses it (bug #775254).
 #
+# The use of USE=imagemagick to pull in media-gfx/graphicsmagick is not
+# ideal, but both "graphicsmagick" and "imagemagick" are global USE
+# flags whose existing descriptions conflict with the obvious way we
+# would want to use them in octave. In any case, upstream doesn't really
+# support imagemagick, only graphicsmagick (bug 864785).
 RDEPEND="
 	app-arch/bzip2
 	app-arch/unzip
@@ -33,6 +38,7 @@ RDEPEND="
 	virtual/lapack
 	curl? ( net-misc/curl:= )
 	fftw? ( sci-libs/fftw:3.0= )
+	fltk? ( >=x11-libs/fltk-1.3:1=[opengl,xft] )
 	glpk? ( sci-mathematics/glpk:= )
 	gnuplot? ( sci-visualization/gnuplot )
 	gui? (
@@ -46,13 +52,13 @@ RDEPEND="
 		x11-libs/qscintilla:=
 	)
 	hdf5? ( sci-libs/hdf5:= )
+	imagemagick? ( media-gfx/graphicsmagick:=[cxx] )
 	java? ( >=virtual/jre-1.8:* )
 	json? ( dev-libs/rapidjson )
 	opengl? (
 		media-libs/freetype:=
 		media-libs/fontconfig:=
 		virtual/glu
-		>=x11-libs/fltk-1.3:1=[opengl,xft]
 		x11-libs/gl2ps:=
 	)
 	portaudio? ( media-libs/portaudio )
@@ -83,7 +89,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/gperf
-	virtual/imagemagick-tools
 	virtual/pkgconfig
 	doc? (
 		dev-texlive/texlive-fontsrecommended
@@ -97,6 +102,30 @@ BDEPEND="
 	sparse? ( app-misc/pax-utils )
 "
 
+# There are three ways to plot in Octave:
+#
+#   1. The old gnuplot renderer
+#   2. The OpenGL renderer using the FLTK backend
+#   3. The OpenGL renderer using the Qt backend
+#
+# It's possible to use the Qt GUI without OpenGL, but OpenGL rendering
+# is all that FLTK is used for, so it doesn't make sense to enable
+# USE=fltk without USE=opengl.
+#
+# Building without either USE=gnuplot or USE=opengl is technically legal,
+# but will leave you unable to plot anything.
+#
+# Octave's FLTK support is unofficially deprecated, in the sense that
+# you'll often get "why are you using FLTK?" in response to
+# bugs. (Upstream bug 59321 for a random example.) In the future, it
+# will probably make sense to merge USE=opengl and USE=X into USE=gui,
+# dropping USE=fltk entirely.
+REQUIRED_USE="
+	fltk? ( opengl X )
+	gui? ( X )
+	opengl? ( || ( fltk gui ) )
+"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.1.0-pkgbuilddir.patch
 	"${FILESDIR}"/${PN}-4.2.2-ncurses-pkgconfig.patch
@@ -106,11 +135,6 @@ PATCHES=(
 
 src_prepare() {
 	default
-
-	# nasty prefix hacks for fltk:1 linking
-	if use prefix; then
-		use opengl && append-ldflags -Wl,-rpath,"${EPREFIX}/usr/$(get_libdir)/fltk-1"
-	fi
 
 	# occasional fail on install, force regeneration (bug #401189)
 	rm doc/interpreter/contributors.texi || die
@@ -147,7 +171,6 @@ src_configure() {
 		--enable-shared \
 		--with-z \
 		--with-bz2 \
-		$(use_enable static-libs static) \
 		$(use_enable doc docs) \
 		$(use_enable java) \
 		$(use_enable json rapidjson) \
@@ -158,8 +181,9 @@ src_configure() {
 		$(use_enable fftw fftw-threads) \
 		$(use_with glpk) \
 		$(use_with hdf5) \
+		$(use_with imagemagick magick GraphicsMagick++) \
 		$(use_with opengl) \
-		$(use_with opengl fltk) \
+		$(use_with fltk) \
 		$(use_with ssl openssl) \
 		$(use_with portaudio) \
 		$(use_with qhull qhull_r) \
