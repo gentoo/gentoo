@@ -1,0 +1,56 @@
+https://bugs.gentoo.org/874693
+--- a/libqdwav/wav_lib.h
++++ b/libqdwav/wav_lib.h
+@@ -44,2 +44,3 @@
+ int 	init_wav		(char file_name[], wav_sig *info);
++int     init_wav_read           (char file_name[], wav_sig *info);
+ void	get_wav_nextblock	(int handle, char *buffer);
+--- a/libqdwav/wav_read.c
++++ b/libqdwav/wav_read.c
+@@ -6,2 +6,3 @@
+ #include <sys/stat.h>
++#include <unistd.h>
+ #include "wav_lib.h"
+--- a/libqdwav/wav_write.c
++++ b/libqdwav/wav_write.c
+@@ -5,2 +5,3 @@
+ #include <sys/soundcard.h>
++#include <unistd.h>
+ #include "wav_lib.h"
+--- a/list.c
++++ b/list.c
+@@ -1,2 +1,3 @@
+ #include <string.h> /* for strs */
++#include <dirent.h>
+ #include "lletters.h"
+@@ -4,6 +5,5 @@
+ /* prototype std lib functions */
+-extern int alphasort ();
+ 
+ /* local prototypes */
+-int file_select (struct direct *entry);
++int file_select (const struct dirent *entry);
+ 
+@@ -13,3 +13,3 @@
+   int count, i;
+-  struct direct **files;
++  struct dirent **files;
+ 
+@@ -46,3 +46,3 @@
+ int
+-file_select (struct direct *entry)
++file_select (const struct dirent *entry)
+ {                               /* ignore . and .. entries */
+--- a/timer.c
++++ b/timer.c
+@@ -1,2 +1,3 @@
+ #include <stdio.h>
++#include <sys/ioctl.h>
+ #include "wav_lib.h"
+--- a/wav_play.c
++++ b/wav_play.c
+@@ -3,2 +3,4 @@
+ #include <stdlib.h>
++#include <sys/ioctl.h>
++#include <unistd.h>
+ #ifdef GSM
