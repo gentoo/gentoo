@@ -203,11 +203,7 @@ pkg_postinst() {
 	fi
 
 	elog
-	if [[ -n "${REPLACING_VERSIONS}" ]]; then
-		ewarn "Since version 6.0.0 Suricata no longer supports the unified2 output format commonly used"
-		ewarn "in legacy, Snort-compatible IDS solutions, e.g. ones based on net-analyzer/barnyard2."
-		ewarn "If you need unified2 support, please continue to use suricata-5."
-	else
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "To download and install an initial set of rules, run:"
 		elog "    emerge --config =${CATEGORY}/${PF}"
 	fi
