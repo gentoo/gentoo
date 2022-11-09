@@ -5,18 +5,11 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{8..11} )
-
 inherit distutils-r1
 
 DESCRIPTION="BDD library for the pytest runner"
-HOMEPAGE="
-	https://github.com/pytest-dev/pytest-bdd/
-	https://pypi.org/project/pytest-bdd/
-"
-SRC_URI="
-	https://github.com/pytest-dev/pytest-bdd/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
-"
+HOMEPAGE="https://pypi.org/project/pytest-bdd/"
+SRC_URI="https://github.com/pytest-dev/pytest-bdd/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,13 +20,8 @@ RDEPEND="
 	dev-python/parse[${PYTHON_USEDEP}]
 	dev-python/parse_type[${PYTHON_USEDEP}]
 	dev-python/pytest[${PYTHON_USEDEP}]
-	dev-python/typing-extensions[${PYTHON_USEDEP}]
-"
-BDEPEND="
-	test? (
-		dev-python/packaging[${PYTHON_USEDEP}]
-	)
-"
+	dev-python/typing-extensions[${PYTHON_USEDEP}]"
+BDEPEND="test? ( dev-python/packaging[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 
