@@ -9,7 +9,7 @@ SRC_URI="https://downloads.apache.org/commons/KEYS -> ${P}-KEYS.asc"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 S="${WORKDIR}"
 
