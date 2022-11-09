@@ -22,4 +22,7 @@
 	<slots>
 		<subslots>Reflect ABI compatibility for libvarnishapi.so.</subslots>
 	</slots>
+	<upstream>
+		<remote-id type="github">varnishcache/varnish-cache</remote-id>
+	</upstream>
 </pkgmetadata>
