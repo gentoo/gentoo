@@ -11,7 +11,7 @@ SRC_URI="https://github.com/flatpak/libportal/releases/download/${PV}/${P}.tar.x
 
 LICENSE="LGPL-3"
 SLOT="0/1-1-1-1" # soname of libportal{,-gtk3,-gtk4,-qt5}.so
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="gtk gtk-doc +introspection qt5 test +vala"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
