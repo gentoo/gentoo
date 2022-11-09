@@ -21,6 +21,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		dev-cpp/gtest
-		dev-libs/boost[threads(+)]
+		dev-libs/boost
 	)
 "

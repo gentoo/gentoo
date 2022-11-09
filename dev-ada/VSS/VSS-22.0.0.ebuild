@@ -1,9 +1,9 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-ADA_COMPAT=( gnat_2021 )
+ADA_COMPAT=( gnat_2021 gcc_12_2_0 )
 inherit ada multiprocessing
 
 DESCRIPTION="A high level string and text processing library"

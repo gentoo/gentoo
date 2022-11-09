@@ -11,7 +11,7 @@ PSYBNC_HOME="/var/lib/psybnc"
 DESCRIPTION="A multi-user and multi-server gateway to IRC networks"
 HOMEPAGE="http://www.psybnc.at/index.html"
 SRC_URI="http://www.psybnc.at/download/beta/psyBNC-${MY_PV}.tar.gz"
-S="${WORKDIR}/${PN}"
+S="${WORKDIR}"/${PN}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,6 +25,11 @@ DEPEND="
 	oidentd? ( >=net-misc/oidentd-2.0 )
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.3.2.9-compile.patch
+	"${FILESDIR}"/${PN}-2.3.2.9-ldflags-fix.patch
+)
 
 src_unpack() {
 	unpack ${A}
@@ -45,17 +50,14 @@ src_unpack() {
 src_prepare() {
 	default
 
-	eapply "${FILESDIR}/compile.diff"
-	eapply "${FILESDIR}/ldflags-fix.patch"
+	# Add oidentd
+	use oidentd && PATCHES+=( "${FILESDIR}"/${P}-oidentd.patch )
 
-	# add oidentd
-	use oidentd && eapply "${FILESDIR}/${P}-oidentd.patch"
+	# Add scripting support
+	use scripting && PATCHES+=( "${FILESDIR}"/${P}-scripting.patch )
 
-	# add scripting support
-	use scripting && eapply "${FILESDIR}/${P}-scripting.patch"
-
-	# add multinetwork support
-	use multinetwork && eapply "${FILESDIR}/${P}-multinetwork.patch"
+	# Add multinetwork support
+	use multinetwork && PATCHES+=( "${FILESDIR}"/${P}-multinetwork.patch )
 
 	# Prevent stripping the binary
 	sed -i -e "/@strip/ d" tools/autoconf.c || die
@@ -103,10 +105,10 @@ src_install() {
 		insinto /etc
 		doins "${FILESDIR}"/oidentd.conf.psybnc
 		fperms 640 /etc/oidentd.conf.psybnc
-		# install init-script with oidentd-support
+		# Install init-script with oidentd-support
 		newinitd "${FILESDIR}"/psybnc-oidentd.initd psybnc
 	else
-		# install init-script without oidentd-support
+		# Install init-script without oidentd-support
 		newinitd "${FILESDIR}"/psybnc.initd psybnc
 	fi
 

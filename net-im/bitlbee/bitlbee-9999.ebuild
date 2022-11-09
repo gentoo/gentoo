@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit python-any-r1 systemd toolchain-funcs
 
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://get.bitlbee.org/src/${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="irc to IM gateway that support multiple IM protocols"
@@ -20,22 +20,22 @@ HOMEPAGE="https://www.bitlbee.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE_PROTOCOLS="msn oscar purple twitter +xmpp"
+IUSE_PROTOCOLS="purple twitter +xmpp"
 IUSE="debug +gnutls ipv6 libevent nss otr +plugins selinux test xinetd
 	${IUSE_PROTOCOLS}"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
-	|| ( purple xmpp msn oscar )
+	|| ( purple xmpp )
 	purple? ( plugins )
-	test? ( plugins )
-	xmpp? ( !nss )
+	test? ( xmpp )
 "
 
 COMMON_DEPEND="
 	acct-group/bitlbee
 	acct-user/bitlbee
 	dev-libs/glib:2
+	dev-libs/json-parser:=
 	purple? ( net-im/pidgin )
 	libevent? ( dev-libs/libevent:= )
 	otr? ( >=net-libs/libotr-4 )
@@ -61,7 +61,7 @@ BDEPEND="${PYTHON_DEPS}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.5-systemd-user.patch
+	"${FILESDIR}/${PN}-3.5-systemd-user.patch"
 )
 
 src_configure() {
@@ -111,8 +111,10 @@ src_configure() {
 		--prefix=/usr \
 		--datadir=/usr/share/bitlbee \
 		--etcdir=/etc/bitlbee \
-		--plugindir=/usr/$(get_libdir)/bitlbee \
+		--libdir=/usr/$(get_libdir) \
 		--pcdir=/usr/$(get_libdir)/pkgconfig \
+		--plugindir=/usr/$(get_libdir)/bitlbee \
+		--external_json_parser=1 \
 		--systemdsystemunitdir=$(systemd_get_systemunitdir) \
 		--doc=1 \
 		--strip=0 \

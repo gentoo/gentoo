@@ -69,10 +69,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-python/pychm-0.8.6[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.3.1[${PYTHON_USEDEP}]
 		>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
+		dev-python/python-zeroconf[${PYTHON_USEDEP}]
 		>=dev-python/PyQt5-5.12[gui,svg,widgets,network,printsupport,${PYTHON_USEDEP}]
 		>=dev-python/PyQtWebEngine-5.12[${PYTHON_USEDEP}]
 		dev-python/regex[${PYTHON_USEDEP}]
-		dev-python/zeroconf[${PYTHON_USEDEP}]
 	')
 	dev-qt/qtcore:5=
 	dev-qt/qtdbus:5=
@@ -108,14 +108,6 @@ DEPEND="${COMMON_DEPEND}
 	')
 	>=virtual/podofo-build-0.9.6_pre20171027
 	virtual/pkgconfig"
-
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]] && tc-is-gcc && [[ $(gcc-major-version) -lt 6 ]]; then
-		eerror "Calibre cannot be built with this version of gcc."
-		eerror "You need at least gcc-6.0"
-		die "Your C compiler is too old for this package."
-	fi
-}
 
 src_prepare() {
 	# no_updates: do not annoy user with "new version is availible all the time

@@ -12,10 +12,12 @@
   concept of directory.
   It is usually used with <pkg>sci-physics/root</pkg> and its PROOF
   facilities for cluster computing in high energy physics.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="fuse">Enable the <pkg>sys-fs/fuse</pkg> filesystem driver</flag>
     <flag name="http">Enable http protocol support</flag>
+    <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for XML parsing (preferred) instead of bundled tinyxml</flag>
     <flag name="server">Install xrootd server and related plug-ins</flag>
+    <flag name="test-suite">Install additional components useful for testing xrootd</flag>
   </use>
 </pkgmetadata>

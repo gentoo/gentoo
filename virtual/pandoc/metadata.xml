@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>haskell@gentoo.org</email>
+    <name>Gentoo Haskell</name>
+  </maintainer>
+  <stabilize-allarches />
+</pkgmetadata>

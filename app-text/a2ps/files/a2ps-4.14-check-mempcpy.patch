@@ -1,3 +1,6 @@
+add configure check for mempcpy
+https://bugs.gentoo.org/216588
+
 --- a2ps-4.14-orig/configure.in	2008-04-16 08:36:03.000000000 +0200
 +++ a2ps-4.14/configure.in	2008-04-16 08:36:29.000000000 +0200
 @@ -137,7 +137,8 @@

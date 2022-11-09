@@ -5,7 +5,7 @@
 EAPI=7
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
@@ -33,5 +33,5 @@ src_configure() {
 }
 
 python_test() {
-	"${PYTHON}" test/test_api.py -v || die "Tests fail with ${EPYTHON}"
+	"${EPYTHON}" test/test_api.py -v || die "Tests fail with ${EPYTHON}"
 }

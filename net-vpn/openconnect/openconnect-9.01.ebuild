@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-PYTHON_REQ_USE="xml"
+PYTHON_REQ_USE="xml(+)"
 
 inherit linux-info python-any-r1
 
@@ -13,11 +13,11 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3 autotools
 else
 	SRC_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Free client for Cisco AnyConnect SSL VPN software"
-HOMEPAGE="http://www.infradead.org/openconnect.html"
+HOMEPAGE="https://www.infradead.org/openconnect/"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
@@ -85,6 +85,9 @@ src_unpack() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/openconnect-9.01-inttypes.patch"
+	)
 	default
 	if [[ ${PV} == 9999 ]]; then
 		eautoreconf
@@ -114,6 +117,7 @@ src_configure() {
 		$(use_with smartcard libpcsclite)
 		$(use_with stoken)
 		--with-vpnc-script="${EPREFIX}/etc/vpnc/vpnc-script"
+		--with-builtin-json
 		--without-java
 	)
 

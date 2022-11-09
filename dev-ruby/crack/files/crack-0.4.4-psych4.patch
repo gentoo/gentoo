@@ -1,0 +1,30 @@
+From 7fa8d8aea4a041969e433debef7f4d5d59881ae2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?V=C3=ADt=20Ondruch?= <vondruch@redhat.com>
+Date: Fri, 11 Mar 2022 18:29:43 +0100
+Subject: [PATCH] Use named parameters for `safe_load`.
+
+This is available since Psych 3.1 [[1], [2]], but mandatory since Psych
+4.0 [[3]].
+
+Fixes #72
+
+[1]: https://github.com/ruby/psych/pull/358
+[2]: https://github.com/ruby/psych/pull/378
+[3]: https://github.com/ruby/psych/commit/0767227051dbddf1f949eef512c174deabf22891
+---
+ lib/crack/json.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/crack/json.rb b/lib/crack/json.rb
+index 1a27ac7..528aad6 100644
+--- a/lib/crack/json.rb
++++ b/lib/crack/json.rb
+@@ -13,7 +13,7 @@ def self.parser_exceptions
+ 
+     def self.parse(json)
+       yaml = unescape(convert_json_to_yaml(json))
+-      YAML.safe_load(yaml, [Regexp, Date, Time])
++      YAML.safe_load(yaml, permitted_classes: [Regexp, Date, Time])
+     rescue *parser_exceptions
+       raise ParseError, "Invalid JSON string"
+     rescue Psych::DisallowedClass

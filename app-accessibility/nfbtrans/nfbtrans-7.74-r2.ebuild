@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Braille translator from the National Federation of the Blind"
 HOMEPAGE="http://www.nfbnet.org/download/nfbtrans.htm"
-SRC_URI="http://www.nfb.org/Images/nfb/Products_Technology/nfbtr774.zip"
+SRC_URI="http://www.nfb.org/Images/nfb/Products_Technology/nfbtr$(ver_rs 1-2 '').zip"
 S="${WORKDIR}"
 
 LICENSE="public-domain"

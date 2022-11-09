@@ -10,7 +10,7 @@
   visualization package.
   With Pygraphviz you can create, edit, read, write, and draw graphs using
   Python to access the Graphviz graph data structure and layout algorithms.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">pygraphviz</remote-id>
     <remote-id type="github">pygraphviz/pygraphviz</remote-id>

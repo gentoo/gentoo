@@ -1,0 +1,52 @@
+diff -ruN jhead-3.06.0.1.orig/jhead.c jhead-3.06.0.1/jhead.c
+--- jhead-3.06.0.1.orig/jhead.c	2021-04-14 14:02:45.000000000 +0200
++++ jhead-3.06.0.1/jhead.c	2022-10-09 00:25:03.812585996 +0200
+@@ -377,7 +377,7 @@
+     // as mktemp - that is, that between getting the random name, and making the file
+     // some other program could snatch that exact same name!
+     // also, not all platforms support mkstemp.
+-    mktemp(TempName);
++    mkstemp(TempName);
+ 
+ 
+     if(!TempName[0]) {
+diff -ruN jhead-3.06.0.1.orig/makefile jhead-3.06.0.1/makefile
+--- jhead-3.06.0.1.orig/makefile	2021-04-14 14:02:45.000000000 +0200
++++ jhead-3.06.0.1/makefile	2022-10-09 00:27:28.659543801 +0200
+@@ -3,10 +3,14 @@
+ #--------------------------------
+ OBJ=obj
+ SRC=.
+-CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+-LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
++LFLAGS = -fPIC -shared -Wl,-soname,libjhead.so.1
+ 
+-all: objdir jhead
++TARGET	= libjhead.so.1.0.0
++TARGET0	= libjhead.so
++TARGET1	= libjhead.so.1
++TARGET2 = libjhead.so.1.0
++
++all: objdir jhead $(TARGET)
+ 
+ objdir:
+ 	@mkdir -p obj
+@@ -15,7 +19,7 @@
+ 	$(OBJ)/exif.o $(OBJ)/iptc.o $(OBJ)/gpsinfo.o $(OBJ)/makernote.o 
+ 
+ $(OBJ)/%.o:$(SRC)/%.c
+-	${CC} $(CFLAGS) -c $< -o $@
++	${CC} -fPIC $(CFLAGS) -c $< -o $@
+ 
+ jhead: $(objs) jhead.h
+ 	${CC} $(LDFLAGS) -o jhead $(objs) -lm
+@@ -26,3 +30,9 @@
+ install:
+ 	mkdir -p ${DESTDIR}/usr/bin/
+ 	cp jhead ${DESTDIR}/usr/bin/
++
++$(TARGET): $(objs) jhead
++	${CC} $(LDFLAGS) $(LFLAGS) -o $(TARGET) $(objs)
++	ln -s ${TARGET} ${TARGET0}
++	ln -s ${TARGET} ${TARGET1}
++	ln -s ${TARGET} ${TARGET2}

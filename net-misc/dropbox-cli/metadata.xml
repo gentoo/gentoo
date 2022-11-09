@@ -4,4 +4,7 @@
 	<maintainer type="person">
 		<email>grozin@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name="gpg">Use <pkg>app-crypt/gpgme</pkg> to verify signatures</flag>
+	</use>
 </pkgmetadata>

@@ -5,10 +5,15 @@
     <email>sysadmin@gentoo.org</email>
     <name>Gentoo Sysadmin Project</name>
   </maintainer>
-
   <use>
     <flag name="nagios">
       Install a nagios plugin to check sensors' status.
     </flag>
+    <flag name="without-root">
+      Configure whether or not to check for root access in ipmi tools.
+    </flag>
   </use>
+  <upstream>
+    <remote-id type="savannah">freeipmi</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -18,8 +18,9 @@ DEPEND="
 	>=dev-ml/base-0.14.0:=
 	dev-ml/findlib:=
 	>=dev-ml/ppxlib-0.18.0:=
-		>=dev-ml/ocaml-compiler-libs-0.11.0:=
-		>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
-			dev-ml/cinaps:=
+	>=dev-ml/ocaml-compiler-libs-0.11.0:=
+	>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
+	dev-ml/cinaps:=
+	dev-ml/sexplib0:=
 "
 RDEPEND="${DEPEND}"

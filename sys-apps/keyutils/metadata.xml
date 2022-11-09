@@ -8,6 +8,9 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:keyutils_project:keyutils</remote-id>
+	</upstream>
 	<slots>
 		<subslots>Reflect ABI compatibility for libkeyutils.so.</subslots>
 	</slots>

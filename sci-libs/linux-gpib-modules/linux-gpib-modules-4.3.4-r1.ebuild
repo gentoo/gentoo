@@ -12,7 +12,7 @@ S="${WORKDIR}/linux-gpib-kernel-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="debug"
 
 COMMONDEPEND=""
@@ -25,6 +25,9 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	# https://sourceforge.net/p/linux-gpib/code/1998/
 	"${FILESDIR}/${P}-kernel-5.17.patch"
+
+	# don't fix debian bugs if they break gentoo
+	"${FILESDIR}/${P}-depmod.patch"
 )
 
 pkg_setup() {

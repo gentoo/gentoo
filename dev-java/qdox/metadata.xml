@@ -10,6 +10,6 @@
 		definitions from source files complete with JavaDoc @tags.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">codehaus/qdox</remote-id>
+		<remote-id type="github">paul-hammant/qdox</remote-id>
 	</upstream>
 </pkgmetadata>

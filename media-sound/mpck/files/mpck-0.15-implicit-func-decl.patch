@@ -1,0 +1,10 @@
+--- a/mpck/file.c
++++ b/mpck/file.c
+@@ -27,6 +27,7 @@
+ #include "file.h"
+ #include "mp3errors.h"
+ #include "options.h"
++#include "print.h"
+ 
+ #ifdef HAVE_STDLIB_H
+ #include <stdlib.h>

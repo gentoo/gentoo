@@ -100,7 +100,7 @@ REQUIRED_USE="
 "
 
 # Enable Default protocols
-DYNAMIC_PRPLS="irc,jabber,simple"
+DEFAULT_PRPLS="irc,jabber,simple"
 
 # List of plugins
 #   app-accessibility/pidgin-festival
@@ -170,16 +170,16 @@ src_configure() {
 	replace-flags -O? -O2
 	use pie && append-cflags -fPIE -pie
 
-	use gadu 	&& DYNAMIC_PRPLS+=",gg"
-	use groupwise 	&& DYNAMIC_PRPLS+=",novell"
-	use meanwhile 	&& DYNAMIC_PRPLS+=",sametime"
-	use zephyr 	&& DYNAMIC_PRPLS+=",zephyr"
-	use zeroconf 	&& DYNAMIC_PRPLS+=",bonjour"
+	use gadu 	&& DEFAULT_PRPLS+=",gg"
+	use groupwise 	&& DEFAULT_PRPLS+=",novell"
+	use meanwhile 	&& DEFAULT_PRPLS+=",sametime"
+	use zephyr 	&& DEFAULT_PRPLS+=",zephyr"
+	use zeroconf 	&& DEFAULT_PRPLS+=",bonjour"
 
 	local myconf=(
 		--disable-mono
 		--disable-static
-		--with-dynamic-prpls="${DYNAMIC_PRPLS}"
+		--with-dynamic-prpls="${DEFAULT_PRPLS}"
 		--with-system-ssl-certs="${EPREFIX}/etc/ssl/certs/"
 		--x-includes="${EPREFIX}"/usr/include/X11
 		$(use_enable ncurses consoleui)

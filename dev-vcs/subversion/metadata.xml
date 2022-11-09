@@ -14,4 +14,7 @@
 		<flag name="kwallet">Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg></flag>
 		<flag name="plaintext-password-storage">Enable on-disk caching of plaintext passwords and passphrases. (Enabling this functionality will not force Subversion to store passwords in plaintext, but does permit users to explicitly allow that behavior via runtime configuration.)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">apache/subversion</remote-id>
+	</upstream>
 </pkgmetadata>

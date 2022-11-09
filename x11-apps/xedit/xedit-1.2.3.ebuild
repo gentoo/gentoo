@@ -8,7 +8,7 @@ inherit xorg-3
 
 DESCRIPTION="simple text editor for X"
 
-KEYWORDS="~amd64 ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
 
 RDEPEND="
 	x11-libs/libXaw

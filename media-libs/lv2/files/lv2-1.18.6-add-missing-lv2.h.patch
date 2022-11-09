@@ -1,0 +1,14 @@
+diff --git a/meson.build b/meson.build
+index 14f9876..5a321ea 100644
+--- a/meson.build
++++ b/meson.build
+@@ -144,6 +144,9 @@ if get_option('old_headers')
+     include_prefix / 'core' / 'lv2_util.h',
+   )
+ 
++  # Special case lv2.h is also in top-level include directory
++  install_headers(files(include_prefix / 'core' / 'lv2.h'))
++
+   # Core headers are inconsistently in "lv2plug.in/ns/lv2core"
+   install_data(core_headers, install_dir: uri_include_dir / 'lv2core')
+ 

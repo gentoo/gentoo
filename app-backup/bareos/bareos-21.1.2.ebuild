@@ -143,6 +143,8 @@ src_test() {
 src_prepare() {
 	# fix gentoo platform support
 	eapply -p1 "${FILESDIR}/${PN}-21-cmake-gentoo.patch"
+	eapply "${FILESDIR}/${PN}-21.1.2-werror.patch"
+	eapply "${FILESDIR}/${PN}-21.1.2-no-automagic-ccache.patch"
 
 	# fix missing DESTDIR in symlink creation
 	sed -i '/bareos-symlink-default-db-backend.cmake/d' "${S}/core/src/cats/CMakeLists.txt"

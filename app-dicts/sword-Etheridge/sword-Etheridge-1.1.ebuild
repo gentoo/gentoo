@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="The Peschito Syriac New Testament: Translated into English"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=Etheridge"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~loong ~ppc ~riscv ~x86"

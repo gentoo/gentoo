@@ -7,10 +7,11 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="cpe">cpe:/a:kde:kio-extras</remote-id>
 	</upstream>
 	<use>
-		<flag name="activities">Enable activities kioslave and fileitem plugin</flag>
-		<flag name="man">Enable manpages kioslave</flag>
+		<flag name="activities">Enable activities KIO worker and fileitem plugin</flag>
+		<flag name="man">Enable manpages KIO worker</flag>
 		<flag name="nfs">Enable NFS support using <pkg>net-libs/libtirpc</pkg></flag>
 		<flag name="phonon">Enable file audio preview plugin using <pkg>media-libs/phonon</pkg></flag>
 		<flag name="sftp">Enable SFTP protocol support using <pkg>net-libs/libssh</pkg></flag>

@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_REQ_USE="sqlite"
 PYTHON_COMPAT=( python3_{8..10} )
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
@@ -21,10 +22,10 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-user/buildbot
-	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP},crypt?]
+	>=dev-python/twisted-18.7.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
 	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
-	>=dev-python/sqlalchemy-1.2.0[${PYTHON_USEDEP}]
+	>=dev-python/sqlalchemy-1.3.0[${PYTHON_USEDEP}]
 	<dev-python/sqlalchemy-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/alembic-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
@@ -32,10 +33,14 @@ RDEPEND="
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
 	dev-python/pyjwt[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
+	dev-util/buildbot-worker[${PYTHON_USEDEP}]
 	crypt? (
 		>=dev-python/pyopenssl-16.0.0[${PYTHON_USEDEP}]
 		dev-python/service_identity[${PYTHON_USEDEP}]
+		|| (
+			>=dev-python/twisted-18.7.0[${PYTHON_USEDEP},ssl(-)]
+			>=dev-python/twisted-18.7.0[${PYTHON_USEDEP},crypt(-)]
+		)
 		dev-python/idna[${PYTHON_USEDEP}]
 	)
 	irc? (
@@ -55,12 +60,12 @@ BDEPEND="
 		>=dev-python/boto3-1.12.48[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-		dev-python/parameterized[${PYTHON_USEDEP}]
+		>=dev-python/msgpack-0.6.0[${PYTHON_USEDEP}]
 		dev-python/lz4[${PYTHON_USEDEP}]
 		dev-python/ldap3[${PYTHON_USEDEP}]
-		~dev-util/buildbot-pkg-${PV}[${PYTHON_USEDEP}]
-		~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
-		~dev-util/buildbot-www-${PV}[${PYTHON_USEDEP}]
+		dev-util/buildbot-pkg[${PYTHON_USEDEP}]
+		dev-util/buildbot-worker[${PYTHON_USEDEP}]
+		dev-util/buildbot-www[${PYTHON_USEDEP}]
 	)"
 
 DOC_CONTENTS="The \"buildbot\" user and the \"buildmaster\" init script has been added
@@ -76,7 +81,6 @@ src_prepare() {
 }
 
 python_test() {
-	distutils_install_for_testing
 	"${EPYTHON}" -m twisted.trial buildbot || die "Tests failed with ${EPYTHON}"
 }
 

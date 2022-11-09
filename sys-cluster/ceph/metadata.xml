@@ -41,5 +41,6 @@
   </use>
   <upstream>
     <bugs-to>https://tracker.ceph.com/issues</bugs-to>
+    <remote-id type="github">ceph/ceph</remote-id>
   </upstream>
 </pkgmetadata>

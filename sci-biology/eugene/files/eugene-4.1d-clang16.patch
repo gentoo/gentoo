@@ -1,0 +1,22 @@
+--- a/src/GDIF/gdIF.c
++++ b/src/GDIF/gdIF.c
+@@ -228,7 +228,7 @@
+ 		    ToY(phase, pos), (unsigned char *)st, Col[col]);
+ }
+ 
+-void ClosePNG()
++void ClosePNG(void)
+ {
+   int i;
+ 
+--- a/src/SensorPlugins/0_SensorTk/markov.cc
++++ b/src/SensorPlugins/0_SensorTk/markov.cc
+@@ -790,7 +790,7 @@
+ // cumule les valeurs des cases des codons synonymes et renvoie le total.
+ template<class CHAINE, typename T> T TabChaine<CHAINE,T> :: cumuleVAL (int indice) const
+ {
+-  char* codegenetique=CODEGENETIQUE;
++  const char* codegenetique=CODEGENETIQUE;
+   T cumul=0;
+   for (int i=0 ; i<64 ; i++) {
+     if ( codegenetique[i] == codegenetique[indice] )

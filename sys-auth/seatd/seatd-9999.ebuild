@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,12 +11,12 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.sr.ht/~kennylevinsen/seatd"
 else
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 	SRC_URI="https://git.sr.ht/~kennylevinsen/seatd/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 LICENSE="MIT"
 SLOT="0/1"
-IUSE="builtin elogind +server systemd"
+IUSE="builtin elogind server systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
@@ -31,7 +31,6 @@ BDEPEND=">=app-text/scdoc-1.9.7"
 src_configure() {
 	local emesonargs=(
 		-Dman-pages=enabled
-		-Dwerror=false
 		$(meson_feature builtin libseat-builtin)
 		$(meson_feature server)
 	)

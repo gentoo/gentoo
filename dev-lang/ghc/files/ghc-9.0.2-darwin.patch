@@ -1,0 +1,31 @@
+From d39a3409acd3c40fb018ec1c114f15d3ecef6ef9 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Thu, 1 Jun 2017 22:30:05 +0100
+Subject: [PATCH] aclocal.m4: add support for versioned darwin triplets
+
+The change adds support for 'darwin*' OS:
+    $ ./configure --target=aarch64-apple-darwin14
+
+Reported-by: jp_rider
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ aclocal.m4 | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/aclocal.m4 b/aclocal.m4
+index 7ad9c36453..437974a0c7 100644
+--- a/m4/fptools.m4
++++ b/m4/fptools.m4
+@@ -1906,6 +1906,9 @@ AC_DEFUN([GHC_CONVERT_OS],[
+       aix*) # e.g. powerpc-ibm-aix7.1.3.0
+         $3="aix"
+         ;;
++      darwin*) # e.g. aarch64-apple-darwin14
++        $3="darwin"
++        ;;
+       freebsd*) # like i686-gentoo-freebsd7
+                 #      i686-gentoo-freebsd8
+                 #      i686-gentoo-freebsd8.2
+-- 
+2.14.1
+

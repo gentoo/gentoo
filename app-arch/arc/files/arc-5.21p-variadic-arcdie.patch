@@ -1,0 +1,38 @@
+Convert arcdie to variadic function, which solves the issue with
+-Werror=implicit-int enabled.
+
+Bug: https://bugs.gentoo.org/870517
+
+diff --git a/arcmisc.c b/arcmisc.c
+index ea12b41..3d6272e 100644
+--- a/arcmisc.c
++++ b/arcmisc.c
+@@ -3,6 +3,7 @@
+  * $Header: /cvsroot/arc/arc/arcmisc.c,v 1.4 2005/10/09 01:38:22 highlandsun Exp $ 
+  */
+ 
++#include <stdarg.h>
+ #include <stdio.h>
+ #include <ctype.h>
+ #include "arc.h"
+@@ -223,11 +224,14 @@ upper(string)
+ }
+ /* VARARGS1 */
+ VOID
+-arcdie(s, arg1, arg2, arg3)
+-	char           *s;
++arcdie(char * s, ...)
+ {
++	va_list ap;
++
+ 	fprintf(stderr, "ARC: ");
+-	fprintf(stderr, s, arg1, arg2, arg3);
++	va_start(ap, s);
++	vfprintf(stderr, s, ap);
++	va_end(ap);
+ 	fprintf(stderr, "\n");
+ #if	UNIX
+ 	perror("UNIX");
+-- 
+2.35.1
+

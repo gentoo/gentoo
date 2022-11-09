@@ -10,7 +10,7 @@
   designed to produce publication ready Postscript output. It provides a GUI,
   command line and scripting interface (based on Python) to its plotting
   facilities.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">veusz</remote-id>
   </upstream>

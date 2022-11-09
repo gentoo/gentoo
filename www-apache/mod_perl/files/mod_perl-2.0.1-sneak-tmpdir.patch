@@ -1,5 +1,5 @@
---- t/conf/modperl_extra.pl.orig	2005-05-16 18:27:45.000000000 +1000
-+++ t/conf/modperl_extra.pl	2005-05-16 18:34:46.000000000 +1000
+--- a/t/conf/modperl_extra.pl
++++ b/t/conf/modperl_extra.pl
 @@ -136,6 +136,8 @@
  sub test_modperl_env {
      # see t/response/TestModperl/env.pm

@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -ia64
 
+# Sam James <sam@gentoo.org> (2022-07-21)
+# Untested.
+ieee1394
+
 # Matt Turner <mattst88@gentoo.org> (2022-02-21)
 # app-crypt/tpm2-tss is not keyworded here
 tpm
@@ -11,10 +15,6 @@ tpm
 # James Le Cuirot <chewi@gentoo.org> (2021-08-10)
 # media-video/pipewire is not keyworded. Bug #807616.
 pipewire
-
-# Matt Turner <mattst88@gentoo.org> (2021-07-25)
-# gnome-shell requires rustified librsvg.
-gnome-shell
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
 # sys-libs/llvm-libunwind not supported on IA64.
@@ -37,11 +37,6 @@ darcs
 ruby
 # - net-libs/gnome-online-accounts: depend on net-libs/webkit-gtk
 gnome-online-accounts
-
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
-# Dependency not keyworded (dev-libs/libindicate).
-appindicator
-ayatana
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-06-17)
 # There is no luajit support on ia64. Bug #554376

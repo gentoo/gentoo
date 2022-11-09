@@ -1,17 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools
 
-DESCRIPTION="A message sequence chart generator"
-HOMEPAGE="http://www.mcternan.me.uk/mscgen/"
-SRC_URI="http://www.mcternan.me.uk/${PN}/software/${PN}-src-${PV}.tar.gz"
+DESCRIPTION="Message sequence chart generator"
+HOMEPAGE="https://www.mcternan.me.uk/mscgen/"
+SRC_URI="https://www.mcternan.me.uk/${PN}/software/${PN}-src-${PV}.tar.gz"
 
-KEYWORDS="amd64 arm ppc ppc64 x86 ~x64-solaris"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86 ~x64-solaris"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="png truetype"
 REQUIRED_USE="truetype? ( png )"

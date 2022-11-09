@@ -176,6 +176,7 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}"/mysql-patches
+	eapply "${FILESDIR}"/${PN}-8.0.26.16-gcc-12.patch
 
 	# Avoid rpm call which would trigger sandbox, #692368
 	sed -i \
@@ -1137,7 +1138,7 @@ pkg_config() {
 		log-slave-updates \
 	; do
 		optexp="--(skip-)?${opt}" optfull="--loose-skip-${opt}"
-		egrep -sq -- "${optexp}" "${helpfile}" && mysqld_options+=( "${optfull}" )
+		grep -E -sq -- "${optexp}" "${helpfile}" && mysqld_options+=( "${optfull}" )
 	done
 
 	# Prepare timezones, see

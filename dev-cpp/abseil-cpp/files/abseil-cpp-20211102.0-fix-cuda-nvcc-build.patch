@@ -25,13 +25,6 @@ Our Linux CI does this, but for some reason was never enabled on macOS
 PiperOrigin-RevId: 425668638
 GitOrigin-RevId: 121db1a08321eaa3006726cc32b459cf17880e35
 Change-Id: Id51645df90b6a0808dd5b18eb636a10f798e24ea
----
- absl/container/internal/inlined_vector.h |  8 ++++----
- ci/macos_xcode_bazel.sh                  | 10 +++++++++-
- 2 files changed, 13 insertions(+), 5 deletions(-)
-
-diff --git a/absl/container/internal/inlined_vector.h b/absl/container/internal/inlined_vector.h
-index cd34a413a..2baf26f3e 100644
 --- a/absl/container/internal/inlined_vector.h
 +++ b/absl/container/internal/inlined_vector.h
 @@ -925,8 +925,8 @@ auto Storage<T, N, A>::Swap(Storage* other_storage_ptr) -> void {

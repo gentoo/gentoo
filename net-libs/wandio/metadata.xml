@@ -8,6 +8,6 @@
 		<flag name="http">Build support for reading files over HTTP using <pkg>net-misc/curl</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="github">wanduow/wandio</remote-id>
+		<remote-id type="github">LibtraceTeam/wandio</remote-id>
 	</upstream>
 </pkgmetadata>

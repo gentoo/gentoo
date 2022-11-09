@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 USE="systemd udev"
 
-BOOTSTRAP_USE="${BOOTSTRAP_USE} systemd udev"
+BOOTSTRAP_USE="${BOOTSTRAP_USE} systemd sysv-utils udev"

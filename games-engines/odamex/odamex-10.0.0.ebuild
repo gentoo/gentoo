@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${PN}-src-${PV}.
 
 LICENSE="GPL-2+ MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+client hidpi master +odalaunch portmidi server upnp X"
 REQUIRED_USE="|| ( client master server )"
 
@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-10.0.0-unbundle-fltk.patch
 	"${FILESDIR}"/${PN}-10.0.0-musl.patch
 	"${FILESDIR}"/${PN}-10.0.0-master-std.patch
+	"${FILESDIR}"/${PN}-10.0.0-gcc12.patch
 )
 
 src_prepare() {

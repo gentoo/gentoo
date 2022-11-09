@@ -13,6 +13,6 @@ XEMACS_EXPERIMENTAL="true"
 RDEPEND="app-xemacs/dired
 app-xemacs/xemacs-base
 "
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc ppc64 ~riscv sparc x86"
 
 inherit xemacs-packages

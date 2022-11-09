@@ -9,6 +9,14 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
+		<flag name="vulkan">Enable support for Vulkan</flag>
+	</use>
 	<upstream>
 		<bugs-to>https://github.com/PCSX2/pcsx2/issues</bugs-to>
 		<remote-id type="github">PCSX2/pcsx2</remote-id>

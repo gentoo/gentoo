@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<upstream>
-<remote-id type="cpe">cpe:/a:sane-backends_project:sane-backends</remote-id>
-</upstream>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="cpe">cpe:/a:sane-backends_project:sane-backends</remote-id>
+		<remote-id type="gitlab">sane-project/backends</remote-id>
+	</upstream>
 </pkgmetadata>

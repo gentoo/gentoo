@@ -14,5 +14,6 @@
 	</upstream>
 	<use>
 		<flag name="asm">Enable assembly for optimization</flag>
+		<flag name="getentropy">Use getentropy function to obtain randomness from the kernel</flag>
 	</use>
 </pkgmetadata>

@@ -23,6 +23,7 @@
 		<flag name="vim">Install the vifm vim plugin and vim-compatible documentation</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">vifm/vifm</remote-id>
 		<remote-id type="sourceforge">vifm</remote-id>
 	</upstream>
 </pkgmetadata>

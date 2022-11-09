@@ -1,0 +1,26 @@
+diff --git a/setup.py b/setup.py
+index 176c07f..d73d195 100644
+--- a/setup.py
++++ b/setup.py
+@@ -231,7 +231,7 @@ install_requires = [
+     'python-lsp-server[all]>=1.5.0,<1.6.0',
+     'pyxdg>=0.26;platform_system=="Linux"',
+     'pyzmq>=22.1.0',
+-    'qdarkstyle>=3.0.2,<3.1.0',
++    'qdarkstyle>=3.0.2',
+     'qstylizer>=0.1.10',
+     'qtawesome>=1.0.2',
+     'qtconsole>=5.3.2,<5.4.0',
+diff --git a/spyder/dependencies.py b/spyder/dependencies.py
+index 18fd9d4..50d1a6c 100644
+--- a/spyder/dependencies.py
++++ b/spyder/dependencies.py
+@@ -57,7 +57,7 @@ PYLSP_BLACK_REQVER = '>=1.2.0'
+ PYLS_SPYDER_REQVER = '>=0.4.0'
+ PYXDG_REQVER = '>=0.26'
+ PYZMQ_REQVER = '>=22.1.0'
+-QDARKSTYLE_REQVER = '>=3.0.2;<3.1.0'
++QDARKSTYLE_REQVER = '>=3.0.2'
+ QSTYLIZER_REQVER = '>=0.1.10'
+ QTAWESOME_REQVER = '>=1.0.2'
+ QTCONSOLE_REQVER = '>=5.3.2;<5.4.0'

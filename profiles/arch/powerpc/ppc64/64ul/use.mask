@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2021-12-31)
@@ -50,17 +50,11 @@ netbeans
 pcmcia
 
 # conky dependencies missing keywords related (dragonheart 2006-11-12)
-# media-sound/mpd
-mpd
 # app-admin/hddtemp
 hddtemp
 
 # Unmask this here, since only ppc64 can use it
 -ibm
-
-# unregisterised ghc arch for now.
-# no ghci - no TH
-template-haskell
 
 # Chris Gianelloni <wolf31o2@gentoo.org> (2008-02-13)
 # Mask multilib, since we cannot use it.

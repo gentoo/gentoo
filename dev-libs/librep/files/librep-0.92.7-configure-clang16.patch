@@ -1,0 +1,74 @@
+https://github.com/SawfishWM/librep/pull/17
+
+From 5c653297288fc1d82f92d224c745d89f9e6734fd Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 5 Nov 2022 06:04:27 +0000
+Subject: [PATCH] build: fix -Wimplicit-int, -Wimplicit-function-declaration
+
+Clang 16 will make -Wimplicit-int and -Wimplicit-function-declaration
+errors by default.
+
+In this case, it manifests as:
+```
+checking for data type to store Lisp values... configure: error: cannot find Lisp value type; set --with-value-type (see README)
+```
+
+For more information, see LWN.net [0] or LLVM's Discourse [1], or the
+(new) c-std-porting mailing list [2].
+
+[0] https://lwn.net/Articles/913505/
+[1] https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213
+[2] hosted at lists.linux.dev.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -432,15 +432,18 @@ AC_ARG_WITH(value-type,
+ 			   as a pointer. [TYPE=<probed>] (see README)], [],
+  [with_value_type="undef"])
+ if test "${with_value_type}" = "undef"; then
+-  AC_TRY_RUN([main () { exit (!(sizeof (int) >= sizeof (void *)));}],
++  AC_TRY_RUN([#include <stdlib.h>
++             int main () { exit (!(sizeof (int) >= sizeof (void *)));}],
+ 	     [with_value_type=int])
+ fi
+ if test "${with_value_type}" = "undef"; then
+-  AC_TRY_RUN([main () { exit (!(sizeof (long int) >= sizeof (void *)));}],
++  AC_TRY_RUN([#include <stdlib.h>
++             int main () { exit (!(sizeof (long int) >= sizeof (void *)));}],
+ 	     [with_value_type="long int"])
+ fi
+ if test "${with_value_type}" = "undef"; then
+-  AC_TRY_RUN([main () { exit (!(sizeof (long long int) >= sizeof (void *)));}],
++  AC_TRY_RUN([#include <stdlib.h>
++             int main () { exit (!(sizeof (long long int) >= sizeof (void *)));}],
+ 	     [with_value_type="long long int"])
+ fi
+ if test "${with_value_type}" = "undef"; then
+@@ -457,7 +460,8 @@ AC_ARG_WITH(value-sizeof,
+ if test "${with_value_sizeof}" = "undef"; then
+   dnl the following fragment is inspired by AC_CHECK_SIZEOF
+   AC_TRY_RUN([#include <stdio.h>
+-	      main () {
++		#include <stdlib.h>
++		int main () {
+ 		FILE *f = fopen ("conftestval", "w");
+ 		if (!f) exit (1);
+ 		fprintf (f, "%d\n", sizeof (${with_value_type}));
+@@ -548,11 +552,12 @@ if test "${with_stack_direction}" = unknown; then
+   esac
+ fi
+ if test "${with_stack_direction}" = unknown; then
+-  AC_TRY_RUN([ int level = 1;
+-	       void inner (char *foo) { char bar;
++  AC_TRY_RUN([#include <stdlib.h>
++		 int level = 1;
++		 void inner (char *foo) { char bar;
+ 		 if (level) { --level; inner (foo); }
+ 		 exit (!(foo >= &bar)); }
+-	       void main () { char foo; inner (&foo); } ],
++	       int main () { char foo; inner (&foo); } ],
+    [AC_MSG_RESULT([downwards])
+     with_stack_direction=-1],
+    [AC_MSG_RESULT([upwards])
+

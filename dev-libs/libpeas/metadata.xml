@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<use>
-		<flag name="glade">Install the glade catalog</flag>
-		<flag name="python">Build support for loading <pkg>dev-lang/python</pkg>
-			plugins</flag>
-	</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="glade">Install the glade catalog</flag>
+    <flag name="python">Build support for loading <pkg>dev-lang/python</pkg> plugins</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/libpeas</remote-id>
+  </upstream>
 </pkgmetadata>

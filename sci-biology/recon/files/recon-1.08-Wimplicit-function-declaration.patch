@@ -1,0 +1,20 @@
+--- a/src/bolts.h
++++ b/src/bolts.h
+@@ -3,6 +3,7 @@
+ #include <stdio.h>
+ #include <math.h>
+ #include <stdlib.h>
++#include <stdint.h>
+ 
+ 
+ #define NAME_LEN 50
+--- a/src/seqlist.h
++++ b/src/seqlist.h
+@@ -1,6 +1,7 @@
+ 
+ #include "bolts.h"
+ #include "string.h"
++#include <ctype.h>
+ 
+ #ifndef _seqlist_h
+ #define _seqlist_h

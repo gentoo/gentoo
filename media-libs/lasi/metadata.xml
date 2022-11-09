@@ -19,7 +19,7 @@
   the programmer's part.
   libLASi was designed for projects which require the ability to
   produce Postscript independent of any one application framework.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">lasi</remote-id>
   </upstream>

@@ -10,7 +10,7 @@
   systems, Ax=b, using the Unsymmetric MultiFrontal method.
   Includes a C-callable interface, and a Fortran-callable interface.
   MATLAB routines are not included in the Gentoo package.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="cholmod">Use <pkg>sci-libs/cholmod</pkg> for matrix
   ordering</flag>

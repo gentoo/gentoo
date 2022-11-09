@@ -7,13 +7,14 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="cpe">cpe:/a:kde:okular</remote-id>
 	</upstream>
 	<use>
 		<flag name="crypt">Enable support for password-encrypted documents via <pkg>kde-frameworks/kwallet</pkg></flag>
 		<flag name="epub">Enable E-Book support via <pkg>app-text/ebook-tools</pkg></flag>
 		<flag name="image-backend">Enable image viewing support</flag>
 		<flag name="markdown">Enable Markdown support via <pkg>app-text/discount</pkg></flag>
-		<flag name="mobi">Enable mobipocket support</flag>
+		<flag name="mobi">Enable mobipocket support via <pkg>kde-apps/kdegraphics-mobipocket</pkg></flag>
 		<flag name="plucker">Enable Plucker E-Book for Palm OS devices support</flag>
 		<flag name="qml">Install Okular Qml components</flag>
 		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>

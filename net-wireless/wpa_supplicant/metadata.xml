@@ -21,9 +21,9 @@
 		<flag name="ps3">Add support for ps3 hypervisor driven gelic wifi</flag>
 		<flag name="privsep">Enable wpa_priv privledge separation binary</flag>
 		<flag name="tdls">Add support for Tunneled Direct Link Setup (802.11z)</flag>
-		<flag name="tkip">Add support for WPA TKIP (deprecated 2009)</flag>
+		<flag name="tkip">Add support for WPA TKIP (deprecated due to security flaws in 2009)</flag>
 		<flag name="uncommon-eap-types">Add support for GPSK, SAKE, GPSK_SHA256, IKEV2 and EKE</flag>
-		<flag name="wep">Add support for Wired Equivalent Privacy (deprecated 2004)</flag>
+		<flag name="wep">Add support for Wired Equivalent Privacy (deprecated due to security flaws in 2004)</flag>
 		<flag name="wps">Add support for Wi-Fi Protected Setup</flag>
 		<flag name="wimax">Add support for Wimax EAP-PEER authentication algorithm</flag>
 		<flag name="smartcard">Add support for smartcards</flag>

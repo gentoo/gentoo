@@ -59,11 +59,12 @@ RESTRICT="!test? ( test )"
 S="${WORKDIR}/rocSPARSE-rocm-${PV}"
 
 PATCHES=( "${FILESDIR}/${PN}-5.0.2-remove-matrices-unpacking.patch"
-	"${FILESDIR}/${PN}-5.0.2-enable-gfx1031.patch" )
+	"${FILESDIR}/${PN}-5.0.2-enable-gfx1031.patch"
+	"${FILESDIR}/${PN}-5.0.2-remove-incorrect-assert.patch" )
 
 python_check_deps() {
 	if use test; then
-		has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
+		python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
 	fi
 }
 
@@ -81,6 +82,8 @@ src_prepare() {
 	# use python interpreter specifyied by python-any-r1
 	sed -e "/COMMAND ..\/common\/rocsparse_gentest.py/s,COMMAND ,COMMAND ${EPYTHON} ," -i clients/tests/CMakeLists.txt || die
 
+	cmake_src_prepare
+
 	# Test need download data from https://sparse.tamu.edu (or other mirror site), check MD5, unpack and convert them into csr format
 	# This process is handled default by ${S}/cmake/ClientMatrices.cmake, but should be the responsibility of portage.
 	if use test; then
@@ -89,7 +92,7 @@ src_prepare() {
 		ebegin "$(tc-getCXX) deps/convert.cpp -o deps/convert"
 		$(tc-getCXX) deps/convert.cpp -o deps/convert
 		eend $?
-		find "${WORKDIR}" -maxdepth 2 -regextype egrep -regex ".*/(.*)/\1\.mtx" -print0 |
+		find "${WORKDIR}" -maxdepth 2 -regextype grep -E -regex ".*/(.*)/\1\.mtx" -print0 |
 			while IFS= read -r -d '' mtxfile; do
 				destination=${BUILD_DIR}/clients/matrices/$(basename -s '.mtx' ${mtxfile}).csr
 				ebegin "Converting ${mtxfile} to ${destination}"
@@ -97,8 +100,6 @@ src_prepare() {
 				eend $?
 			done
 	fi
-
-	cmake_src_prepare
 }
 
 src_configure() {
@@ -125,7 +126,7 @@ src_test() {
 	addwrite /dev/kfd
 	addwrite /dev/dri/
 	cd "${BUILD_DIR}/clients/staging" || die
-	./rocsparse-test || die
+	LD_LIBRARY_PATH="${BUILD_DIR}/library" ./rocsparse-test || die
 }
 
 src_install() {

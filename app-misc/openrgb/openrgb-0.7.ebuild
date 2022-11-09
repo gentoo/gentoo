@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_${PV}/OpenRGB-release_${PV}.tar.bz2"
 	S="${WORKDIR}/OpenRGB-release_${PV}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	PATCHES=(
 		"${FILESDIR}"/OpenRGB-0.5-build-system.patch
 	)
@@ -42,6 +42,7 @@ BDEPEND="
 PATCHES+=(
 	"${FILESDIR}"/OpenRGB-0.7-plugins.patch
 	"${FILESDIR}"/OpenRGB-0.7-udev.patch
+	"${FILESDIR}"/OpenRGB-0.7-json.patch
 )
 
 src_prepare() {

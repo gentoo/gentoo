@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="parsec">Enable the use of the `parsec` package</flag>
+		<flag name="binary">You can disable the use of the `binary` package using `-f-binary`.</flag>
 		<flag name="attoparsec">Enable the use of the `attoparsec` package</flag>
 	</use>
 	<longdescription>

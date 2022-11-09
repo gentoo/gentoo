@@ -2,14 +2,17 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-  <email>gnome@gentoo.org</email>
-  <name>Gentoo GNOME Desktop</name>
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <maintainer type="project">
-  <email>gstreamer@gentoo.org</email>
-  <name>GStreamer package maintainers</name>
+    <email>gstreamer@gentoo.org</email>
+    <name>GStreamer package maintainers</name>
   </maintainer>
   <use>
     <flag name="daap">Build the local network music sharing plugin which uses the DAAP protocol using <pkg>net-libs/libdmapsharing</pkg></flag>
   </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/rhythmbox</remote-id>
+  </upstream>
 </pkgmetadata>

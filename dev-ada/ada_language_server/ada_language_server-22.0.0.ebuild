@@ -3,7 +3,7 @@
 
 EAPI=7
 
-ADA_COMPAT=( gnat_202{0,1} )
+ADA_COMPAT=( gnat_202{0,1} gcc_12_2_0 )
 inherit ada multiprocessing
 
 DESCRIPTION="an implementation of the Microsoft Language Server Protocol for Ada/SPARK"
@@ -33,21 +33,27 @@ REQUIRED_USE="${ADA_REQUIRED_USE}"
 src_compile() {
 	gprbuild -v -j$(makeopts_jobs) -P gnat/tester.gpr -p \
 		-XLIBRARY_TYPE=relocatable \
+		-XBUILD_MODE=prod \
 		-cargs:Ada ${ADAFLAGS} || die
 	gprbuild -v -j$(makeopts_jobs) -c -u -P gnat/lsp_server.gpr -p \
 		-XLIBRARY_TYPE=relocatable s-memory.adb \
+		-XBUILD_MODE=prod \
 		-cargs:Ada ${ADAFLAGS} || die
 	gprbuild -v -j$(makeopts_jobs) -P gnat/lsp_server.gpr -p \
 		-XLIBRARY_TYPE=relocatable -XVERSION= \
+		-XBUILD_MODE=prod \
 		-cargs:Ada ${ADAFLAGS} || die
 	gprbuild -v -j$(makeopts_jobs) -P gnat/codec_test.gpr -p \
 		-XLIBRARY_TYPE=relocatable \
+		-XBUILD_MODE=prod \
 		-cargs:Ada ${ADAFLAGS} || die
 	gprbuild -v -j$(makeopts_jobs) -P gnat/lsp_client.gpr -p \
 		-XLIBRARY_TYPE=relocatable \
+		-XBUILD_MODE=prod \
 		-cargs:Ada ${ADAFLAGS} || die
 	gprbuild -v -j$(makeopts_jobs) -P gnat/lsp_client_glib.gpr -p \
 		-XLIBRARY_TYPE=relocatable \
+		-XBUILD_MODE=prod \
 		-cargs:Ada ${ADAFLAGS} || die
 	mkdir -p integration/vscode/ada/linux
 	cp -f .obj/server/ada_language_server integration/vscode/ada/linux || die

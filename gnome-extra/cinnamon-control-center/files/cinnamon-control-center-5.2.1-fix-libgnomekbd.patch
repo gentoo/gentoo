@@ -1,0 +1,47 @@
+https://bugs.gentoo.org/870151
+https://github.com/linuxmint/cinnamon-control-center/pull/297
+
+From 8cb73375e66b93da18f7bde728d4a832c07aada4 Mon Sep 17 00:00:00 2001
+From: Eicke Herbertz <wolletd@posteo.de>
+Date: Tue, 23 Aug 2022 19:28:57 +0200
+Subject: [PATCH] region panel: add keys removed from libgnomekbd's API (#297)
+
+in version 3.28
+---
+ panels/region/cinnamon-region-panel-xkb.c | 6 ++++++
+ panels/region/cinnamon-region-panel-xkb.h | 5 +++++
+ 2 files changed, 11 insertions(+)
+
+diff --git a/panels/region/cinnamon-region-panel-xkb.c b/panels/region/cinnamon-region-panel-xkb.c
+index b7417e2e..3152471b 100644
+--- a/panels/region/cinnamon-region-panel-xkb.c
++++ b/panels/region/cinnamon-region-panel-xkb.c
+@@ -36,6 +36,12 @@
+ 
+ #define GKBD_CONFIG_KEY_LOAD_EXTRA_ITEMS "load-extra-items"
+ 
++// These were removed from the API of libgnomekbd in version 3.28
++const gchar GKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP[] = "default-group";
++const gchar GKBD_DESKTOP_CONFIG_KEY_GROUP_PER_WINDOW[] = "group-per-window";
++const gchar GKBD_KEYBOARD_CONFIG_KEY_LAYOUTS[] = "layouts";
++const gchar GKBD_KEYBOARD_CONFIG_KEY_OPTIONS[] = "options";
++
+ XklEngine *engine;
+ XklConfigRegistry *config_registry;
+ 
+diff --git a/panels/region/cinnamon-region-panel-xkb.h b/panels/region/cinnamon-region-panel-xkb.h
+index bd7b47d3..cfa396de 100644
+--- a/panels/region/cinnamon-region-panel-xkb.h
++++ b/panels/region/cinnamon-region-panel-xkb.h
+@@ -36,6 +36,11 @@ extern GSettings *xkb_keyboard_settings;
+ extern GSettings *xkb_desktop_settings;
+ extern GkbdKeyboardConfig initial_config;
+ 
++extern const gchar GKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP[];
++extern const gchar GKBD_DESKTOP_CONFIG_KEY_GROUP_PER_WINDOW[];
++extern const gchar GKBD_KEYBOARD_CONFIG_KEY_LAYOUTS[];
++extern const gchar GKBD_KEYBOARD_CONFIG_KEY_OPTIONS[];
++
+ extern void setup_xkb_tabs (GtkBuilder * dialog);
+ 
+ extern void xkb_layouts_fill_selected_tree (GtkBuilder * dialog);

@@ -9,6 +9,10 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 		YARA is a tool aimed at (but not limited to) helping malware
 		researchers to identify and classify malware samples. With YARA you can

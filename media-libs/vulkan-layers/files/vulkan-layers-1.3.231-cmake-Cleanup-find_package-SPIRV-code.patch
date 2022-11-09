@@ -1,0 +1,101 @@
+From 836a09267fe034ce783570e6920e1b638c0bd212 Mon Sep 17 00:00:00 2001
+From: Juan Ramos <juan@lunarg.com>
+Date: Fri, 21 Oct 2022 17:43:23 -0600
+Subject: [PATCH] cmake: Cleanup find_package SPIRV code
+
+- Use get_target_property instead of relying on passed in var
+- Remove unused var
+- Cleanup find_package(SPIRV-* code
+---
+ CMakeLists.txt                    | 55 +++++++++----------------------
+ cmake/VVLGenerateSourceCode.cmake |  5 ++-
+ 2 files changed, 19 insertions(+), 41 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a7f01081415..23de46a1a22 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -204,52 +204,27 @@ if (USE_ROBIN_HOOD_HASHING)
+ endif()
+ 
+ if(BUILD_LAYERS OR BUILD_TESTS)
+-    find_package(SPIRV-Headers CONFIG QUIET)
+-    if(SPIRV-Headers_FOUND)
+-        # Prefer the package if found. Note that if SPIRV_HEADERS_INSTALL_DIR points at an 'installed'
+-        # version of SPIRV-Headers, the package will be found.
+-        get_target_property(SPIRV_HEADERS_INCLUDE_DIR SPIRV-Headers::SPIRV-Headers INTERFACE_INCLUDE_DIRECTORIES)
+-    elseif(SPIRV_HEADERS_INCLUDE_DIR)
+-        # This is set by SPIRV-Tools (in parent scope!) and also some packages that include VVL with add_subdirectory
+-	    if (NOT EXISTS "${SPIRV_HEADERS_INCLUDE_DIR}/spirv/unified1/spirv.h")
+-	        message(FATAL_ERROR "Cannot find SPIRV-Headers from SPIRV_HEADERS_INCLUDE_DIR: ${SPIRV_HEADERS_INCLUDE_DIR}")
+-        endif()
+-    elseif(SPIRV_HEADERS_INSTALL_DIR)
+-        # This is our official variable for setting SPIRV-Headers location, but pointing at the raw source of SPIRV-Headers
+-        if (NOT EXISTS "${SPIRV_HEADERS_INSTALL_DIR}/include/spirv/unified1/spirv.h")
+-            message(FATAL_ERROR "Cannot find SPIRV-Headers from SPIRV_HEADERS_INSTALL_DIR: ${SPIRV_HEADERS_INSTALL_DIR}")
+-        endif()
+-	    set(SPIRV_HEADERS_INCLUDE_DIR "${SPIRV_HEADERS_INSTALL_DIR}/include")
+-    endif()
++    find_package(SPIRV-Headers REQUIRED CONFIG QUIET)
+ 
+-    # VVLGenerateSourceCode depends on spirv/unified1
+     include(VVLGenerateSourceCode)
+ 
+-    if (NOT TARGET SPIRV-Tools-opt)
+-        find_package(SPIRV-Tools-opt REQUIRED CONFIG)
+-    endif()
+-
+-    if (NOT TARGET SPIRV-Tools)
+-        find_package(SPIRV-Tools REQUIRED CONFIG)
+-        # See https://github.com/KhronosGroup/SPIRV-Tools/issues/3909 for background on this.
+-        # The targets available from SPIRV-Tools change depending on how SPIRV_TOOLS_BUILD_STATIC is set.
+-        # Try to handle all possible combinations so that we work with externally built packages.
+-        if (TARGET SPIRV-Tools)
+-            set(SPIRV_TOOLS_TARGET "SPIRV-Tools")
+-        elseif(TARGET SPIRV-Tools-static)
+-            set(SPIRV_TOOLS_TARGET "SPIRV-Tools-static")
+-        elseif(TARGET SPIRV-Tools-shared)
+-            set(SPIRV_TOOLS_TARGET "SPIRV-Tools-shared")
+-        else()
+-            message(FATAL_ERROR "Cannot determine SPIRV-Tools target name")
+-        endif()
++    find_package(SPIRV-Tools-opt REQUIRED CONFIG QUIET)
++
++    find_package(SPIRV-Tools REQUIRED CONFIG QUIET)
++    # See https://github.com/KhronosGroup/SPIRV-Tools/issues/3909 for background on this.
++    # The targets available from SPIRV-Tools change depending on how SPIRV_TOOLS_BUILD_STATIC is set.
++    # Try to handle all possible combinations so that we work with externally built packages.
++    if (TARGET SPIRV-Tools)
++        set(SPIRV_TOOLS_TARGET "SPIRV-Tools")
++    elseif(TARGET SPIRV-Tools-static)
++        set(SPIRV_TOOLS_TARGET "SPIRV-Tools-static")
++    elseif(TARGET SPIRV-Tools-shared)
++        set(SPIRV_TOOLS_TARGET "SPIRV-Tools-shared")
++    else()
++        message(FATAL_ERROR "Cannot determine SPIRV-Tools target name")
+     endif()
+ endif()
+ 
+-# Generate dependent helper files ------------------------------------------------------------------------------------------------
+-
+-set(SCRIPTS_DIR "${PROJECT_SOURCE_DIR}/scripts")
+-
+ # VkLayer_utils library ----------------------------------------------------------------------------------------------------------
+ # For Windows, we use a static lib because the Windows loader has a fairly restrictive loader search path that can't be easily
+ # modified to point it to the same directory that contains the layers. TODO: This should not be a library -- in future, include
+diff --git a/cmake/VVLGenerateSourceCode.cmake b/cmake/VVLGenerateSourceCode.cmake
+index 43efdb8201c..13c81e38aca 100644
+--- a/cmake/VVLGenerateSourceCode.cmake
++++ b/cmake/VVLGenerateSourceCode.cmake
+@@ -20,7 +20,10 @@ if(PYTHONINTERP_FOUND)
+         message(FATAL_ERROR "Unable to find vk.xml")
+     endif()
+ 
+-    set(spirv_unified_include_dir "${SPIRV_HEADERS_INSTALL_DIR}/include/spirv/unified1/")
++    # Get the include directory of the SPIRV-Headers
++    get_target_property(SPIRV_HEADERS_INCLUDE_DIR SPIRV-Headers::SPIRV-Headers INTERFACE_INCLUDE_DIRECTORIES)
++
++    set(spirv_unified_include_dir "${SPIRV_HEADERS_INCLUDE_DIR}/spirv/unified1/")
+     if (NOT IS_DIRECTORY ${spirv_unified_include_dir})
+         message(FATAL_ERROR "Unable to find spirv/unified1")
+     endif()

@@ -1,0 +1,35 @@
+diff --git a/salt/log/handlers/logstash_mod.py b/salt/log/handlers/logstash_mod.py
+index bc462018f5..7e0d98c5ba 100644
+--- a/salt/log/handlers/logstash_mod.py
++++ b/salt/log/handlers/logstash_mod.py
+@@ -160,6 +160,8 @@ import logging
+ import logging.handlers
+ import os
+ 
++import zmq
++
+ import salt.utils.json
+ import salt.utils.network
+ import salt.utils.stringutils
+@@ -435,7 +437,7 @@ class ZMQLogstashHander(logging.Handler, NewStyleClassMixIn):
+                 # Above the defined high water mark(unsent messages), start
+                 # dropping them
+                 self._publisher.setsockopt(zmq.HWM, self._zmq_hwm)
+-            except AttributeError:
++            except (AttributeError, zmq.error.ZMQError):
+                 # In ZMQ >= 3.0, there are separate send and receive HWM
+                 # settings
+                 self._publisher.setsockopt(zmq.SNDHWM, self._zmq_hwm)
+diff --git a/salt/transport/zeromq.py b/salt/transport/zeromq.py
+index dc024d7eff..4c989095a5 100644
+--- a/salt/transport/zeromq.py
++++ b/salt/transport/zeromq.py
+@@ -902,7 +902,7 @@ class ZeroMQPubServerChannel(salt.transport.server.PubServerChannel):
+         try:
+             pub_sock.setsockopt(zmq.HWM, self.opts.get("pub_hwm", 1000))
+         # in zmq >= 3.0, there are separate send and receive HWM settings
+-        except AttributeError:
++        except (AttributeError, zmq.error.ZMQError):
+             # Set the High Water Marks. For more information on HWM, see:
+             # http://api.zeromq.org/4-1:zmq-setsockopt
+             pub_sock.setsockopt(zmq.SNDHWM, self.opts.get("pub_hwm", 1000))

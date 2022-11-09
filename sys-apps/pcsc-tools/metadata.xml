@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>zlogene@gentoo.org</email>
-    <name>Mikle Kolyada</name>
-  </maintainer>
-  <use>
-    <flag name="network-cron">Monthly cronjob the update-smartcard_list script</flag>
-  </use>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<use>
+		<flag name="network-cron">Monthly cronjob the update-smartcard_list script</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">LudovicRousseau/pcsc-tools</remote-id>
+	</upstream>
 </pkgmetadata>

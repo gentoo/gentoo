@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>games@gentoo.org</email>
-	<name>Gentoo Games Project</name>
-</maintainer>
-<use>
-	<flag name="capsimage">Use <pkg>dev-libs/spsdeclib</pkg> to read .IPF, .RAW, and .CTR disk images</flag>
-	<flag name="microphone">Use <pkg>media-libs/portaudio</pkg> for Falcon microphone handling</flag>
-	<flag name="portmidi">Use <pkg>media-libs/portmidi</pkg> as an alternative MIDI backend</flag>
-</use>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="capsimage">Use <pkg>dev-libs/spsdeclib</pkg> to read .IPF, .RAW, and .CTR disk images</flag>
+		<flag name="portmidi">Use <pkg>media-libs/portmidi</pkg> as an alternative MIDI backend</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">hatari/hatari</remote-id>
+	</upstream>
 </pkgmetadata>

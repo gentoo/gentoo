@@ -15,7 +15,7 @@ IUSE="custom-optimization doc examples python test"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 RDEPEND="
 	dev-cpp/rapidyaml:=
 	dev-cpp/nlohmann_json:=
@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}/jsonnet-0.16.0-libdir.patch"
 	"${FILESDIR}/jsonnet-0.16.0-cp-var.patch"
 	"${FILESDIR}/jsonnet-0.18.0-unbundle.patch"
+	"${FILESDIR}/jsonnet-0.18.0-gcc-13.patch"
 )
 
 distutils_enable_tests unittest

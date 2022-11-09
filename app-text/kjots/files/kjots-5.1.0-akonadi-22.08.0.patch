@@ -1,0 +1,47 @@
+From 85121754c862417e872048ae2f85e9b9fe2ddc7a Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Thu, 14 Jul 2022 14:27:55 +0200
+Subject: [PATCH] Adapt to new KontactInterface::Plugin ctor
+
+---
+ src/kontact_plugin/kjots_plugin.cpp | 5 +++++
+ src/kontact_plugin/kjots_plugin.h   | 4 ++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/src/kontact_plugin/kjots_plugin.cpp b/src/kontact_plugin/kjots_plugin.cpp
+index 1146ab3..c75faac 100644
+--- a/src/kontact_plugin/kjots_plugin.cpp
++++ b/src/kontact_plugin/kjots_plugin.cpp
+@@ -40,8 +40,13 @@
+ 
+ EXPORT_KONTACT_PLUGIN_WITH_JSON(KJotsPlugin, "kjotsplugin.json")
+ 
++#if KONTACTINTERFACE_VERSION >= QT_VERSION_CHECK(5, 20, 41)
++KJotsPlugin::KJotsPlugin(KontactInterface::Core *core, const KPluginMetaData &md, const QVariantList &/*args*/)
++    : KontactInterface::Plugin(core, core, md, "kjots")
++#else
+ KJotsPlugin::KJotsPlugin(KontactInterface::Core *core, const QVariantList &/*args*/)
+     : KontactInterface::Plugin(core, core, "kjots")
++#endif
+ {
+     setComponentName(QStringLiteral("kjots"), i18n("KJots"));
+ 
+diff --git a/src/kontact_plugin/kjots_plugin.h b/src/kontact_plugin/kjots_plugin.h
+index 28a793b..03ff500 100644
+--- a/src/kontact_plugin/kjots_plugin.h
++++ b/src/kontact_plugin/kjots_plugin.h
+@@ -34,7 +34,11 @@ class KJotsPlugin : public KontactInterface::Plugin
+     Q_OBJECT
+ 
+ public:
++#if KONTACTINTERFACE_VERSION >= QT_VERSION_CHECK(5, 20, 41)
++    KJotsPlugin(KontactInterface::Core *core, const KPluginMetaData &md, const QVariantList &);
++#else
+     KJotsPlugin(KontactInterface::Core *core, const QVariantList &);
++#endif
+ 
+     int weight() const override
+     {
+-- 
+GitLab
+

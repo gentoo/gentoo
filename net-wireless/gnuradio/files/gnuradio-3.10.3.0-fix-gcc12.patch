@@ -1,0 +1,50 @@
+From 9bf18900418e1d16e30072765bff1cbffdf8c0a9 Mon Sep 17 00:00:00 2001
+From: danielnachun <daniel.nachun@gmail.com>
+Date: Fri, 8 Jul 2022 12:53:47 -0700
+Subject: [PATCH] add missing includes
+
+Signed-off-by: danielnachun <daniel.nachun@gmail.com>
+---
+ gr-qtgui/lib/FrequencyDisplayPlot.cc | 2 +-
+ gr-qtgui/lib/VectorDisplayPlot.cc    | 2 ++
+ gr-qtgui/lib/WaterfallDisplayPlot.cc | 1 +
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/gr-qtgui/lib/FrequencyDisplayPlot.cc b/gr-qtgui/lib/FrequencyDisplayPlot.cc
+index f6f673e7ec6..2171f26e7d8 100644
+--- a/gr-qtgui/lib/FrequencyDisplayPlot.cc
++++ b/gr-qtgui/lib/FrequencyDisplayPlot.cc
+@@ -16,7 +16,7 @@
+ #include <gnuradio/qtgui/qtgui_types.h>
+ #include <qwt_scale_draw.h>
+ #include <QColor>
+-
++#include <cmath>
+ 
+ /***********************************************************************
+  * Widget to provide mouse pointer coordinate text
+diff --git a/gr-qtgui/lib/VectorDisplayPlot.cc b/gr-qtgui/lib/VectorDisplayPlot.cc
+index d5c2ecc27e5..2e5f3f422b9 100644
+--- a/gr-qtgui/lib/VectorDisplayPlot.cc
++++ b/gr-qtgui/lib/VectorDisplayPlot.cc
+@@ -25,6 +25,8 @@
+ #include <qwt_legend_label.h>
+ #endif /* QWT_VERSION < 0x060100 */
+ 
++#include <cmath>
++
+ /***********************************************************************
+  * Widget to provide mouse pointer coordinate text
+  **********************************************************************/
+diff --git a/gr-qtgui/lib/WaterfallDisplayPlot.cc b/gr-qtgui/lib/WaterfallDisplayPlot.cc
+index 69d82fdae86..d999fe046da 100644
+--- a/gr-qtgui/lib/WaterfallDisplayPlot.cc
++++ b/gr-qtgui/lib/WaterfallDisplayPlot.cc
+@@ -28,6 +28,7 @@
+ #endif /* QWT_VERSION < 0x060100 */
+ 
+ #include <QDebug>
++#include <cmath>
+ 
+ /***********************************************************************
+  * Text scale widget to provide Y (time) axis text

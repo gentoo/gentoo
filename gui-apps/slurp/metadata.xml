@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="person">
-        <email>bman@gentoo.org</email>
-        <name>Aaron Bauman</name>
-    </maintainer>
-    <upstream>
-        <remote-id type="github">emersion/slurp</remote-id>
-        <bugs-to>https://github.com/emersion/slurp/issues</bugs-to>
-        <changelog>https://github.com/emersion/slurp/releases</changelog>
-    </upstream>
+	<maintainer type="person">
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">emersion/slurp</remote-id>
+		<bugs-to>https://github.com/emersion/slurp/issues</bugs-to>
+		<changelog>https://github.com/emersion/slurp/releases</changelog>
+	</upstream>
 </pkgmetadata>

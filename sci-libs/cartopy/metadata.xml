@@ -12,4 +12,8 @@
 		and its ability to transform points, lines, vectors, polygons and i
 		images between those projections.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">SciTools/cartopy</remote-id>
+		<remote-id type="pypi">Cartopy</remote-id>
+	</upstream>
 </pkgmetadata>

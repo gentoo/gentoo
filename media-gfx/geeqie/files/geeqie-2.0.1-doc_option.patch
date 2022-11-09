@@ -1,0 +1,81 @@
+diff -Naur geeqie-2.0.1.orig/doc/meson.build geeqie-2.0.1/doc/meson.build
+--- geeqie-2.0.1.orig/doc/meson.build	2022-08-12 11:32:25.000000000 +0200
++++ geeqie-2.0.1/doc/meson.build	2022-10-18 16:26:33.776338232 +0200
+@@ -20,21 +20,16 @@
+ guideindex_ln = join_paths(destdir, 'index.html')
+ 
+ # Not-found notification already handled by ../meson.build
+-if gnome_doc_tool.found()
++if not get_option('doc').disabled() and gnome_doc_tool.found()
+     run_command(gnome_doc_tool, 'html', '-o', destdir, '-p', iconsdir, guideindex_xml, check : false)
+     run_command(find_program('ln'), '-s', '-f', guideindex_html, guideindex_ln, check : false)
+ endif
+ 
+ install_subdir(destdir, install_dir : helpdir, exclude_directories : 'lua-api/latex')
+ 
+-doxygen = find_program('doxygen', required : false)
+-if doxygen.found()
++if not get_option('doc').disabled() and doxygen.found()
+     srcdir = join_paths(meson.source_root())
+     destdir = join_paths(meson.build_root(), 'doc', 'html', 'lua-api')
+ 
+     run_command(find_program('create-doxygen-lua-api.sh'), srcdir, destdir, check : false)
+-
+-    summary({'lua-api' : ['lua-api help file created:', true]}, section : 'Documentation', bool_yn : true)
+-else
+-    summary({'lua-api' : ['doxygen not found - lua-api help file created:', false]}, section : 'Documentation', bool_yn : true)
+ endif
+diff -Naur geeqie-2.0.1.orig/meson.build geeqie-2.0.1/meson.build
+--- geeqie-2.0.1.orig/meson.build	2022-08-12 11:32:25.000000000 +0200
++++ geeqie-2.0.1/meson.build	2022-10-18 16:25:38.063273607 +0200
+@@ -62,12 +62,6 @@
+ # External programs
+ gdk_pixbuf_csource = find_program('gdk-pixbuf-csource', required : true)
+ glib_genmarshal = find_program('glib-genmarshal', required : true)
+-gnome_doc_tool = find_program('yelp-build', required : false)
+-if gnome_doc_tool.found()
+-    summary({'help' : ['Help files created:', true]}, section : 'Documentation', bool_yn : true)
+-else
+-    summary({'help' : ['yelp-build not found - Help files created:', false]}, section : 'Documentation', bool_yn : true)
+-endif
+ 
+ debug = get_option('debug')
+ 
+@@ -138,6 +132,26 @@
+ gtk_dep = dependency('gtk+-3.0', version : '>=3.22', required: true)
+ glib_dep = dependency('glib-2.0', version : '>=2.52', required: true)
+ 
++#option = get_option('doc')
++if not get_option('doc').disabled()
++    gnome_doc_tool = find_program('yelp-build', required : false)
++    if gnome_doc_tool.found()
++        summary({'help' : ['Help files created:', true]}, section : 'Documentation', bool_yn : true)
++    else
++        summary({'help' : ['yelp-build not found - Help files created:', false]}, section : 'Documentation', bool_yn : true)
++    endif
++
++    doxygen = find_program('doxygen', required : false)
++    if doxygen.found()
++        summary({'lua-api' : ['lua-api help file created:', true]}, section : 'Documentation', bool_yn : true)
++    else
++        summary({'lua-api' : ['doxygen not found - lua-api help file created:', false]}, section : 'Documentation', bool_yn : true)
++    endif
++else
++    summary({'help' : ['disabled - Help files created:', false]}, section : 'Documentation', bool_yn : true)
++    summary({'lua-api' : ['disabled - lua-api help file created:', false]}, section : 'Documentation', bool_yn : true)
++endif
++
+ libarchive_dep = []
+ req_version = '>=3.4.0'
+ option = get_option('archive')
+diff -Naur geeqie-2.0.1.orig/meson_options.txt geeqie-2.0.1/meson_options.txt
+--- geeqie-2.0.1.orig/meson_options.txt	2022-08-12 11:32:25.000000000 +0200
++++ geeqie-2.0.1/meson_options.txt	2022-10-18 16:25:38.063273607 +0200
+@@ -26,6 +26,7 @@
+ option('archive', type : 'feature', value : 'auto', description : 'archive files e.g. zip, gz')
+ option('cms', type : 'feature', value : 'auto', description : 'color management system')
+ option('djvu', type : 'feature', value : 'auto', description : 'djvu')
++option('doc', type : 'feature', value : 'auto', description : 'doc')
+ option('exiv2', type : 'feature', value : 'auto', description : 'exiv2')
+ option('videothumbnailer', type : 'feature', value : 'auto', description : 'video thumbnailer')
+ option('gps-map', type : 'feature', value : 'auto', description : 'gps map')

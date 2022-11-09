@@ -1,0 +1,454 @@
+https://git.claws-mail.org/?p=claws.git;a=commitdiff;h=1465ce9c0eb6151a3eaeebb10fd4ffa6db3d69db
+https://bugs.gentoo.org/849569
+
+From: Ricardo Mones <ricardo@mones.org>
+Date: Sat, 23 Apr 2022 19:26:16 +0200
+Subject: [PATCH] Fix building perl plugin since perl v5.35.2
+
+Using XSRETURN_* macros in expressions is now deprecated:
+https://github.com/Perl/perl5/commit/7169efc77525df70484a824bff4ceebd1fafc760
+--- a/src/plugins/perl/perl_plugin.c
++++ b/src/plugins/perl/perl_plugin.c
+@@ -577,76 +577,182 @@ static XS(XS_ClawsMail_filter_init)
+ 
+     /* msginfo */
+   case  1:
+-    msginfo->size       ? XSRETURN_UV(msginfo->size)       : XSRETURN_UNDEF;
++    if (msginfo->size) {
++      XSRETURN_UV(msginfo->size);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case  2:
+-    msginfo->date       ? XSRETURN_PV(msginfo->date)       : XSRETURN_UNDEF;
++    if (msginfo->date) {
++      XSRETURN_PV(msginfo->date);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case  3:
+-    msginfo->from       ? XSRETURN_PV(msginfo->from)       : XSRETURN_UNDEF;
++    if (msginfo->from) {
++      XSRETURN_PV(msginfo->from);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case  4:
+-    msginfo->to         ? XSRETURN_PV(msginfo->to)         : XSRETURN_UNDEF;
++    if (msginfo->to) {
++      XSRETURN_PV(msginfo->to);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case  5:
+-    msginfo->cc         ? XSRETURN_PV(msginfo->cc)         : XSRETURN_UNDEF;
++    if (msginfo->cc) {
++      XSRETURN_PV(msginfo->cc);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case  6:
+-    msginfo->newsgroups ? XSRETURN_PV(msginfo->newsgroups) : XSRETURN_UNDEF;
++    if (msginfo->newsgroups) {
++      XSRETURN_PV(msginfo->newsgroups);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case  7:
+-    msginfo->subject    ? XSRETURN_PV(msginfo->subject)    : XSRETURN_UNDEF;
++    if (msginfo->subject) {
++      XSRETURN_PV(msginfo->subject);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case  8:
+-    msginfo->msgid      ? XSRETURN_PV(msginfo->msgid)      : XSRETURN_UNDEF;
++    if (msginfo->msgid) {
++      XSRETURN_PV(msginfo->msgid);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case  9:
+-    msginfo->inreplyto  ? XSRETURN_PV(msginfo->inreplyto)  : XSRETURN_UNDEF;
++    if (msginfo->inreplyto) {
++      XSRETURN_PV(msginfo->inreplyto);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case 10:
+-    msginfo->xref       ? XSRETURN_PV(msginfo->xref)       : XSRETURN_UNDEF;
++    if (msginfo->xref) {
++      XSRETURN_PV(msginfo->xref);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case 11:
+     xface = procmsg_msginfo_get_avatar(msginfo, AVATAR_XFACE);
+-    xface               ? XSRETURN_PV(xface)               : XSRETURN_UNDEF;
++    if (xface) {
++      XSRETURN_PV(xface);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case 12:
+-    (msginfo->extradata && msginfo->extradata->dispositionnotificationto) ?
+-      XSRETURN_PV(msginfo->extradata->dispositionnotificationto) : XSRETURN_UNDEF;
++    if (msginfo->extradata && msginfo->extradata->dispositionnotificationto) {
++      XSRETURN_PV(msginfo->extradata->dispositionnotificationto);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case 13:
+-    (msginfo->extradata && msginfo->extradata->returnreceiptto) ?
+-      XSRETURN_PV(msginfo->extradata->returnreceiptto)     : XSRETURN_UNDEF;
++    if (msginfo->extradata && msginfo->extradata->returnreceiptto) {
++      XSRETURN_PV(msginfo->extradata->returnreceiptto);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case 14:
+     EXTEND(SP, g_slist_length(msginfo->references));
+     ii = 0;
+     for(walk = msginfo->references; walk != NULL; walk = g_slist_next(walk))
+       XST_mPV(ii++,walk->data ? (gchar*) walk->data: "");
+-    ii ? XSRETURN(ii) : XSRETURN_UNDEF;
++    if (ii) {
++      XSRETURN(ii);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case 15:
+-    msginfo->score      ? XSRETURN_IV(msginfo->score)      : XSRETURN_UNDEF;
++    if (msginfo->score) {
++      XSRETURN_IV(msginfo->score);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case 17:
+-    msginfo->plaintext_file ?
+-      XSRETURN_PV(msginfo->plaintext_file)                 : XSRETURN_UNDEF;
++    if (msginfo->plaintext_file) {
++      XSRETURN_PV(msginfo->plaintext_file);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case 19:
+-    msginfo->hidden     ? XSRETURN_IV(msginfo->hidden)     : XSRETURN_UNDEF;
++    if (msginfo->hidden) {
++      XSRETURN_IV(msginfo->hidden);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case 20:
+     if((charp = procmsg_get_message_file_path(msginfo)) != NULL) {
+       strncpy2(buf,charp,sizeof(buf));
+       g_free(charp);
+       XSRETURN_PV(buf);
+     }
+-    else
++    else {
+       XSRETURN_UNDEF;
++    }
+   case 21:
+-    (msginfo->extradata && msginfo->extradata->partial_recv) ?
+-      XSRETURN_PV(msginfo->extradata->partial_recv)        : XSRETURN_UNDEF;
++    if (msginfo->extradata && msginfo->extradata->partial_recv)  {
++      XSRETURN_PV(msginfo->extradata->partial_recv);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case 22:
+-    msginfo->total_size ? XSRETURN_IV(msginfo->total_size) : XSRETURN_UNDEF;
++    if (msginfo->total_size) {
++      XSRETURN_IV(msginfo->total_size);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case 23:
+-    (msginfo->extradata && msginfo->extradata->account_server) ?
+-      XSRETURN_PV(msginfo->extradata->account_server)      : XSRETURN_UNDEF;
++    if (msginfo->extradata && msginfo->extradata->account_server) {
++      XSRETURN_PV(msginfo->extradata->account_server);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case 24:
+-    (msginfo->extradata && msginfo->extradata->account_login) ?
+-      XSRETURN_PV(msginfo->extradata->account_login)       : XSRETURN_UNDEF;
++    if (msginfo->extradata && msginfo->extradata->account_login) {
++      XSRETURN_PV(msginfo->extradata->account_login);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+   case 25:
+-    msginfo->planned_download ?
+-      XSRETURN_IV(msginfo->planned_download)               : XSRETURN_UNDEF;
++    if (msginfo->planned_download) {
++      XSRETURN_IV(msginfo->planned_download);
++    }
++    else {
++      XSRETURN_UNDEF;
++    }
+ 
+     /* general */
+   case 100:
+-    if(manual_filtering)
++    if(manual_filtering) {
+       XSRETURN_YES;
+-    else
++    }
++    else {
+       XSRETURN_NO;
++    }
+   default:
+     g_warning("Perl plugin: wrong argument to ClawsMail::C::init");
+     XSRETURN_UNDEF;    
+@@ -664,8 +770,9 @@ static XS(XS_ClawsMail_open_mail_file)
+     XSRETURN_UNDEF;
+   }
+   file = procmsg_get_message_file_path(msginfo);
+-  if(!file)
++  if(!file) {
+     XSRETURN_UNDEF;
++  }
+   if((message_file = claws_fopen(file, "rb")) == NULL) {
+     FILE_OP_ERROR(file, "claws_fopen");
+     g_warning("Perl plugin: file open error in ClawsMail::C::open_mail_file");
+@@ -718,8 +825,9 @@ static XS(XS_ClawsMail_get_next_header)
+     g_free(buf);
+     XSRETURN(2);
+   }
+-  else
++  else {
+     XSRETURN_EMPTY;
++  }
+ }
+ 
+ /* ClawsMail::C::get_next_body_line */
+@@ -736,10 +844,12 @@ static XS(XS_ClawsMail_get_next_body_line)
+     g_warning("Perl plugin: message file not open. Use ClawsMail::C::open_message_file first");
+     XSRETURN_UNDEF;
+   }
+-  if(claws_fgets(buf, sizeof(buf), message_file) != NULL)
++  if(claws_fgets(buf, sizeof(buf), message_file) != NULL) {
+     XSRETURN_PV(buf);
+-  else
++  }
++  else {
+     XSRETURN_UNDEF;
++  }
+ }
+ 
+ 
+@@ -772,57 +882,65 @@ static XS(XS_ClawsMail_check_flag)
+       filter_log_write(LOG_MATCH,"marked");
+       XSRETURN_YES;
+     }
+-    else
++    else {
+       XSRETURN_NO;
++    }
+   case 2:
+     if(MSG_IS_UNREAD(msginfo->flags)) {
+       filter_log_write(LOG_MATCH,"unread");
+       XSRETURN_YES;
+     }
+-    else
++    else {
+       XSRETURN_NO;
++    }
+   case 3:
+     if(MSG_IS_DELETED(msginfo->flags)) {
+       filter_log_write(LOG_MATCH,"deleted");
+       XSRETURN_YES;
+     }
+-    else
++    else {
+       XSRETURN_NO;
++    }
+   case 4:
+     if(MSG_IS_NEW(msginfo->flags)) {
+       filter_log_write(LOG_MATCH,"new");
+       XSRETURN_YES;
+     }
+-    else
++    else {
+       XSRETURN_NO;
++    }
+   case 5:
+     if(MSG_IS_REPLIED(msginfo->flags)) {
+       filter_log_write(LOG_MATCH,"replied");
+       XSRETURN_YES;
+     }
+-    else
++    else {
+       XSRETURN_NO;
++    }
+   case 6:
+     if(MSG_IS_FORWARDED(msginfo->flags)) {
+       filter_log_write(LOG_MATCH,"forwarded");
+       XSRETURN_YES;
+     }
+-    else
++    else {
+       XSRETURN_NO;
++    }
+   case 7:
+     if(MSG_IS_LOCKED(msginfo->flags)) {
+       filter_log_write(LOG_MATCH,"locked");
+       XSRETURN_YES;
+     }
+-    else
++    else {
+       XSRETURN_NO;
++    }
+   case 8:
+     if(MSG_IS_IGNORE_THREAD(msginfo->flags)) {
+       filter_log_write(LOG_MATCH,"ignore_thread");
+       XSRETURN_YES;
+     }
+-    else
++    else {
+       XSRETURN_NO;
++    }
+   default:
+     g_warning("Perl plugin: unknown argument to ClawsMail::C::check_flag");
+     XSRETURN_UNDEF;
+@@ -845,8 +963,9 @@ static XS(XS_ClawsMail_colorlabel)
+     filter_log_write(LOG_MATCH,"colorlabel");
+     XSRETURN_YES;
+   }
+-  else
++  else {
+     XSRETURN_NO;
++  }
+ }
+ 
+ /* ClawsMail::C::age_greater(int) */
+@@ -866,8 +985,9 @@ static XS(XS_ClawsMail_age_greater)
+     filter_log_write(LOG_MATCH,"age_greater");
+     XSRETURN_YES;
+   }
+-  else
++  else {
+     XSRETURN_NO;
++  }
+ }
+ 
+ /* ClawsMail::C::age_lower(int) */
+@@ -887,8 +1007,9 @@ static XS(XS_ClawsMail_age_lower)
+     filter_log_write(LOG_MATCH,"age_lower");
+     XSRETURN_YES;
+   }
+-  else
++  else {
+     XSRETURN_NO;
++  }
+ }
+ 
+ /* ClawsMail::C::tagged() */
+@@ -900,7 +1021,12 @@ static XS(XS_ClawsMail_tagged)
+     XSRETURN_UNDEF;
+   }
+ 
+-  return msginfo->tags ? XSRETURN_YES : XSRETURN_NO;
++  if (msginfo->tags) {
++    XSRETURN_YES;
++  }
++  else {
++    XSRETURN_NO;
++  }
+ }
+ 
+ /* ClawsMail::C::get_tags() */
+@@ -1032,10 +1158,12 @@ static XS(XS_ClawsMail_make_sure_folder_exists)
+ 
+   identifier = SvPV_nolen(ST(0));
+   item = folder_get_item_from_identifier(identifier);
+-  if(item)
++  if(item) {
+     XSRETURN_YES;
+-  else
++  }
++  else {
+     XSRETURN_NO;
++  }
+ }
+ 
+ 
+@@ -1066,8 +1194,9 @@ static XS(XS_ClawsMail_addr_in_addressbook)
+     filter_log_write(LOG_MATCH,"addr_in_addressbook");
+     XSRETURN_YES;
+   }
+-  else
++  else {
+     XSRETURN_NO;
++  }
+ }
+ 
+ 
+@@ -1348,8 +1477,9 @@ static XS(XS_ClawsMail_forward)
+ 
+     XSRETURN_YES;
+   }
+-  else
++  else {
+     XSRETURN_UNDEF;
++  }
+ }
+ 
+ /* ClawsMail::C::redirect(int,char*) */
+@@ -1373,8 +1503,9 @@ static XS(XS_ClawsMail_redirect)
+   account = account_find_from_id(account_id);
+   compose = compose_redirect(account, msginfo, TRUE);
+   
+-  if (compose->account->protocol == A_NNTP)
++  if (compose->account->protocol == A_NNTP) {
+     XSRETURN_UNDEF;
++  }
+   else
+     compose_entry_append(compose, dest, COMPOSE_TO, PREF_NONE);
+ 
+@@ -1389,8 +1520,9 @@ static XS(XS_ClawsMail_redirect)
+ 
+     XSRETURN_YES;
+   }
+-  else
++  else {
+     XSRETURN_UNDEF;
++  }
+ }
+ 
+ 
+@@ -1472,8 +1604,9 @@ static XS(XS_ClawsMail_get_attribute_value)
+     attribute_value = get_attribute_value(addr,attr,bookname);
+   }
+ 
+-  if(attribute_value)
++  if(attribute_value) {
+     XSRETURN_PV(attribute_value);
++  }
+   XSRETURN_PV("");
+ }
+ 

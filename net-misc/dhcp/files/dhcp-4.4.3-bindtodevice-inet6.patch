@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/471142
+
+snipped from fedora
+
+# dhclient -6: bind socket to interface (#1001742)
+# (Submitted to dhcp-bugs@isc.org - [ISC-Bugs #34784])
+
+--- a/common/socket.c
++++ b/common/socket.c
+@@ -266,7 +266,7 @@
+ 
+ #if defined(SO_BINDTODEVICE)
+ 	/* Bind this socket to this interface. */
+-	if ((local_family != AF_INET6) && (info->ifp != NULL) &&
++	if (((do_multicast == 0)||(*do_multicast == 0)) && (info->ifp != NULL) &&
+ 	    setsockopt(sock, SOL_SOCKET, SO_BINDTODEVICE,
+ 		       (char *)(info -> ifp), sizeof(*(info -> ifp))) < 0) {
+ 		log_fatal("Can't set SO_BINDTODEVICE on dhcp socket for"

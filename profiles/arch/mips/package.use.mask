@@ -1,6 +1,20 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Conrad Kostecki <conikost@gentoo.org> (2022-11-01)
+# Mask tests, as not all needed deps are available on this arch.
+# See #878933 for progress.
+net-dns/ddclient test
+
+# Mike Gilbert <floppym@gentoo.org> (2022-10-16)
+# Only supported on MIPS.
+dev-lang/gnat-gpl -fixed-point
+sys-devel/gcc -fixed-point
+
+# matoro <matoro_gentoo@matoro.tk> (2022-09-14)
+# Not broken, but better wait on profiles: bug #515694
+dev-lang/rust system-llvm
+
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
 app-text/enchant nuspell
@@ -116,7 +130,7 @@ app-portage/g-sorcery bson
 # dev-python/gmpy fails tests about sizeof (conch), bug 608496
 # dev-python/attrs fails tests on slow mips, couldn't test service_identity test path (crypt), bug 608570
 # dev-python/gmpy also a test depend, so minimize the features until can test properly (http2 soap test)
-dev-python/twisted conch crypt http2 test
+dev-python/twisted conch http2 test
 
 # Felix Janda <felix.janda@posteo.de> (2016-09-24)
 # net-libs/libnetfilter_conntrack is not keyworded on mips
@@ -133,10 +147,6 @@ dev-python/numpydoc test
 # Matthias Maier <tamiko@gentoo.org> (2014-12-24)
 # sys-devel/clang is not keyworded
 app-doc/doxygen clang
-
-# Sergey Popov <pinkbyte@gentoo.org> (2014-02-02)
-# media-gfx/nvidia-texture-tools is not keyworded on mips
-media-libs/devil	nvtt
 
 # Ryan Hill <dirtyepic@gentoo.org> (2014-01-07)
 # req net-libs/webkit-gtk:2

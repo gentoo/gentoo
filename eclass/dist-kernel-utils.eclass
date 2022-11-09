@@ -6,7 +6,7 @@
 # Distribution Kernel Project <dist-kernel@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Utility functions related to Distribution Kernels
 # @DESCRIPTION:
 # This eclass provides various utility functions related to Distribution
@@ -14,15 +14,9 @@
 
 if [[ ! ${_DIST_KERNEL_UTILS} ]]; then
 
-case "${EAPI:-0}" in
-	0|1|2|3|4|5|6)
-		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
-		;;
-	7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @FUNCTION: dist-kernel_build_initramfs
@@ -77,6 +71,9 @@ dist-kernel_get_image_path() {
 			# ./ is required because of ${image_path%/*}
 			# substitutions in the code
 			echo ./vmlinux
+			;;
+		riscv)
+			echo arch/riscv/boot/Image.gz
 			;;
 		*)
 			die "${FUNCNAME}: unsupported ARCH=${ARCH}"
@@ -156,6 +153,22 @@ dist-kernel_reinstall_initramfs() {
 	dist-kernel_build_initramfs "${initramfs_path}" "${ver}"
 	dist-kernel_install_kernel "${ver}" "${image_path}" \
 		"${kernel_dir}/System.map"
+}
+
+# @FUNCTION: dist-kernel_PV_to_KV
+# @USAGE: <pv>
+# @DESCRIPTION:
+# Convert a Gentoo-style ebuild version to kernel "x.y.z[-rcN]" version.
+dist-kernel_PV_to_KV() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${#} -ne 1 ]] && die "${FUNCNAME}: invalid arguments"
+	local pv=${1}
+
+	local kv=${pv%%_*}
+	[[ -z $(ver_cut 3- "${kv}") ]] && kv+=".0"
+	[[ ${pv} == *_* ]] && kv+=-${pv#*_}
+	echo "${kv}"
 }
 
 _DIST_KERNEL_UTILS=1

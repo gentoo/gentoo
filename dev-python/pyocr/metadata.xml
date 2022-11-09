@@ -21,5 +21,6 @@ Pyocr can be used as a wrapper for google's Tesseract-OCR or Cuneiform. It can r
 	</use>
 	<upstream>
 		<remote-id type="pypi">pyocr</remote-id>
+		<remote-id type="gnome-gitlab">World/OpenPaperwork/pyocr</remote-id>
 	</upstream>
 </pkgmetadata>

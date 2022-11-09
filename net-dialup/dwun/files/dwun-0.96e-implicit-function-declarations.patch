@@ -1,0 +1,14 @@
+Needed for asprintf.
+
+https://bugs.gentoo.org/870676
+--- a/configure.in
++++ b/configure.in
+@@ -8,6 +8,8 @@ AC_PROG_CC
+ AC_PROG_RANLIB
+ AC_PROG_INSTALL
+ 
++AC_USE_SYSTEM_EXTENSIONS
++
+ dnl Checks for libraries.
+ AC_CHECK_LIB(crypt, crypt)
+ AC_CHECK_LIB(nsl, gethostbyname)

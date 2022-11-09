@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 inherit tmpfiles
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/logwatch/git ${PN}"
 	inherit git-r3
 else
@@ -19,17 +19,17 @@ HOMEPAGE="https://sourceforge.net/projects/logwatch/"
 LICENSE="MIT"
 SLOT="0"
 
-RDEPEND="virtual/cron
-	virtual/mta
-	virtual/mailx
+RDEPEND="
 	dev-lang/perl
 	dev-perl/Date-Calc
 	dev-perl/Date-Manip
 	dev-perl/Tie-IxHash
 	dev-perl/Sys-CPU
-	dev-perl/Sys-MemInfo"
-
-PATCHES=()
+	dev-perl/Sys-MemInfo
+	virtual/cron
+	virtual/mta
+	virtual/mailx
+"
 
 src_install() {
 	dodir /usr/share/logwatch/lib
@@ -66,7 +66,7 @@ src_install() {
 	insinto /usr/share/logwatch/default.conf/html
 	doins conf/html/*
 
-	# Make sure logwatch is run before anything else #100243
+	# Make sure logwatch is run before anything else (bug #100243)
 	exeinto /etc/cron.daily
 	newexe "${FILESDIR}"/logwatch 00-logwatch
 

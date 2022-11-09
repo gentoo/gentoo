@@ -1,0 +1,44 @@
+From 0a50669e229a965a61039e5f9f20c345d72231b5 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 27 Nov 2021 13:52:23 +0100
+Subject: [PATCH] Add CMake option to build WITHOUT_X11
+
+We want to be able to build without X11 support even if some of the used
+libraries may not work w/o X11 themselves yet or need to be built with
+X11 support for other reverse dependencies.
+
+HAVE_X11 already exists and is set automagically so far, but using
+-DCMAKE_DISABLE_FIND_PACKAGE_X11 will break if any dependencies list X11
+as required in their cmake config.
+
+Introducing this option means there is no behavior change by default,
+cmake will just skip finding X11 or adding unwanted features if the
+option is enabled.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2bb478129..8449057db 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,10 +26,10 @@ include(FeatureSummary)
+ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS TextWidgets Notifications GuiAddons IconThemes WindowSystem KIO DBusAddons)
+ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS DBus)
+ 
+-
+-find_package(X11)
+-if(X11_FOUND)
+-   set(HAVE_X11 1)
++option(WITHOUT_X11 "Build without X11 integration (skips finding X11)" OFF)
++if (NOT WITHOUT_X11)
++    find_package(X11)
++    set(HAVE_X11 ${X11_FOUND})
+ endif()
+ 
+ add_definitions(
+-- 
+GitLab
+

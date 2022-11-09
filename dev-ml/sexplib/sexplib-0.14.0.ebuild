@@ -15,9 +15,9 @@ KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
-	dev-ml/parsexp:=
-		dev-ml/base:=
-	dev-ml/sexplib0:=
+	=dev-ml/parsexp-0.14*:=
+	dev-ml/base:=
+	dev-ml/sexplib0:0/0.14.0
 	dev-ml/num:=
 "
 DEPEND="${RDEPEND}"

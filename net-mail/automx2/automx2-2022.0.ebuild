@@ -13,7 +13,7 @@ SRC_URI="https://github.com/rseichter/automx2/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="acct-user/automx2
 	dev-python/flask[${PYTHON_USEDEP}]
@@ -35,8 +35,8 @@ python_test() {
 }
 
 python_install_all() {
-	local DOCS=( ${S}/docs/*.adoc ${S}/contrib/*sample.conf )
-	local HTML_DOCS=( ${S}/docs/*.{html,svg} )
+	local DOCS=( "${S}"/docs/*.adoc "${S}"/contrib/*sample.conf )
+	local HTML_DOCS=( "${S}"/docs/*.{html,svg} )
 	newconfd "${FILESDIR}/confd" "${PN}"
 	newinitd "${FILESDIR}/init-r1" "${PN}"
 	insinto /etc

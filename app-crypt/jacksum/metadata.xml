@@ -6,6 +6,6 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">jacksum</remote-id>
+		<remote-id type="github">jonelo/jacksum</remote-id>
 	</upstream>
 </pkgmetadata>

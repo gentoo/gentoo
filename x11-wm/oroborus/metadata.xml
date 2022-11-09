@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription>
+	<!-- maintainer-needed -->
+	<longdescription>
 		Oroborus is a small and simple but configurable and themeable window 
 		manager. There is no fancy dock, clip, wharf, or root menu - these 
 		utilities can be provided by other programs. It has support for GNOME 

@@ -8,4 +8,7 @@
 	<use>
 		<flag name="usb3380">support xtrx usb model</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">xtrx-sdr/libxtrxll</remote-id>
+	</upstream>
 </pkgmetadata>

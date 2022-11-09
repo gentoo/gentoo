@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}
 	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosunit[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	test? (
 		dev-cpp/gtest
 	)

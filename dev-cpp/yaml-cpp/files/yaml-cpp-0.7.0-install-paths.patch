@@ -1,0 +1,25 @@
+From 4f5b5ba19ece906252cfc90b7cd51035e21c7118 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sat, 17 Sep 2022 12:07:46 +0300
+Subject: [PATCH] Fix pkg-config file install destination
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -129,7 +129,7 @@ set_target_properties(yaml-cpp PROPERTIES
+ 
+ # FIXME(felix2012): A more common place for the cmake export would be
+ # `CMAKE_INSTALL_LIBDIR`, as e.g. done in ubuntu or in this project for GTest
+-set(CONFIG_EXPORT_DIR "${CMAKE_INSTALL_DATADIR}/cmake/yaml-cpp")
++set(CONFIG_EXPORT_DIR "${CMAKE_INSTALL_LIBDIR}/cmake/yaml-cpp")
+ set(EXPORT_TARGETS yaml-cpp)
+ configure_package_config_file(
+   "${PROJECT_SOURCE_DIR}/yaml-cpp-config.cmake.in"
+@@ -160,7 +160,7 @@ if (YAML_CPP_INSTALL)
+       "${PROJECT_BINARY_DIR}/yaml-cpp-config-version.cmake"
+     DESTINATION "${CONFIG_EXPORT_DIR}")
+   install(FILES "${PROJECT_BINARY_DIR}/yaml-cpp.pc"
+-    DESTINATION ${CMAKE_INSTALL_DATADIR}/pkgconfig)
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ endif()
+ unset(CONFIG_EXPORT_DIR)
+ 

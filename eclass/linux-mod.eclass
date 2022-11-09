@@ -150,8 +150,8 @@
 # It's a read-only variable. It contains the extension of the kernel modules.
 
 case ${EAPI:-0} in
-	[67]) 
-		inherit eutils 
+	[67])
+		inherit eutils
 		;;
 	8)
 		;;
@@ -163,7 +163,7 @@ _LINUX_MOD_ECLASS=1
 
 # TODO: When adding support for future EAPIs, please audit this list
 # for unused inherits and conditionalise them.
-inherit linux-info multilib toolchain-funcs
+inherit linux-info multilib multiprocessing toolchain-funcs
 
 case ${MODULES_OPTIONAL_USE_IUSE_DEFAULT:-n} in
   [nNfF]*|[oO][fF]*|0|-) _modules_optional_use_iuse_default='' ;;
@@ -192,46 +192,6 @@ DEPEND="${RDEPEND}
 
 # eclass utilities
 # ----------------------------------
-
-check_vermagic() {
-	debug-print-function ${FUNCNAME} $*
-
-	local curr_gcc_ver=$(gcc -dumpversion)
-	local tmpfile old_chost old_gcc_ver result=0
-	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
-
-	tmpfile=`find "${KV_DIR}/" -iname "*.o.cmd" -exec grep usr/lib/gcc {} \; -quit`
-	tmpfile=${tmpfile//*usr/lib}
-	tmpfile=${tmpfile//\/include*}
-	old_chost=${tmpfile//*gcc\/}
-	old_chost=${old_chost//\/*}
-	old_gcc_ver=${tmpfile//*\/}
-
-	if [[ -z ${old_gcc_ver} || -z ${old_chost} ]]; then
-		ewarn ""
-		ewarn "Unable to detect what version of GCC was used to compile"
-		ewarn "the kernel. Build will continue, but you may experience problems."
-	elif [[ ${curr_gcc_ver} != ${old_gcc_ver} ]]; then
-		ewarn ""
-		ewarn "The version of GCC you are using (${curr_gcc_ver}) does"
-		ewarn "not match the version of GCC used to compile the"
-		ewarn "kernel (${old_gcc_ver})."
-		result=1
-	elif [[ ${CHOST} != ${old_chost} ]]; then
-		ewarn ""
-		ewarn "The current CHOST (${CHOST}) does not match the chost"
-		ewarn "used when compiling the kernel (${old_chost})."
-		result=1
-	fi
-
-	if [[ ${result} -gt 0 ]]; then
-		ewarn ""
-		ewarn "Build will not continue, because you will experience problems."
-		ewarn "To fix this either change the version of GCC you wish to use"
-		ewarn "to match the kernel, or recompile the kernel first."
-		die "GCC Version Mismatch."
-	fi
-}
 
 # @FUNCTION: use_m
 # @RETURN: true or false
@@ -267,11 +227,10 @@ convert_to_m() {
 	fi
 }
 
-# internal function
-#
-# FUNCTION: update_depmod
-# DESCRIPTION:
-# It updates the modules.dep file for the current kernel.
+# @FUNCTION: update_depmod
+# @INTERNAL
+# @DESCRIPTION:
+# Updates the modules.dep file for the current kernel.
 update_depmod() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -292,11 +251,10 @@ update_depmod() {
 	fi
 }
 
-# internal function
-#
-# FUNCTION: move_old_moduledb
-# DESCRIPTION:
-# It updates the location of the database used by the module-rebuild utility.
+# @FUNCTION: move_old_moduledb
+# @INTERNAL
+# @DESCRIPTION:
+# Updates the location of the database used by the module-rebuild utility.
 move_old_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -312,11 +270,9 @@ move_old_moduledb() {
 	fi
 }
 
-# internal function
-#
-# FUNCTION: update_moduledb
-# DESCRIPTION:
-# It adds the package to the /var/lib/module-rebuild/moduledb database used by the module-rebuild utility.
+# @FUNCTION: update_moduledb
+# @DESCRIPTION:
+# Adds the package to the /var/lib/module-rebuild/moduledb database used by the module-rebuild utility.
 update_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -334,12 +290,9 @@ update_moduledb() {
 	fi
 }
 
-# internal function
-#
-# FUNCTION: remove_moduledb
-# DESCRIPTION:
-# It removes the package from the /var/lib/module-rebuild/moduledb database used by
-# the module-rebuild utility.
+# @FUNCTION: remove_moduledb
+# @DESCRIPTION:
+# Removes the package from the /var/lib/module-rebuild/moduledb database used by
 remove_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -369,6 +322,10 @@ set_kvobj() {
 	# einfo "Using KV_OBJ=${KV_OBJ}"
 }
 
+# @FUNCTION: get-KERNEL_CC
+# @RETURN: Name of the C compiler.
+# @DESCRIPTION:
+# Return name of the C compiler while honoring variables defined in ebuilds.
 get-KERNEL_CC() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -389,12 +346,11 @@ get-KERNEL_CC() {
 	echo "${kernel_cc}"
 }
 
-# internal function
-#
-# FUNCTION:
-# USAGE: /path/to/the/modulename_without_extension
-# RETURN: A file in /etc/modprobe.d
-# DESCRIPTION:
+# @FUNCTION: generate_modulesd
+# @INTERNAL
+# @USAGE: /path/to/the/modulename_without_extension
+# @RETURN: A file in /etc/modprobe.d
+# @DESCRIPTION:
 # This function will generate and install the neccessary modprobe.d file from the
 # information contained in the modules exported parms.
 # (see the variables MODULESD_<modulename>_ENABLED, MODULESD_<modulename>_EXAMPLES,
@@ -405,8 +361,8 @@ generate_modulesd() {
 	debug-print-function ${FUNCNAME} $*
 	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
 
-	local 	currm_path currm currm_t t myIFS myVAR
-	local 	module_docs module_enabled module_aliases \
+	local currm_path currm currm_t t myIFS myVAR
+	local module_docs module_enabled module_aliases \
 			module_additions module_examples module_modinfo module_opts
 
 	for currm_path in ${@}
@@ -424,9 +380,9 @@ generate_modulesd() {
 		module_additions="$(eval echo \${#MODULESD_${currm_t}_ADDITIONS[*]})"
 		module_examples="$(eval echo \${#MODULESD_${currm_t}_EXAMPLES[*]})"
 
-		[[ ${module_aliases} -eq 0 ]] 	&& unset module_aliases
+		[[ ${module_aliases} -eq 0 ]]	&& unset module_aliases
 		[[ ${module_additions} -eq 0 ]]	&& unset module_additions
-		[[ ${module_examples} -eq 0 ]] 	&& unset module_examples
+		[[ ${module_examples} -eq 0 ]]  && unset module_examples
 
 		# If we specify we dont want it, then lets exit, otherwise we assume
 		# that if its set, we do want it.
@@ -543,12 +499,11 @@ generate_modulesd() {
 	return 0
 }
 
-# internal function
-#
-# FUNCTION: find_module_params
-# USAGE: A string "NAME(LIBDIR:SRCDIR:OBJDIR)"
-# RETURN: The string "modulename:NAME libdir:LIBDIR srcdir:SRCDIR objdir:OBJDIR"
-# DESCRIPTION:
+# @FUNCTION: find_module_params
+# @USAGE: A string "NAME(LIBDIR:SRCDIR:OBJDIR)"
+# @INTERNAL
+# @RETURN: The string "modulename:NAME libdir:LIBDIR srcdir:SRCDIR objdir:OBJDIR"
+# @DESCRIPTION:
 # Analyze the specification NAME(LIBDIR:SRCDIR:OBJDIR) of one module as described in MODULE_NAMES.
 find_module_params() {
 	debug-print-function ${FUNCNAME} $*
@@ -621,10 +576,6 @@ linux-mod_pkg_setup() {
 	strip_modulenames;
 	[[ -n ${MODULE_NAMES} ]] && check_modules_supported
 	set_kvobj;
-	# Commented out with permission from johnm until a fixed version for arches
-	# who intentionally use different kernel and userland compilers can be
-	# introduced - Jason Wever <weeve@gentoo.org>, 23 Oct 2005
-	#check_vermagic;
 }
 
 # @FUNCTION: linux-mod_pkg_setup_binary
@@ -645,6 +596,9 @@ linux-mod_pkg_setup_binary() {
 	linux-info_pkg_setup;
 }
 
+# @FUNCTION: strip_modulenames
+# @DESCRIPTION:
+# Remove modules from being built automatically using the default src_compile/src_install
 strip_modulenames() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -719,7 +673,7 @@ linux-mod_src_compile() {
 		fi
 	done
 
-	set_arch_to_portage
+	set_arch_to_pkgmgr
 	ABI="${myABI}"
 }
 
@@ -757,8 +711,27 @@ linux-mod_src_install() {
 		einfo "Installing ${modulename} module"
 		cd "${objdir}" || die "${objdir} does not exist"
 		insinto "${INSTALL_MOD_PATH}"/lib/modules/${KV_FULL}/${libdir}
-		doins ${modulename}.${KV_OBJ} || die "doins ${modulename}.${KV_OBJ} failed"
-		cd "${OLDPWD}"
+
+		# check here for CONFIG_MODULE_COMPRESS_<compression option> (NONE, GZIP, XZ, ZSTD)
+		# and similarily compress the module being built if != NONE.
+
+		if linux_chkconfig_present MODULE_COMPRESS_XZ; then
+			xz -T$(makeopts_jobs) --memlimit-compress=50% -q ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with xz failed"
+			doins ${modulename}.${KV_OBJ}.xz
+		elif linux_chkconfig_present MODULE_COMPRESS_GZIP; then
+			if type -P pigz &>/dev/null ; then
+				pigz -p$(makeopts_jobs) ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with pigz failed"
+			else
+				gzip ${modulename}.${KV_OBJ} || die "Compressing ${modulename}.${KV_OBJ} with gzip failed"
+			fi
+			doins ${modulename}.${KV_OBJ}.gz
+		elif linux_chkconfig_present MODULE_COMPRESS_ZSTD; then
+			zstd -T$(makeopts_jobs) ${modulename}.${KV_OBJ} || "Compressing ${modulename}.${KV_OBJ} with zstd failed"
+			doins ${modulename}.${KV_OBJ}.zst
+		else
+			doins ${modulename}.${KV_OBJ}
+		fi
+		cd "${OLDPWD}" || die "${OLDPWD} does not exist"
 
 		generate_modulesd "${objdir}/${modulename}"
 	done

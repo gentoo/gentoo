@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTICE: SCSH 0.6.7 is 32bit only
@@ -6,7 +6,7 @@
 
 EAPI=8
 
-inherit multilib
+inherit flag-o-matic multilib
 
 MY_PV="${PV%*.*}"
 
@@ -35,6 +35,9 @@ PATCHES=(
 
 src_configure() {
 	use amd64 && multilib_toolchain_setup x86
+
+	# bug #854873
+	filter-lto
 
 	export SCSH_LIB_DIRS="/usr/$(get_libdir)/${PN}"
 

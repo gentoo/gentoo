@@ -6,7 +6,7 @@ EAPI=7
 inherit linux-info systemd toolchain-funcs
 
 DESCRIPTION="Kernel based automounter"
-HOMEPAGE="https://web.archive.org/web/*/http://www.linux-consulting.com/Amd_AutoFS/autofs.html"
+HOMEPAGE="https://web.archive.org/web/*/http://www.linux-consulting.com/Amd_AutoFS/autofs.html https://git.kernel.org/pub/scm/linux/storage/autofs/autofs.git"
 SRC_URI="https://www.kernel.org/pub/linux/daemons/${PN}/v5/${P}.tar.xz
 	https://dev.gentoo.org/~dlan/distfiles/${CATEGORY}/${PN}/${P}-patches-0.tar.xz"
 
@@ -45,6 +45,7 @@ PATCHES=(
 	"${WORKDIR}"/${P}-patches/
 	"${FILESDIR}/${P}-dmalloc.patch"
 	"${FILESDIR}/${P}-nfsv4-mount.patch"
+	"${FILESDIR}/${P}-mount_conflict.patch"
 )
 
 pkg_setup() {

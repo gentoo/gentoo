@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>python@gentoo.org</email>
-		<name>Python</name>
-	</maintainer>
-	<longdescription lang="en">
-		GObject is a object system used by GTK+, GStreamer and other libraries.
-		PyGObject provides a convenient wrapper for use in Python programs when
-		accessing GObject libraries. Like the GObject library itself PyGObject
-		is licensed under the GNU LGPL, so is suitable for use in both free
-		software and proprietary applications. It is already in use in many
-		applications ranging from small single purpose scripts up to large full
-		featured applications. PyGObject now dynamically accesses any GObject
-		libraries that uses GObject Introspection. It replaces the need for
-		separate modules such as PyGTK, GIO and python-gnome to build a full
-		GNOME 3.0 application. Once new functionality is added to gobject
-		library it is instantly available as a Python API without the need for
-		intermediate Python glue.
-	</longdescription>
-	<upstream>
-		<remote-id type="pypi">PyGObject</remote-id>
-	</upstream>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription lang="en">
+    GObject is a object system used by GTK+, GStreamer and other libraries.
+    PyGObject provides a convenient wrapper for use in Python programs when
+    accessing GObject libraries. Like the GObject library itself PyGObject
+    is licensed under the GNU LGPL, so is suitable for use in both free
+    software and proprietary applications. It is already in use in many
+    applications ranging from small single purpose scripts up to large full
+    featured applications. PyGObject now dynamically accesses any GObject
+    libraries that uses GObject Introspection. It replaces the need for
+    separate modules such as PyGTK, GIO and python-gnome to build a full
+    GNOME 3.0 application. Once new functionality is added to gobject
+    library it is instantly available as a Python API without the need for
+    intermediate Python glue.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">PyGObject</remote-id>
+    <remote-id type="gnome-gitlab">GNOME/pygobject</remote-id>
+  </upstream>
 </pkgmetadata>

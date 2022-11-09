@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="pypi">pdfminer</remote-id>
+		<remote-id type="github">pdfminer/pdfminer.six</remote-id>
+		<remote-id type="pypi">pdfminer.six</remote-id>
 	</upstream>
 </pkgmetadata>

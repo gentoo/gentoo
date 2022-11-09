@@ -7,6 +7,9 @@
 	</maintainer>
 	<use>
 		<flag name="logger">Build the logger program</flag>
-		<flag name="logrotate">use app-admin/logrotate for rotating logs rather than custom cron scripts</flag>
+		<flag name="logrotate">use <pkg>app-admin/logrotate</pkg> for rotating logs rather than custom cron scripts</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">troglobit/sysklogd</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -3,9 +3,11 @@
 <pkgmetadata>
   <!--maintainer-needed-->
   <use>
-    <flag name="apparmor">Enable apparmor support using <pkg>sys-libs/libapparmor</pkg></flag>
     <flag name="archive">Enable archive support using <pkg>app-arch/libarchive</pkg></flag>
     <flag name="gsf">Enable OLE2 (MS Office) plug-in support using <pkg>gnome-extra/libgsf</pkg></flag>
     <flag name="midi">Enable MIDI support through <pkg>media-libs/libsmf</pkg></flag>
   </use>
+  <upstream>
+    <remote-id type="savannah">libextractor</remote-id>
+  </upstream>
 </pkgmetadata>

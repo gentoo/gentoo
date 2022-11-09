@@ -45,4 +45,7 @@
 			the client.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">quassel/quassel</remote-id>
+	</upstream>
 </pkgmetadata>

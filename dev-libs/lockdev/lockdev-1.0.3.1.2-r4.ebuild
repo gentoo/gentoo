@@ -1,4 +1,4 @@
-# Copyright 2001-2021 Gentoo Authors
+# Copyright 2001-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -69,7 +69,7 @@ multilib_src_compile() {
 multilib_src_test() {
 	if multilib_is_native_abi && use perl; then
 		cd "${PERL_S}" || die
-		SRC_TEST="do"
+		DIST_TEST="do"
 		export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}${BUILD_DIR}/.libs"
 		perl-module_src_test
 	fi

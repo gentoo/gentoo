@@ -62,7 +62,7 @@
 			Adds support for SIMD optimizations for UltraSPARC processors.
 		</flag>
 		<flag name="vpx">
-			Enable VP8 codec support via media-libs/libvpx.
+			Enable VP8 codec support via <pkg>media-libs/libvpx</pkg>.
 		</flag>
 		<flag name="xvmc">
 			Enable support for XVideo Motion Compensation (accelerated mpeg playback).

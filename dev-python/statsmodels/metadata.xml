@@ -28,7 +28,7 @@
   </longdescription>
   <upstream>
     <remote-id type="pypi">statsmodels</remote-id>
-    <remote-id type="github">statsmodels</remote-id>
+    <remote-id type="github">statsmodels/statsmodels</remote-id>
     <remote-id type="sourceforge">statsmodels</remote-id>
   </upstream>
 </pkgmetadata>

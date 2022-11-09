@@ -54,8 +54,8 @@ RDEPEND="audit? ( sys-process/audit )
 	babeltrace? ( dev-util/babeltrace )
 	crypt? ( virtual/libcrypt:= )
 	clang? (
-		sys-devel/clang:=
-		sys-devel/llvm:=
+		<sys-devel/clang-14:=
+		<sys-devel/llvm-14:=
 	)
 	gtk? ( x11-libs/gtk+:2 )
 	java? ( virtual/jre:* )
@@ -96,7 +96,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	use clang && llvm_pkg_setup
+	use clang && LLVM_MAX_SLOT=13 llvm_pkg_setup
 	# We enable python unconditionally as libbpf always generates
 	# API headers using python script
 	python_setup
@@ -150,10 +150,10 @@ src_prepare() {
 	# Drop some upstream too-developer-oriented flags and fix the
 	# Makefile in general
 	sed -i \
-		-e "s:\$(sysconfdir_SQ)/bash_completion.d:$(get_bashcompdir):" \
+		-e "s@\$(sysconfdir_SQ)/bash_completion.d@$(get_bashcompdir)@" \
 		"${S}"/Makefile.perf || die
 	# A few places still use -Werror w/out $(WERROR) protection.
-	sed -i -e 's:-Werror::' \
+	sed -i -e 's@-Werror@@' \
 		"${S}"/Makefile.perf "${S_K}"/tools/lib/bpf/Makefile || die
 
 	# Avoid the call to make kernelversion

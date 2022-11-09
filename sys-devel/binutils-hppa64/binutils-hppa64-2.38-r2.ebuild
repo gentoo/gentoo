@@ -35,7 +35,7 @@ else
 	[[ -z ${PATCH_VER} ]] || SRC_URI="${SRC_URI}
 		https://dev.gentoo.org/~${PATCH_DEV}/distfiles/binutils-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz"
 	SLOT=$(ver_cut 1-2)
-	KEYWORDS="-* ~hppa"
+	KEYWORDS="-* hppa"
 fi
 
 #
@@ -70,19 +70,19 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
-MY_BUILDDIR=${WORKDIR}/build
-S=${WORKDIR}/${P/-hppa64/}
+MY_BUILDDIR="${WORKDIR}"/build
+S="${WORKDIR}"/${P/-hppa64/}
 
 src_unpack() {
 	if [[ ${PV} == 9999* ]] ; then
 		EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/toolchain/binutils-patches.git"
-		EGIT_CHECKOUT_DIR=${WORKDIR}/patches-git
+		EGIT_CHECKOUT_DIR="${WORKDIR}"/patches-git
 		git-r3_src_unpack
 		mv patches-git/9999 patch || die
 
+		S="${WORKDIR}"/binutils
 		EGIT_REPO_URI="https://sourceware.org/git/binutils-gdb.git"
-		S=${WORKDIR}/binutils
-		EGIT_CHECKOUT_DIR=${S}
+		EGIT_CHECKOUT_DIR="${S}"
 		git-r3_src_unpack
 	else
 		unpack ${P/-hppa64/}.tar.xz
@@ -94,7 +94,7 @@ src_unpack() {
 		local dir=${P%_p?}
 		dir=${dir/-hppa64/}
 
-		S=${WORKDIR}/${dir}
+		S="${WORKDIR}"/${dir}
 	fi
 
 	cd "${WORKDIR}" || die
@@ -151,6 +151,11 @@ toolchain-binutils_pkgversion() {
 }
 
 src_configure() {
+	# See https://www.gnu.org/software/make/manual/html_node/Parallel-Output.html
+	# Avoid really confusing logs from subconfigure spam, makes logs far
+	# more legible.
+	MAKEOPTS="--output-sync=line ${MAKEOPTS}"
+
 	# Setup some paths
 	LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${PV}
 	INCPATH=${LIBPATH}/include
@@ -178,7 +183,7 @@ src_configure() {
 	done
 	echo
 
-	cd "${MY_BUILDDIR}"
+	cd "${MY_BUILDDIR}" || die
 	local myconf=()
 
 	if use plugins ; then
@@ -251,7 +256,6 @@ src_configure() {
 		--with-bugurl="$(toolchain-binutils_bugurl)"
 		--with-pkgversion="$(toolchain-binutils_pkgversion)"
 		$(use_enable static-libs static)
-		${EXTRA_ECONF}
 		# Disable modules that are in a combined binutils/gdb tree. bug #490566
 		--disable-{gdb,libdecnumber,readline,sim}
 		# Strip out broken static link flags.
@@ -281,8 +285,7 @@ src_configure() {
 		fi
 	fi
 
-	echo ./configure "${myconf[@]}"
-	"${S}"/configure "${myconf[@]}" || die
+	ECONF_SOURCE="${S}" econf "${myconf[@]}" || die
 
 	# Prevent makeinfo from running if doc is unset.
 	if ! use doc ; then
@@ -296,11 +299,11 @@ src_compile() {
 	cd "${MY_BUILDDIR}" || die
 
 	# see Note [tooldir hack for ldscripts]
-	emake tooldir="${EPREFIX}${TOOLPATH}" all
+	emake V=1 tooldir="${EPREFIX}${TOOLPATH}" all
 
 	# only build info pages if the user wants them
 	if use doc ; then
-		emake info
+		emake V=1 info
 	fi
 
 	# we nuke the manpages when we're left with junk
@@ -309,12 +312,12 @@ src_compile() {
 }
 
 src_test() {
-	cd "${MY_BUILDDIR}"
+	cd "${MY_BUILDDIR}" || die
 
 	# bug #637066
 	filter-flags -Wall -Wreturn-type
 
-	emake -k check
+	emake -k V=1 check
 }
 
 src_install() {
@@ -323,7 +326,7 @@ src_install() {
 	cd "${MY_BUILDDIR}" || die
 
 	# see Note [tooldir hack for ldscripts]
-	emake DESTDIR="${D}" tooldir="${EPREFIX}${LIBPATH}" install
+	emake V=1 DESTDIR="${D}" tooldir="${EPREFIX}${LIBPATH}" install
 	rm -rf "${ED}"/${LIBPATH}/bin || die
 	use static-libs || find "${ED}" -name '*.la' -delete
 

@@ -1,11 +1,12 @@
 # Copyright 2002-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit autotools
 
 DESCRIPTION="Utilities for transcoding video and audio codecs in different containers"
-HOMEPAGE="http://www.transcoding.org/ https://bitbucket.org/france/transcode-tcforge"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://www.bitbucket.org/france/${PN}-tcforge/downloads/${P}.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/${P}-patchset.tar.bz2
 	https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-1.1.7-ffmpeg4.patch.xz"
@@ -13,7 +14,14 @@ SRC_URI="https://www.bitbucket.org/france/${PN}-tcforge/downloads/${P}.tar.bz2
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm64 ppc ppc64 ~riscv sparc x86"
-IUSE="cpu_flags_x86_3dnow a52 aac alsa altivec dv dvd +iconv imagemagick jpeg lzo mjpeg cpu_flags_x86_mmx mp3 mpeg nuv ogg oss pic postproc quicktime sdl cpu_flags_x86_sse cpu_flags_x86_sse2 theora truetype v4l vorbis X x264 xml xvid"
+IUSE="cpu_flags_ppc_altivec cpu_flags_x86_3dnow a52 aac alsa dv dvd +iconv imagemagick jpeg lzo mjpeg cpu_flags_x86_mmx mp3 mpeg nuv ogg oss pic postproc quicktime sdl cpu_flags_x86_sse cpu_flags_x86_sse2 theora truetype v4l vorbis X x264 xml xvid"
+
+REQUIRED_USE="
+	cpu_flags_x86_sse? ( cpu_flags_x86_mmx )
+	cpu_flags_x86_sse2? ( cpu_flags_x86_mmx cpu_flags_x86_sse )
+	cpu_flags_x86_3dnow? ( cpu_flags_x86_mmx )
+	nuv? ( lzo )
+"
 
 RDEPEND="
 	>=media-video/ffmpeg-0.10
@@ -24,7 +32,7 @@ RDEPEND="
 	dvd? ( media-libs/libdvdread:0= )
 	iconv? ( virtual/libiconv )
 	imagemagick? ( media-gfx/imagemagick:= )
-	jpeg? ( virtual/jpeg:0= )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	lzo? ( >=dev-libs/lzo-2 )
 	mjpeg? ( media-video/mjpegtools:= )
 	mp3? ( media-sound/lame )
@@ -37,24 +45,20 @@ RDEPEND="
 	truetype? ( >=media-libs/freetype-2 )
 	v4l? ( media-libs/libv4l )
 	vorbis? ( media-libs/libvorbis )
-	X? ( x11-libs/libXpm x11-libs/libXaw x11-libs/libXv )
+	X? (
+		x11-libs/libXaw
+		x11-libs/libXpm
+		x11-libs/libXv
+	)
 	x264? ( media-libs/x264:= )
 	xml? ( dev-libs/libxml2 )
 	xvid? ( media-libs/xvid )
-	"
-
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	v4l? ( >=sys-kernel/linux-headers-2.6.11 )
 "
-
-REQUIRED_USE="
-	cpu_flags_x86_sse? ( cpu_flags_x86_mmx )
-	cpu_flags_x86_sse2? ( cpu_flags_x86_mmx cpu_flags_x86_sse )
-	cpu_flags_x86_3dnow? ( cpu_flags_x86_mmx )
-	nuv? ( lzo )
-	"
 
 PATCHES=(
 	"${WORKDIR}"/${P}-patchset/${P}-ffmpeg.patch
@@ -67,7 +71,7 @@ PATCHES=(
 	"${WORKDIR}"/${P}-patchset/${P}-ffmpeg2.patch
 	"${WORKDIR}"/${P}-patchset/${P}-freetype251.patch
 	"${WORKDIR}"/${P}-patchset/${P}-ffmpeg24.patch
-	"${FILESDIR}"/${P}-swresample.patch #722296
+	"${FILESDIR}"/${P}-swresample.patch # bug 722296
 	"${FILESDIR}"/${P}-gcc10-fno-common.patch
 	"${FILESDIR}"/${P}-glibc-2.32.patch
 )
@@ -82,7 +86,7 @@ src_prepare() {
 	fi
 
 	if has_version '>=media-video/ffmpeg-4' ;  then
-		PATCHES+=( "${WORKDIR}/transcode-1.1.7-ffmpeg4.patch" )
+		PATCHES+=( "${WORKDIR}"/${P}-ffmpeg4.patch )
 	fi
 
 	default
@@ -92,14 +96,14 @@ src_prepare() {
 
 src_configure() {
 	local myconf
-	use x86 && myconf="$(use_enable !pic x86-textrels)" #271476
+	use x86 && myconf="$(use_enable !pic x86-textrels)" # bug 271476
 
 	local myeconfargs=(
+		$(use_enable cpu_flags_ppc_altivec altivec)
 		$(use_enable cpu_flags_x86_mmx mmx)
 		$(use_enable cpu_flags_x86_3dnow 3dnow)
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable cpu_flags_x86_sse2 sse2)
-		$(use_enable altivec)
 		$(use_enable v4l libv4l2)
 		$(use_enable v4l libv4lconvert)
 		$(use_enable mpeg libmpeg2)

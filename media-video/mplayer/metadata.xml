@@ -15,7 +15,7 @@
     <flag name="enca">Enables support for charset discovery and conversion</flag>
     <flag name="faac">Use external faac library for AAC encoding</flag>
     <flag name="faad">Use external faad library for AAC decoding</flag>
-    <flag name="libmpeg2">Build support for mpeg2 over media-libs/libmpeg2 rather than using ffmpeg.</flag>
+    <flag name="libmpeg2">Build support for mpeg2 over <pkg>media-libs/libmpeg2</pkg> rather than using ffmpeg.</flag>
     <flag name="live">Enables live.com streaming media support</flag>
     <flag name="md5sum">Enables md5sum video output</flag>
     <flag name="mng">MNG input support</flag>

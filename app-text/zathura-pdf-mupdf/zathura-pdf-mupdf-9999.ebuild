@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_BRANCH="develop"
 else
 	KEYWORDS="~amd64 ~arm ~x86"
-	SRC_URI="https://git.pwmt.org/pwmt/${PN}/-/archive/${PV}/${P}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://git.pwmt.org/pwmt/${PN}/-/archive/${PV}/${P}.tar.gz"
 fi
 
 DESCRIPTION="PDF plug-in for zathura"
@@ -20,7 +20,7 @@ HOMEPAGE="https://git.pwmt.org/pwmt/zathura-pdf-mupdf"
 LICENSE="ZLIB"
 SLOT="0"
 
-DEPEND=">=app-text/mupdf-1.19:=
+DEPEND=">=app-text/mupdf-1.20.0:=
 	>=app-text/zathura-0.3.9
 	dev-libs/girara
 	dev-libs/glib:2
@@ -29,9 +29,9 @@ DEPEND=">=app-text/mupdf-1.19:=
 RDEPEND="${DEPEND}"
 
 BDEPEND="app-text/tesseract
-	virtual/pkgconfig
+	dev-lang/mujs
 	media-libs/leptonica
-	dev-lang/mujs"
+	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/zathura-pdf-mupdf-0.3.8-meson-mupdfthird.patch"

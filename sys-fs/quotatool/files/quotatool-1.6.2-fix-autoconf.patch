@@ -1,0 +1,133 @@
+https://github.com/ekenberg/quotatool/commit/b42fbba1c2a863b726d30b0d80471e76c82ec801
+https://github.com/ekenberg/quotatool/commit/2b773bb36135ede595bb2305663aec809edc8d35
+
+From b42fbba1c2a863b726d30b0d80471e76c82ec801 Mon Sep 17 00:00:00 2001
+From: Bas Zoetekouw <bas.zoetekouw@surfnet.nl>
+Date: Tue, 12 Feb 2019 15:35:34 +0100
+Subject: [PATCH] make configure.in work with recent autoconf
+
+--- a/configure.in
++++ b/configure.in
+@@ -1,6 +1,7 @@
+ dnl Process this file with autoconf to produce a configure script.
+ 
+-AC_INIT(src/main.c)
++AC_INIT
++AC_CONFIG_SRCDIR([src/main.c])
+ AC_CONFIG_AUX_DIR(tools)
+ 
+ 
+@@ -17,20 +18,20 @@ dnl ---------------------------------------------------------------------------
+ dnl Set program, version info
+ PROGNAME=quotatool
+ AC_SUBST(PROGNAME)
+-AC_DEFINE_UNQUOTED(PROGNAME, "$PROGNAME")
++AC_DEFINE_UNQUOTED(PROGNAME, "$PROGNAME", [Name of the current program])
+ 
+ AC_SUBST(MAJOR_VERSION)
+-AC_DEFINE_UNQUOTED(MAJOR_VERSION, $MAJOR_VERSION)
++AC_DEFINE_UNQUOTED(MAJOR_VERSION, $MAJOR_VERSION, [Major version number])
+ 
+ AC_SUBST(MINOR_VERSION)
+-AC_DEFINE_UNQUOTED(MINOR_VERSION, $MINOR_VERSION)
++AC_DEFINE_UNQUOTED(MINOR_VERSION, $MINOR_VERSION, [Minor version number])
+ 
+ AC_SUBST(PATCHLEVEL)
+-AC_DEFINE_UNQUOTED(PATCHLEVEL, "$PATCHLEVEL")
++AC_DEFINE_UNQUOTED(PATCHLEVEL, "$PATCHLEVEL", [Patch level version number])
+ 
+-AC_DEFINE_UNQUOTED(COPYRIGHT_NOTICE, "$COPYRIGHT_NOTICE")
++AC_DEFINE_UNQUOTED(COPYRIGHT_NOTICE, "$COPYRIGHT_NOTICE", [Copyright notice])
+ 
+-AC_DEFINE_UNQUOTED(WWW_URL, "$WWW_URL")
++AC_DEFINE_UNQUOTED(WWW_URL, "$WWW_URL", [Upstream homepage])
+ 
+ dnl get the system type (for the makefile)
+ 
+@@ -38,31 +39,31 @@ AC_CANONICAL_HOST
+ case [$host] in
+   *linux*)
+ 	PLATFORM=linux
+-	AC_DEFINE(PLATFORM_LINUX, 1)
++	AC_DEFINE(PLATFORM_LINUX, 1, [Is this a Linux platform?])
+ 	;;
+   *solaris*)
+ 	PLATFORM=solaris
+-	AC_DEFINE(PLATFORM_SOLARIS, 1)
++	AC_DEFINE(PLATFORM_SOLARIS, 1, [Is this a Solaris platform?])
+ 	;;
+   *aix*)
+ 	PLATFORM=aix
+-	AC_DEFINE(PLATFORM_AIX, 1)
++	AC_DEFINE(PLATFORM_AIX, 1, [Is this an AIX platform?])
+ 	;;
+   *freebsd*|*openbsd*|*netbsd*)
+ 	PLATFORM=bsd
+-	AC_DEFINE(PLATFORM_BSD, 1)
++	AC_DEFINE(PLATFORM_BSD, 1, [Is this a *BSD platform?])
+ 	;;
+   *apple-darwin*)
+         PLATFORM=darwin
+-        AC_DEFINE(PLATFORM_DARWIN, 1)
++        AC_DEFINE(PLATFORM_DARWIN, 1, [Is this an OSX platform?])
+         ;;
+   *)
+ 	PLATFORM=unknown
+-	AC_DEFINE(PLATFORM_UNKNOWN, 1)
++	AC_DEFINE(PLATFORM_UNKNOWN, 1, [Is this an unknown platform?])
+ 	;;
+ esac
+ AC_SUBST(PLATFORM)
+-AC_DEFINE_UNQUOTED(PLATFORM, $PLATFORM)
++AC_DEFINE_UNQUOTED(PLATFORM, $PLATFORM, [Name of the current platform])
+ 
+ dnl Check for programs.
+ 
+@@ -106,13 +107,13 @@ AC_C_CONST
+ AC_TYPE_UID_T
+ AC_C_INLINE
+ AC_CHECK_TYPE(u_int64_t, HAVE_U_INT64_T=1, HAVE_U_INT64_T=0)
+-AC_DEFINE_UNQUOTED(HAVE_U_INT64_T, $HAVE_U_INT64_T)
++AC_DEFINE_UNQUOTED(HAVE_U_INT64_T, $HAVE_U_INT64_T, [Can we use uint64_t?])
+ 
+ dnl Check for library functions.
+ 
+ AC_FUNC_VPRINTF
+ AC_CHECK_FUNCS(strdup strerror strtol strtod strchr)
+-test [x$PLATFORM] = [xlinux] &&  AC_DEFINE(HAVE_GNU_GETOPT, 1)
++test [x$PLATFORM] = [xlinux] &&  AC_DEFINE(HAVE_GNU_GETOPT, 1, [Can we use GNU getopt?])
+ 
+ dnl check for strlcpy and strlcat (mostly BSD)
+ AC_CHECK_FUNCS(strlcpy strlcat)
+@@ -121,9 +122,10 @@ dnl Check the commandline
+ 
+ AC_ARG_WITH(gnu-getopt,  \
+   [--with-gnu-getopt       getopt() is GNU getopt],\
+-            test [x$withval] != [xno] || AC_DEFINE(HAVE_GNU_GETOPT, 1))
++            test [x$withval] != [xno] || AC_DEFINE(HAVE_GNU_GETOPT, 1), [Can we use GNU getopt?])
+ 
+ dnl Create output files
+ 
+ AC_CONFIG_HEADER(src/config.h)
+-AC_OUTPUT(local.mk)
++AC_CONFIG_FILES([local.mk])
++AC_OUTPUT
+
+From 2b773bb36135ede595bb2305663aec809edc8d35 Mon Sep 17 00:00:00 2001
+From: Bas Zoetekouw <bas@debian.org>
+Date: Wed, 13 Feb 2019 09:00:41 +0100
+Subject: [PATCH] Update configure.in
+
+Misplaced brace
+--- a/configure.in
++++ b/configure.in
+@@ -122,7 +122,7 @@ dnl Check the commandline
+ 
+ AC_ARG_WITH(gnu-getopt,  \
+   [--with-gnu-getopt       getopt() is GNU getopt],\
+-            test [x$withval] != [xno] || AC_DEFINE(HAVE_GNU_GETOPT, 1), [Can we use GNU getopt?])
++            test [x$withval] != [xno] || AC_DEFINE(HAVE_GNU_GETOPT, 1, [Can we use GNU getopt?]))
+ 
+ dnl Create output files
+ 
+

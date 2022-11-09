@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/864205
+https://github.com/xrmx/bootchart/commit/8591c1e3edaea8f17396e3d2819d9064b2818cfb
+
+From: Khem Raj <raj.khem@gmail.com>
+Date: Sat, 6 Aug 2022 20:39:01 -0700
+Subject: [PATCH] Do not include linux/fs.h
+
+This header is not needed to be included anymore, moreover it conflicts
+with sys/mount.h from glibc 2.36+ see [1]
+
+[1] https://sourceware.org/glibc/wiki/Release/2.36
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+--- a/collector/collector.c
++++ b/collector/collector.c
+@@ -34,7 +34,6 @@
+ 
+ #include <sys/mount.h>
+ #include <sys/sysmacros.h>
+-#include <linux/fs.h>
+ #include <linux/genetlink.h>
+ #include <linux/taskstats.h>
+ #include <linux/cgroupstats.h>
+

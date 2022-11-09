@@ -28,6 +28,7 @@ RDEPEND="
 	')
 	media-libs/sdl2-image[jpeg,png]
 	media-libs/sdl2-mixer[vorbis]
+	!app-containers/apptainer
 	!sys-cluster/singularity"
 BDEPEND="app-arch/unzip"
 

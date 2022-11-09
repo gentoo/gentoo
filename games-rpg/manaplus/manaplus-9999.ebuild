@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ RDEPEND="
 	x11-apps/xmessage
 	x11-libs/libX11
 	x11-misc/xdg-utils
-	mumble? ( media-sound/mumble )
+	mumble? ( net-voip/mumble )
 	nls? ( virtual/libintl )
 	opengl? ( virtual/opengl )
 	pugixml? ( dev-libs/pugixml )

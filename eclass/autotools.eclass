@@ -4,7 +4,7 @@
 # @ECLASS: autotools.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Regenerates auto* build scripts
 # @DESCRIPTION:
 # This eclass is for safely handling autotooled software packages that need to
@@ -27,7 +27,7 @@ if [[ -z ${_AUTOTOOLS_ECLASS} ]] ; then
 _AUTOTOOLS_ECLASS=1
 
 case ${EAPI} in
-	5|6)
+	6)
 		# Needed for eqawarn
 		inherit eutils
 		;;
@@ -130,7 +130,7 @@ RDEPEND=""
 : ${AUTOTOOLS_AUTO_DEPEND:=yes}
 if [[ ${AUTOTOOLS_AUTO_DEPEND} != "no" ]] ; then
 	case ${EAPI} in
-		5|6) DEPEND=${AUTOTOOLS_DEPEND} ;;
+		6) DEPEND=${AUTOTOOLS_DEPEND} ;;
 		*) BDEPEND=${AUTOTOOLS_DEPEND} ;;
 	esac
 fi
@@ -283,7 +283,7 @@ _at_uses_pkg() {
 		for macro ; do
 			args+=( -e "^[[:space:]]*${macro}\>" )
 		done
-		egrep -q "${args[@]}" configure.??
+		grep -E -q "${args[@]}" configure.??
 	fi
 }
 _at_uses_autoheader()  { _at_uses_pkg A{C,M}_CONFIG_HEADER{S,}; }
@@ -336,7 +336,7 @@ eaclocal() {
 	# - ${BROOT}/usr/share/aclocal
 	# - ${ESYSROOT}/usr/share/aclocal
 	# See bug #677002
-	if [[ ${EAPI} != [56] ]] ; then
+	if [[ ${EAPI} != 6 ]] ; then
 		if [[ ! -f "${T}"/aclocal/dirlist ]] ; then
 			mkdir "${T}"/aclocal || die
 			cat <<- EOF > "${T}"/aclocal/dirlist || die
@@ -394,7 +394,7 @@ eautoconf() {
 
 	if [[ ${WANT_AUTOCONF} != "2.1" && -e configure.in ]] ; then
 		case ${EAPI} in
-			5|6|7)
+			6|7)
 				eqawarn "This package has a configure.in file which has long been deprecated.  Please"
 				eqawarn "update it to use configure.ac instead as newer versions of autotools will die"
 				eqawarn "when it finds this file.  See https://bugs.gentoo.org/426262 for details."
@@ -485,7 +485,7 @@ config_rpath_update() {
 	local dst src
 
 	case ${EAPI} in
-		5|6)
+		6)
 			src="${EPREFIX}/usr/share/gettext/config.rpath"
 			;;
 		*)
@@ -516,7 +516,7 @@ autotools_env_setup() {
 			# Break on first hit to respect _LATEST_AUTOMAKE order.
 			local hv_args=""
 			case ${EAPI} in
-				5|6)
+				6)
 					hv_args="--host-root"
 					;;
 				*)
@@ -525,8 +525,18 @@ autotools_env_setup() {
 			esac
 			has_version ${hv_args} "=sys-devel/automake-${pv}*" && export WANT_AUTOMAKE="${pv}" && break
 		done
-		[[ ${WANT_AUTOMAKE} == "latest" ]] && \
-			die "Cannot find the latest automake! Tried ${_LATEST_AUTOMAKE[*]}"
+
+		# During bootstrap in prefix there might be no automake merged yet
+		# due to --nodeps, but still available somewhere in PATH.
+		# For example, ncurses needs local libtool on aix and hpux.
+		# So, make the check non-fatal where automake doesn't yet
+		# exist within BROOT. (We could possibly do better here
+		# and inspect PATH, but I'm not sure there's much point.)
+		if use prefix && [[ ! -x "${BROOT}"/usr/bin/automake ]] ; then
+			[[ ${WANT_AUTOMAKE} == "latest" ]] && ewarn "Ignoring missing automake during Prefix bootstrap! Tried ${_LATEST_AUTOMAKE[*]}"
+		else
+			[[ ${WANT_AUTOMAKE} == "latest" ]] && die "Cannot find the latest automake! Tried ${_LATEST_AUTOMAKE[*]}"
+		fi
 	fi
 	[[ ${WANT_AUTOCONF} == "latest" ]] && export WANT_AUTOCONF=2.71
 }

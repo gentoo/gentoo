@@ -1,0 +1,11 @@
+--- intel-hybrid-driver/src/media_drv_common.h  2020-05-26 23:18:02.279795861 +0100
++++ intel-hybrid-driver-new/src/media_drv_common.h      2020-05-26 23:19:11.316101524 +0100
+@@ -39,6 +39,6 @@
+ #define BRC_INIT_IGNORE_PICTURE_HEADER_SIZE     0x2000
+ #define BRC_INIT_DISABLE_MBBRC                  0x8000
+ 
+-UINT SEARCH_PATH_TABLE[2][8][16];
+-UINT ME_CURBE_INIT_DATA[30];
++extern UINT SEARCH_PATH_TABLE[2][8][16];
++extern UINT ME_CURBE_INIT_DATA[30];
+ #endif

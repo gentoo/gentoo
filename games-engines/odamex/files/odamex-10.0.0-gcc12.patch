@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/852566
+--- a/libraries/portmidi/pm_linux/finddefault.c
++++ b/libraries/portmidi/pm_linux/finddefault.c
+@@ -2,6 +2,7 @@
+    Roger Dannenberg, Jan 2009
+ */
+ 
++#include <ctype.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+--- a/master/main.cpp
++++ b/master/main.cpp
+@@ -29,6 +29,7 @@
+ #include <iostream>
+ #endif
+ 
++#include <ctime>
+ #include <string>
+ #include <vector>
+ #include <list>

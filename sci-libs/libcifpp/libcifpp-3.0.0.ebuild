@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND=">=dev-libs/boost-1.70:=[threads(+)]"
+DEPEND="dev-libs/boost:="
 RDEPEND="${DEPEND}"
 
 src_configure() {

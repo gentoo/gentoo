@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/mean00/avidemux2/archive/${PV}.tar.gz -> avidemux-${
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
 SLOT="2.7"
-IUSE="a52 aac aften alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx nvenc opengl opus oss pulseaudio qt5 truetype twolame vdpau vorbis vpx x264 x265 xv xvid"
+IUSE="a52 aac aften alsa amr dcaenc debug dts fdk fontconfig fribidi jack lame libsamplerate cpu_flags_x86_mmx opengl opus oss pulseaudio qt5 truetype twolame vdpau vorbis vpx x264 x265 xv xvid"
 KEYWORDS="~amd64 ~x86"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -50,7 +50,6 @@ COMMON_DEPEND="
 		libsamplerate? ( media-libs/libsamplerate )
 	)
 	lame? ( media-sound/lame )
-	nvenc? ( amd64? ( media-video/nvidia_video_sdk ) )
 	opus? ( media-libs/opus )
 	pulseaudio? ( media-sound/pulseaudio )
 	qt5? (
@@ -121,7 +120,7 @@ src_configure() {
 			-DFONTCONFIG="$(usex fontconfig)"
 			-DJACK="$(usex jack)"
 			-DLAME="$(usex lame)"
-			-DNVENC="$(usex nvenc)"
+			-DNVENC=no
 			-DOPENGL="$(usex opengl)"
 			-DOPUS="$(usex opus)"
 			-DOSS="$(usex oss)"

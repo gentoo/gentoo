@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ppc ppc64 ~riscv x86"
 IUSE="+X bidi brltty cairo debug fbcon fcitx freewnn gtk harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft"
 REQUIRED_USE="|| ( X fbcon wayland )"
 
@@ -22,7 +22,7 @@ RDEPEND="virtual/libcrypt:=
 		x11-libs/libX11
 	)
 	bidi? ( dev-libs/fribidi )
-	brltty? ( app-accessibility/brltty )
+	brltty? ( app-accessibility/brltty[api(+)] )
 	cairo? ( x11-libs/cairo[X(+)] )
 	fbcon? ( media-fonts/unifont )
 	fcitx? ( app-i18n/fcitx )

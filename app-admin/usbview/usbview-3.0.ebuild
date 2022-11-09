@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit linux-info
+inherit linux-info xdg
 
 DESCRIPTION="Display the topology of devices on the USB bus"
 HOMEPAGE="http://www.kroah.com/linux-usb/ https://github.com/gregkh/usbview"
@@ -11,7 +11,7 @@ SRC_URI="http://www.kroah.com/linux-usb/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~sparc x86"
 
 RDEPEND="
 	dev-libs/glib:2

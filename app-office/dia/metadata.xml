@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription>
-		Dia is a gtk+ based diagram creation program. It can be used to
-		draw many different kinds of diagrams. It currently has special
-		objects to help draw entity relationship diagrams, UML diagrams,
-		flowcharts, network diagrams, and simple circuits. It is also
-		possible to add support for new shapes by writing simple XML
-		files, using a subset of SVG to draw the shape.
-	</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription>
+    Dia is a gtk+ based diagram creation program. It can be used to
+    draw many different kinds of diagrams. It currently has special
+    objects to help draw entity relationship diagrams, UML diagrams,
+    flowcharts, network diagrams, and simple circuits. It is also
+    possible to add support for new shapes by writing simple XML
+    files, using a subset of SVG to draw the shape.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/dia</remote-id>
+  </upstream>
 </pkgmetadata>

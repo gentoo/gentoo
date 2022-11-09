@@ -1,9 +1,9 @@
-=== modified file 'lib/xstrrpl.c'
---- lib/xstrrpl.c	2008-04-14 18:04:50 +0000
-+++ lib/xstrrpl.c	2008-04-14 18:20:20 +0000
-@@ -20,12 +20,10 @@
- 
- #include "system.h"
+fix compilation error due to invalid stpcpy() prototype
+https://bugs.gentoo.org/216588
+
+--- a2ps-4.14/lib/xstrrpl.c
++++ a2ps-4.14/lib/xstrrpl.c
+@@ -22,8 +22,6 @@
  #include <assert.h>
  #include "xstrrpl.h"
  
@@ -12,6 +12,3 @@
  /* Perform subsitutions in string.  Result is malloc'd
     E.g., result = xstrrrpl ("1234", subst) gives result = "112333"
     where subst = { {"1", "11"}, {"3", "333"}, { "4", ""}}
-    */
- char *
-

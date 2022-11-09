@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit python-r1 cmake
 
 DESCRIPTION="Python bindings for KDL"
-HOMEPAGE="https://www.orocos.org/kdl"
+HOMEPAGE="https://www.orocos.org/kdl.html"
 if [[ ${PV} = *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/orocos/orocos_kinematics_dynamics"

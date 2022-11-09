@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="armadillo debug doc examples eigen fftw gsl hdf5 openmp readline static-libs"
 
 RDEPEND="
-	dev-libs/boost:0=
+	dev-libs/boost:=
 	>=sci-libs/gsl-2:0=
 	virtual/cblas:=
 	eigen? ( dev-cpp/eigen:3 )

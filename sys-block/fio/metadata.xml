@@ -20,4 +20,7 @@
 		<flag name="tcmalloc">Link against <pkg>dev-util/google-perftools</pkg> by default which will speed up USE=rbd up to 20%</flag>
 		<flag name="zbc">Enable ZBC &amp; ZAC disks via <pkg>sys-block/libzbc</pkg>.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">axboe/fio</remote-id>
+	</upstream>
 </pkgmetadata>

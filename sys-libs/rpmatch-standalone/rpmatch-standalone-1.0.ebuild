@@ -11,11 +11,10 @@ SRC_URI="https://github.com/pullmoll/musl-rpmatch/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86"
+KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 ~riscv x86"
 IUSE="static-libs"
 
-DEPEND="
-	!sys-libs/glibc"
+RDEPEND="!sys-libs/glibc"
 
 S="${WORKDIR}/musl-rpmatch-${PV}"
 

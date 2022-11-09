@@ -4,6 +4,30 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Conrad Kostecki <conikost@gentoo.org> (2022-11-01)
+# Mask tests, as not all needed deps are available on this arch.
+# See #878933 for progress.
+net-dns/ddclient test
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
+# deps not keyworded
+dev-util/pkgcheck emacs
+
+# Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+
+# Sam James <sam@gentoo.org> (2022-05-17)
+# sci-libs/sundials fails to build tests on HPPA
+# bug #845222
+sci-mathematics/octave sundials
+
+# Matt Turner <mattst88@gentoo.org> (2022-05-07)
+# app-crypt/gcr is not keyworded
+app-crypt/pinentry gtk
+dev-libs/libgdata crypt
+
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
 media-libs/imlib2 svg heif jpegxl
@@ -135,10 +159,6 @@ dev-util/cppcheck z3
 # media-sound/lash not keyworded, bug #736725
 media-sound/fluidsynth lash
 
-# Cédric Krier <cedk@gentoo.org> (2020-11-10)
-# virtual/rust has no hppa keyword
-dev-vcs/mercurial rust
-
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Dependency not keyworded on this arch.
 dev-libs/efl avif heif lua_single_target_luajit physics
@@ -183,7 +203,7 @@ media-video/ffmpeg dav1d libaribb24 libtesseract vidstab
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # media-gfx/nvidia-texture-tools, media-libs/allegro not keyworded on hppa
-media-libs/devil allegro nvtt
+media-libs/devil allegro
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-09)
 # dependencies not keyworded
@@ -198,9 +218,8 @@ app-emacs/elscreen wanderlust
 net-im/pidgin gadu
 
 # Jeroen Roovers <jer@gentoo.org> (2020-01-28)
-# sys-apps/systemd is not stable
 # media-libs/libilbc has not been ported to HPPA
-net-analyzer/wireshark ilbc sdjournal
+net-analyzer/wireshark ilbc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
 # media-libs/libheif is not keyworded
@@ -222,10 +241,6 @@ dev-ruby/asciidoctor test
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-05-25)
 # libgo needs an explicit port to hppa: bug #686624
 sys-devel/gcc go
-
-# Jeroen Roovers (jer@gentoo.org) (2018-03-22)
-# HiPE does not work on HPPA
-dev-lang/erlang hipe
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-07-04)
 # dev-libs/xxhash not keyworded for hppa
@@ -342,7 +357,7 @@ sci-mathematics/octave hdf5 qhull
 
 # Jeroen Roovers <jer@gentoo.org> (2012-07-08)
 # media-libs/devil has not been fully tested on HPPA
-media-gfx/graphviz devil lefty
+media-gfx/graphviz devil
 
 # Jeroen Roovers <jer@gentoo.org> (2012-07-03)
 # Mask USE=connman for net-libs/gupnp (bug #424225)
@@ -357,7 +372,6 @@ dev-libs/libpcre jit
 # usable. Mask until this is available.
 # Jeroen Roovers <jer@gentoo.org> (2014-02-18)
 # OSS is the only kernel audio interface that works on HPPA
-media-sound/pulseaudio equalizer -oss
 media-sound/pulseaudio-daemon equalizer -oss
 
 # Jeroen Roovers <jer@gentoo.org> (2012-05-21)

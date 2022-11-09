@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 BDEPEND="
-	>=dev-libs/boost-1.70.0:=[zlib,threads(+)]
+	dev-libs/boost:=[zlib]
 	>=sci-libs/libcifpp-2.0.0
 "
 DEPEND=""

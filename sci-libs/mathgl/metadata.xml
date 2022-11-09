@@ -10,7 +10,7 @@
   * making high-quality scientific graphics
   * the fast data plotting and data processing of large data arrays
   * working in window and console modes and for easy embedding into other programs
-</longdescription>
+  </longdescription>
   <use>
     <flag name="hdf">Add support for the Hierarchical Data Format v.4 <pkg>sci-libs/hdf</pkg></flag>
     <flag name="octave">Add bindings for <pkg>sci-mathematics/octave</pkg></flag>

@@ -11,6 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">gpodder/podcastparser</remote-id>
 		<remote-id type="pypi">podcastparser</remote-id>
 	</upstream>
 </pkgmetadata>

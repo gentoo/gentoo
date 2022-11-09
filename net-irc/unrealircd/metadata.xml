@@ -16,4 +16,7 @@
 		<flag name="operoverride-verify">Enable requiring opers to invite themselves to +s/+p channels</flag>
 		<flag name="operoverride">Enable OperOverride extension</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">unrealircd/unrealircd</remote-id>
+	</upstream>
 </pkgmetadata>

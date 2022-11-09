@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ IUSE="doc examples +gmp mpfi ntl qt5"
 
 RDEPEND="
 	dev-cpp/eigen
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	dev-libs/mpfr:=
 	sys-libs/zlib
 	x11-libs/libX11:=

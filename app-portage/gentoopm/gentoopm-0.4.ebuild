@@ -4,14 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
 DESCRIPTION="A common interface to Gentoo package managers"
-HOMEPAGE="https://github.com/mgorny/gentoopm/"
+HOMEPAGE="https://github.com/projg2/gentoopm/"
 SRC_URI="
-	https://github.com/mgorny/gentoopm/archive/v${PV}.tar.gz
+	https://github.com/projg2/gentoopm/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 LICENSE="BSD-2"

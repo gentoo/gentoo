@@ -1,0 +1,28 @@
+https://git.skeh.site/skeh/pyaudio/commit/2ee560056ec889ea7cd3ce1801b796b0939dd540
+https://bugs.gentoo.org/855626
+
+From 2ee560056ec889ea7cd3ce1801b796b0939dd540 Mon Sep 17 00:00:00 2001
+From: Derek Schmidt <skeh@is.nota.live>
+Date: Tue, 14 Dec 2021 21:46:11 -0700
+Subject: [PATCH] Use Py_ssize_t for tuple return on stream methods
+
+--- a/src/_portaudiomodule.c
++++ b/src/_portaudiomodule.c
+@@ -25,6 +25,7 @@
+  */
+ 
+ #include <stdio.h>
++#define PY_SSIZE_T_CLEAN
+ #include "Python.h"
+ #include "portaudio.h"
+ #include "_portaudiomodule.h"
+@@ -1291,7 +1292,7 @@ int _stream_callback_cfunction(const void *input, void *output,
+   PyObject *py_status_flags = PyLong_FromUnsignedLong(statusFlags);
+   PyObject *py_input_data = Py_None;
+   const char *pData;
+-  unsigned output_len;
++  Py_ssize_t output_len;
+   PyObject *py_result;
+ 
+   if (input) {
+

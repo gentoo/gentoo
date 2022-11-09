@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Roger Wilco base station"
 HOMEPAGE="http://rogerwilco.gamespy.com/"
-SRC_URI="http://games.gci.net/pub/VoiceOverIP/RogerWilco/rwbs_Linux_0_27.tar.gz"
+SRC_URI="http://games.gci.net/pub/VoiceOverIP/RogerWilco/rwbs_Linux_$(ver_rs 1-2 '_').tar.gz"
 
 SLOT="0"
 LICENSE="Resounding GPL-2"

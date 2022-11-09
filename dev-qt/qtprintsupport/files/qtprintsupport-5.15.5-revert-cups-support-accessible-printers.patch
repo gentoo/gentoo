@@ -1,0 +1,42 @@
+From 742cc6db31bff8e506bfb8db699a843ce60627e4 Mon Sep 17 00:00:00 2001
+From: Volker Hilsheimer <volker.hilsheimer@qt.io>
+Date: Thu, 28 Jul 2022 16:31:18 +0200
+Subject: [PATCH] Revert "CUPS: Add support for accessible IPP printers"
+
+This reverts commit 2f5f276b4a2a19b9f2669b84f28ce8e970aaa39f,
+after which valid printers are no longer listed anymore.
+
+Fixes: QTBUG-105242
+Pick-to: 6.2 6.3 6.4 5.15
+Change-Id: I6a388acff2a8033ad1052319edcf7e41a2f72c8f
+Reviewed-by: Oliver Eftevaag <oliver.eftevaag@qt.io>
+(cherry-picked from commit f387bb55d4060c6bfac0cd6da736c80dd9a47066)
+
+* asturmlechner 2022-07-28: This actually reverts commit
+  8d2c1e277f984bd4d2b98a4d58f23e578b677fd8 from kde/5.15 branch.
+---
+ src/plugins/printsupport/cups/qcupsprintersupport.cpp | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/src/plugins/printsupport/cups/qcupsprintersupport.cpp b/src/plugins/printsupport/cups/qcupsprintersupport.cpp
+index 1131d43f64..42a7a821f2 100644
+--- a/src/plugins/printsupport/cups/qcupsprintersupport.cpp
++++ b/src/plugins/printsupport/cups/qcupsprintersupport.cpp
+@@ -165,12 +165,9 @@ QStringList QCupsPrinterSupport::availablePrintDeviceIds() const
+     list.reserve(count);
+     for (int i = 0; i < count; ++i) {
+         QString printerId = QString::fromLocal8Bit(dests[i].name);
+-        if (dests[i].instance) {
++        if (dests[i].instance)
+             printerId += QLatin1Char('/') + QString::fromLocal8Bit(dests[i].instance);
+-            list.append(printerId);
+-        } else if (cupsGetOption("printer-uri-supported", dests[i].num_options, dests[i].options)) {
+-            list.append(printerId);
+-        }
++        list.append(printerId);
+     }
+     cupsFreeDests(count, dests);
+     return list;
+-- 
+GitLab
+

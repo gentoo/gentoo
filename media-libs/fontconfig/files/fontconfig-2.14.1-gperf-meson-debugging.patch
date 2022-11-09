@@ -1,0 +1,23 @@
+https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/240
+https://gitlab.freedesktop.org/fontconfig/fontconfig/-/issues/335
+
+From c42eb5b503a44b0b062b041d2e8a0138ce21a0c7 Mon Sep 17 00:00:00 2001
+From: Akira TAGOH <akira@tagoh.org>
+Date: Thu, 27 Oct 2022 12:32:07 +0900
+Subject: [PATCH] Fix the build issue on meson when -g option is added to
+ c_args
+
+Fixes https://gitlab.freedesktop.org/fontconfig/fontconfig/-/issues/335
+--- a/src/cutout.py
++++ b/src/cutout.py
+@@ -24,7 +24,8 @@ if __name__== '__main__':
+                 break
+ 
+     cpp = args[1]
+-    ret = subprocess.run(cpp + host_cargs + [args[0].input], stdout=subprocess.PIPE, check=True)
++    cpp_args = [i for i in host_cargs + [args[0].input] if not i.startswith('-g')]
++    ret = subprocess.run(cpp + cpp_args, stdout=subprocess.PIPE, check=True)
+ 
+     stdout = ret.stdout.decode('utf8')
+ 
+GitLab

@@ -1,0 +1,164 @@
+grobian@gentoo.org
+
+not sure what big_pt.patch was tested on, but partitioning a 2TB disk
+(Blocks=3907029168) won't work, with a daft warning, and no joy
+
+upgrade size storage to unsigned long long, so we can store these sizes
+tested on a PowerMac G5 with a 2TB SATA drive
+
+
+--- mac-fdisk-0.1.orig/io.c	2022-06-01 19:37:08.000000000 +0200
++++ mac-fdisk-0.1.orig/io.c	2022-06-01 20:32:12.000000000 +0200
+@@ -85,7 +85,7 @@
+ //
+ // Forward declarations
+ //
+-long get_number(int first_char);
++long long get_number(int first_char);
+ char* get_string(int eos);
+ #ifndef __linux__
+ int DoTestUnitReady(UInt8 targetID);
+@@ -201,9 +205,8 @@
+     return 0;
+ }
+ 
+-	
+ int
+-get_number_argument(char *prompt, long *number, long default_value)
++get_number_argument_long(char *prompt, long long *number, long long default_value)
+ {
+     int c;
+     int result = 0;
+@@ -237,14 +241,22 @@
+     return result;
+ }
+ 
++int
++get_number_argument(char *prompt, long *number, long default_value)
++{
++    long long retval = (long long)default_value;
++    int ret = get_number_argument_long(prompt, &retval, retval);
++    *number = (long)retval;
++    return ret;
++}
+ 
+-long
++long long
+ get_number(int first_char)
+ {
+     register int c;
+     int base;
+     int digit;
+-    int ret_value;
++    long long ret_value;
+ 
+     if (first_char != '0') {
+ 	c = first_char;
+--- mac-fdisk-0.1.orig/io.h	1997-01-09 23:31:31.000000000 +0100
++++ mac-fdisk-0.1.orig/io.h	2022-06-01 20:10:20.000000000 +0200
+@@ -57,6 +57,7 @@
+ int get_command(char *prompt, int promptBeforeGet, int *command);
+ long get_multiplier(long divisor);
+ int get_number_argument(char *prompt, long *number, long default_value);
++int get_number_argument_long(char *prompt, long long *number, long long default_value);
+ int get_okay(char *prompt, int default_value);
+ int get_string_argument(char *prompt, char **string, int reprompt);
+ int getch();
+--- mac-fdisk-0.1.orig/partition_map.c	2022-06-01 19:37:08.000000000 +0200
++++ mac-fdisk-0.1.orig/partition_map.c	2022-06-01 20:16:26.000000000 +0200
+@@ -90,7 +90,7 @@
+ void coerce_block0(partition_map_header *map);
+ int contains_driver(partition_map *entry);
+ void combine_entry(partition_map *entry);
+-long compute_device_size(int fd);
++unsigned long long compute_device_size(int fd);
+ DPME* create_data(const char *name, const char *dptype, u32 base, u32 length);
+ partition_map_header* create_partition_map(char *name);
+ void delete_entry(partition_map *entry);
+@@ -407,7 +407,7 @@
+     int fd;
+     partition_map_header * map;
+     DPME *data;
+-    unsigned long number;
++    unsigned long long number;
+ #ifdef __linux__
+     struct stat info;
+ #endif
+@@ -435,13 +435,14 @@
+     map->maximum_in_map = -1;
+ 
+     number = compute_device_size(fd);
+-    printf("size of 'device' is %u blocks: ", (unsigned int)number);
++    printf("size of 'device' is %llu blocks: ", number);
++    fflush(NULL);
+     flush_to_newline(0);
+-    get_number_argument("what should be the size? ", (long *)&number, number);
++    get_number_argument_long("what should be the size? ", (long long *)&number, (long long)number);
+     if (number < 4) {
+ 	number = 4;
+     }
+-    printf("new size of 'device' is %u blocks\n", (unsigned int)number);
++    printf("new size of 'device' is %llu blocks\n", number);
+     map->media_size = number;
+ 
+ #ifdef __linux__
+@@ -468,7 +469,7 @@
+ 	    data->dpme_signature = DPME_SIGNATURE;
+ 	    data->dpme_map_entries = 1;
+ 	    data->dpme_pblock_start = 1;
+-	    data->dpme_pblocks = map->media_size - 1;
++	    data->dpme_pblocks = (u32)(map->media_size - 1);
+ 	    strncpy(data->dpme_name, kFreeName, DPISTRLEN);
+ 	    strncpy(data->dpme_type, kFreeType, DPISTRLEN);
+ 	    data->dpme_lblock_start = 0;
+@@ -506,7 +507,7 @@
+     if (p->sbSig != BLOCK0_SIGNATURE) {
+ 	p->sbSig = BLOCK0_SIGNATURE;
+ 	p->sbBlkSize = 512;
+-	p->sbBlkCount = map->media_size;
++	p->sbBlkCount = (u32)map->media_size;
+ 	p->sbDevType = 0;
+ 	p->sbDevId = 0;
+ 	p->sbData = 0;
+@@ -573,7 +574,7 @@
+     }
+ 	// if the map will overflow then punt
+     if (map->maximum_in_map < 0) {
+-	limit = map->media_size;
++	limit = (int)map->media_size;
+     } else {
+ 	limit = map->maximum_in_map;
+     }
+@@ -661,7 +662,7 @@
+ }
+ 
+ 
+-long
++unsigned long long
+ compute_device_size(int fd)
+ {
+ #ifdef TEST_COMPUTE
+@@ -753,11 +754,7 @@
+ 	free(data);
+     }
+     
+-    // Add a warning just in case...
+-    if(x > 0x80000000)
+-    	printf("Warning: Large disks may not work with this tool!\n");
+-
+-    return (unsigned long) x;
++    return x;
+ }
+ 
+ 
+--- mac-fdisk-0.1.orig/partition_map.h	2022-06-01 19:37:08.000000000 +0200
++++ mac-fdisk-0.1.orig/partition_map.h	2022-06-01 19:37:49.000000000 +0200
+@@ -47,7 +47,7 @@
+     int regular_file;
+     int blocks_in_map;
+     int maximum_in_map;
+-    unsigned long media_size;
++    unsigned long long media_size;
+ };
+ typedef struct partition_map_header partition_map_header;
+ 

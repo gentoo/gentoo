@@ -5,6 +5,9 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">haskellari/tree-diff</remote-id>
+	</upstream>
 	<longdescription>
 		Common diff algorithm works on list structures:
 		

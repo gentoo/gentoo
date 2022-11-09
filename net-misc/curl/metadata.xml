@@ -28,7 +28,7 @@
 		<flag name="sslv3">Support for the old/insecure SSLv3 protocol</flag>
 		<flag name="telnet">Enable Telnet protocol support</flag>
 		<flag name="tftp">Enable TFTP support</flag>
-		<flag name="winssl">Enable winssl ssl backend</flag>
+		<flag name="websockets">Enable websockets support</flag>
 		<flag name="zstd">Enable zstd compression</flag>
 	</use>
 	<upstream>
@@ -36,5 +36,6 @@
 		<remote-id type="cpe">cpe:/a:curl:libcurl</remote-id>
 		<remote-id type="cpe">cpe:/a:haxx:curl</remote-id>
 		<remote-id type="cpe">cpe:/a:haxx:libcurl</remote-id>
+		<remote-id type="github">curl/curl</remote-id>
 	</upstream>
 </pkgmetadata>

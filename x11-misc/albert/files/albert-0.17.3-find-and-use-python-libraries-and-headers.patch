@@ -1,0 +1,33 @@
+From aa89c47db62163eddea623beb48f7ffd8d76062c Mon Sep 17 00:00:00 2001
+From: Buchan Milne <bgmilne@gmail.com>
+Date: Thu, 14 Jun 2018 08:10:31 +0200
+Subject: [PATCH] Find and use python libraries and headers
+
+---
+ plugins/python/CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/plugins/python/CMakeLists.txt b/plugins/python/CMakeLists.txt
+index 2dd085d..0dc9b91 100644
+--- a/plugins/python/CMakeLists.txt
++++ b/plugins/python/CMakeLists.txt
+@@ -5,7 +5,8 @@ PROJECT(python)
+ FILE(GLOB_RECURSE SRC src/*)
+ 
+ find_package(Qt5 5.5.0 REQUIRED COMPONENTS Widgets)
+-add_subdirectory(pybind11)
++find_package(PythonLibs)
++include_directories(${PYTHON_INCLUDE_DIRS})
+ 
+ add_library(${PROJECT_NAME} SHARED ${SRC} ${PROJECT_NAME}.qrc metadata.json)
+ 
+@@ -14,8 +15,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE src/)
+ target_link_libraries(${PROJECT_NAME}
+     PUBLIC
+         Qt5::Widgets
++        ${PYTHON_LIBRARIES}
+     PRIVATE
+-        pybind11::embed
+         albert::lib
+         xdg
+ )

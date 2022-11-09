@@ -10,6 +10,6 @@ XEMACS_PKG_CAT="standard"
 XEMACS_EXPERIMENTAL="true"
 
 RDEPEND=""
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc ppc64 ~riscv sparc x86"
 
 inherit xemacs-packages

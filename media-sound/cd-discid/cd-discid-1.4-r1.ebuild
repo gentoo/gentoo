@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="returns the disc id for the cd in the cd-rom drive"
 HOMEPAGE="https://github.com/taem/cd-discid"
-SRC_URI="https://github.com/taem/${PN}/archive/upstream/1.4.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/taem/${PN}/archive/upstream/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-upstream-${PV}"
 
 LICENSE="GPL-2"

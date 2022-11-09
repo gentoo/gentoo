@@ -9,7 +9,7 @@ MY_PV="${PV//./-}"
 
 DESCRIPTION="Mathematics software for geometry"
 HOMEPAGE="https://www.geogebra.org"
-SRC_URI="https://download.geogebra.org/installers/5.0/GeoGebra-Linux-Portable-${MY_PV}.tar.bz2
+SRC_URI="https://download.geogebra.org/installers/$(ver_cut 1-2)/GeoGebra-Linux-Portable-${MY_PV}.tar.bz2
 	https://dev.gentoo.org/~gyakovlev/distfiles/Geogebra.svg"
 
 LICENSE="Geogebra CC-BY-NC-SA-3.0 GPL-3 Apache-2.0 BSD-2 BSD BSD-4 colt EPL-1.0 icu LGPL-2.1 LGPL-2.1+ MIT W3C || ( GPL-2 CDDL )"

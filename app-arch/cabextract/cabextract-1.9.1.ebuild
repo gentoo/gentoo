@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 
 	LIBMSPACK_DEPEND="~dev-libs/libmspack-9999:="
 else
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 	MY_PV="${PV/_alpha/alpha}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://www.cabextract.org.uk/${P}.tar.gz"
@@ -27,10 +27,11 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="extras"
 
-DEPEND="${LIBMSPACK_DEPEND}
-	virtual/pkgconfig"
+DEPEND="${LIBMSPACK_DEPEND}"
 RDEPEND="${LIBMSPACK_DEPEND}
 	extras? ( dev-lang/perl )"
+BDEPEND="sys-devel/gettext
+	virtual/pkgconfig"
 
 src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then

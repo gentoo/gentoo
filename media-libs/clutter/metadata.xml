@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="egl">Enable EGL backend.</flag>
-	<flag name="gtk">Use gdk-pixbuf from <pkg>x11-libs/gtk+</pkg> as image rendering backend</flag>
-</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="egl">Enable EGL backend.</flag>
+    <flag name="gtk">Use gdk-pixbuf from <pkg>x11-libs/gtk+</pkg> as image rendering backend</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">Archive/clutter</remote-id>
+  </upstream>
 </pkgmetadata>

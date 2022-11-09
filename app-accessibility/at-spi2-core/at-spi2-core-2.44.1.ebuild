@@ -12,11 +12,11 @@ LICENSE="LGPL-2.1+"
 SLOT="2"
 IUSE="X gtk-doc +introspection"
 REQUIRED_USE="gtk-doc? ( X )"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 RDEPEND="
 	>=sys-apps/dbus-1.5[${MULTILIB_USEDEP}]
-	>=dev-libs/glib-2.62:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.67.4:2[${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-1.54.0:= )
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]

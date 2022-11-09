@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/634994
+--- a/misc.c
++++ b/misc.c
+@@ -57,8 +57,7 @@
+     vfprintf(stderr, message, args);
+     va_end(args);
+ 
+-    fprintf(stderr, strerror(err_num));
+-    fprintf(stderr, "\n");
++    fprintf(stderr, "%s\n", strerror(err_num));
+ }
+ 
+ 

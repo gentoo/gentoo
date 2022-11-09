@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/870412
+--- a/xdisp.c
++++ b/xdisp.c
+@@ -551,3 +551,3 @@
+ struct sunclock *
+-makeClockContext(wid, ht, win, pix, gc)
++makeClockContext(wid, ht, win, pix)
+ int				wid;

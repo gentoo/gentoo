@@ -1,0 +1,20 @@
+From: Sam James <sam@gentoo.org>
+Subject: [PATCH] Fix -Wdeprecated-non-prototype
+
+xtail.c:365:22: warning: a function declaration without a prototype is deprecated in all versions of C and is treated as a zero-parameter prototype in C2x, conflicting with a previous declaration [-Wdeprecated-non-prototype]
+            extern unsigned sleep();
+                            ^
+/usr/include/unistd.h:464:21: note: conflicting prototype is here
+extern unsigned int sleep (unsigned int __seconds);
+                    ^
+1 warning generated.
+--- a/xtail.c
++++ b/xtail.c
+@@ -362,7 +362,6 @@ int main(int argc, char *argv[])
+ 	 * End of checking loop.
+ 	 */
+ 	{
+-	    extern unsigned sleep();
+ 	    (void) fflush(stdout);
+ 	    (void) sleep(SLEEP_TIME);
+ 	}

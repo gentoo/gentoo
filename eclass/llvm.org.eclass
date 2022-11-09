@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
+# @PROVIDES: git-r3
 # @BLURB: Common bits for fetching & unpacking llvm.org projects
 # @DESCRIPTION:
 # The llvm.org eclass provides common code to fetch and unpack parts
@@ -37,6 +38,20 @@ case "${EAPI:-0}" in
 		;;
 esac
 
+# == version substrings ==
+
+# @ECLASS_VARIABLE: LLVM_MAJOR
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# The major LLVM version.
+LLVM_MAJOR=$(ver_cut 1)
+
+# @ECLASS_VARIABLE: LLVM_VERSION
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# The full 3-component LLVM version without suffixes or .9999.
+LLVM_VERSION=$(ver_cut 1-3)
+
 
 # == internal control bits ==
 
@@ -45,26 +60,58 @@ esac
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
 # the correct branch to use.
-_LLVM_MASTER_MAJOR=15
+_LLVM_MASTER_MAJOR=16
+
+# @ECLASS_VARIABLE: _LLVM_NEWEST_MANPAGE_RELEASE
+# @INTERNAL
+# @DESCRIPTION:
+# The newest release of LLVM for which manpages were generated.
+_LLVM_NEWEST_MANPAGE_RELEASE=15.0.4
 
 # @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
 # @DESCRIPTION:
-# Source type to use: 'git' or 'tar'.
+# Source type to use: 'git', 'tar' or 'snapshot'.
 if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
-	if [[ ${PV} == *.9999 ]]; then
-		_LLVM_SOURCE_TYPE=git
-	else
-		_LLVM_SOURCE_TYPE=tar
-	fi
+	case ${PV} in
+		*.9999)
+			_LLVM_SOURCE_TYPE=git
+			;;
+		*_pre*)
+			_LLVM_SOURCE_TYPE=snapshot
+
+			case ${PV} in
+				16.0.0_pre20221016)
+					EGIT_COMMIT=14f996dca8a2b5b17d6917528bfd9ee71ba6192a
+					;;
+				16.0.0_pre20221023)
+					EGIT_COMMIT=b34ea582774c057d9bf5591174d683fd3d8aa02b
+					;;
+				16.0.0_pre20221104)
+					EGIT_COMMIT=1fb186198af5f183dde053c1396f899567755d64
+					;;
+				*)
+					die "Unknown snapshot: ${PV}"
+					;;
+			esac
+			export EGIT_VERSION=${EGIT_COMMIT}
+			;;
+		*)
+			_LLVM_SOURCE_TYPE=tar
+			;;
+	esac
 fi
 
 [[ ${_LLVM_SOURCE_TYPE} == git ]] && inherit git-r3
 
-[[ ${PV} == ${_LLVM_MASTER_MAJOR}.* && ${_LLVM_SOURCE_TYPE} == tar ]] &&
+[[ ${LLVM_MAJOR} == ${_LLVM_MASTER_MAJOR} && ${_LLVM_SOURCE_TYPE} == tar ]] &&
 	die "${ECLASS}: Release ebuild for master branch?!"
 
 inherit multiprocessing
+
+if [[ ${_LLVM_SOURCE_TYPE} == tar ]] && ver_test -ge 14.0.5; then
+	inherit verify-sig
+fi
 
 
 # == control variables ==
@@ -86,9 +133,10 @@ inherit multiprocessing
 # @ECLASS_VARIABLE: LLVM_MANPAGES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Set to 'build', include the dependency on dev-python/sphinx to build
-# the manpages.  If set to 'pregenerated', fetch and install
-# pregenerated manpages from the archive.
+# Set to a non-empty value in ebuilds that build manpages via Sphinx.
+# The eclass will either include the dependency on dev-python/sphinx
+# or pull the pregenerated manpage tarball depending on the package
+# version.
 
 # @ECLASS_VARIABLE: LLVM_PATCHSET
 # @DEFAULT_UNSET
@@ -131,18 +179,18 @@ inherit multiprocessing
 # The list of USE flags corresponding to all LLVM targets in this LLVM
 # version.  The value depends on ${PV}.
 
-case ${PV} in
-	10*|11*|12*)
+case ${LLVM_MAJOR} in
+	10|11|12)
 		# this API is not present for old LLVM versions
 		;;
-	13*)
+	13)
 		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k VE )
 		ALL_LLVM_PRODUCTION_TARGETS=(
 			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
 			PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
 		)
 		;;
-	14*)
+	14)
 		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k )
 		ALL_LLVM_PRODUCTION_TARGETS=(
 			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
@@ -150,7 +198,9 @@ case ${PV} in
 		)
 		;;
 	*)
-		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY LoongArch M68k )
+		ALL_LLVM_EXPERIMENTAL_TARGETS=(
+			ARC CSKY DirectX LoongArch M68k SPIRV
+		)
 		ALL_LLVM_PRODUCTION_TARGETS=(
 			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
 			PowerPC RISCV Sparc SystemZ VE WebAssembly X86 XCore
@@ -163,6 +213,14 @@ ALL_LLVM_TARGET_FLAGS=(
 	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]/#/llvm_targets_}"
 )
 
+# @ECLASS_VARIABLE: LLVM_SOABI
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# The current ABI version of LLVM dylib, in a form suitable for use
+# as a subslot.  This is equal to LLVM_MAJOR for releases, and to PV
+# for the main branch.
+LLVM_SOABI=${LLVM_MAJOR}
+[[ ${LLVM_MAJOR} == ${_LLVM_MASTER_MAJOR} ]] && LLVM_SOABI=${PV}
 
 # == global scope logic ==
 
@@ -180,17 +238,42 @@ llvm.org_set_globals() {
 		fi
 	fi
 
-	if [[ ${_LLVM_SOURCE_TYPE} == git ]]; then
-		EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
+	case ${_LLVM_SOURCE_TYPE} in
+		git)
+			EGIT_REPO_URI="https://github.com/llvm/llvm-project.git"
 
-		[[ ${PV} != ${_LLVM_MASTER_MAJOR}.* ]] &&
-			EGIT_BRANCH="release/${PV%%.*}.x"
-	elif [[ ${_LLVM_SOURCE_TYPE} == tar ]]; then
-		SRC_URI+="
-			https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz"
-	else
-		die "Invalid _LLVM_SOURCE_TYPE: ${LLVM_SOURCE_TYPE}"
-	fi
+			[[ ${LLVM_MAJOR} != ${_LLVM_MASTER_MAJOR} ]] &&
+				EGIT_BRANCH="release/${LLVM_MAJOR}.x"
+			;;
+		tar)
+			if ver_test -ge 14.0.5; then
+				SRC_URI+="
+					https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz
+					verify-sig? (
+						https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz.sig
+					)
+				"
+				BDEPEND+="
+					verify-sig? (
+						>=sec-keys/openpgp-keys-llvm-15
+					)
+				"
+				VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/llvm.asc
+			else
+				SRC_URI+="
+					https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz
+				"
+			fi
+			;;
+		snapshot)
+			SRC_URI+="
+				https://github.com/llvm/llvm-project/archive/${EGIT_COMMIT}.tar.gz
+					-> llvm-project-${EGIT_COMMIT}.tar.gz
+			"
+			;;
+		*)
+			die "Invalid _LLVM_SOURCE_TYPE: ${LLVM_SOURCE_TYPE}"
+	esac
 
 	S=${WORKDIR}/${LLVM_COMPONENTS[0]}
 
@@ -199,25 +282,22 @@ llvm.org_set_globals() {
 		RESTRICT+=" !test? ( test )"
 	fi
 
-	case ${LLVM_MANPAGES:-__unset__} in
-		__unset__)
-			# no manpage support
-			;;
-		build)
-			IUSE+=" doc"
-			# NB: this is not always the correct dep but it does no harm
-			BDEPEND+=" dev-python/sphinx"
-			;;
-		pregenerated)
+	if [[ ${LLVM_MANPAGES} ]]; then
+		# use pregenerated tarball for releases
+		# up to _LLVM_NEWEST_MANPAGE_RELEASE
+		if llvm_manpage_dist_available; then
 			IUSE+=" doc"
 			SRC_URI+="
 				!doc? (
 					https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2
-				)"
-			;;
-		*)
-			die "Invalid LLVM_MANPAGES=${LLVM_MANPAGES}"
-	esac
+				)
+			"
+		else
+			IUSE+=" doc"
+			# NB: this is not always the correct dep but it does no harm
+			BDEPEND+=" dev-python/sphinx"
+		fi
+	fi
 
 	if [[ -n ${LLVM_PATCHSET} ]]; then
 		SRC_URI+="
@@ -269,24 +349,52 @@ llvm.org_src_unpack() {
 		components+=( "${LLVM_TEST_COMPONENTS[@]}" )
 	fi
 
-	if [[ ${_LLVM_SOURCE_TYPE} == git ]]; then
-		git-r3_fetch
-		git-r3_checkout '' . '' "${components[@]}"
-		default_src_unpack
-	else
-		local archive=llvmorg-${PV/_/-}.tar.gz
-		ebegin "Unpacking from ${archive}"
-		tar -x -z -o --strip-components 1 \
-			-f "${DISTDIR}/${archive}" \
-			"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
-		eend ${?}
+	local archive=
+	case ${_LLVM_SOURCE_TYPE} in
+		git)
+			git-r3_fetch
+			git-r3_checkout '' . '' "${components[@]}"
+			;;
+		tar)
+			archive=llvmorg-${PV/_/-}.tar.gz
+			if ver_test -ge 14.0.5; then
+				archive=llvm-project-${PV/_/}.src.tar.xz
+				if use verify-sig; then
+					verify-sig_verify_detached \
+						"${DISTDIR}/${archive}" "${DISTDIR}/${archive}.sig"
+				fi
+			fi
 
-		# unpack all remaining distfiles
-		local x
-		for x in ${A}; do
-			[[ ${x} != ${archive} ]] && unpack "${x}"
-		done
-	fi
+			ebegin "Unpacking from ${archive}"
+			if ver_test -ge 14.0.5; then
+				tar -x -J -o --strip-components 1 \
+					-f "${DISTDIR}/${archive}" \
+					"${components[@]/#/${archive%.tar*}/}" || die
+			else
+				tar -x -z -o --strip-components 1 \
+					-f "${DISTDIR}/${archive}" \
+					"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
+			fi
+			eend ${?}
+			;;
+		snapshot)
+			archive=llvm-project-${EGIT_COMMIT}.tar.gz
+			ebegin "Unpacking from ${archive}"
+			tar -x -z -o --strip-components 1 \
+				-f "${DISTDIR}/${archive}" \
+				"${components[@]/#/${archive%.tar*}/}" || die
+			eend ${?}
+			;;
+		*)
+			die "Invalid _LLVM_SOURCE_TYPE: ${LLVM_SOURCE_TYPE}"
+			;;
+	esac
+
+	# unpack all remaining distfiles
+	local x
+	for x in ${A}; do
+		[[ ${x} != ${archive} ]] && unpack "${x}"
+	done
 
 	if [[ -n ${LLVM_PATCHSET} ]]; then
 		local nocomp=$(grep -r -L "^Gentoo-Component:" \
@@ -354,12 +462,21 @@ get_lit_flags() {
 	echo "-vv;-j;${LIT_JOBS:-$(makeopts_jobs)}"
 }
 
+# @FUNCTION: llvm_manpage_dist_available
+# @DESCRIPTION:
+# Return true (0) if this LLVM version features prebuilt manpage
+# tarball, false (1) otherwise.
+llvm_manpage_dist_available() {
+	[[ ${_LLVM_SOURCE_TYPE} == tar ]] &&
+		ver_test "${PV}" -le "${_LLVM_NEWEST_MANPAGE_RELEASE}"
+}
+
 # @FUNCTION: llvm_are_manpages_built
 # @DESCRIPTION:
 # Return true (0) if manpages are going to be built from source,
 # false (1) if preinstalled manpages will be used.
 llvm_are_manpages_built() {
-	use doc || [[ ${LLVM_MANPAGES} == build ]]
+	use doc || ! llvm_manpage_dist_available
 }
 
 # @FUNCTION: llvm_install_manpages

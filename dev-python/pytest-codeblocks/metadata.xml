@@ -11,7 +11,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">nschloe/pytest-codeblocks</remote-id>
-		<remote-id type="pypi">pytest-codeblocks</remote-id>
+		<remote-id type="pypi">pytest_codeblocks</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>

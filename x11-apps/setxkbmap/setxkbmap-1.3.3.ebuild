@@ -8,7 +8,7 @@ inherit xorg-3
 
 DESCRIPTION="Controls the keyboard layout of a running X server"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="
 	x11-libs/libxkbfile

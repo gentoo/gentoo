@@ -1,0 +1,27 @@
+diff --git a/tests/t8000-valgrind-zip.pl b/tests/t8000-valgrind-zip.pl
+index ad7597c..8c96b85 100755
+--- a/tests/t8000-valgrind-zip.pl
++++ b/tests/t8000-valgrind-zip.pl
+@@ -5,6 +5,8 @@ use strict;
+ use lib ($0 =~ m|^(.*/)| ? $1 : ".");
+ use LibGsfTest;
+ 
++exit 77; # Skip test, bug #840353
++
+ my $archive = "test.zip";
+ &LibGsfTest::junkfile ($archive);
+ 
+diff --git a/tests/t8020-valgrind-ole.pl b/tests/t8020-valgrind-ole.pl
+index d6df5d7..b8200e9 100755
+--- a/tests/t8020-valgrind-ole.pl
++++ b/tests/t8020-valgrind-ole.pl
+@@ -5,6 +5,8 @@ use strict;
+ use lib ($0 =~ m|^(.*/)| ? $1 : ".");
+ use LibGsfTest;
+ 
++exit 77; # Skip test, bug #840353
++
+ my $archive = "test.ole";
+ &LibGsfTest::junkfile ($archive);
+ 
+-- 

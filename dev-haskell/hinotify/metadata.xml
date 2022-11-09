@@ -5,6 +5,6 @@
     <email>haskell@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="github">kolmodin/hinotify.git</remote-id>
+    <remote-id type="github">kolmodin/hinotify</remote-id>
   </upstream>
 </pkgmetadata>

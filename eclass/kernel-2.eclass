@@ -281,7 +281,7 @@
 # If you do change them, there is a chance that we will not fix resulting bugs;
 # that of course does not mean we're not willing to help.
 
-inherit estack toolchain-funcs
+inherit estack multiprocessing toolchain-funcs
 
 case ${EAPI} in
 	7|8) ;;
@@ -675,23 +675,13 @@ if [[ ${ETYPE} == sources ]]; then
 
 	# Bug #266157, deblob for libre support
 	if [[ -z ${K_PREDEBLOBBED} ]]; then
-		# deblob less than 5.10 require python 2.7
-		if kernel_is lt 5 10; then
-			K_DEBLOB_AVAILABLE=0
-		fi
 		if [[ ${K_DEBLOB_AVAILABLE} == 1 ]]; then
-			PYTHON_COMPAT=( python3_{8..10} )
-
-			inherit python-any-r1
-
 			IUSE="${IUSE} deblob"
 
 			# Reflect that kernels contain firmware blobs unless otherwise
 			# stripped. Starting with version 4.14, the whole firmware
 			# tree has been dropped from the kernel.
 			kernel_is lt 4 14 && LICENSE+=" !deblob? ( linux-firmware )"
-
-			BDEPEND+=" deblob? ( ${PYTHON_DEPS} )"
 
 			if [[ -n KV_MINOR ]]; then
 				DEBLOB_PV="${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
@@ -1075,7 +1065,7 @@ unipatch() {
 			extention=${extention/:*/}
 			PIPE_CMD=""
 			case ${extention} in
-				     xz) PIPE_CMD="xz -dc";;
+				     xz) PIPE_CMD="xz -T$(makeopts_jobs) -dc";;
 				   lzma) PIPE_CMD="lzma -dc";;
 				    bz2) PIPE_CMD="bzip2 -dc";;
 				 patch*) PIPE_CMD="cat";;
@@ -1411,7 +1401,16 @@ kernel-2_src_unpack() {
 
 	# allow ebuilds to massage the source tree after patching but before
 	# we run misc `make` functions below
-	[[ $(type -t kernel-2_hook_premake) == "function" ]] && kernel-2_hook_premake
+	if [[ $(type -t kernel-2_hook_premake) == "function" ]]; then
+		ewarn "The function name: kernel-2_hook_premake is being deprecated and"
+		ewarn "being changed to:  kernel-2_insert_premake to comply with pms policy."
+		ewarn "See bug #843686 "
+		ewarn "The call to the old function name will be removed on or about July 1st, 2022 "
+		ewarn "Please update your ebuild before this date."
+		kernel-2_hook_premake
+	else
+		[[ $(type -t kernel-2_insert_premake) == "function" ]] && kernel-2_insert_premake
+	fi
 
 	debug-print "Doing unpack_set_extraversion"
 
@@ -1461,8 +1460,10 @@ kernel-2_src_compile() {
 	cd "${S}" || die
 
 	if [[ ${K_DEBLOB_AVAILABLE} == 1 ]] && use deblob; then
+		einfo ">>> Patching deblob script for forcing awk ..."
+		sed -i '/check="\/bin\/sh $check"/a \  check="$check --use-awk"' \
+			"${T}/${DEBLOB_A}" || die "Failed to patch ${DEBLOB_A}"
 		einfo ">>> Running deblob script ..."
-		python_setup
 		sh "${T}/${DEBLOB_A}" --force || die "Deblob script failed to run!!!"
 	fi
 }

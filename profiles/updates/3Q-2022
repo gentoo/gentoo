@@ -1,0 +1,25 @@
+move dev-python/async_timeout dev-python/async-timeout
+move dev-python/configargparse dev-python/ConfigArgParse
+move dev-python/dbutils dev-python/DBUtils
+move dev-python/frozen-flask dev-python/Frozen-Flask
+move dev-python/ipy dev-python/IPy
+move sci-libs/shapely dev-python/shapely
+move games-action/brutal-legend games-action/brutal-legend-hb
+move kde-apps/kdesdk-kioslaves dev-util/kio-perldoc
+move kde-apps/zeroconf-ioslave net-misc/kio-zeroconf
+move net-misc/cni-plugins app-containers/cni-plugins
+move gnome-extra/chrome-gnome-shell gnome-extra/gnome-browser-connector
+move dev-python/PyQt6_sip dev-python/PyQt6-sip
+move dev-python/PyQt6_WebEngine dev-python/PyQt6-WebEngine
+move net-p2p/go-ipfs net-p2p/kubo
+move app-admin/ansible-base app-admin/ansible-core
+slotmove =dev-ruby/rack-test-2.0.2 1.0 2
+move app-office/gnome-todo app-office/endeavour
+move dev-python/python-levenshtein dev-python/Levenshtein
+move mail-mta/protonmail-bridge mail-mta/proton-mail-bridge
+move app-emulation/distrobox app-containers/distrobox
+move www-servers/tornado dev-python/tornado
+move dev-python/path-py dev-python/path
+move xfce-extra/thunar-volman xfce-base/thunar-volman
+move xfce-extra/tumbler xfce-base/tumbler
+move xfce-extra/xfce4-power-manager xfce-base/xfce4-power-manager

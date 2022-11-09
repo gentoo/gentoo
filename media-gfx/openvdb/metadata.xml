@@ -15,6 +15,10 @@
 		Chance of Meatballs2' and 'How to Train Your Dragon 2'. 
 	</longdescription>
 	<use>
+		<flag name="ax">
+			Build the OpenVDB AX module to perform custom manipulation of
+			OpenVDB data via an expression language: AX.
+		</flag>
 		<flag name="blosc">
 			Allow using blosc compression via <pkg>dev-libs/c-blosc</pkg>
 		</flag>
@@ -26,9 +30,6 @@
 		</flag>
 		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="numpy">
 			Build pyopenvdb with support for <pkg>dev-python/numpy</pkg>
-		</flag>
-		<flag restrict="&lt;=media-gfx/openvdb-7.1.0" name="abi5-compat">
-			Disables newer features to maintain compatibility with ABI5.
 		</flag>
 		<flag restrict="&gt;=media-gfx/openvdb-6.0.0" name="abi6-compat">
 			Disables newer features to maintain compatibility with ABI6.

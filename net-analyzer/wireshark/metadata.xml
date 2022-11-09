@@ -2,16 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>zlogene@gentoo.org</email>
-		<name>Mikle Kolyada</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>bman@gentoo.org</email>
-		<name>Aaron Bauman</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
 	</maintainer>
 	<longdescription>
 		Wireshark is the world's foremost network protocol analyzer, and is the de
@@ -56,6 +52,7 @@
 		<flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
 		<flag name="plugin-ifdemo">Install plugin interface demo</flag>
 		<flag name="plugins">Install plugins</flag>
+		<flag name="qt6">Build with Qt6 support instead of the default Qt5 for GUI support</flag>
 		<flag name="randpkt">Install randpkt, a utility for creating pcap trace files full of random packets</flag>
 		<flag name="randpktdump">Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)</flag>
 		<flag name="reordercap">Install reordercap, to reorder input file by timestamp into output file</flag>
@@ -69,5 +66,11 @@
 		<flag name="tfshark">Install tfshark, a terminal-based version of the FileShark capability</flag>
 		<flag name="tshark">Install tshark, to dump and analyzer network traffic from the command line</flag>
 		<flag name="udpdump">Install udpdump, to get packets exported from a source (like a network device or a GSMTAP producer) that are dumped to a pcap file</flag>
+		<flag name="wifi">Install wifidump, to dump and analyse 802.11 traffic</flag>
 	</use>
+	<upstream>
+		<changelog>https://www.wireshark.org/news/</changelog>
+		<remote-id type="github">wireshark/wireshark</remote-id>
+		<remote-id type="gitlab">wireshark/wireshark</remote-id>
+	</upstream>
 </pkgmetadata>

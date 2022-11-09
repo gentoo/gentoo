@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ DESCRIPTION="vim plugin: fuzzy file, buffer, mru, tag, ... finder with regex sup
 HOMEPAGE="https://github.com/ctrlpvim/ctrlp.vim"
 SRC_URI="https://github.com/${PN}vim/${PN}.vim/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 LICENSE="vim"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 

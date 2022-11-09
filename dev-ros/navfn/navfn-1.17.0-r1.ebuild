@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ RDEPEND="
 	dev-cpp/eigen:3
 	x11-libs/fltk
 	media-libs/netpbm
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}

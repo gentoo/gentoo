@@ -1,0 +1,38 @@
+From f597fc7288f57d1dfddd5bb559cc7b0f598d15e5 Mon Sep 17 00:00:00 2001
+From: "Torrance, Douglas" <dtorrance@piedmont.edu>
+Date: Sun, 10 Oct 2021 10:01:04 +0000
+Subject: [PATCH] wmhdplop: Fix "misleadingly indented" compiler warnings.
+
+---
+ wmhdplop/wmhdplop.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/wmhdplop.c b/wmhdplop.c
+index 16b9a4f..bbbe971 100644
+--- a/wmhdplop.c
++++ b/wmhdplop.c
+@@ -421,7 +421,9 @@ static void draw_hdlist(App *app) {
+     //printf("update : first displayed(%d) = %p\n", cnt, dl);
+ 
+     for (dl = first_dev_in_list(), dev_cnt=hd_cnt=-1; dl; dl = dl->next) {
+-      if (dl->part_id == 0) ++hd_cnt; if (!is_displayed(dl->hd_id, dl->part_id)) continue; ++dev_cnt;
++      if (dl->part_id == 0) ++hd_cnt;
++      if (!is_displayed(dl->hd_id, dl->part_id)) continue;
++      ++dev_cnt;
+       imlib_get_text_size(shorten_name(dl),&w,&h);
+       lw = MAX(w,lw);
+       lh += h;
+@@ -440,7 +442,9 @@ static void draw_hdlist(App *app) {
+   imlib_image_draw_rectangle(lx-1,ly-1,lw+2,lh+2);
+ 
+   for (dl = first_dev_in_list(), dev_cnt=hd_cnt=-1; dl; dl = dl->next) {
+-    if (dl->part_id==0) ++hd_cnt; if (!is_displayed(dl->hd_id, dl->part_id)) continue; ++dev_cnt;
++    if (dl->part_id==0) ++hd_cnt;
++    if (!is_displayed(dl->hd_id, dl->part_id)) continue;
++    ++dev_cnt;
+     int x = lx, y = ly + lh - dev_cnt * h;
+     if (!Prefs.disable_hd_leds) {
+       if (dl->touched_r) {
+-- 
+2.11.4.GIT
+

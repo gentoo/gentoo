@@ -1,0 +1,18 @@
+https://git.alpinelinux.org/aports/tree/main/lvm2/mallinfo.patch
+
+Patch from Alpine, disables _allocate_memory since mallinfo isn't defined in musl.
+19:17 <@sam_> your caution is well-advised, but it should be safe enough given it's only affecting the non-glibc path
+
+Should be looked back to!
+
+--- ./lib/mm/memlock.c.orig	2015-03-09 11:18:41.560028850 -0100
++++ ./lib/mm/memlock.c	2015-03-09 11:19:54.504373309 -0100
+@@ -137,7 +137,7 @@
+ 
+ static void _allocate_memory(void)
+ {
+-#ifndef VALGRIND_POOL
++#if !defined(VALGRIND_POOL) && defined(__GLIBC__)
+ 	void *stack_mem;
+ 	struct rlimit limit;
+ 	int i, area = 0, missing = _size_malloc_tmp, max_areas = 32, hblks;

@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# matoro <matoro_gentoo@matoro.tk> (2022-09-29)
+# dev-util/google-perftools is supported here
+-tcmalloc
+
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # dev-util/sysprof-capture is keyworded on x86
 -sysprof
@@ -33,13 +37,6 @@
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-26)
 # dev-db/firebird is keyworded ~x86
 -firebird
-
-# cilk has been ported to this arch.
--cilk
-
-# Mike Gilbert <floppym@gentoo.org (2014-10-19)
-# sys-libs/libapparmor
--apparmor
 
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is keyworded on this arch.
@@ -132,6 +129,7 @@
 -input_devices_wacom
 -video_cards_ast
 -video_cards_crocus
+-video_cards_d3d12
 -video_cards_i915
 -video_cards_i965
 -video_cards_intel

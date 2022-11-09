@@ -1,0 +1,36 @@
+https://github.com/libical/libical/commit/eeccee80d0485bdd3951924b294a82e8bc39a5f8
+https://bugs.gentoo.org/876622
+
+From: Allen Winter <allen.winter@kdab.com>
+Date: Mon, 10 Oct 2022 14:58:29 -0400
+Subject: [PATCH] Revert "src/libical/icalparser.c - fix a fuzz issue for
+ integer overflow"
+
+This reverts commit ca3e2ad983771b90da259994b7a6d7de1fd1abdc.
+--- a/src/libical/icalparser.c
++++ b/src/libical/icalparser.c
+@@ -630,7 +630,6 @@ icalcomponent *icalparser_parse(icalparser *parser,
+                                 icalparser_line_gen_func line_gen_func)
+ {
+     char *line;
+-    unsigned int cnt = 0;
+     icalcomponent *c = 0;
+     icalcomponent *root = 0;
+     icalerrorstate es = icalerror_get_error_state(ICAL_MALFORMEDDATA_ERROR);
+@@ -641,7 +640,6 @@ icalcomponent *icalparser_parse(icalparser *parser,
+     icalerror_set_error_state(ICAL_MALFORMEDDATA_ERROR, ICAL_ERROR_NONFATAL);
+ 
+     do {
+-        cnt++;
+         line = icalparser_get_line(parser, line_gen_func);
+ 
+         if ((c = icalparser_add_line(parser, line)) != 0) {
+@@ -681,7 +679,7 @@ icalcomponent *icalparser_parse(icalparser *parser,
+             icalmemory_free_buffer(line);
+             cont = 1;
+         }
+-    } while (cont && cnt < TMP_BUF_SIZE);
++    } while (cont);
+ 
+     icalerror_set_error_state(ICAL_MALFORMEDDATA_ERROR, es);
+ 

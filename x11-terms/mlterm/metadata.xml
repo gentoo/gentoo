@@ -19,6 +19,7 @@
 		<flag name="wayland">Enable support for Wayland</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">arakiken/mlterm</remote-id>
 		<remote-id type="sourceforge">mlterm</remote-id>
 	</upstream>
 </pkgmetadata>

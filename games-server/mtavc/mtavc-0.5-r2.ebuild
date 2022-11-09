@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="dedicated server for GTA3 multiplayer"
 HOMEPAGE="http://mtavc.com/"
-SRC_URI="http://files.gonnaplay.com/201/MTAServer0_5-linux.tar.gz"
+SRC_URI="http://files.gonnaplay.com/201/MTAServer$(ver_rs 0-1 '_')-linux.tar.gz"
 S="${WORKDIR}"
 
 LICENSE="MTA-0.5"
@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="-* ~x86"
 RESTRICT="bindist mirror"
 
-RDEPEND="sys-libs/libstdc++-v3:5"
+RDEPEND="sys-libs/glibc
+	sys-libs/libstdc++-v3:5"
 
 QA_PREBUILT="/opt/${PN}/MTAServer"
 QA_EXECSTACK="/opt/${PN}/MTAServer"

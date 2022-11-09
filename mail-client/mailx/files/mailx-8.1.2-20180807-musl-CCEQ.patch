@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/719512
+
+Tiny definition copied from /usr/include/termios.h.
+--- a/tty.c
++++ b/tty.c
+@@ -57,6 +57,10 @@
+ 	size_t	 cursor;
+ };
+ 
++#ifndef CCEQ
++#define CCEQ(val, c) ((c) == (val) && (val) != _POSIX_VDISABLE)
++#endif
++
+ static void	tty_flush(struct tty *);
+ static int	tty_getc(struct tty *);
+ static int	tty_insert(struct tty *, int, int);
+

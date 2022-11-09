@@ -18,6 +18,7 @@
 	<name>Gentoo Kernel Project</name>
 </maintainer>
 <use>
+	<flag name="compress">Compress firmware using xz (<pkg>app-arch/xz-utils</pkg>) before installation</flag>
 	<flag name="initramfs">Create and install initramfs for early microcode loading in /boot (only AMD for now)</flag>
 	<flag name="redistributable">Install also non-free (but redistributable) firmware files</flag>
 	<flag name="savedconfig">Allows individual selection of firmware files</flag>

@@ -36,7 +36,7 @@ PATCHES=(
 RDEPEND="
 	client? (
 		media-libs/libsdl2[X,sound,joystick,opengl,video]
-		mumble? ( media-sound/mumble:= )
+		mumble? ( net-voip/mumble:= )
 		openal? ( media-libs/openal:= )
 		opus? ( media-libs/opusfile )
 		vorbis? ( media-libs/libvorbis )

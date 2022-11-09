@@ -1,0 +1,47 @@
+This is a revert of upstream commit 0a576fc822a3 ("Try again to fix ci").
+
+Without the patch, the tests fail on my amd64 system with harfbuzz-4.3.0.
+
+diff --git b/tests/layouts/valid-20.layout a/tests/layouts/valid-20.layout
+index db692b73..5b2bcf15 100644
+--- b/tests/layouts/valid-20.layout
++++ a/tests/layouts/valid-20.layout
+@@ -40,7 +40,7 @@
+     "is-wrapped" : false,
+     "is-ellipsized" : false,
+     "unknown-glyphs" : 0,
+-    "width" : 67584,
++    "width" : 76800,
+     "height" : 25600,
+     "log-attrs" : [
+       {
+@@ -138,7 +138,7 @@
+             "glyphs" : [
+               {
+                 "glyph" : 244,
+-                "width" : 15360,
++                "width" : 18432,
+                 "x-offset" : 14764,
+                 "y-offset" : 3845,
+                 "is-cluster-start" : true,
+@@ -146,7 +146,7 @@
+               },
+               {
+                 "glyph" : 272,
+-                "width" : 15360,
++                "width" : 18432,
+                 "x-offset" : 14764,
+                 "y-offset" : 4280,
+                 "is-cluster-start" : true,
+@@ -154,7 +154,7 @@
+               },
+               {
+                 "glyph" : 273,
+-                "width" : 15360,
++                "width" : 18432,
+                 "x-offset" : 14764,
+                 "y-offset" : 3507,
+                 "is-cluster-start" : true,
+-- 
+2.35.1
+

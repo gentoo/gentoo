@@ -35,7 +35,6 @@ RDEPEND="
 		static? ( >=dev-libs/libpcre-3.9[static-libs] )
 	)
 	gdbm? ( sys-libs/gdbm:= )
-	!<sys-apps/baselayout-2.4.1
 "
 DEPEND="sys-apps/groff
 	${RDEPEND}"
@@ -128,7 +127,7 @@ src_compile() {
 	default
 
 	if [[ ${PV} == *9999 ]] && use doc ; then
-		emake -C Doc everything
+		emake -C Doc everything pdf dvi
 	fi
 }
 

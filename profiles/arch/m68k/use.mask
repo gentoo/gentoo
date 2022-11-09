@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -m68k
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-31)
+# Unmask systemd since it is keyworded here.
+-systemd
+
 # James Le Cuirot <chewi@gentoo.org> (2021-01-30)
 # GTK is not keyworded or tested.
 gtk
@@ -82,21 +86,12 @@ ruby
 zstd
 
 # James Le Cuirot <chewi@gentoo.org> (2021-08-20)
-# There is a community effort to bring Rust to m68k but it's not ready yet.
-rust
-
-# James Le Cuirot <chewi@gentoo.org> (2021-08-20)
 # Qt is not keyworded or tested.
 qt5
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-23)
 # valgrind has no m68k port.
 valgrind
-
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
-# Dependencies not keyworded.
-appindicator
-ayatana
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-03-31)
 # sys-auth/elogind is not keyworded here.
@@ -168,7 +163,6 @@ R
 rdma
 samba
 slang
-systemd
 tcl
 tk
 xemacs

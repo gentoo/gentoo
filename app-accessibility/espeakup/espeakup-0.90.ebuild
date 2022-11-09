@@ -8,7 +8,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/linux-speakup/espeakup/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong x86"
 fi
 
 inherit linux-info meson
@@ -24,7 +24,7 @@ COMMON_DEPEND="app-accessibility/espeak-ng[sound]
 	media-libs/alsa-lib"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
-BDEPEND="man? ( app-text/ronn )"
+BDEPEND="man? ( || ( app-text/ronn-ng app-text/ronn ) )"
 
 CONFIG_CHECK="~SPEAKUP ~SPEAKUP_SYNTH_SOFT"
 ERROR_SPEAKUP="CONFIG_SPEAKUP is not enabled in this kernel!"

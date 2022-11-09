@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This plug-in implements a macrostep back-end powered by geiser. geiser does
+    have built-in macro-expansion facilities, namely geiser-expand-*. However,
+    I find macrostep's in-place expansions to be more convenient than pop-up
+    buffers.
+  </longdescription>
+  <stabilize-allarches />
+  <upstream>
+    <bugs-to>https://github.com/nbfalcon/macrostep-geiser/issues/</bugs-to>
+    <remote-id type="github">nbfalcon/macrostep-geiser</remote-id>
+  </upstream>
+</pkgmetadata>

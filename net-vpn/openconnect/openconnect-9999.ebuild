@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-PYTHON_REQ_USE="xml"
+PYTHON_REQ_USE="xml(+)"
 
 inherit linux-info python-any-r1
 
@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="Free client for Cisco AnyConnect SSL VPN software"
-HOMEPAGE="http://www.infradead.org/openconnect.html"
+HOMEPAGE="https://www.infradead.org/openconnect/"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
@@ -25,6 +25,7 @@ IUSE="doc +gnutls gssapi libproxy lz4 nls pskc selinux smartcard stoken test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
+	dev-libs/json-parser:0=
 	dev-libs/libxml2
 	sys-libs/zlib
 	app-crypt/p11-kit
@@ -114,6 +115,7 @@ src_configure() {
 		$(use_with smartcard libpcsclite)
 		$(use_with stoken)
 		--with-vpnc-script="${EPREFIX}/etc/vpnc/vpnc-script"
+		--without-builtin-json
 		--without-java
 	)
 

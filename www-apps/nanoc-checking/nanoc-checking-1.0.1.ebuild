@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="NEWS.md README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Provides checking functionality for Nanoc"
-HOMEPAGE="https://nanoc.ws/"
+HOMEPAGE="https://nanoc.app/"
 LICENSE="MIT"
 
 KEYWORDS="~amd64 ~riscv"

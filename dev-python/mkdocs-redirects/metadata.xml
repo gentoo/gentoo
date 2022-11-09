@@ -6,7 +6,7 @@
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">datarobot/mkdocs-redirects</remote-id>
+		<remote-id type="github">mkdocs/mkdocs-redirects</remote-id>
 		<remote-id type="pypi">mkdocs-redirects</remote-id>
 	</upstream>
 	<stabilize-allarches/>

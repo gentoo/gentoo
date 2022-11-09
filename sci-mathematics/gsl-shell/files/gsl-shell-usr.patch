@@ -1,8 +1,0 @@
-diff -r -U1 gsl-shell.orig/makeconfig gsl-shell/makeconfig
---- gsl-shell.orig/makeconfig	2012-09-12 01:13:31.000000000 +0700
-+++ gsl-shell/makeconfig	2012-09-26 16:16:43.000000000 +0700
-@@ -21,3 +21,3 @@
- 
--PREFIX= /usr/local
-+PREFIX= /usr
- DESTDIR=

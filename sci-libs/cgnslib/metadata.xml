@@ -10,7 +10,9 @@
 		an international steering committee.
 	</longdescription>
 	<use>
+		<flag name="base-scope">Enable base scoped families or connectivities</flag>
 		<flag name="legacy">Enable or disable building legacy code (3.0 compatible)</flag>
+		<flag name="scoping">Enable scoping of enumeration values</flag>
 		<flag name="tools">
 			A number of utility programs:
 			cgnscheck, cgnscompress, cgnsdiff, cgnslist, cgnsnames, cgnsupdate, cgnsconvert, adf2hdf, hdf2adf.

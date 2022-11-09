@@ -1,6 +1,15 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-26)
+# intel-hybrid-codec-driver does not work on x32
+media-libs/intel-hybrid-codec-driver
+
+# Jonas Licht <jonas.licht@gmail.com> (2022-05-01)
+# Requires net-libs/nodejs, plus mask all reverse-dependecies.
+net-analyzer/gsa
+net-analyzer/gsad
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-02-13)
 # Requires qtwebengine
 sci-electronics/eagle
@@ -21,9 +30,11 @@ sci-visualization/jupyter-dash
 media-gfx/freecad
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
-# Requires net-libs/nodejs, plus mask all reverse-dependencies.
+# dev-qt/qtwebengine requires net-libs/nodejs, plus mask all
+# reverse-dependencies.
 dev-qt/qtwebengine
 dev-qt/qtwebview
+dev-python/PyQt6-WebEngine
 dev-python/PyQtWebEngine
 app-admin/calamares
 app-doc/zeal
@@ -44,6 +55,9 @@ dev-lang/typescript
 dev-python/spyder
 dev-python/spyder-terminal
 dev-python/spyder-unittest
+dev-python/spyder-line-profiler
+dev-python/spyder-vim
+dev-python/spyder-notebook
 dev-util/kdevelop:5
 dev-util/kdevelop-php:5
 dev-util/kdevelop-python:5
@@ -84,7 +98,7 @@ kde-apps/parley:5
 kde-apps/pim-data-exporter:5
 kde-apps/pim-sieve-editor:5
 kde-apps/plasma-telepathy-meta:5
-kde-misc/kmarkdownwebview:5
+>=kde-misc/kio-gdrive-22.04.3-r1
 kde-misc/tellico:5
 kde-misc/zanshin:5
 mail-client/kube
@@ -101,8 +115,8 @@ net-misc/nextcloud-client
 net-p2p/ktorrent:5
 sci-geosciences/qmapshack
 sci-mathematics/rkward:5
-sci-mathematics/rstudio
 sci-visualization/labplot:5
+sys-apps/polychromatic
 www-client/falkon
 www-client/otter
 www-client/qutebrowser
@@ -120,7 +134,6 @@ net-libs/xrootd-ceph
 
 # Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-10-28)
 # requires net-libs/nodejs | sys-apps/yarn
->=net-analyzer/greenbone-security-assistant-8.0.1
 net-analyzer/gvm
 
 # Marek Szuba <marecki@gentoo.org> (2019-07-26)
@@ -135,6 +148,7 @@ dev-libs/amdgpu-pro-opencl
 # Patrick McLean <chutzpah@gentoo.org> (2018-07-12)
 # requires nodejs
 >=sys-cluster/ceph-13
+app-metrics/ceph_exporter
 
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Broken multilib dependencies.
@@ -152,6 +166,7 @@ dev-lang/coffee-script
 dev-ruby/autoprefixer-rails
 dev-ruby/coffee-rails
 dev-ruby/coffee-script
+dev-ruby/deckar01-task_list
 dev-ruby/execjs
 dev-ruby/turbolinks
 dev-ruby/uglifier
@@ -161,3 +176,4 @@ sys-apps/yarn
 www-apps/jekyll-coffeescript
 www-apps/kibana-bin
 www-client/chromium
+>=www-apps/redmine-5.0.2

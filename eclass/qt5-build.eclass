@@ -63,6 +63,13 @@ readonly QT5_PV
 # The upstream package name of the module this package belongs to.
 # Used for SRC_URI and S.
 
+# @ECLASS_VARIABLE: _QT5_GENTOOPATCHSET_REV
+# @DEFAULT_UNSET
+# @INTERNAL
+# @DESCRIPTION:
+# Gentoo downstream patchset version applied over qtbase. Used for SRC_URI and
+# applied in src_prepare.
+
 # @ECLASS_VARIABLE: QT5_TARGET_SUBDIRS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -100,11 +107,15 @@ if [[ ${PN} != qtwebengine ]]; then
 		*9999 )
 			inherit kde.org # kde/5.15 branch
 			;;
-		5.15.[3-9]* )
+		5.15.[5-9]* | 5.15.??* )
 			# official stable release
 			_QT5_P=${QT5_MODULE}-everywhere-opensource-src-${PV}
 			HOMEPAGE="https://www.qt.io/"
 			SRC_URI="https://download.qt.io/official_releases/qt/${PV%.*}/${PV}/submodules/${_QT5_P}.tar.xz"
+			if [[ ${QT5_MODULE} == qtbase ]]; then
+				_QT5_GENTOOPATCHSET_REV=1
+				SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}.tar.xz"
+			fi
 			# KDE Qt5PatchCollection on top of tag v${PV}-lts-lgpl
 			if [[ -n ${QT5_KDEPATCHSET_REV} ]]; then
 				HOMEPAGE+=" https://invent.kde.org/qt/qt/${QT5_MODULE} https://community.kde.org/Qt5PatchCollection"
@@ -175,7 +186,7 @@ qt5-build_src_prepare() {
 			-e '/echo "Done."/a fi' configure || die "sed failed (skip qmake bootstrap)"
 
 		# Respect CC, CXX, *FLAGS, MAKEOPTS and EXTRA_EMAKE when bootstrapping qmake
-		sed -i -e "/outpath\/qmake\".*\"\$MAKE\")/ s|)| \
+		sed -i -e "/outpath\/qmake\".*\"*\$MAKE\"*)/ s|)| \
 			${MAKEOPTS} ${EXTRA_EMAKE} 'CC=$(tc-getCC)' 'CXX=$(tc-getCXX)' \
 			'QMAKE_CFLAGS=${CFLAGS}' 'QMAKE_CXXFLAGS=${CXXFLAGS}' 'QMAKE_LFLAGS=${LDFLAGS}'&|" \
 			-e 's/\(setBootstrapVariable\s\+\|EXTRA_C\(XX\)\?FLAGS=.*\)QMAKE_C\(XX\)\?FLAGS_\(DEBUG\|RELEASE\).*/:/' \
@@ -189,6 +200,8 @@ qt5-build_src_prepare() {
 
 		# Respect build variables in configure tests (bug #639494)
 		sed -i -e "s|\"\$outpath/bin/qmake\" \"\$relpathMangled\" -- \"\$@\"|& $(qt5_qmake_args) |" configure || die
+
+		[[ -n ${_QT5_GENTOOPATCHSET_REV} ]] && eapply "${WORKDIR}/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}"
 	fi
 
 	[[ -n ${QT5_KDEPATCHSET_REV} ]] && eapply "${WORKDIR}/${QT5_MODULE}-${PV}-gentoo-kde-${QT5_KDEPATCHSET_REV}"

@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools git-r3 xdg-utils
+inherit autotools git-r3 xdg
 
 DESCRIPTION="Small utility for fast and easy GUI building"
 HOMEPAGE="https://github.com/oshazard/gtkdialog"
@@ -12,7 +12,6 @@ EGIT_REPO_URI="https://github.com/oshazard/gtkdialog"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 RDEPEND="
 	x11-libs/gtk+:3
@@ -49,12 +48,4 @@ src_install() {
 	# Stop make install from running gtk-update-icon-cache
 	emake DESTDIR="${D}" UPDATE_ICON_CACHE=true install
 	einstalldocs
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

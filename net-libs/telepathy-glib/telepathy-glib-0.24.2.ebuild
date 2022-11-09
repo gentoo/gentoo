@@ -3,10 +3,8 @@
 
 EAPI=7
 
-PYTHON_REQ_USE="xml"
-PYTHON_COMPAT=( python3_{8..10} )
-VALA_MIN_API_VERSION="0.18"
-VALA_USE_DEPEND="vapigen"
+PYTHON_REQ_USE="xml(+)"
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit gnome2 python-any-r1 vala virtualx
 

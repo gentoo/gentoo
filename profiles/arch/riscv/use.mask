@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -6,6 +6,10 @@
 
 # Unmask systemd
 -systemd
+
+# matoro <matoro_gentoo@matoro.tk> (2022-09-29)
+# dev-util/google-perftools is supported here
+-tcmalloc
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-19)
 # Unmask for more testing
@@ -55,7 +59,6 @@ video_cards_nv
 video_cards_omap
 video_cards_qxl
 video_cards_r128
-video_cards_radeonsi
 video_cards_siliconmotion
 video_cards_tegra
 video_cards_vc4

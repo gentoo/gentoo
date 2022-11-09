@@ -1,0 +1,34 @@
+https://cgit.openembedded.org/meta-openembedded/plain/meta-oe/recipes-devtools/mcpp/files/0001-configure-Fix-checks-for-system-headers.patch?id=6721430ca97aa98208cc1c450e4e8c4c274ca840
+
+From c1e9f2f3d086e0df3c10a2468fd7b37fd0c5038c Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Wed, 7 Sep 2022 00:02:08 -0700
+Subject: [PATCH] configure: Fix checks for system headers
+
+Define _DEFAULT_SOURCE in system.c so unistd.h can expose readlink API
+
+Upstream-Status: Pending
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+--- a/configure.ac
++++ b/configure.ac
+@@ -152,7 +152,7 @@ fi
+ 
+ dnl Checks for header files.
+ 
+-AC_CHECK_HEADERS( [unistd.h, stdint.h, inttypes.h])
++AC_CHECK_HEADERS( [unistd.h stdint.h inttypes.h])
+ 
+ dnl Checks for typedefs, and compiler characteristics.
+ 
+--- a/src/system.c
++++ b/src/system.c
+@@ -36,6 +36,8 @@
+  *      1. specify the constants in "configed.H" or "noconfig.H",
+  *      2. append the system-dependent routines in this file.
+  */
++
++#define _DEFAULT_SOURCE
+ #if PREPROCESSED
+ #include    "mcpp.H"
+ #else

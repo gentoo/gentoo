@@ -21,6 +21,6 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">kicad/kicad-packages3d</remote-id>
+		<remote-id type="gitlab">kicad/libraries/kicad-packages3D</remote-id>
 	</upstream>
 </pkgmetadata>

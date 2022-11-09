@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>x11@gentoo.org</email>
-		<name>X11</name>
-	</maintainer>
-	<use>
-		<flag name="bzip2">Support bzip2 compressed PCF fonts.</flag>
-		<flag name="truetype">Use media-libs/freetype for font rasterization.</flag>
-	</use>
-	<upstream>
-		<remote-id type="cpe">cpe:/a:x.org:libxfont</remote-id>
-	</upstream>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
+  <use>
+    <flag name="bzip2">Support bzip2 compressed PCF fonts.</flag>
+    <flag name="truetype">Use <pkg>media-libs/freetype</pkg> for font rasterization.</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:x.org:libxfont</remote-id>
+    <remote-id type="freedesktop-gitlab">xorg/lib/libXfont</remote-id>
+  </upstream>
 </pkgmetadata>

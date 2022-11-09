@@ -5,22 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Haskell 98 semigroups
-		
-		In mathematics, a semigroup is an algebraic structure
-		consisting of a set together with an associative binary
-		operation. A semigroup generalizes a monoid in that there
-		might not exist an identity element. It also (originally)
-		generalized a group (a monoid with all inverses) to a type
-		where every element did not have to have an inverse, thus the
-		name semigroup.
-	</longdescription>
-	<use>
-		<flag name="binary">provide instances for binary package</flag>
-		<flag name="transformers">provide instances for transformers package.</flag>
-	</use>
-	<upstream>
-		<remote-id type="github">ekmett/semigroups</remote-id>
-	</upstream>
 </pkgmetadata>

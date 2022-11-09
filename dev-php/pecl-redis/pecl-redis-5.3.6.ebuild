@@ -4,7 +4,7 @@
 EAPI=8
 
 PHP_EXT_NAME="redis"
-USE_PHP="php7-3 php7-4 php8-0 php8-1"
+USE_PHP="php7-4 php8-0 php8-1"
 PHP_EXT_NEEDED_USE="json(+)?,session(-)?"
 DOCS=( arrays.markdown cluster.markdown README.markdown CREDITS )
 MY_P="${PN/pecl-/}-${PV/_rc/RC}"
@@ -20,7 +20,7 @@ KEYWORDS="amd64 ~arm"
 IUSE="igbinary +json lz4 +session zstd"
 
 DEPEND="
-	igbinary? ( >=dev-php/igbinary-3.0.1-r1[php_targets_php7-3(-)?,php_targets_php7-4(-)?,php_targets_php8-0(-)?,php_targets_php8-1(-)?] )
+	igbinary? ( >=dev-php/igbinary-3.0.1-r1[php_targets_php7-4(-)?,php_targets_php8-0(-)?,php_targets_php8-1(-)?] )
 	lz4? ( app-arch/lz4:= )
 	zstd? ( app-arch/zstd:= )
 "

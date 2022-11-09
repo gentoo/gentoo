@@ -49,6 +49,7 @@ elif [[ ${_PYTHON_ANY_R1} ]]; then
 	die 'python-r1.eclass can not be used with python-any-r1.eclass.'
 fi
 
+[[ ${EAPI} == 6 ]] && inherit eqawarn
 inherit multibuild python-utils-r1
 
 fi
@@ -625,6 +626,24 @@ _python_multibuild_wrapper() {
 python_foreach_impl() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	if [[ ${_DISTUTILS_R1} ]]; then
+		if has "${EBUILD_PHASE}" prepare configure compile test install &&
+			[[ ! ${_DISTUTILS_CALLING_FOREACH_IMPL} &&
+				! ${_DISTUTILS_FOREACH_IMPL_WARNED} ]]
+		then
+			eqawarn "python_foreach_impl has been called directly while using distutils-r1."
+			eqawarn "Please redefine python_*() phase functions to meet your expectations"
+			eqawarn "instead."
+			_DISTUTILS_FOREACH_IMPL_WARNED=1
+
+			if ! has "${EAPI}" 6 7 8; then
+				die "Calling python_foreach_impl from distutils-r1 is banned in EAPI ${EAPI}"
+			fi
+		fi
+		# undo the eclass-set value to catch nested calls
+		local _DISTUTILS_CALLING_FOREACH_IMPL=
+	fi
+
 	local MULTIBUILD_VARIANTS
 	_python_obtain_impls
 
@@ -710,7 +729,7 @@ python_setup() {
 	fi
 
 	# (reverse iteration -- newest impl first)
-	local found
+	local found i
 	_python_verify_patterns "${@}"
 	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
 		local impl=${_PYTHON_SUPPORTED_IMPLS[i]}

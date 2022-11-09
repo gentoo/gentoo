@@ -12,7 +12,7 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/pothosware/SoapyUHD.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 	SRC_URI="https://github.com/pothosware/SoapyUHD/archive/soapy-uhd-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/SoapyUHD-soapy-uhd-"${PV}"
 fi

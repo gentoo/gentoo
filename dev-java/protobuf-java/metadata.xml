@@ -9,6 +9,9 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
 	<slots>
 		<subslots>Soname version number of Protobuf</subslots>
 	</slots>

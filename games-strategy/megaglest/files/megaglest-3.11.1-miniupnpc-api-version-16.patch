@@ -1,7 +1,7 @@
 https://github.com/MegaGlest/megaglest-source/commit/a85d12aed1983eb69d630b431b81ae656d83b3ac
 
---- /source/shared_lib/sources/platform/posix/socket.cpp
-+++ /source/shared_lib/sources/platform/posix/socket.cpp
+--- a/source/shared_lib/sources/platform/posix/socket.cpp
++++ b/source/shared_lib/sources/platform/posix/socket.cpp
 @@ -2610,8 +2610,10 @@
  				if(SystemFlags::VERBOSE_MODE_ENABLED) printf("UPnP device found: %s %s\n", dev->descURL, dev->st);
  

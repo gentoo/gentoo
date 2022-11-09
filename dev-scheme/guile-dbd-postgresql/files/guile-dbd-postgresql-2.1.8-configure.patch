@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -58,7 +58,7 @@ AC_HEADER_STDC
+ AC_CHECK_LIB(pq,PQconnectStart,,
+         AC_MSG_ERROR([*** Can't find libpq]))
+ 
+-CFLAGS=`guile-config compile`
++CFLAGS="${CFLAGS} `guile-config compile`"
+ LIBS=`guile-config link`
+ 
+ . $srcdir/DBD-VERSION

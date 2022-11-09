@@ -4,13 +4,13 @@
 # Unmask the flag which corresponds to ARCH.
 -s390
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-05-20)
+# Keyworded here
+-systemd
+
 # Sam James <sam@gentoo.org> (2022-04-26)
 # dev-libs/mongo-c-driver not keyworded here
 mongodb
-
-# Sam James <sam@gentoo.org> (2022-04-24)
-# Avoid unkeyworded dev-util/google-perftools
-tcmalloc
 
 # Sam James <sam@gentoo.org> (2022-04-24)
 # Desktopy stacks not currently keyworded
@@ -51,14 +51,6 @@ luajittex
 # media-libs/libglvnd is not keyworded
 libglvnd
 
-# Unmask ABI flags for this arch.
--abi_s390_32
-
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
-# Dependencies not keyworded.
-appindicator
-ayatana
-
 # James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Unmask as this profile is big endian.
 -big-endian
@@ -78,7 +70,6 @@ lpsol
 openexr
 enchant
 fftw
-systemd
 devil
 gts
 clang
@@ -154,7 +145,3 @@ video_cards_radeonsi
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
-
-# sys-libs/libunwind is masked on s390, but enabled on s390x
-unwind
-libunwind

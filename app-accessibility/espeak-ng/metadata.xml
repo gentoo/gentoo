@@ -18,7 +18,7 @@
 		<flag name="klatt">Enables Klatt formant synthesis and implementation</flag>
 		<flag name="l10n_ru">Builds extended Russian Dictionary file</flag>
 		<flag name="l10n_zh">Builds extended Chinese (Mandarin and Cantonese) Dictionary files</flag>
-		<flag name="man">Builds and installs manpage with app-text/ronn</flag>
+		<flag name="man">Builds and installs manpage with <pkg>app-text/ronn</pkg></flag>
 		<flag name="mbrola">Adds support for mbrola voices</flag>
 	</use>
 </pkgmetadata>

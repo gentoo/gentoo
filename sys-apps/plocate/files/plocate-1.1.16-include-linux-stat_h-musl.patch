@@ -1,0 +1,30 @@
+https://git.sesse.net/?p=plocate;a=commit;h=0125004cd28c5f9124632b594e51dde73af1691c
+https://git.alpinelinux.org/aports/tree/community/plocate/include-statx.patch
+https://bugs.gentoo.org/853769
+
+From 0125004cd28c5f9124632b594e51dde73af1691c Mon Sep 17 00:00:00 2001
+From: "Steinar H. Gunderson" <steinar+git@gunderson.no>
+Date: Sat, 25 Jun 2022 10:01:49 +0200
+Subject: [PATCH 1/2] Add a missing #include.
+
+Taken from the Alpine Linux packaging; seems to be for statx()
+(presumably on musl libc).
+---
+ io_uring_engine.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/io_uring_engine.h b/io_uring_engine.h
+index 688a6ae..bcb1058 100644
+--- a/io_uring_engine.h
++++ b/io_uring_engine.h
+@@ -7,6 +7,7 @@
+ #include <string_view>
+ #include <sys/socket.h>
+ #include <sys/types.h>
++#include <linux/stat.h>
+ 
+ struct io_uring_sqe;
+ #ifndef WITHOUT_URING
+-- 
+2.35.1
+

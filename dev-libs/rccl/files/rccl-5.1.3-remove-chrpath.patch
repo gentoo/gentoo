@@ -1,0 +1,32 @@
+Manually chrpath not needed in CMakeLists since CMAKE_SKIP_RPATH=On
+So chrpath dependency is not needed
+===================================================================
+--- rccl-rocm-5.1.3.orig/test/CMakeLists.txt
++++ rccl-rocm-5.1.3/test/CMakeLists.txt
+@@ -5,11 +5,6 @@ if(BUILD_TESTS)
+ 
+   message("Going to build unit tests (Installed in /test/UnitTests)")
+ 
+-  find_program(CHRPATH chrpath)
+-  if(NOT CHRPATH)
+-      message(FATAL_ERROR "chrpath is required for UnitTests. Please install (e.g. sudo apt-get install chrpath)")
+-  endif()
+-
+   include_directories(${GTEST_INCLUDE_DIRS})
+ 
+   if(BUILD_ALLREDUCE_ONLY)
+@@ -88,14 +83,6 @@ if(BUILD_TESTS)
+   # HIPCC adds /opt/rocm/lib as RPATH, even though the install process is supposed to
+   # remove RPATH.  It also occurs before any user-specified rpath, which effectively overrides the user rpath.
+   #  As a work-around, set the correct RPATH for the unit test executable as a post-install step
+-  if (CMAKE_INSTALL_PREFIX MATCHES "${ROCM_PATH}")
+-    # install_prefix/CMAKE_INSTALL_PREFIX was not explicitly specified, so look in build/release
+-    add_custom_command( TARGET UnitTests POST_BUILD COMMAND chrpath ARGS -r ${CMAKE_BINARY_DIR}:${ROCM_PATH}/lib ${CMAKE_BINARY_DIR}/test/UnitTests)
+-    add_custom_command( TARGET UnitTestsMultiProcess POST_BUILD COMMAND chrpath ARGS -r ${CMAKE_BINARY_DIR}:${ROCM_PATH}/lib ${CMAKE_BINARY_DIR}/test/UnitTestsMultiProcess)
+-  else()
+-    add_custom_command( TARGET UnitTests POST_BUILD COMMAND chrpath ARGS -r ${CMAKE_INSTALL_PREFIX}/lib:${ROCM_PATH}/lib ${CMAKE_INSTALL_PREFIX}/test/UnitTests)
+-    add_custom_command( TARGET UnitTestsMultiProcess POST_BUILD COMMAND chrpath ARGS -r ${CMAKE_INSTALL_PREFIX}/lib:${ROCM_PATH}/lib ${CMAKE_INSTALL_PREFIX}/test/UnitTestsMultiProcess)
+-  endif()
+ else()
+   message("Not building unit tests")
+ endif()

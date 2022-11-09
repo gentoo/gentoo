@@ -1,0 +1,31 @@
+https://github.com/markusfisch/PieDock/pull/19
+
+From c57d9fad9726086dafbc05abb243c14dcd1bab23 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 12 Jun 2022 11:08:19 +0100
+Subject: [PATCH] Fix build with GCC 12 (missing <time.h> include)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes the following build failure w/ GCC 12:
+```
+WindowManager.cpp: In static member function ‘static void PieDock::WindowManager::activate(Display*, Window)’:
+WindowManager.cpp:83:29: error: ‘time’ was not declared in this scope; did you mean ‘Time’?
+   83 |         for (time_t start = time(0) + 2;
+      |                             ^~~~
+      |                             Time
+```
+
+Bug: https://bugs.gentoo.org/851516
+--- a/src/WindowManager.cpp
++++ b/src/WindowManager.cpp
+@@ -10,6 +10,7 @@
+ 
+ #include <stdint.h>
+ #include <string.h>
++#include <time.h>
+ #include <unistd.h>
+ 
+ using namespace PieDock;
+

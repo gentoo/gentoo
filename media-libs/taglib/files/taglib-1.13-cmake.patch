@@ -1,0 +1,37 @@
+From 8aa7dd81d8b89bfa48bb32f6cab7df20f79f3562 Mon Sep 17 00:00:00 2001
+From: Ryan Schmidt <git@ryandesign.com>
+Date: Thu, 27 Oct 2022 20:02:04 -0500
+Subject: [PATCH] Fix macOS dylib install name to be absolute path
+
+Closes #1065
+---
+ bindings/c/CMakeLists.txt | 2 +-
+ taglib/CMakeLists.txt     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/bindings/c/CMakeLists.txt b/bindings/c/CMakeLists.txt
+index 15f4e440a..b517da7b6 100644
+--- a/bindings/c/CMakeLists.txt
++++ b/bindings/c/CMakeLists.txt
+@@ -58,7 +58,7 @@ set_target_properties(tag_c PROPERTIES
+   VERSION 0.0.0
+   SOVERSION 0
+   DEFINE_SYMBOL MAKE_TAGLIB_C_LIB
+-  INSTALL_NAME_DIR ${CMAKE_INSTALL_LIBDIR}
++  INSTALL_NAME_DIR ${CMAKE_INSTALL_FULL_LIBDIR}
+ )
+ install(TARGETS tag_c
+ 	FRAMEWORK DESTINATION ${FRAMEWORK_INSTALL_DIR}
+diff --git a/taglib/CMakeLists.txt b/taglib/CMakeLists.txt
+index 527c00738..ea1ab8388 100644
+--- a/taglib/CMakeLists.txt
++++ b/taglib/CMakeLists.txt
+@@ -344,7 +344,7 @@ endif()
+ set_target_properties(tag PROPERTIES
+   VERSION ${TAGLIB_SOVERSION_MAJOR}.${TAGLIB_SOVERSION_MINOR}.${TAGLIB_SOVERSION_PATCH}
+   SOVERSION ${TAGLIB_SOVERSION_MAJOR}
+-  INSTALL_NAME_DIR ${CMAKE_INSTALL_LIBDIR}
++  INSTALL_NAME_DIR ${CMAKE_INSTALL_FULL_LIBDIR}
+   DEFINE_SYMBOL MAKE_TAGLIB_LIB
+   LINK_INTERFACE_LIBRARIES ""
+   PUBLIC_HEADER "${tag_HDRS}"

@@ -1,0 +1,17 @@
+[Unit]
+Description=Proton Mail IMAP/SMTP bridge
+Documentation=https://proton.me/mail/bridge/
+
+[Service]
+ExecStart=/usr/bin/proton-mail-bridge --no-window
+Restart=on-failure
+
+# Hardening
+ProtectSystem=full
+PrivateTmp=true
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>toolchain@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">thkukuk/libnss_nis</remote-id>
+	</upstream>
 </pkgmetadata>

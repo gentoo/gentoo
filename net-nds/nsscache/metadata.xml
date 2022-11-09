@@ -5,7 +5,7 @@
 		<email>robbat2@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name="nsscache">Depend on sys-auth/libnss-cache to handle flat files</flag>
+		<flag name="nsscache">Depend on <pkg>sys-auth/libnss-cache</pkg> to handle flat files</flag>
 		<flag name="s3">Support for S3-based NSS sources</flag>
 	</use>
 	<upstream>

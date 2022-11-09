@@ -6,9 +6,9 @@
     <name>Gentoo Mathematics Project</name>
   </maintainer>
   <longdescription lang="en">
-nauty is a program for computing automorphism groups of graphs and digraphs. It can also produce a
-canonical labelling.
+  nauty is a program for computing automorphism groups of graphs and digraphs. It can also produce a
+  canonical labelling.
 
-nauty is written in a portable subset of C, and runs on a considerable number of different systems.
-</longdescription>
+  nauty is written in a portable subset of C, and runs on a considerable number of different systems.
+  </longdescription>
 </pkgmetadata>

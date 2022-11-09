@@ -1,0 +1,12 @@
+OSDependent and OGLCompiler are already included in the shared libglslang,
+and glslang-1.3.231 normally does not install these with shared builds.
+--- a/src/glsl/meson.build
++++ b/src/glsl/meson.build
+@@ -21,5 +21,5 @@
+     cxx.find_library('MachineIndependent',  required: false),
+-    cxx.find_library('OSDependent',         required: glslang_req),
++    cxx.find_library('OSDependent',         required: false),
+     cxx.find_library('HLSL',                required: glslang_req),
+-    cxx.find_library('OGLCompiler',         required: glslang_req),
++    cxx.find_library('OGLCompiler',         required: false),
+     cxx.find_library('GenericCodeGen',      required: false),

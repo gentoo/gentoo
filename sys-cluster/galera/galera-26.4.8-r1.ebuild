@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit python-any-r1 scons-utils toolchain-funcs flag-o-matic
 
@@ -14,7 +14,7 @@ LICENSE="GPL-2 BSD"
 
 SLOT="0"
 
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ppc64 x86"
 IUSE="cpu_flags_x86_sse4_2 garbd test"
 
 # Tests are currently broken, see
@@ -24,7 +24,7 @@ RESTRICT="test"
 
 CDEPEND="
 	dev-libs/openssl:0=
-	>=dev-libs/boost-1.41:0=
+	dev-libs/boost:=
 	"
 
 BDEPEND=">=sys-devel/gcc-4.4"

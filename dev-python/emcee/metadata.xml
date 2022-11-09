@@ -5,6 +5,10 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
   <longdescription lang="en">
   This provides a set of sparse matrix types for Python, with modules
   which implement:
@@ -15,7 +19,7 @@
   All of these modules are implemented as C extension modules based on
   standard sparse and dense matrix libraries (UMFPACK/AMD, SuperLU,
   BLAS/LAPACK) for maximum performance and robustness.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="pypi">emcee</remote-id>
   </upstream>

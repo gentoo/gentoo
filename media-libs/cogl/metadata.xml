@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="gles2">Enable OpenGL ES 2.0 support</flag>
-	<flag name="kms">Enable KMS support.</flag>
-	<flag name="pango">Build cogl-pango library for <pkg>x11-libs/pango</pkg> integration</flag>
-</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="gles2">Enable OpenGL ES 2.0 support</flag>
+    <flag name="kms">Enable KMS support.</flag>
+    <flag name="pango">Build cogl-pango library for <pkg>x11-libs/pango</pkg> integration</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">Archive/cogl</remote-id>
+  </upstream>
 </pkgmetadata>

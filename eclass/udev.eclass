@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: udev.eclass
@@ -25,6 +25,14 @@
 #	default
 #	# udev_dorules contrib/99-foomatic
 #	# udev_newrules contrib/98-foomatic 99-foomatic
+# }
+#
+# pkg_postinst() {
+#	udev_reload
+# }
+#
+# pkg_postrm() {
+#	udev_reload
 # }
 # @CODE
 
@@ -53,7 +61,7 @@ _udev_get_udevdir() {
 	local -x PKG_CONFIG_FDO_SYSROOT_RULES=1
 	if $($(tc-getPKG_CONFIG) --exists udev); then
 		local udevdir="$($(tc-getPKG_CONFIG) --variable=udevdir udev)"
-		echo "${udevdir#${EPREFIX%/}}"
+		echo "${udevdir#${EPREFIX}}"
 	else
 		echo /lib/udev
 	fi
@@ -110,7 +118,9 @@ udev_newrules() {
 
 # @FUNCTION: udev_reload
 # @DESCRIPTION:
-# Run udevadm control --reload to refresh rules and databases
+# Run "udevadm control --reload" to refresh rules and databases.
+# Should be called from pkg_postinst and pkg_postrm in packages which install
+# udev rules or hwdb data.
 udev_reload() {
 	if [[ -n ${ROOT%/} ]]; then
 		return 0

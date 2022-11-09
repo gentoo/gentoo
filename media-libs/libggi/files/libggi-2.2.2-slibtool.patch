@@ -1,0 +1,65 @@
+Upstream-PR: https://sourceforge.net/p/ggi/patches/8/
+From 9982451bb15f503ccee0690f98bc2a6e4745fe10 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 11 May 2022 19:13:40 -0700
+Subject: [PATCH] build: Fix build with slibtool
+
+On Gentoo both -ltinfo and -lncurses are needed when only the latter is
+used.
+
+Also hardcoded instances of libtool is pointless.
+---
+ configure.in => configure.ac | 12 +++++++++---
+ m4/common.m4                 |  1 -
+ 2 files changed, 9 insertions(+), 4 deletions(-)
+ rename configure.in => configure.ac (99%)
+
+diff --git a/configure.in b/configure.ac
+similarity index 99%
+rename from configure.in
+rename to configure.ac
+index 55801d2..729e1d6 100644
+--- a/configure.in
++++ b/configure.ac
+@@ -557,7 +557,6 @@ AC_CHECK_LIB(socket, connect,
+     SAVECC="$CC"
+     AC_MSG_CHECKING([for connect in -lwsock32])
+     LIBS="$LIBS -lwsock32"
+-    CC="$SHELL ./libtool --mode=link $CC"
+     AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <winsock.h>]], [[connect(0, NULL, 42);]])],[bsdsock_libs="$bsdsock_libs -lwsock32"
+       ac_cv_func_connect=yes
+       AC_MSG_RESULT(yes)],[AC_MSG_RESULT(no)
+@@ -860,9 +859,16 @@ if test "x$build_terminfo_target" != "xno"; then
+     AC_CHECK_LIB($curseslib, set_term,
+ 	terminfolibs="-l$curseslib",
+ 	build_terminfo_target=no)
++    if test "x$build_terminfo_target" != "xno"; then
++        AC_CHECK_LIB($curseslib, mvwaddchnstr,
++	    foo=bar, build_terminfo_target=no)
++        if test "x$build_terminfo_target" != "xno"; then
++            AC_CHECK_LIB(tinfo, LINES,
++                terminfolibs+=" -ltinfo",
++                build_terminfo_target=no)
++        fi
++    fi
+   fi
+-  AC_CHECK_LIB($curseslib, mvwaddchnstr,
+-	foo=bar, build_terminfo_target=no)
+ fi
+ 
+ if test "x$build_vcsa_target" != "xno"; then
+diff --git a/m4/common.m4 b/m4/common.m4
+index d036155..63e524a 100644
+--- a/m4/common.m4
++++ b/m4/common.m4
+@@ -329,7 +329,6 @@ dnl Check for libs using libtool
+ AC_DEFUN([GGI_CHECK_LIB],
+ [
+    save_CC="$CC"
+-   CC="$SHELL ./libtool --mode=link $CC"
+    AC_CHECK_LIB($1, $2, [
+      CC="$save_CC"
+      $3], [
+-- 
+2.35.1
+

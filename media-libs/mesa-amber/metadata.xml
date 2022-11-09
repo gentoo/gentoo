@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
+  <use>
+    <flag name="gles1">Enable GLESv1 support.</flag>
+    <flag name="gles2">Enable GLESv2 support.</flag>
+    <flag name="valgrind">Compile in valgrind memory hints</flag>
+    <flag name="wayland">Enable support for <pkg>dev-libs/wayland</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:mesa3d:mesa</remote-id>
+    <remote-id type="freedesktop-gitlab">mesa/mesa</remote-id>
+  </upstream>
+</pkgmetadata>

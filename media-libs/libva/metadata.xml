@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>vaapi@gentoo.org</email>
+    <name>VA-API Project</name>
+  </maintainer>
+  <use>
+    <flag name="drm">Enables VA/DRM API support.</flag>
+  </use>
+  <upstream>
+  <remote-id type="github">intel/libva</remote-id>
+  </upstream>
+</pkgmetadata>

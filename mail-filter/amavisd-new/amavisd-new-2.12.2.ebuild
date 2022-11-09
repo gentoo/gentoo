@@ -27,7 +27,6 @@ RDEPEND="${DEPEND}
 	app-arch/lha
 	app-arch/lrzip
 	app-arch/lzop
-	app-arch/ncompress
 	app-arch/p7zip
 	app-arch/pax
 	app-arch/arj

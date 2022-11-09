@@ -53,7 +53,7 @@ SRC_URI="https://github.com/systemd/zram-generator/archive/refs/tags/v${PV}.tar.
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="+man"
 
 BDEPEND="virtual/rust

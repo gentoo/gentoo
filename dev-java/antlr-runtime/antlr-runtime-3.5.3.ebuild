@@ -17,7 +17,7 @@ SRC_URI="https://repo1.maven.org/maven2/org/antlr/${PN}/${PV}/${P}-sources.jar"
 
 LICENSE="BSD"
 SLOT="3.5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # Common dependencies
 # POM: ${P}.pom

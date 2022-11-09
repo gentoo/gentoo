@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>virtualization@gentoo.org</email>
-    <name>Gentoo Virtualization Project</name>
-  </maintainer>
-  <use>
-    <flag name="policykit">
-      Enables <pkg>sys-auth/polkit</pkg> authentication support,
-      required when using <pkg>app-emulation/libvirt</pkg> with
-      PolicyKit authentication
-    </flag>
-    <flag name="sasl">
-      Depend on the proper libraries needed to connect to SASL-enabled
-      libvirtd instances (e.g. Kerberos-protected instances).
-    </flag>
-  </use>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
+	</maintainer>
+	<use>
+		<flag name="policykit">
+		Enables <pkg>sys-auth/polkit</pkg> authentication support,
+		required when using <pkg>app-emulation/libvirt</pkg> with
+		PolicyKit authentication
+		</flag>
+		<flag name="sasl">
+		Depend on the proper libraries needed to connect to SASL-enabled
+		libvirtd instances (e.g. Kerberos-protected instances).
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">virt-manager/virt-manager</remote-id>
+	</upstream>
 </pkgmetadata>

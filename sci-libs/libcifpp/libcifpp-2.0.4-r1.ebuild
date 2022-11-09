@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND=">=dev-libs/boost-1.70:=[threads(+)]"
+DEPEND="dev-libs/boost:="
 RDEPEND="${DEPEND}"
 
 src_configure() {

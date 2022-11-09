@@ -1,0 +1,52 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -518,42 +518,20 @@ AS_IF([test "x$enable_sdl" != "xno"], [
+ AM_CONDITIONAL([BUILD_VWEBP_SDL], [test "$build_vwebp_sdl" = "yes"])
+ 
+ dnl === check for PNG support ===
++PKG_PROG_PKG_CONFIG
+ 
+ AC_ARG_ENABLE([png], AS_HELP_STRING([--disable-png],
+                                     [Disable detection of PNG format support
+                                      @<:@default=auto@:>@]))
+ AS_IF([test "x$enable_png" != "xno"], [
+-  CLEAR_LIBVARS([PNG])
+-  AC_PATH_PROGS([LIBPNG_CONFIG],
+-                [libpng-config libpng16-config libpng15-config libpng14-config \
+-                 libpng12-config])
+-  if test -n "$LIBPNG_CONFIG"; then
+-    PNG_INCLUDES=`$LIBPNG_CONFIG --cflags`
+-    PNG_LIBS="`$LIBPNG_CONFIG --ldflags`"
+-  fi
++  LIBCHECK_PROLOGUE([PNG])
++  PKG_CHECK_MODULES([LIBPNG], [libpng])
+ 
+-  WITHLIB_OPTION([png], [PNG])
++  AC_DEFINE(WEBP_HAVE_PNG, [1], [Set to 1 if PNG library is installed])
++  png_support=yes
+ 
+-  LIBCHECK_PROLOGUE([PNG])
+-  AC_CHECK_HEADER(png.h,
+-    AC_SEARCH_LIBS(png_get_libpng_ver, [png],
+-                   [test "$ac_cv_search_png_get_libpng_ver" = "none required" \
+-                      || PNG_LIBS="$PNG_LIBS $ac_cv_search_png_get_libpng_ver"
+-                    PNG_INCLUDES="$PNG_INCLUDES -DWEBP_HAVE_PNG"
+-                    AC_DEFINE(WEBP_HAVE_PNG, [1],
+-                              [Set to 1 if PNG library is installed])
+-                    png_support=yes
+-                   ],
+-                   [AC_MSG_WARN(Optional png library not found)
+-                    PNG_LIBS=""
+-                    PNG_INCLUDES=""
+-                   ],
+-                   [$MATH_LIBS]),
+-    [AC_MSG_WARN(png library not available - no png.h)
+-     PNG_LIBS=""
+-     PNG_INCLUDES=""
+-    ],
+-  )
++  PNG_INCLUDES="${LIBPNG_CFLAGS} -DWEBP_HAVE_PNG"
++  PNG_LIBS="${LIBPNG_LIBS}"
+   LIBCHECK_EPILOGUE([PNG])
+ ])
+ 

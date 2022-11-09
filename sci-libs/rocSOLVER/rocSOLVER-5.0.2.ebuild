@@ -17,7 +17,7 @@ IUSE="test benchmark"
 
 RDEPEND="dev-util/hip
 	sci-libs/rocBLAS:${SLOT}
-	>=dev-libs/libfmt-8
+	=dev-libs/libfmt-8*
 	benchmark? ( virtual/blas )"
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-cpp/gtest

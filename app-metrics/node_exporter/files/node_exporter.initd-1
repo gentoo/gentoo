@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 2016-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Prometheus machine metrics exporter"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+user=${user:-${RC_SVCNAME}}
+group=${group:-${RC_SVCNAME}}
+
+command="/usr/sbin/node_exporter"
+command_args="${command_args:---collector.textfile.directory=/var/lib/node_exporter/}"
+command_background="true"
+command_user="${user}:${group}"
+output_log="/var/log/node_exporter/${RC_SVCNAME}.log"
+error_log="/var/log/node_exporter/${RC_SVCNAME}.log"
+
+depend() {
+	after net
+}
+
+start_pre() {
+	checkpath -q -d -m 0755 -o ${user}:${group} /var/log/node_exporter
+}

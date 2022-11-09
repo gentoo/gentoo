@@ -9,5 +9,5 @@
   Constrained Approximate Minimum Degree ordering is a set of routines
   for ordering a sparse matrix prior to Cholesky factorization (or for
   LU factorization with diagonal pivoting).
-</longdescription>
+  </longdescription>
 </pkgmetadata>

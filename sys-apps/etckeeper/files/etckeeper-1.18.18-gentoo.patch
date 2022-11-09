@@ -1,0 +1,70 @@
+From 5ac7b1861a7e23935bc09cacfa6675d8a086877e Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Sun, 26 Jan 2020 23:24:54 -0800
+Subject: [PATCH] 1.18.18-gentoo
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Makefile
++++ b/Makefile
+@@ -68,7 +68,6 @@ ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),zypper)
+ 	mkdir -p $(DESTDIR)$(prefix)/lib/zypp/plugins/commit
+ 	$(INSTALL) zypper-etckeeper.py $(DESTDIR)$(prefix)/lib/zypp/plugins/commit/zypper-etckeeper.py
+ endif
+-	-$(PYTHON) ./etckeeper-bzr/__init__.py install --root=$(DESTDIR) ${PYTHON_INSTALL_OPTS} || echo "** bzr support not installed"
+ 	echo "** installation successful"
+ 
+ clean: etckeeper.spec etckeeper.version
+--- a/etckeeper.conf
++++ b/etckeeper.conf
+@@ -33,11 +33,21 @@ DARCS_COMMIT_OPTIONS="-a"
+ 
+ # The high-level package manager that's being used.
+ # (apt, pacman, pacman-g2, yum, dnf, zypper, apk, xbps etc)
+-HIGHLEVEL_PACKAGE_MANAGER=apt
++#HIGHLEVEL_PACKAGE_MANAGER=apt
++
++# Gentoo specific:
++# For portage this is emerge
++# For paludis this is cave
++HIGHLEVEL_PACKAGE_MANAGER=emerge
+ 
+ # The low-level package manager that's being used.
+ # (dpkg, rpm, pacman, pacmatic, pacman-g2, apk, xbps etc)
+-LOWLEVEL_PACKAGE_MANAGER=dpkg
++#LOWLEVEL_PACKAGE_MANAGER=dpkg
++
++# Gentoo specific:
++# For portage this is qlist
++# For paludis this is cave
++LOWLEVEL_PACKAGE_MANAGER=qlist
+ 
+ # To push each commit to a remote, put the name of the remote here.
+ # (eg, "origin" for git). Space-separated lists of multiple remotes
+--- a/list-installed.d/50list-installed
++++ b/list-installed.d/50list-installed
+@@ -30,5 +30,9 @@ else
+ 		apk info -v | sort
+ 	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = xbps ]; then
+ 		xbps-query -l | awk '{print $2}' | sed -r 's/-([^-]+)$/ \1/g;'
++	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = qlist ]; then
++		qlist -ICv
++	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = cave ]; then
++		cave print-packages -r installed
+ 	fi
+ fi
+--- a/update-ignore.d/01update-ignore
++++ b/update-ignore.d/01update-ignore
+@@ -107,8 +107,12 @@ writefile () {
+ 		comment "new versions of conffiles, stored by xbps"
+ 		ignore "*.new-*_[0-9]*"
+ 		nl
++	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "qlist" -o "$LOWLEVEL_PACKAGE_MANAGER" = "cave" ]; then
++		comment "new and old versions of conffiles, stored by emerge"
++		ignore "._cfg*"
++		nl
+ 	fi
+-	
++
+ 	comment "old versions of files"
+ 	ignore "*.old"
+ 	# Not currently ignored as admins tend to rely on these files.

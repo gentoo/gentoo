@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -10,8 +10,6 @@ MY_P="${P/_/}"
 DESCRIPTION="Small C library to run an HTTP server as part of another application"
 HOMEPAGE="https://www.gnu.org/software/libmicrohttpd/"
 SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz"
-
-PATCHES=( "${FILESDIR}"/${PN}-0.9.73-test-ssl3.patch )
 
 LICENSE="LGPL-2.1"
 SLOT="0/12"
@@ -29,6 +27,8 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 DOCS="AUTHORS NEWS README ChangeLog"
+
+PATCHES=( "${FILESDIR}"/${PN}-0.9.73-test-ssl3.patch )
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" \

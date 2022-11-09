@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<longdescription>
-		fifo-cronolog is based on app-admin/cronolog, but uses a FIFO for input
+		fifo-cronolog is based on <pkg>app-admin/cronolog</pkg>, but uses a FIFO for input
 		instead of stdin. This package is used for the Gentoo infrastructure.
 	</longdescription>
 	<maintainer type="person">

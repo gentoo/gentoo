@@ -1,0 +1,15 @@
+
+Bug: https://bugs.gentoo.org/875050
+Upstream: https://lore.kernel.org/linux-xfs/865733c7-8314-cd13-f363-5ba2c6842372@applied-asynchrony.com/
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com> 
+
+--- xfsprogs-5.18.0/scrub/unicrash.c	2021-12-13 21:02:19.000000000 +0100
++++ xfsprogs-5.18.0-nowarn/scrub/unicrash.c	2022-10-04 19:46:28.869402900 +0200
+@@ -10,6 +10,7 @@
+ #include <sys/types.h>
+ #include <sys/statvfs.h>
+ #include <strings.h>
++#include <unicode/uclean.h>
+ #include <unicode/ustring.h>
+ #include <unicode/unorm2.h>
+ #include <unicode/uspoof.h>

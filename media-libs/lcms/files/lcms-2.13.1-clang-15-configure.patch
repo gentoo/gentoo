@@ -1,0 +1,29 @@
+https://github.com/mm2/Little-CMS/pull/338
+
+From 61493b49b91740a84dea61b72a8ce7dc40afa766 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 12 Sep 2022 17:56:31 +0100
+Subject: [PATCH] configure.ac: fix configure tests broken with Clang 15
+ (-Wimplicit-int)
+
+Clang 15 makes -Wimplicit-int an error by default.
+
+Before this fix, configure would think SSE2 support is not present
+when it is:
+```
+checking whether compiler supports SSE2... no
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -212,7 +212,7 @@ AC_LANG_PUSH([C])
+ AC_MSG_CHECKING([whether compiler supports SSE2])
+ AC_COMPILE_IFELSE([AC_LANG_SOURCE([[
+     #include <emmintrin.h>
+-    main() { __m128i n = _mm_set1_epi8(42); }]])],
++    int main() { __m128i n = _mm_set1_epi8(42); }]])],
+   [ac_compiler_supports_sse2=yes], [ac_compiler_supports_sse2=no])
+ AC_MSG_RESULT([$ac_compiler_supports_sse2])
+ AS_IF([test "x$ac_compiler_supports_sse2" != "xyes"],
+

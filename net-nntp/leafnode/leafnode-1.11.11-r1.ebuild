@@ -4,8 +4,9 @@
 EAPI=8
 
 DESCRIPTION="A USENET software package designed for small sites"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 HOMEPAGE="http://leafnode.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"

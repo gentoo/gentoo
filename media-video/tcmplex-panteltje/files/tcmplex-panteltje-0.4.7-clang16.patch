@@ -1,0 +1,7 @@
+https://bugs.gentoo.org/871534
+--- a/main.h
++++ b/main.h
+@@ -11,2 +11,3 @@
+ 
++#include <ctype.h>
+ #include <string.h>

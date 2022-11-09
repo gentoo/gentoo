@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://sourceware.org/pub/valgrind/${P}.tar.bz2"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+	KEYWORDS="-* amd64 ~arm arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -22,6 +22,13 @@ IUSE="mpi"
 DEPEND="mpi? ( virtual/mpi )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	# Respect CFLAGS, LDFLAGS
+	"${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
+	"${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
+	"${FILESDIR}"/${PN}-3.19.0-clang-15.patch
+)
+
 src_prepare() {
 	# Correct hard coded doc location
 	sed -i -e "s:doc/valgrind:doc/${PF}:" docs/Makefile.am || die
@@ -29,10 +36,11 @@ src_prepare() {
 	# Don't force multiarch stuff on OSX, bug #306467
 	sed -i -e 's:-arch \(i386\|x86_64\)::g' Makefile.all.am || die
 
-	# Respect CFLAGS, LDFLAGS
-	eapply "${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
-
-	eapply "${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
+	# Conditionally copy musl specific suppressions && apply patch
+	if use elibc_musl ; then
+		cp "${FILESDIR}/musl.supp" "${S}" || die
+		PATCHES+=( "${FILESDIR}"/valgrind-3.13.0-malloc.patch )
+	fi
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# upstream doesn't support this, but we don't build with
@@ -43,8 +51,7 @@ src_prepare() {
 		cp "${S}"/coregrind/link_tool_exe_{linux,solaris}.in
 	fi
 
-	# Allow users to test their own patches
-	eapply_user
+	default
 
 	# Regenerate autotools files
 	eautoreconf
@@ -65,12 +72,14 @@ src_configure() {
 	# -fstack-protector-strong See -fstack-protector (bug #620402)
 	# -m64 -mx32			for multilib-portage, bug #398825
 	# -ggdb3                segmentation fault on startup
+	# -flto*                fails to build, bug #858509
 	filter-flags -fomit-frame-pointer
 	filter-flags -fstack-protector
 	filter-flags -fstack-protector-all
 	filter-flags -fstack-protector-strong
 	filter-flags -m64 -mx32
 	replace-flags -ggdb3 -ggdb2
+	filter-lto
 
 	if use amd64 || use ppc64; then
 		! has_multilib_profile && myconf+=("--enable-only64bit")

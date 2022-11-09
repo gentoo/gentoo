@@ -1,0 +1,13 @@
+[Unit]
+After=network-online.target
+ConditionPathExists=/etc/ddclient.conf
+Description=DDclient
+
+[Service]
+ExecStart=/usr/bin/ddclient --foreground
+Group=ddclient
+Type=simple
+User=ddclient
+
+[Install]
+WantedBy=multi-user.target

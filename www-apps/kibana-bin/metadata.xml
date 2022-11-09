@@ -12,7 +12,4 @@
 	<upstream>
 		<remote-id type="github">elastic/kibana</remote-id>
 	</upstream>
-	<use>
-		<flag name="x-pack">Enable additional features (may need a license)</flag>
-	</use>
 </pkgmetadata>

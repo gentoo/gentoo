@@ -1,0 +1,43 @@
+Upstream-PR: https://github.com/PCSX2/pcsx2/pull/5082
+Upstream-Issue: https://github.com/PCSX2/pcsx2/issues/1762
+Upstream-Issue: https://github.com/PCSX2/pcsx2/issues/5062
+
+From: orbea <orbea@riseup.net>
+Date: Sun, 28 Nov 2021 16:18:48 -0800
+Subject: [PATCH] Revert "GS: Remove Unofficial CRCs (#4082)"
+
+These games hacks are still used and can be removed
+again when a better solution is available.
+
+This reverts commit 6bcdb55f22d468b2eb8b95fd35bd071f9272a89c.
+
+--- a/pcsx2/GS/GSCrc.cpp
++++ b/pcsx2/GS/GSCrc.cpp
+@@ -22,6 +22,8 @@ const CRC::Game CRC::m_games[] =
+ {
+ 	// Note: IDs 0x7ACF7E03, 0x7D4EA48F, 0x37C53760 - shouldn't be added as it's from the multiloaders when packing games.
+ 	{0x00000000, NoTitle, NoRegion, 0},
++	{0xF46142D3, ArTonelico2, NoRegion, 0},
++	{0xC38067F4, ArTonelico2, NoRegion, 0}, // project metafalica 1.0
+ 	{0xF95F37EE, ArTonelico2, US, 0},
+ 	{0x68CE6801, ArTonelico2, JP, 0},
+ 	{0xCE2C1DBF, ArTonelico2, EU, 0},
+@@ -164,6 +166,8 @@ const CRC::Game CRC::m_games[] =
+ 	{0xBF6F101F, GiTS, EU, 0}, // same CRC as another US disc
+ 	{0xA616A6C2, TalesOfAbyss, US, 0},
+ 	{0x14FE77F7, TalesOfAbyss, US, 0},
++	{0x045D77E9, TalesOfAbyss, JPUNDUB, 0},
++	{0x14FD77F7, TalesOfAbyss, JPUNDUB, 0},
+ 	{0xAA5EC3A3, TalesOfAbyss, JP, 0},
+ 	{0xFB236A46, SonicUnleashed, US, 0},
+ 	{0x8C913264, SonicUnleashed, EU, 0},
+--- a/pcsx2/GS/GSCrc.h
++++ b/pcsx2/GS/GSCrc.h
+@@ -91,6 +91,7 @@ public:
+ 		US,
+ 		EU,
+ 		JP,
++		JPUNDUB,
+ 		RU,
+ 		FR,
+ 		DE,

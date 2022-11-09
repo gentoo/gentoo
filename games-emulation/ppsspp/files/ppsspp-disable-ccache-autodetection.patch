@@ -1,0 +1,26 @@
+From ca18b1b578ec7215277a73b6658753ff35e677ea Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sun, 28 Aug 2022 17:53:05 +0300
+Subject: [PATCH] Disable ccache autodetection
+
+Build system automagically detects ccache and use it in situations where
+it should'nt do that.
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 376e2c5ad..8c382ce5c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -111,7 +111,6 @@ if(MACOSX AND NOT USE_SYSTEM_LIBSDL2)
+ 	set(SDL2_LIBRARY ${CMAKE_SOURCE_DIR}/SDL/macOS/SDL2.framework)
+ endif()
+ 
+-include(ccache)
+ include(GNUInstallDirs)
+ 
+ add_definitions(-DASSETS_DIR="${CMAKE_INSTALL_FULL_DATADIR}/ppsspp/assets/")
+-- 
+2.35.1
+

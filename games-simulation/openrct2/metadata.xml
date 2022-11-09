@@ -15,7 +15,6 @@
 		sandbox allows the player to build a more flexible park with optionally no restrictions or finance.
 	</longdescription>
 	<use>
-		<flag name="lightfx">Enables LightFX for better lightning effects.</flag>
 		<flag name="scripting">Enable the <pkg>dev-lang/duktape</pkg> scripting engine for executing user scripts.</flag>
 	</use>
 	<upstream>

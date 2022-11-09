@@ -5,9 +5,13 @@
     <email>jsmolic@gentoo.org</email>
     <name>Jakov Smolić</name>
   </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
   <stabilize-allarches/>
   <upstream>
     <remote-id type="github">sdispater/clikit</remote-id>
-    <remote-id type="github">clikit</remote-id>
+    <remote-id type="pypi">clikit</remote-id>
   </upstream>
 </pkgmetadata>

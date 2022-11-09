@@ -1,0 +1,17 @@
+clang/lld will try to use the given -L/usr/lib + 32bit files and potentially
+fail the the test on 64bit, carries on but leads to ogg underlinking.
+
+Quickfix, ideally this should use pkg-config and hard-fail if not found.
+
+https://bugs.gentoo.org/740794
+--- a/m4/ogg.m4
++++ b/m4/ogg.m4
+@@ -24,8 +24,4 @@
+ fi
+ 
+-XIPH_GCC_WARNING([-I$ogg_prefix/include],,
+-    [ OGG_CFLAGS="-I$ogg_prefix/include"
+-      OGG_LDFLAGS="-L$ogg_prefix/lib"
+-      ])
+ AC_CACHE_CHECK([for libogg], xt_cv_lib_ogg,
+ [dnl

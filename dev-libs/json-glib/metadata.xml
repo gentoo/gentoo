@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>voyageur@gentoo.org</email>
-		<name>Bernard Cafarelli</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription>JSON-GLib is a library providing serialization and deserialization support for the JavaScript Object Notation (JSON) format described by RFC 4627. Many high-level languages already provide native modules for parsing, generating and manipulating JSON data streams. JSON-GLib is a C library based on GLib and released under the terms of the GNU Lesser General Public License version 2.1. It provides a parser and a generator GObject classes and various wrappers for the complex data types employed by JSON, such as arrays and objects.
+  <maintainer type="person">
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription>
+    JSON-GLib is a library providing serialization and deserialization support
+    for the JavaScript Object Notation (JSON) format described by RFC 4627. Many
+    high-level languages already provide native modules for parsing, generating
+    and manipulating JSON data streams. JSON-GLib is a C library based on GLib
+    and released under the terms of the GNU Lesser General Public License
+    version 2.1. It provides a parser and a generator GObject classes and
+    various wrappers for the complex data types employed by JSON, such as arrays
+    and objects.
 
-JSON-GLib uses GLib native data types and the generic value container GValue for ease of development. It also provides integration with the GObject classes for direct serialization into, and deserialization from, JSON data streams.</longdescription>
+    JSON-GLib uses GLib native data types and the generic value container GValue
+    for ease of development. It also provides integration with the GObject
+    classes for direct serialization into, and deserialization from, JSON data
+    streams.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/json-glib</remote-id>
+  </upstream>
 </pkgmetadata>

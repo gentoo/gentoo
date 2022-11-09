@@ -6,16 +6,16 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<longdescription>
-libnw - libnw's aim is to provide platform-independent routines for the low- and 
-mid-level manipulation of NWN resources, as members of game data files, modules, hak 
-paks, export files, or stand alone. As a side effect, command-line programs are 
-often produced to exercise portions of the library. Ultimately, these routines are 
-intended to be assembled along with some form of GUI to make an equivalent to 
-BioWare's Aurora Toolset.
-libnw is very much a work in progress, coded in C, and initially developed on ia32 
-hardware running GNU/Linux. Members of the OK Project have assisted in porting the 
-code to Mac OS X, as well.
-</longdescription>
+	libnw - libnw's aim is to provide platform-independent routines for the low- and
+	mid-level manipulation of NWN resources, as members of game data files, modules, hak
+	paks, export files, or stand alone. As a side effect, command-line programs are
+	often produced to exercise portions of the library. Ultimately, these routines are
+	intended to be assembled along with some form of GUI to make an equivalent to
+	BioWare's Aurora Toolset.
+	libnw is very much a work in progress, coded in C, and initially developed on ia32
+	hardware running GNU/Linux. Members of the OK Project have assisted in porting the
+	code to Mac OS X, as well.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">openknights</remote-id>
 	</upstream>

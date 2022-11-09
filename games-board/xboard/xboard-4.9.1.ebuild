@@ -1,15 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools xdg
+inherit autotools flag-o-matic xdg
 
 DESCRIPTION="GUI for gnuchess and for internet chess servers"
 HOMEPAGE="https://www.gnu.org/software/xboard/"
 SRC_URI="mirror://gnu/xboard/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="+default-font gtk nls Xaw3d zippy"
@@ -54,6 +54,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #858617
+	filter-lto
+
 	local myeconfargs=(
 		--disable-update-mimedb
 		--datadir="${EPREFIX}"/usr/share

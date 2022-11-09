@@ -1,0 +1,8 @@
+--- a/lib/dune
++++ b/lib/dune_
+@@ -34,5 +34,4 @@
+  (public_name yojson)
+  (modules yojson)
+  (synopsis "JSON parsing and printing")
+- (libraries seq)
+  (flags (-safe-string)))

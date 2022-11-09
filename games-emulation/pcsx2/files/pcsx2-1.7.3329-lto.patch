@@ -1,0 +1,21 @@
+Lazy fix for -Werror=odr and don't rely on the CMAKE macro to
+pass -fno-lto to the problematic FastJmp.cpp source with lto.
+--- a/common/CMakeLists.txt
++++ b/common/CMakeLists.txt
+@@ -268,3 +268,3 @@
+ 
+-if (USE_GCC AND CMAKE_INTERPROCEDURAL_OPTIMIZATION)
++if (USE_GCC)
+ 	# GCC LTO doesn't work with asm statements
+--- a/pcsx2/PAD/Linux/Device.h
++++ b/pcsx2/PAD/Linux/Device.h
+@@ -31,3 +31,3 @@
+ 
+-enum DeviceType
++enum PADDeviceType
+ {
+@@ -101,3 +101,3 @@
+ 	DeviceAPI api;
+-	DeviceType type;
++	PADDeviceType type;
+ 

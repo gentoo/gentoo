@@ -11,7 +11,7 @@ SRC_URI="https://github.com/espeak-ng/pcaudiolib/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-3+ ZLIB"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="+alsa oss pulseaudio"
 
 REQUIRED_USE="|| ( alsa oss pulseaudio )"
@@ -34,11 +34,12 @@ src_configure() {
 		$(use_with oss)
 		$(use_with alsa)
 		$(use_with pulseaudio)
+		--disable-static
 	)
 	econf "${econf_args[@]}"
 }
 
 src_install() {
 	default
-	rm "${ED}"/usr/lib*/libpcaudio.{a,la} || die
+	find "${ED}" -name '*.la' -delete || die
 }

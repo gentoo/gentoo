@@ -8,7 +8,7 @@ DIST_EXAMPLES=( "examples/*" )
 if [[ "${PV}" != "9999" ]]; then
 	DIST_VERSION=${PV%.0}
 	DIST_AUTHOR=AKHUETTEL
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 	inherit perl-module
 else
 	EGIT_REPO_URI="https://github.com/lab-measurement/Lab-Measurement.git"
@@ -47,13 +47,16 @@ RDEPEND="
 	>=dev-perl/Moose-2.121.300
 	>=dev-perl/MooseX-Params-Validate-0.180.0
 	dev-perl/MooseX-StrictConstructor
+	dev-perl/Net-RFC3161-Timestamp
 	>=dev-perl/PDL-2.7.0
 	dev-perl/PDL-Graphics-Gnuplot
+	dev-perl/PDL-IO-CSV
 	>=dev-perl/Role-Tiny-1.3.4
 	virtual/perl-Socket
 	dev-perl/Statistics-Descriptive
 	virtual/perl-Storable
 	>=dev-perl/TermReadKey-2.300.0
+	dev-perl/Text-Diff
 	virtual/perl-Thread-Semaphore
 	virtual/perl-Time-HiRes
 	dev-perl/Time-Monotonic

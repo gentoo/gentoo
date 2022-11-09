@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>java@gentoo.org</email>
-    <name>Java</name>
-  </maintainer>
-  <longdescription lang="en">
- This is the main Reference implementation of the BCEL JavaClass API.
- The Byte Code Engineering Library (formerly known as JavaClass) is intended 
- to give users a convenient possibility to analyze, create, and manipulate 
- (binary) Java class files (those ending with .class). Classes are represented 
- by objects which contain all the symbolic information of the given class: 
- methods, fields and byte code instructions, in particular.
-</longdescription>
-  <upstream>
-    <remote-id type="github">apache/commons-bcel</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription lang="en">
+		This is the main Reference implementation of the BCEL JavaClass API.
+		The Byte Code Engineering Library (formerly known as JavaClass) is intended
+		to give users a convenient possibility to analyze, create, and manipulate
+		(binary) Java class files (those ending with .class). Classes are represented
+		by objects which contain all the symbolic information of the given class:
+		methods, fields and byte code instructions, in particular.
+	</longdescription>
+	<upstream>
+		<changelog>https://downloads.apache.org/commons/bcel/RELEASE-NOTES.txt</changelog>
+		<remote-id type="github">apache/commons-bcel</remote-id>
+	</upstream>
 </pkgmetadata>

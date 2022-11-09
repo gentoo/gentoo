@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit qmake-utils toolchain-funcs xdg
 DESCRIPTION="E-Book Reader. Supports many e-book formats"
 HOMEPAGE="https://www.fbreader.org/"
 SRC_URI="https://www.fbreader.org/files/desktop/${PN}-sources-${PV}.tgz
-	https://dev.gentoo.org/~juippis/distfiles/tmp/fbreader-0.99.4-combined.patch"
+	https://dev.gentoo.org/~juippis/distfiles/tmp/${P}-combined.patch"
 
 LICENSE="GPL-2"
 SLOT="0"

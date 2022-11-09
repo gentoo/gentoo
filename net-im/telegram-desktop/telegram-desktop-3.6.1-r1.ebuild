@@ -80,9 +80,6 @@ PATCHES=(
 	"${FILESDIR}/tdesktop-3.6.1-fix-use-after-free.patch"
 )
 
-# Current desktop-file-utils-0.26 does not understand Version=1.5
-QA_DESKTOP_FILE="usr/share/applications/${PN}.desktop"
-
 pkg_pretend() {
 	if has ccache ${FEATURES}; then
 		ewarn
@@ -161,5 +158,5 @@ pkg_postinst() {
 		ewarn
 	fi
 	optfeature_header
-	optfeature "shop payment support (requires USE=dbus enabled)" net-libs/webkit-gtk
+	optfeature "shop payment support (requires USE=dbus enabled)" net-libs/webkit-gtk:4
 }

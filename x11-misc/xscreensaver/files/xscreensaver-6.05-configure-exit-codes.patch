@@ -1,0 +1,29 @@
+The configure scripts exits on a non zero exit code even with a warning. Even
+though for upstream this is just a warning, for portage this means failure and 
+it will exit.
+We therefore alter the exit codes where neccesary.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -4588,7 +4588,6 @@ if test "$have_motif" = no -a "$have_gtk" = no; then
+   else
+     warnL "The GTK libraries do not seem to be available; the"
+     warn2 "\`xscreensaver-settings' program requires them."
+-    CONF_STATUS=1
+ #   echo ''
+ #   warn2 'You can use Motif or Lesstif instead of GTK (use the'
+ #   warn2 "\`--with-motif' option) but that is NOT recommended."
+@@ -4615,7 +4614,6 @@ if test "$have_gtk" = yes -a "$have_gdk_pixbuf" = no ; then
+   warn  "GTK is being used, but the GDK-Pixbuf library and/or"
+   warn2 "headers were not found.  That can't be good.  Please"
+   warn2 "install the GDK-Pixbuf development kit and re-configure."
+-  CONF_STATUS=1
+ fi
+
+ if test "$have_motif" = yes -a "$have_lesstif" = yes ; then
+@@ -4733,7 +4731,6 @@ if test "$have_png" = no ; then
+
+   if test "$png_halfassed" = yes ; then halfassery ; fi
+   warn2 "Many things aren't going to work right."
+-  CONF_STATUS=1
+ fi

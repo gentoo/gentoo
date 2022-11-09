@@ -31,14 +31,14 @@ src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
 		LIBNET_CONFIG="$(tc-getPKG_CONFIG) libnet" \
-		PREFIX=\"${EPREFIX:-/usr}\"
+		PREFIX=\""${EPREFIX:-/usr}"\"
 }
 
 src_install() {
 	emake \
 		DESTDIR="${D}" \
 		LIBNET_CONFIG="$(tc-getPKG_CONFIG) libnet" \
-		PREFIX=\"${EPREFIX:-/usr}\" \
+		PREFIX=\""${EPREFIX:-/usr}"\" \
 		install
 
 	newinitd doc/${PN}.gentoo ${PN}

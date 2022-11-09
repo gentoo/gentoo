@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -49,6 +49,7 @@ DEPEND="
 	x11-libs/libxkbfile"
 BDEPEND="
 	app-text/rman
+	sys-devel/gcc
 	virtual/pkgconfig
 	x11-base/xorg-proto
 	>=x11-misc/imake-1.0.8-r1
@@ -112,7 +113,7 @@ src_configure() {
 
 	econf "${myeconfargs[@]}"
 
-	export IMAKECPP="${IMAKECPP:-$(tc-getCPP)}"
+	export IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}"
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" xmkmf || die
 }
 

@@ -17,12 +17,12 @@ if [[ ${PV} == *9999 ]]; then
 else
 	MDDS_SLOT="1/2.0"
 	SRC_URI="https://kohei.us/files/ixion/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0/0.18" # based on SONAME of libixion.so
-IUSE="debug python +threads"
+IUSE="debug python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -44,12 +44,10 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--disable-static
 		$(use_enable debug)
 		$(use_enable debug debug-utils)
 		$(use_enable debug log-debug)
 		$(use_enable python)
-		$(use_enable threads)
 	)
 	econf "${myeconfargs[@]}"
 }

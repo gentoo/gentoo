@@ -5,6 +5,10 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<longdescription lang="en">
 	sh (previously pbs) is a full-fledged subprocess interface 
 	for Python 2.6 - 3.2 that allows you to call any program 
@@ -14,7 +18,7 @@
 	print ifconfig("eth0")
 
 	sh is not a collection of system commands implemented in Python.
-</longdescription>
+	</longdescription>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">sh</remote-id>

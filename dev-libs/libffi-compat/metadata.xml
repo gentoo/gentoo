@@ -38,5 +38,6 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:libffi_project:libffi</remote-id>
+		<remote-id type="github">libffi/libffi</remote-id>
 	</upstream>
 </pkgmetadata>

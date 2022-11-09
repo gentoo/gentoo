@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sci@gentoo.org</email>
-    <name>Gentoo Science Project</name>
-  </maintainer>
-  <longdescription>
-    HDF5 is a file format and library for storing scientific data. HDF5
-    was designed and implemented to address the deficiencies of HDF4.x. It
-    has a more powerful and flexible data model, supports files larger
-    than 2 GB, and supports parallel I/O.
-  </longdescription>
-  <use>
-    <flag name="hl">Enable high level API (https://support.hdfgroup.org/HDF5/doc/HL/index.html)</flag>
-    <flag name="ros3">Enable support for read-only S3 access (https://portal.hdfgroup.org/display/HDF5/Configuration+and+Setup+for+HDF5+Read+Only+S3+VFD)</flag>
-    <flag name="unsupported">Enable unsupported combinations of configuration options</flag>
-  </use>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription>
+	HDF5 is a file format and library for storing scientific data. HDF5
+	was designed and implemented to address the deficiencies of HDF4.x. It
+	has a more powerful and flexible data model, supports files larger
+	than 2 GB, and supports parallel I/O.
+	</longdescription>
+	<use>
+		<flag name="hl">Enable high level API (https://support.hdfgroup.org/HDF5/doc/HL/index.html)</flag>
+		<flag name="ros3">Enable support for read-only S3 access (https://portal.hdfgroup.org/display/HDF5/Configuration+and+Setup+for+HDF5+Read+Only+S3+VFD)</flag>
+		<flag name="unsupported">Enable unsupported combinations of configuration options</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">HDFGroup/hdf5</remote-id>
+	</upstream>
 </pkgmetadata>

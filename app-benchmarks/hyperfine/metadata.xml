@@ -5,4 +5,7 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">sharkdp/hyperfine</remote-id>
+	</upstream>
 </pkgmetadata>

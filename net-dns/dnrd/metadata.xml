@@ -3,8 +3,8 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
-Domain Name Relay Daemon is a caching, forwarding DNS proxy server. Most useful on vpn or dialup firewalls but it is also a nice DNS cache for minor networks and workstations.
-</longdescription>
+	Domain Name Relay Daemon is a caching, forwarding DNS proxy server. Most useful on vpn or dialup firewalls but it is also a nice DNS cache for minor networks and workstations.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">dnrd</remote-id>
 	</upstream>

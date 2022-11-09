@@ -6,7 +6,7 @@
 		<name>Tupone Alfredo</name>
 	</maintainer>
 	<use>
-		<flag name="cln">Use sci-libs/cln</flag>
+		<flag name="cln">Use <pkg>sci-libs/cln</pkg></flag>
 		<flag name="statistics">Include statistics</flag>
 		<flag name="replay">Turn on the replay feature</flag>
 		<flag name="proofs">Support for proof generation</flag>

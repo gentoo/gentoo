@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/851702#c4
+Adapt to libLLVM.so instead of the seperated libs
+===================================================================
+--- ROCm-Device-Libs-rocm-5.0.2.orig/utils/prepare-builtins/CMakeLists.txt
++++ ROCm-Device-Libs-rocm-5.0.2/utils/prepare-builtins/CMakeLists.txt
+@@ -26,5 +26,5 @@ set_target_properties(prepare-builtins P
+   CXX_STANDARD_REQUIRED Yes
+   CXX_EXTENSIONS No)
+ llvm_update_compile_flags(prepare-builtins)
+-llvm_map_components_to_libnames(llvm_libs support core bitreader bitwriter)
+-target_link_libraries(prepare-builtins ${llvm_libs})
++llvm_map_components_to_libnames(llvm_libs support)
++target_link_libraries(prepare-builtins ${llvm_libs} LLVM)

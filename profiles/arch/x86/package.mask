@@ -1,3 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Viorel Munteanu <ceamac@gentoo.org> (2022-11-04)
+# Upstream dropped the x86 build.  Bug #879519
+# Removal on 2022-12-04.
+net-im/mattermost-desktop-bin

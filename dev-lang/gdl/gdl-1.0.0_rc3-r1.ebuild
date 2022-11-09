@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ RDEPEND="
 	dev-cpp/antlr-cpp:2=
 	dev-libs/expat
 	sci-libs/gsl:0=
-	sci-libs/plplot:0=[cxx,-dynamic]
+	sci-libs/plplot:0=[X,cxx,-dynamic]
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
 	sys-libs/zlib

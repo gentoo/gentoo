@@ -42,16 +42,12 @@ dev-util/perf clang
 # Problems even on ppc64le, needs more work
 dev-lang/spidermonkey clang
 mail-client/thunderbird clang
-www-client/firefox clang
+<www-client/firefox-104 clang
 
 
 # James Le Cuirot <chewi@gentoo.org> (2020-04-23)
 # Requires media-libs/mesa[llvm], which is masked.
 dev-python/pyopengl test
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-03-11)
-# vc not keyworded on ppc64
-media-gfx/krita vc
 
 # Joonas Niilola <juippis@gentoo.org> (2020-02-01)
 # luajit not keyworded on ppc64, #696222

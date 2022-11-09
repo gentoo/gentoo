@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="+grapheme-clustering"
 
 COMMON_DEPEND="
@@ -55,7 +55,6 @@ src_configure() {
 		-Dthemes=true
 		-Dime=true
 		-Dterminfo=disabled
-		-Dwerror=false
 	)
 	meson_src_configure
 

@@ -1,0 +1,49 @@
+https://gitweb.gentoo.org/proj/genkernel.git/commit/?id=33394fef9f712ca0854eca248fe85863771ca04a
+
+From: "Andreas K. Hüttel" <dilfridge@gentoo.org>
+Date: Mon, 16 May 2022 21:31:34 +0200
+Subject: linuxrc: do not rely on chroot evaluating PATH
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When trying to install a new kernel on catbus.sparc.dev.gentoo.org, the
+newly built initrd consistently claimed that it could not find init, and
+dropped to the rescue shell.
+
+However, init was there just fine in /newroot (as before).
+
+I dug out the command that is actually run inside linuxrc,
+
+        elif ! chroot "${CHROOT}" test -x /${init#/} 1>/dev/null 2>&1
+
+and tried to run that manually, which led to a rather strange error message
+
+rescueshell / # chroot /newroot test -x /lib/systemd/systemd
+chroot: can't execute 'test': File name too long
+
+Some more research led me to the busybox manpage (where here chroot comes
+from):
+https://busybox.net/downloads/BusyBox.html#chroot
+
+chroot
+    chroot NEWROOT [PROG [ARGS]]
+    Run PROG with root directory set to NEWROOT
+
+Note, the third argument is *not* a command (as with usual chroot, see the
+manpage from coreutils chroot) but a program!
+
+Bug: https://bugs.gentoo.org/842027
+Signed-off-by: Andreas K. Hüttel <dilfridge@gentoo.org>
+--- a/defaults/linuxrc
++++ b/defaults/linuxrc
+@@ -1376,7 +1376,7 @@ do
+ 	if  ! mountpoint "${CHROOT}" 1>/dev/null 2>&1
+ 	then
+ 		bad_msg "${CHROOT} is not a mountpoint; Was root device (${REAL_ROOT}) not mounted?"
+-	elif ! chroot "${CHROOT}" test -x /${init#/} 1>/dev/null 2>&1
++	elif ! chroot "${CHROOT}" /usr/bin/test -x /${init#/} 1>/dev/null 2>&1
+ 	then
+ 		mounted_root_device=$(mountpoint -n /newroot 2>/dev/null | awk '{ print $1 }')
+ 		bad_msg "init (${init}) not found in mounted root device (${mounted_root_device})!"
+cgit v1.2.3-18-g5258

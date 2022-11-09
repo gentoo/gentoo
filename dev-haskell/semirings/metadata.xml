@@ -5,36 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="hashable">
-			Enisable the use of the `hashable` package. Disabling this may be useful
-			for accelerating builds in sandboxes for expert users.
-			Note: `-hashable` implies `-unordered-containers`, as we are necessarily
-			not able to supply those instances as well.
-		</flag>
-		<flag name="containers">
-			Enable the use of the `containers` package. Disabling this may be useful
-			for accelerating builds in sandboxes for expert users.
-		</flag>
-		<flag name="unordered-containers">
-			Enable the use of the `unordered-containers` package. Disabling this may
-			be useful for accelerating builds in sandboxes for expert users.
-		</flag>
-	</use>
-	<longdescription>
-		Haskellers are usually familiar with monoids and semigroups. A monoid has an appending operation `&lt;&gt;` (or `mappend`),
-		and an identity element, `mempty`. A semigroup has an appending `&lt;&gt;` operation, but does not require a `mempty` element.
-		
-		A Semiring has two appending operations, `plus` and `times`, and two respective identity elements, `zero` and `one`.
-		
-		More formally, a Semiring R is a set equipped with two binary relations `+` and `*`, such that:
-		
-		(R,+) is a commutative monoid with identity element 0,
-		
-		(R,*) is a monoid with identity element 1,
-		
-		(*) left and right distributes over addition, and
-		
-		multiplication by '0' annihilates R.
-	</longdescription>
 </pkgmetadata>

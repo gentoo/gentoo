@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-src-${PV}"
 # The COPYING file contains the GPLv2, but the file headers say GPLv2+.
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND="app-admin/gkrellm:2[X]"
 DEPEND="

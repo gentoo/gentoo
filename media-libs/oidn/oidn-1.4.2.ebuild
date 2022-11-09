@@ -16,7 +16,7 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_BRANCH="master"
 else
 	SRC_URI="https://github.com/OpenImageDenoise/${PN}/releases/download/v${PV}/${P}.src.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="Apache-2.0"

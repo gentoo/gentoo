@@ -6,11 +6,11 @@
 		<name>Gentoo Science Project</name>
 	</maintainer>
 	<longdescription lang="en">
-ParMETIS is an MPI-based parallel library that implements a variety
-of algorithms for partitioning unstructured graphs and for computing
-fill-reducing orderings of sparse matrices. ParMETIS extends the
-functionality provided by METIS and includes routines that are
-especially suited for parallel AMR computations and large scale
-numerical simulations.
-</longdescription>
+	ParMETIS is an MPI-based parallel library that implements a variety
+	of algorithms for partitioning unstructured graphs and for computing
+	fill-reducing orderings of sparse matrices. ParMETIS extends the
+	functionality provided by METIS and includes routines that are
+	especially suited for parallel AMR computations and large scale
+	numerical simulations.
+	</longdescription>
 </pkgmetadata>

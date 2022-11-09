@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 if [[ ${PV} == 9999 ]] ; then
@@ -38,6 +37,9 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_GNUTLS=$(usex gnutls)
 		-DENABLE_OPENSSL=$(usex openssl)
+		-DENABLE_BORINGSSL=OFF
+		-DENABLE_PICOTLS=OFF
+		-DENABLE_WOLFSSL=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libev=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libnghttp3=ON
 	)

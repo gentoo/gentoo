@@ -1,7 +1,7 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 
@@ -34,6 +34,10 @@ RDEPEND="
 	sys-libs/libcap
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7-static-libs.patch
+)
 
 DOCS=(
 	CHANGELOG.md
@@ -76,26 +80,24 @@ pkg_pretend() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Dwith-sd-bus-provider=$(usex systemd "systemd" "elogind")
 		-Dwith-systemd-user-unit-dir="$(systemd_get_userunitdir)"
+		-Dwith-pam-limits-dir="${EPREFIX}"/etc/security/limits.d
 	)
-	if ! multilib_is_native_abi; then
+	if multilib_is_native_abi; then
 		emesonargs+=(
-			-Dwith-examples=false
+			-Dwith-sd-bus-provider=$(usex systemd systemd elogind)
+			-Dwith-util=true
+		)
+	else
+		emesonargs+=(
 			-Dwith-sd-bus-provider=no-daemon
+			-Dwith-pam-renicing=false
+			-Dwith-examples=false
+			-Dwith-util=false
 		)
 	fi
 
 	meson_src_configure
-}
-
-multilib_src_install_all() {
-	if multilib_is_native_abi; then
-		insinto /etc/security/limits.d
-		newins - 45-gamemode.conf <<-EOF
-			@gamemode - nice -10
-		EOF
-	fi
 }
 
 pkg_postinst() {

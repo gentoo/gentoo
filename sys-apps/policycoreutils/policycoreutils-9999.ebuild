@@ -3,7 +3,7 @@
 
 EAPI="7"
 PYTHON_COMPAT=( python3_{8..10} )
-PYTHON_REQ_USE="xml"
+PYTHON_REQ_USE="xml(+)"
 
 inherit multilib python-r1 toolchain-funcs bash-completion-r1
 
@@ -139,7 +139,12 @@ src_install() {
 	rm -fR "${D}/etc/rc.d" || die
 
 	# compatibility symlinks
-	use split-usr && dosym ../../sbin/setfiles /usr/sbin/setfiles
+	if use split-usr; then
+		dosym ../../sbin/setfiles /usr/sbin/setfiles
+	else
+		# remove sestatus symlink
+		rm -f "${D}"/usr/sbin/sestatus || die
+	fi
 
 	bashcomp_alias setsebool getsebool
 

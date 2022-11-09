@@ -13,7 +13,7 @@ else
 
 	SRC_URI="https://musl.libc.org/releases/${P}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://musl.libc.org/releases/${P}.tar.gz.asc )"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~mips ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="-* amd64 arm arm64 ~mips ppc ppc64 ~riscv x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-musl )"
 fi
@@ -88,6 +88,7 @@ src_prepare() {
 }
 
 src_configure() {
+	filter-lto # bug #877343
 	tc-getCC ${CTARGET}
 
 	just_headers && export CC=true

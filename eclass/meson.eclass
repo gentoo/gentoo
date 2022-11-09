@@ -5,7 +5,7 @@
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
 # Mike Gilbert <floppym@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: common ebuild functions for meson-based packages
 # @DESCRIPTION:
 # This eclass contains the default phase functions for packages which
@@ -35,28 +35,21 @@
 # @CODE
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-[[ ${EAPI} == 6 ]] && inherit eapi7-ver
 inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
 
 EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 
-_MESON_DEPEND=">=dev-util/meson-0.59.4
-	>=dev-util/ninja-1.8.2
+BDEPEND=">=dev-util/meson-0.62.2
+	${NINJA_DEPEND}
 	dev-util/meson-format-array
 "
-
-if [[ ${EAPI} == 6 ]]; then
-	DEPEND=${_MESON_DEPEND}
-else
-	BDEPEND=${_MESON_DEPEND}
-fi
 
 # @ECLASS_VARIABLE: BUILD_DIR
 # @DEFAULT_UNSET
@@ -285,6 +278,8 @@ meson_feature() {
 meson_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
+
 	local BUILD_CFLAGS=${BUILD_CFLAGS}
 	local BUILD_CPPFLAGS=${BUILD_CPPFLAGS}
 	local BUILD_CXXFLAGS=${BUILD_CXXFLAGS}
@@ -412,6 +407,7 @@ meson_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local mesontestargs=(
+		--print-errorlogs
 		-C "${BUILD_DIR}"
 		--num-processes "$(makeopts_jobs "${MAKEOPTS}")"
 		"$@"
@@ -432,6 +428,7 @@ meson_install() {
 	local mesoninstallargs=(
 		-C "${BUILD_DIR}"
 		--destdir "${D}"
+		--no-rebuild
 		"$@"
 	)
 

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8,9,10,11} )
 
 inherit python-any-r1 readme.gentoo-r1
 
@@ -31,7 +31,7 @@ SRC_URI="
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc ppc64 ~riscv x86"
 
 IUSE="+binary"
 REQUIRED_USE+="

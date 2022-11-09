@@ -14,4 +14,7 @@
 		<flag name="xetex">Add support for XeTeX: a TeX system with Unicode and modern font technologies.</flag>
 		<flag name="xindy">Add support for Xindy: A general-purpose index processor.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">TeX-Live/texlive-source</remote-id>
+	</upstream>
 </pkgmetadata>

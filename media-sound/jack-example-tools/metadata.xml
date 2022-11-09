@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proaudio@gentoo.org</email>
+		<name>Gentoo ProAudio Project</name>
+	</maintainer>
+	<use>
+		<flag name="jack-net">Build jack_net_* example clients</flag>
+		<flag name="jack-netsource">Build jack_netsource for configuring network sources</flag>
+		<flag name="zalsa">Build the zalsa internal client using <pkg>media-libs/zita-resampler</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">jackaudio/jack-example-tools</remote-id>
+	</upstream>
+</pkgmetadata>

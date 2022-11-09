@@ -17,6 +17,7 @@
     </flag>
   </use>
   <upstream>
+    <remote-id type="github">NagiosEnterprises/nrpe</remote-id>
     <remote-id type="sourceforge">nagios</remote-id>
   </upstream>
 </pkgmetadata>

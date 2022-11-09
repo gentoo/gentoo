@@ -16,13 +16,14 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.02:=[ocamlopt]
+	>=dev-lang/ocaml-4.02:=
 	>=dev-libs/libffi-3.3_rc0:=
 	dev-ml/bigarray-compat:=
 	dev-ml/integers:=
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit2 dev-ml/lwt )"
+REQUIRED_USE="ocamlopt"
 
 src_prepare() {
 	sed -e 's/oUnit/ounit2/g' -i Makefile.tests || die

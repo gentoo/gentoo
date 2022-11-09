@@ -164,19 +164,6 @@ test-features_main() {
 	done
 
 	printf -- '\n\n' >&2
-	printf -- '%s\n' "Checking for miscellaneous starlark features" >&2
-	eval "printf -- '=%.0s' {1..${banner_width}}" >&2
-	printf -- '\n\n' >&2
-
-	test_case=(
-		'list comprehension'
-		'[print("output from list comprehension") for i in range(0, 1) if (i == 0 and True) or not False]'
-		'output from list comprehension'
-		""
-		0
-	)
-	_test-features_execute-test "${test_case[@]}"
-	printf -- '\n\n' >&2
 
 	if (( ${#failures[@]} > 0 )); then
 		echo "${#failures[@]} test (s) failed" >&2

@@ -1,0 +1,93 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DESCRIPTION="X11 Applications (meta package)"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+
+LICENSE="metapackage"
+SLOT="0"
+KEYWORDS="amd64 ~ppc64 x86"
+
+RDEPEND="
+	x11-apps/appres
+	x11-apps/bdftopcf
+	x11-apps/beforelight
+	x11-apps/bitmap
+	x11-apps/editres
+	x11-apps/fonttosfnt
+	x11-apps/fslsfonts
+	x11-apps/fstobdf
+	x11-apps/iceauth
+	x11-apps/ico
+	x11-apps/listres
+	x11-apps/luit
+	x11-apps/mkfontscale
+	x11-apps/oclock
+	x11-apps/rgb
+	x11-apps/rstart
+	x11-apps/scripts
+	x11-apps/sessreg
+	x11-apps/setxkbmap
+	x11-apps/showfont
+	x11-apps/smproxy
+	x11-apps/transset
+	x11-apps/viewres
+	x11-apps/x11perf
+	x11-apps/xauth
+	x11-apps/xbacklight
+	x11-apps/xbiff
+	x11-apps/xcalc
+	x11-apps/xclipboard
+	x11-apps/xclock
+	x11-apps/xcmsdb
+	x11-apps/xconsole
+	x11-apps/xcursorgen
+	x11-apps/xdbedizzy
+	x11-apps/xditview
+	x11-apps/xdm
+	x11-apps/xdpyinfo
+	x11-apps/xdriinfo
+	x11-apps/xedit
+	x11-apps/xev
+	x11-apps/xeyes
+	x11-apps/xf86dga
+	x11-apps/xfd
+	x11-apps/xfontsel
+	x11-apps/xgamma
+	x11-apps/xgc
+	x11-apps/xhost
+	x11-apps/xinit
+	x11-apps/xinput
+	x11-apps/xkbcomp
+	x11-apps/xkbevd
+	x11-apps/xkbprint
+	x11-apps/xkbutils
+	x11-apps/xkill
+	x11-apps/xload
+	x11-apps/xlogo
+	x11-apps/xlsatoms
+	x11-apps/xlsclients
+	x11-apps/xlsfonts
+	x11-apps/xmag
+	x11-apps/xman
+	x11-apps/xmessage
+	x11-apps/xmodmap
+	x11-apps/xmore
+	x11-apps/xpr
+	x11-apps/xprop
+	x11-apps/xrandr
+	x11-apps/xrdb
+	x11-apps/xrefresh
+	x11-apps/xrestop
+	x11-apps/xset
+	x11-apps/xsetroot
+	x11-apps/xsm
+	x11-apps/xstdcmap
+	x11-apps/xvidtune
+	x11-apps/xvinfo
+	x11-apps/xwd
+	x11-apps/xwininfo
+	x11-apps/xwud
+"

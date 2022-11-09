@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="GPL-2+ GPL-2 MIT BSD-2 Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+nss test"
 
 CDEPEND="dev-java/bcprov:0

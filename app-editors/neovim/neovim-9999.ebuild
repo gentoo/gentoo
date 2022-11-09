@@ -3,8 +3,9 @@
 
 EAPI=8
 
+# RelWithDebInfo sets -Og -g
+CMAKE_BUILD_TYPE=Release
 LUA_COMPAT=( lua5-{1..2} luajit )
-
 inherit cmake lua-single optfeature xdg
 
 DESCRIPTION="Vim-fork focused on extensibility and agility"
@@ -32,6 +33,7 @@ RESTRICT="!test? ( test ) test"
 # Upstream build scripts invoke the Lua interpreter
 BDEPEND="${LUA_DEPS}
 	>=dev-util/gperf-3.1
+	>=sys-devel/gettext-0.20.1
 	virtual/libiconv
 	virtual/libintl
 	virtual/pkgconfig
@@ -39,7 +41,7 @@ BDEPEND="${LUA_DEPS}
 # Check https://github.com/neovim/neovim/blob/master/third-party/CMakeLists.txt for
 # new dependency bounds and so on on bumps (obviously adjust for right branch/tag).
 DEPEND="${LUA_DEPS}
-	>=dev-lua/luv-1.43.0[${LUA_SINGLE_USEDEP}]
+	>=dev-lua/luv-1.44.2[${LUA_SINGLE_USEDEP}]
 	$(lua_gen_cond_dep '
 		dev-lua/lpeg[${LUA_USEDEP}]
 		dev-lua/mpack[${LUA_USEDEP}]
@@ -47,10 +49,10 @@ DEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
 		dev-lua/LuaBitOp[${LUA_USEDEP}]
 	' lua5-{1,2})
-	>=dev-libs/libuv-1.44.1:=
-	>=dev-libs/libvterm-0.1.4
+	>=dev-libs/libuv-1.44.2:=
+	>=dev-libs/libvterm-0.3
 	>=dev-libs/msgpack-3.0.0:=
-	>=dev-libs/tree-sitter-0.20.6:=
+	>=dev-libs/tree-sitter-0.20.2:=
 	tui? (
 		>=dev-libs/libtermkey-0.22
 		>=dev-libs/unibilium-2.0.0:0=
@@ -66,17 +68,27 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-0.4.4-cmake_lua_version.patch"
-	"${FILESDIR}/${PN}-0.4.4-cmake-release-type.patch"
-	"${FILESDIR}/${PN}-0.4.4-cmake-darwin.patch"
-)
+PATCHES=()
+
+if [[ ${PV} == 9999 ]]; then
+	PATCHES+=(
+		"${FILESDIR}/${PN}-9999-cmake_lua_version.patch"
+		"${FILESDIR}/${PN}-9999-cmake-darwin.patch"
+	)
+else
+	PATCHES+=(
+		"${FILESDIR}/${PN}-9999-cmake_lua_version.patch"
+		"${FILESDIR}/${PN}-9999-cmake-darwin.patch"
+	)
+fi
 
 src_prepare() {
 	# Use our system vim dir
 	sed -e "/^# define SYS_VIMRC_FILE/s|\$VIM|${EPREFIX}/etc/vim|" \
 		-i src/nvim/globals.h || die
 
+	# https://forums.gentoo.org/viewtopic-p-8750050.html
+	xdg_environment_reset
 	cmake_src_prepare
 }
 

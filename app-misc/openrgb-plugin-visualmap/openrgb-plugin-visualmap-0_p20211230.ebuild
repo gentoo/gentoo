@@ -8,7 +8,7 @@ inherit qmake-utils
 MY_GIT_COMMIT="223c5ec67d256c5fa3bf7f3d572213114d93db6e"
 SRC_URI="https://gitlab.com/OpenRGBDevelopers/OpenRGBVisualMapPlugin/-/archive/${MY_GIT_COMMIT}/OpenRGBVisualMapPlugin-${MY_GIT_COMMIT}.tar.bz2"
 S="${WORKDIR}/OpenRGBVisualMapPlugin-${MY_GIT_COMMIT}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="Plugin for OpenRGB to create virtual devices out of multiple real ones"
 HOMEPAGE="https://gitlab.com/OpenRGBDevelopers/OpenRGBVisualMapPlugin"

@@ -26,6 +26,21 @@ esac
 if [[ -z ${_NINJA_UTILS_ECLASS} ]]; then
 _NINJA_UTILS_ECLASS=1
 
+# @ECLASS_VARIABLE: NINJA
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Specify a compatible ninja implementation to be used by eninja().
+# At this point only "ninja" and "samu" are explicitly supported,
+# but other values can be set where NINJA_DEPEND will then be set
+# to a blank variable.
+# The default is set to "ninja".
+: ${NINJA:=ninja}
+
+# @ECLASS_VARIABLE: NINJA_DEPEND
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# Contains a set of build-time depenendencies based on the NINJA setting.
+
 # @ECLASS_VARIABLE: NINJAOPTS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -34,6 +49,18 @@ _NINJA_UTILS_ECLASS=1
 # MAKEOPTS instead.
 
 inherit multiprocessing
+
+case "${NINJA}" in
+	ninja)
+		NINJA_DEPEND=">=dev-util/ninja-1.8.2"
+	;;
+	samu)
+		NINJA_DEPEND="dev-util/samurai"
+	;;
+	*)
+		NINJA_DEPEND=""
+	;;
+esac
 
 # @FUNCTION: eninja
 # @USAGE: [<args>...]
@@ -48,7 +75,8 @@ eninja() {
 	if [[ -z ${NINJAOPTS+set} ]]; then
 		NINJAOPTS="-j$(makeopts_jobs "${MAKEOPTS}" 999) -l$(makeopts_loadavg "${MAKEOPTS}" 0)"
 	fi
-	set -- ninja -v ${NINJAOPTS} "$@"
+	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
+	set -- "${NINJA}" -v ${NINJAOPTS} "$@"
 	echo "$@" >&2
 	"$@" || die "${nonfatal_args[@]}" "${*} failed"
 }

@@ -15,7 +15,6 @@
 		<flag name="gmp-autoupdate">Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles</flag>
 		<flag name="ipc">Use inter-process communication between tabs and plugins. Allows for greater stability in case of plugin crashes</flag>
 		<flag name="lto">Enable Link Time Optimization (LTO). Requires Gold linker</flag>
-		<flag name="roaming">Build roaming extension support (default on)</flag>
 		<flag name="system-av1">Use the system-wide <pkg>media-libs/dav1d</pkg> and <pkg>media-libs/libaom</pkg> library instead of bundled</flag>
 		<!-- flag name="system-cairo">Use the system-wide <pkg>x11-libs/cairo</pkg> instead of bundled</flag -->
 		<flag name="system-harfbuzz">Use the system-wide <pkg>media-libs/harfbuzz</pkg> instead of bundled</flag>
@@ -25,5 +24,6 @@
 		<flag name="system-libvpx">Use the system-wide <pkg>media-libs/libvpx</pkg> instead of bundled</flag>
 		<flag name="system-png">Use the system-wide <pkg>media-libs/libpng</pkg> instead of bundled (requires APNG patches)</flag>
 		<flag name="system-sqlite">Use the system-wide <pkg>dev-db/sqlite</pkg> installation with secure-delete enabled</flag>
+		<flag name="webrtc">Enable WebRTC support. Disabled by default due to privacy concerns.</flag>
 	</use>
 </pkgmetadata>

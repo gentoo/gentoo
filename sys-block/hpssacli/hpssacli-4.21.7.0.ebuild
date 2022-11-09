@@ -13,7 +13,7 @@ SRC_URI="https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p185704664
 
 LICENSE="hp-proliant-essentials"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 S="${WORKDIR}"
 

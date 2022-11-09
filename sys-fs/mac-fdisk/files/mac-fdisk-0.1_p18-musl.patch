@@ -1,0 +1,68 @@
+grobian@gentoo.org
+
+auto-flush on stdio is really a glibc feature AFAICT, so in order for
+musl to get prompts (and make the tool more bearable) just flush right
+after writing half a line
+
+--- mac-fdisk-0.1.orig/io.c	2022-06-01 19:37:08.000000000 +0200
++++ mac-fdisk-0.1.orig/io.c	2022-06-01 20:32:12.000000000 +0200
+@@ -151,7 +151,8 @@
+     int		c;
+ 
+     flush_to_newline(0);
+-    printf(prompt);
++    printf("%s", prompt);
++    fflush(NULL);
+ 
+     for (;;) {
+ 	c = getch();
+@@ -169,7 +170,8 @@
+ 	    return 0;
+ 	} else {
+ 	    flush_to_newline(0);
+-	    printf(prompt);
++	    printf("%s", prompt);
++	    fflush(NULL);
+ 	}
+     }
+     return -1;
+@@ -182,7 +184,8 @@
+     int		c;
+ 
+     if (promptBeforeGet) {
+-	printf(prompt);
++	printf("%s", prompt);
++	fflush(NULL);
+     }	
+     for (;;) {
+ 	c = getch();
+@@ -192,7 +195,8 @@
+ 	} else if (c == ' ' || c == '\t') {
+ 	    // skip blanks and tabs
+ 	} else if (c == '\n') {
+-	    printf(prompt);
++	    printf("%s", prompt);
++	    fflush(NULL);
+ 	} else {
+ 	    *command = c;
+ 	    return 1;
+@@ -217,7 +220,8 @@
+ 	    // skip blanks and tabs
+ 	} else if (c == '\n') {
+ 	    if (default_value < 0) {
+-		printf(prompt);
++		printf("%s", prompt);
++		fflush(NULL);
+ 	    } else {
+ 		ungetch(c);
+ 		*number = default_value;
+@@ -295,7 +307,8 @@
+ 	    // skip blanks and tabs
+ 	} else if (c == '\n') {
+ 	    if (reprompt) {
+-		printf(prompt);
++		printf("%s", prompt);
++		fflush(NULL);
+ 	    } else {
+ 		ungetch(c);
+ 		*string = NULL;

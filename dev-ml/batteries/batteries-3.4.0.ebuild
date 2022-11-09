@@ -22,6 +22,10 @@ BDEPEND="dev-ml/ocamlbuild"
 
 S="${WORKDIR}"/batteries-included-${PV}
 
+src_compile() {
+	emake BATTERIES_NATIVE=$(usex ocamlopt yes no)
+}
+
 src_install() {
-	findlib_src_install
+	findlib_src_install BATTERIES_NATIVE=$(usex ocamlopt yes no)
 }

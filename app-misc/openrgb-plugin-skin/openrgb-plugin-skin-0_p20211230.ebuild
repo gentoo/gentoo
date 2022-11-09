@@ -8,7 +8,7 @@ inherit qmake-utils
 MY_GIT_COMMIT="ebb80f7bd0e1efaa995f60454f3c049a4607bc3b"
 SRC_URI="https://gitlab.com/OpenRGBDevelopers/openrgbskinplugin/-/archive/${MY_GIT_COMMIT}/openrgbskinplugin-${MY_GIT_COMMIT}.tar.bz2"
 S="${WORKDIR}/OpenRGBSkinPlugin-${MY_GIT_COMMIT}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="Plugin for OpenRGB that allows you to customize the look and feel of OpenRGB"
 HOMEPAGE="https://gitlab.com/OpenRGBDevelopers/OpenRGBSkinPlugin"

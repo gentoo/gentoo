@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>arkamar@atlas.cz</email>
+		<name>Petr Vaněk</name>
+	</maintainer>
 	<maintainer type="person">
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="tcmalloc">
 			Use tcmalloc from <pkg>dev-util/google-perftools</pkg> for allocations.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">redis/redis</remote-id>
+	</upstream>
 </pkgmetadata>

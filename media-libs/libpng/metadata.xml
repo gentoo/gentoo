@@ -15,7 +15,11 @@
 	<upstream>
 		<remote-id type="cpe">cpe:/a:libpng:libpng</remote-id>
 		<remote-id type="github">glennrp/libpng</remote-id>
+		<remote-id type="github">pnggroup/libpng-EXPERIMENTAL</remote-id>
+		<remote-id type="github">glennrp/libpng-releases</remote-id>
 		<remote-id type="sourceforge">libpng</remote-id>
+		<remote-id type="sourceforge">apng</remote-id>
+		<remote-id type="sourceforge">libpng-apng</remote-id>
 	</upstream>
 	<slots>
 		<subslots>Reflect ABI compatibility for libpng.so.</subslots>

@@ -1,0 +1,31 @@
+This file taken from Debian:
+https://salsa.debian.org/yangfl-guest/angelscript/-/blob/master/debian/patches/0006-Add-as_callfunc_arm_gcc.S-to-gnuc-makefile.patch
+
+Gentoo bug:
+https://bugs.gentoo.org/818868
+
+From 64e3e5a356047531012789802ece987bacb6a120 Mon Sep 17 00:00:00 2001
+From: yangfl <yangfl@users.noreply.github.com>
+Date: Fri, 15 Oct 2021 02:24:17 +0800
+Subject: [PATCH 6/6] Add as_callfunc_arm_gcc.S to gnuc makefile
+
+---
+ angelscript/projects/gnuc/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/angelscript/projects/gnuc/Makefile b/angelscript/projects/gnuc/Makefile
+index 276baa9e..973da7b0 100644
+--- a/angelscript/projects/gnuc/Makefile
++++ b/angelscript/projects/gnuc/Makefile
+@@ -145,7 +145,7 @@ OBJ = $(addprefix $(OBJDIR)/, $(notdir $(SRCNAMES:.cpp=.o)))
+ ifeq ($(TARGETPLATFORM), iphone)
+ 	OBJ += $(OBJDIR)/as_callfunc_arm_xcode.o
+ else
+-	OBJ += $(OBJDIR)/as_callfunc_arm_gcc.o
++	OBJ += $(OBJDIR)/as_callfunc_arm_gcc.o $(OBJDIR)/as_callfunc_arm64_gcc.o
+ endif
+ 
+ 
+-- 
+2.33.0
+

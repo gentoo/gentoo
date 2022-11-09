@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="COmputer Language Manipulation"
 HOMEPAGE="https://www.colm.net/open-source/colm/"
@@ -11,7 +11,7 @@ SRC_URI="https://www.colm.net/files/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc"
 
 BDEPEND="
@@ -36,6 +36,7 @@ src_prepare() {
 	sed -i -e 's/(\[ASCIIDOC\], \[asciidoc\], \[asciidoc\]/S([ASCIIDOC], [asciidoc asciidoctor]/' configure.ac || die
 
 	# bug #766069
+	sed -i -e "s:gcc:$(tc-getCC) ${CFLAGS}:" src/main.cc || die
 	sed -i -e "s:gcc:$(tc-getCC):" test/colm.d/gentests.sh || die
 	sed -i -e "s:g++:$(tc-getCXX):" test/colm.d/gentests.sh || die
 

@@ -23,9 +23,16 @@ IUSE="doc static-libs"
 RDEPEND="sci-libs/fftw:3.0"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	doc? ( app-doc/doxygen )
+	doc? (
+		app-doc/doxygen
+		dev-texlive/texlive-latexextra
+	)
 	virtual/pkgconfig
 "
+
+# Adapt version for libosmodsp.pc to 0.4.0 snapshot (bug #857678)
+# Needs to be adapted on version bump.
+PATCHES=( "${FILESDIR}/${P}-version.patch" )
 
 src_prepare() {
 	default
@@ -40,4 +47,5 @@ src_configure() {
 src_install() {
 	default_src_install
 	use static-libs || rm "${ED}"/usr/$(get_libdir)/libosmodsp.a
+	use static-libs || rm "${ED}"/usr/$(get_libdir)/libosmodsp.la
 }

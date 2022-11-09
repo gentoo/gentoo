@@ -9,12 +9,15 @@
 	<use>
 		<flag name="gpg">Install dependencies needed for OpenPGP
 			signature verification support</flag>
+		<flag name="pretty-log">Pull <pkg>dev-python/rich</pkg>
+			to enable pretty logs</flag>
 		<flag name="tools">Install additional utilities (benchmarks,
 			hash testing tools, fast Manifest generators)
 			to /usr/share/gemato.</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://github.com/mgorny/gemato/issues/</bugs-to>
-		<remote-id type="github">mgorny/gemato</remote-id>
+		<bugs-to>https://github.com/projg2/gemato/issues/</bugs-to>
+		<remote-id type="github">projg2/gemato</remote-id>
+		<remote-id type="pypi">gemato</remote-id>
 	</upstream>
 </pkgmetadata>

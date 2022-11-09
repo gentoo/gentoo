@@ -1,0 +1,21 @@
+https://github.com/bagel897/pytoolconfig/commit/7fbd830f1c302ed8151ecc2bd52c40cf70b1a580
+https://bugs.gentoo.org/878189
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -2,7 +2,7 @@
+ name = "pytoolconfig"
+ version = "1.2.2"
+ description = "Python tool configuration"
+-license-expression = "LGPL-3.0-or-later"
++license = "LGPL-3.0-or-later"
+ dependencies = [
+     "tomli>=2.0; python_version < \"3.11\"",
+     "packaging>=21.3",
+@@ -70,6 +70,6 @@ strict = true
+ 
+ [build-system]
+ requires = [
+-    "pdm-pep517>=1.0.0",
++    "pdm-pep517>=1.0.5",
+ ]
+ build-backend = "pdm.pep517.api"

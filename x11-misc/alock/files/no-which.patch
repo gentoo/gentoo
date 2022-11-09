@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/844886
+--- a/configure
++++ b/configure
+@@ -26,7 +26,7 @@ msg_chkfor() {
+ check_docs() {
+ 
+     msg_chkfor "asciidoc"
+-    if which asciidoc 1> /dev/null 2>&3
++    if command -v asciidoc 1> /dev/null 2>&3
+     then
+         echo "ok."
+         echo "#_______________________" >&4
+@@ -40,7 +40,7 @@ check_docs() {
+ check_tools() {
+ 
+     msg_chkfor "compiler $CC"
+-    if which "$CC" 1> /dev/null 2>&3
++    if command -v "$CC" 1> /dev/null 2>&3
+     then
+         echo "ok."
+         echo "---------------------------------" 1>&3
+@@ -56,7 +56,7 @@ check_tools() {
+ check_imlib2() {
+ 
+     msg_chkfor "imlib2-config"
+-    if which imlib2-config 1> /dev/null 2>&3
++    if command -v imlib2-config 1> /dev/null 2>&3
+     then
+         echo "ok."
+         cat << EOF > tmp.c

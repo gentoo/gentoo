@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-11-06)
+# Unmask the target on python-exec while it's masked elsewhere.
+dev-lang/python-exec -python_targets_python3_11
+
 # Sam James <sam@gentoo.org> (2022-02-02)
 # net-analyzer/net-snmp is not marked stable on HPPA
 net-analyzer/ifstat snmp
@@ -28,7 +32,7 @@ dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
 
 # Sam James <sam@gentoo.org> (2022-01-26)
 # Various unstable dependencies
-sys-apps/systemd fido2 http nat policykit qrcode xkb
+sys-apps/systemd fido2 http policykit qrcode xkb
 
 # Sam James <sam@gentoo.org> (2022-01-20)
 # net-misc/pps-tools is not marked stable on HPPA
@@ -97,10 +101,6 @@ sys-apps/iproute2 atm bpf iptables
 # Thomas Deutschmann <whissi@gentoo.org> (2021-06-20)
 # dev-libs/libzip does not have stable keywords on hppa
 >=media-gfx/imagemagick-7 zip
-
-# Sam James <sam@gentoo.org> (2021-06-01)
-# sys-apps/systemd is not stable on hppa
-sys-auth/pambase homed
 
 # Sam James <sam@gentoo.org> (2021-02-18)
 # Requires dev-lang/vala to be stable
@@ -173,10 +173,6 @@ x11-base/xorg-server xorg
 # Rolf Eike Beer <eike@sf-mail.de> (2020-12-11)
 # not all needed sphinx modules are stable on hppa.
 dev-python/aiohttp doc
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-11-14)
-# sys-apps/systemd has no stable keywords on hppa.
-sys-apps/ipmitool openbmc
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not stable.

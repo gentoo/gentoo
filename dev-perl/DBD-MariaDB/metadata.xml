@@ -8,6 +8,7 @@
   <upstream>
     <remote-id type="cpan">DBD-MariaDB</remote-id>
     <remote-id type="cpan-module">DBD::MariaDB</remote-id>
+    <remote-id type="github">gooddata/DBD-MariaDB</remote-id>
   </upstream>
   <use>
     <flag name="mariadb">Use <pkg>dev-db/mariadb-connector-c</pkg> as the client library</flag>

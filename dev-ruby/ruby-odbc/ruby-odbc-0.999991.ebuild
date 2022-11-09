@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ DESCRIPTION="RubyODBC - For accessing ODBC data sources from the Ruby language"
 HOMEPAGE="http://www.ch-werner.de/rubyodbc/"
 SRC_URI="http://www.ch-werner.de/rubyodbc/${P}.tar.gz"
 
-LICENSE="|| ( GPL-2 Ruby )"
+LICENSE="|| ( GPL-2 Ruby-BSD )"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""

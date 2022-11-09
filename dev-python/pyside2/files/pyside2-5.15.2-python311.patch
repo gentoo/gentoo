@@ -1,0 +1,41 @@
+https://src.fedoraproject.org/fork/pviktori/rpms/python-pyside2/raw/5da9902bd8732b49eb722d71f306d4ab197c84b8/f/python3.11.patch
+
+From 77fdd690ca14e97b4c800c4127362ca0c83a716a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Thu, 9 Jun 2022 13:45:07 +0200
+Subject: [PATCH] Fix usage of Py_TYPE() for Python 3.11
+
+The macro was changed to a function, no longer allowing for assignment.
+--- a/libpyside/pysideqflags.cpp
++++ b/libpyside/pysideqflags.cpp
+@@ -187,7 +187,7 @@ namespace QFlags
+         }
+         newspec.slots = SbkNewQFlagsType_spec.slots;
+         PyTypeObject *type = (PyTypeObject *)SbkType_FromSpec(&newspec);
+-        Py_TYPE(type) = &PyType_Type;
++        Py_SET_TYPE(type, &PyType_Type);
+ 
+         PySideQFlagsType *flagsType = reinterpret_cast<PySideQFlagsType *>(type);
+         PepType_PFTP(flagsType)->converterPtr = &PepType_PFTP(flagsType)->converter;
+--- a/libpyside/pysidesignal.cpp
++++ b/libpyside/pysidesignal.cpp
+@@ -162,7 +162,7 @@ PyTypeObject *PySideSignalTypeF(void)
+     if (!type) {
+         type = reinterpret_cast<PyTypeObject *>(SbkType_FromSpec(&PySideSignalType_spec));
+         PyTypeObject *hold = Py_TYPE(type);
+-        Py_TYPE(type) = PySideMetaSignalTypeF();
++        Py_SET_TYPE(type, PySideMetaSignalTypeF());
+         Py_INCREF(Py_TYPE(type));
+         Py_DECREF(hold);
+     }
+--- a/libpyside/pysideweakref.cpp
++++ b/libpyside/pysideweakref.cpp
+@@ -90,7 +90,7 @@ PyObject *create(PyObject *obj, PySideWeakRefFunction func, void *userData)
+ 
+     if (Py_TYPE(PySideCallableObjectTypeF()) == 0)
+     {
+-        Py_TYPE(PySideCallableObjectTypeF()) = &PyType_Type;
++        Py_SET_TYPE(PySideCallableObjectTypeF(), &PyType_Type);
+         PyType_Ready(PySideCallableObjectTypeF());
+     }
+ 

@@ -26,11 +26,12 @@ S=${WORKDIR}/${PN}-${GITHASH}
 
 PATCHES=( "${FILESDIR}"/${P}-distcc.patch )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != "binary" ]] && use openmp && ! tc-has-openmp; then
-		ewarn "You are using a compiler without OpenMP support"
-		die "Need an OpenMP capable compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {

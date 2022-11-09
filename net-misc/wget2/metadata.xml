@@ -2,14 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
 	</maintainer>
 	<use>
 		<flag name="brotli">Enable support for brotli compression</flag>
 		<flag name="gpgme">Build <pkg>app-crypt/gpgme</pkg> backend</flag>
 		<flag name="http2">Enable HTTP/2.0 support via <pkg>net-libs/nghttp2</pkg></flag>
-		<flag name="lzip">Enable <pkg>app-arch/lzip</pkg> support</flag>
+		<flag name="lzip">Enable <pkg>app-arch/lzip</pkg> support via <pkg>app-arch/lzlib</pkg></flag>
 		<flag name="openssl">Enable crypto support via <pkg>dev-libs/openssl</pkg></flag>
 		<flag name="psl">Use public suffix list via <pkg>net-libs/libpsl</pkg></flag>
 		<flag name="valgrind">Depend on <pkg>dev-util/valgrind</pkg> for test suite</flag>

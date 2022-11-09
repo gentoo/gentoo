@@ -1,0 +1,85 @@
+diff -urNp node-v15.8.0-orig/node.gyp node-v15.8.0-dwok/node.gyp
+--- node-v15.8.0-orig/node.gyp	2021-02-24 22:21:44.202911780 +0100
++++ node-v15.8.0-dwok/node.gyp	2021-02-24 22:25:34.298281739 +0100
+@@ -55,6 +55,7 @@
+       'deps/undici/undici.js',
+     ],
+     'node_mksnapshot_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)node_mksnapshot<(EXECUTABLE_SUFFIX)',
++    'node_mksnapshot_u_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)node_mksnapshot_u<(EXECUTABLE_SUFFIX)',
+     'conditions': [
+       ['GENERATOR == "ninja"', {
+         'node_text_start_object_path': 'src/large_pages/node_text_start.node_text_start.o'
+@@ -331,10 +332,24 @@
+             }, {
+               'actions': [
+                 {
++                  'action_name': 'run_pax_mksnapshot',
++                  'inputs': [
++                    '<(node_mksnapshot_exec)',
++                  ],
++                  'outputs': [
++                    '<(node_mksnapshot_u_exec)',
++                  ],
++                  'action': [
++                    'bash',
++                    '-c',
++                    'mv <(node_mksnapshot_exec) <(node_mksnapshot_u_exec) && paxmark.sh m <(node_mksnapshot_u_exec)',
++                  ],
++                },
++                {
+                   'action_name': 'node_mksnapshot',
+                   'process_outputs_as_sources': 1,
+                   'inputs': [
+-                    '<(node_mksnapshot_exec)',
++                    '<(node_mksnapshot_u_exec)',
+                   ],
+                   'outputs': [
+                     '<(SHARED_INTERMEDIATE_DIR)/node_snapshot.cc',
+diff -urNp node-v15.8.0-orig/tools/v8_gypfiles/v8.gyp node-v15.8.0-dwok/tools/v8_gypfiles/v8.gyp
+--- node-v15.8.0-orig/tools/v8_gypfiles/v8.gyp	2021-02-24 22:21:44.654910571 +0100
++++ node-v15.8.0-dwok/tools/v8_gypfiles/v8.gyp	2021-02-24 22:25:54.834224791 +0100
+@@ -9,6 +9,7 @@
+     'v8_vector_stores%': 0,
+     'v8_embed_script%': "",
+     'mksnapshot_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)mksnapshot<(EXECUTABLE_SUFFIX)',
++    'mksnapshot_u_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)mksnapshot_u<(EXECUTABLE_SUFFIX)',
+     'v8_os_page_size%': 0,
+     'generate_bytecode_output_root': '<(SHARED_INTERMEDIATE_DIR)/generate-bytecode-output-root',
+     'generate_bytecode_builtins_list_output': '<(generate_bytecode_output_root)/builtins-generated/bytecodes-builtins-list.h',
+@@ -1413,7 +1414,7 @@
+       ],
+     },  # bytecode_builtins_list_generator
+     {
+-      'target_name': 'mksnapshot',
++      'target_name': 'mksnapshot_u',
+       'type': 'executable',
+       'dependencies': [
+         'v8_base_without_compiler',
+@@ -1432,6 +1433,27 @@
+           'toolsets': ['host'],
+         }],
+       ],
++    },  # mksnapshot_u
++    {
++      'target_name': 'mksnapshot',
++      'type': 'none',
++      'dependencies': ['mksnapshot_u'],
++      'actions': [
++        {
++          'action_name': 'paxmark_mksnapshot',
++          'inputs': [
++            '<(mksnapshot_u_exec)',
++          ],
++          'outputs': [
++            '<(mksnapshot_exec)',
++          ],
++          'action': [
++            'bash',
++            '-c',
++            'cp <(mksnapshot_u_exec) <(mksnapshot_exec) && paxmark.sh m <(mksnapshot_exec)'
++          ],
++        },
++      ],
+     },  # mksnapshot
+     {
+       'target_name': 'torque',

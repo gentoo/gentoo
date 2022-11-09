@@ -10,7 +10,7 @@
 		It will only build the toolchain.  It is up to use how you want to
 		use it after that.
 
-		It is an alternative to sys-devel/crossdev.
+		It is an alternative to <pkg>sys-devel/crossdev</pkg>.
 
 		For more information, see http://ymorin.is-a-geek.org/projects/crosstool
 	</longdescription>

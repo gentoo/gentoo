@@ -1,0 +1,44 @@
+https://github.com/zaps166/QMPlay2/pull/541
+
+fix include memory with USE_VULKAN=OFF
+
+Those header files are using std::shared_ptr from memory header even
+when USE_VULKAN is OFF, so we must include them unconditionally.
+
+Signed-off-by: Arthur Zamarin <arthurzam@gentoo.org>
+--- a/src/qmplay2/LibASS.hpp
++++ b/src/qmplay2/LibASS.hpp
+@@ -23,6 +23,7 @@
+ #include <QByteArray>
+ #include <QList>
+
++#include <memory>
+ #include <set>
+
+ class Settings;
+@@ -35,7 +36,6 @@ struct ass_renderer;
+ struct ass_image;
+
+ #ifdef USE_VULKAN
+-#include <memory>
+ namespace QmVk {
+ class BufferPool;
+ }
+--- a/src/qmplay2/QMPlay2OSD.hpp
++++ b/src/qmplay2/QMPlay2OSD.hpp
+@@ -25,14 +25,13 @@
+ #include <QRect>
+
+ #include <functional>
++#include <memory>
+ #include <vector>
+ #include <mutex>
+
+ #ifdef USE_VULKAN
+ #   include <QVector4D>
+
+-#   include <memory>
+-
+ namespace QmVk {
+
+ class Buffer;

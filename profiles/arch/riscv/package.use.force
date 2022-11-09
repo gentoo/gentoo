@@ -1,5 +1,11 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2022-09-10)
+# GHC does not support native codegen for riscv at all.
+# It gains LLVM codegen in 9.2, but we maintain a backport of this,
+# so force LLVM codegen in all versions.
+dev-lang/ghc llvm
 
 # we, kinda, need this on riscv ...
 sys-devel/llvm llvm_targets_RISCV

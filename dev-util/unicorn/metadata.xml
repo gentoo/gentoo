@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">unicorn-engine/unicorn</remote-id>
+		<remote-id type="pypi">unicorn</remote-id>
 	</upstream>
 </pkgmetadata>

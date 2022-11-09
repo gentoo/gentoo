@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,6 +38,7 @@ uinput_check() {
 	local rc=1
 	linux_config_exists && linux_chkconfig_present INPUT_UINPUT
 	rc=$?
+	eend ${rc}
 
 	if [[ ${rc} -ne 0 ]] ; then
 		eerror "To use g15daemon, you need to compile your kernel with uinput support."
@@ -127,7 +128,7 @@ src_install() {
 	doexe "${FILESDIR}"/20g15daemon
 
 	if use perl ; then
-		ebegin "Installing Perl Bindings (G15Daemon.pm)"
+		einfo "Installing Perl Bindings (G15Daemon.pm)"
 		cd "${WORKDIR}/G15Daemon-0.2" || die
 		docinto perl
 		perl-module_src_install
@@ -135,6 +136,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	elog "To use g15daemon, you need to add g15daemon to the default runlevel."
 	elog "This can be done with:"
 	elog "# /sbin/rc-update add g15daemon default"

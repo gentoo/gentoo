@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="map">Enable world map display using	<pkg>media-libs/libchamplain</pkg></flag>
-	<flag name="picasa">Enable uploading to Google's Picasa Web Albums</flag>
-</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="map">Enable world map display using <pkg>media-libs/libchamplain</pkg></flag>
+    <flag name="picasa">Enable uploading to Google's Picasa Web Albums</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/eog-plugins</remote-id>
+  </upstream>
 </pkgmetadata>

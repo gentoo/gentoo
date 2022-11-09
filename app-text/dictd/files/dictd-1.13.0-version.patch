@@ -1,0 +1,65 @@
+https://bugs.gentoo.org/852884
+
+From: orbea <orbea@riseup.net>
+Date: Sat, 18 Jun 2022 10:00:21 -0700
+Subject: [PATCH] configure: Set version directly in AC_INIT
+
+This avoids a command not found error in config.status.
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -20,7 +20,7 @@
+ 
+ # Add a _letter_ if you change the version number and release your own version.
+ # Numbers are for the original author(s) only.
+-DICT_VERSION=@DICT_VERSION@
++DICT_VERSION=@PACKAGE_VERSION@
+ 
+ ifneq (,)
+ This makefile requires GNU Make.
+--- a/configure.in
++++ b/configure.in
+@@ -23,14 +23,10 @@ dnl     CFLAGS and LDFLAGS should be settable on the make commandline
+ dnl             for optimization and stripping.
+ dnl     LIBOBJS is an automatically-generated list of extra objects we need
+ 
+-
+-define(VERSION, 1.13.0)
+-
+-
+ AC_PREREQ(2.53)
+ AC_REVISION($Revision: 1.144 $)
+ 
+-AC_INIT([dict],[VERSION],[dict-beta@dict.org])
++AC_INIT([dict],[1.13.0],[dict-beta@dict.org])
+ 
+ AC_CONFIG_SRCDIR([dictd.c])
+ AC_CONFIG_HEADER(config.h)
+@@ -40,8 +36,6 @@ LT_INIT
+ echo Configuring for dict
+ echo .
+ 
+-DICT_VERSION=VERSION
+-
+ AC_CANONICAL_HOST
+ 
+ AC_PROG_CC
+@@ -183,7 +177,6 @@ SBINDIR=`eval3 $sbindir`
+ LIBEXECDIR=`eval3 $libexecdir`
+ DATADIR=`eval3 $datadir`
+ 
+-AC_SUBST(DICT_VERSION)
+ AC_SUBST(USE_PLUGIN)
+ AC_SUBST(EXEEXT)
+ AC_SUBST(allsubdirs)
+--- a/dictdplugin-config.in
++++ b/dictdplugin-config.in
+@@ -24,7 +24,7 @@ while test $# -ne 0; do
+ 	    usage
+ 	    exit;;
+ 	--version)
+-	    echo @DICT_VERSION@
++	    echo @PACKAGE_VERSION@
+ 	    exit;;
+ 	--libs)
+ 	    echo -L@libdir@

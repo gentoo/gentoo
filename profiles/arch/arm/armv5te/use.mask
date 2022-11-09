@@ -8,7 +8,3 @@
 -cpu_flags_arm_edsp
 -cpu_flags_arm_thumb
 -cpu_flags_arm_vfp
-
-# Matt Turner <mattst88@gentoo.org> (2021-07-25)
-# gnome-shell requires rustified librsvg.
-gnome-shell

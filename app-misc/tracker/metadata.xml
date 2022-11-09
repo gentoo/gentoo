@@ -9,4 +9,7 @@
     <flag name="miners">Install the <pkg>app-misc/tracker-miners</pkg> package for actual data mining support for tracker</flag>
     <flag name="stemmer">Add word stemming via <pkg>dev-libs/snowball-stemmer</pkg>.</flag>
   </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/tracker</remote-id>
+  </upstream>
 </pkgmetadata>

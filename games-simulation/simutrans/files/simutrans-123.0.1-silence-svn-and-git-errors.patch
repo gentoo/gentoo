@@ -1,0 +1,46 @@
+From 51b78d7e6021ed7787991d6122da52293fbafa89 Mon Sep 17 00:00:00 2001
+From: tastytea <tastytea@tastytea.de>
+Date: Sun, 7 Aug 2022 18:33:46 +0200
+Subject: [PATCH] silence svn and git errors
+
+---
+ Makefile     | 2 +-
+ configure.ac | 9 ++-------
+ 2 files changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 69f2b8a..c683b8a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -254,7 +254,7 @@ else
+   endif
+ endif
+ 
+-GIT_HASH := $(shell git rev-parse --short=7 HEAD 2>/dev/null 1>/dev/null; echo $$?)
++GIT_HASH := 
+ ifneq ($(GIT_HASH),)
+   GIT_HASH := $(shell git rev-parse --short=7 HEAD)
+   $(info Git hash is 0x$(GIT_HASH))
+diff --git a/configure.ac b/configure.ac
+index e776f6b..41cd584 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -141,13 +141,8 @@ else
+ fi
+ 
+ 
+-# are we in a svn?
+-if svn info
+-then
+-	AC_SUBST(svn, 1)
+-else
+-	AC_SUBST(svn, 0)
+-fi
++# we are not in an svn
++AC_SUBST(svn, 0)
+ 
+ 
+ #switch off assembler on 64 bit (MISSING: Check for GNU Assembler and i86)
+-- 
+2.35.1
+

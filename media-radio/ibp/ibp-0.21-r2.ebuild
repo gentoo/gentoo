@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Shows currently transmitting beacons of the International Beacon Project (IBP)"
-HOMEPAGE="http://wwwhome.cs.utwente.nl/~ptdeboer/ham/ibp.html"
-SRC_URI="http://wwwhome.cs.utwente.nl/~ptdeboer/ham/${P}.tgz"
+HOMEPAGE="http://www.pa3fwm.nl/software/ibp/"
+SRC_URI="http://www.pa3fwm.nl/software/ibp/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,22 +18,30 @@ RDEPEND="sys-libs/ncurses:0=
 	X? ( x11-libs/libX11  )"
 DEPEND="${RDEPEND}
 	X? ( >=x11-misc/imake-1.0.8-r1 )"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	X? ( sys-devel/gcc )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-clang16.patch
+)
 
 src_prepare() {
+	default
+
 	# Respect CFLAGS if built without USE=X
 	sed -i -e "s/= -D/+= -D/" Makefile || die
 
 	# Fix compile if ncurses is built with separate libtinfo
 	sed -i -e "s:-lcurses:$($(tc-getPKG_CONFIG) --libs ncurses):" Imakefile Makefile || die
-
-	eapply_user
 }
 
 src_configure() {
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
+
 	if use X ;then
 		CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-			IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
+			IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 	fi
 }
 

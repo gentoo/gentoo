@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>polynomial-c@gentoo.org</email>
-    <name>Lars Wendler</name>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
   </maintainer>
   <use>
-    <flag name="fluidsynth">use <pkg>media-sound/fluidsynth</pkg> for MIDI</flag>
+    <flag name="fluidsynth">Enable support for MIDI via <pkg>media-sound/fluidsynth</pkg></flag>
     <flag name="mpg123">Enable support for mp3 decoding via <pkg>media-sound/mpg123</pkg></flag>
     <flag name="openmpt">OpenMPT decoder via <pkg>media-libs/libopenmpt</pkg></flag>
     <flag name="soxr">Enable SoX Resampler support via <pkg>media-libs/soxr</pkg></flag>
+    <flag name="wildmidi">Enable support for MIDI via <pkg>media-sound/wildmidi</pkg></flag>
   </use>
   <upstream>
     <remote-id type="github">realnc/SDL_audiolib</remote-id>

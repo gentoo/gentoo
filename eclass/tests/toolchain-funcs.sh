@@ -60,20 +60,22 @@ tbegin "tc-ld-is-gold (ld=bfd cc=bfd)"
 LD=ld.bfd LDFLAGS=-fuse-ld=bfd tc-ld-is-gold && ret=1 || ret=0
 tend ${ret}
 
-tbegin "tc-ld-is-gold (ld=gold cc=default)"
-LD=ld.gold tc-ld-is-gold
-ret=$?
-tend ${ret}
+if type -P ld.gold &>/dev/null; then
+	tbegin "tc-ld-is-gold (ld=gold cc=default)"
+	LD=ld.gold tc-ld-is-gold
+	ret=$?
+	tend ${ret}
 
-tbegin "tc-ld-is-gold (ld=gold cc=bfd)"
-LD=ld.gold LDFLAGS=-fuse-ld=bfd tc-ld-is-gold
-ret=$?
-tend ${ret}
+	tbegin "tc-ld-is-gold (ld=gold cc=bfd)"
+	LD=ld.gold LDFLAGS=-fuse-ld=bfd tc-ld-is-gold
+	ret=$?
+	tend ${ret}
 
-tbegin "tc-ld-is-gold (ld=bfd cc=gold)"
-LD=ld.bfd LDFLAGS=-fuse-ld=gold tc-ld-is-gold
-ret=$?
-tend ${ret}
+	tbegin "tc-ld-is-gold (ld=bfd cc=gold)"
+	LD=ld.bfd LDFLAGS=-fuse-ld=gold tc-ld-is-gold
+	ret=$?
+	tend ${ret}
+fi
 
 #
 # TEST: tc-ld-disable-gold
@@ -87,23 +89,25 @@ tc-ld-disable-gold
 )
 tend $?
 
-tbegin "tc-ld-disable-gold (ld=gold)"
-(
-export LD=ld.gold LDFLAGS=
-ewarn() { :; }
-tc-ld-disable-gold
-[[ ${LD} == "ld.bfd" || ${LDFLAGS} == *"-fuse-ld=bfd"* ]]
-)
-tend $?
+if type -P ld.gold &>/dev/null; then
+	tbegin "tc-ld-disable-gold (ld=gold)"
+	(
+	export LD=ld.gold LDFLAGS=
+	ewarn() { :; }
+	tc-ld-disable-gold
+	[[ ${LD} == "ld.bfd" || ${LDFLAGS} == *"-fuse-ld=bfd"* ]]
+	)
+	tend $?
 
-tbegin "tc-ld-disable-gold (cc=gold)"
-(
-export LD= LDFLAGS="-fuse-ld=gold"
-ewarn() { :; }
-tc-ld-disable-gold
-[[ ${LD} == *"/ld.bfd" || ${LDFLAGS} == "-fuse-ld=gold -fuse-ld=bfd" ]]
-)
-tend $?
+	tbegin "tc-ld-disable-gold (cc=gold)"
+	(
+	export LD= LDFLAGS="-fuse-ld=gold"
+	ewarn() { :; }
+	tc-ld-disable-gold
+	[[ ${LD} == *"/ld.bfd" || ${LDFLAGS} == "-fuse-ld=gold -fuse-ld=bfd" ]]
+	)
+	tend $?
+fi
 
 unset CPP
 
@@ -197,5 +201,37 @@ for compiler in gcc clang not-really-a-compiler; do
 		tend $?
 	fi
 done
+
+if type -P gcc &>/dev/null; then
+	tbegin "tc-get-cxx-stdlib (gcc)"
+	[[ $(CXX=g++ tc-get-cxx-stdlib) == libstdc++ ]]
+	tend $?
+
+	tbegin "tc-get-c-rtlib (gcc)"
+	[[ $(CC=gcc tc-get-c-rtlib) == libgcc ]]
+	tend $?
+fi
+
+if type -P clang &>/dev/null; then
+	for stdlib in libc++ libstdc++; do
+		if clang++ -stdlib=${stdlib} -x c++ -E -P - &>/dev/null \
+			<<<'#include <ciso646>'
+		then
+			tbegin "tc-get-cxx-stdlib (clang, ${stdlib})"
+			[[ $(CXX=clang++ CXXFLAGS="-stdlib=${stdlib}" tc-get-cxx-stdlib) == ${stdlib} ]]
+			tend $?
+		fi
+	done
+
+	tbegin "tc-get-cxx-stdlib (clang, invalid)"
+	! CXX=clang++ CXXFLAGS="-stdlib=invalid" tc-get-cxx-stdlib
+	tend $?
+
+	for rtlib in compiler-rt libgcc; do
+		tbegin "tc-get-c-rtlib (clang, ${rtlib})"
+		[[ $(CC=clang CFLAGS="--rtlib=${rtlib}" tc-get-c-rtlib) == ${rtlib} ]]
+		tend $?
+	done
+fi
 
 texit

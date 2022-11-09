@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -18,7 +18,7 @@ SRC_URI="https://github.com/jai-imageio/${PN}/archive/refs/tags/${P}.tar.gz"
 
 LICENSE="Sun-BSD-no-nuclear-2005"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 
 # Common dependencies
 # POM: ${PN}-${P}/pom.xml

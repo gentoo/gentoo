@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription lang="en">
-		Power Statistics can show historical and current battery information and
-		programs waking up that use power.
-		You probably only need to install this package if you are having
-		problems with your laptop battery, or are trying to work out what programs
-		are using significant amounts of power.
-	</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    Power Statistics can show historical and current battery information and
+    programs waking up that use power.
+    You probably only need to install this package if you are having
+    problems with your laptop battery, or are trying to work out what programs
+    are using significant amounts of power.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gnome-power-manager</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -14,5 +14,6 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:john_koleszar:libvpx</remote-id>
+		<remote-id type="github">webmproject/libvpx</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -11,7 +11,7 @@ SRC_URI="http://tripie.sweb.cz/gkrellm/xkb/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="app-admin/gkrellm:2[X]"
 DEPEND="${RDEPEND}"

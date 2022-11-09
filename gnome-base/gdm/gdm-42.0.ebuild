@@ -23,7 +23,7 @@ IUSE="accessibility audit bluetooth-sound branding elogind fprint plymouth selin
 RESTRICT="!test? ( test )"
 REQUIRED_USE="^^ ( elogind systemd )"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 
 # dconf, dbus and g-s-d are needed at install time for dconf update
 # keyutils is automagic dep that makes autologin unlock login keyring when all the passwords match (disk encryption, user pw and login keyring)
@@ -196,7 +196,7 @@ pkg_postinst() {
 
 	# bug #669146; gdm may crash if /var/lib/gdm subdirs are not owned by gdm:gdm
 	ret=0
-	ebegin "Fixing "${EROOT}"/var/lib/gdm ownership"
+	ebegin "Fixing ${EROOT}/var/lib/gdm ownership"
 	chown --no-dereference gdm:gdm "${EROOT}/var/lib/gdm" || ret=1
 	for d in "${EROOT}/var/lib/gdm/"{.cache,.color,.config,.dbus,.local}; do
 		[[ ! -e "${d}" ]] || chown --no-dereference -R gdm:gdm "${d}" || ret=1

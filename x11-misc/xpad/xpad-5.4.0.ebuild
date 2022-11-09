@@ -14,8 +14,10 @@ KEYWORDS="amd64 ~arm ppc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.56:2
-	app-accessibility/at-spi2-atk
-	dev-libs/atk
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		( app-accessibility/at-spi2-atk dev-libs/atk )
+	)
 	sys-devel/gettext
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:3[X]

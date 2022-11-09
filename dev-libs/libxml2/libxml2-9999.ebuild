@@ -5,8 +5,8 @@ EAPI=8
 
 # Note: Please bump in sync with dev-libs/libxslt
 
-PYTHON_COMPAT=( python3_{8..10} )
-PYTHON_REQ_USE="xml"
+PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_REQ_USE="xml(+)"
 inherit flag-o-matic python-r1 multilib-minimal
 
 XSTS_HOME="http://www.w3.org/XML/2004/xml-schema-test-suite"
@@ -36,7 +36,7 @@ S="${WORKDIR}/${PN}-${PV%_rc*}"
 
 LICENSE="MIT"
 SLOT="2"
-IUSE="debug examples icu lzma +python readline static-libs test"
+IUSE="debug examples +ftp icu lzma +python readline static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -57,10 +57,6 @@ MULTILIB_CHOST_TOOLS=(
 )
 
 DOCS=( NEWS README.md TODO TODO_SCHEMAS python/TODO )
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.9.8-out-of-tree-test.patch
-)
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
@@ -110,6 +106,7 @@ multilib_src_configure() {
 	libxml2_configure() {
 		ECONF_SOURCE="${S}" econf \
 			--enable-ipv6 \
+			$(use_with ftp) \
 			$(use_with debug run-debug) \
 			$(use_with icu) \
 			$(use_with lzma) \
@@ -149,7 +146,7 @@ multilib_src_test() {
 	emake check
 
 	multilib_is_native_abi && use python &&
-		python_foreach_impl run_in_build_dir libxml2_py_emake test
+		python_foreach_impl run_in_build_dir libxml2_py_emake check
 }
 
 multilib_src_install() {
@@ -157,6 +154,10 @@ multilib_src_install() {
 
 	multilib_is_native_abi && use python &&
 		python_foreach_impl run_in_build_dir libxml2_py_emake DESTDIR="${D}" install
+
+	# Hack until automake release is made for the optimise fix
+	# https://git.savannah.gnu.org/cgit/automake.git/commit/?id=bde43d0481ff540418271ac37012a574a4fcf097
+	multilib_is_native_abi && use python && python_foreach_impl python_optimize
 }
 
 multilib_src_install_all() {

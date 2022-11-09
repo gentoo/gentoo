@@ -11,7 +11,7 @@ DESCRIPTION="Linux Mint's fork of gjs for Cinnamon"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cjs"
 SRC_URI="https://github.com/linuxmint/cjs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )"
+LICENSE="BSD CC0-1.0 MIT MPL-2.0 || ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"
 IUSE="+cairo examples readline sysprof test"
 KEYWORDS="amd64 ~arm64 ~riscv x86"

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    clojure-mode is an Emacs major mode that provides font-lock (syntax
+    highlighting), indentation, navigation and refactoring support for the
+    Clojure(Script) programming language.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/clojure-emacs/clojure-mode/issues/</bugs-to>
+    <remote-id type="github">clojure-emacs/clojure-mode</remote-id>
+  </upstream>
+</pkgmetadata>

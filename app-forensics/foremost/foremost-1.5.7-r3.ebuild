@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,6 +21,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.5.7-format-security.patch" # bug 521038
 	"${FILESDIR}/${PN}-1.5.7-set-but-unused.patch" # bug 706886
 	"${FILESDIR}/${PN}-1.5.7-fno-common.patch" # bug 722196
+	"${FILESDIR}/${PN}-1.5.7-musl.patch" # bug 830473
 )
 
 src_compile() {

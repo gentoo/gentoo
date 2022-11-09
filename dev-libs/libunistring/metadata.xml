@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-
 <pkgmetadata>
   <maintainer type="project">
     <email>scheme@gentoo.org</email>
@@ -17,4 +16,8 @@
     This library provides functions for manipulating Unicode strings and for
     manipulating C strings according to the Unicode standard.
   </longdescription>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:gnu:libunistring</remote-id>
+    <remote-id type="savannah">libunistring</remote-id>
+  </upstream>
 </pkgmetadata>

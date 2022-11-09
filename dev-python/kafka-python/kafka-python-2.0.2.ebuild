@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,8 +21,8 @@ BDEPEND="
 		dev-python/lz4[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		dev-python/python-zstandard[${PYTHON_USEDEP}]
 		dev-python/snappy[${PYTHON_USEDEP}]
-		dev-python/zstandard[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
@@ -40,5 +40,5 @@ python_test() {
 pkg_postinst() {
 	optfeature "LZ4 compression/decompression support" dev-python/lz4
 	optfeature "Snappy compression support" dev-python/snappy
-	optfeature "ZSTD compression/decompression support" dev-python/zstandard
+	optfeature "ZSTD compression/decompression support" dev-python/python-zstandard
 }

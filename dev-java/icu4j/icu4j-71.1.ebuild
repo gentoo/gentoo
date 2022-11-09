@@ -18,7 +18,7 @@ SRC_URI="https://github.com/unicode-org/icu/archive/refs/tags/release-${PV/./-}.
 
 LICENSE="icu"
 SLOT="70"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.8:*
 	test? ( dev-java/junitparams:0 )"
@@ -117,6 +117,9 @@ src_prepare() {
 	# separate tests resources from tests src
 	find tests/*/resources -type f -name '*.java' -exec rm -rf {} + || die
 	find ../tools/misc/resources -type f -name '*.java' -exec rm -rf {} + || die
+
+	# 874576
+	rm resources/core/src/META-INF/MANIFEST.MF || die
 }
 
 src_compile() {

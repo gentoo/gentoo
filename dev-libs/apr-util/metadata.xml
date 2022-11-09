@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
+	<maintainer type="project">
+		<email>apache-bugs@gentoo.org</email>
+		<name>Apache project</name>
 	</maintainer>
 	<use>
 		<flag name="nss">Install apr_crypto_nss module</flag>
 		<flag name="openssl">Install apr_crypto_openssl module</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">apache/apr-util</remote-id>
+	</upstream>
 </pkgmetadata>

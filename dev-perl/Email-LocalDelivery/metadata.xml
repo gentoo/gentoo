@@ -10,5 +10,6 @@
     <remote-id type="cpan-module">Email::LocalDelivery</remote-id>
     <remote-id type="cpan-module">Email::LocalDelivery::Maildir</remote-id>
     <remote-id type="cpan-module">Email::LocalDelivery::Mbox</remote-id>
+    <remote-id type="github">rjbs/Email-LocalDelivery</remote-id>
   </upstream>
 </pkgmetadata>

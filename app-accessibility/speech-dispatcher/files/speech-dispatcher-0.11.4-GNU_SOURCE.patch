@@ -1,0 +1,103 @@
+https://github.com/brailcom/speechd/pull/789
+
+From da19d096901466e5ff395846405547d422c90b4c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 31 Oct 2022 18:33:17 +0000
+Subject: [PATCH] Use AC_USE_SYSTEM_EXTENSIONS
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+We already set _GNU_SOURCE in various places but not consistently. Let's
+just use autoconf's AC_USE_SYSTEM_EXTENSIONS to ensure it's always set.
+
+Fixes failure when building tests:
+```
+x86_64-pc-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I../..  -I../../include -I../../src/api/c -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include    -O2 -pipe -march=native -fdiagnostics-color=always -frecord-gcc-switches -Wreturn-type     -ggdb3 -Werror=format-security -Werror=implicit-function-declaration -Wimplicit-int -Wformat -c -o run_test.o run_test.c
+run_test.c: In function ‘wait_for’:
+run_test.c:93:21: error: implicit declaration of function ‘strcasestr’; did you mean ‘strcasecmp’? [-Werror=implicit-function-declaration]
+   93 |         while (0 == strcasestr(reply, event)) {
+      |                     ^~~~~~~~~~
+      |                     strcasecmp
+cc1: some warnings being treated as errors
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -68,6 +68,8 @@ AC_PROG_LN_S
+ AC_CHECK_PROGS([HELP2MAN], [help2man])
+ AM_CONDITIONAL([HAVE_HELP2MAN], [test "x$HELP2MAN" != "x"])
+ 
++AC_USE_SYSTEM_EXTENSIONS
++
+ # Checks for libraries.
+ AC_SEARCH_LIBS([sqrt], [m], [],
+ 	[AC_MSG_FAILURE([Math library missing])])
+--- a/src/api/c/Makefile.am
++++ b/src/api/c/Makefile.am
+@@ -24,7 +24,7 @@ BUILT_SOURCES = libspeechd_version.h
+ lib_LTLIBRARIES = libspeechd.la
+ libspeechd_la_SOURCES = libspeechd.c
+ libspeechd_la_CFLAGS = $(ERROR_CFLAGS)
+-libspeechd_la_CPPFLAGS = $(inc_local) -D_GNU_SOURCE $(GLIB_CFLAGS) -DSPD_SPAWN_CMD=\""$(prefix)/bin/speech-dispatcher"\"
++libspeechd_la_CPPFLAGS = $(inc_local) $(GLIB_CFLAGS) -DSPD_SPAWN_CMD=\""$(prefix)/bin/speech-dispatcher"\"
+ libspeechd_la_LDFLAGS = -version-info $(LIB_SPD_CURRENT):$(LIB_SPD_REVISION):$(LIB_SPD_AGE)
+ libspeechd_la_LIBADD = $(GLIB_LIBS)
+ 
+--- a/src/api/guile/gssip.c
++++ b/src/api/guile/gssip.c
+@@ -24,8 +24,6 @@
+ #include <config.h>
+ #endif
+ 
+-#define _GNU_SOURCE
+-
+ #include <stdio.h>
+ #include <string.h>
+ 
+--- a/src/audio/pulse.c
++++ b/src/audio/pulse.c
+@@ -34,8 +34,6 @@
+  *
+  */
+ 
+-#define _GNU_SOURCE
+-
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+ #endif
+--- a/src/clients/spdsend/spdsend.h
++++ b/src/clients/spdsend/spdsend.h
+@@ -24,8 +24,6 @@
+ 
+ #define __SPDSEND_H
+ 
+-#define _GNU_SOURCE
+-
+ #include <stddef.h>
+ 
+ /* Configuration */
+--- a/src/modules/Makefile.am
++++ b/src/modules/Makefile.am
+@@ -32,7 +32,7 @@ common_LDADD = $(DOTCONF_LIBS) $(GLIB_LIBS) $(audio_dlopen) -lpthread
+ 
+ AM_CFLAGS = $(ERROR_CFLAGS)
+ AM_CXXFLAGS = $(ERROR_CFLAGS)
+-AM_CPPFLAGS = $(inc_local) -DDATADIR=\"$(snddatadir)\" -D_GNU_SOURCE $(GLIB_CFLAGS)
++AM_CPPFLAGS = $(inc_local) -DDATADIR=\"$(snddatadir)\" $(GLIB_CFLAGS)
+ 
+ module_utils_CPPFLAGS = $(AM_CPPFLAGS) \
+ 	$(DOTCONF_CFLAGS)
+--- a/src/server/Makefile.am
++++ b/src/server/Makefile.am
+@@ -35,7 +35,7 @@ speech_dispatcher_CPPFLAGS = $(inc_local) $(DOTCONF_CFLAGS) $(GLIB_CFLAGS) \
+ 	-DMODULEBINDIR=\"$(modulebindir)\" \
+ 	-DOLDMODULEBINDIR=\"$(oldmodulebindir)\" \
+ 	-DLOCALE_DATA=\"$(localedatadir)\" \
+-	-D_GNU_SOURCE -DDEFAULT_AUDIO_METHOD=\"$(default_audio_method)\"
++	-DDEFAULT_AUDIO_METHOD=\"$(default_audio_method)\"
+ speech_dispatcher_LDFLAGS = $(RDYNAMIC)
+ speech_dispatcher_LDADD = $(lib_common) $(DOTCONF_LIBS) $(GLIB_LIBS) \
+ 	$(SNDFILE_LIBS) $(GMODULE_LIBS) $(GTHREAD_LIBS) $(EXTRA_SOCKET_LIBS) \
+

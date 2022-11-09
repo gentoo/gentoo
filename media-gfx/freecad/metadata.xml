@@ -22,14 +22,6 @@
 			Build and install the Qt designer plugin, so the FreeCAD widgets
 			can be used from within designer.
 		</flag>
-		<flag name="drawing">
-			Build the Drawing workbench, a predecessor to the TechDraw workbench.
-			Users are encouraged to learn how to use the TechDraw workbench and
-			switch to it instead.
-
-			This is a compatibility option and will be removed in a later (0.20+)
-			version of the package.
-		</flag>
 		<flag name="fem">
 			Build the FEM module and workbench which provides Finite Element 
 			Analysis (FEA) workflows
@@ -68,10 +60,6 @@
 		<flag name="pcl">
 			Use external <pkg>sci-libs/pcl</pkg> for point clouds support.
 		</flag>
-		<flag name="plot">
-			Build the internal plot workbench. NOTE: This conflicts with the
-			external plot workbench, which you can add via the Addon Manager!
-		</flag>
 		<flag name="points">
 			Build the points module and workbench for working with point clouds
 		</flag>
@@ -80,11 +68,6 @@
 		</flag>
 		<flag name="robot">
 			Build the robot module and workbench for studying robot movements
-		</flag>
-		<flag name="ship">
-			Build the ship module and workbench which works over ship entities, 
-			that must be created on top of provided geometry. NOTE: This conflicts
-			with the external ship workbench, which you can add via the Addon Manager!
 		</flag>
 		<flag name="show">
 			Build the show module, a helper module for visibility automation
@@ -101,8 +84,8 @@
 		</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://www.freecadweb.org/tracker/</bugs-to>
+		<bugs-to>https://github.com/FreeCAD/FreeCAD/issues</bugs-to>
 		<remote-id type="github">FreeCAD/FreeCAD</remote-id>
-		<doc lang="en">https://www.freecadweb.org/wiki/MainPage</doc>
+		<doc lang="en">https://wiki.freecad.org/Main_Page</doc>
 	</upstream>
 </pkgmetadata>

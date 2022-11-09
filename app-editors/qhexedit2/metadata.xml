@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <!-- maintainer-needed -->
+    <maintainer type="person">
+            <email>vowstar@gmail.com</email>
+            <name>Huang Rui</name>
+    </maintainer>
+    <maintainer type="project">
+            <email>proxy-maint@gentoo.org</email>
+            <name>Proxy Maintainers</name>
+    </maintainer>
     <use>
         <flag name="gui">Install Qt5 hex editor</flag>
     </use>

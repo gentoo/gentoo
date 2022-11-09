@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sci-chemistry@gentoo.org</email>
-    <name>Gentoo Chemistry Project</name>
-  </maintainer>
-  <use>
-    <flag name="web">Install Pymodule needed for web app support</flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">pymol</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
+	</maintainer>
+	<use>
+		<flag name="web">Install Pymodule needed for web app support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">schrodinger/pymol-open-source</remote-id>
+		<remote-id type="sourceforge">pymol</remote-id>
+	</upstream>
 </pkgmetadata>

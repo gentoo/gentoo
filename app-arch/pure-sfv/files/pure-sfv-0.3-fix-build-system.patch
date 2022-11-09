@@ -1,10 +1,11 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -54,18 +54,16 @@
+@@ -54,18 +54,17 @@
  
  VC_CRAP = pure-sfv.ncb pure-sfv.plg
  
 -CFLAGS +=	-Wall -Werror -O2 -g -Wno-unused
++CFLAGS +=	-Wall -Wno-unused
  INSTALL_PREFIX = /usr/local
  INSTALL_PROGRAM = /usr/bin/install -c
  

@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>codec@gentoo.org</email>
-    <name>Gentoo Codec Project</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>dilfridge@gentoo.org</email>
-    <name>Andreas K. Huettel</name>
-  </maintainer>
-  <use>
-    <flag name="corefonts">Use <pkg>media-fonts/corefonts</pkg> which is required by some commands</flag>
-    <flag name="fpx">Enable <pkg>media-libs/libfpx</pkg> support</flag>
-    <flag name="heif">Enable support for ISO/IEC 23008-12:2017 HEIF/HEIC image format using <pkg>media-libs/libheif</pkg></flag>
-    <flag name="hdri">Enable High Dynamic Range Images formats</flag>
-    <flag name="lqr">Enable experimental liquid rescale support using <pkg>media-libs/liblqr</pkg></flag>
-    <flag name="opencl">Enable OpenCL support</flag>
-    <flag name="pango">Enable Pango support using <pkg>x11-libs/pango</pkg></flag>
-    <flag name="q32">Set quantum depth value to 32</flag>
-    <flag name="q8">Set quantum depth value to 8</flag>
-  </use>
-  <upstream>
-    <remote-id type="cpe">cpe:/a:imagemagick:imagemagick</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>codec@gentoo.org</email>
+		<name>Gentoo Codec Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>dilfridge@gentoo.org</email>
+		<name>Andreas K. Huettel</name>
+	</maintainer>
+	<use>
+		<flag name="corefonts">Use <pkg>media-fonts/corefonts</pkg> which is required by some commands</flag>
+		<flag name="fpx">Enable <pkg>media-libs/libfpx</pkg> support</flag>
+		<flag name="heif">Enable support for ISO/IEC 23008-12:2017 HEIF/HEIC image format using <pkg>media-libs/libheif</pkg></flag>
+		<flag name="hdri">Enable High Dynamic Range Images formats</flag>
+		<flag name="lqr">Enable experimental liquid rescale support using <pkg>media-libs/liblqr</pkg></flag>
+		<flag name="opencl">Enable OpenCL support</flag>
+		<flag name="pango">Enable Pango support using <pkg>x11-libs/pango</pkg></flag>
+		<flag name="q32">Set quantum depth value to 32</flag>
+		<flag name="q8">Set quantum depth value to 8</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:imagemagick:imagemagick</remote-id>
+		<remote-id type="github">ImageMagick/ImageMagick</remote-id>
+		<remote-id type="github">ImageMagick/ImageMagick6</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -23,6 +23,7 @@
 			NOTE: works only for subset of nvidia graphic cards so make sure your card
 			is supported before opening a bug about it.
 		</flag>
+		<flag name="opencl">Use OpenCL to enable computations using your GPU.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">BOINC/boinc</remote-id>

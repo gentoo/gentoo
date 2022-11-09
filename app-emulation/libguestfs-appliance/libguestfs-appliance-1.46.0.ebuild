@@ -3,7 +3,7 @@
 
 EAPI=8
 
-# Bump with app-emulation/libguestfs and app-emulation/libguestfs (if any new release there)
+# Bump with app-emulation/libguestfs and app-emulation/guestfs-tools (if any new release there)
 
 CHECKREQS_DISK_USR=500M
 CHECKREQS_DISK_BUILD=500M

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="gnome-shell">Integrate with <pkg>gnome-base/gnome-shell</pkg> search</flag>
-	<flag name="nautilus">Build gnome-base/nautilus extension</flag>
-</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="gnome-shell">Integrate with <pkg>gnome-base/gnome-shell</pkg> search</flag>
+    <flag name="nautilus">Build <pkg>gnome-base/nautilus</pkg> extension</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gnome-terminal</remote-id>
+  </upstream>
 </pkgmetadata>

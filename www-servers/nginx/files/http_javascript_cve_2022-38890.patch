@@ -1,0 +1,49 @@
+From b9aea5854bcf6f2de8f7a7f1550874e392b94be2 Mon Sep 17 00:00:00 2001
+From: Dmitry Volyntsev <xeioex@nginx.com>
+Date: Wed, 31 Aug 2022 18:35:58 -0700
+Subject: [PATCH] Fixed String.prototype.trimEnd() with unicode string.
+
+Previously, when the method was invoked with a string consisting of space
+characters and at least one of them was a Unicode space separator (code
+point above 127) it returned invalid string value with non-zero size
+but zero length.
+
+The fix is to update the size of the resulting string appropriately.
+
+This closes #569 issue on Github.
+---
+ src/njs_string.c         | 1 +
+ src/test/njs_unit_test.c | 8 ++++++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/src/njs_string.c b/src/njs_string.c
+index 83cede548..62bece0de 100644
+--- a/src/njs_string.c
++++ b/src/njs_string.c
+@@ -2849,6 +2849,7 @@ njs_string_trim(const njs_value_t *value, njs_string_prop_t *string,
+ 
+             for ( ;; ) {
+                 if (start == prev) {
++                    end = prev;
+                     break;
+                 }
+ 
+diff --git a/src/test/njs_unit_test.c b/src/test/njs_unit_test.c
+index 287ddda2d..a717f02a8 100644
+--- a/src/test/njs_unit_test.c
++++ b/src/test/njs_unit_test.c
+@@ -8450,6 +8450,14 @@ static njs_unit_test_t  njs_test[] =
+     { njs_str("'   абв  '.trimStart().trimEnd()"),
+       njs_str("абв") },
+ 
++    { njs_str("["
++              " String.fromCodePoint(0x2028),"
++              " String.fromCodePoint(0x20, 0x2028),"
++              " String.fromCodePoint(0x0009, 0x20, 0x2028),"
++              " String.fromCodePoint(0xFEFF),"
++              "].every(v => v.trimEnd() == '')"),
++      njs_str("true") },
++
+     { njs_str("'\\u2029abc\\uFEFF\\u2028'.trim()"),
+       njs_str("abc") },
+ 

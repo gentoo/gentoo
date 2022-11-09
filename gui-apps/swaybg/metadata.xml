@@ -22,4 +22,7 @@
 		<bugs-to>https://github.com/swaywm/swaybg/issues</bugs-to>
 		<changelog>https://github.com/swaywm/swaybg/releases</changelog>
 	</upstream>
+	<use>
+		<flag name="gdk-pixbuf">Support image types other than PNG</flag>
+	</use>
 </pkgmetadata>

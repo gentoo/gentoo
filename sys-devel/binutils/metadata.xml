@@ -9,6 +9,7 @@
 		<flag name="cet">Enable Intel Control-flow Enforcement Technology.</flag>
 		<flag name="default-gold">Set ld to point to ld.gold instead of ld.bfd</flag>
 		<flag name="gold">Build ld.gold linker</flag>
+		<flag name="gprofng">Enable the next-generation gprofng profiler</flag>
 		<flag name="pgo">Build binutils with Profile Guided Optimization (PGO) and LTO</flag>
 		<flag name="plugins">Enable plugin support in tools</flag>
 		<flag name="multitarget">Adds support to binutils for cross compiling (does not work with gas)</flag>

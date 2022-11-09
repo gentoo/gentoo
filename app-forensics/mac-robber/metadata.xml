@@ -3,20 +3,20 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
-mac-robber is a digital forensics and incident response tool that collects data from allocated files in a mounted file system. 
-The data can be used by the mactime tool in The Sleuth Kit to make a timeline of file activity. The mac-robber tool is based on 
-the grave-robber tool from TCT and is written in C instead of Perl. 
+	mac-robber is a digital forensics and incident response tool that collects data from allocated files in a mounted file system.
+	The data can be used by the mactime tool in The Sleuth Kit to make a timeline of file activity. The mac-robber tool is based on
+	the grave-robber tool from TCT and is written in C instead of Perl.
 
-mac-robber requires that the file system be mounted by the operating system, unlike the tools in The Sleuth Kit that process the 
-file system themselves. Therefore, mac-robber will not collect data from deleted files or files that have been hidden by 
-rootkits. mac-robber will also modify the Access times on directories that are mounted with write permissions. 
+	mac-robber requires that the file system be mounted by the operating system, unlike the tools in The Sleuth Kit that process the
+	file system themselves. Therefore, mac-robber will not collect data from deleted files or files that have been hidden by
+	rootkits. mac-robber will also modify the Access times on directories that are mounted with write permissions.
 
 
-"What is mac-robber good for then", you ask? mac-robber is useful when dealing with a file system that is not supported by The 
-Sleuth Kit or other forensic tools. mac-robber is very basic C and should compile on any UNIX system. Therefore, you can run 
-mac-robber on an obscure, suspect UNIX file system that has been mounted read-only on a trusted system. I have also used 
-mac-robber during investigations of common UNIX systems such as AIX.
-</longdescription>
+	"What is mac-robber good for then", you ask? mac-robber is useful when dealing with a file system that is not supported by The
+	Sleuth Kit or other forensic tools. mac-robber is very basic C and should compile on any UNIX system. Therefore, you can run
+	mac-robber on an obscure, suspect UNIX file system that has been mounted read-only on a trusted system. I have also used
+	mac-robber during investigations of common UNIX systems such as AIX.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">mac-robber</remote-id>
 	</upstream>

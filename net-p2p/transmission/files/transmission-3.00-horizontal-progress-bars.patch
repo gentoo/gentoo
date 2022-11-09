@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/878099
+https://github.com/transmission/transmission/issues/3150
+
+--- a/qt/FileTreeDelegate.cc
++++ a/qt/FileTreeDelegate.cc
+@@ -49,7 +49,7 @@
+     if (column == FileTreeModel::COL_PROGRESS)
+     {
+         QStyleOptionProgressBar p;
+-        p.state = option.state | QStyle::State_Small;
++        p.state = option.state | QStyle::State_Horizontal | QStyle::State_Small;
+         p.direction = qApp->layoutDirection();
+         p.rect = option.rect;
+         p.rect.setSize(QSize(option.rect.width() - 4, option.rect.height() - 8));
+--- a/qt/TorrentDelegate.cc
++++ a/qt/TorrentDelegate.cc
+@@ -545,7 +545,7 @@
+         progressBarState = QStyle::State_None;
+     }
+ 
+-    progressBarState |= QStyle::State_Small;
++    progressBarState |= QStyle::State_Horizontal | QStyle::State_Small;
+ 
+     QIcon::Mode const emblemIm = isItemSelected ? QIcon::Selected : QIcon::Normal;
+     QIcon const emblemIcon = tor.hasError() ? getWarningEmblem() : QIcon();
+--- a/qt/TorrentDelegateMin.cc
++++ a/qt/TorrentDelegateMin.cc
+@@ -218,7 +218,7 @@
+         progressBarState = QStyle::State_None;
+     }
+ 
+-    progressBarState |= QStyle::State_Small;
++    progressBarState |= QStyle::State_Horizontal | QStyle::State_Small;
+ 
+     QIcon::Mode const emblemIm = isItemSelected ? QIcon::Selected : QIcon::Normal;
+     QIcon const emblemIcon = tor.hasError() ? getWarningEmblem() : QIcon();

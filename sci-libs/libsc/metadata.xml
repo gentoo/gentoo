@@ -11,7 +11,7 @@
 	</maintainer>
 	<longdescription lang="en">
 The SC Library provides support for parallel scientific applications.
-This support library is primarily used by sci-libs/p4est.
+This support library is primarily used by <pkg>sci-libs/p4est</pkg>.
 	</longdescription>
 	<use>
 		<flag name="romio">Build with support for the ROMIO MPI-IO component</flag>

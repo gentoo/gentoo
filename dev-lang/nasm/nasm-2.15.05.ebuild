@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,8 @@ BDEPEND="
 		app-text/ghostscript-gpl
 		dev-perl/Font-TTF
 		dev-perl/Sort-Versions
-		media-fonts/source-pro
+		media-fonts/source-code-pro
+		media-fonts/source-sans:3
 		virtual/perl-File-Spec
 	)
 "
@@ -30,6 +31,16 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.15-bsd-cp-doc.patch
 )
+
+src_prepare() {
+	default
+
+	# https://bugs.gentoo.org/870214
+	# During the split of media-fonts/source-pro, the source-sans files
+	# were renamed. Currently depend on media-fonts/source-sans:3 which works
+	# with this sed.
+	sed -i 's/SourceSansPro/SourceSans3/g' doc/psfonts.ph || die
+}
 
 src_compile() {
 	default

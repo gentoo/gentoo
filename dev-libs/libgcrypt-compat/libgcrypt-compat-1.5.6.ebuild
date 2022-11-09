@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_PN="${PN%-compat}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Old version of libgcrypt needed by some binaries"
-HOMEPAGE="http://www.gnupg.org/"
+HOMEPAGE="https://www.gnupg.org/"
 SRC_URI="mirror://gnupg/${MY_PN}/${MY_P}.tar.bz2"
 LICENSE="LGPL-2.1 MIT"
 SLOT="11" # soname major version

@@ -9,7 +9,7 @@ libtool_la_check() {
 
 	# Bail out if there aren't any .la files being installed
 	# TODO: use -d'' w/ newer EAPIs (bash 4.4+)
-	readarray files < <(find "${ED}"/usr/lib* -name '*.la' -print 2>/dev/null)
+	readarray -t files < <(find "${ED}"/usr/lib* -name '*.la' -print 2>/dev/null)
 	[[ -n "${files[@]}" ]] || return
 
 	if grep -q "dev-libs/libltdl" <<<${RDEPEND}; then
@@ -25,11 +25,7 @@ libtool_la_check() {
 	local base
 	local bad_files=()
 	for file in "${files[@]}" ; do
-		dir=$(dirname ${file})
-		base=${dir%/}
-		base=${base%.la}
-
-		if [[ ! -f ${dir}/${base}.a ]] ; then
+		if [[ ! -f ${file%.la}.a ]] ; then
 			bad_files+=( ${file} )
 		fi
 	done

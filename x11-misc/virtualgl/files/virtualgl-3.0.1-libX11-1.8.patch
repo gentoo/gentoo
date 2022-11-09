@@ -1,0 +1,140 @@
+From 46d09529563127fef0d42a4fb2681ae8d65a856b Mon Sep 17 00:00:00 2001
+From: DRC <information@virtualgl.org>
+Date: Thu, 7 Jul 2022 17:22:57 -0500
+Subject: [PATCH] Build: Fix compilation errors with libX11 1.8.x
+
+Fixes #205
+---
+ ChangeLog.md           |  2 ++
+ server/CMakeLists.txt  | 10 ++++++++++
+ server/FakePbuffer.cpp |  2 +-
+ server/faker-sym.h     |  6 ++++++
+ server/faker-x11.cpp   |  7 ++++++-
+ server/faker.cpp       |  4 ++--
+ 6 files changed, 27 insertions(+), 4 deletions(-)
+
+diff --git a/ChangeLog.md b/ChangeLog.md
+index 292a5a94..4b9cc36f 100644
+--- a/ChangeLog.md
++++ b/ChangeLog.md
+@@ -8,6 +8,8 @@ module when using recent versions of nVidia's proprietary drivers.  In some
+ cases, this led to incorrect device permissions for **/dev/nvidia*** after the
+ display manager was restarted.
+ 
++2. Fixed compilation errors when building with libX11 1.8.x.
++
+ 
+ 3.0.1
+ =====
+diff --git a/server/CMakeLists.txt b/server/CMakeLists.txt
+index 574521a0..2ce92856 100644
+--- a/server/CMakeLists.txt
++++ b/server/CMakeLists.txt
+@@ -91,6 +91,16 @@ add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/faker-mapfile
+ 		> ${CMAKE_CURRENT_BINARY_DIR}/faker-mapfile
+ 	DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/faker-mapfile.c)
+ 
++include(CheckPrototypeDefinition)
++set(CMAKE_REQUIRED_INCLUDES ${X11_X11_INCLUDE_PATH})
++check_prototype_definition(XkbOpenDisplay
++	"Display *XkbOpenDisplay(_Xconst char *, int *, int *, int *, int *, int *)"
++	NULL X11/XKBlib.h LIBX11_18)
++unset(CMAKE_REQUIRED_INCLUDES)
++if(LIBX11_18)
++	add_definitions(-DLIBX11_18)
++endif()
++
+ set(FAKER_SOURCES
+ 	backend.cpp
+ 	ContextHash.cpp
+diff --git a/server/FakePbuffer.cpp b/server/FakePbuffer.cpp
+index bfa55279..64aab775 100644
+--- a/server/FakePbuffer.cpp
++++ b/server/FakePbuffer.cpp
+@@ -10,11 +10,11 @@
+ // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ // wxWindows Library License for more details.
+ 
++#include <X11/Xlibint.h>
+ #include "FakePbuffer.h"
+ #include "TempContextEGL.h"
+ #include "BufferState.h"
+ #include "ContextHashEGL.h"
+-#include <X11/Xlibint.h>
+ 
+ using namespace util;
+ using namespace backend;
+diff --git a/server/faker-sym.h b/server/faker-sym.h
+index 0fa1e5cd..3c6f94e8 100644
+--- a/server/faker-sym.h
++++ b/server/faker-sym.h
+@@ -704,9 +704,15 @@ FUNCDEF2(int, XNextEvent, Display *, dpy, XEvent *, xe, XNextEvent)
+ 
+ FUNCDEF1(Display *, XOpenDisplay, _Xconst char *, name, XOpenDisplay)
+ 
++#ifdef LIBX11_18
++FUNCDEF6(Display *, XkbOpenDisplay, _Xconst char *, display_name,
++	int *, event_rtrn, int *, error_rtrn, int *, major_in_out,
++	int *, minor_in_out, int *, reason_rtrn, XkbOpenDisplay)
++#else
+ FUNCDEF6(Display *, XkbOpenDisplay, char *, display_name, int *, event_rtrn,
+ 	int *, error_rtrn, int *, major_in_out, int *, minor_in_out,
+ 	int *, reason_rtrn, XkbOpenDisplay)
++#endif
+ 
+ FUNCDEF5(Bool, XQueryExtension, Display *, dpy, _Xconst char *, name,
+ 	int *, major_opcode, int *, first_event, int *, first_error,
+diff --git a/server/faker-x11.cpp b/server/faker-x11.cpp
+index 99e8bf17..a233f3b1 100644
+--- a/server/faker-x11.cpp
++++ b/server/faker-x11.cpp
+@@ -1,6 +1,6 @@
+ // Copyright (C)2004 Landmark Graphics Corporation
+ // Copyright (C)2005, 2006 Sun Microsystems, Inc.
+-// Copyright (C)2009, 2011-2016, 2018-2021 D. R. Commander
++// Copyright (C)2009, 2011-2016, 2018-2022 D. R. Commander
+ //
+ // This library is free software and may be redistributed and/or modified under
+ // the terms of the wxWindows Library License, Version 3.1 or (at your option)
+@@ -586,8 +586,13 @@ Display *XOpenDisplay(_Xconst char *name)
+ // within libX11, VirtualGL cannot intercept it on some platforms.  Thus we
+ // need to interpose XkbOpenDisplay().
+ 
++#ifdef LIBX11_18
++Display *XkbOpenDisplay(_Xconst char *display_name, int *event_rtrn,
++	int *error_rtrn, int *major_in_out, int *minor_in_out, int *reason_rtrn)
++#else
+ Display *XkbOpenDisplay(char *display_name, int *event_rtrn, int *error_rtrn,
+ 	int *major_in_out, int *minor_in_out, int *reason_rtrn)
++#endif
+ {
+ 	Display *dpy = NULL;
+ 
+diff --git a/server/faker.cpp b/server/faker.cpp
+index ec537a62..601cfa3e 100644
+--- a/server/faker.cpp
++++ b/server/faker.cpp
+@@ -1,6 +1,6 @@
+ // Copyright (C)2004 Landmark Graphics Corporation
+ // Copyright (C)2005, 2006 Sun Microsystems, Inc.
+-// Copyright (C)2009, 2011, 2013-2016, 2019-2021 D. R. Commander
++// Copyright (C)2009, 2011, 2013-2016, 2019-2022 D. R. Commander
+ //
+ // This library is free software and may be redistributed and/or modified under
+ // the terms of the wxWindows Library License, Version 3.1 or (at your option)
+@@ -14,6 +14,7 @@
+ 
+ #include <unistd.h>
+ #include "Mutex.h"
++#include <X11/Xlibint.h>
+ #include "ContextHash.h"
+ #ifdef EGLBACKEND
+ #include "ContextHashEGL.h"
+@@ -27,7 +28,6 @@
+ #include "fakerconfig.h"
+ #include "threadlocal.h"
+ #include <dlfcn.h>
+-#include <X11/Xlibint.h>
+ #include "faker.h"
+ 
+ 

@@ -1,0 +1,13 @@
+diff --git a/src/rgw/store/dbstore/CMakeLists.txt b/src/rgw/store/dbstore/CMakeLists.txt
+index 1feac6dcee0..586d0dbb961 100644
+--- a/src/rgw/store/dbstore/CMakeLists.txt
++++ b/src/rgw/store/dbstore/CMakeLists.txt
+@@ -16,7 +16,7 @@ set(dbstore_mgr_srcs
+     dbstore_mgr.cc
+     )
+ 
+-add_library(dbstore_lib ${dbstore_srcs})
++	add_library(dbstore_lib STATIC ${dbstore_srcs})
+ target_include_directories(dbstore_lib PUBLIC "${CMAKE_SOURCE_DIR}/src/fmt/include")
+ target_include_directories(dbstore_lib PUBLIC "${CMAKE_SOURCE_DIR}/src/rgw")
+ set(link_targets spawn)

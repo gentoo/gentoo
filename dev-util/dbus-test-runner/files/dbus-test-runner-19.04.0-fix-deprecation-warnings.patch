@@ -1,0 +1,30 @@
+Description: tests: Replace deprecated g_main_{pending,iteration} with current g_main_context_{pending,iteration}
+Author: Iain Lane <laney@debian.org>
+Origin: https://bazaar.launchpad.net/~indicator-applet-developers/dbus-test-runner/trunk.16.10/revision/109
+
+Index: dbus-test-runner/tests/test-libdbustest-mock.c
+===================================================================
+--- dbus-test-runner.orig/tests/test-libdbustest-mock.c
++++ dbus-test-runner/tests/test-libdbustest-mock.c
+@@ -389,8 +389,8 @@ test_signals (void)
+ 	g_assert(dbus_test_dbus_mock_object_emit_signal(mock, obj, "testsig", NULL, NULL, NULL));
+ 
+ 	g_usleep(100000);
+-	while (g_main_pending())
+-		g_main_iteration(TRUE);
++	while (g_main_context_pending(NULL))
++		g_main_context_iteration(NULL, TRUE);
+ 
+ 	g_assert(signal_count == 1);
+ 
+@@ -410,8 +410,8 @@ test_signals (void)
+ 	g_assert(dbus_test_dbus_mock_object_emit_signal(mock, obj, "testsig_abc", G_VARIANT_TYPE("(sss)"), g_variant_new_parsed("('a', 'b', 'c')"), NULL));
+ 
+ 	g_usleep(100000);
+-	while (g_main_pending())
+-		g_main_iteration(TRUE);
++	while (g_main_context_pending(NULL))
++		g_main_context_iteration(NULL, TRUE);
+ 
+ 	g_assert(signal_abc_count == 1);
+ 

@@ -1,0 +1,59 @@
+https://github.com/tmux/tmux/pull/3332
+
+From 1b4c87de0249242309f10684761698aa880b80a5 Mon Sep 17 00:00:00 2001
+From: Marvin Schmidt <marv@exherbo.org>
+Date: Tue, 13 Sep 2022 03:25:00 +0200
+Subject: [PATCH 1/2] compat/systemd: Include <string.h> for strerror
+
+Recent compilers are getting stricter about function declarations being
+known during compilation and e.g. clang-15 now errors out if a function
+signature is not found:
+
+> compat/systemd.c:56:49: error: call to undeclared library function 'strerror' with type 'char *(int)'; ISO C99 and
+>       later do not support implicit function declarations [-Wimplicit-function-declaration]
+>                 xasprintf(cause, "systemd socket error (%s)", strerror(errno));
+>                                                               ^
+> compat/systemd.c:56:49: note: include the header <string.h> or explicitly provide a declaration for 'strerror'
+> 1 warning and 1 error generated.
+
+Provide the declaration of `strerror` by including `<string.h>` to fix
+this
+--- a/compat/systemd.c
++++ b/compat/systemd.c
+@@ -16,6 +16,7 @@
+  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++#include <string.h>
+ #include <sys/types.h>
+ #include <sys/un.h>
+ 
+
+From 1e7ef02c52f2f8a67ab05d8a1c3fec9f4ccb7ea0 Mon Sep 17 00:00:00 2001
+From: Marvin Schmidt <marv@exherbo.org>
+Date: Tue, 13 Sep 2022 03:34:01 +0200
+Subject: [PATCH 2/2] compat/systemd: Use socklen_t instead of int to fix
+ warning
+
+clang-15 warns about the pointer passed to `getsockname()` being of
+different signedness then the parameter declaration:
+
+> compat/systemd.c:46:47: warning: passing 'int *' to parameter of type 'socklen_t *' (aka 'unsigned int *')
+>       converts between pointers to integer types with different sign [-Wpointer-sign]
+>                 if (getsockname(fd, (struct sockaddr *)&sa, &addrlen) == -1)
+>                                                             ^~~~~~~~
+> /usr/x86_64-pc-linux-musl/include/sys/socket.h:391:73: note: passing argument to parameter here
+> int getsockname (int, struct sockaddr *__restrict, socklen_t *__restrict);
+>                                                                         ^
+--- a/compat/systemd.c
++++ b/compat/systemd.c
+@@ -30,7 +30,7 @@ systemd_create_socket(int flags, char **cause)
+ 	int			fds;
+ 	int			fd;
+ 	struct sockaddr_un	sa;
+-	int			addrlen = sizeof sa;
++	socklen_t		addrlen = sizeof sa;
+ 
+ 	fds = sd_listen_fds(0);
+ 	if (fds > 1) { /* too many file descriptors */
+

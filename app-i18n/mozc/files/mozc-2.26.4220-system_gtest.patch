@@ -1,7 +1,7 @@
 https://github.com/google/mozc/issues/490
 
---- /src/gyp/defines.gypi
-+++ /src/gyp/defines.gypi
+--- a/src/gyp/defines.gypi
++++ b/src/gyp/defines.gypi
 @@ -67,6 +67,10 @@
      # use_system_abseil_cpp represents if system version or bundled version
      # of abseil-cpp library is used.
@@ -13,8 +13,8 @@ https://github.com/google/mozc/issues/490
    },
    'target_defaults': {
      'defines': [
---- /src/testing/testing.gyp
-+++ /src/testing/testing.gyp
+--- a/src/testing/testing.gyp
++++ b/src/testing/testing.gyp
 @@ -59,54 +59,76 @@
    'targets': [
      {

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,24 +35,6 @@ BDEPEND="
 DOCS=("../README")
 
 S="${WORKDIR}/${PN}/gtk"
-
-pkg_pretend() {
-	if tc-is-clang ; then
-		# need c++17 features
-		[[ "${MERGE_TYPE}" != "binary" &&
-		$(clang-major-version) -lt 5 ]] &&
-		die "Sorry, SCiTE uses C++17 Features and needs >sys-devel/clang-5
-		($(clang-major-version))."
-
-	elif tc-is-gcc; then
-		# older gcc is not supported
-		[[ "${MERGE_TYPE}" != "binary" &&
-		$(gcc-major-version) -lt 7 ]] &&
-		die "Sorry, Scite uses C++17 Features, need >sys-devel/gcc-7."
-	else
-		die "Either gcc or clang should be configured for building scite"
-	fi
-}
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup

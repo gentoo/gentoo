@@ -118,7 +118,7 @@ each_ruby_install() {
 	if [[ -e Makefile ]]; then
 		# Create the directories, or the package will create them as files.
 		local archdir=$(ruby_rbconfig_value "sitearchdir")
-		dodir ${archdir#${EPREFIX}} /usr/$(get_libdir)/pkgconfig
+		dodir "${archdir#${EPREFIX}}" /usr/$(get_libdir)/pkgconfig
 
 		emake DESTDIR="${D}" install
 	fi

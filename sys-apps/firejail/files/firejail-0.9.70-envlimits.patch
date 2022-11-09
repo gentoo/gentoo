@@ -1,0 +1,12 @@
+diff -urP firejail-0.9.70.orig/src/firejail/firejail.h firejail-0.9.70/src/firejail/firejail.h
+--- firejail-0.9.70.orig/src/firejail/firejail.h	2022-06-08 07:42:50.000000000 -0600
++++ firejail-0.9.70/src/firejail/firejail.h	2022-06-09 13:06:04.094034022 -0600
+@@ -706,7 +706,7 @@
+ int check_kernel_procs(void);
+ void run_no_sandbox(int argc, char **argv) __attribute__((noreturn));
+ 
+-#define MAX_ENVS 256			// some sane maximum number of environment variables
++#define MAX_ENVS 2048			// some sane maximum number of environment variables
+ #define MAX_ENV_LEN (PATH_MAX + 32)	// FOOBAR=SOME_PATH, only applied to Firejail's own sandboxed apps
+ // env.c
+ typedef enum {

@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="Performance-portable, length-agnostic SIMD with runtime dispatch"
@@ -14,12 +13,12 @@ if [[ "${PV}" == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/google/highway.git"
 else
 	SRC_URI="https://github.com/google/highway/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="test"
+IUSE="cpu_flags_arm_neon test"
 
 DEPEND="test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )"
 
@@ -27,6 +26,7 @@ RESTRICT="!test? ( test )"
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DHWY_CMAKE_ARM7=$(usex cpu_flags_arm_neon)
 		-DBUILD_TESTING=$(usex test)
 		-DHWY_WARNINGS_ARE_ERRORS=OFF
 	)

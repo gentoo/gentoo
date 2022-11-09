@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4a32768f..c938652a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,10 +17,6 @@ if(CMAKE_SANITIZE_TYPE)
+ endif()
+ 
+ 
+-if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+-  set(CMAKE_INSTALL_PREFIX "/usr" CACHE PATH "path to install" FORCE)
+-endif()
+-
+ enable_testing()
+ 
+ # populate submodules (libbpf)

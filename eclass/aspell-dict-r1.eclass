@@ -63,6 +63,7 @@ SLOT="0"
 
 RDEPEND="app-text/aspell"
 DEPEND="${RDEPEND}"
+BDEPEND="sys-apps/which"
 
 _ASPELL_MAJOR_VERSION=${ASPELL_VERSION:-6}
 [[ ${_ASPELL_MAJOR_VERSION} != [56] ]] && die "Unsupported ASPELL_VERSION=${ASPELL_VERSION}"

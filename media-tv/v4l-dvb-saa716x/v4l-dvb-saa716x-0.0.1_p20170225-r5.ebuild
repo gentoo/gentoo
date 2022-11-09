@@ -1,7 +1,7 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit linux-info linux-mod
 
@@ -45,6 +45,6 @@ src_compile() {
 	kernel_is le 5 0 && BUILD_PARAMS="SUBDIRS" || BUILD_PARAMS="M"
 	BUILD_PARAMS+="=${S}/linux/drivers/media/common/saa716x CONFIG_SAA716X_CORE=m \
 		CONFIG_DVB_SAA716X_FF=m CONFIG_DVB_SAA716X_BUDGET=m CONFIG_DVB_SAA716X_HYBRID=m"
-	addpredict "${EROOT}"/usr/src/linux/
+	addpredict /usr/src/linux/
 	linux-mod_src_compile
 }

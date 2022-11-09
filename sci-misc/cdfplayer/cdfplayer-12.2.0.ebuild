@@ -3,10 +3,10 @@
 
 EAPI=6
 
-inherit desktop multilib versionator
+inherit desktop eapi7-ver multilib
 
 DESCRIPTION="Wolfram Player for the interactive Computable Document Format (CDF)"
-SRC_URI="WolframPlayer_12.2.0_LINUX.sh"
+SRC_URI="WolframPlayer_${PV}_LINUX.sh"
 HOMEPAGE="http://www.wolfram.com/cdf-player/"
 
 LICENSE="WolframCDFPlayer"
@@ -46,7 +46,7 @@ RDEPEND="
 
 # we need this a few times
 MPN="WolframPlayer"
-MPV=$(get_version_component_range 1-2)
+MPV=$(ver_cut 1-2)
 
 # we might as well list all files in all QA variables...
 QA_PREBUILT="opt/*"

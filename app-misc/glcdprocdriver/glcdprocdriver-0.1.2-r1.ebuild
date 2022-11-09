@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://lucianm.github.io/GLCDprocDriver
 	https://github.com/lucianm/GLCDprocDriver
 "
-SRC_URI="https://github.com/lucianm/${MY_PN}/archive/0.1.2.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/lucianm/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 KEYWORDS="amd64 x86"

@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libgnome-games-support"
 
 LICENSE="LGPL-3+"
 SLOT="2/4"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 # glib dep in meson is 2.40, but vala is passed 2.44 target
 RDEPEND="

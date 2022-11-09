@@ -51,6 +51,7 @@ src_configure() {
 		export NETWORK_TESTS=no
 	fi
 	export LIBDIR=$(get_libdir)
+	use prefix && export OPENSSL_PREFIX="${EPREFIX}/usr"
 	perl-module_src_configure
 }
 

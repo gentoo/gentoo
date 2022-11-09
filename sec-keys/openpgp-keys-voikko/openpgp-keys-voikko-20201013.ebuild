@@ -15,5 +15,5 @@ S="${WORKDIR}"
 
 src_install() {
 	insinto /usr/share/openpgp-keys
-	newins - voikko.asc < <(awk '/-----BEGIN PGP PUBLIC KEY BLOCK-----/,/-----END PGP PUBLIC KEY BLOCK-----/' ${DISTDIR}/4AE3942E.asc.html || die)
+	newins - voikko.asc < <(awk '/-----BEGIN PGP PUBLIC KEY BLOCK-----/,/-----END PGP PUBLIC KEY BLOCK-----/' "${DISTDIR}"/4AE3942E.asc.html || die)
 }

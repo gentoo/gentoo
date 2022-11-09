@@ -51,7 +51,7 @@ DESCRIPTION="SpiderMonkey is Mozilla's JavaScript engine written in C and C++"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
 
 # riscv support requires a patch currently only available in firefox-78 patch sets
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 -riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 -riscv sparc x86"
 
 SLOT="68"
 LICENSE="MPL-2.0"
@@ -101,6 +101,7 @@ src_prepare() {
 	eapply "${WORKDIR}"/firefox
 	eapply "${WORKDIR}"/spidermonkey-patches
 	eapply "${FILESDIR}"/spidermonkey-68.0-add-riscv-support.patch
+	eapply "${FILESDIR}"/spidermonkey-68.0-loong-support.patch
 
 	default
 

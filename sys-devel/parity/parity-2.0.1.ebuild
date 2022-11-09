@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,11 +8,11 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git@github.com:ssi-schaefer/parity.git https://github.com/ssi-schaefer/parity.git"
 	BDEPEND="dev-util/confix"
 else
-	SRC_URI="https://github.com/mduft/${PN}/releases/download/${PV}/${P}.tar.bz2"
+	SRC_URI="https://github.com/ssi-schaefer/${PN}/releases/download/${PV}/${P}.tar.bz2"
 	KEYWORDS="~x64-cygwin"
 fi
 DESCRIPTION="A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)"
-HOMEPAGE="https://github.com/mduft/parity"
+HOMEPAGE="https://github.com/ssi-schaefer/parity"
 
 parity-vcarchs() { echo x64=x86_64 x86=i686 ; }
 parity-vcvers-legacy() { echo 8_0 9_0 ; }

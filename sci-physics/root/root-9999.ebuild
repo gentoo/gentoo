@@ -1,12 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake cuda elisp-common fortran-2 python-single-r1 toolchain-funcs
 
@@ -18,7 +18,8 @@ IUSE="+X aqua +asimage c++11 c++14 +c++17 cuda cudnn +davix debug emacs
 	mpi mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
 	qt5 R +roofit +root7 shadow sqlite +ssl +tbb test +tmva +unuran uring
 	vc vmc +xml xrootd"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
+PROPERTIES="test_network"
 
 if [[ ${PV} =~ "9999" ]] ; then
 	inherit git-r3
@@ -30,6 +31,7 @@ if [[ ${PV} =~ "9999" ]] ; then
 		EGIT_BRANCH="v$(ver_cut 1)-$(ver_cut 2)-00-patches"
 	fi
 else
+	SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 fi
@@ -168,7 +170,7 @@ src_configure() {
 		-DCMAKE_CUDA_HOST_COMPILER="$(tc-getCXX)"
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
-		-DCMAKE_CXX_STANDARD=$((usev c++11 || usev c++14 || usev c++17) | cut -c4-)
+		-DCMAKE_CXX_STANDARD=$( (usev c++11 || usev c++14 || usev c++17) | cut -c4-)
 		-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)/share/man"

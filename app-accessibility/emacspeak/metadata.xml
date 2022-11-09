@@ -17,6 +17,7 @@
 		<flag name="espeak">Adds support for the espeak tts engine</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">tvraman/emacspeak</remote-id>
 		<remote-id type="google-code">emacspeak</remote-id>
 		<remote-id type="sourceforge">emacspeak</remote-id>
 	</upstream>

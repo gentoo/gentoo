@@ -10,7 +10,7 @@
   calculation library. The intended audience of libnova is C / C++ programmers,
   astronomers and anyone else interested in calculating positions of
   astronomical objects.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">libnova</remote-id>
   </upstream>

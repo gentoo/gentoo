@@ -1,0 +1,34 @@
+# HG changeset patch
+# User Sam James <sam@gentoo.org>
+# Date 1659168362 -3600
+#      Sat Jul 30 09:06:02 2022 +0100
+# Node ID aa77bc8461ee15501a0298dafd53c97447aa30d0
+# Parent  0a06f497d58839e4100b3be46bbdcd14d8147d75
+configure: fix bashism
+
+configure scripts need to be runnable with a POSIX-compliant /bin/sh.
+
+On many (but not all!) systems, /bin/sh is provided by Bash, so errors
+like this aren't spotted. Notably Debian defaults to /bin/sh provided
+by dash which doesn't tolerate such bashisms as '=='.
+
+This retains compatibility with bash.
+
+Fixes configure warnings/errors like:
+```
+checking for gs... /usr/sbin/gs
+./configure: 31719: test: #: unexpected operator
+checking for Windows fonts directory (location of arial.ttf)... /usr/share/fonts/corefonts/
+```
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -3148,7 +3148,7 @@ have_ralcgm='no'  ; if test "$CGMDecodeD
+ AM_CONDITIONAL([HasPSDelegate],[test "$have_gs" = 'yes'])
+ 
+ # Tests for programs only used while in maintainer mode
+-if test "$MAINT" == '' ; then
++if test "$MAINT" = '' ; then
+    # Test for optional rst2html.py utility and define automake conditional HasRST2HTML if found.
+    AC_CHECK_PROGS([RST2HTML],[rst2html.py rst2html])
+ 

@@ -6,8 +6,8 @@
 		<name>Gentoo GNUstep Project</name>
 	</maintainer>
 	<longdescription>
-PRICE, which stands for Precision Raster Image Convolution Engine, aims to be a high quality Image filtering, enhancing and manipulation program. It is written in Objective-C and AppKit, so being designed for Cocoa and GNUstep, it should be portable to OpenSTEP (I hope so, currently I don't have the computers to do the porting).
-</longdescription>
+	PRICE, which stands for Precision Raster Image Convolution Engine, aims to be a high quality Image filtering, enhancing and manipulation program. It is written in Objective-C and AppKit, so being designed for Cocoa and GNUstep, it should be portable to OpenSTEP (I hope so, currently I don't have the computers to do the porting).
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">price</remote-id>
 	</upstream>

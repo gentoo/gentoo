@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit ecm
 
 DESCRIPTION="Frontend to cdemu daemon based on KDE Frameworks"
 HOMEPAGE="https://www.linux-apps.com/p/998461/"
-SRC_URI="mirror://sourceforge/project/kde-cdemu-manager/kde_cdemu-0.8.0.tar.bz2"
+SRC_URI="mirror://sourceforge/project/kde-cdemu-manager/kde_cdemu-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="5"

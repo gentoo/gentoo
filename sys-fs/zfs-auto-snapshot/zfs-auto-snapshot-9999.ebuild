@@ -23,6 +23,7 @@ SLOT="0"
 IUSE="+cron +default-exclude systemd"
 
 RDEPEND="
+	sys-apps/which
 	sys-fs/zfs
 	!systemd? ( virtual/cron )
 "

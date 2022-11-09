@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>np-hardass@gentoo.org</email>
-		<name>Adam Feldman</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="cairo">Build support for exporting to PNG and PDF with <pkg>x11-libs/cairo</pkg></flag>
 		<flag name="leveldb">Use <pkg>dev-libs/leveldb</pkg> as the backend</flag>

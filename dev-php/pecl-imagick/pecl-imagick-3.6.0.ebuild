@@ -4,7 +4,7 @@
 EAPI="7"
 
 PHP_EXT_NAME="imagick"
-USE_PHP="php7-3 php7-4 php8-0 php8-1"
+USE_PHP="php7-4 php8-0 php8-1"
 
 inherit php-ext-pecl-r3
 

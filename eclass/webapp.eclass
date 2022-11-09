@@ -201,7 +201,7 @@ webapp_configfile() {
 		my_file="$(webapp_strip_cwd "${my_file}")"
 
 		elog "(config) ${my_file}"
-		echo "${my_file}" >> ${D}/${WA_CONFIGLIST}
+		echo "${my_file}" >> "${D}/${WA_CONFIGLIST}"
 	done
 }
 

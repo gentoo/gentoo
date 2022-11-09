@@ -1,0 +1,12 @@
+diff -up ClanLib-2.3.7/Sources/Display/X11/x11_window.cpp~ ClanLib-2.3.7/Sources/Display/X11/x11_window.cpp
+--- ClanLib-2.3.7/Sources/Display/X11/x11_window.cpp~	2013-08-01 16:32:37.866001296 +0200
++++ ClanLib-2.3.7/Sources/Display/X11/x11_window.cpp	2013-08-01 16:33:26.267001811 +0200
+@@ -289,7 +289,7 @@ void CL_X11Window::create(XVisualInfo *v
+ 	// Retrieve the frame size (emulating microsoft windows)
+ 	bool window_is_frameless = false;
+ 	bool window_has_thin_frame = false;
+-	if ((!desc.has_caption()) || (!desc.get_decorations()))
++	if (!desc.is_fullscreen() && (!desc.has_caption() || !desc.get_decorations()))
+ 	{
+ 		if (desc.is_tool_window())
+ 		{

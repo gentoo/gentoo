@@ -5,12 +5,9 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		The premier WAI handler. For more information, see &lt;http://steve.vinoski.net/blog/2011/05/01/warp-a-haskell-web-server/&gt;.
-	</longdescription>
 	<use>
-		<flag name="allow-sendfilefd">Allow use of sendfileFd (not available on GNU/kFreeBSD).</flag>
-		<flag name="warp-debug">Add additional debuging information</flag>
+		<flag name="allow-sendfilefd">Allow use of sendfileFd (not available on GNU/kFreeBSD)</flag>
+		<flag name="x509">Adds a dependency on the x509 library to enable getting TLS client certificates.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">yesodweb/wai</remote-id>

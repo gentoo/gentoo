@@ -5,7 +5,7 @@ EAPI=8
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 DISTUTILS_USE_SETUPTOOLS=no
 DISTUTILS_SINGLE_IMPL=1
@@ -24,7 +24,8 @@ else
 		http://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
 		doc? ( https://ftp.gromacs.org/manual/manual-${PV/_/-}.pdf -> manual-${PV}.pdf )
 		test? ( http://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	# since 2022 arm support was dropped (but not arm64)
+	KEYWORDS="~amd64 -arm ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_arm_neon"
@@ -85,12 +86,11 @@ if [[ ${PV} != *9999 ]]; then
 fi
 
 pkg_pretend() {
-	[[ $(gcc-version) == "4.1" ]] && die "gcc 4.1 is not supported by gromacs"
-	use openmp && ! tc-has-openmp && \
-		die "Please switch to an openmp compatible compiler"
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	python-single-r1_pkg_setup
 }
 

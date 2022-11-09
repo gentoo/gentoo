@@ -5,6 +5,10 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">click-contrib/click-help-colors</remote-id>

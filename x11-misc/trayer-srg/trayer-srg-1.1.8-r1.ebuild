@@ -11,7 +11,7 @@ SRC_URI="https://github.com/sargon/${PN}/archive/${P/-srg/}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	x11-libs/gdk-pixbuf:2

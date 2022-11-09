@@ -13,4 +13,7 @@
 
   This is a portable version of the Mg maintained by the OpenBSD team.
 </longdescription>
+<upstream>
+  <remote-id type="github">hboetes/mg</remote-id>
+</upstream>
 </pkgmetadata>

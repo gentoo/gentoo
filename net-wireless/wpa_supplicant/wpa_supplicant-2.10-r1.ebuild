@@ -13,7 +13,7 @@ if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://w1.fi/hostap.git"
 else
-	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 	SRC_URI="https://w1.fi/releases/${P}.tar.gz"
 fi
 
@@ -77,13 +77,13 @@ Kconfig_style_config() {
 			#first remove any leading "# " if $2 is not n
 			sed -i "/^# *$CONFIG_PARAM=/s/^# *//" .config || echo "Kconfig_style_config error uncommenting $CONFIG_PARAM"
 			#set item = $setting (defaulting to y)
-			sed -i "/^$CONFIG_PARAM/s/=.*/=$setting/" .config || echo "Kconfig_style_config error setting $CONFIG_PARAM=$setting"
+			sed -i "/^$CONFIG_PARAM\>/s/=.*/=$setting/" .config || echo "Kconfig_style_config error setting $CONFIG_PARAM=$setting"
 			if [ -z "$( grep ^$CONFIG_PARAM= .config )" ] ; then
 				echo "$CONFIG_PARAM=$setting" >>.config
 			fi
 		else
 			#ensure item commented out
-			sed -i "/^$CONFIG_PARAM/s/$CONFIG_PARAM/# $CONFIG_PARAM/" .config || echo "Kconfig_style_config error commenting $CONFIG_PARAM"
+			sed -i "/^$CONFIG_PARAM\>/s/$CONFIG_PARAM/# $CONFIG_PARAM/" .config || echo "Kconfig_style_config error commenting $CONFIG_PARAM"
 		fi
 }
 
@@ -476,6 +476,20 @@ pkg_postinst() {
 		echo
 		ewarn "WARNING: your old configuration file ${EROOT}/etc/wpa_supplicant.conf"
 		ewarn "needs to be moved to ${EROOT}/etc/wpa_supplicant/wpa_supplicant.conf"
+	fi
+	if ! use wep; then
+		einfo "WARNING: You are building with WEP support disabled, which is recommended since"
+		einfo "this protocol is deprecated and insecure.  If you still need to connect to"
+		einfo "WEP-enabled networks, you may turn this flag back on.  With this flag off,"
+		einfo "WEP-enabled networks will not even show up as available."
+		einfo "If your network is missing you may wish to USE=wep"
+	fi
+	if ! use tkip; then
+		ewarn "WARNING: You are building with TKIP support disabled, which is recommended since"
+		ewarn "this protocol is deprecated and insecure.  If you still need to connect to"
+		ewarn "TKIP-enabled networks, you may turn this flag back on.  With this flag off,"
+		ewarn "TKIP-enabled networks, including mixed mode TKIP/AES-CCMP will not even show up"
+		ewarn "as available.  If your network is missing you may wish to USE=tkip"
 	fi
 
 	# Mea culpa, feel free to remove that after some time --mgorny.

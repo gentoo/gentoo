@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 RDEPEND="sys-apps/makedev"
 
 pkg_pretend() {
-	abort() {
+	bailout() {
 		eerror "We have detected that you currently use udev or devfs or devtmpfs"
 		eerror "and this ebuild cannot install to the same mount-point."
 		die "Cannot install on udev/devfs tmpfs."
@@ -26,13 +26,13 @@ pkg_pretend() {
 
 	# We want to not clobber udev (tmpfs) or older devfs setups.
 	if [[ -d ${ROOT}/dev/.udev || -c ${ROOT}/dev/.devfs ]] ; then
-		abort
+		bailout
 	fi
 
 	# We also want to not clobber newer devtmpfs setups.
 	if [[ -z ${ROOT} ]] && \
 	   ! awk '$2 == "/dev" && $3 == "devtmpfs" { exit 1 }' /proc/mounts ; then
-		abort
+		bailout
 	fi
 }
 

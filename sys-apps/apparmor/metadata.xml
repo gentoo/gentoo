@@ -10,6 +10,7 @@
 		<name>Gentoo Hardened</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:canonical:apparmor</remote-id>
 		<remote-id type="launchpad">apparmor</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,17 +1,7 @@
-From 5ecc80d27276ba978b8c0268aab722fe8f09b394 Mon Sep 17 00:00:00 2001
-From: James Le Cuirot <chewi@gentoo.org>
-Date: Sat, 20 Feb 2021 12:22:24 +0000
-Subject: [PATCH] Unbundle the DUMB library
-
----
- src/Application/App.cpp   | 2 +-
- src/Audio/ModMusic.cpp    | 2 +-
- src/CMakeLists.txt        | 4 +++-
- thirdparty/CMakeLists.txt | 1 -
- 4 files changed, 5 insertions(+), 4 deletions(-)
+https://github.com/sirjuddington/SLADE/pull/1413
 
 diff --git a/src/Application/App.cpp b/src/Application/App.cpp
-index 936a8212..2960ca1d 100644
+index dddaf875..ede8d73c 100644
 --- a/src/Application/App.cpp
 +++ b/src/Application/App.cpp
 @@ -60,7 +60,7 @@
@@ -37,41 +27,122 @@ index cc4b60cf..6d54516d 100644
  using namespace slade;
  using namespace audio;
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index fef3d009..5363802c 100644
+index fef3d009..00dbb018 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -107,6 +107,7 @@ if (NOT NO_LUA)
- 	find_package(Lua REQUIRED)
- endif()
- find_package(MPG123 REQUIRED)
-+pkg_check_modules(DUMB REQUIRED dumb>=1.0)
- include_directories(
- 	${FREEIMAGE_INCLUDE_DIR}
- 	${SFML_INCLUDE_DIR}
-@@ -114,9 +115,9 @@ include_directories(
- 	${FTGL_INCLUDE_DIR}
- 	${LUA_INCLUDE_DIR}
+@@ -116,7 +116,6 @@ include_directories(
  	${MPG123_INCLUDE_DIR}
-+	${DUMB_INCLUDE_DIRS}
  	.
  	..
 -	../thirdparty/dumb
  	../thirdparty/glad/include
  	./Application
  	)
-@@ -201,6 +202,7 @@ target_link_libraries(slade
- 	${OPENGL_LIBRARIES}
- 	${LUA_LIBRARIES}
- 	${MPG123_LIBRARIES}
-+	${DUMB_LIBRARIES}
- )
+@@ -235,7 +234,7 @@ else(APPLE)
+ 		install(FILES "${SLADE_OUTPUT_DIR}/slade.pk3"
+ 			DESTINATION share/slade3
+ 			)
+-		
++
+ 		install(FILES "${PROJECT_SOURCE_DIR}/dist/res/logo_icon.png"
+ 			DESTINATION share/icons/
+ 			RENAME net.mancubus.SLADE.png
+diff --git a/src/General/CVar.cpp b/src/General/CVar.cpp
+index 460a7852..5e171446 100644
+--- a/src/General/CVar.cpp
++++ b/src/General/CVar.cpp
+@@ -32,7 +32,7 @@
+ // -----------------------------------------------------------------------------
+ #include "Main.h"
+ #include "Utility/StringUtils.h"
+-#include "thirdparty/fmt/include/fmt/format.h"
++#include <fmt/format.h>
  
- if(LINUX)
+ using namespace slade;
+ 
+diff --git a/src/General/Log.cpp b/src/General/Log.cpp
+index 9ad0718f..8d39f644 100644
+--- a/src/General/Log.cpp
++++ b/src/General/Log.cpp
+@@ -31,8 +31,8 @@
+ // -----------------------------------------------------------------------------
+ #include "Main.h"
+ #include "App.h"
+-#include "thirdparty/fmt/include/fmt/chrono.h"
+-#include "thirdparty/fmt/include/fmt/format.h"
++#include <fmt/chrono.h>
++#include <fmt/format.h>
+ #include <fstream>
+ 
+ using namespace slade;
+diff --git a/src/TextEditor/TextStyle.cpp b/src/TextEditor/TextStyle.cpp
+index 09f4e405..ad51ec0a 100644
+--- a/src/TextEditor/TextStyle.cpp
++++ b/src/TextEditor/TextStyle.cpp
+@@ -43,7 +43,7 @@
+ #include "Utility/Parser.h"
+ #include "Utility/StringUtils.h"
+ #include "Utility/Tokenizer.h"
+-#include "thirdparty/fmt/include/fmt/format.h"
++#include <fmt/format.h>
+ 
+ using namespace slade;
+ 
+diff --git a/src/UI/Browser/BrowserItem.cpp b/src/UI/Browser/BrowserItem.cpp
+index 89c0f39c..3f056f71 100644
+--- a/src/UI/Browser/BrowserItem.cpp
++++ b/src/UI/Browser/BrowserItem.cpp
+@@ -126,7 +126,7 @@ void BrowserItem::draw(
+ 		// Create text box if needed
+ 		if (!text_box_)
+ 			text_box_ = std::make_unique<TextBox>(
+-				fmt::format("{}\n{}", index_, name_.c_str()), font, ui::scalePx(144), ui::scalePx(16));
++				fmt::format("{}\n{}", index_, name_.mb_str()), font, ui::scalePx(144), ui::scalePx(16));
+ 
+ 		int top = y;
+ 		top += ((size - text_box_->height()) * 0.5);
+diff --git a/src/UI/SToolBar/SToolBar.cpp b/src/UI/SToolBar/SToolBar.cpp
+index f38710ad..c002bf97 100644
+--- a/src/UI/SToolBar/SToolBar.cpp
++++ b/src/UI/SToolBar/SToolBar.cpp
+@@ -219,7 +219,7 @@ void SToolBarGroup::hide(bool hide)
+ 
+ 	// Update 'hidden toolbars' cvar
+ 	string tb_hidden = toolbars_hidden;
+-	auto   name      = fmt::format("[{}]", name_.c_str());
++	auto   name      = fmt::format("[{}]", name_.mb_str());
+ 	if (hide)
+ 		tb_hidden += name;
+ 	else
+diff --git a/src/common.h b/src/common.h
+index 8c3c4b3b..d66cbc04 100644
+--- a/src/common.h
++++ b/src/common.h
+@@ -129,7 +129,7 @@
+ #endif
+ 
+ // fmt
+-#include "thirdparty/fmt/include/fmt/core.h"
++#include <fmt/core.h>
+ 
+ // Sigslot
+ #include "thirdparty/sigslot/signal.hpp"
 diff --git a/thirdparty/CMakeLists.txt b/thirdparty/CMakeLists.txt
-index f84cfc8a..2622852b 100644
+index f84cfc8a..6cb9e0af 100644
 --- a/thirdparty/CMakeLists.txt
 +++ b/thirdparty/CMakeLists.txt
-@@ -10,7 +10,6 @@ set(BZIP2_LIBRARIES ${BZIP2_LIBRARIES} PARENT_SCOPE)
+@@ -6,20 +6,33 @@ find_package(BZip2 REQUIRED)
+ set(ZLIB_LIBRARY ${ZLIB_LIBRARY} PARENT_SCOPE)
+ set(BZIP2_LIBRARIES ${BZIP2_LIBRARIES} PARENT_SCOPE)
+ 
++option(USE_SYSTEM_DUMB "Use system DUMB library" OFF)
++if(USE_SYSTEM_DUMB)
++	pkg_check_modules(DUMB REQUIRED IMPORTED_TARGET dumb>=1.0)
++else()
++	file(GLOB_RECURSE DUMB_SOURCES dumb/*.c)
++endif()
++
+ # Roll the rest up into a big ball and compile it by itself
  set(EXTERNAL_SOURCES
  )
  file(GLOB_RECURSE EXTERNAL_SOURCES
@@ -79,6 +150,33 @@ index f84cfc8a..2622852b 100644
  	lzma/C/LzmaDec.c
  	mus2mid/mus2mid.cpp
  	zreaders/*.cpp
--- 
-2.34.1
-
+ 	glad/src/*.c
++	${DUMB_SOURCES}
+ 	${SLADE_HEADERS}
+ 	)
+ 
+ # Add fmt
+-add_subdirectory(fmt)
++option(USE_SYSTEM_FMT "Use system fmt library" OFF)
++if(USE_SYSTEM_FMT)
++	find_package(fmt REQUIRED)
++else()
++	add_subdirectory(fmt)
++	target_include_directories(fmt INTERFACE ${CMAKE_CURRENT_LIST_DIR}/fmt/include)
++endif()
+ 
+ # Add lunasvg
+ add_library(lunasvg STATIC)
+@@ -29,5 +42,11 @@ add_subdirectory(lunasvg/3rdparty/software)
+ add_subdirectory(lunasvg/3rdparty/plutovg)
+ 
+ add_library(external STATIC ${EXTERNAL_SOURCES})
+-target_link_libraries(external ${ZLIB_LIBRARY} lunasvg fmt ${CMAKE_DL_LIBS})
++target_link_libraries(external ${ZLIB_LIBRARY} lunasvg fmt::fmt ${CMAKE_DL_LIBS})
+ set(EXTERNAL_LIBRARIES external PARENT_SCOPE)
++
++if(USE_SYSTEM_DUMB)
++	target_link_libraries(external PkgConfig::DUMB)
++else()
++	target_include_directories(external PUBLIC ${CMAKE_CURRENT_LIST_DIR}/dumb)
++endif()

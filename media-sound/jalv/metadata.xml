@@ -14,8 +14,4 @@
 	To make it simple to test plugins in hosts that use different toolkits, there are several Jalv executables: jalv, jalv.gtk, jalv.gtkmm, and jalv.qt.
 </longdescription>
 
-<use>
-	<flag name="gtkmm"> Adds support for <pkg>dev-cpp/gtkmm</pkg>: C++ interface for GTK+2</flag>
-</use>
-
 </pkgmetadata>

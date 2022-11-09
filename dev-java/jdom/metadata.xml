@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">hunterhacker/jdom</remote-id>
 	</upstream>
+	<longdescription>
+		JDOM is a Java-oriented object model which models XML documents.  It provides a Java-centric means of generating and manipulating XML documents. While JDOM interoperates well with existing standards such as the Simple API for XML (SAX) and the Document Object Model (DOM), it is not an abstraction layer or enhancement to those APIs. Rather, it seeks to provide a robust, light-weight means of reading and writing XML data without the complex and memory-consumptive options that current API offerings provide.
+	</longdescription>
 </pkgmetadata>

@@ -77,7 +77,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
-		dev-libs/boost[threads(+)]
+		dev-libs/boost
 		app-arch/bzip2
 		dev-ros/rosout
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")

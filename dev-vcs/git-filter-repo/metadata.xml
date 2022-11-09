@@ -5,7 +5,9 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">newren/git-filter-repo</remote-id>
+		<remote-id type="pypi">git-filter-repo</remote-id>
 	</upstream>
 </pkgmetadata>

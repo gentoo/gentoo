@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 inherit multilib toolchain-funcs multilib-minimal flag-o-matic
 
@@ -26,6 +26,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-swf_vertification_type_2.patch"
 	"${FILESDIR}/${PN}-swf_vertification_type_2_part_2.patch"
+	"${FILESDIR}/${PN}-fix-chunk-size.patch"
 )
 
 if [[ ${PV} == *9999 ]] ; then
@@ -33,9 +34,9 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.ffmpeg.org/rtmpdump.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-	SRC_URI="http://git.ffmpeg.org/gitweb/rtmpdump.git/snapshot/c5f04a58fc2aeea6296ca7c44ee4734c18401aa3.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-c5f04a5"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	SRC_URI="https://git.ffmpeg.org/gitweb/rtmpdump.git/snapshot/f1b83c10d8beb43fcc70a6e88cf4325499f25857.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-f1b83c1"
 fi
 
 pkg_setup() {

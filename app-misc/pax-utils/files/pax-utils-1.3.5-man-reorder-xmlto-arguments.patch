@@ -1,0 +1,30 @@
+From 2d981305b117b669c60bede076557c2d765cf198 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 7 Sep 2022 20:13:00 -0400
+Subject: [PATCH] man: reorder xmlto arguments
+
+Bug: https://bugs.gentoo.org/869110
+Thanks-to: Fabian Groffen <grobian@gentoo.org>
+Signed-off-by: Mike Gilbert <floppym@gentoo.org>
+---
+ man/meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/man/meson.build b/man/meson.build
+index fc8d183..2e346ec 100644
+--- a/man/meson.build
++++ b/man/meson.build
+@@ -25,8 +25,8 @@ endforeach
+ 
+ custom_target('docbook_to_man',
+   command : [
+-    xmlto, 'man', '-x', files('custom.xsl'), '--skip-validation', book,
+-    '-o', meson.current_build_dir()
++    xmlto, '-x', files('custom.xsl'), '--skip-validation',
++    '-o', meson.current_build_dir(), 'man', book
+   ],
+   input : [
+     'pax-utils.docbook.in', 'custom.xsl', 'fragment/reftail',
+-- 
+2.37.3
+

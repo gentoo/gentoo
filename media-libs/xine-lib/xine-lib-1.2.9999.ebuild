@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic libtool
 
@@ -24,7 +24,7 @@ HOMEPAGE="http://xine.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="1"
-IUSE="a52 aac aalib +alsa altivec bluray +css dav1d dts dvb dxr3 fbcon flac gtk imagemagick ipv6 jack jpeg libcaca mad +mmap mng modplug musepack nfs opengl oss pulseaudio samba sftp sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack wayland +X xinerama +xv xvmc ${NLS_IUSE}"
+IUSE="a52 aac aalib +alsa bluray cpu_flags_ppc_altivec +css dav1d dts dvb dxr3 fbcon flac gtk imagemagick ipv6 jack jpeg libcaca mad +mmap mng modplug musepack nfs opengl oss pulseaudio samba sftp sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack wayland +X xinerama +xv xvmc ${NLS_IUSE}"
 
 BDEPEND="
 	app-arch/xz-utils
@@ -34,7 +34,7 @@ BDEPEND="
 RDEPEND="
 	dev-libs/libxdg-basedir
 	media-libs/libdvdnav
-	media-video/ffmpeg:0=
+	media-video/ffmpeg:=
 	sys-libs/zlib:=
 	virtual/libiconv
 	a52? ( media-libs/a52dec )
@@ -46,11 +46,11 @@ RDEPEND="
 	dav1d? ( media-libs/dav1d:= )
 	dts? ( media-libs/libdca )
 	dxr3? ( media-libs/libfame )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac:= )
 	gtk? ( x11-libs/gdk-pixbuf:2 )
 	imagemagick? ( virtual/imagemagick-tools )
 	jack? ( virtual/jack )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	libcaca? ( media-libs/libcaca )
 	mad? ( media-libs/libmad )
 	mng? ( media-libs/libmng:= )
@@ -78,23 +78,23 @@ RDEPEND="
 		media-libs/freetype:2
 	)
 	v4l? ( media-libs/libv4l )
-	vaapi? ( x11-libs/libva:0=[X,opengl] )
+	vaapi? ( media-libs/libva:=[X] )
 	vcd? (
 		>=media-video/vcdimager-0.7.23
-		dev-libs/libcdio:0=[-minimal]
+		dev-libs/libcdio:=[-minimal]
 	)
 	vdpau? ( x11-libs/libvdpau )
 	vorbis? (
 		media-libs/libogg
 		media-libs/libvorbis
 	)
-	vpx? ( media-libs/libvpx:0= )
+	vpx? ( media-libs/libvpx:= )
 	wavpack? ( media-sound/wavpack )
 	wayland? ( dev-libs/wayland )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXext
-		x11-libs/libxcb
+		x11-libs/libxcb:=
 	)
 	xinerama? ( x11-libs/libXinerama )
 	xv? ( x11-libs/libXv )
@@ -163,7 +163,7 @@ src_configure() {
 		$(use_enable a52 a52dec)
 		$(use_enable aac faad)
 		$(use_enable aalib)
-		$(use_enable altivec)
+		$(use_enable cpu_flags_ppc_altivec altivec)
 		$(use_enable bluray)
 		$(use_enable dts)
 		$(use_enable dvb)

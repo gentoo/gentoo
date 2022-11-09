@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit linux-mod toolchain-funcs
 
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	COMMIT="23891174a80ea79c7720bcc7048a5c2bfcde5cd9"
 	SRC_URI="https://github.com/Bumblebee-Project/bbswitch/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/bbswitch-${COMMIT}"
 fi
 
@@ -30,6 +30,8 @@ DEPEND="
 RDEPEND=""
 
 MODULE_NAMES="bbswitch(acpi)"
+
+PATCHES=( "${FILESDIR}/${PN}-kernel-5.18.patch" )
 
 pkg_setup() {
 	linux-mod_pkg_setup

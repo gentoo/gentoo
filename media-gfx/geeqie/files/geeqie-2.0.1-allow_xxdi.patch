@@ -1,0 +1,17 @@
+diff -Naur geeqie-2.0.1.orig/scripts/generate-ClayRGB1998-icc-h.sh geeqie-2.0.1/scripts/generate-ClayRGB1998-icc-h.sh
+--- geeqie-2.0.1.orig/scripts/generate-ClayRGB1998-icc-h.sh	2022-08-12 11:32:26.000000000 +0200
++++ geeqie-2.0.1/scripts/generate-ClayRGB1998-icc-h.sh	2022-10-17 23:04:08.203219782 +0200
+@@ -12,9 +12,12 @@
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU General Public License for more details.
+ 
++# Allow standalone replacement for xxd
++command -v xxdi.pl >/dev/null 2>&1 && XXD="xxdi.pl" || XXD="xxd -i"
++
+ # To generate the required code, xxd has to run in the same folder as the source
+ build_dir="$PWD"
+ 
+ cd "$(dirname "$1")" || return 1
+ 
+-xxd -i "$(basename "$1")" "$build_dir/$2"
++${XXD} "$(basename "$1")" > "$build_dir/$2"

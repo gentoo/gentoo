@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_MAX_SLOT=13
+LLVM_MAX_SLOT=15
 inherit cmake llvm check-reqs
 
 DESCRIPTION="A robust, optimal, and maintainable programming language"
@@ -18,37 +18,36 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test +stage2"
-RESTRICT="!test? ( test )"
 
 BUILD_DIR="${S}/build"
 
-# According to zig's author, zig builds that do not support all targets are not
-# supported by the upstream project.
-ALL_LLVM_TARGETS=(
-	AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
-	PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
-)
-ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
-LLVM_TARGET_USEDEPS="${ALL_LLVM_TARGETS[@]}"
+# Zig requires zstd and zlib compression support in LLVM, if using LLVM backend (non-LLVM backends don't require these).
+# They are not required "on their own", so please don't add them here.
+# You can check https://github.com/ziglang/zig-bootstrap in future, to see
+# options that are passed to LLVM CMake building (excluding "static" ofc).
+DEPEND="
+	sys-devel/clang:${LLVM_MAX_SLOT}=
+	sys-devel/lld:${LLVM_MAX_SLOT}=
+	sys-devel/llvm:${LLVM_MAX_SLOT}=[zstd]
+"
 
 RDEPEND="
-	sys-devel/clang:${LLVM_MAX_SLOT}
-	>=sys-devel/lld-${LLVM_MAX_SLOT}
-	<sys-devel/lld-$((${LLVM_MAX_SLOT} + 1))
-	sys-devel/llvm:${LLVM_MAX_SLOT}[${LLVM_TARGET_USEDEPS// /,}]
+	${DEPEND}
+	!dev-lang/zig-bin
 "
-DEPEND="${RDEPEND}"
+
+# see https://github.com/ziglang/zig/issues/3382
+QA_FLAGS_IGNORED="usr/bin/zig"
+
+# see https://ziglang.org/download/0.10.0/release-notes.html#Self-Hosted-Compiler
+# 0.10.0 release - 9.6 GiB, since we use compiler written in C++ for bootstrapping
+# 0.11.0 release - ~2.8 GiB, since we will (at least according to roadmap) use self-hosted compiler
+# (transpiled to C via C backend) for bootstrapping
+CHECKREQS_MEMORY="10G"
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
 }
-
-# see https://github.com/ziglang/zig/wiki/Troubleshooting-Build-Issues#high-memory-requirements
-CHECKREQS_MEMORY="10G"
-
-# see https://github.com/ziglang/zig/issues/11137
-PATCHES=( "${FILESDIR}/${P}-stage2-fix.patch" )
 
 pkg_setup() {
 	llvm_pkg_setup
@@ -58,36 +57,14 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-DZIG_USE_CCACHE=OFF
-		-DZIG_PREFER_CLANG_CPP_DYLIB=ON
+		-DZIG_SHARED_LLVM=ON
+		-DCMAKE_PREFIX_PATH=$(get_llvm_prefix ${LLVM_MAX_SLOT})
 	)
 
 	cmake_src_configure
 }
 
-src_compile() {
-	cmake_src_compile
-
-	if use stage2 ; then
-		cd "${BUILD_DIR}" || die
-		./zig build -p stage2 -Dstatic-llvm=false -Denable-llvm=true || die
-	fi
-}
-
 src_test() {
 	cd "${BUILD_DIR}" || die
-	./zig build test || die
-}
-
-src_install() {
-	cmake_src_install
-
-	if use stage2 ; then
-		cd "${BUILD_DIR}" || die
-		mv ./stage2/bin/zig zig-stage2 || die
-		dobin zig-stage2
-	fi
-}
-
-pkg_postinst() {
-	use stage2 && elog "You enabled stage2 USE flag, Zig stage1 was installed as /usr/bin/zig, Zig stage2 was installed as /usr/bin/zig-stage2"
+	./zig2 build test -Dstatic-llvm=false -Denable-llvm=true -Dskip-non-native=true || die
 }

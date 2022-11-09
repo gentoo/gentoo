@@ -18,7 +18,4 @@
 	<upstream>
 		<remote-id type="github">Keriew/augustus</remote-id>
 	</upstream>
-	<use>
-		<flag name="uncapped">Uncap grand temple count</flag>
-	</use>
 </pkgmetadata>

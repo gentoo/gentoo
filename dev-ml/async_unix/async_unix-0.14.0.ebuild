@@ -16,7 +16,7 @@ IUSE="+ocamlopt"
 
 RDEPEND="
 	dev-ml/async_kernel:=
-	dev-ml/core:=
+	=dev-ml/core-0.14*:=
 	dev-ml/core_kernel:=
 	dev-ml/ppx_jane:=
 "

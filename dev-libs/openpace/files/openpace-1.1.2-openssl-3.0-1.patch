@@ -1,0 +1,25 @@
+From 8b2c8a76873da4862dbf4240c901f3e6d4bc040a Mon Sep 17 00:00:00 2001
+From: Frank Morgner <frankmorgner@gmail.com>
+Date: Sat, 18 Dec 2021 00:15:39 +0100
+Subject: [PATCH] fixed outdated API usage of BN_zero
+
+returns void since 0.9.8
+---
+ src/eac.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/eac.c b/src/eac.c
+index ea84253..9dccd79 100644
+--- a/src/eac.c
++++ b/src/eac.c
+@@ -105,7 +105,9 @@ int EAC_reset_ssc(const EAC_CTX *ctx)
+     if (!ctx)
+         return 0;
+ 
+-    return BN_zero(ctx->ssc);
++    BN_zero(ctx->ssc);
++
++    return 1;
+ }
+ 
+ int EAC_set_ssc(const EAC_CTX *ctx, unsigned long ssc)

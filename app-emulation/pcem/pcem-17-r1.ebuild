@@ -45,6 +45,11 @@ src_configure() {
 	# See https://pcem-emulator.co.uk/phpBB3/viewtopic.php?f=3&t=3443
 	append-cflags -fcommon
 
+	# LTO needs to be filtered
+	# See https://bugs.gentoo.org/854528
+	filter-lto
+	append-flags -fno-strict-aliasing
+
 	local myeconfargs=(
 		--enable-release-build
 		$(use_enable alsa)

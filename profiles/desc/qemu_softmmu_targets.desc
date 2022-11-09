@@ -12,6 +12,7 @@ avr - system emulation target
 cris - system emulation target
 hppa - system emulation target
 i386 - system emulation target
+loongarch64 - system emulation target
 m68k - system emulation target
 microblazeel - system emulation target
 microblaze - system emulation target

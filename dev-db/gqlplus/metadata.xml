@@ -13,5 +13,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">gqlplus</remote-id>
+		<remote-id type="gitlab">jessp011/gqlplus</remote-id>
 	</upstream>
 </pkgmetadata>

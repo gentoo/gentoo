@@ -8,9 +8,9 @@
   <longdescription>
   These are patterns (protocol definitions) for the Linux layer 7 packet
   classifier (l7-filter). To use them, you need the l7-filter userspace version
-  available trough ebuild tree as net-misc/l7-filter and net-firewall/iptables
+  available trough ebuild tree as net-misc/l7-filter and <pkg>net-firewall/iptables</pkg>
   built with netlink USE flag.
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">l7-filter</remote-id>
   </upstream>

@@ -329,6 +329,7 @@ elisp-make-autoload-file() {
 	EOF
 
 	${EMACS} ${EMACSFLAGS} \
+		--eval "(require 'autoload)" \
 		--eval "(setq make-backup-files nil)" \
 		--eval "(setq generated-autoload-file (expand-file-name \"${f}\"))" \
 		-f batch-update-autoloads "${@-.}"

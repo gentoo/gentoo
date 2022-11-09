@@ -1,0 +1,151 @@
+https://github.com/jrfonseca/xdot.py/issues/92
+https://bugs.gentoo.org/873490
+
+From 2ace1a12d78423d9e7af20fdb0bca34827010408 Mon Sep 17 00:00:00 2001
+From: Jose Fonseca <jose.r.fonseca@gmail.com>
+Date: Tue, 28 Sep 2021 13:19:49 +0100
+Subject: [PATCH] Handle xdot backslashes correctly.
+
+Irrespectively of graphviz version.
+
+Fixes https://github.com/jrfonseca/xdot.py/issues/92
+---
+ tests/issue_92_a.dot |  3 +++
+ tests/issue_92_b.dot |  3 +++
+ xdot/dot/parser.py   | 26 +++++++++++++++++++++-----
+ xdot/ui/window.py    | 11 ++++++++++-
+ 4 files changed, 37 insertions(+), 6 deletions(-)
+ create mode 100644 tests/issue_92_a.dot
+ create mode 100644 tests/issue_92_b.dot
+
+diff --git a/tests/issue_92_a.dot b/tests/issue_92_a.dot
+new file mode 100644
+index 0000000..ea486b0
+--- /dev/null
++++ b/tests/issue_92_a.dot
+@@ -0,0 +1,3 @@
++digraph {
++   1 [label="a\\00"]
++}
+diff --git a/tests/issue_92_b.dot b/tests/issue_92_b.dot
+new file mode 100644
+index 0000000..ba90566
+--- /dev/null
++++ b/tests/issue_92_b.dot
+@@ -0,0 +1,3 @@
++digraph {
++   1 [label="a\\b"]
++}
+diff --git a/xdot/dot/parser.py b/xdot/dot/parser.py
+index 4244e03..6578c23 100644
+--- a/xdot/dot/parser.py
++++ b/xdot/dot/parser.py
+@@ -14,8 +14,11 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #
+ import colorsys
++import re
+ import sys
+ 
++from distutils.version import LooseVersion
++
+ from .lexer import ParseError, DotLexer
+ 
+ from ..ui.colors import lookup_color
+@@ -85,7 +88,14 @@ class XDotAttrParser:
+     - http://www.graphviz.org/doc/info/output.html#d:xdot
+     """
+ 
+-    def __init__(self, parser, buf):
++    def __init__(self, parser, buf, broken_backslashes):
++
++        # `\` should be escaped as `\\`, but older versions of graphviz xdot
++        # output failed to properly escape it.  See also
++        # https://github.com/jrfonseca/xdot.py/issues/92
++        if not broken_backslashes:
++            buf = re.sub(br'\\(.)', br'\1', buf)
++
+         self.parser = parser
+         self.buf = buf
+         self.pos = 0
+@@ -427,10 +437,16 @@ class XDotParser(DotParser):
+ 
+     XDOTVERSION = '1.7'
+ 
+-    def __init__(self, xdotcode):
++    def __init__(self, xdotcode, graphviz_version=None):
+         lexer = DotLexer(buf=xdotcode)
+         DotParser.__init__(self, lexer)
+ 
++        # https://github.com/jrfonseca/xdot.py/issues/92
++        self.broken_backslashes = False
++        if graphviz_version is not None and \
++                LooseVersion(graphviz_version) < LooseVersion("2.46.0"):
++            self.broken_backslashes = True
++
+         self.nodes = []
+         self.edges = []
+         self.shapes = []
+@@ -480,7 +496,7 @@ def handle_graph(self, attrs):
+ 
+         for attr in ("_draw_", "_ldraw_", "_hdraw_", "_tdraw_", "_hldraw_", "_tldraw_"):
+             if attr in attrs:
+-                parser = XDotAttrParser(self, attrs[attr])
++                parser = XDotAttrParser(self, attrs[attr], self.broken_backslashes)
+                 self.shapes.extend(parser.parse())
+ 
+     def handle_node(self, id, attrs):
+@@ -502,7 +518,7 @@ def handle_node(self, id, attrs):
+         shapes = []
+         for attr in ("_draw_", "_ldraw_"):
+             if attr in attrs:
+-                parser = XDotAttrParser(self, attrs[attr])
++                parser = XDotAttrParser(self, attrs[attr], self.broken_backslashes)
+                 shapes.extend(parser.parse())
+         try:
+             url = attrs['URL']
+@@ -525,7 +541,7 @@ def handle_edge(self, src_id, dst_id, attrs):
+         shapes = []
+         for attr in ("_draw_", "_ldraw_", "_hdraw_", "_tdraw_", "_hldraw_", "_tldraw_"):
+             if attr in attrs:
+-                parser = XDotAttrParser(self, attrs[attr])
++                parser = XDotAttrParser(self, attrs[attr], self.broken_backslashes)
+                 shapes.extend(parser.parse())
+         if shapes:
+             src = self.node_by_name[src_id]
+diff --git a/xdot/ui/window.py b/xdot/ui/window.py
+index 893bd1d..e27f000 100644
+--- a/xdot/ui/window.py
++++ b/xdot/ui/window.py
+@@ -56,6 +56,7 @@ class DotWidget(Gtk.DrawingArea):
+     }
+ 
+     filter = 'dot'
++    graphviz_version = None
+ 
+     def __init__(self):
+         Gtk.DrawingArea.__init__(self)
+@@ -100,6 +101,7 @@ def error_dialog(self, message):
+ 
+     def set_filter(self, filter):
+         self.filter = filter
++        self.graphviz_version = None
+ 
+     def run_filter(self, dotcode):
+         if not self.filter:
+@@ -153,7 +155,14 @@ def set_dotcode(self, dotcode, filename=None, center=True):
+ 
+     def set_xdotcode(self, xdotcode, center=True):
+         assert isinstance(xdotcode, bytes)
+-        parser = XDotParser(xdotcode)
++        if self.graphviz_version is None:
++            stdout = subprocess.check_output([self.filter, '-V'], stderr=subprocess.STDOUT)
++            stdout = stdout.rstrip()
++            mo = re.match(br'^.* - .* version (?P<version>.*) \(.*\)$', stdout)
++            assert mo
++            self.graphviz_version = mo.group('version').decode('ascii')
++
++        parser = XDotParser(xdotcode, graphviz_version=self.graphviz_version)
+         self.graph = parser.parse()
+         self.zoom_image(self.zoom_ratio, center=center)
+ 

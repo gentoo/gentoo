@@ -20,7 +20,7 @@ SRC_URI="https://fastdl.mongodb.org/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 -riscv"
+KEYWORDS="amd64 ~arm64 -riscv"
 IUSE="debug kerberos lto ssl test +tools"
 RESTRICT="!test? ( test )"
 
@@ -28,7 +28,7 @@ RDEPEND="acct-group/mongodb
 	acct-user/mongodb
 	>=app-arch/snappy-1.1.3:=
 	>=dev-cpp/yaml-cpp-0.6.2:=
-	>=dev-libs/boost-1.70:=[threads(+),nls]
+	dev-libs/boost:=[nls]
 	>=dev-libs/libpcre-8.42[cxx]
 	app-arch/zstd:=
 	dev-libs/snowball-stemmer:=
@@ -40,6 +40,10 @@ RDEPEND="acct-group/mongodb
 	)"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
+	sys-libs/ncurses:0=
+	sys-libs/readline:0=
+	debug? ( dev-util/valgrind )"
+BDEPEND="
 	$(python_gen_any_dep '
 		test? ( dev-python/pymongo[${PYTHON_USEDEP}] dev-python/requests[${PYTHON_USEDEP}] )
 		>=dev-util/scons-3.1.1[${PYTHON_USEDEP}]
@@ -47,9 +51,7 @@ DEPEND="${RDEPEND}
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
-	sys-libs/ncurses:0=
-	sys-libs/readline:0=
-	debug? ( dev-util/valgrind )"
+"
 PDEPEND="tools? ( >=app-admin/mongo-tools-100 )"
 
 PATCHES=(
@@ -58,20 +60,22 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.1-boost.patch"
 	"${FILESDIR}/${PN}-4.4.1-gcc11.patch"
 	"${FILESDIR}/${PN}-5.0.2-glibc-2.34.patch"
+	"${FILESDIR}/${PN}-4.4.10-boost-1.79.patch"
+	"${FILESDIR}/${PN}-4.4.10-no-force-lld.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
 
 python_check_deps() {
 	if use test; then
-		has_version "dev-python/pymongo[${PYTHON_USEDEP}]" || return 1
-		has_version "dev-python/requests[${PYTHON_USEDEP}]" || return 1
+		python_has_version "dev-python/pymongo[${PYTHON_USEDEP}]" || return 1
+		python_has_version "dev-python/requests[${PYTHON_USEDEP}]" || return 1
 	fi
 
-	has_version ">=dev-util/scons-2.5.0[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/cheetah3[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/psutil[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
+	python_has_version ">=dev-util/scons-3.1.1[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/cheetah3[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/psutil[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
 }
 
 pkg_pretend() {
@@ -120,6 +124,10 @@ src_configure() {
 	use kerberos && scons_opts+=( --use-sasl-client )
 	use lto && scons_opts+=( --lto=on )
 	use ssl && scons_opts+=( --ssl )
+
+	# Needed to avoid forcing FORTIFY_SOURCE
+	# Gentoo's toolchain applies these anyway
+	scons_opts+=( --runtime-hardening=off )
 
 	# respect mongoDB upstream's basic recommendations
 	# see bug #536688 and #526114

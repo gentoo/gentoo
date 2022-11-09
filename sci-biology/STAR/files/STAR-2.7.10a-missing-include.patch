@@ -1,0 +1,22 @@
+From f5ad94329db4fd81fc6ae30684c298772002e30b Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Sat, 7 May 2022 15:06:11 +0200
+Subject: [PATCH] Add missing `#include <array>` (GCC 12)
+
+Bug: https://bugs.gentoo.org/840586
+---
+ source/SoloCommon.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/source/SoloCommon.h b/source/SoloCommon.h
+index 2a1d5fcf..5adc5040 100644
+--- a/source/SoloCommon.h
++++ b/source/SoloCommon.h
+@@ -1,6 +1,7 @@
+ #ifndef H_SoloCommon
+ #define H_SoloCommon
+ 
++#include <array>
+ #include <unordered_map>
+ 
+ typedef struct{

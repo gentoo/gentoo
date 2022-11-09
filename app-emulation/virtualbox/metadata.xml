@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>polynomial-c@gentoo.org</email>
-    <name>Lars Wendler</name>
+    <email>ceamac@gentoo.org</email>
+    <name>Viorel Munteanu</name>
   </maintainer>
   <use>
   <flag name="dtrace">Install dtrace Extension Pack</flag>

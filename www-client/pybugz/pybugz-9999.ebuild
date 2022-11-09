@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
-PYTHON_REQ_USE="readline(+)"
+PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_REQ_USE="readline(+),ssl(+)"
 
 if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/williamh/pybugz.git"

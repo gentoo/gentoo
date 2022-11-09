@@ -21,7 +21,7 @@ S="${WORKDIR}/httpdomain-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	dev-python/sphinx[${PYTHON_USEDEP}]
@@ -31,7 +31,7 @@ BDEPEND="
 	test? (
 		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/bottle[${PYTHON_USEDEP}]
-		www-servers/tornado[${PYTHON_USEDEP}]
+		dev-python/tornado[${PYTHON_USEDEP}]
 	)
 "
 

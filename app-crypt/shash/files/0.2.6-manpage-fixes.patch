@@ -1,6 +1,5 @@
-diff -pruN shash-0.2.6/doc/shash.1 shash-0.2.6-r1/doc/shash.1
---- shash-0.2.6/doc/shash.1	2004-09-18 09:51:04.004647112 +0100
-+++ shash-0.2.6-r1/doc/shash.1	2004-09-18 09:57:26.062565480 +0100
+--- a/doc/shash.1
++++ b/doc/shash.1
 @@ -31,7 +31,7 @@ Because of this shash also supports HMAC
  a mechanism for message authentication using cryptographic hash functions.
  So shash can use a key with a hash algorithm to produce hashes that can only

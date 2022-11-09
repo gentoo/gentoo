@@ -23,6 +23,10 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 IUSE="static-libs"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2020.12.1-musl-u-char.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PYTHON=OFF

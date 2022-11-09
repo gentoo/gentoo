@@ -1,0 +1,52 @@
+From 2ffdf26b81a90c91abadbc8582f82d219dd19e90 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 27 Nov 2021 12:49:09 +0100
+Subject: [PATCH] Add CMake option to build WITHOUT_X11
+
+We want to be able to build without X11 support even if some of the used
+libraries may not work w/o X11 themselves yet or need to be built with
+X11 support for other reverse dependencies.
+
+HAVE_X11 already exists and is set automagically so far, but using
+-DCMAKE_DISABLE_FIND_PACKAGE_X11 will break if any dependencies list X11
+as required in their cmake config.
+
+Introducing this option means there is no behavior change by default,
+cmake will just skip finding X11 or adding unwanted features if the
+option is enabled.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 22ebcb42..d1b0b5fe 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -132,13 +132,16 @@ endif()
+ set_package_properties(KF5KDcraw PROPERTIES URL "https://invent.kde.org/graphics/libkdcraw/" DESCRIPTION "C++ interface around LibRaw library used to decode RAW picture files" TYPE OPTIONAL)
+ 
+ 
+-find_package(X11)
+-if(X11_FOUND)
+-    if (QT_MAJOR_VERSION STREQUAL "5")
+-        find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED X11Extras)
++option(WITHOUT_X11 "Build without X11 integration (disables finding X11)" OFF)
++if(NOT WITHOUT_X11)
++    find_package(X11)
++    if(X11_FOUND)
++        if (QT_MAJOR_VERSION STREQUAL "5")
++            find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED X11Extras)
++        endif()
++        # we need to add qt6 lib when we found x11
++        set(HAVE_X11 TRUE)
+     endif()
+-    # we need to add qt6 lib when we found x11
+-    set(HAVE_X11 1)
+ endif()
+ 
+ if (QT_MAJOR_VERSION STREQUAL "5")
+-- 
+GitLab
+

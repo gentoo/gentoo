@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Window matching utility similar to Sawfish's Matched Windows"
-HOMEPAGE="http://www.burtonini.com/blog/tag/devilspie.html"
-SRC_URI="http://www.burtonini.com/computing/${P}.tar.xz"
+HOMEPAGE="https://www.burtonini.com/blog/tag/devilspie.html"
+SRC_URI="https://www.burtonini.com/computing/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,5 +25,6 @@ BDEPEND="
 
 src_prepare() {
 	default
+
 	sed -i "/doc\//s@devilspie..@${PF}/@" devilspie.1 || die
 }

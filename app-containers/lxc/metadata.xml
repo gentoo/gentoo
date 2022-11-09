@@ -10,8 +10,8 @@
     <name>Gentoo Virtualization Project</name>
   </maintainer>
   <use>
-    <flag name="apparmor">Enable AppArmor support</flag>
     <flag name="io-uring">Enable io_uring support, and use io_uring instead of epoll</flag>
+    <flag name="lto">Enable Link Time Optimization (LTO)</flag>
     <flag name="tools">Build and install additional command line tools</flag>
   </use>
   <upstream>

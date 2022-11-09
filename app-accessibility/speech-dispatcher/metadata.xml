@@ -17,4 +17,7 @@
     <flag name="espeak-ng">Adds support for espeak-ng speech engine</flag>
     <flag name="flite">Adds support for flite speech engine</flag>
   </use>
+  <upstream>
+    <remote-id type="github">brailcom/speechd</remote-id>
+  </upstream>
 </pkgmetadata>

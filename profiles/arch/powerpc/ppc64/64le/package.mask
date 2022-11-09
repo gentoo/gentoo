@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2022-08-25)
+# Only ppc64le binpkg is provided.
+-dev-python/pypy-exe-bin
+-dev-python/pypy3-exe-bin
+
 # Sam James <sam@gentoo.org> (2022-01-18)
 # No bootstrap binary available on big endian PPC64 right now, but there is
 # one for ppc64le.
@@ -59,7 +64,7 @@
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
 # works fine on little-endian
--x11-libs/libva
+-media-libs/libva
 -media-video/libva-utils
 -media-plugins/gst-plugins-vaapi
 
@@ -71,8 +76,6 @@
 # Temurin ppc64 build is little-endian only
 # so we can use bins.
 -dev-java/openjdk-bin
--=dev-java/openjdk-11.0.13_p8
--=dev-java/openjdk-17.0.1_p12
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-04-11)
 # ltrace is not ported to powerpc64le yet.

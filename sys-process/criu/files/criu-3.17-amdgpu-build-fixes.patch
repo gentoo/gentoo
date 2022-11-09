@@ -1,0 +1,98 @@
+https://github.com/checkpoint-restore/criu/commit/cd0ed7e5491c7c827b887b2d80cf35e87819278b.patch
+https://github.com/checkpoint-restore/criu/commit/2b3763fe6a39033d4e3d3d80e28911d1737ac23b.patch
+
+From cd0ed7e5491c7c827b887b2d80cf35e87819278b Mon Sep 17 00:00:00 2001
+From: Radostin Stoyanov <rstoyanov@fedoraproject.org>
+Date: Sun, 15 May 2022 17:08:18 +0100
+Subject: [PATCH] amdgpu/Makefile: Fix include path
+
+When building packages for CRIU the source directory might have a
+name different than 'criu'.
+
+Fixes: #1877
+
+Reported-by: @siris
+Signed-off-by: Radostin Stoyanov <rstoyanov@fedoraproject.org>
+--- a/plugins/amdgpu/Makefile
++++ b/plugins/amdgpu/Makefile
+@@ -2,7 +2,7 @@ PLUGIN_NAME		:= amdgpu_plugin
+ PLUGIN_SOBJ		:= amdgpu_plugin.so
+ 
+ 
+-PLUGIN_INCLUDE  	:= -iquote../../../criu/include
++PLUGIN_INCLUDE  	:= -iquote../../include
+ PLUGIN_INCLUDE  	+= -iquote../../criu/include
+ PLUGIN_INCLUDE  	+= -iquote../../criu/arch/$(ARCH)/include/
+ PLUGIN_INCLUDE  	+= -iquote../../
+
+
+From 2b3763fe6a39033d4e3d3d80e28911d1737ac23b Mon Sep 17 00:00:00 2001
+From: Radostin Stoyanov <rstoyanov@fedoraproject.org>
+Date: Sun, 8 May 2022 11:07:25 +0100
+Subject: [PATCH] amdgpu: Set PLUGINDIR to /usr/lib/criu
+
+Building the criu packages for Ubuntu/Debian fails with:
+
+	mkdir: cannot create directory '/var/lib/criu': Permission denied
+
+This patch updates PLUGINDIR with the value /usr/lib/criu
+
+Fixes: #1877
+
+Signed-off-by: Radostin Stoyanov <rstoyanov@fedoraproject.org>
+--- a/Makefile.install
++++ b/Makefile.install
+@@ -7,7 +7,7 @@ MANDIR		?= $(PREFIX)/share/man
+ INCLUDEDIR	?= $(PREFIX)/include
+ LIBEXECDIR	?= $(PREFIX)/libexec
+ RUNDIR		?= /run
+-PLUGINDIR	?= /var/lib/criu
++PLUGINDIR	?= $(PREFIX)/lib/criu
+ 
+ #
+ # For recent Debian/Ubuntu with multiarch support.
+--- a/criu/include/plugin.h
++++ b/criu/include/plugin.h
+@@ -5,7 +5,9 @@
+ #include "common/compiler.h"
+ #include "common/list.h"
+ 
+-#define CR_PLUGIN_DEFAULT "/var/lib/criu/"
++#ifndef CR_PLUGIN_DEFAULT
++#define CR_PLUGIN_DEFAULT "/usr/lib/criu/"
++#endif
+ 
+ void cr_plugin_fini(int stage, int err);
+ int cr_plugin_init(int stage);
+--- a/plugins/amdgpu/Makefile
++++ b/plugins/amdgpu/Makefile
+@@ -15,7 +15,7 @@ DEPS_NOK 		:= ;
+ include $(__nmk_dir)msg.mk
+ 
+ CC      		:= gcc
+-PLUGIN_CFLAGS  		:= -g -Wall -Werror -D _GNU_SOURCE -shared -nostartfiles -fPIC
++PLUGIN_CFLAGS  		:= -g -Wall -Werror -D _GNU_SOURCE -shared -nostartfiles -fPIC -DCR_PLUGIN_DEFAULT="$(PLUGINDIR)"
+ PLUGIN_LDFLAGS		:= -lpthread -lrt -ldrm -ldrm_amdgpu
+ 
+ ifeq ($(CONFIG_AMDGPU),y)
+@@ -50,16 +50,16 @@ clean: amdgpu_plugin_clean amdgpu_plugin_test_clean
+ mrproper: clean
+ 
+ install:
+-	$(Q) mkdir -p $(PLUGINDIR)
+ ifeq ($(CONFIG_AMDGPU),y)
++	$(Q) mkdir -p $(DESTDIR)$(PLUGINDIR)
+ 	$(E) "  INSTALL " $(PLUGIN_NAME)
+-	$(Q) install -m 644 $(PLUGIN_SOBJ) $(PLUGINDIR)
++	$(Q) install -m 644 $(PLUGIN_SOBJ) $(DESTDIR)$(PLUGINDIR)
+ endif
+ .PHONY: install
+ 
+ uninstall:
+ ifeq ($(CONFIG_AMDGPU),y)
+ 	$(E) " UNINSTALL" $(PLUGIN_NAME)
+-	$(Q) $(RM) $(PLUGINDIR)/$(PLUGIN_SOBJ)
++	$(Q) $(RM) $(DESTDIR)$(PLUGINDIR)/$(PLUGIN_SOBJ)
+ endif
+ .PHONY: uninstall
+

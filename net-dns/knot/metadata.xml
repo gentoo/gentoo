@@ -31,8 +31,8 @@
 			Enable the Geography-based responses module
 		</flag>
 		<flag name="libidn2">
-			If IDN support is enabled, use net-dns/libidn2 instead
-			of net-dns/libidn
+			If IDN support is enabled, use <pkg>net-dns/libidn2</pkg> instead
+			of <pkg>net-dns/libidn</pkg>
 		</flag>
 		<flag name="noudp">
 			Enable the module which can send empty truncated
@@ -44,6 +44,9 @@
 		</flag>
 		<flag name="queryacl">
 			Enable the module for query access control
+		</flag>
+		<flag name="quic">
+			Enable the DNS over QUIC (DoQ) module using libngtcp2
 		</flag>
 		<flag name="rrl">
 			Enable the response rate limiting module
@@ -64,4 +67,9 @@
 			Enable eXpress Data Path
 		</flag>
 	</use>
+	<slots>
+		<subslots>
+			Reflect sonames of libknot, libdnssec, and libzscanner.
+		</subslots>
+	</slots>
 </pkgmetadata>

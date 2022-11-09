@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/icingadb"
+command_background="true"
+command_user="icinga"
+pidfile="/run/${RC_SVCNAME}.pid"
+required_files="/etc/${RC_SVCNAME}/config.yml"
+output_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+error_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.err"

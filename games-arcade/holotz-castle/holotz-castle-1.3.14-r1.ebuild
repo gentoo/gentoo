@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ inherit desktop toolchain-funcs
 
 DESCRIPTION="2D platform game"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="https://dev.gentoo.org/~chewi/distfiles/holotz-castle-1.3.14-src.tar.gz"
+SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

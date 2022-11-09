@@ -1,0 +1,16 @@
+test-deps.py attempts to check the version of dev-python/markdown used
+by dev-util/gi-docgen by importing it. However, on Gentoo there is no
+guarantee that the gi-docgen executable and fwupd build scripts use
+the same Python interpreter.
+
+--- a/meson.build
++++ b/meson.build
+@@ -542,7 +542,7 @@
+ fwupd_gir = []
+ introspection = get_option('introspection').disable_auto_if(host_machine.system() != 'linux')
+ r = run_command([python3, 'docs/test-deps.py'])
+-docs_python_deps = get_option('docs').require(r.returncode() == 0, error_message: r.stdout())
++docs_python_deps = get_option('docs')
+ gidocgen_dep = dependency('gi-docgen',
+   version: '>= 2021.1',
+   native: true,

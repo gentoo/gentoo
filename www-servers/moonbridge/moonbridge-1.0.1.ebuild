@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,11 +23,15 @@ DEPEND="
 	dev-libs/libbsd"
 RDEPEND="${DEPEND}"
 BDEPEND="sys-devel/pmake
+	sys-apps/lsb-release
 	virtual/pkgconfig"
 
 S="${WORKDIR}"/${MYP}
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-fcntl.patch
+)
 
 DOCS=( README reference.txt )
 

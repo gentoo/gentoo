@@ -5,4 +5,7 @@
 		<email>mysql-bugs@gentoo.org</email>
 		<name>MySQL</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">mariadb-corporation/mariadb-connector-c</remote-id>
+	</upstream>
 </pkgmetadata>

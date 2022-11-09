@@ -12,7 +12,7 @@ SRC_URI="https://github.com/BestImageViewer/${PN}/releases/download/v${PV}/${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="debug doc exif ffmpegthumbnailer gpu-accel jpeg lcms lirc lua map nls pdf tiff xmp"
 
 RDEPEND="
@@ -91,5 +91,4 @@ pkg_postinst() {
 
 	elog "Some plugins may require additional packages"
 	elog "- Image rotate plugin: media-gfx/fbida (JPEG), media-gfx/imagemagick (TIFF/PNG)"
-	elog "- RAW images plugin: media-gfx/ufraw"
 }

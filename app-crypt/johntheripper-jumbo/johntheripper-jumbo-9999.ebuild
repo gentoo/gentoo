@@ -49,10 +49,12 @@ RDEPEND="${DEPEND}
 	dev-perl/Digest-GOST
 	!app-crypt/johntheripper"
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	if use openmp && [[ ${MERGE_TYPE} != binary ]]; then
-		tc-has-openmp || die "Please switch to an OpenMP compatible compiler"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {
@@ -88,8 +90,8 @@ src_compile() {
 	emake LD="$(tc-getCC)" -C src
 }
 
-src_test() {
-	pax-mark -mr run/john
+#src_test() {
+#	pax-mark -mr run/john
 
 	#if use opencl; then
 		# GPU tests fail in portage, so run cpu only tests
@@ -101,9 +103,9 @@ src_test() {
 		#./run/john --test=1 --verbosity=2 || die
 	#fi
 
-	ewarn "When built systemwide, john can't run tests without reading files in /etc."
-	ewarn "Don't bother opening a bug for this unless you include a patch to fix it"
-}
+#	ewarn "When built systemwide, john can't run tests without reading files in /etc."
+#	ewarn "Don't bother opening a bug for this unless you include a patch to fix it"
+#}
 
 src_install() {
 	# Executables
@@ -126,6 +128,8 @@ src_install() {
 	exeinto /usr/share/john
 	doexe run/*.pl
 	doexe run/*.py
+	insinto /usr/share/john
+	doins -r run/lib
 	cd run || die
 
 	local s

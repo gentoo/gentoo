@@ -16,7 +16,7 @@ OPAM_INSTALLER="${S}/opam-installer"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 
 RDEPEND="
 	dev-ml/ocamlgraph:=

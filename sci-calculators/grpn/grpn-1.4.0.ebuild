@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils toolchain-funcs
+inherit desktop toolchain-funcs
 
 DESCRIPTION="A reverse polish notation (RPN) calculator based on GTK+ and libmath"
 HOMEPAGE="http://www.getreu.net/"

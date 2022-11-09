@@ -11,6 +11,8 @@
 		</flag>
 	</use>
 	<upstream>
+		<changelog>https://gitlab.com/gnutls/libtasn1/blob/master/NEWS</changelog>
 		<remote-id type="cpe">cpe:/a:gnu:libtasn1</remote-id>
+		<remote-id type="gitlab">gnutls/libtasn1</remote-id>
 	</upstream>
 </pkgmetadata>

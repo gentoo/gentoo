@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CHECKREQS_DISK_BUILD=3500M
-inherit cmake xdg check-reqs
+inherit cmake qmake-utils xdg check-reqs
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -79,13 +79,16 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #766111
+	export PATH="$(qt5_get_bindir):${PATH}"
+
 	local mycmakeargs=(
 		-DAEOLUS=OFF # does not compile
 		-DBUILD_ALSA="$(usex alsa)"
 		-DBUILD_CRASH_REPORTER=OFF
 		-DBUILD_JACK="$(usex jack)"
 		-DBUILD_LAME="$(usex mp3)"
-		-DBUILD_PCH=ON
+		-DBUILD_PCH=OFF
 		-DBUILD_PORTAUDIO="$(usex portaudio)"
 		-DBUILD_PORTMIDI="$(usex portmidi)"
 		-DBUILD_PULSEAUDIO="$(usex pulseaudio)"
@@ -98,6 +101,7 @@ src_configure() {
 		-DOCR=OFF
 		-DOMR="$(usex omr)"
 		-DSOUNDFONT3=ON
+		-DTRY_USE_CCACHE=OFF
 		-DZERBERUS="$(usex sfz)"
 		-DUSE_PATH_WITH_EXPLICIT_QT_VERSION=ON
 		-DUSE_SYSTEM_FREETYPE=ON

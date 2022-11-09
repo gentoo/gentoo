@@ -1,0 +1,35 @@
+From ad0baea50359c1978a9224ee60bf98d97bfb991f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Date: Fri, 5 Aug 2022 11:13:41 +0400
+Subject: [PATCH] meson: git version is optional
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+My bad, git may be present, but running "git abbrev" from the tarball
+extracted project can fail.
+
+Fix commit a755e2ae77035aad9644adadaec5ecf15e9656ba ("meson: fix new
+warning about run_command()")
+
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 15fd5cd..5eba715 100644
+--- a/meson.build
++++ b/meson.build
+@@ -8,7 +8,7 @@ project('gcab', 'c',
+ git_version = []
+ git = find_program('git', required: false)
+ if git.found()
+-  git_version = run_command(git, 'describe', '--abbrev=4', '--dirty', check: true).stdout().strip().split('-')
++  git_version = run_command(git, 'describe', '--abbrev=4', '--dirty', check: false).stdout().strip().split('-')
+ endif
+ 
+ # libtool versioning
+-- 
+2.35.1
+

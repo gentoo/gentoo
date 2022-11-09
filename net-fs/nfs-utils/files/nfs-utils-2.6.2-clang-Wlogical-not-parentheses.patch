@@ -1,0 +1,28 @@
+https://git.linux-nfs.org/?p=steved/nfs-utils.git;a=commitdiff;h=896946e3c7f8ec1a02d4dc3a039e6cbbd2f611a9
+
+From 896946e3c7f8ec1a02d4dc3a039e6cbbd2f611a9 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Tue, 13 Sep 2022 11:42:03 -0400
+Subject: [PATCH] mountd: Check for return of stat function
+
+simplify the check, stat() return 0 on success -1 on failure
+
+Fixes clang reported errors e.g.
+
+| v4clients.c:29:6: error: logical not is only applied to the left hand side of this comparison [-Werror,-Wlogical-not-parentheses]
+|         if (!stat("/proc/fs/nfsd/clients", &sb) == 0 ||
+|             ^                                   ~~
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+Signed-off-by: Steve Dickson <steved@redhat.com>
+--- a/support/export/v4clients.c
++++ b/support/export/v4clients.c
+@@ -26,7 +26,7 @@ void v4clients_init(void)
+ {
+ 	struct stat sb;
+ 
+-	if (!stat("/proc/fs/nfsd/clients", &sb) == 0 ||
++	if (stat("/proc/fs/nfsd/clients", &sb) != 0 ||
+ 	    !S_ISDIR(sb.st_mode))
+ 		return;
+ 	if (clients_fd >= 0)

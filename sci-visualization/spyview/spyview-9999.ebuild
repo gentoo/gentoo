@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ SLOT="0"
 IUSE=""
 
 COMMON_DEPEND="
-	>=dev-libs/boost-1.62.0:=
+	dev-libs/boost:=
 	media-libs/netpbm
 	x11-libs/fltk:1[opengl]
 	app-text/ghostscript-gpl

@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/plymouth/plymouth"
 else
 	SRC_URI="${SRC_URI} https://www.freedesktop.org/software/plymouth/releases/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~riscv sparc x86"
 fi
 
 inherit autotools readme.gentoo-r1 systemd
@@ -52,6 +52,7 @@ DOC_CONTENTS="
 
 PATCHES=(
 	"${FILESDIR}"/0.9.3-glibc-sysmacros.patch
+	"${FILESDIR}"/${P}-glibc-2.36.patch
 )
 
 src_prepare() {
@@ -105,8 +106,8 @@ src_install() {
 
 pkg_postinst() {
 	readme.gentoo_print_elog
-	if ! has_version "sys-kernel/dracut" && ! has_version "sys-kernel/genkernel-next[plymouth]"; then
+	if ! has_version "sys-kernel/dracut"; then
 		ewarn "If you want initramfs builder with plymouth support, please emerge"
-		ewarn "sys-kernel/dracut or sys-kernel/genkernel-next[plymouth]."
+		ewarn "sys-kernel/dracut."
 	fi
 }

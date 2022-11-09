@@ -9,4 +9,5 @@
 		<email>codec@gentoo.org</email>
 		<name>Gentoo Codec Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

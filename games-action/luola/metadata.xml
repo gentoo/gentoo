@@ -5,7 +5,4 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="freecode">luola</remote-id>
-	</upstream>
 </pkgmetadata>

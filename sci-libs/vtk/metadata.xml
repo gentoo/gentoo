@@ -21,8 +21,10 @@
     <flag name="imaging">Building Imaging modules</flag>
     <flag name="json">Support for json formatted data</flag>
     <flag name="kits">Build kits in addition to modules</flag>
+    <flag name="logging">Enable the loguru logging module</flag>
     <flag name="offscreen">Offscreen rendering through OSMesa</flag>
     <flag name="pegtl">Use pegtl to build parsers</flag>
+    <flag name="qt6">Use Qt6 packages instead of Qt5</flag>
     <flag name="rendering">Building Redering modules</flag>
     <flag name="tbb">Use <pkg>dev-cpp/tbb</pkg> to handle smp support</flag>
     <flag name="views">Building Views modules</flag>

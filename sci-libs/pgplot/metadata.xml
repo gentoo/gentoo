@@ -11,5 +11,5 @@
   wrapper functions between C programs and the PGPLOT library. These
   functions hide the system dependencies of calling PGPLOT behind a
   system independent interface.
-</longdescription>
+  </longdescription>
 </pkgmetadata>

@@ -1,34 +1,36 @@
 --- a/blat/makefile
 +++ b/blat/makefile
-@@ -7,7 +7,7 @@
+@@ -7,8 +7,7 @@
  O = blat.o
  
  blat: $O $(MYLIBS)
 -	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/blat $O $(MYLIBS) $L
-+	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/blat $O $(MYLIBS) $L
- 	${STRIP} ${BINDIR}/blat${EXE}
+-	${STRIP} ${BINDIR}/blat${EXE}
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BINDIR}/blat $O $(MYLIBS) $L
  
  all:
+ 	cd ../lib && ${MAKE}
 --- a/gfClient/makefile
 +++ b/gfClient/makefile
-@@ -8,5 +8,5 @@
+@@ -8,5 +8,4 @@
  X = gfClient
  
  gfClient: $O $(MYLIBS)
 -	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/$X $O $(MYLIBS) $L
-+	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/$X $O $(MYLIBS) $L
- 	${STRIP} ${BINDIR}/$X${EXE}
+-	${STRIP} ${BINDIR}/$X${EXE}
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BINDIR}/$X $O $(MYLIBS) $L
 --- a/gfServer/makefile
 +++ b/gfServer/makefile
-@@ -8,7 +8,7 @@
+@@ -8,8 +8,7 @@
  X = gfServer
  
  gfServer: $O $(MYLIBS)
 -	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/$X $O $(MYLIBS) $L
-+	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/$X $O $(MYLIBS) $L
- 	${STRIP} ${BINDIR}/$X${EXE}
+-	${STRIP} ${BINDIR}/$X${EXE}
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BINDIR}/$X $O $(MYLIBS) $L
  
  test:
+ 	${MKDIR} tests/output
 --- a/hg/pslPretty/makefile
 +++ b/hg/pslPretty/makefile
 @@ -8,7 +8,7 @@
@@ -36,7 +38,7 @@
  
  pslPretty: $O $(MYLIBS)
 -	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/pslPretty $O $(MYLIBS) $L
-+	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/pslPretty $O $(MYLIBS) $L
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BINDIR}/pslPretty $O $(MYLIBS) $L
  
  test:: testRna testDnax
  
@@ -47,7 +49,7 @@
  
  pslReps: $O $(MYLIBS)
 -	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/pslReps${EXE} $O $(MYLIBS) $L
-+	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/pslReps${EXE} $O $(MYLIBS) $L
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BINDIR}/pslReps${EXE} $O $(MYLIBS) $L
  
  lib:
  	cd ../../lib && ${MAKE}
@@ -58,10 +60,20 @@
  
  pslSort: $O $(MYLIBS)
 -	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/pslSort $O $(MYLIBS) $L
-+	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/pslSort $O $(MYLIBS) $L
++	${CC} ${LDFLAGS} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/pslSort $O $(MYLIBS) $L
  
  
  lib:
+--- a/inc/cgi_build_rules.mk
++++ b/inc/cgi_build_rules.mk
+@@ -12,7 +12,6 @@
+ 	mv $A${EXE} ${CGI_BIN}-beta/$A
+ 
+ strip::  compile
+-	${STRIP} $A${EXE}
+ 	chmod g+w $A${EXE}
+ 	chmod a+rx $A${EXE}
+ 
 --- a/inc/common.mk
 +++ b/inc/common.mk
 @@ -1,20 +1,15 @@
@@ -87,14 +99,23 @@
    endif
  endif
  # Apply the stronger checks to all code on our development machine:
-@@ -37,7 +32,7 @@
+@@ -36,9 +31,6 @@
+     BINDIR = ${HOME}/bin/${MACHTYPE}
  endif
  MKDIR=mkdir -p
- ifeq (${STRIP},)
+-ifeq (${STRIP},)
 -   STRIP=strip
-+   STRIP=true
- endif
+-endif
  CVS=cvs
+ 
+ # portable naming of compiled executables: add ".exe" if compiled on 
+@@ -55,6 +47,6 @@
+ STRINGIFY = ${BINDIR}/stringify
+ 
+ %.o: %.c
+-	${CC} ${COPT} ${CFLAGS} ${HG_DEFS} ${HG_WARN} ${HG_INC} ${XINC} -o $@ -c $<
++	${CC} ${CPPFLAGS} ${CFLAGS} ${HG_DEFS} ${HG_WARN} ${HG_INC} ${XINC} -o $@ -c $<
+ 
  
 --- a/jkOwnLib/makefile
 +++ b/jkOwnLib/makefile
@@ -107,6 +128,15 @@
  
  ../lib/$(MACHTYPE):
  	mkdir ../lib/$(MACHTYPE)
+--- a/jkOwnLib/tests/freen/makefile
++++ b/jkOwnLib/tests/freen/makefile
+@@ -7,5 +7,5 @@
+ O = freen.o
+ 
+ hello: freen.o
+-	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/freen $O $(MYLIBS) $L
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BINDIR}/freen $O $(MYLIBS) $L
+ 
 --- a/lib/makefile
 +++ b/lib/makefile
 @@ -32,7 +32,7 @@
@@ -118,6 +148,102 @@
  
  $(MACHTYPE):
  	mkdir $(MACHTYPE)
+--- a/lib/tests/makefile
++++ b/lib/tests/makefile
+@@ -14,22 +14,19 @@
+ 	${MKDIR} output ${BIN_DIR}
+ 
+ errCatchTest: errCatchTest.o ${MYLIBS} mkdirs
+-	${CC} ${COPT} -o ${BIN_DIR}/errCatchTest errCatchTest.o ${MYLIBS} $L
+-	${STRIP} ${BIN_DIR}/errCatchTest${EXE}
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BIN_DIR}/errCatchTest errCatchTest.o ${MYLIBS} $L
+ 	${BIN_DIR}/errCatchTest secret > output/errCatch.good
+ 	diff expected/errCatch.good output/errCatch.good
+ 	${BIN_DIR}/errCatchTest bad > output/errCatch.bad
+ 	diff expected/errCatch.bad output/errCatch.bad
+ 
+ htmlExpandUrlTest: htmlExpandUrlTest.o ${MYLIBS} mkdirs
+-	${CC} ${COPT} -o ${BIN_DIR}/htmlExpandUrlTest htmlExpandUrlTest.o ${MYLIBS} $L
+-	${STRIP} ${BIN_DIR}/htmlExpandUrlTest${EXE}
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BIN_DIR}/htmlExpandUrlTest htmlExpandUrlTest.o ${MYLIBS} $L
+ 	${BIN_DIR}/htmlExpandUrlTest > output/htmlExpandUrlTest 2>&1
+ 	diff expected/htmlExpandUrlTest output/htmlExpandUrlTest
+ 
+ htmlPageTest: htmlPageTest.o ${MYLIBS} mkdirs
+-	${CC} ${COPT} -o ${BIN_DIR}/htmlPageTest htmlPageTest.o ${MYLIBS} $L
+-	${STRIP} ${BIN_DIR}/htmlPageTest${EXE}
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BIN_DIR}/htmlPageTest htmlPageTest.o ${MYLIBS} $L
+ 	${BIN_DIR}/htmlPageTest input/google.html > output/google.out
+ 	diff expected/google.out output/google.out
+ 
+@@ -86,20 +83,20 @@
+ 	diff -b expected/$@.err output/$@.err
+ 
+ ${BIN_DIR}/pipelineTester:  mkdirs pipelineTester.o ${MYLIBS}
+-	${CC} ${COPT} -o ${BIN_DIR}/pipelineTester pipelineTester.o ${MYLIBS} $L
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BIN_DIR}/pipelineTester pipelineTester.o ${MYLIBS} $L
+ 
+ 
+ dyStringTest: ${BIN_DIR}/dyStringTester mkdirs
+ 	${BIN_DIR}/dyStringTester
+ 
+ ${BIN_DIR}/dyStringTester:  mkdirs dyStringTester.o ${MYLIBS}
+-	${CC} ${COPT} -o ${BIN_DIR}/dyStringTester dyStringTester.o ${MYLIBS} $L
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BIN_DIR}/dyStringTester dyStringTester.o ${MYLIBS} $L
+ 
+ 
+ mimeTests: mime1 mime2 mime3 mime4 mimeBin mime5 mimeAltHead mimeAutoBoundary mimeBlat
+ 
+ ${BIN_DIR}/mimeTester:  mkdirs mimeTester.o ${MYLIBS}
+-	${CC} ${COPT} -o ${BIN_DIR}/mimeTester mimeTester.o ${MYLIBS} $L
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BIN_DIR}/mimeTester mimeTester.o ${MYLIBS} $L
+ 
+ 
+ mime1: ${BIN_DIR}/mimeTester mkdirs
+@@ -142,7 +139,7 @@
+ 	${BIN_DIR}/mimeTester -sizeSeries=3000
+ 
+ ${BIN_DIR}/htmlMimeTest:  mkdirs htmlMimeTest.o ${MYLIBS}
+-	${CC} ${COPT} -o ${BIN_DIR}/htmlMimeTest htmlMimeTest.o ${MYLIBS} $L
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BIN_DIR}/htmlMimeTest htmlMimeTest.o ${MYLIBS} $L
+ 
+ htmlMime1: ${BIN_DIR}/htmlMimeTest mkdirs
+ 	${BIN_DIR}/htmlMimeTest http://hgwdev.cse.ucsc.edu/cgi-bin/hgBlat input/htmlMime.txt 3490 3502 > output/$@.out
+@@ -152,7 +149,7 @@
+ base64Tests: base64Encode base64Decode
+ 
+ ${BIN_DIR}/testBase64:  mkdirs testBase64.o ${MYLIBS}
+-	${CC} ${COPT} -o ${BIN_DIR}/testBase64 testBase64.o ${MYLIBS} $L
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BIN_DIR}/testBase64 testBase64.o ${MYLIBS} $L
+ 
+ base64Encode: ${BIN_DIR}/testBase64 mkdirs
+ 	${BIN_DIR}/testBase64 'My Test String' > output/$@.out
+@@ -167,7 +164,7 @@
+ quotedPTests: quotedPEncode quotedPDecode
+ 
+ ${BIN_DIR}/testQuotedP:  mkdirs testQuotedP.o ${MYLIBS}
+-	${CC} ${COPT} -o ${BIN_DIR}/testQuotedP testQuotedP.o ${MYLIBS} $L
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BIN_DIR}/testQuotedP testQuotedP.o ${MYLIBS} $L
+ 
+ quotedPEncode: ${BIN_DIR}/testQuotedP mkdirs
+ 	${BIN_DIR}/testQuotedP 'taxes are quite high ' > output/$@.out
+@@ -178,14 +175,14 @@
+ 	diff expected/$@.out output/$@.out
+ 
+ ${BIN_DIR}/mimeDecodeTest:  mkdirs mimeDecodeTest.o ${MYLIBS}
+-	${CC} ${COPT} -o ${BIN_DIR}/mimeDecodeTest mimeDecodeTest.o ${MYLIBS} $L
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BIN_DIR}/mimeDecodeTest mimeDecodeTest.o ${MYLIBS} $L
+ 
+ mimeDecodeTest: ${BIN_DIR}/mimeDecodeTest mkdirs
+ 	${BIN_DIR}/mimeDecodeTest -cid -autoBoundary output < input/$@.txt
+ 	diff expected/noName1.html output/noName1.html
+ 
+ ${BIN_DIR}/safeTester:  mkdirs safeTester.o ${MYLIBS}
+-	${CC} ${COPT} -o ${BIN_DIR}/safeTester safeTester.o ${MYLIBS} $L
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BIN_DIR}/safeTester safeTester.o ${MYLIBS} $L
+ 
+ safeTest: ${BIN_DIR}/safeTester mkdirs
+ 	${BIN_DIR}/safeTester
 --- a/makefile
 +++ b/makefile
 @@ -1,18 +1,18 @@
@@ -160,18 +286,19 @@
  
  faToNib: $O $(MYLIBS)
 -	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/faToNib $O $(MYLIBS) $L
-+	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/faToNib $O $(MYLIBS) $L
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BINDIR}/faToNib $O $(MYLIBS) $L
 --- a/utils/faToTwoBit/makefile
 +++ b/utils/faToTwoBit/makefile
-@@ -7,7 +7,7 @@
+@@ -7,8 +7,7 @@
  O = faToTwoBit.o
  
  faToTwoBit: $O ${MYLIBS}
 -	${CC} ${COPT} -o ${BINDIR}/faToTwoBit $O ${MYLIBS} $L
-+	${CC} ${COPT} ${LDFLAGS} -o ${BINDIR}/faToTwoBit $O ${MYLIBS} $L
- 	${STRIP} ${BINDIR}/faToTwoBit${EXE}
+-	${STRIP} ${BINDIR}/faToTwoBit${EXE}
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BINDIR}/faToTwoBit $O ${MYLIBS} $L
  
  clean:
+ 	rm -f $O
 --- a/utils/nibFrag/makefile
 +++ b/utils/nibFrag/makefile
 @@ -4,7 +4,7 @@
@@ -179,29 +306,43 @@
  
  nibFrag: $(O)
 -	${CC} ${COPT} ${CFLAGS} -o ${BINDIR}/nibFrag $O ../../lib/$(MACHTYPE)/jkweb.a
-+	${CC} ${COPT} ${CFLAGS} ${LDFLAGS} -o ${BINDIR}/nibFrag $O ../../lib/$(MACHTYPE)/jkweb.a
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BINDIR}/nibFrag $O ../../lib/$(MACHTYPE)/jkweb.a
  
  
  
 --- a/utils/twoBitInfo/makefile
 +++ b/utils/twoBitInfo/makefile
-@@ -7,7 +7,7 @@
+@@ -7,8 +7,7 @@
  O = twoBitInfo.o
  
  twoBitInfo: $O ${MYLIBS}
 -	${CC} ${COPT} -o ${BINDIR}/twoBitInfo $O ${MYLIBS} $L
-+	${CC} ${COPT} ${LDFLAGS} -o ${BINDIR}/twoBitInfo $O ${MYLIBS} $L
- 	${STRIP} ${BINDIR}/twoBitInfo${EXE}
+-	${STRIP} ${BINDIR}/twoBitInfo${EXE}
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BINDIR}/twoBitInfo $O ${MYLIBS} $L
  
  clean:
+ 	rm -f $O
 --- a/utils/twoBitToFa/makefile
 +++ b/utils/twoBitToFa/makefile
-@@ -8,7 +8,7 @@
+@@ -8,8 +8,7 @@
  O = twoBitToFa.o
  
  twoBitToFa: $O ${MYLIBS}
 -	${CC} ${COPT} -o ${BINDIR}/twoBitToFa $O ${MYLIBS} $L
-+	${CC} ${COPT} ${LDFLAGS} -o ${BINDIR}/twoBitToFa $O ${MYLIBS} $L
- 	#${STRIP} ${BINDIR}/twoBitToFa${EXE}
+-	#${STRIP} ${BINDIR}/twoBitToFa${EXE}
++	${CC} ${LDFLAGS} ${CFLAGS} -o ${BINDIR}/twoBitToFa $O ${MYLIBS} $L
  
  clean:
+ 	rm -f $O
+--- a/webBlat/makefile
++++ b/webBlat/makefile
+@@ -7,8 +7,7 @@
+ O = webBlat.o
+ 
+ webBlat: $O ${MYLIBS}
+-	${CC} ${COPT} -o webBlat $O ${MYLIBS} $L
+-	${STRIP} webBlat${EXE}
++	${CC} ${LDFLAGS} ${CFLAGS} -o webBlat $O ${MYLIBS} $L
+ 
+ installOsX: webBlat
+ 	cp webBlat /Library/WebServer/CGI-Executables

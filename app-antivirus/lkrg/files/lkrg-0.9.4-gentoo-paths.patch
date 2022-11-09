@@ -1,0 +1,20 @@
+commit fa75ae17394574d07cbf55a184a2ac7a73e9a0ed (HEAD -> main)
+Author: John Helmert III <ajak@gentoo.org>
+Date:   Sat Jul 23 00:15:11 2022 -0500
+
+    Fix paths for Gentoo
+
+    Signed-off-by: John Helmert III <ajak@gentoo.org>
+
+diff --git a/scripts/bootup/systemd/lkrg.service b/scripts/bootup/systemd/lkrg.service
+index 4ac9812..495adb9 100644
+--- a/scripts/bootup/systemd/lkrg.service
++++ b/scripts/bootup/systemd/lkrg.service
+@@ -18,6 +18,6 @@ ConditionKernelCommandLine=!nolkrg
+ [Service]
+ Type=oneshot
+ ExecStart=/sbin/modprobe -v lkrg
+-ExecStartPost=/sbin/sysctl -p /etc/sysctl.d/01-lkrg.conf
++ExecStartPost=/usr/sbin/sysctl -p /lib/sysctl.d/01-lkrg.conf
+ ExecStop=/sbin/modprobe -v -r lkrg
+ RemainAfterExit=yes

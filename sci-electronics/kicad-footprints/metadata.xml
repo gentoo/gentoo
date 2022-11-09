@@ -16,6 +16,6 @@
 		libs and 3d model libs.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">kicad/kicad-footprints</remote-id>
+		<remote-id type="gitlab">kicad/libraries/kicad-footprints</remote-id>
 	</upstream>
 </pkgmetadata>

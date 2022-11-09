@@ -2,9 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
     <use>
-        <flag name="alac">Add support for Apple Lossless Audio Codec files</flag>
         <flag name="playfair">Add support for handling fairplay handshake (used in for example screen mirroring)</flag>
-        <flag name="tools">Build and install a binary shairplay in /usr/bin</flag>
     </use>
     <maintainer type="person">
         <email>candrews@gentoo.org</email>

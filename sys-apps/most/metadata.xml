@@ -5,4 +5,7 @@
     <email>shell-tools@gentoo.org</email>
     <name>Gentoo Shell Tools Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">jedsoft/most</remote-id>
+  </upstream>
 </pkgmetadata>

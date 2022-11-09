@@ -30,14 +30,13 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 # Deps here are transitive from ament_cmake_core to have matching python support
-BDEPEND="
+BDEPEND="${PYTHON_DEPS}
 	$(python_gen_any_dep '
 		dev-python/ament_package[${PYTHON_USEDEP}]
 		dev-python/catkin_pkg[${PYTHON_USEDEP}]')
-	${PYTHON_DEPS}
 "
 
 python_check_deps() {
-	has_version "dev-python/ament_package[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/catkin_pkg[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/ament_package[${PYTHON_USEDEP}]" \
+		"dev-python/catkin_pkg[${PYTHON_USEDEP}]"
 }

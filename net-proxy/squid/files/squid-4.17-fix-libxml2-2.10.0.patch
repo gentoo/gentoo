@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/866518
+https://github.com/squid-cache/squid/commit/c4e6b7c2a12fa218089fe839f769ffc8ae18dea4
+
+From c4e6b7c2a12fa218089fe839f769ffc8ae18dea4 Mon Sep 17 00:00:00 2001
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Sun, 20 Feb 2022 19:42:40 +0000
+Subject: [PATCH] ESI: Drop incorrect and unnecessary xmlSetFeature() call
+ (#988)
+
+xmlSetFeature() has been deprecated for 10+ years and will eventually be
+removed from libxml2. Squid calls xmlSetFeature() with the wrong
+argument: a nil `value` pointer instead of a pointer to a zero value.
+When called with a nil `value`, the function does nothing but returning
+an error. Squid does not check whether xmlSetFeature() call is
+successful, and the bug went unnoticed since libxml2 support was added
+in commit 964b44c.
+
+Since libxml2 does not substitute entities by default, the call can be
+removed to achieve the intended effect.
+--- a/src/esi/Libxml2Parser.cc
++++ b/src/esi/Libxml2Parser.cc
+@@ -118,7 +118,6 @@ ESILibxml2Parser::ESILibxml2Parser(ESIParserClient *aClient) : theClient (aClien
+ 
+     /* TODO: grab the document encoding from the headers */
+     parser = xmlCreatePushParserCtxt(&sax, static_cast<void *>(this), NULL, 0, NULL);
+-    xmlSetFeature(parser, "substitute entities", 0);
+ 
+     if (entity_doc == NULL)
+         entity_doc = htmlNewDoc(NULL, NULL);
+

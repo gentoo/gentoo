@@ -1,0 +1,31 @@
+--- a/python/ola/OlaClient.py
++++ b/python/ola/OlaClient.py
+@@ -952,7 +952,7 @@
+     controller = SimpleRpcController()
+     request = Ola_pb2.DmxData()
+     request.universe = universe
+-    if sys.version >= '3.2':
++    if sys.version_info[:3] >= (3,2):
+       request.data = data.tobytes()
+     else:
+       request.data = data.tostring()
+--- a/python/ola/PidStore.py
++++ b/python/ola/PidStore.py
+@@ -645,7 +645,7 @@
+                                 (self.name, self.min))
+ 
+     try:
+-      if sys.version >= '3.2':
++      if sys.version_info[:3] >= (3,2):
+         data = struct.unpack('%ds' % arg_size, bytes(arg, 'utf8'))
+       else:
+         data = struct.unpack('%ds' % arg_size, arg)
+@@ -668,7 +668,7 @@
+     except struct.error as e:
+       raise UnpackException(e)
+ 
+-    if sys.version >= '3.2':
++    if sys.version_info[:3] >= (3,2):
+       return value[0].rstrip(b'\x00').decode('utf-8')
+     else:
+       return value[0].rstrip(b'\x00')

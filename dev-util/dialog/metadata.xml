@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<changelog>https://invisible-island.net/dialog/CHANGES.html</changelog>
+		<remote-id type="github">ThomasDickey/dialog-snapshots</remote-id>
 	</upstream>
 </pkgmetadata>

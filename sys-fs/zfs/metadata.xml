@@ -10,7 +10,7 @@
 		<name>Sam James</name>
 	</maintainer>
 	<use>
-		<flag name="kernel-builtin">Disable dependency on sys-fs/zfs-kmod under the assumption that ZFS is part of the kernel source tree</flag>
+		<flag name="kernel-builtin">Disable dependency on <pkg>sys-fs/zfs-kmod</pkg> under the assumption that ZFS is part of the kernel source tree</flag>
 		<flag name="minimal">Don't install python scripts (arcstat, dbufstat etc) and avoid dependency on <pkg>dev-lang/python</pkg></flag>
 		<flag name="pam">Install zfs_key pam module, for automatically loading zfs encryption keys for home datasets</flag>
 		<flag name="rootfs">Enable dependencies required for booting off a pool containing a rootfs</flag>

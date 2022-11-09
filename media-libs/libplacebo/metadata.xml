@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
 	<use>
 		<flag name="glslang">Use <pkg>dev-util/glslang</pkg> to compile GLSL</flag>
 		<flag name="lcms">Add support for color management via <pkg>media-libs/lcms</pkg></flag>

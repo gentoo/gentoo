@@ -5,6 +5,7 @@
 depend() {
 	use modules
 	before checkfs fsck
+	after dev-settle
 
 	if grep -qs ^swap= "${conf_file}" ; then
 		before swap
@@ -109,7 +110,7 @@ dm_crypt_execute() {
 	#	${target} is active:
 	# Newer versions report:
 	#	${target} is active[ and is in use.]
-	if cryptsetup ${header_opt} status ${target} | egrep -q ' is active' ; then
+	if cryptsetup ${header_opt} status ${target} | grep -E -q ' is active' ; then
 		einfo "dm-crypt mapping ${target} is already configured"
 		return
 	fi
@@ -329,7 +330,7 @@ stop() {
 
 	# Break down all mappings
 	print_header=true
-	egrep "^(target|swap)=" ${conf_file} | \
+	grep -E "^(target|swap)=" ${conf_file} | \
 	while read line ; do
 		${print_header} && einfo "Removing dm-crypt mappings"
 		print_header=false

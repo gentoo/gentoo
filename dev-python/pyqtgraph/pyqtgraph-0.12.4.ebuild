@@ -10,18 +10,23 @@ inherit distutils-r1 multiprocessing
 
 TEST_DATA_TAG=test-data-8
 DESCRIPTION="A pure-python graphics and GUI library built on PyQt and numpy"
-HOMEPAGE="https://www.pyqtgraph.org/ https://pypi.org/project/pyqtgraph/"
+HOMEPAGE="
+	https://www.pyqtgraph.org/
+	https://github.com/pyqtgraph/pyqtgraph/
+	https://pypi.org/project/pyqtgraph/
+"
 SRC_URI="
 	https://github.com/pyqtgraph/pyqtgraph/archive/${P}.tar.gz
 	test? (
 		https://github.com/pyqtgraph/test-data/archive/${TEST_DATA_TAG}.tar.gz
 			-> ${PN}-${TEST_DATA_TAG}.tar.gz
-	)"
+	)
+"
 S=${WORKDIR}/${PN}-${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="opengl svg"
 REQUIRED_USE="test? ( opengl svg )"
 
@@ -68,7 +73,7 @@ python_test() {
 		'pyqtgraph/examples/test_examples.py::testExamples[ designerExample.py - PySide2 ]'
 	)
 
-	epytest -n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
+	epytest -p xvfb -n "$(makeopts_jobs)"
 }
 
 src_test() {

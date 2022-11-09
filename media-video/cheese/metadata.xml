@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription lang="en">
-		Cheese uses your webcam to take photos and videos, applies fancy special
-		effects, and lets you share the fun with others.
-	</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    Cheese uses your webcam to take photos and videos, applies fancy special
+    effects, and lets you share the fun with others.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/cheese</remote-id>
+  </upstream>
 </pkgmetadata>

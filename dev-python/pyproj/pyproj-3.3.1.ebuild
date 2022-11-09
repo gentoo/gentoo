@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux"
 
 RDEPEND="
 	>=sci-libs/proj-8.0.0:=
@@ -33,8 +33,8 @@ BDEPEND="
 	test? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
+		dev-python/shapely[${PYTHON_USEDEP}]
 		dev-python/xarray[${PYTHON_USEDEP}]
-		sci-libs/shapely[${PYTHON_USEDEP}]
 	)
 "
 

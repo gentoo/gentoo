@@ -13,12 +13,12 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	test? ( https://github.com/${PN}/${PN}-data/archive/${DATA_HASH}.tar.gz -> ${PN}-data-${PV}.tar.gz )
+	test? ( https://github.com/${PN}/${PN}-data/archive/${DATA_HASH}.tar.gz -> ${PN}-data-${DATA_HASH}.tar.gz )
 "
 
 LICENSE="Apache-2.0 Boost-1.0 BSD MIT"
 SLOT="0/9"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="test tools"
 
 BDEPEND="

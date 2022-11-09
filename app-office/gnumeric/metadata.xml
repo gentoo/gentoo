@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>soap@gentoo.org</email>
-		<name>David Seifert</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<use>
-		<flag name="libgda">Enable database support through <pkg>gnome-extra/libgda</pkg>.</flag>
-		<flag name="perl">Enable perl plugin loader.</flag>
-	</use>
+  <maintainer type="person">
+    <email>soap@gentoo.org</email>
+    <name>David Seifert</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="libgda">Enable database support through <pkg>gnome-extra/libgda</pkg>.</flag>
+    <flag name="perl">Enable perl plugin loader.</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gnumeric</remote-id>
+  </upstream>
 </pkgmetadata>

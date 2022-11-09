@@ -3,9 +3,8 @@
 
 EAPI=7
 
-CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{8..10} )
-inherit cmake-multilib linux-info llvm llvm.org python-any-r1
+inherit flag-o-matic cmake-multilib linux-info llvm llvm.org python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
@@ -50,7 +49,7 @@ LLVM_PATCHSET=${PV/_/-}
 llvm.org_set_globals
 
 python_check_deps() {
-	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
 kernel_pds_check() {
@@ -76,6 +75,9 @@ pkg_setup() {
 }
 
 multilib_src_configure() {
+	# LTO causes issues in other packages building, #870127
+	filter-lto
+
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 

@@ -5,7 +5,7 @@ EAPI=8
 
 LLVM_MAX_SLOT=14
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake distutils-r1 llvm
 
@@ -36,11 +36,17 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}"
+
+RESTRICT=test # only regression tests
 
 REQUIRED_USE="
 	|| ( ${ALL_LLVM_TARGETS[*]} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
+
+# Upstream doesn't flag patch releases (bug 858395)
+QA_PKGCONFIG_VERSION="$(ver_cut 1-2)"
 
 wrap_python() {
 	if use python; then
@@ -48,6 +54,10 @@ wrap_python() {
 		distutils-r1_${1} "$@"
 		popd >/dev/null || die
 	fi
+}
+
+pkg_setup() {
+	python_setup
 }
 
 src_prepare() {
@@ -67,6 +77,7 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=ON
 		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 		-DLLVM_HOST_TRIPLE="${CHOST}"
+		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
 
 	cmake_src_configure

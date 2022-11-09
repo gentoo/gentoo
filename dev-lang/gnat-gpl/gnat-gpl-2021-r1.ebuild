@@ -45,7 +45,6 @@ KEYWORDS="amd64 x86"
 IUSE="+ada +bootstrap"
 RESTRICT="test"
 
-RDEPEND="!~sys-devel/gcc-${TOOLCHAIN_GCC_PV}"
 BDEPEND=sys-devel/binutils
 
 S="${WORKDIR}"/${MYP}
@@ -106,12 +105,12 @@ src_prepare() {
 		GNATLS="${gnatpath}/${GNATLS}"
 	fi
 	mkdir bin || die
-	ln -s $(which ${GCC}) bin/gcc || die
-	ln -s $(which ${CXX}) bin/g++ || die
-	ln -s $(which ${GNATMAKE}) bin/gnatmake || die
-	ln -s $(which ${GNATBIND}) bin/gnatbind || die
-	ln -s $(which ${GNATLINK}) bin/gnatlink || die
-	ln -s $(which ${GNATLS}) bin/gnatls || die
+	ln -s $(type -P ${GCC}) bin/gcc || die
+	ln -s $(type -P ${CXX}) bin/g++ || die
+	ln -s $(type -P ${GNATMAKE}) bin/gnatmake || die
+	ln -s $(type -P ${GNATBIND}) bin/gnatbind || die
+	ln -s $(type -P ${GNATLINK}) bin/gnatlink || die
+	ln -s $(type -P ${GNATLS}) bin/gnatls || die
 
 	cd ..
 	mv ${GNATDIR}/src/ada ${MYP}/gcc/ || die

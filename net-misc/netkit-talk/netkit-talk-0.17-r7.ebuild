@@ -9,8 +9,8 @@ MY_P=netkit-ntalk-${PV}
 S="${WORKDIR}"/netkit-ntalk-${PV}
 
 DESCRIPTION="Netkit - talkd"
-HOMEPAGE="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/"
-SRC_URI="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/${MY_P}.tar.gz"
+HOMEPAGE="https://wiki.linuxfoundation.org/networking/netkit"
+SRC_URI="http://ftp.linux.org.uk/pub/linux/Networking/netkit/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

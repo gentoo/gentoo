@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-EGO_PN="github.com/coreos/zetcd"
+EGO_PN="github.com/etcd-io/zetcd"
 
-EGO_VENDOR=( "github.com/coreos/etcd 714e7ec8db7f8398880197be10771fe89c480ee5"
+EGO_VENDOR=( "github.com/etcd-io/etcd 714e7ec8db7f8398880197be10771fe89c480ee5"
 	"google.golang.org/grpc 777daa17ff9b5daef1cfdf915088a2ada3332bf0 github.com/grpc/grpc-go"
 	"github.com/golang/protobuf 4bd1920723d7b7c925de087aa32e2187708897f7"
 	"google.golang.org/genproto ee236bd376b077c7a89f260c026c4735b195e459 github.com/google/go-genproto"
@@ -17,8 +17,8 @@ inherit golang-build golang-vcs-snapshot
 
 ARCHIVE_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-DESCRIPTION="A ZooKeeper personality for etcd"
-HOMEPAGE="https://github.com/coreos/zetcd"
+DESCRIPTION="ZooKeeper personality for etcd"
+HOMEPAGE="https://github.com/etcd-io/zetcd"
 SRC_URI="
 	${ARCHIVE_URI}
 	${EGO_VENDOR_URI}

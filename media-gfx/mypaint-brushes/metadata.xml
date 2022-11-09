@@ -6,4 +6,7 @@
 		<name>Sam James</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">mypaint/mypaint-brushes</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -15,4 +15,7 @@
     - mechanism design — use the constraint solver to simulate planar or spatial linkages, with pin, ball, or slide joints
     - plane and solid geometry — replace hand-solved trigonometry and spreadsheets with a live dimensioned drawing
     </longdescription>
+    <use>
+        <flag name="system-mimalloc">Use system <pkg>dev-libs/mimalloc</pkg> instead of vendored library</flag>
+    </use>
 </pkgmetadata>

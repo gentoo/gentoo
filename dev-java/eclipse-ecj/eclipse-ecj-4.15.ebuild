@@ -11,8 +11,8 @@ MY_PN="ecj"
 DMF="R-${PV}-202003050155"
 
 DESCRIPTION="Eclipse Compiler for Java"
-HOMEPAGE="http://www.eclipse.org/"
-SRC_URI="http://download.eclipse.org/eclipse/downloads/drops4/${DMF}/${MY_PN}src-${PV}.jar"
+HOMEPAGE="https://www.eclipse.org/"
+SRC_URI="https://archive.eclipse.org/eclipse/downloads/drops4/${DMF}/${MY_PN}src-${PV}.jar"
 
 LICENSE="EPL-1.0"
 KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux ~x86-solaris"

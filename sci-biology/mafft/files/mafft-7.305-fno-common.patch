@@ -1,8 +1,0 @@
---- a/core/mltaln.h
-+++ b/core/mltaln.h
-@@ -336,4 +336,4 @@
- 
- extern double sueff_global;
- extern double lenfaca, lenfacb, lenfacc, lenfacd;
--int maxl, tsize;
-+extern int maxl, tsize;

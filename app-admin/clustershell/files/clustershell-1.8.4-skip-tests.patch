@@ -1,0 +1,63 @@
+This is a Gentoo specific patch for skipping tests that do not work due
+to various reasons:
+1. hostname may be set to localhost
+2. test fails which are most probably caused by weird test interaction.
+   The issue is reported to upstream in [1].
+
+[1] https://github.com/cea-hpc/clustershell/issues/488
+
+diff --git a/tests/TaskEventTest.py b/tests/TaskEventTest.py
+index f8a4048..900008b 100644
+--- a/tests/TaskEventTest.py
++++ b/tests/TaskEventTest.py
+@@ -475,6 +475,7 @@ class TaskEventTest(unittest.TestCase):
+         self.assertEqual(eh.cnt_pickup, 3)
+         self.assertEqual(eh.cnt_hup, 3)
+ 
++    @unittest.skip("because of an issue https://github.com/cea-hpc/clustershell/issues/488")
+     def test_ev_pickup_fanout_legacy(self):
+         """test ev_pickup event with fanout (legacy)"""
+         task = task_self()
+@@ -498,6 +499,7 @@ class TaskEventTest(unittest.TestCase):
+         finally:
+             task.set_info("fanout", fanout)
+ 
++    @unittest.skip("because of an issue https://github.com/cea-hpc/clustershell/issues/488")
+     def test_ev_pickup_fanout(self):
+         """test ev_pickup event with fanout"""
+         task = task_self()
+diff --git a/tests/TreeWorkerTest.py b/tests/TreeWorkerTest.py
+index d5c221a..969d3c9 100644
+--- a/tests/TreeWorkerTest.py
++++ b/tests/TreeWorkerTest.py
+@@ -99,6 +99,7 @@ class TEventHandler(TEventHandlerBase):
+             self.ev_timedout_cnt += 1
+ 
+ 
++@unittest.skipIf(HOSTNAME == 'localhost', "does not work with hostname set to 'localhost'")
+ class TreeWorkerTest(unittest.TestCase):
+     """
+     TreeWorkerTest: test TreeWorker
+diff --git a/tests/WorkerExecTest.py b/tests/WorkerExecTest.py
+index 6f99f10..0894f99 100644
+--- a/tests/WorkerExecTest.py
++++ b/tests/WorkerExecTest.py
+@@ -45,6 +45,7 @@ class ExecTest(unittest.TestCase):
+         self.assertEqual(task_self().max_retcode(), 1)
+         self.assertEqual(task_self().node_buffer('localhost'), b'')
+ 
++    @unittest.skipIf(HOSTNAME == 'localhost', "does not work with hostname set to 'localhost'")
+     def test_timeout(self):
+         """test ExecWorker with a timeout"""
+         nodes = "localhost,%s" % HOSTNAME
+@@ -67,6 +68,7 @@ class ExecTest(unittest.TestCase):
+         self.assertRaises(WorkerError, self.execw,
+                           nodes="localhost", handler=None, command="echo %")
+ 
++    @unittest.skipIf(HOSTNAME == 'localhost', "does not work with hostname set to 'localhost'")
+     def test_rank_placeholder(self):
+         """test ExecWorker with several nodes and %n (rank)"""
+         nodes = "localhost,%s" % HOSTNAME
+-- 
+2.35.1
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Jakarta Mail defines a platform-independent and protocol-independent framework to build mail and messaging applications.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">eclipse-ee4j/mail</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -2,7 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>polynomial-c@gentoo.org</email>
-    <name>Lars Wendler</name>
+    <email>marecki@gentoo.org</email>
+    <name>Marek Szuba</name>
   </maintainer>
+  <upstream>
+    <remote-id type="savannah">ddrescue</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -5,7 +5,7 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<use>
-		<flag name="regression-test">Run regression tests (requires FEATURES=test)</flag>
-	</use>
+	<upstream>
+		<remote-id type="github">urcu/userspace-rcu</remote-id>
+	</upstream>
 </pkgmetadata>

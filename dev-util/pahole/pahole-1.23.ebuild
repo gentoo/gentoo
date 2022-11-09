@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit multilib cmake python-single-r1
 
 DESCRIPTION="pahole (Poke-a-Hole) and other DWARF2 utilities"
@@ -11,7 +11,7 @@ HOMEPAGE="https://git.kernel.org/cgit/devel/pahole/pahole.git/"
 
 LICENSE="GPL-2" # only
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="debug"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

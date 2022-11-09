@@ -31,7 +31,7 @@ src_configure() {
 	append-ldflags -Wl,-z,noexecstack
 	obj=( ramsmp.o ${arch_prefix}{fltmark,fltmem,intmark,intmem}.o )
 
-	use pic && append-ldflags -nopie
+	use pic && append-ldflags -no-pie
 
 	if use amd64; then
 		sed -i \

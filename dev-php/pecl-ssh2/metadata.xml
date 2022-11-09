@@ -5,4 +5,7 @@
 	<email>php-bugs@gentoo.org</email>
 	<name>PHP</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">php/pecl-networking-ssh2</remote-id>
+</upstream>
 </pkgmetadata>

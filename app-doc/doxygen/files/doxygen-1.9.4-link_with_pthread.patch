@@ -1,0 +1,24 @@
+diff --git a/addon/doxywizard/.CMakeLists.txt.swp b/addon/doxywizard/.CMakeLists.txt.swp
+deleted file mode 100644
+index fc379d2..0000000
+Binary files a/addon/doxywizard/.CMakeLists.txt.swp and /dev/null differ
+diff --git a/addon/doxywizard/CMakeLists.txt b/addon/doxywizard/CMakeLists.txt
+index bb0e0eb..b6135bd 100644
+--- a/addon/doxywizard/CMakeLists.txt
++++ b/addon/doxywizard/CMakeLists.txt
+@@ -132,12 +132,12 @@ apply_editbin(doxywizard windows)
+ endif()
+ 
+ if(Qt5Core_FOUND)
+-  target_link_libraries(doxywizard Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Xml doxygen_version)
++  target_link_libraries(doxywizard Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Xml doxygen_version pthread)
+ else()
+ if(Qt6Core_FOUND)
+-  target_link_libraries(doxywizard Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Xml doxygen_version)
++  target_link_libraries(doxywizard Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Xml doxygen_version pthread)
+ else()
+-  target_link_libraries(doxywizard ${QT_LIBRARIES} ${QT_QTMAIN_LIBRARY} doxygen_version)
++  target_link_libraries(doxywizard ${QT_LIBRARIES} ${QT_QTMAIN_LIBRARY} doxygen_version pthread)
+ endif()
+ endif()
+ 

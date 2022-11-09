@@ -1,7 +1,12 @@
---- a/Makefile	2015-04-17 13:43:08.122972280 +0200
-+++ b/Makefile	2015-04-17 13:43:11.569975854 +0200
-@@ -14,12 +14,12 @@
- PIXBUF_LIB := -rdynamic -L$(shell $(PIXBUF_CFG) --variable=prefix)/lib -lgdk_pixbuf_xlib-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2015-04-17 13:36:16.000000000 +0200
++++ b/Makefile	2022-07-10 16:02:05.686255330 +0200
+@@ -11,15 +11,15 @@
+ PIXBUF_CFG = pkg-config gdk-pixbuf-xlib-2.0
+ PIXBUF_DEF = -DWITH_GDKPIXBUF
+ PIXBUF_INC := $(shell $(PIXBUF_CFG) --cflags)
+-PIXBUF_LIB := -rdynamic -L$(shell $(PIXBUF_CFG) --variable=prefix)/lib -lgdk_pixbuf_xlib-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0
++PIXBUF_LIB := -rdynamic -lgdk_pixbuf_xlib-2.0 -lgdk_pixbuf-2.0 -lgobject-2.0
  endif
  
 -CC = gcc #-g

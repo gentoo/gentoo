@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<use>
-		<flag name="nautilus">Build contextual menu extension for
-			<pkg>gnome-base/nautilus</pkg>.</flag>
-	</use>
-	<upstream>
-		<remote-id type="sourceforge">fileroller</remote-id>
-		<remote-id type="cpe">cpe:/a:paolo_bacchilega:file_roller</remote-id>
-	</upstream>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="nautilus">Build contextual menu extension for <pkg>gnome-base/nautilus</pkg>.</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:paolo_bacchilega:file_roller</remote-id>
+    <remote-id type="gnome-gitlab">GNOME/file-roller</remote-id>
+  </upstream>
 </pkgmetadata>

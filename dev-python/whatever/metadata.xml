@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">whatever</remote-id>
+		<remote-id type="github">Suor/whatever</remote-id>
 	</upstream>
 </pkgmetadata>

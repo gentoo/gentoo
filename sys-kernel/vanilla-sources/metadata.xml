@@ -5,11 +5,6 @@
 		<email>kernel@gentoo.org</email>
 		<name>Gentoo kernel team</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>ago@gentoo.org</email>
-		<name>Agostino Sarubbo</name>
-		<description>CC/Assign to me the version bump request</description>
-	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
 	</upstream>

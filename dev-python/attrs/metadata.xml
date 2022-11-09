@@ -7,6 +7,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
+    <remote-id type="cpe">cpe:/a:attrs_project:attrs</remote-id>
     <remote-id type="pypi">attrs</remote-id>
     <maintainer status="unknown">
       <email>hs@ox.cx</email>

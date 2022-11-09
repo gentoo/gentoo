@@ -21,7 +21,7 @@ DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based o
 HOMEPAGE="https://xpra.org/"
 LICENSE="GPL-2 BSD"
 SLOT="0"
-IUSE="brotli +client +clipboard csc cups dbus doc ffmpeg jpeg html ibus +lz4 lzo minimal opengl pillow pinentry pulseaudio +server sound systemd test vpx webcam webp xdg xinerama"
+IUSE="brotli +client +clipboard csc cups dbus doc ffmpeg jpeg html ibus +lz4 lzo minimal opengl pillow pinentry pulseaudio +server sound systemd test udev vpx webcam webp xdg xinerama"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( client server )
@@ -98,6 +98,7 @@ RDEPEND="
 	x11-apps/xmodmap
 	ibus? ( app-i18n/ibus )
 	pinentry? ( app-crypt/pinentry )
+	udev? ( virtual/udev )
 "
 DEPEND+="
 	test? ( ${TDEPEND} )
@@ -114,7 +115,6 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.2_ignore-gentoo-no-compile.patch
-	"${FILESDIR}"/${PN}-4.2-suid-warning.patch
 	"${FILESDIR}"/${PN}-4.3-no-service.patch
 	"${FILESDIR}"/${PN}-9999-xdummy.patch
 )
@@ -182,7 +182,8 @@ python_test() {
 	distutils_install_for_testing
 	xdg_environment_reset
 
-	PYTHONPATH=${S}/tests/unittests:${BUILD_DIR}/test/lib \
+	env -u WAYLAND_DISPLAY -u XDG_SESSION_TYPE \
+	PYTHONPATH="${S}/tests/unittests:${BUILD_DIR}/test/lib" \
 	XPRA_SYSTEMD_RUN=$(usex systemd) XPRA_TEST_COVERAGE=0 \
 		"${PYTHON}" "${S}"/tests/unittests/unit/run.py || die
 }
@@ -191,12 +192,22 @@ python_install_all() {
 	distutils-r1_python_prepare_all
 
 	# Move udev dir to the right place.
-	local dir=$(get_udevdir)
-	dodir "${dir%/*}"
-	mv -vnT "${ED}"/usr/lib/udev "${ED}${dir}" || die
+	if use udev; then
+		local dir=$(get_udevdir)
+		dodir "${dir%/*}"
+		mv -vnT "${ED}"/usr/lib/udev "${ED}${dir}" || die
+	else
+		rm -vr "${ED}"/usr/lib/udev || die
+	fi
 }
 
 pkg_postinst() {
 	tmpfiles_process xpra.conf
 	xdg_pkg_postinst
+	use udev && udev_reload
+}
+
+pkg_postrm() {
+	xdg_pkg_postinst
+	use udev && udev_reload
 }

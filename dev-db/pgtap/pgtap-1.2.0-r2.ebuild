@@ -13,7 +13,7 @@ SRC_URI="https://api.pgxn.org/dist/${PN}/${PV}/${P}.zip"
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND="${POSTGRES_DEP}
@@ -33,6 +33,6 @@ src_configure() {
 src_install() {
 	postgres-multi_src_install
 
-	rm -r ${ED}/usr/share/doc/postgresql* || die "Failed to remove improper doc locations"
+	rm -r "${ED}"/usr/share/doc/postgresql* || die "Failed to remove improper doc locations"
 	dodoc doc/pgtap.mmd
 }

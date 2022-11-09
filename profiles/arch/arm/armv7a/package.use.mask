@@ -1,27 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Jakov Smolić <jsmolic@gentoo.org> (2021-01-23)
-# Rust is available here
->=media-libs/libheif-1.10.0 -rav1e
-
-# Joonas Niilola <juippis@gentoo.org> (2020-10-08)
-# Sam James <sam@gentoo.org> (2021-03-11)
-# Dependency keyworded on this arm profile.
-dev-libs/efl -avif
-kde-frameworks/kimageformats -avif
-media-libs/gd -avif
-net-libs/webkit-gtk -avif
 
 # Sam James <sam@gentoo.org> (2020-10-05)
 # Guile only supports JIT on some arches
 # (armv7 only for arm)
 # (See 9.3.8 in the Guile manual)
 dev-scheme/guile -jit
-
-# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
-# virtual/rust is available here
->=media-gfx/eog-3.33.1 -svg
 
 # Sam James <sam@gentoo.org> (2020-07-03)
 # Rust is available here

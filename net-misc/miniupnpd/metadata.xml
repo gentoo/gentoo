@@ -17,4 +17,7 @@
 		<flag name="portinuse">Check if a port is in use before allowing a NAT-PMP client to map it.</flag>
 		<flag name="strict">Be more strict regarding compliance with UPnP specifications.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">miniupnp/miniupnp</remote-id>
+	</upstream>
 </pkgmetadata>

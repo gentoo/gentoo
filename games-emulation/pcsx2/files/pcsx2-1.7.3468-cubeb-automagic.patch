@@ -1,0 +1,56 @@
+Same that media-libs/cubeb does and meant for -DLAZY_LOAD_LIBS=no.
+
+Unfortunately need to use bundled cubeb here given it modifies the
+source starting with (but not limited to):
+https://github.com/PCSX2/pcsx2/commit/9170a5abc1
+--- a/3rdparty/cubeb/CMakeLists.txt
++++ b/3rdparty/cubeb/CMakeLists.txt
+@@ -110,38 +110,48 @@
+ 
+   find_package(PkgConfig REQUIRED)
+ 
++  if(CHECK_PULSE)
+   pkg_check_modules(libpulse IMPORTED_TARGET libpulse)
+   if(libpulse_FOUND)
+     set(USE_PULSE ON)
+     target_compile_definitions(cubeb PRIVATE DISABLE_LIBPULSE_DLOPEN)
+     target_link_libraries(cubeb PRIVATE PkgConfig::libpulse)
+   endif()
++  endif()
+ 
++  if(CHECK_ALSA)
+   pkg_check_modules(alsa IMPORTED_TARGET alsa)
+   if(alsa_FOUND)
+     set(USE_ALSA ON)
+     target_compile_definitions(cubeb PRIVATE DISABLE_LIBASOUND_DLOPEN)
+     target_link_libraries(cubeb PRIVATE PkgConfig::alsa)
+   endif()
++  endif()
+ 
++  if(CHECK_JACK)
+   pkg_check_modules(jack IMPORTED_TARGET jack)
+   if(jack_FOUND)
+     set(USE_JACK ON)
+     target_compile_definitions(cubeb PRIVATE DISABLE_LIBJACK_DLOPEN)
+     target_link_libraries(cubeb PRIVATE PkgConfig::jack)
+   endif()
++  endif()
+ 
++  if(CHECK_SNDIO)
+   check_include_files(sndio.h USE_SNDIO)
+   if(USE_SNDIO)
+     target_compile_definitions(cubeb PRIVATE DISABLE_LIBSNDIO_DLOPEN)
+     target_link_libraries(cubeb PRIVATE sndio)
+   endif()
++  endif()
+ 
++  if(CHECK_AAUDIO)
+   check_include_files(aaudio/AAudio.h USE_AAUDIO)
+   if(USE_AAUDIO)
+     target_compile_definitions(cubeb PRIVATE DISABLE_LIBAAUDIO_DLOPEN)
+     target_link_libraries(cubeb PRIVATE aaudio)
+   endif()
++  endif()
+ endif()
+ 
+ if(USE_PULSE)

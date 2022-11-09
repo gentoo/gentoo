@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake linux-info
+inherit cmake linux-info udev
 
 COMMIT="f9a66914622514c13997c2bf7ec20fa98e9dfc1d"
 DESCRIPTION="Daemon that uses hid-nintendo evdev devices to implement joycon pairing"
@@ -40,4 +40,12 @@ src_install() {
 	cmake_src_install
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	doman doc/${PN}.1
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }

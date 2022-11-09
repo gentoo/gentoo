@@ -1,0 +1,14 @@
+--- a/tests/fff_print/test_data.cpp
++++ b/tests/fff_print/test_data.cpp
+@@ -4,10 +4,9 @@
+ #include "libslic3r/GCodeReader.hpp"
+ #include "libslic3r/Config.hpp"
+ #include "libslic3r/Print.hpp"
+-#include "libslic3r/Format/OBJ.hpp"
+-#include "libslic3r/Format/STL.hpp"
+
+ #include <cstdlib>
++#include <fstream>
+ #include <string>
+
+ #include <boost/nowide/cstdio.hpp>

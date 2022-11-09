@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
-PYTHON_REQ_USE="threads(+),xml"
+PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_REQ_USE="threads(+),xml(+)"
 inherit cmake flag-o-matic python-r1
 
 DESCRIPTION="C++ computer vision library emphasizing customizable algorithms and structures"

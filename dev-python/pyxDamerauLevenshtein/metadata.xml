@@ -5,8 +5,12 @@
 		<email>andrewammerlaan@gentoo.org</email>
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pyxDamerauLevenshtein</remote-id>
-		<remote-id type="github">gfairchild/pyxDamerauLevenshtein</remote-id>
+		<remote-id type="github">lanl/pyxDamerauLevenshtein</remote-id>
 	</upstream>
 </pkgmetadata>

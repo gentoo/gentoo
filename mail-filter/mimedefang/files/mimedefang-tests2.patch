@@ -1,0 +1,21 @@
+--- a/t/net.t
++++ b/t/net.t
+@@ -54,9 +54,15 @@
+   my @rbl;
+   $rbl[0] = "dnsbltest.spamassassin.org";
+   my $relayip = "144.137.3.98";
+-  detect_and_load_perl_modules();
+-  my $res = relay_is_blacklisted_multi($relayip, 10, 1, \@rbl);
+-  is($res->{"dnsbltest.spamassassin.org"}[0], "127.0.0.2");
++
++  SKIP: {
++    if ( (not defined $ENV{'NET_TEST'}) or ($ENV{'NET_TEST'} ne 'yes' )) {
++      skip "Net test disabled", 1
++    }
++    detect_and_load_perl_modules();
++    my $res = relay_is_blacklisted_multi($relayip, 10, 1, \@rbl);
++    is($res->{"dnsbltest.spamassassin.org"}[0], "127.0.0.2");
++  }
+ }
+ 
+ __PACKAGE__->runtests();

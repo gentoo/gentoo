@@ -6,6 +6,7 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:squashfs-tools_project:squashfs-tools</remote-id>
 		<remote-id type="sourceforge">squashfs</remote-id>
 	</upstream>
 </pkgmetadata>

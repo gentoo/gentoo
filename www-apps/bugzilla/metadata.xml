@@ -13,4 +13,7 @@
 		<email>web-apps@gentoo.org</email>
 		<name>Gentoo Webapps</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">bugzilla/bugzilla</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -12,5 +12,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">termcolor</remote-id>
+    <remote-id type="github">termcolor/termcolor</remote-id>
   </upstream>
 </pkgmetadata>

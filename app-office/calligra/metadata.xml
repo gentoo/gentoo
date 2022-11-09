@@ -11,6 +11,7 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="cpe">cpe:/a:calligra:calligra</remote-id>
 	</upstream>
 	<use>
 		<flag name="activities">Enable kactivities support</flag>

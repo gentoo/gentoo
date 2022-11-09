@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
+EAPI=8
+XORG_TARBALL_SUFFIX="xz"
 inherit udev xorg-3
 
 DESCRIPTION="VMWare mouse input driver"
@@ -22,4 +22,12 @@ src_configure() {
 src_install() {
 	xorg-3_src_install
 	rm -r "${ED}"/punt || die
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }

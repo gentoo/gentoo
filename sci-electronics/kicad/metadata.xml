@@ -21,7 +21,7 @@
 		schematic diagrams and printed circuit board artwork.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">KiCad/kicad-i18n</remote-id>
+		<remote-id type="gitlab">kicad/code/kicad</remote-id>
 		<remote-id type="launchpad">kicad</remote-id>
 	</upstream>
 </pkgmetadata>

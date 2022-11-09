@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">service_identity</remote-id>
+		<remote-id type="pypi">service-identity</remote-id>
 		<remote-id type="github">pyca/service-identity</remote-id>
 	</upstream>
 </pkgmetadata>

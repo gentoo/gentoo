@@ -1,6 +1,5 @@
-diff -ru gogglesmm-1.2.1/gap/ap_http_response.cpp /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/gap/ap_http_response.cpp
---- gogglesmm-1.2.1/gap/ap_http_response.cpp	2018-08-01 01:59:22.000000000 +0200
-+++ /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/gap/ap_http_response.cpp	2019-12-16 19:21:06.596524627 +0100
+--- a/gap/ap_http_response.cpp
++++ b/gap/ap_http_response.cpp
 @@ -341,7 +341,7 @@
          break;
  
@@ -10,9 +9,8 @@ diff -ru gogglesmm-1.2.1/gap/ap_http_response.cpp /var/tmp/portage/media-sound/g
        p++;
        }
      else {
-diff -ru gogglesmm-1.2.1/src/GMDBus.cpp /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/GMDBus.cpp
---- gogglesmm-1.2.1/src/GMDBus.cpp	2018-08-01 01:59:22.000000000 +0200
-+++ /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/GMDBus.cpp	2019-12-16 19:27:05.072866638 +0100
+--- a/src/GMDBus.cpp
++++ b/src/GMDBus.cpp
 @@ -60,7 +60,7 @@
    void setuphooks() {
      for (FXint i=0;i<connections.no();i++) {
@@ -31,9 +29,8 @@ diff -ru gogglesmm-1.2.1/src/GMDBus.cpp /var/tmp/portage/media-sound/gogglesmm-1
        delete reply;
        }
      }
-diff -ru gogglesmm-1.2.1/src/GMFilename.cpp /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/GMFilename.cpp
---- gogglesmm-1.2.1/src/GMFilename.cpp	2018-08-01 01:59:22.000000000 +0200
-+++ /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/GMFilename.cpp	2019-12-16 19:24:44.801263832 +0100
+--- a/src/GMFilename.cpp
++++ b/src/GMFilename.cpp
 @@ -167,7 +167,7 @@
      else if (Unicode::isPrint(src.wc(i))) {
        if (codec->wc2mb(&c,1,src.wc(i))==1) {
@@ -61,9 +58,8 @@ diff -ru gogglesmm-1.2.1/src/GMFilename.cpp /var/tmp/portage/media-sound/goggles
    FXString dst;
    FXint i,n=0;
  
-diff -ru gogglesmm-1.2.1/src/GMTrackDatabase.cpp /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/GMTrackDatabase.cpp
---- gogglesmm-1.2.1/src/GMTrackDatabase.cpp	2018-08-01 01:59:22.000000000 +0200
-+++ /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/GMTrackDatabase.cpp	2019-12-16 19:26:29.609893508 +0100
+--- a/src/GMTrackDatabase.cpp
++++ b/src/GMTrackDatabase.cpp
 @@ -1372,8 +1372,8 @@
  void GMTrackDatabase::clear_path_lookup() {
    DEBUG_DB_GET();
@@ -86,9 +82,8 @@ diff -ru gogglesmm-1.2.1/src/GMTrackDatabase.cpp /var/tmp/portage/media-sound/go
        delete a;
        }
      }
-diff -ru gogglesmm-1.2.1/src/gmutils.h /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/gmutils.h
---- gogglesmm-1.2.1/src/gmutils.h	2018-08-01 01:59:22.000000000 +0200
-+++ /var/tmp/portage/media-sound/gogglesmm-1.2.1/work/gogglesmm-1.2.1/src/gmutils.h	2019-12-16 19:22:25.340787153 +0100
+--- a/src/gmutils.h
++++ b/src/gmutils.h
 @@ -26,7 +26,7 @@
    FXint remove(FXint name) {  return (FXint)(FXival)FXHash::remove((void*)(FXival)name); }
    //FXint find(FXint name) const { return (FXint)(FXival)FXHash::find((void*)(FXival)name); }

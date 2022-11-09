@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-<use>
-	<flag name="jingle">Enable voice calls for jabber</flag>
-	<flag name="plugins">Enable plugin loader</flag>
-</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="jingle">Enable voice calls for jabber</flag>
+    <flag name="plugins">Enable plugin loader</flag>
+  </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">telepathy/telepathy-gabble</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -9,7 +9,7 @@ SRC_URI="https://github.com/zeromq/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0/4"
-KEYWORDS="amd64 arm arm64 ~hppa x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc64 ~riscv x86"
 IUSE="curl drafts http-client http-server lz4 nss static-libs systemd +uuid"
 
 BDEPEND="app-text/asciidoc

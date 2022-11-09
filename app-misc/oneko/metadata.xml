@@ -8,7 +8,7 @@ mouse cursor.
 To stop the program, run this command:
 	killall oneko
 If your mouse cursor changes to the default black cross after running oneko,
-you should install x11-apps/xsetroot and run:
+you should install <pkg>x11-apps/xsetroot</pkg> and run:
 	xsetroot -cursor_name left_ptr
 </longdescription>
 </pkgmetadata>

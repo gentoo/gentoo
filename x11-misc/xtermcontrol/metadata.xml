@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>x11@gentoo.org</email>
-	<name>X11</name>
-</maintainer>
-<longdescription>
-xtermcontrol enables dynamic control of xterm properties.
-It makes it easy to change colors, title, font and geometry of a running xterm,
-as well as to report the current settings of the aforementioned properties.
-Window manipulations de-/iconify, raise/lower, maximize/restore and reset are also supported.
-To complete the feature set; xtermcontrol lets advanced users issue any xterm control
-sequence of their choosing.
-</longdescription>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
+  </maintainer>
+  <longdescription>
+  xtermcontrol enables dynamic control of xterm properties.
+  It makes it easy to change colors, title, font and geometry of a running xterm,
+  as well as to report the current settings of the aforementioned properties.
+  Window manipulations de-/iconify, raise/lower, maximize/restore and reset are also supported.
+  To complete the feature set; xtermcontrol lets advanced users issue any xterm control
+  sequence of their choosing.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">JessThrysoee/xtermcontrol</remote-id>
+  </upstream>
 </pkgmetadata>

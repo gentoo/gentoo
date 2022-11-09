@@ -12,7 +12,7 @@ SRC_URI="https://ecsft.cern.ch/dist/cvmfs/${P}/source.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="server"
 
 CDEPEND="
@@ -47,6 +47,7 @@ DEPEND="${CDEPEND}
 PATCHES=(
 		"${FILESDIR}"/${PN}-2.7.2-builtins.patch
 		"${FILESDIR}"/${PN}-2.7.2-find-package.patch
+		"${FILESDIR}"/${PN}-2.9.2-include-ctime.patch
 )
 
 pkg_setup() {

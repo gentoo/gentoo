@@ -6,4 +6,7 @@
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
 <stabilize-allarches/>
+<upstream>
+  <remote-id type="gentoo">proj/nxml-gentoo-schemas</remote-id>
+</upstream>
 </pkgmetadata>

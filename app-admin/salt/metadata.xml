@@ -24,7 +24,7 @@ backbone of cloud and data center management.
     <flag name="cheetah">Enable support for <pkg>dev-python/cheetah3</pkg></flag>
     <flag name="cherrypy">Enable support for using cherrypy.</flag>
     <flag name="libcloud">Enable salt-cloud support via libcloud.</flag>
-    <flag name="libvirt">Support managing virtual machines with app-emulation/libvirt.</flag>
+    <flag name="libvirt">Support managing virtual machines with <pkg>app-emulation/libvirt</pkg>.</flag>
     <flag name="genshi">Enable support for <pkg>dev-python/genshi</pkg></flag>
     <flag name="gnupg">Enable support for gnupg via python-gnupg.</flag>
     <flag name="keyring">Enable support for keyrings via python-keyring.</flag>
@@ -33,7 +33,7 @@ backbone of cloud and data center management.
     <flag name="neutron">Support the OpenStack neutron network service.</flag>
     <flag name="nova">Enable support for the OpenStack Nova API</flag>
     <flag name="openssl">Add support for using TLS via OpenSSL.</flag>
-    <flag name="portage">Add support for package state enforcement using sys-apps/portage</flag>
+    <flag name="portage">Add support for package state enforcement using <pkg>sys-apps/portage</pkg></flag>
     <flag name="raet">Add support for the new RAET transport.</flag>
     <flag name="redis">Support returning data to a redis database.</flag>
     <flag name="zeromq">Add support for the zeromq transport.</flag>

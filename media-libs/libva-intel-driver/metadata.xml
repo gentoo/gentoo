@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>vaapi@gentoo.org</email>
+    <name>VA-API Project</name>
+  </maintainer>
+  <use>
+    <flag name="hybrid">Enable support for hybrid vaapi hardware acceleration on Intel Haswell and newer architectures</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">intel/intel-vaapi-driver</remote-id>
+  </upstream>
+</pkgmetadata>

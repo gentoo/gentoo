@@ -8,7 +8,7 @@ HOMEPAGE="https://www.gnu.org/software/libc/libc.html"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv x86"
 
 DEPEND="
 	!sys-libs/glibc"

@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/871489
+--- a/X11/neXtaw/XawIm.c
++++ b/X11/neXtaw/XawIm.c
+@@ -61,2 +61,3 @@
+ #include <X11/StringDefs.h>
++#include <X11/ResourceI.h>
+ #include <X11/Xos.h>
+--- a/X11/neXtaw/laygram.y
++++ b/X11/neXtaw/laygram.y
+@@ -14,2 +14,5 @@
+ 
++void yyerror(char *s);
++int yylex(void);
++
+ %}
+--- a/X11/neXtaw/laylex.l
++++ b/X11/neXtaw/laylex.l
+@@ -88,2 +88,3 @@
+ 
++void
+ yysetsource(s)
+@@ -94,2 +95,3 @@
+ 
++void
+ yyerror(s)

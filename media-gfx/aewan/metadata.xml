@@ -6,10 +6,10 @@
 		<name>Mikle Kolyada</name>
 	</maintainer>
 	<longdescription lang="en">
-Aewan is a multi-layered ascii-art/animation editor that produces both
-stand-alone cat-able art files and an easy-to-parse format for integration in
-your terminal applications.
-</longdescription>
+	Aewan is a multi-layered ascii-art/animation editor that produces both
+	stand-alone cat-able art files and an easy-to-parse format for integration in
+	your terminal applications.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">aewan</remote-id>
 	</upstream>

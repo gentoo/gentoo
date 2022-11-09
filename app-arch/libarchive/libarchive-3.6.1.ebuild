@@ -7,8 +7,8 @@ inherit multilib-minimal toolchain-funcs verify-sig
 DESCRIPTION="Multi-format archive and compression library"
 HOMEPAGE="https://www.libarchive.org/"
 SRC_URI="
-	https://www.libarchive.de/downloads/${P}.tar.gz
-	verify-sig? ( https://www.libarchive.de/downloads/${P}.tar.gz.asc )
+	https://www.libarchive.de/downloads/${P}.tar.xz
+	verify-sig? ( https://www.libarchive.de/downloads/${P}.tar.xz.asc )
 "
 
 LICENSE="BSD BSD-2 BSD-4 public-domain"
@@ -44,6 +44,10 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-libarchive )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-glibc-2.36.patch
+)
 
 multilib_src_configure() {
 	export ac_cv_header_ext2fs_ext2_fs_h=$(usex e2fsprogs) #354923

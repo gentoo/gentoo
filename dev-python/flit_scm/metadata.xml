@@ -4,7 +4,9 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">flit-scm</remote-id>
+		<remote-id type="gitlab">WillDaSilva/flit_scm</remote-id>
 	</upstream>
 </pkgmetadata>

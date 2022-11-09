@@ -1,0 +1,169 @@
+--- a/bindings/python/tests/test_copy.py
++++ b/bindings/python/tests/test_copy.py
+@@ -61,15 +61,15 @@
+ 
+ class TestProgressHandler(object):
+   def begin(self, id, total, source, target):
+-    print '+++ begin(): %d, total: %d' % (id, total)
+-    print '+++ source: %s' % source
+-    print '+++ target: %s' % target
++    print('+++ begin(): %d, total: %d' % (id, total))
++    print('+++ source: %s' % source)
++    print('+++ target: %s' % target)
+ 
+   def end(self, jobId, status):
+-    print '+++ end(): jobId: %s, status: %s'  % (jobId, status)
++    print('+++ end(): jobId: %s, status: %s'  % (jobId, status))
+ 
+   def update(self, jobId, processed, total):
+-    print '+++ update(): jobid: %s, processed: %d, total: %d' % (jobId, processed, total)
++    print('+++ update(): jobid: %s, processed: %d, total: %d' % (jobId, processed, total))
+ 
+ def test_copy_progress_handler():
+   c = client.CopyProcess()
+--- a/bindings/python/tests/test_file.py
++++ b/bindings/python/tests/test_file.py
+@@ -289,9 +289,9 @@
+   for i, l in enumerate(lines):
+     total += len(l)
+     if l != pylines[i]:
+-      print '!!!!!', total, i
+-      print '+++++ py: %r' % pylines[i]
+-      print '+++++ me: %r' % l
++      print('!!!!!', total, i)
++      print('+++++ py: %r' % pylines[i])
++      print('+++++ me: %r' % l)
+       break
+     if pylines[i].endswith('\n'):
+       assert l.endswith('\n')
+--- a/bindings/python/tests/test_filesystem.py
++++ b/bindings/python/tests/test_filesystem.py
+@@ -37,20 +37,20 @@
+   status, response = f.open(smallfile, OpenFlags.NEW)
+ 
+   for func, args, hasReturnObject in funcspecs:
+-      async(func, args, hasReturnObject)
++      run_async(func, args, hasReturnObject)
+ 
+ def sync(func, args, hasReturnObject):
+   status, response = func(*args)
+-  print status
++  print(status)
+   assert status.ok
+   if hasReturnObject:
+-      print response
++      print(response)
+       assert response
+ 
+-def async(func, args, hasReturnObject):
++def run_async(func, args, hasReturnObject):
+   handler = AsyncResponseHandler()
+   status = func(callback=handler, *args)
+-  print status
++  print(status)
+   assert status.ok
+   status, response, hostlist = handler.wait()
+ 
+@@ -60,7 +60,7 @@
+ 
+   for host in hostlist:
+     assert host.url
+-    print host.url
++    print(host.url)
+ 
+   if hasReturnObject:
+     assert response
+@@ -79,7 +79,7 @@
+ 
+   try:
+     os.remove('/tmp/eggs')
+-  except OSError, __:
++  except OSError as __:
+     pass
+ 
+ def test_locate_sync():
+@@ -127,7 +127,7 @@
+ 
+   for item in response:
+     assert item.name
+-    print item.statinfo
++    print(item.statinfo)
+     assert item.statinfo
+     assert item.hostaddr
+     
+@@ -143,11 +143,11 @@
+   assert status.ok
+ 
+   for h in hostlist:
+-    print h.url
++    print(h.url)
+ 
+   for item in response:
+     assert item.name
+-    print item.statinfo
++    print(item.statinfo)
+     assert item.statinfo
+     assert item.hostaddr
+ 
+@@ -158,7 +158,7 @@
+   status, response = c.query(QueryCode.STATS, 'a')
+   assert status.ok
+   assert response
+-  print response
++  print(response)
+ 
+ def test_query_async():
+   c = client.FileSystem(SERVER_URL)
+@@ -169,7 +169,7 @@
+   status, response, hostlist = handler.wait()
+   assert status.ok
+   assert response
+-  print response
++  print(response)
+   
+ def test_mkdir_flags():
+   c = client.FileSystem(SERVER_URL)
+--- a/bindings/python/tests/test_glob.py
++++ b/bindings/python/tests/test_glob.py
+@@ -2,7 +2,7 @@
+ import os
+ import glob as norm_glob
+ import XRootD.client.glob_funcs as glob
+-from pathlib2 import Path
++from pathlib import Path
+ 
+ 
+ @pytest.fixture
+@@ -13,7 +13,7 @@
+     subdir2.mkdir()
+     for i in range(3):
+         dummy = subdir1 / ("a_file_%d.txt" % i)
+-        dummy.write_text(u"This is file %d\n" % i, encoding="utf-8")
++        dummy.write_text("This is file %d\n" % i, encoding="utf-8")
+     return tmpdir
+ 
+ 
+--- a/bindings/python/tests/test_threads.py
++++ b/bindings/python/tests/test_threads.py
+@@ -15,10 +15,10 @@
+     s, _ = self.file.write(smallbuffer)
+     assert s.ok
+ 
+-    print '+++ thread %d says: %s' % (self.id, self.file.read())
++    print('+++ thread %d says: %s' % (self.id, self.file.read()))
+ 
+     for line in self.file:
+-      print '+++ thread %d says: %s' % (self.id, line)
++      print('+++ thread %d says: %s' % (self.id, line))
+ 
+     self.file.close()
+ 
+@@ -28,7 +28,7 @@
+ #   assert f.is_open()
+ #   f.write(smallbuffer)
+ 
+-  for i in xrange(3):
++  for i in range(3):
+     tt = TestThread(f, i)
+     tt.start()
+     tt.join()

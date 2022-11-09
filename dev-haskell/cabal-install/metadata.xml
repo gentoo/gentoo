@@ -5,12 +5,8 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		The 'cabal' command-line program simplifies the process of managing
-		Haskell software by automating the fetching, configuration, compilation
-		and installation of Haskell libraries and programs.
-	</longdescription>
 	<use>
-		<flag name="native-dns">Enable use of the resolv and windns packages for performing DNS lookups</flag>
+		<flag name="lukko">Use @lukko@ for file-locking</flag>
+		<flag name="native-dns">Enable use of the [resolv](https://hackage.haskell.org/package/resolv) &amp; [windns](https://hackage.haskell.org/package/windns) packages for performing DNS lookups</flag>
 	</use>
 </pkgmetadata>

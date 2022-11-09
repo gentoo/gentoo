@@ -9,7 +9,7 @@ SRC_URI="https://archives.eyrie.org/software/kerberos/${P/_/-}.tar.xz"
 
 LICENSE="|| ( BSD-2 GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE=""
 # tests fail without a /etc/krb5.conf
 RESTRICT="test"

@@ -1,0 +1,117 @@
+Add -DTG_OWT_USE_X11
+
+Allows disabling X11 desktop capturing independently of pipewire support, for
+the few people that run wayland without any X11 support whatsoever.
+
+This setup is untested, but supported by the GNI build system, see:
+* src/modules/desktop_capture/BUILD.gn (option rtc_use_x11_extensions)
+
+Toggling the WEBRTC_USE_X11 define also affects some files under
+src/modules/audio_device, but that falls under "X11 support", regardless...
+
+--- tg_owt-10d5f4bf77333ef6b43516f90d2ce13273255f41.orig/CMakeLists.txt
++++ tg_owt-10d5f4bf77333ef6b43516f90d2ce13273255f41/CMakeLists.txt
+@@ -21,11 +21,13 @@
+ 
+ option(BUILD_SHARED_LIBS "Builds shared libraries instead of static." OFF)
+ option(TG_OWT_USE_PROTOBUF "Use protobuf to generate additional headers. Useful for packaged build." ${BUILD_SHARED_LIBS})
++option(TG_OWT_USE_X11 "Use X11 for desktop capture on non-Apple Unix." ON)
+ option(TG_OWT_USE_PIPEWIRE "Use pipewire for desktop capture on non-Apple Unix." ON)
+ option(TG_OWT_DLOPEN_PIPEWIRE "dlopen pipewire 0.3 for desktop capture on non-Apple Unix." ${not_packaged_build})
+ option(TG_OWT_BUILD_AUDIO_BACKENDS "Build webrtc audio backends." OFF)
+ 
+ if (NOT UNIX OR APPLE)
++    set(TG_OWT_USE_X11 OFF)
+     set(TG_OWT_USE_PIPEWIRE OFF)
+ endif()
+ 
+@@ -97,6 +99,10 @@
+ add_library(tg_owt)
+ init_target(tg_owt)
+ 
++if (TG_OWT_USE_X11)
++    link_x11(tg_owt)
++endif()
++
+ if (TG_OWT_USE_PIPEWIRE)
+     if (TG_OWT_DLOPEN_PIPEWIRE)
+         include(cmake/generate_stubs.cmake)
+@@ -189,10 +195,6 @@
+ include(cmake/libwebrtcbuild.cmake)
+ target_link_libraries(tg_owt PUBLIC tg_owt::libwebrtcbuild)
+ 
+-if (UNIX AND NOT APPLE)
+-    link_x11(tg_owt)
+-endif()
+-
+ function(add_sublibrary postfix)
+     add_library(tg_owt_${postfix} OBJECT)
+     init_feature_target(tg_owt_${postfix} ${postfix})
+@@ -2370,6 +2372,39 @@
+     )
+ endif()
+ 
++if (NOT TG_OWT_USE_X11)
++    remove_target_sources(tg_owt ${webrtc_loc}
++        # src/modules/desktop_capture/BUILD.gn (rtc_use_x11_extensions)
++        modules/desktop_capture/linux/x11/mouse_cursor_monitor_x11.cc
++        modules/desktop_capture/linux/x11/mouse_cursor_monitor_x11.h
++        modules/desktop_capture/linux/x11/screen_capturer_x11.cc
++        modules/desktop_capture/linux/x11/screen_capturer_x11.h
++        modules/desktop_capture/linux/x11/shared_x_display.cc
++        modules/desktop_capture/linux/x11/shared_x_display.h
++        modules/desktop_capture/linux/x11/window_capturer_x11.cc
++        modules/desktop_capture/linux/x11/window_capturer_x11.h
++        modules/desktop_capture/linux/x11/window_finder_x11.cc
++        modules/desktop_capture/linux/x11/window_finder_x11.h
++        modules/desktop_capture/linux/x11/window_list_utils.cc
++        modules/desktop_capture/linux/x11/window_list_utils.h
++        modules/desktop_capture/linux/x11/x_atom_cache.cc
++        modules/desktop_capture/linux/x11/x_atom_cache.h
++        modules/desktop_capture/linux/x11/x_error_trap.cc
++        modules/desktop_capture/linux/x11/x_error_trap.h
++        modules/desktop_capture/linux/x11/x_server_pixel_buffer.cc
++        modules/desktop_capture/linux/x11/x_server_pixel_buffer.h
++        modules/desktop_capture/linux/x11/x_window_property.cc
++        modules/desktop_capture/linux/x11/x_window_property.h
++
++        # screen_drawer_linux.cc depends on x11, rest are revdeps
++        modules/desktop_capture/screen_drawer.cc
++        modules/desktop_capture/screen_drawer.h
++        modules/desktop_capture/screen_drawer_linux.cc
++        modules/desktop_capture/screen_drawer_lock_posix.cc
++        modules/desktop_capture/screen_drawer_lock_posix.h
++    )
++endif()
++
+ if (NOT TG_OWT_USE_PIPEWIRE)
+     remove_target_sources(tg_owt ${webrtc_loc}
+         modules/desktop_capture/linux/wayland/base_capturer_pipewire.cc
+--- tg_owt-10d5f4bf77333ef6b43516f90d2ce13273255f41.orig/cmake/libwebrtcbuild.cmake
++++ tg_owt-10d5f4bf77333ef6b43516f90d2ce13273255f41/cmake/libwebrtcbuild.cmake
+@@ -29,6 +29,13 @@
+     BWE_TEST_LOGGING_COMPILE_TIME_ENABLE=0
+ )
+ 
++if (TG_OWT_USE_X11)
++    target_compile_definitions(libwebrtcbuild
++    INTERFACE
++        WEBRTC_USE_X11
++    )
++endif()
++
+ if (TG_OWT_USE_PIPEWIRE)
+     target_compile_definitions(libwebrtcbuild
+     INTERFACE
+@@ -65,11 +72,6 @@
+         INTERFACE
+             WEBRTC_MAC
+         )
+-    else()
+-        target_compile_definitions(libwebrtcbuild
+-        INTERFACE
+-            WEBRTC_USE_X11
+-        )
+     endif()
+ 
+     if (CMAKE_SYSTEM_NAME STREQUAL "Linux")

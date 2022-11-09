@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 WX_GTK_VER="3.0-gtk3"
 
 inherit check-reqs cmake optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
@@ -21,7 +21,7 @@ else
 	S="${WORKDIR}/${PN}-${MY_PV}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~arm64 ~x86"
+		KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 	fi
 fi
 
@@ -37,7 +37,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # Depend on opencascade:0 to get unslotted variant (so we know path to it), bug #833301
 COMMON_DEPEND="
 	!sci-electronics/kicad-i18n
-	>=dev-libs/boost-1.61:=[context,nls]
+	dev-libs/boost:=[context,nls]
 	media-libs/freeglut
 	media-libs/glew:0=
 	>=media-libs/glm-0.9.9.1
@@ -46,7 +46,7 @@ COMMON_DEPEND="
 	>=x11-libs/pixman-0.30
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.61:=[context,nls,python,${PYTHON_USEDEP}]
+		dev-libs/boost:=[context,nls,python,${PYTHON_USEDEP}]
 		dev-python/wxpython:4.0[${PYTHON_USEDEP}]
 	')
 	${PYTHON_DEPS}
@@ -75,7 +75,7 @@ fi
 CHECKREQS_DISK_BUILD="900M"
 
 pkg_setup() {
-	use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
 	python-single-r1_pkg_setup
 	setup-wxwidgets
@@ -94,7 +94,7 @@ src_configure() {
 	xdg_environment_reset
 
 	local mycmakeargs=(
-		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${PF}"
+		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${PN}-doc-${PV}"
 
 		-DKICAD_SCRIPTING_WXPYTHON=ON
 

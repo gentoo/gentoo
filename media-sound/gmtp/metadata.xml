@@ -6,8 +6,8 @@
     <name>Gentoo Sound project</name>
   </maintainer>
   <longdescription lang="en">
-gMTP is a graphical frontend to libmtp. It allows to transfer files to mtp devices like mp3 players or android tablets.
-</longdescription>
+  gMTP is a graphical frontend to libmtp. It allows to transfer files to mtp devices like mp3 players or android tablets.
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">gmtp</remote-id>
   </upstream>

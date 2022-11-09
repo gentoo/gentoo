@@ -6,7 +6,7 @@ NEED_EMACS=25
 
 inherit elisp
 
-DESCRIPTION="Use the Emacsclient as the \$EDITOR of child processes"
+DESCRIPTION="Transient commands abstraction for GNU Emacs"
 HOMEPAGE="https://magit.vc/manual/transient"
 SRC_URI="https://github.com/magit/transient/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 

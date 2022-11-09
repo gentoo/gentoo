@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils bash-completion-r1
+inherit bash-completion-r1 strip-linguas
 
 DESCRIPTION="Script for unpacking various file formats"
 HOMEPAGE="https://packages.qa.debian.org/u/unp.html"

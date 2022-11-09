@@ -1,0 +1,29 @@
+From b4fbdd9dfccabcaf5aa9f6ab7f6cab430cc16999 Mon Sep 17 00:00:00 2001
+From: utilum <oz@utilum.com>
+Date: Sun, 24 Jun 2018 10:30:13 +0200
+Subject: [PATCH] backport: Deprecate safe_level of `ERB.new` in Ruby 2.6
+
+37a87ba0969d9c08e0e5d05271c7d2e6ba8aa817
+---
+ lib/sprockets/erb_processor.rb | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/lib/sprockets/erb_processor.rb b/lib/sprockets/erb_processor.rb
+index a14d1c1a8..acbd4ad63 100644
+--- a/lib/sprockets/erb_processor.rb
++++ b/lib/sprockets/erb_processor.rb
+@@ -18,7 +18,13 @@ def initialize(&block)
+     end
+ 
+     def call(input)
+-      engine = ::ERB.new(input[:data], nil, '<>')
++      match = ERB.version.match(/\Aerb\.rb \[(?<version>[^ ]+) /)
++      if match && match[:version] >= "2.2.0" # Ruby 2.6+
++        engine = ::ERB.new(input[:data], trim_mode: '<>')
++      else
++        engine = ::ERB.new(input[:data], nil, '<>')
++      end
++
+       context = input[:environment].context_class.new(input)
+       klass = (class << context; self; end)
+       klass.class_eval(&@block) if @block

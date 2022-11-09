@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,10 +11,16 @@ then
 	EGIT_SUBMODULES=( Externals/mGBA/mgba )
 	inherit git-r3
 else
-	EGIT_COMMIT=eb5cd9be78c76b9ccbab9e5fbd1721ef6876cd68
+	EGIT_COMMIT=0f2540a0d1133950467845f20b1e003181147781
+	MGBA_COMMIT=40d4c430fc36caeb7ea32fd39624947ed487d2f2
 	SRC_URI="
 		https://github.com/dolphin-emu/dolphin/archive/${EGIT_COMMIT}.tar.gz
-			-> ${P}.tar.gz"
+			-> ${P}.tar.gz
+		mgba? (
+			https://github.com/mgba-emu/mgba/archive/${MGBA_COMMIT}.tar.gz
+				-> mgba-${MGBA_COMMIT}.tar.gz
+		)
+	"
 	S=${WORKDIR}/${PN}-${EGIT_COMMIT}
 	KEYWORDS="~amd64 ~arm64"
 fi
@@ -22,24 +28,30 @@ fi
 DESCRIPTION="Gamecube and Wii game emulator"
 HOMEPAGE="https://dolphin-emu.org/"
 
-LICENSE="GPL-2+ Apache-2.0 BSD BSD-2 ISC LGPL-2.1+ MIT MPL-2.0 ZLIB"
+LICENSE="GPL-2+ BSD BSD-2 LGPL-2.1+ MIT ZLIB"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg +gui log mgba
-	profile pulseaudio systemd upnp vulkan"
+IUSE="
+	alsa bluetooth discord-presence doc +evdev ffmpeg +gui log mgba
+	profile pulseaudio systemd upnp vulkan
+"
 
 RDEPEND="
-	dev-libs/hidapi:0=
-	>=dev-libs/libfmt-7.1:0=
-	dev-libs/lzo:2=
-	dev-libs/pugixml:0=
-	media-libs/libpng:0=
+	app-arch/bzip2:=
+	app-arch/xz-utils:=
+	app-arch/zstd:=
+	dev-libs/hidapi:=
+	>=dev-libs/libfmt-8:=
+	dev-libs/lzo:=
+	dev-libs/pugixml:=
+	media-libs/cubeb:=
+	media-libs/libpng:=
 	media-libs/libsfml
 	media-libs/mesa[egl(+)]
 	net-libs/enet:1.3
-	net-libs/mbedtls:0=
-	net-misc/curl:0=
-	sys-libs/readline:0=
-	sys-libs/zlib:0=
+	net-libs/mbedtls:=
+	net-misc/curl:=
+	sys-libs/readline:=
+	sys-libs/zlib:=[minizip]
 	x11-libs/libXext
 	x11-libs/libXi
 	x11-libs/libXrandr
@@ -62,55 +74,54 @@ RDEPEND="
 	systemd? ( sys-apps/systemd:0= )
 	upnp? ( net-libs/miniupnpc )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
 BDEPEND="
 	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 # vulkan-loader required for vulkan backend which can be selected
 # at runtime.
-RDEPEND="${RDEPEND}
-	vulkan? ( media-libs/vulkan-loader )"
+RDEPEND+="
+	vulkan? ( media-libs/vulkan-loader )
+"
 
 # [directory]=license
 declare -A KEEP_BUNDLED=(
+	# please keep this list in CMakeLists.txt order
+
 	[Bochs_disasm]=LGPL-2.1+
-	[FreeSurround]=GPL-2+
-
-	# vulkan's API is not backwards-compatible:
-	# new release dropped VK_PRESENT_MODE_RANGE_SIZE_KHR
-	# but dolphin still relies on it, bug #729832
-	[Vulkan]=Apache-2.0
-
 	[cpp-optparse]=MIT
-	# no support for for using system library
-	[glslang]=BSD
 	[imgui]=MIT
-
-	# not packaged, tiny header library
-	[rangeset]=ZLIB
+	[glslang]=BSD
 
 	# FIXME: xxhash can't be found by cmake
 	[xxhash]=BSD-2
-	# no support for for using system library
-	[minizip]=ZLIB
-	# soundtouch uses shorts, not floats
-	[soundtouch]=LGPL-2.1+
-	[cubeb]=ISC
-	[discord-rpc]=MIT
-	# Their build set up solely relies on the build in gtest.
-	[gtest]= # (build-time only)
-	# gentoo's version requires exception support.
-	# dolphin disables exceptions and fails the build.
-	[picojson]=BSD-2
-	# No code to detect shared library.
-	[zstd]=BSD
 
-	# This is a stripped-down mGBA for integrated GBA support
+	# FIXME: requires minizip-ng
+	#[minizip]=ZLIB
+
+	[FreeSurround]=GPL-2+
+	[soundtouch]=LGPL-2.1+
+
+	# FIXME: discord-rpc not packaged
+	[discord-rpc]=MIT
+
 	[mGBA]=MPL-2.0
+
+	[picojson]=BSD-2
+	[rangeset]=ZLIB
+	[gtest]= # (build-time only)
 )
 
 src_prepare() {
+	if use mgba && [[ ${PV} != *9999 ]]; then
+		rmdir Externals/mGBA/mgba || die
+		mv "${WORKDIR}/mgba-${MGBA_COMMIT}" Externals/mGBA/mgba || die
+	fi
+
 	cmake_src_prepare
 
 	local s remove=()
@@ -129,8 +140,14 @@ src_prepare() {
 		sed -i -e '/Externals\/glslang/d' CMakeLists.txt || die
 	fi
 
+	# Allow regular minizip.
+	sed -i -e '/minizip/s:>=2[.]0[.]0::' CMakeLists.txt || die
+
 	# Remove dirty suffix: needed for netplay
 	sed -i -e 's/--dirty/&=""/' CMakeLists.txt || die
+
+	# Force Qt5 rather than automagic until support is properly handled here
+	sed -i -e '/NAMES Qt6 COMP/d' Source/Core/DolphinQt/CMakeLists.txt || die
 }
 
 src_configure() {
@@ -139,6 +156,7 @@ src_configure() {
 		# not when ccache binary is present in system (automagic).
 		-DCCACHE_BIN=CCACHE_BIN-NOTFOUND
 		-DENABLE_ALSA=$(usex alsa)
+		-DENABLE_AUTOUPDATE=OFF
 		-DENABLE_BLUEZ=$(usex bluetooth)
 		-DENABLE_EVDEV=$(usex evdev)
 		-DENCODE_FRAMEDUMPS=$(usex ffmpeg)

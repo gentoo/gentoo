@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/fuse-emulator/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 IUSE="audiofile bzip2 gcrypt zlib"
 
 RDEPEND="dev-libs/glib:2
@@ -34,7 +34,6 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		--disable-static
 		$(use_with audiofile libaudiofile)
 		$(use_with bzip2)
 		$(use_with gcrypt libgcrypt)
@@ -52,4 +51,5 @@ src_test() {
 src_install() {
 	default
 	dodoc doc/*.txt *.txt
+	find "${ED}" -type f -name "*.la" -delete || die
 }

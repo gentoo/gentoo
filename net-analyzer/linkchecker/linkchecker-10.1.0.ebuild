@@ -55,6 +55,5 @@ python_install_all() {
 pkg_postinst() {
 	optfeature "bash-completion support" dev-python/argcomplete[${PYTHON_USEDEP}]
 	optfeature "Virus scanning" app-antivirus/clamav
-	optfeature "Geo IP support" dev-python/geoip-python[${PYTHON_USEDEP}]
 	optfeature "GNOME proxy settings support" dev-python/pygobject[${PYTHON_USEDEP}]
 }

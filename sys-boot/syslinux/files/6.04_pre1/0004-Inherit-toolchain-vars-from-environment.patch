@@ -1,0 +1,72 @@
+From 46d58e2b03e15a863aed8661b9ee922da4930a3e Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Mon, 30 May 2022 11:57:07 -0400
+Subject: [PATCH 4/5] Inherit toolchain vars from environment
+
+---
+ mk/syslinux.mk | 36 ++++++++++++++++++------------------
+ 1 file changed, 18 insertions(+), 18 deletions(-)
+
+diff --git a/mk/syslinux.mk b/mk/syslinux.mk
+index 593ff75f..91d984e8 100644
+--- a/mk/syslinux.mk
++++ b/mk/syslinux.mk
+@@ -37,7 +37,7 @@ ifdef DEBUG
+ DEBUGOPT = -DDEBUG=$(DEBUG)
+ endif
+ 
+-NASM	 = nasm
++NASM	 ?= nasm
+ NASMOPT  = -Ox $(DEBUGOPT)
+ 
+ PERL	 = perl
+@@ -46,29 +46,29 @@ UPX	 = upx
+ 
+ CHMOD	 = chmod
+ 
+-CC	 = gcc
++CC	 ?= gcc
+ gcc_ok   = $(shell tmpf=gcc_ok.$$$$.tmp; \
+ 		   if $(CC) $(GCCOPT) $(1) -c $(topdir)/dummy.c \
+ 			-o $$tmpf 2>/dev/null ; \
+ 		   then echo '$(1)'; else echo '$(2)'; fi; \
+ 		   rm -f $$tmpf)
+ 
+-LD	 = ld
+-OBJDUMP	 = objdump
+-OBJCOPY  = objcopy
+-STRIP    = strip
+-AR       = ar
+-NM       = nm
+-RANLIB   = ranlib
+-STRIP	 = strip
+-GZIPPROG = gzip
+-XZ	 = xz
+-PNGTOPNM = pngtopnm
+-MCOPY    = mcopy
+-MFORMAT  = mformat
+-MKISOFS  = mkisofs
+-SED	 = sed
+-WGET	 = wget
++LD	 ?= ld
++OBJDUMP	 ?= objdump
++OBJCOPY  ?= objcopy
++STRIP    ?= strip
++AR       ?= ar
++NM       ?= nm
++RANLIB   ?= ranlib
++STRIP	 ?= strip
++GZIPPROG ?= gzip
++XZ	 ?= xz
++PNGTOPNM ?= pngtopnm
++MCOPY    ?= mcopy
++MFORMAT  ?= mformat
++MKISOFS  ?= mkisofs
++SED	 ?= sed
++WGET	 ?= wget
+ 
+ com32    = $(topdir)/com32
+ 
+-- 
+2.35.1
+

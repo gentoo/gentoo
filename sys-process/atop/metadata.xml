@@ -8,4 +8,7 @@
 	<use>
 		<flag name="modules">Build netatop kernel module and install netatopd daemon.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">Atoptool/atop</remote-id>
+	</upstream>
 </pkgmetadata>

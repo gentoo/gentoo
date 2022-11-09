@@ -19,6 +19,7 @@
 	for example sample working trees for VCS systems, reference databases for
 	enterprise applications, or web servers ... let imagination run wild.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">testresources</remote-id>
 		<remote-id type="launchpad">testresources</remote-id>

@@ -15,6 +15,6 @@
 		best used in combination with the official footprint libs.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">kicad/kicad-symbols</remote-id>
+		<remote-id type="gitlab">kicad/libraries/kicad-symbols</remote-id>
 	</upstream>
 </pkgmetadata>

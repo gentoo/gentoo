@@ -27,7 +27,7 @@ src_prepare() {
 	# break without warning when the user e.g. removes corefonts. By
 	# applying the patch conditionally, we ensure a dependency on
 	# media-fonts/corefonts before anything will work.
-	use truetype && eapply "${FILESDIR}/gentoo_ttf_dir.patch"
+	use truetype && eapply "${FILESDIR}/gentoo_ttf_dir-4.3.5.patch"
 
 	# Some of the documentation and examples are shipped in the "src"
 	# directory. We want them outside of that tree so that we can simply

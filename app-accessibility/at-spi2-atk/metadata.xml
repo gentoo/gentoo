@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<longdescription lang="en">at-spi2-atk is the library used to bridge ATK to AT-SPI, allowing applications
-exposing information via ATK to interface with clients that use AT-SPI. This
-module provides the necessary inter-process communication to allow
-accessibility-oriented software to operate.
-</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    at-spi2-atk is the library used to bridge ATK to AT-SPI, allowing applications
+    exposing information via ATK to interface with clients that use AT-SPI. This
+    module provides the necessary inter-process communication to allow
+    accessibility-oriented software to operate.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/at-spi2-atk</remote-id>
+  </upstream>
 </pkgmetadata>

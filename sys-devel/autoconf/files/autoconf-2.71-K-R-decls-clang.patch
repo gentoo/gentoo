@@ -1,0 +1,114 @@
+https://bugs.gentoo.org/870412
+https://git.savannah.gnu.org/cgit/autoconf.git/commit/?id=8b5e2016c7ed2d67f31b03a3d2e361858ff5299b
+
+Backport the K&R decls fix to 2.69 to avoid configure tests
+failing (often "silently", i.e. doesn't fail the build of
+the package overall, just leads to wrong results) with
+newer compilers like the upcoming Clang 16.
+
+From 8b5e2016c7ed2d67f31b03a3d2e361858ff5299b Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Thu, 1 Sep 2022 16:19:50 -0500
+Subject: Port to compilers that moan about K&R func decls
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* lib/autoconf/c.m4 (AC_LANG_CALL, AC_LANG_FUNC_LINK_TRY):
+Use '(void)' rather than '()' in function prototypes, as the latter
+provokes fatal errors in some compilers nowadays.
+* lib/autoconf/functions.m4 (AC_FUNC_STRTOD):
+* tests/fortran.at (AC_F77_DUMMY_MAIN usage):
+* tests/semantics.at (AC_CHECK_DECLS):
+Don’t use () in a function decl.
+--- a/lib/autoconf/c.m4
++++ b/lib/autoconf/c.m4
+@@ -133,7 +133,7 @@ m4_if([$2], [main], ,
+ #ifdef __cplusplus
+ extern "C"
+ #endif
+-char $2 ();])], [return $2 ();])])
++char $2 (void);])], [return $2 ();])])
+ 
+ 
+ # AC_LANG_FUNC_LINK_TRY(C)(FUNCTION)
+@@ -157,7 +157,7 @@ m4_define([AC_LANG_FUNC_LINK_TRY(C)],
+ #define $1 innocuous_$1
+ 
+ /* System header to define __stub macros and hopefully few prototypes,
+-   which can conflict with char $1 (); below.  */
++   which can conflict with char $1 (void); below.  */
+ 
+ #include <limits.h>
+ #undef $1
+@@ -168,7 +168,7 @@ m4_define([AC_LANG_FUNC_LINK_TRY(C)],
+ #ifdef __cplusplus
+ extern "C"
+ #endif
+-char $1 ();
++char $1 (void);
+ /* The GNU C library defines this for functions which it implements
+     to always fail with ENOSYS.  Some functions are actually named
+     something starting with __ and the normal name is an alias.  */
+--- a/lib/autoconf/functions.m4
++++ b/lib/autoconf/functions.m4
+@@ -1613,9 +1613,6 @@ AC_DEFUN([AC_FUNC_STRTOD],
+ AC_CACHE_CHECK(for working strtod, ac_cv_func_strtod,
+ [AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ ]AC_INCLUDES_DEFAULT[
+-#ifndef strtod
+-double strtod ();
+-#endif
+ int
+ main (void)
+ {
+--- a/tests/fortran.at
++++ b/tests/fortran.at
+@@ -233,7 +233,7 @@ void FOOBAR_F77 (double *x, double *y);
+ #  ifdef __cplusplus
+      extern "C"
+ #  endif
+-   int F77_DUMMY_MAIN () { return 1; }
++   int F77_DUMMY_MAIN (void) { return 1; }
+ #endif
+ 
+ int main(int argc, char *argv[])
+@@ -315,7 +315,7 @@ void FOOBAR_FC(double *x, double *y);
+ #  ifdef __cplusplus
+      extern "C"
+ #  endif
+-   int FC_DUMMY_MAIN () { return 1; }
++   int FC_DUMMY_MAIN (void) { return 1; }
+ #endif
+ 
+ int main (int argc, char *argv[])
+@@ -561,7 +561,7 @@ void @foobar@ (int *x);
+ #  ifdef __cplusplus
+      extern "C"
+ #  endif
+-   int F77_DUMMY_MAIN () { return 1; }
++   int F77_DUMMY_MAIN (void) { return 1; }
+ #endif
+ 
+ int main(int argc, char *argv[])
+@@ -637,7 +637,7 @@ void @foobar@ (int *x);
+ #  ifdef __cplusplus
+      extern "C"
+ #  endif
+-   int FC_DUMMY_MAIN () { return 1; }
++   int FC_DUMMY_MAIN (void) { return 1; }
+ #endif
+ 
+ int main(int argc, char *argv[])
+--- a/tests/semantics.at
++++ b/tests/semantics.at
+@@ -207,7 +207,7 @@ AT_CHECK_MACRO([AC_CHECK_DECLS],
+ 		 [[extern int yes;
+ 		   enum { myenum };
+ 		   extern struct mystruct_s { int x[20]; } mystruct;
+-		   extern int myfunc();
++		   extern int myfunc (int);
+ 		   #define mymacro1(arg) arg
+ 		   #define mymacro2]])
+   # Ensure we can detect missing declarations of functions whose
+cgit v1.1

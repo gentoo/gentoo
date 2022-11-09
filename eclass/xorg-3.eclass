@@ -152,6 +152,14 @@ BDEPEND+=" ${EAUTORECONF_DEPENDS}"
 unset EAUTORECONF_DEPENDS
 unset EAUTORECONF_DEPEND
 
+# @ECLASS_VARIABLE: FONT_DIR
+# @PRE_INHERIT
+# @DESCRIPTION:
+# If you're creating a font package and the suffix of PN is not equal to
+# the subdirectory of /usr/share/fonts/ it should install into, set
+# FONT_DIR to that directory or directories.  Set before inheriting this
+# eclass.
+
 if [[ ${FONT} == yes ]]; then
 	RDEPEND+=" media-fonts/encodings
 		>=x11-apps/mkfontscale-1.2.0"
@@ -160,13 +168,6 @@ if [[ ${FONT} == yes ]]; then
 		>=x11-apps/mkfontscale-1.2.0"
 	BDEPEND+=" x11-apps/bdftopcf"
 
-	# @ECLASS_VARIABLE: FONT_DIR
-	# @PRE_INHERIT
-	# @DESCRIPTION:
-	# If you're creating a font package and the suffix of PN is not equal to
-	# the subdirectory of /usr/share/fonts/ it should install into, set
-	# FONT_DIR to that directory or directories. Set before inheriting this
-	# eclass.
 	[[ -z ${FONT_DIR} ]] && FONT_DIR=${PN##*-}
 
 	# Fix case of font directories
@@ -336,9 +337,12 @@ xorg-3_flags_setup() {
 
 	# Win32 require special define
 	[[ ${CHOST} == *-winnt* ]] && append-cppflags -DWIN32 -D__STDC__
-	# hardened ldflags
-	[[ ${PN} == xorg-server || ${PN} == xf86-video-* || ${PN} == xf86-input-* ]] \
-		&& append-ldflags -Wl,-z,lazy
+
+	# Hardened flags break module autoloading et al (also fixes #778494)
+	if [[ ${PN} == xorg-server || ${PN} == xf86-video-* || ${PN} == xf86-input-* ]]; then
+		filter-flags -fno-plt
+		append-ldflags -Wl,-z,lazy
+	fi
 
 	# Quite few libraries fail on runtime without these:
 	if has static-libs ${IUSE//+}; then
@@ -352,6 +356,11 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf "${econfargs[@]}"
 }
 
+# @VARIABLE: XORG_CONFIGURE_OPTIONS
+# @DESCRIPTION:
+# Array of an additional options to pass to configure.
+# @DEFAULT_UNSET
+
 # @FUNCTION: xorg-3_src_configure
 # @DESCRIPTION:
 # Perform any necessary pre-configuration steps, then run configure
@@ -360,10 +369,6 @@ xorg-3_src_configure() {
 
 	xorg-3_flags_setup
 
-	# @VARIABLE: XORG_CONFIGURE_OPTIONS
-	# @DESCRIPTION:
-	# Array of an additional options to pass to configure.
-	# @DEFAULT_UNSET
 	local xorgconfadd=("${XORG_CONFIGURE_OPTIONS[@]}")
 
 	local FONT_OPTIONS=()
@@ -372,7 +377,7 @@ xorg-3_src_configure() {
 	# Check if package supports disabling of dep tracking
 	# Fixes warnings like:
 	#    WARNING: unrecognized options: --disable-dependency-tracking
-	if grep -q -s "disable-depencency-tracking" ${ECONF_SOURCE:-.}/configure; then
+	if grep -q -s "disable-dependency-tracking" ${ECONF_SOURCE:-.}/configure; then
 		local dep_track="--disable-dependency-tracking"
 	fi
 

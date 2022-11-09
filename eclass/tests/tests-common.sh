@@ -60,6 +60,13 @@ die() {
 	exit 1
 }
 
+assert() {
+	local x pipestatus=${PIPESTATUS[*]}
+	for x in ${pipestatus} ; do
+		[[ ${x} -eq 0 ]] || die "$@"
+	done
+}
+
 has_version() {
 	while [[ $1 == -* ]]; do
 		shift

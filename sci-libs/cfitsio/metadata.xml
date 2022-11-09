@@ -5,6 +5,11 @@
     <email>sci-astronomy@gentoo.org</email>
     <name>Gentoo Astronomy Project</name>
   </maintainer>
+  <use>
+    <flag name="tools">
+      Build optional utilities (cookbook fitscopy imcopy smem speed testprog fpack funpack)
+    </flag>
+  </use>
   <longdescription lang="en">
   CFITSIO is a library of C and Fortran subroutines for reading and
   writing data files in FITS (Flexible Image Transport System) data
@@ -13,5 +18,5 @@
   complexities of the FITS format. CFITSIO also provides advanced
   features for manipulating and filtering the information in FITS
   files.
-</longdescription>
+  </longdescription>
 </pkgmetadata>

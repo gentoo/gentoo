@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/deller/${PN}.git/snapshot/${P}.tar.gz"
-	KEYWORDS="-* ~hppa"
+	KEYWORDS="-* hppa"
 fi
 
 LICENSE="GPL-2"

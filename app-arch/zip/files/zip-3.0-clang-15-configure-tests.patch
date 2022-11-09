@@ -1,0 +1,53 @@
+https://bugs.gentoo.org/869203
+
+See also OE's variant: https://cgit.openembedded.org/openembedded-core/commit/?id=f898db2607ba3837f81292af92bc8cb605b96cb3
+--- a/unix/configure
++++ b/unix/configure
+@@ -507,18 +507,18 @@ $CC $CFLAGS -c conftest.c >/dev/null 2>/
+ # add NO_'function_name' to flags if missing
+ 
+ for func in rmdir strchr strrchr rename mktemp mktime mkstemp
+ do
+   echo Check for $func
+-  echo "int main(){ $func(); return 0; }" > conftest.c
++  echo "char $func(); int main(){ return $func(); }" > conftest.c
+   $CC $BFLAG -o conftest conftest.c >/dev/null 2>/dev/null
+   [ $? -ne 0 ] && CFLAGS="${CFLAGS} -DNO_`echo $func | tr '[a-z]' '[A-Z]'`"
+ done
+ 
+ 
+ echo Check for memset
+-echo "int main(){ char k; memset(&k,0,0); return 0; }" > conftest.c
++echo "int main(){ char memset(); return memset(); }" > conftest.c
+ $CC -o conftest conftest.c >/dev/null 2>/dev/null
+ [ $? -ne 0 ] && CFLAGS="${CFLAGS} -DZMEM"
+ 
+ 
+ echo Check for memmove
+@@ -551,11 +551,11 @@ $CC $CFLAGS -c conftest.c >/dev/null 2>/
+ [ $? -ne 0 ] && CFLAGS="${CFLAGS} -DNO_ERRNO"
+ 
+ 
+ echo Check for directory libraries
+ cat > conftest.c << _EOF_
+-int main() { return closedir(opendir(".")); }
++int main() { char closedir(); char opendir(); return closedir(opendir()); }
+ _EOF_
+ 
+ $CC -o conftest conftest.c >/dev/null 2>/dev/null
+ if [ $? -ne 0 ]; then
+   OPT=""
+@@ -573,11 +573,11 @@ fi
+ 
+ 
+ # Dynix/ptx 1.3 needed this
+ 
+ echo Check for readlink
+-echo "int main(){ return readlink(); }" > conftest.c
++echo "int main(){ char readlink(); return readlink(); }" > conftest.c
+ $CC -o conftest conftest.c >/dev/null 2>/dev/null
+ if [ $? -ne 0 ]; then
+   $CC -o conftest conftest.c -lseq >/dev/null 2>/dev/null
+   [ $? -eq 0 ] && LFLAGS2="${LFLAGS2} -lseq"
+ fi
+

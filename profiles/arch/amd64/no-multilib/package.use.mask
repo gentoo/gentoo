@@ -1,5 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# James Le Cuirot <chewi@gentoo.org> (2022-06-25)
+# This flag concerns a 32-bit x86-specific problem.
+sys-libs/glibc stack-realign
+sys-libs/ncurses stack-realign
+
+# Ben Kohler <bkohler@gentoo.org> (2022-06-07)
+# Disable 32bit builds on no-multilib
+sys-apps/memtest86+ bios32 efi32 iso32
 
 # Sam James <sam@gentoo.org> (2020-12-27)
 # dev-embedded/libftd2xx unavailable here
@@ -12,12 +21,6 @@ dev-embedded/urjtag ftd2xx
 # Yixun Lan <dlan@gentoo.org> (2017-07-12)
 # GLEP 73 Immutability, USE=ovmf requires hvm
 app-emulation/xen-tools ovmf
-
-# Adam Feldman <NP-Hardass@gentoo.org> (2017-07-11)
-# GLEP 73 Immutability, USE=test requires
-# abi_x86_32 at this time.
-app-emulation/wine-vanilla test
-app-emulation/wine-staging test
 
 # Mike Frysinger <vapier@gentoo.org> (2016-08-12)
 # Requires sys-boot/grub:0 which is masked here.

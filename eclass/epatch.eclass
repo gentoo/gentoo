@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: epatch.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 6
 # @BLURB: easy patch application functions
 # @DEPRECATED: eapply from EAPI 7
 # @DESCRIPTION:
@@ -13,11 +13,9 @@
 
 if [[ -z ${_EPATCH_ECLASS} ]]; then
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6)
-		;;
-	*)
-		die "${ECLASS}: banned in EAPI=${EAPI}; use eapply* instead";;
+case ${EAPI} in
+	6) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit estack
@@ -52,10 +50,6 @@ EPATCH_COMMON_OPTS="-g0 -E --no-backup-if-mismatch"
 # List of patches not to apply.	 Note this is only file names,
 # and not the full path.  Globs accepted.
 EPATCH_EXCLUDE=""
-# @VARIABLE: EPATCH_SINGLE_MSG
-# @DESCRIPTION:
-# Change the printed message for a single patch.
-EPATCH_SINGLE_MSG=""
 # @VARIABLE: EPATCH_MULTI_MSG
 # @DESCRIPTION:
 # Change the printed message for multiple patches.
@@ -235,13 +229,9 @@ epatch() {
 		fi
 
 		if [[ ${SINGLE_PATCH} == "yes" ]] ; then
-			if [[ -n ${EPATCH_SINGLE_MSG} ]] ; then
-				einfo "${EPATCH_SINGLE_MSG}"
-			else
-				einfo "Applying ${patchname} ..."
-			fi
+			ebegin "Applying ${patchname}"
 		else
-			einfo "  ${patchname} ..."
+			ebegin "  ${patchname}"
 		fi
 
 		# Handle aliased patch command #404447 #461568
@@ -285,13 +275,13 @@ epatch() {
 		# people could (accidently) patch files in the root filesystem.
 		# Or trigger other unpleasantries #237667.  So disallow -p0 on
 		# such patches.
-		local abs_paths=$(egrep -n '^[-+]{3} /' "${PATCH_TARGET}" | awk '$2 != "/dev/null" { print }')
+		local abs_paths=$(grep -E -n '^[-+]{3} /' "${PATCH_TARGET}" | awk '$2 != "/dev/null" { print }')
 		if [[ -n ${abs_paths} ]] ; then
 			count=1
 			printf "NOTE: skipping -p0 due to absolute paths in patch:\n%s\n" "${abs_paths}" >> "${STDERR_TARGET}"
 		fi
 		# Similar reason, but with relative paths.
-		local rel_paths=$(egrep -n '^[-+]{3} [^	]*[.][.]/' "${PATCH_TARGET}")
+		local rel_paths=$(grep -E -n '^[-+]{3} [^	]*[.][.]/' "${PATCH_TARGET}")
 		if [[ -n ${rel_paths} ]] ; then
 			echo
 			eerror "Rejected Patch: ${patchname}!"
@@ -385,86 +375,6 @@ epatch() {
 	[[ ${SINGLE_PATCH} == "no" ]] && einfo "Done with patching"
 	: # everything worked
 }
-
-case ${EAPI:-0} in
-0|1|2|3|4|5)
-
-# @ECLASS_VARIABLE: EPATCH_USER_SOURCE
-# @USER_VARIABLE
-# @DESCRIPTION:
-# Location for user patches, see the epatch_user function.
-# Should be set by the user. Don't set this in ebuilds.
-: ${EPATCH_USER_SOURCE:=${PORTAGE_CONFIGROOT%/}/etc/portage/patches}
-
-# @FUNCTION: epatch_user
-# @USAGE:
-# @DESCRIPTION:
-# Applies user-provided patches to the source tree. The patches are
-# taken from /etc/portage/patches/<CATEGORY>/<P-PR|P|PN>[:SLOT]/, where the first
-# of these three directories to exist will be the one to use, ignoring
-# any more general directories which might exist as well. They must end
-# in ".patch" to be applied.
-#
-# User patches are intended for quick testing of patches without ebuild
-# modifications, as well as for permanent customizations a user might
-# desire. Obviously, there can be no official support for arbitrarily
-# patched ebuilds. So whenever a build log in a bug report mentions that
-# user patches were applied, the user should be asked to reproduce the
-# problem without these.
-#
-# Not all ebuilds do call this function, so placing patches in the
-# stated directory might or might not work, depending on the package and
-# the eclasses it inherits and uses. It is safe to call the function
-# repeatedly, so it is always possible to add a call at the ebuild
-# level. The first call is the time when the patches will be
-# applied.
-#
-# Ideally, this function should be called after gentoo-specific patches
-# have been applied, so that their code can be modified as well, but
-# before calls to e.g. eautoreconf, as the user patches might affect
-# autotool input files as well.
-epatch_user() {
-	[[ $# -ne 0 ]] && die "epatch_user takes no options"
-
-	# Allow multiple calls to this function; ignore all but the first
-	local applied="${T}/epatch_user.log"
-	[[ -e ${applied} ]] && return 2
-
-	# don't clobber any EPATCH vars that the parent might want
-	local EPATCH_SOURCE check
-	for check in ${CATEGORY}/{${P}-${PR},${P},${PN}}{,:${SLOT%/*}}; do
-		EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${CTARGET}/${check}
-		[[ -r ${EPATCH_SOURCE} ]] || EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${CHOST}/${check}
-		[[ -r ${EPATCH_SOURCE} ]] || EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${check}
-		if [[ -d ${EPATCH_SOURCE} ]] ; then
-			local old_n_applied_patches=${EPATCH_N_APPLIED_PATCHES:-0}
-			EPATCH_SOURCE=${EPATCH_SOURCE} \
-			EPATCH_SUFFIX="patch" \
-			EPATCH_FORCE="yes" \
-			EPATCH_MULTI_MSG="Applying user patches from ${EPATCH_SOURCE} ..." \
-			epatch
-			echo "${EPATCH_SOURCE}" > "${applied}"
-			if [[ ${old_n_applied_patches} -lt ${EPATCH_N_APPLIED_PATCHES} ]]; then
-				has epatch_user_death_notice ${EBUILD_DEATH_HOOKS} || \
-					EBUILD_DEATH_HOOKS+=" epatch_user_death_notice"
-			fi
-			return 0
-		fi
-	done
-	echo "none" > "${applied}"
-	return 1
-}
-
-# @FUNCTION: epatch_user_death_notice
-# @INTERNAL
-# @DESCRIPTION:
-# Include an explicit notice in the die message itself that user patches were
-# applied to this build.
-epatch_user_death_notice() {
-	ewarn "!!! User patches were applied to this build!"
-}
-
-esac
 
 _EPATCH_ECLASS=1
 fi #_EPATCH_ECLASS

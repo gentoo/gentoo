@@ -1,6 +1,27 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-10-29)
+# pandoc not keyworded here, bug #878355
+app-admin/conky doc
+
+# Bernard Cafarelli <voyageur@gentoo.org> (2022-10-17)
+# media-libs/libheif not keyworded
+media-gfx/geeqie heif
+
+# Sam James <sam@gentoo.org> (2022-10-16)
+# dev-cpp/notcurses not keyworded here
+media-sound/snd notcurses
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-08-09)
+# dev-java/jaxws-api not keyworded
+>=dev-java/jmock-2.12.0 test
+
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-23)
+# Only PyQt5 is keyworded on pcc64 at the moment.
+# Mask the other Qt4Python implementations
+dev-python/QtPy pyside2 pyqt6 pyside6
+
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
 app-text/enchant nuspell
@@ -79,10 +100,6 @@ media-video/obs-studio nvenc
 # Mikle Kolyada <zlogene@gentoo.org> (2020-05-06)
 # No deps keyworded
 dev-python/pbr test
-
-# Benda Xu <heroxbd@gentoo.org> (2020-04-27)
-# tests optionally depend on dev-python/hypothesis
-dev-python/numpy test
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-04-19)
 # Unsupported on ppc/ppc64
@@ -171,7 +188,7 @@ x11-themes/qtcurve plasma
 
 # Jonathan Scruggs <j.scruggs@gmail.com> (2017-09-23)
 # dependencies not keyworded yet
-media-libs/openimageio field3d ptex
+media-libs/openimageio ptex
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2017-08-22)
 # Dictionary Manager requires unkeyworded dev-qt/qtwebengine.
@@ -196,11 +213,8 @@ app-portage/g-sorcery bson
 # Michał Górny <mgorny@gentoo.org> (2017-03-24)
 # libcxx fails to compile on ppc*, #595744.
 sys-devel/clang default-libcxx
+sys-devel/clang-common default-libcxx
 sys-devel/clang-runtime libcxx
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-02-27)
-# Requires dev-qt/qtwebengine, not keyworded on ppc
-sci-geosciences/gpsbabel gui
 
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
 # DOSBox + OpenGLide is untested on this arch.
@@ -210,11 +224,6 @@ games-emulation/dosbox glide
 # Enable numa support on supported architectures
 dev-db/mysql -numa
 dev-db/percona-server -numa
-
-# Davide Pesavento <pesa@gentoo.org> (2016-07-28)
-# The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
-# keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 bluetooth location speech
 
 # Michael Palimaka <kensington@gentoo.org> (2016-07-07)
 # Requires unkeyworded dependencies
@@ -229,10 +238,6 @@ x11-wm/sawfish kde
 # Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
 media-sound/rhythmbox upnp-av
-
-# Pacho Ramos <pacho@gentoo.org> (2015-10-27)
-# Missing keywords
-net-wireless/blueman appindicator
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2015-10-26)
 # x11-drivers/xf86-video-amdgpu is not keyworded
@@ -254,7 +259,6 @@ gnome-extra/sushi office
 # test dependencies need keywording
 dev-haskell/dlist test
 dev-haskell/haskell-src-exts test
-dev-util/bnfc test
 
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-16)
 # Ultimately pulls in nodejs which is broken.
@@ -277,7 +281,8 @@ dev-ruby/actionpack test
 sys-block/fio rbd
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (2014-06-14)
-# dependency sci-libs/vtk not keyworded on ppc yet
+# dependency sci-libs/vtk not keyworded on ppc yet, bug #778293
+sci-mathematics/maxima vtk
 media-libs/opencv vtk
 
 # Pacho Ramos <pacho@gentoo.org> (2013-02-22)
@@ -291,10 +296,6 @@ net-im/telepathy-connection-managers sipe
 # Pacho Ramos <pacho@gentoo.org> (2013-10-31)
 # Missing keywords, bug #478254
 gnome-base/gnome classic extras
-
-# Mark Wright <gienah@gentoo.org> (2013-10-26)
-# template-haskell not yet available
-dev-haskell/dataenc test
 
 # Agostino Sarubbo <ago@gentoo.org> (2013-08-24)
 # Klibc does not work anymore on ppc
@@ -319,12 +320,6 @@ x11-misc/colord argyllcms extra-print-profiles
 # Anthony G. Basile <blueness@gentoo.org> (2012-11-15)
 # Mask telepathy, no stable net-libs/telepathy-qt, bug #441456
 net-im/choqok telepathy
-
-# Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
-# MySQL 5.5 wants systemtap, tcmalloc & jemalloc
->=dev-db/mysql-5.5 tcmalloc
->=dev-db/mariadb-5.5 tcmalloc
->=dev-db/percona-server-5.5 tcmalloc
 
 # Samuli Suominen <ssuominen@gentoo.org> (2012-09-27)
 # I don't want to open this can of worms yet. Feel free

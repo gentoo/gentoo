@@ -12,5 +12,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">fldigi</remote-id>
+		<remote-id type="github">w1hkj/fldigi</remote-id>
 	</upstream>
 </pkgmetadata>

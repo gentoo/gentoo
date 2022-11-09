@@ -45,9 +45,9 @@ BDEPEND="
 "
 
 python_check_deps() {
-	has_version "dev-python/ament_package[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/catkin_pkg[${PYTHON_USEDEP}]" && \
-		has_version "dev-ros/ament_xmllint[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/ament_package[${PYTHON_USEDEP}]" \
+		"dev-python/catkin_pkg[${PYTHON_USEDEP}]" \
+		"dev-ros/ament_xmllint[${PYTHON_USEDEP}]"
 }
 
 src_configure() {

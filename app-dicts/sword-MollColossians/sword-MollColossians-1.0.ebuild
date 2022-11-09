@@ -10,4 +10,4 @@ inherit sword-module
 DESCRIPTION="Paul's Letter to the Believers at Colosse - A Series of Devotions by Pr R. Moll"
 HOMEPAGE="https://crosswire.org/sword/modules/ModInfo.jsp?modName=MollColossians"
 LICENSE="crosswire"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~loong ~ppc ~riscv ~x86"

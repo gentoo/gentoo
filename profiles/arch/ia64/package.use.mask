@@ -1,6 +1,23 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2022-09-30)
+# No ruby on ia64 for dev-ruby/asciidoctor
+net-misc/chrony html
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
+# deps not keyworded
+dev-util/pkgcheck emacs
+
+# Matt Turner <mattst88@gentoo.org> (2022-06-25)
+# net-libs/libqrtr-glib not keyworded
+net-misc/modemmanager qrtr
+
+# Sergey Torokhov <torokhov-s-a@yandex.ru> (2022-06-22)
+# media-libs/libjxl is not keyworded
+# bug https://bugs.gentoo.org/853628
+media-gfx/gimp jpegxl
+
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
 media-libs/imlib2 svg heif jpegxl
@@ -13,10 +30,6 @@ app-text/enchant nuspell
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # net-misc/freerdp is not keyworded
 dev-libs/weston rdp
-
-# Matt Turner <mattst88@gentoo.org> (2022-04-16)
-# sys-auth/seatd is not keyworded
-dev-libs/weston seatd
 
 # Lars Wendler <polynomial-c@gentoo.org> (2022-04-01)
 # gnome-base/librsvg missing keywords
@@ -38,13 +51,6 @@ media-video/ffmpeg amf
 # Sam James <sam@gentoo.org> (2022-01-29)
 # app-text/ronn-ng not keyworded here, bug #801103
 app-accessibility/espeak-ng man
-
-# Michał Górny <mgorny@gentoo.org> (2021-11-26)
-# These package flags require dev-python/cryptography which -- due
-# to the dependency on Rust -- is no longer portable to ia64.
-dev-python/twisted conch crypt
-dev-python/urllib3 test
-net-fs/samba addc addns ads
 
 # Sam James <sam@gentoo.org> (2021-11-05)
 # Avoid keywording unnecessary depenencies for now, bug #804115
@@ -123,25 +129,18 @@ app-crypt/pinentry efl
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
 
-# Cédric Krier <cedk@gentoo.org> (2020-11-10)
-# virtual/rust has no ia64 keyword
-dev-vcs/mercurial rust
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not keyworded.
 media-libs/libsdl2 fcitx4
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-09-18)
 # media-libs/libilbc is not ported to ia64
-net-analyzer/wireshark ilbc
+# nor is Qt
+net-analyzer/wireshark gui ilbc
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
 media-libs/mesa vulkan vulkan-overlay zink
-
-# Mart Raudsepp <leio@gentoo.org> (2020-08-02)
-# ia64 has no virtual/rust support, needed by newer gnome-base/librsvg, et al
->=media-gfx/eog-3.33.1 svg
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-14)
 # Requires dev-python/networkx.
@@ -181,10 +180,9 @@ gnome-extra/evolution-data-server oauth
 # - gnome-extra/sushi: depends on webkit-gtk
 gnome-base/nautilus previewer
 # - net-libs/gnome-online-accounts: depends on webkit-gtk
-gnome-base/gnome-control-center flickr
 gnome-base/gvfs google
 # app-text/libgepub depends on webkit-gtk.
-xfce-extra/tumbler epub
+xfce-base/tumbler epub
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-15)
 # Mask USE=libtesseract, app-text/tesseract is not keyworded
@@ -219,10 +217,6 @@ app-admin/syslog-ng test
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-07)
 # app-emulation/xen-tools is not keyworded on ia64.
 sys-boot/grub grub_platforms_xen grub_platforms_xen-32 grub_platforms_xen-pvh
-
-# Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
-# dev-util/google-perftools is not keyworded yet
-sys-block/fio tcmalloc
 
 # Mart Raudsepp <leio@gentoo.org> (2019-08-18)
 # media-video/pipewire is not keyworded yet
@@ -287,15 +281,6 @@ media-video/mplayer dvdnav
 # Requires USE=v4l that is masked in this profile.
 media-video/ffmpeg libv4l
 
-# Michał Górny <mgorny@gentoo.org> (2017-08-07)
-# Requires USE=bluetooth that is masked in this profile.
-media-sound/pulseaudio native-headset
-media-sound/pulseaudio-daemon native-headset
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2017-07-20)
-# pulls in unkeyworded java
-sci-libs/gdal mdb
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-07-20)
 # pulls in unkeyworded lapack
 sci-libs/gdal armadillo
@@ -342,7 +327,7 @@ gnome-extra/nm-applet teamd
 # Opt-out of ofono support until there is a user request,
 # see also pulseaudio/connman
 net-misc/networkmanager ofono
- 
+
 # Thomas Deutschmann <whissi@gentoo.org> (2016-08-26)
 # Enable numa support on supported architectures
 dev-db/mysql -numa
@@ -422,10 +407,6 @@ net-misc/modemmanager mbim
 # Various deps not ported to ia64.
 dev-python/ipython nbconvert notebook
 
-# Pacho Ramos <pacho@gentoo.org> (2014-03-15)
-# Missing keywords, bug #504672
->=net-misc/vinagre-3.10 rdp
-
 # Pacho Ramos <pacho@gentoo.org> (2014-02-23)
 # Needed dependencies cannot be installed on ia64, bug #498638
 dev-util/dbus-test-runner test
@@ -445,10 +426,6 @@ media-libs/libgphoto2 serial
 # Pacho Ramos <pacho@gentoo.org> (2013-11-28)
 # Missing keywords, bug #492820
 net-im/telepathy-connection-managers sipe
-
-# Mark Wright <gienah@gentoo.org> (2013-10-26)
-# template-haskell not yet available
-dev-haskell/dataenc test
 
 # Pacho Ramos <pacho@gentoo.org> (2013-07-20)
 # Keywords pending, bug #476710
@@ -474,12 +451,6 @@ gnome-extra/sushi office
 # Agostino Sarubbo <ago@gentoo.org> (2012-12-18)
 # kde is not stable, then no needs phonon backends
 media-libs/phonon gstreamer vlc
-
-# Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
-# MySQL 5.5 wants systemtap, tcmalloc & jemalloc
->=dev-db/mysql-5.5 tcmalloc
->=dev-db/mariadb-5.5 tcmalloc
->=dev-db/percona-server-5.5 tcmalloc
 
 # Raúl Porcel <armin76@gentoo.org> (2012-05-28)
 # Needs x11-misc/lightdm(which also requires some other deps)
@@ -518,7 +489,7 @@ x11-wm/fvwm lock
 dev-lisp/clisp hyperspec svm
 
 # missing keywords
-media-plugins/gst-plugins-meta dts dv lame libvisual modplug mms taglib vcd wavpack
+media-plugins/gst-plugins-meta dts dv lame libvisual modplug taglib vcd wavpack
 
 # Marius Brehler <marfbre@linux.sungazer.de> (2015-08-13)
 # missing keyword

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake udev
 
 DESCRIPTION="Library for interfacing with IIO devices"
 HOMEPAGE="https://github.com/analogdevicesinc/libiio"
@@ -12,7 +12,7 @@ if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/analogdevicesinc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 fi
 
 LICENSE="LGPL-2.1"
@@ -24,3 +24,11 @@ RDEPEND="dev-libs/libxml2:=
 	aio? ( dev-libs/libaio )
 	zeroconf? ( net-dns/avahi )"
 DEPEND="${RDEPEND}"
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
+}

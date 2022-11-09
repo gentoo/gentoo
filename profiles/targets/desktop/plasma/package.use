@@ -38,9 +38,7 @@ media-gfx/graphviz python
 media-libs/gd fontconfig
 
 # Required by kde-plasma/kwin
-media-libs/mesa egl wayland
-# Not required, but makes sense in return
-x11-apps/mesa-progs egl
+media-libs/mesa wayland
 
 # Required by kde-apps/kdenlive
 media-libs/mlt ffmpeg frei0r rubberband
@@ -49,8 +47,6 @@ media-libs/mlt ffmpeg frei0r rubberband
 media-libs/opencv contrib contribdnn
 
 # Required by kde-plasma/plasma-firewall
-# Required by net-firewall/firewalld[iptables] (default enabled)
-net-firewall/iptables ipv6
 # Required by net-firewall/firewalld[nftables] (default enabled)
 net-firewall/nftables json python xtables
 
@@ -61,3 +57,6 @@ sys-libs/zlib minizip
 <app-office/calligra-3.3 phonon
 kde-apps/kio-extras phonon
 kde-apps/marble phonon
+
+# Required by kde-plasma/plasma-meta
+kde-plasma/kwin lock

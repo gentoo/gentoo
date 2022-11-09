@@ -13,6 +13,7 @@
 		<flag name="cover">Support for cover art</flag>
 		<flag name="hotkeys">Keyboard shortcuts support</flag>
 		<flag name="lastfm">last.fm/AudioScrobbler protocol support</flag>
+		<flag name="libsamplerate">Support the Secret Rabbit Code resampler</flag>
 		<flag name="notify">Desktop notifications support</flag>
 		<flag name="nullout">Dummy output driver</flag>
 		<flag name="sc68">Atari ST and Amiga music player</flag>

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<longdescription lang="en">
-	geocode-glib is a helper library for geocoding and reverse-geocoding
-	services offered by OpenStreetMap and Nominatim.
-</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    geocode-glib is a helper library for geocoding and reverse-geocoding
+    services offered by OpenStreetMap and Nominatim.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/geocode-glib</remote-id>
+  </upstream>
 </pkgmetadata>

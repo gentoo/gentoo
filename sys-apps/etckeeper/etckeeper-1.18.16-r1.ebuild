@@ -10,7 +10,7 @@ HOMEPAGE="https://etckeeper.branchable.com/"
 SRC_URI="https://git.joeyh.name/index.cgi/etckeeper.git/snapshot/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 arm arm64 ~hppa ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm arm64 hppa ~ppc ppc64 ~riscv ~sparc x86"
 SLOT="0"
 IUSE="cron test"
 
@@ -35,9 +35,11 @@ PATCHES=( "${FILESDIR}"/${PN}-1.18.14-gentoo.patch )
 src_prepare() {
 	default
 	hprefixify *.d/* etckeeper
+	local systemdunitdir="$(systemd_get_systemunitdir)"
+	systemdunitdir="${systemdunitdir#${EPREFIX}}"
 	sed -i \
 		-e s'@zsh/vendor-completions@zsh/site-functions@' \
-		-e s"@/lib/systemd/system@"$(systemd_get_systemunitdir)"@" \
+		-e s"@/lib/systemd/system@"${systemdunitdir}"@" \
 		Makefile || die
 	rm -v init.d/60darcs-deleted-symlinks || die
 }

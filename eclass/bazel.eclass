@@ -113,7 +113,7 @@ bazel_setup_bazelrc() {
 		fetch --repository_cache="${T}/bazel-cache/" --distdir="${T}/bazel-distdir/"
 		build --repository_cache="${T}/bazel-cache/" --distdir="${T}/bazel-distdir/"
 
-		build --define=PREFIX=${EPREFIX%/}/usr
+		build --define=PREFIX=${EPREFIX}/usr
 		build --define=LIBDIR=\$(PREFIX)/$(get_libdir)
 		build --define=INCLUDEDIR=\$(PREFIX)/include
 		EOF

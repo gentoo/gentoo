@@ -3,8 +3,7 @@
 
 EAPI=8
 
-# TODO: py3.10 support (currently blocked by media-libs/gexiv2)
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=no

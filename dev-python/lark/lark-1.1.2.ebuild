@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
@@ -17,9 +17,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/lark/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 BDEPEND="
 	test? (
@@ -28,6 +26,19 @@ BDEPEND="
 	)
 "
 
+distutils_enable_tests pytest
+
 python_test() {
-	"${EPYTHON}" -m tests -v || die "Tests fail with ${EPYTHON}"
+	local EPYTEST_DESELECT=()
+	local EPYTEST_IGNORE=(
+		# require dev-python/js2py which is a really bad quality package
+		tests/test_nearley/test_nearley.py
+	)
+
+	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+		# https://github.com/lark-parser/lark/issues/1146
+		tests/test_trees.py::TestTrees::test_smart_decorator
+	)
+
+	epytest
 }

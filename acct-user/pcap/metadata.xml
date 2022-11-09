@@ -6,10 +6,6 @@
 		<name>Mikle Kolyada</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>bman@gentoo.org</email>
-		<name>Aaron Bauman</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>

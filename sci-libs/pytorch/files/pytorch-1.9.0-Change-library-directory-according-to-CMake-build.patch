@@ -1,0 +1,32 @@
+From 52019a3f395e5fa97b26d424152d91f73b400f8e Mon Sep 17 00:00:00 2001
+From: Alexey Chernov <4ernov@gmail.com>
+Date: Wed, 13 Nov 2019 23:44:12 +0300
+Subject: [PATCH 5/5] Change library directory according to CMake build
+Modified: Tue, 03 Aug 2021, fit for pytorch-1.9.0
+
+Change `lib_path` in favour of out-of-tree CMake build
+directory, so that all the C++ libraries be found.
+---
+ setup.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 60502b6add..cbced52192 100644
+--- a/setup.py
++++ b/setup.py
+@@ -268,9 +268,10 @@ else:
+ 
+ # Constant known variables used throughout this file
+ cwd = os.path.dirname(os.path.abspath(__file__))
+-lib_path = os.path.join(cwd, "torch", "lib")
++cmake_build_dir = os.environ.get("CMAKE_BUILD_DIR", os.path.join(cwd, "build"))
++lib_path = os.path.join(cmake_build_dir, "lib")
+ third_party_path = os.path.join(cwd, "third_party")
+-caffe2_build_dir = os.path.join(cwd, "build")
++caffe2_build_dir = cmake_build_dir
+ 
+ # CMAKE: full path to python library
+ if IS_WINDOWS:
+-- 
+2.23.0
+

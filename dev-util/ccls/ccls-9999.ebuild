@@ -7,7 +7,7 @@ EGIT_REPO_URI="https://github.com/MaskRay/${PN}"
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
-	LLVM_MAX_SLOT=9999
+	LLVM_MAX_SLOT=15
 else
 	LLVM_MAX_SLOT=14
 fi
@@ -35,11 +35,6 @@ DEPEND="
 	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
 "
 RDEPEND="${DEPEND}"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-llvm-cmake.patch
-	"${FILESDIR}"/${P}-llvm14.patch
-)
 
 src_configure() {
 	local mycmakeargs=(

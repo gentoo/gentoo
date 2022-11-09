@@ -8,4 +8,8 @@
 		<remote-id type="github">stachenov/quazip</remote-id>
 		<remote-id type="sourceforge">quazip</remote-id>
 	</upstream>
+	<use>
+		<flag name="qt5">Build with Qt5 support</flag>
+		<flag name="qt6">Build with Qt6 support</flag>
+	</use>
 </pkgmetadata>

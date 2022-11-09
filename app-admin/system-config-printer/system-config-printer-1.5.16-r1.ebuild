@@ -4,8 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-PYTHON_REQ_USE="xml"
-inherit python-single-r1 systemd xdg
+PYTHON_REQ_USE="xml(+)"
+inherit python-single-r1 systemd udev xdg
 
 DESCRIPTION="Graphical user interface for CUPS administration"
 HOMEPAGE="https://github.com/OpenPrinting/system-config-printer"
@@ -79,4 +79,12 @@ src_install() {
 	python_fix_shebang "${ED}"
 	python_optimize
 	python_domodule cupshelpers
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }

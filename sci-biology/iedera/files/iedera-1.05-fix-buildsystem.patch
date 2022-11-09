@@ -1,7 +1,7 @@
 iedera sets default flags that override user {C,CXX,LD}FLAGS
 
---- iedera-1.05/configure.ac
-+++ iedera-1.05/configure.ac
+--- iedera-1.05/configure.in
++++ iedera-1.05/configure.in
 @@ -4,11 +4,5 @@
  AC_PROG_INSTALL
  AC_PROG_CXX

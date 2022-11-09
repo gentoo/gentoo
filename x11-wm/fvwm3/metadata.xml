@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		fvwm3 is a multiple large virtual desktop window manager.
+		The successor to fvwm-2.6, Fvwm3 is intended to be extremely customizable and extendible while consuming a relatively small amount of resources.
+	</longdescription>
+	<maintainer type="person" proxied="yes">
+		<email>Matt.Jolly@footclan.ninja</email>
+		<name>Matthew Jolly</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="go">Enable building <pkg>dev-lang/go</pkg> code (FvwmPrompt)</flag>
+		<flag name="lock">Enable screen locking</flag>
+		<flag name="netpbm">Enable NetPBM support (used by FvwmScript-ScreenDump)</flag>
+		<flag name="rplay">Enable rplay support</flag>
+		<flag name="stroke">Mouse Gesture support</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/fvwmorg/fvwm3/issues</bugs-to>
+		<changelog>https://raw.githubusercontent.com/fvwmorg/fvwm3/master/CHANGELOG.md</changelog>
+	</upstream>
+</pkgmetadata>

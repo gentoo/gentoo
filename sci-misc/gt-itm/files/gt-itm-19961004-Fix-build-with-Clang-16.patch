@@ -1,0 +1,326 @@
+From 960d73fb2149340e39acc23741ede9dee52b8778 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 24 Oct 2022 18:47:48 +0100
+Subject: [PATCH 1/2] Fix build with Clang 16
+
+Bug: https://bugs.gentoo.org/741582
+--- a/gt-itm/src/dfs.c
++++ b/gt-itm/src/dfs.c
+@@ -23,7 +23,7 @@ int dfs(Graph *G,int n,u_char *vis);
+ 
+ /* check connectivity of graph g                        */
+ /* uses depth-first search.                             */
+-isconnected(Graph *G)
++int isconnected(Graph *G)
+ {
+ u_char *vis;
+ Vertex *vp;
+--- a/gt-itm/src/edriver.c
++++ b/gt-itm/src/edriver.c
+@@ -51,9 +51,7 @@
+     		   } \
+ 		 }\
+ 
+-main(argc,argv)
+-    int argc;
+-    char *argv[];
++int main(int argc, char **argv)
+ {
+     int i; 
+     int min, max, sum, bins, *ddist; 
+@@ -63,14 +61,14 @@ main(argc,argv)
+     char outfile[MAXF];
+     char *dstr = "-nd";
+     int plen, idx;
+-    FILE *ddf, *evf, *pdf, *fp, *fopen();
++    FILE *ddf, *evf, *pdf, *fp;
+     int prdist = 1;
+     enum Field f0, f1;
+     int first = 1;
+ 
+     if (argc == 1) {
+ 	printf("Usage: edriver <filestem> [-nd] [-<f0><f1>]*\n\n");
+-	return;
++	return 1;
+     }
+     /* determine whether to print distributions */
+     /* determine where in argv the field pairs begin */
+--- a/gt-itm/src/eval.c
++++ b/gt-itm/src/eval.c
+@@ -201,10 +201,7 @@ int bicomp(Graph *g,int verbose)
+ }
+ 
+ 
+-void twofield_sptree(g,u,f0,f1)
+-Graph*g;
+-Vertex*u;
+-enum Field f0,f1;
++void twofield_sptree(Graph *g, Vertex *u, enum Field f0, enum Field f1)
+ {
+ 	Vertex *v, *t;
+ 	Arc *r;
+--- a/gt-itm/src/geog.c
++++ b/gt-itm/src/geog.c
+@@ -33,7 +33,7 @@
+ static char geogId[]="$Id: geog.c,v 1.1 1996/10/04 13:36:46 calvert Exp $";
+ 
+ long fdiam(Graph *g);
+-void die(s);
++void die(char* errstr);
+ 
+ double
+ distance(Vertex *u, Vertex *v)
+@@ -75,7 +75,7 @@ printparms(char *buf,geo_parms *pp)
+ void
+ randomize(long* a, long size, long mean, int iters)
+ {
+-register i,indx;
++int i,indx;
+ 
+    for (i=0; i<size; i++)       /* initialize */
+         a[i] = mean;
+@@ -149,11 +149,11 @@ geo(long seed, geo_parms *pp)
+ {
+ double p,d,L,radius,r;
+ u_char *occ;
+-register int scale;
++int scale;
+ unsigned nbytes, index, x, y;
+ u_long units,pertrange;
+ int mallocd;
+-register i,j;
++int i,j;
+ Graph *G;
+ Vertex *up,*vp;
+ char namestr[128];
+@@ -319,7 +319,7 @@ int
+ edge_level(Vertex *u, Vertex *v, int nlev)
+ {
+ char ss[MAXNAMELEN], tt[MAXNAMELEN];
+-register char *s=ss, *t=tt, *b, *c;
++char *s=ss, *t=tt, *b, *c;
+ 
+ nlev -= 1;
+ 
+@@ -359,7 +359,7 @@ geo_hier(long seed,
+ Graph *newG, *tG, *GG, *srcG, *dstG;
+ long *numv;		/* array of sizes of lower-level graphs */
+ geo_parms *curparms, workparms[MAXLEVEL];
+-register i,k,indx;
++int i,k,indx;
+ long dst;
+ int temp,total,lowsize,otherend,blen,level;
+ long maxP[MAXLEVEL], maxDiam[MAXLEVEL], wt[MAXLEVEL];
+@@ -614,7 +614,7 @@ char vnamestr[MAXNAMELEN];
+  */
+   {
+     char buf[ID_FIELD_SIZE+1];
+-    register char *cp;
++    char *cp;
+     int len, nextlen, left;
+ 
+     strcpy(tG->util_types,GEO_UTIL);	/* same for all geo graphs,	*/
+--- a/gt-itm/src/itm.c
++++ b/gt-itm/src/itm.c
+@@ -56,7 +56,7 @@
+ char *delim = " \t\n", *nonestr = "<none>";
+ static char  errstr[256];
+ 
+-void die(s);
++void die(char* errstr);
+ 
+ char *
+ get_geoparms(FILE * f, geo_parms * pp)
+@@ -298,7 +298,7 @@ geo_parms	parmsbuf[MAXLEVEL];	/* make sure MAXLEVEL >= 3 */
+     return NULL;
+ }
+ 
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ {
+     FILE           *infile;
+     char	   *rv;
+@@ -306,7 +306,7 @@ main(int argc, char **argv)
+ 
+     if (argc == 1) {
+ 	printf("itm <spec-file0> <spec-file1> ....\n\n");
+-	return;
++	return 1;
+     }
+     while (--argc) {
+ 
+--- a/gt-itm/src/sgb2alt.c
++++ b/gt-itm/src/sgb2alt.c
+@@ -24,7 +24,7 @@
+ #include "gb_save.h"
+ #include "geog.h"
+ 
+-main(argc,argv)
++int main(argc,argv)
+     int argc;
+     char *argv[];
+ {
+@@ -36,14 +36,14 @@ main(argc,argv)
+ 
+     if (argc != 3) {
+ 	    printf("sgb2old <sgfile> <altfile>\n\n");
+-	    return;
++	    return 1;
+     }
+     fout = fopen(argv[2],"w");
+ 
+     g = restore_graph(argv[1]);
+ 		if (g == NULL) {
+       printf("%s does not contain a correct SGB graph\n",argv[1]);
+-			return;
++			return 1;
+ 		}
+ 			
+     fprintf(fout,"GRAPH (#nodes #edges id uu vv ww xx yy zz):\n");
+--- a/gt-itm/src/ts.c
++++ b/gt-itm/src/ts.c
+@@ -76,7 +76,7 @@ int stubs_OK(Vertex *snp0,Vertex *snp1);
+ long
+ fdiam(Graph *g)
+ {
+-register i,j,k;
++int i,j,k;
+ long **dist, **ldist;
+ int changed,mallocd;
+ long diam, ldiam, newdist = 0, otherend;
+@@ -174,7 +174,7 @@ Arc *a;
+ } /* fdiam */
+ 
+ void
+-die(s)
++die(char* s)
+ {
+ fprintf(stderr,"Fatal error %s\n",s);
+ exit(1);
+@@ -187,7 +187,7 @@ exit(1);
+ void
+ copyedges(Graph *fromG, Graph *toG, long base)
+ {
+-register i, indx;
++int i, indx;
+ Vertex *np, *vp, *basep;
+ Arc *ap;
+ 
+@@ -245,7 +245,7 @@ long i,j,k;
+ long indx, diam, totalnodes, base, dom;
+ char dnodename[ID_FIELD_SIZE], snodename[ID_FIELD_SIZE];
+ int dnamelen, numtries=0;
+-register Vertex *v,*dnp, *snp,	/* domain node and stub node pointers	*/
++Vertex *v,*dnp, *snp,	/* domain node and stub node pointers	*/
+        *ddnp, *fp, *tp, *tmp;
+ 
+ Arc *a;
+--- a/gt-itm/src/sgb2alt.c
++++ b/gt-itm/src/sgb2alt.c
+@@ -32,7 +32,7 @@ int main(argc,argv)
+     Vertex *v;
+     Arc *a;
+     Graph *g;
+-    FILE *fopen(), *fout;
++    FILE *fout;
+ 
+     if (argc != 3) {
+ 	    printf("sgb2old <sgfile> <altfile>\n\n");
+--- a/sgb2ns/sgb2comns.c
++++ b/sgb2ns/sgb2comns.c
+@@ -80,9 +80,7 @@ void print_flat_nodes(FILE *fout, Graph *g);
+ void print_edges(FILE *fout, Graph *g);
+ void print_hdr(FILE *fout, Graph *g);
+ 
+-main(argc,argv)
+-    int argc;
+-    char *argv[];
++int main(int argc, char *argv[])
+ {
+ 	
+ 	int hier_flag=0;
+@@ -102,7 +100,7 @@ main(argc,argv)
+ 	g = restore_graph(argv[1]);
+ 	if (g == NULL) {
+ 		printf("%s does not contain a correct SGB graph\n",argv[1]);
+-		return;
++		return 1;
+ 	}
+ 	
+ 	if (hier_flag) 
+--- a/sgb2ns/sgb2hierns.c
++++ b/sgb2ns/sgb2hierns.c
+@@ -47,9 +47,7 @@
+ #define HUGE   655536
+ 
+ 
+-main(argc,argv)
+-    int argc;
+-    char *argv[];
++int main(int argc, char *argv[])
+ {
+ 
+     int i, 
+@@ -89,7 +87,7 @@ main(argc,argv)
+ 	    /* for the purpose of scenario generator, need to return a list of transits
+ 	       & stubs and num of nodes in each - hence the optional third arg topofile */
+ 	    printf("sgb2hierns <sgfile> <outfile> ?<topofile>?\n\n");
+-	    return;
++	    return 1;
+     }
+   
+     fout = fopen(argv[2],"w");
+@@ -101,7 +99,7 @@ main(argc,argv)
+     g = restore_graph(argv[1]);
+     if (g == NULL) {
+ 	    printf("%s does not contain a correct SGB graph\n",argv[1]);
+-	    return;
++	    return 1;
+     }
+ 
+     fprintf(fout,"# Generated by sgb2hier-ns,sgb2hier-ns generated from sgb2ns\n");
+--- a/sgb2ns/sgb2ns.c
++++ b/sgb2ns/sgb2ns.c
+@@ -41,27 +41,25 @@
+ #include "gb_save.h"
+ #include "geog.h"
+ 
+-main(argc,argv)
+-     int argc;
+-     char *argv[];
++int main(int argc,char *argv[])
+ {
+ 	int i, j, nlink;
+ 	Vertex *v;
+ 	Arc *a;
+ 	Graph *g;
+-	FILE *fopen(), *fout;
++	FILE *fout;
+ 	char m[420];
+ 
+ 	if (argc != 3) {
+ 		printf("sgb2ns <sgfile> <nsfile>\n\n");
+-		return;
++		return 1;
+ 	}
+ 	fout = fopen(argv[2],"w");
+ 
+ 	g = restore_graph(argv[1]);
+ 	if (g == NULL) {
+ 		printf("%s does not contain a correct SGB graph\n",argv[1]);
+-		return;
++		return 1;
+ 	}
+ 			
+ 	fprintf(fout, "# Generated by sgb2ns, created by Polly Huang\n");
+--- a/sgb2ns/ts2ns.c
++++ b/sgb2ns/ts2ns.c
+@@ -55,7 +55,7 @@ main(argc,argv)
+ 	Vertex *v;
+ 	Arc *a;
+ 	Graph *g;
+-	FILE *fopen(), *fout;
++	FILE *fout;
+ 	char m[420], name[40];
+ 	int transits[HUGE]; 
+ 	int p,q, total_transits;

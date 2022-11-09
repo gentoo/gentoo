@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib git-r3 gnome2-utils
 
 DESCRIPTION="Library for encoding and decoding .avif files"

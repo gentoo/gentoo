@@ -15,7 +15,7 @@ SRC_URI="https://launchpad.net/ufw/${PV}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="examples ipv6"
 
 RDEPEND=">=net-firewall/iptables-1.4[ipv6(+)?]
@@ -198,7 +198,7 @@ pkg_postinst() {
 		print_check_req_warn=true
 	else
 		local rv
-		for rv in "${REPLACING_VERSIONS}"; do
+		for rv in ${REPLACING_VERSIONS}; do
 			local major=${rv%%.*}
 			local minor=${rv#${major}.}
 			if [[ "${major}" -eq 0 && "${minor}" -lt 34 ]]; then

@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pudb</remote-id>
+		<remote-id type="github">inducer/pudb</remote-id>
 	</upstream>
 </pkgmetadata>

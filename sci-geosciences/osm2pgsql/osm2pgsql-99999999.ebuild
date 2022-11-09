@@ -38,7 +38,7 @@ RDEPEND="${COMMON_DEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.0-cmake_lua_version.patch
+	"${FILESDIR}"/${PN}-1.7.0-cmake_lua_version.patch
 )
 
 src_configure() {

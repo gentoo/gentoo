@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/800177
+
+--- a/emacs-helm.sh
++++ b/emacs-helm.sh
+@@ -137,19 +137,6 @@ LOAD_PATH=$($EMACS -q -batch --eval "(prin1 load-path)")
+ 
+ cd "${0%/*}" || exit 1
+ 
+-# Check if autoload file exists.
+-# It may be in a different directory if emacs-helm.sh is a symlink.
+-TRUENAME=$(find "${0%/*}" -path "$0" -printf "%l")
+-if [ -n "$TRUENAME" ]; then
+-    AUTO_FILE="${TRUENAME%/*}/helm-autoloads.el"
+-else
+-    AUTO_FILE="helm-autoloads.el"
+-fi
+-if [ ! -e "$AUTO_FILE" ]; then
+-    echo No autoloads found, please run make first to generate autoload file
+-    exit 1
+-fi
+-
+ 
+ cat > $CONF_FILE <<EOF
+ (setq initial-scratch-message (concat initial-scratch-message

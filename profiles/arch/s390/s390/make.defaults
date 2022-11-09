@@ -1,0 +1,16 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+MULTILIB_ABIS="s390"
+DEFAULT_ABI="s390"
+ABI="${DEFAULT_ABI}"
+
+CHOST="s390-ibm-linux-gnu"
+
+# Michał Górny <mgorny@gentoo.org> (2014-07-01)
+# Make the native ABI implicit so that MULTILIB_USEDEP can be satisfied
+# by non-multilib ebuilds when non-native ABIs are disabled.
+IUSE_IMPLICIT="abi_s390_32"
+
+# Enable abi_s390_32 for packages that don't have it forced.
+ABI_S390="32"

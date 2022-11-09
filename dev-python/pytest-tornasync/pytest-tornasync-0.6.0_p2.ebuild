@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
@@ -22,7 +22,7 @@ RESTRICT="test"
 
 RDEPEND="
 	>=dev-python/pytest-3.0[${PYTHON_USEDEP}]
-	>=www-servers/tornado-5.0[${PYTHON_USEDEP}]
+	>=dev-python/tornado-5.0[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

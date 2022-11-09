@@ -80,8 +80,16 @@ RDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/openbabel-3.1.1-fix-time-check-cmake.patch
+)
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
-	use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 prepare_python_bindings() {

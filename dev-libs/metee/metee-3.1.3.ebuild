@@ -11,10 +11,18 @@ SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.t
 
 LICENSE="Apache-2.0"
 SLOT="0/3.1.3"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc"
 
 BDEPEND="doc? ( app-doc/doxygen )"
+
+src_prepare() {
+	default
+	cmake_src_prepare
+
+	# Respect users CFLAGS
+	sed -e 's/-D_FORTIFY_SOURCE=2 -O2//' -e 's/-Werror//' -i linux.cmake || die
+}
 
 src_configure() {
 	local mycmakeargs=(

@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 
 inherit cmake python-any-r1 systemd
 
@@ -11,7 +11,7 @@ DESCRIPTION="Cross-platform Direct Connect client"
 HOMEPAGE="https://airdcpp-web.github.io/"
 SRC_URI="https://github.com/airdcpp-web/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~riscv x86"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="debug nat-pmp +tbb +webui"
@@ -37,6 +37,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 "
 PDEPEND="webui? ( www-apps/airdcpp-webui )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-odr.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/835508
+https://github.com/intel/libva-utils/pull/261
+
+From 83fb9c9bbda86f1bd224b20b082aff6e9f3d6ff6 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Fri, 18 Mar 2022 10:52:29 -0700
+Subject: [PATCH] meson: Search for threads in top-level meson.build
+
+In Gentoo we allow disabling the tools and putsuface separately, so
+moving the threads check out of the encode subdirectory helps.
+--- a/encode/meson.build
++++ b/encode/meson.build
+@@ -1,4 +1,3 @@
+-threads = dependency('threads')
+ m = c.find_library('m')
+ 
+ 
+--- a/meson.build
++++ b/meson.build
+@@ -10,6 +10,8 @@ project('libva-utils', 'c', 'cpp',
+ 
+ c = meson.get_compiler('c')
+ 
++threads = dependency('threads')
++
+ libva_dep = dependency('libva', version: '>= 1.1.0')
+ 
+ libva_utils_flags = [ '-Wno-unused-parameter',
+

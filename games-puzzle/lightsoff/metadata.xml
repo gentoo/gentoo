@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<longdescription lang="en">
-	Lights Off is a collection of light switch puzzles. Clicking on a light
-	toggles it either on or off, but also toggles all the surrounding lights,
-	too. Your objective is simple: turn off all the lights!
-</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    Lights Off is a collection of light switch puzzles. Clicking on a light
+    toggles it either on or off, but also toggles all the surrounding lights,
+    too. Your objective is simple: turn off all the lights!
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/lightsoff</remote-id>
+  </upstream>
 </pkgmetadata>

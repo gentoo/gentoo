@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -93,9 +93,9 @@ src_unpack() {
 src_prepare() {
 	# gcc3 fixes, and some tweaks to get a build, also
 	# reiserfs support for the kernel (and milo).
-	cd ${WORKDIR}/linux; eapply "${FILESDIR}"/linux-${kernel_version}-gcc3-milo.diff || die
-	cd ${WORKDIR}/linux; eapply "${WORKDIR}"/linux-2.2.20-reiserfs-3.5.35.diff || die
-	cd ${S}; eapply "${FILESDIR}"/milo-${milo_version}-gcc3-gentoo.diff || die
+	cd "${WORKDIR}"/linux; eapply "${FILESDIR}"/linux-${kernel_version}-gcc3-milo.diff || die
+	cd "${WORKDIR}"/linux; eapply "${WORKDIR}"/linux-2.2.20-reiserfs-3.5.35.diff || die
+	cd "${S}"; eapply "${FILESDIR}"/milo-${milo_version}-gcc3-gentoo.diff || die
 	eapply_user
 }
 
@@ -138,7 +138,7 @@ src_compile() {
 		die "${MILO_IMAGE} not supported, or not recognised."
 	fi
 
-	sed -i "s!__MILO_ARCHES__!${MILO_ARCH}!g" ${S}/tools/scripts/build
+	sed -i "s!__MILO_ARCHES__!${MILO_ARCH}!g" "${S}"/tools/scripts/build
 
 	ewarn
 	ewarn "seriously, this is going to take a while, go get some coffee..."
@@ -154,9 +154,9 @@ src_compile() {
 	ewarn
 
 	# get kernel configured
-	cp ${custom_milo_kernel_config:-${S}/Documentation/config/linux-2.2.19-SuSE.config} \
-		${WORKDIR}/linux/.config
-	cd ${WORKDIR}/linux; yes n | make oldconfig || die "unable to configure kernel."
+	cp ${custom_milo_kernel_config:-"${S}"/Documentation/config/linux-2.2.19-SuSE.config} \
+		"${WORKDIR}"/linux/.config
+	cd "${WORKDIR}"/linux; yes n | make oldconfig || die "unable to configure kernel."
 
 	# we're building a generic kernel that defaults to ev5, but theres no
 	# reason why we cant tweak the instruction set.
@@ -165,7 +165,7 @@ src_compile() {
 	mcpu_flag="`get-flag mcpu`"
 	if [ ! -z "${mcpu_flag}" ]; then
 		sed -i "s/\(CFLAGS := \$(CFLAGS) \)-mcpu=ev5$/\1-mcpu=${mcpu_flag:-ev5}/g" \
-			${WORKDIR}/linux/arch/alpha/Makefile
+			"${WORKDIR}"/linux/arch/alpha/Makefile
 	fi
 
 	# build the generic linux kernel, of course if you have
@@ -173,11 +173,11 @@ src_compile() {
 	# to hack it (or the .config used here).
 	einfo "building a generic kernel for use with milo..."
 	unset CC DISTCC_HOSTS; make dep vmlinux || die "unable to build generic kernel for milo."
-	cat ${FILESDIR}/objstrip.c > ${WORKDIR}/linux/arch/alpha/boot/tools/objstrip.c
+	cat "${FILESDIR}"/objstrip.c > "${WORKDIR}"/linux/arch/alpha/boot/tools/objstrip.c
 
 	# make the objstrip utility.
-	gcc ${WORKDIR}/linux/arch/alpha/boot/tools/objstrip.c -o \
-		${WORKDIR}/linux/arch/alpha/boot/tools/objstrip || die "couldnt build objstrip."
+	gcc "${WORKDIR}"/linux/arch/alpha/boot/tools/objstrip.c -o \
+		"${WORKDIR}"/linux/arch/alpha/boot/tools/objstrip || die "couldnt build objstrip."
 	einfo "kernel build complete."
 	einfo "building milo images..."
 
@@ -191,20 +191,19 @@ src_compile() {
 	append-flags -DMILO_SERIAL_NUMBER1="${milo_serial_number1:-0x002174616572475f}"
 
 	# the Makefile missed this :-/
-	cd ${S}/tools/common; make || die "couldnt make commonlib."
+	cd "${S}"/tools/common; make || die "couldnt make commonlib."
 
 	# build all the milo images.
-	cd ${S}; tools/scripts/build || die "failed to build milo images."
+	cd "${S}"; tools/scripts/build || die "failed to build milo images."
 
 	# put the ldmilo utility there.
-	cp ${DISTDIR}/ldmilo-patched-${ldmilo_patch} ${S}/binaries/ldmilo.exe
-	cp ${DISTDIR}/linload.exe ${S}/binaries/linload.exe
+	cp "${DISTDIR}"/ldmilo-patched-${ldmilo_patch} "${S}"/binaries/ldmilo.exe
+	cp "${DISTDIR}"/linload.exe "${S}"/binaries/linload.exe
 
 }
 
 src_install() {
-
-	cd ${S}; dodir /opt/milo
+	cd "${S}"; dodir /opt/milo
 	insinto /opt/milo
 
 	einfo "Installing MILO images..."
@@ -214,10 +213,10 @@ src_install() {
 		doins ${i}
 	done
 
-	cd ${S}/Documentation
+	cd "${S}"/Documentation
 
 	dodoc ChangeLog filesystem Nikita.Todo README.milo Todo README.BSD Stuff WhatIsMilo \
-		${FILESDIR}/README-gentoo ${FILESDIR}/mkserial_no.c ${DISTDIR}/MILO-HOWTO
+		"${FILESDIR}"/README-gentoo "${FILESDIR}"/mkserial_no.c "${DISTDIR}"/MILO-HOWTO
 
 }
 

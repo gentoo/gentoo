@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
+<maintainer type="person" proxied="yes">
+  <email>alexander@neuwirth-informatik.de</email>
+  <name>Alexander Puck Neuwirth</name>
+</maintainer>
+<maintainer type="project" proxied="proxy">
   <email>sci-physics@gentoo.org</email>
   <name>Gentoo Physics Project</name>
 </maintainer>
@@ -24,5 +28,6 @@
 <use>
   <flag name="gev">Build with GeV instead of default MeV for momentum units</flag>
   <flag name="cm">Build with cm instead of default mm for length units</flag>
+  <flag name="root">Build with ROOTIO enabled</flag>
 </use>
 </pkgmetadata>

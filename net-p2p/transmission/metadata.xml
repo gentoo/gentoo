@@ -9,6 +9,5 @@
 		<flag name="cli">Build command-line client</flag>
 		<flag name="lightweight">Optimize transmission for low-resource systems (smaller cache size, prefer unencrypted peer connections, etc.)</flag>
 		<flag name="mbedtls">Use mbed TLS instead of OpenSSL</flag>
-		<flag name="web">Build Web client</flag>
 	</use>
 </pkgmetadata>

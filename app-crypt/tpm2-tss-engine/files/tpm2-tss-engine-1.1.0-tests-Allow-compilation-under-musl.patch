@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/833531
+--- a/configure.ac
++++ b/configure.ac
+@@ -174,6 +174,8 @@ AC_ARG_WITH([device],
+             [with_device_set=no])
+ AM_CONDITIONAL([TESTDEVICE],[test "x$with_device_set" = xyes])
+ 
++AC_CHECK_FUNC([backtrace_symbols_fd],[AC_DEFINE([HAVE_EXECINFO],[1], ['Define to 1 if you have the <execinfo.h> header file.'])])
++
+ # Integration test with simulator
+ AS_IF([test "x$enable_integration" = xyes && test "x$with_device_set" = xno],
+       [integration_args=""
+--- a/test/error_tpm2-tss-engine-common.c
++++ b/test/error_tpm2-tss-engine-common.c
+@@ -7,7 +7,9 @@
+ #include "tpm2-tss-engine.h"
+ #include "tpm2-tss-engine-common.h"
+ 
++#ifdef HAVE_EXECINFO
+ #include <execinfo.h>
++#endif
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <setjmp.h>
+@@ -17,8 +19,10 @@ TSS2_RC
+ __wrap_Esys_Initialize()
+ {
+     printf("Esys_Initialize called\n");
++#ifdef HAVE_EXECINFO
+     void* b[128];
+     backtrace_symbols_fd(b, backtrace(b, sizeof(b)/sizeof(b[0])), STDOUT_FILENO);
++#endif
+     return -1;
+ }
+     

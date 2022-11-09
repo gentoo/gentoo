@@ -14,7 +14,7 @@ DESCRIPTION="Original Bitcoin crypto-currency wallet for automated services"
 HOMEPAGE="https://bitcoincore.org/ https://bitcoinknots.org/"
 SRC_URI="
 	https://github.com/bitcoin/bitcoin/archive/${BITCOINCORE_COMMITHASH}.tar.gz -> bitcoin-v0.${PV}.tar.gz
-	https://bitcoinknots.org/files/21.x/${KNOTS_PV}/${KNOTS_P}.patches.txz -> ${KNOTS_P}.patches.tar.xz
+	https://bitcoinknots.org/files/$(ver_cut 1).x/${KNOTS_PV}/${KNOTS_P}.patches.txz -> ${KNOTS_P}.patches.tar.xz
 "
 
 LICENSE="MIT"
@@ -31,7 +31,7 @@ REQUIRED_USE="
 DEPEND="
 	acct-group/bitcoin
 	acct-user/bitcoin
-	>=dev-libs/boost-1.68.0:=[threads(+)]
+	dev-libs/boost:=
 	dev-libs/libevent:=
 	>dev-libs/libsecp256k1-0.1_pre20200911:=[recovery,schnorr]
 	>=dev-libs/univalue-1.0.4:=

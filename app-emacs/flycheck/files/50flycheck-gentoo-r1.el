@@ -1,2 +1,2 @@
 (add-to-list 'load-path "@SITELISP@")
-(load "@SITELISP@/flycheck-autoloads")
+(load "@SITELISP@/flycheck-autoloads" nil t)

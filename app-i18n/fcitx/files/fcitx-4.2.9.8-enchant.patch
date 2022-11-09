@@ -1,7 +1,7 @@
 https://github.com/fcitx/fcitx/issues/475
 
---- /cmake/FindEnchant.cmake
-+++ /cmake/FindEnchant.cmake
+--- a/cmake/FindEnchant.cmake
++++ b/cmake/FindEnchant.cmake
 @@ -16,15 +16,15 @@
  endif(ENCHANT_INCLUDE_DIR AND ENCHANT_LIBRARIES)
  

@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit cmake systemd
+inherit cmake flag-o-matic systemd
 
 CMAKE_USE_DIR="${S}/src"
 
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-CDEPEND="dev-lang/tcl:0
+DEPEND="dev-lang/tcl:0
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -30,10 +30,10 @@ CDEPEND="dev-lang/tcl:0
 	media-libs/opus
 	dev-libs/libsigc++:2
 	dev-libs/popt"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	acct-group/svxlink
 	acct-user/svxlink"
-DEPEND="${CDEPEND}
+BDEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
@@ -44,15 +44,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Wodr warnings, see bug #860414
+	filter-lto
+
 	local mycmakeargs=(
 		-DSYSCONF_INSTALL_DIR=/etc
 		-DLOCAL_STATE_DIR=/var
 	)
 	cmake_src_configure
-}
-
-src_compile() {
-	cmake_src_compile
 }
 
 src_install() {

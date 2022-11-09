@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="sourceforge-jp">tomoyo</remote-id>
+		<remote-id type="osdn">tomoyo</remote-id>
 	</upstream>
 </pkgmetadata>

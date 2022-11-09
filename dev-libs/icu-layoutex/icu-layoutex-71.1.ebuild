@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN/-layoutex}/source"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="debug static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -50,7 +50,9 @@ src_prepare() {
 }
 
 src_configure() {
-	# Use C++14
+	# ICU tries to append -std=c++11 without this, so as of 71.1,
+	# despite GCC 9+ using c++14 (or gnu++14) and GCC 11+ using gnu++17,
+	# we still need this.
 	append-cxxflags -std=c++14
 
 	if tc-is-cross-compiler; then

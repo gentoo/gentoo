@@ -13,7 +13,7 @@
   the script used to perform this linking step.
   Geant 4 is a complete rewrite in C++ with addition of other modern
   features and detectors.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="c++11">Build using the C++11 standard</flag>
     <flag name="c++14">Build using the C++14 standard</flag>
@@ -28,6 +28,9 @@
     <flag name="raytracerx">Enable raytracing for physics events</flag>
     <flag name="tbb">Enable support for <pkg>dev-cpp/tbb</pkg></flag>
     <flag name="vrml">Enable output of geant4 in vrml formats</flag>
-    <flag name="vtk">Use sci-libs/vtk for visualization (experimental)</flag>
+    <flag name="vtk">Use <pkg>sci-libs/vtk</pkg> for visualization (experimental)</flag>
   </use>
+  <upstream>
+    <remote-id type="github">Geant4/geant4</remote-id>
+  </upstream>
 </pkgmetadata>

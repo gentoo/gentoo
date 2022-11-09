@@ -14,7 +14,7 @@
   </longdescription>
   <stabilize-allarches/>
   <upstream>
-    <remote-id type="pypi">semantic_version</remote-id>
+    <remote-id type="pypi">semantic-version</remote-id>
     <remote-id type="github">rbarrois/python-semanticversion</remote-id>
     <bugs-to>https://github.com/rbarrois/python-semanticversion/issues</bugs-to>
   </upstream>

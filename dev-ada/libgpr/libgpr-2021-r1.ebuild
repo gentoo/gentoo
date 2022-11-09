@@ -3,7 +3,7 @@
 
 EAPI=7
 
-ADA_COMPAT=( gnat_202{0..1} )
+ADA_COMPAT=( gnat_202{0..1} gcc_12_2_0 )
 inherit ada multiprocessing
 
 MYP=gprbuild-${PV}-${PV}0519-19A34-src
@@ -18,8 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic"
 
-RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?,${ADA_USEDEP}]
-	!net-libs/grpc"
+RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?,${ADA_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 REQUIRED_USE="${ADA_REQUIRED_USE}

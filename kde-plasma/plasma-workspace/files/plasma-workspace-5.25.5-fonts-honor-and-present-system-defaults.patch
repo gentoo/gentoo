@@ -1,0 +1,55 @@
+From dc24b7c1c4e2c9dfb74090f716da029e44e209ff Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Mon, 19 Sep 2022 12:39:54 +0200
+Subject: [PATCH] fonts: honor & present system defaults
+
+previously we'd pretend that a missing value meant our "plasma-ish"
+defaults would apply but that is utterly false. when no hitting is set,
+no hinting is set. this can happen when the system default fontconfigs
+don't set up any hinting.
+
+BUG: 416140
+
+
+(cherry picked from commit 5dd8cc919f54bf28152a80e1fa6f3f649ea4e47a)
+---
+ kcms/fonts/fontsaasettings.cpp | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/kcms/fonts/fontsaasettings.cpp b/kcms/fonts/fontsaasettings.cpp
+index a7159b0e63..e7192aa89d 100644
+--- a/kcms/fonts/fontsaasettings.cpp
++++ b/kcms/fonts/fontsaasettings.cpp
+@@ -1,5 +1,6 @@
+ /*
+     SPDX-FileCopyrightText: 2020 Benjamin Port <benjamin.port@enioka.com>
++    SPDX-FileCopyrightText: 2022 Harald Sitter <sitter@kde.org>
+ 
+     SPDX-License-Identifier: GPL-2.0-or-later
+ */
+@@ -211,18 +212,18 @@ public:
+         // sub pixel
+         KXftConfig::SubPixel::Type spType = KXftConfig::SubPixel::NotSet;
+         xft.getSubPixelType(spType);
+-        // if it is not set, we set it to rgb
++        // if it is not set, we have no subpixel hinting
+         if (spType == KXftConfig::SubPixel::NotSet) {
+-            spType = KXftConfig::SubPixel::Rgb;
++            spType = KXftConfig::SubPixel::None;
+         }
+         setSubPixel(spType);
+ 
+         // hinting
+         KXftConfig::Hint::Style hStyle = KXftConfig::Hint::NotSet;
+         xft.getHintStyle(hStyle);
+-        // if it is not set, we set it to slight hinting
++        // if it is not set, we have no hinting
+         if (hStyle == KXftConfig::Hint::NotSet) {
+-            hStyle = KXftConfig::Hint::Slight;
++            hStyle = KXftConfig::Hint::None;
+         }
+         setHinting(hStyle);
+ 
+-- 
+GitLab
+

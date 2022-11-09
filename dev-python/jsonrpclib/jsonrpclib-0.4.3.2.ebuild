@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
@@ -16,7 +16,7 @@ else
 		https://github.com/tcalmant/jsonrpclib/archive/v${PV}.tar.gz
 			-> ${P}.gh.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+	KEYWORDS="amd64 arm arm64 ~mips x86"
 fi
 
 DESCRIPTION="python implementation of the JSON-RPC spec (1.0 and 2.0)"

@@ -10,7 +10,7 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">vstakhov/rspamd</remote-id>
+    <remote-id type="github">rspamd/rspamd</remote-id>
   </upstream>
   <use>
     <flag name="pcre2">Use <pkg>dev-libs/libpcre2</pkg></flag>

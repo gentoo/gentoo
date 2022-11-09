@@ -1,0 +1,65 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -80,33 +80,6 @@ set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:${DEPS_PREFIX}/lib/pkgconfig")
+ # used for check_c_compiler_flag
+ include(CheckCCompilerFlag)
+ 
+-if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+-  # CMake tries to treat /sw and /opt/local as extension of the system path, but
+-  # that doesn't really work out very well.  Once you have a dependency that
+-  # resides there and have to add it as an include directory, then any other
+-  # dependency that could be satisfied from there must be--otherwise you can end
+-  # up with conflicting versions.  So, let's make them more of a priority having
+-  # them be included as one of the first places to look for dependencies.
+-  list(APPEND CMAKE_PREFIX_PATH /sw /opt/local)
+-
+-  # If the macOS deployment target is not set manually (via $MACOSX_DEPLOYMENT_TARGET),
+-  # fall back to local system version. Needs to be done both here and in cmake.deps.
+-  if(NOT CMAKE_OSX_DEPLOYMENT_TARGET)
+-    execute_process(COMMAND sw_vers -productVersion
+-                    OUTPUT_VARIABLE MACOS_VERSION
+-                    OUTPUT_STRIP_TRAILING_WHITESPACE)
+-    set(CMAKE_OSX_DEPLOYMENT_TARGET "${MACOS_VERSION}")
+-  endif()
+-  message("Using deployment target ${CMAKE_OSX_DEPLOYMENT_TARGET}")
+-
+-  # Work around some old, broken detection by CMake for knowing when to use the
+-  # isystem flag.  Apple's compilers have supported this for quite some time
+-  # now.
+-  if(CMAKE_C_COMPILER_ID MATCHES "GNU")
+-    set(CMAKE_INCLUDE_SYSTEM_FLAG_C "-isystem ")
+-  endif()
+-endif()
+-
+ if(WIN32 OR CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+   # Ignore case when comparing filenames on Windows and Mac.
+   set(CASE_INSENSITIVE_FILENAME TRUE)
+--- a/cmake.deps/CMakeLists.txt
++++ b/cmake.deps/CMakeLists.txt
+@@ -112,13 +112,6 @@ if(CMAKE_CXX_COMPILER)
+   set(DEPS_CXX_COMPILER "${CMAKE_CXX_COMPILER}")
+ endif()
+ 
+-if(CMAKE_OSX_SYSROOT)
+-  set(DEPS_C_COMPILER "${DEPS_C_COMPILER} -isysroot${CMAKE_OSX_SYSROOT}")
+-  if(DEPS_CXX_COMPILER)
+-    set(DEPS_CXX_COMPILER "${DEPS_CXX_COMPILER} -isysroot${CMAKE_OSX_SYSROOT}")
+-  endif()
+-endif()
+-
+ if(CMAKE_OSX_ARCHITECTURES)
+   string(REPLACE ";" "|" CMAKE_OSX_ARCHITECTURES_ALT_SEP "${CMAKE_OSX_ARCHITECTURES}")
+   # The LuaJIT build does not like being passed multiple `-arch` flags
+--- a/src/nvim/CMakeLists.txt
++++ b/src/nvim/CMakeLists.txt
+@@ -181,10 +181,6 @@ get_directory_property(gen_includes INCLUDE_DIRECTORIES)
+ foreach(gen_include ${gen_includes} ${LUA_PREFERRED_INCLUDE_DIRS})
+   list(APPEND gen_cflags "-I${gen_include}")
+ endforeach()
+-if(CMAKE_SYSTEM_NAME STREQUAL "Darwin" AND CMAKE_OSX_SYSROOT)
+-  list(APPEND gen_cflags "-isysroot")
+-  list(APPEND gen_cflags "${CMAKE_OSX_SYSROOT}")
+-endif()
+ string(TOUPPER "${CMAKE_BUILD_TYPE}" build_type)
+ separate_arguments(C_FLAGS_ARRAY UNIX_COMMAND ${CMAKE_C_FLAGS})
+ separate_arguments(C_FLAGS_${build_type}_ARRAY UNIX_COMMAND ${CMAKE_C_FLAGS_${build_type}})

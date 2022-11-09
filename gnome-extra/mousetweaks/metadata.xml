@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription lang="en">
-		Mousetweaks is an Accessibility Software whose developement started as a GSoC
-		2007 project under Ubuntu. It brings additional fonctionalities to the pointer
-		that allow a user to:
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    Mousetweaks is an Accessibility Software whose developement started as a GSoC
+    2007 project under Ubuntu. It brings additional fonctionalities to the pointer
+    that allow a user to:
 
-		* open the contextual menu by clicking and holding the left button; it is
-		* for example useful for users that can manipulate only one button
-		* perform the 4 click types (left click, double click, drag click and
-		* right click) by software; it is for example useful for users that are
-		* not able to manipulate any button
-		* to lock the pointer temporarily into an area on the screen; it is
-		* for example useful for people that have to use their pointing
-		* hardware not only for the computer
-	</longdescription>
+    * open the contextual menu by clicking and holding the left button; it is
+    * for example useful for users that can manipulate only one button
+    * perform the 4 click types (left click, double click, drag click and
+    * right click) by software; it is for example useful for users that are
+    * not able to manipulate any button
+    * to lock the pointer temporarily into an area on the screen; it is
+    * for example useful for people that have to use their pointing
+    * hardware not only for the computer
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/mousetweaks</remote-id>
+  </upstream>
 </pkgmetadata>

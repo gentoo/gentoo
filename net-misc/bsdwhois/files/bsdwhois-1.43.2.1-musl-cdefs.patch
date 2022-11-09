@@ -1,8 +1,17 @@
-diff --git a/whois.c b/whois.c
-index 329559a..d2f6561 100644
+https://bugs.gentoo.org/828901
+--- a/strnstr.c
++++ b/strnstr.c
+@@ -38,7 +38,6 @@
+ #if defined(LIBC_SCCS) && !defined(lint)
+ static char sccsid[] = "@(#)strstr.c	8.1 (Berkeley) 6/4/93";
+ #endif /* LIBC_SCCS and not lint */
+-#include <sys/cdefs.h>
+ 
+ #include <string.h>
+ 
 --- a/whois.c
 +++ b/whois.c
-@@ -43,7 +43,6 @@ static char sccsid[] = "@(#)whois.c	8.1 (Berkeley) 6/6/93";
+@@ -43,7 +43,6 @@
  #endif /* not lint */
  #endif
  
@@ -10,3 +19,4 @@ index 329559a..d2f6561 100644
  #ifdef __FBSDID
  __FBSDID("$FreeBSD: /repoman/r/ncvs/src/usr.bin/whois/whois.c,v 1.43.2.1 2006/01/31 18:11:21 jhay Exp $");
  #endif
+

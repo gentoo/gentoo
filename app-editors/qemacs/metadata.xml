@@ -35,4 +35,7 @@
    * Small! Full version is about 150KB. Smaller custom versions can be built
      by removing modules.
 </longdescription>
+<upstream>
+  <remote-id type="savannah-nongnu">qemacs</remote-id>
+</upstream>
 </pkgmetadata>

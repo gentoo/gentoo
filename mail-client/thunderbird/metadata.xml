@@ -7,10 +7,10 @@
 </maintainer>
 <use>
 	<flag name="clang">Use Clang compiler instead of GCC</flag>
-	<flag name="eme-free">Disable EME (DRM plugin) cabability at build time</flag>
+	<flag name="eme-free">Disable EME (DRM plugin) capability at build time</flag>
 	<flag name="hwaccel">Force-enable hardware-accelerated rendering (Mozilla bug 594876)</flag>
-	<flag name="lto">Enable Link Time Optimization (LTO). Requires Gold linker when using GCC
-		or LDD linker when using Clang</flag>
+	<flag name="libproxy">Enable libproxy support</flag>
+	<flag name="lto">Enable Link Time Optimization (LTO)</flag>
 	<flag name="openh264">Use <pkg>media-libs/openh264</pkg> for H.264 support
 		instead of downloading binary blob from Mozilla at runtime</flag>
 	<flag name="pgo">Add support for profile-guided optimization using gcc-4.5,
@@ -26,10 +26,12 @@
 		instead of bundled.</flag>
 	<flag name="system-libevent">Use the system-wide <pkg>dev-libs/libevent</pkg>
 		instead of bundled.</flag>
+	<flag name="system-librnp">Use system-wide <pkg>dev-util/librnp</pkg> instead of bundled one.</flag>
 	<flag name="system-libvpx">Use the system-wide <pkg>media-libs/libvpx</pkg>
 		instead of bundled.</flag>
 	<flag name="system-png">Use the system-wide <pkg>media-libs/libpng</pkg>
 		instead of bundled (requires APNG patches)</flag>
+	<flag name="system-python-libs">Use system's python site instead of bundled python libraries</flag>
 	<flag name="system-webp">Use the system-wide <pkg>media-libs/libwebp</pkg>
 		instead of bundled.</flag>
 </use>

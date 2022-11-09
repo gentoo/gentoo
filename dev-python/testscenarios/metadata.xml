@@ -20,6 +20,7 @@
 	dependency injection (provide tests with dependencies externally to the
 	test code itself, allowing easy testing in different situations).
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">testscenarios</remote-id>
 		<remote-id type="launchpad">testscenarios</remote-id>

@@ -1,0 +1,31 @@
+From: Soner Tari <sonertari@gmail.com>
+Date: Fri, 4 Feb 2022 19:46:58 +0300
+Subject: [PATCH] Fix build errors with OpenSSL 3.0.x, but not deprecation
+ warnings, issue #290
+
+This patch fixes errors only, so that build succeeds, but deprecation
+warnings remain. It seems we need considerable changes to replace those
+deprecated functions in the warnings.
+---
+
+Upstream-commit: e17de8454a65 ("Fix build errors with OpenSSL 3.0.x, but not deprecation warnings, issue #290")
+Upstream-issue: https://github.com/droe/sslsplit/issues/290
+
+diff --git a/pxyconn.c b/pxyconn.c
+index e69de20..09a8b80 100644
+--- a/pxyconn.c
++++ b/pxyconn.c
+@@ -72,6 +72,10 @@ bufferevent_openssl_set_allow_dirty_shutdown(UNUSED struct bufferevent *bev,
+ }
+ #endif /* LIBEVENT_VERSION_NUMBER < 0x02010000 */
+ 
++#if OPENSSL_VERSION_NUMBER >= 0x30000000L
++#define ERR_GET_FUNC(x) 0
++#define ERR_func_error_string(x) ""
++#endif
+ 
+ /*
+  * Maximum size of data to buffer per connection direction before
+-- 
+2.35.1
+

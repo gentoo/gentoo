@@ -25,4 +25,7 @@
 		<flag name="statsd">Enable statsd integration</flag>
 		<flag name="unbound">Enable improved DNS core (SRV, NAPTR) by use of libunbound</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">asterisk/asterisk</remote-id>
+	</upstream>
 </pkgmetadata>

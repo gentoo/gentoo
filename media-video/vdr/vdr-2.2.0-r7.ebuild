@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,11 +28,11 @@ SRC_URI="ftp://ftp.tvdr.de/vdr/${MY_P}.tar.bz2
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 IUSE="bidi debug keyboard html systemd vanilla ${EXT_PATCH_FLAGS} ${EXT_PATCH_FLAGS_RENAMED}"
 
 COMMON_DEPEND="
-	virtual/jpeg:*
+	media-libs/libjpeg-turbo
 	sys-libs/libcap
 	>=media-libs/fontconfig-2.4.2
 	>=media-libs/freetype-2"
@@ -44,7 +44,8 @@ RDEPEND="${COMMON_DEPEND}
 	media-fonts/corefonts
 	bidi? ( dev-libs/fribidi )
 	systemd? ( sys-apps/systemd )"
-BDEPEND="sys-devel/gettext"
+BDEPEND="sys-devel/gettext
+	virtual/pkgconfig"
 
 CONF_DIR="/etc/vdr"
 CAP_FILE="${S}/capabilities.sh"
@@ -74,7 +75,7 @@ enable_patch() {
 		# codesnippet to bring the extpng defines into the vdr.pc CXXFLAGS CFLAGS
 		echo "-DUSE_${ARG_UPPER}" >> "${T}"/defines.tmp || die "cannot write to defines.tmp"
 		cat "${T}"/defines.tmp | tr \\\012 ' '  > "${T}"/defines.IUSE || die "cannot write to defines.tmp"
-		export DEFINES_IUSE=$( cat ${T}/defines.IUSE )
+		export DEFINES_IUSE=$( cat "${T}"/defines.IUSE )
 	done
 }
 
@@ -94,7 +95,7 @@ extensions_all_defines() {
 }
 
 lang_po() {
-	LING_PO=$( ls ${S}/po | sed -e "s:.po::g" | cut -d_ -f1 | tr \\\012 ' ' )
+	LING_PO=$( ls "${S}"/po | sed -e "s:.po::g" | cut -d_ -f1 | tr \\\012 ' ' )
 }
 
 src_configure() {
@@ -212,9 +213,9 @@ src_prepare() {
 		eend $? "make depend failed"
 
 		eapply "${FILESDIR}/${P}_gcc7extpng.patch"
-		eapply "${FILESDIR}/${P}_gcc11.patch"
 	fi
 
+	eapply "${FILESDIR}/${P}_gcc11.patch"
 	eapply "${FILESDIR}/${P}_gentoo.patch"
 	eapply "${FILESDIR}/${P}_unsignedtosigned.patch"
 	eapply "${FILESDIR}/${P}_glibc-2.24.patch"

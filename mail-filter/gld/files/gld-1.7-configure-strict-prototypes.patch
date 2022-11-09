@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/870487
+--- a/configure
++++ b/configure
+@@ -719,7 +719,7 @@ cat > conftest.$ac_ext << EOF
+ #line 720 "configure"
+ #include "confdefs.h"
+ 
+-main(){return(0);}
++int main(){return(0);}
+ EOF
+ if { (eval echo configure:725: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   ac_cv_prog_cc_works=yes

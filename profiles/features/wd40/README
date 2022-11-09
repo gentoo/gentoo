@@ -1,0 +1,3 @@
+This is a common profile for architectures and subarchitectures that do not
+support Rust (do not have a working virtual/rust).  It serves as a common place
+to mask the packages requiring Rust and the USE flags pulling them.

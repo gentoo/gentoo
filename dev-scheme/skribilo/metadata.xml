@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-
 <pkgmetadata>
   <maintainer type="project">
     <email>scheme@gentoo.org</email>
@@ -18,4 +17,7 @@
     conventions used in emails, Usenet and text.
     Lastly, Skribilo provides Guile Scheme APIs.
   </longdescription>
+  <upstream>
+    <remote-id type="savannah-nongnu">skribilo</remote-id>
+  </upstream>
 </pkgmetadata>

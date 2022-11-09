@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop multilib systemd toolchain-funcs
+inherit desktop systemd toolchain-funcs
 
 MY_P="${P/_/-}"
 
@@ -16,7 +16,7 @@ else
 	SRC_URI="http://gkrellm.srcbox.net/${MY_P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="2"
 IUSE="gnutls hddtemp lm-sensors nls ntlm ssl X"
 

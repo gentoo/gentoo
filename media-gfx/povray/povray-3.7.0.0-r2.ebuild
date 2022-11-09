@@ -3,10 +3,10 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic versionator virtualx
+inherit autotools eapi7-ver flag-o-matic virtualx
 
-POVRAY_MAJOR_VER=$(get_version_component_range 1-3)
-POVRAY_MINOR_VER=$(get_version_component_range 4)
+POVRAY_MAJOR_VER=$(ver_cut 1-3)
+POVRAY_MINOR_VER=$(ver_cut 4)
 if [ -n "$POVRAY_MINOR_VER" ]; then
 	POVRAY_MINOR_VER=${POVRAY_MINOR_VER/rc/RC}
 	MY_PV="${POVRAY_MAJOR_VER}.${POVRAY_MINOR_VER}"
@@ -25,7 +25,7 @@ KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux 
 IUSE="debug +io-restrictions tiff X"
 
 DEPEND="
-	>=dev-libs/boost-1.50.0:=[threads(+)]
+	dev-libs/boost:=
 	media-libs/libpng:0
 	sys-libs/zlib
 	virtual/jpeg:0
@@ -70,8 +70,8 @@ src_prepare() {
 		-e 's:${povdatadir}/$PACKAGE-$VERSION_BASE:${povdatadir}/'${PN}':g' \
 		-e 's:${povdatadir}/doc/$PACKAGE-$VERSION_BASE:${povdatadir}/doc/'${PF}':g' \
 		-e 's:BOOST_THREAD_LIBS $LIBS:BOOST_THREAD_LIBS $LIBS -lboost_date_time:g' \
-		-e 's:"/usr/include":"'${EPREFIX}'/usr/include":' \
-		-e 's:"/usr/lib":"'${EPREFIX}'/usr/'$(get_libdir)'":' \
+		-e "s:\"/usr/include\":\"${EPREFIX}/usr/include\":" \
+		-e "s:\"/usr/lib\":\"${EPREFIX}/usr/$(get_libdir)\":" \
 		-i configure.ac || die
 
 	sed \
@@ -99,7 +99,7 @@ src_configure() {
 	# but the code compiles using incorrect [default] paths
 	# (based on /usr/local...), so povray will not find the system
 	# config files without the following fix:
-	append-cppflags -DPOVLIBDIR=\\\"${EROOT}usr/share/${PN}\\\" -DPOVCONFDIR=\\\"${EROOT}etc/${PN}\\\"
+	append-cppflags -DPOVLIBDIR=\\\""${EROOT}"usr/share/${PN}\\\" -DPOVCONFDIR=\\\""${EROOT}"etc/${PN}\\\"
 
 	# TODO: Restore OpenEXR if upstream start to support OpenEXR 3/imath
 	econf \

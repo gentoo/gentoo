@@ -13,7 +13,7 @@ elif [[ ${PV} = *_p* ]]; then
 	MY_PN="vde-2"
 	COMMIT="c7b36a57831a9067c8619c3e17a03e595623b3eb"
 	SRC_URI="https://github.com/virtualsquare/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~loong ~ppc ppc64 ~riscv x86"
 
 	S="${WORKDIR}/${MY_PN}-${COMMIT}"
 else

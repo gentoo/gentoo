@@ -1,7 +1,7 @@
 https://github.com/google/mozc/issues/490
 
---- /src/gyp/defines.gypi
-+++ /src/gyp/defines.gypi
+--- a/src/gyp/defines.gypi
++++ b/src/gyp/defines.gypi
 @@ -71,6 +71,10 @@
      # use_system_gtest represents if system version or bundled version
      # of gtest library is used.
@@ -13,8 +13,8 @@ https://github.com/google/mozc/issues/490
    },
    'target_defaults': {
      'defines': [
---- /src/net/jsoncpp.gyp
-+++ /src/net/jsoncpp.gyp
+--- a/src/net/jsoncpp.gyp
++++ b/src/net/jsoncpp.gyp
 @@ -31,32 +31,60 @@
    'targets': [
      {
@@ -101,8 +101,8 @@ https://github.com/google/mozc/issues/490
      },
    ],
  }
---- /src/net/jsoncpp.h
-+++ /src/net/jsoncpp.h
+--- a/src/net/jsoncpp.h
++++ b/src/net/jsoncpp.h
 @@ -35,7 +35,11 @@
  // Mozc basically disables C++ exception.
  #define JSON_USE_EXCEPTION 0

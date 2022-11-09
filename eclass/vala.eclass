@@ -25,8 +25,8 @@ _VALA_ECLASS=1
 
 # @ECLASS_VARIABLE: VALA_MIN_API_VERSION
 # @DESCRIPTION:
-# Minimum vala API version (e.g. 0.50).
-VALA_MIN_API_VERSION=${VALA_MIN_API_VERSION:-0.50}
+# Minimum vala API version (e.g. 0.56).
+VALA_MIN_API_VERSION=${VALA_MIN_API_VERSION:-0.56}
 
 # @ECLASS_VARIABLE: VALA_MAX_API_VERSION
 # @DESCRIPTION:
@@ -49,11 +49,10 @@ vala_api_versions() {
 	local minimal_supported_minor_version minor_version
 
 	# Dependency atoms are not generated for Vala versions older than 0.${minimal_supported_minor_version}.
-	minimal_supported_minor_version="46"
+	minimal_supported_minor_version="56"
 
 	for ((minor_version = ${VALA_MAX_API_VERSION#*.}; minor_version >= ${VALA_MIN_API_VERSION#*.}; minor_version = minor_version - 2)); do
-		# 0.42 is EOL and removed from tree; remove special case once minimal_support_minor_version >= 44
-		if ((minor_version >= minimal_supported_minor_version)) && ((minor_version != 42)); then
+		if ((minor_version >= minimal_supported_minor_version)); then
 			echo "0.${minor_version}"
 		fi
 	done

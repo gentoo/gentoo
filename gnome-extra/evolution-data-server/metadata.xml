@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<use>
-		<flag name="berkdb"><pkg>sys-libs/db</pkg> support needed to migrate old (pre-3.13 evolution versions) addressbook data</flag>
-		<flag name="gnome-online-accounts">Enable <pkg>net-libs/gnome-online-accounts</pkg> based Google authentication support</flag>
-		<flag name="oauth">Enable internal OAuth2 authentication support for Google and Outlook.com.
-			If gnome-online-accounts is enabled and used, this is not necessary,
-			but both can be supported at the same time with different setup at runtime</flag>
-		<flag name="weather">Enable optional weather calendar support</flag>
-	</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="berkdb"><pkg>sys-libs/db</pkg> support needed to migrate old (pre-3.13 evolution versions) addressbook data</flag>
+    <flag name="gnome-online-accounts">Enable <pkg>net-libs/gnome-online-accounts</pkg> based Google authentication support</flag>
+    <flag name="oauth">Enable internal OAuth2 authentication support for Google and Outlook.com. If gnome-online-accounts is enabled and used, this is not necessary, but both can be supported at the same time with different setup at runtime</flag>
+    <flag name="weather">Enable optional weather calendar support</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/evolution-data-server</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -4,14 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
 DESCRIPTION="HTTP/2 framing layer for Python"
-HOMEPAGE="https://python-hyper.org/projects/hyperframe/en/latest/
+HOMEPAGE="
+	https://python-hyper.org/projects/hyperframe/en/latest/
 	https://pypi.org/project/hyperframe/
-	https://github.com/python-hyper/hyperframe/"
+	https://github.com/python-hyper/hyperframe/
+"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

@@ -1,0 +1,80 @@
+https://marc.info/?l=linux-cifs&m=165604639613381&w=2
+
+From c267ecf6a1c2152e640897d30cc0e8f637a8ef76 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 24 Jun 2022 05:25:23 +0100
+Subject: [PATCH 1/2] getcifsacl, setcifsacl: add missing <linux/limits.h>
+ include for XATTR_SIZE_MAX
+
+Needed to build on musl. It only works on glibc because of transitive includes
+(which could break in future).
+
+Example failure:
+```
+getcifsacl.c: In function 'getcifsacl':
+getcifsacl.c:429:24: error: 'XATTR_SIZE_MAX' undeclared (first use in this function)
+  429 |         if (bufsize >= XATTR_SIZE_MAX) {
+      |                        ^~~~~~~~~~~~~~
+```
+
+Bug: https://bugs.gentoo.org/842195
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/getcifsacl.c
++++ b/getcifsacl.c
+@@ -34,6 +34,7 @@
+ #include <errno.h>
+ #include <limits.h>
+ #include <ctype.h>
++#include <linux/limits.h>
+ #include <sys/xattr.h>
+ #include "cifsacl.h"
+ #include "idmap_plugin.h"
+--- a/setcifsacl.c
++++ b/setcifsacl.c
+@@ -48,6 +48,7 @@
+ #include <errno.h>
+ #include <limits.h>
+ #include <ctype.h>
++#include <linux/limits.h>
+ #include <sys/xattr.h>
+ 
+ #include "cifsacl.h"
+From d1a36cc4caa541d1f0f9a3426a5202b680cf7ff8 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 24 Jun 2022 05:26:54 +0100
+Subject: [PATCH 2/2] getcifsacl, setcifsacl: add missing <endian.h> include
+ for le32toh
+
+Needed to fix build on musl libc. It only works by chance on glibc
+because of transitive includes (which could break at any time).
+
+Example failure:
+```
+getcifsacl.c: In function 'print_ace':
+getcifsacl.c:284:16: warning: implicit declaration of function 'le16toh' [-Wimplicit-function-declaration]
+  284 |         size = le16toh(pace->size);
+      |                ^~~~~~~
+```
+
+Bug: https://bugs.gentoo.org/842195
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/getcifsacl.c
++++ b/getcifsacl.c
+@@ -23,6 +23,7 @@
+ #include "config.h"
+ #endif /* HAVE_CONFIG_H */
+ 
++#include <endian.h>
+ #include <string.h>
+ #include <getopt.h>
+ #include <stdint.h>
+--- a/setcifsacl.c
++++ b/setcifsacl.c
+@@ -38,6 +38,7 @@
+ #include "config.h"
+ #endif /* HAVE_CONFIG_H */
+ 
++#include <endian.h>
+ #include <string.h>
+ #include <getopt.h>
+ #include <stdint.h>

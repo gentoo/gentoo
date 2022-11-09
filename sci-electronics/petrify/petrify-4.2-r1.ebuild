@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Synthesize Petri nets into asynchronous circuits"
 HOMEPAGE="http://www.lsi.upc.edu/~jordicf/petrify/"
-SRC_URI="http://www.lsi.upc.edu/~jordicf/petrify/distrib/petrify-4.2-linux.tgz"
+SRC_URI="http://www.lsi.upc.edu/~jordicf/petrify/distrib/${P}-linux.tgz"
 S="${WORKDIR}"/${PN}
 
 LICENSE="Old-MIT"

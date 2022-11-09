@@ -7,10 +7,11 @@
   <maintainer type="person">
     <email>prometheanfire@gentoo.org</email>
   </maintainer>
-  <longdescription>This package really just provides acpidump and associated tools
-for extracting ACPI tables to edit/reload buggy BIOS tables (works with iasl). 
-Useful for all ACPI-based systems (not just mobile/laptop systems).
-</longdescription>
+  <longdescription>
+  This package really just provides acpidump and associated tools
+  for extracting ACPI tables to edit/reload buggy BIOS tables (works with iasl).
+  Useful for all ACPI-based systems (not just mobile/laptop systems).
+  </longdescription>
   <upstream>
     <remote-id type="github">anyc/pmtools</remote-id>
   </upstream>

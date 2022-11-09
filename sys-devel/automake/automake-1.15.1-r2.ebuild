@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ SLOT="${PV:0:4}"
 IUSE=""
 RESTRICT="test"
 
-RDEPEND="dev-lang/perl
+RDEPEND=">=dev-lang/perl-5.6
 	>=sys-devel/automake-wrapper-10
 	>=sys-devel/autoconf-2.69:*
 	sys-devel/gnuconfig"

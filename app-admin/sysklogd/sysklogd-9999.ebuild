@@ -1,14 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Standard log daemons"
 HOMEPAGE="https://troglobit.com/sysklogd.html https://github.com/troglobit/sysklogd"
 
-if [[ "${PV}" == *9999 ]] ; then
+if [[ ${PV} == *9999 ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/troglobit/sysklogd.git"
 else
@@ -18,7 +18,8 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="logger logrotate systemd"
+IUSE="logger logrotate"
+# Needs network access
 RESTRICT="test"
 
 DEPEND="
@@ -27,28 +28,30 @@ DEPEND="
 		!>=sys-apps/util-linux-2.34-r3[logger]
 	)
 "
-RDEPEND="${DEPEND}
-	logrotate? ( app-admin/logrotate )"
+RDEPEND="
+	${DEPEND}
+	logrotate? ( app-admin/logrotate )
+"
 
 DOCS=( ChangeLog.md README.md )
 
-pkg_setup() {
-	append-lfs-flags
-	tc-export CC
-}
-
 src_prepare() {
 	default
-	[[ "${PV}" == *9999 ]] && eautoreconf
+
+	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 src_configure() {
+	append-lfs-flags
+	tc-export CC
+
 	local myeconfargs=(
 		--disable-static
 		--runstatedir="${EPREFIX}"/run
+		--with-systemd=$(systemd_get_systemunitdir)
 		$(use_with logger)
-		$(use_with systemd systemd $(systemd_get_systemunitdir))
 	)
+
 	econf "${myeconfargs[@]}"
 }
 
@@ -77,6 +80,7 @@ pkg_postinst() {
 		elog "functionality that does no longer require a running cron daemon."
 		elog "So we no longer install any log rotation cron files for sysklogd."
 	fi
+
 	if [[ -n ${REPLACING_VERSIONS} ]] && ver_test ${REPLACING_VERSIONS} -lt 2.1 ; then
 		elog "Starting with version 2.1 sysklogd no longer provides klogd."
 		elog "syslogd now also logs kernel messages."

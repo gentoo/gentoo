@@ -3,14 +3,14 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7,8,9,10} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 PYTHON_REQ_USE="xml(+),sqlite?"
 DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 linux-info prefix
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/layman.git"
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/layman.git"
 	inherit git-r3
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -25,9 +25,7 @@ SLOT="0"
 IUSE="cvs darcs +git gpg g-sorcery mercurial sqlite squashfs subversion sync-plugin-portage test"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( dev-vcs/subversion )
-	"
-
+BDEPEND="test? ( dev-vcs/subversion )"
 RDEPEND="
 	cvs? ( dev-vcs/cvs )
 	darcs? ( dev-vcs/darcs )
@@ -39,7 +37,11 @@ RDEPEND="
 	sync-plugin-portage? ( >=sys-apps/portage-2.2.16[${PYTHON_USEDEP}] )
 	!sync-plugin-portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
 	>=dev-python/ssl-fetch-0.4[${PYTHON_USEDEP}]
-	"
+"
+
+if [[ ${PV} == *9999 ]]; then
+	BDEPEND+=" app-text/asciidoc"
+fi
 
 layman_check_kernel_config() {
 	local CONFIG_CHECK
@@ -66,6 +68,14 @@ python_test() {
 	suite=layman/tests/external.py
 	PYTHONPATH="." "${PYTHON}" ${suite} || die "test suite '${suite}' failed"
 	unset suite
+}
+
+python_compile_all() {
+	# Generate man page. only required for 9999
+	if [[ ${PV} == *9999 ]] ; then
+		# override MAKEOPTS to prevent build failure
+		emake -j1 -C doc
+	fi
 }
 
 python_install_all() {

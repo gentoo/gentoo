@@ -78,10 +78,10 @@ mozconfig_use_with() {
 
 moz_pkgsetup() {
 	# Ensure we use C locale when building
-	export LANG="C"
-	export LC_ALL="C"
-	export LC_MESSAGES="C"
-	export LC_CTYPE="C"
+	export LANG="C.UTF-8"
+	export LC_ALL="C.UTF-8"
+	export LC_MESSAGES="C.UTF-8"
+	export LC_CTYPE="C.UTF-8"
 
 	# Ensure we use correct toolchain
 	export HOST_CC="$(tc-getBUILD_CC)"
@@ -194,10 +194,6 @@ mozconfig_init() {
 
 	# Strip optimization so it does not end up in compile string
 	filter-flags '-O*'
-
-	if is-flagq '-g*' ; then
-		mozconfig_annotate 'elf-hack broken with -g* flags' --disable-elf-hack
-	fi
 
 	# Strip over-aggressive CFLAGS
 	use custom-cflags || strip-flags

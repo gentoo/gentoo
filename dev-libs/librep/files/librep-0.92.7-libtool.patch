@@ -1,0 +1,47 @@
+https://github.com/SawfishWM/librep/commit/2c064d70e25137915ceaef616c2be5c8bbcc42da
+
+From 2c064d70e25137915ceaef616c2be5c8bbcc42da Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 19 May 2021 13:19:49 -0700
+Subject: [PATCH] build: Respect $(LIBTOOL)
+
+downstream issue: https://bugs.gentoo.org/790812
+
+Signed-off-by: orbea <orbea@riseup.net>
+--- a/Makedefs.in
++++ b/Makedefs.in
+@@ -83,7 +83,6 @@ COMPILE_ENV = REPLISPDIR=$(top_builddir)/lisp \
+ 	      REPDOCFILE=$(top_builddir)/doc-strings
+ 
+ include $(top_srcdir)/rules.mk
+-rep_LIBTOOL=@LIBTOOL@
+ 
+ # Rule for ``normal'' C objects
+ %.o : %.c
+--- a/rules.mk.in
++++ b/rules.mk.in
+@@ -3,19 +3,18 @@
+ repcommonexecdir?=$(shell pkg-config --variable=repcommonexecdir librep)
+ rpath_repcommonexecdir:=$(repcommonexecdir)
+ 
+-rep_LIBTOOL:=$(repcommonexecdir)/libtool --tag CC
+ rep_INSTALL_ALIASES:=$(repcommonexecdir)/install-aliases
+ 
+ # use this like:
+ # foo.la : foo.lo bar.lo
+ #	$(rep_DL_LD) link-opts...
+ 
+-rep_DL_LD=$(rep_LIBTOOL) --mode=link --tag=CC $(CC) -avoid-version -module -rpath $(rpath_repcommonexecdir)
++rep_DL_LD=$(LIBTOOL) --mode=link --tag=CC $(CC) -avoid-version -module -rpath $(rpath_repcommonexecdir)
+ 
+-rep_DL_INSTALL=$(rep_LIBTOOL) --mode=install $(INSTALL)
+-rep_DL_UNINSTALL=$(rep_LIBTOOL) --mode=uninstall rm
++rep_DL_INSTALL=$(LIBTOOL) --mode=install $(INSTALL)
++rep_DL_UNINSTALL=$(LIBTOOL) --mode=uninstall rm
+ 
+ # Rule for libtool controlled C objects
+ %.lo : %.c
+-	$(rep_LIBTOOL) --mode=compile --tag=CC $(CC) -c $(CPPFLAGS) $(CFLAGS) $<
++	$(LIBTOOL) --mode=compile --tag=CC $(CC) -c $(CPPFLAGS) $(CFLAGS) $<
+ 
+

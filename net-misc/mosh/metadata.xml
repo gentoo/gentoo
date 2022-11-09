@@ -9,8 +9,9 @@
 		<flag name="client">Build network client</flag>
 		<flag name="examples">Include example scripts</flag>
 		<flag name="mosh-hardening">Enable compiler and linker options to frustrate memory corruption exploits</flag>
+		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> for some cryptographic functions instead of <pkg>dev-libs/openssl</pkg>. With Nettle, some of mosh's own code is used for OCB.</flag>
 		<flag name="server">Build network server</flag>
-		<flag name="ufw">Install net-firewall/ufw rule set</flag>
+		<flag name="ufw">Install <pkg>net-firewall/ufw</pkg> rule set</flag>
 		<flag name="utempter">Include libutempter support</flag>
 	</use>
 	<longdescription>
@@ -20,6 +21,7 @@
 		- intelligent local echo and line editing to reduce the effects of "network lag" on high-latency connections.
 	</longdescription>
 	<upstream>
-		<bugs-to>https://github.com/keithw/mosh/issues</bugs-to>
+		<bugs-to>https://github.com/mobile-shell/mosh/issues</bugs-to>
+		<remote-id type="github">mobile-shell/mosh</remote-id>
 	</upstream>
 </pkgmetadata>

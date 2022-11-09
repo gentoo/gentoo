@@ -1,0 +1,24 @@
+https://github.com/abseil/abseil-cpp/commit/36a4b073f1e7e02ed7d1ac140767e36f82f09b7c
+
+From 36a4b073f1e7e02ed7d1ac140767e36f82f09b7c Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Fri, 27 May 2022 22:27:58 +0100
+Subject: [PATCH] absl/strings/internal/str_format/extension.h: add missing
+ <stdint.h> include
+
+Without the change absl-cpp build fails on this week's gcc-13 snapshot as:
+
+    /build/abseil-cpp/absl/strings/internal/str_format/extension.h:34:33: error: found ':' in nested-name-specifier, expected '::'
+       34 | enum class FormatConversionChar : uint8_t;
+          |                                 ^
+          |                                 ::
+--- a/absl/strings/internal/str_format/extension.h
++++ b/absl/strings/internal/str_format/extension.h
+@@ -17,6 +17,7 @@
+ #define ABSL_STRINGS_INTERNAL_STR_FORMAT_EXTENSION_H_
+ 
+ #include <limits.h>
++#include <stdint.h>
+ 
+ #include <cstddef>
+ #include <cstring>

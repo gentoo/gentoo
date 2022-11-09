@@ -14,7 +14,7 @@ SRC_URI="https://github.com/tomerfiliba-org/${PN}/archive/${PV}.tar.gz -> ${P}.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # USE flags gdb, numpy are used *only* to run tests depending on these packages
 IUSE="test numpy gdb"

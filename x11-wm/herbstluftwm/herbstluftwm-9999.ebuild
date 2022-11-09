@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_OPTIONAL=1
 
-inherit cmake distutils-r1 toolchain-funcs
+inherit cmake distutils-r1
 
 DESCRIPTION="A manual tiling window manager for X"
 HOMEPAGE="https://herbstluftwm.org/"
@@ -26,12 +26,13 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMON_DEPEND="
-	media-libs/freetype
 	x11-libs/libX11
 	x11-libs/libXext
+	x11-libs/libXfixes
 	x11-libs/libXft
 	x11-libs/libXinerama
 	x11-libs/libXrandr
+	x11-libs/libXrender
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -70,6 +71,11 @@ src_prepare() {
 		-e '/^install.*LICENSEDIR/d' \
 		-e '/set(DOCDIR / s#.*#set(DOCDIR ${CMAKE_INSTALL_DOCDIR})#' \
 		CMakeLists.txt || die
+
+	# Do not install MAN pages, we use doman in src_install() for that.
+	sed -i '/MANDIR/d' \
+		doc/CMakeLists.txt || die
+
 	cmake_src_prepare
 
 	if use python; then
@@ -123,7 +129,7 @@ src_install() {
 			herbstluftwm-tutorial.7
 		)
 		for man_page in "${man_pages[@]}"; do
-			doman "doc/${man_page}"
+			doman "${BUILD_DIR}/doc/${man_page}"
 		done
 	fi
 }

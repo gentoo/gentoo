@@ -1,0 +1,12 @@
+This fixes compile error upon gcc-12 libstdc++
+index 1cfb2a72c..0f4feb406 100644
+--- a/test/sequences.cpp
++++ b/test/sequences.cpp
+@@ -25,6 +25,7 @@
+  *******************************************************************************/
+ #include "test.hpp"
+ #include <miopen/sequences.hpp>
++#include <array>
+ 
+ namespace miopen {
+ namespace seq {

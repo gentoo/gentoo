@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-VERSION_${PV}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="doc test"
 
 # tests are brittle; they all pass when stars align, bug 727666
@@ -29,7 +29,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
-BDEPEND="doc? ( app-doc/doxygen[dot] )"
+BDEPEND="
+	doc? (
+		app-doc/doxygen[dot]
+		dev-qt/qthelp:5
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-8.60-buildsystem.patch"

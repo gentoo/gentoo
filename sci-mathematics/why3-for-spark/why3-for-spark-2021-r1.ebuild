@@ -10,7 +10,7 @@ ID=dd74ae7ecfd7d56aff7b17cee7a35559384a600f
 MYP=why3-${PV}-20210519-19ADF-src
 
 DESCRIPTION="Platform for deductive program verification"
-HOMEPAGE="http://why3.lri.fr/"
+HOMEPAGE="https://why3.lri.fr/"
 SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
@@ -56,19 +56,9 @@ PATCHES=(
 )
 
 QA_FLAGS_IGNORED=(
-	/usr/lib64/why3/commands/why3shell.cmxs
-	/usr/lib64/why3/commands/why3extract.cmxs
-	/usr/lib64/why3/commands/why3execute.cmxs
-	/usr/lib64/why3/commands/why3prove.cmxs
-	/usr/lib64/why3/commands/why3wc.cmxs
-	/usr/lib64/why3/commands/why3doc.cmxs
-	/usr/lib64/why3/commands/why3replay.cmxs
-	/usr/lib64/why3/commands/why3webserver.cmxs
-	/usr/lib64/why3/commands/why3pp.cmxs
-	/usr/lib64/why3/commands/why3show.cmxs
-	/usr/lib64/why3/plugins/'.*'.cmxs
-	/usr/lib64/ocaml/why3/why3.cmxs
-	/usr/lib64/ocaml/why3/why3extract.cmxs
+	'/usr/lib.*/why3/commands/.*cmxs'
+	'/usr/lib.*/why3/plugins/.*cmxs'
+	'/usr/lib.*/ocaml/why3/.*cmxs'
 	/usr/bin/why3
 	/usr/bin/why3config.cmxs
 	/usr/bin/why3session.cmxs

@@ -22,7 +22,7 @@ SLOT="0"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
 IUSE_VIDEO_CAPTURE_DEVICES="v4l ivtv ieee1394 hdpvr hdhomerun vbox ceton"
-IUSE="alsa altivec asi autostart bluray cdda cdr cec debug dvd dvb egl exif fftw jack java
+IUSE="alsa asi autostart bluray cdda cdr cec cpu_flags_ppc_altivec debug dvd dvb egl exif fftw jack java
 	+lame lcd libass lirc nvdec +opengl oss perl pulseaudio python raw systemd vaapi vdpau vpx
 	+wrapper x264 x265 +xml xmltv +xvid +X zeroconf
 	${IUSE_INPUT_DEVICES} ${IUSE_VIDEO_CAPTURE_DEVICES}"
@@ -88,7 +88,7 @@ RDEPEND="
 	opengl? ( dev-qt/qtopengl:5 )
 	pulseaudio? ( media-sound/pulseaudio )
 	systemd? ( sys-apps/systemd:= )
-	vaapi? ( x11-libs/libva:=[opengl] )
+	vaapi? ( media-libs/libva:=[opengl] )
 	vdpau? ( x11-libs/libvdpau )
 	vpx? ( media-libs/libvpx:= )
 	x264? (	media-libs/x264:= )
@@ -256,7 +256,7 @@ src_configure() {
 		myconf+=(--cpu="${i}")
 		break
 	done
-	myconf+=($(use_enable altivec))
+	myconf+=($(use_enable cpu_flags_ppc_altivec altivec))
 
 	# Sound Output Support
 	myconf+=(

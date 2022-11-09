@@ -7,6 +7,5 @@
 </maintainer>
 <use>
 	<flag name="bdf">Install BDF fonts in addition to PCF</flag>
-	<flag name="non-free">Install non-free Tibetan fonts</flag>
 </use>
 </pkgmetadata>

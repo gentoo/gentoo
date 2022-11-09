@@ -18,5 +18,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">lsb</remote-id>
+		<remote-id type="github">thkukuk/lsb-release_os-release</remote-id>
 	</upstream>
 </pkgmetadata>

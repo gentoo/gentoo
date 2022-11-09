@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
+		<name>Florian Schmaus</name>
+		<email>flow@gentoo.org</email>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">axboe/liburing</remote-id>

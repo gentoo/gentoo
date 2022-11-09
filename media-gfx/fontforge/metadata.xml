@@ -16,7 +16,7 @@
 		<flag name="woff2">Enable support for WOFF2 format</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">troydhanson/uthash</remote-id>
+		<remote-id type="github">fontforge/fontforge</remote-id>
 		<remote-id type="sourceforge">fontforge</remote-id>
 	</upstream>
 </pkgmetadata>

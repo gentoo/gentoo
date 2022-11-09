@@ -1,0 +1,12 @@
+--- a/src/mods/rogue/g_local.h
++++ b/src/mods/rogue/g_local.h
+@@ -26,9 +26,6 @@
+ //==================================================================
+ 
+ #ifndef _WIN32
+-#ifdef __linux__
+-#include <bits/nan.h>
+-#endif
+ #define min(a,b) ((a) < (b) ? (a) : (b))
+ #define max(a,b) ((a) > (b) ? (a) : (b))
+ #ifdef __sun__

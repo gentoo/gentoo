@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,10 +18,11 @@ IUSE="static-libs"
 # /usr/lib64/libply.la
 # /usr/lib64/libply.so
 RDEPEND="!sys-boot/plymouth"
+DEPEND="elibc_musl? ( sys-libs/queue-standalone )"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~BPF ~BPF_SYSCALL ~NET_CLS_BPF ~NET_ACT_BPF
-		~BPF_JIT ~HAVE_BPF_JIT ~BPF_EVENTS"
+		~BPF_JIT ~HAVE_EBPF_JIT ~BPF_EVENTS"
 
 	check_extra_config
 }
@@ -39,5 +40,6 @@ src_install() {
 
 	if ! use static-libs; then
 		find "${D}" -type f -name '*.a' -delete || die
+		find "${ED}" -name '*.la' -delete || die
 	fi
 }

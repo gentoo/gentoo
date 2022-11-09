@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription lang="en">
-		A tool in the form of a lighthearted game that
-		temporarily inhibits GNOME's default suspend on lid close behavior,
-		allowing the user to move his laptop with the lid closed without dropping
-		network connections.
-	</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    A tool in the form of a lighthearted game that
+    temporarily inhibits GNOME's default suspend on lid close behavior,
+    allowing the user to move his laptop with the lid closed without dropping
+    network connections.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/office-runner</remote-id>
+  </upstream>
 </pkgmetadata>

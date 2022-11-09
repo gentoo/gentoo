@@ -4,14 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
 DESCRIPTION="A pure-Python implementation of the HTTP/2 priority tree"
-HOMEPAGE="https://python-hyper.org/projects/priority/en/latest/
+HOMEPAGE="
+	https://python-hyper.org/projects/priority/en/latest/
 	https://github.com/python-hyper/priority/
-	https://pypi.org/project/priority/"
+	https://pypi.org/project/priority/
+"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

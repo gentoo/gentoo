@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake kde.org xdg
+inherit cmake xdg
 
 DESCRIPTION="Shutdown manager for desktop environments like KDE Plasma"
 HOMEPAGE="https://kshutdown.sourceforge.io"
@@ -14,11 +14,6 @@ SLOT="5"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="+kde"
 
-BDEPEND="
-	app-arch/unzip
-	sys-devel/gettext
-	kde? ( kde-frameworks/extra-cmake-modules:5 )
-"
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -45,10 +40,11 @@ RDEPEND="${DEPEND}
 		kde-frameworks/oxygen-icons:*
 	)
 "
-
-src_prepare() {
-	cmake_src_prepare
-}
+BDEPEND="
+	app-arch/unzip
+	sys-devel/gettext
+	kde? ( kde-frameworks/extra-cmake-modules:5 )
+"
 
 src_configure() {
 	local mycmakeargs=(

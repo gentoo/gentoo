@@ -1,0 +1,276 @@
+From c91010238967d6042f2fffd3dd00b436ba5a39f0 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Thu, 12 May 2022 22:41:54 -0700
+Subject: [PATCH] Upstream-PR: https://sourceforge.net/p/libsnet/patches/7/
+
+Restore missing parts from aclocal.m4
+
+* Uses pkg-config for libsasl, libssl and zlib
+* Restores CHECK_PROFILED
+* Removes broken legacy osx macros
+
+The legacy CHECK_SASL, CHECK_SSL and CHECK_ZLIB macros
+have problems with adding hardcoded -L linker directories
+to the LDFLAGS which is inappropriate on modern systems.
+Using pkg-config avoids this problem.
+
+When setting LIBTOOL in the environment to slibtool the
+profiled libraries will fail to build because of the ../
+prepended to the $(LIBTOOL) variable. This was expoed when
+building radmind which includes libsnet as a submodule.
+
+Gentoo Bug: https://bugs.gentoo.org/show_bug.cgi?id=779664
+---
+ libsnet/Makefile.in    | 29 +++++++++++++++--------------
+ libsnet/configure.ac   | 22 +++++++++++++++++-----
+ libsnet/m4/profiled.m4 | 16 ++++++++++++++++
+ 3 files changed, 48 insertions(+), 19 deletions(-)
+ create mode 100644 m4/profiled.m4
+
+diff --git a/libsnet/Makefile.in b/libsnet/Makefile.in
+index 8af7eaf..2c7932e 100644
+--- a/libsnet/Makefile.in
++++ b/libsnet/Makefile.in
+@@ -14,8 +14,9 @@ LOBJ = snet.lo
+ INCPATH=	@CPPFLAGS@ -I.
+ DEFS=		
+ OPTOPTS=	@OPTOPTS@
+-CFLAGS=		${DEFS} ${OPTOPTS} ${INCPATH} @CFLAGS@
+-LDFLAGS=	@LDFLAGS@
++CFLAGS= 	${DEFS} ${OPTOPTS} ${INCPATH} \
++			@sasl_CFLAGS@ @ssl_CFLAGS@ @zlib_CFLAGS@ @CFLAGS@
++LDFLAGS=	@LDFLAGS@ @sasl_LIBS@ @ssl_LIBS@ @zlib_LIBS@
+ PROFILED=	@PROFILED@
+ CC=		@CC@	
+ 
+@@ -31,31 +32,31 @@ DISTDIR=	../libsnet-${VERSION}
+ .SUFFIXES: .o .lo
+ 
+ .c.o:
+-	$(LIBTOOL) --mode=compile \
++	$(LIBTOOL) --mode=compile --tag=CC \
+ 	  $(CC) -c $(CFLAGS) $<
+ 	@if test x_$(PROFILED) = x_true ; then echo "building profiled $@" ; \
+-	  ( mkdir -p profiled; cd profiled ; ../$(LIBTOOL) --mode=compile \
++	  mkdir -p profiled; $(LIBTOOL) --mode=compile --tag=CC \
+ 	  $(CC) -c $(CFLAGS) -p -I.. -I$(srcdir) `if [ -f $< ]; then echo $<; \
+-	  else echo ../$<; fi` >/dev/null 2>&1 ) ; fi
++	  else echo ../$<; fi` >/dev/null 2>&1 ; fi
+ 
+ .c.lo:
+-	$(LIBTOOL) --mode=compile \
++	$(LIBTOOL) --mode=compile --tag=CC \
+ 	  $(CC) -c $(CFLAGS) $<
+ 	@if test x_$(PROFILED) = x_true ; then echo "building profiled $@" ; \
+-	  ( mkdir -p profiled; cd profiled ; ../$(LIBTOOL) --mode=compile \
++	  mkdir -p profiled; $(LIBTOOL) --mode=compile --tag=CC \
+ 	  $(CC) -c $(CFLAGS) -p -I.. -I$(srcdir) `if [ -f $< ]; then echo $<; \
+-	  else echo ../$<; fi` >/dev/null 2>&1 ) ; fi
++	  else echo ../$<; fi` >/dev/null 2>&1 ; fi
+ 
+ 
+ all:		libsnet.la
+ 
+ libsnet.la:	$(OBJ) $(LOBJ)
+-	$(LIBTOOL) --mode=link \
++	$(LIBTOOL) --mode=link --tag=CC \
+ 	  $(CC) -o libsnet.la $(LDFLAGS) $(LOBJ) -rpath $(libdir) -version-info 0:0:0
+ 	@if test x_$(PROFILED) = x_true ; then echo "building profiled $@" ; \
+-	  ( cd profiled ; ../$(LIBTOOL) --mode=link \
+-	  $(CC) -o libsnet_p.la $(LDFLAGS) $(LOBJ) -rpath $(libdir) \
+-	  -version-info 0:0:0 >/dev/null 2>&1 ) ; fi
++	  $(LIBTOOL) --mode=link --tag=CC \
++	  $(CC) -o profiled/libsnet_p.la $(LDFLAGS) $(LOBJ) -rpath $(libdir) \
++	  -version-info 0:0:0 >/dev/null 2>&1 ; fi
+ 
+ install:	all
+ 	mkdir -p $(libdir)
+@@ -67,8 +68,8 @@ install:	all
+ 	  $(INSTALL) -c -m 644 libsnet.la $(libdir)/libsnet.la
+ 	@if test x_$(PROFILED) = x_true ; then \
+ 	  echo "installing profiled libraries" ; \
+-	  ( cd profiled ; ../$(LIBTOOL) --mode=install \
+-	  $(INSTALL) -c -m 644 libsnet_p.la \
++	  $(LIBTOOL) --mode=install \
++	  $(INSTALL) -c -m 644 profiled/libsnet_p.la \
+ 	  $(libdir)/libsnet_p.la >/dev/null 2>&1 ) ; fi
+ 
+ clean:
+diff --git a/libsnet/configure.ac b/libsnet/configure.ac
+index df612d4..83f7e59 100644
+--- a/libsnet/configure.ac
++++ b/libsnet/configure.ac
+@@ -1,6 +1,7 @@
+ # Process this file with autoconf to produce a configure script.
+ AC_INIT(libsnet,VERSION,rsug@umich.edu) 
+ AC_CONFIG_HEADER(config.h)
++AC_CONFIG_MACRO_DIR([m4])
+ AC_PREREQ(2.52)
+ AC_COPYRIGHT([Copyright (c) 1995-2003 Regents of The University of Michigan.  All Rights Reserved.])
+ AC_CONFIG_SRCDIR([snet.c])
+@@ -10,15 +11,26 @@ AC_PROG_AWK
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ 
+-CHECK_ZLIB
++PKG_CHECK_MODULES([zlib], [zlib],
++    [AC_DEFINE([HAVE_ZLIB], [1], [zlib])],
++    [AC_MSG_WARN(zlib.pc not found, building without zlib support)])
++AC_SUBST([zlib_LIBS])
++AC_SUBST([zlib_CFLAGS])
+ 
+ # Checks for libraries.
+ if test \! x_$with_ssl = x_no; then
+-    AC_CHECK_LIB([ssl], [SSL_accept], , [CHECK_SSL])
+-    AC_CHECK_LIB([crypto], [SSLeay_version], , [CHECK_SSL])
++    PKG_CHECK_MODULES([ssl], [openssl],
++        [AC_DEFINE([HAVE_LIBSSL], [1], [libssl])],
++        [AC_MSG_WARN(openssl.pc not found, building without libssl support)])
++    AC_SUBST([ssl_LIBS])
++    AC_SUBST([ssl_CFLAGS])
+ fi
+-CHECK_SASL
+-CHECK_UNIVERSAL_BINARIES
++
++PKG_CHECK_MODULES([sasl], [libsasl2],
++    [AC_DEFINE([HAVE_LIBSASL], [1], [libsasl])],
++    [AC_MSG_WARN(libsasl2.pc not found, building without libsasl support)])
++AC_SUBST([sasl_LIBS])
++AC_SUBST([sasl_CFLAGS])
+ 
+ # Checks for header files.
+ #AC_HEADER_STDC
+diff --git a/libsnet/m4/profiled.m4 b/libsnet/m4/profiled.m4
+new file mode 100644
+index 0000000..88a421b
+--- /dev/null
++++ b/libsnet/m4/profiled.m4
+@@ -0,0 +1,16 @@
++AC_DEFUN([CHECK_PROFILED],
++[
++    # Allow user to control whether or not profiled libraries are built
++    AC_MSG_CHECKING(whether to build profiled libraries)
++    PROFILED=true
++    AC_ARG_ENABLE(profiled,
++      [  --enable-profiled       build profiled libsnet (default=yes)],
++      [test x_$enable_profiled = x_no && PROFILED=false]
++    )
++    AC_SUBST(PROFILED)
++    if test x_$PROFILED = x_true ; then
++      AC_MSG_RESULT(yes)
++    else
++      AC_MSG_RESULT(no)
++    fi
++])
+-- 
+2.35.1
+
+From 4ea29130382b5ae8b9cf3e3dc8962da764f65377 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Fri, 13 May 2022 13:41:49 -0700
+Subject: [PATCH 2/2] Add AC_ARG_ENABLE options for ssl, sasl and zlib
+
+---
+ configure.ac | 83 +++++++++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 66 insertions(+), 17 deletions(-)
+
+diff --git a/libsnet/configure.ac b/libsnet/configure.ac
+index 83f7e59..9cd16c7 100644
+--- a/libsnet/configure.ac
++++ b/libsnet/configure.ac
+@@ -11,26 +11,75 @@ AC_PROG_AWK
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ 
+-PKG_CHECK_MODULES([zlib], [zlib],
+-    [AC_DEFINE([HAVE_ZLIB], [1], [zlib])],
+-    [AC_MSG_WARN(zlib.pc not found, building without zlib support)])
+-AC_SUBST([zlib_LIBS])
+-AC_SUBST([zlib_CFLAGS])
++# Enable features
++AC_ARG_ENABLE([sasl],
++    AS_HELP_STRING([--enable-sasl], [Build with crypto_sasl @<:@default=yes@:>@]),
++    [AS_CASE(${enableval}, [yes], [], [no], [],
++        [AC_MSG_ERROR([bad value '${enableval}' for --enable-sasl])])],
++    [enable_sasl=check])
+ 
+-# Checks for libraries.
+-if test \! x_$with_ssl = x_no; then
+-    PKG_CHECK_MODULES([ssl], [openssl],
+-        [AC_DEFINE([HAVE_LIBSSL], [1], [libssl])],
+-        [AC_MSG_WARN(openssl.pc not found, building without libssl support)])
+-    AC_SUBST([ssl_LIBS])
+-    AC_SUBST([ssl_CFLAGS])
+-fi
++AC_ARG_ENABLE([ssl],
++    AS_HELP_STRING([--enable-ssl], [Build with openssl @<:@default=yes@:>@]),
++    [AS_CASE(${enableval}, [yes], [], [no], [],
++        [AC_MSG_ERROR([bad value '${enableval}' for --enable-ssl])])],
++    [enable_ssl=check])
+ 
+-PKG_CHECK_MODULES([sasl], [libsasl2],
+-    [AC_DEFINE([HAVE_LIBSASL], [1], [libsasl])],
+-    [AC_MSG_WARN(libsasl2.pc not found, building without libsasl support)])
+-AC_SUBST([sasl_LIBS])
++AC_ARG_ENABLE([zlib],
++    AS_HELP_STRING([--enable-zlib], [Build with zlib @<:@default=yes@:>@]),
++    [AS_CASE(${enableval}, [yes], [], [no], [],
++        [AC_MSG_ERROR([bad value '${enableval}' for --enable-zlib])])],
++    [enable_zlib=check])
++
++# Checks for crypto_sasl.
++AS_IF([test x$enable_sasl != xno],
++    [PKG_CHECK_MODULES([sasl], [libsasl2],
++        [AC_DEFINE([HAVE_LIBSASL], [1], [libsasl])],
++        [AS_IF([test x$enable_sasl != xyes],
++            [AC_MSG_WARN([cannot find libsasl2.pc, disabling libsasl support])],
++            [enable_sasl=error])
++        ])
++    ])
++
++AS_IF([test x$enable_sasl = xerror],
++    [AC_MSG_ERROR([cannot find libsasl2.pc and libsasl support requested])])
++
++AM_CONDITIONAL([ENABLE_LIBSASL], [test x$enable_sasl = xyes])
+ AC_SUBST([sasl_CFLAGS])
++AC_SUBST([sasl_LIBS])
++
++# Checks for openssl.
++AS_IF([test x$enable_ssl != xno],
++    [PKG_CHECK_MODULES([ssl], [openssl],
++        [AC_DEFINE([HAVE_LIBSSL], [1], [libssl])],
++        [AS_IF([test x$enable_ssl != xyes],
++            [AC_MSG_WARN([cannot find openssl.pc, disabling libssl support])],
++            [enable_ssl=error])
++        ])
++    ])
++
++AS_IF([test x$enable_ssl = xerror],
++    [AC_MSG_ERROR([cannot find openssl.pc and libssl support requested])])
++
++AM_CONDITIONAL([ENABLE_LIBSSL], [test x$enable_ssl = xyes])
++AC_SUBST([ssl_CFLAGS])
++AC_SUBST([ssl_LIBS])
++
++# Checks for zlib.
++AS_IF([test x$enable_zlib != xno],
++    [PKG_CHECK_MODULES([zlib], [zlib],
++        [AC_DEFINE([HAVE_ZLIB], [1], [zlib])],
++        [AS_IF([test x$enable_zlib != xyes],
++            [AC_MSG_WARN([cannot find zlib.pc, disabling zlib support])],
++	    [enable_zlib=error])
++        ])
++    ])
++
++AS_IF([test x$enable_zlib = xerror],
++    [AC_MSG_ERROR([cannot find zlib.pc and zlib support requested])])
++
++AM_CONDITIONAL([ENABLE_ZLIB], [test x$enable_zlib = xyes])
++AC_SUBST([zlib_CFLAGS])
++AC_SUBST([zlib_LIBS])
+ 
+ # Checks for header files.
+ #AC_HEADER_STDC
+-- 
+2.35.1
+

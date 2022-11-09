@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby25 ruby26 ruby27 ruby30"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC="yard"
@@ -53,6 +53,15 @@ all_ruby_prepare() {
 
 	# Avoid testing unpackaged adapters
 	rm spec/{gson,nsjsonserialization,jr_jackson,oj}_adapter_spec.rb || die
+
+	# Fix expectations confused by ruby30 kwargs
+	sed -e "/expect/ s/:foo => 'bar', :fizz => 'buzz'/{:foo => 'bar', :fizz => 'buzz'}/" \
+		-e "/expect/ s/:bar => :baz/{:bar => :baz}/" \
+		-i spec/shared/adapter.rb || die
+	sed -e '/expect/ s/:indent => "\\t"/{:indent => "\t"}/' \
+		-e '/expect/ s/:quirks_mode => false, :create_additions => false/{:quirks_mode => false, :create_additions => false}/' \
+		-i spec/shared/json_common_adapter.rb || die
+	sed -e "/expect/ s/:foo => 'bar'/{:foo => 'bar'}/" -i spec/multi_json_spec.rb || die
 }
 
 each_ruby_test() {

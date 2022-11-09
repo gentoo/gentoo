@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    demap.el adds a minimap that shows a zoomed out view of the active window's
+    buffer. You can toggle showing the minimap in a side window with
+    "demap-toggle". This package has a few advantages over other minimap
+    packages: support for detaching minimaps and having them on a different
+    frame then the active window; support for multiple minimap buffers, with
+    their own buffer local definitions on what buffers it can show and how to
+    show them; having the minimap on the side of the frame rather then on the
+    side of the active window by default.
+  </longdescription>
+  <upstream>
+    <changelog>https://gitlab.com/sawyerjgardner/demap.el/-/releases/</changelog>
+    <bugs-to>https://gitlab.com/sawyerjgardner/demap.el/-/issues/</bugs-to>
+    <remote-id type="gitlab">sawyerjgardner/demap.el</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -19,8 +19,7 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="sys-apps/texinfo"
 
-DOCS=( CONTRIBUTING.org README.md doc/{ivy-help.org,Changelog.org,ivy.org} )
-ELISP_REMOVE=".dir-locals.el"
+DOCS=( CONTRIBUTING.org README.md doc/{Changelog,ivy-help,ivy}.org )
 SITEFILE="50${PN}-gentoo.el"
 
 # Some tests are broken (but fixed on master as of 2022--04-10),
@@ -40,7 +39,6 @@ src_prepare() {
 
 src_compile() {
 	elisp-compile ${IVY_SOURCES[@]}
-
 	emake -C doc ivy.info
 }
 

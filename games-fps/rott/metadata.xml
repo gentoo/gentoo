@@ -6,19 +6,19 @@
     <name>Gentoo Games Project</name>
   </maintainer>
   <longdescription>
-THE STORY
+  THE STORY
 
-You are part of an elite group of operatives called HUNT (High-risk 
-United Nations Taskforce), and you must stop a maniac cult leader from 
-killing millions of people. While scouting a remote island, you are 
-suddenly surrounded by enemy troops with guns blaring. In the distance 
-you see your boat--your only chance to escape--explode into matchsticks. 
-In front of you is a huge fortress monastery, and your only chance to 
-stop the madness. You are e quipped with awesome, high-tech weaponry 
-like heat-seeking missiles, split missiles, and the Flamewall cannon, 
-which leaves a trail of charred skeletons in its wake. You'll also find 
-magical instruments and weapons so incredible they defy description.
-</longdescription>
+  You are part of an elite group of operatives called HUNT (High-risk
+  United Nations Taskforce), and you must stop a maniac cult leader from
+  killing millions of people. While scouting a remote island, you are
+  suddenly surrounded by enemy troops with guns blaring. In the distance
+  you see your boat--your only chance to escape--explode into matchsticks.
+  In front of you is a huge fortress monastery, and your only chance to
+  stop the madness. You are e quipped with awesome, high-tech weaponry
+  like heat-seeking missiles, split missiles, and the Flamewall cannon,
+  which leaves a trail of charred skeletons in its wake. You'll also find
+  magical instruments and weapons so incredible they defy description.
+  </longdescription>
   <use>
     <flag name="demo">Install the shareware version</flag>
   </use>

@@ -2,16 +2,19 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-	<email>prometheanfire@gentoo.org</email>
+		<email>prometheanfire@gentoo.org</email>
 	</maintainer>
 	<longdescription lang="en">
-A library for programmatically editing configuration files. Augeas parses
-configuration files into a tree structure, which it exposes through its
-public API. Changes made through the API are written back to the initially
-read files.
+	A library for programmatically editing configuration files. Augeas parses
+	configuration files into a tree structure, which it exposes through its
+	public API. Changes made through the API are written back to the initially
+	read files.
 
-The transformation works very hard to preserve comments and formatting
-details. It is controlled by ``lens'' definitions that describe the file
-format and the transformation into a tree.
-</longdescription>
+	The transformation works very hard to preserve comments and formatting
+	details. It is controlled by ``lens'' definitions that describe the file
+	format and the transformation into a tree.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">hercules-team/augeas</remote-id>
+	</upstream>
 </pkgmetadata>

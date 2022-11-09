@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,11 +16,11 @@ inherit myspell-r2
 
 DESCRIPTION="German (traditional orthography) dictionaries for myspell/hunspell"
 HOMEPAGE="http://extensions.libreoffice.org/extension-center/german-de-de-1901-old-spelling-dictionaries"
-SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/dict-de-de-1901-oldspell-2017-06-22.oxt"
+SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/dict-de-de-1901-oldspell-${PV:0:4}-${PV:4:2}-${PV:6:2}.oxt"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 
 src_prepare() {
 	default

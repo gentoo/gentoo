@@ -13,4 +13,8 @@
 		<flag name="bmff">Add support for the ISOBMFF format</flag>
 		<flag name="webready">Support reading metadata over the internet</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">Exiv2/exiv2</remote-id>
+		<remote-id type="cpe">cpe:/a:exiv2:exiv2</remote-id>
+	</upstream>
 </pkgmetadata>

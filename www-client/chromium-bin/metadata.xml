@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="suid">Install the SUID sandbox, which is only needed on CONFIG_USER_NS=n kernels.</flag>
-		<flag name="swiftshader">Install SwiftShader OpenGL libraries.</flag>
 		<flag name="widevine">Unsupported closed-source DRM capability (required by Netflix VOD).</flag>
 	</use>
 </pkgmetadata>

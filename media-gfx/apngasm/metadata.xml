@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="sourceforge">apngasm</remote-id>
+		<remote-id type="github">apngasm/apngasm</remote-id>
 	</upstream>
 </pkgmetadata>

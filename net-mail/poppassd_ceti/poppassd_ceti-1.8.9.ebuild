@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,7 +44,7 @@ Alternatively, a front end may be able to run it directly (if already
 root), or might use app-admin/sudo.  To use sudo, you'll need to configure
 /etc/sudoers with something similar to:
 
-    apache ALL=(ALL)       NOPASSWD: /usr/sbin/poppassd
+	apache ALL=(ALL) NOPASSWD: /usr/sbin/poppassd
 
 See also README.md.bz2 for related configuration and security
 considerations.

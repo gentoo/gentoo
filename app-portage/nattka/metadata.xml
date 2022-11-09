@@ -11,4 +11,8 @@
 			Process packages in depgraph order whenever possible.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">projg2/nattka</remote-id>
+		<remote-id type="pypi">nattka</remote-id>
+	</upstream>
 </pkgmetadata>

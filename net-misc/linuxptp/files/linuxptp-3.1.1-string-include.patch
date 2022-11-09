@@ -1,0 +1,21 @@
+https://cgit.openembedded.org/meta-openembedded/commit/?h=master-next&id=aec96f23775b946cf99c39e7274bcc8fdd4711ca
+https://sourceforge.net/p/linuxptp/mailman/message/37603438/
+
+From d49b4fb8063ecd89617587e5ea566cc9da9393ef Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Wed, 31 Aug 2022 19:09:18 -0700
+Subject: [PATCH] include string.h for strncpy()
+
+Upstream-Status: Pending
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+--- a/interface.c
++++ b/interface.c
+@@ -5,6 +5,7 @@
+  * @note SPDX-License-Identifier: GPL-2.0+
+  */
+ #include <stdlib.h>
++#include <string.h>
+ #include "interface.h"
+ 
+ struct interface {

@@ -1,8 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # PPC Specific use flags
 #
+
+# matoro <matoro_gentoo@matoro.tk> (2022-09-29)
+# dev-util/google-perftools is supported here
+-tcmalloc
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-06-06)
 # XEN does not support ppc/ppc64 yet
@@ -49,15 +53,12 @@ clang
 # PowerPC has no support for this bootloader (bug #550322)
 gnuefi
 
-# Patrick Lauer <patrick@gentoo.org> (2015-04-28)
-# dependencies not keyworded yet
-appindicator
-ayatana
-
 # These flags should only be used for ppc
+-cpu_flags_ppc_altivec
+-cpu_flags_ppc_vsx
+-cpu_flags_ppc_vsx2
+-cpu_flags_ppc_vsx3
 -ppcsha1
-# Unmask the Altivec instruction set
--altivec
 
 # Incompatible Use Flags
 #

@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>aballier@gentoo.org</email>
-    <name>Alexis Ballier</name>
+  <maintainer type="project">
+    <email>vaapi@gentoo.org</email>
+    <name>VA-API Project</name>
   </maintainer>
   <use>
-    <flag name="drm">Enables VA/DRM API support.</flag>
     <flag name="examples">Build and install decode, encode, videoprocess and other VA-API examples.</flag>
     <flag name="putsurface">Build and install putsurface tool.</flag>
-    <flag name="test-va-api">Install test_va_api tool for thorough testing of the installed VA-API.</flag>
     <flag name="vainfo">Build and install vainfo tool.</flag>
   </use>
   <upstream>

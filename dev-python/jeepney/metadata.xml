@@ -9,6 +9,6 @@
 	<upstream>
 		<remote-id type="pypi">jeepney</remote-id>
 		<remote-id type="gitlab">takluyver/jeepney</remote-id>
-		<bugs-to>https://gitlab.com/takluyver/jeepney/issues</bugs-to>
+		<bugs-to>https://gitlab.com/takluyver/jeepney/-/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

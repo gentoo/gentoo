@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DIST_TEST="do"
 inherit desktop optfeature perl-module git-r3 xdg-utils
 
 DESCRIPTION="A command line utility for viewing youtube-videos in Mplayer"
@@ -41,8 +42,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-perl/Module-Build"
 
-SRC_TEST="do"
-
 src_configure() {
 	local myconf
 	if use gtk; then
@@ -66,7 +65,7 @@ pkg_postinst() {
 	optfeature "local cache support" dev-perl/LWP-UserAgent-Cached
 	optfeature "faster JSON to HASH conversion" dev-perl/JSON-XS
 	optfeature "printing results in a fixed-width format (--fixed-width, -W)" dev-perl/Text-CharWidth
-	optfeature "live streams support" net-misc/youtube-dl
+	optfeature "live streams support" net-misc/yt-dlp net-misc/youtube-dl
 	elog
 	elog "Check the configuration file in ~/.config/youtube-viewer/"
 	elog "and configure your video player backend."

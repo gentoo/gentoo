@@ -1,0 +1,201 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2
+
+retry="TERM/5/TERM/5"
+
+# This is here to serve as a note to myself, and future developers.
+#
+# Any Display manager (gdm,kdm,xdm) has the following problem:  if
+# it is started before any getty, and no vt is specified, it will
+# usually run on vt2.  When the getty on vt2 then starts, and the
+# DM is already started, the getty will take control of the keyboard,
+# leaving us with a "dead" keyboard.
+#
+# Resolution: add the following line to /etc/inittab
+#
+#  x:a:once:/usr/bin/startDM
+#
+# and have /usr/bin/startDM start the DM in daemon mode if
+# a lock is present (with the info of what DM should be started),
+# else just fall through.
+#
+# How this basically works, is the "a" runlevel is a additional
+# runlevel that you can use to fork processes with init, but the
+# runlevel never gets changed to this runlevel. Along with the "a"
+# runlevel, the "once" key word means that startDM will only be
+# run when we specify it to run, thus eliminating respawning
+# startDM when "display-manager" is not added to the default 
+# runlevel, as was done previously.
+#
+# This script then just calls "telinit a", and init will run
+# /usr/bin/startDM after the current runlevel completes (this
+# script should only be added to the actual runlevel the user is
+# using).
+#
+# Martin Schlemmer
+# aka Azarah
+# 04 March 2002
+
+depend() {
+	need localmount display-manager-setup
+
+	# this should start as early as possible
+	# we can't do 'before *' as that breaks it
+	# (#139824) Start after ypbind and autofs for network authentication
+	# (#145219 #180163) Could use lirc mouse as input device
+	# (#70689 comment #92) Start after consolefont to avoid display corruption
+	# (#291269) Start after quota, since some dm need readable home
+	# (#390609) gdm-3 will fail when dbus is not running
+	# (#366753) starting keymaps after X causes problems
+	# (#768834) race condition with elogind
+	after bootmisc consolefont modules netmount
+	after readahead-list ypbind autofs openvpn gpm lircmd
+	after quota keymaps
+	after elogind
+	after sssd
+	before alsasound
+
+	# Start before GUI
+	use dbus xfs
+}
+
+setup_dm() {
+	local MY_XDM
+
+	MY_XDM=$(echo "${DISPLAYMANAGER}" | tr '[:upper:]' '[:lower:]')
+	case "${MY_XDM}" in
+		kdm|kde)
+			command=/usr/bin/kdm
+			pidfile=/run/kdm.pid
+			;;
+		entrance*)
+			command=/usr/sbin/entrance
+			pidfile=/run/entrance.pid
+			;;
+		gdm|gnome)
+			# gdm-3 and above has different paths
+			if [ -f /usr/sbin/gdm ]; then
+				command=/usr/sbin/gdm
+				pidfile=/run/gdm/gdm.pid
+				start_stop_daemon_args="--background"
+			else
+				command=/usr/bin/gdm
+				pidfile=/run/gdm.pid
+			fi
+			[ "${RC_UNAME}" != "Linux" ] && name=gdm-binary
+			;;
+		greetd)
+			command=/usr/bin/greetd
+			command_background=yes
+			pidfile=/run/greetd.pid
+			;;
+		wdm)
+			command=/usr/bin/wdm
+			;;
+		gpe)
+			command=/usr/bin/gpe-dm
+			pidfile=/run/gpe-dm.pid
+			;;
+		lxdm)
+			command=/usr/sbin/lxdm-binary
+			pidfile=/run/lxdm.pid
+			start_stop_daemon_args="--background"
+			;;
+		lightdm)
+			command=/usr/sbin/lightdm
+			pidfile=/run/lightdm.pid
+			start_stop_daemon_args="--background"
+			;;
+		sddm)
+			command="/usr/bin/sddm"
+			command_background=yes
+			pidfile=/run/sddm.pid
+			;;
+		*)
+			# first find out if there is such executable
+			command="$(command -v ${MY_XDM} 2>/dev/null)"
+			pidfile="/run/${MY_XDM}.pid"
+
+			# warn user that they are doing sick things if the exe was not found
+			if [ -z "${EXE}" ]; then
+				eerror "ERROR: Your XDM value is invalid."
+				eerror "  No ${MY_XDM} executable could be found on your system."
+			fi
+			;;
+	esac
+
+	if ! [ -x "${command}" ]; then
+		command=/usr/bin/xdm
+		pidfile=/run/xdm.pid
+		if ! [ -x "/usr/bin/xdm" ]; then
+			eerror "ERROR: Please set your DISPLAYMANAGER variable in /etc/conf.d/display-manager,"
+			eerror "        or install the x11-apps/xdm package"
+			return 1
+		fi
+	fi
+	return 0
+}
+
+# Check to see if something is defined on our VT
+vtstatic() {
+	if [ -e /etc/inittab ] ; then
+		grep -Eq "^[^#]+.*\<tty$1\>" /etc/inittab
+	elif [ -e /etc/ttys ] ; then
+		grep -q "^ttyv$(($1 - 1))" /etc/ttys
+	else
+		return 1
+	fi
+	return
+}
+
+start_pre() {
+	setup_dm || return
+
+	if [ -f /run/.nogui ]; then
+		einfo "Skipping ${command##*/}, /run/.nogui found or 'nogui' bootparam passed."
+		rm /run/.nogui
+		return 1
+	fi
+
+	if vtstatic "${CHECKVT:-7}" ; then
+		if [ -x /sbin/telinit ] && [ "${SOFTLEVEL}" != "BOOT" ] && [ "${RC_SOFTLEVEL}" != "BOOT" ]; then
+			ewarn "Something is already defined on VT ${CHECKVT:-7}, will start X later"
+			telinit a >/dev/null 2>&1
+			return 0
+		else
+			eerror "Something is already defined on VT ${CHECKVT:-7}, not starting"
+			return 1
+		fi
+	fi
+	return 0
+}
+
+stop_pre() {
+	if [ -t 0 ]; then
+		if command -v fgconsole >/dev/null 2>&1; then
+			curvt=$(fgconsole 2>/dev/null)
+		else
+			curvt=$(tty)
+			case "${curvt}" in
+				/dev/ttyv[0-9]*) curvt=${curvt#/dev/ttyv} ;;
+				*) curvt= ;;
+			esac
+		fi
+	fi
+	return
+}
+
+stop_post() {
+	# switch back to original vt
+	if [ -n "${curvt}" ]; then
+		if command -v chvt >/dev/null 2>&1; then
+			chvt "${curvt}"
+		else
+			vidcontrol -s "$((curvt + 1))"
+		fi
+	fi
+	return
+}
+
+# vim: set ts=4 :

@@ -1,0 +1,60 @@
+From 3fd653f3978e5ec2249c37eb08934bfe343e9198 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Sat, 24 Sep 2022 23:09:38 -0700
+Subject: [PATCH] vendor/rustix: sparc has no SIGSTKFLT
+
+gyakovlev: removed checkum HUNK
+
+---
+ vendor/rustix/.cargo-checksum.json               | 2 +-
+ vendor/rustix/src/imp/libc/process/types.rs      | 4 ++++
+ vendor/rustix/src/imp/linux_raw/process/types.rs | 4 ++--
+ 3 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/vendor/rustix/src/imp/libc/process/types.rs b/vendor/rustix/src/imp/libc/process/types.rs
+index 60d629d..1278cee 100644
+--- a/vendor/rustix/src/imp/libc/process/types.rs
++++ b/vendor/rustix/src/imp/libc/process/types.rs
+@@ -197,6 +197,8 @@ pub enum Signal {
+         target_os = "macos",
+         target_os = "netbsd",
+         target_os = "openbsd",
++        target_arch = "sparc",
++        target_arch = "sparc64",
+         all(
+             any(target_os = "android", target_os = "linux"),
+             any(target_arch = "mips", target_arch = "mips64"),
+@@ -274,6 +276,8 @@ impl Signal {
+                 target_os = "macos",
+                 target_os = "netbsd",
+                 target_os = "openbsd",
++                target_arch = "sparc",
++                target_arch = "sparc64",
+                 all(
+                     any(target_os = "android", target_os = "linux"),
+                     any(target_arch = "mips", target_arch = "mips64"),
+diff --git a/vendor/rustix/src/imp/linux_raw/process/types.rs b/vendor/rustix/src/imp/linux_raw/process/types.rs
+index 53e2c7d..859a108 100644
+--- a/vendor/rustix/src/imp/linux_raw/process/types.rs
++++ b/vendor/rustix/src/imp/linux_raw/process/types.rs
+@@ -119,7 +119,7 @@ pub enum Signal {
+     /// `SIGTERM`
+     Term = linux_raw_sys::general::SIGTERM,
+     /// `SIGSTKFLT`
+-    #[cfg(not(any(target_arch = "mips", target_arch = "mips64")))]
++    #[cfg(not(any(target_arch = "mips", target_arch = "mips64", target_arch = "sparc", target_arch = "sparc64")))]
+     Stkflt = linux_raw_sys::general::SIGSTKFLT,
+     /// `SIGCHLD`
+     #[doc(alias = "Chld")]
+@@ -179,7 +179,7 @@ impl Signal {
+             linux_raw_sys::general::SIGPIPE => Some(Self::Pipe),
+             linux_raw_sys::general::SIGALRM => Some(Self::Alarm),
+             linux_raw_sys::general::SIGTERM => Some(Self::Term),
+-            #[cfg(not(any(target_arch = "mips", target_arch = "mips64")))]
++            #[cfg(not(any(target_arch = "mips", target_arch = "mips64", target_arch = "sparc", target_arch = "sparc64")))]
+             linux_raw_sys::general::SIGSTKFLT => Some(Self::Stkflt),
+             linux_raw_sys::general::SIGCHLD => Some(Self::Child),
+             linux_raw_sys::general::SIGCONT => Some(Self::Cont),
+-- 
+2.37.3
+

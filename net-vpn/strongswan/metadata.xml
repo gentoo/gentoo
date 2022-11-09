@@ -30,6 +30,7 @@
 		<flag name="non-root">Force IKEv1/IKEv2 daemons to normal user privileges. This might impose some restrictions mainly to the IKEv1 daemon. Disable only if you really require superuser privileges.</flag>
 		<flag name="openssl">Enable <pkg>dev-libs/openssl</pkg> plugin which is required for Elliptic Curve Cryptography (DH groups 19-21,25,26) and ECDSA. Also provides 3DES, AES, Blowfish, Camellia, CAST, DES, IDEA and RC5 ciphers along with MD2, MD4, MD5 and SHA1/2 hash algorithms, RSA and DH groups 1,2,5,14-18 and 22-24(4.4+) <pkg>dev-libs/openssl</pkg> has to be compiled with USE="-bindist".</flag>
 		<flag name="pkcs11">Enable pkcs11 support</flag>
+		<flag name="strongswan_plugins_addrblock">Enable support for the addrblock crypto plugin</flag>
 		<flag name="strongswan_plugins_aesni">Enable support for Intel AES-NI crypto plugin</flag>
 		<flag name="strongswan_plugins_bypass-lan">Enable support for the bypass-lan plugin</flag>
 		<flag name="strongswan_plugins_chapoly">Enable ChaCha20/Poly1305 AEAD implementation and ChaCha20 XOF plugin</flag>
@@ -42,9 +43,11 @@
 		<flag name="strongswan_plugins_blowfish">Enable support for the blowfish plugin</flag>
 		<flag name="strongswan_plugins_ccm">Enable support for the ccm plugin</flag>
 		<flag name="strongswan_plugins_ctr">Enable support for the ctr plugin</flag>
+		<flag name="strongswan_plugins_error-notify">Enable support for the error-notify plugin</flag>
 		<flag name="strongswan_plugins_gcm">Enable support for the gcm plugin</flag>
 		<flag name="strongswan_plugins_ha">Enable support for the ha plugin</flag>
 		<flag name="strongswan_plugins_ipseckey">Enable support for the ipseckey plugin</flag>
+		<flag name="strongswan_plugins_kdf">Enable support for the kdf plugin</flag>
 		<flag name="strongswan_plugins_newhope">Enable plugin that allows key exchange based on post-quantum computer New Hope algorithm</flag>
 		<flag name="strongswan_plugins_ntru">Enable support for the ntru plugin</flag>
 		<flag name="strongswan_plugins_padlock">Enable support for the padlock plugin</flag>

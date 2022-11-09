@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/844235
+--- a/src/mongo/util/processinfo_linux.cpp
++++ b/src/mongo/util/processinfo_linux.cpp
+@@ -51,6 +51,7 @@
+ #endif
+ 
+ #include <boost/filesystem.hpp>
++#include <boost/filesystem/fstream.hpp>
+ #include <boost/none.hpp>
+ #include <boost/optional.hpp>
+ #include <fmt/format.h>
+--- a/src/mongo/db/storage/wiredtiger/wiredtiger_util.cpp
++++ b/src/mongo/db/storage/wiredtiger/wiredtiger_util.cpp
+@@ -36,6 +36,7 @@
+ #include <limits>
+ 
+ #include <boost/filesystem.hpp>
++#include <boost/filesystem/fstream.hpp>
+ #include <boost/filesystem/path.hpp>
+ 
+ #include "mongo/base/simple_string_data_comparator.h"
+--- a/src/mongo/shell/shell_utils_extended.cpp
++++ b/src/mongo/shell/shell_utils_extended.cpp
+@@ -37,6 +37,7 @@
+ #endif
+ 
+ #include <boost/filesystem.hpp>
++#include <boost/filesystem/fstream.hpp>
+ #include <fstream>
+ 
+ #include "mongo/scripting/engine.h"
+--- a/src/mongo/db/storage/storage_repair_observer.cpp
++++ b/src/mongo/db/storage/storage_repair_observer.cpp
+@@ -41,6 +41,7 @@
+ #include <sys/types.h>
+ #endif
+ 
++#include <boost/filesystem/fstream.hpp>
+ #include <boost/filesystem/path.hpp>
+ 
+ #include "mongo/db/dbhelpers.h"

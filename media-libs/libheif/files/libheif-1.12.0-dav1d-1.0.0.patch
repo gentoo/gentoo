@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/836205
+https://github.com/strukturag/libheif/commit/0f8496f22d284e1a69df12fe0b72f375aed31315
+
+From 0f8496f22d284e1a69df12fe0b72f375aed31315 Mon Sep 17 00:00:00 2001
+From: Dirk Farin <dirk.farin@gmail.com>
+Date: Tue, 5 Apr 2022 12:17:59 +0200
+Subject: [PATCH] fix dav1d decoding: input stream must be flushed with dav1d
+ 1.0.0
+
+---
+ libheif/heif_decoder_dav1d.cc | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/libheif/heif_decoder_dav1d.cc b/libheif/heif_decoder_dav1d.cc
+index a6c42e4f..ecf7382e 100644
+--- a/libheif/heif_decoder_dav1d.cc
++++ b/libheif/heif_decoder_dav1d.cc
+@@ -163,7 +163,10 @@ struct heif_error dav1d_decode_image(void* decoder_raw, struct heif_image** out_
+   Dav1dPicture frame;
+   memset(&frame, 0, sizeof(Dav1dPicture));
+ 
++  bool flushed = false;
++
+   for (;;) {
++
+     int res = dav1d_send_data(decoder->context, &decoder->data);
+     if ((res < 0) && (res != DAV1D_ERR(EAGAIN))) {
+       err = {heif_error_Decoder_plugin_error,
+@@ -173,11 +176,11 @@ struct heif_error dav1d_decode_image(void* decoder_raw, struct heif_image** out_
+     }
+ 
+     res = dav1d_get_picture(decoder->context, &frame);
+-    if (res == DAV1D_ERR(EAGAIN)) {
+-      err = {heif_error_Decoder_plugin_error,
+-             heif_suberror_Unspecified,
+-             kEmptyString};
+-      return err;
++    if (!flushed && res == DAV1D_ERR(EAGAIN)) {
++      if (decoder->data.sz == 0) {
++        flushed = true;
++      }
++      continue;
+     }
+     else if (res < 0) {
+       err = {heif_error_Decoder_plugin_error,

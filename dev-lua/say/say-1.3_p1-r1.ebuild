@@ -6,10 +6,10 @@ EAPI=8
 LUA_COMPAT=( lua5-{1..4} luajit )
 MY_PV="${PV/_p/-}"
 
-inherit lua toolchain-funcs
+inherit lua
 
 DESCRIPTION="Lua String Hashing/Indexing Library"
-HOMEPAGE="http://olivinelabs.com/busted/"
+HOMEPAGE="https://github.com/lunarmodules/say"
 SRC_URI="https://github.com/Olivine-Labs/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 

@@ -32,9 +32,8 @@ RDEPEND="
 	dev-qt/qtserialport:5
 	virtual/libusb:1
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5"
-BDEPEND=""
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 pkg_setup() {
 	CONFIG_CHECK="~USB_ACM"

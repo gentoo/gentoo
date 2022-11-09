@@ -1,0 +1,210 @@
+From 43b5565a73817d66b6d96de2e28d525a2a56f852 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Josef=20=C5=A0im=C3=A1nek?= <josef.simanek@gmail.com>
+Date: Mon, 4 Apr 2022 23:17:19 +0200
+Subject: [PATCH] Newer rubies spec compatibility.
+
+---
+ Gemfile             |  5 +++++
+ lib/rack/utils.rb   |  7 +++++--
+ test/spec_mock.rb   | 34 +++++++++++++++++-----------------
+ test/testrequest.rb |  4 ++--
+ 4 files changed, 29 insertions(+), 21 deletions(-)
+
+diff --git a/Gemfile b/Gemfile
+index dc075a4ca..5768eedf7 100644
+--- a/Gemfile
++++ b/Gemfile
+@@ -14,6 +14,11 @@ end
+ 
+ gem "rubocop", require: false
+ 
++group :test do
++  gem "webrick" # gemified in Ruby 3.1+
++  gem "psych", "~> 4.0" # using YAML#unsafe_load in tests which is 4.0+ only
++end
++
+ # Alternative solution that might work, but it has bad interactions with
+ # Gemfile.lock if that gets committed/reused:
+ # c_platforms = [:mri] if Gem.platforms.last.os == "java"
+diff --git a/lib/rack/utils.rb b/lib/rack/utils.rb
+index d3b3b1d42..34849ded1 100644
+--- a/lib/rack/utils.rb
++++ b/lib/rack/utils.rb
+@@ -22,6 +22,9 @@ module Utils
+     COMMON_SEP = QueryParser::COMMON_SEP
+     KeySpaceConstrainedParams = QueryParser::Params
+ 
++    RFC2822_DAY_NAME = [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ]
++    RFC2822_MONTH_NAME = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ]
++
+     class << self
+       attr_accessor :default_query_parser
+     end
+@@ -327,8 +330,8 @@ def rfc2822(time)
+     # weekday and month.
+     #
+     def rfc2109(time)
+-      wday = Time::RFC2822_DAY_NAME[time.wday]
+-      mon = Time::RFC2822_MONTH_NAME[time.mon - 1]
++      wday = RFC2822_DAY_NAME[time.wday]
++      mon = RFC2822_MONTH_NAME[time.mon - 1]
+       time.strftime("#{wday}, %d-#{mon}-%Y %H:%M:%S GMT")
+     end
+ 
+diff --git a/test/spec_mock.rb b/test/spec_mock.rb
+index d2311f5a2..73fb7b235 100644
+--- a/test/spec_mock.rb
++++ b/test/spec_mock.rb
+@@ -47,7 +47,7 @@
+   it "provide sensible defaults" do
+     res = Rack::MockRequest.new(app).request
+ 
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "GET"
+     env["SERVER_NAME"].must_equal "example.org"
+     env["SERVER_PORT"].must_equal "80"
+@@ -60,23 +60,23 @@
+ 
+   it "allow GET/POST/PUT/DELETE/HEAD" do
+     res = Rack::MockRequest.new(app).get("", input: "foo")
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "GET"
+ 
+     res = Rack::MockRequest.new(app).post("", input: "foo")
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "POST"
+ 
+     res = Rack::MockRequest.new(app).put("", input: "foo")
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "PUT"
+ 
+     res = Rack::MockRequest.new(app).patch("", input: "foo")
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "PATCH"
+ 
+     res = Rack::MockRequest.new(app).delete("", input: "foo")
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "DELETE"
+ 
+     Rack::MockRequest.env_for("/", method: "HEAD")["REQUEST_METHOD"]
+@@ -102,11 +102,11 @@
+ 
+   it "allow posting" do
+     res = Rack::MockRequest.new(app).get("", input: "foo")
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["mock.postdata"].must_equal "foo"
+ 
+     res = Rack::MockRequest.new(app).post("", input: StringIO.new("foo"))
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["mock.postdata"].must_equal "foo"
+   end
+ 
+@@ -115,7 +115,7 @@
+       get("https://bla.example.org:9292/meh/foo?bar")
+     res.must_be_kind_of Rack::MockResponse
+ 
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "GET"
+     env["SERVER_NAME"].must_equal "bla.example.org"
+     env["SERVER_PORT"].must_equal "9292"
+@@ -129,7 +129,7 @@
+       get("https://example.org/foo")
+     res.must_be_kind_of Rack::MockResponse
+ 
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "GET"
+     env["SERVER_NAME"].must_equal "example.org"
+     env["SERVER_PORT"].must_equal "443"
+@@ -144,7 +144,7 @@
+       get("foo")
+     res.must_be_kind_of Rack::MockResponse
+ 
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "GET"
+     env["SERVER_NAME"].must_equal "example.org"
+     env["SERVER_PORT"].must_equal "80"
+@@ -155,13 +155,13 @@
+ 
+   it "properly convert method name to an uppercase string" do
+     res = Rack::MockRequest.new(app).request(:get)
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "GET"
+   end
+ 
+   it "accept params and build query string for GET requests" do
+     res = Rack::MockRequest.new(app).get("/foo?baz=2", params: { foo: { bar: "1" } })
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "GET"
+     env["QUERY_STRING"].must_include "baz=2"
+     env["QUERY_STRING"].must_include "foo[bar]=1"
+@@ -171,7 +171,7 @@
+ 
+   it "accept raw input in params for GET requests" do
+     res = Rack::MockRequest.new(app).get("/foo?baz=2", params: "foo[bar]=1")
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "GET"
+     env["QUERY_STRING"].must_include "baz=2"
+     env["QUERY_STRING"].must_include "foo[bar]=1"
+@@ -181,7 +181,7 @@
+ 
+   it "accept params and build url encoded params for POST requests" do
+     res = Rack::MockRequest.new(app).post("/foo", params: { foo: { bar: "1" } })
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "POST"
+     env["QUERY_STRING"].must_equal ""
+     env["PATH_INFO"].must_equal "/foo"
+@@ -191,7 +191,7 @@
+ 
+   it "accept raw input in params for POST requests" do
+     res = Rack::MockRequest.new(app).post("/foo", params: "foo[bar]=1")
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "POST"
+     env["QUERY_STRING"].must_equal ""
+     env["PATH_INFO"].must_equal "/foo"
+@@ -202,7 +202,7 @@
+   it "accept params and build multipart encoded params for POST requests" do
+     files = Rack::Multipart::UploadedFile.new(File.join(File.dirname(__FILE__), "multipart", "file1.txt"))
+     res = Rack::MockRequest.new(app).post("/foo", params: { "submit-name" => "Larry", "files" => files })
+-    env = YAML.load(res.body)
++    env = YAML.unsafe_load(res.body)
+     env["REQUEST_METHOD"].must_equal "POST"
+     env["QUERY_STRING"].must_equal ""
+     env["PATH_INFO"].must_equal "/foo"
+diff --git a/test/testrequest.rb b/test/testrequest.rb
+index aabe7fa6b..481a4e54d 100644
+--- a/test/testrequest.rb
++++ b/test/testrequest.rb
+@@ -42,7 +42,7 @@ def GET(path, header = {})
+         http.request(get) { |response|
+           @status = response.code.to_i
+           begin
+-            @response = YAML.load(response.body)
++            @response = YAML.unsafe_load(response.body)
+           rescue TypeError, ArgumentError
+             @response = nil
+           end
+@@ -60,7 +60,7 @@ def POST(path, formdata = {}, header = {})
+         post.basic_auth user, passwd  if user && passwd
+         http.request(post) { |response|
+           @status = response.code.to_i
+-          @response = YAML.load(response.body)
++          @response = YAML.unsafe_load(response.body)
+         }
+       }
+     end

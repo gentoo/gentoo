@@ -1,0 +1,21 @@
+Remove forced debugging or optimization flags.
+
+--- a/configure
++++ b/configure
+@@ -261,16 +261,6 @@ case x"$CXX" in
+   *) CXXFLAGS="${CXXFLAGS}-W";;
+ esac
+ 
+-if [ $debug = yes ]
+-then
+-  CXXFLAGS="$CXXFLAGS -g"
+-else
+-  case x"$CXX" in
+-    x*g++*|x*clang++*) CXXFLAGS="$CXXFLAGS -O3";;
+-    *) CXXFLAGS="$CXXFLAGS -O";;
+-  esac
+-fi
+-
+ if [ $m32 = yes ]
+ then
+   case x"$CXX" in

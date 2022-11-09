@@ -1,7 +1,6 @@
 Bug: https://bugs.gentoo.org/837806
 From https://github.com/xianyi/OpenBLAS/pull/3613
 
-From 3fc52ebcfb80e01f753938fd314ca07b2c085767 Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@uniontech.com>
 Date: Wed, 27 Apr 2022 01:34:55 +0800
 Subject: [PATCH 1/2] Fix other arch build in detect.
@@ -9,12 +8,6 @@ Subject: [PATCH 1/2] Fix other arch build in detect.
 When CORE is empty, use -march=loongson3a. Fix it.
 
 Signed-off-by: Han Gao <gaohan@uniontech.com>
----
- Makefile.system | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/Makefile.system b/Makefile.system
-index ac60eae5b6..1104893b55 100644
 --- a/Makefile.system
 +++ b/Makefile.system
 @@ -847,7 +847,7 @@ CCOMMON_OPT += -mabi=32
@@ -27,19 +20,11 @@ index ac60eae5b6..1104893b55 100644
  FCOMMON_OPT += -march=loongson3a
  endif
 
-From 8123324c99ba69ce23b4028468313663001a76c6 Mon Sep 17 00:00:00 2001
 From: Han Gao <gaohan@uniontech.com>
 Date: Wed, 27 Apr 2022 02:29:43 +0800
 Subject: [PATCH 2/2] Fix riscv64 arch detect
 
 Signed-off-by: Han Gao <gaohan@uniontech.com>
----
- cpuid_riscv64.c | 18 +++++++++---------
- getarch.c       |  4 ++--
- 2 files changed, 11 insertions(+), 11 deletions(-)
-
-diff --git a/cpuid_riscv64.c b/cpuid_riscv64.c
-index 0eb50e0018..2aa4217816 100644
 --- a/cpuid_riscv64.c
 +++ b/cpuid_riscv64.c
 @@ -1,5 +1,5 @@
@@ -92,8 +77,6 @@ index 0eb50e0018..2aa4217816 100644
    printf("#define L1_DATA_SIZE 65536\n");
    printf("#define L1_DATA_LINESIZE 32\n");
    printf("#define L2_SIZE 512488\n");
-diff --git a/getarch.c b/getarch.c
-index 4af986fb3b..f4590769d9 100644
 --- a/getarch.c
 +++ b/getarch.c
 @@ -1731,7 +1731,7 @@ int main(int argc, char *argv[]){

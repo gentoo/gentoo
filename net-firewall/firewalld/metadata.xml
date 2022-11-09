@@ -13,4 +13,7 @@
 		<flag name="nftables">Add support for <pkg>net-firewall/nftables</pkg> as firewall backend</flag>
 		<flag name="iptables">Add support for <pkg>net-firewall/iptables</pkg> as firewall backend</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">firewalld/firewalld</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit toolchain-funcs python-any-r1
 
@@ -23,6 +23,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6-fixup-testsuite.patch
 	"${FILESDIR}"/${PN}-2.23-uncompressed-man-pages.patch
 	"${FILESDIR}"/${PN}-2.23-allow-building-against-glibc-2.34.patch
+	"${FILESDIR}"/${PN}-2.23-musl-sc-level2-fix.patch
+	"${FILESDIR}"/${PN}-2.23-musl-path-max-fix.patch
+	"${FILESDIR}"/${PN}-2.23-musl-nonnull-fix.patch
+	"${FILESDIR}"/${PN}-2.23-musl-ino_t-fix.patch
 )
 
 src_prepare() {
@@ -38,7 +42,7 @@ src_prepare() {
 		-e 's@^\(ARCH\) ?=@\1 =@' \
 		Makefile || die "sed failed"
 
-	if [ "$(get_libdir)" == "lib64" ]; then
+	if [[ "$(get_libdir)" == "lib64" ]]; then
 		sed -i \
 			-e "/^LIB\(32\)/s:=.*:= lib32:" \
 				Makefile
@@ -47,17 +51,6 @@ src_prepare() {
 	# Tarballs from github don't have the version set.
 	# https://github.com/libhugetlbfs/libhugetlbfs/issues/7
 	[[ -f version ]] || echo "${PV}" > version
-}
-
-src_compile() {
-	tc-export AR
-	emake CC="$(tc-getCC)" libs tools
-}
-
-src_install() {
-	default
-
-	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*.a
 }
 
 src_test_alloc_one() {
@@ -168,4 +161,15 @@ src_test() {
 	# ---------------------------------------------------------
 
 	return ${rc}
+}
+
+src_compile() {
+	tc-export AR
+	emake CC="$(tc-getCC)" libs tools
+}
+
+src_install() {
+	default
+
+	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*.a
 }

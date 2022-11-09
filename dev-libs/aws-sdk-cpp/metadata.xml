@@ -22,7 +22,7 @@
 		via GitHub Issues.
 	</longdescription>
 	<use>
-		<flag name="http">Enable http support via net-misc/curl</flag>
+		<flag name="http">Enable http support via <pkg>net-misc/curl</pkg></flag>
 		<flag name="rtti">Flag to enable/disable rtti within the library</flag>
 		<flag name="unity-build">
 			Build using a single unified .cpp file for each service library.

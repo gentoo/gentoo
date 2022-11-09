@@ -1,0 +1,429 @@
+From 165437bb8757cf138b8261f33467d200a5ddb6a6 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Fri, 30 Sep 2022 11:21:14 +0200
+Subject: [PATCH] metainfo: Correct release information to pass appstreamcli
+ validation
+
+Fix issues in org.gnome.Software.metainfo.xml.in reported by
+appstreamcli 0.15.5 during validation.
+
+Also update the NEWS file, to match the new changes.
+
+Related to https://gitlab.gnome.org/GNOME/gnome-software/-/issues/1919
+---
+ NEWS                                          | 24 +++----
+ data/metainfo/meson.build                     |  2 +-
+ .../org.gnome.Software.metainfo.xml.in        | 63 ++++++++++---------
+ 3 files changed, 45 insertions(+), 44 deletions(-)
+
+diff --git a/NEWS b/NEWS
+index 008cbd234..58f3ccd81 100644
+--- a/NEWS
++++ b/NEWS
+@@ -22,7 +22,7 @@ This is a stable release with translation updates:
+  * Spanish
+  * Swedish
+ 
+-Version 43.rc
++Version 43~rc
+ ~~~~~~~~~~~~~
+ Released: 2022-09-02
+ 
+@@ -58,7 +58,7 @@ This release also updates translations:
+  * Turkish
+  * Ukrainian
+ 
+-Version 43.beta
++Version 43~beta
+ ~~~~~~~~~~~~~~~
+ Released: 2022-08-05
+ 
+@@ -87,7 +87,7 @@ This release also updates translations:
+  * Ukrainian
+  * Vietnamese
+ 
+-Version 43.alpha
++Version 43~alpha
+ ~~~~~~~~~~~~~~~~
+ Released: 2022-06-30
+ 
+@@ -181,7 +181,7 @@ This release also updates translations:
+  * Slovenian
+  * Swedish
+ 
+-Version 42.rc
++Version 42~rc
+ ~~~~~~~~~~~~~
+ Released: 2022-03-04
+ 
+@@ -217,7 +217,7 @@ This release also updates translations:
+  * Turkish
+  * Ukrainian
+ 
+-Version 42.beta
++Version 42~beta
+ ~~~~~~~~~~~~~~~
+ Released: 2022-02-10
+ 
+@@ -253,7 +253,7 @@ This release also updates translations:
+  * Spanish
+  * Ukrainian
+ 
+-Version 42.alpha
++Version 42~alpha
+ ~~~~~~~~~~~~~~~~
+ Released: 2022-01-07
+ 
+@@ -353,7 +353,7 @@ This release also updates translations:
+  * Swedish
+  * Ukrainian
+ 
+-Version 41.rc
++Version 41~rc
+ ~~~~~~~~~~~~~
+ Released: 2021-09-07
+ 
+@@ -385,7 +385,7 @@ This release also updates translations:
+  * Swedish
+  * Ukrainian
+ 
+-Version 41.beta
++Version 41~beta
+ ~~~~~~~~~~~~~~~
+ Released: 2021-08-13
+ 
+@@ -411,7 +411,7 @@ This release also updates translations:
+  * Slovenian
+  * Ukrainian
+ 
+-Version 41.alpha
++Version 41~alpha
+ ~~~~~~~~~~~~~~~~
+ Released: 2021-07-20
+ 
+@@ -481,7 +481,7 @@ Translation updates:
+  * Punjabi
+  * Serbian
+ 
+-Version 40.rc
++Version 40~rc
+ ~~~~~~~~~~~~~
+ Released: 2021-03-12
+ 
+@@ -522,7 +522,7 @@ Translation updates:
+  * Turkish
+  * Ukrainian
+ 
+-Version 40.beta
++Version 40~beta
+ ~~~~~~~~~~~~~~~
+ Released: 2021-02-16
+ 
+@@ -549,7 +549,7 @@ Translation updates:
+  * Spanish
+  * Swedish
+ 
+-Version 40.alpha
++Version 40~alpha
+ ~~~~~~~~~~~~~~~~
+ Released: 2021-01-27
+ 
+diff --git a/data/metainfo/meson.build b/data/metainfo/meson.build
+index addc70a3c..2d056ffb6 100644
+--- a/data/metainfo/meson.build
++++ b/data/metainfo/meson.build
+@@ -14,7 +14,7 @@ if get_option('tests') and appstream.version().version_compare('>=0.15.5')
+         args: ['validate',
+               '--pedantic',
+               '--no-net',
+-              '--override=releases-not-in-order=info', # 42.rc > 42.0 for AppStream, which clashes with GNOME versioning
++              '--explain',
+               'org.gnome.Software.metainfo.xml.in'],
+         workdir : meson.current_source_dir(),
+         suite: ['lib'],
+diff --git a/data/metainfo/org.gnome.Software.metainfo.xml.in b/data/metainfo/org.gnome.Software.metainfo.xml.in
+index 581f922ff..7f5fd0484 100644
+--- a/data/metainfo/org.gnome.Software.metainfo.xml.in
++++ b/data/metainfo/org.gnome.Software.metainfo.xml.in
+@@ -91,7 +91,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release date="2022-09-02" version="43.rc" type="development">
++    <release date="2022-09-02" version="43~rc" type="development">
+       <description>
+         <p>This is the third unstable release for GNOME 43.</p>
+         <ul>
+@@ -129,7 +129,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release date="2022-08-05" version="43.beta" type="development">
++    <release date="2022-08-05" version="43~beta" type="development">
+       <description>
+         <p>This is the second unstable release for GNOME 43.</p>
+         <ul>
+@@ -160,7 +160,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release date="2022-06-30" version="43.alpha" type="development">
++    <release date="2022-06-30" version="43~alpha" type="development">
+       <description>
+         <p>This is the first unstable release for GNOME 43.</p>
+         <ul>
+@@ -263,7 +263,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release date="2022-03-04" version="42.rc" type="development">
++    <release date="2022-03-04" version="42~rc" type="development">
+       <description>
+         <p>This is the third unstable release for GNOME 42.</p>
+         <ul>
+@@ -301,7 +301,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release date="2022-02-10" version="42.beta" type="development">
++    <release date="2022-02-10" version="42~beta" type="development">
+       <description>
+         <p>This is the second unstable release for GNOME 42.</p>
+         <ul>
+@@ -342,7 +342,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release date="2022-01-07" version="42.alpha" type="development">
++    <release date="2022-01-07" version="42~alpha" type="development">
+       <description>
+         <p>This is the first unstable release for GNOME 42.</p>
+         <ul>
+@@ -442,7 +442,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release date="2021-09-07" version="41.rc" type="development">
++    <release date="2021-09-07" version="41~rc" type="development">
+       <description>
+         <p>This is the third unstable release for GNOME 41.</p>
+         <ul>
+@@ -476,7 +476,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release date="2021-08-13" version="41.beta" type="development">
++    <release date="2021-08-13" version="41~beta" type="development">
+       <description>
+         <p>This is the second unstable release for GNOME 41.</p>
+         <ul>
+@@ -504,7 +504,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release date="2021-07-20" version="41.alpha" type="development">
++    <release date="2021-07-20" version="41~alpha" type="development">
+       <description>
+         <p>This is the first unstable release for GNOME 41.</p>
+         <ul>
+@@ -578,7 +578,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release date="2021-03-12" version="40.rc" type="development">
++    <release date="2021-03-12" version="40~rc" type="development">
+       <description>
+         <p>This is an unstable release with the following changes:</p>
+         <ul>
+@@ -621,7 +621,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release date="2021-02-16" version="40.beta" type="development">
++    <release date="2021-02-16" version="40~beta" type="development">
+       <description>
+         <p>This is an unstable release with the following changes:</p>
+         <ul>
+@@ -647,7 +647,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release date="2021-01-27" version="40.alpha" type="development">
++    <release date="2021-01-27" version="40~alpha" type="development">
+       <description>
+         <p>This is the first unstable release for GNOME 40.</p>
+         <ul>
+@@ -1759,7 +1759,7 @@
+         <p>This release also updates translations for many languages.</p>
+       </description>
+     </release>
+-    <release timestamp="1452867221" version="3.19.4" type="development">
++    <release date="2016-01-15" version="3.19.4" type="development">
+       <description translatable="no">
+         <p>This is an unstable release in the 3.19 development series, with the following improvements:</p>
+         <ul>
+@@ -1782,7 +1782,7 @@
+         <p>This release also updates translations for many languages.</p>
+       </description>
+     </release>
+-    <release timestamp="1446724044" version="3.18.3" type="stable">
++    <release date="2015-11-05" version="3.18.3" type="stable">
+       <description translatable="no">
+         <p>This stable release fixes the following bugs:</p>
+         <ul>
+@@ -1793,7 +1793,7 @@
+         <p>This release also updates translations for many languages.</p>
+       </description>
+     </release>
+-    <release timestamp="1444908967" version="3.18.2" type="stable">
++    <release date="2015-10-15" version="3.18.2" type="stable">
+       <description translatable="no">
+         <p>This stable release fixes the following bugs:</p>
+         <ul>
+@@ -1803,7 +1803,7 @@
+         <p>This release also updates translations for many languages.</p>
+       </description>
+     </release>
+-    <release timestamp="1444738225" version="3.18.1" type="stable">
++    <release date="2015-10-13" version="3.18.1" type="stable">
+       <description translatable="no">
+         <p>This stable release fixes the following bugs:</p>
+         <ul>
+@@ -1819,12 +1819,12 @@
+         <p>This release also updates translations for many languages.</p>
+       </description>
+     </release>
+-    <release timestamp="1442827658" version="3.18.0" type="stable">
++    <release date="2015-09-21" version="3.18.0" type="stable">
+       <description translatable="no">
+         <p>This is the first stable release for the GNOME 3.18 desktop!</p>
+       </description>
+     </release>
+-    <release timestamp="1442313469" version="3.17.92" type="development">
++    <release date="2015-09-15" version="3.17.92" type="development">
+       <description translatable="no">
+         <p>This is an unstable release in the 3.17 development series, with the following improvements:</p>
+         <ul>
+@@ -1835,7 +1835,7 @@
+         <p>This release also updates translations for many languages.</p>
+       </description>
+     </release>
+-    <release timestamp="1441303652" version="3.17.91" type="development">
++    <release date="2015-09-03" version="3.17.91" type="development">
+       <description translatable="no">
+         <p>This is an unstable release in the 3.17 development series, with the following improvements:</p>
+         <ul>
+@@ -1848,7 +1848,7 @@
+         <p>This release also updates translations for many languages.</p>
+       </description>
+     </release>
+-    <release timestamp="1439990842" version="3.17.90" type="development">
++    <release date="2015-08-19" version="3.17.90" type="development">
+       <description translatable="no">
+         <p>This is an unstable release with the following bugs fixed:</p>
+         <ul>
+@@ -1858,7 +1858,7 @@
+         <p>This release also updates translations for many languages.</p>
+       </description>
+     </release>
+-    <release timestamp="1439370225" version="3.17.3" type="development">
++    <release date="2015-08-12" version="3.17.3" type="development">
+       <description translatable="no">
+         <p>This is an unstable release in the 3.17 development series, with the following improvements:</p>
+         <ul>
+@@ -1882,7 +1882,7 @@
+         <p>This release also updates translations for many languages.</p>
+       </description>
+     </release>
+-    <release timestamp="1433526589" version="3.17.2" type="development">
++    <release date="2015-06-05" version="3.17.2" type="development">
+       <description translatable="no">
+         <p>This is an unstable release in the 3.17 development series, with the following improvements:</p>
+         <ul>
+@@ -1899,7 +1899,7 @@
+         <p>This release also updates translations for many languages.</p>
+       </description>
+     </release>
+-    <release timestamp="1432590395" version="3.17.1" type="development">
++    <release date="2015-05-25" version="3.17.1" type="development">
+       <description translatable="no">
+         <p>This is the first unstable release in the 3.17 development series, with a number of new features:</p>
+         <ul>
+@@ -1914,7 +1914,7 @@
+         <p>This release also updates translations for many languages.</p>
+       </description>
+     </release>
+-    <release timestamp="1431345463" version="3.16.2" type="stable">
++    <release date="2015-05-11" version="3.16.2" type="stable">
+       <description translatable="no">
+         <p>This release fixes the following bugs:</p>
+         <ul>
+@@ -1928,7 +1928,7 @@
+         <p>This release also updates translations for many languages.</p>
+       </description>
+     </release>
+-    <release timestamp="1429029680" version="3.16.1" type="stable">
++    <release date="2015-04-14" version="3.16.1" type="stable">
+       <description translatable="no">
+         <p>This release fixes the following bugs:</p>
+         <ul>
+@@ -1938,12 +1938,12 @@
+         <p>This release also updates translations for many languages.</p>
+       </description>
+     </release>
+-    <release timestamp="1427103917" version="3.16.0" type="stable">
++    <release date="2015-03-23" version="3.16.0" type="stable">
+       <description translatable="no">
+         <p>This stable release marks the release of GNOME 3.16!</p>
+       </description>
+     </release>
+-    <release timestamp="1426498834" version="3.15.92" type="development">
++    <release date="2015-03-16" version="3.15.92" type="development">
+       <description translatable="no">
+         <p>This unstable release adds the following features:</p>
+         <ul>
+@@ -1961,7 +1961,7 @@
+         <p>This release also updates translations for many languages.</p>
+       </description>
+     </release>
+-    <release timestamp="1425309931" version="3.15.91" type="development">
++    <release date="2015-03-02" version="3.15.91" type="development">
+       <description translatable="no">
+         <p>This unstable release adds the following features:</p>
+         <ul>
+@@ -1976,7 +1976,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release timestamp="1424116753" version="3.15.90" type="development">
++    <release date="2015-02-16" version="3.15.90" type="development">
+       <description translatable="no">
+         <p>This unstable release adds the following features:</p>
+         <ul>
+@@ -1990,7 +1990,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release timestamp="1421625600" version="3.15.4" type="development">
++    <release date="2015-01-19" version="3.15.4" type="development">
+       <description translatable="no">
+         <p>This unstable release adds the following features:</p>
+         <ul>
+@@ -2006,7 +2006,7 @@
+         </ul>
+       </description>
+     </release>
+-    <release timestamp="1416787200" version="3.15.2" type="development">
++    <release date="2014-11-24" version="3.15.2" type="development">
+       <description translatable="no">
+         <p>This unstable release adds the following features:</p>
+         <ul>
+@@ -2063,4 +2063,5 @@
+     <content_attribute id="money-purchasing">none</content_attribute>
+     <content_attribute id="money-gambling">none</content_attribute>
+   </content_rating>
++  <launchable type="desktop-id">org.gnome.Software.desktop</launchable>
+ </component>
+-- 
+2.35.1
+

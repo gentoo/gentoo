@@ -14,7 +14,7 @@ SRC_URI="https://github.com/official-stockfish/Stockfish/archive/sf_${PV}.tar.gz
 	https://tests.stockfishchess.org/api/nn/${NNUE_FILE} -> ${P}-${NNUE_FILE}"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="cpu_flags_arm_v7 cpu_flags_x86_avx2 cpu_flags_x86_popcnt cpu_flags_x86_sse debug
 	general-32 general-64 +optimize"
 

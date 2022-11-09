@@ -13,6 +13,6 @@
 		(&lt;http://web.cecs.pdx.edu/~mpj/pubs/springschool.html&gt;).
 	</longdescription>
 	<upstream>
-		<remote-id type="github">ekmett/mtl</remote-id>
+		<remote-id type="github">haskell/mtl</remote-id>
 	</upstream>
 </pkgmetadata>

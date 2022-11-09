@@ -3,7 +3,6 @@
 <pkgmetadata>
     <!-- maintainer-needed -->
     <use>
-        <flag name="bluetooth">Enables bluetooth support</flag>
         <flag name="curl">Enables curl support</flag>
         <flag name="irda">Enables infrared support</flag>
         <flag name="nls">Enable native language support</flag>

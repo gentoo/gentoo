@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index bd11ff95f7..3b83f7b6ff 100755
+--- a/setup.py
++++ b/setup.py
+@@ -1173,7 +1173,7 @@ class SaltDistribution(distutils.dist.Distribution):
+         return scripts
+ 
+     @property
+-    def _property_entry_points(self):
++    def _property_entry_points_disabled(self):
+         entrypoints = {
+             "pyinstaller40": [
+                 "hook-dirs = salt.utils.pyinstaller:get_hook_dirs",

@@ -17,9 +17,30 @@
 
 #--- END OF EXAMPLES ---
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-01)
-# requires sys-apps/dbus-broker, which is keyworded here.
-sys-apps/systemd -hostnamed-fallback
+# WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
+# sys-libs/libsmbios is available here.
+app-laptop/pbbuttonsd -macbook
+sys-apps/fwupd -dell
+
+# Alfredo Tupone <tupone@gentoo.org> (2022-08-30)
+# ada bootstrap currently only available on amd64/x86
+sys-devel/gcc -ada
+
+# Conrad Kostecki <conikost@gentoo.org> (2022-07-19)
+# www-servers/nginx currently only available on amd64/x86
+www-servers/nginx -nginx_modules_http_security
+
+# James Le Cuirot <chewi@gentoo.org> (2022-06-25)
+# Allow stack to be realigned for compatibility with older 32-bit binaries.
+sys-libs/glibc -stack-realign
+sys-libs/ncurses -stack-realign
+
+# Unmask media-libs/libxmp here
+media-sound/qmmp -xmp
+
+# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
+# Need intel-hybrid-codec-driver, which only works on amd64
+media-libs/libva-intel-driver -hybrid
 
 # James Le Cuirot <chewi@gentoo.org> (2021-10-22)
 # The JIT feature only works on amd64 and x86.
@@ -52,7 +73,6 @@ x11-wm/mutter -video_cards_nvidia
 # Only maxima makes a distinction between the 32-bit and 64-bit
 # USE flags.
 sci-mathematics/fricas -clozurecl
-<sci-mathematics/maxima-5.44.0-r5 -clozurecl
 sci-mathematics/maxima -clozurecl64
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
@@ -105,10 +125,6 @@ sys-apps/flashrom -atahpt -atapromise -atavia -drkaiser -gfxnvidia -internal -it
 # Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
 # clisp is keyworded on amd64
 app-text/texlive-core -xindy
-
-# Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
-# sys-cluster/slurm is keyworded on amd64
-app-metrics/collectd -collectd_plugins_slurm
 
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
 # static-pie works on amd64, #719444
@@ -204,12 +220,7 @@ dev-util/catalyst -system-bootloader
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2018-06-17)
 # Vulkan support is only available on few selected arches atm.
 # Mask everywhere, unmask where appropriate.
-media-video/mpv -vulkan
-
-# Nick Sarnie <sarnex@gentoo.org> (2018-04-29)
-# media-libs/vulkan-loader and app-emulation/vkd3d are keyworded on amd64
-app-emulation/wine-staging -vkd3d -vulkan
-app-emulation/wine-vanilla -vkd3d -vulkan
+media-video/mpv -libplacebo -vulkan
 
 # Richard Yao <ryao@gentoo.org> (2018-04-16)
 # sys-fs/zfs is keyworded on amd64
@@ -339,7 +350,6 @@ app-arch/zpaq -jit
 # Arun Raghavan <ford_prefect@gentoo.org> (2012-03-29)
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
 # added.
-media-sound/pulseaudio -webrtc-aec
 media-sound/pulseaudio-daemon -webrtc-aec
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2012-02-27)
@@ -400,11 +410,6 @@ media-libs/smpeg cpu_flags_x86_mmx
 
 # x86_64 opts are enabled with USE sse. so masking the rest
 media-sound/mpg123 cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext
-
-# Alistair Bush <ali_bush@gentoo.org> (2007-05-08)
-# Mask doc flag for fop as nearly impossible to
-# run javadoc target.  see #177585
-dev-java/fop:0 doc
 
 # Alexis Ballier <aballier@gentoo.org> (2008-08-08)
 # x86 asm only, it won't be built on amd64 if mmx useflag is enabled but that

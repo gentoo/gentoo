@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (2022-06-27)
+# Doesn't build with boost installed on the system, some deps require boost
+# so force the flag on until problem fixed upstream
+>=sys-cluster/ceph-17.2.1 system-boost
+
 # Esteve Varela Colominas <esteve.varela@gmail.com> (2022-02-19)
 # Use the jemalloc allocator for telegram, as recommended by upstream,
 # to reduce memory usage, at least on glibc.
@@ -15,10 +20,6 @@ sys-devel/clang pie
 # Force to use installed openjdk{,-bin} for bootstrapping
 dev-java/openjdk:11 system-bootstrap
 dev-java/openjdk:17 system-bootstrap
-
-# Joonas Niilola <juippis@gentoo.org> (2022-01-08)
-# -xft broken, investigate in bug #830777
-~x11-misc/xscreensaver-6.02 xft
 
 # Michał Górny <mgorny@gentoo.org> (2021-11-04)
 # Enable all LLVM targets unconditionally.  Unfortunately, disabling
@@ -79,11 +80,6 @@ www-client/lynx unicode
 # b) using libidn
 app-text/ghostscript-gpl unicode
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-01)
-# sys-boot/udk is being removed, and newest revision of refind does not
-# support it already.
-sys-boot/refind gnuefi
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2020-12-06)
 # Doesn't build without X. Not removing IUSE from ebuild yet in hope that
 # https://github.com/TomenetGame/tomenet/issues/14 will be fixed.
@@ -134,7 +130,7 @@ sys-kernel/vanilla-kernel initramfs
 # distribution and rely on external providers like libxcrypt.
 # Here we are following that path too.
 <sys-libs/glibc-2.33-r2 crypt
->=sys-libs/libxcrypt-4.4.23-r1 system compat
+sys-libs/libxcrypt system compat
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd, so force USE=guile2
@@ -179,20 +175,10 @@ net-misc/netkit-bootparamd libtirpc
 sci-astronomy/esomidas libtirpc
 sys-cluster/glusterfs libtirpc
 
-# Adam Feldman <NP-Hardass@gentoo.org> (2017-04-10)
-# Always force patch on appropriate variant
-app-emulation/wine-staging staging
-
 # David Seifert <soap@gentoo.org> (2017-03-07)
 # Only ever use system ffmpeg, allow kodi bundled ffmpeg
 # only for debug pruposes.
 media-tv/kodi system-ffmpeg
-
-# Sam Jorna <wraeth@gentoo.org> (2016-12-15)
-# Known to build unbootable EFI binaries on some systems when built with
-# UDK. Forcing use of gnu-efi until it's more stable
-# (probably after stabilization of refind-0.11.4).
-sys-boot/refind gnuefi
 
 # Maciej Mrozowski <reavertm@gentoo.org> (2016-09-01)
 # Workaround until resolved upstream (bug #586840)
@@ -219,6 +205,7 @@ app-shells/bash:0 readline
 dev-lang/python-exec python_targets_python3_8
 dev-lang/python-exec python_targets_python3_9
 dev-lang/python-exec python_targets_python3_10
+dev-lang/python-exec python_targets_python3_11
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)

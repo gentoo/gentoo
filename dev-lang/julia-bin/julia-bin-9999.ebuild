@@ -2,10 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 MY_PN=${PN/-bin/}
 
 DESCRIPTION="High-performance programming language for technical computing"
 HOMEPAGE="https://julialang.org/"
+S="${WORKDIR}/"
 
 PROPERTIES="live"
 MY_P=${MY_PN}-latest
@@ -13,15 +15,12 @@ SRC_URI=""
 
 LICENSE="MIT"
 SLOT="9999"
+RESTRICT="strip"
 
 RDEPEND="app-arch/p7zip"
 DEPEND="${RDEPEND}"
 
-RESTRICT="strip"
-
 QA_PREBUILT="*"
-
-S="${WORKDIR}/"
 
 src_unpack() {
 	NIGHTLIES_S3="https://julialangnightlies-s3.julialang.org/bin"

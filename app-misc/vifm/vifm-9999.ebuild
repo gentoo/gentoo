@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/vifm/vifm.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="developer +extended-keys gtk +magic +vim +vim-syntax X"
+IUSE="+extended-keys gtk +magic +vim +vim-syntax X"
 
 DEPEND="
 	>=sys-libs/ncurses-5.9-r3:0
@@ -28,7 +28,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# developer just turns off optimisations and adds -Werror again
+	# bug #855386
 	econf \
+		--disable-developer \
+		--disable-werror \
 		$(use_enable developer) \
 		$(use_enable extended-keys) \
 		$(use_with magic libmagic) \

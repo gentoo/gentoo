@@ -1,0 +1,89 @@
+# Instead of deleting the code blocks, just putting them inside a ifndef
+# condition is safer
+--- a/applets/brightness/egg-debug.c
++++ b/applets/brightness/egg-debug.c
+@@ -74,6 +74,7 @@ pk_set_console_mode (guint console_code)
+ 	printf ("%s", command);
+ }
+
++#if (defined(__UCLIBC__) || defined(__GLIBC__))
+ /**
+  * egg_debug_backtrace:
+  **/
+@@ -98,6 +99,7 @@ egg_debug_backtrace (void)
+ 		free (symbols);
+ 	}
+ }
++#endif
+
+ /**
+  * pk_log_line:
+@@ -229,8 +231,10 @@ egg_error_real (const gchar *func, const gchar *file, const int line, const gcha
+ 	pk_print_line (func, file, line, buffer, CONSOLE_RED);
+ 	g_free(buffer);
+
++#if (defined(__UCLIBC__) || defined(__GLIBC__))
+ 	/* we want to fix this! */
+ 	egg_debug_backtrace ();
++#endif
+
+ 	exit (1);
+ }
+--- a/applets/inhibit/egg-debug.c
++++ b/applets/inhibit/egg-debug.c
+@@ -74,6 +74,7 @@ pk_set_console_mode (guint console_code)
+ 	printf ("%s", command);
+ }
+
++#if (defined(__UCLIBC__) || defined(__GLIBC__))
+ /**
+  * egg_debug_backtrace:
+  **/
+@@ -98,6 +99,7 @@ egg_debug_backtrace (void)
+ 		free (symbols);
+ 	}
+ }
++#endif
+
+ /**
+  * pk_log_line:
+@@ -229,8 +231,10 @@ egg_error_real (const gchar *func, const gchar *file, const int line, const gcha
+ 	pk_print_line (func, file, line, buffer, CONSOLE_RED);
+ 	g_free(buffer);
+
++#if (defined(__UCLIBC__) || defined(__GLIBC__))
+ 	/* we want to fix this! */
+ 	egg_debug_backtrace ();
++#endif
+
+ 	exit (1);
+ }
+--- a/src/egg-debug.c
++++ b/src/egg-debug.c
+@@ -74,6 +74,7 @@ pk_set_console_mode (guint console_code)
+ 	printf ("%s", command);
+ }
+
++#if (defined(__UCLIBC__) || defined(__GLIBC__))
+ /**
+  * egg_debug_backtrace:
+  **/
+@@ -98,6 +99,7 @@ egg_debug_backtrace (void)
+ 		free (symbols);
+ 	}
+ }
++#endif
+
+ /**
+  * pk_log_line:
+@@ -229,8 +231,10 @@ egg_error_real (const gchar *func, const gchar *file, const int line, const gcha
+ 	pk_print_line (func, file, line, buffer, CONSOLE_RED);
+ 	g_free(buffer);
+
++#if (defined(__UCLIBC__) || defined(__GLIBC__))
+ 	/* we want to fix this! */
+ 	egg_debug_backtrace ();
++#endif
+
+ 	exit (1);
+ }

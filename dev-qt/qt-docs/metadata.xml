@@ -14,7 +14,7 @@
 		<flag name="datavis">Install documentation for <pkg>dev-qt/qtdatavis3d</pkg></flag>
 		<flag name="declarative">Install documentation for <pkg>dev-qt/qtdeclarative</pkg></flag>
 		<flag name="designer">Install documentation for <pkg>dev-qt/designer</pkg></flag>
-		<flag name="gamepad">Install documentation for dev-qt/qtgamepad (available in qt overlay only)</flag>
+		<flag name="gamepad">Install documentation for <pkg>dev-qt/qtgamepad</pkg> (available in qt overlay only)</flag>
 		<flag name="graphicaleffects">Install documentation for <pkg>dev-qt/qtgraphicaleffects</pkg></flag>
 		<flag name="gui">Install documentation for <pkg>dev-qt/qtgui</pkg></flag>
 		<flag name="help">Install documentation for <pkg>dev-qt/qthelp</pkg></flag>

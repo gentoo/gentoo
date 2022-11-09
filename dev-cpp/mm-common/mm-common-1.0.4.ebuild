@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit gnome.org python-any-r1 meson
 
 DESCRIPTION="Build infrastructure and utilities for GNOME C++ bindings"
@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gtkmm.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
 BDEPEND="${PYTHON_DEPS}"
 

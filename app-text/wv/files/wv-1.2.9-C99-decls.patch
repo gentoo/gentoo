@@ -1,0 +1,101 @@
+--- a/field.c
++++ b/field.c
+@@ -25,6 +25,7 @@
+ #include <stdlib.h>
+ #include <ctype.h>
+ #include <string.h>
++#include <strings.h>
+ #include <time.h>
+ 
+ #include "wv.h"
+--- a/md5.c
++++ b/md5.c
+@@ -57,7 +57,7 @@
+ #include "md5.h"
+ 
+ /* forward declaration */
+-static void Transform ();
++static void Transform (UINT4 *buf, UINT4 *in);
+ 
+ static unsigned char PADDING[64] = {
+     0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+@@ -103,8 +103,7 @@
+   }
+ 
+ void
+-wvMD5Init (mdContext)
+-     wvMD5_CTX *mdContext;
++wvMD5Init (wvMD5_CTX *mdContext)
+ {
+     mdContext->i[0] = mdContext->i[1] = (UINT4) 0;
+ 
+@@ -117,10 +116,7 @@
+ }
+ 
+ void
+-wvMD5Update (mdContext, inBuf, inLen)
+-     wvMD5_CTX *mdContext;
+-     unsigned char *inBuf;
+-     unsigned int inLen;
++wvMD5Update (wvMD5_CTX *mdContext, unsigned char *inBuf, unsigned int inLen)
+ {
+     UINT4 in[16];
+     int mdi;
+@@ -155,8 +151,7 @@
+ }
+ 
+ void
+-wvMD5Final (mdContext)
+-     wvMD5_CTX *mdContext;
++wvMD5Final (wvMD5_CTX *mdContext)
+ {
+     UINT4 in[16];
+     int mdi;
+@@ -198,9 +193,7 @@
+ /* Basic MD5 step. Transform buf based on in.
+  */
+ static void
+-Transform (buf, in)
+-     UINT4 *buf;
+-     UINT4 *in;
++Transform (UINT4 *buf, UINT4 *in)
+ {
+     UINT4 a = buf[0], b = buf[1], c = buf[2], d = buf[3];
+ 
+--- a/md5.h
++++ b/md5.h
+@@ -48,9 +48,9 @@
+     unsigned char digest[16];	/* actual digest after MD5Final call */
+ } wvMD5_CTX;
+ 
+-void wvMD5Init ();
+-void wvMD5Update ();
+-void wvMD5Final ();
++void wvMD5Init (wvMD5_CTX *mdContext);
++void wvMD5Update (wvMD5_CTX *mdContext, unsigned char *inBuf, unsigned int inLen);
++void wvMD5Final (wvMD5_CTX *mdContext);
+ 
+ /*
+  **********************************************************************
+--- a/wvConfig.c
++++ b/wvConfig.c
+@@ -24,6 +24,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <strings.h>
+ #include <math.h>
+ #include <ctype.h>
+ #include "wv.h"
+--- a/wvparse.c
++++ b/wvparse.c
+@@ -35,6 +35,9 @@
+ #include <gsf/gsf-input-stdio.h>
+ #include <gsf/gsf-utils.h>
+ 
++int wvOLEDecode_gsf (wvParseStruct * ps, GsfInput *path, wvStream ** mainfd, wvStream ** tablefd0,
++  wvStream ** tablefd1, wvStream ** data, wvStream ** summary);
++
+ int
+ wvInit (void)
+ {

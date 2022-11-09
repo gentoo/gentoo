@@ -1,0 +1,27 @@
+diff -Naur hyx-2021.06.09.org/Makefile hyx-2021.06.09/Makefile
+--- hyx-2021.06.09.org/Makefile	2021-06-09 18:09:18.000000000 +0200
++++ hyx-2021.06.09/Makefile	2022-08-31 08:20:27.711819466 +0200
+@@ -1,18 +1,19 @@
+ 
+ all: CFLAGS ?= -O2 -Wl,-s \
+-               -Wl,-z,relro,-z,now -fpic -pie -D_FORTIFY_SOURCE=2 -fstack-protector-all
+-all: CFLAGS += -std=c99 -pedantic -Wall -Wextra -DNDEBUG
++               -std=c99 -pedantic -Wall -Wextra -DNDEBUG
++all: LDFLAGS ?= -Wl,-z,relro,-z,now -fpic -pie -D_FORTIFY_SOURCE=2 -fstack-protector-all
+ all: hyx
+ 
+ debug: CFLAGS ?= -O0 -g \
+                  -fsanitize=undefined \
+-                 -Wl,-z,relro,-z,now -fpic -pie -fstack-protector-all
+-debug: CFLAGS += -std=c99 -pedantic -Wall -Wextra -Werror
++                 -std=c99 -pedantic -Wall -Wextra -Werror
++debug: LDFLAGS ?= -Wl,-z,relro,-z,now -fpic -pie -fstack-protector-all
+ debug: hyx
+ 
+ hyx: *.h *.c
+ 	$(CC) \
+ 		$(CFLAGS) \
++		$(LDFLAGS) \
+ 		hyx.c common.c blob.c history.c view.c input.c \
+ 		-o hyx
+ 

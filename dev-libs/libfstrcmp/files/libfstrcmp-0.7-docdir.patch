@@ -1,0 +1,140 @@
+https://bugs.gentoo.org/853133
+
+From: orbea <orbea@riseup.net>
+Date: Mon, 20 Jun 2022 07:49:14 -0700
+Subject: [PATCH] build: Support docdir
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -31,6 +31,14 @@
+ # Use "./configure --help" for a list of options.
+ #
+ 
++#
++# the name of the package
++#
++PACKAGE_NAME = @PACKAGE_NAME@
++PACKAGE_STRING = @PACKAGE_STRING@
++PACKAGE_TARNAME = @PACKAGE_TARNAME@
++PACKAGE_VERSION = @PACKAGE_VERSION@
++
+ #
+ # directory containing the source
+ #
+@@ -86,6 +94,16 @@ exec_prefix = @exec_prefix@
+ #
+ bindir = $(DESTDIR)@bindir@
+ 
++#
++# Where to put the documentation.
++#
++# On a network, this would be shared between all machines on the network. It can
++# be read-only.
++#
++# The $(DESTDIR) is for packaging.
++#
++docdir = $(DESTDIR)@docdir@
++
+ #
+ # Where to put the manuals.
+ #
+@@ -97,7 +115,7 @@ bindir = $(DESTDIR)@bindir@
+ mandir = $(DESTDIR)@mandir@
+ 
+ # define this to silence ./configure warning
+-datarootdir = $(DESTDIR)@datarootdir@
++datarootdir = @datarootdir@
+ 
+ #
+ # Where to put the supplementary package executables.
+@@ -164,7 +182,7 @@ etc/building.pdf: etc/building.man man/man1/z_copyright.so
+ 	ps2pdf etc/building.ps $@
+ 	rm etc/building.ps
+ 
+-$(datarootdir)/doc/fstrcmp/building.pdf: .mkdir.__datarootdir__doc_fstrcmp \
++$(docdir)/building.pdf: .mkdir.__datarootdir__doc_fstrcmp \
+ 		etc/building.pdf
+ 	$(INSTALL_DATA) etc/building.pdf $@
+ 
+@@ -175,7 +193,7 @@ etc/readme.pdf: etc/new.0.1.so etc/new.0.2.so etc/new.0.3.so etc/new.0.4.so \
+ 	ps2pdf etc/readme.ps $@
+ 	rm etc/readme.ps
+ 
+-$(datarootdir)/doc/fstrcmp/readme.pdf: .mkdir.__datarootdir__doc_fstrcmp \
++$(docdir)/readme.pdf: .mkdir.__datarootdir__doc_fstrcmp \
+ 		etc/readme.pdf
+ 	$(INSTALL_DATA) etc/readme.pdf $@
+ 
+@@ -191,7 +209,7 @@ etc/reference.pdf: etc/building.man etc/new.0.1.so etc/new.0.2.so \
+ 	ps2pdf etc/reference.ps $@
+ 	rm etc/reference.ps
+ 
+-$(datarootdir)/doc/fstrcmp/reference.pdf: .mkdir.__datarootdir__doc_fstrcmp \
++$(docdir)/reference.pdf: .mkdir.__datarootdir__doc_fstrcmp \
+ 		etc/reference.pdf
+ 	$(INSTALL_DATA) etc/reference.pdf $@
+ 
+@@ -532,14 +550,9 @@ $(libdir)/libfstrcmp.la: .mkdir.__libdir_ lib/libfstrcmp.la
+ 	@-test -d $(datarootdir) && touch $@
+ 	@sleep 1
+ 
+-.mkdir.__datarootdir__doc: .mkdir.__datarootdir_
+-	-$(INSTALL_DIR) $(datarootdir)/doc
+-	@-test -d $(datarootdir)/doc && touch $@
+-	@sleep 1
+-
+-.mkdir.__datarootdir__doc_fstrcmp: .mkdir.__datarootdir__doc
+-	-$(INSTALL_DIR) $(datarootdir)/doc/fstrcmp
+-	@-test -d $(datarootdir)/doc/fstrcmp && touch $@
++.mkdir.__datarootdir__doc_fstrcmp: .mkdir.__datarootdir_
++	-$(INSTALL_DIR) $(docdir)
++	@-test -d $(docdir) && touch $@
+ 	@sleep 1
+ 
+ .mkdir.__includedir_:
+@@ -633,7 +646,7 @@ clean-doc:
+ 
+ clean-misc:
+ 	rm -f .bin .mkdir.__bindir_ .mkdir.__datarootdir_
+-	rm -f .mkdir.__datarootdir__doc .mkdir.__datarootdir__doc_fstrcmp
++	rm -f .mkdir.__datarootdir__doc_fstrcmp
+ 	rm -f .mkdir.__includedir_ .mkdir.__libdir_ .mkdir.__libdir__pkgconfig
+ 	rm -f .mkdir.__mandir_ .mkdir.__mandir__man1 .mkdir.__mandir__man3 core
+ 	rm -f etc/building.pdf etc/readme.pdf etc/reference.pdf
+@@ -666,9 +679,9 @@ install: install-bin install-doc install-include install-libdir install-man
+ 
+ install-bin: $(bindir)/fstrcmp$(EXEEXT)
+ 
+-install-doc: $(datarootdir)/doc/fstrcmp/building.pdf \
+-		$(datarootdir)/doc/fstrcmp/readme.pdf \
+-		$(datarootdir)/doc/fstrcmp/reference.pdf
++install-doc: $(docdir)/building.pdf \
++		$(docdir)/readme.pdf \
++		$(docdir)/reference.pdf
+ 
+ install-include: $(includedir)/fstrcmp.h
+ 
+@@ -687,9 +700,9 @@ install-man: $(mandir)/man1/fstrcmp.1 $(mandir)/man1/fstrcmp_license.1 \
+ 		$(mandir)/man3/fwcscmp.3 $(mandir)/man3/fwcscmpi.3
+ 
+ uninstall:
+-	rm -f $(bindir)/fstrcmp$(EXEEXT) $(datarootdir)/doc/fstrcmp/building.pdf
+-	rm -f $(datarootdir)/doc/fstrcmp/readme.pdf
+-	rm -f $(datarootdir)/doc/fstrcmp/reference.pdf $(includedir)/fstrcmp.h
++	rm -f $(bindir)/fstrcmp$(EXEEXT) $(docdir)/building.pdf
++	rm -f $(docdir)/readme.pdf
++	rm -f $(docdir)/reference.pdf $(includedir)/fstrcmp.h
+ 	rm -f $(libdir)/libfstrcmp.a $(libdir)/libfstrcmp.la
+ 	rm -f $(libdir)/libfstrcmp.so* $(libdir)/pkgconfig/fstrcmp.pc
+ 	rm -f $(mandir)/man1/fstrcmp.1 $(mandir)/man1/fstrcmp_license.1
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,7 +16,7 @@ dnl!
+ dnl! You should have received a copy of the GNU General Public License
+ dnl! along with this program. If not, see <http://www.gnu.org/licenses/>.
+ dnl!
+-AC_INIT(install-sh)
++AC_INIT([fstrcmp], [0.7])
+ AC_CONFIG_HEADER(lib/config.h)
+ AC_PROG_CC
+ AC_CANONICAL_HOST

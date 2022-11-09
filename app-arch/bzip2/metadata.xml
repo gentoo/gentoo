@@ -7,5 +7,6 @@
 </maintainer>
 <upstream>
   <remote-id type="cpe">cpe:/a:bzip:bzip2</remote-id>
+  <remote-id type="gitlab">bzip2/bzip2</remote-id>
 </upstream>
 </pkgmetadata>

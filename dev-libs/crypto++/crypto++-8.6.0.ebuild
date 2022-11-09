@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/crypto++.asc
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/crypto++.asc
 inherit toolchain-funcs verify-sig
 
 DESCRIPTION="C++ class library of cryptographic schemes"
@@ -13,11 +13,16 @@ SRC_URI+=" verify-sig? ( https://cryptopp.com/cryptopp${PV//.}.zip.sig )"
 S="${WORKDIR}"
 
 LICENSE="Boost-1.0"
-# Bumped to 8.5 in 8.5.0 out of caution
+# ABI notes:
+# - Bumped to 8.5 in 8.5.0 out of caution
 # subslot is so version (was broken in 8.3.0, check on bumps!)
 # Seems to be broken in 8.6 again too
-SLOT="0/8.6"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~x64-macos"
+#
+# - See https://cryptopp.com/#news, but releases usually say
+# "recompile of programs required". Even if it doesn't,
+# verify with abidiff!
+SLOT="0/${PV}"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86 ~x64-macos"
 IUSE="+asm static-libs"
 
 BDEPEND="

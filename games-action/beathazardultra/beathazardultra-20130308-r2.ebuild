@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: unbundle allegro[gtk...] (no multilib on amd64 and 5.0.9 soname)
@@ -9,7 +9,7 @@ inherit desktop unpacker wrapper
 
 DESCRIPTION="Intense music-driven arcade shooter powered by your music"
 HOMEPAGE="http://www.coldbeamgames.com/"
-SRC_URI="beathazard-installer_03-08-13"
+SRC_URI="beathazard-installer_${PV:4:2}-${PV:6:2}-${PV:2:2}"
 S="${WORKDIR}"/data
 
 LICENSE="all-rights-reserved"

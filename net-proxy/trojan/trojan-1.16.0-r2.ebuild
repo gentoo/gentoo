@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISABLE_AUTOFORMATTING=1
 FORCE_PRINT_ELOG=1
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake python-any-r1 systemd readme.gentoo-r1
 DESCRIPTION="An unidentifiable mechanism that helps you bypass GFW"
@@ -26,7 +26,7 @@ IUSE="mysql test"
 RESTRICT="test"
 
 RDEPEND="
-	>=dev-libs/boost-1.66.0:=
+	dev-libs/boost:=
 	dev-libs/openssl:0=
 	mysql? ( dev-db/mysql-connector-c:= )
 "

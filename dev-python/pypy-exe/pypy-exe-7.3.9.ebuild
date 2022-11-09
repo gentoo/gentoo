@@ -8,7 +8,7 @@ inherit check-reqs pax-utils python-any-r1 toolchain-funcs
 
 PYPY_PV=${PV%_p*}
 MY_P=pypy2.7-v${PYPY_PV/_}
-PATCHSET="pypy2.7-gentoo-patches-${PV/_}"
+PATCHSET="pypy2.7-gentoo-patches-${PV/_}_p1"
 
 DESCRIPTION="PyPy executable (build from source)"
 HOMEPAGE="https://www.pypy.org/"

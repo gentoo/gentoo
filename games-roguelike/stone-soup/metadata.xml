@@ -13,13 +13,16 @@
 		<doc lang="en">https://crawl.develz.org</doc>
 		<bugs-to>https://crawl.develz.org/mantis</bugs-to>
 		<remote-id type="sourceforge">crawl-ref</remote-id>
+		<remote-id type="github">crawl/crawl</remote-id>
 	</upstream>
 	<use>
-		<flag name="tiles">Enable for graphical (tiled) build.
-			(can be enabled on top of ncurses)
+		<flag name="advpng">Use alternate png optimization.
 		</flag>
 		<flag name="ncurses">Enable for console (uses ncurses) based build.
 			(can be enabled on top of tiles)
+		</flag>
+		<flag name="tiles">Enable for graphical (tiled) build.
+			(can be enabled on top of ncurses)
 		</flag>
 	</use>
 	<longdescription lang="en">

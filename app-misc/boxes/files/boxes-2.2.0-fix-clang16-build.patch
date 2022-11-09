@@ -1,0 +1,15 @@
+change function prototype to work with c2x standard. Build fails with clang16 without this
+
+See: https://github.com/ascii-boxes/boxes/issues/106
+
+--- a/src/remove.h
++++ b/src/remove.h
+@@ -22,7 +22,7 @@
+
+
+ int remove_box();
+-void output_input();
++void output_input(const int trim_only);
+
+
+ #endif /*REMOVE_H*/

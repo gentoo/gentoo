@@ -20,7 +20,7 @@
   <use>
     <flag name="ocamlopt">
       Whether the OCaml native code compiler is used. Must be set globally and
-      match dev-lang/ocaml.
+      match <pkg>dev-lang/ocaml</pkg>.
     </flag>
   </use>
 </pkgmetadata>

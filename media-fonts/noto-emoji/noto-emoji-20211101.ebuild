@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/googlefonts/noto-emoji/archive/${COMMIT}.tar.gz -> $
 
 LICENSE="Apache-2.0 OFL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="buildfont"
 
 BDEPEND="
@@ -36,12 +36,13 @@ RESTRICT="binchecks strip"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 python_check_deps() {
-	has_version -b "dev-python/fonttools[${PYTHON_USEDEP}]" &&
-	has_version -b "dev-python/nototools[${PYTHON_USEDEP}]"
+	python_has_version ">=dev-python/fonttools-4.7.0[${PYTHON_USEDEP}]" \
+		">=dev-python/nototools-0.2.13[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
 	font_pkg_setup
+	use buildfont && python-any-r1_pkg_setup
 }
 
 src_prepare() {

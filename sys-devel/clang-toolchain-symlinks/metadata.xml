@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>llvm@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="gcc-symlinks">
+			Install symlinks for 'gcc' and 'g++' for extra
+			compatibility.
+		</flag>
+		<flag name="multilib-symlinks">
+			Install symlinks for all ABI CHOSTs. Note that this can
+			result in gcc being overrode for native builds, as well
+			as conflict with crossdev if used for the same targets.
+		</flag>
+		<flag name="native-symlinks">
+			Install generic tool symlinks like 'cc' and 'c++',
+			as well as ${CTARGET}-*. These symlinks are installed
+			into slotted LLVM bindir, so they should not take precedence
+			over symlinks installed into /usr/bin
+			by <pkg>sys-devel/gcc-config</pkg> but they can be helpful
+			for GCC-free setups.
+		</flag>
+	</use>
+</pkgmetadata>

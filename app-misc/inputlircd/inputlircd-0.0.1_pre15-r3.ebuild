@@ -11,12 +11,12 @@ SRC_URI="http://gentooexperimental.org/~genstef/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 ~riscv x86"
 
 src_prepare() {
 	local ver="$(best_version sys-kernel/linux-headers)"
 	ver=${ver#sys-kernel/linux-headers-}
-	if ver_test 4.4 -ge ${ver}; then
+	if ver_test ${ver} -ge 4.4; then
 		eapply "${FILESDIR}/inputlircd-linux-4.4-fix.patch"
 	fi
 

@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-07-06)
+# sci-libs/sundials is not marked stable on arm
+sci-mathematics/octave sundials
+
 # Sam James <sam@gentoo.org> (2022-01-16)
 # net-libs/gnome-online-accounts is not marked stable on arm yet
 gnome-base/gvfs google
@@ -143,10 +147,6 @@ media-video/mpv raspberry-pi
 # Brian Evans <grknight@gentoo.org> (2016-01-08)
 # net-misc/libteam is not yet stable on arm
 net-misc/networkmanager teamd
-
-# Pacho Ramos <pacho@gentoo.org> (2015-10-03)
-# Missing stable, bug #529462
-media-gfx/graphviz java
 
 # Markus Meier <maekke@gentoo.org> (2015-07-19)
 # Missing stable

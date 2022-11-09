@@ -31,7 +31,8 @@ RDEPEND="
 	ssl? (
 		dev-libs/openssl:=
 	)"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )

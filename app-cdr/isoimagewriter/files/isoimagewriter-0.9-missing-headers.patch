@@ -1,0 +1,30 @@
+From fad0ba93445e512e81c56e872b77d9e5b9d56fa9 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 18 May 2022 15:57:26 +0200
+Subject: [PATCH] Add missing headers
+
+Downstream bug: https://bugs.gentoo.org/842657
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ isoimagewriter/fetchisojob.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/isoimagewriter/fetchisojob.cpp b/isoimagewriter/fetchisojob.cpp
+index 42c71c1..e5ced11 100644
+--- a/isoimagewriter/fetchisojob.cpp
++++ b/isoimagewriter/fetchisojob.cpp
+@@ -5,8 +5,10 @@
+ */
+ 
+ #include "fetchisojob.h"
++#include <QDebug>
+ #include <QDir>
+ #include <QNetworkReply>
++#include <QSharedPointer>
+ #include <QStandardPaths>
+ 
+ FetchIsoJob::FetchIsoJob(QObject *parent)
+-- 
+2.35.1
+

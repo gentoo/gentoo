@@ -1,0 +1,48 @@
+# Since musl doesn't have execinfo. We're going to avoid including it and make
+# the printStacktrace function void
+# Closes: https://bugs.gentoo.org/830945
+--- a/synchronizer/CMakeLists.txt
++++ b/synchronizer/CMakeLists.txt
+@@ -2,6 +2,12 @@ project(sink_synchronizer)
+
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+
++INCLUDE(CheckIncludeFiles)
++CHECK_INCLUDE_FILES("execinfo.h" HAVE_EXECINFO)
++IF (HAVE_EXECINFO)
++	add_compile_definitions(HAVE_EXECINFO_H)
++ENDIF(HAVE_EXECINFO)
++
+ set(sinksynchronizer_SRCS
+     main.cpp
+     backtrace.cpp
+--- a/synchronizer/backtrace.cpp
++++ b/synchronizer/backtrace.cpp
+@@ -31,7 +31,9 @@
+ #include <chrono>
+
+ #ifndef Q_OS_WIN
++#ifdef HAVE_EXECINFO_H
+ #include <execinfo.h>
++#endif // HAVE_EXECINFO_H
+ #include <unistd.h>
+ #include <cxxabi.h>
+ #include <dlfcn.h>
+@@ -143,7 +145,7 @@ private:
+ //Print a demangled stacktrace
+ static void printStacktrace()
+ {
+-#ifndef Q_OS_WIN
++#if !defined(Q_OS_WIN) && defined(HAVE_EXECINFO_H)
+     int skip = 1;
+ 	void *callstack[128];
+ 	const int nMaxFrames = sizeof(callstack) / sizeof(callstack[0]);
+@@ -178,7 +180,7 @@ static void printStacktrace()
+ 		trace_buf << "[truncated]\n";
+     }
+     std::cerr << trace_buf.str();
+-#else
++#elif defined(Q_OS_WIN)
+     enum { maxStackFrames = 100 };
+     DebugSymbolResolver resolver(GetCurrentProcess());
+     if (resolver.isValid()) {

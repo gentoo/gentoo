@@ -1,0 +1,30 @@
+From 68b050ac0f60b1f02767276643cba8eb701f9884 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Leonardo=20Hern=C3=A1ndez=20Hern=C3=A1ndez?=
+ <leohdz172@protonmail.com>
+Date: Fri, 30 Sep 2022 17:35:50 -0500
+Subject: [PATCH] fix conflicting types for nautilus_file_get{u,g}id
+
+when building with clang
+---
+ src/nautilus-file.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/nautilus-file.h b/src/nautilus-file.h
+index 9b0613e98..57cca177f 100644
+--- a/src/nautilus-file.h
++++ b/src/nautilus-file.h
+@@ -244,9 +244,9 @@ gboolean                nautilus_file_can_get_owner                     (Nautilu
+ gboolean                nautilus_file_can_set_owner                     (NautilusFile                   *file);
+ gboolean                nautilus_file_can_get_group                     (NautilusFile                   *file);
+ gboolean                nautilus_file_can_set_group                     (NautilusFile                   *file);
+-uid_t                   nautilus_file_get_uid                           (NautilusFile                   *file);
++const uid_t             nautilus_file_get_uid                           (NautilusFile                   *file);
+ char *                  nautilus_file_get_owner_name                    (NautilusFile                   *file);
+-gid_t                   nautilus_file_get_gid                           (NautilusFile                   *file);
++const gid_t             nautilus_file_get_gid                           (NautilusFile                   *file);
+ char *                  nautilus_file_get_group_name                    (NautilusFile                   *file);
+ GList *                 nautilus_get_user_names                         (void);
+ GList *                 nautilus_get_all_group_names                    (void);
+-- 
+GitLab
+

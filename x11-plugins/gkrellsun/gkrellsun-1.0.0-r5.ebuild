@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/gkrellsun/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc sparc x86"
 IUSE="nls"
 
 RDEPEND="app-admin/gkrellm:2[X]"

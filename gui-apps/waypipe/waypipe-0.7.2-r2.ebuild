@@ -40,7 +40,7 @@ DEPEND="
 	)
 	lz4? ( app-arch/lz4 )
 	systemtap? ( dev-util/systemtap )
-	vaapi? ( x11-libs/libva[drm(+),wayland] )
+	vaapi? ( media-libs/libva[drm(+),wayland] )
 	ffmpeg? (
 		media-video/ffmpeg[x264,vaapi?]
 	)
@@ -60,7 +60,6 @@ PATCHES=(
 
 src_configure() {
 	local emesonargs=(
-		-Dwerror=false
 		$(meson_use systemtap with_systemtap)
 		$(meson_feature dmabuf with_dmabuf)
 		$(meson_feature ffmpeg with_video)

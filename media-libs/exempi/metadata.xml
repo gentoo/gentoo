@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>freedesktop-bugs@gentoo.org</email>
-  </maintainer>
+	<maintainer type="project">
+		<email>freedesktop-bugs@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">libopenraw/exempi</remote-id>
+	</upstream>
 </pkgmetadata>

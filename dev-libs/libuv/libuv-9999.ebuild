@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools multilib-minimal
+inherit autotools
 
 DESCRIPTION="Cross-platform asychronous I/O"
 HOMEPAGE="https://github.com/libuv/libuv"
@@ -13,7 +13,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/libuv/libuv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="BSD BSD-2 ISC MIT"
@@ -34,25 +34,20 @@ src_prepare() {
 		eapply "${FILESDIR}"/${PN}-1.41.0-darwin.patch
 	fi
 
-	# upstream fails to ship a configure script
+	# Upstream fails to ship a configure script
 	eautoreconf
 }
 
-multilib_src_configure() {
+src_configure() {
 	local myeconfargs=(
-		--disable-static
 		cc_cv_cflags__g=no
 	)
 
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	econf "${myeconfargs[@]}"
 }
 
-multilib_src_test() {
-	cp -pPR "${S}"/test/fixtures "${BUILD_DIR}"/test/fixtures || die
+src_install() {
 	default
-}
 
-multilib_src_install_all() {
-	einstalldocs
 	find "${ED}" -name '*.la' -delete || die
 }

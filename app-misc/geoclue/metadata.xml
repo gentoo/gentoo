@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="modemmanager">Enable geolocation through 3G or GPS enabled hardware through <pkg>net-misc/modemmanager</pkg>.</flag>
-	<flag name="zeroconf">Enable retrieval of GPS location from Android devices with https://wiki.gnome.org/Apps/GeoclueShare</flag>
-</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="modemmanager">Enable geolocation through 3G or GPS enabled hardware through <pkg>net-misc/modemmanager</pkg>.</flag>
+    <flag name="zeroconf">Enable retrieval of GPS location from Android devices with https://wiki.gnome.org/Apps/GeoclueShare</flag>
+  </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">geoclue/geoclue</remote-id>
+  </upstream>
 </pkgmetadata>

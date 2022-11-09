@@ -11,6 +11,7 @@
 			<name>Twisted Matrix Laboratories</name>
 		</maintainer>
 		<remote-id type="pypi">Twisted</remote-id>
+		<remote-id type="github">twisted/twisted</remote-id>
 	</upstream>
 	<use>
 		<flag name="conch">include Twisted SSHv2 implementation</flag>

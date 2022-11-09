@@ -15,15 +15,15 @@
     </changelog>
   </upstream>
   <use>
-    <flag name="bmp">BMP bitmap image support (media-libs/libnsbmp)</flag>
+    <flag name="bmp">BMP bitmap image support (<pkg>media-libs/libnsbmp</pkg>)</flag>
     <flag name="gtk">Build GTK3 GUI</flag>
     <flag name="gtk2">Build GTK2 GUI</flag>
-    <flag name="psl">Use public suffix list via media-libs/libnspsl</flag>
+    <flag name="psl">Use public suffix list via <pkg>media-libs/libnspsl</pkg></flag>
     <flag name="rosprite">
-      RISC OS Sprite bitmap image support (media-libs/librosprite)
+      RISC OS Sprite bitmap image support (<pkg>media-libs/librosprite</pkg>)
     </flag>
     <flag name="svgtiny">
-      SVG image support via media-libs/svgatiny instead of gnome-base/librsvg
+      SVG image support via media-libs/svgatiny instead of <pkg>gnome-base/librsvg</pkg>
     </flag>
   </use>
   <longdescription lang="en">

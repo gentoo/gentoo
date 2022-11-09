@@ -1,0 +1,71 @@
+diff --git a/common/cmake/FindOpenImageIO.cmake b/common/cmake/FindOpenImageIO.cmake
+index 086b91183..5816f3bc5 100644
+--- a/common/cmake/FindOpenImageIO.cmake
++++ b/common/cmake/FindOpenImageIO.cmake
+@@ -53,6 +53,7 @@ SET(OPENIMAGEIO_HINTS
+   )
+ SET(OPENIMAGEIO_PATHS PATHS /usr/lib /usr/lib64 /lib /lib64)
+ FIND_LIBRARY(OPENIMAGEIO_LIBRARY OpenImageIO ${OPENIMAGEIO_HINTS} ${OPENIMAGEIO_PATHS})
++FIND_LIBRARY(OPENIMAGEIO_UTIL_LIBRARY OpenImageIO_Util ${OPENIMAGEIO_HINTS} ${OPENIMAGEIO_PATHS})
+ 
+ SET(OPENIMAGEIO_ROOT_LAST ${OPENIMAGEIO_ROOT} CACHE INTERNAL "Last value of OPENIMAGEIO_ROOT to detect changes")
+ 
+@@ -68,8 +69,9 @@ FIND_PACKAGE_HANDLE_STANDARD_ARGS(OpenImageIO
+ 
+ IF (OPENIMAGEIO_FOUND)
+   SET(OPENIMAGEIO_INCLUDE_DIRS ${OPENIMAGEIO_INCLUDE_DIR})
+-  SET(OPENIMAGEIO_LIBRARIES ${OPENIMAGEIO_LIBRARY})
++  SET(OPENIMAGEIO_LIBRARIES ${OPENIMAGEIO_LIBRARY} ${OPENIMAGEIO_UTIL_LIBRARY})
+ ENDIF()
+ 
+ MARK_AS_ADVANCED(OPENIMAGEIO_INCLUDE_DIR)
+ MARK_AS_ADVANCED(OPENIMAGEIO_LIBRARY)
++MARK_AS_ADVANCED(OPENIMAGEIO_UTIL_LIBRARY)
+diff --git a/common/cmake/clang.cmake b/common/cmake/clang.cmake
+index 01480ac73..4380823ed 100644
+--- a/common/cmake/clang.cmake
++++ b/common/cmake/clang.cmake
+@@ -86,7 +86,6 @@ ELSE()
+   ENDIF()
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")                       # generate position independent code suitable for shared libraries
+   SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -fPIC")                       # generate position independent code suitable for shared libraries
+-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")                  # enables C++11 features
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")         # makes all symbols hidden by default
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden") # makes all inline symbols hidden by default
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-strict-aliasing")        # disables strict aliasing rules
+diff --git a/common/cmake/dpcpp.cmake b/common/cmake/dpcpp.cmake
+index aecb35169..fcdfb4ce4 100644
+--- a/common/cmake/dpcpp.cmake
++++ b/common/cmake/dpcpp.cmake
+@@ -83,7 +83,6 @@ ELSE()
+   ENDIF()
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")                       # generate position independent code suitable for shared libraries
+   SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -fPIC")                       # generate position independent code suitable for shared libraries
+-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")                  # enables C++11 features
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")         # makes all symbols hidden by default
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden") # makes all inline symbols hidden by default
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-strict-aliasing")        # disables strict aliasing rules
+diff --git a/common/cmake/gnu.cmake b/common/cmake/gnu.cmake
+index 1b2682d9e..cb96ecb64 100644
+--- a/common/cmake/gnu.cmake
++++ b/common/cmake/gnu.cmake
+@@ -44,7 +44,6 @@ IF (NOT APPLE)
+ ENDIF()
+ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")                       # generate position independent code suitable for shared libraries
+ SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -fPIC")                       # generate position independent code suitable for shared libraries
+-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")                  # enables C++11 features
+ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")         # makes all symbols hidden by default
+ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden") # makes all inline symbols hidden by default
+ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-strict-aliasing")        # disables strict aliasing rules
+diff --git a/common/cmake/intel.cmake b/common/cmake/intel.cmake
+index 2c8e86e6c..abdffba90 100644
+--- a/common/cmake/intel.cmake
++++ b/common/cmake/intel.cmake
+@@ -120,7 +120,6 @@ ELSE()
+   ENDIF()
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")                       # generate position independent code suitable for shared libraries
+   SET(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -fPIC")                       # generate position independent code suitable for shared libraries
+-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")                  # enables C++11 features
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")         # makes all symbols hidden by default
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden") # makes all inline symbols hidden by default
+   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -no-ansi-alias")              # disables strict aliasing rules

@@ -9,7 +9,7 @@ inherit perl-module toolchain-funcs
 DESCRIPTION="Perl XS frontend to the Xapian C++ search library"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~ia64 ~mips ppc ppc64 ~sparc x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: perl-functions.eclass
@@ -8,7 +8,7 @@
 # Seemant Kulleen <seemant@gentoo.org>
 # Andreas K. Huettel <dilfridge@gentoo.org>
 # Kent Fredric <kentnl@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: helper functions eclass for perl modules
 # @DESCRIPTION:
 # The perl-functions eclass is designed to allow easier installation of perl
@@ -16,15 +16,15 @@
 # It provides helper functions, no phases or variable manipulation in
 # global scope.
 
-[[ ${CATEGORY} == "perl-core" ]] && inherit alternatives
-
-case "${EAPI:-0}" in
-	5|6|7|8)
+case ${EAPI} in
+	7|8)
 		;;
 	*)
-		die "EAPI=${EAPI} is not supported by perl-functions.eclass"
+		die "${ECLASS}: EAPI ${EAPI:-0} not supported"
 		;;
 esac
+
+[[ ${CATEGORY} == "perl-core" ]] && inherit alternatives
 
 perlinfo_done=false
 
@@ -44,7 +44,8 @@ perlinfo_done=false
 # echo $PERL_VERSION
 # @CODE
 perl_set_version() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
+
 	debug-print "$FUNCNAME: perlinfo_done=${perlinfo_done}"
 	${perlinfo_done} && return 0
 	perlinfo_done=true
@@ -65,7 +66,7 @@ perl_set_version() {
 #
 # This function used to be called fixlocalpod as well.
 perl_delete_localpod() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	find "${D}" -type f -name perllocal.pod -delete
 	find "${D}" -depth -mindepth 1 -type d -empty -delete
@@ -75,7 +76,7 @@ perl_delete_localpod() {
 # @DESCRIPTION:
 # Look through ${S} for AppleDouble encoded files and get rid of them.
 perl_fix_osx_extra() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local f
 	find "${S}" -type f -name "._*" -print0 | while read -rd '' f ; do
@@ -92,7 +93,7 @@ perl_fix_osx_extra() {
 # Bump off manpages installed by the current module such as *.3pm files as well
 # as empty directories.
 perl_delete_module_manpages() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ -d "${ED}"/usr/share/man ]] ; then
 		find "${ED}"/usr/share/man -type f -name "*.3pm" -delete
@@ -105,7 +106,8 @@ perl_delete_module_manpages() {
 # Look through ${D} for .packlist files, empty .bs files and empty directories,
 # and get rid of items found.
 perl_delete_packlist() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
+
 	perl_set_version
 	if [[ -d ${D}/${VENDOR_ARCH} ]] ; then
 		find "${D}/${VENDOR_ARCH}" -type f -a -name .packlist -delete
@@ -118,7 +120,8 @@ perl_delete_packlist() {
 # Look through ${D} for empty .bs files and empty directories,
 # and get rid of items found.
 perl_delete_emptybsdir() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
+
 	perl_set_version
 	if [[ -d ${D}/${VENDOR_ARCH} ]] ; then
 		find "${D}/${VENDOR_ARCH}" -type f \
@@ -132,7 +135,8 @@ perl_delete_emptybsdir() {
 # Make all of ${D} user-writable, since EU::MM does silly things with
 # the w bit. See bug 554346.
 perl_fix_permissions() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
+
 	perl_set_version
 	einfo Fixing installed file permissions
 	fperms -R u+w /
@@ -145,7 +149,7 @@ perl_fix_permissions() {
 # Remove duplicate entries; then validate all entries in the packlist against ${D}
 # and prune entries that do not correspond to installed files.
 perl_fix_packlist() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	local packlist_temp="${T}/.gentoo_packlist_temp"
 	find "${D}" -type f -name '.packlist' -print0 | while read -rd '' f ; do
@@ -161,7 +165,7 @@ perl_fix_packlist() {
 
 			# remove files that dont exist
 			cat "${f}" | while read -r entry; do
-				if [ ! -e "${D}/${entry}" ]; then
+				if [[ ! -e ${D}/${entry} ]]; then
 					einfo "Pruning surplus packlist entry ${entry}"
 					grep -v -x -F "${entry}" "${f}" > "${packlist_temp}"
 					mv "${packlist_temp}" "${f}"
@@ -176,7 +180,7 @@ perl_fix_packlist() {
 # Look through ${D} for text files containing the temporary installation
 # folder (i.e. ${D}). If the pattern is found, replace it with `/' and warn.
 perl_remove_temppath() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	find "${D}" -type f -not -name '*.so' -print0 | while read -rd '' f ; do
 		if file "${f}" | grep -q -i " text" ; then
@@ -209,7 +213,8 @@ perl_remove_temppath() {
 # }
 # @CODE
 perl_rm_files() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
+
 	local skipfile="${T}/.gentoo_makefile_skip"
 	local manifile="${S}/MANIFEST"
 	local manitemp="${T}/.gentoo_manifest_temp"
@@ -236,10 +241,9 @@ perl_rm_files() {
 # lead to file collisions. Mainly for use in pkg_postinst and pkg_postrm, and makes
 # only sense for perl-core packages.
 perl_link_duallife_scripts() {
-	debug-print-function $FUNCNAME "$@"
-	if [[ ${CATEGORY} != perl-core ]] || ! has_version ">=dev-lang/perl-5.8.8-r8" ; then
-		return 0
-	fi
+	debug-print-function ${FUNCNAME} "$@"
+
+	[[ ${CATEGORY} != perl-core ]] && return 0
 
 	local i ff
 	if has "${EBUILD_PHASE:-none}" "postinst" "postrm" ; then
@@ -278,12 +282,12 @@ perl_check_env() {
 
 	for i in PERL_MM_OPT PERL5LIB PERL5OPT PERL_MB_OPT PERL_CORE PERLPREFIX; do
 		# Next unless match
-		[ -v $i ] || continue;
+		[[ -v $i ]] || continue;
 
 		# Warn only once, and warn only when one of the bad values are set.
 		# record failure here.
-		if [ ${errored:-0} == 0 ]; then
-			if [ -n "${I_KNOW_WHAT_I_AM_DOING}" ]; then
+		if [[ ${errored:-0} == 0 ]]; then
+			if [[ -n ${I_KNOW_WHAT_I_AM_DOING} ]]; then
 				elog "perl-module.eclass: Suspicious environment values found.";
 			else
 				eerror "perl-module.eclass: Suspicious environment values found.";
@@ -295,7 +299,7 @@ perl_check_env() {
 		value=${!i};
 
 		# Print ENV name/value pair
-		if [ -n "${I_KNOW_WHAT_I_AM_DOING}" ]; then
+		if [[ -n ${I_KNOW_WHAT_I_AM_DOING} ]]; then
 			elog "    $i=\"$value\"";
 		else
 			eerror "    $i=\"$value\"";
@@ -303,10 +307,10 @@ perl_check_env() {
 	done
 
 	# Return if there were no failures
-	[ ${errored:-0} == 0 ] && return;
+	[[ ${errored:-0} == 0 ]] && return;
 
 	# Return if user knows what they're doing
-	if [ -n "${I_KNOW_WHAT_I_AM_DOING}" ]; then
+	if [[ -n ${I_KNOW_WHAT_I_AM_DOING} ]]; then
 		elog "Continuing anyway, seems you know what you're doing."
 		return
 	fi
@@ -330,7 +334,7 @@ perl_check_env() {
 # }
 # @CODE
 perl_doexamples() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	einfo "Installing examples into /usr/share/doc/${PF}/examples"
 
@@ -364,7 +368,7 @@ perl_doexamples() {
 # @CODE
 
 perl_has_module() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ $# -gt 0 ]] || die "${FUNCNAME}: No module name provided"
 	[[ $# -lt 2 ]] || die "${FUNCNAME}: Too many parameters ($#)"
@@ -402,7 +406,7 @@ perl_has_module() {
 #	&& echo "Test::Tester 0.017 or greater installed"
 # @CODE
 perl_has_module_version() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ $# -gt 0 ]] || die "${FUNCNAME}: No module name provided"
 	[[ $# -gt 1 ]] || die "${FUNCNAME}: No module version provided"
@@ -443,7 +447,7 @@ perl_has_module_version() {
 # @CODE
 
 perl_get_module_version() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ $# -gt 0 ]] || die "${FUNCNAME}: No module name provided"
 	[[ $# -lt 2 ]] || die "${FUNCNAME}: Too many parameters ($#)"
@@ -489,7 +493,7 @@ perl_get_module_version() {
 # @CODE
 
 perl_get_raw_vendorlib() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ $# -lt 1 ]] || die "${FUNCNAME}: Too many parameters ($#)"
 
@@ -510,7 +514,7 @@ perl_get_raw_vendorlib() {
 # @CODE
 
 perl_get_vendorlib() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	[[ $# -lt 1 ]] || die "${FUNCNAME}: Too many parameters ($#)"
 
@@ -609,7 +613,7 @@ perl_domodule() {
 # @CODE
 
 perl_get_wikiurl() {
-	debug-print-function $FUNCNAME "$@"
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ -z "${1}" ]]; then
 		echo "https://wiki.gentoo.org/wiki/Project:Perl/maint-notes/${CATEGORY}/${PN}"

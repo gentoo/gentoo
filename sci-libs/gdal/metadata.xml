@@ -15,12 +15,10 @@
 	</slots>
 	<use>
 		<flag name="armadillo">Use <pkg>sci-libs/armadillo</pkg> for faster TPS transform computation</flag>
-		<flag name="aux-xml">Enable Portable Auxilliary Metadata generation</flag>
 		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
 		<flag name="geos">Add support for geometry engine (<pkg>sci-libs/geos</pkg>)</flag>
 		<flag name="gml">Enable support for <pkg>dev-libs/xerces-c</pkg> C++ API</flag>
 		<flag name="heif">Enable support for ISO/IEC 23008-12:2017 HEIF/HEIC image format using <pkg>media-libs/libheif</pkg></flag>
-		<flag name="mdb">Enable support for Microsoft Access database</flag>
 		<flag name="ogdi">Enable support for the open geographic datastore interface (<pkg>sci-libs/ogdi</pkg>)</flag>
 		<flag name="opencl">Enable OpenCL support</flag>
 		<flag name="spatialite">Enable Spatial DBMS over sqlite <pkg>dev-db/spatialite</pkg></flag>

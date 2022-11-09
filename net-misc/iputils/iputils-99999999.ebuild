@@ -12,7 +12,7 @@ EAPI="7"
 
 PLOCALES="de fr ja pt_BR tr uk zh_CN"
 
-inherit fcaps flag-o-matic meson plocale systemd toolchain-funcs
+inherit fcaps meson plocale systemd toolchain-funcs
 
 if [[ ${PV} == 99999999 ]] ; then
 	EGIT_REPO_URI="https://github.com/iputils/iputils.git"
@@ -29,19 +29,17 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
-IUSE="+arping caps clockdiff doc gcrypt idn nettle nls ssl static test tracepath"
+IUSE="+arping caps clockdiff doc idn nls test tracepath"
 RESTRICT="!test? ( test )"
 
-LIB_DEPEND="
-	caps? ( sys-libs/libcap[static-libs(+)] )
-	idn? ( net-dns/libidn2:=[static-libs(+)] )
-	nls? ( virtual/libintl[static-libs(+)] )
+RDEPEND="
+	caps? ( sys-libs/libcap )
+	idn? ( net-dns/libidn2:= )
+	nls? ( virtual/libintl )
 "
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="
 	${RDEPEND}
 	virtual/os-headers
-	static? ( ${LIB_DEPEND} )
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -66,8 +64,6 @@ src_prepare() {
 }
 
 src_configure() {
-	use static && append-ldflags -static
-
 	local emesonargs=(
 		-DUSE_CAP=$(usex caps true false)
 		-DUSE_IDN=$(usex idn true false)
@@ -114,13 +110,12 @@ src_test() {
 src_install() {
 	meson_src_install
 
-	dodir /bin
-	local my_bin
-	for my_bin in $(usex arping arping '') ping ; do
-		mv "${ED}"/usr/bin/${my_bin} "${ED}"/bin/ || die
-	done
-	dosym ping /bin/ping4
-	dosym ping /bin/ping6
+	FILECAPS=( cap_net_raw usr/bin/ping )
+	use arping && FILECAPS+=( usr/bin/arping )
+	use clockdiff && FILECAPS+=( usr/bin/clockdiff )
+
+	dosym ping /usr/bin/ping4
+	dosym ping /usr/bin/ping6
 
 	if use tracepath ; then
 		dosym tracepath /usr/bin/tracepath4
@@ -168,15 +163,12 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	fcaps_pkg_postinst
+
 	if [[ ${HAD_TFTPD_VERSION} -eq 1 ]] ; then
 		ewarn "This upstream version (>= 20211215) drops two tools:"
 		ewarn "1. tftpd (alternatives: net-ftp/tftp-hpa, net-dns/dnsmasq)"
 		ewarn "2. traceroute6 (alternatives: net-analyzer/mtr, net-analyzer/traceroute)"
 		ewarn "Please install one of the listed alternatives if needed!"
 	fi
-
-	fcaps cap_net_raw \
-		bin/ping \
-		$(usex arping 'bin/arping' '') \
-		$(usex clockdiff 'usr/bin/clockdiff' '')
 }

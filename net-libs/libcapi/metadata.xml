@@ -2,7 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>np-hardass@gentoo.org</email>
-		<name>Adam Feldman</name>
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
 	</maintainer>
+	<longdescription>
+		This package provides files needed for development of CAPI-aware software
+		and features autodetection of connected CAPI devices.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://gitlab.com/tabos/libcapi/-/issues</bugs-to>
+		<remote-id type="gitlab">tabos/libcapi</remote-id>
+	</upstream>
 </pkgmetadata>

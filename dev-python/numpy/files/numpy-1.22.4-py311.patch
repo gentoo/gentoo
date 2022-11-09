@@ -1,0 +1,31 @@
+From 42f3203a45231b338cf1a4c77fe81ca4b7fef4ef Mon Sep 17 00:00:00 2001
+From: Bas van Beek <43369155+BvB93@users.noreply.github.com>
+Date: Fri, 20 May 2022 02:42:37 +0200
+Subject: [PATCH] TST,TYP: Fix a python 3.11 failure for the `GenericAlias`
+ tests
+
+---
+ numpy/typing/tests/test_generic_alias.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/numpy/typing/tests/test_generic_alias.py b/numpy/typing/tests/test_generic_alias.py
+index 52d3deae4..267230a95 100644
+--- a/numpy/typing/tests/test_generic_alias.py
++++ b/numpy/typing/tests/test_generic_alias.py
+@@ -20,11 +20,11 @@
+ if sys.version_info >= (3, 9):
+     DType_ref = types.GenericAlias(np.dtype, (ScalarType,))
+     NDArray_ref = types.GenericAlias(np.ndarray, (Any, DType_ref))
+-    FuncType = Callable[[Union[_GenericAlias, types.GenericAlias]], Any]
++    FuncType = Callable[["_GenericAlias | types.GenericAlias"], Any]
+ else:
+     DType_ref = Any
+     NDArray_ref = Any
+-    FuncType = Callable[[_GenericAlias], Any]
++    FuncType = Callable[["_GenericAlias"], Any]
+ 
+ GETATTR_NAMES = sorted(set(dir(np.ndarray)) - _GenericAlias._ATTR_EXCEPTIONS)
+ 
+-- 
+2.35.1
+

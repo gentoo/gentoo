@@ -63,7 +63,7 @@ src_prepare() {
 			$(find . -name '*.[ch]') | sed -ne '/^#:/{s/#://;s/:[0-9]*/\
 			  /g;s/ //g;p;}' | grep -v '^$' | sort | uniq > po/POTFILES.in \
 			  || die
-		./version.sh ${S} || die
+		./version.sh "${S}" || die
 	fi
 }
 

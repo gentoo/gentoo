@@ -13,14 +13,14 @@ HOMEPAGE="https://www.siedler25.org/"
 SRC_URI="https://github.com/Return-To-The-Roots/${MY_PN}/releases/download/v${PV}/${MY_PN}_src_v${PV}.tar.gz"
 LICENSE="GPL-2+ GPL-3 Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="${LUA_DEPS}
 	app-arch/bzip2
-	>=dev-libs/boost-1.73:0=[nls]
+	dev-libs/boost:=[nls]
 	>=media-libs/libsamplerate-0.1.9
 	>=media-libs/libsdl2-2.0.10-r2[opengl,sound,video]
 	media-libs/libsndfile

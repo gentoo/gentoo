@@ -1,0 +1,5 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="x86_64-apple-darwin22"
+CHOST_amd64="${CHOST}"

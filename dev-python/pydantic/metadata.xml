@@ -7,8 +7,11 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pydantic</remote-id>
-		<remote-id type="github">samuelcolvin/pydantic</remote-id>
-		<bugs-to>https://github.com/samuelcolvin/pydantic/issues</bugs-to>
+		<remote-id type="github">pydantic/pydantic</remote-id>
+		<bugs-to>https://github.com/pydantic/pydantic/issues</bugs-to>
 		<doc>https://pydantic-docs.helpmanual.io/</doc>
 	</upstream>
+	<use>
+		<flag name="native-extensions">Compiles native "C" extensions.</flag>
+	</use>
 </pkgmetadata>

@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/712472
+
+From: Mike Crute <mike@crute.us>
+Date: Sun, 31 May 2020 19:26:32 +0000
+Subject: [PATCH] Add glibc compatibility to nmon
+
+musl is missing some compatibility with glibc which this patch adds to the nmon
+source. The fstab.h header was not used and fails to build if it's included.
+
+--- a/nmon.c
++++ b/nmon.c
+@@ -42,6 +42,9 @@
+ 	pi_delayacct_blkio_ticks 
+ */
+ 
++/* Fix compatibility for glibc */ 
++#define __STRING(x) #x
++
+ /* note: RAW assumes you are using the index "i" to select the CPU */
+ #define RAW(member)      (long)((long)(p->cpuN[i].member)   - (long)(q->cpuN[i].member))
+ #define RAWTOTAL(member) (long)((long)(p->cpu_total.member) - (long)(q->cpu_total.member))
+@@ -583,7 +586,6 @@
+ int isroot = 0;
+ 
+ #include <mntent.h>
+-#include <fstab.h>
+ #include <sys/stat.h>
+ #include <sys/statfs.h>
+ #include <net/if.h>

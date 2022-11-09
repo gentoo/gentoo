@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/852119
+--- a/libs-external/USI++/src/datalink.cc
++++ b/libs-external/USI++/src/datalink.cc
+@@ -15,6 +15,7 @@
+ #include <string.h>
+ #include <unistd.h>
+ #include <errno.h>
++#include <ctime>
+ #include <sys/ioctl.h>
+ 
+ #ifdef IMMEDIATE
+--- a/libs-external/USI++/src/tcp.cc
++++ b/libs-external/USI++/src/tcp.cc
+@@ -16,6 +16,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <errno.h>
++#include <ctime>
+ 
+ namespace usipp {
+ 

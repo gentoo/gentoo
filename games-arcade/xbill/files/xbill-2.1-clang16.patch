@@ -1,0 +1,44 @@
+Drop -I. to prevent <strings.h> from including ./strings.h
+https://bugs.gentoo.org/874624
+--- a/Bucket.c
++++ b/Bucket.c
+@@ -1,2 +1,2 @@
+-#include <util.h>
++#include "util.h"
+ 
+--- a/Game.c
++++ b/Game.c
+@@ -4,2 +4,3 @@
+ #include <string.h>
++#include <strings.h>
+ #include <time.h>
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -22,3 +22,3 @@
+ 
+-ALL_CFLAGS =	$(CFLAGS) $(CPPFLAGS) -I$(srcdir)
++ALL_CFLAGS =	$(CFLAGS) $(CPPFLAGS)
+ ALL_LDFLAGS =	$(CFLAGS) $(LDFLAGS)
+--- a/UI.c
++++ b/UI.c
+@@ -3,2 +3,3 @@
+ #include <string.h>
++#include <strings.h>
+ 
+--- a/gtk.c
++++ b/gtk.c
+@@ -370,3 +370,3 @@
+ 	gtk_signal_connect_object(GTK_OBJECT(menu_item), "activate",
+-				  gtk_ui_popup_dialog, (gpointer) dialog);
++				  GTK_SIGNAL_FUNC(gtk_ui_popup_dialog), (gpointer) dialog);
+ 	return (menu_item);
+@@ -592,3 +592,3 @@
+ 	CreateDialog(DIALOG_PAUSEGAME, 0, icon, "Continue", NULL);
+-	CreateEnterText(DIALOG_WARPLEVEL, warp_apply);
++	CreateEnterText(DIALOG_WARPLEVEL, GTK_SIGNAL_FUNC(warp_apply));
+ 	CreateDialog(DIALOG_HIGHSCORE, 0, NULL, NULL, NULL);
+@@ -602,3 +602,3 @@
+ 	CreateDialog(DIALOG_ENDGAME, 0, NULL, "Nuts!", NULL);
+-	CreateEnterText(DIALOG_ENTERNAME, enter_name);
++	CreateEnterText(DIALOG_ENTERNAME, GTK_SIGNAL_FUNC(enter_name));
+ }

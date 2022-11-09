@@ -1,0 +1,13 @@
+diff --git a/Documentation/meson.build b/Documentation/meson.build
+index bb0c9724..519c4bfc 100644
+--- a/Documentation/meson.build
++++ b/Documentation/meson.build
+@@ -187,7 +187,7 @@ want_docs = get_option('docs')
+ want_docs_build = get_option('docs-build')
+ if want_docs != 'false'
+   mandir = join_paths(get_option('mandir'), 'man1')
+-  htmldir = join_paths(get_option('htmldir'), 'nvme')
++  htmldir = get_option('htmldir')
+ 
+   asciidoctor = find_program('asciidoc', required: get_option('docs-build'))
+   if want_docs_build and asciidoctor.found()

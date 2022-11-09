@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<use>
-		<flag name="machine-interface">enable machine-interface protocol using <pkg>dev-libs/json-c</pkg></flag>
-	</use>
+  <maintainer type="person" proxied="yes">
+    <email>arsen@aarsen.me</email>
+    <name>Arsen Arsenović</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="machine-interface">Enable machine-interface protocol using <pkg>dev-libs/json-c</pkg></flag>
+    <flag name="pvm-profiling">Enable profiling in the PVM</flag>
+  </use>
+  <upstream>
+    <remote-id type="savannah">poke</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,0 +1,21 @@
+diff --git a/src/vp9hdec/decode_hybrid_vp9.cpp b/src/vp9hdec/decode_hybrid_vp9.cpp
+index 1baf339..7a086e2 100644
+--- a/src/vp9hdec/decode_hybrid_vp9.cpp
++++ b/src/vp9hdec/decode_hybrid_vp9.cpp
+@@ -3289,9 +3289,16 @@ VAStatus Intel_HybridVp9Decode_HostVldRenderCb (
+ 
+     // Reset padding flag of current frame and update surface dimension
+     surface = SURFACE(pMdfDecodeFrame->ucCurrIndex);
++    if ((surface == NULL) || (surface->private_data == NULL))
++        return VA_STATUS_ERROR_INVALID_PARAMETER;
++
+     pFrameSource = (INTEL_DECODE_HYBRID_VP9_MDF_FRAME_SOURCE *)(surface->private_data);
+     pCurrFrame = &(pFrameSource->Frame);
+     pFrameSource->bHasPadding = false;
++
++    if (pCurrFrame->pMdfSurface == NULL)
++        return VA_STATUS_ERROR_INVALID_PARAMETER;
++
+     pCurrFrame->pMdfSurface->SetSurfaceStateDimensions(
+         pMdfDecodeFrame->dwWidth,
+         pMdfDecodeFrame->dwHeight);

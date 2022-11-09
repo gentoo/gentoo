@@ -1,0 +1,36 @@
+https://github.com/Alexays/Waybar/commit/d25278f710a4932798c98141bcf5b482de0e9166
+
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Mon, 23 May 2022 16:23:00 +0000
+Subject: [PATCH] fix(upower): add missing include for libc++
+
+In file included from src/modules/upower/upower.cpp:1:
+include/modules/upower/upower.hpp:25:16: error: no template named 'unordered_map' in namespace 'std'
+  typedef std::unordered_map<std::string, UpDevice *> Devices;
+          ~~~~~^
+In file included from src/modules/upower/upower_tooltip.cpp:1:
+include/modules/upower/upower_tooltip.hpp:13:16: error: no template named 'unordered_map' in namespace 'std'
+  typedef std::unordered_map<std::string, UpDevice*> Devices;
+          ~~~~~^
+--- a/include/modules/upower/upower.hpp
++++ b/include/modules/upower/upower.hpp
+@@ -5,6 +5,7 @@
+ #include <iostream>
+ #include <map>
+ #include <string>
++#include <unordered_map>
+ 
+ #include "ALabel.hpp"
+ #include "glibconfig.h"
+--- a/include/modules/upower/upower_tooltip.hpp
++++ b/include/modules/upower/upower_tooltip.hpp
+@@ -2,6 +2,8 @@
+ 
+ #include <libupower-glib/upower.h>
+ 
++#include <unordered_map>
++
+ #include "gtkmm/box.h"
+ #include "gtkmm/label.h"
+ #include "gtkmm/window.h"
+

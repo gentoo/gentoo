@@ -1,0 +1,18 @@
+[Unit]
+Description=sflow accounting daemon
+After=network.target
+
+[Service]
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+Type=forking
+ExecStart=/usr/sbin/sfacctd -f /etc/pmacctd/sfacctd.conf -i %I
+
+[Install]
+WantedBy=multi-user.target

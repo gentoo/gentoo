@@ -14,4 +14,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">EnableSecurity/sipvicious</remote-id>
+	</upstream>
 </pkgmetadata>

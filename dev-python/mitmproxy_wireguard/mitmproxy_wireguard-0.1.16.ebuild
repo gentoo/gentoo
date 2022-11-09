@@ -1,0 +1,218 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=maturin
+PYTHON_COMPAT=( python3_{9..11} )
+
+CRATES="
+	adler-1.0.2
+	aead-0.5.1
+	aho-corasick-0.7.19
+	anyhow-1.0.66
+	arc-swap-1.5.1
+	async-stream-0.3.3
+	async-stream-impl-0.3.3
+	async-trait-0.1.58
+	atty-0.2.14
+	autocfg-1.1.0
+	axum-0.5.17
+	axum-core-0.2.9
+	base64-0.13.1
+	bitflags-1.3.2
+	blake2-0.10.4
+	block-buffer-0.10.3
+	boringtun-0.5.2
+	bumpalo-3.11.1
+	byteorder-1.4.3
+	bytes-1.2.1
+	cc-1.0.74
+	cfg-if-1.0.0
+	chacha20-0.9.0
+	chacha20poly1305-0.10.1
+	cipher-0.4.3
+	console-api-0.4.0
+	console-subscriber-0.1.8
+	cpufeatures-0.2.5
+	crc32fast-1.3.2
+	crossbeam-channel-0.5.6
+	crossbeam-utils-0.8.12
+	crypto-common-0.1.6
+	curve25519-dalek-3.2.0
+	digest-0.9.0
+	digest-0.10.5
+	either-1.8.0
+	env_logger-0.9.1
+	flate2-1.0.24
+	fnv-1.0.7
+	futures-0.3.25
+	futures-channel-0.3.25
+	futures-core-0.3.25
+	futures-executor-0.3.25
+	futures-io-0.3.25
+	futures-macro-0.3.25
+	futures-sink-0.3.25
+	futures-task-0.3.25
+	futures-util-0.3.25
+	generic-array-0.14.6
+	getrandom-0.1.16
+	getrandom-0.2.8
+	h2-0.3.15
+	hashbrown-0.12.3
+	hdrhistogram-7.5.2
+	hermit-abi-0.1.19
+	hex-0.4.3
+	hmac-0.12.1
+	http-0.2.8
+	http-body-0.4.5
+	http-range-header-0.3.0
+	httparse-1.8.0
+	httpdate-1.0.2
+	humantime-2.1.0
+	hyper-0.14.22
+	hyper-timeout-0.4.1
+	indexmap-1.9.1
+	indoc-1.0.7
+	inout-0.1.3
+	ip_network-0.4.1
+	ip_network_table-0.2.0
+	ip_network_table-deps-treebitmap-0.5.0
+	itertools-0.10.5
+	itoa-1.0.4
+	js-sys-0.3.60
+	lazy_static-1.4.0
+	libc-0.2.137
+	lock_api-0.4.9
+	log-0.4.17
+	managed-0.8.0
+	matchers-0.1.0
+	matchit-0.5.0
+	memchr-2.5.0
+	memoffset-0.6.5
+	mime-0.3.16
+	minimal-lexical-0.2.1
+	miniz_oxide-0.5.4
+	mio-0.8.5
+	nix-0.24.2
+	nom-7.1.1
+	num-traits-0.2.15
+	num_cpus-1.13.1
+	once_cell-1.16.0
+	opaque-debug-0.3.0
+	parking_lot-0.12.1
+	parking_lot_core-0.9.4
+	percent-encoding-2.2.0
+	pin-project-1.0.12
+	pin-project-internal-1.0.12
+	pin-project-lite-0.2.9
+	pin-utils-0.1.0
+	poly1305-0.8.0
+	ppv-lite86-0.2.16
+	pretty-hex-0.3.0
+	proc-macro2-1.0.47
+	prost-0.11.0
+	prost-derive-0.11.0
+	prost-types-0.11.1
+	pyo3-0.17.2
+	pyo3-asyncio-0.17.0
+	pyo3-build-config-0.17.2
+	pyo3-ffi-0.17.2
+	pyo3-log-0.7.0
+	pyo3-macros-0.17.2
+	pyo3-macros-backend-0.17.2
+	quote-1.0.21
+	rand-0.8.5
+	rand_chacha-0.3.1
+	rand_core-0.5.1
+	rand_core-0.6.4
+	redox_syscall-0.2.16
+	regex-1.6.0
+	regex-automata-0.1.10
+	regex-syntax-0.6.27
+	ring-0.16.20
+	ryu-1.0.11
+	scopeguard-1.1.0
+	serde-1.0.147
+	serde_derive-1.0.147
+	serde_json-1.0.87
+	sharded-slab-0.1.4
+	signal-hook-registry-1.4.0
+	slab-0.4.7
+	smallvec-1.10.0
+	smoltcp-0.8.1
+	socket2-0.4.7
+	spin-0.5.2
+	subtle-2.4.1
+	syn-1.0.103
+	sync_wrapper-0.1.1
+	synstructure-0.12.6
+	target-lexicon-0.12.4
+	termcolor-1.1.3
+	thread_local-1.1.4
+	tokio-1.21.2
+	tokio-io-timeout-1.2.0
+	tokio-macros-1.8.0
+	tokio-stream-0.1.11
+	tokio-util-0.7.4
+	tonic-0.8.2
+	tower-0.4.13
+	tower-http-0.3.4
+	tower-layer-0.3.2
+	tower-service-0.3.2
+	tracing-0.1.37
+	tracing-attributes-0.1.23
+	tracing-core-0.1.30
+	tracing-futures-0.2.5
+	tracing-subscriber-0.3.16
+	try-lock-0.2.3
+	typenum-1.15.0
+	unicode-ident-1.0.5
+	unicode-xid-0.2.4
+	unindent-0.1.10
+	universal-hash-0.5.0
+	untrusted-0.7.1
+	untrusted-0.9.0
+	valuable-0.1.0
+	version_check-0.9.4
+	want-0.3.0
+	wasi-0.9.0+wasi-snapshot-preview1
+	wasi-0.11.0+wasi-snapshot-preview1
+	wasm-bindgen-0.2.83
+	wasm-bindgen-backend-0.2.83
+	wasm-bindgen-macro-0.2.83
+	wasm-bindgen-macro-support-0.2.83
+	wasm-bindgen-shared-0.2.83
+	web-sys-0.3.60
+	winapi-0.3.9
+	winapi-i686-pc-windows-gnu-0.4.0
+	winapi-util-0.1.5
+	winapi-x86_64-pc-windows-gnu-0.4.0
+	windows-sys-0.42.0
+	windows_aarch64_gnullvm-0.42.0
+	windows_aarch64_msvc-0.42.0
+	windows_i686_gnu-0.42.0
+	windows_i686_msvc-0.42.0
+	windows_x86_64_gnu-0.42.0
+	windows_x86_64_gnullvm-0.42.0
+	windows_x86_64_msvc-0.42.0
+	x25519-dalek-2.0.0-pre.1
+	zeroize-1.5.7
+	zeroize_derive-1.3.2
+"
+
+inherit cargo distutils-r1
+
+DESCRIPTION="WireGuard frontend for mitmproxy"
+HOMEPAGE="https://github.com/decathorpe/mitmproxy_wireguard"
+SRC_URI="
+	https://github.com/decathorpe/mitmproxy_wireguard/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
+	$(cargo_crate_uris ${CRATES})
+"
+
+LICENSE="Apache-2.0 BSD BSD-2 ISC MIT Unlicense"
+SLOT="0"
+KEYWORDS="~amd64"
+
+RDEPEND=""
+BDEPEND="dev-python/setuptools-rust[${PYTHON_USEDEP}]"

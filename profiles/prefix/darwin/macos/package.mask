@@ -1,6 +1,2 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Fabian Groffen <grobian@gentoo.org> (2022-01-08)
-# malloc crash during install on >=11.0, bug #830425
-=dev-util/cmake-3.22.1

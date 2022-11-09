@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop wrapper
 
 DESCRIPTION="Arkanoid with Gnomes"
-HOMEPAGE="http://www.jardinains2.com"
+HOMEPAGE="https://jardinains2.com"
 SRC_URI="mirror://gentoo/JN2_1_FREE_LIN.tar.gz"
 
 LICENSE="jardinains"
@@ -17,6 +17,7 @@ RESTRICT="strip"
 
 RDEPEND="
 	acct-group/gamestat
+	sys-libs/glibc
 	sys-libs/libstdc++-v3:5
 	>=virtual/opengl-7.0-r1[abi_x86_32(-)]
 	>=virtual/glu-9.0-r1[abi_x86_32(-)]

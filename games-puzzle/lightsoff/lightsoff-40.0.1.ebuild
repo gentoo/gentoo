@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
-VALA_MIN_API_VERSION="0.40"
+PYTHON_COMPAT=( python3_{8..11} )
 inherit gnome.org gnome2-utils meson python-any-r1 xdg vala
 
 DESCRIPTION="Turn off all the lights"

@@ -1,0 +1,46 @@
+https://bugs.gentoo.org/834198
+
+diff --git a/ipyparallel/tests/test_view.py b/ipyparallel/tests/test_view.py
+index 5b5ca41..4c04d02 100644
+--- a/ipyparallel/tests/test_view.py
++++ b/ipyparallel/tests/test_view.py
+@@ -628,7 +628,7 @@ class TestView(ClusterTestCase):
+         """exceptions in execute requests raise appropriately"""
+         view = self.client[-1]
+         ar = view.execute("1/0")
+-        self.assertRaisesRemote(ZeroDivisionError, ar.get, 2)
++        self.assertRaisesRemote(ZeroDivisionError, ar.get, 20)
+ 
+     def test_remoteerror_render_exception(self):
+         """RemoteErrors get nice tracebacks"""
+@@ -637,7 +637,7 @@ class TestView(ClusterTestCase):
+         ip = get_ipython()
+         ip.user_ns['ar'] = ar
+         with capture_output() as io:
+-            ip.run_cell("ar.get(2)")
++            ip.run_cell("ar.get(20)")
+ 
+         self.assertTrue('ZeroDivisionError' in io.stdout, io.stdout)
+ 
+@@ -649,7 +649,7 @@ class TestView(ClusterTestCase):
+         ip.user_ns['ar'] = ar
+ 
+         with capture_output() as io:
+-            ip.run_cell("ar.get(2)")
++            ip.run_cell("ar.get(20)")
+ 
+         count = min(error.CompositeError.tb_limit, len(view))
+ 
+@@ -689,10 +689,10 @@ class TestView(ClusterTestCase):
+         view = self.client[-1]
+         ar = view.execute("%pylab inline")
+         # at least check if this raised:
+-        reply = ar.get(5)
++        reply = ar.get(50)
+         # include imports, in case user config
+         ar = view.execute("plot(rand(100))", silent=False)
+-        reply = ar.get(5)
++        reply = ar.get(50)
+         assert ar.wait_for_output(5)
+         self.assertEqual(len(reply.outputs), 1)
+         output = reply.outputs[0]

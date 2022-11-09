@@ -1,0 +1,22 @@
+Don't examine outside of the prefix for gettext on macOS/Darwin.
+https://bugs.gentoo.org/757309
+--- a/config.mak.uname
++++ b/config.mak.uname
+@@ -148,17 +148,6 @@ ifeq ($(uname_S),Darwin)
+ 	HAVE_NS_GET_EXECUTABLE_PATH = YesPlease
+ 	CSPRNG_METHOD = arc4random
+ 
+-	# Workaround for `gettext` being keg-only and not even being linked via
+-	# `brew link --force gettext`, should be obsolete as of
+-	# https://github.com/Homebrew/homebrew-core/pull/53489
+-	ifeq ($(shell test -d /usr/local/opt/gettext/ && echo y),y)
+-		BASIC_CFLAGS += -I/usr/local/include -I/usr/local/opt/gettext/include
+-		BASIC_LDFLAGS += -L/usr/local/lib -L/usr/local/opt/gettext/lib
+-		ifeq ($(shell test -x /usr/local/opt/gettext/bin/msgfmt && echo y),y)
+-			MSGFMT = /usr/local/opt/gettext/bin/msgfmt
+-		endif
+-	endif
+-
+ 	# The builtin FSMonitor on MacOS builds upon Simple-IPC.  Both require
+ 	# Unix domain sockets and PThreads.
+ 	ifndef NO_PTHREADS

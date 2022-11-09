@@ -1,0 +1,29 @@
+https://github.com/linux-pam/linux-pam/pull/490
+
+From 5fccc4cbac82b4677af28b59e7a657c86acab7fc Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 11 Sep 2022 16:37:59 +0100
+Subject: [PATCH] configure.ac: fix implicit function declaration in mail spool
+ directory check
+
+Fixes the following error with Clang 15 (which makes implicit function
+declarations an error by default):
+```
++error: call to undeclared library function 'exit' with type 'void (int) __attribute__((noreturn))'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ exit(0);
+ ^
+ note: include the header <stdlib.h> or explicitly provide a declaration for 'exit'
+```
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -297,6 +297,7 @@ if test x$with_mailspool != x ; then
+ else
+ 	AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <paths.h>
++#include <stdlib.h>
+ int main() {
+ #ifdef _PATH_MAILDIR
+ exit(0);
+

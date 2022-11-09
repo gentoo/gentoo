@@ -18,4 +18,7 @@
   version 4.1 onwards a configuration script facilitates the
   installation of LHAPDF.
 </longdescription>
+<upstream>
+ <remote-id type="gitlab">hepcedar/lhapdf</remote-id>
+</upstream>
 </pkgmetadata>

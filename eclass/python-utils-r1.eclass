@@ -35,6 +35,7 @@ fi
 if [[ ! ${_PYTHON_UTILS_R1} ]]; then
 
 [[ ${EAPI} == [67] ]] && inherit eapi8-dosym
+[[ ${EAPI} == 6 ]] && inherit eqawarn
 inherit multiprocessing toolchain-funcs
 
 # @ECLASS_VARIABLE: _PYTHON_ALL_IMPLS
@@ -43,7 +44,7 @@ inherit multiprocessing toolchain-funcs
 # All supported Python implementations, most preferred last.
 _PYTHON_ALL_IMPLS=(
 	pypy3
-	python3_{8..10}
+	python3_{8..11}
 )
 readonly _PYTHON_ALL_IMPLS
 
@@ -83,7 +84,7 @@ _python_verify_patterns() {
 	local impl pattern
 	for pattern; do
 		case ${pattern} in
-			-[23]|3.[89]|3.10)
+			-[23]|3.[89]|3.1[01])
 				continue
 				;;
 		esac
@@ -132,7 +133,7 @@ _python_set_impls() {
 			# please keep them in sync with _PYTHON_ALL_IMPLS
 			# and _PYTHON_HISTORICAL_IMPLS
 			case ${i} in
-				pypy3|python2_7|python3_[89]|python3_10)
+				pypy3|python2_7|python3_[89]|python3_1[01])
 					;;
 				jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[5-6]|python3_[1-7])
 					obsolete+=( "${i}" )
@@ -245,7 +246,7 @@ _python_impl_matches() {
 				[[ ${impl} == python${pattern/./_} || ${impl} == pypy3 ]] &&
 					return 0
 				;;
-			3.8|3.10)
+			3.8|3.1[01])
 				[[ ${impl} == python${pattern/./_} ]] && return 0
 				;;
 			*)
@@ -454,19 +455,21 @@ _python_export() {
 				local d
 				case ${impl} in
 					python2.7)
-						PYTHON_PKG_DEP='>=dev-lang/python-2.7.5-r2:2.7';;
+						PYTHON_PKG_DEP='>=dev-lang/python-2.7.10_p15:2.7';;
 					python3.8)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.8.12_p1-r1:3.8";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.8.13:3.8";;
 					python3.9)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.9.9-r1:3.9";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.9.12:3.9";;
 					python3.10)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.10.0_p1-r1:3.10";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.10.4:3.10";;
+					python3.11)
+						PYTHON_PKG_DEP=">=dev-lang/python-3.11.0_beta4:3.11";;
 					python*)
 						PYTHON_PKG_DEP="dev-lang/python:${impl#python}";;
 					pypy)
-						PYTHON_PKG_DEP='>=dev-python/pypy-7.3.0:0=';;
+						PYTHON_PKG_DEP='>=dev-python/pypy-7.3.9:0=';;
 					pypy3)
-						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.7-r1:0=';;
+						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.9_p1:0=';;
 					*)
 						die "Invalid implementation: ${impl}"
 				esac
@@ -694,6 +697,9 @@ python_scriptinto() {
 python_doexe() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
+
 	local f
 	for f; do
 		python_newexe "${f}" "${f##*/}"
@@ -712,6 +718,8 @@ python_doexe() {
 python_newexe() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <path> <new-name>"
 
@@ -760,6 +768,9 @@ python_newexe() {
 python_doscript() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
+
 	local _PYTHON_REWRITE_SHEBANG=1
 	python_doexe "${@}"
 }
@@ -784,6 +795,9 @@ python_doscript() {
 python_newscript() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
+
 	local _PYTHON_REWRITE_SHEBANG=1
 	python_newexe "${@}"
 }
@@ -803,10 +817,10 @@ python_newscript() {
 # site-packages directory.
 #
 # In the relative case, the exact path is determined directly
-# by each python_doscript/python_newscript function. Therefore,
-# python_moduleinto can be safely called before establishing the Python
-# interpreter and/or a single call can be used to set the path correctly
-# for multiple implementations, as can be seen in the following example.
+# by each python_domodule invocation. Therefore, python_moduleinto
+# can be safely called before establishing the Python interpreter and/or
+# a single call can be used to set the path correctly for multiple
+# implementations, as can be seen in the following example.
 #
 # Example:
 # @CODE
@@ -830,6 +844,10 @@ python_moduleinto() {
 # and packages (directories). All listed files will be installed
 # for all enabled implementations, and compiled afterwards.
 #
+# The files are installed into ${D} when run in src_install() phase.
+# Otherwise, they are installed into ${BUILD_DIR}/install location
+# that is suitable for picking up by distutils-r1 in PEP517 mode.
+#
 # Example:
 # @CODE
 # src_install() {
@@ -852,13 +870,24 @@ python_domodule() {
 		d=${sitedir#${EPREFIX}}/${_PYTHON_MODULEROOT//.//}
 	fi
 
-	(
-		insopts -m 0644
-		insinto "${d}"
-		doins -r "${@}" || return ${?}
-	)
-
-	python_optimize "${ED%/}/${d}"
+	if [[ ${EBUILD_PHASE} == install ]]; then
+		(
+			insopts -m 0644
+			insinto "${d}"
+			doins -r "${@}" || return ${?}
+		)
+		python_optimize "${ED%/}/${d}"
+	elif [[ -n ${BUILD_DIR} ]]; then
+		local dest=${BUILD_DIR}/install${EPREFIX}/${d}
+		mkdir -p "${dest}" || die
+		cp -pR "${@}" "${dest}/" || die
+		(
+			cd "${dest}" &&
+			chmod -R a+rX "${@##*/}"
+		) || die
+	else
+		die "${FUNCNAME} can only be used in src_install or with BUILD_DIR set"
+	fi
 }
 
 # @FUNCTION: python_doheader
@@ -877,6 +906,8 @@ python_domodule() {
 python_doheader() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	[[ ${EBUILD_PHASE} != install ]] &&
+		die "${FUNCNAME} can only be used in src_install"
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 
 	local includedir=$(python_get_includedir)
@@ -1286,6 +1317,9 @@ epytest() {
 		-Wdefault
 		# override color output
 		"--color=${color}"
+		# count is more precise when we're dealing with a large number
+		# of tests
+		-o console_output_style=count
 		# disable the undesirable-dependency plugins by default to
 		# trigger missing argument strips.  strip options that require
 		# them from config files.  enable them explicitly via "-p ..."
@@ -1294,6 +1328,17 @@ epytest() {
 		-p no:flake8
 		-p no:flakes
 		-p no:pylint
+		# sterilize pytest-markdown as it runs code snippets from all
+		# *.md files found without any warning
+		-p no:markdown
+		# pytest-sugar undoes everything that's good about pytest output
+		# and makes it hard to read logs
+		-p no:sugar
+		# pytest-xvfb automatically spawns Xvfb for every test suite,
+		# effectively forcing it even when we'd prefer the tests
+		# not to have DISPLAY at all, causing crashes sometimes
+		# and causing us to miss missing virtualx usage
+		-p no:xvfb
 	)
 	local x
 	for x in "${EPYTEST_DESELECT[@]}"; do
@@ -1310,6 +1355,11 @@ epytest() {
 
 	# remove common temporary directories left over by pytest plugins
 	rm -rf .hypothesis .pytest_cache || die
+	# pytest plugins create additional .pyc files while testing
+	# see e.g. https://bugs.gentoo.org/847235
+	if [[ -n ${BUILD_DIR} && -d ${BUILD_DIR} ]]; then
+		find "${BUILD_DIR}" -name '*-pytest-*.pyc' -delete || die
+	fi
 
 	return ${ret}
 }

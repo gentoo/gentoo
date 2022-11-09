@@ -10,4 +10,7 @@
 			Enable SSH support
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">rtrlib/rtrlib</remote-id>
+	</upstream>
 </pkgmetadata>

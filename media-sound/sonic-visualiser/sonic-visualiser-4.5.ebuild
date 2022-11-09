@@ -62,6 +62,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.3-meson.build.patch"
+	"${FILESDIR}/serd.patch"
 )
 
 src_configure() {

@@ -1,6 +1,15 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-10-08)
+# sys-boot/gnu-efi isn't keyworded here right now
+sys-kernel/installkernel-systemd-boot
+
+# Michał Górny <mgorny@gentoo.org> (2022-08-25)
+# Only ppc64le binpkg is provided.
+dev-python/pypy-exe-bin
+dev-python/pypy3-exe-bin
+
 # Sam James <sam@gentoo.org> (2022-01-18)
 # No bootstrap binary available on big endian PPC64 right now
 dev-lisp/sbcl
@@ -52,7 +61,7 @@ virtual/dist-kernel
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
 # buggy on big-endian
-x11-libs/libva
+media-libs/libva
 media-video/libva-utils
 media-plugins/gst-plugins-vaapi
 

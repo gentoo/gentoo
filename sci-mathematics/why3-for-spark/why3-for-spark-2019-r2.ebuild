@@ -6,7 +6,7 @@ EAPI=7
 MYP=why3-${PV}-20190517-197BB-src
 
 DESCRIPTION="Platform for deductive program verification"
-HOMEPAGE="http://why3.lri.fr/"
+HOMEPAGE="https://why3.lri.fr/"
 SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf915d31e87a8f1c967d54
 	-> ${MYP}.tar.gz"
 

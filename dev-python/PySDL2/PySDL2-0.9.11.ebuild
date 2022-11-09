@@ -9,7 +9,10 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python (ctypes) bindings for SDL2 libraries"
-HOMEPAGE="https://github.com/marcusva/py-sdl2 https://pypi.org/project/PySDL2/"
+HOMEPAGE="
+	https://github.com/py-sdl/py-sdl2/
+	https://pypi.org/project/PySDL2/
+"
 SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( public-domain CC0-1.0 ZLIB )"

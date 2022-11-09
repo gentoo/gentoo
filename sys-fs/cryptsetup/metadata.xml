@@ -18,6 +18,7 @@
 	<flag name="urandom">Use /dev/urandom instead of /dev/random</flag>
 </use>
 <upstream>
+	<remote-id type="cpe">cpe:/a:cryptsetup_project:cryptsetup</remote-id>
 	<remote-id type="gitlab">cryptsetup/cryptsetup</remote-id>
 </upstream>
 </pkgmetadata>

@@ -11,6 +11,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:libexpat:expat</remote-id>
+		<remote-id type="github">libexpat/libexpat</remote-id>
 		<remote-id type="sourceforge">expat</remote-id>
 	</upstream>
 </pkgmetadata>

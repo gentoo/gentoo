@@ -1,0 +1,42 @@
+Description: allow libtool to auto(re)conf
+Origin: vendor
+Forwarded: no
+Author: tony mancill <tmancill@debian.org>
+Last-Update: 2015-03-04
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,7 +16,6 @@
+ 
+ AC_SYS_LARGEFILE
+ 
+-AC_DISABLE_SHARED
+ AM_PROG_LIBTOOL
+ AC_SUBST(LIBTOOL_DEPS)
+ 
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -10,12 +10,12 @@ CLEANFILES = *~ *.o *.la *.lo *.a
+ EXTRA_DIST = config.h cdck template.plot template-ps.plot
+ 
+ INCLUDES = @CPPFLAGS@
+-CFLAGS =  @CFLAGS@ -DBUILD=\"@target@\" -DDATE=\""`date`"\"
++AM_CFLAGS =  @CFLAGS@ -DBUILD=\"@target@\" -DDATE=\""`date`"\"
+ 
+ CXXLINK = $(LIBTOOL) --mode=link $(CC) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+ 
+ lib_LTLIBRARIES  = libcdck.la
+-noinst_LIBRARIES = libcdck.a
++#noinst_LIBRARIES = libcdck.a
+ 
+ LIBCDCK_SRCS = 		\
+ 	lib_main.cpp	\
+@@ -28,7 +28,7 @@ LIBCDCK_SRCS = 		\
+ 	lib_cdinfo.h
+ 
+ libcdck_la_SOURCES = $(LIBCDCK_SRCS)
+-libcdck_a_SOURCES  = $(LIBCDCK_SRCS)
++#libcdck_a_SOURCES  = $(LIBCDCK_SRCS)
+ 
+ bin_PROGRAMS = cdck
+ 

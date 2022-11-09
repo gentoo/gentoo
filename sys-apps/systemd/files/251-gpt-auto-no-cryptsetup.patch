@@ -1,0 +1,28 @@
+https://github.com/systemd/systemd/commit/d0523bb0d12766485fde3b87bb42db8dfc3c45d3
+https://github.com/systemd/systemd/issues/24978
+
+From d0523bb0d12766485fde3b87bb42db8dfc3c45d3 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Wed, 12 Oct 2022 21:47:29 +0200
+Subject: [PATCH] gpt-auto: allow using without cryptsetup
+
+Fixes #24978
+--- a/src/gpt-auto-generator/gpt-auto-generator.c
++++ b/src/gpt-auto-generator/gpt-auto-generator.c
+@@ -571,11 +571,15 @@ static int add_root_rw(DissectedPartition *p) {
+ 
+ #if ENABLE_EFI
+ static int add_root_cryptsetup(void) {
++#if HAVE_LIBCRYPTSETUP
+ 
+         /* If a device /dev/gpt-auto-root-luks appears, then make it pull in systemd-cryptsetup-root.service, which
+          * sets it up, and causes /dev/gpt-auto-root to appear which is all we are looking for. */
+ 
+         return add_cryptsetup("root", "/dev/gpt-auto-root-luks", true, false, NULL);
++#else
++        return 0;
++#endif
+ }
+ #endif
+ 
+

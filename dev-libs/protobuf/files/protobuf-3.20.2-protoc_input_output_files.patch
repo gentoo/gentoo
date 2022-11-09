@@ -1,0 +1,240 @@
+https://github.com/protocolbuffers/protobuf/pull/235
+
+--- a/src/google/protobuf/compiler/command_line_interface.cc
++++ b/src/google/protobuf/compiler/command_line_interface.cc
+@@ -1112,6 +1112,28 @@
+   }
+
+   if (mode_ == MODE_ENCODE || mode_ == MODE_DECODE) {
++    bool success = false;
++    int in_fd = STDIN_FILENO;
++    int out_fd = STDOUT_FILENO;
++
++    if (!protobuf_in_path_.empty()) {
++      in_fd = open(protobuf_in_path_.c_str(), O_RDONLY);
++      if (in_fd == -1) {
++        std::cerr << protobuf_in_path_ << ": error: failed to open file." << std::endl;
++        return 1;
++      }
++    }
++    if (!protobuf_out_path_.empty()) {
++      out_fd = open(protobuf_out_path_.c_str(),
++                    O_WRONLY | O_CREAT | O_TRUNC,
++                    0644);
++      if (out_fd == -1) {
++        std::cerr << protobuf_out_path_ << ": error: failed to open file." << std::endl;
++        close(in_fd);
++        return 1;
++      }
++    }
++
+     if (codec_type_.empty()) {
+       // HACK:  Define an EmptyMessage type to use for decoding.
+       DescriptorPool pool;
+@@ -1120,13 +1142,20 @@
+       file.add_message_type()->set_name("EmptyMessage");
+       GOOGLE_CHECK(pool.BuildFile(file) != nullptr);
+       codec_type_ = "EmptyMessage";
+-      if (!EncodeOrDecode(&pool)) {
+-        return 1;
+-      }
++      success = EncodeOrDecode(&pool, in_fd, out_fd);
+     } else {
+-      if (!EncodeOrDecode(descriptor_pool.get())) {
+-        return 1;
+-      }
++      success = EncodeOrDecode(descriptor_pool.get(), in_fd, out_fd);
++    }
++
++    if (in_fd != STDIN_FILENO) {
++      close(in_fd);
++    }
++    if (out_fd != STDOUT_FILENO) {
++      close(out_fd);
++    }
++
++    if (!success) {
++      return 1;
+     }
+   }
+
+@@ -1165,6 +1194,11 @@
+   for (int i = 0; i < proto_path_.size(); i++) {
+     source_tree->MapPath(proto_path_[i].first, proto_path_[i].second);
+   }
++  if (mode_ == MODE_COMPILE &&
++      (!protobuf_in_path_.empty() || !protobuf_out_path_.empty())) {
++    std::cerr << "--protobuf_in and --protobuf_out are only valid with "
++         << "decode operations. Ignoring.";
++  }
+
+   // Map input files to virtual paths if possible.
+   if (!MakeInputsBeProtoPathRelative(source_tree, fallback_database)) {
+@@ -1888,6 +1922,12 @@
+   } else if (name == "--deterministic_output") {
+     deterministic_output_ = true;
+
++  } else if (name == "--protobuf_in") {
++    protobuf_in_path_ = value;
++
++  } else if (name == "--protobuf_out") {
++    protobuf_out_path_ = value;
++
+   } else if (name == "--error_format") {
+     if (value == "gcc") {
+       error_format_ = ERROR_FORMAT_GCC;
+@@ -2021,22 +2061,38 @@
+   --version                   Show version info and exit.
+   -h, --help                  Show this text and exit.
+   --encode=MESSAGE_TYPE       Read a text-format message of the given type
+-                              from standard input and write it in binary
+-                              to standard output.  The message type must
++                              from input protobuf file and write it in binary
++                              to output protobuf file.  The message type must
+                               be defined in PROTO_FILES or their imports.
++                              The input/output protobuf files are specified
++                              using the --protobuf_in and --protobuf_out
++                              command line flags.
+   --deterministic_output      When using --encode, ensure map fields are
+                               deterministically ordered. Note that this order
+                               is not canonical, and changes across builds or
+                               releases of protoc.
+   --decode=MESSAGE_TYPE       Read a binary message of the given type from
+-                              standard input and write it in text format
+-                              to standard output.  The message type must
++                              input protobuf file and write it in text format
++                              to output protobuf file.  The message type must
+                               be defined in PROTO_FILES or their imports.
++                              The input/output protobuf files are specified
++                              using the --protobuf_in and --protobuf_out
++                              command line flags.
+   --decode_raw                Read an arbitrary protocol message from
+-                              standard input and write the raw tag/value
+-                              pairs in text format to standard output.  No
++                              input protobuf file and write the raw tag/value
++                              pairs in text format to output protobuf file.  No
+                               PROTO_FILES should be given when using this
+-                              flag.
++                              flag.  The input/output protobuf files are
++                              specified using the --protobuf_in and
++                              --protobuf_out command line flags.
++  --protobuf_in=FILE          Absolute path to the protobuf file from which
++                              input of encoding/decoding operation will be
++                              read.  If omitted, input will be read from
++                              standard input.
++  --protobuf_out=FILE         Absolute path to the protobuf file to which
++                              output of encoding/decoding operation will be
++                              written.  If omitted, output will be written to
++                              standard output.
+   --descriptor_set_in=FILES   Specifies a delimited list of FILES
+                               each containing a FileDescriptorSet (a
+                               protocol buffer defined in descriptor.proto).
+@@ -2347,7 +2403,9 @@
+   return true;
+ }
+
+-bool CommandLineInterface::EncodeOrDecode(const DescriptorPool* pool) {
++bool CommandLineInterface::EncodeOrDecode(const DescriptorPool* pool,
++                                          int in_fd,
++                                          int out_fd) {
+   // Look up the type.
+   const Descriptor* type = pool->FindMessageTypeByName(codec_type_);
+   if (type == nullptr) {
+@@ -2359,15 +2417,15 @@
+   std::unique_ptr<Message> message(dynamic_factory.GetPrototype(type)->New());
+
+   if (mode_ == MODE_ENCODE) {
+-    SetFdToTextMode(STDIN_FILENO);
+-    SetFdToBinaryMode(STDOUT_FILENO);
++    SetFdToTextMode(in_fd);
++    SetFdToBinaryMode(out_fd);
+   } else {
+-    SetFdToBinaryMode(STDIN_FILENO);
+-    SetFdToTextMode(STDOUT_FILENO);
++    SetFdToBinaryMode(in_fd);
++    SetFdToTextMode(out_fd);
+   }
+
+-  io::FileInputStream in(STDIN_FILENO);
+-  io::FileOutputStream out(STDOUT_FILENO);
++  io::FileInputStream in(in_fd);
++  io::FileOutputStream out(out_fd);
+
+   if (mode_ == MODE_ENCODE) {
+     // Input is text.
+--- a/src/google/protobuf/compiler/command_line_interface.h
++++ b/src/google/protobuf/compiler/command_line_interface.h
+@@ -294,7 +294,9 @@
+       GeneratorContext* generator_context, std::string* error);
+
+   // Implements --encode and --decode.
+-  bool EncodeOrDecode(const DescriptorPool* pool);
++  bool EncodeOrDecode(const DescriptorPool* pool,
++                      int in_fd,
++                      int out_fd);
+
+   // Implements the --descriptor_set_out option.
+   bool WriteDescriptorSet(
+@@ -429,6 +431,13 @@
+   // parsed FileDescriptorSets to be used for loading protos.  Otherwise, empty.
+   std::vector<std::string> descriptor_set_in_names_;
+
++  // When using --encode / --decode / --decode_raw absolute path to the output
++  // file. (Empty string indicates write to STDOUT).
++  std::string protobuf_out_path_;
++  // When using --encode / --decode / --decode_raw, absolute path to the input
++  // file. (Empty string indicates read from STDIN).
++  std::string protobuf_in_path_;
++
+   // If --descriptor_set_out was given, this is the filename to which the
+   // FileDescriptorSet should be written.  Otherwise, empty.
+   std::string descriptor_set_out_name_;
+--- a/src/google/protobuf/compiler/command_line_interface_unittest.cc
++++ b/src/google/protobuf/compiler/command_line_interface_unittest.cc
+@@ -99,7 +99,7 @@
+   void SetUp() override;
+   void TearDown() override;
+
+-  // Runs the CommandLineInterface with the given command line.  The
++  // Run the CommandLineInterface with the given command line.  The
+   // command is automatically split on spaces, and the string "$tmpdir"
+   // is replaced with TestTempDir().
+   void Run(const std::string& command);
+@@ -2626,6 +2626,17 @@
+               std::string::npos);
+   }
+
++  void ExpectBinaryFilesMatch(const std::string &expected_file,
++                              const std::string &actual_file) {
++    std::string expected_output, actual_output;
++    ASSERT_TRUE(File::ReadFileToString(expected_file, &expected_output));
++    ASSERT_TRUE(File::ReadFileToString(actual_file, &actual_output));
++
++    // Don't use EXPECT_EQ because we don't want to print raw binary data to
++    // stdout on failure.
++    EXPECT_TRUE(expected_output == actual_output);
++  }
++
+  private:
+   void WriteUnittestProtoDescriptorSet() {
+     unittest_proto_descriptor_set_filename_ =
+@@ -2749,6 +2760,19 @@
+       "Can only use --deterministic_output with --encode.\n");
+ }
+
++TEST_P(EncodeDecodeTest, RedirectInputOutput) {
++  std::string out_file = TestTempDir() + "/golden_message_out.pbf";
++  EXPECT_TRUE(
++      Run(TestUtil::MaybeTranslatePath("net/proto2/internal/unittest.proto") +
++          " --encode=protobuf_unittest.TestAllTypes" +
++          " --protobuf_in=" + TestUtil::GetTestDataPath(
++              "net/proto2/internal/"
++              "testdata/text_format_unittest_data_oneof_implemented.txt") +
++          " --protobuf_out=" + out_file));
++  ExpectBinaryFilesMatch(out_file, TestUtil::GetTestDataPath(
++      "net/proto2/internal/testdata/golden_message_oneof_implemented"));
++}
++
+ INSTANTIATE_TEST_SUITE_P(FileDescriptorSetSource, EncodeDecodeTest,
+                          testing::Values(PROTO_PATH, DESCRIPTOR_SET_IN));
+ }  // anonymous namespace

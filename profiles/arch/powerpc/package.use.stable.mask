@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-11-06)
+# Unmask the target on python-exec while it's masked elsewhere.
+dev-lang/python-exec -python_targets_python3_11
+
 # Sam James <sam@gentoo.org> (2021-10-25)
 # Various unstable dependencies:
 # gnome-base/nautilus
@@ -27,6 +31,7 @@ app-cdr/brasero nautilus tracker
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
 # media-libs/libffado is not stable yet, which itself has unstable and
 # unmaintained/broken dependencies. bug #746722
+media-sound/alsa-utils ieee1394
 media-sound/jack2 ieee1394
 
 # Sam James <sam@gentoo.org> (2020-07-30)
@@ -56,7 +61,6 @@ app-editors/emacs xwidgets
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-06-20)
 # dev-python/PyQt5 is not stable.
 dev-python/matplotlib qt5 test
-media-sound/pulseaudio qt5
 net-print/hplip qt5
 dev-python/pyudev qt5
 

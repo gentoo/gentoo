@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
 	</maintainer>
 	<longdescription>
 inotify-tools is a set of command-line programs for Linux providing a simple
@@ -11,7 +11,6 @@ interface to inotify. These programs can be used to monitor and act upon
 filesystem events. Requires a Linux kernel supporting inotify.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">rvoicilas/inotify-tools</remote-id>
-		<remote-id type="sourceforge">inotify-tools</remote-id>
+		<remote-id type="github">inotify-tools/inotify-tools</remote-id>
 	</upstream>
 </pkgmetadata>

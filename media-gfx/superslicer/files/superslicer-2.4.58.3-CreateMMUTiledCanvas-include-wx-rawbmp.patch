@@ -1,0 +1,12 @@
+diff --git a/src/slic3r/GUI/CreateMMUTiledCanvas.cpp b/src/slic3r/GUI/CreateMMUTiledCanvas.cpp
+index be157ea..d63eb11 100644
+--- a/src/slic3r/GUI/CreateMMUTiledCanvas.cpp
++++ b/src/slic3r/GUI/CreateMMUTiledCanvas.cpp
+@@ -40,6 +40,7 @@
+ #include <wx/odcombo.h>
+ #include <wx/textctrl.h>
+ #include <wx/wrapsizer.h>
++#include <wx/rawbmp.h>
+ #include "wxExtensions.hpp"
+ 
+ #include <boost/filesystem/path.hpp>

@@ -94,8 +94,6 @@ if ${use_color} ; then
 	#BSD#@export CLICOLOR=1
 	#GNU#@alias ls='ls --color=auto'
 	alias grep='grep --colour=auto'
-	alias egrep='grep -E --colour=auto'
-	alias fgrep='grep -F --colour=auto'
 else
 	# show root@ when we don't have colors
 	PS1+='\u@\h \w \$ '

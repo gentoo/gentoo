@@ -1,5 +1,5 @@
---- gt-itm/src/geog.c
-+++ gt-itm/src/geog.c
+--- a/gt-itm/src/geog.c
++++ b/gt-itm/src/geog.c
 @@ -6,6 +6,7 @@
   */
  
@@ -18,8 +18,8 @@
  double
  distance(Vertex *u, Vertex *v)
  {
---- gt-itm/src/ts.c
-+++ gt-itm/src/ts.c
+--- a/gt-itm/src/ts.c
++++ b/gt-itm/src/ts.c
 @@ -8,6 +8,7 @@
   */
  
@@ -39,8 +39,8 @@
  /* fast diameter computation using Floyd-Warshall
   * Returns the HOP diameter of the graph, i.e. each edge given UNIT wt.
   * Leaves the LENGTH diameter of the graph in g->Gldiam.
---- gt-itm/include/geog.h
-+++ gt-itm/include/geog.h
+--- a/gt-itm/include/geog.h
++++ b/gt-itm/include/geog.h
 @@ -74,3 +74,8 @@
           geo_parms* toppp,      /* params for transit connectivity */
           geo_parms* transpp,    /*   "     "  transit domains   */
@@ -50,8 +50,8 @@
 +long idist(Vertex *u, Vertex *v);
 +int printparms(char *buf,geo_parms *pp);
 +int isconnected(Graph *G);
---- gt-itm/src/edriver.c
-+++ gt-itm/src/edriver.c
+--- a/gt-itm/src/edriver.c
++++ b/gt-itm/src/edriver.c
 @@ -35,6 +35,8 @@
   */
  
@@ -61,8 +61,8 @@
  #include "gb_graph.h"
  #include "gb_save.h"
  #include "gb_dijk.h"
---- gt-itm/include/eval.h
-+++ gt-itm/include/eval.h
+--- a/gt-itm/include/eval.h
++++ b/gt-itm/include/eval.h
 @@ -8,4 +8,7 @@
  enum Field {Len, A, B, Hops};
  
@@ -72,8 +72,8 @@
 +void dopaths(Graph *g, enum Field f0, enum Field f1, int *rmin, int *rmax, float *ravg);
 +void dodepthdist(Graph *g, int** ddist);
 +int bicomp(Graph *g,int verbose);
---- gt-itm/src/dfs.c
-+++ gt-itm/src/dfs.c
+--- a/gt-itm/src/dfs.c
++++ b/gt-itm/src/dfs.c
 @@ -6,6 +6,7 @@
   */
  
@@ -91,8 +91,8 @@
  /* check connectivity of graph g                        */
  /* uses depth-first search.                             */
  isconnected(Graph *G)
---- gt-itm/src/itm.c.orig	2010-10-12 17:11:25.748461793 +0200
-+++ gt-itm/src/itm.c	2010-10-12 17:13:09.237165705 +0200
+--- a/gt-itm/src/itm.c.orig
++++ b/gt-itm/src/itm.c
 @@ -42,6 +42,7 @@
  #include <stdlib.h>		/* for calloc(),atoi(),etc. */
  #include <string.h>		/* for strtok() */

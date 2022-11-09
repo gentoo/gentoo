@@ -1,11 +1,11 @@
---- a/xim/convdisp.cpp
-+++ b/xim/convdisp.cpp
-@@ -69,7 +69,7 @@
- #endif
- 
- const char *fontset_zhCN = "-sony-fixed-medium-r-normal--16-*-*-*-c-80-iso8859-1, -isas-fangsong ti-medium-r-normal--16-160-72-72-c-160-gb2312.1980-0";
--const char *fontset_zhTW = "-sony-fixed-medium-r-normal--16-*-*-*-c-80-iso8859-1, -taipei-fixed-medium-r-normal--16-150-75-75-c-160-big5-0";
-+const char *fontset_zhTW = "-sony-fixed-medium-r-normal--16-*-*-*-c-80-iso8859-1, -eten-fixed-medium-r-normal--16-150-75-75-c-160-big5.eten-0";
- const char *fontset_ja = "-sony-fixed-medium-r-normal--16-*-*-*-c-80-iso8859-1, -jis-fixed-medium-r-normal--16-*-75-75-c-160-jisx0208.1983-0, -sony-fixed-medium-r-normal--16-*-*-*-c-80-jisx0201.1976-0";
- const char *fontset_ko = "-sony-fixed-medium-r-normal--16-*-*-*-c-80-iso8859-1, -daewoo-gothic-medium-r-normal--16-120-100-100-c-160-ksc5601.1987-0";
- 
+--- a/scm/im-custom.scm
++++ b/scm/im-custom.scm
+@@ -679,7 +679,7 @@
+ (define-custom 'uim-xim-fontset-zh-tw
+   (string-join '(
+     "-sony-fixed-medium-r-normal--16-*-*-*-c-80-iso8859-1"
+-    "-taipei-fixed-medium-r-normal--16-150-75-75-c-160-big5-0"
++    "-eten-fixed-medium-r-normal--16-150-75-75-c-160-big5.eten-0"
+     ) ",")
+   '(xim xim-preedit)
+   '(string ".*")

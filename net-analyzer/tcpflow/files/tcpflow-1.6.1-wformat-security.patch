@@ -1,0 +1,24 @@
+https://github.com/simsong/tcpflow/issues/238
+https://github.com/simsong/tcpflow/commit/a0697509c4657e2fd94f941e43a2d4c86ddf9fe4
+
+From: "Simson L. Garfinkel" <simsong@acm.org>
+Date: Thu, 11 Mar 2021 19:30:54 -0500
+Subject: [PATCH] Update datalink.cpp (#239)
+
+per https://salsa.debian.org/debian/tcpflow/-/blob/master/debian/patches/fix-werror-format-security.patch
+Closes https://github.com/simsong/tcpflow/issues/238
+--- a/src/datalink.cpp
++++ b/src/datalink.cpp
+@@ -171,10 +171,7 @@ void dl_ethernet(u_char *user, const struct pcap_pkthdr *h, const u_char *p)
+             break;
+         }
+     } catch( std::logic_error e){
+-        std::string s(std::string("warning: caught std::logic_error ")
+-                      + e.what()
+-                      + std::string(" in packet"));
+-        DEBUG(6)(s.c_str());
++        DEBUG(6)("Warning: caught std::logic_error %s in packet",e.what());
+     }
+ }
+ 
+

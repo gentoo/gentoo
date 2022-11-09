@@ -10,6 +10,6 @@
 		<flag name="opencv">Enable support for webcams using the OpenCV library</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">dtschump/gmic</remote-id>
+		<remote-id type="github">GreycLab/gmic</remote-id>
 	</upstream>
 </pkgmetadata>

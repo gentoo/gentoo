@@ -14,7 +14,7 @@ SRC_URI="http://ctp.di.fct.unl.pt/~amd/cxprolog/cxunix/${P}.src.tgz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples java +readline test wxwidgets"
 RESTRICT="!test? ( test )"
 
@@ -32,6 +32,7 @@ S="${WORKDIR}"/${P}
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-portage.patch
+	eapply "${FILESDIR}"/${P}-printf-musl.patch
 	eapply "${FILESDIR}"/${P}-test-io.patch
 	eapply_user
 
@@ -58,7 +59,10 @@ src_compile() {
 		local java_arch
 		use x86 && java_arch=i386
 		use amd64 && java_arch=amd64
-		CX_JVM="${JAVA_HOME}/jre/lib/${java_arch}/server"
+		local CX_JVM
+		for i in jre/lib/${java_arch}/server lib/server; do
+			[[ -f ${JAVA_HOME}/${i}/libjvm.so ]] && CX_JVM=${JAVA_HOME}/${i}
+		done
 		CX_EXT_DEFINES="$CX_EXT_DEFINES -DUSE_JAVA"
 		CX_EXT_CFLAGS="$CX_EXT_CFLAGS $(java-pkg_get-jni-cflags)"
 		CX_EXT_LDFLAGS="$CX_EXT_LDFLAGS -Wl,-rpath,${CX_JVM}"

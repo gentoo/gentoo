@@ -1,0 +1,31 @@
+From 1288e430c6f6be992de09fc1f50ce7fef42b3f0a Mon Sep 17 00:00:00 2001
+From: Mark Hansen <markhansen@google.com>
+Date: Mon, 26 Sep 2022 20:43:39 +1000
+Subject: [PATCH] Stop using now-hidden gs_error_names symbol
+
+GhostScript hid their gs_error_names symbol as part of a global by-default hiding of non-API symbols.
+
+It will probably take a while for GhostScript to get a public API for these symbols back into a release, so let's stop using the symbol for now, until then.
+
+Fixes #2280
+---
+ plugin/gs/gvloadimage_gs.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/plugin/gs/gvloadimage_gs.c b/plugin/gs/gvloadimage_gs.c
+index e909c6f32..d852663af 100644
+--- a/plugin/gs/gvloadimage_gs.c
++++ b/plugin/gs/gvloadimage_gs.c
+@@ -86,8 +86,8 @@ static void gs_error(GVJ_t * job, const char *name, const char *funstr, int err)
+     else
+ 	errsrc = "Ghostscript internal error";
+ 
+-    job->common->errorfn("%s: %s() returned: %d \"%s\" (%s)\n",
+-		name, funstr, err, gs_error_names[-err - 1], errsrc);
++    job->common->errorfn("%s: %s() returned: %d (%s)\n",
++		name, funstr, err, errsrc);
+ }
+ 
+ static int gvloadimage_process_file(GVJ_t *job, usershape_t *us, void *instance)
+-- 
+GitLab

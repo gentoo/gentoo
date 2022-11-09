@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit flag-o-matic multilib-minimal toolchain-funcs usr-ldscript
+# See https://bugs.gentoo.org/835813 before bumping to 4.x!
+
+inherit flag-o-matic multilib-minimal usr-ldscript
 
 DESCRIPTION="Standard informational utilities and process-handling tools"
 HOMEPAGE="http://procps-ng.sourceforge.net/ https://gitlab.com/procps-ng/procps"
@@ -51,18 +53,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	if tc-is-cross-compiler ; then
-		# This isn't ideal but upstream don't provide a placement
-		# when malloc is missing anyway, leading to errors like:
-		# pslog.c:(.text.startup+0x108): undefined reference to `rpl_malloc'
-		# See https://sourceforge.net/p/psmisc/bugs/71/
-		# (and https://lists.gnu.org/archive/html/autoconf/2011-04/msg00019.html)
-		export ac_cv_func_malloc_0_nonnull=yes \
-			ac_cv_func_realloc_0_nonnull=yes
-	fi
-
 	# http://www.freelists.org/post/procps/PATCH-enable-transparent-large-file-support
 	append-lfs-flags #471102
+
 	local myeconfargs=(
 		$(multilib_native_use_with elogind) # No elogind multilib support
 		$(multilib_native_use_enable kill)

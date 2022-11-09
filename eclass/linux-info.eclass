@@ -29,6 +29,15 @@
 # A Couple of env vars are available to effect usage of this eclass
 # These are as follows:
 
+
+# @ECLASS_VARIABLE: CHECKCONFIG_DONOTHING
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Do not error out in check_extra_config if CONFIG settings are not met.
+# This is a user flag and should under _no circumstances_ be set in the ebuild.
+: ${CHECKCONFIG_DONOTHING:=""}
+
 # @ECLASS_VARIABLE: KERNEL_DIR
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
@@ -131,6 +140,16 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # A read-only variable. It's a string containing the kernel object directory, will be KV_DIR unless
 # KBUILD_OUTPUT is used. This should be used for referencing .config.
 
+
+# @ECLASS_VARIABLE: SKIP_KERNEL_CHECK
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Do not check for kernel sources or a running kernel version 
+# Main use-case is for chroots
+# This is a user flag and should under _no circumstances_ be set in the ebuild.
+: ${SKIP_KERNEL_CHECK:=""}
+
 # And to ensure all the weirdness with crosscompile
 inherit toolchain-funcs
 [[ ${EAPI:-0} == [0123456] ]] && inherit eapi7-ver
@@ -148,15 +167,15 @@ esac
 # @DESCRIPTION:
 # Set the env ARCH to match what the kernel expects.
 set_arch_to_kernel() { export ARCH=$(tc-arch-kernel); }
-# @FUNCTION: set_arch_to_portage
-# @DESCRIPTION:
-# Set the env ARCH to match what portage expects.
-set_arch_to_portage() { export ARCH=$(tc-arch); }
 
-# qeinfo "Message"
-# -------------------
-# qeinfo is a quiet einfo call when EBUILD_PHASE
-# should not have visible output.
+# @FUNCTION: set_arch_to_pkgmgr
+# @DESCRIPTION:
+# Set the env ARCH to match what the package manager expects.
+set_arch_to_pkgmgr() { export ARCH=$(tc-arch); }
+
+# @FUNCTION: qout
+# @DESCRIPTION:
+# qout <einfo | ewarn | eerror>  is a quiet call when EBUILD_PHASE should not have visible output.
 qout() {
 	local outputmsg type
 	type=${1}
@@ -170,8 +189,21 @@ qout() {
 	[ -n "${outputmsg}" ] && ${type} "${outputmsg}"
 }
 
+# @FUNCTION: qeinfo
+# @DESCRIPTION:
+# qeinfo is a quiet einfo call when EBUILD_PHASE should not have visible output.
 qeinfo() { qout einfo "${@}" ; }
+
+# @FUNCTION: qewarn
+# @DESCRIPTION:
+# qewarn is a quiet ewarn call when EBUILD_PHASE
+# should not have visible output.
 qewarn() { qout ewarn "${@}" ; }
+
+# @FUNCTION: qeerror
+# @DESCRIPTION:
+# qeerror is a quiet error call when EBUILD_PHASE
+# should not have visible output.
 qeerror() { qout eerror "${@}" ; }
 
 # File Functions
@@ -253,6 +285,10 @@ getfilevar_noexec() {
 # config is available at all.
 _LINUX_CONFIG_EXISTS_DONE=
 
+# @FUNCTION: linux_config_qa_check
+# @INTERNAL
+# @DESCRIPTION:
+# Helper funciton which returns an error before the function argument is run if no config exists
 linux_config_qa_check() {
 	local f="$1"
 	if [ -z "${_LINUX_CONFIG_EXISTS_DONE}" ]; then
@@ -313,6 +349,9 @@ linux_config_path() {
 # This function verifies that the current kernel is configured (it checks against the existence of .config)
 # otherwise it dies.
 require_configured_kernel() {
+
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
+
 	if ! use kernel_linux; then
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
 	fi
@@ -335,6 +374,7 @@ require_configured_kernel() {
 # If linux_config_exists returns false, the results of this are UNDEFINED. You
 # MUST call linux_config_exists first.
 linux_chkconfig_present() {
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 	linux_config_qa_check linux_chkconfig_present
 	[[ $(getfilevar_noexec "CONFIG_$1" "$(linux_config_path)") == [my] ]]
 }
@@ -347,6 +387,7 @@ linux_chkconfig_present() {
 # If linux_config_exists returns false, the results of this are UNDEFINED. You
 # MUST call linux_config_exists first.
 linux_chkconfig_module() {
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 	linux_config_qa_check linux_chkconfig_module
 	[[ $(getfilevar_noexec "CONFIG_$1" "$(linux_config_path)") == m ]]
 }
@@ -359,6 +400,7 @@ linux_chkconfig_module() {
 # If linux_config_exists returns false, the results of this are UNDEFINED. You
 # MUST call linux_config_exists first.
 linux_chkconfig_builtin() {
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 	linux_config_qa_check linux_chkconfig_builtin
 	[[ $(getfilevar_noexec "CONFIG_$1" "$(linux_config_path)") == y ]]
 }
@@ -371,6 +413,7 @@ linux_chkconfig_builtin() {
 # If linux_config_exists returns false, the results of this are UNDEFINED. You
 # MUST call linux_config_exists first.
 linux_chkconfig_string() {
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 	linux_config_qa_check linux_chkconfig_string
 	getfilevar_noexec "CONFIG_$1" "$(linux_config_path)"
 }
@@ -422,26 +465,9 @@ kernel_is() {
 		"${1:-${KV_MAJOR:-0}}.${2:-${KV_MINOR:-0}}.${3:-${KV_PATCH:-0}}"
 }
 
-get_localversion() {
-	local lv_list i x
-
-	local shopt_save=$(shopt -p nullglob)
-	shopt -s nullglob
-	local files=( ${1}/localversion* )
-	${shopt_save}
-
-	# ignore files with ~ in it.
-	for i in "${files[@]}"; do
-		[[ -n ${i//*~*} ]] && lv_list="${lv_list} ${i}"
-	done
-
-	for i in ${lv_list}; do
-		x="${x}$(<${i})"
-	done
-	x=${x/ /}
-	echo ${x}
-}
-
+# @FUNCTION: get_makefile_extract_function
+# @INTERNAL
+# @DESCRIPTION:
 # Check if the Makefile is valid for direct parsing.
 # Check status results:
 # - PASS, use 'getfilevar' to extract values
@@ -450,6 +476,7 @@ get_localversion() {
 # - make is not present
 # - corruption exists in the kernel makefile
 get_makefile_extract_function() {
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 	local a='' b='' mkfunc='getfilevar'
 	a="$(getfilevar VERSION ${KERNEL_MAKEFILE})"
 	b="$(getfilevar_noexec VERSION ${KERNEL_MAKEFILE})"
@@ -457,7 +484,10 @@ get_makefile_extract_function() {
 	echo "${mkfunc}"
 }
 
-# internal variable, so we know to only print the warning once
+# @ECLASS_VARIABLE: get_version_warning_done
+# @INTERNAL
+# @DESCRIPTION: 
+# Internal variable, so we know to only print the warning once.
 get_version_warning_done=
 
 # @FUNCTION: get_version
@@ -476,6 +506,8 @@ get_version() {
 	fi
 
 	local tmplocal
+
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 
 	# no need to execute this twice assuming KV_FULL is populated.
 	# we can force by unsetting KV_FULL
@@ -685,6 +717,9 @@ check_kernel_built() {
 	fi
 
 	# if we haven't determined the version yet, we need to
+
+	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
+
 	require_configured_kernel
 
 	local versionh_path
@@ -874,6 +909,9 @@ check_extra_config() {
 	export LINUX_CONFIG_EXISTS_DONE="${old_LINUX_CONFIG_EXISTS_DONE}"
 }
 
+# @FUNCTION: check_zlibinflate
+# @DESCRIPTION:
+# Function to make sure a ZLIB_INFLATE configuration has the required symbols.
 check_zlibinflate() {
 	if ! use kernel_linux; then
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
@@ -957,7 +995,7 @@ linux-info_pkg_setup() {
 
 	linux-info_get_any_version
 
-	[ -n "${CONFIG_CHECK}" ] && check_extra_config;
+	[[ -n "${CONFIG_CHECK}" && -z ${CHECKCONFIG_DONOTHING} ]] && check_extra_config;
 }
 
 # @FUNCTION: kernel_get_makefile

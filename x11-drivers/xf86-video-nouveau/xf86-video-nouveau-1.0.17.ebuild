@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://nouveau.freedesktop.org/wiki/
 	https://cgit.freedesktop.org/nouveau/xf86-video-nouveau"
 
-KEYWORDS="amd64 ~arm64 ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~loong ppc ppc64 ~riscv x86"
 
 RDEPEND=">=x11-libs/libdrm-2.4.60[video_cards_nouveau]
 	>=x11-libs/libpciaccess-0.10

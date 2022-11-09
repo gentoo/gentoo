@@ -10,9 +10,8 @@ dev-ruby/stringex test
 # Sam James <sam@gentoo.org> (2022-04-26)
 # eps: app-text/libspectre not keyworded here
 # heif: media-libs/libheif not keyworded here
-# svg: rustified librsvg not keyworded here
 # jpegxl: libjxl not keyworded here
-media-libs/imlib2 eps heif svg jpegxl
+media-libs/imlib2 eps heif jpegxl
 
 # Sam James <sam@gentoo.org> (2022-04-26)
 # Avoid unkeyworded dependencies
@@ -60,20 +59,12 @@ app-crypt/pinentry efl
 app-admin/sudo sssd
 
 # Sam James <sam@gentoo.org> (2022-04-24)
-# sys-apps/systemd is not keyworded here
-sys-auth/pambase homed
-
-# Sam James <sam@gentoo.org> (2022-04-24)
 # app-crypt/dieharder and dev-libs/softhsm:2 unkeyworded here
 net-libs/gnutls test-full
 
 # Sam James <sam@gentoo.org> (2022-04-24)
 # net-fs/samba unkeyworded here
 net-fs/cifs-utils acl
-
-# Sam James <sam@gentoo.org> (2022-04-24)
-# No Rust here, so no librsvg
-media-libs/freetype svg
 
 # Sam James <sam@gentoo.org> (2022-04-20)
 # x11-themes/sound-theme-freedesktop unkeyworded here
@@ -187,9 +178,3 @@ net-dns/avahi python
 
 # missing keyword for sys-cluster/openmpi sys-cluster/mpich2
 dev-libs/boost mpi
-
-# Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
-# MySQL 5.5 wants systemtap, tcmalloc & jemalloc
->=dev-db/mysql-5.5 tcmalloc
->=dev-db/mariadb-5.5 tcmalloc
->=dev-db/percona-server-5.5 tcmalloc

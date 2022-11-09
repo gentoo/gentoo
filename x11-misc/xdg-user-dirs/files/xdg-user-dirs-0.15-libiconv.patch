@@ -1,11 +1,32 @@
-http://bugs.gentoo.org/366885
-http://bugs.gentoo.org/499940
+https://gitlab.freedesktop.org/xdg/xdg-user-dirs/-/merge_requests/9
 
+From f310c0534c1394410e98e610cf5cd34d1f4c07e4 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 16 Aug 2022 23:14:39 +0100
+Subject: [PATCH] Makefile.am: link with libiconv when needed
+
+Fixes issues on systems with libiconv separate from libc
+(e.g. Darwin/macOS, uclibc).
+
+We already ask configure to do detection for us
+of whether we need an explicit library link line
+for libintl and libiconv, so let's use the result.
+
+This will have no effect if the variable is empty
+of course, as will be the case on many systems
+(everywhere it worked before).
+
+We've been carrying this patch in Gentoo for quite some time
+with no issues.
+
+Bug: https://bugs.gentoo.org/366885
+Bug: https://bugs.gentoo.org/499940
+Signed-off-by: Sam James <sam@gentoo.org>
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -16,7 +16,7 @@
- xdgdir=$(sysconfdir)/xdg
- xdg_DATA=user-dirs.conf user-dirs.defaults
+@@ -22,7 +22,7 @@ xdg_DATA=user-dirs.conf user-dirs.defaults
+ xdgautostartdir=$(xdgdir)/autostart
+ xdgautostart_DATA = xdg-user-dirs.desktop
  
 -libraries = $(LIBINTL)
 +libraries = $(LIBINTL) $(LIBICONV)

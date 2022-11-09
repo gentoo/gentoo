@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit qmake-utils
 
@@ -27,21 +27,20 @@ RDEPEND="
 	jack? ( virtual/jack )
 	portaudio? ( media-libs/portaudio )
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/linguist-tools:5"
 
 src_prepare() {
 	# Fix the path to readme file to prevent errors on start up
 	sed -i "/QFile readmefile/c\QFile readmefile \
 		(\"/usr/share/doc/${PF}/README.txt\");" \
-		src/main.cpp || die "README sed failed"
+		src/main.cpp || die
 	# Fix the PREFIX location, insert real path.
 	sed -i "/QString fmitprefix/c\QString fmitprefix(STR(/usr));" \
-		src/main.cpp || die "PREFIX fix sed failed"
+		src/main.cpp || die
 	# Fix the PREFIX location, insert real path.
 	sed -i "/QString fmitprefix/c\QString fmitprefix(STR(/usr));" \
-		src/modules/MicrotonalView.cpp || die "PREFIX fix sed failed"
+		src/modules/MicrotonalView.cpp || die
 	default
 }
 
@@ -51,8 +50,11 @@ src_configure() {
 		use ${flag} && config+=" acs_${flag}"
 	done
 
-	"$(qt5_get_bindir)"/lrelease fmit.pro || die "Running lrelease failed"
+	"$(qt5_get_bindir)"/lrelease fmit.pro || die
 
-	eqmake5 CONFIG+="${config}" fmit.pro PREFIX="${D}"/usr \
-		PREFIXSHORTCUT="${D}"/usr DISTDIR=/usr
+	eqmake5 CONFIG+="${config}" PREFIX=/usr fmit.pro
+}
+
+src_install() {
+	emake install INSTALL_ROOT="${D}"
 }

@@ -3,18 +3,30 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+# Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-qemu-docs
+# Set to 1 if prebuilt, 0 if not
+# (the construct below is to allow overriding from env for script)
+: ${QEMU_DOCS_PREBUILT:=1}
+
+QEMU_DOCS_PREBUILT_DEV=sam
+QEMU_DOCS_VERSION=$(ver_cut 1-3)
+# Default to generating docs (inc. man pages) if no prebuilt; overridden later
+# bug #830088
+QEMU_DOC_USEFLAG="+doc"
+
+PYTHON_COMPAT=( python3_{8,9,10,11} )
 PYTHON_REQ_USE="ncurses,readline"
 
-FIRMWARE_ABI_VERSION="6.2.0"
+FIRMWARE_ABI_VERSION="7.1.0"
 
 inherit linux-info toolchain-funcs python-r1 udev fcaps readme.gentoo-r1 \
 		pax-utils xdg-utils
 
-if [[ ${PV} = *9999* ]]; then
+if [[ ${PV} == *9999* ]]; then
+	QEMU_DOCS_PREBUILT=0
+
 	EGIT_REPO_URI="https://gitlab.com/qemu-project/qemu.git/"
 	EGIT_SUBMODULES=(
-		meson
 		tests/fp/berkeley-softfloat-3
 		tests/fp/berkeley-testfloat-3
 		ui/keycodemapdb
@@ -22,8 +34,15 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 else
-	SRC_URI="https://download.qemu.org/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+	MY_P="${PN}-${PV/_rc/-rc}"
+	SRC_URI="https://download.qemu.org/${MY_P}.tar.xz"
+
+	if [[ ${QEMU_DOCS_PREBUILT} == 1 ]] ; then
+		SRC_URI+=" !doc? ( https://dev.gentoo.org/~${QEMU_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${QEMU_DOCS_VERSION}-docs.tar.xz )"
+	fi
+
+	S="${WORKDIR}/${MY_P}"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -32,7 +51,9 @@ HOMEPAGE="https://www.qemu.org https://www.linux-kvm.org"
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
 
-IUSE="accessibility +aio alsa bpf bzip2 capstone +caps +curl debug +doc
+[[ ${QEMU_DOCS_PREBUILT} == 1 ]] && QEMU_DOC_USEFLAG="doc"
+
+IUSE="accessibility +aio alsa bpf bzip2 capstone +caps +curl debug ${QEMU_DOC_USEFLAG}
 	+fdt fuse glusterfs +gnutls gtk infiniband iscsi io-uring
 	jack jemalloc +jpeg
 	lzo multipath
@@ -50,6 +71,7 @@ COMMON_TARGETS="
 	cris
 	hppa
 	i386
+	loongarch64
 	m68k
 	microblaze
 	microblazeel
@@ -147,7 +169,7 @@ SOFTMMU_TOOLS_DEPEND="
 	capstone? ( dev-libs/capstone:= )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
-	fdt? ( >=sys-apps/dtc-1.5.0[static-libs(+)] )
+	fdt? ( >=sys-apps/dtc-1.5.1[static-libs(+)] )
 	fuse? ( >=sys-fs/fuse-3.1:3[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
@@ -163,7 +185,7 @@ SOFTMMU_TOOLS_DEPEND="
 	io-uring? ( sys-libs/liburing:=[static-libs(+)] )
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc )
-	jpeg? ( virtual/jpeg:0=[static-libs(+)] )
+	jpeg? ( media-libs/libjpeg-turbo:=[static-libs(+)] )
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )
 	multipath? ( sys-fs/multipath-tools )
 	ncurses? (
@@ -207,34 +229,44 @@ SOFTMMU_TOOLS_DEPEND="
 	zstd? ( >=app-arch/zstd-1.4.0[static-libs(+)] )
 "
 
-EDK2_OVMF_VERSION="202105"
-SEABIOS_VERSION="1.14.0"
+EDK2_OVMF_VERSION="202202"
+SEABIOS_VERSION="1.16.0"
 
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/edk2-ovmf-${EDK2_OVMF_VERSION}[binary]
+		~sys-firmware/edk2-ovmf-bin-${EDK2_OVMF_VERSION}
 		~sys-firmware/ipxe-1.21.1[binary,qemu]
-		~sys-firmware/seabios-${SEABIOS_VERSION}[binary,seavgabios]
+		~sys-firmware/seabios-bin-${SEABIOS_VERSION}
 		~sys-firmware/sgabios-0.1_pre10[binary]
 	)
 	!pin-upstream-blobs? (
-		>=sys-firmware/edk2-ovmf-${EDK2_OVMF_VERSION}
+		|| (
+			>=sys-firmware/edk2-ovmf-${EDK2_OVMF_VERSION}
+			>=sys-firmware/edk2-ovmf-bin-${EDK2_OVMF_VERSION}
+		)
 		sys-firmware/ipxe[qemu]
-		>=sys-firmware/seabios-${SEABIOS_VERSION}[seavgabios]
+		|| (
+			>=sys-firmware/seabios-${SEABIOS_VERSION}[seavgabios]
+			>=sys-firmware/seabios-bin-${SEABIOS_VERSION}
+		)
 		sys-firmware/sgabios
 	)"
 PPC_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/seabios-${SEABIOS_VERSION}[binary,seavgabios]
+		~sys-firmware/seabios-bin-${SEABIOS_VERSION}
 	)
 	!pin-upstream-blobs? (
-		>=sys-firmware/seabios-${SEABIOS_VERSION}[seavgabios]
+		|| (
+			>=sys-firmware/seabios-${SEABIOS_VERSION}[seavgabios]
+			>=sys-firmware/seabios-bin-${SEABIOS_VERSION}
+		)
 	)
 "
 
 BDEPEND="
 	$(python_gen_impl_dep)
 	dev-lang/perl
+	dev-util/meson
 	sys-apps/texinfo
 	virtual/pkgconfig
 	doc? (
@@ -275,8 +307,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
 	"${FILESDIR}"/${PN}-6.0.0-make.patch
-	"${FILESDIR}"/${PN}-6.1.0-strings.patch
-	"${FILESDIR}"/${PN}-7.0.0-also-build-virtfs-proxy-helper.patch
+	"${FILESDIR}"/${PN}-7.1.0-also-build-virtfs-proxy-helper.patch
 )
 
 QA_PREBUILT="
@@ -416,8 +447,13 @@ src_prepare() {
 	# Verbose builds
 	MAKEOPTS+=" V=1"
 
-	# Remove bundled copy of libfdt
-	rm -r dtc || die
+	# We already force -D_FORTIFY_SOURCE=2 (or 3) in our toolchain, but
+	# this setting (-U then -D..=2) will prevent us from trying out 3, so
+	# drop it. No change to level of protection b/c we patch our toolchain.
+	sed -i -e 's/-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2//' configure || die
+
+	# Remove bundled modules
+	rm -r dtc meson roms/*/ || die
 }
 
 ##
@@ -430,7 +466,7 @@ qemu_src_configure() {
 	local buildtype=$1
 	local builddir="${S}/${buildtype}-build"
 
-	mkdir "${builddir}"
+	mkdir "${builddir}" || die
 
 	local conf_opts=(
 		--prefix=/usr
@@ -462,10 +498,10 @@ qemu_src_configure() {
 		# are enabled), but it's not really worth the hassle.  Disable it
 		# all the time to avoid automatically detecting it. #568856
 		--disable-gcrypt
-		--python="${PYTHON}"
 		--cc="$(tc-getCC)"
 		--cxx="$(tc-getCXX)"
 		--host-cc="$(tc-getBUILD_CC)"
+
 		$(use_enable alsa)
 		$(use_enable debug debug-info)
 		$(use_enable debug debug-tcg)
@@ -538,13 +574,13 @@ qemu_src_configure() {
 		$(conf_notuser numa)
 		$(conf_notuser opengl)
 		$(conf_notuser pam auth-pam)
-		$(conf_notuser png vnc-png)
+		$(conf_notuser png)
 		$(conf_notuser rbd)
 		$(conf_notuser sasl vnc-sasl)
 		$(conf_notuser sdl)
 		$(conf_softmmu sdl-image)
 		$(conf_notuser seccomp)
-		$(conf_notuser slirp slirp system)
+		$(conf_notuser slirp)
 		$(conf_notuser smartcard)
 		$(conf_notuser snappy)
 		$(conf_notuser spice)
@@ -554,8 +590,8 @@ qemu_src_configure() {
 		$(conf_notuser usbredir usb-redir)
 		$(conf_notuser vde)
 		$(conf_notuser vhost-net)
-		$(conf_notuser vhost-user-fs)
-		$(conf_tools vhost-user-fs virtiofsd)
+		# $(conf_notuser vhost-user-fs)
+		# $(conf_tools vhost-user-fs virtiofsd)
 		$(conf_notuser virgl virglrenderer)
 		$(conf_softmmu virtfs)
 		$(conf_notuser vnc)
@@ -588,7 +624,6 @@ qemu_src_configure() {
 		conf_opts+=(
 			--enable-linux-user
 			--disable-system
-			--disable-blobs
 			--disable-tools
 		)
 		local static_flag="static-user"
@@ -597,9 +632,20 @@ qemu_src_configure() {
 		conf_opts+=(
 			--disable-linux-user
 			--enable-system
+			--disable-blobs
 			--disable-tools
 		)
 		local static_flag="static"
+
+		for target in ${IUSE_SOFTMMU_TARGETS}; do
+			if use "qemu_softmmu_targets_${target}"; then
+				conf_opts+=(
+					# For some reason, adding this with the setting set
+					# to on *or* off makes the build always fail.
+					# --with-devices-${target}=gentoo
+				)
+			fi
+		done
 		;;
 	tools)
 		conf_opts+=(
@@ -651,6 +697,16 @@ src_configure() {
 		if use "qemu_softmmu_targets_${target}"; then
 			softmmu_targets+=",${target}-softmmu"
 			softmmu_bins+=( "qemu-system-${target}" )
+
+			if use vhost-user-fs; then
+				echo "CONFIG_VHOST_USER_FS=y for ${target}-softmmu" || die
+				echo "CONFIG_VIRTIO=y" >> "configs/devices/${target}-softmmu/gentoo.mak" || die
+				echo "CONFIG_VHOST_USER_FS=y" >> "configs/devices/${target}-softmmu/gentoo.mak" || die
+			else
+				echo "CONFIG_VHOST_USER_FS=n for ${target}-softmmu" || die
+				echo "CONFIG_VIRTIO=n" >> "configs/devices/${target}-softmmu/gentoo.mak" || die
+				echo "CONFIG_VHOST_USER_FS=n" >> "configs/devices/${target}-softmmu/gentoo.mak" || die
+			fi
 		fi
 	done
 
@@ -671,22 +727,22 @@ src_configure() {
 
 src_compile() {
 	if [[ -n ${user_targets} ]]; then
-		cd "${S}/user-build"
+		cd "${S}/user-build" || die
 		default
 	fi
 
 	if [[ -n ${softmmu_targets} ]]; then
-		cd "${S}/softmmu-build"
+		cd "${S}/softmmu-build" || die
 		default
 	fi
 
-	cd "${S}/tools-build"
+	cd "${S}/tools-build" || die
 	default
 }
 
 src_test() {
 	if [[ -n ${softmmu_targets} ]]; then
-		cd "${S}/softmmu-build"
+		cd "${S}/softmmu-build" || die
 		pax-mark m */qemu-system-* #515550
 		emake check
 	fi
@@ -783,19 +839,24 @@ src_install() {
 		fi
 	fi
 
-	cd "${S}/tools-build"
+	cd "${S}/tools-build" || die
 	emake DESTDIR="${ED}" install
 
+	# If USE=doc, there'll be newly generated docs which we install instead.
+	if ! use doc && [[ ${QEMU_DOCS_PREBUILT} == 1 ]] ; then
+		doman "${WORKDIR}"/${PN}-${QEMU_DOCS_VERSION}-docs/docs/*.[0-8]
+	fi
+
 	# Disable mprotect on the qemu binaries as they use JITs to be fast #459348
-	pushd "${ED}"/usr/bin >/dev/null
+	pushd "${ED}"/usr/bin >/dev/null || die
 	pax-mark mr "${softmmu_bins[@]}" "${user_bins[@]}" # bug 575594
-	popd >/dev/null
+	popd >/dev/null || die
 
 	# Install config file example for qemu-bridge-helper
 	insinto "/etc/qemu"
 	doins "${FILESDIR}/bridge.conf"
 
-	cd "${S}"
+	cd "${S}" || die
 	dodoc MAINTAINERS docs/specs/pci-ids.txt
 	newdoc pc-bios/README README.pc-bios
 
@@ -804,10 +865,7 @@ src_install() {
 
 	if [[ -n ${softmmu_targets} ]]; then
 		# Remove SeaBIOS since we're using the SeaBIOS packaged one
-		rm "${ED}/usr/share/qemu/bios.bin"
-		rm "${ED}/usr/share/qemu/bios-256k.bin"
 		if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386; then
-			dosym ../seabios/bios.bin /usr/share/qemu/bios.bin
 			dosym ../seabios/bios-256k.bin /usr/share/qemu/bios-256k.bin
 		fi
 
@@ -818,6 +876,7 @@ src_install() {
 		rm "${ED}/usr/share/qemu/vgabios-stdvga.bin"
 		rm "${ED}/usr/share/qemu/vgabios-virtio.bin"
 		rm "${ED}/usr/share/qemu/vgabios-vmware.bin"
+
 		# PPC/PPC64 loads vgabios-stdvga
 		if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386 || use qemu_softmmu_targets_ppc || use qemu_softmmu_targets_ppc64; then
 			dosym ../seavgabios/vgabios-isavga.bin /usr/share/qemu/vgabios.bin
@@ -829,13 +888,11 @@ src_install() {
 		fi
 
 		# Remove sgabios since we're using the sgabios packaged one
-		rm "${ED}/usr/share/qemu/sgabios.bin"
 		if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386; then
 			dosym ../sgabios/sgabios.bin /usr/share/qemu/sgabios.bin
 		fi
 
 		# Remove iPXE since we're using the iPXE packaged one
-		rm "${ED}"/usr/share/qemu/pxe-*.rom
 		if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386; then
 			dosym ../ipxe/8086100e.rom /usr/share/qemu/pxe-e1000.rom
 			dosym ../ipxe/80861209.rom /usr/share/qemu/pxe-eepro100.rom
@@ -868,16 +925,27 @@ pkg_postinst() {
 	xdg_icon_cache_update
 
 	[[ -z ${EPREFIX} ]] && [[ -f ${EROOT}/usr/libexec/qemu-bridge-helper ]] && \
-		fcaps cap_net_admin ${EROOT}/usr/libexec/qemu-bridge-helper
+		fcaps cap_net_admin "${EROOT}"/usr/libexec/qemu-bridge-helper
 
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_print_elog
 
 	if use pin-upstream-blobs && firmware_abi_change; then
 		ewarn "This version of qemu pins new versions of firmware blobs:"
-		ewarn "	$(best_version sys-firmware/edk2-ovmf)"
+
+		if has_version 'sys-firmware/edk2-ovmf-bin'; then
+			ewarn "	$(best_version sys-firmware/edk2-ovmf-bin)"
+		else
+			ewarn " $(best_version sys-firmware/edk2-ovmf)"
+		fi
+
+		if has_version 'sys-firmware/seabios-bin'; then
+			ewarn "	$(best_version sys-firmware/seabios-bin)"
+		else
+			ewarn " $(best_version sys-firmware/seabios)"
+		fi
+
 		ewarn "	$(best_version sys-firmware/ipxe)"
-		ewarn "	$(best_version sys-firmware/seabios)"
 		ewarn "	$(best_version sys-firmware/sgabios)"
 		ewarn "This might break resume of hibernated guests (started with a different"
 		ewarn "firmware version) and live migration to/from qemu versions with different"
@@ -891,22 +959,24 @@ pkg_postinst() {
 pkg_info() {
 	echo "Using:"
 	echo "  $(best_version app-emulation/spice-protocol)"
-	echo "  $(best_version sys-firmware/edk2-ovmf)"
-	if has_version 'sys-firmware/edk2-ovmf[binary]'; then
-		echo "    USE=binary"
+
+	if has_version 'sys-firmware/edk2-ovmf-bin'; then
+		echo "  $(best_version sys-firmware/edk2-ovmf-bin)"
 	else
-		echo "    USE=''"
+		echo "  $(best_version sys-firmware/edk2-ovmf)"
 	fi
+
+	if has_version 'sys-firmware/seabios-bin'; then
+		echo "  $(best_version sys-firmware/seabios-bin)"
+	else
+		echo "  $(best_version sys-firmware/seabios)"
+	fi
+
 	echo "  $(best_version sys-firmware/ipxe)"
-	echo "  $(best_version sys-firmware/seabios)"
-	if has_version 'sys-firmware/seabios[binary]'; then
-		echo "    USE=binary"
-	else
-		echo "    USE=''"
-	fi
 	echo "  $(best_version sys-firmware/sgabios)"
 }
 
 pkg_postrm() {
 	xdg_icon_cache_update
+	udev_reload
 }

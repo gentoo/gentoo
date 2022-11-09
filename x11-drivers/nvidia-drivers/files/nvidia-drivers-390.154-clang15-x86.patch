@@ -1,0 +1,28 @@
+Kernel's makefiles pass -Werror=strict-prototypes which
+trigger errors with clang15+
+https://bugs.gentoo.org/870238
+--- a/kernel/nvidia/nvlink_linux.c
++++ b/kernel/nvidia/nvlink_linux.c
+@@ -639 +639 @@
+-void * NVLINK_API_CALL nvlink_allocLock()
++void * NVLINK_API_CALL nvlink_allocLock(void)
+--- a/kernel/nvidia/os-interface.c
++++ b/kernel/nvidia/os-interface.c
+@@ -879 +879 @@
+-NV_STATUS NV_API_CALL os_flush_cpu_cache()
++NV_STATUS NV_API_CALL os_flush_cpu_cache(void)
+@@ -886 +886 @@
+-NV_STATUS NV_API_CALL os_flush_cpu_cache_all()
++NV_STATUS NV_API_CALL os_flush_cpu_cache_all(void)
+@@ -944 +944 @@
+-void NV_API_CALL os_flush_cpu_write_combine_buffer()
++void NV_API_CALL os_flush_cpu_write_combine_buffer(void)
+@@ -1073 +1073 @@
+-NvU32 NV_API_CALL os_get_cpu_number()
++NvU32 NV_API_CALL os_get_cpu_number(void)
+@@ -1080 +1080 @@
+-NvU32 NV_API_CALL os_get_cpu_count()
++NvU32 NV_API_CALL os_get_cpu_count(void)
+@@ -1155 +1155 @@
+-void NV_API_CALL os_dump_stack()
++void NV_API_CALL os_dump_stack(void)

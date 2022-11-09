@@ -35,7 +35,7 @@ src_prepare() {
 
 src_test() {
 	einfo "Possible unescaped attribute/type usage"
-	egrep -r \
+	grep -E -r \
 		-e '(^|[[:space:](])(asm|volatile|inline)[[:space:](]' \
 		-e '\<([us](8|16|32|64))\>' \
 		.

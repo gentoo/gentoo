@@ -3,10 +3,10 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
-pipeworks is a benchmarking tool for pipelines that is very similar to pipemeter. It writes its stdin to its 
-stdout, while reporting the data flow rate to stderr. It features adjustable block size and bandwidth limiting 
-capabilities.
-</longdescription>
+	pipeworks is a benchmarking tool for pipelines that is very similar to pipemeter. It writes its stdin to its
+	stdout, while reporting the data flow rate to stderr. It features adjustable block size and bandwidth limiting
+	capabilities.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">pipeworks</remote-id>
 	</upstream>

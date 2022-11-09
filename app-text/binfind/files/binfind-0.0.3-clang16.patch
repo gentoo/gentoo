@@ -1,0 +1,9 @@
+https://bugs.gentoo.org/870832
+--- a/configure.in
++++ b/configure.in
+@@ -26,4 +26,5 @@
+ 		[#include <stdio.h>
+ 		 #include <stdlib.h>
++		 #include <string.h>
+ 
+ 		int main(void)

@@ -5,4 +5,7 @@
 	<email>eselect@gentoo.org</email>
 	<name>eselect configuration and management tool</name>
 </maintainer>
+<upstream>
+	<remote-id type="gentoo">proj/eselect</remote-id>
+</upstream>
 </pkgmetadata>

@@ -1,0 +1,36 @@
+https://github.com/serge-sans-paille/pythran/pull/2029
+
+From 13a89edad477077331ae8071eadf239e88adea0c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 28 Oct 2022 12:47:35 +0100
+Subject: [PATCH] Fix build with GCC 13 (missing <cstdint> include)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When building scipy, one gets:
+```
+/usr/lib/python3.10/site-packages/pythran/pythonic/include/types/combined.hpp:304:17: error: ‘uint8_t’ was not declared in this scope
+  304 | SCALAR_COMBINER(uint8_t)
+      |                 ^~~~~~~
+/usr/lib/python3.10/site-packages/pythran/pythonic/include/types/combined.hpp:300:21: note: in definition of macro ‘SCALAR_COMBINER’
+  300 |   struct __combined<Type, Type> {                                              \
+      |                     ^~~~
+/usr/lib/python3.10/site-packages/pythran/pythonic/include/types/combined.hpp:5:1: note: ‘uint8_t’ is defined in header ‘<cstdint>’; did you forget to ‘#include <cstdint>’?
+    4 | #include "pythonic/include/types/traits.hpp"
+  +++ |+#include <cstdint>
+```
+
+Bug: https://bugs.gentoo.org/878527
+--- a/pythran/pythonic/include/types/combined.hpp
++++ b/pythran/pythonic/include/types/combined.hpp
+@@ -1,6 +1,8 @@
+ #ifndef PYTHONIC_INCLUDE_TYPES_COMBINED_HPP
+ #define PYTHONIC_INCLUDE_TYPES_COMBINED_HPP
+ 
++#include <cstdint>
++
+ #include "pythonic/include/types/traits.hpp"
+ PYTHONIC_NS_BEGIN
+ namespace types
+

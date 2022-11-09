@@ -1,0 +1,25 @@
+https://github.com/ppp-project/ppp/commit/d7e62a8499c4032d79e05afbd8fd3efd51c5b148
+https://bugs.launchpad.net/ubuntu/+source/ppp/+bug/1958196
+
+From: =?UTF-8?q?Eivind=20N=C3=A6ss?= <eivnaes@yahoo.com>
+Date: Thu, 3 Feb 2022 14:28:22 -0800
+Subject: [PATCH] pppd/eap: Fix bug causing incorrect response length (#334)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Need to update the esp->ea_client.ea_namelen variable. A plugin can override the
+name of the user, and the variable is passed onto the eap_chap2_response generating
+the wrong response length.
+
+Signed-off-by: Eivind Næss <eivnaes@yahoo.com>
+--- a/pppd/eap.c
++++ b/pppd/eap.c
+@@ -2182,6 +2182,7 @@ eap_request(eap_state *esp, u_char *inp, int id, int len)
+ 		    eap_send_nak(esp, id, EAPT_SRP);
+ 		    break;
+ 		}
++		esp->es_client.ea_namelen = strlen(esp->es_client.ea_name);
+ 
+ 		/* Create the MSCHAPv2 response (and add to cache) */
+ 		unsigned char response[MS_CHAP2_RESPONSE_LEN+1]; // VLEN + VALUE

@@ -1,0 +1,23 @@
+https://github.com/cyrusimap/cyrus-imapd/pull/4235
+https://bugs.gentoo.org/721466
+
+From 6fb292c3a071febfdb514589f12cc8d4b7329b53 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 15 Sep 2022 00:54:51 +0100
+Subject: [PATCH 2/2] Avoid underlinking libcyrus (-lm)
+
+Fixes building with lld.
+
+Bug: https://bugs.gentoo.org/721466
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1538,7 +1538,7 @@ lib_libcyrus_la_SOURCES += lib/nonblock_fcntl.c
+ else
+ lib_libcyrus_la_SOURCES += lib/nonblock_ioctl.c
+ endif
+-lib_libcyrus_la_LIBADD = libcrc32.la ${LIB_SASL} $(SSL_LIBS) $(GCOV_LIBS)
++lib_libcyrus_la_LIBADD = libcrc32.la ${LIB_SASL} $(SSL_LIBS) $(GCOV_LIBS) $(LIBM)
+ lib_libcyrus_la_CFLAGS = $(AM_CFLAGS) $(CFLAG_VISIBILITY)
+ 
+ if USE_ZEROSKIP

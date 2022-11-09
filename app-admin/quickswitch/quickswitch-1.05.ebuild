@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Utility to switch network profiles on the fly"
+HOMEPAGE="https://muthanna.com/quickswitch/index.html"
 SRC_URI="mirror://sourceforge/quickswitch/${P}.tar.gz"
-HOMEPAGE="http://quickswitch.sf.net"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc ~s390 sparc x86"
 IUSE="ncurses"

@@ -26,9 +26,12 @@ ways :
     * SDL (many different platforms and systems)
     * WinCE
     * MacOS X
-</longdescription>
+  </longdescription>
   <upstream>
     <remote-id type="sourceforge">atari800</remote-id>
     <remote-id type="github">atari800/atari800</remote-id>
   </upstream>
+  <use>
+    <flag name="encode-mp3">Support recording sound in MP3 format</flag>
+  </use>
 </pkgmetadata>

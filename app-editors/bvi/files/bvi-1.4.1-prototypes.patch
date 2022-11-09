@@ -1,0 +1,34 @@
+https://sourceforge.net/p/bvi/bugs/14/
+
+diff --git a/bmore.h b/bmore.h
+index bb5174514a66..0c4811f743b2 100644
+--- a/bmore.h
++++ b/bmore.h
+@@ -135,12 +135,12 @@ extern	int		no_tty, no_intty;
+ #ifdef ANSI
+ 	void	initterm(void), set_tty(void), reset_tty(void);
+ 	void	cleartoeol(void), clearscreen(void), highlight(void);
+-	void	normal(void), bmbeep(void), home(void), sig(void);
++	void	normal(void), bmbeep(void), home(void), sig(int);
+ 	void	doshell(char *), emsg(char *);
+ 	void	do_next(int);
+ 	void	bmsearch(int);
+ 	void	pushback(int, char *);
+-	int		open_file(void);
++	int		open_file(char *);
+ 	int		printout(int), rdline(int, char *);
+ 	int		nextchar(void), vgetc(void);
+ 	int     sbracket(int, char *, int);
+diff --git a/bvi.h b/bvi.h
+index 0881ce79d6fd..90f68c9eeb92 100644
+--- a/bvi.h
++++ b/bvi.h
+@@ -215,7 +215,7 @@ extern  off_t   block_begin, block_end, block_size;
+ 	void	docmdline(char *), do_over(PTR, off_t, PTR), do_put(PTR, off_t, PTR);
+ 	void	jmpproc(int), printline(PTR, int);
+ 	int		addfile(char *);
+-	int		bregexec(PTR, char *);
++	PTR		bregexec(PTR, char *);
+ 	int		chk_comm(int);
+ 	int		doecmd(char *, int);
+ 	int		do_append(off_t, char *), do_logic(int, char *);

@@ -16,7 +16,9 @@
 	</longdescription>
 	<use>
 		<flag name="pyqt5">Use <pkg>dev-python/PyQt5</pkg> as Qt for Python implementation</flag>
+		<flag name="pyqt6">Use <pkg>dev-python/PyQt6</pkg> as Qt for Python implementation</flag>
 		<flag name="pyside2">Use <pkg>dev-python/pyside2</pkg> as Qt for Python implementation</flag>
+		<flag name="pyside6">Use <pkg>dev-python/pyside6</pkg> as Qt for Python implementation</flag>
 		<flag name="declarative">Build bindings for the QtQml and QtQuick modules and enable the qmlscene plugin</flag>
 		<flag name="designer">Pull in bindings for the QtDesigner module and enable the designer plugin</flag>
 		<flag name="gui">Pull in bindings for the QtGui module</flag>
@@ -27,6 +29,8 @@
 		<flag name="opengl">Pull in bindings for the QtOpenGL module</flag>
 		<flag name="positioning">Pull in bindings for the QtPositioning module</flag>
 		<flag name="printsupport">Pull in bindings for the QtPrintSupport module</flag>
+		<flag name="qml">Build bindings for the QtQml</flag>
+		<flag name="quick">Build bindings for the QtQuick</flag>
 		<flag name="sensors">Pull in bindings for the QtSensors module</flag>
 		<flag name="serialport">Pull in bindings for the QtSerialPort module</flag>
 		<flag name="speech">Build bindings for the QtTextToSpeech module</flag>

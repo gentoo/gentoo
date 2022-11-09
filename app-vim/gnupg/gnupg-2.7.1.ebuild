@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="transparent editing of gpg encrypted files"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=3645"
 SRC_URI="https://www.vim.org/scripts/download_script.php?src_id=27359 -> ${P}.zip"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 S="${WORKDIR}/vim-${P}"
 

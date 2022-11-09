@@ -247,7 +247,10 @@ case ${ECM_TEST} in
 		;;
 esac
 
-BDEPEND+=" >=kde-frameworks/extra-cmake-modules-${KFMIN}:${KFSLOT}"
+BDEPEND+="
+	dev-libs/libpcre2:*
+	>=kde-frameworks/extra-cmake-modules-${KFMIN}:${KFSLOT}
+"
 RDEPEND+=" >=kde-frameworks/kf-env-4"
 COMMONDEPEND+=" dev-qt/qtcore:${KFSLOT}"
 
@@ -325,10 +328,10 @@ _ecm_punt_kfqt_module() {
 	[[ ! -e "CMakeLists.txt" ]] && return
 
 	# FIXME: dep=WebKit will result in 'Widgets' over 'WebKitWidgets' (no regression)
-	pcregrep -Mni "(?s)find_package\s*\(\s*${prefix}(\d+|\\$\{\w*\})[^)]*?${dep}.*?\)" \
+	pcre2grep -Mni "(?s)find_package\s*\(\s*${prefix}(\d+|\\$\{\w*\})[^)]*?${dep}.*?\)" \
 		CMakeLists.txt > "${T}/bogus${dep}"
 
-	# pcregrep returns non-zero on no matches/error
+	# pcre2grep returns non-zero on no matches/error
 	[[ $? -ne 0 ]] && return
 
 	local length=$(wc -l "${T}/bogus${dep}" | cut -d " " -f 1)
@@ -362,21 +365,34 @@ ecm_punt_qt_module() {
 }
 
 # @FUNCTION: ecm_punt_bogus_dep
-# @USAGE: <prefix> <dependency>
+# @USAGE: <dependency> or <prefix> <dependency>
 # @DESCRIPTION:
-# Removes a specified dependency from a find_package call with multiple
-# components.
+# Removes a specified dependency from a find_package call, optionally
+# supports prefix for find_package with multiple components.
 ecm_punt_bogus_dep() {
-	local prefix=${1}
-	local dep=${2}
+
+	if [[ "$#" == 2 ]] ; then
+		local prefix=${1}
+		local dep=${2}
+	elif [[ "$#" == 1 ]] ; then
+		local dep=${1}
+	else
+		die "${FUNCNAME[0]} must be passed either one or two arguments"
+	fi
 
 	if [[ ! -e "CMakeLists.txt" ]]; then
 		return
 	fi
 
-	pcregrep -Mni "(?s)find_package\s*\(\s*${prefix}[^)]*?${dep}.*?\)" CMakeLists.txt > "${T}/bogus${dep}"
+	if [[ -z ${prefix} ]]; then
+		sed -e "/find_package\s*(\s*${dep}\(\s\+\(REQUIRED\|CONFIG\|COMPONENTS\|\${[A-Z0-9_]*}\)\)\+\s*)/Is/^/# removed by ecm.eclass - /" \
+			-i CMakeLists.txt || die
+		return
+	else
+		pcre2grep -Mni "(?s)find_package\s*\(\s*${prefix}[^)]*?${dep}.*?\)" CMakeLists.txt > "${T}/bogus${dep}"
+	fi
 
-	# pcregrep returns non-zero on no matches/error
+	# pcre2grep returns non-zero on no matches/error
 	if [[ $? -ne 0 ]] ; then
 		return
 	fi

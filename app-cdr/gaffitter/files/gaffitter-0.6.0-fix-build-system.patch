@@ -26,7 +26,7 @@
  
 -gaffitter: $(OBJS) gaffitter.cc Params.h
 -	$(CXX) $(CXXFLAGS) $@.cc $(OBJS) -o $@ $(LDFLAGS)
-+gaffitter: $(OBJS) Params.h
++gaffitter: $(OBJS)
  ###########################################################################
  
  objs: $(OBJS)	

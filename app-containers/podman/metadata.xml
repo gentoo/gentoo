@@ -15,9 +15,6 @@
 		and volumes.
 	</longdescription>
 	<use>
-		<flag name="apparmor">
-			Enable AppArmor support.
-		</flag>
 		<flag name="btrfs">
 			Enables dependencies for the "btrfs" graph driver, including
 			necessary kernel flags.

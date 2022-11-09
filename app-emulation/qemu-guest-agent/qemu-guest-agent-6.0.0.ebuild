@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{7..11} )
 
 inherit systemd toolchain-funcs udev python-any-r1
 
@@ -11,7 +11,7 @@ MY_PN="qemu"
 MY_P="${MY_PN}-${PV}"
 
 SRC_URI="http://wiki.qemu.org/download/${MY_P}.tar.xz"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 
 DESCRIPTION="QEMU Guest Agent (qemu-ga) for use when running inside a VM"
 HOMEPAGE="https://wiki.qemu.org/Features/GuestAgent"
@@ -71,4 +71,9 @@ src_install() {
 pkg_postinst() {
 	elog "You should add 'qemu-guest-agent' to the default runlevel."
 	elog "e.g. rc-update add qemu-guest-agent default"
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }

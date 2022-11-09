@@ -6,6 +6,6 @@
 		<name>James Le Cuirot</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge-jp">lha</remote-id>
+		<remote-id type="osdn">lha</remote-id>
 	</upstream>
 </pkgmetadata>

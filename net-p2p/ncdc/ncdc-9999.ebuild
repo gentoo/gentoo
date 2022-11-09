@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
 DESCRIPTION="ncurses directconnect client"
 HOMEPAGE="https://dev.yorhel.nl/ncdc"
-if [[ "${PV}" == *9999 ]] ; then
+if [[ ${PV} == *9999 ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="git://g.blicky.net/ncdc.git"
 else
@@ -22,7 +22,7 @@ IUSE="geoip"
 RDEPEND="
 	app-arch/bzip2
 	dev-db/sqlite:3
-	dev-libs/glib:2
+	>=dev-libs/glib-2.32:2
 	net-libs/gnutls:=
 	sys-libs/ncurses:=[unicode(+)]
 	sys-libs/zlib:=
@@ -38,16 +38,19 @@ BDEPEND="
 
 src_prepare() {
 	default
-	[[ "${PV}" == *9999 ]] && eautoreconf
+
+	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
 		$(use_with geoip)
 	)
-	if [[ "${PV}" == *9999 ]] ; then
+
+	if [[ ${PV} == *9999 ]] ; then
 		myeconfargs+=( --enable-git-version )
 	fi
+
 	econf "${myeconfargs[@]}"
 }
 

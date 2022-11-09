@@ -1,0 +1,127 @@
+From 408fe60850977ab9c68d174a42ae4a5f3455cab1 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 20 Jul 2022 04:59:11 +0000
+Subject: [PATCH] CMake: fix build without ocl-icd
+
+If not using ocl-icd (in this case, I was using dev-libs/opencl-icd-loader),
+OCL_ICD_INCLUDE_DIRS and friends won't be defined and CMake bails out
+with an error:
+```
+-- Configuring done
+CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+Please set them or make sure they are set and tested correctly in the CMake files:
+/var/tmp/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/CL/OCL_ICD_INCLUDE_DIRS
+   used as include directory in directory /var/tmp/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/CL
+   used as include directory in directory /var/tmp/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/CL
+/var/tmp/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/CL/devices/OCL_ICD_INCLUDE_DIRS
+   used as include directory in directory /var/tmp/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/CL/devices
+/var/tmp/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/CL/devices/basic/OCL_ICD_INCLUDE_DIRS
+   used as include directory in directory /var/tmp/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/CL/devices/basic
+/var/tmp/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/CL/devices/pthread/OCL_ICD_INCLUDE_DIRS
+   used as include directory in directory /var/tmp/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/CL/devices/pthread
+/var/tmp/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/CL/devices/topology/OCL_ICD_INCLUDE_DIRS
+   used as include directory in directory /var/tmp/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/CL/devices/topology
+/var/tmp/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/llvmopencl/OCL_ICD_INCLUDE_DIRS
+   used as include directory in directory /var/tmp/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/llvmopencl
+```
+
+This broke in 3ecda3b294d70e4f915ad141d669f4bc1298f606.
+
+To fix, just check if the value is truthy before using (this is enough
+for checking if it's NOTFOUND).
+--- a/lib/CL/CMakeLists.txt
++++ b/lib/CL/CMakeLists.txt
+@@ -179,7 +179,9 @@ endif()
+ add_library("pocl_cache" OBJECT "pocl_cache.c")
+ harden("pocl_cache")
+ 
+-target_include_directories("pocl_cache" SYSTEM PUBLIC ${OCL_ICD_INCLUDE_DIRS})
++if(${OCL_ICD_INCLUDE_DIRS})
++  target_include_directories("pocl_cache" SYSTEM PUBLIC ${OCL_ICD_INCLUDE_DIRS})
++endif()
+ 
+ 
+ if (ENABLE_LLVM)
+@@ -190,7 +192,9 @@ if (ENABLE_LLVM)
+   add_library("lib_cl_llvm" OBJECT ${LLVM_API_SOURCES})
+   harden("lib_cl_llvm")
+ 
+-  target_include_directories("lib_cl_llvm" SYSTEM PUBLIC ${OCL_ICD_INCLUDE_DIRS})
++  if(${OCL_ICD_INCLUDE_DIRS})
++    target_include_directories("lib_cl_llvm" SYSTEM PUBLIC ${OCL_ICD_INCLUDE_DIRS})
++  endif()
+ 
+   list(APPEND LIBPOCL_OBJS "$<TARGET_OBJECTS:llvmpasses>")
+   list(APPEND LIBPOCL_OBJS "$<TARGET_OBJECTS:lib_cl_llvm>")
+@@ -200,7 +204,9 @@ if (ENABLE_LLVM)
+ endif()
+ 
+ if(ENABLE_ICD)
+-  add_compile_options(${OCL_ICD_CFLAGS})
++  if(${OCL_ICD_CFLAGS})
++    add_compile_options(${OCL_ICD_CFLAGS})
++  endif()
+ endif()
+ 
+ if(HAVE_LTTNG_UST)
+--- a/lib/CL/devices/CMakeLists.txt
++++ b/lib/CL/devices/CMakeLists.txt
+@@ -28,7 +28,9 @@ if(ENABLE_LOADABLE_DRIVERS)
+   function(add_pocl_device_library name)
+     add_library(${name} SHARED ${ARGN})
+     harden("${name}")
+-    target_include_directories(${name} SYSTEM PUBLIC ${OCL_ICD_INCLUDE_DIRS})
++    if(${OCL_ICD_INCLUDE_DIRS})
++      target_include_directories(${name} SYSTEM PUBLIC ${OCL_ICD_INCLUDE_DIRS})
++    endif()
+     target_link_libraries(${name} PUBLIC ${POCL_PUBLIC_LINK_LIST} PRIVATE ${POCL_LIBRARY_NAME} ${POCL_PRIVATE_LINK_LIST})
+     set_target_properties(${name} PROPERTIES PREFIX "lib" SUFFIX ".so")
+     install(TARGETS ${name} LIBRARY DESTINATION "${POCL_INSTALL_PRIVATE_LIBDIR}" COMPONENT "lib")
+@@ -38,7 +40,9 @@ else()
+ 
+   function(add_pocl_device_library name)
+     add_library(${name} OBJECT ${ARGN})
+-    target_include_directories(${name} SYSTEM PUBLIC ${OCL_ICD_INCLUDE_DIRS})
++    if(${OCL_ICD_INCLUDE_DIRS})
++      target_include_directories(${name} SYSTEM PUBLIC ${OCL_ICD_INCLUDE_DIRS})
++    endif()
+   endfunction()
+ 
+ endif()
+@@ -143,7 +147,9 @@ if(MSVC)
+   set_source_files_properties( ${POCL_DEVICES_SOURCES} PROPERTIES LANGUAGE CXX )
+ endif(MSVC)
+ add_library("pocl-devices" OBJECT ${POCL_DEVICES_SOURCES})
+-target_include_directories("pocl-devices" SYSTEM PUBLIC ${OCL_ICD_INCLUDE_DIRS})
++if(${OCL_ICD_INCLUDE_DIRS})
++  target_include_directories("pocl-devices" SYSTEM PUBLIC ${OCL_ICD_INCLUDE_DIRS})
++endif()
+ set(POCL_DEVICES_OBJS "${POCL_DEVICES_OBJS}"
+     "$<TARGET_OBJECTS:pocl-devices>")
+ harden("pocl-devices")
+--- a/lib/CL/devices/topology/CMakeLists.txt
++++ b/lib/CL/devices/topology/CMakeLists.txt
+@@ -30,7 +30,9 @@ endif(MSVC)
+ add_library("pocl-devices-topology" OBJECT pocl_topology.c pocl_topology.h)
+ harden("pocl-devices-topology")
+ 
+-target_include_directories("pocl-devices-topology" SYSTEM PUBLIC ${OCL_ICD_INCLUDE_DIRS})
++if(${OCL_ICD_INCLUDE_DIRS})
++  target_include_directories("pocl-devices-topology" SYSTEM PUBLIC ${OCL_ICD_INCLUDE_DIRS})
++endif()
+ 
+ if(Hwloc_FOUND)
+         target_include_directories("pocl-devices-topology" SYSTEM PUBLIC ${Hwloc_INCLUDE_DIRS})
+--- a/lib/llvmopencl/CMakeLists.txt
++++ b/lib/llvmopencl/CMakeLists.txt
+@@ -101,7 +101,9 @@ endif(MSVC)
+ add_library("llvmpasses" OBJECT ${LLVMPASSES_SOURCES})
+ harden("llvmpasses")
+ 
+-target_include_directories("llvmpasses" SYSTEM PUBLIC ${OCL_ICD_INCLUDE_DIRS})
++if(${OCL_ICD_INCLUDE_DIRS})
++  target_include_directories("llvmpasses" SYSTEM PUBLIC ${OCL_ICD_INCLUDE_DIRS})
++endif()
+ 
+ option(ENABLE_LIBLLVMOPENCL "Build separate libllvmopencl.so for use with 'opt'" OFF)
+ if(ENABLE_LIBLLVMOPENCL)

@@ -11,6 +11,7 @@ only nameserver. It is written from scratch and conforms to all relevant DNS
 standards documents. Furthermore, PowerDNS interfaces with almost any database.
 </longdescription>
 <use>
+	<flag name="lmdb">Use LMDB as backend.</flag>
 	<flag name="lua-records">Enable LUA records.</flag>
 	<flag name="mydns">Making it possible to use a MyDNS MySQL database with PowerDNS (not recommended for new deployments).</flag>
 	<flag name="remote">Use a generic socket or pipe as a backend (via JSON RPC requests).</flag>

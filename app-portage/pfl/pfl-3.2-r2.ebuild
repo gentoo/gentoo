@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8,9,10} )
-PYTHON_REQ_USE="xml"
+PYTHON_COMPAT=( python3_{8,9,10,11} )
+PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 systemd
 
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/portagefilelist/client/archive/${PV}.tar.gz -> ${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="+network-cron"
 
 DEPEND=""

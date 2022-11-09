@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="avif">Enable support for AVIF images via <pkg>media-libs/libavif</pkg></flag>
-	<flag name="egl">Enable EGL support</flag>
-	<flag name="examples">Install the MiniBrowser example application</flag>
-	<flag name="gamepad">Enable gamepad input support via <pkg>dev-libs/libmanette</pkg></flag>
-	<flag name="geolocation">Enable geolocation support through <pkg>app-misc/geoclue</pkg></flag>
-	<flag name="jumbo-build">Combine source files to speed up build process</flag>
-</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="avif">Enable support for AVIF images via <pkg>media-libs/libavif</pkg></flag>
+    <flag name="egl">Enable EGL support</flag>
+    <flag name="examples">Install the MiniBrowser example application</flag>
+    <flag name="gamepad">Enable gamepad input support via <pkg>dev-libs/libmanette</pkg></flag>
+    <flag name="jumbo-build">Combine source files to speed up build process</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">WebKit/WebKit</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -4,14 +4,20 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
 MY_P="${PN}-version-${PV}"
 DESCRIPTION="Strict, simple, lightweight RFC3339 functions"
-HOMEPAGE="https://pypi.org/project/strict-rfc3339/ https://github.com/danielrichman/strict-rfc3339"
-SRC_URI="https://github.com/danielrichman/${PN}/archive/version-${PV}.tar.gz -> ${MY_P}.tar.gz"
+HOMEPAGE="
+	https://pypi.org/project/strict-rfc3339/
+	https://github.com/danielrichman/strict-rfc3339
+"
+SRC_URI="
+	https://github.com/danielrichman/${PN}/archive/version-${PV}.tar.gz
+		-> ${MY_P}.tar.gz
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"

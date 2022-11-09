@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<name>Lars Wendler</name>
-	<email>polynomial-c@gentoo.org</email>
-</maintainer>
-<longdescription>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<longdescription>
 In an ideal world, Assuan is irrelevant.  Assuan's primary use is to
 allow a client to interact with a non-persistent server.  Using Assuan,
 this is accomplished by forking a subprocess and communicating with it
@@ -15,5 +15,5 @@ across several transactions: not only is there a penalty for an
 increased number of context switches, but also a significant amount of
 data is MEMCPYed from the client to a file descriptor and from the file
 descriptor to the server.
-</longdescription>
+	</longdescription>
 </pkgmetadata>

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<use>
-		<flag name="check">Enable build-time sanity check.</flag>
-	</use>
+  <!-- maintainer-needed -->
+  <use>
+    <flag name="check">Enable build-time sanity check.</flag>
+  </use>
+  <upstream>
+    <remote-id type="savannah">gforth</remote-id>
+  </upstream>
 </pkgmetadata>

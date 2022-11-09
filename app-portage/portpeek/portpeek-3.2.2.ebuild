@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{8,9,10} )
 inherit python-r1
 
 DESCRIPTION="A helper program for maintaining the package.keyword and package.unmask files"
-HOMEPAGE="https://www.mpagano.com/blog/?page_id=3"
-SRC_URI="https://www.mpagano.com/downloads/${P}.tar.gz"
+HOMEPAGE="https://github.com/mpagano/portpeek"
+SRC_URI="https://github.com/mpagano/portpeek/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

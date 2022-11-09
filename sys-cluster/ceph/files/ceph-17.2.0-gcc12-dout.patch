@@ -1,0 +1,42 @@
+From 841806de212226921eeaeb3eea054bda8ccce616 Mon Sep 17 00:00:00 2001
+From: Radoslaw Zarzynski <rzarzyns@redhat.com>
+Date: Wed, 19 Jan 2022 15:24:11 +0000
+Subject: [PATCH 2/2] common: fix FTBFS due to dout & need_dynamic on GCC-12
+
+For details see:
+https://gist.github.com/rzarzynski/d6d2df6888923bef6a3e764f4856853f.
+
+Special thanks to Kaleb Keithley who reported the issue
+and tested the fix!
+
+Fixes: https://tracker.ceph.com/issues/53896
+Signed-off-by: Radoslaw Zarzynski <rzarzyns@redhat.com>
+
+Upstream-Status: Backport [963d756ded40f5adf2efef53893c917bec1845c1]
+Signed-off-by: Chen Qi <Qi.Chen@windriver.com>
+---
+ src/common/dout.h | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/common/dout.h b/src/common/dout.h
+index c7c08182..42f49915 100644
+--- a/src/common/dout.h
++++ b/src/common/dout.h
+@@ -99,11 +99,12 @@ namespace ceph::dout {
+ template<typename T>
+ struct dynamic_marker_t {
+   T value;
+-  operator T() const { return value; }
++  // constexpr ctor isn't needed as it's an aggregate type
++  constexpr operator T() const { return value; }
+ };
+ 
+ template<typename T>
+-dynamic_marker_t<T> need_dynamic(T&& t) {
++constexpr dynamic_marker_t<T> need_dynamic(T&& t) {
+   return dynamic_marker_t<T>{ std::forward<T>(t) };
+ }
+ 
+-- 
+2.36.0
+

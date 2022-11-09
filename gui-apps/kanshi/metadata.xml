@@ -2,13 +2,19 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>bman@gentoo.org</email>
-		<name>Aaron Bauman</name>
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
 	</maintainer>
+	<use>
+		<flag name="varlink">Enable remote control with varlink</flag>
+	</use>
 	<longdescription>
 		kanshi allows you to define output profiles that are
 		automatically enabled and disabled on hotplug.
 		For instance, this can be used to turn a laptop's
 		internal screen off when docked.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourcehut">~emersion/kanshi</remote-id>
+	</upstream>
 </pkgmetadata>

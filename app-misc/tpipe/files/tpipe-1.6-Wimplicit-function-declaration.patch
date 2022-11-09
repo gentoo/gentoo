@@ -1,0 +1,21 @@
+--- a/tap.c
++++ b/tap.c
+@@ -94,7 +94,7 @@
+ 	else
+ 		n = strtoul(argv[1],NULL,0);
+ 
+-	if (!(n)&&(argv[1] != '\0')) {
++	if (!(n)&&(*argv[1] != '\0')) {
+ 		fprintf (stderr, "%s: Unreadable integer arg.; Assuming 1.\n",argv[0]);
+ 		n = 1;
+ 	}
+--- a/tpipe.c
++++ b/tpipe.c
+@@ -41,6 +41,7 @@
+ 
+ #include <stdio.h>
+ #include <string.h>	/* strcmp() */
++#include <stdlib.h>
+ 
+ #ifndef VERSION
+ #define VERSION "1.6"

@@ -1,0 +1,37 @@
+https://github.com/majorkingleo/xstow/commit/bdcbdb6f6e0f35ed0a0df50f0a9d19441af9c866
+
+From: Martin Oberzalek <kingleo@gmx.at>
+Date: Wed, 27 Jul 2022 09:25:03 +0200
+Subject: [PATCH] Fixed compilation with clang
+
+--- a/src/cpputils/cpputilsshared/cpputilsformat/format2.h
++++ b/src/cpputils/cpputilsshared/cpputilsformat/format2.h
+@@ -40,7 +40,7 @@ namespace Tools {
+       bool _is_string;
+ 
+     public:
+-      BaseArg( bool is_int_, bool is_string_ )
++      BaseArg( bool is_int_ = false, bool is_string_ = false )
+     : _is_int( is_int_ ),
+       _is_string( is_string_ )
+     {}
+--- a/src/cpputils/cpputilsshared/leoini.h
++++ b/src/cpputils/cpputilsshared/leoini.h
+@@ -278,12 +278,11 @@ namespace Leo
+     std::string::size_type end = s.find( ']', start );
+ 
+     if( start == std::string::npos ||
+-	end == std::string::npos )
+-      s = "";
+-    else
+-      s = s.substr( start+1, start-end -1 );
+-
+-    return s2x<A>(s);
++		end == std::string::npos ) {
++      return s2x<A>("");
++    } else {
++      return s2x<A>( s.substr( start+1, start-end -1 ) );
++	}  
+   }
+ } // namespace Leo
+ 

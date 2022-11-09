@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="xml(+)"
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI=( "https://gitlab.freedesktop.org/telepathy/${PN}" )
+	EGIT_REPO_URI=( "https://github.com/TelepathyIM/${PN}" )
 	inherit git-r3
 else
 	SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
@@ -16,25 +16,15 @@ fi
 inherit python-any-r1 cmake virtualx
 
 DESCRIPTION="Qt bindings for the Telepathy D-Bus protocol"
-HOMEPAGE="https://telepathy.freedesktop.org/"
+HOMEPAGE="https://telepathy.freedesktop.org/ https://github.com/TelepathyIM/telepathy-qt/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="debug farstream test"
 
 REQUIRED_USE="test? ( farstream )"
-
 RESTRICT="!test? ( test )"
 
-BDEPEND="${PYTHON_DEPS}
-	virtual/pkgconfig
-	test? (
-		dev-libs/glib:2
-		$(python_gen_any_dep '
-			dev-python/dbus-python[${PYTHON_USEDEP}]
-		')
-	)
-"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -52,10 +42,19 @@ DEPEND="${RDEPEND}
 		dev-qt/qttest:5
 	)
 "
+BDEPEND="${PYTHON_DEPS}
+	virtual/pkgconfig
+	test? (
+		dev-libs/glib:2
+		$(python_gen_any_dep '
+			dev-python/dbus-python[${PYTHON_USEDEP}]
+		')
+	)
+"
 
 python_check_deps() {
 	use test || return 0
-	has_version "dev-python/dbus-python[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/dbus-python[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

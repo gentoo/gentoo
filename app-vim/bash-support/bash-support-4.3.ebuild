@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://www.vim.org/scripts/download_script.php?src_id=24452 -> ${P}.zi
 S="${WORKDIR}"/${PN}
 
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="app-arch/unzip"
 

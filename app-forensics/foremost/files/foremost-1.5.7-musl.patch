@@ -1,0 +1,81 @@
+--- a/cli.c
++++ b/cli.c
+@@ -4,7 +4,7 @@
+ 
+ void fatal_error (f_state * s, char *msg)
+ 	{
+-	fprintf(stderr, "%s: %s%s", __progname, msg, NEWLINE);
++	fprintf(stderr, "%s: %s%s", program_invocation_short_name, msg, NEWLINE);
+ 	if (get_audit_file_open(s))
+ 		{
+ 		audit_msg(s, msg);
+@@ -16,7 +16,7 @@
+ void print_error(f_state *s, char *fn, char *msg)
+ {
+ 	if (!(get_mode(s, mode_quiet)))
+-		fprintf(stderr, "%s: %s: %s%s", __progname, fn, msg, NEWLINE);
++		fprintf(stderr, "%s: %s: %s%s", program_invocation_short_name, fn, msg, NEWLINE);
+ }
+ 
+ void print_message(f_state *s, char *format, va_list argp)
+--- a/helpers.c
++++ b/helpers.c
+@@ -133,7 +133,7 @@
+ 		if (ioctl(fd, BLKGETSIZE, &num_sectors))
+ 		{
+ 		#if defined(__DEBUG)
+-			fprintf(stderr, "%s: ioctl call to BLKGETSIZE failed.%s", __progname, NEWLINE);
++			fprintf(stderr, "%s: ioctl call to BLKGETSIZE failed.%s", program_invocation_short_name, NEWLINE);
+ 		#endif
+ 		}
+ 		else
+--- a/main.c
++++ b/main.c
+@@ -55,18 +55,18 @@
+ 
+ void try_msg(void)
+ {
+-	fprintf(stderr, "Try `%s -h` for more information.%s", __progname, NEWLINE);
++	fprintf(stderr, "Try `%s -h` for more information.%s", program_invocation_short_name, NEWLINE);
+ }
+ 
+ /* The usage function should, at most, display 22 lines of text to fit
+    on a single screen */
+ void usage(void)
+ {
+-	fprintf(stderr, "%s version %s by %s.%s", __progname, VERSION, AUTHOR, NEWLINE);
++	fprintf(stderr, "%s version %s by %s.%s", program_invocation_short_name, VERSION, AUTHOR, NEWLINE);
+ 	fprintf(stderr,
+ 			"%s %s [-v|-V|-h|-T|-Q|-q|-a|-w-d] [-t <type>] [-s <blocks>] [-k <size>] \n\t[-b <size>] [-c <file>] [-o <dir>] [-i <file] %s%s",
+ 		CMD_PROMPT,
+-			__progname,
++			program_invocation_short_name,
+ 			NEWLINE,
+ 			NEWLINE);
+ 	fprintf(stderr, "-V  - display copyright information and exit%s", NEWLINE);
+@@ -233,10 +233,6 @@
+ 	char	**temp = argv;
+ 	DIR* 	dir;
+ 
+-#ifndef __GLIBC__
+-	__progname = basename(argv[0]);
+-#endif
+-
+ 	/*Initialize the global state struct*/
+ 	if (initialize_state(s, argc, argv))
+ 		fatal_error(s, "Unable to initialize state");
+--- a/main.h
++++ b/main.h
+@@ -187,12 +187,6 @@
+ #endif   /* ifdef _WIN32 */
+ 
+ 
+-/* On non-glibc systems we have to manually set the __progname variable */
+-#ifdef __GLIBC__
+-extern char *__progname;
+-#else
+-char *__progname;
+-#endif /* ifdef __GLIBC__ */
+ 
+ /* -----------------------------------------------------------------
+    Program Defaults

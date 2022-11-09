@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription lang="en">
-		Gtranslator is an enhanced gettext po file editor for the GNOME desktop
-		environment.
-		It handles all forms of gettext po files and includes very useful features
-		like find/replace, translation memory, different translator profiles,
-		messages table (for having an overview of the translations/messages in the
-		po file), easy navigation and editing of translation messages and comments
-		of the translation where accurate.
-	</longdescription>
-	<upstream>
-		<remote-id type="sourceforge">gtranslator</remote-id>
-	</upstream>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    Gtranslator is an enhanced gettext po file editor for the GNOME desktop
+    environment.
+    It handles all forms of gettext po files and includes very useful features
+    like find/replace, translation memory, different translator profiles,
+    messages table (for having an overview of the translations/messages in the
+    po file), easy navigation and editing of translation messages and comments
+    of the translation where accurate.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gtranslator</remote-id>
+  </upstream>
 </pkgmetadata>

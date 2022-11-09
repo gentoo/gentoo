@@ -7,9 +7,10 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="cpe">cpe:/a:kde:kconfig</remote-id>
 	</upstream>
 	<use>
-		<flag name="qml">Enable QML/QtQuick support via dev-qt/qtdeclarative</flag>
+		<flag name="qml">Enable QML/QtQuick support via <pkg>dev-qt/qtdeclarative</pkg></flag>
 	</use>
 	<slots>
 		<subslots>

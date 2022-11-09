@@ -33,6 +33,7 @@ src_prepare() {
 	eapply "${WORKDIR}/debian/patches"
 	eapply "${FILESDIR}/${PN}-8.1.2.20050715-offsetof.patch"
 	eapply "${FILESDIR}/${PN}-8.1.2.20180807-fno-common.patch"
+	eapply "${FILESDIR}/${PN}-8.1.2-20180807-musl-CCEQ.patch"
 	eapply_user
 }
 

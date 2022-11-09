@@ -14,7 +14,7 @@
   and tensors. Maxima produces high precision results by using 
   exact fractions and arbitrarily long floating point representations, 
   and can plot functions and data in two and three dimensions.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="clisp">Compile maxima with GNU CLISP
     (<pkg>dev-lisp/clisp</pkg>)</flag>

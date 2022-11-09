@@ -1,0 +1,61 @@
+This fixes several issues:
+* typo "lugin_seagate_opts"
+* "readonly" with assignment resulting in error on Bash 5.x
+
+Gentoo bug: https://bugs.gentoo.org/852764
+Upstream: https://github.com/linux-nvme/nvme-cli/pull/1574
+Upstream: https://github.com/linux-nvme/nvme-cli/commit/25fd8c707b106ca0763402566ad657ef710bf09e
+
+Author: Karlson2k (Evgeny Grin)
+Signed-off-by: Karlson2k (Evgeny Grin) <k2k@narod.ru>
+
+diff --git a/completions/bash-nvme-completion.sh b/completions/bash-nvme-completion.sh
+index 5e0eb23b..469ba3e2 100644
+--- a/completions/bash-nvme-completion.sh
++++ b/completions/bash-nvme-completion.sh
+@@ -3,12 +3,13 @@
+ # Kelly Kaoudis kelly.n.kaoudis at intel.com, Aug. 2015
+ 
+ # Constant to indicate command has no options
+-readonly NO_OPTS=""
++NO_OPTS=""
++readonly NO_OPTS
+ 
+ # Associative array of plugins and associated subcommands
+ # Order here is same as PLUGIN_OBJS in Makefile
+ typeset -A _plugin_subcmds
+-readonly _plugin_subcmds=(
++_plugin_subcmds=(
+ 	[intel]="id-ctrl internal-log lat-stats \
+ 		set-bucket-thresholds lat-stats-tracking \
+ 		market-name smart-log-add temp-stats"
+@@ -53,10 +54,11 @@ readonly _plugin_subcmds=(
+ 	[nvidia]="id-ctrl"
+ 	[ymtc]="smart-log-add"
+ )
++readonly _plugin_subcmds
+ 
+ # Associative array mapping plugins to coresponding option completions
+ typeset -A _plugin_funcs
+-readonly _plugin_funcs=(
++_plugin_funcs=(
+ 	[intel]="plugin_intel_opts"
+ 	[amzn]="plugin_amzn_opts"
+ 	[memblaze]="plugin_memblaze_opts"
+@@ -74,6 +76,7 @@ readonly _plugin_funcs=(
+ 	[nvidia]="plugin_nvidia_opts"
+ 	[ymtc]="plugin_ymtc_opts"
+ )
++readonly _plugin_funcs
+ 
+ # Top level commands
+ _cmds="list list-subsys id-ctrl id-ns \
+@@ -939,7 +942,7 @@ plugin_micron_opts () {
+ 	return 0
+ }
+ 
+-lugin_seagate_opts () {
++plugin_seagate_opts () {
+     local opts=""
+ 	local compargs=""
+ 

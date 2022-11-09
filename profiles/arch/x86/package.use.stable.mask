@@ -17,6 +17,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-11-06)
+# Unmask the target on python-exec while it's masked elsewhere.
+dev-lang/python-exec -python_targets_python3_11
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-09-14)
+# sci-libs/vtk is not stable on x86 and we don't want to complicate
+# newer maxima stabilisation, bug #867547
+sci-mathematics/maxima vtk
+
+# Sam James <sam@gentoo.org> (2022-07-06)
+# sci-libs/sundials is not marked stable on x86
+sci-mathematics/octave sundials
+
 # Sam James <sam@gentoo.org> (2022-02-02)
 # sys-cluster/ucx is not marked stable on x86
 sys-cluster/slurm ucx
@@ -73,7 +86,7 @@ dev-ruby/haml test
 
 # Adam Feldman <NP-Hardass@gentoo.org> (2017-09-27)
 # patchset variants are not stable
-virtual/wine staging
+virtual/wine proton staging
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-26)
 # Stable mask some fabrics (bug #525534)

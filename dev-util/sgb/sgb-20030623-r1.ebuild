@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ DESCRIPTION="Stanford GraphBase"
 HOMEPAGE="http://ftp.cs.stanford.edu/pub/sgb/"
 SRC_URI="http://ftp.cs.stanford.edu/pub/sgb/sgb-${PV:0:4}-${PV:4:2}-${PV:6:2}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="mmix"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
 IUSE=""

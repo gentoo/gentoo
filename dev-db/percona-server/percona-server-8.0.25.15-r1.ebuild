@@ -1135,7 +1135,7 @@ pkg_config() {
 		log-slave-updates \
 	; do
 		optexp="--(skip-)?${opt}" optfull="--loose-skip-${opt}"
-		egrep -sq -- "${optexp}" "${helpfile}" && mysqld_options+=( "${optfull}" )
+		grep -E -sq -- "${optexp}" "${helpfile}" && mysqld_options+=( "${optfull}" )
 	done
 
 	# Prepare timezones, see

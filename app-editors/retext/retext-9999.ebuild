@@ -1,14 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # Please don't add pypy support before testing if it's actually supported. The
 # old compat matrix is no longer accessible as of 2021-02-13 but stated back
 # in 2020-07-05 that PyQt5 was explicitly not supported.
 PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit distutils-r1 optfeature virtualx xdg-utils
+inherit distutils-r1 optfeature qmake-utils virtualx xdg
 
 MY_PN="ReText"
 MY_P="${MY_PN}-${PV/_/~}"
@@ -40,19 +40,28 @@ RDEPEND="
 	dev-python/PyQt5[dbus,gui,printsupport,widgets,${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-python/PyQt5[testlib,${PYTHON_USEDEP}] )"
+BDEPEND="
+	dev-qt/linguist-tools
+	test? ( dev-python/PyQt5[testlib,${PYTHON_USEDEP}] )
+"
+
+distutils_enable_tests unittest
+
+pkg_setup() {
+	# Needed for lrelease
+	export PATH="$(qt5_get_bindir):${PATH}"
+}
 
 src_test() {
 	virtx distutils-r1_src_test
 }
 
 python_test() {
-	esetup.py test
+	eunittest || die
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
+	xdg_pkg_postinst
 
 	optfeature "dictionary support" dev-python/pyenchant
 	# See https://bugs.gentoo.org/772197.
@@ -62,9 +71,4 @@ pkg_postinst() {
 	einfo "Note that you can use different math delimiters, e.g. \(...\) for inline math."
 	einfo "For more details take a look at:"
 	einfo "https://github.com/mitya57/python-markdown-math#math-delimiters"
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
 }

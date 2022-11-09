@@ -290,3 +290,7 @@ pkg_postinst() {
 	has_version net-dialup/ppp || elog "To use dial up networking you must install net-dialup/ppp"
 	use mesh && readme.gentoo_print_elog
 }
+
+pkg_postrm() {
+	use udev && udev_reload
+}

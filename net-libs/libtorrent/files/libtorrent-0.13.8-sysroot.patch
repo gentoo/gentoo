@@ -1,0 +1,33 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -43,7 +43,6 @@
+ TORRENT_ENABLE_INTERRUPT_SOCKET
+ 
+ TORRENT_ENABLE_ARCH
+-TORRENT_WITH_SYSROOT
+ 
+ dnl TORRENT_WITH_XFS
+ TORRENT_WITHOUT_KQUEUE
+@@ -59,8 +58,7 @@
+ CC_ATTRIBUTE_VISIBILITY
+ 
+ AX_PTHREAD
+-AX_CHECK_ZLIB
+-
++PKG_CHECK_MODULES([ZLIB], [zlib])
+ PKG_CHECK_MODULES([CPPUNIT], [cppunit],, [no_cppunit="yes"])
+ 
+ CFLAGS="$PTHREAD_CFLAGS $CPPUNIT_CFLAGS $CFLAGS"
+--- a/src/torrent/utils/Makefile.am
++++ b/src/torrent/utils/Makefile.am
+@@ -23,8 +23,9 @@
+ 	thread_interrupt.h \
+ 	uri_parser.cc \
+ 	uri_parser.h
++libsub_torrentutils_la_LIBADD = $(ZLIB_LIBS)
+ 
+-AM_CPPFLAGS = -I$(srcdir) -I$(srcdir)/.. -I$(srcdir)/../.. -I$(top_srcdir)
++AM_CPPFLAGS = -I$(srcdir) -I$(srcdir)/.. -I$(srcdir)/../.. -I$(top_srcdir) $(ZLIB_CFLAGS)
+ 
+ libtorrentincludedir = $(includedir)/torrent/utils
+ libtorrentinclude_HEADERS = \

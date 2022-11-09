@@ -7,7 +7,7 @@
 </maintainer>
 <use>
     <flag name="hylafax">Install net-misc/hylafax backend</flag>
-    <flag name="efax">Install net-misc/efax backend</flag>
-    <flag name="mgetty-fax">Install net-dialup/mgetty backend</flag>
+    <flag name="efax">Install <pkg>net-misc/efax</pkg> backend</flag>
+    <flag name="mgetty-fax">Install <pkg>net-dialup/mgetty</pkg> backend</flag>
 </use>
 </pkgmetadata>

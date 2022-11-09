@@ -6,13 +6,13 @@ EAPI=7
 inherit flag-o-matic fortran-2 toolchain-funcs
 
 DESCRIPTION="Optimized BLAS library based on GotoBLAS2"
-HOMEPAGE="http://xianyi.github.com/OpenBLAS/"
+HOMEPAGE="https://github.com/xianyi/OpenBLAS"
 SRC_URI="https://github.com/xianyi/OpenBLAS/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/OpenBLAS-${PV}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="dynamic eselect-ldso index-64bit openmp pthread relapack test"
 REQUIRED_USE="?? ( openmp pthread )"
 RESTRICT="!test? ( test )"
@@ -28,9 +28,12 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.3.12-shared-blas-lapack.patch"
 	"${FILESDIR}/${PN}-0.3.20-fix-riscv.patch"
+	"${FILESDIR}/${PN}-0.3.20-fix-loong.patch"
 )
 
 pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+
 	elog "This software has a massive number of options that"
 	elog "are configurable and it is *impossible* for all of"
 	elog "those to fit inside any manageable ebuild."
@@ -58,7 +61,7 @@ pkg_setup() {
 	export HOSTCC="$(tc-getBUILD_CC)"
 
 	# threading options
-	use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	USE_THREAD=0
 	if use openmp; then
 		USE_THREAD=1; USE_OPENMP=1;

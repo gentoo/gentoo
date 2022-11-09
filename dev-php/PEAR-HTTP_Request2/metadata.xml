@@ -6,10 +6,10 @@
 		<name>PHP</name>
 	</maintainer>
 	<use>
-		<flag name="curl">Force dev-lang/php to be compiled with curl extension</flag>
-		<flag name="fileinfo">Force dev-lang/php to be compiled with fileinfo extension</flag>
-		<flag name="ssl">Force dev-lang/php to be compiled with ssl extension</flag>
-		<flag name="zlib">Force dev-lang/php to be compiled with zlib extension</flag>
+		<flag name="curl">Force <pkg>dev-lang/php</pkg> to be compiled with curl extension</flag>
+		<flag name="fileinfo">Force <pkg>dev-lang/php</pkg> to be compiled with fileinfo extension</flag>
+		<flag name="ssl">Force <pkg>dev-lang/php</pkg> to be compiled with ssl extension</flag>
+		<flag name="zlib">Force <pkg>dev-lang/php</pkg> to be compiled with zlib extension</flag>
 	</use>
 	<stabilize-allarches/>
 </pkgmetadata>

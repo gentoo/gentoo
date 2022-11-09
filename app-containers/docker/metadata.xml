@@ -21,16 +21,13 @@
 			Enables dependencies for the "aufs" graph driver, including
 			necessary kernel flags.
 		</flag>
-		<flag name="apparmor">
-			Enable AppArmor support.
-		</flag>
 		<flag name="btrfs">
 			Enables dependencies for the "btrfs" graph driver, including
 			necessary kernel flags.
 		</flag>
 			<flag name="cli">
 				This is a temporary use flag which pulls in
-				app-containers/docker-cli, the docker command line client.
+				<pkg>app-containers/docker-cli</pkg>, the docker command line client.
 				This flag is here to assist in the transition to split packages
 				and will be removed in a future release.
 		</flag>

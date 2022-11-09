@@ -7,7 +7,7 @@ inherit xorg-3
 
 DESCRIPTION="X.Org driver for joystick input devices"
 
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~loong ~m68k ppc ppc64 sparc x86"
 
 RDEPEND="x11-base/xorg-server"
 DEPEND="${RDEPEND}

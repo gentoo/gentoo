@@ -15,7 +15,11 @@ if [[ ${PV} == "99999999" ]]; then
 	EGIT_REPO_URI="https://github.com/pwndbg/pwndbg"
 else
 	MY_PV="${PV:0:4}.${PV:4:2}.${PV:6:2}"
-	SRC_URI="https://github.com/pwndbg/pwndbg/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	GDB_PT_DUMP_COMMIT="f25898adc61d60e5f30c6452b15700bbf1bd630c"
+	SRC_URI="
+		https://github.com/pwndbg/pwndbg/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/martinradev/gdb-pt-dump/archive/${GDB_PT_DUMP_COMMIT}.tar.gz -> gdb-pt-dump-${GDB_PT_DUMP_COMMIT}.tar.gz
+	"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
@@ -42,9 +46,14 @@ RDEPEND="
 	')"
 
 src_prepare() {
-	if [[ ${PV} != *9999 ]]; then
+	if [[ ${PV} == *9999 ]]; then
+		rm -r gdb-pt-dump/.git || die
+	else
 		sed -e "s/__version__ = '\(.*\)'/__version__ = '${PV}'/" \
 			-i pwndbg/version.py || die
+
+		rm -r gdb-pt-dump || die
+		mv "${WORKDIR}/gdb-pt-dump-${GDB_PT_DUMP_COMMIT}" gdb-pt-dump || die
 	fi
 
 	python_fix_shebang "${S}"
@@ -54,6 +63,7 @@ src_prepare() {
 src_install() {
 	insinto /usr/share/${PN}
 	doins -r pwndbg/ gdbinit.py # ida_script.py
+	doins -r gdb-pt-dump/
 
 	python_optimize "${ED}"/usr/share/${PN}
 

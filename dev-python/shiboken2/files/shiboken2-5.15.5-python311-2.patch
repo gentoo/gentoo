@@ -1,0 +1,65 @@
+From 6fc0af3753839839b227075cc2a9e43c7cd7a26d Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Wed, 20 Jul 2022 07:23:15 +0200
+Subject: [PATCH 2/3] From a09a1db8391243e6bb290ee66bb6e3afbb114c61 Mon Sep 17
+ 00:00:00 2001 From: Friedemann Kleint <Friedemann.Kleint@qt.io> Date: Fri, 24
+ Jun 2022 09:22:01 +0200 Subject: libshiboken: Fix crashes with static strings
+ in Python 3.11
+
+In Python 3.11, some strings come with a refcount above decimal
+1000000000, apparently indicating that they are interned. Replace the
+mechanism by PyUnicode_InternFromString().
+
+Task-number: PYSIDE-1960
+Pick-to: 6.3 6.2 5.15
+Change-Id: I6436afee351f89da5814b5d6bc76970b1b508168
+Reviewed-by: Qt CI Bot <qt_ci_bot@qt-project.org>
+Reviewed-by: Christian Tismer <tismer@stackless.com>
+Upstream: https://code.qt.io/cgit/pyside/pyside-setup.git/commit/?id=a09a1db8391243e6bb290ee66bb6e3afbb114c61
+
+Original patch no longer applies.
+Manually adapted to respect code changes.
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/libshiboken/sbkstring.cpp
++++ b/libshiboken/sbkstring.cpp
+@@ -41,8 +41,14 @@
+ #include "sbkstaticstrings_p.h"
+ #include "autodecref.h"
+ 
+-#include <vector>
+-#include <unordered_set>
++#if PY_VERSION_HEX >= 0x030B0000 || defined(Py_LIMITED_API)
++#  define USE_INTERN_STRINGS
++#endif
++
++#ifndef USE_INTERN_STRINGS
++#  include <vector>
++#  include <unordered_set>
++#endif
+ 
+ namespace Shiboken
+ {
+@@ -233,6 +239,13 @@ Py_ssize_t len(PyObject *str)
+ //     PyObject *attr = PyObject_GetAttr(obj, name());
+ //
+ 
++#ifdef USE_INTERN_STRINGS
++PyObject *createStaticString(const char *str)
++{
++    return PyUnicode_InternFromString(str);
++}
++#else
++
+ using StaticStrings = std::unordered_set<PyObject *>;
+ 
+ static void finalizeStaticStrings();    // forward
+@@ -283,6 +296,8 @@ PyObject *createStaticString(const char *str)
+     return result;
+ }
+ 
++#endif // !USE_INTERN_STRINGS
++
+ ///////////////////////////////////////////////////////////////////////
+ //
+ // PYSIDE-1019: Helper function for snake_case vs. camelCase names

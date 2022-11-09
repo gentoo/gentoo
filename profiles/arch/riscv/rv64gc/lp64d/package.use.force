@@ -5,3 +5,4 @@
 # Bootstrapping is possible using our build snapshot, so don't force
 # system bootstrap
 dev-java/openjdk:11 -system-bootstrap
+dev-java/openjdk:17 -system-bootstrap

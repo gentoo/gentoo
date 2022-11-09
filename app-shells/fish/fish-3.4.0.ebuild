@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake python-any-r1 readme.gentoo-r1
 
 DESCRIPTION="Friendly Interactive SHell"
-HOMEPAGE="http://fishshell.com/"
+HOMEPAGE="https://fishshell.com/"
 
 MY_PV="${PV/_beta/b}"
 MY_P="${PN}-${MY_PV}"
@@ -18,7 +18,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}-shell/${PN}-shell.git"
 else
 	SRC_URI="https://github.com/${PN}-shell/${PN}-shell/releases/download/${MY_PV}/${MY_P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -51,7 +51,7 @@ S="${WORKDIR}/${MY_P}"
 
 python_check_deps() {
 	use test || return 0
-	has_version -d "dev-python/pexpect[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pexpect[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {

@@ -2,16 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>polynomial-c@gentoo.org</email>
-		<name>Lars Wendler</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>expeditioneer@gentoo.org</email>
 		<name>Dennis Lamm</name>
 	</maintainer>
 	<use>
 		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> instead of <pkg>dev-libs/botan</pkg></flag>
 		<flag name="samples">Install sample configuration files</flag>
+		<flag name="shell">Install kea-shell text management client for Control Agent</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://gitlab.isc.org/isc-projects/kea/-/issues</bugs-to>

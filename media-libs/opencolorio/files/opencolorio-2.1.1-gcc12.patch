@@ -1,0 +1,14 @@
+https://src.fedoraproject.org/rpms/OpenColorIO/raw/rawhide/f/OCIO-strlen.patch
+https://github.com/AcademySoftwareFoundation/OpenColorIO/commit/4fa94918c2cf572dcaf61ca07016f3b5c231c14c
+https://bugs.gentoo.org/841479
+--- a/src/OpenColorIO/FileRules.cpp
++++ b/src/OpenColorIO/FileRules.cpp
+@@ -3,6 +3,7 @@
+ 
+ #include <algorithm>
+ #include <cctype>
++#include <cstring>
+ #include <map>
+ #include <regex>
+ #include <sstream>
+

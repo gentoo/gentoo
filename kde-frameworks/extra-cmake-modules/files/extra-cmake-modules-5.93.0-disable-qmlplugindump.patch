@@ -6,7 +6,7 @@ Subject: [PATCH] ECMFindQMLModule.cmake.in: Add ECM_DISABLE_QMLPLUGINDUMP to
 
 See also: https://phabricator.kde.org/D25812
 
-Backstory: https://bugzilla.gnome.org/show_bug.cgi?id=744135
+Backstory: https://bugzilla.gnome.org/show_bug.cgi?id=744136
 BUG: 387753
 ---
  modules/ECMFindQmlModule.cmake.in | 45 ++++++++++++++++++-------------

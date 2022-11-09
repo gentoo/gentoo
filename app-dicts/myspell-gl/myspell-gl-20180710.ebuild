@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ HOMEPAGE="https://extensions.libreoffice.org/en/extensions/show/corrector-ortogr
 SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/corrector-18-07-para-galego.oxt -> ${P}.oxt"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 
 DOCS=( changelog.txt package-description.txt readme.txt readme-gl.txt readme_hyph-gl.txt readme_th_gl.txt )
 

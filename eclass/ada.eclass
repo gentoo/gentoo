@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ada.eclass
@@ -58,7 +58,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @DESCRIPTION:
 # All supported Ada implementations, most preferred last.
 _ADA_ALL_IMPLS=(
-	gnat_2020 gnat_2021
+	gnat_2020 gnat_2021 gcc_12_2_0
 )
 readonly _ADA_ALL_IMPLS
 
@@ -84,6 +84,9 @@ _ada_impl_supported() {
 	# (not using that list because inline patterns shall be faster)
 	case "${impl}" in
 		gnat_202[01])
+			return 0
+			;;
+		gcc_12_2_0)
 			return 0
 			;;
 		*)
@@ -181,6 +184,10 @@ ada_export() {
 			impl=${1}
 			shift
 			;;
+		gcc_12_2_0)
+			impl=${1}
+			shift
+			;;
 		*)
 			impl=${EADA}
 			if [[ -z ${impl} ]]; then
@@ -200,6 +207,10 @@ ada_export() {
 		gnat_2021)
 			gcc_pv=10.3.1
 			slot=10
+			;;
+		gcc_12_2_0)
+			gcc_pv=12.2.0
+			slot=12
 			;;
 		*)
 			gcc_pv="9.9.9"
@@ -246,7 +257,14 @@ ada_export() {
 				debug-print "${FUNCNAME}: GNATCHOP = ${GNATCHOP}"
 				;;
 			ADA_PKG_DEP)
-				ADA_PKG_DEP="dev-lang/gnat-gpl:${slot}[ada]"
+				case "${impl}" in
+					gnat_202[01])
+						ADA_PKG_DEP="dev-lang/gnat-gpl:${slot}[ada]"
+						;;
+					*)
+						ADA_PKG_DEP="=sys-devel/gcc-${gcc_pv}*[ada]"
+						;;
+				esac
 
 				# use-dep
 				if [[ ${ADA_REQ_USE} ]]; then

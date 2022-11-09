@@ -9,7 +9,6 @@
 		<subslots>Incremented for ABI breaks in libudev or libsystemd</subslots>
 	</slots>
 	<use>
-		<flag name="apparmor">Enable AppArmor support</flag>
 		<flag name="audit">Enable support for <pkg>sys-process/audit</pkg></flag>
 		<flag name="cgroup-hybrid">Default to hybrid (legacy) cgroup hierarchy instead of unified (modern).</flag>
 		<flag name="curl">Enable support for uploading journals</flag>
@@ -18,18 +17,16 @@
 		<flag name="gnuefi">Enable EFI boot manager and stub loader (built using <pkg>sys-boot/gnu-efi</pkg>)</flag>
 		<flag name="elfutils">Enable coredump stacktraces in the journal</flag>
 		<flag name="fido2">Enable FIDO2 support</flag>
-		<flag name="gcrypt">Enable sealing of journal files using gcrypt</flag>
+		<flag name="gcrypt">Enable use of <pkg>dev-libs/libgcrypt</pkg> for various features</flag>
 		<flag name="homed">Enable portable home directories</flag>
-		<flag name="hostnamed-fallback">Enable setting hostname with networkd/hostnamed without polkit (requires running <pkg>sys-apps/dbus-broker</pkg>)</flag>
 		<flag name="http">Enable embedded HTTP server in journald</flag>
 		<flag name="importd">Enable import daemon</flag>
+		<flag name="iptables">Use libiptc from <pkg>net-firewall/iptables</pkg> for NAT support in systemd-networkd; this is used only if the running kernel does not support nftables</flag>
 		<flag name="kmod">Enable kernel module loading via <pkg>sys-apps/kmod</pkg></flag>
 		<flag name="lz4">Enable lz4 compression for the journal</flag>
-		<flag name="nat">Enable support for network address translation in networkd</flag>
-		<flag name="openssl">Enable use of <pkg>dev-libs/openssl</pkg></flag>
+		<flag name="openssl">Enable use of <pkg>dev-libs/openssl</pkg> for various features</flag>
 		<flag name="pkcs11">Enable PKCS#11 support for cryptsetup and homed</flag>
 		<flag name="pwquality">Enable password quality checking in homed</flag>
-		<flag name="repart">Enable support for growing/adding partitions</flag>
 		<flag name="qrcode">Enable qrcode output support in journal</flag>
 		<flag name="resolvconf">Install resolvconf symlink for systemd-resolve</flag>
 		<flag name="sysv-utils">Install sysvinit compatibility symlinks and manpages for init, telinit, halt, poweroff, reboot, runlevel, and shutdown</flag>
@@ -39,5 +36,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">systemd/systemd</remote-id>
+		<remote-id type="github">systemd/systemd-stable</remote-id>
 	</upstream>
 </pkgmetadata>

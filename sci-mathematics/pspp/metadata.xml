@@ -12,5 +12,8 @@
   PSPP supports a large subset of SPSS's transformation language. Its
   statistical procedure support is limited but growing.
   PSPP has both text-based and a GTK+ based graphical user interfaces.
-</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="savannah">pspp</remote-id>
+  </upstream>
 </pkgmetadata>

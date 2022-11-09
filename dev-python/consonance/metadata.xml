@@ -5,6 +5,10 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<longdescription>
 		Consonance implements WhatsApp's handshake process
 		which makes use of Noise Pipes with Curve25519, AES-GCM,

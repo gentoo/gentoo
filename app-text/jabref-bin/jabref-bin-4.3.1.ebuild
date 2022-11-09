@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 JAVA_PKG_WANT_TARGET=1.8
 
-inherit eutils java-pkg-2
+inherit desktop java-pkg-2
 
 MY_PV_1="${PV/_beta/b}"
 MY_PV="${MY_PV_1/_rc/}"

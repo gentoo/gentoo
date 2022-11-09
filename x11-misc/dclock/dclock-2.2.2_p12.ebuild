@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,7 @@ DEPEND="
 "
 BDEPEND="
 	app-text/rman
+	sys-devel/gcc
 	>=x11-misc/imake-1.0.8-r1
 	xft? ( virtual/pkgconfig )
 "
@@ -44,6 +45,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -std=gnu89 # old codebase, incompatible with c2x
+
 	if use xft; then
 		append-cppflags \
 			-DXFT_SUPPORT \
@@ -54,7 +57,7 @@ src_configure() {
 	fi
 
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die
+		IMAKECPP="${IMAKECPP:-${CHOST}-gcc -E}" xmkmf || die
 }
 
 src_compile() {

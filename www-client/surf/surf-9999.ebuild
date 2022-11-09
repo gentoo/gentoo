@@ -1,10 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit savedconfig toolchain-funcs desktop xdg
 
-DESCRIPTION="a simple web browser based on WebKit/GTK+"
+inherit desktop savedconfig toolchain-funcs xdg
+
+DESCRIPTION="A simple web browser based on WebKit/GTK+"
 HOMEPAGE="https://surf.suckless.org/"
 
 if [[ ${PV} == "9999" ]] ; then
@@ -21,7 +22,7 @@ SLOT="0"
 IUSE="tabbed"
 
 DEPEND="
-	app-crypt/gcr[gtk]
+	app-crypt/gcr:0=[gtk]
 	dev-libs/glib:2
 	net-libs/webkit-gtk:4
 	x11-libs/gtk+:3
@@ -74,12 +75,12 @@ src_install() {
 
 	save_config config.h
 
-	newicon "${S}"/"${PN}".png "${PN}".png
+	newicon "${S}/${PN}.png" "${PN}.png"
 
 	local mime_types="text/html;text/xml;application/xhtml+xml;"
 	mime_types+="x-scheme-handler/http;x-scheme-handler/https;"
 	make_desktop_entry \
-		"surf" \
+		"surf %u" \
 		"Surf" \
 		"surf" \
 		"Network;WebBrowser" \

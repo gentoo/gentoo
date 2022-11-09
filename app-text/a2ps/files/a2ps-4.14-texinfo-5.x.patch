@@ -1,3 +1,6 @@
+fix compilation error due to texinfo 5.x
+https://bugs.gentoo.org/482748
+
 --- a2ps-4.14/doc/a2ps.texi.bero	2013-03-26 10:31:31.230137555 +0100
 +++ a2ps-4.14/doc/a2ps.texi	2013-03-26 11:01:01.504006086 +0100
 @@ -44,10 +44,6 @@

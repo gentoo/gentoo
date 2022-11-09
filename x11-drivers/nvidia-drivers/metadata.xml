@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="driver">Install kernel driver modules</flag>
+		<flag name="kernel-open">Use the open source variant of drivers (Turing/Ampere+ GPUs only, aka GTX 1650+, very experimental)</flag>
 		<flag name="persistenced">Install the persistence daemon for keeping devices state when unused</flag>
 		<flag name="static-libs">Install the XNVCtrl static library for accessing sensors and other features</flag>
 		<flag name="tools">Install additional tools such as nvidia-settings</flag>
@@ -22,5 +23,6 @@
 		<remote-id type="github">NVIDIA/nvidia-persistenced</remote-id>
 		<remote-id type="github">NVIDIA/nvidia-settings</remote-id>
 		<remote-id type="github">NVIDIA/nvidia-xconfig</remote-id>
+		<remote-id type="github">NVIDIA/open-gpu-kernel-modules</remote-id>
 	</upstream>
 </pkgmetadata>

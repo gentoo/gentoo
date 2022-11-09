@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<maintainer type="project">
 		<email>ppc@gentoo.org</email>
-		<name>Gentoo Linux PowerPC Development</name>
+		<name>PowerPC architecture team</name>
 	</maintainer>
 	<use>
 		<flag name="ibam">Enable support for Intelligent Battery Monitoring</flag>

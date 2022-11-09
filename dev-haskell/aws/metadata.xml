@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="network-3">Use network-3</flag>
-	</use>
 	<longdescription>
 		Bindings for Amazon Web Services (AWS), with the aim of supporting all AWS services. To see a high level overview of the library, see the README at &lt;https://github.com/aristidb/aws/blob/master/README.org&gt;.
 	</longdescription>

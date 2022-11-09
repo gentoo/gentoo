@@ -17,7 +17,7 @@ HOMEPAGE="http://rxtx.qbang.org/"
 SRC_URI="ftp://ftp.qbang.org/pub/rxtx/${MY_P}.zip"
 LICENSE="LGPL-2.1+"
 SLOT="2"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE="lfd"
 
 RDEPEND=">=virtual/jre-1.8:*
@@ -39,6 +39,8 @@ src_prepare() {
 
 	eapply -p0 "${FILESDIR}/${PN}-2.1-7r2-lfd.diff"
 	eapply -p0 "${FILESDIR}/${PN}-2.1-7r2-nouts.diff"
+	eapply "${FILESDIR}/${PN}-2.1-7r2-ppcioh.diff"
+	eapply "${FILESDIR}/${PN}-2.1-7r2-ttyPZ.diff"
 	eapply -p0 "${FILESDIR}/${P}-limits.patch"
 	eapply "${FILESDIR}/${P}-add-ttyACM.patch"
 	eapply "${FILESDIR}/${P}-format-security.patch"

@@ -1,13 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2020-12-01)
 # Needs more work to make bindings build
 dev-db/qdbm java perl ruby
-
-# Fabian Groffen <grobian@gentoo.org> (2016-04-06)
-# dev-libs/re2 needs love, bug #563932
-app-misc/sphinx re2
 
 # Fabian Groffen <grobian@gentoo.org> (2016-01-10)
 # libutempter isn't ported for Darwin, bug #506494

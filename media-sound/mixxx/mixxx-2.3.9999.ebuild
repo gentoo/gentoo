@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake xdg udev
 
@@ -38,7 +38,7 @@ RDEPEND="
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	media-libs/chromaprint
-	media-libs/flac
+	media-libs/flac:=
 	media-libs/libebur128
 	media-libs/libid3tag:=
 	media-libs/libogg
@@ -60,9 +60,9 @@ RDEPEND="
 	x11-libs/libX11
 	aac? (
 		media-libs/faad2
-		media-libs/libmp4v2:0
+		media-libs/libmp4v2
 	)
-	ffmpeg? ( media-video/ffmpeg:0= )
+	ffmpeg? ( media-video/ffmpeg:= )
 	hid? ( dev-libs/hidapi )
 	keyfinder? ( media-libs/libkeyfinder )
 	lv2? ( media-libs/lilv )
@@ -149,7 +149,17 @@ src_install() {
 	local locale
 	for locale in ${PLOCALES} ; do
 		if use l10n_${locale} ; then
-			dodoc ${DISTDIR}/${PN}-manual-$(ver_cut 1-2)-${locale/ja/ja-JP}.pdf
+			dodoc "${DISTDIR}"/${PN}-manual-$(ver_cut 1-2)-${locale/ja/ja-JP}.pdf
 		fi
 	done
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	udev_reload
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	udev_reload
 }

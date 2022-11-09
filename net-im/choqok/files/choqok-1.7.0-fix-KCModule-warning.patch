@@ -1,0 +1,43 @@
+From 9c488d8f776b5e7462e8e57dc2b15db5fe28815a Mon Sep 17 00:00:00 2001
+From: Andrea Scarpino <scarpino@kde.org>
+Date: Sat, 8 Feb 2020 16:06:18 +0100
+Subject: [PATCH] Fix warning about KCModule::changed
+
+---
+ choqok/config/behavior/behaviorconfig.cpp    | 4 ++--
+ choqok/config/plugins/choqokpluginconfig.cpp | 3 +--
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/choqok/config/behavior/behaviorconfig.cpp b/choqok/config/behavior/behaviorconfig.cpp
+index a25b0196..fb1d16b3 100644
+--- a/choqok/config/behavior/behaviorconfig.cpp
++++ b/choqok/config/behavior/behaviorconfig.cpp
+@@ -95,9 +95,9 @@ BehaviorConfig::BehaviorConfig(QWidget *parent, const QVariantList &args)
+     d->mBehaviorTabCtl->addTab(d->proxyModule, proxyInfo.moduleName());
+ 
+     connect(d->mPrfsShorten, (void (BehaviorConfig_Shorten::*)(bool))&BehaviorConfig_Shorten::changed,
+-            this, (void (KCModule::*)())&KCModule::changed);
++            this, &BehaviorConfig::markAsChanged);
+     connect(d->proxyModule, (void (KCModuleProxy::*)(KCModuleProxy*))&KCModuleProxy::changed,
+-            this, (void (KCModule::*)())&KCModule::changed);
++            this, &BehaviorConfig::markAsChanged);
+ 
+     load();
+ 
+diff --git a/choqok/config/plugins/choqokpluginconfig.cpp b/choqok/config/plugins/choqokpluginconfig.cpp
+index 1a5f4fc2..4f36d608 100644
+--- a/choqok/config/plugins/choqokpluginconfig.cpp
++++ b/choqok/config/plugins/choqokpluginconfig.cpp
+@@ -46,8 +46,7 @@ ChoqokPluginConfig::ChoqokPluginConfig(QWidget *parent, const QVariantList &args
+     mainLayout->setMargin(0);
+     mainLayout->addWidget(m_pluginSelector);
+ 
+-    connect(m_pluginSelector, &KPluginSelector::changed, this,
+-            (void (KCModule::*)())&KCModule::changed);
++    connect(m_pluginSelector, &KPluginSelector::changed, this, &ChoqokPluginConfig::markAsChanged);
+     connect(m_pluginSelector, &KPluginSelector::configCommitted,
+             this, &ChoqokPluginConfig::reparseConfiguration);
+ 
+-- 
+GitLab
+

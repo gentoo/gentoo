@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<changelog>https://invisible-island.net/byacc/CHANGES.html</changelog>
+		<remote-id type="github">ThomasDickey/byacc-snapshots</remote-id>
 	</upstream>
 </pkgmetadata>

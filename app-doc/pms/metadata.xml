@@ -10,4 +10,7 @@
   <flag name="html">Generate and install PMS as .html as well</flag>
   <flag name="twoside">Enable two-sided layout suitable for printing</flag>
 </use>
+<upstream>
+  <remote-id type="gentoo">proj/pms</remote-id>
+</upstream>
 </pkgmetadata>

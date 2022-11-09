@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>williamh@gentoo.org</email>
-	<name>William Hubbs</name>
-</maintainer>
-<maintainer type="person">
-	<email>robbat2@gentoo.org</email>
-	<name>Robin H. Johnson</name>
-</maintainer>
-<use>
-	<flag name="deprecated">make deprecated data structures/routines available</flag>
-	<flag name="test-complete">Run the complete (non-portable) testsuite</flag>
-</use>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+		<name>Robin H. Johnson</name>
+	</maintainer>
+	<use>
+		<flag name="deprecated">make deprecated data structures/routines available</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">lua/lua</remote-id>
+	</upstream>
 </pkgmetadata>

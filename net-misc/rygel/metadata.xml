@@ -9,4 +9,7 @@
     <flag name="tracker">Install dependencies for the tracker plugin</flag>
     <flag name="transcode">Install dependencies for transcoding support</flag>
   </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/rygel</remote-id>
+  </upstream>
 </pkgmetadata>

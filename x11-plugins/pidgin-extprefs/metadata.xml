@@ -3,8 +3,8 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
-A plugin that takes advantage of existing pidgin functionality to provide preferences that are often desired but are not included in pidgin.
-</longdescription>
+	A plugin that takes advantage of existing pidgin functionality to provide preferences that are often desired but are not included in pidgin.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">gaim-extprefs</remote-id>
 	</upstream>

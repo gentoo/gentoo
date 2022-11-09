@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/715780
+
+musl #ifdef:s most of the defines in sched.h with _GNU_SOURCE
+https://elixir.bootlin.com/musl/latest/source/include/sched.h#L13.
+
+---
+
+diff --git a/src/benchmark.c b/src/benchmark.c
+index eb96b2a..18fc2d2 100644
+--- a/src/benchmark.c
++++ b/src/benchmark.c
+@@ -40,6 +40,7 @@
+ #endif
+ 
+ #ifdef HAVE_SCHED_SETAFFINITY
++#define _GNU_SOURCE
+ #define __USE_GNU
+ #include <sched.h>
+ #endif
+-- 
+2.35.1
+

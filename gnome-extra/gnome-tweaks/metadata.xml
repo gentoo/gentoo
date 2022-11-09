@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<longdescription lang="en">
-GNOME Tweaks allows adjusting advanced configuration
-settings in GNOME 3. This includes things like the fonts used in user
-interface elements, alternative user interface themes, changes in window
-management behavior, GNOME Shell appearance and extension, etc.
-</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    GNOME Tweaks allows adjusting advanced configuration
+    settings in GNOME 3. This includes things like the fonts used in user
+    interface elements, alternative user interface themes, changes in window
+    management behavior, GNOME Shell appearance and extension, etc.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gnome-tweaks</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -7,7 +7,7 @@ EAPI="7"
 FIREFOX_PATCHSET="firefox-78esr-patches-19.tar.xz"
 SPIDERMONKEY_PATCHSET="spidermonkey-78-patches-04.tar.xz"
 
-LLVM_MAX_SLOT=13
+LLVM_MAX_SLOT=14
 
 PYTHON_COMPAT=( python3_{7..10} )
 PYTHON_REQ_USE="ssl"
@@ -61,7 +61,7 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}
 DESCRIPTION="SpiderMonkey is Mozilla's JavaScript engine written in C and C++"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
 
-KEYWORDS="amd64 arm arm64 ~mips ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~mips ~ppc ppc64 ~riscv ~sparc x86"
 
 SLOT="78"
 LICENSE="MPL-2.0"
@@ -74,6 +74,13 @@ BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	|| (
 		(
+			sys-devel/llvm:14
+			clang? (
+				sys-devel/clang:14
+				lto? ( =sys-devel/lld-14* )
+			)
+		)
+		(
 			sys-devel/llvm:13
 			clang? (
 				sys-devel/clang:13
@@ -85,20 +92,6 @@ BDEPEND="${PYTHON_DEPS}
 			clang? (
 				sys-devel/clang:12
 				lto? ( =sys-devel/lld-12* )
-			)
-		)
-		(
-			sys-devel/llvm:11
-			clang? (
-				sys-devel/clang:11
-				lto? ( =sys-devel/lld-11* )
-			)
-		)
-		(
-			sys-devel/llvm:10
-			clang? (
-				sys-devel/clang:10
-				lto? ( =sys-devel/lld-10* )
 			)
 		)
 	)
@@ -133,8 +126,8 @@ llvm_check_deps() {
 		fi
 
 		if use lto ; then
-			if ! has_version -b "=sys-devel/lld-${LLVM_SLOT}*" ; then
-				einfo "=sys-devel/lld-${LLVM_SLOT}* is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
+			if ! has_version -b "sys-devel/lld:${LLVM_SLOT}" ; then
+				einfo "sys-devel/lld:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
 				return 1
 			fi
 		fi
@@ -259,10 +252,12 @@ src_configure() {
 	einfo "Current RUSTFLAGS: ${RUSTFLAGS}"
 
 	local have_switched_compiler=
-	if use clang && ! tc-is-clang ; then
+	if use clang; then
 		# Force clang
 		einfo "Enforcing the use of clang due to USE=clang ..."
-		have_switched_compiler=yes
+		if tc-is-gcc; then
+			have_switched_compiler=yes
+		fi
 		AR=llvm-ar
 		CC=${CHOST}-clang
 		CXX=${CHOST}-clang++
@@ -313,9 +308,11 @@ src_configure() {
 		$(use_enable test tests)
 	)
 
-	if ! use x86 && [[ ${CHOST} != armv*h* ]] ; then
-		myeconfargs+=( --enable-rust-simd )
-	fi
+	# Breaks with newer (1.63+) Rust.
+	# if ! use x86 && [[ ${CHOST} != armv*h* ]] ; then
+	#	myeconfargs+=( --enable-rust-simd )
+	#fi
+	myeconfargs+=( --disable-rust-simd )
 
 	# Modifications to better support ARM, bug 717344
 	if use cpu_flags_arm_neon ; then

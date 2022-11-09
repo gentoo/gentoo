@@ -6,18 +6,19 @@
     <name>Andrew Savchenko</name>
   </maintainer>
   <use>
-    <flag name="container">Use container window (experimental)</flag>
+    <flag name="container">Use container window</flag>
     <flag name="debug">Build libtrip debugging library</flag>
     <flag name="dialogs">Enable support for configuration dialogs</flag>
     <flag name="libhack">Build libhack window mode helper library</flag>
     <flag name="modules">Enable support for loadable modules</flag>
+    <flag name="no-container">Do not use container window (experimental)</flag>
     <flag name="pango">Enable pango font rendering using <pkg>x11-libs/pango</pkg></flag>
     <flag name="player">Enable audio using aplay from <pkg>media-sound/alsa-utils</pkg></flag>
     <flag name="poll">Use poll() event handler API (recommended)</flag>
     <flag name="select">Use select() event handler API</flag>
     <flag name="themes">Install the official E16 themes using <pkg>x11-themes/e16-themes</pkg></flag>
     <flag name="xi2">Enable the experimental multipointer input XInput2. This incldues the MultiPointer X feature</flag>
-    <flag name="xpresent">Enable support for the X Present extension via <pkg>x11-libs/libXpresent</pkg></flag>
+    <flag name="xpresent">Enable support for the X Present extension via <pkg>x11-libs/libXpresent</pkg> (experimental)</flag>
     <flag name="xrandr">Enable support for the X RandR extension via <pkg>x11-libs/libXrandr</pkg></flag>
     <flag name="xrender">Enable transparency support using the X Render extension via <pkg>x11-libs/libXrender</pkg></flag>
     <flag name="xsm">Enable X Session Management support using <pkg>x11-libs/libSM</pkg></flag>

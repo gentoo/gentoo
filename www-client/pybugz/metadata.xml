@@ -4,6 +4,7 @@
   <maintainer type="person">
     <email>williamh@gentoo.org</email>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">williamh/pybugz</remote-id>
   </upstream>

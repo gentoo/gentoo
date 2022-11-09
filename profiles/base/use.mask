@@ -4,6 +4,15 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Brian Evans <grknight@gentoo.org> (2022-09-30)
+# PHP 8.2 is in RC
+php_targets_php8-2
+
+# Sam James <sam@gentoo.org> (2022-08-02)
+# Masked for testing. The split of some packages may still
+# change. bug #838970.
+qt6
+
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # dev-util/sysprof not keyworded on most arches yet
 sysprof
@@ -12,7 +21,6 @@ sysprof
 # PHP 7.3 is end-of-life
 # Please upgrade to a newer slot
 php_targets_php7-3
-php7-3
 
 # Sam James <sam@gentoo.org> (2022-01-12)
 # PCH has proven itself to be unreliable and lead to spurious build
@@ -21,10 +29,6 @@ php7-3
 # Please speak to <toolchain@gentoo.org> and/or <qa@gentoo.org> before dropping.
 # See e.g. bug #753323, bug #822690.
 pch
-
-# Hans de Graaff <graaff@gentoo.org> (2021-07-09)
-# Mask Ruby 2.5 as EOL
-ruby_targets_ruby25
 
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life
@@ -37,10 +41,6 @@ php_targets_php7-2
 # on the filesystem and causes build failures.
 # See e.g. bug #741076
 ros_messages_eus
-
-# Hans de Graaff <graaff@gentoo.org> (2020-06-13)
-# Mask Ruby 2.4 as EOL
-ruby_targets_ruby24
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # app-office/texmacs is package.mask'd. Bug #436400

@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools
+inherit autotools eapi7-ver
 
 DESCRIPTION="Cladogram tree generator mainly used by the GNU/Linux distro timeline project"
 HOMEPAGE="https://launchpad.net/gnuclad/"
-SRC_URI="http://launchpad.net/gnuclad/trunk/0.2/+download/${P}.tar.gz"
+SRC_URI="http://launchpad.net/gnuclad/trunk/$(ver_cut 1-2)/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

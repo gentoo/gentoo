@@ -9,4 +9,8 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">unrealircd/unrealircd</remote-id>
+	</upstream>
 </pkgmetadata>

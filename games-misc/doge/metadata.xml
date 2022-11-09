@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!--maintainer-needed-->
-	<longdescription lang="en">
-		doge is a simple motd script based on the slightly stupid but very funny doge meme. It prints random grammatically incorrect statements that are sometimes based on things from your computer.
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+		doge is a simple motd script based on the slightly stupid
+		but very funny doge meme. It prints random grammatically
+		incorrect statements that are sometimes based on things
+		from your computer.
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">doge</remote-id>

@@ -1,0 +1,9 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2022-08-05)
+# Depends on app-antivirus/clamav.  Bug #638888
+mail-client/claws-mail clamav
+mail-filter/amavisd-new clamav
+net-ftp/proftpd clamav
+net-mail/cyrus-imapd clamav

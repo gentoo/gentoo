@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs flag-o-matic
 
@@ -18,17 +18,16 @@ HOMEPAGE="https://6xq.net/pianobar/"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
 
-BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	dev-libs/json-c:=
-	dev-libs/libgcrypt:0=
+	dev-libs/libgcrypt:=
 	media-libs/libao
-	>=media-video/ffmpeg-3.3:0=
+	>=media-video/ffmpeg-3.3:=
 	net-misc/curl
 "
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_compile() {
 	append-cflags -std=c99
@@ -38,7 +37,7 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX=/usr LIBDIR=/usr/$(get_libdir) DYNLINK=1 install
-	dodoc ChangeLog README.md
+	dodoc ChangeLog README.rst
 
 	rm "${D}"/usr/lib*/*.a || die
 

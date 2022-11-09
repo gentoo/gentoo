@@ -1,0 +1,18 @@
+https://github.com/epasveer/seer/commit/75f44adf35b44739c6454ac8078ba2e3757a797c
+
+From 75f44adf35b44739c6454ac8078ba2e3757a797c Mon Sep 17 00:00:00 2001
+From: Malik Mlitat <malik.mlitat@gmail.com>
+Date: Sat, 22 Oct 2022 23:33:12 +0200
+Subject: [PATCH] Fix debian and cmake build on linux
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -193,8 +193,6 @@ qt5_add_resources(SOURCE_FILES resource.qrc)
+ if(NOT CMAKE_BUILD_TYPE MATCHES Debug) #Release, RelWithDebInfo and MinSizeRel
+     if(WIN32) # Check if we are on Windows
+         set(SYSTEM_TYPE WIN32)
+-    else() # UNIX
+-        set(SYSTEM_TYPE EXCLUDE_FROM_ALL)
+     endif()
+     message("System type is " ${SYSTEM_TYPE})
+ endif()

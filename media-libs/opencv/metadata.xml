@@ -3,18 +3,18 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
-OpenCV (Open Source Computer Vision) is a library of programming functions mainly aimed at real time computer vision.
-Example applications of the OpenCV library are Human-Computer Interaction (HCI); Object Identification, Segmentation and Recognition;
-Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Understanding; Structure From Motion (SFM); and Mobile Robotics.
-</longdescription>
+	OpenCV (Open Source Computer Vision) is a library of programming functions mainly aimed at real time computer vision.
+	Example applications of the OpenCV library are Human-Computer Interaction (HCI); Object Identification, Segmentation and Recognition;
+	Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Understanding; Structure From Motion (SFM); and Mobile Robotics.
+	</longdescription>
 	<use>
 		<flag name="contrib">Install user contributed scripts from opencv_contrib (Experimental!)</flag>
 		<flag name="cuda">Enable NVIDIA Cuda computations support (Experimental!)</flag>
 		<flag restrict="&gt;=media-libs/opencv-4.1.2" name="download">Enable download during cmake configure</flag>
 		<flag name="eigen">Enable usage of <pkg>dev-cpp/eigen</pkg> for computations</flag>
 		<flag name="features2d">Enable features2d module</flag>
-		<flag name="gdal">Enable support for sci-libs/gdal library</flag>
-		<flag name="gtk3">Enable x11-libs/gtk+:3 support</flag>
+		<flag name="gdal">Enable support for <pkg>sci-libs/gdal</pkg> library</flag>
+		<flag name="gtk3">Enable <pkg>x11-libs/gtk+</pkg>:3 support</flag>
 		<flag restrict="&gt;=media-libs/opencv-4.4.0" name="lto">Build using Link Time Optimizations (LTO)</flag>
 		<flag restrict="&gt;=media-libs/opencv-4.1.2" name="opencvapps">Enable compilation with opencvapps</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="gflags">Use Google's C++ argument parsing library</flag>
@@ -30,7 +30,7 @@ Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Under
 		<flag name="opencl">Add support for OpenCL</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="tesseract">Use Google's OCR Engine</flag>
 		<flag name="testprograms">Build and install programs for testing OpenCV (performance)</flag>
-		<flag name="vtk">Build new 3D visualization module viz based on sci-libs/vtk</flag>
+		<flag name="vtk">Build new 3D visualization module viz based on <pkg>sci-libs/vtk</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:opencv:opencv</remote-id>

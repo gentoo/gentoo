@@ -17,7 +17,7 @@
 		<flag name="directx">Enable Win32 DirectX, D3D11va and DxVA2 support</flag>
 		<flag name="dvbpsi">Enable support for Mpeg-TS files (.ts, .m2ts, .mts) via <pkg>media-libs/libdvbpsi</pkg></flag>
 		<flag name="encode">Enable streaming-output support and videolan manager to control multiple streams from within one instance</flag>
-		<flag name="faad">Enable AAC audio decoding library support via media-libs/faad2</flag>
+		<flag name="faad">Enable AAC audio decoding library support via <pkg>media-libs/faad2</pkg></flag>
 		<flag name="fdk">Enable the Fraunhofer AAC codec library</flag>
 		<flag name="fluidsynth">Enable Fluidsynth MIDI software synthesis (with external sound fonts)</flag>
 		<flag name="gcrypt">Enable cryptography support via libgcrypt</flag>

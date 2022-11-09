@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<use>
-<flag name="pud">Install the Node Position Update plugin</flag>
-</use>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="pud">Install the Node Position Update plugin</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">OLSR/olsrd</remote-id>
+	</upstream>
 </pkgmetadata>

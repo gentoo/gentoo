@@ -4,8 +4,8 @@
 	<!-- maintainer-needed -->
 	<use>
 		<flag name="fuse">Use fuse libraries</flag>
-		<flag name="iso">Install app-cdr/cdrtools in order to prepare iso images</flag>
-		<flag name="ntfs">Use libntfs-3g library from sys-fs/ntfs3g</flag>
+		<flag name="iso">Install <pkg>app-cdr/cdrtools</pkg> in order to prepare iso images</flag>
+		<flag name="ntfs">Use libntfs-3g library from <pkg>sys-fs/ntfs3g</pkg></flag>
 		<flag name="yasm">Use yasm assembler instead of nasm</flag>
 	</use>
 </pkgmetadata>

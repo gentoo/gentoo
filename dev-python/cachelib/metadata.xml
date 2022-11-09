@@ -12,6 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">cachelib</remote-id>
-		<remote-id type="github">pallets/cachelib</remote-id>
+		<remote-id type="github">pallets-eco/cachelib</remote-id>
 	</upstream>
 </pkgmetadata>

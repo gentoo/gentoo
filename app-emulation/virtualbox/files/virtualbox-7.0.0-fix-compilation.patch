@@ -1,0 +1,56 @@
+Fix compilation if VBOX_WITH_AUDIO_OSS is defined while VBOX_WITH_AUDIO_PULSE and VBOX_WITH_AUDIO_ALSA are not
+
+Fix compilation if VBOX_WITH_AUDIO_RECORDING is not defined
+
+--- a/src/VBox/Main/xml/Settings.cpp
++++ b/src/VBox/Main/xml/Settings.cpp
+@@ -8931,6 +8931,9 @@
+     RTCLock lock(s_mtx);
+     if (s_enmLinuxDriver == AudioDriverType_Null)
+     {
++# ifdef VBOX_WITH_AUDIO_OSS
++	s_enmLinuxDriver = AudioDriverType_OSS;
++# endif /* VBOX_WITH_AUDIO_OSS */
+ # ifdef VBOX_WITH_AUDIO_PULSE
+         /* Check for the pulse library & that the pulse audio daemon is running. */
+         if (RTProcIsRunningByName("pulseaudio") &&
+@@ -8943,10 +8946,7 @@
+              if (RTLdrIsLoadable("libasound.so.2"))
+                 s_enmLinuxDriver = AudioDriverType_ALSA;
+ # endif /* VBOX_WITH_AUDIO_ALSA */
+-# ifdef VBOX_WITH_AUDIO_OSS
+-             else
+-                s_enmLinuxDriver = AudioDriverType_OSS;
+-# endif /* VBOX_WITH_AUDIO_OSS */
++	;
+     }
+     return s_enmLinuxDriver;
+ 
+--- a/src/VBox/Main/src-client/RecordingInternals.cpp
++++ b/src/VBox/Main/src-client/RecordingInternals.cpp
+@@ -139,7 +139,9 @@
+     switch (pFrame->enmType)
+     {
+         case RECORDINGFRAME_TYPE_AUDIO:
++#ifdef VBOX_WITH_AUDIO_RECORDING
+             recordingAudioFrameDestroy(&pFrame->Audio);
++#endif // VBOX_WITH_AUDIO_RECORDING
+             break;
+ 
+         case RECORDINGFRAME_TYPE_VIDEO:
+--- a/src/VBox/Main/src-client/Recording.cpp
++++ b/src/VBox/Main/src-client/Recording.cpp
+@@ -836,11 +836,13 @@
+ 
+     if (m_enmState == RECORDINGSTS_STARTED)
+     {
++#ifdef VBOX_WITH_AUDIO_RECORDING
+         if (   recordingCodecIsInitialized(&m_CodecAudio)
+             && recordingCodecGetWritable(&m_CodecAudio, msTimestamp) > 0)
+         {
+             fNeedsUpdate = true;
+         }
++#endif	// VBOX_WITH_AUDIO_RECORDING
+ 
+         if (!fNeedsUpdate)
+         {

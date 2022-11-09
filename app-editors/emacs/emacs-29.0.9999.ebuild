@@ -41,7 +41,6 @@ HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars webp wide-int +X Xaw3d xft +xpm xwidgets zlib"
-RESTRICT="test"
 
 X_DEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -58,7 +57,7 @@ X_DEPEND="x11-libs/libICE
 		media-libs/freetype
 		x11-libs/libXft
 		x11-libs/libXrender
-		cairo? ( >=x11-libs/cairo-1.12.18 )
+		cairo? ( >=x11-libs/cairo-1.12.18[X] )
 		harfbuzz? ( media-libs/harfbuzz:0= )
 		m17n-lib? (
 			>=dev-libs/libotf-0.9.4
@@ -102,7 +101,10 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	gmp? ( dev-libs/gmp:0= )
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
-	jit? ( sys-devel/gcc:=[jit(-)] )
+	jit? (
+		sys-devel/gcc:=[jit(-)]
+		sys-libs/zlib
+	)
 	json? ( dev-libs/jansson:= )
 	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
@@ -116,7 +118,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	zlib? ( sys-libs/zlib )
 	gui? (
 		gif? ( media-libs/giflib:0= )
-		jpeg? ( virtual/jpeg:0= )
+		jpeg? ( media-libs/libjpeg-turbo:0= )
 		png? ( >=media-libs/libpng-1.4:0= )
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff:0 )
@@ -160,7 +162,7 @@ SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 
 src_prepare() {
 	if [[ ${PV##*.} = 9999 ]]; then
-		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[ \t]*\([^ \t,)]*\).*/\1/p' \
+		FULL_VERSION=$(sed -n 's/^AC_INIT([^,]*,[^0-9.]*\([0-9.]*\).*/\1/p' \
 			configure.ac)
 		[[ ${FULL_VERSION} ]] || die "Cannot determine current Emacs version"
 		einfo "Emacs branch: ${EGIT_BRANCH}"
@@ -171,6 +173,8 @@ src_prepare() {
 	fi
 
 	if use jit; then
+		find lisp -type f -name "*.elc" -delete || die
+
 		# These files ignore LDFLAGS. We assign the variable here, because
 		# for live ebuilds FULL_VERSION doesn't exist in global scope
 		QA_FLAGS_IGNORED="usr/$(get_libdir)/emacs/${FULL_VERSION}/native-lisp/.*"
@@ -187,11 +191,19 @@ src_prepare() {
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
 
+	# libseccomp is detected by configure but doesn't appear to have any
+	# effect on the installed image. Suppress it by supplying pkg-config
+	# with a wrong library name.
+	sed -i -e "/CHECK_MODULES/s/libseccomp/DiSaBlE&/" configure.ac || die
+
 	AT_M4DIR=m4 eautoreconf
 }
 
 src_configure() {
 	local myconf
+
+	# Prevents e.g. tests interfering with running Emacs.
+	unset EMACS_SOCKET_NAME
 
 	if use alsa; then
 		use sound || ewarn \
@@ -211,6 +223,14 @@ src_configure() {
 	# For X11 there is the further choice of toolkits GTK, Motif,
 	# Athena (Lucid), or no toolkit. They are enabled (in order of
 	# preference) with the "gtk", "motif", "Xaw3d", and "athena" flags.
+
+	if use jit; then
+		use zlib || ewarn \
+			"USE flag \"jit\" overrides \"-zlib\"; enabling zlib support."
+		myconf+=" --with-zlib"
+	else
+		myconf+=" $(use_with zlib)"
+	fi
 
 	if ! use gui; then
 		einfo "Configuring to build without window system support"
@@ -331,7 +351,7 @@ src_configure() {
 		$(use_with games gameuser ":gamestat") \
 		$(use_with gmp libgmp) \
 		$(use_with gpm) \
-		$(use_with jit native-compilation) \
+		$(use_with jit native-compilation aot) \
 		$(use_with json) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with lcms lcms2) \
@@ -343,7 +363,6 @@ src_configure() {
 		$(use_with systemd libsystemd) \
 		$(use_with threads) \
 		$(use_with wide-int) \
-		$(use_with zlib) \
 		${myconf}
 }
 
@@ -359,6 +378,50 @@ src_compile() {
 	fi
 
 	emake
+}
+
+src_test() {
+	# List .el test files with a comment above listing the exact
+	# subtests which caused failure. Elements should begin with a %.
+	# e.g. %lisp/gnus/mml-sec-tests.el.
+	local exclude_tests=(
+		# Reason: not yet known
+		# mml-secure-en-decrypt-{1,2,3,4}
+		# mml-secure-find-usable-keys-{1,2}
+		# mml-secure-key-checks
+		# mml-secure-select-preferred-keys-4
+		# mml-secure-sign-verify-1
+		%lisp/gnus/mml-sec-tests.el
+
+		# Reason: permission denied on /nonexistent
+		# (vc-*-bzr only fails if breezy is installed, as they
+		# try to access cache dirs under /nonexistent)
+		#
+		# rmail-undigest-test-multipart-mixed-digest
+		# rmail-undigest-test-rfc1153-less-strict-digest
+		# rmail-undigest-test-rfc1153-sloppy-digest
+		# rmail-undigest-test-rfc934-digest
+		# vc-test-bzr02-state
+		# vc-test-bzr05-rename-file
+		# vc-test-bzr06-version-diff
+		# vc-bzr-test-bug9781
+		%lisp/mail/undigest-tests.el
+		%lisp/vc/vc-tests.el
+		%lisp/vc/vc-bzr-tests.el
+
+		# Reason: fails if bubblewrap (bwrap) is installed
+		# "bwrap: setting up uid map: Permission denied"
+		#
+		# bytecomp-tests--dest-mountpoint
+		%lisp/emacs-lisp/bytecomp-tests.el
+	)
+
+	# See test/README for possible options
+	emake \
+		EMACS_TEST_VERBOSE=1 \
+		EXCLUDE_TESTS="${exclude_tests[*]}" \
+		TEST_BACKTRACE_LINE_LENGTH=nil \
+		check
 }
 
 src_install() {

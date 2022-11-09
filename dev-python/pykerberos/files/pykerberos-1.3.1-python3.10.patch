@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/867421
+https://github.com/apple/ccs-pykerberos/pull/89
+
+From 1e1666af51bb11ea5c6dd442415ce765073737c3 Mon Sep 17 00:00:00 2001
+From: stevenpackardblp <77253966+stevenpackardblp@users.noreply.github.com>
+Date: Sun, 24 Oct 2021 23:03:41 -0400
+Subject: [PATCH] Use Py_ssize_t type
+
+Python 3.10 requires that the `Py_ssize_t` type is used for string lengths instead of `int`.
+--- a/src/kerberos.c
++++ b/src/kerberos.c
+@@ -14,6 +14,7 @@
+  * limitations under the License.
+  **/
+ 
++#define PY_SSIZE_T_CLEAN
+ #include <Python.h>
+ 
+ #include "kerberosbasic.h"
+@@ -244,9 +245,9 @@ static PyObject *channelBindings(PyObject *self, PyObject *args, PyObject* keywd
+     char *initiator_address = NULL;
+     char *acceptor_address = NULL;
+     char *application_data = NULL;
+-    int initiator_length = 0;
+-    int acceptor_length = 0;
+-    int application_length = 0;
++    Py_ssize_t initiator_length = 0;
++    Py_ssize_t acceptor_length = 0;
++    Py_ssize_t application_length = 0;
+ 
+     PyObject *pychan_bindings = NULL;
+     struct gss_channel_bindings_struct *input_chan_bindings;
+

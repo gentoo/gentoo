@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Deduplicating backup program with compression and authenticated encryption"
@@ -22,18 +22,22 @@ LICENSE="BSD"
 SLOT="0"
 
 # Unfortunately we have a file conflict with app-office/borg, bug #580402
+# borgbackup is *very* picky about which msgpack it work with,
+# check setup.py on bumps.
 RDEPEND="
 	!!app-office/borg
 	app-arch/lz4
 	virtual/acl
-	dev-python/llfuse[${PYTHON_USEDEP}]
+	dev-python/pyfuse3[${PYTHON_USEDEP}]
+	~dev-python/msgpack-1.0.4[${PYTHON_USEDEP}]
 	dev-libs/openssl:0=
 "
 
 DEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	dev-python/cython[${PYTHON_USEDEP}]
+	>=dev-python/cython-0.29.29[${PYTHON_USEDEP}]
+	dev-python/pkgconfig[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
 

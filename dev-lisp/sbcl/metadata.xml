@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>grozin@gentoo.org</email>
+		<name>Andrey Grozin</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>common-lisp@gentoo.org</email>
 		<name>Gentoo Common Lisp Project</name>
@@ -18,7 +22,10 @@
 	non-ANSI features. Support for native threading on GNU/Linux is
 	available for the x86 and amd64 platforms using an NPTL enabled
 	GLIBC. SBCL 0.8.17 and later support Unicode.
-</longdescription>
+	</longdescription>
+	<use>
+		<flag name="capstone">Enable disassembly support with <pkg>dev-libs/capstone</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">sbcl</remote-id>
 	</upstream>

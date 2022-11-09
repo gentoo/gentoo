@@ -3,13 +3,13 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <longdescription>
-HTB.init is a shell script derived from CBQ.init that allows for easy setup of HTB-based traffic control on Linux. HTB (Hierachical Token Bucket) is a new queueing discipline which attempts to address the weaknesses of current CBQ implementation.
-</longdescription>
+  HTB.init is a shell script derived from CBQ.init that allows for easy setup of HTB-based traffic control on Linux. HTB (Hierachical Token Bucket) is a new queueing discipline which attempts to address the weaknesses of current CBQ implementation.
+  </longdescription>
   <longdescription lang="ja">
-HTB.init は、Linux 上で HTB を基盤にしたトラフィック・コントロールのセットアップを簡単にする
-CBQ.init に由来したシェル・スクリプトです。HTB (Hierachical Token Bucket) は現在の CBQ の実装の弱点に処置を講じる
-キューの新しい規律です。
-</longdescription>
+  HTB.init は、Linux 上で HTB を基盤にしたトラフィック・コントロールのセットアップを簡単にする
+  CBQ.init に由来したシェル・スクリプトです。HTB (Hierachical Token Bucket) は現在の CBQ の実装の弱点に処置を講じる
+  キューの新しい規律です。
+  </longdescription>
   <use>
     <flag name="esfq">Add support for Enhanced Stochastic Fairness queueing discipline.</flag>
   </use>

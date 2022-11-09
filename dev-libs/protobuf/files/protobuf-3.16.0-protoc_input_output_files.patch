@@ -1,7 +1,7 @@
 https://github.com/protocolbuffers/protobuf/pull/235
 
---- /src/google/protobuf/compiler/command_line_interface.cc
-+++ /src/google/protobuf/compiler/command_line_interface.cc
+--- a/src/google/protobuf/compiler/command_line_interface.cc
++++ b/src/google/protobuf/compiler/command_line_interface.cc
 @@ -1110,6 +1110,28 @@
    }
  
@@ -162,8 +162,8 @@ https://github.com/protocolbuffers/protobuf/pull/235
  
    if (mode_ == MODE_ENCODE) {
      // Input is text.
---- /src/google/protobuf/compiler/command_line_interface.h
-+++ /src/google/protobuf/compiler/command_line_interface.h
+--- a/src/google/protobuf/compiler/command_line_interface.h
++++ b/src/google/protobuf/compiler/command_line_interface.h
 @@ -292,7 +292,9 @@
        GeneratorContext* generator_context, std::string* error);
  
@@ -189,8 +189,8 @@ https://github.com/protocolbuffers/protobuf/pull/235
    // If --descriptor_set_out was given, this is the filename to which the
    // FileDescriptorSet should be written.  Otherwise, empty.
    std::string descriptor_set_out_name_;
---- /src/google/protobuf/compiler/command_line_interface_unittest.cc
-+++ /src/google/protobuf/compiler/command_line_interface_unittest.cc
+--- a/src/google/protobuf/compiler/command_line_interface_unittest.cc
++++ b/src/google/protobuf/compiler/command_line_interface_unittest.cc
 @@ -99,7 +99,7 @@
    virtual void SetUp();
    virtual void TearDown();

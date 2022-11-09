@@ -9,7 +9,7 @@ SRC_URI="https://github.com/FFmpeg/nv-codec-headers/releases/download/n${PV}/${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 src_compile() {
 	emake PREFIX="${EPREFIX}"/usr LIBDIR="$(get_libdir)"

@@ -15,7 +15,7 @@ S="${WORKDIR}"
 
 LICENSE="HyperSpec"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~mips ppc ppc64 ~riscv sparc x86"
 
 src_install() {
 	docinto html

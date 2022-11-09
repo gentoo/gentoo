@@ -13,7 +13,7 @@ LICENSE="BSD GPL-2"
 
 SLOT="0"
 IUSE="X debug deprecated doc examples fftw openmp +readline +shared tcl"
-KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~sparc ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm64 ~ppc ~riscv ~sparc x86 ~x64-macos"
 
 RESTRICT="!test? ( test )"
 
@@ -40,11 +40,16 @@ DOCS=(
 	Stuarts_Poly_Notes
 )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+
 	MULTIBUILD_VARIANTS=( "binaries" )
 	use shared && MULTIBUILD_VARIANTS+=( "shared" )
 	use tcl && MULTIBUILD_VARIANTS+=( "tcl" )
-	use openmp && tc-check-openmp
 }
 
 src_prepare() {

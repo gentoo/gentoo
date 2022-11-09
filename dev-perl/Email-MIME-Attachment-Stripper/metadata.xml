@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">Email-MIME-Attachment-Stripper</remote-id>
     <remote-id type="cpan-module">Email::MIME::Attachment::Stripper</remote-id>
+    <remote-id type="github">Perl-Email-Project/Email-MIME-Attachment-Stripper</remote-id>
   </upstream>
 </pkgmetadata>

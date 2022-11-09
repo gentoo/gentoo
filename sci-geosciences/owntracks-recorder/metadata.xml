@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">owntracks/recorder</remote-id>
+	</upstream>
+	<use>
+		<flag name="crypt">Enable support for payload encryption with <pkg>dev-libs/libsodium</pkg></flag>
+		<flag name="greenwich">Enable support for the OwnTracks Greenwich firmware</flag>
+		<flag name="http">Enable support for the built-in HTTP REST API</flag>
+		<flag name="kill">Enable support removing data via the API (dangerous)</flag>
+		<flag name="lua">Enable support for Lua hook integration</flag>
+		<flag name="mqtt">Enable MQTT support</flag>
+		<flag name="ping">Enable support for the "pingping" monitoring feature</flag>
+		<flag name="tours">Enable recorder support for shared views</flag>
+	</use>
+</pkgmetadata>

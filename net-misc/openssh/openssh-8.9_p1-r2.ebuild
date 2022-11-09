@@ -20,8 +20,10 @@ HPN_PATCHES=(
 	${PN}-${HPN_PV/./_}-hpn-PeakTput-${HPN_VER}.diff
 )
 
-SCTP_VER="1.2" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
-X509_VER="13.3.1" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
+SCTP_VER="1.2"
+SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
+X509_VER="13.3.1"
+X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
@@ -36,7 +38,7 @@ S="${WORKDIR}/${PARCH}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
 IUSE="abi_mips_n32 audit debug hpn kerberos ldns libedit livecd pam +pie +scp sctp security-key selinux +ssl static test X X509 xmss"
 
@@ -322,9 +324,6 @@ src_configure() {
 		# https://bugs.gentoo.org/753230
 		myconf+=( --disable-utmp --disable-wtmp )
 	fi
-
-	# The seccomp sandbox is broken on x32, so use the older method for now. #553748
-	use amd64 && [[ ${ABI} == "x32" ]] && myconf+=( --with-sandbox=rlimit )
 
 	econf "${myconf[@]}"
 }

@@ -1,0 +1,23 @@
+From 4c22789d264bd249cfff1c3e69466991e58a76cf Mon Sep 17 00:00:00 2001
+From: Frank Morgner <frankmorgner@gmail.com>
+Date: Mon, 20 Dec 2021 02:32:58 +0100
+Subject: [PATCH] fixed openssl 3 include
+
+---
+ src/eac_util.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/eac_util.c b/src/eac_util.c
+index 6e518e0..c9196fd 100644
+--- a/src/eac_util.c
++++ b/src/eac_util.c
+@@ -321,7 +321,9 @@ randb(int numbytes)
+     return NULL;
+ }
+ 
++#if OPENSSL_VERSION_NUMBER >= 0x30000000L
+ #include <openssl/provider.h>
++#endif
+ 
+ BUF_MEM *
+ retail_mac_des(const BUF_MEM * key, const BUF_MEM * in)

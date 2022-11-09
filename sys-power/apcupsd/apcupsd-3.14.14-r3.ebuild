@@ -118,6 +118,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	use kernel_linux && udev_reload
+
 	tmpfiles_process ${PN}-tmpfiles.conf
 
 	if use cgi ; then
@@ -146,4 +148,8 @@ pkg_postinst() {
 		elog "connected to the machine, you can point them to the devices"
 		elog "in /dev/apcups/by-id directory."
 	fi
+}
+
+pkg_postrm() {
+	use kernel_linux && udev_reload
 }

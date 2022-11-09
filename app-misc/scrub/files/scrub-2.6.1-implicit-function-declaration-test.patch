@@ -1,0 +1,22 @@
+https://github.com/chaos/scrub/commit/188d999e2fb038dc702b47750d235ffd284dd518
+
+From 188d999e2fb038dc702b47750d235ffd284dd518 Mon Sep 17 00:00:00 2001
+From: Jim Garlick <garlick.jim@gmail.com>
+Date: Wed, 21 Jul 2021 13:09:57 -0700
+Subject: [PATCH] test: fix missing include in test program
+
+Problem: tgetsize emits a compiler warning because
+strerror() is not defined.
+
+Include string.h to get the definition of strerror.
+--- a/test/tgetsize.c
++++ b/test/tgetsize.c
+@@ -20,6 +20,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <libgen.h>
++#include <string.h>
+ 
+ #include "getsize.h"
+ 
+

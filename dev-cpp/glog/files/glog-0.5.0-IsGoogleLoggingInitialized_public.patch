@@ -2,8 +2,8 @@ https://github.com/google/glog/issues/125
 https://github.com/google/glog/pull/651
 https://github.com/google/glog/commit/81e0d616edeb73cbd06d6c40bc4f90593ac0c5d1
 
---- /src/glog/logging.h.in
-+++ /src/glog/logging.h.in
+--- a/src/glog/logging.h.in
++++ b/src/glog/logging.h.in
 @@ -594,6 +594,9 @@
                                              void* prefix_callback_data = NULL);
  #endif
@@ -14,8 +14,8 @@ https://github.com/google/glog/commit/81e0d616edeb73cbd06d6c40bc4f90593ac0c5d1
  // Shutdown google's logging library.
  GOOGLE_GLOG_DLL_DECL void ShutdownGoogleLogging();
  
---- /src/logging_custom_prefix_unittest.cc
-+++ /src/logging_custom_prefix_unittest.cc
+--- a/src/logging_custom_prefix_unittest.cc
++++ b/src/logging_custom_prefix_unittest.cc
 @@ -221,11 +221,15 @@
    LogWithLevels(0, 0, 0, 0);  // simulate "before global c-tors"
    const string early_stderr = GetCapturedTestStderr();
@@ -43,8 +43,8 @@ https://github.com/google/glog/commit/81e0d616edeb73cbd06d6c40bc4f90593ac0c5d1
  }
  
  _START_GOOGLE_NAMESPACE_
---- /src/logging_unittest.cc
-+++ /src/logging_unittest.cc
+--- a/src/logging_unittest.cc
++++ b/src/logging_unittest.cc
 @@ -197,8 +197,12 @@
    LogWithLevels(0, 0, 0, 0);  // simulate "before global c-tors"
    const string early_stderr = GetCapturedTestStderr();
@@ -69,8 +69,8 @@ https://github.com/google/glog/commit/81e0d616edeb73cbd06d6c40bc4f90593ac0c5d1
  }
  
  _START_GOOGLE_NAMESPACE_
---- /src/utilities.cc
-+++ /src/utilities.cc
+--- a/src/utilities.cc
++++ b/src/utilities.cc
 @@ -62,6 +62,10 @@
  
  static const char* g_program_invocation_short_name = NULL;
@@ -93,8 +93,8 @@ https://github.com/google/glog/commit/81e0d616edeb73cbd06d6c40bc4f90593ac0c5d1
  #ifdef OS_WINDOWS
  struct timeval {
    long tv_sec, tv_usec;
---- /src/utilities.h
-+++ /src/utilities.h
+--- a/src/utilities.h
++++ b/src/utilities.h
 @@ -163,8 +163,6 @@
  
  const char* ProgramInvocationShortName();

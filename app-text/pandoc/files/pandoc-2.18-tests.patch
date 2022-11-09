@@ -1,0 +1,79 @@
+From 9aff86143e12e22cec152fd08ec8b68ee75ccafa Mon Sep 17 00:00:00 2001
+From: John MacFarlane <jgm@berkeley.edu>
+Date: Tue, 31 May 2022 19:49:27 -0700
+Subject: [PATCH] Require skylighting 0.12.3.1 and update tests.
+
+---
+ pandoc.cabal           | 4 ++--
+ stack.yaml             | 4 ++--
+ test/lhs-test.html     | 4 ++--
+ test/lhs-test.html+lhs | 4 ++--
+ test/lhs-test.latex    | 4 ++--
+ 5 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/test/lhs-test.html b/test/lhs-test.html
+index 754b25e1f570..85e5d785d14a 100644
+--- a/test/lhs-test.html
++++ b/test/lhs-test.html
+@@ -190,7 +190,7 @@
+     code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+     code span.at { color: #7d9029; } /* Attribute */
+     code span.bn { color: #40a070; } /* BaseN */
+-    code span.bu { } /* BuiltIn */
++    code span.bu { color: #008000; } /* BuiltIn */
+     code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+     code span.ch { color: #4070a0; } /* Char */
+     code span.cn { color: #880000; } /* Constant */
+@@ -203,7 +203,7 @@
+     code span.ex { } /* Extension */
+     code span.fl { color: #40a070; } /* Float */
+     code span.fu { color: #06287e; } /* Function */
+-    code span.im { } /* Import */
++    code span.im { color: #008000; font-weight: bold; } /* Import */
+     code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+     code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+     code span.op { color: #666666; } /* Operator */
+diff --git a/test/lhs-test.html+lhs b/test/lhs-test.html+lhs
+index 7198397d8f45..32e0baf4d7e2 100644
+--- a/test/lhs-test.html+lhs
++++ b/test/lhs-test.html+lhs
+@@ -190,7 +190,7 @@
+     code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+     code span.at { color: #7d9029; } /* Attribute */
+     code span.bn { color: #40a070; } /* BaseN */
+-    code span.bu { } /* BuiltIn */
++    code span.bu { color: #008000; } /* BuiltIn */
+     code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+     code span.ch { color: #4070a0; } /* Char */
+     code span.cn { color: #880000; } /* Constant */
+@@ -203,7 +203,7 @@
+     code span.ex { } /* Extension */
+     code span.fl { color: #40a070; } /* Float */
+     code span.fu { color: #06287e; } /* Function */
+-    code span.im { } /* Import */
++    code span.im { color: #008000; font-weight: bold; } /* Import */
+     code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+     code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+     code span.op { color: #666666; } /* Operator */
+diff --git a/test/lhs-test.latex b/test/lhs-test.latex
+index 49521d3c1522..435d1dfefb07 100644
+--- a/test/lhs-test.latex
++++ b/test/lhs-test.latex
+@@ -44,7 +44,7 @@
+ \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+ \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+ \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+-\newcommand{\BuiltInTok}[1]{#1}
++\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+ \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+ \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+ \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+@@ -57,7 +57,7 @@
+ \newcommand{\ExtensionTok}[1]{#1}
+ \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+ \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+-\newcommand{\ImportTok}[1]{#1}
++\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+ \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+ \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+ \newcommand{\NormalTok}[1]{#1}

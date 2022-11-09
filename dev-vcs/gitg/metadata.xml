@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>mgorny@gentoo.org</email>
-		<name>Michał Górny</name>
-	</maintainer>
-	<longdescription lang="en">
-		gitg is a graphical user interface for git. It aims at being a small,
-		fast and convenient tool to visualize the history of git repositories.
-		Besides visualization, gitg also provides several utilities to manage your
-		repository and commit your work.
-	</longdescription>
-	<use>
-		<flag name="glade">Install a glade catalog file</flag>
-		<flag name="python">Install Python bindings for those plugins requiring it.</flag>
-	</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
+  <longdescription lang="en">
+    gitg is a graphical user interface for git. It aims at being a small,
+    fast and convenient tool to visualize the history of git repositories.
+    Besides visualization, gitg also provides several utilities to manage your
+    repository and commit your work.
+  </longdescription>
+  <use>
+    <flag name="glade">Install a glade catalog file</flag>
+    <flag name="python">Install Python bindings for those plugins requiring it.</flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gitg</remote-id>
+  </upstream>
 </pkgmetadata>

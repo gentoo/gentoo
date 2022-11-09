@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit autotools
 ZLIB_PV=1.2.3
 ZLIB_P="zlib-${ZLIB_PV}"
 
-DESCRIPTION="Partial/differential file download client over HTTP which uses the rsync algorithm"
+DESCRIPTION="Partial/differential file download client over HTTP using the rsync algorithm"
 HOMEPAGE="http://zsync.moria.org.uk/"
 SRC_URI="
 	http://zsync.moria.org.uk/download/${P}.tar.bz2

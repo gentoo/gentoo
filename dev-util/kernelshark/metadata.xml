@@ -5,6 +5,10 @@
     <email>chutzpah@gentoo.org</email>
     <name>Patrick McLean</name>
   </maintainer>
+  <maintainer type="person">
+    <email>dlan@gentoo.org</email>
+    <name>Yixun Lan</name>
+  </maintainer>
   <use>
     <flag name="custom-optimization">Build with user-specified compiler optimizations
       (-Os, -O0, -O1, -O2, -O3) from CFLAGS</flag>

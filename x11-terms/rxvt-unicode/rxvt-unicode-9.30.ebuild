@@ -18,9 +18,6 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="24-bit-color 256-color blink fading-colors +font-styles gdk-pixbuf iso14755 +mousewheel
 	perl startup-notification unicode3 xft"
 
-# Bug #830329
-REQUIRED_USE="perl? ( fading-colors )"
-
 RDEPEND=">=sys-libs/ncurses-5.7-r6:=
 	dev-libs/libptytty
 	media-libs/fontconfig
@@ -113,5 +110,8 @@ pkg_postinst() {
 		ewarn "You may or may not encounter visual glitches or stability issues. When in doubt,"
 		ewarn "rebuild =${CATEGORY}/${PF} with USE=-24-bit-color (the default setting)."
 		ewarn
+	fi
+	if use perl && ! use fading-colors; then
+		ewarn "Note that some of the Perl plug-ins bundled with ${PN} will fail to load without USE=fading-colors"
 	fi
 }

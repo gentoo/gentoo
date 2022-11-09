@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="doctests">Run doctests as part of test suite.
+Use with: @--write-ghc-environment-files=always@.</flag>
+		<flag name="executable">Build the unicode-collate executable.</flag>
+	</use>
+</pkgmetadata>

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
@@ -20,5 +20,5 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	>=dev-python/spyder-5.2.0[${PYTHON_USEDEP}]
 	>=dev-python/terminado-0.13.1[${PYTHON_USEDEP}]
-	www-servers/tornado[${PYTHON_USEDEP}]
+	dev-python/tornado[${PYTHON_USEDEP}]
 "

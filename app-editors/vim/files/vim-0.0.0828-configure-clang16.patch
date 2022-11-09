@@ -1,0 +1,28 @@
+https://github.com/vim/vim/pull/11496
+
+From 360b569f86b851c37e32b7cfaec079823188ff27 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 4 Nov 2022 03:18:23 +0000
+Subject: [PATCH] configure.ac: Fix -Wimplicit-int
+
+Clang 16 makes -Wimplicit-int an error by default. Fixes errors like:
+```
+error: type specifier missing, defaults to 'int'; ISO C99 and later do not support implicit int [-Werror,-Wimplicit-int]
+```
+
+We already use proper declarations with every other test anyway, so
+let's be consistent.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/configure.ac
++++ b/src/configure.ac
+@@ -3654,7 +3654,7 @@ dnl check if struct sigcontext is defined (used for SGI only)
+ AC_MSG_CHECKING(for struct sigcontext)
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([
+ #include <signal.h>
+-test_sig()
++int test_sig()
+ {
+     struct sigcontext *scont;
+     scont = (struct sigcontext *)0;
+

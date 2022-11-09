@@ -64,6 +64,10 @@ src_prepare() {
 	export ac_cv_path_install="${S}/_install"
 }
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.1-musl-wint-t-fix.patch
+)
+
 src_configure() {
 	econf \
 		--cache-file="${S}"/config.cache \

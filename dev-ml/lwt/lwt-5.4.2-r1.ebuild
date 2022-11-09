@@ -27,6 +27,14 @@ BDEPEND="
 	dev-ml/cppo
 	dev-ml/findlib"
 
+src_prepare() {
+	sed -i \
+		-e "s: seq::" \
+		src/core/dune \
+		die
+	default
+}
+
 src_install() {
 	local i
 	for i in lwt lwt_luv lwt_ppx lwt_react ; do

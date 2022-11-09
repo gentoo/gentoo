@@ -1,0 +1,29 @@
+From 8eb7563204e6c9b3a1fcff453c08ed4824b20bc6 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Wed, 13 Jul 2022 13:52:18 +0300
+Subject: [PATCH] Added compatibility option for recent Rails
+
+Rails 5.2.8.1, 6.0.5.1, 6.1.6.1 and 7.0.3.1 fixes CVE-2022-32224 which
+breaks compatibility with old implementation of YAML.unsafe_load.
+
+Added `config.active_record.yaml_column_permitted_classes = [Symbol]` to
+configuration of application to workaround issue.
+---
+ config/application.rb | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/config/application.rb b/config/application.rb
+index bba468f38..78557d376 100644
+--- a/config/application.rb
++++ b/config/application.rb
+@@ -32,6 +32,7 @@ module RedmineApp
+ 
+     config.active_record.store_full_sti_class = true
+     config.active_record.default_timezone = :local
++    config.active_record.yaml_column_permitted_classes = [Symbol]
+ 
+     config.action_mailer.delivery_job = "ActionMailer::MailDeliveryJob"
+ 
+-- 
+2.35.1
+

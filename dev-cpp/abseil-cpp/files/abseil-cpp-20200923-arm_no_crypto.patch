@@ -5,8 +5,8 @@ extensions (by passing -DABSL_ARCH_ARM_NO_CRYPTO). This could
 be done by the build system instead in future.
 
 https://bugs.gentoo.org/778926
---- /absl/random/internal/randen_hwaes.cc
-+++ /absl/random/internal/randen_hwaes.cc
+--- a/absl/random/internal/randen_hwaes.cc
++++ b/absl/random/internal/randen_hwaes.cc
 @@ -50,8 +50,11 @@
      (defined(__ARM_NEON) && defined(__ARM_FEATURE_CRYPTO))
  #define ABSL_RANDEN_HWAES_IMPL 1

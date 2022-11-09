@@ -1,5 +1,5 @@
---- /include/freenet/fcpv2.h	2016-06-04 18:16:06.000000000 +0200
-+++ /include/freenet/fcpv2.h.new	2021-10-29 11:38:04.000000000 +0200
+--- a/include/freenet/fcpv2.h
++++ b/include/freenet/fcpv2.h
 @@ -33,7 +33,7 @@
  #endif
  

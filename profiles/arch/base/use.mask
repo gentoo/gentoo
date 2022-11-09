@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2022-09-29)
+# Pulls in dev-util/google-perftools, which is arch-specific
+# Unmask on supported arches.
+tcmalloc
+
 # Michał Górny <mgorny@gentoo.org> (2021-01-07)
 # Prebuilt kernels are not supported on all architectures.
 dist-kernel
@@ -23,9 +28,6 @@ libvirt
 # only support amd64 and x86.
 firebird
 oci8
-
-# cilk has been ported only to x86 systems
-cilk
 
 # cuda/NVENC only works on amd64/arm64
 cuda
@@ -71,11 +73,13 @@ cpu_flags_x86_ssse3
 cpu_flags_x86_xop
 
 # ppc arch specific USE flags
-altivec
+cpu_flags_ppc_altivec
+cpu_flags_ppc_vsx
+cpu_flags_ppc_vsx2
+cpu_flags_ppc_vsx3
 ppcsha1
 
 # mips arch specific USE flags
-fixed-point
 loongson2f
 mipsdspr1
 mipsdspr2
@@ -109,9 +113,6 @@ cpu_flags_arm_vfpv3
 cpu_flags_arm_vfpv4
 cpu_flags_arm_vfp-d32
 
-# [old] arm arch specific USE flags
-neon
-
 # nVidia XvMC requires nvidia-drivers/nvidia-legacy-drivers
 nvidia
 
@@ -126,6 +127,7 @@ video_cards_geode
 input_devices_vmmouse
 video_cards_ast
 video_cards_crocus
+video_cards_d3d12
 video_cards_i915
 video_cards_i965
 video_cards_intel
@@ -211,7 +213,10 @@ sbcl
 systemd
 
 # Mike Gilbert <floppym@gentoo.org> (2014-10-19)
+# Requires the following packages to be keyworded/stable:
 # sys-libs/libapparmor
+# sys-apps/apparmor
+# sys-apps/apparmor-utils
 apparmor
 
 # Mask flags that correspond to all possible ARCH values.

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription lang="en">
-		The Eye of GNOME image viewer is the official image viewer for the GNOME
-		Desktop environment. With it, you can view single image files, as well 
-		as large image collections.
-	</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription lang="en">
+    The Eye of GNOME image viewer is the official image viewer for the GNOME
+    Desktop environment. With it, you can view single image files, as well 
+    as large image collections.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/eog</remote-id>
+  </upstream>
 </pkgmetadata>

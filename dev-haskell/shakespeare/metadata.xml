@@ -5,17 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Shakespeare is a template family for type-safe, efficient templates with simple variable interpolation . Shakespeare templates can be used inline with a quasi-quoter or in an external file. Shakespeare interpolates variables according to the type being inserted.
-
-		Note there is no dependency on haskell-src-extras.
-
-		packages that use this: shakespeare-js, shakespeare-css, shakespeare-interpolated, hamlet, and xml-hamlet
-		Please see the documentation at &lt;http://docs.yesodweb.com/book/hamlet/&gt; for more details.
-	</longdescription>
-	<use>
-		<flag name="test-export">Test export.</flag>
-		<flag name="test-coffee">Render tests through coffeescript render function.</flag>
-		<flag name="test-roy">Render tests through roy render function.</flag>
-	</use>
 </pkgmetadata>

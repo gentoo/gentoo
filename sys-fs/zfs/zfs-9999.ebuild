@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools bash-completion-r1 dist-kernel-utils distutils-r1 flag-o-matic linux-info pam systemd udev usr-ldscript
 
@@ -74,7 +74,6 @@ RDEPEND="${DEPEND}
 	rootfs? (
 		app-arch/cpio
 		app-misc/pax-utils
-		!<sys-kernel/genkernel-3.5.1.1
 	)
 	test-suite? (
 		app-shells/ksh
@@ -99,6 +98,10 @@ REQUIRED_USE="
 "
 
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/2.1.5-dracut-zfs-missing.patch
+)
 
 pkg_pretend() {
 	use rootfs || return 0
@@ -183,6 +186,13 @@ src_configure() {
 	use custom-cflags || strip-flags
 	use minimal || python_setup
 
+	# All the same issue:
+	# Segfaults w/ GCC 12 and 'zfs send'
+	# bug #856373
+	# https://github.com/openzfs/zfs/issues/13620
+	# https://github.com/openzfs/zfs/issues/13605
+	append-flags -fno-tree-vectorize
+
 	local myconf=(
 		--bindir="${EPREFIX}/bin"
 		--enable-shared
@@ -251,6 +261,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	# we always need userspace utils in sync with zfs-kmod
 	# so force initrd update for userspace as well, to avoid
 	# situation when zfs-kmod trigger initrd rebuild before
@@ -293,6 +305,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	udev_reload
+
 	if ! use kernel-builtin && [[ ${PV} == "9999" ]]; then
 		remove_moduledb
 	fi

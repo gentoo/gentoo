@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,7 @@ BDEPEND="
 "
 
 python_check_deps() {
-	has_version "ros-meta/ament_cmake[${PYTHON_USEDEP}]"
+	python_has_version "ros-meta/ament_cmake[${PYTHON_USEDEP}]"
 }
 
 src_configure() {

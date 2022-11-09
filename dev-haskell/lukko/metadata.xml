@@ -5,43 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="ofd-locking">Enable open file descriptor locking. Available on Linux (kernel 3.15, released Jun 8, 2014).</flag>
-	</use>
-	<longdescription>
-		This package provides access to platform dependent file locking APIs:
-		
-		* Open file descriptor locking on Linux ("Lukko.OFD")
-		* @flock@ locking on unix platforms ("Lukko.FLock")
-		* Windows locking @LockFileEx@ ("Lukko.Windows")
-		* No-op locking, which throws exceptions ("Lukko.NoOp")
-		* "Lukko" module exports the best option for the target platform with uniform API.
-		
-		There are alternative file locking packages:
-		
-		* "GHC.IO.Handle.Lock" in @base &gt;= 4.10@ is good enough for most use cases.
-		However, uses only 'Handle's so these locks cannot be used for intra-process locking.
-		(You should use e.g. 'MVar' in addition).
-		
-		* &lt;https://hackage.haskell.org/package/filelock filelock&gt; doesn't support OFD locking.
-		
-		/Lukko/ means lock in Finnish.
-		
-		Submodules "Lukko.OFD", "Lukko.Windows" etc are available based on following conditions.
-		
-		@
-		if os(windows)
-		\  cpp-options: -DHAS_WINDOWS_LOCK
-		
-		elif (os(linux) &amp;&amp; flag(ofd-locking))
-		\  cpp-options: -DHAS_OFD_LOCKING
-		\  cpp-options: -DHAS_FLOCK
-		
-		elif !(os(solaris) || os(aix))
-		\  cpp-options: -DHAS_FLOCK
-		@
-		
-		"Lukko.FLock" is available on not (Windows or Solaris or AIX).
-		"Lukko.NoOp" is always available.
-	</longdescription>
 </pkgmetadata>

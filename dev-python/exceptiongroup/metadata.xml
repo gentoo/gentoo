@@ -4,6 +4,7 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">agronholm/exceptiongroup</remote-id>
 		<remote-id type="pypi">exceptiongroup</remote-id>

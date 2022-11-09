@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>gnome@gentoo.org</email>
-    <name>Gentoo GNOME Desktop</name>
+  <maintainer type="person" proxied="yes">
+    <email>igor.v.kovalenko@gmail.com</email>
+    <name>Igor V. Kovalenko</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>sam@gentoo.org</email>
+    <name>Sam James</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>leio@gentoo.org</email>
+    <name>Mart Raudsepp</name>
   </maintainer>
   <use>
     <flag name="X">
@@ -36,7 +44,10 @@
     </flag>
     <flag name="asyncns">Use libasyncns for asynchronous name resolution.</flag>
     <flag name="equalizer">
-      Enable the equalizer module (requires <pkg>sci-libs/fftw</pkg>).
+      Enable the equalizer module (requires <pkg>sci-libs/fftw</pkg> and <pkg>sys-apps/dbus</pkg>).
+    </flag>
+    <flag name="fftw">
+      Enable the virtual surround sink module (requires <pkg>sci-libs/fftw</pkg>).
     </flag>
     <flag name="ssl">
       Use <pkg>dev-libs/openssl</pkg> to provide support for RAOP
@@ -56,15 +67,12 @@
       Build with <pkg>sys-apps/systemd</pkg> support to replace standalone
       ConsoleKit.
     </flag>
-    <flag name="native-headset">
-      Build with native HSP backend for bluez 5.
-    </flag>
+    <flag name="valgrind">Compile in valgrind memory hints</flag>
     <flag name="ofono-headset">
-      Build with oFono HFP backend for bluez 5, requires <pkg>net-misc/ofono</pkg>.
+      Build with optional oFono HFP backend for bluez 5, requires <pkg>net-misc/ofono</pkg>.
     </flag>
     <flag name="gstreamer">
-      Build with support for gstreamer including ability to use bluetooth codecs.
-      For bluetooth codecs see USE ldac and aptx.
+      Build GStreamer-based RTP protocol module which supports more advanced RTP features like OPUS payload encoding.
     </flag>
     <flag name="aptx">
       aptX (HD) over Bluetooth (many Android compatible headphones), requires <pkg>media-plugins/gst-plugins-openaptx</pkg>.

@@ -5,6 +5,7 @@ EAPI=8
 
 MY_PN="${PN%-annotations}"
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="org.codehaus.mojo:animal-sniffer-annotations:1.15"
 
 inherit java-pkg-2 java-pkg-simple
 

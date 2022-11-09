@@ -18,10 +18,10 @@ SRC_URI="https://github.com/google/guava/archive/v${PV}.tar.gz -> guava-${PV}.ta
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # error: package com.google.common.truth does not exist
-RESRTICT="test"
+RESTRICT="test"
 
 # Common dependencies
 # POM: ${PN}

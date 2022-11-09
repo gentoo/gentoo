@@ -6,7 +6,10 @@ EAPI=7
 inherit flag-o-matic
 
 DESCRIPTION="Transparent SSL/TLS interception"
-HOMEPAGE="https://www.roe.ch/SSLsplit"
+HOMEPAGE="
+	https://www.roe.ch/SSLsplit
+	https://github.com/droe/sslsplit
+"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -23,7 +26,7 @@ else
 fi
 
 RDEPEND="
-	dev-libs/libevent[ssl,threads]
+	dev-libs/libevent:=[ssl,threads]
 	dev-libs/openssl:0=
 	net-libs/libnet:1.1
 	net-libs/libpcap
@@ -31,6 +34,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${P}-openssl3.patch"
+	"${FILESDIR}/${P}-libnet-pkgconfig.patch"
+	"${FILESDIR}/${P}-libcrypto-pkgconfig.patch"
+)
 
 src_prepare() {
 	default

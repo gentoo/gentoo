@@ -5,10 +5,6 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>robbat2@gentoo.org</email>
-		<name>Robin H. Johnson</name>
-	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>agk@redhat.com</email>
 		<name>Alasdair Kergon</name>
@@ -17,10 +13,11 @@
 	<use>
 		<flag name="lvm2create-initrd">Install lvm2create_initrd script and pull in <pkg>sys-apps/makedev</pkg> for the /sbin/MAKEDEV command</flag>
 		<flag name="thin">Support for thin volumes</flag>
-		<flag name="device-mapper-only">Build only device-mapper and not the rest of LVM2 (UNSUPPORTED)</flag>
+		<flag name="lvm">Build all of LVM2, not just device-mapper</flag>
 		<flag name="sanlock">Enable lvmlockd with support for sanlock</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:heinz_mauelshagen:lvm2</remote-id>
+		<remote-id type="github">lvmteam/lvm2</remote-id>
 	</upstream>
 </pkgmetadata>

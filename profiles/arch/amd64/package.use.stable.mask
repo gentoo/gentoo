@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
+# Dependency media-libs/intel-hybrid-codec-driver is only available on unstable
+# branch
+media-libs/libva-intel-driver hybrid
+
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # needs stabilizing
 media-video/ffmpeg vmaf
@@ -80,7 +85,7 @@ net-misc/chrony html
 
 # Adam Feldman <NP-Hardass@gentoo.org> (2017-09-27)
 # patchset variants are not stable
-virtual/wine staging
+virtual/wine proton staging
 
 # Tim Harder <radhermit@gentoo.org> (2017-09-11)
 # Pulls in dev-ruby/asciidoctor which has too large of a ruby testing

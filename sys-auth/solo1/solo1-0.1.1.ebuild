@@ -19,7 +19,7 @@ KEYWORDS="amd64 ~riscv"
 RDEPEND=">=dev-python/click-7.1.0[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/ecdsa[${PYTHON_USEDEP}]
-	>=dev-python/fido2-0.9.1[${PYTHON_USEDEP}]
+	dev-python/fido2:0/0.9[${PYTHON_USEDEP}]
 	dev-python/intelhex[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
 	dev-python/pyusb[${PYTHON_USEDEP}]

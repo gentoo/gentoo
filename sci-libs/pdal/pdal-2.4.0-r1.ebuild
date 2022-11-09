@@ -11,7 +11,7 @@ SRC_URI="https://github.com/PDAL/PDAL/releases/download/${PV}/PDAL-${PV}-src.tar
 
 LICENSE="BSD"
 SLOT="0/14"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="postgres test"
 RESTRICT="!test? ( test )"
 
@@ -48,7 +48,7 @@ src_configure() {
 
 src_test() {
 	local myctestargs=(
-		--exclude-regex '(pgpointcloudtest|pdal_io_bpf_base_test|pdal_io_bpf_zlib_test|pdal_filters_overlay_test|pdal_filters_stats_test|pdal_app_plugin_test|pdal_merge_test)'
+		--exclude-regex '(pgpointcloudtest|pdal_io_bpf_base_test|pdal_io_bpf_zlib_test|pdal_filters_overlay_test|pdal_filters_stats_test|pdal_app_plugin_test|pdal_merge_test|pdal_filters_colorinterp_test|pdal_io_optech_test|pdal_utils_test)'
 		--output-on-failure
 	)
 

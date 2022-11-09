@@ -17,7 +17,7 @@ SRC_URI="https://repo1.maven.org/maven2/com/google/code/findbugs/${PN}/${PV}/${P
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 # Common dependencies
 # POM: ${P}.pom

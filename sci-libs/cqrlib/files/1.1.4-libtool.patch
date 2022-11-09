@@ -1,0 +1,105 @@
+Bug: https://bugs.gentoo.org/778911
+Upstream-PR: https://github.com/yayahjb/cqrlib/pull/1
+
+From 23f422c3049185ad0f24b9f0317b52a21ea771f3 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 18 Jun 2022 23:02:44 -0700
+Subject: [PATCH] build: Add minimal configure.ac
+
+When building with slibtool using the rlibtool symlink the build will
+fail when it fails to find the generated libtool. This file is required
+for rlibtool because it is used to determine if building shared or
+static.
+
+This will require these commands to build:
+
+  autoreconf -fi
+  ./configure
+  make
+
+Gentoo Bug: https://bugs.gentoo.org/778911
+---
+ Makefile => Makefile.in | 29 +++++++++++++----------------
+ configure.ac            | 10 ++++++++++
+ 2 files changed, 23 insertions(+), 16 deletions(-)
+ rename Makefile => Makefile.in (97%)
+ create mode 100644 configure.ac
+
+diff --git a/Makefile b/Makefile.in
+similarity index 97%
+rename from Makefile
+rename to Makefile.in
+index 555e370..fe556ff 100644
+--- a/Makefile
++++ b/Makefile.in
+@@ -40,41 +40,38 @@
+ 
+ # Version string
+ VERSION = 3:0:1
+-RELEASE = 1.1.0
+-
++RELEASE = @PACKAGE_VERSION@
+ 
+ #
+ # Compiler and compilation flags
+ #
+-CC	= gcc
+-CXX = g++
++CC = @CC@
++CXX = @CXX@
+ CFLAGS  = -g -O2  -Wall -ansi -pedantic
+ CPPFLAGS = $(CFLAGS) -DCQR_NOCCODE=1
+ 
++# Build directory
++top_builddir = @top_builddir@
++
+ #
+ # libtool path if system default is not suitable
+ #
+-#LIBTOOL = $(HOME)/bin/libtool
+-ifndef LIBTOOL
+-  LIBTOOL = libtool
+-endif
++LIBTOOL = @LIBTOOL@
+ 
+ #
+ # If local headers must be quoted uncomment the next line
+ #
+ #USE_LOCAL_HEADERS = 1
+ 
+-
+ #
+ # Directories
+ #
+-ROOT     = .
+-LIB      = $(ROOT)/lib
+-BIN      = $(ROOT)/bin
+-SRC      = $(ROOT)
+-INC      = $(ROOT)
+-EXAMPLES = $(ROOT)
+-TESTDATA = $(ROOT)
++LIB      = $(top_builddir)/lib
++BIN      = $(top_builddir)/bin
++SRC      = $(top_builddir)
++INC      = $(top_builddir)
++EXAMPLES = $(top_builddir)
++TESTDATA = $(top_builddir)
+ #INSTALLDIR = /usr/local
+ INSTALLDIR  = $(HOME)
+ 
+diff --git a/configure.ac b/configure.ac
+new file mode 100644
+index 0000000..6af5b28
+--- /dev/null
++++ b/configure.ac
+@@ -0,0 +1,10 @@
++AC_INIT([cqrlib], [1.1.4])
++AC_CONFIG_FILES([Makefile])
++
++LT_INIT
++
++AC_PROG_CXX
++
++AC_SUBST([top_builddir], [$abs_builddir])
++
++AC_OUTPUT

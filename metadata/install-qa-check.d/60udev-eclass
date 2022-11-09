@@ -54,6 +54,11 @@ udev_rules_check() {
 			eqawarn "QA Notice: package is installing udev rules without calling"
 			eqawarn "udev_reload in pkg_postinst phase"
 		fi
+		local pkg_postrm_body="$(declare -fp pkg_postrm 2>&1)"
+		if [[ ! ${pkg_postrm_body} == *udev_reload* ]] ; then
+			eqawarn "QA Notice: package is installing udev rules without calling"
+			eqawarn "udev_reload in pkg_postrm phase"
+		fi
 	fi
 }
 

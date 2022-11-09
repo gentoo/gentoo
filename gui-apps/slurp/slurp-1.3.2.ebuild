@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/emersion/${PN}.git"
 else
 	SRC_URI="https://github.com/emersion/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
@@ -37,7 +37,6 @@ fi
 src_configure() {
 	local emesonargs=(
 		$(meson_feature man man-pages)
-		"-Dwerror=false"
 	)
 	meson_src_configure
 }

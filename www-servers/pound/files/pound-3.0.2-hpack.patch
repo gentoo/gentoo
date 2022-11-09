@@ -1,0 +1,21 @@
+--- a/src/hpack.c
++++ b/src/hpack.c
+@@ -69,9 +69,6 @@ static size_t	 hbuf_left(struct hbuf *);
+ 
+ static struct hpack	 hpack_global;
+ 
+-#ifdef  __GLIBC__
+-/* these functions are available on BSD, but not on Linux */
+-
+ #include    <stdlib.h>
+ 
+ void *
+@@ -100,8 +97,6 @@ freezero(void *ptr, size_t size)
+     return;
+ }
+ 
+-#endif
+-
+ int
+ hpack_init(void)
+ {

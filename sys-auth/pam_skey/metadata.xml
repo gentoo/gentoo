@@ -4,7 +4,4 @@
   <maintainer type="person">
     <email>ulm@gentoo.org</email>
   </maintainer>
-  <upstream>
-    <remote-id type="freshmeat">pam_skey</remote-id>
-  </upstream>
 </pkgmetadata>

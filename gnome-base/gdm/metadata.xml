@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnome@gentoo.org</email>
-	<name>Gentoo GNOME Desktop</name>
-</maintainer>
-<use>
-	<flag name="bluetooth-sound">Allow loading of bluetooth sound modules.
-		This may be necessary for accessibility screen readers, but may cause bluetooth
-		sound issues for users logging in.</flag>
-	<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session management</flag>
-	<flag name="fprint">Enables experimental fingerprint authentication using
-		<pkg>sys-auth/fprintd</pkg></flag>
-	<flag name="plymouth">Enable support for smooth transition from
-		<pkg>sys-boot/plymouth</pkg></flag>
-</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="bluetooth-sound">Allow loading of bluetooth sound modules. This may be necessary for accessibility screen readers, but may cause bluetooth sound issues for users logging in.</flag>
+    <flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session management</flag>
+    <flag name="fprint">Enables experimental fingerprint authentication using <pkg>sys-auth/fprintd</pkg></flag>
+    <flag name="plymouth">Enable support for smooth transition from <pkg>sys-boot/plymouth</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/gdm</remote-id>
+  </upstream>
 </pkgmetadata>

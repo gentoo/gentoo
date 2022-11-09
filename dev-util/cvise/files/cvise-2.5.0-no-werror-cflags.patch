@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/867424
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -146,13 +146,13 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
+     OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+   # XXX figure out how to get "-std=c++14 -fno-rtti" from LLVM.  That's how we
+   # get those options in the Automake path...
+-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror -Wno-error=maybe-uninitialized")
+-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -fno-rtti -fno-strict-aliasing -Wall -Wextra -Wno-unused-parameter -Werror -Wno-error=maybe-uninitialized")
++  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wno-error=maybe-uninitialized")
++  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -fno-rtti -fno-strict-aliasing -Wall -Wextra -Wno-unused-parameter -Wno-error=maybe-uninitialized")
+   if(SUPPORTS_FVISIBILITY_INLINES_HIDDEN_FLAG)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+   endif()
+-  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
+-  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELEASE} -O3")
++  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
++  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELEASE}")
+ endif()
+ 
+ ###############################################################################
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 261a0fb..cbaebc3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -151,8 +151,6 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
+   if(SUPPORTS_FVISIBILITY_INLINES_HIDDEN_FLAG)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+   endif()
+-  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+-  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELEASE}")
+ endif()
+ 
+ ###############################################################################

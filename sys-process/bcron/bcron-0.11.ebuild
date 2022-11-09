@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cron python-any-r1 toolchain-funcs
 
@@ -13,7 +13,7 @@ SRC_URI="https://untroubled.org/bcron/archive/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~riscv x86"
+KEYWORDS="amd64 ~loong ~riscv x86"
 
 RDEPEND=">=dev-libs/bglibs-2.04
 	sys-apps/ucspi-unix

@@ -1,10 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-1 )
-inherit autotools lua-single
+LUA_REQ_USE="deprecated"
+inherit autotools flag-o-matic lua-single
 
 DESCRIPTION="Space adventure/combat game"
 HOMEPAGE="https://epiar.net/"
@@ -39,6 +40,14 @@ src_prepare() {
 	rm -r source/lua || die
 
 	eautoreconf
+}
+
+src_configure() {
+	# -DLUA_COMPAT_OPENLIB=1 is required to enable the
+	# deprecated (in 5.1) luaL_openlib API (#872803)
+	append-cppflags -DLUA_COMPAT_OPENLIB=1
+
+	default
 }
 
 src_install() {

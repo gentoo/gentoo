@@ -1,0 +1,25 @@
+diff --git a/tests/reg-packages.R b/tests/reg-packages.R
+index c9962ce..2d36d1e 100644
+--- a/tests/reg-packages.R
++++ b/tests/reg-packages.R
+@@ -260,7 +260,8 @@ stopifnot(exprs = {
+     (lenN <- length(print(iN <- grep("^[1-9][0-9]:", tlines)))) >= 2
+     iN - iw == seq_len(lenN) # these (3) lines come immediately after 'Warning',
+     ## and "related" to the some 'missing .. paren' above:
+-    8 <= print(iw - i) & iw - i <= 20 # see ~14
++    !is.na(ierr <- as.integer(substr(print(tlines[iN[1]]), 1, 2)))
++    8 <= print(ierr - i) & ierr - i <= 14 # see 11
+ }) ## failed in R <= 4.1.1
+ 
+ 
+@@ -495,8 +496,8 @@ checkMatrix(ap, 4)
+ 
+ 
+ ## clean up
+-rmL <- c("myLib", if(has.symlink) "myLib_2", "myTst", file.path(pkgPath),
+-         oldpkgdir, newpkgdir, repodir, backupPfiles)
++rmL <- c("myLib", if(has.symlink) "myLib_2", "myTst", "myTst2",
++         "PR17501.Rcheck")
+ if(do.cleanup) {
+     for(nm in rmL) unlink(nm, recursive = TRUE)
+ } else {

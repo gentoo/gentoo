@@ -1,0 +1,11 @@
+Upstream bundles python deps and uses same interpreter as meson,
+but we don't and need this to use the eclass' python3 instead.
+
+https://bugs.gentoo.org/731728
+--- a/meson.build
++++ b/meson.build
+@@ -323,3 +323,3 @@
+ thirdparty = meson.project_source_root()/'3rdparty'
+-python = import('python').find_installation()
++python = import('python').find_installation('python3')
+ python_env = environment()

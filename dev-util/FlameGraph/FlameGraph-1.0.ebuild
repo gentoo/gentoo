@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="Visualization of hierarchical data, especially pofiled stack traces"
+DESCRIPTION="Visualization of hierarchical data, especially profiled stack traces"
 HOMEPAGE="https://www.brendangregg.com/flamegraphs.html https://github.com/brendangregg/FlameGraph"
 
 if [[ ${PV} == "9999" ]]; then

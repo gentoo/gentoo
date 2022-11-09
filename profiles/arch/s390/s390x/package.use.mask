@@ -1,7 +1,16 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2022-06-18)
+# media-libs/librsvg not keyworded yet.
+media-libs/freetype svg
+media-libs/imlib2 svg
+
 # Sam James <sam@gentoo.org> (2021-02-05)
 # libpcre2 has JIT support for s390x (not s390)
 # but it doesn't seem to build right now?
 dev-libs/libpcre2 jit
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-06-28)
+# Fails to build
+=dev-libs/nettle-3.8* asm

@@ -7,8 +7,8 @@ inherit flag-o-matic toolchain-funcs
 
 IUSE=""
 DESCRIPTION="Netkit - timed"
-SRC_URI="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/${P}.tar.gz"
-HOMEPAGE="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/"
+HOMEPAGE="https://wiki.linuxfoundation.org/networking/netkit"
+SRC_URI="http://ftp.linux.org.uk/pub/linux/Networking/netkit/${P}.tar.gz"
 KEYWORDS="amd64 ~mips ppc ppc64 sparc x86"
 LICENSE="BSD GPL-2"
 SLOT="0"

@@ -28,18 +28,17 @@ RDEPEND="
 	dev-ros/ament_lint_cmake
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
+BDEPEND="${PYTHON_DEPS}
 	$(python_gen_any_dep '
 		dev-python/ament_package[${PYTHON_USEDEP}]
 		dev-python/catkin_pkg[${PYTHON_USEDEP}]
 		dev-ros/ament_lint_cmake[${PYTHON_USEDEP}]')
 	dev-ros/ament_cmake_test
 	dev-ros/ament_cmake_core
-	${PYTHON_DEPS}
 "
 
 python_check_deps() {
-	has_version "dev-python/ament_package[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/catkin_pkg[${PYTHON_USEDEP}]" && \
-		has_version "dev-ros/ament_lint_cmake[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/ament_package[${PYTHON_USEDEP}]" \
+		"dev-python/catkin_pkg[${PYTHON_USEDEP}]" \
+		"dev-ros/ament_lint_cmake[${PYTHON_USEDEP}]"
 }

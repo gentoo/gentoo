@@ -1,0 +1,33 @@
+From 9c7ac7061c5c85d63875eaee70793ba04334c1d0 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Fri, 16 Sep 2022 14:34:27 +0000
+Subject: [PATCH] Revert "Revert "Prevent panel going out of screen
+ boundaries""
+
+This reverts commit 17774bc4c673294a7c8a6e80660d83cce1ba8891
+
+There is still a known culprit (duplicate display names) so the hack shouldn't be reverted.
+
+CCBUG: 353975
+CCBUG: 438114
+---
+ shell/panelview.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/shell/panelview.cpp b/shell/panelview.cpp
+index b5c87bbf71..4be1e26ca4 100644
+--- a/shell/panelview.cpp
++++ b/shell/panelview.cpp
+@@ -859,6 +859,9 @@ void PanelView::moveEvent(QMoveEvent *ev)
+     updateEnabledBorders();
+     m_strutsTimer.start(STRUTSTIMERDELAY);
+     PlasmaQuick::ContainmentView::moveEvent(ev);
++    if (m_screenToFollow && !m_screenToFollow->geometry().contains(geometry())) {
++        positionPanel();
++    }
+ }
+ 
+ void PanelView::keyPressEvent(QKeyEvent *event)
+-- 
+GitLab
+

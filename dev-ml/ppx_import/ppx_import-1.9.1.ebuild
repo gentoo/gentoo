@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-ml/ppxlib:="
+RDEPEND=">=dev-ml/ppxlib-0.24:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (

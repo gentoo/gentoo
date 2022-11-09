@@ -31,18 +31,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1-fix-predefs.patch
 )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && ! use threads && tc-check-openmp
+}
+
 pkg_setup() {
-	if use openmp && ! use threads; then
-		if [[ "$(tc-getCC)" == *gcc ]] && ! tc-has-openmp; then
-			ewarn "OpenMP is not available in your current selected gcc"
-			die "need openmp capable gcc"
-		fi
-		CTHREADS="-D__OPENMP"
-		[[ "$(tc-getCC)" == *gcc ]] && LDTHREADS="-fopenmp"
-	else
-		CTHREADS="-D__PTHREAD"
-		LDTHREADS="-pthread"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && ! use threads && tc-check-openmp
 }
 
 src_prepare() {
@@ -68,6 +62,14 @@ src_prepare() {
 		-e '/:.*$(SUPERLULIB)/s|../lib/$(SUPERLULIB)||g' \
 		-e 's|../lib/$(SUPERLULIB)|-lsuperlu_mt|g' \
 		-i EXAMPLE/Makefile || die
+
+	if use openmp && ! use threads; then
+		CTHREADS="-D__OPENMP"
+		LDTHREADS="-fopenmp"
+	else
+		CTHREADS="-D__PTHREAD"
+		LDTHREADS="-pthread"
+	fi
 }
 
 src_compile() {

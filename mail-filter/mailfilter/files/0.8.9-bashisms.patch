@@ -1,0 +1,26 @@
+
+Fix configure bashisms with dash as /bin/sh as reported in
+https://github.com/gentoo/gentoo/pull/27134
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+
+--- mailfilter-0.8.9/configure	2022-09-04 12:23:29.000000000 +0200
++++ mailfilter-0.8.9-dash/configure	2022-09-17 19:12:32.174505949 +0200
+@@ -5322,7 +5322,7 @@ fi
+ done
+ test -n "$YACC" || YACC="yacc"
+ 
+-if test x"$YACC" == x"yacc"
++if test x"$YACC" = x"yacc"
+ then :
+   as_fn_error $? "Please install bison or byacc before configuring." "$LINENO" 5
+ fi
+@@ -5545,7 +5545,7 @@ fi
+ rm -f conftest.l $LEX_OUTPUT_ROOT.c
+ 
+ fi
+-if test x"$LEX" == x":"
++if test x"$LEX" = x":"
+ then :
+   as_fn_error $? "Please install flex before configuring." "$LINENO" 5
+ fi

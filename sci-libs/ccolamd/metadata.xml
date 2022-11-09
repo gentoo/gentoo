@@ -9,5 +9,5 @@
   Constrained COLAMD computes an column approximate minimum degree ordering
   algorithm, (like COLAMD), but it can also be given a set of ordering
   constraints.
-</longdescription>
+  </longdescription>
 </pkgmetadata>

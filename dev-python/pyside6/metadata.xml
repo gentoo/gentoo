@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="proxy">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>waebbl-gentoo@posteo.net</email>
+		<name>Bernd Waibel</name>
+	</maintainer>
+	<use>
+		<flag name="charts">Build QtCharts module</flag>
+		<flag name="concurrent">Build QtConcurrent module</flag>
+		<flag name="designer">Build QtDesigner and QtUiTools modules</flag>
+		<flag name="gles2-only">Build QtGui "QOpenGL*" classes</flag>
+		<flag name="gui">Build QtGui module</flag>
+		<flag name="help">Build QtHelp module</flag>
+		<flag name="multimedia">Build QtMultimedia and QtMultimediaWidgets modules</flag>
+		<flag name="network">Build QtNetwork module</flag>
+		<flag name="network-auth">Build QtNetworkAuth module</flag>
+		<flag name="positioning">Build QtPositioning module</flag>
+		<flag name="printsupport">Build QtPrintSupport module</flag>
+		<flag name="qml">Build QtQml module</flag>
+		<flag name="quick">Build QtQuick and QtQuickWidgets modules</flag>
+		<flag name="quick3d">Build QtQuick3D and QtQuickWidgets modules</flag>
+		<flag name="serialport">Build QtSerialPort modules</flag>
+		<flag name="sql">Build QtSql module</flag>
+		<flag name="svg">Build QtSvg module</flag>
+		<flag name="testlib">Build QtTest module</flag>
+		<flag name="webchannel">Build QtWebChannel module</flag>
+		<flag name="webengine">Build QtWebEngine and QtWebEngineWidgets modules</flag>
+		<flag name="websockets">Build QtWebSockets module</flag>
+		<flag name="widgets">Build QtWidgets module</flag>
+		<flag name="xml">Build QtXml module</flag>
+	</use>
+	<upstream>
+		<remote-id type="pypi">PySide6</remote-id>
+	</upstream>
+</pkgmetadata>

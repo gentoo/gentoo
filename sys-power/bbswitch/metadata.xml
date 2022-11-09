@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>np-hardass@gentoo.org</email>
-		<name>Adam Feldman</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
 	</maintainer>
@@ -24,7 +20,7 @@
 	<longdescription>
 	Kernel module which automatically detects the required ACPI calls for two
 	kinds of Optimus laptops for safe disabling/enabling the discrete graphics card.
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="github">Bumblebee-Project/bbswitch</remote-id>
 	</upstream>

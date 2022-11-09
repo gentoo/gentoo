@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<use>
-		<flag name="aspell">Adds support for <pkg>app-text/aspell</pkg> spell checker</flag>
-		<flag name="hunspell">Adds support for <pkg>app-text/hunspell</pkg> spell checker</flag>
-		<flag name="nuspell">Adds support for <pkg>app-text/nuspell</pkg> spell checker</flag>
-		<flag name="voikko">Adds support for <pkg>dev-libs/libvoikko</pkg> spell checker</flag>
-	</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="aspell">Adds support for <pkg>app-text/aspell</pkg> spell checker</flag>
+    <flag name="hunspell">Adds support for <pkg>app-text/hunspell</pkg> spell checker</flag>
+    <flag name="nuspell">Adds support for <pkg>app-text/nuspell</pkg> spell checker</flag>
+    <flag name="voikko">Adds support for <pkg>dev-libs/libvoikko</pkg> spell checker</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">AbiWord/enchant</remote-id>
+  </upstream>
 </pkgmetadata>

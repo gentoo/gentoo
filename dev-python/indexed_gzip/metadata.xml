@@ -21,7 +21,7 @@
 		compression standard), but will work with any GZIP file.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">pauldmccarthy/indexed-gzip</remote-id>
+		<remote-id type="github">pauldmccarthy/indexed_gzip</remote-id>
 		<remote-id type="pypi">indexed-gzip</remote-id>
 	</upstream>
 </pkgmetadata>

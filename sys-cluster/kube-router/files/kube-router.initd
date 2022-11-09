@@ -5,14 +5,14 @@
 description="Kubernetes routing engine"
 supervisor=supervise-daemon
 command="/usr/bin/kube-router"
-error_log='/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log'
+error_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
 pidfile="${pidfile:-/run/${RC_SVCNAME}.pid}"
 
 command_args="--master=${K8S_APISERVER} --kubeconfig=${KUBECONFIG} \
               --run-service-proxy=${RUN_PROXY:-false} \
               --run-firewall=${RUN_FIREWALL:-false} \
               --run-router=${RUN_ROUTER:-false} \
-              ${HOSTNAME:+--hostname-override=}${HOSTNAME} \
+              ${HOSTNAME_OVERRIDE:+--hostname-override=}${HOSTNAME_OVERRIDE} \
               ${EXTRA_ARGS}"
 
 extra_commands="clear"
@@ -21,7 +21,7 @@ clear() {
     "${command}" --cleanup-config
 }
 
-if [[ -n "${KUBE_ROUTER_HEALTHCHECK_URI}" ]]; then
+if [ -n "${KUBE_ROUTER_HEALTHCHECK_URI}" ]; then
         healthcheck_delay=60
         healthcheck_timer=30
 

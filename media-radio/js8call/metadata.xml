@@ -6,6 +6,6 @@
 	<name>Rich Freeman</name>
 </maintainer>
 <upstream>
-	<remote-id type="bitbucket">js8call</remote-id>
+	<remote-id type="bitbucket">widefido/js8call</remote-id>
 </upstream>
 </pkgmetadata>

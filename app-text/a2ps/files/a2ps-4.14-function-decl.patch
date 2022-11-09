@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/870763
+
+--- a2ps-4.14/lib/path-concat.c
++++ a2ps-4.14/lib/path-concat.c
+@@ -26,6 +26,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #if HAVE_STRING_H
+ # include <string.h>
+ #endif

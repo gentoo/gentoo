@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..2} luajit )
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE='threads(+)'
 
 WAF_PV=2.0.22
@@ -16,7 +16,7 @@ HOMEPAGE="https://mpv.io/ https://github.com/mpv-player/mpv"
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ppc ppc64 ~riscv x86 ~amd64-linux"
 	DOCS=( RELEASE_NOTES )
 else
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
@@ -90,10 +90,11 @@ COMMON_DEPEND="
 	raspberry-pi? ( >=media-libs/raspberrypi-userland-0_pre20160305-r1 )
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	sdl? ( media-libs/libsdl2[sound,threads,video] )
-	vaapi? ( x11-libs/libva:=[drm(+)?,X?,wayland?] )
+	vaapi? ( media-libs/libva:=[drm(+)?,X?,wayland?] )
 	vdpau? ( x11-libs/libvdpau )
 	vulkan? (
 		>=media-libs/libplacebo-3.104.0:=[vulkan]
+		<media-libs/libplacebo-5
 		media-libs/shaderc
 	)
 	wayland? (
@@ -146,8 +147,8 @@ src_configure() {
 	tc-export CC PKG_CONFIG AR
 
 	if use raspberry-pi; then
-		append-cflags -I"${SYSROOT%/}${EPREFIX}/opt/vc/include"
-		append-ldflags -L"${SYSROOT%/}${EPREFIX}/opt/vc/lib"
+		append-cflags -I"${ESYSROOT}/opt/vc/include"
+		append-ldflags -L"${ESYSROOT}/opt/vc/lib"
 	fi
 
 	local mywafargs=(

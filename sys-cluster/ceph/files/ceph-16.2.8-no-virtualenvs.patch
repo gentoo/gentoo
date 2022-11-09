@@ -1,0 +1,82 @@
+diff --git a/cmake/modules/AddCephTest.cmake b/cmake/modules/AddCephTest.cmake
+index cd661be16c9..7183c2f2138 100644
+--- a/cmake/modules/AddCephTest.cmake
++++ b/cmake/modules/AddCephTest.cmake
+@@ -55,7 +55,6 @@ endfunction()
+ 
+ function(add_tox_test name)
+   set(test_name run-tox-${name})
+-  set(venv_path ${CEPH_BUILD_VIRTUALENV}/${name}-virtualenv)
+   cmake_parse_arguments(TOXTEST "" "TOX_PATH" "TOX_ENVS" ${ARGN})
+   if(DEFINED TOXTEST_TOX_PATH)
+     set(tox_path ${TOXTEST_TOX_PATH})
+@@ -68,14 +67,6 @@ function(add_tox_test name)
+     list(APPEND tox_envs py3)
+   endif()
+   string(REPLACE ";" "," tox_envs "${tox_envs}")
+-  add_custom_command(
+-    OUTPUT ${venv_path}/bin/activate
+-    COMMAND ${CMAKE_SOURCE_DIR}/src/tools/setup-virtualenv.sh --python="${Python3_EXECUTABLE}" ${venv_path}
+-    WORKING_DIRECTORY ${tox_path}
+-    COMMENT "preparing venv for ${name}")
+-  add_custom_target(${name}-venv
+-    DEPENDS ${venv_path}/bin/activate)
+-  add_dependencies(tests ${name}-venv)
+   add_test(
+     NAME ${test_name}
+     COMMAND ${CMAKE_SOURCE_DIR}/src/script/run_tox.sh
+diff --git a/src/ceph-volume/CMakeLists.txt b/src/ceph-volume/CMakeLists.txt
+index 9166553dc73..9a6c87595b9 100644
+--- a/src/ceph-volume/CMakeLists.txt
++++ b/src/ceph-volume/CMakeLists.txt
+@@ -8,22 +8,6 @@ if(FREEBSD)
+   add_subdirectory(plugin/zfs)
+ endif()
+ 
+-# Required for running ceph-volume inventory in a vstart environment
+-set(CEPH_VOLUME_VIRTUALENV ${CEPH_BUILD_VIRTUALENV}/ceph-volume-virtualenv)
+-
+-add_custom_command(
+-  OUTPUT ${CEPH_VOLUME_VIRTUALENV}/bin/python
+-  COMMAND ${CMAKE_SOURCE_DIR}/src/tools/setup-virtualenv.sh --python=${Python3_EXECUTABLE} ${CEPH_VOLUME_VIRTUALENV}
+-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/ceph-volume
+-  COMMENT "ceph-volume venv is being created")
+-
+-add_custom_command(
+-  OUTPUT ${CEPH_VOLUME_VIRTUALENV}/bin/ceph-volume
+-  DEPENDS ${CEPH_VOLUME_VIRTUALENV}/bin/python
+-  COMMAND . ${CEPH_VOLUME_VIRTUALENV}/bin/activate && ${CEPH_VOLUME_VIRTUALENV}/bin/python setup.py develop && deactivate
+-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/ceph-volume
+-  COMMENT "${CMAKE_SOURCE_DIR}/src/ceph-volume")
+-
+ add_custom_target(ceph-volume-venv-setup
+   DEPENDS ${CEPH_VOLUME_VIRTUALENV}/bin/ceph-volume)
+ 
+diff --git a/src/pybind/mgr/dashboard/CMakeLists.txt b/src/pybind/mgr/dashboard/CMakeLists.txt
+index 0c8d46d65ee..67a618f95aa 100644
+--- a/src/pybind/mgr/dashboard/CMakeLists.txt
++++ b/src/pybind/mgr/dashboard/CMakeLists.txt
+@@ -5,9 +5,6 @@ function(add_npm_command)
+   set(multi_kw COMMAND DEPENDS)
+   cmake_parse_arguments(NC "${options}" "${single_kw}" "${multi_kw}" ${ARGN})
+   string(REPLACE ";" " " command "${NC_COMMAND}")
+-  if(NC_NODEENV)
+-    string(REGEX REPLACE "^(.*(npm|npx) .*)$" ". ${mgr-dashboard-nodeenv-dir}/bin/activate && \\1 && deactivate" command ${command})
+-  endif()
+   string(REPLACE " " ";" command "${command}")
+   add_custom_command(
+     OUTPUT "${NC_OUTPUT}"
+@@ -51,11 +48,8 @@ else(WITH_SYSTEM_NPM)
+     set(node_mirror_opt "--mirror=$ENV{NODE_MIRROR}")
+   endif()
+   add_custom_command(
+-    OUTPUT "${mgr-dashboard-nodeenv-dir}/bin/npm"
+-    COMMAND ${CMAKE_SOURCE_DIR}/src/tools/setup-virtualenv.sh --python=${MGR_PYTHON_EXECUTABLE} ${mgr-dashboard-nodeenv-dir}
+-    COMMAND ${mgr-dashboard-nodeenv-dir}/bin/pip install nodeenv
+-    COMMAND ${mgr-dashboard-nodeenv-dir}/bin/nodeenv --verbose ${node_mirror_opt} -p --node=12.18.2
+-    COMMAND mkdir ${mgr-dashboard-nodeenv-dir}/.npm
++    OUTPUT "/bin/npm"
++    COMMAND /bin/nodeenv ${node_mirror_opt} -p --node=12.18.2
+     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+     COMMENT "dashboard nodeenv is being installed"
+     )

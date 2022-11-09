@@ -1,0 +1,47 @@
+--- a/etc/zfs-auto-snapshot.cron.daily
++++ b/etc/zfs-auto-snapshot.cron.daily
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+ # Only call zfs-auto-snapshot if it's available
+-which zfs-auto-snapshot > /dev/null || exit 0
++command -v zfs-auto-snapshot > /dev/null || exit 0
+ 
+ exec zfs-auto-snapshot --quiet --syslog --label=daily --keep=31 //
+--- a/etc/zfs-auto-snapshot.cron.frequent
++++ b/etc/zfs-auto-snapshot.cron.frequent
+@@ -1,3 +1,3 @@
+ PATH="/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+ 
+-*/15 * * * * root which zfs-auto-snapshot > /dev/null || exit 0 ; zfs-auto-snapshot --quiet --syslog --label=frequent --keep=4 //
++*/15 * * * * root command -v zfs-auto-snapshot > /dev/null || exit 0 ; zfs-auto-snapshot --quiet --syslog --label=frequent --keep=4 //
+--- a/etc/zfs-auto-snapshot.cron.hourly
++++ b/etc/zfs-auto-snapshot.cron.hourly
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+ # Only call zfs-auto-snapshot if it's available
+-which zfs-auto-snapshot > /dev/null || exit 0
++command -v zfs-auto-snapshot > /dev/null || exit 0
+ 
+ exec zfs-auto-snapshot --quiet --syslog --label=hourly --keep=24 //
+--- a/etc/zfs-auto-snapshot.cron.monthly
++++ b/etc/zfs-auto-snapshot.cron.monthly
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+ # Only call zfs-auto-snapshot if it's available
+-which zfs-auto-snapshot > /dev/null || exit 0
++command -v zfs-auto-snapshot > /dev/null || exit 0
+ 
+ exec zfs-auto-snapshot --quiet --syslog --label=monthly --keep=12 //
+--- a/etc/zfs-auto-snapshot.cron.weekly
++++ b/etc/zfs-auto-snapshot.cron.weekly
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+ # Only call zfs-auto-snapshot if it's available
+-which zfs-auto-snapshot > /dev/null || exit 0
++command -v zfs-auto-snapshot > /dev/null || exit 0
+ 
+ exec zfs-auto-snapshot --quiet --syslog --label=weekly --keep=8 //

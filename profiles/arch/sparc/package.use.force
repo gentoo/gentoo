@@ -1,6 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-06-25)
+# dev-lang/rust lacks wiring up to use our custom rust-bin bootstrap
+# tarball, so force system-bootstrap instead (i.e. force using rust-bin
+# or existing installed rust). bug #842246, bug #869680.
+dev-lang/rust system-bootstrap
+
 # Sam James <sam@gentoo.org> (2022-02-19)
 # New enough SpiderMonkey not (yet?) keyworded here, bug #753221
 sys-auth/polkit duktape
@@ -10,3 +16,4 @@ sys-auth/polkit duktape
 dev-ml/llvm-ocaml llvm_targets_Sparc
 sys-devel/clang llvm_targets_Sparc
 sys-devel/llvm llvm_targets_Sparc
+dev-lang/rust llvm_targets_Sparc

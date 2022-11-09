@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/rubyzip/rubyzip"
 # Tests are not included in the gem.
 SRC_URI="https://github.com/rubyzip/rubyzip/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
-LICENSE="Ruby"
+LICENSE="Ruby-BSD"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE=""
@@ -44,7 +44,7 @@ all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#: ; /rubocop/I s:^:#:' Rakefile || die
 
 	# Fix hardcoded path to /tmp
-	sed -i -e 's:/tmp/:'${T}'/:g' test/entry_test.rb || die
+	sed -i -e "s:/tmp/:${T}/:g" test/entry_test.rb || die
 
 	# Add missing requires
 	sed -i -e '1irequire "forwardable"; require "pathname"' test/input_stream_test.rb || die

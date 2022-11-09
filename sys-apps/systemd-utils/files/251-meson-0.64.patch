@@ -1,0 +1,26 @@
+From cddbc850270415a818aadabd71fe12dc0dddd508 Mon Sep 17 00:00:00 2001
+From: Jan Janssen <medhefgo@web.de>
+Date: Sun, 9 Oct 2022 17:16:12 +0200
+Subject: [PATCH] meson: Fix build with --optimization=plain
+
+Note that -O0 is deliberately filtered out as we have to compile with at
+least -O1 due to #24202.
+
+Fixes: #24323
+---
+ src/boot/efi/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/boot/efi/meson.build b/src/boot/efi/meson.build
+index e0cd4ebad993..395386d3eda7 100644
+--- a/src/boot/efi/meson.build
++++ b/src/boot/efi/meson.build
+@@ -223,7 +223,7 @@ endif
+ if get_option('debug') and get_option('mode') == 'developer'
+         efi_cflags += ['-ggdb', '-DEFI_DEBUG']
+ endif
+-if get_option('optimization') != '0'
++if get_option('optimization') in ['1', '2', '3', 's', 'g']
+         efi_cflags += ['-O' + get_option('optimization')]
+ endif
+ if get_option('b_ndebug') == 'true' or (

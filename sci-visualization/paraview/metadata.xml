@@ -6,7 +6,7 @@
 		<name>Matthias Maier</name>
 	</maintainer>
 	<use>
-		<flag name="boost">Enable the usage of dev-libs/boost</flag>
+		<flag name="boost">Enable the usage of <pkg>dev-libs/boost</pkg></flag>
 		<flag name="cg">Add support for nvidia's cg shaders</flag>
 		<flag name="nvcontrol">Add NVCONTROL support for OpenGL options</flag>
 		<flag name="offscreen">Offscreen rendering through OSMesa</flag>

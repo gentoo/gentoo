@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 -riscv x86"
+KEYWORDS="amd64 -loong ppc ppc64 -riscv x86"
 
 S=${WORKDIR}/${P/_p*}.orig
 PATCHES=(

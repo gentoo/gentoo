@@ -5,9 +5,9 @@ EAPI="7"
 
 inherit toolchain-funcs
 
-DESCRIPTION="A standalone anti-spam greylisting algorithm on top of Postfix"
-HOMEPAGE="http://www.gasmi.net/gld.html"
-SRC_URI="http://www.gasmi.net/down/${P}.tgz"
+DESCRIPTION="Standalone anti-spam greylisting algorithm on top of Postfix"
+HOMEPAGE="https://www.gasmi.net/gld.html"
+SRC_URI="https://www.gasmi.net/down/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,6 +19,10 @@ DEPEND="sys-libs/zlib
 	!postgres? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:*[server] )"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7-configure-strict-prototypes.patch
+)
 
 src_prepare() {
 	sed -i gld.conf \

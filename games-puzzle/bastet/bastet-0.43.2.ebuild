@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ IUSE=""
 
 DEPEND="
 	sys-libs/ncurses:0=
-	dev-libs/boost:0=
+	dev-libs/boost:=
 "
 RDEPEND="${DEPEND}"
 

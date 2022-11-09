@@ -1,0 +1,40 @@
+diff --git a/tests/unit/utils/test_schema.py b/tests/unit/utils/test_schema.py
+index 8c648f5288..5886813e28 100644
+--- a/tests/unit/utils/test_schema.py
++++ b/tests/unit/utils/test_schema.py
+@@ -528,7 +528,7 @@ class ConfigTestCase(TestCase):
+             jsonschema.validate(
+                 {"personal_access_token": "foo"}, Requirements.serialize()
+             )
+-        if JSONSCHEMA_VERSION >= _LooseVersion("3.0.0"):
++        if JSONSCHEMA_VERSION >= _LooseVersion("3.0.0") and JSONSCHEMA_VERSION < _LooseVersion("4.17.0"):
+             self.assertIn(
+                 "'ssh_key_file' is a required property", excinfo.exception.message
+             )
+@@ -1851,7 +1851,7 @@ class ConfigTestCase(TestCase):
+             jsonschema.validate(
+                 {"item": {"sides": "4", "color": "blue"}}, TestConf.serialize()
+             )
+-        if JSONSCHEMA_VERSION >= _LooseVersion("3.0.0"):
++        if JSONSCHEMA_VERSION >= _LooseVersion("3.0.0") and JSONSCHEMA_VERSION < _LooseVersion("4.17.0"):
+             self.assertIn("'4'", excinfo.exception.message)
+             self.assertIn("is not of type", excinfo.exception.message)
+             self.assertIn("'boolean'", excinfo.exception.message)
+@@ -1974,7 +1974,7 @@ class ConfigTestCase(TestCase):
+ 
+         with self.assertRaises(jsonschema.exceptions.ValidationError) as excinfo:
+             jsonschema.validate({"item": ["maybe"]}, TestConf.serialize())
+-        if JSONSCHEMA_VERSION >= _LooseVersion("3.0.0"):
++        if JSONSCHEMA_VERSION >= _LooseVersion("3.0.0") and JSONSCHEMA_VERSION < _LooseVersion("4.17.0"):
+             self.assertIn("'maybe'", excinfo.exception.message)
+             self.assertIn("is not one of", excinfo.exception.message)
+             self.assertIn("'yes'", excinfo.exception.message)
+@@ -2036,7 +2036,7 @@ class ConfigTestCase(TestCase):
+ 
+         with self.assertRaises(jsonschema.exceptions.ValidationError) as excinfo:
+             jsonschema.validate({"item": ["maybe"]}, TestConf.serialize())
+-        if JSONSCHEMA_VERSION >= _LooseVersion("3.0.0"):
++        if JSONSCHEMA_VERSION >= _LooseVersion("3.0.0") and JSONSCHEMA_VERSION < _LooseVersion("4.17.0"):
+             self.assertIn("'maybe'", excinfo.exception.message)
+             self.assertIn("is not one of", excinfo.exception.message)
+             self.assertIn("'yes'", excinfo.exception.message)

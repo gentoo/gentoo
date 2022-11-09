@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ inherit ${SCM} cmake multilib
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="amd64 ~arm"
 	SRC_URI="https://github.com/PointCloudLibrary/pcl/archive/${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${P}"
 fi
@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=sci-libs/flann-1.7.1
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	dev-cpp/eigen:3
 	opengl? ( virtual/opengl media-libs/freeglut )
 	openni? ( dev-libs/OpenNI )

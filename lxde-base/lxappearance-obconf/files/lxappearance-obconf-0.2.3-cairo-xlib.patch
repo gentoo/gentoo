@@ -1,0 +1,47 @@
+From: orbea <orbea@riseup.net>
+Date: Mon, 11 Jul 2022 17:38:52 -0700
+Subject: [PATCH] build: Add missing cairo-xlib dependency
+
+src/preview.c:146:15: warning: implicit declaration of function ‘cairo_xlib_surface_create’; did you mean ‘cairo_image_surface_create’? [-Wimplicit-function-declaration]
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -16,6 +16,7 @@ module_LTLIBRARIES = src/obconf.la
+ moduledir = $(libdir)/lxappearance/plugins
+ 
+ src_obconf_la_CPPFLAGS = \
++	$(CAIRO_CFLAGS) \
+ 	$(OPENBOX_CFLAGS) \
+ 	$(GTK_CFLAGS) \
+ 	$(LXAPPEARANCE_CFLAGS) \
+@@ -30,6 +31,7 @@ src_obconf_la_CPPFLAGS = \
+ 	-DG_LOG_DOMAIN=\"Obconf\"
+ 
+ src_obconf_la_LIBADD = \
++	$(CAIRO_LIBS) \
+ 	$(OPENBOX_LIBS) \
+ 	$(GTK_LIBS) \
+ 	$(LXAPPEARANCE_LIBS) \
+--- a/configure.ac
++++ b/configure.ac
+@@ -89,6 +89,10 @@ PKG_CHECK_MODULES(OPENBOX, [obrender-3.5 >= 3.5 obt-3.5 >= 3.5])
+ AC_SUBST(OPENBOX_CFLAGS)
+ AC_SUBST(OPENBOX_LIBS)
+ 
++PKG_CHECK_MODULES(CAIRO, [cairo-xlib])
++AC_SUBST(CAIRO_CFLAGS)
++AC_SUBST(CAIRO_LIBS)
++
+ if test "x$enable_gtk3" = "xyes" ; then
+   CFLAGS="$CFLAGS -DENABLE_GTK3"
+   gtk_modules="gtk+-3.0 >= 3.0.0"
+--- a/src/preview.c
++++ b/src/preview.c
+@@ -27,6 +27,7 @@
+ 
+ #include <string.h>
+ 
++#include <cairo/cairo-xlib.h>
+ #include <obrender/theme.h>
+ 
+ #if GTK_CHECK_VERSION(3, 0, 0)

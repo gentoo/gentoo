@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 DESCRIPTION="micro-framework for developing production-ready web services with Python"
@@ -29,6 +29,10 @@ BDEPEND="
 		dev-python/treq[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-test_resource.patch
+)
 
 distutils_enable_tests pytest
 

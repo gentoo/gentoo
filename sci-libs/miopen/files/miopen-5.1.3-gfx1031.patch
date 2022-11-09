@@ -1,0 +1,375 @@
+Enable gfx1031 support
+======================
+--- MIOpen-rocm-5.1.3/fin/src/include/conv_fin.hpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/fin/src/include/conv_fin.hpp	2022-09-01 18:36:18.630980283 +0800
+@@ -111,6 +111,10 @@ class ConvFin : public Fin
+         {
+             assert(num_cu == 72 || num_cu == 36);
+         }
++        else if(arch == "gfx1031")
++        {
++            assert(num_cu == 40 || num_cu == 20);
++        }
+         else if(arch == "gfx90a")
+         {
+             assert(num_cu == 110);
+Only in MIOpen-rocm-5.1.3: patches
+--- MIOpen-rocm-5.1.3/src/composable_kernel/composable_kernel/include/utility/config.hpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/composable_kernel/composable_kernel/include/utility/config.hpp	2022-09-01 18:36:18.634980274 +0800
+@@ -13,7 +13,7 @@
+ // GPU target
+ // should enable one and only one GPU target
+ #if !(defined(CK_AMD_GPU_GFX803) || defined(CK_AMD_GPU_GFX900) || defined(CK_AMD_GPU_GFX906) || \
+-      defined(CK_AMD_GPU_GFX908) || defined(CK_AMD_GPU_GFX90A) || defined(CK_AMD_GPU_GFX1030))
++      defined(CK_AMD_GPU_GFX908) || defined(CK_AMD_GPU_GFX90A) || defined(CK_AMD_GPU_GFX1030) || defined(CK_AMD_GPU_GFX1031))
+ #error Need to define (only) one GPU target
+ #endif
+ 
+@@ -29,7 +29,7 @@
+ #if defined(CK_AMD_GPU_GFX803) || defined(CK_AMD_GPU_GFX900) || defined(CK_AMD_GPU_GFX906) || \
+     defined(CK_AMD_GPU_GFX908) || defined(CK_AMD_GPU_GFX90A)
+ #define CK_BUFFER_RESOURCE_3RD_DWORD 0x00020000
+-#elif defined(CK_AMD_GPU_GFX1030)
++#elif (defined(CK_AMD_GPU_GFX1030) || defined(CK_AMD_GPU_GFX1031))
+ #define CK_BUFFER_RESOURCE_3RD_DWORD 0x31014000
+ #endif
+ 
+@@ -37,7 +37,7 @@
+ #if defined(CK_AMD_GPU_GFX803) || defined(CK_AMD_GPU_GFX900)
+ #define CK_USE_AMD_V_MAC_F32
+ #elif defined(CK_AMD_GPU_GFX906) || defined(CK_AMD_GPU_GFX908) || defined(CK_AMD_GPU_GFX90a) || \
+-    defined(CK_AMD_GPU_GFX1030)
++    (defined(CK_AMD_GPU_GFX1030) || defined(CK_AMD_GPU_GFX1031))
+ #define CK_USE_AMD_V_FMAC_F32
+ #define CK_USE_AMD_V_DOT2_F32_F16
+ #define CK_USE_AMD_V_DOT4_I32_I8
+--- MIOpen-rocm-5.1.3/src/include/miopen/solver/ck_utility_common.hpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/include/miopen/solver/ck_utility_common.hpp	2022-09-01 18:36:18.638980266 +0800
+@@ -54,6 +54,7 @@ static inline bool is_ck_supported_hardw
+            StartsWith(handle.GetDeviceName(), "gfx908") ||
+            StartsWith(handle.GetDeviceName(), "gfx90a") ||
+            StartsWith(handle.GetDeviceName(), "gfx1030");
++           StartsWith(handle.GetDeviceName(), "gfx1031");
+ }
+ 
+ static inline bool is_support_amd_buffer_atomic_fadd(const std::string& device_name)
+@@ -83,6 +84,8 @@ static inline auto get_ck_common_compile
+         compiler_flag << " -DCK_AMD_GPU_GFX90A";
+     else if(StartsWith(device_name, "gfx1030"))
+         compiler_flag << " -DCK_AMD_GPU_GFX1030";
++    else if(StartsWith(device_name, "gfx1031"))
++        compiler_flag << " -DCK_AMD_GPU_GFX1031";
+ 
+     // buffer atomic-fadd
+     compiler_flag << " -DCK_USE_AMD_BUFFER_ATOMIC_FADD="
+--- MIOpen-rocm-5.1.3/src/include/miopen/solver/implicitgemm_util.hpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/include/miopen/solver/implicitgemm_util.hpp	2022-09-01 18:36:18.638980266 +0800
+@@ -469,7 +469,7 @@ static inline bool is_use_amd_buffer_loa
+ {
+ #if WORKAROUND_MIOPEN_ISSUE_557
+     const auto device_name = ctx.GetStream().GetDeviceName();
+-    return !StartsWith(device_name, "gfx1030");
++    return !StartsWith(device_name, "gfx1030") && !StartsWith(device_name, "gfx1031");
+ #else
+     return true;
+ #endif
+@@ -478,7 +478,7 @@ static inline bool is_use_amd_buffer_loa
+ static inline bool is_use_v_fmac_f32(const ConvolutionContext& ctx)
+ {
+     const auto device_name = ctx.GetStream().GetDeviceName();
+-    return StartsWith(device_name, "gfx1030");
++    return StartsWith(device_name, "gfx1030") || StartsWith(device_name, "gfx1031");
+ }
+ 
+ static inline bool support_amd_buffer_atomic_fadd(const std::string& device_name)
+@@ -599,7 +599,8 @@ static inline bool IsComposableKernelSup
+            StartsWith(c.GetStream().GetDeviceName(), "gfx906") ||
+            StartsWith(c.GetStream().GetDeviceName(), "gfx908") ||
+            StartsWith(c.GetStream().GetDeviceName(), "gfx90a") ||
+-           StartsWith(c.GetStream().GetDeviceName(), "gfx1030");
++           StartsWith(c.GetStream().GetDeviceName(), "gfx1030")||
++           StartsWith(c.GetStream().GetDeviceName(), "gfx1031");
+ }
+ 
+ // greatest common divisor, aka highest common factor
+--- MIOpen-rocm-5.1.3/src/kernels/batchnorm_functions.h	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/kernels/batchnorm_functions.h	2022-09-01 18:36:18.858979772 +0800
+@@ -159,6 +159,10 @@
+ #define MIO_BN_GFX1030 0
+ #endif
+ 
++#ifndef MIO_BN_GFX1031
++#define MIO_BN_GFX1031 0
++#endif
++
+ #define UNUSED __attribute__((__unused__))
+ 
+ #if(MIO_BN_VARIANT != 4)
+--- MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormActivBwdPerAct.cl	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/kernels/MIOpenBatchNormActivBwdPerAct.cl	2022-09-01 18:36:18.858979772 +0800
+@@ -34,7 +34,7 @@
+ #endif
+ 
+ #define MIOPEN_USE_AMDGCN 0
+-#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1
++#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1 && MIO_BN_GFX1031 != 1
+ #undef MIOPEN_USE_AMDGCN
+ #define MIOPEN_USE_AMDGCN 1
+ #endif
+--- MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormActivBwdSpatial.cl	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/kernels/MIOpenBatchNormActivBwdSpatial.cl	2022-09-01 18:36:18.858979772 +0800
+@@ -32,7 +32,7 @@
+ #endif
+ 
+ #define MIOPEN_USE_AMDGCN 0
+-#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1
++#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1 && MIO_BN_GFX1031 != 1
+ #undef MIOPEN_USE_AMDGCN
+ #define MIOPEN_USE_AMDGCN 1
+ #endif
+--- MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormActivFwdTrainSpatial.cl	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/kernels/MIOpenBatchNormActivFwdTrainSpatial.cl	2022-09-01 18:36:18.858979772 +0800
+@@ -33,7 +33,7 @@
+ #endif
+ 
+ #define MIOPEN_USE_AMDGCN 0
+-#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1
++#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1 && MIO_BN_GFX1031 != 1
+ #undef MIOPEN_USE_AMDGCN
+ #define MIOPEN_USE_AMDGCN 1
+ #endif
+--- MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormBwdSpatial.cl	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/kernels/MIOpenBatchNormBwdSpatial.cl	2022-09-01 18:36:18.858979772 +0800
+@@ -33,7 +33,7 @@
+ #endif
+ 
+ #define MIOPEN_USE_AMDGCN 0
+-#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1
++#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1 && MIO_BN_GFX1031 != 1
+ #undef MIOPEN_USE_AMDGCN
+ #define MIOPEN_USE_AMDGCN 1
+ #endif
+--- MIOpen-rocm-5.1.3/src/kernels/MIOpenBatchNormFwdTrainSpatial.cl	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/kernels/MIOpenBatchNormFwdTrainSpatial.cl	2022-09-01 18:36:18.858979772 +0800
+@@ -33,7 +33,7 @@
+ #endif
+ 
+ #define MIOPEN_USE_AMDGCN 0
+-#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1
++#if defined(__AMDGCN__) && MIO_BN_GFX1030 != 1 && MIO_BN_GFX1031 != 1
+ #undef MIOPEN_USE_AMDGCN
+ #define MIOPEN_USE_AMDGCN 1
+ #endif
+--- MIOpen-rocm-5.1.3/src/md_graph.cpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/md_graph.cpp	2022-09-01 18:36:18.630980283 +0800
+@@ -738,8 +738,8 @@ void FusionMDGraph::InitConv(FusionMDGra
+ 
+             add_v21_wino("gfx9", {"gfx900", "gfx906", "gfx908", "gfx90a"}, 1);
+             add_v21_wino("gfx9", {"gfx900", "gfx906", "gfx908", "gfx90a"}, 2);
+-            add_v21_wino("gfx10", {"gfx1011", "gfx1012", "gfx1030"}, 1);
+-            add_v21_wino("gfx10", {"gfx1011", "gfx1012", "gfx1030"}, 2);
++            add_v21_wino("gfx10", {"gfx1011", "gfx1012", "gfx1030", "gfx1031"}, 1);
++            add_v21_wino("gfx10", {"gfx1011", "gfx1012", "gfx1030", "gfx1031"}, 2);
+         }
+     }
+ 
+--- MIOpen-rocm-5.1.3/src/ocl/fusionopbiasbnactivocl.cpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/ocl/fusionopbiasbnactivocl.cpp	2022-09-01 18:36:18.634980274 +0800
+@@ -392,7 +392,8 @@ miopenStatus_t BatchNormBwdTrainFusionOp
+            " -DMIO_BN_USESAVED=" + std::to_string(static_cast<int>(true)) +
+            " -DMIO_BN_VARIANT=" + std::to_string(variant) +
+            " -DMIO_BN_CBA_WRITE_INTERMEDIATE=" + std::to_string(0) +
+-           " -DMIO_BN_GFX1030=" + ((handle.GetDeviceName() == "gfx1030") ? "1" : "0");
++           " -DMIO_BN_GFX1030=" + ((handle.GetDeviceName() == "gfx1030") ? "1" : "0") +
++           " -DMIO_BN_GFX1031=" + ((handle.GetDeviceName() == "gfx1031") ? "1" : "0");
+ 
+     compile_config += add;
+     MIOPEN_LOG_I2(add);
+@@ -607,7 +608,8 @@ miopenStatus_t BatchNormFwdTrainFusionOp
+            " -DMIO_SAVE_MEAN_VARIANCE=" + (saveBatchStats ? "1" : "0") +
+            " -DMIO_RUNNING_RESULT=" + ((savePopStats) ? "1" : "0") +
+            " -DMIO_BN_VARIANT=" + std::to_string(variant) +
+-           " -DMIO_BN_GFX1030=" + ((handle.GetDeviceName() == "gfx1030") ? "1" : "0");
++           " -DMIO_BN_GFX1030=" + ((handle.GetDeviceName() == "gfx1030") ? "1" : "0") +
++           " -DMIO_BN_GFX1031=" + ((handle.GetDeviceName() == "gfx1031") ? "1" : "0");
+ 
+     compile_config += add;
+     MIOPEN_LOG_I2(add);
+--- MIOpen-rocm-5.1.3/src/solver/batchnorm/backward_per_activation.cpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/solver/batchnorm/backward_per_activation.cpp	2022-09-01 18:36:18.638980266 +0800
+@@ -113,6 +113,7 @@ BnBwdTrainingPerActivation::GetSolution(
+             {"MIO_BN_GRP1", ylocalsize},
+             {"MIO_BN_GRP2", zlocalsize},
+             {"MIO_BN_GFX1030", ((handle.GetDeviceName() == "gfx1030") ? "1" : "0")},
++            {"MIO_BN_GFX1031", ((handle.GetDeviceName() == "gfx1031") ? "1" : "0")},
+         };
+ 
+         kernel.comp_options = build_params.GenerateFor(kbp::OpenCL{});
+--- MIOpen-rocm-5.1.3/src/solver/batchnorm/backward_spatial_multiple.cpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/solver/batchnorm/backward_spatial_multiple.cpp	2022-09-01 18:36:18.638980266 +0800
+@@ -210,6 +210,7 @@ ConvSolution BnBwdTrainingSpatialMultipl
+             {"MIO_BN_GRP1", ylocalsize},
+             {"MIO_BN_GRP2", zlocalsize},
+             {"MIO_BN_GFX1030", ((handle.GetDeviceName() == "gfx1030") ? "1" : "0")},
++            {"MIO_BN_GFX1031", ((handle.GetDeviceName() == "gfx1031") ? "1" : "0")},
+             {"MIO_LAYOUT_NHWC", static_cast<int>(problem.IsLayoutNHWC())},
+         };
+ 
+--- MIOpen-rocm-5.1.3/src/solver/batchnorm/backward_spatial_single.cpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/solver/batchnorm/backward_spatial_single.cpp	2022-09-01 18:36:18.638980266 +0800
+@@ -247,6 +247,7 @@ BnBwdTrainingSpatialSingle::GetSolution(
+ 
+             build_params << KernelBuildParameters{
+                 {"MIO_BN_GFX1030", (handle.GetDeviceName() == "gfx1030") ? "1" : "0"},
++				{"MIO_BN_GFX1031", ((handle.GetDeviceName() == "gfx1031") ? "1" : "0")},
+             };
+ 
+             kernel.comp_options = build_params.GenerateFor(kbp::OpenCL{});
+--- MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_inference.cpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/solver/batchnorm/forward_inference.cpp	2022-09-01 18:36:18.638980266 +0800
+@@ -103,6 +103,7 @@ ConvSolution BnFwdInference::GetSolution
+             {"MIO_BN_GRP1", ylocalsize},
+             {"MIO_BN_GRP2", zlocalsize},
+             {"MIO_BN_GFX1030", ((handle.GetDeviceName() == "gfx1030") ? "1" : "0")},
++            {"MIO_BN_GFX1031", ((handle.GetDeviceName() == "gfx1031") ? "1" : "0")},
+         };
+ 
+         kernel.comp_options = build_params.GenerateFor(kbp::OpenCL{});
+--- MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_per_activation.cpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/solver/batchnorm/forward_per_activation.cpp	2022-09-01 18:36:18.638980266 +0800
+@@ -105,6 +105,7 @@ BnFwdTrainingPerActivation::GetSolution(
+             {"MIO_BN_GRP1", ylocalsize},
+             {"MIO_BN_GRP2", zlocalsize},
+             {"MIO_BN_GFX1030", ((handle.GetDeviceName() == "gfx1030") ? "1" : "0")},
++            {"MIO_BN_GFX1031", ((handle.GetDeviceName() == "gfx1031") ? "1" : "0")},
+         };
+ 
+         auto kernel = KernelInfo{};
+--- MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_spatial_multiple.cpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/solver/batchnorm/forward_spatial_multiple.cpp	2022-09-01 18:36:18.638980266 +0800
+@@ -177,6 +177,7 @@ ConvSolution BnFwdTrainingSpatialMultipl
+             {"MIO_BN_GRP1", ylocalsize},
+             {"MIO_BN_GRP2", zlocalsize},
+             {"MIO_BN_GFX1030", ((handle.GetDeviceName() == "gfx1030") ? "1" : "0")},
++            {"MIO_BN_GFX1031", ((handle.GetDeviceName() == "gfx1031") ? "1" : "0")},
+             {"MIO_LAYOUT_NHWC", static_cast<int>(problem.IsLayoutNHWC())},
+         };
+ 
+--- MIOpen-rocm-5.1.3/src/solver/batchnorm/forward_spatial_single.cpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/solver/batchnorm/forward_spatial_single.cpp	2022-09-01 18:36:18.638980266 +0800
+@@ -211,6 +211,7 @@ BnFwdTrainingSpatialSingle::GetSolution(
+             {"MIO_BN_GRP1", ylocalsize},
+             {"MIO_BN_GRP2", zlocalsize},
+             {"MIO_BN_GFX1030", ((handle.GetDeviceName() == "gfx1030") ? "1" : "0")},
++            {"MIO_BN_GFX1031", ((handle.GetDeviceName() == "gfx1031") ? "1" : "0")},
+             {"MIO_LAYOUT_NHWC", static_cast<int>(problem.IsLayoutNHWC())},
+         };
+ 
+--- MIOpen-rocm-5.1.3/src/target_properties.cpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/src/target_properties.cpp	2022-09-01 18:36:18.630980283 +0800
+@@ -54,6 +54,7 @@ static std::string GetDeviceNameFromMap(
+         {"Vega10", "gfx900"},
+         {"gfx901", "gfx900"},
+         {"10.3.0 Sienna_Cichlid 18", "gfx1030"},
++        {"10.3.1 Navi_flounder 18", "gfx1031"},
+     };
+ 
+     const char* const p_asciz = miopen::GetStringEnv(MIOPEN_DEBUG_ENFORCE_DEVICE{});
+--- MIOpen-rocm-5.1.3/test/CMakeLists.txt	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/test/CMakeLists.txt	2022-09-01 18:36:19.022979405 +0800
+@@ -38,6 +38,7 @@ option( MIOPEN_TEST_GFX90A "Test on gfx9
+ option( MIOPEN_TEST_GFX900 "Test on Vega10 (gfx900)" OFF )
+ option( MIOPEN_TEST_GFX906 "Test on Vega20 (gfx906)" OFF )
+ option( MIOPEN_TEST_GFX1030 "Test on Navi21 (gfx1030)" OFF )
++option( MIOPEN_TEST_GFX1031 "Test on Navi21 (gfx1031)" OFF )
+ option( MIOPEN_TEST_GPU_XNACK_ENABLED "Test as if XNACK mode is enabled" OFF )
+ option( MIOPEN_TEST_CONV Off)
+ option( MIOPEN_TEST_DEEPBENCH Off)
+@@ -74,7 +75,7 @@ endif()
+ # Also we do not detect GPU when target GPU for testing is specified explicitly.
+ set(MIOPEN_TEST_GPU_DETECTION_FAILED FALSE)
+ set(MIOPEN_NO_GPU FALSE)
+-if(NOT (MIOPEN_TEST_GFX900 OR MIOPEN_TEST_GFX906 OR MIOPEN_TEST_GFX908 OR MIOPEN_TEST_GFX90A OR MIOPEN_TEST_GFX1030 OR MIOPEN_TEST_HIP_NOGPU))
++if(NOT (MIOPEN_TEST_GFX900 OR MIOPEN_TEST_GFX906 OR MIOPEN_TEST_GFX908 OR MIOPEN_TEST_GFX90A OR MIOPEN_TEST_GFX1030 OR MIOPEN_TEST_GFX1031 OR MIOPEN_TEST_HIP_NOGPU))
+     find_program(ROCMINFO
+         NAMES rocminfo
+         PATHS
+@@ -96,6 +97,8 @@ if(NOT (MIOPEN_TEST_GFX900 OR MIOPEN_TES
+         elseif (NOT ROCMINFO_EXIT_STATUS EQUAL 0)
+             message(WARNING "ROCMINFO FAILED, GPU TYPE UNKNOWN. Manually set respective MIOPEN_TEST_GFX* CMake variable to specify target GPU for testing.")
+             set(MIOPEN_TEST_GPU_DETECTION_FAILED TRUE)
++        elseif(ROCMINFO_OUTPUT MATCHES "gfx1031")
++            set(MIOPEN_TEST_GFX1031 ON)
+         elseif(ROCMINFO_OUTPUT MATCHES "gfx1030")
+             set(MIOPEN_TEST_GFX1030 ON)
+         elseif(ROCMINFO_OUTPUT MATCHES "gfx900")
+@@ -125,6 +128,7 @@ message(STATUS "MIOPEN_TEST_GFX906 ${MIO
+ message(STATUS "MIOPEN_TEST_GFX908 ${MIOPEN_TEST_GFX908}")
+ message(STATUS "MIOPEN_TEST_GFX90A ${MIOPEN_TEST_GFX90A}")
+ message(STATUS "MIOPEN_TEST_GFX1030 ${MIOPEN_TEST_GFX1030}")
++message(STATUS "MIOPEN_TEST_GFX1031 ${MIOPEN_TEST_GFX1031}")
+ message(STATUS "MIOPEN_TEST_GPU_XNACK_ENABLED ${MIOPEN_TEST_GPU_XNACK_ENABLED}")
+ message(STATUS "MIOPEN_TEST_GPU_DETECTION_FAILED ${MIOPEN_TEST_GPU_DETECTION_FAILED}")
+ 
+@@ -167,10 +171,10 @@ endmacro()
+ set_var_to_condition(WORKAROUND_ISSUE_1187_DEFAULT MIOPEN_TEST_GFX90A AND MIOPEN_TEST_FLOAT)
+ option( WORKAROUND_ISSUE_1187 "" ${WORKAROUND_ISSUE_1187_DEFAULT})
+ 
+-set_var_to_condition(WORKAROUND_ISSUE_1148_DEFAULT MIOPEN_TEST_GFX1030 AND MIOPEN_TEST_FLOAT)
++set_var_to_condition(WORKAROUND_ISSUE_1148_DEFAULT MIOPEN_TEST_GFX1030 OR MIOPEN_TEST_GFX1031 AND MIOPEN_TEST_FLOAT)
+ option( WORKAROUND_ISSUE_1148 "" ${WORKAROUND_ISSUE_1148_DEFAULT})
+ 
+-set_var_to_condition(WORKAROUND_ISSUE_1334_DEFAULT MIOPEN_TEST_GFX1030 AND MIOPEN_TEST_FLOAT)
++set_var_to_condition(WORKAROUND_ISSUE_1334_DEFAULT MIOPEN_TEST_GFX1030 OR MIOPEN_TEST_GFX1031 AND MIOPEN_TEST_FLOAT)
+ option( WORKAROUND_ISSUE_1334 "" ${WORKAROUND_ISSUE_1334_DEFAULT})
+ 
+ if(NOT MIOPEN_TEST_MIOTENSILE)
+@@ -216,7 +220,7 @@ if (MIOPEN_NO_GPU)
+             test_pooling3d test_perfdb)
+ endif()
+ 
+-if(MIOPEN_TEST_GFX1030)
++if(MIOPEN_TEST_GFX1030 OR MIOPEN_TEST_GFX1031)
+     if(WORKAROUND_ISSUE_1053 AND MIOPEN_TEST_ALL)
+         list(APPEND SKIP_TESTS test_lrn_test)
+     endif()
+@@ -439,7 +443,7 @@ endfunction()
+ #   If nothing is specified, the default value is taken.
+ #   Default: FLOAT_ENABLED HALF_DISABLED BF16_DISABLED INT8_DISABLED
+ #
+-# GPU types: GFX900, GFX906, GFX908, GFX90A, GFX1030
++# GPU types: GFX900, GFX906, GFX908, GFX90A, GFX1030, GFX1031
+ #   The option can be enabled or disabled by using '_ENABLED' and '_DISABLED' suffix.
+ #   If nothing is specified, the default value is taken.
+ #   Default: GFX900_ENABLED, GFX906_ENABLED, GFX908_ENABLED, GFX90A_ENABLED, GFX1030_DISABLED
+@@ -571,7 +575,7 @@ function(add_custom_test NAME)
+         set_tests_properties(${NAME} PROPERTIES RUN_SERIAL On)
+     endif()
+ 
+-    if(  (is_gfx900_check OR is_gfx906_check OR is_gfx908_check OR is_gfx1030_check OR is_gfx90a_check)
++    if(  (is_gfx900_check OR is_gfx906_check OR is_gfx908_check OR is_gfx1030_check OR is_gfx1031_check OR is_gfx90a_check)
+      AND is_full_check
+      AND is_xnack_on_check
+      AND (is_miotensile_check AND is_mlir_check)
+--- MIOpen-rocm-5.1.3/test/handle_test.cpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/test/handle_test.cpp	2022-09-01 18:36:19.018979413 +0800
+@@ -234,7 +234,7 @@ void test_warnings(kernel_type_t kern_ty
+ void test_arch_name()
+ {
+     auto&& h        = get_handle();
+-    auto known_arch = {"gfx908", "gfx90a", "gfx906", "gfx900", "gfx803", "gfx1030"};
++    auto known_arch = {"gfx908", "gfx90a", "gfx906", "gfx900", "gfx803", "gfx1030", "gfx1031"};
+     auto this_arch  = h.GetDeviceName();
+     EXPECT(std::any_of(
+         known_arch.begin(), known_arch.end(), [&](std::string arch) { return arch == this_arch; }));
+--- MIOpen-rocm-5.1.3/test/mdgraph.cpp	2022-05-08 14:08:05.000000000 +0800
++++ gfx1031/test/mdgraph.cpp	2022-09-01 18:36:19.022979405 +0800
+@@ -222,7 +222,7 @@ struct mdgraph_driver : test_driver
+         auto target    = h.GetTargetProperties();
+ 
+         auto wino_supported_arch = {
+-            "gfx1030", "gfx1012", "gfx1011", "gfx90a", "gfx908", "gfx906", "gfx900", "gfx803"};
++            "gfx1030", "gfx1031","gfx1012", "gfx1011", "gfx90a", "gfx908", "gfx906", "gfx900", "gfx803"};
+ 
+         auto is_wino_support = !xnack_enabled &&
+                                !miopen::IsDisabled(MIOPEN_DEBUG_GCN_ASM_KERNELS{}) &&

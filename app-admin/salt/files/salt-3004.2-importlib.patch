@@ -1,0 +1,11 @@
+--- a/salt/_compat.py	2022-06-28 01:50:45.630746476 -0000
++++ b/salt/_compat.py	2022-06-28 01:51:52.970217848 -0000
+@@ -14,7 +14,7 @@
+ if sys.version_info >= (3, 10):
+     # Python 3.10 will include a fix in importlib.metadata which allows us to
+     # get the distribution of a loaded entry-point
+-    import importlib.metadata  # pylint: disable=no-member,no-name-in-module
++    import importlib.metadata as importlib_metadata  # pylint: disable=no-member,no-name-in-module
+ else:
+     # importlib_metadata before version 3.3.0 does not include the functionality we need.
+     try:

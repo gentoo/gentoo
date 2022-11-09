@@ -30,7 +30,7 @@
 			able to support positional event sounds. This is the preferred
 			choice for best sound events experience and picked by default if
 			compiled in and possible to use at runtime.</flag>
-		<flag name="sound">Install x11-themes/sound-theme-freedesktop to get
+		<flag name="sound">Install <pkg>x11-themes/sound-theme-freedesktop</pkg> to get
 			sounds on Gnome and Xfce.</flag>
 		<flag name="tdb">Enables Trivial Database support for caching
 			purposes.</flag>

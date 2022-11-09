@@ -1,61 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<use>
-		<flag name="concheck">Enable connectivity checking support</flag>
-		<flag name="connection-sharing">
-			Support connection sharing (uses <pkg>net-dns/dnsmasq</pkg>)
-		</flag>
-		<flag name="dhclient">
-			Use dhclient from <pkg>net-misc/dhcp</pkg> for getting an IP via DHCP
-		</flag>
-		<flag name="dhcpcd">Use <pkg>net-misc/dhcpcd</pkg> for getting an IP</flag>
-		<flag name="elogind">
-			Use <pkg>sys-auth/elogind</pkg> for session tracking
-		</flag>
-		<flag name="iptables">
-			Use <pkg>net-firewall/iptables</pkg> for connection sharing
-		</flag>
-		<flag name="iwd">
-			Use <pkg>net-wireless/iwd</pkg> instead of
-			<pkg>net-wireless/wpa_supplicant</pkg> for wifi support by default
-		</flag>
-		<flag name="psl">
-			Use public suffix list via <pkg>net-libs/libpsl</pkg>
-		</flag>
-		<flag name="lto">Build using Link Time Optimizations (LTO)</flag>
-		<flag name="modemmanager">
-			Enable support for mobile broadband devices using
-			<pkg>net-misc/modemmanager</pkg>
-		</flag>
-		<flag name="nftables">
-			Use <pkg>net-firewall/nftables</pkg> for connection sharing
-		</flag>
-		<flag name="nss">Use <pkg>dev-libs/nss</pkg> for cryptography</flag>
-		<flag name="ofono">Use <pkg>net-misc/ofono</pkg> for telephony support.</flag>
-		<flag name="ovs">Enable OpenVSwitch support</flag>
-		<flag name="ppp">
-			Enable support for mobile broadband and PPPoE connections using
-			<pkg>net-dialup/ppp</pkg>
-		</flag>
-		<flag name="resolvconf">
-			Use <pkg>net-dns/openresolv</pkg> for managing DNS information in
-			/etc/resolv.conf. Generally, a symlink to /run/NetworkManager/resolv.conf
-			is simpler. On systems running systemd-resolved, disable this flag and
-			create a symlink to /run/systemd/resolve/stub-resolv.conf.
-		</flag>
-		<flag name="teamd">Enable Teamd control support</flag>
-		<flag name="tools">
-			Build cli tools such as nmcli, nmtui and nm_cloud_setup
-		</flag>
-		<flag name="wifi">Enable support for wifi and 802.1x security</flag>
-		<flag name="wext">
-			Enable support for the deprecated Wext (Wireless Extensions) API; needed
-			for some older drivers (e.g. ipw2200, ndiswrapper)
-		</flag>
-	</use>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="concheck">Enable connectivity checking support</flag>
+    <flag name="connection-sharing">Support connection sharing (uses <pkg>net-dns/dnsmasq</pkg>)</flag>
+    <flag name="dhclient">Use dhclient from <pkg>net-misc/dhcp</pkg> for getting an IP via DHCP</flag>
+    <flag name="dhcpcd">Use <pkg>net-misc/dhcpcd</pkg> for getting an IP</flag>
+    <flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking</flag>
+    <flag name="iptables">Use <pkg>net-firewall/iptables</pkg> for connection sharing</flag>
+    <flag name="iwd">Use <pkg>net-wireless/iwd</pkg> instead of <pkg>net-wireless/wpa_supplicant</pkg> for wifi support by default</flag>
+    <flag name="psl">Use public suffix list via <pkg>net-libs/libpsl</pkg></flag>
+    <flag name="lto">Build using Link Time Optimizations (LTO)</flag>
+    <flag name="modemmanager">Enable support for mobile broadband devices using <pkg>net-misc/modemmanager</pkg></flag>
+    <flag name="nftables">Use <pkg>net-firewall/nftables</pkg> for connection sharing</flag>
+    <flag name="nss">Use <pkg>dev-libs/nss</pkg> for cryptography</flag>
+    <flag name="ofono">Use <pkg>net-misc/ofono</pkg> for telephony support.</flag>
+    <flag name="ovs">Enable OpenVSwitch support</flag>
+    <flag name="ppp">Enable support for mobile broadband and PPPoE connections using <pkg>net-dialup/ppp</pkg></flag>
+    <flag name="resolvconf">Use <pkg>net-dns/openresolv</pkg> for managing DNS information in /etc/resolv.conf. Generally, a symlink to /run/NetworkManager/resolv.conf is simpler. On systems running systemd-resolved, disable this flag and create a symlink to /run/systemd/resolve/stub-resolv.conf.</flag>
+    <flag name="teamd">Enable Teamd control support</flag>
+    <flag name="tools">Build cli tools such as nmcli, nmtui and nm_cloud_setup</flag>
+    <flag name="wifi">Enable support for wifi and 802.1x security</flag>
+    <flag name="wext">Enable support for the deprecated Wext (Wireless Extensions) API; needed for some older drivers (e.g. ipw2200, ndiswrapper)</flag>
+  </use>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">NetworkManager/NetworkManager</remote-id>
+  </upstream>
 </pkgmetadata>

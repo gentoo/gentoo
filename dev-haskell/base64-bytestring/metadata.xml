@@ -6,6 +6,6 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">bos/base64-bytestring</remote-id>
+		<remote-id type="github">haskell/base64-bytestring</remote-id>
 	</upstream>
 </pkgmetadata>

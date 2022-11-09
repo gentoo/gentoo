@@ -94,6 +94,10 @@ BDEPEND="dev-vcs/mercurial"
 # users.
 EHG_OFFLINE="${EHG_OFFLINE:-${EVCS_OFFLINE}}"
 
+# @ECLASS_VARIABLE: EHG_BOOTSTRAP
+# @DESCRIPTION:
+# Command to be executed after checkout and clone of the specified repository.
+
 # @FUNCTION: mercurial_fetch
 # @USAGE: [repository_uri] [module] [sourcedir]
 # @DESCRIPTION:
@@ -171,10 +175,6 @@ mercurial_fetch() {
 mercurial_bootstrap() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	# @ECLASS_VARIABLE: EHG_BOOTSTRAP
-	# @DESCRIPTION:
-	# Command to be executed after checkout and clone of the specified
-	# repository.
 	if [[ ${EHG_BOOTSTRAP} ]]; then
 		pushd "${S}" > /dev/null
 		einfo "Starting bootstrap"

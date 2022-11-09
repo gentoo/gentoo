@@ -1,0 +1,33 @@
+https://sourceware.org/git/?p=valgrind.git;a=commit;h=1dbc46750f7f716ae3b9cf718380df77422379da
+https://bugs.gentoo.org/869320
+
+From: Paul Floyd <pjfloyd@wanadoo.fr>
+Date: Tue, 19 Apr 2022 22:03:01 +0200
+Subject: [PATCH] Bug 452779 Valgrind fails to build on FreeBSD 13.0 with
+ llvm-devel (15.0.0)
+
+This fixes building.
+
+I may make the -lgcc and libgcc-sup conditonal on not using clang later.
+--- a/Makefile.tool.am
++++ b/Makefile.tool.am
+@@ -16,14 +16,14 @@ TOOL_DEPENDENCIES_@VGCONF_PLATFORM_SEC_CAPS@ = \
+ 	$(top_builddir)/VEX/libvex-@VGCONF_ARCH_SEC@-@VGCONF_OS@.a
+ endif
+ 
+-
+-TOOL_LDADD_COMMON = -lgcc \
+-	$(top_builddir)/coregrind/libgcc-sup-@VGCONF_ARCH_PRI@-@VGCONF_OS@.a
++TOOL_LDADD_COMMON = -lgcc
+ TOOL_LDADD_@VGCONF_PLATFORM_PRI_CAPS@ = \
+-	$(TOOL_DEPENDENCIES_@VGCONF_PLATFORM_PRI_CAPS@) $(TOOL_LDADD_COMMON)
++	$(TOOL_DEPENDENCIES_@VGCONF_PLATFORM_PRI_CAPS@) $(TOOL_LDADD_COMMON) \
++	$(top_builddir)/coregrind/libgcc-sup-@VGCONF_ARCH_PRI@-@VGCONF_OS@.a
+ if VGCONF_HAVE_PLATFORM_SEC
+ TOOL_LDADD_@VGCONF_PLATFORM_SEC_CAPS@ = \
+-	$(TOOL_DEPENDENCIES_@VGCONF_PLATFORM_SEC_CAPS@) $(TOOL_LDADD_COMMON)
++	$(TOOL_DEPENDENCIES_@VGCONF_PLATFORM_SEC_CAPS@) $(TOOL_LDADD_COMMON) \
++	$(top_builddir)/coregrind/libgcc-sup-@VGCONF_ARCH_SEC@-@VGCONF_OS@.a
+ endif
+ 
+ 

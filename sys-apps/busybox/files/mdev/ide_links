@@ -1,23 +1,23 @@
 #!/bin/sh
 
-[ -f /proc/ide/$MDEV/media ] || exit
+[ -f /proc/ide/"${MDEV}"/media ] || exit
 
-media=`cat /proc/ide/$MDEV/media`
-for i in $media $media[0-9]* ; do
-	if [ "`readlink $i 2>/dev/null`" = $MDEV ] ; then
-		LINK=$i
+media=$(cat /proc/ide/"${MDEV}"/media)
+for i in "${media}" "${media}"[0-9]* ; do
+	if [ "$(readlink "$i" 2>/dev/null)" = "${MDEV}" ] ; then
+		LINK="$i"
 		break
 	fi
 done
 
 # link exist, remove if necessary and exit
-if [ "$LINK" ] ; then
-	[ "$ACTION" = remove ] && rm $LINK
+if [ "${LINK}" ] ; then
+	[ "${ACTION}" = remove ] && rm "${LINK}"
 	exit
 fi
 
 # create a link
-num=`ls $media[0-9]* 2>/dev/null | wc -l`
-ln -sf $MDEV "$media`echo $num`"
-[ -e "$media" ] || ln -sf $MDEV "$media"
+num=$(ls "${media}"[0-9]* 2>/dev/null | wc -l)
+ln -sf "${MDEV}" "${media}${num}"
+[ -e "${media}" ] || ln -sf "${MDEV}" "${media}"
 

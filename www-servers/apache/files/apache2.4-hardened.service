@@ -1,0 +1,25 @@
+[Unit]
+Description=The Apache HTTP Server
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/apache2
+ExecStart=/usr/sbin/apache2 $APACHE2_OPTS -DFOREGROUND
+ExecReload=/usr/sbin/apache2 $APACHE2_OPTS -k graceful
+ExecStop=/usr/sbin/apache2 $APACHE2_OPTS -k graceful-stop
+# We want systemd to give httpd some time to finish gracefully, but still want
+# it to kill httpd after TimeoutStopSec if something went wrong during the
+# graceful stop. Normally, Systemd sends SIGTERM signal right after the
+# ExecStop, which would kill httpd. We are sending useless SIGCONT here to give
+# httpd time to finish.
+KillSignal=SIGCONT
+PrivateTmp=true
+#Hardening
+CapabilityBoundingSet=CAP_CHOWN CAP_SETGID CAP_SETUID CAP_DAC_OVERRIDE CAP_KILL CAP_NET_BIND_SERVICE CAP_IPC_LOCK
+SecureBits=noroot-locked
+ProtectSystem=full
+PrivateDevices=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target

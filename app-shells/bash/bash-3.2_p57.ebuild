@@ -5,6 +5,10 @@ EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
+# Uncomment if we have a patchset
+GENTOO_PATCH_DEV="sam"
+GENTOO_PATCH_VER="${PV}"
+
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-3.2-patches/
 PLEVEL="${PV##*_p}"
@@ -31,6 +35,10 @@ DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
 SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 
+if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
+fi
+
 LICENSE="GPL-2"
 SLOT="${MY_PV}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
@@ -46,17 +54,17 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/autoconf-mktime-2.59.patch # bug #220040
-	"${FILESDIR}"/${PN}-3.2-loadables.patch
-	"${FILESDIR}"/${PN}-2.05b-parallel-build.patch # bug #41002
-	"${FILESDIR}"/${PN}-3.2-protos.patch
-	"${FILESDIR}"/${PN}-3.2-session-leader.patch # bug #231775
-	"${FILESDIR}"/${PN}-3.2-ldflags-for-build.patch # bug #211947
-	"${FILESDIR}"/${PN}-3.2-process-subst.patch
-	"${FILESDIR}"/${PN}-3.2-ulimit.patch
-	"${FILESDIR}"/${PN}-3.0-trap-fg-signals.patch
-	"${FILESDIR}"/${PN}-3.2-dev-fd-test-as-user.patch # bug #131875
-	"${FILESDIR}"/${PN}-4.2-dev-fd-buffer-overflow.patch # bug #431850
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/autoconf-mktime-2.59.patch # bug #220040
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.2-loadables.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-2.05b-parallel-build.patch # bug #41002
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.2-protos.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.2-session-leader.patch # bug #231775
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.2-ldflags-for-build.patch # bug #211947
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.2-process-subst.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.2-ulimit.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.0-trap-fg-signals.patch
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-3.2-dev-fd-test-as-user.patch # bug #131875
+	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-4.2-dev-fd-buffer-overflow.patch # bug #431850
 )
 
 pkg_setup() {
@@ -70,6 +78,10 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz
+
+	if [[ -n ${GENTOO_PATCH_VER} ]] ; then
+		unpack ${PN}-${GENTOO_PATCH_VER}-patches.tar.xz
+	fi
 }
 
 src_prepare() {

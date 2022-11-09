@@ -9,6 +9,7 @@
 		<flag name="warmstarts">Enables rpcbind to cache configuration for warm restarts</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:rpcbind_project:rpcbind</remote-id>
 		<remote-id type="sourceforge">rpcbind</remote-id>
 	</upstream>
 </pkgmetadata>

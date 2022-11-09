@@ -1,0 +1,56 @@
+From 3e45b2f35f194100ec3293c7f3e36f95f48b0cb8 Mon Sep 17 00:00:00 2001
+From: Uli Schlachter <psychon@znc.in>
+Date: Fri, 5 Aug 2022 16:12:40 +0200
+Subject: [PATCH] Fix an ODR violation
+
+Building with CFLAGS="-flto -Werror=odr -Werror=lto-type-mismatch
+-Werror=strict-aliasing" CXXFLAGS="-flto -Werror=odr
+-Werror=lto-type-mismatch -Werror=strict-aliasing" LDFLAGS=-flto fails
+due to a violation of the one definition rule. There are two different
+definitions of TOption that are both linked into the znc binary.
+
+Fix this by putting them into anonymous namespaces.
+
+Fixes: https://github.com/znc/znc/issues/1834
+Signed-off-by: Uli Schlachter <psychon@znc.in>
+---
+ src/IRCNetwork.cpp | 2 ++
+ src/User.cpp       | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/src/IRCNetwork.cpp b/src/IRCNetwork.cpp
+index 46a2481a49..99f9242907 100644
+--- a/src/IRCNetwork.cpp
++++ b/src/IRCNetwork.cpp
+@@ -363,11 +363,13 @@ CString CIRCNetwork::GetNetworkPath() const {
+     return sNetworkPath;
+ }
+ 
++namespace {
+ template <class T>
+ struct TOption {
+     const char* name;
+     void (CIRCNetwork::*pSetter)(T);
+ };
++}
+ 
+ bool CIRCNetwork::ParseConfig(CConfig* pConfig, CString& sError,
+                               bool bUpgrade) {
+diff --git a/src/User.cpp b/src/User.cpp
+index 2ab5fac66f..16624adbbe 100644
+--- a/src/User.cpp
++++ b/src/User.cpp
+@@ -135,11 +135,13 @@ CUser::~CUser() {
+     CZNC::Get().AddBytesWritten(m_uBytesWritten);
+ }
+ 
++namespace {
+ template <class T>
+ struct TOption {
+     const char* name;
+     void (CUser::*pSetter)(T);
+ };
++}
+ 
+ bool CUser::ParseConfig(CConfig* pConfig, CString& sError) {
+     TOption<const CString&> StringOptions[] = {

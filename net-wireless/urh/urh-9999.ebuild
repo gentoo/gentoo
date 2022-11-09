@@ -34,7 +34,7 @@ DEPEND="${PYTHON_DEPS}
 		limesdr? ( net-wireless/limesuite:= )
 		plutosdr? ( net-libs/libiio:= )
 		rtlsdr? ( net-wireless/rtl-sdr:= )
-		sdrplay? ( net-wireless/sdrplay:= )
+		sdrplay? ( <net-wireless/sdrplay-3.0.0:= )
 		uhd?    ( net-wireless/uhd:= )"
 RDEPEND="${DEPEND}
 		dev-python/PyQt5[${PYTHON_USEDEP},testlib]

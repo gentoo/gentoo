@@ -3,7 +3,6 @@
 
 EAPI=8
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="OpenEXR ILM Base libraries"
@@ -13,12 +12,11 @@ S="${WORKDIR}/openexr-${PV}/IlmBase"
 
 LICENSE="BSD"
 SLOT="0/25" # based on SONAME
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="large-stack static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="!media-libs/openexr:3"
-DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 DOCS=( README.md )

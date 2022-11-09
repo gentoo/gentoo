@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # @ECLASS: mozcoreconf-v5.eclass
@@ -105,12 +105,6 @@ moz_pkgsetup() {
 	# false positives when toplevel configure passes downwards.
 	export QA_CONFIGURE_OPTIONS=".*"
 
-	if [[ $(gcc-major-version) -eq 3 ]]; then
-		ewarn "Unsupported compiler detected, DO NOT file bugs for"
-		ewarn "outdated compilers. Bugs opened with gcc-3 will be closed"
-		ewarn "invalid."
-	fi
-
 	python-any-r1_pkg_setup
 }
 
@@ -157,9 +151,9 @@ mozconfig_init() {
 	####################################
 
 	# Set optimization level
-	if [[ $(gcc-major-version) -ge 7 ]]; then
-		mozconfig_annotate "Workaround known breakage" --enable-optimize=-O2
-	elif [[ ${ARCH} == hppa ]]; then
+	mozconfig_annotate "Workaround known breakage" --enable-optimize=-O2
+
+	if [[ ${ARCH} == hppa ]]; then
 		mozconfig_annotate "more than -O0 causes a segfault on hppa" --enable-optimize=-O0
 	elif [[ ${ARCH} == x86 ]]; then
 		mozconfig_annotate "less then -O2 causes a segfault on x86" --enable-optimize=-O2
@@ -214,10 +208,8 @@ mozconfig_init() {
 		;;
 	esac
 
-	# We need to append flags for gcc-6 support
-	if [[ $(gcc-major-version) -ge 6 ]]; then
-		append-cxxflags -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2
-	fi
+	# We need to append flags for >= gcc-6 support
+	append-cxxflags -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2
 
 	# Use the MOZILLA_FIVE_HOME for the rpath
 	append-ldflags -Wl,-rpath="${MOZILLA_FIVE_HOME}",--enable-new-dtags

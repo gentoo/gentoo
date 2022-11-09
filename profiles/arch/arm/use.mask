@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -arm
 
+# matoro <matoro_gentoo@matoro.tk> (2022-09-29)
+# dev-util/google-perftools is supported here
+-tcmalloc
+
 # Michał Górny <mgorny@gentoo.org> (2021-01-07)
 # Prebuilt kernels are supported here.
 -dist-kernel
@@ -11,11 +15,6 @@
 # Unmask arm arch specific flags
 -cpu_flags_arm_iwmmxt
 -cpu_flags_arm_iwmmxt2
-
-# Sam James <sam@gentoo.org> (2020-11-10)
-# Rust isn't available for generic ARM,
-# just armv6, armv7
-rust
 
 # Sam James <sam@gentoo.org> (2020-06-24)
 # Valgrind lacks support for < ARMv7

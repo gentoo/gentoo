@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit flag-o-matic strip-linguas toolchain-funcs
 
 DESCRIPTION="Video Disk Recorder - turns a pc into a powerful set top box for DVB"
 HOMEPAGE="http://www.tvdr.de/"
-SRC_URI="http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/2.4.7;sf=tbz2 -> ${P}.tbz2
+SRC_URI="http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/${PV};sf=tbz2 -> ${P}.tbz2
 	mainmenuhooks? ( http://vdr.websitec.de/download/${PN}/${PN}-2.4.1/${PN}-2.4.1_mainmenuhook-1.0.1.patch.bz2 )
 	menuorg? ( https://projects.vdr-developer.org/projects/plg-menuorg/repository/revisions/master/raw/vdr-patch/vdr-menuorg-2.3.x.diff )
 	naludump? ( https://www.udo-richter.de/vdr/files/vdr-2.1.5-naludump-0.1.diff )
@@ -65,7 +65,7 @@ add_cap() {
 }
 
 lang_po() {
-	LING_PO=$( ls ${S}/po | sed -e "s:.po::g" | cut -d_ -f1 | tr \\\012 ' ' )
+	LING_PO=$( ls "${S}"/po | sed -e "s:.po::g" | cut -d_ -f1 | tr \\\012 ' ' )
 }
 
 src_configure() {

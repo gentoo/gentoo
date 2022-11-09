@@ -1,0 +1,40 @@
+https://gitlab.com/psmisc/psmisc/-/commit/6892e321e7042e3df60a5501a1c59d076e8a856f
+
+From 6892e321e7042e3df60a5501a1c59d076e8a856f Mon Sep 17 00:00:00 2001
+From: Craig Small <csmall@dropbear.xyz>
+Date: Mon, 18 Jul 2022 20:16:42 +1000
+Subject: [PATCH] killall: use kill if pidfd_send_signal() fails
+
+The pidfd_send_signal() system call appeared in Linux 5.1
+If psmisc is build on a system before then, or a non-Linux
+system, then kill() is used instead. However if psmisc is
+built on a Linux >= 5.1 system but run on a < 5.1 Linux
+system the system call fails and killall doesn't work.
+
+The fix, as proposed by Peter T. Breuer, is to try
+pidfd_send_signal() and if the return value is < 0 and
+errno is ENOSYS then we know at runtime the system call
+failed and we fall through to trusty old kill().
+
+Note, this means that killall on systems below 5.1 still
+have the race PID condition that the pidfd calls fix.
+
+References:
+ https://bugs.debian.org/1015228
+--- a/src/killall.c
++++ b/src/killall.c
+@@ -326,7 +326,12 @@ my_send_signal(
+ {
+ #ifdef __NR_pidfd_send_signal
+     if (pid > 0) /* Not PGID */
+-        return syscall(__NR_pidfd_send_signal, pidfd, sig, NULL, 0);
++    {
++	int ret = syscall(__NR_pidfd_send_signal, pidfd, sig, NULL, 0);
++	if (ret >= 0 || errno != ENOSYS)
++	    return ret;
++	// fall through if no such syscall
++    }
+ #endif
+     return kill(pid, sig);
+ }
+GitLab

@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: savedconfig.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: common API for saving/restoring complex configuration files
 # @DESCRIPTION:
 # It is not uncommon to come across a package which has a very fine
@@ -35,7 +35,7 @@ inherit portability
 IUSE="savedconfig"
 
 case ${EAPI} in
-	[5-7]) ;;
+	6|7|8) ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 

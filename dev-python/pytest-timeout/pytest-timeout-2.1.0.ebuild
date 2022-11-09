@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
+
 inherit distutils-r1
 
 DESCRIPTION="pytest plugin to abort hanging tests"
@@ -21,7 +22,9 @@ BDEPEND="
 	test? (
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		!hppa? (
-			dev-python/pytest-cov[${PYTHON_USEDEP}]
+			$(python_gen_cond_dep '
+				dev-python/pytest-cov[${PYTHON_USEDEP}]
+			' python3_{8..10} pypy3)
 		)
 	)"
 

@@ -210,6 +210,11 @@ case ${EAPI} in
 		;;
 esac
 
+# Many (but not all) extensions use pkgconfig in src_configure.
+if [[ ${#RUBY_FAKEGEM_EXTENSIONS[@]} -gt 0 ]]; then
+	BDEPEND+=" virtual/pkgconfig "
+fi
+
 # @FUNCTION: ruby_fakegem_gemsdir
 # @RETURN: Returns the gem data directory
 # @DESCRIPTION:
@@ -547,7 +552,7 @@ each_fakegem_test() {
 
 	case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		rake)
-			${RUBY} --disable=did_you_mean -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
+			MT_NO_PLUGINS=true ${RUBY} --disable=did_you_mean -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
 			;;
 		rspec)
 			RSPEC_VERSION=2 ruby-ng_rspec
@@ -564,10 +569,10 @@ each_fakegem_test() {
 	esac
 }
 
+# @FUNCTION: each_ruby_test
+# @DESCRIPTION:
+# Run the tests for this package.
 if [[ ${RUBY_FAKEGEM_RECIPE_TEST} != none ]]; then
-		# @FUNCTION: each_ruby_test
-		# @DESCRIPTION:
-		# Run the tests for this package.
 		each_ruby_test() {
 			each_fakegem_test
 		}

@@ -1,0 +1,37 @@
+Bug: https://bugs.gentoo.org/459446
+
+From: orbea <orbea@riseup.net>
+Date: Tue, 19 Jul 2022 10:42:26 -0700
+Subject: [PATCH] support: Install fewer programs
+
+--- a/support/Makefile.in
++++ b/support/Makefile.in
+@@ -14,27 +14,12 @@ include $(top_builddir)/build/rules.mk
+ 
+ install:
+ 	@test -d $(DESTDIR)$(bindir) || $(MKINSTALLDIRS) $(DESTDIR)$(bindir)
+-	@test -d $(DESTDIR)$(sbindir) || $(MKINSTALLDIRS) $(DESTDIR)$(sbindir)
+-	@test -d $(DESTDIR)$(libexecdir) || $(MKINSTALLDIRS) $(DESTDIR)$(libexecdir)
+-	@cp -p $(top_builddir)/server/httpd.exp $(DESTDIR)$(libexecdir)
+-	@for i in apxs dbmmanage; do \
++	@for i in dbmmanage; do \
+ 	    if test -f "$(builddir)/$$i"; then \
+ 	        cp -p $$i $(DESTDIR)$(bindir); \
+ 	        chmod 755 $(DESTDIR)$(bindir)/$$i; \
+ 	    fi ; \
+ 	done
+-	@for i in apachectl; do \
+-	    if test -f "$(builddir)/$$i"; then \
+-	        cp -p $$i $(DESTDIR)$(sbindir); \
+-	        chmod 755 $(DESTDIR)$(sbindir)/$$i; \
+-	    fi ; \
+-	done
+-	@if test -f "$(builddir)/envvars-std"; then \
+-	    cp -p envvars-std $(DESTDIR)$(sbindir); \
+-	    if test ! -f $(DESTDIR)$(sbindir)/envvars; then \
+-	        cp -p envvars-std $(DESTDIR)$(sbindir)/envvars ; \
+-	    fi ; \
+-	fi
+ 
+ htpasswd.lo: passwd_common.h
+ passwd_common.lo: passwd_common.h

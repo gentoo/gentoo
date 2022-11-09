@@ -11,9 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="libevent">Use libevent for event handling</flag>
-		<flag name="msn">Enable MSN Messenger IM protocol support.</flag>
-		<flag name="nss">Use NSS for SSL support in MSN and Jabber</flag>
-		<flag name="oscar">Enable Oscar (AIM/ICQ) IM protocol support</flag>
+		<flag name="nss">Prefer <pkg>dev-libs/nss</pkg> as SSL/TLS provider</flag>
 		<flag name="otr">Enable support for encrypted conversations</flag>
 		<flag name="plugins">Enable support for plugins</flag>
 		<flag name="purple">Use libpurple instead of the built-in IM protocol support</flag>
@@ -21,7 +19,9 @@
 	</use>
 	<longdescription>
 		Bitlbee as an IRC to IM gateway. It provides an irc server that allows
-		you to log on and then connect to various instant messaging protocols
-		(AIM, MSN, Yahoo, Jabber, etc).
+		you to log on and then connect to various instant messaging protocols.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">bitlbee/bitlbee</remote-id>
+	</upstream>
 </pkgmetadata>

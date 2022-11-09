@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>proaudio@gentoo.org</email>
-	<name>Gentoo ProAudio Project</name>
-</maintainer>
-<longdescription lang="en">
-	Lilv is a library to make the use of LV2 plugins as simple as possible for applications. Lilv is the successor to SLV2, rewritten to be significantly faster and have minimal dependencies.
-</longdescription>
+  <maintainer type="project">
+    <email>proaudio@gentoo.org</email>
+    <name>Gentoo ProAudio Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Suil makes it possible to load a UI of any toolkit in a host using any other toolkit.
+    Suil currently supports every combination of Gtk 2, Gtk 3, Qt 5, and X11.
+  </longdescription>
+  <use>
+    <flag name="gtk2">Enable GTK2 based GUI support</flag>
+  </use>
 </pkgmetadata>

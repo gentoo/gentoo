@@ -5,8 +5,4 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="google-code">torsocks</remote-id>
-		<remote-id type="github">dgoulet/torsocks</remote-id>
-	</upstream>
 </pkgmetadata>

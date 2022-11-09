@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} )
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake lua-single python-single-r1 xdg-utils
 
@@ -29,7 +29,8 @@ SLOT="0/${PV}"
 NETWORKS="+irc"
 PLUGINS="+alias +buflist +charset +exec +fifo +fset +logger +relay +scripts +spell +trigger +typing +xfer"
 # dev-lang/v8 was dropped from Gentoo so we can't enable javascript support
-SCRIPT_LANGS="guile lua +perl php +python ruby tcl"
+# dev-lang/php eclass support is lacking, php plugins don't work. bug #705702
+SCRIPT_LANGS="guile lua +perl +python ruby tcl"
 LANGS=" cs de es fr it ja pl ru"
 IUSE="doc man nls selinux test ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
 
@@ -51,14 +52,12 @@ RDEPEND="
 	lua? ( ${LUA_DEPS} )
 	nls? ( virtual/libintl )
 	perl? ( dev-lang/perl:= )
-	php? ( >=dev-lang/php-7.0:*[embed] )
 	python? ( ${PYTHON_DEPS} )
 	ruby? (
 		|| (
 			dev-lang/ruby:3.1
 			dev-lang/ruby:3.0
 			dev-lang/ruby:2.7
-			dev-lang/ruby:2.6
 		)
 	)
 	selinux? ( sec-policy/selinux-irc )
@@ -114,7 +113,7 @@ src_prepare() {
 	done
 
 	# install docs in correct directory
-	sed -i "s#\${SHAREDIR}/doc/\${PROJECT_NAME}#\0-${PV}/html#" doc/*/CMakeLists.txt || die
+	sed -i "s#\${DATAROOTDIR}/doc/\${PROJECT_NAME}#\0-${PVR}/html#" doc/*/CMakeLists.txt || die
 
 	if [[ ${CHOST} == *-darwin* ]]; then
 		# fix linking error on Darwin
@@ -132,6 +131,7 @@ src_configure() {
 		-DENABLE_JAVASCRIPT=OFF
 		-DENABLE_LARGEFILE=ON
 		-DENABLE_NCURSES=ON
+		-DENABLE_PHP=OFF
 		-DENABLE_ALIAS=$(usex alias)
 		-DENABLE_BUFLIST=$(usex buflist)
 		-DENABLE_CHARSET=$(usex charset)
@@ -146,7 +146,6 @@ src_configure() {
 		-DENABLE_MAN=$(usex man)
 		-DENABLE_NLS=$(usex nls)
 		-DENABLE_PERL=$(usex perl)
-		-DENABLE_PHP=$(usex php)
 		-DENABLE_PYTHON=$(usex python)
 		-DENABLE_RELAY=$(usex relay)
 		-DENABLE_RUBY=$(usex ruby)

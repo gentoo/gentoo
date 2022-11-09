@@ -1,0 +1,129 @@
+https://github.com/zlib-ng/minizip-ng/issues/623
+https://github.com/zlib-ng/minizip-ng/commit/6261d6f5ec5bd275257354c048f68ad9723c3231
+
+From 6261d6f5ec5bd275257354c048f68ad9723c3231 Mon Sep 17 00:00:00 2001
+From: Nathan Moinvaziri <nathan@solidstatenetworks.com>
+Date: Sat, 11 Jun 2022 10:36:42 -0700
+Subject: [PATCH] Generate test files in binary temp directory.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -804,6 +804,8 @@ if(MZ_BUILD_TESTS AND MZ_BUILD_UNIT_TESTS)
+         endif()
+     endif()
+ 
++    set(TEST_TEMP_DIR ${CMAKE_CURRENT_BINARY_DIR}/Testing/Temporary)
++
+     add_test(NAME test_cmd COMMAND test_cmd WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+ 
+     function(create_compress_tests EXTRA_NAME EXTRA_ARGS)
+@@ -840,33 +842,43 @@ if(MZ_BUILD_TESTS AND MZ_BUILD_UNIT_TESTS)
+         foreach(INDEX RANGE ${COMPRESS_METHOD_COUNT})
+             list(GET COMPRESS_METHOD_NAMES ${INDEX} COMPRESS_METHOD_NAME)
+             list(GET COMPRESS_METHOD_ARGS ${INDEX} COMPRESS_METHOD_ARG)
++
++            set(COMPRESS_METHOD_DEST_DIR
++                ${TEST_TEMP_DIR}/${COMPRESS_METHOD_NAME}-${EXTRA_NAME})
++            set(COMPRESS_METHOD_PATH
++                ${TEST_TEMP_DIR}/${COMPRESS_METHOD_NAME}-${EXTRA_NAME}.zip)
++
+             add_test(NAME ${COMPRESS_METHOD_NAME}-zip-${EXTRA_NAME}
+                      COMMAND minizip_cmd ${COMPRESS_METHOD_ARG} -o ${EXTRA_ARGS}
+-                        result.zip test.c test.h empty.txt random.bin uniform.bin fuzz
++                        ${COMPRESS_METHOD_PATH}
++                        test.c test.h empty.txt random.bin uniform.bin fuzz
+                      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
+             add_test(NAME ${COMPRESS_METHOD_NAME}-list-${EXTRA_NAME}
+-                     COMMAND minizip_cmd -l ${EXTRA_ARGS} result.zip
++                     COMMAND minizip_cmd -l ${EXTRA_ARGS} ${COMPRESS_METHOD_PATH}
+                      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
+             if(NOT MZ_COMPRESS_ONLY)
+                 add_test(NAME ${COMPRESS_METHOD_NAME}-unzip-${EXTRA_NAME}
+-                         COMMAND minizip_cmd -x -o ${EXTRA_ARGS} -d out result.zip
++                         COMMAND minizip_cmd -x -o ${EXTRA_ARGS}
++                            -d ${COMPRESS_METHOD_DEST_DIR} ${COMPRESS_METHOD_PATH}
+                          WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
+             endif()
+             add_test(NAME ${COMPRESS_METHOD_NAME}-append-${EXTRA_NAME}
+                     COMMAND minizip_cmd ${COMPRESS_METHOD_ARG} -a ${EXTRA_ARGS}
+-                        result.zip single.txt
++                        ${COMPRESS_METHOD_PATH} single.txt
+                     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
+             if(NOT MZ_COMPRESS_ONLY)
+                 add_test(NAME ${COMPRESS_METHOD_NAME}-append-unzip-${EXTRA_NAME}
+-                            COMMAND minizip_cmd -x -o ${EXTRA_ARGS} -d out result.zip
++                            COMMAND minizip_cmd -x -o ${EXTRA_ARGS}
++                                -d ${COMPRESS_METHOD_DEST_DIR} ${COMPRESS_METHOD_PATH}
+                             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
+             endif()
+             add_test(NAME ${COMPRESS_METHOD_NAME}-erase-${EXTRA_NAME}
+-                    COMMAND minizip_cmd -o -e result.zip test.c test.h
++                    COMMAND minizip_cmd -o -e ${COMPRESS_METHOD_PATH} test.c test.h
+                     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
+             if(NOT MZ_COMPRESS_ONLY)
+                 add_test(NAME ${COMPRESS_METHOD_NAME}-erase-unzip-${EXTRA_NAME}
+-                         COMMAND minizip_cmd -x -o ${EXTRA_ARGS} -d out result.zip
++                         COMMAND minizip_cmd -x -o ${EXTRA_ARGS}
++                            -d ${COMPRESS_METHOD_DEST_DIR} ${COMPRESS_METHOD_PATH}
+                          WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
+             endif()
+         endforeach()
+@@ -891,43 +903,49 @@ if(MZ_BUILD_TESTS AND MZ_BUILD_UNIT_TESTS)
+     if(NOT MZ_COMPRESS_ONLY)
+         if(MZ_ZLIB OR MZ_LIBCOMP)
+             add_test(NAME unzip-tiny
+-                     COMMAND minizip_cmd -x -o ${EXTRA_ARGS} -d out
++                     COMMAND minizip_cmd -x -o ${EXTRA_ARGS}
++                        -d ${TEST_TEMP_DIR}/unzip-tiny
+                         fuzz/unzip_fuzzer_seed_corpus/tiny.zip
+                      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
+         endif()
+         if(MZ_BZIP2)
+             add_test(NAME unzip-bzip2
+-                     COMMAND minizip_cmd -x -o ${EXTRA_ARGS} -d out
++                     COMMAND minizip_cmd -x -o ${EXTRA_ARGS}
++                        -d ${TEST_TEMP_DIR}/unzip-bzip2
+                         fuzz/unzip_fuzzer_seed_corpus/bzip2.zip
+                      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
+         endif()
+         if(MZ_LZMA)
+             add_test(NAME unzip-lzma
+-                     COMMAND minizip_cmd -x -o ${EXTRA_ARGS} -d out
++                     COMMAND minizip_cmd -x -o ${EXTRA_ARGS}
++                        -d ${TEST_TEMP_DIR}/unzip-lzma
+                         fuzz/unzip_fuzzer_seed_corpus/lzma.zip
+                      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
+         endif()
+         if(MZ_PKCRYPT)
+             add_test(NAME unzip-pkcrypt
+-                     COMMAND minizip_cmd -x -o ${EXTRA_ARGS} -d out -p test123
++                     COMMAND minizip_cmd -x -o ${EXTRA_ARGS}
++                        -d ${TEST_TEMP_DIR}/unzip-pkcrypt -p test123
+                         fuzz/unzip_fuzzer_seed_corpus/encrypted_pkcrypt.zip
+                      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
+         endif()
+         if(MZ_WZAES)
+             add_test(NAME unzip-wzaes
+-                     COMMAND minizip_cmd -x -o ${EXTRA_ARGS} -d out -p test123
++                     COMMAND minizip_cmd -x -o ${EXTRA_ARGS}
++                        -d ${TEST_TEMP_DIR}/unzip-wzaes -p test123
+                         fuzz/unzip_fuzzer_seed_corpus/encrypted_wzaes.zip
+                      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
+         endif()
+     endif()
+     if(NOT MZ_COMPRESS_ONLY AND NOT MZ_DECOMPRESS_ONLY)
+         if(MZ_ZLIB AND NOT MZ_LIBCOMP)
++            file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/test/random.bin DESTINATION ${TEST_TEMP_DIR})
+             add_test(NAME gz
+                 COMMAND minigzip_cmd random.bin
+-                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
++                WORKING_DIRECTORY ${TEST_TEMP_DIR})
+             add_test(NAME ungz
+-                COMMAND minigzip_cmd -x -d out random.bin.gz
+-                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
++                COMMAND minigzip_cmd -x -d ${TEST_TEMP_DIR} random.bin.gz
++                WORKING_DIRECTORY ${TEST_TEMP_DIR})
+         endif()
+     endif()
+ endif()
+

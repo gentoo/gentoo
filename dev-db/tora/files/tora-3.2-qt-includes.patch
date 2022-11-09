@@ -1,0 +1,61 @@
+--- a/src/editor/tosqltext.cpp
++++ b/src/editor/tosqltext.cpp
+@@ -50,6 +50,7 @@
+ #include <QToolTip>
+ #endif
+ 
++#include <QMenu>
+ #include <QListWidget>
+ #include <QVBoxLayout>
+ #include <QApplication>
+--- a/src/main/tooraclesetting.cpp
++++ b/src/main/tooraclesetting.cpp
+@@ -45,6 +45,8 @@
+ #include "core/toqvalue.h"
+ #include "core/toquery.h"
+ 
++#include <QtGui/qvalidator.h>
++
+ toOracleSetting::toOracleSetting(QWidget *parent)
+     : QWidget(parent)
+     , toSettingTab("database.html#oracle")
+--- a/src/tools/tobrowser.cpp
++++ b/src/tools/tobrowser.cpp
+@@ -65,6 +65,7 @@
+ #include <QInputDialog>
+ #include <QSplitter>
+ #include <QToolBar>
++#include <QButtonGroup>
+ 
+ #include "icons/addindex.xpm"
+ #include "icons/addtable.xpm"
+--- a/src/tools/toscript.cpp
++++ b/src/tools/toscript.cpp
+@@ -56,6 +56,7 @@
+ #include <QSplitter>
+ #include <QtCore/QTextStream>
+ #include <QToolBar>
++#include <QButtonGroup>
+ 
+ #include "icons/execute.xpm"
+ #include "icons/toscript.xpm"
+--- a/src/tools/tosecurity.cpp
++++ b/src/tools/tosecurity.cpp
+@@ -46,6 +46,7 @@
+ 
+ #include <QSplitter>
+ #include <QToolBar>
++#include <QButtonGroup>
+ 
+ #include "icons/addrole.xpm"
+ #include "icons/adduser.xpm"
+--- a/src/widgets/tohelp.cpp
++++ b/src/widgets/tohelp.cpp
+@@ -43,6 +43,7 @@
+ #include "core/toconfiguration.h"
+ #include "ts_log/ts_log_utils.h"
+ 
++#include <QAction>
+ #include <QMessageBox>
+ #include <QtCore/QSettings>
+ 

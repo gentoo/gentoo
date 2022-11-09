@@ -1,5 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2022-09-10)
+# Mask in general and unmask on specific profiles
+sys-libs/musl
+sys-libs/libucontext
 
 # Sam James <sam@gentoo.org> (2021-11-22)
 # Mask the older libcrypt virtual (which accepted glibc[crypt]) to ease

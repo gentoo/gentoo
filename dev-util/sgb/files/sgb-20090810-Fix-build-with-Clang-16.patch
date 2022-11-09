@@ -1,0 +1,46 @@
+From 5d0845e935d9b8d4174b9d98dbc123ec5d5a3460 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 24 Oct 2022 19:54:02 +0100
+Subject: [PATCH] Fix build with Clang 16
+
+Bug: https://bugs.gentoo.org/832835
+--- a/gb_graph.w
++++ b/gb_graph.w
+@@ -40,11 +40,8 @@ programs at a higher level via the system loading routine. Here is
+ the general outline of \.{gb\_graph.c}:
+ 
+ @p
+-#ifdef SYSV
+ #include <string.h>
+-#else
+ #include <strings.h>
+-#endif
+ #include <stdio.h>
+ #include <stdlib.h>
+ @h@#
+@@ -63,11 +60,8 @@ interfere with GraphBase use of a useful identifier. We scotch that.
+ @(gb_graph.h@>=
+ #include <stdio.h>
+ #include <stdlib.h>
+-#ifdef SYSV
+ #include <string.h>
+-#else
+ #include <strings.h>
+-#endif
+ #undef min
+ @<Type declarations@>@;
+ 
+--- a/gb_io.w
++++ b/gb_io.w
+@@ -92,11 +92,8 @@ occasion to use some of the standard string operations.
+ 
+ @<Header...@>=
+ #include <stdio.h>
+-#ifdef SYSV
+ #include <string.h>
+-#else
+ #include <strings.h>
+-#endif
+ 
+ @* Inputting a line. The {\sc GB\_\,IO} routines get their input from
+ an array called |buffer|. This array is internal to {\sc

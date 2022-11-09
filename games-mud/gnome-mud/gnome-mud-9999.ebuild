@@ -1,14 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-GNOME2_EAUTORECONF="yes"
+EAPI=8
 
 inherit gnome2-utils git-r3 meson xdg
 
 DESCRIPTION="GNOME MUD client"
 HOMEPAGE="https://wiki.gnome.org/Apps/GnomeMud"
-SRC_URI=""
 EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gnome-mud.git"
 
 LICENSE="GPL-2+"
@@ -23,7 +21,8 @@ RDEPEND="
 	dev-libs/libpcre
 	sys-libs/zlib
 	gstreamer? ( media-libs/gstreamer:1.0 )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig"

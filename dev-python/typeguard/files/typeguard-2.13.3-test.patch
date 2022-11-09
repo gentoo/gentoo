@@ -1,0 +1,44 @@
+diff --git a/src/typeguard/__init__.py b/src/typeguard/__init__.py
+index 5684d63..27fa30b 100644
+--- a/src/typeguard/__init__.py
++++ b/src/typeguard/__init__.py
+@@ -61,22 +61,25 @@ except ImportError:
+     from typing import _ForwardRef as ForwardRef
+     evaluate_forwardref = ForwardRef._eval_type
+ 
+-if sys.version_info >= (3, 10):
+-    from typing import is_typeddict
+-else:
+-    _typed_dict_meta_types = ()
+-    if sys.version_info >= (3, 8):
+-        from typing import _TypedDictMeta
+-        _typed_dict_meta_types += (_TypedDictMeta,)
++try:
++    from typing_extensions import is_typeddict
++except ImportError:
++    if sys.version_info >= (3, 10):
++        from typing import is_typeddict
++    else:
++        _typed_dict_meta_types = ()
++        if sys.version_info >= (3, 8):
++            from typing import _TypedDictMeta
++            _typed_dict_meta_types += (_TypedDictMeta,)
+ 
+-    try:
+-        from typing_extensions import _TypedDictMeta
+-        _typed_dict_meta_types += (_TypedDictMeta,)
+-    except ImportError:
+-        pass
++        try:
++            from typing_extensions import _TypedDictMeta
++            _typed_dict_meta_types += (_TypedDictMeta,)
++        except ImportError:
++            pass
+ 
+-    def is_typeddict(tp) -> bool:
+-        return isinstance(tp, _typed_dict_meta_types)
++        def is_typeddict(tp) -> bool:
++            return isinstance(tp, _typed_dict_meta_types)
+ 
+ 
+ if TYPE_CHECKING:

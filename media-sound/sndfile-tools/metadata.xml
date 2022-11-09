@@ -15,4 +15,7 @@
 		* sndfile-spectrogram
 		* sndfile-mix-to-mono
 	</longdescription>
+	<upstream>
+		<remote-id type="github">libsndfile/sndfile-tools</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -26,7 +26,7 @@ S="${WORKDIR}/${P}-src"
 
 LICENSE="MIT Boost-1.0 BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 IUSE="debug test"
 RESTRICT="!test? ( test )"
 
@@ -60,6 +60,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DGIT=false # don't call git nor fail if missing, not a repo
 		-DRYML_BUILD_API=no # TODO if a python consumer needs it
 		-DRYML_BUILD_TESTS=$(usex test)
 		-DRYML_DBG=$(usex debug)

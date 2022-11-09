@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -52,17 +52,6 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}"/${MYP}
 PDEPEND="${PDEPEND} elibc_glibc? ( >=sys-libs/glibc-2.13 )"
 
-src_unpack() {
-	if ! use bootstrap && [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
-		eerror "You need a gcc compiler that provides the Ada Compiler:"
-		eerror "1) use gcc-config to select the right compiler or"
-		eerror "2) set the bootstrap use flag"
-		die "ada compiler not available"
-	fi
-
-	toolchain_src_unpack
-}
-
 src_prepare() {
 	if use amd64; then
 		BTSTRP=${BTSTRP_AMD64}
@@ -83,6 +72,15 @@ src_prepare() {
 	if [[ ${gnatpath} != "." ]] ; then
 		GNATMAKE="${gnatpath}/${GNATMAKE}"
 	fi
+
+	if ! use bootstrap && [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
+		eerror "You need a gcc compiler that provides the Ada Compiler:"
+		eerror "1) use gcc-config to select the right compiler or"
+		eerror "2) set the bootstrap use flag or"
+		eerror "3) set ADA to a working gcc ada compiler"
+		die "ada compiler not available"
+	fi
+
 	if use bootstrap; then
 		rm "${WORKDIR}"/${BTSTRP}/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/ld \
 			|| die
@@ -103,12 +101,12 @@ src_prepare() {
 		GNATLS="${gnatpath}/${GNATLS}"
 	fi
 	mkdir bin || die
-	ln -s $(which ${GCC}) bin/gcc || die
-	ln -s $(which ${CXX}) bin/g++ || die
-	ln -s $(which ${GNATMAKE}) bin/gnatmake || die
-	ln -s $(which ${GNATBIND}) bin/gnatbind || die
-	ln -s $(which ${GNATLINK}) bin/gnatlink || die
-	ln -s $(which ${GNATLS}) bin/gnatls || die
+	ln -s $(type -P ${GCC}) bin/gcc || die
+	ln -s $(type -P ${CXX}) bin/g++ || die
+	ln -s $(type -P ${GNATMAKE}) bin/gnatmake || die
+	ln -s $(type -P ${GNATBIND}) bin/gnatbind || die
+	ln -s $(type -P ${GNATLINK}) bin/gnatlink || die
+	ln -s $(type -P ${GNATLS}) bin/gnatls || die
 
 	cd ..
 	mv ${GNATDIR}/src/ada ${MYP}/gcc/ || die

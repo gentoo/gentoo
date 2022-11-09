@@ -14,4 +14,7 @@
     * Some handy shortcut keys of quilt commands.
 </longdescription>
 <stabilize-allarches/>
+<upstream>
+  <remote-id type="savannah-nongnu">quilt</remote-id>
+</upstream>
 </pkgmetadata>

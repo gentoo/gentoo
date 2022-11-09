@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="
 	dev-util/intltool

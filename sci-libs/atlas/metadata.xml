@@ -12,7 +12,7 @@
   Subroutines (BLAS) for both c and F77 interfaces. It can also build
   a subset of the linear algebra routine LAPACK library or the full
   LAPACK using the reference LAPACK from Netlib.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="generic">Build atlas assuming a fairly generic architecture (sse2 for x86, core2 for amd64)</flag>
   </use>

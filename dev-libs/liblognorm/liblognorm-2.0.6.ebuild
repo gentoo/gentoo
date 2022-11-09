@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://www.liblognorm.com/files/download/${P}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~hppa x86 ~amd64-linux"
+	KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc64 ~riscv ~sparc x86 ~amd64-linux"
 fi
 
 LICENSE="LGPL-2.1 Apache-2.0"
@@ -35,6 +35,10 @@ DEPEND="
 "
 
 DOCS=( ChangeLog )
+
+PATCHES=(
+	"${FILESDIR}/${P}-sphinx-5.patch"
+)
 
 src_prepare() {
 	default

@@ -15,7 +15,7 @@ else
 	SRC_URI="
 		https://github.com/Netflix/vmaf/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~riscv ~x86"
 fi
 
 LICENSE="BSD-2-with-patent"
@@ -38,7 +38,7 @@ src_prepare() {
 
 	# Workaround for https://bugs.gentoo.org/837221
 	# The paths in the tests are hard coded to look for the model folder as "../../model"
-	sed -i "s|\"../../model|\"../vmaf-${PV}/model|g" ${S}/libvmaf/test/* || die
+	sed -i "s|\"../../model|\"../vmaf-${PV}/model|g" "${S}"/libvmaf/test/* || die
 }
 
 multilib_src_configure() {

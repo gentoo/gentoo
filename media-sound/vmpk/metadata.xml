@@ -13,7 +13,7 @@
 	the Virtual MIDI Piano Keyboard to display the played MIDI notes from
 	another instrument or MIDI file player. To do so, connect the other MIDI
 	port to the input port of VMPK.
-</longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">vmpk</remote-id>
 	</upstream>

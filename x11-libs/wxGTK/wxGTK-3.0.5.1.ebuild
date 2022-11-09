@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,8 +20,10 @@ S="${WORKDIR}/wxWidgets-${PV}"
 
 LICENSE="wxWinLL-3 GPL-2 doc? ( wxWinFDL-3 )"
 SLOT="${WXRELEASE}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+X doc debug gstreamer libnotify opengl sdl tiff webkit"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+IUSE="+X doc debug gstreamer libnotify opengl pch sdl test tiff webkit"
+REQUIRED_USE="test? ( tiff ) tiff? ( X )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=app-eselect/eselect-wxwidgets-20131230
@@ -29,9 +31,9 @@ RDEPEND="
 	sdl? ( media-libs/libsdl2[${MULTILIB_USEDEP}] )
 	X? (
 		>=dev-libs/glib-2.22:2[${MULTILIB_USEDEP}]
+		media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
 		media-libs/libpng:0=[${MULTILIB_USEDEP}]
 		sys-libs/zlib[${MULTILIB_USEDEP}]
-		virtual/jpeg:0=[${MULTILIB_USEDEP}]
 		x11-libs/cairo[${MULTILIB_USEDEP}]
 		x11-libs/gtk+:3[${MULTILIB_USEDEP}]
 		x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}]
@@ -52,6 +54,7 @@ DEPEND="${RDEPEND}
 	opengl? ( virtual/glu[${MULTILIB_USEDEP}] )
 	X? ( x11-base/xorg-proto )"
 BDEPEND="
+	test? ( >=dev-util/cppunit-1.8.0 )
 	>=app-eselect/eselect-wxwidgets-20131230
 	virtual/pkgconfig"
 
@@ -59,6 +62,7 @@ PATCHES=(
 	"${WORKDIR}"/wxGTK-3.0.5_p20210214/
 	"${FILESDIR}"/wxGTK-${SLOT}-translation-domain.patch
 	"${FILESDIR}"/wxGTK-ignore-c++-abi.patch #676878
+	"${FILESDIR}/${PN}-configure-tests.patch"
 )
 
 src_prepare() {
@@ -72,7 +76,7 @@ src_prepare() {
 		-e "s:aclocal):aclocal/wxwin${WXRELEASE_NODOT}.m4):" \
 		-e "s:wxstd.mo:wxstd${WXRELEASE_NODOT}.mo:" \
 		-e "s:wxmsw.mo:wxmsw${WXRELEASE_NODOT}.mo:" \
-		Makefile.in || die
+		Makefile.in tests/Makefile.in || die
 
 	sed -i \
 		-e "s:\(WX_RELEASE = \).*:\1${WXRELEASE}:"\
@@ -93,6 +97,11 @@ multilib_src_configure() {
 		--with-expat=sys
 		--enable-compat28
 		$(use_with sdl)
+
+		# PCHes are unstable and are disabled in-tree where possible
+		# See bug #504204
+		# Commits 8c4774042b7fdfb08e525d8af4b7912f26a2fdce, fb809aeadee57ffa24591e60cfb41aecd4823090
+		$(use_enable pch precomp-headers)
 
 		# Don't hard-code libdir's prefix for wx-config
 		--libdir='${prefix}'/$(get_libdir)
@@ -123,12 +132,18 @@ multilib_src_configure() {
 		$(use_with libnotify)
 		$(use_with opengl)
 		$(use_with tiff libtiff sys)
+		$(use_enable test tests)
 	)
 
 	# wxBase options
 	! use X && myeconfargs+=( --disable-gui )
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+multilib_src_test() {
+	emake -C tests
+	(cd tests && ./test) || die
 }
 
 multilib_src_install_all() {

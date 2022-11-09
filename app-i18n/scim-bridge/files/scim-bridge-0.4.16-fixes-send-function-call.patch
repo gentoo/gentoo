@@ -1,0 +1,15 @@
+From Fedora:
+https://src.fedoraproject.org/rpms/scim-bridge/c/0532ab48617e02f5bfb1edaba17b22e88d9beaf4
+Index: scim-bridge-0.4.16/agent/scim-bridge-agent-signal-listener.cpp
+===================================================================
+--- scim-bridge-0.4.16.orig/agent/scim-bridge-agent-signal-listener.cpp
++++ scim-bridge-0.4.16/agent/scim-bridge-agent-signal-listener.cpp
+@@ -64,7 +64,7 @@ static void sig_quit (int sig)
+ {
+     if (!signal_occurred) {
+         signal_occurred = true;
+-        send (pipe_in, '\0', sizeof (char), MSG_NOSIGNAL);
++        send (pipe_in, "", sizeof (char), MSG_NOSIGNAL);
+     }
+ }
+ 

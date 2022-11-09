@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,7 @@ RESTRICT="strip"
 RDEPEND="
 	acct-group/gamestat
 	>=media-libs/libsdl-1.2.15-r4[abi_x86_32(-)]
+	sys-libs/glibc
 	sys-libs/libstdc++-v3:5
 	amd64? ( sys-libs/libstdc++-v3:5[multilib] )
 "

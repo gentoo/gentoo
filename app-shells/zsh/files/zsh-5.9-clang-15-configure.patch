@@ -1,0 +1,550 @@
+https://bugs.gentoo.org/869539
+https://www.zsh.org/mla/workers/2022/msg00964.html
+--- a/configure.ac
++++ b/configure.ac
+@@ -583,11 +583,11 @@ if test x$zsh_cv_c_have_union_init = xye
+ fi
+ 
+ dnl  Checking if compiler correctly cast signed to unsigned.
+ AC_CACHE_CHECK(if signed to unsigned casting is broken,
+ zsh_cv_c_broken_signed_to_unsigned_casting,
+-[AC_RUN_IFELSE([AC_LANG_SOURCE([[main(){return((int)(unsigned char)((char) -1) == 255);}]])],[zsh_cv_c_broken_signed_to_unsigned_casting=yes],[zsh_cv_c_broken_signed_to_unsigned_casting=no],[zsh_cv_c_broken_signed_to_unsigned_casting=no])])
++[AC_RUN_IFELSE([AC_LANG_SOURCE([[int main(){return((int)(unsigned char)((char) -1) == 255);}]])],[zsh_cv_c_broken_signed_to_unsigned_casting=yes],[zsh_cv_c_broken_signed_to_unsigned_casting=no],[zsh_cv_c_broken_signed_to_unsigned_casting=no])])
+ AH_TEMPLATE([BROKEN_SIGNED_TO_UNSIGNED_CASTING],
+ [Define to 1 if compiler incorrectly cast signed to unsigned.])
+ if test x$zsh_cv_c_broken_signed_to_unsigned_casting = xyes; then
+   AC_DEFINE(BROKEN_SIGNED_TO_UNSIGNED_CASTING)
+ fi
+@@ -1044,21 +1044,21 @@ if test x$zsh_cv_long_is_64_bit = xyes;
+ else
+   AC_CACHE_CHECK(if off_t is 64 bit, zsh_cv_off_t_is_64_bit,
+   [AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <sys/types.h>
+ 
+-main() { return sizeof(off_t) < 8; }
++int main() { return sizeof(off_t) < 8; }
+ ]])],[zsh_cv_off_t_is_64_bit=yes],[zsh_cv_off_t_is_64_bit=no],[zsh_cv_off_t_is_64_bit=no])])
+   if test x$zsh_cv_off_t_is_64_bit = xyes; then
+     AC_DEFINE(OFF_T_IS_64_BIT)
+   fi
+ 
+   AC_CACHE_CHECK(if ino_t is 64 bit, zsh_cv_ino_t_is_64_bit,
+   [AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <sys/types.h>
+ 
+-main() { return sizeof(ino_t) < 8; }
++int main() { return sizeof(ino_t) < 8; }
+ ]])],[zsh_cv_ino_t_is_64_bit=yes],[zsh_cv_ino_t_is_64_bit=no],[zsh_cv_ino_t_is_64_bit=no])])
+   if test x$zsh_cv_ino_t_is_64_bit = xyes; then
+     AC_DEFINE(INO_T_IS_64_BIT)
+   fi
+ 
+@@ -1394,22 +1394,22 @@ zsh_cv_func_tgetent_accepts_null,
+ [AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <fcntl.h>
+ #include <stdlib.h>
+ int tgetent(char *, char *);
+ char *tgetstr(char *, char **);
+-main()
++int main()
+ {
+     char buf[4096];
+     int r1 = tgetent(buf, "vt100");
+     int r2 = tgetent((char*)0,"vt100");
+     if (r1 >= 0 && r1 == r2) {
+         char tbuf[1024], *u;
+         u = tbuf;
+     	tgetstr("cl", &u);
+ 	creat("conftest.tgetent", 0640);
+     }
+-    exit((r1 != r2) || r2 == -1);
++    return((r1 != r2) || r2 == -1);
+ }
+ ]])],[if test -f conftest.tgetent; then
+     zsh_cv_func_tgetent_accepts_null=yes
+   else
+     zsh_cv_func_tgetent_accepts_null=no
+@@ -1422,22 +1422,22 @@ zsh_cv_func_tgetent_zero_success,
+ [AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <fcntl.h>
+ #include <stdlib.h>
+ int tgetent(char *, char*);
+ char *tgetstr(char *, char **);
+-main()
++int main()
+ {
+     char buf[4096];
+     int r1 = tgetent(buf, "!@#$%^&*");
+     int r2 = tgetent(buf, "vt100");
+     if (r1 < 0 && r2 == 0) {
+         char tbuf[1024], *u;
+         u = tbuf;
+     	tgetstr("cl", &u);
+ 	creat("conftest.tgetent0", 0640);
+     }
+-    exit(r1 == r2);
++    return(r1 == r2);
+ }
+ ]])],[if test -f conftest.tgetent0; then
+     zsh_cv_func_tgetent_zero_success=yes
+   else
+     zsh_cv_func_tgetent_zero_success=no
+@@ -1860,27 +1860,27 @@ zsh_cv_rlim_t_is_longer,
+ #ifdef HAVE_SYS_TIME_H
+ #include <sys/time.h>
+ #endif
+ #include <sys/resource.h>
+ #include <stdlib.h>
+-main(){struct rlimit r;exit(sizeof(r.rlim_cur) <= sizeof(long));}]])],[zsh_cv_rlim_t_is_longer=yes],[zsh_cv_rlim_t_is_longer=no],[zsh_cv_rlim_t_is_longer=yes])])
++int main(){struct rlimit r;return(sizeof(r.rlim_cur) <= sizeof(long));}]])],[zsh_cv_rlim_t_is_longer=yes],[zsh_cv_rlim_t_is_longer=no],[zsh_cv_rlim_t_is_longer=yes])])
+ if test x$zsh_cv_rlim_t_is_longer = xyes; then
+   AC_CACHE_CHECK(if rlim_t is a quad,
+   zsh_cv_rlim_t_is_quad_t,
+   [AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #ifdef HAVE_SYS_TIME_H
+ #include <sys/time.h>
+ #endif
+ #include <stdio.h>
+ #include <sys/resource.h>
+ #include <stdlib.h>
+-main() { 
++int main() { 
+   struct rlimit r;
+   char buf[20];
+   r.rlim_cur = 0;
+   sprintf(buf, "%qd", r.rlim_cur);
+-  exit(strcmp(buf, "0"));
++  return(strcmp(buf, "0"));
+ }]])],[zsh_cv_rlim_t_is_quad_t=yes],[zsh_cv_rlim_t_is_quad_t=no],[zsh_cv_rlim_t_is_quad_t=no])])
+   if test x$zsh_cv_rlim_t_is_quad_t = xyes; then
+     AC_DEFINE(RLIM_T_IS_QUAD_T)
+     DEFAULT_RLIM_T=quad_t
+   else
+@@ -1894,11 +1894,11 @@ else
+ #ifdef HAVE_SYS_TIME_H
+ #include <sys/time.h>
+ #endif
+ #include <sys/resource.h>
+ #include <stdlib.h>
+-  main(){struct rlimit r;r.rlim_cur=-1;exit(r.rlim_cur<0);}]])],[zsh_cv_type_rlim_t_is_unsigned=yes],[zsh_cv_type_rlim_t_is_unsigned=no],[zsh_cv_type_rlim_t_is_unsigned=no])])
++  int main(){struct rlimit r;r.rlim_cur=-1;return(r.rlim_cur<0);}]])],[zsh_cv_type_rlim_t_is_unsigned=yes],[zsh_cv_type_rlim_t_is_unsigned=no],[zsh_cv_type_rlim_t_is_unsigned=no])])
+   if test x$zsh_cv_type_rlim_t_is_unsigned = xyes; then
+     AC_DEFINE(RLIM_T_IS_UNSIGNED)
+     DEFAULT_RLIM_T="unsigned $DEFAULT_RLIM_T"
+   fi
+ fi
+@@ -2175,11 +2175,11 @@ zsh_cv_sys_fifo,
+ #include <fcntl.h>
+ #include <signal.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include <sys/stat.h>
+-main()
++int main()
+ {
+     char c;
+     int fd;
+     int pid, ret;
+     unlink("/tmp/fifo$$");
+@@ -2189,19 +2189,19 @@ main()
+     if(mknod("/tmp/fifo$$", 0010600, 0) < 0)
+ #endif
+ 	exit(1);
+     pid = fork();
+     if(pid < 0)
+-	exit(1);
++	return(1);
+     if(pid) {
+ 	fd = open("/tmp/fifo$$", O_RDONLY);
+-	exit(fd < 0 || read(fd, &c, 1) != 1 || c != 'x');
++	return(fd < 0 || read(fd, &c, 1) != 1 || c != 'x');
+     }
+     fd = open("/tmp/fifo$$", O_WRONLY);
+     ret = (fd < 0 || write(fd, "x", 1) < 1);
+     unlink("/tmp/fifo$$");
+-    exit(ret);
++    return(ret);
+ }
+ ]])],[zsh_cv_sys_fifo=yes],[zsh_cv_sys_fifo=no],[zsh_cv_sys_fifo=yes])
+ ])
+ AH_TEMPLATE([HAVE_FIFOS],
+ [Define to 1 if system has working FIFOs.])
+@@ -2276,24 +2276,24 @@ AC_CACHE_CHECK(if link() works,
+ zsh_cv_sys_link,
+ [AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <stdlib.h>
+-main()
++int main()
+ {
+     int ret;
+     char *tmpfile, *newfile;
+     tmpfile="/tmp/zsh.linktest$$";
+     newfile="/tmp/zsh.linktest2$$";
+     unlink(tmpfile);
+     unlink(newfile);
+     if(creat(tmpfile, 0644) < 0)
+-	exit(1);
++	return(1);
+     ret = link(tmpfile, newfile);
+     unlink(tmpfile);
+     unlink(newfile);
+-    exit(ret<0);
++    return(ret<0);
+ }
+ ]])],[zsh_cv_sys_link=yes],[zsh_cv_sys_link=no],[zsh_cv_sys_link=yes])])
+ AH_TEMPLATE([HAVE_LINK],
+ [Define to 1 if system has working link().])
+ if test x$zsh_cv_sys_link = xyes; then
+@@ -2309,15 +2309,15 @@ zsh_cv_sys_killesrch,
+ [AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <unistd.h>
+ #include <signal.h>
+ #include <errno.h>
+ #include <stdlib.h>
+-main()
++int main()
+ {
+     int pid = (getpid() + 10000) & 0xffffff;
+     while (pid && (kill(pid, 0) == 0 || errno != ESRCH)) pid >>= 1;
+-    exit(errno!=ESRCH);
++    return(errno!=ESRCH);
+ }
+ ]])],[zsh_cv_sys_killesrch=yes],[zsh_cv_sys_killesrch=no],[zsh_cv_sys_killesrch=yes])])
+ AH_TEMPLATE([BROKEN_KILL_ESRCH],
+ [Define to 1 if kill(pid, 0) doesn't return ESRCH, ie BeOS R4.51.])
+ if test x$zsh_cv_sys_killesrch = xno; then
+@@ -2339,11 +2339,11 @@ if test x$signals_style = xPOSIX_SIGNALS
+ #include <stdlib.h>
+ int child=0;
+ void handler(sig)
+     int sig;
+ {if(sig==SIGCHLD) child=1;}
+-main() {
++int main() {
+     struct sigaction act;
+     sigset_t set;
+     int pid, ret;
+     act.sa_handler = &handler;
+     sigfillset(&act.sa_mask);
+@@ -2354,11 +2354,11 @@ main() {
+     pid=fork();
+     if(pid==0) return 0;
+     if(pid>0) {
+     sigemptyset(&set);
+         ret=sigsuspend(&set);
+-        exit(child==0);
++        return(child==0);
+     }
+ }
+ ]])],[zsh_cv_sys_sigsuspend=yes],[zsh_cv_sys_sigsuspend=no],[zsh_cv_sys_sigsuspend=yes])])
+     if test x$zsh_cv_sys_sigsuspend = xno; then
+       AC_DEFINE(BROKEN_POSIX_SIGSUSPEND)
+@@ -2387,18 +2387,18 @@ case "x$zsh_working_tcsetpgrp" in
+     [AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <stdlib.h>
+-main() {
++int main() {
+     int fd;
+     int ret;
+     fd=open("/dev/tty", O_RDWR);
+     if (fd < 0) exit(2);
+     ret=tcsetpgrp(fd, tcgetpgrp(fd));
+     if (ret < 0) exit(1);
+-    exit(0);
++    return(0);
+ }
+ ]])],[zsh_cv_sys_tcsetpgrp=yes],[
+ case $? in
+     1) zsh_cv_sys_tcsetpgrp=no;;
+     2) zsh_cv_sys_tcsetpgrp=notty;;
+@@ -2434,19 +2434,19 @@ if test x$ac_cv_func_getpwnam = xyes; th
+ #include <pwd.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+-main() {
++int main() {
+     struct passwd *pw1, *pw2;
+     char buf[1024], name[1024];
+     sprintf(buf, "%d:%d", getpid(), rand());
+     pw1=getpwnam(buf);
+     if (pw1) strcpy(name, pw1->pw_name);
+     sprintf(buf, "%d:%d", rand(), getpid());
+     pw2=getpwnam(buf);
+-    exit(pw1!=0 && pw2!=0 && !strcmp(name, pw2->pw_name));
++    return(pw1!=0 && pw2!=0 && !strcmp(name, pw2->pw_name));
+ }
+ ]])],[zsh_cv_sys_getpwnam_faked=no],[zsh_cv_sys_getpwnam_faked=yes],[zsh_cv_sys_getpwnam_faked=no])])
+     if test x$zsh_cv_sys_getpwnam_faked = xyes; then
+       AC_DEFINE(GETPWNAM_FAKED)
+     fi
+@@ -2763,22 +2763,20 @@ elif test "x$dynamic" = xyes; then
+    zsh_cv_sys_elf,
+    [AC_RUN_IFELSE([AC_LANG_SOURCE([[/* Test for whether ELF binaries are produced */
+ #include <fcntl.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+-main(argc, argv)
+-int argc;
+-char *argv[];
++int main(int argc, char *argv[])
+ {
+ 	char b[4];
+ 	int i = open(argv[0],O_RDONLY);
+ 	if(i == -1) 
+ 		exit(1); /* fail */
+ 	if(read(i,b,4)==4 && b[0]==127 && b[1]=='E' && b[2]=='L' && b[3]=='F')
+-		exit(0); /* succeed (yes, it's ELF) */
++		return(0); /* succeed (yes, it's ELF) */
+ 	else
+-		exit(1); /* fail */
++		return(1); /* fail */
+ }]])],[zsh_cv_sys_elf=yes],[zsh_cv_sys_elf=no],[zsh_cv_sys_elf=yes])])
+ 
+   # We use [0-9]* in case statements, so need to change quoting
+   changequote(, )
+ 
+@@ -2908,11 +2908,11 @@ AC_LINK_IFELSE([AC_LANG_PROGRAM([[]], [[
+ EXTRA_LDFLAGS="${EXTRA_LDFLAGS=-rdynamic}"],[zsh_cvs_rdynamic_available=no])
+ LDFLAGS="$old_LDFLAGS")
+   AC_CACHE_CHECK(if your dlsym() needs a leading underscore,
+    zsh_cv_func_dlsym_needs_underscore,
+    [echo failed >conftestval && cat >conftest.c <<EOM
+-fred () { }
++void fred () { }
+ EOM
+     AC_TRY_COMMAND($CC -c $CFLAGS $CPPFLAGS $DLCFLAGS conftest.c 1>&AS_MESSAGE_LOG_FD) &&
+     AC_TRY_COMMAND($DLLD $LDFLAGS $DLLDFLAGS -o conftest.$DL_EXT conftest.o 1>&AS_MESSAGE_LOG_FD) &&
+     AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <stdio.h>
+@@ -2943,34 +2941,34 @@ char *zsh_gl_sym_addr ;
+ #define RTLD_LAZY 1
+ #endif
+ 
+ extern int fred() ;
+ 
+-main()
++int main()
+ {
+     void * handle ;
+     void * symbol ;
+     FILE *f=fopen("conftestval", "w");
+     if (!f) exit(1);
+     handle = dlopen("./conftest.$DL_EXT", RTLD_LAZY) ;
+     if (handle == NULL) {
+         fprintf (f, "dlopen failed") ;
+-            exit(1);
++            return(1);
+     }
+     symbol = dlsym(handle, "fred") ;
+     if (symbol == NULL) {
+                 /* try putting a leading underscore */
+         symbol = dlsym(handle, "_fred") ;
+         if (symbol == NULL) {
+             fprintf (f, "dlsym failed") ;
+-                exit(1);
++                return(1);
+                 }
+         fprintf (f, "yes") ;
+     }
+     else
+         fprintf (f, "no") ;
+-    exit(0);
++    return(0);
+ }]])],[zsh_cv_func_dlsym_needs_underscore=`cat conftestval`],[zsh_cv_func_dlsym_needs_underscore=failed
+     dynamic=no],[zsh_cv_func_dlsym_needs_underscore=no])])
+   if test "x$zsh_cv_func_dlsym_needs_underscore" = xyes; then
+     AC_DEFINE(DLSYM_NEEDS_UNDERSCORE)
+   elif test "x$zsh_cv_func_dlsym_needs_underscore" != xno; then
+--- a/aczsh.m4.old
++++ b/aczsh.m4
+@@ -42,10 +42,11 @@ AC_DEFUN(zsh_64_BIT_TYPE,
+ [AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #ifdef HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+ 
++int
+ main()
+ {
+   $1 foo = 0; 
+   int bar = (int) foo;
+   return sizeof($1) != 8;
+@@ -144,33 +145,34 @@ char *zsh_gl_sym_addr ;
+ #endif
+ #ifndef RTLD_GLOBAL
+ #define RTLD_GLOBAL 0
+ #endif
+ 
++int
+ main()
+ {
+     void *handle1, *handle2;
+     void *(*zsh_getaddr1)(), *(*zsh_getaddr2)();
+     void *sym1, *sym2;
+     handle1 = dlopen("./conftest1.$DL_EXT", RTLD_LAZY | RTLD_GLOBAL);
+-    if(!handle1) exit(1);
++    if(!handle1) return(1);
+     handle2 = dlopen("./conftest2.$DL_EXT", RTLD_LAZY | RTLD_GLOBAL);
+-    if(!handle2) exit(1);
++    if(!handle2) return(1);
+     zsh_getaddr1 = (void *(*)()) dlsym(handle1, "${us}zsh_getaddr1");
+     zsh_getaddr2 = (void *(*)()) dlsym(handle2, "${us}zsh_getaddr2");
+     sym1 = zsh_getaddr1();
+     sym2 = zsh_getaddr2();
+-    if(!sym1 || !sym2) exit(1);
+-    if(sym1 != sym2) exit(1);
++    if(!sym1 || !sym2) return(1);
++    if(sym1 != sym2) return(1);
+     dlclose(handle1);
+     handle1 = dlopen("./conftest1.$DL_EXT", RTLD_LAZY | RTLD_GLOBAL);
+-    if(!handle1) exit(1);
++    if(!handle1) return(1);
+     zsh_getaddr1 = (void *(*)()) dlsym(handle1, "${us}zsh_getaddr1");
+     sym1 = zsh_getaddr1();
+-    if(!sym1) exit(1);
+-    if(sym1 != sym2) exit(1);
+-    exit(0);
++    if(!sym1) return(1);
++    if(sym1 != sym2) return(1);
++    return(0);
+ }
+ ]])],[zsh_cv_shared_$1=yes],
+ [zsh_cv_shared_$1=no],
+ [zsh_cv_shared_$1=no]
+ )
+@@ -226,23 +228,23 @@ char *zsh_gl_sym_addr ;
+ #endif
+ #ifndef RTLD_GLOBAL
+ #define RTLD_GLOBAL 0
+ #endif
+ 
+-
++int
+ main()
+ {
+     void *handle1, *handle2;
+     int (*fred1)(), (*fred2)();
+     handle1 = dlopen("./conftest1.$DL_EXT", RTLD_LAZY | RTLD_GLOBAL);
+-    if(!handle1) exit(1);
++    if(!handle1) return(1);
+     handle2 = dlopen("./conftest2.$DL_EXT", RTLD_LAZY | RTLD_GLOBAL);
+-    if(!handle2) exit(1);
++    if(!handle2) return(1);
+     fred1 = (int (*)()) dlsym(handle1, "${us}fred");
+     fred2 = (int (*)()) dlsym(handle2, "${us}fred");
+-    if(!fred1 || !fred2) exit(1);
+-    exit((*fred1)() != 42 || (*fred2)() != 69);
++    if(!fred1 || !fred2) return(1);
++    return((*fred1)() != 42 || (*fred2)() != 69);
+ }
+ ]])],[zsh_cv_sys_dynamic_clash_ok=yes],
+ [zsh_cv_sys_dynamic_clash_ok=no],
+ [zsh_cv_sys_dynamic_clash_ok=no]
+ )
+@@ -302,21 +304,22 @@ char *zsh_gl_sym_addr ;
+ #endif
+ #ifndef RTLD_GLOBAL
+ #define RTLD_GLOBAL 0
+ #endif
+ 
++int
+ main()
+ {
+     void *handle;
+     int (*barneysym)();
+     handle = dlopen("./conftest1.$DL_EXT", RTLD_LAZY | RTLD_GLOBAL);
+-    if(!handle) exit(1);
++    if(!handle) return(1);
+     handle = dlopen("./conftest2.$DL_EXT", RTLD_LAZY | RTLD_GLOBAL);
+-    if(!handle) exit(1);
++    if(!handle) return(1);
+     barneysym = (int (*)()) dlsym(handle, "${us}barney");
+-    if(!barneysym) exit(1);
+-    exit((*barneysym)() != 69);
++    if(!barneysym) return(1);
++    return((*barneysym)() != 69);
+ }
+ ]])],[zsh_cv_sys_dynamic_rtld_global=yes],
+ [zsh_cv_sys_dynamic_rtld_global=no],
+ [zsh_cv_sys_dynamic_rtld_global=no]
+ )
+@@ -372,19 +375,20 @@ char *zsh_gl_sym_addr ;
+ #endif
+ #ifndef RTLD_GLOBAL
+ #define RTLD_GLOBAL 0
+ #endif
+ 
++int
+ main()
+ {
+     void *handle;
+     int (*barneysym)();
+     handle = dlopen("./conftest1.$DL_EXT", RTLD_LAZY | RTLD_GLOBAL);
+-    if(!handle) exit(1);
++    if(!handle) return(1);
+     barneysym = (int (*)()) dlsym(handle, "${us}barney");
+-    if(!barneysym) exit(1);
+-    exit((*barneysym)() != 69);
++    if(!barneysym) return(1);
++    return((*barneysym)() != 69);
+ }
+ 
+ int fred () { return 42; }
+ ]])],[zsh_cv_sys_dynamic_execsyms=yes],
+ [zsh_cv_sys_dynamic_execsyms=no],
+@@ -446,19 +450,20 @@ char *zsh_gl_sym_addr ;
+ #endif
+ #ifndef RTLD_GLOBAL
+ #define RTLD_GLOBAL 0
+ #endif
+ 
++int
+ main()
+ {
+     void *handle;
+     int (*barneysym)();
+     handle = dlopen("./conftest1.$DL_EXT", RTLD_LAZY | RTLD_GLOBAL);
+-    if(!handle) exit(1);
++    if(!handle) return(1);
+     barneysym = (int (*)()) dlsym(handle, "${us}barney");
+-    if(!barneysym) exit(1);
+-    exit((*barneysym)() != 69);
++    if(!barneysym) return(1);
++    return((*barneysym)() != 69);
+ }
+ 
+ int fred () { return 42; }
+ ]])],[zsh_cv_sys_dynamic_strip_exe=yes],
+ [zsh_cv_sys_dynamic_strip_exe=no],
+@@ -514,19 +519,20 @@ char *zsh_gl_sym_addr ;
+ #endif
+ #ifndef RTLD_GLOBAL
+ #define RTLD_GLOBAL 0
+ #endif
+ 
++int
+ main()
+ {
+     void *handle;
+     int (*fredsym)();
+     handle = dlopen("./conftest1.$DL_EXT", RTLD_LAZY | RTLD_GLOBAL);
+-    if(!handle) exit(1);
++    if(!handle) return(1);
+     fredsym = (int (*)()) dlsym(handle, "${us}fred");
+-    if(!fredsym) exit(1);
+-    exit((*fredsym)() != 42);
++    if(!fredsym) return(1);
++    return((*fredsym)() != 42);
+ }
+ ]])],[zsh_cv_sys_dynamic_strip_lib=yes],
+ [zsh_cv_sys_dynamic_strip_lib=no],
+ [zsh_cv_sys_dynamic_strip_lib=no]
+ )
+

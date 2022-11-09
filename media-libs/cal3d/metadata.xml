@@ -5,4 +5,7 @@
   <use>
     <flag name="16bit-indices">Enables use of 16bit indices</flag>
   </use>
+  <upstream>
+    <remote-id type="github">mp3butcher/Cal3D</remote-id>
+  </upstream>
 </pkgmetadata>

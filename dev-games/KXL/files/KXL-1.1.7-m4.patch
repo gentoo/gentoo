@@ -1,9 +1,0 @@
-Get rid of aclocal warning:
-/usr/share/aclocal/KXL.m4:6: warning: underquoted definition of AM_PATH_KXL
---- a/KXL.m4
-+++ b/KXL.m4
-@@ -5,3 +5,3 @@
- dnl
--AC_DEFUN(AM_PATH_KXL,
-+AC_DEFUN([AM_PATH_KXL],
- [dnl

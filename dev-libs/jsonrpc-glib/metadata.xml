@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
-	<longdescription>Jsonrpc-GLib is a JSON-RPC library for GLib. It includes support for
-		communicating as both a JSON-RPC client and server. Additionally, it
-		supports upgrating connections to use GVariant for less runtime overhead.</longdescription>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <longdescription>
+    Jsonrpc-GLib is a JSON-RPC library for GLib. It includes support for
+    communicating as both a JSON-RPC client and server. Additionally, it
+    supports upgrating connections to use GVariant for less runtime overhead.
+  </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">GNOME/jsonrpc-glib</remote-id>
+  </upstream>
 </pkgmetadata>

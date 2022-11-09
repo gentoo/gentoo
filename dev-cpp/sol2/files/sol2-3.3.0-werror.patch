@@ -1,0 +1,21 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -208,7 +208,6 @@ if (sol2-is-top-level-project)
+ 	check_compiler_flag(warn-pedantic GCC -Wpedantic)
+ 	check_compiler_flag(warn-all MSVC /W4 GCC -Wall)
+ 	check_compiler_flag(warn-extra GCC -Wextra)
+-	check_compiler_flag(warn-errors MSVC /WX GCC -Werror)
+ 	# Individual warnings/errors
+ 	check_compiler_diagnostic(unknown-warning)
+ 	check_compiler_diagnostic(unknown-warning-option)
+--- a/examples/customization/CMakeLists.txt
++++ b/examples/customization/CMakeLists.txt
+@@ -45,7 +45,7 @@ function (MAKE_CUSTOMIZATION_EXAMPLE example_suffix target_sol)
+ 			PRIVATE -std=c++1z 
+ 			-ftemplate-backtrace-limit=0
+ 			-Wno-unknown-warning -Wno-unknown-warning-option
+-			-Wall -Wpedantic -Werror -pedantic -pedantic-errors
++			-Wall -Wpedantic -pedantic -pedantic-errors
+ 			-Wno-noexcept-type)
+ 	endif()
+ 

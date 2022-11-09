@@ -25,7 +25,7 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
-	media-video/mpv[libmpv]
+	media-video/mpv:=[libmpv]
 	x11-libs/libX11
 "
 DEPEND="${RDEPEND}"

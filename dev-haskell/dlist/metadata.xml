@@ -5,13 +5,7 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Differences lists: a list-like type supporting O(1) append.
-		This is particularly useful for efficient logging and pretty
-		printing, (e.g. with the Writer monad), where list append
-		quickly becomes too expensive.
-	</longdescription>
-	<upstream>
-		<remote-id type="github">spl/dlist</remote-id>
-	</upstream>
+	<use>
+		<flag name="werror">Enable -Werror</flag>
+	</use>
 </pkgmetadata>

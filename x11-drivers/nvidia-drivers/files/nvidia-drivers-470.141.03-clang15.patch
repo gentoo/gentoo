@@ -1,0 +1,109 @@
+Kernel's makefiles pass -Werror=strict-prototypes which
+trigger errors with clang15+
+https://bugs.gentoo.org/870238
+--- a/kernel/nvidia/nvlink_linux.c
++++ b/kernel/nvidia/nvlink_linux.c
+@@ -571 +571 @@
+-void * nvlink_allocLock()
++void * nvlink_allocLock(void)
+--- a/kernel/nvidia/os-interface.c
++++ b/kernel/nvidia/os-interface.c
+@@ -1076 +1076 @@
+-NvU32 NV_API_CALL os_get_cpu_number()
++NvU32 NV_API_CALL os_get_cpu_number(void)
+@@ -1083 +1083 @@
+-NvU32 NV_API_CALL os_get_cpu_count()
++NvU32 NV_API_CALL os_get_cpu_count(void)
+@@ -1136 +1136 @@
+-void NV_API_CALL os_dump_stack()
++void NV_API_CALL os_dump_stack(void)
+--- a/kernel/nvidia-uvm/uvm_common.c
++++ b/kernel/nvidia-uvm/uvm_common.c
+@@ -37 +37 @@
+-bool uvm_debug_prints_enabled()
++bool uvm_debug_prints_enabled(void)
+--- a/kernel/nvidia-uvm/uvm_gpu_access_counters.c
++++ b/kernel/nvidia-uvm/uvm_gpu_access_counters.c
+@@ -1527 +1527 @@
+-NV_STATUS uvm_perf_access_counters_init()
++NV_STATUS uvm_perf_access_counters_init(void)
+@@ -1538 +1538 @@
+-void uvm_perf_access_counters_exit()
++void uvm_perf_access_counters_exit(void)
+--- a/kernel/nvidia-uvm/uvm_lock.c
++++ b/kernel/nvidia-uvm/uvm_lock.c
+@@ -337 +337 @@
+-bool __uvm_thread_check_all_unlocked()
++bool __uvm_thread_check_all_unlocked(void)
+--- a/kernel/nvidia-uvm/uvm_migrate.c
++++ b/kernel/nvidia-uvm/uvm_migrate.c
+@@ -795 +795 @@
+-NV_STATUS uvm_migrate_init()
++NV_STATUS uvm_migrate_init(void)
+@@ -821 +821 @@
+-void uvm_migrate_exit()
++void uvm_migrate_exit(void)
+--- a/kernel/nvidia-uvm/uvm_migrate_pageable.c
++++ b/kernel/nvidia-uvm/uvm_migrate_pageable.c
+@@ -979 +979 @@
+-NV_STATUS uvm_migrate_pageable_init()
++NV_STATUS uvm_migrate_pageable_init(void)
+@@ -988 +988 @@
+-void uvm_migrate_pageable_exit()
++void uvm_migrate_pageable_exit(void)
+--- a/kernel/nvidia-uvm/uvm_perf_heuristics.c
++++ b/kernel/nvidia-uvm/uvm_perf_heuristics.c
+@@ -31 +31 @@
+-NV_STATUS uvm_perf_heuristics_init()
++NV_STATUS uvm_perf_heuristics_init(void)
+@@ -50 +50 @@
+-void uvm_perf_heuristics_exit()
++void uvm_perf_heuristics_exit(void)
+--- a/kernel/nvidia-uvm/uvm_perf_prefetch.c
++++ b/kernel/nvidia-uvm/uvm_perf_prefetch.c
+@@ -463 +463 @@
+-NV_STATUS uvm_perf_prefetch_init()
++NV_STATUS uvm_perf_prefetch_init(void)
+@@ -501 +501 @@
+-void uvm_perf_prefetch_exit()
++void uvm_perf_prefetch_exit(void)
+--- a/kernel/nvidia-uvm/uvm_perf_thrashing.c
++++ b/kernel/nvidia-uvm/uvm_perf_thrashing.c
+@@ -1955 +1955 @@
+-NV_STATUS uvm_perf_thrashing_init()
++NV_STATUS uvm_perf_thrashing_init(void)
+@@ -2014 +2014 @@
+-void uvm_perf_thrashing_exit()
++void uvm_perf_thrashing_exit(void)
+--- a/kernel/nvidia-uvm/uvm_procfs.c
++++ b/kernel/nvidia-uvm/uvm_procfs.c
+@@ -49 +49 @@
+-NV_STATUS uvm_procfs_init()
++NV_STATUS uvm_procfs_init(void)
+@@ -69 +69 @@
+-void uvm_procfs_exit()
++void uvm_procfs_exit(void)
+@@ -98 +98 @@
+-struct proc_dir_entry *uvm_procfs_get_gpu_base_dir()
++struct proc_dir_entry *uvm_procfs_get_gpu_base_dir(void)
+@@ -103 +103 @@
+-struct proc_dir_entry *uvm_procfs_get_cpu_base_dir()
++struct proc_dir_entry *uvm_procfs_get_cpu_base_dir(void)
+--- a/kernel/nvidia-uvm/uvm_push.c
++++ b/kernel/nvidia-uvm/uvm_push.c
+@@ -245 +245 @@
+-bool uvm_push_info_is_tracking_descriptions()
++bool uvm_push_info_is_tracking_descriptions(void)
+@@ -250 +250 @@
+-bool uvm_push_info_is_tracking_acquires()
++bool uvm_push_info_is_tracking_acquires(void)
+--- a/kernel/nvidia-uvm/uvm_thread_context.c
++++ b/kernel/nvidia-uvm/uvm_thread_context.c
+@@ -104 +104 @@
+-bool uvm_thread_context_wrapper_is_used()
++bool uvm_thread_context_wrapper_is_used(void)
+--- a/kernel/nvidia-uvm/uvm_tools.c
++++ b/kernel/nvidia-uvm/uvm_tools.c
+@@ -2144 +2144 @@
+-void uvm_tools_flush_events()
++void uvm_tools_flush_events(void)

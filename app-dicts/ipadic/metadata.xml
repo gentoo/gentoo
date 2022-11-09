@@ -6,6 +6,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge-jp">ipadic</remote-id>
+		<remote-id type="osdn">ipadic</remote-id>
 	</upstream>
 </pkgmetadata>

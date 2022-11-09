@@ -30,7 +30,7 @@ PATCHES=(
 PERL_RM_FILES=( "t/pod.t" )
 
 src_prepare() {
-	myconf=( X11ROOT=${EPREFIX}/usr XFT=1 -I${EPREFIX}/usr/include/ -l${EPREFIX}/usr/$(get_libdir) )
+	myconf=( X11ROOT="${EPREFIX}"/usr XFT=1 -I"${EPREFIX}"/usr/include/ -l"${EPREFIX}"/usr/$(get_libdir) )
 	mydoc="ToDo VERSIONS"
 
 	perl-module_src_prepare

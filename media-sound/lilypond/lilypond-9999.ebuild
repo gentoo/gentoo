@@ -1,8 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
+EAPI=8
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit elisp-common autotools python-single-r1 toolchain-funcs xdg-utils
 
@@ -62,7 +62,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.22.1-free_font.patch
 )
 
-DOCS=( DEDICATION HACKING README.md ROADMAP )
+DOCS=( DEDICATION README.md ROADMAP )
 
 src_prepare() {
 	default
@@ -75,7 +75,7 @@ src_prepare() {
 	sed -i 's/OPTIMIZE -g/OPTIMIZE/' aclocal.m4 || die
 
 	# remove bundled texinfo file (fixes bug #448560)
-	rm tex/texinfo.tex || die
+	rm Documentation/tex/texinfo.tex || die
 
 	eautoreconf
 
@@ -87,7 +87,6 @@ src_configure() {
 	sed -i "s/AR=ar/AR=$(tc-getAR)/g" flower/GNUmakefile || die "Failed to fix ar command"
 
 	local myeconfargs=(
-		--with-texgyre-dir=/usr/share/fonts/tex-gyre
 		--disable-optimising
 		--disable-pipe
 		$(use_enable debug debugging)

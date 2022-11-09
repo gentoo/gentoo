@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<use>
+		<flag name="rely-on-shared-lpeg-library">Do not build lpeg from source, but trust that lpeg is
+made available in other ways, e.g., through a
+system-wide installation. The loader will be replaced
+with a placeholder function that only emits a message.</flag>
+	</use>
+</pkgmetadata>

@@ -4,7 +4,4 @@
 <maintainer type="person">
   <email>ulm@gentoo.org</email>
 </maintainer>
-<upstream>
-  <remote-id type="freecode">cvs-fast-export</remote-id>
-</upstream>
 </pkgmetadata>

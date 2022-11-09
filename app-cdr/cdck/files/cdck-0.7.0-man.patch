@@ -1,0 +1,50 @@
+Author: gregor herrmann <gregoa@debian.org>
+Last-Update: 2015-03-04
+Description:
+ - fix calls to pod2man
+ - remove stray "=cut", leads to pod2man errors
+ - add a note about using the gnuplot datafile
+Bugs-Ubuntu: https://bugs.launchpad.net/bugs/476591
+
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -11,7 +11,7 @@
+ EXTRA_DIST = cdck_man.in
+ 
+ cdck.1:
+-	pod2man --section=cdck.1 --verbose cdck_man.in > cdck.1
++	pod2man --section=1 --verbose --name=cdck cdck_man.in > cdck.1
+ 
+ 
+ #
+--- a/man/cdck_man.in
++++ b/man/cdck_man.in
+@@ -1,5 +1,3 @@
+-=cut
+-
+ =head1 NAME
+ 
+        cdck - simple CD/DVD check program
+@@ -17,6 +15,8 @@
+        -i Print CD/DVD information and quit, perform no timings (default mode)
+ 
+        -t Perform timing test
++
++	  Note: this option will not work for audio CDs.
+ 
+        -p Save data for gnuplot(1) program
+ 
+@@ -26,7 +26,11 @@
+ 
+        -v Verbose operations
+ 
++       To actually plot your data you have to start gnuplot and plot the datafile:
++          $ gnuplot
++          gnuplot> plot "cdck-plot.dat"
++
+ =head1 COPYRIGHT
+ 
+-       This manpage was written by gregor herrmann <gregor+debian@comodo.priv.at> for the
+-       Debian project but may be used by others.
++       This manpage was written by gregor herrmann <gregoa@debian.org>
++       for the Debian project, but may be used by others.

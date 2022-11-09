@@ -1,0 +1,38 @@
+From 8fb10db1de1fac2ca99fab246a276620ffd6f02b Mon Sep 17 00:00:00 2001
+From: Richard Adenling <dreeze@gmail.com>
+Date: Tue, 10 May 2022 21:18:01 +0200
+Subject: [PATCH] Correct the conditional comments in the test data
+
+This fixes the problem with libxml2 2.9.14 not considering <![ to be a
+valid way to open a tag anymore.
+
+Closes #1367
+---
+ test/engine/rfc822/rfc822-message-data-test.vala | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/engine/rfc822/rfc822-message-data-test.vala b/test/engine/rfc822/rfc822-message-data-test.vala
+index 613e4b9a..d5e25ea0 100644
+--- a/test/engine/rfc822/rfc822-message-data-test.vala
++++ b/test/engine/rfc822/rfc822-message-data-test.vala
+@@ -763,7 +763,7 @@ ttp://p.ebaystatic.com/aw/email/Welcome_Day_0/spacer.gif" width=3D"5" heigh=
+ t=3D"1" alt=3D"" border=3D"0" style=3D"display:block; width: 5px !important=
+ "></td>
+ </tr>
+-<![if ! gte mso 9]>
++<!--[if ! gte mso 9]>
+ <tr>
+ <td style=3D"border-collapse: collapse !important;
+ border-spacing: 0; !important; padding: 0"><img src=3D"http://p.ebaystatic.=
+@@ -803,7 +803,7 @@ ttp://p.ebaystatic.com/aw/email/Welcome_Day_0/spacer.gif" width=3D"5" heigh=
+ t=3D"1" alt=3D"" border=3D"0" style=3D"display:block; width: 5px !important=
+ "></td>
+ </tr>
+-<![if ! gte mso 9]>
++<!--[if ! gte mso 9]>
+ <tr>
+ <td style=3D"border-collapse: collapse !important;
+ border-spacing: 0; !important; padding: 0"><img src=3D"http://p.ebaystatic.=
+-- 
+2.35.1
+

@@ -5,4 +5,7 @@
 		<email>steils@gentoo.org</email>
 		<name>Stefan Strogin</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="sourcehut">~steef/snixembed</remote-id>
+	</upstream>
 </pkgmetadata>

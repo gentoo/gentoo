@@ -54,7 +54,6 @@ BDEPEND=">=app-text/asciidoc-8.6.8
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
-	"${FILESDIR}/${PN}-py3-test-clarify.patch"
 )
 
 WAF_BINARY="${S}/waf"
@@ -87,7 +86,7 @@ src_configure() {
 	done
 	CLOCKSTRING="`echo ${string_127}|sed 's|,$||'`"
 
-	local myconf=(
+	myconf=(
 		--notests
 		--nopyc
 		--nopyo
@@ -103,45 +102,30 @@ src_configure() {
 		$(use debug	&& echo "--enable-debug")
 	)
 
-	python_configure() {
-		waf-utils_src_configure "${myconf[@]}"
-	}
-	python_foreach_impl run_in_build_dir python_configure
+	distutils-r1_src_configure
 }
 
-src_compile() {
+python_configure() {
+	waf-utils_src_configure "${myconf[@]}"
+}
+
+python_compile() {
 	unset MAKEOPTS
-	python_compile() {
-		waf-utils_src_compile --notests
-	}
-	python_foreach_impl run_in_build_dir python_compile
-}
-
-src_test() {
-	python_compile() {
-		waf-utils_src_compile check
-	}
-	python_foreach_impl run_in_build_dir python_compile
+	waf-utils_src_compile --notests
 }
 
 python_test() {
-	# Silence QA warning as we're running tests via src_test anyway.
-	:;
+	waf-utils_src_compile check
 }
 
 src_install() {
-	python_install() {
-		waf-utils_src_install --notests
-		python_fix_shebang "${ED}"
-	}
-	python_foreach_impl run_in_build_dir python_install
-	python_foreach_impl python_optimize
+	distutils-r1_src_install
 
 	# Install heat generating scripts
 	use heat && dosbin "${S}"/contrib/ntpheat{,usb}
 
 	# Install the openrc files
-	newinitd "${FILESDIR}"/ntpd.rc-r2 ntp
+	newinitd "${FILESDIR}"/ntpd.rc-r3 ntp
 	newconfd "${FILESDIR}"/ntpd.confd ntp
 
 	# Install the systemd unit file
@@ -163,6 +147,12 @@ src_install() {
 
 	# move doc files to /usr/share/doc/"${P}"
 	use doc && mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${P}"/html
+}
+
+python_install() {
+	waf-utils_src_install --notests
+	python_fix_shebang "${ED}"
+	python_optimize
 }
 
 pkg_postinst() {

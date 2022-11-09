@@ -1,0 +1,39 @@
+Minimal additional fixes for with both clang16 and older clang.
+
+https://bugs.gentoo.org/870631
+See also: https://github.com/phokz/pwauth/pull/13
+--- a/auth_sun.c
++++ b/auth_sun.c
+@@ -33,2 +33,3 @@
+ 
++#include <time.h>
+ #include "pwauth.h"
+--- a/fail_log.c
++++ b/fail_log.c
+@@ -33,2 +33,3 @@
+ 
++#include <time.h>
+ #include "pwauth.h"
+@@ -72,3 +73,3 @@
+ 
+-void log_failure()
++void log_failure(void)
+ {
+@@ -151,3 +152,3 @@
+ 
+-log_failure()
++void log_failure(void)
+ {
+--- a/nologin.c
++++ b/nologin.c
+@@ -40,3 +40,3 @@
+ 
+-check_nologin()
++int check_nologin(void)
+ {
+--- a/pwauth.h
++++ b/pwauth.h
+@@ -133 +133,3 @@
+ int check_auth(char *login, char *passwd);
++int check_nologin(void);
++void log_failure(void);

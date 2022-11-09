@@ -22,7 +22,7 @@ RDEPEND="
 	dev-ros/message_filters
 	dev-ros/nodelet
 	media-libs/opencv:=
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}

@@ -1,0 +1,22 @@
+https://gitlab.com/esr/irker/-/merge_requests/29
+
+From da933d5188d88ef0557bda59f02188f164ad427c Mon Sep 17 00:00:00 2001
+From: "Frank Ch. Eigler" <fche@elastic.org>
+Date: Mon, 11 Apr 2022 15:43:22 +0000
+Subject: [PATCH] irkerd: correct typo to our internal TCP/UDP ipv6 server
+ classes
+
+--- a/irkerd
++++ b/irkerd
+@@ -1131,8 +1131,8 @@ if __name__ == '__main__':
+             tcpserver = socketserver.TCPServer((args.host, PORT), IrkerTCPHandler)
+             udpserver = socketserver.UDPServer((args.host, PORT), IrkerUDPHandler)
+             # pylint: disable=undefined-variable
+-            tcp6server = TCPServer((args.host6, PORT), IrkerTCPHandler)
+-            udp6server = UDPServer((args.host6, PORT), IrkerUDPHandler)
++            tcp6server = TCP6Server((args.host6, PORT), IrkerTCPHandler)
++            udp6server = UDP6Server((args.host6, PORT), IrkerUDPHandler)
+             for server in [tcpserver, udpserver, tcp6server, udp6server]:
+                 server = threading.Thread(target=server.serve_forever)
+                 server.setDaemon(True)
+GitLab

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    citeproc-el is an Emacs Lisp library for rendering citations and
+    bibliographies in styles described in the Citation Style Language (CSL), an
+    XML-based, open format to describe the formatting of bibliographic
+    references (see http://citationstyles.org/ for further information on CSL).
+    The library implements most of the CSL 1.0.2 specification, including such
+    features as citation disambiguation, cite collapsing and subsequent author
+    substitution, and passes more than 70% of the tests in the CSL Test Suite.
+    In addition to the standard CSL-JSON data format, citeproc-el has
+    rudimentary support for reading bibliographic data from BibTeX, biblatex
+    and org-bibtex bibliographies and can produce output in several formats
+    including HTML and org-mode markup (see Supported output formats for the
+    full list).
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/andras-simonyi/citeproc-el/issues/</bugs-to>
+    <remote-id type="github">andras-simonyi/citeproc-el</remote-id>
+  </upstream>
+</pkgmetadata>

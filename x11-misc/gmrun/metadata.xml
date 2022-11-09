@@ -5,11 +5,22 @@
 		<email>slashbeast@gentoo.org</email>
 		<name>Piotr Karbowski</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>henning@hennsch.de</email>
+		<name>Henning Schild</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
-		A run utility intended to replace grun or gnome-run. Most prominent
+		A run utility intended to replace <pkg>x11-misc/grun</pkg> or gnome-run. Most prominent
 		features include slim design and bash style auto-completion.
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">gmrun</remote-id>
+		<remote-id type="github">wdlkmpx/gmrun</remote-id>
 	</upstream>
+	<use>
+		<flag name="xdg">Enable xdg spec for configuration and history files location</flag>
+	</use>
 </pkgmetadata>

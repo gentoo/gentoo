@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,10 +11,9 @@ else
 	MY_PV=${PV/_b/-b}
 	SRC_URI="https://downloads.mariadb.com/Connectors/c/connector-c-${PV}/${P}-src.tar.gz"
 	S="${WORKDIR%/}/${PN}-${MY_PV}-src"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ~ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
-CMAKE_ECLASS=cmake
 inherit cmake-multilib toolchain-funcs
 
 MULTILIB_CHOST_TOOLS=( /usr/bin/mariadb_config )
@@ -44,11 +43,27 @@ DEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
 		)
 	)
 	"
+BDEPEND="test? ( dev-db/mariadb[server] )"
 RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/gentoo-layout-3.0.patch
 	"${FILESDIR}"/${PN}-3.1.3-fix-pkconfig-file.patch
 )
+
+src_prepare() {
+	# These tests the remote_io plugin which requires network access
+	sed -i 's/{"test_remote1", test_remote1, TEST_CONNECTION_NEW, 0, NULL, NULL},//g' "unittest/libmariadb/misc.c" || die
+
+	# These tests don't work with --skip-grant-tables
+	sed -i 's/{"test_conc366", test_conc366, TEST_CONNECTION_DEFAULT, 0, NULL, NULL},//g' "unittest/libmariadb/connection.c" || die
+	sed -i 's/{"test_conc66", test_conc66, TEST_CONNECTION_DEFAULT, 0, NULL,  NULL},//g' "unittest/libmariadb/connection.c" || die
+
+	# [Warning] Aborted connection 2078 to db: 'test' user: 'root' host: '' (Got an error reading communication packets)
+	# Not sure about this one - might also require network access
+	sed -i 's/{"test_default_auth", test_default_auth, TEST_CONNECTION_NONE, 0, NULL, NULL},//g' "unittest/libmariadb/connection.c" || die
+
+	cmake_src_prepare
+}
 
 multilib_src_configure() {
 	# bug 508724 mariadb cannot use ld.gold
@@ -69,6 +84,14 @@ multilib_src_configure() {
 		-DWITH_UNIT_TESTS=$(usex test ON OFF)
 	)
 	cmake_src_configure
+}
+
+multilib_src_test() {
+	mkdir -vp "${T}/mysql/data" || die
+	mysql_install_db --no-defaults --datadir="${T}/mysql/data" || die
+	mysqld --no-defaults --datadir="${T}/mysql/data" --socket="${T}/mysql/mysql.sock" --skip-grant-tables --skip-networking &
+	while ! mysqladmin ping --socket="${T}/mysql/mysql.sock" --silent ; do sleep 1 ; done
+	cd unittest/libmariadb && MYSQL_TEST_SOCKET="${T}/mysql/mysql.sock" MARIADB_CC_TEST=1 ctest --verbose || die
 }
 
 multilib_src_install_all() {

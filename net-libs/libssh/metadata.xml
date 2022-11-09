@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>kde@gentoo.org</email>
-	<name>Gentoo KDE Project</name>
-</maintainer>
-<use>
-	<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> as TLS provider</flag>
-	<flag name="gssapi">Enable gssapi support</flag>
-	<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as TLS provider</flag>
-	<flag name="pcap">Build with PCAP output support</flag>
-	<flag name="server">Build with SSH server support</flag>
-	<flag name="sftp">Build with SFTP support</flag>
-</use>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> as TLS provider</flag>
+		<flag name="gssapi">Enable gssapi support</flag>
+		<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as TLS provider</flag>
+		<flag name="pcap">Build with PCAP output support</flag>
+		<flag name="server">Build with SSH server support</flag>
+		<flag name="sftp">Build with SFTP support</flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">libssh/libssh-mirror</remote-id>
+		<remote-id type="cpe">cpe:/a:libssh:libssh</remote-id>
+	</upstream>
 </pkgmetadata>

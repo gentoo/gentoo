@@ -5,11 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This library is useful for creating, comparing, parsing and
-		printing Universally Unique Identifiers.
-		See &lt;https://en.wikipedia.org/wiki/UUID&gt; for the general idea.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">aslatter/uuid</remote-id>
 	</upstream>

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_OPTIONAL=1
 
 inherit distutils-r1 libtool toolchain-funcs multilib-minimal

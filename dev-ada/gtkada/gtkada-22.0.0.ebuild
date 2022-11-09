@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-ADA_COMPAT=( gnat_202{0..1} )
+ADA_COMPAT=( gnat_202{0..1} gcc_12_2_0 )
 inherit ada autotools multiprocessing
 
 DESCRIPTION="A complete Ada graphical toolkit"

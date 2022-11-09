@@ -14,5 +14,6 @@
 </use>
 <upstream>
 	<remote-id type="cpe">cpe:/a:gnu:texinfo</remote-id>
+	<remote-id type="savannah">texinfo</remote-id>
 </upstream>
 </pkgmetadata>
