@@ -27,8 +27,8 @@ src_compile() {
 	append-cxxflags \${P_INCL} -ansi -frtti -c
 
 	common_opts=(
-			C_COMPILER=$(tc-getCC)
-			CPP_COMPILER=$(tc-getCXX)
+			C_COMPILER="$(tc-getCC)"
+			CPP_COMPILER="$(tc-getCXX)"
 			AR="$(tc-getAR)"
 			RANLIB="$(tc-getRANLIB)"
 			LINKER="$(tc-getCXX)"
@@ -40,7 +40,7 @@ src_compile() {
 	# Compile the library
 	target_opts=(
 		LINKER_OPTIONS="${LDFLAGS} "
-		C_OPTIONS="${CFLAGS} -DTARGET_API_LIB  -D_LIB "
+		C_OPTIONS="${CFLAGS} -DTARGET_API_LIB -D_LIB -D_XOPEN_SOURCE=500 " #874696
 		CPP_OPTIONS="${CXXFLAGS} -DTARGET_API_LIB  -D_LIB "
 		CREATE_MAIN=
 	)
@@ -71,5 +71,5 @@ src_install() {
 	fi
 	dobin "${S}/INCHI_EXE/bin/Linux/inchi-1"
 	dolib.so "${S}/INCHI_API/bin/Linux/"lib*so*
-	doheader "${S}/INCHI_BASE/src/inchi_api.h"
+	doheader "${S}/INCHI_BASE/src/"{inchi_api,ixa}.h
 }
