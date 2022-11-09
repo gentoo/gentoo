@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
-IUSE="alsa dbus debug doc dtrace headless java lvm +opus pam pch pulseaudio +opengl python +qt5 +sdk +sdl +udev vboxwebsrv vnc"
+IUSE="alsa dbus debug doc dtrace +gui java lvm +opus pam pch pulseaudio +opengl python +sdk +sdl +udev vboxwebsrv vnc"
 
 unset WATCOM #856769
 
@@ -46,30 +46,33 @@ COMMON_DEPEND="
 	net-misc/curl
 	sys-libs/zlib
 	dbus? ( sys-apps/dbus )
-	!headless? (
+	gui? (
+		dev-qt/qtcore:5
+		dev-qt/qtdbus:5
+		dev-qt/qtgui:5
+		dev-qt/qthelp:5
+		dev-qt/qtprintsupport:5
+		dev-qt/qtwidgets:5
+		dev-qt/qtx11extras:5
+		dev-qt/qtxml:5
 		x11-libs/libX11
 		x11-libs/libXt
-		opengl? (
-			media-libs/libglvnd[X]
-		)
-		qt5? (
-			dev-qt/qtcore:5
-			dev-qt/qtdbus:5
-			dev-qt/qtgui:5
-			dev-qt/qthelp:5
-			dev-qt/qtprintsupport:5
-			dev-qt/qtwidgets:5
-			dev-qt/qtx11extras:5
-			dev-qt/qtxml:5
-			opengl? ( dev-qt/qtopengl:5 )
-		)
-		sdl? (
-			media-libs/libsdl:0[X,video]
-			x11-libs/libXcursor
-		)
+		opengl? ( dev-qt/qtopengl:5 )
 	)
 	lvm? ( sys-fs/lvm2 )
+	opengl? (
+		media-libs/libglvnd[X]
+		x11-libs/libX11
+		x11-libs/libXt
+	)
+	opus? ( media-libs/opus )
 	pam? ( sys-libs/pam )
+	sdl? (
+		media-libs/libsdl:0[X,video]
+		x11-libs/libX11
+		x11-libs/libXcursor
+		x11-libs/libXt
+	)
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )
 "
@@ -83,31 +86,37 @@ COMMON_DEPEND="
 # but it needs more investigation.
 #
 # See bug #878299 to track this issue.
+# TODO: check opus
 DEPEND="
 	${COMMON_DEPEND}
 	>=dev-libs/libxslt-1.1.19
 	virtual/libcrypt:=
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
-	opengl? ( virtual/glu )
-	!headless? (
+	gui? (
+		x11-libs/libxcb:=
 		x11-libs/libXcursor
 		x11-libs/libXext
 		x11-libs/libXinerama
 		x11-libs/libXmu
-		x11-libs/libxcb:=
 		x11-libs/libXrandr
 		opengl? ( virtual/opengl )
 	)
 	java? ( virtual/jdk:1.8 )
-	opus? ( media-libs/opus )
+	opengl? (
+		x11-libs/libXcursor
+		x11-libs/libXinerama
+		x11-libs/libXmu
+		x11-libs/libXrandr
+		virtual/glu
+	)
+	sdl? ( x11-libs/libXinerama )
 	pulseaudio? ( media-sound/pulseaudio )
-	qt5? ( x11-libs/libXinerama )
 	udev? ( >=virtual/udev-171 )
 "
 RDEPEND="
 	${COMMON_DEPEND}
+	gui? ( x11-libs/libxcb:= )
 	java? ( virtual/jre:1.8 )
-	qt5? ( x11-libs/libxcb:= )
 "
 BDEPEND="
 	${PYTHON_DEPS}
@@ -130,6 +139,7 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-fontsextra
+		dev-qt/qthelp:5
 	)
 	java? ( virtual/jdk:1.8 )
 "
@@ -192,11 +202,8 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	if ! use headless && ! use qt5; then
-		einfo "No USE=\"qt5\" selected, this build will not include any Qt frontend."
-	elif use headless && use qt5; then
-		einfo "You selected USE=\"headless qt5\", defaulting to"
-		einfo "USE=\"headless\", this build will not include any X11/Qt frontend."
+	if ! use gui; then
+		einfo "No USE=\"gui\" selected, this build will not include any Qt frontend."
 	fi
 
 	if ! use opengl; then
@@ -335,16 +342,15 @@ src_configure() {
 		$(usex vnc --enable-vnc '')
 	)
 
-	if ! use headless; then
+	if use gui || use sdl || use opengl; then
 		myconf+=(
 			$(usex opengl '' --disable-opengl)
-			$(usex qt5 '' --disable-qt)
+			$(usex gui '' --disable-qt)
 			$(usex sdl '' --disable-sdl)
 		)
 	else
 		myconf+=(
 			--build-headless
-			--disable-opengl
 		)
 	fi
 
@@ -526,38 +532,36 @@ src_install() {
 	echo -n "VBOX_APP_HOME=${vbox_inst_path}" > "${T}/90virtualbox"
 	doenvd "${T}/90virtualbox"
 
-	if ! use headless; then
-		if use sdl; then
-			vbox_inst VBoxSDL 4750
-			pax-mark -m "${ED}"${vbox_inst_path}/VBoxSDL
+	if use sdl; then
+		vbox_inst VBoxSDL 4750
+		pax-mark -m "${ED}"${vbox_inst_path}/VBoxSDL
 
-			for each in vboxsdl VBoxSDL ; do
-				dosym ${vbox_inst_path}/VBox /usr/bin/${each}
-			done
+		for each in vboxsdl VBoxSDL ; do
+			dosym ${vbox_inst_path}/VBox /usr/bin/${each}
+		done
+	fi
+
+	if use gui; then
+		vbox_inst VirtualBox
+		vbox_inst VirtualBoxVM 4750
+		for each in VirtualBox{,VM} ; do
+			pax-mark -m "${ED}"${vbox_inst_path}/${each}
+		done
+
+		if use opengl; then
+			vbox_inst VBoxTestOGL
+			pax-mark -m "${ED}"${vbox_inst_path}/VBoxTestOGL
 		fi
 
-		if use qt5; then
-			vbox_inst VirtualBox
-			vbox_inst VirtualBoxVM 4750
-			for each in VirtualBox{,VM} ; do
-				pax-mark -m "${ED}"${vbox_inst_path}/${each}
-			done
+		for each in virtualbox{,vm} VirtualBox{,VM} ; do
+			dosym ${vbox_inst_path}/VBox /usr/bin/${each}
+		done
 
-			if use opengl; then
-				vbox_inst VBoxTestOGL
-				pax-mark -m "${ED}"${vbox_inst_path}/VBoxTestOGL
-			fi
+		insinto /usr/share/${PN}
+		doins -r nls
+		doins -r UnattendedTemplates
 
-			for each in virtualbox{,vm} VirtualBox{,VM} ; do
-				dosym ${vbox_inst_path}/VBox /usr/bin/${each}
-			done
-
-			insinto /usr/share/${PN}
-			doins -r nls
-			doins -r UnattendedTemplates
-
-			domenu ${PN}.desktop
-		fi
+		domenu ${PN}.desktop
 
 		pushd "${S}"/src/VBox/Artwork/OSE &>/dev/null || die
 		for size in 16 32 48 64 128 ; do
@@ -637,6 +641,9 @@ src_install() {
 
 	if use doc; then
 		dodoc UserManual.pdf
+		docompress -x /usr/share/doc/${PF}/qt
+		docinto qt
+		dodoc UserManual.q{ch,hc}
 	fi
 
 	if use python; then
@@ -662,7 +669,7 @@ pkg_postinst() {
 
 	tmpfiles_process virtualbox-vboxusb.conf
 
-	if ! use headless && use qt5; then
+	if use gui; then
 		elog "To launch VirtualBox just type: \"virtualbox\"."
 	fi
 
