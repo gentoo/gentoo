@@ -88,8 +88,12 @@ src_prepare() {
 	# Prevent "invalid file format" errors from iucode_tool
 	rm -f "${S}"/intel-ucod*/list || die
 
+	# https://gitlab.com/iucode-tool/iucode-tool/-/issues/4
+	rm "${S}"/intel-microcode-collection-${COLLECTION_SNAPSHOT}/cpu106C0_plat01_ver00000007_2007-08-24_PRD_923CDFA3.bin || die
+
 	# Remove non-microcode file from list
-	rm -f "${S}"/intel-ucode/LICENSE
+	rm -f "${S}"/intel-microcode-collection-${COLLECTION_SNAPSHOT}/LICENSE || die
+	rm -f "${S}"/intel-ucode*/LICENSE || die
 }
 
 src_install() {
