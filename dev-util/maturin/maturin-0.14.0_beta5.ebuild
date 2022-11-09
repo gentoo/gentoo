@@ -34,11 +34,11 @@ CRATES="
 	camino-1.1.1
 	cargo-options-0.5.2
 	cargo-platform-0.1.2
-	cargo-xwin-0.12.0
-	cargo-zigbuild-0.14.0
+	cargo-xwin-0.12.2
+	cargo-zigbuild-0.14.1
 	cargo_metadata-0.15.1
 	cbindgen-0.24.3
-	cc-1.0.73
+	cc-1.0.76
 	cfb-0.7.3
 	cfg-if-1.0.0
 	charset-0.1.3
@@ -46,17 +46,17 @@ CRATES="
 	chunked_transfer-1.4.0
 	cipher-0.3.0
 	clap-3.2.23
-	clap-4.0.18
-	clap_complete-4.0.3
+	clap-4.0.22
+	clap_complete-4.0.5
 	clap_complete_fig-4.0.1
 	clap_derive-3.2.18
-	clap_derive-4.0.18
+	clap_derive-4.0.21
 	clap_lex-0.2.4
 	clap_lex-0.3.0
 	cli-table-0.4.7
 	combine-4.6.6
-	concolor-0.0.8
-	concolor-query-0.0.5
+	concolor-0.0.9
+	concolor-query-0.1.0
 	concurrent-queue-1.2.4
 	configparser-3.0.2
 	console-0.15.2
@@ -101,13 +101,13 @@ CRATES="
 	event-listener-2.5.3
 	fastrand-1.8.0
 	fat-macho-0.4.6
-	filetime-0.2.17
+	filetime-0.2.18
 	flate2-1.0.24
 	fnv-1.0.7
 	foreign-types-0.3.2
 	foreign-types-shared-0.1.1
 	form_urlencoded-1.1.0
-	fs-err-2.8.1
+	fs-err-2.9.0
 	futures-0.3.25
 	futures-channel-0.3.25
 	futures-core-0.3.25
@@ -135,10 +135,10 @@ CRATES="
 	idna-0.3.0
 	ignore-0.4.18
 	indexmap-1.9.1
-	indicatif-0.17.0-rc.6
+	indicatif-0.17.2
 	indoc-1.0.7
 	instant-0.1.12
-	io-lifetimes-0.7.4
+	io-lifetimes-0.7.5
 	itertools-0.10.5
 	itoa-1.0.4
 	js-sys-0.3.60
@@ -156,11 +156,11 @@ CRATES="
 	memoffset-0.6.5
 	mime-0.3.16
 	mime_guess-2.0.4
-	minijinja-0.24.0
+	minijinja-0.25.0
 	miniz_oxide-0.5.4
 	msi-0.5.0
 	multipart-0.18.0
-	native-tls-0.2.10
+	native-tls-0.2.11
 	nb-connect-1.2.0
 	nix-0.22.3
 	normalize-line-endings-0.3.0
@@ -173,16 +173,15 @@ CRATES="
 	num-iter-0.1.43
 	num-rational-0.4.1
 	num-traits-0.2.15
-	num_cpus-1.13.1
-	num_threads-0.1.6
+	num_cpus-1.14.0
 	number_prefix-0.4.0
 	object-0.29.0
-	once_cell-1.15.0
+	once_cell-1.16.0
 	opaque-debug-0.3.0
 	openssl-0.10.42
 	openssl-macros-0.1.0
 	openssl-probe-0.1.5
-	openssl-src-111.22.0+1.1.1q
+	openssl-src-111.24.0+1.1.1s
 	openssl-sys-0.9.77
 	os_pipe-1.1.1
 	os_str_bytes-6.3.1
@@ -191,7 +190,7 @@ CRATES="
 	overload-0.1.1
 	parking-2.0.0
 	parking_lot-0.12.1
-	parking_lot_core-0.9.3
+	parking_lot_core-0.9.4
 	path-slash-0.2.1
 	pep440-0.2.0
 	percent-encoding-2.2.0
@@ -199,9 +198,10 @@ CRATES="
 	pin-utils-0.1.0
 	pkg-config-0.3.26
 	plain-0.2.3
-	platform-info-1.0.0
+	platform-info-1.0.1
 	polling-2.4.0
-	ppv-lite86-0.2.16
+	portable-atomic-0.3.15
+	ppv-lite86-0.2.17
 	pretty_assertions-1.3.0
 	proc-macro-crate-0.1.5
 	proc-macro-crate-1.2.1
@@ -220,22 +220,22 @@ CRATES="
 	rayon-core-1.9.3
 	redox_syscall-0.2.16
 	redox_users-0.4.3
-	regex-1.6.0
+	regex-1.7.0
 	regex-automata-0.1.10
-	regex-syntax-0.6.27
+	regex-syntax-0.6.28
 	remove_dir_all-0.5.3
 	rfc2047-decoder-0.2.0
 	ring-0.16.20
 	rpassword-7.1.0
 	rustc-demangle-0.1.21
 	rustc_version-0.4.0
-	rustix-0.35.12
+	rustix-0.35.13
 	rustls-0.20.7
 	rustversion-1.0.9
 	ryu-1.0.11
 	same-file-1.0.6
 	schannel-0.1.20
-	scoped-tls-1.0.0
+	scoped-tls-1.0.1
 	scopeguard-1.1.0
 	scroll-0.11.0
 	scroll_derive-0.11.0
@@ -256,7 +256,7 @@ CRATES="
 	slab-0.4.7
 	smallvec-1.10.0
 	smawk-0.3.1
-	snapbox-0.4.0
+	snapbox-0.4.1
 	snapbox-macros-0.3.1
 	socket2-0.4.7
 	socks-0.3.4
@@ -266,18 +266,18 @@ CRATES="
 	subtle-2.4.1
 	syn-1.0.103
 	tar-0.4.38
-	target-lexicon-0.12.4
+	target-lexicon-0.12.5
 	tempfile-3.3.0
 	termcolor-1.1.3
 	terminal_size-0.1.17
-	terminal_size-0.2.1
+	terminal_size-0.2.2
 	textwrap-0.16.0
 	thiserror-1.0.37
 	thiserror-impl-1.0.37
 	thread_local-1.1.4
-	time-0.3.16
+	time-0.3.17
 	time-core-0.1.0
-	time-macros-0.2.5
+	time-macros-0.2.6
 	tiny-keccak-2.0.2
 	tinyvec-1.6.0
 	tinyvec_macros-0.1.0
@@ -290,7 +290,7 @@ CRATES="
 	tracing-log-0.1.3
 	tracing-serde-0.1.3
 	tracing-subscriber-0.3.16
-	trycmd-0.14.1
+	trycmd-0.14.3
 	twox-hash-1.6.3
 	typenum-1.15.0
 	unicase-2.6.0
@@ -326,13 +326,21 @@ CRATES="
 	winapi-util-0.1.5
 	winapi-x86_64-pc-windows-gnu-0.4.0
 	windows-sys-0.36.1
+	windows-sys-0.42.0
+	windows_aarch64_gnullvm-0.42.0
 	windows_aarch64_msvc-0.36.1
+	windows_aarch64_msvc-0.42.0
 	windows_i686_gnu-0.36.1
+	windows_i686_gnu-0.42.0
 	windows_i686_msvc-0.36.1
+	windows_i686_msvc-0.42.0
 	windows_x86_64_gnu-0.36.1
+	windows_x86_64_gnu-0.42.0
+	windows_x86_64_gnullvm-0.42.0
 	windows_x86_64_msvc-0.36.1
+	windows_x86_64_msvc-0.42.0
 	xattr-0.2.3
-	xwin-0.2.5
+	xwin-0.2.8
 	yansi-0.5.1
 	zbus-1.9.3
 	zbus_macros-1.9.3
@@ -342,25 +350,21 @@ CRATES="
 # additional crates used by test-crates/* test packages,
 # `grep test-crates tests/run.rs` to see which are needed
 CRATES_TEST="
+	cc-1.0.73
+	cc-1.0.74
 	libc-0.2.134
-	parking_lot_core-0.9.4
+	once_cell-1.15.0
+	parking_lot_core-0.9.3
 	proc-macro2-1.0.46
-	pyo3-0.17.2
-	pyo3-build-config-0.17.2
-	pyo3-ffi-0.17.2
-	pyo3-macros-0.17.2
-	pyo3-macros-backend-0.17.2
+	pyo3-0.17.3
+	pyo3-build-config-0.17.3
+	pyo3-ffi-0.17.3
+	pyo3-macros-0.17.3
+	pyo3-macros-backend-0.17.3
 	python3-dll-a-0.2.6
 	syn-1.0.102
-	unindent-0.1.10
-	windows-sys-0.42.0
-	windows_aarch64_gnullvm-0.42.0
-	windows_aarch64_msvc-0.42.0
-	windows_i686_gnu-0.42.0
-	windows_i686_msvc-0.42.0
-	windows_x86_64_gnu-0.42.0
-	windows_x86_64_gnullvm-0.42.0
-	windows_x86_64_msvc-0.42.0"
+	target-lexicon-0.12.4
+	unindent-0.1.10"
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{8..11} )
 inherit cargo distutils-r1 flag-o-matic
@@ -453,6 +457,6 @@ python_test() {
 }
 
 python_install_all() {
-	dodoc Changelog.md Readme.md
+	dodoc Changelog.md README.md
 	use doc && dodoc -r guide/html
 }
