@@ -19,7 +19,7 @@ fi
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
 
-BDEPEND=">=dev-util/lxqt-build-tools-0.11.0"
+BDEPEND=">=dev-util/lxqt-build-tools-0.12.0"
 DEPEND="
 	>=dev-qt/qtcore-5.15:5
 	>=dev-qt/qtdbus-5.15:5
