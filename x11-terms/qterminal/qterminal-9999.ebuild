@@ -18,6 +18,8 @@ fi
 
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 BDEPEND=">=dev-util/lxqt-build-tools-0.12.0"
 DEPEND="
@@ -28,8 +30,17 @@ DEPEND="
 	>=dev-qt/qtx11extras-5.15:5
 	x11-libs/libX11
 	~x11-libs/qtermwidget-${PV}:=
+	test? ( dev-qt/qttest:5 )
 "
 RDEPEND="${DEPEND}"
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTS=$(usex test)
+	)
+
+	cmake_src_configure
+}
 
 pkg_postinst() {
 	xdg_icon_cache_update
