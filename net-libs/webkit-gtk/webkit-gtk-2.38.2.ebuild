@@ -193,6 +193,7 @@ src_configure() {
 	# should somehow let user select between them?
 
 	local mycmakeargs=(
+		-DPython_EXECUTABLE="${PYTHON}"
 		${ruby_interpreter}
 		$(cmake_use_find_package gles2-only OpenGLES2)
 		$(cmake_use_find_package egl EGL)
