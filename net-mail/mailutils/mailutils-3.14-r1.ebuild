@@ -10,7 +10,7 @@ DESCRIPTION="A useful collection of mail servers, clients, and filters"
 HOMEPAGE="https://mailutils.org/"
 SRC_URI="mirror://gnu/mailutils/${P}.tar.xz"
 
-LICENSE="GPL-2 LGPL-2.1"
+LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~ppc-macos ~x64-macos"
 IUSE="berkdb bidi +clients emacs gdbm sasl guile ipv6 kerberos kyotocabinet \
