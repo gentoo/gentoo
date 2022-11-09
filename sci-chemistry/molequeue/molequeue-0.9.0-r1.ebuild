@@ -53,7 +53,7 @@ src_configure() {
 			-DINSTALL_LIBRARY_DIR=$(get_libdir)
 			)
 		use zeromq && \
-			mycmakeargs+=( -DZeroMQ_ROOT_DIR=\"${EPREFIX}/usr\" )
+			mycmakeargs+=( "-DZeroMQ_ROOT_DIR=\"${EPREFIX}/usr\"" )
 
 		cmake_src_configure
 	}
