@@ -21,7 +21,7 @@ S="${WORKDIR}"/${MY_PN}-${PV}
 src_compile() {
 	ego build || die
 
-	sed -e 's|%%replace%%|'${EPREFIX}'/usr/libexec/browserpass-native|' \
+	sed -e "s|%%replace%%|${EPREFIX}/usr/libexec/browserpass-native|" \
 		-i browser-files/firefox-host.json browser-files/chromium-host.json || die
 }
 
