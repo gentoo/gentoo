@@ -1,6 +1,6 @@
-From 682ddd135d66d2d379efc0b044de50cc39489fde Mon Sep 17 00:00:00 2001
+From cb92e8110d1f274b28d5c156a93c525d2b748644 Mon Sep 17 00:00:00 2001
 From: Sam James <sam@gentoo.org>
-Date: Thu, 3 Nov 2022 01:19:39 +0000
+Date: Wed, 9 Nov 2022 08:27:53 +0000
 Subject: [PATCH] Clang 16 fixes for various tests
 
 Fixes -Wimplicit-int and -Wimplicit-function-declaration
@@ -24,6 +24,15 @@ Signed-off-by: Sam James <sam@gentoo.org>
    if (!f) exit(1);
 --- a/acspecific.m4
 +++ b/acspecific.m4
+@@ -371,7 +371,7 @@ changequote(, )dnl
+ 		       sed -e 's/[^a-zA-Z0-9_]/_/g' -e 's/^[0-9]/_/'`"
+ changequote([, ])dnl
+ AC_CACHE_VAL(ac_cv_prog_cc_${ac_cc}_c_o,
+-[echo 'foo(void){}' > conftest.c
++[echo 'int foo(void){}' > conftest.c
+ # Make sure it works both with $CC and with simple cc.
+ # We do the test twice because some compilers refuse to overwrite an
+ # existing .o file with -o, though they will create one.
 @@ -706,6 +706,7 @@ fi
  if test $ac_cv_header_stdc = yes; then
    # /bin/cc in Irix-4.0.5 gets non-ANSI ctype macros unless using -ansi.
@@ -175,7 +184,7 @@ Signed-off-by: Sam James <sam@gentoo.org>
  #ifdef HAVE_UNISTD_H
  #include <unistd.h>
  #endif
-@@ -1270,7 +1249,7 @@ AC_CACHE_CHECK(for working vfork, ac_cv_func_vfork_works,
+@@ -1270,11 +1249,11 @@ AC_CACHE_CHECK(for working vfork, ac_cv_func_vfork_works,
     but some compilers (e.g. gcc -O) don't grok <vfork.h>.
     Test for this by using a static variable whose address
     is put into a register that is clobbered by the vfork.  */
@@ -184,6 +193,11 @@ Signed-off-by: Sam James <sam@gentoo.org>
  #ifdef __cplusplus
  sparc_address_test (int arg)
  #else
+-sparc_address_test (arg) int arg;
++sparc_address_test (int arg)
+ #endif
+ {
+   static pid_t child;
 @@ -1359,6 +1338,8 @@ AC_DEFUN(AC_FUNC_WAIT3,
  #include <sys/time.h>
  #include <sys/resource.h>
@@ -286,6 +300,15 @@ Signed-off-by: Sam James <sam@gentoo.org>
    /* Are we little or big endian?  From Harbison&Steele.  */
    union
    {
+@@ -1885,7 +1877,7 @@ AC_DEFUN(AC_C_INLINE,
+ [AC_CACHE_CHECK([for inline], ac_cv_c_inline,
+ [ac_cv_c_inline=no
+ for ac_kw in inline __inline__ __inline; do
+-  AC_TRY_COMPILE(, [} $ac_kw foo(void) {], [ac_cv_c_inline=$ac_kw; break])
++  AC_TRY_COMPILE(, [} $ac_kw int foo(void) {], [ac_cv_c_inline=$ac_kw; break])
+ done
+ ])
+ case "$ac_cv_c_inline" in
 @@ -2275,7 +2267,10 @@ AC_DEFUN(AC_SYS_RESTARTABLE_SYSCALLS,
     i.e. the pid of the child, which means that wait was restarted
     after getting the signal.  */
@@ -297,3 +320,12 @@ Signed-off-by: Sam James <sam@gentoo.org>
  ucatch (isig) { }
  int main (void) {
    int i = fork (), status;
+@@ -2444,7 +2439,7 @@ if test "$ac_x_libraries" = NO; then
+   # Don't add to $LIBS permanently.
+   ac_save_LIBS="$LIBS"
+   LIBS="-l$x_direct_test_library $LIBS"
+-AC_TRY_LINK(, [${x_direct_test_function}()],
++AC_TRY_LINK([#include <X11/Intrinsic.h>], [${x_direct_test_function}(0)],
+ [LIBS="$ac_save_LIBS"
+ # We can link X programs with no special library path.
+ ac_x_libraries=],
