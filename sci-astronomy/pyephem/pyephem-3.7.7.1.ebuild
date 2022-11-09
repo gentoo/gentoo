@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ src_compile() {
 }
 
 python_test() {
-	PYTHONPATH="$(ls -d ${BUILD_DIR}/lib*)" unit2 discover -s ephem
+	PYTHONPATH="$(ls -d "${BUILD_DIR}"/lib*)" unit2 discover -s ephem
 }
 
 src_install() {
