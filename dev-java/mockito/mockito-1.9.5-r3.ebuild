@@ -14,7 +14,7 @@ SRC_URI="https://repo1.maven.org/maven2/org/mockito/mockito-core/${PV}/mockito-c
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ppc64 ~x86"
 
 CP_DEPEND="
 	dev-java/ant-core:0
