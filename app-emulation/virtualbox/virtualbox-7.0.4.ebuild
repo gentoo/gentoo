@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
-IUSE="alsa dbus debug doc dtrace headless java lvm +opus pam pax-kernel pch pulseaudio +opengl python +qt5 +sdk +sdl +udev vboxwebsrv vnc"
+IUSE="alsa dbus debug doc dtrace headless java lvm +opus pam pch pulseaudio +opengl python +qt5 +sdk +sdl +udev vboxwebsrv vnc"
 
 unset WATCOM #856769
 
@@ -100,7 +100,6 @@ DEPEND="
 	)
 	java? ( virtual/jdk:1.8 )
 	opus? ( media-libs/opus )
-	pax-kernel? ( sys-apps/elfix )
 	pulseaudio? ( media-sound/pulseaudio )
 	qt5? ( x11-libs/libXinerama )
 	udev? ( >=virtual/udev-171 )
@@ -230,11 +229,6 @@ src_prepare() {
 	# Only add nopie patch when we're on hardened
 	if gcc-specs-pie; then
 		eapply "${FILESDIR}"/050_virtualbox-5.2.8-nopie.patch
-	fi
-
-	# Only add paxmark patch when we're on pax-kernel
-	if use pax-kernel; then
-		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
 	fi
 
 	# Remove shipped binaries (kBuild, yasm) and tools, see bug #232775
