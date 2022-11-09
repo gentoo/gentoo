@@ -64,7 +64,7 @@ all_ruby_prepare() {
 	sed -i -e "s:require_relative 'lib:require './lib:" ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Use useable tmp dir
-	sed -i -e 's:/tmp/whatever:'${T}'/whatever:' spec/nanoc/core/checksummer_spec.rb || die
+	sed -i -e "s:/tmp/whatever:${T}/whatever:" spec/nanoc/core/checksummer_spec.rb || die
 
 	# Avoid circular dependency on www-apps/nanoc
 	sed -i -e '/.all_outdated/,/^  end/ s:^:#:' spec/nanoc/core/feature_spec.rb || die
