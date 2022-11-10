@@ -51,6 +51,7 @@ BDEPEND="
 PATCHES=(
 	# Fix the paths in the munin plugin to match our install
 	"${FILESDIR}"/nsd_munin_.patch
+	"${FILESDIR}"/${P}-incompatible-ptr-types.patch
 )
 
 src_prepare() {
