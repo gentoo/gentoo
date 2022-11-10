@@ -1,7 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+# We may want to grab backports from the SDL-1.2 branch upstream or
+# or take new snapshots every so often as no SDL 1 / 1.2.x releases
+# will be made anymore.
+
 inherit toolchain-funcs multilib-minimal
 
 MY_P="${P/sdl-/SDL_}"
