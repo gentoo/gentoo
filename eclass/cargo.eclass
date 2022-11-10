@@ -243,7 +243,8 @@ cargo_src_unpack() {
 
 # @FUNCTION: cargo_live_src_unpack
 # @DESCRIPTION:
-# Runs 'cargo fetch' and vendors downloaded crates for offline use, used in live ebuilds
+# Runs 'cargo fetch' and vendors downloaded crates for offline use, used in live ebuilds.
+# NOTE: might require passing --frozen to cargo_src_configure if git dependencies are used.
 cargo_live_src_unpack() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -355,6 +356,10 @@ cargo_live_src_unpack() {
 # In some cases crates may need '--no-default-features' option,
 # as there is no way to disable single feature, except disabling all.
 # It can be passed directly to cargo_src_configure().
+#
+# Some live/9999 ebuild may need '--frozen' option, if git crates
+# are used.
+# Otherwise src_install phase may query network again and fail.
 cargo_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
