@@ -1,6 +1,7 @@
 https://github.com/libsdl-org/SDL_mixer/commit/03bd4ca6aa38c1a382c892cef86296cd621ecc1d
 https://github.com/libsdl-org/SDL_mixer/commit/9e6d7b67a00656a68ea0c2eace75c587871549b9
 https://github.com/libsdl-org/SDL_mixer/commit/d28cbc34d63dd20b256103c3fe506ecf3d34d379
+https://github.com/libsdl-org/SDL_mixer/commit/05b12a3c22c0746c29dc5478f5b7fbd8a51a1303
 
 From 03bd4ca6aa38c1a382c892cef86296cd621ecc1d Mon Sep 17 00:00:00 2001
 From: Ozkan Sezer <sezeroz@gmail.com>
@@ -61,4 +62,33 @@ reported by Vitaly Novichkov.
  #else
  			(int (*)(OggVorbis_File *,double))
  #endif
+
+
+From 05b12a3c22c0746c29dc5478f5b7fbd8a51a1303 Mon Sep 17 00:00:00 2001
+From: Ozkan Sezer <sezeroz@gmail.com>
+Date: Wed, 23 Sep 2020 05:32:00 +0300
+Subject: [PATCH] mixer.c: add missing dynamic_fluidsynth.h include -- fixes
+ bug #5296.
+
+---
+ mixer.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mixer.c b/mixer.c
+index c653d6ed..431f6e69 100644
+--- a/mixer.c
++++ b/mixer.c
+@@ -34,6 +34,7 @@
+ #include "load_voc.h"
+ #include "load_ogg.h"
+ #include "load_flac.h"
++#include "dynamic_fluidsynth.h"
+ #include "dynamic_flac.h"
+ #include "dynamic_mod.h"
+ #include "dynamic_mp3.h"
+@@ -1499,4 +1500,3 @@ int Mix_UnregisterAllEffects(int channel)
+ }
+ 
+ /* end of mixer.c ... */
+-
 
