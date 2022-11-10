@@ -33,8 +33,8 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	patchelf --set-soname libonnxifi.so "${D}"/usr/lib/libonnxifi.so \
+	patchelf --set-soname libonnxifi.so "${ED}"/usr/lib/libonnxifi.so \
 		|| die
-	mv "${D}"/usr/lib/libonnxifi.so "${D}"/usr/$(get_libdir)/libonnxifi.so \
+	mv "${ED}"/usr/lib/libonnxifi.so "${ED}"/usr/$(get_libdir)/libonnxifi.so \
 		|| die
 }
