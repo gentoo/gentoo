@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ RDEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep 'dev-lua/lgi[${LUA_USEDEP}]')
 	x11-libs/cairo[X,xcb(+)]
 	x11-libs/gdk-pixbuf:2
-	x11-libs/libxcb[xkb]
+	x11-libs/libxcb
 	x11-libs/pango[introspection]
 	x11-libs/startup-notification
 	x11-libs/xcb-util
