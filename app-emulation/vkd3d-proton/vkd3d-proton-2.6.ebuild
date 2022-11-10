@@ -157,11 +157,4 @@ pkg_postinst() {
 		elog
 		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
 	fi
-
-	# don't try to keep wine-*[vulkan] in RDEPEND, but still give a warning
-	local wine
-	for wine in app-emulation/wine-{vanilla,staging}; do
-		has_version ${wine} && ! has_version "${wine}[vulkan]" &&
-			ewarn "${wine} was not built with USE=vulkan, ${PN} will not be usable with it"
-	done
 }
