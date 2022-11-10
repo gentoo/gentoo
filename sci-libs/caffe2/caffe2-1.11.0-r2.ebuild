@@ -135,8 +135,8 @@ src_configure() {
 		-DUSE_TENSORPIPE=OFF
 
 		-Wno-dev
-		-DTORCH_INSTALL_LIB_DIR=/usr/$(get_libdir)
-		-DLIBSHM_INSTALL_LIB_SUBDIR=/usr/$(get_libdir)
+		-DTORCH_INSTALL_LIB_DIR="${EPREFIX}"/usr/$(get_libdir)
+		-DLIBSHM_INSTALL_LIB_SUBDIR="${EPREFIX}"/usr/$(get_libdir)
 	)
 	cmake_src_configure
 }
@@ -154,7 +154,7 @@ src_install() {
 
 	rm -rf python
 	mkdir -p python/torch || die
-	mv "${D}"/usr/lib/python*/site-packages/caffe2 python/ || die
+	mv "${ED}"/usr/lib/python*/site-packages/caffe2 python/ || die
 	cp torch/version.py python/torch/ || die
 	python_foreach_impl python_install
 }
