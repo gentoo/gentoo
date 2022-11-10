@@ -3,9 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
-inherit flag-o-matic python-any-r1 toolchain-funcs
+inherit autotools flag-o-matic python-any-r1 toolchain-funcs
 
 DESCRIPTION="Convert files between various character sets"
 HOMEPAGE="https://github.com/rrthomas/recode"
@@ -39,6 +39,11 @@ python_check_deps() {
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {
