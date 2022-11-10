@@ -51,7 +51,7 @@ src_configure() {
 		"-DNOMEDIAFOUNDATION=1"
 		"-DNOAVFOUNDATION=1"
 		"-DNODSHOW=1"
-		"-DNOWASAPI=1"	
+		"-DNOWASAPI=1"
 		"-DNOVLC=1"
 		"-DNOPIPEWIRE=1"
 		"-DNOALSA=$(usex alsa 0 1)"
@@ -80,5 +80,3 @@ pkg_postinst() {
 pkg_postrm() {
 	xdg_icon_cache_update
 }
-
-
