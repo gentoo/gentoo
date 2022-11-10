@@ -20,6 +20,9 @@ BDEPEND="
 	dev-ml/dune
 	dev-ml/findlib[ocamlopt]"
 
+# Do not complain about CFLAGS etc since ml projects do not use them.
+QA_FLAGS_IGNORED='.*'
+
 src_configure () {
 	econf --libdir="${EPREFIX}"/usr/$(get_libdir)/ocaml
 }
