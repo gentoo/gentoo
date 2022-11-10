@@ -14,7 +14,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE_VIDEO_CARDS="video_cards_nvidia video_cards_r600 video_cards_radeonsi"
 IUSE="${IUSE_VIDEO_CARDS}"
-REQUIRED_USE="|| ( ${IUSE_VIDEO_CARDS} )"
 
 LLVM_MAX_SLOT=16
 BDEPEND="
