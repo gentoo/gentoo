@@ -28,7 +28,7 @@ DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	kde-frameworks/kwindowsystem:5
-	x11-libs/libfm-qt:=
+	>=x11-libs/libfm-qt-1.1:=
 "
 RDEPEND="${DEPEND}
 	sys-apps/xdg-desktop-portal
