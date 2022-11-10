@@ -45,6 +45,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+BDEPEND="x11-base/xorg-proto"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-docfiles.patch"
@@ -81,6 +82,7 @@ src_configure() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 	optfeature "gnuplot support" sci-visualization/gnuplot
 }
