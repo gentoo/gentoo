@@ -13,10 +13,6 @@ media-gfx/geeqie heif
 # dev-cpp/notcurses not keyworded here
 media-sound/snd notcurses
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-08-09)
-# dev-java/jaxws-api not keyworded
->=dev-java/jmock-2.12.0 test
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-23)
 # Only PyQt5 is keyworded on pcc64 at the moment.
 # Mask the other Qt4Python implementations
