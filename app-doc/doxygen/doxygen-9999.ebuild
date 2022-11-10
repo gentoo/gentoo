@@ -11,7 +11,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/doxygen/doxygen.git"
 else
-	SRC_URI="http://doxygen.nl/files/${P}.src.tar.gz"
+	SRC_URI="https://doxygen.nl/files/${P}.src.tar.gz"
 	SRC_URI+=" mirror://sourceforge/doxygen/rel-${PV}/${P}.src.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
@@ -21,9 +21,13 @@ HOMEPAGE="http://www.doxygen.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="clang debug doc dot doxysearch qt5 sqlite"
+IUSE="clang debug doc dot doxysearch qt5 sqlite test"
 # We need TeX for tests, bug #765472
-RESTRICT="!doc? ( test )"
+# We keep the odd construct of noop USE=test because of
+# the special relationship b/t RESTRICT & USE for tests. Also, it's a hint
+# which avoids tests being silently skipped during arch testing.
+REQUIRED_USE="test? ( doc )"
+RESTRICT="!test? ( test )"
 
 BDEPEND="sys-devel/bison
 	sys-devel/flex
