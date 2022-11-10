@@ -53,6 +53,6 @@ python_install() {
 
 src_install() {
 	cmake_src_install
-	rm "${D}"/usr/include/fp16/*.py || die
+	rm "${ED}"/usr/include/fp16/*.py || die
 	python_foreach_impl python_install
 }
