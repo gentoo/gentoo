@@ -10,5 +10,7 @@
 	</use>
 	<upstream>
 		<bugs-to>mailto:sdlsound@icculus.org</bugs-to>
+		<!-- stable-1.0 branch -->
+		<remote-id type="github">icculus/SDL_sound</remote-id>
 	</upstream>
 </pkgmetadata>
