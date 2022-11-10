@@ -38,6 +38,7 @@ COMMON="dev-cpp/nlohmann_json
 	media-libs/speexdsp
 	>=media-libs/zita-convolver-3.0.0
 	>=media-video/pipewire-0.3.41
+	sci-libs/gsl:=
 	sci-libs/fftw:3.0"
 # Only header files are used from libsamplerate
 DEPEND="${COMMON}
