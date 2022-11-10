@@ -3,11 +3,11 @@
 
 EAPI=8
 
-inherit flag-o-matic libtool multilib-build multilib-minimal toolchain-funcs
+inherit autotools flag-o-matic libtool multilib-build multilib-minimal toolchain-funcs
 
 DESCRIPTION="High-quality and portable font engine"
 HOMEPAGE="https://www.freetype.org/"
-IUSE="X +adobe-cff brotli bzip2 +cleartype-hinting debug fontforge harfbuzz infinality +png static-libs utils"
+IUSE="X +adobe-cff brotli bzip2 +cleartype-hinting debug fontforge harfbuzz infinality +png static-libs svg utils"
 
 if [[ "${PV}" != 9999 ]] ; then
 	SRC_URI="mirror://sourceforge/freetype/${P/_/}.tar.xz
@@ -16,10 +16,10 @@ if [[ "${PV}" != 9999 ]] ; then
 			mirror://nongnu/freetype/ft2demos-${PV}.tar.xz )
 		doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.xz
 			mirror://nongnu/freetype/${PN}-doc-${PV}.tar.xz )"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 	IUSE+=" doc"
 else
-	inherit autotools git-r3
+	inherit git-r3
 fi
 
 LICENSE="|| ( FTL GPL-2+ )"
@@ -32,16 +32,17 @@ RDEPEND="
 	harfbuzz? ( >=media-libs/harfbuzz-1.3.0[truetype,${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.2.51:0=[${MULTILIB_USEDEP}] )
 	utils? (
-		X? (
-			>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
-			>=x11-libs/libXau-1.0.7-r1[${MULTILIB_USEDEP}]
-			>=x11-libs/libXdmcp-1.1.1-r1[${MULTILIB_USEDEP}]
-		)
-	)"
+		svg? ( >=gnome-base/librsvg-2.46.0[${MULTILIB_USEDEP}] )
+		X? ( >=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}] )
+	)
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
+
+PATCHES=(
+)
 
 _egit_repo_handler() {
 	if [[ "${PV}" == 9999 ]] ; then
@@ -65,6 +66,12 @@ _egit_repo_handler() {
 		fi
 	else
 		default
+	fi
+}
+
+pkg_pretend() {
+	if use svg && ! use utils ; then
+		einfo "The \"svg\" USE flag only has effect when the \"utils\" USE flag is also enabled."
 	fi
 }
 
@@ -108,6 +115,11 @@ src_prepare() {
 	fi
 
 	default
+
+	pushd builds/unix &>/dev/null || die
+	# eautoheader produces broken ftconfig.in
+	AT_NOEAUTOHEADER="yes" AT_M4DIR="." eautoreconf
+	popd &>/dev/null || die
 
 	# This is the same as the 01 patch from infinality
 	sed '/AUX_MODULES += \(gx\|ot\)valid/s@^# @@' -i modules.cfg || die
@@ -185,6 +197,7 @@ multilib_src_configure() {
 		$(use_with harfbuzz)
 		$(use_with png)
 		$(use_enable static-libs static)
+		$(usex utils $(use_with svg librsvg) --without-librsvg)
 
 		# avoid using libpng-config
 		LIBPNG_CFLAGS="$($(tc-getPKG_CONFIG) --cflags libpng)"
