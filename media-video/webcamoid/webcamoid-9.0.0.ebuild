@@ -40,24 +40,18 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-3.6
 "
-BDEPEND="
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig
-	dev-util/cmake
-"
-
-src_prepare() {
-	cmake_src_prepare
-}
 
 src_configure() {
+	#Disable git in package source. If not disabled the cmake configure process will show a lot of "fatal not a git repository" errors
+	sed 's|find_program(GIT_BIN git)|#find_program(GIT_BIN git)|' libAvKys/cmake/ProjectCommons.cmake -i
+
 	local mycmakeargs=(
 		"-S ${WORKDIR}/${PF}"
 		"-B ${WORKDIR}/${PF}/webcamoid-build"
 		"-DNOMEDIAFOUNDATION=1"
 		"-DNOAVFOUNDATION=1"
 		"-DNODSHOW=1"
-		"-DNOWASAPI=1"
+		"-DNOWASAPI=1"	
 		"-DNOVLC=1"
 		"-DNOPIPEWIRE=1"
 		"-DNOALSA=$(usex alsa 0 1)"
@@ -75,7 +69,7 @@ src_configure() {
 }
 
 src_install() {
-	dodoc "${S}/StandAlone/ManPages/src/webcamoid.1.in"
+	docompress -x /usr/share/man/${PN}.1.gz
 	cmake_src_install
 }
 
@@ -86,3 +80,5 @@ pkg_postinst() {
 pkg_postrm() {
 	xdg_icon_cache_update
 }
+
+
