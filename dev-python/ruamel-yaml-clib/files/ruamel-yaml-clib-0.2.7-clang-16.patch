@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/880651
+https://sourceforge.net/p/ruamel-yaml-clib/code/merge-requests/3/
+
+--- a/_ruamel_yaml.c
++++ b/_ruamel_yaml.c
+@@ -1553,8 +1553,8 @@
+ static PyTypeObject *__pyx_ptype_12_ruamel_yaml_Mark = 0;
+ static PyTypeObject *__pyx_ptype_12_ruamel_yaml_CParser = 0;
+ static PyTypeObject *__pyx_ptype_12_ruamel_yaml_CEmitter = 0;
+-static int __pyx_f_12_ruamel_yaml_input_handler(void *, char *, int, int *); /*proto*/
+-static int __pyx_f_12_ruamel_yaml_output_handler(void *, char *, int); /*proto*/
++static int __pyx_f_12_ruamel_yaml_input_handler(void *, unsigned char *, unsigned long, unsigned long *); /*proto*/
++static int __pyx_f_12_ruamel_yaml_output_handler(void *, unsigned char *, unsigned long); /*proto*/
+ static PyObject *__pyx_f_12_ruamel_yaml___pyx_unpickle_Mark__set_state(struct __pyx_obj_12_ruamel_yaml_Mark *, PyObject *); /*proto*/
+ #define __Pyx_MODULE_NAME "_ruamel_yaml"
+ extern int __pyx_module_is_main__ruamel_yaml;
+@@ -14551,7 +14551,7 @@
+  *     parser = <CParser>data
+  */
+ 
+-static int __pyx_f_12_ruamel_yaml_input_handler(void *__pyx_v_data, char *__pyx_v_buffer, int __pyx_v_size, int *__pyx_v_read) {
++static int __pyx_f_12_ruamel_yaml_input_handler(void *__pyx_v_data, unsigned char *__pyx_v_buffer, unsigned long __pyx_v_size, unsigned long *__pyx_v_read) {
+   struct __pyx_obj_12_ruamel_yaml_CParser *__pyx_v_parser = 0;
+   PyObject *__pyx_v_value = NULL;
+   int __pyx_r;
+@@ -23430,7 +23430,7 @@
+  *     emitter = <CEmitter>data
+  */
+ 
+-static int __pyx_f_12_ruamel_yaml_output_handler(void *__pyx_v_data, char *__pyx_v_buffer, int __pyx_v_size) {
++static int __pyx_f_12_ruamel_yaml_output_handler(void *__pyx_v_data, unsigned char *__pyx_v_buffer, unsigned long __pyx_v_size) {
+   struct __pyx_obj_12_ruamel_yaml_CEmitter *__pyx_v_emitter = 0;
+   PyObject *__pyx_v_value = NULL;
+   int __pyx_r;
