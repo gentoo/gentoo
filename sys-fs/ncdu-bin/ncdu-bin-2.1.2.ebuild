@@ -6,7 +6,7 @@ EAPI=8
 inherit verify-sig
 
 DESCRIPTION="NCurses Disk Usage"
-HOMEPAGE="https://dev.yorhel.nl/ncdu/"
+HOMEPAGE="https://dev.yorhel.nl/ncdu"
 SRC_URI="
 	amd64? ( https://dev.yorhel.nl/download/ncdu-${PV}-linux-x86_64.tar.gz )
 	arm? ( https://dev.yorhel.nl/download/ncdu-${PV}-linux-arm.tar.gz )
