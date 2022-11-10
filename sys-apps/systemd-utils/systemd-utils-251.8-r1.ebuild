@@ -468,6 +468,8 @@ multilib_src_install_all() {
 	if use tmpfiles; then
 		doinitd "${FILESDIR}"/systemd-tmpfiles-setup
 		doinitd "${FILESDIR}"/systemd-tmpfiles-setup-dev
+		exeinto /etc/cron.daily
+		doexe "${FILESDIR}"/systemd-tmpfiles-clean
 		insinto /usr/share/zsh/site-functions
 		doins shell-completion/zsh/_systemd-tmpfiles
 	fi
