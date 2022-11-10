@@ -5,10 +5,6 @@
 		<email>office@gentoo.org</email>
 		<name>Gentoo Office project</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:harfbuzz_project:harfbuzz</remote-id>
 		<remote-id type="github">harfbuzz/harfbuzz</remote-id>
