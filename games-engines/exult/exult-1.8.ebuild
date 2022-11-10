@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/exult-all-versions/${PV}/${P}.t
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="alsa fluidsynth timidity tools"
 
 DEPEND="
