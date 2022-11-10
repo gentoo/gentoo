@@ -20,6 +20,7 @@ DEPEND="sys-libs/ncurses:=[unicode(+)]"
 RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
+	dev-lang/perl
 	verify-sig? ( sec-keys/openpgp-keys-yorhel )
 "
 
