@@ -25,6 +25,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	|| ( ~dev-lang/zig-0.10.0 ~dev-lang/zig-bin-0.10.0 )
 	virtual/pkgconfig
+	dev-lang/perl
 	verify-sig? ( sec-keys/openpgp-keys-yorhel )
 "
 
