@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.0.3-clang.patch"
 	"${FILESDIR}/${PN}-2.0.3-cpp.patch"
 	"${FILESDIR}/${PN}-2.0.3-imagemagick7.patch"
+	"${FILESDIR}/${PN}-2.0.3-musl.patch"
 )
 
 src_prepare() {
