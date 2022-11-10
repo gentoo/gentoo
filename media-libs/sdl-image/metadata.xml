@@ -5,4 +5,8 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<upstream>
+		<!-- SDL-1.2 branch -->
+		<remote-id type="github">libsdl-org/SDL_image</remote-id>
+	</upstream>
 </pkgmetadata>
