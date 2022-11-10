@@ -12,17 +12,28 @@ HOMEPAGE="https://libclc.llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( MIT BSD )"
 SLOT="0"
 KEYWORDS=""
-IUSE_VIDEO_CARDS="video_cards_nvidia video_cards_r600 video_cards_radeonsi"
-IUSE="${IUSE_VIDEO_CARDS}"
+IUSE="spirv video_cards_nvidia video_cards_r600 video_cards_radeonsi"
 
 LLVM_MAX_SLOT=16
 BDEPEND="
 	${PYTHON_DEPS}
 	|| (
-		sys-devel/clang:16
-		sys-devel/clang:15
-		sys-devel/clang:14
-		sys-devel/clang:13
+		(
+			sys-devel/clang:16
+			spirv? ( dev-util/spirv-llvm-translator:16 )
+		)
+		(
+			sys-devel/clang:15
+			spirv? ( dev-util/spirv-llvm-translator:15 )
+		)
+		(
+			sys-devel/clang:14
+			spirv? ( dev-util/spirv-llvm-translator:14 )
+		)
+		(
+			sys-devel/clang:13
+			spirv? ( dev-util/spirv-llvm-translator:13 )
+		)
 	)
 "
 
@@ -30,6 +41,10 @@ LLVM_COMPONENTS=( libclc )
 llvm.org_set_globals
 
 llvm_check_deps() {
+	if use spirv; then
+		has_version -b "dev-util/spirv-llvm-translator:${LLVM_SLOT}" ||
+			return 1
+	fi
 	has_version -b "sys-devel/clang:${LLVM_SLOT}"
 }
 
@@ -41,6 +56,10 @@ pkg_setup() {
 src_configure() {
 	local libclc_targets=()
 
+	use spirv && libclc_targets+=(
+		"spirv-mesa3d-"
+		"spirv64-mesa3d-"
+	)
 	use video_cards_nvidia && libclc_targets+=(
 		"nvptx--"
 		"nvptx64--"
@@ -55,7 +74,6 @@ src_configure() {
 		"amdgcn-mesa-mesa3d"
 		"amdgcn--amdhsa"
 	)
-	# TODO: spirv
 	[[ ${#libclc_targets[@]} ]] || die "libclc target missing!"
 
 	libclc_targets=${libclc_targets[*]}

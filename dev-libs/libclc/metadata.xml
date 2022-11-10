@@ -7,4 +7,7 @@
 	<upstream>
 		<remote-id type="github">llvm/llvm-project</remote-id>
 	</upstream>
+	<use>
+		<flag name="spirv">Build SPIRV targets</flag>
+	</use>
 </pkgmetadata>
