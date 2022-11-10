@@ -1,6 +1,7 @@
 Kernel's makefiles pass -Werror=strict-prototypes which
-trigger errors with clang15+
+can trigger errors depending on compiler defaults.
 https://bugs.gentoo.org/870238
+https://github.com/NVIDIA/open-gpu-kernel-modules/issues/377
 --- a/kernel/nvidia/nvlink_linux.c
 +++ b/kernel/nvidia/nvlink_linux.c
 @@ -639 +639 @@
