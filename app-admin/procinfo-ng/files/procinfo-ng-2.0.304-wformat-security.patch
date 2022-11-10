@@ -1,0 +1,11 @@
+--- a/procinfo.cpp
++++ b/procinfo.cpp
+@@ -211,7 +211,7 @@ int mainLoop(bool perSecond, bool showTotals, bool showTotalsMem, bool fullScree
+ 	try {
+ 		rows = getNetStats(perSecond, showTotals, skipIfaces, elapsed);
+ 	} catch (string exceptionMessage) {
+-		print(exceptionMessage.c_str());
++		print("%s", exceptionMessage.c_str());
+ 	}
+ 	print("\n");
+ 	prettyPrint(rows, rowWidth, true);
