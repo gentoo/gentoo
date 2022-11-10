@@ -40,6 +40,7 @@ src_prepare() {
 
 src_compile() {
 	use elibc_musl && local -x USE_ARGP_SO=1
+	emake -j1 create_obj_dir_structure create_picobj_dir_structure # Bug #880157
 	emake
 }
 
