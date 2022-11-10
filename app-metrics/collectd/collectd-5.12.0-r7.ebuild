@@ -170,7 +170,10 @@ REQUIRED_USE="
 	collectd_plugins_smart?			( udev )
 	contrib?				( perl )"
 
-PATCHES=( "${FILESDIR}"/${PN}-5.11.0-libsigrok-0.4+.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.11.0-libsigrok-0.4+.patch
+	"${FILESDIR}"/${PN}-5.12.0-python3_11.patch
+)
 
 # @FUNCTION: collectd_plugin_kernel_linux
 # @DESCRIPTION:
