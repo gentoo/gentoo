@@ -235,7 +235,6 @@ src_configure() {
 			have_switched_compiler=yes
 		fi
 		AR=llvm-ar
-		AS="clang -c"
 		CC=${CHOST}-clang
 		CXX=${CHOST}-clang++
 		NM=llvm-nm
@@ -260,6 +259,7 @@ src_configure() {
 	# Ensure we use correct toolchain
 	export HOST_CC="$(tc-getBUILD_CC)"
 	export HOST_CXX="$(tc-getBUILD_CXX)"
+	export AS="$(tc-getCC) -c"
 	tc-export CC CXX LD AR AS NM OBJDUMP RANLIB PKG_CONFIG
 
 	cd "${MOZJS_BUILDDIR}" || die
