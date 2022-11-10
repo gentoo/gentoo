@@ -6,9 +6,15 @@
 		<name>Jakov Smolić</name>
 	</maintainer>
 	<longdescription>
-		As the name already suggests, ncdu is an NCurses version of the famous old 'du'
-		unix command. It provides a fast and easy interface to your harddrive. Where is
-		your disk space going? Why is your home directory that large? ncdu can answer
-		those questions for you in just a matter of seconds!
+		Ncdu is a disk usage analyzer with an ncurses interface. It is designed to find
+		space hogs on a remote server where you don’t have an entire graphical setup
+		available, but it is a useful tool even on regular desktop systems. Ncdu aims
+		to be fast, simple and easy to use, and should be able to run in any minimal
+		POSIX-like environment with ncurses installed.
 	</longdescription>
+	<upstream>
+		<changelog>https://dev.yorhel.nl/ncdu/changes2</changelog>
+		<doc lang="en">https://dev.yorhel.nl/ncdu/man2</doc>
+		<bugs-to>https://code.blicky.net/yorhel/ncdu/issues</bugs-to>
+	</upstream>
 </pkgmetadata>
