@@ -1,13 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit pam systemd
+VERIFY_SIG_METHOD="signify"
+inherit pam systemd verify-sig
 
 DESCRIPTION="Lightweight but featured SMTP daemon from OpenBSD"
 HOMEPAGE="https://www.opensmtpd.org"
-SRC_URI="https://www.opensmtpd.org/archives/${P/_}.tar.gz"
+SRC_URI="https://www.opensmtpd.org/archives/${P/_}.tar.gz
+	verify-sig? ( https://www.opensmtpd.org/archives/${P/_}.sum.sig	)"
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/signify-keys/opensmtpd-20181026.pub"
 
 LICENSE="ISC BSD BSD-1 BSD-2 BSD-4"
 SLOT="0"
@@ -40,8 +43,20 @@ DEPEND="
 	!mail-mta/ssmtp[mta]
 "
 RDEPEND="${DEPEND}"
+BDEPEND="verify-sig? ( sec-keys/signify-keys-opensmtpd )"
 
 S=${WORKDIR}/${P/_}
+
+src_unpack() {
+	if use verify-sig; then
+		# Too many levels of symbolic links
+		cp "${DISTDIR}"/${P/_}.{sum.sig,tar.gz} "${WORKDIR}" || die
+		verify-sig_verify_signed_checksums \
+			${P/_}.sum.sig sha256 ${P/_}.tar.gz
+	fi
+
+	default
+}
 
 src_configure() {
 	econf \
