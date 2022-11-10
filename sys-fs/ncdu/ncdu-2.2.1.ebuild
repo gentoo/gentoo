@@ -6,7 +6,7 @@ EAPI=8
 inherit verify-sig
 
 DESCRIPTION="NCurses Disk Usage"
-HOMEPAGE="https://dev.yorhel.nl/ncdu/"
+HOMEPAGE="https://dev.yorhel.nl/ncdu"
 SRC_URI="
 	https://dev.yorhel.nl/download/${P}.tar.gz
 	verify-sig? ( https://dev.yorhel.nl/download/${P}.tar.gz.asc )
