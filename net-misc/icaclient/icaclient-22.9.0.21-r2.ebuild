@@ -36,8 +36,11 @@ REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 	libgstreamer-0.10.so.0
 "
 RDEPEND="
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0:2
+		dev-libs/atk
+	)
 	app-crypt/libsecret
-	dev-libs/atk
 	dev-libs/glib:2
 	dev-libs/libxml2
 	media-fonts/font-adobe-100dpi
