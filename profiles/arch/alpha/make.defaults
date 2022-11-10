@@ -21,7 +21,7 @@ LIBDIR_alpha="lib"
 
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
-VIDEO_CARDS="fbdev mga nv r128 radeon"
+VIDEO_CARDS="fbdev mga r128 radeon"
 
 # Tobias Klausmann <klausman@gentoo.org> (2018-06-25)
 # Enable USE=libtirpc by default, to ease dependency resolution during
