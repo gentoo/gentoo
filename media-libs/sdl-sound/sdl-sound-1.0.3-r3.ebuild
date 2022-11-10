@@ -3,6 +3,10 @@
 
 EAPI=8
 
+# We may want to grab backports from the SDL-1.2 branch upstream or
+# even take snapshots from it in future, as no SDL 1 / 1.x releases
+# will be made anymore.
+
 inherit autotools multilib-minimal
 
 MY_P="${P/sdl-/SDL_}"
