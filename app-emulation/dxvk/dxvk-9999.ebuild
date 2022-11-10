@@ -9,15 +9,24 @@ inherit flag-o-matic meson-multilib
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/doitsujin/dxvk.git"
+	EGIT_SUBMODULES=(
+		# picky about headers and is cross-compiled making -I/usr/include troublesome
+		include/{spirv,vulkan}
+	)
 else
-	SRC_URI="https://github.com/doitsujin/dxvk/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+	HASH_SPIRV=0bcc624926a25a2a273d07877fd25a6ff5ba1cfb
+	HASH_VULKAN=98f440ce6868c94f5ec6e198cc1adda4760e8849
+	SRC_URI="
+		https://github.com/doitsujin/dxvk/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV}.tar.gz -> ${PN}-spirv-headers-${HASH_SPIRV::10}.tar.gz
+		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz -> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 
 DESCRIPTION="Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine"
 HOMEPAGE="https://github.com/doitsujin/dxvk/"
 
-LICENSE="ZLIB"
+LICENSE="ZLIB Apache-2.0 MIT"
 SLOT="0"
 IUSE="+abi_x86_32 crossdev-mingw +d3d9 +d3d10 +d3d11 debug +dxgi"
 REQUIRED_USE="
@@ -51,6 +60,12 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	if [[ ${PV} != 9999 ]]; then
+		rmdir include/{spirv,vulkan} || die
+		mv ../SPIRV-Headers-${HASH_SPIRV} include/spirv || die
+		mv ../Vulkan-Headers-${HASH_VULKAN} include/vulkan || die
+	fi
+
 	default
 
 	sed -i "/^basedir=/s|=.*|=${EPREFIX}/usr/lib/${PN}|" setup_dxvk.sh || die
@@ -130,10 +145,12 @@ pkg_postinst() {
 		elog "it. See ${EROOT}/usr/share/doc/${PF}/README.md* for handling configs."
 	fi
 
-	# don't try to keep wine-*[vulkan] in RDEPEND, but still give a warning
-	local wine
-	for wine in app-emulation/wine-{vanilla,staging}; do
-		has_version ${wine} && ! has_version ${wine}[vulkan] &&
-			ewarn "${wine} was not built with USE=vulkan, ${PN} will not be usable with it"
-	done
+	if [[ ! ${REPLACING_VERSIONS##* } ]] ||
+		ver_test ${REPLACING_VERSIONS##* } -lt 2.0
+	then
+		elog
+		elog ">=${PN}-2.0 requires drivers and Wine to support vulkan-1.3, meaning:"
+		elog ">=wine-*-7.1 (or >=wine-proton-7.0), and >=mesa-22.0 (or >=nvidia-drivers-510)"
+		elog "For details, see: https://github.com/doitsujin/dxvk/wiki/Driver-support"
+	fi
 }
