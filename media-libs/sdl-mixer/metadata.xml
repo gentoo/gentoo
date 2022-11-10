@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
- <email>games@gentoo.org</email>
- <name>Gentoo Games Project</name>
-</maintainer>
-<use>
- <flag name="fluidsynth">Use <pkg>media-sound/fluidsynth</pkg> for MIDI support</flag>
- <flag name="midi">basic support for MIDI files</flag>
- <flag name="mod">basic support for MOD files</flag>
- <flag name="playtools">Install playwave and playmus tools (useful for testing)</flag>
- <flag name="smpeg">Use <pkg>media-libs/smpeg</pkg> for MP3 support</flag>
- <flag name="wav">support WAVE files</flag>
-</use>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="fluidsynth">Use <pkg>media-sound/fluidsynth</pkg> for MIDI support</flag>
+		<flag name="midi">basic support for MIDI files</flag>
+		<flag name="mod">basic support for MOD files</flag>
+		<flag name="playtools">Install playwave and playmus tools (useful for testing)</flag>
+		<flag name="smpeg">Use <pkg>media-libs/smpeg</pkg> for MP3 support</flag>
+		<flag name="wav">support WAVE files</flag>
+	</use>
+	<upstream>
+		<!-- SDL-1.2 branch -->
+		<remote-id type="github">libsdl-org/SDL_mixer</remote-id>
+	</upstream>
 </pkgmetadata>
