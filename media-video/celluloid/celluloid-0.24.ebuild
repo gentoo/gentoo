@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig"
+
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
