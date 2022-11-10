@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <changelog>https://invisible-island.net/diffstat/CHANGES</changelog>
+    <remote-id type="github">ThomasDickey/diffstat-snapshots</remote-id>
   </upstream>
 </pkgmetadata>
