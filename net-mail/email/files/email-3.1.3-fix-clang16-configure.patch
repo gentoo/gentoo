@@ -1,0 +1,19 @@
+Clang16 will not allow using undeclared library functions by default.
+This imports ctype.h into that check so isdigit() can be used without errors.
+
+Bug: https://bugs.gentoo.org/879737
+
+PR upstream: https://github.com/deanproxy/eMail/pull/63
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/check_strftime.sh
++++ b/check_strftime.sh
+@@ -14,6 +14,7 @@ cat << EOF > /tmp/strftime_try.c
+ #include <stdlib.h>
+ #include <time.h>
+ #include <sys/time.h>
++#include <ctype.h>
+ 
+ int
+ main (void)
