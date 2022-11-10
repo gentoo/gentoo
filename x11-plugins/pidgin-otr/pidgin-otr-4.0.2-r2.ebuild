@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="(OTR) Messaging allows you to have private conversations over instant messaging"
 HOMEPAGE="http://www.cypherpunks.ca/otr/"
 SRC_URI="http://www.cypherpunks.ca/otr/${P}.tar.gz"
@@ -23,6 +25,11 @@ BDEPEND="
 "
 
 DOCS=( AUTHORS ChangeLog NEWS README )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_install() {
 	default
