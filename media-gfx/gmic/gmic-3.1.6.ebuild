@@ -67,6 +67,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.6-ar_so.patch
+	"${FILESDIR}"/${PN}-3.1.6-grep38.patch
 	"${FILESDIR}"/${PN}-3.1.6-makefile_automagic.patch
 	"${FILESDIR}"/${PN}-3.1.6-relative_rpath.patch
 )
