@@ -1,0 +1,64 @@
+https://github.com/libsdl-org/SDL_mixer/commit/03bd4ca6aa38c1a382c892cef86296cd621ecc1d
+https://github.com/libsdl-org/SDL_mixer/commit/9e6d7b67a00656a68ea0c2eace75c587871549b9
+https://github.com/libsdl-org/SDL_mixer/commit/d28cbc34d63dd20b256103c3fe506ecf3d34d379
+
+From 03bd4ca6aa38c1a382c892cef86296cd621ecc1d Mon Sep 17 00:00:00 2001
+From: Ozkan Sezer <sezeroz@gmail.com>
+Date: Sun, 7 Oct 2018 10:15:50 +0300
+Subject: [PATCH] backported a warning fix. (from 2.0 branch commit
+ 6fa075aa693e).
+
+---
+ dynamic_ogg.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dynamic_ogg.h b/dynamic_ogg.h
+index 822458d4..8eb91656 100644
+--- a/dynamic_ogg.h
++++ b/dynamic_ogg.h
+@@ -31,7 +31,7 @@ typedef struct {
+ 	void *handle;
+ 	int (*ov_clear)(OggVorbis_File *vf);
+ 	vorbis_info *(*ov_info)(OggVorbis_File *vf,int link);
+-	int (*ov_open_callbacks)(void *datasource, OggVorbis_File *vf, char *initial, long ibytes, ov_callbacks callbacks);
++	int (*ov_open_callbacks)(void *datasource, OggVorbis_File *vf, const char *initial, long ibytes, ov_callbacks callbacks);
+ 	ogg_int64_t (*ov_pcm_total)(OggVorbis_File *vf,int i);
+ #ifdef OGG_USE_TREMOR
+ 	long (*ov_read)(OggVorbis_File *vf,char *buffer,int length, int *bitstream);
+
+From 9e6d7b67a00656a68ea0c2eace75c587871549b9 Mon Sep 17 00:00:00 2001
+From: Ozkan Sezer <sezeroz@gmail.com>
+Date: Sun, 7 Oct 2018 12:41:20 +0300
+Subject: [PATCH] fixed a warning after commit cb08fb0976e6
+
+--- a/dynamic_ogg.c
++++ b/dynamic_ogg.c
+@@ -52,7 +52,7 @@ int Mix_InitOgg()
+ 			return -1;
+ 		}
+ 		vorbis.ov_open_callbacks =
+-			(int (*)(void *, OggVorbis_File *, char *, long, ov_callbacks))
++			(int (*)(void *, OggVorbis_File *, const char *, long, ov_callbacks))
+ 			SDL_LoadFunction(vorbis.handle, "ov_open_callbacks");
+ 		if ( vorbis.ov_open_callbacks == NULL ) {
+ 			SDL_UnloadObject(vorbis.handle);
+
+From d28cbc34d63dd20b256103c3fe506ecf3d34d379 Mon Sep 17 00:00:00 2001
+From: Ozkan Sezer <sezeroz@gmail.com>
+Date: Mon, 25 Nov 2019 03:28:02 +0300
+Subject: [PATCH] dynamic_ogg.c: fixed ov_time_seek() signature for
+ libvorbisidec.
+
+reported by Vitaly Novichkov.
+--- a/dynamic_ogg.c
++++ b/dynamic_ogg.c
+@@ -78,7 +78,7 @@ int Mix_InitOgg()
+ 		}
+ 		vorbis.ov_time_seek =
+ #ifdef OGG_USE_TREMOR
+-			(long (*)(OggVorbis_File *,ogg_int64_t))
++			(int (*)(OggVorbis_File *,ogg_int64_t))
+ #else
+ 			(int (*)(OggVorbis_File *,double))
+ #endif
+
