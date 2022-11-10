@@ -68,10 +68,10 @@ index cfb50de..92e2847 100644
  endif
  
  
-diff --git a/glcdgraphics/extformats.c b/glcdgraphics/extformats.c
+diff --git a/glcdgraphics/extformats.cpp b/glcdgraphics/extformats.cpp
 index 5734fce..90441e6 100644
---- a/glcdgraphics/extformats.c
-+++ b/glcdgraphics/extformats.c
+--- a/glcdgraphics/extformats.cpp
++++ b/glcdgraphics/extformats.cpp
 @@ -21,11 +21,10 @@
  #include "extformats.h"
  #include "image.h"
@@ -308,10 +308,10 @@ Subject: [PATCH] Add cleanup for MagickWand
  glcdgraphics/extformats.c | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/glcdgraphics/extformats.c b/glcdgraphics/extformats.c
+diff --git a/glcdgraphics/extformats.cpp b/glcdgraphics/extformats.cpp
 index 90441e6..79d14da 100644
---- a/glcdgraphics/extformats.c
-+++ b/glcdgraphics/extformats.c
+--- a/glcdgraphics/extformats.cpp
++++ b/glcdgraphics/extformats.cpp
 @@ -65,6 +65,7 @@ bool cExtFormatFile::LoadScaled(cImage & image, const string & fileName, uint16_
  
    if (MagickReadImage(mw, fileName.c_str()) == MagickFalse) {
