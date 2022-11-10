@@ -67,9 +67,10 @@ RDEPEND="
 	)
 	lm-sensors? ( sys-apps/lm-sensors:=[${MULTILIB_USEDEP}] )
 	opencl? (
-		>=virtual/opencl-3[${MULTILIB_USEDEP}]
-		dev-libs/libclc
-		virtual/libelf:0=[${MULTILIB_USEDEP}]
+		>=virtual/opencl-3
+		dev-libs/libclc[spirv(-)]
+		>=dev-util/spirv-tools-1.3.231.0
+		virtual/libelf:0=
 	)
 	vaapi? (
 		>=media-libs/libva-1.7.3:=[${MULTILIB_USEDEP}]
@@ -112,6 +113,7 @@ PER_SLOT_DEPSTR="
 	(
 		!opencl? ( sys-devel/llvm:@SLOT@[${LLVM_USE_DEPS}] )
 		opencl? ( sys-devel/clang:@SLOT@[${LLVM_USE_DEPS}] )
+		opencl? ( dev-util/spirv-llvm-translator:@SLOT@ )
 	)
 "
 LLVM_DEPSTR="
@@ -138,9 +140,11 @@ DEPEND="${RDEPEND}
 	)
 "
 BDEPEND="
+	>=dev-util/meson-1.0.0
 	${PYTHON_DEPS}
 	opencl? (
-		>=sys-devel/gcc-4.6
+		>=virtual/rust-1.62.0
+		>=dev-util/bindgen-0.58.0
 	)
 	sys-devel/bison
 	sys-devel/flex
@@ -163,6 +167,7 @@ x86? (
 llvm_check_deps() {
 	if use opencl; then
 		has_version "sys-devel/clang:${LLVM_SLOT}[${LLVM_USE_DEPS}]" || return 1
+		has_version "dev-util/spirv-llvm-translator:${LLVM_SLOT}" || return 1
 	fi
 	has_version "sys-devel/llvm:${LLVM_SLOT}[${LLVM_USE_DEPS}]"
 }
@@ -175,13 +180,6 @@ pkg_pretend() {
 		   ! use video_cards_radeonsi &&
 		   ! use video_cards_v3d; then
 			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain d3d12, freedreno, intel, radeonsi, or v3d"
-		fi
-	fi
-
-	if use opencl; then
-		if ! use video_cards_r600 &&
-		   ! use video_cards_radeonsi; then
-			ewarn "Ignoring USE=opencl     since VIDEO_CARDS does not contain r600 or radeonsi"
 		fi
 	fi
 
@@ -334,10 +332,14 @@ multilib_src_configure() {
 		gallium_enable video_cards_radeon r300 r600
 	fi
 
-	# opencl stuff
-	emesonargs+=(
-		-Dgallium-opencl="$(usex opencl icd disabled)"
-	)
+	if use llvm && use opencl; then
+		PKG_CONFIG_PATH="$(get_llvm_prefix)/$(get_libdir)/pkgconfig"
+		# See https://gitlab.freedesktop.org/mesa/mesa/-/blob/main/docs/rusticl.rst
+		emesonargs+=(
+			$(meson_native_true gallium-rusticl)
+			-Drust_std=2021
+		)
+	fi
 
 	if use vulkan; then
 		vulkan_enable video_cards_freedreno freedreno
