@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="(OTR) Messaging allows you to have private conversations over instant messaging"
 HOMEPAGE="https://otr.cypherpunks.ca"
 SRC_URI="https://otr.cypherpunks.ca/${P}.tar.gz"
@@ -19,6 +21,11 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.1.1-fix-build-with-libgcrypt-1.10.patch"
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_install() {
 	default
