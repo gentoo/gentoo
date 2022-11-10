@@ -1,0 +1,36 @@
+From b720da771efa950cf380101bed42d5d5ee177908 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Thu, 10 Nov 2022 16:13:33 +0100
+Subject: [PATCH] pulse-server: also advance read pointer in underrun
+
+So that we ask for more data from the client.
+
+Also retested with #2799 that caused this regression.
+
+Fixes #2821
+---
+ src/modules/module-protocol-pulse/pulse-server.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/modules/module-protocol-pulse/pulse-server.c b/src/modules/module-protocol-pulse/pulse-server.c
+index b18273e98..07f664ba1 100644
+--- a/src/modules/module-protocol-pulse/pulse-server.c
++++ b/src/modules/module-protocol-pulse/pulse-server.c
+@@ -1433,10 +1433,11 @@ static void stream_process(void *data)
+ 						stream->buffer, MAXLENGTH,
+ 						index % MAXLENGTH,
+ 						p, avail);
+-					index += avail;
+-					pd.read_inc = avail;
+-					spa_ringbuffer_read_update(&stream->ring, index);
+ 				}
++				index += size;
++				pd.read_inc = size;
++				spa_ringbuffer_read_update(&stream->ring, index);
++
+ 				pd.playing_for = size;
+ 			}
+ 			pw_log_debug("%p: [%s] underrun read:%u avail:%d max:%u",
+-- 
+2.38.1
+
