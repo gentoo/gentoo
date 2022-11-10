@@ -40,21 +40,8 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# fail because of forcing Gentoo's prefix
-	tests/ebuild/test_eapi.py::TestEAPI::test_register
-	tests/ebuild/test_eapi.py::TestEAPI::test_is_supported
-)
-
-src_prepare() {
-	# force Gentoo's prefix
-	sed -e "/INSTALL_PREFIX =/s@= .*\$@= '${EPREFIX}/usr'@" -i py_build.py || die
-
-	distutils-r1_src_prepare
-}
-
 python_install_all() {
 	local DOCS=( NEWS.rst )
-	[[ ${PV} == *9999 ]] || doman man/*
+	[[ ${PV} == *9999 ]] || doman build/sphinx/man/*
 	distutils-r1_python_install_all
 }

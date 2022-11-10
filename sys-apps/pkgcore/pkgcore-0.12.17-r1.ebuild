@@ -38,20 +38,11 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests pytest
-
-EPYTEST_DESELECT=(
-	# fail because of forcing Gentoo's prefix
-	tests/ebuild/test_eapi.py::TestEAPI::test_register
-	tests/ebuild/test_eapi.py::TestEAPI::test_is_supported
+PATCHES=(
+	"${FILESDIR}/${PN}-0.12.17-fix-prefix.patch"
 )
 
-src_prepare() {
-	# force Gentoo's prefix
-	sed -e "/INSTALL_PREFIX =/s@= .*\$@= '${EPREFIX}/usr'@" -i py_build.py || die
-
-	distutils-r1_src_prepare
-}
+distutils_enable_tests pytest
 
 python_install_all() {
 	local DOCS=( NEWS.rst )
