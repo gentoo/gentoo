@@ -9,7 +9,8 @@ SRC_URI="https://github.com/thierry-martinez/stdcompat/releases/download/v${PV}/
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
+SLOT="0/${PV}"
 
 DEPEND="dev-lang/ocaml:=[ocamlopt]
 	dev-ml/result:=[ocamlopt]
