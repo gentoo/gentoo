@@ -16,4 +16,7 @@
 		<flag name="rtlsdr">Enable rtlsdr based kismet capture sources</flag>
 		<flag name="ubertooth">Enable capture source for ubertooth to sniff bluetooth low energy</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">kismetwireless/kismet</remote-id>
+	</upstream>
 </pkgmetadata>
