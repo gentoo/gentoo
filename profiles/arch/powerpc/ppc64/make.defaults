@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # All extra USE/etc should be specified in sub-profiles.
@@ -35,7 +35,7 @@ IUSE_IMPLICIT="abi_ppc_64"
 
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
-VIDEO_CARDS="fbdev mga nv r128 radeon"
+VIDEO_CARDS="fbdev mga r128 radeon"
 
 # Enable abi_ppc_64 for packages that don't have it forced.
 ABI_PPC="64"
