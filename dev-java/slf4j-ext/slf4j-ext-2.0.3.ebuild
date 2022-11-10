@@ -18,7 +18,7 @@ SRC_URI="https://github.com/qos-ch/slf4j/archive/v_${PV}.tar.gz -> slf4j-${PV}.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64"
+KEYWORDS="amd64 ~arm arm64 ppc64"
 
 # Common dependencies
 # POM: pom.xml
