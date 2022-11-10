@@ -116,9 +116,6 @@ src_prepare() {
 	sed -e "/test('thunderbolt-self-test', e, env: test_env, timeout : 120)/d" \
 		-i plugins/thunderbolt/meson.build || die
 
-	sed -e '/platform-integrity/d' \
-		-i plugins/meson.build || die #753521
-
 	sed -e "/install_dir.*'doc'/s/doc/gtk-doc/" \
 		-i docs/meson.build || die
 
@@ -128,7 +125,7 @@ src_prepare() {
 src_configure() {
 	local plugins=(
 		-Dplugin_gpio="enabled"
-		$(meson_feature amt plugin_amt)
+		$(meson_feature amt plugin_intel_me)
 		$(meson_feature dell plugin_dell)
 		$(meson_feature fastboot plugin_fastboot)
 		$(meson_feature flashrom plugin_flashrom)
@@ -177,6 +174,10 @@ src_configure() {
 	use uefi && emesonargs+=( -Defi_os_dir="gentoo" )
 	export CACHE_DIRECTORY="${T}"
 	meson_src_configure
+}
+
+src_test() {
+	LC_ALL="C" meson_src_test
 }
 
 src_install() {
