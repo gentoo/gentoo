@@ -25,6 +25,7 @@ RDEPEND="
 	dev-ml/camlp4:=[ocamlopt?]
 	dev-ml/parmap:=[ocamlopt?]
 	dev-ml/findlib:=[ocamlopt?]
+	dev-ml/stdcompat:=
 	emacs? ( >=app-editors/emacs-23.1:* )
 	pcre? (
 		dev-libs/libpcre
