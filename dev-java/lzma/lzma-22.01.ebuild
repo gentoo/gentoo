@@ -4,7 +4,7 @@
 EAPI=8
 JAVA_PKG_IUSE="doc source"
 
-inherit java-pkg-2 java-pkg-simple
+inherit java-pkg-2 java-pkg-simple unpacker
 
 DESCRIPTION="Java code for LZMA compression and decompression"
 HOMEPAGE="https://7-zip.org/"
@@ -16,12 +16,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-1.8:*"
-BDEPEND="app-arch/p7zip"
+BDEPEND="$(unpacker_src_uri_depends)"
 
 S="${WORKDIR}/Java"
 
 JAVA_SRC_DIR="SevenZip"
-
-src_unpack() {
-	7z x "${DISTDIR}/lzma-${PV}.7z" || "unpack failed"
-}
