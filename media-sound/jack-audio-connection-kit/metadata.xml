@@ -8,4 +8,7 @@
 	<use>
 		<flag name="pam">Add basic realtime configuration via <pkg>sys-auth/realtime-base</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">jackaudio/jack1</remote-id>
+	</upstream>
 </pkgmetadata>
