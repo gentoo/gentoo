@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/exult/exult-data/exult_audio.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 BDEPEND="app-arch/unzip"
 
