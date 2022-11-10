@@ -68,7 +68,7 @@ RDEPEND="
 	lm-sensors? ( sys-apps/lm-sensors:=[${MULTILIB_USEDEP}] )
 	opencl? (
 				>=virtual/opencl-3[${MULTILIB_USEDEP}]
-				dev-libs/libclc
+				dev-libs/libclc[spirv(-)]
 				virtual/libelf:0=[${MULTILIB_USEDEP}]
 			)
 	vaapi? (
@@ -183,7 +183,10 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	${PYTHON_DEPS}
 	opencl? (
-		>=sys-devel/gcc-4.6
+		>=virtual/rust-1.62.0
+		>=dev-util/bindgen-0.58.0
+		dev-util/spirv-tools
+		dev-util/spirv-llvm-translator
 	)
 	sys-devel/bison
 	sys-devel/flex
@@ -231,9 +234,9 @@ pkg_pretend() {
 	fi
 
 	if use opencl; then
-		if ! use video_cards_r600 &&
+		if ! use video_cards_intel &&
 		   ! use video_cards_radeonsi; then
-			ewarn "Ignoring USE=opencl     since VIDEO_CARDS does not contain r600 or radeonsi"
+			ewarn "Ignoring USE=opencl     since VIDEO_CARDS does not contain intel or radeonsi"
 		fi
 	fi
 
@@ -386,10 +389,14 @@ multilib_src_configure() {
 		gallium_enable video_cards_radeon r300 r600
 	fi
 
-	# opencl stuff
-	emesonargs+=(
-		-Dgallium-opencl="$(usex opencl icd disabled)"
-	)
+	if use opencl; then
+		PKG_CONFIG_LIBDIR="$(get_llvm_prefix)/$(get_libdir)/pkgconfig:${ESYSROOT}/usr/$(get_libdir)/pkgconfig"
+		# See https://gitlab.freedesktop.org/mesa/mesa/-/blob/main/docs/rusticl.rst
+		emesonargs+=(
+			$(meson_native_true gallium-rusticl)
+			-Drust_std=2021
+		)
+	fi
 
 	if use vulkan; then
 		vulkan_enable video_cards_freedreno freedreno
