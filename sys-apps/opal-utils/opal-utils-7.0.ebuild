@@ -13,7 +13,7 @@ SRC_URI="https://github.com/open-power/skiboot/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="Apache-2.0 GPL-2+"
 SLOT="0"
-KEYWORDS="~ppc64"
+KEYWORDS="ppc64"
 IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
