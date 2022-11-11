@@ -38,7 +38,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
-	app-text/docbook-xml-dtd:4.1.2
+	gtk-doc? (
+		dev-util/gtk-doc
+		app-text/docbook-xml-dtd:4.2
+	)
 	dev-libs/libxslt
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
