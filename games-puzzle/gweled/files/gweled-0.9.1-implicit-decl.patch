@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/874738
+--- a/src/main.c
++++ b/src/main.c
+@@ -34,2 +34,3 @@
+ #include "games-scores-dialog.h"
++#include "games-setgid-io.h"
+ 
+--- a/src/main.h
++++ b/src/main.h
+@@ -26,2 +26,5 @@
+ void
++init_pref_window(void);
++
++void
+ save_preferences(void);
