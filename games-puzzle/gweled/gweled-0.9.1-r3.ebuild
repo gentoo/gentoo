@@ -50,5 +50,5 @@ src_install() {
 	default
 
 	fperms 2751 /usr/bin/${PN}
-	fperms 660 /var/games/*.scores
+	fperms 660 /var/games/${PN}.{Normal,Timed}.scores
 }
