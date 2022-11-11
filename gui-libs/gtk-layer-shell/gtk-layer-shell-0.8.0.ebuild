@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 VALA_USE_DEPEND="vapigen"
 inherit vala meson python-any-r1
 
@@ -34,6 +34,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-util/wayland-scanner
 	virtual/pkgconfig
+	x11-base/xorg-proto
 	gtk-doc? ( dev-util/gtk-doc )
 	test? ( ${PYTHON_DEPS} )
 	vala? ( $(vala_depend) )
