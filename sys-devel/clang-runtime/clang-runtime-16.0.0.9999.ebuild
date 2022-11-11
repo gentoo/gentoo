@@ -9,7 +9,7 @@ DESCRIPTION="Meta-ebuild for clang runtime libraries"
 HOMEPAGE="https://clang.llvm.org/"
 
 LICENSE="metapackage"
-SLOT="$(ver_cut 1-3)"
+SLOT="${PV%%.*}"
 KEYWORDS=""
 IUSE="+compiler-rt libcxx openmp +sanitize"
 REQUIRED_USE="sanitize? ( compiler-rt )"
