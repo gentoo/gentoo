@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit linux-info meson python-single-r1 vala udev xdg
+inherit meson python-single-r1 vala udev xdg
 
 DESCRIPTION="Aims to make updating firmware on Linux automatic, safe and reliable"
 HOMEPAGE="https://fwupd.org"
@@ -99,14 +99,6 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.4-installed_tests.patch
 )
-
-pkg_setup() {
-	python-single-r1_pkg_setup
-
-	if use nvme ; then
-		kernel_is -ge 4 4 || die "NVMe support requires kernel >= 4.4"
-	fi
-}
 
 src_prepare() {
 	default
