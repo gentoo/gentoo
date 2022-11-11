@@ -11,8 +11,8 @@ inherit autotools multilib-minimal
 
 MY_P="${P/sdl-/SDL_}"
 DESCRIPTION="library that allows you to use TrueType fonts in SDL applications"
-HOMEPAGE="http://www.libsdl.org/projects/SDL_ttf/"
-SRC_URI="http://www.libsdl.org/projects/SDL_ttf/release/${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/libsdl-org/SDL_ttf"
+SRC_URI="https://www.libsdl.org/projects/SDL_ttf/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
