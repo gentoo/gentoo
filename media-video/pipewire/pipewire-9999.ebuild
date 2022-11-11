@@ -39,7 +39,7 @@ LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
 IUSE="bluetooth dbus doc echo-cancel extra flatpak gstreamer jack-client jack-sdk lv2
-pipewire-alsa sound-server ssl system-service systemd test udev v4l X zeroconf"
+modemmanager pipewire-alsa readline sound-server ssl system-service systemd test udev v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -54,6 +54,7 @@ pipewire-alsa sound-server ssl system-service systemd test udev v4l X zeroconf"
 # When pipewire-alsa will be able to perform similar check, pipewire-alsa can be enabled unconditionally.
 REQUIRED_USE="
 	jack-sdk? ( !jack-client )
+	modemmanager? ( bluetooth )
 	system-service? ( systemd )
 	!sound-server? ( !pipewire-alsa )
 	jack-client? ( dbus )
@@ -74,7 +75,6 @@ BDEPEND="
 RDEPEND="
 	acct-group/audio
 	media-libs/alsa-lib
-	sys-libs/readline:=
 	sys-libs/ncurses:=[unicode(+)]
 	virtual/libintl[${MULTILIB_USEDEP}]
 	bluetooth? (
@@ -105,6 +105,7 @@ RDEPEND="
 		!media-sound/jack2
 	)
 	lv2? ( media-libs/lilv )
+	modemmanager? ( >=net-misc/modemmanager-1.10.0 )
 	pipewire-alsa? (
 		>=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}]
 	)
@@ -112,6 +113,7 @@ RDEPEND="
 		!media-sound/pulseaudio[daemon(+)]
 		!media-sound/pulseaudio-daemon
 	)
+	readline? ( sys-libs/readline:= )
 	ssl? ( dev-libs/openssl:= )
 	systemd? ( sys-apps/systemd )
 	system-service? (
@@ -208,6 +210,8 @@ multilib_src_configure() {
 		$(meson_native_use_feature bluetooth bluez5)
 		$(meson_native_use_feature bluetooth bluez5-backend-hsp-native)
 		$(meson_native_use_feature bluetooth bluez5-backend-hfp-native)
+		# https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/1379
+		$(meson_native_use_feature modemmanager bluez5-backend-native-mm)
 		$(meson_native_use_feature bluetooth bluez5-backend-ofono)
 		$(meson_native_use_feature bluetooth bluez5-backend-hsphfpd)
 		$(meson_native_use_feature bluetooth bluez5-codec-aac)
@@ -233,6 +237,7 @@ multilib_src_configure() {
 		$(meson_native_use_feature lv2)
 		$(meson_native_use_feature v4l v4l2)
 		-Dlibcamera=disabled # libcamera is not in Portage tree
+		$(meson_native_use_feature readline)
 		$(meson_native_use_feature ssl raop)
 		-Dvideoconvert=enabled # Matches upstream
 		-Dvideotestsrc=enabled # Matches upstream
