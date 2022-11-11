@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.44.0:2[${MULTILIB_USEDEP}]
 	virtual/libusb:1[udev,${MULTILIB_USEDEP}]
-	>=dev-libs/json-glib-1.1.1[${MULTILIB_USEDEP}]
+	>=dev-libs/json-glib-1.1.1[${MULTILIB_USEDEP},introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 	sys-apps/hwdata
 "
