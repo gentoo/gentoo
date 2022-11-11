@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/880737
+--- a/meson.build
++++ b/meson.build
+@@ -1538,3 +1538,3 @@
+ }
+-features += {'macos-touchbar': cc.compiles(macos_touchbar['fragment'], name: 'macos-touchbar check')}
++features += {'macos-touchbar': macos_touchbar['deps'].found() and cc.compiles(macos_touchbar['fragment'], name: 'macos-touchbar check')}
+ if features['macos-touchbar']

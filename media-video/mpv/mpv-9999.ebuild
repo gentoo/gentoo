@@ -125,6 +125,10 @@ BDEPEND="
 	cli? ( dev-python/docutils )
 	wayland? ( dev-util/wayland-scanner )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.34.1_p20221105-macos-touchbar.patch
+)
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 	python-single-r1_pkg_setup
