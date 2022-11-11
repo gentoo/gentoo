@@ -1,0 +1,67 @@
+Clang16 will not allow implicit function declarations and implicit integers etc.
+This patch overhauls the source code for modern C.
+
+Bug: https://bugs.gentoo.org/879771
+Upstream PR: https://github.com/mptre/pick/pull/316
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/configure
++++ b/configure
+@@ -66,6 +66,7 @@ check_dead() {
+ check_gnu_source() {
+ 	compile <<-EOF && return 1
+ 	#include <wchar.h>
++	int wcwidth(wchar_t wc);
+ 
+ 	int main(void) {
+ 		wchar_t c = 0;
+@@ -76,6 +77,7 @@ check_gnu_source() {
+ 	compile <<-EOF
+ 	#define _GNU_SOURCE
+ 	#include <wchar.h>
++	int wcwidth(wchar_t wc);
+ 
+ 	int main(void) {
+ 		wchar_t c = 0;
+@@ -94,6 +96,7 @@ check_malloc_options() {
+ check_pledge() {
+ 	compile <<-EOF
+ 	#include <unistd.h>
++	int pledge(char*, char*);
+ 
+ 	int main(void) {
+ 		return !(pledge("stdio", NULL) == 0);
+@@ -114,6 +117,7 @@ check_reallocarray() {
+ check_strtonum() {
+ 	compile <<-EOF
+ 	#include <stdlib.h>
++	long long strtonum(const char *nptr, long long minval, long long maxval,const char **errstr);
+ 
+ 	int main(void) {
+ 		return !(strtonum("1", 1, 2, NULL) != 0);
+--- a/pick.c
++++ b/pick.c
+@@ -21,6 +21,8 @@
+ 		errx(1, #capability ": unknown terminfo capability");	\
+ } while (0)
+ 
++extern int wcwidth(wchar_t wc);
++
+ enum key {
+ 	UNKNOWN,
+ 	ALT_ENTER,
+--- a/tests/pick-test.c
++++ b/tests/pick-test.c
+@@ -15,6 +15,11 @@
+ #include <termios.h>
+ #include <unistd.h>
+ 
++extern int posix_openpt (int __oflag);
++extern int grantpt (int __fd);
++extern int unlockpt (int __fd);
++extern char *ptsname (int __fd);
++
+ __dead static void	 child(int, int);
+ static void		 parent(int, int, const char *);
+ static char		*parsekeys(const char *);
