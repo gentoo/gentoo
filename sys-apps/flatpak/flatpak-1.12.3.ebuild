@@ -35,7 +35,7 @@ RDEPEND="
 	>=gnome-base/dconf-0.26:=
 	gnome-base/gsettings-desktop-schemas
 	>=net-libs/libsoup-2.4:=
-	sys-apps/bubblewrap
+	>=sys-apps/bubblewrap-0.5.0
 	sys-apps/dbus
 	>=sys-fs/fuse-2.9.9:0=
 	sys-apps/xdg-dbus-proxy

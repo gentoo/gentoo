@@ -33,7 +33,7 @@ RDEPEND="
 	>=gnome-base/dconf-0.26:=
 	gnome-base/gsettings-desktop-schemas
 	net-misc/curl:=
-	sys-apps/bubblewrap
+	>=sys-apps/bubblewrap-0.5.0
 	sys-apps/dbus
 	>=sys-fs/fuse-2.9.9:0=
 	sys-apps/xdg-dbus-proxy
