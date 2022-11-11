@@ -12,14 +12,12 @@ RESTRICT="mirror"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-CMAKE_USE_DIR="${WORKDIR}/${PF}"
-BUILD_DIR="${CMAKE_USE_DIR}/${PN}-build"
 
 IUSE="alsa coreaudio ffmpeg gstreamer jack libuvc oss pulseaudio qtaudio v4lutils videoeffects debug headers v4l"
 
 REQUIRED_USE="v4lutils? ( v4l )"
 
-RDEPEND="
+COMMON_DEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
@@ -37,17 +35,18 @@ RDEPEND="
 	qtaudio? ( dev-qt/qtmultimedia:5 )
 	v4l? ( media-libs/libv4l )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-3.6
+"
+RDEPEND="${COMMON_DEPEND}
+	virtual/opengl
 "
 
 src_configure() {
 	#Disable git in package source. If not disabled the cmake configure process will show a lot of "fatal not a git repository" errors
-	sed 's|find_program(GIT_BIN git)|#find_program(GIT_BIN git)|' libAvKys/cmake/ProjectCommons.cmake -i
+	sed -i 's|find_program(GIT_BIN git)|#find_program(GIT_BIN git)|' libAvKys/cmake/ProjectCommons.cmake || die
 
 	local mycmakeargs=(
-		"-S ${WORKDIR}/${PF}"
-		"-B ${WORKDIR}/${PF}/webcamoid-build"
 		"-DNOMEDIAFOUNDATION=1"
 		"-DNOAVFOUNDATION=1"
 		"-DNODSHOW=1"
