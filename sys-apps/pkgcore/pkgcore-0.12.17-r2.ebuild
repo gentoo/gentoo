@@ -40,6 +40,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.12.17-fix-prefix.patch"
+	"${FILESDIR}/${PN}-0.12.17-fix-extra-files.patch"
 )
 
 distutils_enable_tests pytest
