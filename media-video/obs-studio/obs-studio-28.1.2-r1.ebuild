@@ -198,7 +198,7 @@ src_configure() {
 		-DENABLE_NEW_MPEGTS_OUTPUT=OFF # Requires librist and libsrt.
 		-DENABLE_PIPEWIRE=$(usex pipewire)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
-		-DENABLE_RTMPS=$(usex ssl)
+		-DENABLE_RTMPS=$(usex ssl ON OFF) # Needed for bug 880861
 		-DENABLE_SPEEXDSP=$(usex speex)
 		-DENABLE_V4L2=$(usex v4l)
 		-DENABLE_VLC=$(usex vlc)
