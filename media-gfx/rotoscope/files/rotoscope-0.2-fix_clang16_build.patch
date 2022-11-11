@@ -1,0 +1,19 @@
+Clang16 does not allow implicit function declarations by default.
+
+See also: https://wiki.gentoo.org/wiki/Modern_C_porting
+Bug: https://bugs.gentoo.org/875764
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/src/main.c
++++ b/src/main.c
+@@ -49,6 +49,9 @@ GList* edge_list = NULL;
+ MouseState mouse_state = IDLE;
+ Vertex last_click;
+ 
++/* Function prototypes */
++gboolean redraw_render_area( GtkWidget* widget, GdkEventExpose* event, gpointer user_data );
++
+ /* Functionality and callback functions */
+ void clear_edge_list()
+ {
