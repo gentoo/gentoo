@@ -12,7 +12,7 @@ inherit multilib-minimal
 MY_P="${P/sdl-/SDL_}"
 
 DESCRIPTION="Simple Direct Media Layer Network Support Library"
-HOMEPAGE="https://www.libsdl.org/projects/SDL_net/"
+HOMEPAGE="https://github.com/libsdl-org/SDL_net"
 SRC_URI="https://www.libsdl.org/projects/SDL_net/release/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
