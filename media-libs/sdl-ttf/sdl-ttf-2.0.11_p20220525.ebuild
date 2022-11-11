@@ -5,7 +5,7 @@ EAPI=8
 
 # Check SDL-1.2 branch for possible backports/new snapshots
 
-inherit autotools multilib-minimal
+inherit multilib-minimal
 
 SDL_TTF_COMMIT="2648c22c4f9e32d05a11b32f636b1c225a1502ac"
 
@@ -27,11 +27,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 multilib_src_configure() {
 	local myeconfargs=(
