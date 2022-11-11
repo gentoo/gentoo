@@ -53,6 +53,7 @@ LLVM_MANPAGES=1
 LLVM_TEST_COMPONENTS=(
 	llvm/lib/Testing/Support
 	llvm/utils
+	third-party
 )
 LLVM_PATCHSET=9999-r4
 LLVM_USE_TARGETS=llvm
