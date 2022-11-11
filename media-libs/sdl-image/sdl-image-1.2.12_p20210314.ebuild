@@ -12,7 +12,7 @@ inherit toolchain-funcs multilib-minimal
 MY_P="${P/sdl-/SDL_}"
 MY_COMMIT="5d792dde2f764daf15dc48521774a3354330db69"
 DESCRIPTION="Image file loading library"
-HOMEPAGE="https://www.libsdl.org/projects/SDL_image/release-1.2.html"
+HOMEPAGE="https://github.com/libsdl-org/SDL_image"
 SRC_URI="https://github.com/libsdl-org/SDL_image/archive/${MY_COMMIT}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
