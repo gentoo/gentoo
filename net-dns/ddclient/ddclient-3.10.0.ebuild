@@ -40,6 +40,9 @@ BDEPEND="
 src_prepare() {
 	default
 
+	# Fix version number, otherwise a test will fail
+	sed -e 's/3.10.0_2/3.10.0/g' -i configure.ac || die
+
 	# Remove PID setting, to reliably setup the environment for the init script
 	sed -e '/^pid/d' -i ddclient.conf.in || die
 
