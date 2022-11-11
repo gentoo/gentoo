@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -34,6 +34,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-m4-stuff.patch
 	"${FILESDIR}"/${P}-protos.patch
 	"${FILESDIR}"/${P}-disable-pulse.patch
+	"${FILESDIR}"/${P}-fix-build-for-clang16.patch
+	"${FILESDIR}"/${P}-fix-lto-type-mismatch.patch
+	"${FILESDIR}"/${P}-fix-return-type-and-QA.patch
 )
 
 src_prepare() {

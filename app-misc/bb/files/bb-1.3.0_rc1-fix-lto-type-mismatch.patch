@@ -1,0 +1,18 @@
+In tex.c these variables are initialized as unsigned longs, so they should
+be declared as unsigned longs. I have scanned the code base for any usage
+of them in the negatives - nothing. 
+
+Bug: https://bugs.gentoo.org/854720
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/tex.h
++++ b/tex.h
+@@ -28,5 +28,6 @@ extern void disp3d(void);
+ extern void set_zbuff(void);
+ extern void unset_zbuff(void);
+ 
+-extern int alfa,beta,gama,centerx,centery,centerz;
++extern unsigned long alfa,beta,gama;
++extern int centerx,centery,centerz;
+ extern float zoom;
