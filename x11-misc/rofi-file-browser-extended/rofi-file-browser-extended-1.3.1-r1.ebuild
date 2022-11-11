@@ -30,10 +30,14 @@ DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}"
 
+PATCHES=(
+	# https://bugs.gentoo.org/880985 https://github.com/marvinkreis/rofi-file-browser-extended/pull/49
+	"${FILESDIR}/${PN}-1.3.1-fix-function-pointer-initialization.patch"
+)
+
 src_prepare() {
 	# Delete the lines in CMakeLists.txt that install the man page.
 	sed -i "45,56d" CMakeLists.txt || die
-	default
 	cmake_src_prepare
 }
 
