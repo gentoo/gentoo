@@ -1,0 +1,71 @@
+From c56972e2059c80cb18c5da7fdfd0002135080fb6 Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Fri, 11 Nov 2022 06:41:58 +0100
+Subject: [PATCH] avoid duplicate definitions of MYSQL_READ_* and
+ MYSQL_UPDATE_*
+
+When built with gcc10 this causes errors as multiple instances of these
+variables are created. They are not used outside of vmysql.c, so instead of
+marking them extern I decided to just move them into the other file and mark
+them static.
+
+Bug: https://bugs.gentoo.org/880665
+---
+ vmysql.c | 14 ++++++++++++++
+ vmysql.h | 15 ---------------
+ 2 files changed, 14 insertions(+), 15 deletions(-)
+
+diff --git a/vmysql.c b/vmysql.c
+index 0c587d8..bb5fe31 100644
+--- a/vmysql.c
++++ b/vmysql.c
+@@ -96,6 +96,20 @@ void vcreate_valias_table();
+ void vcreate_lastauth_table();
+ #endif
+ 
++static char *MYSQL_READ_SERVER;
++static int MYSQL_READ_PORT;
++static char *MYSQL_READ_SOCKET;
++static char *MYSQL_READ_USER;
++static char *MYSQL_READ_PASSWD;
++static char *MYSQL_READ_DATABASE;
++
++static char *MYSQL_UPDATE_SERVER;
++static int MYSQL_UPDATE_PORT;
++static char *MYSQL_UPDATE_SOCKET;
++static char *MYSQL_UPDATE_USER;
++static char *MYSQL_UPDATE_PASSWD;
++static int MYSQL_UPDATE_VPORT;
++static char *MYSQL_UPDATE_DATABASE;
+ 
+ /************************************************************************/
+ /* 
+diff --git a/vmysql.h b/vmysql.h
+index e61186b..868f211 100644
+--- a/vmysql.h
++++ b/vmysql.h
+@@ -41,21 +41,6 @@
+    
+  */
+ 
+-char *MYSQL_READ_SERVER;
+-int MYSQL_READ_PORT;
+-char *MYSQL_READ_SOCKET;
+-char *MYSQL_READ_USER;
+-char *MYSQL_READ_PASSWD;
+-char *MYSQL_READ_DATABASE;
+-
+-char *MYSQL_UPDATE_SERVER;
+-int MYSQL_UPDATE_PORT;
+-char *MYSQL_UPDATE_SOCKET;
+-char *MYSQL_UPDATE_USER;
+-char *MYSQL_UPDATE_PASSWD;
+-int MYSQL_UPDATE_VPORT;
+-char *MYSQL_UPDATE_DATABASE;
+-
+ /* defaults - no need to change */
+ #define MYSQL_DEFAULT_TABLE "vpopmail"
+ #define MYSQL_DOT_CHAR '_'
+-- 
+2.35.3
+
