@@ -121,10 +121,13 @@ RDEPEND="${DEPEND}
 	sys-apps/lsb-release
 "
 
+# FIXME: https://bugs.gentoo.org/874885
+# rust-analyzer should work with wasm, but currently does not
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 	miri? ( nightly )
 	parallel-compiler? ( nightly )
 	rls? ( rust-src )
+	rust-analyzer? ( !wasm )
 	test? ( ${ALL_LLVM_TARGETS[*]} )
 	wasm? ( llvm_targets_WebAssembly )
 	x86? ( cpu_flags_x86_sse2 )
