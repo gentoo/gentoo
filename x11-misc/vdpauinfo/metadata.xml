@@ -5,4 +5,7 @@
 		<email>ionen@gentoo.org</email>
 		<name>Ionen Wolkens</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">vdpau/vdpauinfo</remote-id>
+	</upstream>
 </pkgmetadata>
