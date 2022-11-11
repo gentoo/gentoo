@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-11-11)
+# Causes memory corruption when building x11-misc/colord on x86
+# bug #880865
+=media-libs/lcms-2.14-r2
+
 # Jaco Kroon <jaco@uls.co.za> (2022-11-05)
 # Some potentially breaking changes here, please check the UPGRADE.txt file.
 # Most important:  chan_sip no longer builds by default, if you've migrated to
