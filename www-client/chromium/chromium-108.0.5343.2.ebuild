@@ -337,7 +337,7 @@ src_prepare() {
 		local p
 		for p in $(grep -v "^#" "${WORKDIR}"/debian/patches/series | grep "^ppc64le" || die); do
 			if [[ $p =~ "fix-breakpad-compile.patch" ]]; then
-				eapply ${FILESDIR}/ppc64le/fix-breakpad-compile.patch
+				eapply "${FILESDIR}/ppc64le/fix-breakpad-compile.patch"
 			else
 				eapply "${WORKDIR}/debian/patches/${p}"
 			fi
