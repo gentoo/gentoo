@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit cmake python-single-r1 udev systemd
+inherit cmake perl-functions python-single-r1 udev systemd
 
 DESCRIPTION="Userspace components for the Linux Kernel's drivers/infiniband subsystem"
 HOMEPAGE="https://github.com/linux-rdma/rdma-core"
@@ -60,10 +60,12 @@ BDEPEND="
 PATCHES=( "${FILESDIR}"/${PN}-39.0-RDMA_BuildType.patch )
 
 src_configure() {
+	perl_set_version
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}"/etc
 		-DCMAKE_INSTALL_RUNDIR=/run
 		-DCMAKE_INSTALL_SHAREDSTATEDIR="${EPREFIX}"/var/lib
+		-DCMAKE_INSTALL_PERLDIR="${VENDOR_LIB}"
 		-DCMAKE_INSTALL_UDEV_RULESDIR="${EPREFIX}$(get_udevdir)"/rules.d
 		-DCMAKE_INSTALL_SYSTEMD_SERVICEDIR="$(systemd_get_systemunitdir)"
 		-DCMAKE_DISABLE_FIND_PACKAGE_Systemd="$(usex !systemd)"
