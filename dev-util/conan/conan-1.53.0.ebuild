@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Distributed C/C++ package manager"
 HOMEPAGE="https://conan.io/"
-SRC_URI="https://github.com/conan-io/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/conan-io/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
