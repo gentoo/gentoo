@@ -10,7 +10,7 @@ DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
-SLOT="${LLVM_VERSION}"
+SLOT="${LLVM_MAJOR}"
 KEYWORDS=""
 IUSE="+abi_x86_32 abi_x86_64 +clang debug test"
 # base targets
@@ -46,7 +46,7 @@ BDEPEND="
 		!!<sys-apps/sandbox-2.13
 		$(python_gen_any_dep ">=dev-python/lit-15[\${PYTHON_USEDEP}]")
 		=sys-devel/clang-${LLVM_VERSION}*:${LLVM_MAJOR}
-		sys-libs/compiler-rt:${LLVM_VERSION}
+		sys-libs/compiler-rt:${LLVM_MAJOR}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -125,10 +125,10 @@ src_configure() {
 	done
 
 	local mycmakeargs=(
-		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${LLVM_VERSION}"
+		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
 		# use a build dir structure consistent with install
 		# this makes it possible to easily deploy test-friendly clang
-		-DCOMPILER_RT_OUTPUT_DIR="${BUILD_DIR}/lib/clang/${LLVM_VERSION}"
+		-DCOMPILER_RT_OUTPUT_DIR="${BUILD_DIR}/lib/clang/${LLVM_MAJOR}"
 
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
 		# builtins & crt installed by sys-libs/compiler-rt
@@ -185,19 +185,19 @@ src_configure() {
 	cmake_src_configure
 
 	if use test; then
-		local sys_dir=( "${EPREFIX}"/usr/lib/clang/${LLVM_VERSION}/lib/* )
+		local sys_dir=( "${EPREFIX}"/usr/lib/clang/${LLVM_MAJOR}/lib/* )
 		[[ -e ${sys_dir} ]] || die "Unable to find ${sys_dir}"
 		[[ ${#sys_dir[@]} -eq 1 ]] || die "Non-deterministic compiler-rt install: ${sys_dir[*]}"
 
 		# copy clang over since resource_dir is located relatively to binary
 		# therefore, we can put our new libraries in it
-		mkdir -p "${BUILD_DIR}"/lib/{llvm/${LLVM_MAJOR}/{bin,$(get_libdir)},clang/${LLVM_VERSION}/include} || die
+		mkdir -p "${BUILD_DIR}"/lib/{llvm/${LLVM_MAJOR}/{bin,$(get_libdir)},clang/${LLVM_MAJOR}/include} || die
 		cp "${EPREFIX}"/usr/lib/llvm/${LLVM_MAJOR}/bin/clang{,++} \
 			"${BUILD_DIR}"/lib/llvm/${LLVM_MAJOR}/bin/ || die
-		cp "${EPREFIX}"/usr/lib/clang/${LLVM_VERSION}/include/*.h \
-			"${BUILD_DIR}"/lib/clang/${LLVM_VERSION}/include/ || die
+		cp "${EPREFIX}"/usr/lib/clang/${LLVM_MAJOR}/include/*.h \
+			"${BUILD_DIR}"/lib/clang/${LLVM_MAJOR}/include/ || die
 		cp "${sys_dir}"/*builtins*.a \
-			"${BUILD_DIR}/lib/clang/${LLVM_VERSION}/lib/${sys_dir##*/}/" || die
+			"${BUILD_DIR}/lib/clang/${LLVM_MAJOR}/lib/${sys_dir##*/}/" || die
 		# we also need LLVMgold.so for gold-based tests
 		if [[ -f ${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)/LLVMgold.so ]]; then
 			ln -s "${EPREFIX}"/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)/LLVMgold.so \
