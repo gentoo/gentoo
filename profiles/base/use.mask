@@ -4,6 +4,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (2022-11-11)
+# xf86-video-nv relies on function no longer present in the Xserver since v1.20
+# (released May 2018), and no user has noticed.
+# Bug #875053
+video_cards_nv
+
 # Brian Evans <grknight@gentoo.org> (2022-09-30)
 # PHP 8.2 is in RC
 php_targets_php8-2
