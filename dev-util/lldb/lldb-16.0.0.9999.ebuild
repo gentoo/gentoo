@@ -52,7 +52,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( lldb cmake llvm/utils )
-LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support )
+LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support third-party )
 llvm.org_set_globals
 
 pkg_setup() {
