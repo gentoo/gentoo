@@ -255,6 +255,7 @@ multilib_src_configure() {
 		-DBUILD_SHARED_LIBS=OFF
 		-DCLANG_LINK_CLANG_DYLIB=ON
 		-DLLVM_DISTRIBUTION_COMPONENTS=$(get_distribution_components)
+		-DCLANG_INCLUDE_TESTS=$(usex test)
 
 		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 
