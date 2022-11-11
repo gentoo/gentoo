@@ -68,7 +68,8 @@ PDEPEND="
 	binutils-plugin? ( >=sys-devel/llvmgold-${LLVM_MAJOR} )
 "
 
-LLVM_COMPONENTS=( llvm cmake third-party )
+LLVM_COMPONENTS=( llvm cmake )
+LLVM_TEST_COMPONENTS=( third-party )
 LLVM_MANPAGES=1
 LLVM_USE_TARGETS=provide
 llvm.org_set_globals
@@ -347,6 +348,8 @@ multilib_src_configure() {
 		# is that the former list is explicitly verified at cmake time
 		-DLLVM_TARGETS_TO_BUILD=""
 		-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
+		-DLLVM_INCLUDE_BENCHMARKS=OFF
+		-DLLVM_INCLUDE_TESTS=$(usex test)
 		-DLLVM_BUILD_TESTS=$(usex test)
 
 		-DLLVM_ENABLE_FFI=$(usex libffi)
