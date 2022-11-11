@@ -300,7 +300,9 @@ src_compile() {
 			RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" \
 			emake "${NV_ARGS[@]}" -C nvidia-settings
 	elif use static-libs; then
-		emake "${NV_ARGS[@]}" -C nvidia-settings/src out/libXNVCtrl.a
+		# pretend GTK+3 is available, not actually used (bug #880879)
+		emake "${NV_ARGS[@]}" BUILD_GTK3LIB=1 \
+			-C nvidia-settings/src out/libXNVCtrl.a
 	fi
 }
 
