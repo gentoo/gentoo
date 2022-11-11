@@ -24,16 +24,19 @@ RDEPEND="dev-libs/antlr-c
 	!cln? ( dev-libs/gmp:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="$(python_gen_any_dep '
-		dev-python/toml[${PYTHON_USEDEP}]
+		dev-python/tomli[${PYTHON_USEDEP}]
 	')
 "
 
 S="${WORKDIR}"/${PN^^}-archived-${PV}
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-toml.patch
+)
 
 python_check_deps() {
-	python_has_version "dev-python/toml[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/tomli[${PYTHON_USEDEP}]"
 }
 
 src_configure() {
