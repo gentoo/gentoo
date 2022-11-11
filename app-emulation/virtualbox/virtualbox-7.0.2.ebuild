@@ -131,6 +131,7 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-fontsextra
+		dev-qt/qthelp:5
 	)
 	java? ( virtual/jdk:1.8 )
 "
