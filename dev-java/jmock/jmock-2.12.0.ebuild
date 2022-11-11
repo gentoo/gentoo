@@ -18,7 +18,7 @@ SRC_URI="https://github.com/${PN}-developers/${PN}-library/archive/${PV}.tar.gz 
 
 LICENSE="BSD"
 SLOT="2"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 DEPEND="
 	dev-java/asm:9
