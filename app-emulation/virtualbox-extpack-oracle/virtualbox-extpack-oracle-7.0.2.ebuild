@@ -11,7 +11,7 @@ DESCRIPTION="PUEL extensions for VirtualBox"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.vbox-extpack -> ${MY_P}.tar.gz"
 
-LICENSE="PUEL"
+LICENSE="PUEL-11"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 RESTRICT="bindist mirror strip"
