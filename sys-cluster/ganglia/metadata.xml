@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">ganglia</remote-id>
+		<remote-id type="github">ganglia/monitor-core</remote-id>
 	</upstream>
 </pkgmetadata>
