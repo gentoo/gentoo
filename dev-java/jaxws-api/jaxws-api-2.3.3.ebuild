@@ -14,7 +14,7 @@ SRC_URI="https://github.com/eclipse-ee4j/jax-ws-api/archive/${PV}.tar.gz -> ${P}
 
 LICENSE="BSD" # "BSD-3 Clause"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND="
