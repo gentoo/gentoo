@@ -87,7 +87,7 @@ src_configure() {
 		# of -ltinfo)
 		-DCURSES_NEED_NCURSES=ON
 
-		-DLLDB_EXTERNAL_CLANG_RESOURCE_DIR="${BROOT}/usr/lib/clang/${LLVM_VERSION}"
+		-DLLDB_EXTERNAL_CLANG_RESOURCE_DIR="${BROOT}/usr/lib/clang/${LLVM_MAJOR}"
 
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DPython3_EXECUTABLE="${PYTHON}"
