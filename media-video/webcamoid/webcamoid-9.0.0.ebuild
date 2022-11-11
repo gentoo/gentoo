@@ -8,7 +8,6 @@ inherit cmake xdg-utils
 DESCRIPTION="A full featured webcam capture application"
 HOMEPAGE="https://webcamoid.github.io"
 SRC_URI="https://github.com/webcamoid/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-RESTRICT="mirror"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
