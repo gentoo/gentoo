@@ -9,8 +9,7 @@ QTMIN=5.15.5
 inherit ecm gear.kde.org
 
 DESCRIPTION="Privacy settings widget to clean unwanted traces on the system"
-HOMEPAGE="https://apps.kde.org/sweeper/
-https://utils.kde.org/projects/sweeper/"
+HOMEPAGE="https://apps.kde.org/sweeper/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
