@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Tool for indexing, searching, and viewing images"
-HOMEPAGE="https://kphotoalbum.org/"
+HOMEPAGE="https://www.kphotoalbum.org/"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
