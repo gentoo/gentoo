@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-  <email>gnome@gentoo.org</email>
-  <name>Gentoo GNOME Desktop</name>
-</maintainer>
+  <!-- maintainer-needed -->
 <use>
   <flag name="gadu">Enable Gadu Gadu protocol support.</flag>
   <flag name="icq">Enable ICQ IM protocol support.</flag>
