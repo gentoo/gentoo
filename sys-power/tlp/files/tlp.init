@@ -20,7 +20,7 @@ reload() {
 }
 
 stop() {
-	elog "Reboot to stop tlp."
+	einfo "Reboot to stop tlp."
 }
 
 stat() {
