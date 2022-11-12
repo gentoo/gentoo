@@ -5,7 +5,7 @@ EAPI=8
 
 # Check stable-1.0 branch for possible backports/new snapshots
 
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 SDL_SOUND_COMMIT="2076a4f555f95ed28dead5e28ee8e57cc74e425f"
 
@@ -35,6 +35,17 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.3_p20220525-underlinking.patch
+)
+
+src_prepare() {
+	default
+
+	# Drop this once sdl-sound-1.0.3_p20220525-underlinking.patch merged
+	eautoreconf
+}
 
 multilib_src_configure() {
 	local myeconfargs=(
