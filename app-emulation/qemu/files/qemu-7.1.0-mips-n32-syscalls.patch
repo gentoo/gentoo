@@ -1,0 +1,94 @@
+From xen0n@gentoo.org Thu Oct 06 08:55:00 2022
+Return-Path: <xen0n@gentoo.org>
+X-Original-To: dilfridge@gentoo.org
+Delivered-To: dilfridge@gentoo.org
+From: WANG Xuerui <xen0n@gentoo.org>
+To: qemu-devel@nongnu.org
+Cc: WANG Xuerui <xen0n@gentoo.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	=?UTF-8?q?Andreas=20K=20=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>,
+	Joshua Kinard <kumba@gentoo.org>
+Subject: [PATCH] linux-user: Fix more MIPS n32 syscall ABI issues
+Date: Thu,  6 Oct 2022 16:55:00 +0800
+Message-Id: <20221006085500.290341-1-xen0n@gentoo.org>
+X-Mailer: git-send-email 2.38.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In commit 80f0fe3a85 ("linux-user: Fix syscall parameter handling for
+MIPS n32") the ABI problem regarding offset64 on MIPS n32 was fixed,
+but still some cases remain where the n32 is incorrectly treated as any
+other 32-bit ABI that passes 64-bit arguments in pairs of GPRs. Fix by
+excluding TARGET_ABI_MIPSN32 from various TARGET_ABI_BITS == 32 checks.
+
+Closes: https://gitlab.com/qemu-project/qemu/-/issues/1238
+Signed-off-by: WANG Xuerui <xen0n@gentoo.org>
+Cc: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>
+Cc: Andreas K. Hüttel <dilfridge@gentoo.org>
+Cc: Joshua Kinard <kumba@gentoo.org>
+---
+
+Note: I can't reproduce the crash with neither MIPS n32 sysroot at my hand
+(a self-built one for Loongson-2F, and stage3-mips64_n32-openrc-20221001T170527Z),
+so I can only verify by looking at the (host and qemu) strace outputs, and
+would have to ask you to review/test this harder. Thanks.
+
+ linux-user/syscall.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 2e954d8dbd..8b2d39fe73 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -11793,7 +11793,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+         return -host_to_target_errno(ret);
+ #endif
+ 
+-#if TARGET_ABI_BITS == 32
++#if TARGET_ABI_BITS == 32 && !defined(TARGET_ABI_MIPSN32)
+ 
+ #ifdef TARGET_NR_fadvise64_64
+     case TARGET_NR_fadvise64_64:
+@@ -11920,7 +11920,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+         return get_errno(sys_gettid());
+ #ifdef TARGET_NR_readahead
+     case TARGET_NR_readahead:
+-#if TARGET_ABI_BITS == 32
++#if TARGET_ABI_BITS == 32 && !defined(TARGET_ABI_MIPSN32)
+         if (regpairs_aligned(cpu_env, num)) {
+             arg2 = arg3;
+             arg3 = arg4;
+@@ -12612,7 +12612,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+ #endif /* CONFIG_EVENTFD  */
+ #if defined(CONFIG_FALLOCATE) && defined(TARGET_NR_fallocate)
+     case TARGET_NR_fallocate:
+-#if TARGET_ABI_BITS == 32
++#if TARGET_ABI_BITS == 32 && !defined(TARGET_ABI_MIPSN32)
+         ret = get_errno(fallocate(arg1, arg2, target_offset64(arg3, arg4),
+                                   target_offset64(arg5, arg6)));
+ #else
+@@ -12623,7 +12623,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+ #if defined(CONFIG_SYNC_FILE_RANGE)
+ #if defined(TARGET_NR_sync_file_range)
+     case TARGET_NR_sync_file_range:
+-#if TARGET_ABI_BITS == 32
++#if TARGET_ABI_BITS == 32 && !defined(TARGET_ABI_MIPSN32)
+ #if defined(TARGET_MIPS)
+         ret = get_errno(sync_file_range(arg1, target_offset64(arg3, arg4),
+                                         target_offset64(arg5, arg6), arg7));
+@@ -12645,7 +12645,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+     case TARGET_NR_arm_sync_file_range:
+ #endif
+         /* This is like sync_file_range but the arguments are reordered */
+-#if TARGET_ABI_BITS == 32
++#if TARGET_ABI_BITS == 32 && !defined(TARGET_ABI_MIPSN32)
+         ret = get_errno(sync_file_range(arg1, target_offset64(arg3, arg4),
+                                         target_offset64(arg5, arg6), arg2));
+ #else
+-- 
+2.38.0
+
+

@@ -1,0 +1,98 @@
+From xen0n@gentoo.org Thu Oct 06 10:07:10 2022
+Return-Path: <xen0n@gentoo.org>
+X-Original-To: dilfridge@gentoo.org
+Delivered-To: dilfridge@gentoo.org
+From: WANG Xuerui <xen0n@gentoo.org>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	WANG Xuerui <xen0n@gentoo.org>,
+	Song Gao <gaosong@loongson.cn>,
+	Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+	=?UTF-8?q?Andreas=20K=20=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Subject: [PATCH RESEND] linux-user: Fix struct statfs ABI on loongarch64
+Date: Thu,  6 Oct 2022 18:07:10 +0800
+Message-Id: <20221006100710.427252-1-xen0n@gentoo.org>
+X-Mailer: git-send-email 2.38.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Previously the 32-bit version was incorrectly chosen, leading to funny
+but incorrect output from e.g. df(1). Simply select the version
+corresponding to the 64-bit asm-generic definition.
+
+For reference, this program should produce the same output no matter
+natively compiled or not, for loongarch64 or not:
+
+```c
+#include <stdio.h>
+#include <sys/statfs.h>
+
+int main(int argc, const char *argv[])
+{
+  struct statfs b;
+  if (statfs(argv[0], &b))
+    return 1;
+
+  printf("f_type = 0x%lx\n", b.f_type);
+  printf("f_bsize = %ld\n", b.f_bsize);
+  printf("f_blocks = %ld\n", b.f_blocks);
+  printf("f_bfree = %ld\n", b.f_bfree);
+  printf("f_bavail = %ld\n", b.f_bavail);
+
+  return 0;
+}
+
+// Example output on my amd64 box, with the test binary residing on a
+// btrfs partition.
+
+// Native and emulated output after the fix:
+//
+// f_type = 0x9123683e
+// f_bsize = 4096
+// f_blocks = 268435456
+// f_bfree = 168406890
+// f_bavail = 168355058
+
+// Output before the fix, note the messed layout:
+//
+// f_type = 0x10009123683e
+// f_bsize = 723302085239504896
+// f_blocks = 168355058
+// f_bfree = 2250817541779750912
+// f_bavail = 1099229433104
+```
+
+Fixes: 1f63019632 ("linux-user: Add LoongArch syscall support")
+Signed-off-by: WANG Xuerui <xen0n@gentoo.org>
+Cc: Song Gao <gaosong@loongson.cn>
+Cc: Xiaojuan Yang <yangxiaojuan@loongson.cn>
+Cc: Andreas K. Hüttel <dilfridge@gentoo.org>
+---
+
+Resend with amended commit message to 100% clarify the example output
+are generated on my box and will differ for everyone else. Sorry for
+the noise.
+
+ linux-user/syscall_defs.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
+index 01ee10a88f..77864de57f 100644
+--- a/linux-user/syscall_defs.h
++++ b/linux-user/syscall_defs.h
+@@ -2262,7 +2262,8 @@ struct target_statfs64 {
+ };
+ #elif (defined(TARGET_PPC64) || defined(TARGET_X86_64) || \
+        defined(TARGET_SPARC64) || defined(TARGET_AARCH64) || \
+-       defined(TARGET_RISCV)) && !defined(TARGET_ABI32)
++       defined(TARGET_RISCV) || defined(TARGET_LOONGARCH64)) && \
++       !defined(TARGET_ABI32)
+ struct target_statfs {
+ 	abi_long f_type;
+ 	abi_long f_bsize;
+-- 
+2.38.0
+
+
