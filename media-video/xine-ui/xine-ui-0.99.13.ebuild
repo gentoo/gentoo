@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools gnome2-utils xdg-utils
+inherit autotools xdg-utils
 
 DESCRIPTION="Xine movie player"
 HOMEPAGE="https://xine-project.org/home"
