@@ -49,7 +49,7 @@ llvm_check_deps() {
 }
 
 pkg_setup() {
-	# we do not need llvm_pkg_setup
+	llvm_pkg_setup
 	python-any-r1_pkg_setup
 }
 
@@ -79,7 +79,6 @@ src_configure() {
 	libclc_targets=${libclc_targets[*]}
 	local mycmakeargs=(
 		-DLIBCLC_TARGETS_TO_BUILD="${libclc_targets// /;}"
-		-DLLVM_CONFIG="$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config"
 	)
 	cmake_src_configure
 }
