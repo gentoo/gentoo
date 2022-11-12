@@ -19,7 +19,7 @@ HOMEPAGE="https://gpac.wp.imt.fr/"
 LICENSE="GPL-2"
 # subslot == libgpac major
 SLOT="0/11"
-IUSE="a52 aac alsa cpu_flags_x86_sse2 debug dvb ffmpeg ipv6 jack jpeg jpeg2k mad opengl oss png
+IUSE="a52 aac alsa cpu_flags_x86_sse2 debug dvb ffmpeg jack jpeg jpeg2k mad opengl oss png
 	pulseaudio sdl ssl static-libs theora truetype vorbis xml xvid X"
 
 BDEPEND="virtual/pkgconfig"
@@ -100,6 +100,7 @@ src_configure() {
 		--cc="$(tc-getCC)"
 		--libdir="$(get_libdir)"
 		--verbose
+		--enable-ipv6
 		--enable-pic
 		--enable-svg
 		--disable-amr
@@ -108,7 +109,6 @@ src_configure() {
 		$(use_enable alsa)
 		$(use_enable debug)
 		$(use_enable dvb dvb4linux)
-		$(use_enable ipv6)
 		$(use_enable jack jack yes)
 		$(use_enable opengl 3d)
 		$(use_enable oss oss-audio)
