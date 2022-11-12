@@ -9,8 +9,7 @@ QTMIN=5.15.5
 inherit ecm gear.kde.org
 
 DESCRIPTION="Little tool to execute programs after some time"
-HOMEPAGE="https://apps.kde.org/ktimer/
-https://utils.kde.org/projects/ktimer/"
+HOMEPAGE="https://apps.kde.org/ktimer/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
