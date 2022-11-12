@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic libtool
+inherit flag-o-matic libtool multilib
 
 if [[ ${PV} == *9999* ]]; then
 	EHG_REPO_URI="http://hg.code.sf.net/p/xine/xine-lib-1.2"
