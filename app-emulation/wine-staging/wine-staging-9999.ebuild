@@ -30,10 +30,10 @@ SLOT="${PV}"
 IUSE="
 	+X +abi_x86_32 +abi_x86_64 +alsa capi crossdev-mingw cups dos
 	llvm-libunwind debug custom-cflags +fontconfig +gecko gphoto2
-	+gstreamer kerberos ldap +mingw +mono netapi nls odbc openal
-	opencl +opengl osmesa pcap perl pulseaudio samba scanner +sdl
-	selinux +ssl +truetype udev udisks +unwind usb v4l +vulkan
-	+xcomposite xinerama"
+	+gstreamer kerberos ldap +mingw +mono netapi nls odbc opencl
+	+opengl osmesa pcap perl pulseaudio samba scanner +sdl selinux
+	+ssl +truetype udev udisks +unwind usb v4l +vulkan +xcomposite
+	xinerama"
 REQUIRED_USE="
 	X? ( truetype )
 	crossdev-mingw? ( mingw )" # bug #551124 for truetype
@@ -84,7 +84,6 @@ WINE_COMMON_DEPEND="
 		media-libs/gstreamer:1.0[${MULTILIB_USEDEP}]
 	)
 	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
-	openal? ( media-libs/openal[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	pcap? ( net-libs/libpcap[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
@@ -118,7 +117,9 @@ BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
-	mingw? ( !crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] ) )
+	mingw? ( !crossdev-mingw? (
+		>=dev-util/mingw64-toolchain-10.0.0_p1-r2[${MULTILIB_USEDEP}]
+	) )
 	nls? ( sys-devel/gettext )"
 IDEPEND="app-eselect/eselect-wine"
 
@@ -127,6 +128,7 @@ QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.17-noexecstack.patch
 	"${FILESDIR}"/${PN}-7.20-unwind.patch
+	"${FILESDIR}"/${PN}-7.21-crossflags.patch
 )
 
 pkg_pretend() {
@@ -223,7 +225,6 @@ src_configure() {
 		$(use_with mingw)
 		$(use_with netapi)
 		$(use_with nls gettext)
-		$(use_with openal)
 		$(use_with opencl)
 		$(use_with opengl)
 		$(use_with osmesa)
@@ -259,8 +260,9 @@ src_configure() {
 		mkdir ../build${bits} || die
 		cd ../build${bits} || die
 
-		# CROSSCC_amd64/x86 are unused by Wine, but recognized here for users
+		pe_arch=i386
 		if (( bits == 64 )); then
+			pe_arch=x86_64
 			: "${CROSSCC:=${CROSSCC_amd64:-x86_64-w64-mingw32-gcc}}"
 			conf+=( --enable-win64 )
 		elif use amd64; then
@@ -273,8 +275,12 @@ src_configure() {
 		fi
 		: "${CROSSCC:=${CROSSCC_x86:-i686-w64-mingw32-gcc}}"
 
-		# use *FLAGS for mingw, but strip unsupported (e.g. --hash-style=gnu)
 		if use mingw; then
+			# CROSSCC is no longer recognized by Wine, but still use for now
+			# (future handling for CROSS* variables is subject to changes)
+			conf+=( ac_cv_prog_${pe_arch}_CC="${CROSSCC}" )
+
+			# use *FLAGS for mingw, but strip unsupported
 			: "${CROSSCFLAGS:=$(
 				filter-flags '-fstack-clash-protection' #758914
 				filter-flags '-fstack-protector*' #870136
@@ -283,7 +289,7 @@ src_configure() {
 			: "${CROSSLDFLAGS:=$(
 				filter-flags '-fuse-ld=*'
 				CC=${CROSSCC} test-flags-CCLD ${LDFLAGS})}"
-			export CROSS{CC,{C,LD}FLAGS}
+			export CROSS{C,LD}FLAGS
 		fi
 
 		ECONF_SOURCE=${S} econf "${conf[@]}"

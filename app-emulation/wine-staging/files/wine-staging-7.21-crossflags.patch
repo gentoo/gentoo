@@ -1,0 +1,29 @@
+Restore CROSSLDFLAGS and ensure tested flags are saved in
+{arch}_*FLAGS (e.g. -fno-strict-aliasing)
+
+quickfix, odds are this will be revamped upstream
+--- a/configure.ac
++++ b/configure.ac
+@@ -919,9 +919,9 @@
+     saved_CC=$CC
+     saved_CFLAGS=$CFLAGS
++    saved_LDFLAGS=$LDFLAGS
+ 
+     CFLAGS=${CROSSCFLAGS:-"-g -O2"}
++    LDFLAGS=${CROSSLDFLAGS:-}
+     AS_VAR_COPY([CC],[${wine_arch}_CC])
+-    AS_VAR_COPY([${wine_arch}_CFLAGS],[CFLAGS])
+-    AS_VAR_COPY([${wine_arch}_LDFLAGS],[LDFLAGS])
+     AS_VAR_SET([${wine_arch}_EXTRACFLAGS],["-D__WINE_PE_BUILD -Wall"])
+ 
+@@ -1052,6 +1052,10 @@
+                                           AS_VAR_APPEND([${wine_arch}_LDFLAGS],[" -Wl,--build-id"])])
+ 
++    AS_VAR_COPY([${wine_arch}_CFLAGS],[CFLAGS])
++    AS_VAR_COPY([${wine_arch}_LDFLAGS],[LDFLAGS])
++
+     CC=$saved_CC
+     CFLAGS=$saved_CFLAGS
++    LDFLAGS=$saved_LDFLAGS
+ done
+ 
