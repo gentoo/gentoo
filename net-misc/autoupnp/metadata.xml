@@ -6,11 +6,7 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<upstream>
-		<maintainer status="active">
-			<email>mgorny@gentoo.org</email>
-			<name>Michał Górny</name>
-		</maintainer>
-		<bugs-to>https://github.com/mgorny/autoupnp/issues/</bugs-to>
-		<remote-id type="github">mgorny/autoupnp</remote-id>
+		<bugs-to>https://github.com/projg2/autoupnp/issues/</bugs-to>
+		<remote-id type="github">projg2/autoupnp</remote-id>
 	</upstream>
 </pkgmetadata>
