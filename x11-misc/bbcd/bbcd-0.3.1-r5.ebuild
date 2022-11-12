@@ -11,7 +11,7 @@ SRC_URI="http://tranber1.free.fr/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND=">=media-libs/libcdaudio-0.99.12-r4
