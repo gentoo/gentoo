@@ -5,11 +5,11 @@ EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="A small utility that measures throughput between stdin and stdout"
-HOMEPAGE="http://pipeworks.sourceforge.net/"
+DESCRIPTION="Small utility that measures throughput between stdin and stdout"
+HOMEPAGE="https://sourceforge.net/projects/pipeworks/"
 SRC_URI="mirror://sourceforge/pipeworks/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
