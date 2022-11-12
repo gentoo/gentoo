@@ -6,7 +6,7 @@ XORG_TARBALL_SUFFIX="xz"
 inherit xorg-3
 
 DESCRIPTION="display ditroff output"
-KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 RDEPEND="
 	x11-libs/libXaw
