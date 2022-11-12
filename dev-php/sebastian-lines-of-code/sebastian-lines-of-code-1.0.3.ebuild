@@ -3,7 +3,7 @@
 
 EAPI=8
 
-MY_PN="${PN/sebastian-//}"
+MY_PN="${PN/sebastian-/}"
 
 DESCRIPTION="Library for counting the lines of code in PHP source code"
 HOMEPAGE="https://phpunit.de"

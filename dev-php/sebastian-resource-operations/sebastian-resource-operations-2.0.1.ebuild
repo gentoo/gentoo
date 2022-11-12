@@ -3,7 +3,7 @@
 
 EAPI=7
 
-MY_PN="${PN/sebastian-//}"
+MY_PN="${PN/sebastian-/}"
 
 DESCRIPTION="Provides a list of PHP built-in functions that operate on resources"
 HOMEPAGE="https://phpunit.de"

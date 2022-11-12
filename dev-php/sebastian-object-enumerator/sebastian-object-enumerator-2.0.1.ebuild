@@ -3,7 +3,7 @@
 
 EAPI=6
 
-MY_PN="${PN/sebastian-//}"
+MY_PN="${PN/sebastian-/}"
 
 DESCRIPTION="Traverses array structures and object graphs to enumerate all referenced objects"
 HOMEPAGE="https://phpunit.de"
