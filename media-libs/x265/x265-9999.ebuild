@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake multilib-minimal multilib multibuild flag-o-matic
+inherit cmake multilib-minimal multibuild
 
 if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
