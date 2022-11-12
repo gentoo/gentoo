@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2022-11-11)
+# Had a handful of reports of unbootable systems with this new version.
+# Given it's a still-experimental new branch, mask for now in case.
+# Feel free to unmask if you've had no issues, but otherwise please
+# report to NVIDIA. https://bugs.gentoo.org/881025
+~x11-drivers/nvidia-drivers-525.53
+
 # Matt Turner <mattst88@gentoo.org> (2022-11-11)
 # Relies on function no longer present in the Xserver since v1.20
 # (released May 2018), and no user has noticed. Use xf86-video-nouveau instead.
