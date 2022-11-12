@@ -4,8 +4,9 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
 	<upstream>
 		<remote-id type="pypi">spur</remote-id>
+		<remote-id type="github">mwilliamson/spur.py</remote-id>
 	</upstream>
 </pkgmetadata>

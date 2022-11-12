@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">booleanOperations</remote-id>
+		<remote-id type="github">typemytype/booleanOperations</remote-id>
 	</upstream>
 </pkgmetadata>

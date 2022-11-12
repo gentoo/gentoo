@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person" proxied="yes">
-    <email>kurt@kmk-computers.de</email>
-    <name>Kurt Kanzenbach</name>
-  </maintainer>
-  <maintainer type="project" proxied="proxy">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
-  <longdescription>
+	<maintainer type="person" proxied="yes">
+		<email>kurt@kmk-computers.de</email>
+		<name>Kurt Kanzenbach</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
     LibGeoDecomp (Library for Geometric Decomposition codes) is an
     auto-parallelizing library for computer simulations. It is specifically
     targeted computational science applications in the context of supercomputers
@@ -19,21 +19,24 @@
     scientists to focus on their simulation code, rather than the technical
     details of the parallel computer.
   </longdescription>
-  <use>
-    <flag name="cuda">
+	<use>
+		<flag name="cuda">
       Enables plugins for NVIDIA GPUs
     </flag>
-    <flag name="opencl">
+		<flag name="opencl">
       Enables OpenCL backend
     </flag>
-    <flag name="opencv">
+		<flag name="opencv">
       Enables OpenCV related code
     </flag>
-    <flag name="silo">
+		<flag name="silo">
       Enables SILO related code
     </flag>
-    <flag name="hpx">
+		<flag name="hpx">
       Enables HPX backend
     </flag>
-  </use>
+	</use>
+	<upstream>
+		<remote-id type="github">STEllAR-GROUP/libgeodecomp</remote-id>
+	</upstream>
 </pkgmetadata>

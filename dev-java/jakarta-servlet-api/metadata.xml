@@ -8,4 +8,7 @@
 		<slot name="4">provides javax.servlet</slot>
 		<slot name="6">provides jakarta.servlet</slot>
 	</slots>
+	<upstream>
+		<remote-id type="github">jakartaee/servlet</remote-id>
+	</upstream>
 </pkgmetadata>

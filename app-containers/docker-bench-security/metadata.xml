@@ -9,4 +9,7 @@
 		The Docker Bench for Security is a script that checks for dozens of
 		common best-practices around deploying Docker containers in production.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">docker/docker-bench-security</remote-id>
+	</upstream>
 </pkgmetadata>

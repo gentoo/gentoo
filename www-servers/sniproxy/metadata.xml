@@ -20,4 +20,7 @@
 			Use RFC3339 timestamp format in log.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">dlundquist/sniproxy</remote-id>
+	</upstream>
 </pkgmetadata>

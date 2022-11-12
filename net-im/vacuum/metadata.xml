@@ -55,4 +55,7 @@
 		<flag name="enchant">Select <pkg>app-text/enchant</pkg> spell checker backend</flag>
 		<flag name="hunspell">Select <pkg>app-text/hunspell</pkg> spell checker backend</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">Vacuum-IM/vacuum-im</remote-id>
+	</upstream>
 </pkgmetadata>

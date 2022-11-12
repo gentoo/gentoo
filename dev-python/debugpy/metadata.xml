@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -11,5 +11,6 @@
 			<email>ptvshelp@microsoft.com</email>
 			<name>Microsoft Corporation</name>
 		</maintainer>
+		<remote-id type="github">microsoft/debugpy</remote-id>
 	</upstream>
 </pkgmetadata>

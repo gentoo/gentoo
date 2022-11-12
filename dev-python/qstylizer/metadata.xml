@@ -5,8 +5,9 @@
 		<email>andrewammerlaan@gentoo.org</email>
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
 	<upstream>
 		<remote-id type="pypi">qstylizer</remote-id>
+		<remote-id type="github">blambright/qstylizer</remote-id>
 	</upstream>
 </pkgmetadata>

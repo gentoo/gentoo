@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">pgf</remote-id>
+		<remote-id type="github">pgf-tikz/pgf</remote-id>
 	</upstream>
 </pkgmetadata>

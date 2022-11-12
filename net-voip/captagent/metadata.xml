@@ -12,4 +12,7 @@
 	<use>
 		<flag name="redis">Enable redis support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">sipcapture/captagent</remote-id>
+	</upstream>
 </pkgmetadata>

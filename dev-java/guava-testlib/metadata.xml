@@ -7,4 +7,7 @@
 	<longdescription>
 		Guava testlib is a set of java classes used for more convenient unit testing - particularly to assist the tests for Guava itself.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">google/guava</remote-id>
+	</upstream>
 </pkgmetadata>

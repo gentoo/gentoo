@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pyclipper</remote-id>
+		<remote-id type="github">fonttools/pyclipper</remote-id>
 	</upstream>
 </pkgmetadata>

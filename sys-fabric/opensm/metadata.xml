@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-	<email>cluster@gentoo.org</email>
-	<name>Gentoo Cluster Project</name>
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
 	</maintainer>
 	<longdescription>
 	OpenSM provides an implementation for an InfiniBand Subnet Manager and
@@ -13,4 +13,7 @@
 	<use>
 		<flag name="tools">Install ssld extra tool</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">linux-rdma/opensm</remote-id>
+	</upstream>
 </pkgmetadata>

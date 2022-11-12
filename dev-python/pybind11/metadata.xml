@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pybind11</remote-id>
+		<remote-id type="github">pybind/pybind11</remote-id>
 	</upstream>
 </pkgmetadata>

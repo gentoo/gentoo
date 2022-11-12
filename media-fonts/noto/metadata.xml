@@ -12,4 +12,7 @@
 	<use>
 		<flag name="extra">Install full upstream font set</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">googlei18n/noto-fonts</remote-id>
+	</upstream>
 </pkgmetadata>

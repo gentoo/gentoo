@@ -8,6 +8,7 @@
 	<upstream>
 		<bugs-to>https://sourceforge.net/p/minidlna/bugs/</bugs-to>
 		<remote-id type="sourceforge">minidlna</remote-id>
+		<remote-id type="github">mgorny/minidlna</remote-id>
 	</upstream>
 	<use>
 		<flag name="netgear">Enable netgear branding</flag>

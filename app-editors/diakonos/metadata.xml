@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourcehut">~pistos/diakonos</remote-id>
+		<remote-id type="github">Pistos/diakonos</remote-id>
 	</upstream>
 </pkgmetadata>

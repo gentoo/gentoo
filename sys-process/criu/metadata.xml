@@ -11,7 +11,12 @@
 	</maintainer>
 	<use>
 		<flag name="setproctitle">Use <pkg>dev-libs/libbsd</pkg> to make process titles of service workers to be more verbose</flag>
-		<flag name="bpf">Add support for BPF programs via <pkg>dev-libs/libbpf</pkg></flag>
-		<flag name="nftables">Add support for <pkg>net-firewall/nftables</pkg></flag>
+		<flag name="bpf">Add support for BPF programs via <pkg>dev-libs/libbpf</pkg>
+		</flag>
+		<flag name="nftables">Add support for <pkg>net-firewall/nftables</pkg>
+		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">checkpoint-restore/criu</remote-id>
+	</upstream>
 </pkgmetadata>

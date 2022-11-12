@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<upstream>
 		<remote-id type="pypi">ntplib</remote-id>
+		<remote-id type="github">cf-natali/ntplib</remote-id>
 	</upstream>
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>

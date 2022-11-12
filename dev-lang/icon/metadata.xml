@@ -9,4 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">gtownsend/icon</remote-id>
+	</upstream>
 </pkgmetadata>

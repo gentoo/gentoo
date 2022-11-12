@@ -5,5 +5,8 @@
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
+	<upstream>
+		<remote-id type="github">zsh-users/zsh-syntax-highlighting</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -9,4 +9,7 @@
 		<email>sysadmin@gentoo.org</email>
 		<name>Gentoo Sysadmin Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">thomas-krenn/check_ipmi_sensor_v3</remote-id>
+	</upstream>
 </pkgmetadata>

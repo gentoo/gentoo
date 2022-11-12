@@ -5,7 +5,6 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
-
 	<use>
 		<flag name="gadu">Enable Gadu-Gadu protocol support (requires
 			<pkg>net-libs/libgadu</pkg>).</flag>
@@ -16,4 +15,7 @@
 		<flag name="openssl">Support encryption in sim plugin, using OpenSSL.</flag>
 		<flag name="sqlite">Support logging messages into SQLite3 database.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">ekg2/ekg2</remote-id>
+	</upstream>
 </pkgmetadata>

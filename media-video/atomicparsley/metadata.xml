@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">atomicparsley</remote-id>
+		<remote-id type="github">wez/atomicparsley</remote-id>
 	</upstream>
 </pkgmetadata>

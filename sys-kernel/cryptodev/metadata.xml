@@ -5,4 +5,7 @@
 		<email>swegener@gentoo.org</email>
 		<name>Sven Wegener</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">cryptodev-linux/cryptodev-linux</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -22,13 +22,13 @@
 		via GitHub Issues.
 	</longdescription>
 	<use>
-		<flag name="http">Enable http support via <pkg>net-misc/curl</pkg></flag>
+		<flag name="http">Enable http support via <pkg>net-misc/curl</pkg>
+		</flag>
 		<flag name="rtti">Flag to enable/disable rtti within the library</flag>
 		<flag name="unity-build">
 			Build using a single unified .cpp file for each service library.
 			Reduces the size of static library binaries
 		</flag>
-
 		<flag name="access-management">
 			AWS Access Management, a meta-flag that enables:
 			AWS Certificate Manager (ACM): Provision, manage, and deploy SSL/TLS certificates on AWS
@@ -476,4 +476,7 @@
 			architecture.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">aws/aws-sdk-cpp</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="github">danvratil/qcoro</remote-id>
 	</upstream>
 	<use>
 		<flag name="network">Build <pkg>dev-qt/qtnetwork</pkg> support</flag>

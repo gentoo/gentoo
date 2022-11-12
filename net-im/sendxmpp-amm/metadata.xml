@@ -5,4 +5,7 @@
 		<name>Florian Schmaus</name>
 		<email>flow@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">flowdalic/sendxmpp</remote-id>
+	</upstream>
 </pkgmetadata>

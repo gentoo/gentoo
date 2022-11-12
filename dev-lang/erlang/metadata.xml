@@ -18,4 +18,7 @@
 		released to help encourage the spread of Erlang outside
 		Ericsson.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">erlang/otp</remote-id>
+	</upstream>
 </pkgmetadata>

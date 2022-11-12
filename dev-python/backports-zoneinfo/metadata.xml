@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">backports.zoneinfo</remote-id>
+		<remote-id type="github">pganssle/zoneinfo</remote-id>
 	</upstream>
 </pkgmetadata>

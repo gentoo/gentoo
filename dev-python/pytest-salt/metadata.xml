@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pytest-salt</remote-id>
+		<remote-id type="github">saltstack/pytest-salt</remote-id>
 	</upstream>
 </pkgmetadata>

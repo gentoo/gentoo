@@ -5,4 +5,7 @@
 		<email>pinkbyte@gentoo.org</email>
 		<name>Sergey Popov</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">maru-sama/rtsp-linux</remote-id>
+	</upstream>
 </pkgmetadata>

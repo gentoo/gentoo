@@ -5,8 +5,9 @@
 		<email>python@gentoo.org</email>
 		<name>Python</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
 	<upstream>
 		<remote-id type="pypi">Routes</remote-id>
+		<remote-id type="github">bbangert/routes</remote-id>
 	</upstream>
 </pkgmetadata>

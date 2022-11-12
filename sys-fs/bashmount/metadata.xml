@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">bashmount</remote-id>
+		<remote-id type="github">jamielinux/bashmount</remote-id>
 	</upstream>
 </pkgmetadata>

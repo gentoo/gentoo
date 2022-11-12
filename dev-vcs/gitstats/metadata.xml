@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">gitstats</remote-id>
+		<remote-id type="github">gktrk/gitstats</remote-id>
 	</upstream>
 </pkgmetadata>

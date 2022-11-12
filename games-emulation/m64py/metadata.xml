@@ -11,5 +11,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">m64py</remote-id>
+		<remote-id type="github">mupen64plus/mupen64plus-ui-python</remote-id>
 	</upstream>
 </pkgmetadata>

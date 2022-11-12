@@ -5,4 +5,7 @@
 		<name>Patrick McLean</name>
 		<email>chutzpah@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">chutz/mullvad-netns</remote-id>
+	</upstream>
 </pkgmetadata>

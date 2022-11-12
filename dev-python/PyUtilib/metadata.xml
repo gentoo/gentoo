@@ -8,8 +8,9 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
 	<upstream>
 		<remote-id type="pypi">PyUtilib</remote-id>
+		<remote-id type="github">PyUtilib/pyutilib</remote-id>
 	</upstream>
 </pkgmetadata>

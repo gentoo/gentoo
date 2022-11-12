@@ -16,5 +16,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">thinkfan</remote-id>
+		<remote-id type="github">vmatare/thinkfan</remote-id>
 	</upstream>
 </pkgmetadata>

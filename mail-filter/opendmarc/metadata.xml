@@ -6,6 +6,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">opendmarc</remote-id>
+		<remote-id type="github">trusteddomainproject/OpenDMARC</remote-id>
 	</upstream>
 	<use>
 		<flag name="spf">Use the <pkg>mail-filter/libspf2</pkg>

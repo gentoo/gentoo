@@ -5,4 +5,7 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">Icinga/icinga-php-library</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="pypi">django-js-asset</remote-id>
+		<remote-id type="github">matthiask/django-js-asset</remote-id>
 	</upstream>
 </pkgmetadata>

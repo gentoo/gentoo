@@ -4,5 +4,8 @@
 	<maintainer type="person">
 		<email>pacho@gentoo.org</email>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
+	<upstream>
+		<remote-id type="github">JasonLG1979/gnome-shell-extension-weather-in-the-clock</remote-id>
+	</upstream>
 </pkgmetadata>

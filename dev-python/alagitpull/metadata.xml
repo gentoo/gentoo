@@ -5,8 +5,9 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
 	<upstream>
 		<remote-id type="pypi">alagitpull</remote-id>
+		<remote-id type="github">git-pull/alagitpull</remote-id>
 	</upstream>
 </pkgmetadata>

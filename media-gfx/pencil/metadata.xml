@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">pencil-planner</remote-id>
+		<remote-id type="github">pencil2d/pencil</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -19,4 +19,7 @@
 		<flag name="whatsapp">Enables the WhatsApp backend, based on <pkg>net-im/transwhat</pkg>.</flag>
 		<flag name="twitter">Enables the Twitter backend.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">SpectrumIM/spectrum2</remote-id>
+	</upstream>
 </pkgmetadata>

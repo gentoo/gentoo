@@ -4,6 +4,7 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">tpm-emulator</remote-id>
+		<remote-id type="github">PeterHuewe/tpm-emulator</remote-id>
 	</upstream>
 	<use>
 		<flag name="mtm-emulator">Build the MTM emulator</flag>

@@ -13,4 +13,7 @@
 		Ada tooling, including tools working on potentially changing and
 		incorrect code, such as IDEs.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">AdaCore/libadalang</remote-id>
+	</upstream>
 </pkgmetadata>
