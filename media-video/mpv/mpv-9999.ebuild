@@ -11,9 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
 else
-	HASH_MPV=c416a38ef227067ef7b81b9650a13157300cdfbe
-	SRC_URI="https://github.com/mpv-player/mpv/archive/${HASH_MPV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${HASH_MPV}"
+	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux"
 fi
 
@@ -27,7 +25,7 @@ IUSE="
 	dvd +egl gamepad +iconv jack javascript jpeg lcms libcaca libmpv
 	+libplacebo +lua mmal nvenc openal opengl pipewire pulseaudio
 	raspberry-pi rubberband sdl selinux sndio test tools +uchardet
-	vaapi vdpau +vector vulkan wayland +xv zimg zlib"
+	vaapi vdpau vulkan wayland +xv zimg zlib"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( cli libmpv )
@@ -133,8 +131,6 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	[[ ${PV} == 9999 ]] || sed -i "s/UNKNOWN/${HASH_MPV::11}/" VERSION || die
-
 	sed -i "s/'rst2html/&.py/" meson.build || die
 }
 
@@ -188,7 +184,6 @@ src_configure() {
 		-Dsdl2=$(use gamepad || use sdl && echo enabled || echo disabled) #857156
 		$(meson_feature uchardet)
 		-Dvapoursynth=disabled # only available in overlays
-		$(meson_feature vector)
 		$(meson_feature zimg)
 		$(meson_feature zlib)
 
