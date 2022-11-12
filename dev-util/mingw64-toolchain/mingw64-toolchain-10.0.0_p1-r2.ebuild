@@ -260,7 +260,8 @@ src_compile() {
 		for bin in ${CTARGET}-*; do
 			bin32=${bin/x86_64-w64/i686-w64}
 			case ${bin#${CTARGET}-} in
-				gcc|gcc-${GCC_PV}|g++|widl) mwt-i686_wrapper -m32;;
+				as) mwt-i686_wrapper --32;;
+				cpp|gcc|gcc-${GCC_PV}|g++|widl) mwt-i686_wrapper -m32;;
 				ld|ld.bfd) mwt-i686_wrapper -m i386pe;;
 				windres) mwt-i686_wrapper --target=pe-i386;;
 				*) ln -s ${bin} ${bin32} || die;;
