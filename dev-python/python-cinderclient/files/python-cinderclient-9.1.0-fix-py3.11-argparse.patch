@@ -1,0 +1,54 @@
+https://review.opendev.org/c/openstack/python-cinderclient/+/851467
+From: Cyril Roelandt <cyril@redhat.com>
+Date: Thu, 28 Jul 2022 20:48:58 +0200
+Subject: [PATCH] Python3.11: Fix argparse-related test failures
+
+Closes-Bug: #1983054
+Change-Id: I2d4cb81a394f3c10e5f01945d894746a904fb5df
+--- a/cinderclient/tests/unit/test_shell.py
++++ b/cinderclient/tests/unit/test_shell.py
+@@ -376,7 +376,7 @@
+
+         self.mock_completion()
+
+-    def test_load_versioned_actions(self):
++    def test_load_versioned_actions_v3_0(self):
+         parser = cinderclient.shell.CinderClientArgumentParser()
+         subparsers = parser.add_subparsers(metavar='<subcommand>')
+         shell = cinderclient.shell.OpenStackCinderShell()
+@@ -388,6 +388,10 @@
+             "fake_action 3.0 to 3.1",
+             shell.subcommands['fake-action'].get_default('func')())
+
++    def test_load_versioned_actions_v3_2(self):
++        parser = cinderclient.shell.CinderClientArgumentParser()
++        subparsers = parser.add_subparsers(metavar='<subcommand>')
++        shell = cinderclient.shell.OpenStackCinderShell()
+         shell.subcommands = {}
+         shell._find_actions(subparsers, fake_actions_module,
+                             api_versions.APIVersion("3.2"), False, [])
+@@ -521,7 +525,7 @@
+
+     @mock.patch.object(cinderclient.shell.CinderClientArgumentParser,
+                        'add_argument')
+-    def test_load_actions_with_versioned_args(self, mock_add_arg):
++    def test_load_actions_with_versioned_args_v36(self, mock_add_arg):
+         parser = cinderclient.shell.CinderClientArgumentParser(add_help=False)
+         subparsers = parser.add_subparsers(metavar='<subcommand>')
+         shell = cinderclient.shell.OpenStackCinderShell()
+@@ -533,8 +537,13 @@
+         self.assertNotIn(mock.call('--foo', help="second foo"),
+                          mock_add_arg.call_args_list)
+
+-        mock_add_arg.reset_mock()
+-
++    @mock.patch.object(cinderclient.shell.CinderClientArgumentParser,
++                       'add_argument')
++    def test_load_actions_with_versioned_args_v39(self, mock_add_arg):
++        parser = cinderclient.shell.CinderClientArgumentParser(add_help=False)
++        subparsers = parser.add_subparsers(metavar='<subcommand>')
++        shell = cinderclient.shell.OpenStackCinderShell()
++        shell.subcommands = {}
+         shell._find_actions(subparsers, fake_actions_module,
+                             api_versions.APIVersion("3.9"), False, [])
+         self.assertNotIn(mock.call('--foo', help="first foo"),

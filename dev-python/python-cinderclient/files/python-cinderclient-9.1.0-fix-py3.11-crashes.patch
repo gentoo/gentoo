@@ -1,0 +1,53 @@
+https://review.opendev.org/c/openstack/python-cinderclient/+/851446
+From: Cyril Roelandt <cyril@redhat.com>
+Date: Thu, 28 Jul 2022 20:14:36 +0200
+Subject: [PATCH] Python3.11: fix crashes in ShellTest
+
+Closes-Bug: #1983047
+Change-Id: If20abef109ddd7107c83b5886beb666a6550a640
+--- a/cinderclient/tests/unit/test_shell.py
++++ b/cinderclient/tests/unit/test_shell.py
+@@ -120,9 +120,9 @@
+         # Some expected help output, including microversioned commands
+         required = [
+             r'.*?^usage: ',
+-            r'.*?(?m)^\s+create\s+Creates a volume.',
+-            r'.*?(?m)^\s+summary\s+Get volumes summary.',
+-            r'.*?(?m)^Run "cinder help SUBCOMMAND" for help on a subcommand.',
++            r'.*?^\s+create\s+Creates a volume.',
++            r'.*?^\s+summary\s+Get volumes summary.',
++            r'.*?^Run "cinder help SUBCOMMAND" for help on a subcommand.',
+         ]
+         help_text = self.shell('help')
+         for r in required:
+@@ -132,7 +132,7 @@
+     def test_help_on_subcommand(self):
+         required = [
+             r'.*?^usage: cinder list',
+-            r'.*?(?m)^Lists all volumes.',
++            r'.*?^Lists all volumes.',
+         ]
+         help_text = self.shell('help list')
+         for r in required:
+@@ -142,7 +142,7 @@
+     def test_help_on_subcommand_mv(self):
+         required = [
+             r'.*?^usage: cinder summary',
+-            r'.*?(?m)^Get volumes summary.',
++            r'.*?^Get volumes summary.',
+         ]
+         help_text = self.shell('help summary')
+         for r in required:
+@@ -152,9 +152,9 @@
+     def test_help_arg_no_subcommand(self):
+         required = [
+             r'.*?^usage: ',
+-            r'.*?(?m)^\s+create\s+Creates a volume.',
+-            r'.*?(?m)^\s+summary\s+Get volumes summary.',
+-            r'.*?(?m)^Run "cinder help SUBCOMMAND" for help on a subcommand.',
++            r'.*?^\s+create\s+Creates a volume.',
++            r'.*?^\s+summary\s+Get volumes summary.',
++            r'.*?^Run "cinder help SUBCOMMAND" for help on a subcommand.',
+         ]
+         help_text = self.shell('--os-volume-api-version 3.40')
+         for r in required:
