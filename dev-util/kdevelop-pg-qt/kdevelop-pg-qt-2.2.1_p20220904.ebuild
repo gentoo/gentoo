@@ -9,7 +9,7 @@ KDE_ORG_COMMIT="72138ed04d427f520e65b146525632e967177abe"
 inherit ecm kde.org
 
 DESCRIPTION="LL(1) parser generator used mainly by KDevelop language plugins"
-HOMEPAGE="https://kdevelop.org/"
+HOMEPAGE="https://www.kdevelop.org/"
 
 LICENSE="LGPL-2+ LGPL-2.1+"
 SLOT="5"
