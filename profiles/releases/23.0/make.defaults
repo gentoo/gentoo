@@ -1,2 +1,8 @@
 # Copyright 1999-2022 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# bug 831045
+USE="${USE} -cli"
+
+# bug 849875
+USE="${USE} -dri"
