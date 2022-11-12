@@ -316,5 +316,7 @@ pkg_postinst() {
 }
 
 pkg_prerm() {
-	nonfatal wine-eselect deregister
+	if [[ ${REPLACED_BY_VERSION%-r*} != ${PV} ]]; then #881035
+		nonfatal wine-eselect deregister
+	fi
 }
