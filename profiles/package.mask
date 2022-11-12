@@ -265,12 +265,6 @@ games-mud/gnome-mud
 # Removal on 2022-11-13
 net-misc/spread
 
-# Matt Turner <mattst88@gentoo.org> (2022-10-12)
-# Unmaintained and archived upstream. Last release in 2017.
-# Bug #597960.
-# Removal on 2022-11-12
-net-im/empathy
-
 # Sam James <sam@gentoo.org> (2022-10-12)
 # Upstream has withdrawn these releases because of a (yet unexplained)
 # "significant regression".
