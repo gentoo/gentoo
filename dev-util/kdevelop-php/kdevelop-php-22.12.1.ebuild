@@ -14,7 +14,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm gear.kde.org
 
 DESCRIPTION="PHP plugin for KDevelop"
-HOMEPAGE="https://kdevelop.org/"
+HOMEPAGE="https://www.kdevelop.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="5"
