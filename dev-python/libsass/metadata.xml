@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">libsass</remote-id>
+		<remote-id type="github">sass/libsass-python</remote-id>
 	</upstream>
 </pkgmetadata>

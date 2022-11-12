@@ -14,4 +14,7 @@
 		efficient SW implementations. C interface with language
 		bindings for each of our SDKs
 	</longdescription>
+	<upstream>
+		<remote-id type="github">awslabs/aws-checksums</remote-id>
+	</upstream>
 </pkgmetadata>

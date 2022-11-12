@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">slimit</remote-id>
+		<remote-id type="github">rspivak/slimit</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -10,5 +10,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">ccextractor</remote-id>
+		<remote-id type="github">CCExtractor/ccextractor</remote-id>
 	</upstream>
 </pkgmetadata>

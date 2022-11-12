@@ -8,4 +8,7 @@
 	<use>
 		<flag name="tools">Build and install SeqAn commandline tools, such as the Yara aligner</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">seqan/seqan</remote-id>
+	</upstream>
 </pkgmetadata>

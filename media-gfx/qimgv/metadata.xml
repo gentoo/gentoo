@@ -10,7 +10,11 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="opencv">Enable HQ scaling via <pkg>media-libs/opencv</pkg></flag>
+		<flag name="opencv">Enable HQ scaling via <pkg>media-libs/opencv</pkg>
+		</flag>
 		<flag name="video">Add support for gif/webm playback via libmpv</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">easymodo/qimgv</remote-id>
+	</upstream>
 </pkgmetadata>

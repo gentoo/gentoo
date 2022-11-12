@@ -5,4 +5,7 @@
 	<use>
 		<flag name="examples">Build and install examples</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">any1/aml</remote-id>
+	</upstream>
 </pkgmetadata>

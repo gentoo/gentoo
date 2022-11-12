@@ -16,5 +16,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">ngrep</remote-id>
+		<remote-id type="github">jpr5/ngrep</remote-id>
 	</upstream>
 </pkgmetadata>

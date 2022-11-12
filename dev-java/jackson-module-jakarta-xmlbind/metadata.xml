@@ -9,5 +9,6 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/FasterXML/jackson-modules-base/issues</bugs-to>
+		<remote-id type="github">FasterXML/jackson-modules-base</remote-id>
 	</upstream>
 </pkgmetadata>

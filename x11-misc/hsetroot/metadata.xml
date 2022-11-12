@@ -20,4 +20,7 @@ color mask), blurring, sharpening, flipping (horizontally, diagonally,
 vertically) it also allows you to adjust brightness, contrast and gamma-level.
 hsetroot also supports alpha-channels when rendering things.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">himdel/hsetroot</remote-id>
+	</upstream>
 </pkgmetadata>

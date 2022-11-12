@@ -9,9 +9,12 @@
 		<email>gienah@gentoo.org</email>
 		<name>Mark Wright</name>
 	</maintainer>
-<use>
-	<flag name="glade">Enable libglade bindings compilation.</flag>
-	<flag name="gnomecanvas">Enable libgnomecanvas bindings compilation.</flag>
-	<flag name="sourceview">Enable GtkSourceView support</flag>
-</use>
+	<use>
+		<flag name="glade">Enable libglade bindings compilation.</flag>
+		<flag name="gnomecanvas">Enable libgnomecanvas bindings compilation.</flag>
+		<flag name="sourceview">Enable GtkSourceView support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">garrigue/lablgtk</remote-id>
+	</upstream>
 </pkgmetadata>

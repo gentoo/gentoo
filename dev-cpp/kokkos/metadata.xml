@@ -5,4 +5,7 @@
 		<email>junghans@gentoo.org</email>
 		<name>Christoph Junghans</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">kokkos/kokkos</remote-id>
+	</upstream>
 </pkgmetadata>

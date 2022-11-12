@@ -25,4 +25,7 @@ As it can be difficult to keep track of which encryption algorithms and protocol
 simple API to use the latest "default" set of preferences. If you prefer to remain on a specific version for backwards
 compatibility, that is also supported.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">awslabs/s2n</remote-id>
+	</upstream>
 </pkgmetadata>

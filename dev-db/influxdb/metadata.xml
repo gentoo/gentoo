@@ -10,4 +10,7 @@
 		dependencies. It is useful for recording metrics, events, and
 		performing analytics.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">influxdata/influxdb</remote-id>
+	</upstream>
 </pkgmetadata>

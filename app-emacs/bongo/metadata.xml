@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-  <email>gnu-emacs@gentoo.org</email>
-  <name>Gentoo GNU Emacs project</name>
-</maintainer>
-<longdescription>
+	<maintainer type="project">
+		<email>gnu-emacs@gentoo.org</email>
+		<name>Gentoo GNU Emacs project</name>
+	</maintainer>
+	<longdescription>
   Bongo is a buffer-oriented media player for Emacs, contemporary with and
   comparable to <pkg>app-emacs/emms</pkg>.
 
@@ -33,5 +33,8 @@
   and mpg321 support interactive seeking. Defining your own non-interactive
   backends is very simple.
 </longdescription>
-<stabilize-allarches/>
+	<stabilize-allarches />
+	<upstream>
+		<remote-id type="github">dbrock/bongo</remote-id>
+	</upstream>
 </pkgmetadata>

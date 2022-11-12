@@ -5,5 +5,8 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
+	<upstream>
+		<remote-id type="github">Nanolx/fortunes-flashrider</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -14,5 +14,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">ipt-netflow</remote-id>
+		<remote-id type="github">aabc/ipt-netflow</remote-id>
 	</upstream>
 </pkgmetadata>

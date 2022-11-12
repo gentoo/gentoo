@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">bpmdetect</remote-id>
+		<remote-id type="github">Tatsh/bpmdetect</remote-id>
 	</upstream>
 </pkgmetadata>

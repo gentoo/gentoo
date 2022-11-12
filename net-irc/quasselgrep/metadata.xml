@@ -8,5 +8,6 @@
 	<upstream>
 		<bugs-to>https://github.com/fish-face/quasselgrep/issues</bugs-to>
 		<doc>https://github.com/fish-face/quasselgrep/blob/master/README.md</doc>
+		<remote-id type="github">fish-face/quasselgrep</remote-id>
 	</upstream>
 </pkgmetadata>

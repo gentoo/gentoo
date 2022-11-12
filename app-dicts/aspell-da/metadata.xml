@@ -5,5 +5,8 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
+	<upstream>
+		<remote-id type="github">mortenivar/aspell-da</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -8,4 +8,7 @@
 	<use>
 		<flag name="zerocopy">may cause a bus error on some ARM systems</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">osmocom/rtl-sdr</remote-id>
+	</upstream>
 </pkgmetadata>

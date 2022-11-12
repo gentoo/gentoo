@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="bitbucket">ignitionrobotics/ign-math</remote-id>
+		<remote-id type="github">ignitionrobotics/ign-math</remote-id>
 	</upstream>
 </pkgmetadata>

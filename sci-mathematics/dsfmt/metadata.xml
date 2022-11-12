@@ -22,4 +22,7 @@
 		754-1985) format. dSFMT is only available on the CPUs which use IEEE
 		754 format double precision floating point numbers.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">MersenneTwister-Lab/dSFMT</remote-id>
+	</upstream>
 </pkgmetadata>

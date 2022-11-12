@@ -5,8 +5,9 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
 	<upstream>
 		<remote-id type="pypi">pytest-salt-factories</remote-id>
+		<remote-id type="github">saltstack/pytest-salt-factories</remote-id>
 	</upstream>
 </pkgmetadata>

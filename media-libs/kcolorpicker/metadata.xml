@@ -13,4 +13,7 @@
 		select a color. The popup features a color dialog button which can be
 		used to add custom colors to the popup menu.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ksnip/kColorPicker</remote-id>
+	</upstream>
 </pkgmetadata>

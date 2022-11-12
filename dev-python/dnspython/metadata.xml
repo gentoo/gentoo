@@ -27,8 +27,9 @@ DNSPythonはPython言語用のDNSツールキットです。ほとんどのレ�
 			DNSSEC RSA, DSA, ECDSA and EdDSA signature validation.
 		</flag>
 	</use>
-	<stabilize-allarches/>
+	<stabilize-allarches />
 	<upstream>
 		<remote-id type="pypi">dnspython</remote-id>
+		<remote-id type="github">rthalley/dnspython</remote-id>
 	</upstream>
 </pkgmetadata>

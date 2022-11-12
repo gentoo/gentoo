@@ -5,4 +5,7 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">haproxytech/dataplaneapi</remote-id>
+	</upstream>
 </pkgmetadata>

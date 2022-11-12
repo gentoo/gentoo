@@ -9,4 +9,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">Yubico/yubioath-desktop</remote-id>
+	</upstream>
 </pkgmetadata>

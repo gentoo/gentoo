@@ -9,4 +9,7 @@
 		A library implementing a simplex algorithm, in a functional style,
 		for solving systems of linear inequalities
 	</longdescription>
+	<upstream>
+		<remote-id type="github">OCamlPro-Iguernlala/ocplib-simplex</remote-id>
+	</upstream>
 </pkgmetadata>

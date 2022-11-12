@@ -8,4 +8,7 @@
 	<use>
 		<flag name="promisc">Enable promisc in the config file for packet sniffing</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">freaklabs/chibiArduino</remote-id>
+	</upstream>
 </pkgmetadata>

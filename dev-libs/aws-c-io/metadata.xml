@@ -20,4 +20,7 @@ and security concerns are already handled for you.
 It is designed to be light-weight, fast, portable, and flexible for multiple domain use-cases such as: embedded,
 server, client, and mobile.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">awslabs/aws-c-io</remote-id>
+	</upstream>
 </pkgmetadata>

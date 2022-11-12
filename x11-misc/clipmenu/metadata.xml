@@ -14,4 +14,7 @@
 		<flag name="rofi">Use rofi as default launcher</flag>
 		<flag name="fzf">Use fzf as default launcher</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">cdown/clipmenu</remote-id>
+	</upstream>
 </pkgmetadata>

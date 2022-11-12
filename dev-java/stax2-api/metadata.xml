@@ -9,5 +9,6 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/FasterXML/stax2-api/issues</bugs-to>
+		<remote-id type="github">FasterXML/stax2-api</remote-id>
 	</upstream>
 </pkgmetadata>

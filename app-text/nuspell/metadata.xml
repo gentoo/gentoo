@@ -11,4 +11,7 @@
 
 		Nuspell is a pure C++ re-implementation of <pkg>app-text/hunspell</pkg>.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">nuspell/nuspell</remote-id>
+	</upstream>
 </pkgmetadata>

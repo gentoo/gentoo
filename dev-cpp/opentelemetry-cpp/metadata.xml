@@ -9,4 +9,7 @@
 		<flag name="jaeger">Include the jaeger exporter</flag>
 		<flag name="prometheus">include the Prometheus Client in the SDK</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">open-telemetry/opentelemetry-cpp</remote-id>
+	</upstream>
 </pkgmetadata>

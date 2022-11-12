@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pytest-shell-utilities</remote-id>
+		<remote-id type="github">saltstack/pytest-shell-utilities</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -22,5 +22,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">webdavcgi</remote-id>
+		<remote-id type="github">DanRohde/webdavcgi</remote-id>
 	</upstream>
 </pkgmetadata>

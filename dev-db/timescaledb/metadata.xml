@@ -10,4 +10,7 @@
 			Enable proprietary features/extensions licensed under the TimeScale License
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">timescale/timescaledb</remote-id>
+	</upstream>
 </pkgmetadata>

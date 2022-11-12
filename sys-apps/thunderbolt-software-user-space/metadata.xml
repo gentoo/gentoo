@@ -13,4 +13,7 @@
 		Installs the tools tbtacl and tbtadm for Thunderbolt device approval, handling the ACL and more.
 		Also install udev rules to mange acls.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">intel/thunderbolt-software-user-space</remote-id>
+	</upstream>
 </pkgmetadata>

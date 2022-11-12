@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>ada@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">AdaCore/VSS</remote-id>
+	</upstream>
 </pkgmetadata>

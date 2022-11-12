@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>cluster@gentoo.org</email>
-    <name>Gentoo Cluster Project</name>
-  </maintainer>
-  <use>
-    <flag name="autorun">Enable the AUTORUN_JOBS codebase</flag>
-    <flag name="cgroups">Enable pbs_mom to use linux cgroups to isolate jobs</flag>
-    <flag name="cpusets">Enable pbs_mom to utilize linux cpusets if available</flag>
-    <flag name="munge">Enable authentication via munge</flag>
-    <flag name="nvidia">Enable management of Nvidia GPUs</flag>
-    <flag name="quickcommit">Enable the QUICKCOMMIT codebase</flag>
-    <flag name="server">Enable compilation of pbs_server and pbs_sched</flag>
-  </use>
+	<maintainer type="project">
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
+	</maintainer>
+	<use>
+		<flag name="autorun">Enable the AUTORUN_JOBS codebase</flag>
+		<flag name="cgroups">Enable pbs_mom to use linux cgroups to isolate jobs</flag>
+		<flag name="cpusets">Enable pbs_mom to utilize linux cpusets if available</flag>
+		<flag name="munge">Enable authentication via munge</flag>
+		<flag name="nvidia">Enable management of Nvidia GPUs</flag>
+		<flag name="quickcommit">Enable the QUICKCOMMIT codebase</flag>
+		<flag name="server">Enable compilation of pbs_server and pbs_sched</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">adaptivecomputing/torque</remote-id>
+	</upstream>
 </pkgmetadata>

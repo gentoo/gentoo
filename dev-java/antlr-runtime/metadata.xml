@@ -7,4 +7,7 @@
 	<longdescription>
 		A framework for constructing recognizers, compilers, and translators from grammatical descriptions containing Java, C#, C++, or Python actions.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">antlr/antlr4</remote-id>
+	</upstream>
 </pkgmetadata>

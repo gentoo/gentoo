@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">AnyQt</remote-id>
+		<remote-id type="github">ales-erjavec/anyqt</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -9,5 +9,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">betamax-matchers</remote-id>
+		<remote-id type="github">betamaxpy/betamax_matchers</remote-id>
 	</upstream>
 </pkgmetadata>

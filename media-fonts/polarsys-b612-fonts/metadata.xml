@@ -14,4 +14,7 @@
 		and tested to be used on aircraft cockpit screens. Published
 		on the PolarSys project.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">polarsys/b612</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-  <email>gnu-emacs@gentoo.org</email>
-  <name>Gentoo GNU Emacs project</name>
-</maintainer>
-<longdescription>
+	<maintainer type="project">
+		<email>gnu-emacs@gentoo.org</email>
+		<name>Gentoo GNU Emacs project</name>
+	</maintainer>
+	<longdescription>
   Boxquote provides a set of functions for using a text quoting style that
   partially boxes in the left hand side of an area of text, such a marking
   style might be used to show externally included text or example code.
@@ -19,5 +19,8 @@
   pulling it in, either by inserting the contents of another file or by
   yanking text into the current buffer.
 </longdescription>
-<stabilize-allarches/>
+	<stabilize-allarches />
+	<upstream>
+		<remote-id type="github">davep/boxquote.el</remote-id>
+	</upstream>
 </pkgmetadata>

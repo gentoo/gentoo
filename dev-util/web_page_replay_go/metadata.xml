@@ -9,4 +9,7 @@
 		<email>chromium@gentoo.org</email>
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">elkablo/web_page_replay_go</remote-id>
+	</upstream>
 </pkgmetadata>

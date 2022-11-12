@@ -9,4 +9,7 @@
 		<email>proaudio@gentoo.org</email>
 		<name>Gentoo ProAudio Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">linuxaudio/a2jmidid</remote-id>
+	</upstream>
 </pkgmetadata>

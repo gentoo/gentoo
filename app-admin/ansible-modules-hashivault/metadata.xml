@@ -9,5 +9,8 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
+	<upstream>
+		<remote-id type="github">TerryHowe/ansible-modules-hashivault</remote-id>
+	</upstream>
 </pkgmetadata>

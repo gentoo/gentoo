@@ -7,4 +7,7 @@
 		the applications from Larry Kroeker's DF-EDIT (Directory File Editor)
 		for MS-DOS and PC-DOS systems, based on the Version 2.3d release from 1986.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">roberthawdon/dfshow</remote-id>
+	</upstream>
 </pkgmetadata>
