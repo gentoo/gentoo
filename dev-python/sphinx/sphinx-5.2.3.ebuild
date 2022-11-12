@@ -85,7 +85,7 @@ python_prepare_all() {
 python_compile_all() {
 	if use doc; then
 		esetup.py build_sphinx
-		HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
+		HTML_DOCS=( build/sphinx/html/. )
 	fi
 }
 
