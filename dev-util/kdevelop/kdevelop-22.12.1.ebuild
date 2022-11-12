@@ -13,7 +13,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm gear.kde.org optfeature
 
 DESCRIPTION="Integrated Development Environment, supporting KF5/Qt, C/C++ and much more"
-HOMEPAGE="https://kdevelop.org/"
+HOMEPAGE="https://www.kdevelop.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="5/57" # look at KDEVELOP_SOVERSION inside CMakeLists.txt
