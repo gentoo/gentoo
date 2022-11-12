@@ -31,7 +31,7 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	ffmpeg? ( media-video/ffmpeg:0= )
 	jack? ( virtual/jack )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:0= )
 	jpeg2k? ( media-libs/openjpeg:2 )
 	mad? ( media-libs/libmad )
 	opengl? (
