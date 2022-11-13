@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{8..11} pypy3 )
 inherit distutils-r1
 
 MY_P=MyST-Parser-${PV}
-DESCRIPTION="Extended commonmark compliant parser, with bridges to sphinx"
+DESCRIPTION="Extended commonmark compliant parser, with bridges to Sphinx"
 HOMEPAGE="
 	https://github.com/executablebooks/MyST-Parser/
 	https://pypi.org/project/myst-parser/
@@ -30,7 +30,7 @@ RDEPEND="
 	dev-python/markdown-it-py[${PYTHON_USEDEP}]
 	>=dev-python/mdit-py-plugins-0.3.1[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	<dev-python/sphinx-5.2[${PYTHON_USEDEP}]
+	<dev-python/sphinx-6[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-4[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
@@ -39,6 +39,7 @@ BDEPEND="
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/pytest-regressions[${PYTHON_USEDEP}]
 		dev-python/pytest-param-files[${PYTHON_USEDEP}]
+		<dev-python/sphinx-5.2[${PYTHON_USEDEP}]
 		dev-python/sphinx-pytest[${PYTHON_USEDEP}]
 	)
 "
