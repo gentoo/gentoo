@@ -3,9 +3,11 @@
 
 EAPI=7
 
+MY_P="EasyRSA-unix-v${PV}"
+
 DESCRIPTION="Small RSA key management package, based on OpenSSL"
 HOMEPAGE="https://openvpn.net/"
-SRC_URI="https://github.com/OpenVPN/easy-rsa/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/OpenVPN/easy-rsa/releases/download/v${PV}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
