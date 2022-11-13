@@ -248,13 +248,6 @@ dev-python/nose_warnings_filters
 # Removal on 2022-11-14
 x11-terms/lilyterm
 
-# Matt Turner <mattst88@gentoo.org> (2022-10-14)
-# Unmaintained upstream. Last release in 2008. Only reverse dependency is
-# gnome-mud, which is masked for removal.
-# Bugs #349301, #713152, #802723, #808435, #870730, #877079.
-# Removal on 2022-11-14
-net-libs/gnet
-
 # Joshua Kinard <kumba@gentoo.org> (2022-10-13)
 # Difficult-to-resolve build issues on modern toolchains,
 # not publicly maintained, developer contact is difficult,
