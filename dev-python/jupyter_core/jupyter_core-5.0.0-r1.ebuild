@@ -21,6 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
+	dev-python/platformdirs[${PYTHON_USEDEP}]
 	dev-python/traitlets[${PYTHON_USEDEP}]
 "
 BDEPEND="
@@ -30,5 +31,6 @@ BDEPEND="
 "
 
 distutils_enable_sphinx docs \
+	dev-python/myst_parser \
 	dev-python/sphinxcontrib-github-alt
 distutils_enable_tests pytest
