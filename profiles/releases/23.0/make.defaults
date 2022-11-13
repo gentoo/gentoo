@@ -1,6 +1,9 @@
 # Copyright 1999-2022 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# This just makes sense nowadays, if only for distfiles...
+USE="xz zstd"
+
 # bug 831045
 USE="${USE} -cli"
 
