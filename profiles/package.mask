@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthew Smith <matthew@gentoo.org> (2022-11-13)
+# Please update to Erlang/OTP 25. Removal in 30 days.
+# Bug #864543
+<dev-lang/erlang-25
+<net-misc/rabbitmq-server-3.11.0
+
 # Ionen Wolkens <ionen@gentoo.org> (2022-11-11)
 # Had a handful of reports of unbootable systems with this new version.
 # Given it's a still-experimental new branch, mask for now in case.
