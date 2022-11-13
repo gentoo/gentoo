@@ -35,11 +35,9 @@ CRATES="
 	cpufeatures-0.2.1
 	cpython-0.7.0
 	crc32fast-1.2.1
-	crossbeam-channel-0.4.4
 	crossbeam-channel-0.5.2
 	crossbeam-deque-0.8.0
 	crossbeam-epoch-0.9.1
-	crossbeam-utils-0.7.2
 	crossbeam-utils-0.8.1
 	crypto-common-0.1.2
 	ctor-0.1.16
@@ -72,13 +70,10 @@ CRATES="
 	libm-0.2.1
 	libz-sys-1.1.2
 	log-0.4.14
-	maybe-uninit-2.0.0
 	memchr-2.4.1
-	memmap2-0.4.0
+	memmap2-0.5.7
 	memoffset-0.6.1
-	micro-timer-0.3.1
 	micro-timer-0.4.0
-	micro-timer-macros-0.3.1
 	micro-timer-macros-0.4.0
 	miniz_oxide-0.4.3
 	num-integer-0.1.44
