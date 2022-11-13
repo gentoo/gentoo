@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/awesomeWM/${PN}.git"
 else
-	SRC_URI="https://github.com/awesomeWM/awesome-releases/raw/master/${P}.tar.xz"
+	SRC_URI="https://github.com/awesomeWM/awesome/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="amd64 arm ppc ppc64 ~riscv x86"
 fi
 
