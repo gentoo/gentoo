@@ -5,9 +5,11 @@ EAPI=7
 
 inherit perl-module
 
+GH_TS="1668377184"
+
 DESCRIPTION="Highly flexible server for git directory version tracker"
 HOMEPAGE="https://github.com/sitaramc/gitolite"
-SRC_URI="https://milki.github.com/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/sitaramc/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
