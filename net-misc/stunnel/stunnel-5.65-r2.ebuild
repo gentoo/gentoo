@@ -21,7 +21,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="ipv6 selinux stunnel3 tcpd"
+IUSE="selinux stunnel3 tcpd"
 
 DEPEND="
 	dev-libs/openssl:0=
@@ -51,7 +51,6 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--libdir="${EPREFIX}/usr/$(get_libdir)"
-		$(use_enable ipv6)
 		$(use_enable tcpd libwrap)
 		--with-ssl="${EPREFIX}"/usr
 		--disable-fips
