@@ -19,7 +19,7 @@ S="${WORKDIR}"/${PN}-$(ver_cut 1-2)
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="ipv6 +ssl gnutls +mta"
+IUSE="+ssl gnutls +mta"
 REQUIRED_USE="gnutls? ( ssl )"
 
 DEPEND="
@@ -88,7 +88,7 @@ src_configure() {
 		--sysconfdir="${EPREFIX}"/etc/ssmtp
 		$(use_enable ssl)
 		$(use_with gnutls)
-		$(use_enable ipv6 inet6)
+		--enable-inet6
 		--enable-md5auth
 	)
 
