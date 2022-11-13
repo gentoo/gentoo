@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}
 	sys-devel/flex"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}/${P}"-fix-build-for-clang16.patch )
+
 S="${WORKDIR}"/${MY_P}
 
 src_configure() {
