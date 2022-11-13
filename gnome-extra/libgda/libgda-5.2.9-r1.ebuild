@@ -4,7 +4,7 @@
 EAPI=8
 GNOME2_EAUTORECONF="yes"
 
-inherit db-use flag-o-matic gnome2 java-pkg-opt-2 vala
+inherit db-use gnome2 java-pkg-opt-2 vala
 
 DESCRIPTION="GNOME database access library"
 HOMEPAGE="https://www.gnome-db.org/"
@@ -78,8 +78,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	use berkdb && append-cppflags "-I$(db_includedir)"
-
 	# They need python2
 	sed -e '/SUBDIRS =/ s/trml2html//' \
 		-e '/SUBDIRS =/ s/trml2pdf//' \
@@ -114,6 +112,15 @@ src_prepare() {
 }
 
 src_configure() {
+	local bdbroot bdbinc bdblib
+
+	if use berkdb; then
+		bdbinc=$(db_includedir)
+		bdbroot=${bdbinc%/include/*}
+		bdbinc=${bdbinc#${bdbroot}/}
+		bdblib=$(get_libdir)
+	fi
+
 	use vala && vala_setup
 
 	# Upstream broken configure handling for UI library introspection and vala bindings if passing a choice with use_enable - https://gitlab.gnome.org/GNOME/libgda/issues/158
@@ -123,7 +130,9 @@ src_configure() {
 		--disable-default-binary \
 		--disable-static \
 		--enable-system-sqlite \
-		$(use_with berkdb bdb /usr) \
+		$(use_with berkdb bdb "${bdbroot}") \
+		$(use_with berkdb bdb-includedir-name "${bdbinc}") \
+		$(use_with berkdb bdb-libdir-name "${bdblib}") \
 		$(use_with canvas goocanvas) \
 		$(use_enable debug) \
 		$(use_with firebird firebird /usr) \
