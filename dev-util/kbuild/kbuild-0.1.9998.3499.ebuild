@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 MY_P="${P}-src"
 DESCRIPTION="A makefile framework for writing simple makefiles for complex tasks"
-HOMEPAGE="http://svn.netlabs.org/kbuild/wiki"
+HOMEPAGE="https://trac.netlabs.org/kbuild/wiki"
 #SRC_URI="ftp://ftp.netlabs.org/pub/${PN}/${MY_P}.tar.gz"
 SRC_URI="https://dev.gentoo.org/~polynomial-c/${MY_P}.tar.xz"
 
@@ -16,20 +16,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-# We cannot depend on virtual/yacc until bug #734354 has been fixed
-DEPEND="
+BDEPEND="
 	sys-apps/texinfo
 	sys-devel/flex
 	sys-devel/gettext
 	virtual/pkgconfig
-	|| (
-		dev-util/byacc
-		dev-util/yacc
-		<sys-devel/bison-3.7
-	)
+	virtual/yacc
 "
-RDEPEND=""
-BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.1.9998.3407-unknown_configure_opt.patch"
@@ -40,6 +33,9 @@ PATCHES=(
 
 	# Please check on version bumps if this can be removed
 	"${FILESDIR}/${PN}-0.1.9998.3499-kash-no_separate_parser_allocator.patch"
+
+	"${FILESDIR}/${PN}-0.1.9998.3572-fix-bison.patch"
+	"${FILESDIR}/${PN}-0.1.9998.3572-fix-lto.patch"
 )
 
 pkg_setup() {
@@ -60,31 +56,14 @@ src_prepare() {
 	eautoreconf
 
 	sed -e "s@_LDFLAGS\.$(tc-arch)*.*=@& ${LDFLAGS}@g" \
+		-e "s@_CFLAGS\.$(tc-arch)*.*=@& ${CFLAGS}@g" \
+		-e "s@_CXXFLAGS\.$(tc-arch)*.*=@& ${CXXFLAGS}@g" \
 		-i "${S}"/Config.kmk || die #332225
 	tc-export CC PKG_CONFIG RANLIB #AR does not work here
 }
 
 src_compile() {
-	if [[ -z ${YACC} ]] ; then
-		# If the user hasn't picked one, let's prefer byacc > yacc > old bison for now.
-		# See bug #734354 - bison doesn't work here.
-		# We can remove this once Bison works again!
-		if has_version -b "dev-util/byacc" ; then
-			export YACC=byacc
-		elif has_version -b "dev-util/yacc" ; then
-			export YACC=yacc
-		elif has_version -b "<sys-devel/bison-3.7" ; then
-			export YACC=bison
-		else
-			die "This case shouldn't be possible; no suitable YACC impl installed."
-		fi
-
-		einfo "Chosen YACC=${YACC} for build..."
-	else
-		einfo "Chosen user-provided YACC=${YACC} for build..."
-	fi
-
-	kBuild/env.sh --full emake -f bootstrap.gmk AUTORECONF=true AR="$(tc-getAR)" YACC="${YACC}" \
+	kBuild/env.sh --full emake -f bootstrap.gmk AUTORECONF=true AR="$(tc-getAR)" \
 		|| die "bootstrap failed"
 }
 
