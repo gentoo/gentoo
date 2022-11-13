@@ -3,6 +3,9 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
-			<name>William Hubbs</name>
-				</maintainer>
-					</pkgmetadata>
+		<name>William Hubbs</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">derailed/k9s</remote-id>
+	</upstream>
+</pkgmetadata>

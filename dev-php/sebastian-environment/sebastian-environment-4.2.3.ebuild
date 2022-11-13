@@ -3,7 +3,7 @@
 
 EAPI=7
 
-MY_PN="${PN/sebastian-//}"
+MY_PN="${PN/sebastian-/}"
 
 DESCRIPTION="Helps writing PHP code that has runtime-specific execution paths"
 HOMEPAGE="https://phpunit.de"

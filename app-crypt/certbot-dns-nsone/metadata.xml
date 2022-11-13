@@ -5,8 +5,9 @@
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
 	<upstream>
 		<remote-id type="pypi">certbot-dns-nsone</remote-id>
+		<remote-id type="github">certbot/certbot</remote-id>
 	</upstream>
 </pkgmetadata>

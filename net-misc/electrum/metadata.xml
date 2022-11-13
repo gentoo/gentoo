@@ -13,9 +13,13 @@
 		<email>luke-jr+gentoobugs@utopios.org</email>
 		<name>Luke Dashjr</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
 	<use>
 		<flag name="cli">Enables the CLI interface</flag>
-		<flag name="qrcode">Enable QR code scanning with <pkg>media-gfx/zbar</pkg></flag>
+		<flag name="qrcode">Enable QR code scanning with <pkg>media-gfx/zbar</pkg>
+		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">spesmilo/electrum</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -8,4 +8,7 @@
 		functionality for managing emails.
 	</longdescription>
 	<!-- maintainer-needed -->
-	</pkgmetadata>
+	<upstream>
+		<remote-id type="github">LukeSmithxyz/mutt-wizard</remote-id>
+	</upstream>
+</pkgmetadata>

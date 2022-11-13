@@ -5,4 +5,7 @@
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">jfrog/jfrog-cli</remote-id>
+	</upstream>
 </pkgmetadata>

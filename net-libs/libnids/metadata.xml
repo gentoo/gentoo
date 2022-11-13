@@ -8,9 +8,11 @@
 	<longdescription>emulates the IP stack of Linux 2.0.x and offers IP defragmentation, TCP stream assembly and TCP port scan detection.</longdescription>
 	<use>
 		<flag name="glib">Use <pkg>dev-libs/glib</pkg> for multiprocessing support</flag>
-		<flag name="libnet">Include code requiring <pkg>net-libs/libnet</pkg></flag>
+		<flag name="libnet">Include code requiring <pkg>net-libs/libnet</pkg>
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">libnids</remote-id>
+		<remote-id type="github">MITRECND/libnids</remote-id>
 	</upstream>
 </pkgmetadata>

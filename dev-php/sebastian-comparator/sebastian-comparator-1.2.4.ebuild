@@ -3,7 +3,7 @@
 
 EAPI=6
 
-MY_PN="${PN/sebastian-//}"
+MY_PN="${PN/sebastian-/}"
 
 DESCRIPTION="Compare PHP values for equality"
 HOMEPAGE="https://phpunit.de"

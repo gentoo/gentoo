@@ -3,7 +3,7 @@
 
 EAPI=7
 
-MY_PN="${PN/doctrine-//}"
+MY_PN="${PN/doctrine-/}"
 
 DESCRIPTION="Utility to instantiate objects in PHP without invoking their constructors"
 HOMEPAGE="https://github.com/doctrine/instantiator"

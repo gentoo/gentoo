@@ -10,7 +10,11 @@
 		<name>Marek Szuba</name>
 	</maintainer>
 	<use>
-		<flag name="dcron">Adjust cronjobs to work properly under <pkg>sys-process/dcron</pkg></flag>
+		<flag name="dcron">Adjust cronjobs to work properly under <pkg>sys-process/dcron</pkg>
+		</flag>
 		<flag name="lto">Build using Link Time Optimizations (LTO)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">sysstat/sysstat</remote-id>
+	</upstream>
 </pkgmetadata>

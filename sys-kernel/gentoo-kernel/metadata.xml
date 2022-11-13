@@ -9,4 +9,7 @@
 		<flag name="hardened">Use selection of hardening options recommended by Kernel Self Protection Project</flag>
 		<flag name="initramfs">Build initramfs along with the kernel.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">projg2/gentoo-kernel-config</remote-id>
+	</upstream>
 </pkgmetadata>

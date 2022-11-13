@@ -3,7 +3,7 @@
 
 EAPI=7
 
-MY_PN="${PN/sebastian-//}"
+MY_PN="${PN/sebastian-/}"
 
 DESCRIPTION="Snapshotting of global state"
 HOMEPAGE="https://phpunit.de"

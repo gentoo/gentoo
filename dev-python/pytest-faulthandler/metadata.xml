@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pytest-faulthandler</remote-id>
+		<remote-id type="github">pytest-dev/pytest-faulthandler</remote-id>
 	</upstream>
-	<stabilize-allarches/>
+	<stabilize-allarches />
 </pkgmetadata>

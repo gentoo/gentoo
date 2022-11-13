@@ -16,4 +16,7 @@
 		compressed and uncompressed form, and the ability to query the table of
 		content's rich meta-data.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">apple-oss-distributions/xar</remote-id>
+	</upstream>
 </pkgmetadata>

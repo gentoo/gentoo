@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="github">basket-notepads/basket</remote-id>
 	</upstream>
 </pkgmetadata>

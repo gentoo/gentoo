@@ -5,9 +5,12 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
 	<use>
 		<flag name="otf">Install the OpenType version of the font</flag>
 		<flag name="ttf">Install the TrueType version of the font</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">mozilla/Fira</remote-id>
+	</upstream>
 </pkgmetadata>

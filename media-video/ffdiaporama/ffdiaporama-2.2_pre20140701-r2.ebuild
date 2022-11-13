@@ -7,16 +7,18 @@ MY_PV=${PV%_pre20140701}
 BIN_PV=${MY_PV}.devel.2014.0701
 RSC_PV=${MY_PV}.devel.2014.0503
 TMT_PV=1.0.2014.0125
+MEDIA_VER="7a17ce69cb5277c0b7f35ac782b9553ca9f2760a"
+
 inherit qmake-utils xdg-utils
 
 DESCRIPTION="Movie creator from photos and video clips"
 HOMEPAGE="https://ffdiaporama.tuxfamily.org"
 SRC_URI="https://download.tuxfamily.org/${PN}/Packages/Devel/${PN}_bin_${BIN_PV}.tar.gz
 	https://download.tuxfamily.org/${PN}/Packages/Devel/${PN}_rsc_${RSC_PV}.tar.gz
-	https://raw.githubusercontent.com/laurantino/gentoo-dist/master/ffdiaporama-2.2-libav11.patch
-	https://raw.githubusercontent.com/laurantino/gentoo-dist/master/ffdiaporama-2.2-ffmpeg-3.0.patch
-	https://raw.githubusercontent.com/laurantino/gentoo-dist/master/ffdiaporama-2.2-ffmpeg-4.0.patch
-	https://raw.githubusercontent.com/laurantino/gentoo-dist/master/ffdiaporama-2.2-ffmpeg-4.4.patch
+	https://raw.githubusercontent.com/laurantino/gentoo-dist/${MEDIA_VER}/ffdiaporama-2.2-libav11.patch
+	https://raw.githubusercontent.com/laurantino/gentoo-dist/${MEDIA_VER}/ffdiaporama-2.2-ffmpeg-3.0.patch
+	https://raw.githubusercontent.com/laurantino/gentoo-dist/${MEDIA_VER}/ffdiaporama-2.2-ffmpeg-4.0.patch
+	https://raw.githubusercontent.com/laurantino/gentoo-dist/${MEDIA_VER}/ffdiaporama-2.2-ffmpeg-4.4.patch
 	texturemate? ( https://download.tuxfamily.org/${PN}/Packages/Stable/${PN}_texturemate_${TMT_PV}.tar.gz )"
 
 LICENSE="GPL-2 texturemate? ( CC-BY-3.0 )"

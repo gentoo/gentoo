@@ -14,5 +14,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">dustrac</remote-id>
+		<remote-id type="github">juzzlin/DustRacing2D</remote-id>
 	</upstream>
 </pkgmetadata>

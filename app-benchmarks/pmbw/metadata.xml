@@ -9,4 +9,7 @@
 		<email>kaichun.ning@gmail.com</email>
 		<name>Kai-Chun Ning</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">bingmann/pmbw</remote-id>
+	</upstream>
 </pkgmetadata>

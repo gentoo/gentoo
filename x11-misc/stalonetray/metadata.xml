@@ -14,5 +14,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">stalonetray</remote-id>
+		<remote-id type="github">kolbusa/stalonetray</remote-id>
 	</upstream>
 </pkgmetadata>

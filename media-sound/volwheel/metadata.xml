@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="google-code">olwtools</remote-id>
+		<remote-id type="github">oliwer/volwheel</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -14,5 +14,6 @@
 	due to the simplicity of JSON itself. So I wrote the JSON.simple package.</longdescription>
 	<upstream>
 		<remote-id type="google-code">json-simple</remote-id>
+		<remote-id type="github">fangyidong/json-simple</remote-id>
 	</upstream>
 </pkgmetadata>

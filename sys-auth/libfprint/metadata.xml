@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<bugs-to>https://bugs.freedesktop.org/enter_bug.cgi?product=libfprint</bugs-to>
+		<remote-id type="github">freedesktop/libfprint</remote-id>
 	</upstream>
 </pkgmetadata>

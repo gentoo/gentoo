@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">mad</remote-id>
+		<remote-id type="github">tenacityteam/libid3tag</remote-id>
 	</upstream>
 </pkgmetadata>

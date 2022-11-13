@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="rubygems">json_schema</remote-id>
+		<remote-id type="github">brandur/json_schema</remote-id>
 	</upstream>
 </pkgmetadata>

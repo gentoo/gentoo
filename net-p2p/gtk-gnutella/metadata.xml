@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">gtk-gnutella</remote-id>
+		<remote-id type="github">gtk-gnutella/gtk-gnutella</remote-id>
 	</upstream>
 </pkgmetadata>

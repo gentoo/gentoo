@@ -5,4 +5,7 @@
 		<email>php-bugs@gentoo.org</email>
 		<name>PHP Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">swoole/ext-async</remote-id>
+	</upstream>
 </pkgmetadata>

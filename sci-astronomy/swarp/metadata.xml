@@ -6,6 +6,10 @@
 		<name>Gentoo Astronomy Project</name>
 	</maintainer>
 	<use>
-		<flag name="cfitsio">Link with <pkg>sci-libs/cfitsio</pkg></flag>
+		<flag name="cfitsio">Link with <pkg>sci-libs/cfitsio</pkg>
+		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">astromatic/swarp</remote-id>
+	</upstream>
 </pkgmetadata>

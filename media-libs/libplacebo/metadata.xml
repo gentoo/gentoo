@@ -7,11 +7,13 @@
 	</maintainer>
 	<use>
 		<flag name="glslang">Use <pkg>dev-util/glslang</pkg> to compile GLSL</flag>
-		<flag name="lcms">Add support for color management via <pkg>media-libs/lcms</pkg></flag>
+		<flag name="lcms">Add support for color management via <pkg>media-libs/lcms</pkg>
+		</flag>
 		<flag name="shaderc">Use <pkg>media-libs/shaderc</pkg> to compile GLSL</flag>
 		<flag name="vulkan">Add support for the vulkan graphics API</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://code.videolan.org/videolan/libplacebo/issues</bugs-to>
+		<remote-id type="github">Dav1dde/glad</remote-id>
 	</upstream>
 </pkgmetadata>

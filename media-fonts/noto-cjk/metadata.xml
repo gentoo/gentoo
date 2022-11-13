@@ -5,5 +5,8 @@
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
+	<upstream>
+		<remote-id type="github">googlei18n/noto-cjk</remote-id>
+	</upstream>
 </pkgmetadata>

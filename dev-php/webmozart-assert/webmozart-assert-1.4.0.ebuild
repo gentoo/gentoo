@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-MY_PN="${PN/webmozart-//}"
+MY_PN="${PN/webmozart-/}"
 
 DESCRIPTION="Assertions to validate method input/output with nice error messages"
 HOMEPAGE="https://github.com/webmozart/assert"

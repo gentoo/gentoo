@@ -14,4 +14,7 @@
 		GWT client-side code. Gin is built on top of Guice and uses (a
 		subset of) Guice's binding language.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">gwtplus/google-gin</remote-id>
+	</upstream>
 </pkgmetadata>

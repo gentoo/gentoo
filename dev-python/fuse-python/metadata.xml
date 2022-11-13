@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="sourceforge">fuse</remote-id>
 		<remote-id type="pypi">fuse-python</remote-id>
+		<remote-id type="github">libfuse/python-fuse</remote-id>
 	</upstream>
 </pkgmetadata>

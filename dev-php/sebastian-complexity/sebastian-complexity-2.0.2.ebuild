@@ -3,7 +3,7 @@
 
 EAPI=8
 
-MY_PN="${PN/sebastian-//}"
+MY_PN="${PN/sebastian-/}"
 
 DESCRIPTION="Library for calculating the complexity of PHP code units"
 HOMEPAGE="https://phpunit.de"

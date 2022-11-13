@@ -6,4 +6,7 @@
 		<email>vapier@gentoo.org</email>
 		<description>Primary maintainer</description>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">vapier/nosig</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>netmon@gentoo.org</email>
-</maintainer>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">nemesis</remote-id>
+		<remote-id type="github">libnet/nemesis</remote-id>
 	</upstream>
 </pkgmetadata>

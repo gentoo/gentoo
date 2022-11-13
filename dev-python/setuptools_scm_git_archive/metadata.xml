@@ -5,8 +5,9 @@
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
 	<upstream>
 		<remote-id type="pypi">setuptools-scm-git-archive</remote-id>
+		<remote-id type="github">Changaco/setuptools_scm_git_archive</remote-id>
 	</upstream>
 </pkgmetadata>

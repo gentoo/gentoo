@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">xmlsec</remote-id>
+		<remote-id type="github">mehcode/python-xmlsec</remote-id>
 	</upstream>
 </pkgmetadata>

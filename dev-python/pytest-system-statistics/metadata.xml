@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pytest-system-statistics</remote-id>
+		<remote-id type="github">saltstack/pytest-system-statistics</remote-id>
 	</upstream>
 </pkgmetadata>

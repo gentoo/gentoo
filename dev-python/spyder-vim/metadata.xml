@@ -5,5 +5,8 @@
 		<email>andrewammerlaan@gentoo.org</email>
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
+	<upstream>
+		<remote-id type="github">spyder-ide/spyder-vim</remote-id>
+	</upstream>
 </pkgmetadata>

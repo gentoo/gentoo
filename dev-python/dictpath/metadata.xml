@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">dictpath</remote-id>
+		<remote-id type="github">p1c2u/pathable</remote-id>
 	</upstream>
 </pkgmetadata>

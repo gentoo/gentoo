@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">pytest-skip-markers</remote-id>
+		<remote-id type="github">saltstack/pytest-skip-markers</remote-id>
 	</upstream>
 </pkgmetadata>

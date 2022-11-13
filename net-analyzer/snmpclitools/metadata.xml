@@ -9,5 +9,8 @@
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<stabilize-allarches />
+	<upstream>
+		<remote-id type="github">etingof/snmpclitools</remote-id>
+	</upstream>
 </pkgmetadata>

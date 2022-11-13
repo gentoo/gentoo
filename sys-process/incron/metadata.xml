@@ -5,4 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">ar-/incron</remote-id>
+	</upstream>
 </pkgmetadata>

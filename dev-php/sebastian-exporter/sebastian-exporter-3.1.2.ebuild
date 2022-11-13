@@ -3,7 +3,7 @@
 
 EAPI=7
 
-MY_PN="${PN/sebastian-//}"
+MY_PN="${PN/sebastian-/}"
 
 DESCRIPTION="Export PHP variables for visualization"
 HOMEPAGE="https://phpunit.de"

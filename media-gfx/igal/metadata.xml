@@ -7,4 +7,7 @@
 		picture show (static HTML slides, thumbnails and index page) with just
 		one command line invocation in a Linux or Unix environment.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">solbu/igal2</remote-id>
+	</upstream>
 </pkgmetadata>

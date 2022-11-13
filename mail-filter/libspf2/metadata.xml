@@ -14,4 +14,7 @@
 		forgery, commonly used by spammers, scammers and email
 		viruses/worms.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">shevek/libspf2</remote-id>
+	</upstream>
 </pkgmetadata>
