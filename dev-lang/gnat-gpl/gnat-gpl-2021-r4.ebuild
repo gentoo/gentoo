@@ -80,15 +80,18 @@ src_prepare() {
 	fi
 
 	if use bootstrap; then
-		rm "${WORKDIR}"/${BTSTRP}/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/ld \
+		local bundledchost=""
+		use amd64 && local bundledchost="x86_64"
+		use x86 && local bundledchost="i686"
+		rm "${WORKDIR}"/${BTSTRP}/libexec/gcc/${bundledchost}-pc-linux-gnu/4.7.4/ld \
 			|| die
 		ln -s /usr/bin/$CHOST-ld \
-			"${WORKDIR}"/${BTSTRP}/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/ld \
+			"${WORKDIR}"/${BTSTRP}/libexec/gcc/${bundledchost}-pc-linux-gnu/4.7.4/ld \
 			|| die
-		rm "${WORKDIR}"/${BTSTRP}/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/as \
+		rm "${WORKDIR}"/${BTSTRP}/libexec/gcc/${bundledchost}-pc-linux-gnu/4.7.4/as \
 			|| die
 		ln -s /usr/bin/$CHOST-as \
-			"${WORKDIR}"/${BTSTRP}/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/as \
+			"${WORKDIR}"/${BTSTRP}/libexec/gcc/${bundledchost}-pc-linux-gnu/4.7.4/as \
 			|| die
 	fi
 
