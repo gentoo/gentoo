@@ -1,32 +1,32 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
-MY_PATCHSET=4
+PATCHSET=4
 WANT_AUTOMAKE=none
+
 inherit autotools
 
 DESCRIPTION="Extremely simple MTA to get mail off the system to a Mailhub"
 HOMEPAGE="ftp://ftp.debian.org/debian/pool/main/s/ssmtp/"
 SRC_URI="
-	mirror://debian/pool/main/s/ssmtp/${PN}_$(ver_cut 1-2).orig.tar.bz2
-	mirror://debian/pool/main/s/ssmtp/${PN}_${PV/_p/-}.debian.tar.xz
-	https://dev.gentoo.org/~pinkbyte/distfiles/patches/${PN}-$(ver_cut 1-2)-patches-${MY_PATCHSET}.tar.xz
+	mirror://debian/pool/main/s/ssmtp/${P/-/_}.orig.tar.bz2
+	https://dev.gentoo.org/~pinkbyte/distfiles/patches/${P}-patches-${PATCHSET}.tar.xz
 "
-S="${WORKDIR}"/${PN}-$(ver_cut 1-2)
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="ipv6 +ssl gnutls +mta"
-REQUIRED_USE="gnutls? ( ssl )"
 
 DEPEND="
 	!prefix? ( acct-group/ssmtp )
 	ssl? (
 		gnutls? ( net-libs/gnutls[openssl] )
-		!gnutls? ( dev-libs/openssl:= )
+		!gnutls? (
+			dev-libs/openssl:0=
+		)
 	)
 "
 RDEPEND="
@@ -47,34 +47,24 @@ RDEPEND="
 	)
 "
 
+REQUIRED_USE="gnutls? ( ssl )"
+
 src_prepare() {
-	drop_debian_patch() {
-		rm "${WORKDIR}"/debian/patches/${1} || die
-		sed -i -e "/^${1}/d" "${WORKDIR}"/debian/patches/series || die
-	}
-
-	drop_gentoo_patch() {
-		rm "${WORKDIR}"/patches/${1} || die
-	}
-
-	# Forces gnutls with no optionality (drops openssl support)
-	drop_debian_patch 01-374327-use-gnutls.patch
-
-	# Included in Debian patchset
-	# TODO: Drop these with new patch tarball
-	drop_gentoo_patch 0090_all_debian-remote-addr.patch
-	drop_gentoo_patch 0100_all_ldflags.patch
-	drop_gentoo_patch 0130_all_garbage-writes.patch
-
-	PATCHES+=(
-		# Debian patchset
-		$(awk '{print $1}' "${WORKDIR}"/debian/patches/series | sed -e "s:^:${WORKDIR}/debian/patches/:")
-
-		# Gentoo patchset
-		"${WORKDIR}"/patches
-	)
-
 	default
+
+	eapply "${WORKDIR}"/patches/0010_all_maxsysuid.patch
+	eapply "${WORKDIR}"/patches/0020_all_from-format-fix.patch
+	eapply "${WORKDIR}"/patches/0030_all_authpass.patch
+	eapply "${WORKDIR}"/patches/0040_all_darwin7.patch
+	eapply "${WORKDIR}"/patches/0050_all_strndup.patch
+	eapply "${WORKDIR}"/patches/0060_all_opessl_crypto.patch
+	eapply "${WORKDIR}"/patches/0070_all_solaris-basename.patch
+	eapply "${WORKDIR}"/patches/0080_all_gnutls.patch
+	eapply "${WORKDIR}"/patches/0090_all_debian-remote-addr.patch
+	eapply "${WORKDIR}"/patches/0100_all_ldflags.patch
+	eapply "${WORKDIR}"/patches/0110_all_stdint.patch
+	eapply "${WORKDIR}"/patches/0120_all_aliases.patch
+	eapply -p0 "${WORKDIR}"/patches/0130_all_garbage-writes.patch
 
 	# let's start by not using configure.in anymore as future autoconf
 	# versions will not support it.
@@ -86,8 +76,7 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--sysconfdir="${EPREFIX}"/etc/ssmtp
-		$(use_enable ssl)
-		$(use_with gnutls)
+		$(use_enable ssl) $(use_with gnutls)
 		$(use_enable ipv6 inet6)
 		--enable-md5auth
 	)
@@ -134,7 +123,6 @@ src_install() {
 
 	if use mta; then
 		dosym ../sbin/ssmtp /usr/lib/sendmail
-		dosym ../sbin/ssmtp /usr/bin/sendmail
 		dosym ssmtp /usr/sbin/sendmail
 		dosym ../sbin/ssmtp /usr/bin/mailq
 		dosym ../sbin/ssmtp /usr/bin/newaliases
