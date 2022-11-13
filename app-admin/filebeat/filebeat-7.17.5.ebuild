@@ -5,10 +5,12 @@ EAPI="8"
 
 inherit go-module
 
+DEPS_VER="bf6090d96df4ce15da8dae4ac337a3358e27f68b"
+
 DESCRIPTION="Lightweight log shipper for Logstash and Elasticsearch"
 HOMEPAGE="https://www.elastic.co/products/beats"
-SRC_URI="https://github.com/elastic/beats/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI+=" https://media.githubusercontent.com/media/hydrapolic/gentoo-dist/master/filebeat/${P}-deps.tar.xz"
+SRC_URI="https://github.com/elastic/beats/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" https://media.githubusercontent.com/media/hydrapolic/gentoo-dist/${DEPS_VER}/filebeat/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD-2 MIT"
 SLOT="0"
