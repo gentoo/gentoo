@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ipv6 selinux stunnel3 tcpd"
 
 DEPEND="
@@ -66,10 +66,6 @@ src_install() {
 	rm -f "${ED}"/etc/stunnel/stunnel.conf-sample \
 		"${ED}"/usr/share/man/man8/stunnel.{fr,pl}.8
 	use stunnel3 || rm -f "${ED}"/usr/bin/stunnel3
-
-	# The binary was moved to /usr/bin with 4.21,
-	# symlink for backwards compatibility
-	dosym ../bin/stunnel /usr/sbin/stunnel
 
 	dodoc AUTHORS.md BUGS.md CREDITS.md PORTS.md README.md TODO.md
 	docinto html
