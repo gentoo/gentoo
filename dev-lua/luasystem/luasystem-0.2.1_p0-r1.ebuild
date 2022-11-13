@@ -4,13 +4,13 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-MY_PV="${PV/_p/-}"
+MY_PV="${PV%%_p*}"
 
 inherit lua toolchain-funcs
 
 DESCRIPTION="Platform independent system calls for Lua"
 HOMEPAGE="https://github.com/o-lim/luasystem/"
-SRC_URI="https://github.com/o-lim/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/o-lim/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="MIT"
