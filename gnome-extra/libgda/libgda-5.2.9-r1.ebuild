@@ -109,6 +109,9 @@ src_prepare() {
 			die "mv ${f} failed"
 	done
 
+	# Fix building without introspection.
+	eapply "${FILESDIR}/${PN}-5.2.9-no-introspection.patch"
+
 	gnome2_src_prepare
 	java-pkg-opt-2_src_prepare
 }
