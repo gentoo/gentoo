@@ -100,7 +100,7 @@ CRATES="
 	xdg-2.4.1
 "
 
-inherit toolchain-funcs cargo
+inherit flag-o-matic toolchain-funcs cargo
 
 DESCRIPTION="An RSS/Atom feed reader for text terminals"
 HOMEPAGE="https://newsboat.org/ https://github.com/newsboat/newsboat"
@@ -138,6 +138,7 @@ PATCHES=(
 )
 
 src_configure() {
+	filter-lto  # bug #877657
 	./config.sh || die
 }
 
