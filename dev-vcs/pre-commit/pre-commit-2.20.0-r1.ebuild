@@ -35,6 +35,7 @@ BDEPEND="test? (
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.20.0-no_toml.patch
+	"${FILESDIR}"/${PN}-2.20.0-tests_git_file_transport.patch
 )
 
 DOCS=( CHANGELOG.md CONTRIBUTING.md README.md )
