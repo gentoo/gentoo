@@ -8,14 +8,16 @@ PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Fast NumPy array functions written in C"
 HOMEPAGE="
 	https://github.com/pydata/bottleneck/
 	https://pypi.org/project/Bottleneck/
 "
 SRC_URI="
-	https://github.com/pydata/bottleneck/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+	https://github.com/pydata/bottleneck/archive/refs/tags/v${PV}.tar.gz
+		-> ${P}.gh@${GH_TS}.tar.gz
 "
 
 LICENSE="BSD"

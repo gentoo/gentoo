@@ -5,9 +5,11 @@ EAPI=6
 
 inherit vcs-snapshot
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Xorg Driver for Multitouch Trackpads"
 HOMEPAGE="https://github.com/p2rkw/xf86-input-mtrack"
-SRC_URI="https://github.com/p2rkw/xf86-input-mtrack/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/p2rkw/xf86-input-mtrack/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 IUSE="debug"
 
 LICENSE="GPL-2"

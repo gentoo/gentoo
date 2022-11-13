@@ -7,13 +7,15 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit bash-completion-r1 distutils-r1
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Manage a stack of patches using GIT as a backend"
 HOMEPAGE="https://stacked-git.github.io"
 UPSTREAM_VER=
 [[ -n ${UPSTREAM_VER} ]] && \
 	UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz"
 
-SRC_URI="https://github.com/stacked-git/stgit/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/stacked-git/stgit/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz
 	${UPSTREAM_PATCHSET_URI}"
 
 LICENSE="GPL-2"

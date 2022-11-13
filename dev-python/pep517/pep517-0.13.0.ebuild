@@ -8,6 +8,8 @@ PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Wrappers to build Python packages using PEP 517 hooks"
 HOMEPAGE="
 	https://pypi.org/project/pep517/
@@ -15,8 +17,8 @@ HOMEPAGE="
 	https://pep517.readthedocs.io/
 "
 SRC_URI="
-	https://github.com/pypa/pep517/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+	https://github.com/pypa/pep517/archive/refs/tags/v${PV}.tar.gz
+		-> ${P}.gh@${GH_TS}.tar.gz
 "
 
 LICENSE="MIT"

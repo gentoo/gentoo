@@ -8,9 +8,11 @@ inherit autotools pam python-single-r1 systemd
 
 MY_PV=$(ver_rs 1- "_")
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Highly configurable free RADIUS server"
 HOMEPAGE="https://freeradius.org/"
-SRC_URI="https://github.com/FreeRADIUS/freeradius-server/archive/release_${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/FreeRADIUS/freeradius-server/archive/release_${MY_PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 S="${WORKDIR}/freeradius-server-release_${MY_PV}"
 
 LICENSE="GPL-2"

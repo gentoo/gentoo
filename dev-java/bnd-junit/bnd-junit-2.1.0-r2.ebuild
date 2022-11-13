@@ -7,9 +7,12 @@ JAVA_PKG_IUSE="test"
 
 inherit java-pkg-2 java-ant-2
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Junit plugin for bndlib, a swiss army knife for OSGi"
 HOMEPAGE="http://www.aqute.biz/Bnd/Bnd"
-SRC_URI="https://github.com/bndtools/bnd/archive/${PV}.REL.tar.gz -> bndlib-${PV}.tar.gz"
+SRC_URI="https://github.com/bndtools/bnd/archive/refs/tags/${PV}.REL.tar.gz -> bndlib-${PV}.gh@${GH_TS}.tar.gz"
+# Note: same URI & distfile as dev-java/bndlib
 
 LICENSE="Apache-2.0"
 SLOT="0"

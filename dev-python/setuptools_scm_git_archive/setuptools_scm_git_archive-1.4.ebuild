@@ -8,14 +8,16 @@ PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="A setuptools_scm plugin for git archives"
 HOMEPAGE="
 	https://github.com/Changaco/setuptools_scm_git_archive/
 	https://pypi.org/project/setuptools-scm-git-archive/
 "
 SRC_URI="
-	https://github.com/Changaco/setuptools_scm_git_archive/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+	https://github.com/Changaco/setuptools_scm_git_archive/archive/refs/tags/${PV}.tar.gz
+		-> ${P}.gh@${GH_TS}.tar.gz
 "
 
 LICENSE="MIT"

@@ -5,9 +5,11 @@ EAPI=7
 
 inherit autotools
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Daemon to disable trackpads while typing"
 HOMEPAGE="https://github.com/BlueDragonX/dispad"
-SRC_URI="https://github.com/BlueDragonX/dispad/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/BlueDragonX/dispad/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 S="${WORKDIR}/BlueDragonX-dispad-dbb9be3"
 
 LICENSE="GPL-2"

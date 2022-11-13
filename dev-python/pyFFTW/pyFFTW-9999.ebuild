@@ -6,6 +6,8 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="A pythonic python wrapper around FFTW"
 HOMEPAGE="https://github.com/pyFFTW/pyFFTW"
 
@@ -16,7 +18,7 @@ if [[ "${PV}" = "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/pyFFTW/pyFFTW.git"
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/pyFFTW/pyFFTW/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/pyFFTW/pyFFTW/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 fi
 
 DEPEND="

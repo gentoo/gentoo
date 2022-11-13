@@ -5,9 +5,11 @@ EAPI=8
 
 inherit toolchain-funcs
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="An efficient compressor with very fast decompression"
-HOMEPAGE="https://github.com/inikep/lz5"
-SRC_URI="https://github.com/inikep/lz5/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https:/a/github.com/inikep/lz5"
+SRC_URI="https://github.com/inikep/lz5/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0/2"

@@ -6,14 +6,16 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Logical unification in Python"
 HOMEPAGE="
 	https://pypi.org/project/logical-unification/
 	https://github.com/pythological/unification/
 "
 SRC_URI="
-	https://github.com/pythological/unification/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+	https://github.com/pythological/unification/archive/refs/tags/v${PV}.tar.gz
+		-> ${P}.gh@${GH_TS}.tar.gz
 "
 S="${WORKDIR}/unification-${PV}"
 

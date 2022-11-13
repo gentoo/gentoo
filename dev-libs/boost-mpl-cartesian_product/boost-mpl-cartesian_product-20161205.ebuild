@@ -6,9 +6,11 @@ EAPI=6
 inherit vcs-snapshot toolchain-funcs
 
 COMMIT="aeb0266b3a89f32c390dff51cb73a454d5d7a745"
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="an extension to the Boost.MPL library"
 HOMEPAGE="https://github.com/quinoacomputing/BoostMPLCartesianProduct"
-SRC_URI="https://github.com/quinoacomputing/BoostMPLCartesianProduct/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/quinoacomputing/BoostMPLCartesianProduct/archive/${COMMIT}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="Boost-1.0"
 SLOT="0"

@@ -6,6 +6,8 @@ EAPI=7
 CMAKE_BUILD_TYPE=RelWithDebInfo
 inherit cmake vcs-snapshot
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="A small, fast, and high performance math library for robot applications"
 HOMEPAGE="https://github.com/ignitionrobotics/ign-math"
 SRC_URI="https://github.com/ignitionrobotics/ign-math/archive/${PN}6_${PV}.tar.gz"

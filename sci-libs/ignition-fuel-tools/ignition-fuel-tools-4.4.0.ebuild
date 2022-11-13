@@ -8,9 +8,11 @@ inherit cmake
 
 IGN_MAJOR=4
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Classes and tools for interacting with Ignition Fuel"
 HOMEPAGE="https://github.com/ignitionrobotics/ign-fuel-tools/"
-SRC_URI="https://github.com/ignitionrobotics/ign-fuel-tools/archive/${PN}${IGN_MAJOR}_${PV}.tar.gz"
+SRC_URI="https://github.com/ignitionrobotics/ign-fuel-tools/archive/${PN}${IGN_MAJOR}_${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="${IGN_MAJOR}"

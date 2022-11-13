@@ -11,9 +11,11 @@ MAVEN_ID="jakarta.activation:jakarta.activation-api:2.1.0"
 
 inherit java-pkg-2 java-pkg-simple
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Jakarta Activation API jar"
 HOMEPAGE="https://eclipse-ee4j.github.io/jaf/"
-SRC_URI="https://github.com/eclipse-ee4j/jaf/archive/${PV}.tar.gz -> jakarta-activation-${PV}.tar.gz"
+SRC_URI="https://github.com/eclipse-ee4j/jaf/archive/refs/tags/${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="EPL-1.0"
 SLOT="2"

@@ -5,9 +5,11 @@ EAPI=7
 
 inherit cmake-multilib
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Small event-driven (SAX-style) JSON parser"
 HOMEPAGE="https://lloyd.github.com/yajl"
-SRC_URI="https://github.com/lloyd/yajl/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lloyd/yajl/archive/refs/tags/${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 S="${WORKDIR}/lloyd-yajl-66cb08c"
 
 LICENSE="ISC"

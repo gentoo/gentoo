@@ -17,9 +17,11 @@ inherit multilib ruby-fakegem
 
 GITHUB_USER="tarcieri"
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="IO::Buffer is a byte queue which is intended for non-blocking I/O applications"
 HOMEPAGE="https://github.com/tarcieri/iobuffer"
-SRC_URI="https://github.com/${GITHUB_USER}/iobuffer/archive/v${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
+SRC_URI="https://github.com/${GITHUB_USER}/iobuffer/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"

@@ -5,9 +5,11 @@ EAPI=8
 
 inherit cmake
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="xrootd OSS plug-in for interfacing with Ceph storage platform"
 HOMEPAGE="https://xrootd.slac.stanford.edu/"
-SRC_URI="https://github.com/xrootd/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/xrootd/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="LGPL-3+"
 SLOT="0"

@@ -7,9 +7,11 @@ inherit gnome2-utils
 # Useful specially to prevent
 # https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/4684
 # https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3180
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Restore the alphabetical ordering of the app grid"
 HOMEPAGE="https://github.com/stuarthayhurst/alphabetical-grid-extension"
-SRC_URI="https://github.com/stuarthayhurst/alphabetical-grid-extension/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/stuarthayhurst/alphabetical-grid-extension/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

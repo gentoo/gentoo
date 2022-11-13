@@ -14,9 +14,11 @@ else
 	MY_PV=${POVRAY_MAJOR_VER}
 fi
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="The Persistence of Vision Raytracer"
 HOMEPAGE="https://www.povray.org/"
-SRC_URI="https://github.com/POV-Ray/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/POV-Ray/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz
 	https://dev.gentoo.org/~soap/distfiles/${P}_p20160914-fix-c++14.patch.bz2"
 
 LICENSE="AGPL-3"

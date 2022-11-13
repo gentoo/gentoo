@@ -6,9 +6,11 @@ EAPI=7
 inherit cmake vcs-snapshot
 
 REF="8c8918488a4a22924ee04442dc5e5216783d51ff"
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Practical Music Search: an open source ncurses client for mpd, written in C++"
 HOMEPAGE="https://ambientsound.github.io/pms"
-SRC_URI="https://github.com/ambientsound/${PN}/archive/${REF}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ambientsound/${PN}/archive/${REF}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -6,11 +6,13 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="A Python interface to libarchive"
 HOMEPAGE="https://github.com/Changaco/python-libarchive-c/ https://pypi.org/project/libarchive-c/"
 SRC_URI="
 	https://github.com/Changaco/python-libarchive-c/archive/refs/tags/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${P}.gh@${GH_TS}.tar.gz
 "
 S="${WORKDIR}"/python-${P}
 

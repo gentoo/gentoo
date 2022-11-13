@@ -5,9 +5,11 @@ EAPI=8
 
 inherit autotools
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="A lisp installer and launcher for major environment"
 HOMEPAGE="https://github.com/roswell/roswell"
-SRC_URI="https://github.com/roswell/roswell/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/roswell/roswell/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"

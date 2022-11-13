@@ -5,6 +5,8 @@ EAPI=8
 
 inherit cmake toolchain-funcs
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Common bricks library for building distributed machine learning"
 HOMEPAGE="https://github.com/dmlc/dmlc-core"
 
@@ -14,7 +16,7 @@ if [[ ${PV} == *9999* ]] ; then
 else
 	MY_COMMIT="54db57d5d1b2a7b93319053011802888b827a539"
 	inherit vcs-snapshot
-	SRC_URI="https://github.com/dmlc/dmlc-core/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/dmlc/dmlc-core/archive/${MY_COMMIT}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi

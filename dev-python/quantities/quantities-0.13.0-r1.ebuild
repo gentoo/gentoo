@@ -9,11 +9,13 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 MY_P="python-quantities-${PV}"
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Support for physical quantities with units, based on numpy"
 HOMEPAGE="https://github.com/python-quantities/python-quantities"
 SRC_URI="
-	https://github.com/python-quantities/python-quantities/archive/v${PV}.tar.gz
-		-> ${MY_P}.tar.gz"
+	https://github.com/python-quantities/python-quantities/archive/refs/tags/v${PV}.tar.gz
+		-> ${MY_P}.gh@${GH_TS}.tar.gz"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"

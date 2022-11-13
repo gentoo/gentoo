@@ -7,9 +7,11 @@ inherit pam toolchain-funcs
 
 EGIT_COMMIT="3542ef58a2b838cc8294fe82c341fb671c38611b"
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Allows to lock one or all of the sessions of your console display"
 HOMEPAGE="https://github.com/WorMzy/vlock"
-SRC_URI="https://github.com/WorMzy/vlock/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/WorMzy/vlock/archive/${EGIT_COMMIT}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

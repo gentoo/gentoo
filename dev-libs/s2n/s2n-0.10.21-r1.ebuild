@@ -5,9 +5,11 @@ EAPI=7
 
 inherit cmake
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="simple, small, fast and secure C99 implementation of the TLS/SSL protocols"
 HOMEPAGE="https://github.com/awslabs/s2n"
-SRC_URI="https://github.com/awslabs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/awslabs/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

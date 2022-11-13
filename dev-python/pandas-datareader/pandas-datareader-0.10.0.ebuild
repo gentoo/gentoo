@@ -6,9 +6,11 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Pandas DataFrame extraction from a wide range of Internet sources"
 HOMEPAGE="https://github.com/pydata/pandas-datareader"
-SRC_URI="https://github.com/pydata/pandas-datareader/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pydata/pandas-datareader/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

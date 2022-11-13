@@ -7,9 +7,11 @@ EGO_PN="github.com/hyperhq/hyperd"
 
 inherit autotools systemd golang-vcs-snapshot
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Hypervisor-based Runtime for OCI"
 HOMEPAGE="https://github.com/hyperhq/hyperd"
-SRC_URI="https://github.com/hyperhq/hyperd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hyperhq/hyperd/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

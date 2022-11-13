@@ -7,11 +7,13 @@ PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="An implementation of the Debug Adapter Protocol for Python"
 HOMEPAGE="https://github.com/microsoft/debugpy/ https://pypi.org/project/debugpy/"
 SRC_URI="
-	https://github.com/microsoft/${PN}/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+	https://github.com/microsoft/${PN}/archive/refs/tags/v${PV}.tar.gz
+		-> ${P}.gh@${GH_TS}.tar.gz
 "
 
 LICENSE="MIT"
