@@ -156,6 +156,9 @@ src_configure() {
 src_compile() {
 	local bindir="${WORKDIR}"/sbcl-binary
 
+	# Bug #869434
+	append-cppflags -D_GNU_SOURCE
+
 	# clear the environment to get rid of non-ASCII strings, see bug #174702
 	# set HOME for paludis
 	env - HOME="${T}" PATH="${PATH}" \
