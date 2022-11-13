@@ -164,11 +164,7 @@ src_compile() {
 }
 
 src_test() {
-	# tests require UTF-8 locale
-	emake CC="${tc-getCC}" CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" test
-	# Tests fail if in ${S} rather than in ${S}/test
-	cd "${S}"/test || die
-	./test || die
+	emake CC="${tc-getCC}" CXX="$(tc-getCXX)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" check || die
 }
 
 src_install() {
