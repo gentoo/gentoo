@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,7 +41,7 @@ src_compile() {
 }
 
 src_install() {
-	dosbin acpidump/acpidump
+	newbin acpidump/acpidump acpidump-pmtools
 	newbin acpixtract/acpixtract acpixtract-pmtools
 	dobin madt/madt
 
@@ -49,9 +49,4 @@ src_install() {
 	docinto madt
 	dodoc madt/README
 	use doc && dodoc madt/APIC*
-}
-
-pkg_postinst() {
-	ewarn "Please note that acpixtract is now named acpixtract-pmtools to avoid"
-	ewarn "conflicts with the new tool of the same name from the iasl package."
 }
