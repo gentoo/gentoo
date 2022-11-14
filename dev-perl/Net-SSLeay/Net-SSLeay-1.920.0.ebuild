@@ -52,14 +52,14 @@ src_configure() {
 		export NETWORK_TESTS=no
 	fi
 	export LIBDIR=$(get_libdir)
-	use prefix && export OPENSSL_PREFIX="${EPREFIX}/usr"
+	export OPENSSL_PREFIX="${ESYSROOT}/usr"
 	perl-module_src_configure
 }
 
 src_compile() {
 	mymake=(
 		OPTIMIZE="${CFLAGS}"
-		OPENSSL_PREFIX="${EPREFIX}"/usr
+		OPENSSL_PREFIX="${ESYSROOT}"/usr
 	)
 	perl-module_src_compile
 }
