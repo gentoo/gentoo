@@ -12,9 +12,11 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Jakarta Mail API 2.1 Specification API"
 HOMEPAGE="https://eclipse-ee4j.github.io/mail/"
-SRC_URI="https://github.com/eclipse-ee4j/mail/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/eclipse-ee4j/mail/archive/refs/tags/${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="EPL-1.0 EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"

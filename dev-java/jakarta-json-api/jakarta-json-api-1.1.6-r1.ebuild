@@ -12,9 +12,11 @@ MY_PN="jsonp"
 MY_PV="1.1-${PV}-RELEASE"
 MY_P="${MY_PN}-${MY_PV}"
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="JSR 374 (JSON Processing) API"
 HOMEPAGE="https://projects.eclipse.org/projects/ee4j.jsonp"
-SRC_URI="https://github.com/eclipse-ee4j/jsonp/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/eclipse-ee4j/jsonp/archive/${MY_PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="|| ( EPL-2.0 GPL-2-with-classpath-exception )"
 # Since version 2.0.0, the namespace has changed to jakarta.json
