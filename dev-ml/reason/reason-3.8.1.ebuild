@@ -5,9 +5,11 @@ EAPI=8
 
 inherit dune
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Simple, fast & type safe language that leverages JavaScript and OCaml"
 HOMEPAGE="https://reasonml.github.io"
-SRC_URI="https://github.com/reasonml/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/reasonml/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
