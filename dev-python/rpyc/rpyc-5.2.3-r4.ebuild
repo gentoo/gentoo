@@ -9,11 +9,13 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Remote Python Call (RPyC), a transparent and symmetric RPC library"
 HOMEPAGE="https://rpyc.readthedocs.io/en/latest/
 	https://pypi.org/project/rpyc/
 	https://github.com/tomerfiliba-org/rpyc"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz -> ${P}.pypi.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
