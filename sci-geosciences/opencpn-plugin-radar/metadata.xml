@@ -10,6 +10,6 @@
 		<name>Gentoo Geosciences Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">Verezano/radar_pi</remote-id>
+		<remote-id type="github">Verezano/AISradar_pi</remote-id>
 	</upstream>
 </pkgmetadata>
