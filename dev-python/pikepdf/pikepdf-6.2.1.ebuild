@@ -9,14 +9,16 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 MY_P=${P/_p/.post}
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Python library to work with pdf files based on qpdf"
 HOMEPAGE="
 	https://github.com/pikepdf/pikepdf/
 	https://pypi.org/project/pikepdf/
 "
 SRC_URI="
-	https://github.com/${PN}/${PN}/archive/v${PV/_p/.post}.tar.gz
-		-> ${P}.gh.tar.gz
+	https://github.com/${PN}/${PN}/archive/refs/tags/v${PV/_p/.post}.tar.gz
+		-> ${P}.gh@${GH_TS}.tar.gz
 "
 S=${WORKDIR}/${MY_P}
 
