@@ -5,9 +5,11 @@ EAPI=7
 
 inherit readme.gentoo-r1 systemd
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Fast and scalable sql based email services"
 HOMEPAGE="https://www.dbmail.org/"
-SRC_URI="https://github.com/dbmail/dbmail/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dbmail/dbmail/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
