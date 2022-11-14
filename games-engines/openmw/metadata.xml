@@ -22,7 +22,6 @@
 		<changelog>https://github.com/OpenMW/openmw/releases</changelog>
 		<doc lang="en">https://wiki.openmw.org</doc>
 		<bugs-to>https://bugs.openmw.org/</bugs-to>
-		<remote-id type="github">OpenMW/openmw</remote-id>
 		<remote-id type="gitlab">OpenMW/openmw</remote-id>
 	</upstream>
 	<longdescription lang="en">

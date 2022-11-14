@@ -3,43 +3,33 @@
 
 EAPI=8
 
-LUA_COMPAT=( lua5-{1,3,4} luajit )
-inherit cmake lua-single readme.gentoo-r1 xdg
+inherit cmake readme.gentoo-r1 xdg
 
 DESCRIPTION="Open source reimplementation of TES III: Morrowind"
 HOMEPAGE="https://openmw.org/ https://gitlab.com/OpenMW/openmw"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/OpenMW/openmw.git"
+	EGIT_REPO_URI="https://gitlab.com/OpenMW/openmw.git"
 else
-	SRC_URI="https://github.com/OpenMW/openmw/archive/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://gitlab.com/OpenMW/openmw/-/archive/${P}/${PN}-${P}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${PN}-${P}"
 fi
-
-MY_TEMPLATE_COMMIT="8966dab24692555eec720c854fb0f73d108070cd"
-SRC_URI+="
-	test? ( https://gitlab.com/OpenMW/example-suite/-/raw/${MY_TEMPLATE_COMMIT}/data/template.omwgame -> openmw-template-${MY_TEMPLATE_COMMIT}.omwgame )
-"
 
 LICENSE="GPL-3 MIT BitstreamVera ZLIB"
 SLOT="0"
 IUSE="doc devtools +osg-fork test +qt5"
-REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 # FIXME: Unbundle dev-games/openscenegraph-qt in extern/osgQt directory,
 # used when BUILD_OPENCS flag is enabled. See bug #676266.
 
-RDEPEND="${LUA_DEPS}
+RDEPEND="
 	app-arch/lz4:=
-	>=dev-games/mygui-3.4.1
-	dev-cpp/yaml-cpp:=
-	dev-db/sqlite:3
+	dev-games/mygui
 	dev-games/recastnavigation:=
 	dev-libs/boost:=[zlib]
-	dev-libs/icu:=
 	dev-libs/tinyxml[stl]
 	media-libs/libsdl2[joystick,opengl,video]
 	media-libs/openal
@@ -58,9 +48,7 @@ RDEPEND="${LUA_DEPS}
 	)
 "
 
-DEPEND="${RDEPEND}
-	dev-cpp/sol2
-"
+DEPEND="${RDEPEND}"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -73,12 +61,17 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/openmw-0.47.0-mygui-license.patch
+	"${FILESDIR}"/openmw-0.47.0-sigstksz.patch
+	"${FILESDIR}"/openmw-0.47.0-gcc12.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 
 	# Use the system tinyxml headers
 	rm -v extern/oics/tiny{str,xml}* || die
-	rm -rv extern/sol3 || die
 }
 
 src_configure() {
@@ -96,28 +89,10 @@ src_configure() {
 		-DBUILD_UNITTESTS=$(usex test)
 		-DGLOBAL_DATA_PATH="${EPREFIX}/usr/share"
 		-DICONDIR="${EPREFIX}/usr/share/icons/hicolor/256x256/apps"
+		-DMORROWIND_DATA_FILES="${EPREFIX}/usr/share/morrowind-data"
 		-DUSE_SYSTEM_TINYXML=ON
 		-DOPENMW_USE_SYSTEM_RECASTNAVIGATION=ON
 	)
-
-	if [[ ${ELUA} == luajit ]]; then
-		mycmakeargs+=(
-			-DUSE_LUAJIT=ON
-		)
-	else
-		mycmakeargs+=(
-			-DUSE_LUAJIT=OFF
-			-DLua_FIND_VERSION_MAJOR=$(ver_cut 1 $(lua_get_version))
-			-DLua_FIND_VERSION_MINOR=$(ver_cut 2 $(lua_get_version))
-			-DLua_FIND_VERSION_COUNT=2
-			-DLua_FIND_VERSION_EXACT=ON
-		)
-	fi
-
-	if use test ; then
-		mkdir -p "${BUILD_DIR}"/apps/openmw_test_suite/data || die
-		cp "${DISTDIR}"/openmw-template-${MY_TEMPLATE_COMMIT}.omwgame "${BUILD_DIR}"/apps/openmw_test_suite/data/template.omwgame || die
-	fi
 
 	cmake_src_configure
 }

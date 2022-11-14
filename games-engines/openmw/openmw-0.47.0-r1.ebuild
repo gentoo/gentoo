@@ -10,9 +10,9 @@ HOMEPAGE="https://openmw.org/ https://gitlab.com/OpenMW/openmw"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/OpenMW/openmw.git"
+	EGIT_REPO_URI="https://gitlab.com/OpenMW/openmw.git"
 else
-	SRC_URI="https://github.com/OpenMW/openmw/archive/${P}.tar.gz"
+	SRC_URI="https://gitlab.com/OpenMW/openmw/-/archive/${P}/${PN}-${P}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${PN}-${P}"
 fi
