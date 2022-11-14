@@ -7,10 +7,13 @@ PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 MY_P=hyper-h2-${PV}
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="HTTP/2 State-Machine based protocol implementation"
 HOMEPAGE="https://python-hyper.org/h2/en/stable/ https://pypi.org/project/h2/"
-SRC_URI="https://github.com/python-hyper/${PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
+SRC_URI="https://github.com/python-hyper/${PN}/archive/refs/tags/v${PV}.tar.gz
+ -> ${MY_P}.gh@${GH_TS}.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
