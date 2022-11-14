@@ -98,6 +98,10 @@ src_compile() {
 src_install() {
 	default
 
+	# Managed by eselect-iptables
+	# https://bugs.gentoo.org/881295
+	rm "${ED}/usr/bin/iptables-xml" || die
+
 	dodoc INCOMPATIBILITIES iptables/iptables.xslt
 
 	# All the iptables binaries are in /sbin, so might as well
