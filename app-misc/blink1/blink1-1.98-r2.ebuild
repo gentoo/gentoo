@@ -5,13 +5,15 @@ EAPI=6
 
 inherit linux-info
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="blink(1) USB RGB LED status light control suite"
 HOMEPAGE="https://blink1.thingm.com/"
 
 ## github release tarball
 MY_PV=${PV/_rc/rc}
 MY_P="${PN}-${MY_PV}"
-SRC_URI="https://github.com/todbot/blink1/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/todbot/blink1/archive/refs/tags/v${MY_PV}.tar.gz -> ${MY_P}.gh@${GH_TS}.tar.gz"
 
 ## selfmade tarball
 #MY_PVR=${PVR/_rc/rc}
