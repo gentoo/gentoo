@@ -7,6 +7,8 @@ LUA_COMPAT=( lua5-1 luajit )
 
 inherit lua-single toolchain-funcs xdg
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="A fast, extensible, and customizable web browser"
 HOMEPAGE="https://luakit.github.io/luakit"
 
@@ -14,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/luakit/luakit.git"
 else
-	SRC_URI="https://github.com/luakit/luakit/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/luakit/luakit/archive/refs/tags/${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
