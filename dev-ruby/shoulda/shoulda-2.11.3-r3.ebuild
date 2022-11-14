@@ -11,10 +11,11 @@ RUBY_FAKEGEM_GEMSPEC=shoulda.gemspec
 
 inherit ruby-fakegem
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Making tests easy on the fingers and eyes"
 HOMEPAGE="http://thoughtbot.com/projects/shoulda"
-SRC_URI="https://github.com/thoughtbot/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-RUBY_S="thoughtbot-${PN}-*"
+SRC_URI="https://github.com/thoughtbot/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
