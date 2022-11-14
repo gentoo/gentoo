@@ -1,16 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-MY_PN="PRoot"
 
 inherit toolchain-funcs
 
-SRC_URI="https://github.com/proot-me/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
 
 DESCRIPTION="User-space implementation of chroot, mount --bind, and binfmt_misc"
 HOMEPAGE="https://proot-me.github.io"
+SRC_URI="https://github.com/proot-me/${PN}/archive/refs/tags/v${PV}.tar.gz
+	-> ${P}.gh@${GH_TS}.tar.gz"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,8 +25,6 @@ DEPEND="${RDEPEND}
 
 # Breaks sandbox
 RESTRICT="test"
-
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.1.0-makefile.patch"
