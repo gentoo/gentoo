@@ -5,6 +5,9 @@
 		<email>ppc@gentoo.org</email>
 		<name>PowerPC architecture team</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">power-ras/ppc64-diag</remote-id>
+	</upstream>
 	<use>
 		<flag name="rtas">Add support for the Run Time Abstraction Services (RTAS)</flag>
 	</use>
