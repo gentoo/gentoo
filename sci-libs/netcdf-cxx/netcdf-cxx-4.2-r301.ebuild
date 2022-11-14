@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="C++ library for netCDF"
 HOMEPAGE="https://www.unidata.ucar.edu/software/netcdf/"
-SRC_URI="https://www.unidata.ucar.edu/downloads/netcdf/ftp/${P}.tar.gz"
+SRC_URI="https://downloads.unidata.ucar.edu/netcdf-cxx/${PV}/${P}.tar.gz"
 
 LICENSE="UCAR-Unidata"
 SLOT="3"
