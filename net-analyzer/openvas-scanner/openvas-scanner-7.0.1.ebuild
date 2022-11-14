@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,9 +9,14 @@ inherit cmake toolchain-funcs
 MY_PN="openvas"
 MY_DN="openvassd"
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Open Vulnerability Assessment Scanner"
 HOMEPAGE="https://www.greenbone.net/en/"
-SRC_URI="https://github.com/greenbone/openvas-scanner/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+ https://github.com/greenbone/openvas-scanner/archive/refs/tags/v${PV}.tar.gz
+ -> ${P}.gh@${GH_TS}.tar.gz
+"
 
 SLOT="0"
 LICENSE="GPL-2 GPL-2+"
@@ -52,9 +57,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-disable-automagic-dep.patch
 	"${FILESDIR}"/${P}-fix-linking-with-lld.patch
 )
-
-BUILD_DIR="${WORKDIR}/${MY_PN}-${PV}_build"
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
 	cmake_src_prepare
