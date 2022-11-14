@@ -9,14 +9,16 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 MY_P=filesystem_spec-${PV}
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="A specification that python filesystems should adhere to"
 HOMEPAGE="
 	https://github.com/fsspec/filesystem_spec/
 	https://pypi.org/project/fsspec/
 "
 SRC_URI="
-	https://github.com/fsspec/filesystem_spec/archive/${PV}.tar.gz
-		-> ${MY_P}.gh.tar.gz
+	https://github.com/fsspec/filesystem_spec/archive/refs/tags/${PV}.tar.gz
+		-> ${MY_P}.gh@${GH_TS}.tar.gz
 "
 S=${WORKDIR}/${MY_P}
 
