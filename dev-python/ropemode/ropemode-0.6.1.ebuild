@@ -8,14 +8,16 @@ PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="A helper for using rope refactoring library in IDEs"
 HOMEPAGE="
 	https://github.com/python-rope/ropemode/
 	https://pypi.org/project/ropemode/
 "
 SRC_URI="
-	https://github.com/python-rope/ropemode/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+	https://github.com/python-rope/ropemode/archive/refs/tags/${PV}.tar.gz
+		-> ${P}.gh@${GH_TS}.tar.gz
 "
 
 LICENSE="GPL-2"
