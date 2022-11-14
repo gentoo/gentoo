@@ -7,9 +7,11 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit autotools python-single-r1
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="A simple C language RPC framework"
 HOMEPAGE="https://github.com/haiwen/libsearpc/ http://seafile.com/"
-SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/haiwen/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
