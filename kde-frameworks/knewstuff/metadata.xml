@@ -9,6 +9,7 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
+		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
 		<flag name="opds">Enable support for the Open Publication Distribution System via <pkg>kde-frameworks/syndication</pkg></flag>
 	</use>
 	<slots>
