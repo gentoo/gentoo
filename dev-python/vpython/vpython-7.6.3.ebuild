@@ -7,9 +7,11 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="VPython for Jupyter notebook"
 HOMEPAGE="https://www.vpython.org/ https://pypi.org/project/vpython/"
-SRC_URI="https://github.com/${PN}/${PN}-jupyter/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}-jupyter/archive/refs/tags/${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 S="${WORKDIR}/${PN}-jupyter-${PV}"
 
 LICENSE="BSD-2"
