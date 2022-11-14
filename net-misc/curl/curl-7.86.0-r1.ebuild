@@ -115,7 +115,7 @@ multilib_src_configure() {
 	myconf+=( --without-ca-fallback --with-ca-bundle="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt  )
 	#myconf+=( --without-default-ssl-backend )
 	if use ssl ; then
-		myconf+=( -without-gnutls --without-mbedtls --without-nss )
+		myconf+=( --without-gnutls --without-mbedtls --without-nss )
 
 		if use gnutls || use curl_ssl_gnutls; then
 			einfo "SSL provided by gnutls"
