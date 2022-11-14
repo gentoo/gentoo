@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE https://gitlab.gnome.org/GNOM
 LICENSE="LGPL-3+ GPL-3+"
 SLOT="2.91" # vte_api_version in meson.build
 IUSE="systemd"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc"
 
 # Upstream is hostile and refuses to upload tarballs.
 SRC_URI="https://gitlab.gnome.org/GNOME/vte/-/archive/${PV}/vte-${PV}.tar.bz2"
