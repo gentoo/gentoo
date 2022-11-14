@@ -7,3 +7,4 @@ move dev-python/swagger-spec-validator dev-python/swagger_spec_validator
 move dev-python/zeroconf dev-python/python-zeroconf
 move dev-python/zstandard dev-python/python-zstandard
 move dev-python/retworkx dev-python/rustworkx
+move dev-python/libsass dev-python/libsass-python
