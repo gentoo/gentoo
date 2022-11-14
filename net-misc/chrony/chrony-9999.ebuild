@@ -27,7 +27,7 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+caps +cmdmon debug html ipv6 libedit libtomcrypt +nettle nss +ntp +nts +phc pps +refclock +rtc samba +seccomp +sechash selinux"
+IUSE="+caps +cmdmon debug html ipv6 libtomcrypt +nettle nss +ntp +nts +phc pps +readline +refclock +rtc samba +seccomp +sechash selinux"
 # nettle > nss > libtomcrypt in configure
 REQUIRED_USE="
 	sechash? ( || ( nettle nss libtomcrypt ) )
@@ -44,12 +44,11 @@ DEPEND="
 		acct-user/ntp
 		sys-libs/libcap
 	)
-	libedit? ( dev-libs/libedit )
-	!libedit? ( sys-libs/readline:= )
 	nettle? ( dev-libs/nettle:= )
 	nss? ( dev-libs/nss:= )
 	nts? ( net-libs/gnutls:= )
 	pps? ( net-misc/pps-tools )
+	readline? ( dev-libs/libedit )
 	seccomp? ( sys-libs/libseccomp )
 "
 RDEPEND="
@@ -68,7 +67,10 @@ BDEPEND="
 if [[ ${PV} == 9999 ]] ; then
 	# Needed for doc generation in 9999
 	REQUIRED_USE+=" html"
-	BDEPEND+=" virtual/w3m"
+	BDEPEND+="
+		sys-devel/bison
+		virtual/w3m
+	"
 else
 	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-mlichvar-20210513 )"
 fi
@@ -115,7 +117,12 @@ src_configure() {
 		$(usex cmdmon '' '--disable-cmdmon')
 		$(usex debug '--enable-debug' '')
 		$(usex ipv6 '' '--disable-ipv6')
-		$(usex libedit '' '--without-editline')
+
+		# USE=readline here means "readline-like functionality"
+		# chrony only supports libedit in terms of the library providing
+		# it.
+		$(usex readline '' '--without-editline --disable-readline')
+
 		$(usex libtomcrypt '' '--without-tomcrypt')
 		$(usex nettle '' '--without-nettle')
 		$(usex nss '' '--without-nss')
