@@ -37,3 +37,5 @@ PERL_RM_FILES=(
 )
 
 mydoc="rfc*.txt"
+
+export OPENSSL_PREFIX="${ESYSROOT}/usr"
