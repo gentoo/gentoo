@@ -5,12 +5,15 @@ EAPI=8
 
 inherit autotools xdg-utils
 
+GH_REPO="viking-gps/viking"
+
 DESCRIPTION="GPS data editor and analyzer"
 HOMEPAGE="https://github.com/viking-gps/viking/"
 IUSE="doc +exif libexif geoclue gps +magic nls oauth"
 SRC_URI="
-	https://github.com/viking-gps/${PN}/archive/${P}.tar.gz
-	doc? ( https://github.com/viking-gps/${PN}/releases/download/${P}/${PN}.pdf )"
+	https://github.com/${GH_REPO}/archive/refs/tags/${P}.tar.gz
+	doc? ( https://github.com/${GH_REPO}/releases/download/${P}/${PN}.pdf -> ${P}.pdf )
+"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -84,7 +87,7 @@ src_configure() {
 src_install() {
 	default
 	if use doc; then
-		dodoc "${DISTDIR}"/${PN}.pdf
+		dodoc "${DISTDIR}"/${P}.pdf
 	fi
 }
 
