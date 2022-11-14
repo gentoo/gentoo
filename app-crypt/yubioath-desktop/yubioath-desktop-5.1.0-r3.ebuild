@@ -31,7 +31,10 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	x11-libs/libdrm"
 RDEPEND="${DEPEND}
-	$(python_gen_cond_dep '>=app-crypt/yubikey-manager-4.0.0[${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep '
+		>=app-crypt/yubikey-manager-4.0.0[${PYTHON_USEDEP}]
+		<app-crypt/yubikey-manager-5.0.0[${PYTHON_USEDEP}]
+	')
 	dev-python/pyotherside[${PYTHON_SINGLE_USEDEP}]"
 
 PATCHES=(
