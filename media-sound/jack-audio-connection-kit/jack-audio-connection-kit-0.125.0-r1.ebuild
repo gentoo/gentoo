@@ -5,9 +5,11 @@ EAPI=7
 
 inherit multilib-minimal
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="A low-latency audio server"
 HOMEPAGE="http://www.jackaudio.org"
-SRC_URI="https://github.com/jackaudio/jack1/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jackaudio/jack1/archive/refs/tags/${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -40,6 +42,8 @@ DOCS=( AUTHORS TODO README )
 PATCHES=(
 	"${FILESDIR}/${PN}-0.125.0-freebsd.patch"
 )
+
+S="${WORKDIR}/jack1-${PV}"
 
 src_prepare() {
 	default
