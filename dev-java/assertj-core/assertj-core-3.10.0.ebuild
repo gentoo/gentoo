@@ -12,9 +12,13 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
+GH_PN="assertj"
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Rich and fluent assertions for testing for Java"
 HOMEPAGE="https://assertj.github.io/doc/"
-SRC_URI="https://github.com/assertj/${PN}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/assertj/${GH_PN}/archive/refs/tags/${P}.tar.gz
+	-> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="3"
@@ -46,7 +50,7 @@ DOCS=( {CODE_OF_CONDUCT,CONTRIBUTING,README}.md )
 
 PATCHES=( "${FILESDIR}"/assertj-core-3.10.0-java11-compatibility.patch )
 
-S="${WORKDIR}/${PN}-${P}"
+S="${WORKDIR}/${GH_PN}-${P}"
 
 JAVA_CLASSPATH_EXTRA="junit-4,hamcrest-core-1.3,opentest4j"
 JAVA_SRC_DIR="src/main/java"
