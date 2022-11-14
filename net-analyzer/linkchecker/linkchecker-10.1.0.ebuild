@@ -8,6 +8,8 @@ PYTHON_REQ_USE="sqlite?"
 
 inherit bash-completion-r1 distutils-r1 optfeature
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Check websites for broken links"
 HOMEPAGE="https://github.com/linkcheck/linkchecker"
 
@@ -15,7 +17,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/linkcheck/linkchecker.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/linkchecker/linkchecker/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/linkchecker/linkchecker/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 	KEYWORDS="amd64 x86"
 fi
 
