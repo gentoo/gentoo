@@ -30,7 +30,7 @@ BDEPEND="
 
 # Remove sassc, in favour of pysassc, see: https://github.com/sass/libsass-python/issues/134
 # This avoids a file collision with dev-lang/sassc
-PATCHES=( "${FILESDIR}"/${PN}-0.20.0_rename_sassc.patch )
+PATCHES=( "${FILESDIR}"/libsass-0.20.0_rename_sassc.patch )
 
 distutils_enable_tests pytest
 
