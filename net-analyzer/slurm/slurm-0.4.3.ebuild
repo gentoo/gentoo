@@ -5,9 +5,11 @@ EAPI=7
 
 inherit cmake
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Realtime network interface monitor based on FreeBSD's pppstatus"
 HOMEPAGE="https://github.com/mattthias/slurm"
-SRC_URI="https://github.com/mattthias/slurm/archive/upstream/${PN}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mattthias/slurm/archive/refs/tags/upstream/${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
