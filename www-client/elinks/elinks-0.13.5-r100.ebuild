@@ -8,10 +8,11 @@ LUA_COMPAT=( lua5-{1,2} )
 
 inherit autotools lua-single python-any-r1
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Advanced and well-established text-mode web browser"
 HOMEPAGE="http://elinks.or.cz/"
-SRC_URI="https://github.com/rkd77/felinks/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/felinks-${PV}"
+SRC_URI="https://github.com/rkd77/elinks/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
