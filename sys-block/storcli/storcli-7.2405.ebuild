@@ -17,6 +17,7 @@ LICENSE="Avago LSI BSD"
 SLOT="0"
 KEYWORDS="-* amd64"
 BDEPEND="app-arch/unzip"
+RDEPEND=""
 
 S="${WORKDIR}"
 
