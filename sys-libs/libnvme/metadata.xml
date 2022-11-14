@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>zmedico@gentoo.org</email>
-		<name>Zac Medico</name>
-	</maintainer>
-	<maintainer type="person">
-		<name>Patrick McLean</name>
-		<email>chutzpah@gentoo.org</email>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
 	</maintainer>
 	<use>
 		<flag name="json">Support JSON output via <pkg>dev-libs/json-c</pkg></flag>
