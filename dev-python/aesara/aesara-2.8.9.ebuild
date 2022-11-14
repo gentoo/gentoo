@@ -9,14 +9,16 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 multiprocessing optfeature
 
 MY_P=aesara-rel-${PV}
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Library for operating on mathematical expressions with multi-dimensional arrays"
 HOMEPAGE="
 	https://github.com/aesara-devs/aesara/
 	https://pypi.org/project/aesara/
 "
 SRC_URI="
-	https://github.com/aesara-devs/aesara/archive/rel-${PV}.tar.gz
-		-> ${MY_P}.gh.tar.gz
+	https://github.com/aesara-devs/aesara/archive/refs/tags/rel-${PV}.tar.gz
+		-> ${MY_P}.gh@${GH_TS}.tar.gz
 "
 S=${WORKDIR}/${MY_P}
 
