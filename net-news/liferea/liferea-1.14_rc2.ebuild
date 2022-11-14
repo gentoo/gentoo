@@ -23,6 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-db/sqlite:3
+	dev-libs/fribidi
 	dev-libs/glib:2
 	dev-libs/gobject-introspection
 	dev-libs/json-glib
@@ -31,7 +32,8 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/libxslt
 	gnome-base/gsettings-desktop-schemas
 	net-libs/libsoup:2.4
-	net-libs/webkit-gtk:4
+	net-libs/webkit-gtk:4=
+	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/pango"
 DEPEND="${RDEPEND}"
@@ -40,7 +42,6 @@ BDEPEND="dev-util/intltool
 
 src_prepare() {
 	default
-	xdg_src_prepare
 
 	sed -i -e 's#$(datadir)/appdata#$(datadir)/metainfo#g' \
 		Makefile.am || die
