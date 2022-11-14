@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-11-14)
+# Unmaintained in Gentoo since at least the transition to git. Last release in
+# 2014. Depends on x11-libs/gtk+:2 and gnome-base/gconf. Fails to build with
+# (1) clang-16, (2) with LTO, (3) with -fno-common.
+# Bugs #812137, #864763, #871405, #873886
+# Removal on 2022-12-14
+x11-misc/xnee
+
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
 # Removal after 2023-01-01.  Bug #881249.
