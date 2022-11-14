@@ -15,7 +15,7 @@
 		mouse, adding and removing profiles, setting LED colors and changing
 		button behaviors.
 
-		Piper requires libratbag’s ratbagd, the daemon to actually communicate with the
+		Piper requires <pkg>dev-libs/libratbag</pkg>’s ratbagd, the daemon to actually communicate with the
 		mice. Piper is merely a front end to ratbagd, ratbagd must be
 		installed and running when Piper is launched.
 	</longdescription>
