@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="MailDir mailbox synchronizer"
-HOMEPAGE="http://isync.sourceforge.net/"
+HOMEPAGE="https://isync.sourceforge.io/"
 LICENSE="GPL-2"
 SLOT="0"
 
