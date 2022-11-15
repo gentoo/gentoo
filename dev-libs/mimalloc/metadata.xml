@@ -9,6 +9,9 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
+	<use>
+		<flag name="hardened">Enable exploit mitigations</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">microsoft/mimalloc</remote-id>
 	</upstream>
