@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A Python script for summarizing gcov data"
 HOMEPAGE="https://github.com/gcovr/gcovr"
-SRC_URI="https://github.com/gcovr/gcovr/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gcovr/gcovr/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

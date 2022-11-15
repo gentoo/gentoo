@@ -11,7 +11,7 @@ inherit distutils-r1 multiprocessing
 MY_PV=${PV/_beta/b}
 DESCRIPTION="Python Development Workflow for Humans"
 HOMEPAGE="https://github.com/pypa/pipenv https://pypi.org/project/pipenv/"
-SRC_URI="https://github.com/pypa/pipenv/archive/v${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/pypa/pipenv/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="MIT"

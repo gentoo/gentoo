@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/dj-email-url/
 "
 SRC_URI="
-	https://github.com/migonzalvar/dj-email-url/archive/v${PV}.tar.gz
+	https://github.com/migonzalvar/dj-email-url/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

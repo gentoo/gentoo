@@ -15,7 +15,7 @@ inherit ruby-fakegem
 DESCRIPTION="A module that adds logging/trace functionality"
 HOMEPAGE="https://github.com/jpace/logue"
 
-SRC_URI="https://github.com/jpace/logue/archive/v${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
+SRC_URI="https://github.com/jpace/logue/archive/refs/tags/v${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
 
 LICENSE="MIT"
 SLOT="0"

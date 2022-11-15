@@ -21,7 +21,7 @@ HOMEPAGE="
 	https://github.com/timvink/mkdocs-git-revision-date-localized-plugin/
 	https://pypi.org/project/mkdocs-git-revision-date-localized-plugin/
 "
-SRC_URI="https://github.com/timvink/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/timvink/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

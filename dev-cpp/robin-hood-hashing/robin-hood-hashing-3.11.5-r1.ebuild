@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
-SRC_URI="https://github.com/martinus/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/martinus/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 DESCRIPTION="Fast & memory efficient hashtable based on robin hood hashing for C++11/14/17/20"
 HOMEPAGE="https://github.com/martinus/robin-hood-hashing"

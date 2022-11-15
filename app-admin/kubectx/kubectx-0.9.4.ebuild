@@ -6,7 +6,7 @@ inherit bash-completion-r1 go-module
 
 DESCRIPTION="Fast way to switch between clusters and namespaces in kubectl"
 HOMEPAGE="https://github.com/ahmetb/kubectx"
-SRC_URI="https://github.com/ahmetb/kubectx/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ahmetb/kubectx/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0"

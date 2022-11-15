@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Opens a file or text in the user's preferred editor"
 HOMEPAGE="https://github.com/piotrmurach/tty-editor"
-SRC_URI="https://github.com/piotrmurach/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/piotrmurach/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

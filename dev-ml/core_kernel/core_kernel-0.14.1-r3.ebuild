@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="System-independent part of Core"
 HOMEPAGE="https://github.com/janestreet/core_kernel"
-SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"

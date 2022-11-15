@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/wrapt/
 "
 SRC_URI="
-	https://github.com/GrahamDumpleton/wrapt/archive/${PV}.tar.gz
+	https://github.com/GrahamDumpleton/wrapt/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

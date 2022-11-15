@@ -7,7 +7,7 @@ inherit multilib-minimal toolchain-funcs usr-ldscript
 
 DESCRIPTION="zstd fast compression library"
 HOMEPAGE="https://facebook.github.io/zstd/"
-SRC_URI="https://github.com/facebook/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/facebook/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0/1"

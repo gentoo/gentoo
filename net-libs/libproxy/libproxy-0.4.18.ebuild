@@ -7,7 +7,7 @@ inherit cmake-multilib flag-o-matic mono-env
 
 DESCRIPTION="Library for automatic proxy configuration management"
 HOMEPAGE="https://github.com/libproxy/libproxy"
-SRC_URI="https://github.com/libproxy/libproxy/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/libproxy/libproxy/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

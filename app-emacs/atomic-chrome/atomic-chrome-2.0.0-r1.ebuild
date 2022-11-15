@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Edit text area on Chrome with Emacs using Atomic Chrome"
 HOMEPAGE="https://github.com/alpha22jp/atomic-chrome"
-SRC_URI="https://github.com/alpha22jp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/alpha22jp/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

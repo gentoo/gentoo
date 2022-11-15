@@ -6,7 +6,7 @@ inherit linux-mod
 
 DESCRIPTION="RTSP conntrack module for Netfilter"
 HOMEPAGE="http://mike.it-loops.com/rtsp"
-SRC_URI="https://github.com/maru-sama/rtsp-linux/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/maru-sama/rtsp-linux/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Easy anonymous functions by partial application of operators"
 HOMEPAGE="https://github.com/Suor/whatever"
 SRC_URI="
-	https://github.com/Suor/whatever/archive/${PV}.tar.gz
+	https://github.com/Suor/whatever/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

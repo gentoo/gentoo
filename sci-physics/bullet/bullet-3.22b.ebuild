@@ -7,7 +7,7 @@ inherit cmake toolchain-funcs
 
 DESCRIPTION="Continuous Collision Detection and Physics Library"
 HOMEPAGE="https://pybullet.org/wordpress/"
-SRC_URI="https://github.com/bulletphysics/${PN}3/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bulletphysics/${PN}3/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0/${PV}"

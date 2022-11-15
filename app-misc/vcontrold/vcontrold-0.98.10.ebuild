@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Daemon for communication with Viessmann Vito heatings"
 HOMEPAGE="https://github.com/openv/vcontrold/"
-SRC_URI="https://github.com/openv/vcontrold/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/openv/vcontrold/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

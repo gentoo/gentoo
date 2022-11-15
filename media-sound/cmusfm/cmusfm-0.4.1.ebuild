@@ -7,7 +7,7 @@ inherit autotools readme.gentoo-r1
 
 DESCRIPTION="Last.fm scrobbler for cmus music player"
 HOMEPAGE="https://github.com/Arkq/cmusfm"
-SRC_URI="https://github.com/Arkq/cmusfm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Arkq/cmusfm/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -8,7 +8,7 @@ MY_PV="${PV/_rc/-rc.}"
 
 DESCRIPTION="Alertmanager for alerts sent by client applications such as Prometheus"
 HOMEPAGE="https://github.com/prometheus/alertmanager"
-SRC_URI="https://github.com/prometheus/alertmanager/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/prometheus/alertmanager/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0"

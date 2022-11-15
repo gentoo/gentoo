@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Command-line downloader and uploader for file-sharing websites"
 HOMEPAGE="https://github.com/mcrapet/plowshare"
-SRC_URI="https://github.com/mcrapet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mcrapet/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -10,7 +10,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="PAM module for running scripts during authorization, password change and session"
 HOMEPAGE="https://github.com/jeroennijhof/pam_script/"
-SRC_URI="https://github.com/jeroennijhof/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jeroennijhof/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

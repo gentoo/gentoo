@@ -23,7 +23,7 @@ DEPEND=">=dev-lang/go-1.6:=
 	${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
-SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://${EGO_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 
 src_compile() {

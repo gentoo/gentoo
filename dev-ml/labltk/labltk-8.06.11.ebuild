@@ -7,7 +7,7 @@ inherit findlib toolchain-funcs
 
 DESCRIPTION="OCaml interface to the Tcl/Tk GUI framework"
 HOMEPAGE="https://garrigue.github.io/labltk/"
-SRC_URI="https://github.com/garrigue/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/garrigue/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="QPL-1.0 LGPL-2"
 SLOT="0/${PV}"

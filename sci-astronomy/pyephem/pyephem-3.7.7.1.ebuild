@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Astronomical routines for the python programming language"
 HOMEPAGE="https://rhodesmill.org/pyephem/"
-SRC_URI="https://github.com/brandon-rhodes/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/brandon-rhodes/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

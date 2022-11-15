@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/sphinx-contrib/httpdomain/
 "
 SRC_URI="
-	https://github.com/sphinx-contrib/httpdomain/archive/${PV}.tar.gz
+	https://github.com/sphinx-contrib/httpdomain/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/httpdomain-${PV}"

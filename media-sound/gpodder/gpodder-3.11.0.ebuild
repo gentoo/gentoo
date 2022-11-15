@@ -12,7 +12,7 @@ inherit distutils-r1 optfeature xdg
 
 DESCRIPTION="A free cross-platform podcast aggregator"
 HOMEPAGE="https://gpodder.github.io/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

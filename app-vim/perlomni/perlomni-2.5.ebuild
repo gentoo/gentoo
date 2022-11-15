@@ -7,7 +7,7 @@ inherit vim-plugin
 
 DESCRIPTION="vim plugin: a vim plugin with Perl omni completion functions"
 HOMEPAGE="https://github.com/c9s/perlomni.vim"
-SRC_URI="https://github.com/c9s/${PN}.vim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/c9s/${PN}.vim/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="vim.org"
 KEYWORDS="amd64 ppc ppc64 x86"
 

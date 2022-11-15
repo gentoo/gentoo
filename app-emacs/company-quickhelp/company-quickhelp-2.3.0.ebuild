@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Company documentation popups for completion candidates"
 HOMEPAGE="https://github.com/company-mode/company-quickhelp/"
-SRC_URI="https://github.com/company-mode/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/company-mode/${PN}/archive/refs/tags/${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

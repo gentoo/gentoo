@@ -7,7 +7,7 @@ GIT_COMMIT=6cff384d7433bcb1104efe3b496cd27c0658eb09
 
 DESCRIPTION="PostgreSQL stats exporter for Prometheus"
 HOMEPAGE="https://github.com/prometheus-community/postgres_exporter"
-SRC_URI="https://github.com/prometheus-community/postgres_exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/prometheus-community/postgres_exporter/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD MIT"

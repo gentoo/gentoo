@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Noto fonts support tools and scripts plus web site generation"
 HOMEPAGE="https://github.com/googlefonts/nototools"
-#SRC_URI="https://github.com/googlefonts/nototools/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+#SRC_URI="https://github.com/googlefonts/nototools/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 OFL-1.1"

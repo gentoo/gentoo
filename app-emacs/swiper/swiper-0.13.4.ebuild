@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Alternative to isearch that uses ivy to show overview of all matches"
 HOMEPAGE="https://github.com/abo-abo/swiper/"
-SRC_URI="https://github.com/abo-abo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/abo-abo/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

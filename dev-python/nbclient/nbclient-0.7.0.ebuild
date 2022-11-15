@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/nbclient/
 "
 SRC_URI="
-	https://github.com/jupyter/nbclient/archive/v${PV}.tar.gz
+	https://github.com/jupyter/nbclient/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

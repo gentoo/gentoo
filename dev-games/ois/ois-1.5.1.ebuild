@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Object-oriented Input System - A cross-platform C++ input handling library"
 HOMEPAGE="https://github.com/wgois/OIS"
-SRC_URI="https://github.com/wgois/OIS/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wgois/OIS/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P^^}"
 
 LICENSE="ZLIB"

@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Convert symbol names between different naming conventions"
 HOMEPAGE="https://github.com/akicho8/string-inflection/"
-SRC_URI="https://github.com/akicho8/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/akicho8/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

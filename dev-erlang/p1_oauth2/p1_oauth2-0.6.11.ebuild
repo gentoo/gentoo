@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="Erlang OAuth 2.0 implementation"
 HOMEPAGE="https://github.com/processone/p1_oauth2"
-SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/processone/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="MIT"

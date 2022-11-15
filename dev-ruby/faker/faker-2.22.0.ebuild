@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A library for generating fake data such as names, addresses, and phone numbers"
 HOMEPAGE="https://github.com/stympy/faker"
-SRC_URI="https://github.com/stympy/faker/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/stympy/faker/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

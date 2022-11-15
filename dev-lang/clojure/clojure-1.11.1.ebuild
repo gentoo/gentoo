@@ -21,15 +21,15 @@ DESCRIPTION="General-purpose programming language with an emphasis on functional
 HOMEPAGE="https://clojure.org/"
 SRC_URI="
 	https://github.com/${PN}/${PN}/archive/${P}.tar.gz
-	https://github.com/clojure/spec.alpha/archive/v${SPEC_ALPHA_VER}.tar.gz -> spec.alpha-${SPEC_ALPHA_VER}.tar.gz
-	https://github.com/clojure/core.specs.alpha/archive/v${CORE_SPECS_ALPHA_VER}.tar.gz -> core.specs.alpha-${CORE_SPECS_ALPHA_VER}.tar.gz
+	https://github.com/clojure/spec.alpha/archive/refs/tags/v${SPEC_ALPHA_VER}.tar.gz -> spec.alpha-${SPEC_ALPHA_VER}.tar.gz
+	https://github.com/clojure/core.specs.alpha/archive/refs/tags/v${CORE_SPECS_ALPHA_VER}.tar.gz -> core.specs.alpha-${CORE_SPECS_ALPHA_VER}.tar.gz
 	test? (
 		https://github.com/clojure/tools.namespace/archive/tools.namespace-${TOOLS_NAMESPACE_VER}.tar.gz
 		https://github.com/clojure/java.classpath/archive/java.classpath-${JAVA_CLASSPATH_VER}.tar.gz
 		https://github.com/clojure/tools.reader/archive/tools.reader-${TOOLS_READER_VER}.tar.gz
 		https://github.com/clojure/test.generative/archive/test.generative-${TEST_GENERATIVE_VER}.tar.gz
 		https://github.com/clojure/data.generators/archive/data.generators-${DATA_GENERATORS_VER}.tar.gz
-		https://github.com/clojure/test.check/archive/v${TEST_CHECK_VER}.tar.gz -> test.check-${TEST_CHECK_VER}.tar.gz
+		https://github.com/clojure/test.check/archive/refs/tags/v${TEST_CHECK_VER}.tar.gz -> test.check-${TEST_CHECK_VER}.tar.gz
 	)
 "
 

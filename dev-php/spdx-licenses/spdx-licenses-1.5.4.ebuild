@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Tools for working with and validating SPDX licenses"
 HOMEPAGE="https://github.com/composer/spdx-licenses"
-SRC_URI="https://github.com/composer/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/composer/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

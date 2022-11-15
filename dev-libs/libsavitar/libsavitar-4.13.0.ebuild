@@ -11,7 +11,7 @@ MY_PN="libSavitar"
 
 DESCRIPTION="C++ implementation of 3mf loading with SIP python bindings"
 HOMEPAGE="https://github.com/Ultimaker/libSavitar"
-SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0/3"

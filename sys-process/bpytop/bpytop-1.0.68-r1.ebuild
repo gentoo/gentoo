@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Linux/OSX/FreeBSD resource monitor"
 HOMEPAGE="https://github.com/aristocratos/bpytop"
-SRC_URI="https://github.com/aristocratos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/aristocratos/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

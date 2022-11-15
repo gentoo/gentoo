@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="
-		https://github.com/tcalmant/jsonrpclib/archive/v${PV}.tar.gz
+		https://github.com/tcalmant/jsonrpclib/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.gh.tar.gz
 	"
 	KEYWORDS="amd64 arm arm64 ~mips x86"

@@ -11,7 +11,7 @@ DESCRIPTION="OneLogin's SAML Python Toolkit"
 HOMEPAGE="https://github.com/onelogin/python3-saml
 	https://pypi.org/project/python3-saml/"
 SRC_URI="
-	https://github.com/onelogin/python3-saml/archive/v${PV}.tar.gz
+	https://github.com/onelogin/python3-saml/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="MIT"

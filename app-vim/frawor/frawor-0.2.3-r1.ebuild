@@ -7,7 +7,7 @@ inherit vim-plugin
 
 DESCRIPTION="vim plugin: modular vim framework"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=3631 https://github.com/vim-scripts/frawor"
-SRC_URI="https://github.com/vim-scripts/frawor/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vim-scripts/frawor/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="vim"
 KEYWORDS="amd64 x86"

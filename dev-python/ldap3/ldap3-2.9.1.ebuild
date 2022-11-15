@@ -11,7 +11,7 @@ DESCRIPTION="A strictly RFC 4511 conforming LDAP V3 pure Python client"
 HOMEPAGE="
 	https://github.com/cannatag/ldap3/
 	https://pypi.org/project/ldap3/"
-SRC_URI="https://github.com/cannatag/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cannatag/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

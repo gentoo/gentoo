@@ -23,7 +23,7 @@ inherit db-use mono-env php-ext-source-r3 python-r1 ruby-ng toolchain-funcs
 
 DESCRIPTION="ICE middleware C++ library and generator tools"
 HOMEPAGE="https://zeroc.com/products/ice"
-SRC_URI="https://github.com/zeroc-ice/ice/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/zeroc-ice/ice/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	doc? ( https://download.zeroc.com/Ice/$(ver_cut 1-2)/${PN}-3.6.4.pdf )"
 LICENSE="GPL-2"
 SLOT="0/36"

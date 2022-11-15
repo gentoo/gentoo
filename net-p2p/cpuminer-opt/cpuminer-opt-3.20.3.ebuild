@@ -24,7 +24,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/JayDDee/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/JayDDee/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 src_prepare() {

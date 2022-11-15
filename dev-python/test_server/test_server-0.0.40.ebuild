@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/test-server/
 "
 SRC_URI="
-	https://github.com/lorien/test_server/archive/v${PV}.tar.gz
+	https://github.com/lorien/test_server/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

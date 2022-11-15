@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Ensure environment variables inside Emacs are the same as in shell"
 HOMEPAGE="https://github.com/purcell/exec-path-from-shell/"
-SRC_URI="https://github.com/purcell/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/purcell/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

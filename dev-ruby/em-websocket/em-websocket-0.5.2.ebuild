@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="EventMachine based WebSocket server"
 HOMEPAGE="https://rubygems.org/gems/em-websocket"
-SRC_URI="https://github.com/igrigorik/em-websocket/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/igrigorik/em-websocket/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

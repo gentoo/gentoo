@@ -16,7 +16,7 @@ if [ "${PV}" = 9999 ]; then
 	EGIT_REPO_URI="https://github.com/russinnes/fsync-mdc1200-decode.git"
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/russinnes/fsync-mdc1200-decode/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/russinnes/fsync-mdc1200-decode/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 IUSE=""

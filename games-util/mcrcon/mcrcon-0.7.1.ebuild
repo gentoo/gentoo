@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Remote connection client for Minecraft servers"
 HOMEPAGE="https://github.com/Tiiffi/mcrcon"
-SRC_URI="https://github.com/Tiiffi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Tiiffi/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm"

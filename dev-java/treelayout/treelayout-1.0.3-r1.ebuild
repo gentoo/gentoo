@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri https://github.com/abego/treelayout/archive/v1.0.3.tar.gz --slot 0 --keywords "~amd64 ~arm ~arm64 ~ppc64 ~x86" --ebuild treelayout-1.0.3-r1.ebuild
+# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri https://github.com/abego/treelayout/archive/refs/tags/v1.0.3.tar.gz --slot 0 --keywords "~amd64 ~arm ~arm64 ~ppc64 ~x86" --ebuild treelayout-1.0.3-r1.ebuild
 
 EAPI=8
 
@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Efficient and customizable TreeLayout Algorithm in Java."
 HOMEPAGE="https://github.com/abego/treelayout"
-SRC_URI="https://github.com/abego/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/abego/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 #	LICENSE="!!!equivalentPortageLicenseName-not-found!!!"
 LICENSE="BSD"

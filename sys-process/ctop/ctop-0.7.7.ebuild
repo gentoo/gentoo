@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="Top-like interface for container-metrics"
 HOMEPAGE="https://ctop.sh https://github.com/bcicen/ctop"
-SRC_URI="https://github.com/bcicen/ctop/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bcicen/ctop/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz"
 
 LICENSE="MIT"

@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/mss/
 "
 SRC_URI="
-	https://github.com/BoboTiG/python-mss/archive/v${PV}.tar.gz
+	https://github.com/BoboTiG/python-mss/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

@@ -7,7 +7,7 @@ MY_PN="coffeescript"
 
 DESCRIPTION="A little language that compiles into javascript"
 HOMEPAGE="https://coffeescript.org/"
-SRC_URI="https://github.com/jashkenas/${MY_PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/jashkenas/${MY_PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 

@@ -14,7 +14,7 @@ GITHUB_USER="feed2imap"
 
 DESCRIPTION="Ruby library to parse ATOM/RSS feeds"
 HOMEPAGE="https://github.com/feed2imap/ruby-feedparser"
-SRC_URI="https://github.com/${GITHUB_USER}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${GITHUB_USER}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64"

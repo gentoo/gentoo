@@ -9,7 +9,7 @@ GIT_BRANCH=1.8
 DESCRIPTION="Scalable datastore for metrics, events, and real-time analytics"
 HOMEPAGE="https://www.influxdata.com"
 
-SRC_URI="https://github.com/influxdata/influxdb/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/influxdata/influxdb/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://github.com/Dwosky/packages/raw/main/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 EPL-2.0 ISC MIT MPL-2.0"

@@ -68,7 +68,7 @@ HOMEPAGE="
 	https://github.com/samuelcolvin/watchfiles/
 "
 SRC_URI="
-	https://github.com/samuelcolvin/watchfiles/archive/v${PV}.tar.gz
+	https://github.com/samuelcolvin/watchfiles/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	$(cargo_crate_uris ${CRATES})
 "

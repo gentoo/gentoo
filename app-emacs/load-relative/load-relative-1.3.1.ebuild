@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Relative loads for Emacs Lisp files"
 HOMEPAGE="https://github.com/rocky/emacs-load-relative/"
-SRC_URI="https://github.com/rocky/emacs-${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rocky/emacs-${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/emacs-${P}
 
 LICENSE="GPL-3+"

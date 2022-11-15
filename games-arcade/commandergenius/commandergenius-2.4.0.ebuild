@@ -11,7 +11,7 @@ MY_PN="Commander-Genius"
 MY_P="${MY_PN}-v${PV}"
 DESCRIPTION="Open Source Commander Keen clone (needs original game files)"
 HOMEPAGE="https://clonekeenplus.sourceforge.io"
-SRC_URI="https://gitlab.com/Dringgstein/${MY_PN}/-/archive/v${PV}/${MY_P}.tar.bz2"
+SRC_URI="https://gitlab.com/Dringgstein/${MY_PN}/-/archive/refs/tags/v${PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

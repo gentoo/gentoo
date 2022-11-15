@@ -8,7 +8,7 @@ inherit flag-o-matic toolchain-funcs
 MY_P="${P/-/_}"
 DESCRIPTION="Lists open files for running Unix processes"
 HOMEPAGE="https://github.com/lsof-org/lsof"
-SRC_URI="https://github.com/lsof-org/lsof/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lsof-org/lsof/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="lsof"
 SLOT="0"

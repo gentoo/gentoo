@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/cssselect/
 "
 SRC_URI="
-	https://github.com/scrapy/cssselect/archive/v${PV}.tar.gz
+	https://github.com/scrapy/cssselect/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

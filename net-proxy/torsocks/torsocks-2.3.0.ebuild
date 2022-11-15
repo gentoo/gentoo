@@ -11,7 +11,7 @@ S=${WORKDIR}/${MY_PF}
 
 DESCRIPTION="Use most socks-friendly applications with Tor"
 HOMEPAGE="https://github.com/dgoulet/torsocks"
-SRC_URI="https://github.com/dgoulet/torsocks/archive/v${MY_PV}.tar.gz -> ${MY_PF}.tar.gz"
+SRC_URI="https://github.com/dgoulet/torsocks/archive/refs/tags/v${MY_PV}.tar.gz -> ${MY_PF}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

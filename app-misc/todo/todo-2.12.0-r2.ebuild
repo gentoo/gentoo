@@ -7,7 +7,7 @@ inherit bash-completion-r1
 
 DESCRIPTION="A CLI-based TODO list manager"
 HOMEPAGE="http://todotxt.org"
-SRC_URI="https://github.com/todotxt/${PN}.txt-cli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/todotxt/${PN}.txt-cli/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

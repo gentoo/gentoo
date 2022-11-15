@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A modular Ruby webserver interface"
 HOMEPAGE="https://github.com/rack/rack"
-SRC_URI="https://github.com/rack/rack/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rack/rack/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"

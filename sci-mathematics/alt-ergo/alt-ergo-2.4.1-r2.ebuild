@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Automatic theorem prover"
 HOMEPAGE="https://alt-ergo.ocamlpro.com"
-SRC_URI="https://github.com/OCamlPro/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/OCamlPro/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CeCILL-C"
 SLOT="0/${PV}"

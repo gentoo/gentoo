@@ -8,7 +8,7 @@ inherit distutils-r1 systemd
 
 DESCRIPTION="Command shell for managing Linux LIO kernel target"
 HOMEPAGE="https://github.com/open-iscsi/targetcli-fb"
-SRC_URI="https://github.com/open-iscsi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/open-iscsi/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

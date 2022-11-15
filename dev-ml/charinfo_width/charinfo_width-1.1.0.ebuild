@@ -10,7 +10,7 @@ inherit dune
 
 DESCRIPTION="Determine column width for a character"
 HOMEPAGE="https://github.com/kandu/charInfo_width"
-SRC_URI="https://github.com/kandu/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kandu/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"

@@ -12,7 +12,7 @@ MY_P=${P/_/-}
 DESCRIPTION="Munin Server Monitoring Tool"
 HOMEPAGE="https://munin-monitoring.org/"
 SRC_URI="
-	https://github.com/munin-monitoring/munin/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/munin-monitoring/munin/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~graaff/munin/${P}-gentoo-${PATCHSET}.tar.xz"
 
 LICENSE="GPL-2"

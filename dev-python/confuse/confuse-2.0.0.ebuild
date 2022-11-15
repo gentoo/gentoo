@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/confuse/
 "
 SRC_URI="
-	https://github.com/beetbox/${PN}/archive/v${PV}.tar.gz
+	https://github.com/beetbox/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

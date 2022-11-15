@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Pry is a powerful alternative to the standard IRB shell for Ruby"
 HOMEPAGE="https://github.com/pry/pry/wiki"
-SRC_URI="https://github.com/pry/pry/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pry/pry/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 IUSE=""
 SLOT="ruby19"
 

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Bring your .bashrc, .vimrc, etc. from your local machine when you ssh"
 HOMEPAGE="https://github.com/Russell91/sshrc"
-SRC_URI="https://github.com/Russell91/sshrc/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Russell91/sshrc/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

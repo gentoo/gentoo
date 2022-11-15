@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Linting library for Emacs Lisp package metadata"
 HOMEPAGE="https://github.com/purcell/package-lint/"
-SRC_URI="https://github.com/purcell/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/purcell/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64 ~x86"

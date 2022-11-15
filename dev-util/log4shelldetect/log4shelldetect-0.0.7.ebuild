@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="Check for java programs vulnerable to log4shell"
 HOMEPAGE="https://github.com/1lann/log4shelldetect"
-SRC_URI="https://github.com/1lann/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/1lann/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Unlicense"

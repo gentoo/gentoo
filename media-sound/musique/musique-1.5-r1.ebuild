@@ -7,7 +7,7 @@ inherit qmake-utils xdg-utils
 
 DESCRIPTION="Qt music player"
 HOMEPAGE="https://flavio.tordini.org/musique"
-SRC_URI="https://github.com/flaviotordini/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/flaviotordini/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

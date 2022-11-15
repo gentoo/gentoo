@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Daemon part of Canto-NG RSS reader"
 HOMEPAGE="https://codezen.org/canto-ng/"
-SRC_URI="https://github.com/themoken/canto-next/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/themoken/canto-next/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/canto-next-${PV}"
 
 LICENSE="GPL-2"

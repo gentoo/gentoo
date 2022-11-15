@@ -6,7 +6,7 @@ inherit vim-plugin
 
 DESCRIPTION="vim plugin: Perl-IDE - Write and run Perl scripts using menus and hotkeys"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=556"
-SRC_URI="https://github.com/WolfgangMehner/perl-support/archive/version-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/WolfgangMehner/perl-support/archive/refs/tags/version-${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2 GPL-2+"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 

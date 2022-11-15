@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_BRANCH="dev"
 	inherit git-r3
 else
-	SRC_URI="https://gitlab.com/solarus-games/solarus-quest-editor/-/archive/v${PV}/solarus-quest-editor-v${PV}.tar.gz"
+	SRC_URI="https://gitlab.com/solarus-games/solarus-quest-editor/-/archive/refs/tags/v${PV}/solarus-quest-editor-v${PV}.tar.gz"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/solarus-quest-editor-v${PV}"
 fi

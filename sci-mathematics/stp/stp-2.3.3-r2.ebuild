@@ -13,7 +13,7 @@ inherit flag-o-matic python-single-r1 cmake
 DESCRIPTION="Simple Theorem Prover, an efficient SMT solver for bitvectors"
 HOMEPAGE="https://stp.github.io/
 	https://github.com/stp/stp/"
-SRC_URI="https://github.com/stp/stp/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/stp/stp/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	test? (
 		https://github.com/stp/OutputCheck/archive/${OC_H}.tar.gz -> ${P}_OutputCheck.tar.gz
 		https://github.com/stp/googletest/archive/${GT_H}.tar.gz -> ${P}_gtest.tar.gz

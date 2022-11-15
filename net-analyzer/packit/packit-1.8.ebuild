@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Network packet generator and capture tool"
 HOMEPAGE="https://github.com/resurrecting-open-source-projects/packit"
-SRC_URI="https://github.com/resurrecting-open-source-projects/packit/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/resurrecting-open-source-projects/packit/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

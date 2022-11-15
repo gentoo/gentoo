@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="A simple Qt-based NetworkManager front-end"
 HOMEPAGE="https://github.com/palinek/nm-tray"
-SRC_URI="https://github.com/palinek/nm-tray/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/palinek/nm-tray/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

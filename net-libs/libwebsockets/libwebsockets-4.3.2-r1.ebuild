@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="A flexible pure-C library for implementing network protocols"
 HOMEPAGE="https://libwebsockets.org/"
-SRC_URI="https://github.com/warmcat/libwebsockets/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/warmcat/libwebsockets/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/19" # libwebsockets.so.19

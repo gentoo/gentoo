@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Opinionated megapack of modern color-themes for GNU Emacs"
 HOMEPAGE="https://github.com/doomemacs/themes/"
-SRC_URI="https://github.com/doomemacs/themes/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/doomemacs/themes/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/themes-${PV}
 
 LICENSE="MIT"

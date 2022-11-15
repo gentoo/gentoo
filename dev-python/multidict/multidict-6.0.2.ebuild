@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/multidict/
 "
 SRC_URI="
-	https://github.com/aio-libs/${PN}/archive/v${PV}.tar.gz
+	https://github.com/aio-libs/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

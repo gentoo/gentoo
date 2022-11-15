@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Implementation of the Jakarta Mail API"
 HOMEPAGE="https://github.com/jakartaee/mail-api"
-SRC_URI="https://github.com/jakartaee/mail-api/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jakartaee/mail-api/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="EPL-1.0 EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"

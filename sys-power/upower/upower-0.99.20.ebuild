@@ -8,7 +8,7 @@ inherit meson python-any-r1 systemd udev xdg-utils
 
 DESCRIPTION="D-Bus abstraction for enumerating power devices, querying history and statistics"
 HOMEPAGE="https://upower.freedesktop.org/"
-SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
+SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/3" # based on SONAME of libupower-glib.so

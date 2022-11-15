@@ -7,7 +7,7 @@ inherit systemd toolchain-funcs tmpfiles
 
 DESCRIPTION="A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon"
 HOMEPAGE="https://github.com/xelerance/xl2tpd"
-SRC_URI="https://github.com/xelerance/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/xelerance/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Brother laser printer driver"
 HOMEPAGE="https://github.com/pdewacht/brlaser"
-SRC_URI="https://github.com/pdewacht/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pdewacht/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

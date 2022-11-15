@@ -17,7 +17,7 @@ inherit ruby-fakegem
 DESCRIPTION="A ruby library for reading and writing zip files"
 HOMEPAGE="https://github.com/rubyzip/rubyzip"
 # Tests are not included in the gem.
-SRC_URI="https://github.com/rubyzip/rubyzip/archive/v${PV}.tar.gz -> ${P}-git.tgz"
+SRC_URI="https://github.com/rubyzip/rubyzip/archive/refs/tags/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="Ruby-BSD"
 SLOT="$(ver_cut 1)"

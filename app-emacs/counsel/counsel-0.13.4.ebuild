@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Versions of common Emacs commands customized to make the best use of ivy"
 HOMEPAGE="https://github.com/abo-abo/swiper/"
-SRC_URI="https://github.com/abo-abo/swiper/archive/${PV}.tar.gz
+SRC_URI="https://github.com/abo-abo/swiper/archive/refs/tags/${PV}.tar.gz
 			-> swiper-${PV}.tar.gz"
 S="${WORKDIR}"/swiper-${PV}
 

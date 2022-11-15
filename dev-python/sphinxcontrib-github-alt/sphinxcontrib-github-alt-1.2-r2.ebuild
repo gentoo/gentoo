@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/sphinxcontrib_github_alt/
 "
 SRC_URI="
-	https://github.com/jupyter/sphinxcontrib_github_alt/archive/${PV}.tar.gz
+	https://github.com/jupyter/sphinxcontrib_github_alt/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

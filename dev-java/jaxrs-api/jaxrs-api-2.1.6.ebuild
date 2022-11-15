@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Jakarta RESTful Web Services API"
 HOMEPAGE="https://github.com/jakartaee/rest"
-SRC_URI="https://github.com/jakartaee/rest/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jakartaee/rest/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/python-subunit/
 "
 SRC_URI="
-	https://github.com/testing-cabal/subunit/archive/${PV}.tar.gz
+	https://github.com/testing-cabal/subunit/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

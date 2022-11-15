@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Interpreter and compiler compatible with the ISLisp standard"
 HOMEPAGE="https://github.com/sasagawa888/eisl/"
-SRC_URI="https://github.com/sasagawa888/eisl/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/sasagawa888/eisl/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="BSD-2"

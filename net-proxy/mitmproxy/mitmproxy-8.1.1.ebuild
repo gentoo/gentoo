@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="An interactive, SSL-capable, man-in-the-middle HTTP proxy"
 HOMEPAGE="https://mitmproxy.org/"
-SRC_URI="https://github.com/mitmproxy/mitmproxy/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/mitmproxy/mitmproxy/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

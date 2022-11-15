@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python module for native access to the systemd facilities"
 HOMEPAGE="https://github.com/systemd/python-systemd"
-SRC_URI="https://github.com/systemd/python-systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/systemd/python-systemd/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

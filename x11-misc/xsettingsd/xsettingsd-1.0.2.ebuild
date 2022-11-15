@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Provides settings to X11 applications via the XSETTINGS specification"
 HOMEPAGE="https://github.com/derat/xsettingsd"
-SRC_URI="https://github.com/derat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/derat/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

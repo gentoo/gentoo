@@ -9,7 +9,7 @@ inherit meson gnome2-utils python-any-r1 xdg-utils
 
 DESCRIPTION="Cinnamon session manager"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-session"
-SRC_URI="https://github.com/linuxmint/cinnamon-session/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/linuxmint/cinnamon-session/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Parse human-readable date/time strings"
 HOMEPAGE="https://github.com/bear/parsedatetime"
 SRC_URI="
-	https://github.com/bear/${PN}/archive/v${PV}.tar.gz
+	https://github.com/bear/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

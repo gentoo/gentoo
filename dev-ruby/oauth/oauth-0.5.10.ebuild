@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A RubyGem for implementing both OAuth clients and servers"
 HOMEPAGE="https://github.com/oauth-xx/oauth-ruby"
-SRC_URI="https://github.com/oauth-xx/oauth-ruby/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/oauth-xx/oauth-ruby/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="${PN}-ruby-${PV}"
 
 LICENSE="MIT"

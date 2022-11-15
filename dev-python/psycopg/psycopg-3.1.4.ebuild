@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/psycopg/
 "
 SRC_URI="
-	https://github.com/psycopg/psycopg/archive/${PV}.tar.gz
+	https://github.com/psycopg/psycopg/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S=${WORKDIR}/${P}/psycopg

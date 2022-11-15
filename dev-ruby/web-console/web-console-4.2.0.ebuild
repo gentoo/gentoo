@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A debugging tool for your Ruby on Rails applications"
 HOMEPAGE="https://github.com/rails/web-console"
-SRC_URI="https://github.com/rails/web-console/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rails/web-console/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

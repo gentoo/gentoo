@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="Fast Expat based Erlang XML parsing library"
 HOMEPAGE="https://github.com/processone/fast_xml"
-SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/processone/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

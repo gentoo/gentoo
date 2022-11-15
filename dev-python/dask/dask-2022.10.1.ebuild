@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/dask/
 "
 SRC_URI="
-	https://github.com/dask/dask/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/dask/dask/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
 "
 
 LICENSE="BSD"

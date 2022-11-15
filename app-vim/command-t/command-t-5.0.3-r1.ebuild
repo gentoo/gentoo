@@ -8,7 +8,7 @@ inherit vim-plugin ruby-ng
 
 DESCRIPTION="vim plugin: fast file navigation for vim"
 HOMEPAGE="https://vim.sourceforge.io/scripts/script.php?script_id=3025 https://github.com/wincent/command-t"
-SRC_URI="https://github.com/wincent/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wincent/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
 KEYWORDS="~amd64 ~x86"
 

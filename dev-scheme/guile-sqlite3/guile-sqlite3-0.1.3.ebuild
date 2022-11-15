@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Guile bindings of sqlite3"
 HOMEPAGE="https://notabug.org/guile-sqlite3/guile-sqlite3"
-SRC_URI="https://notabug.org/guile-sqlite3/guile-sqlite3/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://notabug.org/guile-sqlite3/guile-sqlite3/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="LGPL-3+ GPL-2"

@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Daylight-savings aware timezone library"
 HOMEPAGE="https://tzinfo.github.io/"
-SRC_URI="https://github.com/tzinfo/tzinfo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tzinfo/tzinfo/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="2"

@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="XML serialization for your Active Model objects and Active Record models"
 HOMEPAGE="https://github.com/rails/activemodel-serializers-xml"
-SRC_URI="https://github.com/rails/${PN}/archive/v${PV}.tar.gz -> ${P}.tgz"
+SRC_URI="https://github.com/rails/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"

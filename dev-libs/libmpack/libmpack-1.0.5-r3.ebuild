@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="Simple implementation of msgpack in C"
 HOMEPAGE="https://github.com/libmpack/libmpack"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

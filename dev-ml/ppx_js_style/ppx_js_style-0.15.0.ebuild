@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Code style checker for Jane Street Packages"
 HOMEPAGE="https://github.com/janestreet/ppx_js_style"
-SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1-2)"

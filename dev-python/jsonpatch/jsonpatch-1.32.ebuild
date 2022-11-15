@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04"
 HOMEPAGE="https://github.com/stefankoegl/python-json-patch"
-SRC_URI="https://github.com/stefankoegl/python-json-patch/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/stefankoegl/python-json-patch/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/python-json-patch-${PV}"
 
 LICENSE="BSD"

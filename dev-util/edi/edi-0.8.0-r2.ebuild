@@ -9,7 +9,7 @@ DESCRIPTION="An EFL-based IDE"
 HOMEPAGE="https://www.enlightenment.org/about-edi
 	https://phab.enlightenment.org/w/projects/edi/
 	https://github.com/Enlightenment/edi"
-SRC_URI="https://github.com/Enlightenment/edi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Enlightenment/edi/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3 LGPL-2.1-with-linking-exception"
 SLOT="0"

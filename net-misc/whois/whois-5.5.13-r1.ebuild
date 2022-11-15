@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/rfc1036/whois.git"
 else
 	SRC_URI="mirror://debian/pool/main/w/whois/${MY_P}.tar.xz"
-	#SRC_URI="https://github.com/rfc1036/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	#SRC_URI="https://github.com/rfc1036/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}
 
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"

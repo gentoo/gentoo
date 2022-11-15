@@ -5,7 +5,7 @@ EAPI=7
 inherit cmake xdg
 DESCRIPTION="A simple gtk3 reader for fb2 ebooks"
 HOMEPAGE="https://github.com/Cactus64k/simple-fb2-reader"
-SRC_URI="https://github.com/Cactus64k/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Cactus64k/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python interface for a malware identification and classification tool"
 HOMEPAGE="https://github.com/VirusTotal/yara-python"
-SRC_URI="https://github.com/virustotal/yara-python/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/virustotal/yara-python/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

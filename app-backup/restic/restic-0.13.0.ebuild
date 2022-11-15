@@ -753,7 +753,7 @@ EGO_SUM=(
 )
 go-module_set_globals
 
-SRC_URI="https://github.com/restic/restic/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/restic/restic/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3-with-linking-exception MIT"

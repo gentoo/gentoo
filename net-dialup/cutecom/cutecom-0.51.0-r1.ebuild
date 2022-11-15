@@ -7,7 +7,7 @@ inherit cmake desktop xdg
 
 DESCRIPTION="A serial terminal, like minicom, written in Qt"
 HOMEPAGE="https://gitlab.com/cutecom/cutecom"
-SRC_URI="https://gitlab.com/cutecom/cutecom/-/archive/v${PV}/cutecom-v${PV}.tar.bz2"
+SRC_URI="https://gitlab.com/cutecom/cutecom/-/archive/refs/tags/v${PV}/cutecom-v${PV}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -7,7 +7,7 @@ DESCRIPTION="A somewhat comprehensive collection of Chinese Linux man pages"
 HOMEPAGE="https://github.com/man-pages-zh/manpages-zh"
 MY_PN="manpages-zh"
 MY_P="${MY_PN}-${PV}"
-SRC_URI="https://github.com/man-pages-zh/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/man-pages-zh/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="FDL-1.2"

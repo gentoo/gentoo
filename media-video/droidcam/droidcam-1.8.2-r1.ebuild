@@ -7,7 +7,7 @@ inherit desktop linux-mod xdg
 
 DESCRIPTION="Use your phone or tablet as webcam with a v4l device driver and app"
 HOMEPAGE="https://www.dev47apps.com/droidcam/linux/"
-SRC_URI="https://github.com/dev47apps/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dev47apps/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64"
 LICENSE="GPL-2"

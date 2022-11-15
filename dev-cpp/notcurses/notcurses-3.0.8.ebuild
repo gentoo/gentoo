@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Blingful TUIs and character graphics"
 HOMEPAGE="https://notcurses.com"
-SRC_URI="https://github.com/dankamongmen/notcurses/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/dankamongmen/notcurses/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/dankamongmen/notcurses/releases/download/v${PV}/notcurses-doc-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/parver/
 "
 SRC_URI="
-	https://github.com/RazerM/parver/archive/${PV}.tar.gz
+	https://github.com/RazerM/parver/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

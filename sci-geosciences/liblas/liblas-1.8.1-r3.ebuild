@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="C/C++ library for manipulating the LAS LiDAR format common in GIS"
 HOMEPAGE="https://github.com/libLAS/libLAS/"
-SRC_URI="https://github.com/libLAS/libLAS/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/libLAS/libLAS/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"

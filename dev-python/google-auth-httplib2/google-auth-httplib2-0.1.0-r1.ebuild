@@ -13,7 +13,7 @@ DESCRIPTION="httplib2 Transport for Google Auth"
 HOMEPAGE="https://pypi.org/project/google-auth-httplib2/
 	https://github.com/googleapis/google-auth-library-python-httplib2"
 SRC_URI="
-	https://github.com/googleapis/google-auth-library-python-httplib2/archive/v${PV}.tar.gz
+	https://github.com/googleapis/google-auth-library-python-httplib2/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 

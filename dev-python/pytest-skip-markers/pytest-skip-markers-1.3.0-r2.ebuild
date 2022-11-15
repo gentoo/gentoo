@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/saltstack/pytest-skip-markers
 "
 SRC_URI="
-	https://github.com/saltstack/${PN}/archive/${PV}.tar.gz
+	https://github.com/saltstack/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

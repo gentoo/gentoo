@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Allows ruby objects to implement equality comparison and inspection methods"
 HOMEPAGE="https://github.com/piotrmurach/equatable"
-SRC_URI="https://github.com/piotrmurach/equatable/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/piotrmurach/equatable/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

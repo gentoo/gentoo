@@ -130,7 +130,7 @@ inherit bash-completion-r1 cargo
 
 DESCRIPTION="An ls command with a lot of pretty colors and some other stuff."
 HOMEPAGE="https://github.com/Peltoche/lsd"
-SRC_URI="https://github.com/Peltoche/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/Peltoche/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 MIT Unlicense ZLIB"

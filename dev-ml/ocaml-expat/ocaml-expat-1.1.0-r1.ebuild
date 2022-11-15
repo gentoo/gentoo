@@ -9,7 +9,7 @@ IUSE="doc +ocamlopt test"
 RESTRICT="!test? ( test )"
 
 DESCRIPTION="OCaml bindings for expat"
-SRC_URI="https://github.com/whitequark/ocaml-expat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/whitequark/ocaml-expat/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/whitequark/ocaml-expat"
 
 RDEPEND="dev-libs/expat

@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Generate simple tables in terminals from a nested list of strings"
 HOMEPAGE="https://robpol86.github.io/terminaltables/"
 SRC_URI="
-	https://github.com/matthewdeanmartin/terminaltables/archive/v${PV}.tar.gz
+	https://github.com/matthewdeanmartin/terminaltables/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 LICENSE="MIT"

@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Toolkit for building modeling frameworks like Active Record and Active Resource"
 HOMEPAGE="https://github.com/rails/rails"
-SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
+SRC_URI="https://github.com/rails/rails/archive/refs/tags/v${PV}.tar.gz -> rails-${PV}.tgz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"

@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Header-only library for creating parsers according to Parsing Expression Grammar"
 HOMEPAGE="https://github.com/taocpp/PEGTL"
-SRC_URI="https://github.com/taocpp/PEGTL/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/taocpp/PEGTL/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P^^}"
 
 LICENSE="MIT"

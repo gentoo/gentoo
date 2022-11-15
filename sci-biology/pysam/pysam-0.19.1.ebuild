@@ -11,7 +11,7 @@ DESCRIPTION="Python interface for the SAM/BAM sequence alignment and mapping for
 HOMEPAGE="
 	https://github.com/pysam-developers/pysam
 	https://pypi.org/project/pysam/"
-SRC_URI="https://github.com/pysam-developers/pysam/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/pysam-developers/pysam/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

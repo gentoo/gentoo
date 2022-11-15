@@ -7,7 +7,7 @@ inherit cmake systemd toolchain-funcs
 
 DESCRIPTION="Greenbone Security Assistant"
 HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/gsad"
-SRC_URI="https://github.com/greenbone/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/greenbone/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="AGPL-3+"

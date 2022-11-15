@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="ocamldoc comment syntax parser"
 HOMEPAGE="https://github.com/ocaml-doc/octavius"
-SRC_URI="https://github.com/ocaml-doc/octavius/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocaml-doc/octavius/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"

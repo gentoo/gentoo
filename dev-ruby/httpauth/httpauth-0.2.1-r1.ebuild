@@ -11,7 +11,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Library implementing the full HTTP Authentication protocol (RFC 2617)"
 HOMEPAGE="https://github.com/Manfred/HTTPauth"
-SRC_URI="https://github.com/Manfred/HTTPauth/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Manfred/HTTPauth/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 RUBY_S=HTTPauth-${PV}
 

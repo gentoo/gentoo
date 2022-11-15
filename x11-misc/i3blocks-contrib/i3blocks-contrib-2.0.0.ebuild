@@ -6,7 +6,7 @@ inherit optfeature toolchain-funcs
 
 DESCRIPTION="A set of scripts for i3blocks, contributed by the community"
 HOMEPAGE="https://github.com/vivien/i3blocks-contrib"
-SRC_URI="https://github.com/vivien/i3blocks-contrib/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vivien/i3blocks-contrib/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

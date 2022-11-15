@@ -9,7 +9,7 @@ inherit distutils-r1 virtualx
 
 DESCRIPTION="Plugin to run the python line profiler from within the spyder editor"
 HOMEPAGE="https://github.com/spyder-ide/spyder-line-profiler"
-SRC_URI="https://github.com/spyder-ide/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/spyder-ide/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

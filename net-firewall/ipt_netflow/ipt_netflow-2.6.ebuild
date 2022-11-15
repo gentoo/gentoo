@@ -10,7 +10,7 @@ HOMEPAGE="
 	https://sourceforge.net/projects/ipt-netflow
 	https://github.com/aabc/ipt-netflow
 "
-SRC_URI="https://github.com/aabc/ipt-netflow/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/aabc/ipt-netflow/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

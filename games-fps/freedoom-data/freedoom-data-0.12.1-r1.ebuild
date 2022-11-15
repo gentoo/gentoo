@@ -9,7 +9,7 @@ inherit prefix python-any-r1 xdg
 
 DESCRIPTION="Game resources for Freedoom: Phase 1+2"
 HOMEPAGE="https://freedoom.github.io"
-SRC_URI="https://github.com/freedoom/freedoom/archive/v${PV}.tar.gz -> freedoom-${PV}.tar.gz"
+SRC_URI="https://github.com/freedoom/freedoom/archive/refs/tags/v${PV}.tar.gz -> freedoom-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

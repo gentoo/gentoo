@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="WebSockets support for any application/server"
 HOMEPAGE="https://github.com/novnc/websockify"
 SRC_URI="
-	https://github.com/novnc/websockify/archive/v${PV}.tar.gz
+	https://github.com/novnc/websockify/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="LGPL-3"

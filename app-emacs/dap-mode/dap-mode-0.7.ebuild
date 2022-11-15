@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Debug Adapter Protocol mode"
 HOMEPAGE="https://github.com/emacs-lsp/dap-mode/"
-SRC_URI="https://github.com/emacs-lsp/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/emacs-lsp/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64"

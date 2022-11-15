@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/Sphinx/
 "
 SRC_URI="
-	https://github.com/sphinx-doc/sphinx/archive/v${PV}.tar.gz
+	https://github.com/sphinx-doc/sphinx/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

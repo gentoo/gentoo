@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Arel is a Relational Algebra for Ruby"
 HOMEPAGE="https://github.com/rails/arel"
-SRC_URI="https://github.com/rails/arel/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rails/arel/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="$(ver_cut 1).0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"

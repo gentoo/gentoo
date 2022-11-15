@@ -92,7 +92,7 @@ inherit cargo
 
 DESCRIPTION="Command-line fuzzy finder"
 HOMEPAGE="https://github.com/lotabout/skim"
-SRC_URI="https://github.com/lotabout/skim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lotabout/skim/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" $(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0 MIT MPL-2.0 Unlicense"

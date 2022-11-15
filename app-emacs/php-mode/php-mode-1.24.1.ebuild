@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="GNU Emacs major mode for editing PHP code"
 HOMEPAGE="https://github.com/emacs-php/php-mode/"
-SRC_URI="https://github.com/emacs-php/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/emacs-php/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 S="${WORKDIR}"/${P}/lisp
 

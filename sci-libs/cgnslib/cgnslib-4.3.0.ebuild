@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://cgns.github.io/
 	https://github.com/CGNS/CGNS
 "
-SRC_URI="https://github.com/CGNS/CGNS/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/CGNS/CGNS/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/CGNS-${PV}"
 
 LICENSE="ZLIB"

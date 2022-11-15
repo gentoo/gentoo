@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Command line interface for testing internet bandwidth using speedtest.net"
 HOMEPAGE="https://github.com/sivel/speedtest-cli"
-SRC_URI="https://github.com/sivel/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sivel/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

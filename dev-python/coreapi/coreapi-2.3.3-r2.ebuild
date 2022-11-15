@@ -12,7 +12,7 @@ MY_P=python-client-${PV}
 DESCRIPTION="Python client library for Core API"
 HOMEPAGE="https://github.com/core-api/python-client"
 SRC_URI="
-	https://github.com/core-api/python-client/archive/${PV}.tar.gz
+	https://github.com/core-api/python-client/archive/refs/tags/${PV}.tar.gz
 		-> core-api-${MY_P}.tar.gz
 "
 S=${WORKDIR}/${MY_P}

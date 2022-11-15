@@ -6,7 +6,7 @@ EAPI=8
 DESCRIPTION="Handy scripts for ebuild development and more"
 HOMEPAGE="https://github.com/projg2/mgorny-dev-scripts/"
 SRC_URI="
-	https://github.com/projg2/mgorny-dev-scripts/archive/v${PV}.tar.gz
+	https://github.com/projg2/mgorny-dev-scripts/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

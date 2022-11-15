@@ -44,7 +44,7 @@ inherit cargo
 
 DESCRIPTION="Palette quantization library that powers pngquant and other PNG optimizers"
 HOMEPAGE="https://pngquant.org/lib/"
-SRC_URI="https://github.com/ImageOptim/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ImageOptim/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" $(cargo_crate_uris)"
 S="${WORKDIR}"/${P}/imagequant-sys
 

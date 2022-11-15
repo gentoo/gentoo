@@ -6,7 +6,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="A framework for layer 2 attacks"
 HOMEPAGE="http://www.yersinia.net/"
-SRC_URI="https://github.com/tomac/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tomac/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools pam
 
 DESCRIPTION="pam_mysql is a module for pam to authenticate users with mysql"
 HOMEPAGE="https://github.com/NigelCunningham/pam-MySQL"
-SRC_URI="https://github.com/NigelCunningham/pam-MySQL/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/NigelCunningham/pam-MySQL/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/pam-MySQL-${PV}"
 
 LICENSE="GPL-2"

@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Multiple cursors for Emacs"
 HOMEPAGE="https://github.com/magnars/multiple-cursors.el"
-SRC_URI="https://github.com/magnars/${PN}.el/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/magnars/${PN}.el/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/libtmux/
 "
 SRC_URI="
-	https://github.com/tmux-python/libtmux/archive/v${PV}.tar.gz
+	https://github.com/tmux-python/libtmux/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -11,7 +11,7 @@ COMMIT_HASH="f5b6d104140c2be93e4175c0c844aaf094eb43da"
 DESCRIPTION="A developer-friendly Python library to interact with Apache HBase"
 HOMEPAGE="https://github.com/python-happybase/happybase https://happybase.readthedocs.io/"
 SRC_URI="
-	https://github.com/python-happybase/happybase/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/python-happybase/happybase/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT Apache-2.0"

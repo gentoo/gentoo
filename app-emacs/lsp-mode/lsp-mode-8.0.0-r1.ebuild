@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Emacs client/library for the Language Server Protocol"
 HOMEPAGE="https://emacs-lsp.github.io/lsp-mode/"
-SRC_URI="https://github.com/emacs-lsp/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/emacs-lsp/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64"

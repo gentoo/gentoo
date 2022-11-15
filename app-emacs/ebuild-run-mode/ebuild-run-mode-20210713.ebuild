@@ -9,7 +9,7 @@ inherit elisp
 MY_PN="emacs-${PN}"
 DESCRIPTION="Major mode for Emacs buffers where ebuild commands run"
 HOMEPAGE="https://gitlab.com/akater/emacs-ebuild-run-mode"
-SRC_URI="https://gitlab.com/akater/${MY_PN}/-/archive/v${PV}/${MY_PN}-v${PV}.tar.gz"
+SRC_URI="https://gitlab.com/akater/${MY_PN}/-/archive/refs/tags/v${PV}/${MY_PN}-v${PV}.tar.gz"
 S="${WORKDIR}/${MY_PN}-v${PV}"
 
 LICENSE="GPL-2+"

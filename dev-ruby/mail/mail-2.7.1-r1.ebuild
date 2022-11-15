@@ -17,7 +17,7 @@ GITHUB_USER="mikel"
 
 DESCRIPTION="An email handling library"
 HOMEPAGE="https://github.com/mikel/mail"
-SRC_URI="https://github.com/${GITHUB_USER}/mail/archive/${PV}.tar.gz -> ${P}-git.tar.gz"
+SRC_URI="https://github.com/${GITHUB_USER}/mail/archive/refs/tags/${PV}.tar.gz -> ${P}-git.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"

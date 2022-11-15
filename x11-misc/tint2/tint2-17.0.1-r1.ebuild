@@ -7,7 +7,7 @@ inherit cmake xdg
 
 DESCRIPTION="Lightweight panel/taskbar for Linux"
 HOMEPAGE="https://gitlab.com/o9000/tint2"
-SRC_URI="https://gitlab.com/o9000/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
+SRC_URI="https://gitlab.com/o9000/${PN}/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.gz"
 S=${WORKDIR}/${PN}-v${PV}
 
 LICENSE="GPL-2"

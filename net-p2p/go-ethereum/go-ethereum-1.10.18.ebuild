@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="Official golang implementation of the Ethereum protocol"
 HOMEPAGE="https://github.com/ethereum/go-ethereum"
-SRC_URI="https://github.com/ethereum/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ethereum/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz"
 
 LICENSE="GPL-3+ LGPL-3+"

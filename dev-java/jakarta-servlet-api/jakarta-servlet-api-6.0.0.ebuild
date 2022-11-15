@@ -15,7 +15,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Javax servlet API"
 HOMEPAGE="https://projects.eclipse.org/projects/ee4j.servlet"
-SRC_URI="https://github.com/jakartaee/servlet/archive/${PV}-RELEASE.tar.gz -> ${P}-RELEASE.tar.gz"
+SRC_URI="https://github.com/jakartaee/servlet/archive/refs/tags/${PV}-RELEASE.tar.gz -> ${P}-RELEASE.tar.gz"
 
 LICENSE="EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="6"

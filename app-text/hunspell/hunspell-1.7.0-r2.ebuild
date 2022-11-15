@@ -9,7 +9,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Spell checker, morphological analyzer library and command-line tool"
 HOMEPAGE="https://hunspell.github.io/"
-SRC_URI="https://github.com/hunspell/hunspell/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hunspell/hunspell/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-1.1 GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"

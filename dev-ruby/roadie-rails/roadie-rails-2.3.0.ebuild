@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Hooks Roadie into your Rails application to help with email generation"
 HOMEPAGE="https://github.com/Mange/roadie-rails"
-SRC_URI="https://github.com/Mange/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Mange/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="Seamless Polymorphic Inheritance for Django Models"
 HOMEPAGE="https://pypi.org/project/django-polymorphic/"
 SRC_URI="
-	https://github.com/django-polymorphic/django-polymorphic/archive/v${PV}.tar.gz
+	https://github.com/django-polymorphic/django-polymorphic/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 S="${WORKDIR}/${P//_/-}"
 

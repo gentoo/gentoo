@@ -5,7 +5,7 @@ EAPI="8"
 
 DESCRIPTION="OWASP ModSecurity Core Rule Set"
 HOMEPAGE="https://coreruleset.org/"
-SRC_URI="https://github.com/coreruleset/coreruleset/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/coreruleset/coreruleset/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

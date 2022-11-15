@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/clikit/
 "
 SRC_URI="
-	https://github.com/sdispater/clikit/archive/${PV}.tar.gz
+	https://github.com/sdispater/clikit/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

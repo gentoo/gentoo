@@ -9,7 +9,7 @@ MY_PV="$(ver_cut 1-2)-$(ver_cut 3-4)"
 
 DESCRIPTION="OpenIB uverbs micro-benchmarks"
 HOMEPAGE="https://github.com/linux-rdma/perftest/"
-SRC_URI="https://github.com/linux-rdma/perftest/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/linux-rdma/perftest/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="|| ( GPL-2 BSD-2 )"

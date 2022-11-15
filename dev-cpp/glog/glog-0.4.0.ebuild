@@ -7,7 +7,7 @@ inherit autotools multilib-minimal
 
 DESCRIPTION="Google's C++ logging library"
 HOMEPAGE="https://github.com/google/glog"
-SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -17,7 +17,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Making tests easy on the fingers and eyes"
 HOMEPAGE="https://github.com/thoughtbot/shoulda-matchers"
-SRC_URI="https://github.com/thoughtbot/shoulda-matchers/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/thoughtbot/shoulda-matchers/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

@@ -7,7 +7,7 @@ inherit autotools systemd
 
 DESCRIPTION="Network backup and restore client and server for Unix and Windows"
 HOMEPAGE="https://burp.grke.org/"
-SRC_URI="https://github.com/grke/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/grke/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"

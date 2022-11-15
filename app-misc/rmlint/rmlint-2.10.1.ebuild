@@ -9,7 +9,7 @@ inherit gnome2-utils python-single-r1 scons-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Extremely fast tool to remove duplicates and other lint from your filesystem"
 HOMEPAGE="https://rmlint.readthedocs.io/"
-SRC_URI="https://github.com/sahib/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sahib/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

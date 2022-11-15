@@ -11,7 +11,7 @@ MY_COMMIT="4973feb538b5b98b9d8ac2f8f474202f6d73de78"
 DESCRIPTION="An implementation of the Optimized Link State Routing protocol"
 HOMEPAGE="http://www.olsr.org/"
 SRC_URI="https://github.com/OLSR/olsrd/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
-#SRC_URI="https://github.com/OLSR/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+#SRC_URI="https://github.com/OLSR/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 LICENSE="BSD LGPL-2.1"

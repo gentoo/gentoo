@@ -22,7 +22,7 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="
-		https://github.com/kbr/fritzconnection/archive/${PV}.tar.gz
+		https://github.com/kbr/fritzconnection/archive/refs/tags/${PV}.tar.gz
 			-> ${P}.gh.tar.gz
 	"
 	KEYWORDS="~amd64 ~x86"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pydata-sphinx-theme/
 "
 SRC_URI="
-	https://github.com/pydata/pydata-sphinx-theme/archive/v${PV}.tar.gz
+	https://github.com/pydata/pydata-sphinx-theme/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

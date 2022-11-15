@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="LV2 convolver plugin especially for creating reverb effects"
 HOMEPAGE="https://tomszilagyi.github.io/plugins/ir.lv2/"
-SRC_URI="https://github.com/tomszilagyi/ir.lv2/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tomszilagyi/ir.lv2/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${PN/_/.}-${PV}
 
 LICENSE="GPL-2+"

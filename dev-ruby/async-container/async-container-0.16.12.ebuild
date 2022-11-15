@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Abstract container-based parallelism using threads and processes"
 HOMEPAGE="https://github.com/socketry/async-container"
-SRC_URI="https://github.com/socketry/async-container/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/socketry/async-container/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

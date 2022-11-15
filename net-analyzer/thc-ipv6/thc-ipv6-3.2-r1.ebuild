@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_BRANCH=master
 	inherit git-r3
 else
-	SRC_URI="https://github.com/vanhauser-thc/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/vanhauser-thc/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 

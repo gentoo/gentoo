@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Library for encoding QR Codes"
 HOMEPAGE="https://github.com/whomwah/rqrcode_core/"
-SRC_URI="https://github.com/whomwah/rqrcode_core/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/whomwah/rqrcode_core/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

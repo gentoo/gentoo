@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Behaviour-driven Elisp testing"
 HOMEPAGE="https://github.com/jorgenschaefer/emacs-buttercup"
-SRC_URI="https://github.com/jorgenschaefer/emacs-${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jorgenschaefer/emacs-${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/emacs-${P}
 
 LICENSE="GPL-3+"

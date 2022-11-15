@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="Pure Erlang MySQL driver"
 HOMEPAGE="https://github.com/processone/p1_mysql"
-SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/processone/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="BSD"

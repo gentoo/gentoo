@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="The little ASGI framework that shines"
 HOMEPAGE="https://www.starlette.io/"
 SRC_URI="
-	https://github.com/encode/starlette/archive/${PV}.tar.gz
+	https://github.com/encode/starlette/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

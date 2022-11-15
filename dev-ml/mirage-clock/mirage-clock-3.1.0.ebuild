@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="A lightweight and colourful test framework"
 HOMEPAGE="https://github.com/mirage/mirage-clock"
-SRC_URI="https://github.com/mirage/mirage-clock/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mirage/mirage-clock/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"

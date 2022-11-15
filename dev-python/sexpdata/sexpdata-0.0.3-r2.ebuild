@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="a simple S-expression parser/serializer"
 HOMEPAGE="https://github.com/jd-boyd/sexpdata"
-SRC_URI="https://github.com/jd-boyd/sexpdata/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jd-boyd/sexpdata/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python library for simplified environment variable parsing"
 HOMEPAGE="https://github.com/sloria/environs"
-SRC_URI="https://github.com/sloria/environs/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/sloria/environs/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

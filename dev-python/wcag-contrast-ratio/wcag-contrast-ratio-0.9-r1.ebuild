@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/wcag-contrast-ratio/
 "
 SRC_URI="
-	https://github.com/gsnedders/wcag-contrast-ratio/archive/${PV}.tar.gz
+	https://github.com/gsnedders/wcag-contrast-ratio/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

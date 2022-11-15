@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Half-precision floating-point library"
 HOMEPAGE="http://half.sourceforge.net/"
-SRC_URI="https://github.com/ROCmSoftwarePlatform/half/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ROCmSoftwarePlatform/half/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/http-parser/
 "
 SRC_URI="
-	https://github.com/benoitc/http-parser/archive/${PV}.tar.gz
+	https://github.com/benoitc/http-parser/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

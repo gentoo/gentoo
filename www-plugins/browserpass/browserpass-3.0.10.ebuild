@@ -8,7 +8,7 @@ MY_PN=browserpass-native
 DESCRIPTION="WebExtension host binary for app-admin/pass, a UNIX password manager"
 HOMEPAGE="https://github.com/browserpass/browserpass-native"
 
-SRC_URI="https://github.com/browserpass/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/browserpass/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~mattst88/distfiles/${P}-deps.tar.xz"
 
 LICENSE="BSD ISC MIT"

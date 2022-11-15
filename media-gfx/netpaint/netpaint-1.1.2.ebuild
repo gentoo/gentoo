@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="curses-based drawing tool"
 HOMEPAGE="https://github.com/SyntheticDreams/NetPaint"
-SRC_URI="https://github.com/SyntheticDreams/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/SyntheticDreams/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"

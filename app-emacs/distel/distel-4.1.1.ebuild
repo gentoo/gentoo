@@ -8,7 +8,7 @@ inherit elisp
 DESCRIPTION="Distributed Emacs Lisp for Erlang"
 HOMEPAGE="https://massemanet.github.io/distel/
 	https://www.emacswiki.org/emacs/DistributedEmacsLisp"
-SRC_URI="https://github.com/massemanet/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/massemanet/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 # "New BSD License" according to https://code.google.com/p/distel/
 # "MIT" according to https://github.com/massemanet/distel

@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Spyder extensions for the python language server"
 HOMEPAGE="https://github.com/spyder-ide/pyls-spyder
 	https://pypi.org/project/pyls-spyder/"
-SRC_URI="https://github.com/spyder-ide/${PN}/archive/v${PV}.tar.gz -> ${P}-gh.tar.gz"
+SRC_URI="https://github.com/spyder-ide/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}-gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

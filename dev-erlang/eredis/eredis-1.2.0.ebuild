@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="Erlang Redis client"
 HOMEPAGE="https://github.com/wooga/eredis"
-SRC_URI="https://github.com/wooga/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/wooga/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="MIT"

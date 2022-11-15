@@ -12,7 +12,7 @@ PHP_EXT_NAME="translit"
 
 inherit php-ext-source-r3
 
-SRC_URI="https://github.com/derickr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/derickr/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 HOMEPAGE="https://github.com/derickr/pecl-translit"
 

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python charting for 80% of humans"
 HOMEPAGE="https://github.com/wireservice/leather https://pypi.org/project/leather/"
-SRC_URI="https://github.com/wireservice/leather/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/wireservice/leather/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

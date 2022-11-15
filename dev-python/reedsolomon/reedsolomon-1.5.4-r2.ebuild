@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Pure-Python Reed Solomon encoder/decoder"
 HOMEPAGE="https://github.com/tomerfiliba/reedsolomon https://pypi.org/project/reedsolo/"
-SRC_URI="https://github.com/tomerfiliba/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tomerfiliba/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

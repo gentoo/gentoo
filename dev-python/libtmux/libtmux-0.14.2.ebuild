@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="python api for tmux"
 HOMEPAGE="https://libtmux.git-pull.com/"
 SRC_URI="
-	https://github.com/tmux-python/${PN}/archive/v${PV}.tar.gz
+	https://github.com/tmux-python/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

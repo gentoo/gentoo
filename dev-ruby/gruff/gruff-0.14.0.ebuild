@@ -17,7 +17,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Beautiful graphs for one or multiple datasets"
 HOMEPAGE="https://github.com/topfunky/gruff"
-SRC_URI="https://github.com/topfunky/gruff/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/topfunky/gruff/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit vim-plugin
 MY_PN="${PN}.vim"
 DESCRIPTION="vim plugin: easily switch between buffers"
 HOMEPAGE="https://github.com/fholgado/minibufexpl.vim"
-SRC_URI="https://github.com/fholgado/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/fholgado/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="bufexplorer.vim"
 KEYWORDS="amd64 ~mips ppc x86"
 

@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Improved JavaScript editing mode for GNU Emacs"
 HOMEPAGE="https://github.com/mooz/js2-mode/"
-SRC_URI="https://github.com/mooz/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mooz/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

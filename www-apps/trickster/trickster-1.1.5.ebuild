@@ -7,7 +7,7 @@ inherit go-module systemd
 
 DESCRIPTION="Dashboard Accelerator for Prometheus"
 HOMEPAGE="https://github.com/tricksterproxy/trickster"
-SRC_URI="https://github.com/tricksterproxy/trickster/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tricksterproxy/trickster/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

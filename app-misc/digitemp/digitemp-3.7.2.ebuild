@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Temperature logging and reporting using Maxim's iButtons and 1-Wire protocol"
 HOMEPAGE="https://www.digitemp.com/ https://www.ibutton.com/"
-SRC_URI="https://github.com/bcl/digitemp/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bcl/digitemp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

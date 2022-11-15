@@ -7,7 +7,7 @@ inherit autotools multilib-minimal
 
 DESCRIPTION="Library for manipulation of RDF files in LADSPA plugins"
 HOMEPAGE="https://github.com/swh/LRDF"
-SRC_URI="https://github.com/swh/LRDF/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/swh/LRDF/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

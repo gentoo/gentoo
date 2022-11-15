@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pymad/
 "
 SRC_URI="
-	https://github.com/jaqx0r/${PN}/archive/version/${PV}.tar.gz
+	https://github.com/jaqx0r/${PN}/archive/refs/tags/version/${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 S="${WORKDIR}/${PN}-version-${PV}"

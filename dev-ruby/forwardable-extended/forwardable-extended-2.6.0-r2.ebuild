@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Forwardable with hash, and instance variable extensions"
 HOMEPAGE="https://rubygems.org/gems/forwardable-extended https://github.com/envygeeks/forwardable-extended"
-SRC_URI="https://github.com/envygeeks/forwardable-extended/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/envygeeks/forwardable-extended/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

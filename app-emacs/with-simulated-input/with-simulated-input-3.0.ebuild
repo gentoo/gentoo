@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Emacs Lisp macro to simulate user input non-interactively"
 HOMEPAGE="https://github.com/DarwinAwardWinner/with-simulated-input/"
-SRC_URI="https://github.com/DarwinAwardWinner/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/DarwinAwardWinner/${PN}/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

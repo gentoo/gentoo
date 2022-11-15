@@ -14,7 +14,7 @@ inherit python-single-r1 ruby-fakegem
 DESCRIPTION="A simple Ruby wrapper for processing rST via docutils"
 HOMEPAGE="https://github.com/xwmx/rbst/"
 SRC_URI="
-	https://github.com/xwmx/rbst/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/xwmx/rbst/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="MIT"

@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Simple and Fast Multimedia Library (SFML)"
 HOMEPAGE="https://www.sfml-dev.org/ https://github.com/SFML/SFML"
-SRC_URI="https://github.com/SFML/SFML/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/SFML/SFML/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0/$(ver_cut 1-2)"

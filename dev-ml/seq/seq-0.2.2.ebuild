@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Compatibility package for the standard OCaml iterator type"
 HOMEPAGE="https://github.com/c-cube/seq"
-SRC_URI="https://github.com/c-cube/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/c-cube/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

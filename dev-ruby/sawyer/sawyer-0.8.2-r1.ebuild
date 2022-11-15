@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Secret User Agent of HTTP"
 HOMEPAGE="https://github.com/lostisland/sawyer"
-SRC_URI="https://github.com/lostisland/sawyer/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lostisland/sawyer/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

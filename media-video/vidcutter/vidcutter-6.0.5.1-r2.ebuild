@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ozmartian/vidcutter"
 else
-	SRC_URI="https://github.com/ozmartian/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ozmartian/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	SRC_URI+=" https://github.com/ozmartian/${PN}/commit/1d88825feb5a73a50d019914ba9d0008562a58ce.patch -> ${P}-libmpv-api2.patch"
 	KEYWORDS="amd64 x86"
 fi

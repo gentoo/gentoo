@@ -9,7 +9,7 @@ inherit ecm
 
 DESCRIPTION="Frontend to various audio converters"
 HOMEPAGE="https://www.linux-apps.com/p/1126634/ https://github.com/dfaust/soundkonverter"
-SRC_URI="https://github.com/dfaust/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dfaust/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="5"

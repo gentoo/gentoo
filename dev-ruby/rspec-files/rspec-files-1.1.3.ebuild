@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="RSpec helpers for buffering and detecting file descriptor leaks"
 HOMEPAGE="https://github.com/socketry/rspec-files"
-SRC_URI="https://github.com/socketry/rspec-files/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/socketry/rspec-files/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

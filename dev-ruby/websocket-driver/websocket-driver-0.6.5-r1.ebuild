@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A complete implementation of the WebSocket protocols"
 HOMEPAGE="https://github.com/faye/websocket-driver-ruby"
-SRC_URI="https://github.com/faye/websocket-driver-ruby/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/faye/websocket-driver-ruby/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="${PN}-ruby-${PV}"
 
 LICENSE="MIT"

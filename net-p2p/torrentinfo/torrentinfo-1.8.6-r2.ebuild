@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A torrent file parser"
 HOMEPAGE="https://github.com/Fuuzetsu/torrentinfo"
-SRC_URI="https://github.com/Fuuzetsu/torrentinfo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Fuuzetsu/torrentinfo/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

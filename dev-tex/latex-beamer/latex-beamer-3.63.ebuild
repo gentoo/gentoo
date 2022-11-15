@@ -7,7 +7,7 @@ inherit latex-package
 
 DESCRIPTION="LaTeX class for creating presentations using a video projector"
 HOMEPAGE="https://github.com/josephwright/beamer"
-SRC_URI="https://github.com/josephwright/beamer/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/josephwright/beamer/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/beamer-${PV}"
 
 LICENSE="GPL-2 FDL-1.2 LPPL-1.3c"

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Pythonic DBus library"
 HOMEPAGE="https://github.com/LEW21/pydbus"
-SRC_URI="https://github.com/LEW21/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/LEW21/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="amd64"

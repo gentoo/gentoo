@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Zoned block device manipulation library and tools"
 HOMEPAGE="https://github.com/westerndigitalcorporation/libzbd"
-SRC_URI="https://github.com/westerndigitalcorporation/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/westerndigitalcorporation/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 # Examples/tools are GPL-3+, library is LGPL-3+
 LICENSE="GPL-3+ LGPL-3+"

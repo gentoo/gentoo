@@ -71,7 +71,7 @@ inherit cargo
 DESCRIPTION="A command-line DNS client like dig"
 HOMEPAGE="https://dns.lookup.dog https://github.com/ogham/dog"
 SRC_URI="$(cargo_crate_uris ${CRATES})
-	https://github.com/ogham/dog/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	https://github.com/ogham/dog/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="EUPL-1.2 Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 MIT Unlicense unicode"
 SLOT="0"

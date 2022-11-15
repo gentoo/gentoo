@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Python bindings for SDL multimedia library"
 HOMEPAGE="https://www.pygame.org/"
 SRC_URI="
-	https://github.com/pygame/pygame/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+	https://github.com/pygame/pygame/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

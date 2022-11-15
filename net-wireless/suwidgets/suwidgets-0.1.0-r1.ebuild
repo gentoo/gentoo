@@ -6,7 +6,7 @@ inherit qmake-utils
 
 DESCRIPTION="graphical library containing all SigDigger's custom widgets"
 HOMEPAGE="https://github.com/BatchDrake/SuWidgets"
-SRC_URI="https://github.com/BatchDrake/SuWidgets/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/BatchDrake/SuWidgets/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

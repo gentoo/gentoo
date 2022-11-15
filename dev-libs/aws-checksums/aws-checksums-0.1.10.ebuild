@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Cross-Platform HW accelerated CRC32c and CRC32 with software fallbacks"
 HOMEPAGE="https://github.com/awslabs/aws-checksums"
-SRC_URI="https://github.com/awslabs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/awslabs/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

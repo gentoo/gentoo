@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/s-yata/marisa-trie https://code.google.com/archive/
 if [[ "${PV}" == "9999" ]]; then
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/s-yata/marisa-trie/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/s-yata/marisa-trie/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="|| ( BSD-2 LGPL-2.1+ )"

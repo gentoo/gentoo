@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="A JavaScript Object Signing and Encryption (JOSE) implementation in Python"
 HOMEPAGE="https://github.com/mpdavis/python-jose https://pypi.org/project/python-jose/"
 # pypi tarball lacks unit tests
-SRC_URI="https://github.com/mpdavis/python-jose/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mpdavis/python-jose/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

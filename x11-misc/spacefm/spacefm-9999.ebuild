@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="amd64 x86"
-	SRC_URI="https://github.com/IgnorantGuru/spacefm/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/IgnorantGuru/spacefm/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="GPL-2 LGPL-2.1"

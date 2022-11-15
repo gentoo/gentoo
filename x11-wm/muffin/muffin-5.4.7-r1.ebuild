@@ -7,7 +7,7 @@ inherit gnome2-utils meson xdg-utils virtualx
 
 DESCRIPTION="Compositing window manager forked from Mutter for use with Cinnamon"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/muffin"
-SRC_URI="https://github.com/linuxmint/muffin/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/linuxmint/muffin/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-2+ LGPL-2+ LGPL-2.1+ MIT SGI-B-2.0"
 SLOT="0"

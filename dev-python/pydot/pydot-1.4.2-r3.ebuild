@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="Python interface to Graphviz's Dot language"
 HOMEPAGE="https://github.com/pydot/pydot https://pypi.org/project/pydot/"
 # pypi releases don't include tests
-SRC_URI="https://github.com/pydot/pydot/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pydot/pydot/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

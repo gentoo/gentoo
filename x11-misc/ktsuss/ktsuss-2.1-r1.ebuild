@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Graphical version of su written in C and GTK+ 2"
 HOMEPAGE="https://github.com/nomius/ktsuss/"
-SRC_URI="https://github.com/nomius/ktsuss/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nomius/ktsuss/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

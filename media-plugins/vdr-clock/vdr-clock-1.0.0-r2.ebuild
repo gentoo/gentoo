@@ -7,7 +7,7 @@ inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: Tea clock, clock"
 HOMEPAGE="https://github.com/madmartin/vdr-clock"
-SRC_URI="https://github.com/madmartin/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/madmartin/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

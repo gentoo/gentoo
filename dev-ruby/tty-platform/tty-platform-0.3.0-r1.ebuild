@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Query methods for detecting different operating systems"
 HOMEPAGE="https://github.com/piotrmurach/tty-platform"
-SRC_URI="https://github.com/piotrmurach/tty-platform/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/piotrmurach/tty-platform/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

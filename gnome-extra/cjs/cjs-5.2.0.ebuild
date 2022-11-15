@@ -9,7 +9,7 @@ inherit meson pax-utils python-any-r1 virtualx
 
 DESCRIPTION="Linux Mint's fork of gjs for Cinnamon"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cjs"
-SRC_URI="https://github.com/linuxmint/cjs/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/linuxmint/cjs/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD CC0-1.0 MIT MPL-2.0 || ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"

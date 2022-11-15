@@ -7,7 +7,7 @@ inherit go-module bash-completion-r1
 
 DESCRIPTION="Command line utility foroperations on container images and image repositories"
 HOMEPAGE="https://github.com/containers/skopeo"
-SRC_URI="https://github.com/containers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/containers/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT"
 SLOT="0"

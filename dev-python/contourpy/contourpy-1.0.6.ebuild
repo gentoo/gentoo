@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/contourpy/contourpy/
 "
 SRC_URI="
-	https://github.com/contourpy/contourpy/archive/v${PV}.tar.gz
+	https://github.com/contourpy/contourpy/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

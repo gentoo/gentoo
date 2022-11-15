@@ -6,7 +6,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Analysis tools for Multipath Transmission Control Protocol (MPTCP)"
 HOMEPAGE="https://github.com/nasa/multipath-tcp-tools"
-SRC_URI="https://github.com/nasa/multipath-tcp-tools/archive/v${PV//_p/-}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nasa/multipath-tcp-tools/archive/refs/tags/v${PV//_p/-}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="NOSA"
 SLOT="0"

@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://github.com/npm/node-semver/
 "
 SRC_URI="
-	https://github.com/podhmo/python-node-semver/archive/${PV}.tar.gz
+	https://github.com/podhmo/python-node-semver/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

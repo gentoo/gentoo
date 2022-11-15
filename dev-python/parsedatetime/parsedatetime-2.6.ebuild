@@ -11,7 +11,7 @@ DESCRIPTION="Parse human-readable date/time strings"
 HOMEPAGE="https://github.com/bear/parsedatetime"
 # Tests aren't detected in PyPI tarballs
 # https://github.com/bear/parsedatetime/pull/252
-SRC_URI="https://github.com/bear/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bear/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

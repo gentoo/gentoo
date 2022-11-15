@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Pytest plugin to support for a predictable and repeatable temporary directory"
 HOMEPAGE="https://github.com/saltstack/pytest-tempdir"
-SRC_URI="https://github.com/saltstack/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/saltstack/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

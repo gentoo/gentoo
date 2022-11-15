@@ -10,7 +10,7 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/vitalif/${PN}2.git"
 else
 	inherit vcs-snapshot
-	SRC_URI="https://github.com/vitalif/${PN}2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/vitalif/${PN}2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="An open source Linux client for Google Drive"

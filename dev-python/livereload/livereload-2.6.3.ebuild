@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python LiveReload is an awesome tool for web developers"
 HOMEPAGE="https://github.com/lepture/python-livereload"
-SRC_URI="https://github.com/lepture/python-${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lepture/python-${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/python-${P}"
 
 LICENSE="BSD"

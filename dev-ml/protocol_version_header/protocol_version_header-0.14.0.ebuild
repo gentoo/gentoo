@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Protocol aware version negotiation for OCaml"
 HOMEPAGE="https://github.com/janestreet/protocol_version_header"
-SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

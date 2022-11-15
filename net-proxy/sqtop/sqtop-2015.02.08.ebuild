@@ -9,7 +9,7 @@ MY_PV="$(ver_rs 1-2 -)"
 
 DESCRIPTION="Squid Top - top for Squid"
 HOMEPAGE="https://github.com/paleg/sqtop"
-SRC_URI="https://github.com/paleg/sqtop/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/paleg/sqtop/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2"

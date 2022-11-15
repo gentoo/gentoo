@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="MicroGnuEmacs, a port from the BSDs"
 HOMEPAGE="https://github.com/hboetes/mg"
-SRC_URI="https://github.com/hboetes/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hboetes/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

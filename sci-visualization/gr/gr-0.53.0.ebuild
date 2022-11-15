@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Universal framework for cross-platform visualization applications"
 HOMEPAGE="https://gr-framework.org/"
-SRC_URI="https://github.com/sciapp/gr/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sciapp/gr/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

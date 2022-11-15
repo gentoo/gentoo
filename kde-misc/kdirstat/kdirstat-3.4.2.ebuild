@@ -9,7 +9,7 @@ inherit ecm
 
 DESCRIPTION="GUI equivalent to the du command based on KDE Frameworks"
 HOMEPAGE="https://github.com/jeromerobert/k4dirstat"
-SRC_URI="https://github.com/jeromerobert/k4dirstat/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/jeromerobert/k4dirstat/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"

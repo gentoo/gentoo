@@ -8,7 +8,7 @@ inherit elisp
 MY_P="${PN}-el-${PV}"
 DESCRIPTION="Visual popup interface library for Emacs"
 HOMEPAGE="https://github.com/auto-complete/popup-el"
-SRC_URI="https://github.com/auto-complete/popup-el/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/auto-complete/popup-el/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

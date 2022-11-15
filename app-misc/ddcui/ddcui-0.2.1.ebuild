@@ -9,7 +9,7 @@ inherit cmake xdg
 
 DESCRIPTION="Graphical user interface for ddcutil - control monitor settings"
 HOMEPAGE="https://www.ddcutil.com/ddcui_main/"
-SRC_URI="https://github.com/rockowitz/ddcui/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rockowitz/ddcui/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64"
 LICENSE="GPL-2+"

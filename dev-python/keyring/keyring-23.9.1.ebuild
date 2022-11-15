@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/keyring/
 "
 SRC_URI="
-	https://github.com/jaraco/keyring/archive/v${PV}.tar.gz
+	https://github.com/jaraco/keyring/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

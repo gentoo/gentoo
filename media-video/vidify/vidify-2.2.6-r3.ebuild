@@ -9,7 +9,7 @@ inherit xdg distutils-r1 optfeature virtualx
 
 DESCRIPTION="Watch music videos in real time for the songs playing on your device"
 HOMEPAGE="https://vidify.org"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit meson
 
 DESCRIPTION="C implementation of the Varlink protocol and command line tool"
 HOMEPAGE="https://github.com/varlink/libvarlink"
-SRC_URI="https://github.com/varlink/libvarlink/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/varlink/libvarlink/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

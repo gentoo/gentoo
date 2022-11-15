@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Deferred and Concurrent - simple asynchronous functions for Emacs Lisp"
 HOMEPAGE="https://github.com/kiwanami/emacs-deferred/"
-SRC_URI="https://github.com/kiwanami/emacs-${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kiwanami/emacs-${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/emacs-${P}
 
 LICENSE="GPL-3+"

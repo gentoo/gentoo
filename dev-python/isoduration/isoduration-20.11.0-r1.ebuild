@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/bolsote/isoduration/
 "
 SRC_URI="
-	https://github.com/bolsote/isoduration/archive/${PV}.tar.gz
+	https://github.com/bolsote/isoduration/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

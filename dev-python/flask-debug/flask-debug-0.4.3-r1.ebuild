@@ -12,7 +12,7 @@ DESCRIPTION="Flask extension that displays various debugging insights during dev
 HOMEPAGE="https://github.com/mbr/Flask-Debug"
 # PyPI tarballs don't include tests
 # https://github.com/mbr/Flask-Debug/pull/2
-SRC_URI="https://github.com/mbr/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mbr/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"

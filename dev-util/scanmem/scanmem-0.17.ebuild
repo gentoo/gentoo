@@ -8,7 +8,7 @@ inherit autotools python-single-r1
 
 DESCRIPTION="Locate and modify variables in executing processes"
 HOMEPAGE="https://github.com/scanmem/scanmem"
-SRC_URI="https://github.com/scanmem/scanmem/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/scanmem/scanmem/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

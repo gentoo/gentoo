@@ -9,7 +9,7 @@ inherit python-single-r1 toolchain-funcs
 
 DESCRIPTION="Python package for Tcl"
 HOMEPAGE="http://jfontain.free.fr/tclpython.htm"
-SRC_URI="https://github.com/amykyta3/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/amykyta3/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

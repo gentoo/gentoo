@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Log parsing and notification program"
 HOMEPAGE="https://inversepath.com/tenshi.html https://github.com/f-secure-foundry/tenshi"
-SRC_URI="https://github.com/f-secure-foundry/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/f-secure-foundry/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"

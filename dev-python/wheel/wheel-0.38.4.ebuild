@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/wheel/
 "
 SRC_URI="
-	https://github.com/pypa/wheel/archive/${PV}.tar.gz
+	https://github.com/pypa/wheel/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

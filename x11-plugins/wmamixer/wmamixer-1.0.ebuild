@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="ALSA mixer dockapp, fork of wmsmixer"
 HOMEPAGE="https://github.com/gryf/wmamixer"
-SRC_URI="https://github.com/gryf/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gryf/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

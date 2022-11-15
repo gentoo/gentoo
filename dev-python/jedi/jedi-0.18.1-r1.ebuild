@@ -17,7 +17,7 @@ HOMEPAGE="
 	https://pypi.org/project/jedi/
 "
 SRC_URI="
-	https://github.com/davidhalter/${PN}/archive/v${PV}.tar.gz
+	https://github.com/davidhalter/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	https://github.com/davidhalter/typeshed/archive/${TYPESHED_P#typeshed-}.tar.gz
 		-> ${TYPESHED_P}.tar.gz

@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A fast, safe, extensible parser for CommonMark, wrapping the libcmark library"
 HOMEPAGE="https://github.com/gjtorikian/commonmarker"
-SRC_URI="https://github.com/gjtorikian/commonmarker/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gjtorikian/commonmarker/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

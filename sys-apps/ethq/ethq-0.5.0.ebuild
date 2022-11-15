@@ -10,7 +10,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Ethernet NIC Queue stats viewer"
 HOMEPAGE="https://github.com/isc-projects/ethq"
-SRC_URI="https://github.com/isc-projects/ethq/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/isc-projects/ethq/archive/refs/tags/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"

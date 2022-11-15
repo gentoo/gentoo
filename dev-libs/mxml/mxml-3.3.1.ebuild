@@ -10,7 +10,7 @@ HOMEPAGE="
 	https://github.com/michaelrsweet/mxml
 	https://www.msweet.org/mxml/
 "
-SRC_URI="https://github.com/michaelrsweet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/michaelrsweet/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Mini-XML"
 SLOT="0"

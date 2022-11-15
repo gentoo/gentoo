@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Extremely fast non-cryptographic hash algorithm"
 HOMEPAGE="http://www.xxhash.net"
-SRC_URI="https://github.com/Cyan4973/xxHash/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Cyan4973/xxHash/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-2+"
 # https://abi-laboratory.pro/tracker/timeline/xxhash

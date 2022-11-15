@@ -15,7 +15,7 @@ inherit ruby-fakegem eapi7-ver
 
 DESCRIPTION="An extension of CSS3, adding nested rules, variables, mixins, and more"
 HOMEPAGE="https://sass-lang.com/"
-SRC_URI="https://github.com/sass/ruby-sass/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sass/ruby-sass/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="ruby-sass-${PV}"
 
 LICENSE="MIT"

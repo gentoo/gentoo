@@ -9,7 +9,7 @@ inherit optfeature python-single-r1 tmpfiles xdg-utils
 
 DESCRIPTION="Daemon for monitoring and adaptive tuning of system devices"
 HOMEPAGE="https://github.com/redhat-performance/tuned"
-SRC_URI="https://github.com/redhat-performance/tuned/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/redhat-performance/tuned/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

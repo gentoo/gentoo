@@ -7,7 +7,7 @@ inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 
 DESCRIPTION="Large collection of LADSPA audio plugins/effects"
 HOMEPAGE="http://plugin.org.uk"
-SRC_URI="https://github.com/swh/ladspa/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/swh/ladspa/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/kiwisolver/
 "
 SRC_URI="
-	https://github.com/nucleic/kiwi/archive/${PV}.tar.gz -> ${MY_P}.gh.tar.gz
+	https://github.com/nucleic/kiwi/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}
 

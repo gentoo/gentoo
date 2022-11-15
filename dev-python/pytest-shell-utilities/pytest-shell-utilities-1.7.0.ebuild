@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/saltstack/pytest-shell-utilities/
 "
 SRC_URI="
-	https://github.com/saltstack/pytest-shell-utilities/archive/${PV}.tar.gz
+	https://github.com/saltstack/pytest-shell-utilities/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

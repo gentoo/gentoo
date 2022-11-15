@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/jaraco.logging/
 "
 SRC_URI="
-	https://github.com/jaraco/jaraco.logging/archive/v${PV}.tar.gz
+	https://github.com/jaraco/jaraco.logging/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

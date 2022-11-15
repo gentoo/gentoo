@@ -11,8 +11,8 @@ CRYSTAL_MOLINILLO_P=crystal-molinillo-${CRYSTAL_MOLINILLO_PV}
 DESCRIPTION="Dependency manager for the Crystal language"
 HOMEPAGE="https://github.com/crystal-lang/shards"
 SRC_URI="
-	https://github.com/crystal-lang/shards/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/crystal-lang/crystal-molinillo/archive/v${CRYSTAL_MOLINILLO_PV}.tar.gz -> ${CRYSTAL_MOLINILLO_P}.tar.gz
+	https://github.com/crystal-lang/shards/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/crystal-lang/crystal-molinillo/archive/refs/tags/v${CRYSTAL_MOLINILLO_PV}.tar.gz -> ${CRYSTAL_MOLINILLO_P}.tar.gz
 "
 
 LICENSE="Apache-2.0"

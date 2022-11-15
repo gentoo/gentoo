@@ -7,7 +7,7 @@ inherit cmake udev
 
 DESCRIPTION="INDI Astronomical Control Protocol library"
 HOMEPAGE="https://www.indilib.org/"
-SRC_URI="https://github.com/${PN}/${PN/lib/}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN/lib/}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P/lib/}"
 
 LICENSE="BSD GPL-2+ LGPL-2+ LGPL-2.1+"

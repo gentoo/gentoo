@@ -8,7 +8,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: display tags of the current file ordered by scope"
 HOMEPAGE="https://majutsushi.github.com/tagbar/
 	https://www.vim.org/scripts/script.php?script_id=3465"
-SRC_URI="https://github.com/majutsushi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/majutsushi/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="vim"
 KEYWORDS="amd64 x86"
 

@@ -7,7 +7,7 @@ inherit cmake xdg-utils
 
 DESCRIPTION="Official authentication app for German ID cards and residence permits"
 HOMEPAGE="https://www.ausweisapp.bund.de/"
-SRC_URI="https://github.com/Governikus/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Governikus/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="EUPL-1.2"
 SLOT="0"

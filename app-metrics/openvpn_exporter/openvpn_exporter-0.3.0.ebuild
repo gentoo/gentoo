@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="Prometheus Exporter for OpenVPN"
 HOMEPAGE="https://github.com/kumina/openvpn_exporter"
-SRC_URI="https://github.com/kumina/openvpn_exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kumina/openvpn_exporter/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD MIT"

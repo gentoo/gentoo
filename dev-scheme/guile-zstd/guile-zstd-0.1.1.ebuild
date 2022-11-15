@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="GNU Guile bindings to the zstd compression library"
 HOMEPAGE="https://notabug.org/guile-zstd/guile-zstd/"
-SRC_URI="https://notabug.org/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://notabug.org/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}
 
 LICENSE="GPL-3+"

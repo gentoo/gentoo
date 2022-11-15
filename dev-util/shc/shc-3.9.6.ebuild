@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="A (shell-) script compiler/scrambler"
 HOMEPAGE="https://neurobin.org/projects/softwares/unix/shc/"
-SRC_URI="https://github.com/neurobin/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/neurobin/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

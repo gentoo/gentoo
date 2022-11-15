@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Header-file-only, JSON parser serializer in C++"
 HOMEPAGE="https://github.com/kazuho/picojson"
-SRC_URI="https://github.com/kazuho/picojson/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kazuho/picojson/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

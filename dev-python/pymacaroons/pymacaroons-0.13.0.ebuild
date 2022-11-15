@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/ecordell/pymacaroons
 	https://pypi.org/project/pymacaroons/
 "
-SRC_URI="https://github.com/ecordell/pymacaroons/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/ecordell/pymacaroons/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

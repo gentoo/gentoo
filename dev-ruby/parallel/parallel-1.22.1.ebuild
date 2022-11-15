@@ -16,7 +16,7 @@ inherit ruby-fakegem
 DESCRIPTION="Run any code in parallel Processes or Threads"
 HOMEPAGE="https://github.com/grosser/parallel"
 LICENSE="MIT"
-SRC_URI="https://github.com/grosser/parallel/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/grosser/parallel/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~riscv"
 SLOT="1"

@@ -17,7 +17,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A ruby web page templating engine"
 HOMEPAGE="https://haml.info/"
-SRC_URI="https://github.com/haml/haml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/haml/haml/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

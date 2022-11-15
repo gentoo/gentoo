@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Quickly switch windows in Emacs"
 HOMEPAGE="https://github.com/abo-abo/ace-window/"
-SRC_URI="https://github.com/abo-abo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/abo-abo/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64 ~x86"

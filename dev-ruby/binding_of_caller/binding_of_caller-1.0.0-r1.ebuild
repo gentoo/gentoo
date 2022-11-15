@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Retrieve the binding of a method's caller"
 HOMEPAGE="https://github.com/banister/binding_of_caller"
-SRC_URI="https://github.com/banister/binding_of_caller/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/banister/binding_of_caller/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

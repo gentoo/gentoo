@@ -7,7 +7,7 @@ inherit desktop flag-o-matic qmake-utils xdg-utils toolchain-funcs
 
 DESCRIPTION="UNetbootin installs Linux/BSD distributions to a partition or USB drive"
 HOMEPAGE="https://github.com/unetbootin/unetbootin"
-SRC_URI="https://github.com/unetbootin/unetbootin/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/unetbootin/unetbootin/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

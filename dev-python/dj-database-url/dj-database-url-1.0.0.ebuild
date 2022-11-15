@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/dj-database-url/
 "
 SRC_URI="
-	https://github.com/jazzband/dj-database-url/archive/v${PV}.tar.gz
+	https://github.com/jazzband/dj-database-url/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

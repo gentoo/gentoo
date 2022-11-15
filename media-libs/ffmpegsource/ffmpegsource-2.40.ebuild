@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/FFMS/ffms2.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/FFMS/ffms2/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/FFMS/ffms2/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/ffms2-${PV}
 
 	KEYWORDS="amd64 x86"

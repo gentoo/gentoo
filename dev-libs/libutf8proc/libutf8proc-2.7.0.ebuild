@@ -8,7 +8,7 @@ inherit ruby-single toolchain-funcs
 
 DESCRIPTION="A clean C Library for processing UTF-8 Unicode data"
 HOMEPAGE="https://github.com/JuliaStrings/utf8proc"
-SRC_URI="https://github.com/JuliaStrings/${PN#lib}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/JuliaStrings/${PN#lib}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	cjk? ( https://dev.gentoo.org/~hattya/distfiles/${PN}-EastAsianWidth-14.0.0.xz )"
 
 LICENSE="MIT"

@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Colorize your text in the terminal"
 HOMEPAGE="https://github.com/octopress/colorator"
-SRC_URI="https://github.com/octopress/colorator/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/octopress/colorator/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

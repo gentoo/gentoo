@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Convenient wrapper for Ruby's ENV"
 HOMEPAGE="https://github.com/e2/nenv"
-SRC_URI="https://github.com/e2/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/e2/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

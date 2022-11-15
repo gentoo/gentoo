@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/mock/
 "
 SRC_URI="
-	https://github.com/testing-cabal/mock/archive/${PV}.tar.gz
+	https://github.com/testing-cabal/mock/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

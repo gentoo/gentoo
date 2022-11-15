@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Python 3 client for the beanstalkd work queue"
 HOMEPAGE="https://greenstalk.readthedocs.io/ https://github.com/justinmayhew/greenstalk"
 SRC_URI="
-	https://github.com/justinmayhew/greenstalk/archive/v${PV}.tar.gz
+	https://github.com/justinmayhew/greenstalk/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

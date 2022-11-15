@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Tools for assembling a package archive"
 HOMEPAGE="https://github.com/melpa/package-build/"
-SRC_URI="https://github.com/melpa/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/melpa/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

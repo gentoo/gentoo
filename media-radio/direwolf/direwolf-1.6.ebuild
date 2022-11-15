@@ -7,7 +7,7 @@ inherit cmake systemd udev
 
 DESCRIPTION="Decoded Information from Radio Emissions for Windows Or Linux Fans"
 HOMEPAGE="https://github.com/wb2osz/direwolf/blob/master/README.md"
-SRC_URI="https://github.com/wb2osz/direwolf/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wb2osz/direwolf/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"

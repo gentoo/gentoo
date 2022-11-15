@@ -9,7 +9,7 @@ GIT_COMMIT="99981d7"
 DESCRIPTION="Prometheus push acceptor for ephemeral and batch jobs"
 HOMEPAGE="https://github.com/prometheus/pushgateway"
 SRC_URI="
-	https://github.com/prometheus/pushgateway/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/prometheus/pushgateway/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz
 "
 

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/datadriventests/ddt/
 "
 SRC_URI="
-	https://github.com/datadriventests/ddt/archive/${PV}.tar.gz
+	https://github.com/datadriventests/ddt/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

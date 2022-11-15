@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="minimal dumb-terminal emulation program"
 HOMEPAGE="https://github.com/npat-efault/picocom"
-SRC_URI="https://github.com/npat-efault/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/npat-efault/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

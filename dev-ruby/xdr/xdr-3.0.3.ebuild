@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Read/write XDR encoded data structures"
 HOMEPAGE="https://github.com/astroband/ruby-xdr"
-SRC_URI="https://github.com/astroband/ruby-xdr/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/astroband/ruby-xdr/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="ruby-${P}"
 
 LICENSE="Apache-2.0"

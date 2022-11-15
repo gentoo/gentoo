@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/requests-toolbelt/
 "
 SRC_URI="
-	https://github.com/requests/toolbelt/archive/${PV}.tar.gz
+	https://github.com/requests/toolbelt/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S=${WORKDIR}/${P#requests-}

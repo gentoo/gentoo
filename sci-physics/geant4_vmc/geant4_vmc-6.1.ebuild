@@ -10,7 +10,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/vmc-project/${PN}.git"
 else
 	MY_PV=$(ver_rs 1- -)
-	SRC_URI="https://github.com/vmc-project/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/vmc-project/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 	KEYWORDS="~amd64 ~x86"
 fi

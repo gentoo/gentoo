@@ -13,7 +13,7 @@ VERSION_GIT_HASH="6f700925cef22d8b2a100840c8d9eb084dadfece"
 
 DESCRIPTION="Tailscale vpn client"
 HOMEPAGE="https://tailscale.com"
-SRC_URI="https://github.com/tailscale/tailscale/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tailscale/tailscale/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="MIT"

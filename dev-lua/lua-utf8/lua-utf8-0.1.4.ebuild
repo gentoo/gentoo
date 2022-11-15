@@ -9,7 +9,7 @@ inherit lua toolchain-funcs
 
 DESCRIPTION="A UTF-8 support module for Lua and LuaJIT"
 HOMEPAGE="https://github.com/starwing/luautf8"
-SRC_URI="https://github.com/starwing/luautf8/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/starwing/luautf8/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN//-/}-${PV}"
 
 LICENSE="MIT"

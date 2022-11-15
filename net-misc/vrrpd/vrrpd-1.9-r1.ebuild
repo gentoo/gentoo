@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Virtual Router Redundancy Protocol Daemon"
 HOMEPAGE="http://numsys.eu/vrrp_art.php"
-SRC_URI="https://github.com/fredbcode/Vrrpd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/fredbcode/Vrrpd/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/Vrrpd-${PV}"
 
 LICENSE="GPL-2+"

@@ -11,7 +11,7 @@ HOMEPAGE="
 	https://github.com/Wargus/wargus/
 "
 SRC_URI="
-	https://github.com/Wargus/wargus/archive/v${PV}.tar.gz
+	https://github.com/Wargus/wargus/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

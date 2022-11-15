@@ -13,10 +13,10 @@ DESCRIPTION="Integrates commandline JDK tools and profiling capabilities"
 HOMEPAGE="https://visualvm.github.io"
 
 # Netbeans plattform is already included in the main archive this time
-#    SRC_URI="https://github.com/oracle/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+#    SRC_URI="https://github.com/oracle/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 #       https://github.com/oracle/${PN}/releases/download/${PV}/${NBZ}"
 # The extra jar files are not present in gentoo atm so bundling them
-SRC_URI="https://github.com/oracle/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/oracle/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://repo1.maven.org/maven2/org/openjdk/jmc/flightrecorder/8.0.1/flightrecorder-8.0.1.jar
 	https://repo1.maven.org/maven2/org/openjdk/jmc/common/8.0.1/common-8.0.1.jar
 	https://repo1.maven.org/maven2/org/lz4/lz4-java/1.7.1/lz4-java-1.7.1.jar

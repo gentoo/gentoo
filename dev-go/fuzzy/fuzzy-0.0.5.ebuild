@@ -8,7 +8,7 @@ inherit golang-build golang-vcs-snapshot
 
 DESCRIPTION="Go library that provides fuzzy string matching"
 HOMEPAGE="https://github.com/sahilm/fuzzy"
-SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://${EGO_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PVR}"

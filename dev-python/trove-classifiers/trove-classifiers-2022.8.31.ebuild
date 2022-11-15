@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/trove-classifiers/
 "
 SRC_URI="
-	https://github.com/pypa/trove-classifiers/archive/${PV}.tar.gz
+	https://github.com/pypa/trove-classifiers/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -8,7 +8,7 @@ inherit elisp
 DESCRIPTION="Emacs major mode for editing D code"
 HOMEPAGE="https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode
 	https://www.emacswiki.org/emacs/DMode"
-SRC_URI="https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/Emacs-D-Mode-${PV}"
 
 LICENSE="GPL-2+"

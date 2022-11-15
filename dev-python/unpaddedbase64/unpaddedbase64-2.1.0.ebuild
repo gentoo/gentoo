@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/matrix-org/python-unpaddedbase64/
 	https://pypi.org/project/unpaddedbase64/
 "
-SRC_URI="https://github.com/matrix-org/python-unpaddedbase64/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/matrix-org/python-unpaddedbase64/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 S="${WORKDIR}/python-${P}"
 

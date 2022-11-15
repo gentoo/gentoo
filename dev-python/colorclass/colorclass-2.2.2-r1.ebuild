@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/matthewdeanmartin/colorclass/
 "
 SRC_URI="
-	https://github.com/matthewdeanmartin/colorclass/archive/v${PV}.tar.gz
+	https://github.com/matthewdeanmartin/colorclass/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

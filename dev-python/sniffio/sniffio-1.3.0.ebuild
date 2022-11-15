@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/sniffio/
 "
 SRC_URI="
-	https://github.com/python-trio/sniffio/archive/v${PV}.tar.gz
+	https://github.com/python-trio/sniffio/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

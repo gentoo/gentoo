@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Auto-complete package"
 HOMEPAGE="https://github.com/auto-complete/auto-complete/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.1+"
 SLOT="0"

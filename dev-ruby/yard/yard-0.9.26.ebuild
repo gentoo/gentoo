@@ -21,7 +21,7 @@ DESCRIPTION="Documentation generation tool for the Ruby programming language"
 HOMEPAGE="https://yardoc.org/"
 
 # The gem lakes the gemspec file needed to pass tests.
-SRC_URI="https://github.com/lsegal/yard/archive/v${PV}.tar.gz -> ${P}-git.tgz"
+SRC_URI="https://github.com/lsegal/yard/archive/refs/tags/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"
 SLOT="0"

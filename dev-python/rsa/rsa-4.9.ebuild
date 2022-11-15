@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/rsa/
 "
 SRC_URI="
-	https://github.com/sybrenstuvel/python-rsa/archive/version-${PV}.tar.gz
+	https://github.com/sybrenstuvel/python-rsa/archive/refs/tags/version-${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

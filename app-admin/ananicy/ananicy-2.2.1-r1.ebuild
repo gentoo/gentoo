@@ -9,7 +9,7 @@ inherit python-single-r1
 
 DESCRIPTION="ANother Auto NICe daemon"
 HOMEPAGE="https://github.com/Nefelim4ag/Ananicy"
-SRC_URI="https://github.com/Nefelim4ag/Ananicy/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Nefelim4ag/Ananicy/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P^}"
 
 LICENSE="GPL-3"

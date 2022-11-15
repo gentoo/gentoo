@@ -7,7 +7,7 @@ inherit flag-o-matic fortran-2 toolchain-funcs
 
 DESCRIPTION="Optimized BLAS library based on GotoBLAS2"
 HOMEPAGE="http://xianyi.github.io/OpenBLAS/"
-SRC_URI="https://github.com/xianyi/OpenBLAS/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/xianyi/OpenBLAS/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/OpenBLAS-${PV}
 
 LICENSE="BSD"

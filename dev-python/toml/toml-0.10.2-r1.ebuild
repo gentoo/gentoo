@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/toml/
 "
 SRC_URI="
-	https://github.com/uiri/${PN}/archive/${PV}.tar.gz -> ${P}-1.tar.gz
+	https://github.com/uiri/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}-1.tar.gz
 	test? (
 		https://github.com/BurntSushi/toml-test/archive/${TOML_TEST_VER}.tar.gz
 			-> toml-test-${TOML_TEST_VER}.tar.gz

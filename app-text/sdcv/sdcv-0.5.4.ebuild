@@ -8,7 +8,7 @@ inherit cmake plocale
 
 DESCRIPTION="Console version of Stardict program"
 HOMEPAGE="https://dushistov.github.io/sdcv/"
-SRC_URI="https://github.com/Dushistov/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Dushistov/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

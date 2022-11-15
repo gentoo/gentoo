@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/nspektr/
 "
 SRC_URI="
-	https://github.com/jaraco/nspektr/archive/v${PV}.tar.gz
+	https://github.com/jaraco/nspektr/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

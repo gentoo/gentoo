@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Library for automated conversion of OCaml-values to and from S-expressions"
 HOMEPAGE="https://github.com/janestreet/sexplib0"
-SRC_URI="https://github.com/janestreet/sexplib0/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/janestreet/sexplib0/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

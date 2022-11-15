@@ -6,7 +6,7 @@ inherit bash-completion-r1 go-module
 
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 SRC_URI="
-	https://github.com/rclone/rclone/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/rclone/rclone/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~slashbeast/distfiles/${PN}/${P}-deps.tar.xz
 "
 

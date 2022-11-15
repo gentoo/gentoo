@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://googleapis.dev/python/google-api-core/latest/index.html
 "
 SRC_URI="
-	https://github.com/googleapis/python-api-core/archive/v${PV}.tar.gz
+	https://github.com/googleapis/python-api-core/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

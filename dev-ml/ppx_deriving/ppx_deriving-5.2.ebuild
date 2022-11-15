@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Type-driven code generation for OCaml"
 HOMEPAGE="https://github.com/ocaml-ppx/ppx_deriving"
-SRC_URI="https://github.com/ocaml-ppx/ppx_deriving/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocaml-ppx/ppx_deriving/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

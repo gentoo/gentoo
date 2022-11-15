@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A tool that figures out the differences between two similar XML files"
 HOMEPAGE="https://github.com/Shoobx/xmldiff"
-SRC_URI="https://github.com/Shoobx/xmldiff/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Shoobx/xmldiff/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

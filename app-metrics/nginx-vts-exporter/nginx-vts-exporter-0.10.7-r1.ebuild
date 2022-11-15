@@ -8,7 +8,7 @@ EXPORTER_COMMIT=b935b793fbd8478d3feea529b036e753169ddabd
 
 DESCRIPTION="Nginx virtual host traffic stats exporter for Prometheus"
 HOMEPAGE="https://github.com/hnlq715/nginx-vts-exporter"
-SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://${EGO_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT Apache-2.0 BSD"
 SLOT="0"

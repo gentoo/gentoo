@@ -10,7 +10,7 @@ inherit cmake python-single-r1 toolchain-funcs virtualx wxwidgets
 
 DESCRIPTION="GNU Data Language"
 HOMEPAGE="https://github.com/gnudatalanguage/gdl"
-SRC_URI="https://github.com/gnudatalanguage/gdl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gnudatalanguage/gdl/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

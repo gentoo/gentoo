@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Efficient evaluation of integrals over ab initio effective core potentials"
 HOMEPAGE="https://github.com/robashaw/libecpint"
-SRC_URI="https://github.com/robashaw/libecpint/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/robashaw/libecpint/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -8,7 +8,7 @@ EGIT_COMMIT="45b0a11294c59bfd806a57807aaa2a185f761cd5"
 
 inherit fcaps go-module systemd tmpfiles
 
-ARCHIVE_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+ARCHIVE_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI="${ARCHIVE_URI} https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 
 KEYWORDS="~amd64"

@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Multiprotocol chatbot designed to be easily deployable and maintainable"
 HOMEPAGE="https://errbot.readthedocs.io/en/latest/"
-SRC_URI="https://github.com/errbotio/errbot/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/errbotio/errbot/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES="${FILESDIR}/err-6.1.8-fix-irc-backend.patch"

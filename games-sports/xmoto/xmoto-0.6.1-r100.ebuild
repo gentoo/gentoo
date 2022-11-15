@@ -9,7 +9,7 @@ inherit cmake lua-single
 
 DESCRIPTION="A challenging 2D motocross platform game, where physics play an important role"
 HOMEPAGE="https://xmoto.tuxfamily.org"
-SRC_URI="https://github.com/xmoto/xmoto/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/xmoto/xmoto/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

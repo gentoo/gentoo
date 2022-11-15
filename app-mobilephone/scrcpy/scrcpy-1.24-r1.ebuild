@@ -8,7 +8,7 @@ inherit meson xdg
 DESCRIPTION="Display and control your Android device"
 HOMEPAGE="https://github.com/Genymobile/scrcpy"
 # Source code and server part on Android device
-SRC_URI="https://github.com/Genymobile/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/Genymobile/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/Genymobile/${PN}/releases/download/v${PV}/${PN}-server-v${PV}"
 
 LICENSE="Apache-2.0"

@@ -17,7 +17,7 @@ if [[ ${PV} = *9999 ]]; then
 	S="${WORKDIR}/${PN}"
 	EGIT_CHECKOUT_DIR="${S}"
 else
-	SRC_URI="https://github.com/ros-infrastructure/rospkg/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ros-infrastructure/rospkg/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
 fi
 

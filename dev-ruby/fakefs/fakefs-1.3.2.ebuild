@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A fake filesystem. Use it in your tests"
 HOMEPAGE="https://github.com/defunkt/fakefs"
-SRC_URI="https://github.com/defunkt/fakefs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/defunkt/fakefs/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

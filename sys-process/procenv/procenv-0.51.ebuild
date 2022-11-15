@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="command-line utility to show process environment"
 HOMEPAGE="https://github.com/jamesodhunt/procenv"
-SRC_URI="https://github.com/jamesodhunt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jamesodhunt/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

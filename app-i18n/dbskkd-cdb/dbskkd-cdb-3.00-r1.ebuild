@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="SKK dictionary server based on cdb"
 HOMEPAGE="https://github.com/jj1bdx/dbskkd-cdb"
-SRC_URI="https://github.com/jj1bdx/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jj1bdx/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit cmake
 DESCRIPTION="Rapid fuzzy string matching in C++"
 HOMEPAGE="https://github.com/maxbachmann/rapidfuzz-cpp/"
 SRC_URI="
-	https://github.com/maxbachmann/rapidfuzz-cpp/archive/v${PV}.tar.gz
+	https://github.com/maxbachmann/rapidfuzz-cpp/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

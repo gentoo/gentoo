@@ -6,7 +6,7 @@ inherit cmake
 
 DESCRIPTION="GNUstep Objective-C runtime"
 HOMEPAGE="http://www.gnustep.org"
-SRC_URI="https://github.com/gnustep/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/gnustep/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/Tessil/robin-map/archive/757de82.tar.gz"
 
 LICENSE="MIT"

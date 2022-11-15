@@ -9,7 +9,7 @@ PATCHSET_VER="2"
 
 DESCRIPTION="Advanced development platform for intelligent, distributed applications"
 HOMEPAGE="http://mozart2.org/"
-SRC_URI="https://github.com/mozart/mozart2/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/mozart/mozart2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~keri/distfiles/mozart/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
 
 LICENSE="BSD-2"

@@ -8,7 +8,7 @@ inherit desktop qmake-utils xdg-utils
 MY_P="${P/p/P}-src"
 DESCRIPTION="OpenGL-based panoramic image viewer"
 HOMEPAGE="https://github.com/lazarus-pkgs/panini"
-SRC_URI="https://github.com/lazarus-pkgs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lazarus-pkgs/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

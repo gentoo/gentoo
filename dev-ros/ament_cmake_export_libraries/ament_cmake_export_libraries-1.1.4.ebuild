@@ -13,7 +13,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/ament/ament_cmake"
 	S=${WORKDIR}/${P}/${PN}
 else
-	SRC_URI="https://github.com/ament/ament_cmake/archive/${PV}.tar.gz -> ${ROS_PN}-${PV}.tar.gz"
+	SRC_URI="https://github.com/ament/ament_cmake/archive/refs/tags/${PV}.tar.gz -> ${ROS_PN}-${PV}.tar.gz"
 	S="${WORKDIR}/${ROS_PN}-${PV}/${PN}"
 fi
 

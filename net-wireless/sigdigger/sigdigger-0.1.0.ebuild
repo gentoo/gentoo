@@ -6,7 +6,7 @@ inherit qmake-utils
 
 DESCRIPTION="The free digital signal analyzer"
 HOMEPAGE="https://github.com/BatchDrake/SigDigger"
-SRC_URI="https://github.com/BatchDrake/SigDigger/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/BatchDrake/SigDigger/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -9,7 +9,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="An icon taskbar for the Gnome Shell"
 HOMEPAGE="https://github.com/home-sweet-gnome/dash-to-panel"
 SRC_URI="
-	https://github.com/home-sweet-gnome/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/home-sweet-gnome/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	branding? ( https://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )
 "
 

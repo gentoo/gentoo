@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/daemonize/
 "
 SRC_URI="
-	https://github.com/thesharp/daemonize/archive/v${PV}.tar.gz
+	https://github.com/thesharp/daemonize/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

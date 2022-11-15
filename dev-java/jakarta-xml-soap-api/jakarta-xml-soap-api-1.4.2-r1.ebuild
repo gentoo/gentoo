@@ -13,7 +13,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="SOAP with Attachments API for Java (SAAJ) API (Eclipse Project for JAX-WS)"
 HOMEPAGE="https://projects.eclipse.org/projects/ee4j.jaxws"
-SRC_URI="https://github.com/eclipse-ee4j/saaj-api/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/eclipse-ee4j/saaj-api/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 # EDL-1.0 equivalent to BSD
 # - 'SPDX-License-Identifier: BSD-3-Clause' in source files' headers

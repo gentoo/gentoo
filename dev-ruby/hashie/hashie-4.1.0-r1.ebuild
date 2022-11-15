@@ -17,7 +17,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Hashie is a small collection of tools that make hashes more powerful"
 HOMEPAGE="https://www.mobomo.com/2009/11/hashie-the-hash-toolkit/"
-SRC_URI="https://github.com/intridea/hashie/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/intridea/hashie/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

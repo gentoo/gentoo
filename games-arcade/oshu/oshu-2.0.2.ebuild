@@ -13,7 +13,7 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/fmang/oshu.git"
 	SRC_URI="osu-skin? ( https://www.mg0.fr/oshu/skins/osu-v1.tar.gz -> ${PN}-skin-v1.tar.gz )"
 else
-	SRC_URI="https://github.com/fmang/oshu/archive/${PV}.tar.gz -> oshu-${PV}.tar.gz
+	SRC_URI="https://github.com/fmang/oshu/archive/refs/tags/${PV}.tar.gz -> oshu-${PV}.tar.gz
 		osu-skin? ( https://www.mg0.fr/oshu/skins/osu-v1.tar.gz -> ${PN}-skin-v1.tar.gz )"
 	KEYWORDS="~amd64 ~x86"
 fi

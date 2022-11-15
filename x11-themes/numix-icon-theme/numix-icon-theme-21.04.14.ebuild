@@ -7,7 +7,7 @@ inherit xdg
 
 DESCRIPTION="An official icon theme from the Numix Project"
 HOMEPAGE="https://github.com/numixproject"
-SRC_URI="https://github.com/numixproject/numix-icon-theme/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/numixproject/numix-icon-theme/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

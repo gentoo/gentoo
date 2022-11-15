@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/astrada/ocamlfuse
 	https://opam.ocaml.org/packages/ocamlfuse
 "
-SRC_URI="https://github.com/astrada/${PN}/archive/v${MYPV}.tar.gz -> ${PF}.tar.gz"
+SRC_URI="https://github.com/astrada/${PN}/archive/refs/tags/v${MYPV}.tar.gz -> ${PF}.tar.gz"
 S="${WORKDIR}/${PN}-${MYPV}"
 
 LICENSE="GPL-2"

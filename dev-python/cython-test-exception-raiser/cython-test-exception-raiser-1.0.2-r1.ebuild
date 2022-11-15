@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://pypi.org/project/cython-test-exception-raiser/
 	https://github.com/twisted/cython-test-exception-raiser/"
 SRC_URI="
-	https://github.com/twisted/cython-test-exception-raiser/archive/v${PV}.tar.gz
+	https://github.com/twisted/cython-test-exception-raiser/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="MIT"

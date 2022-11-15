@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Maps of integers implemented as Patricia trees"
 HOMEPAGE="https://github.com/backtracking/ptmap/"
-SRC_URI="https://github.com/backtracking/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/backtracking/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"

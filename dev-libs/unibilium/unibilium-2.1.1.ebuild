@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A very basic terminfo library"
 HOMEPAGE="https://github.com/neovim/unibilium/"
-SRC_URI="https://github.com/neovim/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/neovim/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3+ MIT"
 SLOT="0/4"

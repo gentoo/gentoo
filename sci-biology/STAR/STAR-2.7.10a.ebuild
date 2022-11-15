@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="STAR aligner: align RNA-seq reads to reference genome uncompressed suffix arrays"
 HOMEPAGE="https://github.com/alexdobin/STAR"
-SRC_URI="https://github.com/alexdobin/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/alexdobin/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

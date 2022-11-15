@@ -11,7 +11,7 @@ MY_PV=${PV/_/-}
 
 DESCRIPTION="PostgreSQL Database Modeler"
 HOMEPAGE="https://pgmodeler.io"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

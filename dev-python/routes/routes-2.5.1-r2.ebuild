@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/Routes/
 "
 SRC_URI="
-	https://github.com/bbangert/routes/archive/v${PV}.tar.gz
+	https://github.com/bbangert/routes/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	https://github.com/bbangert/routes/pull/107.patch
 		-> ${P}-pytest.patch

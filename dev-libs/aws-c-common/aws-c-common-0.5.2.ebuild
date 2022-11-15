@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Core c99 package for AWS SDK for C"
 HOMEPAGE="https://github.com/awslabs/aws-c-common"
-SRC_URI="https://github.com/awslabs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/awslabs/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

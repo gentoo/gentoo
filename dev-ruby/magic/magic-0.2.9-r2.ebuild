@@ -11,7 +11,7 @@ RUBY_FAKEGEM_RECIPE_TEST="none"
 
 inherit ruby-fakegem
 
-SRC_URI="https://github.com/qoobaa/magic/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/qoobaa/magic/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Ruby FFI bindings to libmagic"
 HOMEPAGE="https://github.com/qoobaa/magic"
 

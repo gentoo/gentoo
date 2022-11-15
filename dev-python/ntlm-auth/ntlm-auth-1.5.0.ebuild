@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Calculates NTLM Authentication codes"
 HOMEPAGE="https://github.com/jborean93/ntlm-auth"
-SRC_URI="https://github.com/jborean93/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jborean93/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

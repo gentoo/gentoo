@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="sophisticated graphical program which corrects your miss typing"
 HOMEPAGE="http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/index_e.html https://github.com/mtoyoda/sl/"
-SRC_URI="https://github.com/mtoyoda/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mtoyoda/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Toyoda"
 SLOT="0"

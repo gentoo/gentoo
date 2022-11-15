@@ -13,7 +13,7 @@ DESCRIPTION="A pure Python netlink and Linux network configuration library"
 HOMEPAGE="https://github.com/svinota/pyroute2"
 
 SRC_URI="
-	https://github.com/svinota/${PN}/archive/${PV}.tar.gz
+	https://github.com/svinota/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

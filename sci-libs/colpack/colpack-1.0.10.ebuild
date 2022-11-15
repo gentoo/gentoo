@@ -9,7 +9,7 @@ MYPN="ColPack"
 
 DESCRIPTION="C++ algorithms for specialized vertex coloring problems"
 HOMEPAGE="https://cscapes.cs.purdue.edu/coloringpage/"
-SRC_URI="https://github.com/CSCsw/${MYPN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/CSCsw/${MYPN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/httplib2/httplib2/
 "
 SRC_URI="
-	https://github.com/httplib2/httplib2/archive/v${PV}.tar.gz
+	https://github.com/httplib2/httplib2/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

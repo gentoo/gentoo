@@ -18,7 +18,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby"
 HOMEPAGE="https://github.com/nahi/httpclient"
-SRC_URI="https://github.com/nahi/httpclient/archive/v${PV}.tar.gz -> ${P}.tgz"
+SRC_URI="https://github.com/nahi/httpclient/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz"
 
 LICENSE="|| ( Ruby Ruby-BSD BSD-2 )"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit toolchain-funcs xdg
 
 DESCRIPTION="Graphical PDF viewer which aims to superficially resemble less(1)"
 HOMEPAGE="https://github.com/moosotc/llpp"
-SRC_URI="https://github.com/moosotc/llpp/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/moosotc/llpp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

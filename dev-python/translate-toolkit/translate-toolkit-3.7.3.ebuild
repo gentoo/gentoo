@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/translate-toolkit/
 "
 SRC_URI="
-	https://github.com/translate/translate/archive/${PV}.tar.gz
+	https://github.com/translate/translate/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S="${WORKDIR}"/${MY_P}

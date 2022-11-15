@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/linkify-it-py/
 "
 SRC_URI="
-	https://github.com/tsutsu3/linkify-it-py/archive/v${PV}.tar.gz
+	https://github.com/tsutsu3/linkify-it-py/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

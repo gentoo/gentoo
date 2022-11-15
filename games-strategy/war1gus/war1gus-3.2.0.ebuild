@@ -9,7 +9,7 @@ DESCRIPTION="Warcraft: Orcs & Humans for the Stratagus game engine"
 HOMEPAGE="
 	https://stratagus.com/war1gus.html
 	https://github.com/Wargus/war1gus"
-SRC_URI="https://github.com/Wargus/war1gus/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Wargus/war1gus/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

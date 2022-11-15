@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Waits until IO is readable or writable without blocking"
 HOMEPAGE="https://github.com/ruby/io-wait"
-SRC_URI="https://github.com/ruby/io-wait/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/io-wait/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

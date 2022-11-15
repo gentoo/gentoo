@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pygit2/
 "
 SRC_URI="
-	https://github.com/libgit2/pygit2/archive/v${PV}.tar.gz
+	https://github.com/libgit2/pygit2/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

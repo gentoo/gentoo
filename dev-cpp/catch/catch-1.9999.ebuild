@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_BRANCH="Catch1.x"
 else
 	MY_P=${PN^}-${PV}
-	SRC_URI="https://github.com/catchorg/Catch2/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+	SRC_URI="https://github.com/catchorg/Catch2/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
 
 	S="${WORKDIR}/${PN^}2-${PV}"

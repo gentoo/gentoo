@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="The pure C++ implementation of the MMTF API, decoder and encoder"
 HOMEPAGE="https://github.com/rcsb/mmtf-cpp"
-SRC_URI="https://github.com/rcsb/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rcsb/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

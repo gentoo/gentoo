@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/tzlocal/
 "
 SRC_URI="
-	https://github.com/regebro/tzlocal/archive/${PV}.tar.gz
+	https://github.com/regebro/tzlocal/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

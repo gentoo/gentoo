@@ -8,7 +8,7 @@ inherit go-module
 DESCRIPTION="A source-level debugger for the Go programming language"
 HOMEPAGE="https://github.com/go-delve/delve"
 
-SRC_URI="https://github.com/go-delve/delve/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/go-delve/delve/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT BSD BSD-2 Apache-2.0"
 SLOT="0"

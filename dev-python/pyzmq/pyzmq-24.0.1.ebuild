@@ -17,7 +17,7 @@ HOMEPAGE="
 	https://pypi.org/project/pyzmq/
 	https://github.com/zeromq/pyzmq/"
 SRC_URI="
-	https://github.com/zeromq/pyzmq/archive/v${PV}.tar.gz
+	https://github.com/zeromq/pyzmq/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="LGPL-3"

@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Create standalone executables from Python scripts"
 HOMEPAGE="https://cx-freeze.readthedocs.io/"
 SRC_URI="
-	https://github.com/marcelotduarte/cx_Freeze/archive/v${PV}.tar.gz
+	https://github.com/marcelotduarte/cx_Freeze/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

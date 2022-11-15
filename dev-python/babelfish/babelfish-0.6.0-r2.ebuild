@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/babelfish/
 "
 SRC_URI="
-	https://github.com/Diaoul/babelfish/archive/${PV}.tar.gz
+	https://github.com/Diaoul/babelfish/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

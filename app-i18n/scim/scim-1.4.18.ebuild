@@ -7,7 +7,7 @@ inherit autotools flag-o-matic gnome2-utils
 
 DESCRIPTION="Smart Common Input Method (SCIM) is an Input Method (IM) development platform"
 HOMEPAGE="https://github.com/scim-im/scim"
-SRC_URI="https://github.com/scim-im/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/scim-im/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

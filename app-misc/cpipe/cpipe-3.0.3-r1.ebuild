@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Counting pipe, measures data transfered over pipe"
 HOMEPAGE="https://github.com/HaraldKi/cpipe"
-SRC_URI="https://github.com/HaraldKi/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/HaraldKi/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit systemd toolchain-funcs
 
 DESCRIPTION="Nyancat in your terminal, rendered through ANSI escape sequences"
 HOMEPAGE="https://nyancat.dakko.us/"
-SRC_URI="https://github.com/klange/nyancat/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/klange/nyancat/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"

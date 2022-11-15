@@ -9,7 +9,7 @@ MY_P=openrdate
 
 DESCRIPTION="Use TCP or UDP to retrieve the current time of another machine"
 HOMEPAGE="https://github.com/resurrecting-open-source-projects/openrdate"
-SRC_URI="https://github.com/resurrecting-open-source-projects/${MY_P}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/resurrecting-open-source-projects/${MY_P}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-4"
 SLOT="0"

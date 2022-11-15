@@ -11,7 +11,7 @@ OPENSSL_RELEASE_TAG="OpenSSL_1_1_1o"
 
 DESCRIPTION="Fast SSL configuration scanner"
 HOMEPAGE="https://github.com/rbsec/sslscan"
-SRC_URI="https://github.com/rbsec/sslscan/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/rbsec/sslscan/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 		 https://github.com/openssl/openssl/archive/${OPENSSL_RELEASE_TAG}.tar.gz -> ${PN}-${OPENSSL_RELEASE_TAG}.tar.gz"
 
 LICENSE="GPL-3"

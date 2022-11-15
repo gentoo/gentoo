@@ -9,7 +9,7 @@ MY_P="${P/gkrellm/gkrellm2}"
 
 DESCRIPTION="A Gkrellm2 plugin for displaying and manipulating CPU frequency"
 HOMEPAGE="https://github.com/sainsaar/gkrellm2-cpupower/"
-SRC_URI="https://github.com/sainsaar/gkrellm2-cpupower/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/sainsaar/gkrellm2-cpupower/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"

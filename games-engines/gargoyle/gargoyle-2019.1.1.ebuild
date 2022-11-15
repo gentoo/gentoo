@@ -14,7 +14,7 @@ inherit desktop edos2unix flag-o-matic multiprocessing toolchain-funcs xdg
 
 DESCRIPTION="An Interactive Fiction (IF) player supporting all major formats"
 HOMEPAGE="http://ccxvii.net/gargoyle/"
-SRC_URI="https://github.com/garglk/garglk/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/garglk/garglk/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-2 MIT Hugo Glulxe"
 SLOT="0"

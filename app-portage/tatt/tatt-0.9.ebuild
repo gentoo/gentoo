@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Arch testing tool"
 HOMEPAGE="https://github.com/gentoo/tatt"
-SRC_URI="https://github.com/gentoo/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gentoo/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

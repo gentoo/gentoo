@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="alabaster sub-theme used on git-pull docs"
 HOMEPAGE="https://github.com/git-pull/alagitpull"
-SRC_URI="https://github.com/git-pull/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/git-pull/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"

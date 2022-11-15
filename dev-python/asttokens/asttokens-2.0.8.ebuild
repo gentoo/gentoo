@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/asttokens/
 "
 SRC_URI="
-	https://github.com/gristlabs/asttokens/archive/${PV}.tar.gz
+	https://github.com/gristlabs/asttokens/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

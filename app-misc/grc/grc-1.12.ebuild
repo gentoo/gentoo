@@ -8,7 +8,7 @@ inherit python-r1
 
 DESCRIPTION="Generic Colouriser beautifies your logfiles or output of commands"
 HOMEPAGE="http://kassiopeia.juls.savba.sk/~garabik/software/grc.html"
-SRC_URI="https://github.com/garabik/grc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/garabik/grc/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit autotools fortran-2
 
 DESCRIPTION="Scientific library and interface for array oriented data access"
 HOMEPAGE="https://www.unidata.ucar.edu/software/netcdf/"
-SRC_URI="https://github.com/Unidata/netcdf-fortran/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="UCAR-Unidata"
 SLOT="0/7"

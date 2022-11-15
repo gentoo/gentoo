@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/imageio/
 "
 SRC_URI="
-	https://github.com/imageio/imageio/archive/v${PV}.tar.gz
+	https://github.com/imageio/imageio/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	test? (
 		https://github.com/imageio/imageio-binaries/raw/${BIN_COMMIT}/images/chelsea.png

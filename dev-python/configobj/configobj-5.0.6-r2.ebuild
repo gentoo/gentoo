@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Simple config file reader and writer"
 HOMEPAGE="http://www.voidspace.org.uk/python/configobj.html https://pypi.org/project/configobj/"
-SRC_URI="https://github.com/DiffSK/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/DiffSK/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A racc based toml parser"
 HOMEPAGE="https://github.com/fbernier/tomlrb/"
-SRC_URI="https://github.com/fbernier/tomlrb/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/fbernier/tomlrb/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/python-versioneer/python-versioneer/
 "
 SRC_URI="
-	https://github.com/python-versioneer/python-versioneer/archive/${PV}.tar.gz
+	https://github.com/python-versioneer/python-versioneer/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

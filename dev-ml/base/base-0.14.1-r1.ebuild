@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Standard library for OCaml"
 HOMEPAGE="https://github.com/janestreet/base"
-SRC_URI="https://github.com/janestreet/base/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janestreet/base/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"

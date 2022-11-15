@@ -12,7 +12,7 @@ if [[ "${PV}" == "9999" ]] || [[ -n "${EGIT_COMMIT_ID}" ]]; then
 	EGIT_REPO_URI="https://github.com/Flowdalic/${ORIG_PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/flowdalic/${ORIG_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/flowdalic/${ORIG_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/${ORIG_PN}-${PV}"
 fi

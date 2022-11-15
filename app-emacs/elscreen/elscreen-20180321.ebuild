@@ -8,7 +8,7 @@ inherit elisp
 DESCRIPTION="Frame configuration management for GNU Emacs modelled after GNU Screen"
 HOMEPAGE="https://www.emacswiki.org/emacs/EmacsLispScreen
 	https://github.com/knu/elscreen"
-SRC_URI="https://github.com/knu/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/knu/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"

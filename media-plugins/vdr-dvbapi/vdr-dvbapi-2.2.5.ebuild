@@ -9,7 +9,7 @@ MY_P="vdr-plugin-dvbapi-${PV}"
 
 DESCRIPTION="VDR Plugin: allows connect VDR to OScam"
 HOMEPAGE="https://github.com/manio/vdr-plugin-dvbapi"
-SRC_URI="https://github.com/manio/vdr-plugin-dvbapi/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/manio/vdr-plugin-dvbapi/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

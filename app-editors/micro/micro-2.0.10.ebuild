@@ -8,7 +8,7 @@ inherit go-module optfeature desktop xdg
 # Building this list can be done by:
 # cd $(mktemp -d)
 # PV="2.0.10"
-# wget "https://github.com/zyedidia/micro/archive/v${PV}.tar.gz"
+# wget "https://github.com/zyedidia/micro/archive/refs/tags/v${PV}.tar.gz"
 # tar -xvzf "v${PV}.tar.gz"
 # sed -Ee 's/^(.+) h1:.+$/\t"\1"/g' "micro-${PV}/go.sum" > go.sum.out
 EGO_SUM=(
@@ -99,7 +99,7 @@ go-module_set_globals
 DESCRIPTION="Modern and intuitive terminal-based text editor"
 HOMEPAGE="https://github.com/zyedidia/micro"
 SRC_URI="
-	https://github.com/zyedidia/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/zyedidia/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}
 "
 

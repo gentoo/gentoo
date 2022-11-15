@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/emoji/
 "
 SRC_URI="
-	https://github.com/carpedm20/emoji/archive/v${PV}.tar.gz
+	https://github.com/carpedm20/emoji/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

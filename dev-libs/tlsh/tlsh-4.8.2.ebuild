@@ -8,7 +8,7 @@ inherit cmake
 
 DESCRIPTION="Fuzzy matching library"
 HOMEPAGE="https://github.com/trendmicro/tlsh"
-SRC_URI="https://github.com/trendmicro/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/trendmicro/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 BSD )"
 SLOT="0"

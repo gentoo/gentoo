@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Shared library to impliment the scrypt algorithm"
 HOMEPAGE="https://github.com/technion/libscrypt"
-SRC_URI="https://github.com/technion/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/technion/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

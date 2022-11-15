@@ -10,7 +10,7 @@ inherit cmake ruby-single ssl-cert systemd toolchain-funcs
 
 DESCRIPTION="H2O - the optimized HTTP/1, HTTP/2 server"
 HOMEPAGE="https://h2o.examp1e.net/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

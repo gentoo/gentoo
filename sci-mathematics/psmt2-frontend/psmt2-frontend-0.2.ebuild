@@ -6,7 +6,7 @@ inherit findlib autotools
 
 DESCRIPTION="Library to parse and type-check an extension of the SMT-LIB 2 standard"
 HOMEPAGE="https://github.com/OCamlPro-Coquera/psmt2-frontend"
-SRC_URI="https://github.com/OCamlPro-Coquera/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/OCamlPro-Coquera/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

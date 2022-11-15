@@ -10,7 +10,7 @@ inherit cmake gnome2-utils python-single-r1 udev
 DESCRIPTION="Universal Software Radio Peripheral (USRP) Hardware Driver"
 HOMEPAGE="https://kb.ettus.com"
 
-SRC_URI="https://github.com/EttusResearch/uhd/archive/v${PV}.tar.gz -> EttusResearch-UHD-${PV}.tar.gz \
+SRC_URI="https://github.com/EttusResearch/uhd/archive/refs/tags/v${PV}.tar.gz -> EttusResearch-UHD-${PV}.tar.gz \
 	https://github.com/EttusResearch/uhd/releases/download/v${PV}/uhd-images_${PV}.tar.xz"
 #https://github.com/EttusResearch/UHD-Mirror/tags
 #http://files.ettus.com/binaries/images/

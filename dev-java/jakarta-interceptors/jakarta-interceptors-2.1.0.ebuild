@@ -13,7 +13,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Jakarta Interceptors"
 HOMEPAGE="https://projects.eclipse.org/projects/ee4j.interceptors"
-SRC_URI="https://github.com/jakartaee/interceptors/archive/${PV}-RELEASE.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jakartaee/interceptors/archive/refs/tags/${PV}-RELEASE.tar.gz -> ${P}.tar.gz"
 
 LICENSE="EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"

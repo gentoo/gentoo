@@ -9,7 +9,7 @@ if [[ ${PV} == *9999 ]]; then
 		inherit git-r3
 		EGIT_REPO_URI="https://github.com/venam/2bwm.git"
 else
-		SRC_URI="https://github.com/venam/2bwm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+		SRC_URI="https://github.com/venam/2bwm/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 		KEYWORDS="~amd64"
 fi
 

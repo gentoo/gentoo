@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Dummy OS provider for Ganeti"
 HOMEPAGE="https://github.com/grnet/ganeti-os-noop"
-SRC_URI="https://github.com/grnet/ganeti-os-noop/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/grnet/ganeti-os-noop/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

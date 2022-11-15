@@ -11,7 +11,7 @@ inherit cmake toolchain-funcs flag-o-matic distutils-r1
 
 DESCRIPTION="A data templating language for app and tool developers"
 HOMEPAGE="https://jsonnet.org/"
-SRC_URI="https://github.com/google/jsonnet/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/jsonnet/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 IUSE="custom-optimization doc examples python test"
 
 LICENSE="Apache-2.0"

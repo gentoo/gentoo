@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Platform independent implementation of Unix which command"
 HOMEPAGE="https://github.com/piotrmurach/tty-which"
-SRC_URI="https://github.com/piotrmurach/tty-which/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/piotrmurach/tty-which/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

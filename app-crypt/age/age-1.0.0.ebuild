@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="A simple, modern and secure encryption tool (and Go library)"
 HOMEPAGE="https://github.com/FiloSottile/age"
-SRC_URI="https://github.com/FiloSottile/age/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/FiloSottile/age/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 S="${WORKDIR}/age-${PV}"

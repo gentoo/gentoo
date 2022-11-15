@@ -8,7 +8,7 @@ inherit bash-completion-r1 qmake-utils xdg
 MY_P=KDocker-${PV}
 DESCRIPTION="Helper to dock any application into the system tray"
 HOMEPAGE="https://github.com/user-none/KDocker"
-SRC_URI="https://github.com/user-none/KDocker/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/user-none/KDocker/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

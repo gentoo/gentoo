@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/s0undt3ch/setuptools-declarative-requirements
 "
 SRC_URI="
-	https://github.com/s0undt3ch/${PN}/archive/${PV}.tar.gz
+	https://github.com/s0undt3ch/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

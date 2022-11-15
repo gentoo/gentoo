@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A simple, powerful, and very fast logging utility"
 HOMEPAGE="https://github.com/bdurand/lumberjack"
-SRC_URI="https://github.com/bdurand/lumberjack/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bdurand/lumberjack/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

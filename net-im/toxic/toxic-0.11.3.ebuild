@@ -9,7 +9,7 @@ inherit python-single-r1 xdg
 
 DESCRIPTION="A curses-based client for Tox"
 HOMEPAGE="https://github.com/JFreegman/toxic"
-SRC_URI="https://github.com/JFreegman/toxic/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/JFreegman/toxic/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

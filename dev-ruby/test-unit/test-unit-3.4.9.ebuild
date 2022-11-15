@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="An xUnit family unit testing framework for Ruby"
 HOMEPAGE="https://rubygems.org/gems/test-unit"
-SRC_URI="https://github.com/test-unit/test-unit/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/test-unit/test-unit/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( Ruby-BSD BSD-2 ) PSF-2"
 SLOT="2"

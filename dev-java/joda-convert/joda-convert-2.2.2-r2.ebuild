@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Library to convert Objects to and from String"
 HOMEPAGE="https://www.joda.org/joda-convert/"
-SRC_URI="https://github.com/JodaOrg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/JodaOrg/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

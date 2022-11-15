@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Abydos NLP/IR library"
 HOMEPAGE="https://github.com/chrislit/abydos"
-SRC_URI="https://github.com/chrislit/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/chrislit/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

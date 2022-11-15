@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Switch user and group id and exec"
 HOMEPAGE="https://github.com/ncopa/su-exec"
-SRC_URI="https://github.com/ncopa/su-exec/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ncopa/su-exec/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

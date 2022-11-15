@@ -11,7 +11,7 @@ MY_PN="libArcus"
 
 DESCRIPTION="This library facilitates communication between Cura and its backend"
 HOMEPAGE="https://github.com/Ultimaker/libArcus"
-SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0/3"

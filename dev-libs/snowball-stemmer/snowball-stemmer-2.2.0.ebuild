@@ -9,7 +9,7 @@ MY_TESTDATA_COMMIT="0703f1d6a21802c3ff00c2c8b31bd255b74b2aec"
 
 DESCRIPTION="Snowball compiler and stemming algorithms"
 HOMEPAGE="https://snowballstem.org/ https://github.com/snowballstem/snowball/"
-SRC_URI="https://github.com/snowballstem/snowball/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/snowballstem/snowball/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://github.com/snowballstem/snowball-data/archive/${MY_TESTDATA_COMMIT}.tar.gz -> snowball-data-${MY_TESTDATA_COMMIT}.tar.gz )"
 
 LICENSE="BSD"

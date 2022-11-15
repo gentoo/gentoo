@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/uTidylib/
 "
 SRC_URI="
-	https://github.com/nijel/utidylib/archive/v${PV}.tar.gz
+	https://github.com/nijel/utidylib/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

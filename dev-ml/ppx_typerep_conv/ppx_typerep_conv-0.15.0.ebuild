@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Generation of runtime types from type declarations"
 HOMEPAGE="https://github.com/janestreet/ppx_typerep_conv"
-SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"

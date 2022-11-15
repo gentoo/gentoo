@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="A client class with support for MQTT v5.0, v3.1.1, and v3.1"
 HOMEPAGE="https://www.eclipse.org/paho/index.php?page=clients/python https://github.com/eclipse/paho.mqtt.python"
-SRC_URI="https://github.com/eclipse/paho.mqtt.python/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/eclipse/paho.mqtt.python/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/paho.mqtt.python-${PV}"
 
 LICENSE="EPL-2.0"

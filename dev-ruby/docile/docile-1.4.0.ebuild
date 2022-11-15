@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Turns any Ruby object into a DSL"
 HOMEPAGE="https://ms-ati.github.io/docile/"
-SRC_URI="https://github.com/ms-ati/docile/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ms-ati/docile/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

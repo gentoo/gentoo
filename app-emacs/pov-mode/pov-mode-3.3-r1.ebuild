@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Major mode for Povray scene files"
 HOMEPAGE="https://github.com/melmothx/pov-mode"
-SRC_URI="https://github.com/emacsmirror/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/emacsmirror/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.2+"
 SLOT="0"

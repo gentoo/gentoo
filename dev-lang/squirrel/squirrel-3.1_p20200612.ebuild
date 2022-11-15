@@ -8,7 +8,7 @@ inherit cmake vcs-snapshot
 DESCRIPTION="A interpreted language mainly used for games"
 HOMEPAGE="http://squirrel-lang.org/"
 commit=40050fa249733c85485adde533774ec066d29aca
-SRC_URI="https://github.com/albertodemichelis/squirrel/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/albertodemichelis/squirrel/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI="https://github.com/albertodemichelis/squirrel/archive/${commit}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"

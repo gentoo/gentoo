@@ -16,7 +16,7 @@ HOMEPAGE="https://www.stringtemplate.org/"
 # Tarball for the test suite and DOCS files
 SRC_URI="
 	https://repo1.maven.org/maven2/org/antlr/ST4/${PV}/ST4-${PV}-sources.jar
-	https://github.com/antlr/${PN}4/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/antlr/${PN}4/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="BSD"

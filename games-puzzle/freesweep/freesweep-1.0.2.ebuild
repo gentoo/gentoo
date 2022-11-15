@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Console Minesweeper"
 HOMEPAGE="https://github.com/rwestlund/freesweep"
-SRC_URI="https://github.com/rwestlund/freesweep/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rwestlund/freesweep/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

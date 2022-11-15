@@ -11,7 +11,7 @@ IUSE=""
 
 DESCRIPTION="UI modules for lsp-mode"
 HOMEPAGE="https://emacs-lsp.github.io/lsp-ui/"
-SRC_URI="https://github.com/emacs-lsp/lsp-ui/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/emacs-lsp/lsp-ui/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"

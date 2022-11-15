@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Check if a desired port is reachable via TCP"
 HOMEPAGE="https://github.com/mkirchner/tcping"
-SRC_URI="https://github.com/mkirchner/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mkirchner/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"

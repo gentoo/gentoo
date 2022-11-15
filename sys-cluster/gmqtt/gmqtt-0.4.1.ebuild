@@ -6,7 +6,7 @@ inherit go-module systemd
 
 DESCRIPTION="MQTT broker library with cluster support that implements MQTT V5.0 and V3.1.1"
 HOMEPAGE="https://github.com/DrmagicE/gmqtt"
-SRC_URI="https://github.com/DrmagicE/gmqtt/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/DrmagicE/gmqtt/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 
 LICENSE="MIT Apache-2.0 BSD BSD-2 ISC MPL-2.0"

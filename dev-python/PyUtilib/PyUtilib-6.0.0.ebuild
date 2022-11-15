@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A collection of Python utilities"
 HOMEPAGE="https://github.com/PyUtilib/pyutilib"
-SRC_URI="https://github.com/${PN}/${PN,,}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN,,}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN,,}-${PV}"
 
 LICENSE="BSD"

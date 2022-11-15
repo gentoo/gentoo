@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="Erlang XMLRPC implementation with SSL, cookies, authentication"
 HOMEPAGE="https://github.com/processone/p1_xmlrpc"
-SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/processone/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="BSD-2"

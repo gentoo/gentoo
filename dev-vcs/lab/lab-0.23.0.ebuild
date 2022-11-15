@@ -7,7 +7,7 @@ inherit bash-completion-r1 go-module
 
 DESCRIPTION="Lab wraps Git or Hub, making it simple to interact with repositories on GitLab"
 HOMEPAGE="https://zaquestion.github.io/lab/"
-SRC_URI="https://github.com/zaquestion/lab/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/zaquestion/lab/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0"

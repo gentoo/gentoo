@@ -11,7 +11,7 @@ DESCRIPTION="High-level tracing language for eBPF"
 HOMEPAGE="https://github.com/iovisor/bpftrace"
 MY_PV="${PV//_/}"
 SRC_URI="
-	https://github.com/iovisor/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/iovisor/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~chutzpah/dist/bpftrace/bpftrace-0.14.1-llvm14.patch.gz
 "
 S="${WORKDIR}/${PN}-${MY_PV:-${PV}}"

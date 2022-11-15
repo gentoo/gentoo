@@ -8,7 +8,7 @@ inherit dune
 
 DESCRIPTION="Library for radix-64 representation (de)coding"
 HOMEPAGE="https://github.com/mirage/ocaml-base64"
-SRC_URI="https://github.com/mirage/ocaml-base64/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mirage/ocaml-base64/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"

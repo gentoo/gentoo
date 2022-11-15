@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="LHA archive support for Python"
 HOMEPAGE="https://fengestad.no/python-lhafile/"
-SRC_URI="https://github.com/FrodeSolheim/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/FrodeSolheim/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python scripts to manipulate trash cans via the command line"
 HOMEPAGE="https://github.com/andreafrancia/trash-cli"
-SRC_URI="https://github.com/andreafrancia/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/andreafrancia/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

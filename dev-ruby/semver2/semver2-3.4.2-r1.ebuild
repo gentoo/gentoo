@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="maintain versions as per http://semver.org"
 HOMEPAGE="https://github.com/haf/semver"
-SRC_URI="https://github.com/haf/semver/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/haf/semver/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="semver-${PV}"
 
 LICENSE="MIT"

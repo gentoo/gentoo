@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="script tag with additional attributes for django.forms.Media"
 HOMEPAGE="https://github.com/matthiask/django-js-asset"
 SRC_URI="
-	https://github.com/matthiask/django-js-asset/archive/${PV}.tar.gz
+	https://github.com/matthiask/django-js-asset/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

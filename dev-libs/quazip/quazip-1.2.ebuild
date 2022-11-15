@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package"
 HOMEPAGE="https://stachenov.github.io/quazip/"
-SRC_URI="https://github.com/stachenov/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/stachenov/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/1"

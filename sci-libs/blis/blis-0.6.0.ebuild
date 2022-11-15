@@ -8,7 +8,7 @@ inherit python-any-r1
 
 DESCRIPTION="BLAS-like Library Instantiation Software Framework"
 HOMEPAGE="https://github.com/flame/blis"
-SRC_URI="https://github.com/flame/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/flame/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

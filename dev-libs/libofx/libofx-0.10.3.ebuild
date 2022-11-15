@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Library to support the Open Financial eXchange XML format"
 HOMEPAGE="https://github.com/libofx/libofx"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/10"

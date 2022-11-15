@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python client for rqlite"
 HOMEPAGE="https://github.com/rqlite/pyrqlite"
-SRC_URI="https://github.com/rqlite/pyrqlite/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/rqlite/pyrqlite/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/rqlite/pyrqlite/pull/42.patch -> ${P}-test_cPragmaTableInfo.patch"
 
 LICENSE="MIT"

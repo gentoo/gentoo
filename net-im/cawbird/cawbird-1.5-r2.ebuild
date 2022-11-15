@@ -7,7 +7,7 @@ inherit gnome2-utils meson vala xdg
 
 DESCRIPTION="Twitter client"
 HOMEPAGE="https://ibboard.co.uk/cawbird/ https://github.com/IBBoard/cawbird"
-SRC_URI="https://github.com/IBBoard/cawbird/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/IBBoard/cawbird/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${P}
 
 LICENSE="CC-BY-3.0 GPL-3+"

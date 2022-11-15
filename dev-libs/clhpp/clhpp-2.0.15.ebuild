@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Khronos OpenCL C++ bindings"
 HOMEPAGE="https://github.com/KhronosGroup/OpenCL-CLHPP/"
-SRC_URI="https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/KhronosGroup/OpenCL-CLHPP/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Khronos-CLHPP"
 SLOT="0"

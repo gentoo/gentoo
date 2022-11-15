@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="User-space tools for LinuxPPS"
 HOMEPAGE="https://github.com/redlab-i/pps-tools"
-SRC_URI="https://github.com/redlab-i/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/redlab-i/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

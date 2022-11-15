@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="utilities for modified preorder tree traversal and trees of model instances"
 HOMEPAGE="https://github.com/django-mptt/django-mptt"
 SRC_URI="
-	https://github.com/django-mptt/django-mptt/archive/${PV}.tar.gz
+	https://github.com/django-mptt/django-mptt/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="MIT"

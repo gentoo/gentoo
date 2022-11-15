@@ -12,7 +12,7 @@ HOMEPAGE="
 	http://www.mypy-lang.org/
 	https://github.com/python/mypy_extensions/"
 SRC_URI="
-	https://github.com/python/mypy_extensions/archive/${PV}.tar.gz
+	https://github.com/python/mypy_extensions/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="MIT"

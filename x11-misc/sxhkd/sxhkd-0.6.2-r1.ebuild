@@ -7,7 +7,7 @@ inherit toolchain-funcs systemd
 
 DESCRIPTION="Simple X hotkey daemon"
 HOMEPAGE="https://github.com/baskerville/sxhkd/"
-SRC_URI="https://github.com/baskerville/sxhkd/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/baskerville/sxhkd/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

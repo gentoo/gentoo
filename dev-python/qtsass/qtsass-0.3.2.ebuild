@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Compile SASS files to Qt stylesheets"
 HOMEPAGE="https://github.com/spyder-ide/qtsass"
-SRC_URI="https://github.com/spyder-ide/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/spyder-ide/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

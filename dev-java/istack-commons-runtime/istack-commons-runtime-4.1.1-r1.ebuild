@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="istack common utility code"
 HOMEPAGE="https://projects.eclipse.org/projects/ee4j/istack-commons/"
-SRC_URI="https://github.com/eclipse-ee4j/jaxb-istack-commons/archive/${PV}.tar.gz -> jaxb-istack-commons-${P}.tar.gz"
+SRC_URI="https://github.com/eclipse-ee4j/jaxb-istack-commons/archive/refs/tags/${PV}.tar.gz -> jaxb-istack-commons-${P}.tar.gz"
 
 LICENSE="EPL-1.0"
 SLOT="0"

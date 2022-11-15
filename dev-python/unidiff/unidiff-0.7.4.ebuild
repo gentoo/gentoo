@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/unidiff/
 "
 SRC_URI="
-	https://github.com/matiasb/python-unidiff/archive/v${PV}.tar.gz
+	https://github.com/matiasb/python-unidiff/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

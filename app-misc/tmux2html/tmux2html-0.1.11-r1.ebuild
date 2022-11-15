@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Render full tmux windows or individual panes as HTML"
 HOMEPAGE="https://github.com/tweekmonster/tmux2html"
-SRC_URI="https://github.com/tweekmonster/tmux2html/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tweekmonster/tmux2html/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

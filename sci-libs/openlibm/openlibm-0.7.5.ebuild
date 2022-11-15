@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="High quality system independent, open source libm"
 HOMEPAGE="https://github.com/JuliaLang/openlibm"
-SRC_URI="https://github.com/JuliaMath/openlibm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/JuliaMath/openlibm/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain MIT ISC BSD-2 LGPL-2.1+"
 # See https://abi-laboratory.pro/index.php?view=timeline&l=openlibm

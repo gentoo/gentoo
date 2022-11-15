@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/aiofiles/
 "
 SRC_URI="
-	https://github.com/Tinche/aiofiles/archive/v${PV}.tar.gz
+	https://github.com/Tinche/aiofiles/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

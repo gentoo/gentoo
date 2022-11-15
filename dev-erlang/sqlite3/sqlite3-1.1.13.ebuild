@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="SQLite gen_server port for Erlang"
 HOMEPAGE="https://github.com/processone/erlang-sqlite3"
-SRC_URI="https://github.com/processone/${MY_PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/processone/${MY_PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="ErlPL-1.1"

@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/matrix-org/python-signedjson/
 	https://pypi.org/project/signedjson/
 "
-SRC_URI="https://github.com/matrix-org/python-signedjson/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/matrix-org/python-signedjson/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 S="${WORKDIR}/python-${P}"
 

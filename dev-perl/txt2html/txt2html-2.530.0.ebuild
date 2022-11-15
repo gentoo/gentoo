@@ -8,7 +8,7 @@ inherit perl-module
 
 DESCRIPTION="Convert a plain text file to HTML"
 HOMEPAGE="https://github.com/resurrecting-open-source-projects/txt2html"
-SRC_URI="https://github.com/resurrecting-open-source-projects/txt2html/archive/v${DIST_VERSION}.tar.gz -> ${PN}-${DIST_VERSION}.tar.gz"
+SRC_URI="https://github.com/resurrecting-open-source-projects/txt2html/archive/refs/tags/v${DIST_VERSION}.tar.gz -> ${PN}-${DIST_VERSION}.tar.gz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"

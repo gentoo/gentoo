@@ -8,7 +8,7 @@ inherit python-single-r1 systemd
 DESCRIPTION="systemd units to create timers for cron directories and crontab"
 HOMEPAGE="https://github.com/systemd-cron/systemd-cron/"
 MY_PV="1.15.18"
-SRC_URI="https://github.com/systemd-cron/${PN}/archive/v${MY_PV}.tar.gz -> systemd-cron-${PV}.tar.gz"
+SRC_URI="https://github.com/systemd-cron/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> systemd-cron-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

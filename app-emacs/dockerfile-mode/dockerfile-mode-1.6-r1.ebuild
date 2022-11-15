@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="GNU Emacs mode for handling Dockerfiles"
 HOMEPAGE="https://github.com/spotify/dockerfile-mode/"
-SRC_URI="https://github.com/spotify/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/spotify/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

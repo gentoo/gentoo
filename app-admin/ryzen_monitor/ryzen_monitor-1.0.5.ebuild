@@ -5,7 +5,7 @@ EAPI=7
 
 inherit toolchain-funcs
 
-SRC_URI="https://github.com/hattedsquirrel/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hattedsquirrel/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="amd64 x86"
 
 DESCRIPTION="Monitor power information of Ryzen processors via the PM table of the SMU"

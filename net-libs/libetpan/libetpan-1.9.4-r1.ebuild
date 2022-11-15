@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="A portable, efficient middleware for different kinds of mail access"
 HOMEPAGE="http://libetpan.sourceforge.net/"
-SRC_URI="https://github.com/dinhviethoa/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dinhviethoa/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

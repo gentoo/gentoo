@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Library that implements the AFF image standard"
 HOMEPAGE="https://github.com/sshock/AFFLIBv3/"
-SRC_URI="https://github.com/sshock/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sshock/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"

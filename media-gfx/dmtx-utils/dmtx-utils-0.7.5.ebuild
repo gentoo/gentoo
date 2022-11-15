@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Tools for reading and writing Data Matrix barcodes"
 HOMEPAGE="https://github.com/dmtx/dmtx-utils"
-SRC_URI="https://github.com/dmtx/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dmtx/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

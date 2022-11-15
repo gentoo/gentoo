@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/bw2/ConfigArgParse/
 	https://pypi.org/project/ConfigArgParse/"
 SRC_URI="
-	https://github.com/bw2/ConfigArgParse/archive/v${PV}.tar.gz
+	https://github.com/bw2/ConfigArgParse/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

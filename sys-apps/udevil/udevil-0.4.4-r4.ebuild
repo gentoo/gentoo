@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="mount and unmount removable devices without a password"
 HOMEPAGE="https://ignorantguru.github.com/udevil/"
-SRC_URI="https://github.com/IgnorantGuru/udevil/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/IgnorantGuru/udevil/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

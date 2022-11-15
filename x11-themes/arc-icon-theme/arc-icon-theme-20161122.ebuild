@@ -7,7 +7,7 @@ inherit autotools gnome2-utils
 
 DESCRIPTION="Vertex icon theme"
 HOMEPAGE="https://github.com/horst3180/arc-icon-theme"
-SRC_URI="https://github.com/horst3180/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/horst3180/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

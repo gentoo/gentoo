@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pkgconfig/
 "
 SRC_URI="
-	https://github.com/matze/pkgconfig/archive/v${PV}.tar.gz
+	https://github.com/matze/pkgconfig/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

@@ -458,7 +458,7 @@ EGO_SUM=(
 	"rsc.io/pdf v0.1.1/go.mod"
 	)
 go-module_set_globals
-SRC_URI="https://github.com/influxdata/influxdb/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/influxdata/influxdb/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 LICENSE="MIT BSD Apache-2.0 EPL-1.0 MPL-2.0 MIT-with-advertising BSD-2 ISC"

@@ -7,7 +7,7 @@ MY_PN="ConsoleTools"
 
 DESCRIPTION="A set of classes to do different actions with the console"
 HOMEPAGE="https://github.com/zetacomponents/ConsoleTools"
-SRC_URI="https://github.com/zetacomponents/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/zetacomponents/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

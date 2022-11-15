@@ -10,7 +10,7 @@ inherit toolchain-funcs llvm optfeature python-single-r1
 AFL_PATCHSET="${PN}-4.03c-patches"
 DESCRIPTION="A fork of AFL, the popular compile-time instrumentation fuzzer"
 HOMEPAGE="https://github.com/AFLplusplus/AFLplusplus"
-SRC_URI="https://github.com/AFLplusplus/AFLplusplus/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/AFLplusplus/AFLplusplus/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${AFL_PATCHSET}.tar.xz"
 S="${WORKDIR}"/AFLplusplus-${PV}
 

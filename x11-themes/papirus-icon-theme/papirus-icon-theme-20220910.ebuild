@@ -7,7 +7,7 @@ inherit xdg
 
 DESCRIPTION="Free and open source SVG icon theme"
 HOMEPAGE="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme"
-SRC_URI="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

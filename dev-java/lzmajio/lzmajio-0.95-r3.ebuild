@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="LzmaInputStream/LzmaOutputStream interacting with underlying LZMA en-/decoders"
 HOMEPAGE="https://contrapunctus.net/league/haques/lzmajio/
 	https://github.com/league/lzmajio"
-SRC_URI="https://github.com/league/${P}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/league/${P}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

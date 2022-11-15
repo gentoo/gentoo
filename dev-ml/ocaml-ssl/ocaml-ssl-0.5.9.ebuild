@@ -7,7 +7,7 @@ DUNE_PKG_NAME="ssl"
 inherit dune
 
 DESCRIPTION="OCaml bindings for OpenSSL"
-SRC_URI="https://github.com/savonet/ocaml-ssl/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/savonet/ocaml-ssl/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/savonet/ocaml-ssl"
 
 IUSE="+ocamlopt"

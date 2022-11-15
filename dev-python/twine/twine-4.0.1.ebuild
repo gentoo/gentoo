@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/twine/
 "
 SRC_URI="
-	https://github.com/pypa/twine/archive/${PV}.tar.gz
+	https://github.com/pypa/twine/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

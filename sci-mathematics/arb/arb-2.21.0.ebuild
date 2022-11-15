@@ -8,7 +8,7 @@ inherit cmake
 
 DESCRIPTION="C library for arbitrary-precision interval arithmetic"
 HOMEPAGE="https://fredrikj.net/arb/"
-SRC_URI="https://github.com/fredrik-johansson/arb/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/fredrik-johansson/arb/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 IUSE="test"
 
 RESTRICT="!test? ( test )"

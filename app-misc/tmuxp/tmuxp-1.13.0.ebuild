@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="tmux session manager. built on libtmux"
 HOMEPAGE="https://tmuxp.git-pull.com"
-SRC_URI="https://github.com/tmux-python/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tmux-python/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

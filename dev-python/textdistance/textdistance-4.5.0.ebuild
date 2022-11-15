@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Compute distance between the two texts"
 HOMEPAGE="https://github.com/life4/textdistance"
 SRC_URI="
-	https://github.com/life4/textdistance/archive/${PV}.tar.gz
+	https://github.com/life4/textdistance/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="MIT"

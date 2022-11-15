@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/fsspec/
 "
 SRC_URI="
-	https://github.com/fsspec/filesystem_spec/archive/${PV}.tar.gz
+	https://github.com/fsspec/filesystem_spec/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

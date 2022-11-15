@@ -9,7 +9,7 @@ inherit cmake cuda distutils-r1
 
 DESCRIPTION="Numerical and networking C++ library"
 HOMEPAGE="http://dlib.net/"
-SRC_URI="https://github.com/davisking/dlib/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/davisking/dlib/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Boost-1.0"
 SLOT="0/${PV}"

@@ -9,7 +9,7 @@ inherit distutils-r1 virtualx
 
 DESCRIPTION="Python library for arbitrary-precision floating-point arithmetic"
 HOMEPAGE="https://mpmath.org/"
-SRC_URI="https://github.com/fredrik-johansson/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/fredrik-johansson/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

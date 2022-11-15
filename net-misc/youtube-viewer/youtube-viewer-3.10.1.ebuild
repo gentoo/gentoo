@@ -8,7 +8,7 @@ inherit desktop optfeature perl-module xdg-utils
 
 DESCRIPTION="A command line utility for viewing youtube-videos in Mplayer"
 HOMEPAGE="https://github.com/trizen/youtube-viewer"
-SRC_URI="https://github.com/trizen/youtube-viewer/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/trizen/youtube-viewer/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( Artistic-2 GPL-1+ )"
 SLOT="0"

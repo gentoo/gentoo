@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Library to parse and apply unified diffs, fork of dev-python/patch"
 HOMEPAGE="https://github.com/conan-io/python-patch-ng https://pypi.org/project/patch-ng/"
-SRC_URI="https://github.com/conan-io/python-patch-ng/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/conan-io/python-patch-ng/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/python-${P}"
 
 LICENSE="MIT"

@@ -12,7 +12,7 @@ MY_P=python-fuse-${PV}
 DESCRIPTION="Python FUSE bindings"
 HOMEPAGE="https://github.com/libfuse/python-fuse"
 SRC_URI="
-	https://github.com/libfuse/python-fuse/archive/v${PV}.tar.gz
+	https://github.com/libfuse/python-fuse/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.tar.gz
 "
 S="${WORKDIR}/${MY_P}"

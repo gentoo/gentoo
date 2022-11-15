@@ -21,7 +21,7 @@ if [[ "${PV}" == "9999" ]]; then
 elif [[ "${PV}" == *_pre* ]]; then
 	SRC_URI="https://github.com/sunpinyin/${PN}/archive/${SUNPINYIN_GIT_REVISION}.tar.gz -> ${P}.tar.gz"
 else
-	SRC_URI="https://github.com/sunpinyin/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/sunpinyin/${PN}/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="|| ( CDDL LGPL-2.1 )"

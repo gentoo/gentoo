@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Move the terminal cursor around and manipulate text using intuitive method calls"
 HOMEPAGE="https://github.com/piotrmurach/tty-cursor"
-SRC_URI="https://github.com/piotrmurach/tty-cursor/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/piotrmurach/tty-cursor/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

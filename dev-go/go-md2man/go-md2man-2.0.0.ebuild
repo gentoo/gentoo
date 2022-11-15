@@ -5,7 +5,7 @@ EAPI=7
 inherit go-module
 
 DESCRIPTION="A utility to convert markdown to man pages"
-	SRC_URI="https://github.com/cpuguy83/go-md2man/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/cpuguy83/go-md2man/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/cpuguy83/go-md2man"
 
 LICENSE="BSD-2 MIT"

@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/MaskRay/ccls"
 if [[ ${PV} == *9999 ]] ; then
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/MaskRay/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/MaskRay/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~riscv"
 fi
 

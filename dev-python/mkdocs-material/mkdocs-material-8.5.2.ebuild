@@ -21,7 +21,7 @@ HOMEPAGE="
 	https://pypi.org/project/mkdocs-material/
 "
 SRC_URI="
-	https://github.com/squidfunk/${PN}/archive/${PV}.tar.gz
+	https://github.com/squidfunk/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

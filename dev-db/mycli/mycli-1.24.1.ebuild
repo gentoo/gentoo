@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 DESCRIPTION="CLI for MySQL Database with auto-completion and syntax highlighting"
 HOMEPAGE="https://www.mycli.net"
-SRC_URI="https://github.com/dbcli/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dbcli/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD MIT"
 SLOT="0"

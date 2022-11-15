@@ -6,7 +6,7 @@ inherit cmake
 
 DESCRIPTION="Tools for logs with ANSI color"
 HOMEPAGE="https://github.com/kilobyte/colorized-logs/"
-SRC_URI="https://github.com/kilobyte/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kilobyte/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

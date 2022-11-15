@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="JZlib is a re-implementation of zlib in pure Java"
 HOMEPAGE="http://www.jcraft.com/jzlib/"
-SRC_URI="https://github.com/ymnk/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ymnk/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

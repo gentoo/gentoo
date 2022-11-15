@@ -89,7 +89,7 @@ inherit cargo
 
 DESCRIPTION="Utility for declarative installation of programs"
 HOMEPAGE="https://github.com/DanySpin97/rinstall"
-SRC_URI="https://github.com/DanySpin97/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/DanySpin97/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
 LICENSE="GPL-3"

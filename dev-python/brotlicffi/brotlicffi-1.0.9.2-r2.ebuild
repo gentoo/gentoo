@@ -18,7 +18,7 @@ HOMEPAGE="
 	https://pypi.org/project/brotlicffi/
 "
 SRC_URI="
-	https://github.com/python-hyper/${PN}/archive/v${PV}.tar.gz
+	https://github.com/python-hyper/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	test? (
 		https://github.com/google/brotli/archive/${BROTLI_BUNDLED_COMMIT}.tar.gz

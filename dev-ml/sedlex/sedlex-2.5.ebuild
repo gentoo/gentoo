@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="An OCaml lexer generator for Unicode"
 HOMEPAGE="https://github.com/ocaml-community/sedlex"
-SRC_URI="https://github.com/ocaml-community/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/ocaml-community/${PN}/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="MIT"

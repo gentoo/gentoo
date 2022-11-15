@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Intelligent recursive search/replace utility"
 HOMEPAGE="http://rpl.sourceforge.net/ https://github.com/rrthomas/rpl"
-SRC_URI="https://github.com/rrthomas/rpl/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/rrthomas/rpl/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

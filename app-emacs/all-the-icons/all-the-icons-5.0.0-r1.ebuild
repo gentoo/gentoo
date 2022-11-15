@@ -9,7 +9,7 @@ inherit elisp font readme.gentoo-r1
 
 DESCRIPTION="Various icon fonts propertized for Emacs"
 HOMEPAGE="https://github.com/domtronn/all-the-icons.el/"
-SRC_URI="https://github.com/domtronn/${PN}.el/archive/${PV}.tar.gz
+SRC_URI="https://github.com/domtronn/${PN}.el/archive/refs/tags/${PV}.tar.gz
 			-> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}.el-${PV}
 

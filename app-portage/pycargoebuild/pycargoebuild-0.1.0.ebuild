@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pycargoebuild/
 "
 SRC_URI="
-	https://github.com/projg2/pycargoebuild/archive/v${PV}.tar.gz
+	https://github.com/projg2/pycargoebuild/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

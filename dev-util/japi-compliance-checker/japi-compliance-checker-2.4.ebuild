@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Java API compliance checker"
 HOMEPAGE="https://github.com/lvc/japi-compliance-checker"
-SRC_URI="https://github.com/lvc/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lvc/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

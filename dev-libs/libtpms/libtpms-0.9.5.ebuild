@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Library providing software emultion of a TPM"
 HOMEPAGE="https://github.com/stefanberger/libtpms"
-SRC_URI="https://github.com/stefanberger/libtpms/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/stefanberger/libtpms/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"

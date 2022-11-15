@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="nanoc is a simple but very flexible static site generator written in Ruby"
 HOMEPAGE="https://nanoc.app/"
-SRC_URI="https://github.com/nanoc/nanoc/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nanoc/nanoc/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
 KEYWORDS="~amd64"

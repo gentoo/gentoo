@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/numpydoc/
 "
 SRC_URI="
-	https://github.com/numpy/numpydoc/archive/v${PV}.tar.gz
+	https://github.com/numpy/numpydoc/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

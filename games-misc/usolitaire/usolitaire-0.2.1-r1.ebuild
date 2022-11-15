@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="solitaire in your terminal"
 HOMEPAGE="https://github.com/eliasdorneles/usolitaire"
-SRC_URI="https://github.com/eliasdorneles/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/eliasdorneles/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

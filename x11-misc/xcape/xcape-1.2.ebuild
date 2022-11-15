@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Utility to make modifier keys send custom key events when pressed on their own"
 HOMEPAGE="https://github.com/alols/xcape"
-SRC_URI="https://github.com/alols/xcape/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/alols/xcape/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

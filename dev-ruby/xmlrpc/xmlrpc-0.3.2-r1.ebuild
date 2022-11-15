@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP"
 HOMEPAGE="https://github.com/ruby/xmlrpc"
-SRC_URI="https://github.com/ruby/xmlrpc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/xmlrpc/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Ruby-BSD"
 SLOT="0"

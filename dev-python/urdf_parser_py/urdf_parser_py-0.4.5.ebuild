@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="URDF parser for Python"
 HOMEPAGE="https://wiki.ros.org/urdfdom_py"
-SRC_URI="https://github.com/ros/urdf_parser_py/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ros/urdf_parser_py/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

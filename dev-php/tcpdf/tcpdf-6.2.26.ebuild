@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="TCPDF is a FLOSS PHP class for generating PDF documents"
 HOMEPAGE="http://www.tcpdf.org/"
-SRC_URI="https://github.com/tecnickcom/TCPDF/archive/${PV}.tar.gz
+SRC_URI="https://github.com/tecnickcom/TCPDF/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 # Main source is LGPL-3+, some included fonts have other licenses
 LICENSE="LGPL-3+ GPL-3 BitstreamVera GPL-2"

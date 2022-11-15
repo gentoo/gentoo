@@ -10,7 +10,7 @@ MYP=${MYPN}-${PV}
 
 DESCRIPTION="Double precision SIMD-oriented Fast Mersenne Twister library"
 HOMEPAGE="http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT"
-SRC_URI="https://github.com/MersenneTwister-Lab/dSFMT/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/MersenneTwister-Lab/dSFMT/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MYP}"
 
 LICENSE="BSD"

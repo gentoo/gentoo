@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/deepmerge/
 "
 SRC_URI="
-	https://github.com/toumorokoshi/deepmerge/archive/v${PV}.tar.gz
+	https://github.com/toumorokoshi/deepmerge/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

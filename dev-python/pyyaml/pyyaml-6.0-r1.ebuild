@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/yaml/pyyaml/
 "
 SRC_URI="
-	https://github.com/yaml/pyyaml/archive/${PV}.tar.gz
+	https://github.com/yaml/pyyaml/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

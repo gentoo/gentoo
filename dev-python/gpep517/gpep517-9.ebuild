@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/projg2/gpep517/
 "
 SRC_URI="
-	https://github.com/projg2/gpep517/archive/v${PV}.tar.gz
+	https://github.com/projg2/gpep517/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

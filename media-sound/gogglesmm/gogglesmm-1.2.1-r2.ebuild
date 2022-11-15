@@ -7,7 +7,7 @@ inherit cmake xdg
 
 DESCRIPTION="Fast and light music player"
 HOMEPAGE="https://gogglesmm.github.io"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

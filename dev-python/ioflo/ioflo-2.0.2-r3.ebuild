@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Automated Reasoning Engine and Flow Based Programming Framework"
 HOMEPAGE="https://github.com/ioflo/ioflo/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

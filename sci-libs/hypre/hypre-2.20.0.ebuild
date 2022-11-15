@@ -9,7 +9,7 @@ inherit fortran-2 toolchain-funcs flag-o-matic
 
 DESCRIPTION="Parallel matrix preconditioners library"
 HOMEPAGE="https://computation.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods"
-SRC_URI="https://github.com/${PN}-space/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}-space/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"

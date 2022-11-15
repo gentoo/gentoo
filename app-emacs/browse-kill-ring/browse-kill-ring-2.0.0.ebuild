@@ -8,7 +8,7 @@ inherit elisp
 DESCRIPTION="An improved interface to kill-ring"
 HOMEPAGE="https://www.emacswiki.org/emacs/BrowseKillRing
 	https://github.com/browse-kill-ring/browse-kill-ring"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

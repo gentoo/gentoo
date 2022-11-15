@@ -11,7 +11,7 @@ HOMEPAGE="
 	http://www.zezula.net/en/mpq/stormlib.html
 	https://github.com/ladislav-zezula/StormLib"
 SRC_URI="
-	https://github.com/ladislav-zezula/StormLib/archive/v${PV}.tar.gz
+	https://github.com/ladislav-zezula/StormLib/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 

@@ -16,7 +16,7 @@ HOMEPAGE="
 "
 # pypi tarball is missing templates
 SRC_URI="
-	https://github.com/sphinx-doc/sphinxcontrib-websupport/archive/${PV}.tar.gz
+	https://github.com/sphinx-doc/sphinxcontrib-websupport/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -11,7 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A High Performance Inter-Thread Messaging Library"
 HOMEPAGE="https://lmax-exchange.github.io/disruptor/"
-SRC_URI="https://github.com/LMAX-Exchange/disruptor/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/LMAX-Exchange/disruptor/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

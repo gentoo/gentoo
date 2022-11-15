@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Emacs Lisp library for reading .bib files"
 HOMEPAGE="https://github.com/joostkremers/parsebib/"
-SRC_URI="https://github.com/joostkremers/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/joostkremers/${PN}/archive/refs/tags/${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="BSD"

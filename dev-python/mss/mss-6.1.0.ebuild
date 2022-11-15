@@ -9,7 +9,7 @@ inherit distutils-r1 virtualx
 
 DESCRIPTION="An ultra fast cross-platform multiple screenshots module in python using ctypes"
 HOMEPAGE="https://github.com/BoboTiG/python-mss"
-SRC_URI="https://github.com/BoboTiG/python-mss/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/BoboTiG/python-mss/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

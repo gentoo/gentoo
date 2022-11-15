@@ -8,8 +8,8 @@ inherit qmake-utils udev
 
 DESCRIPTION="GUI and CLI ST-Link V2(Debugger/Programmer) client"
 HOMEPAGE="https://github.com/fpoussin/QStlink2/"
-SRC_URI="https://github.com/fpoussin/QStlink2/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/fpoussin/QtUsb/archive/v${QTUSB_VER}.tar.gz -> qtusb-${QTUSB_VER}.tar.gz"
+SRC_URI="https://github.com/fpoussin/QStlink2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/fpoussin/QtUsb/archive/refs/tags/v${QTUSB_VER}.tar.gz -> qtusb-${QTUSB_VER}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

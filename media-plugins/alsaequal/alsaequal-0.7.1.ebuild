@@ -6,7 +6,7 @@ inherit multilib-minimal toolchain-funcs
 
 DESCRIPTION="A real-time adjustable equalizer plugin for ALSA"
 HOMEPAGE="https://github.com/bassdr/alsaequal"
-SRC_URI="https://github.com/bassdr/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bassdr/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

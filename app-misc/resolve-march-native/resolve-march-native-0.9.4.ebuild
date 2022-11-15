@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Resolve GCC flag -march=native"
 HOMEPAGE="https://github.com/hartwork/resolve-march-native"
-SRC_URI="https://github.com/hartwork/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hartwork/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

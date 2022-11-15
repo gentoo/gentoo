@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/openapi-core/
 "
 SRC_URI="
-	https://github.com/p1c2u/openapi-core/archive/${PV}.tar.gz
+	https://github.com/p1c2u/openapi-core/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

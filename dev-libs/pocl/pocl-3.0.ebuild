@@ -13,7 +13,7 @@ inherit cmake llvm python-any-r1 docs
 
 DESCRIPTION="Portable Computing Language (an implementation of OpenCL)"
 HOMEPAGE="http://portablecl.org https://github.com/pocl/pocl"
-SRC_URI="https://github.com/pocl/pocl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pocl/pocl/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

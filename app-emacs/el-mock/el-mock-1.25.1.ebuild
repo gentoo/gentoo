@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Mocking library for Emacs"
 HOMEPAGE="https://github.com/rejeep/el-mock.el/"
-SRC_URI="https://github.com/rejeep/${PN}.el/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/rejeep/${PN}.el/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}.el-${PV}
 

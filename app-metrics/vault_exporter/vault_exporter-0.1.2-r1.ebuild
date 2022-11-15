@@ -10,7 +10,7 @@ inherit golang-build golang-vcs-snapshot
 
 DESCRIPTION="Vault exporter for Prometheus"
 HOMEPAGE="https://github.com/grapeshot/vault_exporter"
-SRC_URI="https://${EGO_PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://${EGO_PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD MIT MPL-2.0"
 SLOT="0"

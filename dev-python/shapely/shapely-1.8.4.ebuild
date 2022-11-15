@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/shapely/shapely/
 "
 SRC_URI="
-	https://github.com/shapely/shapely/archive/${PV}.tar.gz
+	https://github.com/shapely/shapely/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

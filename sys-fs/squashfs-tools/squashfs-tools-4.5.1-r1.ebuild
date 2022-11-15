@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 DESCRIPTION="tools to create and extract Squashfs filesystems"
 HOMEPAGE="https://github.com/plougher/squashfs-tools/"
 SRC_URI="
-	https://github.com/plougher/squashfs-tools/archive/${PV}.tar.gz
+	https://github.com/plougher/squashfs-tools/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 LICENSE="GPL-2"

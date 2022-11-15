@@ -8,7 +8,7 @@ inherit linux-mod toolchain-funcs
 
 DESCRIPTION="Kernel Module for Tuxedo Keyboard"
 HOMEPAGE="https://github.com/tuxedocomputers/tuxedo-keyboard"
-SRC_URI="https://github.com/tuxedocomputers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tuxedocomputers/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

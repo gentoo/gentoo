@@ -7,7 +7,7 @@ inherit vim-plugin
 
 DESCRIPTION="vim plugin: Go development plugin for Vim"
 HOMEPAGE="https://github.com/fatih/vim-go"
-SRC_URI="https://github.com/fatih/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/fatih/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 KEYWORDS="amd64 x86"
 

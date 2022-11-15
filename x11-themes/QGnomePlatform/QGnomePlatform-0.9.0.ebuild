@@ -6,7 +6,7 @@ inherit cmake
 
 DESCRIPTION="A Qt Platform Theme aimed to accommodate GNOME settings"
 HOMEPAGE="https://github.com/FedoraQt/QGnomePlatform"
-SRC_URI="https://github.com/FedoraQt/QGnomePlatform/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/FedoraQt/QGnomePlatform/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 LICENSE="LGPL-2.1"

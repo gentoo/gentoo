@@ -11,7 +11,7 @@ MY_PN="CorsixTH"
 
 DESCRIPTION="Open source clone of Theme Hospital"
 HOMEPAGE="https://corsixth.com"
-SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"

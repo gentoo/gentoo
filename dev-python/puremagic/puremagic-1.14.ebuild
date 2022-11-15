@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/puremagic/
 "
 SRC_URI="
-	https://github.com/cdgriffith/${PN}/archive/${PV}.tar.gz
+	https://github.com/cdgriffith/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

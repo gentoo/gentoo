@@ -11,7 +11,7 @@ SPIRV_COMMIT="1458bae62ec67ea7d12c5a13b740e23ed4bb226c"
 DESCRIPTION="Super Nintendo Entertainment System (SNES) emulator"
 HOMEPAGE="https://github.com/snes9xgit/snes9x/"
 SRC_URI="
-	https://github.com/snes9xgit/snes9x/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/snes9xgit/snes9x/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	gui? ( glslang? (
 		https://github.com/KhronosGroup/glslang/archive/${GLSLANG_COMMIT}.tar.gz -> ${P}-glslang.tar.gz
 		https://github.com/KhronosGroup/SPIRV-Cross/archive/${SPIRV_COMMIT}.tar.gz -> ${P}-spirv.tar.gz

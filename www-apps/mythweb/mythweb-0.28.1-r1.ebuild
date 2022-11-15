@@ -11,7 +11,7 @@ MY_P="mythweb-${MY_PV}"
 
 DESCRIPTION="PHP scripts intended to manage MythTV from a web browser"
 HOMEPAGE="https://www.mythtv.org"
-SRC_URI="https://github.com/MythTV/mythweb/archive/v${MY_PV}.tar.gz -> mythweb-${MY_PV}.tar.gz"
+SRC_URI="https://github.com/MythTV/mythweb/archive/refs/tags/v${MY_PV}.tar.gz -> mythweb-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~x86"

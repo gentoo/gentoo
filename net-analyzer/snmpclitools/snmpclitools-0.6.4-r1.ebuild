@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Pure-Python SNMP management tools, formerly pysnmp-apps"
 HOMEPAGE="https://github.com/etingof/snmpclitools"
-SRC_URI="https://github.com/etingof/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/etingof/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

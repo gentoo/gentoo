@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Add Internationalization support to your Ruby application"
 HOMEPAGE="http://rails-i18n.org/"
-SRC_URI="https://github.com/svenfuchs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/svenfuchs/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

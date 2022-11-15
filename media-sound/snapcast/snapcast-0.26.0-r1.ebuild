@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Synchronous multi-room audio player"
 HOMEPAGE="https://github.com/badaix/snapcast"
-SRC_URI="https://github.com/badaix/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/badaix/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

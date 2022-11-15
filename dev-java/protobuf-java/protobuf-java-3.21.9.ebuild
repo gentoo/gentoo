@@ -13,7 +13,7 @@ inherit edo java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Google's Protocol Buffers - Java bindings"
 HOMEPAGE="https://developers.google.com/protocol-buffers/"
-SRC_URI="https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz -> protobuf-${PV}.tar.gz"
+SRC_URI="https://github.com/protocolbuffers/protobuf/archive/refs/tags/v${PV}.tar.gz -> protobuf-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

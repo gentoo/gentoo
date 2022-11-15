@@ -10,7 +10,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="vim plugin: use the repeat command \".\" with plugin maps"
 HOMEPAGE="https://github.com/tpope/vim-repeat/ https://www.vim.org/scripts/script.php?script_id=2136"
-SRC_URI="https://github.com/tpope/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tpope/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="vim"
 KEYWORDS="amd64 x86"
 

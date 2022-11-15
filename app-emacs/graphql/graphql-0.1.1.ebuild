@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="GraphQL utilities"
 HOMEPAGE="https://github.com/vermiculus/graphql.el"
-SRC_URI="https://github.com/vermiculus/graphql.el/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vermiculus/graphql.el/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}.el-${PV}"
 
 LICENSE="GPL-3+"

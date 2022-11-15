@@ -7,7 +7,7 @@ inherit perl-module
 
 DESCRIPTION="Sweeps up stray ARP queries from a peering LAN"
 HOMEPAGE="https://github.com/AMS-IX/arpsponge"
-SRC_URI="https://github.com/AMS-IX/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/AMS-IX/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( GPL-1+ Artistic )"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="PHP captcha creator and validator library"
 HOMEPAGE="https://www.phpcaptcha.org/"
-SRC_URI="https://github.com/dapphp/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dapphp/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-3+"
 SLOT="0"

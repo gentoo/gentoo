@@ -17,7 +17,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Library for the Ed25519 public-key signature system"
 HOMEPAGE="https://github.com/crypto-rb/ed25519"
-SRC_URI="https://github.com/crypto-rb/ed25519/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/crypto-rb/ed25519/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1"

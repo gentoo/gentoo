@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/zopefoundation/zope.hookable/
 "
 SRC_URI="
-	https://github.com/zopefoundation/zope.hookable/archive/${PV}.tar.gz
+	https://github.com/zopefoundation/zope.hookable/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S=${WORKDIR}/${P/-/.}

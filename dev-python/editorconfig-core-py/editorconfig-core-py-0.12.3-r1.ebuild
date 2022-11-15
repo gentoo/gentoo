@@ -9,7 +9,7 @@ inherit cmake distutils-r1
 TESTVER="abb579e00f2deeede91cb485e53512efab9c6474"
 DESCRIPTION="Clone of EditorConfig core written in Python"
 HOMEPAGE="https://editorconfig.org/"
-SRC_URI="https://github.com/${PN%-core-py}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/${PN%-core-py}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	test? (
 		https://github.com/${PN%-core-py}/${PN%-core-py}-core-test/archive/${TESTVER}.tar.gz -> ${PN%-core-py}-core-test-${TESTVER}.tar.gz
 	)"

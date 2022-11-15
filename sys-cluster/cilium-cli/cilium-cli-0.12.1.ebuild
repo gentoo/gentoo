@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="Next generation command line interface for cilium"
 HOMEPAGE="https://cilium.io"
-SRC_URI="https://github.com/cilium/cilium-cli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cilium/cilium-cli/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

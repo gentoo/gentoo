@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Ruby on Rails RBPDF plugin"
 HOMEPAGE="https://github.com/naitoh/rbpdf"
-SRC_URI="https://github.com/naitoh/rbpdf/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/naitoh/rbpdf/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -15,7 +15,7 @@ MY_TESTDATA_COMMIT="1f3d093030f9a0b43353ec6b48500f65786ff57a"
 
 DESCRIPTION="Open-source JPEG 2000 library"
 HOMEPAGE="https://www.openjpeg.org"
-SRC_URI="https://github.com/uclouvain/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/uclouvain/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://github.com/uclouvain/openjpeg-data/archive/${MY_TESTDATA_COMMIT}.tar.gz -> ${PN}-data_20210926.tar.gz )"
 
 LICENSE="BSD-2"

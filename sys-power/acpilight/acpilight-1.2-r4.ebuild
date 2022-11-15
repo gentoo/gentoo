@@ -11,7 +11,7 @@ MY_P="${PN}-v${PV}"
 
 DESCRIPTION="Replacement for xbacklight that uses the ACPI interface to set brightness"
 HOMEPAGE="https://gitlab.com/wavexx/acpilight/"
-SRC_URI="https://gitlab.com/wavexx/acpilight/-/archive/v${PV}/${MY_P}.tar.gz"
+SRC_URI="https://gitlab.com/wavexx/acpilight/-/archive/refs/tags/v${PV}/${MY_P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"

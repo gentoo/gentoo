@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="A simple C++ geometry processing library"
 HOMEPAGE="https://libigl.github.io/"
-SRC_URI="https://github.com/libigl/libigl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/libigl/libigl/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ MPL-2.0"
 SLOT="0"

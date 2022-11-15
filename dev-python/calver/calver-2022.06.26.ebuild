@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/calver/
 "
 SRC_URI="
-	https://github.com/di/calver/archive/${PV}.tar.gz
+	https://github.com/di/calver/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

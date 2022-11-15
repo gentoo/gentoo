@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="EXtended http(s) CONnections"
 HOMEPAGE="https://github.com/excon/excon"
-SRC_URI="https://github.com/excon/excon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/excon/excon/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

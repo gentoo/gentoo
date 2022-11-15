@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python test runner born under the banner of Behavior Driven Development"
 HOMEPAGE="https://nestorsalceda.com/mamba/"
-SRC_URI="https://github.com/nestorsalceda/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nestorsalceda/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

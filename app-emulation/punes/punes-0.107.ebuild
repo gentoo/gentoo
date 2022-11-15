@@ -7,7 +7,7 @@ inherit autotools xdg-utils
 
 DESCRIPTION="Nintendo Entertainment System (NES) emulator"
 HOMEPAGE="https://github.com/punesemu/puNES"
-SRC_URI="https://github.com/punesemu/puNES/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/punesemu/puNES/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit cmake xdg-utils virtualx
 
 DESCRIPTION="Tile-based, cross-platform 2D racing game"
 HOMEPAGE="https://juzzlin.github.io/DustRacing2D/"
-SRC_URI="https://github.com/juzzlin/DustRacing2D/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/juzzlin/DustRacing2D/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/DustRacing2D-${PV}"
 
 LICENSE="GPL-3+ CC-BY-SA-3.0"

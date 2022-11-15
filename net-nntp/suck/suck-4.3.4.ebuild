@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Grab news from a remote NNTP server and feed them to another"
 HOMEPAGE="https://lazarus-pkgs.github.io/lazarus-pkgs/suck.html"
-SRC_URI="https://github.com/lazarus-pkgs/suck/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lazarus-pkgs/suck/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"

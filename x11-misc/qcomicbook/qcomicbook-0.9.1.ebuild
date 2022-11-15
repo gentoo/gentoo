@@ -10,7 +10,7 @@ inherit cmake flag-o-matic plocale xdg
 
 DESCRIPTION="Viewer for comic book archives containing jpeg/png images"
 HOMEPAGE="https://github.com/stolowski/QComicBook"
-SRC_URI="https://github.com/stolowski/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/stolowski/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

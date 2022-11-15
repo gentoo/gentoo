@@ -7,7 +7,7 @@ inherit elisp readme.gentoo-r1
 
 DESCRIPTION="Writable grep buffer and apply the changes to files"
 HOMEPAGE="https://github.com/mhayashi1120/Emacs-wgrep"
-SRC_URI="https://github.com/mhayashi1120/Emacs-${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mhayashi1120/Emacs-${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

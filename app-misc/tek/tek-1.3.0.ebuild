@@ -8,7 +8,7 @@ inherit toolchain-funcs udev wxwidgets
 
 DESCRIPTION="GUI tool for upgrading the firmware of a Truly Ergonomic Keyboard"
 HOMEPAGE="https://trulyergonomic.com/ https://github.com/m-ou-se/tek"
-SRC_URI="https://github.com/m-ou-se/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/m-ou-se/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="all-rights-reserved GPL-3+"
 SLOT="0"

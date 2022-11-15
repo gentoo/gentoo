@@ -9,7 +9,7 @@ inherit cmake python-any-r1
 
 DESCRIPTION="Automatic theorem prover for satisfiability modulo theories (SMT) problems"
 HOMEPAGE="https://cvc4.github.io/"
-SRC_URI="https://github.com/CVC4/CVC4/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/CVC4/CVC4/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

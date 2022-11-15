@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Creole-to-HTML converter for Creole, the lightweight markup language"
 HOMEPAGE="https://github.com/minad/creole"
-SRC_URI="https://github.com/minad/creole/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/minad/creole/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

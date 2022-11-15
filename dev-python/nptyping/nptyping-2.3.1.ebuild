@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/ramonhagenaars/nptyping/
 "
 SRC_URI="
-	https://github.com/ramonhagenaars/nptyping/archive/v${PV}.tar.gz
+	https://github.com/ramonhagenaars/nptyping/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

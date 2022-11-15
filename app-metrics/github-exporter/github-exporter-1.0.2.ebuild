@@ -5,7 +5,7 @@ EAPI=7
 inherit go-module systemd
 DESCRIPTION="Github statistics exporter for prometheus"
 HOMEPAGE="https://github.com/infinityworks/github-exporter"
-SRC_URI="https://github.com/infinityworks/github-exporter/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/infinityworks/github-exporter/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="MIT Apache-2.0 BSD"

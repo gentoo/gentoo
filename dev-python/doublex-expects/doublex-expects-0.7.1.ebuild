@@ -11,7 +11,7 @@ MY_PV=${PV/_/}
 
 DESCRIPTION="Expects matchers for Doublex test doubles assertions"
 HOMEPAGE="https://github.com/jaimegildesagredo/doublex-expects"
-SRC_URI="https://github.com/jaimegildesagredo/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jaimegildesagredo/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

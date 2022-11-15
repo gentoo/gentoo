@@ -12,7 +12,7 @@ DESCRIPTION="A Python-extensible molecular graphics system"
 HOMEPAGE="https://www.pymol.org/"
 SRC_URI="
 	https://dev.gentoo.org/~pacho/${PN}/${PN}-1.8.4.0.png.xz
-	https://github.com/schrodinger/pymol-open-source/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/schrodinger/pymol-open-source/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	"
 LICENSE="BitstreamVera BSD freedist HPND OFL public-domain UoI-NCSA" #844991
 SLOT="0"

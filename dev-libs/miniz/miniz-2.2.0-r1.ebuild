@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="A lossless, high performance data compression library"
 HOMEPAGE="https://github.com/richgel999/miniz"
-SRC_URI="https://github.com/richgel999/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/richgel999/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

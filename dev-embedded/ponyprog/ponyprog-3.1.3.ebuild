@@ -7,7 +7,7 @@ inherit cmake udev
 
 DESCRIPTION="EEPROM and microcontroller programmer/flasher"
 HOMEPAGE="https://github.com/lancos/ponyprog/"
-SRC_URI="https://github.com/lancos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lancos/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

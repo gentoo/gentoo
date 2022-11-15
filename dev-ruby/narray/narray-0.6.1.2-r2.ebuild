@@ -19,7 +19,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Numerical N-dimensional Array class"
 HOMEPAGE="https://masa16.github.io/narray/"
-SRC_URI="https://github.com/masa16/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/masa16/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Ruby-BSD"
 SLOT="0"

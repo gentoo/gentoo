@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/zeroconf/
 "
 SRC_URI="
-	https://github.com/jstasiak/python-zeroconf/archive/${PV}.tar.gz
+	https://github.com/jstasiak/python-zeroconf/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

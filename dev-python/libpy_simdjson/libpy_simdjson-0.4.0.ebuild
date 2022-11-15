@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python bindings for simdjson using libpy"
 HOMEPAGE="https://github.com/gerrymanoim/libpy_simdjson"
-SRC_URI="https://github.com/gerrymanoim/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gerrymanoim/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

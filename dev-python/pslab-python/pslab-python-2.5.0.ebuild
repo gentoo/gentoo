@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python library for communicating with Pocket Science Lab"
 HOMEPAGE="https://pslab.io"
-SRC_URI="https://github.com/fossasia/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/fossasia/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

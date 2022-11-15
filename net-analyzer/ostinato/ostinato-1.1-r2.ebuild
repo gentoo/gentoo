@@ -7,7 +7,7 @@ inherit qmake-utils
 
 DESCRIPTION="Packet generator and analyzer"
 HOMEPAGE="https://ostinato.org/"
-SRC_URI="https://github.com/pstavirs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pstavirs/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

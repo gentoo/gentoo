@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="An ultra lite authorization library"
 HOMEPAGE="https://github.com/randx/six"
-SRC_URI="https://github.com/randx/six/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/randx/six/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

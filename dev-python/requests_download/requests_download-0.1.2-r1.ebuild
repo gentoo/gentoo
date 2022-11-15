@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A convenient function to download to a file using requests"
 HOMEPAGE="https://github.com/takluyver/requests_download https://pypi.org/project/requests_download/"
-SRC_URI="https://github.com/takluyver/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/takluyver/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

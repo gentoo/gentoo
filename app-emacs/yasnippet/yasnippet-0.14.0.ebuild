@@ -7,7 +7,7 @@ inherit elisp readme.gentoo-r1
 
 DESCRIPTION="Yet another snippet extension for Emacs"
 HOMEPAGE="http://joaotavora.github.com/yasnippet/"
-SRC_URI="https://github.com/joaotavora/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/joaotavora/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

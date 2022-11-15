@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="debug static-libs"
 
-SRC_URI="https://github.com/tmate-io/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tmate-io/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 RDEPEND="
 	sys-libs/zlib[static-libs?]

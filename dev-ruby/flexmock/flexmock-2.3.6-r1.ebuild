@@ -17,7 +17,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Simple mock object library for Ruby unit testing"
 HOMEPAGE="https://github.com/doudou/flexmock"
-SRC_URI="https://github.com/doudou/flexmock/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/doudou/flexmock/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="flexmock"
 SLOT="0"

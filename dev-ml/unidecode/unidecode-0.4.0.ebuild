@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Convert unicode strings into its ASCII representation"
 HOMEPAGE="https://github.com/geneweb/unidecode"
-SRC_URI="https://github.com/geneweb/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/geneweb/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3"

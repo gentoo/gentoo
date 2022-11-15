@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Major mode for editing systemd units in GNU Emacs"
 HOMEPAGE="https://github.com/holomorph/systemd-mode/"
-SRC_URI="https://github.com/holomorph/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/holomorph/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

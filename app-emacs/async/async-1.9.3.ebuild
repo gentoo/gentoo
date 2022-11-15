@@ -8,7 +8,7 @@ inherit elisp
 MY_P="emacs-async-${PV}"
 DESCRIPTION="Simple library for asynchronous processing in Emacs"
 HOMEPAGE="https://github.com/jwiegley/emacs-async"
-SRC_URI="https://github.com/jwiegley/emacs-async/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/jwiegley/emacs-async/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

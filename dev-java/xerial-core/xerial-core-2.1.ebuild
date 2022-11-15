@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Core library of the Xerial project."
 HOMEPAGE="https://xerial.org"
-SRC_URI="https://github.com/xerial/xerial-java/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/xerial/xerial-java/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

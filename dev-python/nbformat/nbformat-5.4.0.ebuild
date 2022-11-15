@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/nbformat/
 "
 SRC_URI="
-	https://github.com/jupyter/nbformat/archive/${PV}.tar.gz
+	https://github.com/jupyter/nbformat/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

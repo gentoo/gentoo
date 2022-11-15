@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="The Drive Trust Alliance Self Encrypting Drive Utility"
 HOMEPAGE="https://github.com/Drive-Trust-Alliance/sedutil"
-SRC_URI="https://github.com/Drive-Trust-Alliance/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Drive-Trust-Alliance/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

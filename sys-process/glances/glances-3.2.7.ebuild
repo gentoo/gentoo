@@ -11,7 +11,7 @@ inherit distutils-r1 linux-info optfeature
 
 DESCRIPTION="CLI curses based monitoring tool"
 HOMEPAGE="https://github.com/nicolargo/glances"
-SRC_URI="https://github.com/nicolargo/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/nicolargo/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

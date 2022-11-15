@@ -11,7 +11,7 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 else
 	KEYWORDS="amd64 ppc64 x86"
-	SRC_URI="https://code.videolan.org/videolan/libplacebo/-/archive/v${PV}/libplacebo-v${PV}.tar.gz"
+	SRC_URI="https://code.videolan.org/videolan/libplacebo/-/archive/refs/tags/v${PV}/libplacebo-v${PV}.tar.gz"
 	S="${WORKDIR}/${PN}-v${PV}"
 fi
 

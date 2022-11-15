@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="The offical daemon to run your own (full) Litecoin node"
 HOMEPAGE="https://litecoin.org/"
-SRC_URI="https://github.com/${MY_PN}-project/${MY_PN}/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/${MY_PN}-project/${MY_PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT ISC GPL-2"

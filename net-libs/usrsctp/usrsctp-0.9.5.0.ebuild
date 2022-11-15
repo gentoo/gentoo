@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="A cross-platform userland SCTP stack"
 HOMEPAGE="https://github.com/sctplab/usrsctp"
-SRC_URI="https://github.com/sctplab/usrsctp/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sctplab/usrsctp/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

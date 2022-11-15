@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Remote control for Greenbone Vulnerability Manager, previously named openvas-cli"
 HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/gvm-tools/"
-SRC_URI="https://github.com/greenbone/gvm-tools/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/greenbone/gvm-tools/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3"

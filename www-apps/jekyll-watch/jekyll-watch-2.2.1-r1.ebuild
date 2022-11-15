@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Rebuild your Jekyll site when a file changes with the --watch switch"
 HOMEPAGE="https://github.com/jekyll/jekyll-watch"
-SRC_URI="https://github.com/jekyll/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jekyll/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

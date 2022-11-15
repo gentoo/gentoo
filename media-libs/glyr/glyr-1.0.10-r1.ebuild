@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Music related metadata searchengine, both with commandline interface and C API"
 HOMEPAGE="https://github.com/sahib/glyr"
-SRC_URI="https://github.com/sahib/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sahib/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

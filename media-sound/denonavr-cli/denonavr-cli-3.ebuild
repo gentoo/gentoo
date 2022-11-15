@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/denonavr-cli/
 "
 SRC_URI="
-	https://github.com/mgorny/denonavr-cli/archive/v${PV}.tar.gz
+	https://github.com/mgorny/denonavr-cli/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -12,7 +12,7 @@ MY_P=${PN}.py-${PV}
 DESCRIPTION="Python wrappers to the symengine C++ library"
 HOMEPAGE="https://github.com/symengine/symengine.py/"
 SRC_URI="
-	https://github.com/symengine/symengine.py/archive/v${PV}.tar.gz
+	https://github.com/symengine/symengine.py/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 

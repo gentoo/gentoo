@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Support for the F# programming language"
 HOMEPAGE="https://github.com/fsharp/emacs-fsharp-mode/"
-SRC_URI="https://github.com/fsharp/emacs-${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/fsharp/emacs-${PN}/archive/refs/tags/${PV}.tar.gz
 			-> ${P}.tar.gz"
 S="${WORKDIR}"/emacs-${P}
 

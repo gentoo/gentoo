@@ -7,7 +7,7 @@ inherit go-module
 DESCRIPTION="Docker Registry 2 authentication server"
 HOMEPAGE="https://github.com/cesanta/docker_auth"
 
-SRC_URI="https://github.com/cesanta/docker_auth/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cesanta/docker_auth/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT ZLIB"

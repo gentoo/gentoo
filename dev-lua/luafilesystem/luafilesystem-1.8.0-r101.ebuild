@@ -11,7 +11,7 @@ MY_PV=${PV//./_}
 
 DESCRIPTION="File System Library for the Lua programming language"
 HOMEPAGE="https://keplerproject.github.io/luafilesystem/"
-SRC_URI="https://github.com/keplerproject/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/keplerproject/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="MIT"

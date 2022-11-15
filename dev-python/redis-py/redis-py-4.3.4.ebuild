@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/redis/
 "
 SRC_URI="
-	https://github.com/redis/redis-py/archive/v${PV}.tar.gz
+	https://github.com/redis/redis-py/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

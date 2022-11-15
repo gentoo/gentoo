@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A module that provides a two-phase lock with a counter"
 HOMEPAGE="https://github.com/ruby/sync"
-SRC_URI="https://github.com/ruby/sync/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/sync/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="$(ver_cut 1)"

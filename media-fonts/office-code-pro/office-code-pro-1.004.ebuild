@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="Customized version of Source Code Pro"
 HOMEPAGE="https://github.com/nathco/Office-Code-Pro"
-SRC_URI="https://github.com/nathco/Office-Code-Pro/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nathco/Office-Code-Pro/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="OFL-1.1"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit go-module systemd
 
 DESCRIPTION="A frp server plugin to support multiple users for frp"
 HOMEPAGE="https://github.com/gofrp/fp-multiuser"
-SRC_URI="https://github.com/gofrp/fp-multiuser/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/gofrp/fp-multiuser/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"

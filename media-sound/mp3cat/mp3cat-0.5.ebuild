@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Reads and writes MP3 files"
 HOMEPAGE="https://tomclegg.ca/mp3cat"
-SRC_URI="https://github.com/tomclegg/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tomclegg/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="a simple FUSE filesystem for mounting Android devices as a MTP device"
 HOMEPAGE="https://github.com/hanwen/go-mtpfs"
-SRC_URI="https://github.com/hanwen/go-mtpfs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hanwen/go-mtpfs/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="BSD"

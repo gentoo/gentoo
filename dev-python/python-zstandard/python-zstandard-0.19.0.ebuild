@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/zstandard/
 "
 SRC_URI="
-	https://github.com/indygreg/python-zstandard/archive/${PV}.tar.gz
+	https://github.com/indygreg/python-zstandard/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

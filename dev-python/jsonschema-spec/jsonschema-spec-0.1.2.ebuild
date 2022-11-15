@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/p1c2u/jsonschema-spec/
 "
 SRC_URI="
-	https://github.com/p1c2u/jsonschema-spec/archive/${PV}.tar.gz
+	https://github.com/p1c2u/jsonschema-spec/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

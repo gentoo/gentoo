@@ -17,8 +17,8 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="
-		https://github.com/cburstedde/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/cburstedde/libsc/archive/v${PV}.tar.gz -> libsc-${PV}.tar.gz"
+		https://github.com/cburstedde/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/cburstedde/libsc/archive/refs/tags/v${PV}.tar.gz -> libsc-${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 

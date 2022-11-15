@@ -12,7 +12,7 @@ inherit prefix ruby-fakegem
 
 DESCRIPTION="Fast mime detection by extension or content"
 HOMEPAGE="https://github.com/mimemagicrb/mimemagic"
-SRC_URI="https://github.com/mimemagicrb/mimemagic/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mimemagicrb/mimemagic/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"

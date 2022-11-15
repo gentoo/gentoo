@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/PyNaCl/
 "
 SRC_URI="
-	https://github.com/pyca/${PN}/archive/${PV}.tar.gz
+	https://github.com/pyca/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

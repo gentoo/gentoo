@@ -19,7 +19,7 @@ case ${PV} in
 *)
 	KEYWORDS="~amd64 ~x86"
 	CODENAME="Matrix"
-	SRC_URI="https://github.com/xbmc/peripheral.joystick/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/xbmc/peripheral.joystick/archive/refs/tags/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/peripheral.joystick-${PV}-${CODENAME}"
 	;;
 esac

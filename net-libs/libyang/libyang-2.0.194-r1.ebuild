@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="YANG data modeling language library"
 HOMEPAGE="https://github.com/CESNET/libyang"
-SRC_URI="https://github.com/CESNET/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/CESNET/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

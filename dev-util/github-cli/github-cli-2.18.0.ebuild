@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/cli/cli.git"
 else
-	SRC_URI="https://github.com/cli/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/cli/cli/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv"
 	S="${WORKDIR}/cli-${PV}"

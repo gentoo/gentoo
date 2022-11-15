@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/prettytable/
 "
 SRC_URI="
-	https://github.com/jazzband/prettytable/archive/${PV}.tar.gz
+	https://github.com/jazzband/prettytable/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

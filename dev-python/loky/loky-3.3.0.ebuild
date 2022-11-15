@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Robust and reusable Executor for joblib"
 HOMEPAGE="https://github.com/joblib/loky"
 SRC_URI="
-	https://github.com/joblib/loky/archive/${PV}.tar.gz
+	https://github.com/joblib/loky/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

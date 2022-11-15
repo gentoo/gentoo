@@ -17,7 +17,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Executable feature scenarios"
 HOMEPAGE="https://cucumber.io/"
-SRC_URI="https://github.com/cucumber/cucumber-ruby/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cucumber/cucumber-ruby/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="cucumber-ruby-${PV}"
 LICENSE="Ruby"
 

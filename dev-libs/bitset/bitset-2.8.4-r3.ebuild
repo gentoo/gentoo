@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A compressed bitset with supporting data structures and algorithms"
 HOMEPAGE="https://github.com/chriso/bitset"
-SRC_URI="https://github.com/chriso/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/chriso/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

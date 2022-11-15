@@ -8,7 +8,7 @@ inherit python-r1 desktop wrapper xdg-utils
 
 DESCRIPTION="GUI for lossless cropping of jpeg images"
 HOMEPAGE="https://emergent.unpythonic.net/01248401946"
-SRC_URI="https://github.com/jepler/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jepler/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

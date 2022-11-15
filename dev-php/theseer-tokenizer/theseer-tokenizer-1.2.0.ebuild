@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Convert tokenized PHP source code into XML and other formats"
 HOMEPAGE="https://github.com/theseer/tokenizer"
-SRC_URI="https://github.com/theseer/tokenizer/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/theseer/tokenizer/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

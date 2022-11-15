@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A tool for checking the output of console programs inspired by LLVM's FileCheck"
 HOMEPAGE="https://github.com/stp/OutputCheck/"
-SRC_URI="https://github.com/stp/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/stp/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

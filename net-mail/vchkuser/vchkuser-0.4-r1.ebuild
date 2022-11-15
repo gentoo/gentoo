@@ -7,7 +7,7 @@ inherit autotools qmail
 
 DESCRIPTION="qmail-spp plugin to check recipient existance with vpopmail"
 HOMEPAGE="https://github.com/hollow/vchkuser"
-SRC_URI="https://github.com/hollow/vchkuser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hollow/vchkuser/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

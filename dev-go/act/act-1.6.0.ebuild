@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Automated Component Toolkit code generator"
 HOMEPAGE="https://github.com/Autodesk/AutomaticComponentToolkit"
-SRC_URI="https://github.com/Autodesk/AutomaticComponentToolkit/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Autodesk/AutomaticComponentToolkit/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/AutomaticComponentToolkit-${PV}"
 
 LICENSE="BSD-2"

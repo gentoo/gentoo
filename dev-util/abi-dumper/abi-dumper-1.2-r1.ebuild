@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Dump ABI of an ELF object containing DWARF debug info"
 HOMEPAGE="https://github.com/lvc/abi-dumper"
-SRC_URI="https://github.com/lvc/abi-dumper/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lvc/abi-dumper/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

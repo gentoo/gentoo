@@ -16,7 +16,7 @@ RUBY_FAKEGEM_BINDIR="exe"
 
 DESCRIPTION="A simple, blog aware, static site generator"
 HOMEPAGE="https://jekyllrb.com https://github.com/jekyll/jekyll"
-SRC_URI="https://github.com/jekyll/${PN}/archive/v${PV}.tar.gz  -> ${P}.tar.gz"
+SRC_URI="https://github.com/jekyll/${PN}/archive/refs/tags/v${PV}.tar.gz  -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

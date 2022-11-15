@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/django-filter/
 "
 SRC_URI="
-	https://github.com/carltongibson/django-filter/archive/${PV}.tar.gz
+	https://github.com/carltongibson/django-filter/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

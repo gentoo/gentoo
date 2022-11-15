@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Argument Parser for Modern C++"
 HOMEPAGE="https://github.com/p-ranav/argparse"
-SRC_URI="https://github.com/p-ranav/argparse/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/p-ranav/argparse/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

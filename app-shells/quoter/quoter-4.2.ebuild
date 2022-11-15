@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Quote arguments or standard input for usage in POSIX shell by eval"
 HOMEPAGE="https://github.com/vaeth/quoter/"
-SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vaeth/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

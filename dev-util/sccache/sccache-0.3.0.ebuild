@@ -317,7 +317,7 @@ if [ ${PV} == "9999" ] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mozilla/sccache.git"
 else
-	SRC_URI="https://github.com/mozilla/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://github.com/mozilla/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 	KEYWORDS="~amd64 ~ppc64"
 fi

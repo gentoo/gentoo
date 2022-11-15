@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pytest-httpserver/
 "
 SRC_URI="
-	https://github.com/csernazs/pytest-httpserver/archive/${PV}.tar.gz
+	https://github.com/csernazs/pytest-httpserver/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

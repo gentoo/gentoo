@@ -10,7 +10,7 @@ MY_PN="Caja-hide"
 
 DESCRIPTION="Hide files without renaming them in MATE's Caja"
 HOMEPAGE="https://github.com/Fred-Barclay/Caja-hide"
-SRC_URI="https://github.com/Fred-Barclay/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Fred-Barclay/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

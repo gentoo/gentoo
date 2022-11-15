@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A high level C++ network packet sniffing and crafting library"
 HOMEPAGE="https://github.com/pellegre/libcrafter"
-SRC_URI="https://github.com/pellegre/${PN}/archive/version-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pellegre/${PN}/archive/refs/tags/version-${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-version-${PV}/${PN}"
 
 LICENSE="BSD"

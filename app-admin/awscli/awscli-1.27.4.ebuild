@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/awscli/
 "
 SRC_URI="
-	https://github.com/aws/aws-cli/archive/${PV}.tar.gz
+	https://github.com/aws/aws-cli/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

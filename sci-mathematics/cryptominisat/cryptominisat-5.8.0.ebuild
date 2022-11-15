@@ -9,7 +9,7 @@ inherit python-single-r1 cmake
 
 DESCRIPTION="Advanced SAT solver with C++ and Python interfaces"
 HOMEPAGE="https://github.com/msoos/cryptominisat/"
-SRC_URI="https://github.com/msoos/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/msoos/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"

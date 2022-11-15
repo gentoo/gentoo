@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="High-performance messaging interface for distributed applications"
 HOMEPAGE="https://nanomsg.org/"
-SRC_URI="https://github.com/nanomsg/nanomsg/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nanomsg/nanomsg/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/5.0.0"

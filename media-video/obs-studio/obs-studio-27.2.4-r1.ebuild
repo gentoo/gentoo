@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/obsproject/obs-studio.git"
 	EGIT_SUBMODULES=( plugins/obs-browser )
 else
-	SRC_URI="https://github.com/obsproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/obsproject/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	SRC_URI+=" browser? ( https://github.com/obsproject/obs-browser/archive/${OBS_BROWSER_COMMIT}.tar.gz -> obs-browser-${OBS_BROWSER_COMMIT}.tar.gz )"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi

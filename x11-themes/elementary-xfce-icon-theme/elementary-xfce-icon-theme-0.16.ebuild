@@ -8,7 +8,7 @@ inherit xdg toolchain-funcs
 MY_P="${PN%-icon-theme}-${PV}"
 DESCRIPTION="Elementary icons forked from upstream, extended and maintained for Xfce"
 HOMEPAGE="https://github.com/shimmerproject/elementary-xfce"
-SRC_URI="https://github.com/shimmerproject/elementary-xfce/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/shimmerproject/elementary-xfce/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="public-domain GPL-1 GPL-2 GPL-3"

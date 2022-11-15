@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/BYVoid/OpenCC"
 if [[ "${PV}" == "9999" ]]; then
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/BYVoid/OpenCC/archive/ver.${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/BYVoid/OpenCC/archive/refs/tags/ver.${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="Apache-2.0"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/executablebooks/mdurl/
 "
 SRC_URI="
-	https://github.com/hukkin/mdurl/archive/${PV}.tar.gz
+	https://github.com/hukkin/mdurl/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

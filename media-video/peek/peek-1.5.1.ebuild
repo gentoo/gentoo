@@ -8,7 +8,7 @@ inherit gnome2-utils meson vala xdg
 
 DESCRIPTION="Simple animated Gif screen recorder"
 HOMEPAGE="https://github.com/phw/peek"
-SRC_URI="https://github.com/phw/peek/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/phw/peek/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

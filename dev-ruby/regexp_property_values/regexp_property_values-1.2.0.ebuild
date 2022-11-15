@@ -19,7 +19,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="See which property values are supported by the regular expression engine"
 HOMEPAGE="https://github.com/janosch-x/regexp_property_values"
-SRC_URI="https://github.com/janosch-x/regexp_property_values/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janosch-x/regexp_property_values/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1"

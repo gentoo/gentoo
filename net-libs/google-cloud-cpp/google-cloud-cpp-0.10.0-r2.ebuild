@@ -11,7 +11,7 @@ GOOGLEAPIS_COMMIT="6a3277c0656219174ff7c345f31fb20a90b30b97"
 
 DESCRIPTION="Google Cloud Client Library for C++"
 HOMEPAGE="https://cloud.google.com/"
-SRC_URI="https://github.com/GoogleCloudPlatform/google-cloud-cpp/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/GoogleCloudPlatform/google-cloud-cpp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/nlohmann/json/releases/download/v${JSON_VER}/json.hpp -> nlohmann-json-${JSON_VER}-json.hpp
 	https://github.com/googleapis/googleapis/archive/${GOOGLEAPIS_COMMIT}.tar.gz -> googleapis-${GOOGLEAPIS_COMMIT}.tar.gz"
 

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/cleo/
 "
 SRC_URI="
-	https://github.com/python-poetry/cleo/archive/${PV}.tar.gz
+	https://github.com/python-poetry/cleo/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

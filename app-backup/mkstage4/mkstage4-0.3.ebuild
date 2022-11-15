@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Bash Utility for Creating Stage 4 Tarballs"
 HOMEPAGE="https://github.com/TheChymera/mkstage4"
-SRC_URI="https://github.com/TheChymera/mkstage4/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/TheChymera/mkstage4/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

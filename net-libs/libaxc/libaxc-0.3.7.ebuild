@@ -8,7 +8,7 @@ inherit toolchain-funcs
 MY_P="axc-${PV}"
 DESCRIPTION="Client library for libsignal-protocol-c"
 HOMEPAGE="https://github.com/gkdr/axc"
-SRC_URI="https://github.com/gkdr/axc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gkdr/axc/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"  # not GPL-3+
 SLOT="0"

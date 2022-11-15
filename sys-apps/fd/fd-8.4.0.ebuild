@@ -91,7 +91,7 @@ inherit bash-completion-r1 cargo
 
 DESCRIPTION="Alternative to find that provides sensible defaults for 80% of the use cases"
 HOMEPAGE="https://github.com/sharkdp/fd"
-SRC_URI="https://github.com/sharkdp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/sharkdp/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris)"
 
 LICENSE="Apache-2.0 BSD-2 ISC MIT Unlicense"

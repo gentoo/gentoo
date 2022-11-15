@@ -8,7 +8,7 @@ inherit meson
 DESCRIPTION="dynamic display configuration (autorandr for wayland)"
 HOMEPAGE="https://wayland.emersion.fr/kanshi/ https://sr.ht/~emersion/kanshi/"
 SRC_URI="
-	https://git.sr.ht/~emersion/kanshi/archive/v${PV}.tar.gz
+	https://git.sr.ht/~emersion/kanshi/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 S=${WORKDIR}/${PN}-v${PV}

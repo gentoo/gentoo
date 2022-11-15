@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://gitlab.com/lv2/sphinx_lv2_theme/
 	https://pypi.org/project/sphinx-lv2-theme/
 "
-SRC_URI="https://gitlab.com/lv2/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
+SRC_URI="https://gitlab.com/lv2/${PN}/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.gz"
 S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="ISC"

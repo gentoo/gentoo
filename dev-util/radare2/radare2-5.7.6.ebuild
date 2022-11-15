@@ -16,7 +16,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/radareorg/radare2"
 else
-	SRC_URI="mirror+https://github.com/radareorg/radare2/archive/${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="mirror+https://github.com/radareorg/radare2/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 		mirror+https://github.com/radareorg/vector35-arch-arm64/archive/${ARM64_COMMIT}.tar.gz -> ${P}-vector35-arm64.tar.gz
 		mirror+https://github.com/radareorg/vector35-arch-armv7/archive/${ARMV7_COMMIT}.tar.gz -> ${P}-vector35-armv7.tar.gz
 		test? ( https://github.com/radareorg/radare2-testbins/archive/${BINS_COMMIT}.tar.gz -> radare2-testbins-${BINS_COMMIT}.tar.gz )

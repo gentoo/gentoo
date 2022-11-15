@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="C/C++ library for PDF generation"
 HOMEPAGE="http://www.libharu.org/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0/${PV}"

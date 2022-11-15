@@ -19,7 +19,7 @@ case ${PV} in
 *)
 	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/kodi-pvr/pvr.mediaportal.tvserver/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/kodi-pvr/pvr.mediaportal.tvserver/archive/refs/tags/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/pvr.mediaportal.tvserver-${PV}-${CODENAME}"
 	DEPEND="=media-tv/kodi-19*"
 	;;

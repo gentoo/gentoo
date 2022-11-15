@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/sphinx-tabs/
 "
 SRC_URI="
-	https://github.com/executablebooks/sphinx-tabs/archive/v${PV}.tar.gz
+	https://github.com/executablebooks/sphinx-tabs/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

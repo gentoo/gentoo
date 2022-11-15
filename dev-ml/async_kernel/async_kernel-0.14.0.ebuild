@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Jane Street Capital's asynchronous execution library (core)"
 HOMEPAGE="https://github.com/janestreet/async_kernel"
-SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

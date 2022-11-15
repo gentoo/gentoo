@@ -10,7 +10,7 @@ inherit llvm linux-info cmake
 DESCRIPTION="High-level tracing language for eBPF"
 HOMEPAGE="https://github.com/iovisor/bpftrace"
 MY_PV="${PV//_/}"
-SRC_URI="https://github.com/iovisor/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/iovisor/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV:-${PV}}"
 
 LICENSE="Apache-2.0"

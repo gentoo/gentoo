@@ -7,7 +7,7 @@ MY_PN="${PN/webmozart-/}"
 
 DESCRIPTION="Assertions to validate method input/output with nice error messages"
 HOMEPAGE="https://github.com/webmozart/assert"
-SRC_URI="https://github.com/webmozart/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/webmozart/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

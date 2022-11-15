@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/matrix-common/
 "
 SRC_URI="
-	https://github.com/matrix-org/matrix-python-common/archive/v${PV}.tar.gz
+	https://github.com/matrix-org/matrix-python-common/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

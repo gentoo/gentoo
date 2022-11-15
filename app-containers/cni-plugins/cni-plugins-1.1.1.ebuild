@@ -6,7 +6,7 @@ inherit go-module linux-info systemd
 
 DESCRIPTION="Standard networking plugins for container networking"
 HOMEPAGE="https://github.com/containernetworking/plugins"
-SRC_URI="https://github.com/containernetworking/plugins/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/containernetworking/plugins/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

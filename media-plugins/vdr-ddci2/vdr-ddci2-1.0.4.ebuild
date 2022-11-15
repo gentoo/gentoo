@@ -10,7 +10,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/jasmin-j/vdr-plugin-${VDRPLUGIN}.git"
 	S="${WORKDIR}/${P}"
 else
-	SRC_URI="https://github.com/jasmin-j/vdr-plugin-${VDRPLUGIN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/jasmin-j/vdr-plugin-${VDRPLUGIN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/vdr-plugin-${VDRPLUGIN}-${PV}"
 fi

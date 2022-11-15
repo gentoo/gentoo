@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/pypa/scripttest/
 "
 SRC_URI="
-	https://github.com/pypa/scripttest/archive/${PV}.tar.gz
+	https://github.com/pypa/scripttest/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

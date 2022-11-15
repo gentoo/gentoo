@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="General Rack Authentication Framework"
 HOMEPAGE="https://github.com/wardencommunity/warden"
-SRC_URI="https://github.com/wardencommunity/warden/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wardencommunity/warden/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 

@@ -18,7 +18,7 @@ HOMEPAGE="
 	https://pypi.org/project/spyder/
 "
 SRC_URI="
-	https://github.com/spyder-ide/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/spyder-ide/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
 	https://github.com/spyder-ide/${PN}-docs/archive/${DOCS_PV}.tar.gz -> ${PN}-docs-${DOCS_PV}.gh.tar.gz
 "
 

@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/PAntoine/vimgitlog.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/PAntoine/vimgitlog/archive/version_${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/PAntoine/vimgitlog/archive/refs/tags/version_${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 x86"
 	S=${WORKDIR}/vim${PN}-version_${PV}
 fi

@@ -9,7 +9,7 @@ inherit toolchain-funcs
 DESCRIPTION="locks the local X display until a password is entered"
 HOMEPAGE="https://darkshed.net/projects/alock
 	https://github.com/mgumz/alock"
-SRC_URI="https://github.com/mgumz/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mgumz/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

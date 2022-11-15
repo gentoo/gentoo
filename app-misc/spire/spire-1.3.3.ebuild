@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="the spiffe runtime environment"
 HOMEPAGE="https://github.com/spiffe/spire"
-SRC_URI="https://github.com/spiffe/spire/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/spiffe/spire/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0"

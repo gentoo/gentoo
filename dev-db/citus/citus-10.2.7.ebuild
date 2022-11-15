@@ -9,7 +9,7 @@ inherit postgres-multi
 
 DESCRIPTION="Open-source postgresql extension for clustering/multi-node setups"
 HOMEPAGE="https://www.citusdata.com/"
-SRC_URI="https://github.com/citusdata/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/citusdata/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 IUSE=""
 LICENSE="POSTGRESQL AGPL-3"

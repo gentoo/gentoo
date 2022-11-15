@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Library for parsing mathematical expressions"
 HOMEPAGE="https://beltoforion.de/en/muparser/"
-SRC_URI="https://github.com/beltoforion/muparser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/beltoforion/muparser/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/muparser-${PV}
 
 LICENSE="MIT"

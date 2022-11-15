@@ -11,7 +11,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Provides a class to deal with collections of unordered, unique values"
 HOMEPAGE="https://github.com/ruby/set"
-SRC_URI="https://github.com/ruby/set/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/set/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

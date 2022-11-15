@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/ionrock/cachecontrol/
 "
 SRC_URI="
-	https://github.com/ionrock/cachecontrol/archive/v${PV}.tar.gz
+	https://github.com/ionrock/cachecontrol/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

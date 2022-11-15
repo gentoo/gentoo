@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Emacs TRAMP integration for docker containers"
 HOMEPAGE="https://github.com/emacs-pe/docker-tramp.el/"
-SRC_URI="https://github.com/emacs-pe/${PN}.el/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/emacs-pe/${PN}.el/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}.el-${PV}
 

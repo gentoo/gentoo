@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/leohemsted/smartypants.py/
 "
 SRC_URI="
-	https://github.com/leohemsted/smartypants.py/archive/v${PV}.tar.gz
+	https://github.com/leohemsted/smartypants.py/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 S=${WORKDIR}/${MY_P}

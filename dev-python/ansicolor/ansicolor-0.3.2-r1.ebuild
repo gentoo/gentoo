@@ -15,7 +15,7 @@ else
 	# pypi tars don't include tests and github repo is missing release tags,
 	# so only enabling tests for 9999 at this time
 	SRC_URI="
-	https://github.com/numerodix/ansicolor/archive/${PV}.tar.gz
+	https://github.com/numerodix/ansicolor/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 	KEYWORDS="amd64 x86"
 fi

@@ -9,7 +9,7 @@ inherit elisp readme.gentoo-r1
 
 DESCRIPTION="Display the key bindings following your currently entered keys"
 HOMEPAGE="https://github.com/justbur/emacs-which-key/"
-SRC_URI="https://github.com/justbur/emacs-${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/justbur/emacs-${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/emacs-${P}
 
 LICENSE="GPL-3+"

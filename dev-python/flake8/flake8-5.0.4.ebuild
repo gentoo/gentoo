@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/flake8/
 "
 SRC_URI="
-	https://github.com/PyCQA/flake8/archive/${PV}.tar.gz
+	https://github.com/PyCQA/flake8/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -8,7 +8,7 @@ inherit elisp
 DESCRIPTION="Emacs incremental completion and selection narrowing framework"
 HOMEPAGE="https://emacs-helm.github.io/helm/
 	https://github.com/emacs-helm/helm/"
-SRC_URI="https://github.com/emacs-helm/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/emacs-helm/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

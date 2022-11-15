@@ -9,7 +9,7 @@ inherit python-r1
 
 DESCRIPTION="Check for mapped libs and open files that are marked as deleted"
 HOMEPAGE="https://github.com/klausman/lib_users"
-SRC_URI="https://github.com/klausman/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/klausman/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit distutils-r1
 MY_PV="${PV/_p/.post}"
 DESCRIPTION="PyTest Salt Plugin"
 HOMEPAGE="https://github.com/saltstack/pytest-salt"
-SRC_URI="https://github.com/saltstack/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/saltstack/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="Apache-2.0"

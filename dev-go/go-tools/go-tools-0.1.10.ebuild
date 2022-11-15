@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="Tools that support the Go programming language (godoc, etc.)"
 HOMEPAGE="https://godoc.org/golang.org/x/tools"
-SRC_URI="https://github.com/golang/tools/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/golang/tools/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="BSD MIT"

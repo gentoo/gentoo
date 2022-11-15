@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A pytest plugin to run Xvfb for tests"
 HOMEPAGE="https://pypi.org/project/pytest-xvfb/"
-SRC_URI="https://github.com/The-Compiler/pytest-xvfb/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/The-Compiler/pytest-xvfb/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

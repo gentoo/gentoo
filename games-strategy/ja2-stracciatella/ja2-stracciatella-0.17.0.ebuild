@@ -95,7 +95,7 @@ inherit cargo cmake xdg
 
 DESCRIPTION="An improved, cross-platform, stable Jagged Alliance 2 runtime"
 HOMEPAGE="https://github.com/ja2-stracciatella/"
-SRC_URI="https://github.com/ja2-stracciatella/ja2-stracciatella/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/ja2-stracciatella/ja2-stracciatella/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	editor? ( https://github.com/ja2-stracciatella/free-ja2-resources/releases/download/v1/editor.slf -> ${P}-editor.slf )
 "
 SRC_URI+=" $(cargo_crate_uris ${CRATES})"

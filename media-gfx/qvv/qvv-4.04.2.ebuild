@@ -7,7 +7,7 @@ inherit desktop qmake-utils
 
 DESCRIPTION="Qt-based compact image viewer and browser"
 HOMEPAGE="http://cade.datamax.bg/qvv/"
-SRC_URI="https://github.com/cade-vs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cade-vs/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

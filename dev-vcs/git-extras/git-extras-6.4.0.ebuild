@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Git utilities -- repo summary, repl, changelog population, and many more"
 HOMEPAGE="https://github.com/tj/git-extras"
-SRC_URI="https://github.com/tj/git-extras/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tj/git-extras/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

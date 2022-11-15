@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Small X utility to perform elementary actions on windows"
 HOMEPAGE="https://github.com/baskerville/xdo/"
-SRC_URI="https://github.com/baskerville/xdo/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/baskerville/xdo/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Minuscule client library for the Git forge APIs"
 HOMEPAGE="https://magit.vc/manual/ghub"
-SRC_URI="https://github.com/magit/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/magit/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

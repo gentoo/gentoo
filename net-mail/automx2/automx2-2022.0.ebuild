@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Email client autoconfiguration service"
 HOMEPAGE="https://automx.org/"
-SRC_URI="https://github.com/rseichter/automx2/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rseichter/automx2/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

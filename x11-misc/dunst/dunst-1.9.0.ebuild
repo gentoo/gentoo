@@ -7,7 +7,7 @@ inherit systemd toolchain-funcs
 
 DESCRIPTION="Lightweight replacement for common notification daemons"
 HOMEPAGE="https://dunst-project.org/ https://github.com/dunst-project/dunst"
-SRC_URI="https://github.com/dunst-project/dunst/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dunst-project/dunst/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

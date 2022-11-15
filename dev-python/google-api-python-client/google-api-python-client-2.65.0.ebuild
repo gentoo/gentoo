@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/google-api-python-client/
 "
 SRC_URI="
-	https://github.com/googleapis/google-api-python-client/archive/v${PV}.tar.gz
+	https://github.com/googleapis/google-api-python-client/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

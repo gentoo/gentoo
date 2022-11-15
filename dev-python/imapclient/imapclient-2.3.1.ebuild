@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="easy-to-use, pythonic, and complete IMAP client library"
 HOMEPAGE="https://github.com/mjs/imapclient"
-SRC_URI="https://github.com/mjs/imapclient/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/mjs/imapclient/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

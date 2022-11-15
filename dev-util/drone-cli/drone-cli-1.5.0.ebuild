@@ -7,7 +7,7 @@ inherit go-module
 DESCRIPTION="Command-line interface for Drone"
 HOMEPAGE="https://github.com/drone/drone-cli"
 
-SRC_URI="https://github.com/drone/drone-cli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/drone/drone-cli/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0"

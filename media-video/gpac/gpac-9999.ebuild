@@ -7,7 +7,7 @@ if [[ ${PV} == *9999 ]] ; then
 	SCM="git-r3"
 	EGIT_REPO_URI="https://github.com/gpac/gpac"
 else
-	SRC_URI="https://github.com/gpac/gpac/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/gpac/gpac/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 

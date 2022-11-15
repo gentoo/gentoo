@@ -9,7 +9,7 @@ inherit cmake linux-info lua-single readme.gentoo-r1 xdg
 
 DESCRIPTION="An advanced, highly configurable system monitor for X"
 HOMEPAGE="https://github.com/brndnmtthws/conky"
-SRC_URI="https://github.com/brndnmtthws/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/brndnmtthws/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 BSD LGPL-2.1 MIT"
 SLOT="0"

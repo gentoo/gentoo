@@ -12,7 +12,7 @@ HOMEPAGE="
 	https://pytest-django.readthedocs.io/
 	https://github.com/pytest-dev/pytest-django/"
 SRC_URI="
-	https://github.com/pytest-dev/pytest-django/archive/v${PV}.tar.gz
+	https://github.com/pytest-dev/pytest-django/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="BSD"

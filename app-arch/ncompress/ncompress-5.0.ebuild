@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Classic compress & uncompress programs for .Z (LZW) files"
 HOMEPAGE="https://vapier.github.io/ncompress/"
-SRC_URI="https://github.com/vapier/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vapier/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

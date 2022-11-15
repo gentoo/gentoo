@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="General-purpose retrying library"
 HOMEPAGE="https://github.com/rholder/retrying"
-SRC_URI="https://github.com/rholder/retrying/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rholder/retrying/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

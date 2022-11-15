@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Implements weak, soft, and strong references in Ruby"
 HOMEPAGE="https://github.com/ruby-concurrency/ref"
-SRC_URI="https://github.com/ruby-concurrency/ref/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby-concurrency/ref/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="2"

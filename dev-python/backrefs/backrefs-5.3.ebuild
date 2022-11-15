@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/backrefs/
 "
 SRC_URI="
-	https://github.com/facelessuser/backrefs/archive/${PV}.tar.gz
+	https://github.com/facelessuser/backrefs/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

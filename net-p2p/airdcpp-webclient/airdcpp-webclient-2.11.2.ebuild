@@ -9,7 +9,7 @@ inherit cmake python-any-r1 systemd
 
 DESCRIPTION="Cross-platform Direct Connect client"
 HOMEPAGE="https://airdcpp-web.github.io/"
-SRC_URI="https://github.com/airdcpp-web/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/airdcpp-web/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="amd64 ~riscv x86"
 LICENSE="GPL-2+"

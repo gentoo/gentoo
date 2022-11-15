@@ -7,7 +7,7 @@ inherit flag-o-matic autotools linux-info
 
 DESCRIPTION="Tools for Linux Kernel Stream Control Transmission Protocol implementation"
 HOMEPAGE="http://lksctp.sourceforge.net/"
-SRC_URI="https://github.com/sctp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sctp/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( GPL-2+ LGPL-2.1 )"
 SLOT="0"

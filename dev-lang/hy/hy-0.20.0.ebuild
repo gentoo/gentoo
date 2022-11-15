@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A LISP dialect running in python"
 HOMEPAGE="http://hylang.org/"
-SRC_URI="https://github.com/hylang/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hylang/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

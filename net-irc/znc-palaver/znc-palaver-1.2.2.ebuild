@@ -9,7 +9,7 @@ inherit python-single-r1 toolchain-funcs
 
 DESCRIPTION="A ZNC module which provides push notifications to Palaver"
 HOMEPAGE="https://github.com/cocodelabs/znc-palaver"
-SRC_URI="https://github.com/cocodelabs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cocodelabs/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit ruby-ng
 DESCRIPTION="Framework to build server orchestration or parallel job execution
 systems"
 HOMEPAGE="https://docs.puppet.com/mcollective/"
-SRC_URI="https://github.com/puppetlabs/marionette-collective/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/puppetlabs/marionette-collective/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/all/marionette-collective-${PV}"
 
 LICENSE="Apache-2.0"

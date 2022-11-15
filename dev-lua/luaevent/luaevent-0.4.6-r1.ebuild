@@ -9,7 +9,7 @@ inherit lua toolchain-funcs
 
 DESCRIPTION="Binding of libevent for Lua"
 HOMEPAGE="http://luaforge.net/projects/luaevent"
-SRC_URI="https://github.com/harningt/luaevent/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/harningt/luaevent/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

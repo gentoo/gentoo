@@ -8,7 +8,7 @@ inherit toolchain-funcs
 DESCRIPTION="A featureful union filesystem"
 HOMEPAGE="https://github.com/trapexit/mergerfs"
 
-SRC_URI="https://github.com/trapexit/mergerfs/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/trapexit/mergerfs/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
 # Vendorized libfuse that's bundled is under LGPL-2.1.

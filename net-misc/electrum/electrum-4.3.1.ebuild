@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/spesmilo/electrum/
 "
 SRC_URI="
-	https://github.com/spesmilo/electrum/archive/${PV}.tar.gz
+	https://github.com/spesmilo/electrum/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

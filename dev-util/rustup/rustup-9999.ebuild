@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/rust-lang/${PN}.git"
 else
-	SRC_URI="https://github.com/rust-lang/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://github.com/rust-lang/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 		$(cargo_crate_uris ${CRATES})"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi

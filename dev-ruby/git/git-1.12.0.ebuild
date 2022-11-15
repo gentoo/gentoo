@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Library for using Git in Ruby"
 HOMEPAGE="https://github.com/schacon/ruby-git"
-SRC_URI="https://github.com/schacon/ruby-git/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/schacon/ruby-git/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="ruby-git-${PV}"
 
 LICENSE="MIT"

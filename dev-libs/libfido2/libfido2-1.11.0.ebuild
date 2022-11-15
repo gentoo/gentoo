@@ -7,7 +7,7 @@ inherit cmake udev linux-info
 
 DESCRIPTION="Provides library functionality for FIDO 2.0"
 HOMEPAGE="https://github.com/Yubico/libfido2"
-SRC_URI="https://github.com/Yubico/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Yubico/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/1"

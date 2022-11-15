@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Algebraic multigrid solvers in Python"
 HOMEPAGE="https://pyamg.org"
 SRC_URI="
-	https://github.com/pyamg/pyamg/archive/v${PV}.tar.gz
+	https://github.com/pyamg/pyamg/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Protocol Buffers are Google's data interchange format"
 HOMEPAGE="https://developers.google.com/protocol-buffers"
-SRC_URI="https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz -> ${P}-ruby.tar.gz"
+SRC_URI="https://github.com/protocolbuffers/protobuf/archive/refs/tags/v${PV}.tar.gz -> ${P}-ruby.tar.gz"
 RUBY_S="protobuf-${PV}/ruby"
 
 LICENSE="BSD"

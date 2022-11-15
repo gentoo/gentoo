@@ -7,7 +7,7 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/just-containers/${PN}"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/just-containers/${PN}/archive/v${PV}.tar.gz ->
+	SRC_URI="https://github.com/just-containers/${PN}/archive/refs/tags/v${PV}.tar.gz ->
 	${P}.tar.gz"
 	KEYWORDS="~amd64"
 	inherit vcs-snapshot

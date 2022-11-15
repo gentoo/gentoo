@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pytest-subtesthack/
 "
 SRC_URI="
-	https://github.com/untitaker/pytest-subtesthack/archive/${PV}.tar.gz
+	https://github.com/untitaker/pytest-subtesthack/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

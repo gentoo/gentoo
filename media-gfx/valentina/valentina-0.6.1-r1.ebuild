@@ -7,7 +7,7 @@ inherit qmake-utils xdg
 
 DESCRIPTION="Cloth patternmaking software"
 HOMEPAGE="https://valentinaproject.bitbucket.io/"
-SRC_URI="https://gitlab.com/smart-pattern/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2
+SRC_URI="https://gitlab.com/smart-pattern/${PN}/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.bz2
 	https://dev.gentoo.org/~fordfrog/distfiles/valentina-5858.patch.bz2"
 
 LICENSE="GPL-3"

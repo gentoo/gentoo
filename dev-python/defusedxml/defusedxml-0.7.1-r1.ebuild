@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/defusedxml/
 "
 SRC_URI="
-	https://github.com/tiran/defusedxml/archive/v${PV}.tar.gz
+	https://github.com/tiran/defusedxml/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

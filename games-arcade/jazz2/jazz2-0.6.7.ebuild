@@ -7,7 +7,7 @@ inherit desktop dotnet wrapper
 
 DESCRIPTION="Open source reimplementation of Jazz Jackrabbit 2"
 HOMEPAGE="http://deat.tk/jazz2/"
-SRC_URI="https://github.com/deathkiller/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/deathkiller/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"

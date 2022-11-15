@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Lint tool for Vim script language"
 HOMEPAGE="https://github.com/Kuniwak/vint https://pypi.org/project/vim-vint/"
-SRC_URI="https://github.com/Kuniwak/vint/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Kuniwak/vint/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

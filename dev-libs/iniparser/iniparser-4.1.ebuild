@@ -7,7 +7,7 @@ inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="A free stand-alone ini file parsing library"
 HOMEPAGE="https://github.com/ndevilla/iniparser"
-SRC_URI="https://github.com/ndevilla/iniparser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ndevilla/iniparser/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="4"

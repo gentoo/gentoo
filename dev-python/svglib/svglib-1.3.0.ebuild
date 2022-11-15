@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/svglib/
 "
 SRC_URI="
-	https://github.com/deeplook/svglib/archive/v${PV}.tar.gz
+	https://github.com/deeplook/svglib/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

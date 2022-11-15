@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="Python NTP library"
 HOMEPAGE="https://pypi.org/project/ntplib/"
 SRC_URI="
-	https://github.com/cf-natali/ntplib/archive/${PV}.tar.gz
+	https://github.com/cf-natali/ntplib/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="MIT"

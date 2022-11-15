@@ -9,7 +9,7 @@ inherit lua toolchain-funcs
 
 DESCRIPTION="A database interface library for Lua"
 HOMEPAGE="https://github.com/mwild1/luadbi"
-SRC_URI="https://github.com/mwild1/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mwild1/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

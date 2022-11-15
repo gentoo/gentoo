@@ -32,7 +32,7 @@ bazel_external_uris="
 	https://github.com/bazelbuild/apple_support/releases/download/0.12.1/apple_support.0.12.1.tar.gz
 	https://github.com/bazelbuild/bazel-skylib/releases/download/1.2.1/bazel-skylib-1.2.1.tar.gz
 	https://github.com/bazelbuild/bazel-toolchains/archive/ea243d43269df23de03a797cff2347e1fc3d02bb.tar.gz -> bazel-toolchains-ea243d43269df23de03a797cff2347e1fc3d02bb.tar.gz
-	https://github.com/bazelbuild/rules_android/archive/v0.1.1.zip -> bazelbuild-rules_android-v0.1.1.zip
+	https://github.com/bazelbuild/rules_android/archive/refs/tags/v0.1.1.zip -> bazelbuild-rules_android-v0.1.1.zip
 	https://github.com/bazelbuild/rules_apple/releases/download/0.33.0/rules_apple.0.33.0.tar.gz
 	https://github.com/bazelbuild/rules_cc/archive/081771d4a0e9d7d3aa0eed2ef389fa4700dfb23e.tar.gz -> bazelbuild-rules_cc-081771d4a0e9d7d3aa0eed2ef389fa4700dfb23e.tar.gz
 	https://github.com/bazelbuild/rules_closure/archive/308b05b2419edb5c8ee0471b67a40403df940149.tar.gz -> bazelbuild-rules_closure-308b05b2419edb5c8ee0471b67a40403df940149.tar.gz
@@ -53,7 +53,7 @@ bazel_external_uris="
 	https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/openmp-10.0.1.src.tar.xz -> llvmorg-10.0.1-openmp-10.0.1.src.tar.xz
 	https://github.com/mborgerding/kissfft/archive/131.1.0.tar.gz -> kissfft-131.1.0.tar.gz
 	https://github.com/oneapi-src/oneDNN/archive/refs/tags/v2.6.1.tar.gz -> oneDNN-v2.6.1.tar.gz
-	https://github.com/petewarden/OouraFFT/archive/v1.0.tar.gz -> OouraFFT-v1.0.tar.gz
+	https://github.com/petewarden/OouraFFT/archive/refs/tags/v1.0.tar.gz -> OouraFFT-v1.0.tar.gz
 	https://github.com/pytorch/cpuinfo/archive/5916273f79a21551890fd3d56fc5375a78d1598d.zip -> pytorch-cpuinfo-5916273f79a21551890fd3d56fc5375a78d1598d.zip
 	https://github.com/pytorch/cpuinfo/archive/5e63739504f0f8e18e941bd63b2d6d42536c7d90.tar.gz -> pytorch-cpuinfo-5e63739504f0f8e18e941bd63b2d6d42536c7d90.tar.gz
 	https://github.com/tensorflow/runtime/archive/6ca793b5d862ef6c50f242d77a811f06cce9b60a.tar.gz -> tensorflow-runtime-6ca793b5d862ef6c50f242d77a811f06cce9b60a.tar.gz
@@ -63,16 +63,16 @@ bazel_external_uris="
 	https://github.com/Maratyszcza/FP16/archive/4dfe081cf6bcd15db339cf2680b9281b8451eeb3.zip -> FP16-4dfe081cf6bcd15db339cf2680b9281b8451eeb3.zip
 	https://github.com/Maratyszcza/FXdiv/archive/63058eff77e11aa15bf531df5dd34395ec3017c8.zip -> FXdiv-63058eff77e11aa15bf531df5dd34395ec3017c8.zip
 	cuda? (
-		https://github.com/NVIDIA/cudnn-frontend/archive/v0.6.2.zip -> cudnn-frontend-v0.6.2.zip
+		https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v0.6.2.zip -> cudnn-frontend-v0.6.2.zip
 		https://github.com/NVlabs/cub/archive/1.9.9.zip -> cub-1.9.9.zip
-		https://github.com/nvidia/nccl/archive/v2.12.12-1.tar.gz -> nvidia-nccl-v2.12.12-1.tar.gz
+		https://github.com/nvidia/nccl/archive/refs/tags/v2.12.12-1.tar.gz -> nvidia-nccl-v2.12.12-1.tar.gz
 	)
 	python? (
 		https://github.com/intel/ARM_NEON_2_x86_SSE/archive/1200fe90bb174a6224a525ee60148671a786a71f.tar.gz -> ARM_NEON_2_x86_SSE-1200fe90bb174a6224a525ee60148671a786a71f.tar.gz
 		https://storage.googleapis.com/mirror.tensorflow.org/docs.python.org/2.7/_sources/license.rst.txt -> tensorflow-1.15.0-python-license.rst.txt
 	)"
 
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~perfinion/patches/tensorflow-patches-${PVR}.tar.bz2
 		${bazel_external_uris}"
 

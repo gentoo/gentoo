@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/PyGithub/
 "
 SRC_URI="
-	https://github.com/PyGithub/PyGithub/archive/v${PV}.tar.gz
+	https://github.com/PyGithub/PyGithub/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

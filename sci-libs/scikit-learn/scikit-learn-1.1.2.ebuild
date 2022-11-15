@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Machine learning library for Python"
 HOMEPAGE="https://scikit-learn.org/stable/"
-SRC_URI="https://github.com/scikit-learn/scikit-learn/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/scikit-learn/scikit-learn/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

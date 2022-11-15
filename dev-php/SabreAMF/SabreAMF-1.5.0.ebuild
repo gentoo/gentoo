@@ -7,7 +7,7 @@ KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="SabreAMF is a Flash Remoting server and client for PHP"
 HOMEPAGE="https://github.com/evert/SabreAMF"
-SRC_URI="https://github.com/evert/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/evert/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

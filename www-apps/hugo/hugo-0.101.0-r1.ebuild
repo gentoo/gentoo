@@ -8,7 +8,7 @@ inherit go-module bash-completion-r1
 DESCRIPTION="Fast static HTML and CSS website generator"
 HOMEPAGE="https://gohugo.io https://github.com/gohugoio/hugo"
 SRC_URI="
-	https://github.com/gohugoio/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/gohugoio/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://tastytea.de/files/gentoo/${P}-vendor.tar.xz
 	https://tastytea.de/files/gentoo/${PN}-0.101.0-libwebp-1.2.3.patch
 "

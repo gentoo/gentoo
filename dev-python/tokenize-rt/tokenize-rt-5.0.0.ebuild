@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="A wrapper around the stdlib 'tokenize' which roundtrips"
 HOMEPAGE="https://github.com/asottile/tokenize-rt"
 SRC_URI="
-	https://github.com/asottile/tokenize-rt/archive/v${PV}.tar.gz
+	https://github.com/asottile/tokenize-rt/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

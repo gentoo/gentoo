@@ -8,7 +8,7 @@ inherit autotools gnome2-utils python-single-r1 xdg
 
 DESCRIPTION="Japanese Anthy engine for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
-SRC_URI="https://github.com/ibus/${PN}/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/ibus/${PN}/archive/refs/tags/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

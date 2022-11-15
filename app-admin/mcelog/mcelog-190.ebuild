@@ -9,7 +9,7 @@ inherit linux-info python-any-r1 systemd toolchain-funcs
 
 DESCRIPTION="A tool to log and decode Machine Check Exceptions"
 HOMEPAGE="http://mcelog.org/"
-SRC_URI="https://github.com/andikleen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/andikleen/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

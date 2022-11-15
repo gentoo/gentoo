@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A library and tools for working with ZBC and ZAC disks"
 HOMEPAGE="https://github.com/hgst/libzbc"
-SRC_URI="https://github.com/hgst/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hgst/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-3 LGPL-3"
 SLOT="0"

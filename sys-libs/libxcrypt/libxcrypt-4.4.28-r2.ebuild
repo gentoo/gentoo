@@ -13,7 +13,7 @@ DESCRIPTION="Extended crypt library for descrypt, md5crypt, bcrypt, and others"
 HOMEPAGE="https://github.com/besser82/libxcrypt"
 if [[ ${NEED_BOOTSTRAP} == "yes" ]] ; then
 	inherit autotools
-	SRC_URI="https://github.com/besser82/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/besser82/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 else
 	SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-autotools.tar.xz"
 fi

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri https://github.com/qos-ch/logback/archive/v_1.2.11.tar.gz --slot 0 --keywords "~amd64" --ebuild logback-classic-1.2.11.ebuild
+# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri https://github.com/qos-ch/logback/archive/refs/tags/v_1.2.11.tar.gz --slot 0 --keywords "~amd64" --ebuild logback-classic-1.2.11.ebuild
 
 EAPI=8
 
@@ -15,7 +15,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="logback-classic module"
 HOMEPAGE="https://logback.qos.ch"
-SRC_URI="https://github.com/qos-ch/logback/archive/v_${PV}.tar.gz -> logback-${PV}.tar.gz"
+SRC_URI="https://github.com/qos-ch/logback/archive/refs/tags/v_${PV}.tar.gz -> logback-${PV}.tar.gz"
 
 LICENSE="EPL-1.0 LGPL-3"
 SLOT="0"

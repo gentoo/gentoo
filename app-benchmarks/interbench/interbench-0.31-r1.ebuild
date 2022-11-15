@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A Linux interactivity benchmark"
 HOMEPAGE="https://github.com/ckolivas/interbench/"
-SRC_URI="https://github.com/ckolivas/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ckolivas/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="amd64 x86"
 LICENSE="GPL-2+"

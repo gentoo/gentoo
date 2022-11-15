@@ -9,7 +9,7 @@ inherit cmake llvm python-single-r1
 
 DESCRIPTION="Find unused include directives in C/C++ programs"
 HOMEPAGE="https://include-what-you-use.org/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

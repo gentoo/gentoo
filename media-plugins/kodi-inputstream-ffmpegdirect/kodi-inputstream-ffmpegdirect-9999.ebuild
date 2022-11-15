@@ -19,7 +19,7 @@ case ${PV} in
 *)
 	KEYWORDS="~amd64"
 	CODENAME="Matrix"
-	SRC_URI="https://github.com/xbmc/inputstream.ffmpegdirect/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/xbmc/inputstream.ffmpegdirect/archive/refs/tags/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/inputstream.ffmpegdirect-${PV}-${CODENAME}"
 	;;
 esac

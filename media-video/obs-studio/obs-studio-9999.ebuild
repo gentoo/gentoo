@@ -30,7 +30,7 @@ if [[ ${PV} == 9999 ]]; then
 	)
 else
 	SRC_URI="
-		https://github.com/obsproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/obsproject/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/obsproject/obs-browser/archive/${OBS_BROWSER_COMMIT}.tar.gz -> obs-browser-${OBS_BROWSER_COMMIT}.tar.gz
 		https://github.com/chriskohlhoff/asio/archive/${ASIO_COMMIT}.tar.gz -> asio-${ASIO_COMMIT}.tar.gz
 		https://github.com/nayuki/QR-Code-generator/archive/${QR_COMMIT}.tar.gz -> qr-${QR_COMMIT}.tar.gz

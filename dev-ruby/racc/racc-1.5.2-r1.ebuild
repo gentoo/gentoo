@@ -17,7 +17,7 @@ inherit multilib ruby-fakegem
 
 DESCRIPTION="A LALR(1) parser generator for Ruby"
 HOMEPAGE="https://github.com/tenderlove/racc"
-SRC_URI="https://github.com/tenderlove/racc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tenderlove/racc/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

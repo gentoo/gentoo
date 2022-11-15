@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Run a JavaScript interpreter in an Emacs inferior process window"
 HOMEPAGE="https://github.com/redguardtoo/js-comint/"
-SRC_URI="https://github.com/redguardtoo/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/redguardtoo/${PN}/archive/refs/tags/${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

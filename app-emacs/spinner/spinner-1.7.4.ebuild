@@ -9,7 +9,7 @@ IUSE=""
 
 DESCRIPTION="Emacs mode-line spinner for operations in progress"
 HOMEPAGE="https://github.com/Malabarba/spinner.el"
-SRC_URI="https://github.com/Malabarba/spinner.el/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Malabarba/spinner.el/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"

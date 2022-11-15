@@ -7,7 +7,7 @@ MY_PN="PHP-Parser"
 
 DESCRIPTION="PHP 5.2 to PHP 8.0 parser written in PHP"
 HOMEPAGE="https://github.com/nikic/PHP-Parser"
-SRC_URI="https://github.com/nikic/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nikic/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

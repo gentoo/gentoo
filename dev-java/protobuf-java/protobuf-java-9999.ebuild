@@ -26,7 +26,7 @@ if [[ "${PV}" == *9999 ]]; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/${PARENT_P}"
 else
 	SRC_URI="
-		https://github.com/protocolbuffers/protobuf/archive/v${PARENT_PV}.tar.gz
+		https://github.com/protocolbuffers/protobuf/archive/refs/tags/v${PARENT_PV}.tar.gz
 			-> ${PARENT_P}.tar.gz
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"

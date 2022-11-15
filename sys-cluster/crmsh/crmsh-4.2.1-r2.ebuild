@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-3
 	S="${WORKDIR}/${PN}-${MY_TREE}"
 else
-	SRC_URI="https://github.com/crmsh/crmsh/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/crmsh/crmsh/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~hppa ~x86"
 fi
 

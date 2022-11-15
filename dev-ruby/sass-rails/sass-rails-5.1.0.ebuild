@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Official Ruby-on-Rails Integration with Sass"
 HOMEPAGE="https://github.com/rails/sass-rails"
-SRC_URI="https://github.com/rails/sass-rails/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rails/sass-rails/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"

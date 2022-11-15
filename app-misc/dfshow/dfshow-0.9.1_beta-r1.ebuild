@@ -8,7 +8,7 @@ inherit autotools bash-completion-r1 flag-o-matic
 MY_PV="${PV//_beta/-beta}"
 DESCRIPTION="DF-SHOW is a Unix-like rewrite of some of the applications from DF-EDIT"
 HOMEPAGE="https://github.com/roberthawdon/dfshow"
-SRC_URI="https://github.com/roberthawdon/dfshow/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/roberthawdon/dfshow/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-3"

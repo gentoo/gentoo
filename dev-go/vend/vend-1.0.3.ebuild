@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="dependency vendor for Go programs"
 HOMEPAGE="https://github.com/nomad-software/vend"
-SRC_URI="https://github.com/nomad-software/vend/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nomad-software/vend/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

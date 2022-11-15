@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Like Pathname but a little less insane"
 HOMEPAGE="https://rubygems.org/gems/pathutil https://github.com/envygeeks/pathutil"
-SRC_URI="https://github.com/envygeeks/pathutil/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/envygeeks/pathutil/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

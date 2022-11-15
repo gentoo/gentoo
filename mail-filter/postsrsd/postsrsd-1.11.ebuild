@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="Postfix Sender Rewriting Scheme daemon"
-SRC_URI="https://github.com/roehling/postsrsd/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/roehling/postsrsd/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/roehling/postsrsd"
 
 LICENSE="GPL-2"

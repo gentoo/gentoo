@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Hides mouse pointer while not in use (rewrite of unclutter)"
 HOMEPAGE="https://github.com/Airblader/unclutter-xfixes"
-SRC_URI="https://github.com/Airblader/unclutter-xfixes/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Airblader/unclutter-xfixes/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

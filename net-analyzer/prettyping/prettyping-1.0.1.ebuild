@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Ping wrapper that produces coloured, easily readable output"
 HOMEPAGE="http://denilson.sa.nom.br/prettyping/"
-SRC_URI="https://github.com/denilsonsa/prettyping/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/denilsonsa/prettyping/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

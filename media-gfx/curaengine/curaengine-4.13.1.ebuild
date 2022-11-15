@@ -9,7 +9,7 @@ MY_PN="CuraEngine"
 
 DESCRIPTION="A 3D model slicing engine for 3D printing"
 HOMEPAGE="https://github.com/Ultimaker/CuraEngine"
-SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"

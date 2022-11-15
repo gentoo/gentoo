@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/jc/
 "
 SRC_URI="
-	https://github.com/kellyjonbrazil/jc/archive/v${PV}.tar.gz
+	https://github.com/kellyjonbrazil/jc/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

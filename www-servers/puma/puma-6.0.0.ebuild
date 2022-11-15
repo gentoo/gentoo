@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack"
 HOMEPAGE="https://puma.io/"
-SRC_URI="https://github.com/puma/puma/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/puma/puma/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="3"

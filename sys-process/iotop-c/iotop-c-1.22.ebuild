@@ -7,7 +7,7 @@ inherit fcaps linux-info toolchain-funcs
 
 DESCRIPTION="top utility for IO (C port)"
 HOMEPAGE="https://github.com/Tomas-M/iotop"
-SRC_URI="https://github.com/Tomas-M/iotop/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Tomas-M/iotop/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/iotop-${PV}"
 
 LICENSE="GPL-2+"

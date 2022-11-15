@@ -8,7 +8,7 @@ inherit python-any-r1 toolchain-funcs
 
 DESCRIPTION="Self-syncing tree-merging file system based on FUSE"
 HOMEPAGE="https://github.com/rpodgorny/unionfs-fuse"
-SRC_URI="https://github.com/rpodgorny/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rpodgorny/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Implementation of expression for handling things"
 HOMEPAGE="https://github.com/toshia/diva https://rubygems.org/gems/diva"
-SRC_URI="https://github.com/toshia/diva/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/toshia/diva/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

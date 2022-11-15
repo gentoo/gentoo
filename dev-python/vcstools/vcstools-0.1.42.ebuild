@@ -11,7 +11,7 @@ DESCRIPTION="Python library for interacting with various VCS systems"
 HOMEPAGE="https://wiki.ros.org/vcstools"
 SRC_URI="
 	http://download.ros.org/downloads/${PN}/${P}.tar.gz
-	https://github.com/vcstools/vcstools/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/vcstools/vcstools/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="BSD"

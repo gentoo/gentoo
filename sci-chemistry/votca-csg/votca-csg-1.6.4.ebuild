@@ -10,9 +10,9 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
 	PDEPEND="${PDEPEND} doc? ( ~app-doc/${PN}-manual-${PV} )"
 else
-	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://github.com/${PN/-//}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 		doc? ( https://github.com/${PN/-//}-manual/releases/download/v${PV}/${PN}-manual-${PV}.pdf )
-		examples? (	https://github.com/${PN/-//}-tutorials/archive/v${PV}.tar.gz -> ${PN}-tutorials-${PV}.tar.gz )"
+		examples? (	https://github.com/${PN/-//}-tutorials/archive/refs/tags/v${PV}.tar.gz -> ${PN}-tutorials-${PV}.tar.gz )"
 	KEYWORDS="amd64 x86 ~amd64-linux"
 	S="${WORKDIR}/${P#votca-}"
 	PDEPEND="extras? ( ~sci-chemistry/${PN}apps-${PV} )"

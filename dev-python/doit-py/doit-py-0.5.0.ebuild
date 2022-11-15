@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="doit tasks for python stuff"
 HOMEPAGE="https://pythonhosted.org/doit-py/ https://github.com/pydoit/doit-py"
-SRC_URI="https://github.com/pydoit/doit-py/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pydoit/doit-py/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

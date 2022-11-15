@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Perl extensions for rxvt-unicode"
 HOMEPAGE="https://github.com/muennich/urxvt-perls"
-SRC_URI="https://github.com/muennich/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/muennich/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

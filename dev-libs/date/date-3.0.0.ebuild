@@ -8,7 +8,7 @@ inherit cmake
 DESCRIPTION="A date and time library based on the C++11/14/17 <chrono> header"
 HOMEPAGE="https://github.com/HowardHinnant/date"
 
-SRC_URI="https://github.com/HowardHinnant/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/HowardHinnant/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 LICENSE="MIT"

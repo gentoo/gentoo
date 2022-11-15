@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Anaphoric expressions for Emacs Lisp, providing implicit temporary variables"
 HOMEPAGE="https://github.com/rolandwalker/anaphora/"
-SRC_URI="https://github.com/rolandwalker/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/rolandwalker/${PN}/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="public-domain"

@@ -11,7 +11,7 @@ MY_P=spur.py-${PV}
 DESCRIPTION="Run commands locally or over SSH using the same interface"
 HOMEPAGE="https://github.com/mwilliamson/spur.py"
 SRC_URI="
-	https://github.com/mwilliamson/spur.py/archive/${PV}.tar.gz
+	https://github.com/mwilliamson/spur.py/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 	https://dev.gentoo.org/~andrewammerlaan/${P}-nose2pytest.diff
 "

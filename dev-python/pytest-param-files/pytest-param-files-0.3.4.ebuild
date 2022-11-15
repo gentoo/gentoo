@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pytest_param_files/
 "
 SRC_URI="
-	https://github.com/chrisjsewell/pytest-param-files/archive/v${PV}.tar.gz
+	https://github.com/chrisjsewell/pytest-param-files/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

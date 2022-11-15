@@ -7,7 +7,7 @@ MY_PV=${PV/_/}
 inherit go-module
 DESCRIPTION="Elasticsearch stats exporter for Prometheus"
 HOMEPAGE="https://github.com/justwatchcom/elasticsearch_exporter"
-SRC_URI="https://github.com/justwatchcom/elasticsearch_exporter/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/justwatchcom/elasticsearch_exporter/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD MIT"

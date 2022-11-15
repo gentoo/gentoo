@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Simple, feature rich ascii table generation library"
 HOMEPAGE="https://github.com/tj/terminal-table"
-SRC_URI="https://github.com/tj/terminal-table/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tj/terminal-table/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
 KEYWORDS="~amd64 ~arm64"

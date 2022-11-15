@@ -12,7 +12,7 @@ HOMEPAGE="
 	https://github.com/bskinn/stdio-mgr/
 	https://pypi.org/project/stdio-mgr/
 "
-SRC_URI="https://github.com/bskinn/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bskinn/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"

@@ -7,7 +7,7 @@ inherit cmake-multilib
 
 DESCRIPTION="Module/tracker based music format parser and player library"
 HOMEPAGE="https://github.com/kode54/dumb"
-SRC_URI="https://github.com/kode54/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kode54/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="DUMB-0.9.3"
 SLOT="0/2"

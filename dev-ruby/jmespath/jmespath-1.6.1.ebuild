@@ -11,7 +11,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Implements JMESPath for Ruby"
 HOMEPAGE="https://github.com/jmespath/jmespath.rb"
-SRC_URI="https://github.com/jmespath/jmespath.rb/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jmespath/jmespath.rb/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="${PN}.rb-${PV}"
 
 LICENSE="Apache-2.0"

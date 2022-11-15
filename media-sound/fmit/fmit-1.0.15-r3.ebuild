@@ -7,7 +7,7 @@ inherit qmake-utils
 
 DESCRIPTION="Free Music Instrument Tuner"
 HOMEPAGE="https://gillesdegottex.github.io/fmit"
-SRC_URI="https://github.com/gillesdegottex/fmit/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gillesdegottex/fmit/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2.1"
 SLOT="0"

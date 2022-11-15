@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="A simple implementation of freedesktop.org notification area for X"
 HOMEPAGE="https://steelman.github.io/xystray/"
-SRC_URI="https://github.com/steelman/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/steelman/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

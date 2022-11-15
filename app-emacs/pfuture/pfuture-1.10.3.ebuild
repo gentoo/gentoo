@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Simple wrapper around asynchronous processes"
 HOMEPAGE="https://github.com/Alexander-Miller/pfuture/"
-SRC_URI="https://github.com/Alexander-Miller/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/Alexander-Miller/${PN}/archive/refs/tags/${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

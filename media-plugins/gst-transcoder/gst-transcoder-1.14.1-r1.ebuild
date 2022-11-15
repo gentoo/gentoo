@@ -7,7 +7,7 @@ inherit gnome2-utils meson xdg
 
 DESCRIPTION="GStreamer Transcoding API"
 HOMEPAGE="https://github.com/pitivi/gst-transcoder"
-SRC_URI="https://github.com/pitivi/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pitivi/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

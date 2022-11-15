@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A reliable, thread safe, clear-model, pure C logging library"
 HOMEPAGE="http://hardysimpson.github.io/zlog/"
-SRC_URI="https://github.com/HardySimpson/${PN}/archive/${PV}.tar.gz -> ${PN}-v${PV}.tar.gz"
+SRC_URI="https://github.com/HardySimpson/${PN}/archive/refs/tags/${PV}.tar.gz -> ${PN}-v${PV}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

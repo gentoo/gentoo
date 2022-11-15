@@ -9,7 +9,7 @@ inherit distutils-r1 virtualx
 
 DESCRIPTION="Python screenshot library"
 HOMEPAGE="https://github.com/ponty/pyscreenshot"
-SRC_URI="https://github.com/ponty/pyscreenshot/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ponty/pyscreenshot/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Really simple JSON and XML parsing, ripped from Merb and Rails"
 HOMEPAGE="https://github.com/jnunemaker/crack"
-SRC_URI="https://github.com/jnunemaker/crack/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jnunemaker/crack/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

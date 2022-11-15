@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python implementation of PostgreSQL meta commands"
 HOMEPAGE="https://github.com/dbcli/pgspecial"
-SRC_URI="https://github.com/dbcli/pgspecial/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dbcli/pgspecial/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD MIT"
 SLOT="0"

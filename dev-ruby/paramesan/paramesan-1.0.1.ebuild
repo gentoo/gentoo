@@ -15,7 +15,7 @@ inherit ruby-fakegem
 DESCRIPTION="Parameterized tests in Ruby"
 HOMEPAGE="https://github.com/jpace/paramesan"
 
-SRC_URI="https://github.com/jpace/paramesan/archive/v${PV}.tar.gz -> ${P}.tgz"
+SRC_URI="https://github.com/jpace/paramesan/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

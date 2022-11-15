@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="List Oriented Buffer Operations for Emacs"
 HOMEPAGE="https://github.com/phillord/m-buffer-el/"
-SRC_URI="https://github.com/phillord/${PN}-el/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/phillord/${PN}-el/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-el-${PV}
 

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/unittest-mixins/
 "
 SRC_URI="
-	https://github.com/nedbat/unittest-mixins/archive/v${PV}.tar.gz
+	https://github.com/nedbat/unittest-mixins/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

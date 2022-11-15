@@ -7,7 +7,7 @@ inherit latex-package
 
 DESCRIPTION="The TeX Portable Graphic Format"
 HOMEPAGE="https://github.com/pgf-tikz/pgf"
-SRC_URI=" https://github.com/pgf-tikz/pgf/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI=" https://github.com/pgf-tikz/pgf/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~tamiko/distfiles/${P}-revisioned.xz
 	doc? ( https://github.com/pgf-tikz/pgf/releases/download/${PV}/pgfmanual-${PV}.pdf -> ${P}-pgfmanual.pdf )"
 

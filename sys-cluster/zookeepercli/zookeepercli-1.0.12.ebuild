@@ -13,7 +13,7 @@ inherit golang-vcs-snapshot
 
 KEYWORDS="~amd64"
 EGIT_COMMIT="v${PV}"
-SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://${EGO_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 DESCRIPTION="Simple, lightweight, dependable CLI for ZooKeeper"

@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="An equivalent of the C preprocessor for OCaml programs"
 HOMEPAGE="https://github.com/ocaml-community/cppo/"
-SRC_URI="https://github.com/ocaml-community/cppo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocaml-community/cppo/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0/${PV}"
 LICENSE="BSD"

@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Generic tree traversing tools for Emacs Lisp"
 HOMEPAGE="https://github.com/volrath/treepy.el"
-SRC_URI="https://github.com/volrath/treepy.el/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/volrath/treepy.el/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}.el-${PV}"
 
 LICENSE="GPL-3+"

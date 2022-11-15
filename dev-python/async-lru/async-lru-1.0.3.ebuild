@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/async-lru/
 "
 SRC_URI="
-	https://github.com/aio-libs/async-lru/archive/v${PV}.tar.gz
+	https://github.com/aio-libs/async-lru/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="MIT"

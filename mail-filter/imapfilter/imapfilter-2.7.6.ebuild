@@ -9,7 +9,7 @@ inherit lua-single toolchain-funcs
 
 DESCRIPTION="An IMAP mail filtering utility"
 HOMEPAGE="https://github.com/lefcha/imapfilter"
-SRC_URI="https://github.com/lefcha/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lefcha/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

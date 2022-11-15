@@ -11,7 +11,7 @@ QTW_P=${QTW_PN}-${QTW_PV}
 
 DESCRIPTION="terminal emulator which mimics the look and feel of the old cathode tube screens"
 HOMEPAGE="https://github.com/Swordfish90/cool-retro-term"
-SRC_URI="https://github.com/Swordfish90/cool-retro-term/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/Swordfish90/cool-retro-term/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/Swordfish90/qmltermwidget/archive/${QTW_PV}.tar.gz -> ${QTW_P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3"

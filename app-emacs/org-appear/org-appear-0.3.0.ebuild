@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Toggle Org mode element visibility upon entering and leaving"
 HOMEPAGE="https://github.com/awth13/org-appear/"
-SRC_URI="https://github.com/awth13/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/awth13/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

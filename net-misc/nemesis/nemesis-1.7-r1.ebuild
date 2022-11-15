@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="A commandline-based, portable human IP stack for UNIX/Linux"
 HOMEPAGE="https://github.com/libnet/nemesis"
-SRC_URI="https://github.com/libnet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/libnet/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

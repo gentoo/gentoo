@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A light weight Python library for the Spotify Web API"
 HOMEPAGE="https://spotipy.readthedocs.io"
-SRC_URI="https://github.com/plamere/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/plamere/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"

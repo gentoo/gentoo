@@ -11,7 +11,7 @@ inherit desktop python-single-r1 readme.gentoo-r1
 
 DESCRIPTION="Elog viewer for Gentoo"
 HOMEPAGE="https://github.com/Synss/elogviewer"
-SRC_URI="https://github.com/Synss/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Synss/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

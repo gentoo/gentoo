@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="A syntax extension for importing declarations from interface files"
 HOMEPAGE="https://github.com/ocaml-ppx/ppx_import/"
-SRC_URI="https://github.com/ocaml-ppx/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/ocaml-ppx/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 LICENSE="MIT"

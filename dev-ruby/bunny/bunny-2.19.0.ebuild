@@ -17,7 +17,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Another synchronous Ruby AMQP client"
 HOMEPAGE="https://github.com/ruby-amqp/bunny"
-SRC_URI="https://github.com/ruby-amqp/bunny/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby-amqp/bunny/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

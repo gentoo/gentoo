@@ -8,7 +8,7 @@ inherit cmake flag-o-matic xdg
 DESCRIPTION="A free, open source, cross-platform video editor"
 HOMEPAGE="https://www.shotcut.org/ https://github.com/mltframework/shotcut/"
 if [[ ${PV} != 9999* ]] ; then
-	SRC_URI="https://github.com/mltframework/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/mltframework/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 else
 	inherit git-r3

@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="A zero-config tool to make locally trusted development certificates"
 HOMEPAGE="https://github.com/FiloSottile/mkcert"
-SRC_URI="https://github.com/FiloSottile/mkcert/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/FiloSottile/mkcert/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz"
 
 LICENSE="BSD"

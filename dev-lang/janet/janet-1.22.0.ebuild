@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A dynamic Lisp dialect and bytecode vm"
 HOMEPAGE="https://janet-lang.org https://github.com/janet-lang/janet/"
-SRC_URI="https://github.com/janet-lang/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janet-lang/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

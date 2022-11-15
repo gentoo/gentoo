@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="network scanner that gathers info on SSH protocols and versions"
 HOMEPAGE="https://github.com/ofalk/scanssh/"
-SRC_URI="https://github.com/ofalk/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ofalk/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

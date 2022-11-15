@@ -7,7 +7,7 @@ inherit autotools multilib-minimal
 
 DESCRIPTION="Library for decoding ARIB STD-B24 subtitles"
 HOMEPAGE="https://github.com/nkoriyama/aribb24"
-SRC_URI="https://github.com/nkoriyama/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nkoriyama/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

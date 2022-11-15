@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/asteval/
 "
 SRC_URI="
-	https://github.com/newville/asteval/archive/${PV}.tar.gz
+	https://github.com/newville/asteval/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -18,7 +18,7 @@ SRC_URI="
 		https://www.scons.org/doc/${PV}/PDF/${PN}-user.pdf -> ${P}-user.pdf
 		https://www.scons.org/doc/${PV}/HTML/${PN}-user.html -> ${P}-user.html
 	)
-	test? ( https://github.com/scons/scons/archive/${PV}.tar.gz -> ${P}.gh.tar.gz )"
+	test? ( https://github.com/scons/scons/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz )"
 S="${WORKDIR}/${P}/src"
 
 LICENSE="MIT"

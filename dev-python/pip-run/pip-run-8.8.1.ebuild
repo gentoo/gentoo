@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pip-run/
 "
 SRC_URI="
-	https://github.com/jaraco/pip-run/archive/v${PV}.tar.gz
+	https://github.com/jaraco/pip-run/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P=${PN/-/_}-${PV}
 DESCRIPTION="distutils extension to work with PyQt applications and UI files"
 HOMEPAGE="https://github.com/ColinDuquesnoy/pyqt_distutils"
-SRC_URI="https://github.com/ColinDuquesnoy/pyqt_distutils/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/ColinDuquesnoy/pyqt_distutils/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"

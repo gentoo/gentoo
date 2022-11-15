@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/bibtexparser/
 "
 SRC_URI="
-	https://github.com/sciunto-org/python-bibtexparser/archive/v${PV}.tar.gz
+	https://github.com/sciunto-org/python-bibtexparser/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/python-${P}"

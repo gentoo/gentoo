@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/abravalheri/ini2toml/
 "
 SRC_URI="
-	https://github.com/abravalheri/ini2toml/archive/v${PV}.tar.gz
+	https://github.com/abravalheri/ini2toml/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

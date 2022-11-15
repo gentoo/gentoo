@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="A group of experimental matchers for Betamax"
 HOMEPAGE="https://github.com/betamaxpy/betamax_matchers"
 SRC_URI="
-	https://github.com/betamaxpy/betamax_matchers/archive/${PV}.tar.gz
+	https://github.com/betamaxpy/betamax_matchers/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/${P/-/_}"

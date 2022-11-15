@@ -7,7 +7,7 @@ inherit optfeature
 
 DESCRIPTION="A fast pipe/static menu generator for the Openbox Window Manager"
 HOMEPAGE="https://github.com/trizen/obmenu-generator"
-SRC_URI="https://github.com/trizen/obmenu-generator/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/trizen/obmenu-generator/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

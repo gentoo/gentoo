@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="An authoring and publishing environment for Emacs"
 HOMEPAGE="https://www.gnu.org/software/emacs-muse/"
-SRC_URI="https://github.com/alexott/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/alexott/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.2+ GPL-2 MIT"
 SLOT="0"

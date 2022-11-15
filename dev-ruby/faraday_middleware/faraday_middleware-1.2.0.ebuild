@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Various middleware for Faraday"
 HOMEPAGE="https://github.com/lostisland/faraday_middleware"
-SRC_URI="https://github.com/lostisland/faraday_middleware/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lostisland/faraday_middleware/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/frozendict/
 "
 SRC_URI="
-	https://github.com/Marco-Sulla/python-frozendict/archive/v${PV}.tar.gz
+	https://github.com/Marco-Sulla/python-frozendict/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/python-${P}"

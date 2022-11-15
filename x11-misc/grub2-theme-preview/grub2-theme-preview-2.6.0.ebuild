@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Preview a GRUB 2.x theme using KVM/QEMU"
 HOMEPAGE="https://github.com/hartwork/grub2-theme-preview"
-SRC_URI="https://github.com/hartwork/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hartwork/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

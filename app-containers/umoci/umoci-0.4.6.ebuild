@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="Manipulation tool for OCI images"
 HOMEPAGE="https://github.com/opencontainers/umoci"
-SRC_URI="https://github.com/opencontainers/umoci/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/opencontainers/umoci/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

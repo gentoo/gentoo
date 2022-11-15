@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Extensible vi layer for Emacs"
 HOMEPAGE="https://github.com/emacs-evil/evil"
-SRC_URI="https://github.com/emacs-evil/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/emacs-evil/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.3+"
 SLOT="0"

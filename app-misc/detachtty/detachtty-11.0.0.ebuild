@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Attach/detach from interactive processes across the network"
 HOMEPAGE="https://github.com/cosmos72/detachtty"
-SRC_URI="https://github.com/cosmos72/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cosmos72/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

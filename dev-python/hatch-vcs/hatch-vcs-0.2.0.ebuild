@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/ofek/hatch-vcs/
 "
 SRC_URI="
-	https://github.com/ofek/hatch-vcs/archive/v${PV}.tar.gz
+	https://github.com/ofek/hatch-vcs/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

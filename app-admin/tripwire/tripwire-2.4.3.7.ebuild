@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Open Source File Integrity Checker and IDS"
 HOMEPAGE="http://www.tripwire.org/"
-SRC_URI="https://github.com/Tripwire/tripwire-open-source/archive/${PV}.tar.gz -> ${PF}.tar.gz"
+SRC_URI="https://github.com/Tripwire/tripwire-open-source/archive/refs/tags/${PV}.tar.gz -> ${PF}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

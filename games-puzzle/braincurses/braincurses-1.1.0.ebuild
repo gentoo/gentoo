@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A version of the classic game Mastermind"
 HOMEPAGE="https://github.com/bderrly/braincurses"
-SRC_URI="https://github.com/bderrly/braincurses/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bderrly/braincurses/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

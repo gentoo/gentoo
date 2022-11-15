@@ -17,7 +17,7 @@ LIBVPX_TESTDATA_VER=1.12.0
 
 DESCRIPTION="WebM VP8 and VP9 Codec SDK"
 HOMEPAGE="https://www.webmproject.org"
-SRC_URI="https://github.com/webmproject/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/webmproject/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-testdata-${LIBVPX_TESTDATA_VER}.tar.xz )"
 
 LICENSE="BSD"

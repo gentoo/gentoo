@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	MY_PV=$(ver_rs 3 - 4 .)
-	SRC_URI="https://github.com/ksh93/${PN}/archive/v${MY_PV}/ksh-v${MY_PV}.tar.gz"
+	SRC_URI="https://github.com/ksh93/${PN}/archive/refs/tags/v${MY_PV}/ksh-v${MY_PV}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 

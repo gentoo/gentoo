@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Lightweight C++ command line option parser"
 HOMEPAGE="https://github.com/jarro2783/cxxopts"
-SRC_URI="https://github.com/jarro2783/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jarro2783/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

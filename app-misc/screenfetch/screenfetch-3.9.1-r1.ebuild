@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~arm ~loong ~riscv ~x86 ~x64-macos"
-	SRC_URI="https://github.com/KittyKatt/screenFetch/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/KittyKatt/screenFetch/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_PN}-${PV}"
 fi
 

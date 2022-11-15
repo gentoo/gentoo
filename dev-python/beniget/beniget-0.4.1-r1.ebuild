@@ -12,7 +12,7 @@ HOMEPAGE="
 	https://pypi.org/project/beniget/
 	https://github.com/serge-sans-paille/beniget/"
 SRC_URI="
-	https://github.com/serge-sans-paille/beniget/archive/${PV}.tar.gz
+	https://github.com/serge-sans-paille/beniget/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="BSD"

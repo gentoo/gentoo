@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Helpers for writing specs against the async gem"
 HOMEPAGE="https://github.com/socketry/async-rspec"
-SRC_URI="https://github.com/socketry/async-rspec/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/socketry/async-rspec/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="DNS server designed to serve blacklist zones"
 HOMEPAGE="https://rbldnsd.io/"
-SRC_URI="https://github.com/spamhaus/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/spamhaus/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

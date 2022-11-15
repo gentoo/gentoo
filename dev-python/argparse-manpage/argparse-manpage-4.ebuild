@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/argparse-manpage/
 "
 SRC_URI="
-	https://github.com/praiskup/${PN}/archive/v${PV}.tar.gz
+	https://github.com/praiskup/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

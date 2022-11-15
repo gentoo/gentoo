@@ -12,7 +12,7 @@ HOMEPAGE="
 	https://github.com/facelessuser/mkdocs-material-extensions
 	https://pypi.org/project/mkdocs-material-extensions
 "
-SRC_URI="https://github.com/facelessuser/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/facelessuser/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 RESTRICT="test"
 

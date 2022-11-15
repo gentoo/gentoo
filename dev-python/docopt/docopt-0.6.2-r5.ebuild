@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/docopt/
 "
 SRC_URI="
-	https://github.com/docopt/docopt/archive/${PV}.tar.gz
+	https://github.com/docopt/docopt/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

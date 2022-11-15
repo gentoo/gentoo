@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="Mark commercial breaks in VDR recordings"
 HOMEPAGE="https://github.com/madmartin/noad"
-SRC_URI="https://github.com/madmartin/noad/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/madmartin/noad/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

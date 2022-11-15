@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/nemtrif/utfcpp"
 if [[ "${PV}" == "9999" ]]; then
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/nemtrif/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://github.com/nemtrif/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 		test? ( https://github.com/nemtrif/ftest/archive/${FTEST_GIT_REVISION}.tar.gz -> ftest-${FTEST_DATE}.tar.gz )"
 fi
 

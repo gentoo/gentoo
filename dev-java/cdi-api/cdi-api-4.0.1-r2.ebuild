@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="APIs for CDI (Contexts and Dependency Injection for Java)"
 HOMEPAGE="https://projects.eclipse.org/projects/ee4j.cdi"
-SRC_URI="https://github.com/jakartaee/cdi/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jakartaee/cdi/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

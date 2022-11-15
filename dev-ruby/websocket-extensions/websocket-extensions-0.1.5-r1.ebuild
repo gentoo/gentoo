@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Generic extension manager for WebSocket connections"
 HOMEPAGE="https://github.com/faye/websocket-extensions-ruby"
-SRC_URI="https://github.com/faye/websocket-extensions-ruby/archive/${PV}.tar.gz -> ${P}-r1.tar.gz"
+SRC_URI="https://github.com/faye/websocket-extensions-ruby/archive/refs/tags/${PV}.tar.gz -> ${P}-r1.tar.gz"
 RUBY_S="${PN}-ruby-${PV}"
 
 LICENSE="Apache-2.0"

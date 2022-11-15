@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/mesonbuild/meson-python/
 "
 SRC_URI="
-	https://github.com/mesonbuild/meson-python/archive/${PV}.tar.gz
+	https://github.com/mesonbuild/meson-python/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

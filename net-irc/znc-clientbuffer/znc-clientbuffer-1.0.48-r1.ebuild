@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="A ZNC module which provides client specific buffers"
 HOMEPAGE="https://github.com/CyberShadow/znc-clientbuffer"
-SRC_URI="https://github.com/CyberShadow/znc-clientbuffer/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/CyberShadow/znc-clientbuffer/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

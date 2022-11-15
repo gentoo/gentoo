@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Application that queries the user for a selection for printing"
 HOMEPAGE="https://github.com/naelstrof/slop"
-SRC_URI="https://github.com/naelstrof/slop/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/naelstrof/slop/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="amd64 ~x86"
 
 LICENSE="GPL-3"

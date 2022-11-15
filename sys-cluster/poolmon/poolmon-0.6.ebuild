@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A director mailserver pool monitoring script for Dovecot"
 HOMEPAGE="https://github.com/brandond/poolmon"
-SRC_URI="https://github.com/brandond/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/brandond/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

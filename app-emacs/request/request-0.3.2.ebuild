@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Compatible layer for URL request"
 HOMEPAGE="https://github.com/tkf/emacs-request/"
-SRC_URI="https://github.com/tkf/emacs-${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tkf/emacs-${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/emacs-${P}
 
 LICENSE="GPL-3+"

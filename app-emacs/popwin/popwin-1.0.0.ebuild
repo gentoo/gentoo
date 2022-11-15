@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Popup window manager for Emacs"
 HOMEPAGE="https://github.com/m2ym/popwin-el"
-SRC_URI="https://github.com/m2ym/${PN}-el/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/m2ym/${PN}-el/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit xdg-utils
 
 DESCRIPTION="Agent and tools for managing OpenID Connect tokens on the command line"
 HOMEPAGE="https://github.com/indigo-dc/oidc-agent"
-SRC_URI="https://github.com/indigo-dc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/indigo-dc/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

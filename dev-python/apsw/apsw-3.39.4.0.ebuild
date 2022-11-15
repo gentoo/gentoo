@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/apsw/
 "
 SRC_URI="
-	https://github.com/rogerbinns/apsw/archive/${PV}.tar.gz
+	https://github.com/rogerbinns/apsw/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

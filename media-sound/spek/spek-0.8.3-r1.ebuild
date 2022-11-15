@@ -9,7 +9,7 @@ inherit autotools wxwidgets xdg
 
 DESCRIPTION="Analyse your audio files by showing their spectrogram"
 HOMEPAGE="http://www.spek-project.org/"
-SRC_URI="https://github.com/alexkay/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/alexkay/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

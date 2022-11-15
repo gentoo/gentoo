@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/platformdirs/platformdirs/
 "
 SRC_URI="
-	https://github.com/platformdirs/platformdirs/archive/${PV}.tar.gz
+	https://github.com/platformdirs/platformdirs/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

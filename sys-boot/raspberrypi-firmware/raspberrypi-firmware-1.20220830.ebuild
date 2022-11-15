@@ -10,7 +10,7 @@ if [[ "${PV}" == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/raspberrypi/firmware"
 	EGIT_CLONE_TYPE="shallow"
 else
-	SRC_URI="https://github.com/raspberrypi/firmware/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/raspberrypi/firmware/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="-* ~arm ~arm64"
 	S="${WORKDIR}/firmware-${PV}"
 fi

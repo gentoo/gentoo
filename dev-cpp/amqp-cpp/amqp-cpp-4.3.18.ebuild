@@ -10,7 +10,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="AMQP-CPP is a C++ library for communicating with a RabbitMQ message broker"
 HOMEPAGE="https://github.com/CopernicaMarketingSoftware/AMQP-CPP"
-SRC_URI="https://github.com/CopernicaMarketingSoftware/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/CopernicaMarketingSoftware/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"

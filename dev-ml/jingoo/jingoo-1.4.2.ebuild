@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="OCaml template engine almost compatible with Jinja2"
 HOMEPAGE="https://github.com/tategakibunko/jingoo"
-SRC_URI="https://github.com/tategakibunko/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/tategakibunko/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="ISC"

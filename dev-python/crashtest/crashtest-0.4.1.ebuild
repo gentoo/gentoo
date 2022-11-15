@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/crashtest/
 "
 SRC_URI="
-	https://github.com/sdispater/crashtest/archive/${PV}.tar.gz
+	https://github.com/sdispater/crashtest/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/cstruct/
 "
 SRC_URI="
-	https://github.com/andreax79/${PN}/archive/v${PV}.tar.gz
+	https://github.com/andreax79/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

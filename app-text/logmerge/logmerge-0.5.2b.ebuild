@@ -5,7 +5,7 @@ EAPI="6"
 
 DESCRIPTION="Small and powerful script to merge two or more logfiles"
 HOMEPAGE="https://github.com/ildar-shaimordanov/logmerge"
-SRC_URI="https://github.com/ildar-shaimordanov/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ildar-shaimordanov/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

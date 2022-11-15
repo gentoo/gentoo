@@ -7,7 +7,7 @@ inherit cmake-multilib
 
 DESCRIPTION="C library for cross-platform real-time audio input and output"
 HOMEPAGE="http://libsound.io/"
-SRC_URI="https://github.com/andrewrk/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/andrewrk/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/2"

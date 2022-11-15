@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="A better pager for CLI database clients, and can substitute psql"
 HOMEPAGE="https://github.com/okbob/pspg"
-SRC_URI="https://github.com/okbob/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/okbob/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

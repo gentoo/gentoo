@@ -8,7 +8,7 @@ inherit meson
 DESCRIPTION="Pretty small HTTP server -- a command-line tool to share files"
 HOMEPAGE="https://github.com/mgorny/pshs/"
 SRC_URI="
-	https://github.com/mgorny/pshs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	https://github.com/mgorny/pshs/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

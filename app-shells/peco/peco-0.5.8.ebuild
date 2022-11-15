@@ -29,7 +29,7 @@ go-module_set_globals
 
 DESCRIPTION="Simplistic interactive filtering tool"
 HOMEPAGE="https://github.com/peco/peco"
-SRC_URI="https://github.com/peco/peco/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/peco/peco/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"

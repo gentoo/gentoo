@@ -8,7 +8,7 @@ inherit python-single-r1
 
 DESCRIPTION="gentoo.git signature verification tool"
 HOMEPAGE="https://github.com/projg2/gverify"
-SRC_URI="https://github.com/projg2/gverify/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/projg2/gverify/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

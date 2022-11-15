@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/pikepdf/
 "
 SRC_URI="
-	https://github.com/${PN}/${PN}/archive/v${PV/_p/.post}.tar.gz
+	https://github.com/${PN}/${PN}/archive/refs/tags/v${PV/_p/.post}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

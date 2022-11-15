@@ -10,7 +10,7 @@ if [[ ${PV} == "99999999" ]] ; then
 	inherit git-r3
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/Winetricks/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/Winetricks/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 

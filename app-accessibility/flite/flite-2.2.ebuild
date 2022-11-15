@@ -6,7 +6,7 @@ inherit autotools multilib-minimal toolchain-funcs
 
 DESCRIPTION="Flite text to speech engine"
 HOMEPAGE="http://www.festvox.org/flite/ https://github.com/festvox/flite"
-SRC_URI="https://github.com/festvox/flite/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/festvox/flite/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	voices? (
 		http://www.festvox.org/${PN}/packed/${P}/voices/cmu_indic_ben_rm.flitevox
 		http://www.festvox.org/${PN}/packed/${P}/voices/cmu_indic_guj_ad.flitevox

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Library for asynchronous I/O readiness notification"
 HOMEPAGE="https://github.com/buytenh/ivykis"
-SRC_URI="https://github.com/buytenh/ivykis/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/buytenh/ivykis/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

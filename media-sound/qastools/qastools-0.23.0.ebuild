@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Qt5 GUI ALSA tools: mixer, configuration browser"
 HOMEPAGE="https://gitlab.com/sebholt/qastools"
-SRC_URI="https://gitlab.com/sebholt/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
+SRC_URI="https://gitlab.com/sebholt/${PN}/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

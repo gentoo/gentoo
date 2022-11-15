@@ -17,7 +17,7 @@ if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/kpeeters/${CADABRA}.git"
 else
-	SRC_URI="https://github.com/kpeeters/${CADABRA}/archive/${PV}.tar.gz
+	SRC_URI="https://github.com/kpeeters/${CADABRA}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.tar.gz"
 	S="${WORKDIR}"/${CADABRA}-${PV}
 	KEYWORDS="~amd64 ~x86"

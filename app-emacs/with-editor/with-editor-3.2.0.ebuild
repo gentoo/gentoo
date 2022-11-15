@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Use the Emacsclient as the \$EDITOR of child processes"
 HOMEPAGE="https://magit.vc/manual/with-editor"
-SRC_URI="https://github.com/magit/with-editor/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/magit/with-editor/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P}/lisp"
 
 LICENSE="GPL-3+"

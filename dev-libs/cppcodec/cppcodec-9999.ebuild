@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 	# Disable pulling in catch
 	EGIT_SUBMODULES=()
 else
-	SRC_URI="https://github.com/tplgy/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/tplgy/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~ppc64 x86"
 fi
 

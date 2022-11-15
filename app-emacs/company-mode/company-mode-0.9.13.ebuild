@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="In-buffer completion front-end"
 HOMEPAGE="https://company-mode.github.io/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

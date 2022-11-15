@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/agronholm/typeguard/
 "
 SRC_URI="
-	https://github.com/agronholm/typeguard/archive/${PV}.tar.gz
+	https://github.com/agronholm/typeguard/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

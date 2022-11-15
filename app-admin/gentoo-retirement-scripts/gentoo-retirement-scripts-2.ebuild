@@ -9,7 +9,7 @@ inherit python-single-r1
 DESCRIPTION="Scripts to help retiring Gentoo developers"
 HOMEPAGE="https://github.com/mgorny/gentoo-retirement-scripts/"
 SRC_URI="
-	https://github.com/mgorny/gentoo-retirement-scripts/archive/v${PV}.tar.gz
+	https://github.com/mgorny/gentoo-retirement-scripts/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

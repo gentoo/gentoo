@@ -12,7 +12,7 @@ case ${PV} in
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/umlaeute/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/umlaeute/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	;;
 esac
 

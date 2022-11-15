@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="An adaptive Gtk+ theme based on Material Design Guidelines"
 HOMEPAGE="https://github.com/adapta-project/adapta-gtk-theme"
-SRC_URI="https://github.com/adapta-project/adapta-gtk-theme/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/adapta-project/adapta-gtk-theme/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-1"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="A dead simple, no frills Go cross compile tool"
 HOMEPAGE="https://github.com/mitchellh/gox"
-SRC_URI="https://github.com/mitchellh/gox/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mitchellh/gox/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~jsmolic/gox-riscv.patch"
 
 LICENSE="MPL-2.0"

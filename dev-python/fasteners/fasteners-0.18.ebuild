@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Python package that provides useful locks"
 HOMEPAGE="https://github.com/harlowja/fasteners/"
 SRC_URI="
-	https://github.com/harlowja/fasteners/archive/${PV}.tar.gz
+	https://github.com/harlowja/fasteners/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"

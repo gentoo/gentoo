@@ -12,7 +12,7 @@ HOMEPAGE="
 	https://pypi.org/project/python-socks/
 	https://github.com/romis2012/python-socks/"
 SRC_URI="
-	https://github.com/romis2012/python-socks/archive/v${PV}.tar.gz
+	https://github.com/romis2012/python-socks/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"

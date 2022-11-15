@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="Module for determining appropriate platform-specific dirs"
 HOMEPAGE="https://github.com/ActiveState/appdirs"
-SRC_URI="https://github.com/ActiveState/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ActiveState/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

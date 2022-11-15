@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="A wrapper for the GitHub API written in python"
 HOMEPAGE="https://github3py.readthedocs.io/en/master/"
 SRC_URI="
-	https://github.com/sigmavirus24/${PN}.py/archive/${PV}.tar.gz
+	https://github.com/sigmavirus24/${PN}.py/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/${PN}.py-${PV}"

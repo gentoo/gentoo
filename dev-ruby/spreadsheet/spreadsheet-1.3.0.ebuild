@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Ruby library to read and write spreadsheet documents"
 HOMEPAGE="https://github.com/zdavatz/spreadsheet"
-SRC_URI="https://github.com/zdavatz/spreadsheet/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/zdavatz/spreadsheet/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

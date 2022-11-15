@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="A high-performance, open source, schema-free document-oriented database"
 HOMEPAGE="https://www.mongodb.com"
-SRC_URI="https://github.com/mongodb/mongo-tools/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mongodb/mongo-tools/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Record screencasts using ffmpeg"
 HOMEPAGE="https://github.com/lolilolicon/ffcast"
-SRC_URI="https://github.com/lolilolicon/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lolilolicon/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -15,7 +15,7 @@ DESCRIPTION="Python library for communicating with AMQP peers using Twisted"
 HOMEPAGE="https://github.com/txamqp/txamqp"
 # pypi tarball misses doc files
 # https://github.com/txamqp/txamqp/pull/10
-SRC_URI="https://github.com/txamqp/txamqp/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/txamqp/txamqp/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"

@@ -8,7 +8,7 @@ inherit flag-o-matic strip-linguas toolchain-funcs
 IUSE="nls dbus ssl +gtk"
 
 DESCRIPTION="A GTK+ Gnutella client"
-SRC_URI="https://github.com/gtk-gnutella/gtk-gnutella/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gtk-gnutella/gtk-gnutella/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="http://gtk-gnutella.sourceforge.net/"
 
 SLOT="0"

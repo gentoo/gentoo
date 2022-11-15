@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Ruby client library for POP3"
 HOMEPAGE="https://github.com/ruby/net-pop"
-SRC_URI="https://github.com/ruby/net-pop/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/net-pop/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

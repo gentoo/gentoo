@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Yet-another-markdown-parser using a strict syntax definition in pure Ruby"
 HOMEPAGE="https://github.com/jneen/rouge"
-SRC_URI="https://github.com/jneen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jneen/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 

@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A fast XML parser and Object marshaller"
 HOMEPAGE="https://www.ohler.com/ox/ https://github.com/ohler55/ox"
-SRC_URI="https://github.com/ohler55/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ohler55/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"

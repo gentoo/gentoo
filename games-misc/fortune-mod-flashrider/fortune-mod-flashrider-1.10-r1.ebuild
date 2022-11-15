@@ -8,7 +8,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Quotes from Prolinux articles and comments"
 HOMEPAGE="https://github.com/Nanolx/fortunes-flashrider"
-SRC_URI="https://github.com/Nanolx/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/Nanolx/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="public-domain"

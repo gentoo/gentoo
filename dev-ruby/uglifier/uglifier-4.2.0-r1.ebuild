@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Ruby wrapper for UglifyJS JavaScript compressor"
 HOMEPAGE="https://github.com/lautis/uglifier"
-SRC_URI="https://github.com/lautis/uglifier/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lautis/uglifier/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="4"

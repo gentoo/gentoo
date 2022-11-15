@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Terminal painter"
 HOMEPAGE="https://github.com/janlelis/paint"
-SRC_URI="https://github.com/janlelis/paint/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janlelis/paint/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Rack::Test is a small, simple testing API for Rack apps"
 HOMEPAGE="https://github.com/rack-test/rack-test"
-SRC_URI="https://github.com/rack-test/rack-test/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rack-test/rack-test/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1.0"

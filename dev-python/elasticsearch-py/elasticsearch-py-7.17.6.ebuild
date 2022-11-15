@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Official Python low-level client for Elasticsearch"
 HOMEPAGE="https://github.com/elastic/elasticsearch-py"
 SRC_URI="
-	https://github.com/elastic/elasticsearch-py/archive/v${PV}.tar.gz
+	https://github.com/elastic/elasticsearch-py/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	test? (
 		https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${PV}-no-jdk-linux-x86_64.tar.gz

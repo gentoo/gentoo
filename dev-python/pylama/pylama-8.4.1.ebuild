@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Code audit tool for python"
 HOMEPAGE="https://github.com/klen/pylama"
-SRC_URI="https://github.com/klen/pylama/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/klen/pylama/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="High performance source code search tool"
 HOMEPAGE="https://github.com/tkengo/highway"
-SRC_URI="https://github.com/tkengo/highway/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tkengo/highway/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 IUSE=""
 
 LICENSE="MIT"

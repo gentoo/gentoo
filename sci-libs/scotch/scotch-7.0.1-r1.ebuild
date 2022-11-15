@@ -9,7 +9,7 @@ SOVER=$(ver_cut 1)
 
 DESCRIPTION="Software for graph, mesh and hypergraph partitioning"
 HOMEPAGE="https://www.labri.u-bordeaux.fr/perso/pelegrin/scotch/ https://gitlab.inria.fr/scotch/scotch"
-SRC_URI="https://gitlab.inria.fr/${PN}/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
+SRC_URI="https://gitlab.inria.fr/${PN}/${PN}/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.gz"
 S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="CeCILL-2"

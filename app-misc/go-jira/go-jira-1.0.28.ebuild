@@ -8,7 +8,7 @@ inherit go-module
 
 DESCRIPTION="A simple JIRA commandline client in Go"
 HOMEPAGE="https://github.com/go-jira/jira"
-SRC_URI="https://github.com/go-jira/jira/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/go-jira/jira/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD-2 BSD ISC MIT MIT-with-advertising"

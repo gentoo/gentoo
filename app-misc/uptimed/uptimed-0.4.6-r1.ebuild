@@ -7,7 +7,7 @@ inherit autotools systemd
 
 DESCRIPTION="System uptime record daemon that keeps track of your highest uptimes"
 HOMEPAGE="https://github.com/rpodgorny/uptimed/"
-SRC_URI="https://github.com/rpodgorny/uptimed/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rpodgorny/uptimed/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

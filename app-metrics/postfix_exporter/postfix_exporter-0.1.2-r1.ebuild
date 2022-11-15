@@ -19,7 +19,7 @@ EGO_PN="github.com/kumina/postfix_exporter"
 DESCRIPTION="Prometheus Exporter for Postfix"
 HOMEPAGE="https://github.com/kumina/postfix_exporter"
 
-SRC_URI="https://github.com/kumina/postfix_exporter/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/kumina/postfix_exporter/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 
 LICENSE="Apache-2.0 BSD MIT"

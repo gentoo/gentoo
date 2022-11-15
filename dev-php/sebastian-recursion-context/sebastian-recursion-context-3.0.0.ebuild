@@ -7,7 +7,7 @@ MY_PN="${PN/sebastian-/}"
 
 DESCRIPTION="Recursively process PHP variables"
 HOMEPAGE="https://phpunit.de"
-SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

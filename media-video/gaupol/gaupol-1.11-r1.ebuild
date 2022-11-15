@@ -9,7 +9,7 @@ inherit distutils-r1 virtualx xdg-utils
 
 DESCRIPTION="A subtitle editor for text-based subtitles"
 HOMEPAGE="https://otsaloma.io/gaupol/"
-SRC_URI="https://github.com/otsaloma/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/otsaloma/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Ruby routines for parsing org-mode files"
 HOMEPAGE="https://github.com/wallyqs/org-ruby"
-SRC_URI="https://github.com/wallyqs/${PN}/archive/version-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wallyqs/${PN}/archive/refs/tags/version-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

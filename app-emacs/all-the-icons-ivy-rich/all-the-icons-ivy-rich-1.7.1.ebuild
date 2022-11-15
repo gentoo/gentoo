@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Display icons for ivy buffers in Emacs"
 HOMEPAGE="https://github.com/seagle0128/all-the-icons-ivy-rich/"
-SRC_URI="https://github.com/seagle0128/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/seagle0128/${PN}/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

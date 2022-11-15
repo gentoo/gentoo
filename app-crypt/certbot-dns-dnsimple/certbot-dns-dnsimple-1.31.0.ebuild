@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
-SRC_URI="https://github.com/certbot/certbot/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/certbot/certbot/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}"/certbot-${PV}/${PN}
 

@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Coffee Script adapter for the Rails asset pipeline"
 HOMEPAGE="https://github.com/rails/coffee-rails"
-SRC_URI="https://github.com/rails/coffee-rails/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rails/coffee-rails/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"

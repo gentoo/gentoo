@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/gunicorn/
 "
 SRC_URI="
-	https://github.com/benoitc/gunicorn/archive/${PV}.tar.gz
+	https://github.com/benoitc/gunicorn/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

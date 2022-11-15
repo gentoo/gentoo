@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Use Emacs as a paginator"
 HOMEPAGE="https://eless.scripter.co/ https://github.com/kaushalmodi/eless/"
-SRC_URI="https://github.com/kaushalmodi/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/kaushalmodi/${PN}/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="MIT"

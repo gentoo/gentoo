@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="PHP client library for Google's reCAPTCHA service"
 HOMEPAGE="https://github.com/google/recaptcha"
-SRC_URI="https://github.com/google/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

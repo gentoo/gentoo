@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Tools to provide lightweight pipelining in Python"
 HOMEPAGE="https://joblib.readthedocs.io/en/latest/
 	https://github.com/joblib/joblib"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

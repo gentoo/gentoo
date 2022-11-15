@@ -8,7 +8,7 @@ inherit toolchain-funcs vcs-snapshot
 DESCRIPTION="A general purpose fuzzer"
 HOMEPAGE="https://gitlab.com/akihe/radamsa"
 SRC_URI="
-	https://gitlab.com/akihe/radamsa/-/archive/v${PV}/${P}.tar.gz
+	https://gitlab.com/akihe/radamsa/-/archive/refs/tags/v${PV}/${P}.tar.gz
 	https://gitlab.com/akihe/radamsa/uploads/a2228910d0d3c68d19c09cee3943d7e5/${P}.c.gz
 "
 

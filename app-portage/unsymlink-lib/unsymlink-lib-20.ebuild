@@ -8,7 +8,7 @@ inherit python-single-r1
 
 DESCRIPTION="Convert your system to SYMLINK_LIB=no"
 HOMEPAGE="https://github.com/projg2/unsymlink-lib"
-SRC_URI="https://github.com/projg2/unsymlink-lib/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/projg2/unsymlink-lib/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

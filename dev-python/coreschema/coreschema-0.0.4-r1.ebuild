@@ -12,7 +12,7 @@ MY_P=python-${P}
 DESCRIPTION="Core Schema"
 HOMEPAGE="https://github.com/core-api/python-coreschema"
 SRC_URI="
-	https://github.com/core-api/python-coreschema/archive/${PV}.tar.gz
+	https://github.com/core-api/python-coreschema/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.tar.gz
 "
 S=${WORKDIR}/${MY_P}

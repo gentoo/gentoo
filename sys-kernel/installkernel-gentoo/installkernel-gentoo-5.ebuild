@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Gentoo fork of installkernel script from debianutils"
 HOMEPAGE="https://github.com/mgorny/installkernel-gentoo"
-SRC_URI="https://github.com/mgorny/installkernel-gentoo/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/mgorny/installkernel-gentoo/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-2+"

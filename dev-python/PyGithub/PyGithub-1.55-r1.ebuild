@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python library to access the Github API v3"
 HOMEPAGE="https://github.com/PyGithub/PyGithub/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="LGPL-3+"
 SLOT="0"

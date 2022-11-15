@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A simple, object-oriented, PHP Redmine API client"
 HOMEPAGE="https://github.com/kbsali/php-redmine-api"
-SRC_URI="https://github.com/kbsali/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kbsali/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

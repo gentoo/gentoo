@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="The new generation of the pytest-salt Plugin"
 HOMEPAGE="https://github.com/saltstack/pytest-salt-factories"
-SRC_URI="https://github.com/saltstack/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/saltstack/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

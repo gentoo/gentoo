@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/virtualenv-clone/
 "
 SRC_URI="
-	https://github.com/edwardgeorge/virtualenv-clone/archive/${PV}.tar.gz
+	https://github.com/edwardgeorge/virtualenv-clone/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

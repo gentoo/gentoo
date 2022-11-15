@@ -10,7 +10,7 @@ MY_P=${P#backports-}
 DESCRIPTION="Backport of the standard library zoneinfo module"
 HOMEPAGE="https://github.com/pganssle/zoneinfo/"
 SRC_URI="
-	https://github.com/pganssle/zoneinfo/archive/${PV}.tar.gz
+	https://github.com/pganssle/zoneinfo/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 

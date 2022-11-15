@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="QuickCheck inspired property-based testing for OCaml"
 HOMEPAGE="https://github.com/c-cube/qcheck"
-SRC_URI="https://github.com/c-cube/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/c-cube/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/${PV}"

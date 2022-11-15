@@ -9,7 +9,7 @@ inherit elisp readme.gentoo-r1
 
 DESCRIPTION="Highlight nested parentheses, brackets, and braces according to their depth"
 HOMEPAGE="https://github.com/Fanael/rainbow-delimiters/"
-SRC_URI="https://github.com/Fanael/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Fanael/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

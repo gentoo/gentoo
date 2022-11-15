@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="simple local log4j vulnerability scanner"
 HOMEPAGE="https://github.com/hillu/local-log4j-vuln-scanner"
-SRC_URI="https://github.com/hillu/local-log4j-vuln-scanner/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hillu/local-log4j-vuln-scanner/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

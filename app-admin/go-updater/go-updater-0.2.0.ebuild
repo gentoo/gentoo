@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Checks if Gentoo go packages are compiled with the system's golang version"
 HOMEPAGE="https://github.com/mrueg/go-updater"
-SRC_URI="https://github.com/mrueg/go-updater/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mrueg/go-updater/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

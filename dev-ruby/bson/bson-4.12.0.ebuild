@@ -19,7 +19,7 @@ inherit multilib ruby-fakegem
 
 DESCRIPTION="A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)"
 HOMEPAGE="https://www.mongodb.org/"
-SRC_URI="https://github.com/${GITHUB_USER}/${GITHUB_PROJECT}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${GITHUB_USER}/${GITHUB_PROJECT}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="bson-ruby-${PV}"
 
 LICENSE="APSL-2"

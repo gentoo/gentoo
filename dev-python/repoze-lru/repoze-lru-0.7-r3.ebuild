@@ -17,7 +17,7 @@ HOMEPAGE="
 	https://pypi.org/project/repoze.lru/
 "
 SRC_URI="
-	https://github.com/repoze/repoze.lru/archive/${PV}.tar.gz
+	https://github.com/repoze/repoze.lru/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

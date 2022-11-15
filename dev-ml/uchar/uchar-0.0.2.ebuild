@@ -7,7 +7,7 @@ inherit findlib
 
 DESCRIPTION="Uchar compatibility library"
 HOMEPAGE="https://github.com/ocaml/uchar"
-SRC_URI="https://github.com/ocaml/uchar/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocaml/uchar/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2-with-linking-exception"
 SLOT="0/${PV}"

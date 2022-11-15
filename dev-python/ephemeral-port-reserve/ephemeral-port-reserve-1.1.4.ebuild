@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/Yelp/ephemeral-port-reserve/
 "
 SRC_URI="
-	https://github.com/Yelp/ephemeral-port-reserve/archive/v${PV}.tar.gz
+	https://github.com/Yelp/ephemeral-port-reserve/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -7,7 +7,7 @@ inherit flag-o-matic linux-info systemd
 
 DESCRIPTION="Jitter RNG daemon"
 HOMEPAGE="https://www.chronox.de/jent.html"
-SRC_URI="https://github.com/smuellerDD/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/smuellerDD/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Real-time satellite tracking and orbit prediction application"
 HOMEPAGE="http://gpredict.oz9aec.net"
-SRC_URI="https://github.com/csete/gpredict/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/csete/gpredict/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

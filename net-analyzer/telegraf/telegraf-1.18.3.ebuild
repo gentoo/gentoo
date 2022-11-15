@@ -1224,7 +1224,7 @@ EGO_SUM=(
 
 go-module_set_globals
 
-SRC_URI="https://github.com/influxdata/telegraf/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/influxdata/telegraf/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 LICENSE="MIT"

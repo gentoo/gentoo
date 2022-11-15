@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Provides POSIX tarchive management from Ruby programs"
 HOMEPAGE="https://github.com/halostatue/minitar"
-SRC_URI="https://github.com/halostatue/minitar/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/halostatue/minitar/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="minitar-${PV}"
 
 LICENSE="|| ( BSD-2 Ruby-BSD )"

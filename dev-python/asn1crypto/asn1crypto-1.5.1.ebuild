@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/asn1crypto/
 "
 SRC_URI="
-	https://github.com/wbond/asn1crypto/archive/${PV}.tar.gz
+	https://github.com/wbond/asn1crypto/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

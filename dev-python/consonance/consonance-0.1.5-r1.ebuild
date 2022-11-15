@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="WhatsApp's handshake implementation using Noise Protocol"
 HOMEPAGE="https://github.com/tgalal/consonance"
-SRC_URI="https://github.com/tgalal/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/tgalal/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

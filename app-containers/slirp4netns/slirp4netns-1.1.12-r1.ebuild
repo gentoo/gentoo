@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="User-mode networking for unprivileged network namespaces"
 HOMEPAGE="https://github.com/rootless-containers/slirp4netns"
-SRC_URI="https://github.com/rootless-containers/slirp4netns/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rootless-containers/slirp4netns/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

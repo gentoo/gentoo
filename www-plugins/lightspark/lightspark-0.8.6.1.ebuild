@@ -8,7 +8,7 @@ inherit cmake xdg-utils
 DESCRIPTION="High performance flash player"
 HOMEPAGE="https://lightspark.github.io/"
 SRC_URI="
-	https://github.com/lightspark/lightspark/archive/${PV}.tar.gz
+	https://github.com/lightspark/lightspark/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 S=${WORKDIR}/${P/_rc*/}

@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/pykka/
 "
 SRC_URI="
-	https://github.com/jodal/pykka/archive/v${PV}.tar.gz
+	https://github.com/jodal/pykka/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

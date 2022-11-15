@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="A Python module for semantic versioning"
 HOMEPAGE="https://github.com/python-semver/python-semver"
-SRC_URI="https://github.com/python-${PN}/python-${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/python-${PN}/python-${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/python-${P}"
 
 LICENSE="BSD"

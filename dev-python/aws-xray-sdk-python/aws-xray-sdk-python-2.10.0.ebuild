@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/aws-xray-sdk/
 "
 SRC_URI="
-	https://github.com/aws/aws-xray-sdk-python/archive/${PV}.tar.gz
+	https://github.com/aws/aws-xray-sdk-python/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

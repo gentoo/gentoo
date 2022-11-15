@@ -9,7 +9,7 @@ inherit cmake qmake-utils
 
 DESCRIPTION="Multimedia playback framework based on Qt + FFmpeg"
 HOMEPAGE="https://www.qtav.org"
-SRC_URI="https://github.com/wang-bin/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/wang-bin/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 https://dev.gentoo.org/~johu/distfiles/${P}-capi.h-${CAPI_HASH}.xz"
 
 LICENSE="GPL-3+ LGPL-2.1+"

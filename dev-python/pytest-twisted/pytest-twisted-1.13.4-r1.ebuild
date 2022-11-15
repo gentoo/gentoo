@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A pytest plugin for testing Twisted framework consumers"
 HOMEPAGE="https://github.com/pytest-dev/pytest-twisted"
-SRC_URI="https://github.com/pytest-dev/pytest-twisted/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/pytest-dev/pytest-twisted/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

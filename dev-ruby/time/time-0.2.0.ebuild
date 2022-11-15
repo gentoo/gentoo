@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Extends the Time class with methods for parsing and conversion"
 HOMEPAGE="https://github.com/ruby/time"
-SRC_URI="https://github.com/ruby/time/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/time/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

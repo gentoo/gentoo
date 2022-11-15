@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="A Django app providing database and form fields for pytz timezone objects"
 HOMEPAGE="https://github.com/mfogel/django-timezone-field"
 SRC_URI="
-	https://github.com/mfogel/django-timezone-field/archive/${PV}.tar.gz
+	https://github.com/mfogel/django-timezone-field/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="BSD"

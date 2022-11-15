@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Get out of my way, Window Manager!"
 HOMEPAGE="https://github.com/seanpringle/goomwwm"
-SRC_URI="https://github.com/seanpringle/goomwwm/archive/${PV}.tar.gz -> ${P}-github.tar.gz"
+SRC_URI="https://github.com/seanpringle/goomwwm/archive/refs/tags/${PV}.tar.gz -> ${P}-github.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/snapshottest/
 "
 SRC_URI="
-	https://github.com/syrusakbary/${PN}/archive/${PV}.tar.gz
+	https://github.com/syrusakbary/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

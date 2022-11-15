@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python bindings for the XML Security Library"
 HOMEPAGE="https://github.com/mehcode/python-xmlsec"
-SRC_URI="https://github.com/mehcode/python-xmlsec/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mehcode/python-xmlsec/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

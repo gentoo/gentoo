@@ -9,7 +9,7 @@ inherit cmake-multilib python-any-r1
 DESCRIPTION="Collection of tools, libraries and tests for shader compilation"
 HOMEPAGE="https://github.com/google/shaderc"
 EGIT_COMMIT="${PV}"
-SRC_URI="https://github.com/google/${PN}/archive/v${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/${PN}/archive/refs/tags/v${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 LICENSE="Apache-2.0"

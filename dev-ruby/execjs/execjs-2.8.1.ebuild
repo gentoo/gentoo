@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="ExecJS lets you run JavaScript code from Ruby"
 HOMEPAGE="https://github.com/rails/execjs"
-SRC_URI="https://github.com/rails/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rails/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

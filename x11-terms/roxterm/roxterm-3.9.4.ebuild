@@ -7,7 +7,7 @@ inherit cmake xdg
 
 DESCRIPTION="A terminal emulator designed to integrate with the ROX environment"
 HOMEPAGE="https://github.com/realh/roxterm"
-SRC_URI="https://github.com/realh/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/realh/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-3"
 SLOT="1"

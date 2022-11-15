@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/filelock/
 "
 SRC_URI="
-	https://github.com/tox-dev/py-filelock/archive/${PV}.tar.gz
+	https://github.com/tox-dev/py-filelock/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S="${WORKDIR}/${MY_P}"

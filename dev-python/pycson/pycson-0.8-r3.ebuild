@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A python parser for the Coffeescript Object Notation (CSON)"
 HOMEPAGE="https://github.com/avakar/pycson/"
-SRC_URI="https://github.com/avakar/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/avakar/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

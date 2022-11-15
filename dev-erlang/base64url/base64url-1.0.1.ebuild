@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="URL safe base64-compatible codec"
 HOMEPAGE="https://github.com/dvv/base64url"
-SRC_URI="https://github.com/dvv/base64url/archive/${PV}.tar.gz
+SRC_URI="https://github.com/dvv/base64url/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="MIT"

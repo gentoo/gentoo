@@ -7,7 +7,7 @@ inherit autotools fcaps
 
 DESCRIPTION="Watches network traffic and displays media from TCP streams observed"
 HOMEPAGE="http://www.ex-parrot.com/~chris/driftnet/"
-SRC_URI="https://github.com/deiv/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/deiv/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~arm64 ppc -sparc x86"

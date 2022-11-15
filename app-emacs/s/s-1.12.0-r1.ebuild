@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="The long lost Emacs string manipulation library"
 HOMEPAGE="https://github.com/magnars/s.el"
-SRC_URI="https://github.com/magnars/s.el/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/magnars/s.el/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/s.el-${PV}
 
 LICENSE="GPL-3+"

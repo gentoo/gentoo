@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="multi-layer client for the github api v3"
 HOMEPAGE="https://github.com/travis-ci/gh"
-SRC_URI="https://github.com/travis-ci/gh/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/travis-ci/gh/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

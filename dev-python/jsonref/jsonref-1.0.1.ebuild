@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/jsonref/
 "
 SRC_URI="
-	https://github.com/gazpachoking/jsonref/archive/v${PV}.tar.gz
+	https://github.com/gazpachoking/jsonref/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

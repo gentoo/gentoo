@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.gnome.org/World/Endeavour.git"
 	SRC_URI=""
 else
-	SRC_URI="https://gitlab.gnome.org/World/${PN^}/-/archive/v${PV}/${PN^}-v${PV}.tar.bz2"
+	SRC_URI="https://gitlab.gnome.org/World/${PN^}/-/archive/refs/tags/v${PV}/${PN^}-v${PV}.tar.bz2"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/${PN^}-v${PV}"
 fi

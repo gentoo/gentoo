@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A python implementation for Noise Protocol Framework"
 HOMEPAGE="https://github.com/tgalal/dissononce"
-SRC_URI="https://github.com/tgalal/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/tgalal/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

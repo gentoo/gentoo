@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="Library for client programming with Open Geospatial Consortium web service"
 HOMEPAGE="https://geopython.github.io/OWSLib/"
 SRC_URI="
-	https://github.com/geopython/${PN}/archive/${PV}.tar.gz
+	https://github.com/geopython/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/OWSLib-${PV}"

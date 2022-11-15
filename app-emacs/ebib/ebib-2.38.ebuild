@@ -10,7 +10,7 @@ inherit elisp
 DESCRIPTION="BibTeX database manager for Emacs"
 HOMEPAGE="https://joostkremers.github.io/ebib/
 	https://github.com/joostkremers/ebib/"
-SRC_URI="https://github.com/joostkremers/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/joostkremers/${PN}/archive/refs/tags/${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="BSD"

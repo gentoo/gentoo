@@ -12,7 +12,7 @@ RUBY_FAKEGEM_GEMSPEC="jekyll-coffeescript.gemspec"
 
 inherit ruby-fakegem
 
-SRC_URI="https://github.com/jekyll/jekyll-coffeescript/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jekyll/jekyll-coffeescript/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="A CoffeeScript Converter for Jekyll"
 HOMEPAGE="https://github.com/jekyll/jekyll-coffeescript"
 

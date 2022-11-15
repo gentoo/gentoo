@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Experimental terminal UI for net-mail/notmuch written in Python"
 HOMEPAGE="https://github.com/pazz/alot"
-SRC_URI="https://github.com/pazz/alot/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pazz/alot/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

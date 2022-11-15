@@ -15,7 +15,7 @@ HOMEPAGE="
 "
 DESCRIPTION="Disk and file backed cache"
 SRC_URI="
-	https://github.com/grantjenks/python-diskcache/archive/v${PV}.tar.gz
+	https://github.com/grantjenks/python-diskcache/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S=${WORKDIR}/python-diskcache-${PV}

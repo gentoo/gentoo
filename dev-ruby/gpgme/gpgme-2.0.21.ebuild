@@ -14,7 +14,7 @@ inherit ruby-fakegem flag-o-matic
 
 DESCRIPTION="Ruby language binding for GnuPG Made Easy"
 HOMEPAGE="https://github.com/ueno/ruby-gpgme"
-SRC_URI="https://github.com/ueno/ruby-gpgme/archive/v${PV}.tar.gz -> ruby-${P}.tar.gz"
+SRC_URI="https://github.com/ueno/ruby-gpgme/archive/refs/tags/v${PV}.tar.gz -> ruby-${P}.tar.gz"
 RUBY_S="ruby-${P}"
 
 LICENSE="LGPL-2.1+"

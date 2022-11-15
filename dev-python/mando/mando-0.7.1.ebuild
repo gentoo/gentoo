@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/mando/
 "
 SRC_URI="
-	https://github.com/rubik/mando/archive/v${PV}.tar.gz
+	https://github.com/rubik/mando/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

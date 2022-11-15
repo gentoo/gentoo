@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/PyICU/
 "
 SRC_URI="
-	https://gitlab.pyicu.org/main/pyicu/-/archive/v${PV}/${MY_P}.tar.bz2
+	https://gitlab.pyicu.org/main/pyicu/-/archive/refs/tags/v${PV}/${MY_P}.tar.bz2
 "
 S=${WORKDIR}/${MY_P}
 

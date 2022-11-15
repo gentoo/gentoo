@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Manage a local CA for self-signed localhost development servers"
 HOMEPAGE="https://github.com/socketry/localhost"
-SRC_URI="https://github.com/socketry/localhost/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/socketry/localhost/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"

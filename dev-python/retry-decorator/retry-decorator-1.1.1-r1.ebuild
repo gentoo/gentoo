@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Decorator for retrying when exceptions occur"
 HOMEPAGE="https://github.com/pnpnpn/retry-decorator"
-SRC_URI="https://github.com/pnpnpn/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pnpnpn/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

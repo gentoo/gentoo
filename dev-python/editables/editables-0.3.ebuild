@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/pfmoore/editables/
 "
 SRC_URI="
-	https://github.com/pfmoore/editables/archive/${PV}.tar.gz
+	https://github.com/pfmoore/editables/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

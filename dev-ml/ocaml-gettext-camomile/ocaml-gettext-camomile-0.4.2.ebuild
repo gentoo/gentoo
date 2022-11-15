@@ -10,7 +10,7 @@ inherit dune
 
 DESCRIPTION="Support for internationalization of OCaml programs using the Camomile library"
 HOMEPAGE="https://github.com/gildor478/ocaml-gettext"
-SRC_URI="https://github.com/gildor478/ocaml-gettext/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/gildor478/ocaml-gettext/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="LGPL-2.1-with-linking-exception"

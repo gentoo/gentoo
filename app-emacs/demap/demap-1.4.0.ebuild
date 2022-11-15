@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Detachable minimap for Emacs"
 HOMEPAGE="https://gitlab.com/sawyerjgardner/demap.el/"
-SRC_URI="https://gitlab.com/sawyerjgardner/${PN}.el/-/archive/v${PV}/${PN}.el-v${PV}.tar.gz"
+SRC_URI="https://gitlab.com/sawyerjgardner/${PN}.el/-/archive/refs/tags/v${PV}/${PN}.el-v${PV}.tar.gz"
 S="${WORKDIR}"/${PN}.el-v${PV}
 
 LICENSE="GPL-3+"

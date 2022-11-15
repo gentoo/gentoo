@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Emacs X Window Manager"
 HOMEPAGE="https://github.com/ch11ng/exwm/"
-SRC_URI="https://github.com/ch11ng/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ch11ng/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

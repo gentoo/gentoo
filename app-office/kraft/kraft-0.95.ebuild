@@ -8,7 +8,7 @@ inherit ecm
 
 DESCRIPTION="Software to manage quotes and invoices in small enterprises"
 HOMEPAGE="https://www.volle-kraft-voraus.de/"
-SRC_URI="https://github.com/dragotin/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dragotin/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="5"

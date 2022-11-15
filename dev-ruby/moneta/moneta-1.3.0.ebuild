@@ -19,7 +19,7 @@ GITHUB_USER="minad"
 
 DESCRIPTION="A unified interface to key/value stores"
 HOMEPAGE="https://github.com/minad/moneta"
-SRC_URI="https://github.com/${GITHUB_USER}/moneta/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${GITHUB_USER}/moneta/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

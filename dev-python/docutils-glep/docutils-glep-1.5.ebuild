@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/docutils-glep/
 "
 SRC_URI="
-	https://github.com/projg2/docutils-glep/archive/v${PV}.tar.gz
+	https://github.com/projg2/docutils-glep/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

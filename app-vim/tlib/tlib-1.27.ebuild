@@ -10,7 +10,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="vim plugin: a library of utility functions"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=1863 https://github.com/tomtom/tlib_vim"
-SRC_URI="https://github.com/tomtom/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tomtom/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-3"

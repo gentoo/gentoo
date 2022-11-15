@@ -7,7 +7,7 @@ inherit apache-module
 
 DESCRIPTION="A simple FastCGI handler module"
 HOMEPAGE="https://github.com/hollow/mod_fastcgi_handler"
-SRC_URI="https://github.com/hollow/mod_fastcgi_handler/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hollow/mod_fastcgi_handler/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

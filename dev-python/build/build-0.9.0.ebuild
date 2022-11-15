@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/pypa/build/
 "
 SRC_URI="
-	https://github.com/pypa/build/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/pypa/build/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"

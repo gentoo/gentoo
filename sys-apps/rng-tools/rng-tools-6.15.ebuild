@@ -7,7 +7,7 @@ inherit autotools readme.gentoo-r1 systemd
 
 DESCRIPTION="Daemon to use hardware random number generators"
 HOMEPAGE="https://github.com/nhorman/rng-tools"
-SRC_URI="https://github.com/nhorman/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nhorman/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit cmake prefix
 
 DESCRIPTION="The Dungeons of Moria, a single player roguelike game, also known as Umoria"
 HOMEPAGE="https://umoria.org/"
-SRC_URI="https://github.com/dungeons-of-moria/umoria/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dungeons-of-moria/umoria/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

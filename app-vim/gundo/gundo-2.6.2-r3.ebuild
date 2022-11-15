@@ -9,7 +9,7 @@ inherit vim-plugin python-single-r1 vcs-snapshot
 
 DESCRIPTION="vim plugin: visualize your vim undo tree"
 HOMEPAGE="https://github.com/sjl/gundo.vim"
-SRC_URI="https://github.com/sjl/gundo.vim/archive/v${PV}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://github.com/sjl/gundo.vim/archive/refs/tags/v${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 KEYWORDS="amd64 x86 ~x64-macos"

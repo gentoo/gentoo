@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/antlr4-python3-runtime/
 "
 SRC_URI="
-	https://github.com/antlr/antlr4/archive/${PV}.tar.gz
+	https://github.com/antlr/antlr4/archive/refs/tags/${PV}.tar.gz
 		-> antlr-${PV}.gh.tar.gz
 "
 S="${WORKDIR}/antlr4-${PV}/runtime/Python3"

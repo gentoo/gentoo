@@ -578,7 +578,7 @@ inherit cargo
 
 DESCRIPTION="A new type of shell, written in Rust"
 HOMEPAGE="https://www.nushell.sh"
-SRC_URI="https://github.com/nushell/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/nushell/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris)"
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 Unlicense ZLIB"

@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A New Arch Tester Toolkit -- open-source stable-bot replacement"
 HOMEPAGE="https://github.com/projg2/nattka/"
-SRC_URI="https://github.com/projg2/nattka/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/projg2/nattka/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

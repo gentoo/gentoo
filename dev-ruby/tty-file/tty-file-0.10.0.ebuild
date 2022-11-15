@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="File manipulation utility methods"
 HOMEPAGE="https://github.com/piotrmurach/tty-file"
-SRC_URI="https://github.com/piotrmurach/tty-file/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/piotrmurach/tty-file/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

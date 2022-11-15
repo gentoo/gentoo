@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Barcode data matrix reading and writing library"
 HOMEPAGE="http://libdmtx.sourceforge.net/"
-SRC_URI="https://github.com/dmtx/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dmtx/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

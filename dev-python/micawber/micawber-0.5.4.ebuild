@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="A small library for extracting rich content from urls"
 HOMEPAGE="https://github.com/coleifer/micawber/"
-SRC_URI="https://github.com/coleifer/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/coleifer/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

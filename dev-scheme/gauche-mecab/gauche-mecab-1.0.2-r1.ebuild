@@ -7,7 +7,7 @@ MY_P="${P^g}"
 
 DESCRIPTION="MeCab binding for Gauche"
 HOMEPAGE="https://github.com/shirok/Gauche-mecab"
-SRC_URI="https://github.com/shirok/${PN^g}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/shirok/${PN^g}/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

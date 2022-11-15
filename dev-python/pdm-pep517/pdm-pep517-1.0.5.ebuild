@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/pdm-project/pdm-pep517/
 "
 SRC_URI="
-	https://github.com/pdm-project/pdm-pep517/archive/${PV}.tar.gz
+	https://github.com/pdm-project/pdm-pep517/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

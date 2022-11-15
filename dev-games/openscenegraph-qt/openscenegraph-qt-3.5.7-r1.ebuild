@@ -9,7 +9,7 @@ inherit cmake
 
 DESCRIPTION="Qt support for OpenSceneGraph"
 HOMEPAGE="http://www.openscenegraph.org/"
-SRC_URI="https://github.com/openscenegraph/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/openscenegraph/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/145" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION

@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="A GNU Emacs major mode for Meson build-system files"
 HOMEPAGE="https://github.com/wentasah/meson-mode"
-SRC_URI="https://github.com/wentasah/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wentasah/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="GeoIP Legacy C API"
 HOMEPAGE="https://github.com/maxmind/geoip-api-c"
-SRC_URI="https://github.com/maxmind/${PN}-api-c/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/maxmind/${PN}-api-c/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-api-c-${PV}"
 
 # GPL-2 for md5.c - part of libGeoIPUpdate, MaxMind for GeoLite Country db

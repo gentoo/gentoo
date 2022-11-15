@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/django-cache-url/
 "
 SRC_URI="
-	https://github.com/epicserve/django-cache-url/archive/${PV}.tar.gz
+	https://github.com/epicserve/django-cache-url/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

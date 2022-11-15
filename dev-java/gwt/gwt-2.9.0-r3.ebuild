@@ -12,7 +12,7 @@ GWT_TOOLS_PN="tools"
 
 DESCRIPTION="Google Web Toolkit library"
 HOMEPAGE="https://www.gwtproject.org/"
-SRC_URI="https://github.com/gwtproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/gwtproject/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/gwtproject/${GWT_TOOLS_PN}/archive/${GWT_TOOLS_COMMIT}.tar.gz -> ${PN}-${GWT_TOOLS_PN}-${GWT_TOOLS_COMMIT}.tar.gz"
 # While the test suite does compile and does execute with an exit status of 0,
 # there are many tests that end with FAILED status. It is unclear if this is

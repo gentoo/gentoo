@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Python API for sci-libs/libh2o"
 HOMEPAGE="https://github.com/mgorny/pyh2o/"
 SRC_URI="
-	https://github.com/mgorny/pyh2o/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/mgorny/pyh2o/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="BSD"

@@ -11,7 +11,7 @@ BV_AMD64=${BV}-linux-x86_64
 
 DESCRIPTION="The Crystal Programming Language"
 HOMEPAGE="https://crystal-lang.org"
-SRC_URI="https://github.com/crystal-lang/crystal/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/crystal-lang/crystal/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	amd64? ( https://github.com/crystal-lang/crystal/releases/download/${BV/-*}/crystal-${BV_AMD64}.tar.gz )"
 
 LICENSE="Apache-2.0"

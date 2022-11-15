@@ -7,7 +7,7 @@ inherit cmake-multilib
 
 DESCRIPTION="Library implementing the EBU R128 loudness standard"
 HOMEPAGE="https://github.com/jiixyj/libebur128"
-SRC_URI="https://github.com/jiixyj/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/jiixyj/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://tech.ebu.ch/files/live/sites/tech/files/shared/testmaterial/ebu-loudness-test-setv05.zip )"
 
 LICENSE="MIT"

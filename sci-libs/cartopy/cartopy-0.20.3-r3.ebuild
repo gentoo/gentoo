@@ -13,7 +13,7 @@ MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Python package for geospatial data processing and analysis"
 HOMEPAGE="https://scitools.org.uk/cartopy"
-SRC_URI="https://github.com/SciTools/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/SciTools/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="LGPL-3"

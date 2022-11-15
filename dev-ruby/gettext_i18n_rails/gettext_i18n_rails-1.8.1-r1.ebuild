@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="FastGettext / Rails integration"
 HOMEPAGE="https://github.com/grosser/gettext_i18n_rails"
-SRC_URI="https://github.com/grosser/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/grosser/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

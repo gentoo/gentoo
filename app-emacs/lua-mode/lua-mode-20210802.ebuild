@@ -9,7 +9,7 @@ inherit elisp
 DESCRIPTION="An Emacs major mode for editing Lua scripts"
 HOMEPAGE="http://lua-users.org/wiki/LuaEditorSupport
 	http://immerrr.github.io/lua-mode/"
-SRC_URI="https://github.com/immerrr/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/immerrr/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

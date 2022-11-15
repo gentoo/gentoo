@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Cisco 7200/3600 Simulator"
 HOMEPAGE="https://github.com/GNS3/dynamips"
-SRC_URI="https://github.com/GNS3/dynamips/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/GNS3/dynamips/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

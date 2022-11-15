@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="The package of IBM's typeface"
 HOMEPAGE="https://github.com/IBM/plex"
-SRC_URI="https://github.com/IBM/plex/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/IBM/plex/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="OFL-1.1"
 SLOT="0"

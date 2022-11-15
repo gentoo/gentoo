@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Unit test and mocking framework for C and C++"
 HOMEPAGE="https://cgreen-devs.github.io/"
-SRC_URI="https://github.com/cgreen-devs/cgreen/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cgreen-devs/cgreen/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"

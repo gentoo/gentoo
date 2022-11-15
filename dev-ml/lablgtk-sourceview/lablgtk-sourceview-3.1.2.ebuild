@@ -9,7 +9,7 @@ inherit dune
 
 DESCRIPTION="OCaml bindings to GTK-3"
 HOMEPAGE="https://github.com/garrigue/lablgtk"
-SRC_URI="https://github.com/garrigue/lablgtk/archive/${PV}.tar.gz
+SRC_URI="https://github.com/garrigue/lablgtk/archive/refs/tags/${PV}.tar.gz
 	-> lablgtk-${PV}.tar.gz"
 S="${WORKDIR}"/lablgtk-${PV}
 

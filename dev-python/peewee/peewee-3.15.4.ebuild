@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/peewee/
 "
 SRC_URI="
-	https://github.com/coleifer/${PN}/archive/${PV}.tar.gz
+	https://github.com/coleifer/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

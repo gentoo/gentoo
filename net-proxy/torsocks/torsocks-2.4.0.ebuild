@@ -10,7 +10,7 @@ S=${WORKDIR}/${UPSTREAM_PF}
 
 DESCRIPTION="Use most socks-friendly applications with Tor"
 HOMEPAGE="https://gitlab.torproject.org/tpo/core/torsocks"
-SRC_URI="https://gitlab.torproject.org/tpo/core/torsocks/-/archive/v${PV}/${UPSTREAM_PF}.tar.gz -> ${PF}.tar.gz"
+SRC_URI="https://gitlab.torproject.org/tpo/core/torsocks/-/archive/refs/tags/v${PV}/${UPSTREAM_PF}.tar.gz -> ${PF}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

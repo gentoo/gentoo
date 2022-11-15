@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A tool to list content of virtual tables in a shared library"
 HOMEPAGE="https://github.com/lvc/vtable-dumper"
-SRC_URI="https://github.com/lvc/vtable-dumper/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lvc/vtable-dumper/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

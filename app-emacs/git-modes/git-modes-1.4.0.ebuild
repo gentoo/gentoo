@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Emacs major modes for editing Git configuration files"
 HOMEPAGE="https://github.com/magit/git-modes/"
-SRC_URI="https://github.com/magit/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/magit/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64 ~x86"

@@ -15,7 +15,7 @@ inherit multilib ruby-fakegem
 
 DESCRIPTION="A set of Asciidoctor extensions that enable you to add diagrams"
 HOMEPAGE="https://github.com/asciidoctor/asciidoctor-diagram"
-SRC_URI="https://github.com/asciidoctor/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/asciidoctor/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

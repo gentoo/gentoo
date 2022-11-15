@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/svg.path/
 "
 SRC_URI="
-	https://github.com/regebro/svg.path/archive/${PV}.tar.gz
+	https://github.com/regebro/svg.path/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

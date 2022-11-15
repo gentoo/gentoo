@@ -7,7 +7,7 @@ inherit golang-build
 
 DESCRIPTION="Postfix Sender Rewriting Scheme forwarding agent"
 EGO_PN="${PN}"
-SRC_URI="https://github.com/zoni/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/zoni/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/zoni/postforward"
 
 LICENSE="BSD-2"

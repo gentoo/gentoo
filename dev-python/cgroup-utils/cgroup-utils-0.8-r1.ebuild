@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Tools and libraries for control groups of Linux"
 HOMEPAGE="https://github.com/peo3/cgroup-utils"
-SRC_URI="https://github.com/peo3/cgroup-utils/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/peo3/cgroup-utils/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

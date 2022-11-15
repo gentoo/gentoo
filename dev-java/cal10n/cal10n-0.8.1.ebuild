@@ -11,7 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="java library for writing localized messages using resource bundle"
 HOMEPAGE="http://cal10n.qos.ch/"
-SRC_URI="https://github.com/qos-ch/cal10n/archive/v_${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/qos-ch/cal10n/archive/refs/tags/v_${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

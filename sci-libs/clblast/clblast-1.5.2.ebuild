@@ -9,7 +9,7 @@ MYPN="CLBlast"
 
 DESCRIPTION="Tuned OpenCL BLAS"
 HOMEPAGE="https://github.com/CNugteren/CLBlast"
-SRC_URI="https://github.com/CNugteren/${MYPN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/CNugteren/${MYPN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MYPN}-${PV}"
 
 LICENSE="Apache-2.0"

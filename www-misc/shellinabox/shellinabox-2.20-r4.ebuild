@@ -7,7 +7,7 @@ inherit autotools systemd
 
 DESCRIPTION="Export command line tools to a web based terminal emulator"
 HOMEPAGE="https://github.com/shellinabox/shellinabox"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -9,7 +9,7 @@ HOMEPAGE="
 	https://inmon.com/technology/sflowTools.php
 	https://github.com/sflow/sflowtool
 "
-SRC_URI="https://github.com/sflow/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sflow/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="inmon-sflow"
 SLOT="0"

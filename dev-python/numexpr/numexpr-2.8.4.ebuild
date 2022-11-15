@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="Fast numerical array expression evaluator for Python and NumPy"
 HOMEPAGE="https://github.com/pydata/numexpr"
-SRC_URI="https://github.com/pydata/numexpr/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/pydata/numexpr/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

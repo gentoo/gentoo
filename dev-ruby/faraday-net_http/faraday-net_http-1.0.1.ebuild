@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Faraday adapter for Net::HTTP"
 HOMEPAGE="https://github.com/lostisland/faraday-net_http"
-SRC_URI="https://github.com/lostisland/faraday-net_http/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lostisland/faraday-net_http/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

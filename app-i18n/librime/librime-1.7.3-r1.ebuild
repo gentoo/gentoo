@@ -17,7 +17,7 @@ HOMEPAGE="https://rime.im/ https://github.com/rime/librime"
 if [[ "${PV}" == "9999" ]]; then
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/rime/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/rime/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="BSD"

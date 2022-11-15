@@ -7,7 +7,7 @@ inherit systemd toolchain-funcs
 
 DESCRIPTION="A simple, fast work queue"
 HOMEPAGE="https://kr.github.io/beanstalkd/"
-SRC_URI="https://github.com/kr/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kr/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

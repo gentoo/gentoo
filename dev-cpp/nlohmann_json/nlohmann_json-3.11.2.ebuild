@@ -15,8 +15,8 @@ TEST_VERSION="3.1.0"
 DESCRIPTION="JSON for Modern C++"
 HOMEPAGE="https://github.com/nlohmann/json https://nlohmann.github.io/json/"
 SRC_URI="
-	https://github.com/nlohmann/json/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	test? ( https://github.com/nlohmann/json_test_data/archive/v${TEST_VERSION}.tar.gz -> ${PN}-testdata-${TEST_VERSION}.tar.gz )"
+	https://github.com/nlohmann/json/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	test? ( https://github.com/nlohmann/json_test_data/archive/refs/tags/v${TEST_VERSION}.tar.gz -> ${PN}-testdata-${TEST_VERSION}.tar.gz )"
 S="${WORKDIR}/json-${PV}"
 
 LICENSE="MIT"

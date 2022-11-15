@@ -17,7 +17,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Wrapper for hiredis (protocol serialization/deserialization and blocking I/O)"
 HOMEPAGE="https://github.com/redis/hiredis-rb"
-SRC_URI="https://github.com/redis/hiredis-rb/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/redis/hiredis-rb/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

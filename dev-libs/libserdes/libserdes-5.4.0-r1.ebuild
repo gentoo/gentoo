@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Avro SerializationDeserialization w/ Confluent schema-registry support"
 HOMEPAGE="https://github.com/confluentinc/libserdes"
-SRC_URI="https://github.com/confluentinc/libserdes/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/confluentinc/libserdes/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

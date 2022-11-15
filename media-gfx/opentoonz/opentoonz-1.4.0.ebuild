@@ -8,7 +8,7 @@ inherit cmake xdg-utils
 
 DESCRIPTION="An open-source full-featured 2D animation creation software"
 HOMEPAGE="https://github.com/opentoonz/opentoonz"
-SRC_URI="https://github.com/opentoonz/opentoonz/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/opentoonz/opentoonz/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD libtiff"
 SLOT="0"

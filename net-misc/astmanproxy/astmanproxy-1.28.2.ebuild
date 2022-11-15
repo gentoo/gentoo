@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Proxy for the Asterisk manager interface"
 HOMEPAGE="https://github.com/davies147/astmanproxy/"
-SRC_URI="https://github.com/davies147/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/davies147/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

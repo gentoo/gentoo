@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Thin interface over template engines to make their usage as generic as possible"
 HOMEPAGE="https://github.com/rtomayko/tilt"
-SRC_URI="https://github.com/rtomayko/tilt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rtomayko/tilt/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="2"

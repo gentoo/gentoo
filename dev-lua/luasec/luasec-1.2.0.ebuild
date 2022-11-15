@@ -9,7 +9,7 @@ inherit lua toolchain-funcs
 
 DESCRIPTION="Lua binding for OpenSSL library to provide TLS/SSL communication"
 HOMEPAGE="https://github.com/brunoos/luasec"
-SRC_URI="https://github.com/brunoos/luasec/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/brunoos/luasec/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

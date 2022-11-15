@@ -12,7 +12,7 @@ if [[ ${PV} == "99999999" ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/Flameeyes/modsec-flameeyes/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/Flameeyes/modsec-flameeyes/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="CC-BY-SA-3.0"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/ccpem/mrcfile/
 "
 SRC_URI="
-	https://github.com/ccpem/mrcfile/archive/v${PV}.tar.gz
+	https://github.com/ccpem/mrcfile/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

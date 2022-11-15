@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Portable, robust, fully-threaded I/O benchmark program"
 HOMEPAGE="https://github.com/aliceinwire/tiobench"
-SRC_URI="https://github.com/aliceinwire/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/aliceinwire/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

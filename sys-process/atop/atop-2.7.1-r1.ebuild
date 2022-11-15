@@ -16,7 +16,7 @@ inherit linux-info linux-mod systemd toolchain-funcs
 
 DESCRIPTION="Resource-specific view of processes"
 HOMEPAGE="https://www.atoptool.nl/ https://github.com/Atoptool/atop"
-SRC_URI="https://github.com/Atoptool/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Atoptool/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" modules? ( https://www.atoptool.nl/download/${NETATOP_P}.tar.gz )"
 
 # Module is GPL-2 as well

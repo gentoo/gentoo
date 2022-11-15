@@ -7,7 +7,7 @@ inherit cmake toolchain-funcs
 
 DESCRIPTION="C++ Performance Portability Programming EcoSystem"
 HOMEPAGE="https://github.com/kokkos"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit distutils-r1 optfeature
 
 DESCRIPTION="Module for creating simple ASCII tables"
 HOMEPAGE="https://github.com/foutaise/texttable https://pypi.org/project/texttable/"
-SRC_URI="https://github.com/foutaise/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/foutaise/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

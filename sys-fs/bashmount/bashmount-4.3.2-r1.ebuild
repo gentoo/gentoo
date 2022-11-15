@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Bash script that uses udisks to mount removable devices without GUI"
 HOMEPAGE="https://github.com/jamielinux/bashmount"
-SRC_URI="https://github.com/jamielinux/bashmount/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jamielinux/bashmount/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

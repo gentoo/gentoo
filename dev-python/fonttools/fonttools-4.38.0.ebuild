@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/fonttools/
 "
 SRC_URI="
-	https://github.com/fonttools/fonttools/archive/${PV}.tar.gz
+	https://github.com/fonttools/fonttools/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

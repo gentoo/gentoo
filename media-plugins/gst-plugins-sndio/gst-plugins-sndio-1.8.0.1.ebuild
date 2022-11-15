@@ -9,7 +9,7 @@ MY_P="gstreamer1-plugins-sndio-${PV}"
 
 DESCRIPTION="Sndio audio sink and source for GStreamer"
 HOMEPAGE="https://github.com/t6/gstreamer1-plugins-sndio"
-SRC_URI="https://github.com/t6/gstreamer1-plugins-sndio/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/t6/gstreamer1-plugins-sndio/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="ISC"

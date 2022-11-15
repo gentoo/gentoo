@@ -8,7 +8,7 @@ inherit java-pkg-2
 DESCRIPTION="A parser generator for many languages"
 HOMEPAGE="https://www.antlr3.org/"
 # Reuse tarball for DOCS
-SRC_URI="https://github.com/${PN}/${PN}3/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}3/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="3.5"

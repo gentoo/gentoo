@@ -9,7 +9,7 @@ inherit dune
 
 DESCRIPTION="Binding to the SHA cryptographic functions"
 HOMEPAGE="https://github.com/djs55/ocaml-sha"
-SRC_URI="https://github.com/djs55/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/djs55/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"

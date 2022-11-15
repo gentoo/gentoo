@@ -7,7 +7,7 @@ inherit meson
 
 DESCRIPTION="GBM EGL external platform library"
 HOMEPAGE="https://github.com/NVIDIA/egl-gbm"
-SRC_URI="https://github.com/NVIDIA/egl-gbm/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/NVIDIA/egl-gbm/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

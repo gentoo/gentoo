@@ -11,7 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A port of pdftk into java"
 HOMEPAGE="https://gitlab.com/pdftk-java/pdftk"
-SRC_URI="https://gitlab.com/pdftk-java/pdftk/-/archive/v${PV}/pdftk-v${PV}.tar.gz"
+SRC_URI="https://gitlab.com/pdftk-java/pdftk/-/archive/refs/tags/v${PV}/pdftk-v${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

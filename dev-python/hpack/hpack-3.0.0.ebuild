@@ -10,7 +10,7 @@ DESCRIPTION="Pure-Python HPACK header compression"
 HOMEPAGE="
 	https://python-hyper.org/hpack/en/latest/
 	https://pypi.org/project/hpack/"
-SRC_URI="https://github.com/python-hyper/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/python-hyper/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

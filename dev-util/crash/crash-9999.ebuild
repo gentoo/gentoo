@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_BRANCH="master"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/crash-utility/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://github.com/crash-utility/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 		mirror://gnu/gdb/gdb-${GDB_VERSION}.tar.xz"
 	KEYWORDS="-* ~alpha ~amd64 ~arm ~ia64 ~ppc64 ~s390 ~x86"
 fi

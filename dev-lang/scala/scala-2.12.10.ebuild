@@ -39,7 +39,7 @@ DESCRIPTION="The Scala Programming Language"
 HOMEPAGE="https://www.scala-lang.org/"
 SRC_URI="
 	!binary?  (
-		https://github.com/scala/scala/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/scala/scala/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~gienah/snapshots/${P}-ivy2-deps.tar.xz
 		https://dev.gentoo.org/~gienah/snapshots/${P}-sbt-deps.tar.xz
 	)

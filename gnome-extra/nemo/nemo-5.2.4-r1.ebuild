@@ -9,7 +9,7 @@ inherit meson gnome2-utils python-single-r1 readme.gentoo-r1 virtualx xdg
 
 DESCRIPTION="A file manager for Cinnamon, forked from Nautilus"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/nemo"
-SRC_URI="https://github.com/linuxmint/nemo/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/linuxmint/nemo/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+ FDL-1.1"
 SLOT="0"

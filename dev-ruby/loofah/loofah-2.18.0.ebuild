@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Library for manipulating and transforming HTML/XML documents and fragments."
 HOMEPAGE="https://github.com/flavorjones/loofah"
-SRC_URI="https://github.com/flavorjones/loofah/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/flavorjones/loofah/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

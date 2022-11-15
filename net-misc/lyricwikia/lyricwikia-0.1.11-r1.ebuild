@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python API to get song lyrics from LyricWikia"
 HOMEPAGE="https://github.com/enricobacis/lyricwikia"
-SRC_URI="https://github.com/enricobacis/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/enricobacis/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="An event loop"
 HOMEPAGE="https://github.com/socketry/io-event"
-SRC_URI="https://github.com/socketry/io-event/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/socketry/io-event/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"

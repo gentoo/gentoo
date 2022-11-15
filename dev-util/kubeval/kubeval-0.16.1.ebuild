@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="validate kubernetes YAML or JSON configuration files"
 HOMEPAGE="https://kubeval.com"
-SRC_URI="https://github.com/instrumenta/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/instrumenta/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD MIT MPL-2.0"

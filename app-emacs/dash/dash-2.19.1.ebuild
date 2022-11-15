@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="A modern list library for Emacs"
 HOMEPAGE="https://github.com/magnars/dash.el"
-SRC_URI="https://github.com/magnars/dash.el/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/magnars/dash.el/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

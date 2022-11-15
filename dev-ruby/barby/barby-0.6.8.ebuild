@@ -17,7 +17,7 @@ DESCRIPTION="Ruby barcode generator that doesn't rely on 3rd party libraries"
 HOMEPAGE="http://toreto.re/barby/"
 
 GITHUB_USER="toretore"
-SRC_URI="https://github.com/${GITHUB_USER}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${GITHUB_USER}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

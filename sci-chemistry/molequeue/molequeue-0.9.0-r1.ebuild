@@ -8,7 +8,7 @@ inherit cmake python-r1 virtualx
 
 DESCRIPTION="Abstract, manage and coordinate execution of tasks"
 HOMEPAGE="https://www.openchemistry.org/projects/molequeue/"
-SRC_URI="https://github.com/OpenChemistry/molequeue/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/OpenChemistry/molequeue/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"

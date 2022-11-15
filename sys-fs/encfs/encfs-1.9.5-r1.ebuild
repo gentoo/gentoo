@@ -6,7 +6,7 @@ inherit cmake
 
 DESCRIPTION="An implementation of encrypted filesystem in user-space using FUSE"
 HOMEPAGE="https://vgough.github.io/encfs/"
-SRC_URI="https://github.com/vgough/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vgough/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"

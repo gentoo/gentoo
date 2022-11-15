@@ -9,7 +9,7 @@ inherit multilib-minimal meson-multilib
 
 DESCRIPTION="CAPI library used by various AVM products"
 HOMEPAGE="https://gitlab.com/tabos/libcapi/"
-SRC_URI="https://gitlab.com/tabos/${PN}/-/archive/v${PV}/${P}.tar.bz2"
+SRC_URI="https://gitlab.com/tabos/${PN}/-/archive/refs/tags/v${PV}/${P}.tar.bz2"
 S="${WORKDIR}/${PN}-v${PV}-${EGIT_COMMIT}"
 
 LICENSE="GPL-2 GPL-2+ LGPL-2.1 GPL-3+"

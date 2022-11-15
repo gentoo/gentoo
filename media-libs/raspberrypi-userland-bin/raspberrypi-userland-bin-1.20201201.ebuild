@@ -6,7 +6,7 @@ EAPI=7
 MY_P="raspberrypi-firmware-${PV}"
 DESCRIPTION="Raspberry Pi userspace tools and libraries"
 HOMEPAGE="https://github.com/raspberrypi/firmware"
-SRC_URI="https://github.com/raspberrypi/firmware/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/raspberrypi/firmware/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/firmware-${PV}"
 
 LICENSE="BSD GPL-2 raspberrypi-videocore-bin"

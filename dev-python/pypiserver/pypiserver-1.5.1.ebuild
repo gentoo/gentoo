@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pypiserver/
 "
 SRC_URI="
-	https://github.com/pypiserver/pypiserver/archive/v${PV}.tar.gz
+	https://github.com/pypiserver/pypiserver/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

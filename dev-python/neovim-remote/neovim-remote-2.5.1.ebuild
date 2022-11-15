@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mhinz/${PN}.git"
 else
 	SRC_URI="
-		https://github.com/mhinz/${PN}/archive/v${PV}.tar.gz
+		https://github.com/mhinz/${PN}/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.gh.tar.gz
 	"
 	KEYWORDS="~amd64 ~arm"

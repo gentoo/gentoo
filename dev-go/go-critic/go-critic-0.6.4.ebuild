@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="The most opinionated Go source code linter for code audit"
 HOMEPAGE="https://github.com/go-critic/go-critic"
-SRC_URI="https://github.com/go-critic/go-critic/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/go-critic/go-critic/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="MIT"

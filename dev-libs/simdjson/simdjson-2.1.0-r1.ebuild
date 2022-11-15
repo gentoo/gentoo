@@ -12,7 +12,7 @@ HOMEPAGE="
 	https://github.com/simdjson/simdjson
 "
 SRC_URI="
-	https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
 	test? ( https://github.com/${PN}/${PN}-data/archive/${DATA_HASH}.tar.gz -> ${PN}-data-${DATA_HASH}.tar.gz )
 "
 

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="OMEMO encryption for libpurple (XEP-0384)"
 HOMEPAGE="https://github.com/gkdr/lurch"
-SRC_URI="https://github.com/gkdr/lurch/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gkdr/lurch/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"  # likely not GPL-3+, https://github.com/gkdr/lurch/issues/165
 SLOT="0"

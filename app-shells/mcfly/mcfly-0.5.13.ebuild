@@ -77,7 +77,7 @@ inherit cargo readme.gentoo-r1
 
 DESCRIPTION="Context-aware bash history search replacement (ctrl-r)"
 HOMEPAGE="https://github.com/cantino/mcfly"
-SRC_URI="https://github.com/cantino/mcfly/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/cantino/mcfly/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris)"
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 CC0-1.0 MIT Unlicense"

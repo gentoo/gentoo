@@ -7,7 +7,7 @@ inherit findlib
 
 DESCRIPTION="OCaml library for reading, writing, and modifying PDF files"
 HOMEPAGE="https://github.com/johnwhitington/camlpdf/"
-SRC_URI="https://github.com/johnwhitington/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/johnwhitington/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 # technically LGPL-2.1+ with linking exception
 LICENSE="LGPL-2.1-with-linking-exception"

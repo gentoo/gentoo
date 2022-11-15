@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="Programming language supporting functional, imperative & object-oriented styles"
 HOMEPAGE="https://ocaml.org/"
-SRC_URI="https://github.com/ocaml/ocaml/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/ocaml/ocaml/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-patches-1.tar.bz2"
 
 LICENSE="LGPL-2.1"

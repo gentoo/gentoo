@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/rdflib/
 "
 SRC_URI="
-	https://github.com/RDFLib/rdflib/archive/${PV}.tar.gz
+	https://github.com/RDFLib/rdflib/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

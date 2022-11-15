@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Interactive TUI S.M.A.R.T viewer"
 HOMEPAGE="https://github.com/otakuto/crazydiskinfo"
-SRC_URI="https://github.com/otakuto/crazydiskinfo/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/otakuto/crazydiskinfo/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

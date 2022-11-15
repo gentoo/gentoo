@@ -6,7 +6,7 @@ inherit gnome2-utils
 
 DESCRIPTION="Show tooltip with full name and description"
 HOMEPAGE="https://github.com/RaphaelRochet/applications-overview-tooltip"
-SRC_URI="https://github.com/RaphaelRochet/applications-overview-tooltip/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/RaphaelRochet/applications-overview-tooltip/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 # https://github.com/RaphaelRochet/applications-overview-tooltip/issues/7
 LICENSE="public-domain"

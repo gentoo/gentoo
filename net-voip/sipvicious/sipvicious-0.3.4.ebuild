@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="SIPVicious is a SIP security package"
 HOMEPAGE="https://github.com/EnableSecurity/sipvicious/wiki"
-SRC_URI="https://github.com/EnableSecurity/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/EnableSecurity/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

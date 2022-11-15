@@ -12,7 +12,7 @@ inherit distutils-r1
 DESCRIPTION="Python framework for efficient cluster administration"
 HOMEPAGE="https://github.com/cea-hpc/clustershell/"
 SRC_URI="
-	https://github.com/cea-hpc/clustershell/archive/v${PV}.tar.gz
+	https://github.com/cea-hpc/clustershell/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

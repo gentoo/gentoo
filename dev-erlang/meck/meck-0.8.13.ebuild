@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="Mocking library for Erlang"
 HOMEPAGE="https://github.com/eproxus/meck"
-SRC_URI="https://github.com/eproxus/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/eproxus/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

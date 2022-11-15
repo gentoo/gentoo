@@ -8,7 +8,7 @@ inherit autotools flag-o-matic java-pkg-opt-2 multilib-minimal python-single-r1 
 
 DESCRIPTION="Library and tools for reading barcodes from images or video"
 HOMEPAGE="https://github.com/mchehab/zbar"
-SRC_URI="https://github.com/mchehab/zbar/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mchehab/zbar/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

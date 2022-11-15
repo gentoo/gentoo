@@ -10,7 +10,7 @@ inherit distutils-r1 gnome2-utils xdg-utils
 
 DESCRIPTION="A GUI for f.lux"
 HOMEPAGE="https://github.com/xflux-gui/fluxgui/"
-SRC_URI="https://github.com/${PN}/fluxgui/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/fluxgui/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/fluxgui-${PV}"
 
 LICENSE="MIT"

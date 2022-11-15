@@ -11,7 +11,7 @@ MY_P="RxPY-${PV}"
 DESCRIPTION="Reactive Extensions for Python"
 HOMEPAGE="http://reactivex.io/"
 SRC_URI="
-	https://github.com/ReactiveX/RxPY/archive/v${PV}.tar.gz
+	https://github.com/ReactiveX/RxPY/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 

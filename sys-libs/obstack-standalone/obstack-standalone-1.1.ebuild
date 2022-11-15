@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A standalone library to implement GNU libc's obstack"
 HOMEPAGE="https://github.com/pullmoll/musl-obstack"
-SRC_URI="https://github.com/pullmoll/musl-obstack/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pullmoll/musl-obstack/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

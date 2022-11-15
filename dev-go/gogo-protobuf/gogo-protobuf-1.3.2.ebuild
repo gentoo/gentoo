@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="Protocol Buffers for Go with Gadgets"
 HOMEPAGE="https://github.com/gogo/protobuf"
-SRC_URI="https://github.com/gogo/protobuf/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gogo/protobuf/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz"
 S="${WORKDIR}/protobuf-${PV}"
 

@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/phonenumbers/
 "
 SRC_URI="
-	https://github.com/daviddrysdale/python-phonenumbers/archive/v${PV}.tar.gz
+	https://github.com/daviddrysdale/python-phonenumbers/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}/python

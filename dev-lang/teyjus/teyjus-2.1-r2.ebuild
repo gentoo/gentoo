@@ -7,7 +7,7 @@ inherit elisp-common
 
 DESCRIPTION="Higher-order logic programming language Lambda Prolog"
 HOMEPAGE="http://teyjus.cs.umn.edu/"
-SRC_URI="https://github.com/teyjus/teyjus/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/teyjus/teyjus/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"

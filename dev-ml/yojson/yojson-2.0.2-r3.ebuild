@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="JSON parsing and pretty-printing library for OCaml"
 HOMEPAGE="https://github.com/ocaml-community/yojson"
-SRC_URI="https://github.com/ocaml-community/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/ocaml-community/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="BSD"

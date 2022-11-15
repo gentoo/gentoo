@@ -7,7 +7,7 @@ inherit gnome2-utils meson-multilib
 
 DESCRIPTION="WebP GDK Pixbuf Loader library"
 HOMEPAGE="https://github.com/aruiz/webp-pixbuf-loader"
-SRC_URI="https://github.com/aruiz/webp-pixbuf-loader/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/aruiz/webp-pixbuf-loader/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/webp-pixbuf-loader-${PV}"
 
 LICENSE="LGPL-2+"

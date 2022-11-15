@@ -7,7 +7,7 @@ GIT_COMMIT=b0b6bfdd
 
 DESCRIPTION="A project that allows anyone to have trust over arbitrary collections of data"
 HOMEPAGE="https://github.com/notaryproject/notary"
-SRC_URI="https://github.com/notaryproject/notary/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/notaryproject/notary/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

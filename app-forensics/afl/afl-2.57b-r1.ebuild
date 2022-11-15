@@ -7,7 +7,7 @@ inherit multilib toolchain-funcs flag-o-matic
 
 DESCRIPTION="american fuzzy lop - compile-time instrumentation fuzzer"
 HOMEPAGE="https://lcamtuf.coredump.cx/afl/"
-SRC_URI="https://github.com/google/AFL/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/AFL/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

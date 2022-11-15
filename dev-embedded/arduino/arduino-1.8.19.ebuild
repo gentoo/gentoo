@@ -12,7 +12,7 @@ AVR_VERSION="1.8.3"
 EXAMPLES_VERSION="1.9.1"
 PLUGIN_VERSION="0.12.0"
 
-SRC_URI="https://github.com/arduino/Arduino/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/arduino/Arduino/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://downloads.arduino.cc/cores/avr-${AVR_VERSION}.tar.bz2 -> ${PN}-avr-${AVR_VERSION}.tar.bz2
 	https://github.com/arduino/arduino-examples/archive/refs/tags/${EXAMPLES_VERSION}.zip -> ${PN}-examples-${EXAMPLES_VERSION}.zip
 	https://github.com/arduino-libraries/WiFi101-FirmwareUpdater-Plugin/releases/download/v${PLUGIN_VERSION}/WiFi101-Updater-ArduinoIDE-Plugin-${PLUGIN_VERSION}.zip -> ${PN}-WiFi101-Updater-ArduinoIDE-Plugin-${PLUGIN_VERSION}.zip

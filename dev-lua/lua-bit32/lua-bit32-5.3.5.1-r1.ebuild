@@ -12,7 +12,7 @@ inherit lua toolchain-funcs
 
 DESCRIPTION="Backported Lua bit manipulation library"
 HOMEPAGE="https://github.com/keplerproject/lua-compat-5.3"
-SRC_URI="https://github.com/keplerproject/${MY_PN}/archive/v${MY_PV}.tar.gz -> lua-compat53-${MY_PV}.tar.gz"
+SRC_URI="https://github.com/keplerproject/${MY_PN}/archive/refs/tags/v${MY_PV}.tar.gz -> lua-compat53-${MY_PV}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 LICENSE="MIT"

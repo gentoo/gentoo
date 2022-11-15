@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="Prometheus exporter that scrapes metrics from a ceph cluster"
 HOMEPAGE="https://github.com/digitalocean/ceph_exporter"
-SRC_URI="https://github.com/digitalocean/ceph_exporter/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/digitalocean/ceph_exporter/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0"

@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="A websocket implementation in elisp"
 HOMEPAGE="https://github.com/ahyatt/emacs-websocket"
-SRC_URI="https://github.com/ahyatt/emacs-${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ahyatt/emacs-${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Advanced seed data handling for Rails"
 HOMEPAGE="https://github.com/mbleigh/seed-fu"
-SRC_URI="https://github.com/mbleigh/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mbleigh/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

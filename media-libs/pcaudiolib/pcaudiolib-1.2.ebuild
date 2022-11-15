@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Portable C Audio Library"
 HOMEPAGE="https://github.com/espeak-ng/pcaudiolib"
-SRC_URI="https://github.com/espeak-ng/pcaudiolib/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/espeak-ng/pcaudiolib/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+ ZLIB"
 SLOT="0"

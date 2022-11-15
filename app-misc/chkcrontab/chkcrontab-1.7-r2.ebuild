@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A tool to detect crontab errors"
 HOMEPAGE="https://github.com/lyda/chkcrontab"
-SRC_URI="https://github.com/lyda/chkcrontab/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lyda/chkcrontab/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Parser interpreter based on PEG grammars"
 HOMEPAGE="https://pypi.org/project/Arpeggio/ https://github.com/textX/Arpeggio"
 SRC_URI="
-	https://github.com/textX/Arpeggio/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/textX/Arpeggio/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="MIT"

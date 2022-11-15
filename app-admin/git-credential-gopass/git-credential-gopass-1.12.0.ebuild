@@ -196,7 +196,7 @@ go-module_set_globals
 
 DESCRIPTION="Gopass git-credentials helper"
 HOMEPAGE="https://github.com/gopasspw/git-credential-gopass"
-SRC_URI="https://github.com/gopasspw/git-credential-gopass/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/gopasspw/git-credential-gopass/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 LICENSE="MIT Apache-2.0 BSD MPL-2.0 BSD-2"

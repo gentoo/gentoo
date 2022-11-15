@@ -440,7 +440,7 @@ EGO_SUM=(
 	"sigs.k8s.io/yaml v1.1.0/go.mod"
 	)
 go-module_set_globals
-SRC_URI="https://github.com/influxdata/chronograf/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/influxdata/chronograf/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~williamh/dist/${P}-gen.tar.gz
 	${EGO_SUM_SRC_URI}"
 

@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Ruby extension library providing an API to PostgreSQL"
 HOMEPAGE="https://github.com/ged/ruby-pg"
-SRC_URI="https://github.com/ged/ruby-pg/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ged/ruby-pg/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="ruby-${P}"
 
 LICENSE="|| ( BSD-2 Ruby-BSD )"

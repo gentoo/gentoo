@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/identify/
 "
 SRC_URI="
-	https://github.com/pre-commit/${PN}/archive/v${PV}.tar.gz
+	https://github.com/pre-commit/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -55,7 +55,7 @@ go-module_set_globals
 
 DESCRIPTION="Simple command-line snippet manager"
 HOMEPAGE="https://github.com/knqyf263/pet"
-SRC_URI="https://github.com/knqyf263/pet/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/knqyf263/pet/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"

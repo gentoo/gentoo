@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A helper for using rope refactoring library in IDEs"
 HOMEPAGE="https://github.com/python-rope/ropemode https://pypi.org/project/ropemode/"
-SRC_URI="https://github.com/python-rope/ropemode/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/python-rope/ropemode/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

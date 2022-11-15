@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Character encoding detecting library for Ruby using ICU"
 HOMEPAGE="https://github.com/brianmario/charlock_holmes"
-SRC_URI="https://github.com/brianmario/charlock_holmes/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/brianmario/charlock_holmes/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

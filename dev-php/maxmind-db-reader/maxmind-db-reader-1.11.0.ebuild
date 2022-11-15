@@ -16,7 +16,7 @@ inherit php-ext-source-r3
 
 DESCRIPTION="PHP reader for the MaxMind database format"
 HOMEPAGE="https://github.com/maxmind/MaxMind-DB-Reader-php"
-SRC_URI="https://github.com/maxmind/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/maxmind/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

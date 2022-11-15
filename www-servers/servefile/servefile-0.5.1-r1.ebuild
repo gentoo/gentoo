@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Serve a single file via HTTP"
 HOMEPAGE="https://github.com/sebageek/servefile"
-SRC_URI="https://github.com/sebageek/servefile/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sebageek/servefile/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

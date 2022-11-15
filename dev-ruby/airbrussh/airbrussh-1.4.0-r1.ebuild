@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A replacement log formatter for SSHKit"
 HOMEPAGE="https://github.com/mattbrictson/airbrussh"
-SRC_URI="https://github.com/mattbrictson/airbrussh/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mattbrictson/airbrussh/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1"

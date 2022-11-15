@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/wsaccel/
 "
 SRC_URI="
-	https://github.com/methane/wsaccel/archive/v${PV}.tar.gz
+	https://github.com/methane/wsaccel/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

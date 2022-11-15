@@ -10,7 +10,7 @@ inherit python-single-r1
 DESCRIPTION="Git post-receive web hook notifier in Python"
 HOMEPAGE="https://github.com/metajack/notify-webhook"
 #COMMIT='c571160f155122446e97bb01c1150b4d14ea69d6'
-SRC_URI="https://github.com/metajack/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/metajack/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Objective CAML interface for Gtk+2"
 HOMEPAGE="http://lablgtk.forge.ocamlcore.org"
-SRC_URI="https://github.com/garrigue/lablgtk/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/garrigue/lablgtk/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception examples? ( lablgtk-examples )"
 SLOT="2/${PV}"

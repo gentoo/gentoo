@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/dictpath/
 "
 SRC_URI="
-	https://github.com/p1c2u/pathable/archive/${PV}.tar.gz
+	https://github.com/p1c2u/pathable/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/pathable-${PV}"

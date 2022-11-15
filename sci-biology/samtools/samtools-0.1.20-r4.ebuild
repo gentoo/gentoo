@@ -7,7 +7,7 @@ inherit multilib toolchain-funcs
 
 DESCRIPTION="Utilities for analysing and manipulating the SAM/BAM alignment formats"
 HOMEPAGE="http://samtools.sourceforge.net/"
-SRC_URI="https://github.com/samtools/samtools/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/samtools/samtools/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0.1-legacy"

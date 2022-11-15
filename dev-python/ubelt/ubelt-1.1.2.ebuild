@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/ubelt/
 "
 SRC_URI="
-	https://github.com/Erotemic/${PN}/archive/v${PV}.tar.gz
+	https://github.com/Erotemic/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

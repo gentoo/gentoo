@@ -12,7 +12,7 @@ DESCRIPTION="Cross-desktop libraries and common resources"
 HOMEPAGE="https://github.com/linuxmint/xapp/"
 LICENSE="LGPL-3+"
 
-SRC_URI="https://github.com/linuxmint/xapp/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/linuxmint/xapp/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 SLOT="0"

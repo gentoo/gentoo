@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/httpcore/
 "
 SRC_URI="
-	https://github.com/encode/httpcore/archive/${PV}.tar.gz
+	https://github.com/encode/httpcore/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

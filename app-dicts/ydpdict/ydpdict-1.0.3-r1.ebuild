@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Interface for the Collins Dictionary"
 HOMEPAGE="https://github.com/wojtekka/ydpdict"
-SRC_URI="https://github.com/wojtekka/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wojtekka/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="FreeDOS based BIOS updating utility for Dell machines"
 HOMEPAGE="https://github.com/dell/biosdisk"
-SRC_URI="https://github.com/dell/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dell/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

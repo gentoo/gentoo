@@ -11,7 +11,7 @@ MY_P="libsass-python-${PV}"
 DESCRIPTION="A straightforward binding of libsass for Python"
 HOMEPAGE="https://github.com/sass/libsass-python/"
 SRC_URI="
-	https://github.com/sass/libsass-python/archive/${PV}.tar.gz
+	https://github.com/sass/libsass-python/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz"
 S="${WORKDIR}/${MY_P}"
 

@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Simple tool for uploading files to the filesystem of an ESP8266 running NodeMCU"
 HOMEPAGE="https://github.com/kmpm/nodemcu-uploader"
-SRC_URI="https://github.com/kmpm/nodemcu-uploader/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kmpm/nodemcu-uploader/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

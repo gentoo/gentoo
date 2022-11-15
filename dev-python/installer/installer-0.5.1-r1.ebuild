@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://installer.readthedocs.io/en/latest/
 "
 SRC_URI="
-	https://github.com/pypa/installer/archive/${PV}.tar.gz
+	https://github.com/pypa/installer/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	https://files.pythonhosted.org/packages/py3/${PN::1}/${PN}/${P%_p*}-py3-none-any.whl
 		-> ${P%_p*}-py3-none-any.whl.zip

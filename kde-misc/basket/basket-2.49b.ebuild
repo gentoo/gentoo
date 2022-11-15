@@ -12,7 +12,7 @@ inherit ecm
 
 DESCRIPTION="Multiple information organizer - a DropDrawers clone"
 HOMEPAGE="https://userbase.kde.org/BasKet https://invent.kde.org/utilities/basket"
-SRC_URI="https://github.com/${PN}-notepads/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}-notepads/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="5"

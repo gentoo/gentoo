@@ -12,7 +12,7 @@ HOMEPAGE="
 	https://github.com/niksite/url-normalize/
 	https://pypi.org/project/url-normalize/"
 SRC_URI="
-	https://github.com/niksite/url-normalize/archive/${PV}.tar.gz
+	https://github.com/niksite/url-normalize/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="MIT"

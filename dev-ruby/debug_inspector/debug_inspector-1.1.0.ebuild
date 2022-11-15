@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A Ruby wrapper for the MRI 2.0 debug_inspector API"
 HOMEPAGE="https://github.com/banister/debug_inspector"
-SRC_URI="https://github.com/banister/debug_inspector/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/banister/debug_inspector/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Parse and manipulate version numbers"
 HOMEPAGE="https://github.com/RazerM/parver https://pypi.org/project/parver/"
-SRC_URI="https://github.com/RazerM/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/RazerM/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

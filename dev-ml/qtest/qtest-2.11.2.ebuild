@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Inline (Unit) Tests for OCaml"
 HOMEPAGE="https://github.com/vincent-hugot/qtest"
-SRC_URI="https://github.com/vincent-hugot/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vincent-hugot/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/${PV}"

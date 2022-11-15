@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/google-auth-oauthlib/
 "
 SRC_URI="
-	https://github.com/googleapis/google-auth-library-python-oauthlib/archive/v${PV}.tar.gz
+	https://github.com/googleapis/google-auth-library-python-oauthlib/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

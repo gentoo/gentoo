@@ -110,7 +110,7 @@ inherit bash-completion-r1 cargo
 
 DESCRIPTION="A command-line benchmarking tool (runs other benchmarks)"
 HOMEPAGE="https://github.com/sharkdp/hyperfine"
-SRC_URI="https://github.com/sharkdp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/sharkdp/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 Boost-1.0 ISC MIT MPL-2.0 Unlicense"

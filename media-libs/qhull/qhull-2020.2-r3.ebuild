@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Geometry library"
 HOMEPAGE="http://www.qhull.org"
-SRC_URI="https://github.com/qhull/qhull/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/qhull/qhull/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0/8"
 LICENSE="BSD"

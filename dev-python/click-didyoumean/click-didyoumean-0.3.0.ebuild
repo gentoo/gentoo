@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/click-didyoumean/
 "
 SRC_URI="
-	https://github.com/click-contrib/click-didyoumean/archive/v${PV}.tar.gz
+	https://github.com/click-contrib/click-didyoumean/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

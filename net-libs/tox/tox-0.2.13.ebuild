@@ -8,7 +8,7 @@ inherit cmake systemd
 MY_P="c-toxcore-${PV}"
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
 HOMEPAGE="https://tox.chat https://github.com/TokTok/c-toxcore"
-SRC_URI="https://github.com/TokTok/c-toxcore/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/TokTok/c-toxcore/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0/0.2"

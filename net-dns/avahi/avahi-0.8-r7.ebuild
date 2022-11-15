@@ -9,7 +9,7 @@ inherit autotools flag-o-matic multilib-minimal mono-env python-single-r1 system
 
 DESCRIPTION="System which facilitates service discovery on a local network"
 HOMEPAGE="https://avahi.org/"
-SRC_URI="https://github.com/lathiat/avahi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lathiat/avahi/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

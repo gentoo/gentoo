@@ -9,7 +9,7 @@ inherit autotools flag-o-matic lua-single
 
 DESCRIPTION="Space adventure/combat game"
 HOMEPAGE="https://epiar.net/"
-SRC_URI="https://github.com/cthielen/Epiar/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cthielen/Epiar/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

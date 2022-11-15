@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Fedora's Static PSR-4, PSR-0, and classmap autoloader"
 HOMEPAGE="https://github.com/php-fedora/autoloader"
-SRC_URI="https://github.com/php-fedora/autoloader/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/php-fedora/autoloader/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

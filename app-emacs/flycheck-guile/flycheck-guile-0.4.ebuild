@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Flycheck checker for the GNU Guile Scheme implementation"
 HOMEPAGE="https://github.com/flatwhatson/flycheck-guile/"
-SRC_URI="https://github.com/flatwhatson/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/flatwhatson/${PN}/archive/refs/tags/${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

@@ -9,7 +9,7 @@ inherit edo vim-plugin python-single-r1
 MY_PN="${PN}-vim"
 DESCRIPTION="vim plugin: binding to the autocompletion library jedi"
 HOMEPAGE="https://github.com/davidhalter/jedi-vim"
-SRC_URI="https://github.com/davidhalter/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/davidhalter/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"

@@ -8,7 +8,7 @@ inherit elisp
 MY_PN="${PN}-el"
 DESCRIPTION="MediaWiki client for Emacs"
 HOMEPAGE="https://github.com/hexmode/mediawiki-el"
-SRC_URI="https://github.com/hexmode/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hexmode/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-3+"

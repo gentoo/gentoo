@@ -7,7 +7,7 @@ inherit desktop qmake-utils
 
 DESCRIPTION="GUI audio tagger based on Qt and taglib"
 HOMEPAGE="https://www.linux-apps.com/content/show.php/Coquillo?content=141896"
-SRC_URI="https://github.com/sjuvonen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sjuvonen/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

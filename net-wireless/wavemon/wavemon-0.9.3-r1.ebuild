@@ -7,7 +7,7 @@ inherit autotools linux-info toolchain-funcs
 
 DESCRIPTION="Ncurses based monitor for IEEE 802.11 wireless LAN cards"
 HOMEPAGE="https://github.com/uoaerg/wavemon/"
-SRC_URI="https://github.com/uoaerg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/uoaerg/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="C implementation of the Raft consensus protocol"
 HOMEPAGE="https://github.com/canonical/raft"
-SRC_URI="https://github.com/canonical/raft/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/canonical/raft/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3-with-linking-exception"
 SLOT="0"

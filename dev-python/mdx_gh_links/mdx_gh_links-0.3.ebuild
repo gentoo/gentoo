@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/mdx-gh-links/
 "
 SRC_URI="
-	https://github.com/Python-Markdown/github-links/archive/${PV}.tar.gz
+	https://github.com/Python-Markdown/github-links/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

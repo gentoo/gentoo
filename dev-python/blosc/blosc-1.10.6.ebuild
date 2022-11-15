@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/blosc/
 "
 SRC_URI="
-	https://github.com/Blosc/python-blosc/archive/v${PV}.tar.gz
+	https://github.com/Blosc/python-blosc/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

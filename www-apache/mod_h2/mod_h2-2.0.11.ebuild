@@ -14,7 +14,7 @@ else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"
-	SRC_URI="https://github.com/icing/mod_h2/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+	SRC_URI="https://github.com/icing/mod_h2/archive/refs/tags/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 

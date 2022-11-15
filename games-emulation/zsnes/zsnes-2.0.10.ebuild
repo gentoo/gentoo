@@ -7,7 +7,7 @@ inherit desktop flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="Fork of the classic Super Nintendo emulator"
 HOMEPAGE="https://github.com/xyproto/zsnes/ https://www.zsnes.com/"
-SRC_URI="https://github.com/xyproto/zsnes/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/xyproto/zsnes/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A high performance pure Ruby client for accessing memcached servers"
 HOMEPAGE="https://github.com/petergoldstein/dalli"
-SRC_URI="https://github.com/petergoldstein/dalli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/petergoldstein/dalli/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"

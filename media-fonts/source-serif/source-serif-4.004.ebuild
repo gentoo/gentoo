@@ -10,7 +10,7 @@ inherit font optfeature
 
 DESCRIPTION="Serif font family for user interface environments"
 HOMEPAGE="https://adobe-fonts.github.io/source-serif/"
-SRC_URI="https://github.com/adobe-fonts/source-serif/archive/${PV}R.tar.gz -> source-serif-${PV}.tar.gz"
+SRC_URI="https://github.com/adobe-fonts/source-serif/archive/refs/tags/${PV}R.tar.gz -> source-serif-${PV}.tar.gz"
 S="${WORKDIR}/${P}R"
 
 LICENSE="OFL-1.1"

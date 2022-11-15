@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Convert PDF to SVG files using poppler and cairo"
 HOMEPAGE="https://www.cityinthesky.co.uk/opensource/pdf2svg/ https://github.com/dawbarton/pdf2svg/"
-SRC_URI="https://github.com/dawbarton/pdf2svg/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dawbarton/pdf2svg/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

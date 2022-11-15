@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Early unlocking of encrypted systems via ssh for dracut"
 HOMEPAGE="https://github.com/dracut-crypt-ssh/dracut-crypt-ssh"
-SRC_URI="https://github.com/dracut-crypt-ssh/dracut-crypt-ssh/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dracut-crypt-ssh/dracut-crypt-ssh/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

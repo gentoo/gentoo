@@ -11,7 +11,7 @@ if [[ "${PV}" == 99999999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/marazmista/radeon-profile.git"
 else
-	SRC_URI="https://github.com/marazmista/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/marazmista/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 LICENSE="GPL-2"

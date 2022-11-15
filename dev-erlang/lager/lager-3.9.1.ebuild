@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="Logging framework for Erlang/OTP"
 HOMEPAGE="https://github.com/erlang-lager/lager"
-SRC_URI="https://github.com/erlang-lager/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/erlang-lager/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

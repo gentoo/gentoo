@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/bitlbee/bitlbee-steam.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/bitlbee/bitlbee-steam/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/bitlbee/bitlbee-steam/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 

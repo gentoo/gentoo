@@ -19,7 +19,7 @@ case ${PV} in
 *)
 	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/xbmc/vfs.libarchive/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/xbmc/vfs.libarchive/archive/refs/tags/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/vfs.libarchive-${PV}-${CODENAME}"
 	;;
 esac

@@ -14,7 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem
 
-SRC_URI="https://github.com/sass/listen/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sass/listen/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Fork of guard/listen provides a stable API for users of the ruby Sass CLI"
 HOMEPAGE="https://github.com/guard/listen"
 RUBY_S="listen-${PV}"

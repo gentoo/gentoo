@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Jane Street header files"
 HOMEPAGE="https://github.com/janestreet/jane-street-headers"
-SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"

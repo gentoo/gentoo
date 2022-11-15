@@ -10,7 +10,7 @@ inherit distutils-r1 optfeature
 
 DESCRIPTION="Lightning-fast ASGI server implementation"
 HOMEPAGE="https://www.uvicorn.org/"
-SRC_URI="https://github.com/encode/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/encode/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

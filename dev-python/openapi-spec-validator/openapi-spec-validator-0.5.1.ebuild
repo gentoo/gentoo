@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/openapi-spec-validator/
 "
 SRC_URI="
-	https://github.com/p1c2u/openapi-spec-validator/archive/${PV}.tar.gz
+	https://github.com/p1c2u/openapi-spec-validator/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

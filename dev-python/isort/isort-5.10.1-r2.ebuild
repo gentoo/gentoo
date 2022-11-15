@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/isort/
 "
 SRC_URI="
-	https://github.com/PyCQA/isort/archive/${PV}.tar.gz
+	https://github.com/PyCQA/isort/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

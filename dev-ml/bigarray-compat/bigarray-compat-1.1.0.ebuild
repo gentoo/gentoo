@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Compatibility library to use Stdlib.Bigarray when possible"
 HOMEPAGE="https://github.com/mirage/bigarray-compat"
-SRC_URI="https://github.com/mirage/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mirage/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"

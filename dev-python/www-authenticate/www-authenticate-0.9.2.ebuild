@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="WWW-Authenticate header parser"
 HOMEPAGE="https://github.com/alexsdutton/www-authenticate"
-SRC_URI="https://github.com/alexsdutton/www-authenticate/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/alexsdutton/www-authenticate/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

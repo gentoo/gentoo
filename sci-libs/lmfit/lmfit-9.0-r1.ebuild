@@ -8,7 +8,7 @@ inherit cmake
 MY_P="${PN}-v${PV}"
 DESCRIPTION="library for Levenberg-Marquardt least-squares minimization and curve fitting"
 HOMEPAGE="https://jugit.fz-juelich.de/mlz/lmfit"
-SRC_URI="https://jugit.fz-juelich.de/mlz/lmfit/-/archive/v${PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://jugit.fz-juelich.de/mlz/lmfit/-/archive/refs/tags/v${PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"

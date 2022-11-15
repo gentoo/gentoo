@@ -20,7 +20,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="
-		https://github.com/PennyDreadfulMTG/pystache/archive/v${PV}.tar.gz
+		https://github.com/PennyDreadfulMTG/pystache/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.gh.tar.gz
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"

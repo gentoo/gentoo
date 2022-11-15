@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Open Source implementation of the Fast Infoset Standard for Binary XML"
 HOMEPAGE="https://projects.eclipse.org/projects/ee4j.jaxb-impl/FastInfoset"
-SRC_URI="https://github.com/eclipse-ee4j/jaxb-fi/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/eclipse-ee4j/jaxb-fi/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 EPL-1.0"
 SLOT="0"

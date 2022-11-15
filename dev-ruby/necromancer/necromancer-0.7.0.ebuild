@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Conversion from one object type to another with a bit of black magic"
 HOMEPAGE="https://github.com/piotrmurach/necromancer"
-SRC_URI="https://github.com/piotrmurach/necromancer/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/piotrmurach/necromancer/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

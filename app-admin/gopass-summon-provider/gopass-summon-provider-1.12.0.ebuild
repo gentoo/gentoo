@@ -145,7 +145,7 @@ go-module_set_globals
 
 DESCRIPTION="Gopass Summon Provider"
 HOMEPAGE="https://github.com/gopasspw/gopass-summon-provider"
-SRC_URI="https://github.com/gopasspw/gopass-summon-provider/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/gopasspw/gopass-summon-provider/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 LICENSE="MIT Apache-2.0 BSD MPL-2.0 BSD-2"

@@ -7,7 +7,7 @@ inherit findlib vcs-clean
 
 DESCRIPTION="Standard library extensions for O'Caml"
 HOMEPAGE="https://github.com/ygrek/ocaml-extlib"
-SRC_URI="https://github.com/ygrek/ocaml-extlib/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ygrek/ocaml-extlib/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"

@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/Ousret/charset_normalizer/
 "
 SRC_URI="
-	https://github.com/Ousret/charset_normalizer/archive/${PV}.tar.gz
+	https://github.com/Ousret/charset_normalizer/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

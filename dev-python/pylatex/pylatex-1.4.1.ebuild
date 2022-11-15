@@ -13,7 +13,7 @@ inherit distutils-r1 optfeature
 
 DESCRIPTION="A Python library for creating LaTeX files and snippets"
 HOMEPAGE="https://github.com/JelteF/PyLaTeX"
-SRC_URI="https://github.com/JelteF/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/JelteF/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"

@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Static types for JSON APIs"
 HOMEPAGE="https://github.com/ahrefs/atd/"
-SRC_URI="https://github.com/ahrefs/atd/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ahrefs/atd/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Minimalistic C client library for the Redis database"
 HOMEPAGE="https://github.com/redis/hiredis"
-SRC_URI="https://github.com/redis/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/redis/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/0.14"

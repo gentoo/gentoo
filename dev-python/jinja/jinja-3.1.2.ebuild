@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/Jinja2/
 "
 SRC_URI="
-	https://github.com/pallets/jinja/archive/${PV}.tar.gz
+	https://github.com/pallets/jinja/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

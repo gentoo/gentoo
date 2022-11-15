@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="a dockapp and gkrellm plug-in combining timecop's bubblemon and wmfishtime"
 HOMEPAGE="https://github.com/JNRowe-retired/bfm"
-SRC_URI="https://github.com/JNRowe-retired/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/JNRowe-retired/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

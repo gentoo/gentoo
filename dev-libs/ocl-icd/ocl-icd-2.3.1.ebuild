@@ -8,7 +8,7 @@ inherit autotools flag-o-matic multilib-minimal ruby-single
 
 DESCRIPTION="Alternative to vendor specific OpenCL ICD loaders"
 HOMEPAGE="https://github.com/OCL-dev/ocl-icd"
-SRC_URI="https://github.com/OCL-dev/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/OCL-dev/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"

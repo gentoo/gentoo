@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/requests-kerberos/
 "
 SRC_URI="
-	https://github.com/requests/${PN}/archive/v${PV}.tar.gz
+	https://github.com/requests/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

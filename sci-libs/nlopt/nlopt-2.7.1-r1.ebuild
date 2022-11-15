@@ -9,7 +9,7 @@ inherit python-r1 cmake fortran-2
 
 DESCRIPTION="Non-linear optimization library"
 HOMEPAGE="https://github.com/stevengj/nlopt"
-SRC_URI="https://github.com/stevengj/nlopt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/stevengj/nlopt/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1 MIT"
 KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"

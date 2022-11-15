@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="C99 implementation of the vnd.amazon.eventstream content-type"
 HOMEPAGE="https://github.com/awslabs/aws-c-event-stream"
-SRC_URI="https://github.com/awslabs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/awslabs/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

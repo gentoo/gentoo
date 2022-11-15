@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A module for working with NMR data in Python"
 HOMEPAGE="https://nmrglue.com/"
-SRC_URI="https://github.com/jjhelmus/nmrglue/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jjhelmus/nmrglue/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"

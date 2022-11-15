@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/trimesh/
 "
 SRC_URI="
-	https://github.com/mikedh/${PN}/archive/${PV}.tar.gz
+	https://github.com/mikedh/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

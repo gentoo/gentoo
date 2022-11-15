@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV/_p/-}"
 DESCRIPTION="status monitor for the desktop"
 DESCRIPTION="systray monitor for displaying realtime status of several monitoring systems"
 HOMEPAGE="https://nagstamon.de"
-SRC_URI="https://github.com/HenriWahl/Nagstamon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/HenriWahl/Nagstamon/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

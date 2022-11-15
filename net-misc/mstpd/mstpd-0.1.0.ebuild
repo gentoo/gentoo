@@ -7,7 +7,7 @@ inherit autotools bash-completion-r1 systemd
 
 DESCRIPTION="Multiple spanning tree protocol daemon"
 HOMEPAGE="https://github.com/mstpd/mstpd"
-SRC_URI="https://github.com/mstpd/mstpd/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mstpd/mstpd/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

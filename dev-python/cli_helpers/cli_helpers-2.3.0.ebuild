@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/cli-helpers/
 "
 SRC_URI="
-	https://github.com/dbcli/cli_helpers/archive/v${PV}.tar.gz
+	https://github.com/dbcli/cli_helpers/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

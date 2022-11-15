@@ -9,7 +9,7 @@ inherit gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="A Bluetooth configuration tool"
 HOMEPAGE="https://github.com/linuxmint/blueberry"
-SRC_URI="https://github.com/linuxmint/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/linuxmint/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

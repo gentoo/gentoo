@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="A thin, practical wrapper around terminal coloring, styling, and positioning"
 HOMEPAGE="https://github.com/erikrose/blessings https://pypi.org/project/blessings/"
 # https://github.com/erikrose/blessings/pull/136
-SRC_URI="https://github.com/erikrose/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/erikrose/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"

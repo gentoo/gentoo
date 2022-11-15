@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A concurrency framework for Ruby"
 HOMEPAGE="https://github.com/socketry/async"
-SRC_URI="https://github.com/socketry/async/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/socketry/async/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

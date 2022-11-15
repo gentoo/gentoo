@@ -12,7 +12,7 @@ if [[ "${PV#9999}" != "${PV}" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ocsigen/reactiveData"
 else
-	SRC_URI="https://github.com/ocsigen/reactiveData/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ocsigen/reactiveData/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 

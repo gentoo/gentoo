@@ -8,7 +8,7 @@ inherit findlib
 
 DESCRIPTION="Library for arbitrary-precision integer and rational arithmetic"
 HOMEPAGE="https://github.com/ocaml/num"
-SRC_URI="https://github.com/ocaml/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocaml/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0"

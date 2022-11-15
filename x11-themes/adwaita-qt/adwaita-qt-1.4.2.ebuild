@@ -6,7 +6,7 @@ inherit cmake
 
 DESCRIPTION="A style to bend Qt applications to look like they belong into GNOME Shell"
 HOMEPAGE="https://github.com/FedoraQt/adwaita-qt"
-SRC_URI="https://github.com/FedoraQt/${PN}/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/FedoraQt/${PN}/archive/refs/tags/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"

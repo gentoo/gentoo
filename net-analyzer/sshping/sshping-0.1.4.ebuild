@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="ssh-based ping: measure character echo latency and bandwidth"
 HOMEPAGE="https://github.com/spook/sshping"
-SRC_URI="https://github.com/spook/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/spook/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

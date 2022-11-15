@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="GitHub HTML processing filters and utilities"
 HOMEPAGE="https://github.com/gjtorikian/html-pipeline"
-SRC_URI="https://github.com/gjtorikian/html-pipeline/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gjtorikian/html-pipeline/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

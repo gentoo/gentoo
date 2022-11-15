@@ -11,7 +11,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/libesmtp/libESMTP.git"
 else
-	SRC_URI="https://github.com/libesmtp/libESMTP/archive/v${PV/_}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/libesmtp/libESMTP/archive/refs/tags/v${PV/_}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/libESMTP-${PV}"
 
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"

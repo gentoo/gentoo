@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Tool which allows you to compose wallpapers ('root pixmaps') for X"
 HOMEPAGE="https://github.com/himdel/hsetroot/"
-SRC_URI="https://github.com/himdel/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/himdel/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

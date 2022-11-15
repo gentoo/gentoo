@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="Font designed for aircraft cockpit displays"
 HOMEPAGE="https://b612-font.com/"
-SRC_URI="https://github.com/polarsys/b612/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/polarsys/b612/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="EPL-1.0 BSD OFL-1.1"   # to be clarified #746725
 SLOT="0"

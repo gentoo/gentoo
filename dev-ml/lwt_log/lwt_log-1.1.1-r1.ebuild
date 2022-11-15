@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Cooperative light-weight thread library for OCaml"
 HOMEPAGE="https://github.com/ocsigen/lwt_log"
-SRC_URI="https://github.com/ocsigen/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocsigen/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0/${PV}"
 LICENSE="LGPL-2"

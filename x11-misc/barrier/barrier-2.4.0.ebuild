@@ -7,7 +7,7 @@ inherit desktop virtualx xdg cmake
 
 DESCRIPTION="Share a mouse and keyboard between computers (fork of Synergy)"
 HOMEPAGE="https://github.com/debauchee/barrier"
-SRC_URI="https://github.com/debauchee/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/debauchee/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

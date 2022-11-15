@@ -8,7 +8,7 @@ inherit cmake linux-mod
 MY_P=${P/-kmod}
 DESCRIPTION="Kernel module for dev-util/sysdig"
 HOMEPAGE="https://sysdig.com/"
-SRC_URI="https://github.com/draios/sysdig/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/draios/sysdig/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="|| ( MIT GPL-2 )"

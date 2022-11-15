@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Find deleted files in block devices"
 HOMEPAGE="https://github.com/jbj/magicrescue"
-SRC_URI="https://github.com/jbj/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jbj/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

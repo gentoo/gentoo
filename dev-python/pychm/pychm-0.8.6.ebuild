@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python bindings for the chmlib library"
 HOMEPAGE="https://github.com/dottedmag/pychm"
-SRC_URI="https://github.com/dottedmag/pychm/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/dottedmag/pychm/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

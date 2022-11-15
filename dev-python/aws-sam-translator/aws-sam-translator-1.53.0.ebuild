@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/aws-sam-translator/
 "
 SRC_URI="
-	https://github.com/aws/serverless-application-model/archive/v${PV}.tar.gz
+	https://github.com/aws/serverless-application-model/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/serverless-application-model-${PV}"

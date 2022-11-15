@@ -9,7 +9,7 @@ DESCRIPTION="The Audio Output library"
 HOMEPAGE="https://www.xiph.org/ao/"
 #SRC_URI="https://downloads.xiph.org/releases/ao/${P}.tar.gz"
 #SRC_URI="https://git.xiph.org/?p=libao.git;a=snapshot;h=refs/tags/${PV};sf=tgz -> ${P}.tar.gz"
-SRC_URI="https://github.com/xiph/libao/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/xiph/libao/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

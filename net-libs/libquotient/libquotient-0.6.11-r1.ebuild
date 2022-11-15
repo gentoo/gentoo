@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Qt5-based SDK to develop applications for Matrix"
 HOMEPAGE="https://github.com/quotient-im/libQuotient"
-SRC_URI="https://github.com/quotient-im/libQuotient/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/quotient-im/libQuotient/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/libQuotient-${PV}"
 
 LICENSE="LGPL-2+"

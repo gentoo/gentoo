@@ -6,7 +6,7 @@ EAPI=7
 inherit dune
 
 DESCRIPTION="Cooperative light-weight thread library for OCaml"
-SRC_URI="https://github.com/ocsigen/lwt/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocsigen/lwt/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="http://ocsigen.org/lwt"
 
 SLOT="0/${PV}"

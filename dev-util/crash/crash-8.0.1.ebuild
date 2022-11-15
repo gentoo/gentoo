@@ -21,7 +21,7 @@ else
 	[[ -n ${EXTRA_VER} ]] && \
 		EXTRA_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${CATEGORY}/${PN}/${P}-extra-${EXTRA_VER}.tar.xz"
 
-	SRC_URI="https://github.com/crash-utility/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://github.com/crash-utility/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 		${UPSTREAM_PATCHSET_URI} ${EXTRA_PATCHSET_URI}
 		mirror://gnu/gdb/gdb-${GDB_VERSION}.tar.gz"
 	KEYWORDS="-* ~alpha ~amd64 ~arm ~ia64 ~ppc64 ~riscv ~s390 ~x86"

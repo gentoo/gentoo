@@ -10,7 +10,7 @@ EGO_PN="github.com/docker/distribution"
 
 DESCRIPTION="Docker Registry 2.0"
 HOMEPAGE="https://github.com/docker/distribution"
-SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://${EGO_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 MIT ZLIB"
 SLOT="0"

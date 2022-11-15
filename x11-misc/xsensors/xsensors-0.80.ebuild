@@ -6,7 +6,7 @@ inherit autotools xdg
 
 DESCRIPTION="A hardware health information viewer, interface to lm-sensors"
 HOMEPAGE="https://github.com/Mystro256/xsensors/"
-SRC_URI="https://github.com/Mystro256/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Mystro256/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Header-only C++ library for JSON Schema validation"
 HOMEPAGE="https://github.com/tristanpenman/valijson"
-SRC_URI="https://github.com/tristanpenman/valijson/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tristanpenman/valijson/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

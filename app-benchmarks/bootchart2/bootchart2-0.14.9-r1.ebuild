@@ -9,7 +9,7 @@ inherit linux-info python-single-r1 systemd toolchain-funcs
 
 DESCRIPTION="Performance analysis and visualization of the system boot process"
 HOMEPAGE="https://github.com/xrmx/bootchart"
-SRC_URI="https://github.com/xrmx/bootchart/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/xrmx/bootchart/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="A CFFI binding for Hoedown, a markdown parsing library"
 HOMEPAGE="http://misaka.61924.nl/ https://github.com/FSX/misaka"
-SRC_URI="https://github.com/FSX/misaka/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/FSX/misaka/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 IUSE=""

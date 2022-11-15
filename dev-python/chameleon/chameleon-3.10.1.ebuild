@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/Chameleon/
 "
 SRC_URI="
-	https://github.com/malthe/chameleon/archive/${PV}.tar.gz
+	https://github.com/malthe/chameleon/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

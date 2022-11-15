@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="Define prefix-infix-suffix command combos"
 HOMEPAGE="https://magit.vc/manual/magit-popup"
-SRC_URI="https://github.com/magit/magit-popup/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/magit/magit-popup/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

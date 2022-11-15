@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/jmespath/
 "
 SRC_URI="
-	https://github.com/jmespath/jmespath.py/archive/${PV}.tar.gz
+	https://github.com/jmespath/jmespath.py/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

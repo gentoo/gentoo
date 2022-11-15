@@ -11,7 +11,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A pure Ruby library for access to mp3 files (internal infos and tags)"
 HOMEPAGE="http://rubyforge.org/projects/ruby-mp3info/"
-SRC_URI="https://github.com/moumar/${PN}/archive/v${PV}.tar.gz -> ${P}-git.tgz"
+SRC_URI="https://github.com/moumar/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

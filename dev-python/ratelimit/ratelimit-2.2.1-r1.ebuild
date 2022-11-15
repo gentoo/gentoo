@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="An API rate limit decorator for Python"
 HOMEPAGE="https://github.com/tomasbasham/ratelimit"
 SRC_URI="
-	https://github.com/tomasbasham/${PN}/archive/v${PV}.tar.gz
+	https://github.com/tomasbasham/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

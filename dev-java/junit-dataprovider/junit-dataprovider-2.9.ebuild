@@ -11,7 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="The common core for a TestNG like dataprovider runner for JUnit"
 HOMEPAGE="https://github.com/TNG/junit-dataprovider"
-SRC_URI="https://github.com/TNG/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/TNG/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

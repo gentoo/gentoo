@@ -7,7 +7,7 @@ inherit cmake xdg-utils
 
 DESCRIPTION="Lightweight and cross-platform clipboard history applet"
 HOMEPAGE="https://github.com/pvanek/qlipper"
-SRC_URI="https://github.com/pvanek/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pvanek/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

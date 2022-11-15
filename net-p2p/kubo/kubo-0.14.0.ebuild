@@ -7,7 +7,7 @@ inherit bash-completion-r1 go-module systemd
 
 DESCRIPTION="Main implementation of IPFS"
 HOMEPAGE="https://ipfs.io/"
-SRC_URI="https://github.com/ipfs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ipfs/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT MPL-2.0"

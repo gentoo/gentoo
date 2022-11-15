@@ -8,7 +8,7 @@ inherit python-r1
 
 DESCRIPTION="Assorted git-related scripts"
 HOMEPAGE="https://github.com/MestreLion/git-tools"
-SRC_URI="https://github.com/MestreLion/git-tools/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/MestreLion/git-tools/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

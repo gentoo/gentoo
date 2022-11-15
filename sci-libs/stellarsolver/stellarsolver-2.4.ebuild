@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Cross-platform Sextractor and Astrometry.net-Based internal astrometric solver"
 HOMEPAGE="https://github.com/rlancaste/stellarsolver"
-SRC_URI="https://github.com/rlancaste/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rlancaste/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-3"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Broadcom Bluetooth firmware"
 HOMEPAGE="https://github.com/winterheart/broadcom-bt-firmware"
-SRC_URI="https://github.com/winterheart/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/winterheart/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="broadcom_bcm20702 MIT"
 SLOT="0"

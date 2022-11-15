@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="ARIN rwhois daemon"
 HOMEPAGE="http://projects.arin.net/rwhois/"
-SRC_URI="https://github.com/arineng/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/arineng/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P}/${PN}"
 
 LICENSE="GPL-2"

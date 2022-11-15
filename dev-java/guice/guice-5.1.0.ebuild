@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom core/pom.xml --download-uri https://github.com/google/guava/archive/v30.1.1.tar.gz --slot 5 --keywords "~amd64 ~arm ~arm64 ~ppc64 ~x866" --ebuild guice-5.1.0.ebuild
+# java-ebuilder --generate-ebuild --workdir . --pom core/pom.xml --download-uri https://github.com/google/guava/archive/refs/tags/v30.1.1.tar.gz --slot 5 --keywords "~amd64 ~arm ~arm64 ~ppc64 ~x866" --ebuild guice-5.1.0.ebuild
 
 EAPI=8
 
@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Guice is a lightweight dependency injection framework for Java 6 and above"
 HOMEPAGE="https://github.com/google/guice"
-SRC_URI="https://github.com/google/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="4"

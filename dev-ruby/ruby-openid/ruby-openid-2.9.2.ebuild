@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A robust library for verifying and serving OpenID identities"
 HOMEPAGE="https://github.com/openid/ruby-openid"
-SRC_URI="https://github.com/openid/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/openid/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

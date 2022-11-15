@@ -8,7 +8,7 @@ inherit cmake xdg-utils
 
 DESCRIPTION="Qt-based image viewer"
 HOMEPAGE="https://nomacs.org/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 plugins? ( https://github.com/${PN}/${PN}-plugins/archive/$(ver_cut 1-2).tar.gz -> ${PLUGIN_PKG}.tar.gz )"
 
 LICENSE="GPL-3+"

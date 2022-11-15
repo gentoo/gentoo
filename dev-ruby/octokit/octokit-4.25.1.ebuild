@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Ruby toolkit for the Github API"
 HOMEPAGE="https://github.com/octokit/octokit.rb"
-SRC_URI="https://github.com/octokit/octokit.rb/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/octokit/octokit.rb/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

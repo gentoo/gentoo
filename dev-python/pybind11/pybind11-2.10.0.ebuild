@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/pybind11/
 "
 SRC_URI="
-	https://github.com/pybind/pybind11/archive/v${PV}.tar.gz
+	https://github.com/pybind/pybind11/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

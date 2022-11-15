@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Full-featured email creation and transfer class for PHP"
 HOMEPAGE="https://github.com/PHPMailer/PHPMailer"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

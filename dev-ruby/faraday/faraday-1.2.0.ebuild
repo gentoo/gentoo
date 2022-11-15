@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="HTTP/REST API client library with pluggable components"
 HOMEPAGE="https://github.com/lostisland/faraday"
-SRC_URI="https://github.com/lostisland/faraday/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lostisland/faraday/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

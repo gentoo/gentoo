@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="An easy-to-use hash implementation for C programmers"
 HOMEPAGE="https://troydhanson.github.io/uthash/index.html"
-SRC_URI="https://github.com/troydhanson/uthash/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/troydhanson/uthash/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-1"
 SLOT="0"

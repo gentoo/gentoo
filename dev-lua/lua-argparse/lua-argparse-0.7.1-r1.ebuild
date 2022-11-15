@@ -9,7 +9,7 @@ inherit lua toolchain-funcs
 
 DESCRIPTION="Feature-rich command line parser for Lua"
 HOMEPAGE="https://github.com/luarocks/argparse"
-SRC_URI="https://github.com/luarocks/${PN/lua-/}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/luarocks/${PN/lua-/}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN//lua-/}-${PV}"
 
 LICENSE="MIT"

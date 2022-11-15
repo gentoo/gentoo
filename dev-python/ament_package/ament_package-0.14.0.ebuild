@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Parser for the manifest files in the ament buildsystem"
 HOMEPAGE="https://github.com/ament/ament_package"
-SRC_URI="https://github.com/ament/ament_package/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ament/ament_package/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

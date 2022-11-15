@@ -8,7 +8,7 @@ inherit python-single-r1
 
 DESCRIPTION="Tool for preparing and storing patch revisions as git tag"
 HOMEPAGE="https://github.com/stefanha/git-publish"
-SRC_URI="https://github.com/stefanha/git-publish/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/stefanha/git-publish/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

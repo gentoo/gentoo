@@ -6,7 +6,7 @@ inherit gnome2-utils
 
 DESCRIPTION="Allow to connect bluetooth paired devices from gnome control panel"
 HOMEPAGE="https://github.com/bjarosze/gnome-bluetooth-quick-connect"
-SRC_URI="https://github.com/bjarosze/gnome-bluetooth-quick-connect/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bjarosze/gnome-bluetooth-quick-connect/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

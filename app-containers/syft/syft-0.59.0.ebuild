@@ -7,7 +7,7 @@ GIT_COMMIT=41bc6bb410352845f22766e27dd48ba93aa825a4
 
 DESCRIPTION="Generate a Software Bill of Materials from container images and filesystems"
 HOMEPAGE="https://www.anchore.com"
-SRC_URI="https://github.com/anchore/syft/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/anchore/syft/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0"

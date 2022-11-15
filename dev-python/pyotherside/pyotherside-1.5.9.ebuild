@@ -9,7 +9,7 @@ inherit qmake-utils python-single-r1
 
 DESCRIPTION="Asynchronous Python 3 Bindings for Qt 5"
 HOMEPAGE="https://github.com/thp/pyotherside https://thp.io/2011/pyotherside/"
-SRC_URI="https://github.com/thp/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/thp/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"

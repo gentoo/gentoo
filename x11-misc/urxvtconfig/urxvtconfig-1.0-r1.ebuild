@@ -8,7 +8,7 @@ inherit qmake-utils
 
 DESCRIPTION="GUI configuration tool for the rxvt-unicode terminal emulator"
 HOMEPAGE="https://github.com/daedreth/URXVTConfig"
-SRC_URI="https://github.com/daedreth/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/daedreth/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="Nginx configuration static analyzer"
 HOMEPAGE="https://github.com/yandex/gixy"
 # Use GitHub source insted PyPi to get tarball with tests
-SRC_URI="https://github.com/yandex/gixy/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/yandex/gixy/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"

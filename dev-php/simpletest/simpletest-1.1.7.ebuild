@@ -7,7 +7,7 @@ KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="A PHP testing framework"
 HOMEPAGE="http://www.simpletest.org/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE=""

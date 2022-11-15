@@ -9,7 +9,7 @@ inherit webapp python-single-r1
 
 DESCRIPTION="Python 3 implementation for client-side web programming"
 HOMEPAGE="http://www.brython.info"
-SRC_URI="https://github.com/${PN}-dev/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}-dev/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"

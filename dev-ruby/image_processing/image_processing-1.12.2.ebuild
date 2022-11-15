@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="High-level image processing helper methods with libvips and ImageMagick"
 HOMEPAGE="https://github.com/janko/image_processing"
-SRC_URI="https://github.com/janko/image_processing/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janko/image_processing/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

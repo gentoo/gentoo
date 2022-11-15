@@ -7,7 +7,7 @@ inherit dune multiprocessing
 
 DESCRIPTION="Embed locations informations inside executable and libraries"
 HOMEPAGE="https://github.com/ocaml/dune"
-SRC_URI="https://github.com/ocaml/dune/archive/${PV}.tar.gz -> dune-${PV}.tar.gz"
+SRC_URI="https://github.com/ocaml/dune/archive/refs/tags/${PV}.tar.gz -> dune-${PV}.tar.gz"
 S="${WORKDIR}/dune-${PV}"
 
 LICENSE="MIT"

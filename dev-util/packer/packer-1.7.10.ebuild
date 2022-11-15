@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="A tool to create identical machine images for multiple platforms"
 HOMEPAGE="https://www.packer.io"
-SRC_URI="https://github.com/hashicorp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/hashicorp/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://gentoofiles.s3.eu-central-1.amazonaws.com/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD-2 BSD-4 MIT MPL-2.0 unicode"

@@ -224,7 +224,7 @@ DESCRIPTION="a simple but powerful password manager for the terminal"
 HOMEPAGE="https://www.gopass.pw/"
 # These have the same raw content, just different paths in them upstream
 # The COMMIT file is still missing!
-RAW_SRC_URI="https://github.com/gopasspw/gopass/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+RAW_SRC_URI="https://github.com/gopasspw/gopass/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 RELEASE_SRC_URI="https://github.com/gopasspw/gopass/releases/download/v${PV}/${P}.tar.gz"
 COMMIT="4fdac8b"
 SRC_URI="${EGO_SUM_SRC_URI}"

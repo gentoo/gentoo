@@ -7,7 +7,7 @@ inherit vim-plugin
 
 DESCRIPTION="vim plugin: a modern vim plugin for editing LaTeX files"
 HOMEPAGE="https://github.com/lervag/vimtex"
-SRC_URI="https://github.com/lervag/vimtex/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lervag/vimtex/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~riscv ~x86"
 LICENSE="MIT"
 

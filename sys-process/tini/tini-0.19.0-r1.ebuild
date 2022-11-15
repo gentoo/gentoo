@@ -12,7 +12,7 @@ GIT_COMMIT="${!GIT_COMMIT}"
 
 DESCRIPTION="A tiny but valid init for containers"
 HOMEPAGE="https://github.com/krallin/tini"
-SRC_URI="https://github.com/krallin/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/krallin/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

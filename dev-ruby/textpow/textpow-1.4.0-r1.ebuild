@@ -11,7 +11,7 @@ RUBY_FAKEGEM_GEMSPEC="textpow.gemspec"
 
 inherit ruby-fakegem
 
-SRC_URI="https://github.com/grosser/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/grosser/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="A library to parse and process Textmate bundles"
 HOMEPAGE="http://textpow.rubyforge.org/"
 

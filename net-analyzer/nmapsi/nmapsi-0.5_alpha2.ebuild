@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Qt frontend to nmap"
 HOMEPAGE="https://github.com/nmapsi4/nmapsi4"
-SRC_URI="https://github.com/nmapsi4/nmapsi4/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nmapsi4/nmapsi4/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

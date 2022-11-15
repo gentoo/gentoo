@@ -11,7 +11,7 @@ DESCRIPTION="Centralized Ruby extension management system"
 HOMEPAGE="https://rubygems.org/"
 LICENSE="|| ( Ruby MIT )"
 
-SRC_URI="https://github.com/rubygems/rubygems/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rubygems/rubygems/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"

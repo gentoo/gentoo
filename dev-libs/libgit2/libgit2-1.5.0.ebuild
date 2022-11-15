@@ -9,7 +9,7 @@ inherit cmake python-any-r1
 DESCRIPTION="A linkable library for Git"
 HOMEPAGE="https://libgit2.org/"
 SRC_URI="
-	https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
 S=${WORKDIR}/${P/_/-}
 

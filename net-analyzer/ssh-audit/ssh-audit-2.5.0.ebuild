@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="SSH server auditing (banner, key exchange, encryption, mac, compression, etc)"
 HOMEPAGE="https://github.com/jtesta/ssh-audit"
-SRC_URI="https://github.com/jtesta/ssh-audit/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jtesta/ssh-audit/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

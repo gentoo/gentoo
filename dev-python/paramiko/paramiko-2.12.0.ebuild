@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/paramiko/
 "
 SRC_URI="
-	https://github.com/paramiko/paramiko/archive/${PV}.tar.gz
+	https://github.com/paramiko/paramiko/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

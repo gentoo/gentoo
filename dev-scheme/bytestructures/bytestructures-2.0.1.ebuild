@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Structured access to bytevector contents"
 HOMEPAGE="https://github.com/TaylanUB/scheme-bytestructures/"
-SRC_URI="https://github.com/TaylanUB/scheme-${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/TaylanUB/scheme-${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/scheme-${PN}-${PV}"
 
 LICENSE="LGPL-3+"

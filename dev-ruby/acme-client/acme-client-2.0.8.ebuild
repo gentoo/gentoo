@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A Ruby client for the letsencrypt's ACME protocol"
 HOMEPAGE="https://github.com/unixcharles/acme-client"
-SRC_URI="https://github.com/unixcharles/acme-client/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/unixcharles/acme-client/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 

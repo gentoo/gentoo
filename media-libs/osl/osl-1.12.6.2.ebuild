@@ -13,7 +13,7 @@ inherit cmake llvm toolchain-funcs python-single-r1
 DESCRIPTION="Advanced shading language for production GI renderers"
 HOMEPAGE="http://opensource.imageworks.com/?p=osl"
 # If a development release, please don't keyword!
-SRC_URI="https://github.com/imageworks/OpenShadingLanguage/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/imageworks/OpenShadingLanguage/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/OpenShadingLanguage-${PV}"
 
 LICENSE="BSD"

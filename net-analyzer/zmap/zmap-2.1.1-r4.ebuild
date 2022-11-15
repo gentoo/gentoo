@@ -7,7 +7,7 @@ inherit cmake fcaps
 
 DESCRIPTION="Fast network scanner designed for Internet-wide network surveys"
 HOMEPAGE="https://zmap.io/"
-SRC_URI="https://github.com/zmap/zmap/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/zmap/zmap/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

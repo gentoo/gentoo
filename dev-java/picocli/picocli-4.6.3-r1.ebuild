@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java command line parser with both an annotations API and a programmatic API"
 HOMEPAGE="https://picocli.info"
-SRC_URI="https://github.com/remkop/${PN}/archive/v${PV}.tar.gz -> ${P}-sources.tar.gz"
+SRC_URI="https://github.com/remkop/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc64 x86"

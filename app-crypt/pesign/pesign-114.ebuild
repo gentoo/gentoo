@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Tools for manipulating signed PE-COFF binaries"
 HOMEPAGE="https://github.com/rhboot/pesign"
-SRC_URI="https://github.com/rhboot/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rhboot/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

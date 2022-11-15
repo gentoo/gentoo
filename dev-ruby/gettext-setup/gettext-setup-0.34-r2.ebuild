@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A gem to ease i18n"
 HOMEPAGE="https://github.com/puppetlabs/gettext-setup-gem"
-SRC_URI="https://github.com/puppetlabs/gettext-setup-gem/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/puppetlabs/gettext-setup-gem/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="${PN}-gem-${PV}"
 
 LICENSE="Apache-2.0"

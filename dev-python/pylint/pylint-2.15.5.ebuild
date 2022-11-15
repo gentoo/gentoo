@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/PyCQA/pylint/
 "
 SRC_URI="
-	https://github.com/pycqa/pylint/archive/v${PV}.tar.gz
+	https://github.com/pycqa/pylint/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

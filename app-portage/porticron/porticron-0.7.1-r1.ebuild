@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="cron script to sync portage and send update mails to root"
 HOMEPAGE="https://github.com/gentoo/porticron"
-SRC_URI="https://github.com/gentoo/porticron/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gentoo/porticron/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

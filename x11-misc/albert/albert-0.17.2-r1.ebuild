@@ -15,10 +15,10 @@ JETBRAINS_PYTHON_EXTENSION_COMMIT="b7157473cc923fe4f15023c85a032eeab3627652"
 XKCD_PYTHON_EXTENSION_COMMIT="bf88a964473d65b39c9e09eb48dabb847206f06f"
 
 SRC_URI="
-	https://github.com/albertlauncher/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/albertlauncher/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/albertlauncher/plugins/archive/${PLUGINS_HASH}.tar.gz -> ${P}-plugins.tar.gz
 	python? (
-		https://github.com/pybind/pybind11/archive/v${PYBIND11_VERSION}.tar.gz -> ${P}-pybind11-${PYBIND11_VERSION}.tar.gz
+		https://github.com/pybind/pybind11/archive/refs/tags/v${PYBIND11_VERSION}.tar.gz -> ${P}-pybind11-${PYBIND11_VERSION}.tar.gz
 	)
 	python-extensions? (
 		https://github.com/albertlauncher/python/archive/${PYTHON_EXTENSIONS_COMMIT}.tar.gz -> ${P}-python-extensions.tar.gz

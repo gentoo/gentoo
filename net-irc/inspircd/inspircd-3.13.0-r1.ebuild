@@ -8,7 +8,7 @@ inherit systemd toolchain-funcs
 DESCRIPTION="Inspire IRCd - The Stable, High-Performance Modular IRCd"
 HOMEPAGE="https://www.inspircd.org/"
 SRC_URI="
-	https://github.com/inspircd/inspircd/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/inspircd/inspircd/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/clinew/gentoo-distfiles/raw/master/inspircd-${PV}-fix-path-builds.patch.bz2
 	https://github.com/clinew/gentoo-distfiles/raw/master/inspircd-${PV}-fix-template-files.patch.bz2
 	https://github.com/clinew/gentoo-distfiles/raw/master/inspircd-${PV}-fix-logrotate-conf.patch.bz2"

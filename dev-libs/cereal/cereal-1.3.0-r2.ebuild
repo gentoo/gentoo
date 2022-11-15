@@ -8,7 +8,7 @@ inherit cmake
 DESCRIPTION="Header-only C++11 serialization library"
 HOMEPAGE="https://uscilab.github.io/cereal/"
 SRC_URI="
-	https://github.com/USCiLab/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/USCiLab/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~expeditioneer/patches/${P}-fix-doctest.patch"
 
 LICENSE="BSD"

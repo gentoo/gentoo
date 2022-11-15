@@ -10,7 +10,7 @@ inherit distutils-r1 optfeature systemd
 
 DESCRIPTION="GNS3 server to asynchronously manage emulators"
 HOMEPAGE="https://www.gns3.com/ https://github.com/GNS3/gns3-server"
-SRC_URI="https://github.com/GNS3/gns3-server/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/GNS3/gns3-server/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

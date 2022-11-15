@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="A terminal UI for tshark, inspired by Wireshark"
 HOMEPAGE="https://termshark.io/"
-SRC_URI="https://github.com/gcla/termshark/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gcla/termshark/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD-2 BSD MIT MPL-2.0"

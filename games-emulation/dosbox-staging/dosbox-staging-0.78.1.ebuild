@@ -6,7 +6,7 @@ inherit meson xdg
 
 DESCRIPTION="Modernized DOSBox soft-fork"
 HOMEPAGE="https://dosbox-staging.github.io/"
-SRC_URI="https://github.com/dosbox-staging/dosbox-staging/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dosbox-staging/dosbox-staging/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

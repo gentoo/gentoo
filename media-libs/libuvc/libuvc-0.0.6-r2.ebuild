@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="A cross-platform library for USB video devices, built atop libusb"
 HOMEPAGE="https://int80k.com/libuvc/"
-SRC_URI="https://github.com/ktossell/libuvc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ktossell/libuvc/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

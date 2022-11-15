@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Command-line utility to create projects from cookiecutters (project templates)"
 HOMEPAGE="https://github.com/cookiecutter/cookiecutter"
-SRC_URI="https://github.com/cookiecutter/cookiecutter/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cookiecutter/cookiecutter/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

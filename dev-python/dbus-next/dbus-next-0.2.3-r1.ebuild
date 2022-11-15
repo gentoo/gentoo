@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/dbus-next/
 "
 SRC_URI="
-	https://github.com/altdesktop/python-dbus-next/archive/v${PV}.tar.gz
+	https://github.com/altdesktop/python-dbus-next/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}"/python-${P}

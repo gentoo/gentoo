@@ -7,7 +7,7 @@ inherit cmake-multilib
 
 DESCRIPTION="Extremely Fast Compression algorithm"
 HOMEPAGE="https://github.com/lz4/lz4"
-SRC_URI="https://github.com/lz4/lz4/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lz4/lz4/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-2"
 # https://abi-laboratory.pro/tracker/timeline/lz4/

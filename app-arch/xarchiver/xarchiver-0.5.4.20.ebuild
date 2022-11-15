@@ -8,7 +8,7 @@ inherit xdg-utils
 DESCRIPTION="A GTK+ archive manager that can be used with Thunar"
 HOMEPAGE="https://github.com/ib/xarchiver/"
 SRC_URI="
-	https://github.com/ib/xarchiver/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/ib/xarchiver/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="GPL-2"

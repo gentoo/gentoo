@@ -8,7 +8,7 @@ inherit python-single-r1 qmake-utils xdg-utils
 
 DESCRIPTION="A general purpose tile map editor"
 HOMEPAGE="https://www.mapeditor.org/"
-SRC_URI="https://github.com/bjorn/tiled/archive/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/bjorn/tiled/archive/refs/tags/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD BSD-2 GPL-2+"
 SLOT="0"

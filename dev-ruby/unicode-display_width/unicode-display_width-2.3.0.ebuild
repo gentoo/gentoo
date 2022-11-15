@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Adds String#display_width to get the display size using EastAsianWidth.txt"
 HOMEPAGE="https://github.com/janlelis/unicode-display_width"
-SRC_URI="https://github.com/janlelis/unicode-display_width/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janlelis/unicode-display_width/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
 KEYWORDS="~amd64 ~arm64"

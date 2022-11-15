@@ -10,7 +10,7 @@ inherit meson pam python-any-r1 systemd
 MY_P="${PN}-v${PV}"
 DESCRIPTION="D-Bus service to access fingerprint readers"
 HOMEPAGE="https://gitlab.freedesktop.org/libfprint/fprintd"
-SRC_URI="https://gitlab.freedesktop.org/libfprint/${PN}/-/archive/v${PV}/${MY_P}.tar.bz2"
+SRC_URI="https://gitlab.freedesktop.org/libfprint/${PN}/-/archive/refs/tags/v${PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

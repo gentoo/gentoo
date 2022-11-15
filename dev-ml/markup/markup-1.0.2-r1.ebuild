@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Error-recovering streaming HTML5 and XML parsers"
 HOMEPAGE="https://github.com/aantron/markup.ml"
-SRC_URI="https://github.com/aantron/markup.ml/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/aantron/markup.ml/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

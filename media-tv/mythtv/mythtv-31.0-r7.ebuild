@@ -14,7 +14,7 @@ MYTHTV_BRANCH="fixes/${P%.*}"
 
 DESCRIPTION="Open Source DVR and media center hub"
 HOMEPAGE="https://www.mythtv.org https://github.com/MythTV/mythtv"
-SRC_URI="https://github.com/MythTV/mythtv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/MythTV/mythtv/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"

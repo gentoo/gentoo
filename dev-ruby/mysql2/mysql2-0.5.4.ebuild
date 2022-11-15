@@ -20,7 +20,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A modern, simple and very fast Mysql library for Ruby - binding to libmysql"
 HOMEPAGE="https://github.com/brianmario/mysql2"
-SRC_URI="https://github.com/brianmario/mysql2/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/brianmario/mysql2/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"

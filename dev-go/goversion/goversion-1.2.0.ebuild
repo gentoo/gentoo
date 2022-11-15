@@ -6,7 +6,7 @@ EAPI=6
 EGO_PN="rsc.io/goversion"
 
 inherit golang-build golang-vcs-snapshot bash-completion-r1
-ARCHIVE_URI="https://github.com/rsc/goversion/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+ARCHIVE_URI="https://github.com/rsc/goversion/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="Print version used to build Go executables"

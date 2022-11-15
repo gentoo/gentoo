@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="Riak Protocol Buffers messages"
 HOMEPAGE="https://github.com/basho/riak_pb"
-SRC_URI="https://github.com/basho/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/basho/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

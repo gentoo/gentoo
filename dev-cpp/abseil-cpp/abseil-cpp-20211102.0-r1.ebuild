@@ -14,7 +14,7 @@ GTEST_FILE="gtest-${GTEST_COMMIT}.tar.gz"
 
 DESCRIPTION="Abseil Common Libraries (C++), LTS Branch"
 HOMEPAGE="https://abseil.io"
-SRC_URI="https://github.com/abseil/abseil-cpp/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/abseil/abseil-cpp/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://github.com/google/googletest/archive/${GTEST_COMMIT}.tar.gz -> ${GTEST_FILE} )"
 
 LICENSE="

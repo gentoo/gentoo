@@ -16,7 +16,7 @@ inherit myspell-r2
 
 DESCRIPTION="Kazakh dictionaries for myspell/hunspell"
 HOMEPAGE="https://github.com/kergalym/myspell-kk"
-SRC_URI="https://github.com/kergalym/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kergalym/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"

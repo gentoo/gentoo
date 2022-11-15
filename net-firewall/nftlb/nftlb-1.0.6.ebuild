@@ -7,7 +7,7 @@ inherit linux-info autotools
 
 DESCRIPTION="nftables load balancer"
 HOMEPAGE="https://github.com/zevenet/nftlb"
-SRC_URI="https://github.com/zevenet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/zevenet/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"

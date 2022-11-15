@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Mark specs pending or skipped for specific Ruby engine / version combinations"
 HOMEPAGE="https://github.com/pboling/rspec-pending_for"
-SRC_URI="https://github.com/pboling/rspec-pending_for/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pboling/rspec-pending_for/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

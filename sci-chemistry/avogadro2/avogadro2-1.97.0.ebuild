@@ -17,7 +17,7 @@ I18N_COMMIT="13c4286102373658cea48a33b86536ab5793da66"
 DESCRIPTION="Advanced molecule editor and visualizer 2"
 HOMEPAGE="https://www.openchemistry.org/"
 SRC_URI="
-	https://github.com/OpenChemistry/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/OpenChemistry/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/OpenChemistry/avogadro-i18n/archive/${I18N_COMMIT}.tar.gz -> ${P}-i18n.tar.gz
 "
 S="${WORKDIR}/${MY_PN}-${PV}"

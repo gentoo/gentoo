@@ -8,7 +8,7 @@ inherit elisp
 DESCRIPTION="Visible bookmarks in buffer"
 HOMEPAGE="http://joodland.github.io/bm/
 	https://www.emacswiki.org/emacs/VisibleBookmarks"
-SRC_URI="https://github.com/joodland/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/joodland/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

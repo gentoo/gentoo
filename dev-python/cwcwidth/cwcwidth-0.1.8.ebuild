@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/cwcwidth/
 "
 SRC_URI="
-	https://github.com/sebastinas/cwcwidth/archive/v${PV}.tar.gz
+	https://github.com/sebastinas/cwcwidth/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

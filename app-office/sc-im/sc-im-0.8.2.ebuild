@@ -9,7 +9,7 @@ inherit lua-single toolchain-funcs flag-o-matic
 
 DESCRIPTION="Spreadsheet Calculator Improvised -- An ncurses spreadsheet program for terminal"
 HOMEPAGE="https://github.com/andmarti1424/sc-im"
-SRC_URI="https://github.com/andmarti1424/sc-im/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/andmarti1424/sc-im/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P}/src"
 
 LICENSE="BSD-4"

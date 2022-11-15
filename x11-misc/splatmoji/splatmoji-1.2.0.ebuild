@@ -7,7 +7,7 @@ inherit optfeature
 
 DESCRIPTION="Quickly look up and input emoji and/or emoticons"
 HOMEPAGE="https://github.com/cspeterson/splatmoji/"
-SRC_URI="https://github.com/cspeterson/splatmoji/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cspeterson/splatmoji/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64"

@@ -10,7 +10,7 @@ MY_DN="openvassd"
 
 DESCRIPTION="Open Vulnerability Assessment Scanner"
 HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/openvas-scanner/"
-SRC_URI="https://github.com/greenbone/openvas-scanner/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/greenbone/openvas-scanner/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2 GPL-2+"

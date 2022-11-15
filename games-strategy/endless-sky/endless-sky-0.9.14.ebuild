@@ -8,7 +8,7 @@ inherit python-any-r1 scons-utils toolchain-funcs xdg
 
 DESCRIPTION="Space exploration, trading & combat in the tradition of Terminal Velocity"
 HOMEPAGE="https://endless-sky.github.io"
-SRC_URI="https://github.com/endless-sky/endless-sky/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/endless-sky/endless-sky/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC-BY-SA-4.0 CC-BY-SA-3.0 GPL-3+ public-domain"
 SLOT="0"

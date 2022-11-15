@@ -7,7 +7,7 @@ inherit bash-completion-r1
 
 DESCRIPTION="A sophisticated build-tool for Erlang projects that follows OTP principles"
 HOMEPAGE="https://github.com/rebar/rebar"
-SRC_URI="https://github.com/rebar/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rebar/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

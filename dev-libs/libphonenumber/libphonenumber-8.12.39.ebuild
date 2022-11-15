@@ -8,7 +8,7 @@ inherit cmake
 
 DESCRIPTION="Library for parsing, formatting, and validating international phone numbers"
 HOMEPAGE="https://github.com/google/libphonenumber"
-SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 CMAKE_USE_DIR="${WORKDIR}"/${P}/cpp
 
 LICENSE="Apache-2.0"

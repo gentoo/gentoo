@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A subclass of Object includes Comparable module for handling dates"
 HOMEPAGE="https://github.com/ruby/date"
-SRC_URI="https://github.com/ruby/date/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/date/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

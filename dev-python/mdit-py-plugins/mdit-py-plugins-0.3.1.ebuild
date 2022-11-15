@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/executablebooks/mdit-py-plugins/
 "
 SRC_URI="
-	https://github.com/executablebooks/mdit-py-plugins/archive/v${PV}.tar.gz
+	https://github.com/executablebooks/mdit-py-plugins/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

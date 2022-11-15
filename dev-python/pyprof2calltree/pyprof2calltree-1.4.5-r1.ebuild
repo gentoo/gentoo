@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="convert python profile data to kcachegrind calltree form"
 HOMEPAGE="https://pypi.org/project/pyprof2calltree/"
 # pypi tarball lacks tests
-SRC_URI="https://github.com/pwaller/pyprof2calltree/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pwaller/pyprof2calltree/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Sphinx directive to add unselectable prompt"
 HOMEPAGE="https://github.com/sbrunner/sphinx-prompt/"
-SRC_URI="https://github.com/sbrunner/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sbrunner/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

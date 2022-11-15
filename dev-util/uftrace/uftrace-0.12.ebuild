@@ -10,7 +10,7 @@ inherit bash-completion-r1 lua-single python-single-r1 toolchain-funcs
 
 DESCRIPTION="Function (graph) tracer for user-space"
 HOMEPAGE="https://github.com/namhyung/uftrace"
-SRC_URI="https://github.com/namhyung/uftrace/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/namhyung/uftrace/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

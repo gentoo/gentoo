@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A utility for finding, fingerprinting and testing IKE VPN servers"
 HOMEPAGE="https://github.com/royhills/ike-scan"
-SRC_URI="https://github.com/royhills/ike-scan/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/royhills/ike-scan/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -83,7 +83,7 @@ inherit cargo flag-o-matic
 
 DESCRIPTION="Multithreaded lossless PNG compression optimizer written in Rust"
 HOMEPAGE="https://github.com/shssoichiro/oxipng"
-SRC_URI="https://github.com/shssoichiro/oxipng/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/shssoichiro/oxipng/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" $(cargo_crate_uris ${CRATES})"
 
 LICENSE="

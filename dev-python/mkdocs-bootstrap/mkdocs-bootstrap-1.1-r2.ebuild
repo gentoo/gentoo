@@ -11,7 +11,7 @@ inherit distutils-r1 docs
 
 DESCRIPTION="Bootstrap theme for MkDocs"
 HOMEPAGE="https://www.mkdocs.org https://github.com/mkdocs/mkdocs-bootstrap"
-SRC_URI="https://github.com/mkdocs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mkdocs/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

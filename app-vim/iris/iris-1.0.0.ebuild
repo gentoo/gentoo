@@ -12,7 +12,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="vim plugin: mail client for vim"
 HOMEPAGE="https://github.com/soywod/iris.vim"
-SRC_URI="https://github.com/soywod/iris.vim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/soywod/iris.vim/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"

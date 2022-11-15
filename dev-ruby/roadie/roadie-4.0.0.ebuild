@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Making HTML emails comfortable for the Rails rockstars"
 HOMEPAGE="https://github.com/Mange/roadie"
-SRC_URI="https://github.com/Mange/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Mange/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

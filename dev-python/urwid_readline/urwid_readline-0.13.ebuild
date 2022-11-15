@@ -11,7 +11,7 @@ HOMEPAGE="
 	https://github.com/rr-/urwid_readline/
 	https://pypi.org/project/urwid-readline/"
 SRC_URI="
-	https://github.com/rr-/urwid_readline/archive/${PV}.tar.gz
+	https://github.com/rr-/urwid_readline/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="MIT"

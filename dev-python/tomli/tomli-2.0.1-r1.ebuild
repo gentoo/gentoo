@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/hukkin/tomli/
 "
 SRC_URI="
-	https://github.com/hukkin/tomli/archive/${PV}.tar.gz
+	https://github.com/hukkin/tomli/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	https://files.pythonhosted.org/packages/py3/${PN::1}/${PN}/${P}-py3-none-any.whl
 		-> ${P}-py3-none-any.whl.zip

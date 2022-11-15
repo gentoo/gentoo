@@ -9,7 +9,7 @@ GIT_COMMIT=0d4137b8
 
 DESCRIPTION="The official GitLab Runner, written in Go"
 HOMEPAGE="https://gitlab.com/gitlab-org/gitlab-runner"
-SRC_URI="https://gitlab.com/gitlab-org/gitlab-runner/-/archive/v${PV}/${PN}-v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://gitlab.com/gitlab-org/gitlab-runner/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="MIT"

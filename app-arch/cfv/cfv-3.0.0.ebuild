@@ -12,7 +12,7 @@ inherit distutils-r1 optfeature
 DESCRIPTION="Command-line File Verify - versatile file checksum creator and verifier"
 HOMEPAGE="https://github.com/cfv-project/cfv/"
 # Tests aren't included in PyPI tarballs
-SRC_URI="https://github.com/cfv-project/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/cfv-project/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

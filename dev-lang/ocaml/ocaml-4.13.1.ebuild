@@ -6,7 +6,7 @@ EAPI=7
 inherit flag-o-matic
 
 HOMEPAGE="https://ocaml.org/"
-SRC_URI="https://github.com/ocaml/ocaml/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocaml/ocaml/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Programming language supporting functional, imperative & object-oriented styles"
 
 LICENSE="QPL-1.0 LGPL-2"

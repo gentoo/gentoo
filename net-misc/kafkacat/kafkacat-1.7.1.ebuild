@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Generic command line non-JVM Apache Kafka producer and consumer"
 HOMEPAGE="https://github.com/edenhill/kcat"
-SRC_URI="https://github.com/edenhill/kcat/archive/${PV}.tar.gz -> ${MY_PN}-${PV}.tar.gz"
+SRC_URI="https://github.com/edenhill/kcat/archive/refs/tags/${PV}.tar.gz -> ${MY_PN}-${PV}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

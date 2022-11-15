@@ -7,7 +7,7 @@ inherit qmake-utils
 
 DESCRIPTION="./configure like generator for qmake-based projects"
 HOMEPAGE="https://github.com/psi-im/qconf"
-SRC_URI="https://github.com/psi-im/qconf/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/psi-im/qconf/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

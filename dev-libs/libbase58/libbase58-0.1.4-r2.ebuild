@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="C implementation of Bitcoin's base58 encoding"
 HOMEPAGE="https://github.com/luke-jr/libbase58"
-SRC_URI="https://github.com/luke-jr/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/luke-jr/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/0"

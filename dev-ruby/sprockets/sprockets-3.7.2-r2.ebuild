@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Ruby library for compiling and serving web assets"
 HOMEPAGE="https://github.com/rails/sprockets"
-SRC_URI="https://github.com/rails/sprockets/archive/v${PV}.tar.gz -> ${P}-git.tgz"
+SRC_URI="https://github.com/rails/sprockets/archive/refs/tags/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

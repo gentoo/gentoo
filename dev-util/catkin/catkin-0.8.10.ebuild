@@ -18,7 +18,7 @@ HOMEPAGE="https://wiki.ros.org/catkin"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/ros/catkin/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ros/catkin/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
 fi
 

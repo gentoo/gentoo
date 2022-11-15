@@ -10,7 +10,7 @@ inherit edo multiprocessing
 DESCRIPTION="SMT-based program verifier"
 HOMEPAGE="https://github.com/boogie-org/boogie/"
 SRC_URI="
-	https://github.com/boogie-org/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/boogie-org/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~xgqt/distfiles/deps/${P}-deps.tar.xz
 "
 

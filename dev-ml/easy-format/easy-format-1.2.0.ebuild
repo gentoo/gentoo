@@ -7,7 +7,7 @@ inherit findlib
 
 DESCRIPTION="Pretty-printing library for OCaml"
 HOMEPAGE="https://github.com/ocaml-community/easy-format"
-SRC_URI="https://github.com/ocaml-community/easy-format/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocaml-community/easy-format/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0/${PV}"
 LICENSE="BSD"

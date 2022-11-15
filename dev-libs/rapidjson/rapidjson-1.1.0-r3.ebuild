@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/miloyip/rapidjson.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/miloyip/rapidjson/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/miloyip/rapidjson/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86"
 	S="${WORKDIR}/rapidjson-${PV}"
 fi

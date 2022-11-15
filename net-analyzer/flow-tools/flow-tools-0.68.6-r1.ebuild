@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="library and programs to process reports from NetFlow data"
 HOMEPAGE="https://github.com/5u623l20/flow-tools/"
-SRC_URI="https://github.com/5u623l20/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/5u623l20/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-3"
 SLOT="0"

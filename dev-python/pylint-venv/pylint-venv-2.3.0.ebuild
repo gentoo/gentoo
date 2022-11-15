@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/jgosmann/pylint-venv/
 "
 SRC_URI="
-	https://github.com/jgosmann/pylint-venv/archive/v${PV}.tar.gz
+	https://github.com/jgosmann/pylint-venv/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

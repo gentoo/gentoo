@@ -7,7 +7,7 @@ inherit autotools optfeature
 
 DESCRIPTION="Documentation package for GnuCash"
 HOMEPAGE="https://www.gnucash.org/"
-SRC_URI="https://github.com/Gnucash/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Gnucash/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2 FDL-1.1"

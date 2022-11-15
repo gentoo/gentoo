@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/awxkit/
 "
 SRC_URI="
-	https://github.com/ansible/awx/archive/${PV}.tar.gz
+	https://github.com/ansible/awx/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/awx-${PV}/awxkit"

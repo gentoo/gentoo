@@ -21,7 +21,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 else
 	KEYWORDS="~amd64 ~arm"
 	SRC_URI="${EXTERNAL_PROGS}
-		https://github.com/ros/console_bridge/archive/${PV}.tar.gz -> ${P}.tar.gz"
+		https://github.com/ros/console_bridge/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="A ROS-independent package for logging into rosconsole/rosout"

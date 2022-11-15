@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Provides delegation of specified methods to a designated object"
 HOMEPAGE="https://github.com/ruby/forwardable"
-SRC_URI="https://github.com/ruby/forwardable/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/forwardable/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

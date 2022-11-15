@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="The Singleton module implements the Singleton pattern"
 HOMEPAGE="https://github.com/ruby/singleton"
-SRC_URI="https://github.com/ruby/singleton/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/singleton/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

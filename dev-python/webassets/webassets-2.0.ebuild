@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Asset management for Python web development"
 HOMEPAGE="https://github.com/miracle2k/webassets"
-SRC_URI="https://github.com/miracle2k/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/miracle2k/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 # ^^ pypi tarball is missing tests
 
 LICENSE="BSD-2"

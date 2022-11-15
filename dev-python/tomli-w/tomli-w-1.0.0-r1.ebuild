@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/hukkin/tomli-w/
 "
 SRC_URI="
-	https://github.com/hukkin/tomli-w/archive/${PV}.tar.gz
+	https://github.com/hukkin/tomli-w/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

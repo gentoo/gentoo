@@ -7,7 +7,7 @@ inherit linux-info
 
 DESCRIPTION="Wrapper for chroot to set up some bind mounts, namespaces, and control groups"
 HOMEPAGE="https://github.com/chutz/chroot-wrapper"
-SRC_URI="https://github.com/chutz/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/chutz/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

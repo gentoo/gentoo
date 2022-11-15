@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/mediafile/
 "
 SRC_URI="
-	https://github.com/beetbox/mediafile/archive/v${PV}.tar.gz
+	https://github.com/beetbox/mediafile/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

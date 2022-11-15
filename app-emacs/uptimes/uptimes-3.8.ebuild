@@ -8,7 +8,7 @@ inherit elisp readme.gentoo-r1
 MY_PN="${PN}.el"
 DESCRIPTION="Track and display emacs session uptimes"
 HOMEPAGE="http://www.davep.org/emacs/"
-SRC_URI="https://github.com/davep/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/davep/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-3+"

@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Reflections - a Java runtime metadata analysis"
 HOMEPAGE="https://github.com/ronmamo/reflections"
-SRC_URI="https://github.com/ronmamo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ronmamo/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="WTFPL-2 BSD-2"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit toolchain-funcs python-any-r1
 
 DESCRIPTION="Easy hugepage access"
 HOMEPAGE="https://github.com/libhugetlbfs/libhugetlbfs"
-SRC_URI="https://github.com/libhugetlbfs/libhugetlbfs/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/libhugetlbfs/libhugetlbfs/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

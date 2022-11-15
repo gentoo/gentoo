@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Range library for C++14/17/20, basis for C++20's std::ranges"
 HOMEPAGE="https://github.com/ericniebler/range-v3"
-SRC_URI="https://github.com/ericniebler/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ericniebler/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Boost-1.0"
 SLOT="0"

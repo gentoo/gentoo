@@ -11,7 +11,7 @@ HOMEPAGE="
 	https://pypi.org/project/sshpubkeys/
 	https://github.com/ojarva/python-sshpubkeys"
 SRC_URI="
-	https://github.com/ojarva/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	https://github.com/ojarva/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

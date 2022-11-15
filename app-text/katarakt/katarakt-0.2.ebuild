@@ -9,7 +9,7 @@ MY_P="${PN}-v${PV}"
 
 DESCRIPTION="A simple PDF viewer designed to use as much available screen space as possible"
 HOMEPAGE="https://gitlab.cs.fau.de/Qui_Sum/katarakt"
-SRC_URI="https://gitlab.cs.fau.de/Qui_Sum/${PN}/-/archive/v${PV}/${MY_P}.tar.gz"
+SRC_URI="https://gitlab.cs.fau.de/Qui_Sum/${PN}/-/archive/refs/tags/v${PV}/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD-2"

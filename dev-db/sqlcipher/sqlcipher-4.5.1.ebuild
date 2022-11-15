@@ -7,7 +7,7 @@ inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="Full Database Encryption for SQLite"
 HOMEPAGE="https://www.zetetic.net/sqlcipher/"
-SRC_URI="https://github.com/sqlcipher/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sqlcipher/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pytest-httpbin/
 "
 SRC_URI="
-	https://github.com/kevin1024/pytest-httpbin/archive/v${PV}.tar.gz
+	https://github.com/kevin1024/pytest-httpbin/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

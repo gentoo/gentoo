@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/pypa/distlib
 "
 SRC_URI="
-	https://github.com/pypa/distlib/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/pypa/distlib/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
 "
 
 LICENSE="PSF-2"

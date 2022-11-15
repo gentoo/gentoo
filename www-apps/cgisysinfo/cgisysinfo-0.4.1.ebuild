@@ -5,7 +5,7 @@ EAPI="7"
 
 inherit autotools
 
-SRC_URI="https://github.com/rafaelmartins/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rafaelmartins/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="A small cgi utility to show basic system information"
 HOMEPAGE="https://github.com/rafaelmartins/cgisysinfo"
 

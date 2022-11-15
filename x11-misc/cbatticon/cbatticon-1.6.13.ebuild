@@ -7,7 +7,7 @@ inherit strip-linguas toolchain-funcs
 
 DESCRIPTION="A lightweight and fast battery icon that sits in your system tray"
 HOMEPAGE="https://github.com/valr/cbatticon"
-SRC_URI="https://github.com/valr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/valr/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

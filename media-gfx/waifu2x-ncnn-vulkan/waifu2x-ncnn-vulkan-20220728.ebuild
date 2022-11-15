@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="waifu2x converter using ncnn and vulkan"
 HOMEPAGE="https://github.com/nihui/waifu2x-ncnn-vulkan"
-SRC_URI="https://github.com/nihui/waifu2x-ncnn-vulkan/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nihui/waifu2x-ncnn-vulkan/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

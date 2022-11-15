@@ -18,7 +18,7 @@ HOMEPAGE="https://wiki.ros.org/rosinstall_generator"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/ros-infrastructure/rosinstall_generator/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ros-infrastructure/rosinstall_generator/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
 fi
 

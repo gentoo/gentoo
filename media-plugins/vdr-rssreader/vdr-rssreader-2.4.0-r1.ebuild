@@ -9,7 +9,7 @@ MY_P="vdr-plugin-rssreader-${PV}"
 
 DESCRIPTION="VDR Plugin: RSS reader"
 HOMEPAGE="https://github.com/rofafor/vdr-plugin-rssreader"
-SRC_URI="https://github.com/rofafor/vdr-plugin-rssreader/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rofafor/vdr-plugin-rssreader/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

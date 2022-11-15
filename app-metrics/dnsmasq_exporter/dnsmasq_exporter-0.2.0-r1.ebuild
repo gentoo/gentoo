@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="prometheus exporter for dnsmasq"
 HOMEPAGE="https://github.com/google/dnsmasq_exporter"
-SRC_URI="https://github.com/google/dnsmasq_exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/google/dnsmasq_exporter/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="BSD MIT Apache-2.0"

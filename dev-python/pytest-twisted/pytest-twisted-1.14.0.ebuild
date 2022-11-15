@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pytest-twisted/
 "
 SRC_URI="
-	https://github.com/pytest-dev/pytest-twisted/archive/v${PV}.tar.gz
+	https://github.com/pytest-dev/pytest-twisted/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

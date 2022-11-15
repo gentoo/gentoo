@@ -12,7 +12,7 @@ inherit elisp
 
 DESCRIPTION="Declaration macro for simplifying your Emacs configuration"
 HOMEPAGE="https://github.com/jwiegley/use-package/"
-SRC_URI="https://github.com/jwiegley/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jwiegley/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

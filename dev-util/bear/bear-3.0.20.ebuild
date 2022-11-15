@@ -9,7 +9,7 @@ inherit cmake python-any-r1
 
 DESCRIPTION="Build EAR generates a compilation database for clang tooling"
 HOMEPAGE="https://github.com/rizsotto/Bear"
-SRC_URI="https://github.com/rizsotto/Bear/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rizsotto/Bear/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

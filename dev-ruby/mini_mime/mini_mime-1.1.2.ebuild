@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A lightweight mime type lookup toy"
 HOMEPAGE="https://github.com/discourse/mini_mime"
-SRC_URI="https://github.com/discourse/mini_mime/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/discourse/mini_mime/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

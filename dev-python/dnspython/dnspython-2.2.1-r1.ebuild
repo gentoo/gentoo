@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/dnspython/
 "
 SRC_URI="
-	https://github.com/rthalley/dnspython/archive/v${PV}.tar.gz
+	https://github.com/rthalley/dnspython/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

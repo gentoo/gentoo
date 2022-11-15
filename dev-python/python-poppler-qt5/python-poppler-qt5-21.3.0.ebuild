@@ -10,7 +10,7 @@ inherit distutils-r1 multiprocessing qmake-utils
 
 DESCRIPTION="Python binding for libpoppler-qt5"
 HOMEPAGE="https://github.com/frescobaldi/python-poppler-qt5"
-SRC_URI="https://github.com/frescobaldi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/frescobaldi/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

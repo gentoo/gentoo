@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Steam protocol plugin for pidgin"
 HOMEPAGE="https://github.com/eionrobb/pidgin-opensteamworks"
-SRC_URI="https://github.com/EionRobb/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/EionRobb/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

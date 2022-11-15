@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Character encoding auto-detection in Ruby"
 HOMEPAGE="https://github.com/jmhodges/rchardet"
-SRC_URI="https://github.com/jmhodges/rchardet/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jmhodges/rchardet/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="$(ver_cut 1)"

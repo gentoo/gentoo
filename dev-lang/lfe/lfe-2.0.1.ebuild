@@ -7,7 +7,7 @@ inherit elisp-common toolchain-funcs
 
 DESCRIPTION="Lisp-flavoured Erlang"
 HOMEPAGE="http://lfe.github.io/"
-SRC_URI="https://github.com/rvirding/lfe/archive/v${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/rvirding/lfe/archive/refs/tags/v${PV}.zip -> ${P}.zip"
 
 if [[ "${PV}" == *9999* ]]; then
 	inherit git-r3

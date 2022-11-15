@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Simplify writing short notes in emacs"
 HOMEPAGE="https://www.emacswiki.org/emacs/RememberMode"
-SRC_URI="https://github.com/jwiegley/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jwiegley/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.2+"
 SLOT="0"

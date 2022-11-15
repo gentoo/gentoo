@@ -12,7 +12,7 @@ HOMEPAGE="
 	https://flask-restful.readthedocs.io/en/latest/
 	https://github.com/flask-restful/flask-restful/"
 SRC_URI="
-	https://github.com/flask-restful/${PN}/archive/v${PV}.tar.gz
+	https://github.com/flask-restful/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="BSD"

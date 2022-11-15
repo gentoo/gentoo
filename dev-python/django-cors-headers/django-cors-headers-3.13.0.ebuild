@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/django-cors-headers/
 "
 SRC_URI="
-	https://github.com/adamchainz/django-cors-headers/archive/${PV}.tar.gz
+	https://github.com/adamchainz/django-cors-headers/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

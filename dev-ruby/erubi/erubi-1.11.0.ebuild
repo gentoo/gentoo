@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="a ERB template engine for ruby; a simplified fork of Erubis"
 HOMEPAGE="https://github.com/jeremyevans/erubi"
-SRC_URI="https://github.com/jeremyevans/erubi/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jeremyevans/erubi/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

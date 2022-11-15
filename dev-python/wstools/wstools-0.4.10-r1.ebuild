@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/wstools/
 "
 SRC_URI="
-	https://github.com/pycontribs/wstools/archive/${PV}.tar.gz
+	https://github.com/pycontribs/wstools/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

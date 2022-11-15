@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="linter for .gitlab-ci.yml files"
 HOMEPAGE="https://gitlab.com/orobardet/gitlab-ci-linter"
-SRC_URI="https://gitlab.com/orobardet/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://gitlab.com/orobardet/${PN}/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="MIT"

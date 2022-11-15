@@ -6,7 +6,7 @@ inherit go-module systemd
 
 DESCRIPTION="A reverse proxy that exposes a server behind a NAT or firewall to the internet"
 HOMEPAGE="https://github.com/fatedier/frp"
-SRC_URI="https://github.com/zmedico/frp/archive/v${PV}-vendor.tar.gz -> ${P}-vendor.tar.gz"
+SRC_URI="https://github.com/zmedico/frp/archive/refs/tags/v${PV}-vendor.tar.gz -> ${P}-vendor.tar.gz"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"

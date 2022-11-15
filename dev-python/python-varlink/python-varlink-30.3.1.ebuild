@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="Python implementation of the Varlink protocol"
 HOMEPAGE="https://github.com/varlink/python"
 SRC_URI="
-	https://github.com/varlink/python/archive/${PV}.tar.gz
+	https://github.com/varlink/python/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/python-${PV}"

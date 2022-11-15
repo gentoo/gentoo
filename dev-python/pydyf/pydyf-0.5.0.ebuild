@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/CourtBouillon/pydyf/
 "
 SRC_URI="
-	https://github.com/CourtBouillon/pydyf/archive/v${PV}.tar.gz
+	https://github.com/CourtBouillon/pydyf/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

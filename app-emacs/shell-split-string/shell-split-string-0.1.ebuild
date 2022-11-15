@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Split Strings Using Shell-Like Syntax"
 HOMEPAGE="https://github.com/10sr/shell-split-string-el/"
-SRC_URI="https://github.com/10sr/${PN}-el/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/10sr/${PN}-el/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-el-${PV}
 
 LICENSE="Unlicense"

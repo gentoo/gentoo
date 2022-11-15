@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Pygments Github custom lexers"
 HOMEPAGE="https://github.com/liluo/pygments-github-lexers"
-SRC_URI="https://github.com/liluo/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/liluo/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

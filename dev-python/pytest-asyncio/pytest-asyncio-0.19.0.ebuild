@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pytest-asyncio/
 "
 SRC_URI="
-	https://github.com/pytest-dev/pytest-asyncio/archive/v${PV}.tar.gz
+	https://github.com/pytest-dev/pytest-asyncio/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

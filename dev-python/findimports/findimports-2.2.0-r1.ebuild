@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/findimports/
 "
 SRC_URI="
-	https://github.com/mgedmin/findimports/archive/${PV}.tar.gz
+	https://github.com/mgedmin/findimports/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

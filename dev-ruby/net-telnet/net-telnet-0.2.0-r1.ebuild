@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Provides telnet client functionality"
 HOMEPAGE="https://github.com/ruby/net-telnet"
-SRC_URI="https://github.com/ruby/net-telnet/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/net-telnet/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
 SLOT="1"

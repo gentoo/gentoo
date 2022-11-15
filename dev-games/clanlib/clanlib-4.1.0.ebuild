@@ -9,7 +9,7 @@ MY_PN=ClanLib
 
 DESCRIPTION="Multi-platform game development library"
 HOMEPAGE="https://github.com/sphair/ClanLib"
-SRC_URI="https://github.com/sphair/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sphair/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="ZLIB"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/django-cacheops/
 "
 SRC_URI="
-	https://github.com/Suor/django-cacheops/archive/${PV}.tar.gz
+	https://github.com/Suor/django-cacheops/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

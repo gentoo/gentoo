@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="C-family abstract syntax tree XML output tool"
 HOMEPAGE="https://github.com/CastXML/CastXML"
-SRC_URI="https://github.com/CastXML/CastXML/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/CastXML/CastXML/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 S="${WORKDIR}/CastXML-${PV}"
 

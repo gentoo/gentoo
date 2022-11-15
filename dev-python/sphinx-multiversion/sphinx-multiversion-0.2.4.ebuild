@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Add support for multiple versions to sphinx"
 HOMEPAGE="https://github.com/Holzhaus/sphinx-multiversion"
-SRC_URI="https://github.com/Holzhaus/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Holzhaus/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

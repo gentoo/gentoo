@@ -10,7 +10,7 @@ inherit distutils-r1 virtualx xdg
 
 DESCRIPTION="Graphical Network Simulator"
 HOMEPAGE="https://www.gns3.com/ https://github.com/GNS3/gns3-gui"
-SRC_URI="https://github.com/GNS3/gns3-gui/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/GNS3/gns3-gui/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

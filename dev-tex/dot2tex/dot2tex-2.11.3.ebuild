@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="A Graphviz to LaTeX converter"
 HOMEPAGE="https://dot2tex.readthedocs.org/ https://github.com/kjellmf/dot2tex"
-SRC_URI="https://github.com/kjellmf/dot2tex/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kjellmf/dot2tex/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

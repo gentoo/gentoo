@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Run unittests or fail if no tests were found"
 HOMEPAGE="https://github.com/mgorny/unittest-or-fail/"
 SRC_URI="
-	https://github.com/mgorny/unittest-or-fail/archive/v${PV}.tar.gz
+	https://github.com/mgorny/unittest-or-fail/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

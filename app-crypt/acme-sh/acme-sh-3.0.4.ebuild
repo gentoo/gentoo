@@ -10,7 +10,7 @@ inherit optfeature
 
 DESCRIPTION="A pure Unix shell script implementing ACME client protocol"
 HOMEPAGE="https://github.com/acmesh-official/acme.sh"
-SRC_URI="https://github.com/acmesh-official/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/acmesh-official/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"

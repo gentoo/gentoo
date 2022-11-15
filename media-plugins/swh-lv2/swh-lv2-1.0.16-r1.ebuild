@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Large collection of LV2 audio plugins/effects"
 HOMEPAGE="http://plugin.org.uk/"
-SRC_URI="https://github.com/swh/lv2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/swh/lv2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/lv2-${PV}"
 
 LICENSE="GPL-2"

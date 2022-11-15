@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/rich/
 "
 SRC_URI="
-	https://github.com/Textualize/rich/archive/v${PV}.tar.gz
+	https://github.com/Textualize/rich/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

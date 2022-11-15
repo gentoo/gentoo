@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="A header-only C++ library for printing colored messages to the terminal"
 HOMEPAGE="https://github.com/ikalnytskyi/termcolor https://termcolor.readthedocs.io"
-SRC_URI="https://github.com/ikalnytskyi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ikalnytskyi/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

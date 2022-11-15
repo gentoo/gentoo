@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Reference models by URI"
 HOMEPAGE="https://github.com/rails/globalid"
-SRC_URI="https://github.com/rails/globalid/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rails/globalid/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

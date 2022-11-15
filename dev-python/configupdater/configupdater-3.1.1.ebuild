@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/ConfigUpdater/
 "
 SRC_URI="
-	https://github.com/pyscaffold/configupdater/archive/v${PV}.tar.gz
+	https://github.com/pyscaffold/configupdater/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/yob/pdf-reader/"
 
 # We cannot use the gem distributions because they don't contain the
 # tests' data, we have to rely on the git tags.
-SRC_URI="https://github.com/${GITHUB_USER}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${GITHUB_USER}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="2"

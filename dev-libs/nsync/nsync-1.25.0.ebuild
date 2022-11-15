@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="C library that exports various synchronization primitives, such as mutexes"
 HOMEPAGE="https://github.com/google/nsync"
-SRC_URI="https://github.com/google/nsync/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/nsync/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

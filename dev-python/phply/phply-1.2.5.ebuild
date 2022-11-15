@@ -11,7 +11,7 @@ HOMEPAGE="
 	https://github.com/viraptor/phply/
 	https://pypi.org/project/phply/"
 SRC_URI="
-	https://github.com/viraptor/phply/archive/${PV}.tar.gz
+	https://github.com/viraptor/phply/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="BSD"

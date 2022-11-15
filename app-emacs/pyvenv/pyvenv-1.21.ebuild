@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Python virtual environment interface for Emacs"
 HOMEPAGE="https://github.com/jorgenschaefer/pyvenv/"
-SRC_URI="https://github.com/jorgenschaefer/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jorgenschaefer/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Command-line flags module for Unix shell scripts"
 HOMEPAGE="https://github.com/kward/shflags"
-SRC_URI="https://github.com/kward/shflags/archive/v${PV}.tar.gz -> ${P}.tgz"
+SRC_URI="https://github.com/kward/shflags/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Arisotura/${MY_PN}.git"
 else
-	SRC_URI="https://github.com/Arisotura/${MY_PN}/archive/${PV}.tar.gz
+	SRC_URI="https://github.com/Arisotura/${MY_PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.tar.gz"
 	S="${WORKDIR}"/${MY_P}
 	KEYWORDS="~amd64"

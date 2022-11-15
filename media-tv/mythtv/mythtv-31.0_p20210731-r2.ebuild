@@ -16,7 +16,7 @@ if [[ $(ver_cut 3) == "p" ]] ; then
 	# mythtv and mythplugins are separate builds in the github MythTV project
 	S="${WORKDIR}/mythtv-${MY_COMMIT}/mythtv"
 else
-	SRC_URI="https://github.com/MythTV/mythtv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/MythTV/mythtv/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	# mythtv and mythplugins are separate builds in the github mythtv project
 	S="${WORKDIR}/${P}/mythtv"
 fi

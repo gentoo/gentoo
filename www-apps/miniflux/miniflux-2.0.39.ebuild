@@ -7,7 +7,7 @@ inherit go-module systemd
 
 DESCRIPTION="Minimalist and opinionated feed reader"
 HOMEPAGE="https://miniflux.app https://github.com/miniflux/v2"
-SRC_URI="https://github.com/${PN}/v2/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/v2/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"

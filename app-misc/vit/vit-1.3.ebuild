@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Perl/Curses front-end for Taskwarrior (app-misc/task)"
 HOMEPAGE="https://github.com/scottkosty/vit"
-SRC_URI="https://github.com/scottkosty/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/scottkosty/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="Powerful command-line bookmark manager"
 HOMEPAGE="https://github.com/jarun/buku"
-SRC_URI="https://github.com/jarun/${PN}/archive/v$(ver_cut 1-2).tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jarun/${PN}/archive/refs/tags/v$(ver_cut 1-2).tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

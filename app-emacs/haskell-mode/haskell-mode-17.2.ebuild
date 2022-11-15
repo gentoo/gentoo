@@ -9,7 +9,7 @@ inherit elisp
 DESCRIPTION="Mode for editing (and running) Haskell programs in Emacs"
 HOMEPAGE="https://haskell.github.io/haskell-mode/
 	https://www.haskell.org/haskellwiki/Emacs#Haskell-mode"
-SRC_URI="https://github.com/haskell/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/haskell/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.2+"
 SLOT="0"

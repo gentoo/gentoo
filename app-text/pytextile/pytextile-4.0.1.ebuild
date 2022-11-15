@@ -10,7 +10,7 @@ MY_P="python-textile-${PV}"
 
 DESCRIPTION="A Python port of Textile, A humane web text generator"
 HOMEPAGE="https://github.com/textile/python-textile"
-SRC_URI="https://github.com/textile/python-textile/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/textile/python-textile/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

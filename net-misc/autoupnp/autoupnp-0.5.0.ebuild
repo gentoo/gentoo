@@ -8,7 +8,7 @@ inherit meson
 DESCRIPTION="Automatic open port forwarder using UPnP"
 HOMEPAGE="https://github.com/projg2/autoupnp/"
 SRC_URI="
-	https://github.com/projg2/autoupnp/archive/v${PV}.tar.gz
+	https://github.com/projg2/autoupnp/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Multithreaded, small, efficient SOCKS5 server"
 HOMEPAGE="https://github.com/rofl0r/microsocks"
-SRC_URI="https://github.com/rofl0r/microsocks/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rofl0r/microsocks/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

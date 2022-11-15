@@ -9,7 +9,7 @@ inherit meson python-any-r1
 
 DESCRIPTION="Convenient & cross-platform sandboxing C library"
 HOMEPAGE="https://github.com/Snaipe/BoxFort"
-SRC_URI="https://github.com/Snaipe/BoxFort/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Snaipe/BoxFort/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

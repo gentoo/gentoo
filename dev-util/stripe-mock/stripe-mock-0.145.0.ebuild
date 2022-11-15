@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="Mock HTTP server that responds like the real Stripe API"
 HOMEPAGE="https://github.com/stripe/stripe-mock/"
-SRC_URI="https://github.com/stripe/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/stripe/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT ISC BSD-2"
 SLOT="0"

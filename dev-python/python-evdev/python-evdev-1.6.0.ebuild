@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/evdev/
 "
 SRC_URI="
-	https://github.com/gvalkov/python-evdev/archive/v${PV}.tar.gz
+	https://github.com/gvalkov/python-evdev/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

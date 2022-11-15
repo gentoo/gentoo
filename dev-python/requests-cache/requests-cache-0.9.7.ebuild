@@ -15,7 +15,7 @@ HOMEPAGE="
 "
 DESCRIPTION="Persistent cache for requests library"
 SRC_URI="
-	https://github.com/requests-cache/requests-cache/archive/v${PV}.tar.gz
+	https://github.com/requests-cache/requests-cache/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

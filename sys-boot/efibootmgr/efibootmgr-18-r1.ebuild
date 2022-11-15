@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="User-space application to modify the EFI boot manager"
 HOMEPAGE="https://github.com/rhinstaller/efibootmgr"
-SRC_URI="https://github.com/rhboot/efibootmgr/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rhboot/efibootmgr/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

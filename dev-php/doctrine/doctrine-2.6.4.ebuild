@@ -6,7 +6,7 @@ EAPI=7
 MY_P="orm-${PV}"
 DESCRIPTION="An object relational mapper for PHP"
 HOMEPAGE="https://www.doctrine-project.org/"
-SRC_URI="https://github.com/${PN}/orm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/orm/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="2"

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="C++ template image processing toolkit"
 HOMEPAGE="https://cimg.eu/ https://github.com/dtschump/CImg"
-SRC_URI="https://github.com/dtschump/CImg/archive/v.${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dtschump/CImg/archive/refs/tags/v.${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CeCILL-2 CeCILL-C"
 SLOT="0"

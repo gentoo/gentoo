@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A small, fast, full-featured window manager for X"
 HOMEPAGE="https://github.com/bbidulock/blackboxwm"
-SRC_URI="https://github.com/bbidulock/blackboxwm/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bbidulock/blackboxwm/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

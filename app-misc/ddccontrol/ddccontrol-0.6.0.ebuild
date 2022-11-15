@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Control monitor parameters, like brightness, contrast, RGB color levels via DDC"
 HOMEPAGE="http://ddccontrol.sourceforge.net/"
-SRC_URI="https://github.com/ddccontrol/ddccontrol/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ddccontrol/ddccontrol/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

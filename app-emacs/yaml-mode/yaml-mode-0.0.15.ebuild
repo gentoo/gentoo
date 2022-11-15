@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="A major mode for GNU Emacs for editing YAML files"
 HOMEPAGE="https://github.com/yoshiki/yaml-mode"
-SRC_URI="https://github.com/yoshiki/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/yoshiki/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

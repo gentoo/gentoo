@@ -13,7 +13,7 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/werman/noise-suppression-for-voice.git"
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/werman/noise-suppression-for-voice/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/werman/noise-suppression-for-voice/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="GPL-3+"

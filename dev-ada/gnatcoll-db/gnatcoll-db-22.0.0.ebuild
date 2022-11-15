@@ -10,7 +10,7 @@ inherit ada multiprocessing python-single-r1
 
 DESCRIPTION="GNAT Component Collection"
 HOMEPAGE="http://libre.adacore.com"
-SRC_URI="https://github.com/AdaCore/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3"

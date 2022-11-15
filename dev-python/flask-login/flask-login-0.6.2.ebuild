@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/Flask-Login/
 "
 SRC_URI="
-	https://github.com/maxcountryman/flask-login/archive/${PV}.tar.gz
+	https://github.com/maxcountryman/flask-login/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

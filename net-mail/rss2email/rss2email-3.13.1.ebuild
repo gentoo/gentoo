@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A python script that converts RSS/Atom newsfeeds to email"
 HOMEPAGE="https://github.com/rss2email/rss2email"
-SRC_URI="https://github.com/rss2email/rss2email/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rss2email/rss2email/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"

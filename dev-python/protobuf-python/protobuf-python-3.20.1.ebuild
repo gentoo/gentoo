@@ -23,7 +23,7 @@ HOMEPAGE="
 "
 if [[ "${PV}" != "9999" ]]; then
 	SRC_URI="
-		https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz
+		https://github.com/protocolbuffers/protobuf/archive/refs/tags/v${PV}.tar.gz
 			-> protobuf-${PV}.tar.gz
 	"
 fi

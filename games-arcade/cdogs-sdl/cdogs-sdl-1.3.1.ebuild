@@ -7,7 +7,7 @@ inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Classic overhead run-and-gun game"
 HOMEPAGE="https://cxong.github.io/cdogs-sdl/"
-SRC_URI="https://github.com/cxong/cdogs-sdl/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cxong/cdogs-sdl/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ BSD-2 CC-BY-3.0 CC-BY-4.0 CC-BY-SA-3.0 CC0-1.0 WTFPL-2 XMAME"
 SLOT="0"

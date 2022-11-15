@@ -8,7 +8,7 @@ inherit desktop xdg cmake
 DESCRIPTION="A PSP emulator written in C++"
 HOMEPAGE="https://www.ppsspp.org/"
 SRC_URI="
-	https://github.com/hrydgard/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/hrydgard/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/KhronosGroup/SPIRV-Cross/archive/9acb9ec31f5a8ef80ea6b994bb77be787b08d3d1.tar.gz -> ${P}-ext_SPIRV-Cross.tar.gz
 	https://github.com/Kingcom/armips/archive/7885552b208493a6a0f21663770c446c3ba65576.tar.gz -> ${P}-ext_armips.tar.gz
 	https://github.com/Tencent/rapidjson/archive/73063f5002612c6bf64fe24f851cd5cc0d83eef9.tar.gz -> ${P}-ext_rapidjson.tar.gz

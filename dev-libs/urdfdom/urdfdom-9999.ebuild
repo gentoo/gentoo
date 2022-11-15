@@ -15,7 +15,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm"
-	SRC_URI="https://github.com/ros/urdfdom/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ros/urdfdom/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="URDF (U-Robot Description Format) library"

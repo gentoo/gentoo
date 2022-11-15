@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A pure Ruby implementation of the SCP client protocol"
 HOMEPAGE="https://github.com/net-ssh/net-scp"
-SRC_URI="https://github.com/net-ssh/net-scp/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/net-ssh/net-scp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"

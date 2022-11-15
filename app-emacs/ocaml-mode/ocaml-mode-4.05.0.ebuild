@@ -8,7 +8,7 @@ inherit elisp
 MY_P=${P/-mode/}
 DESCRIPTION="Emacs mode for OCaml"
 HOMEPAGE="https://ocaml.org/"
-SRC_URI="https://github.com/ocaml/ocaml/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/ocaml/ocaml/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

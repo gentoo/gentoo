@@ -7,7 +7,7 @@ inherit autotools desktop xdg
 
 DESCRIPTION="Free implementation of Impulse Tracker, a tool used to create high quality music"
 HOMEPAGE="http://schismtracker.org/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2 public-domain"
 SLOT="0"

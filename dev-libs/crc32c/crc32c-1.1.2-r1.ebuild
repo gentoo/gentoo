@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="CRC32C implementation with support for CPU-specific acceleration instructions"
 HOMEPAGE="https://github.com/google/crc32c"
-SRC_URI="https://github.com/google/crc32c/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/crc32c/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

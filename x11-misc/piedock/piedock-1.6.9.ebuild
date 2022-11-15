@@ -10,7 +10,7 @@ HOMEPAGE="
 	http://markusfisch.de/PieDock
 	https://github.com/markusfisch/PieDock
 "
-SRC_URI="https://github.com/markusfisch/PieDock/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/markusfisch/PieDock/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/PieDock-${PV}"
 
 LICENSE="MIT"

@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="A pretty-printing combinator library and rendering engine"
 HOMEPAGE="https://github.com/fpottier/pprint/"
-SRC_URI="https://github.com/fpottier/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/fpottier/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2 LGPL-2-with-linking-exception"
 SLOT="0/${PV}"

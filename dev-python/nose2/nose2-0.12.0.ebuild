@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/nose2/
 "
 SRC_URI="
-	https://github.com/nose-devs/${PN}/archive/${PV}.tar.gz
+	https://github.com/nose-devs/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

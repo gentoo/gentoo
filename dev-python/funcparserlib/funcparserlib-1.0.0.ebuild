@@ -11,7 +11,7 @@ DESCRIPTION="Recursive descent parsing library based on functional combinators"
 HOMEPAGE="https://pypi.org/project/funcparserlib/
 	https://github.com/vlasovskikh/funcparserlib"
 SRC_URI="
-	https://github.com/vlasovskikh/funcparserlib/archive/${PV}.tar.gz
+	https://github.com/vlasovskikh/funcparserlib/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

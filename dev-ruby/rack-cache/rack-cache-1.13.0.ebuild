@@ -17,7 +17,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Enable HTTP caching for Rack-based applications that produce freshness info"
 HOMEPAGE="https://github.com/rtomayko/rack-cache"
-SRC_URI="https://github.com/rtomayko/rack-cache/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rtomayko/rack-cache/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1.2"

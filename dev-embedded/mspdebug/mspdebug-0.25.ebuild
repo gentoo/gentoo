@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A free debugger for use with MSP430 MCUs"
 HOMEPAGE="https://dlbeer.co.nz/mspdebug/ https://github.com/dlbeer/mspdebug"
-SRC_URI="https://github.com/dlbeer/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dlbeer/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

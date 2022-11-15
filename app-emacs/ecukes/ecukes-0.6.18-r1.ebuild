@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Cucumber for Emacs"
 HOMEPAGE="https://github.com/ecukes/ecukes/"
-SRC_URI="https://github.com/ecukes/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ecukes/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit go-module systemd
 
 DESCRIPTION="Process exporter for prometheus"
 HOMEPAGE="https://github.com/ncabatoff/process-exporter"
-SRC_URI="https://github.com/ncabatoff/process-exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ncabatoff/process-exporter/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="MIT Apache-2.0 BSD BSD-2"

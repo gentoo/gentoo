@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Module for pure Python asynchronous I/O using coroutines"
 HOMEPAGE="https://pypi.org/project/bluelet/"
-SRC_URI="https://github.com/sampsyo/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sampsyo/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/junegunn/fzf"
 MY_GIT_REV=04d0b0223fd69984a07a641d0e228c0e9e534825
 MY_GIT_REV=${MY_GIT_REV:0:7}
 
-SRC_URI="https://github.com/junegunn/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/junegunn/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz"
 
 LICENSE="MIT BSD-with-disclosure"

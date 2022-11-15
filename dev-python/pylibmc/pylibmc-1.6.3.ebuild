@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/lericson/pylibmc/
 "
 SRC_URI="
-	https://github.com/lericson/pylibmc/archive/${PV}.tar.gz
+	https://github.com/lericson/pylibmc/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

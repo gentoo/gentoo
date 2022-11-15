@@ -9,7 +9,7 @@ inherit meson python-any-r1
 DESCRIPTION="C++ JSON reader and writer"
 HOMEPAGE="https://github.com/open-source-parsers/jsoncpp"
 SRC_URI="
-	https://github.com/open-source-parsers/${PN}/archive/${PV}.tar.gz
+	https://github.com/open-source-parsers/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 LICENSE="|| ( public-domain MIT )"

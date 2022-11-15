@@ -11,7 +11,7 @@ DESCRIPTION="Easily create navigation for Flask applications"
 HOMEPAGE="https://pythonhosted.org/flask-nav/"
 # docs are missing from PyPI tarballs
 # https://github.com/mbr/flask-nav/pull/12
-SRC_URI="https://github.com/mbr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mbr/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

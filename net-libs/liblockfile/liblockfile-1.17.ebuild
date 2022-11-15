@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="Implements functions designed to lock the standard mailboxes"
 HOMEPAGE="https://github.com/miquels/liblockfile"
-SRC_URI="https://github.com/miquels/liblockfile/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/miquels/liblockfile/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

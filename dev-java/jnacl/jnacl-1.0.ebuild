@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Pure Java implementation of NaCl: Networking and Cryptography library"
 HOMEPAGE="https://github.com/neilalexander/jnacl"
-SRC_URI="https://github.com/neilalexander/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/neilalexander/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 # We don't have fest-assert
 RESTRICT="test"

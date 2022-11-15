@@ -9,7 +9,7 @@ MY_PV="${PV/_/-}"
 
 DESCRIPTION="file integrity verification program"
 HOMEPAGE="http://integrit.sourceforge.net/"
-SRC_URI="https://github.com/integrit/integrit/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/integrit/integrit/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

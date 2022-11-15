@@ -7,7 +7,7 @@ inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Software synthesizer based on ZynAddSubFX"
 HOMEPAGE="https://yoshimi.github.io/"
-SRC_URI="https://github.com/${PN^}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN^}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

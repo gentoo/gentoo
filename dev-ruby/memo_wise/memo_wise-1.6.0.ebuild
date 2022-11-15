@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="The wise choice for Ruby memoization"
 HOMEPAGE="https://github.com/panorama-ed/memo_wise"
-SRC_URI="https://github.com/panorama-ed/memo_wise/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/panorama-ed/memo_wise/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

@@ -19,11 +19,11 @@ HOMEPAGE="http://www.proftpd.org/
 	http://gssmod.sourceforge.net/"
 SRC_URI="ftp://ftp.proftpd.org/distrib/source/${P/_/}.tar.gz
 	case? ( http://www.castaglia.org/${PN}/modules/${PN}-mod-case-${MOD_CASE}.tar.gz )
-	clamav? ( https://github.com/jbenden/mod_clamav/archive/v${MOD_CLAMAV}.tar.gz -> ${PN}-mod_clamav-${MOD_CLAMAV}.tar.gz )
+	clamav? ( https://github.com/jbenden/mod_clamav/archive/refs/tags/v${MOD_CLAMAV}.tar.gz -> ${PN}-mod_clamav-${MOD_CLAMAV}.tar.gz )
 	diskuse? ( http://www.castaglia.org/${PN}/modules/${PN}-mod-diskuse-${MOD_DISKUSE}.tar.gz )
 	kerberos? ( mirror://sourceforge/gssmod/mod_gss-${MOD_GSS}.tar.gz )
 	msg? ( http://www.castaglia.org/${PN}/modules/${PN}-mod-msg-${MOD_MSG}.tar.gz )
-	vroot? ( https://github.com/Castaglia/${PN}-mod_vroot/archive/v${MOD_VROOT}.tar.gz -> mod_vroot-${MOD_VROOT}.tar.gz )"
+	vroot? ( https://github.com/Castaglia/${PN}-mod_vroot/archive/refs/tags/v${MOD_VROOT}.tar.gz -> mod_vroot-${MOD_VROOT}.tar.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"

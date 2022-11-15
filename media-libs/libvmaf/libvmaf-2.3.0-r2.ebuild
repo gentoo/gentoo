@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/Netflix/vmaf.git"
 else
 	SRC_URI="
-		https://github.com/Netflix/vmaf/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/Netflix/vmaf/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	"
 	KEYWORDS="~amd64 ~riscv ~x86"
 fi

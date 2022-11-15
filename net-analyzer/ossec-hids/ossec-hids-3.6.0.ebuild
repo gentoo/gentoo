@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Open Source Host-based Intrusion Detection System"
 HOMEPAGE="https://www.ossec.net/"
-SRC_URI="https://github.com/ossec/ossec-hids/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ossec/ossec-hids/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

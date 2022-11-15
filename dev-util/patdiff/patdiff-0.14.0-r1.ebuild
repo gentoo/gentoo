@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Colored patience diffs with word-level refinement"
 HOMEPAGE="https://github.com/janestreet/patdiff"
-SRC_URI="https://github.com/janestreet/patdiff/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janestreet/patdiff/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

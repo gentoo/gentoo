@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="An interface for Timewarrior report data"
 HOMEPAGE="https://github.com/lauft/timew-report"
-SRC_URI="https://github.com/lauft/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lauft/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

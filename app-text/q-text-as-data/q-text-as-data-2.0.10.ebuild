@@ -10,7 +10,7 @@ inherit python-r1
 DESCRIPTION="A CLI tool that allows direct execution of SQL-like queries on text"
 HOMEPAGE="http://harelba.github.io/q/"
 MY_P="q-${PV}"
-SRC_URI="https://github.com/harelba/q/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/harelba/q/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

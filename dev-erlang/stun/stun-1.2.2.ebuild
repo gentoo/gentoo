@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="STUN and TURN library for Erlang and Elixir"
 HOMEPAGE="https://github.com/processone/stun"
-SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/processone/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

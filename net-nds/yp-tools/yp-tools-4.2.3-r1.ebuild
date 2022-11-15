@@ -7,7 +7,7 @@ inherit autotools systemd
 
 DESCRIPTION="Network Information Service tools"
 HOMEPAGE="https://www.thkukuk.de/nis/"
-SRC_URI="https://github.com/thkukuk/yp-tools/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/thkukuk/yp-tools/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -13,7 +13,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	S=${WORKDIR}/${P}/${PN}
 else
-	SRC_URI="https://github.com/certbot/certbot/archive/v${PV}.tar.gz -> certbot-${PV}.tar.gz"
+	SRC_URI="https://github.com/certbot/certbot/archive/refs/tags/v${PV}.tar.gz -> certbot-${PV}.tar.gz"
 	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 	S=${WORKDIR}/certbot-${PV}/acme
 fi

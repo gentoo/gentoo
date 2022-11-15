@@ -18,7 +18,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Brotli compressor/decompressor"
 HOMEPAGE="https://github.com/miyucy/brotli"
-SRC_URI="https://github.com/miyucy/brotli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/miyucy/brotli/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

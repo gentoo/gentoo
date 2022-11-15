@@ -10,7 +10,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="vim plugin: aids developing Ruby on Rails applications"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=1567 https://github.com/tpope/vim-rails/"
-SRC_URI="https://github.com/tpope/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tpope/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="vim"
 KEYWORDS="~amd64 ~x86"
 

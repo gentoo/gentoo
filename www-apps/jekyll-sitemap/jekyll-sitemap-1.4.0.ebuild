@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Automatically generate a sitemap.xml for your Jekyll site"
 HOMEPAGE="https://github.com/jekyll/jekyll-sitemap"
-SRC_URI="https://github.com/jekyll/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jekyll/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit cmake
 MY_P="${PN}-v${PV}"
 DESCRIPTION="Efficient and accurate implementation of complex error functions"
 HOMEPAGE="https://jugit.fz-juelich.de/mlz/libcerf"
-SRC_URI="https://jugit.fz-juelich.de/mlz/libcerf/-/archive/v${PV}/${MY_P}.tar.gz"
+SRC_URI="https://jugit.fz-juelich.de/mlz/libcerf/-/archive/refs/tags/v${PV}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"

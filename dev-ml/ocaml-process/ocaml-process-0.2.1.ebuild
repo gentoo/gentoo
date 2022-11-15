@@ -7,7 +7,7 @@ inherit findlib
 
 DESCRIPTION="Easy process control for OCaml"
 HOMEPAGE="https://github.com/dsheets/ocaml-process"
-SRC_URI="https://github.com/dsheets/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dsheets/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"

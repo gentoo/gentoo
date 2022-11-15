@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="Kubernetes Bench for Security runs the CIS Kubernetes Benchmark"
 HOMEPAGE="https://github.com/aquasecurity/kube-bench"
-SRC_URI="https://github.com/aquasecurity/kube-bench/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/aquasecurity/kube-bench/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 MIT MPL-2.0 BSD BSD-2"

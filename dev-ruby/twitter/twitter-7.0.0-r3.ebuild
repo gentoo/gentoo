@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Ruby wrapper around the Twitter API"
 HOMEPAGE="https://github.com/sferik/twitter/"
-SRC_URI="https://github.com/sferik/twitter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sferik/twitter/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

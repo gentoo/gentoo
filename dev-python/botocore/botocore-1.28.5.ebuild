@@ -21,7 +21,7 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="
-		https://github.com/boto/botocore/archive/${PV}.tar.gz
+		https://github.com/boto/botocore/archive/refs/tags/${PV}.tar.gz
 			-> ${P}.gh.tar.gz
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"

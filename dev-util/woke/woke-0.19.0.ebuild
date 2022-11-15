@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="check source code for non-inclusive language"
 HOMEPAGE="https://getwoke.tech/"
-SRC_URI="https://github.com/get-woke/woke/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/get-woke/woke/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="MIT"

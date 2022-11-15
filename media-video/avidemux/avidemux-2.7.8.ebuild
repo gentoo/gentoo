@@ -10,8 +10,8 @@ inherit cmake desktop flag-o-matic qmake-utils xdg
 DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
 SRC_URI="
-	https://github.com/mean00/avidemux2/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/mean00/avidemux2_i18n/archive/${PV}.tar.gz -> ${PN}-i18n-${PV}.tar.gz
+	https://github.com/mean00/avidemux2/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/mean00/avidemux2_i18n/archive/refs/tags/${PV}.tar.gz -> ${PN}-i18n-${PV}.tar.gz
 "
 
 # Multiple licenses because of all the bundled stuff.

@@ -7,7 +7,7 @@ inherit autotools libtool
 
 DESCRIPTION="YAML 1.1 parser and emitter written in C"
 HOMEPAGE="https://github.com/yaml/libyaml"
-SRC_URI="https://github.com/yaml/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/yaml/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

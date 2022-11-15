@@ -9,7 +9,7 @@ inherit autotools golang-vcs-snapshot
 
 DESCRIPTION="Hypervisor-based Runtime for OCI"
 HOMEPAGE="https://github.com/hyperhq/runv"
-SRC_URI="https://github.com/hyperhq/runv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hyperhq/runv/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

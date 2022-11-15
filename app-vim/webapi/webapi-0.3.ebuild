@@ -7,7 +7,7 @@ inherit vim-plugin
 
 DESCRIPTION="vim plugin: interface to Web APIs"
 HOMEPAGE="https://github.com/mattn/webapi-vim"
-SRC_URI="https://github.com/mattn/${PN}-vim/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mattn/${PN}-vim/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 KEYWORDS="amd64 x86 ~x64-macos"
 

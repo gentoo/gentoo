@@ -154,7 +154,7 @@ inherit bash-completion-r1 cargo
 DESCRIPTION="cat(1) clone with syntax highlighting and Git integration"
 HOMEPAGE="https://github.com/sharkdp/bat"
 SRC_URI="
-	https://github.com/sharkdp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/sharkdp/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris)
 "
 

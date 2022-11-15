@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A Behaviour Driven Development (BDD) framework for Ruby"
 HOMEPAGE="https://github.com/rspec/rspec-mocks"
-SRC_URI="https://github.com/rspec/${PN}/archive/v${PV}.tar.gz -> ${P}-git.tgz"
+SRC_URI="https://github.com/rspec/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"
 SLOT="3"

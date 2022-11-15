@@ -7,7 +7,7 @@ inherit vala meson
 
 DESCRIPTION="Simple ALSA volume control for xfce4-panel"
 HOMEPAGE="https://github.com/equeim/xfce4-alsa-plugin"
-SRC_URI="https://github.com/equeim/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/equeim/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

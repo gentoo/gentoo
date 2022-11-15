@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Sanitize is a whitelist-based HTML sanitizer"
 HOMEPAGE="https://github.com/rgrove/sanitize"
-SRC_URI="https://github.com/rgrove/sanitize/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rgrove/sanitize/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="Shell history suggest box"
 HOMEPAGE="https://github.com/dvorka/hstr http://www.mindforger.com"
-SRC_URI="https://github.com/dvorka/hstr/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dvorka/hstr/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="Apache-2.0"

@@ -12,7 +12,7 @@ COMP_P="${COMP_PN}-${COMP_PV}"
 
 DESCRIPTION="Git extensions to provide high-level repository operations"
 HOMEPAGE="https://github.com/petervanderdoes/gitflow-avh"
-SRC_URI="https://github.com/petervanderdoes/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/petervanderdoes/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/petervanderdoes/${COMP_PN}/archive/${COMP_PV}.tar.gz -> ${COMP_P}.tar.gz"
 
 LICENSE="BSD MIT"

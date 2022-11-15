@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Provides support for asynchonous TCP, UDP, UNIX and SSL sockets"
 HOMEPAGE="https://github.com/socketry/async-io"
-SRC_URI="https://github.com/socketry/async-io/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/socketry/async-io/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)/$(ver_cut 1-2)"

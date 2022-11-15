@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="SSH Proxy Command"
 HOMEPAGE="https://github.com/gotoh/ssh-connect"
-SRC_URI="https://github.com/gotoh/ssh-connect/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gotoh/ssh-connect/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86"

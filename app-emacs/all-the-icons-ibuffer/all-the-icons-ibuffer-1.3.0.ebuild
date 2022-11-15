@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Display all-the-icons icons for all buffers in Emacs' ibuffer"
 HOMEPAGE="https://github.com/seagle0128/all-the-icons-ibuffer/"
-SRC_URI="https://github.com/seagle0128/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/seagle0128/${PN}/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

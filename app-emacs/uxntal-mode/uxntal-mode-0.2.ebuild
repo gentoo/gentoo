@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="GNU Emacs major mode for the uxntal assembly language"
 HOMEPAGE="https://github.com/non/uxntal-mode/"
-SRC_URI="https://github.com/non/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/non/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

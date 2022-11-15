@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Terminal strings styling with intuitive and clean API"
 HOMEPAGE="https://github.com/piotrmurach/pastel"
-SRC_URI="https://github.com/piotrmurach/pastel/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/piotrmurach/pastel/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

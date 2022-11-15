@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices"
 HOMEPAGE="https://github.com/alastair/python-musicbrainzngs"
 SRC_URI="
-	https://github.com/alastair/python-musicbrainzngs/archive/v${PV}.tar.gz
+	https://github.com/alastair/python-musicbrainzngs/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 LICENSE="BSD-2 ISC"

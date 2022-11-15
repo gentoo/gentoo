@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Utility to manage hardware, network, power or other profiles (fork)"
 HOMEPAGE="https://github.com/tokiclover/hprofile"
-SRC_URI="https://github.com/tokiclover/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tokiclover/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

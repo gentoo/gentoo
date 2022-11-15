@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/tartley/colorama/
 "
 SRC_URI="
-	https://github.com/tartley/colorama/archive/${PV}.tar.gz
+	https://github.com/tartley/colorama/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

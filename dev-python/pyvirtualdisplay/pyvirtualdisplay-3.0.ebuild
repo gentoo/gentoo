@@ -12,7 +12,7 @@ MY_P=PyVirtualDisplay-${PV}
 DESCRIPTION="Python wrapper for Xvfb, Xephyr and Xvnc"
 HOMEPAGE="https://github.com/ponty/PyVirtualDisplay"
 SRC_URI="
-	https://github.com/ponty/PyVirtualDisplay/archive/${PV}.tar.gz
+	https://github.com/ponty/PyVirtualDisplay/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 

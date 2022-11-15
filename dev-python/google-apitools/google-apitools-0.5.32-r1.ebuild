@@ -10,7 +10,7 @@ inherit distutils-r1
 COMMIT_HASH="7975c0cdbae1b9fc106553ce46e4a59cf0bea1e1"
 DESCRIPTION="Python library to manipulate Google APIs"
 HOMEPAGE="https://github.com/google/apitools"
-SRC_URI="https://github.com/google/apitools/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/google/apitools/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}/${P#google-}"
 
 LICENSE="Apache-2.0"

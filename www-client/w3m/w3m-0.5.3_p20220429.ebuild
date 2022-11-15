@@ -10,7 +10,7 @@ MY_PV="${PV/_p/+git}"
 
 DESCRIPTION="Text based WWW browser, supports tables and frames"
 HOMEPAGE="https://github.com/tats/w3m"
-SRC_URI="https://github.com/tats/w3m/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/tats/w3m/archive/refs/tags/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${P/_p/-git}"
 
 LICENSE="w3m"

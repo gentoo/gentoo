@@ -9,7 +9,7 @@ inherit distutils-r1 optfeature xdg desktop
 
 DESCRIPTION="Merge or split pdfs; rearrange, rotate, crop pages"
 HOMEPAGE="https://github.com/jeromerobert/pdfarranger"
-SRC_URI="https://github.com/jeromerobert/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jeromerobert/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

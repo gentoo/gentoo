@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="An Emacs major mode for editing ledger files"
 HOMEPAGE="https://github.com/ledger/ledger-mode"
-SRC_URI="https://github.com/ledger/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ledger/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ BSD"
 SLOT="0"

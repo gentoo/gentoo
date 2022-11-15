@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Display the current time using a binary clock"
 HOMEPAGE="http://www.davep.org/emacs/"
-SRC_URI="https://github.com/davep/${PN}.el/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/davep/${PN}.el/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2" # v2 only
 SLOT="0"

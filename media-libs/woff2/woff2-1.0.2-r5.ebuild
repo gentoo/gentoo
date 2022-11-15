@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Encode/decode WOFF2 font format"
 HOMEPAGE="https://github.com/google/woff2"
-SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

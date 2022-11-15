@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="C implementation of createrepo"
 HOMEPAGE="https://github.com/rpm-software-management/createrepo_c"
-SRC_URI="https://github.com/rpm-software-management/createrepo_c/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rpm-software-management/createrepo_c/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

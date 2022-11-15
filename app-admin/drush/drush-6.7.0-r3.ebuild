@@ -7,7 +7,7 @@ inherit bash-completion-r1
 
 DESCRIPTION="Command line shell and scripting interface for Drupal"
 HOMEPAGE="https://github.com/drush-ops/drush"
-SRC_URI="https://github.com/drush-ops/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/drush-ops/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

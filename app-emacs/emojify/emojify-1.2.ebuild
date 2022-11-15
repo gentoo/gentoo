@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Display emojis in Emacs, like :smile: or plain ASCII ones like :)"
 HOMEPAGE="https://github.com/iqbalansari/emacs-emojify/"
-SRC_URI="https://github.com/iqbalansari/emacs-${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/iqbalansari/emacs-${PN}/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 S="${WORKDIR}"/emacs-${P}
 

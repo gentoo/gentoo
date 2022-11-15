@@ -9,7 +9,7 @@ inherit bash-completion-r1 distutils-r1 meson
 
 DESCRIPTION="A lightweight, fast implementation of DEC SIXEL graphics codec"
 HOMEPAGE="https://github.com/libsixel/libsixel"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT public-domain"
 SLOT="0"

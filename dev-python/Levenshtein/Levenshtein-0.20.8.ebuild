@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/maxbachmann/Levenshtein/
 "
 SRC_URI="
-	https://github.com/maxbachmann/Levenshtein/archive/v${PV}.tar.gz
+	https://github.com/maxbachmann/Levenshtein/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -12,7 +12,7 @@ inherit dune
 
 DESCRIPTION="Base library and tools for ppx rewriters"
 HOMEPAGE="https://github.com/ocaml-ppx/ppxlib"
-SRC_URI="https://github.com/ocaml-ppx/ppxlib/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocaml-ppx/ppxlib/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"

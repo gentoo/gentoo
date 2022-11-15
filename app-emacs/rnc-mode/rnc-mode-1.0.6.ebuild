@@ -8,7 +8,7 @@ inherit elisp
 DESCRIPTION="An Emacs mode for editing Relax NG compact schema files"
 HOMEPAGE="https://github.com/TreeRex/rnc-mode
 	https://www.emacswiki.org/emacs/RELAX_NG"
-SRC_URI="https://github.com/TreeRex/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/TreeRex/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Module to allow Bayesian and other types of classifications"
 HOMEPAGE="https://github.com/jekyll/classifier-reborn"
-SRC_URI="https://github.com/jekyll/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jekyll/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit toolchain-funcs readme.gentoo-r1
 
 DESCRIPTION="A utility for parallelizing execution of shell functions"
 HOMEPAGE="https://github.com/exzombie/prll"
-SRC_URI="https://github.com/exzombie/prll/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/exzombie/prll/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

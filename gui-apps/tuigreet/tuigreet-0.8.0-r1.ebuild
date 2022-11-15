@@ -141,7 +141,7 @@ inherit cargo
 DESCRIPTION="TUI greeter for greetd login manager"
 HOMEPAGE="https://github.com/apognu/tuigreet"
 
-SRC_URI="https://github.com/apognu/tuigreet/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/apognu/tuigreet/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris)"
 
 QA_FLAGS_IGNORED="usr/bin/tuigreet"

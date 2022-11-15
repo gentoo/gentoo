@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Boolean operations on paths"
 HOMEPAGE="https://github.com/typemytype/booleanOperations"
-SRC_URI="https://github.com/typemytype/booleanOperations/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/typemytype/booleanOperations/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

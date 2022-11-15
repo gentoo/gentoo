@@ -6,7 +6,7 @@ inherit autotools gnustep-2
 
 DESCRIPTION="framework that interfaces Objective-C applications with the D-Bus IPC service"
 HOMEPAGE="https://github.com/gnustep/libs-dbuskit"
-SRC_URI="https://github.com/gnustep/libs-dbuskit/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gnustep/libs-dbuskit/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

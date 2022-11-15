@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/absl-py/
 "
 SRC_URI="
-	https://github.com/abseil/abseil-py/archive/v${PV}.tar.gz
+	https://github.com/abseil/abseil-py/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

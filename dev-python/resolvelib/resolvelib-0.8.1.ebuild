@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="provides a Resolver class that includes dependency resolution logic"
 HOMEPAGE="https://github.com/sarugaku/resolvelib/"
 SRC_URI="
-	https://github.com/sarugaku/resolvelib/archive/${PV}.tar.gz
+	https://github.com/sarugaku/resolvelib/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="ISC"

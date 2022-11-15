@@ -7,7 +7,7 @@ inherit multilib toolchain-funcs
 
 DESCRIPTION="a fast key-value storage library written at Google"
 HOMEPAGE="https://github.com/google/leveldb"
-SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 # https://github.com/google/leveldb/issues/536

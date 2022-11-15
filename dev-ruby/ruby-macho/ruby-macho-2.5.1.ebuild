@@ -11,7 +11,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A library for viewing and manipulating Mach-O files in Ruby"
 HOMEPAGE="https://github.com/Homebrew/ruby-macho"
-SRC_URI="https://github.com/Homebrew/ruby-macho/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Homebrew/ruby-macho/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

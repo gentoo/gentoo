@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="Cloudflare's PKI and TLS toolkit"
 HOMEPAGE="https://github.com/cloudflare/cfssl"
-SRC_URI="https://github.com/cloudflare/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cloudflare/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD BSD-1 MIT MPL-2.0"
 SLOT="0"

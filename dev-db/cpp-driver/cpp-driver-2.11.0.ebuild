@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="DataStax C/C++ Driver for Cassandra"
 HOMEPAGE="https://datastax.github.io/cpp-driver/"
-SRC_URI="https://github.com/datastax/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/datastax/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

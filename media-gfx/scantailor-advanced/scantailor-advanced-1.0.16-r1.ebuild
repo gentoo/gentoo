@@ -7,7 +7,7 @@ inherit cmake virtualx xdg
 
 DESCRIPTION="Interactive post-processing tool for scanned pages"
 HOMEPAGE="https://scantailor.org/ https://github.com/4lex4/scantailor-advanced"
-SRC_URI="https://github.com/4lex4/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/4lex4/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3 public-domain"
 SLOT="0"

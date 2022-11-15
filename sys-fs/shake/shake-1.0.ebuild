@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Defragmenter that runs in userspace while the system is used"
 HOMEPAGE="http://vleu.net/shake/"
-SRC_URI="https://github.com/unbrice/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/unbrice/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

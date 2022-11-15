@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="Format agnostic jQ"
 HOMEPAGE="https://github.com/jzelinskie/faq"
-SRC_URI="https://github.com/jzelinskie/faq/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jzelinskie/faq/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0"

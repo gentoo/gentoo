@@ -18,7 +18,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Date and time formatting for humans"
 HOMEPAGE="https://github.com/jeremyw/stamp"
-SRC_URI="https://github.com/jeremyw/stamp/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jeremyw/stamp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

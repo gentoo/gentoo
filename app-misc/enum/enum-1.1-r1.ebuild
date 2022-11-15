@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Replacement for GNU seq and BSD jot"
 HOMEPAGE="https://github.com/hartwork/enum"
-SRC_URI="https://github.com/hartwork/enum/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hartwork/enum/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

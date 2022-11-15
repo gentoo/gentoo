@@ -20,7 +20,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A Ruby library for syntax highlighting"
 HOMEPAGE="http://coderay.rubychan.de/"
-SRC_URI="https://github.com/rubychan/coderay/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rubychan/coderay/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

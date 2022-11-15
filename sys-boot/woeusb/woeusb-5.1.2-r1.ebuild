@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Creates windows installer on usb media from an iso image"
 HOMEPAGE="https://github.com/WoeUSB/WoeUSB"
-SRC_URI="https://github.com/WoeUSB/WoeUSB/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/WoeUSB/WoeUSB/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/WoeUSB-${PV}"
 
 LICENSE="CC-BY-SA-4.0 GPL-3+"

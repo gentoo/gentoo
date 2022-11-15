@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A simple bash driven frontend to simplify decompression of files"
 HOMEPAGE="http://obsoleet.org/code/unfoo"
-SRC_URI="https://github.com/jlec/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jlec/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

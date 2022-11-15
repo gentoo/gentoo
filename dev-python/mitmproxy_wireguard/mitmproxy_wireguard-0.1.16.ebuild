@@ -206,7 +206,7 @@ inherit cargo distutils-r1
 DESCRIPTION="WireGuard frontend for mitmproxy"
 HOMEPAGE="https://github.com/decathorpe/mitmproxy_wireguard"
 SRC_URI="
-	https://github.com/decathorpe/mitmproxy_wireguard/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/decathorpe/mitmproxy_wireguard/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
 	$(cargo_crate_uris ${CRATES})
 "
 

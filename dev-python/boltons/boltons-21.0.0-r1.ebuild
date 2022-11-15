@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Pure-python utilities in the same spirit as the standard library"
 HOMEPAGE="https://boltons.readthedocs.io/"
-SRC_URI="https://github.com/mahmoud/boltons/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/mahmoud/boltons/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

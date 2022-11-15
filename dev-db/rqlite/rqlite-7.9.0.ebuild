@@ -7,7 +7,7 @@ EGIT_COMMIT=61aa316141d12c5a67481af2a3fd4282ab858d3e
 
 DESCRIPTION="Replicated SQLite using the Raft consensus protocol"
 HOMEPAGE="https://github.com/rqlite/rqlite https://www.philipotoole.com/tag/rqlite/"
-SRC_URI="https://github.com/rqlite/rqlite/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/rqlite/rqlite/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~zmedico/dist/rqlite-7.7.2-deps.tar.xz"
 
 LICENSE="MIT Apache-2.0 BSD CC0-1.0 MPL-2.0"

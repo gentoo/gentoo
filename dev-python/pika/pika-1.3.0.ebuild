@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/pika/pika/
 	https://pypi.org/project/pika/
 "
-SRC_URI="https://github.com/pika/pika/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/pika/pika/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"

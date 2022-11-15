@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/Send2Trash/
 "
 SRC_URI="
-	https://github.com/arsenetar/send2trash/archive/${PV}.tar.gz
+	https://github.com/arsenetar/send2trash/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

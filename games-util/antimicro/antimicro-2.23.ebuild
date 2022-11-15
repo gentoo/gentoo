@@ -7,7 +7,7 @@ inherit cmake xdg
 
 DESCRIPTION="Map keyboard and mouse buttons to gamepad buttons"
 HOMEPAGE="https://github.com/AntiMicro/antimicro"
-SRC_URI="https://github.com/AntiMicro/antimicro/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/AntiMicro/antimicro/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

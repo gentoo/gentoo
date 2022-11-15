@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://pypi.org/project/cycler/
 	https://github.com/matplotlib/cycler"
 SRC_URI="
-	https://github.com/matplotlib/cycler/archive/v${PV}.tar.gz
+	https://github.com/matplotlib/cycler/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 SLOT="0"

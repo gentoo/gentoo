@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Ultralightweight JSON parser in ANSI C"
 HOMEPAGE="https://github.com/DaveGamble/cJSON"
-SRC_URI="https://github.com/DaveGamble/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/DaveGamble/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

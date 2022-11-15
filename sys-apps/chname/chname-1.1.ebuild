@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Run a command with a new system hostname"
 HOMEPAGE="https://github.com/marineam/chname"
-SRC_URI="https://github.com/marineam/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/marineam/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

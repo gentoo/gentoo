@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="An application that allows you to draw ASCII-Art images"
 HOMEPAGE="https://github.com/statico/cadubi"
-SRC_URI="https://github.com/statico/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/statico/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"

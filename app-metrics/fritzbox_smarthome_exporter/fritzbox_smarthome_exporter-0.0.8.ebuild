@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="Prometheus exporter for FRITZ!Box Smart Home"
 HOMEPAGE="https://github.com/jayme-github/fritzbox_smarthome_exporter"
-SRC_URI="https://github.com/jayme-github/fritzbox_smarthome_exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jayme-github/fritzbox_smarthome_exporter/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD GPL-3 MIT"

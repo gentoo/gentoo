@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/thriftpy2/
 "
 SRC_URI="
-	https://github.com/Thriftpy/thriftpy2/archive/v${PV}.tar.gz
+	https://github.com/Thriftpy/thriftpy2/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

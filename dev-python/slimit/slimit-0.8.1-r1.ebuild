@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="A JavaScript minifier written in Python"
 HOMEPAGE="https://slimit.readthedocs.io/en/latest/"
-SRC_URI="https://github.com/rspivak/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rspivak/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

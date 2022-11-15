@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Trivial metaprogramming tool"
 HOMEPAGE="https://github.com/ocaml-ppx/cinaps"
-SRC_URI="https://github.com/ocaml-ppx/cinaps/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocaml-ppx/cinaps/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

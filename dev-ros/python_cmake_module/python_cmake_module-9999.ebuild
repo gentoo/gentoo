@@ -12,7 +12,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ros2/python_cmake_module"
 else
-	SRC_URI="https://github.com/ros2/python_cmake_module/archive/${PV}.tar.gz -> ${ROS_PN}-${PV}.tar.gz"
+	SRC_URI="https://github.com/ros2/python_cmake_module/archive/refs/tags/${PV}.tar.gz -> ${ROS_PN}-${PV}.tar.gz"
 	S="${WORKDIR}/${ROS_PN}-${PV}"
 	KEYWORDS="~amd64"
 fi

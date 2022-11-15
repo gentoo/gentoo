@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="PSSH provides parallel versions of OpenSSH and related tools"
 HOMEPAGE="https://github.com/lilydjwg/pssh"
-SRC_URI="https://github.com/lilydjwg/pssh/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lilydjwg/pssh/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

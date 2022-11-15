@@ -7,7 +7,7 @@ inherit cmake
 DESCRIPTION="a Space Invaders clone based on ncurses for ASCII output"
 HOMEPAGE="https://github.com/sf-refugees/ninvaders
 	http://ninvaders.sourceforge.net/"
-SRC_URI="https://github.com/sf-refugees/ninvaders/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sf-refugees/ninvaders/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/pauldmccarthy/indexed_gzip/
 "
 SRC_URI="
-	https://github.com/pauldmccarthy/indexed_gzip/archive/v${PV}.tar.gz
+	https://github.com/pauldmccarthy/indexed_gzip/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

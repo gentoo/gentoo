@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="JSON-RPC (1.0 & 2.0) framework for C++"
 HOMEPAGE="https://github.com/cinemast/libjson-rpc-cpp"
-SRC_URI="https://github.com/cinemast/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cinemast/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/1"

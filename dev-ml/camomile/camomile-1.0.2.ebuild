@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Camomile is a comprehensive Unicode library for ocaml"
 HOMEPAGE="https://github.com/yoriyuki/Camomile/wiki"
-SRC_URI="https://github.com/yoriyuki/Camomile/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/yoriyuki/Camomile/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P^}"
 
 LICENSE="LGPL-2"

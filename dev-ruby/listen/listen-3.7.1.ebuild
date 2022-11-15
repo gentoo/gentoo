@@ -14,7 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit ruby-fakegem
 
-SRC_URI="https://github.com/guard/listen/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/guard/listen/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Listens to file modifications and notifies you about the changes"
 HOMEPAGE="https://github.com/guard/listen"
 

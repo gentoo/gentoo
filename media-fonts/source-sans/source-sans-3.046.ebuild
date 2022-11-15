@@ -10,7 +10,7 @@ inherit font optfeature
 
 DESCRIPTION="Sans serif font family for user interface environments"
 HOMEPAGE="https://adobe-fonts.github.io/source-sans/"
-SRC_URI="https://github.com/adobe-fonts/source-sans/archive/${PV}R.tar.gz -> source-sans-${PV}.tar.gz"
+SRC_URI="https://github.com/adobe-fonts/source-sans/archive/refs/tags/${PV}R.tar.gz -> source-sans-${PV}.tar.gz"
 S="${WORKDIR}/${P}R"
 
 LICENSE="OFL-1.1"

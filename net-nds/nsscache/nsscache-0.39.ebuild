@@ -11,7 +11,7 @@ DESCRIPTION="commandline tool to sync directory services to local cache"
 HOMEPAGE="https://github.com/google/nsscache"
 SCRIPT_A='nsscache-0.30-r3-gentoo-authorized-keys-command.py'
 SRC_URI="
-	https://github.com/google/nsscache/archive/version/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/google/nsscache/archive/refs/tags/version/${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~robbat2/${SCRIPT_A}"
 
 LICENSE="GPL-2"

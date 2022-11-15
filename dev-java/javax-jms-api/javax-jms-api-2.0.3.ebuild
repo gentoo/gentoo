@@ -13,7 +13,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Jakarta Messaging"
 HOMEPAGE="https://projects.eclipse.org/projects/ee4j.jms"
-SRC_URI="https://github.com/jakartaee/messaging/archive/${PV}-RELEASE.tar.gz -> ${P}-RELEASE.tar.gz"
+SRC_URI="https://github.com/jakartaee/messaging/archive/refs/tags/${PV}-RELEASE.tar.gz -> ${P}-RELEASE.tar.gz"
 
 LICENSE="EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"

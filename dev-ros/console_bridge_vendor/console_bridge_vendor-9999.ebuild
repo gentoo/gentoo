@@ -11,7 +11,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ros2/console_bridge_vendor"
 else
-	SRC_URI="https://github.com/ros2/console_bridge_vendor/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ros2/console_bridge_vendor/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 

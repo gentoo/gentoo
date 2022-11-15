@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Automatically build man-pages for your Python project"
 HOMEPAGE="https://github.com/praiskup/argparse-manpage https://pypi.org/project/argparse-manpage/"
-SRC_URI="https://github.com/praiskup/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/praiskup/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

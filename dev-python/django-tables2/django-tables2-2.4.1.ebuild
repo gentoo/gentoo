@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/jieter/django-tables2/
 "
 SRC_URI="
-	https://github.com/jieter/django-tables2/archive/v${PV}.tar.gz
+	https://github.com/jieter/django-tables2/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

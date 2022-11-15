@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/service-identity/
 "
 SRC_URI="
-	https://github.com/pyca/service-identity/archive/${PV}.tar.gz
+	https://github.com/pyca/service-identity/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S=${WORKDIR}/${P/_/-}

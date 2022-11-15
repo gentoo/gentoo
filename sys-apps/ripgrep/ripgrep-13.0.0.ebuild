@@ -66,7 +66,7 @@ inherit cargo bash-completion-r1
 
 DESCRIPTION="a search tool that combines the usability of ag with the raw speed of grep"
 HOMEPAGE="https://github.com/BurntSushi/ripgrep"
-SRC_URI="https://github.com/BurntSushi/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/BurntSushi/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/BurntSushi/${PN}/releases/download/${PV}/${P}-x86_64-unknown-linux-musl.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 

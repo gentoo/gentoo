@@ -5,7 +5,7 @@ EAPI="8"
 
 DESCRIPTION="Apps for querying the sg SCSI interface"
 HOMEPAGE="https://sg.danny.cz/sg/"
-#SRC_URI="https://github.com/hreinecke/sg3_utils/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+#SRC_URI="https://github.com/hreinecke/sg3_utils/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI="https://sg.danny.cz/sg/p/${P}.tar.xz"
 
 LICENSE="GPL-2"

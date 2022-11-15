@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="Pure Erlang PostgreSQL driver"
 HOMEPAGE="https://github.com/processone/p1_pgsql"
-SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/processone/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="ErlPL-1.1"

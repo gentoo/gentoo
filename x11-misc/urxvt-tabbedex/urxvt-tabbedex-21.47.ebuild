@@ -7,7 +7,7 @@ DESCRIPTION="An extended version of rxvt-unicode's tabbed perl extension"
 HOMEPAGE="https://github.com/mina86/urxvt-tabbedex"
 
 MY_PN=${PN/urxvt-/}
-SRC_URI="https://github.com/mina86/urxvt-tabbedex/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mina86/urxvt-tabbedex/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

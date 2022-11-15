@@ -10,7 +10,7 @@ inherit bash-completion-r1 distutils-r1
 DESCRIPTION="A dockerized approach to test a Gentoo package within a clean stage3 container"
 HOMEPAGE="https://ebuildtester.readthedocs.io/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
-# SRC_URI="https://github.com/nicolasbock/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+# SRC_URI="https://github.com/nicolasbock/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

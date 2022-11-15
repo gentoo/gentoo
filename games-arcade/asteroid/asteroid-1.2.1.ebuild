@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Modern version of the arcade classic that uses OpenGL"
 HOMEPAGE="https://chazomaticus.github.io/asteroid/"
-SRC_URI="https://github.com/chazomaticus/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/chazomaticus/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

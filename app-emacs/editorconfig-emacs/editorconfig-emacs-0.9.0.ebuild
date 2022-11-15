@@ -7,7 +7,7 @@ inherit elisp readme.gentoo-r1
 
 DESCRIPTION="EditorConfig plugin for emacs"
 HOMEPAGE="https://github.com/editorconfig/editorconfig-emacs"
-SRC_URI="https://github.com/editorconfig/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/editorconfig/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

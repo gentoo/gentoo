@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Extended tabulated-list mode fro Emacs"
 HOMEPAGE="https://github.com/politza/tablist/"
-SRC_URI="https://github.com/politza/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/politza/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64 ~x86"

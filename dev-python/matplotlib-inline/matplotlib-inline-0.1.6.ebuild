@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Inline Matplotlib backend for Jupyter"
 HOMEPAGE="https://github.com/ipython/matplotlib-inline/"
 SRC_URI="
-	https://github.com/ipython/matplotlib-inline/archive/${PV}.tar.gz
+	https://github.com/ipython/matplotlib-inline/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

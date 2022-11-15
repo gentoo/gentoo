@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Symfony Finder Component"
 HOMEPAGE="https://github.com/symfony/finder"
-SRC_URI="https://github.com/symfony/finder/archive/v${PV}.tar.gz -> symfony-finder-${PV}.tar.gz"
+SRC_URI="https://github.com/symfony/finder/archive/refs/tags/v${PV}.tar.gz -> symfony-finder-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

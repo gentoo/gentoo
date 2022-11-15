@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/importlib-resources/
 "
 SRC_URI="
-	https://github.com/python/importlib_resources/archive/v${PV}.tar.gz
+	https://github.com/python/importlib_resources/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -10,7 +10,7 @@ inherit distutils-r1 virtualx
 
 DESCRIPTION="Plugin for Spyder to enable Vim keybindings"
 HOMEPAGE="https://github.com/spyder-ide/spyder-vim"
-SRC_URI="https://github.com/spyder-ide/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/spyder-ide/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

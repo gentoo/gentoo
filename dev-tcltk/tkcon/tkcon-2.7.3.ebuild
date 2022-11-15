@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Tk GUI console"
 HOMEPAGE="http://tkcon.sourceforge.net/"
-SRC_URI="https://github.com/wjoye/${PN}/archive/v${PV}.tar.gz ->
+SRC_URI="https://github.com/wjoye/${PN}/archive/refs/tags/v${PV}.tar.gz ->
 	${P}.tar.gz"
 
 LICENSE="GPL-2"

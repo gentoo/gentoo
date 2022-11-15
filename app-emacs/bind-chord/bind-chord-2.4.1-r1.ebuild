@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Key-chord binding helper for use-package-chords"
 HOMEPAGE="https://github.com/jwiegley/use-package/"
-SRC_URI="https://github.com/jwiegley/use-package/archive/${PV}.tar.gz
+SRC_URI="https://github.com/jwiegley/use-package/archive/refs/tags/${PV}.tar.gz
 			-> use-package-${PV}.tar.gz"
 S="${WORKDIR}"/use-package-${PV}
 

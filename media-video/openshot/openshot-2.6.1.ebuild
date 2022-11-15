@@ -13,7 +13,7 @@ MY_PN="${PN}-qt"
 
 DESCRIPTION="Award-winning free and open-source video editor"
 HOMEPAGE="https://openshot.org/"
-SRC_URI="https://github.com/OpenShot/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/OpenShot/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-3+"

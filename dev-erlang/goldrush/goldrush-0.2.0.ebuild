@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="Small Erlang app that provides fast event stream processing"
 HOMEPAGE="https://github.com/DeadZen/goldrush"
-SRC_URI="https://github.com/DeadZen/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/DeadZen/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="ISC"

@@ -10,7 +10,7 @@ DESCRIPTION="Drop-in replacement for django's many to many field with sorted rel
 HOMEPAGE="https://pypi.org/project/django-sortedm2m/
 	https://github.com/jazzband/django-sortedm2m"
 SRC_URI="
-	https://github.com/jazzband/django-sortedm2m/archive/${PV}.tar.gz
+	https://github.com/jazzband/django-sortedm2m/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="BSD"

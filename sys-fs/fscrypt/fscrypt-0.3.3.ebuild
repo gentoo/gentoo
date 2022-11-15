@@ -8,7 +8,7 @@ inherit go-module pam
 DESCRIPTION="Tool for managing Linux filesystem encryption"
 HOMEPAGE="https://github.com/google/fscrypt"
 SRC_URI="
-	https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/google/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz
 "
 

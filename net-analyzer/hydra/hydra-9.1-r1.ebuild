@@ -6,7 +6,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Parallelized network login hacker"
 HOMEPAGE="https://github.com/vanhauser-thc/thc-hydra"
-SRC_URI="https://github.com/vanhauser-thc/thc-hydra/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vanhauser-thc/thc-hydra/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

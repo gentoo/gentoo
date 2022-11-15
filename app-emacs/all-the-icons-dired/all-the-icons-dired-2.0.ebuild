@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Display all-the-icons icon for each file in Emacs' dired buffer"
 HOMEPAGE="https://github.com/wyuenho/all-the-icons-dired/"
-SRC_URI="https://github.com/wyuenho/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wyuenho/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

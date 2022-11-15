@@ -7,7 +7,7 @@ inherit autotools bash-completion-r1
 
 DESCRIPTION="Helper tools and libraries for managing non-volatile memory on Linux"
 HOMEPAGE="https://github.com/pmem/ndctl"
-SRC_URI="https://github.com/pmem/ndctl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pmem/ndctl/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1 MIT CC0-1.0"
 SLOT="0/6"

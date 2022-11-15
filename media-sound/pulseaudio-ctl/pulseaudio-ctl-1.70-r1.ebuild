@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="CLI utility to control PulseAudio volume"
 HOMEPAGE="https://github.com/graysky2/pulseaudio-ctl"
-SRC_URI="https://github.com/graysky2/pulseaudio-ctl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/graysky2/pulseaudio-ctl/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

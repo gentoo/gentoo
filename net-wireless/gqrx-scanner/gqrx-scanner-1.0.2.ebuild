@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="frequency scanner for Gqrx Software Defined Radio receiver"
 HOMEPAGE="https://github.com/neural75/gqrx-scanner"
-SRC_URI="https://github.com/neural75/gqrx-scanner/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/neural75/gqrx-scanner/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

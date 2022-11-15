@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/jsondiff/
 "
 SRC_URI="
-	https://github.com/xlwings/${PN}/archive/${PV}.tar.gz
+	https://github.com/xlwings/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	https://dev.gentoo.org/~andrewammerlaan/${P}-nose2pytest.diff
 "

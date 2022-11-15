@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A desktop environment-independent bridge between colord and X"
 HOMEPAGE="https://github.com/agalakhov/xiccd"
-SRC_URI="https://github.com/agalakhov/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/agalakhov/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

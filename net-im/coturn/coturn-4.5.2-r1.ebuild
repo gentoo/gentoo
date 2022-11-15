@@ -13,7 +13,7 @@ if [ ${PV} = 9999 ]; then
 #	S="${WORKDIR}/${PN}-master"
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="BSD"

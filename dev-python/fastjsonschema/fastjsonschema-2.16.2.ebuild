@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/fastjsonschema/
 "
 SRC_URI="
-	https://github.com/horejsek/python-fastjsonschema/archive/v${PV}.tar.gz
+	https://github.com/horejsek/python-fastjsonschema/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/xlrd/
 "
 SRC_URI="
-	https://github.com/python-excel/xlrd/archive/${PV}.tar.gz
+	https://github.com/python-excel/xlrd/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

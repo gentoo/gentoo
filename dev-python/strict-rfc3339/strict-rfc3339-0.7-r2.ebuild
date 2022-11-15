@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/danielrichman/strict-rfc3339
 "
 SRC_URI="
-	https://github.com/danielrichman/${PN}/archive/version-${PV}.tar.gz
+	https://github.com/danielrichman/${PN}/archive/refs/tags/version-${PV}.tar.gz
 		-> ${MY_P}.tar.gz
 "
 S="${WORKDIR}/${MY_P}"

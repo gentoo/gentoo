@@ -34,7 +34,7 @@ detect_version
 DESCRIPTION="Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches"
 HOMEPAGE="https://codeberg.org/pf-kernel/linux/wiki/README
 	https://dev.gentoo.org/~mpagano/genpatches/"
-SRC_URI="https://codeberg.org/pf-kernel/linux/archive/v${PFPV}.tar.gz -> linux-${PFPV}.tar.gz
+SRC_URI="https://codeberg.org/pf-kernel/linux/archive/refs/tags/v${PFPV}.tar.gz -> linux-${PFPV}.tar.gz
 	https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-${SHPV}-${K_GENPATCHES_VER}.base.tar.xz
 	https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-${SHPV}-${K_GENPATCHES_VER}.extras.tar.xz"
 

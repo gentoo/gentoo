@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/locket/
 "
 SRC_URI="
-	https://github.com/mwilliamson/locket.py/archive/${PV}.tar.gz
+	https://github.com/mwilliamson/locket.py/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

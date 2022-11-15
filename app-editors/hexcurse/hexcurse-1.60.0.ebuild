@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="ncurses based hex editor"
 HOMEPAGE="https://github.com/LonnyGomes/hexcurse"
-SRC_URI="https://github.com/LonnyGomes/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/LonnyGomes/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

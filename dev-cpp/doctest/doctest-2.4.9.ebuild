@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="The fastest feature-rich C++11/14/17/20 single-header testing framework"
 HOMEPAGE="https://github.com/doctest/doctest"
-SRC_URI="https://github.com/doctest/doctest/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/doctest/doctest/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

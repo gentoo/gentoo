@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Utility to view Radeon GPU utilization"
 HOMEPAGE="https://github.com/clbr/radeontop"
-SRC_URI="https://github.com/clbr/radeontop/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/clbr/radeontop/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

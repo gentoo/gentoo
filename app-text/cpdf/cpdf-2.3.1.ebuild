@@ -7,7 +7,7 @@ inherit findlib
 
 DESCRIPTION="A command line tool for manipulating PDF files"
 HOMEPAGE="https://community.coherentpdf.com/ https://github.com/johnwhitington/cpdf-source/"
-SRC_URI="https://github.com/johnwhitington/cpdf-source/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/johnwhitington/cpdf-source/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 # BSD is only for xmlm.ml
 LICENSE="Coherent-Graphics BSD"

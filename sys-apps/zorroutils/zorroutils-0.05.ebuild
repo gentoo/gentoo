@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Zorro bus utility for Amigas running 2.1 and later kernels"
 HOMEPAGE="http://users.telenet.be/geertu/Download/#zorro"
-SRC_URI="https://github.com/glaubitz/zorroutils/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/glaubitz/zorroutils/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

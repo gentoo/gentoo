@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/wwmm/easyeffects"
 	EGIT_BRANCH="pulseaudio-legacy"
 else
-	SRC_URI="https://github.com/wwmm/easyeffects/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/wwmm/easyeffects/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 x86"
 fi
 

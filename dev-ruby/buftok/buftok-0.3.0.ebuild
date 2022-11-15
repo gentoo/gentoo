@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Statefully split input data by a specifiable token"
 HOMEPAGE="https://github.com/sferik/buftok"
-SRC_URI="https://github.com/sferik/buftok/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sferik/buftok/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="ncurses based sudoku game"
 HOMEPAGE="https://jubalh.github.io/nudoku/"
-SRC_URI="https://github.com/jubalh/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jubalh/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

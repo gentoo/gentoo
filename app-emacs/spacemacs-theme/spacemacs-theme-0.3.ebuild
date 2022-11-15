@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Emacs color theme that started as a theme for Spacemacs"
 HOMEPAGE="https://github.com/nashamri/spacemacs-theme/"
-SRC_URI="https://github.com/nashamri/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nashamri/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

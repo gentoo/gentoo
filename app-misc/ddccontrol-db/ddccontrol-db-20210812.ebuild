@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="DDCControl monitor database"
 HOMEPAGE="http://ddccontrol.sourceforge.net/"
-SRC_URI="https://github.com/ddccontrol/ddccontrol-db/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ddccontrol/ddccontrol-db/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

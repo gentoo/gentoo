@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/pylast/pylast/
 "
 SRC_URI="
-	https://github.com/pylast/pylast/archive/${PV}.tar.gz
+	https://github.com/pylast/pylast/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="JSON Lint for PHP"
 HOMEPAGE="https://github.com/Seldaek/jsonlint"
-SRC_URI="https://github.com/Seldaek/jsonlint/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Seldaek/jsonlint/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

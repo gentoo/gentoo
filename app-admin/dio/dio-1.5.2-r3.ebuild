@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A device I/O monitoring tool"
 HOMEPAGE="https://github.com/donaldmcintosh/dio"
-SRC_URI="https://github.com/donaldmcintosh/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/donaldmcintosh/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P}/src"
 
 LICENSE="MIT"

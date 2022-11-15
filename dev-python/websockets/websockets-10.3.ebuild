@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/websockets/
 "
 SRC_URI="
-	https://github.com/aaugustin/websockets/archive/${PV}.tar.gz
+	https://github.com/aaugustin/websockets/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -9,7 +9,7 @@ inherit cmake python-any-r1
 
 DESCRIPTION="CommonMark parsing and rendering library and program in C"
 HOMEPAGE="https://github.com/commonmark/cmark"
-SRC_URI="https://github.com/commonmark/cmark/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/commonmark/cmark/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/${PV}"

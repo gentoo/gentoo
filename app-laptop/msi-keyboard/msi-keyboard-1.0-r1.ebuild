@@ -7,7 +7,7 @@ inherit toolchain-funcs udev
 
 DESCRIPTION="Control backlight of MSI laptop keyboards"
 HOMEPAGE="https://github.com/makkarpov/msi-keyboard"
-SRC_URI="https://github.com/makkarpov/msi-keyboard/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/makkarpov/msi-keyboard/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

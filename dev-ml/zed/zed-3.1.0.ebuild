@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Abstract engine for text edition in OCaml"
 HOMEPAGE="https://github.com/ocaml-community/zed"
-SRC_URI="https://github.com/ocaml-community/zed/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocaml-community/zed/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

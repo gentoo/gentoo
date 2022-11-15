@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Implements a protobuf-based interface for Spectrum2 python-based backends"
 HOMEPAGE="https://github.com/stv0g/pyspectrum2"
-SRC_URI="https://github.com/stv0g/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/stv0g/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

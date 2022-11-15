@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Clearlooks-Phenix is a GTK+ 3 port of Clearlooks, the default theme for GNOME 2"
 HOMEPAGE="https://github.com/jpfleury/clearlooks-phenix"
-SRC_URI="https://github.com/jpfleury/clearlooks-phenix/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jpfleury/clearlooks-phenix/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

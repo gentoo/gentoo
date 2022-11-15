@@ -7,7 +7,7 @@ GIT_COMMIT=6085039f
 
 DESCRIPTION="terminal based UI to manage kubernetes clusters"
 HOMEPAGE="https://k9scli.io"
-SRC_URI="https://github.com/derailed/k9s/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/derailed/k9s/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-vendor.tar.xz"
 
 LICENSE="Apache-2.0"

@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="A common interface to Gentoo package managers"
 HOMEPAGE="https://github.com/projg2/gentoopm/"
 SRC_URI="
-	https://github.com/projg2/gentoopm/archive/v${PV}.tar.gz
+	https://github.com/projg2/gentoopm/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 LICENSE="BSD-2"

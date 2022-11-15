@@ -6,7 +6,7 @@ inherit qmake-utils virtualx xdg
 
 DESCRIPTION="Program for displaying classified advertisement items"
 HOMEPAGE="http://katiska.org/classified-ads/"
-SRC_URI="https://github.com/operatornormal/classified-ads/archive/${PV}.tar.gz
+SRC_URI="https://github.com/operatornormal/classified-ads/archive/refs/tags/${PV}.tar.gz
 	-> classified-ads-${PV}.tar.gz
 	https://github.com/operatornormal/classified-ads/blob/graphics/preprocessed.tar.gz?raw=true
 	-> classified-ads-graphics-${PV}.tar.gz"

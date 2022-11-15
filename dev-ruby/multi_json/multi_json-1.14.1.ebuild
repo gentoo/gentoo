@@ -15,7 +15,7 @@ RUBY_FAKEGEM_GEMSPEC="multi_json.gemspec"
 
 inherit ruby-fakegem
 
-SRC_URI="https://github.com/intridea/multi_json/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/intridea/multi_json/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="A gem to provide swappable JSON backends"
 HOMEPAGE="https://github.com/intridea/multi_json"
 LICENSE="MIT"

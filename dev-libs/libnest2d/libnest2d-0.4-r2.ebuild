@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Library and framework for the 2D bin packaging problem"
 HOMEPAGE="https://github.com/tamasmeszaros/libnest2d"
-SRC_URI="https://github.com/tamasmeszaros/libnest2d/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tamasmeszaros/libnest2d/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0/1"

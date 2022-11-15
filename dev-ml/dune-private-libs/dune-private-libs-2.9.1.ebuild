@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="A composable build system for OCaml"
 HOMEPAGE="https://github.com/ocaml/dune"
-SRC_URI="https://github.com/ocaml/dune/archive/${PV}.tar.gz -> dune-${PV}.tar.gz"
+SRC_URI="https://github.com/ocaml/dune/archive/refs/tags/${PV}.tar.gz -> dune-${PV}.tar.gz"
 S="${WORKDIR}/dune-${PV}"
 
 LICENSE="Apache-2.0"

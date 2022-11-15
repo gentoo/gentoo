@@ -7,7 +7,7 @@ inherit autotools bash-completion-r1
 
 DESCRIPTION="highly flexible status line for the i3 window manager"
 HOMEPAGE="https://github.com/vivien/i3blocks"
-SRC_URI="https://github.com/vivien/i3blocks/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vivien/i3blocks/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

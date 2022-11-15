@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="vim plugin: run ack from vim"
 HOMEPAGE="https://github.com/mileszs/ack.vim"
-SRC_URI="https://github.com/mileszs/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/mileszs/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 LICENSE="vim"
 KEYWORDS="amd64 x86"
 

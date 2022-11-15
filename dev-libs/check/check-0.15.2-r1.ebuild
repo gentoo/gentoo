@@ -7,7 +7,7 @@ inherit cmake-multilib
 
 DESCRIPTION="A unit test framework for C"
 HOMEPAGE="https://libcheck.github.io/check/"
-SRC_URI="https://github.com/libcheck/check/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/libcheck/check/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

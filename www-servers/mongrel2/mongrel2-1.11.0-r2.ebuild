@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A language agnostic web server focused on web applications"
 HOMEPAGE="http://mongrel2.org"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A Ruby implementation of JSON Web Token draft 06"
 HOMEPAGE="https://github.com/jwt/ruby-jwt"
-SRC_URI="https://github.com/jwt/ruby-jwt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jwt/ruby-jwt/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="2"

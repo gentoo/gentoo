@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/fakeredis/
 "
 SRC_URI="
-	https://github.com/cunla/fakeredis-py/archive/v${PV}.tar.gz
+	https://github.com/cunla/fakeredis-py/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

@@ -7,7 +7,7 @@ inherit cmake virtualx xdg
 
 DESCRIPTION="Desktop Syncing Client for Nextcloud"
 HOMEPAGE="https://github.com/nextcloud/desktop"
-SRC_URI="https://github.com/nextcloud/desktop/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nextcloud/desktop/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/desktop-${PV/_/-}"
 
 LICENSE="CC-BY-3.0 GPL-2"

@@ -18,7 +18,7 @@ case ${PV} in
 *)
 	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/xbmc/audiodecoder.sidplay/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/xbmc/audiodecoder.sidplay/archive/refs/tags/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/audiodecoder.sidplay-${PV}-${CODENAME}"
 	;;
 esac

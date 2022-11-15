@@ -9,7 +9,7 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/sass/libsass.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/sass/libsass/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/sass/libsass/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv x86 ~amd64-linux"
 fi
 

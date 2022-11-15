@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="Fireflies screensaver: Wicked cool eye candy"
 HOMEPAGE="https://github.com/mpcomplete/fireflies"
-SRC_URI="https://github.com/mpcomplete/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mpcomplete/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 icu"
 SLOT="0"

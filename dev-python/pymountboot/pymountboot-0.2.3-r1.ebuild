@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Python extension module to (re)mount /boot"
 HOMEPAGE="https://github.com/mgorny/pymountboot/"
 SRC_URI="
-	https://github.com/mgorny/pymountboot/archive/v${PV}.tar.gz
+	https://github.com/mgorny/pymountboot/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 LICENSE="BSD"

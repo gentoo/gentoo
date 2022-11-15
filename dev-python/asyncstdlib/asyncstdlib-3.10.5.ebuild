@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/asyncstdlib/
 "
 SRC_URI="
-	https://github.com/maxfischer2781/asyncstdlib/archive/v${PV}.tar.gz
+	https://github.com/maxfischer2781/asyncstdlib/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

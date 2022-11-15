@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/canonicaljson/
 "
 SRC_URI="
-	https://github.com/matrix-org/python-canonicaljson/archive/v${PV}.tar.gz
+	https://github.com/matrix-org/python-canonicaljson/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

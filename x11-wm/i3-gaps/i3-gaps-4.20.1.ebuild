@@ -7,7 +7,7 @@ inherit meson optfeature
 
 DESCRIPTION="i3 fork with gaps and some more features"
 HOMEPAGE="https://github.com/Airblader/i3"
-SRC_URI="https://github.com/Airblader/i3/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Airblader/i3/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/i3-${PV}"
 
 LICENSE="BSD"

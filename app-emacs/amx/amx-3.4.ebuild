@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Alternative M-x interface for GNU Emacs"
 HOMEPAGE="https://github.com/DarwinAwardWinner/amx/"
-SRC_URI="https://github.com/DarwinAwardWinner/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/DarwinAwardWinner/${PN}/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

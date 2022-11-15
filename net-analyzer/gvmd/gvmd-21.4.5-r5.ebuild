@@ -7,7 +7,7 @@ inherit cmake systemd toolchain-funcs
 
 DESCRIPTION="Greenbone vulnerability manager, previously named openvas-manager"
 HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/gvmd/"
-SRC_URI="https://github.com/greenbone/gvmd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/greenbone/gvmd/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="AGPL-3+"

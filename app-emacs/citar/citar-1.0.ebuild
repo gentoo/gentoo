@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Emacs package to quickly find and act on bibliographic references"
 HOMEPAGE="https://github.com/emacs-citar/citar/"
-SRC_URI="https://github.com/emacs-citar/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/emacs-citar/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

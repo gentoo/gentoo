@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="a rsync-based dump file system backup tool"
 HOMEPAGE="https://github.com/chneukirchen/rdumpfs"
-SRC_URI="https://github.com/chneukirchen/rdumpfs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/chneukirchen/rdumpfs/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC0-1.0"
 SLOT="0"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/autopage/
 "
 SRC_URI="
-	https://github.com/zaneb/autopage/archive/v${PV}.tar.gz
+	https://github.com/zaneb/autopage/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

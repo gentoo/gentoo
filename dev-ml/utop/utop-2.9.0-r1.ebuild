@@ -7,7 +7,7 @@ inherit dune elisp-common
 
 DESCRIPTION="Universal toplevel for OCaml"
 HOMEPAGE="https://github.com/ocaml-community/utop"
-SRC_URI="https://github.com/ocaml-community/utop/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocaml-community/utop/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

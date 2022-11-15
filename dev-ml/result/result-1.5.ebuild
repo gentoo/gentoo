@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Compat result type"
 HOMEPAGE="https://github.com/janestreet/result"
-SRC_URI="https://github.com/janestreet/result/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janestreet/result/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

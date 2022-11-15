@@ -10,7 +10,7 @@ DESCRIPTION="Python library to parse Linux /proc/mdstat"
 HOMEPAGE="https://github.com/nicolargo/pymdstat
 	https://pypi.org/project/pymdstat/"
 # drop the ${PVR} if there is a version bump
-SRC_URI="https://github.com/nicolargo/${PN}/archive/v${PV}.tar.gz -> ${PN}-${PVR}.tar.gz"
+SRC_URI="https://github.com/nicolargo/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${PN}-${PVR}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

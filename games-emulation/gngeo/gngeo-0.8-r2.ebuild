@@ -8,7 +8,7 @@ inherit autotools desktop flag-o-matic
 DESCRIPTION="A NeoGeo emulator"
 HOMEPAGE="https://code.google.com/p/gngeo/"
 SRC_URI="https://gngeo.googlecode.com/files/${P}.tar.gz
-	https://storage.googleapis.com/google-code-archive/v2/code.google.com/gngeo/logo.png -> ${PN}.png"
+	https://storage.googleapis.com/google-code-archive/refs/tags/v2/code.google.com/gngeo/logo.png -> ${PN}.png"
 
 LICENSE="GPL-2"
 SLOT="0"

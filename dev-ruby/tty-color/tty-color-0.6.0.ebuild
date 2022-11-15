@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Terminal color capabilities detection"
 HOMEPAGE="https://github.com/piotrmurach/tty-color"
-SRC_URI="https://github.com/piotrmurach/tty-color/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/piotrmurach/tty-color/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

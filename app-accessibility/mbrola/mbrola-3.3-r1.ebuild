@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Speech synthesizer based on the concatenation of diphones"
 HOMEPAGE="https://github.com/numediart/MBROLA"
-SRC_URI="https://github.com/numediart/MBROLA/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/numediart/MBROLA/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3+"
 SLOT="0"

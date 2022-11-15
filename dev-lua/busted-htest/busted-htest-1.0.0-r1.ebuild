@@ -9,7 +9,7 @@ inherit lua
 
 DESCRIPTION="Pretty output handler for Busted"
 HOMEPAGE="https://github.com/hishamhm/busted-htest"
-SRC_URI="https://github.com/hishamhm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hishamhm/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

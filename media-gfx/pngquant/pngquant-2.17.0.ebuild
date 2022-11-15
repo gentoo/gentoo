@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Command-line utility and library for lossy compression of PNG images"
 HOMEPAGE="https://pngquant.org/ https://github.com/kornelski/pngquant"
-SRC_URI="https://github.com/kornelski/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kornelski/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 HPND rwpng"
 SLOT="0"

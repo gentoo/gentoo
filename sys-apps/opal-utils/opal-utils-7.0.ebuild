@@ -9,7 +9,7 @@ inherit linux-info python-single-r1 systemd toolchain-funcs
 
 DESCRIPTION="OPAL firmware utilities"
 HOMEPAGE="https://github.com/open-power/skiboot"
-SRC_URI="https://github.com/open-power/skiboot/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/open-power/skiboot/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2+"
 SLOT="0"

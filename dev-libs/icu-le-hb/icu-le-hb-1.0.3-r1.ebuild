@@ -7,7 +7,7 @@ inherit autotools multilib-minimal
 
 DESCRIPTION="ICU Layout Engine API on top of HarfBuzz shaping library"
 HOMEPAGE="http://www.harfbuzz.org https://github.com/behdad/icu-le-hb"
-SRC_URI="https://github.com/behdad/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/behdad/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="icu"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit python-single-r1
 DESCRIPTION="Manage repos.conf via eselect"
 HOMEPAGE="https://github.com/mgorny/eselect-repository/"
 SRC_URI="
-	https://github.com/mgorny/eselect-repository/archive/v${PV}.tar.gz
+	https://github.com/mgorny/eselect-repository/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

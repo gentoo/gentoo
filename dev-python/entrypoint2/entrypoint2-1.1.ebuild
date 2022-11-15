@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Easy to use command-line interface for python modules"
 HOMEPAGE="https://github.com/ponty/entrypoint2"
 SRC_URI="
-	https://github.com/ponty/entrypoint2/archive/${PV}.tar.gz
+	https://github.com/ponty/entrypoint2/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

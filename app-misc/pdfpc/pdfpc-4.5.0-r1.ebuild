@@ -20,7 +20,7 @@ elif [[ ${PV} == *_p* ]]; then
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT_ID}"
 else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="GPL-3+"

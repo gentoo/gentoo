@@ -9,7 +9,7 @@ inherit cmake lua-single
 
 DESCRIPTION="Converts OSM planet.osm data to a PostgreSQL/PostGIS database"
 HOMEPAGE="https://osm2pgsql.org/"
-SRC_URI="https://github.com/openstreetmap/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/openstreetmap/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

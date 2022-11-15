@@ -9,7 +9,7 @@ MY_PN="VimClojure"
 
 DESCRIPTION="vim plugin: Clojure syntax highlighting, filetype and indent settings"
 HOMEPAGE="https://github.com/vim-scripts/VimClojure"
-SRC_URI="https://github.com/vim-scripts/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vim-scripts/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 LICENSE="BSD"

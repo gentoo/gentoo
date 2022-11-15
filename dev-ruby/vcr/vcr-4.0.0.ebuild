@@ -11,7 +11,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Records your test suite's HTTP interactions and replay them during test runs"
 HOMEPAGE="https://github.com/vcr/vcr/"
-SRC_URI="https://github.com/vcr/vcr/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vcr/vcr/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"

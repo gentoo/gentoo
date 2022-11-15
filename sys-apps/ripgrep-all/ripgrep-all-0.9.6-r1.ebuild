@@ -175,7 +175,7 @@ inherit cargo
 DESCRIPTION="Like ripgrep, but also search in PDFs, E-Books, Office documents, archives, etc."
 HOMEPAGE="https://github.com/phiresky/ripgrep-all"
 SRC_URI="
-	https://github.com/phiresky/ripgrep-all/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/phiresky/ripgrep-all/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})
 "
 

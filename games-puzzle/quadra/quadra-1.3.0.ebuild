@@ -7,7 +7,7 @@ inherit autotools desktop
 
 DESCRIPTION="Tetris clone with multiplayer support"
 HOMEPAGE="https://github.com/quadra-game/quadra"
-SRC_URI="https://github.com/quadra-game/quadra/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/quadra-game/quadra/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

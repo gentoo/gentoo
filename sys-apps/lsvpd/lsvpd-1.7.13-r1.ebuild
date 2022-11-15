@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Utility to List Device Vital Product Data (VPD)"
 HOMEPAGE="https://github.com/power-ras/lsvpd"
-SRC_URI="https://github.com/power-ras/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/power-ras/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"

@@ -20,7 +20,7 @@ if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-	SRC_URI="https://gitlab.freedesktop.org/glvnd/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2 -> ${P}.tar.bz2"
+	SRC_URI="https://gitlab.freedesktop.org/glvnd/${PN}/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.bz2 -> ${P}.tar.bz2"
 	S=${WORKDIR}/${PN}-v${PV}
 fi
 

@@ -10,7 +10,7 @@ inherit lua-single prefix systemd toolchain-funcs
 MY_PN="ot-recorder"
 DESCRIPTION="Stores and accesses location data published by the OwnTracks apps"
 HOMEPAGE="https://owntracks.org"
-SRC_URI="https://github.com/${PN/-//}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN/-//}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+ MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm"

@@ -11,7 +11,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Implements a variant of Set whose elements are sorted in ascending order"
 HOMEPAGE="https://github.com/knu/sorted_set"
-SRC_URI="https://github.com/knu/sorted_set/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/knu/sorted_set/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

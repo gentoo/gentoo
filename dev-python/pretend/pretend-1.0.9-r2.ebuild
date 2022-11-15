@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pretend/
 "
 SRC_URI="
-	https://github.com/alex/pretend/archive/v${PV}.tar.gz
+	https://github.com/alex/pretend/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

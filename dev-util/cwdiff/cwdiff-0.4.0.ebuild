@@ -7,7 +7,7 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/junghans/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/junghans/cwdiff/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/junghans/cwdiff/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x64-macos"
 fi
 

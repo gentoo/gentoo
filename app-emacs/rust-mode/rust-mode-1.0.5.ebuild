@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="A major emacs mode for editing Rust source code"
 HOMEPAGE="https://github.com/rust-lang/rust-mode"
-SRC_URI="https://github.com/rust-lang/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rust-lang/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="0"

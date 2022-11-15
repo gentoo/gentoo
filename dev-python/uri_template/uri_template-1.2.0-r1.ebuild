@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/uri-template/
 "
 SRC_URI="
-	https://gitlab.linss.com/open-source/${PN}/-/archive/v${PV}/${MY_P}.tar.gz
+	https://gitlab.linss.com/open-source/${PN}/-/archive/refs/tags/v${PV}/${MY_P}.tar.gz
 "
 S="${WORKDIR}/${MY_P}"
 

@@ -8,7 +8,7 @@ inherit cmake
 
 DESCRIPTION="COIN-OR C++ Algorithmic Differentiation"
 HOMEPAGE="https://projects.coin-or.org/CppAD/"
-SRC_URI="https://github.com/coin-or/CppAD/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/coin-or/CppAD/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/CppAD-${PV}"
 
 LICENSE="EPL-2.0"

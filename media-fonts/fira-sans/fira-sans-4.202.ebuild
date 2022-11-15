@@ -10,7 +10,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Default monospaced typeface for FirefoxOS, designed for legibility"
 HOMEPAGE="https://mozilla.github.io/Fira"
-SRC_URI="https://github.com/mozilla/Fira/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/mozilla/Fira/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="OFL-1.1"
 SLOT="0"

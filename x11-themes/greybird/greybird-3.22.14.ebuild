@@ -7,7 +7,7 @@ inherit meson optfeature
 
 DESCRIPTION="Greybird Desktop Suite"
 HOMEPAGE="https://github.com/shimmerproject/Greybird"
-SRC_URI="https://github.com/shimmerproject/${PN^}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/shimmerproject/${PN^}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"

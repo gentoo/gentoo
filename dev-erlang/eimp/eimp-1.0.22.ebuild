@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="Erlang Image Manipulation Process"
 HOMEPAGE="https://github.com/processone/eimp"
-SRC_URI="https://github.com/processone/eimp/archive/${PV}.tar.gz
+SRC_URI="https://github.com/processone/eimp/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

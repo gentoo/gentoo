@@ -12,7 +12,7 @@ HOMEPAGE="
 	https://github.com/python-trio/trio-asyncio
 	https://pypi.org/project/trio-asyncio/
 "
-SRC_URI="https://github.com/python-trio/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/python-trio/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"

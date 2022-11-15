@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python based U2F host library"
 HOMEPAGE="https://github.com/google/pyu2f"
-SRC_URI="https://github.com/google/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

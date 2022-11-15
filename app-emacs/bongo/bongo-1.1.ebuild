@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Buffer-oriented media player for Emacs"
 HOMEPAGE="https://www.emacswiki.org/emacs/Bongo"
-SRC_URI="https://github.com/dbrock/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/dbrock/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	mplayer? ( mirror://gentoo/${PN}-mplayer-20070204.tar.bz2 )"
 
 LICENSE="GPL-2+ FDL-1.2+"

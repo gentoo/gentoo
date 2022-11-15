@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="General modal editing engine generator"
 HOMEPAGE="https://github.com/kandu/mew"
-SRC_URI="https://github.com/kandu/mew/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kandu/mew/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

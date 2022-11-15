@@ -10,7 +10,7 @@ inherit distutils-r1 elisp-common optfeature
 
 DESCRIPTION="A semantic grep for the C language"
 HOMEPAGE="https://home.regit.org/software/coccigrep/"
-SRC_URI="https://github.com/regit/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/regit/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

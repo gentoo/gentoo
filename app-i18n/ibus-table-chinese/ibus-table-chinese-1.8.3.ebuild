@@ -9,7 +9,7 @@ inherit cmake
 
 DESCRIPTION="Chinese tables for IBus-Table"
 HOMEPAGE="https://github.com/definite/ibus-table-chinese"
-SRC_URI="https://github.com/definite/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/definite/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

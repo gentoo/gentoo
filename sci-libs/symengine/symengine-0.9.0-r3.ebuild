@@ -8,7 +8,7 @@ inherit cmake llvm toolchain-funcs
 
 DESCRIPTION="Fast symbolic manipulation library, written in C++"
 HOMEPAGE="https://github.com/symengine/symengine"
-SRC_URI="https://github.com/symengine/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/symengine/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"

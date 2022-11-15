@@ -7,7 +7,7 @@ inherit user-info vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: Osd-Teletext displays the teletext/videotext on the OSD"
 HOMEPAGE="https://projects.vdr-developer.org/projects/plg-osdteletext https://github.com/vdr-projects/vdr-plugin-osdteletext/"
-SRC_URI="https://github.com/vdr-projects/vdr-plugin-osdteletext/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vdr-projects/vdr-plugin-osdteletext/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/vdr-plugin-osdteletext-${PV}"
 
 LICENSE="GPL-2+ public-domain" #teletext2.ttf, not copyrightable

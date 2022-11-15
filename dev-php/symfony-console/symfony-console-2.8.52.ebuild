@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Subtree split of the Symfony Console Component"
 HOMEPAGE="https://github.com/symfony/console"
-SRC_URI="https://github.com/symfony/console/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/symfony/console/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="MIT"

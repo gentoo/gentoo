@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Set both single and multi line comment variables in Emacs Lisp"
 HOMEPAGE="https://github.com/yuutayamada/commenter/"
-SRC_URI="https://github.com/yuutayamada/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/yuutayamada/${PN}/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

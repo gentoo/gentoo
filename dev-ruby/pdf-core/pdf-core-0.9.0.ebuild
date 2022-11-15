@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Implements low level PDF features for Prawn"
 HOMEPAGE="https://github.com/prawnpdf/pdf-core/"
-SRC_URI="https://github.com/prawnpdf/pdf-core/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/prawnpdf/pdf-core/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( Ruby GPL-2 GPL-3 )"
 SLOT="0"

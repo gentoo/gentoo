@@ -7,7 +7,7 @@ inherit qmake-utils xdg-utils
 
 DESCRIPTION="2D animation and drawing program based on Qt5"
 HOMEPAGE="https://www.pencil2d.org/"
-SRC_URI="https://github.com/pencil2d/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/pencil2d/${PN}/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.tar.gz
 	https://raw.githubusercontent.com/pencil2d/pencil/617c8868fd27ce540de285ff75c8946fba0c975b/tests/src/catch.hpp"
 
 LICENSE="GPL-2"

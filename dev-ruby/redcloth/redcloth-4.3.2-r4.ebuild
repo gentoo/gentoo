@@ -26,7 +26,7 @@ DESCRIPTION="A module for using Textile in Ruby"
 HOMEPAGE="http://redcloth.org/"
 
 GITHUB_USER=jgarber
-SRC_URI="https://github.com/${GITHUB_USER}/redcloth/archive/v${PV}.tar.gz -> ${RUBY_FAKEGEM_NAME}-${PV}.tar.gz"
+SRC_URI="https://github.com/${GITHUB_USER}/redcloth/archive/refs/tags/v${PV}.tar.gz -> ${RUBY_FAKEGEM_NAME}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit pam
 
 DESCRIPTION="The Console Display Manager"
 HOMEPAGE="https://github.com/evertiro/cdm"
-SRC_URI="https://github.com/evertiro/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/evertiro/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

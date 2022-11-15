@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/python/typing_extensions/
 "
 SRC_URI="
-	https://github.com/python/typing_extensions/archive/${PV}.tar.gz
+	https://github.com/python/typing_extensions/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

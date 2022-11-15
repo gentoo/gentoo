@@ -6,7 +6,7 @@ EAPI=7
 inherit optfeature prefix
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="https://github.com/dylanaraps/${PN}/archive/${PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/dylanaraps/${PN}/archive/refs/tags/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~x86"
 else
 	inherit git-r3

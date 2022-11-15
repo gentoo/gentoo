@@ -7,7 +7,7 @@ inherit vim-plugin
 
 DESCRIPTION="vim plugin: CSS 3 omni complete function"
 HOMEPAGE="https://github.com/othree/csscomplete.vim"
-SRC_URI="https://github.com/othree/${PN}.vim/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/othree/${PN}.vim/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="vim.org"
 SLOT="0"

@@ -13,7 +13,7 @@ if [[ ${PV} == *999 ]]; then
 	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
 	EGIT_BRANCH="develop"
 else
-	SRC_URI="https://github.com/pwmt/girara/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/pwmt/girara/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 fi
 

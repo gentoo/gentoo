@@ -13,7 +13,7 @@ if [[ ${PV} = *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/orocos/orocos_kinematics_dynamics"
 	S="${WORKDIR}/${P}/python_orocos_kdl"
 else
-	SRC_URI="https://github.com/orocos/orocos_kinematics_dynamics/archive/v${PV}.tar.gz -> orocos_kinematics_dynamics-${PV}.tar.gz"
+	SRC_URI="https://github.com/orocos/orocos_kinematics_dynamics/archive/refs/tags/v${PV}.tar.gz -> orocos_kinematics_dynamics-${PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
 	S="${WORKDIR}/orocos_kinematics_dynamics-${PV}/python_orocos_kdl"
 fi

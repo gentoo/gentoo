@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake systemd
 
 if [[ ${PV} != 9999 ]]; then
-	SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/Icinga/icinga2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~arm64 x86"
 else
 	inherit git-r3

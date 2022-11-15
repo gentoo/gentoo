@@ -9,7 +9,7 @@ inherit distutils-r1 systemd toolchain-funcs
 
 DESCRIPTION="A library for the Raspberry which allows control of the GPIOs"
 HOMEPAGE="http://abyz.me.uk/rpi/pigpio/ https://github.com/joan2937/pigpio"
-SRC_URI="https://github.com/joan2937/pigpio/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/joan2937/pigpio/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Unlicense"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Major mode for editing Apache configuration files"
 HOMEPAGE="https://github.com/emacs-php/apache-mode"
-SRC_URI="https://github.com/emacs-php/apache-mode/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/emacs-php/apache-mode/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

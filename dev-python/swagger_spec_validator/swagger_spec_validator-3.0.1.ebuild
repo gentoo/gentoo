@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/swagger-spec-validator/
 "
 SRC_URI="
-	https://github.com/Yelp/swagger_spec_validator/archive/v${PV}.tar.gz
+	https://github.com/Yelp/swagger_spec_validator/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

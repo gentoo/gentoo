@@ -23,7 +23,7 @@ HOMEPAGE="
 	https://pypi.org/project/wcmatch/
 "
 SRC_URI="
-	https://github.com/facelessuser/wcmatch/archive/${PV}.tar.gz
+	https://github.com/facelessuser/wcmatch/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

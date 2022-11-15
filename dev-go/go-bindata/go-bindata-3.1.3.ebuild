@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="A small utility which generates Go code from any file"
 HOMEPAGE="https://github.com/go-bindata/go-bindata"
-SRC_URI="https://github.com/go-bindata/go-bindata/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/go-bindata/go-bindata/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz"
 
 LICENSE="CC-PD"

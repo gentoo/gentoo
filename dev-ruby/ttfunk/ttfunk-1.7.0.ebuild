@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A TrueType font parser written in pure ruby"
 HOMEPAGE="https://github.com/prawnpdf/ttfunk/"
-SRC_URI="https://github.com/prawnpdf/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/prawnpdf/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 GPL-3 Ruby )"
 SLOT="$(ver_cut 1-2)"

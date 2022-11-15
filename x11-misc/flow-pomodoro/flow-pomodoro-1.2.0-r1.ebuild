@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="A pomodoro app that blocks distractions while you work"
 HOMEPAGE="https://github.com/iamsergio/flow-pomodoro"
-SRC_URI="https://github.com/iamsergio/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/iamsergio/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

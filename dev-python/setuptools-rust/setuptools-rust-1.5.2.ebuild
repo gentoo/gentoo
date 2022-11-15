@@ -93,7 +93,7 @@ HOMEPAGE="
 	https://pypi.org/project/setuptools-rust/
 "
 SRC_URI="
-	https://github.com/PyO3/setuptools-rust/archive/v${PV}.tar.gz
+	https://github.com/PyO3/setuptools-rust/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	test? ( $(cargo_crate_uris ${CRATES}) )
 "

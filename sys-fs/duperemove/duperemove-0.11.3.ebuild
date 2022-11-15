@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Btrfs and xfs deduplication utility"
 HOMEPAGE="https://github.com/markfasheh/duperemove"
-SRC_URI="https://github.com/markfasheh/duperemove/archive/v${PV/_/.}.tar.gz -> ${P/_/.}.tar.gz"
+SRC_URI="https://github.com/markfasheh/duperemove/archive/refs/tags/v${PV/_/.}.tar.gz -> ${P/_/.}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

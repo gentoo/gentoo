@@ -8,7 +8,7 @@ inherit vim-plugin
 if [[ ${PV} != 9999* ]] ; then
 	MY_PN=vim-${PN}
 	MY_P=${MY_PN}-${PV}
-	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 x86"
 	S=${WORKDIR}/${MY_P}
 else

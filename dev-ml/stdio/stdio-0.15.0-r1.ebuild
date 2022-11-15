@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Standard IO Library for OCaml"
 HOMEPAGE="https://github.com/janestreet/stdio"
-SRC_URI="https://github.com/janestreet/stdio/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janestreet/stdio/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1-2)"

@@ -17,7 +17,7 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Ruby bindings to the Duktape JavaScript interpeter"
 HOMEPAGE="https://github.com/judofyr/duktape.rb"
-SRC_URI="https://github.com/judofyr/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/judofyr/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

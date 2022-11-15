@@ -10,7 +10,7 @@ MY_GIT_SHA1=341d6d91931fdb04ad657d27ed740cf533fc925b
 
 DESCRIPTION="C++ dynamic multi-dimensionnal array library with Python exposure"
 HOMEPAGE="http://libdynd.org"
-SRC_URI="https://github.com/libdynd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/libdynd/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

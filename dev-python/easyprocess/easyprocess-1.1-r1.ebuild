@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Easy to use Python subprocess interface"
 HOMEPAGE="https://github.com/ponty/EasyProcess"
-SRC_URI="https://github.com/ponty/EasyProcess/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ponty/EasyProcess/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/EasyProcess-${PV}"
 
 LICENSE="BSD-2"

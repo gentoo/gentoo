@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Keras deep learning library reference implementations of deep learning models"
 HOMEPAGE="https://keras.io/applications/"
-SRC_URI="https://github.com/keras-team/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/keras-team/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

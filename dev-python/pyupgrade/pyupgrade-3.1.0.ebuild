@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pyupgrade/
 "
 SRC_URI="
-	https://github.com/asottile/pyupgrade/archive/v${PV}.tar.gz
+	https://github.com/asottile/pyupgrade/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

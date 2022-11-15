@@ -8,7 +8,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3 cmake
 else
 	inherit autotools
-	SRC_URI="https://github.com/seanmiddleditch/libtelnet/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/seanmiddleditch/libtelnet/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 

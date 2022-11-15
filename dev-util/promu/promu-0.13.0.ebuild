@@ -7,7 +7,7 @@ EGIT_COMMIT=b1a2edae78614c8b0ae9e2faa88d14098e96f6d2
 
 DESCRIPTION="Prometheus Utility Tool"
 HOMEPAGE="https://github.com/prometheus/promu"
-SRC_URI="https://github.com/prometheus/promu/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/prometheus/promu/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"

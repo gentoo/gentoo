@@ -11,7 +11,7 @@ RUBY_FAKEGEM_GEMSPEC="redcarpet.gemspec"
 
 inherit multilib ruby-fakegem
 
-SRC_URI="https://github.com/vmg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vmg/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="A Ruby wrapper for Upskirt"
 HOMEPAGE="https://github.com/vmg/redcarpet"
 

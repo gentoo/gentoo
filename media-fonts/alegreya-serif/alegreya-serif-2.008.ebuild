@@ -8,7 +8,7 @@ inherit font
 
 DESCRIPTION="Alegreya serif type family"
 HOMEPAGE="https://www.huertatipografica.com/en/fonts/alegreya-ht-pro"
-SRC_URI="https://github.com/huertatipografica/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/huertatipografica/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="OFL-1.1"

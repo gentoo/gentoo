@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/uc-micro-py/
 "
 SRC_URI="
-	https://github.com/tsutsu3/uc.micro-py/archive/v${PV}.tar.gz
+	https://github.com/tsutsu3/uc.micro-py/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

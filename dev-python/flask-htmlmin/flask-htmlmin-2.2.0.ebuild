@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Minimize your flask rendered html"
 HOMEPAGE="https://github.com/hamidfzm/Flask-HTMLmin"
 SRC_URI="
-	https://github.com/hamidfzm/Flask-HTMLmin/archive/v${PV}.tar.gz
+	https://github.com/hamidfzm/Flask-HTMLmin/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz"
 S="${WORKDIR}/${MY_P}"
 

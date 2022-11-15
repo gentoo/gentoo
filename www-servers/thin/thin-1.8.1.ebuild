@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A fast and very simple Ruby web server"
 HOMEPAGE="http://code.macournoyer.com/thin/"
-SRC_URI="https://github.com/macournoyer/thin/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/macournoyer/thin/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Ruby"
 SLOT="0"

@@ -8,7 +8,7 @@ BRANCH=0.11.0
 
 DESCRIPTION="Prometheus exporter for MongoDB"
 HOMEPAGE="https://github.com/percona/mongodb_exporter"
-SRC_URI="https://github.com/percona/mongodb_exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/percona/mongodb_exporter/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 AGPL-3 BSD MIT"
 SLOT="0"

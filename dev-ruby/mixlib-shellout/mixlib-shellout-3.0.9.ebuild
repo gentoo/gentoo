@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Run external commands on Unix or Windows"
 HOMEPAGE="https://github.com/opscode/mixlib-shellout"
-SRC_URI="https://github.com/opscode/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/opscode/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

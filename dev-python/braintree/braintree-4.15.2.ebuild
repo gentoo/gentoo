@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/braintree/braintree_python
 "
 SRC_URI="
-	https://github.com/braintree/braintree_python/archive/${PV}.tar.gz
+	https://github.com/braintree/braintree_python/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/${PN}_python-${PV}"

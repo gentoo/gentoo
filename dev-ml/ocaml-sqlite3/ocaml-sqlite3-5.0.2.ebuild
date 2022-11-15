@@ -8,7 +8,7 @@ inherit dune
 
 DESCRIPTION="SQLite3 bindings for OCaml"
 HOMEPAGE="http://mmottl.github.io/sqlite3-ocaml/"
-SRC_URI="https://github.com/mmottl/sqlite3-ocaml/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mmottl/sqlite3-ocaml/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/sqlite3-ocaml-${PV}"
 
 LICENSE="MIT"

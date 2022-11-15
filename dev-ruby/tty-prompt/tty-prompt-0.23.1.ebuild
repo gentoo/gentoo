@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A beautiful and powerful interactive command line prompt"
 HOMEPAGE="https://github.com/piotrmurach/tty-prompt"
-SRC_URI="https://github.com/piotrmurach/tty-prompt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/piotrmurach/tty-prompt/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

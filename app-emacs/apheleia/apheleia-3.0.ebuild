@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Reformat GNU Emacs buffers stably without moving point"
 HOMEPAGE="https://github.com/radian-software/apheleia/"
-SRC_URI="https://github.com/radian-software/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/radian-software/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="MIT"

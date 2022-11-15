@@ -7,7 +7,7 @@ inherit meson
 
 DESCRIPTION="An lv2 plug-in for broadband noise reduction"
 HOMEPAGE="https://github.com/lucianodato/noise-repellent"
-SRC_URI="https://github.com/lucianodato/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lucianodato/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3+"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Jakarta Annotations API"
 HOMEPAGE="https://projects.eclipse.org/projects/ee4j.ca"
-SRC_URI="https://github.com/eclipse-ee4j/${PN/jakarta/common}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/eclipse-ee4j/${PN/jakarta/common}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"

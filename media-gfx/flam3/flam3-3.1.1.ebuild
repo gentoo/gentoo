@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Tools and a library for creating flame fractal images"
 HOMEPAGE="https://flam3.com/"
-SRC_URI="https://github.com/scottdraves/flam3/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/scottdraves/flam3/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

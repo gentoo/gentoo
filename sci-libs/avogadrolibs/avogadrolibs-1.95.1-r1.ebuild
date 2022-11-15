@@ -8,7 +8,7 @@ inherit cmake
 DESCRIPTION="Advanced molecule editor and visualizer 2 - libraries"
 HOMEPAGE="https://www.openchemistry.org/ https://github.com/OpenChemistry/avogadrolibs"
 SRC_URI="
-	https://github.com/OpenChemistry/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/OpenChemistry/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/OpenChemistry/molecules/archive/refs/tags/1.0.0.tar.gz -> ${PN}-molecules-1.0.0.tar.gz
 	https://github.com/OpenChemistry/crystals/archive/refs/tags/1.0.1.tar.gz -> ${PN}-crystals-1.0.1.tar.gz
 	vtk? ( https://github.com/psavery/genXrdPattern/releases/download/1.0-static/linux64-genXrdPattern -> linux64-genXrdPattern-${P} )"

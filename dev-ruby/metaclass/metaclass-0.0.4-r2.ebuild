@@ -9,7 +9,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 RUBY_FAKEGEM_GEMSPEC="metaclass.gemspec"
 
 inherit ruby-fakegem
-SRC_URI="https://github.com/floehopper/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/floehopper/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 DESCRIPTION="Adds a __metaclass__ method to all Ruby objects"
 HOMEPAGE="https://github.com/floehopper/metaclass"

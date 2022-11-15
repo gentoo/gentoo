@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/executablebooks/markdown-it-py/
 "
 SRC_URI="
-	https://github.com/executablebooks/markdown-it-py/archive/v${PV}.tar.gz
+	https://github.com/executablebooks/markdown-it-py/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

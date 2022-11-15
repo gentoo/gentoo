@@ -9,7 +9,7 @@ KEYWORDS="~amd64"
 EGO_PN="github.com/hashicorp/serf"
 DESCRIPTION="Service orchestration and management tool"
 HOMEPAGE="https://www.serfdom.io/"
-SRC_URI="https://github.com/hashicorp/serf/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/hashicorp/serf/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 
 SLOT="0"

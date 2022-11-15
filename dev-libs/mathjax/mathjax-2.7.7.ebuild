@@ -7,7 +7,7 @@ inherit vcs-clean
 
 DESCRIPTION="JavaScript display engine for LaTeX, MathML and AsciiMath"
 HOMEPAGE="https://www.mathjax.org/"
-SRC_URI="https://github.com/mathjax/MathJax/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mathjax/MathJax/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/MathJax-${PV}
 
 LICENSE="Apache-2.0"

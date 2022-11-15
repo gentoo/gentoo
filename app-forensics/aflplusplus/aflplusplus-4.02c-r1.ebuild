@@ -9,7 +9,7 @@ inherit toolchain-funcs llvm optfeature python-single-r1
 
 DESCRIPTION="A fork of AFL, the popular compile-time instrumentation fuzzer"
 HOMEPAGE="https://github.com/AFLplusplus/AFLplusplus"
-SRC_URI="https://github.com/AFLplusplus/AFLplusplus/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/AFLplusplus/AFLplusplus/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/AFLplusplus-${PV}
 
 LICENSE="Apache-2.0"

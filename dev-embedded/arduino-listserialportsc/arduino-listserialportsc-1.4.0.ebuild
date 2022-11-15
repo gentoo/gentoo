@@ -7,7 +7,7 @@ inherit java-pkg-2 toolchain-funcs
 
 DESCRIPTION="Arduino helper library to list serial ports"
 HOMEPAGE="https://github.com/arduino/listSerialPortsC"
-SRC_URI="https://github.com/arduino/listSerialPortsC/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/arduino/listSerialPortsC/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

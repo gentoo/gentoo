@@ -11,7 +11,7 @@ inherit elisp distutils-r1
 
 DESCRIPTION="Tree style project file explorer"
 HOMEPAGE="https://github.com/Alexander-Miller/treemacs/"
-SRC_URI="https://github.com/Alexander-Miller/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/Alexander-Miller/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

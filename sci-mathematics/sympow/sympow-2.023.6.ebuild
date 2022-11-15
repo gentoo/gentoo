@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Symmetric power elliptic curve L-functions"
 HOMEPAGE="https://gitlab.com/rezozer/forks/sympow/"
-SRC_URI="https://gitlab.com/rezozer/forks/sympow/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
+SRC_URI="https://gitlab.com/rezozer/forks/sympow/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.gz"
 S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="Sympow-BSD"

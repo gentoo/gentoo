@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Modern concurrency tools including agents, futures, promises, thread pools, more"
 HOMEPAGE="https://github.com/ruby-concurrency/concurrent-ruby"
-SRC_URI="https://github.com/ruby-concurrency/concurrent-ruby/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby-concurrency/concurrent-ruby/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1"

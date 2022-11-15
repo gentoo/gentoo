@@ -8,7 +8,7 @@ inherit cmake
 DESCRIPTION="Fast Jaro and Jaro Winkler distance"
 HOMEPAGE="https://github.com/maxbachmann/jarowinkler-cpp/"
 SRC_URI="
-	https://github.com/maxbachmann/jarowinkler-cpp/archive/v${PV}.tar.gz
+	https://github.com/maxbachmann/jarowinkler-cpp/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A sphinx extension for creating panels in a grid layout"
 HOMEPAGE="https://github.com/executablebooks/sphinx-panels"
-SRC_URI="https://github.com/executablebooks/sphinx-panels/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/executablebooks/sphinx-panels/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

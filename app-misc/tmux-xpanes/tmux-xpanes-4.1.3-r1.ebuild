@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="tmux-based terminal divider"
 HOMEPAGE="https://github.com/greymd/tmux-xpanes"
-SRC_URI="https://github.com/greymd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/greymd/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

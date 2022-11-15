@@ -9,7 +9,7 @@ inherit distutils-r1 systemd
 
 DESCRIPTION="This is an OSP server implementation to allow GVM to remotely control OpenVAS"
 HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/ospd-openvas"
-SRC_URI="https://github.com/greenbone/ospd-openvas/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/greenbone/ospd-openvas/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3+ GPL-2+"
 SLOT="0"

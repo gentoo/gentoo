@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Guile bindings of libgcrypt"
 HOMEPAGE="https://notabug.org/cwebber/guile-gcrypt"
-SRC_URI="https://notabug.org/cwebber/guile-gcrypt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://notabug.org/cwebber/guile-gcrypt/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-3"

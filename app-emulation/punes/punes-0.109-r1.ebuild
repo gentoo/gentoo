@@ -7,7 +7,7 @@ inherit autotools toolchain-funcs xdg
 
 DESCRIPTION="Nintendo Entertainment System (NES) emulator"
 HOMEPAGE="https://github.com/punesemu/puNES"
-SRC_URI="https://github.com/punesemu/puNES/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/punesemu/puNES/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}_musl.patch.xz"
 S="${WORKDIR}/puNES-${PV}"
 

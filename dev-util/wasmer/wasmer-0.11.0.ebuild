@@ -171,7 +171,7 @@ inherit cargo
 
 DESCRIPTION="universal web assembly runtime"
 HOMEPAGE="https://wasmer.io"
-SRC_URI="https://github.com/wasmerio/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/wasmerio/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 https://dev.gentoo.org/~williamh/dist/${P}-git-deps.tar.xz
 	$(cargo_crate_uris ${CRATES})"
 

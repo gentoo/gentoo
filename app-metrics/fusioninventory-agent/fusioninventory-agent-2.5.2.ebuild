@@ -7,7 +7,7 @@ inherit perl-module systemd
 
 DESCRIPTION="The FusionInventory agent is a generic management agent"
 HOMEPAGE="http://fusioninventory.org/"
-SRC_URI="https://github.com/fusioninventory/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/fusioninventory/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

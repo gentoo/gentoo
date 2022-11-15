@@ -7,7 +7,7 @@ inherit cmake flag-o-matic
 
 DESCRIPTION="OpenGL Mathematics"
 HOMEPAGE="http://glm.g-truc.net/"
-SRC_URI="https://github.com/g-truc/glm/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/g-truc/glm/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( HappyBunny MIT )"
 SLOT="0"

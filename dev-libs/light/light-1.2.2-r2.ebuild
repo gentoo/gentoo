@@ -7,7 +7,7 @@ inherit autotools udev
 
 DESCRIPTION="A program to control backlights (and other hardware lights)"
 HOMEPAGE="https://github.com/haikarainen/light"
-SRC_URI="https://github.com/haikarainen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/haikarainen/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

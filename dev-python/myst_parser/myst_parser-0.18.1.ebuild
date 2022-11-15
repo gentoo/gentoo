@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/myst-parser/
 "
 SRC_URI="
-	https://github.com/executablebooks/MyST-Parser/archive/v${PV}.tar.gz
+	https://github.com/executablebooks/MyST-Parser/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

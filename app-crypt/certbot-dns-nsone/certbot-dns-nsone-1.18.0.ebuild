@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-SRC_URI="https://github.com/certbot/certbot/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/certbot/certbot/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 S=${WORKDIR}/certbot-${PV}/${PN}
 

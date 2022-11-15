@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Test for best practices around deploying docker containers"
 HOMEPAGE="https://github.com/docker/docker-bench-security"
-SRC_URI="https://github.com/docker/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/docker/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

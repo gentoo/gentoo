@@ -9,7 +9,7 @@ if [[ ${PV} =~ 99999999$ ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/neomutt/neomutt.git"
 else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 

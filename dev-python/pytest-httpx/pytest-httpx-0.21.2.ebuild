@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/pytest-httpx/
 "
 SRC_URI="
-	https://github.com/Colin-b/pytest_httpx/archive/v${PV}.tar.gz
+	https://github.com/Colin-b/pytest_httpx/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/${MY_PN}-${PV}"

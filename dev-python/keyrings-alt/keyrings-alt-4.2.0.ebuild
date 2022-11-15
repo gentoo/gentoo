@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/keyrings.alt/
 "
 SRC_URI="
-	https://github.com/jaraco/keyrings.alt/archive/v${PV}.tar.gz
+	https://github.com/jaraco/keyrings.alt/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

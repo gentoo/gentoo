@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="EditorConfig core library written in C"
 HOMEPAGE="https://github.com/editorconfig/editorconfig-core-c/"
-SRC_URI="https://github.com/editorconfig/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/editorconfig/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

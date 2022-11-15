@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/proto-plus/
 "
 SRC_URI="
-	https://github.com/googleapis/proto-plus-python/archive/v${PV}.tar.gz
+	https://github.com/googleapis/proto-plus-python/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/${PN}-python-${PV}"

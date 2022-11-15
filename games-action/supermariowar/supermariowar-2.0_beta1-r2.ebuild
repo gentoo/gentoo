@@ -11,7 +11,7 @@ MY_PN="smw"
 
 DESCRIPTION="Fan-made multiplayer Super Mario Bros. style deathmatch game"
 HOMEPAGE="https://github.com/mmatyas/supermariowar"
-SRC_URI="https://github.com/mmatyas/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mmatyas/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2"

@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server"
 HOMEPAGE="https://github.com/aio-libs/aiohttp-cors"
-SRC_URI="https://github.com/aio-libs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/aio-libs/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

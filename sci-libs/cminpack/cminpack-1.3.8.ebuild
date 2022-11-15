@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="C implementation of the MINPACK nonlinear optimization library"
 HOMEPAGE="http://devernay.free.fr/hacks/cminpack/"
-SRC_URI="https://github.com/devernay/cminpack/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/devernay/cminpack/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="minpack"
 SLOT="0/1"

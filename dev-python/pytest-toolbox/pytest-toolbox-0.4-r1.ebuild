@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pytest-toolbox/
 "
 SRC_URI="
-	https://github.com/samuelcolvin/pytest-toolbox/archive/v${PV}.tar.gz
+	https://github.com/samuelcolvin/pytest-toolbox/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

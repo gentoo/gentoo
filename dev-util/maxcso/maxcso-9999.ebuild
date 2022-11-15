@@ -11,7 +11,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/unknownbrackets/maxcso.git"
 else
-	SRC_URI="https://github.com/unknownbrackets/maxcso/archive/v${PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/unknownbrackets/maxcso/archive/refs/tags/v${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 

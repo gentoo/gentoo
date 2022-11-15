@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Spglib is a C library for finding and handling crystal symmetries"
 HOMEPAGE="https://atztogo.github.io/spglib/"
-SRC_URI="https://github.com/atztogo/spglib/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/atztogo/spglib/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

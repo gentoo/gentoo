@@ -8,7 +8,7 @@ inherit autotools fortran-2 toolchain-funcs
 DESCRIPTION="Arnoldi package library to solve large scale eigenvalue problems"
 HOMEPAGE="http://www.caam.rice.edu/software/ARPACK/ https://github.com/opencollab/arpack-ng"
 SRC_URI="
-	https://github.com/opencollab/${PN}-ng/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/opencollab/${PN}-ng/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	doc? (
 		http://www.caam.rice.edu/software/ARPACK/SRC/ug.ps.gz
 		http://www.caam.rice.edu/software/ARPACK/DOCS/tutorial.ps.gz )"

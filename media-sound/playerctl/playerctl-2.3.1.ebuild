@@ -7,7 +7,7 @@ inherit bash-completion-r1 xdg-utils meson
 
 DESCRIPTION="A CLI utility to control media players over MPRIS"
 HOMEPAGE="https://github.com/acrisci/playerctl"
-SRC_URI="https://github.com/acrisci/playerctl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/acrisci/playerctl/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 arm64 x86"

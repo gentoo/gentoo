@@ -7,7 +7,7 @@ MODULE_VERSION=001
 
 DESCRIPTION="Simple alternative to vim's 'xxd -i' mode"
 HOMEPAGE="https://github.com/gregkh/xxdi"
-SRC_URI="https://github.com/gregkh/xxdi/archive/v${MODULE_VERSION}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gregkh/xxdi/archive/refs/tags/v${MODULE_VERSION}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-${MODULE_VERSION}
 
 LICENSE="GPL-2"

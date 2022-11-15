@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Tree widgets for urwid"
 HOMEPAGE="https://github.com/pazz/urwidtrees"
-SRC_URI="https://github.com/pazz/urwidtrees/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pazz/urwidtrees/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

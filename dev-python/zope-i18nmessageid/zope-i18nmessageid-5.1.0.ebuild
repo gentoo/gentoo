@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/zopefoundation/zope.i18nmessageid/
 "
 SRC_URI="
-	https://github.com/zopefoundation/zope.i18nmessageid/archive/${PV}.tar.gz
+	https://github.com/zopefoundation/zope.i18nmessageid/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

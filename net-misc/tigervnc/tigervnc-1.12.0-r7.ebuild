@@ -10,7 +10,7 @@ XSERVER_VERSION="21.1.1"
 
 DESCRIPTION="Remote desktop viewer display system"
 HOMEPAGE="https://tigervnc.org"
-SRC_URI="https://github.com/TigerVNC/tigervnc/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/TigerVNC/tigervnc/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	server? (
 		ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${XSERVER_VERSION}.tar.xz
 		https://github.com/TigerVNC/tigervnc/commit/0c5a2b2e7759c2829c07186cfce4d24aa9b5274e.patch -> ${P}-xserver-21.patch

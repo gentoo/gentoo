@@ -13,7 +13,7 @@ inherit cmake flag-o-matic python-single-r1
 DESCRIPTION="A free open-source montecarlo raytracing engine"
 # Regular homepage is currently down. Upstream is working on this.
 HOMEPAGE="https://www.yafaray.org https://github.com/YafaRay/libYafaRay"
-SRC_URI="https://github.com/YafaRay/libYafaRay/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/YafaRay/libYafaRay/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/libYafaRay-${PV}"
 
 LICENSE="LGPL-2.1"

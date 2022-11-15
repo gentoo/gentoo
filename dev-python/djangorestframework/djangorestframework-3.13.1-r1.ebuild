@@ -12,7 +12,7 @@ MY_P=django-rest-framework-${PV}
 DESCRIPTION="Web APIs with django made easy"
 HOMEPAGE="https://www.django-rest-framework.org/"
 SRC_URI="
-	https://github.com/encode/django-rest-framework/archive/${PV}.tar.gz
+	https://github.com/encode/django-rest-framework/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

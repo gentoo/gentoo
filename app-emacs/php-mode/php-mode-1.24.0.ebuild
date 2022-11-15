@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="GNU Emacs major mode for editing PHP code"
 HOMEPAGE="https://github.com/ejmr/php-mode"
-SRC_URI="https://github.com/ejmr/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ejmr/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P}/lisp"
 
 LICENSE="GPL-3+"

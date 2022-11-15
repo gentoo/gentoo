@@ -7,7 +7,7 @@ inherit udev xdg cmake
 
 DESCRIPTION="Graphical program used to map keyboard buttons and mouse controls to a gamepad"
 HOMEPAGE="https://github.com/AntiMicroX/antimicrox/"
-SRC_URI="https://github.com/AntiMicroX/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/AntiMicroX/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="This library implements the client side of the Gadu-Gadu protocol"
 HOMEPAGE="http://toxygen.net/libgadu/"
-SRC_URI="https://github.com/wojtekka/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wojtekka/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 # Bug 373215, last checked 2012.01.28
 RESTRICT="test"

@@ -8,7 +8,7 @@ inherit autotools wxwidgets
 
 DESCRIPTION="Creates windows installer on usb media from an iso image"
 HOMEPAGE="https://github.com/slacka/WoeUSB"
-SRC_URI="https://github.com/slacka/WoeUSB/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/slacka/WoeUSB/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

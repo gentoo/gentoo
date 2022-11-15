@@ -10,7 +10,7 @@ inherit cmake flag-o-matic lua-single systemd xdg
 
 DESCRIPTION="A free open-source voxel game engine with easy modding and game creation"
 HOMEPAGE="https://www.minetest.net"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+ CC-BY-SA-3.0 OFL-1.1 Apache-2.0"
 SLOT="0"

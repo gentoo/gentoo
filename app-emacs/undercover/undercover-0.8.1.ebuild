@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Test coverage library for Emacs"
 HOMEPAGE="https://github.com/undercover-el/undercover.el/"
-SRC_URI="https://github.com/undercover-el/${PN}.el/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/undercover-el/${PN}.el/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}.el-${PV}
 

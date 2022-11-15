@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A library for tokenizing, lexing, and parsing Ruby regular expressions"
 HOMEPAGE="https://github.com/ammar/regexp_parser"
-SRC_URI="https://github.com/ammar/regexp_parser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ammar/regexp_parser/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

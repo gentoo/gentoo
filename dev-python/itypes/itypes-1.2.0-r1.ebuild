@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="basic immutable container types for python"
 HOMEPAGE="https://github.com/PavanTatikonda/itypes/"
 SRC_URI="
-	https://github.com/PavanTatikonda/itypes/archive/${PV}.tar.gz
+	https://github.com/PavanTatikonda/itypes/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

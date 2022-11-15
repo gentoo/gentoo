@@ -8,7 +8,7 @@ inherit vim-plugin python-single-r1
 
 DESCRIPTION="vim plugin: resolve conflicts during three-way merges"
 HOMEPAGE="https://docs.stevelosh.com/splice.vim/ https://github.com/sjl/splice.vim https://www.vim.org/scripts/script.php?script_id=4026"
-SRC_URI="https://github.com/sjl/splice.vim/archive/v${PV}.tar.gz -> ${P}-github.tar.gz"
+SRC_URI="https://github.com/sjl/splice.vim/archive/refs/tags/v${PV}.tar.gz -> ${P}-github.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="amd64 x86"

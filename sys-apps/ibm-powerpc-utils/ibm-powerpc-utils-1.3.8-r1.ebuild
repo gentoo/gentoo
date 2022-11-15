@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Utilities for the maintainance of the IBM and Apple PowerPC platforms"
 HOMEPAGE="https://github.com/ibm-power-utilities/powerpc-utils"
-SRC_URI="https://github.com/ibm-power-utilities/${PN//ibm-}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ibm-power-utilities/${PN//ibm-}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 IUSE="+rtas"
 
 S="${WORKDIR}/${P//ibm-}"

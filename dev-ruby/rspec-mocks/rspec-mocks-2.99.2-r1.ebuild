@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A Behaviour Driven Development (BDD) framework for Ruby"
 HOMEPAGE="http://rspec.rubyforge.org/"
-SRC_URI="https://github.com/rspec/${PN}/archive/v${PV}.tar.gz -> ${P}-git.tgz"
+SRC_URI="https://github.com/rspec/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"
 SLOT="2"

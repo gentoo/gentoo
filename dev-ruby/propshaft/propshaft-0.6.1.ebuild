@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Deliver assets for Rails"
 HOMEPAGE="https://github.com/rails/propshaft"
-SRC_URI="https://github.com/rails/propshaft/archive/v${PV}.tar.gz -> ${P}-git.tgz"
+SRC_URI="https://github.com/rails/propshaft/archive/refs/tags/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

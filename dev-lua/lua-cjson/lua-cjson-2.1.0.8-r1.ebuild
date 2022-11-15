@@ -9,7 +9,7 @@ inherit lua toolchain-funcs
 
 DESCRIPTION="A fast JSON encoding/parsing module for Lua"
 HOMEPAGE="https://www.kyne.com.au/~mark/software/lua-cjson.php https://github.com/openresty/lua-cjson"
-SRC_URI="https://github.com/openresty/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/openresty/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

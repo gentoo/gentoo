@@ -9,7 +9,7 @@ inherit linux-info python-any-r1 scons-utils toolchain-funcs systemd udev
 
 DESCRIPTION="Userspace Xbox 360 Controller driver"
 HOMEPAGE="https://xboxdrv.gitlab.io"
-SRC_URI="https://gitlab.com/xboxdrv/xboxdrv/-/archive/v0.8.8/xboxdrv-v0.8.8.tar.bz2"
+SRC_URI="https://gitlab.com/xboxdrv/xboxdrv/-/archive/refs/tags/v0.8.8/xboxdrv-v0.8.8.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

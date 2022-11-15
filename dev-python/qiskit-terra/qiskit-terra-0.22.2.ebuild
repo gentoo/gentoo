@@ -84,7 +84,7 @@ HOMEPAGE="
 	https://pypi.org/project/qiskit-terra/
 "
 SRC_URI="
-	https://github.com/Qiskit/qiskit-terra/archive/${PV}.tar.gz
+	https://github.com/Qiskit/qiskit-terra/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	$(cargo_crate_uris)
 "

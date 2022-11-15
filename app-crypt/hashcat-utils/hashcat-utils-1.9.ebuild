@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="a set of small utilities that are useful in advanced password cracking"
 HOMEPAGE="https://github.com/hashcat/hashcat-utils"
-SRC_URI="https://github.com/hashcat/hashcat-utils/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hashcat/hashcat-utils/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

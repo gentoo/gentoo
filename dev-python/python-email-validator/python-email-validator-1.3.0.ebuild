@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/email-validator/
 "
 SRC_URI="
-	https://github.com/JoshData/python-email-validator/archive/v${PV}.tar.gz
+	https://github.com/JoshData/python-email-validator/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

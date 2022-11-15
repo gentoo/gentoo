@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="C implementation of Bitcoin's getblocktemplate interface"
 HOMEPAGE="https://github.com/bitcoin/libblkmaker"
-SRC_URI="https://github.com/bitcoin/${PN}/archive/v${PV}.tar.gz -> ${P}-github.tgz"
+SRC_URI="https://github.com/bitcoin/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}-github.tgz"
 
 LICENSE="MIT"
 SLOT="0/7"

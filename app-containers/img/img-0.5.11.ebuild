@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="Standalone daemon-less unprivileged Dockerfile and OCI container image builder"
 HOMEPAGE="https://github.com/genuinetools/img"
-SRC_URI="https://github.com/genuinetools/img/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/genuinetools/img/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64"
 LICENSE="MIT"

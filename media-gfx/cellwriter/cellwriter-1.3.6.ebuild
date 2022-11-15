@@ -7,7 +7,7 @@ inherit xdg
 
 DESCRIPTION="Grid-entry natural handwriting input panel"
 HOMEPAGE="http://risujin.org/cellwriter/"
-SRC_URI="https://github.com/risujin/cellwriter/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/risujin/cellwriter/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

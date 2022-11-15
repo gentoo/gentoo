@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Utility to communicate with the ROM bootloader in Espressif ESP8266 and ESP32"
 HOMEPAGE="https://github.com/espressif/esptool"
-SRC_URI="https://github.com/espressif/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/espressif/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

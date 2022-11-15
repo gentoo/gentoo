@@ -11,7 +11,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A simple library to assist in enabling tunneled Net::SSH connections"
 HOMEPAGE="https://github.com/net-ssh/net-ssh-gateway"
-SRC_URI="https://github.com/net-ssh/net-ssh-gateway/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/net-ssh/net-ssh-gateway/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2.0"

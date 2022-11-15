@@ -7,7 +7,7 @@ inherit autotools systemd
 
 DESCRIPTION="Userspace helper for Linux kernel EDAC drivers"
 HOMEPAGE="https://github.com/grondo/edac-utils"
-SRC_URI="https://github.com/grondo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/grondo/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

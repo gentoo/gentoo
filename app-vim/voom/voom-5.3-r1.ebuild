@@ -8,7 +8,7 @@ inherit python-single-r1 vim-plugin
 
 DESCRIPTION="vim plugin: emulates a two-pane text outliner"
 HOMEPAGE="https://vim-voom.github.com/ https://www.vim.org/scripts/script.php?script_id=2657"
-SRC_URI="https://github.com/vim-voom/VOoM/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vim-voom/VOoM/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC0-1.0"
 KEYWORDS="amd64 x86"

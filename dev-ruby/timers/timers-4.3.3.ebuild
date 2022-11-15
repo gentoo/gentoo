@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Pure Ruby one-shot and periodic timers"
 HOMEPAGE="https://github.com/tarcieri/timers"
-SRC_URI="https://github.com/tarcieri/timers/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/tarcieri/timers/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="4"

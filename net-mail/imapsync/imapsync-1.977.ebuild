@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Tool for incremental and recursive IMAP transfers between mailboxes"
 HOMEPAGE="http://ks.lamiral.info/imapsync/ https://github.com/imapsync/imapsync"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="WTFPL-2"
 SLOT="0"

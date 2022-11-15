@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Adds read support for DBF files to agate"
 HOMEPAGE="https://github.com/wireservice/agate-dbf https://pypi.org/project/agate-dbf/"
 SRC_URI="
-	https://github.com/wireservice/agate-dbf/archive/${PV}.tar.gz
+	https://github.com/wireservice/agate-dbf/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

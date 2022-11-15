@@ -9,8 +9,8 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
 else
-	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		examples? (	https://github.com/${PN/-//}-tutorials/archive/v${PV}.tar.gz -> ${PN}-tutorials-${PV}.tar.gz )"
+	SRC_URI="https://github.com/${PN/-//}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+		examples? (	https://github.com/${PN/-//}-tutorials/archive/refs/tags/v${PV}.tar.gz -> ${PN}-tutorials-${PV}.tar.gz )"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux"
 	S="${WORKDIR}/${P#votca-}"
 fi

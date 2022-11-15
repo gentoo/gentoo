@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="signal processing library for blind signal analysis and automatic demodulation"
 HOMEPAGE="https://github.com/BatchDrake/sigutils"
-SRC_URI="https://github.com/BatchDrake/sigutils/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/BatchDrake/sigutils/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

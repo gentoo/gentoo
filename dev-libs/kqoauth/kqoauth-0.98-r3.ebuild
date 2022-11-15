@@ -7,7 +7,7 @@ inherit qmake-utils
 
 DESCRIPTION="Library for Qt that implements the OAuth 1.0 authentication specification"
 HOMEPAGE="https://github.com/kypeli/kQOAuth"
-SRC_URI="https://github.com/kypeli/kQOAuth/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kypeli/kQOAuth/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

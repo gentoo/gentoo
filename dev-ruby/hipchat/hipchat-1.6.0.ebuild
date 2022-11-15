@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Ruby library to interact with HipChat"
 HOMEPAGE="https://github.com/hipchat/hipchat-rb"
-SRC_URI="https://github.com/hipchat/hipchat-rb/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hipchat/hipchat-rb/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

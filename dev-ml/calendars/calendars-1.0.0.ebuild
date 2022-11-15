@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Convert dates between gregorian/julian/french/hebrew calendars"
 HOMEPAGE="https://github.com/geneweb/calendars"
-SRC_URI="https://github.com/geneweb/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/geneweb/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3"

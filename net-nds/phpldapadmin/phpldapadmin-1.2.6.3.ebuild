@@ -8,7 +8,7 @@ inherit webapp
 MY_PN="phpLDAPadmin"
 DESCRIPTION="phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server"
 HOMEPAGE="http://phpldapadmin.sourceforge.net"
-SRC_URI="https://github.com/leenooks/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/leenooks/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"

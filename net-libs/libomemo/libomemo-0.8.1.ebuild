@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Implementation of OMEMO (XEP-0384) in C"
 HOMEPAGE="https://github.com/gkdr/libomemo"
-SRC_URI="https://github.com/gkdr/libomemo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gkdr/libomemo/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

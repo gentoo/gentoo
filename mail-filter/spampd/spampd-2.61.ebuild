@@ -7,7 +7,7 @@ inherit systemd
 
 DESCRIPTION="A program to scan messages for Unsolicited Commercial E-mail content"
 HOMEPAGE="http://www.worlddesign.com/index.cfm/rd/mta/spampd.htm https://github.com/mpaperno/spampd"
-SRC_URI="https://github.com/mpaperno/spampd/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mpaperno/spampd/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

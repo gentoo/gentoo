@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Prokaryotic Dynamic Programming Genefinding Algorithm"
 HOMEPAGE="http://prodigal.ornl.gov/"
-SRC_URI="https://github.com/hyattpd/${PN^}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hyattpd/${PN^}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P^}"
 
 LICENSE="GPL-3"

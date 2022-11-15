@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Genealogy software program with a Web interface"
 HOMEPAGE="https://github.com/geneweb/geneweb"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="httpstat visualizes cURL statistics in a way of beauty and clarity"
 HOMEPAGE="https://github.com/reorx/httpstat"
-SRC_URI="https://github.com/reorx/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/reorx/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

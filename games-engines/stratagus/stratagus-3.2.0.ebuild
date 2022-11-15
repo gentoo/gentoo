@@ -10,7 +10,7 @@ DESCRIPTION="A realtime strategy game engine"
 HOMEPAGE="
 	https://stratagus.com/stratagus.html
 	https://github.com/Wargus/stratagus"
-SRC_URI="https://github.com/Wargus/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Wargus/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/3"

@@ -8,7 +8,7 @@ inherit autotools flag-o-matic python-single-r1
 
 DESCRIPTION="Provide access to (SM)BIOS information"
 HOMEPAGE="https://github.com/dell/libsmbios"
-SRC_URI="https://github.com/dell/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dell/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( GPL-2+ OSL-2.1 ) BSD Boost-1.0"
 SLOT="0"

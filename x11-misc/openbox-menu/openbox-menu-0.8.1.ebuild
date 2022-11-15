@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Another dynamic menu generator for Openbox"
 HOMEPAGE="http://fabrice.thiroux.free.fr/openbox-menu_en.html"
-SRC_URI="https://github.com/fabriceT/openbox-menu/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/fabriceT/openbox-menu/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

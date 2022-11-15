@@ -10,7 +10,7 @@ inherit python-r1
 
 DESCRIPTION="Ncurses client and real-time monitoring and displaying of HAProxy status"
 HOMEPAGE="https://github.com/jhunt/hatop"
-SRC_URI="https://github.com/jhunt/hatop/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jhunt/hatop/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -14,7 +14,7 @@ HOMEPAGE="https://sysdig.com/"
 # check the used git revision in <src>/cmake/modules/falcosecurity-libs.cmake
 LIBS_COMMIT="e5c53d648f3c4694385bbe488e7d47eaa36c229a"
 
-SRC_URI="https://github.com/draios/sysdig/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/draios/sysdig/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/falcosecurity/libs/archive/${LIBS_COMMIT}.tar.gz -> falcosecurity-libs-${LIBS_COMMIT}.tar.gz"
 
 LICENSE="Apache-2.0"

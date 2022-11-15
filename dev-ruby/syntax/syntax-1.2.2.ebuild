@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Syntax highlighting for sourcecode and HTML"
 HOMEPAGE="https://github.com/dblock/syntax"
-SRC_URI="https://github.com/dblock/syntax/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dblock/syntax/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

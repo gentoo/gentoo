@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/prometheus-client/
 "
 SRC_URI="
-	https://github.com/prometheus/client_python/archive/v${PV}.tar.gz
+	https://github.com/prometheus/client_python/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/client_python-${PV}"

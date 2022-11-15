@@ -7,7 +7,7 @@ GIT_COMMIT=2aa7e66bdb526e25f59883952d74dad7ea9a014e
 
 DESCRIPTION="A simple and flexible workload orchestrator"
 HOMEPAGE="https://nomadproject.io"
-SRC_URI="https://github.com/hashicorp/nomad/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hashicorp/nomad/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="MPL-2.0"

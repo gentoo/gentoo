@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: quickly switch between .c and .h files"
 HOMEPAGE="https://github.com/vim-scripts/a.vim https://www.vim.org/scripts/script.php?script_id=31"
 
 SRC_URI="
-	https://github.com/vim-scripts/a.vim/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/vim-scripts/a.vim/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://www.vim.org/scripts/download_script.php?src_id=6347 -> ${PN}.txt"
 
 LICENSE="alternate"

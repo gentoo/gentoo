@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="transparent file encryption in git"
 HOMEPAGE="https://www.agwa.name/projects/git-crypt/"
-SRC_URI="https://github.com/AGWA/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/AGWA/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

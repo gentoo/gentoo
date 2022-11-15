@@ -13,7 +13,7 @@ DESCRIPTION="Utilities for writing C++ extension modules"
 HOMEPAGE="https://quantopian.github.io/libpy/
 	https://github.com/quantopian/libpy"
 SRC_URI="
-	https://github.com/quantopian/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/quantopian/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://github.com/google/googletest/archive/${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz )
 "
 

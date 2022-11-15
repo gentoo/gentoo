@@ -10,7 +10,7 @@ HOMEPAGE="
 	https://github.com/astrada/google-drive-ocamlfuse
 	https://opam.ocaml.org/packages/google-drive-ocamlfuse/
 "
-SRC_URI="https://github.com/astrada/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/astrada/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

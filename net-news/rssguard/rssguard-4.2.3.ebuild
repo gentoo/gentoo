@@ -8,7 +8,7 @@ inherit cmake optfeature xdg
 
 DESCRIPTION="Simple (yet powerful) feed reader"
 HOMEPAGE="https://github.com/martinrotter/rssguard"
-SRC_URI="https://github.com/martinrotter/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/martinrotter/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( LGPL-3 GPL-2+ ) AGPL-3+ BSD GPL-3+ MIT"
 SLOT="0"

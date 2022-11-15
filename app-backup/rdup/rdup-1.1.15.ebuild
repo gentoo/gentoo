@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Generate a file list suitable for full or incremental backups"
 HOMEPAGE="https://github.com/miekg/rdup/releases"
-SRC_URI="https://github.com/miekg/rdup/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/miekg/rdup/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

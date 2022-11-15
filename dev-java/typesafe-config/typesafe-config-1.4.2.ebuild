@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A library of arguably useful Java utilities"
 HOMEPAGE="https://lightbend.github.io/config/"
-SRC_URI="https://github.com/lightbend/config/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lightbend/config/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/yarl/
 "
 SRC_URI="
-	https://github.com/aio-libs/yarl/archive/v${PV}.tar.gz
+	https://github.com/aio-libs/yarl/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

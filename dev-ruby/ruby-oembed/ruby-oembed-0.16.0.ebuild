@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="An oEmbed consumer library written in Ruby"
 HOMEPAGE="https://github.com/ruby-oembed/ruby-oembed"
-SRC_URI="https://github.com/ruby-oembed/ruby-oembed/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby-oembed/ruby-oembed/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
 KEYWORDS="~amd64"

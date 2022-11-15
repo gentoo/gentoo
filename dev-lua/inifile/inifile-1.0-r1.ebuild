@@ -10,7 +10,7 @@ inherit lua
 
 DESCRIPTION="A simple and complete ini parser for Lua"
 HOMEPAGE="https://github.com/bartbes/inifile/"
-SRC_URI="https://github.com/bartbes/inifile/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bartbes/inifile/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

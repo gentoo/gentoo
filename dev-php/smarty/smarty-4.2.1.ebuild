@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="A template engine for PHP"
 HOMEPAGE="https://www.smarty.net/ https://github.com/smarty-php/smarty/"
-SRC_URI="https://github.com/smarty-php/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/smarty-php/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

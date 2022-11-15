@@ -7,7 +7,7 @@ inherit multiprocessing
 
 DESCRIPTION="Curses terminal client for the Notmuch email system"
 HOMEPAGE="https://github.com/wangp/bower"
-SRC_URI="https://github.com/wangp/bower/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wangp/bower/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit multiprocessing optfeature
 MY_PN="bats-core"
 DESCRIPTION="Bats-core: Bash Automated Testing System"
 HOMEPAGE="https://github.com/bats-core/bats-core/"
-SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

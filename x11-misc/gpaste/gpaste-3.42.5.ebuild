@@ -10,7 +10,7 @@ inherit meson vala gnome2-utils
 
 DESCRIPTION="Clipboard management system"
 HOMEPAGE="https://github.com/Keruspe/GPaste"
-SRC_URI="https://github.com/Keruspe/GPaste/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Keruspe/GPaste/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

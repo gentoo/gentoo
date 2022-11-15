@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Pure python parser generator that also works with RPython"
 HOMEPAGE="https://github.com/alex/rply"
-SRC_URI="https://github.com/alex/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/alex/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

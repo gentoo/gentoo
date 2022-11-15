@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Pidgin GPG/OpenPGP (XEP-0027) plugin"
 HOMEPAGE="https://github.com/Draghtnod/Pidgin-GPG"
-SRC_URI="https://github.com/Draghtnod/Pidgin-GPG/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Draghtnod/Pidgin-GPG/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

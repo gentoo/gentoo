@@ -5,7 +5,7 @@ EAPI="7"
 
 DESCRIPTION="Block signals before running programs (a generic \"nohup\")"
 HOMEPAGE="https://vapier.github.io/nosig/"
-SRC_URI="https://github.com/vapier/nosig/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vapier/nosig/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

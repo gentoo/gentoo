@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="HTTP request/response parser for C"
 HOMEPAGE="https://github.com/nodejs/http-parser"
-SRC_URI="https://github.com/nodejs/http-parser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nodejs/http-parser/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 # 2.9.4 restored ABI compatibility with 2.9.0 but since we failed

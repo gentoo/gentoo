@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/pendulum/
 "
 SRC_URI="
-	https://github.com/sdispater/pendulum/archive/${PV}.tar.gz
+	https://github.com/sdispater/pendulum/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

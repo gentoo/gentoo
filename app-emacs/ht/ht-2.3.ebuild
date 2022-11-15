@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="The missing hash table library for Emacs"
 HOMEPAGE="https://github.com/Wilfred/ht.el"
-SRC_URI="https://github.com/Wilfred/ht.el/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Wilfred/ht.el/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/ht.el-${PV}"
 
 LICENSE="GPL-3+"

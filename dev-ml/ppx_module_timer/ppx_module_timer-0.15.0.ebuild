@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Ppx rewriter that records top-level module startup times"
 HOMEPAGE="https://github.com/janestreet/ppx_module_timer"
-SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="MIT"

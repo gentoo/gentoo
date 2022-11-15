@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="VNC server for real X displays"
 HOMEPAGE="https://libvnc.github.io/"
-SRC_URI="https://github.com/LibVNC/x11vnc/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/LibVNC/x11vnc/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"

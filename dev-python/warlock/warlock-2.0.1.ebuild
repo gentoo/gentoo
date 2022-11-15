@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/warlock/
 "
 SRC_URI="
-	https://github.com/bcwaldon/warlock/archive/${PV}.tar.gz
+	https://github.com/bcwaldon/warlock/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

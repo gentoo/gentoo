@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/kodi-pvr/pvr.hts/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/kodi-pvr/pvr.hts/archive/refs/tags/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/pvr.hts-${PV}-${CODENAME}"
 fi
 

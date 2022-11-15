@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Google Calendar Command Line Interface"
 HOMEPAGE="https://github.com/insanum/gcalcli"
-SRC_URI="https://github.com/insanum/gcalcli/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/insanum/gcalcli/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

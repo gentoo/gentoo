@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="Prometheus exporter for snmp metrics"
 HOMEPAGE="https://github.com/prometheus/snmp_exporter"
-SRC_URI="https://github.com/prometheus/${PN}/archive/v${PV/_rc/-rc.}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/prometheus/${PN}/archive/refs/tags/v${PV/_rc/-rc.}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"

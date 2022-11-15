@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="JAXB (JSR 222) Reference Implementation"
 HOMEPAGE="https://eclipse-ee4j.github.io/jaxb-ri/"
-SRC_URI="https://github.com/eclipse-ee4j/jaxb-ri/archive/${PV}-RI.tar.gz -> jaxb-ri-${PV}.tar.gz"
+SRC_URI="https://github.com/eclipse-ee4j/jaxb-ri/archive/refs/tags/${PV}-RI.tar.gz -> jaxb-ri-${PV}.tar.gz"
 
 LICENSE="EPL-1.0"
 SLOT="4"

@@ -7,7 +7,7 @@ COMMIT=4fe450a23991beb6c61dc941c0f87f56021ad386
 
 DESCRIPTION="Analyzes resource usage and performance characteristics of running containers"
 HOMEPAGE="https://github.com/google/cadvisor"
-SRC_URI="https://github.com/google/cadvisor/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/cadvisor/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT"

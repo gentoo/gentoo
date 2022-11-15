@@ -16,7 +16,7 @@ HOMEPAGE="
 "
 # forked because upstream didn't push the tag for almost a year now
 SRC_URI="
-	https://github.com/mgorny/libnacl/archive/v${PV}.tar.gz
+	https://github.com/mgorny/libnacl/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

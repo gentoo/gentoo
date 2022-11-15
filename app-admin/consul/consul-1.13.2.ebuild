@@ -8,7 +8,7 @@ DESCRIPTION="A tool for service discovery, monitoring and configuration"
 HOMEPAGE="https://www.consul.io"
 GIT_COMMIT="0e046bbb34f12b4a38c6c2dc6497426761f0b02f"
 
-SRC_URI="https://github.com/hashicorp/consul/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/hashicorp/consul/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 
 LICENSE="MPL-2.0 Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT"

@@ -19,7 +19,7 @@ case ${PV} in
 *)
 	KEYWORDS="~amd64"
 	CODENAME="Matrix"
-	SRC_URI="https://github.com/rbuehlma/pvr.zattoo/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/rbuehlma/pvr.zattoo/archive/refs/tags/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/pvr.zattoo-${PV}-${CODENAME}"
 	DEPEND="=media-tv/kodi-19*"
 	;;

@@ -6,7 +6,7 @@ inherit desktop toolchain-funcs xdg
 
 DESCRIPTION="A 3D fantasy MMORPG written in C and SDL"
 HOMEPAGE="http://www.eternal-lands.com"
-SRC_URI="https://github.com/raduprv/Eternal-Lands/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/raduprv/Eternal-Lands/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="eternal_lands"
 SLOT="0"

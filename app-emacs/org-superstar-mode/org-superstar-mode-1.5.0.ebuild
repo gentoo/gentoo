@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Prettify headings and plain lists in Org mode (use UTF8 bullets)"
 HOMEPAGE="https://github.com/integral-dw/org-superstar-mode/"
-SRC_URI="https://github.com/integral-dw/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/integral-dw/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

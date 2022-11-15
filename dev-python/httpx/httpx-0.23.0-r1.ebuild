@@ -19,7 +19,7 @@ HOMEPAGE="
 	https://pypi.org/project/httpx/
 "
 SRC_URI="
-	https://github.com/encode/httpx/archive/${PV}.tar.gz
+	https://github.com/encode/httpx/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

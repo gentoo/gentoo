@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://mygpoclient.readthedocs.io/en/latest/
 "
 SRC_URI="
-	https://github.com/gpodder/mygpoclient/archive/${PV}.tar.gz
+	https://github.com/gpodder/mygpoclient/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

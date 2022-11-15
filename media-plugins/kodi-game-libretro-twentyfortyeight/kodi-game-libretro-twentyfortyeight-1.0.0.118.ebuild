@@ -16,7 +16,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	KEYWORDS="~amd64 ~x86"
 	CODENAME="Matrix"
-	SRC_URI="https://github.com/kodi-game/game.libretro.2048/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/kodi-game/game.libretro.2048/archive/refs/tags/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/game.libretro.2048-${PV}-${CODENAME}"
 fi
 

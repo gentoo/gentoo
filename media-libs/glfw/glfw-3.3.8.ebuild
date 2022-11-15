@@ -7,7 +7,7 @@ inherit cmake-multilib
 
 DESCRIPTION="Portable OpenGL FrameWork"
 HOMEPAGE="https://www.glfw.org/"
-SRC_URI="https://github.com/glfw/glfw/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/glfw/glfw/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"

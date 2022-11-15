@@ -6,7 +6,7 @@ MY_PN="PRoot"
 
 inherit toolchain-funcs
 
-SRC_URI="https://github.com/proot-me/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/proot-me/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="User-space implementation of chroot, mount --bind, and binfmt_misc"

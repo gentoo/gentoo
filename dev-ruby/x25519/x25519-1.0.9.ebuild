@@ -17,7 +17,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Key exchange via the X25519 (Curve25519) Elliptic Curve Diffie-Hellman function"
 HOMEPAGE="https://github.com/crypto-rb/x25519"
-SRC_URI="https://github.com/crypto-rb/x25519/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/crypto-rb/x25519/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="$(ver_cut 1)"

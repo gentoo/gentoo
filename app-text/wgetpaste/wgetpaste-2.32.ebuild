@@ -6,7 +6,7 @@ EAPI=7
 DESCRIPTION="Command-line interface to various pastebins"
 HOMEPAGE="https://wgetpaste.zlin.dk/"
 
-SRC_URI="https://github.com/zlin/wgetpaste/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/zlin/wgetpaste/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -9,7 +9,7 @@ DESCRIPTION="Warcraft II for the Stratagus game engine"
 HOMEPAGE="
 	https://stratagus.com/
 	https://github.com/Wargus/wargus"
-SRC_URI="https://github.com/Wargus/wargus/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Wargus/wargus/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

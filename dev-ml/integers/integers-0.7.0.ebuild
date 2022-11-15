@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Various signed and unsigned integer types for OCaml"
 HOMEPAGE="https://github.com/ocamllabs/ocaml-integers"
-SRC_URI="https://github.com/ocamllabs/ocaml-integers/archive/${PV}.tar.gz
+SRC_URI="https://github.com/ocamllabs/ocaml-integers/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 S="${WORKDIR}"/ocaml-${P}
 

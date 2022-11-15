@@ -14,7 +14,7 @@ inherit ruby-fakegem
 DESCRIPTION="Colorize printed text on ANSI terminals"
 HOMEPAGE="https://github.com/sickill/rainbow"
 
-SRC_URI="https://github.com/sickill/rainbow/archive/v${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
+SRC_URI="https://github.com/sickill/rainbow/archive/refs/tags/v${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
 
 LICENSE="MIT"
 SLOT="3"

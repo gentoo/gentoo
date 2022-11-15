@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/imageio-ffmpeg/
 "
 SRC_URI="
-	https://github.com/imageio/imageio-ffmpeg/archive/v${PV}.tar.gz
+	https://github.com/imageio/imageio-ffmpeg/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

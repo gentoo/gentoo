@@ -8,7 +8,7 @@ inherit python-single-r1
 
 DESCRIPTION="Tool for community verification of Gentoo elections"
 HOMEPAGE="https://github.com/mgorny/votrify"
-SRC_URI="https://github.com/mgorny/votrify/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mgorny/votrify/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

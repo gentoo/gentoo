@@ -163,7 +163,7 @@ inherit cargo systemd
 
 DESCRIPTION="Yet Another SKK server"
 HOMEPAGE="https://github.com/wachikun/yaskkserv2"
-SRC_URI="https://github.com/wachikun/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/wachikun/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})
 	test? ( https://dev.gentoo.org/~hattya/distfiles/${TESTDATA}.tar.xz )"
 RESTRICT="!test? ( test )"

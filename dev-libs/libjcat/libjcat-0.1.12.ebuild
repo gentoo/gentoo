@@ -10,7 +10,7 @@ inherit meson python-any-r1 vala xdg-utils
 
 DESCRIPTION="Library and tool for reading and writing Jcat files"
 HOMEPAGE="https://github.com/hughsie/libjcat"
-SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hughsie/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

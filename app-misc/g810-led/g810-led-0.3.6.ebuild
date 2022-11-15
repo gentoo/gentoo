@@ -7,7 +7,7 @@ inherit systemd udev
 
 DESCRIPTION="Led controller for Logitech G- Keyboards"
 HOMEPAGE="https://github.com/MatMoul/g810-led"
-SRC_URI="https://github.com/MatMoul/g810-led/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/MatMoul/g810-led/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="A collection of yasnippet snippets for many languages"
 HOMEPAGE="https://github.com/AndreaCrotti/yasnippet-snippets"
-SRC_URI="https://github.com/AndreaCrotti/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/AndreaCrotti/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -8,7 +8,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 DESCRIPTION="PHP templating engine with syntax similar to Django"
 HOMEPAGE="https://twig.symfony.com/"
-SRC_URI="https://github.com/twigphp/${MY_PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/twigphp/${MY_PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"

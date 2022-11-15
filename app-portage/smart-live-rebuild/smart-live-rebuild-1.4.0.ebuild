@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Check live packages for updates and emerge them as necessary"
 HOMEPAGE="https://github.com/projg2/smart-live-rebuild/"
-SRC_URI="https://github.com/projg2/smart-live-rebuild/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/projg2/smart-live-rebuild/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

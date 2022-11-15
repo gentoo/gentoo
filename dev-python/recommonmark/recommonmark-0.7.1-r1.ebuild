@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python docutils-compatibility bridge to CommonMark"
 HOMEPAGE="https://recommonmark.readthedocs.io/"
-SRC_URI="https://github.com/rtfd/recommonmark/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rtfd/recommonmark/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

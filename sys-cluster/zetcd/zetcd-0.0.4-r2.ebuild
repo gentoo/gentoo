@@ -15,7 +15,7 @@ ZETCD_COMMIT="e4352ce3cc940bc5b60bb3dd69c14f16dac2980a"
 
 inherit golang-build golang-vcs-snapshot
 
-ARCHIVE_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+ARCHIVE_URI="https://${EGO_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 DESCRIPTION="ZooKeeper personality for etcd"
 HOMEPAGE="https://github.com/etcd-io/zetcd"

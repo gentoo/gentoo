@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Regular expression library for OCaml"
 HOMEPAGE="https://github.com/ocaml/ocaml-re"
-SRC_URI="https://github.com/ocaml/ocaml-re/archive/${PV}.tar.gz
+SRC_URI="https://github.com/ocaml/ocaml-re/archive/refs/tags/${PV}.tar.gz
 	-> ocaml-${P}.tar.gz"
 S="${WORKDIR}"/ocaml-${P}
 

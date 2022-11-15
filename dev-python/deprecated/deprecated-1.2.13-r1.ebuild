@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/Deprecated/
 "
 SRC_URI="
-	https://github.com/tantale/deprecated/archive/v${PV}.tar.gz
+	https://github.com/tantale/deprecated/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

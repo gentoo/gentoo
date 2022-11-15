@@ -15,7 +15,7 @@ URANIUM_PV=4.13.0 # 4.13.1 is identical and so is not packaged in ::gentoo
 
 DESCRIPTION="A 3D model slicing application for 3D printing"
 HOMEPAGE="https://github.com/Ultimaker/Cura"
-SRC_URI="https://github.com/Ultimaker/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Ultimaker/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"

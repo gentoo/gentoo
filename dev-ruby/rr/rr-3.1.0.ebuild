@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A double framework featuring a selection of double techniques and a terse syntax"
 HOMEPAGE="https://rr.github.io/rr"
-SRC_URI="https://github.com/rr/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rr/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

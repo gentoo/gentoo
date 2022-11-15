@@ -7,7 +7,7 @@ MY_PN="Autoload"
 
 DESCRIPTION="PHP Autoload Builder"
 HOMEPAGE="https://github.com/theseer/Autoload"
-SRC_URI="https://github.com/theseer/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/theseer/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

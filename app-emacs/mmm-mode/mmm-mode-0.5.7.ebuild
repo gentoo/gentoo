@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Enables the user to edit different parts of a file in different major modes"
 HOMEPAGE="http://mmm-mode.sourceforge.net/"
-SRC_URI="https://github.com/purcell/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/purcell/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ Texinfo-manual"
 SLOT="0"

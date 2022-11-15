@@ -12,8 +12,8 @@ IMGUI_P="${IMGUI_PN}-${IMGUI_PV}"
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
 HOMEPAGE="https://www.ogre3d.org/"
-SRC_URI="https://github.com/OGRECave/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/ocornut/${IMGUI_PN}/archive/v${IMGUI_PV}.tar.gz -> ${IMGUI_P}.tar.gz"
+SRC_URI="https://github.com/OGRECave/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/ocornut/${IMGUI_PN}/archive/refs/tags/v${IMGUI_PV}.tar.gz -> ${IMGUI_P}.tar.gz"
 
 LICENSE="MIT public-domain"
 SLOT="0/1.12"

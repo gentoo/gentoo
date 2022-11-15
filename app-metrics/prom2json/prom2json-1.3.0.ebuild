@@ -7,7 +7,7 @@ GIT_COMMIT=9180c89ee65bde2cbbe799d06d7d09e30f629984
 
 DESCRIPTION="A tool to scrape a Prometheus client and dump the result as JSON"
 HOMEPAGE="https://github.com/prometheus/prom2json"
-SRC_URI="https://github.com/prometheus/prom2json/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/prometheus/prom2json/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

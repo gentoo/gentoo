@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Convertor written in Perl that converts LaTeX documents to HTML"
 HOMEPAGE="https://www.latex2html.org/"
-SRC_URI="https://github.com/latex2html/latex2html/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/latex2html/latex2html/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

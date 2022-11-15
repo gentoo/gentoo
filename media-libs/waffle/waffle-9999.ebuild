@@ -7,7 +7,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/${PN}"
 	GIT_ECLASS="git-r3"
 else
-	SRC_URI="https://gitlab.freedesktop.org/mesa/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
+	SRC_URI="https://gitlab.freedesktop.org/mesa/${PN}/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 	S="${WORKDIR}"/${PN}-v${PV}
 fi

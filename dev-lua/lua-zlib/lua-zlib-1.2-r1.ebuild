@@ -9,7 +9,7 @@ inherit cmake lua
 
 DESCRIPTION="Simple streaming interface to zlib for Lua"
 HOMEPAGE="https://github.com/brimworks/lua-zlib"
-SRC_URI="https://github.com/brimworks/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/brimworks/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

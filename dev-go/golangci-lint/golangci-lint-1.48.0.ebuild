@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="Fast linters runner for Go"
 HOMEPAGE="https://github.com/golangci/golangci-lint"
-SRC_URI="https://github.com/golangci/golangci-lint/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/golangci/golangci-lint/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="GPL-3"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pytzdata/
 "
 SRC_URI="
-	https://github.com/sdispater/pytzdata/archive/${PV}.tar.gz
+	https://github.com/sdispater/pytzdata/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

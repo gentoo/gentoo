@@ -17,7 +17,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/introlab/rtabmap/archive/${PV}-${VER_SUFFIX}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/introlab/rtabmap/archive/refs/tags/${PV}-${VER_SUFFIX}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${P}-${VER_SUFFIX}"
 fi
 

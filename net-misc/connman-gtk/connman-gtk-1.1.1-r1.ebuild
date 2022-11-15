@@ -7,7 +7,7 @@ inherit autotools gnome2-utils
 
 DESCRIPTION="GTK GUI for Connman"
 HOMEPAGE="https://github.com/jgke/connman-gtk"
-SRC_URI="https://github.com/jgke/connman-gtk/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jgke/connman-gtk/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

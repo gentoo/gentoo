@@ -7,7 +7,7 @@ inherit cmake xdg
 
 DESCRIPTION="A cross-platform image viewer with webm support, written in qt5"
 HOMEPAGE="https://github.com/easymodo/qimgv"
-SRC_URI="https://github.com/easymodo/qimgv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/easymodo/qimgv/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 BSD"
 SLOT="0"

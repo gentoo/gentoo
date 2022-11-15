@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Managing the core functions outlined in RFC-3280 for PKI"
 HOMEPAGE="https://github.com/cchandler/certificate_authority"
-SRC_URI="https://github.com/cchandler/certificate_authority/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cchandler/certificate_authority/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A set of java classes to assist the tests for Guava itself"
 HOMEPAGE="https://github.com/google/guava"
-SRC_URI="https://github.com/google/guava/archive/v${PV}.tar.gz -> guava-${PV}.tar.gz"
+SRC_URI="https://github.com/google/guava/archive/refs/tags/v${PV}.tar.gz -> guava-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

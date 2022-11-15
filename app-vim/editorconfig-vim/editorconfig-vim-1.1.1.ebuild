@@ -10,7 +10,7 @@ MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="vim plugin: Support EditorConfig files"
 HOMEPAGE="https://editorconfig.org/"
-SRC_URI="https://github.com/${PN%-vim}/${PN}/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/${PN%-vim}/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2 PSF-2"

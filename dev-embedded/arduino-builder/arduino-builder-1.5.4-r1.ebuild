@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="A command line tool for compiling Arduino sketches"
 HOMEPAGE="https://github.com/arduino/arduino-builder"
-SRC_URI="https://github.com/arduino/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/arduino/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="GPL-2"

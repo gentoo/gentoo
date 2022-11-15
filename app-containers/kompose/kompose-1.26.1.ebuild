@@ -7,7 +7,7 @@ GIT_COMMIT=a9d05d50
 
 DESCRIPTION="Tool to move from docker-compose to Kubernetes"
 HOMEPAGE="https://github.com/kubernetes/kompose https://kompose.io"
-SRC_URI="https://github.com/kubernetes/kompose/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kubernetes/kompose/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0"

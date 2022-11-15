@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Manipulate images with minimal use of memory"
 HOMEPAGE="https://github.com/minimagick/minimagick"
-SRC_URI="https://github.com/minimagick/minimagick/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/minimagick/minimagick/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="minimagick-${PV}"
 
 LICENSE="MIT"

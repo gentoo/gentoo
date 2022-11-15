@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Pytest plugin that activates the fault handler module for tests"
 HOMEPAGE="https://github.com/pytest-dev/pytest-faulthandler"
 SRC_URI="
-	https://github.com/pytest-dev/pytest-faulthandler/archive/${PV}.tar.gz
+	https://github.com/pytest-dev/pytest-faulthandler/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="SIMD Vector Class Library for C++"
 HOMEPAGE="https://github.com/VcDevel/Vc"
-SRC_URI="https://github.com/VcDevel/Vc/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/VcDevel/Vc/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/Vc-${PV}
 
 PATCHES=( "${FILESDIR}"/${P}-missing-include.patch )

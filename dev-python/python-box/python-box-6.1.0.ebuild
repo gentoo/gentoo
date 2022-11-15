@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/python-box/
 "
 SRC_URI="
-	https://github.com/cdgriffith/Box/archive/${PV}.tar.gz
+	https://github.com/cdgriffith/Box/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

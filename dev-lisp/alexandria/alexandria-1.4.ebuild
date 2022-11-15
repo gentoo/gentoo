@@ -7,7 +7,7 @@ inherit common-lisp-3
 
 DESCRIPTION="A collection of portable utilities for Common Lisp"
 HOMEPAGE="http://common-lisp.net/project/alexandria/ https://gitlab.common-lisp.net/alexandria/alexandria"
-SRC_URI="https://gitlab.common-lisp.net/${PN}/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
+SRC_URI="https://gitlab.common-lisp.net/${PN}/${PN}/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.gz"
 S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="public-domain"

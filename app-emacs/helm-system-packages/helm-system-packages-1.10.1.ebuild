@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="A Helm interface to the package manager of your operating system"
 HOMEPAGE="https://github.com/emacs-helm/helm-system-packages"
-SRC_URI="https://github.com/emacs-helm/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/emacs-helm/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

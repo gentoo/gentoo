@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/pymongo/
 "
 SRC_URI="
-	https://github.com/mongodb/mongo-python-driver/archive/${PV}.tar.gz
+	https://github.com/mongodb/mongo-python-driver/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

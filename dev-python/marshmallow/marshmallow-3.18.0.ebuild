@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/marshmallow/
 "
 SRC_URI="
-	https://github.com/marshmallow-code/marshmallow/archive/${PV}.tar.gz
+	https://github.com/marshmallow-code/marshmallow/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

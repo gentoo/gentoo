@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/ktosiek/pytest-freezegun/
 "
 SRC_URI="
-	https://github.com/ktosiek/pytest-freezegun/archive/${PV}.tar.gz
+	https://github.com/ktosiek/pytest-freezegun/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

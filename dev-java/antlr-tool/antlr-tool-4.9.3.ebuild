@@ -20,7 +20,7 @@ HOMEPAGE="https://www.antlr.org/"
 # Maven Central sources JAR for tool/src/org/antlr/v4/unicode/UnicodeData.java,
 # which requires string-template-maven-plugin to generate; tarball for the rest
 SRC_URI="
-	https://github.com/antlr/antlr4/archive/${PV}.tar.gz -> ${MY_P}.tar.gz
+	https://github.com/antlr/antlr4/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz
 	https://repo1.maven.org/maven2/org/antlr/antlr4/${PV}/antlr4-${PV}-sources.jar -> ${P}-sources.jar
 "
 

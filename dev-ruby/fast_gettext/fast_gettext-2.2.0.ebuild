@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="GetText but 3.5x faster, 560x less memory, clean namespace and threadsave!"
 HOMEPAGE="https://github.com/grosser/fast_gettext"
-SRC_URI="https://github.com/grosser/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/grosser/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="2"

@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Simple VTXXX-compatible terminal emulator"
 HOMEPAGE="https://pypi.org/project/pyte/ https://github.com/selectel/pyte"
 SRC_URI="
-	https://github.com/selectel/pyte/archive/${PV}.tar.gz
+	https://github.com/selectel/pyte/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

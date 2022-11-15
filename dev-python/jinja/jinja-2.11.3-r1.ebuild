@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="A full-featured template engine for Python"
 HOMEPAGE="https://jinja.palletsprojects.com/ https://pypi.org/project/Jinja2/"
 # pypi tarball is missing tests
-SRC_URI="https://github.com/pallets/jinja/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pallets/jinja/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

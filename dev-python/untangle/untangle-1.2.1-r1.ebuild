@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/untangle/
 "
 SRC_URI="
-	https://github.com/stchris/untangle/archive/${PV}.tar.gz
+	https://github.com/stchris/untangle/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

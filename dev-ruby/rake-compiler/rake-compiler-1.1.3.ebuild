@@ -17,7 +17,7 @@ DESCRIPTION="Provide a standard and simplified way to build and package Ruby ext
 HOMEPAGE="https://github.com/luislavena/rake-compiler"
 LICENSE="MIT"
 
-SRC_URI="https://github.com/luislavena/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/luislavena/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"

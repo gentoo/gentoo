@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="A module for monitoring memory usage of a python program"
 HOMEPAGE="https://pypi.org/project/memory-profiler/ https://github.com/pythonprofilers/memory_profiler"
 SRC_URI="
-	https://github.com/pythonprofilers/memory_profiler/archive/v${PV}.tar.gz
+	https://github.com/pythonprofilers/memory_profiler/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

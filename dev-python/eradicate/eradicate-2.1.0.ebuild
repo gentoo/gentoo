@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/eradicate/
 "
 SRC_URI="
-	https://github.com/myint/eradicate/archive/v${PV}.tar.gz
+	https://github.com/myint/eradicate/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

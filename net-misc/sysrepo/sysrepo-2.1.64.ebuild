@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="YANG-based configuration and operational state data store"
 HOMEPAGE="https://www.sysrepo.org"
-SRC_URI="https://github.com/sysrepo/sysrepo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sysrepo/sysrepo/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

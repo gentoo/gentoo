@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="DTS Coherent Acoustics decoder with support for HD extensions"
 HOMEPAGE="https://github.com/foo86/dcadec"
-SRC_URI="https://github.com/foo86/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/foo86/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

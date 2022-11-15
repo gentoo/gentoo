@@ -9,7 +9,7 @@ inherit autotools python-any-r1
 
 DESCRIPTION="Libtpms-based TPM emulator"
 HOMEPAGE="https://github.com/stefanberger/swtpm"
-SRC_URI="https://github.com/stefanberger/swtpm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/stefanberger/swtpm/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

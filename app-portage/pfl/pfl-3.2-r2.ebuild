@@ -11,7 +11,7 @@ inherit distutils-r1 systemd
 
 DESCRIPTION="Searchable online file/package database for Gentoo"
 HOMEPAGE="http://www.portagefilelist.de https://github.com/portagefilelist/client"
-SRC_URI="https://github.com/portagefilelist/client/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/portagefilelist/client/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

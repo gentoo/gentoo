@@ -8,7 +8,7 @@ inherit dune
 
 DESCRIPTION="Provides support for internationalization of OCaml program"
 HOMEPAGE="https://github.com/gildor478/ocaml-gettext"
-SRC_URI="https://github.com/gildor478/ocaml-gettext/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gildor478/ocaml-gettext/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"

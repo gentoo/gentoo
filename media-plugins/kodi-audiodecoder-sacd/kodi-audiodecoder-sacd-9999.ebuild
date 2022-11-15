@@ -19,7 +19,7 @@ case ${PV} in
 *)
 	CODENAME="Matrix"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/xbmc/audiodecoder.sacd/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/xbmc/audiodecoder.sacd/archive/refs/tags/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/audiodecoder.sacd-${PV}-${CODENAME}"
 	DEPEND="=media-tv/kodi-19*"
 	;;

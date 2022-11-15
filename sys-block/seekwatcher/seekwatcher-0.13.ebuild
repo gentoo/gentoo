@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="generates graphs from blktrace to help visualize IO patterns and performance"
 HOMEPAGE="https://github.com/trofi/seekwatcher"
-SRC_URI="https://github.com/trofi/seekwatcher/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/trofi/seekwatcher/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

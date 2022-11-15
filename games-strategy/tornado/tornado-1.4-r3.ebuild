@@ -7,7 +7,7 @@ inherit plocale toolchain-funcs
 
 DESCRIPTION="Clone of a C64 game - destroy the opponent's house"
 HOMEPAGE="https://github.com/kouya/tornado"
-SRC_URI="https://github.com/kouya/tornado/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kouya/tornado/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

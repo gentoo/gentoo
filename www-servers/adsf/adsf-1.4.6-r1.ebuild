@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A Dead Simple Fileserver is a static file server that can launch in a directory"
 HOMEPAGE="https://github.com/ddfreyne/adsf/"
-SRC_URI="https://github.com/ddfreyne/adsf/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ddfreyne/adsf/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="${P}/adsf"
 LICENSE="MIT"
 

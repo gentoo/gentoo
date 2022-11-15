@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Shared [@@deriving] plugin registry"
 HOMEPAGE="https://github.com/diml/ppx_derivers"
-SRC_URI="https://github.com/diml/ppx_derivers/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/diml/ppx_derivers/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

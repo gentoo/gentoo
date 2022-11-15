@@ -15,7 +15,7 @@ HOMEPAGE="
 "
 # PyPI tarball lacks some test files
 SRC_URI="
-	https://github.com/eliben/pyelftools/archive/v${PV}.tar.gz
+	https://github.com/eliben/pyelftools/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="RSpec's official Ruby on Rails plugin"
 HOMEPAGE="https://rspec.info/"
-SRC_URI="https://github.com/rspec/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rspec/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

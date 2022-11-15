@@ -9,7 +9,7 @@ MY_PN=OpenDoas
 MY_P=${MY_PN}-${PV}
 DESCRIPTION="Run commands as super/another user (alt sudo) (unofficial port from OpenBSD)"
 HOMEPAGE="https://github.com/Duncaen/OpenDoas"
-SRC_URI="https://github.com/Duncaen/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/Duncaen/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="ISC"

@@ -7,7 +7,7 @@ inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: DVB Frontend Status Monitor (signal strength/noise)"
 HOMEPAGE="https://github.com/rofafor/vdr-plugin-femon"
-SRC_URI="https://github.com/rofafor/vdr-plugin-femon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rofafor/vdr-plugin-femon/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

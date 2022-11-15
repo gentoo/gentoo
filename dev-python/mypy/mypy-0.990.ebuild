@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/mypy/
 "
 SRC_URI="
-	https://github.com/python/mypy/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/python/mypy/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"

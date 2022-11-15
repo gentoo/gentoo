@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/hynek/hatch-fancy-pypi-readme/
 "
 SRC_URI="
-	https://github.com/hynek/hatch-fancy-pypi-readme/archive/${PV}.tar.gz
+	https://github.com/hynek/hatch-fancy-pypi-readme/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

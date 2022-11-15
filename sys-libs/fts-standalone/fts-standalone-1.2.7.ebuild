@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Standalone fts library for use with musl"
 HOMEPAGE="https://github.com/pullmoll/musl-fts"
-SRC_URI="https://github.com/pullmoll/musl-fts/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pullmoll/musl-fts/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/musl-fts-${PV}"
 
 LICENSE="BSD"

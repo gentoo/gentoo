@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="An expressive Mock Object library for Test Driven Development"
 HOMEPAGE="http://jmock.org/"
-SRC_URI="https://github.com/${PN}-developers/${PN}-library/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}-developers/${PN}-library/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="2"

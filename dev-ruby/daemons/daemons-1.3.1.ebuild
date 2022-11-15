@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Wrap existing ruby scripts to be run as a daemon"
 HOMEPAGE="https://github.com/thuehlinger/daemons"
-SRC_URI="https://github.com/thuehlinger/daemons/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/thuehlinger/daemons/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

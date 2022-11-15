@@ -9,7 +9,7 @@ EGIT_COMMIT=7825f115dd3ed9f623377821c0351d1eb7aa3a5a
 DESCRIPTION="A tool for extracting metrics from application logs"
 HOMEPAGE="https://github.com/google/mtail"
 
-SRC_URI="https://github.com/google/mtail/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/google/mtail/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~zmedico/dist/${P}-tidy.patch.xz
 	https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 

@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="make/rake like tool using go"
 HOMEPAGE="https://magefile.org"
-SRC_URI="https://github.com/magefile/mage/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/magefile/mage/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

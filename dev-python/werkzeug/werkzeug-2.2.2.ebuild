@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/pallets/werkzeug/
 "
 SRC_URI="
-	https://github.com/pallets/werkzeug/archive/${PV}.tar.gz
+	https://github.com/pallets/werkzeug/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

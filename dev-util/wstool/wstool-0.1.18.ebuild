@@ -15,7 +15,7 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/vcstools/wstool"
 else
 	SRC_URI="http://download.ros.org/downloads/${PN}/${P}.tar.gz
-		https://github.com/vcstools/wstool/archive/${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/vcstools/wstool/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	"
 	KEYWORDS="~amd64 ~arm"
 fi

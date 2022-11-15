@@ -9,7 +9,7 @@ inherit python-r1 toolchain-funcs
 
 DESCRIPTION="Library to parse proxy auto-config files"
 HOMEPAGE="http://pacparser.manugarg.com/"
-SRC_URI="https://github.com/manugarg/${PN}/archive/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/manugarg/${PN}/archive/refs/tags/v${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0/1"

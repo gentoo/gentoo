@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/gpyutils/
 "
 SRC_URI="
-	https://github.com/projg2/gpyutils/archive/v${PV}.tar.gz
+	https://github.com/projg2/gpyutils/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

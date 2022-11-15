@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Take an SVG file and produce a cleaner and more concise file"
 HOMEPAGE="https://github.com/scour-project/scour"
-SRC_URI="https://github.com/scour-project/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/scour-project/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Python library to read from and write to FITS files"
 HOMEPAGE="https://github.com/esheldon/fitsio"
 SRC_URI="
-	https://github.com/esheldon/fitsio/archive/${PV}.tar.gz
+	https://github.com/esheldon/fitsio/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="GPL-2+"

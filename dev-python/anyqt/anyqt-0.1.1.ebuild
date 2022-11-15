@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/AnyQt/
 "
 SRC_URI="
-	https://github.com/ales-erjavec/anyqt/archive/${PV}.tar.gz
+	https://github.com/ales-erjavec/anyqt/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

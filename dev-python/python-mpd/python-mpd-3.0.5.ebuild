@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/Mic92/python-mpd2/
 	https://pypi.org/project/python-mpd2/"
 SRC_URI="
-	https://github.com/Mic92/python-mpd2/archive/v${PV}.tar.gz
+	https://github.com/Mic92/python-mpd2/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 

@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Emacs major mode for editing Puppet manifests"
 HOMEPAGE="https://github.com/voxpupuli/puppet-mode"
-SRC_URI="https://github.com/voxpupuli/puppet-mode/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/voxpupuli/puppet-mode/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

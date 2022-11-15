@@ -9,7 +9,7 @@ MY_NODE_PV="21.4.2"
 DESCRIPTION="Greenbone Security Assistant"
 HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/gsa"
 SRC_URI="
-	https://github.com/greenbone/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/greenbone/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/greenbone/${PN}/releases/download/v${MY_NODE_PV}/gsa-node-modules-${MY_NODE_PV}.tar.gz -> ${PN}-${MY_NODE_PV}-${MY_NODE_N}.tar.gz
 "
 

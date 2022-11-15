@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Major mode for Clojure code"
 HOMEPAGE="https://github.com/clojure-emacs/clojure-mode/"
-SRC_URI="https://github.com/clojure-emacs/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/clojure-emacs/${PN}/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

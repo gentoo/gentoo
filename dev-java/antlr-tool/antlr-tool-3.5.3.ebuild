@@ -22,7 +22,7 @@ HOMEPAGE="https://www.antlr3.org/"
 # Tarball for resources, the test suite, and DOCS files
 SRC_URI="
 	https://repo1.maven.org/maven2/org/antlr/antlr/${PV}/${MY_P}-sources.jar -> ${P}-sources.jar
-	https://github.com/antlr/antlr3/archive/${PV}.tar.gz -> ${MY_P}.tar.gz
+	https://github.com/antlr/antlr3/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz
 "
 
 LICENSE="BSD"

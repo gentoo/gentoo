@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Record terminal sessions as SVG animations"
 HOMEPAGE="https://github.com/nbedos/termtosvg"
-SRC_URI="https://github.com/nbedos/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/nbedos/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit cmake flag-o-matic python-any-r1
 
 DESCRIPTION="High-performance regular expression matching library"
-SRC_URI="https://github.com/intel/hyperscan/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/intel/hyperscan/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://www.hyperscan.io/ https://github.com/intel/hyperscan"
 
 LICENSE="BSD"

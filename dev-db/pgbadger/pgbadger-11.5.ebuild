@@ -7,7 +7,7 @@ inherit perl-module
 
 DESCRIPTION="pgBadger is a PostgreSQL log analyzer"
 HOMEPAGE="https://pgbadger.darold.net/"
-SRC_URI="https://github.com/darold/pgbadger/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/darold/pgbadger/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

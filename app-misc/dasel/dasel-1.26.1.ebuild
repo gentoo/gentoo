@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="Query, update and convert data structures from the command line"
 HOMEPAGE="https://github.com/TomWright/dasel"
-SRC_URI="https://github.com/TomWright/dasel/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/TomWright/dasel/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~zmedico/dist/dasel-1.24.3-deps.tar.xz"
 
 LICENSE="MIT Apache-2.0 BSD BSD-2 ISC"

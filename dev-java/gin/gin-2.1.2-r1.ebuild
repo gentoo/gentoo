@@ -9,7 +9,7 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Google Gin (GWT INjection)"
 HOMEPAGE="https://gwtplus.github.io/google-gin/"
-SRC_URI="https://github.com/gwtplus/google-gin/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gwtplus/google-gin/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 RESTRICT="mirror"
 SLOT="2.1"

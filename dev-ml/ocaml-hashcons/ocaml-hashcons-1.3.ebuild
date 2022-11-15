@@ -7,7 +7,7 @@ inherit autotools findlib
 
 DESCRIPTION="OCaml hash-consing library"
 HOMEPAGE="https://github.com/backtracking/ocaml-hashcons"
-SRC_URI="https://github.com/backtracking/ocaml-hashcons/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/backtracking/ocaml-hashcons/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"

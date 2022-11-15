@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/watchdog/
 "
 SRC_URI="
-	https://github.com/gorakhargosh/${PN}/archive/v${PV}.tar.gz
+	https://github.com/gorakhargosh/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

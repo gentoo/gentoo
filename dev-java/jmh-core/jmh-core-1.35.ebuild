@@ -11,7 +11,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Harness for building, running, and analysing nano/micro/milli/macro benchmarks"
 HOMEPAGE="https://openjdk.java.net/projects/code-tools/jmh/"
-SRC_URI="https://github.com/openjdk/jmh/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/openjdk/jmh/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

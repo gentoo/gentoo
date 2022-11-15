@@ -11,8 +11,8 @@ LIBOMEMO_PV=0.7.0
 DESCRIPTION="OMEMO encryption for libpurple (XEP-0384)"
 HOMEPAGE="https://github.com/gkdr/lurch"
 SRC_URI="https://github.com/gkdr/lurch/releases/download/v${PV}/lurch-${PV}-src.tar.gz -> ${P}.tar.gz
-	https://github.com/gkdr/axc/archive/v${AXC_PV}.tar.gz -> axc-${AXC_PV}.tar.gz
-	https://github.com/gkdr/libomemo/archive/v${LIBOMEMO_PV}.tar.gz -> libomemo-${LIBOMEMO_PV}.tar.gz"
+	https://github.com/gkdr/axc/archive/refs/tags/v${AXC_PV}.tar.gz -> axc-${AXC_PV}.tar.gz
+	https://github.com/gkdr/libomemo/archive/refs/tags/v${LIBOMEMO_PV}.tar.gz -> libomemo-${LIBOMEMO_PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

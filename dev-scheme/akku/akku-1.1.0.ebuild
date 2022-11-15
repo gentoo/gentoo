@@ -12,7 +12,7 @@ if [[ "${PV}" == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/akkuscm/${PN}.git"
 else
-	SRC_URI="https://gitlab.com/akkuscm/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
+	SRC_URI="https://gitlab.com/akkuscm/${PN}/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.gz"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/${PN}-v${PV}"
 fi

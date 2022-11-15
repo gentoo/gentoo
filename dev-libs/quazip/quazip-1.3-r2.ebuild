@@ -7,7 +7,7 @@ inherit cmake multibuild
 
 DESCRIPTION="Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package"
 HOMEPAGE="https://stachenov.github.io/quazip/"
-SRC_URI="https://github.com/stachenov/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/stachenov/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 # SONAME of libquazip1-qt5.so, check QUAZIP_LIB_SOVERSION in CMakeLists.txt

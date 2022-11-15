@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Unit-test framework for Bourne-based shell scripts"
 HOMEPAGE="https://github.com/kward/shunit2"
-SRC_URI="https://github.com/kward/shunit2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kward/shunit2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A JSON Schema V4 and Hyperschema V4 parser and validator"
 HOMEPAGE="https://github.com/brandur/json_schema"
-SRC_URI="https://github.com/brandur/json_schema/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/brandur/json_schema/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

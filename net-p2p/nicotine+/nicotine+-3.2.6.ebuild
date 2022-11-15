@@ -10,7 +10,7 @@ inherit distutils-r1 xdg-utils
 
 DESCRIPTION="A fork of nicotine, a Soulseek client in Python"
 HOMEPAGE="https://github.com/Nicotine-Plus/nicotine-plus"
-SRC_URI="https://github.com/Nicotine-Plus/nicotine-plus/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Nicotine-Plus/nicotine-plus/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="OSS reimplementation of Supaplex in C and SDL"
 HOMEPAGE="https://github.com/sergiou87/open-supaplex"
-SRC_URI="https://github.com/sergiou87/open-supaplex/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sergiou87/open-supaplex/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"

@@ -15,7 +15,7 @@ MYPN="clBLAS"
 
 DESCRIPTION="Library containing BLAS routines for OpenCL"
 HOMEPAGE="https://github.com/clMathLibraries/clBLAS"
-SRC_URI="https://github.com/clMathLibraries/${MYPN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/clMathLibraries/${MYPN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MYPN}-${PV}"
 
 LICENSE="Apache-2.0"

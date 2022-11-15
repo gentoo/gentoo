@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Resample and coadd astronomical FITS images"
 HOMEPAGE="http://www.astromatic.net/software/swarp"
-SRC_URI="https://github.com/astromatic/swarp/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/astromatic/swarp/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

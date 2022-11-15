@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/mrocklin/multipledispatch/
 "
 SRC_URI="
-	https://github.com/mrocklin/multipledispatch/archive/${PV}.tar.gz
+	https://github.com/mrocklin/multipledispatch/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

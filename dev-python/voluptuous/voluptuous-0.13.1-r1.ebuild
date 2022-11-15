@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="A Python data validation library"
 HOMEPAGE="https://github.com/alecthomas/voluptuous/"
 SRC_URI="
-	https://github.com/alecthomas/voluptuous/archive/${PV}.tar.gz
+	https://github.com/alecthomas/voluptuous/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

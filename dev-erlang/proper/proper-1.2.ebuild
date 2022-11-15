@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="QuickCheck-inspired property-based testing tool for Erlang"
 HOMEPAGE="https://github.com/manopapad/proper"
-SRC_URI="https://github.com/manopapad/proper/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/manopapad/proper/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3"

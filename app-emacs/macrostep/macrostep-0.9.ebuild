@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Interactive macro-expander for Emacs"
 HOMEPAGE="https://github.com/joddie/macrostep/"
-SRC_URI="https://github.com/joddie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/joddie/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

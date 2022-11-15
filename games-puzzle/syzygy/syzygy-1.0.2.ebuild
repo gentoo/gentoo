@@ -47,7 +47,7 @@ inherit cargo desktop xdg
 DESCRIPTION="Narrative meta-puzzle game"
 HOMEPAGE="https://mdsteele.games/syzygy/"
 SRC_URI="
-	https://github.com/mdsteele/syzygy/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/mdsteele/syzygy/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris)"
 
 LICENSE="BSD GPL-3+ ISC MIT ZLIB"

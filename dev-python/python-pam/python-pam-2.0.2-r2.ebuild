@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://pypi.org/project/python-pam/
 "
 SRC_URI="
-	https://github.com/FirefighterBlu3/python-pam/archive/v${PV}.tar.gz
+	https://github.com/FirefighterBlu3/python-pam/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

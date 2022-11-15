@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A malware identification and classification tool"
 HOMEPAGE="https://virustotal.github.io/yara/"
-SRC_URI="https://github.com/virustotal/yara/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/virustotal/yara/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${PV/_/-}"
 
 LICENSE="Apache-2.0"

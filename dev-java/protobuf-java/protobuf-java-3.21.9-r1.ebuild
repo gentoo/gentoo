@@ -19,7 +19,7 @@ PARENT_SUBSLOT="32"
 DESCRIPTION="Google's Protocol Buffers - Java bindings"
 HOMEPAGE="https://developers.google.com/protocol-buffers/"
 SRC_URI="
-	https://github.com/protocolbuffers/protobuf/archive/v${PARENT_PV}.tar.gz
+	https://github.com/protocolbuffers/protobuf/archive/refs/tags/v${PARENT_PV}.tar.gz
 		-> ${PARENT_P}.tar.gz
 "
 

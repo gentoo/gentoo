@@ -12,7 +12,7 @@ RUBY_FAKEGEM_GEMSPEC="rack-openid.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Provides a more HTTPish API around the ruby-openid library"
-SRC_URI="https://github.com/grosser/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/grosser/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/grosser/rack-openid"
 LICENSE="MIT"
 

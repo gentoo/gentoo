@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/pycryptodome/
 "
 SRC_URI="
-	https://github.com/Legrandin/pycryptodome/archive/v${PV}.tar.gz
+	https://github.com/Legrandin/pycryptodome/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

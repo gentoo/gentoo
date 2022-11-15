@@ -18,7 +18,7 @@ inherit ruby-fakegem
 DESCRIPTION="A pure ruby library which provides basic APIs for localization"
 HOMEPAGE="https://github.com/ruby-gettext/locale"
 LICENSE="|| ( Ruby-BSD GPL-2 )"
-SRC_URI="https://github.com/ruby-gettext/locale/archive/${PV}.tar.gz -> ${P}-git.tgz"
+SRC_URI="https://github.com/ruby-gettext/locale/archive/refs/tags/${PV}.tar.gz -> ${P}-git.tgz"
 
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 SLOT="0"

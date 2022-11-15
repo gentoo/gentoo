@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Pure Tcl implementation of an XML parser"
 HOMEPAGE="http://tclxml.sourceforge.net/"
-SRC_URI="https://github.com/wjoye/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/wjoye/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="BSD"

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A libsass command line driver"
 HOMEPAGE="https://github.com/sass/sassc"
-SRC_URI="https://github.com/sass/sassc/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sass/sassc/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

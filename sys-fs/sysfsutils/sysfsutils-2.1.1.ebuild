@@ -7,7 +7,7 @@ inherit autotools usr-ldscript
 
 DESCRIPTION="System Utilities Based on Sysfs"
 HOMEPAGE="https://linux-diag.sourceforge.net/Sysfsutils.html https://github.com/linux-ras/sysfsutils"
-SRC_URI="https://github.com/linux-ras/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/linux-ras/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

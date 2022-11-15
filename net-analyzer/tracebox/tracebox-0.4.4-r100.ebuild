@@ -9,7 +9,7 @@ inherit autotools flag-o-matic lua-single
 
 DESCRIPTION="A Middlebox Detection Tool"
 HOMEPAGE="http://www.tracebox.org/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

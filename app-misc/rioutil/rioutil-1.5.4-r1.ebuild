@@ -7,7 +7,7 @@ inherit autotools udev
 
 DESCRIPTION="A utility for accessing various Rio media players"
 HOMEPAGE="https://github.com/hjelmn/rioutil"
-SRC_URI="https://github.com/hjelmn/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hjelmn/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"

@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Code coverage with a configuration library and merging across test suites"
 HOMEPAGE="https://github.com/simplecov-ruby/simplecov"
-SRC_URI="https://github.com/simplecov-ruby/simplecov/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/simplecov-ruby/simplecov/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
 KEYWORDS="~amd64 ~riscv"

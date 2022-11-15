@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Guideline Support Library implementation by Microsoft"
 HOMEPAGE="https://github.com/Microsoft/GSL"
-SRC_URI="https://github.com/Microsoft/GSL/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Microsoft/GSL/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 S="${WORKDIR}/GSL-${PV}"
 

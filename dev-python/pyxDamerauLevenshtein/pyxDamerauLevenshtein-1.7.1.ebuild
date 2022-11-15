@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pyxDamerauLevenshtein/
 "
 SRC_URI="
-	https://github.com/lanl/${PN}/archive/v${PV}.tar.gz
+	https://github.com/lanl/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

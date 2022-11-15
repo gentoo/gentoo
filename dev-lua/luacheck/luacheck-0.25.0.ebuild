@@ -9,7 +9,7 @@ inherit lua toolchain-funcs
 
 DESCRIPTION="A tool for linting and static analysis of Lua code"
 HOMEPAGE="https://github.com/lunarmodules/luacheck"
-SRC_URI="https://github.com/lunarmodules/luacheck/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lunarmodules/luacheck/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

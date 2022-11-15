@@ -9,7 +9,7 @@ COMMIT="6301c30"
 
 DESCRIPTION="RSS downloader for Tranmission"
 HOMEPAGE="https://github.com/1100101/Automatic"
-SRC_URI="https://github.com/1100101/Automatic/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/1100101/Automatic/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

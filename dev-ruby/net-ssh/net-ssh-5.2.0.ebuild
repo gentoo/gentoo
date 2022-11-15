@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Non-interactive SSH processing in pure Ruby"
 HOMEPAGE="https://github.com/net-ssh/net-ssh"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> net-ssh-git-${PV}.tgz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> net-ssh-git-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="5"

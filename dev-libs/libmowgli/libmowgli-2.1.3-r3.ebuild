@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Useful set of performance and usability-oriented extensions to C"
 HOMEPAGE="https://github.com/atheme/libmowgli-2"
-SRC_URI="https://github.com/atheme/libmowgli-2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/atheme/libmowgli-2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="2"

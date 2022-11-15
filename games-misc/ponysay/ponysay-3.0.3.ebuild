@@ -8,7 +8,7 @@ inherit bash-completion-r1 python-single-r1
 
 DESCRIPTION="cowsay reimplemention for ponies"
 HOMEPAGE="https://github.com/erkin/ponysay"
-SRC_URI="https://github.com/erkin/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/erkin/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~m68k ~x86"

@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/kenamick/savagewheels"
 GAMEDATA="${PN}-gamedata-1.4.0"
 
 SRC_URI="
-	https://github.com/kenamick/savagewheels/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/kenamick/savagewheels/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/kenamick/savagewheels/releases/download/v1.4/${PN}-gamedata.tar.gz -> ${GAMEDATA}.tar.gz
 "
 

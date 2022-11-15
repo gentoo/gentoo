@@ -11,7 +11,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Colour management with Ruby"
 HOMEPAGE="https://github.com/halostatue/color"
-SRC_URI="https://github.com/halostatue/color/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/halostatue/color/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

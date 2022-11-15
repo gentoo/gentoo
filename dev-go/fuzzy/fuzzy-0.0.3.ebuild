@@ -8,7 +8,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit golang-vcs
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://${EGO_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	inherit golang-vcs-snapshot
 fi
 inherit golang-build

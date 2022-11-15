@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Read Image Files"
 HOMEPAGE="http://luispedro.org/software/imread/ https://github.com/luispedro/imread"
-SRC_URI="https://github.com/luispedro/imread/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/luispedro/imread/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

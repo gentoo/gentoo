@@ -69,7 +69,7 @@ HOMEPAGE="
 	https://pypi.org/project/blake3/
 "
 SRC_URI="
-	https://github.com/oconnor663/blake3-py/archive/${PV}.tar.gz
+	https://github.com/oconnor663/blake3-py/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	$(cargo_crate_uris)
 "

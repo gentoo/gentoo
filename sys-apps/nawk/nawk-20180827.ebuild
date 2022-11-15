@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Brian Kernighan's pattern scanning and processing language"
 HOMEPAGE="https://www.cs.princeton.edu/~bwk/btl.mirror/"
-SRC_URI="https://github.com/onetrueawk/awk/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/onetrueawk/awk/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

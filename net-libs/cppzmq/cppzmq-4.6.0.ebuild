@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="High-level CPP Binding for ZeroMQ"
 HOMEPAGE="https://github.com/zeromq/cppzmq"
-SRC_URI="https://github.com/zeromq/${PN}/archive/v${PV}.tar.gz ->  ${P}.tar.gz"
+SRC_URI="https://github.com/zeromq/${PN}/archive/refs/tags/v${PV}.tar.gz ->  ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"

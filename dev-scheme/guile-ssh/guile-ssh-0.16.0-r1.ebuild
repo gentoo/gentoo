@@ -8,7 +8,7 @@ inherit autotools
 DESCRIPTION="Library providing access to the SSH protocol for GNU Guile"
 HOMEPAGE="https://memory-heap.org/~avp/projects/guile-ssh/
 	https://github.com/artyom-poptsov/guile-ssh/"
-SRC_URI="https://github.com/artyom-poptsov/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/artyom-poptsov/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

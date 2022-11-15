@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/rebulk/
 "
 SRC_URI="
-	https://github.com/Toilal/rebulk/archive/v${PV}.tar.gz
+	https://github.com/Toilal/rebulk/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

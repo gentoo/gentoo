@@ -18,7 +18,7 @@ case ${PV} in
 *)
 	KEYWORDS="~amd64 ~x86"
 	CODENAME="Matrix"
-	SRC_URI="https://github.com/kodi-game/game.libretro/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/kodi-game/game.libretro/archive/refs/tags/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/game.libretro-${PV}-${CODENAME}"
 	;;
 esac

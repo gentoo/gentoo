@@ -12,7 +12,7 @@ QUICKJS_P="quickjs-${QUICKJS_SHORT}"
 
 DESCRIPTION="Combination editor, browser, and mail client that is 100% text based"
 HOMEPAGE="https://edbrowse.org"
-SRC_URI="https://github.com/CMB/edbrowse/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/CMB/edbrowse/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/bellard/quickjs/archive/${QUICKJS_HASH}.tar.gz -> ${QUICKJS_P}.tar.gz"
 
 LICENSE="GPL-2"

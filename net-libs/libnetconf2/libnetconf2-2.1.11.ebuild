@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="C library for building NETCONF servers and clients"
 HOMEPAGE="https://github.com/CESNET/libnetconf2"
-SRC_URI="https://github.com/CESNET/libnetconf2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/CESNET/libnetconf2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

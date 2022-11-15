@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="An easy way to access Twitter data with Python"
 HOMEPAGE="https://github.com/ryanmcgrath/twython"
 SRC_URI="
-	https://github.com/ryanmcgrath/twython/archive/v${PV}.tar.gz
+	https://github.com/ryanmcgrath/twython/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 SLOT="0"

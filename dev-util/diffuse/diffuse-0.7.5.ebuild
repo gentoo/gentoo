@@ -8,7 +8,7 @@ inherit meson plocale python-r1 xdg
 
 DESCRIPTION="A graphical tool to compare and merge text files"
 HOMEPAGE="http://diffuse.sourceforge.net/ https://github.com/MightyCreak/diffuse/"
-SRC_URI="https://github.com/MightyCreak/diffuse/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/MightyCreak/diffuse/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

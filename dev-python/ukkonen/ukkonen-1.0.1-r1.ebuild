@@ -12,7 +12,7 @@ HOMEPAGE="
 	https://pypi.org/project/ukkonen/
 	https://github.com/asottile/ukkonen/"
 SRC_URI="
-	https://github.com/asottile/ukkonen/archive/v${PV}.tar.gz
+	https://github.com/asottile/ukkonen/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="MIT"

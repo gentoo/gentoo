@@ -7,7 +7,7 @@ PLOCALES="cs de en es fi fr hr hu id_ID it ja nl pl pt_BR ru sv uk zh_TW"
 inherit flag-o-matic plocale qmake-utils xdg-utils
 
 if [[ ${PV} != *9999 ]] ; then
-	SRC_URI="https://github.com/openstreetmap/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/openstreetmap/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 else
 	EGIT_REPO_URI="https://github.com/openstreetmap/merkaartor.git"

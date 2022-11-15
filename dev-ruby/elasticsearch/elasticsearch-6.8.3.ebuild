@@ -12,7 +12,7 @@ inherit ruby-fakegem
 MY_P=elasticsearch-ruby-${PV}
 DESCRIPTION="Ruby integrations for ES, elasticsearch module"
 HOMEPAGE="https://github.com/elastic/elasticsearch-ruby"
-SRC_URI="https://github.com/elastic/elasticsearch-ruby/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/elastic/elasticsearch-ruby/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="$(ver_cut 1-3)"

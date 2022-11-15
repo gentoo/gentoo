@@ -16,7 +16,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	KEYWORDS="~amd64 ~x86"
 	CODENAME="Leia"
-	SRC_URI="https://github.com/kodi-game/game.libretro.fceumm/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/kodi-game/game.libretro.fceumm/archive/refs/tags/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/game.libretro.fceumm-${PV}-${CODENAME}"
 fi
 

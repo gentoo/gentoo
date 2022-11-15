@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="Vulnerability Static Analysis for Containers"
 HOMEPAGE="https://github.com/quay/clair"
-SRC_URI="https://github.com/coreos/clair/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/coreos/clair/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0"

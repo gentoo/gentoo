@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/fqdn/
 "
 SRC_URI="
-	https://github.com/ypcrts/${PN}/archive/v${PV}.tar.gz
+	https://github.com/ypcrts/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

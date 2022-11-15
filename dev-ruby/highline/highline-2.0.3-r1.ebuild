@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Highline is a high-level command-line IO library for ruby"
 HOMEPAGE="https://github.com/JEG2/highline"
-SRC_URI="https://github.com/JEG2/highline/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/JEG2/highline/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 IUSE=""
 LICENSE="|| ( GPL-2 Ruby-BSD )"

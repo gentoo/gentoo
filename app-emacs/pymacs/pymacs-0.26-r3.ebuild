@@ -10,7 +10,7 @@ inherit elisp distutils-r1
 
 DESCRIPTION="A tool that allows both-side communication between Python and Emacs Lisp"
 HOMEPAGE="https://www.emacswiki.org/emacs/PyMacs"
-SRC_URI="https://github.com/dgentry/${PN^}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dgentry/${PN^}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

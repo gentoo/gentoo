@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Ppx extension for string interpolation"
 HOMEPAGE="https://github.com/janestreet/ppx_string"
-SRC_URI="https://github.com/janestreet/ppx_string/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janestreet/ppx_string/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1-2)"

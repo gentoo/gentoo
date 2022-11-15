@@ -7,7 +7,7 @@ inherit ecm
 
 DESCRIPTION="Plasma 5 applet providing a list of unread emails from your Gmail inbox"
 HOMEPAGE="https://store.kde.org/p/998911/ https://github.com/anthon38/gmailfeed"
-SRC_URI="https://github.com/anthon38/${PN/-/}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/anthon38/${PN/-/}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN/-/}-${PV}"
 
 LICENSE="GPL-3+"

@@ -7,7 +7,7 @@ inherit cmake desktop xdg-utils
 
 DESCRIPTION="Hardcore 3D space scroll-shooter with spaceship upgrade possibilities"
 HOMEPAGE="https://viewizard.com"
-SRC_URI="https://github.com/viewizard/astromenace/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/viewizard/astromenace/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 GPL-3+ CC-BY-SA-4.0 OFL-1.1"
 SLOT="0"

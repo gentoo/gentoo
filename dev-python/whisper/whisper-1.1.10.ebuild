@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/whisper/
 "
 SRC_URI="
-	https://github.com/graphite-project/whisper/archive/${PV}.tar.gz
+	https://github.com/graphite-project/whisper/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

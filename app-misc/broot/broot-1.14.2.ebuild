@@ -248,7 +248,7 @@ inherit bash-completion-r1 cargo
 
 DESCRIPTION="A new way to see and navigate directory trees"
 HOMEPAGE="https://dystroy.org/broot/ https://github.com/Canop/broot"
-SRC_URI="https://github.com/Canop/broot/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/Canop/broot/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris)"
 
 LICENSE="Apache-2.0 BSD-2 BSD LGPL-3+ MIT ZLIB"

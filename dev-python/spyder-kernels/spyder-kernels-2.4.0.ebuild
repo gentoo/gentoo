@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/spyder-kernels/
 "
 SRC_URI="
-	https://github.com/spyder-ide/spyder-kernels/archive/v${PV}.tar.gz
+	https://github.com/spyder-ide/spyder-kernels/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

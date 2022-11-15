@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="YAML configuration processor"
 HOMEPAGE="https://github.com/processone/yconf"
-SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/processone/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

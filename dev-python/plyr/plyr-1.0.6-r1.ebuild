@@ -14,7 +14,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="A python wrapper for Glyr"
 HOMEPAGE="https://sahib.github.io/python-glyr/intro.html
 	https://github.com/sahib/python-glyr"
-SRC_URI="https://github.com/sahib/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/sahib/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"

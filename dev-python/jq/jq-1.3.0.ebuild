@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Python bindings for jq"
 HOMEPAGE="https://github.com/mwilliamson/jq.py"
 SRC_URI="
-	https://github.com/mwilliamson/jq.py/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+	https://github.com/mwilliamson/jq.py/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}/jq.py-${PV}"
 
 LICENSE="BSD-2"

@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/eyed3/
 "
 SRC_URI="
-	https://github.com/nicfit/eyeD3/archive/v${PV}.tar.gz
+	https://github.com/nicfit/eyeD3/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	test? (
 		https://eyed3.nicfit.net/releases/eyeD3-test-data.tgz

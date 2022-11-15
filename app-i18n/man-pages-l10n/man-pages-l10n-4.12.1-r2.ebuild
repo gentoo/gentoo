@@ -6,7 +6,7 @@ EAPI=7
 MY_P="${PN/-}-v${PV}"
 DESCRIPTION="A somewhat comprehensive collection of man page translations"
 HOMEPAGE="https://manpages-l10n-team.pages.debian.net/manpages-l10n/"
-SRC_URI="https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/v${PV}/${MY_P}.tar.bz2"
+SRC_URI="https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/refs/tags/v${PV}/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"

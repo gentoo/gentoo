@@ -6,7 +6,7 @@ inherit gnustep-2
 
 DESCRIPTION="a simple calendar and agenda application"
 HOMEPAGE="https://github.com/poroussel/simpleagenda"
-SRC_URI="https://github.com/poroussel/simpleagenda/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/poroussel/simpleagenda/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

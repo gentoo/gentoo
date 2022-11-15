@@ -7,7 +7,7 @@ inherit optfeature
 
 DESCRIPTION="Modular widget library for x11-wm/awesome"
 HOMEPAGE="https://github.com/vicious-widgets/vicious"
-SRC_URI="https://github.com/${PN}-widgets/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}-widgets/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

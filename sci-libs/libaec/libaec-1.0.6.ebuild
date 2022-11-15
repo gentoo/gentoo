@@ -9,7 +9,7 @@ inherit cmake
 MY_P="${PN}-v${PV}"
 DESCRIPTION="Adaptive Entropy Coding library"
 HOMEPAGE="https://gitlab.dkrz.de/k202009/libaec"
-SRC_URI="https://gitlab.dkrz.de/k202009/libaec/-/archive/v${PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://gitlab.dkrz.de/k202009/libaec/-/archive/refs/tags/v${PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"

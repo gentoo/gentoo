@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/huawei-lte-api/
 "
 SRC_URI="
-	https://github.com/Salamek/${PN}/archive/${PV}.tar.gz
+	https://github.com/Salamek/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

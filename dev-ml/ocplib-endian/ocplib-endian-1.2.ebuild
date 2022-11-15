@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Functions to read and write int16/32/64 from strings, bytes, and bigarrays"
 HOMEPAGE="https://github.com/OCamlPro/ocplib-endian"
-SRC_URI="https://github.com/OCamlPro/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/OCamlPro/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"

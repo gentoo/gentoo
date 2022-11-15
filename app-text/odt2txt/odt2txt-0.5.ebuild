@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A simple converter from OpenDocument Text to plain text"
 HOMEPAGE="http://stosberg.net/odt2txt/"
-SRC_URI="https://github.com/dstosberg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dstosberg/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

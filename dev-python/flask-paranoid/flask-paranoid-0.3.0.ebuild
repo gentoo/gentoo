@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Simple user session protection extension for Flask"
 HOMEPAGE="https://github.com/miguelgrinberg/flask-paranoid/"
 SRC_URI="
-	https://github.com/miguelgrinberg/flask-paranoid/archive/v${PV}.tar.gz
+	https://github.com/miguelgrinberg/flask-paranoid/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

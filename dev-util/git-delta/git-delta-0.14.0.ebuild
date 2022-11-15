@@ -194,7 +194,7 @@ inherit bash-completion-r1 cargo
 
 DESCRIPTION="A syntax-highlighting pager for git"
 HOMEPAGE="https://github.com/dandavison/delta"
-SRC_URI="https://github.com/dandavison/delta/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dandavison/delta/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" $(cargo_crate_uris ${CRATES})"
 S="${WORKDIR}/${P/git-/}"
 

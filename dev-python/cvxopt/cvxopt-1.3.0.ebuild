@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/cvxopt/
 "
 SRC_URI="
-	https://github.com/${PN}/${PN}/archive/${PV}.tar.gz
+	https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

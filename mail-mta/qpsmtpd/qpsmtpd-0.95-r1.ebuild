@@ -9,7 +9,7 @@ inherit perl-module ${SCM}
 DESCRIPTION="qpsmtpd is a flexible smtpd daemon written in Perl"
 HOMEPAGE="https://smtpd.github.io/qpsmtpd/"
 if [[ ${PV} != *9999 ]]; then
-	SRC_URI="https://github.com/smtpd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/smtpd/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 else
 	# This is a spotted development fork with many improvements

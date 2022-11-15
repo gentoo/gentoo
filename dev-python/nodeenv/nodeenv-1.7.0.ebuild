@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Node.js virtual environment builder"
 HOMEPAGE="https://github.com/ekalinin/nodeenv"
 SRC_URI="
-	https://github.com/ekalinin/nodeenv/archive/${PV}.tar.gz
+	https://github.com/ekalinin/nodeenv/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

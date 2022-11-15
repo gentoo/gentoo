@@ -10,7 +10,7 @@ inherit cmake linux-info python-single-r1
 
 DESCRIPTION="Record and Replay Framework"
 HOMEPAGE="https://rr-project.org/"
-SRC_URI="https://github.com/rr-debugger/${PN}/archive/${PV}.tar.gz -> mozilla-${P}.tar.gz"
+SRC_URI="https://github.com/rr-debugger/${PN}/archive/refs/tags/${PV}.tar.gz -> mozilla-${P}.tar.gz"
 
 LICENSE="MIT BSD-2"
 SLOT="0"

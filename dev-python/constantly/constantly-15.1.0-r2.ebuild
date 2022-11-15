@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Symbolic constants in Python"
 HOMEPAGE="https://github.com/twisted/constantly https://pypi.org/project/constantly/"
-SRC_URI="https://github.com/twisted/constantly/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/twisted/constantly/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

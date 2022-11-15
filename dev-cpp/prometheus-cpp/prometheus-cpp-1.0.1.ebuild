@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Prometheus Client Library for Modern C++"
 HOMEPAGE="https://github.com/jupp0r/prometheus-cpp"
-SRC_URI="https://github.com/jupp0r/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jupp0r/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

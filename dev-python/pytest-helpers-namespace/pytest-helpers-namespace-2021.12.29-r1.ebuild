@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pytest-helpers-namespace/
 "
 SRC_URI="
-	https://github.com/saltstack/${PN}/archive/v${PV}.tar.gz
+	https://github.com/saltstack/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

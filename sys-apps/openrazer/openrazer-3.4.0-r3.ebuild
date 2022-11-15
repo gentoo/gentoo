@@ -10,7 +10,7 @@ inherit readme.gentoo-r1 systemd udev xdg-utils distutils-r1 python-r1 linux-mod
 DESCRIPTION="Drivers and user-space daemon to control Razer devices on GNU/Linux"
 HOMEPAGE="https://openrazer.github.io/
 	https://github.com/openrazer/openrazer/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-2+"

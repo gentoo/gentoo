@@ -7,7 +7,7 @@ inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: integrates SAT>IP network devices seamlessly into VDR"
 HOMEPAGE="https://github.com/rofafor/vdr-plugin-satip"
-SRC_URI="https://github.com/rofafor/vdr-plugin-satip/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rofafor/vdr-plugin-satip/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/vdr-plugin-satip-${PV}"
 
 LICENSE="GPL-2+"

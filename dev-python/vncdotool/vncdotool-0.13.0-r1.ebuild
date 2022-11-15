@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Command line VNC client"
 HOMEPAGE="https://github.com/sibson/vncdotool"
-SRC_URI="https://github.com/sibson/vncdotool/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sibson/vncdotool/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

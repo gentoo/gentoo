@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/nexB/license-expression/
 "
 SRC_URI="
-	https://github.com/nexB/license-expression/archive/v${PV}.tar.gz
+	https://github.com/nexB/license-expression/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

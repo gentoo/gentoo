@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Methods for processing keyboard input in character, line and multiline modes"
 HOMEPAGE="https://github.com/piotrmurach/tty-reader"
-SRC_URI="https://github.com/piotrmurach/tty-reader/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/piotrmurach/tty-reader/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

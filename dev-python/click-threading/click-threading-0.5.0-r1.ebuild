@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/click-threading/
 "
 SRC_URI="
-	https://github.com/click-contrib/${PN}/archive/${PV}.tar.gz
+	https://github.com/click-contrib/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

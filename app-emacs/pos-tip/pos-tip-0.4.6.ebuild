@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Show tooltip at point"
 HOMEPAGE="https://github.com/pitkali/pos-tip/"
-SRC_URI="https://github.com/pitkali/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pitkali/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit lua
 
 DESCRIPTION="JSON Parser/Constructor for Lua"
 HOMEPAGE="https://www.eharning.us/wiki/luajson/"
-SRC_URI="https://github.com/harningt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/harningt/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

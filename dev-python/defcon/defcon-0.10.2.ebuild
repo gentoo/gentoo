@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="A set of UFO based objects for use in font editing applications"
 HOMEPAGE="https://github.com/robotools/defcon"
 SRC_URI="
-	https://github.com/robotools/defcon/archive/${PV}.tar.gz
+	https://github.com/robotools/defcon/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

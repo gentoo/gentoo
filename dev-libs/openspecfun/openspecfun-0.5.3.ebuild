@@ -7,7 +7,7 @@ inherit fortran-2 toolchain-funcs
 
 DESCRIPTION="A collection of special mathematical functions"
 HOMEPAGE="https://julialang.org"
-SRC_URI="https://github.com/JuliaLang/openspecfun/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/JuliaLang/openspecfun/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT public-domain"
 SLOT="0"

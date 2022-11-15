@@ -10,7 +10,7 @@ GOOGLEAPIS_COMMIT="28c6bb97cac6f16c69879be4e655674a74b886ef"
 
 DESCRIPTION="Google Cloud Client Library for C++"
 HOMEPAGE="https://cloud.google.com/"
-SRC_URI="https://github.com/GoogleCloudPlatform/google-cloud-cpp/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/GoogleCloudPlatform/google-cloud-cpp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/googleapis/googleapis/archive/${GOOGLEAPIS_COMMIT}.tar.gz -> googleapis-${GOOGLEAPIS_COMMIT}.tar.gz"
 
 LICENSE="Apache-2.0"

@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A generalized Rack framework for multiple-provider authentication"
 HOMEPAGE="https://github.com/intridea/omniauth"
-SRC_URI="https://github.com/intridea/omniauth/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/intridea/omniauth/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 KEYWORDS="~amd64"
 SLOT="$(ver_cut 1)"

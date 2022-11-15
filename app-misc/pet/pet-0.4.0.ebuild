@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="Simple command-line snippet manager"
 HOMEPAGE="https://github.com/knqyf263/pet"
-SRC_URI="https://github.com/knqyf263/pet/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
+SRC_URI="https://github.com/knqyf263/pet/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
 	https://github.com/SpiderX/portage-overlay/raw/deps/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/apispec/
 "
 SRC_URI="
-	https://github.com/marshmallow-code/apispec/archive/${PV}.tar.gz
+	https://github.com/marshmallow-code/apispec/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

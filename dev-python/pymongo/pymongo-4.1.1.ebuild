@@ -12,7 +12,7 @@ MY_P=mongo-python-driver-${PV}
 DESCRIPTION="Python driver for MongoDB"
 HOMEPAGE="https://github.com/mongodb/mongo-python-driver https://pypi.org/project/pymongo/"
 SRC_URI="
-	https://github.com/mongodb/mongo-python-driver/archive/${PV}.tar.gz
+	https://github.com/mongodb/mongo-python-driver/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 

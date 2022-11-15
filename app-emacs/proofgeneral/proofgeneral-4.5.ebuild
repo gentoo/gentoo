@@ -7,7 +7,7 @@ inherit wrapper elisp
 
 DESCRIPTION="A generic interface for proof assistants"
 HOMEPAGE="https://proofgeneral.github.io/"
-SRC_URI="https://github.com/ProofGeneral/PG/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/ProofGeneral/PG/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
 S="${WORKDIR}"/PG-${PV}
 

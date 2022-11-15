@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/pallets-eco/cachelib/
 "
 SRC_URI="
-	https://github.com/pallets-eco/cachelib/archive/${PV}.tar.gz
+	https://github.com/pallets-eco/cachelib/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

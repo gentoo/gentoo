@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Sylvester the Cat's Common Lisp IDE for GNU Emacs"
 HOMEPAGE="https://github.com/joaotavora/sly/"
-SRC_URI="https://github.com/joaotavora/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/joaotavora/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain GPL-2+ GPL-3+ LLGPL-2.1 ZLIB xref? ( xref.lisp )"
 SLOT="0"

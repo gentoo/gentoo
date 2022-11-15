@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python{3_8,3_9,3_10} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-SRC_URI="https://github.com/ultrabug/py3status/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ultrabug/py3status/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 inherit distutils-r1
 

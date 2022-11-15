@@ -10,7 +10,7 @@ inherit meson vala xdg
 
 DESCRIPTION="Elementary OS library that extends GTK+"
 HOMEPAGE="https://github.com/elementary/granite"
-SRC_URI="https://github.com/elementary/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/elementary/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3+"
 SLOT="0"

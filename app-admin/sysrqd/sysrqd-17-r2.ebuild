@@ -7,7 +7,7 @@ inherit systemd toolchain-funcs
 
 DESCRIPTION="Daemon providing access to the kernel sysrq functions via network"
 HOMEPAGE="https://github.com/jd/sysrqd"
-SRC_URI="https://github.com/jd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jd/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

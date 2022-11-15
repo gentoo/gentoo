@@ -9,7 +9,7 @@ HOMEPAGE="http://www.phpmd.org/"
 # The test suite is absent from the release tarballs because
 # the only build system that Composer understands is "cp -r".
 # To obtain the tests, we would need to grab a VCS snapshot.
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

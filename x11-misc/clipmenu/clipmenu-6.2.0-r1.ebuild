@@ -7,7 +7,7 @@ inherit systemd
 
 DESCRIPTION="Clipboard management"
 HOMEPAGE="https://github.com/cdown/clipmenu"
-SRC_URI="https://github.com/cdown/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cdown/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Unlicense"
 SLOT="0"

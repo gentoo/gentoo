@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Korn Shell Debugger"
 HOMEPAGE="https://github.com/rocky/kshdb"
-SRC_URI="https://github.com/rocky/kshdb/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rocky/kshdb/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

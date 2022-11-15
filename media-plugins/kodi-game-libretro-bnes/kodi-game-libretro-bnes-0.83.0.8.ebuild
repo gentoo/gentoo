@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	KEYWORDS="~amd64 ~x86"
 	CODENAME="Matrix"
-	SRC_URI="https://github.com/kodi-game/game.libretro.bnes/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/kodi-game/game.libretro.bnes/archive/refs/tags/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/game.libretro.bnes-${PV}-${CODENAME}"
 	DEPEND="=media-tv/kodi-19*"
 fi

@@ -10,7 +10,7 @@ inherit postgres-multi cmake
 
 DESCRIPTION="Open-source time-series SQL database"
 HOMEPAGE="https://www.timescale.com/"
-SRC_URI="https://github.com/timescale/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/timescale/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 IUSE="proprietary-extensions"
 LICENSE="POSTGRESQL Apache-2.0 proprietary-extensions? ( timescale )"

@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Paste parts of buffers to several pastebin-like services from Emacs"
 HOMEPAGE="https://github.com/etu/webpaste.el/"
-SRC_URI="https://github.com/etu/${PN}.el/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/etu/${PN}.el/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}.el-${PV}
 
 LICENSE="GPL-3+"

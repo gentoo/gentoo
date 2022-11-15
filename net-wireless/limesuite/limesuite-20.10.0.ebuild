@@ -8,7 +8,7 @@ inherit cmake wxwidgets
 
 DESCRIPTION="Driver and GUI for LMS7002M-based SDR platforms"
 HOMEPAGE="https://myriadrf.org/projects/component/limesdr/"
-SRC_URI="https://github.com/myriadrf/LimeSuite/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/myriadrf/LimeSuite/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/LimeSuite-${PV}"
 
 LICENSE="Apache-2.0"

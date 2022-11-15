@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Hardware RNG based on CPU timing jitter"
 HOMEPAGE="https://github.com/smuellerDD/jitterentropy-library"
-SRC_URI="https://github.com/smuellerDD/jitterentropy-library/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/smuellerDD/jitterentropy-library/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/3"

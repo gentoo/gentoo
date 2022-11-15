@@ -12,7 +12,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Mockito mock objects library core API and implementation"
 HOMEPAGE="https://github.com/mockito/mockito"
-SRC_URI="https://github.com/mockito/mockito/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mockito/mockito/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="4"

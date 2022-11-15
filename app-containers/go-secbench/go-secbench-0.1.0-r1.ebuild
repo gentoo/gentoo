@@ -7,7 +7,7 @@ inherit golang-build golang-vcs-snapshot
 
 DESCRIPTION="run and evaluate the docker security benchmark"
 HOMEPAGE="https://github.com/qnib/go-secbench"
-SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://${EGO_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

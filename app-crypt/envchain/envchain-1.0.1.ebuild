@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Save environment variables in a secret vault"
 HOMEPAGE="https://github.com/sorah/envchain"
-SRC_URI="https://github.com/sorah/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sorah/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

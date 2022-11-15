@@ -19,7 +19,7 @@ HOMEPAGE="https://wiki.ros.org/rosdistro"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/ros-infrastructure/rosdistro/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ros-infrastructure/rosdistro/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
 fi
 

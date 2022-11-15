@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="TypeScript-support for Emacs"
 HOMEPAGE="https://github.com/emacs-typescript/typescript.el/"
-SRC_URI="https://github.com/emacs-typescript/typescript.el/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/emacs-typescript/typescript.el/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/typescript.el-${PV}
 
 LICENSE="GPL-3+"

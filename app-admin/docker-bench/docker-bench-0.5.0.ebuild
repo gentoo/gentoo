@@ -6,7 +6,7 @@ inherit bash-completion-r1 go-module
 
 DESCRIPTION="Docker Bench for Security runs the CIS Docker Benchmark"
 HOMEPAGE="https://github.com/aquasecurity/docker-bench"
-SRC_URI="https://github.com/aquasecurity/docker-bench/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/aquasecurity/docker-bench/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-vendor.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0"

@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="CSL 1.0.2 Citation Processor for Emacs"
 HOMEPAGE="https://github.com/andras-simonyi/citeproc-el"
-SRC_URI="https://github.com/andras-simonyi/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/andras-simonyi/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

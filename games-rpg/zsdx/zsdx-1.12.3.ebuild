@@ -8,7 +8,7 @@ inherit cmake desktop wrapper xdg
 
 DESCRIPTION="Free 2D Zelda fangame"
 HOMEPAGE="https://www.solarus-games.org/"
-SRC_URI="https://gitlab.com/solarus-games/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
+SRC_URI="https://gitlab.com/solarus-games/${PN}/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.gz"
 S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="all-rights-reserved CC-BY-SA-3.0 GPL-3"

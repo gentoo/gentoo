@@ -7,7 +7,7 @@ MY_PN="diff"
 
 DESCRIPTION="PHP Diff implementation"
 HOMEPAGE="https://phpunit.de"
-SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

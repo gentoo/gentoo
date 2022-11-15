@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Decodes MS-TNEF MIME attachments"
 HOMEPAGE="https://github.com/verdammelt/tnef/"
-SRC_URI="https://github.com/verdammelt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/verdammelt/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

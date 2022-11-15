@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Set of command-line programs providing a simple interface to inotify"
 HOMEPAGE="https://github.com/inotify-tools/inotify-tools/"
-SRC_URI="https://github.com/inotify-tools/inotify-tools/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/inotify-tools/inotify-tools/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

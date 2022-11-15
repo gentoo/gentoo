@@ -7,7 +7,7 @@ inherit gnome2-utils meson
 
 DESCRIPTION="Support Ubuntu AppIndicators and KStatusNotifierItems in Gnome"
 HOMEPAGE="https://github.com/ubuntu/gnome-shell-extension-appindicator"
-SRC_URI="https://github.com/ubuntu/gnome-shell-extension-appindicator/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ubuntu/gnome-shell-extension-appindicator/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

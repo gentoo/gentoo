@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/vaidik/commentjson/
 "
 SRC_URI="
-	https://github.com/vaidik/commentjson/archive/v${PV}.tar.gz
+	https://github.com/vaidik/commentjson/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

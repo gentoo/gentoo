@@ -7,7 +7,7 @@ EGO_PN=github.com/influxdata/kapacitor
 
 DESCRIPTION="Monitoring, processing and alerting on time series data"
 HOMEPAGE="https://www.influxdata.com"
-SRC_URI="https://github.com/influxdata/kapacitor/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/influxdata/kapacitor/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

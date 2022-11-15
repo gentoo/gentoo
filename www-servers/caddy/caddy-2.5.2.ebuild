@@ -6,7 +6,7 @@ inherit fcaps go-module systemd
 
 DESCRIPTION="Fast, cross-platform HTTP/2 web server with automatic HTTPS"
 HOMEPAGE="https://caddyserver.com"
-SRC_URI="https://github.com/caddyserver/caddy/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/caddyserver/caddy/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD ECL-2.0 MIT"

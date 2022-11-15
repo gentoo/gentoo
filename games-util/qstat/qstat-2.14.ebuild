@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Server statics collector supporting many FPS games"
 HOMEPAGE="https://github.com/multiplay/qstat"
-SRC_URI="https://github.com/multiplay/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/multiplay/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"

@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/duncanthrax/scream.git"
 else
-	SRC_URI="https://github.com/duncanthrax/scream/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/duncanthrax/scream/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 

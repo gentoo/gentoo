@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Sprockets implementation for Rails 4.x (and beyond) Asset Pipeline"
 HOMEPAGE="https://github.com/rails/sprockets-rails"
-SRC_URI="https://github.com/rails/sprockets-rails/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rails/sprockets-rails/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

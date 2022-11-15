@@ -20,7 +20,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	[[ "${PV}" = *_rc* ]] || \
 	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
-	SRC_URI="https://github.com/puppetlabs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/puppetlabs/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 RESTRICT="!test? ( test )"

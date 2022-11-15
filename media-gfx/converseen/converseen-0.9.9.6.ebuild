@@ -8,7 +8,7 @@ inherit cmake
 DESCRIPTION="Batch image converter and resizer based on ImageMagick"
 HOMEPAGE="https://converseen.fasterland.net/
 	https://github.com/Faster3ck/Converseen/"
-SRC_URI="https://github.com/Faster3ck/Converseen/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Faster3ck/Converseen/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

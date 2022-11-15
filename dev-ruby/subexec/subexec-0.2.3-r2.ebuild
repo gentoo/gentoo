@@ -18,7 +18,7 @@ GITHUB_USER="nulayer"
 
 DESCRIPTION="Subexec spawns an external command with a timeout"
 HOMEPAGE="https://github.com/nulayer/subexec"
-SRC_URI="https://github.com/${GITHUB_USER}/${PN}/archive/v${PV}.tar.gz -> ${P}.tgz"
+SRC_URI="https://github.com/${GITHUB_USER}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz"
 
 LICENSE="MIT"
 SLOT="0"

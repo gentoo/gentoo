@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Provide libnotify interface to Pidgin and Finch"
 HOMEPAGE="https://github.com/sardemff7/purple-libnotify-plus"
-SRC_URI="https://github.com/sardemff7/purple-libnotify-plus/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sardemff7/purple-libnotify-plus/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

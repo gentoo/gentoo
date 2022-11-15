@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Define commands which run reformatters on the Emacs buffers"
 HOMEPAGE="https://github.com/purcell/emacs-reformatter/"
-SRC_URI="https://github.com/purcell/emacs-${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/purcell/emacs-${PN}/archive/refs/tags/${PV}.tar.gz
 			-> ${P}.tar.gz"
 S="${WORKDIR}"/emacs-${P}
 

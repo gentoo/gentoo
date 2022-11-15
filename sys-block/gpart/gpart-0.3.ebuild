@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Partition table rescue/guessing tool"
 HOMEPAGE="https://github.com/baruch/gpart"
-SRC_URI="https://github.com/baruch/gpart/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/baruch/gpart/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

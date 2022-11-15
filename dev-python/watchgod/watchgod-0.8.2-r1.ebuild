@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/samuelcolvin/watchfiles/
 "
 SRC_URI="
-	https://github.com/samuelcolvin/watchfiles/archive/v${PV}.tar.gz
+	https://github.com/samuelcolvin/watchfiles/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

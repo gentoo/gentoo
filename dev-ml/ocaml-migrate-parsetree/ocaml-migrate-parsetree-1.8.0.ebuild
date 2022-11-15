@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Convert OCaml parsetrees between different major versions"
 HOMEPAGE="https://github.com/let-def/ocaml-migrate-parsetree"
-SRC_URI="https://github.com/let-def/ocaml-migrate-parsetree/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/let-def/ocaml-migrate-parsetree/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"

@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Adds a streamy multipart form post capability to Net::HTTP"
 HOMEPAGE="https://github.com/socketry/multipart-post"
-SRC_URI="https://github.com/socketry/multipart-post/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/socketry/multipart-post/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

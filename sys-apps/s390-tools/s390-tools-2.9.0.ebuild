@@ -7,7 +7,7 @@ inherit toolchain-funcs udev
 
 DESCRIPTION="User space utilities for the zSeries (s390) Linux kernel and device drivers"
 HOMEPAGE="https://github.com/ibm-s390-tools/s390-tools"
-SRC_URI="https://github.com/ibm-${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ibm-${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Library for handling the Collins Dictionary database"
 HOMEPAGE="https://github.com/wojtekka/libydpdict"
-SRC_URI="https://github.com/wojtekka/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wojtekka/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

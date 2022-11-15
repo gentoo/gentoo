@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="SkypeWeb Plugin for Pidgin"
 HOMEPAGE="https://github.com/EionRobb/skype4pidgin"
-SRC_URI="https://github.com/EionRobb/skype4pidgin/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/EionRobb/skype4pidgin/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64 ~riscv ~x86"

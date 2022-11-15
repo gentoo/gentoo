@@ -10,7 +10,7 @@ MY_P="${P#*-}"
 
 DESCRIPTION="SunPinyin IMEngine for SCIM"
 HOMEPAGE="https://github.com/sunpinyin/sunpinyin"
-SRC_URI="https://github.com/${PN#*-}/${PN#*-}/archive/v${PV/_rc/-rc}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/${PN#*-}/${PN#*-}/archive/refs/tags/v${PV/_rc/-rc}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1 CDDL"
 SLOT="0"

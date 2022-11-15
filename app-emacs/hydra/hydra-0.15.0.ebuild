@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Make Emacs bindings that stick around"
 HOMEPAGE="https://github.com/abo-abo/hydra/"
-SRC_URI="https://github.com/abo-abo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/abo-abo/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64"

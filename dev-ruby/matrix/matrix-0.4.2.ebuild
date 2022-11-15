@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="An implementation of Matrix and Vector classes"
 HOMEPAGE="https://github.com/ruby/matrix"
-SRC_URI="https://github.com/ruby/matrix/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/matrix/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 

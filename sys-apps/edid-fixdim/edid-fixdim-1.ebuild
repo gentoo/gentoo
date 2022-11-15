@@ -8,7 +8,7 @@ inherit python-single-r1
 
 DESCRIPTION="Tool to fix screen dimensions in EDID data dumps"
 HOMEPAGE="https://github.com/mgorny/edid-fixdim"
-SRC_URI="https://github.com/mgorny/edid-fixdim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mgorny/edid-fixdim/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

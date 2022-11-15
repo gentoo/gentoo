@@ -7,7 +7,7 @@ DESCRIPTION='Manage config files in $HOME via fake bare git repositories'
 HOMEPAGE="https://github.com/RichiH/vcsh/"
 
 MY_PV="$(ver_rs 2 '-')"
-SRC_URI="https://github.com/RichiH/vcsh/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/RichiH/vcsh/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( GPL-3 GPL-2 )"
 SLOT="0"

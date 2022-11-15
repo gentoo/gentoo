@@ -6,7 +6,7 @@ inherit gnustep-2
 
 DESCRIPTION="Small CD Audio Player for GNUstep"
 HOMEPAGE="https://github.com/schik/cdplayer"
-SRC_URI="https://github.com/schik/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/schik/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"

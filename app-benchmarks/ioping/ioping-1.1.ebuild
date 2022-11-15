@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Simple disk I/0 latency measuring tool"
 HOMEPAGE="https://github.com/koct9i/ioping"
-SRC_URI="https://github.com/koct9i/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/koct9i/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3"

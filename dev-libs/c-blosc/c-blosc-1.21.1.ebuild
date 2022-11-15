@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Blocking, shuffling and lossless compression library"
 HOMEPAGE="https://www.blosc.org/"
-SRC_URI="https://github.com/Blosc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Blosc/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/1"

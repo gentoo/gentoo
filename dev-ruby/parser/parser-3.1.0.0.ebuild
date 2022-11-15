@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A production-ready Ruby parser written in pure Ruby"
 HOMEPAGE="https://github.com/whitequark/parser"
-SRC_URI="https://github.com/whitequark/parser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/whitequark/parser/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

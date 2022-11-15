@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/sphinx_pytest/
 "
 SRC_URI="
-	https://github.com/chrisjsewell/sphinx-pytest/archive/v${PV}.tar.gz
+	https://github.com/chrisjsewell/sphinx-pytest/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

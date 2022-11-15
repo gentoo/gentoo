@@ -10,7 +10,7 @@ inherit cmake llvm python-single-r1
 DESCRIPTION="Super-parallel Python port of the C-Reduce"
 HOMEPAGE="https://github.com/marxin/cvise/"
 SRC_URI="
-	https://github.com/marxin/cvise/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/marxin/cvise/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="UoI-NCSA"

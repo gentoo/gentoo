@@ -18,7 +18,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="EventMachine is a fast, simple event-processing library for Ruby programs"
 HOMEPAGE="https://github.com/eventmachine/eventmachine"
-SRC_URI="https://github.com/eventmachine/eventmachine/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/eventmachine/eventmachine/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 # Collection of upstream patches to fix compatibility with newer OpenSSL
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-openssl-patches.tar.bz2"
 

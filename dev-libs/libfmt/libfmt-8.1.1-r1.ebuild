@@ -16,7 +16,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/fmtlib/fmt.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/fmtlib/fmt/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/fmtlib/fmt/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
 	S="${WORKDIR}/fmt-${PV}"
 fi

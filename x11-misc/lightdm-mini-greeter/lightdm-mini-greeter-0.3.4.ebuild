@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="A Minimal, Configurable, Single-User GTK3 LightDM Greeter"
 HOMEPAGE="https://github.com/prikhi/lightdm-mini-greeter"
-SRC_URI="https://github.com/prikhi/lightdm-mini-greeter/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/prikhi/lightdm-mini-greeter/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

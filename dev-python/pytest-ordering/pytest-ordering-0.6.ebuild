@@ -12,7 +12,7 @@ HOMEPAGE="
 	https://github.com/ftobia/pytest-ordering/
 	https://pypi.org/project/pytest-ordering/
 "
-SRC_URI="https://github.com/ftobia/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ftobia/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

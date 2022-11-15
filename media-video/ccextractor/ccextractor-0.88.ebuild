@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Extract closed captioning subtitles from video to SRT"
 HOMEPAGE="https://www.ccextractor.org/"
-SRC_URI="https://github.com/CCExtractor/ccextractor/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/CCExtractor/ccextractor/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P}/src"
 
 LICENSE="GPL-2"

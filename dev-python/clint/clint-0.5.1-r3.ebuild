@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python Command-line Application Tools"
 HOMEPAGE="https://github.com/kennethreitz-archive/clint"
-SRC_URI="https://github.com/kennethreitz-archive/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kennethreitz-archive/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"

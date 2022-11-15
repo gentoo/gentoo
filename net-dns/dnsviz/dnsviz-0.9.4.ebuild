@@ -8,7 +8,7 @@ inherit distutils-r1 optfeature
 
 DESCRIPTION="Tool suite for analysis and visualization of DNS and DNSSEC"
 HOMEPAGE="https://dnsviz.net/"
-SRC_URI="https://github.com/dnsviz/dnsviz/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dnsviz/dnsviz/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

@@ -12,7 +12,7 @@ MY_P=${P/-c}
 DESCRIPTION="Python bindings for the BLAKE3 cryptographic hash function"
 HOMEPAGE="https://github.com/oconnor663/blake3-py/"
 SRC_URI="
-	https://github.com/oconnor663/blake3-py/archive/${PV}.tar.gz
+	https://github.com/oconnor663/blake3-py/archive/refs/tags/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}/c_impl

@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Mocking and stubbing using a syntax like that of JMock and SchMock"
 HOMEPAGE="https://mocha.jamesmead.org/"
-SRC_URI="https://github.com/freerange/mocha/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/freerange/mocha/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1.0"

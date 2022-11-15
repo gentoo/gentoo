@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Atmel AVR Assembler"
 HOMEPAGE="https://github.com/hsoft/avra"
-SRC_URI="https://github.com/hsoft/avra/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hsoft/avra/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

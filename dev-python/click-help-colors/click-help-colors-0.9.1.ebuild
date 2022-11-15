@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="Colorization of help messages in Click"
 HOMEPAGE="https://github.com/click-contrib/click-help-colors"
 SRC_URI="
-	https://github.com/click-contrib/${PN}/archive/${PV}.tar.gz
+	https://github.com/click-contrib/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 LICENSE="MIT"

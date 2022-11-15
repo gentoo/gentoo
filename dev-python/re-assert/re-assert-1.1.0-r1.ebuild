@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/re-assert/
 "
 SRC_URI="
-	https://github.com/asottile/re-assert/archive/v${PV}.tar.gz
+	https://github.com/asottile/re-assert/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

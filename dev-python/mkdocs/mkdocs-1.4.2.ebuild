@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Project documentation with Markdown"
 HOMEPAGE="https://www.mkdocs.org https://github.com/mkdocs/mkdocs"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

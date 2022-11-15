@@ -19,7 +19,7 @@ HOMEPAGE="
 	https://pypi.org/project/Pillow/
 "
 SRC_URI="
-	https://github.com/python-pillow/Pillow/archive/${PV}.tar.gz
+	https://github.com/python-pillow/Pillow/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/${MY_P}"

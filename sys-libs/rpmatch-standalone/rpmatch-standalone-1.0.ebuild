@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Standalone rpmatch library for use with musl"
 HOMEPAGE="https://github.com/pullmoll/musl-rpmatch"
-SRC_URI="https://github.com/pullmoll/musl-rpmatch/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pullmoll/musl-rpmatch/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

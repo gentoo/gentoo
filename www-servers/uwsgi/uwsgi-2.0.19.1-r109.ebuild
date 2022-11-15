@@ -21,7 +21,7 @@ inherit lua-single pax-utils php-ext-source-r3 python-r1 ruby-ng
 
 DESCRIPTION="uWSGI server for Python web applications"
 HOMEPAGE="https://projects.unbit.it/uwsgi/"
-SRC_URI="https://github.com/unbit/uwsgi/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/unbit/uwsgi/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

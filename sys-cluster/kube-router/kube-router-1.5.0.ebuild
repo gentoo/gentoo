@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="A turnkey solution for Kubernetes networking"
 HOMEPAGE="https://kube-router.io"
-SRC_URI="https://github.com/cloudnativelabs/kube-router/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cloudnativelabs/kube-router/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 MIT BSD BSD-2 MPL-2.0 ISC LGPL-3-with-linking-exception"

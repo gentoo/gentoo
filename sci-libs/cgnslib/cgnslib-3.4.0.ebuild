@@ -13,7 +13,7 @@ inherit cmake fortran-2
 
 DESCRIPTION="CFD General Notation System standard library"
 HOMEPAGE="http://www.cgns.org/"
-SRC_URI="https://github.com/CGNS/CGNS/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/CGNS/CGNS/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0/3"

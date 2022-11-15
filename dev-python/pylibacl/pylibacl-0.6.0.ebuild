@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://pypi.org/project/pylibacl/
 	https://github.com/iustin/pylibacl/"
 SRC_URI="
-	https://github.com/iustin/${PN}/archive/v${PV}.tar.gz
+	https://github.com/iustin/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
 LICENSE="LGPL-2.1"

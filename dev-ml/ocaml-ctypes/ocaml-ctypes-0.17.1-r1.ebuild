@@ -7,7 +7,7 @@ inherit findlib
 
 DESCRIPTION="Library for binding to C libraries using pure OCaml"
 HOMEPAGE="https://github.com/ocamllabs/ocaml-ctypes"
-SRC_URI="https://github.com/ocamllabs/ocaml-ctypes/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocamllabs/ocaml-ctypes/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

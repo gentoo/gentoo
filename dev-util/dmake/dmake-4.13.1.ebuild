@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Improved make"
 HOMEPAGE="https://jimjag.github.io/dmake/"
-SRC_URI="https://github.com/jimjag/${PN}/archive/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/jimjag/${PN}/archive/refs/tags/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-1"
 SLOT="0"

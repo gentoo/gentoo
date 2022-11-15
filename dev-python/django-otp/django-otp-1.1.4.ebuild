@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/django-otp/
 "
 SRC_URI="
-	https://github.com/django-otp/django-otp/archive/v${PV}.tar.gz
+	https://github.com/django-otp/django-otp/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

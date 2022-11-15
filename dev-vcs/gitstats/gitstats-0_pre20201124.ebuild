@@ -9,7 +9,7 @@ inherit python-r1
 
 DESCRIPTION="Statistics generator for git"
 HOMEPAGE="http://gitstats.sourceforge.net/"
-SRC_URI="https://github.com/gktrk/gitstats/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gktrk/gitstats/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 GPL-3 ) MIT"
 SLOT="0"

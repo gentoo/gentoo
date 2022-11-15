@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/containers/storage"
 LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT"
 SLOT="0"
 IUSE="btrfs +device-mapper test"
-SRC_URI="https://github.com/containers/storage/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/containers/storage/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 RDEPEND="
 	btrfs? ( sys-fs/btrfs-progs )
 	device-mapper? ( sys-fs/lvm2:= )"

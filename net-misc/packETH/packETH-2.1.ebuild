@@ -6,7 +6,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="Packet generator tool for ethernet"
 HOMEPAGE="http://packeth.sourceforge.net/"
-SRC_URI="https://github.com/jemcek/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jemcek/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

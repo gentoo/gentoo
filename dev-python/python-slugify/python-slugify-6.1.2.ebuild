@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/python-slugify/
 "
 SRC_URI="
-	https://github.com/un33k/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/un33k/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="MIT"

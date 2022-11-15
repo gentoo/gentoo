@@ -10,7 +10,7 @@ inherit cmake
 
 DESCRIPTION="Fork of the zlib data compression library"
 HOMEPAGE="https://github.com/zlib-ng/zlib-ng"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"

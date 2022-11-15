@@ -7,7 +7,7 @@ inherit vdr-plugin-2
 
 DESCRIPTION="VDR Plugin: will replace the noepg-patch with the new cEpgHandler"
 HOMEPAGE="https://github.com/flensrocker/vdr-plugin-noepg"
-SRC_URI="https://github.com/flensrocker/vdr-plugin-noepg/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/flensrocker/vdr-plugin-noepg/archive/refs/tags/v${PV}.tar.gz
 -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"

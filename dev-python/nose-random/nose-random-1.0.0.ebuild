@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Nose plugin to facilitate randomized unit testing"
 HOMEPAGE="https://github.com/fzumstein/nose-random"
-SRC_URI="https://github.com/fzumstein/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/fzumstein/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

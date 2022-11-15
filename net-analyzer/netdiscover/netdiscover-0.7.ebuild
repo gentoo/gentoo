@@ -8,7 +8,7 @@ DESCRIPTION="An active/passive address reconnaissance tool"
 HOMEPAGE="https://github.com/netdiscover-scanner/netdiscover"
 LICENSE="GPL-2"
 SRC_URI="
-	https://github.com/${PN}-scanner/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/${PN}-scanner/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 "
 
 SLOT="0"

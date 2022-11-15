@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Proxies NDP messages between interfaces"
 HOMEPAGE="https://github.com/DanielAdolfsson/ndppd"
-SRC_URI="https://github.com/DanielAdolfsson/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/DanielAdolfsson/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

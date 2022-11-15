@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="C++ man pages for Linux, with source from cplusplus.com and cppreference.com"
 HOMEPAGE="https://github.com/aitjcize/cppman"
-SRC_URI="https://github.com/aitjcize/cppman/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/aitjcize/cppman/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

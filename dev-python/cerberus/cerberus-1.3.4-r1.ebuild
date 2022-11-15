@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/Cerberus/
 "
 SRC_URI="
-	https://github.com/pyeve/cerberus/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/pyeve/cerberus/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="ISC"

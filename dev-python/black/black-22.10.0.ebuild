@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/black/
 "
 SRC_URI="
-	https://github.com/psf/black/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/psf/black/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"

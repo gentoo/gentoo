@@ -7,7 +7,7 @@ inherit cmake-multilib multiprocessing
 
 DESCRIPTION="PulseAudio emulation for ALSA"
 HOMEPAGE="https://github.com/i-rinat/apulse"
-SRC_URI="https://github.com/i-rinat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/i-rinat/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT LGPL-2.1"
 SLOT="0"

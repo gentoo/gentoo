@@ -7,7 +7,7 @@ inherit cmake linux-info
 
 DESCRIPTION="Thunderbolt(TM) user-space components"
 HOMEPAGE="https://github.com/intel/thunderbolt-software-user-space"
-SRC_URI="https://github.com/intel/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~asturm/distfiles/${P}-tbtadm.1.tar.xz"
 
 LICENSE="BSD"

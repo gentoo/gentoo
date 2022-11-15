@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Poly/ML is a full implementation of Standard ML"
 HOMEPAGE="https://www.polyml.org"
-SRC_URI="https://github.com/polyml/polyml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/polyml/polyml/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"

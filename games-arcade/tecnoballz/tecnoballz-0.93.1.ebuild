@@ -7,7 +7,7 @@ inherit autotools desktop
 
 DESCRIPTION="An exciting Brick Breaker"
 HOMEPAGE="https://linux.tlk.fr/games/TecnoballZ/"
-SRC_URI="https://github.com/brunonymous/tecnoballz/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/brunonymous/tecnoballz/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

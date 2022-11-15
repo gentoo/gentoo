@@ -7,7 +7,7 @@ EGIT_COMMIT=19f7b036bb46869858eec74d8d3fc2186d641399
 
 DESCRIPTION="Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x"
 HOMEPAGE="https://github.com/oliver006/redis_exporter"
-SRC_URI="https://github.com/oliver006/redis_exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/oliver006/redis_exporter/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 
 LICENSE="MIT Apache-2.0 BSD"

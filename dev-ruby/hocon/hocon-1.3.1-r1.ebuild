@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="This is a port of the Typesafe Config library to Ruby"
 HOMEPAGE="https://github.com/puppetlabs/ruby-hocon"
-SRC_URI="https://github.com/puppetlabs/ruby-hocon/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/puppetlabs/ruby-hocon/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="ruby-hocon-${PV}"
 
 LICENSE="Apache-2.0"

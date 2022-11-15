@@ -8,7 +8,7 @@ inherit toolchain-funcs
 MY_PV="$(ver_rs 2 '-')" # 'a.b.c' -> 'a.b-c'
 DESCRIPTION="a simulator for historical computers such as Vax, PDP-11 etc.)"
 HOMEPAGE="http://simh.trailing-edge.com/"
-SRC_URI="https://github.com/simh/simh/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/simh/simh/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

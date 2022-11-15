@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://github.com/py-pdf/PyPDF2/
 "
 SRC_URI="
-	https://github.com/py-pdf/PyPDF2/archive/${PV}.tar.gz
+	https://github.com/py-pdf/PyPDF2/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	test? (
 		https://github.com/py-pdf/sample-files/archive/${SAMPLE_COMMIT}.tar.gz

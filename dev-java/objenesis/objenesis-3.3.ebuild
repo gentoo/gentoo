@@ -12,7 +12,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A library for instantiating Java objects"
 HOMEPAGE="http://objenesis.org/"
-SRC_URI="https://github.com/easymock/objenesis/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/easymock/objenesis/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

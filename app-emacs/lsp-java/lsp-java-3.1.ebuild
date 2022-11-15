@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Emacs Java IDE using Eclipse JDT Language Server"
 HOMEPAGE="https://emacs-lsp.github.io/lsp-java/"
-SRC_URI="https://github.com/emacs-lsp/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/emacs-lsp/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64"

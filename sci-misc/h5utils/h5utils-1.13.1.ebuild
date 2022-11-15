@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Utilities for visualization and conversion of HDF5 files"
 HOMEPAGE="https://github.com/NanoComp/h5utils"
-SRC_URI="https://github.com/NanoComp/h5utils/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/NanoComp/h5utils/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

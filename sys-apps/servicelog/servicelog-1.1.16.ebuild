@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Provides utilities for logging service-related events"
 HOMEPAGE="https://github.com/power-ras/servicelog"
-SRC_URI="https://github.com/power-ras/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/power-ras/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

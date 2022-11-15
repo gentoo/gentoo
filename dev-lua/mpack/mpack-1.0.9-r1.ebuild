@@ -11,7 +11,7 @@ MY_PN="lib${PN}-lua"
 
 DESCRIPTION="Lua bindings for libmpack"
 HOMEPAGE="https://github.com/libmpack/libmpack-lua/"
-SRC_URI="https://github.com/${MY_PN/-lua/}/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${MY_PN/-lua/}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"

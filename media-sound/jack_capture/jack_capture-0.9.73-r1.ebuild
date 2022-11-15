@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="JACK Recording utility"
 HOMEPAGE="https://github.com/kmatheussen/jack_capture"
-SRC_URI="https://github.com/kmatheussen/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kmatheussen/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

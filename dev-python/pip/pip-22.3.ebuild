@@ -27,7 +27,7 @@ HOMEPAGE="
 	https://github.com/pypa/pip/
 "
 SRC_URI="
-	https://github.com/pypa/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
+	https://github.com/pypa/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
 	test? (
 		https://files.pythonhosted.org/packages/py3/s/setuptools/${SETUPTOOLS_WHL}
 		https://files.pythonhosted.org/packages/py2.py3/w/wheel/${WHEEL_WHL}

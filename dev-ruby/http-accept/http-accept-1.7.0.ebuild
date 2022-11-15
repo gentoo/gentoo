@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Parse Accept and Accept-Language HTTP headers"
 HOMEPAGE="https://github.com/socketry/http-accept"
-SRC_URI="https://github.com/socketry/http-accept/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/socketry/http-accept/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1"

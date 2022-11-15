@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Simple Python library to perform a 3-way merge between strings"
 HOMEPAGE="https://github.com/spyder-ide/three-merge
 	https://pypi.org/project/three-merge/"
-SRC_URI="https://github.com/spyder-ide/${PN}/archive/v${PV}.tar.gz -> ${P}-gh.tar.gz"
+SRC_URI="https://github.com/spyder-ide/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}-gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

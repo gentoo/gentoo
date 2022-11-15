@@ -11,7 +11,7 @@ RUBY_FAKEGEM_GEMSPEC="liquid.gemspec"
 
 inherit ruby-fakegem
 
-SRC_URI="https://github.com/Shopify/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Shopify/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Template engine for Ruby"
 HOMEPAGE="https://shopify.github.io/liquid/"
 

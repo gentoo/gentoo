@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="Curses based utility to parse the contents of elogs created by Portage"
 HOMEPAGE="https://gitweb.gentoo.org/proj/elogv.git/"
-SRC_URI="https://github.com/gentoo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gentoo/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

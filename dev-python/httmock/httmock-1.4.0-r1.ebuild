@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A mocking library for requests"
 HOMEPAGE="https://github.com/patrys/httmock"
-SRC_URI="https://github.com/patrys/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/patrys/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pyproject-fmt/
 "
 SRC_URI="
-	https://github.com/tox-dev/pyproject-fmt/archive/${PV}.tar.gz
+	https://github.com/tox-dev/pyproject-fmt/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

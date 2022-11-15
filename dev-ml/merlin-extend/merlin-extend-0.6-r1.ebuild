@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="SDK to extend Merlin"
 HOMEPAGE="https://github.com/let-def/merlin-extend"
-SRC_URI="https://github.com/let-def/merlin-extend/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/let-def/merlin-extend/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/rfc3339-validator/
 "
 SRC_URI="
-	https://github.com/naimetti/rfc3339-validator/archive/v${PV}.tar.gz
+	https://github.com/naimetti/rfc3339-validator/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

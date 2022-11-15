@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="High-performance neural network inference framework"
 HOMEPAGE="https://github.com/Tencent/ncnn/"
-SRC_URI="https://github.com/Tencent/ncnn/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Tencent/ncnn/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD ZLIB"
 SLOT="0/${PV}" # currently has unstable ABI that often requires rebuilds

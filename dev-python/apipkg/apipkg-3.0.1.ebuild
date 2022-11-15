@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/apipkg/
 "
 SRC_URI="
-	https://github.com/pytest-dev/apipkg/archive/v${PV}.tar.gz
+	https://github.com/pytest-dev/apipkg/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

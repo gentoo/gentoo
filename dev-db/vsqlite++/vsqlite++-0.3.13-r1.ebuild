@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="VSQLite++ - A well designed and portable SQLite3 Wrapper for C++"
 HOMEPAGE="http://evilissimo.fedorapeople.org/releases/vsqlite--/"
-SRC_URI="https://github.com/vinzenz/vsqlite--/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vinzenz/vsqlite--/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 # package name is vsqlite++, but github / homepage name is vsqlite--
 S="${WORKDIR}/vsqlite---${PV}"
 

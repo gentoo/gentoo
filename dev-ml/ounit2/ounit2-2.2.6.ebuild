@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Unit testing framework for OCaml"
 HOMEPAGE="https://github.com/gildor478/ounit"
-SRC_URI="https://github.com/gildor478/ounit/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gildor478/ounit/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/ounit-${PV}"
 
 LICENSE="MIT"

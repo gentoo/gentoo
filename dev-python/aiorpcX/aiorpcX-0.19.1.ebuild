@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Generic async RPC implementation, including JSON-RPC"
 HOMEPAGE="https://pypi.org/project/aiorpcX/
 	https://github.com/kyuupichan/aiorpcX/"
-SRC_URI="https://github.com/kyuupichan/aiorpcX/archive/${PV}.tar.gz
+SRC_URI="https://github.com/kyuupichan/aiorpcX/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.gh.tar.gz"
 
 LICENSE="MIT"

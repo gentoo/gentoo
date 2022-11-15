@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python bindings for dev-libs/re2"
 HOMEPAGE="https://github.com/facebook/pyre2/"
-SRC_URI="https://github.com/facebook/pyre2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/facebook/pyre2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

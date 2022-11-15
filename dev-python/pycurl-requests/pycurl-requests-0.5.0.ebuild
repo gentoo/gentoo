@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="Requests-compatible interface for PycURL"
 HOMEPAGE="https://github.com/dcoles/pycurl-requests"
 SRC_URI="
-	https://github.com/dcoles/${PN}/archive/v${PV}.tar.gz
+	https://github.com/dcoles/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

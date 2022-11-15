@@ -7,7 +7,7 @@ MY_PN="DirectoryScanner"
 
 DESCRIPTION="A recursive directory scanner and filter"
 HOMEPAGE="https://github.com/theseer/DirectoryScanner"
-SRC_URI="https://github.com/theseer/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/theseer/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

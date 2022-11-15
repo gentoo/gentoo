@@ -8,7 +8,7 @@ MY_PV="${PV/_rc/-rc.}"
 
 DESCRIPTION="Highly-available key value store for shared configuration and service discovery"
 HOMEPAGE="https://github.com/etcd-io/etcd"
-SRC_URI="https://github.com/etcd-io/etcd/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/etcd-io/etcd/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"

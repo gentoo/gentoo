@@ -14,7 +14,7 @@ EGIT_COMMIT="v${PV}"
 EGIT_REPO_URI="https://github.com/sbt/sbt.git"
 SRC_URI="
 	!binary? (
-		https://github.com/sbt/sbt/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/sbt/sbt/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~gienah/snapshots/${P}-ivy2-deps.tar.xz
 		https://dev.gentoo.org/~gienah/snapshots/${P}-sbt-deps.tar.xz
 		https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/${L_PN}/${PV}/${L_PN}.jar -> ${L_P}.jar

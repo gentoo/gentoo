@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Framebuffer screenshot utility"
 HOMEPAGE="https://github.com/GunnarMonell/fbgrab"
-SRC_URI="https://github.com/GunnarMonell/fbgrab/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/GunnarMonell/fbgrab/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

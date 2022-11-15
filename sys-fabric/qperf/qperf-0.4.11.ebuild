@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Measure RDMA and IP performance"
 HOMEPAGE="https://www.openfabrics.org/"
-SRC_URI="https://github.com/linux-rdma/qperf/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/linux-rdma/qperf/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 BSD-2 )"
 SLOT="0"

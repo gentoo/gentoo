@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/backoff/
 "
 SRC_URI="
-	https://github.com/litl/backoff/archive/v${PV}.tar.gz
+	https://github.com/litl/backoff/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

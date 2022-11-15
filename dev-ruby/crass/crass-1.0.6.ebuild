@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification"
 HOMEPAGE="https://github.com/rgrove/crass/"
-SRC_URI="https://github.com/rgrove/crass/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rgrove/crass/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

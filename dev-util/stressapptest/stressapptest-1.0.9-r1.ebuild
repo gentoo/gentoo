@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="Stressful Application Test"
 HOMEPAGE="https://github.com/stressapptest/stressapptest"
-SRC_URI="https://github.com/stressapptest/stressapptest/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/stressapptest/stressapptest/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

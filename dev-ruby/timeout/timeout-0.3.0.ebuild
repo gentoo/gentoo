@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Provides a framework for message digest libraries"
 HOMEPAGE="https://github.com/ruby/timeout"
-SRC_URI="https://github.com/ruby/timeout/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/timeout/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

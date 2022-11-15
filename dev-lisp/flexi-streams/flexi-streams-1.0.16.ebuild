@@ -8,7 +8,7 @@ inherit common-lisp-3
 DESCRIPTION="Flexible bivalent streams for Common Lisp"
 HOMEPAGE="http://weitz.de/flexi-streams/
 		http://www.cliki.net/flexi-streams/"
-SRC_URI="https://github.com/edicl/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/edicl/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

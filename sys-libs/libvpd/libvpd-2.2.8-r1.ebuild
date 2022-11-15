@@ -6,7 +6,7 @@ inherit autotools udev
 
 DESCRIPTION="Library implementation for listing Vital Product Data"
 HOMEPAGE="https://github.com/power-ras/libvpd"
-SRC_URI="https://github.com/power-ras/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/power-ras/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

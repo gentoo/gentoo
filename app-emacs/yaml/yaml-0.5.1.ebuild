@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="YAML parser in Emacs Lisp"
 HOMEPAGE="https://github.com/zkry/yaml.el/"
-SRC_URI="https://github.com/zkry/yaml.el/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/zkry/yaml.el/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/yaml.el-${PV}
 
 LICENSE="GPL-3+"

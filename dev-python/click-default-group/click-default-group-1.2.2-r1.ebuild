@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Extends click. Group to invoke a command without explicit subcommand name"
 HOMEPAGE="https://github.com/click-contrib/click-default-group"
-SRC_URI="https://github.com/click-contrib/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/click-contrib/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

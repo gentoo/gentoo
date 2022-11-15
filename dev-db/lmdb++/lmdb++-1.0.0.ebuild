@@ -8,7 +8,7 @@ S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="C++11 wrapper for the LMDB database library"
 HOMEPAGE="https://github.com/hoytech/lmdbxx"
-SRC_URI="https://github.com/hoytech/lmdbxx/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/hoytech/lmdbxx/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"

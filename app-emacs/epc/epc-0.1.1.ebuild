@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="RPC stack for Emacs Lisp"
 HOMEPAGE="https://github.com/kiwanami/emacs-epc/"
-SRC_URI="https://github.com/kiwanami/emacs-epc/archive/${PV}.tar.gz
+SRC_URI="https://github.com/kiwanami/emacs-epc/archive/refs/tags/${PV}.tar.gz
 			-> ${P}.tar.gz"
 S="${WORKDIR}"/emacs-${P}
 

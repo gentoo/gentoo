@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Embeddable, replicated and fault tolerant SQL engine"
 HOMEPAGE="https://dqlite.io/ https://github.com/canonical/dqlite"
-SRC_URI="https://github.com/canonical/dqlite/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/canonical/dqlite/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3-with-linking-exception"
 SLOT="0"

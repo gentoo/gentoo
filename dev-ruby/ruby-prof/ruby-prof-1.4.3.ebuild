@@ -17,7 +17,7 @@ inherit multilib ruby-fakegem
 
 DESCRIPTION="A module for profiling Ruby code"
 HOMEPAGE="https://github.com/ruby-prof/ruby-prof"
-SRC_URI="https://github.com/ruby-prof/${PN}/archive/${PV}.tar.gz -> ${P}.tgz"
+SRC_URI="https://github.com/ruby-prof/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"

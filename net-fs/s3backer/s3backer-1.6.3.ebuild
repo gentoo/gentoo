@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="FUSE-based single file backing store via Amazon S3"
 HOMEPAGE="https://github.com/archiecobbs/s3backer"
-SRC_URI="https://github.com/archiecobbs/s3backer/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/archiecobbs/s3backer/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

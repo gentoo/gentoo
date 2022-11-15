@@ -13,7 +13,7 @@ DESCRIPTION="High-level C++ D-Bus library"
 HOMEPAGE="https://github.com/Kistler-Group/sdbus-cpp"
 SRC_URI="https://github.com/Kistler-Group/sdbus-cpp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	!systemd? (
-		https://github.com/systemd/${SDP%-*}/archive/v${SDP##*-}/${SDP}.tar.gz
+		https://github.com/systemd/${SDP%-*}/archive/refs/tags/v${SDP##*-}/${SDP}.tar.gz
 		elibc_musl? (
 			https://dev.gentoo.org/~floppym/distfiles/systemd-musl-patches-${MUSL_PATCHSET}.tar.gz
 			https://dev.gentoo.org/~gyakovlev/distfiles/systemd-musl-patches-${MUSL_PATCHSET}.tar.gz

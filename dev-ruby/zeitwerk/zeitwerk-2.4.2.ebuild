@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Efficient and thread-safe code loader for Ruby"
 HOMEPAGE="https://github.com/fxn/zeitwerk"
-SRC_URI="https://github.com/fxn/zeitwerk/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/fxn/zeitwerk/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="2"

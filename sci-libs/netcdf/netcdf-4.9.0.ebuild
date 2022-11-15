@@ -7,7 +7,7 @@ inherit cmake flag-o-matic
 
 DESCRIPTION="Scientific library and interface for array oriented data access"
 HOMEPAGE="https://www.unidata.ucar.edu/software/netcdf/"
-SRC_URI="https://github.com/Unidata/netcdf-c/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Unidata/netcdf-c/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-c-${PV}
 
 LICENSE="UCAR-Unidata"

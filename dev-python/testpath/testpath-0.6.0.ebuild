@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Test utilities for code working with files and commands"
 HOMEPAGE="https://github.com/jupyter/testpath https://testpath.readthedocs.io/en/latest/"
-SRC_URI="https://github.com/jupyter/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jupyter/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

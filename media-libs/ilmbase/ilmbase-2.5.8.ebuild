@@ -7,7 +7,7 @@ inherit cmake-multilib
 
 DESCRIPTION="OpenEXR ILM Base libraries"
 HOMEPAGE="https://www.openexr.com/"
-SRC_URI="https://github.com/AcademySoftwareFoundation/openexr/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/openexr-${PV}/IlmBase"
 
 LICENSE="BSD"

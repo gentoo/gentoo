@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://django-configurations.readthedocs.io/
 "
 SRC_URI="
-	https://github.com/jazzband/django-configurations/archive/${PV}.tar.gz
+	https://github.com/jazzband/django-configurations/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

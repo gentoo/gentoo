@@ -10,7 +10,7 @@ DESCRIPTION="SingStar GPL clone"
 HOMEPAGE="https://performous.org/"
 
 SONGS_PN="ultrastar-songs"
-SRC_URI="https://github.com/performous/performous/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/performous/performous/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	songs? (
 		mirror://sourceforge/performous/${SONGS_PN}-restricted-3.zip
 		mirror://sourceforge/performous/${SONGS_PN}-jc-1.zip

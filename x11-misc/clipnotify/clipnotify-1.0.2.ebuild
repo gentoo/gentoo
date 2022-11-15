@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Notify on new X clipboard events"
 HOMEPAGE="https://github.com/cdown/clipnotify"
-SRC_URI="https://github.com/cdown/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/cdown/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Unlicense"
 SLOT="0"

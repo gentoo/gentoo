@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Quote text with a semi-box"
 HOMEPAGE="http://www.davep.org/emacs/"
-SRC_URI="https://github.com/davep/${PN}.el/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/davep/${PN}.el/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

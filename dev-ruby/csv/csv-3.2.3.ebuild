@@ -15,7 +15,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="The CSV library provides a complete interface to CSV files and data"
 HOMEPAGE="https://github.com/ruby/csv"
-SRC_URI="https://github.com/ruby/csv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/csv/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 

@@ -9,7 +9,7 @@ inherit autotools xdg
 
 DESCRIPTION="Library for file management"
 HOMEPAGE="https://wiki.lxde.org/en/PCManFM"
-SRC_URI="https://github.com/lxde/libfm/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/lxde/libfm/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"

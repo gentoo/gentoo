@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="Lua in Erlang"
 HOMEPAGE="https://github.com/rvirding/luerl"
-SRC_URI="https://github.com/rvirding/${PN}/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/rvirding/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

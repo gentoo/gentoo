@@ -13,7 +13,7 @@ USE_PHP="php7-4"
 
 inherit php-ext-pecl-r3
 
-SRC_URI="https://github.com/swoole/ext-async/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/swoole/ext-async/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/ext-async-${PV}"
 PHP_EXT_S="${S}"
 

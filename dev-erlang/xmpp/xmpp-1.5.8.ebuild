@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="XMPP parsing and serialization library on top of Fast XML"
 HOMEPAGE="https://github.com/processone/xmpp"
-SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/processone/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

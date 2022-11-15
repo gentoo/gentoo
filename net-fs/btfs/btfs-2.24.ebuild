@@ -8,7 +8,7 @@ inherit autotools python-r1
 
 DESCRIPTION="a bittorrent filesystem based on FUSE"
 HOMEPAGE="https://github.com/johang/btfs"
-SRC_URI="https://github.com/johang/btfs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/johang/btfs/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="The abstruct interface for net-* client"
 HOMEPAGE="https://github.com/ruby/net-protocol"
-SRC_URI="https://github.com/ruby/net-protocol/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/net-protocol/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

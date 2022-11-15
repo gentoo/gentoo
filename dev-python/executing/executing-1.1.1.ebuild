@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/executing/
 "
 SRC_URI="
-	https://github.com/alexmojaki/executing/archive/v${PV}.tar.gz
+	https://github.com/alexmojaki/executing/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Minitest + all the features you always wanted"
 HOMEPAGE="https://github.com/grosser/maxitest"
-SRC_URI="https://github.com/grosser/maxitest/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/grosser/maxitest/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1"

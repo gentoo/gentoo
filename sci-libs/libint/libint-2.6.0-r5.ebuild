@@ -7,7 +7,7 @@ inherit autotools fortran-2 toolchain-funcs
 
 DESCRIPTION="Matrix elements (integrals) evaluation over Cartesian Gaussian functions"
 HOMEPAGE="https://github.com/evaleev/libint"
-SRC_URI="https://github.com/evaleev/libint/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/evaleev/libint/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="2"
 LICENSE="GPL-2"

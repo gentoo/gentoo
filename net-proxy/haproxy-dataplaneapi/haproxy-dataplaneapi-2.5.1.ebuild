@@ -7,7 +7,7 @@ inherit go-module
 DESCRIPTION="haproxy dataplane api / sidecar"
 HOMEPAGE="https://github.com/haproxytech/dataplaneapi https://www.haproxy.com/documentation/dataplaneapi/latest/"
 
-SRC_URI="https://github.com/haproxytech/dataplaneapi/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/haproxytech/dataplaneapi/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	http://gentooexperimental.org/~patrick/${P}-deps.tar.xz"
 
 LICENSE="BSD"

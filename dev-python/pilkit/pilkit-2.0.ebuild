@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="A collection of utilities and processors for the Python Imaging Libary"
 HOMEPAGE="https://github.com/matthewwithanm/pilkit"
-SRC_URI="https://github.com/matthewwithanm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/matthewwithanm/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

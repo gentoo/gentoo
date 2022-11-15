@@ -18,7 +18,7 @@ inherit golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/jirwin/burrow_exporter"
 EXPORTER_COMMIT="01f0ef9"
-ARCHIVE_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+ARCHIVE_URI="https://${EGO_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="Prometheus exporter for Burrow"

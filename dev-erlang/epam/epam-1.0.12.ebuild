@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="epam for ejabberd to help with PAM authentication support"
 HOMEPAGE="https://github.com/processone/epam"
-SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/processone/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-2"

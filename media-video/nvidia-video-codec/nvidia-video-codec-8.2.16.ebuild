@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Redistributable headers to build cuvid and nvenc"
 HOMEPAGE="https://github.com/lu-zero/nvidia-video-codec"
-SRC_URI="https://github.com/lu-zero/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lu-zero/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

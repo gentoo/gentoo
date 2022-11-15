@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Terminal manipulation library for OCaml"
 HOMEPAGE="https://github.com/ocaml-community/lambda-term"
-SRC_URI="https://github.com/ocaml-community/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocaml-community/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

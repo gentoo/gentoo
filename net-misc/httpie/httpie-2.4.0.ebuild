@@ -11,7 +11,7 @@ inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="Modern command line HTTP client"
 HOMEPAGE="https://httpie.org/ https://pypi.org/project/httpie/"
-SRC_URI="https://github.com/jakubroztocil/httpie/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jakubroztocil/httpie/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

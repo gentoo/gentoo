@@ -7,7 +7,7 @@ inherit perl-module
 
 DESCRIPTION="PostgreSQL SQL syntax beautifier"
 HOMEPAGE="https://github.com/darold/pgFormatter"
-SRC_URI="https://github.com/darold/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/darold/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

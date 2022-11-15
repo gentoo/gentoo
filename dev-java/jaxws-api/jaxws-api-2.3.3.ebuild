@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="JAX-WS (JSR 224) API (Eclipse Project for JAX-WS)"
 HOMEPAGE="https://github.com/eclipse-ee4j/jax-ws-api"
-SRC_URI="https://github.com/eclipse-ee4j/jax-ws-api/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/eclipse-ee4j/jax-ws-api/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD" # "BSD-3 Clause"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="A modern flat theme with a combination of light and dark elements"
 HOMEPAGE="https://github.com/numixproject/numix-gtk-theme"
-SRC_URI="https://github.com/numixproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/numixproject/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

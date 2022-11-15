@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom hamcrest-2.2.pom --download-uri https://github.com/hamcrest/JavaHamcrest/archive/v2.2.tar.gz --slot 0 --keywords "~amd64" --ebuild hamcrest-2.2.ebuild
+# java-ebuilder --generate-ebuild --workdir . --pom hamcrest-2.2.pom --download-uri https://github.com/hamcrest/JavaHamcrest/archive/refs/tags/v2.2.tar.gz --slot 0 --keywords "~amd64" --ebuild hamcrest-2.2.ebuild
 
 EAPI=8
 
@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Core API and libraries of hamcrest matcher framework."
 HOMEPAGE="http://hamcrest.org/JavaHamcrest/"
-SRC_URI="https://github.com/${PN}/JavaHamcrest/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/JavaHamcrest/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

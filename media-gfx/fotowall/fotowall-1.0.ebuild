@@ -7,7 +7,7 @@ inherit qmake-utils
 
 DESCRIPTION="Qt5 tool for creating wallpapers"
 HOMEPAGE="https://www.enricoros.com/opensource/fotowall/"
-SRC_URI="https://github.com/enricoros/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/enricoros/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

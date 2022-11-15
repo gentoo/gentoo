@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/certifi-system-store/
 "
 SRC_URI="
-	https://github.com/tiran/certifi-system-store/archive/v${PV}.tar.gz
+	https://github.com/tiran/certifi-system-store/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.tar.gz
 "
 S=${WORKDIR}/${MY_P}

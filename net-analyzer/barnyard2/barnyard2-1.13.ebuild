@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Parser for Snort unified/unified2 files"
 HOMEPAGE="https://github.com/firnsy/barnyard2 https://firnsy.com/projects"
-SRC_URI="https://github.com/firnsy/barnyard2/archive/v2-${PV}.tar.gz -> ${P}-github.tar.gz"
+SRC_URI="https://github.com/firnsy/barnyard2/archive/refs/tags/v2-${PV}.tar.gz -> ${P}-github.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

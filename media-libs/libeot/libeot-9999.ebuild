@@ -9,7 +9,7 @@ inherit autotools
 
 DESCRIPTION="Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')"
 HOMEPAGE="https://github.com/umanwizard/libeot"
-[[ ${PV} == 9999 ]] || SRC_URI="https://github.com/umanwizard/libeot/archive/v${PV}.tar.gz -> ${P}.tgz"
+[[ ${PV} == 9999 ]] || SRC_URI="https://github.com/umanwizard/libeot/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz"
 
 LICENSE="MPL-2.0"
 SLOT="0"

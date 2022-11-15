@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Pure Ruby gem that implements the MQTT protocol"
 HOMEPAGE="https://github.com/njh/ruby-mqtt"
-SRC_URI="https://github.com/njh/ruby-mqtt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/njh/ruby-mqtt/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 RUBY_S="ruby-${P}"
 
 LICENSE="MIT"

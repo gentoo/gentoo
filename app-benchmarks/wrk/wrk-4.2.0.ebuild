@@ -9,7 +9,7 @@ inherit lua-single toolchain-funcs
 
 DESCRIPTION="A HTTP benchmarking tool"
 HOMEPAGE="https://www.github.com/wg/wrk"
-SRC_URI="https://www.github.com/wg/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://www.github.com/wg/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="amd64 x86"
 LICENSE="Apache-2.0 BSD MIT"

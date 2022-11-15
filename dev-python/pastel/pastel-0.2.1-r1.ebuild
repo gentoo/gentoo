@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pastel/
 "
 SRC_URI="
-	https://github.com/sdispater/pastel/archive/${PV}.tar.gz
+	https://github.com/sdispater/pastel/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

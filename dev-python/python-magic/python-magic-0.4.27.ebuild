@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/python-magic/
 "
 SRC_URI="
-	https://github.com/ahupp/python-magic/archive/${PV}.tar.gz
+	https://github.com/ahupp/python-magic/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

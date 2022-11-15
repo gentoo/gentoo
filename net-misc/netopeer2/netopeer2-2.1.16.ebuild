@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Server for implementing NETCONF configuration management"
 HOMEPAGE="https://github.com/CESNET/netopeer2"
-SRC_URI="https://github.com/CESNET/netopeer2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/CESNET/netopeer2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

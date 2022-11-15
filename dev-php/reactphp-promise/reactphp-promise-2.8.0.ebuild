@@ -7,7 +7,7 @@ MY_PN="promise"
 
 DESCRIPTION="A lightweight implementation of CommonJS Promises/A for PHP"
 HOMEPAGE="https://reactphp.org/promise/"
-SRC_URI="https://github.com/reactphp/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/reactphp/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

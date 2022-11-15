@@ -6,7 +6,7 @@ EAPI=7
 DESCRIPTION="Trace TCP/UDP/... sessions and fetch application data"
 HOMEPAGE="http://chaosreader.sourceforge.net
 	https://github.com/brendangregg/Chaosreader"
-SRC_URI="https://github.com/brendangregg/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/brendangregg/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"

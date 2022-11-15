@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="Command line utility for operations on container images and image repositories"
 HOMEPAGE="https://github.com/jfrog/jfrog-cli"
-SRC_URI="https://github.com/jfrog/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/jfrog/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~zmedico/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0"

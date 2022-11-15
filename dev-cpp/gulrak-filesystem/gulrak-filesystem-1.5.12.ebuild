@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Header-only single-file std::filesystem compatible helper library"
 HOMEPAGE="https://github.com/gulrak/filesystem"
-SRC_URI="https://github.com/gulrak/filesystem/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gulrak/filesystem/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

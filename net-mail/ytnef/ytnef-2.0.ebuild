@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Yeraze's TNEF Stream Reader - for winmail.dat files"
 HOMEPAGE="https://github.com/Yeraze/ytnef"
-SRC_URI="https://github.com/Yeraze/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Yeraze/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 QA_PKGCONFIG_VERSION="${PV}.0"

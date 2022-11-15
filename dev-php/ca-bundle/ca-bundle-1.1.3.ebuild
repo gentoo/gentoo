@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Find the system CA bundle or fall back to the Mozilla one"
 HOMEPAGE="https://github.com/composer/ca-bundle"
-SRC_URI="https://github.com/composer/ca-bundle/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/composer/ca-bundle/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Simply builds and verifies OAuth headers"
 HOMEPAGE="https://github.com/laserlemon/simple_oauth"
-SRC_URI="https://github.com/laserlemon/simple_oauth/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/laserlemon/simple_oauth/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Integrates Pidgin (and libpurple) with the system keyring"
 HOMEPAGE="https://github.com/aebrahim/pidgin-gnome-keyring"
-SRC_URI="https://github.com/aebrahim/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/aebrahim/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/pydantic/
 "
 SRC_URI="
-	https://github.com/pydantic/pydantic/archive/v${PV/_beta/b}.tar.gz
+	https://github.com/pydantic/pydantic/archive/refs/tags/v${PV/_beta/b}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

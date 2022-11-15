@@ -7,7 +7,7 @@ inherit optfeature udev
 
 DESCRIPTION="Relax-and-Recover is a setup-and-forget bare metal disaster recovery solution"
 HOMEPAGE="http://relax-and-recover.org/ https://github.com/rear/rear/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

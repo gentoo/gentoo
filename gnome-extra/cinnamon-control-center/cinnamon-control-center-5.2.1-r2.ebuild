@@ -9,7 +9,7 @@ inherit meson gnome2-utils python-any-r1 xdg virtualx
 
 DESCRIPTION="Cinnamons's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/ https://github.com/linuxmint/cinnamon-control-center"
-SRC_URI="https://github.com/linuxmint/cinnamon-control-center/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/linuxmint/cinnamon-control-center/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+ MIT"
 SLOT="0"

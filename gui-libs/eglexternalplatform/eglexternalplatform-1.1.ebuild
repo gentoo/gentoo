@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="EGL External Platform interface"
 HOMEPAGE="https://github.com/NVIDIA/eglexternalplatform"
-SRC_URI="https://github.com/NVIDIA/eglexternalplatform/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/NVIDIA/eglexternalplatform/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

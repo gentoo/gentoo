@@ -12,7 +12,7 @@ HOMEPAGE="
 	https://criu.org/
 	https://github.com/checkpoint-restore/
 "
-SRC_URI="https://github.com/checkpoint-restore/${PN}/archive/v${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/checkpoint-restore/${PN}/archive/refs/tags/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

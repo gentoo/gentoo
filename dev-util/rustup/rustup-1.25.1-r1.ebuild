@@ -320,7 +320,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/rust-lang/${PN}.git"
 else
 	HOME_COMMIT="a243ee2fbee6022c57d56f5aa79aefe194eabe53"
-	SRC_URI="https://github.com/rust-lang/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://github.com/rust-lang/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/rbtcollins/home/archive/${HOME_COMMIT}.tar.gz -> home-${HOME_COMMIT}.tar.gz
 		$(cargo_crate_uris ${CRATES})"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"

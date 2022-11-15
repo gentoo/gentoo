@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A powerful declarative parser for binary data"
 HOMEPAGE="https://construct.readthedocs.io/en/latest/ https://pypi.org/project/construct/"
-SRC_URI="https://github.com/construct/construct/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/construct/construct/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

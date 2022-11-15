@@ -5,7 +5,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
 inherit xdg meson gnome2-utils virtualx python-r1
 
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 DESCRIPTION="Pandora.com client for the GNOME desktop"
 HOMEPAGE="https://pithos.github.io/"

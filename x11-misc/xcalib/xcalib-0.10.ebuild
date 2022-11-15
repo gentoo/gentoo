@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Tiny monitor calibration loader for X.org"
 HOMEPAGE="https://github.com/OpenICC/xcalib"
-SRC_URI="https://github.com/OpenICC/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/OpenICC/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/pyglet/pyglet/
 	https://pypi.org/project/pyglet/
 "
-SRC_URI="https://github.com/pyglet/pyglet/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/pyglet/pyglet/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Sphinx theme integrates the Bootstrap CSS / JavaScript framework"
 HOMEPAGE="https://ryan-roemer.github.io/sphinx-bootstrap-theme/README.html"
 SRC_URI="
-	https://github.com/ryan-roemer/${PN}/archive/v${PV}.tar.gz
+	https://github.com/ryan-roemer/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

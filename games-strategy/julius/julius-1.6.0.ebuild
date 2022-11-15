@@ -7,7 +7,7 @@ inherit xdg cmake readme.gentoo-r1
 
 DESCRIPTION="Feature-faithful open source re-implementation of Caesar III"
 HOMEPAGE="https://github.com/bvschaik/julius"
-SRC_URI="https://github.com/bvschaik/julius/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bvschaik/julius/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"

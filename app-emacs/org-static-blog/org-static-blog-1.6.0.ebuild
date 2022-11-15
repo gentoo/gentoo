@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Static site generator using Emacs's org-mode"
 HOMEPAGE="https://github.com/bastibe/org-static-blog/"
-SRC_URI="https://github.com/bastibe/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/bastibe/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

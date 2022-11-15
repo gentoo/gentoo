@@ -16,12 +16,12 @@ HOMEPAGE="
 	https://pypi.org/project/tree-sitter/
 "
 SRC_URI="
-	https://github.com/tree-sitter/py-tree-sitter/archive/v${PV}.tar.gz
+	https://github.com/tree-sitter/py-tree-sitter/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	test? (
-		https://github.com/tree-sitter/tree-sitter-javascript/archive/v${FIXTURE_PV}.tar.gz
+		https://github.com/tree-sitter/tree-sitter-javascript/archive/refs/tags/v${FIXTURE_PV}.tar.gz
 			-> tree-sitter-javascript-${FIXTURE_PV}.tar.gz
-		https://github.com/tree-sitter/tree-sitter-python/archive/v${FIXTURE_PV}.tar.gz
+		https://github.com/tree-sitter/tree-sitter-python/archive/refs/tags/v${FIXTURE_PV}.tar.gz
 			-> tree-sitter-python-${FIXTURE_PV}.tar.gz
 	)
 "

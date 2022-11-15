@@ -74,7 +74,7 @@ HOMEPAGE="
 	https://github.com/matrix-org/synapse/
 "
 SRC_URI="
-	https://github.com/matrix-org/${PN}/archive/v${MY_PV}.tar.gz
+	https://github.com/matrix-org/${PN}/archive/refs/tags/v${MY_PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	$(cargo_crate_uris)
 "

@@ -7,7 +7,7 @@ inherit vdr-plugin-2
 
 DESCRIPTION="VDR plugin: Add a logical device capable of receiving IPTV"
 HOMEPAGE="https://github.com/rofafor/vdr-plugin-iptv"
-SRC_URI="https://github.com/rofafor/vdr-plugin-iptv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rofafor/vdr-plugin-iptv/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

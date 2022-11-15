@@ -19,7 +19,7 @@ case ${PV} in
 *)
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	CODENAME="Matrix"
-	SRC_URI="https://github.com/xbmc/audioencoder.vorbis/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/xbmc/audioencoder.vorbis/archive/refs/tags/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/audioencoder.vorbis-${PV}-${CODENAME}"
 	DEPEND="=media-tv/kodi-19*"
 	;;

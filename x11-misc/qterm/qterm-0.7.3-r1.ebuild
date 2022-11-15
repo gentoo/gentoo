@@ -7,7 +7,7 @@ inherit cmake xdg
 
 DESCRIPTION="A BBS client based on Qt"
 HOMEPAGE="https://github.com/qterm/qterm"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

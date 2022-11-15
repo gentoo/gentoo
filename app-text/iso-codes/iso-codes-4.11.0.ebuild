@@ -10,7 +10,7 @@ inherit python-any-r1
 
 DESCRIPTION="ISO language, territory, currency, script codes and their translations"
 HOMEPAGE="https://salsa.debian.org/iso-codes-team/iso-codes"
-SRC_URI="https://salsa.debian.org/${PN}-team/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz"
+SRC_URI="https://salsa.debian.org/${PN}-team/${PN}/-/archive/refs/tags/v${PV}/${PN}-v${PV}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Statistic submission client for Goose (anser.gentoo.org)"
 HOMEPAGE="https://github.com/projg2/gander/"
-SRC_URI="https://github.com/projg2/gander/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/projg2/gander/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

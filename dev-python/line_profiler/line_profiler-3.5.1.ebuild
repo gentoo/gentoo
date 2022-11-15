@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/line-profiler/
 "
 SRC_URI="
-	https://github.com/pyutils/line_profiler/archive/v${PV}.tar.gz
+	https://github.com/pyutils/line_profiler/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

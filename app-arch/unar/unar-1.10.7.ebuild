@@ -8,7 +8,7 @@ inherit bash-completion-r1 toolchain-funcs
 DESCRIPTION="Unpacker for various archiving formats, e.g. rar v3"
 HOMEPAGE="https://unarchiver.c3.cx/"
 SRC_URI="
-	https://github.com/MacPaw/XADMaster/archive/v${PV}/XADMaster-${PV}.tar.gz
+	https://github.com/MacPaw/XADMaster/archive/refs/tags/v${PV}/XADMaster-${PV}.tar.gz
 	https://github.com/MacPaw/universal-detector/archive/1.1/universal-detector-1.1.tar.gz
 "
 

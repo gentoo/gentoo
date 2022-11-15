@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/olefile/
 "
 SRC_URI="
-	https://github.com/decalage2/olefile/archive/v${PV}.tar.gz
+	https://github.com/decalage2/olefile/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

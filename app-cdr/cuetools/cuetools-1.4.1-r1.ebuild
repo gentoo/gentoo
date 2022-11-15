@@ -7,7 +7,7 @@ inherit autotools optfeature
 
 DESCRIPTION="Utilities to manipulate and convert cue and toc files"
 HOMEPAGE="https://github.com/svend/cuetools"
-SRC_URI="https://github.com/svend/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/svend/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

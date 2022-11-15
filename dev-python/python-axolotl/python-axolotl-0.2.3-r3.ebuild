@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A python module for the axolotl protocol"
 HOMEPAGE="https://github.com/tgalal/python-axolotl"
-SRC_URI="https://github.com/tgalal/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/tgalal/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

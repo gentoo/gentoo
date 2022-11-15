@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Long Range ZIP or Lzma RZIP optimized for compressing large files"
 HOMEPAGE="https://github.com/ckolivas/lrzip"
-SRC_URI="https://github.com/ckolivas/lrzip/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ckolivas/lrzip/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit bash-completion-r1 go-module
 
 DESCRIPTION="Command-line wrapper for git that makes you better at GitHub"
 HOMEPAGE="https://github.com/github/hub"
-SRC_URI="https://github.com/github/hub/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/github/hub/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

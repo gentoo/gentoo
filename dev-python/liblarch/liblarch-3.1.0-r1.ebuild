@@ -11,7 +11,7 @@ inherit distutils-r1 virtualx
 DESCRIPTION="Library to handle directed acyclic graphs"
 HOMEPAGE="https://wiki.gnome.org/Projects/liblarch"
 SRC_URI="
-	https://github.com/getting-things-gnome/liblarch/archive/v${PV}.tar.gz
+	https://github.com/getting-things-gnome/liblarch/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 

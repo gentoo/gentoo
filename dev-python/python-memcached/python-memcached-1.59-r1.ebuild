@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://pypi.org/project/python-memcached/
 "
 # PyPI tarballs don't contain tests
-SRC_URI="https://github.com/linsomniac/python-memcached/archive/${PV}.tar.gz -> ${P}-gh.tar.gz"
+SRC_URI="https://github.com/linsomniac/python-memcached/archive/refs/tags/${PV}.tar.gz -> ${P}-gh.tar.gz"
 
 LICENSE="OSL-2.0"
 SLOT="0"

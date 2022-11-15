@@ -7,7 +7,7 @@ inherit autotools udev
 
 DESCRIPTION="Sets BIOS-given device names instead of kernel eth* names"
 HOMEPAGE="http://linux.dell.com/biosdevname/"
-SRC_URI="https://github.com/dell/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dell/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

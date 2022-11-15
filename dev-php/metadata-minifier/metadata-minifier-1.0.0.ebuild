@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Small utility library that handles metadata minification and expansion"
 HOMEPAGE="https://github.com/composer/metadata-minifier"
-SRC_URI="https://github.com/composer/metadata-minifier/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/composer/metadata-minifier/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

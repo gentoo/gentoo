@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="HTTP Ardour Video Daemon"
 HOMEPAGE="https://x42.github.io/harvid/"
-SRC_URI="https://github.com/x42/harvid/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/x42/harvid/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

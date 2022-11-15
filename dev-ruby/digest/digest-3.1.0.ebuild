@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Provides a framework for message digest libraries"
 HOMEPAGE="https://github.com/ruby/digest"
-SRC_URI="https://github.com/ruby/digest/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/digest/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit common-lisp-3
 
 DESCRIPTION="CLX is the Common Lisp interface to the X11 protocol primarily for SBCL"
 HOMEPAGE="http://www.cliki.net/CLX"
-SRC_URI="https://github.com/sharplispers/clx/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sharplispers/clx/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

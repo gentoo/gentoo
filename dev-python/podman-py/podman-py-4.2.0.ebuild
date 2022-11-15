@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/podman/
 "
 SRC_URI="
-	https://github.com/containers/podman-py/archive/v${PV}.tar.gz
+	https://github.com/containers/podman-py/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

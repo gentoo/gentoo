@@ -9,7 +9,7 @@ inherit lua
 
 DESCRIPTION="Assertion library for Lua"
 HOMEPAGE="http://olivinelabs.com/busted/"
-SRC_URI="https://github.com/Olivine-Labs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Olivine-Labs/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

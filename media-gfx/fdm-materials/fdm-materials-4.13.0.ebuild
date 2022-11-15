@@ -9,7 +9,7 @@ MY_PN="fdm_materials"
 
 DESCRIPTION="FDM materials for media-gfx/cura"
 HOMEPAGE="https://github.com/Ultimaker/fdm_materials"
-SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC0-1.0"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit meson python-single-r1 xdg
 
 DESCRIPTION="GTK configuration application for libratbag"
 HOMEPAGE="https://github.com/libratbag/piper"
-SRC_URI="https://github.com/libratbag/piper/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/libratbag/piper/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

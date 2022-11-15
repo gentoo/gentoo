@@ -10,7 +10,7 @@ DESCRIPTION="DLNA/UPnP-AV compliant media server"
 HOMEPAGE="https://sourceforge.net/projects/minidlna/"
 #	https://downloads.sourceforge.net/project/minidlna/${PN}/${PV}/${P}.tar.gz
 SRC_URI="
-	https://github.com/mgorny/minidlna/archive/v${PV//./_}.tar.gz
+	https://github.com/mgorny/minidlna/archive/refs/tags/v${PV//./_}.tar.gz
 		-> ${MY_P}.tar.gz
 	mirror://gentoo/minidlna-gentoo-artwork.patch.xz
 "

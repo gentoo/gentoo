@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/sphobjinv/
 "
 SRC_URI="
-	https://github.com/bskinn/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/bskinn/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="MIT"

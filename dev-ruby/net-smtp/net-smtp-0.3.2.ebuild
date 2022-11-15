@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Simple Mail Transfer Protocol client library for Ruby"
 HOMEPAGE="https://github.com/ruby/net-smtp"
-SRC_URI="https://github.com/ruby/net-smtp/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/net-smtp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

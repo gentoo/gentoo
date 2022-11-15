@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Unofficial API for YouTube Music"
 HOMEPAGE="https://ytmusicapi.readthedocs.io/"
-SRC_URI="https://github.com/sigma67/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sigma67/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"

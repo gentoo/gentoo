@@ -10,7 +10,7 @@ inherit lua toolchain-funcs
 
 DESCRIPTION="A command-line argument parsing module for Lua"
 HOMEPAGE="https://github.com/amireh/lua_cliargs"
-SRC_URI="https://github.com/amireh/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/amireh/${PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="MIT"

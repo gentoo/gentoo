@@ -11,7 +11,7 @@ MY_PV=${PV//_beta/-beta.}
 
 DESCRIPTION="Framework for analyzing volatile memory"
 HOMEPAGE="https://github.com/volatilityfoundation/volatility3/ https://www.volatilityfoundation.org/"
-SRC_URI="https://github.com/volatilityfoundation/volatility3/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/volatilityfoundation/volatility3/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="GPL-2+"

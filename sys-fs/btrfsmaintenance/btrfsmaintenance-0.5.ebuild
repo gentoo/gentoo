@@ -7,7 +7,7 @@ inherit systemd
 
 DESCRIPTION="Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag"
 HOMEPAGE="https://github.com/kdave/btrfsmaintenance"
-SRC_URI="https://github.com/kdave/btrfsmaintenance/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/kdave/btrfsmaintenance/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

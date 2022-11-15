@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Encrypted YAML backend for hiera"
 HOMEPAGE="https://github.com/TomPoulton/hiera-eyaml"
-SRC_URI="https://github.com/TomPoulton/hiera-eyaml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/TomPoulton/hiera-eyaml/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="3"

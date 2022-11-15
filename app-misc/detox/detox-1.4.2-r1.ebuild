@@ -9,7 +9,7 @@ MY_P="${PN}-${PV/_/-}"
 
 DESCRIPTION="Safely remove spaces and strange characters from filenames"
 HOMEPAGE="http://detox.sourceforge.net/ https://github.com/dharple/detox"
-SRC_URI="https://github.com/dharple/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dharple/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

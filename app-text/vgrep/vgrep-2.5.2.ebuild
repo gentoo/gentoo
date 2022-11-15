@@ -7,7 +7,7 @@ inherit go-module
 
 DESCRIPTION="A pager for grep, git-grep and similar grep implementations"
 HOMEPAGE="https://github.com/vrothberg/vgrep"
-SRC_URI="https://github.com/vrothberg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/vrothberg/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-3+ MIT MIT-with-advertising"
 SLOT="0"

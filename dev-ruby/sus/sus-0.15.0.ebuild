@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A fast and scalable test runner"
 HOMEPAGE="https://github.com/ioquatix/sus"
-SRC_URI="https://github.com/ioquatix/sus/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ioquatix/sus/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

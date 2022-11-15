@@ -7,7 +7,7 @@ inherit flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="A software-based managed Ethernet switch for planet Earth"
 HOMEPAGE="https://www.zerotier.com/"
-SRC_URI="https://github.com/zerotier/ZeroTierOne/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/zerotier/ZeroTierOne/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/ZeroTierOne-${PV}
 
 LICENSE="BSL-1.1"

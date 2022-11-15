@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Beautiful logging for Ruby"
 HOMEPAGE="https://github.com/socketry/console"
-SRC_URI="https://github.com/socketry/console/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/socketry/console/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

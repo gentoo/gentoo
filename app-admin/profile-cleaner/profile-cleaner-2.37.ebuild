@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Vacuum and reindex browser sqlite databases"
 HOMEPAGE="https://github.com/graysky2/profile-cleaner"
-SRC_URI="https://github.com/graysky2/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/graysky2/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

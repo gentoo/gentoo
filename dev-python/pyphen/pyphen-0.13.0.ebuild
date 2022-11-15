@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python module for hyphenation using hunspell dictionaries"
 HOMEPAGE="https://github.com/Kozea/Pyphen"
-SRC_URI="https://github.com/Kozea/Pyphen/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/Kozea/Pyphen/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 S=${WORKDIR}/${P^}
 
 LICENSE="GPL-2+ LGPL-2+ MPL-1.1"

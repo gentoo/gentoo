@@ -14,7 +14,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="ANTLR 4 Runtime"
 HOMEPAGE="https://www.antlr.org/"
-SRC_URI="https://github.com/antlr/antlr4/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/antlr/antlr4/archive/refs/tags/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="4"

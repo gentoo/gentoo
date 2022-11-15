@@ -8,7 +8,7 @@ inherit flag-o-matic toolchain-funcs
 DESCRIPTION="Very high level language"
 HOMEPAGE="http://www.cs.arizona.edu/icon/"
 
-SRC_URI="https://github.com/gtownsend/icon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gtownsend/icon/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain HPND"
 SLOT="0"

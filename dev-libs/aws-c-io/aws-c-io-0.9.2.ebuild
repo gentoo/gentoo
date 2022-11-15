@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="AWS SDK for C module, handles IO and TLS work for application protocols"
 HOMEPAGE="https://github.com/awslabs/aws-c-io"
-SRC_URI="https://github.com/awslabs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/awslabs/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit multibuild cmake
 DESCRIPTION="Excel file(*.xlsx) reader/writer library using Qt"
 
 HOMEPAGE="https://github.com/QtExcel/QXlsx"
-SRC_URI="https://github.com/QtExcel/QXlsx/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/QtExcel/QXlsx/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 # soversion

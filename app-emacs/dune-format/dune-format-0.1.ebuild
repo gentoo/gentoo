@@ -9,7 +9,7 @@ inherit elisp
 
 DESCRIPTION="Reformat OCaml's dune files automatically"
 HOMEPAGE="https://github.com/purcell/emacs-dune-format/"
-SRC_URI="https://github.com/purcell/emacs-${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/purcell/emacs-${PN}/archive/refs/tags/${PV}.tar.gz
 			-> ${P}.tar.gz"
 S="${WORKDIR}"/emacs-${P}
 

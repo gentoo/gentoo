@@ -6,7 +6,7 @@ inherit gnome2-utils meson readme.gentoo-r1 xdg
 
 DESCRIPTION="KDE Connect implementation for Gnome Shell"
 HOMEPAGE="https://github.com/GSConnect/gnome-shell-extension-gsconnect"
-SRC_URI="https://github.com/GSConnect/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/GSConnect/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

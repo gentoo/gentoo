@@ -7,7 +7,7 @@ inherit rebar
 
 DESCRIPTION="JSON NIFs for Erlang"
 HOMEPAGE="https://github.com/davisp/jiffy"
-SRC_URI="https://github.com/davisp/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/davisp/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT BSD"
 SLOT="0"

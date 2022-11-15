@@ -6,7 +6,7 @@ EAPI=7
 DESCRIPTION="Fast Base64 encoding/decoding routines"
 HOMEPAGE="https://github.com/libb64/libb64/"
 SRC_URI="
-	https://github.com/libb64/libb64/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	https://github.com/libb64/libb64/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC-PD"
 # static library, so always rebuild

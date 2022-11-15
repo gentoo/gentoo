@@ -42,7 +42,7 @@ go-module_set_globals
 
 DESCRIPTION="Performs automatic updates of GeoIP2 and GeoIP Legacy binary databases"
 HOMEPAGE="https://github.com/maxmind/geoipupdate"
-SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://${EGO_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 LICENSE="ISC BSD BSD-2 MIT Apache-2.0"

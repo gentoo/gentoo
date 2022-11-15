@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="An Objective Caml/Camllight mode for Emacs"
 HOMEPAGE="http://forge.ocamlcore.org/projects/tuareg/"
-SRC_URI="https://github.com/ocaml/tuareg/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ocaml/tuareg/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ GPL-3+ ISC"
 SLOT="0"

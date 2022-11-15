@@ -9,7 +9,7 @@ inherit autotools linux-info udev
 
 DESCRIPTION="Program for querying and changing monitor settings"
 HOMEPAGE="https://www.ddcutil.com/"
-SRC_URI="https://github.com/rockowitz/ddcutil/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rockowitz/ddcutil/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0/4"
 LICENSE="GPL-2"

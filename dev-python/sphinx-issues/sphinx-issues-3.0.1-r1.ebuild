@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Sphinx extension for linking to your project's issue tracker"
 HOMEPAGE="https://github.com/sloria/sphinx-issues"
-SRC_URI="https://github.com/sloria/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sloria/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

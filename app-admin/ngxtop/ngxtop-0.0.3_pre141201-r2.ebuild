@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="real-time metrics for nginx server (and others)"
 HOMEPAGE="https://github.com/lebinh/ngxtop"
-#SRC_URI="https://github.com/lebinh/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+#SRC_URI="https://github.com/lebinh/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 
 SLOT="0"

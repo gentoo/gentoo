@@ -6,7 +6,7 @@ EAPI=7
 MY_PV="${PV/_p/p}"
 DESCRIPTION="GUI Console for sguil Network Security Monitoring"
 HOMEPAGE="https://github.com/bammv/sguil"
-SRC_URI="https://github.com/bammv/sguil/archive/v${PV}.tar.gz -> ${P/-client}.tar.gz"
+SRC_URI="https://github.com/bammv/sguil/archive/refs/tags/v${PV}.tar.gz -> ${P/-client}.tar.gz"
 
 LICENSE="GPL-3 GPL-2+ QPL-1.0"
 SLOT="0"

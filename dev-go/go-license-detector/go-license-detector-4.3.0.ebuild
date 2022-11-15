@@ -6,7 +6,7 @@ inherit go-module
 
 DESCRIPTION="Scan a source directory and report the license"
 HOMEPAGE="https://github.com/go-enry/go-license-detector"
-SRC_URI="https://github.com/go-enry/go-license-detector/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/go-enry/go-license-detector/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT ISC"

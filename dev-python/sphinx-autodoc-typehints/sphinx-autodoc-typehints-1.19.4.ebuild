@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/sphinx-autodoc-typehints/
 "
 SRC_URI="
-	https://github.com/tox-dev/sphinx-autodoc-typehints/archive/${PV}.tar.gz
+	https://github.com/tox-dev/sphinx-autodoc-typehints/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

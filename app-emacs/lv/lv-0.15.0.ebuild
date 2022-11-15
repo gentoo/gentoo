@@ -9,7 +9,7 @@ IUSE=""
 
 DESCRIPTION="Other echo area"
 HOMEPAGE="https://github.com/abo-abo/hydra"
-SRC_URI="https://github.com/abo-abo/hydra/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/abo-abo/hydra/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"

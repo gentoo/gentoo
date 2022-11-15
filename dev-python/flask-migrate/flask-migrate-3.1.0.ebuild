@@ -11,7 +11,7 @@ MY_P="Flask-Migrate-${PV}"
 DESCRIPTION="SQLAlchemy database migrations for Flask applications using Alembic"
 HOMEPAGE="https://pypi.org/project/Flask-Migrate/"
 SRC_URI="
-	https://github.com/miguelgrinberg/Flask-Migrate/archive/v${PV}.tar.gz
+	https://github.com/miguelgrinberg/Flask-Migrate/archive/refs/tags/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S="${WORKDIR}/${MY_P}"

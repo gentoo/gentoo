@@ -12,7 +12,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A library for working with abstract syntax trees"
 HOMEPAGE="https://github.com/whitequark/ast"
-SRC_URI="https://github.com/whitequark/ast/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/whitequark/ast/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

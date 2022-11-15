@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="USB hub per-port power control"
 HOMEPAGE="https://github.com/mvp/uhubctl"
-SRC_URI="https://github.com/mvp/uhubctl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mvp/uhubctl/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/elementpath/
 "
 SRC_URI="
-	https://github.com/sissaschool/elementpath/archive/v${PV}.tar.gz
+	https://github.com/sissaschool/elementpath/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

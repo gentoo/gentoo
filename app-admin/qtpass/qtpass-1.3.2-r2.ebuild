@@ -7,7 +7,7 @@ inherit desktop qmake-utils virtualx
 
 DESCRIPTION="Multi-platform GUI for pass, the standard unix password manager"
 HOMEPAGE="https://qtpass.org https://github.com/IJHack/qtpass"
-SRC_URI="https://github.com/IJHack/qtpass/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/IJHack/qtpass/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

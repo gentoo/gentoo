@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Memory efficient serialization library"
 HOMEPAGE="https://google.github.io/flatbuffers/"
-SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 # From 1.2.0->2.0.0, incremented SONAME, although the interface didn't actually change.

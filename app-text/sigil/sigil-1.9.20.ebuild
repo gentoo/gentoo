@@ -10,7 +10,7 @@ inherit xdg cmake python-single-r1
 
 DESCRIPTION="Multi-platform WYSIWYG ebook editor for ePub format"
 HOMEPAGE="https://sigil-ebook.com/ https://github.com/Sigil-Ebook/Sigil"
-SRC_URI="https://github.com/Sigil-Ebook/Sigil/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Sigil-Ebook/Sigil/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P^}"
 
 LICENSE="GPL-3+ Apache-2.0"

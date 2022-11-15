@@ -9,7 +9,7 @@ inherit cmake udev xdg-utils
 
 DESCRIPTION="Linux Desktop Application for the Logitech Spotlight device"
 HOMEPAGE="https://github.com/jahnf/Projecteur"
-SRC_URI="https://github.com/jahnf/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jahnf/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"

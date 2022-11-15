@@ -15,7 +15,7 @@ HOMEPAGE="
 	https://pypi.org/project/sentry-sdk/
 "
 SRC_URI="
-	https://github.com/getsentry/sentry-python/archive/${PV}.tar.gz
+	https://github.com/getsentry/sentry-python/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/sentry-python-${PV}"

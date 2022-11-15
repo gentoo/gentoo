@@ -9,7 +9,7 @@ MY_P=${PN}-v.${PV}
 
 DESCRIPTION="HF propagation prediction tool"
 HOMEPAGE="https://www.qsl.net/hz1jw/voacapl/index.html"
-SRC_URI="https://github.com/jawatson/${PN}/archive/v.${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jawatson/${PN}/archive/refs/tags/v.${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="all-rights-reserved"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Delta compression suite for using/generating binary patches"
 HOMEPAGE="https://github.com/zmedico/diffball"
-SRC_URI="https://github.com/zmedico/diffball/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/zmedico/diffball/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/zmedico/diffball/pull/1.patch -> ${P}-bug_543310_stack_buffer_overflows.patch
 	https://github.com/zmedico/diffball/pull/2.patch -> ${P}-bug_708736_cseek_xz_reset_avail_in_out.patch"
 

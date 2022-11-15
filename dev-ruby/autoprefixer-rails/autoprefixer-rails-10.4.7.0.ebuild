@@ -16,7 +16,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Add vendor prefixes to CSS rules using values from the Can I Use website"
 HOMEPAGE="https://github.com/ai/autoprefixer-rails"
-SRC_URI="https://github.com/ai/autoprefixer-rails/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ai/autoprefixer-rails/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
 KEYWORDS="~amd64"

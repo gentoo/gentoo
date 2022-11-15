@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A library for wrapping and filling UTF-8 CJK text"
 HOMEPAGE="https://f.gallai.re/cjkwrap https://gitlab.com/fgallaire/cjkwrap"
-SRC_URI="https://github.com/fgallaire/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/fgallaire/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3+"
 SLOT="0"

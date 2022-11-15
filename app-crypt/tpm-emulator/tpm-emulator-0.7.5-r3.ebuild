@@ -9,7 +9,7 @@ inherit cmake linux-mod udev
 MY_P=${P/-/_}
 DESCRIPTION="Emulator driver for tpm"
 HOMEPAGE="https://github.com/PeterHuewe/tpm-emulator"
-SRC_URI="https://github.com/PeterHuewe/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/PeterHuewe/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

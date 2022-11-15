@@ -13,7 +13,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="RSpec helpers for checking memory allocations"
 HOMEPAGE="https://github.com/socketry/rspec-memory"
-SRC_URI="https://github.com/socketry/rspec-memory/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/socketry/rspec-memory/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"

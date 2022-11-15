@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="A library to manipulate Property List files, also known as plists"
 HOMEPAGE="https://github.com/patsplat/plist"
-SRC_URI="https://github.com/patsplat/plist/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/patsplat/plist/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

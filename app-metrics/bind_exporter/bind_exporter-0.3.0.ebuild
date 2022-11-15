@@ -7,7 +7,7 @@ GIT_COMMIT=c34ff3d6b4817f42e74b2b05b3797cf99683b4a9
 
 DESCRIPTION="Prometheus exporter for BIND"
 HOMEPAGE="https://github.com/digitalocean/bind_exporter"
-SRC_URI="https://github.com/digitalocean/bind_exporter/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/digitalocean/bind_exporter/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD MIT"
 SLOT="0"

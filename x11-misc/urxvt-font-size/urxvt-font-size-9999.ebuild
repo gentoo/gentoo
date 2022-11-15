@@ -8,7 +8,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/majutsushi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/majutsushi/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="Perl extension for rxvt-unicode to change the font size on the fly"

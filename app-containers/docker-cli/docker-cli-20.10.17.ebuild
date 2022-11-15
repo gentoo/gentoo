@@ -9,7 +9,7 @@ inherit bash-completion-r1  golang-vcs-snapshot
 
 DESCRIPTION="the command line binary for docker"
 HOMEPAGE="https://www.docker.com/"
-SRC_URI="https://github.com/docker/cli/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/docker/cli/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

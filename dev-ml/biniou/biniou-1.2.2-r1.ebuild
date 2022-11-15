@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="A binary data serialization format inspired by JSON for OCaml"
 HOMEPAGE="https://github.com/ocaml-community/biniou/"
-SRC_URI="https://github.com/ocaml-community/biniou/archive/${PV}.tar.gz
+SRC_URI="https://github.com/ocaml-community/biniou/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="BSD"

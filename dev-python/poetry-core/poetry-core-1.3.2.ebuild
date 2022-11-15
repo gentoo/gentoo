@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/poetry-core/
 "
 SRC_URI="
-	https://github.com/python-poetry/poetry-core/archive/${PV}.tar.gz
+	https://github.com/python-poetry/poetry-core/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 

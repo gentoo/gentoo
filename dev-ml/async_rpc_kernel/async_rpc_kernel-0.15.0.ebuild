@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Platform-independent core of Async RPC library"
 HOMEPAGE="https://github.com/janestreet/async_rpc_kernel"
-SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/janestreet/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"

@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Limit the number of threads used in native libs that have their own threadpool"
 HOMEPAGE="https://github.com/joblib/threadpoolctl"
-SRC_URI="https://github.com/joblib/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/joblib/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

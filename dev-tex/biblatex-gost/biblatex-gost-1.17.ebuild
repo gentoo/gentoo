@@ -7,7 +7,7 @@ inherit latex-package
 
 DESCRIPTION="Biblatex styles for Russian GOST 7.0.5-2008 bibliography standard"
 HOMEPAGE="https://github.com/odomanov/biblatex-gost"
-SRC_URI="https://github.com/odomanov/${PN}/archive/ver.${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/odomanov/${PN}/archive/refs/tags/ver.${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LPPL-1.3c"
 SLOT="0"

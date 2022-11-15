@@ -14,7 +14,7 @@ inherit ruby-fakegem
 
 DESCRIPTION="Preview mail in the browser instead of sending"
 HOMEPAGE="https://github.com/ryanb/letter_opener"
-SRC_URI="https://github.com/ryanb/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ryanb/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Ren'Py's RPA data file extractor"
 HOMEPAGE="https://github.com/Lattyware/unrpa"
-SRC_URI="https://github.com/Lattyware/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Lattyware/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3"

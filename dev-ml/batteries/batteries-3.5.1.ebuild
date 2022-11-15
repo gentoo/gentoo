@@ -7,7 +7,7 @@ inherit findlib
 
 DESCRIPTION="A community-maintained standard library extension"
 HOMEPAGE="https://github.com/ocaml-batteries-team/batteries-included/"
-SRC_URI="https://github.com/ocaml-batteries-team/batteries-included/archive/v${PV}.tar.gz
+SRC_URI="https://github.com/ocaml-batteries-team/batteries-included/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 S="${WORKDIR}"/batteries-included-${PV}
 

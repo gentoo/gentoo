@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/pymacaroons/
 "
 SRC_URI="
-	https://github.com/ecordell/pymacaroons/archive/v${PV}.tar.gz
+	https://github.com/ecordell/pymacaroons/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 	https://github.com/arkamar/pymacaroons/commit/backport-upstream-pr59.patch
 		-> ${P}-nose-to-pytest.patch
