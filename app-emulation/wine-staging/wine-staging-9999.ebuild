@@ -128,7 +128,6 @@ QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.17-noexecstack.patch
 	"${FILESDIR}"/${PN}-7.20-unwind.patch
-	"${FILESDIR}"/${PN}-7.21-crossflags.patch
 )
 
 pkg_pretend() {
@@ -282,6 +281,8 @@ src_configure() {
 
 			# use *FLAGS for mingw, but strip unsupported
 			: "${CROSSCFLAGS:=$(
+				# >=wine-7.21 configure.ac no longer adds -fno-strict by mistake
+				append-cflags '-fno-strict-aliasing'
 				filter-flags '-fstack-clash-protection' #758914
 				filter-flags '-fstack-protector*' #870136
 				filter-flags '-mfunction-return=thunk*' #878849
