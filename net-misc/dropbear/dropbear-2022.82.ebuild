@@ -3,8 +3,9 @@
 
 EAPI=7
 
+PYTHON_COMPAT=( python3_{8..11} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/dropbear.asc
-inherit savedconfig pam verify-sig
+inherit savedconfig pam python-any-r1 verify-sig
 
 DESCRIPTION="Small SSH 2 client/server designed for small memory environments"
 HOMEPAGE="https://matt.ucc.asn.au/dropbear/dropbear.html"
@@ -18,7 +19,8 @@ SRC_URI+=" verify-sig? (
 LICENSE="MIT GPL-2" # (init script is GPL-2 #426056)
 SLOT="0"
 KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="bsdpty minimal multicall pam +shadow static +syslog zlib"
+IUSE="bsdpty minimal multicall pam +shadow static +syslog test zlib"
+RESTRICT="!test? ( test ) test"
 
 LIB_DEPEND="
 	virtual/libcrypt[static-libs(+)]
@@ -39,13 +41,28 @@ DEPEND="
 	static? ( ${LIB_DEPEND} )
 "
 RDEPEND+=" pam? ( >=sys-auth/pambase-20080219.1 )"
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-dropbear )"
+BDEPEND="
+	test? (
+		$(python_gen_any_dep '
+			dev-python/attrs[${PYTHON_USEDEP}]
+			dev-python/iniconfig[${PYTHON_USEDEP}]
+			dev-python/packaging[${PYTHON_USEDEP}]
+			dev-python/pluggy[${PYTHON_USEDEP}]
+			dev-python/py[${PYTHON_USEDEP}]
+			dev-python/pyparsing[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/psutil[${PYTHON_USEDEP}]
+		')
+	)
+	verify-sig? ( sec-keys/openpgp-keys-dropbear )
+"
 
 REQUIRED_USE="pam? ( !static )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.46-dbscp.patch
 	"${FILESDIR}"/${PN}-2022.82-x11.patch
+	"${FILESDIR}"/${PN}-2022.82-tests.patch
 )
 
 set_options() {
@@ -58,7 +75,20 @@ set_options() {
 	)
 }
 
+python_check_deps() {
+	python_has_version "dev-python/attrs[${PYTHON_USEDEP}]" && \
+		python_has_version "dev-python/iniconfig[${PYTHON_USEDEP}]" && \
+		python_has_version "dev-python/packaging[${PYTHON_USEDEP}]" && \
+		python_has_version "dev-python/pluggy[${PYTHON_USEDEP}]" && \
+		python_has_version "dev-python/py[${PYTHON_USEDEP}]" && \
+		python_has_version "dev-python/pyparsing[${PYTHON_USEDEP}]" && \
+		python_has_version "dev-python/pytest[${PYTHON_USEDEP}]" && \
+		python_has_version "dev-python/psutil[${PYTHON_USEDEP}]"
+}
+
 pkg_setup() {
+	use test && python-any-r1_pkg_setup
+
 	if use static ; then
 		ewarn "Using bundled copies of libtommath and libtomcrypt"
 	fi
