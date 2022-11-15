@@ -32,6 +32,15 @@ RDEPEND="
 
 distutils_enable_tests unittest
 
-PATCHES=(
-	"${FILESDIR}"/${P}-system-venv.patch
-)
+python_test() {
+	local -x PATH=${T}/bin:${PATH}
+
+	mkdir -p "${T}"/bin || die
+	cat > "${T}"/bin/flask <<-EOF || die
+		#!/bin/sh
+		exec ${EPYTHON} -m flask "\${@}"
+	EOF
+	chmod +x "${T}"/bin/flask || die
+
+	eunittest
+}
