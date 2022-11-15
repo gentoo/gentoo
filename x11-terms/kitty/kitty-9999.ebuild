@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-inherit edo optfeature multiprocessing python-single-r1 toolchain-funcs xdg
+inherit edo go-module optfeature multiprocessing python-single-r1 toolchain-funcs xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -65,6 +65,15 @@ BDEPEND="
 	test? ( $(python_gen_cond_dep 'dev-python/pillow[${PYTHON_USEDEP}]') )
 	wayland? ( dev-util/wayland-scanner )"
 [[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
+
+src_unpack() {
+	if [[ ${PV} == 9999 ]]; then
+		git-r3_src_unpack
+		go-module_live_vendor
+	else
+		go-module_src_unpack
+	fi
+}
 
 src_prepare() {
 	default
