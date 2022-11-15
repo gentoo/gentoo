@@ -15,20 +15,23 @@ fi
 
 DESCRIPTION="A small utility for fast and easy GUI building"
 HOMEPAGE="https://github.com/oshazard/gtkdialog"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
+
 RDEPEND="
+	dev-libs/glib
 	x11-libs/gtk+:3
 	x11-libs/vte:2.91=
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-apps/texinfo
 	sys-devel/flex
 	virtual/pkgconfig
 	virtual/yacc
 "
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.8.3-fno-common.patch
 	"${FILESDIR}"/${PN}-0.8.3-do_variables_count_widgets.patch
