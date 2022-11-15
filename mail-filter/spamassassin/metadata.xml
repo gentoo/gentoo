@@ -14,5 +14,8 @@
       Install a cron job to update SpamAssassin's rules daily.
     </flag>
     <flag name="qmail">Build qmail functionality and docs</flag>
+    <flag name="bayes">
+      Enable Bayes learning features; which will require a storage engine: berkdb or an SQL DB
+    </flag>
   </use>
 </pkgmetadata>
