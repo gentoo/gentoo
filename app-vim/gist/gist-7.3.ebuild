@@ -5,12 +5,14 @@ EAPI=6
 
 inherit vim-plugin
 
-MY_PN=gist-vim
+MY_PN=vim-gist
 MY_P=${MY_PN}-${PV}
+
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
 
 DESCRIPTION="vim plugin: interact with gists (gist.github.com)"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=2423 https://github.com/mattn/gist-vim"
-SRC_URI="https://github.com/mattn/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mattn/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 LICENSE="BSD"
 KEYWORDS="amd64 x86 ~x64-macos"
 
