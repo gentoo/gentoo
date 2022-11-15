@@ -131,6 +131,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.2-ncurses-pkgconfig.patch
 	"${FILESDIR}"/${PN}-6.4.0-slibtool.patch
 	"${FILESDIR}"/${PN}-6.4.0-omit-qtchooser-qtver.patch
+	"${FILESDIR}"/${P}-docs-texinfo-7.0.patch
 )
 
 src_prepare() {
