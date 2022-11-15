@@ -13,7 +13,7 @@ SRC_URI="https://github.com/QtExcel/QXlsx/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 # soversion
 SLOT="0/0.${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 IUSE="qt5 qt6"
 REQUIRED_USE="|| ( qt5 qt6 )"
