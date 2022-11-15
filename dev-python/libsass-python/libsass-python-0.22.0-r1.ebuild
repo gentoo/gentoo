@@ -41,6 +41,9 @@ src_prepare() {
 	echo "${PV}" > .libsass-upstream-version || die
 	distutils-r1_src_prepare
 	export SYSTEM_SASS=1
+	# https://bugs.gentoo.org/881339
+	# the package is applying C++ flags to C sources
+	sed -i -e "s:'-std=gnu++0x',::" -e "s:'-lstdc++'::" setup.py || die
 }
 
 python_test() {
