@@ -243,7 +243,7 @@ index 1817071..eb7e14e 100644
  endif()
  
 -find_package( OpenEXR QUIET )
-+PKG_CHECK_MODULES ( OpenEXR REQUIRED OpenEXR )
++PKG_CHECK_MODULES ( OpenEXR QUIET OpenEXR )
  if (OpenEXR_FOUND)
    message( STATUS "Found OpenEXR, version ${OpenEXR_VERSION}" )
  else()
