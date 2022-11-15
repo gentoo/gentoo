@@ -1,0 +1,140 @@
+This patch mitigates function redefines to make the code
+LTO-ready. 
+
+Bug: https://bugs.gentoo.org/861467
+Patch was also sent upstream to be included in the next version:
+https://github.com/ScrollZ/ScrollZ/pull/30
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+
+
+diff --git a/source/edit.c b/source/edit.c
+index f1eedf0..53a15ea 100644
+--- a/source/edit.c
++++ b/source/edit.c
+@@ -324,7 +324,7 @@ extern  void  RemoveNotify _((char *, char *, char *));
+ extern  void  ListNotify _((char *, char *, char *));
+ extern  void  MyQuit _((char *));
+ extern  void  AddNick2List _((char *, int));
+-extern  void  HandleTabNext _((void));
++extern  void  HandleTabNext _((u_int u, char * c));
+ extern  void  AddServer _((char *, char *, char *));
+ extern  void  RemoveServer _((char *, char *, char *));
+ extern  void  ListServers _((char *, char *, char *));
+@@ -3995,7 +3995,7 @@ toggle_insert_mode (u_int key, char *ptr)
+ {
+ /**************************** PATCHED by Flier ******************************/
+ 	/*set_var_value(INSERT_MODE_VAR, "TOGGLE");*/
+-    HandleTabNext();
++    HandleTabNext(0,0);
+ /****************************************************************************/
+ }
+ 
+diff --git a/source/edit4.c b/source/edit4.c
+index 80e352f..763612a 100644
+--- a/source/edit4.c
++++ b/source/edit4.c
+@@ -145,8 +145,8 @@ extern void PrintUsage _((char *));
+ extern void ColorUserHost _((char *, char *, char *, int));
+ extern int  AddLast _((List *, List *));
+ extern NickList *find_in_hash _((ChannelList *, char *));
+-extern void HandleDelayOp _((void));
+-extern void HandleDelayNotify _((void));
++extern void HandleDelayOp _((char *));
++extern void HandleDelayNotify _((char *));
+ extern void BanIt _((char *, char *, char *, int, ChannelList *, int));
+ #ifdef WANTANSI
+ extern void FixColorAnsi _((char *));
+@@ -699,7 +699,7 @@ AddComment (char *buffer, char *comment)
+ 
+ /* Handles my kicks */
+ void 
+-HandleMyKick (char *mynick, char *nick, char *userhost, char *channel, char *comment, int *frkick)
++HandleMyKick (char *mynick, char *nick, char *userhost, char *channel, char *comment)
+ {
+     ChannelList *chan = NULL;
+     char tmpbuf[mybufsize/2];
+@@ -1393,7 +1393,7 @@ void HandleTabNext(u_int key, char *ptr)
+ 
+ /* Handles alt-i (prev nick in nick list) */
+ void 
+-HandleTabPrev (void) {
++HandleTabPrev (u_int u, char* c) {
+     int curserv=from_server;
+     struct nicks *tmpnick;
+ 
+diff --git a/source/edit5.c b/source/edit5.c
+index 0560ed5..130f92d 100644
+--- a/source/edit5.c
++++ b/source/edit5.c
+@@ -2154,7 +2154,7 @@ DoNslookup (char *host)
+ 
+ /* Inserts nickname of the person that triggered auto reply */
+ void 
+-InsertAutoReply (void) {
++InsertAutoReply (u_int u, char* c) {
+     int curserv=from_server;
+     char *tmpstr;
+ 
+@@ -3263,7 +3263,7 @@ List *elmt2;
+ 
+ /* BanKicks the last joined person */
+ void 
+-LastJoinerKick (void) {
++LastJoinerKick (u_int u, char* c) {
+     char *channel;
+     char *lastjoin;
+     char tmpbuf[mybufsize/4+1];
+@@ -3288,7 +3288,7 @@ LastJoinerKick (void) {
+ 
+ /* Accepts chat from last user that has requested it */
+ void 
+-AcceptLastChat (void) {
++AcceptLastChat (u_int one, char* c) {
+     if (LastChat) dcc_chat(LastChat);
+     else say("No chat request so far");
+ }
+diff --git a/source/screen.c b/source/screen.c
+index ee6cee7..adbbfb9 100644
+--- a/source/screen.c
++++ b/source/screen.c
+@@ -70,7 +70,7 @@
+ 
+ #ifdef WANTANSI
+ extern  int  CountAnsi _((char *, int));
+-extern  int  vt100Decode _((char));
++extern  int  vt100Decode _((int));
+ extern  void FixColorAnsi _((char *));
+ extern  void ConvertmIRC _((char *, char *));
+ #endif
+diff --git a/source/trace.c b/source/trace.c
+index a8ff481..ffacd15 100644
+--- a/source/trace.c
++++ b/source/trace.c
+@@ -137,11 +137,7 @@ FindArea (long area)
+ }
+ #endif
+ 
+-#ifdef HAVE_STDARG_H
+-void Trace(long area, char *format, ...)
+-#else
+ void Trace(long area, char *format, char *arg1, char *arg2, char *arg3, char *arg4, char *arg5, char *arg6, char *arg7, char *arg8, char *arg9, char *arg10)
+-#endif
+ {
+ #ifdef SZTRACE
+ #ifdef HAVE_STDARG_H
+diff --git a/source/vars.c b/source/vars.c
+index 2ee0a27..4b1f239 100644
+--- a/source/vars.c
++++ b/source/vars.c
+@@ -112,8 +112,7 @@ static  void    SetURLBufferSize _((int));
+ extern  void    RedrawAll _((void));
+ extern  void    UpdateFloodUsers _((void));
+ extern  void    SetTrace _((char *));
+-extern  void    SetNotificationLevel _((char *));
+-
++extern  void    SetNotificationLevel (char *command, char *args, char *subargs);
+ extern  int     DCCLowPort;
+ extern  int     DCCHighPort;
+ extern	char	*CelerityNtfy;
