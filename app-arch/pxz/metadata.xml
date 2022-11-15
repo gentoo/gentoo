@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>chutzpah@gentoo.org</email>
-<name>Patrick McLean</name>
-</maintainer>
-<longdescription lang="en">
-Parallel XZ is a compression utility that takes advantage of running LZMA
-compression of different parts of an input file on multiple cores and
-processors simultaneously. Its primary goal is to utilize all resources
-to speed up compression time with minimal possible influence on compression
-ratio.
-</longdescription>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<longdescription lang="en">
+	Parallel XZ is a compression utility that takes advantage of running LZMA
+	compression of different parts of an input file on multiple cores and
+	processors simultaneously. Its primary goal is to utilize all resources
+	to speed up compression time with minimal possible influence on compression
+	ratio.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jnovy/pxz</remote-id>
+	</upstream>
 </pkgmetadata>
