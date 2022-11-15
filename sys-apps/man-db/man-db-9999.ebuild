@@ -6,10 +6,10 @@ EAPI=8
 inherit systemd prefix tmpfiles
 
 DESCRIPTION="A man replacement that utilizes dbm instead of flat files"
-HOMEPAGE="https://gitlab.com/cjwatson/man-db https://www.nongnu.org/man-db/"
+HOMEPAGE="https://gitlab.com/man-db/man-db https://www.nongnu.org/man-db/"
 if [[ ${PV} == *9999 ]] ; then
 	inherit autotools git-r3
-	EGIT_REPO_URI="https://gitlab.com/cjwatson/man-db.git"
+	EGIT_REPO_URI="https://gitlab.com/man-db/man-db"
 else
 	# TODO: Change tarballs to gitlab too...?
 	SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
