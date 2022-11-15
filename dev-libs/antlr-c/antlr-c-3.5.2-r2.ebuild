@@ -6,9 +6,11 @@ EAPI=8
 inherit autotools
 
 MY_PN="${PN%-c}"
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="The ANTLR3 C Runtime"
 HOMEPAGE="https://www.antlr3.org/"
-SRC_URI="https://github.com/${MY_PN}/${MY_PN}3/archive/${PV}.tar.gz -> ${MY_PN}-${PV}.tar.gz"
+SRC_URI="https://github.com/${MY_PN}/${MY_PN}3/archive/refs/tags/${PV}.tar.gz -> ${MY_PN}-${PV}.gh@${GH_TS}.tar.gz"
 S="${WORKDIR}/${MY_PN}3-${PV}/runtime/C"
 
 LICENSE="BSD"
