@@ -15,9 +15,9 @@ IUSE="sasl xinetd"
 RDEPEND="
 	acct-group/ziproxy
 	acct-user/ziproxy
-	media-libs/giflib:0=
-	media-libs/libpng:0=
-	virtual/jpeg:0
+	media-libs/giflib:=
+	media-libs/libpng:=
+	media-libs/libjpeg-turbo:=
 	sys-libs/zlib
 	sasl? ( dev-libs/cyrus-sasl )
 	xinetd? ( virtual/inetd )
