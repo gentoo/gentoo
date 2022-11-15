@@ -9,6 +9,6 @@
 		<flag name="manpager">Enable manpager wrapper for colorizing output</flag>
 	</use>
 	<upstream>
-		<remote-id type="gitlab">cjwatson/man-db</remote-id>
+		<remote-id type="gitlab">man-db/man-db</remote-id>
 	</upstream>
 </pkgmetadata>
