@@ -3,9 +3,11 @@
 
 EAPI=8
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Easy to use GUI & CLI alternative for etc-update"
 HOMEPAGE="https://github.com/rich0/cfg-update"
-SRC_URI="https://github.com/rich0/cfg-update/archive/${PV}.tar.gz -> ${P}.tgz"
+SRC_URI="https://github.com/rich0/cfg-update/archive/refs/tags/${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,8 +20,6 @@ RDEPEND="
 		>=x11-misc/sux-1.0
 		x11-apps/xhost
 		)"
-
-S="${WORKDIR}/rich0-cfg-update-2f10786"
 
 pkg_prerm() {
 	if [[ -z ${ROOT} ]]
