@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-11-15)
+# Test-restricted since its introduction in 2016.  Not receiving package
+# maintainer's attention.  No revdeps left.
+# Removal on 2022-12-15.  Bug #759931.
+dev-python/pytest-html
+
 # Matt Turner <mattst88@gentoo.org> (2022-11-14)
 # Unmaintained in Gentoo since at least the transition to git. Last release in
 # 2014. Depends on x11-libs/gtk+:2 and gnome-base/gconf. Fails to build with
