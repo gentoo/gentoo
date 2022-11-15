@@ -6,7 +6,6 @@
 
 EAPI=7
 
-QA_PKGCONFIG_VERSION=${PV/_/}
 inherit libtool multilib multilib-minimal preserve-libs usr-ldscript
 
 if [[ ${PV} == 9999 ]] ; then
@@ -41,9 +40,6 @@ IUSE="+extra-filters nls static-libs"
 if [[ ${PV} != 9999 ]] ; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-lassecollin )"
 fi
-
-# Tests currently do not account for smaller feature set
-RESTRICT="!extra-filters? ( test )"
 
 src_prepare() {
 	default
