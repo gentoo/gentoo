@@ -58,6 +58,11 @@ RDEPEND="${COMMON_DEPEND}
 	kde-apps/kio-extras:5
 "
 
+src_prepare() {
+	ecm_src_prepare
+	use handbook || cmake_comment_add_subdirectory doc/handbook
+}
+
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		optfeature "Markdown text previews" "kde-misc/markdownpart:${SLOT}"
