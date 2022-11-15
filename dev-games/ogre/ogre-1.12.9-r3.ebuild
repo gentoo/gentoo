@@ -20,7 +20,7 @@ SLOT="0/1.12"
 KEYWORDS="~amd64 ~arm ~x86"
 
 IUSE="assimp +cache cg debug deprecated doc double-precision egl examples +freeimage
-	json openexr +opengl pch profile resman-pedantic tools"
+	json +opengl pch profile resman-pedantic tools"
 
 # Note: gles2 USE flag taken out for now. It seems like the Ogre Devs now rely
 #       on HLSL2GLSL (https://github.com/aras-p/hlsl2glslfork) unconditionally
@@ -55,7 +55,6 @@ RDEPEND="
 	egl? ( media-libs/mesa[egl(+)] )
 	freeimage? ( media-libs/freeimage )
 	json? ( dev-libs/rapidjson )
-	openexr? ( media-libs/openexr:= )
 	opengl? (
 		virtual/glu
 		virtual/opengl
@@ -143,7 +142,7 @@ src_configure() {
 		-DOGRE_BUILD_DEPENDENCIES=no
 		-DOGRE_BUILD_PLUGIN_CG=$(usex cg)
 		-DOGRE_BUILD_PLUGIN_FREEIMAGE=$(usex freeimage)
-		-DOGRE_BUILD_PLUGIN_EXRCODEC=$(usex openexr)
+		-DOGRE_BUILD_PLUGIN_EXRCODEC=no
 		-DOGRE_BUILD_RENDERSYSTEM_GL=$(usex opengl)
 		-DOGRE_BUILD_RENDERSYSTEM_GL3PLUS=$(usex opengl)
 		-DOGRE_BUILD_RENDERSYSTEM_GLES2=no
