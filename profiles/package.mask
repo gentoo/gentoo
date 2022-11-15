@@ -346,12 +346,6 @@ virtual/httpd-php:8.2
 # Unfixed root privilege escalation, bug #631552
 sys-cluster/slurm
 
-# Mike Gilbert <floppym@gentoo.org> (2022-09-12)
-# repoman is no longer maintained and has been removed from the portage
-# git repository. Please use dev-util/pkgcheck and dev-util/pkgdev instead.
-# Removal on 2022-11-11. Bug #835013.
-app-portage/repoman
-
 # Matthias Schwarzott <zzam@gentoo.org> (2022-09-08)
 # Breaks kernel builds with BTF enabled.
 # Bug #868762.
