@@ -11,5 +11,5 @@
 	<upstream>
 		<bugs-to>https://github.com/intel/media-driver/issues</bugs-to>
 		<remote-id type="github">intel/media-driver</remote-id>
-	<upstream>
+	</upstream>
 </pkgmetadata>
