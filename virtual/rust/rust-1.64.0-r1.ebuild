@@ -12,7 +12,7 @@ LICENSE=""
 # we do not allow multiple llvm versions in dev-lang/rust for
 # neither system nor bundled, so we just hardcode it here.
 SLOT="0/llvm-14"
-#KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="rustfmt"
 
 BDEPEND=""
