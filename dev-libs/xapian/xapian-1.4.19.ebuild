@@ -8,7 +8,7 @@ inherit multilib-minimal
 MY_P="${PN}-core-${PV}"
 
 DESCRIPTION="Xapian Probabilistic Information Retrieval library"
-HOMEPAGE="https://www.xapian.org/"
+HOMEPAGE="https://xapian.org/"
 SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
