@@ -184,13 +184,6 @@ dev-libs/cloog
 # Removal in 30 days
 dev-python/pweave
 
-# Michał Górny <mgorny@gentoo.org> (2022-10-28)
-# Originally last rited in Aug 2020 due to lack of Python 3 support.
-# The last rites were undone, however this package never got fixed.
-# Instead, it has been covered by incorrect "downgrade" mask since then.
-# Removal on 2022-11-11.  Bug #695010.
-app-i18n/scim-sunpinyin
-
 # Jonas Stein <jstein@gentoo.org> (2022-10-26)
 # Dead upstream, open bugs.
 # Removal after 2022-12-24.  Bug #878337.
