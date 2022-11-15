@@ -172,8 +172,6 @@ RDEPEND="
 		dev-python/six[${PYTHON_USEDEP}]
 	)
 "
-# diskprediction needs older scipy not compatible with py38
-# bug #724438
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	${LUA_REQUIRED_USE}
