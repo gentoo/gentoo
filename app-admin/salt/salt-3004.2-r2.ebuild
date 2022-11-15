@@ -65,10 +65,10 @@ RDEPEND="
 	redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )
 	selinux? ( sec-policy/selinux-salt )
 	nova? (
-		$(python_gen_cond_dep '>=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}]' python3_8)
+		>=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}]
 	)
 	neutron? (
-		$(python_gen_cond_dep '>=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}]' python3_8)
+		>=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}]
 	)
 	gnupg? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
 	profile? ( dev-python/yappi[${PYTHON_USEDEP}] )
