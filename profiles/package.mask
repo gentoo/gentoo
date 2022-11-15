@@ -351,11 +351,6 @@ sys-cluster/slurm
 # Bug #868762.
 =dev-util/pahole-1.24
 
-# Mike Gilbert <floppym@gentoo.org> (2022-09-05)
-# Crash due to double-free.
-# https://bugs.gentoo.org/868567
-=sys-apps/gawk-5.2.0
-
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
 # haskell-cabal.eclass)
