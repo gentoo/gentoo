@@ -1,0 +1,42 @@
+From b997a5283812e67992aa7e1577c7482ce5b1ce24 Mon Sep 17 00:00:00 2001
+From: Oskari Pirhonen <xxc3ncoredxx@gmail.com>
+Date: Mon, 14 Nov 2022 19:36:05 -0600
+Subject: [PATCH] Fix clang build errors
+
+-Werror,-Wdeprecated-non-prototype
+-Werror,-Wimplicit-function-declaration
+
+Signed-off-by: Oskari Pirhonen <xxc3ncoredxx@gmail.com>
+---
+ src/image.c | 1 +
+ src/netd.c  | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/image.c b/src/image.c
+index e7a8d8c..821f892 100644
+--- a/src/image.c
++++ b/src/image.c
+@@ -56,6 +56,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <assert.h>
+ 
+ #include <gif_lib.h>
+diff --git a/src/netd.c b/src/netd.c
+index 937a52e..4d4a936 100644
+--- a/src/netd.c
++++ b/src/netd.c
+@@ -84,7 +84,7 @@
+ #include "txtfiletools.h"
+ #include "session.h"
+ 
+-int	proxy_server ();
++int	proxy_server(struct in_addr *addr_low, struct in_addr *addr_high);
+ int	proxy_handlereq (SOCKET sock_client, const char *client_addr, struct sockaddr_in *socket_host);
+ void	process_request (const char *client_addr, struct sockaddr_in *socket_host, SOCKET sock_child_out);
+ void 	daemon_sigcatch (int);
+-- 
+2.37.4
+
