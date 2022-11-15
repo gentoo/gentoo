@@ -14,7 +14,7 @@ SRC_URI="
 LICENSE="GPL-3"
 # subslot is soversion
 SLOT="0/14"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 IUSE="qt5 qt6"
 REQUIRED_USE="|| ( qt5 qt6 )"
