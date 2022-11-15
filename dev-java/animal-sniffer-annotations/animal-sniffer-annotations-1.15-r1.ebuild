@@ -9,9 +9,11 @@ MAVEN_ID="org.codehaus.mojo:animal-sniffer-annotations:1.15"
 
 inherit java-pkg-2 java-pkg-simple
 
+GH_TS="1668377184" # https://bugs.gentoo.org/881037 - bump this UNIX timestamp if the downloaded file changes checksum
+
 DESCRIPTION="Java annotations for marking methods that Animal Sniffer should ignore"
 HOMEPAGE="http://www.mojohaus.org/animal-sniffer/animal-sniffer-annotations/"
-SRC_URI="https://github.com/mojohaus/${MY_PN}/archive/${MY_PN}-parent-${PV}.tar.gz"
+SRC_URI="https://github.com/mojohaus/${MY_PN}/archive/${MY_PN}-parent-${PV}.tar.gz -> ${P}.gh@${GH_TS}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
