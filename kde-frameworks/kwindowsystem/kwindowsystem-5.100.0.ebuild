@@ -8,9 +8,10 @@ VIRTUALX_REQUIRED="test"
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework providing access to properties and features of the window manager"
+
 LICENSE="|| ( LGPL-2.1 LGPL-3 ) MIT"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="nls X"
+IUSE="X"
 
 RESTRICT="test"
 
@@ -28,9 +29,7 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 	test? ( >=dev-qt/qtwidgets-${QTMIN}:5 )
 "
-BDEPEND="
-	nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )
-"
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
 
 DOCS=( docs/README.kstartupinfo )
 
