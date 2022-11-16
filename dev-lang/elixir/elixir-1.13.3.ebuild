@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.1-disable-network-tests.patch
 	"${FILESDIR}"/${PN}-1.10.3-no-Q.patch
 	"${FILESDIR}"/${PN}-1.10.3-epmd-daemon.patch
+	"${FILESDIR}"/${PN}-1.14.1-make44-parallel-build.patch
 )
 
 src_install() {
