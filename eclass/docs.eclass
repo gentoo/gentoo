@@ -143,6 +143,15 @@ esac
 #
 # Defaults to Doxyfile for doxygen
 
+# @ECLASS_VARIABLE: DOCS_INITIALIZE_GIT
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Sometimes building the documentation will fail if this is not done
+# inside a git repository. If this variable is set the compile functions
+# will initialize a dummy git repository before compiling. A dependency
+# on dev-vcs/git is automatically added.
+
 if [[ ! ${_DOCS} ]]; then
 
 # For the python based DOCS_BUILDERS we need to inherit any python eclass
@@ -163,6 +172,24 @@ case ${DOCS_BUILDER} in
 		die "Unsupported DOCS_BUILDER=${DOCS_BUILDER} (unknown) for ${ECLASS}"
 		;;
 esac
+
+# @FUNCTION: initialize_git_repo
+# @DESCRIPTION:
+# Initializes a dummy git repository. This function is called by the
+# documentation compile functions if DOCS_INITIALIZE_GIT is set. It can
+# also be called manually.
+initialize_git_repo() {
+	# Only initialize if we are not already in a git repository
+	local git_is_initialized="$(git rev-parse --is-inside-work-tree 2> /dev/null)"
+	if [[ ! "${git_is_initialized}" ]]; then
+		git init -q || die
+		git config --global user.email "larry@gentoo.org" || die
+		git config --global user.name "Larry the Cow" || die
+		git add . || die
+		git commit -qm "init" || die
+		git tag -a "${PV}" -m "${PN} version ${PV}" || die
+	fi
+}
 
 # @FUNCTION: python_append_deps
 # @INTERNAL
@@ -215,6 +242,8 @@ sphinx_compile() {
 
 	: ${DOCS_DIR:="${S}"}
 	: ${DOCS_OUTDIR:="${S}/_build/html/sphinx"}
+
+	[[ ${DOCS_INITIALIZE_GIT} ]] && initialize_git_repo
 
 	local confpy=${DOCS_DIR}/conf.py
 	[[ -f ${confpy} ]] ||
@@ -277,6 +306,8 @@ mkdocs_compile() {
 	: ${DOCS_DIR:="${S}"}
 	: ${DOCS_OUTDIR:="${S}/_build/html/mkdocs"}
 
+	[[ ${DOCS_INITIALIZE_GIT} ]] && initialize_git_repo
+
 	local mkdocsyml=${DOCS_DIR}/mkdocs.yml
 	[[ -f ${mkdocsyml} ]] ||
 		die "${FUNCNAME}: ${mkdocsyml} not found, DOCS_DIR=${DOCS_DIR} wrong"
@@ -319,6 +350,8 @@ doxygen_compile() {
 	: ${DOCS_CONFIG_NAME:="Doxyfile"}
 	: ${DOCS_DIR:="${S}"}
 	: ${DOCS_OUTDIR:="${S}/_build/html/doxygen"}
+
+	[[ ${DOCS_INITIALIZE_GIT} ]] && initialize_git_repo
 
 	local doxyfile=${DOCS_DIR}/${DOCS_CONFIG_NAME}
 	[[ -f ${doxyfile} ]] ||
@@ -387,6 +420,8 @@ case ${DOCS_BUILDER} in
 		doxygen_deps
 		;;
 esac
+
+[[ ${DOCS_INITIALIZE_GIT} ]] && DOCS_DEPEND+=" dev-vcs/git "
 
 if [[ ${EAPI} != 6 ]]; then
 	BDEPEND+=" doc? ( ${DOCS_DEPEND} )"
