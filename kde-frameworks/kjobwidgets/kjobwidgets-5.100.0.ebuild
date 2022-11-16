@@ -8,13 +8,11 @@ QTMIN=5.15.5
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework providing assorted widgets for showing the progress of jobs"
+
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="nls X"
+IUSE="X"
 
-BDEPEND="
-	nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )
-"
 RDEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -29,6 +27,7 @@ DEPEND="${RDEPEND}
 		x11-libs/libX11
 	)
 "
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
 
 src_configure() {
 	local mycmakeargs=(
