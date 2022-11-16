@@ -1,6 +1,6 @@
 https://github.com/jbeverly/pam_ssh_agent_auth/pull/41
 
-From ad2cc74dce3a6eaff0df193a2ae3db177e0d594f Mon Sep 17 00:00:00 2001
+From 023579b11aa2eecfaa203dca40b2a38d69fea0f2 Mon Sep 17 00:00:00 2001
 From: Sam James <sam@gentoo.org>
 Date: Fri, 30 Sep 2022 20:51:17 +0100
 Subject: [PATCH 1/2] Fix function prototypes in configure
@@ -34,7 +34,7 @@ Signed-off-by: Sam James <sam@gentoo.org>
  #include <string.h>
  #ifdef HAVE_SNPRINTF
 -main()
-+int main()
++int main(void)
  {
  	char buf[50];
  	char expected_out[50];
@@ -43,7 +43,7 @@ Signed-off-by: Sam James <sam@gentoo.org>
  }
  #else
 -main() { exit(0); }
-+int main() { exit(0); }
++int main(void) { exit(0); }
  #endif
  		]])], [ true ], [ AC_DEFINE(BROKEN_SNPRINTF) ],
  		AC_MSG_WARN([cross compiling: Assuming working snprintf()])
