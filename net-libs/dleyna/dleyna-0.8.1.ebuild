@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.gnome.org/World/dLeyna/-/archive/v${PV}/dLeyna-v${PV}.ta
 
 LICENSE="LGPL-2.1"
 SLOT="1.0/6" # soname of libdleyna-core-1.0.so
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="
 	>=dev-libs/glib-2.28:2
