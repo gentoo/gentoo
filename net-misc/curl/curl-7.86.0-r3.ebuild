@@ -97,6 +97,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-respect-cflags-3.patch
 	"${FILESDIR}"/${P}-proxy-noproxy-tailmatching.patch
 	"${FILESDIR}"/${P}-proxy-noproxy-match-comma.patch
+	"${FILESDIR}"/${P}-noproxy-tailmatch-like-in-7.85.0-and-earlier.patch
 )
 
 src_prepare() {
