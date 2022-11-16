@@ -135,6 +135,8 @@ DEPEND="${COMMON_DEPEND}
 # tests hang, last checked for 4.2.96
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}/${P}-fix-kf-5.100-version-check.patch" )
+
 src_configure() {
 	local x x2
 	# Handle common stuff
