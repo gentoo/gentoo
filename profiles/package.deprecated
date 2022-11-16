@@ -45,6 +45,8 @@ virtual/imap-c-client
 
 # Matt Turner <mattst88@gentoo.org> (2022-10-02)
 # Dummy packages, now merged into app-accessibility/at-spi2-core.
+# When possible, replace dependencies on these packages with a dependency on
+# 	>=app-accessibility/at-spi2-core-2.46.0
 app-accessibility/at-spi2-atk
 dev-libs/atk
 
