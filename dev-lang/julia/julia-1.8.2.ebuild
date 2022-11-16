@@ -162,12 +162,12 @@ src_compile() {
 	# Julia accesses /proc/self/mem on Linux
 	addpredict /proc/self/mem
 
-	default
+	emake -j1
 	pax-mark m "$(file usr/bin/julia-* | awk -F : '/ELF/ {print $1}')"
 }
 
 src_install() {
-	emake install DESTDIR="${D}"
+	emake -j1 install DESTDIR="${D}"
 	dodoc README.md
 
 	if ! use system-llvm ; then
