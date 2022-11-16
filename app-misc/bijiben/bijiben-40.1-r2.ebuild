@@ -38,6 +38,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-40.1-meson-0.61.patch
+	"${FILESDIR}"/${PN}-40.1-webkit-gtk-libsoup.patch
 )
 
 src_configure() {
