@@ -8,7 +8,7 @@ inherit xorg-3
 
 DESCRIPTION="list fonts served by X font server"
 
-KEYWORDS="~amd64 arm ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 arm ~mips ~ppc ~ppc64 ~s390 sparc ~x86"
 
 RDEPEND="x11-libs/libFS"
 DEPEND="${RDEPEND}
