@@ -36,7 +36,7 @@ COMMON_DEPEND="
 		net-libs/libtirpc:=
 	)
 	tools? (
-		|| ( >=app-accessibility/at-spi2-core-2.46:2 dev-libs/atk )
+		>=app-accessibility/at-spi2-core-2.46:2
 		dev-libs/glib:2
 		dev-libs/jansson:=
 		media-libs/harfbuzz:=
