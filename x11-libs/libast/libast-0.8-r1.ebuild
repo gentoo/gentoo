@@ -16,15 +16,20 @@ IUSE="imlib cpu_flags_x86_mmx pcre"
 
 RDEPEND="
 	!sci-astronomy/ast
+	media-libs/freetype
 	x11-base/xorg-proto
 	x11-libs/libXt
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
-	media-libs/freetype
 	imlib? ( media-libs/imlib2 )
-	pcre? ( dev-libs/libpcre )"
+	pcre? ( dev-libs/libpcre )
+"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8-configure-clang16.patch
+)
 
 src_prepare() {
 	default
