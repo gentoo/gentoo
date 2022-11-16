@@ -12,7 +12,7 @@ DESCRIPTION="Framework for managing bookmarks stored in XBEL format"
 
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="nls"
+IUSE=""
 
 RDEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -29,4 +29,4 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=kde-frameworks/kconfigwidgets-${PVCUT}:5
 "
-BDEPEND="nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )"
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
