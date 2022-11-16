@@ -12,7 +12,7 @@ DESCRIPTION="Framework to let applications perform actions as a privileged user"
 
 LICENSE="LGPL-2.1+"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="nls +policykit"
+IUSE="+policykit"
 
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -22,7 +22,7 @@ DEPEND="
 	policykit? ( >=sys-auth/polkit-qt-0.113.0[qt5(+)] )
 "
 RDEPEND="${DEPEND}"
-BDEPEND="nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )"
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
 PDEPEND="policykit? ( kde-plasma/polkit-kde-agent )"
 
 src_configure() {
