@@ -31,6 +31,11 @@ www-servers/uwsgi python-gevent
 net-misc/remmina x2go
 
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
+# gnome-music and gnome-photos have not been ported to libsoup:3.0, while
+# other non-slotted dependencies have been.
+gnome-base/gnome-extra-apps tracker
+
+# Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # tracker-miners depends on libsoup:3.0 but USE=rss depends on net-libs/libgrss
 # which has not been ported to libsoup:3.0.
 >=app-misc/tracker-miners-3.4.0-r1 rss
