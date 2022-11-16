@@ -3,9 +3,11 @@
 
 EAPI=8
 
+QTMIN=5.15.5
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework for reading, creation, and manipulation of various archive formats"
+
 LICENSE="GPL-2 LGPL-2.1"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+zstd"
@@ -17,7 +19,10 @@ DEPEND="
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="${DEPEND}"
-BDEPEND="zstd? ( virtual/pkgconfig )"
+BDEPEND="
+	>=dev-qt/linguist-tools-${QTMIN}:5
+	zstd? ( virtual/pkgconfig )
+"
 
 src_prepare() {
 	ecm_src_prepare
