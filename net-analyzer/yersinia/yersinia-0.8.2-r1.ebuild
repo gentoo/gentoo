@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit autotools flag-o-matic
 
 DESCRIPTION="A framework for layer 2 attacks"
@@ -14,30 +15,31 @@ KEYWORDS="amd64 x86"
 IUSE="gtk ncurses"
 
 RDEPEND="
+	>=net-libs/libnet-1.1.2
+	>=net-libs/libpcap-0.9.4
 	ncurses? ( >=sys-libs/ncurses-5.5:= )
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf
 		=x11-libs/gtk+-2*
 	)
-	>=net-libs/libnet-1.1.2
-	>=net-libs/libpcap-0.9.4
 "
-DEPEND="
-	virtual/pkgconfig
-	${RDEPEND}
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
 DOCS=( AUTHORS ChangeLog FAQ README THANKS TODO )
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.1-no-ncurses.patch
 	"${FILESDIR}"/${PN}-0.7.3-tinfo.patch
+	"${FILESDIR}"/${PN}-0.8.2-configure-clang16.patch
 )
 
 src_prepare() {
 	default
 
 	if ! use gtk; then
-		#bug #514802
+		# bug #514802
 		sed -i -e '/AM_GLIB_GNU_GETTEXT/d' configure.in || die
 	fi
 
