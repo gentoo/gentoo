@@ -12,7 +12,7 @@ DESCRIPTION="Framework for providing spell-checking through abstraction of popul
 
 LICENSE="LGPL-2+ LGPL-2.1+"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
-IUSE="aspell +hunspell nls qml"
+IUSE="aspell +hunspell qml"
 
 DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -22,9 +22,7 @@ DEPEND="
 	qml? ( >=dev-qt/qtdeclarative-${QTMIN}:5 )
 "
 RDEPEND="${DEPEND}"
-BDEPEND="
-	nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )
-"
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
 
 src_configure() {
 	local mycmakeargs=(
