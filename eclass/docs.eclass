@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: docs.eclass
@@ -207,15 +207,14 @@ sphinx_deps() {
 }
 
 # @FUNCTION: sphinx_compile
-# @INTERNAL
 # @DESCRIPTION:
 # Calls sphinx to build docs.
-#
-# If you overwrite python_compile_all do not call
-# this function, call docs_compile instead
 sphinx_compile() {
 	debug-print-function ${FUNCNAME}
 	use doc || return
+
+	: ${DOCS_DIR:="${S}"}
+	: ${DOCS_OUTDIR:="${S}/_build/html/sphinx"}
 
 	local confpy=${DOCS_DIR}/conf.py
 	[[ -f ${confpy} ]] ||
@@ -236,6 +235,12 @@ sphinx_compile() {
 	# not all packages include the Makefile in pypi tarball
 	sphinx-build -b html -d "${DOCS_OUTDIR}"/_build/doctrees "${DOCS_DIR}" \
 	"${DOCS_OUTDIR}" || die "${FUNCNAME}: sphinx-build failed"
+
+	HTML_DOCS+=( "${DOCS_OUTDIR}" )
+
+	# We don't need these any more, unset them in case we want to call a
+	# second documentation builder.
+	unset DOCS_DIR DOCS_OUTDIR
 }
 
 # @FUNCTION: mkdocs_deps
@@ -263,15 +268,14 @@ mkdocs_deps() {
 }
 
 # @FUNCTION: mkdocs_compile
-# @INTERNAL
 # @DESCRIPTION:
 # Calls mkdocs to build docs.
-#
-# If you overwrite python_compile_all do not call
-# this function, call docs_compile instead
 mkdocs_compile() {
 	debug-print-function ${FUNCNAME}
 	use doc || return
+
+	: ${DOCS_DIR:="${S}"}
+	: ${DOCS_OUTDIR:="${S}/_build/html/mkdocs"}
 
 	local mkdocsyml=${DOCS_DIR}/mkdocs.yml
 	[[ -f ${mkdocsyml} ]] ||
@@ -285,6 +289,12 @@ mkdocs_compile() {
 	# mkdocs currently has no option to disable this
 	# and portage complains: "Colliding files found by ecompress"
 	rm "${DOCS_OUTDIR}"/*.gz || die
+
+	HTML_DOCS+=( "${DOCS_OUTDIR}" )
+
+	# We don't need these any more, unset them in case we want to call a
+	# second documentation builder.
+	unset DOCS_DIR DOCS_OUTDIR
 }
 
 # @FUNCTION: doxygen_deps
@@ -299,14 +309,16 @@ doxygen_deps() {
 }
 
 # @FUNCTION: doxygen_compile
-# @INTERNAL
 # @DESCRIPTION:
 # Calls doxygen to build docs.
 doxygen_compile() {
 	debug-print-function ${FUNCNAME}
 	use doc || return
 
+	# This is the default name of the config file, upstream can change it.
 	: ${DOCS_CONFIG_NAME:="Doxyfile"}
+	: ${DOCS_DIR:="${S}"}
+	: ${DOCS_OUTDIR:="${S}/_build/html/doxygen"}
 
 	local doxyfile=${DOCS_DIR}/${DOCS_CONFIG_NAME}
 	[[ -f ${doxyfile} ]] ||
@@ -318,6 +330,12 @@ doxygen_compile() {
 	pushd "${DOCS_DIR}" || die
 	(cat "${DOCS_CONFIG_NAME}" ; echo "HTML_OUTPUT=${DOCS_OUTDIR}") | doxygen - || die "${FUNCNAME}: doxygen failed"
 	popd || die
+
+	HTML_DOCS+=( "${DOCS_OUTDIR}" )
+
+	# We don't need these any more, unset them in case we want to call a
+	# second documentation builder.
+	unset DOCS_DIR DOCS_OUTDIR DOCS_CONFIG_NAME
 }
 
 # @FUNCTION: docs_compile
@@ -343,15 +361,7 @@ docs_compile() {
 	debug-print-function ${FUNCNAME}
 	use doc || return
 
-	# Set a sensible default as DOCS_DIR
-	: ${DOCS_DIR:="${S}"}
-
-	# Where to put the compiled files?
-	: ${DOCS_OUTDIR:="${S}/_build/html"}
-
 	${DOCS_BUILDER}_compile
-
-	HTML_DOCS+=( "${DOCS_OUTDIR}/." )
 
 	# we need to ensure successful return in case we're called last,
 	# otherwise Portage may wrongly assume sourcing failed
