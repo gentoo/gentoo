@@ -19,7 +19,7 @@ RDEPEND="
 	>=net-libs/libsoup-3.0.8:3.0[introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 
-	!<sci-geosciences/geocode-glib-3.26.4:0
+	!<=sci-geosciences/geocode-glib-3.26.4:0
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
