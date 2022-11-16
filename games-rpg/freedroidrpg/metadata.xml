@@ -31,6 +31,7 @@
     <flag name="profile">Enable the integration of the ingame real-time profiler</flag>
   </use>
   <upstream>
-    <remote-id type="gitlab">freedroid/freedroid-src</remote-id>
+    <bugs-to>http://bugs.freedroid.org/</bugs-to>
+    <changelog>https://codeberg.org/freedroid/freedroid-src/src/branch/master/ChangeLog</changelog>
   </upstream>
 </pkgmetadata>
