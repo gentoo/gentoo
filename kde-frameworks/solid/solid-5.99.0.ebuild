@@ -11,7 +11,7 @@ DESCRIPTION="Provider for platform independent hardware discovery, abstraction a
 
 LICENSE="LGPL-2.1+"
 KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="ios nls"
+IUSE="ios"
 
 RDEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -30,9 +30,9 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-qt/qtconcurrent-${QTMIN}:5 )
 "
 BDEPEND="
+	>=dev-qt/linguist-tools-${QTMIN}:5
 	sys-devel/bison
 	sys-devel/flex
-	nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )
 "
 
 src_configure() {
