@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2022-11-16)
+# Packages or their dependencies have not been ported to libsoup:3.0, while
+# other non-slotted dependencies have been.
+media-gfx/gnome-photos
+media-sound/gnome-music
+net-libs/libzapojit
+net-misc/gnome-online-miners
+
 # Ionen Wolkens <ionen@gentoo.org> (2022-11-21)
 # Was added only for dev-python/pytest-bdd which no longer needs it.
 # If using, migrate to stdlib glob which supports `**` since python-3.5.
@@ -672,64 +680,6 @@ media-libs/webrtc-audio-processing:1
 # sys-devel/automake version 1.11 is EOL and is only useful for testing
 # old de-ANSI-fication/ansi2knr/AM_C_PROTOTYPES code. Please uninstall.
 sys-devel/automake:1.11
-
-# Mart Raudsepp <leio@gentoo.org> (2021-09-15)
-# New major parallel-installable release which needs special care to not
-# end up loaded into the same process together with the earlier libsoup ABI.
-# Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
->=app-arch/file-roller-43
->=app-backup/deja-dup-43
->=app-crypt/seahorse-43
->=app-misc/bijiben-40.1-r1
->=app-misc/tracker-3.4.0-r1
->=app-misc/tracker-miners-3.4.0-r1
->=app-text/gtranslator-42
->=app-text/libgepub-0.7.0
->=dev-libs/gjs-1.74
->=dev-libs/libgweather-4.2.0
->=dev-python/nautilus-python-4.0
->=dev-util/devhelp-43
->=dev-util/gnome-builder-43
->=gnome-base/gnome-applets-3.46
->=gnome-base/gnome-desktop-43
->=gnome-base/gnome-flashback-3.46
->=gnome-base/gnome-panel-3.46
->=gnome-base/gnome-settings-daemon-43
->=gnome-base/gnome-shell-43
->=gnome-base/nautilus-43
->=gnome-extra/evolution-data-server-3.46
->=gnome-extra/evolution-ews-3.46
->=gnome-extra/gnome-boxes-43
->=gnome-extra/gnome-calculator-43
->=gnome-extra/gnome-calendar-43
->=gnome-extra/gnome-clocks-43
->=gnome-extra/gnome-shell-extensions-43
->=gnome-extra/gnome-shell-frippery-43
->=gnome-extra/gnome-software-43
->=gnome-extra/sushi-43
->=mail-client/balsa-2.6.4
->=mail-client/evolution-3.46
->=mail-client/geary-43
->=media-gfx/gnome-photos-43
->=net-irc/polari-43
-net-libs/dleyna
->=net-libs/gnome-online-accounts-3.46
->=net-libs/gssdp-1.6
->=net-libs/gupnp-1.6
-net-libs/phodav:3.0
-net-libs/uhttpmock:1.0
-net-libs/webkit-gtk:4.1
-net-libs/webkit-gtk:5
->=net-misc/gupnp-tools-0.12
->=net-misc/rygel-0.42
->=net-misc/spice-gtk-0.41-r1
-sci-geosciences/geocode-glib:2
->=sci-geosciences/geocode-glib-3.26.4-r1:0
->=sci-geosciences/gnome-maps-43
->=sys-apps/osinfo-db-tools-1.10.0-r1
->=sys-libs/libosinfo-1.10.0-r1
->=www-client/epiphany-43
->=x11-wm/mutter-43
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)
 # Masked while being tested and reverse deps aren't fully compatible
