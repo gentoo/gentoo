@@ -209,19 +209,19 @@ fi
 
 llvm_check_deps() {
 	if ! has_version -b "sys-devel/clang:${LLVM_SLOT}" ; then
-		einfo "sys-devel/clang:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
+		einfo "sys-devel/clang:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ... Please try emerge -1av sys-devel/clang:${LLVM_SLOT}" >&2
 		return 1
 	fi
 
 	if use clang ; then
 		if ! has_version -b "sys-devel/lld:${LLVM_SLOT}" ; then
-			einfo "sys-devel/lld:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
+			einfo "sys-devel/lld:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ... Please try emerge -1av sys-devel/lld:${LLVM_SLOT}" >&2
 			return 1
 		fi
 
 		if use pgo ; then
-			if ! has_version -b "=sys-libs/compiler-rt-sanitizers-${LLVM_SLOT}*" ; then
-				einfo "=sys-libs/compiler-rt-sanitizers-${LLVM_SLOT}* is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
+			if ! has_version -b "=sys-libs/compiler-rt-sanitizers-${LLVM_SLOT}*[profile]" ; then
+				einfo "=sys-libs/compiler-rt-sanitizers-${LLVM_SLOT}*[profile] is missing! Cannot use LLVM slot ${LLVM_SLOT} ... Please try emerge -1av =sys-libs/compiler-rt-sanitizers-${LLVM_SLOT}* with profile use flag on!" >&2
 				return 1
 			fi
 		fi
@@ -444,6 +444,20 @@ pkg_setup() {
 
 		check-reqs_pkg_setup
 
+		# Attempt to force a specific llvm/clang/lld with multiple llvm toolchain slots installed.
+		local LLVM_USE_SLOT=${LLVM_MAX_SLOT}
+		if $(has_version "virtual/rust:0/llvm-${LLVM_USE_SLOT}"); then
+			:
+		else
+			((LLVM_USE_SLOT=LLVM_USE_SLOT-1))
+			if $(has_version "virtual/rust:0/llvm-${LLVM_USE_SLOT}"); then
+				:
+			else
+				die "Couldn't find virtual/rust:0/llvm-${LLVM_MAX_SLOT} or virtual/rust:0/llvm-${LLVM_USE_SLOT}. Check your virtual/rust installation."
+			fi
+		fi
+
+		local LLVM_MAX_SLOT=${LLVM_USE_SLOT}
 		llvm_pkg_setup
 
 		if use clang && use lto ; then
