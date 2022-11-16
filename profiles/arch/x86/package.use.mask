@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2022-11-16)
+# spirv-llvm-translator is not keyworded x86.
+dev-libs/libclc spirv
+
 # Ionen Wolkens <ionen@gentoo.org> (2022-11-07)
 # media-libs/libplacebo is keyworded here and vulkan is usable
 media-video/mpv -libplacebo -vulkan
