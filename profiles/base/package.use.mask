@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (2022-09-26)
+# Requires nautilus-43.0 which is keyworded everywhere
+>=app-arch/file-roller-43.0 nautilus
+>=app-text/evince-43.0 nautilus
+>=x11-terms/gnome-terminal-3.46 nautilus
+
 # Sam James <sam@gentoo.org> (2022-11-19)
 # Needs long-EOL dev-lang/spidermonkey:60 (which also needs python:2.7).
 media-libs/coin javascript
@@ -64,15 +70,6 @@ app-emulation/virtualbox-modules pax-kernel
 # mask it and can't hold the whole thing up on the compat effort.
 sys-libs/zlib-ng compat
 sys-libs/minizip-ng compat
-
-# Matt Turner <mattst88@gentoo.org> (2022-09-26)
-# Requires nautilus-43.0 which is not in tree yet.
->=x11-terms/gnome-terminal-3.46 nautilus
-
-# Pascal Jaeger <pascal.jaeger@leimstift.de> (2022-09-21)
-# Versions >=43.0 of evince only work with <gnome-base/nautilus-42.2.
-# Allowing that use flag for >=43.0 would stop users from updating nautilus
->=app-text/evince-43.0 nautilus
 
 # Yiyang Wu <xgreenlandforwyy@gmail.com> (2022-09-21)
 # Intolerable mathematical errors found on AMD Radeon VII GPU during src_test,
@@ -182,10 +179,6 @@ dev-python/jupyter_server doc
 # validation failures on some certificates that are otherwise valid.
 # https://github.com/aria2/aria2/issues/1636
 net-misc/aria2 gnutls
-
-# Matt Turner <mattst88@gentoo.org> (2022-03-25)
-# Depends on libsoup:3.0
->=gnome-base/gvfs-1.50 http
 
 # Craig Andrews <candrews@gentoo.org> (2022-03-25)
 # Requires as of yet unreleased QUIC support in OpenSSL
