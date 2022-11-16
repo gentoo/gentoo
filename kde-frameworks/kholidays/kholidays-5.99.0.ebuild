@@ -9,17 +9,14 @@ QTMIN=5.15.5
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="Library to determine holidays and other special events for a geographical region"
+
 LICENSE="LGPL-2.1+"
 KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="nls"
+IUSE=""
 
-BDEPEND="
-	nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )
-"
-DEPEND="
-	>=dev-qt/qtdeclarative-${QTMIN}:5
-"
+DEPEND=">=dev-qt/qtdeclarative-${QTMIN}:5"
 RDEPEND="${DEPEND}"
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
 
 src_test() {
 	# bug 624214
