@@ -4,6 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-1 )
+LUA_REQ_USE="deprecated"
 
 inherit flag-o-matic lua-single
 
