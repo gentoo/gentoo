@@ -12,7 +12,7 @@ DESCRIPTION="Framework for notifying the user of an event"
 
 LICENSE="LGPL-2.1+"
 KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="dbus nls phonon qml speech X"
+IUSE="dbus phonon qml speech X"
 
 RDEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -35,7 +35,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
-BDEPEND="nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )"
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
 
 src_configure() {
 	local mycmakeargs=(
