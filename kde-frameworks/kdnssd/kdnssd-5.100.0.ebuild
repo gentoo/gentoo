@@ -7,13 +7,11 @@ QTMIN=5.15.5
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework for network service discovery using Zeroconf"
+
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="nls zeroconf"
+IUSE="zeroconf"
 
-BDEPEND="
-	nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )
-"
 DEPEND="
 	>=dev-qt/qtnetwork-${QTMIN}:5
 	zeroconf? (
@@ -22,6 +20,7 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
 
 src_configure() {
 	local mycmakeargs=(
