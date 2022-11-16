@@ -12,7 +12,7 @@ DESCRIPTION="Framework to handle global shortcuts"
 
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="nls X"
+IUSE="X"
 
 REQUIRED_USE="test? ( X )"
 RESTRICT="test" # requires installed instance
@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 		=kde-frameworks/kdeclarative-${PVCUT}*:5
 	)
 "
-BDEPEND="nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )"
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
 
 src_configure() {
 	local mycmakeargs=(
