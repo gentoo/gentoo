@@ -7,7 +7,7 @@ inherit xorg-3
 
 DESCRIPTION="graphical class browser for Xt"
 
-KEYWORDS="~amd64 arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 arm ~hppa ~mips ~ppc ~ppc64 ~s390 sparc ~x86"
 
 RDEPEND="
 	x11-libs/libX11
