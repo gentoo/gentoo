@@ -22,12 +22,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
-BDEPEND="
-	test? (
-		dev-python/gevent[${PYTHON_USEDEP}]
-	)
-"
-
 distutils_enable_tests unittest
 
 PATCHES=(
