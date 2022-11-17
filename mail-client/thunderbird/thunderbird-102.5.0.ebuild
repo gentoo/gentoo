@@ -87,6 +87,7 @@ BDEPEND="${PYTHON_DEPS}
 			sys-devel/llvm:15
 			clang? (
 				sys-devel/lld:15
+				virtual/rust:0/llvm-15
 				pgo? ( =sys-libs/compiler-rt-sanitizers-15*[profile] )
 			)
 		)
@@ -95,14 +96,12 @@ BDEPEND="${PYTHON_DEPS}
 			sys-devel/llvm:14
 			clang? (
 				sys-devel/lld:14
+				virtual/rust:0/llvm-14
 				pgo? ( =sys-libs/compiler-rt-sanitizers-14*[profile] )
 			)
 		)
 	)
-	|| (
-		virtual/rust:0/llvm-15
-		virtual/rust:0/llvm-14
-	)
+	!clang? ( virtual/rust )
 	app-arch/unzip
 	app-arch/zip
 	>=dev-util/cbindgen-0.24.3
@@ -205,6 +204,11 @@ llvm_check_deps() {
 	if use clang ; then
 		if ! has_version -b "sys-devel/lld:${LLVM_SLOT}" ; then
 			einfo "sys-devel/lld:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ... Please try emerge -1av sys-devel/lld:${LLVM_SLOT}" >&2
+			return 1
+		fi
+
+		if ! has_version -b "virtual/rust:0/llvm-${LLVM_SLOT}" ; then
+			einfo "virtual/rust:0/llvm-${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
 			return 1
 		fi
 
@@ -397,20 +401,6 @@ pkg_setup() {
 
 		check-reqs_pkg_setup
 
-		# Attempt to force a specific llvm/clang/lld with multiple llvm toolchain slots installed.
-		local LLVM_USE_SLOT=${LLVM_MAX_SLOT}
-		if $(has_version "virtual/rust:0/llvm-${LLVM_USE_SLOT}"); then
-			:
-		else
-			((LLVM_USE_SLOT=LLVM_USE_SLOT-1))
-			if $(has_version "virtual/rust:0/llvm-${LLVM_USE_SLOT}"); then
-				:
-			else
-				die "Couldn't find virtual/rust:0/llvm-${LLVM_MAX_SLOT} or virtual/rust:0/llvm-${LLVM_USE_SLOT}. Check your virtual/rust installation."
-			fi
-		fi
-
-		local LLVM_MAX_SLOT=${LLVM_USE_SLOT}
 		llvm_pkg_setup
 
 		if use clang && use lto ; then
