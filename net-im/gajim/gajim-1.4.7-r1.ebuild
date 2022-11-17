@@ -44,7 +44,7 @@ RDEPEND="${COMMON_DEPEND}
 		>=dev-python/secretstorage-3.1.1[${PYTHON_USEDEP}]
 		dev-python/css-parser[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
-		net-libs/libsoup[introspection]
+		net-libs/libsoup:2.4[introspection]
 		media-libs/gsound[introspection]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		crypt? (
