@@ -29,6 +29,10 @@ RDEPEND="sys-apps/pciutils
 		x11-apps/xwininfo
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-arm-riscv-loongarch-cpu-model-detection.patch
+)
+
 src_prepare() {
 	if use prefix; then
 		# bug #693526
