@@ -33,13 +33,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Matthew Smith <matthew@gentoo.org> (2022-11-17)
-# libnet:1.0's two remaining rdeps. Dead upstreams.
-# Removal on 2022-12-17. Bug #881677
-net-libs/libnet:1.0
-net-analyzer/angst
-net-analyzer/thcrut
-
 # Michał Górny <mgorny@gentoo.org> (2022-11-17)
 # No maintainer.  No upstream activity since 2020.  Multiple bugs
 # reported.
