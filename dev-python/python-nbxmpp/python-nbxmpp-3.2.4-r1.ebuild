@@ -4,17 +4,18 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
-MY_P=python-nbxmpp-nbxmpp-${PV}
 DESCRIPTION="Python library to use Jabber/XMPP networks in a non-blocking way"
-HOMEPAGE="https://dev.gajim.org/gajim/python-nbxmpp/"
-SRC_URI="
-	https://dev.gajim.org/gajim/python-nbxmpp/-/archive/nbxmpp-${PV}/${MY_P}.tar.bz2
+HOMEPAGE="
+	https://dev.gajim.org/gajim/python-nbxmpp/
+	https://pypi.org/project/nbxmpp/
 "
-S=${WORKDIR}/${MY_P}
+SRC_URI="
+	https://dev.gajim.org/gajim/python-nbxmpp/-/archive/${PV}/${P}.tar.bz2
+"
 
 SLOT="0"
 LICENSE="GPL-3"
@@ -22,7 +23,7 @@ KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 RDEPEND="
 	dev-libs/gobject-introspection
-	net-libs/libsoup[introspection]
+	net-libs/libsoup:2.4[introspection]
 	dev-python/idna[${PYTHON_USEDEP}]
 	dev-python/precis-i18n[${PYTHON_USEDEP}]
 	dev-python/pygobject[${PYTHON_USEDEP}]
