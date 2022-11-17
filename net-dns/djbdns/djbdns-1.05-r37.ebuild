@@ -6,7 +6,7 @@ inherit readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="Collection of DNS client/server software"
 HOMEPAGE="https://cr.yp.to/djbdns.html"
-IPV6_PATCH="test29"
+IPV6_PATCH="test32"
 
 SRC_URI="http://cr.yp.to/djbdns/${P}.tar.gz
 	http://smarden.org/pape/djb/manpages/${P}-man.tar.gz
@@ -36,7 +36,6 @@ src_unpack() {
 }
 
 PATCHES=(
-	"${FILESDIR}/headtail-r1.patch"
 	"${FILESDIR}/dnsroots.patch"
 	"${FILESDIR}/dnstracesort.patch"
 	"${FILESDIR}/string_length_255.patch"
@@ -53,9 +52,8 @@ src_prepare() {
 			# The big ipv6 patch.
 			"${WORKDIR}/${P}-${IPV6_PATCH}.diff"
 			# Fix CVE2008-4392 (ipv6)
-			"${FILESDIR}/CVE2008-4392_0001-dnscache-merge-similar-outgoing-queries-ipv6-test29.patch"
+			"${FILESDIR}/CVE2008-4392_0001-dnscache-merge-similar-outgoing-queries-ipv6-test32.patch"
 			"${FILESDIR}/CVE2008-4392_0002-dnscache-cache-soa-records-ipv6-test29.patch"
-			"${FILESDIR}/makefile-parallel-test25.patch"
 		)
 	else
 		PATCHES=(${PATCHES[@]}
@@ -68,6 +66,14 @@ src_prepare() {
 	fi
 
 	default
+
+	# Change "head -X" to the posix-compatible "head -nX" within the
+	# Makefile. We do this with sed instead of a patch because the ipv6
+	# patch uses some of the surrounding lines; we'd need two versions
+	# of the patch.
+	sed -i Makefile \
+		-e 's/head[[:space:]]\{1,\}\-\([0-9]\{1,\}\)/head -n\1/g' \
+		|| die 'failed to sed head in the Makefile'
 }
 
 src_compile() {

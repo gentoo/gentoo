@@ -1,8 +1,8 @@
 diff --git a/Makefile b/Makefile
-index b89243a..626a829 100644
+index cee69a5..5afa9dc 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -348,11 +348,11 @@ stralloc.h iopause.h taia.h tai.h uint64.h taia.h
+@@ -351,11 +351,11 @@ iopause.h taia.h tai.h uint64.h
  	./compile dns_txt.c
  
  dnscache: \
@@ -16,16 +16,17 @@ index b89243a..626a829 100644
  	env.a alloc.a buffer.a libtai.a unix.a byte.a  `cat \
  	socket.lib`
  
-@@ -373,7 +373,7 @@ compile dnscache.c env.h exit.h scan.h strerr.h error.h ip4.h \
- uint16.h uint64.h socket.h uint16.h dns.h stralloc.h gen_alloc.h \
- iopause.h taia.h tai.h uint64.h taia.h taia.h byte.h roots.h fmt.h \
- iopause.h query.h dns.h uint32.h alloc.h response.h uint32.h cache.h \
--uint32.h uint64.h ndelay.h log.h uint64.h okclient.h droproot.h
-+uint32.h uint64.h ndelay.h log.h uint64.h okclient.h droproot.h maxclient.h
+@@ -374,7 +374,8 @@ dnscache.o: \
+ compile dnscache.c env.h exit.h scan.h strerr.h error.h ip4.h ip6.h \
+ uint16.h uint64.h socket.h uint32.h dns.h stralloc.h gen_alloc.h \
+ iopause.h taia.h tai.h byte.h roots.h fmt.h query.h alloc.h \
+-response.h cache.h ndelay.h log.h okclient.h droproot.h openreadclose.h
++response.h cache.h ndelay.h log.h okclient.h droproot.h openreadclose.h \
++maxclient.h
  	./compile dnscache.c
  
  dnsfilter: \
-@@ -751,11 +751,16 @@ qlog.o: \
+@@ -750,10 +751,15 @@ qlog.o: \
  compile qlog.c buffer.h qlog.h uint16.h
  	./compile qlog.c
  
@@ -36,10 +37,9 @@ index b89243a..626a829 100644
 +
  query.o: \
  compile query.c error.h roots.h log.h uint64.h case.h cache.h \
- uint32.h uint64.h byte.h dns.h stralloc.h gen_alloc.h iopause.h \
- taia.h tai.h uint64.h taia.h uint64.h uint32.h uint16.h dd.h alloc.h \
--response.h uint32.h query.h dns.h uint32.h
-+response.h uint32.h query.h dns.h uint32.h qmerge.h
+ uint32.h byte.h dns.h stralloc.h gen_alloc.h iopause.h taia.h tai.h \
+-uint16.h dd.h alloc.h response.h query.h ip6.h
++uint16.h dd.h alloc.h response.h query.h ip6.h qmerge.h
  	./compile query.c
  
  random-ip: \
