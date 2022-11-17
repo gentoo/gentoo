@@ -35,7 +35,6 @@ BDEPEND="
 		dev-python/executing[${PYTHON_USEDEP}]
 		dev-python/fakeredis[${PYTHON_USEDEP}]
 		dev-python/flask-login[${PYTHON_USEDEP}]
-		dev-python/gevent[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
 		dev-python/pyrsistent[${PYTHON_USEDEP}]
 		dev-python/pytest-aiohttp[${PYTHON_USEDEP}]
