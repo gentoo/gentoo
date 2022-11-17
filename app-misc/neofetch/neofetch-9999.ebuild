@@ -18,6 +18,10 @@ HOMEPAGE="https://github.com/dylanaraps/neofetch"
 LICENSE="MIT-with-advertising"
 SLOT="0"
 
+PATCHES=(
+	"${FILESDIR}"/neofetch-7.1.0-fix-arm-riscv-loongarch-cpu-model-detection.patch
+)
+
 src_prepare() {
 	if use prefix; then
 		# bug #693526
