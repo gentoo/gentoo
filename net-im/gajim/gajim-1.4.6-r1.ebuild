@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_{9,11} )
 PYTHON_REQ_USE="sqlite,xml(+)"
 DISTUTILS_SINGLE_IMPL=1
 
@@ -15,7 +15,7 @@ SRC_URI="https://gajim.org/downloads/$(ver_cut 1-2)/${P/_p/-}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="+crypt geolocation jingle omemo remote rst +spell upnp +webp"
 S="${WORKDIR}/${P%_p2}"
 
@@ -44,7 +44,7 @@ RDEPEND="${COMMON_DEPEND}
 		>=dev-python/secretstorage-3.1.1[${PYTHON_USEDEP}]
 		dev-python/css-parser[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
-		net-libs/libsoup[introspection]
+		net-libs/libsoup:2.4[introspection]
 		media-libs/gsound[introspection]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		crypt? (
