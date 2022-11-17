@@ -33,6 +33,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-11-17)
+# No maintainer.  No upstream activity since 2020.  Multiple bugs
+# reported.
+# Removal on 2022-12-17.  Bug #881673.
+app-admin/prelude-manager
+dev-libs/libprelude
+dev-libs/libpreludedb
+net-analyzer/prelude-correlator
+net-analyzer/prelude-lml-rules
+net-analyzer/prelude-lml
+www-apps/prewikka
+
 # Michał Górny <mgorny@gentoo.org> (2022-11-15)
 # Test-restricted since its introduction in 2016.  Not receiving package
 # maintainer's attention.  No revdeps left.
