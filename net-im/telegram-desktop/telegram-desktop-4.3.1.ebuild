@@ -105,12 +105,12 @@ src_prepare() {
 	#   build in gentoo right now.
 	if use qt6-imageformats; then
 		sed -e 's/DESKTOP_APP_USE_PACKAGED_LAZY/TRUE/' -i \
-			cmake/external/kimageformats/CMakeLists.txt
+			cmake/external/kimageformats/CMakeLists.txt || die
 		printf "%s\n" \
 			'Q_IMPORT_PLUGIN(QAVIFPlugin)' \
 			'Q_IMPORT_PLUGIN(HEIFPlugin)' \
 			'Q_IMPORT_PLUGIN(QJpegXLPlugin)' \
-			>> cmake/external/qt/qt_static_plugins/qt_static_plugins.cpp
+			>> cmake/external/qt/qt_static_plugins/qt_static_plugins.cpp || die
 	fi
 
 	# kde-frameworks/kcoreaddons is bundled when using qt6, see:
