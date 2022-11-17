@@ -24,7 +24,6 @@ PROPERTIES="test_network"
 
 BDEPEND="
 	test? (
-		dev-python/gevent[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/nose2[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
@@ -32,6 +31,12 @@ BDEPEND="
 		net-misc/rabbitmq-server
 	)
 "
+
+src_prepare() {
+	sed -e 's/test_with_gevent/_&/' -i tests/base/async_test_base.py || die
+
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	nose2 -v || die "Tests failed with ${EPYTHON}"
