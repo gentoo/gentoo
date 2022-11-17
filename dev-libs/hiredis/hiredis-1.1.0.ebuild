@@ -19,7 +19,12 @@ RESTRICT="!test? ( test )"
 
 DEPEND="ssl? ( dev-libs/openssl:= )"
 RDEPEND="${DEPEND}"
-BDEPEND="test? ( dev-db/redis )"
+BDEPEND="
+	test? (
+		dev-db/redis
+		dev-libs/libevent
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.0-disable-network-tests.patch
@@ -39,6 +44,7 @@ _build() {
 		PREFIX="${EPREFIX}/usr" \
 		LIBRARY_PATH="$(get_libdir)" \
 		USE_SSL=$(usex ssl 1 0) \
+		TEST_ASYNC=$(usex test 1 0) \
 		DEBUG_FLAGS= \
 		OPTIMIZATION= \
 		"$@"
@@ -52,6 +58,7 @@ src_compile() {
 }
 
 src_test() {
+	# Compare with https://github.com/redis/hiredis/blob/648763c36e9f6493b13a77da35eb33ef0652b4e2/Makefile#L32
 	local REDIS_PID="${T}"/hiredis.pid
 	local REDIS_SOCK="${T}"/hiredis.sock
 	local REDIS_PORT=56379
