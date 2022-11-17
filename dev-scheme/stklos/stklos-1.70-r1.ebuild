@@ -5,7 +5,7 @@ EAPI="8"
 
 inherit autotools toolchain-funcs
 
-DESCRIPTION="fast and light Scheme implementation"
+DESCRIPTION="Fast and light Scheme implementation"
 HOMEPAGE="https://www.stklos.net/"
 SRC_URI="https://www.${PN}.net/download/${P}.tar.gz"
 
@@ -20,18 +20,24 @@ RDEPEND="dev-libs/boehm-gc[threads?]
 	dev-libs/libpcre"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 DOCS=( AUTHORS ChangeLog {HACKING,NEWS}.md PACKAGES-USED {PORTING-NOTES,README}.md SUPPORTED-SRFIS )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-configure-clang16.patch
+)
+
 src_prepare() {
+	default
+
 	use threads || rm -f tests/srfis/216.stk
 
-	default
 	eautoreconf
-	export LD="$(tc-getCC)"
 }
 
 src_configure() {
+	export LD="$(tc-getCC)"
+
 	econf \
 		--enable-threads=$(usex threads pthreads none) \
 		--without-gmp-light \

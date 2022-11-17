@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/881693
+--- a/configure.ac
++++ b/configure.ac
+@@ -446,8 +446,9 @@ fi
+ ###
+ ### See in what direction the stack grows (code stolen from Sawfish)
+ ###
+-AC_RUN_IFELSE([AC_LANG_SOURCE([[ void inner (char *foo) { char bar; exit (!(foo >= &bar)); }
+-             void main () { char foo; inner (&foo); } ]])],[STACK_DIRECTION="DOWN"],[STACK_DIRECTION="UP"],[echo "Stack direction is not detected when cross compiling for now"])
++AC_RUN_IFELSE([AC_LANG_SOURCE([[#include <stdlib.h>
++             void inner (char *foo) { char bar; exit (!(foo >= &bar)); }
++             int main (void) { char foo; inner (&foo); } ]])],[STACK_DIRECTION="DOWN"],[STACK_DIRECTION="UP"],[echo "Stack direction is not detected when cross compiling for now"])
+ 
+ 
+ 
