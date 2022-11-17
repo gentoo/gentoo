@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,18 +12,24 @@ SRC_URI="https://github.com/pragha-music-player/${PN}/releases/download/v${PV}/$
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="cdda +glyr grilo +keybinder koel lastfm libnotify mtp +peas +playlist rygel soup +udev"
+IUSE="
+	cdda +glyr grilo +keybinder koel lastfm libnotify mtp +peas
+	+playlist rygel soup +udev
+"
 
-COMMON_DEPEND=">=dev-db/sqlite-3.4:3=
+DEPEND="
+	>=dev-db/sqlite-3.4:3=
 	>=dev-libs/glib-2.42
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
 	>=media-libs/taglib-1.8:=
 	>=x11-libs/gtk+-3.14:3
 	>=xfce-base/libxfce4ui-4.11:=[gtk3(+)]
-	cdda? ( >=dev-libs/libcdio-0.90:=
+	cdda? (
+		>=dev-libs/libcdio-0.90:=
 		>=dev-libs/libcdio-paranoia-0.90:=
-		>=media-libs/libcddb-1.3.0:= )
+		>=media-libs/libcddb-1.3.0:=
+	)
 	glyr? ( >=media-libs/glyr-1.0.1:= )
 	grilo? ( media-libs/grilo:0.3[network(+)] )
 	keybinder? ( >=dev-libs/keybinder-0.2.0:3 )
@@ -34,24 +40,29 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3=
 	peas? ( >=dev-libs/libpeas-1.0.0[gtk] )
 	playlist? ( >=dev-libs/totem-pl-parser-2.26:= )
 	rygel? ( >=net-misc/rygel-0.26 )
-	soup? ( >=net-libs/libsoup-2.38:= )
-	udev? ( dev-libs/libgudev:= )"
-RDEPEND="${COMMON_DEPEND}
-	media-plugins/gst-plugins-meta:1.0"
-DEPEND="${COMMON_DEPEND}
+	soup? ( >=net-libs/libsoup-2.38:2.4 )
+	udev? ( dev-libs/libgudev:= )
+"
+RDEPEND="
+	${DEPEND}
+	media-plugins/gst-plugins-meta:1.0
+"
+BDEPEND="
 	dev-util/intltool
 	>=dev-util/xfce4-dev-tools-4.10
 	sys-devel/gettext
 	virtual/pkgconfig
-	xfce-base/exo"
-REQUIRED_USE="glyr? ( peas )
+"
+REQUIRED_USE="
+	glyr? ( peas )
 	grilo? ( peas )
 	koel? ( soup )
 	libnotify? ( peas )
 	mtp? ( udev )
 	rygel? ( peas )
 	soup? ( peas )
-	udev? ( peas )"
+	udev? ( peas )
+"
 
 src_configure() {
 	local myconf=(
