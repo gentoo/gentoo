@@ -16,11 +16,17 @@ SLOT="0"
 RDEPEND="app-admin/eselect"
 
 pkg_pretend() {
-	# not-owned {bin,include}/wine is removed by pkg_preinst's unset, but
-	# portage currently checks collisions and errors out /before/ pkg_preinst
-	has_version '<app-eselect/eselect-wine-2' &&
-		has collision-protect ${FEATURES} &&
-		eerror "!Warning! may need to disable FEATURES=collision-protect to merge ${P}"
+	# /usr/bin/wine and /usr/include/wine are removed by pkg_preinst's unset,
+	# but portage currently checks collisions and errors out /before/ preinst
+	if has_version '<app-eselect/eselect-wine-2' &&
+		has collision-protect ${FEATURES}
+	then
+		eerror
+		eerror "!Warning! will likely need to either disable FEATURES=collision-protect or"
+		eerror "delete ${EROOT}/usr/bin/wine and ${EROOT}/usr/include/wine to merge ${P}"
+		eerror "(these files should be orphaned, so default FEATURES=protect-owned is fine)"
+		eerror
+	fi
 }
 
 src_install() {
