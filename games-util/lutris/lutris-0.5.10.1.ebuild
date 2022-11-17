@@ -45,7 +45,6 @@ RDEPEND="
 	')
 	gnome-base/gnome-desktop:3[introspection]
 	media-sound/fluid-soundfont
-	net-libs/libsoup
 	net-libs/webkit-gtk:4[introspection]
 	x11-apps/mesa-progs
 	x11-apps/xgamma
