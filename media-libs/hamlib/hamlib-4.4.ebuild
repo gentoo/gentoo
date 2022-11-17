@@ -40,6 +40,7 @@ DOCS=(AUTHORS NEWS PLAN README README.betatester README.developer)
 
 PATCHES=(
 	"${FILESDIR}/${P}-slibtool.patch" # 798273
+	"${FILESDIR}/${P}-fix-clang-warnings.patch" # 880961
 )
 
 S="${WORKDIR}/${MY_P}"
