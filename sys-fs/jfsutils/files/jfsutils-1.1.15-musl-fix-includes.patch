@@ -1,0 +1,23 @@
+Closes: https://bugs.gentoo.org/715568
+
+From https://git.alpinelinux.org/aports/commit/main/jfsutils/musl-fix-includes.patch?id=d9768c312ddc047df6c2c9b1674b2ab37ddf4e2a 2013-12-17 13:59:36 +0000
+From Timo Teräs <timo.teras@iki.fi>
+
+--- a/libfs/fssubs.c
++++ b/libfs/fssubs.c
+@@ -24,6 +24,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <paths.h>
+ 
+ #if HAVE_MNTENT_H
+ #include <mntent.h>
+@@ -31,7 +32,6 @@
+ #endif
+ 
+ #if HAVE_GETMNTINFO
+-#include <paths.h>
+ #include <sys/param.h>
+ #include <sys/mount.h>
+ #endif
