@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1 xdg
 
@@ -19,7 +19,7 @@ RDEPEND="dev-libs/keybinder:3[introspection]
 	dev-python/feedparser[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=media-libs/mutagen-1.32[${PYTHON_USEDEP}]
-	net-libs/libsoup[introspection]
+	net-libs/libsoup:2.4[introspection]
 	x11-libs/gtk+[introspection]
 	gstreamer? (
 		media-libs/gstreamer:1.0
