@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ DESCRIPTION="A cross-platform open source C and C++ SDK for SOAP/XML Web service
 HOMEPAGE="http://gsoap2.sourceforge.net"
 SRC_URI="mirror://sourceforge/gsoap2/gsoap_${PV}.zip"
 
-LICENSE="|| ( gSOAP GPL-2+-with-openssl-exception ) GPL-2+"
+LICENSE="|| ( gSOAP-1.3b GPL-2+-with-openssl-exception ) GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc debug examples ipv6 gnutls +ssl"
