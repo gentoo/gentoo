@@ -66,8 +66,10 @@ src_configure() {
 		-DENABLE_TCMALLOC=$(usex tcmalloc)
 	)
 	if use doc; then
-		-DINSTALL_HTML_DOC=ON
-		-DINSTALL_PDF_DOC=ON
+		mycmakeargs+=(
+			-DINSTALL_HTML_DOC=ON
+			-DINSTALL_PDF_DOC=ON
+		)
 	fi
 
 	cmake_src_configure
