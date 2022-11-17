@@ -89,6 +89,7 @@ BDEPEND="${PYTHON_DEPS}
 			sys-devel/llvm:15
 			clang? (
 				sys-devel/lld:15
+				virtual/rust:0/llvm-15
 				pgo? ( =sys-libs/compiler-rt-sanitizers-15*[profile] )
 			)
 		)
@@ -96,20 +97,18 @@ BDEPEND="${PYTHON_DEPS}
 			sys-devel/clang:14
 			sys-devel/llvm:14
 			clang? (
+				virtual/rust:0/llvm-14
 				sys-devel/lld:14
 				pgo? ( =sys-libs/compiler-rt-sanitizers-14*[profile] )
 			)
 		)
-	)
-	|| (
-		virtual/rust:0/llvm-15
-		virtual/rust:0/llvm-14
 	)
 	app-arch/unzip
 	app-arch/zip
 	>=dev-util/cbindgen-0.24.3
 	net-libs/nodejs
 	virtual/pkgconfig
+	virtual/rust
 	amd64? ( >=dev-lang/nasm-2.14 )
 	x86? ( >=dev-lang/nasm-2.14 )"
 
@@ -445,19 +444,17 @@ pkg_setup() {
 		check-reqs_pkg_setup
 
 		# Attempt to force a specific llvm/clang/lld with multiple llvm toolchain slots installed.
-		local LLVM_USE_SLOT=${LLVM_MAX_SLOT}
-		if $(has_version "virtual/rust:0/llvm-${LLVM_USE_SLOT}"); then
-			:
-		else
-			((LLVM_USE_SLOT=LLVM_USE_SLOT-1))
-			if $(has_version "virtual/rust:0/llvm-${LLVM_USE_SLOT}"); then
-				:
-			else
-				die "Couldn't find virtual/rust:0/llvm-${LLVM_MAX_SLOT} or virtual/rust:0/llvm-${LLVM_USE_SLOT}. Check your virtual/rust installation."
+		if use clang; then
+			local LLVM_USE_SLOT=${LLVM_MAX_SLOT}
+			if ! has_version -b "virtual/rust:0/llvm-${LLVM_USE_SLOT}"; then
+				((LLVM_USE_SLOT -= 1))
+				if ! has_version -b "virtual/rust:0/llvm-${LLVM_USE_SLOT}"; then
+					die "Couldn't find virtual/rust:0/llvm-${LLVM_MAX_SLOT} or virtual/rust:0/llvm-${LLVM_USE_SLOT}. Check your virtual/rust installation."
+				fi
 			fi
+			local LLVM_MAX_SLOT=${LLVM_USE_SLOT}
 		fi
 
-		local LLVM_MAX_SLOT=${LLVM_USE_SLOT}
 		llvm_pkg_setup
 
 		if use clang && use lto ; then
