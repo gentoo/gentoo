@@ -10,6 +10,8 @@ HOMEPAGE="https://github.com/redis/hiredis"
 SRC_URI="https://github.com/redis/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
+# Always check "Upgrading from ..." in README
+# e.g. https://github.com/redis/hiredis#upgrading-to-110
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-solaris"
 IUSE="examples ssl static-libs test"
