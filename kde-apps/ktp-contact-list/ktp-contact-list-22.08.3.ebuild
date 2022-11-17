@@ -13,7 +13,7 @@ HOMEPAGE="https://community.kde.org/KTp"
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="
