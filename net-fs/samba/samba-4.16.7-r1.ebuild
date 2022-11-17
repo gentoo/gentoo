@@ -307,6 +307,8 @@ multilib_src_install() {
 
 	# Make all .so files executable
 	find "${ED}" -type f -name "*.so" -exec chmod +x {} + || die
+	# smbspool_krb5_wrapper must only be accessible to root
+	find "${ED}" -type f -name "smbspool_krb5_wrapper" -exec chmod go-rwx {} + || die
 
 	if multilib_is_native_abi ; then
 		# Install ldap schema for server (bug #491002)
