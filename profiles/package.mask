@@ -34,6 +34,16 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2022-11-17)
+# Rarely used package with very high maintenance cost.  Hacky, requires
+# explicit support code for every architecture, effectively preventing
+# it from being keyworded on some of the Gentoo architectures.  The test
+# suite is problematic.  The current release blocks dev-python/greenlet
+# upgrade, the new release fails many tests again.
+# Removal on 2022-12-17.  Bug #879011.
+dev-python/gevent
+dev-python/geventhttpclient
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-17)
 # Requires dev-python/gevent that is going to be masked for removal.
 # net-misc/x2goclient remains as a replacement.
 # Removal on 2022-12-17.  Bug #879011.
