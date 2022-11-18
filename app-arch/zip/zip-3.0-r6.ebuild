@@ -38,6 +38,7 @@ src_prepare() {
 }
 
 src_configure() {
+	# Needed for Clang 16
 	append-flags -std=gnu89
 
 	append-cppflags \
