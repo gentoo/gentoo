@@ -6,7 +6,7 @@ EAPI=7
 inherit findlib
 
 DESCRIPTION="OCaml interface to the libcurl library"
-HOMEPAGE="http://forge.ocamlcore.org/projects/ocurl/ https://github.com/ygrek/ocurl"
+HOMEPAGE="https://forge.ocamlcore.org/projects/ocurl/ https://github.com/ygrek/ocurl"
 LICENSE="MIT"
 SRC_URI="https://github.com/ygrek/ocurl/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
