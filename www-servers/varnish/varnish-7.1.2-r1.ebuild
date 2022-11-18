@@ -14,7 +14,7 @@ SRC_URI="http://varnish-cache.org/_downloads/${P}.tgz"
 LICENSE="BSD-2 GPL-2"
 SLOT="0/2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="jemalloc jit static-libs"
+IUSE="jemalloc jit static-libs unwind"
 
 CDEPEND="
 	sys-libs/readline:=
@@ -22,6 +22,7 @@ CDEPEND="
 	dev-libs/libpcre2[jit?]
 	sys-libs/ncurses:=
 	jemalloc? ( dev-libs/jemalloc:= )
+	unwind? ( sys-libs/libunwind:= )
 "
 
 #varnish compiles stuff at run time
@@ -43,15 +44,16 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 PATCHES=( "${FILESDIR}/${PN}-7.1.2-disable-tests.patch" )
 
 src_prepare() {
+	default
+
 	# Remove -Werror bug #528354
-	sed -i -e 's/-Werror\([^=]\)/\1/g' configure.ac
+	sed -i -e 's/-Werror\([^=]\)/\1/g' configure.ac || die
 
 	# Upstream doesn't put varnish.m4 in the m4/ directory
 	# We link because the Makefiles look for the file in
 	# the original location
-	ln -sf ../varnish.m4 m4/varnish.m4
+	ln -sf ../varnish.m4 m4/varnish.m4 || die
 
-	default
 	eautoreconf
 }
 
@@ -60,6 +62,7 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable jit pcre2-jit)
 		$(use_with jemalloc)
+		$(use_with unwind)
 	)
 	econf "${myeconfargs[@]}"
 }
