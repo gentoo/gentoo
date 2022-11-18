@@ -15,7 +15,7 @@ arm? ( https://dotnetcli.azureedge.net/dotnet/Sdk/${MY_PV}/dotnet-sdk-${MY_PV}-l
 arm64? ( https://dotnetcli.azureedge.net/dotnet/Sdk/${MY_PV}/dotnet-sdk-${MY_PV}-linux-arm64.tar.gz )
 "
 
-SLOT="5.0"
+SLOT="3.1"
 KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="+dotnet-symlink"
 REQUIRED_USE="elibc_glibc"
@@ -24,11 +24,11 @@ RESTRICT+=" splitdebug"
 RDEPEND="
 	app-crypt/mit-krb5:0/0
 	dev-libs/icu
-	dev-util/lttng-ust:0
+	dev-util/lttng-ust:0/2.12
 	sys-libs/zlib:0/1
 	dotnet-symlink? (
 		!dev-dotnet/dotnet-sdk[dotnet-symlink(+)]
-		!dev-dotnet/dotnet-sdk-bin:3.1[dotnet-symlink(+)]
+		!dev-dotnet/dotnet-sdk-bin:5.0[dotnet-symlink(+)]
 		!dev-dotnet/dotnet-sdk-bin:6.0[dotnet-symlink(+)]
 		!dev-dotnet/dotnet-sdk-bin:7.0[dotnet-symlink(+)]
 	)
