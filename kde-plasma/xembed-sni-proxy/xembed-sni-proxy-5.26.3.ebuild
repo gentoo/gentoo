@@ -15,7 +15,7 @@ CMAKE_USE_DIR="${S}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv"
 
 DEPEND="
 	>=dev-qt/qtcore-${QTMIN}:5
