@@ -33,6 +33,54 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-11-18)
+# These packages still lack support for Python 3.10.  In general, they
+# did not see any activity recently and either have no maintainer
+# or their respective maintainers did not reply to the bug.  Many
+# of them do not have tests enabled or have unresolved test failures.
+# Removal on 2022-12-18.  Tracker bug #823185.
+app-admin/ansible-cmdb
+app-arch/bloscpack
+app-backup/borgweb
+app-i18n/fcitx-sunpinyin
+app-i18n/ibus-kkc
+app-i18n/ibus-sunpinyin
+app-i18n/libkkc
+app-i18n/libkkc-data
+app-i18n/sunpinyin
+app-i18n/sunpinyin-data
+app-i18n/xsunpinyin
+app-portage/distpatch
+app-text/q-text-as-data
+app-vim/pydiction
+app-vim/vimoutliner
+dev-libs/aws-sdk-cpp
+dev-python/Rx
+dev-python/bert
+dev-python/flask-assets
+dev-python/libpy_simdjson
+dev-python/parallax
+dev-python/pytest-salt
+dev-python/requests_pkcs12
+dev-python/slackclient
+dev-python/tvdb_api
+dev-python/webassets
+dev-python/ws4py
+dev-util/comparator
+dev-util/kdevelop-python
+dev-util/rosinstall_generator
+games-util/pyfa
+mate-extra/caja-hide
+media-gfx/netpaint
+media-plugins/mythplugins
+media-sound/marrie
+media-tv/tvnamer
+net-analyzer/carl
+net-im/skype-dbus-mock
+sci-libs/bmrblib
+sci-mathematics/relational
+sys-cluster/crmsh
+
 # Michał Górny <mgorny@gentoo.org> (2022-11-17)
 # Rarely used package with very high maintenance cost.  Hacky, requires
 # explicit support code for every architecture, effectively preventing

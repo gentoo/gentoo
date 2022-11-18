@@ -7,6 +7,11 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Michał Górny <mgorny@gentoo.org> (2022-11-17)
+# Require packages masked for removal.
+net-analyzer/netdata kinesis
+kde-apps/kdesdk-meta python
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-17)
 # Requires dev-python/gevent that is masked for removal.
 x11-misc/py3status gevent
 dev-python/rpyc gevent
