@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="C/C++ toolkit for Z39.50v3 clients and servers"
-HOMEPAGE="http://www.indexdata.dk/yaz"
-SRC_URI="http://ftp.indexdata.dk/pub/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.indexdata.com/resources/software/yaz/"
+SRC_URI="https://ftp.indexdata.com/pub/${PN}/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0/5"
