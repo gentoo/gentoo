@@ -1,6 +1,11 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-11-18)
+# net-libs/webkit-gtk is not available on loong yet.
+app-text/atril epub
+mate-base/mate help
+
 # Ionen Wolkens <ionen@gentoo.org> (2022-11-04)
 # media-libs/libffado is not keyworded here yet.
 media-sound/jack2 ieee1394
