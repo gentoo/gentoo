@@ -19,5 +19,6 @@
     <remote-id type="cpan-module">DBD::SQLite::VirtualTable::FileContent::Cursor</remote-id>
     <remote-id type="cpan-module">DBD::SQLite::VirtualTable::PerlData</remote-id>
     <remote-id type="cpan-module">DBD::SQLite::VirtualTable::PerlData::Cursor</remote-id>
+    <remote-id type="github">DBD-SQLite/DBD-SQLite</remote-id>
   </upstream>
 </pkgmetadata>
