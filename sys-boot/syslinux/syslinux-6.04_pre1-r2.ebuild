@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders"
 HOMEPAGE="https://www.syslinux.org/"
@@ -104,6 +104,8 @@ _emake() {
 }
 
 src_compile() {
+	filter-lto #863722
+
 	# build system abuses the LDFLAGS variable to pass arguments to ld
 	unset LDFLAGS
 	if [[ ! -z ${loaderarch} ]]; then

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders"
 HOMEPAGE="https://www.syslinux.org/"
@@ -67,6 +67,8 @@ efimake() {
 }
 
 src_compile() {
+	filter-lto #863722
+
 	local DATE=$(date -u -r NEWS +%Y%m%d)
 	local HEXDATE=$(printf '0x%08x' "${DATE}")
 
