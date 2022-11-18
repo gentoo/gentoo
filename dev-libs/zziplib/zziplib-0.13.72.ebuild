@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 inherit cmake flag-o-matic python-any-r1
 
 DESCRIPTION="Lightweight library for extracting data from files archived in a single zip file"
-HOMEPAGE="https://github.com/gdraheim/zziplib http://zziplib.sourceforge.net/"
+HOMEPAGE="https://github.com/gdraheim/zziplib https://zziplib.sourceforge.net"
 SRC_URI="https://github.com/gdraheim/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
