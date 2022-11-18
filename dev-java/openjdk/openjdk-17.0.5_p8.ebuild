@@ -46,7 +46,7 @@ SRC_URI="
 		$(bootstrap_uri x86 ${X86_XPAK})
 		$(bootstrap_uri riscv ${RISCV_XPAK})
 	)
-	riscv? ( https://dev.gentoo.org/~arthurzam/distfiles/dev-java/openjdk/openjdk-17.0.3-riscv.patch.xz )
+	riscv? ( https://github.com/felixonmars/archriscv-packages/raw/master/java17-openjdk/java17-riscv64.patch )
 "
 
 LICENSE="GPL-2"
@@ -161,7 +161,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	use riscv && eapply "${WORKDIR}"/openjdk-17.0.3-riscv.patch
+	use riscv && eapply "${DISTDIR}"/java17-riscv64.patch
 	default
 	chmod +x configure || die
 }
