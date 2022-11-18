@@ -110,7 +110,7 @@ src_prepare() {
 	# PACKAGE_NAME. Add AT_NOEAUTOHEADER="yes" to prevent those macros from
 	# being reintroduced.
 	# https://bugs.gentoo.org/764959
-	AT_NOEAUTOHEADER="yes" AT_M4DIR="/usr/share/aclocal acinclude" \
+	AT_NOEAUTOHEADER="yes" AT_M4DIR="${BROOT}/usr/share/aclocal acinclude" \
 		eautoreconf
 }
 
