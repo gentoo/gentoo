@@ -21,7 +21,7 @@ REQUIRED_USE="elibc_glibc"
 
 RDEPEND="
 	app-crypt/mit-krb5:0/0
-	dev-util/lttng-ust:0
+	dev-util/lttng-ust:0/2.12
 	sys-libs/pam:0/0
 	sys-libs/zlib:0/1
 	|| (
