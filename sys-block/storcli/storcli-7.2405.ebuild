@@ -31,7 +31,7 @@ src_unpack() {
 src_prepare() {
 	default
 
-	sed -i -e 's|/home/|/usr/share/storcli/|g' JSON-Schema/*.json
+	find JSON-Schema/ -type f -name *.json -exec sed -i -e 's|/home/|/usr/share/storcli/|g' {} \+ || die
 }
 
 src_install() {
