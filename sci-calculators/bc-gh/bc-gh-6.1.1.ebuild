@@ -14,5 +14,5 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 S="${WORKDIR}/bc-${PV}"
 
 src_configure() {
-	EXECSUFFIX="-gh" PREFIX="${EPREFIX}/usr" ./configure.sh -GTl -pGNU || die
+	EXECSUFFIX="-gh" PREFIX="${EPREFIX}/usr" ./configure.sh -pGNU -GTl || die
 }
