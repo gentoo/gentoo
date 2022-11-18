@@ -4,12 +4,16 @@
 EAPI=8
 
 MY_PN=${PN}3
+MECK_PV=0.8.13 # see rebar.config
 
 inherit bash-completion-r1
 
 DESCRIPTION="A sophisticated build-tool for Erlang projects that follows OTP principles"
 HOMEPAGE="https://www.rebar3.org https://github.com/erlang/rebar3"
-SRC_URI="https://github.com/erlang/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/erlang/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+	test? ( https://repo.hex.pm/tarballs/meck-${MECK_PV}.tar )
+"
 S="${WORKDIR}"/${MY_PN}-${PV}
 
 LICENSE="Apache-2.0 MIT BSD"
@@ -24,6 +28,14 @@ RDEPEND="
 	!dev-util/rebar-bin
 "
 DEPEND="${RDEPEND}"
+
+src_unpack() {
+	unpack ${P}.tar.gz
+	mkdir "${S}"/vendor/meck || die
+	tar -O -xf "${DISTDIR}"/meck-${MECK_PV}.tar contents.tar.gz |
+		tar -xzf - -C "${S}"/vendor/meck
+	assert
+}
 
 src_compile() {
 	./bootstrap || die
