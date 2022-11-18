@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/plasma-systemmonitor/"
 
 LICENSE="|| ( GPL-3 GPL-2 )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv"
 IUSE=""
 
 DEPEND="
