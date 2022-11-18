@@ -73,6 +73,7 @@ src_configure() {
 		*) die "Unknown target; please update the ebuild to handle ${CHOST}	" ;;
 	esac
 
+	# Needed for Clang 16
 	append-flags -std=gnu89
 
 	[[ ${CHOST} == *linux* ]] && append-cppflags -DNO_LCHMOD
