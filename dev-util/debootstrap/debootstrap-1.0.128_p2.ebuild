@@ -1,11 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+MY_PV="${PV/_p/+nmu}"
 
 DESCRIPTION="Debian/Ubuntu bootstrap scripts"
 HOMEPAGE="https://packages.qa.debian.org/d/debootstrap.html"
-SRC_URI="mirror://debian/pool/main/d/${PN}/${PN}_${PV}.tar.gz
+SRC_URI="https://salsa.debian.org/installer-team/${PN}/-/archive/${MY_PV}/${PN}-${MY_PV}.tar.bz2
 	mirror://gentoo/devices.tar.gz"
 
 LICENSE="MIT"
@@ -17,19 +19,20 @@ RDEPEND="
 	net-misc/wget
 	sys-devel/binutils
 "
-DOCS=( TODO debian/changelog )
-S=${WORKDIR}/${PN}
+
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_unpack() {
-	unpack ${PN}_${PV}.tar.gz
-	cp "${DISTDIR}"/devices.tar.gz "${S}"
+	unpack "${PN}-${MY_PV}".tar.bz2
+	cp "${DISTDIR}"/devices.tar.gz "${S}" || die
 }
 
 src_compile() {
-	return
+	:
 }
 
 src_install() {
+	local DOCS=( TODO debian/changelog )
 	default
 	doman debootstrap.8
 }
