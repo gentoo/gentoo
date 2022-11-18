@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">Clone</remote-id>
     <remote-id type="cpan-module">Clone</remote-id>
+    <remote-id type="github">garu/Clone</remote-id>
   </upstream>
 </pkgmetadata>
