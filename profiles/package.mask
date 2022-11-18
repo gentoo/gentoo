@@ -594,7 +594,6 @@ sys-devel/automake:1.11
 >=mail-client/evolution-3.46
 >=mail-client/geary-43
 >=media-gfx/gnome-photos-43
-media-libs/libshumate
 >=net-irc/polari-43
 net-libs/dleyna
 >=net-libs/gnome-online-accounts-3.46
