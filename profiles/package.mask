@@ -600,7 +600,6 @@ net-libs/dleyna
 >=net-libs/gssdp-1.6
 >=net-libs/gupnp-1.6
 net-libs/phodav:3.0
-net-libs/rest:1.0
 net-libs/uhttpmock:1.0
 net-libs/webkit-gtk:4.1
 net-libs/webkit-gtk:5
