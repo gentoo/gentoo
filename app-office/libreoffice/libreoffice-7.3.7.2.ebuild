@@ -18,7 +18,7 @@ DEV_URI="
 ADDONS_URI="https://dev-www.libreoffice.org/src/"
 
 BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
-PATCHSET="${PN}-7.3.5.2-patchset-01.tar.xz"
+PATCHSET="${PN}-7.3.7.2-patchset-01.tar.xz"
 
 [[ ${MY_PV} == *9999* ]] && inherit git-r3
 inherit autotools bash-completion-r1 check-reqs flag-o-matic java-pkg-opt-2 multiprocessing python-single-r1 qmake-utils toolchain-funcs xdg-utils
@@ -26,8 +26,10 @@ inherit autotools bash-completion-r1 check-reqs flag-o-matic java-pkg-opt-2 mult
 DESCRIPTION="A full office productivity suite"
 HOMEPAGE="https://www.libreoffice.org"
 SRC_URI="branding? ( https://dev.gentoo.org/~dilfridge/distfiles/${BRANDING} )"
-[[ -n ${PATCHSET} ]] && SRC_URI+=" https://dev.gentoo.org/~xen0n/distfiles/app-office/libreoffice/${PATCHSET}"
-
+PATCH_URIS=(
+	https://dev.gentoo.org/~{dlan,xen0n}/distfiles/app-office/libreoffice/${PATCHSET}
+)
+[[ -n ${PATCHSET} ]] && SRC_URI+=" ${PATCH_URIS[@]}"
 # Split modules following git/tarballs; Core MUST be first!
 # Help is used for the image generator
 # Only release has the tarballs
