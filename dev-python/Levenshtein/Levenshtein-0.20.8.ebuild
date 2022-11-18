@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv"
 
 DEPEND="
 	>=dev-cpp/rapidfuzz-cpp-1.7.0
