@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PTV=0.5
 LUA_COMPAT=( lua5-2 lua5-3 lua5-4 )
