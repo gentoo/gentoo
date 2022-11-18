@@ -8,7 +8,7 @@ inherit autotools
 MY_PN="iODBC"
 
 DESCRIPTION="ODBC Interface for Linux"
-HOMEPAGE="http://www.iodbc.org/"
+HOMEPAGE="https://www.iodbc.org/"
 SRC_URI="https://github.com/openlink/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
