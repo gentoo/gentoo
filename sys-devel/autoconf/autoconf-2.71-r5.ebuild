@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-AC_C_BIGENDIAN-lto.patch
 	"${FILESDIR}"/${P}-K-R-decls-clang.patch
 	"${FILESDIR}"/${P}-make-4.4.patch
+	"${FILESDIR}"/${P}-K-R-decls-clang-deux.patch
 )
 
 src_prepare() {
