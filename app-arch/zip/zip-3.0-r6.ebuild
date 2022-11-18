@@ -7,7 +7,7 @@ inherit edo toolchain-funcs flag-o-matic
 
 MY_P="${PN}${PV//.}"
 DESCRIPTION="Info ZIP (encryption support)"
-HOMEPAGE="http://www.info-zip.org/"
+HOMEPAGE="https://infozip.sourceforge.net/Zip.html"
 SRC_URI="mirror://sourceforge/infozip/${MY_P}.zip"
 S="${WORKDIR}"/${MY_P}
 
