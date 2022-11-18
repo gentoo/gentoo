@@ -6,10 +6,10 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Check C programs for vulnerabilities and programming mistakes"
-HOMEPAGE="http://lclint.cs.virginia.edu/"
-SRC_URI="http://www.splint.org/downloads/${P}.src.tgz"
+HOMEPAGE="https://splint.org/"
+SRC_URI="https://splint.org/downloads/${P}.src.tgz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~ppc-macos ~x64-macos"
 
