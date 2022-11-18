@@ -11,7 +11,7 @@ SRC_URI="https://github.com/clbr/radeontop/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~loong ~ppc64 ~x86"
 IUSE="nls video_cards_amdgpu video_cards_radeon"
 REQUIRED_USE="
 	|| ( video_cards_amdgpu video_cards_radeon )
