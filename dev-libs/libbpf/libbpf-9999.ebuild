@@ -34,7 +34,7 @@ src_configure() {
 	append-cflags -fPIC
 	tc-export CC AR
 	export LIBSUBDIR="$(get_libdir)"
-	export LIBDIR="${EPREFIX}/usr/$(get_libdir)"
+	export PREFIX="${EPREFIX}/usr"
 	export V=1
 }
 
