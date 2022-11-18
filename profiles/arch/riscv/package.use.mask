@@ -209,3 +209,4 @@ sci-libs/opencascade vtk
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
 www-servers/nginx pcre-jit
+www-servers/varnish jit
