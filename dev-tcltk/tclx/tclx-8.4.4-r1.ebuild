@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,6 +22,8 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.4-varinit.patch
 	"${FILESDIR}"/${PN}-8.4-ldflags.patch
+	"${FILESDIR}"/${P}-configure-clang16.patch
+	"${FILESDIR}"/${P}-configure-clang16-deux.patch
 )
 
 src_prepare() {
