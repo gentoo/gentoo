@@ -9,7 +9,7 @@ PYTHON_REQ_USE="xml(+)"
 inherit cmake flag-o-matic python-any-r1
 
 DESCRIPTION="Lightweight library for extracting data from files archived in a single zip file"
-HOMEPAGE="https://github.com/gdraheim/zziplib http://zziplib.sourceforge.net/"
+HOMEPAGE="https://github.com/gdraheim/zziplib https://zziplib.sourceforge.net"
 SRC_URI="https://github.com/gdraheim/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
