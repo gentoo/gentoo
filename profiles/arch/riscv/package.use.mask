@@ -1,6 +1,10 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Xin Yang <yangmame@icloud.com> (2022-11-10)
+# requires qtwebengine, bug #879093
+net-misc/seafile-client shibboleth
+
 # Sam James <sam@gentoo.org> (2022-10-29)
 # pandoc not keyworded here, bug #878355
 app-admin/conky doc
