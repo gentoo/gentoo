@@ -9,7 +9,7 @@ MY_P="${MY_PN}"-"${PV}"
 inherit cmake
 
 DESCRIPTION="High-performance, full-featured text search engine based off of lucene in C++"
-HOMEPAGE="http://clucene.sourceforge.net/"
+HOMEPAGE="https://clucene.sourceforge.net"
 SRC_URI="mirror://sourceforge/clucene/${MY_P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 LGPL-2.1 )"
