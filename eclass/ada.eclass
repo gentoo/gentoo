@@ -205,7 +205,7 @@ ada_export() {
 			slot=9.3.1
 			;;
 		gnat_2021)
-			gcc_pv=10.3.1
+			gcc_pv=10
 			slot=10
 			;;
 		gcc_12_2_0)
