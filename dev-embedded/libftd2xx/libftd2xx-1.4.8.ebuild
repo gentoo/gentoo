@@ -4,12 +4,12 @@
 EAPI=7
 
 DESCRIPTION="Library that allows a direct access to a USB device"
-HOMEPAGE="http://www.ftdichip.com/Drivers/D2XX.htm"
+HOMEPAGE="https://www.ftdichip.com/drivers/d2xx-drivers/"
 # NOTE: We could include other arm versions here too.
 SRC_URI="
-	amd64? ( http://www.ftdichip.com/Drivers/D2XX/Linux/${PN}-x86_64-${PV}.gz -> ${PN}-x86_64-${PV}.tar.gz )
-	arm? ( http://www.ftdichip.com/Drivers/D2XX/Linux/${PN}-arm-v6-hf-${PV}.gz -> ${PN}-arm-v6-hf-${PV}.tar.gz )
-	x86? ( http://www.ftdichip.com/Drivers/D2XX/Linux/${PN}-i386-${PV}.gz -> ${PN}-i386-${PV}.tar.gz )
+	amd64? ( https://www.ftdichip.com/Drivers/D2XX/Linux/${PN}-x86_64-${PV}.gz -> ${PN}-x86_64-${PV}.tar.gz )
+	arm? ( https://www.ftdichip.com/Drivers/D2XX/Linux/${PN}-arm-v6-hf-${PV}.gz -> ${PN}-arm-v6-hf-${PV}.tar.gz )
+	x86? ( https://www.ftdichip.com/Drivers/D2XX/Linux/${PN}-i386-${PV}.gz -> ${PN}-i386-${PV}.tar.gz )
 "
 S="${WORKDIR}"
 
