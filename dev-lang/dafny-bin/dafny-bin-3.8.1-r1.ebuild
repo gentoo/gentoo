@@ -14,7 +14,7 @@ REQUIRED_USE="elibc_glibc"
 
 RDEPEND="
 	dev-libs/userspace-rcu
-	dev-util/lttng-ust
+	dev-util/lttng-ust:0/2.12
 	sci-mathematics/z3
 "
 BDEPEND="app-arch/unzip"
