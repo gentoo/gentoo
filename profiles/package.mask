@@ -286,14 +286,6 @@ dev-python/nose_warnings_filters
 # migrate to a newer branch.
 <dev-libs/openssl-1.1.1
 
-# Joshua Kinard <kumba@gentoo.org> (2022-10-13)
-# Difficult-to-resolve build issues on modern toolchains,
-# not publicly maintained, developer contact is difficult,
-# and project website has SSL certificate issues.
-# Bug #838109.
-# Removal on 2022-11-13
-net-misc/spread
-
 # Sam James <sam@gentoo.org> (2022-10-12)
 # Upstream has withdrawn these releases because of a (yet unexplained)
 # "significant regression".
