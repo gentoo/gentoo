@@ -1,0 +1,31 @@
+Add pthread to libdevmapper pkgconfig file
+
+--- a/libdm/libdevmapper.pc.in
++++ b/libdm/libdevmapper.pc.in
+@@ -9,4 +9,4 @@
+ Cflags: -I${includedir} 
+ Libs: -L${libdir} -ldevmapper
+ Requires.private: @SELINUX_PC@ @UDEV_PC@
+-Libs.private: -lm @RT_LIBS@
++Libs.private: -lm @RT_LIBS@ @PTHREAD_LIBS@
+--- a/tools/Makefile.in
++++ b/tools/Makefile.in
+@@ -89,6 +89,7 @@
+   TARGETS += lvm.static
+   INSTALL_LVM_TARGETS += install_tools_static
+   INSTALL_CMDLIB_TARGETS += install_cmdlib_static
++  STATIC_LIBS += @PTHREAD_LIBS@
+ endif
+ 
+ LIB_VERSION = $(LIB_VERSION_LVM)
+@@ -114,6 +115,10 @@
+ 
+ include $(top_builddir)/make.tmpl
+ 
++ifeq ("@STATIC_LINK@", "yes")
++    STATIC_LIBS += @PTHREAD_LIBS@
++endif
++
+ device-mapper:
+ 
+ all: device-mapper

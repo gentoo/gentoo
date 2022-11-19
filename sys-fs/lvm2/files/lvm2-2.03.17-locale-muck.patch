@@ -1,0 +1,11 @@
+--- a/make.tmpl.in
++++ b/make.tmpl.in
+@@ -571,7 +571,7 @@
+ 	( cat $(srcdir)/.exported_symbols; \
+ 	  if test -n "$(EXPORTED_HEADER)"; then \
+ 		$(CC) -E -P $(INCLUDES) $(DEFS) $(EXPORTED_HEADER) | \
+-		$(SED) -ne "/^typedef|}/!s/.*[ *]\($(EXPORTED_FN_PREFIX)_[a-z0-9_]*\)(.*/\1/p"; \
++		LC_ALL=C $(SED) -ne "/^typedef|}/!s/.*[ *]\($(EXPORTED_FN_PREFIX)_[a-z0-9_]*\)(.*/\1/p"; \
+ 	  fi \
+ 	) > $@
+ 

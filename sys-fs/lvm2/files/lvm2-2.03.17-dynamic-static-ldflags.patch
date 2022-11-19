@@ -1,0 +1,50 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -32,6 +32,7 @@
+ 	linux*)
+ 		# equivalent to -rdynamic
+ 		ELDFLAGS="-Wl,--export-dynamic"
++		STATIC_LDFLAGS="-Wl,--no-export-dynamic"
+ 		# FIXME Generate list and use --dynamic-list=.dlopen.sym
+ 		CLDWHOLEARCHIVE="-Wl,-whole-archive"
+ 		CLDNOWHOLEARCHIVE="-Wl,-no-whole-archive"
+@@ -1945,6 +1946,7 @@
+ AC_SUBST(SYSCONFDIR)
+ AC_SUBST(SNAPSHOTS)
+ AC_SUBST(STATICDIR)
++AC_SUBST(STATIC_LDFLAGS)
+ AC_SUBST(STATIC_LINK)
+ AC_SUBST(TESTSUITE_DATA)
+ AC_SUBST(THIN)
+--- a/daemons/dmeventd/Makefile.in
++++ b/daemons/dmeventd/Makefile.in
+@@ -76,7 +76,7 @@
+ 
+ dmeventd.static: $(LIB_STATIC) dmeventd.o
+ 	@echo "    [CC] $@"
+-	$(Q) $(CC) $(CFLAGS) $(LDFLAGS) -static dmeventd.o \
++	$(Q) $(CC) $(CFLAGS) $(LDFLAGS) $(STATIC_LDFLAGS) -static dmeventd.o \
+ 		-o $@ $(DL_LIBS) $(DMEVENT_LIBS) $(LIBS) $(STATIC_LIBS)
+ 
+ ifeq ("@PKGCONFIG@", "yes")
+--- a/make.tmpl.in
++++ b/make.tmpl.in
+@@ -64,6 +64,7 @@
+ # FIXME set this only where it's needed, not globally?
+ CFLAGS ?= @COPTIMISE_FLAG@ @CFLAGS@
+ LDFLAGS ?= @LDFLAGS@
++STATIC_LDFLAGS += @STATIC_LDFLAGS@
+ CLDFLAGS += @CLDFLAGS@
+ ELDFLAGS += @ELDFLAGS@
+ LDDEPS += @LDDEPS@
+--- a/tools/Makefile.in
++++ b/tools/Makefile.in
+@@ -137,7 +137,7 @@
+ 
+ lvm.static: $(OBJECTS) lvm-static.o $(LVMINTERNAL_LIBS)
+ 	@echo "    [CC] $@"
+-	$(Q) $(CC) $(CFLAGS) $(LDFLAGS) -static -L$(interfacebuilddir) \
++	$(Q) $(CC) $(CFLAGS) $(LDFLAGS) $(STATIC_LDFLAGS) -static -L$(interfacebuilddir) \
+ 		-o $@ $+ $(LVMLIBS) $(STATIC_LIBS)
+ 
+ liblvm2cmd.a: $(top_builddir)/lib/liblvm-internal.a $(OBJECTS) lvmcmdlib.o lvm2cmd.o
