@@ -16,6 +16,7 @@ mate-extra/caja-extensions cdr
 mate-extra/mate-screensaver pam
 media-gfx/gimp gnome
 media-gfx/gthumb cdr
+media-sound/easytag nautilus
 net-libs/libnma pkcs11
 net-vpn/networkmanager-openconnect gtk
 net-vpn/networkmanager-openvpn gtk
