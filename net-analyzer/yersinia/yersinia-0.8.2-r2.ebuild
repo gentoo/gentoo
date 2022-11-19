@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.1-no-ncurses.patch
 	"${FILESDIR}"/${PN}-0.7.3-tinfo.patch
 	"${FILESDIR}"/${PN}-0.8.2-configure-clang16.patch
+	"${FILESDIR}"/${PN}-0.8.2-configure-clang16-deux.patch
 )
 
 src_prepare() {
