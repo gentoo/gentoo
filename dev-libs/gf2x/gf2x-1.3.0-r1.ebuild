@@ -20,6 +20,7 @@ IUSE+=" ${IUSE_CPU_FLAGS// / cpu_flags_x86_}"
 PATCHES=(
 	"${FILESDIR}/fno-common.patch"
 	"${FILESDIR}/${P}-0001-src-tunefft.c-add-include-statement-for-MIN-and-MAX.patch"
+	"${FILESDIR}/${P}-configure-clang16.patch"
 )
 
 src_prepare() {
