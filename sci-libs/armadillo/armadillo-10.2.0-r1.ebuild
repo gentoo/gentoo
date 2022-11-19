@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ CMAKE_IN_SOURCE_BUILD=1
 inherit cmake toolchain-funcs multilib
 
 DESCRIPTION="Streamlined C++ linear algebra library"
-HOMEPAGE="http://arma.sourceforge.net/"
+HOMEPAGE="https://arma.sourceforge.net"
 SRC_URI="mirror://sourceforge/arma/${P}.tar.xz"
 
 LICENSE="Apache-2.0"
