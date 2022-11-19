@@ -19,7 +19,7 @@ DEPEND="acct-group/lxd
 	app-arch/xz-utils
 	>=app-containers/lxc-3.0.0[apparmor?,seccomp(+)]
 	dev-db/sqlite:3
-	dev-libs/dqlite
+	dev-libs/dqlite:=
 	dev-libs/lzo
 	dev-libs/raft[lz4]
 	>=dev-util/xdelta-3.0[lzma(+)]
