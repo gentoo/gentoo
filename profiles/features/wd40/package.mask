@@ -93,6 +93,7 @@ media-gfx/shotwell
 media-libs/libavif
 >=media-libs/libopenraw-0.3.2
 media-sound/sound-juicer
+media-video/ogmrip
 media-video/rav1e
 >=net-irc/polari-3.37
 net-libs/gnome-online-accounts
