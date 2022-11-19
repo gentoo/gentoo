@@ -1,0 +1,25 @@
+https://github.com/zlib-ng/minizip-ng/pull/657
+
+From 3aa42e0520e4e7ffeae5a3def458c7ee0fefacb9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 19 Nov 2022 03:09:34 +0000
+Subject: [PATCH] Search system for GTest before downloading. #654
+
+Distributions often do builds with no network access available
+for both security reasons and also to ensure reproducibility.
+
+This change tells CMake to query the system for a copy of gtest,
+but if it's not available, it'll fall back to downloading via
+FetchContent.
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.12)
+ 
+ include(FetchContent)
+ 
++find_package(GTest)
++
+ enable_language(CXX)
+ 
+ if(NOT TARGET GTest::GTest)
+
