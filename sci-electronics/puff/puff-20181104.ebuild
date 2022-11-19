@@ -25,6 +25,8 @@ src_prepare() {
 	eapply -p0 "${FILESDIR}"/$P-Makefile.patch
 	# add missing LDPATH for libX11.so
 	sed -i -e "s:-lX11:-L/usr/$(get_libdir) -lX11:g" Makefile || die
+	# drop no longer needed and now unsupported paramter '-T' (bug #8802225)
+	sed -i -e "s: -T : :g" Makefile || die
 	eapply_user
 }
 
