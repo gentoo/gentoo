@@ -93,6 +93,7 @@ net-news/newsboat
 net-p2p/deluge
 ros-meta/ros_comm
 sci-geosciences/gnome-maps
+sys-apps/gnome-disk-utility
 >=sys-apps/bat-0.18.1
 virtual/rust
 www-apps/radicale
