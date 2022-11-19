@@ -12,23 +12,14 @@ SRC_URI="https://github.com/ocaml/dune/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
-IUSE="emacs test"
-RESTRICT="strip !test? ( test )"
+IUSE="emacs"
+RESTRICT="strip test"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.08:=
 	emacs? ( >=app-editors/emacs-23.1:* )
-	!<dev-ml/dune-configurator-3
 "
-DEPEND="
-	${RDEPEND}
-	dev-ml/findlib
-	test? (
-		dev-ml/core_bench
-		dev-ml/ppx_bench
-		dev-ml/ppx_expect
-	)
-"
+DEPEND="${RDEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/dune"
 
@@ -38,11 +29,9 @@ SITEFILE="50${PN}-gentoo.el"
 src_prepare() {
 	default
 
-	# This allows `dune --version` to output the correct version instead of "n/a"
+	# This allows `dune --version` to output the correct version
+	# instead of "n/a"
 	sed -i "/^(name dune)/a (version ${PV})" dune-project || die
-	# This enables dune-configurator to use the vendored csexp module
-	sed -i 's/stdune.csexp/dune-configurator.csexp/' vendor/csexp/src/dune \
-		|| die
 }
 
 src_configure() {
@@ -54,7 +43,7 @@ src_configure() {
 
 src_compile() {
 	ocaml bootstrap.ml -j $(makeopts_jobs) || die
-	./dune.exe build -p "${PN}",dune-configurator --profile dune-bootstrap \
+	./dune.exe build -p "${PN}" --profile dune-bootstrap \
 		-j $(makeopts_jobs) \
 		--display short || die
 
@@ -63,13 +52,11 @@ src_compile() {
 
 src_install() {
 	./dune.exe install --destdir="${D}" --prefix=/usr/ \
-		--libdir=$(ocamlc -where) dune dune-configurator \
+		--libdir=$(ocamlc -where) "${PN}" \
 		|| die
 
-	rm -r "${D}"/usr/doc/dune-configurator || die
 	dodir /usr/share/doc
-	mv "${D}"/usr/doc/dune \
-		"${D}"/usr/share/doc/${PF} || die
+	mv "${D}"/usr/doc/dune "${D}"/usr/share/doc/${PF} || die
 	rmdir "${D}"/usr/doc || die
 
 	if use emacs ; then
