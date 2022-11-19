@@ -10,6 +10,7 @@ dev-libs/totem-pl-parser test
 gnome-base/gnome-settings-daemon modemmanager
 gnome-base/nautilus previewer
 lxqt-base/lxqt-meta trash
+mate-extra/mate-screensaver pam
 net-libs/libnma pkcs11
 net-vpn/networkmanager-openconnect gtk
 net-vpn/networkmanager-openvpn gtk
