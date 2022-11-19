@@ -1,0 +1,20 @@
+https://github.com/file/file/commit/4502517cc7316569d5902ab65c97b3b8e46f8a25
+https://github.com/file/file/commit/8c845b7bbad085678695d3e70467b8eec3dfa7af
+--- a/configure
++++ b/configure
+@@ -14037,13 +14037,14 @@ else $as_nop
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <time.h>
++#include <stdlib.h>
+ int
+ main (void)
+ {
+ #if !HAVE_DECL_DAYLIGHT
+ extern int daylight;
+ #endif
+-atoi(daylight);
++daylight = atoi("1");
+   ;
+   return 0;
+ }
