@@ -81,6 +81,7 @@ gnome-base/gnome-menus
 >=gnome-base/gnome-shell-3.38
 gnome-base/gvfs
 >=gnome-base/librsvg-2.41
+gnome-base/nautilus
 gnome-extra/evolution-data-server
 gnome-extra/gnome-browser-connector
 gnome-extra/gnome-tweaks
