@@ -112,6 +112,7 @@ virtual/rust
 www-apps/radicale
 www-client/epiphany
 xfce-base/thunar-volman
+xfce-base/xfce4-meta
 x11-libs/libcryptui
 x11-misc/alacarte
 >=x11-themes/adwaita-icon-theme-3.36
