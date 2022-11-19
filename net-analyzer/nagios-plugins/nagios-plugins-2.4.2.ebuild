@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit flag-o-matic
-
 DESCRIPTION="Official plugins for Nagios"
 HOMEPAGE="https://nagios-plugins.org/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/release-${PV}/${P}.tar.gz"
@@ -64,10 +62,6 @@ DOCS=(
 	THANKS
 )
 
-PATCHES=(
-	"${FILESDIR}/define-own-mysql-port-constant.patch"
-)
-
 src_prepare() {
 	default
 
@@ -78,10 +72,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# Disable -fstrict-aliasing until check_ntp can be fixed,
-	# https://github.com/nagios-plugins/nagios-plugins/issues/665
-	append-cflags $(test-flags-CC -fno-strict-aliasing)
-
 	# Use an array to prevent econf from mangling the ping args.
 	local myconf=()
 
