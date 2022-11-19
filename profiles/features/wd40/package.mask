@@ -99,5 +99,6 @@ sys-apps/gnome-disk-utility
 >=sys-apps/bat-0.18.1
 virtual/rust
 www-apps/radicale
+x11-misc/alacarte
 >=x11-themes/adwaita-icon-theme-3.36
 x11-plugins/wmpasman
