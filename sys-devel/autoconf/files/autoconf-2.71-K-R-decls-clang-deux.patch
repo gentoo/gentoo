@@ -1,0 +1,94 @@
+https://bugs.gentoo.org/870412
+https://git.savannah.gnu.org/cgit/autoconf.git/commit/?id=bf5a75953b6d504f0405b1ca33b039b8dd39eef4
+
+Backport the K&R decls fix to 2.71 to avoid configure tests
+failing (often "silently", i.e. doesn't fail the build of
+the package overall, just leads to wrong results) with
+newer compilers like the upcoming Clang 16.
+
+From bf5a75953b6d504f0405b1ca33b039b8dd39eef4 Mon Sep 17 00:00:00 2001
+From: Zack Weinberg <zackw@panix.com>
+Date: Thu, 10 Nov 2022 12:05:30 -0500
+Subject: More fixes for compilers that reject K&R function definitions.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes all of the remaining failures exposed by running the
+testsuite with GCC 12 and
+CC='cc -Wimplicit-function-declaration -Wold-style-definition
+       -Wimplicit-int -Werror'
+.
+
+* lib/autoconf/c.m4 (_AC_C_C89_TEST_GLOBALS): Don’t use K&R function
+  definitions.
+* lib/autoconf/specific.m4 (AC_SYS_RESTARTABLE_SYSCALLS): Likewise.
+  (AC_FUNC_MKTIME): Declare functions taking no arguments as ‘fn (void)’
+  not ‘fn ()’.
+* lib/autoconf/c.m4 (_AC_C_C99_TEST_GLOBALS): Declare free().
+--- a/lib/autoconf/c.m4
++++ b/lib/autoconf/c.m4
+@@ -1153,9 +1153,7 @@ struct stat;
+ /* Most of the following tests are stolen from RCS 5.7 src/conf.sh.  */
+ struct buf { int x; };
+ struct buf * (*rcsopen) (struct buf *, struct stat *, int);
+-static char *e (p, i)
+-     char **p;
+-     int i;
++static char *e (char **p, int i)
+ {
+   return p[i];
+ }
+@@ -1212,6 +1210,7 @@ extern int puts (const char *);
+ extern int printf (const char *, ...);
+ extern int dprintf (int, const char *, ...);
+ extern void *malloc (size_t);
++extern void free (void *);
+ 
+ // Check varargs macros.  These examples are taken from C99 6.10.3.5.
+ // dprintf is used instead of fprintf to avoid needing to declare
+--- a/lib/autoconf/functions.m4
++++ b/lib/autoconf/functions.m4
+@@ -1091,7 +1091,7 @@ static const char *tz_strings[] = {
+ /* Return 0 if mktime fails to convert a date in the spring-forward gap.
+    Based on a problem report from Andreas Jaeger.  */
+ static int
+-spring_forward_gap ()
++spring_forward_gap (void)
+ {
+   /* glibc (up to about 1998-10-07) failed this test. */
+   struct tm tm;
+@@ -1128,7 +1128,7 @@ mktime_test (time_t now)
+ }
+ 
+ static int
+-irix_6_4_bug ()
++irix_6_4_bug (void)
+ {
+   /* Based on code from Ariel Faigon.  */
+   struct tm tm;
+@@ -1170,7 +1170,7 @@ bigtime_test (int j)
+ }
+ 
+ static int
+-year_2050_test ()
++year_2050_test (void)
+ {
+   /* The correct answer for 2050-02-01 00:00:00 in Pacific time,
+      ignoring leap seconds.  */
+--- a/lib/autoconf/specific.m4
++++ b/lib/autoconf/specific.m4
+@@ -361,10 +361,9 @@ AC_INCLUDES_DEFAULT
+ /* Some platforms explicitly require an extern "C" signal handler
+    when using C++. */
+ #ifdef __cplusplus
+-extern "C" void ucatch (int dummy) { }
+-#else
+-void ucatch (dummy) int dummy; { }
++extern "C"
+ #endif
++void ucatch (int dummy) { }
+ 
+ int
+ main (void)
+cgit v1.1

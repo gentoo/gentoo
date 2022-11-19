@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-11-19)
+# Deps not stable on ppc
+sys-devel/clang-common default-lld
+sys-devel/llvm binutils-plugin z3 xar
+
 # Michał Górny <mgorny@gentoo.org> (2022-11-06)
 # Unmask the target on python-exec while it's masked elsewhere.
 dev-lang/python-exec -python_targets_python3_11

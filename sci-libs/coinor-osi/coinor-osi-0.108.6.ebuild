@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ LICENSE="EPL-1.0"
 # major soname component
 SLOT="0/1"
 
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~loong ~x86 ~amd64-linux ~x86-linux"
 
 # No USE=glpk because upstream only supports an ancient version of it. The
 # following issues were all closed by... documenting that it doesn't work:

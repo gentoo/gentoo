@@ -27,7 +27,7 @@ SRC_URI="
 
 LICENSE="GPL-2+ SGI-B-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv"
 IUSE="debug deep-sky doc gps media nls qt6 +scripting +show-my-sky stars telescope test webengine +xlsx"
 # Qt6 QAudioOutput crashes on startup; qt 6.4.0
 # https://bugreports.qt.io/browse/QTBUG-108221

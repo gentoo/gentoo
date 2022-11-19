@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	S="${WORKDIR}/taskflow-${PV}"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	S="${WORKDIR}/taskflow-${PV}"
 fi
 

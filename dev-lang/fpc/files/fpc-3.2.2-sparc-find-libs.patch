@@ -1,0 +1,16 @@
+# Fix finding a user's library dirs on sparc64.
+# Patch adapted from https://gitlab.com/freepascal.org/fpc/source/-/commit/aca84a812800fce7ef0377b43501a8efae755a13
+
+diff --git a/compiler/systems/t_linux.pas b/compiler/systems/t_linux.pas
+index 2dad1d321cc246ae69996a7df29270762a2f1fec..9768d756acbabe9edeac3c9378c0be0b6d5d4d9d 100644
+--- a/compiler/systems/t_linux.pas
++++ b/compiler/systems/t_linux.pas
+@@ -182,5 +199,8 @@ procedure SetupLibrarySearchPath;
+ {$ifdef sparc64}
+       LibrarySearchPath.AddLibraryPath(sysrootpath,'=/usr/lib/sparc64-linux-gnu',true);
++      LibrarySearchPath.AddLibraryPath(sysrootpath,'=/lib/sparc64-linux-gnu',true);
++      LibrarySearchPath.AddLibraryPath(sysrootpath,'=/usr/lib64',true);
++      LibrarySearchPath.AddLibraryPath(sysrootpath,'=/lib64',true);
+ {$endif sparc64}
+ {$ifdef riscv32}
+       LibrarySearchPath.AddLibraryPath(sysrootpath,'=/usr/lib/riscv32-linux-gnu',true);

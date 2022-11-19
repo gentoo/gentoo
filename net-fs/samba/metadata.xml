@@ -10,7 +10,6 @@
 	</longdescription>
 	<use>
 		<flag name="addc">Enable Active Directory Domain Controller support</flag>
-		<flag name="addns">Enable AD DNS integration</flag>
 		<flag name="ads">Enable Active Directory support</flag>
 		<flag name="ceph">Enable support for Ceph distributed filesystem via <pkg>sys-cluster/ceph</pkg></flag>
 		<flag name="client">Enables the client part</flag>
@@ -19,7 +18,6 @@
 		<flag name="gpg">Use <pkg>app-crypt/gpgme</pkg> for AD DC</flag>
 		<flag name="json">Enable json audit support through <pkg>dev-libs/jansson</pkg></flag>
 		<flag name="iprint">Enabling iPrint technology by Novell</flag>
-		<flag name="ntvfs">Enable support for NTVFS fileserver</flag>
 		<flag name="profiling-data">Enables support for collecting profiling data</flag>
 		<flag name="quota">Enables support for user quotas</flag>
 		<flag name="regedit">Enable support for regedit command-line tool</flag>

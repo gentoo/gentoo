@@ -13,19 +13,19 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
-inherit autotools ${GIT_ECLASS} linux-info
+inherit autotools ${GIT_ECLASS} flag-o-matic linux-info
 
 DESCRIPTION="tool to diagnose issues with power consumption and power management"
 HOMEPAGE="https://01.org/powertop/ https://github.com/fenrus75/powertop/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="nls unicode X"
+IUSE="nls X"
 
 DEPEND="
 	dev-libs/libnl:3
 	sys-apps/pciutils
-	sys-libs/ncurses:=[unicode(+)?]
+	sys-libs/ncurses:=[unicode(+)]
 "
 
 BDEPEND="
@@ -108,6 +108,6 @@ src_prepare() {
 }
 
 src_configure() {
-	export ac_cv_search_delwin=$(usex unicode -lncursesw -lncurses)
+	append-lfs-flags
 	econf $(use_enable nls)
 }

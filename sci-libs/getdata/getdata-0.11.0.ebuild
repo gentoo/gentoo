@@ -8,11 +8,11 @@ FORTRAN_NEEDED=fortran
 inherit autotools fortran-2 flag-o-matic
 
 DESCRIPTION="Reference implementation of the Dirfile, format for time-ordered binary data"
-HOMEPAGE="http://getdata.sourceforge.net/"
+HOMEPAGE="https://getdata.sourceforge.net"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.xz"
 
 SLOT="0"
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 cxx debug flac fortran lzma perl static-libs"
 

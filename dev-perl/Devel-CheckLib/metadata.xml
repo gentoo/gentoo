@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">Devel-CheckLib</remote-id>
     <remote-id type="cpan-module">Devel::CheckLib</remote-id>
+    <remote-id type="github">mattn/p5-Devel-CheckLib</remote-id>
   </upstream>
 </pkgmetadata>

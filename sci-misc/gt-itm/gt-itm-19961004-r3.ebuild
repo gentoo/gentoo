@@ -6,10 +6,10 @@ EAPI=8
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Routines to generate / analyze graphs using models for internetwork topology"
-HOMEPAGE="http://www.cc.gatech.edu/fac/Ellen.Zegura/graphs.html
-		http://www.isi.edu/nsnam/ns/ns-topogen.html#gt-itm"
-SRC_URI="http://www.cc.gatech.edu/fac/Ellen.Zegura/gt-itm/gt-itm.tar.gz -> ${P}.tar.gz
-		http://www.isi.edu/nsnam/dist/sgb2ns.tar.gz -> sgb2ns-${PV}.tar.gz"
+HOMEPAGE="https://www.cc.gatech.edu/fac/Ellen.Zegura/graphs.html
+		https://www.isi.edu/nsnam/ns/ns-topogen.html#gt-itm"
+SRC_URI="https://www.cc.gatech.edu/fac/Ellen.Zegura/gt-itm/gt-itm.tar.gz -> ${P}.tar.gz
+		https://www.isi.edu/nsnam/dist/sgb2ns.tar.gz -> sgb2ns-${PV}.tar.gz"
 S="${WORKDIR}/${PN}"
 S2="${WORKDIR}/sgb2ns"
 

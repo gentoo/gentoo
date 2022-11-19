@@ -10,7 +10,7 @@ inherit autotools db-use multilib multilib-minimal python-any-r1 virtualx flag-o
 
 MY_P="${P}"
 DESCRIPTION="Kerberos 5 implementation from KTH"
-HOMEPAGE="http://www.h5l.org/"
+HOMEPAGE="https://www.heimdal.software/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD"

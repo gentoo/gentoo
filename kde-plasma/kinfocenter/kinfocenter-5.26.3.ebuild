@@ -15,7 +15,7 @@ SRC_URI+=" https://www.gentoo.org/assets/img/logo/gentoo-3d-small.png -> glogo-s
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv"
 IUSE="gles2-only usb"
 
 DEPEND="

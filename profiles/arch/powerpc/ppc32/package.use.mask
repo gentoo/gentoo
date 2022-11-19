@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-11-19)
+# Fails to compile because of size, bug #829602.
+sys-devel/clang extra
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-09-23)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.

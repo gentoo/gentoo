@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://code.videolan.org/videolan/libplacebo.git"
 	inherit git-r3
 else
-	GLAD_PV=2.0.2
+	GLAD_PV=2.0.1 # verify bug #881999 before bumping
 	SRC_URI="
 		https://code.videolan.org/videolan/libplacebo/-/archive/v${PV}/libplacebo-v${PV}.tar.gz
 		opengl? ( https://github.com/Dav1dde/glad/archive/refs/tags/v${GLAD_PV}.tar.gz -> ${PN}-glad-${GLAD_PV}.tar.gz )"
@@ -42,8 +42,9 @@ DEPEND="
 	${RDEPEND}
 	vulkan? ( dev-util/vulkan-headers )"
 BDEPEND="
+	${PYTHON_DEPS}
 	virtual/pkgconfig
-	vulkan? ( $(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]') )"
+	opengl? ( $(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]') )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.229.1-llvm-libunwind.patch
@@ -52,11 +53,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]"
-}
-
-pkg_setup() {
-	use vulkan && python-any-r1_pkg_setup
+	use !opengl || python_has_version "dev-python/jinja[${PYTHON_USEDEP}]"
 }
 
 src_unpack() {

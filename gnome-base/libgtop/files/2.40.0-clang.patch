@@ -1,0 +1,135 @@
+https://bugs.gentoo.org/871051
+https://gitlab.gnome.org/GNOME/libgtop/-/commit/7e9fed1513a7937b62bae641b76cee405c6add5a
+https://gitlab.gnome.org/GNOME/libgtop/-/commit/df6393ac0cd785727329a97f731a4067334c0ace
+
+From 7e9fed1513a7937b62bae641b76cee405c6add5a Mon Sep 17 00:00:00 2001
+From: Avinash Sonawane <rootkea@gmail.com>
+Date: Mon, 20 Dec 2021 13:16:44 +0530
+Subject: [PATCH] Use correct format specifiers
+
+--- a/src/daemon/io.c
++++ b/src/daemon/io.c
+@@ -27,7 +27,7 @@ void
+ do_output (int s, glibtop_response *resp, off_t offset,
+ 	   size_t data_size, const void *data)
+ {
+-	glibtop_debug ("Really writing %d bytes at offset %lu.",
++	glibtop_debug ("Really writing %zu bytes at offset %lu.",
+ 		 sizeof (glibtop_response), offset);
+ 
+ 	resp->offset = offset;
+@@ -42,7 +42,7 @@ do_output (int s, glibtop_response *resp, off_t offset,
+ 	}
+ 
+ 	if (resp->data_size) {
+-		glibtop_debug ("Writing %d bytes of data.", resp->data_size);
++		glibtop_debug ("Writing %lu bytes of data.", resp->data_size);
+ 
+ 		if (s == 0) {
+ 			if (write (1, data, resp->data_size) < 0)
+@@ -84,7 +84,7 @@ do_read (int s, void *ptr, size_t total_size)
+ 		tmp_ptr += nread;
+ 		ptr = tmp_ptr;
+ 
+-		glibtop_debug ("READ (%d): %d - %d - %d",
++		glibtop_debug ("READ (%d): %zu - %zu - %zu",
+ 			 nread, already_read, remaining, total_size);
+ 	}
+ 
+--- a/src/daemon/main.c
++++ b/src/daemon/main.c
+@@ -49,7 +49,7 @@ handle_parent_connection (int s)
+ 			glibtop_server_features);
+ 
+     if (enable_debug)
+-	syslog_message (LOG_DEBUG, "SIZEOF: %u - %u - %u - %u - %u - %u",
++	syslog_message (LOG_DEBUG, "SIZEOF: %zu - %zu - %zu - %zu - %zu - %zu",
+ 			sizeof (glibtop_command), sizeof (glibtop_response),
+ 			sizeof (glibtop_mountentry), sizeof (glibtop_union),
+ 			sizeof (glibtop_sysdeps),
+@@ -58,12 +58,12 @@ handle_parent_connection (int s)
+     while (do_read (s, cmnd, sizeof (glibtop_command))) {
+ 	if (enable_debug)
+ 	    syslog_message (LOG_DEBUG,
+-			    "Parent (%d) received command %llu from client.",
++			    "Parent (%d) received command %lu from client.",
+ 			    getpid (), cmnd->command);
+ 
+ 	if (cmnd->data_size >= BUFSIZ) {
+ 	    syslog_message (LOG_WARNING,
+-			    "Client sent %llu bytes, but buffer is %lu",
++			    "Client sent %lu bytes, but buffer is %lu",
+ 			    cmnd->data_size, (unsigned long)BUFSIZ);
+ 	    return;
+ 	}
+@@ -74,7 +74,7 @@ handle_parent_connection (int s)
+ 
+ 	if (cmnd->data_size) {
+ 	    if (enable_debug)
+-		syslog_message (LOG_DEBUG, "Client has %llu bytes of data.",
++		syslog_message (LOG_DEBUG, "Client has %lu bytes of data.",
+ 				cmnd->data_size);
+ 
+ 	    do_read (s, parameter, cmnd->data_size);
+@@ -244,7 +244,7 @@ handle_parent_connection (int s)
+ 		       0, NULL);
+ 	    break;
+ 	default:
+-	    syslog_message (LOG_ERR, "Parent received unknown command %llu.",
++	    syslog_message (LOG_ERR, "Parent received unknown command %lu.",
+ 			    cmnd->command);
+ 	    break;
+ 	}
+--- a/src/daemon/slave.c
++++ b/src/daemon/slave.c
+@@ -42,10 +42,10 @@ handle_slave_connection (int input, int output)
+ 
+ 	while (do_read (input, cmnd, sizeof (glibtop_command))) {
+ 		glibtop_debug ("Slave %d received command "
+-			 "%llu from client.", getpid (), cmnd->command);
++			 "%lu from client.", getpid (), cmnd->command);
+ 
+ 		if (cmnd->data_size >= BUFSIZ)
+-			glibtop_error ("Client sent %llu bytes, "
++			glibtop_error ("Client sent %lu bytes, "
+ 				       "but buffer is %lu",
+ 				       cmnd->size, (unsigned long)BUFSIZ);
+ 
+@@ -54,7 +54,7 @@ handle_slave_connection (int input, int output)
+ 		memset (parameter, 0, sizeof (parameter));
+ 
+ 		if (cmnd->data_size) {
+-			glibtop_debug ("Client has %llu bytes of data.",
++			glibtop_debug ("Client has %lu bytes of data.",
+ 				 cmnd->data_size);
+ 
+ 			do_read (input, parameter, cmnd->data_size);
+@@ -261,7 +261,7 @@ handle_slave_command (glibtop_command *cmnd, glibtop_response *resp,
+ 		break;
+ #endif
+ 	default:
+-		glibtop_error ("Child received unknown command %llu",
++		glibtop_error ("Child received unknown command %lu",
+ 			       cmnd->command);
+ 		break;
+ 	}
+GitLab
+From df6393ac0cd785727329a97f731a4067334c0ace Mon Sep 17 00:00:00 2001
+From: Avinash Sonawane <rootkea@gmail.com>
+Date: Mon, 20 Dec 2021 13:33:42 +0530
+Subject: [PATCH] Pass correct parameter
+
+--- a/src/daemon/main.c
++++ b/src/daemon/main.c
+@@ -226,8 +226,9 @@ handle_parent_connection (int s)
+ 		       0, NULL);
+ 	    break;
+     case GLIBTOP_CMND_PROC_IO:
++        memcpy (&pid, parameter, sizeof (pid_t));
+ 	    glibtop_get_proc_io_l
+-		(server, &resp->u.data.proc_io, parameter);
++		(server, &resp->u.data.proc_io, pid);
+ 	    do_output (s, resp, _offset_data (proc_io),
+ 		       0, NULL);
+ 	    break;
+GitLab

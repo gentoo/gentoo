@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">FFI-CheckLib</remote-id>
     <remote-id type="cpan-module">FFI::CheckLib</remote-id>
+    <remote-id type="github">PerlFFI/FFI-CheckLib</remote-id>
   </upstream>
 </pkgmetadata>

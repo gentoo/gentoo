@@ -360,7 +360,9 @@ go-module_src_unpack() {
 		default
 		if [[ ! -d "${S}"/vendor ]]; then
 			cd "${S}"
-			ego mod verify
+			local nf
+			[[ -n ${NONFATAL_VERIFY} ]] && nf=nonfatal
+			${nf} ego mod verify
 		fi
 	fi
 }
