@@ -101,6 +101,7 @@ sys-apps/gnome-disk-utility
 virtual/rust
 www-apps/radicale
 www-client/epiphany
+x11-libs/libcryptui
 x11-misc/alacarte
 >=x11-themes/adwaita-icon-theme-3.36
 x11-plugins/pidgin-opensteamworks
