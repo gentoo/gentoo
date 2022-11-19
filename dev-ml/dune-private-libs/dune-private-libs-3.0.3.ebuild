@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit dune
+inherit dune multiprocessing
 
 DESCRIPTION="A composable build system for OCaml"
 HOMEPAGE="https://github.com/ocaml/dune"
@@ -18,18 +18,17 @@ RESTRICT="test"
 
 BDEPEND="~dev-ml/dune-${PV}"
 DEPEND="
-	dev-ml/csexp:=[ocamlopt?]
-	dev-ml/findlib:=[ocamlopt?]
-	>=dev-lang/ocaml-4.09:=
+	dev-ml/stdune:=
 "
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	rm -r "${S}"/test || die
-
-	default
+src_configure() {
+	./configure \
+		--libdir="$(ocamlc -where)" \
+		--mandir="/usr/share/man" \
+		|| die
 }
 
-src_configure() {
-	:
+src_compile() {
+	dune build -p "${PN}" @install -j $(makeopts_jobs) --profile release || die
 }
