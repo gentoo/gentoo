@@ -98,3 +98,4 @@ sys-apps/gnome-disk-utility
 virtual/rust
 www-apps/radicale
 >=x11-themes/adwaita-icon-theme-3.36
+x11-plugins/wmpasman
