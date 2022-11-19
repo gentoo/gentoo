@@ -12,6 +12,7 @@ app-crypt/certbot
 app-crypt/certbot-nginx
 app-crypt/gcr
 app-crypt/libsecret
+app-crypt/seahorse
 app-eselect/eselect-rust
 app-text/mdbook
 dev-embedded/esptool
