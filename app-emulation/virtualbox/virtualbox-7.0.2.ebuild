@@ -201,6 +201,11 @@ pkg_pretend() {
 		einfo "USE=\"headless\", this build will not include any X11/Qt frontend."
 	fi
 
+	if use headless && use sdl; then
+		einfo "You selected USE=\"headless sdl\", defaulting to"
+		einfo "USE=\"headless\", this build will not include SDL."
+	fi
+
 	if ! use opengl; then
 		einfo "No USE=\"opengl\" selected, this build will lack"
 		einfo "the OpenGL feature."
@@ -289,7 +294,7 @@ src_prepare() {
 		CFLAGS=${CFLAGS}
 	EOF
 
-	if use sdl; then
+	if ! use headless && use sdl; then
 		echo -e "\nVBOX_WITH_VBOXSDL=1" >> LocalConfig.kmk || die
 	fi
 
