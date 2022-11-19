@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}"/fix_configure-1.2.62.patch
 	"${FILESDIR}"/${PN}-1.2.76-configure-8-byte-atomics.patch
 	"${FILESDIR}"/${PN}-1.2.76-flags.patch
+	"${FILESDIR}"/${PN}-1.2.79-configure-clang16.patch
 )
 
 src_prepare() {
