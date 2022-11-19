@@ -6,6 +6,7 @@
 app-crypt/eid-mw p11-kit
 app-crypt/pinentry gtk
 dev-libs/libgdata crypt
+gnome-base/gnome-settings-daemon modemmanager
 gnome-base/nautilus previewer
 net-libs/libnma pkcs11
 net-vpn/networkmanager-openconnect gtk
