@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools xdg
 
 DESCRIPTION="Accurate, easy to use, and highly configurable musical instrument tuner"
 HOMEPAGE="https://www.nongnu.org/lingot/"
