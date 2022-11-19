@@ -10,6 +10,7 @@ app-backup/borgmatic
 app-crypt/acme
 app-crypt/certbot
 app-crypt/certbot-nginx
+app-crypt/gcr
 app-crypt/libsecret
 app-eselect/eselect-rust
 app-text/mdbook
