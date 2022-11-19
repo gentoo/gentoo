@@ -15,7 +15,7 @@ S="${WORKDIR}/all/${MY_P}"
 
 LICENSE="GPL-2 ISC LGPL-2.1 WTFPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="doc imlib ncurses opengl ruby slang static-libs test truetype X"
 RESTRICT="!test? ( test )"
 
