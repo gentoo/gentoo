@@ -20,7 +20,9 @@ else
 fi
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
-HOMEPAGE="https://www.winehq.org/"
+HOMEPAGE="
+	https://www.winehq.org/
+	https://gitlab.winehq.org/wine/wine/"
 
 LICENSE="LGPL-2.1+ BSD-2 IJG MIT ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
