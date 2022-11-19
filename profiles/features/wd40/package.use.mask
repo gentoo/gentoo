@@ -2,8 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-11-19)
-# gnome-extra/sushi needs gjs which needs Rust indirectly
+# GNOME packages pulling in e.g. gjs which then needs Rust.
 gnome-base/nautilus previewer
+net-vpn/networkmanager-openconnect gtk
+net-vpn/networkmanager-openvpn gtk
 
 # Michał Górny <mgorny@gentoo.org> (2022-07-29)
 # More packages requiring dev-python/cryptography or its revdeps.
