@@ -9,6 +9,7 @@ dev-libs/libgdata crypt
 dev-libs/totem-pl-parser test
 gnome-base/gnome-settings-daemon modemmanager
 gnome-base/nautilus previewer
+lxqt-base/lxqt-meta trash
 net-libs/libnma pkcs11
 net-vpn/networkmanager-openconnect gtk
 net-vpn/networkmanager-openvpn gtk
