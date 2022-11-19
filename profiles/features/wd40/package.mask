@@ -7,6 +7,7 @@ app-admin/ansible-core
 >=app-antivirus/clamav-0.105.1
 app-backup/borgbackup
 app-backup/borgmatic
+app-cdr/brasero
 app-crypt/acme
 app-crypt/certbot
 app-crypt/certbot-nginx
