@@ -20,6 +20,6 @@
 		recently visited getting a boost in their chances.
 	</longdescription>
 	<upstream>
-		<remote-id type="gitlab">bowlofeggs/rpick</remote-id>
+		<remote-id type="github">bowlofeggs/rpick</remote-id>
 	</upstream>
 </pkgmetadata>
