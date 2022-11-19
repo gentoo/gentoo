@@ -34,6 +34,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ml/dune-configurator"
 
+PATCHES=( "${FILESDIR}"/${P}-dune.patch )
+
 src_prepare() {
 	default
 
