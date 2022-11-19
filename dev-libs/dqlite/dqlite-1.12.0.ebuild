@@ -10,7 +10,7 @@ HOMEPAGE="https://dqlite.io/ https://github.com/canonical/dqlite"
 SRC_URI="https://github.com/canonical/dqlite/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3-with-linking-exception"
-SLOT="0"
+SLOT="0/1.12.0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
