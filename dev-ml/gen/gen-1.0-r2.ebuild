@@ -21,3 +21,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 # BDEPEND="test? ( dev-ml/qtest )"
+
+src_prepare() {
+	default
+
+	sed -i \
+		-e "s:(libraries bytes seq)::" \
+		src/dune \
+		|| die
+}
