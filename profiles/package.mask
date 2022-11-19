@@ -313,12 +313,6 @@ dev-ruby/ruby-sdl
 # Removal on 2022-11-20.  Bug #845723.
 dev-python/eventlet
 
-# David Seifert <soap@gentoo.org> (2022-10-18)
-# Dead package, use dev-util/nvidia-cuda-toolkit instead. Examples were
-# removed in 11.6, no revdeps left. Removal on 2022-11-17.
-# Bug #722092, #749900, #762169, #840656, #845381, #858392, #866701.
-dev-util/nvidia-cuda-sdk
-
 # Michał Górny <mgorny@gentoo.org> (2022-10-17)
 # Unmaintained since 2018.  Requires dev-python/nose.  No revdeps left.
 # Removal on 2022-11-16.  Bug #877375.
