@@ -34,6 +34,23 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2022-11-19)
+# Packages with reported failures and no maintainer activity.
+#
+# media-sound/lingot: bug #699808, last bumped in 2018
+# media-sound/retrovol: bug #624136, last bumped in 2013, homepage dead
+# media-sound/umix: bug #726076, last release in 2003 (!)
+# media-libs/libvisual*: bug #840514, last bumped in 2006
+#
+# Removal on 2022-12-19.
+media-libs/libvisual
+media-plugins/gst-plugins-libvisual
+media-plugins/libvisual-plugins
+media-plugins/libvisual-projectm
+media-sound/lingot
+media-sound/retrovol
+media-sound/umix
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-19)
 # Agavi and its dependencies that are unmaintained and have no other
 # reverse dependencies.  It has received no activity since 2016,
 # and at least PEAR-VersionControl_SVN has reported test failures.
