@@ -33,6 +33,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-11-19)
+# Agavi and its dependencies that are unmaintained and have no other
+# reverse dependencies.  It has received no activity since 2016,
+# and at least PEAR-VersionControl_SVN has reported test failures.
+# Removal on 2022-12-19.  Bug #737854.
+dev-php/agavi
+dev-php/phing
+dev-php/PEAR-PEAR_PackageFileManager
+dev-php/PEAR-VersionControl_SVN
+dev-php/phpmd
+dev-php/simpletest
+
 # Michał Górny <mgorny@gentoo.org> (2022-11-18)
 # These packages still lack support for Python 3.10.  In general, they
 # did not see any activity recently and either have no maintainer
