@@ -3,7 +3,7 @@
 
 # Sam James <sam@gentoo.org> (2022-11-19)
 # GNOME packages pulling in e.g. gjs which then needs Rust.
-app-crypt/eid-mw p11-kit
+app-crypt/eid-mw gtk p11-kit
 app-crypt/pinentry gtk
 dev-libs/libgdata crypt
 gnome-base/gnome-settings-daemon modemmanager
