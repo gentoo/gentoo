@@ -17,6 +17,7 @@ net-vpn/networkmanager-openconnect gtk
 net-vpn/networkmanager-openvpn gtk
 net-vpn/networkmanager-pptp gtk
 net-vpn/networkmanager-vpnc gtk
+x11-libs/libfm automount
 
 # Michał Górny <mgorny@gentoo.org> (2022-07-29)
 # More packages requiring dev-python/cryptography or its revdeps.
