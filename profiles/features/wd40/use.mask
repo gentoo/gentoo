@@ -5,8 +5,9 @@ rust
 
 # Sam James <sam@gentoo.org> (2022-11-19)
 # Indirectly depends on Rust:
-# gnome-keyring -> libsecret -> gjs -> Rust
+# libsecret -> gjs -> Rust
 gnome-keyring
+gnome-online-accounts
 
 # Michał Górny <mgorny@gentoo.org> (2022-10-09)
 # Disable tests requiring Rust.
