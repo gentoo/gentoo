@@ -79,6 +79,7 @@ gnome-base/gnome-menus
 gnome-extra/evolution-data-server
 gnome-extra/gnome-browser-connector
 gnome-extra/gnome-tweaks
+gnome-extra/nm-applet
 gnome-extra/sushi
 >=media-gfx/libimagequant-4
 media-libs/libavif
