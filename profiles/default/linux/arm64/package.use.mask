@@ -1,5 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Roy Bamford <neddyseagoon@gentoo.org> (2022-11-19)
+#openscad broken on arm64  See bug #881995
+media-gfx/freecad openscad
+
+# Roy Bamford <neddyseagoon@gentoo.org> (2022-11-19)
+# openni broken on arm64 but openni2 can be made to work
+
+sci-libs/pcl openni
+
 
 # Mike Frysinger <vapier@gentoo.org> (2016-05-08)
 # This target supports VTV #547040.
