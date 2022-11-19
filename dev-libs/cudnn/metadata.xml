@@ -5,7 +5,4 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
-	<use>
-		<flag name="cuda11-5">On Nvidia CUDA 11.5</flag>
-	</use>
 </pkgmetadata>
