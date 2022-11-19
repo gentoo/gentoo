@@ -13,7 +13,7 @@ CMAKE_MAKEFILE_GENERATOR=emake
 inherit cmake flag-o-matic fortran-2 java-pkg-opt-2 lua-single python-single-r1 virtualx wxwidgets
 
 DESCRIPTION="Multi-language scientific plotting library"
-HOMEPAGE="http://plplot.sourceforge.net/"
+HOMEPAGE="https://plplot.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2"
