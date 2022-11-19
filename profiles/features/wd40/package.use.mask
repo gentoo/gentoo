@@ -8,6 +8,7 @@ app-crypt/eid-mw gtk p11-kit
 app-crypt/pinentry gtk
 dev-libs/libgdata crypt
 dev-libs/totem-pl-parser test
+dev-util/devhelp gedit
 gnome-base/gnome-settings-daemon modemmanager
 gnome-base/nautilus previewer
 lxqt-base/lxqt-meta trash
