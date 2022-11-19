@@ -76,6 +76,7 @@ gnome-base/gnome-control-center
 gnome-base/gnome-menus
 >=gnome-base/gnome-shell-3.38
 >=gnome-base/librsvg-2.41
+gnome-extra/evolution-data-server
 gnome-extra/gnome-browser-connector
 gnome-extra/gnome-tweaks
 gnome-extra/sushi
