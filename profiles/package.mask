@@ -34,6 +34,40 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2022-11-19)
+# Packages with no maintainer and major bugs reported.  They are either
+# inactive upstream, or have not been bumped for a long time.
+#
+# app-emulation/aqemu: bug #806421, last bumped in 2016
+# app-forensics/ovaldi: revdep of dev-libs/xalan-c, last bumped in 2017
+# app-misc/glimpse: bug #684096, last bumped in 2013
+# dev-db/cpp-driver: bug #685936, last bumped in 2019
+# dev-erlang/riakc: bug #722688, last bumped in 2016
+# dev-libs/xalan-c: bug #734190, last bumped in 2011
+# dev-util/stubgen: bug #839927, last bumped in 2011
+# media-gfx/xzgv: bug #831252, last bumped in 2009
+# net-dns/dnssec-check: bug #571350, last bumped in 2016
+# net-mail/cmd5checkpw: bug #833292, last bumped in 2005
+# net-ftp/gproftpd: bug #550524, last bumped in 2007
+# sys-apps/intel-performance-counter-monitor: bug #728564,
+#                                             last bumped in 2016
+#
+# Removal on 2022-12-19.
+acct-group/cmd5checkpw
+acct-user/cmd5checkpw
+app-emulation/aqemu
+app-forensics/ovaldi
+app-misc/glimpse
+dev-db/cpp-driver
+dev-erlang/riakc
+dev-libs/xalan-c
+dev-util/stubgen
+media-gfx/xzgv
+net-dns/dnssec-check
+net-mail/cmd5checkpw
+net-ftp/gproftpd
+sys-apps/intel-performance-counter-monitor
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-19)
 # Packages with reported failures and no maintainer activity.
 #
 # media-sound/retrovol: bug #624136, last bumped in 2013, homepage dead

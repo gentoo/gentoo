@@ -8,6 +8,8 @@
 
 # Michał Górny <mgorny@gentoo.org> (2022-11-19)
 # Requires packages masked for removal.
+mail-mta/netqmail authcram
+mail-mta/notqmail authcram
 media-plugins/gst-plugins-meta libvisual
 
 # Michał Górny <mgorny@gentoo.org> (2022-11-17)
