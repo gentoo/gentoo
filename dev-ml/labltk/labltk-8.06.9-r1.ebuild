@@ -15,13 +15,15 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-li
 IUSE="+ocamlopt X"
 
 RDEPEND="dev-lang/tk:=
-	=dev-lang/ocaml-4.13*:=[ocamlopt?,X(+)?]"
+	<dev-lang/ocaml-4.12
+	>=dev-lang/ocaml-4.11:=[ocamlopt?,X(+)?]"
 DEPEND="${RDEPEND}
 	dev-ml/findlib
 "
 
 PATCHES=(
 	"${FILESDIR}/findlib.patch"
+	"${FILESDIR}"/${PN}-8.06.9-configure-clang16.patch
 )
 
 src_prepare() {

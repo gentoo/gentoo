@@ -8,23 +8,29 @@ inherit findlib toolchain-funcs
 DESCRIPTION="OCaml interface to the Tcl/Tk GUI framework"
 HOMEPAGE="https://garrigue.github.io/labltk/"
 SRC_URI="https://github.com/garrigue/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-warnings.patch.bz2"
 
 LICENSE="QPL-1.0 LGPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+ocamlopt X"
 
 RDEPEND="dev-lang/tk:=
-	>=dev-lang/ocaml-4.14:=[ocamlopt?,X(+)?]"
+	<dev-lang/ocaml-4.13
+	>=dev-lang/ocaml-4.11:=[ocamlopt?,X(+)?]"
 DEPEND="${RDEPEND}
 	dev-ml/findlib
 "
 
 PATCHES=(
 	"${FILESDIR}/findlib.patch"
+	"${FILESDIR}"/${PN}-8.06.9-configure-clang16.patch
+	"${WORKDIR}"/${P}-warnings.patch
 )
 
 src_prepare() {
+	has_version "dev-lang/ocaml:0/4.11" && \
+		eapply "${FILESDIR}"/${P}-this-expression-has-type.patch
 	sed -i \
 		-e "s|ranlib|$(tc-getRANLIB)|" \
 		frx/Makefile \
@@ -37,7 +43,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1 all
+	emake -j1
 	use ocamlopt && emake -j1 opt
 }
 
