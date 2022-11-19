@@ -97,6 +97,7 @@ media-video/ogmrip
 media-video/rav1e
 >=net-irc/polari-3.37
 net-libs/gnome-online-accounts
+net-libs/libgfbgraph
 net-libs/quiche
 net-misc/electrum-ltc
 net-misc/gsutil
