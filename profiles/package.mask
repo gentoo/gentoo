@@ -131,6 +131,7 @@ dev-libs/libpreludedb
 net-analyzer/prelude-correlator
 net-analyzer/prelude-lml-rules
 net-analyzer/prelude-lml
+sec-policy/selinux-prelude
 www-apps/prewikka
 
 # Michał Górny <mgorny@gentoo.org> (2022-11-15)
