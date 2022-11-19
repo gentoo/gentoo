@@ -91,6 +91,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.8.1-mysqlclient.patch
 	"${FILESDIR}"/${PN}-5.9-MakeMaker.patch
 	"${FILESDIR}"/${PN}-5.9.2-fix-LDFLAGS.patch
+	"${FILESDIR}"/${P}-configure-clang16.patch
 	"${FILESDIR}"/${PN}-99999999-tinfo.patch
 )
 
