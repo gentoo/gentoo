@@ -111,6 +111,7 @@ sys-apps/gnome-disk-utility
 virtual/rust
 www-apps/radicale
 www-client/epiphany
+xfce-base/thunar-volman
 x11-libs/libcryptui
 x11-misc/alacarte
 >=x11-themes/adwaita-icon-theme-3.36
