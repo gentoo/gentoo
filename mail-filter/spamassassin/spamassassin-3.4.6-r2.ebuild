@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -82,6 +82,7 @@ RDEPEND="${REQDEPEND} ${OPTDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/mention-geoip.cf-in-init.pre.patch"
+	"${FILESDIR}/3.4.6-configure-clang16.patch"
 )
 
 # There are a few renames and use-dependent ones in src_istall as well.
