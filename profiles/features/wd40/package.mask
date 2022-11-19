@@ -72,6 +72,7 @@ gnome-base/gdm
 gnome-base/gnome-control-center
 >=gnome-base/gnome-core-apps-3.36.5
 >=gnome-base/gnome-core-libs-3.36.5
+gnome-base/gnome-keyring
 >=gnome-base/gnome-light-3.36.5
 gnome-base/gnome-menus
 >=gnome-base/gnome-shell-3.38
