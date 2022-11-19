@@ -81,6 +81,7 @@ gnome-extra/gnome-browser-connector
 gnome-extra/gnome-tweaks
 gnome-extra/nm-applet
 gnome-extra/sushi
+lxde-base/lxlauncher
 >=media-gfx/libimagequant-4
 media-libs/libavif
 >=media-libs/libopenraw-0.3.2
