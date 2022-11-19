@@ -16,7 +16,7 @@ else
 	COMMIT="fbee239a6fb36dd2fb564f6e6a0d393c4bc844db"
 	SRC_URI="https://github.com/osmocom/gr-iqbal/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 fi
 
 LICENSE="GPL-3"
