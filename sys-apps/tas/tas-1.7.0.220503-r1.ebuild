@@ -23,7 +23,6 @@ RDEPEND="
 	sys-apps/ethtool
 	sys-apps/net-tools
 	sys-apps/smartmontools
-	sys-block/storcli
 	sys-devel/bc
 	sys-fs/lsscsi
 	sys-fs/mdadm"
