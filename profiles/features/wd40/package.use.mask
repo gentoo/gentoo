@@ -3,6 +3,7 @@
 
 # Sam James <sam@gentoo.org> (2022-11-19)
 # GNOME packages pulling in e.g. gjs which then needs Rust.
+app-arch/file-roller nautilus
 app-crypt/eid-mw gtk p11-kit
 app-crypt/pinentry gtk
 dev-libs/libgdata crypt
