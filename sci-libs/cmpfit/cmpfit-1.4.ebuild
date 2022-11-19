@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="MINPACK-1 Least Squares Fitting Library in C"
-HOMEPAGE="http://www.physics.wisc.edu/~craigm/idl/cmpfit.html"
-SRC_URI="http://www.physics.wisc.edu/~craigm/idl/down/${P}.tar.gz"
+HOMEPAGE="https://pages.physics.wisc.edu/~craigm/idl/cmpfit.html"
+SRC_URI="https://pages.physics.wisc.edu/~craigm/idl/down/${P}.tar.gz"
 
 LICENSE="public-domain minpack"
 SLOT="0"
