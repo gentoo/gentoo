@@ -9,6 +9,7 @@ rust
 gnome-keyring
 gnome-online-accounts
 glade
+libsecret
 
 # Michał Górny <mgorny@gentoo.org> (2022-10-09)
 # Disable tests requiring Rust.
