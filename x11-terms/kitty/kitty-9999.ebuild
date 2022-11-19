@@ -71,7 +71,7 @@ src_unpack() {
 		git-r3_src_unpack
 		go-module_live_vendor
 	else
-		go-module_src_unpack
+		verify-sig_src_unpack
 	fi
 }
 
