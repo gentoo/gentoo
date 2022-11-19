@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2022-11-19)
+# Fails to build.  Last bumped in 2017.  Library with no revdeps.
+# Removal on 2022-12-19.  Bug #630396.
+dev-cpp/pstreams
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-19)
 # Packages with no maintainer and major bugs reported.  They are either
 # inactive upstream, or have not been bumped for a long time.
 #
