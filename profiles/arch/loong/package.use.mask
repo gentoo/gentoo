@@ -6,10 +6,6 @@
 app-text/atril epub
 mate-base/mate help
 
-# Ionen Wolkens <ionen@gentoo.org> (2022-11-04)
-# media-libs/libffado is not keyworded here yet.
-media-sound/jack2 ieee1394
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-04)
 # Sanitizers partially supported on this architecture.
 #
