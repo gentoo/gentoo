@@ -29,6 +29,8 @@ src_prepare() {
 }
 
 src_compile() {
+#	# fails to compile with -flto (bug #862516)
+	filter-lto
 	LDFLAGS="$(raw-ldflags)"
 	emake -j1 CC="$(tc-getCC)" LD="$(tc-getLD)"
 }
