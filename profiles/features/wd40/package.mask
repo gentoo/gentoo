@@ -62,6 +62,7 @@ dev-ros/roswtf
 dev-util/cargo-c
 dev-util/cbindgen
 dev-util/git-delta
+dev-util/glade
 dev-util/maturin
 dev-util/tree-sitter-cli
 gnome-base/gdm
