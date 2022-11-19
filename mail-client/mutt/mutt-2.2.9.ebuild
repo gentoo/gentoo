@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit flag-o-matic autotools
+inherit autotools
 
 PATCHREV="r0"
 PATCHSET="gentoo-${PVR}/${PATCHREV}"
@@ -99,15 +99,26 @@ src_prepare() {
 			main.c || die "Failed to add bug instructions"
 	fi
 
-	local upatches=
 	# allow user patches
-	eapply_user && upatches=" with user patches"
+	eapply_user
 
 	# patch version string for bug reports
 	local patchset=
 	use vanilla || patchset=", ${PATCHSET}"
-	sed -i -e 's|"Mutt %s (%s)"|"Mutt %s (%s'"${patchset}${upatches}"')"|' \
+	sed -i -e 's|"Mutt %s (%s)"|"Mutt %s (%s'"${patchset}"')"|' \
 		muttlib.c || die "failed patching in Gentoo version"
+
+	# bug 864753: avoid warning about missing tools, currently the order
+	# is lynx, w3m, elinks, so remove lynx or w3m when not installed,
+	# elinks should be there via dep.
+	if use doc ; then
+		if ! has_version www-client/lynx ; then
+			sed -i -e '/lynx/d' doc/Makefile.am || die
+		fi
+		if ! has_version www-client/w3m ; then
+			sed -i -e '/w3m/d' doc/Makefile.am || die
+		fi
+	fi
 
 	# many patches touch the buildsystem, we always need this
 	AT_M4DIR="m4" eautoreconf
