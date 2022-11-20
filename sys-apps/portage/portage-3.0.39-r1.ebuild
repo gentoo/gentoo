@@ -85,6 +85,7 @@ pkg_pretend() {
 
 python_prepare_all() {
 	local PATCHES=(
+		"${FILESDIR}"/${P}-implicit-func-decls-no-fatal.patch
 	)
 
 	distutils-r1_python_prepare_all
