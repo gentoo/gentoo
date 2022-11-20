@@ -41,7 +41,7 @@ CRATES="
 	cargo-platform-0.1.2
 	cargo-xwin-0.12.2
 	cargo-zigbuild-0.14.1
-	cargo_metadata-0.15.1
+	cargo_metadata-0.15.0
 	cbindgen-0.24.3
 	cc-1.0.76
 	cfb-0.7.3
