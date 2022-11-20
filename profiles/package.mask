@@ -133,7 +133,6 @@ dev-python/tvdb_api
 dev-python/webassets
 dev-python/ws4py
 dev-util/comparator
-dev-util/kdevelop-python
 dev-util/rosinstall_generator
 games-util/pyfa
 mate-extra/caja-hide

@@ -19,7 +19,6 @@ media-plugins/gst-plugins-meta libvisual
 # Michał Górny <mgorny@gentoo.org> (2022-11-17)
 # Require packages masked for removal.
 net-analyzer/netdata kinesis
-kde-apps/kdesdk-meta python
 
 # Michał Górny <mgorny@gentoo.org> (2022-11-17)
 # Requires dev-python/gevent that is masked for removal.
