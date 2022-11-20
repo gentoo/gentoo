@@ -38,9 +38,7 @@ RDEPEND="
 	dev-python/PySocks[${PYTHON_USEDEP}]
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	crypt? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
-	ssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )
-	!net-irc/supybot
-	!net-irc/supybot-plugins"
+	ssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
