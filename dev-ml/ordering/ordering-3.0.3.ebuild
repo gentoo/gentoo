@@ -16,8 +16,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt"
 RESTRICT="test"
 
-BDEPEND="~dev-ml/dune-${PV}"
-DEPEND=""
+BDEPEND=">=dev-ml/dune-3"
+DEPEND=">=dev-lang/ocaml-4.08"
 RDEPEND="${DEPEND}"
 
 src_configure() {
