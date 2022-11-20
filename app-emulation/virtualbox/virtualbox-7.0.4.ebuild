@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
-IUSE="alsa dbus debug doc dtrace +gui java lvm +opus pam pch pulseaudio +opengl python +sdk +sdl +udev vboxwebsrv vnc"
+IUSE="alsa dbus debug doc dtrace +gui java lvm pam pch pulseaudio +opengl python +sdk +sdl +udev vboxwebsrv vnc"
 
 unset WATCOM #856769
 
@@ -65,7 +65,6 @@ COMMON_DEPEND="
 		x11-libs/libX11
 		x11-libs/libXt
 	)
-	opus? ( media-libs/opus )
 	pam? ( sys-libs/pam )
 	sdl? (
 		media-libs/libsdl:0[X,video]
@@ -86,7 +85,6 @@ COMMON_DEPEND="
 # but it needs more investigation.
 #
 # See bug #878299 to track this issue.
-# TODO: check opus
 DEPEND="
 	${COMMON_DEPEND}
 	>=dev-libs/libxslt-1.1.19
@@ -335,7 +333,6 @@ src_configure() {
 		$(usex doc '' --disable-docs)
 		$(usex java '' --disable-java)
 		$(usex lvm '' --disable-devmapper)
-		$(usex opus '' --disable-libopus)
 		$(usex pulseaudio '' --disable-pulse)
 		$(usex python '' --disable-python)
 		$(usex vboxwebsrv --enable-webservice '')
