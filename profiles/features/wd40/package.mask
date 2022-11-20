@@ -87,6 +87,7 @@ net-p2p/deluge
 ros-meta/ros_comm
 sci-geosciences/gnome-maps
 >=sys-apps/bat-0.18.1
+sys-fs/bcachefs-tools
 virtual/rust
 www-apps/radicale
 >=x11-themes/adwaita-icon-theme-3.36
