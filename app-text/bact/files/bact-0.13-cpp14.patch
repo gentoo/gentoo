@@ -1,6 +1,7 @@
 Fix C++14 compilation errors -- since C++11 make_pair<T1,T2> is resolved to
 make_pair(T1&&, T2&&). Types should be deduced.
-Gentoo bug: https://bugs.gentoo.org/show_bug.cgi?id=594312
+
+Bug: https://bugs.gentoo.org/594312
 
 --- a/bact_classify.cpp
 +++ b/bact_classify.cpp
@@ -42,3 +43,48 @@ Gentoo bug: https://bugs.gentoo.org/show_bug.cgi?id=594312
      ary.push_back  ((Darts::DoubleArray::key_type *)it->first.c_str());
      alpha.push_back (a);
    }
+--- a/darts.h
++++ b/darts.h
+@@ -394,10 +394,10 @@
+     {
+       if (! len) len = LengthFunc() (key);
+ 
+-      register ArrayType  b = array[pos].base;
+-      register ArrayUType p;
++      ArrayType  b = array[pos].base;
++      ArrayUType p;
+ 
+-      for (register size_t i = 0; i < len; ++i) {
++      for (size_t i = 0; i < len; ++i) {
+ 	p = b + (NodeUType)(key[i]) + 1;
+ 	if ((ArrayUType)b == array[p].check) b = array[p].base;
+ 	else return -2;
+@@ -414,8 +414,8 @@
+     {
+       if (! len) len = LengthFunc() (key);
+ 
+-      register ArrayType  b = array[pos].base;
+-      register ArrayUType p;       
++      ArrayType  b = array[pos].base;
++      ArrayUType p;       
+ 
+       for (; pos2 < len; ++pos2) {
+ 	p = b + (NodeUType)(key[pos2]) + 1;
+@@ -437,12 +437,12 @@
+     {
+       if (! len) len = LengthFunc() (key);
+ 
+-      register ArrayType  b   = array[pos].base;
+-      register size_t     num = 0;
+-      register ArrayType  n;
+-      register ArrayUType p;
++      ArrayType  b   = array[pos].base;
++      size_t     num = 0;
++      ArrayType  n;
++      ArrayUType p;
+ 
+-      for (register size_t i = 0; i < len; ++i) {
++      for (size_t i = 0; i < len; ++i) {
+ 	p = b; // + 0;
+ 	n = array[p].base;
+ 	if ((ArrayUType) b == array[p].check && n < 0) result[num++] = -n-1;
