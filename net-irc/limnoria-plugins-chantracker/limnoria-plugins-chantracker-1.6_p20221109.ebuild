@@ -5,7 +5,7 @@ EAPI=7
 
 inherit vcs-snapshot
 
-COMMIT="2c94abb49a08ea47ab718018dfcaeaf8bf569d5f"
+COMMIT="e50ca6fe0d8a8b6beb38a8ec5e37e770188b7d9c"
 
 DESCRIPTION="supybot ban management and channel flood/spam/repeat protections plugin"
 HOMEPAGE="https://github.com/ncoevoet/ChanTracker"
