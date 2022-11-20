@@ -5,8 +5,7 @@ EAPI=8
 
 DESCRIPTION="Manage active Wine slots and variants"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Wine"
-SRC_URI="https://dev.gentoo.org/~ionen/distfiles/${P}.tar.xz"
-#SRC_URI="https://gitweb.gentoo.org/proj/eselect-wine.git/snapshot/${P}.tar.bz2" # not up yet
+SRC_URI="https://gitweb.gentoo.org/proj/eselect-wine.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
