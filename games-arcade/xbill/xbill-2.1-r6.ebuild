@@ -43,7 +43,7 @@ src_configure() {
 
 src_install() {
 	default
-	doicon ${DISTDIR}/${PN}.png
+	doicon "${DISTDIR}"/${PN}.png
 	make_desktop_entry ${PN} XBill ${PN}
 
 	fowners :gamestat /var/lib/xbill/scores /usr/bin/${PN}
