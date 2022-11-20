@@ -1,11 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit vcs-snapshot
 
-COMMIT="7e959b9f24632d0fa9f587da6e1cde951397ae97"
+MY_PV="${PV:0:4}.${PV:4:2}.${PV:6:2}"
+COMMIT="9f6e6bff96fa7c849123054cd656f6e4af2cec94"
 
 DESCRIPTION="A collection of plugins for the Limnoria IRC bot"
 HOMEPAGE="https://github.com/jlu5/SupyPlugins"
