@@ -31,10 +31,13 @@ DEPEND="${RDEPEND}"
 
 src_unpack() {
 	unpack ${P}.tar.gz
-	mkdir "${S}"/vendor/meck || die
-	tar -O -xf "${DISTDIR}"/meck-${MECK_PV}.tar contents.tar.gz |
-		tar -xzf - -C "${S}"/vendor/meck
-	assert
+
+	if use test; then
+		mkdir "${S}"/vendor/meck || die
+		tar -O -xf "${DISTDIR}"/meck-${MECK_PV}.tar contents.tar.gz |
+			tar -xzf - -C "${S}"/vendor/meck
+		assert
+	fi
 }
 
 src_compile() {
