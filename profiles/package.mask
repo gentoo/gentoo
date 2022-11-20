@@ -77,13 +77,8 @@ sys-apps/intel-performance-counter-monitor
 #
 # media-sound/retrovol: bug #624136, last bumped in 2013, homepage dead
 # media-sound/umix: bug #726076, last release in 2003 (!)
-# media-libs/libvisual*: bug #840514, last bumped in 2006
 #
 # Removal on 2022-12-19.
-media-libs/libvisual
-media-plugins/gst-plugins-libvisual
-media-plugins/libvisual-plugins
-media-plugins/libvisual-projectm
 media-sound/retrovol
 media-sound/umix
 
