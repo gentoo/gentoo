@@ -1,59 +1,44 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit autotools
 
-MY_P="${P^^[crf]}"
-
 DESCRIPTION="Yet Another CRF toolkit for segmenting/labelling sequential data"
 HOMEPAGE="https://taku910.github.io/crfpp/"
-SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="mirror://gentoo/${P^^}.tar.gz"
+S="${WORKDIR}/${P^^}"
 
 LICENSE="|| ( BSD LGPL-2.1 )"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="examples static-libs"
+IUSE="examples"
 
-PATCHES=( "${FILESDIR}"/${PN}-automake-1.13.patch )
+PATCHES=( "${FILESDIR}"/${P}-autotools.patch )
 HTML_DOCS=( doc/. )
 
 src_prepare() {
-	sed -i \
-		-e "/CFLAGS/s/-O3/${CFLAGS}/" \
-		-e "/CXXFLAGS/s/-O3/${CXXFLAGS}/" \
-		configure.in
-
 	default
-	mv configure.{in,ac} || die
 	eautoreconf
-}
-
-src_configure() {
-	econf $(use_enable static-libs static)
 }
 
 src_test() {
 	local d
 	for d in example/*; do
-		cd "${d}"
+		pushd "${d}" >/dev/null || die
 		./exec.sh || die "failed test in ${d}"
-		cd - >/dev/null
+		popd >/dev/null || die
 	done
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	einstalldocs
+	default
 
 	if use examples; then
 		dodoc -r example
 		docompress -x /usr/share/doc/${PF}/example
 	fi
 
-	if ! use static-libs; then
-		find "${ED}" -name "*.la" -type f -delete || die
-	fi
+	find "${ED}" -name '*.la' -type f -delete || die
 }

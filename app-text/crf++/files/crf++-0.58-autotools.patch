@@ -1,0 +1,23 @@
+--- a/configure.in
++++ b/configure.in
+@@ -49,10 +49,8 @@
+ dnl
+ dnl check gcc
+ dnl
+-if test -n "$GCC"; then
+-   CFLAGS="-O3 -Wall";
+-   CXXFLAGS="-O3 -Wall";
+-fi
++CFLAGS="${CFLAGS} -Wall"
++CXXFLAGS="${CXXFLAGS} -Wall"
+ 
+ AC_DEFUN(ADD_CC_FLAG, [
+   AC_MSG_CHECKING(whether ${CC-cc} accepts $1)
+@@ -285,6 +283,6 @@
+ AC_MSG_RESULT([yes])
+ 
+ AC_SUBST(datarootdir)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AC_OUTPUT([Makefile Makefile.msvc swig/version.h])
+ 
