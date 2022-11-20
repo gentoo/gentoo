@@ -78,11 +78,13 @@ src_install() {
 	newconfd "$(prefixify_ro "${FILESDIR}"/${PN}d.confd)" ${PN}d
 	newinitd "$(prefixify_ro "${FILESDIR}"/${PN}d.initd)" ${PN}d
 
+	newtmpfiles "${FILESDIR}"/munged.tmpfiles.conf munged.conf
+
 	if ! use static-libs; then
 		find "${ED}" -name '*.la' -delete || die
 	fi
 }
 
 pkg_postinst() {
-	tmpfiles_process munge.conf
+	tmpfiles_process munged.conf
 }
