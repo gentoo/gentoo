@@ -5,7 +5,7 @@ EAPI=8
 
 inherit dune multiprocessing
 
-DESCRIPTION="A composable build system for OCaml"
+DESCRIPTION="Private libraries of Dune"
 HOMEPAGE="https://github.com/ocaml/dune"
 SRC_URI="https://github.com/ocaml/dune/archive/${PV}.tar.gz -> dune-${PV}.tar.gz"
 S="${WORKDIR}/dune-${PV}"
@@ -16,9 +16,13 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt"
 RESTRICT="test"
 
-BDEPEND="~dev-ml/dune-${PV}"
+BDEPEND=">=dev-ml/dune-3"
 DEPEND="
-	dev-ml/stdune:=
+	>=dev-ml/csexp-1.5:=[ocamlopt?]
+	dev-ml/pp:=[ocamlopt?]
+	~dev-ml/dyn-${PV}:=[ocamlopt?]
+	~dev-ml/stdune-${PV}:=[ocamlopt?]
+	>=dev-lang/ocaml-4.08
 "
 RDEPEND="${DEPEND}"
 
