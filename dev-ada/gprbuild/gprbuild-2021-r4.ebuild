@@ -40,6 +40,7 @@ src_prepare() {
 	default
 	sed -i \
 		-e "s:@VER@:${GCC_PV}:g" \
+		-e "s:\$gcc_version:${GCC_PV}:g" \
 		share/gprconfig/compilers.xml \
 		share/gprconfig/gnat.xml \
 		share/gprconfig/c.xml \
