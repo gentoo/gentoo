@@ -17,16 +17,15 @@ IUSE="diet"
 RDEPEND="diet? ( >=dev-libs/dietlibc-0.33_pre20090721 )"
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-headerdeps.patch
-)
-
 pkg_setup() {
 	# Required for mult/umult64.c to be usable
 	append-flags -fomit-frame-pointer
 }
 
 src_compile() {
+	# workaround for broken dependencies
+	emake headers
+
 	emake \
 		CC="$(tc-getCC)" \
 		AR="$(tc-getAR)" \
