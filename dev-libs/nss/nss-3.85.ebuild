@@ -63,6 +63,9 @@ src_prepare() {
 	# Respect LDFLAGS
 	sed -i -e 's/\$(MKSHLIB) -o/\$(MKSHLIB) \$(LDFLAGS) -o/g' rules.mk
 
+	# Workaround make-4.4's change to sub-make, bmo#1800237, bgo#882069
+	sed -i -e "s/^CPU_TAG = _.*/CPU_TAG = _$(nssarch)/" Linux.mk || die
+
 	popd >/dev/null || die
 
 	# Fix pkgconfig file for Prefix
