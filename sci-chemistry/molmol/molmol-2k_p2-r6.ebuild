@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit desktop prefix toolchain-funcs
+inherit desktop toolchain-funcs
 
 MY_PV="${PV/_p/.}.0"
 MY_P="${PN}-${MY_PV}"
