@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Librest"
 
 LICENSE="LGPL-2.1"
 SLOT="1.0" # librest_soversion
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE="gtk-doc +introspection test vala"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
