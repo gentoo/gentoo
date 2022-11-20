@@ -22,6 +22,6 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">groeck/lm-sensors</remote-id>
+		<remote-id type="github">lm-sensors/lm-sensors</remote-id>
 	</upstream>
 </pkgmetadata>
