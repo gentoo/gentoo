@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Spell checking widget for GTK"
 HOMEPAGE="http://gtkspell.sourceforge.net/"
@@ -11,16 +11,15 @@ SRC_URI="http://${PN}.sourceforge.net/download/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="2"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE=""
 
-RDEPEND="x11-libs/gtk+:2
+RDEPEND="
+	x11-libs/gtk+:2
 	>=app-text/enchant-1.1.6:0"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.35.0
 	virtual/pkgconfig"
-
-DOCS=( AUTHORS ChangeLog README ) # NEWS file is empty
 
 src_prepare() {
 	default
@@ -30,10 +29,10 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --disable-static --disable-gtk-doc
+	econf --disable-gtk-doc
 }
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -type f -delete || die
+	find "${ED}" -name '*.la' -type f -delete || die
 }
