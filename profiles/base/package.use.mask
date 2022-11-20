@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2022-11-25)
+# USE=tbb is broken in 7.7.0
+# https://tracker.dev.opencascade.org/view.php?id=33152
+=sci-libs/opencascade-7.7.0 tbb
+
 # Sam James <sam@gentoo.org> (2022-11-24)
 # Depends on old dev-lang/spidermonkey:68, bug #807772
 # Particularly unwise given it parses data from network.
