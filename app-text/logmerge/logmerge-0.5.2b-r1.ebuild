@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 DESCRIPTION="Small and powerful script to merge two or more logfiles"
 HOMEPAGE="https://github.com/ildar-shaimordanov/logmerge"
@@ -15,5 +15,5 @@ RDEPEND="dev-lang/perl"
 
 src_install() {
 	default
-	dobin ${PN}
+	dobin logmerge
 }
