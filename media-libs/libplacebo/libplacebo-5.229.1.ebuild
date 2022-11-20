@@ -43,9 +43,8 @@ DEPEND="
 	${RDEPEND}
 	dev-util/vulkan-headers"
 BDEPEND="
-	${PYTHON_DEPS}
-	virtual/pkgconfig
-	opengl? ( $(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]') )"
+	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
+	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.229.1-llvm-libunwind.patch
@@ -54,7 +53,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	use !opengl || python_has_version "dev-python/jinja[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]"
 }
 
 src_unpack() {
