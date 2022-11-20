@@ -43,8 +43,7 @@ src_configure() {
 
 src_compile() {
 	ocaml bootstrap.ml -j $(makeopts_jobs) || die
-	./dune.exe build -p "${PN}" --profile dune-bootstrap \
-		-j $(makeopts_jobs) \
+	./dune.exe build -p "${PN}" --profile dune-bootstrap -j $(makeopts_jobs) \
 		--display short || die
 
 	use emacs && elisp-compile editor-integration/emacs/*.el
@@ -56,8 +55,8 @@ src_install() {
 		|| die
 
 	dodir /usr/share/doc
-	mv "${D}"/usr/doc/dune "${D}"/usr/share/doc/${PF} || die
-	rmdir "${D}"/usr/doc || die
+	mv "${ED}"/usr/doc/dune "${ED}"/usr/share/doc/${PF} || die
+	rmdir "${ED}"/usr/doc || die
 
 	if use emacs ; then
 		elisp-install ${PN} editor-integration/emacs/*.el{,c}
