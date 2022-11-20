@@ -1,0 +1,90 @@
+https://github.com/gentoo/portage/commit/6a47cc7bcf49b7c17fdca31969b6d6aeff84332c
+https://github.com/gentoo/portage/commit/041da67db3a61d19fa5b287db4da9c51794af115
+https://github.com/gentoo/portage/commit/6834e464803b5ac98f8ab1bbca5379970b5bc6d9
+
+From 6a47cc7bcf49b7c17fdca31969b6d6aeff84332c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 17 Oct 2022 19:37:03 +0100
+Subject: [PATCH] xz: add workaround for < xz 5.3.3_alpha 32-bit issue
+
+With older versions of xz, xz -T0 will on 32-bit systems
+try to allocate too much memory and bail out.
+
+After discussing with upstream, we set --memlimit-compress=50% as a
+way to make things work with both older & newer versions. This limiting
+is essentially already present with >= 5.3.3_alpha as -T0 includes it.
+
+Note that we don't need to do this for decompression as it's automatic
+there for newer versions and older versions -Tn a no-op.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/bin/ecompress
++++ b/bin/ecompress
+@@ -128,7 +128,7 @@ if [[ ${PORTAGE_COMPRESS_FLAGS+set} != "set" ]] ; then
+ 		# See: https://bugs.gentoo.org/672916
+ 		# Setting '--rm' will remove the source files after a successful compression.
+ 		lz4)  PORTAGE_COMPRESS_FLAGS="-m --rm";;
+-		xz)   PORTAGE_COMPRESS_FLAGS="-9 -T$(___makeopts_jobs)";;
++		xz)   PORTAGE_COMPRESS_FLAGS="-9 -T$(___makeopts_jobs) --memlimit-compress=50%";;
+ 		zstd) PORTAGE_COMPRESS_FLAGS="-q --rm -T$(___makeopts_jobs)";;
+ 	esac
+ fi
+
+From 041da67db3a61d19fa5b287db4da9c51794af115 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 17 Oct 2022 23:07:58 +0100
+Subject: [PATCH] xz: pass -q to xz
+
+Avoids noise from memlimit-compress.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/bin/ecompress
++++ b/bin/ecompress
+@@ -128,7 +128,7 @@ if [[ ${PORTAGE_COMPRESS_FLAGS+set} != "set" ]] ; then
+ 		# See: https://bugs.gentoo.org/672916
+ 		# Setting '--rm' will remove the source files after a successful compression.
+ 		lz4)  PORTAGE_COMPRESS_FLAGS="-m --rm";;
+-		xz)   PORTAGE_COMPRESS_FLAGS="-9 -T$(___makeopts_jobs) --memlimit-compress=50%";;
++		xz)   PORTAGE_COMPRESS_FLAGS="-9 -T$(___makeopts_jobs) --memlimit-compress=50% -q";;
+ 		zstd) PORTAGE_COMPRESS_FLAGS="-q --rm -T$(___makeopts_jobs)";;
+ 	esac
+ fi
+
+From 6834e464803b5ac98f8ab1bbca5379970b5bc6d9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 21 Oct 2022 02:32:17 +0100
+Subject: [PATCH] ecompress: don't set -9 for xz
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+From xz(1):
+"""
+The differences between the presets are more significant than with gzip(1) and bzip2(1).  The selected compression settings determine the memory requirements of the decompressor, thus  us‐
+ing  a too high preset level might make it painful to decompress the file on an old system with little RAM.  Specifically, it's not a good idea to blindly use -9 for everything like it of‐
+ten is with gzip(1) and bzip2(1).
+[...]
+-7 ... -9
+     These are like -6 but with higher compressor and decompressor memory requirements.  These are useful only when compressing files bigger than 8 MiB, 16 MiB, and 32 MiB, respectively.
+[...]
+•  DictSize  is  the  LZMA2 dictionary size.  It is waste of memory to use a dictionary bigger than the size of the uncompressed file.  This is why it is good to avoid using the presets -7
+... -9 when there's no real need for them.  At -6 and lower, the amount of memory wasted is usually low enough to not matter.
+"""
+
+Most things that ecompress touches are tiny (<32MB certainly). I made the
+mistake the man page warngs about -- don't assume it's a good idea just
+because of gzip & bzip2, and that's exactly what I did!
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/bin/ecompress
++++ b/bin/ecompress
+@@ -128,7 +128,7 @@ if [[ ${PORTAGE_COMPRESS_FLAGS+set} != "set" ]] ; then
+ 		# See: https://bugs.gentoo.org/672916
+ 		# Setting '--rm' will remove the source files after a successful compression.
+ 		lz4)  PORTAGE_COMPRESS_FLAGS="-m --rm";;
+-		xz)   PORTAGE_COMPRESS_FLAGS="-9 -T$(___makeopts_jobs) --memlimit-compress=50% -q";;
++		xz)   PORTAGE_COMPRESS_FLAGS="-q -T$(___makeopts_jobs) --memlimit-compress=50%";;
+ 		zstd) PORTAGE_COMPRESS_FLAGS="-q --rm -T$(___makeopts_jobs)";;
+ 	esac
+ fi
+

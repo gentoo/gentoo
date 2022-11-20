@@ -85,6 +85,7 @@ pkg_pretend() {
 
 python_prepare_all() {
 	local PATCHES=(
+		"${FILESDIR}"/${P}-xz-32-bit.patch
 	)
 
 	distutils-r1_python_prepare_all
