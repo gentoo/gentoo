@@ -34,10 +34,6 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( ${PYTHON_DEPS} )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.10.0_p20200702-increase-clone-stack-size.patch
-)
-
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
@@ -60,6 +56,11 @@ multilib_src_configure() {
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
 	cmake_src_configure
+}
+
+multilib_src_test() {
+	# Exclude tests that fail with FEATURES="usersandbox"
+	cmake_src_test -E "googletest-death-test-test"
 }
 
 multilib_src_install_all() {
