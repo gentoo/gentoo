@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -12,7 +12,6 @@ SRC_URI="ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/contrib/${P}.tar.gz"
 LICENSE="PSTT"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ppc ppc64 x86"
-IUSE=""
 
 RDEPEND="app-text/ghostscript-gpl"
 
@@ -21,8 +20,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-flags.patch
 )
 
-src_prepare() {
-	default
+src_configure() {
 	tc-export CC
 }
 
