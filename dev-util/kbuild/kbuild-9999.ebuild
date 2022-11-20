@@ -36,6 +36,7 @@ PATCHES=(
 	#"${FILESDIR}/${PN}-0.1.9998.3407-gold.patch"
 	"${FILESDIR}/${PN}-0.1.9998.3572-fix-bison.patch"
 	"${FILESDIR}/${PN}-0.1.9998.3572-fix-lto.patch"
+	"${FILESDIR}/${PN}-0.1.9998.3499-implicit-function-declaration.patch"
 )
 
 pkg_setup() {

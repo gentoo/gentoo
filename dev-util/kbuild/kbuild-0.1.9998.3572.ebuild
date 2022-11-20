@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.1.9998_pre20110817-kash-link-pthread.patch"
 	"${FILESDIR}/${PN}-0.1.9998.3572-fix-bison.patch"
 	"${FILESDIR}/${PN}-0.1.9998.3572-fix-lto.patch"
+	"${FILESDIR}/${PN}-0.1.9998.3499-implicit-function-declaration.patch"
 )
 
 pkg_setup() {
