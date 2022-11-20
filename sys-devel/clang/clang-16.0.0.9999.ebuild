@@ -30,7 +30,6 @@ RDEPEND="
 	${PYTHON_DEPS}
 	${DEPEND}
 	>=sys-devel/clang-common-${PV}
-	~sys-devel/clang-runtime-${PV}
 "
 BDEPEND="
 	${PYTHON_DEPS}
@@ -42,6 +41,7 @@ BDEPEND="
 	xml? ( virtual/pkgconfig )
 "
 PDEPEND="
+	~sys-devel/clang-runtime-${PV}
 	sys-devel/clang-toolchain-symlinks:${LLVM_MAJOR}
 "
 
