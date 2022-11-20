@@ -7,14 +7,14 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java utility for working with checksums, CRCs, and message digests (hashes)"
 HOMEPAGE="https://jacksum.net"
-SRC_URI="https://github.com/jonelo/jacksum/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jonelo/jacksum/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=virtual/jdk-1.8:*"
-RDEPEND=">=virtual/jre-1.8:*"
+DEPEND=">=virtual/jdk-11:*"
+RDEPEND=">=virtual/jre-11:*"
 
 DOCS=(
 	CODE_OF_CONDUCT.md
