@@ -1,0 +1,21 @@
+diff --git a/cheroot/test/test_server.py b/cheroot/test/test_server.py
+index 5e0a6832..6f480f40 100644
+--- a/cheroot/test/test_server.py
++++ b/cheroot/test/test_server.py
+@@ -12,8 +12,6 @@ import pytest
+ import requests
+ import requests_unixsocket
+ 
+-from pypytools.gc.custom import DefaultGc
+-
+ from .._compat import bton, ntob
+ from .._compat import IS_LINUX, IS_MACOS, IS_WINDOWS, SYS_PLATFORM
+ from ..server import IS_UID_GID_RESOLVABLE, Gateway, HTTPServer
+@@ -324,6 +322,7 @@ def test_peercreds_unix_sock_with_lookup(
+         assert peercreds_text_resp.text == expected_textcreds
+ 
+ 
++@pytest.mark.skip("pypytools not packaged")
+ @pytest.mark.skipif(
+     IS_WINDOWS,
+     reason='This regression test is for a Linux bug, '
