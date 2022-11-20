@@ -16,6 +16,7 @@ app-crypt/libsecret
 app-crypt/seahorse
 app-editors/gedit
 app-eselect/eselect-rust
+app-text/evince
 app-text/mdbook
 dev-embedded/esptool
 dev-lang/rust
