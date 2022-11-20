@@ -23,7 +23,7 @@ done
 # nauty and cliquer are automagical dependencies
 RDEPEND="dev-libs/gmp:=[cxx(+)]
 	sys-libs/readline:=
-	gui? ( x11-libs/fltk
+	gui? ( x11-libs/fltk[opengl]
 		media-libs/libpng:= )
 	ao? ( media-libs/libao )
 	dev-libs/mpfr:=
