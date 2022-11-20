@@ -16,11 +16,15 @@ else
 	HASH_VULKAN=9f4c61a31435a7a90a314fc68aeb386c92a09c0f
 	SRC_URI="
 		https://github.com/PCSX2/pcsx2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/fastfloat/fast_float/archive/${HASH_FASTFLOAT}.tar.gz -> ${PN}-fast_float-${HASH_FASTFLOAT::10}.tar.gz
-		https://github.com/RetroAchievements/rcheevos/archive/${HASH_RCHEEVOS}.tar.gz -> ${PN}-rcheevos-${HASH_RCHEEVOS::10}.tar.gz
+		https://github.com/fastfloat/fast_float/archive/${HASH_FASTFLOAT}.tar.gz
+			-> ${PN}-fast_float-${HASH_FASTFLOAT::10}.tar.gz
+		https://github.com/RetroAchievements/rcheevos/archive/${HASH_RCHEEVOS}.tar.gz
+			-> ${PN}-rcheevos-${HASH_RCHEEVOS::10}.tar.gz
 		vulkan? (
-			https://github.com/KhronosGroup/glslang/archive/${HASH_GLSLANG}.tar.gz -> ${PN}-glslang-${HASH_GLSLANG::10}.tar.gz
-			https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz -> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz
+			https://github.com/KhronosGroup/glslang/archive/${HASH_GLSLANG}.tar.gz
+				-> ${PN}-glslang-${HASH_GLSLANG::10}.tar.gz
+			https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz
+				-> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz
 		)"
 	KEYWORDS="-* ~amd64"
 fi
@@ -152,7 +156,7 @@ src_prepare() {
 			# TODO?: rapidjson and xbyak are packaged and could be unbundlable
 			# w/ patch, and discord-rpc be optional w/ dependency on rapidjson
 			cpuinfo cubeb discord-rpc glad imgui include jpgd lzma
-			rapidjson rapidyaml rcheevos simpleini xbyak
+			rapidjson rapidyaml rcheevos simpleini xbyak zydis
 			$(usev vulkan 'glslang vulkan-headers')
 		)
 		find 3rdparty -mindepth 1 -maxdepth 1 -type d \
