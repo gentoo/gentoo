@@ -38,9 +38,10 @@ RDEPEND="
 		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
 	)
 	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )"
+# vulkan-headers is required even with USE=-vulkan (bug #882065)
 DEPEND="
 	${RDEPEND}
-	vulkan? ( dev-util/vulkan-headers )"
+	dev-util/vulkan-headers"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
