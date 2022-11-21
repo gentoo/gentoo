@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/libt/${PN}/${PN}_${PV}.orig.tar.gz -> ${PN}_$
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 
 DEPEND="dev-libs/glib:2
 	dev-libs/gobject-introspection:0=
