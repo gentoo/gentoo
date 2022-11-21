@@ -1,0 +1,14 @@
+See https://github.com/mesonbuild/meson-python/blob/main/mesonpy/__init__.py#L452.
+
+(Also: https://github.com/mesonbuild/meson-python/issues/54)
+--- a/mesonpy/__init__.py
++++ b/mesonpy/__init__.py
+@@ -734,7 +734,7 @@ class Project():
+     @functools.lru_cache(maxsize=None)
+     def build(self) -> None:
+         """Trigger the Meson build."""
+-        self._meson('compile', *self._meson_args['compile'],)
++        self._meson('compile', '--verbose', *self._meson_args['compile'],)
+         self._meson('install', '--destdir', os.fspath(self._install_dir), *self._meson_args['install'],)
+
+     @classmethod
