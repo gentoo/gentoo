@@ -1,0 +1,29 @@
+From 4831a3f9b5007145f2cb9e3020e83581523d4079 Mon Sep 17 00:00:00 2001
+From: Carl George <carl@george.computer>
+Date: Tue, 19 Apr 2022 20:20:49 -0500
+Subject: [PATCH] Use yaml.safe_load instead of yaml.load (#46)
+
+yaml.load in PyYAML 6 requires a Loader argument.  PyYAML recommends
+using SafeLoader, which is implied if you call yaml.safe_load instead.
+
+https://github.com/yaml/pyyaml/pull/561
+https://msg.pyyaml.org/load
+
+Fixes #41
+---
+ multipart/tests/test_multipart.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/multipart/tests/test_multipart.py b/multipart/tests/test_multipart.py
+index 0e38c9c..ab33e7c 100644
+--- a/multipart/tests/test_multipart.py
++++ b/multipart/tests/test_multipart.py
+@@ -716,7 +716,7 @@ def test_not_aligned(self):
+             test_data = f.read()
+ 
+         with open(yaml_file, 'rb') as f:
+-            yaml_data = yaml.load(f)
++            yaml_data = yaml.safe_load(f)
+ 
+         http_tests.append({
+             'name': fname,
