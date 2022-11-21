@@ -107,6 +107,7 @@ src_prepare() {
 	# Users without systemd get no auto-activation of any logical volume
 	if ! use systemd ; then
 		eapply "${FILESDIR}"/${PN}-2.03.16-dm_lvm_rules_no_systemd.patch
+		sed -i -e '/^USE_SD_NOTIFY=yes$/s/yes/no/' daemons/lvmlockd/Makefile.in || die
 	fi
 
 	sed -i -e "s:/usr/bin/true:$(type -P true):" scripts/blk_availability_systemd_red_hat.service.in || die #517514
