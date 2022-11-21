@@ -489,11 +489,11 @@ multilib_src_install_all() {
 		# Remove to avoid conflict with elogind
 		# https://bugs.gentoo.org/856433
 		rm rules.d/70-power-switch.rules || die
-		insinto /lib/udev/rules.d
+		insinto "${rootprefix}"/lib/udev/rules.d
 		doins rules.d/*.rules
 		doins "${FILESDIR}"/40-gentoo.rules
 
-		insinto /lib/udev/hwdb.d
+		insinto "${rootprefix}"/lib/udev/hwdb.d
 		doins hwdb.d/*.hwdb
 
 		dobashcomp shell-completion/bash/udevadm
