@@ -190,6 +190,8 @@ m68k		default/linux/m68k/17.0/systemd/merged-usr		exp
 # MIPS Profiles
 # @MAINTAINER: mips@gentoo.org
 mips		default/linux/mips/17.0/o32					exp
+mips		default/linux/mips/17.0/o32/systemd				exp
+mips		default/linux/mips/17.0/o32/systemd/merged-usr			exp
 mips		default/linux/mips/17.0/n32					exp
 mips		default/linux/mips/17.0/n64					exp
 mips		default/linux/mips/17.0/multilib/o32				exp
