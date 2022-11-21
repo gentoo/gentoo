@@ -10,7 +10,6 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/bitrise-io/stepman/issues</bugs-to>
-		<changelog>https://github.com/bitrise-io/stepman/blob/master/CHANGELOG.md</changelog>
 		<doc>https://github.com/bitrise-io/stepman/blob/master/README.md</doc>
 		<remote-id type="github">bitrise-io/stepman</remote-id>
 	</upstream>
