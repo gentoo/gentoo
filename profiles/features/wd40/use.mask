@@ -3,15 +3,6 @@
 
 rust
 
-# Sam James <sam@gentoo.org> (2022-11-19)
-# Indirectly depends on Rust:
-# glade/libsecret -> gjs -> Rust
-eds
-gnome-keyring
-gnome-online-accounts
-glade
-libsecret
-
 # Michał Górny <mgorny@gentoo.org> (2022-10-09)
 # Disable tests requiring Rust.
 test-rust

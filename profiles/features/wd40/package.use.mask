@@ -1,31 +1,20 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-11-21)
+# USE="test introspection" needs gjs. TODO: change ebuild instead?
+app-crypt/libsecret test
+
 # Sam James <sam@gentoo.org> (2022-11-19)
 # GNOME packages pulling in e.g. gjs which then needs Rust.
-app-arch/file-roller nautilus
-app-crypt/eid-mw gtk p11-kit
-app-crypt/pinentry gtk
-dev-libs/libgdata crypt
-dev-libs/totem-pl-parser test
-dev-util/devhelp gedit
+dev-util/glade gjs
+gnome-base/gnome-menus test
 gnome-base/gnome-settings-daemon modemmanager
 gnome-base/nautilus previewer
-lxqt-base/lxqt-meta trash
-mate-extra/caja-extensions cdr
-mate-extra/mate-screensaver pam
-media-gfx/gimp gnome
-media-gfx/gthumb cdr
-media-sound/easytag nautilus
-media-sound/rhythmbox cdr
-net-libs/libnma pkcs11
 net-vpn/networkmanager-openconnect gtk
 net-vpn/networkmanager-openvpn gtk
 net-vpn/networkmanager-pptp gtk
 net-vpn/networkmanager-vpnc gtk
-xfce-base/thunar trash-panel-plugin udisks
-x11-libs/libfm automount
-x11-terms/gnome-terminal nautilus
 
 # Michał Górny <mgorny@gentoo.org> (2022-07-29)
 # More packages requiring dev-python/cryptography or its revdeps.
