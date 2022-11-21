@@ -595,7 +595,9 @@ tc-ld-disable-gold() {
 # @USAGE: [toolchain prefix]
 # @DESCRIPTION:
 # If a linker other than bfd is currently selected, configure the compilation
-# settings so that we use the bfd linker instead.
+# settings so that we use the bfd linker instead.  This function should not
+# be used for simple underlinking problems.  This function is intended for use
+# when a package is fragile and/or relies on bfd internals.
 tc-ld-force-bfd() {
 	if tc-ld-is-bfd "$@" ; then
 		return
