@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Guillermo Joandet <gjoandet@gmail.com> (2022-11-22)
+# app-text/pandoc is not keyworded on most architectures
+net-libs/gssdp man
+
 # Matt Turner <mattst88@gentoo.org> (2022-09-26)
 # Requires nautilus-43.0 which is keyworded everywhere
 >=app-arch/file-roller-43.0 nautilus
