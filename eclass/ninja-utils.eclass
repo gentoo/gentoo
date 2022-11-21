@@ -62,6 +62,16 @@ case "${NINJA}" in
 	;;
 esac
 
+# @FUNCTION: get_NINJAOPTS
+# @DESCRIPTION:
+# Get the value of NINJAOPTS, inferring them from MAKEOPTS if unset.
+get_NINJAOPTS() {
+	if [[ -z ${NINJAOPTS+set} ]]; then
+		NINJAOPTS="-j$(makeopts_jobs "${MAKEOPTS}" 999) -l$(makeopts_loadavg "${MAKEOPTS}" 0)"
+	fi
+	echo "${NINJAOPTS}"
+}
+
 # @FUNCTION: eninja
 # @USAGE: [<args>...]
 # @DESCRIPTION:
@@ -72,11 +82,8 @@ eninja() {
 	local nonfatal_args=()
 	[[ ${EAPI} != 5 ]] && nonfatal_args+=( -n )
 
-	if [[ -z ${NINJAOPTS+set} ]]; then
-		NINJAOPTS="-j$(makeopts_jobs "${MAKEOPTS}" 999) -l$(makeopts_loadavg "${MAKEOPTS}" 0)"
-	fi
 	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
-	set -- "${NINJA}" -v ${NINJAOPTS} "$@"
+	set -- "${NINJA}" -v $(get_NINJAOPTS) "$@"
 	echo "$@" >&2
 	"$@" || die "${nonfatal_args[@]}" "${*} failed"
 }
