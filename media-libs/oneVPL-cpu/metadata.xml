@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">oneapi-src/oneVPL-cpu</remote-id>
+	</upstream>
+	<use>
+		<flag name="experimental">Enable experimental API</flag>
+		<flag name="openh264">Use <pkg>media-libs/openh264</pkg> instead of <pkg>media-libs/x264</pkg></flag>
+	</use>
+</pkgmetadata>
