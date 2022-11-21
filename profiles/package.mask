@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2022-11-21)
+# Was added only for dev-python/pytest-bdd which no longer needs it.
+# If using, migrate to stdlib glob which supports `**` since python-3.5.
+# Removal: 2022-12-21.
+dev-python/glob2
+
 # David Seifert <soap@gentoo.org> (2022-11-21)
 # Release more than 30 years (!) old, K&R C, full of implicit function
 # declarations, EAPI 6, problematic license. Bug #729536, #854879, #870736.
