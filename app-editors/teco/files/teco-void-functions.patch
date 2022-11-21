@@ -6,7 +6,7 @@ https://bugs.gentoo.org/729254
  #define SIGINTMASK 2
  #endif
  
-+void crlf(), type_char();
++void crlf(), type_char(char c);
 +
  int lf_sw;                                  /* nonzero: make up a LF following an entered CR */
  int ttyflags;                               /* flags for (stdin) file descriptor */
@@ -178,16 +178,18 @@ https://bugs.gentoo.org/729254
      register int icnt;
 --- teco-orig/te_main.c
 +++ teco/te_main.c
-@@ -44,6 +44,8 @@
+@@ -44,6 +44,10 @@
  
  #include "te_defs.h"
  
-+void cleanup(), print_string(), save_args(), read_startup(), get_term_par();
++void cleanup(), read_startup(), get_term_par();
++void print_string(int arg);
++void save_args(int argc, char *argv[], struct qh *q);
 +
  main(argc, argv)
      int argc;           /* arg count */
      char *argv[];       /* array of string pointers */
-@@ -103,6 +105,7 @@
+@@ -103,6 +107,7 @@
  
  /* reset screen state, keyboard state; remove open output files */
  
@@ -195,7 +197,7 @@ https://bugs.gentoo.org/729254
  cleanup()
      {
      window(WIN_OFF);            /* restore screen */
-@@ -115,6 +118,7 @@
+@@ -115,6 +120,7 @@
  /* print string for error message */
  /* argument is subscript of a qreg qh, prints text from that buffer */
  
@@ -203,7 +205,7 @@ https://bugs.gentoo.org/729254
  print_string(arg)
      int arg;
      {
-@@ -137,6 +141,7 @@
+@@ -137,6 +143,7 @@
  
  /* copy invocation command line to a text buffer */
  
@@ -211,7 +213,7 @@ https://bugs.gentoo.org/729254
  save_args(argc, argv, q)
      int argc;
      char *argv[];
-@@ -171,6 +176,7 @@
+@@ -171,6 +178,7 @@
  
  char startup_name[] = "/.tecorc";       /* name of startup file */
  
@@ -219,7 +221,7 @@ https://bugs.gentoo.org/729254
  read_startup()
      {
      char *hp, *getenv();
-@@ -192,6 +198,7 @@
+@@ -192,6 +200,7 @@
  
  /* routine to get terminal height and width from termcap */
  
@@ -233,7 +235,7 @@ https://bugs.gentoo.org/729254
  /* version for multiple buffers  04/13/89 10.22                             */
  #include "te_defs.h"
  
-+void retype_cmdstr();
++void retype_cmdstr(char c);
  int ccount;             /* count of chars read in */
  
  int read_cmdstr()
