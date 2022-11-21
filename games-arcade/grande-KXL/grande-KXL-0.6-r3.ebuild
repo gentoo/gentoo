@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,6 +25,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-cflags.patch
 	"${FILESDIR}"/${P}-paths.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
