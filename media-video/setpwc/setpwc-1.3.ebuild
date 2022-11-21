@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,10 @@ KEYWORDS="amd64 ~arm ppc x86"
 
 DEPEND="sys-kernel/linux-headers"
 
-PATCHES=( "${FILESDIR}"/${P}-fix-build-system.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-build-system.patch
+	"${FILESDIR}"/${P}-clang16.patch
+)
 
 src_configure() {
 	tc-export CC
