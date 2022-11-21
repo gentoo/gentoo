@@ -198,6 +198,8 @@ mips		default/linux/mips/17.0/multilib/o32				exp
 mips		default/linux/mips/17.0/multilib/n32				exp
 mips		default/linux/mips/17.0/multilib/n64				exp
 mips		default/linux/mips/17.0/mipsel/o32				exp
+mips		default/linux/mips/17.0/mipsel/o32/systemd			exp
+mips		default/linux/mips/17.0/mipsel/o32/systemd/merged-usr		exp
 mips		default/linux/mips/17.0/mipsel/n32				exp
 mips		default/linux/mips/17.0/mipsel/n64				exp
 mips		default/linux/mips/17.0/mipsel/n64/systemd			exp
