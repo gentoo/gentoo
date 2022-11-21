@@ -48,6 +48,7 @@ amd64		default/linux/amd64/17.1/systemd/merged-usr			stable
 amd64		default/linux/amd64/17.1/systemd/selinux			exp
 amd64		default/linux/amd64/17.1/clang					exp
 amd64		default/linux/amd64/17.1/systemd/clang				exp
+amd64		default/linux/amd64/17.1/systemd/clang/merged-usr		exp
 
 # AMD64 Profiles
 # @MAINTAINER: amd64@gentoo.org
