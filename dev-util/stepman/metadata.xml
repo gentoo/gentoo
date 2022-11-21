@@ -6,7 +6,7 @@
 		Step collection manager for Bitrise CLI. Part of the Bitrise Continuous
 		Integration, Delivery and Automations Stack, with <pkg>dev-util/envman</pkg>
 		and <pkg>dev-util/bitrise</pkg>.  For a nice &amp; quick intro you should check:
-		https://www.bitrise.io/cli
+		https://app.bitrise.io/cli
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/bitrise-io/stepman/issues</bugs-to>
