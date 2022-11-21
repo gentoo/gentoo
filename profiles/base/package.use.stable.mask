@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Guillermo Joandet <gjoandet@gmail.com> (2022-11-22)
+# app-text/pandoc is not stable
+net-libs/gssdp man
+
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # Depends on libsoup:3.0
 >=gnome-base/gvfs-1.50 http
