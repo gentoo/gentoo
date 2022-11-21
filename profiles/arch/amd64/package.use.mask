@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Guillermo Joandet <gjoandet@gmail.com> (2022-11-22)
+# app-text/pandoc is keyworded on this architecture
+net-libs/gssdp -man
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
 # sys-libs/libsmbios is available here.
 app-laptop/pbbuttonsd -macbook
