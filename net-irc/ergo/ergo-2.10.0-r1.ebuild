@@ -23,6 +23,8 @@ DOCS=( README.md docs/MANUAL.md docs/USERGUIDE.md )
 src_prepare() {
 	default
 
+	sed -i -e 's:ERGO_USERNAME="ergo":ERGO_USERNAME="oragono":' distrib/openrc/ergo.confd || die
+
 	# Minor fiddling with paths
 	sed -i \
 		-e 's:/home/ergo/ergo:/usr/bin/ergo:' \
@@ -33,7 +35,7 @@ src_prepare() {
 }
 
 src_compile() {
-	go build . || die
+	ego build .
 }
 
 src_install() {
