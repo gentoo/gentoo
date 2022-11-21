@@ -5,9 +5,4 @@
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
-	<use>
-		<flag name="android">Install android related files</flag>
-		<flag name="system-boost">Use system boost (<pkg>dev-libs/boost</pkg>) instead of bundled one</flag>
-		<flag name="system-tbb">Use system Thread Building Blocks (<pkg>dev-cpp/tbb</pkg>) instead of bundled one</flag>
-	</use>
 </pkgmetadata>
