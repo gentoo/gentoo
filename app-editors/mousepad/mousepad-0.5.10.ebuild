@@ -6,7 +6,10 @@ EAPI=8
 inherit gnome2-utils xdg-utils
 
 DESCRIPTION="GTK+-based editor for the Xfce Desktop Environment"
-HOMEPAGE="https://git.xfce.org/apps/mousepad/about/"
+HOMEPAGE="
+	https://docs.xfce.org/apps/mousepad/start
+	https://gitlab.xfce.org/apps/mousepad/
+"
 SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
