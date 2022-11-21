@@ -10,8 +10,7 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/bitrise-io/envman/issues</bugs-to>
-		<changelog>https://github.com/bitrise-io/envman/blob/master/CHANGELOG.md</changelog>
 		<doc>https://github.com/bitrise-io/envman/blob/master/README.md</doc>
-		<remote-id type="github">bitriseio/envman</remote-id>
+		<remote-id type="github">bitrise-io/envman</remote-id>
 	</upstream>
 </pkgmetadata>
