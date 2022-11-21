@@ -9,14 +9,12 @@ EAPI=8
 JAVA_PKG_IUSE="doc source test"
 MAVEN_ID="com.ibm.icu:icu4j:72.1"
 JAVA_TESTING_FRAMEWORKS="junit-4"
-VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/icu.asc
 
-inherit java-pkg-2 java-pkg-simple verify-sig
+inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A set of Java libraries providing Unicode and Globalization support"
 HOMEPAGE="https://icu.unicode.org"
-SRC_URI="https://github.com/unicode-org/icu/archive/refs/tags/release-${PV/./-}.tar.gz -> icu-${PV}.tar.gz
-	https://github.com/unicode-org/icu/releases/download/release-${PV/./-}/SHASUM512.txt.asc"
+SRC_URI="https://github.com/unicode-org/icu/archive/refs/tags/release-${PV/./-}.tar.gz -> icu-${PV}.tar.gz"
 
 LICENSE="icu"
 SLOT="70"
