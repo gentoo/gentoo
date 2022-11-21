@@ -90,6 +90,8 @@ src_unpack() {
 }
 
 python_configure_all() {
+	# workaround stupid numpy distutils overrides, indirectly via pythran
+	export SETUPTOOLS_USE_DISTUTILS=stdlib
 	export SCIPY_USE_PYTHRAN=$(usex fortran 1 0)
 }
 
