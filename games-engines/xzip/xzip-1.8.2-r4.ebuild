@@ -19,6 +19,10 @@ RDEPEND=${DEPEND}
 
 S="${WORKDIR}/xzip"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-clang16.patch
+)
+
 src_compile() {
 	tc-export CC
 	emake \
