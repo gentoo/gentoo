@@ -24,6 +24,7 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
 	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	)
 "
