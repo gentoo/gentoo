@@ -594,11 +594,10 @@ tc-ld-disable-gold() {
 # @FUNCTION: tc-ld-force-bfd
 # @USAGE: [toolchain prefix]
 # @DESCRIPTION:
-# If the gold or lld linker is currently selected, configure the compilation
+# If a linker other than bfd is currently selected, configure the compilation
 # settings so that we use the bfd linker instead.
 tc-ld-force-bfd() {
-	if ! tc-ld-is-gold "$@" && ! tc-ld-is-lld "$@" ; then
-		# They aren't using gold or lld, so nothing to do!
+	if tc-ld-is-bfd "$@" ; then
 		return
 	fi
 
