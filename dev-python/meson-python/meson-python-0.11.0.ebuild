@@ -24,9 +24,11 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/pyproject-metadata-0.6.1[${PYTHON_USEDEP}]
-	>=dev-python/tomli-1.0.0[${PYTHON_USEDEP}]
 	>=dev-util/meson-0.63.0[${PYTHON_USEDEP}]
 	dev-util/patchelf
+	$(python_gen_cond_dep '
+		>=dev-python/tomli-1.0.0[${PYTHON_USEDEP}]
+	' 3.8 3.9 3.10)
 "
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
