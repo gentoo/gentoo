@@ -143,6 +143,7 @@ arm64		default/linux/arm64/17.0/systemd/merged-usr			stable
 arm64		default/linux/arm64/17.0/systemd/selinux			exp
 arm64		default/linux/arm64/17.0/llvm					exp
 arm64		default/linux/arm64/17.0/systemd/llvm				exp
+arm64		default/linux/arm64/17.0/systemd/llvm/merged-usr		exp
 
 
 # ARM64 Profiles (big-endian)
