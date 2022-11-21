@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>media-video@gentoo.org</email>
-</maintainer>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Intel-Media-SDK/MediaSDK</remote-id>
+	</upstream>
+	<use>
+		<flag name="tools">Build analyse and inspect tools</flag>
+	</use>
 </pkgmetadata>
