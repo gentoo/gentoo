@@ -5,14 +5,32 @@
 		<email>titanofold@gentoo.org</email>
 		<name>Aaron W. Swenson</name>
 	</maintainer>
+	<longdescription lang="en">
+		GnuCash is personal and small-business financial-accounting software,
+		freely licensed under the GNU GPL and available for GNU/Linux, BSD,
+		Solaris, Mac OS X and Microsoft Windows.
+		Designed to be easy to use, yet powerful and flexible, GnuCash allows
+		you to track bank accounts, stocks, income and expenses. As quick and
+		intuitive to use as a checkbook register, it is based on professional
+		accounting principles to ensure balanced books and accurate reports.
+	</longdescription>
+	<longdescription lang="it">
+		GnuCash è un programma finanziario e di contabilità adatto all'utilizzo
+		in ambito famigliare o in una piccola impresa, rilasciato gratuitamente
+		con licenza GNU GPL e disponibile per GNU/Linux, BSD, Solaris, Mac OS X
+		e Microsoft Windows.
+		Progettato per essere di semplice utilizzo, ma comunque potente e flessibile,
+		GnuCash permette di tenere traccia dei conti bancari, delle azioni,
+		delle entrate e delle uscite. Intuitivo nell'utilizzo come il registro del
+		libretto degli assegni, si basa sui principi fondamentali della contabilità
+		per garantire l'equilibrio dei saldi e l'accuratezza dei resoconti.
+	</longdescription>
 	<use>
-		<flag name="aqbanking">
-			Connect to some internet banks via AqBanking
-		</flag>
+		<flag name="aqbanking">Connect to some internet banks via AqBanking</flag>
 		<flag name="quotes">Enable Online Stock Quote retrieval</flag>
 		<flag name="register2">Use the new register (Experimental)</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">gnucash</remote-id>
+		<remote-id type="github">Gnucash/gnucash</remote-id>
 	</upstream>
 </pkgmetadata>
