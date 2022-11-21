@@ -178,7 +178,7 @@ esac
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
 [[ ${EAPI} == 6 ]] && inherit eutils xdg-utils
-inherit multibuild multiprocessing toolchain-funcs
+inherit multibuild multiprocessing ninja-utils toolchain-funcs
 
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 	inherit python-r1
@@ -1319,9 +1319,34 @@ distutils_pep517_install() {
 	fi
 
 	local config_settings=
-	if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
-		case ${DISTUTILS_USE_PEP517} in
-			setuptools)
+	case ${DISTUTILS_USE_PEP517} in
+		meson-python)
+			# TODO: remove the condition once we BDEP on >=0.11
+			if has_version -b ">=dev-python/meson-python-0.11"; then
+				local -x NINJAOPTS=$(get_NINJAOPTS)
+				config_settings=$(
+					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
+						import json
+						import os
+						import shlex
+						import sys
+
+						ninjaopts = shlex.split(os.environ["NINJAOPTS"])
+						print(json.dumps({
+							"setup-args": sys.argv[1:],
+							"compile-args": [
+								"-v",
+								f"--ninja-args={ninjaopts!r}",
+							],
+						}))
+					EOF
+				)
+			elif [[ -n ${DISTUTILS_ARGS[@]} ]]; then
+				die "DISTUTILS_ARGS requires >=dev-python/meson-python-0.11 (missing BDEP?)"
+			fi
+			;;
+		setuptools)
+			if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
 				config_settings=$(
 					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
 						import json
@@ -1329,8 +1354,10 @@ distutils_pep517_install() {
 						print(json.dumps({"--global-option": sys.argv[1:]}))
 					EOF
 				)
-				;;
-			sip)
+			fi
+			;;
+		sip)
+			if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
 				# NB: for practical reasons, we support only --foo=bar,
 				# not --foo bar
 				local arg
@@ -1353,12 +1380,13 @@ distutils_pep517_install() {
 						print(json.dumps(args))
 					EOF
 				)
-				;;
-			*)
+			fi
+			;;
+		*)
+			[[ -n ${DISTUTILS_ARGS[@]} ]] &&
 				die "DISTUTILS_ARGS are not supported by ${DISTUTILS_USE_PEP517}"
-				;;
-		esac
-	fi
+			;;
+	esac
 
 	local build_backend=$(_distutils-r1_get_backend)
 	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
