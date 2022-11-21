@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ EGO_ON="github.com/bitrise-io"
 EGO_PN="${EGO_ON}/${PN}"
 
 DESCRIPTION="Run your Bitrise.io automations on any Mac or Linux machine"
-HOMEPAGE="https://www.bitrise.io/cli"
+HOMEPAGE="https://app.bitrise.io/cli"
 SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
