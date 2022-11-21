@@ -36,6 +36,9 @@ DEPEND="
 		virtual/pkgconfig
 	)
 "
+RDEPEND="
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.63-xtools-support.patch
