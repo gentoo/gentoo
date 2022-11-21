@@ -21,7 +21,11 @@ RDEPEND="
 	dev-python/parse_type[${PYTHON_USEDEP}]
 	dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/packaging[${PYTHON_USEDEP}] )"
+BDEPEND="
+	test? (
+		dev-python/packaging[${PYTHON_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
 
