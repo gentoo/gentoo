@@ -1,10 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2022-11-21)
-# USE="test introspection" needs gjs. TODO: change ebuild instead?
-app-crypt/libsecret test
-
 # Sam James <sam@gentoo.org> (2022-11-19)
 # GNOME packages pulling in e.g. gjs which then needs Rust.
 dev-util/glade gjs
