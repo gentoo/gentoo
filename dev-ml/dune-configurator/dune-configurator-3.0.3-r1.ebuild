@@ -16,9 +16,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt"
 RESTRICT="test"
 
-BDEPEND="~dev-ml/dune-${PV}"
+BDEPEND=">=dev-ml/dune-3"
 DEPEND="
-	dev-ml/csexp:=[ocamlopt?]
+	>=dev-ml/csexp-1.5:=[ocamlopt?]
 "
 RDEPEND="${DEPEND}"
 
