@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-11-21)
+# Release more than 30 years (!) old, K&R C, full of implicit function
+# declarations, EAPI 6, problematic license. Bug #729536, #854879, #870736.
+# Removal on 2022-12-21.
+app-text/agrep
+
 # Michał Górny <mgorny@gentoo.org> (2022-11-19)
 # Fails to build.  Last bumped in 2017.  Library with no revdeps.
 # Removal on 2022-12-19.  Bug #630396.
