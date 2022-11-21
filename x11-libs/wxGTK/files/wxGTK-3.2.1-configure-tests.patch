@@ -1,0 +1,19 @@
+diff --git a/configure b/configure
+index d2acb7d..69ae083 100755
+--- a/configure
++++ b/configure
+@@ -45622,6 +45622,14 @@ $as_echo "yes" >&6; }
+     fi
+ fi
+ 
++# explicit override to enable or disable tests
++if test "${enable_tests+set}" = set; then
++    SUBDIRS="$SUBDIRS tests"
++fi
++if test "${disable_tests+set}" = set; then
++	SUBDIRS="${SUBDIRS% tests}"
++fi
++
+ for subdir in $SUBDIRS; do
+     if test -d ${srcdir}/${subdir} ; then
+         if test "$wxUSE_GUI" = "yes"; then
