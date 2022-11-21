@@ -15,7 +15,8 @@ KEYWORDS="~amd64"
 
 DEPEND=">=dev-libs/glib-2.44:2"
 RDEPEND="${DEPEND}"
-BDEPEND="dev-util/gtk-doc"
+BDEPEND="dev-util/gtk-doc
+	virtual/pkgconfig"
 
 src_configure() {
 	local emesonargs=(
