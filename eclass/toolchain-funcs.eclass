@@ -584,6 +584,7 @@ tc-ld-is-mold() {
 
 # @FUNCTION: tc-ld-disable-gold
 # @USAGE: [toolchain prefix]
+# @DEPRECATED: tc-ld-force-bfd
 # @DESCRIPTION:
 # If the gold linker is currently selected, configure the compilation
 # settings so that we use the older bfd linker instead.
