@@ -15,8 +15,10 @@ KEYWORDS="~amd64 ~arm64 ~x86 ~x64-macos"
 IUSE="+client debug libssh"
 
 RDEPEND="
-	client? ( sys-libs/ncurses:= )
-	client? ( sys-libs/readline:= )
+	client? (
+		sys-libs/ncurses:=
+		sys-libs/readline:=
+	)
 	filecaps? (
 		acct-group/bird
 		acct-user/bird
@@ -36,7 +38,6 @@ FILECAPS=(
 
 src_prepare() {
 	default
-
 	eautoreconf
 }
 
@@ -52,10 +53,13 @@ src_install() {
 	if use client; then
 		dobin birdc
 	fi
+
 	dobin birdcl
 	dosbin bird
+
 	newinitd "${FILESDIR}/initd-${PN}-2" ${PN}
 	newconfd "${FILESDIR}/confd-${PN}-2" ${PN}
+
 	dodoc doc/bird.conf.example
 }
 
