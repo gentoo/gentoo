@@ -21,6 +21,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-dune.patch )
+
 src_install() {
 	dune-install ${PN} ${PN}-lwt
 }
