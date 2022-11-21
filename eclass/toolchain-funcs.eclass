@@ -447,6 +447,41 @@ econf_build() {
 	tc-env_build econf_env "$@"
 }
 
+# @FUNCTION: tc-ld-is-bfd
+# @USAGE: [toolchain prefix]
+# @DESCRIPTION:
+# Return true if the current linker is set to GNU bfd.
+tc-ld-is-bfd() {
+	local out
+
+	# Ensure ld output is in English.
+	local -x LC_ALL=C
+
+	# First check the linker directly.
+	out=$($(tc-getLD "$@") --version 2>&1)
+	if [[ ${out} != "GNU ld"* ]] ; then
+		return 1
+	fi
+
+	# Then see if they're selecting bfd via compiler flags.
+	# Note: We're assuming they're using LDFLAGS to hold the
+	# options and not CFLAGS/CXXFLAGS.
+	local base="${T}/test-tc-bfd"
+	cat <<-EOF > "${base}.c"
+	int main(void) { return 0; }
+	EOF
+	out=$($(tc-getCC "$@") ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -Wl,--version "${base}.c" -o "${base}" 2>&1)
+	rm -f "${base}"*
+	if [[ ${out} != "GNU ld"* ]] ; then
+		return 1
+	fi
+
+	# It's bfd!
+	# We use positive logic here unlike tc-ld-is-gold and tc-ld-is-mold
+	# because LD might be bfd even if *FLAGS isn't.
+	return 0
+}
+
 # @FUNCTION: tc-ld-is-gold
 # @USAGE: [toolchain prefix]
 # @DESCRIPTION:
