@@ -3,13 +3,13 @@
 
 EAPI=8
 
-inherit meson xdg
+inherit flag-o-matic meson xdg
 
 DESCRIPTION="Nintendo DS emulator"
 HOMEPAGE="https://desmume.org/"
 SRC_URI="https://github.com/TASEmulators/desmume/releases/download/release_$(ver_rs 1- _)/${P}.tar.xz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gdb +gui openal wifi"
@@ -42,8 +42,11 @@ PATCHES=(
 DOCS=( ${PN}/{AUTHORS,ChangeLog,README,README.LIN,doc/.} )
 
 src_configure() {
-	local EMESON_SOURCE=${S}/${PN}/src/frontend/posix
+	append-flags -fno-strict-aliasing #858629
+	append-cppflags -D_XOPEN_SOURCE=500 #874996
+	filter-lto # odr issues
 
+	local EMESON_SOURCE=${S}/${PN}/src/frontend/posix
 	local emesonargs=(
 		$(meson_use gdb gdb-stub)
 		$(meson_use gui frontend-gtk)
