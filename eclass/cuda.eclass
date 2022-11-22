@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 case "${EAPI:-0}" in
@@ -87,7 +87,7 @@ cuda_gccdir() {
 	# Try the current gcc version first
 	ver=$(gcc-version)
 	if [[ -n "${ver}" ]] && [[ ${vers} =~ ${ver} ]]; then
-		dirs=( ${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/${ver}*/ )
+		dirs=( ${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/${ver%.*}*/ )
 		gcc_bindir="${dirs[${#dirs[@]}-1]}"
 	fi
 
@@ -96,14 +96,14 @@ cuda_gccdir() {
 		ver=$(ver_cut 1-2 "${ver##*sys-devel/gcc-}")
 
 		if [[ -n "${ver}" ]] && [[ ${vers} =~ ${ver} ]]; then
-			dirs=( ${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/${ver}*/ )
+			dirs=( ${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/${ver%.*}*/ )
 			gcc_bindir="${dirs[${#dirs[@]}-1]}"
 		fi
 	fi
 
 	for ver in ${vers}; do
 		if has_version "=sys-devel/gcc-${ver}*"; then
-			dirs=( ${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/${ver}*/ )
+			dirs=( ${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/${ver%.*}*/ )
 			gcc_bindir="${dirs[${#dirs[@]}-1]}"
 		fi
 	done
