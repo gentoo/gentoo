@@ -16,4 +16,7 @@
 	<flag name="uhd">Build with Ettus Research USRP Hardware Driver support</flag>
 	<flag name="xtrx">Build with xtrx Hardware Driver support</flag>
 </use>
+<upstream>
+	<remote-id type="github">bastibl/gr-rds</remote-id>
+</upstream>
 </pkgmetadata>
