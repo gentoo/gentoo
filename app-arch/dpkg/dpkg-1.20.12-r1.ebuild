@@ -15,6 +15,7 @@ IUSE="+bzip2 libmd +lzma nls selinux static-libs test +update-alternatives +zlib
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	>=app-arch/tar-1.34-r1
 	>=dev-lang/perl-5.14.2:=
 	sys-libs/ncurses:=[unicode(+)]
 	bzip2? ( app-arch/bzip2 )
