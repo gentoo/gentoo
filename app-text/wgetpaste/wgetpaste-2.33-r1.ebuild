@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit optfeature
+
 DESCRIPTION="Command-line interface to various pastebins"
 HOMEPAGE="https://wgetpaste.zlin.dk/"
 SRC_URI="https://github.com/zlin/wgetpaste/releases/download/${PV}/${P}.tar.xz"
@@ -35,4 +37,9 @@ src_install() {
 	dobin ${PN}
 	insinto /usr/share/zsh/site-functions
 	doins _wgetpaste
+}
+
+pkg_postinst() {
+	optfeature "ANSI (color code) stripping support" app-text/ansifilter
+	optfeature "xclip support" x11-misc/xclip
 }
