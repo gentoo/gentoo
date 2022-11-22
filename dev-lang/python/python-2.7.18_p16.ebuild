@@ -30,8 +30,9 @@ SLOT="${PYVER}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="
 	berkdb bluetooth build examples gdbm hardened +ncurses +readline
-	+sqlite +ssl tk wininst +xml
+	+sqlite +ssl tk valgrind wininst +xml
 "
+RESTRICT="test"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
 # If you need to apply a patch which requires python for bootstrapping, please
@@ -65,6 +66,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
+	valgrind? ( dev-util/valgrind )
 "
 BDEPEND="
 	virtual/awk
@@ -196,6 +198,8 @@ src_configure() {
 		--without-ensurepip
 		--with-system-expat
 		--with-system-ffi
+
+		$(use_with valgrind)
 	)
 
 	# disable implicit optimization/debugging flags
