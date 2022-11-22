@@ -118,7 +118,6 @@ dev-cpp/pstreams
 # app-misc/glimpse: bug #684096, last bumped in 2013
 # dev-db/cpp-driver: bug #685936, last bumped in 2019
 # dev-erlang/riakc: bug #722688, last bumped in 2016
-# dev-libs/xalan-c: bug #734190, last bumped in 2011
 # dev-util/stubgen: bug #839927, last bumped in 2011
 # media-gfx/xzgv: bug #831252, last bumped in 2009
 # net-dns/dnssec-check: bug #571350, last bumped in 2016
@@ -135,7 +134,6 @@ app-forensics/ovaldi
 app-misc/glimpse
 dev-db/cpp-driver
 dev-erlang/riakc
-dev-libs/xalan-c
 dev-util/stubgen
 media-gfx/xzgv
 net-dns/dnssec-check
