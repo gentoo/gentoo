@@ -18,7 +18,7 @@
 	<upstream>
 		<remote-id type="github">apache/tomcat-native</remote-id>
 		<bugs-to>https://tomcat.apache.org/bugreport.html</bugs-to>
-		<doc>https://tomcat.apache.org/native-1.2-doc/</doc>
-		<changelog>https://tomcat.apache.org/native-1.2-doc/miscellaneous/changelog.html</changelog>
+		<doc>https://tomcat.apache.org/native-doc/</doc>
+		<changelog>https://tomcat.apache.org/native-doc/miscellaneous/changelog.html</changelog>
 	</upstream>
 </pkgmetadata>
