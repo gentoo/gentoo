@@ -47,6 +47,7 @@ PATCHES=(
 	"${MY_PATCHES[@]}"
 
 	# Additional patches
+	"${FILESDIR}"/${P}-fix-mpfr_custom_get_kind.patch
 )
 
 HTML_DOCS=( doc/FAQ.html )
