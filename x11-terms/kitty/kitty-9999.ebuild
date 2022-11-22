@@ -135,8 +135,9 @@ src_install() {
 	insinto /usr
 	doins -r linux-package/.
 
-	fperms +x /usr/bin/kitty \
-		/usr/$(get_libdir)/kitty/shell-integration/ssh/{askpass.py,kitty}
+	local execbit
+	mapfile -t execbit < <(find linux-package -type f -perm /+x -printf '/usr/%P\n' || die)
+	fperms +x "${execbit[@]}"
 }
 
 pkg_postinst() {
