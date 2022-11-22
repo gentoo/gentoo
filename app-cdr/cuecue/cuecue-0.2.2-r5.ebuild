@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 # Enable one use flag by default, bug #254745
-IUSE="flac mp3 +vorbis"
+IUSE="+flac mp3 +vorbis"
 REQUIRED_USE="|| ( flac mp3 vorbis )"
 
 DEPEND="
@@ -24,6 +24,8 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+# We always need flac for AM_PATH_LIBFLAC if autoreconfing, bug #882447
+BDEPEND="media-libs/flac"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-flac113.diff # bug 157706
