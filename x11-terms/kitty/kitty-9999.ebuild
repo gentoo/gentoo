@@ -82,13 +82,22 @@ src_unpack() {
 src_prepare() {
 	default
 
-	# seds unfortunately feel easier on maintainenance than patches here
-	sed -e "s/'x11 wayland'/'$(usev X x11) $(usev wayland)'/" \
-		-e "$(usev !X '/gl_libs =/s/=.*/= []/')" \
-		-e "/num_workers =/s/=.*/= $(makeopts_jobs)/" \
-		-e "s/cflags.append.*-O3.*/pass/" -e 's/-O3//' \
-		-e "s/ld_flags.append('-s')/pass/" \
-		-i setup.py || die
+	# sed unfortunately feels easier on maintainenance than patches here
+	local sedargs=(
+		-e "/num_workers =/s/=.*/= $(makeopts_jobs)/"
+		-e "s/cflags.append.*-O3.*/pass/" -e 's/-O3//'
+		-e "s/ld_flags.append('-s')/pass/"
+	)
+
+	# kitty is often popular on wayland-only setups, try to allow this
+	use !X && sedargs+=( -e '/gl_libs =/s/=.*/= []/' ) #857918
+	use !X || use !wayland &&
+		sedargs+=( -e "s/'x11 wayland'/'$(usex X x11 wayland)'/" )
+
+	# skip docs for live version, missing dependencies
+	[[ ${PV} == 9999 ]] && sedargs+=( -e '/exists.*_build/,/docs(ddir)/d' )
+
+	sed -i setup.py "${sedargs[@]}" || die
 
 	# test relies on 'who' command which doesn't detect users with pid-sandbox
 	rm kitty_tests/utmp.py || die
@@ -96,8 +105,6 @@ src_prepare() {
 	# test may fail/hang depending on environment and shell initialization scripts
 	rm kitty_tests/{shell_integration,ssh}.py || die
 
-	# skip docs for live version
-	[[ ${PV} != 9999 ]] || sed -i '/exists.*_build/,/docs(ddir)/d' setup.py || die
 }
 
 src_compile() {
