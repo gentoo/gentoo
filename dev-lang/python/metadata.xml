@@ -24,6 +24,9 @@
 		<flag name="lto">
 			Optimize the build using Link Time Optimization (LTO)
 		</flag>
+		<flag name="valgrind">
+			Detect if run within <pkg>dev-util/valgrind</pkg> and don't use pymalloc then
+		</flag>
 		<flag name="wininst">
 			Install Windows executables required to create an executable
 			installer for MS Windows
