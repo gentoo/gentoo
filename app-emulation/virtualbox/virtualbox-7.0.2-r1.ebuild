@@ -51,6 +51,7 @@ COMMON_DEPEND="
 		x11-libs/libXt
 		opengl? (
 			media-libs/libglvnd[X]
+			media-libs/vulkan-loader
 		)
 		qt5? (
 			dev-qt/qtcore:5
