@@ -18,7 +18,7 @@ SRC_URI="https://github.com/jakartaee/mail-api/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="EPL-1.0 EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 
 # Common dependencies
 # POM: pom.xml
