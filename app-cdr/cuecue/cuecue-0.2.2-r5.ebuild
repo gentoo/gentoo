@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Cuecue converts .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -30,7 +30,15 @@ PATCHES=(
 	"${FILESDIR}"/${P}-namespace.patch
 	"${FILESDIR}"/${P}-unused.patch
 	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-configure.patch
 )
+
+src_prepare() {
+	default
+
+	# Clang 16
+	eautoreconf
+}
 
 src_configure() {
 	econf \
