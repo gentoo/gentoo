@@ -36,6 +36,7 @@ inherit autotools cmake desktop libtool linux-info pax-utils python-single-r1 xd
 PATCHES=(
 	"${FILESDIR}/${P}-fmt-9.patch"
 	"${FILESDIR}/${P}-atomic.patch"
+	"${FILESDIR}/${P}-dav1d-1.0.0.patch"
 )
 
 DESCRIPTION="A free and open source media-player and entertainment hub"
@@ -118,7 +119,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	)
 	!system-ffmpeg? (
 		app-arch/bzip2
-		dav1d? ( media-libs/dav1d )
+		dav1d? ( media-libs/dav1d:= )
 	)
 	mysql? ( dev-db/mysql-connector-c:= )
 	mariadb? ( dev-db/mariadb-connector-c:= )
