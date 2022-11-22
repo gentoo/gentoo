@@ -22,6 +22,10 @@ RDEPEND="
 	zstd? ( app-arch/zstd:= )"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gnuinstalldirs.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 	# remove bundled libs
