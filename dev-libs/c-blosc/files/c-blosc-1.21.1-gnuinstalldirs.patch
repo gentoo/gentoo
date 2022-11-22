@@ -1,0 +1,71 @@
+https://github.com/Blosc/c-blosc/commit/5a2907c75ee1e43be90f58f2be7f8c856004a3bf
+
+From 5a2907c75ee1e43be90f58f2be7f8c856004a3bf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?H=C3=A5vard=20Flaget=20Aasen?= <haavard_aasen@yahoo.no>
+Date: Sun, 5 Dec 2021 07:52:54 +0100
+Subject: [PATCH] CMake: Use GNUInstallDirs when installing files.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -122,7 +122,7 @@ option(PREFER_EXTERNAL_ZSTD
+     "Find and use external Zstd library instead of included sources." OFF)
+ 
+ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
+-
++include(GNUInstallDirs)
+ 
+ if(NOT DEACTIVATE_LZ4)
+     if(PREFER_EXTERNAL_LZ4)
+@@ -342,7 +342,7 @@ if (BLOSC_INSTALL)
+         "${CMAKE_CURRENT_BINARY_DIR}/blosc.pc"
+         @ONLY)
+     install(FILES "${CMAKE_CURRENT_BINARY_DIR}/blosc.pc"
+-            DESTINATION lib/pkgconfig COMPONENT DEV)
++            DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig" COMPONENT DEV)
+ 
+     configure_file(
+         "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+--- a/blosc.pc.in
++++ b/blosc.pc.in
+@@ -1,8 +1,8 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-libdir=${exec_prefix}/lib
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
+ sharedlibdir=${libdir}
+-includedir=${prefix}/include
++includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+ 
+ Name: blosc
+ Description: A blocking, shuffling and lossless compression library
+--- a/blosc/CMakeLists.txt
++++ b/blosc/CMakeLists.txt
+@@ -61,8 +61,6 @@ if(COMPILER_SUPPORT_AVX2)
+ endif(COMPILER_SUPPORT_AVX2)
+ set(SOURCES ${SOURCES} shuffle.c)
+ 
+-# library install directory
+-set(lib_dir lib${LIB_SUFFIX})
+ set(version_string ${BLOSC_VERSION_MAJOR}.${BLOSC_VERSION_MINOR}.${BLOSC_VERSION_PATCH})
+ 
+ set(CMAKE_THREAD_PREFER_PTHREAD TRUE) # pre 3.1
+@@ -219,11 +217,15 @@ endif(BUILD_STATIC)
+ 
+ # install
+ if(BLOSC_INSTALL)
+-    install(FILES blosc.h blosc-export.h DESTINATION include COMPONENT DEV)
++    install(FILES blosc.h blosc-export.h
++            DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} COMPONENT DEV)
+     if(BUILD_SHARED)
+-        install(TARGETS blosc_shared LIBRARY DESTINATION ${lib_dir} ARCHIVE DESTINATION ${lib_dir} RUNTIME DESTINATION bin COMPONENT LIB)
++        install(TARGETS blosc_shared
++                LIBRARY COMPONENT LIB
++                ARCHIVE COMPONENT DEV
++                RUNTIME COMPONENT LIB)
+     endif(BUILD_SHARED)
+     if(BUILD_STATIC)
+-        install(TARGETS blosc_static LIBRARY DESTINATION ${lib_dir} ARCHIVE DESTINATION ${lib_dir} RUNTIME DESTINATION bin COMPONENT DEV)
++        install(TARGETS blosc_static COMPONENT DEV)
+     endif(BUILD_STATIC)
+ endif(BLOSC_INSTALL)
+
