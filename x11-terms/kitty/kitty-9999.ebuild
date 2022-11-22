@@ -66,6 +66,9 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )"
 [[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
 
+# override go-module.eclass' .* to only consider the Go written binary
+QA_FLAGS_IGNORED="usr/bin/kitty-tool"
+
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
@@ -108,8 +111,8 @@ src_compile() {
 		--verbose
 	)
 
-	edo ${EPYTHON} setup.py linux-package "${conf[@]}"
-	use test && edo ${EPYTHON} setup.py build-launcher "${conf[@]}"
+	edo "${EPYTHON}" setup.py linux-package "${conf[@]}"
+	use test && edo "${EPYTHON}" setup.py build-launcher "${conf[@]}"
 
 	[[ ${PV} == 9999 ]] || mv linux-package/share/doc/{${PN},${PF}} || die
 	rm -r linux-package/share/terminfo || die
@@ -125,6 +128,11 @@ src_install() {
 
 	fperms +x /usr/bin/kitty \
 		/usr/$(get_libdir)/kitty/shell-integration/ssh/{askpass.py,kitty}
+
+	# go-module.eclass force-restricts strip, allow except for Go
+	# note: placebo given this is not respected by portage (bug #697960)
+	dostrip /
+	dostrip -x /usr/bin/kitty-tool
 }
 
 pkg_postinst() {
