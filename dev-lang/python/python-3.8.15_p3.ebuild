@@ -31,7 +31,7 @@ SLOT="${PYVER}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="
 	bluetooth build +ensurepip examples gdbm hardened lto +ncurses pgo
-	+readline +sqlite +ssl test tk wininst +xml
+	+readline +sqlite +ssl test tk valgrind wininst +xml
 "
 RESTRICT="!test? ( test )"
 
@@ -68,6 +68,7 @@ DEPEND="
 	${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
 	test? ( app-arch/xz-utils[extra-filters(+)] )
+	valgrind? ( dev-util/valgrind )
 "
 # autoconf-archive needed to eautoreconf
 BDEPEND="
@@ -175,6 +176,8 @@ src_configure() {
 		--with-system-expat
 		--with-system-ffi
 		--with-wheel-pkg-dir="${EPREFIX}"/usr/lib/python/ensurepip
+
+		$(use_with valgrind)
 	)
 
 	# disable implicit optimization/debugging flags
