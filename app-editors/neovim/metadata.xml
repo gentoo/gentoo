@@ -5,6 +5,14 @@
 		<email>vim@gentoo.org</email>
 		<name>Gentoo Vim Project</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>listout@protonmail.com</email>
+		<name>Brahmajit Das</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="lto">Build with Link Time Optimization (LTO)</flag>
 		<flag name="nvimpager">Install nvimpager symlink to less.sh macro</flag>
