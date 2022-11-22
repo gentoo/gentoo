@@ -11,7 +11,7 @@ SRC_URI="https://github.com/logological/${PN}/archive/refs/tags/${PV}.tar.gz -> 
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 arm arm64 ppc ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~x86"
 
 src_prepare() {
 	default
