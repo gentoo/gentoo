@@ -27,7 +27,7 @@ else
 		SRC_DIR="src-previews"
 	else
 		SRC_DIR="src"
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+		KEYWORDS="~alpha ~amd64 ~loong ~m68k ~mips ~riscv ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	fi
 
 	SRC_URI="https://rsync.samba.org/ftp/rsync/${SRC_DIR}/${P/_/}.tar.gz
@@ -37,8 +37,9 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl examples iconv lz4 ssl stunnel system-zlib xattr xxhash zstd"
+IUSE="acl examples iconv lz4 rrsync ssl stunnel system-zlib xattr xxhash zstd"
 REQUIRED_USE+=" examples? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE+=" rrsync? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	>=dev-libs/popt-1.5
@@ -48,6 +49,12 @@ RDEPEND="
 		dev-lang/perl
 	)
 	lz4? ( app-arch/lz4:= )
+	rrsync? (
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			dev-python/bracex[${PYTHON_USEDEP}]
+		')
+	)
 	ssl? ( dev-libs/openssl:= )
 	system-zlib? ( sys-libs/zlib )
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
@@ -55,7 +62,10 @@ RDEPEND="
 	zstd? ( >=app-arch/zstd-1.4:= )
 	iconv? ( virtual/libiconv )"
 DEPEND="${RDEPEND}"
-BDEPEND="examples? ( ${PYTHON_DEPS} )"
+BDEPEND="
+	examples? ( ${PYTHON_DEPS} )
+	rrsync? ( ${PYTHON_DEPS} )
+"
 
 if [[ ${PV} == *9999 ]] ; then
 	BDEPEND+=" ${PYTHON_DEPS}
@@ -69,7 +79,7 @@ fi
 pkg_setup() {
 	# - USE=examples needs Python itself at runtime, but nothing else
 	# - 9999 needs commonmark at build time
-	if [[ ${PV} == *9999 ]] || use examples ; then
+	if [[ ${PV} == *9999 ]] || use examples || use rrsync; then
 		python-single-r1_pkg_setup
 	fi
 }
@@ -82,6 +92,10 @@ src_prepare() {
 		eautoconf -o configure.sh
 		eautoheader && touch config.h.in
 	fi
+
+	if use examples || use rrsync; then
+		python_fix_shebang support/
+	fi
 }
 
 src_configure() {
@@ -92,6 +106,7 @@ src_configure() {
 		$(use_enable acl acl-support)
 		$(use_enable iconv)
 		$(use_enable lz4)
+		$(use_with rrsync)
 		$(use_enable ssl openssl)
 		$(use_with !system-zlib included-zlib)
 		$(use_enable xattr xattr-support)
@@ -126,7 +141,9 @@ src_install() {
 
 	# Install the useful contrib scripts
 	if use examples ; then
-		python_fix_shebang support/
+		# The 'rrsync' script is installed conditionally via the 'rrysnc'
+		# USE flag, and not via the 'examples' USE flag.
+		rm support/rrsync* || die
 
 		exeinto /usr/share/rsync
 		doexe support/*
