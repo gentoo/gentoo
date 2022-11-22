@@ -116,5 +116,6 @@
     <remote-id type="cpan-module">Crypt::Stream::Sosemanuk</remote-id>
     <remote-id type="cpan-module">CryptX</remote-id>
     <remote-id type="cpan-module">Math::BigInt::LTM</remote-id>
+    <remote-id type="github">DCIT/perl-CryptX</remote-id>
   </upstream>
 </pkgmetadata>
