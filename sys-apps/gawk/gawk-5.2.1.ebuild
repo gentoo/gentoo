@@ -3,7 +3,7 @@
 
 EAPI=8
 
-GAWK_IS_BETA=yes
+GAWK_IS_BETA=no
 
 DESCRIPTION="GNU awk pattern-matching language"
 HOMEPAGE="https://www.gnu.org/software/gawk/gawk.html"
