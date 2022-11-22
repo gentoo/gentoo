@@ -17,6 +17,6 @@
 	<flag name="xtrx">Build with xtrx Hardware Driver support</flag>
 </use>
 <upstream>
-	<remote-id type="github">bastibl/gr-rds</remote-id>
+	<remote-id type="github">osmocom/gr-osmocom</remote-id>
 </upstream>
 </pkgmetadata>
