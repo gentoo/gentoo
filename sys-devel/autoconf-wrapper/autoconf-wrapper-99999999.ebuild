@@ -24,11 +24,12 @@ SLOT="0"
 
 src_install() {
 	exeinto /usr/$(get_libdir)/misc
-	newexe ac-wrapper.sh ac-wrapper.sh
+	doexe ac-wrapper.sh
 
 	dodir /usr/bin
+
 	local x=
 	for x in auto{conf,header,m4te,reconf,scan,update} ifnames ; do
-		dosym ../$(get_libdir)/misc/ac-wrapper.sh /usr/bin/${x}
+		dosym -r /usr/$(get_libdir)/misc/ac-wrapper.sh /usr/bin/${x}
 	done
 }
