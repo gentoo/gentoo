@@ -21,7 +21,8 @@ fi
 DESCRIPTION="Fast, feature-rich, GPU-based terminal"
 HOMEPAGE="https://sw.kovidgoyal.net/kitty/"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3 ZLIB"
+LICENSE+=" Apache-2.0 BSD MIT" # go
 SLOT="0"
 IUSE="+X test wayland"
 REQUIRED_USE="
@@ -60,7 +61,7 @@ DEPEND="
 	wayland? ( dev-libs/wayland-protocols )"
 BDEPEND="
 	${PYTHON_DEPS}
-	dev-lang/go
+	>=dev-lang/go-1.19
 	sys-libs/ncurses
 	virtual/pkgconfig
 	test? ( $(python_gen_cond_dep 'dev-python/pillow[${PYTHON_USEDEP}]') )
