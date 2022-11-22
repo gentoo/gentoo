@@ -64,6 +64,7 @@ dev-util/cbindgen
 dev-util/git-delta
 dev-util/maturin
 dev-util/tree-sitter-cli
+>=dev-vcs/stgit-2
 gnome-base/gdm
 >=gnome-base/gnome-core-apps-3.36.5
 >=gnome-base/gnome-core-libs-3.36.5
