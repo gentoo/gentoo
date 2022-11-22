@@ -6,4 +6,7 @@
 		<name>Gentoo Vim Project</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="gentoo">proj/eselect-vi</remote-id>
+	</upstream>
 </pkgmetadata>
