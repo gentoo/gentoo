@@ -60,6 +60,10 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-sergehallyn )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-configure-clang16.patch
+)
+
 src_prepare() {
 	default
 
