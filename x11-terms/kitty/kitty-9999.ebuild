@@ -86,7 +86,7 @@ src_prepare() {
 	local sedargs=(
 		-e "/num_workers =/s/=.*/= $(makeopts_jobs)/"
 		-e "s/cflags.append.*-O3.*/pass/" -e 's/-O3//'
-		-e "s/ld_flags.append('-s')/pass/"
+		-e "s/ld_flags.append('-[sw]')/pass/"
 	)
 
 	# kitty is often popular on wayland-only setups, try to allow this
