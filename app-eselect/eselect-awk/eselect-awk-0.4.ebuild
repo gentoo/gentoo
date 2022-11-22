@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="Manages the {,/usr}/bin/awk symlink"
-HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+HOMEPAGE="https://gitweb.gentoo.org/proj/eselect-awk.git/"
 SRC_URI="https://gitweb.gentoo.org/proj/eselect-awk.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2"
