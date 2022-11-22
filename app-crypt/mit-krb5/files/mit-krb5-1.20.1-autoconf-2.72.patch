@@ -1,0 +1,31 @@
+https://github.com/krb5/krb5/commit/d864d740d019fdf2c640460f2aa2760c7fa4d5e9
+
+From d864d740d019fdf2c640460f2aa2760c7fa4d5e9 Mon Sep 17 00:00:00 2001
+From: Julien Rische <jrische@redhat.com>
+Date: Thu, 17 Nov 2022 15:01:24 +0100
+Subject: [PATCH] Fix aclocal.m4 syntax error for autoconf 2.72
+
+An incorrect closure inside KRB5_AC_INET6 is innocuous with autoconf
+versions up to 2.71, but will cause an error at configure time with
+the forthcoming autoconf 2.72.
+
+[ghudson@mit.edu: added more context to commit message]
+
+ticket: 9077 (new)
+tags: pullup
+target_version: 1.20-next
+target_version: 1.19-next
+--- a/aclocal.m4
++++ b/aclocal.m4
+@@ -409,8 +409,8 @@ else
+       [[struct sockaddr_in6 in;
+         AF_INET6;
+         IN6_IS_ADDR_LINKLOCAL(&in.sin6_addr);]])],
+-    [krb5_cv_inet6=yes], [krb5_cv_inet6=no])])
+-fi
++    [krb5_cv_inet6=yes], [krb5_cv_inet6=no])
++fi])
+ AC_MSG_RESULT($krb5_cv_inet6)
+ if test "$krb5_cv_inet6" = no && test "$ac_cv_func_inet_ntop" = yes; then
+ AC_MSG_CHECKING(for IPv6 compile-time support with -DINET6)
+

@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}_dont_create_rundir.patch"
 	"${FILESDIR}/${PN}-1.18.2-krb5-config.patch"
 	"${FILESDIR}/${PN}-1.20-missing-time-include.patch"
+	"${FILESDIR}/${PN}-1.20.1-autoconf-2.72.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
