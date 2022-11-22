@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-inherit edo go-module optfeature multiprocessing python-single-r1 toolchain-funcs xdg
+inherit edo optfeature multiprocessing python-single-r1 toolchain-funcs xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -60,19 +60,20 @@ DEPEND="
 	wayland? ( dev-libs/wayland-protocols )"
 BDEPEND="
 	${PYTHON_DEPS}
+	dev-lang/go
 	sys-libs/ncurses
 	virtual/pkgconfig
 	test? ( $(python_gen_cond_dep 'dev-python/pillow[${PYTHON_USEDEP}]') )
 	wayland? ( dev-util/wayland-scanner )"
 [[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
 
-# override go-module.eclass' .* to only consider the Go written binary
-QA_FLAGS_IGNORED="usr/bin/kitty-tool"
+QA_FLAGS_IGNORED="usr/bin/kitty-tool" # written in Go
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
-		go-module_live_vendor
+		cd "${S}" || die
+		edo go mod vendor
 	else
 		verify-sig_src_unpack
 	fi
@@ -86,6 +87,7 @@ src_prepare() {
 		-e "$(usev !X '/gl_libs =/s/=.*/= []/')" \
 		-e "/num_workers =/s/=.*/= $(makeopts_jobs)/" \
 		-e "s/cflags.append.*-O3.*/pass/" -e 's/-O3//' \
+		-e "s/ld_flags.append('-s')/pass/" \
 		-i setup.py || die
 
 	# test relies on 'who' command which doesn't detect users with pid-sandbox
@@ -128,11 +130,6 @@ src_install() {
 
 	fperms +x /usr/bin/kitty \
 		/usr/$(get_libdir)/kitty/shell-integration/ssh/{askpass.py,kitty}
-
-	# go-module.eclass force-restricts strip, allow except for Go
-	# note: placebo given this is not respected by portage (bug #697960)
-	dostrip /
-	dostrip -x /usr/bin/kitty-tool
 }
 
 pkg_postinst() {
