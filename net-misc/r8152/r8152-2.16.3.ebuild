@@ -24,6 +24,7 @@ IUSE="+center-tap-short"
 # with kernel support patches. It appears to be used by the AUR maintainer.
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.16.3-kernel-5.19-fix.patch
+	"${FILESDIR}"/${PN}-2.16.3-kernel-6.1-fix.patch
 )
 
 pkg_setup() {
