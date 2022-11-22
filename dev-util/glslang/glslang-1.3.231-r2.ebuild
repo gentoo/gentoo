@@ -28,3 +28,10 @@ BDEPEND="${PYTHON_DEPS}"
 
 # Bug 698850
 RESTRICT="test"
+
+multilib_src_configure() {
+	local mycmakeargs=(
+		-DCMAKE_DISABLE_PRECOMPILE_HEADERS=1
+	)
+	cmake_src_configure
+}
