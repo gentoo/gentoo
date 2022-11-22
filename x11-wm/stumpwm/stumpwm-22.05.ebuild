@@ -20,7 +20,7 @@ RDEPEND="dev-lisp/alexandria
 		dev-lisp/cl-ppcre
 		dev-lisp/clx
 		>=dev-lisp/sbcl-1.3.0
-		emacs? ( >=app-editors/emacs-23.1:* app-emacs/slime )"
+		emacs? ( >=app-editors/emacs-23.1:* )"
 DEPEND="${RDEPEND}"
 BDEPEND="sys-apps/texinfo
 		doc? ( virtual/texi2dvi )"
