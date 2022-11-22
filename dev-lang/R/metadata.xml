@@ -26,4 +26,7 @@
   packages") are available for a variety of specific purposes but are
   not distributed with this package.
   </longdescription>
+  <upstream>
+    <remote-id type="github">wch/r-source</remote-id>
+  </upstream>
 </pkgmetadata>
