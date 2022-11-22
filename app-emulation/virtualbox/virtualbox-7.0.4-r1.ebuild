@@ -62,6 +62,7 @@ COMMON_DEPEND="
 	lvm? ( sys-fs/lvm2 )
 	opengl? (
 		media-libs/libglvnd[X]
+		media-libs/vulkan-loader
 		x11-libs/libX11
 		x11-libs/libXt
 	)
