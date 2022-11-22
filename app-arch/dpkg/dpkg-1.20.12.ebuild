@@ -11,11 +11,12 @@ SRC_URI="mirror://debian/pool/main/d/${PN}/${P/-/_}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+bzip2 libmd +lzma nls selinux static-libs test unicode +update-alternatives +zlib"
+IUSE="+bzip2 libmd +lzma nls selinux static-libs test +update-alternatives +zlib"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-lang/perl-5.14.2:=
+	sys-libs/ncurses:=[unicode(+)]
 	bzip2? ( app-arch/bzip2 )
 	libmd? ( app-crypt/libmd )
 	lzma? ( app-arch/xz-utils )
@@ -65,13 +66,13 @@ src_configure() {
 
 	econf \
 		$(use_enable nls) \
-		$(use_enable unicode) \
 		$(use_enable update-alternatives) \
 		$(use_with bzip2 libbz2) \
 		$(use_with libmd) \
 		$(use_with lzma liblzma) \
 		$(use_with selinux libselinux) \
 		$(use_with zlib libz) \
+		--enable-unicode \
 		--disable-compiler-warnings \
 		--disable-dselect \
 		--disable-start-stop-daemon \
