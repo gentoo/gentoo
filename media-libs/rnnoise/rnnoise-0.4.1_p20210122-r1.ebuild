@@ -9,7 +9,7 @@ DESCRIPTION="Recurrent neural network for audio noise reduction"
 HOMEPAGE="https://jmvalin.ca/demo/rnnoise/ https://gitlab.xiph.org/xiph/rnnoise"
 
 COMMIT="1cbdbcf1283499bbb2230a6b0f126eb9b236defd"
-SRC_URI="https://gitlab.xiph.org/xiph/rnnoise/-/archive/${COMMIT}/rnnoise-${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://gitlab.xiph.org/xiph/rnnoise/-/archive/${COMMIT}/rnnoise-${COMMIT}.tar.bz2"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="BSD"
@@ -24,6 +24,10 @@ BDEPEND="
 		media-gfx/graphviz
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.1_p20210122-configure-clang16.patch
+)
 
 src_prepare() {
 	default
