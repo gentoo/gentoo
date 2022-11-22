@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/osmocom/${PN}.git"
 else
-	COMMIT="defdd4aca6cd157ccc3b10ea16b5b4f552f34b96"
+	COMMIT="974ab2fe54c25e8b6c37aa4de148ba0625eef652"
 	SRC_URI="https://github.com/osmocom/gr-fosphor/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 	KEYWORDS="~amd64 ~x86"
@@ -29,7 +29,8 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/log4cpp
 	media-libs/freetype
-	=net-wireless/gnuradio-3.8*:0=[qt5,${PYTHON_SINGLE_USEDEP}]
+	>=net-wireless/gnuradio-3.9:0=[qt5,${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/pygccxml[${PYTHON_USEDEP}]')
 	glfw? ( >=media-libs/glfw-3 )
 	virtual/opencl
 	virtual/opengl
@@ -41,7 +42,22 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 	)"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-lang/swig:0"
+BDEPEND="$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')"
+
+PATCHES=( "${FILESDIR}"/${PN}-0.0_p20200131-htmldir.patch
+		  "${FILESDIR}"/${PN}-0.0_p20210108-fix-use.patch )
+
+src_prepare() {
+	cmake_src_prepare
+
+	# adapt python bindings to use flags
+	use glfw || sed -i -e "s#bind_glfw_sink_c(m)##" \
+					"${S}"/python/bindings/python_bindings.cc ||die
+	use qt5 || sed -i -e "s#bind_qt_sink_c(m)##" \
+					"${S}"/python/bindings/python_bindings.cc ||die
+
+	eapply_user
+}
 
 src_configure() {
 	# tries to run OpenCL test program, but failing doesn't hurt
@@ -54,4 +70,10 @@ src_configure() {
 		-DENABLE_PYTHON=ON
 	)
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+	find "${D}" -name '*.py[oc]' -delete || die
+	python_optimize
 }
