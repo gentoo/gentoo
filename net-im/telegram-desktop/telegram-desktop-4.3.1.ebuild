@@ -49,6 +49,7 @@ RDEPEND="
 	media-video/ffmpeg:=[opus]
 	sys-libs/zlib:=[minizip]
 	x11-libs/xcb-util-keysyms
+	virtual/opengl
 	dbus? ( dev-cpp/glibmm:2.68 )
 	enchant? ( app-text/enchant:= )
 	hunspell? ( >=app-text/hunspell-1.7:= )
