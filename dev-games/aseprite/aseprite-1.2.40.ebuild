@@ -48,7 +48,9 @@ RDEPEND="
 		kde-frameworks/kio:5
 	)
 	webp? ( media-libs/libwebp:= )"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="
 	${PYTHON_DEPS}
 	test? ( dev-cpp/gtest )
