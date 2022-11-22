@@ -1,14 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit autotools
 
 DESCRIPTION="Fast samples-based log normalization library"
 HOMEPAGE="https://www.liblognorm.com"
 
-if [[ ${PV} == "9999" ]]; then
+if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/rsyslog/${PN}.git"
 
 	inherit git-r3
@@ -26,9 +26,8 @@ RDEPEND="
 	>=dev-libs/libestr-0.1.3
 	>=dev-libs/libfastjson-0.99.2:=
 "
-
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=sys-devel/autoconf-archive-2015.02.04
 	virtual/pkgconfig
 	doc? ( >=dev-python/sphinx-1.2.2 )
@@ -38,6 +37,7 @@ DOCS=( ChangeLog )
 
 PATCHES=(
 	"${FILESDIR}/${P}-sphinx-5.patch"
+	"${FILESDIR}/${P}-configure-clang16.patch"
 )
 
 src_prepare() {
@@ -67,11 +67,11 @@ src_test() {
 	find "${S}"/tests -type f -name '*.sh' \! -perm -111 -exec chmod a+x '{}' \; || \
 		die "Failed to adjust test scripts permission"
 
-	emake --jobs 1 check
+	emake -j1 check
 }
 
 src_install() {
 	default
 
-	find "${ED}"usr/lib* -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
