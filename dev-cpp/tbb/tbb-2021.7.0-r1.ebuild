@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic
+inherit cmake-multilib
 
 DESCRIPTION="High level abstract threading library"
 HOMEPAGE="https://www.threadingbuildingblocks.org"
@@ -27,10 +27,6 @@ PATCHES=(
 )
 
 src_configure() {
-	# bug #872287
-	filter-flags -D_GLIBCXX_ASSERTIONS
-	append-cppflags -U_GLIBCXX_ASSERTIONS
-
 	local mycmakeargs=(
 		-DTBB_TEST=$(usex test)
 		-DTBB_ENABLE_IPO=OFF
