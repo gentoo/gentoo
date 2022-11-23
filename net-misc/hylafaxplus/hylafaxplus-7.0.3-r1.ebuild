@@ -34,7 +34,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	!net-dialup/sendpage
-	net-mail/metamail
 "
 
 CONFIG_PROTECT="${CONFIG_PROTECT} /var/spool/fax/etc /usr/lib/fax"
