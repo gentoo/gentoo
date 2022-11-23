@@ -39,10 +39,14 @@ BDEPEND="${PYTHON_DEPS}
 
 S="${WORKDIR}/${PN}-${RELEASE_COMMIT}"
 
+pkg_setup() {
+	python-single-r1_pkg_setup
+	vala_setup
+}
+
 src_prepare() {
 	default
 	eautoreconf
-	vala_src_prepare
 }
 
 src_configure() {
