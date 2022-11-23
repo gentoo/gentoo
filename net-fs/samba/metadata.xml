@@ -32,5 +32,6 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:samba:samba</remote-id>
+		<remote-id type="gitlab">samba-team/samba</remote-id>
 	</upstream>
 </pkgmetadata>
