@@ -6,7 +6,7 @@ EAPI=8
 # Worth keeping an eye on 'develop' branch upstream for possible backports.
 AUTOTOOLS_AUTO_DEPEND="no"
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/madler.asc
-inherit autotools multilib-minimal usr-ldscript verify-sig
+inherit autotools multilib-minimal flag-o-matic usr-ldscript verify-sig
 
 CYGWINPATCHES=(
 	"https://github.com/cygwinports/zlib/raw/22a3462cae33a82ad966ea0a7d6cbe8fc1368fec/1.2.11-gzopen_w.patch -> ${PN}-1.2.11-cygwin-gzopen_w.patch"
@@ -43,6 +43,9 @@ PATCHES=(
 
 	# Respect LDFLAGS during configure tests. Pending upstream
 	"${FILESDIR}"/${PN}-1.2.13-use-LDFLAGS-in-configure.patch
+
+	# Fix building on sparc with older binutils, we pass it in ebuild instead
+	"${FILESDIR}"/${PN}-1.2.13-Revert-Turn-off-RWX-segment-warnings-on-sparc-system.patch
 )
 
 src_prepare() {
@@ -85,6 +88,10 @@ src_prepare() {
 echoit() { echo "$@"; "$@"; }
 
 multilib_src_configure() {
+	# We pass manually instead of relying on the configure script/makefile
+	# because it would pass it even for older binutils.
+	use sparc && append-flags $(test-flags-CCLD -Wl,--no-warn-rwx-segments)
+
 	case ${CHOST} in
 		*-mingw*|mingw*|*-cygwin*)
 			;;
