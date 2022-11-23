@@ -142,5 +142,6 @@ pkg_postinst() {
 
 	tmpfiles_process screen.conf
 
-	ewarn "This revision changes the screen socket location to ${EROOT}/tmp/${PN}"
+	# Uncomment in case of new socket location, last change of location 2021-07-30
+	# ewarn "This revision changes the screen socket location to ${EROOT}/tmp/${PN}"
 }
