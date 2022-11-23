@@ -7,4 +7,7 @@
 	<use>
 		<flag name="dnssec">Use DNSSEC resolver (requires <pkg>net-dns/unbound</pkg>)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">libreswan/libreswan</remote-id>
+	</upstream>
 </pkgmetadata>
