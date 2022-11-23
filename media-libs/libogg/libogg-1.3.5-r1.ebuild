@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit multilib-minimal
 
@@ -16,6 +16,7 @@ IUSE="static-libs"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.4-libdir-m4.patch
+	"${FILESDIR}"/${PN}-1.3.5-macro-wstrict-prototypes.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
