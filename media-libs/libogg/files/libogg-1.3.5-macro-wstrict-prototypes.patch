@@ -1,0 +1,20 @@
+https://gitlab.xiph.org/xiph/ogg/-/merge_requests/14
+
+From f6097edcf4fe5ff40077fec7733fe32827f75128 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 23 Nov 2022 03:23:55 +0000
+Subject: [PATCH] ogg.m4: fix -Wstrict-prototypes
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/ogg.m4
++++ b/ogg.m4
+@@ -62,7 +62,7 @@ dnl
+ #include <string.h>
+ #include <ogg/ogg.h>
+ 
+-int main ()
++int main (void)
+ {
+   system("touch conf.oggtest");
+   return 0;
+GitLab
