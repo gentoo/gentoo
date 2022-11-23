@@ -119,7 +119,7 @@ BDEPEND="
 	virtual/pkgconfig
 	mingw? ( !crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] ) )
 	nls? ( sys-devel/gettext )"
-IDEPEND="app-eselect/eselect-wine"
+IDEPEND=">=app-eselect/eselect-wine-2"
 
 QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
 
@@ -304,21 +304,10 @@ src_install() {
 	dodoc ANNOUNCE AUTHORS README* documentation/README*
 }
 
-wine-eselect() {
-	ebegin "${1^}ing ${P} using eselect-wine"
-	eselect wine ${1} ${P} &&
-		eselect wine ${1} --${PN#wine-} ${P} &&
-		eselect wine update --if-unset &&
-		eselect wine update --${PN#wine-} --if-unset
-	eend ${?} || die -n "eselect failed, may need to manually handle ${P}"
-}
-
 pkg_postinst() {
-	wine-eselect register
+	eselect wine update --if-unset || die
 }
 
-pkg_prerm() {
-	if [[ ${REPLACED_BY_VERSION%-r*} != ${PV} ]]; then #881035
-		nonfatal wine-eselect deregister
-	fi
+pkg_postrm() {
+	eselect wine update --if-unset || die
 }
