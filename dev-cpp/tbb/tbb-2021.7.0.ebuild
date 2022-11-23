@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake-multilib flag-o-matic
 
 DESCRIPTION="High level abstract threading library"
-HOMEPAGE="https://www.threadingbuildingblocks.org"
+HOMEPAGE="https://github.com/oneapi-src/oneTBB"
 SRC_URI="https://github.com/oneapi-src/oneTBB/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/oneTBB-${PV}"
 
