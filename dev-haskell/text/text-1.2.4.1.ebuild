@@ -28,7 +28,7 @@ RDEPEND=">=dev-lang/ghc-8.8:="
 DEPEND="${RDEPEND}
 "
 
-CABAL_CORE_LIB_GHC_PV="PM:8.10.6"
+CABAL_CORE_LIB_GHC_PV="8.10.6"
 
 src_configure() {
 	haskell-cabal_src_configure \
