@@ -19,7 +19,7 @@ REQUIRED_USE="
 "
 RESTRICT="!test? ( test )"
 
-KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.72.0:2
