@@ -24,7 +24,7 @@ HOMEPAGE="https://virtualsquare.org/"
 LICENSE="GPL-2"
 SLOT="0"
 if [[ ${PV} != 9999 ]] ; then
-	KEYWORDS="amd64 arm64 ~loong ~ppc ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~loong ~ppc ppc64 ~riscv x86"
 fi
 IUSE="pcap selinux static-libs"
 
