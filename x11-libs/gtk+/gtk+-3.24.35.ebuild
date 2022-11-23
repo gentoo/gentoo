@@ -49,8 +49,7 @@ COMMON_DEPEND="
 		>=x11-libs/libxkbcommon-0.2[${MULTILIB_USEDEP}]
 	)
 	X? (
-		>=app-accessibility/at-spi2-atk-2.15.1[${MULTILIB_USEDEP}]
-		media-libs/mesa[X(+),${MULTILIB_USEDEP}]
+		media-libs/libglvnd[X(+),${MULTILIB_USEDEP}]
 		x11-libs/libX11[${MULTILIB_USEDEP}]
 		x11-libs/libXcomposite[${MULTILIB_USEDEP}]
 		x11-libs/libXcursor[${MULTILIB_USEDEP}]
