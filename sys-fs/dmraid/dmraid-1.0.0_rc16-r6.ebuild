@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}/${MY_PV}/${PN}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
-IUSE="intel_led led mini static"
+IUSE="intel-led led mini static"
 
 RDEPEND=">=sys-fs/lvm2-2.02.45[lvm]"
 DEPEND="
@@ -75,7 +75,7 @@ src_configure() {
 		$(use_enable static static_link) \
 		$(use_enable mini) \
 		$(use_enable led) \
-		$(use_enable intel_led)
+		$(use_enable intel-led intel_led)
 }
 
 src_install() {
