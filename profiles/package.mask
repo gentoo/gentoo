@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-11-23)
+# EAPI 6, no revdeps in tree, never made it into upstream boost, library
+# only, last release 6 years ago. Removal on 2022-12-23.
+dev-libs/boost-mpl-cartesian_product
+
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # Packages or their dependencies have not been ported to libsoup:3.0, while
 # other non-slotted dependencies have been.
