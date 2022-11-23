@@ -96,6 +96,7 @@ DEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
+	sys-devel/binutils
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
