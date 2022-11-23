@@ -1,6 +1,7 @@
-diff -urpN tclxml-3.2.orig/tclxml.c tclxml-3.2/tclxml.c
---- tclxml-3.2.orig/tclxml.c	2009-06-08 12:56:10.000000000 +0200
-+++ tclxml-3.2/tclxml.c	2009-06-08 12:57:24.000000000 +0200
+https://github.com/flightaware/TclXML/pull/4
+
+--- a/tclxml.c
++++ b/tclxml.c
 @@ -20,6 +20,8 @@
  #include <tclxslt/tclxslt.h>
  #include <string.h>
