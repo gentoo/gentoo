@@ -32,6 +32,10 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/libmikmod-config
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-macro-strict-prototypes.patch
+)
+
 src_prepare() {
 	default
 
