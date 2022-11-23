@@ -62,6 +62,7 @@ RDEPEND="
 BDEPEND="
 	dev-lang/swig
 	>=dev-python/cython-0.29.18[${PYTHON_USEDEP}]
+	>=dev-python/meson-python-0.11[${PYTHON_USEDEP}]
 	dev-python/pybind11[${PYTHON_USEDEP}]
 	>=dev-util/meson-0.62.2
 	dev-util/patchelf
@@ -69,10 +70,6 @@ BDEPEND="
 	doc? ( app-arch/unzip )
 	fortran? ( dev-python/pythran[${PYTHON_USEDEP}] )
 	test? ( dev-python/pytest-xdist[${PYTHON_USEDEP}] )"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.9.9999-meson-options-lapack.patch
-)
 
 EPYTEST_DESELECT=(
 	linalg/tests/test_decomp.py::TestSchur::test_sort
@@ -90,9 +87,11 @@ src_unpack() {
 }
 
 python_configure_all() {
-	# workaround stupid numpy distutils overrides, indirectly via pythran
-	export SETUPTOOLS_USE_DISTUTILS=stdlib
 	export SCIPY_USE_PYTHRAN=$(usex fortran 1 0)
+	DISTUTILS_ARGS=(
+		-Dblas=blas
+		-Dlapack=lapack
+	)
 }
 
 python_test() {
