@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Pascal Jäger <pascal.jaeger@leimstift.de> (2022-11-23)
+# Metamail last rited
+app-text/crm114 mimencode
+
 # Marek Szuba <marecki@gentoo.org> (2022-11-14)
 # Incomplete dependency tree, no qmake6 instrumentation in either
 # qmake-utils.eclass nor the ebuilds yet.
