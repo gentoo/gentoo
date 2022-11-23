@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Pascal Jäger <pascal.jaeger@leimstift.de> (2022-11-23)
+# No maintainer, last release in 1994. Fails to build
+# with clang-16. Runtime crash in certain conditions.
+# Removal on 2022-12-23.
+# Bugs #549922 #713492 #731256 #875464 #882263
+# Removal Bug: #882631
+net-mail/metamail
+
 # Matt Turner <mattst88@gentoo.org> (2022-11-14)
 # Unmaintained in Gentoo since at least the transition to git. Last release in
 # 2014. Depends on x11-libs/gtk+:2 and gnome-base/gconf. Fails to build with
