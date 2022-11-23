@@ -100,12 +100,6 @@ tc_version_is_between() {
 # @DESCRIPTION:
 # Indicate the developer who hosts the patchset for an ebuild.
 
-# @ECLASS_VARIABLE: TOOLCHAIN_SPHINX_BUILD
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Indicate if Sphinx is needed for this build. Enabled by default for
-# >= 13.*.9999 (this is when upstream changed their docs from texinfo->sphinx).
-
 # @ECLASS_VARIABLE: GCC_PV
 # @INTERNAL
 # @DESCRIPTION:
@@ -295,8 +289,7 @@ fi
 
 #---->> DEPEND <<----
 
-RDEPEND="
-	sys-libs/zlib
+RDEPEND="sys-libs/zlib
 	virtual/libiconv
 	nls? ( virtual/libintl )
 "
@@ -327,18 +320,10 @@ BDEPEND="
 	test? (
 		>=dev-util/dejagnu-1.4.4
 		>=sys-devel/autogen-5.5.4
-	)
-"
+	)"
 DEPEND="${RDEPEND}"
 
-# Snapshots don't contain info or man pages.
 if [[ ${PN} == gcc && ${PV} == *_p* ]] ; then
-	# >= GCC 13 needs sphinx to generate the info and man pages.
-	# It still uses texinfo as well.
-	if [[ -n ${TOOLCHAIN_SPHINX_BUILD} ]] ; then
-		BDEPEND+=" dev-python/sphinx"
-	fi
-
 	# Snapshots don't contain info pages.
 	# If they start to, adjust gcc_cv_prog_makeinfo_modern logic in toolchain_src_configure.
 	# Needed unless/until https://gcc.gnu.org/bugzilla/show_bug.cgi?id=106899 is fixed
