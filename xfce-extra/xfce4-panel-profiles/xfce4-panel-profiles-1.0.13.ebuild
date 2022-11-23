@@ -8,7 +8,10 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit python-single-r1 xdg-utils
 
 DESCRIPTION="Simple application to manage Xfce panel layouts"
-HOMEPAGE="https://git.xfce.org/apps/xfce4-panel-profiles/about/"
+HOMEPAGE="
+	https://docs.xfce.org/apps/xfce4-panel-profiles/start
+	https://gitlab.xfce.org/apps/xfce4-panel-profiles/
+"
 SRC_URI="
 	https://archive.xfce.org/src/apps/xfce4-panel-profiles/$(ver_cut 1-2)/${P}.tar.bz2
 "
