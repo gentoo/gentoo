@@ -122,7 +122,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DTDESKTOP_LAUNCHER_BASENAME="${PN}"
 		-DCMAKE_DISABLE_FIND_PACKAGE_tl-expected=ON  # header only lib, some git version. prevents warnings.
 		-DQT_VERSION_MAJOR=$(usex qt6 6 5)
 
