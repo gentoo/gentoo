@@ -51,6 +51,8 @@
     <flag name="threads">Add elisp threading support</flag>
     <flag name="toolkit-scroll-bars">Use the selected toolkit's scrollbars in
     preference to Emacs' own scrollbars</flag>
+    <flag name="tree-sitter">Support the <pkg>dev-libs/tree-sitter</pkg>
+    parsing library</flag>
     <flag name="wide-int">Prefer wide Emacs integers (typically 62-bit).
     This option has an effect only on architectures where "long" and
     "long long" types have different size.</flag>
