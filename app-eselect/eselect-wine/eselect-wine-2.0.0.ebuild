@@ -81,8 +81,8 @@ pkg_postinst() {
 		ver_test ${REPLACING_VERSIONS##* } -lt 2; then
 		elog
 		if [[ ${REPLACING_VERSIONS} ]]; then
-			elog "Note: if seen bin/wine or include/wine collision messages, it is harmless"
 			elog "${PN} changed a bit, suggest reviewing 'eselect wine help' (and list)."
+			elog "Note: if seen bin/wine or include/wine merge collisions, they are harmless."
 		fi
 		elog "Please run '. ${EROOT}/etc/profile' to update PATH in current shells."
 	fi
