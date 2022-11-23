@@ -112,6 +112,7 @@ DEPEND="
 	X? ( x11-base/xorg-proto )"
 BDEPEND="
 	dev-lang/perl
+	sys-devel/binutils
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
