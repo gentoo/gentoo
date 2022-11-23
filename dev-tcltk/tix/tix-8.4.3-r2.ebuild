@@ -11,14 +11,14 @@ SRC_URI="mirror://sourceforge/tix/${MY_P}-src.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
-
 RESTRICT="test"
 
 DEPEND="
-	dev-lang/tk:0=
+	dev-lang/tk:=
 	x11-libs/libX11
 	x11-libs/libXau
-	x11-libs/libXdmcp"
+	x11-libs/libXdmcp
+"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
@@ -26,6 +26,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/${P}-tcl8.5.patch
 	"${FILESDIR}"/${P}-tcl8.6.patch
+	"${FILESDIR}"/${P}-wimplicit-int.patch
 )
 
 src_prepare() {
