@@ -28,6 +28,10 @@ BDEPEND="
 	virtual/pkgconfig
 	abi_x86_32? ( dev-lang/nasm )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.2-macro-wstrict-prototypes.patch
+)
+
 multilib_src_configure() {
 	local myeconfargs=(
 		--disable-doxygen-docs
