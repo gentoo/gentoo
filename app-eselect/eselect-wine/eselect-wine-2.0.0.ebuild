@@ -9,8 +9,7 @@ SRC_URI="https://gitweb.gentoo.org/proj/eselect-wine.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-# rewrite that really needs testing so it doesn't break any bottles
-#KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="app-admin/eselect"
 
