@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9,10} )
 DISTUTILS_OPTIONAL=yes
 
-inherit distutils-r1 toolchain-funcs virtualx
+inherit distutils-r1 flag-o-matic toolchain-funcs virtualx
 
 DESCRIPTION="The Snack Sound Toolkit (Tcl)"
 HOMEPAGE="http://www.speech.kth.se/snack/"
@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}${PV}-seektell-fix.patch
 	"${FILESDIR}"/tcl-${P}-python3.patch
 	"${FILESDIR}"/${P}-lto.patch
+	"${FILESDIR}"/${P}-configure-clang16.patch
 )
 
 HTML_DOCS="${WORKDIR}/${PN}${PV}/doc/*"
@@ -66,6 +67,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# For Clang 16, bunch of -Wimplicit-int, etc
+	append-flags -std=gnu89
+
 	local myconf=""
 
 	use alsa && myconf+=" --enable-alsa"
