@@ -6,7 +6,10 @@ EAPI=8
 inherit vala
 
 DESCRIPTION="A basic utility library for the Xfce desktop environment"
-HOMEPAGE="https://git.xfce.org/xfce/libxfce4util/"
+HOMEPAGE="
+	https://docs.xfce.org/xfce/libxfce4util/start
+	https://gitlab.xfce.org/xfce/libxfce4util/
+"
 SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="LGPL-2+ GPL-2+"
