@@ -6,7 +6,7 @@ diff -Nur a/cmake/modules/FindFFMPEG.cmake b/cmake/modules/FindFFMPEG.cmake
                                      ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/CMakeLists.txt
                                      <SOURCE_DIR> &&
 +				    # patch internal ffmpeg, fix build against dav1d 1.0.0
-+				    patch -p1 < ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch
++				    patch -p1 < ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch &&
                                      ${CMAKE_COMMAND} -E copy
                                      ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/FindGnuTls.cmake
                                      <SOURCE_DIR>)
