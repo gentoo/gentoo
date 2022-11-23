@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <use>
-    <flag name="pcap">
-    Enable the pcap-based plugin that allows creating a switch against
-    a real interface.
-  </flag>
-    <flag name="ssl">
-    Enable the cryptcab plugin that allows creating an encrypted
-    virtual cable.
-  </flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">vde</remote-id>
-    <remote-id type="github">virtualsquare/vde-2</remote-id>
-  </upstream>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="pcap">Enable the pcap-based plugin that allows creating a switch against a real interface.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">vde</remote-id>
+		<remote-id type="github">virtualsquare/vde-2</remote-id>
+	</upstream>
 </pkgmetadata>
