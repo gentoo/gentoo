@@ -6,7 +6,10 @@ EAPI=7
 inherit xdg-utils
 
 DESCRIPTION="Screen saver and locker (port of MATE screensaver)"
-HOMEPAGE="https://git.xfce.org/apps/xfce4-screensaver/about/"
+HOMEPAGE="
+	https://docs.xfce.org/apps/screensaver/start
+	https://gitlab.xfce.org/apps/xfce4-screensaver/
+"
 SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2+"
