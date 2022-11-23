@@ -129,7 +129,8 @@ QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.17-noexecstack.patch
 	"${FILESDIR}"/${PN}-7.20-unwind.patch
-	"${FILESDIR}"/${PN}-7.21-crossflags.patch
+	"${FILESDIR}"/${P}-crossflags.patch
+	"${FILESDIR}"/${P}-opengl32.patch
 )
 
 pkg_pretend() {
