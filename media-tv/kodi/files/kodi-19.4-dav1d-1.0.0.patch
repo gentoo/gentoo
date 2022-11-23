@@ -1,18 +1,18 @@
 diff -Nur a/cmake/modules/FindFFMPEG.cmake b/cmake/modules/FindFFMPEG.cmake
 --- a/cmake/modules/FindFFMPEG.cmake	2022-03-02 18:38:51.000000000 +0000
-+++ b/cmake/modules/FindFFMPEG.cmake	2022-11-22 19:15:38.690434650 +0000
++++ b/cmake/modules/FindFFMPEG.cmake	2022-11-23 11:00:23.969278282 +0000
 @@ -275,6 +275,8 @@
                        PATCH_COMMAND ${CMAKE_COMMAND} -E copy
                                      ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/CMakeLists.txt
                                      <SOURCE_DIR> &&
 +				    # patch internal ffmpeg, fix build against dav1d 1.0.0
-+				    patch -p1 < ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch
++				    patch -p1 < ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch &&
                                      ${CMAKE_COMMAND} -E copy
                                      ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/FindGnuTls.cmake
                                      <SOURCE_DIR>)
 diff -Nur a/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch b/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch
 --- a/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch	1970-01-01 01:00:00.000000000 +0100
-+++ b/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch	2022-11-22 19:12:09.566420470 +0000
++++ b/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch	2022-11-23 10:57:56.039268252 +0000
 @@ -0,0 +1,78 @@
 +From 2546e1ed27f92a840a2cf319e3c1833799974cf1 Mon Sep 17 00:00:00 2001
 +From: BlackEagle <ike.devolder@gmail.com>
