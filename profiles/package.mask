@@ -501,13 +501,6 @@ dev-python/kazoo
 # Use media-sound/mpd if looking for a modern alternative. Removal on 2022-11-07.
 media-sound/rplay
 
-# Michał Górny <mgorny@gentoo.org> (2022-10-05)
-# Originally added for dev-python/rapidfuzz.  Now the algorithm has been
-# inlined into rapidfuzz, and the package is semi-deprecated.
-# No revdeps left in ::gentoo.
-# Removal on 2022-11-04.  Bug #875350.
-dev-cpp/jarowinkler-cpp
-
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Regression for some Intel LCDs which may cause physical damage
 # Please upgrade to 5.19.13 if affected!
