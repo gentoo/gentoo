@@ -31,7 +31,7 @@ RESTRICT="test"
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_PRECOMPILE_HEADERS=1
+		-DENABLE_PCH=OFF
 	)
 	cmake_src_configure
 }
