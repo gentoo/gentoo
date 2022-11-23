@@ -1,0 +1,180 @@
+From f97d3eaf4c06b4740fcec63c9c0ca64a5bd56281 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Sun, 28 Jun 2020 12:01:49 +0200
+Subject: [PATCH] cmake: require KGuiAddons
+
+It will be used soon.
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 36e3169..7ccf7f0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,6 +32,7 @@ find_package (KF5 REQUIRED COMPONENTS
+     Config
+     ConfigWidgets
+     Completion
++    GuiAddons
+     I18n
+     KIO
+     TextWidgets
+@@ -145,6 +146,7 @@ target_link_libraries (kxstitch
+     Qt5::X11Extras
+     KF5::Completion
+     KF5::ConfigGui
++    KF5::GuiAddons
+     KF5::KIOFileWidgets
+     KF5::I18n
+     KF5::TextWidgets
+-- 
+GitLab
+
+From 817be56369a25de4dd12f2548f97e4ebcfb73571 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Sun, 28 Jun 2020 12:02:34 +0200
+Subject: [PATCH] Switch from XKeyLock to KModifierKeyInfo
+
+Use KModifierKeyInfo from the KGuiAddons framework to get the status
+of keys. In particular, use it to get the status of the Caps Lock key
+instead of the local XKeyLock implementation.
+
+The KModifierKeyInfo object is kept as class member to avoid recreating
+it at each key press in Alphabet mode.
+---
+ src/Editor.cpp | 4 +---
+ src/Editor.h   | 4 ++++
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/Editor.cpp b/src/Editor.cpp
+index bba0760..163e88e 100644
+--- a/src/Editor.cpp
++++ b/src/Editor.cpp
+@@ -46,7 +46,6 @@
+ #include "Scale.h"
+ #include "SchemeManager.h"
+ #include "TextToolDlg.h"
+-#include "XKeyLock.h"
+ 
+ 
+ const Editor::keyPressCallPointer Editor::keyPressCallPointers[] = {
+@@ -858,10 +857,9 @@ void Editor::keyPressText(QKeyEvent *e)
+ 
+ void Editor::keyPressAlphabet(QKeyEvent *e)
+ {
+-    XKeyLock keylock(QX11Info::display());
+     Qt::KeyboardModifiers modifiers = e->modifiers();
+ 
+-    if (keylock.getCapsLock() && Configuration::alphabet_UseCapsLock()) {
++    if (m_keyInfo.isKeyPressed(Qt::Key_CapsLock) && Configuration::alphabet_UseCapsLock()) {
+         modifiers = static_cast<Qt::KeyboardModifiers>(modifiers ^ Qt::ShiftModifier);
+     }
+ 
+diff --git a/src/Editor.h b/src/Editor.h
+index 3189249..8345a38 100644
+--- a/src/Editor.h
++++ b/src/Editor.h
+@@ -16,6 +16,8 @@
+ #include <QStack>
+ #include <QWidget>
+ 
++#include <KModifierKeyInfo>
++
+ #include "Stitch.h"
+ 
+ #include "configuration.h"
+@@ -337,6 +339,8 @@ private:
+     QStack<QPoint>  m_cursorStack;
+     QMap<int, int>  m_cursorCommands;
+ 
++    KModifierKeyInfo m_keyInfo;
++
+     typedef void (Editor::*keyPressCallPointer)(QKeyEvent*);
+     typedef void (Editor::*toolInitCallPointer)();
+     typedef void (Editor::*toolCleanupCallPointer)();
+-- 
+GitLab
+
+From 17d6a17830ce190cd21f266dd319e36e4865e30a Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Sun, 28 Jun 2020 12:13:37 +0200
+Subject: [PATCH] Drop XKeyLock & X11 leftovers
+
+XKeyLock is not used anymore, so it can be dropped together with the
+X11 and QX11Extras requirements.
+---
+ CMakeLists.txt   |   6 --
+ src/Editor.cpp   |   1 -
+ src/XKeyLock.cpp | 202 -----------------------------------------------
+ src/XKeyLock.h   |  70 ----------------
+ 4 files changed, 279 deletions(-)
+ delete mode 100644 src/XKeyLock.cpp
+ delete mode 100644 src/XKeyLock.h
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7ccf7f0..c225859 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -23,7 +23,6 @@ find_package (Qt5 CONFIG REQUIRED
+     Core
+     PrintSupport
+     Widgets
+-    X11Extras
+ )
+ 
+ find_package (KF5DocTools)
+@@ -41,7 +40,6 @@ find_package (KF5 REQUIRED COMPONENTS
+ )
+ 
+ find_package (ImageMagick COMPONENTS MagickCore Magick++ REQUIRED)
+-find_package (X11 REQUIRED)
+ find_package (Doxygen)
+ find_package (SharedMimeInfo)
+ 
+@@ -57,7 +55,6 @@ include_directories (BEFORE ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_D
+ # only in older cmake versions, while the latter only in newer ones
+ include_directories (${ImageMagick_Magick++_INCLUDE_DIR} ${ImageMagick_MagickCore_INCLUDE_DIR})
+ include_directories (${ImageMagick_Magick++_INCLUDE_DIRS} ${ImageMagick_MagickCore_INCLUDE_DIRS})
+-include_directories (${X11_INCLUDE_DIR})
+ 
+ set (kxstitch_SRCS
+     src/BackgroundImage.cpp
+@@ -96,7 +93,6 @@ set (kxstitch_SRCS
+     src/Symbol.cpp
+     src/SymbolLibrary.cpp
+     src/SymbolManager.cpp
+-    src/XKeyLock.cpp
+ 
+     src/AlphaSelect.cpp
+     src/CalibrateFlossDlg.cpp
+@@ -143,7 +139,6 @@ target_link_libraries (kxstitch
+     Qt5::Core
+     Qt5::PrintSupport
+     Qt5::Widgets
+-    Qt5::X11Extras
+     KF5::Completion
+     KF5::ConfigGui
+     KF5::GuiAddons
+@@ -153,7 +148,6 @@ target_link_libraries (kxstitch
+     KF5::WidgetsAddons
+     KF5::XmlGui
+     ${ImageMagick_Magick++_LIBRARY} ${ImageMagick_MagickCore_LIBRARY}
+-    ${X11_LIBRARIES}
+ )
+ 
+ set (WITH_PROFILING OFF CACHE BOOL "Build with profiling support")
+diff --git a/src/Editor.cpp b/src/Editor.cpp
+index 163e88e..4d314e4 100644
+--- a/src/Editor.cpp
++++ b/src/Editor.cpp
+@@ -24,7 +24,6 @@
+ #include <QScrollArea>
+ #include <QStyleOptionRubberBand>
+ #include <QToolTip>
+-#include <QX11Info>
+ 
+ #include <KLocalizedString>
+ #include <KMessageBox>
+-- 
+GitLab
