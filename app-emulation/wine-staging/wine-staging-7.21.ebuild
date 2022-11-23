@@ -253,7 +253,7 @@ src_configure() {
 
 	# temporary workaround for tc-ld-force-bfd not yet enforcing with mold
 	# https://github.com/gentoo/gentoo/pull/28355
-	[[ $($(tc-getCC) ${LDFLAGS} -Wl,-version) == mold* ]] &&
+	[[ $($(tc-getCC) ${LDFLAGS} -Wl,--version 2>/dev/null) == mold* ]] &&
 		append-ldflags -fuse-ld=bfd
 
 	# build using upstream's way (--with-wine64)
