@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Pascal Jäger <pascal.jaeger@leimstift.de> (2022-11-24)
+# No maintainer, last release in 1994. Fails to build
+# with clang-16. Runtime crash in certain conditions.
+# Removal on 2022-12-23.
+# Bugs #549922 #713492 #731256 #875464 #882263
+# Removal Bug: #882631
+net-mail/metamail
+
 # Michał Górny <mgorny@gentoo.org> (2022-11-23)
 # Unpredictable build failures reported.  No revdeps left.
 # dev-libs/opencl-icd-loader is a good replacement.
