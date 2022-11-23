@@ -4,6 +4,13 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-11-23)
+# Quick Sync Video is only available on amd64 via:
+# media-libs/intel-mediasdk, or
+# media-libs/oneVPL
+media-video/ffmpeg qsv
+media-libs/gst-plugins-bad qsv
+
 # Florian Schmaus <flow@gentoo.org> (2022-11-23)
 # avoid larger deptree, bug #882593
 dev-python/bracex doc

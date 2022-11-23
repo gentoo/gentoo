@@ -1,6 +1,13 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-11-23)
+# Quick Sync Video is only available on amd64 via:
+# media-libs/intel-mediasdk, or
+# media-libs/oneVPL
+media-video/ffmpeg qsv
+media-libs/gst-plugins-bad qsv
+
 # Michał Górny <mgorny@gentoo.org> (2022-11-16)
 # spirv-llvm-translator is not keyworded x86.
 dev-libs/libclc spirv
