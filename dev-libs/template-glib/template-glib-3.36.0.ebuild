@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/template-glib"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="gtk-doc +introspection test vala"
 RESTRICT="!test? ( test )"
