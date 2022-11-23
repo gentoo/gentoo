@@ -13,7 +13,4 @@
 		<flag name="wnck">Enable experimental support for raising media
 			player windows using <pkg>x11-libs/libwnck</pkg>.</flag>
 	</use>
-	<upstream>
-		<remote-id type="github">andrzej-r/xfce4-pulseaudio-plugin</remote-id>
-	</upstream>
 </pkgmetadata>
