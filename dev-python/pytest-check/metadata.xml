@@ -12,6 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">okken/pytest-check</remote-id>
-		<remote-id type="pypi">pytest_check</remote-id>
+		<remote-id type="pypi">pytest-check</remote-id>
 	</upstream>
 </pkgmetadata>
