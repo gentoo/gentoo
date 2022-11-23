@@ -1,7 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit autotools multilib-minimal
 
 DESCRIPTION="The Ogg Vorbis sound file format library"
@@ -16,10 +17,12 @@ IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="virtual/pkgconfig"
-
 RDEPEND=">=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]"
-
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.7-macro-wstrict-prototypes.patch
+)
 
 src_prepare() {
 	default
@@ -46,7 +49,6 @@ multilib_src_configure() {
 		$(use_enable test oggtest)
 	)
 
-	einfo "Running configure in ${BUILD_DIR}"
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 }
 
