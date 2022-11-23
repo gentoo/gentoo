@@ -13,7 +13,7 @@ SRC_URI="https://github.com/flightaware/TclXML/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc sparc x86"
 IUSE="debug threads"
 
 DEPEND="

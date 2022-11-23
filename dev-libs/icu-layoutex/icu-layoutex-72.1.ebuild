@@ -20,7 +20,7 @@ else
 	SRC_URI+=" verify-sig? ( https://github.com/unicode-org/icu/releases/download/release-${PV//./-}/icu4c-${PV//./_}-src.tgz.asc )"
 	S="${WORKDIR}"/${PN/-layoutex}/source
 
-	KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ppc ppc64 sparc ~x86"
+	KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 sparc ~x86"
 
 	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-icu-20221020 )"
 fi
