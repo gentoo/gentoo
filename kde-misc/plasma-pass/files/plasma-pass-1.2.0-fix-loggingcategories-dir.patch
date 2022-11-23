@@ -1,0 +1,31 @@
+From 5f62fcc30e7d6c8248dfb6a263ee4a49e7c19e3b Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Wed, 17 Feb 2021 21:02:08 +0100
+Subject: [PATCH] cmake: install plasma-pass.categories in newer location
+
+Install plasma-pass.categories in the proper location for it, in case
+ECM >= 5.59.0 is used.
+---
+ CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c0bed60..c32b637 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -53,7 +53,11 @@ add_subdirectory(plugin)
+ if (BUILD_TESTING)
+     add_subdirectory(tests)
+ endif()
+-install( FILES plasma-pass.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
++if(ECM_VERSION VERSION_GREATER_EQUAL 5.59)
++    install(FILES plasma-pass.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
++else()
++    install(FILES plasma-pass.categories DESTINATION ${KDE_INSTALL_CONFDIR})
++endif()
+ 
+ if(ECM_VERSION VERSION_GREATER_EQUAL 5.79)
+     kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
+-- 
+GitLab
+
