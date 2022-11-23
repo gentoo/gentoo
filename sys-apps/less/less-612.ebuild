@@ -5,8 +5,7 @@ EAPI=8
 
 DESCRIPTION="Excellent text file viewer"
 HOMEPAGE="http://www.greenwoodsoftware.com/less/"
-#SRC_URI="http://www.greenwoodsoftware.com/less/${P}.tar.gz"
-SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}-gentoo.tar.gz"
+SRC_URI="http://www.greenwoodsoftware.com/less/${P}-beta.tar.gz"
 
 LICENSE="|| ( GPL-3 BSD-2 )"
 SLOT="0"
