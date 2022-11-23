@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Pascal Jäger <pascal.jaeger@leimstift.de> (2022-11-24)
+# Metamail last rited
+app-text/crm114 mimencode
+
 # Guillermo Joandet <gjoandet@gmail.com> (2022-11-22)
 # app-text/pandoc is not keyworded on most architectures
 net-libs/gssdp man
