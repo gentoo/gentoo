@@ -1,7 +1,9 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit autotools
 
 DESCRIPTION="Readline extension to TCL"
 HOMEPAGE="https://github.com/flightaware/tclreadline"
@@ -13,14 +15,23 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="tk"
 
-DEPEND="dev-lang/tcl:0=
-	sys-libs/readline:0=
-	tk? ( dev-lang/tk:0= )"
+DEPEND="
+	dev-lang/tcl:=
+	sys-libs/readline:=
+	tk? ( dev-lang/tk:= )
+"
 RDEPEND="${DEPEND}"
-BDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.3.8-configure-clang16.patch
+)
 
 src_prepare() {
 	default
+
+	# Needed for Clang 16 patch, can drop once in a release
+	eautoreconf
+
 	sed -i \
 		-e "s|^\(TCLRL_LIBDIR\)=.*|\1=\"${EPREFIX}/usr/$(get_libdir)\"|" \
 		configure || die
