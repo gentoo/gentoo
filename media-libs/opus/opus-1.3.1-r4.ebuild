@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic multilib-minimal
 
@@ -24,6 +24,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.1-libdir-macro.patch
+	"${FILESDIR}"/${PN}-1.3.1-macro-wstrict-prototypes.patch
 )
 
 multilib_src_configure() {
