@@ -15,4 +15,7 @@
     <flag name="urls">Enable URLs fetch</flag>
     <flag name="utils">Install utils for checking other configs</flag>
   </use>
+  <upstream>
+    <remote-id type="github">vstakhov/libucl</remote-id>
+  </upstream>
 </pkgmetadata>
