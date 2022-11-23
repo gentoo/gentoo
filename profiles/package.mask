@@ -507,7 +507,6 @@ media-sound/rplay
 # No revdeps left in ::gentoo.
 # Removal on 2022-11-04.  Bug #875350.
 dev-cpp/jarowinkler-cpp
-dev-python/jarowinkler
 
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Regression for some Intel LCDs which may cause physical damage
