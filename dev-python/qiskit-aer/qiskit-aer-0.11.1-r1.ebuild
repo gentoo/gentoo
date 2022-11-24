@@ -76,6 +76,8 @@ pkg_setup() {
 python_prepare_all() {
 	export DISABLE_CONAN="ON"
 	export DISABLE_DEPENDENCY_INSTALL="ON"
+	#export SKBUILD_CONFIGURE_OPTIONS=""
+
 	distutils-r1_python_prepare_all
 }
 
@@ -85,6 +87,17 @@ python_test() {
 	mv qiskit_aer qiskit_aer.hidden || die
 	epytest -s
 	mv qiskit_aer.hidden qiskit_aer || die
+}
+
+python_install_all() {
+	distutils-r1_python_install_all
+
+	# Remove bits we don't want installed (bug in scikit-build)
+	# bug #858128
+	# https://github.com/Qiskit/qiskit-aer/issues/1457
+	# https://github.com/Qiskit/qiskit-aer/issues/1574
+	# https://github.com/scikit-build/scikit-build/issues/590
+	rm -r "${ED}"/usr/{CMakeLists.txt,MANIFEST.in,README.md,cmake,contrib,pyproject.toml,src} || die
 }
 
 pkg_postinst() {
