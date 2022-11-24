@@ -3,8 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python2_7 )
-inherit check-reqs pax-utils python-any-r1 toolchain-funcs
+inherit check-reqs pax-utils toolchain-funcs
 
 PYPY_PV=${PV%_p*}
 MY_P=pypy2.7-v${PYPY_PV/_}
@@ -23,20 +22,20 @@ SLOT="${PYPY_PV}"
 KEYWORDS=""
 IUSE="bzip2 +jit low-memory ncurses cpu_flags_x86_sse2"
 
-RDEPEND="
+DEPEND="
 	>=sys-libs/zlib-1.1.3:0=
 	dev-libs/libffi:0=
 	virtual/libintl:0=
 	dev-libs/expat:0=
 	bzip2? ( app-arch/bzip2:0= )
 	ncurses? ( sys-libs/ncurses:0= )
+"
+RDEPEND="
+	${DEPEND}
 	!dev-python/pypy-exe-bin:${PYPY_PV}
 "
-# don't enforce the dep on pypy with USE=low-memory since it's going
-# to cause either collisions or circular dep on itself
-DEPEND="
-	${RDEPEND}
-"
+# don't enforce the dep on dev-python/pypy with USE=low-memory
+# since it's going to cause circular dep with unhelpful error message
 BDEPEND="
 	!low-memory? (
 		|| (
@@ -47,19 +46,23 @@ BDEPEND="
 "
 
 check_env() {
-	if use low-memory; then
-		if ! has_version -b dev-python/pypy &&
-				! has_version -b dev-python/pypy-bin
-		then
-			eerror "USE=low-memory requires a (possibly old) version of dev-python/pypy"
-			eerror "being installed. Please install it using e.g.:"
-			eerror
-			eerror "  $ emerge -1v dev-python/pypy dev-python/pypy-exe-bin"
-			eerror
-			eerror "before attempting to build dev-python/pypy-exe[low-memory]."
+	if ! has_version -b dev-python/pypy; then
+		if use low-memory; then
+			eerror "USE=low-memory requires (a prior version of) dev-python/pypy"
+			eerror "installed."
+		else
+			ewarn "CPython 2.7 will be used to perform the translation.  Upstream"
+			ewarn "recommends using (a prior version of) dev-python/pypy instead."
+		fi
+		elog "You can install a prebuilt version of PyPy first using e.g.:"
+		elog "  $ emerge -1v dev-python/pypy dev-python/pypy-exe-bin"
+
+		if use low-memory; then
 			die "dev-python/pypy needs to be installed for USE=low-memory"
 		fi
+	fi
 
+	if use low-memory; then
 		CHECKREQS_MEMORY="1750M"
 		use amd64 && CHECKREQS_MEMORY="3500M"
 	else
@@ -75,23 +78,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		check_env
-
-		use low-memory && EPYTHON=
-		if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] &&
-				{ has_version -b dev-python/pypy ||
-				has_version -b dev-python/pypy-bin; }
-		then
-			einfo "Using already-installed PyPy to perform the translation."
-			EPYTHON=pypy
-		else
-			einfo "Using ${EPYTHON} to perform the translation. Please note that upstream"
-			einfo "recommends using PyPy for that. If you wish to do so, please unset"
-			einfo "the EPYTHON variable."
-			python-any-r1_pkg_setup
-		fi
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && check_env
 }
 
 src_prepare() {
@@ -149,13 +136,18 @@ src_configure() {
 		)
 	done
 
-	local interp=( "${EPYTHON}" )
-	if use low-memory; then
-		interp=( env PYPY_GC_MAX_DELTA=200MB
-			"${EPYTHON}" --jit loop_longevity=300 )
-	fi
+	local interp
+	if use low-memory || has_version -b dev-python/pypy; then
+		einfo "Using already-installed PyPy to perform the translation."
+		interp=( pypy )
+		if use low-memory; then
+			local -x PYPY_GC_MAX_DELTA=200MB
+			interp+=( --jit loop_longevity=300 )
+		fi
+	else
+		einfo "Using CPython 2.7 to perform the translation."
+		interp=( python2.7 )
 
-	if [[ ${EPYTHON} != pypy ]]; then
 		# reuse bundled pycparser to avoid external dep
 		mkdir -p "${T}"/pymod/cffi || die
 		: > "${T}"/pymod/cffi/__init__.py || die
