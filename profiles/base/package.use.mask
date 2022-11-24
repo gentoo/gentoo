@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2022-11-24)
+# Depends on old dev-lang/spidermonkey:68, bug #807772
+# Particularly unwise given it parses data from network.
+net-libs/libproxy spidermonkey
+
 # Pascal Jäger <pascal.jaeger@leimstift.de> (2022-11-24)
 # Metamail last rited
 app-text/crm114 mimencode
