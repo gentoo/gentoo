@@ -474,12 +474,6 @@ dev-python/nose_warnings_filters
 # Unused Java library. Removal on 2022-11-10.
 dev-java/objenesis-test
 
-# Michał Górny <mgorny@gentoo.org> (2022-10-08)
-# Repository and SRC_URI gone.  Last release in 2012 (guessing
-# by filename).
-# Removal on 2022-11-07.  Bug #876151.
-xfce-extra/transd
-
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Regression for some Intel LCDs which may cause physical damage
 # Please upgrade to 5.19.13 if affected!
