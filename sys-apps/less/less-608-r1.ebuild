@@ -26,6 +26,8 @@ src_prepare() {
 		"${FILESDIR}/less-608-procfs.patch"
 	)
 	default
+	# Upstream uses unpatched autoconf-2.69, which breaks with clang-16.
+	# https://bugs.gentoo.org/870412
 	eautoreconf
 }
 
