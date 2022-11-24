@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2022-11-24)
+# Compatibility issues with openssl-1.1*, numerous build issues, version
+# in tree is EOL upstream. Removal in 30 days. Bug #882759.
+net-misc/cfengine
+
 # Pascal Jäger <pascal.jaeger@leimstift.de> (2022-11-24)
 # No maintainer, last release in 1994. Fails to build
 # with clang-16. Runtime crash in certain conditions.
