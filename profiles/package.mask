@@ -48,12 +48,6 @@ net-mail/metamail
 dev-libs/ocl-icd
 
 # Michał Górny <mgorny@gentoo.org> (2022-11-23)
-# Unattended by maintainer since 2013.  Pending major version bump.
-# Build and test failures reported.
-# Removal on 2022-12-23.  Bug #870670.
-dev-lang/open-cobol
-
-# Michał Górny <mgorny@gentoo.org> (2022-11-23)
 # Packages with no maintainer and major issues reported.
 #
 # app-cdr/xbiso: bug #882089, last release in 2005
