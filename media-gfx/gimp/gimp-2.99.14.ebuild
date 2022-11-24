@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python3_{8..11} )
 VALA_MIN_API_VERSION="0.50"
 VALA_USE_DEPEND=vapigen
 
-inherit git-r3 lua-single meson python-single-r1 vala xdg
+inherit lua-single meson python-single-r1 vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
-EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
-SRC_URI=""
+SRC_URI="mirror://gimp/v$(ver_cut 1-2)/${P}.tar.xz"
+
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
 
@@ -131,7 +131,10 @@ src_prepare() {
 	# Fix pygimp.interp python implementation path.
 	# Meson @PYTHON_PATH@ use sandbox path e.g.:
 	# '/var/tmp/portage/media-gfx/gimp-2.99.12/temp/python3.10/bin/python3'
-	sed -i -e 's:@PYTHON_PATH@:'${EPYTHON}':' plug-ins/python/pygimp.interp.in || die
+	sed -i -e 's/@PYTHON_PATH@/'${EPYTHON}'/' plug-ins/python/pygimp.interp.in || die
+
+	# Set proper intallation path of documentation logo
+	sed -i -e "s/'gimp-@0@'.format(gimp_app_version)/'gimp-@0@.@1@'.format(gimp_app_version, gimp_app_version_micro)/" data/images/meson.build || die
 }
 
 _adjust_sandbox() {
