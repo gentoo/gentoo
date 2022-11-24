@@ -78,11 +78,11 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	>=dev-cpp/gtest-1.8.0
 	>=sys-devel/gettext-0.20
 	dev-lang/perl
 	dev-perl/XML-Parser
 	sys-devel/libtool
+	test? ( >=dev-cpp/gtest-1.8.0 )
 "
 
 BDEPEND="
@@ -106,16 +106,15 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}"-3.8-examples-subdir.patch
 	"${FILESDIR}/${PN}"-3.8-exclude-license.patch
+	"${FILESDIR}/${P}"-drop-broken-test.patch
+	# will be fixed on future version, see
+	# https://github.com/Gnucash/gnucash/pull/1472
+	"${FILESDIR}/${P}"-fix-test.patch
 )
 
-S="${WORKDIR}/${PN}-$(ver_cut 1-2)"
-
-# scardracs: 2022-11-21
-# I don't like that solution but actually these QA warnings
-# are false positives. If You are able to find a better
-# solution feel free to fix it.
-# bugs #734044 #814134
-QA_FLAGS_IGNORED=".*"
+# guile generates ELF files without use of C or machine code
+# It's a portage's false positive. bug #677600
+QA_PREBUILT='*[.]go'
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -123,6 +122,9 @@ pkg_setup() {
 
 src_prepare() {
 	cmake_src_prepare
+
+	# http://debbugs.gnu.org/cgi/bugreport.cgi?bug=38112
+	find "${S}" -name "*.scm" -exec touch {} + || die
 
 	# Fix tests writing to /tmp
 	local fixtestfiles=(
@@ -187,14 +189,13 @@ src_test() {
 			> "${BUILD_DIR}"/CTestCustom.cmake || die "Failed to disable test-qof and test-gnc-numeric!"
 	fi
 
+	cd "${BUILD_DIR}" || die "Failed to enter ${BUILD_DIR}"
+	XDG_DATA_HOME="${T}/$(whoami)" eninja check
 	cmake_src_test
 }
 
 src_install() {
 	cmake_src_install
-
-	# strip is unable to recognise the format of the input files (*.go)
-	dostrip -x /usr/$(get_libdir)/guile
 
 	if use examples ; then
 		docompress -x /usr/share/doc/"${PF}"/examples
