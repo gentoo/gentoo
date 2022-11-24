@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+WANT_AUTOMAKE=none
+WANT_LIBTOOL=none
+
+inherit autotools
 
 DESCRIPTION="Excellent text file viewer"
 HOMEPAGE="http://www.greenwoodsoftware.com/less/"
@@ -16,6 +20,14 @@ DEPEND=">=app-misc/editor-wrapper-3
 	>=sys-libs/ncurses-5.2:0=
 	pcre? ( dev-libs/libpcre2 )"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/less-608-procfs.patch"
+	)
+	default
+	eautoreconf
+}
 
 src_configure() {
 	export ac_cv_lib_ncursesw_initscr=$(usex unicode)
