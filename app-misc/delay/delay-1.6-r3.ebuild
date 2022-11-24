@@ -20,6 +20,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${P}-headers.patch
 	"${FILESDIR}"/${P}-tinfo.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {
