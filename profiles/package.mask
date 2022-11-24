@@ -428,11 +428,6 @@ sci-misc/gt-itm
 # in 7 years. Removal on 2022-11-23. bug #874486, bug #791604.
 games-fps/qudos
 
-# David Seifert <soap@gentoo.org> (2022-10-23)
-# Dead package, upstream gone, GTK+2, fails to build with Clang 16 and
-# tests fail. Removal on 2022-11-22. Bug #741200, #875686.
-sci-calculators/grpn
-
 # John Helmert III <ajak@gentoo.org> (2022-10-16)
 # <OpenSSL-1.1.1 are EOL and contain known vulnerabilities. Users should
 # migrate to a newer branch.
