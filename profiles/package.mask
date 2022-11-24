@@ -470,10 +470,6 @@ dev-python/nose_warnings_filters
 =dev-libs/openssl-1.1.1r
 =dev-libs/openssl-3.0.6
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-10-10)
-# Unused Java library. Removal on 2022-11-10.
-dev-java/objenesis-test
-
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Regression for some Intel LCDs which may cause physical damage
 # Please upgrade to 5.19.13 if affected!
