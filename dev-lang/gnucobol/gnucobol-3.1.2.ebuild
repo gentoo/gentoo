@@ -12,13 +12,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="berkdb json nls xml"
 
-RDEPEND="dev-libs/gmp:0=
-	json? ( dev-libs/json-c )
+RDEPEND="
+	dev-libs/gmp:=
+	sys-libs/ncurses:=
+	json? ( dev-libs/json-c:= )
 	xml? ( dev-libs/libxml2 )
 	berkdb? ( sys-libs/db:4.8= )
-	sys-libs/ncurses"
-DEPEND="${RDEPEND}
-	sys-devel/libtool"
+"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/libtool"
 
 DOCS=( AUTHORS ChangeLog NEWS README README.md )
 
