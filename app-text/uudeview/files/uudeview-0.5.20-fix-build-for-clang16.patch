@@ -1,0 +1,123 @@
+Clang16 will not allow implicit function declaration, implicit int etc by default.
+This patch overhauls the source code to build with clan16 defaults.
+
+Bug: https://bugs.gentoo.org/874960
+Patch was also sent upstream via mail. 
+
+Pascal Jäger <pascal.jaeger@leimstift.de> (2022-11-24)
+
+--- a/inews/clientlib.c
++++ b/inews/clientlib.c
+@@ -14,6 +14,7 @@ static char	*sccsid = "@(#)clientlib.c	1.11	(Berkeley) 10/27/89";
+ #include "../config.h"
+ #endif
+ 
++#include <arpa/inet.h>
+ #include <stdio.h>
+ #ifndef FOR_NN
+ #include <sys/types.h>
+@@ -52,6 +53,7 @@ static char	*sccsid = "@(#)clientlib.c	1.11	(Berkeley) 10/27/89";
+ #endif
+ 
+ #include "nntp.h"
++#include "clientlib.h"
+ 
+ FILE	*ser_rd_fp = NULL;
+ FILE	*ser_wr_fp = NULL;
+@@ -133,6 +135,7 @@ char	*file;
+  *			for reading and writing to server.
+  */
+ 
++int
+ server_init(machine)
+ char	*machine;
+ {
+@@ -194,6 +197,7 @@ char	*machine;
+  *	Errors:		Printed via perror.
+  */
+ 
++int
+ get_tcp_socket(machine)
+ char	*machine;
+ {
+@@ -218,7 +222,6 @@ char	*machine;
+         * fails.
+         */
+        if( (hp = gethostbyname( machine ) ) == NULL ) {
+-               unsigned long inet_addr();
+                static struct hostent def;
+                static struct in_addr defaddr;
+                static char *alist[1];
+@@ -344,6 +347,7 @@ char	*machine;
+  *	Errors:		Printed via nerror.
+  */
+ 
++int
+ get_dnet_socket(machine)
+ char	*machine;
+ {
+@@ -427,6 +431,7 @@ char	*machine;
+  *	Side effects:	None.
+  */
+ 
++int
+ handle_server_response(response, server)
+ int	response;
+ char	*server;
+@@ -502,6 +507,7 @@ char *string;
+  *	Side effects:	Talks to server, changes contents of "string".
+  */
+ 
++int
+ get_server(string, size)
+ char	*string;
+ int	size;
+--- a/inews/clientlib.h
++++ b/inews/clientlib.h
+@@ -9,3 +9,7 @@ extern	int	server_init();
+ extern	void	put_server();
+ extern	int	get_server();
+ extern	void	close_server();
++
++extern int get_tcp_socket (char *machine);
++extern int get_server (char *string, int size);
++extern int handle_server_response (int response, char *server);
+--- a/inews/inews.c
++++ b/inews/inews.c
+@@ -39,14 +39,19 @@ static char *sccsid = "@(#)inews.c	1.16	(Berkeley) 8/27/89";
+ 
+ #include "conf.h"
+ #include "nntp.h"
+-
++#include "clientlib.h"
+ 
+ #define	MAX_SIGNATURE	6
+ 
++int strneql (register char *a, register char *b, int n);
++int gen_frompath (void);
++int valid_header (register char *h);
++
+ extern	FILE	*ser_wr_fp;
+ 
+ char	host_name[256];
+ 
++int
+ main(argc, argv)
+ int	argc;
+ char	*argv[];
+@@ -254,6 +259,7 @@ void append_signature()
+  * a From: line in it.
+  */
+ 
++int
+ gen_frompath()
+ {
+ 	char	*full_name;
+@@ -330,6 +336,7 @@ gen_frompath()
+  *	Side effects:	None.
+  */
+ 
++int
+ strneql(a, b, n)
+ register char *a, *b;
+ int	n;
