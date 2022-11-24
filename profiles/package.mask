@@ -488,11 +488,6 @@ xfce-extra/transd
 # Removal on 2022-11-07.  Bug #876082.
 dev-python/setuptools-declarative-requirements
 
-# Michał Górny <mgorny@gentoo.org> (2022-10-08)
-# The test suite is broken since at least March.  No revdeps.
-# Removal on 2022-11-07.  Bug #834656.
-dev-python/kazoo
-
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Regression for some Intel LCDs which may cause physical damage
 # Please upgrade to 5.19.13 if affected!
