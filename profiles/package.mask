@@ -480,14 +480,6 @@ dev-java/objenesis-test
 # Removal on 2022-11-07.  Bug #876151.
 xfce-extra/transd
 
-# Michał Górny <mgorny@gentoo.org> (2022-10-08)
-# This package is not really required for anything, as it being missing
-# only disables enforcing install_requires.  At the same time, it being
-# installed causes unexpected verbose output that randomly breaks more
-# susceptible test suites (e.g. dev-python/pythran).
-# Removal on 2022-11-07.  Bug #876082.
-dev-python/setuptools-declarative-requirements
-
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Regression for some Intel LCDs which may cause physical damage
 # Please upgrade to 5.19.13 if affected!
