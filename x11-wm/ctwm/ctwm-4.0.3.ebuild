@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://ctwm.org/dist/${P}.tar.xz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="jpeg rplay test xpm"
+IUSE="jpeg test xpm"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -23,7 +23,6 @@ RDEPEND="
 	x11-libs/libXmu
 	x11-libs/libXt
 	jpeg? ( virtual/jpeg )
-	rplay? ( media-sound/rplay )
 	xpm? ( x11-libs/libXpm )
 "
 DEPEND="
@@ -45,9 +44,9 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DNOMANCOMPRESS=yes
+		-DUSE_RPLAY=OFF
 		-DDOCDIR="${EPREFIX}"/usr/share/doc/${PF}
 		-DUSE_JPEG=$(usex jpeg ON OFF)
-		-DUSE_RPLAY=$(usex rplay ON OFF)
 		-DUSE_XPM=$(usex xpm ON OFF)
 	)
 
