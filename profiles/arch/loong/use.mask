@@ -29,7 +29,6 @@ valgrind
 
 # Temporarily masked during initial keywording
 audit
-bluetooth
 doc
 efl
 elogind
