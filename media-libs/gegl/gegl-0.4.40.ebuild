@@ -104,6 +104,15 @@ src_prepare() {
 	if [[ ${CHOST} == *-darwin* && ${CHOST#*-darwin} -le 9 ]] ; then
 		sed -i -e 's/#ifdef __APPLE__/#if 0/' gegl/opencl/* || die
 	fi
+
+	# fix 'build'headers from *.cl on gentoo-hardened, bug 739816
+	pushd "${S}/opencl/" || die
+	for file in *.cl; do
+		if [[ -f ${file} ]]; then
+			"${EPYTHON}" cltostring.py "${file}" || die
+		fi
+	done
+	popd || die
 }
 
 src_configure() {
