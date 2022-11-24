@@ -32,7 +32,6 @@ app-admin/salt libcloud openssl test
 dev-python/aiohttp test
 dev-python/cheroot test
 dev-python/cherrypy ssl
-dev-python/eventlet test
 dev-python/google-auth test
 dev-python/pyftpdlib ssl test
 dev-python/python-novaclient test
