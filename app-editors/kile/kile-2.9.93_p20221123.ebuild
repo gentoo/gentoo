@@ -16,7 +16,7 @@ HOMEPAGE="https://apps.kde.org/kile/ https://kile.sourceforge.io/"
 
 LICENSE="FDL-1.2 GPL-2"
 SLOT="5"
-# KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="+pdf +png"
 
 DEPEND="
