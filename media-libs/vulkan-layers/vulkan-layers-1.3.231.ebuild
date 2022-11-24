@@ -24,7 +24,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="wayland X"
 
-PATCHES=( "${FILESDIR}/${P}-cmake-Cleanup-find_package-SPIRV-code.patch" )
+PATCHES=( "${FILESDIR}/${P}-cmake-Cleanup-find_package-SPIRV-code.patch"
+	"${FILESDIR}/${P}-Make-BUILD_WERROR-actually-work.patch"
+)
 
 BDEPEND=">=dev-util/cmake-3.10.2"
 RDEPEND="~dev-util/spirv-tools-${PV}:=[${MULTILIB_USEDEP}]"
