@@ -493,14 +493,6 @@ dev-python/setuptools-declarative-requirements
 # Removal on 2022-11-07.  Bug #834656.
 dev-python/kazoo
 
-# Sam James <sam@gentoo.org> (2022-10-07)
-# Ancient K&R C codebase which fails to compile with modern Clang; surface
-# level fixes are doable, but then get into various dangerous constructs
-# in the async code which is non-trivial to port to modern compilers.
-# bug #731070, bug #802108, bug #875164.
-# Use media-sound/mpd if looking for a modern alternative. Removal on 2022-11-07.
-media-sound/rplay
-
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Regression for some Intel LCDs which may cause physical damage
 # Please upgrade to 5.19.13 if affected!
