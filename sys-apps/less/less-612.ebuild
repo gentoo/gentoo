@@ -3,6 +3,11 @@
 
 EAPI=8
 
+# Releases are usually first a beta then promoted to stable if no
+# issues were found. Upstream explicitly ask "to not generally distribute"
+# the beta versions. It's okay to keyword beta versions if they fix
+# a serious bug, but otherwise try to avoid it.
+
 DESCRIPTION="Excellent text file viewer"
 HOMEPAGE="http://www.greenwoodsoftware.com/less/"
 SRC_URI="http://www.greenwoodsoftware.com/less/${P}-beta.tar.gz"
