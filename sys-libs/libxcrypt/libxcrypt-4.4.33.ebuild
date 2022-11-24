@@ -315,17 +315,17 @@ pkg_preinst() {
 	# is cleaned up in *_src_install.
 	local broken_symlinks=()
 	mapfile -d '' broken_symlinks < <(
-		find "${ED}" -type l ! -exec test -e {} \; -print0 2>/dev/null
+		find "${ED}" -xtype l -print0
 	)
 
-	[[ -z "${broken_symlinks[@]}" ]] && return
-
-	eerror "Broken symlinks found before merging!"
-	for symlink in "${broken_symlinks[@]}" ; do
-		bad_dest="$(readlink -f ${symlink})"
-		eerror "\t${symlink} is broken!"
-		eerror "\treadlink -f ${symlink}:"
-		eerror "\t\t${bad_dest}"
+	if [[ ${#broken_symlinks[@]} -gt 0 ]]; then
+		eerror "Broken symlinks found before merging!"
+		local symlink target resolved
+		for symlink in "${broken_symlinks[@]}" ; do
+			target="$(readlink "${symlink}")"
+			resolved="$(readlink -f "${symlink}")"
+			eerror "  '${symlink}' -> '${target}' (${resolved})"
+		done
 		die "Broken symlinks found! Aborting to avoid damaging system. Please report a bug."
-	done
+	fi
 }
