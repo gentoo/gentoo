@@ -417,11 +417,6 @@ dev-python/pweave
 # Removal after 2022-12-24.  Bug #878337.
 app-misc/tpconfig
 
-# Sam James <sam@gentoo.org> (2022-10-24)
-# Non-free licence which prohibits any patching. Fails to build with Clang 16.
-# Removal on 2022-10-24.
-dev-util/sgb
-
 # John Helmert III <ajak@gentoo.org> (2022-10-16)
 # <OpenSSL-1.1.1 are EOL and contain known vulnerabilities. Users should
 # migrate to a newer branch.
