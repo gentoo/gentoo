@@ -440,13 +440,6 @@ sci-calculators/grpn
 # Masked for removal in 30 days.
 dev-ruby/ruby-sdl
 
-# Michał Górny <mgorny@gentoo.org> (2022-10-21)
-# Barely maintained upstream.  Still lacking support for Python 3.10.
-# All revdeps in Gentoo were pure test deps, and only optional
-# (because they would otherwise block Python 3.10).
-# Removal on 2022-11-20.  Bug #845723.
-dev-python/eventlet
-
 # John Helmert III <ajak@gentoo.org> (2022-10-16)
 # <OpenSSL-1.1.1 are EOL and contain known vulnerabilities. Users should
 # migrate to a newer branch.
