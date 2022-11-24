@@ -1,14 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_PN="open-cobol"
+MYP=${MY_PN}-${PV}
 # Future proof pkg if maintainer or p-m want to bump to latest GNUCobol
 
 DESCRIPTION="an open-source COBOL compiler"
 HOMEPAGE="https://sourceforge.net/projects/open-cobol/"
-SRC_URI="mirror://sourceforge/${MY_PN}/${MY_PN}-${PV}.tar.gz"
+SRC_URI="mirror://sourceforge/${MY_PN}/${MYP}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 # License must be changed to GPL-3+ if/when pkgmove is done
@@ -24,6 +25,8 @@ DEPEND="${RDEPEND}
 	sys-devel/libtool"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
+
+S="${WORKDIR}"/${MYP}
 
 src_configure() {
 	econf \
