@@ -13,7 +13,7 @@ SRC_URI="http://${PN}.twibright.com/download/${P}.tar.bz2
 LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="brotli bzip2 fbcon freetype gpm ipv6 jpeg libevent livecd lzip lzma ssl suid svga tiff unicode webp X zlib zstd"
+IUSE="brotli bzip2 fbcon freetype gpm jpeg libevent livecd lzip lzma ssl suid svga tiff webp X zlib zstd"
 
 GRAPHICS_DEPEND="media-libs/libpng:0="
 
@@ -92,12 +92,10 @@ DOCS=( AUTHORS BRAILLE_HOWTO ChangeLog KEYS NEWS README SITES )
 src_prepare() {
 	use X && xdg_environment_reset
 
-	if use unicode; then
-		pushd intl > /dev/null || die
-		./gen-intl || die
-		./synclang || die
-		popd > /dev/null || die
-	fi
+	pushd intl > /dev/null || die
+	./gen-intl || die
+	./synclang || die
+	popd > /dev/null || die
 
 	# error: conditional "am__fastdepCXX" was never defined (for eautoreconf)
 	sed -i \
@@ -132,11 +130,11 @@ src_configure() {
 	econf \
 		--without-directfb \
 		--without-librsvg \
+		--with-ipv6 \
 		$(use_with brotli) \
 		$(use_with bzip2) \
 		$(use_with fbcon fb) \
 		$(use_with freetype) \
-		$(use_with ipv6) \
 		$(use_with jpeg libjpeg) \
 		$(use_with libevent) \
 		$(use_with lzip) \
@@ -156,7 +154,7 @@ src_install() {
 	default
 
 	if use X; then
-		newicon ${DISTDIR}/links-graphics-xlinks-logo-pic.png links.png
+		newicon "${DISTDIR}"/links-graphics-xlinks-logo-pic.png links.png
 		make_desktop_entry 'links -g %u' Links links 'Network;WebBrowser'
 		local d="${ED}"/usr/share/applications
 		echo 'MimeType=x-scheme-handler/http;' >> "${d}"/*.desktop || die
