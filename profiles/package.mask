@@ -544,11 +544,6 @@ virtual/httpd-php:8.2
 # and accept a more unstable release.
 >=www-client/chromium-108
 
-# Sam James <sam@gentoo.org> (2022-09-26)
-# Masked for testing. Please report bugs!
-=app-shells/bash-5.2*
-=sys-libs/readline-8.2*
-
 # John Helmert III <ajak@gentoo.org> (2022-09-18)
 # Unfixed root privilege escalation, bug #631552
 sys-cluster/slurm
