@@ -452,11 +452,6 @@ dev-python/eventlet
 # Removal on 2022-11-16.  Bug #877375.
 dev-python/case
 
-# Michał Górny <mgorny@gentoo.org> (2022-10-17)
-# dev-python/nose plugin.  No revdeps left.
-# Removal on 2022-11-16.  Bug #877369.
-dev-python/nose_warnings_filters
-
 # John Helmert III <ajak@gentoo.org> (2022-10-16)
 # <OpenSSL-1.1.1 are EOL and contain known vulnerabilities. Users should
 # migrate to a newer branch.
