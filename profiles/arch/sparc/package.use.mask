@@ -6,6 +6,7 @@
 app-crypt/libsecret test-rust
 dev-util/glade gjs
 gnome-base/gnome-menus test
+gnome-base/nautilus previewer
 
 # Florian Schmaus <flow@gentoo.org> (2022-11-23)
 # avoid larger deptree, bug #882593
