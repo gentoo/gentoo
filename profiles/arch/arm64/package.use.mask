@@ -213,10 +213,6 @@ lxqt-base/lxqt-meta archiver
 # static-pie works on arm64, #719444
 sys-libs/glibc -static-pie
 
-# Patrick McLean <chutzpah@gentoo.org> (2019-03-26)
-# Some test deps aren't keyworded on arm64
-dev-python/kazoo test
-
 # Ettore Di Giacinto <mudler@gentoo.org> (2016-11-10)
 # Dependency has no stable keyword
 # and as for now we have only stable mate versions
