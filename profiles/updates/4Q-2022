@@ -8,3 +8,4 @@ move dev-python/zeroconf dev-python/python-zeroconf
 move dev-python/zstandard dev-python/python-zstandard
 move dev-python/retworkx dev-python/rustworkx
 move dev-python/libsass dev-python/libsass-python
+move dev-lang/open-cobol dev-lang/gnucobol
