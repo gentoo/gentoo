@@ -421,7 +421,6 @@ app-misc/tpconfig
 # Non-free licence which prohibits any patching. Fails to build with Clang 16.
 # Removal on 2022-10-24.
 dev-util/sgb
-sci-misc/gt-itm
 
 # John Helmert III <ajak@gentoo.org> (2022-10-16)
 # <OpenSSL-1.1.1 are EOL and contain known vulnerabilities. Users should
