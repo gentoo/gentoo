@@ -1,0 +1,27 @@
+https://github.com/libsdl-org/SDL/pull/6608
+https://github.com/libsdl-org/SDL/issues/6589
+
+From e99b5df49ec3bddd1d72889d682fedfe0da91307 Mon Sep 17 00:00:00 2001
+From: Frank Praznik <frank.praznik@gmail.com>
+Date: Wed, 23 Nov 2022 23:11:25 -0500
+Subject: [PATCH] wayland: Fix build when not using the shared Wayland
+ libraries
+
+Explicitly include the Wayland protocol headers when statically linking against the Wayland libraries or older system headers might be used instead of the local versions.
+--- a/src/video/wayland/SDL_waylanddyn.h
++++ b/src/video/wayland/SDL_waylanddyn.h
+@@ -166,6 +166,13 @@ void SDL_WAYLAND_UnloadSymbols(void);
+ 
+ #else /* SDL_VIDEO_DRIVER_WAYLAND_DYNAMIC */
+ 
++/*
++ * These must be included before libdecor.h, otherwise the libdecor header
++ * pulls in the system Wayland protocol headers instead of ours.
++ */
++#include "wayland-client-protocol.h"
++#include "wayland-egl.h"
++
+ #ifdef HAVE_LIBDECOR_H
+ #include <libdecor.h>
+ #endif
+
