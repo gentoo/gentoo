@@ -166,6 +166,7 @@ src_prepare() {
 	eapply "${WORKDIR}"/patches
 	eapply "${FILESDIR}"/${P}-cairo-strings.patch
 	eapply "${FILESDIR}"/${P}-slibtool.patch
+	eapply "${FILESDIR}"/${P}-clang-16.patch
 
 	default
 
@@ -187,6 +188,9 @@ src_configure() {
 	# Disable freetype-config as this is considered obsolete.
 	# Also only pkg-config works for prefix as described in bug #690094
 	export ac_cv_prog_ac_ct_FT2_CONFIG=no
+
+	# revisit/upstream once we bupm to 2022, bug #882245
+	append-cppflags -D_GNU_SOURCE
 
 	tc-export CC CXX AR RANLIB
 	ECONF_SOURCE="${B}" \
