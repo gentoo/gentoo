@@ -1,0 +1,24 @@
+From 6fe2028bca49f455b7841d178a712baec8f72919 Mon Sep 17 00:00:00 2001
+From: Marco Scardovi <mscardovi@icloud.com>
+Date: Thu, 24 Nov 2022 23:20:07 +0100
+Subject: [PATCH] Fix test
+
+Signed-off-by: Marco Scardovi <mscardovi@icloud.com>
+---
+ libgnucash/engine/mocks/fake-qofquery.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libgnucash/engine/mocks/fake-qofquery.cpp b/libgnucash/engine/mocks/fake-qofquery.cpp
+index 15341189aa8..a82dadebf02 100644
+--- a/libgnucash/engine/mocks/fake-qofquery.cpp
++++ b/libgnucash/engine/mocks/fake-qofquery.cpp
+@@ -59,8 +59,8 @@ static class QofFakeQueryPool
+     {
+         ASSERT_TRUE(query_used((QofQuery*)query));
+         auto it = std::find(m_queriesUsed.begin(), m_queriesUsed.end(), query);
+-        m_queriesUsed.erase(it);
+         m_queriesConsumed.push_back(*it);
++        m_queriesUsed.erase(it);
+     }
+ 
+     /* Remove a formerly added QofFakeQueryObject from the pool */
