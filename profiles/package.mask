@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # John Helmert III <ajak@gentoo.org> (2022-11-24)
+# Binary package several releases behind the source-based package,
+# multiple vulnerabilities, unmaintained for several years. Removal in
+# 30 days. Bugs #849389, #882783.
+dev-db/percona-xtrabackup-bin
+
+# John Helmert III <ajak@gentoo.org> (2022-11-24)
 # Compatibility issues with openssl-1.1*, numerous build issues, version
 # in tree is EOL upstream. Removal in 30 days. Bug #882759.
 net-misc/cfengine
