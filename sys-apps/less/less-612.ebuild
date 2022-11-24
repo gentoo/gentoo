@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+WANT_AUTOMAKE=none
+WANT_LIBTOOL=none
+
+inherit autotools
 
 # Releases are usually first a beta then promoted to stable if no
 # issues were found. Upstream explicitly ask "to not generally distribute"
@@ -21,6 +25,13 @@ DEPEND=">=app-misc/editor-wrapper-3
 	>=sys-libs/ncurses-5.2:0=
 	pcre? ( dev-libs/libpcre2 )"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	default
+	# Upstream uses unpatched autoconf-2.69, which breaks with clang-16.
+	# https://bugs.gentoo.org/870412
+	eautoreconf
+}
 
 src_configure() {
 	local myeconfargs=(
