@@ -73,6 +73,7 @@ gnome-base/gdm
 >=gnome-base/librsvg-2.41
 gnome-extra/gnome-browser-connector
 gnome-extra/gnome-tweaks
+gnome-extra/sushi
 >=media-gfx/libimagequant-4
 media-libs/libavif
 >=media-libs/libopenraw-0.3.2
