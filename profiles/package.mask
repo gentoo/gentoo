@@ -433,13 +433,6 @@ games-fps/qudos
 # tests fail. Removal on 2022-11-22. Bug #741200, #875686.
 sci-calculators/grpn
 
-# Hans de Graaff <graaff@gentoo.org> (2022-10-22)
-# Last release upstream 10 years ago. No longer compiles with latest
-# clang (bug #875254) and doubtful that this actually works with recent
-# ruby versions.
-# Masked for removal in 30 days.
-dev-ruby/ruby-sdl
-
 # John Helmert III <ajak@gentoo.org> (2022-10-16)
 # <OpenSSL-1.1.1 are EOL and contain known vulnerabilities. Users should
 # migrate to a newer branch.
