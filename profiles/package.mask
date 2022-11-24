@@ -447,11 +447,6 @@ dev-ruby/ruby-sdl
 # Removal on 2022-11-20.  Bug #845723.
 dev-python/eventlet
 
-# Michał Górny <mgorny@gentoo.org> (2022-10-17)
-# Unmaintained since 2018.  Requires dev-python/nose.  No revdeps left.
-# Removal on 2022-11-16.  Bug #877375.
-dev-python/case
-
 # John Helmert III <ajak@gentoo.org> (2022-10-16)
 # <OpenSSL-1.1.1 are EOL and contain known vulnerabilities. Users should
 # migrate to a newer branch.
