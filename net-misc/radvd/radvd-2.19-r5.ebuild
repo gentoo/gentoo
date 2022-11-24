@@ -15,19 +15,15 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="virtual/pkgconfig"
-DEPEND="
+BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
-	test? ( dev-libs/check )
-"
+	virtual/pkgconfig"
+DEPEND="test? ( dev-libs/check )"
 RDEPEND="
 	acct-group/radvd
 	acct-user/radvd
-	selinux? ( sec-policy/selinux-radvd )
-"
-
-DOCS=( CHANGES README TODO radvd.conf.example )
+	selinux? ( sec-policy/selinux-radvd )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-musl-include.patch
@@ -52,23 +48,25 @@ src_compile() {
 }
 
 src_install() {
+	HTML_DOCS=( INTRO.html )
 	default
-
-	docinto html
-	dodoc INTRO.html
+	dodoc radvd.conf.example
 
 	newinitd "${FILESDIR}"/${PN}-2.15.init ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 
 	systemd_dounit "${FILESDIR}"/${PN}.service
 
-	readme.gentoo_create_doc
-}
-
-DISABLE_AUTOFORMATTING=1
-DOC_CONTENTS="Please create a configuration file ${ROOT}/etc/radvd.conf.
-See ${ROOT}/usr/share/doc/${PF} for an example.
+	DISABLE_AUTOFORMATTING=1
+	local DOC_CONTENTS="Please create a configuration file ${EPREFIX}/etc/radvd.conf.
+See ${EPREFIX}/usr/share/doc/${PF} for an example.
 
 grsecurity users should allow a specific group to read /proc
 and add the radvd user to that group, otherwise radvd may
 segfault on startup."
+	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
+}
