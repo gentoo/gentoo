@@ -3,9 +3,7 @@
 
 EAPI=8
 
-# pypy3 needs to be built using python 2
-PYTHON_COMPAT=( python2_7 )
-inherit check-reqs pax-utils python-any-r1 toolchain-funcs
+inherit check-reqs pax-utils toolchain-funcs
 
 PYPY_PV=${PV%_p*}
 MY_P=pypy3.9-v${PYPY_PV/_}
@@ -37,13 +35,7 @@ DEPEND="
 	${RDEPEND}
 "
 BDEPEND="
-	low-memory? ( dev-python/pypy )
-	!low-memory? (
-		|| (
-			dev-python/pypy
-			dev-lang/python:2.7
-		)
-	)
+	dev-python/pypy
 "
 
 check_env() {
@@ -63,24 +55,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		check_env
-
-		# unset to allow forcing pypy below :)
-		use low-memory && EPYTHON=
-		if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] &&
-				{ has_version -b dev-python/pypy ||
-				has_version -b dev-python/pypy-bin; }
-		then
-			einfo "Using PyPy to perform the translation."
-			EPYTHON=pypy
-		else
-			einfo "Using ${EPYTHON:-python2} to perform the translation. Please note that upstream"
-			einfo "recommends using PyPy for that. If you wish to do so, please install"
-			einfo "dev-python/pypy and ensure that EPYTHON variable is unset."
-			python-any-r1_pkg_setup
-		fi
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && check_env
 }
 
 src_prepare() {
@@ -124,17 +99,10 @@ src_configure() {
 		$(usex ncurses --with{,out}mod-_minimal_curses)
 	)
 
-	local interp=( "${EPYTHON}" )
+	local interp=( pypy )
 	if use low-memory; then
-		interp=( env PYPY_GC_MAX_DELTA=200MB
-			"${EPYTHON}" --jit loop_longevity=300 )
-	fi
-
-	if [[ ${EPYTHON} != pypy ]]; then
-		# reuse bundled pycparser to avoid external dep
-		mkdir -p "${T}"/pymod || die
-		cp -r lib_pypy/cffi/_pycparser "${T}"/pymod/pycparser || die
-		local -x PYTHONPATH=${T}/pymod:${PYTHONPATH}
+		local -x PYPY_GC_MAX_DELTA=200MB
+		interp+=( --jit loop_longevity=300 )
 	fi
 
 	# translate into the C sources
