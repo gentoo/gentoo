@@ -13,7 +13,7 @@ SRC_URI+=" verify-sig? ( https://github.com/ccache/ccache/releases/download/v${P
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 # Enable 'static-c++' by default to make 'gcc' ebuild Just Work: bug #761220
 IUSE="doc redis +static-c++ test"
 RESTRICT="!test? ( test )"
