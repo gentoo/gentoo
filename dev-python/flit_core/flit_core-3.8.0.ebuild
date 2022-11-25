@@ -11,8 +11,9 @@ inherit distutils-r1
 
 DESCRIPTION="Simplified packaging of Python modules (core module)"
 HOMEPAGE="
-	https://pypi.org/project/flit_core/
-	https://github.com/pypa/flit/"
+	https://pypi.org/project/flit-core/
+	https://github.com/pypa/flit/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
