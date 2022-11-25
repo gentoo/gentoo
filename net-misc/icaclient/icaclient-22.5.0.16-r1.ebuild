@@ -124,7 +124,7 @@ src_install() {
 
 	insinto "${ICAROOT}"/config
 	# nls/en/*.ini is being handled by pkg_postinst()
-	doins config/* config/.*
+	doins config/*
 	for tmpl in {appsrv,wfclient}.template ; do
 		newins nls/en/${tmpl} ${tmpl/template/ini}
 	done
