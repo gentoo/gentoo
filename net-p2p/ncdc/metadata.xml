@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<upstream>
-	<maintainer status="active">
-		<email>projects@yorhel.nl</email>
-		<name>Yoran Heling</name>
+	<maintainer type="person" proxied="yes">
+		<email>bratishkaerik@getgoogleoff.me</email>
+		<name>Eric Joldasov</name>
 	</maintainer>
-	<changelog>http://dev.yorhel.nl/ncdc/changes</changelog>
-	<doc lang="en">http://dev.yorhel.nl/ncdc/man</doc>
-	<bugs-to>http://dev.yorhel.nl/ncdc/bug</bugs-to>
-</upstream>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>projects@yorhel.nl</email>
+			<name>Yoran Heling</name>
+		</maintainer>
+		<changelog>https://dev.yorhel.nl/ncdc/changes</changelog>
+		<doc lang="en">https://dev.yorhel.nl/ncdc/man</doc>
+		<bugs-to>https://code.blicky.net/yorhel/ncdc/issues</bugs-to>
+	</upstream>
 </pkgmetadata>
