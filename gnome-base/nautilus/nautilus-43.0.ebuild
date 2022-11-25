@@ -12,7 +12,7 @@ LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 IUSE="gnome +gstreamer gtk-doc +introspection +previewer selinux sendto"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~sparc"
 
 DEPEND="
 	>=dev-libs/glib-2.72.0:2
