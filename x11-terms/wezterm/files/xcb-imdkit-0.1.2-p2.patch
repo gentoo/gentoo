@@ -1,0 +1,124 @@
+commit ede7c71b85fe2537efef6cf999a45690316211cf
+Author: Wez Furlong <wez@wezfurlong.org>
+Date:   Sun May 8 13:51:09 2022 -0700
+
+    I submitted a PR to remove the as_raw wart
+    
+    refs: https://github.com/rust-x-bindings/rust-xcb/pull/190
+
+diff --git a/src/lib.rs b/src/lib.rs
+index b966a38..64c99cf 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -16,7 +16,7 @@ use std::os::raw::{c_char, c_void};
+ use std::pin::Pin;
+ use std::sync::{Arc, Mutex};
+ use xcb::x::Window;
+-use xcb::{Event, Raw, Xid, XidNew};
++use xcb::{Raw, Xid, XidNew};
+ 
+ use bitflags::bitflags;
+ 
+@@ -51,60 +51,6 @@ extern "C" fn create_ic_callback(im: *mut xcb_xim_t, new_ic: xcb_xic_t, user_dat
+     }
+ }
+ 
+-fn raw_event(event: &Event) -> Option<*mut xcb::ffi::xcb_generic_event_t> {
+-    match event {
+-        Event::X(xcb::x::Event::KeyPress(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::KeyRelease(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::ButtonPress(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::ButtonRelease(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::MotionNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::EnterNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::LeaveNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::FocusIn(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::FocusOut(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::KeymapNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::Expose(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::GraphicsExposure(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::NoExposure(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::VisibilityNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::CreateNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::DestroyNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::UnmapNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::MapNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::MapRequest(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::ReparentNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::ConfigureNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::ConfigureRequest(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::GravityNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::ResizeRequest(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::CirculateNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::CirculateRequest(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::PropertyNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::SelectionClear(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::SelectionRequest(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::SelectionNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::ColormapNotify(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::ClientMessage(e)) => Some(e.as_raw()),
+-        Event::X(xcb::x::Event::MappingNotify(e)) => Some(e.as_raw()),
+-        Event::Unknown(e) => Some(e.as_raw()),
+-        Event::Xkb(xcb::xkb::Event::NewKeyboardNotify(e)) => Some(e.as_raw()),
+-        Event::Xkb(xcb::xkb::Event::MapNotify(e)) => Some(e.as_raw()),
+-        Event::Xkb(xcb::xkb::Event::StateNotify(e)) => Some(e.as_raw()),
+-        Event::Xkb(xcb::xkb::Event::ControlsNotify(e)) => Some(e.as_raw()),
+-        Event::Xkb(xcb::xkb::Event::IndicatorStateNotify(e)) => Some(e.as_raw()),
+-        Event::Xkb(xcb::xkb::Event::IndicatorMapNotify(e)) => Some(e.as_raw()),
+-        Event::Xkb(xcb::xkb::Event::NamesNotify(e)) => Some(e.as_raw()),
+-        Event::Xkb(xcb::xkb::Event::CompatMapNotify(e)) => Some(e.as_raw()),
+-        Event::Xkb(xcb::xkb::Event::BellNotify(e)) => Some(e.as_raw()),
+-        Event::Xkb(xcb::xkb::Event::ActionMessage(e)) => Some(e.as_raw()),
+-        Event::Xkb(xcb::xkb::Event::AccessXNotify(e)) => Some(e.as_raw()),
+-        Event::Xkb(xcb::xkb::Event::ExtensionDeviceNotify(e)) => Some(e.as_raw()),
+-        // https://github.com/rust-x-bindings/rust-xcb/issues/188
+-        #[allow(unreachable_patterns)]
+-        _ => None,
+-    }
+-}
+-
+ extern "C" fn open_callback(im: *mut xcb_xim_t, user_data: *mut c_void) {
+     let ime = unsafe { ime_from_user_data(user_data) };
+     let input_style = ime.input_style.bits();
+@@ -474,28 +420,24 @@ impl ImeClient {
+     /// [`set_commit_string_cb`]: ImeClient::set_commit_string_cb
+     /// [`set_preedit_draw_cb`]: ImeClient::set_preedit_draw_cb
+     pub fn process_event(&mut self, event: &xcb::Event) -> bool {
+-        match raw_event(event) {
+-            None => false,
+-            Some(raw) => {
+-                if !unsafe { xcb_xim_filter_event(self.im, raw as _) } {
+-                    let mask = unsafe { (*raw).response_type & !0x80 };
+-                    if (mask == XCB_KEY_PRESS) || (mask == XCB_KEY_RELEASE) {
+-                        match self.ic {
+-                            Some(ic) => {
+-                                unsafe {
+-                                    xcb_xim_forward_event(self.im, ic, raw as _);
+-                                }
+-                                return true;
+-                            }
+-                            _ => {
+-                                self.try_open_ic();
+-                            }
++        let raw = event.as_raw();
++        if !unsafe { xcb_xim_filter_event(self.im, raw as _) } {
++            let mask = unsafe { (*raw).response_type & !0x80 };
++            if (mask == XCB_KEY_PRESS) || (mask == XCB_KEY_RELEASE) {
++                match self.ic {
++                    Some(ic) => {
++                        unsafe {
++                            xcb_xim_forward_event(self.im, ic, raw as _);
+                         }
++                        return true;
++                    }
++                    _ => {
++                        self.try_open_ic();
+                     }
+                 }
+-                false
+             }
+         }
++        false
+     }
+ 
+     /// Set the position at which to place the IME window.
