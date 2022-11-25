@@ -21,7 +21,7 @@ SRC_URI+=" sparc? ( ${GENTOO_BIN_BASEURI}/${MY_P}-sparc64-unknown-linux-gnu.tar.
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
 KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 ~riscv ~s390 sparc ~x86"
-IUSE="clippy cpu_flags_x86_sse2 doc prefix rls rust-analyzer rust-src rustfmt"
+IUSE="clippy cpu_flags_x86_sse2 doc prefix rust-analyzer rust-src rustfmt"
 
 DEPEND=""
 
@@ -95,9 +95,8 @@ multilib_src_install() {
 	local components="rustc,cargo,${std}"
 	use doc && components="${components},rust-docs"
 	use clippy && components="${components},clippy-preview"
-	use rls && components="${components},rls-preview,${analysis}"
 	use rustfmt && components="${components},rustfmt-preview"
-	use rust-analyzer && components="${components},rust-analyzer-preview"
+	use rust-analyzer && components="${components},rust-analyzer-preview,${analysis}"
 	# Rust component 'rust-src' is extracted from separate archive
 	if use rust-src; then
 		einfo "Combining rust and rust-src installers"
@@ -133,7 +132,6 @@ multilib_src_install() {
 	)
 
 	use clippy && symlinks+=( clippy-driver cargo-clippy )
-	use rls && symlinks+=( rls )
 	use rustfmt && symlinks+=( rustfmt cargo-fmt )
 	use rust-analyzer && symlinks+=( rust-analyzer )
 
@@ -180,9 +178,6 @@ multilib_src_install() {
 	if use clippy; then
 		echo /usr/bin/clippy-driver >> "${T}/provider-${P}"
 		echo /usr/bin/cargo-clippy >> "${T}/provider-${P}"
-	fi
-	if use rls; then
-		echo /usr/bin/rls >> "${T}/provider-${P}"
 	fi
 	if use rustfmt; then
 		echo /usr/bin/rustfmt >> "${T}/provider-${P}"
