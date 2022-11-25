@@ -3,8 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python2_7 )
-inherit pax-utils python-any-r1 toolchain-funcs
+inherit pax-utils python-utils-r1 toolchain-funcs
 
 PYPY_PV=${PV%_p*}
 MY_P=pypy3.9-v${PYPY_PV/_rc/rc}
@@ -26,7 +25,7 @@ LICENSE="MIT"
 # also check pypy/interpreter/pycode.py -> pypy_incremental_magic
 SLOT="0/pypy39-pp73-336"
 KEYWORDS=""
-IUSE="+ensurepip gdbm +jit ncurses sqlite test tk"
+IUSE="+ensurepip gdbm +jit ncurses sqlite tk"
 # many tests are failing upstream
 # see https://buildbot.pypy.org/summary?branch=py3.9
 RESTRICT="test"
@@ -48,15 +47,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	test? (
-		${PYTHON_DEPS}
-		!!dev-python/pytest-forked
-	)
 "
-
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
-}
 
 src_prepare() {
 	local PATCHES=(
@@ -145,17 +136,6 @@ src_compile() {
 	# Cleanup temporary objects
 	find -name "*_cffi.[co]" -delete || die
 	find -type d -empty -delete || die
-}
-
-src_test() {
-	# (unset)
-	local -x PYTHONDONTWRITEBYTECODE=
-	local -x COLUMNS=80
-
-	# Test runner requires Python 2 too. However, it spawns PyPy3
-	# internally so that we end up testing the correct interpreter.
-	# (--deselect for failing doctests)
-	"${EPYTHON}" ./pypy/test_all.py --pypy=./pypy3.9-c -vv lib-python || die
 }
 
 src_install() {
