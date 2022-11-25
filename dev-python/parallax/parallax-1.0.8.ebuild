@@ -13,3 +13,6 @@ SRC_URI="https://github.com/krig/parallax/archive/refs/tags/${PV}.tar.gz -> ${P}
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
+
+# Requires SSH connection to hosts for testing
+RESTRICT="test"
