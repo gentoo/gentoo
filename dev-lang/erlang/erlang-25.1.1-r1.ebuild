@@ -22,7 +22,7 @@ LICENSE="Apache-2.0"
 # same build of ERTS that was used when compiling the code.  See
 # http://erlang.org/doc/system_principles/misc.html for more information.
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc emacs java +kpoll odbc sctp ssl systemd tk wxwidgets"
 
 RDEPEND="
@@ -47,6 +47,7 @@ S="${WORKDIR}/otp-OTP-${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.0-dont-ignore-LDFLAGS.patch
 	"${FILESDIR}"/${PN}-24.0.2-serial-configure.patch
+	"${FILESDIR}"/${PN}-25.1.2-c99.patch # Bug #882887
 )
 
 SITEFILE=50"${PN}"-gentoo.el
@@ -148,8 +149,7 @@ src_install() {
 		elisp-site-file-install "${T}/${SITEFILE}"
 	fi
 
-	newinitd "${FILESDIR}"/epmd.init-r2 epmd
-	newconfd "${FILESDIR}"/epmd.confd-r2 epmd
+	newinitd "${FILESDIR}"/epmd.init-r3 epmd
 	use systemd && systemd_newunit "${FILESDIR}"/epmd.service-r1 epmd.service
 }
 
