@@ -4,7 +4,7 @@
 EAPI=8
 GNOME_ORG_MODULE="network-manager-applet"
 
-inherit gnome.org meson xdg
+inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="NetworkManager connection editor and applet"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
@@ -48,4 +48,14 @@ src_configure() {
 		-Dld_gc=false
 	)
 	meson_src_configure
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	gnome2_schemas_update
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	gnome2_schemas_update
 }
