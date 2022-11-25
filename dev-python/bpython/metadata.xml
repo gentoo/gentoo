@@ -15,8 +15,6 @@
 		using <pkg>dev-python/pyperclip</pkg></flag>
 		<flag name="jedi">Enable autocompletion
 		using <pkg>dev-python/jedi</pkg></flag>
-		<flag name="urwid">Ebable
-		<pkg>dev-python/urwid</pkg>-based interface</flag>
 		<flag name="watch">Enable watching paths
 		using <pkg>dev-python/watchdog</pkg></flag>
 	</use>
