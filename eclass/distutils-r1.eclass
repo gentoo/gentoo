@@ -929,6 +929,8 @@ _distutils-r1_print_package_versions() {
 			hatchling)
 				packages+=(
 					dev-python/hatchling
+					dev-python/hatch-fancy-pypi-readme
+					dev-python/hatch-vcs
 				)
 				;;
 			jupyter)
