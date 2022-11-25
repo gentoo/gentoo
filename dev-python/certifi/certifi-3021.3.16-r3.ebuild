@@ -17,7 +17,7 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/tiran/certifi-system-store/archive/v${PV}.tar.gz
-		-> ${MY_P}.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}
 
