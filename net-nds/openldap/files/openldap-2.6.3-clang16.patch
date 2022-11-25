@@ -1,6 +1,3 @@
-https://bugs.gentoo.org/871288
-https://bugs.gentoo.org/871372
-
 From ee4983302d6f052e77ab0332d2a128d169c2eacb Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
 Date: Tue, 15 Nov 2022 21:45:27 +0100
@@ -16,9 +13,18 @@ This covers all the instances I could find by grepping around the
 codebase, and gets OpenLDAP building on my system.
 
 Bug: https://bugs.gentoo.org/871288
+Bug: https://bugs.gentoo.org/871372
 --- a/build/openldap.m4
 +++ b/build/openldap.m4
-@@ -360,9 +360,7 @@ AC_DEFUN([OL_PTHREAD_TEST_FUNCTION],[[
+@@ -154,6 +154,7 @@ fi
+ if test $ol_cv_header_stdc = yes; then
+   # /bin/cc in Irix-4.0.5 gets non-ANSI ctype macros unless using -ansi.
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[#include <ctype.h>
++#include <stdlib.h>
+ #ifndef HAVE_EBCDIC
+ #	define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+ #	define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
+@@ -394,9 +395,7 @@ AC_DEFUN([OL_PTHREAD_TEST_FUNCTION],[[
  AC_DEFUN([OL_PTHREAD_TEST_PROGRAM],
  [AC_LANG_SOURCE([OL_PTHREAD_TEST_INCLUDES
  
@@ -29,7 +35,7 @@ Bug: https://bugs.gentoo.org/871288
  {
  OL_PTHREAD_TEST_FUNCTION
  }
-@@ -484,7 +482,7 @@ AC_CACHE_CHECK([for compatible POSIX regex],ol_cv_c_posix_regex,[
+@@ -518,7 +517,7 @@ AC_CACHE_CHECK([for compatible POSIX regex],ol_cv_c_posix_regex,[
  #include <sys/types.h>
  #include <regex.h>
  static char *pattern, *string;
@@ -38,16 +44,17 @@ Bug: https://bugs.gentoo.org/871288
  {
  	int rc;
  	regex_t re;
-@@ -511,7 +509,7 @@ AC_DEFUN([OL_C_UPPER_LOWER],
+@@ -545,7 +544,8 @@ AC_DEFUN([OL_C_UPPER_LOWER],
  [AC_CACHE_CHECK([if toupper() requires islower()],ol_cv_c_upper_lower,[
  	AC_RUN_IFELSE([AC_LANG_SOURCE([[
  #include <ctype.h>
 -main()
++#include <stdlib.h>
 +int main(void)
  {
  	if ('C' == toupper('C'))
  		exit(0);
-@@ -569,7 +567,7 @@ AC_DEFUN([OL_NONPOSIX_STRERROR_R],
+@@ -603,7 +603,7 @@ AC_DEFUN([OL_NONPOSIX_STRERROR_R],
  			]])],[ol_cv_nonposix_strerror_r=yes],[ol_cv_nonposix_strerror_r=no])
  	else
  		AC_RUN_IFELSE([AC_LANG_SOURCE([[
@@ -58,7 +65,30 @@ Bug: https://bugs.gentoo.org/871288
  				strerror_r( 1, buf, sizeof buf );
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1547,8 +1547,7 @@ dnl			esac
+@@ -1031,7 +1031,11 @@ dnl ----------------------------------------------------------------
+ AC_CHECK_HEADERS( sys/epoll.h )
+ if test "${ac_cv_header_sys_epoll_h}" = yes; then
+ 	AC_MSG_CHECKING(for epoll system call)
+-	AC_RUN_IFELSE([AC_LANG_SOURCE([[int main(int argc, char **argv)
++	AC_RUN_IFELSE([AC_LANG_SOURCE([[#include <stdlib.h>
++#ifdef HAVE_SYS_POLL_H
++#include <sys/epoll.h>
++#endif
++int main(int argc, char **argv)
+ {
+ 	int epfd = epoll_create(256);
+ 	exit (epfd == -1 ? 1 : 0);
+@@ -1551,6 +1555,9 @@ dnl			esac
+ 				AC_CACHE_CHECK([if select yields when using pthreads],
+ 					ol_cv_pthread_select_yields,[
+ 				AC_RUN_IFELSE([AC_LANG_SOURCE([[
++#define _XOPEN_SOURCE 500               /* For pthread_setconcurrency() on glibc */
++#include <stdlib.h>
++#include <stdio.h>
+ #include <sys/types.h>
+ #include <sys/time.h>
+ #include <unistd.h>
+@@ -1561,8 +1568,7 @@ dnl			esac
  
  static int fildes[2];
  
@@ -68,7 +98,7 @@ Bug: https://bugs.gentoo.org/871288
  {
  	int i;
  	struct timeval tv;
-@@ -1572,9 +1571,7 @@ static void *task(p)
+@@ -1586,9 +1592,7 @@ static void *task(p)
  	exit(0); /* if we exit here, the select blocked the whole process */
  }
  
