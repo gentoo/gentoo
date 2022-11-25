@@ -196,7 +196,6 @@ dev-python/Rx
 dev-python/bert
 dev-python/flask-assets
 dev-python/libpy_simdjson
-dev-python/parallax
 dev-python/pytest-salt
 dev-python/requests_pkcs12
 dev-python/slackclient
@@ -215,7 +214,6 @@ net-analyzer/carl
 net-im/skype-dbus-mock
 sci-libs/bmrblib
 sci-mathematics/relational
-sys-cluster/crmsh
 
 # Michał Górny <mgorny@gentoo.org> (2022-11-17)
 # Rarely used package with very high maintenance cost.  Hacky, requires
