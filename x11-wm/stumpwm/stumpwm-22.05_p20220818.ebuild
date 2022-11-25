@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit common-lisp-3 autotools desktop elisp-common xdg-utils
+inherit common-lisp-3 autotools desktop elisp-common optfeature xdg-utils
 
 MY_COMMIT="740e945d742d85aef36e0ed9467de9bbbf5eafd2"
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/stumpwm/stumpwm/archive/${MY_COMMIT}.tar.gz -> ${PN}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="contrib doc emacs"
+IUSE="doc emacs"
 
 S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
@@ -28,8 +28,6 @@ RDEPEND="dev-lisp/alexandria
 DEPEND="${RDEPEND}"
 BDEPEND="sys-apps/texinfo
 		doc? ( virtual/texi2dvi )"
-
-PDEPEND="contrib? ( x11-wm/stumpwm-contrib )"
 
 SITEFILE=70${PN}-gentoo.el
 CLPKGDIR="${CLSOURCEROOT}/${CLPACKAGE}"
@@ -56,7 +54,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake
+	emake -j1
 }
 
 src_install() {
@@ -73,6 +71,7 @@ src_install() {
 
 pkg_postinst() {
 	use emacs && elisp-site-regen
+	optfeature "extension modules" x11-wm/stumpwm-contrib
 }
 
 pkg_postrm() {
