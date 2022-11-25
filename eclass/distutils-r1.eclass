@@ -1265,25 +1265,14 @@ distutils_wheel_install() {
 	local wheel=${2}
 
 	einfo "  Installing ${wheel##*/} to ${root}"
-	if has_version -b ">=dev-python/gpep517-9"; then
-		# TODO: inline when we dep on >=9
-		local cmd=(
-			gpep517 install-wheel
-				--destdir="${root}"
-				--interpreter="${PYTHON}"
-				--prefix="${EPREFIX}/usr"
-				--optimize=all
-				"${wheel}"
-		)
-	else
-		local cmd=(
-			gpep517 install-wheel
-				--destdir="${root}"
-				--interpreter="${PYTHON}"
-				--prefix="${EPREFIX}/usr"
-				"${wheel}"
-		)
-	fi
+	local cmd=(
+		gpep517 install-wheel
+			--destdir="${root}"
+			--interpreter="${PYTHON}"
+			--prefix="${EPREFIX}/usr"
+			--optimize=all
+			"${wheel}"
+	)
 	printf '%s\n' "${cmd[*]}"
 	"${cmd[@]}" || die "Wheel install failed"
 
@@ -2018,16 +2007,6 @@ _distutils-r1_post_python_install() {
 				die "Package installs '${p}' package which is forbidden and likely a bug in the build system."
 			fi
 		done
-
-		if [[ ${DISTUTILS_USE_PEP517} ]]; then
-			if ! has_version -b ">=dev-python/gpep517-9"
-			then
-				# TODO: remove when we dep on >=9
-				# we need to recompile everything here in order to embed
-				# the correct paths
-				python_optimize "${sitedir}"
-			fi
-		fi
 	fi
 }
 
