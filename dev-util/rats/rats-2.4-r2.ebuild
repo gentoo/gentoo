@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit edos2unix
+inherit autotools edos2unix
 
 DESCRIPTION="RATS - Rough Auditing Tool for Security"
 HOMEPAGE="https://github.com/andrew-d/rough-auditing-tool-for-security"
@@ -13,7 +13,6 @@ SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
 
 RDEPEND="dev-libs/expat:="
 DEPEND="${RDEPEND}"
@@ -28,6 +27,9 @@ src_prepare() {
 		einfo "Converting ${f} from CRLF to LF"
 		edos2unix "${f}"
 	done < <(find \( -name '*.[chl]' -o -name '*.in' -o -name '*.am' \) -print0)
+
+	# Clang 16
+	eautoreconf
 }
 
 src_configure() {
