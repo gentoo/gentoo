@@ -22,7 +22,7 @@ else
 			https://github.com/vergoh/vnstat/releases/download/v${PV}/${P}.tar.gz.asc
 		)"
 
-	KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ~ppc64 ~riscv ~sparc x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-teemutoivola )"
 fi
