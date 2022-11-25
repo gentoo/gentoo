@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>arsen@aarsen.me</email>
+		<name>Arsen Arsenović</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="gitlab">nbdkit/libnbd</remote-id>
+		<remote-id type="github">libguestfs/libnbd</remote-id>
+	</upstream>
+	<use>
+		<flag name="uri-support">
+			Enable nbd:// URI support via <pkg>dev-libs/libxml2</pkg>.
+		</flag>
+		<flag name="fuse">
+			Install the <pkg>sys-fs/fuse</pkg> powered nbdfuse.
+		</flag>
+	</use>
+</pkgmetadata>
