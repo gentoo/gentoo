@@ -24,7 +24,15 @@ https://bugs.gentoo.org/871372
  dnl <http://www.OpenLDAP.org/license.html>.
  dnl
  dnl --------------------------------------------------------------------
-@@ -170,7 +170,7 @@ exit (0); }
+@@ -154,6 +154,7 @@ fi
+ if test $ol_cv_header_stdc = yes; then
+   # /bin/cc in Irix-4.0.5 gets non-ANSI ctype macros unless using -ansi.
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[#include <ctype.h>
++#include <stdlib.h>
+ #ifndef HAVE_EBCDIC
+ #	define ISLOWER(c) ('a' <= (c) && (c) <= 'z')
+ #	define TOUPPER(c) (ISLOWER(c) ? 'A' + ((c) - 'a') : (c))
+@@ -170,7 +171,7 @@ exit (0); }
  ]])],[],[ol_cv_header_stdc=no],[:])
  fi])
  if test $ol_cv_header_stdc = yes; then
@@ -33,10 +41,11 @@ https://bugs.gentoo.org/871372
  fi
  ac_cv_header_stdc=disable
  ])
-@@ -243,312 +243,39 @@ OL_RESOLVER_TRY(ol_cv_resolver_none)
+@@ -242,313 +243,40 @@ AC_DEFUN([OL_RESOLVER_LINK],
+ OL_RESOLVER_TRY(ol_cv_resolver_none)
  OL_RESOLVER_TRY(ol_cv_resolver_resolv,[-lresolv])
  OL_RESOLVER_TRY(ol_cv_resolver_bind,[-lbind])
- ])
+-])
 -dnl
 -dnl ====================================================================
 -dnl International Components for Unicode (ICU)
@@ -203,13 +212,13 @@ https://bugs.gentoo.org/871372
 -		return 1;
 -	}
 -#endif
- 
+-
 -	return 0;
 -}]])],[ol_cv_berkeley_db_version=yes],[ol_cv_berkeley_db_version=no],[ol_cv_berkeley_db_version=cross])
 -
 -	LIBS="$ol_LIBS"
--])
--
+ ])
+ 
 -	if test $ol_cv_berkeley_db_version = no ; then
 -		AC_MSG_ERROR([Berkeley DB version mismatch])
 -	fi
@@ -247,11 +256,19 @@ https://bugs.gentoo.org/871372
 -	DB_ENV *env = NULL;
 -
 -	rc = db_env_create( &env, 0 );
--
++dnl Check for version compatility with back-mdb
++AC_DEFUN([OL_MDB_COMPAT],
++[AC_CACHE_CHECK([if LMDB version supported by MDB backends], [ol_cv_mdb_compat],[
++	AC_EGREP_CPP(__mdb_version_compat,[
++#include <lmdb.h>
+ 
 -	flags |= DB_INIT_MPOOL;
 -#ifdef DB_MPOOL_PRIVATE
 -	flags |= DB_MPOOL_PRIVATE;
--#endif
++/* require 0.9.18 or later */
++#if MDB_VERSION_FULL >= 0x000000090012
++	__mdb_version_compat
+ #endif
 -
 -	if( rc ) {
 -		printf("BerkeleyDB: %s\n", db_strerror(rc) );
@@ -276,12 +293,7 @@ https://bugs.gentoo.org/871372
 -#else
 -	DB_ENV env;
 -	memset( &env, '\0', sizeof(env) );
-+dnl Check for version compatility with back-mdb
-+AC_DEFUN([OL_MDB_COMPAT],
-+[AC_CACHE_CHECK([if LMDB version supported by MDB backends], [ol_cv_mdb_compat],[
-+	AC_EGREP_CPP(__mdb_version_compat,[
-+#include <lmdb.h>
- 
+-
 -	rc = db_appinit( NULL, NULL, &env, flags );
 -
 -	if( rc == 0 ) {
@@ -290,10 +302,7 @@ https://bugs.gentoo.org/871372
 -
 -	unlink("__db_mpool.share");
 -	unlink("__db_lock.share");
-+/* require 0.9.18 or later */
-+#if MDB_VERSION_FULL >= 0x000000090012
-+	__mdb_version_compat
- #endif
+-#endif
 -
 -	return rc;
 -}]])],[ol_cv_berkeley_db_thread=yes],[ol_cv_berkeley_db_thread=no],[ol_cv_berkeley_db_thread=cross])
@@ -354,9 +363,9 @@ https://bugs.gentoo.org/871372
 -#ifndef DB_VERSION_MINOR
 -#	define DB_VERSION_MINOR 0
 -#endif
- 
--#define DB_VERSION_MM	((DB_VERSION_MAJOR<<8)|DB_VERSION_MINOR)
 -
+-#define DB_VERSION_MM	((DB_VERSION_MAJOR<<8)|DB_VERSION_MINOR)
+ 
 -/* require 4.4 or later */
 -#if DB_VERSION_MM >= 0x0404
 -	__db_version_compat
@@ -366,7 +375,7 @@ https://bugs.gentoo.org/871372
  
  dnl
  dnl ====================================================================
-@@ -664,12 +391,10 @@ AC_DEFUN([OL_PTHREAD_TEST_FUNCTION],[[
+@@ -664,12 +392,10 @@ AC_DEFUN([OL_PTHREAD_TEST_FUNCTION],[[
  	return 0;
  ]])
  
@@ -382,7 +391,7 @@ https://bugs.gentoo.org/871372
  {
  OL_PTHREAD_TEST_FUNCTION
  }
-@@ -706,7 +431,7 @@ dnl Check GNU Pth pthread Header
+@@ -706,7 +432,7 @@ dnl Check GNU Pth pthread Header
  dnl
  dnl defines ol_cv_header linux_threads to 'yes' or 'no'
  dnl		'no' implies pthreads.h is not LinuxThreads or pthreads.h
@@ -391,7 +400,7 @@ https://bugs.gentoo.org/871372
  dnl		checked.
  dnl 
  AC_DEFUN([OL_HEADER_GNU_PTH_PTHREAD_H], [
-@@ -728,7 +453,7 @@ AC_DEFUN([OL_NT_THREADS], [
+@@ -728,7 +454,7 @@ AC_DEFUN([OL_NT_THREADS], [
  	AC_CHECK_FUNC(_beginthread)
  
  	if test $ac_cv_func__beginthread = yes ; then
@@ -400,7 +409,7 @@ https://bugs.gentoo.org/871372
  		ol_cv_nt_threads=yes
  	fi
  ])
-@@ -737,7 +462,7 @@ dnl Check LinuxThreads Header
+@@ -737,7 +463,7 @@ dnl Check LinuxThreads Header
  dnl
  dnl defines ol_cv_header linux_threads to 'yes' or 'no'
  dnl		'no' implies pthreads.h is not LinuxThreads or pthreads.h
@@ -409,7 +418,7 @@ https://bugs.gentoo.org/871372
  dnl		checked.
  dnl 
  AC_DEFUN([OL_HEADER_LINUX_THREADS], [
-@@ -749,7 +474,7 @@ AC_DEFUN([OL_HEADER_LINUX_THREADS], [
+@@ -749,7 +475,7 @@ AC_DEFUN([OL_HEADER_LINUX_THREADS], [
  			[ol_cv_header_linux_threads=no])
  		])
  	if test $ol_cv_header_linux_threads = yes; then
@@ -418,7 +427,7 @@ https://bugs.gentoo.org/871372
  	fi
  ])dnl
  dnl --------------------------------------------------------------------
-@@ -791,7 +516,7 @@ AC_CACHE_CHECK([for compatible POSIX regex],ol_cv_c_posix_regex,[
+@@ -791,7 +517,7 @@ AC_CACHE_CHECK([for compatible POSIX regex],ol_cv_c_posix_regex,[
  #include <sys/types.h>
  #include <regex.h>
  static char *pattern, *string;
@@ -427,16 +436,17 @@ https://bugs.gentoo.org/871372
  {
  	int rc;
  	regex_t re;
-@@ -818,7 +543,7 @@ AC_DEFUN([OL_C_UPPER_LOWER],
+@@ -818,7 +544,8 @@ AC_DEFUN([OL_C_UPPER_LOWER],
  [AC_CACHE_CHECK([if toupper() requires islower()],ol_cv_c_upper_lower,[
  	AC_RUN_IFELSE([AC_LANG_SOURCE([[
  #include <ctype.h>
 -main()
++#include <stdlib.h>
 +int main(void)
  {
  	if ('C' == toupper('C'))
  		exit(0);
-@@ -826,7 +551,7 @@ main()
+@@ -826,7 +553,7 @@ main()
  		exit(1);
  }]])],[ol_cv_c_upper_lower=no],[ol_cv_c_upper_lower=yes],[ol_cv_c_upper_lower=safe])])
  if test $ol_cv_c_upper_lower != no ; then
@@ -445,7 +455,7 @@ https://bugs.gentoo.org/871372
  fi
  ])
  dnl
-@@ -837,29 +562,32 @@ dnl Check for declaration of sys_errlist in one of stdio.h and errno.h.
+@@ -837,29 +564,32 @@ dnl Check for declaration of sys_errlist in one of stdio.h and errno.h.
  dnl Declaration of sys_errlist on BSD4.4 interferes with our declaration.
  dnl Reported by Keith Bostic.
  AC_DEFUN([OL_SYS_ERRLIST],
@@ -493,7 +503,7 @@ https://bugs.gentoo.org/871372
  AC_DEFUN([OL_NONPOSIX_STRERROR_R],
  [AC_CACHE_CHECK([non-posix strerror_r],ol_cv_nonposix_strerror_r,[
  	AC_EGREP_CPP(strerror_r,[#include <string.h>],
-@@ -873,24 +601,23 @@ AC_DEFUN([OL_NONPOSIX_STRERROR_R],
+@@ -873,24 +603,23 @@ AC_DEFUN([OL_NONPOSIX_STRERROR_R],
  			]])],[ol_cv_nonposix_strerror_r=yes],[ol_cv_nonposix_strerror_r=no])
  	else
  		AC_RUN_IFELSE([AC_LANG_SOURCE([[
@@ -522,7 +532,7 @@ https://bugs.gentoo.org/871372
  ol_cv_func_strerror_r=no
  if test "${ac_cv_func_strerror_r}" = yes ; then
  	OL_NONPOSIX_STRERROR_R
-@@ -910,7 +637,7 @@ AC_DEFUN([OL_C_VOLATILE],
+@@ -910,7 +639,7 @@ AC_DEFUN([OL_C_VOLATILE],
    if test $ol_cv_c_volatile = yes; then
      : 
    else
@@ -531,7 +541,7 @@ https://bugs.gentoo.org/871372
    fi
   ])dnl
  dnl
-@@ -918,7 +645,7 @@ dnl ====================================================================
+@@ -918,7 +647,7 @@ dnl ====================================================================
  dnl Look for fetch(3)
  AC_DEFUN([OL_LIB_FETCH],
  [ol_LIBS=$LIBS
@@ -540,7 +550,7 @@ https://bugs.gentoo.org/871372
  AC_CACHE_CHECK([fetch(3) library],ol_cv_lib_fetch,[
  	AC_LINK_IFELSE([AC_LANG_PROGRAM([[
  #ifdef HAVE_SYS_PARAM_H
-@@ -928,8 +655,8 @@ AC_CACHE_CHECK([fetch(3) library],ol_cv_lib_fetch,[
+@@ -928,8 +657,8 @@ AC_CACHE_CHECK([fetch(3) library],ol_cv_lib_fetch,[
  #include <fetch.h>]], [[struct url *u = fetchParseURL("file:///"); ]])],[ol_cv_lib_fetch=yes],[ol_cv_lib_fetch=no])])
  LIBS=$ol_LIBS
  if test $ol_cv_lib_fetch != no ; then
@@ -551,7 +561,7 @@ https://bugs.gentoo.org/871372
  		[define if you actually have FreeBSD fetch(3)])
  fi
  ])dnl
-@@ -1094,7 +821,7 @@ AC_DEFUN([OL_FUNC_GETHOSTBYADDR_R_NARGS],
+@@ -1094,7 +823,7 @@ AC_DEFUN([OL_FUNC_GETHOSTBYADDR_R_NARGS],
  ])dnl
  dnl
  dnl --------------------------------------------------------------------
@@ -560,7 +570,7 @@ https://bugs.gentoo.org/871372
  AC_DEFUN([OL_SASL_COMPAT],
  [AC_CACHE_CHECK([Cyrus SASL library version], [ol_cv_sasl_compat],[
  	AC_EGREP_CPP(__sasl_compat,[
-@@ -1113,19 +840,3 @@ AC_DEFUN([OL_SASL_COMPAT],
+@@ -1113,19 +842,3 @@ AC_DEFUN([OL_SASL_COMPAT],
  #endif
  	],	[ol_cv_sasl_compat=yes], [ol_cv_sasl_compat=no])])
  ])
