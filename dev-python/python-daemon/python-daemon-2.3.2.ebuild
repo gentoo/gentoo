@@ -18,7 +18,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 # build system and tests use GPL-3.0+ but none of these files are installed
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 arm x86"
 
 RDEPEND="
 	dev-python/lockfile[${PYTHON_USEDEP}]
