@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Mair-Keimberger <mmk@levelnine.at> (2022-11-25)
+# Unmaintained, last release a decade ago, upstream declared it EOL
+# Removal in 30 days.
+net-analyzer/snortsam
+
 # John Helmert III <ajak@gentoo.org> (2022-11-24)
 # Binary package several releases behind the source-based package,
 # multiple vulnerabilities, unmaintained for several years. Removal in
