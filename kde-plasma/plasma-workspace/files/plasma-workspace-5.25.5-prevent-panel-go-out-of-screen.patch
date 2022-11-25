@@ -10,12 +10,6 @@ There is still a known culprit (duplicate display names) so the hack shouldn't b
 
 CCBUG: 353975
 CCBUG: 438114
----
- shell/panelview.cpp | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/shell/panelview.cpp b/shell/panelview.cpp
-index b5c87bbf71..4be1e26ca4 100644
 --- a/shell/panelview.cpp
 +++ b/shell/panelview.cpp
 @@ -859,6 +859,9 @@ void PanelView::moveEvent(QMoveEvent *ev)
@@ -28,6 +22,4 @@ index b5c87bbf71..4be1e26ca4 100644
  }
  
  void PanelView::keyPressEvent(QKeyEvent *event)
--- 
 GitLab
-
