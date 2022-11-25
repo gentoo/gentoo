@@ -1,0 +1,101 @@
+Bug: https://bugs.gentoo.org/882887
+From: https://github.com/erlang/otp/pull/6504
+From: Florian Weimer <fweimer@redhat.com>
+Date: Thu, 24 Nov 2022 11:57:49 +0100
+Subject: [PATCH 1/2] configure.ac: C99 fix for
+ ERTS___AFTER_MORECORE_HOOK_CAN_TRACK_MALLOC
+
+#include <unistd.h> for the sbrk function if the header is available.
+--- a/erts/configure
++++ b/erts/configure
+@@ -20752,6 +20752,9 @@ else $as_nop
+ #ifdef HAVE_MALLOC_H
+ #  include <malloc.h>
+ #endif
++#ifdef HAVE_UNISTD_H
++#  include <unistd.h>
++#endif
+ #if defined(HAVE_END_SYMBOL)
+ extern char end;
+ #elif defined(HAVE__END_SYMBOL)
+--- a/erts/configure.ac
++++ b/erts/configure.ac
+@@ -2436,6 +2436,9 @@ AC_CACHE_CHECK([if __after_morecore_hook can track malloc()s core memory use],
+ #ifdef HAVE_MALLOC_H
+ #  include <malloc.h>
+ #endif
++#ifdef HAVE_UNISTD_H
++#  include <unistd.h>
++#endif
+ #if defined(HAVE_END_SYMBOL)
+ extern char end;
+ #elif defined(HAVE__END_SYMBOL)
+
+From 7b720d2bb9e742110ff90ec2495747b2c477e2c7 Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Thu, 24 Nov 2022 11:59:22 +0100
+Subject: [PATCH 2/2] configure.ac: C99 fixes for poll_works check
+
+Include <fcntl.h> if it is available for the open prototype.
+Return from main instead of calling exit, so that no function
+declaration is needed.
+--- a/erts/configure
++++ b/erts/configure
+@@ -24663,10 +24663,13 @@ else $as_nop
+ /* end confdefs.h.  */
+ 
+ #include <poll.h>
+-main()
++#ifdef HAVE_FCNTL_H
++#include <fcntl.h>
++#endif
++int main()
+ {
+ #ifdef _POLL_EMUL_H_
+-  exit(1); /* Implemented using select() -- fail */
++  return 1; /* Implemented using select() -- fail */
+ #else
+   struct pollfd fds[1];
+   int fd;
+@@ -24675,9 +24678,9 @@ main()
+   fds[0].events = POLLIN;
+   fds[0].revents = 0;
+   if (poll(fds, 1, 0) < 0 || (fds[0].revents & POLLNVAL) != 0) {
+-    exit(1);  /* Does not work for devices -- fail */
++    return 1;  /* Does not work for devices -- fail */
+   }
+-  exit(0);
++  return 0;
+ #endif
+ }
+ 
+--- a/erts/configure.ac
++++ b/erts/configure.ac
+@@ -3036,10 +3036,13 @@ poll_works=no
+ 
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <poll.h>
+-main()
++#ifdef HAVE_FCNTL_H
++#include <fcntl.h>
++#endif
++int main()
+ {
+ #ifdef _POLL_EMUL_H_
+-  exit(1); /* Implemented using select() -- fail */
++  return 1; /* Implemented using select() -- fail */
+ #else
+   struct pollfd fds[1];
+   int fd;
+@@ -3048,9 +3051,9 @@ main()
+   fds[0].events = POLLIN;
+   fds[0].revents = 0;
+   if (poll(fds, 1, 0) < 0 || (fds[0].revents & POLLNVAL) != 0) {
+-    exit(1);  /* Does not work for devices -- fail */
++    return 1;  /* Does not work for devices -- fail */
+   }
+-  exit(0);
++  return 0;
+ #endif
+ }
+ ]])],[poll_works=yes],[poll_works=no],[

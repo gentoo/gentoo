@@ -47,6 +47,7 @@ S="${WORKDIR}/otp-OTP-${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.0-dont-ignore-LDFLAGS.patch
 	"${FILESDIR}"/${PN}-24.0.2-serial-configure.patch
+	"${FILESDIR}"/${PN}-25.1.2-c99.patch # Bug #882887
 )
 
 SITEFILE=50"${PN}"-gentoo.el
