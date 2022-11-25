@@ -4,7 +4,7 @@
 EAPI=7
 
 ADA_COMPAT=( gnat_2021 gcc_12_2_0 )
-inherit ada multiprocessing
+inherit ada multiprocessing toolchain-funcs
 
 DESCRIPTION="an implementation of the Microsoft Language Server Protocol for Ada/SPARK"
 HOMEPAGE="https://github.com/AdaCore/ada_language_server"
@@ -29,6 +29,14 @@ BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]
 	test? ( dev-ada/e3-testsuite )"
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
+
+src_prepare() {
+	sed -i \
+		-e "s:g++:$(tc-getCXX):" \
+		gnat/lsp_server.gpr \
+		|| die
+	default
+}
 
 src_compile() {
 	gprbuild -v -j$(makeopts_jobs) -P gnat/tester.gpr -p \
