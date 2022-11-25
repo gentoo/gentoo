@@ -4,4 +4,7 @@
   <maintainer type="project">
     <email>freedesktop-bugs@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="freedesktop-gitlab">libspectre/libspectre</remote-id>
+  </upstream>
 </pkgmetadata>
