@@ -5,14 +5,18 @@ EAPI=7
 
 inherit common-lisp-3 autotools desktop elisp-common xdg-utils
 
+MY_COMMIT="740e945d742d85aef36e0ed9467de9bbbf5eafd2"
+
 DESCRIPTION="Stumpwm is a Window Manager written entirely in Common Lisp"
 HOMEPAGE="https://stumpwm.github.io/"
-SRC_URI="https://github.com/stumpwm/stumpwm/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/stumpwm/stumpwm/archive/${MY_COMMIT}.tar.gz -> ${PN}-${MY_COMMIT}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="contrib doc emacs"
+
+S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 RESTRICT="strip"
 
