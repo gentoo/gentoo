@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>bratishkaerik@getgoogleoff.me</email>
+		<name>Eric Joldasov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The makeheaders program is a simple utility that will automatically generate
+		all ".h" files for large programming project based on information gleaned from
+		the ".c" and/or ".cpp" source files. It operates by scanning the C and/or C++
+		source code, extracting appropriate macros, structure and subroutine declarations
+		and writing this declarations, in the correct order, into the generated header files. 
+	</longdescription>
+	<upstream>
+		<doc>https://fossil-scm.org/home/doc/trunk/tools/makeheaders.html</doc>
+	</upstream>
 </pkgmetadata>
