@@ -9,7 +9,7 @@ DESCRIPTION="The Motif user interface component toolkit"
 HOMEPAGE="https://sourceforge.net/projects/motif/
 	https://motif.ics.com/"
 SRC_URI="mirror://sourceforge/project/motif/Motif%20${PV}%20Source%20Code/${P}.tar.gz
-	https://dev.gentoo.org/~ulm/distfiles/${P}-patches-3.tar.xz"
+	https://dev.gentoo.org/~ulm/distfiles/${P}-patches-4.tar.xz"
 
 LICENSE="LGPL-2.1+ MIT"
 SLOT="0"
