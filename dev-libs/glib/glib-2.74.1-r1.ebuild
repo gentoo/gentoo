@@ -68,7 +68,6 @@ MULTILIB_CHOST_TOOLS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.74.0-crash-gparamspec.patch
 	"${FILESDIR}"/${P}-gnome-keyring-cpu.patch
 )
 
