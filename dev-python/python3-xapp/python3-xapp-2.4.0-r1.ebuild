@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9,10,11} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit meson python-r1
 
@@ -27,7 +27,7 @@ RDEPEND="
 "
 
 src_prepare() {
-	echo "option('python', type: 'string', value: 'python3')" >> meson_options.txt
+	echo "option('python', type: 'string', value: 'python3')" >> meson_options.txt || die
 	sed -i "s/find_installation('python3')/find_installation(get_option('python'))/" meson.build || die
 	default
 }
@@ -42,6 +42,10 @@ src_configure() {
 
 src_compile() {
 	python_foreach_impl meson_src_compile
+}
+
+src_test() {
+	python_foreach_impl meson_src_test
 }
 
 src_install() {
