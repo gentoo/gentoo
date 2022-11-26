@@ -67,10 +67,6 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/gio-querymodules$(get_exeext)
 )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.74.0-crash-gparamspec.patch
-)
-
 pkg_setup() {
 	if use kernel_linux ; then
 		CONFIG_CHECK="~INOTIFY_USER"
