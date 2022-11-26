@@ -133,9 +133,9 @@ _python_set_impls() {
 			# please keep them in sync with _PYTHON_ALL_IMPLS
 			# and _PYTHON_HISTORICAL_IMPLS
 			case ${i} in
-				pypy3|python2_7|python3_[89]|python3_1[01])
+				pypy3|python3_[89]|python3_1[01])
 					;;
-				jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[5-6]|python3_[1-7])
+				jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[5-7]|python3_[1-7])
 					obsolete+=( "${i}" )
 					;;
 				*)
@@ -172,13 +172,7 @@ _python_set_impls() {
 	done
 
 	if [[ ! ${supp[@]} ]]; then
-		# special-case python2_7 for python-any-r1
-		if [[ ${_PYTHON_ALLOW_PY27} ]] && has python2_7 "${PYTHON_COMPAT[@]}"
-		then
-			supp+=( python2_7 )
-		else
-			die "No supported implementation in PYTHON_COMPAT."
-		fi
+		die "No supported implementation in PYTHON_COMPAT."
 	fi
 
 	if [[ ${_PYTHON_SUPPORTED_IMPLS[@]} ]]; then
@@ -412,10 +406,6 @@ _python_export() {
 				local val
 
 				case "${impl}" in
-					python2*|python3.6|python3.7*)
-						# python* up to 3.7
-						val=$($(tc-getPKG_CONFIG) --libs ${impl/n/n-}) || die
-						;;
 					python*)
 						# python3.8+
 						val=$($(tc-getPKG_CONFIG) --libs ${impl/n/n-}-embed) || die
@@ -454,8 +444,6 @@ _python_export() {
 			PYTHON_PKG_DEP)
 				local d
 				case ${impl} in
-					python2.7)
-						PYTHON_PKG_DEP='>=dev-lang/python-2.7.10_p16:2.7';;
 					python3.8)
 						PYTHON_PKG_DEP=">=dev-lang/python-3.8.15_p3:3.8";;
 					python3.9)
@@ -466,8 +454,6 @@ _python_export() {
 						PYTHON_PKG_DEP=">=dev-lang/python-3.11.0_p2:3.11";;
 					python*)
 						PYTHON_PKG_DEP="dev-lang/python:${impl#python}";;
-					pypy)
-						PYTHON_PKG_DEP='>=dev-python/pypy-7.3.9-r2:0=';;
 					pypy3)
 						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.9_p9:0=';;
 					*)
@@ -643,11 +629,7 @@ python_optimize() {
 
 		einfo "Optimize Python modules for ${instpath}"
 		case "${EPYTHON}" in
-			python2.7|python3.[34])
-				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
-				"${PYTHON}" -OO -m compileall -q -f -d "${instpath}" "${d}"
-				;;
-			python3.[5678]|pypy3)
+			python3.8|pypy3)
 				# both levels of optimization are separate since 3.5
 				"${PYTHON}" -m compileall -j "${jobs}" -q -f -d "${instpath}" "${d}"
 				"${PYTHON}" -O -m compileall -j "${jobs}" -q -f -d "${instpath}" "${d}"
@@ -656,8 +638,11 @@ python_optimize() {
 			python*)
 				"${PYTHON}" -m compileall -j "${jobs}" -o 0 -o 1 -o 2 --hardlink-dupes -q -f -d "${instpath}" "${d}"
 				;;
-			*)
+			pypy)
 				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
+				;;
+			*)
+				die "${FUNCNAME}: unexpected EPYTHON=${EPYTHON}"
 				;;
 		esac
 	done
@@ -955,15 +940,6 @@ _python_wrapper_setup() {
 		local EPYTHON PYTHON
 		_python_export "${impl}" EPYTHON PYTHON
 
-		local pyver pyother
-		if [[ ${EPYTHON} != python2* ]]; then
-			pyver=3
-			pyother=2
-		else
-			pyver=2
-			pyother=3
-		fi
-
 		# Python interpreter
 		# note: we don't use symlinks because python likes to do some
 		# symlink reading magic that breaks stuff
@@ -972,10 +948,10 @@ _python_wrapper_setup() {
 			#!/bin/sh
 			exec "${PYTHON}" "\${@}"
 		_EOF_
-		cp "${workdir}/bin/python" "${workdir}/bin/python${pyver}" || die
-		chmod +x "${workdir}/bin/python" "${workdir}/bin/python${pyver}" || die
+		cp "${workdir}/bin/python" "${workdir}/bin/python3" || die
+		chmod +x "${workdir}/bin/python" "${workdir}/bin/python3" || die
 
-		local nonsupp=( "python${pyother}" "python${pyother}-config" )
+		local nonsupp=( python2 python2-config )
 
 		# CPython-specific
 		if [[ ${EPYTHON} == python* ]]; then
@@ -984,24 +960,22 @@ _python_wrapper_setup() {
 				exec "${PYTHON}-config" "\${@}"
 			_EOF_
 			cp "${workdir}/bin/python-config" \
-				"${workdir}/bin/python${pyver}-config" || die
+				"${workdir}/bin/python3-config" || die
 			chmod +x "${workdir}/bin/python-config" \
-				"${workdir}/bin/python${pyver}-config" || die
+				"${workdir}/bin/python3-config" || die
 
 			# Python 2.6+.
 			ln -s "${PYTHON/python/2to3-}" "${workdir}"/bin/2to3 || die
 
 			# Python 2.7+.
 			ln -s "${EPREFIX}"/usr/$(get_libdir)/pkgconfig/${EPYTHON/n/n-}.pc \
-				"${workdir}"/pkgconfig/python${pyver}.pc || die
+				"${workdir}"/pkgconfig/python3.pc || die
 
 			# Python 3.8+.
-			if [[ ${EPYTHON} != python[23].[67] ]]; then
-				ln -s "${EPREFIX}"/usr/$(get_libdir)/pkgconfig/${EPYTHON/n/n-}-embed.pc \
-					"${workdir}"/pkgconfig/python${pyver}-embed.pc || die
-			fi
+			ln -s "${EPREFIX}"/usr/$(get_libdir)/pkgconfig/${EPYTHON/n/n-}-embed.pc \
+				"${workdir}"/pkgconfig/python3-embed.pc || die
 		else
-			nonsupp+=( 2to3 python-config "python${pyver}-config" )
+			nonsupp+=( 2to3 python-config python3-config )
 		fi
 
 		local x
@@ -1098,11 +1072,10 @@ python_fix_shebang() {
 					"${EPYTHON}")
 						match=1
 						;;
-					python|python[23])
+					python|python3)
 						match=1
-						[[ ${in_path##*/} == python2 ]] && error=1
 						;;
-					python[23].[0-9]|python3.[1-9][0-9]|pypy|pypy3|jython[23].[0-9])
+					python2|python[23].[0-9]|python3.[1-9][0-9]|pypy|pypy3|jython[23].[0-9])
 						# Explicit mismatch.
 						match=1
 						error=1
