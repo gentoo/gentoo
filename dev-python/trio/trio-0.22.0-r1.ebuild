@@ -47,6 +47,13 @@ distutils_enable_sphinx docs/source \
 	dev-python/sphinx_rtd_theme \
 	dev-python/towncrier
 
+src_prepare() {
+	# fix incorrect version
+	# https://github.com/python-trio/trio/issues/2485
+	sed -i -e "s:0.21.0+dev:${PV}:" trio/_version.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	local EPYTEST_IGNORE=(
 		# these tests require internet access
