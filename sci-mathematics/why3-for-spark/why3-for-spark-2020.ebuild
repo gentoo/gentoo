@@ -14,7 +14,7 @@ SRC_URI="https://community.download.adacore.com/v1/8bb5801e17b8b23453262da69c981
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="coq doc emacs gtk html +ocamlopt zarith zip"
+IUSE="doc emacs gtk html +ocamlopt zarith zip"
 RESTRICT="strip"
 
 DEPEND=">=dev-lang/ocaml-4.09.0:=[ocamlopt=]
@@ -22,10 +22,6 @@ DEPEND=">=dev-lang/ocaml-4.09.0:=[ocamlopt=]
 	dev-ml/menhir:=
 	<dev-ml/num-1.4:=
 	dev-ml/yojson:=
-	coq? (
-		>=sci-mathematics/coq-8.9.1
-		<sci-mathematics/coq-8.12
-	)
 	doc? (
 		dev-tex/rubber
 		dev-python/sphinx
@@ -80,7 +76,7 @@ src_configure() {
 		--disable-pvs-libs \
 		--disable-isabelle-libs \
 		--enable-verbose-make \
-		$(use_enable coq coq-libs) \
+		--disable-coq-libs \
 		$(use_enable doc) \
 		$(use_enable emacs emacs-compilation) \
 		$(use_enable gtk ide) \
