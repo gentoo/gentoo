@@ -91,6 +91,9 @@ src_install() {
 }
 
 pkg_postinst() {
+    if use udev; then
+        udev_reload
+    fi
     elog "The Android SDK now uses its own manager for the development	environment."
     elog "Run 'android' to download the full SDK, including some of the platform tools."
     elog "You must be in the android group to manage the development environment."
