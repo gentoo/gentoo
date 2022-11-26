@@ -6,10 +6,10 @@ EAPI=8
 inherit libtool multilib-minimal
 
 DESCRIPTION="VBI Decoding Library for Zapping"
-HOMEPAGE="http://zapping.sourceforge.net"
+HOMEPAGE="https://zapping.sourceforge.net"
 SRC_URI="mirror://sourceforge/project/zapping/${PN}/${PV}/${P}.tar.bz2"
 
-LICENSE="GPL-2 LGPL-2"
+LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="doc dvb nls v4l X"
