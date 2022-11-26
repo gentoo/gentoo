@@ -69,7 +69,6 @@ dev-libs/ocl-icd
 # app-cdr/xbiso: bug #882089, last release in 2005
 # app-emulation/dlx: bug #874933, last release in 2001
 # app-office/sc: bug #877051, last release in 2002
-# app-text/uudeview: bug #882505, last release in 2004
 # net-libs/ortp: bug #874003, last bumped in 2014
 # net-nntp/brag: revdep of app-text/uudeview
 # net-vpn/vtun: bug #875443, last bumped in 2012, last release in 2016
@@ -81,7 +80,6 @@ dev-libs/ocl-icd
 app-cdr/xbiso
 app-emulation/dlx
 app-office/sc
-app-text/uudeview
 net-libs/ortp
 net-nntp/brag
 net-vpn/vtun
