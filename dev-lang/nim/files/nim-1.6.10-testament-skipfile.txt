@@ -1,0 +1,40 @@
+# broken
+tests/assert/tassert_c.nim
+tests/async/tasync_traceback.nim
+tests/errmsgs/tcall_with_default_arg.nim
+tests/errmsgs/tproper_stacktrace.nim
+tests/errmsgs/tproper_stacktrace2.nim
+tests/errmsgs/tproper_stacktrace3.nim
+tests/js/tmangle.nim
+tests/js/twritestacktrace.nim
+tests/lent/tbasic_lent_check.nim
+tests/misc/trunner.nim
+tests/misc/tstrace.nim
+tests/pragmas/thintprocessing.nim
+tests/pragmas/tused.nim
+tests/pragmas/twarning_off.nim
+tests/stdlib/tos.nim
+tests/stdlib/tstackframes.nim
+tests/stdlib/tstats.nim
+tests/system/talloc.nim
+tests/testament/tshould_not_work.nim
+# require network
+tests/stdlib/thttpclient.nim
+tests/stdlib/tnetconnect.nim
+tests/stdlib/tssl.nim
+# don't work without megatest
+tests/misc/tjoinable.nim
+tests/testament/tjoinable.nim
+# don't work with "--hint:all:off" hack
+tests/concepts/t3330.nim
+tests/stylecheck/t20397_2.nim
+tests/stylecheck/treject.nim
+tests/stylecheck/tusages.nim
+# need external dependencies
+tests/manyloc/keineschweine/keineschweine.nim
+tests/manyloc/nake/nakefile.nim
+tests/niminaction/Chapter7/Tweeter/src/tweeter.nim
+# need functional valgrind
+tests/destructor/tnewruntime_strutils.nim
+tests/destructor/tv2_raise.nim
+tests/views/tsplit_into_openarray.nim
