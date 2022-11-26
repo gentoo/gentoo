@@ -174,7 +174,6 @@ _python_any_set_globals() {
 	local usestr deps i PYTHON_PKG_DEP
 	[[ ${PYTHON_REQ_USE} ]] && usestr="[${PYTHON_REQ_USE}]"
 
-	_PYTHON_ALLOW_PY27=1 \
 	_python_set_impls
 
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
