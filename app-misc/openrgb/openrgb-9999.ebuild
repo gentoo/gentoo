@@ -40,7 +40,7 @@ BDEPEND="
 "
 
 PATCHES+=(
-	"${FILESDIR}"/OpenRGB-0.7-plugins.patch
+	"${FILESDIR}"/OpenRGB-0.8-plugins.patch
 	"${FILESDIR}"/OpenRGB-0.7-r1-udev.patch
 )
 
