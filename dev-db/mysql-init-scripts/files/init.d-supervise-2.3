@@ -44,7 +44,7 @@ bootstrap_galera() {
 
 start() {
 	# Check for old conf.d variables that mean migration was not yet done.
-	set | egrep -sq '^(mysql_slot_|MYSQL_BLOG_PID_FILE|STOPTIMEOUT)'
+	set | grep -Esq '^(mysql_slot_|MYSQL_BLOG_PID_FILE|STOPTIMEOUT)'
 	rc=$?
 	# Yes, MYSQL_INIT_I_KNOW_WHAT_I_AM_DOING is a hidden variable.
 	# It does have a use in testing, as it is possible to build a config file
