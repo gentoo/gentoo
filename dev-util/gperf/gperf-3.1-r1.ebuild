@@ -13,6 +13,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~
 
 PATCHES=(
 	"${FILESDIR}"/${P}-strncmp-decl-mismatch.patch
+	"${FILESDIR}"/${P}-clang-16-wregister.patch
 )
 
 src_prepare() {
