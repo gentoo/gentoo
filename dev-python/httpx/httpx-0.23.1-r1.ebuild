@@ -58,6 +58,7 @@ src_prepare() {
 	if ! use cli; then
 		sed -i -e '/console_scripts/d' setup.py || die
 	fi
+	sed -i -e '/rfc3986/s:,<2::' pyproject.toml || die
 	distutils-r1_src_prepare
 }
 
