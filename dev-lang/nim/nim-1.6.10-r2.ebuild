@@ -19,10 +19,29 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="doc experimental"
-RESTRICT="test"  # need to sort out depends and numerous failures
+IUSE="doc experimental test-js test"
+RESTRICT="!test? ( test )"
 
-BDEPEND="sys-process/parallel"
+DEPEND="
+	test? (
+		dev-db/sqlite:3
+		dev-libs/boehm-gc
+		dev-libs/libffi
+		dev-libs/libpcre:3
+		dev-libs/openssl
+		media-libs/libsdl
+		media-libs/libsfml
+	)
+"
+
+BDEPEND="
+	sys-process/parallel
+	test? (
+		test-js? (
+			net-libs/nodejs
+		)
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.20.0-paths.patch
@@ -51,6 +70,9 @@ nim_gen_config() {
 		$([[ "${NOCOLOR}" == true || "${NOCOLOR}" == yes ]] && echo '--colors:"off"')
 		-d:"release"
 		--parallelBuild:"$(makeopts_jobs)"
+
+		# some tests don't work with processing hints
+		--processing:"off"
 	EOF
 }
 
@@ -105,8 +127,45 @@ src_compile() {
 
 src_test() {
 	local -x PATH="${S}/bin:${PATH}"
+	local nimflags=(
+		# Leave only the safe hints enabled
+		--hint:all:off
+		--hint:User:on
+		--hint:UserRaw:on
+	)
+	local testament_args=(
+		--skipFrom:"${FILESDIR}/${P}-testament-skipfile.txt"
+		--nim:"bin/nim"
+		--targets:"$(usex test-js 'c js' 'c')"
+	)
 
-	edo ./koch test
+	[[ "${NOCOLOR}" == true || "${NOCOLOR}" == yes ]] && \
+		testament_args+=( --colors:off )
+
+	local -a categories
+	readarray -t categories < <(find tests -mindepth 1 -maxdepth 1 -type d -printf "%P\n" | sort)
+
+	# AdditionalCategories from "testament/categories.nim"
+	categories+=( debugger examples lib )
+
+	local tcat checkpoint
+	for tcat in "${categories[@]}"; do
+		# Use checkpoints for less painful testing
+		checkpoint="${T}/.testament-${tcat}"
+		[[ -f "${checkpoint}" ]] && continue
+
+		case ${tcat} in
+			testdata) ;;
+			arc|ic|valgrind)
+				einfo "Skipped category '${tcat}'" ;;
+			*)
+				einfo "Running tests in category '${tcat}'"
+				edo ./bin/testament "${testament_args[@]}" \
+					category "${tcat}" "${nimflags[@]}"
+		esac
+
+		touch "${checkpoint}" || die
+	done
 }
 
 src_install() {
