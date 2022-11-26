@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/erkin/ponysay"
 SRC_URI="https://github.com/erkin/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~m68k ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~x86"
 IUSE="doc +non-free bash-completion fish-completion zsh-completion"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
