@@ -1339,6 +1339,8 @@ epytest() {
 		# not to have DISPLAY at all, causing crashes sometimes
 		# and causing us to miss missing virtualx usage
 		-p no:xvfb
+		# tavern is intrusive and breaks test suites of various packages
+		-p no:tavern
 	)
 	local x
 	for x in "${EPYTEST_DESELECT[@]}"; do
