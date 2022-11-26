@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="A free/libre COBOL compiler"
 HOMEPAGE="https://gnucobol.sourceforge.io/"
 SRC_URI="mirror://sourceforge/${PN}/$(ver_cut 1-2)/${P}.tar.xz"
@@ -23,6 +25,13 @@ DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/libtool"
 
 DOCS=( AUTHORS ChangeLog NEWS README README.md )
+
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
