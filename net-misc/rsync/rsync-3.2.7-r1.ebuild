@@ -96,6 +96,13 @@ src_prepare() {
 	if use examples || use rrsync; then
 		python_fix_shebang support/
 	fi
+
+	if [[ -f rrsync.1 ]]; then
+		# If the pre-build rrsync.1 man page exists, then link to it
+		# from support/rrsync.1 to avoid rsync's build system attempting
+		# re-creating the man page (bug #883049).
+		ln -s ../rrsync.1 support/rrsync.1 || die
+	fi
 }
 
 src_configure() {
