@@ -13,30 +13,30 @@ RESTRICT="mirror"
 
 LICENSE="android"
 SLOT="0"
+IUSE="udev"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="app-arch/tar
-		app-arch/unzip
+DEPEND="
+		acct-group/android
 		app-arch/gzip
-		acct-group/android"
+		app-arch/unzip
+		app-arch/tar
+"
 
-RDEPEND=">=virtual/jdk-1.5
-	>=dev-java/ant-core-1.6.5
+RDEPEND="
 	dev-java/swt:3.7[cairo]
+	>=dev-java/ant-core-1.6.5
 	sys-libs/ncurses-compat:5[abi_x86_32(-)]
 	sys-libs/zlib[abi_x86_32(-)]
+	>=virtual/jdk-1.5
 "
 
 ANDROID_SDK_DIR="/opt/${PN}"
-QA_FLAGS_IGNORED_x86="
-	${ANDROID_SDK_DIR/\//}/tools/adb
+QA_FLAGS_IGNORED="
 	${ANDROID_SDK_DIR/\//}/tools/mksdcard
-	${ANDROID_SDK_DIR/\//}/tools/sqlite3
 	${ANDROID_SDK_DIR/\//}/tools/hprof-conv
-	${ANDROID_SDK_DIR/\//}/tools/zipalign
-	${ANDROID_SDK_DIR/\//}/tools/dmtracedump
 "
-QA_FLAGS_IGNORED_amd64="${QA_FLAGS_IGNORED_x86}"
+QA_FLAGS_IGNORED_amd64="${QA_FLAGS_IGNORED}"
 
 QA_PREBUILT="${ANDROID_SDK_DIR/\//}/tools/*"
 
@@ -47,7 +47,6 @@ src_compile() {
 }
 
 src_prepare() {
-    rm -rf tools/lib/x86*
     eapply_user
 }
 
@@ -60,7 +59,6 @@ src_install() {
     dodir "${ANDROID_SDK_DIR}/tools"
 
     cp -pPR "${S}"/* "${ED}${ANDROID_SDK_DIR}/tools" || die "failed to install tools"
-    rm -rf "${ED}${ANDROID_SDK_DIR}/tools/lib64" || die "failed to remove lib64 tools"
 
     # Maybe this is needed for the tools directory too.
     dodir "${ANDROID_SDK_DIR}"/{add-ons,build-tools,docs,extras,platforms,platform-tools,samples,sources,system-images,temp}
@@ -80,23 +78,19 @@ src_install() {
         fi
     done
 
-    echo "ANDROID_SWT=\"${SWT_PATH}\"" >> "${T}/80${PN}" || die
-    echo "ANDROID_HOME=\"${EPREFIX}${ANDROID_SDK_DIR}\"" >> "${T}/80${PN}" || die
+    echo "ANDROID_SWT=\"${SWT_PATH}\"" >> "${T}/80${PN}" || die "Failed to add the value ANDROID_SWT"
+    echo "ANDROID_HOME=\"${EPREFIX}${ANDROID_SDK_DIR}\"" >> "${T}/80${PN}" || die "Failed to add the value ANDROID_HOME"
 
     doenvd "${T}/80${PN}"
 
-    echo "SEARCH_DIRS_MASK=\"${EPREFIX}${ANDROID_SDK_DIR}\"" > "${T}/80${PN}" || die
+    echo "SEARCH_DIRS_MASK=\"${EPREFIX}${ANDROID_SDK_DIR}\"" > "${T}/80${PN}" || die "Failed to add the value SEARCH_DIRS_MASK"
 
     insinto "/etc/revdep-rebuild" && doins "${T}/80${PN}"
 
-    udev_dorules "${FILESDIR}"/80-android.rules || die
-    domenu "${FILESDIR}"/android-sdk-update-manager.desktop
+    udev_dorules "${FILESDIR}"/80-android.rules || die "Failed to run udev_dorules"
 }
 
 pkg_postinst() {
-    if use udev; then
-        udev_reload
-    fi
     elog "The Android SDK now uses its own manager for the development	environment."
     elog "Run 'android' to download the full SDK, including some of the platform tools."
     elog "You must be in the android group to manage the development environment."
