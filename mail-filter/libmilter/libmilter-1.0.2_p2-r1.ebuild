@@ -14,7 +14,7 @@ inherit toolchain-funcs
 SENDMAIL_VER=8.17.1
 
 DESCRIPTION="The Sendmail Filter API (Milter)"
-HOMEPAGE="http://www.sendmail.org/"
+HOMEPAGE="https://www.proofpoint.com/us/products/email-protection/open-source-email-solution"
 SRC_URI="ftp://ftp.sendmail.org/pub/sendmail/sendmail.${SENDMAIL_VER}.tar.gz"
 S="${WORKDIR}/sendmail-${SENDMAIL_VER}"
 
