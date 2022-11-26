@@ -256,3 +256,13 @@ pkg_preinst() {
 		chmod g+s,ug+rwx "${ED}"/var/log/portage{,/elog}
 	fi
 }
+
+pkg_postinst() {
+	# Warn about obsolete "enotice" script, bug #867010
+	local bashrc=${EROOT}/etc/portage/profile/profile.bashrc
+	if [[ -e ${bashrc} ]] && grep -q enotice "${bashrc}"; then
+		eerror "Obsolete 'enotice' script detected!"
+		eerror "Please remove this from ${bashrc} to avoid problems."
+		eerror "See bug 867010 for more details."
+	fi
+}

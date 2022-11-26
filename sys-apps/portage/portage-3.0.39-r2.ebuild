@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 SRC_URI="https://gitweb.gentoo.org/proj/portage.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 SLOT="0"
 IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux test xattr"
 RESTRICT="!test? ( test )"
@@ -85,7 +85,7 @@ pkg_pretend() {
 
 python_prepare_all() {
 	local PATCHES=(
-		"${FILESDIR}"/${P}-xz-32-bit.patch
+		"${FILESDIR}"/${P}-implicit-func-decls-no-fatal.patch
 	)
 
 	distutils-r1_python_prepare_all
@@ -270,5 +270,15 @@ pkg_preinst() {
 		elog "Users can get the old behavior simply by adding --autounmask to the"
 		elog "make.conf EMERGE_DEFAULT_OPTS variable. For the rationale for this"
 		elog "change, see https://bugs.gentoo.org/658648."
+	fi
+}
+
+pkg_postinst() {
+	# Warn about obsolete "enotice" script, bug #867010
+	local bashrc=${EROOT}/etc/portage/profile/profile.bashrc
+	if [[ -e ${bashrc} ]] && grep -q enotice "${bashrc}"; then
+		eerror "Obsolete 'enotice' script detected!"
+		eerror "Please remove this from ${bashrc} to avoid problems."
+		eerror "See bug 867010 for more details."
 	fi
 }
