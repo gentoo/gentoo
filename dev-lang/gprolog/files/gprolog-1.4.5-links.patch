@@ -9,7 +9,7 @@
  	if test $(LINKS_DIR) != none; then \
  	   ./mkinstalldirs $(LINKS_DIR); \
 -	   (cd $(LINKS_DIR) ; $(LN_S) $(INSTALL_DIR)/bin/* .); \
-+	   (cd $(LINKS_DIR); for i in $(BIN_FILES); do $(LN_S) $(INSTALL_DIR)/bin/$$i .; done); \
++	   (cd $(LINKS_DIR); for i in $(BIN_FILES); do $(LN_S) -r $(INSTALL_DIR)/bin/$$i .; done); \
  	fi
  
  uninstall-links:
