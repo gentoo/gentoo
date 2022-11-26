@@ -42,10 +42,6 @@ CHOST_lp64d="loongarch64-unknown-linux-gnu"
 # Since many people will want to test this in qemu...
 FEATURES="-pid-sandbox -network-sandbox -ipc-sandbox"
 
-# We need to fetch https git repo (gcc) during bootstrap, before gcc-12.1.0
-# is officially released.
-BOOTSTRAP_USE="${BOOTSTRAP_USE} curl_ssl_openssl ssl"
-
 # The following stuff MUST be defined in subdirs:
 # ABI
 # DEFAULT_ABI
