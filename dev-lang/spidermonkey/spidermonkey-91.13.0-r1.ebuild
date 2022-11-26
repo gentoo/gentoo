@@ -67,24 +67,22 @@ SLOT="91"
 LICENSE="MPL-2.0"
 IUSE="clang cpu_flags_arm_neon debug +jit lto test"
 
-#RESTRICT="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
-
 	|| (
 		(
-			sys-devel/clang:15
 			sys-devel/llvm:15
 			clang? (
+				sys-devel/clang:15
 				virtual/rust:0/llvm-15
 				lto? ( sys-devel/lld:15 )
 			)
 		)
 		(
-			sys-devel/clang:14
 			sys-devel/llvm:14
 			clang? (
+				sys-devel/clang:14
 				virtual/rust:0/llvm-14
 				lto? ( sys-devel/lld:14 )
 			)
