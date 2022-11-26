@@ -133,9 +133,9 @@ _python_set_impls() {
 			# please keep them in sync with _PYTHON_ALL_IMPLS
 			# and _PYTHON_HISTORICAL_IMPLS
 			case ${i} in
-				pypy3|python2_7|python3_[89]|python3_1[01])
+				pypy3|python3_[89]|python3_1[01])
 					;;
-				jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[5-6]|python3_[1-7])
+				jython2_7|pypy|pypy1_[89]|pypy2_0|python2_[5-7]|python3_[1-7])
 					obsolete+=( "${i}" )
 					;;
 				*)
@@ -172,13 +172,7 @@ _python_set_impls() {
 	done
 
 	if [[ ! ${supp[@]} ]]; then
-		# special-case python2_7 for python-any-r1
-		if [[ ${_PYTHON_ALLOW_PY27} ]] && has python2_7 "${PYTHON_COMPAT[@]}"
-		then
-			supp+=( python2_7 )
-		else
-			die "No supported implementation in PYTHON_COMPAT."
-		fi
+		die "No supported implementation in PYTHON_COMPAT."
 	fi
 
 	if [[ ${_PYTHON_SUPPORTED_IMPLS[@]} ]]; then
@@ -454,8 +448,6 @@ _python_export() {
 			PYTHON_PKG_DEP)
 				local d
 				case ${impl} in
-					python2.7)
-						PYTHON_PKG_DEP='>=dev-lang/python-2.7.10_p16:2.7';;
 					python3.8)
 						PYTHON_PKG_DEP=">=dev-lang/python-3.8.15_p3:3.8";;
 					python3.9)
@@ -466,8 +458,6 @@ _python_export() {
 						PYTHON_PKG_DEP=">=dev-lang/python-3.11.0_p2:3.11";;
 					python*)
 						PYTHON_PKG_DEP="dev-lang/python:${impl#python}";;
-					pypy)
-						PYTHON_PKG_DEP='>=dev-python/pypy-7.3.9-r2:0=';;
 					pypy3)
 						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.9_p9:0=';;
 					*)
