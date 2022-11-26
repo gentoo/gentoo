@@ -9,3 +9,4 @@ move dev-python/zstandard dev-python/python-zstandard
 move dev-python/retworkx dev-python/rustworkx
 move dev-python/libsass dev-python/libsass-python
 move dev-lang/open-cobol dev-lang/gnucobol
+move dev-python/miniupnpc dev-python/python-miniupnpc
