@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{8..10} pypy3 )
 
 inherit distutils-r1 verify-sig
 
+MY_P=${P/python-}
 DESCRIPTION="Python bindings for UPnP client library"
 HOMEPAGE="
 	http://miniupnp.free.fr/
@@ -15,11 +16,12 @@ HOMEPAGE="
 	https://github.com/miniupnp/miniupnp/
 "
 SRC_URI="
-	https://miniupnp.tuxfamily.org/files/${P}.tar.gz
+	https://miniupnp.tuxfamily.org/files/${MY_P}.tar.gz
 	verify-sig? (
-		https://miniupnp.tuxfamily.org/files/${P}.tar.gz.sig
+		https://miniupnp.tuxfamily.org/files/${MY_P}.tar.gz.sig
 	)
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
