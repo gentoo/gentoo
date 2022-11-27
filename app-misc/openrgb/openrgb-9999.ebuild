@@ -40,7 +40,6 @@ BDEPEND="
 "
 
 PATCHES+=(
-	"${FILESDIR}"/OpenRGB-0.8-plugins.patch
 	"${FILESDIR}"/OpenRGB-0.7-r1-udev.patch
 )
 
@@ -57,7 +56,7 @@ src_configure() {
 
 	eqmake5 \
 		INCLUDEPATH+="${ESYSROOT}/usr/include/nlohmann" \
-		DEFINES+="GENTOO_PLUGINS_DIR=\\\\\"\\\"${EPREFIX}/usr/$(get_libdir)/OpenRGB/plugins\\\\\"\\\""
+		DEFINES+="OPENRGB_EXTRA_PLUGIN_DIRECTORY=\\\\\"\\\"${EPREFIX}/usr/$(get_libdir)/OpenRGB/plugins\\\\\"\\\""
 }
 
 src_install() {
