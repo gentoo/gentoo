@@ -40,7 +40,8 @@ all_ruby_prepare() {
 	rm -f test/rbs/test/runtime_test_test.rb || die
 
 	# Avoid tests requiring a network connection
-	rm -f test/rbs/collection/installer_test.rb test/rbs/collection/collections_test.rb test/rbs/collection/config_test.rb || die
+	rm -f test/rbs/collection/installer_test.rb test/rbs/collection/collections_test.rb \
+		test/rbs/collection/config_test.rb test/rbs/collection/sources/git_test.rb || die
 	sed -i -e '/def test_collection_/aomit "Requires network"' test/rbs/cli_test.rb || die
 	sed -i -e '/def test_loading_from_rbs_collection/aomit "Requires network"' test/rbs/environment_loader_test.rb || die
 
