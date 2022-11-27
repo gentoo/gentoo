@@ -32,10 +32,6 @@ app-editors/emacs gui mailutils
 # Needs a lot of Perl packages to be keyworded.
 dev-vcs/git doc
 
-# James Le Cuirot <chewi@gentoo.org> (2021-09-20)
-# Requires zstd, which is currently broken on m68k.
-dev-util/cmake test
-
 # James Le Cuirot <chewi@gentoo.org> (2021-09-19)
 # Avoid having to keyword Poppler and X11 libraries for now.
 media-gfx/graphviz pdf
