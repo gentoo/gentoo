@@ -40,12 +40,6 @@ www-client/chromium js-type-check
 # investigation.
 net-libs/libssh mbedtls
 
-# WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
-# dev-lang/go is not available on loong yet.
-media-libs/libheif go test
-sys-apps/earlyoom test
-sys-libs/libcap tools
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
 # Unmask experimental-loong on packages; we're loong.
 dev-libs/libffi -experimental-loong
