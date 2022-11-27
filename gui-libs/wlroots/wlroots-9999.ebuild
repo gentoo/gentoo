@@ -19,13 +19,14 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="+seatd tinywl +udev vulkan x11-backend X"
+IUSE="+hwdata +seatd tinywl +udev vulkan x11-backend X"
 
 DEPEND="
 	>=dev-libs/libinput-1.14.0:0=
 	>=dev-libs/wayland-1.21.0
 	>=dev-libs/wayland-protocols-1.28
-	media-libs/mesa[egl(+),gles2,gbm(+)]
+	media-libs/mesa[egl(+),gles2]
+	hwdata? ( sys-apps/hwdata:= )
 	seatd? ( sys-auth/seatd:= )
 	udev? ( virtual/libudev )
 	vulkan? (
