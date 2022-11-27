@@ -41,6 +41,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/muon-0.1.0-fix-potential-overflow.patch"
+)
+
 python_check_deps() {
 	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
 }
