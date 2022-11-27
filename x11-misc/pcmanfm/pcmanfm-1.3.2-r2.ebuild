@@ -1,20 +1,20 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_P="${PN}-${PV/_/}"
 inherit xdg readme.gentoo-r1
 
 DESCRIPTION="Fast lightweight tabbed filemanager"
-HOMEPAGE="https://wiki.lxde.org/en/PCManFM"
+HOMEPAGE="https://sourceforge.net/projects/pcmanfm/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
-S="${WORKDIR}"/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~riscv ~x86"
-IUSE="debug"
+IUSE="debug +X"
 
 RDEPEND="
 	dev-libs/atk
@@ -25,7 +25,7 @@ RDEPEND="
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
-	>=x11-libs/libfm-${PV}:=[gtk]
+	>=x11-libs/libfm-"${PV}":=[gtk]
 	x11-libs/libX11
 	x11-libs/pango
 	x11-misc/shared-mime-info
