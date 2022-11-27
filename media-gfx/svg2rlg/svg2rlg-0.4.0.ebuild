@@ -7,7 +7,10 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Converts SVG files to PDFs or reportlab graphics"
-HOMEPAGE="https://github.com/sarnold/svg2rlg https://pypi.org/project/svg2rlg/"
+HOMEPAGE="
+	https://github.com/sarnold/svg2rlg/
+	https://pypi.org/project/svg2rlg/
+"
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/sarnold/svg2rlg.git"
@@ -21,10 +24,12 @@ fi
 LICENSE="BSD"
 SLOT="0"
 
-RDEPEND="dev-python/reportlab[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/reportlab[${PYTHON_USEDEP}]
+"
 
-distutils_enable_tests nose
+distutils_enable_tests pytest
 
 python_test() {
-	nosetests -sx test_svg2rlg.py || die "Test failed with ${EPYTHON}"
+	epytest test_svg2rlg.py
 }
