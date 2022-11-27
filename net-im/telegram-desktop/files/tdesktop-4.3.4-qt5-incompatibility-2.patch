@@ -1,0 +1,28 @@
+Disable unused incompatible overload with qt5
+
+Neither Qt nore C++ are my forte, but this code is unused with the packaged
+distro version, anyway.
+
+/var/tmp/portage/net-im/telegram-desktop-4.3.4/work/tdesktop-4.3.4-full/Telegram/SourceFiles/platform/linux/specific_linux.cpp: In lambda function:
+/var/tmp/portage/net-im/telegram-desktop-4.3.4/work/tdesktop-4.3.4-full/Telegram/SourceFiles/platform/linux/specific_linux.cpp:705:74: error: call of overloaded ‘arg(QByteArray&)’ is ambiguous
+  705 |                         return qsl("org.telegram.desktop.%1.desktop").arg(md5Hash);
+      |                                                                          ^
+
+--- tdesktop-4.3.4-full.orig/Telegram/SourceFiles/platform/linux/specific_linux.cpp
++++ tdesktop-4.3.4-full/Telegram/SourceFiles/platform/linux/specific_linux.cpp
+@@ -692,6 +692,7 @@
+ 				+ qsl(".desktop");
+ 		}
+ 
++#if !(defined(TDESKTOP_DISABLE_AUTOUPDATE) && QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
+ 		if (!Core::UpdaterDisabled()) {
+ 			QByteArray md5Hash(h);
+ 			if (!Launcher::Instance().customWorkingDir()) {
+@@ -706,6 +707,7 @@
+ 
+ 			return qsl("org.telegram.desktop.%1.desktop").arg(md5Hash);
+ 		}
++#endif // !(defined(TDESKTOP_DISABLE_AUTOUPDATE) && QT_VERSION < QT_VERSION_CHECK(6, 2, 0))
+ 
+ 		return qsl("org.telegram.desktop.desktop");
+ 	}());
