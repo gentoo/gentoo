@@ -52,20 +52,6 @@ amd64		default/linux/amd64/17.1/systemd/clang/merged-usr		exp
 
 # AMD64 Profiles
 # @MAINTAINER: amd64@gentoo.org
-amd64		default/linux/amd64/17.0				dev
-amd64		default/linux/amd64/17.0/selinux			exp
-amd64		default/linux/amd64/17.0/hardened			exp
-amd64		default/linux/amd64/17.0/hardened/selinux		exp
-amd64		default/linux/amd64/17.0/desktop			exp
-amd64		default/linux/amd64/17.0/desktop/gnome			dev
-amd64		default/linux/amd64/17.0/desktop/gnome/systemd		exp
-amd64		default/linux/amd64/17.0/desktop/plasma			dev
-amd64		default/linux/amd64/17.0/desktop/plasma/systemd		exp
-amd64		default/linux/amd64/17.0/developer			exp
-amd64		default/linux/amd64/17.0/no-multilib			exp
-amd64		default/linux/amd64/17.0/no-multilib/hardened		exp
-amd64		default/linux/amd64/17.0/no-multilib/hardened/selinux	exp
-amd64		default/linux/amd64/17.0/systemd			dev
 amd64		default/linux/amd64/17.0/x32				dev
 amd64		default/linux/amd64/17.0/x32/systemd			exp
 amd64		default/linux/amd64/17.0/x32/systemd/merged-usr		exp
