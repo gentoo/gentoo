@@ -1,6 +1,11 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-11-28)
+# media-sound/nas currently not buildable due to x11-misc/xorg-cf-files
+# lacking arch-specific adaptation
+nas
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-18)
 # net-libs/webkit-gtk is not available on loong yet.
 webkit
