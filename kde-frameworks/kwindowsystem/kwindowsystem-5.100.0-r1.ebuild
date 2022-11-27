@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-qt/qtwidgets-${QTMIN}:5 )
 "
 BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
-PDEPEND="wayland? ( kde-plasma/kwayland-integration:5 )"
+PDEPEND="wayland? ( >=kde-plasma/kwayland-integration-5.25.5-r1:5 )"
 
 DOCS=( docs/README.kstartupinfo )
 
