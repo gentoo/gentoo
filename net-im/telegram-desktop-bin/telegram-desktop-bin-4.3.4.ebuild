@@ -19,6 +19,7 @@ KEYWORDS="-* ~amd64"
 QA_PREBUILT="usr/bin/telegram-desktop"
 
 RDEPEND="
+	!net-im/telegram-desktop
 	sys-libs/glibc
 	dev-libs/glib:2
 	>=media-libs/fontconfig-2.13
