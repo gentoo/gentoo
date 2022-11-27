@@ -12,7 +12,7 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="${PV}"
-KEYWORDS=""
+KEYWORDS="~loong"
 PROPERTIES="live"
 IUSE="gcc-symlinks multilib-symlinks +native-symlinks"
 
