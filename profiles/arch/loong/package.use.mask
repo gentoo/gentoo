@@ -1,6 +1,18 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-11-27)
+# LLVM toolchain now partially usable on loong, mask the remaining pieces
+# pending test/bugfixes/porting.
+#
+# - sys-libs/libcxxabi: fails many tests but is apparently working
+# - sys-libs/libcxx: fails many tests, more upstream work likely needed
+# - sys-libs/libomp: fails 4 tests
+#   - need at least https://reviews.llvm.org/D138177 but there could be more
+# - sys-devel/lld: port is still under review
+sys-devel/clang-common default-libcxx default-lld
+sys-devel/clang-runtime libcxx openmp
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-18)
 # net-libs/webkit-gtk is not available on loong yet.
 app-text/atril epub
