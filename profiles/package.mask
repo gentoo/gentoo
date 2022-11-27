@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2022-11-27)
+# Unmaintained, ancient package.  x11-misc/unclutter-xfixes is
+# a superior replacement.
+# Removal on 2022-12-27.  Bug #880845.
+x11-misc/unclutter
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-27)
 # Unmaintained.  Last bumped in 2005.  Superseded by Python version
 # with last release in 2008, then by vnc2flv with last release in 2010.
 # Removal on 2022-12-27.  Bug #880927.
