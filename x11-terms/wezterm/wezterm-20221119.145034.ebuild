@@ -582,7 +582,7 @@ inherit bash-completion-r1 desktop cargo xdg-utils
 DESCRIPTION="A GPU-accelerated cross-platform terminal emulator and multiplexer"
 HOMEPAGE="https://wezfurlong.org/wezterm/"
 
-MY_PV="20221119-145034-49b9839f"
+MY_PV="$(ver_rs 1 -)-49b9839f"
 MY_P="${PN}-${MY_PV}"
 
 SRC_URI="
@@ -617,6 +617,10 @@ PATCHES=(
 DEPEND="
 	dev-libs/openssl
 	wayland? ( dev-libs/wayland )
+	media-fonts/jetbrains-mono
+	media-fonts/noto
+	media-fonts/noto-emoji
+	media-fonts/roboto
 	media-libs/fontconfig
 	media-libs/mesa
 	sys-apps/dbus
@@ -627,6 +631,7 @@ DEPEND="
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-wm
 	x11-themes/hicolor-icon-theme
+	x11-themes/xcursor-themes
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
@@ -651,7 +656,7 @@ submodule_uris() {
 			SRC_URI+=" ${url}/archive/${commit}.tar.gz -> ${url##*/}-${commit}.tar.gz"
 		elif [ ${hoster} == "gitlab" ];
 		then
-			SRC_URI+=" ${url}/-/archive/${commit}/${url##*/}-${commit}.tar.gz -> ${url##*/}-${commit}.tar.gz"
+			SRC_URI+=" ${url}/-/archive/${commit}/${url##*/}-${commit}.tar.gz"
 		else
 			die
 		fi
@@ -688,14 +693,16 @@ src_prepare() {
 }
 
 src_configure() {
-	if use wayland; then
-		cargo_src_configure
-	else
-		local myfeatures=(
-			$(usex wayland vendored-fonts '')
-		)
-		cargo_src_configure --no-default-features
-	fi
+	local myfeatures=(
+		distro-defaults
+		vendor-nerd-font-symbols-font
+		$(usev wayland)
+	)
+	cargo_src_configure --verbose --no-default-features
+}
+
+src_compile() {
+	cargo_src_compile --verbose
 }
 
 src_install() {
@@ -726,24 +733,16 @@ src_install() {
 
 pkg_postinst() {
 	xdg_icon_cache_update
-	einfo "It may be necessary to install a cursor theme, for example:"
-	einfo "emerge x11-themes/xcursor-themes"
-	einfo "and to configure wezterm to use the cursor theme, see:"
+	einfo "It may be necessary to configure wezterm to use a cursor theme, see:"
 	einfo "https://wezfurlong.org/wezterm/faq.html?highlight=xcursor_theme#i-use-x11-or-wayland-and-my-mouse-cursor-theme-doesnt-seem-to-work"
-	if use wayland; then
-		einfo "It may be necessary to set the environment variable XCURSOR_PATH"
-		einfo "to the directory containing the cursor icons, for example"
-		einfo 'export XCURSOR_PATH="/usr/share/cursors/xorg-x11/"'
-		einfo "before starting the wayland window compositor to avoid the error"
-		einfo "ERROR  window::os::wayland::frame > Unable to set cursor to left_ptr: cursor not found"
-	fi
-	einfo "Update checking is not implemented on Gentoo, which results in wezterm"
-	einfo "saying an update is available when the current x11-terms/wezterm"
-	einfo "is installed. It is recommended to disable update checking."
+	einfo "It may be necessary to set the environment variable XCURSOR_PATH"
+	einfo "to the directory containing the cursor icons, for example"
+	einfo 'export XCURSOR_PATH="/usr/share/cursors/xorg-x11/"'
+	einfo "before starting the wayland or X11 window compositor to avoid the error:"
+	einfo "ERROR  window::os::wayland::frame > Unable to set cursor to left_ptr: cursor not found"
 	einfo "For example, in the file ~/.wezterm.lua:"
 	einfo "return {"
 	einfo '  xcursor_theme = "whiteglass"'
-	einfo "  check_for_updates = false"
 	einfo "}"
 }
 
