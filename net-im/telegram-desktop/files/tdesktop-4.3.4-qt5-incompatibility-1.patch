@@ -1,0 +1,42 @@
+Disable portal-related event loop with qt5
+
+QEventLoop::ApplicationExec is undocumented, but only present in qt6, so I have
+no idea if the functionality can be preserved in qt5. Upstream code indicates
+that not using it at all is safe, and unlikely to cause problems in
+distribution packaging.
+
+Yet another reminder that qt5 is dying.
+
+/var/tmp/portage/net-im/telegram-desktop-4.3.4/work/tdesktop-4.3.4-full/Telegram/SourceFiles/platform/linux/specific_linux.cpp: In lambda function:
+/var/tmp/portage/net-im/telegram-desktop-4.3.4/work/tdesktop-4.3.4-full/Telegram/SourceFiles/platform/linux/specific_linux.cpp:294:55: error: ‘ApplicationExec’ is not a member of ‘QEventLoop’
+  294 |                                 loop.exec(QEventLoop::ApplicationExec);
+      |                                                       ^~~~~~~~~~~~~~~
+
+--- tdesktop-4.3.4-full.orig/Telegram/SourceFiles/platform/linux/specific_linux.cpp
++++ tdesktop-4.3.4-full/Telegram/SourceFiles/platform/linux/specific_linux.cpp
+@@ -229,6 +229,7 @@
+ 	}
+ }
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+ void LaunchGApplication() {
+ 	const auto connection = [] {
+ 		try {
+@@ -401,6 +402,7 @@
+ 		});
+ 	}
+ }
++#endif // QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+ 
+ bool GenerateDesktopFile(
+ 		const QString &targetPath,
+@@ -862,7 +864,9 @@
+ 	LOG(("Fallback icon theme: %1").arg(QIcon::fallbackThemeName()));
+ 
+ #ifndef DESKTOP_APP_DISABLE_DBUS_INTEGRATION
++#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+ 	LaunchGApplication();
++#endif // QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+ #endif // !DESKTOP_APP_DISABLE_DBUS_INTEGRATION
+ }
+ 
