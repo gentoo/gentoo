@@ -58,7 +58,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @DESCRIPTION:
 # All supported Ada implementations, most preferred last.
 _ADA_ALL_IMPLS=(
-	gnat_2020 gnat_2021 gcc_12_2_0
+	gnat_2021 gcc_12_2_0
 )
 readonly _ADA_ALL_IMPLS
 
@@ -83,7 +83,7 @@ _ada_impl_supported() {
 	# keep in sync with _ADA_ALL_IMPLS!
 	# (not using that list because inline patterns shall be faster)
 	case "${impl}" in
-		gnat_202[01])
+		gnat_2021)
 			return 0
 			;;
 		gcc_12_2_0)
@@ -180,7 +180,7 @@ ada_export() {
 	local impl var
 
 	case "${1}" in
-		gnat_202[01])
+		gnat_2021)
 			impl=${1}
 			shift
 			;;
@@ -200,10 +200,6 @@ ada_export() {
 	local gcc_pv
 	local slot
 	case "${impl}" in
-		gnat_2020)
-			gcc_pv=9.3.1
-			slot=9.3.1
-			;;
 		gnat_2021)
 			gcc_pv=10
 			slot=10
@@ -258,7 +254,7 @@ ada_export() {
 				;;
 			ADA_PKG_DEP)
 				case "${impl}" in
-					gnat_202[01])
+					gnat_2021)
 						ADA_PKG_DEP="dev-lang/gnat-gpl:${slot}[ada]"
 						;;
 					*)
