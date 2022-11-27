@@ -1,0 +1,57 @@
+#https://883223.bugs.gentoo.org/attachment.cgi?id=837335
+#https://gitlab.gnome.org/GNOME/glib/-/issues/2820
+#https://gitlab.gnome.org/GNOME/glib/-/commit/5f945e5464b45fc674f436077e9761523caa76f0
+diff --git a/glib/ghash.h b/glib/ghash.h
+index 6a37415763c9c595e050b9c15c68915ee4500214..396148de5ef4347024289d4972a664138b3f91a7 100644
+--- a/glib/ghash.h
++++ b/glib/ghash.h
+@@ -162,7 +162,7 @@ gboolean g_str_equal    (gconstpointer  v1,
+                          gconstpointer  v2);
+ 
+ /* Macro for optimization in the case it is not used as callback function */
+-#define g_str_equal(v1, v2) (strcmp ((gconstpointer) (v1), (gconstpointer) (v2)) == 0)
++#define g_str_equal(v1, v2) (strcmp ((const char *) (v1), (const char *) (v2)) == 0)
+ 
+ GLIB_AVAILABLE_IN_ALL
+ guint    g_str_hash     (gconstpointer  v);
+diff --git a/glib/tests/cxx.cpp b/glib/tests/cxx.cpp
+index 86bf21b57b81f8a4ac7aa041b8f5374029e56036..f7129bcf759acf4909b9fd050e41781b33057037 100644
+--- a/glib/tests/cxx.cpp
++++ b/glib/tests/cxx.cpp
+@@ -299,6 +299,28 @@ test_steal_pointer (void)
+   g_assert_null (ptr);
+ }
+ 
++static void
++test_str_equal (void)
++{
++  const char *str_a = "a";
++  char *str_b = g_strdup ("b");
++  gconstpointer str_a_ptr = str_a, str_b_ptr = str_b;
++  const unsigned char *str_c = (const unsigned char *) "c";
++
++  g_test_summary ("Test typechecking and casting of arguments to g_str_equal() macro in C++");
++  g_test_bug ("https://gitlab.gnome.org/GNOME/glib/-/issues/2820");
++
++  /* We don’t actually care what the comparisons do at runtime. What we’re
++   * checking here is that the types don’t emit warnings at compile time. */
++  g_assert_true (g_str_equal ("a", str_a));
++  g_assert_false (g_str_equal ("a", str_b));
++  g_assert_true (g_str_equal (str_a, str_a_ptr));
++  g_assert_false (g_str_equal (str_a_ptr, str_b_ptr));
++  g_assert_false (g_str_equal (str_c, str_b));
++
++  g_free (str_b);
++}
++
+ int
+ main (int argc, char *argv[])
+ {
+@@ -321,6 +343,7 @@ main (int argc, char *argv[])
+   g_test_add_func ("/C++/inlined-not-inlined-functions", test_inline_no_inline_macros);
+   g_test_add_func ("/C++/clear-pointer", test_clear_pointer);
+   g_test_add_func ("/C++/steal-pointer", test_steal_pointer);
++  g_test_add_func ("/C++/str-equal", test_str_equal);
+ 
+   return g_test_run ();
+ }
