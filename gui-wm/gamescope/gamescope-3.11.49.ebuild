@@ -22,6 +22,7 @@ RDEPEND="
 	=gui-libs/wlroots-0.15*[X]
 	media-libs/libsdl2[video]
 	media-libs/vulkan-loader
+	sys-apps/hwdata
 	sys-libs/libcap
 	>=x11-libs/libdrm-2.4.109
 	x11-libs/libX11
