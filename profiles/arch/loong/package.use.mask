@@ -2,6 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-27)
+# Mask configurations not accepting llvm:16 and/or clang:16, either due to
+# lack of testing or simply being unsupported upstream (the opaque pointers
+# in particular need downstream changes).
+app-office/libreoffice clang
+<media-libs/mesa-22.3.0 llvm
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-11-27)
 # LLVM toolchain now partially usable on loong, mask the remaining pieces
 # pending test/bugfixes/porting.
 #
