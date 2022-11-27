@@ -13,7 +13,7 @@ HOMEPAGE="https://invent.kde.org/system/systemdgenie"
 
 LICENSE="GPL-2+"
 SLOT="5"
-# KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc64"
 
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
