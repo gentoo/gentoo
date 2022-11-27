@@ -99,6 +99,7 @@ BDEPEND="${PYTHON_DEPS}
 	net-libs/nodejs[ssl]
 	sys-devel/bison
 	sys-devel/flex
+	elibc_musl? ( sys-libs/queue-standalone )
 	ppc64? ( >=dev-util/gn-0.1807 )
 "
 
@@ -113,6 +114,19 @@ PATCHES=(
 	"${WORKDIR}/${PN}-5.15.2_p20211019-jumbo-build.patch" # bug 813957
 	"${WORKDIR}/${PN}-5.15.3_p20220406-patchset" # bug 698988 (py2--), pipewire-3
 	"${FILESDIR}/${P}-fixup-CVE-2022-0796.patch" # bug 853097
+
+	# for musl libc
+	"${FILESDIR}"/${PN}-5.15.5_p20220618-qmake-remove-glibc-check.patch
+	"${FILESDIR}"/${PN}-5.15.5_p20220618-musl-mallinfo.patch
+	"${FILESDIR}"/${PN}-5.15.5_p20220618-musl-mojo-strncpy.patch
+	"${FILESDIR}"/${PN}-5.15.5_p20220618-musl-resolv-compat.patch
+	"${FILESDIR}"/${PN}-5.15.5_p20220618-backtrace-execinfo.patch
+	"${FILESDIR}"/${PN}-5.15.5_p20220618-pvalloc-patch.patch
+	"${FILESDIR}"/${PN}-5.15.5_p20220618-linux-stack_util-stackstart.patch
+	"${FILESDIR}"/${PN}-5.15.5_p20220618-remove-decls-usage.patch
+	"${FILESDIR}"/${PN}-5.15.5_p20220618-msghdr-padding-initlist.patch
+	## runtime
+	"${FILESDIR}"/${PN}-5.15.5_p20220618-musl-sandbox.patch
 )
 
 qtwebengine_check-reqs() {
@@ -167,6 +181,10 @@ src_unpack() {
 }
 
 src_prepare() {
+	# Using a conditional patch here since QMake is deprecated
+	# by CMake in Qt6. A build system change would be prettier but
+	# this works just as well right now.
+	use elibc_musl && PATCHES+=( "${FILESDIR}"/${PN}-5.15.5_p20220618-musl-canonicalize-filename.patch )
 	if [[ ${PV} == ${QT5_PV}_p* ]]; then
 		# This is made from git, and for some reason will fail w/o .git directories.
 		mkdir -p .git src/3rdparty/chromium/.git || die

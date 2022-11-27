@@ -1,0 +1,29 @@
+https://git.alpinelinux.org/aports/tree/community/qt5-qtwebengine/qt-musl-pvalloc.patch
+
+The obsolete function pvalloc() is similar to valloc(), but rounds the size of the allocation up to the next multiple of the system page size. (https://linux.die.net/man/3/pvalloc)
+
+See: https://git.alpinelinux.org/aports/tree/community/qt5-qtwebengine/qt-musl-pvalloc.patch?id=65f58742e6e669c7d0f5b23c0764f4f73661980b
+
+---
+ src/core/api/qtbug-61521.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/core/api/qtbug-61521.cpp b/src/core/api/qtbug-61521.cpp
+index 002a1af22..01c81ac8c 100644
+--- a/src/core/api/qtbug-61521.cpp
++++ b/src/core/api/qtbug-61521.cpp
+@@ -111,7 +111,11 @@ SHIM_HIDDEN void* ShimValloc(size_t size) {
+ }
+ 
+ SHIM_HIDDEN void* ShimPvalloc(size_t size) {
++#if defined(__GLIBC__)
+     return pvalloc(size);
++#else
++    return valloc((size+4095)&~4095);
++#endif
+ }
+ 
+ SHIM_HIDDEN int ShimPosixMemalign(void** r, size_t a, size_t s) {
+-- 
+2.35.1
+

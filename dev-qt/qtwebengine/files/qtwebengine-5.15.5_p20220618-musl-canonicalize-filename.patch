@@ -1,0 +1,15 @@
+https://git.alpinelinux.org/aports/tree/community/qt5-qtwebengine/nasm.patch
+
+diff --git a/src/3rdparty/chromium/third_party/nasm/config/config-linux.h b/src/3rdparty/chromium/third_party/nasm/config/config-linux.h
+index 7eb7c20ff..3bdc2eb39 100644
+--- a/src/3rdparty/chromium/third_party/nasm/config/config-linux.h
++++ b/src/3rdparty/chromium/third_party/nasm/config/config-linux.h
+@@ -139,7 +139,7 @@
+ #define HAVE_ACCESS 1
+ 
+ /* Define to 1 if you have the `canonicalize_file_name' function. */
+-#define HAVE_CANONICALIZE_FILE_NAME 1
++// #define HAVE_CANONICALIZE_FILE_NAME 1
+ 
+ /* Define to 1 if you have the `cpu_to_le16' intrinsic function. */
+ /* #undef HAVE_CPU_TO_LE16 */
