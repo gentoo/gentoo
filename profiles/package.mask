@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-11-27)
+# Broke API for C++, causes massive carnage for consumers.
+# Bug #883223.
+~dev-libs/glib-2.74.2
+
 # Michał Górny <mgorny@gentoo.org> (2022-11-27)
 # Unmaintained.  HOMEPAGE is gone.  Uses GTK+2.
 # Removal on 2022-12-27.  Bug #821118.
