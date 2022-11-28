@@ -3,25 +3,17 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake python-any-r1 xdg
 
 DESCRIPTION="A hierarchical note taking application (C++ version)"
-HOMEPAGE="https://www.giuspen.com/cherrytree https://github.com/giuspen/cherrytree"
+HOMEPAGE="https://www.giuspen.com/cherrytree/"
 
-if [[ ${PV} == *9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/giuspen/cherrytree"
-	S="${WORKDIR}/${P}/future"
-else
-	SRC_URI="https://github.com/giuspen/cherrytree/releases/download/${PV}/${P/-/_}.tar.xz"
-	#SRC_URI="https://github.com/giuspen/cherrytree/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}"/${P/-/_}
+SRC_URI="https://github.com/giuspen/cherrytree/releases/download/${PV}/${P/-/_}.tar.xz"
+S="${WORKDIR}"/${P/-/_}
 
-	KEYWORDS="~amd64 ~x86"
-	# S="${WORKDIR}/${PN}-${COMMIT}/future"
-fi
+KEYWORDS="~amd64 ~x86"
 
 # GPL-3 — future/src/ct (CherryTree)
 # LGPL-2.1 — future/src/7za (7zip)
@@ -41,39 +33,30 @@ RDEPEND="app-i18n/uchardet
 	dev-cpp/libxmlpp:2.6
 	dev-cpp/pangomm:1.4
 	dev-db/sqlite:3
+	dev-libs/fribidi
 	dev-libs/glib:2
 	dev-libs/libfmt:=
 	dev-libs/libxml2:2
-	dev-libs/fribidi
 	dev-libs/spdlog
+	gui-libs/vte:2.91-gtk4
 	net-misc/curl
 	x11-libs/cairo
 	x11-libs/gtk+:3
 	x11-libs/pango"
-DEPEND="${RDEPEND}
-	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')"
-BDEPEND="${PYTHON_DEPS}
-	virtual/pkgconfig
-	nls? (
-		sys-devel/gettext
-	)
-	test? ( dev-util/cpputest )"
 
-python_check_deps() {
-	has_version "dev-python/lxml[${PYTHON_USEDEP}]"
-}
+DEPEND="${PYTHON_DEPS}
+	${RDEPEND}"
+
+BDEPEND="
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+	test? ( dev-util/cpputest )"
 
 src_prepare() {
 	# disable compress man pages
 	sed -i -e \
 		'/install(FILES/s|${MANFILE_FULL_GZ}|${CMAKE_SOURCE_DIR}/data/cherrytree.1|' \
 		CMakeLists.txt || die
-
-	if [[ ${PV} != *9999 ]]; then
-		sed -i \
-			-e "/^set(CT_VERSION/s|\"\(.*\)\"|\"${PV}\"|" \
-			CMakeLists.txt || die
-	fi
 
 	# python_fix_shebang .
 	cmake_src_prepare
