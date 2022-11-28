@@ -34,6 +34,10 @@ BDEPEND="
 
 distutils_enable_tests unittest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-drop-unused-tkinter-import.patch
+)
+
 python_compile_all() {
 	use doc && emake -C doc/info
 }
