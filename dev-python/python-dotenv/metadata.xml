@@ -11,6 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">theskumar/python-dotenv</remote-id>
 		<remote-id type="pypi">python-dotenv</remote-id>
 	</upstream>
 </pkgmetadata>
