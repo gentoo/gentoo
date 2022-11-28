@@ -79,7 +79,8 @@ src_prepare() {
 	fi
 
 	if use arm64; then
-		patchelf --replace-needed libc.so libc.so.6 "${S}"/lib/pty4j-native/linux/aarch64/libpty.so || die "Unable to patch libpty for libc"
+		patchelf --replace-needed libc.so libc.so.6 "${S}"/lib/pty4j-native/linux/aarch64/libpty.so ||
+			die "Unable to patch libpty for libc"
 	else
 		rm -vf "${S}"/lib/pty4j-native/linux/{aarch64,arm,x86}/libpty.so
 	fi
@@ -115,7 +116,8 @@ src_install() {
 		done
 	fi
 
-	local bundled_script_name="${PN%-*}.sh" # bundled script is always lowercase, and doesn't have -ultimate, -professional suffix.
+	# bundled script is always lowercase, and doesn't have -ultimate, -professional suffix.
+	local bundled_script_name="${PN%-*}.sh"
 	make_wrapper "${PN}" "${dir}/bin/$bundled_script_name" || die
 
 	local pngfile="$(find ${dst}/bin -maxdepth 1 -iname '*.png')"
