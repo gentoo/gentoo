@@ -84,5 +84,6 @@ pkg_postinst() {
 	elog "at least one config first. To do this, run:"
 	elog "snapper create-config <subvolume>"
 	elog "For more information, see man (8) snapper or"
-	elog "http://snapper.io/documentation.html"
+	elog "http://snapper.io/documentation.html and"
+	elog "https://wiki.gentoo.org/wiki/Snapper"
 }
