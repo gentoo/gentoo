@@ -27,8 +27,8 @@
 		Các 'cron' daemon cũng nằm trong đây.
 	</longdescription>
 	<longdescription lang="it">
-		La categoria sys-process contiene pacchetti per la manipolazione e l'analisi dei processi.
-		I demoni 'cron' appartengono a questa categoria.
+		La categoria sys-process contiene pacchetti per la manipolazione e
+		l'analisi dei processi. I demoni 'cron' appartengono a questa categoria.
 	</longdescription>
 	<longdescription lang="pt">
 		A categoria sys-process contém pacotes que manipulam e captam

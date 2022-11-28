@@ -21,8 +21,8 @@
 	</longdescription>
 	<longdescription lang="it">
 		La categoria sys-auth contiene applicazioni e librerie di supporto per
-		gli strumenti di autenticazione e autorizzazione. Appartengono a questa categoria
-		i moduli PAM, i moduli NSS e le applicazioni di login.
+		gli strumenti di autenticazione e autorizzazione. Appartengono a questa
+		categoria i moduli PAM, i moduli NSS e le applicazioni di login.
 	</longdescription>
 	<longdescription lang="pt">
 		A categoria sys-auth contém aplicações e bibliotecas para

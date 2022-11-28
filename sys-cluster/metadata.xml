@@ -17,7 +17,8 @@
 		Nhóm sys-cluster chứa các phần mềm liên quan đến cluster.
 	</longdescription>
 	<longdescription lang="it">
-		La categoria sys-cluster contiene pacchetti per l'utilizzo e la gestione dei clusters.
+		La categoria sys-cluster contiene pacchetti per l'utilizzo e
+		la gestione dei clusters.
 	</longdescription>
 	<longdescription lang="pt">
 		A categoria sys-cluster contém programas relacionados a cluster.

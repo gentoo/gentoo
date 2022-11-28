@@ -4,4 +4,8 @@
 	<longdescription lang="en">
 		The lxqt-base category contains core packages for LXQt Desktop Environment.
 	</longdescription>
+	<longdescription lang="it">
+		La categoria lxqt-base contiene i pacchetti principali per LXQt Desktop
+		Environment.
+	</longdescription>
 </catmetadata>

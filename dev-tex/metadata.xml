@@ -27,7 +27,8 @@
 		TeX như LaTeX.
 	</longdescription>
 	<longdescription lang="it">
-		La categoria dev-tex contiene librerie e utilità utili in ambiente TeX e LaTeX.
+		La categoria dev-tex contiene librerie e utilità utili quando si lavora
+		con TeX e ambienti basati su TeX, come ad esempio LaTeX.
 	</longdescription>
 	<longdescription lang="pt">
 		A categoria dev-tex contém bibliotecas e ferramentas úteis para

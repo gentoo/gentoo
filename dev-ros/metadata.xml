@@ -4,4 +4,7 @@
 	<longdescription lang="en">
 		The dev-ros category contains ROS and ROS-related packages.
 	</longdescription>
+	<longdescription lang="it">
+		La categoria dev-ros contiene ROS e pacchetti relativi a ROS.
+	</longdescription>
 </catmetadata>

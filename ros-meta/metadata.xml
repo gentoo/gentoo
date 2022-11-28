@@ -4,4 +4,7 @@
 	<longdescription lang="en">
 		The ros-meta category contains ROS meta-packages.
 	</longdescription>
+	<longdescription lang="it">
+		La categoria ros-meta contiene metapacchetti ROS.
+	</longdescription>
 </catmetadata>

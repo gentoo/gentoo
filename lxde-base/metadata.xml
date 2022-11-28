@@ -9,4 +9,8 @@
 		La categoría lxde-base contiene paquetes vitales para LXDE, el
 		entorno de escritorio ligero X11.
 	</longdescription>
+	<longdescription lang="it">
+		La categoria lxde-base contiene i pacchetti principali per LXDE,
+		l'ambiente desktop leggero X11.
+	</longdescription>
 </catmetadata>

@@ -6,4 +6,9 @@
 		the next generation of KDE libraries modularized for
 		easy integration in Qt applications.
 	</longdescription>
+	<longdescription lang="it">
+		La categoria kde-frameworks contiene KDE Frameworks,
+		la prossima generazione di librerie KDE modularizzate
+		per una facile integrazione nelle applicazioni Qt.
+	</longdescription>
 </catmetadata>
