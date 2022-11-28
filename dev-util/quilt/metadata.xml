@@ -4,4 +4,7 @@
 	<maintainer type="person">
 		<email>mpagano@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="savannah-nongnu">quilt</remote-id>
+	</upstream>
 </pkgmetadata>
