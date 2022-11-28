@@ -134,7 +134,7 @@ src_configure() {
 		$(use_enable multicall single-binary)
 		$(use_enable xattr)
 		$(use_with gmp libgmp)
-		--with-openssl=$(usex openssl yes no)
+		$(use_with openssl)
 	)
 
 	if use gmp ; then
