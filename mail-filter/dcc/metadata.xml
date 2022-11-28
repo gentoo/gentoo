@@ -4,6 +4,10 @@
 <maintainer type="person">
 	<email>robbat2@gentoo.org</email>
 </maintainer>
+<maintainer type="person">
+	<email>candrews@gentoo.org</email>
+	<name>Craig Andrews</name>
+</maintainer>
 <use>
 	<flag name="rrdtool">Enable <pkg>net-analyzer/rrdtool</pkg> interface
 		scripts</flag>
