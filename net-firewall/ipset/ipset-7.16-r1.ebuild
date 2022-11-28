@@ -24,7 +24,6 @@ BDEPEND="virtual/pkgconfig"
 DOCS=( ChangeLog INSTALL README UPGRADE )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-7.4-fix-pkgconfig-dir.patch
 	"${FILESDIR}"/${PN}-7.16-bashism.patch
 )
 
@@ -87,7 +86,6 @@ src_configure() {
 		--enable-bashcompl \
 		$(use_with modules kmod) \
 		--with-maxsets=${IP_NF_SET_MAX} \
-		--libdir="${EPREFIX}/$(get_libdir)" \
 		--with-ksource="${KV_DIR}" \
 		--with-kbuild="${KV_OUT_DIR}"
 }
