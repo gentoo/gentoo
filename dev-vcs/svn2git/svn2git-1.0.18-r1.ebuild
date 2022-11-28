@@ -9,7 +9,6 @@ inherit qmake-utils
 DESCRIPTION="Tool for one-time conversion from svn to git"
 HOMEPAGE="https://github.com/svn-all-fast-export/svn2git"
 if [[ "${PV}" == "9999" ]]; then
-	EGIT_SUBMODULES=()
 	EGIT_REPO_URI="https://github.com/svn-all-fast-export/svn2git.git"
 else
 	SRC_URI="https://github.com/svn-all-fast-export/svn2git/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -34,6 +33,7 @@ src_configure() {
 		APR_INCLUDE=/usr/include/apr-1
 		PREFIX=/usr
 		SVN_INCLUDE=/usr/include/subversion-1
+		VERSION=${PV}
 	)
 	eqmake5 "${qmake_args[@]}" fast-export2.pro
 }
