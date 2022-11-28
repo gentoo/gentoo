@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,6 +16,7 @@ IUSE=""
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.96-pcm.patch
 	"${FILESDIR}"/${PN}-0.94-asneeded.patch
+	"${FILESDIR}"/${PN}-0.96-fix-missing-include.patch
 )
 
 DOCS=( Changes README TODO )

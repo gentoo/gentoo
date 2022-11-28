@@ -81,10 +81,6 @@ vulkan
 # Ruby just crashes on startup.
 ruby
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-08-22)
-# app-arch/zstd is broken
-zstd
-
 # James Le Cuirot <chewi@gentoo.org> (2021-08-20)
 # Qt is not keyworded or tested.
 qt5

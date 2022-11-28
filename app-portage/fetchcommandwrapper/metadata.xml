@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="github">gentoo/fetchcommandwrapper</remote-id>
+    <remote-id type="pypi">fetchcommandwrapper</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,0 +1,95 @@
+From 6e48ab8b5006f3fdd8ef08f3f86406a02eabdc80 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 12 Sep 2022 08:31:46 -0400
+Subject: [PATCH 1/3] m4/R.m4: prefer xdg-open for R_BROWSER and R_PDFVIEWER.
+
+The xdg-open utility (if it is present) will launch the user's
+preferred browsr or PDF viewer when fed an HTML page or a PDF
+document, respectively. It therefore makes sense to prefer it over
+(for example) firefox, which may be installed but not the user's
+preferred browser.
+---
+ m4/R.m4 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/m4/R.m4 b/m4/R.m4
+index bdcfbea..c5052e7 100644
+--- a/m4/R.m4
++++ b/m4/R.m4
+@@ -237,7 +237,7 @@ fi])
+ ## xdg-open is the freedesktop.org interface to kfmclient/gnome-open
+ AC_DEFUN([R_PROG_BROWSER],
+ [if test -z "${R_BROWSER}"; then
+-  AC_PATH_PROGS(R_BROWSER, [firefox mozilla galeon opera xdg-open kfmclient gnome-moz-remote open])
++  AC_PATH_PROGS(R_BROWSER, [xdg-open firefox mozilla galeon opera kfmclient gnome-moz-remote open])
+ fi
+ if test -z "${R_BROWSER}"; then
+   warn_browser="I could not determine a browser"
+@@ -255,7 +255,7 @@ AC_SUBST(R_BROWSER)
+ ## the FreeBSD acroread port.
+ AC_DEFUN([R_PROG_PDFVIEWER],
+ [AC_PATH_PROGS(R_PDFVIEWER,
+-               [${R_PDFVIEWER} acroread acroread4 xdg-open evince xpdf gv gnome-gv ggv okular kpdf open gpdf kghostview])
++               [${R_PDFVIEWER} xdg-open acroread acroread4 evince xpdf gv gnome-gv ggv okular kpdf open gpdf kghostview])
+ if test -z "${R_PDFVIEWER}"; then
+   warn_pdfviewer="I could not determine a PDF viewer"
+   AC_MSG_WARN([${warn_pdfviewer}])
+-- 
+2.35.1
+
+From 4e50ed9c976a4422a6d431d3d078164948f26bda Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 12 Sep 2022 08:36:41 -0400
+Subject: [PATCH 2/3] m4/R.m4: add epiphany, lynx, and links to the R_BROWSER
+ search list.
+
+The epiphany browser is today one of the more popular ones, being the
+"official" GNOME browser. And lynx and links are nice text-based
+fallbacks.
+---
+ m4/R.m4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/m4/R.m4 b/m4/R.m4
+index c5052e7..e99b0f9 100644
+--- a/m4/R.m4
++++ b/m4/R.m4
+@@ -237,7 +237,7 @@ fi])
+ ## xdg-open is the freedesktop.org interface to kfmclient/gnome-open
+ AC_DEFUN([R_PROG_BROWSER],
+ [if test -z "${R_BROWSER}"; then
+-  AC_PATH_PROGS(R_BROWSER, [xdg-open firefox mozilla galeon opera kfmclient gnome-moz-remote open])
++  AC_PATH_PROGS(R_BROWSER, [xdg-open firefox mozilla epiphany galeon opera kfmclient gnome-moz-remote open lynx links])
+ fi
+ if test -z "${R_BROWSER}"; then
+   warn_browser="I could not determine a browser"
+-- 
+2.35.1
+
+From 719294ed2548f79ab6a5861662716d853284f4d7 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 12 Sep 2022 08:38:03 -0400
+Subject: [PATCH 3/3] m4/R.m4: add atril to the R_PDFVIEWER list.
+
+Atril is the PDF viewer for the MATE desktop, essentially a fork of
+the gnome-2.x evince viewer.
+---
+ m4/R.m4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/m4/R.m4 b/m4/R.m4
+index e99b0f9..7e04ced 100644
+--- a/m4/R.m4
++++ b/m4/R.m4
+@@ -255,7 +255,7 @@ AC_SUBST(R_BROWSER)
+ ## the FreeBSD acroread port.
+ AC_DEFUN([R_PROG_PDFVIEWER],
+ [AC_PATH_PROGS(R_PDFVIEWER,
+-               [${R_PDFVIEWER} xdg-open acroread acroread4 evince xpdf gv gnome-gv ggv okular kpdf open gpdf kghostview])
++               [${R_PDFVIEWER} xdg-open acroread acroread4 evince atril xpdf gv gnome-gv ggv okular kpdf open gpdf kghostview])
+ if test -z "${R_PDFVIEWER}"; then
+   warn_pdfviewer="I could not determine a PDF viewer"
+   AC_MSG_WARN([${warn_pdfviewer}])
+-- 
+2.35.1
+

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>gentoo@seichter.de</email>
-		<name>Ralph Seichter</name>
-	</maintainer>
 	<maintainer type="person">
 		<email>mjo@gentoo.org</email>
 		<name>Michael Orlitzky</name>

@@ -178,7 +178,7 @@ esac
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
 [[ ${EAPI} == 6 ]] && inherit eutils xdg-utils
-inherit multibuild multiprocessing toolchain-funcs
+inherit multibuild multiprocessing ninja-utils toolchain-funcs
 
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 	inherit python-r1
@@ -207,7 +207,7 @@ _distutils_set_globals() {
 		case ${DISTUTILS_USE_PEP517} in
 			flit)
 				bdep+='
-					>=dev-python/flit_core-3.7.1[${PYTHON_USEDEP}]
+					>=dev-python/flit_core-3.8.0[${PYTHON_USEDEP}]
 				'
 				;;
 			flit_scm)
@@ -217,7 +217,7 @@ _distutils_set_globals() {
 				;;
 			hatchling)
 				bdep+='
-					>=dev-python/hatchling-1.8.1[${PYTHON_USEDEP}]
+					>=dev-python/hatchling-1.11.1[${PYTHON_USEDEP}]
 				'
 				;;
 			jupyter)
@@ -227,7 +227,7 @@ _distutils_set_globals() {
 				;;
 			maturin)
 				bdep+='
-					>=dev-util/maturin-0.13.2[${PYTHON_USEDEP}]
+					>=dev-util/maturin-0.13.7[${PYTHON_USEDEP}]
 				'
 				;;
 			no)
@@ -236,33 +236,33 @@ _distutils_set_globals() {
 				;;
 			meson-python)
 				bdep+='
-					>=dev-python/meson-python-0.9.0[${PYTHON_USEDEP}]
+					>=dev-python/meson-python-0.10.0-r1[${PYTHON_USEDEP}]
 				'
 				;;
 			pbr)
 				bdep+='
-					>=dev-python/pbr-5.10.0[${PYTHON_USEDEP}]
+					>=dev-python/pbr-5.11.0[${PYTHON_USEDEP}]
 				'
 				;;
 			pdm)
 				bdep+='
-					>=dev-python/pdm-pep517-1.0.4[${PYTHON_USEDEP}]
+					>=dev-python/pdm-pep517-1.0.5[${PYTHON_USEDEP}]
 				'
 				;;
 			poetry)
 				bdep+='
-					>=dev-python/poetry-core-1.2.0[${PYTHON_USEDEP}]
+					>=dev-python/poetry-core-1.3.2[${PYTHON_USEDEP}]
 				'
 				;;
 			setuptools)
 				bdep+='
-					>=dev-python/setuptools-65.3.0[${PYTHON_USEDEP}]
-					dev-python/wheel[${PYTHON_USEDEP}]
+					>=dev-python/setuptools-65.5.1[${PYTHON_USEDEP}]
+					>=dev-python/wheel-0.38.4[${PYTHON_USEDEP}]
 				'
 				;;
 			sip)
 				bdep+='
-					>=dev-python/sip-6.6.2[${PYTHON_USEDEP}]
+					>=dev-python/sip-6.7.5[${PYTHON_USEDEP}]
 				'
 				;;
 			standalone)
@@ -277,7 +277,7 @@ _distutils_set_globals() {
 			eqawarn "is enabled."
 		fi
 	else
-		local setuptools_dep='>=dev-python/setuptools-65.3.0[${PYTHON_USEDEP}]'
+		local setuptools_dep='>=dev-python/setuptools-65.5.1[${PYTHON_USEDEP}]'
 
 		case ${DISTUTILS_USE_SETUPTOOLS:-bdepend} in
 			no|manual)
@@ -482,7 +482,7 @@ distutils_enable_sphinx() {
 	_DISTUTILS_SPHINX_PLUGINS=( "${@}" )
 
 	local deps autodoc=1 d
-	deps=">=dev-python/sphinx-4.5.0-r1[\${PYTHON_USEDEP}]"
+	deps=">=dev-python/sphinx-5.3.0[\${PYTHON_USEDEP}]"
 	for d; do
 		if [[ ${d} == --no-autodoc ]]; then
 			autodoc=
@@ -506,7 +506,7 @@ distutils_enable_sphinx() {
 			use doc || return 0
 
 			local p
-			for p in ">=dev-python/sphinx-4.5.0-r1" \
+			for p in ">=dev-python/sphinx-5.3.0" \
 				"${_DISTUTILS_SPHINX_PLUGINS[@]}"
 			do
 				python_has_version "${p}[${PYTHON_USEDEP}]" ||
@@ -514,7 +514,7 @@ distutils_enable_sphinx() {
 			done
 		}
 	else
-		deps=">=dev-python/sphinx-4.5.0-r1"
+		deps=">=dev-python/sphinx-5.3.0"
 	fi
 
 	sphinx_compile_all() {
@@ -594,7 +594,7 @@ distutils_enable_tests() {
 	local test_pkg
 	case ${1} in
 		nose)
-			test_pkg=">=dev-python/nose-1.3.7_p20211111_p1-r1"
+			test_pkg=">=dev-python/nose-1.3.7_p20221026"
 			;;
 		pytest)
 			test_pkg=">=dev-python/pytest-7.1.3"
@@ -929,6 +929,8 @@ _distutils-r1_print_package_versions() {
 			hatchling)
 				packages+=(
 					dev-python/hatchling
+					dev-python/hatch-fancy-pypi-readme
+					dev-python/hatch-vcs
 				)
 				;;
 			jupyter)
@@ -1263,25 +1265,14 @@ distutils_wheel_install() {
 	local wheel=${2}
 
 	einfo "  Installing ${wheel##*/} to ${root}"
-	if has_version -b ">=dev-python/gpep517-9"; then
-		# TODO: inline when we dep on >=9
-		local cmd=(
-			gpep517 install-wheel
-				--destdir="${root}"
-				--interpreter="${PYTHON}"
-				--prefix="${EPREFIX}/usr"
-				--optimize=all
-				"${wheel}"
-		)
-	else
-		local cmd=(
-			gpep517 install-wheel
-				--destdir="${root}"
-				--interpreter="${PYTHON}"
-				--prefix="${EPREFIX}/usr"
-				"${wheel}"
-		)
-	fi
+	local cmd=(
+		gpep517 install-wheel
+			--destdir="${root}"
+			--interpreter="${PYTHON}"
+			--prefix="${EPREFIX}/usr"
+			--optimize=all
+			"${wheel}"
+	)
 	printf '%s\n' "${cmd[*]}"
 	"${cmd[@]}" || die "Wheel install failed"
 
@@ -1319,9 +1310,34 @@ distutils_pep517_install() {
 	fi
 
 	local config_settings=
-	if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
-		case ${DISTUTILS_USE_PEP517} in
-			setuptools)
+	case ${DISTUTILS_USE_PEP517} in
+		meson-python)
+			# TODO: remove the condition once we BDEP on >=0.11
+			if has_version -b ">=dev-python/meson-python-0.11"; then
+				local -x NINJAOPTS=$(get_NINJAOPTS)
+				config_settings=$(
+					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
+						import json
+						import os
+						import shlex
+						import sys
+
+						ninjaopts = shlex.split(os.environ["NINJAOPTS"])
+						print(json.dumps({
+							"setup-args": sys.argv[1:],
+							"compile-args": [
+								"-v",
+								f"--ninja-args={ninjaopts!r}",
+							],
+						}))
+					EOF
+				)
+			elif [[ -n ${DISTUTILS_ARGS[@]} ]]; then
+				die "DISTUTILS_ARGS requires >=dev-python/meson-python-0.11 (missing BDEP?)"
+			fi
+			;;
+		setuptools)
+			if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
 				config_settings=$(
 					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
 						import json
@@ -1329,8 +1345,10 @@ distutils_pep517_install() {
 						print(json.dumps({"--global-option": sys.argv[1:]}))
 					EOF
 				)
-				;;
-			sip)
+			fi
+			;;
+		sip)
+			if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
 				# NB: for practical reasons, we support only --foo=bar,
 				# not --foo bar
 				local arg
@@ -1353,12 +1371,13 @@ distutils_pep517_install() {
 						print(json.dumps(args))
 					EOF
 				)
-				;;
-			*)
+			fi
+			;;
+		*)
+			[[ -n ${DISTUTILS_ARGS[@]} ]] &&
 				die "DISTUTILS_ARGS are not supported by ${DISTUTILS_USE_PEP517}"
-				;;
-		esac
-	fi
+			;;
+	esac
 
 	local build_backend=$(_distutils-r1_get_backend)
 	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
@@ -1988,16 +2007,6 @@ _distutils-r1_post_python_install() {
 				die "Package installs '${p}' package which is forbidden and likely a bug in the build system."
 			fi
 		done
-
-		if [[ ${DISTUTILS_USE_PEP517} ]]; then
-			if ! has_version -b ">=dev-python/gpep517-9"
-			then
-				# TODO: remove when we dep on >=9
-				# we need to recompile everything here in order to embed
-				# the correct paths
-				python_optimize "${sitedir}"
-			fi
-		fi
 	fi
 }
 

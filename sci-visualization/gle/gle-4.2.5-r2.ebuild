@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit autotools elisp-common flag-o-matic
 MY_P=${PN}-graphics-${PV}
 
 DESCRIPTION="Graphics Layout Engine"
-HOMEPAGE="http://glx.sourceforge.net/"
+HOMEPAGE="https://glx.sourceforge.net"
 SRC_URI="mirror://sourceforge/glx/${MY_P}f-src.tar.gz"
 S="${WORKDIR}/${MY_P}"
 

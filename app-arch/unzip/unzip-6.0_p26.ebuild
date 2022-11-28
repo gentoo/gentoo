@@ -10,7 +10,7 @@ MY_PV="${MY_PV%_p*}"
 MY_P="${PN}${MY_PV}"
 
 DESCRIPTION="unzipper for pkzip-compressed files"
-HOMEPAGE="http://www.info-zip.org/"
+HOMEPAGE="https://infozip.sourceforge.net/UnZip.html"
 SRC_URI="mirror://sourceforge/infozip/${MY_P}.tar.gz
 	mirror://debian/pool/main/u/${PN}/${PN}_${PV/_p/-}.debian.tar.xz"
 

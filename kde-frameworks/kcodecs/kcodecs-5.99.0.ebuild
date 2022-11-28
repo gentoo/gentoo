@@ -8,10 +8,10 @@ inherit ecm frameworks.kde.org
 
 DESCRIPTION="Framework for manipulating strings using various encodings"
 LICENSE="GPL-2+ LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="nls"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
+IUSE=""
 
 BDEPEND="
+	>=dev-qt/linguist-tools-${QTMIN}:5
 	dev-util/gperf
-	nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )
 "

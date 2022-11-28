@@ -1,0 +1,28 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/bf3516ba0496b644b3944b114253f23964178897
+
+From bf3516ba0496b644b3944b114253f23964178897 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Tue, 15 Nov 2022 15:40:47 +0100
+Subject: [PATCH] audioadapter: perform setup again after a PortConfig
+
+After the ports are reconfigured, we need to perform the setup again so
+that buffers and processing can happen with the right settings.
+
+This fixes an issue when autoswitching between A2DP and HFP with
+bluetooth headsets when there is also a stereo capture device available.
+The input stream of the browser is quickly reconfigured between stereo
+and mono with only a Pause command in between, clearing the setup state
+is enough to redo the setup when going back to Playing.
+
+Fixes #2764
+--- a/spa/plugins/audioconvert/audioconvert.c
++++ b/spa/plugins/audioconvert/audioconvert.c
+@@ -979,6 +979,7 @@ static int reconfigure_mode(struct impl *this, enum spa_param_port_config_mode m
+ 	}
+ 
+ 	this->monitor = monitor;
++	this->setup = false;
+ 	dir->control = control;
+ 	dir->have_profile = true;
+ 	dir->mode = mode;
+GitLab

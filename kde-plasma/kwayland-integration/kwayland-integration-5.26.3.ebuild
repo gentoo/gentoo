@@ -7,12 +7,12 @@ KFMIN=5.99.0
 QTMIN=5.15.5
 inherit ecm plasma.kde.org
 
-DESCRIPTION="Provides integration plugins for various KDE frameworks for Wayland"
+DESCRIPTION="Provides KWindowSystem integration plugin for Wayland"
 HOMEPAGE="https://invent.kde.org/plasma/kwayland-integration"
 
 LICENSE="LGPL-2.1"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv"
 IUSE=""
 
 # dev-qt/qtgui: QtXkbCommonSupport is provided by either IUSE libinput or X

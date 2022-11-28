@@ -1,0 +1,15 @@
+--- a/src/kash/Makefile.kmk	2022-11-12 16:42:14.195927909 +0200
++++ b/src/kash/Makefile.kmk	2022-11-12 17:09:46.212159615 +0200
+@@ -210,8 +210,11 @@
+ kash_USES = lex yacc
+ kash_LEXTOOL = FLEX
+ kash_LEXFLAGS = -8
+-#kash_YACCTOOL = BISON
++ifneq (,$(shell bison -V))
++kash_YACCTOOL = BISON
++else
+ kash_YACCTOOL = YACC
++endif
+ kash_YACCFLAGS = -ld
+ kash_SOURCES += \
+ 	arith.y \

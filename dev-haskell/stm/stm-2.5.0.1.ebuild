@@ -25,4 +25,4 @@ DEPEND="${RDEPEND}
 
 # ghc-9.0.1 and ghc-9.0.2 actually bundles stm-2.5.0.0, but downgrades can be messy.
 # Mark as bundled as a workaround.
-CABAL_CORE_LIB_GHC_PV="PM:8.10.6 PM:9.0.2"
+CABAL_CORE_LIB_GHC_PV="8.10.6 9.0.2"

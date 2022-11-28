@@ -131,6 +131,7 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-fontsextra
+		dev-qt/qthelp:5
 	)
 	java? ( virtual/jdk:1.8 )
 "
@@ -198,6 +199,11 @@ pkg_pretend() {
 	elif use headless && use qt5; then
 		einfo "You selected USE=\"headless qt5\", defaulting to"
 		einfo "USE=\"headless\", this build will not include any X11/Qt frontend."
+	fi
+
+	if use headless && use sdl; then
+		einfo "You selected USE=\"headless sdl\", defaulting to"
+		einfo "USE=\"headless\", this build will not include SDL."
 	fi
 
 	if ! use opengl; then
@@ -288,7 +294,7 @@ src_prepare() {
 		CFLAGS=${CFLAGS}
 	EOF
 
-	if use sdl; then
+	if ! use headless && use sdl; then
 		echo -e "\nVBOX_WITH_VBOXSDL=1" >> LocalConfig.kmk || die
 	fi
 

@@ -15,4 +15,7 @@
     </flag>
     <flag name="qmail">Build qmail functionality and docs</flag>
   </use>
+  <upstream>
+    <remote-id type="github">apache/spamassassin</remote-id>
+  </upstream>
 </pkgmetadata>

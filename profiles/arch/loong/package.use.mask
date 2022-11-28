@@ -1,9 +1,29 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Ionen Wolkens <ionen@gentoo.org> (2022-11-04)
-# media-libs/libffado is not keyworded here yet.
-media-sound/jack2 ieee1394
+# WANG Xuerui <xen0n@gentoo.org> (2022-11-27)
+# Mask configurations not accepting llvm:16 and/or clang:16, either due to
+# lack of testing or simply being unsupported upstream (the opaque pointers
+# in particular need downstream changes).
+app-office/libreoffice clang
+<media-libs/mesa-22.3.0 llvm
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-11-27)
+# LLVM toolchain now partially usable on loong, mask the remaining pieces
+# pending test/bugfixes/porting.
+#
+# - sys-libs/libcxxabi: fails many tests but is apparently working
+# - sys-libs/libcxx: fails many tests, more upstream work likely needed
+# - sys-libs/libomp: fails 4 tests
+#   - need at least https://reviews.llvm.org/D138177 but there could be more
+# - sys-devel/lld: port is still under review
+sys-devel/clang-common default-libcxx default-lld
+sys-devel/clang-runtime libcxx openmp
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-11-18)
+# net-libs/webkit-gtk is not available on loong yet.
+app-text/atril epub
+mate-base/mate help
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-04)
 # Sanitizers partially supported on this architecture.
@@ -19,12 +39,6 @@ www-client/chromium js-type-check
 # Fails testing at least with libssh-0.9.6 and mbedtls-2.28.0-r1, needs
 # investigation.
 net-libs/libssh mbedtls
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
-# dev-lang/go is not available on loong yet.
-media-libs/libheif go test
-sys-apps/earlyoom test
-sys-libs/libcap tools
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
 # Unmask experimental-loong on packages; we're loong.

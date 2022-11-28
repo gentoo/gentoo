@@ -18,5 +18,6 @@
 </use>
 <upstream>
   <remote-id type="cpe">cpe:/a:mit:kerberos</remote-id>
+  <remote-id type="github">krb5/krb5</remote-id>
 </upstream>
 </pkgmetadata>

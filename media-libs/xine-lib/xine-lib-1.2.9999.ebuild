@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic libtool
+inherit flag-o-matic libtool multilib
 
 if [[ ${PV} == *9999* ]]; then
 	EHG_REPO_URI="http://hg.code.sf.net/p/xine/xine-lib-1.2"
@@ -24,7 +24,7 @@ HOMEPAGE="http://xine.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="1"
-IUSE="a52 aac aalib +alsa bluray cpu_flags_ppc_altivec +css dav1d dts dvb dxr3 fbcon flac gtk imagemagick ipv6 jack jpeg libcaca mad +mmap mng modplug musepack nfs opengl oss pulseaudio samba sftp sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack wayland +X xinerama +xv xvmc ${NLS_IUSE}"
+IUSE="a52 aac aalib +alsa bluray cpu_flags_ppc_altivec +css dav1d dts dvb dxr3 fbcon flac gtk imagemagick jack jpeg libcaca mad +mmap mng modplug musepack nfs opengl oss pulseaudio samba sftp sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack wayland +X xinerama +xv xvmc ${NLS_IUSE}"
 
 BDEPEND="
 	app-arch/xz-utils
@@ -152,6 +152,7 @@ src_configure() {
 		--disable-v4l
 		--disable-w32dll
 		--enable-avformat
+		--enable-ipv6
 		--with-external-dvdnav
 		--with-real-codecs-path=/usr/$(get_libdir)/codecs
 		--with-w32-path=${win32dir}
@@ -170,7 +171,6 @@ src_configure() {
 		$(use_enable dxr3)
 		$(use_enable fbcon fb)
 		$(use_enable gtk gdkpixbuf)
-		$(use_enable ipv6)
 		$(use_enable jpeg libjpeg)
 		$(use_enable mad)
 		$(use_enable mmap)

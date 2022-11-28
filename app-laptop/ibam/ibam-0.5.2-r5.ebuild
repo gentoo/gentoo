@@ -7,7 +7,7 @@ PATCH_LEVEL="2.1"
 inherit toolchain-funcs optfeature
 
 DESCRIPTION="Intelligent Battery Monitor"
-HOMEPAGE="http://ibam.sourceforge.net/"
+HOMEPAGE="https://ibam.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}-${PATCH_LEVEL}.diff.gz"
 

@@ -1,0 +1,11 @@
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This just makes sense nowadays, if only for distfiles...
+USE="lzma zstd"
+
+# bug 831045
+USE="${USE} -cli"
+
+# bug 849875
+USE="${USE} -dri"

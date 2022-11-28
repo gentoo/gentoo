@@ -48,5 +48,4 @@ provide by default.
 ---
 
 If have other Wine variants installed, remember to either use `eselect wine`
-to select this variant or call it as wine-proton. Note other available
-variants may be auto-selected when removing/replacing a selected slot.
+to select this variant or call it as wine-proton.

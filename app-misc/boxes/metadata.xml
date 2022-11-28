@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>pascal.jaeger@leimstift.de</email>
+    <name>Pascal Jäger</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <maintainer type="project">
     <email>shell-tools@gentoo.org</email>
     <name>Gentoo Shell Tools Project</name>
   </maintainer>
   <upstream>
+    <maintainer status="active">
+      <email>boxes@thomasjensen.com</email>
+      <name>Thomas Jensen</name>
+    </maintainer>
+    <bugs-to>https://github.com/ascii-boxes/boxes/issues</bugs-to>
+    <changelog>https://boxes.thomasjensen.com/releases.html</changelog>
     <remote-id type="github">ascii-boxes/boxes</remote-id>
   </upstream>
 </pkgmetadata>

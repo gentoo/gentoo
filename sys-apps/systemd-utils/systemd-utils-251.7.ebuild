@@ -26,7 +26,7 @@ SRC_URI+=" elibc_musl? ( https://dev.gentoo.org/~floppym/dist/${MUSL_PATCHSET}.t
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc ~x86"
 IUSE="+acl boot +kmod selinux split-usr sysusers +tmpfiles test +udev"
 REQUIRED_USE="|| ( boot tmpfiles sysusers udev )"
 RESTRICT="!test? ( test )"
@@ -489,11 +489,11 @@ multilib_src_install_all() {
 		# Remove to avoid conflict with elogind
 		# https://bugs.gentoo.org/856433
 		rm rules.d/70-power-switch.rules || die
-		insinto /lib/udev/rules.d
+		insinto "${rootprefix}"/lib/udev/rules.d
 		doins rules.d/*.rules
 		doins "${FILESDIR}"/40-gentoo.rules
 
-		insinto /lib/udev/hwdb.d
+		insinto "${rootprefix}"/lib/udev/hwdb.d
 		doins hwdb.d/*.hwdb
 
 		dobashcomp shell-completion/bash/udevadm

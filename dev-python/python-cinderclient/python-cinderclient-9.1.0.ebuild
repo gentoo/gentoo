@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1
 
@@ -38,6 +38,11 @@ BDEPEND="
 		<dev-python/prettytable-3.4.0[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.11-argparse.patch"
+	"${FILESDIR}/${P}-fix-py3.11-crashes.patch"
+)
 
 distutils_enable_tests unittest
 

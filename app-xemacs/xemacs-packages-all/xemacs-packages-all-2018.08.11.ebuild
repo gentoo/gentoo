@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Meta package for XEmacs elisp packages, similar to the sumo archives"
 HOMEPAGE="http://www.xemacs.org/"

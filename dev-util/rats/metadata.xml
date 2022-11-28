@@ -10,4 +10,7 @@
     flagging common security related programming errors such as buffer
     overflows and TOCTOU (Time Of Check, Time Of Use) race conditions.
 </longdescription>
+<upstream>
+  <remote-id type="github">andrew-d/rough-auditing-tool-for-security</remote-id>
+</upstream>
 </pkgmetadata>

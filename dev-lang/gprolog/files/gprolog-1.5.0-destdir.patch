@@ -7,7 +7,7 @@
 -	if test $(LINKS_DIR) != none; then \
 +	if test @LINKS_DIR@ != none; then \
  	   ./mkinstalldirs $(LINKS_DIR); \
- 	   (cd $(LINKS_DIR) ; $(LN_S) $(wildcard $(INSTALL_DIR)/bin/*) .); \
+ 	   (cd $(LINKS_DIR) ; $(LN_S) -r $(wildcard $(INSTALL_DIR)/bin/*) .); \
  	fi
  
  uninstall-links:

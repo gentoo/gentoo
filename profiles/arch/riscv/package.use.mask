@@ -1,6 +1,10 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Yixun Lan <dlan@gentoo.org> (2022-11-24)
+# depend on dev-libs/libpcre2[jit] which not supported yet, bug #879511
+www-servers/varnish jit
+
 # Sam James <sam@gentoo.org> (2022-10-29)
 # pandoc not keyworded here, bug #878355
 app-admin/conky doc

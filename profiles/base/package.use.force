@@ -142,6 +142,11 @@ media-sound/lilypond guile2
 # to have a compiler not capable of C++, bug #692126.
 sys-devel/gcc cxx
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-27)
+# Force default-PIE build on 17.0 profiles and later.
+# Moved here from releases/17.0 (2022-10-22)
+sys-devel/gcc pie
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2019-04-14)
 # Make sure glibc static libs are installed for now. Not installing
 # them is an experimental feature and needs testing.

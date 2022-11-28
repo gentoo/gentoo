@@ -1,6 +1,17 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-11-19)
+# GNOME packages pulling in e.g. gjs which then needs Rust.
+dev-util/glade gjs
+gnome-base/gnome-menus test
+gnome-base/gnome-settings-daemon modemmanager
+gnome-base/nautilus previewer
+net-vpn/networkmanager-openconnect gtk
+net-vpn/networkmanager-openvpn gtk
+net-vpn/networkmanager-pptp gtk
+net-vpn/networkmanager-vpnc gtk
+
 # Michał Górny <mgorny@gentoo.org> (2022-07-29)
 # More packages requiring dev-python/cryptography or its revdeps.
 app-admin/salt keyring neutron
@@ -21,7 +32,6 @@ app-admin/salt libcloud openssl test
 dev-python/aiohttp test
 dev-python/cheroot test
 dev-python/cherrypy ssl
-dev-python/eventlet test
 dev-python/google-auth test
 dev-python/pyftpdlib ssl test
 dev-python/python-novaclient test

@@ -41,7 +41,7 @@ DESCRIPTION="GNAT Ada Compiler - GPL version"
 HOMEPAGE="http://libre.adacore.com/"
 
 LICENSE+=" GPL-2 GPL-3"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+ada +bootstrap"
 RESTRICT="test"
 
@@ -79,16 +79,19 @@ src_prepare() {
 		die "ada compiler not available"
 	fi
 
+	local bundledchost=""
+	use amd64 && local bundledchost="x86_64"
+	use x86 && local bundledchost="i686"
 	if use bootstrap; then
-		rm "${WORKDIR}"/${BTSTRP}/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/ld \
+		rm "${WORKDIR}"/${BTSTRP}/libexec/gcc/${bundledchost}-pc-linux-gnu/4.7.4/ld \
 			|| die
 		ln -s /usr/bin/$CHOST-ld \
-			"${WORKDIR}"/${BTSTRP}/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/ld \
+			"${WORKDIR}"/${BTSTRP}/libexec/gcc/${bundledchost}-pc-linux-gnu/4.7.4/ld \
 			|| die
-		rm "${WORKDIR}"/${BTSTRP}/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/as \
+		rm "${WORKDIR}"/${BTSTRP}/libexec/gcc/${bundledchost}-pc-linux-gnu/4.7.4/as \
 			|| die
 		ln -s /usr/bin/$CHOST-as \
-			"${WORKDIR}"/${BTSTRP}/libexec/gcc/x86_64-pc-linux-gnu/4.7.4/as \
+			"${WORKDIR}"/${BTSTRP}/libexec/gcc/${bundledchost}-pc-linux-gnu/4.7.4/as \
 			|| die
 	fi
 
@@ -110,6 +113,12 @@ src_prepare() {
 	ln -s $(type -P ${GNATBIND}) bin/gnatbind || die
 	ln -s $(type -P ${GNATLINK}) bin/gnatlink || die
 	ln -s $(type -P ${GNATLS}) bin/gnatls || die
+	ln -s $(type -P ${GCC}) bin/${bundledchost}-pc-linux-gnu-gcc || die
+	ln -s $(type -P ${CXX}) bin/${bundledchost}-pc-linux-gnu-g++ || die
+	ln -s $(type -P ${GNATMAKE}) bin/${bundledchost}-pc-linux-gnu-gnatmake || die
+	ln -s $(type -P ${GNATBIND}) bin/${bundledchost}-pc-linux-gnu-gnatbind || die
+	ln -s $(type -P ${GNATLINK}) bin/${bundledchost}-pc-linux-gnu-gnatlink || die
+	ln -s $(type -P ${GNATLS}) bin/${bundledchost}-pc-linux-gnu-gnatls || die
 
 	cd ..
 	mv ${GNATDIR}/src/ada ${MYP}/gcc/ || die

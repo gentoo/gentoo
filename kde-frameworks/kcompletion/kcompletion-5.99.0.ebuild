@@ -12,8 +12,8 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework for common completion tasks such as filename or URL completion"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="nls"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
+IUSE=""
 
 DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -22,4 +22,4 @@ DEPEND="
 	=kde-frameworks/kwidgetsaddons-${PVCUT}*:5
 "
 RDEPEND="${DEPEND}"
-BDEPEND="nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )"
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"

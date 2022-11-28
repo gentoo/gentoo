@@ -13,7 +13,7 @@ SRC_URI="https://github.com/pytest-dev/pytest-bdd/archive/refs/tags/${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 RDEPEND="
 	dev-python/mako[${PYTHON_USEDEP}]
@@ -21,7 +21,11 @@ RDEPEND="
 	dev-python/parse_type[${PYTHON_USEDEP}]
 	dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/packaging[${PYTHON_USEDEP}] )"
+BDEPEND="
+	test? (
+		dev-python/packaging[${PYTHON_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
 

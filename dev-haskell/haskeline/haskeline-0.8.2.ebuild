@@ -37,4 +37,4 @@ src_configure() {
 }
 
 # ghc-9.0.1 actually comes bundled with haskeline-0.8.1.0
-CABAL_CORE_LIB_GHC_PV="PM:8.10.6 PM:9.0.2"
+CABAL_CORE_LIB_GHC_PV="8.10.6 9.0.2"

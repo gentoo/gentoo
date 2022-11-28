@@ -3,9 +3,14 @@
 
 EAPI=8
 
+inherit verify-sig
+
 DESCRIPTION="NCurses Disk Usage"
-HOMEPAGE="https://dev.yorhel.nl/ncdu/"
-SRC_URI="https://dev.yorhel.nl/download/${P}.tar.gz"
+HOMEPAGE="https://dev.yorhel.nl/ncdu"
+SRC_URI="
+	https://dev.yorhel.nl/download/${P}.tar.gz
+	verify-sig? ( https://dev.yorhel.nl/download/${P}.tar.gz.asc )
+"
 
 LICENSE="MIT"
 SLOT="0"
@@ -16,7 +21,11 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	|| ( ~dev-lang/zig-0.9.1 ~dev-lang/zig-bin-0.9.1 )
 	virtual/pkgconfig
+	dev-lang/perl
+	verify-sig? ( sec-keys/openpgp-keys-yorhel )
 "
+
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/yoranheling.asc
 
 # see https://github.com/ziglang/zig/issues/3382
 # For now, Zig doesn't support CFLAGS/LDFLAGS/etc.

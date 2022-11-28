@@ -1,8 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit desktop prefix toolchain-funcs
+EAPI=8
+inherit desktop toolchain-funcs
 
 MY_PV="${PV/_p/.}.0"
 MY_P="${PN}-${MY_PV}"
@@ -19,7 +19,7 @@ SRC_URI="
 	ftp://ftp.mol.biol.ethz.ch/software/MOLMOL/unix-gzip/${MY_P}-src.tar.gz
 	ftp://ftp.mol.biol.ethz.ch/software/MOLMOL/unix-gzip/${MY_P}-doc.tar.gz
 	https://dev.gentoo.org/~soap/distfiles/${PN}-patches.tbz2
-	https://dev.gentoo.org/~pacho/${PN}/${PN}.png
+	https://dev.gentoo.org/~pacho/${PN}/${PN}_256.png
 "
 
 LICENSE="molmol"
@@ -49,10 +49,9 @@ BDEPEND=""
 
 S="${WORKDIR}"
 
-MAKEOPTS="${MAKEOPTS} -j1"
-
 pkg_setup() {
 	MMDIR="/usr/$(get_libdir)/molmol"
+	MAKEOPTS="${MAKEOPTS} -j1" #880621
 }
 
 src_prepare() {
@@ -68,12 +67,12 @@ src_prepare() {
 	ln -s makedef.lnx "${S}"/makedef || die
 
 	sed \
-		-e "s:ksh:sh:" \
-		-e "s:^MOLMOLHOME.*:MOLMOLHOME=${EPREFIX}/${MMDIR};MOLMOLDEV=\"Motif/OpenGL\":" \
+		-e "s|ksh|sh|" \
+		-e "s|^MOLMOLHOME.*|MOLMOLHOME=${EPREFIX}/${MMDIR};MOLMOLDEV=\"Motif/OpenGL\"|" \
 		-i "${S}"/molmol || die
 	sed \
-		-e "s:^MCFLAGS.*:MCFLAGS = ${CFLAGS}:" \
-		-e "s:^CC.*:CC = $(tc-getCC):" \
+		-e "s|^MCFLAGS.*|MCFLAGS = ${CFLAGS}|" \
+		-e "s|^CC.*|CC = $(tc-getCC)|" \
 		-i "${S}"/makedef || die
 
 	eapply "${WORKDIR}"/patches/cast.patch
@@ -95,8 +94,8 @@ src_install() {
 	insinto ${MMDIR}
 	doins -r auxil help macros man setup tips
 
-	make_desktop_entry "${PN}"
-	doicon "${DISTDIR}/${PN}.png"
+	make_desktop_entry "${PN}" MOLMOL
+	newicon "${DISTDIR}/${PN}_256.png" "${PN}.png"
 
 	einstalldocs
 	dodoc HISTORY

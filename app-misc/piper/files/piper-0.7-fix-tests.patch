@@ -1,0 +1,66 @@
+Upstream commit https://github.com/libratbag/piper/commit/603d68726364cea5e71ef1f0153e3641ec889063, backported to 0.7
+
+From 603d68726364cea5e71ef1f0153e3641ec889063 Mon Sep 17 00:00:00 2001
+From: Tobias Kortkamp <tobias.kortkamp@gmail.com>
+Date: Mon, 1 Aug 2022 15:57:28 +0200
+Subject: [PATCH] Fix tests for out-of-source builds
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When the build directory is not _under_ the source directory then
+flake8 cannot find the local config file and it will try to check
+piper.in which fails per 1ed66262b77ebd9fe188894d36842527da39508a
+
+To fix this I propose to
+
+1. pass the config to flake8 explicitly
+2. remove piper.in from the args list since it is excluded in the
+   flake8 config anyway
+3. check the generated $build/piper.devel and $build/piper too per
+   1ed66262b77ebd9fe188894d36842527da39508a
+4. merge the --ignore in meson.build with the config
+
+Steps to reproduce:
+
+```
+$ meson ../build
+$ ninja -C../build test
+...
+[17/18] Running all tests.
+1/5 piper:all / files-in-git             SKIP            0.01s   exit status 77
+2/5 piper / validate appdata file        OK              0.04s
+3/5 piper / svg-lookup-check             OK              0.10s
+4/5 piper / check-svg                    OK              0.18s
+5/5 piper / flake8                       FAIL            1.00s   exit status 1
+>>> MALLOC_PERTURB_=32 /gnu/store/yhhvrj6bns3ws85d338ah3bsc8jv4x64-profile/bin/flake8 --ignore=E501,W504 /home/tobias/ghq/github.com/libratbag/piper/piper /home/tobias/ghq/github.com/libratbag/piper/piper.in
+――――――――――――――――――――――――――――――――――――――――――――――― ✀  ―――――――――――――――――――――――――――――――――――――――――――――――
+/home/tobias/ghq/github.com/libratbag/piper/piper.in:11:19: E999 SyntaxError: invalid syntax
+――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+```
+diff --git a/.flake8 b/.flake8
+index 8f1ba6f..170b294 100644
+--- a/.flake8
++++ b/.flake8
+@@ -1,3 +1,3 @@
+ [flake8]
+-ignore = E402,E501
++ignore = E402,E501,W504
+ exclude = .git,__pycache__,build,data,piper/piper.py,piper.in
+diff --git a/piper-0.7/meson.build b/piper-0.7/meson.build
+index 21963d8..03f0c3e 100644
+--- a/meson.build
++++ b/meson.build
+@@ -115,9 +115,10 @@ if enable_tests
+     flake8 = find_program('flake8')
+     if flake8.found()
+         test('flake8', flake8,
+-             args: ['--ignore=E501,W504',
++             args: ['--config=' + join_paths(meson.current_source_dir(), '.flake8'),
+                     join_paths(meson.current_source_dir(), 'piper'),
+-                    join_paths(meson.current_source_dir(), 'piper.in')])
++                    join_paths(meson.current_build_dir(), 'piper'),
++                    join_paths(meson.current_build_dir(), 'piper.devel')])
+     endif
+
+     test_svg_files = find_program('tests/check-svg.py')

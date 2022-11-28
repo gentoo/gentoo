@@ -45,6 +45,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	(use ppc || use ppc64) && PATCHES+=( "${FILESDIR}/${P}-replace_altivec_vector_keyword.patch" )
+
 	cmake_src_prepare
 
 	# allow to generate docs

@@ -1,0 +1,14 @@
+Already fixed upstream in https://github.com/sezero/mikmod/commit/4ceeed3f3929b9d9f7cfe891d44f43d202b64416.
+
+Fixes -Wstrict-prototypes.
+--- a/libmikmod.m4
++++ b/libmikmod.m4
+@@ -79,7 +79,7 @@ char* my_strdup (char *str)
+   return new_str;
+ }
+ 
+-int main()
++int main(void)
+ {
+   int major,minor,micro;
+   int libmikmod_major_version,libmikmod_minor_version,libmikmod_micro_version;

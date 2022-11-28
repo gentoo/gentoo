@@ -50,7 +50,7 @@ else
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
 fi
 
-SRC_URI+=" https://dev.gentoo.org/~floppym/dist/grub-2.06-backports-r1.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~floppym/dist/${P}-backports-r1.tar.xz"
 
 PATCHES=(
 	"${WORKDIR}/${P}-backports"
@@ -73,7 +73,8 @@ LICENSE="GPL-3+ BSD MIT fonts? ( GPL-2-with-font-exception ) themes? ( CC-BY-SA-
 SLOT="2/${PVR}"
 IUSE="device-mapper doc efiemu +fonts mount nls sdl test +themes truetype libzfs"
 
-GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen xen-32 xen-pvh )
+GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot
+	qemu qemu-mips pc uboot xen xen-32 xen-pvh )
 IUSE+=" ${GRUB_ALL_PLATFORMS[@]/#/grub_platforms_}"
 
 REQUIRED_USE="

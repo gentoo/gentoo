@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="Maximum likelihood analysis for nucleotide, amino acid, and two-state data"
 HOMEPAGE="http://www.tree-puzzle.de"
 SRC_URI="http://www.tree-puzzle.de/${P}.tar.gz"
@@ -17,9 +19,14 @@ DEPEND="mpi? ( virtual/mpi )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-impl-dec.patch
+	"${FILESDIR}"/${P}-C99-decls.patch
 	"${FILESDIR}"/${P}-MPI-3.0.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	default

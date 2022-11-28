@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 
 inherit distutils-r1
 
@@ -16,4 +16,12 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-distutils_enable_tests nose
+PATCHES=(
+	"${FILESDIR}/${P}-remove-nose-dependency.patch"
+)
+
+distutils_enable_tests pytest
+
+python_test() {
+	epytest tests.py
+}

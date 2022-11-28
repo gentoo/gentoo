@@ -20,7 +20,9 @@ else
 fi
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
-HOMEPAGE="https://www.winehq.org/"
+HOMEPAGE="
+	https://www.winehq.org/
+	https://gitlab.winehq.org/wine/wine/"
 
 LICENSE="LGPL-2.1+ BSD-2 IJG MIT ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
@@ -113,6 +115,7 @@ DEPEND="
 	X? ( x11-base/xorg-proto )"
 BDEPEND="
 	dev-lang/perl
+	sys-devel/binutils
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
@@ -218,6 +221,11 @@ src_configure() {
 	tc-ld-force-bfd #867097
 	use custom-cflags || strip-flags # can break in obscure ways, also no lto
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
+
+	# temporary workaround for tc-ld-force-bfd not yet enforcing with mold
+	# https://github.com/gentoo/gentoo/pull/28355
+	[[ $($(tc-getCC) ${LDFLAGS} -Wl,--version 2>/dev/null) == mold* ]] &&
+		append-ldflags -fuse-ld=bfd
 
 	# build using upstream's way (--with-wine64)
 	# order matters: configure+compile 64->32, install 32->64

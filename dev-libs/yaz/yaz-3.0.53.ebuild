@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="C/C++ toolkit for Z39.50v3 clients and servers"
-HOMEPAGE="http://www.indexdata.dk/yaz"
-SRC_URI="http://ftp.indexdata.dk/pub/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.indexdata.com/resources/software/yaz/"
+SRC_URI="https://ftp.indexdata.com/pub/${PN}/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"

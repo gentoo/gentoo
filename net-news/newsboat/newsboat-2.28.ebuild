@@ -100,7 +100,7 @@ CRATES="
 	xdg-2.4.1
 "
 
-inherit toolchain-funcs cargo
+inherit flag-o-matic toolchain-funcs cargo
 
 DESCRIPTION="An RSS/Atom feed reader for text terminals"
 HOMEPAGE="https://newsboat.org/ https://github.com/newsboat/newsboat"
@@ -111,7 +111,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 MIT Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 
 RDEPEND="
 	>=dev-db/sqlite-3.5:3
@@ -138,6 +138,7 @@ PATCHES=(
 )
 
 src_configure() {
+	filter-lto  # bug #877657
 	./config.sh || die
 }
 

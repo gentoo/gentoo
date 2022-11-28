@@ -6,6 +6,7 @@
 		<name>Sebastian Pipping</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">wiki2beamer/wiki2beamer</remote-id>
 		<remote-id type="sourceforge">wiki2beamer</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -22,7 +22,7 @@ S="${WORKDIR}/sentry-python-${PV}"
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	dev-python/urllib3[${PYTHON_USEDEP}]
@@ -35,7 +35,6 @@ BDEPEND="
 		dev-python/executing[${PYTHON_USEDEP}]
 		dev-python/fakeredis[${PYTHON_USEDEP}]
 		dev-python/flask-login[${PYTHON_USEDEP}]
-		dev-python/gevent[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
 		dev-python/pyrsistent[${PYTHON_USEDEP}]
 		dev-python/pytest-aiohttp[${PYTHON_USEDEP}]

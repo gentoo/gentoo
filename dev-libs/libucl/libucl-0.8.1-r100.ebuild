@@ -35,6 +35,10 @@ RDEPEND="${DEPEND}"
 
 DOCS=( README.md doc/api.md )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-openssl-1.1.1.patch
+)
+
 pkg_setup() {
 	use lua && lua_pkg_setup
 }
@@ -58,10 +62,6 @@ src_configure() {
 		LIB_LIBS="$(lua_get_LIBS)"
 	)
 	econf "${myeconfargs[@]}"
-}
-
-src_test() {
-	emake check
 }
 
 src_install() {

@@ -39,7 +39,7 @@ SRC_URI="mirror://sourceforge/sbcl/${P}-source.tar.bz2
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="-* amd64 ppc ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="-* amd64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="capstone debug doc source +threads +unicode +zstd"
 
 CDEPEND=">=dev-lisp/asdf-3.3:=
@@ -160,6 +160,9 @@ src_configure() {
 
 src_compile() {
 	local bindir="${WORKDIR}"/sbcl-binary
+
+	# Bug #869434
+	append-cppflags -D_GNU_SOURCE
 
 	# clear the environment to get rid of non-ASCII strings, see bug #174702
 	# set HOME for paludis

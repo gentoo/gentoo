@@ -15,10 +15,14 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="dev-python/libsass[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/libsass-python[${PYTHON_USEDEP}]
+"
 
-BDEPEND="test? (
-	dev-python/flaky[${PYTHON_USEDEP}]
-)"
+BDEPEND="
+	test? (
+		dev-python/flaky[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest

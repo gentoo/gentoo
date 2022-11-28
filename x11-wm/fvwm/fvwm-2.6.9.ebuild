@@ -11,7 +11,7 @@ SRC_URI="https://github.com/fvwmorg/fvwm/releases/download/${PV}/${P}.tar.gz"
 LICENSE="GPL-2+ FVWM"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~ppc64 ~riscv ~sparc x86"
-IUSE="bidi debug doc netpbm nls perl png readline rplay stroke svg tk truetype +vanilla xinerama lock"
+IUSE="bidi debug doc netpbm nls perl png readline stroke svg tk truetype +vanilla xinerama lock"
 
 COMMON_DEPEND="
 	sys-libs/zlib
@@ -52,7 +52,6 @@ RDEPEND="${COMMON_DEPEND}
 			>=dev-perl/X11-Protocol-0.56
 		)
 	)
-	rplay? ( media-sound/rplay )
 	lock? ( x11-misc/xlockmore )
 	netpbm? ( media-libs/netpbm )
 "
@@ -86,6 +85,7 @@ src_configure() {
 		--with-imagepath=/usr/include/X11/bitmaps:/usr/include/X11/pixmaps:/usr/share/icons/fvwm
 		--enable-iconv
 		--enable-package-subdirs
+		--without-rplay-library
 		$(use_enable bidi)
 		$(use_enable debug debug-msgs)
 		$(use_enable debug command-log)
@@ -94,7 +94,6 @@ src_configure() {
 		$(use_enable perl perllib)
 		$(use_enable png)
 		$(use_with readline readline-library)
-		$(use_with rplay rplay-library)
 		$(use_with stroke stroke-library)
 		$(use_enable svg rsvg)
 		$(use_enable truetype xft)

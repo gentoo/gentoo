@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/mgba-emu/mgba.git"
 else
 	SRC_URI="https://github.com/mgba-emu/mgba/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 fi
 
 DESCRIPTION="Game Boy Advance Emulator"

@@ -6,13 +6,13 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="C/C++ toolkit for Z39.50v3 clients and servers"
-HOMEPAGE="http://www.indexdata.dk/yaz"
+HOMEPAGE="https://www.indexdata.com/resources/software/yaz/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/indexdata/yaz.git"
 else
-	SRC_URI="http://ftp.indexdata.dk/pub/${PN}/${P}.tar.gz"
+	SRC_URI="https://ftp.indexdata.com/pub/${PN}/${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
 

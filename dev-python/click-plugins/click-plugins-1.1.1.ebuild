@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/click-contrib/click-plugins"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 SLOT="0"
 
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]"

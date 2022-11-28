@@ -16,7 +16,7 @@ HOMEPAGE="https://okular.kde.org https://apps.kde.org/okular/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE="crypt djvu epub +image-backend markdown mobi +pdf +plucker +postscript qml share speech +tiff"
 
 DEPEND="
@@ -70,6 +70,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-21.11.80-tests.patch" # bug 734138
 	"${FILESDIR}/${PN}-20.08.2-hide-mobile-app.patch" # avoid same-name entry
+	"${FILESDIR}/${P}-drop-broken-kf-version-check.patch"
 )
 
 src_configure() {

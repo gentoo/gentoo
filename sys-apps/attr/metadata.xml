@@ -7,6 +7,6 @@
 </maintainer>
 <upstream>
 	<remote-id type="cpe">cpe:/a:attr_project:attr</remote-id>
-	<remote-id type="savannah-nongnu">savannah-nongnu</remote-id>
+	<remote-id type="savannah-nongnu">attr</remote-id>
 </upstream>
 </pkgmetadata>

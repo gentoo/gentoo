@@ -9,8 +9,8 @@ inherit ecm frameworks.kde.org xdg-utils
 DESCRIPTION="Framework for solving common problems such as caching, randomisation, and more"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="dbus fam nls"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
+IUSE="dbus fam"
 
 DEPEND="
 	>=dev-qt/qtcore-${QTMIN}:5[icu]
@@ -19,9 +19,9 @@ DEPEND="
 	fam? ( virtual/fam )
 "
 RDEPEND="${DEPEND}
-	nls? ( >=dev-qt/qttranslations-${QTMIN}:5 )
+	>=dev-qt/qttranslations-${QTMIN}:5
 "
-BDEPEND="nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )"
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
 
 src_configure() {
 	local mycmakeargs=(

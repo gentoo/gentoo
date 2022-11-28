@@ -35,4 +35,7 @@ src_configure() {
 src_install() {
 	default
 	find "${D}" -name "*.la" -delete || die
+	# Collides with sg3_utils
+	# https://bugs.gentoo.org/880899
+	rm "${ED}/usr/sbin/sg_write_buffer" || die
 }

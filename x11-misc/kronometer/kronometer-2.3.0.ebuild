@@ -16,7 +16,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5

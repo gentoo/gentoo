@@ -19,23 +19,24 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="tinywl vulkan x11-backend X"
+IUSE="+hwdata +seatd tinywl +udev vulkan x11-backend X"
 
 DEPEND="
 	>=dev-libs/libinput-1.14.0:0=
 	>=dev-libs/wayland-1.21.0
-	>=dev-libs/wayland-protocols-1.27
-	media-libs/mesa[egl(+),gles2,gbm(+)]
-	sys-auth/seatd:=
-	virtual/libudev
+	>=dev-libs/wayland-protocols-1.28
+	media-libs/mesa[egl(+),gles2]
+	hwdata? ( sys-apps/hwdata:= )
+	seatd? ( sys-auth/seatd:= )
+	udev? ( virtual/libudev )
 	vulkan? (
 		dev-util/glslang:0=
 		dev-util/vulkan-headers:0=
 		media-libs/vulkan-loader:0=
 	)
-	>=x11-libs/libdrm-2.4.113:0=
+	>=x11-libs/libdrm-2.4.114:0=
 	x11-libs/libxkbcommon
-	x11-libs/pixman
+	>=x11-libs/pixman-0.42.0:0=
 	x11-backend? ( x11-libs/libxcb:0= )
 	X? (
 		x11-base/xwayland

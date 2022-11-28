@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.tuxfamily.org/chrony/chrony.git"
 	inherit git-r3
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/mlichvar.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/mlichvar.asc
 	inherit verify-sig
 
 	SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
@@ -27,7 +27,7 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+caps +cmdmon debug html ipv6 libedit libtomcrypt +nettle nss +ntp +nts +phc pps +refclock +rtc samba +seccomp +sechash selinux"
+IUSE="+caps +cmdmon debug html ipv6 libtomcrypt +nettle nss +ntp +nts +phc pps +readline +refclock +rtc samba +seccomp +sechash selinux"
 # nettle > nss > libtomcrypt in configure
 REQUIRED_USE="
 	sechash? ( || ( nettle nss libtomcrypt ) )
@@ -44,12 +44,11 @@ DEPEND="
 		acct-user/ntp
 		sys-libs/libcap
 	)
-	libedit? ( dev-libs/libedit )
-	!libedit? ( sys-libs/readline:= )
 	nettle? ( dev-libs/nettle:= )
 	nss? ( dev-libs/nss:= )
 	nts? ( net-libs/gnutls:= )
 	pps? ( net-misc/pps-tools )
+	readline? ( dev-libs/libedit )
 	seccomp? ( sys-libs/libseccomp )
 "
 RDEPEND="
@@ -68,7 +67,10 @@ BDEPEND="
 if [[ ${PV} == 9999 ]] ; then
 	# Needed for doc generation in 9999
 	REQUIRED_USE+=" html"
-	BDEPEND+=" virtual/w3m"
+	BDEPEND+="
+		sys-devel/bison
+		virtual/w3m
+	"
 else
 	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-mlichvar-20210513 )"
 fi
@@ -111,23 +113,28 @@ src_configure() {
 	local myconf=(
 		$(use_enable seccomp scfilter)
 
-		$(usex caps '' '--disable-linuxcaps')
-		$(usex cmdmon '' '--disable-cmdmon')
-		$(usex debug '--enable-debug' '')
-		$(usex ipv6 '' '--disable-ipv6')
-		$(usex libedit '' '--without-editline')
-		$(usex libtomcrypt '' '--without-tomcrypt')
-		$(usex nettle '' '--without-nettle')
-		$(usex nss '' '--without-nss')
-		$(usex ntp '' '--disable-ntp')
-		$(usex nts '' '--disable-nts')
-		$(usex nts '' '--without-gnutls')
-		$(usex phc '' '--disable-phc')
-		$(usex pps '' '--disable-pps')
-		$(usex refclock '' '--disable-refclock')
-		$(usex rtc '' '--disable-rtc')
-		$(usex samba '--enable-ntp-signd' '')
-		$(usex sechash '' '--disable-sechash')
+		$(usev !caps '--disable-linuxcaps')
+		$(usev !cmdmon '--disable-cmdmon')
+		$(usev debug '--enable-debug')
+		$(usev !ipv6 '--disable-ipv6')
+
+		# USE=readline here means "readline-like functionality"
+		# chrony only supports libedit in terms of the library providing
+		# it.
+		$(usev !readline '--without-editline --disable-readline')
+
+		$(usev !libtomcrypt '--without-tomcrypt')
+		$(usev !nettle '--without-nettle')
+		$(usev !nss '--without-nss')
+		$(usev !ntp '--disable-ntp')
+		$(usev !nts '--disable-nts')
+		$(usev !nts '--without-gnutls')
+		$(usev !phc '--disable-phc')
+		$(usev !pps '--disable-pps')
+		$(usev !refclock '--disable-refclock')
+		$(usev !rtc '--disable-rtc')
+		$(usev samba '--enable-ntp-signd')
+		$(usev !sechash '--disable-sechash')
 
 		--chronysockdir="${EPREFIX}/run/chrony"
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
@@ -150,7 +157,7 @@ src_compile() {
 		emake -C doc man txt
 	fi
 
-	emake all docs $(usex html '' 'ADOC=true')
+	emake all docs $(usev !html 'ADOC=true')
 }
 
 src_install() {

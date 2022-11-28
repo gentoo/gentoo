@@ -46,6 +46,12 @@ FONTDIR=${FONTDIR:-/usr/share/fonts/${FONT_PN}}
 # Array containing fontconfig conf files to install.
 FONT_CONF=( "" )
 
+# @ECLASS_VARIABLE: FONT_OPENTYPE_COMPAT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Determines whether detected BDF and PCF font files should be converted
+# to an SFNT wrapper, for use with newer Pango.
+
 if [[ ${CATEGORY}/${PN} != media-fonts/encodings ]]; then
 	IUSE="X"
 	BDEPEND="X? (
@@ -53,6 +59,31 @@ if [[ ${CATEGORY}/${PN} != media-fonts/encodings ]]; then
 			media-fonts/encodings
 	)"
 fi
+
+if [[ -n ${FONT_OPENTYPE_COMPAT} ]] ; then
+	IUSE+=" +opentype-compat"
+	BDEPEND+=" opentype-compat? ( x11-apps/fonttosfnt )"
+fi
+
+# @FUNCTION: font_wrap_opentype_compat
+# @DESCRIPTION:
+# Converts .bdf and .pcf fonts detected within ${ED} to the OTB wrapper format
+# using x11-apps/fonttosfnt.  Handles optional .gz extension.
+font_wrap_opentype_compat() {
+	local file tmpfile
+
+	while IFS= read -rd '' file; do
+		if [[ ${file} == *.gz ]] ; then
+			tmpfile=${file%.*}
+
+			gzip -cd -- "${file}" > "${tmpfile}" \
+			&& fonttosfnt -v -o "${file%.*}.otb" -- "${tmpfile}" \
+			&& rm -- "${tmpfile}"
+		else
+			fonttosfnt -v -o "${file%.*}.otb" -- "${file}"
+		fi || ! break
+	done < <(find "${ED}" \( -name '*.bdf' -o -name '*.bdf.gz' -o -name '*.pcf' -o -name '*.pcf.gz' \) -type f ! -type l -print0) || die
+}
 
 # @FUNCTION: font_xfont_config
 # @DESCRIPTION:
@@ -149,6 +180,10 @@ font_pkg_setup() {
 # The font src_install function.
 font_src_install() {
 	local dir suffix commondoc
+
+	if [[ -n ${FONT_OPENTYPE_COMPAT} ]] && in_iuse opentype-compat && use opentype-compat ; then
+		font_wrap_opentype_compat
+	fi
 
 	if [[ $(declare -p FONT_S 2>/dev/null) == "declare -a"* ]]; then
 		# recreate the directory structure if FONT_S is an array

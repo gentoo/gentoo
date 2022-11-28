@@ -11,7 +11,7 @@ HOMEPAGE="http://sysprof.com/"
 LICENSE="GPL-3+ GPL-2+"
 API_VERSION="4"
 SLOT="0/${API_VERSION}"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="gtk test +unwind"
 RESTRICT="!test? ( test )"
 

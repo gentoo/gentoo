@@ -1,0 +1,38 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,8 +1,6 @@
+-CXX = c++
+ VERSION = 0.13
+-CXXFLAGS = -O3 -Wall -Wno-deprecated
++CXXFLAGS += -Wall -Wno-deprecated
+ EXECPREFIX =
+-LDFLAGS  = 
+ TARGETS1 = bact_learn${EXEC_PREFIX}
+ TARGETS2 = bact_classify${EXEC_PREFIX}
+ TARGETS3 = bact_mkmodel${EXEC_PREFIX}
+@@ -10,14 +8,11 @@
+ 
+ all: bact_learn bact_mkmodel bact_classify
+ 
+-bact_learn: bact_learn.o ${OBJ}
+-	${CXX} ${CFLAGS} ${LDFLAGS} -o ${TARGETS1} ${OBJ} bact_learn.o ${LDFLAGS}
++bact_learn: ${OBJ}
+ 
+-bact_classify: bact_classify.o ${OBJ}
+-	${CXX} ${CFLAGS} ${LDFLAGS} -o ${TARGETS2} ${OBJ} bact_classify.o ${LDFLAGS}
++bact_classify: ${OBJ}
+ 
+-bact_mkmodel: bact_mkmodel.o ${OBJ}
+-	${CXX} ${CFLAGS} ${LDFLAGS} -o ${TARGETS3} ${OBJ} bact_mkmodel.o ${LDFLAGS}
++bact_mkmodel: ${OBJ}
+ 
+ clean:
+ 	rm -f *.o ${TARGETS1} ${TARGETS2} ${TARGETS3} core *~ *.tar.gz *.exe core* med.model* jp.model*
+@@ -33,7 +28,6 @@
+ 	scp bact-${VERSION}.tar.gz index.html bact.css chasen.org:public_html/software/bact/
+ 
+ check:
+-test:	
+ 	./bact_learn -T1000 med.train med.model 
+ 	./bact_mkmodel -i med.model -o med.model.bin -O med.model.O
+ 	./bact_classify med.test med.model.bin

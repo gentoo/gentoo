@@ -1,0 +1,50 @@
+https://bugs.gentoo.org/881841
+https://github.com/garrigue/labltk/pull/17
+
+From e1e850972c4190686a040574b91d61948cc559b5 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 19 Nov 2022 01:14:25 +0000
+Subject: [PATCH] config: Fix -Wimplicit-int, -Wstrict-prototypes (Clang 16)
+
+Followup to be8c977d320ed40cacb322658d4ceba5e583b3a6.
+
+Clang 16 makes -Wimplicit-int error by default.
+
+Unfortunately, this can lead to misconfiguration or miscompilation of software as configure
+tests may then return the wrong result.
+
+We also fix -Wstrict-prototypes while here as it's easy to do and it prepares
+us for C23.
+
+For more information, see LWN.net [0] or LLVM's Discourse [1], the Gentoo wiki [2],
+or the (new) c-std-porting mailing list [3].
+
+[0] https://lwn.net/Articles/913505/
+[1] https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213
+[2] https://wiki.gentoo.org/wiki/Modern_C_porting
+[3] hosted at lists.linux.dev.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/config/auto-aux/hasgot
++++ b/config/auto-aux/hasgot
+@@ -31,7 +31,7 @@ while : ; do
+ done
+ 
+ (for f in $*; do echo "int $f();"; done
+- echo "int main() {"
++ echo "int main(void) {"
+  for f in $*; do echo "  $f();"; done
+  echo "}") >> hasgot.c
+ 
+--- a/config/auto-aux/tclversion.c
++++ b/config/auto-aux/tclversion.c
+@@ -18,7 +18,7 @@
+ #include <tcl.h>
+ #include <tk.h>
+ 
+-main ()
++int main (void)
+ {
+     puts(TCL_VERSION);
+ }
+

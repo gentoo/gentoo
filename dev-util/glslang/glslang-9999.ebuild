@@ -28,3 +28,10 @@ BDEPEND="${PYTHON_DEPS}"
 
 # Bug 698850
 RESTRICT="test"
+
+multilib_src_configure() {
+	local mycmakeargs=(
+		-DENABLE_PCH=OFF
+	)
+	cmake_src_configure
+}

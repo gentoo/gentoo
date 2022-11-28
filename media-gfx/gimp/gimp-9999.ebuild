@@ -28,23 +28,23 @@ RESTRICT="!test? ( test )"
 # media-libs/{babl,gegl} are required to be built with USE="introspection"
 # to fix the compilation checking of /usr/share/gir-1.0/{Babl-0.1gir,Gegl-0.4.gir}
 COMMON_DEPEND="
+	>=app-accessibility/at-spi2-core-2.46.0
 	>=app-text/poppler-0.90.1[cairo]
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/appstream-glib-0.7.16
-	>=dev-libs/atk-2.34.1
 	>=dev-libs/glib-2.68.0:2
 	>=dev-libs/json-glib-1.4.4
 	dev-libs/libxml2:2
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.21:2
 	>=media-gfx/mypaint-brushes-2.0.2:=
-	>=media-libs/babl-0.1.96[introspection,lcms,vala?]
+	>=media-libs/babl-0.1.98[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
-	>=media-libs/gegl-0.4.38:0.4[cairo,introspection,lcms,vala?]
+	>=media-libs/gegl-0.4.40:0.4[cairo,introspection,lcms,vala?]
 	>=media-libs/gexiv2-0.14.0
 	>=media-libs/harfbuzz-2.6.5:=
-	>=media-libs/lcms-2.9:2
+	>=media-libs/lcms-2.13.1:2
 	media-libs/libjpeg-turbo
 	>=media-libs/libmypaint-1.6.1:=
 	>=media-libs/libpng-1.6.37:0=
@@ -57,7 +57,7 @@ COMMON_DEPEND="
 	>=x11-libs/pango-1.44.7
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
-	heif? ( >=media-libs/libheif-1.9.1:= )
+	heif? ( >=media-libs/libheif-1.13.0:= )
 	javascript? ( dev-libs/gjs )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.1:2= )
 	jpegxl? ( >=media-libs/libjxl-0.6.1:= )

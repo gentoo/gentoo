@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit git-r3 python-any-r1 toolchain-funcs
 
 DESCRIPTION="Self-syncing tree-merging file system based on FUSE"
@@ -16,7 +16,7 @@ KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="sys-fs/fuse:0"
+RDEPEND="sys-fs/fuse:3"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (

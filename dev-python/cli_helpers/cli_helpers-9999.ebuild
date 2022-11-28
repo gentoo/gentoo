@@ -3,13 +3,18 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..11} )
-EGIT_REPO_URI="https://github.com/dbcli/${PN}.git"
+
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python helpers for common CLI tasks"
-HOMEPAGE="https://cli-helpers.rtfd.io/"
-SRC_URI=""
+HOMEPAGE="
+	https://cli-helpers.rtfd.io/
+	https://github.com/dbcli/cli_helpers/
+	https://pypi.org/project/cli-helpers/
+"
+EGIT_REPO_URI="https://github.com/dbcli/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"

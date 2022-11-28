@@ -6,6 +6,6 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="gitlab">cjwatson/libpipeline</remote-id>
+		<remote-id type="gitlab">libpipeline/libpipeline</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -43,12 +43,6 @@ src_configure() {
 
 	tc-export AR
 
-	# getprotobynumber_r doesn't exist on musl, so avoid probing for it
-	# and possibly getting it wrong. TODO: fix configure?
-	# (Grabbed from Alpine Linux: https://git.alpinelinux.org/aports/commit/main/socat/APKBUILD?id=5edc9195355ced3db991c1a7cda5648d52019b11)
-	# bug #831016
-	use elibc_musl && export sc_cv_getprotobynumber_r=2
-
 	econf \
 		$(use_enable ssl openssl) \
 		$(use_enable readline) \

@@ -1,56 +1,53 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 inherit autotools flag-o-matic multilib-minimal toolchain-funcs
-
-if [[ "${PV}" != "9999" ]]; then
-	SRC_PV="$(printf "%u%02u%02u%02u" $(ver_rs 1- " "))"
-	DOC_PV="${SRC_PV}"
-	# DOC_PV="$(printf "%u%02u%02u00" $(ver_rs 1-3 " "))"
-fi
 
 DESCRIPTION="SQL database engine"
 HOMEPAGE="https://sqlite.org/"
 
 # On version updates, make sure to read the forum (https://sqlite.org/forum/forum)
 # for hints regarding test failures, backports, etc.
-if [[ "${PV}" == "9999" ]]; then
-	SRC_URI=""
+if [[ ${PV} == 9999 ]]; then
+	S="${WORKDIR}"/${PN}
+	PROPERTIES="live"
 else
-	SRC_URI="https://sqlite.org/2022/${PN}-src-${SRC_PV}.zip
-		doc? ( https://sqlite.org/2022/${PN}-doc-${DOC_PV}.zip )"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	SRC_PV="$(printf "%u%02u%02u%02u" $(ver_rs 1- " "))"
+	DOC_PV="${SRC_PV}"
+	#DOC_PV="$(printf "%u%02u%02u00" $(ver_rs 1-3 " "))"
+
+	SRC_URI="
+		https://sqlite.org/2022/${PN}-src-${SRC_PV}.zip
+		doc? ( https://sqlite.org/2022/${PN}-doc-${DOC_PV}.zip )
+	"
+	S="${WORKDIR}/${PN}-src-${SRC_PV}"
+
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="public-domain"
 SLOT="3"
 IUSE="debug doc icu +readline secure-delete static-libs tcl test tools"
-if [[ "${PV}" == "9999" ]]; then
-	PROPERTIES="live"
-fi
 RESTRICT="!test? ( test )"
 
-if [[ "${PV}" == "9999" ]]; then
-	BDEPEND=">=dev-lang/tcl-8.6:0
-		dev-vcs/fossil"
+RDEPEND="
+	sys-libs/zlib:=[${MULTILIB_USEDEP}]
+	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP}] )
+	readline? ( sys-libs/readline:=[${MULTILIB_USEDEP}] )
+	tcl? ( dev-lang/tcl:=[${MULTILIB_USEDEP}] )
+	tools? ( dev-lang/tcl:= )
+"
+DEPEND="
+	${RDEPEND}
+	test? ( >=dev-lang/tcl-8.6:0[${MULTILIB_USEDEP}] )
+"
+BDEPEND=">=dev-lang/tcl-8.6:0"
+if [[ ${PV} == 9999 ]]; then
+	BDEPEND+=" dev-vcs/fossil"
 else
-	BDEPEND="app-arch/unzip
-		>=dev-lang/tcl-8.6:0"
-fi
-RDEPEND="sys-libs/zlib:0=[${MULTILIB_USEDEP}]
-	icu? ( dev-libs/icu:0=[${MULTILIB_USEDEP}] )
-	readline? ( sys-libs/readline:0=[${MULTILIB_USEDEP}] )
-	tcl? ( dev-lang/tcl:0=[${MULTILIB_USEDEP}] )
-	tools? ( dev-lang/tcl:0= )"
-DEPEND="${RDEPEND}
-	test? ( >=dev-lang/tcl-8.6:0[${MULTILIB_USEDEP}] )"
-
-if [[ "${PV}" == "9999" ]]; then
-	S="${WORKDIR}/${PN}"
-else
-	S="${WORKDIR}/${PN}-src-${SRC_PV}"
+	BDEPEND+=" app-arch/unzip"
 fi
 
 _fossil_fetch() {
@@ -128,7 +125,7 @@ fossil_fetch() {
 }
 
 src_unpack() {
-	if [[ "${PV}" == "9999" ]]; then
+	if [[ ${PV} == 9999 ]]; then
 		fossil_fetch sqlite https://sqlite.org/src "${WORKDIR}/${PN}"
 		if use doc; then
 			fossil_fetch sqlite-doc https://sqlite.org/docsrc "${WORKDIR}/${PN}-doc"
@@ -139,10 +136,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply_user
+	default
 
 	eautoreconf
-
 	multilib_copy_sources
 }
 
@@ -197,7 +193,7 @@ multilib_src_configure() {
 	# https://sqlite.org/fts3.html
 	# https://sqlite.org/fts5.html
 	append-cppflags -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS4
-	options+=(--enable-fts5)
+	options+=( --enable-fts5 )
 
 	# Support hidden columns.
 	append-cppflags -DSQLITE_ENABLE_HIDDEN_COLUMNS
@@ -275,10 +271,8 @@ multilib_src_configure() {
 	# https://sqlite.org/uri.html
 	append-cppflags -DSQLITE_USE_URI
 
-	# debug USE flag.
-	options+=($(use_enable debug))
+	options+=( $(use_enable debug) )
 
-	# icu USE flag.
 	if use icu; then
 		# Support ICU extension.
 		# https://sqlite.org/compile.html#enable_icu
@@ -286,16 +280,15 @@ multilib_src_configure() {
 		sed -e "s/^TLIBS = @LIBS@/& -licui18n -licuuc/" -i Makefile.in || die "sed failed"
 	fi
 
-	# readline USE flag.
 	options+=(
 		--disable-editline
 		$(use_enable readline)
 	)
+
 	if use readline; then
-		options+=(--with-readline-inc="-I${ESYSROOT}/usr/include/readline")
+		options+=( --with-readline-inc="-I${ESYSROOT}/usr/include/readline" )
 	fi
 
-	# secure-delete USE flag.
 	if use secure-delete; then
 		# Enable secure_delete pragma by default.
 		# https://sqlite.org/compile.html#secure_delete
@@ -303,8 +296,7 @@ multilib_src_configure() {
 		append-cppflags -DSQLITE_SECURE_DELETE
 	fi
 
-	# static-libs USE flag.
-	options+=($(use_enable static-libs static))
+	options+=( $(use_enable static-libs static) )
 
 	# tcl, test, tools USE flags.
 	if use tcl || use test || { use tools && multilib_is_native_abi; }; then
@@ -313,7 +305,7 @@ multilib_src_configure() {
 			--with-tcl="${ESYSROOT}/usr/$(get_libdir)"
 		)
 	else
-		options+=(--disable-tcl)
+		options+=( --disable-tcl )
 	fi
 
 	if [[ "${ABI}" == "x86" ]]; then
@@ -335,13 +327,13 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	emake HAVE_TCL="$(usex tcl 1 "")" TCLLIBDIR="${EPREFIX}/usr/$(get_libdir)/${P}"
+	emake HAVE_TCL="$(usev tcl 1)" TCLLIBDIR="${EPREFIX}/usr/$(get_libdir)/${P}"
 
 	if use tools && multilib_is_native_abi; then
 		emake changeset dbdump dbhash dbtotxt index_usage rbu scrub showdb showjournal showshm showstat4 showwal sqldiff sqlite3_analyzer sqlite3_checker sqlite3_expert sqltclsh
 	fi
 
-	if [[ "${PV}" == "9999" ]] && use doc && multilib_is_native_abi; then
+	if [[ ${PV} == 9999 ]] && use doc && multilib_is_native_abi; then
 		emake tclsqlite3.c
 
 		local build_directory="$(pwd)"
@@ -366,11 +358,11 @@ multilib_src_test() {
 	local -x SQLITE_HISTORY="${T}/sqlite_history_${ABI}"
 
 	# e_uri.test tries to open files in /.
-	# https://bugs.gentoo.org/839798
+	# bug #839798
 	local SANDBOX_PREDICT=${SANDBOX_PREDICT}
 	addpredict "/test.db:/ÿ.db"
 
-	emake HAVE_TCL="$(usex tcl 1 "")" $(use debug && echo fulltest || echo test)
+	emake HAVE_TCL="$(usex tcl 1 "")" $(usex debug 'fulltest' 'test')
 }
 
 multilib_src_install() {
@@ -413,14 +405,14 @@ multilib_src_install_all() {
 	doman sqlite3.1
 
 	if use doc; then
-		if [[ "${PV}" == "9999" ]]; then
+		if [[ ${PV} == 9999 ]]; then
 			pushd "${WORKDIR}/${PN}-doc-build/doc" > /dev/null || die
 		else
 			pushd "${WORKDIR}/${PN}-doc-${DOC_PV}" > /dev/null || die
 		fi
 
 		find "(" -name "*.db" -o -name "*.txt" ")" -delete || die
-		if [[ "${PV}" != "9999" ]]; then
+		if [[ ${PV} != 9999 ]]; then
 			rm search search.d/admin || die
 			rmdir search.d || die
 			find -name "*~" -delete || die

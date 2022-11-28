@@ -8,7 +8,7 @@ inherit toolchain-funcs
 MY_PV=$(ver_rs 3 "")
 
 DESCRIPTION="A 100% compatible, enhanced implementation of the make alternative Jam"
-HOMEPAGE="http://freetype.sourceforge.net/jam/index.html"
+HOMEPAGE="https://freetype.sourceforge.net/jam/index.html"
 SRC_URI="http://david.freetype.org/jam/ftjam-${MY_PV}.tar.bz2"
 
 LICENSE="perforce GPL-2"

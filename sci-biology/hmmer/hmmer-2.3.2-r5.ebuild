@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Sequence analysis using profile hidden Markov models"
 HOMEPAGE="http://hmmer.org/"
@@ -23,6 +23,9 @@ PATCHES=(
 )
 
 src_configure() {
+	# required to expose pthread_setconcurrency(), #882279
+	append-cppflags -D_XOPEN_SOURCE=500
+
 	# prevent stray environmental variable
 	# from causing issues in the test phase
 	unset TMPDIR

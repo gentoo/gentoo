@@ -7,5 +7,15 @@
 		offline email sync. Integrable with a lot of other utilities for additional
 		functionality for managing emails.
 	</longdescription>
-	<!-- maintainer-needed -->
-	</pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>efe.izbudak@metu.edu.tr</email>
+		<name>Efe İzbudak</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">LukeSmithxyz/mutt-wizard</remote-id>
+	</upstream>
+</pkgmetadata>

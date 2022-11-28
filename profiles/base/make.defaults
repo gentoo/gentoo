@@ -104,6 +104,12 @@ LCD_DEVICES="bayrad cfontz cfontz633 glk hd44780 lb216 lcdm001 mtxorb ncurses te
 # Updated to include ruby27 on 2021-10-10
 RUBY_TARGETS="ruby27"
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-10-22)
+# These USE flags are what is common between the various sub-profiles. Stages 2
+# and 3 are built against these, so be careful what you add.
+# Moved here from releases/
+USE="acl bzip2 gdbm nptl unicode"
+
 # Enable extended filesystem attribute support by default.
 # https://archives.gentoo.org/gentoo-dev/message/ba0e3457e4b807e79816f0df03566af0
 USE="${USE} xattr"
@@ -166,10 +172,10 @@ POSTGRES_TARGETS="postgres12 postgres13"
 #
 PHP_TARGETS="php7-4 php8-0"
 
-# Alfredo Tupone <tupone@gentoo.org> (2019-09-03)
+# Alfredo Tupone <tupone@gentoo.org> (2022-11-16)
 #
 # Default ADA target
-ADA_TARGET="gnat_2020"
+ADA_TARGET="gnat_2021"
 
 # Marek Szuba <marecki@gentoo.org> (2020-10-15)
 # Default targets for lua{,-single}.eclass

@@ -4,7 +4,7 @@
 EAPI=8
 
 # Python is required for tests and some build tasks.
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit cmake-multilib python-any-r1
 
@@ -21,7 +21,7 @@ else
 			-> ${P}.tar.gz"
 		S="${WORKDIR}"/googletest-${GOOGLETEST_COMMIT}
 	fi
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Google C++ Testing Framework"
@@ -33,10 +33,6 @@ IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( ${PYTHON_DEPS} )"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.10.0_p20200702-increase-clone-stack-size.patch
-)
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
@@ -60,6 +56,11 @@ multilib_src_configure() {
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
 	cmake_src_configure
+}
+
+multilib_src_test() {
+	# Exclude tests that fail with FEATURES="usersandbox"
+	cmake_src_test -E "googletest-death-test-test"
 }
 
 multilib_src_install_all() {

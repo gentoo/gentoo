@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Libsecret"
 LICENSE="LGPL-2.1+ Apache-2.0" # Apache-2.0 license is used for tests only
 SLOT="0"
 
-IUSE="+crypt gtk-doc +introspection test tpm +vala"
+IUSE="+crypt gtk-doc +introspection test test-rust tpm +vala"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	vala? ( introspection )
@@ -45,7 +45,7 @@ BDEPEND="
 			dev-python/mock[${PYTHON_USEDEP}]
 			dev-python/dbus-python[${PYTHON_USEDEP}]
 			introspection? ( dev-python/pygobject:3[${PYTHON_USEDEP}] )')
-		introspection? ( >=dev-libs/gjs-1.32 )
+		test-rust? ( introspection? ( >=dev-libs/gjs-1.32 ) )
 		tpm? (
 			app-crypt/swtpm
 			app-crypt/tpm2-abrmd

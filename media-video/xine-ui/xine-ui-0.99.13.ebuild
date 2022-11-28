@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools gnome2-utils xdg-utils
+inherit autotools xdg-utils
 
 DESCRIPTION="Xine movie player"
 HOMEPAGE="https://xine-project.org/home"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/xine/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 ~riscv x86"
 IUSE="aalib curl debug libcaca lirc nls readline vdr X xinerama"
 
 RDEPEND="

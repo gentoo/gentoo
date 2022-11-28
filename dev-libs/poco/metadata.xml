@@ -33,10 +33,11 @@ done quickly and working on the features that make their application unique.
 		<flag name="7z">Add Support for the 7z archive format</flag>
 		<flag name="activerecord">Add ActiveRecord support</flag>
 		<flag name="cppparser">Build and install a minimal C++ parser</flag>
-		<flag name="crypto">Encryption and digital signing classes</flag>
+		<flag name="crypto" restrict="&lt;=dev-libs/poco-1.12.2-r1">Encryption and digital signing classes</flag>
 		<flag name="data">Database abstraction layer to easily send/retrieve data to/from various databases</flag>
 		<flag name="file2pagecompiler">Utility to convert ordinary files to Page Compiler source files</flag>
 		<flag name="json">Add JSON support</flag>
+		<flag name="jwt" restrict="&gt;=dev-libs/poco-1.12.2-r1">Add JSON Web Token support</flag>
 		<flag name="mariadb">Prefer <pkg>dev-db/mariadb-connector-c</pkg> over <pkg>dev-db/mysql-connector-c</pkg></flag>
 		<flag name="mongodb">Add <pkg>dev-db/mongodb</pkg> support</flag>
 		<flag name="net">Classes to write network clients &amp; servers</flag>

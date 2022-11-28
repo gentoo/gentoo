@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>asturm@gentoo.org</email>
-		<name>Andreas Sturmlechner</name>
-	</maintainer>
+    <maintainer type="person">
+        <email>mpagano@gentoo.org</email>
+        <name>Mike Pagano</name>
+    </maintainer>
 </pkgmetadata>

@@ -9,10 +9,11 @@ MYP="JAGS-${PV}"
 
 DESCRIPTION="Just Another Gibbs Sampler for Bayesian MCMC simulation"
 HOMEPAGE="https://mcmc-jags.sourceforge.io/"
-SRC_URI="mirror://sourceforge/project/mcmc-jags/JAGS/4.x/Source/${MYP}.tar.gz"
+SRC_URI="mirror://sourceforge/project/mcmc-jags/JAGS/$(ver_cut 1).x/Source/${MYP}.tar.gz"
+S="${WORKDIR}/${MYP}"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
@@ -26,9 +27,8 @@ BDEPEND="
 	doc? (
 		virtual/latex-base
 		dev-texlive/texlive-latexextra
-	)"
-
-S="${WORKDIR}/${MYP}"
+	)
+"
 
 src_configure() {
 	econf \

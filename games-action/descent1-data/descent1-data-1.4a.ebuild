@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="cdinstall? ( http://www.dxx-rebirth.com/download/dxx/misc/descent-game-
 	!cdinstall? ( ${MY_EXE} )"
 LICENSE="descent-data"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="doc"
 RESTRICT="bindist !cdinstall? ( fetch )"
 

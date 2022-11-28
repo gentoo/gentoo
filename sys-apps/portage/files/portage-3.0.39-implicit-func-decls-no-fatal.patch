@@ -1,0 +1,34 @@
+https://github.com/gentoo/portage/commit/0fdbbbdb5a80e331adf701f2b2c1f096695447c4
+
+From 0fdbbbdb5a80e331adf701f2b2c1f096695447c4 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 20 Nov 2022 23:32:08 +0000
+Subject: [PATCH] install-qa-check.d/90gcc-warnings: don't make implicit func
+ decls fatal for now
+
+We need to do this at some point (as Clang 16 and GCC 14 are doing it, and
+they indicate runtime problems anyway), but there's too much breakage for now.
+
+We did find some extra bugs though. The main issue is too much high-profile
+stuff breaks rather than the total number of bugs, wrt Portage behaviour
+changing being suitable or not.
+
+Bug: https://bugs.gentoo.org/870412
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/bin/install-qa-check.d/90gcc-warnings
++++ b/bin/install-qa-check.d/90gcc-warnings
+@@ -153,9 +153,10 @@ gcc_warn_check() {
+ 			#	always_overflow=yes
+ 			#fi
+ 
+-			if [[ ${f} == *'[-Wimplicit-function-declaration]'* ]] ; then
+-				implicit_func_decl=yes
+-			fi
++			# Disabled for now because too many failures. bug #870412.
++			#if [[ ${f} == *'[-Wimplicit-function-declaration]'* ]] ; then
++			#	implicit_func_decl=yes
++			#fi
+ 
+ 			if [[ ${always_overflow} = yes || ${implicit_func_decl} = yes ]] ; then
+ 				eerror
+

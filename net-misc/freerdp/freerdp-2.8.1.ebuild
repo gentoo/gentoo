@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake flag-o-matic
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -89,6 +89,9 @@ BDEPEND="
 "
 
 src_configure() {
+	# bug #881695
+	filter-lto
+
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)
 		-DCHANNEL_URBDRC=$(usex usb ON OFF)

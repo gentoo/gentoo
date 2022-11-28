@@ -5,7 +5,7 @@ EAPI=8
 
 XORG_TARBALL_SUFFIX="xz"
 XORG_EAUTORECONF="no"
-inherit xorg-3 meson
+inherit flag-o-matic xorg-3 meson
 EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 
 DESCRIPTION="X.Org X servers"
@@ -103,10 +103,12 @@ PATCHES=(
 )
 
 src_configure() {
+	# bug #835653
+	use x86 && replace-flags -Os -O2
+
 	# localstatedir is used for the log location; we need to override the default
 	#	from ebuild.sh
 	# sysconfdir is used for the xorg.conf location; same applies
-
 	local emesonargs=(
 		--localstatedir "${EPREFIX}/var"
 		--sysconfdir "${EPREFIX}/etc/X11"

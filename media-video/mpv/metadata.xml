@@ -33,7 +33,6 @@
 		<flag name="sndio">Enable sound support via <pkg>media-sound/sndio</pkg></flag>
 		<flag name="tools">Install extra tools: mpv_identify.sh, mpv_idet.sh, and umpv</flag>
 		<flag name="uchardet">Enable subtitles charset discovery via <pkg>app-i18n/uchardet</pkg></flag>
-		<flag name="vector">Use function implementations more amenable to vectorization (gives speedup). Made optional in case of bugs.</flag>
 		<flag name="vulkan">Enable support for various Vulkan-based video backends</flag>
 		<flag name="zimg">Enable libzimg support (for vf_fingerprint)</flag>
 	</use>

@@ -11,7 +11,7 @@ SRC_URI="https://constexpr.org/innoextract/files/${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~m68k x86"
+KEYWORDS="amd64 ~arm ~arm64 ~m68k ~ppc64 x86"
 IUSE="debug +iconv +lzma"
 
 RDEPEND="

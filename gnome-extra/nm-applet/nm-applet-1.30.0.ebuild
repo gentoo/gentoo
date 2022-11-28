@@ -4,7 +4,7 @@
 EAPI=8
 GNOME_ORG_MODULE="network-manager-applet"
 
-inherit gnome.org meson xdg
+inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="NetworkManager connection editor and applet"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="appindicator modemmanager selinux teamd"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.40:2
@@ -48,4 +48,14 @@ src_configure() {
 		-Dld_gc=false
 	)
 	meson_src_configure
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	gnome2_schemas_update
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	gnome2_schemas_update
 }

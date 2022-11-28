@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,10 +8,10 @@ WX_GTK_VER=3.0
 inherit cmake wxwidgets multilib flag-o-matic
 
 DESCRIPTION="Math Graphics Library"
-HOMEPAGE="http://mathgl.sourceforge.net/"
+HOMEPAGE="https://mathgl.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz mirror://sourceforge/${PN}/STIX_font.tgz"
 
-LICENSE="LGPL-3"
+LICENSE="LGPL-3+"
 SLOT="0/7.5.0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc fltk gif glut gsl hdf hdf5 jpeg mpi octave opengl openmp pdf

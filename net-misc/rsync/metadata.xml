@@ -11,6 +11,7 @@
 		<remote-id type="github">WayneD/rsync</remote-id>
 	</upstream>
 	<use>
+		<flag name="rrsync">Install rrsync script to setup restricted rsync users via ssh logins</flag>
 		<flag name="stunnel">Provide helper scripts for using rsync via &gt;=<pkg>net-misc/stunnel</pkg>-4</flag>
 		<flag name="system-zlib">Use system zlib instead of bundled one. This is incompatible with older rsync releases!</flag>
 		<flag name="xxhash">Enable <pkg>dev-libs/xxhash</pkg> support for hashing</flag>

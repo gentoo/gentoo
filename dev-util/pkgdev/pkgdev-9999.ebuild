@@ -3,9 +3,9 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=standalone
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
+inherit distutils-r1 optfeature
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/pkgcore/pkgdev.git
@@ -24,44 +24,49 @@ SLOT="0"
 IUSE="doc"
 
 if [[ ${PV} == *9999 ]] ; then
-	# https://github.com/pkgcore/pkgdev/blob/main/requirements/dev.txt
 	RDEPEND="
 		~dev-python/snakeoil-9999[${PYTHON_USEDEP}]
 		~dev-util/pkgcheck-9999[${PYTHON_USEDEP}]
 		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]
 	"
 else
-	# https://github.com/pkgcore/pkgdev/blob/main/requirements/install.txt
 	RDEPEND="
-		>=dev-python/snakeoil-0.10.1[${PYTHON_USEDEP}]
+		>=dev-python/snakeoil-0.10.3[${PYTHON_USEDEP}]
 		>=dev-util/pkgcheck-0.10.16[${PYTHON_USEDEP}]
 		>=sys-apps/pkgcore-0.12.16[${PYTHON_USEDEP}]
 	"
 fi
 
-# Uses pytest but we want to use the setup.py runner to get generated modules
-BDEPEND+="test? ( dev-python/pytest )"
-RDEPEND+="dev-vcs/git"
+RDEPEND+="
+	dev-vcs/git
+"
+BDEPEND="
+	>=dev-python/flit_core-3.8[${PYTHON_USEDEP}]
+	test? (
+		x11-misc/xdg-utils
+	)
+"
 
-distutils_enable_sphinx doc
-distutils_enable_tests setup.py
+distutils_enable_sphinx doc \
+	">=dev-python/snakeoil-0.10.3" \
+	dev-python/tomli
+distutils_enable_tests pytest
 
 python_compile_all() {
-	if use doc; then
-		"${EPYTHON}" setup.py build_man -f || die
-	fi
+	use doc && emake PYTHON="${EPYTHON}" man
 
-	# HTML pages only
-	sphinx_compile_all
+	sphinx_compile_all # HTML pages only
 }
 
 python_install_all() {
 	# If USE=doc, there'll be newly generated docs which we install instead.
-	if use doc; then
+	if use doc || [[ ${PV} != *9999 ]]; then
 		doman build/sphinx/man/*
-	elif [[ ${PV} != *9999 ]]; then
-		doman man/*.[0-8]
 	fi
 
 	distutils-r1_python_install_all
+}
+
+pkg_postinst() {
+	optfeature "sending email support" x11-misc/xdg-utils
 }

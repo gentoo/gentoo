@@ -102,7 +102,7 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
+	emake -j1 CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 }
 
 multilib_src_install_all() {

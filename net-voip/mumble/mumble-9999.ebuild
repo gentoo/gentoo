@@ -11,7 +11,20 @@ HOMEPAGE="https://wiki.mumble.info"
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mumble-voip/mumble.git"
-	EGIT_SUBMODULES=( '-*' celt-0.7.0-src celt-0.11.0-src themes/Mumble 3rdparty/rnnoise-src 3rdparty/FindPythonInterpreter 3rdparty/tracy 3rdparty/gsl )
+
+	# needed for the included 3rdparty license script,
+	# even if these components may not be compiled in
+	EGIT_SUBMODULES=(
+		'-*'
+		themes/Mumble
+		3rdparty/FindPythonInterpreter
+		3rdparty/gsl
+		3rdparty/minhook
+		3rdparty/rnnoise-src
+		3rdparty/speexdsp
+		3rdparty/tracy
+		opus
+	)
 else
 	if [[ "${PV}" == *_pre* ]] ; then
 		SRC_URI="https://dev.gentoo.org/~concord/distfiles/${P}.tar.xz"
@@ -85,7 +98,6 @@ src_configure() {
 
 	local mycmakeargs=(
 		-Dalsa="$(usex alsa)"
-		-Dbundled-celt="ON"
 		-Dbundled-json="OFF"
 		-Dbundled-opus="OFF"
 		-Dbundled-speex="OFF"
@@ -111,6 +123,11 @@ src_configure() {
 	if [[ "${PV}" != 9999 ]] ; then
 		mycmakeargs+=( -DBUILD_NUMBER="$(ver_cut 3)" )
 	fi
+
+	# https://bugs.gentoo.org/879569
+	# convert absolute install paths to relative paths to satisfy path assertions
+	mycmakeargs+=( -DCMAKE_INSTALL_MANDIR="$(realpath --relative-to="${S}" "${ED}"/usr/share/man)" )
+	mycmakeargs+=( -DCMAKE_INSTALL_DOCDIR="$(realpath --relative-to="${S}" "${ED}"/usr/share/doc/"${PF}")" )
 
 	# https://bugs.gentoo.org/832978
 	# fix tests (and possibly runtime issues) on arches with unsigned chars

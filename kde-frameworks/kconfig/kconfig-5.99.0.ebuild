@@ -10,8 +10,8 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework for reading and writing configuration"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="dbus nls qml"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
+IUSE="dbus qml"
 
 # bug 560086
 RESTRICT="test"
@@ -25,7 +25,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( >=dev-qt/qtconcurrent-${QTMIN}:5 )
 "
-BDEPEND="nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )"
+BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
 
 DOCS=( DESIGN docs/{DESIGN.kconfig,options.md} )
 

@@ -1,0 +1,83 @@
+https://github.com/zlin/wgetpaste/pull/38
+
+From 3470bbe651c2264a7f985f3b86f67a6ff6d0c587 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 22 Nov 2022 01:29:16 +0000
+Subject: [PATCH 1/3] test: respect TMPDIR in mktemp (pass --tmpdir)
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/test/test.sh
++++ b/test/test.sh
+@@ -7,7 +7,7 @@
+ # Don't assume the test is being run from the same directory as the script
+ TEST_DIR="$(dirname "$0")"
+ TEST_FILE="$TEST_DIR/test.txt"
+-DL_DIR="$(mktemp -q -d /tmp/wgetpaste_test.XXXXX)"
++DL_DIR="$(mktemp -q --tmpdir -d wgetpaste_test.XXXXX)"
+ # Services to hard skip
+ # Pre-declare as map to maintain type even if empty
+ # key -> value := service -> reason
+--- a/test/test_ansi.sh
++++ b/test/test_ansi.sh
+@@ -9,7 +9,7 @@
+ TEST_DIR="$(dirname "$0")"
+ ANSI_FILE="$TEST_DIR/red.txt"
+ NOANSI_FILE="$TEST_DIR/red_no_ansi.txt"
+-DL_DIR="$(mktemp -q -d /tmp/wgetpaste_test_ansi.XXXXX)"
++DL_DIR="$(mktemp -q --tmpdir -d wgetpaste_test_ansi.XXXXX)"
+ # Services to hard skip
+ # Pre-declare as map to maintain type even if empty
+ # key -> value := service -> reason
+
+From 0c3cc1a5286c95a5bcd6408035f6c230350c1565 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 22 Nov 2022 01:29:40 +0000
+Subject: [PATCH 2/3] test: use portable bash shebang
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/test/test.sh
++++ b/test/test.sh
+@@ -1,4 +1,4 @@
+-#! /bin/bash
++#!/usr/bin/env bash
+ 
+ # wgetpaste test script
+ # Exit code: number of mismatched downloads or 1 for general failure
+--- a/test/test_ansi.sh
++++ b/test/test_ansi.sh
+@@ -1,4 +1,4 @@
+-#! /bin/bash
++#!/usr/bin/env bash
+ 
+ # wgetpaste test script (stripping ANSI codes)
+ # Based on test/test.sh
+
+From 8d1cf7a8d0ce9ff21a8e1dc66169b04e4f8fc852 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 22 Nov 2022 01:29:55 +0000
+Subject: [PATCH 3/3] test: normalise copyright header
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/test/test.sh
++++ b/test/test.sh
+@@ -2,7 +2,7 @@
+ 
+ # wgetpaste test script
+ # Exit code: number of mismatched downloads or 1 for general failure
+-# Copyright (C) 2021  xxc3nsoredxx
++# Copyright (C) 2022 Oskari Pirhonen <xxc3ncoredxx@gmail.com>
+ 
+ # Don't assume the test is being run from the same directory as the script
+ TEST_DIR="$(dirname "$0")"
+--- a/test/test_ansi.sh
++++ b/test/test_ansi.sh
+@@ -3,7 +3,7 @@
+ # wgetpaste test script (stripping ANSI codes)
+ # Based on test/test.sh
+ # Exit code: number of mismatched downloads or 1 for general failure
+-# Copyright (C) 2022  Oskari Pirhonen <xxc3ncoredxx@gmail.com>
++# Copyright (C) 2022 Oskari Pirhonen <xxc3ncoredxx@gmail.com>
+ 
+ # Don't assume the test is being run from the same directory as the script
+ TEST_DIR="$(dirname "$0")"
+

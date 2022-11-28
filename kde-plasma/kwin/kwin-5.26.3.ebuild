@@ -15,7 +15,7 @@ DESCRIPTION="Flexible, composited Window Manager for windowing systems on Linux"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv"
 IUSE="accessibility caps gles2-only lock multimedia plasma screencast"
 
 RESTRICT="test"

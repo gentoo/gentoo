@@ -18,7 +18,7 @@ IUSE="doc +cthelper +cttimeout systemd"
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.3
-	>=net-libs/libnetfilter_conntrack-1.0.8
+	>=net-libs/libnetfilter_conntrack-1.0.9
 	>=net-libs/libnetfilter_queue-1.0.2
 	>=net-libs/libnfnetlink-1.0.1
 	net-libs/libtirpc

@@ -1,0 +1,22 @@
+From b46d8a8c921a8da6883610ad4b68da95bf59b59e Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Wed, 16 Nov 2022 20:45:38 +0100
+Subject: [PATCH] alsa: force playback start when buffer is full
+
+When we try to play data but the ringbuffer is full, we need to start
+the device or else we will stay in this situation forever and stay
+silent.
+
+Fixes #2830
+--- a/spa/plugins/alsa/alsa-pcm.c
++++ b/spa/plugins/alsa/alsa-pcm.c
+@@ -2128,7 +2128,7 @@ again:
+ 
+ 	state->sample_count += total_written;
+ 
+-	if (SPA_UNLIKELY(!state->alsa_started && total_written > 0))
++	if (SPA_UNLIKELY(!state->alsa_started && (total_written > 0 || frames == 0)))
+ 		do_start(state);
+ 
+ 	return 0;
+GitLab

@@ -1,0 +1,9 @@
+--- wezterm-20221119-145034-49b9839f-orig/Cargo.toml	2022-11-20 08:50:34.000000000 +1100
++++ wezterm-20221119-145034-49b9839f/Cargo.toml	2022-11-23 20:25:13.624137781 +1100
+@@ -23,6 +23,3 @@
+ # https://jakedeichert.com/blog/reducing-rust-incremental-compilation-times-on-macos-by-70-percent/
+ # Disabled because it breaks builds on Windows
+ #split-debuginfo = "unpacked"
+-
+-[patch.crates-io]
+-xcb = {version="1.1.1", git="https://github.com/rust-x-bindings/rust-xcb", rev="a85a4cf8937898b1da972367df4648143ede38ea"}

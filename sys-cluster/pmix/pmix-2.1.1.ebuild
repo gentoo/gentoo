@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="The Process Management Interface (PMI) Exascale"
-HOMEPAGE="https://pmix.github.io/pmix/"
-SRC_URI="https://github.com/pmix/pmix/releases/download/v${PV}/${P}.tar.bz2"
+HOMEPAGE="https://openpmix.github.io/"
+SRC_URI="https://github.com/openpmix/openpmix/releases/download/v${PV}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="BSD"

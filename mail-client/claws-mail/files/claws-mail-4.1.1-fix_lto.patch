@@ -1,0 +1,10 @@
+diff -Naur claws-mail-4.1.1.orig/src/common/utils.h claws-mail-4.1.1/src/common/utils.h
+--- claws-mail-4.1.1.orig/src/common/utils.h	2022-05-06 12:11:04.000000000 +0200
++++ claws-mail-4.1.1/src/common/utils.h	2022-11-18 15:52:41.647794172 +0100
+@@ -24,6 +24,7 @@
+ #define __UTILS_H__
+ 
+ #ifdef HAVE_CONFIG_H
++#  include "config.h"
+ #include "claws-features.h"
+ #endif

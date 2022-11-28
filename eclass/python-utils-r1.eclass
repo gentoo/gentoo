@@ -455,21 +455,21 @@ _python_export() {
 				local d
 				case ${impl} in
 					python2.7)
-						PYTHON_PKG_DEP='>=dev-lang/python-2.7.10_p15:2.7';;
+						PYTHON_PKG_DEP='>=dev-lang/python-2.7.10_p16:2.7';;
 					python3.8)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.8.13:3.8";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.8.15_p3:3.8";;
 					python3.9)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.9.12:3.9";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.9.15_p3:3.9";;
 					python3.10)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.10.4:3.10";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.10.8_p3:3.10";;
 					python3.11)
-						PYTHON_PKG_DEP=">=dev-lang/python-3.11.0_beta4:3.11";;
+						PYTHON_PKG_DEP=">=dev-lang/python-3.11.0_p2:3.11";;
 					python*)
 						PYTHON_PKG_DEP="dev-lang/python:${impl#python}";;
 					pypy)
-						PYTHON_PKG_DEP='>=dev-python/pypy-7.3.9:0=';;
+						PYTHON_PKG_DEP='>=dev-python/pypy-7.3.9-r2:0=';;
 					pypy3)
-						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.9_p1:0=';;
+						PYTHON_PKG_DEP='>=dev-python/pypy3-7.3.9_p9:0=';;
 					*)
 						die "Invalid implementation: ${impl}"
 				esac
@@ -1339,6 +1339,8 @@ epytest() {
 		# not to have DISPLAY at all, causing crashes sometimes
 		# and causing us to miss missing virtualx usage
 		-p no:xvfb
+		# tavern is intrusive and breaks test suites of various packages
+		-p no:tavern
 	)
 	local x
 	for x in "${EPYTEST_DESELECT[@]}"; do

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic libtool
+inherit flag-o-matic libtool multilib
 
 if [[ ${PV} == *9999* ]]; then
 	EHG_REPO_URI="http://hg.code.sf.net/p/xine/xine-lib-1.2"
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	NLS_DEPEND="sys-devel/gettext"
 	NLS_RDEPEND="virtual/libintl"
 else
-	KEYWORDS="amd64 arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm64 ~hppa ppc ppc64 ~riscv x86"
 	SRC_URI="mirror://sourceforge/xine/${P}.tar.xz"
 	NLS_IUSE="nls"
 	NLS_DEPEND="nls? ( sys-devel/gettext )"

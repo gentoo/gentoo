@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<remote-id type="freedesktop-gitlab">libfprint/fprintd</remote-id>
 		<bugs-to>https://gitlab.freedesktop.org/libfprint/fprintd/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

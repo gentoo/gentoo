@@ -5,6 +5,7 @@
 		<email>pkgcore@gentoo.org</email>
 		<name>Pkgcore</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="gentoo">proj/pkgcore/pkgcheck</remote-id>
 		<remote-id type="github">pkgcore/pkgcheck</remote-id>

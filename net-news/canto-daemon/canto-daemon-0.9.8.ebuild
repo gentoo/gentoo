@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml(+),threads(+)"
 inherit distutils-r1

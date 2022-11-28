@@ -5,4 +5,7 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">PerlAlien/Alien-OpenSSL</remote-id>
+  </upstream>
 </pkgmetadata>

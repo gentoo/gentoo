@@ -5,7 +5,7 @@ EAPI=8
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit autotools subversion wxwidgets xdg
+inherit autotools flag-o-matic subversion wxwidgets xdg
 
 DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
 HOMEPAGE="https://codeblocks.org/"
@@ -17,7 +17,7 @@ ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}/code/trunk"
 ESVN_FETCH_CMD="svn checkout --ignore-externals"
 ESVN_UPDATE_CMD="svn update --ignore-externals"
 
-IUSE="contrib debug pch"
+IUSE="contrib debug"
 
 BDEPEND="virtual/pkgconfig"
 
@@ -46,14 +46,22 @@ src_prepare() {
 }
 
 src_configure() {
+	# Bug 858338
+	append-flags -fno-strict-aliasing
+
 	setup-wxwidgets
 
 	econf \
+		--disable-pch \
 		--disable-static \
 		$(use_with contrib boost-libdir "${ESYSROOT}/usr/$(get_libdir)") \
 		$(use_enable debug) \
-		$(use_enable pch) \
 		$(use_with contrib contrib-plugins all)
+}
+
+src_install() {
+	default
+	find "${ED}" -type f -name '*.la' -delete || die
 }
 
 pkg_postinst() {

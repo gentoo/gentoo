@@ -1,0 +1,38 @@
+https://github.com/tomac/yersinia/commit/867b309eced9e02b63412855440cd4f5f7727431
+
+From 5db403f8aa4101589f33246eaa23b5f31228fc3b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 19 Nov 2022 18:43:26 +0000
+Subject: [PATCH] configure: fix -Wimplicit-function-declaration,
+ -Wimplicit-int
+
+Clang 16 makes -Wimplicit-function-declaration and -Wimplicit-int errors by default. Unfortunately,
+this can lead to misconfiguration or miscompilation of software as configure
+tests may then return the wrong result.
+
+For more information, see LWN.net [0] or LLVM's Discourse [1], the Gentoo wiki [2],
+or the (new) c-std-porting mailing list [3].
+
+[0] https://lwn.net/Articles/913505/
+[1] https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213
+[2] https://wiki.gentoo.org/wiki/Modern_C_porting
+[3] hosted at lists.linux.dev.
+
+Followup to 6414681ae99d6a0f460f827648f114aa3cb2e419.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -79,8 +79,10 @@ AC_DEFUN([AC_LBL_UNALIGNED_ACCESS],
+ #       include <sys/types.h>
+ #       include <sys/wait.h>
+ #       include <stdio.h>
++#       include <stdlib.h>
++#       include <unistd.h>
+         unsigned char a[[5]] = { 1, 2, 3, 4, 5 };
+-        main() {
++        int main(void) {
+         unsigned int i;
+         pid_t pid;
+         int status;
+

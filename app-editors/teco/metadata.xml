@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>ulm@gentoo.org</email>
-  <name>Ulrich Müller</name>
+<maintainer type="project">
+  <email>emacs@gentoo.org</email>
+  <name>Gentoo Emacs project</name>
 </maintainer>
 <longdescription lang="en">
   TECO /tee'koh/ /n.,v. obs./ 1. [originally an acronym for `[paper]

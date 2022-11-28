@@ -29,8 +29,8 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 RDEPEND="
-	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
-	lcms? ( >=media-libs/lcms-2.8:2 )
+	introspection? ( >=dev-libs/gobject-introspection-1.72:= )
+	lcms? ( >=media-libs/lcms-2.13.1:2 )
 "
 DEPEND="${RDEPEND}"
 

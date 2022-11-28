@@ -23,7 +23,7 @@ else
 	# fixes are merged into the main source by upstream.
 	#
 	# Cross-compilation to Windows is also supported.
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Descent Rebirth - enhanced Descent 1 & 2 engine"

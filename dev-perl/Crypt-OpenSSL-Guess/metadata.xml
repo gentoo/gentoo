@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">Crypt-OpenSSL-Guess</remote-id>
     <remote-id type="cpan-module">Crypt::OpenSSL::Guess</remote-id>
+    <remote-id type="github">akiym/Crypt-OpenSSL-Guess</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/874990
+--- a/src/enemy.c
++++ b/src/enemy.c
+@@ -984,3 +984,3 @@
+ {
+-  static fr[8] = {0, 0, 1, 1 ,2, 2, 1, 1};
++  static Uint8 fr[8] = {0, 0, 1, 1 ,2, 2, 1, 1};
+ 
+--- a/src/grande.h
++++ b/src/grande.h
+@@ -13,2 +13,3 @@
+ #include <sys/types.h>
++#include <time.h>
+ #include <unistd.h>
+--- a/src/my.c
++++ b/src/my.c
+@@ -527,3 +527,3 @@
+ {
+-  static fr[8] = {0, 1, 0, 1, 2, 1, 2, 3};
++  static Uint8 fr[8] = {0, 1, 0, 1, 2, 1, 2, 3};
+   
+--- a/src/ranking.h
++++ b/src/ranking.h
+@@ -10,2 +10,3 @@
+ void RankingScore(void);
++void ScoreRanking(void);
+ void ReadScore(void);

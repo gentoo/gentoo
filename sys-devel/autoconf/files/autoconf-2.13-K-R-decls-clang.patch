@@ -1,7 +1,7 @@
 https://bugs.gentoo.org/870412
 https://git.savannah.gnu.org/cgit/autoconf.git/commit/?id=8b5e2016c7ed2d67f31b03a3d2e361858ff5299b
 
-Backport the K&R decls fix to 2.69 to avoid configure tests
+Backport the K&R decls fix to 2.13 to avoid configure tests
 failing (often "silently", i.e. doesn't fail the build of
 the package overall, just leads to wrong results) with
 newer compilers like the upcoming Clang 16.

@@ -14,14 +14,14 @@ HOMEPAGE="
 	https://pypi.org/project/pyproject-metadata/
 "
 SRC_URI="
-	https://github.com//FFY00/python-pyproject-metadata/archive/${PV}.tar.gz
+	https://github.com/FFY00/python-pyproject-metadata/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S=${WORKDIR}/python-${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 x86"
+KEYWORDS="amd64 arm arm64 ~ia64 ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]

@@ -6,16 +6,76 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Joonas Niilola <juippis@gentoo.org> (2022-11-25)
+# x11-wm/stumpwm-22.05_p20220818[doc] is totally broken. Bug #882935
+x11-wm/stumpwm doc
+
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2022-11-25)
+# USE=tbb is broken in 7.7.0
+# https://tracker.dev.opencascade.org/view.php?id=33152
+~sci-libs/opencascade-7.7.0 tbb
+
+# Sam James <sam@gentoo.org> (2022-11-24)
+# Depends on old dev-lang/spidermonkey:68, bug #807772
+# Particularly unwise given it parses data from network.
+net-libs/libproxy spidermonkey
+
+# Pascal Jäger <pascal.jaeger@leimstift.de> (2022-11-24)
+# Metamail last rited
+app-text/crm114 mimencode
+
+# Guillermo Joandet <gjoandet@gmail.com> (2022-11-22)
+# app-text/pandoc is not keyworded on most architectures
+net-libs/gssdp man
+
+# Matt Turner <mattst88@gentoo.org> (2022-09-26)
+# Requires nautilus-43.0 which is keyworded everywhere
+>=app-arch/file-roller-43.0 nautilus
+>=app-text/evince-43.0 nautilus
+>=x11-terms/gnome-terminal-3.46 nautilus
+
+# Sam James <sam@gentoo.org> (2022-11-19)
+# Needs long-EOL dev-lang/spidermonkey:60 (which also needs python:2.7).
+media-libs/coin javascript
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-19)
+# Requires packages masked for removal.
+mail-mta/netqmail authcram
+mail-mta/notqmail authcram
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-17)
+# Require packages masked for removal.
+net-analyzer/netdata kinesis
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-17)
+# Requires dev-python/gevent that is masked for removal.
+x11-misc/py3status gevent
+dev-python/rpyc gevent
+mail-filter/pyzor gevent
+www-servers/uwsgi python-gevent
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-17)
+# Requires net-misc/pyhoca-cli that is masked for removal.
+net-misc/remmina x2go
+
+# Matt Turner <mattst88@gentoo.org> (2022-11-16)
+# gnome-music and gnome-photos have not been ported to libsoup:3.0, while
+# other non-slotted dependencies have been.
+gnome-base/gnome-extra-apps tracker
+
+# Matt Turner <mattst88@gentoo.org> (2022-11-16)
+# tracker-miners depends on libsoup:3.0 but USE=rss depends on net-libs/libgrss
+# which has not been ported to libsoup:3.0.
+>=app-misc/tracker-miners-3.4.0-r1 rss
+
+# Marek Szuba <marecki@gentoo.org> (2022-11-14)
+# Incomplete dependency tree, no qmake6 instrumentation in either
+# qmake-utils.eclass nor the ebuilds yet.
+dev-python/pyotherside qt6
+
 # Sam James <sam@gentoo.org> (2022-10-08)
 # Older versions of libvirt need a vulnerable version of wireshark
 <app-emulation/libvirt-8.0.0 wireshark-plugins
-
-# Sam James <sam@gentoo.org> (2022-10-07)
-# media-sound/rplay is masked for removal.
-x11-wm/fvwm3 rplay
-x11-wm/ctwm rplay
-x11-wm/fvwm rplay
-x11-wm/vtwm rplay
 
 # Viorel Munteanu <ceamac.paragon@gmail.com> (2022-10-07)
 # Cannot test and fix pax-kernel related bugs on a current grsec kernel
@@ -30,15 +90,6 @@ app-emulation/virtualbox-modules pax-kernel
 # mask it and can't hold the whole thing up on the compat effort.
 sys-libs/zlib-ng compat
 sys-libs/minizip-ng compat
-
-# Matt Turner <mattst88@gentoo.org> (2022-09-26)
-# Requires nautilus-43.0 which is not in tree yet.
->=x11-terms/gnome-terminal-3.46 nautilus
-
-# Pascal Jaeger <pascal.jaeger@leimstift.de> (2022-09-21)
-# Versions >=43.0 of evince only work with <gnome-base/nautilus-42.2.
-# Allowing that use flag for >=43.0 would stop users from updating nautilus
->=app-text/evince-43.0 nautilus
 
 # Yiyang Wu <xgreenlandforwyy@gmail.com> (2022-09-21)
 # Intolerable mathematical errors found on AMD Radeon VII GPU during src_test,
@@ -148,10 +199,6 @@ dev-python/jupyter_server doc
 # validation failures on some certificates that are otherwise valid.
 # https://github.com/aria2/aria2/issues/1636
 net-misc/aria2 gnutls
-
-# Matt Turner <mattst88@gentoo.org> (2022-03-25)
-# Depends on libsoup:3.0
->=gnome-base/gvfs-1.50 http
 
 # Craig Andrews <candrews@gentoo.org> (2022-03-25)
 # Requires as of yet unreleased QUIC support in OpenSSL
@@ -637,10 +684,6 @@ sci-libs/linux-gpib php
 # Michał Górny <mgorny@gentoo.org> (2017-05-15)
 # Mask ruby20-only compatible packages
 ~media-libs/libcaca-0.99_beta19 ruby
-
-# Matthias Maier <tamiko@gentoo.org> (2017-05-11)
-# Globally mask pie use flag. Selectively unmask on specific profiles.
-sys-devel/gcc pie
 
 # Mike Gilbert <floppym@gentoo.org> (2017-02-16)
 # Multiple test failures.

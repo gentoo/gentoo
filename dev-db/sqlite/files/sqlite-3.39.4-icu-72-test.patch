@@ -1,0 +1,29 @@
+https://sqlite.org/src/vpatch?from=18e89a436daa18a8&to=a2b6883ac2ef878f
+https://sqlite.org/forum/forumpost/072d2fddc4
+https://bugs.gentoo.org/882605
+--- a/test/fts3expr4.test
++++ b/test/fts3expr4.test
+@@ -48,11 +48,20 @@
+ 
+ # In "col:word", if "col" is not the name of a column, the entire thing
+ # is passed to the tokenizer.
+ #
+ do_icu_expr_test 1.7 {a:word} {PHRASE 0 0 word}
+-do_icu_expr_test 1.8 {d:word} {PHRASE 3 0 d:word}
++# do_icu_expr_test 1.8 {d:word} {PHRASE 3 0 d:word}
++do_test 1.8 {
++  set res [
++    db one {SELECT fts3_exprtest('icu en_US', 'd:word', 'a', 'b', 'c')}
++  ]
++  expr {
++    $res=="PHRASE 3 0 d:word" ||
++    $res=="AND {AND {PHRASE 3 0 d} {PHRASE 3 0 :}} {PHRASE 3 0 word}"
++  }
++} 1
+ 
+ set sqlite_fts3_enable_parentheses 0
+ 
+ do_icu_expr_test 2.1 {
+   f (e NEAR/2 a)
+
+

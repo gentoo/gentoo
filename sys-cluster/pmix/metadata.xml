@@ -9,4 +9,7 @@
 		<flag name="munge">Enable authentication via munge</flag>
 		<flag name="pmi">Build PMI1 and PMI2 interface</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">openpmix/openpmix</remote-id>
+	</upstream>
 </pkgmetadata>

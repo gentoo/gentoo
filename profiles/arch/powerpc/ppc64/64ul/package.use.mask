@@ -11,10 +11,6 @@ app-portage/nattka -depgraph-order
 dev-lang/python-exec -python_targets_pypy3
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
-# deps are keyworded
-gnome-base/gnome-extra-apps -tracker
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
 # deps not keyworded
 media-gfx/gnome-photos flickr upnp-av
 

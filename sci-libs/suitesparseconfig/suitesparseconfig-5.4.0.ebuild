@@ -6,7 +6,7 @@ EAPI=7
 inherit multilib-minimal
 
 DESCRIPTION="Common configurations for all packages in suitesparse"
-HOMEPAGE="http://faculty.cse.tamu.edu/davis/suitesparse.html"
+HOMEPAGE="https://people.engr.tamu.edu/davis/suitesparse.html"
 SRC_URI="http://202.36.178.9/sage/${P}.tar.bz2"
 
 # Upstream says, "no licensing restrictions apply to this file or to the

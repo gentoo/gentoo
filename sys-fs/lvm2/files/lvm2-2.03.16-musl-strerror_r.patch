@@ -1,0 +1,23 @@
+From a06e401bd0479f25631bdfeffaa01d150e5efe59 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 18 Nov 2022 17:57:34 +0000
+Subject: [PATCH] Fix strerror_r check for musl
+
+We can't assume that strerror_r returns char* just because _GNU_SOURCE is defined. We already call the appropriate autoconf test, so let's use its result
+(STRERROR_R_CHAR_P).
+
+Note that in configure, _GNU_SOURCE is always set, but we add a defined guard just in case for futureproofing.
+
+Bug: https://bugs.gentoo.org/869404
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/daemons/lvmpolld/lvmpolld-core.c
++++ b/daemons/lvmpolld/lvmpolld-core.c
+@@ -52,7 +52,7 @@ static pthread_key_t key;
+ 
+ static const char *_strerror_r(int errnum, struct lvmpolld_thread_data *data)
+ {
+-#ifdef _GNU_SOURCE
++#if defined(_GNU_SOURCE) && defined(STRERROR_R_CHAR_P)
+ 	return strerror_r(errnum, data->buf, sizeof(data->buf)); /* never returns NULL */
+ #elif (_POSIX_C_SOURCE >= 200112L || _XOPEN_SOURCE >= 600)
+ 	return strerror_r(errnum, data->buf, sizeof(data->buf)) ? "" : data->buf;

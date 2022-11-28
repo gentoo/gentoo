@@ -40,6 +40,7 @@ src_compile() {
 		LUA=${ELUA}
 	)
 
+	mkdir obj || die # race condition (bug #881473)
 	emake "${DEVILSPIE2_ARGS[@]}"
 }
 

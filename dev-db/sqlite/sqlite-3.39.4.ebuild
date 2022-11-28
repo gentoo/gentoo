@@ -53,6 +53,10 @@ else
 	S="${WORKDIR}/${PN}-src-${SRC_PV}"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.39.4-icu-72-test.patch
+)
+
 _fossil_fetch() {
 	local distdir="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}"
 	local repo_id="${1}"
@@ -139,7 +143,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply_user
+	default
 
 	eautoreconf
 

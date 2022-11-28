@@ -1,0 +1,19 @@
+https://bugzilla.netfilter.org/show_bug.cgi?id=1637
+
+From 11965f7020fbadcc9784daf598687841e96ef3fe Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 24 Nov 2022 07:52:01 +0000
+Subject: [PATCH 2/3] Fix -Wstrict-prototypes
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/src/network.c
++++ b/src/network.c
+@@ -113,7 +113,7 @@ void nethdr_track_update_seq(uint32_t seq)
+ 	STATE_SYNC(last_seq_recv) = seq;
+ }
+ 
+-int nethdr_track_is_seq_set()
++int nethdr_track_is_seq_set(void)
+ {
+ 	return local_seq_set;
+ }

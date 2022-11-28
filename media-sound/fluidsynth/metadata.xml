@@ -10,5 +10,6 @@
 	</upstream>
 	<use>
 		<flag name="network">enable network support (requires BSD sockets)</flag>
+		<flag name="pipewire">enable <pkg>media-video/pipewire</pkg> support</flag>
 	</use>
 </pkgmetadata>

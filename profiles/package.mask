@@ -33,12 +33,300 @@
 
 #--- END OF EXAMPLES ---
 
-# Ionen Wolkens <ionen@gentoo.org> (2022-11-11)
-# Had a handful of reports of unbootable systems with this new version.
-# Given it's a still-experimental new branch, mask for now in case.
-# Feel free to unmask if you've had no issues, but otherwise please
-# report to NVIDIA. https://bugs.gentoo.org/881025
-~x11-drivers/nvidia-drivers-525.53
+# John Helmert III <ajak@gentoo.org> (2022-11-27)
+# Unmaintained upstream, several unresolved public vulnerabilities,
+# Removal in 30 days. Bug #882773.
+www-servers/boa
+
+# David Seifert <soap@gentoo.org> (2022-11-27)
+# Broke API for C++, causes massive carnage for consumers.
+# Bug #883223.
+~dev-libs/glib-2.74.2
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-27)
+# Unresolved LICENSE issue for 3 years now.
+# Removal on 2022-12-27.  Bug #694708.
+app-admin/helm
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-27)
+# Broken with OpenSSL-3.  Last upstream activity in 2021, no reply
+# to the bug.
+# Removal on 2022-12-27.  Bug #805233.
+net-dns/dog
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-27)
+# Broken with modern dev-python/setuptools versions.  Last upstream
+# commit in 2018.  No reverse dependencies.
+# Removal on 2022-12-27.  Bug #822840.
+dev-python/slimit
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-27)
+# Unmaintained.  HOMEPAGE is gone.  Uses GTK+2.
+# Removal on 2022-12-27.  Bug #821118.
+games-util/xgamer
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-27)
+# Unmaintained, ancient package.  x11-misc/unclutter-xfixes is
+# a superior replacement.
+# Removal on 2022-12-27.  Bug #880845.
+x11-misc/unclutter
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-27)
+# Unmaintained.  Last bumped in 2005.  Superseded by Python version
+# with last release in 2008, then by vnc2flv with last release in 2010.
+# Removal on 2022-12-27.  Bug #880927.
+x11-misc/vnc2swf
+
+# Michael Mair-Keimberger <mmk@levelnine.at> (2022-11-25)
+# Unmaintained, last release a decade ago, upstream declared it EOL
+# Removal in 30 days.
+net-analyzer/snortsam
+
+# John Helmert III <ajak@gentoo.org> (2022-11-24)
+# Binary package several releases behind the source-based package,
+# multiple vulnerabilities, unmaintained for several years. Removal in
+# 30 days. Bugs #849389, #882783.
+dev-db/percona-xtrabackup-bin
+
+# John Helmert III <ajak@gentoo.org> (2022-11-24)
+# Compatibility issues with openssl-1.1*, numerous build issues, version
+# in tree is EOL upstream. Removal in 30 days. Bug #882759.
+net-misc/cfengine
+
+# Pascal Jäger <pascal.jaeger@leimstift.de> (2022-11-24)
+# No maintainer, last release in 1994. Fails to build
+# with clang-16. Runtime crash in certain conditions.
+# Removal on 2022-12-23.
+# Bugs #549922 #713492 #731256 #875464 #882263
+# Removal Bug: #882631
+net-mail/metamail
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-23)
+# Unpredictable build failures reported.  No revdeps left.
+# dev-libs/opencl-icd-loader is a good replacement.
+# Removal on 2022-12-23.  Bug #733018.
+dev-libs/ocl-icd
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-23)
+# Packages with no maintainer and major issues reported.
+#
+# app-cdr/xbiso: bug #882089, last release in 2005
+# app-emulation/dlx: bug #874933, last release in 2001
+# app-office/sc: bug #877051, last release in 2002
+# net-libs/ortp: bug #874003, last bumped in 2014
+# net-nntp/brag: revdep of app-text/uudeview
+# net-vpn/vtun: bug #875443, last bumped in 2012, last release in 2016
+# sys-apps/fakeroot-ng: bug #851543, last release in 2013
+# sys-apps/pmount-gui: bug #776397, last bumped in 2013, commit in 2019
+# www-apache/mod_common_redirect: bug #874660, bumped in 2010, repo gone
+#
+# Removal on 2022-12-23.
+app-cdr/xbiso
+app-emulation/dlx
+app-office/sc
+net-libs/ortp
+net-nntp/brag
+net-vpn/vtun
+sys-apps/fakeroot-ng
+sys-apps/pmount-gui
+www-apache/mod_common_redirect
+
+# David Seifert <soap@gentoo.org> (2022-11-23)
+# EAPI 6, no revdeps in tree, never made it into upstream boost, library
+# only, last release 6 years ago. Removal on 2022-12-23.
+dev-libs/boost-mpl-cartesian_product
+
+# Matt Turner <mattst88@gentoo.org> (2022-11-16)
+# Packages or their dependencies have not been ported to libsoup:3.0, while
+# other non-slotted dependencies have been.
+media-gfx/gnome-photos
+media-sound/gnome-music
+net-libs/libzapojit
+net-misc/gnome-online-miners
+
+# Ionen Wolkens <ionen@gentoo.org> (2022-11-21)
+# Was added only for dev-python/pytest-bdd which no longer needs it.
+# If using, migrate to stdlib glob which supports `**` since python-3.5.
+# Removal: 2022-12-21.
+dev-python/glob2
+
+# David Seifert <soap@gentoo.org> (2022-11-21)
+# Release more than 30 years (!) old, K&R C, full of implicit function
+# declarations, EAPI 6, problematic license. Bug #729536, #854879, #870736.
+# Removal on 2022-12-21.
+app-text/agrep
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-19)
+# Fails to build.  Last bumped in 2017.  Library with no revdeps.
+# Removal on 2022-12-19.  Bug #630396.
+dev-cpp/pstreams
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-19)
+# Packages with no maintainer and major bugs reported.  They are either
+# inactive upstream, or have not been bumped for a long time.
+#
+# app-emulation/aqemu: bug #806421, last bumped in 2016
+# app-forensics/ovaldi: revdep of dev-libs/xalan-c, last bumped in 2017
+# app-misc/glimpse: bug #684096, last bumped in 2013
+# dev-db/cpp-driver: bug #685936, last bumped in 2019
+# dev-erlang/riakc: bug #722688, last bumped in 2016
+# dev-util/stubgen: bug #839927, last bumped in 2011
+# media-gfx/xzgv: bug #831252, last bumped in 2009
+# net-dns/dnssec-check: bug #571350, last bumped in 2016
+# net-mail/cmd5checkpw: bug #833292, last bumped in 2005
+# net-ftp/gproftpd: bug #550524, last bumped in 2007
+# sys-apps/intel-performance-counter-monitor: bug #728564,
+#                                             last bumped in 2016
+#
+# Removal on 2022-12-19.
+acct-group/cmd5checkpw
+acct-user/cmd5checkpw
+app-emulation/aqemu
+app-forensics/ovaldi
+app-misc/glimpse
+dev-db/cpp-driver
+dev-erlang/riakc
+dev-util/stubgen
+media-gfx/xzgv
+net-dns/dnssec-check
+net-mail/cmd5checkpw
+net-ftp/gproftpd
+sys-apps/intel-performance-counter-monitor
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-19)
+# Packages with reported failures and no maintainer activity.
+#
+# media-sound/retrovol: bug #624136, last bumped in 2013, homepage dead
+# media-sound/umix: bug #726076, last release in 2003 (!)
+#
+# Removal on 2022-12-19.
+media-sound/retrovol
+media-sound/umix
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-19)
+# Agavi and its dependencies that are unmaintained and have no other
+# reverse dependencies.  It has received no activity since 2016,
+# and at least PEAR-VersionControl_SVN has reported test failures.
+# Removal on 2022-12-19.  Bug #737854.
+dev-php/agavi
+dev-php/phing
+dev-php/PEAR-PEAR_PackageFileManager
+dev-php/PEAR-PEAR_PackageFileManager2
+dev-php/PEAR-PEAR_PackageFileManager_Plugins
+dev-php/PEAR-VersionControl_SVN
+dev-php/phpmd
+dev-php/simpletest
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-18)
+# These packages still lack support for Python 3.10.  In general, they
+# did not see any activity recently and either have no maintainer
+# or their respective maintainers did not reply to the bug.  Many
+# of them do not have tests enabled or have unresolved test failures.
+# Removal on 2022-12-18.  Tracker bug #823185.
+app-admin/ansible-cmdb
+app-arch/bloscpack
+app-backup/borgweb
+app-i18n/fcitx-sunpinyin
+app-i18n/ibus-kkc
+app-i18n/ibus-sunpinyin
+app-i18n/libkkc
+app-i18n/libkkc-data
+app-i18n/sunpinyin
+app-i18n/sunpinyin-data
+app-i18n/xsunpinyin
+app-portage/distpatch
+app-text/q-text-as-data
+app-vim/pydiction
+app-vim/vimoutliner
+dev-libs/aws-sdk-cpp
+dev-python/Rx
+dev-python/bert
+dev-python/flask-assets
+dev-python/libpy_simdjson
+dev-python/pytest-salt
+dev-python/requests_pkcs12
+dev-python/slackclient
+dev-python/tvdb_api
+dev-python/webassets
+dev-python/ws4py
+dev-util/comparator
+dev-util/rosinstall_generator
+games-util/pyfa
+mate-extra/caja-hide
+media-gfx/netpaint
+media-plugins/mythplugins
+media-sound/marrie
+media-tv/tvnamer
+net-analyzer/carl
+net-im/skype-dbus-mock
+sci-libs/bmrblib
+sci-mathematics/relational
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-17)
+# Rarely used package with very high maintenance cost.  Hacky, requires
+# explicit support code for every architecture, effectively preventing
+# it from being keyworded on some of the Gentoo architectures.  The test
+# suite is problematic.  The current release blocks dev-python/greenlet
+# upgrade, the new release fails many tests again.
+# Removal on 2022-12-17.  Bug #879011.
+dev-python/gevent
+dev-python/geventhttpclient
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-17)
+# Requires dev-python/gevent that is going to be masked for removal.
+# net-misc/x2goclient remains as a replacement.
+# Removal on 2022-12-17.  Bug #879011.
+net-misc/pyhoca-cli
+net-misc/pyhoca-gui
+net-misc/python-x2go
+
+# Matthew Smith <matthew@gentoo.org> (2022-11-17)
+# libnet:1.0's remaining rdeps. Dead upstreams.
+# Removal on 2022-12-17. Bug #881677
+net-libs/libnet:1.0
+net-analyzer/angst
+net-analyzer/egressor
+net-analyzer/thcrut
+net-dns/dnshijacker
+net-misc/selfdhcp
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-17)
+# No maintainer.  No upstream activity since 2020.  Multiple bugs
+# reported.
+# Removal on 2022-12-17.  Bug #881673.
+app-admin/prelude-manager
+dev-libs/libprelude
+dev-libs/libpreludedb
+net-analyzer/prelude-correlator
+net-analyzer/prelude-lml-rules
+net-analyzer/prelude-lml
+sec-policy/selinux-prelude
+www-apps/prewikka
+
+# Michał Górny <mgorny@gentoo.org> (2022-11-15)
+# Test-restricted since its introduction in 2016.  Not receiving package
+# maintainer's attention.  No revdeps left.
+# Removal on 2022-12-15.  Bug #759931.
+dev-python/pytest-html
+
+# Matt Turner <mattst88@gentoo.org> (2022-11-14)
+# Unmaintained in Gentoo since at least the transition to git. Last release in
+# 2014. Depends on x11-libs/gtk+:2 and gnome-base/gconf. Fails to build with
+# (1) clang-16, (2) with LTO, (3) with -fno-common.
+# Bugs #812137, #864763, #871405, #873886
+# Removal on 2022-12-14
+x11-misc/xnee
+
+# Jonas Stein <jstein@gentoo.org> (2022-11-13)
+# Dead upstream
+# Removal after 2023-01-01.  Bug #881249.
+net-mail/vchkuser
+
+# Matthew Smith <matthew@gentoo.org> (2022-11-13)
+# Please update to Erlang/OTP 25. Removal in 30 days.
+# Bug #864543
+<dev-lang/erlang-25
+<net-misc/rabbitmq-server-3.11.0
 
 # Matt Turner <mattst88@gentoo.org> (2022-11-11)
 # Relies on function no longer present in the Xserver since v1.20
@@ -165,111 +453,10 @@ dev-libs/cloog
 # Removal in 30 days
 dev-python/pweave
 
-# Michał Górny <mgorny@gentoo.org> (2022-10-28)
-# Originally last rited in Aug 2020 due to lack of Python 3 support.
-# The last rites were undone, however this package never got fixed.
-# Instead, it has been covered by incorrect "downgrade" mask since then.
-# Removal on 2022-11-11.  Bug #695010.
-app-i18n/scim-sunpinyin
-
-# Jonas Stein <jstein@gentoo.org> (2022-10-26)
-# Dead upstream, open bugs.
-# Removal after 2022-12-24.  Bug #878337.
-app-misc/tpconfig
-
-# Sam James <sam@gentoo.org> (2022-10-24)
-# Non-free licence which prohibits any patching. Fails to build with Clang 16.
-# Removal on 2022-10-24.
-dev-util/sgb
-sci-misc/gt-itm
-
-# Sam James <sam@gentoo.org> (2022-10-24)
-# Fails to build with Clang 16 (code quality issues), no upstream activity
-# in 7 years. Removal on 2022-11-23. bug #874486, bug #791604.
-games-fps/qudos
-
-# David Seifert <soap@gentoo.org> (2022-10-23)
-# Dead package, upstream gone, GTK+2, fails to build with Clang 16 and
-# tests fail. Removal on 2022-11-22. Bug #741200, #875686.
-sci-calculators/grpn
-
-# Hans de Graaff <graaff@gentoo.org> (2022-10-22)
-# Last release upstream 10 years ago. No longer compiles with latest
-# clang (bug #875254) and doubtful that this actually works with recent
-# ruby versions.
-# Masked for removal in 30 days.
-dev-ruby/ruby-sdl
-
-# Michał Górny <mgorny@gentoo.org> (2022-10-21)
-# Barely maintained upstream.  Still lacking support for Python 3.10.
-# All revdeps in Gentoo were pure test deps, and only optional
-# (because they would otherwise block Python 3.10).
-# Removal on 2022-11-20.  Bug #845723.
-dev-python/eventlet
-
-# David Seifert <soap@gentoo.org> (2022-10-18)
-# Dead package, use dev-util/nvidia-cuda-toolkit instead. Examples were
-# removed in 11.6, no revdeps left. Removal on 2022-11-17.
-# Bug #722092, #749900, #762169, #840656, #845381, #858392, #866701.
-dev-util/nvidia-cuda-sdk
-
-# Michał Górny <mgorny@gentoo.org> (2022-10-17)
-# Unmaintained since 2018.  Requires dev-python/nose.  No revdeps left.
-# Removal on 2022-11-16.  Bug #877375.
-dev-python/case
-
-# Michał Górny <mgorny@gentoo.org> (2022-10-17)
-# dev-python/nose plugin.  No revdeps left.
-# Removal on 2022-11-16.  Bug #877369.
-dev-python/nose_warnings_filters
-
 # John Helmert III <ajak@gentoo.org> (2022-10-16)
 # <OpenSSL-1.1.1 are EOL and contain known vulnerabilities. Users should
 # migrate to a newer branch.
 <dev-libs/openssl-1.1.1
-
-# Matt Turner <mattst88@gentoo.org> (2022-10-14)
-# Last upstream release in 2013. Last upstream commit in 2019. No maintainer in
-# Gentoo. No reverse dependencies. EAPI=6.
-# Depends on unmaintained packages:
-# 	- x11-libs/vte:0
-# Bug #811540.
-# Removal on 2022-11-14
-x11-terms/lilyterm
-
-# Matt Turner <mattst88@gentoo.org> (2022-10-14)
-# Unmaintained upstream. Last release in 2008. Only reverse dependency is
-# gnome-mud, which is masked for removal.
-# Bugs #349301, #713152, #802723, #808435, #870730, #877079.
-# Removal on 2022-11-14
-net-libs/gnet
-
-# Matt Turner <mattst88@gentoo.org> (2022-10-14)
-# Needs upstream work to modernize codebase. Depends on lots of unmaintained
-# packages:
-# 	- app-text/rarian
-# 	- gnome-base/gconf
-# 	- gnome-base/libglade
-# 	- net-libs/gnet:2
-# 	- x11-libs/gtk+:2
-# 	- x11-libs/vte:0
-# Bugs #670904, #873859
-# Removal on 2022-11-14
-games-mud/gnome-mud
-
-# Joshua Kinard <kumba@gentoo.org> (2022-10-13)
-# Difficult-to-resolve build issues on modern toolchains,
-# not publicly maintained, developer contact is difficult,
-# and project website has SSL certificate issues.
-# Bug #838109.
-# Removal on 2022-11-13
-net-misc/spread
-
-# Matt Turner <mattst88@gentoo.org> (2022-10-12)
-# Unmaintained and archived upstream. Last release in 2017.
-# Bug #597960.
-# Removal on 2022-11-12
-net-im/empathy
 
 # Sam James <sam@gentoo.org> (2022-10-12)
 # Upstream has withdrawn these releases because of a (yet unexplained)
@@ -278,45 +465,6 @@ net-im/empathy
 # and https://github.com/openssl/openssl/issues/19389.
 =dev-libs/openssl-1.1.1r
 =dev-libs/openssl-3.0.6
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-10-10)
-# Unused Java library. Removal on 2022-11-10.
-dev-java/objenesis-test
-
-# Michał Górny <mgorny@gentoo.org> (2022-10-08)
-# Repository and SRC_URI gone.  Last release in 2012 (guessing
-# by filename).
-# Removal on 2022-11-07.  Bug #876151.
-xfce-extra/transd
-
-# Michał Górny <mgorny@gentoo.org> (2022-10-08)
-# This package is not really required for anything, as it being missing
-# only disables enforcing install_requires.  At the same time, it being
-# installed causes unexpected verbose output that randomly breaks more
-# susceptible test suites (e.g. dev-python/pythran).
-# Removal on 2022-11-07.  Bug #876082.
-dev-python/setuptools-declarative-requirements
-
-# Michał Górny <mgorny@gentoo.org> (2022-10-08)
-# The test suite is broken since at least March.  No revdeps.
-# Removal on 2022-11-07.  Bug #834656.
-dev-python/kazoo
-
-# Sam James <sam@gentoo.org> (2022-10-07)
-# Ancient K&R C codebase which fails to compile with modern Clang; surface
-# level fixes are doable, but then get into various dangerous constructs
-# in the async code which is non-trivial to port to modern compilers.
-# bug #731070, bug #802108, bug #875164.
-# Use media-sound/mpd if looking for a modern alternative. Removal on 2022-11-07.
-media-sound/rplay
-
-# Michał Górny <mgorny@gentoo.org> (2022-10-05)
-# Originally added for dev-python/rapidfuzz.  Now the algorithm has been
-# inlined into rapidfuzz, and the package is semi-deprecated.
-# No revdeps left in ::gentoo.
-# Removal on 2022-11-04.  Bug #875350.
-dev-cpp/jarowinkler-cpp
-dev-python/jarowinkler
 
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Regression for some Intel LCDs which may cause physical damage
@@ -353,30 +501,14 @@ virtual/httpd-php:8.2
 # and accept a more unstable release.
 >=www-client/chromium-108
 
-# Sam James <sam@gentoo.org> (2022-09-26)
-# Masked for testing. Please report bugs!
-=app-shells/bash-5.2*
-=sys-libs/readline-8.2*
-
 # John Helmert III <ajak@gentoo.org> (2022-09-18)
 # Unfixed root privilege escalation, bug #631552
 sys-cluster/slurm
-
-# Mike Gilbert <floppym@gentoo.org> (2022-09-12)
-# repoman is no longer maintained and has been removed from the portage
-# git repository. Please use dev-util/pkgcheck and dev-util/pkgdev instead.
-# Removal on 2022-11-11. Bug #835013.
-app-portage/repoman
 
 # Matthias Schwarzott <zzam@gentoo.org> (2022-09-08)
 # Breaks kernel builds with BTF enabled.
 # Bug #868762.
 =dev-util/pahole-1.24
-
-# Mike Gilbert <floppym@gentoo.org> (2022-09-05)
-# Crash due to double-free.
-# https://bugs.gentoo.org/868567
-=sys-apps/gawk-5.2.0
 
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
@@ -551,66 +683,6 @@ media-libs/webrtc-audio-processing:1
 # sys-devel/automake version 1.11 is EOL and is only useful for testing
 # old de-ANSI-fication/ansi2knr/AM_C_PROTOTYPES code. Please uninstall.
 sys-devel/automake:1.11
-
-# Mart Raudsepp <leio@gentoo.org> (2021-09-15)
-# New major parallel-installable release which needs special care to not
-# end up loaded into the same process together with the earlier libsoup ABI.
-# Migration to it is expected for GNOME 42, NOT to be unmasked with GNOME 41.
->=app-arch/file-roller-43
->=app-backup/deja-dup-43
->=app-crypt/seahorse-43
->=app-misc/bijiben-40.1-r1
->=app-misc/tracker-3.4.0-r1
->=app-misc/tracker-miners-3.4.0-r1
->=app-text/gtranslator-42
->=app-text/libgepub-0.7.0
->=dev-libs/gjs-1.74
->=dev-libs/libgweather-4.2.0
->=dev-python/nautilus-python-4.0
->=dev-util/devhelp-43
->=dev-util/gnome-builder-43
->=gnome-base/gnome-applets-3.46
->=gnome-base/gnome-desktop-43
->=gnome-base/gnome-flashback-3.46
->=gnome-base/gnome-panel-3.46
->=gnome-base/gnome-settings-daemon-43
->=gnome-base/gnome-shell-43
->=gnome-base/nautilus-43
->=gnome-extra/evolution-data-server-3.46
->=gnome-extra/evolution-ews-3.46
->=gnome-extra/gnome-boxes-43
->=gnome-extra/gnome-calculator-43
->=gnome-extra/gnome-calendar-43
->=gnome-extra/gnome-clocks-43
->=gnome-extra/gnome-shell-extensions-43
->=gnome-extra/gnome-shell-frippery-43
->=gnome-extra/gnome-software-43
->=gnome-extra/sushi-43
->=mail-client/balsa-2.6.4
->=mail-client/evolution-3.46
->=mail-client/geary-43
->=media-gfx/gnome-photos-43
-media-libs/libshumate
->=net-irc/polari-43
-net-libs/dleyna
->=net-libs/gnome-online-accounts-3.46
->=net-libs/gssdp-1.6
->=net-libs/gupnp-1.6
-net-libs/libsoup:3.0
-net-libs/phodav:3.0
-net-libs/rest:1.0
-net-libs/uhttpmock:1.0
-net-libs/webkit-gtk:4.1
-net-libs/webkit-gtk:5
->=net-misc/gupnp-tools-0.12
->=net-misc/rygel-0.42
->=net-misc/spice-gtk-0.41-r1
-sci-geosciences/geocode-glib:2
->=sci-geosciences/gnome-maps-43
->=sys-apps/osinfo-db-tools-1.10.0-r1
->=sys-libs/libosinfo-1.10.0-r1
->=www-client/epiphany-43
->=x11-wm/mutter-43
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)
 # Masked while being tested and reverse deps aren't fully compatible

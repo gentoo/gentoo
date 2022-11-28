@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake multilib-minimal multilib multibuild flag-o-matic
+inherit cmake multilib-minimal multibuild
 
 if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
@@ -11,7 +11,7 @@ if [[ ${PV} = 9999* ]]; then
 	S=${WORKDIR}/${P}/source
 else
 	SRC_URI="https://bitbucket.org/multicoreware/x265_git/downloads/${PN}_${PV}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"

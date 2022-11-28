@@ -48,24 +48,13 @@ amd64		default/linux/amd64/17.1/systemd/merged-usr			stable
 amd64		default/linux/amd64/17.1/systemd/selinux			exp
 amd64		default/linux/amd64/17.1/clang					exp
 amd64		default/linux/amd64/17.1/systemd/clang				exp
+amd64		default/linux/amd64/17.1/systemd/clang/merged-usr		exp
 
 # AMD64 Profiles
 # @MAINTAINER: amd64@gentoo.org
-amd64		default/linux/amd64/17.0				dev
-amd64		default/linux/amd64/17.0/selinux			exp
-amd64		default/linux/amd64/17.0/hardened			exp
-amd64		default/linux/amd64/17.0/hardened/selinux		exp
-amd64		default/linux/amd64/17.0/desktop			exp
-amd64		default/linux/amd64/17.0/desktop/gnome			dev
-amd64		default/linux/amd64/17.0/desktop/gnome/systemd		exp
-amd64		default/linux/amd64/17.0/desktop/plasma			dev
-amd64		default/linux/amd64/17.0/desktop/plasma/systemd		exp
-amd64		default/linux/amd64/17.0/developer			exp
-amd64		default/linux/amd64/17.0/no-multilib			exp
-amd64		default/linux/amd64/17.0/no-multilib/hardened		exp
-amd64		default/linux/amd64/17.0/no-multilib/hardened/selinux	exp
-amd64		default/linux/amd64/17.0/systemd			dev
 amd64		default/linux/amd64/17.0/x32				dev
+amd64		default/linux/amd64/17.0/x32/systemd			exp
+amd64		default/linux/amd64/17.0/x32/systemd/merged-usr		exp
 
 # ARM Profiles
 # @MAINTAINER: arm@gentoo.org
@@ -142,6 +131,7 @@ arm64		default/linux/arm64/17.0/systemd/merged-usr			stable
 arm64		default/linux/arm64/17.0/systemd/selinux			exp
 arm64		default/linux/arm64/17.0/llvm					exp
 arm64		default/linux/arm64/17.0/systemd/llvm				exp
+arm64		default/linux/arm64/17.0/systemd/llvm/merged-usr		exp
 
 
 # ARM64 Profiles (big-endian)
@@ -188,18 +178,32 @@ m68k		default/linux/m68k/17.0/systemd/merged-usr		exp
 # MIPS Profiles
 # @MAINTAINER: mips@gentoo.org
 mips		default/linux/mips/17.0/o32					exp
+mips		default/linux/mips/17.0/o32/systemd				exp
+mips		default/linux/mips/17.0/o32/systemd/merged-usr			exp
 mips		default/linux/mips/17.0/n32					exp
+mips		default/linux/mips/17.0/n32/systemd				exp
+mips		default/linux/mips/17.0/n32/systemd/merged-usr			exp
 mips		default/linux/mips/17.0/n64					exp
+mips		default/linux/mips/17.0/n64/systemd				exp
+mips		default/linux/mips/17.0/n64/systemd/merged-usr			exp
 mips		default/linux/mips/17.0/multilib/o32				exp
 mips		default/linux/mips/17.0/multilib/n32				exp
+mips		default/linux/mips/17.0/multilib/n32/systemd			exp
+mips		default/linux/mips/17.0/multilib/n32/systemd/merged-usr		exp
 mips		default/linux/mips/17.0/multilib/n64				exp
 mips		default/linux/mips/17.0/mipsel/o32				exp
+mips		default/linux/mips/17.0/mipsel/o32/systemd			exp
+mips		default/linux/mips/17.0/mipsel/o32/systemd/merged-usr		exp
 mips		default/linux/mips/17.0/mipsel/n32				exp
+mips		default/linux/mips/17.0/mipsel/n32/systemd			exp
+mips		default/linux/mips/17.0/mipsel/n32/systemd/merged-usr		exp
 mips		default/linux/mips/17.0/mipsel/n64				exp
 mips		default/linux/mips/17.0/mipsel/n64/systemd			exp
 mips		default/linux/mips/17.0/mipsel/n64/systemd/merged-usr		exp
 mips		default/linux/mips/17.0/mipsel/multilib/o32			exp
 mips		default/linux/mips/17.0/mipsel/multilib/n32			exp
+mips		default/linux/mips/17.0/mipsel/multilib/n32/systemd		exp
+mips		default/linux/mips/17.0/mipsel/multilib/n32/systemd/merged-usr	exp
 mips		default/linux/mips/17.0/mipsel/multilib/n64			exp
 mips		default/linux/mips/17.0/mipsel/multilib/n64/systemd		exp
 mips		default/linux/mips/17.0/mipsel/multilib/n64/systemd/merged-usr	exp

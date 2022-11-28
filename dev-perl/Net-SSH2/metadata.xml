@@ -18,5 +18,6 @@
     <remote-id type="cpan-module">Net::SSH2::Listener</remote-id>
     <remote-id type="cpan-module">Net::SSH2::PublicKey</remote-id>
     <remote-id type="cpan-module">Net::SSH2::SFTP</remote-id>
+    <remote-id type="github">rkitover/net-ssh2</remote-id>
   </upstream>
 </pkgmetadata>

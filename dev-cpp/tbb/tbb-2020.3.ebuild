@@ -10,7 +10,7 @@ PV2="$(ver_cut 2)"
 MY_PV="${PV1}_U${PV2}"
 
 DESCRIPTION="High level abstract threading library"
-HOMEPAGE="https://www.threadingbuildingblocks.org"
+HOMEPAGE="https://github.com/oneapi-src/oneTBB"
 SRC_URI="https://github.com/intel/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"

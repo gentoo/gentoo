@@ -30,7 +30,6 @@ RDEPEND="
 # Can use eventlet, werkzeug, or gevent, but no tests for werkzeug
 BDEPEND="
 	test? (
-		dev-python/gevent[${PYTHON_USEDEP}]
 		dev-python/tornado[${PYTHON_USEDEP}]
 		dev-python/websockets[${PYTHON_USEDEP}]
 	)

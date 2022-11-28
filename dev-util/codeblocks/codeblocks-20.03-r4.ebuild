@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit autotools wxwidgets xdg
+inherit autotools flag-o-matic wxwidgets xdg
 
 DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
 HOMEPAGE="https://codeblocks.org/"
@@ -51,6 +51,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Bug 858338
+	append-flags -fno-strict-aliasing
+
 	setup-wxwidgets
 
 	# USE="contrib -fortran" setup:

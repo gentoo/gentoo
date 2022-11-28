@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/kopete/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE="ssl v4l"
 
 # Available plugins
@@ -134,6 +134,8 @@ DEPEND="${COMMON_DEPEND}
 
 # tests hang, last checked for 4.2.96
 RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/${P}-fix-kf-5.100-version-check.patch" )
 
 src_configure() {
 	local x x2

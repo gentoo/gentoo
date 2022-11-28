@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/874918
+--- a/setpwc.c
++++ b/setpwc.c
+@@ -348,3 +348,3 @@
+ 
+-void query_pan_tilt_status(fd)
++void query_pan_tilt_status(int fd)
+ {

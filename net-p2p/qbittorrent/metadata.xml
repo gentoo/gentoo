@@ -5,6 +5,10 @@
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>slashbeast@gentoo.org</email>
+		<name>Piotr Karbowski</name>
+	</maintainer>
 	<use>
 		<flag name="webui">Enable the Web UI</flag>
 	</use>

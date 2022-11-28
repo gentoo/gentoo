@@ -22,7 +22,7 @@ fi
 LICENSE="GPL-2+ FVWM
 	go? ( Apache-2.0 BSD MIT )"
 SLOT="0"
-IUSE="bidi debug doc go netpbm nls perl readline rplay stroke svg tk vanilla lock"
+IUSE="bidi debug doc go netpbm nls perl readline stroke svg tk vanilla lock"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}"
 
@@ -77,7 +77,6 @@ RDEPEND="${PYTHON_DEPS}
 		sys-libs/ncurses:=
 		sys-libs/readline:=
 	)
-	rplay? ( media-sound/rplay )
 	stroke? ( dev-libs/libstroke )
 	svg? (
 		gnome-base/librsvg:2

@@ -1,0 +1,25 @@
+From 553fc241b5ec701421cd51ae08eef7cabdeca654 Mon Sep 17 00:00:00 2001
+From: Jonathan Esk-Riddell <jr@jriddell.org>
+Date: Fri, 21 Oct 2022 17:39:23 +0000
+Subject: [PATCH] Fix build with KF >= 5.100
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ef6090fd0..079d36a2f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -161,7 +161,7 @@ add_subdirectory(styles)
+ add_subdirectory(doc)
+ add_subdirectory(tests)
+ 
+-if (${ECM_VERSION} STRGREATER "5.58.0")
++if (${ECM_VERSION} VERSION_GREATER "5.58.0")
+     install( FILES kopete.categories DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR} )
+ else()
+     install( FILES kopete.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
+-- 
+GitLab
+

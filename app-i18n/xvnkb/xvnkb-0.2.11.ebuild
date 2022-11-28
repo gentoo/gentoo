@@ -6,8 +6,8 @@ EAPI="8"
 inherit toolchain-funcs
 
 DESCRIPTION="Vietnamese input keyboard for X"
-HOMEPAGE="http://xvnkb.sourceforge.net/"
-SRC_URI="http://${PN}.sourceforge.net/${P}.tar.bz2"
+HOMEPAGE="https://xvnkb.sourceforge.net/"
+SRC_URI="https://${PN}.sourceforge.net/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"

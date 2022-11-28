@@ -15,7 +15,7 @@
 		implemented using modern C++, with GPU kernels implemented in CUDA.
 	</longdescription>
 	<use>
-		<flag name="cuda">Add support for cuda assimp (<pkg>dev-util/nvidia-cuda-sdk</pkg>)</flag>
+		<flag name="cuda">Add support for cuda assimp (<pkg>dev-util/nvidia-cuda-toolkit</pkg>)</flag>
 		<flag name="hwloc">Add support for hwloc (<pkg>sys-apps/hwloc</pkg>)</flag>
 	</use>
 	<upstream>

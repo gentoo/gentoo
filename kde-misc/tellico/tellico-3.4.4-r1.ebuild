@@ -69,9 +69,9 @@ RDEPEND="
 	yaz? ( >=dev-libs/yaz-2:0= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	sys-devel/gettext
-"
+BDEPEND="sys-devel/gettext"
+
+PATCHES=( "${FILESDIR}/${P}-fix-kf-5.100-version-check.patch" )
 
 src_configure() {
 	local mycmakeargs=(

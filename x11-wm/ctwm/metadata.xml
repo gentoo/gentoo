@@ -15,7 +15,6 @@
 	</upstream>
 	<use>
 		<flag name="jpeg">Enable jpeg image support with <pkg>virtual/jpeg</pkg></flag>
-		<flag name="rplay">Enable sound support from <pkg>media-sound/rplay</pkg></flag>
 		<flag name="test">Enable upstream test suite, build required binary</flag>
 		<flag name="xpm">Enable xpm icon support with <pkg>x11-libs/libXpm</pkg></flag>
 	</use>

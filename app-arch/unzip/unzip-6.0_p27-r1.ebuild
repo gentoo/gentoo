@@ -10,13 +10,13 @@ MY_PV="${MY_PV%_p*}"
 MY_P="${PN}${MY_PV}"
 
 DESCRIPTION="unzipper for pkzip-compressed files"
-HOMEPAGE="http://www.info-zip.org/"
+HOMEPAGE="https://infozip.sourceforge.net/UnZip.html"
 SRC_URI="mirror://sourceforge/infozip/${MY_P}.tar.gz
 	mirror://debian/pool/main/u/${PN}/${PN}_${PV/_p/-}.debian.tar.xz"
 
 LICENSE="Info-ZIP"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="bzip2 natspec unicode"
 
 DEPEND="bzip2? ( app-arch/bzip2 )
@@ -73,6 +73,7 @@ src_configure() {
 		*) die "Unknown target; please update the ebuild to handle ${CHOST}	" ;;
 	esac
 
+	# Needed for Clang 16
 	append-flags -std=gnu89
 
 	[[ ${CHOST} == *linux* ]] && append-cppflags -DNO_LCHMOD

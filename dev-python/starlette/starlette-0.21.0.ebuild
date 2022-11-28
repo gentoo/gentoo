@@ -35,13 +35,8 @@ RDEPEND="
 	' 3.8 3.9)
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
-# brotli needed for consistent test output
 BDEPEND="
 	test? (
-		|| (
-			dev-python/brotlicffi[${PYTHON_USEDEP}]
-			app-arch/brotli[python,${PYTHON_USEDEP}]
-		)
 		dev-python/trio[${PYTHON_USEDEP}]
 	)
 "
@@ -60,10 +55,3 @@ EPYTEST_DESELECT=(
 )
 
 distutils_enable_tests pytest
-
-src_prepare() {
-	# fix accept-encoding, as new support was added with newer versions
-	sed -e '/accept-encoding/s/",/, br&/' -i tests/test_{websockets,requests}.py || die
-
-	distutils-r1_src_prepare
-}

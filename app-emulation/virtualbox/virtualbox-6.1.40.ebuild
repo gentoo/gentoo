@@ -95,6 +95,7 @@ DEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	!headless? (
 		x11-libs/libXinerama
+		x11-libs/libXrandr
 		opengl? ( virtual/opengl )
 	)
 	java? ( virtual/jdk:1.8 )

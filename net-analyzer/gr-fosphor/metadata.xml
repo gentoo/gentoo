@@ -8,4 +8,7 @@
 	<use>
 		<flag name="glfw">enable GLFW based interface</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">osmocom/gr-fosphor</remote-id>
+	</upstream>
 </pkgmetadata>

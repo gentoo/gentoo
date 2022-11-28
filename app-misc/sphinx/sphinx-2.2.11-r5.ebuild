@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 #MY_P=${P/_/-}
 MY_P=${P}-release
@@ -58,6 +58,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# This code is no longer maintained and not compatible with modern C/C++ standards, bug #880923
+	append-cflags -std=gnu89
+	append-cxxflags -std=c++11
+
 	# fix libiconv detection
 	use !elibc_glibc && export ac_cv_search_iconv=-liconv
 

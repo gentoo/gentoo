@@ -24,7 +24,7 @@ HOMEPAGE="https://www.zsh.org/"
 
 LICENSE="ZSH gdbm? ( GPL-2 )"
 SLOT="0"
-IUSE="caps debug doc examples gdbm maildir pcre static unicode"
+IUSE="caps debug doc examples gdbm maildir pcre static"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.1:0=
@@ -79,12 +79,12 @@ src_configure() {
 		--enable-fndir="${EPREFIX}"/usr/share/zsh/${PV%_*}/functions
 		--enable-site-fndir="${EPREFIX}"/usr/share/zsh/site-functions
 		--enable-function-subdirs
+		--enable-multibyte
 		--with-tcsetpgrp
-		--with-term-lib="$(usex unicode 'tinfow ncursesw' 'tinfo ncurses')"
+		--with-term-lib='tinfow ncursesw'
 		$(use_enable maildir maildir-support)
 		$(use_enable pcre)
 		$(use_enable caps cap)
-		$(use_enable unicode multibyte)
 		$(use_enable gdbm)
 	)
 

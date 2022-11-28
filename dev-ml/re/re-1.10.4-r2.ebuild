@@ -26,3 +26,11 @@ DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-ml/ounit2 )"
 
 PATCHES=( "${FILESDIR}"/ounit2.patch )
+
+src_prepare() {
+	default
+	sed -i \
+		-e "/(libraries seq)/d" \
+		lib/dune \
+		|| die
+}

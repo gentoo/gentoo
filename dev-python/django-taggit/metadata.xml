@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">django-taggit</remote-id>
+		<remote-id type="github">jazzband/django-taggit</remote-id>
 	</upstream>
 </pkgmetadata>

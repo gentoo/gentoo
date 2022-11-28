@@ -1,6 +1,16 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# matoro <matoro_gentoo@matoro.tk> (2022-11-07)
+# SILO is designed for the old 64-bit kernel/32-bit userland combo
+# before there was a 64-bit userland available.  It requires a 32-bit
+# userland to build, so mask it on 64ul.  sys-boot/grub:2 support for
+# sparc was added in ~2018 and is documented in the handbook per #854954
+# See: https://github.com/esnowberg/grub2-sparc/wiki
+# See: https://wiki.gentoo.org/wiki/Handbook:SPARC/Blocks/Disks
+# See: https://wiki.gentoo.org/wiki/Handbook:SPARC/Blocks/Bootloader
+sys-boot/silo
+
 # Sam James <sam@gentoo.org> (2022-02-28)
 # Binary (needed for bootstrap) is sparc32?
 dev-lisp/sbcl

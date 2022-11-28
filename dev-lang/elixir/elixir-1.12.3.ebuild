@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.3-no-Q.patch
 	"${FILESDIR}"/${PN}-1.10.3-epmd-daemon.patch
 	"${FILESDIR}"/${PN}-1.11.4-fix-elixir-test.patch
+	"${FILESDIR}"/${PN}-1.14.1-make44-parallel-build.patch
 )
 
 src_install() {

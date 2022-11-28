@@ -9,7 +9,7 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~loong"
 PROPERTIES="live"
 
 RDEPEND="

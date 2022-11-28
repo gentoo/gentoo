@@ -5,4 +5,7 @@
     <email>sci-geosciences@gentoo.org</email>
     <name>Gentoo Geosciences Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">OSGeo/libgeotiff</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -14,7 +14,7 @@ S="${WORKDIR}/${P/-/_}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 x86"
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/hatch-vcs[${PYTHON_USEDEP}]"

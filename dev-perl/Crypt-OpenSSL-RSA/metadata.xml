@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="cpan">Crypt-OpenSSL-RSA</remote-id>
     <remote-id type="cpan-module">Crypt::OpenSSL::RSA</remote-id>
+    <remote-id type="github">toddr/Crypt-OpenSSL-RSA</remote-id>
   </upstream>
 </pkgmetadata>

@@ -8,6 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">flake8</remote-id>
-    <remote-id type="gitlab">pycqa/flake8</remote-id>
+    <remote-id type="github">PyCQA/flake8</remote-id>
   </upstream>
 </pkgmetadata>

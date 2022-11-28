@@ -20,7 +20,7 @@ LICENSE="GPL-2+"
 IUSE="examples gtk-doc libgda" # eds
 
 RDEPEND="
-	>=dev-libs/glib-2.50:2
+	>=dev-libs/glib-2.56:2
 	>=x11-libs/gtk+-3.22:3
 	>=dev-libs/libxml2-2.6.27:2
 	>=dev-libs/libxslt-1.1.23

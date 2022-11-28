@@ -1,0 +1,38 @@
+https://github.com/shadow-maint/shadow/commit/a281f241b592aec636d1b93a99e764499d68c7ef
+https://github.com/shadow-maint/shadow/pull/595
+
+From a281f241b592aec636d1b93a99e764499d68c7ef Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Mon, 21 Nov 2022 11:52:45 +0100
+Subject: [PATCH] Fix HAVE_SHADOWGRP configure check
+
+The missing #include <gshadow.h> causes the configure check to fail
+spuriously, resulting in HAVE_SHADOWGRP not being defined even
+on systems that actually have sgetsgent (such as current glibc).
+--- a/configure.ac
++++ b/configure.ac
+@@ -116,6 +116,10 @@ if test "$ac_cv_header_shadow_h" = "yes"; then
+ 		ac_cv_libc_shadowgrp,
+ 		AC_RUN_IFELSE([AC_LANG_SOURCE([
+ 				#include <shadow.h>
++				#ifdef HAVE_GSHADOW_H
++				#include <gshadow.h>
++				#endif
++				int
+ 				main()
+ 				{
+ 					struct sgrp *sg = sgetsgent("test:x::");
+
+--- a/configure
++++ b/configure
+@@ -15684,6 +15684,10 @@ else $as_nop
+ /* end confdefs.h.  */
+ 
+ 				#include <shadow.h>
++				#ifdef HAVE_GSHADOW_H
++				#include <gshadow.h>
++				#endif
++				int
+ 				main()
+ 				{
+ 					struct sgrp *sg = sgetsgent("test:x::");

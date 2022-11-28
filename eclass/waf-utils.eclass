@@ -88,17 +88,23 @@ waf-utils_src_configure() {
 	if [[ ${waf_help} == *--libdir* ]]; then
 		conf_args+=( --libdir="${EPREFIX}/usr/$(get_libdir)" )
 	fi
+	if [[ ${waf_help} == *--mandir* ]]; then
+		conf_args+=( --mandir="${EPREFIX}"/usr/share/man )
+	fi
 
 	tc-export AR CC CPP CXX RANLIB
 
 	local CMD=(
+		PYTHONHASHSEED=1
 		CCFLAGS="${CFLAGS}"
 		LINKFLAGS="${CFLAGS} ${LDFLAGS}"
 		PKGCONFIG="$(tc-getPKG_CONFIG)"
 		"${WAF_BINARY}"
+		"--jobs=1"
 		"--prefix=${EPREFIX}/usr"
 		"${conf_args[@]}"
 		"${@}"
+		${EXTRA_ECONF}
 		configure
 	)
 
@@ -114,6 +120,8 @@ waf-utils_src_compile() {
 	local _mywafconfig
 	[[ ${WAF_VERBOSE} == ON ]] && _mywafconfig="--verbose"
 
+	export PYTHONHASHSEED=1
+
 	local jobs="--jobs=$(makeopts_jobs)"
 	echo "\"${WAF_BINARY}\" build ${_mywafconfig} ${jobs} ${*}"
 	"${WAF_BINARY}" ${_mywafconfig} ${jobs} "${@}" || die "build failed"
@@ -125,8 +133,10 @@ waf-utils_src_compile() {
 waf-utils_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	echo "\"${WAF_BINARY}\" --destdir=\"${D}\" ${*} install"
-	"${WAF_BINARY}" --destdir="${D}" "${@}" install  || die "Make install failed"
+	export PYTHONHASHSEED=1
+
+	echo "\"${WAF_BINARY}\" --jobs=1 --destdir=\"${D}\" ${*} install"
+	"${WAF_BINARY}" --jobs=1 --destdir="${D}" "${@}" install || die "Make install failed"
 
 	# Manual document installation
 	einstalldocs

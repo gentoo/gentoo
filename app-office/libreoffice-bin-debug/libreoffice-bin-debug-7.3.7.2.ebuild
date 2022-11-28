@@ -41,7 +41,7 @@ SRC_URI="
 IUSE="gnome java kde"
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 ~x86"
 
 # the = is correct, the debug info needs to fit the exact binary
 RDEPEND="=app-office/${PN/-debug}-${PVR}[gnome=,java=,kde=]"

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>slashbeast@gentoo.org</email>
-		<name>Piotr Karbowski</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>ProFTPD grew out of the desire to have a secure and 
 configurable FTP server, and out of a significant admiration of the Apache web 
 server.</longdescription>

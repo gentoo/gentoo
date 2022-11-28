@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="PEP 621 metadata parsing"
 HOMEPAGE="https://pypi.org/project/pyproject-metadata/ https://github.com/FFY00/python-pyproject-metadata/"
-SRC_URI="https://github.com//FFY00/python-pyproject-metadata/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="https://github.com/FFY00/python-pyproject-metadata/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}"/python-${P}
 
 LICENSE="MIT"

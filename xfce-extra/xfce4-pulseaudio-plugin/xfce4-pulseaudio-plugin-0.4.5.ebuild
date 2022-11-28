@@ -6,7 +6,10 @@ EAPI=8
 inherit xdg-utils
 
 DESCRIPTION="A panel plug-in for PulseAudio volume control"
-HOMEPAGE="https://git.xfce.org/panel-plugins/xfce4-pulseaudio-plugin/"
+HOMEPAGE="
+	https://docs.xfce.org/panel-plugins/xfce4-pulseaudio-plugin/start
+	https://gitlab.xfce.org/panel-plugins/xfce4-pulseaudio-plugin/
+"
 SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"

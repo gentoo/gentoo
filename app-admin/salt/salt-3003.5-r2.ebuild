@@ -44,7 +44,7 @@ RDEPEND="
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
 	<dev-python/importlib_metadata-5[${PYTHON_USEDEP}]
 	libvirt? (
-		$(python_gen_cond_dep 'dev-python/libvirt-python[${PYTHON_USEDEP}]' python3_8)
+		dev-python/libvirt-python[${PYTHON_USEDEP}]
 	)
 	openssl? (
 		dev-libs/openssl:0=[-bindist(-)]
@@ -64,10 +64,10 @@ RDEPEND="
 	redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )
 	selinux? ( sec-policy/selinux-salt )
 	nova? (
-		$(python_gen_cond_dep '>=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}]' python3_8)
+		>=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}]
 	)
 	neutron? (
-		$(python_gen_cond_dep '>=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}]' python3_8)
+		>=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}]
 	)
 	gnupg? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
 	profile? ( dev-python/yappi[${PYTHON_USEDEP}] )
@@ -193,18 +193,5 @@ python_test() {
 }
 
 pkg_postinst() {
-	if use python_targets_python3_8; then
-		if use nova; then
-			ewarn "Salt's nova functionality will not work with python3.8 since"
-			ewarn "dev-python/python-novaclient does not support it yet"
-		fi
-		if use neutron; then
-			ewarn "Salt's neutron functionality will not work with python3.8 since"
-			ewarn "dev-python/python-neutronclient does not support it yet"
-		fi
-		if use libvirt; then
-			ewarn "Salt's libvirt functionality will not work with python3.8 since"
-			ewarn "dev-python/libvirt-python does not support it yet"
-		fi
-	fi
+	:
 }

@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Florian Schmaus <flow@gentoo.org> (2022-11-23)
+# avoid larger deptree, bug #882593
+dev-python/bracex doc
+
 # Alexey Shvetsov <alexxy@gentoo.org> (2022-09-15)
 # Mask nvml use flag for slurm
 sys-cluster/slurm nvml
@@ -208,10 +212,6 @@ lxqt-base/lxqt-meta archiver
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
 # static-pie works on arm64, #719444
 sys-libs/glibc -static-pie
-
-# Patrick McLean <chutzpah@gentoo.org> (2019-03-26)
-# Some test deps aren't keyworded on arm64
-dev-python/kazoo test
 
 # Ettore Di Giacinto <mudler@gentoo.org> (2016-11-10)
 # Dependency has no stable keyword

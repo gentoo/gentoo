@@ -20,7 +20,9 @@ else
 fi
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
-HOMEPAGE="https://www.winehq.org/"
+HOMEPAGE="
+	https://www.winehq.org/
+	https://gitlab.winehq.org/wine/wine/"
 
 LICENSE="LGPL-2.1+ BSD-2 IJG MIT ZLIB gsm libpng2 libtiff"
 SLOT="${PV}"
@@ -112,12 +114,13 @@ DEPEND="
 	X? ( x11-base/xorg-proto )"
 BDEPEND="
 	dev-lang/perl
+	sys-devel/binutils
 	sys-devel/bison
 	sys-devel/flex
 	virtual/pkgconfig
 	mingw? ( !crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] ) )
 	nls? ( sys-devel/gettext )"
-IDEPEND="app-eselect/eselect-wine"
+IDEPEND=">=app-eselect/eselect-wine-2"
 
 QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
 
@@ -217,6 +220,11 @@ src_configure() {
 	use custom-cflags || strip-flags # can break in obscure ways, also no lto
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
+	# temporary workaround for tc-ld-force-bfd not yet enforcing with mold
+	# https://github.com/gentoo/gentoo/pull/28355
+	[[ $($(tc-getCC) ${LDFLAGS} -Wl,--version 2>/dev/null) == mold* ]] &&
+		append-ldflags -fuse-ld=bfd
+
 	# build using upstream's way (--with-wine64)
 	# order matters: configure+compile 64->32, install 32->64
 	local -i bits
@@ -302,21 +310,10 @@ src_install() {
 	dodoc ANNOUNCE AUTHORS README* documentation/README*
 }
 
-wine-eselect() {
-	ebegin "${1^}ing ${P} using eselect-wine"
-	eselect wine ${1} ${P} &&
-		eselect wine ${1} --${PN#wine-} ${P} &&
-		eselect wine update --if-unset &&
-		eselect wine update --${PN#wine-} --if-unset
-	eend ${?} || die -n "eselect failed, may need to manually handle ${P}"
-}
-
 pkg_postinst() {
-	wine-eselect register
+	eselect wine update --if-unset || die
 }
 
-pkg_prerm() {
-	if [[ ${REPLACED_BY_VERSION%-r*} != ${PV} ]]; then #881035
-		nonfatal wine-eselect deregister
-	fi
+pkg_postrm() {
+	eselect wine update --if-unset || die
 }

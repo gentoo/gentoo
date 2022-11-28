@@ -1,0 +1,42 @@
+Add Gentoo specific changes
+
+--- a/conf/example.conf.in
++++ b/conf/example.conf.in
+@@ -170,6 +170,9 @@
+ 	# Example
+ 	# Accept every block device:
+ 	# filter = [ "a|.*|" ]
++	# Gentoo: we exclude /dev/nbd by default, because it makes a lot of kernel
++	# noise when you probed while not available.
++	filter = [ "r|/dev/nbd.*|", "a|.*|" ]
+ 	# Reject the cdrom drive:
+ 	# filter = [ "r|/dev/cdrom|" ]
+ 	# Work with just loopback devices, e.g. for testing:
+@@ -1843,7 +1846,7 @@
+ 
+ # Configuration section metadata.
+ # This configuration section has an automatic default value.
+-# metadata {
++metadata {
+ 
+ 	# Configuration option metadata/check_pv_device_sizes.
+ 	# Check device sizes are not smaller than corresponding PV sizes.
+@@ -1888,7 +1891,8 @@
+ 	#
+ 	# This configuration option is advanced.
+ 	# This configuration option has an automatic default value.
+-	# pvmetadatacopies = 1
++	# Gentoo: enable for data safety, but PV resize is then disabled.
++	# pvmetadatacopies = 2
+ 
+ 	# Configuration option metadata/vgmetadatacopies.
+ 	# Number of copies of metadata to maintain for each VG.
+@@ -1931,7 +1935,7 @@
+ 	# This configuration option is advanced.
+ 	# This configuration option has an automatic default value.
+ 	# stripesize = 64
+-# }
++}
+ 
+ # Configuration section report.
+ # LVM report command output formatting.

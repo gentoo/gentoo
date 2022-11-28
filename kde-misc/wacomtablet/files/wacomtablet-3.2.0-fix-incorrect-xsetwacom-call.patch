@@ -1,0 +1,41 @@
+From 32c78782b3061bab2a3b1457133faf77b6d9ed2a Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Mon, 14 Nov 2022 02:57:07 +0100
+Subject: [PATCH] Fix incorrect xsetwacom call
+
+When param is e.g. 'Button 1' the 'Button' and '1' need to be passed as separate arguments
+
+BUG: 454947
+---
+ src/kded/xsetwacomadaptor.cpp | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/src/kded/xsetwacomadaptor.cpp b/src/kded/xsetwacomadaptor.cpp
+index 934fa8b..fc1bcac 100644
+--- a/src/kded/xsetwacomadaptor.cpp
++++ b/src/kded/xsetwacomadaptor.cpp
+@@ -245,10 +245,18 @@ bool XsetwacomAdaptor::setRotation(const QString& value)
+ bool XsetwacomAdaptor::setParameter(const QString &device, const QString &param, const QString &value) const
+ {
+     QProcess setConf;
+-    if (!value.isEmpty()) {
+-        setConf.start(QString::fromLatin1("xsetwacom"), QStringList() << QString::fromLatin1("set") << device << param << value);
++
++    // https://bugs.kde.org/show_bug.cgi?id=454947
++    static const QRegularExpression buttonWithNumber(QStringLiteral("^Button \\d+$"));
++    if (param.contains(buttonWithNumber)) {
++        const QStringList splitted = param.split(QLatin1Char(' '));
++        setConf.start(QString::fromLatin1("xsetwacom"), QStringList() << QString::fromLatin1("set") << device << splitted[0] << splitted[1] << value);
+     } else {
+-        setConf.start(QString::fromLatin1("xsetwacom"), QStringList() << QString::fromLatin1("set") << device << param);
++        if (!value.isEmpty()) {
++            setConf.start(QString::fromLatin1("xsetwacom"), QStringList() << QString::fromLatin1("set") << device << param << value);
++        } else {
++            setConf.start(QString::fromLatin1("xsetwacom"), QStringList() << QString::fromLatin1("set") << device << param);
++        }
+     }
+ 
+     if (!setConf.waitForStarted() || !setConf.waitForFinished()) {
+-- 
+GitLab
+

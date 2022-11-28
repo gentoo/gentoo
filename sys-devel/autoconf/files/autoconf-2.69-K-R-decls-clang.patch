@@ -1,5 +1,6 @@
 https://bugs.gentoo.org/870412
 https://git.savannah.gnu.org/cgit/autoconf.git/commit/?id=8b5e2016c7ed2d67f31b03a3d2e361858ff5299b
+(and contains a backport of https://git.savannah.gnu.org/cgit/autoconf.git/commit/?id=bf5a75953b6d504f0405b1ca33b039b8dd39eef4)
 
 Backport the K&R decls fix to 2.69 to avoid configure tests
 failing (often "silently", i.e. doesn't fail the build of
@@ -363,3 +364,31 @@ Subject: [PATCH] backport K&R decl fixes
  		   #define mymacro1(arg) arg
  		   #define mymacro2]])
    # The difference in space-before-open-paren is intentional.
+--- a/lib/autoconf/c.m4
++++ b/lib/autoconf/c.m4
+@@ -1106,9 +1106,7 @@ struct stat;
+ /* Most of the following tests are stolen from RCS 5.7's src/conf.sh.  */
+ struct buf { int x; };
+ FILE * (*rcsopen) (struct buf *, struct stat *, int);
+-static char *e (p, i)
+-     char **p;
+-     int i;
++static char *e (char **p, int i)
+ {
+   return p[i];
+ }
+--- a/lib/autoconf/specific.m4
++++ b/lib/autoconf/specific.m4
+@@ -251,10 +251,9 @@ AC_INCLUDES_DEFAULT
+ /* Some platforms explicitly require an extern "C" signal handler
+    when using C++. */
+ #ifdef __cplusplus
+-extern "C" void ucatch (int dummy) { }
+-#else
+-void ucatch (dummy) int dummy; { }
++extern "C"
+ #endif
++void ucatch (int dummy) { }
+ 
+ int
+ main (void)

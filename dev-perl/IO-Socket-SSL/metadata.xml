@@ -16,5 +16,6 @@
     <remote-id type="cpan-module">IO::Socket::SSL::SSL_HANDLE</remote-id>
     <remote-id type="cpan-module">IO::Socket::SSL::Session_Cache</remote-id>
     <remote-id type="cpan-module">IO::Socket::SSL::Utils</remote-id>
+    <remote-id type="github">noxxi/p5-io-socket-ssl</remote-id>
   </upstream>
 </pkgmetadata>

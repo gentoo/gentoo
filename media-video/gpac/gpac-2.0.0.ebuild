@@ -11,7 +11,7 @@ else
 	KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 fi
 
-inherit flag-o-matic toolchain-funcs ${SCM} xdg
+inherit toolchain-funcs ${SCM} xdg
 
 DESCRIPTION="Implementation of the MPEG-4 Systems standard developed from scratch in ANSI C"
 HOMEPAGE="https://gpac.wp.imt.fr/"

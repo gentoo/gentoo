@@ -16,7 +16,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 x86"
 
 RDEPEND="dev-vcs/git
 	$(python_gen_cond_dep '
@@ -35,6 +35,7 @@ BDEPEND="test? (
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.20.0-no_toml.patch
+	"${FILESDIR}"/${PN}-2.20.0-tests_git_file_transport.patch
 )
 
 DOCS=( CHANGELOG.md CONTRIBUTING.md README.md )

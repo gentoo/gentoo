@@ -1,0 +1,15 @@
+Fix build with -Werror=implicit-int
+
+https://bugs.gentoo.org/880999
+
+--- a/asa.c
++++ b/asa.c
+@@ -201,7 +201,7 @@
+ copy_file(FILE *fp)
+ {
+     str line;
+-    static first_line = 1;
++    static int first_line = 1;
+ 
+     while ((line.len=readline(fp, &(line.chr))))
+     {
