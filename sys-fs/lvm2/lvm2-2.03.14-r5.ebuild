@@ -185,6 +185,8 @@ src_configure() {
 		$(use_enable sanlock lvmlockd-sanlock)
 		$(use_enable systemd udev-systemd-background-jobs)
 		$(use_enable systemd notify-dbus)
+		$(use_enable systemd app-machineid)
+		$(use_enable systemd systemd-journal)
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		CLDFLAGS="${LDFLAGS}"
 	)
