@@ -42,7 +42,7 @@ BDEPEND+="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.12-fix-lto.patch
+	"${FILESDIR}"/${P}-fix-lto.patch
 )
 
 src_configure() {
