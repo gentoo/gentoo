@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
@@ -9,7 +9,7 @@ DESCRIPTION="Advanced Power Management battery status display for X"
 HOMEPAGE="https://packages.qa.debian.org/x/xbattbar.html"
 SRC_URI="mirror://debian/pool/main/x/${PN}/${PN}_${PV}.orig.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
@@ -24,14 +24,13 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.5-Makefile.patch
 	"${FILESDIR}"/${PN}-1.4.8-const.patch
+	"${FILESDIR}"/${PN}-1.4.9-implicit-int.patch
 )
 
 src_prepare() {
 	default
 
-	sed -i \
-		-e "s:usr/lib:usr/$(get_libdir):" \
-		xbattbar.c || die
+	sed -i "s|/usr/lib|${EPREFIX}/usr/$(get_libdir)|" xbattbar.c || die
 }
 
 src_configure() {
@@ -40,6 +39,6 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" LIBDIR="$(get_libdir)" install
-	dodoc README
+	emake DESTDIR="${ED}" LIBDIR="$(get_libdir)" install
+	einstalldocs
 }
