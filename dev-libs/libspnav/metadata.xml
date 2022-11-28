@@ -15,6 +15,7 @@
 		magellan SDK.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">FreeSpacenav/libspnav</remote-id>
 		<remote-id type="sourceforge">spacenav</remote-id>
 	</upstream>
 </pkgmetadata>
