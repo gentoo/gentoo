@@ -63,7 +63,7 @@ src_unpack() {
 src_prepare() {
 	default
 
-	# Handle installation via the eclass
+	# Handle ELisp installation via the Emacs Eclass.
 	rm emacs/dune || die
 
 	# This test runs only inside a git repo,
@@ -72,6 +72,9 @@ src_prepare() {
 		rm tests/test-dirs/occurrences/issue1404.t || die
 	fi
 	rm -r tests/test-dirs/locate/context-detection/cd-mod_constr.t || die
+
+	# Remove seq references from dune build files.
+	sed -i 's|seq||g' src/frontend/ocamlmerlin/dune || die
 }
 
 src_compile() {
