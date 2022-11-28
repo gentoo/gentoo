@@ -11,6 +11,9 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">cxx</remote-id>
+		<!--
+		Note, PyCXX is not on PyPI, this is a *different* project:
 		<remote-id type="pypi">pycxx</remote-id>
+		-->
 	</upstream>
 </pkgmetadata>
