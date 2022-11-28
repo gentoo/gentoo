@@ -11,6 +11,7 @@
 		licensed under the New BSD license.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">uriparser/uriparser</remote-id>
 		<remote-id type="sourceforge">uriparser</remote-id>
 	</upstream>
 </pkgmetadata>
