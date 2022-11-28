@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 DESCRIPTION="Command line util to draw images on terminals by using child windows"
-HOMEPAGE="https://github.com/seebye/ueberzug/"
-SRC_URI="mirror://pypi/${P::1}/${PN}/${P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
