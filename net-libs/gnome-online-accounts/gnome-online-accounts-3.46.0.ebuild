@@ -50,6 +50,10 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="gtk-doc? ( dev-util/gtk-doc )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-meson-dependencies.patch" 
+)
+
 src_prepare() {
 	default
 	use vala && vala_setup
