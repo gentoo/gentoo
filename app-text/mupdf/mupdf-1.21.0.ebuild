@@ -46,7 +46,7 @@ BDEPEND="X? ( x11-base/xorg-proto )
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.15-CFLAGS.patch
 	"${FILESDIR}"/${PN}-1.19.0-Makefile.patch
-	"${FILESDIR}"/${PN}-1.10a-add-desktop-pc-xpm-files.patch
+	"${FILESDIR}"/${P}-add-desktop-pc-files.patch
 	"${FILESDIR}"/${PN}-1.19.0-darwin.patch
 	# See bugs #662352
 	"${FILESDIR}"/${PN}-1.15-openssl-x11.patch
@@ -126,7 +126,7 @@ src_compile() {
 src_install() {
 	if use opengl || use X ; then
 		domenu platform/debian/${PN}.desktop
-		doicon platform/debian/${PN}.xpm
+		doicon -s scalable docs/logo/new-${PN}-icon.svg
 	else
 		rm docs/man/${PN}.1 || die "Failed to remove man page in src_install()"
 	fi
