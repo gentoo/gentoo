@@ -19,7 +19,7 @@ RDEPEND="
 	>=dev-libs/openssl-1.1.1:0=[-bindist(-)]
 	>=dev-libs/re2-0.2021.11.01:=
 	>=dev-python/cython-0.28.3[${PYTHON_USEDEP}]
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	<dev-python/protobuf-python-4[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	net-dns/c-ares:=
 	sys-libs/zlib:=
