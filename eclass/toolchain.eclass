@@ -277,6 +277,8 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 10 && IUSE+=" zstd" TC_FEATURES+=( zstd )
 	tc_version_is_at_least 11 && IUSE+=" valgrind" TC_FEATURES+=( valgrind )
 	tc_version_is_at_least 11 && IUSE+=" custom-cflags"
+	tc_version_is_at_least 12.99 && IUSE+=" default-znow"
+	tc_version_is_at_least 12.99 && IUSE+=" default-stack-clash-protection"
 fi
 
 if tc_version_is_at_least 10; then
@@ -798,8 +800,18 @@ make_gcc_hard() {
 		if _tc_use_if_iuse ssp ; then
 			einfo "Updating gcc to use automatic SSP building ..."
 		fi
+		if _tc_use_if_iuse default-stack-clash-protection ; then
+			# The define DEF_GENTOO_SCP is checked in 24_all_DEF_GENTOO_SCP-fstack-clash-protection.patch
+			einfo "Updating gcc to use automatic stack clash protection ..."
+			gcc_hard_flags+=" -DDEF_GENTOO_SCP"
+		fi
+		if _tc_use_if_iuse default-znow ; then
+			# The define DEF_GENTOO_NZOW is checked in 23_all_DEF_GENTOO_ZNOW-z-now.patch
+			einfo "Updating gcc to request symbol resolution at start (-z now) ..."
+			gcc_hard_flags+=" -DDEF_GENTOO_ZNOW"
+		fi
 		if _tc_use_if_iuse hardened ; then
-			# Will add some hardened options as default, like:
+			# Will add some hardened options as default, e.g. for gcc-12
 			# * -fstack-clash-protection
 			# * -z now
 			# See gcc *_all_extra-options.patch patches.
