@@ -11,6 +11,7 @@
 		Several output formats are supported and new ones are easily added.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">cpptest/cpptest</remote-id>
 		<remote-id type="sourceforge">cpptest</remote-id>
 	</upstream>
 </pkgmetadata>
