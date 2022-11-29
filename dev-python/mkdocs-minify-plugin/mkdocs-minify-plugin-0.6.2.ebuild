@@ -29,3 +29,13 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	local -x PATH=${T}:${PATH}
+	cat > "${T}"/mkdocs <<-EOF || die
+		#!/bin/sh
+		exec "${EPYTHON}" -m mkdocs "\${@}"
+	EOF
+	chmod +x "${T}"/mkdocs || die
+	epytest
+}
