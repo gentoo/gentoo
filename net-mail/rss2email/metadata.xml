@@ -11,4 +11,7 @@
 		list of XML newsfeeds (RSS or Atom) and get new items sent to
 		you by email.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">rss2email/rss2email</remote-id>
+	</upstream>
 </pkgmetadata>
