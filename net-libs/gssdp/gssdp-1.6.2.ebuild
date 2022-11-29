@@ -65,5 +65,8 @@ multilib_src_install_all() {
 		mkdir "${ED}"/usr/share/gtk-doc || die
 		mv "${ED}"/usr/share/{doc,gtk-doc}/gssdp-1.6 || die
 	fi
-	rm "${ED}"/usr/bin/gssdp-device-sniffer || die # because of file collision with slot 0
+
+	if use gtk; then
+		rm "${ED}"/usr/bin/gssdp-device-sniffer || die # because of file collision with slot 0
+	fi
 }
