@@ -26,6 +26,8 @@ else
 			-> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
+# setup_dxvk.sh is no longer provided, fetch old until a better solution
+SRC_URI+=" https://raw.githubusercontent.com/doitsujin/dxvk/cd21cd7fa3b0df3e0819e21ca700b7627a838d69/setup_dxvk.sh"
 
 DESCRIPTION="Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine"
 HOMEPAGE="https://github.com/doitsujin/dxvk/"
@@ -71,6 +73,9 @@ src_prepare() {
 	fi
 
 	default
+
+	sed "/^basedir=/s|=.*|=${EPREFIX}/usr/lib/${PN}|" \
+		"${DISTDIR}"/setup_dxvk.sh > setup_dxvk.sh || die
 }
 
 src_configure() {
@@ -118,6 +123,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
+	dobin setup_dxvk.sh
 	dodoc README.md dxvk.conf
 
 	find "${ED}" -type f -name '*.a' -delete || die
@@ -128,15 +134,15 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	# TODO: setup_dxvk.sh script was removed, need to figure out a new way to
-	# explain/handle (leaving this alone for now in live in case gets restored)
-#	if [[ ! ${REPLACING_VERSIONS} ]]; then
-#		elog "To enable ${PN} on a wine prefix, you can run the following command:"
-#		elog
-#		elog "	WINEPREFIX=/path/to/prefix setup_dxvk.sh install --symlink"
-#		elog
-#		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
-	if [[ -v DXVK_HAD_OVERLAY ]]; then
+	if [[ ! ${REPLACING_VERSIONS} ]]; then
+		elog "To enable ${PN} on a wine prefix, you can run the following command:"
+		elog
+		elog "	WINEPREFIX=/path/to/prefix setup_dxvk.sh install --symlink"
+		elog
+		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
+		elog "Note: setup_dxvk.sh is unofficially temporarily provided as it was"
+		elog "removed upstream, handling may change in the future."
+	elif [[ -v DXVK_HAD_OVERLAY ]]; then
 		# temporary warning until this version is more widely used
 		elog "Gentoo's main repo ebuild for ${PN} uses different paths than most overlays."
 		elog "If you were using symbolic links in wine prefixes it may be necessary to"
