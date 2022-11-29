@@ -37,8 +37,10 @@ IUSE="
 	${XMMS2_OPTIONALS[@]%:*}
 	${XMMS2_PLUGINS[@]%:*}
 	+server valgrind"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RESTRICT="!test? ( test ) !server? ( test )"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	test? ( server )"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	dev-libs/glib:2
