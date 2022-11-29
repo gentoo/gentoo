@@ -8,4 +8,7 @@
 	<use>
 		<flag name="umockdev">Enables support for <pkg>dev-util/umockdev</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">USBGuard/usbguard</remote-id>
+	</upstream>
 </pkgmetadata>
