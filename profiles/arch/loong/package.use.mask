@@ -1,6 +1,10 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-11-29)
+# Dep media-plugins/libvisual-plugins fails to build, seems too hairy to fix.
+media-plugins/gst-plugins-meta libvisual
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-27)
 # Mask configurations not accepting llvm:16 and/or clang:16, either due to
 # lack of testing or simply being unsupported upstream (the opaque pointers
