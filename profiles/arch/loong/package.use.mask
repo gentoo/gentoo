@@ -32,7 +32,8 @@ mate-base/mate help
 >=sys-libs/compiler-rt-sanitizers-15 -asan
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
-# virtual/jre is not available on loong yet.
+# virtual/{jdk,jre} is not available on loong yet.
+media-libs/rubberband jni
 www-client/chromium js-type-check
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-05-13)
