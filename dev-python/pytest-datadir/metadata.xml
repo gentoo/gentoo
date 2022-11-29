@@ -7,6 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">gabrielcnr/pytest-datadir</remote-id>
 		<remote-id type="pypi">pytest-datadir</remote-id>
 	</upstream>
 </pkgmetadata>
