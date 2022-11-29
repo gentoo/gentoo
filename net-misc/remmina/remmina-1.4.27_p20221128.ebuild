@@ -16,7 +16,7 @@ SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/${COMMIT}/Remmina-${COMMIT
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
-IUSE="+appindicator crypt cups examples gnome-keyring gvnc kwallet nls python spice ssh rdp telemetry vnc webkit x2go zeroconf"
+IUSE="+appindicator crypt cups examples gnome-keyring gvnc kwallet nls python spice ssh rdp telemetry vnc wayland webkit x2go zeroconf"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	dev-libs/libsodium:=
 	dev-libs/openssl:0=
 	x11-libs/gdk-pixbuf
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[wayland?]
 	x11-libs/libX11
 	x11-libs/libxkbfile
 	appindicator? ( dev-libs/libappindicator:3 )
@@ -66,6 +66,8 @@ RDEPEND="
 DOCS=( AUTHORS CHANGELOG.md README.md THANKS.md )
 
 S="${WORKDIR}/Remmina-${COMMIT}"
+
+PATCHES=( "${FILESDIR}/${P}-missing-gdk-include.patch" )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

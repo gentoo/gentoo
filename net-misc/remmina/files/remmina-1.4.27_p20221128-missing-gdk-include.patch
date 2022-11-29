@@ -1,0 +1,13 @@
+diff --git a/src/remmina.c b/src/remmina.c
+index 5b59339f8..43834b9bd 100644
+--- a/src/remmina.c
++++ b/src/remmina.c
+@@ -32,6 +32,8 @@
+  *
+  */
+ 
++#include <gdk/gdk.h>
++
+ #define G_LOG_USE_STRUCTURED
+ #ifndef G_LOG_DOMAIN
+ #define G_LOG_DOMAIN    ((gchar*)"remmina")
