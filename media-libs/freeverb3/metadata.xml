@@ -15,6 +15,7 @@
 			(default is float)</flag>
 	</use>
 	<upstream>
+		<remote-id type="savannah-nongnu">freeverb3</remote-id>
 		<remote-id type="sourceforge">freeverb3</remote-id>
 	</upstream>
 </pkgmetadata>
