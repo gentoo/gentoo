@@ -4,7 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-inherit multiprocessing optfeature perl-functions python-single-r1 toolchain-funcs
+PYTHON_REQ_USE="threads(+)"
+inherit flag-o-matic optfeature perl-functions python-single-r1 waf-utils
 
 DESCRIPTION="X(cross)platform Music Multiplexing System, next generation of the XMMS player"
 HOMEPAGE="https://github.com/XMMS2"
@@ -77,11 +78,7 @@ COMMON_DEPEND="
 			media-libs/libofa
 			sci-libs/fftw:3.0=
 		)
-		opus? (
-			media-libs/libogg
-			media-libs/opus
-			media-libs/opusfile
-		)
+		opus? ( media-libs/opusfile )
 		pulseaudio? ( media-libs/libpulse )
 		samba? ( net-fs/samba )
 		sid? ( media-libs/libsidplay:2 )
@@ -142,11 +139,10 @@ src_prepare() {
 }
 
 src_configure() {
-	local waf=(
-		./waf configure
-		--prefix="${EPREFIX}"/usr
-		--libdir="${EPREFIX}"/usr/$(get_libdir)
-		--boost-includes="${ESYSROOT}"/usr/include # needed for prefix
+	filter-lto # `xmms2 add somefile` breaks with lto + fortify=2
+
+	local wafargs=(
+		--boost-includes="${ESYSROOT}"/usr/include
 		--with-target-platform="${CHOST}"
 	)
 
@@ -168,14 +164,14 @@ src_configure() {
 			plugins+=$(xmms2_flag ${flag})
 		done
 	else
-		waf+=( --without-xmms2d )
+		wafargs+=( --without-xmms2d )
 	fi
 
 	for flag in "${XMMS2_OPTIONALS[@]}"; do
 		optionals+=$(xmms2_flag ${flag})
 	done
 
-	waf+=(
+	wafargs+=(
 		# pass even if empty to avoid automagic
 		--with-optionals=${optionals:1}
 		--with-plugins=${plugins:1}
@@ -183,40 +179,36 @@ src_configure() {
 
 	if use perl; then
 		perl_set_version
-		waf+=( --with-perl-archdir="${ARCH_LIB}" )
+		wafargs+=( --with-perl-archdir="${ARCH_LIB}" )
 	fi
 
 	if use valgrind; then
 		if valgrind true &>/dev/null; then
-			waf+=( --with-valgrind )
+			wafargs+=( --with-valgrind )
 		else
 			ewarn "valgrind was disabled due to failing a basic sanity check" #807271
 		fi
 	fi
 
-	tc-export AR CC CXX
-
-	echo "${waf[*]}"
-	"${waf[@]}" || die
+	waf-utils_src_configure "${wafargs[@]}"
 }
 
 src_compile() {
-	./waf build -j$(makeopts_jobs) --verbose --notests || die
+	waf-utils_src_compile --notests
 }
 
 src_test() {
-	./waf --alltests || die
+	waf-utils_src_compile --alltests
 }
 
 src_install() {
-	./waf install --destdir="${D}" --without-ldconfig --notests || die
-
-	dodoc AUTHORS README.mdown *.ChangeLog
+	local DOCS=( AUTHORS README.mdown *.ChangeLog )
+	waf-utils_src_install --without-ldconfig --notests
 
 	use python && python_optimize
 
 	# to avoid editing waftools/man.py (use find given not always installed)
-	find "${ED}" -name '*.gz' -exec gzip -d {} + || die
+	find "${ED}" -type f -name '*.gz' -exec gzip -d {} + || die
 }
 
 pkg_postinst() {
