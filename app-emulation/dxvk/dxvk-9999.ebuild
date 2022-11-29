@@ -12,14 +12,18 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_SUBMODULES=(
 		# picky about headers and is cross-compiled making -I/usr/include troublesome
 		include/{spirv,vulkan}
+		subprojects/libdisplay-info
 	)
 else
 	HASH_SPIRV=0bcc624926a25a2a273d07877fd25a6ff5ba1cfb
 	HASH_VULKAN=98f440ce6868c94f5ec6e198cc1adda4760e8849
 	SRC_URI="
-		https://github.com/doitsujin/dxvk/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV}.tar.gz -> ${PN}-spirv-headers-${HASH_SPIRV::10}.tar.gz
-		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz -> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz"
+		https://github.com/doitsujin/dxvk/archive/refs/tags/v${PV}.tar.gz
+			-> ${P}.tar.gz
+		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV}.tar.gz
+			-> ${PN}-spirv-headers-${HASH_SPIRV::10}.tar.gz
+		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz
+			-> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 
@@ -67,8 +71,6 @@ src_prepare() {
 	fi
 
 	default
-
-	sed -i "/^basedir=/s|=.*|=${EPREFIX}/usr/lib/${PN}|" setup_dxvk.sh || die
 }
 
 src_configure() {
@@ -116,7 +118,6 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	dobin setup_dxvk.sh
 	dodoc README.md dxvk.conf
 
 	find "${ED}" -type f -name '*.a' -delete || die
@@ -127,13 +128,15 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if [[ ! ${REPLACING_VERSIONS} ]]; then
-		elog "To enable ${PN} on a wine prefix, you can run the following command:"
-		elog
-		elog "	WINEPREFIX=/path/to/prefix setup_dxvk.sh install --symlink"
-		elog
-		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
-	elif [[ -v DXVK_HAD_OVERLAY ]]; then
+	# TODO: setup_dxvk.sh script was removed, need to figure out a new way to
+	# explain/handle (leaving this alone for now in live in case gets restored)
+#	if [[ ! ${REPLACING_VERSIONS} ]]; then
+#		elog "To enable ${PN} on a wine prefix, you can run the following command:"
+#		elog
+#		elog "	WINEPREFIX=/path/to/prefix setup_dxvk.sh install --symlink"
+#		elog
+#		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
+	if [[ -v DXVK_HAD_OVERLAY ]]; then
 		# temporary warning until this version is more widely used
 		elog "Gentoo's main repo ebuild for ${PN} uses different paths than most overlays."
 		elog "If you were using symbolic links in wine prefixes it may be necessary to"
