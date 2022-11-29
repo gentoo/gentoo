@@ -23,11 +23,16 @@ else
 	HASH_SPIRV_DXIL=87d5b782bec60822aa878941e6b13c0a9a954c9b
 	HASH_VULKAN=5177b119bbdf463b7b909855a83230253c2d8b68
 	SRC_URI="
-		https://github.com/HansKristian-Work/vkd3d-proton/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/HansKristian-Work/dxil-spirv/archive/${HASH_DXIL}.tar.gz -> ${PN}-dxil-spirv-${HASH_DXIL::10}.tar.gz
-		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV}.tar.gz -> ${PN}-spirv-headers-${HASH_SPIRV::10}.tar.gz
-		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV_DXIL}.tar.gz -> ${PN}-spirv-headers-${HASH_SPIRV_DXIL::10}.tar.gz
-		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz -> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz"
+		https://github.com/HansKristian-Work/vkd3d-proton/archive/refs/tags/v${PV}.tar.gz
+			-> ${P}.tar.gz
+		https://github.com/HansKristian-Work/dxil-spirv/archive/${HASH_DXIL}.tar.gz
+			-> ${PN}-dxil-spirv-${HASH_DXIL::10}.tar.gz
+		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV}.tar.gz
+			-> ${PN}-spirv-headers-${HASH_SPIRV::10}.tar.gz
+		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV_DXIL}.tar.gz
+			-> ${PN}-spirv-headers-${HASH_SPIRV_DXIL::10}.tar.gz
+		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz
+			-> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 
@@ -151,8 +156,6 @@ multilib_src_install_all() {
 	dobin setup_vkd3d_proton.sh
 	einstalldocs
 
-	# unnecesasry files, see package-release.sh
-	rm "${ED}"/usr/lib/${PN}/x*/libvkd3d-proton-utils-3.dll || die
 	find "${ED}" -type f -name '*.a' -delete || die
 }
 
