@@ -49,11 +49,6 @@ www-servers/boa
 ~dev-libs/glib-2.74.2
 
 # Michał Górny <mgorny@gentoo.org> (2022-11-27)
-# Unresolved LICENSE issue for 3 years now.
-# Removal on 2022-12-27.  Bug #694708.
-app-admin/helm
-
-# Michał Górny <mgorny@gentoo.org> (2022-11-27)
 # Broken with OpenSSL-3.  Last upstream activity in 2021, no reply
 # to the bug.
 # Removal on 2022-12-27.  Bug #805233.
