@@ -6,6 +6,7 @@
 		<name>Sebastian Pipping</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">resurrecting-open-source-projects/dcfldd</remote-id>
 		<remote-id type="sourceforge">dcfldd</remote-id>
 	</upstream>
 </pkgmetadata>
