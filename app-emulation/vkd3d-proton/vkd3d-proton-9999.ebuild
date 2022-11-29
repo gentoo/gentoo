@@ -152,7 +152,6 @@ multilib_src_install_all() {
 	einstalldocs
 
 	# unnecesasry files, see package-release.sh
-	rm "${ED}"/usr/lib/${PN}/x*/libvkd3d-proton-utils-3.dll || die
 	find "${ED}" -type f -name '*.a' -delete || die
 }
 
