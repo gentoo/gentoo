@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Piotr Karbowski <slashbeast@gentoo.org> (2022-11-29)
+# Multiple stability issues, deadlocks on exit, broken API.
+# Bug #883559
+=net-p2p/qbittorrent-4.5.0
+
 # John Helmert III <ajak@gentoo.org> (2022-11-27)
 # Unmaintained upstream, several unresolved public vulnerabilities,
 # Removal in 30 days. Bug #882773.
