@@ -1,0 +1,12 @@
+diff -Nurw a/meson.build b/meson.build
+--- a/meson.build	2022-04-27 04:33:34.670853100 +0300
++++ b/meson.build	2022-11-17 12:32:05.106347423 +0300
+@@ -70,7 +70,7 @@
+   endif
+ endif
+ 
+-webkitgtk = dependency('webkit2gtk-4.0', version: '>= 2.8.1', required: false)
++webkitgtk = dependency('webkit2gtk-4.1', version: '>= 2.8.1', required: false)
+ if get_option('webkitgtk')
+   if webkitgtk.found()
+     zenity_conf.set('HAVE_WEBKITGTK', true)
