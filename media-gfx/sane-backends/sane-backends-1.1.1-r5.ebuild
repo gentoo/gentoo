@@ -129,7 +129,7 @@ SRC_URI="https://gitlab.com/sane-project/backends/uploads/7d30fab4e115029d91027b
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 # For pixma: see https://gitlab.com/sane-project/backends/-/releases/1.0.28#build
 RDEPEND="
