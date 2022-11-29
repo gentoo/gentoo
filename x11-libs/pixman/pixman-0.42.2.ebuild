@@ -46,8 +46,6 @@ multilib_src_configure() {
 		$(meson_feature cpu_flags_x86_sse2 sse2)
 		$(meson_feature cpu_flags_x86_ssse3 ssse3)
 		$(meson_feature cpu_flags_ppc_altivec vmx)
-		$(meson_feature cpu_flags_arm_neon neon)
-		$(meson_feature cpu_flags_arm_neon a64-neon)
 		$(meson_feature loongson2f loongson-mmi)
 		$(meson_feature test openmp) # only used in unit tests
 		$(meson_feature test tests)
@@ -55,6 +53,13 @@ multilib_src_configure() {
 		-Dgtk=disabled
 		-Dlibpng=disabled
 	)
+
+	if [[ ${ABI} == arm64 ]]; then
+		emesonargs+=($(meson_feature cpu_flags_arm_neon a64-neon))
+	elif [[ ${ABI} == arm ]]; then
+		emesonargs+=($(meson_feature cpu_flags_arm_neon neon))
+	fi
+
 	meson_src_configure
 }
 
