@@ -20,8 +20,8 @@ KEYWORDS="~alpha amd64 ~arm ppc ~riscv x86"
 # (if have a use for some of these disabled features, please fill a bug)
 XMMS2_OPTIONALS=(
 	cxx:xmmsclient++,xmmsclient++-glib :launcher mlib-update:medialib-updater
-	:nycli perl :pixmaps python server:s4 test:tests
-	# disabled: et,mdns,migrate-collections,ruby,sqlite2s4,vistest,xmmsclient-cf,xmmsclient-ecore
+	:nycli perl :pixmaps python server:s4 test:tests libvisual:vistest
+	# disabled: et,mdns,migrate-collections,ruby,sqlite2s4,xmmsclient-cf,xmmsclient-ecore
 )
 XMMS2_PLUGINS=(
 	aac:faad airplay alsa ao :asx cdda :cue curl :diskwrite :equalizer
@@ -43,6 +43,10 @@ RESTRICT="!test? ( test ) !server? ( test )"
 COMMON_DEPEND="
 	dev-libs/glib:2
 	sys-libs/readline:=
+	libvisual? (
+		media-libs/libsdl[opengl,video]
+		media-libs/libvisual:0.4
+	)
 	server? (
 		aac? ( media-libs/faad2 )
 		airplay? ( dev-libs/openssl:= )
@@ -204,6 +208,8 @@ src_test() {
 src_install() {
 	local DOCS=( AUTHORS README.mdown *.ChangeLog )
 	waf-utils_src_install --without-ldconfig --notests
+
+	use libvisual && dobin _build_/src/clients/vistest/xmms2-libvisual
 
 	use python && python_optimize
 
