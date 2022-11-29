@@ -56,6 +56,8 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/xml2-config
 )
 
+PATCHES=( "${FILESDIR}"/${PN}-2.10.3-python3-unicode-errors.patch )
+
 DOCS=( NEWS README.md TODO TODO_SCHEMAS python/TODO )
 
 src_unpack() {
