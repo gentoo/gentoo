@@ -1,0 +1,30 @@
+From dfd993afd0587080e73079ae7f5ea9a087784d49 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pascal=20J=C3=A4ger?= <pascal.jaeger@leimstift.de>
+Date: Tue, 29 Nov 2022 22:01:30 +0100
+Subject: [PATCH] Fix declaration of check_context_linelimit
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Bug: https://bugs.gentoo.org/871135
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+---
+ src/context.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/context.h b/src/context.h
+index 0448cfb..addbbab 100644
+--- a/src/context.h
++++ b/src/context.h
+@@ -22,6 +22,7 @@ void		add_to_context(struct context *, struct context_line *);
+ void		do_context_action(struct context *);
+ 
+ void		check_context_timeout();
++void		check_context_linelimit();
+ 
+ void		expand_context_action_macros(struct context *);
+ 
+-- 
+2.38.1
+
