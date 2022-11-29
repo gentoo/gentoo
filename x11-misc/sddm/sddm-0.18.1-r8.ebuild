@@ -26,7 +26,7 @@ COMMON_DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	x11-base/xorg-server
-	x11-libs/libxcb[xkb]
+	x11-libs/libxcb:=
 	elogind? ( sys-auth/elogind )
 	pam? ( sys-libs/pam )
 	!pam? ( virtual/libcrypt:= )
