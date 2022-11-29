@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/helm/helm https://helm.sh"
 SRC_URI="https://github.com/helm/helm/archive/v${MY_PV}.tar.gz -> k8s-${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 CC-BY-4.0 CC-BY-SA-4.0 ISC MIT ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv"
 
