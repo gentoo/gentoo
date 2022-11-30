@@ -44,6 +44,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
 BDEPEND="
+	dev-util/itstool
 	virtual/pkgconfig
 "
 
