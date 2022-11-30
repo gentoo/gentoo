@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# John Helmert III <ajak@gentoo.org> (2022-11-29)
+# sys-apps/ucspi-ssl is last rited
+mail-mta/netqmail pop3
+mail-mta/notqmail pop3
+
 # Joonas Niilola <juippis@gentoo.org> (2022-11-25)
 # x11-wm/stumpwm-22.05_p20220818[doc] is totally broken. Bug #882935
 x11-wm/stumpwm doc

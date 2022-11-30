@@ -34,9 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # John Helmert III <ajak@gentoo.org> (2022-11-29)
+# Unmaintained and outdated in Gentoo, compatibility issues with
+# openssl-1.1. Removal in 30 days. Bug #696936.
+sys-apps/ucspi-ssl
+
+# John Helmert III <ajak@gentoo.org> (2022-11-29)
 # Authentication bypass vulnerability, unmaintained in Gentoo, source
 # package available. Use app-metrics/prometheus instead. Removal in 30
-# days. Bug ##883637.
+# days. Bug #883637.
 app-metrics/prometheus-bin
 
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-11-29)
