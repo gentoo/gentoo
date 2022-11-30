@@ -5,4 +5,7 @@
 	<longdescription>
 		A interactive who program that displays information about the users currently logged into the machine.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">mtsuszycki/whowatch</remote-id>
+	</upstream>
 </pkgmetadata>
