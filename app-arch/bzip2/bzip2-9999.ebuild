@@ -19,9 +19,8 @@ SLOT="0/1" # subslot = SONAME
 
 IUSE="static-libs"
 
-RDEPEND="
-	!app-arch/lbzip2[symlink(-)]
-	!app-arch/pbzip2[symlink(-)]
+PDEPEND="
+	app-alternatives/bzip2
 "
 
 multilib_src_configure() {
@@ -39,16 +38,17 @@ multilib_src_install() {
 
 	if multilib_is_native_abi ; then
 		gen_usr_ldscript -a bz2
-
-		dodir /bin
-		mv "${ED}"/usr/bin/bzip2 "${ED}"/bin || die
 	fi
 }
 
 multilib_src_install_all() {
-	# Move "important" bzip2 binaries to /bin and use the shared libbz2.so
-	dosym bzip2 /bin/bzcat
-	dosym bzip2 /bin/bunzip2
+	dodir /bin
+	mv "${ED}"/usr/bin/bzip2 "${ED}"/bin/bzip2-reference || die
+	mv "${ED}"/usr/share/man/man1/bzip2{,-reference}.1 || die
+
+	# moved to app-alternatives/bzip2
+	rm "${ED}"/usr/bin/{bzcat,bunzip2} || die
+	rm "${ED}"/usr/share/man/man1/{bzcat,bunzip2.1} || die
 
 	dosym bzdiff /usr/bin/bzcmp
 	dosym bzmore /usr/bin/bzless
@@ -57,8 +57,7 @@ multilib_src_install_all() {
 		dosym bzgrep /usr/bin/${x}
 	done
 
-	dosym bzip2.1 /usr/share/man/man1/bzip2recover.1
+	dosym bzip2-reference.1 /usr/share/man/man1/bzip2recover.1
 
-	local DOCS=( AUTHORS NEWS{,-pre-1.0.7} README.md )
 	einstalldocs
 }
