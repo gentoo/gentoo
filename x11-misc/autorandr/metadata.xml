@@ -8,4 +8,7 @@
 	<use>
 		<flag name="launcher">Install the launcher, i.e., an alternative to the udev/systemd hooks</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">phillipberndt/autorandr</remote-id>
+	</upstream>
 </pkgmetadata>
