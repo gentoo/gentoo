@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-11-30)
+# Only effective on amd64/x86.
+dev-libs/gmp -cpudetection
+
 # Michał Górny <mgorny@gentoo.org> (2022-11-16)
 # spirv-llvm-translator is not keyworded x86.
 dev-libs/libclc spirv

@@ -27,7 +27,8 @@ LICENSE="|| ( LGPL-3+ GPL-2+ )"
 SLOT="0/10.4"
 # Unkeyworded temporarily for some more testing
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+asm doc +cxx pic static-libs"
+IUSE="+asm doc +cpudetection +cxx pic static-libs"
+REQUIRED_USE="cpudetection? ( asm )"
 
 BDEPEND="
 	app-arch/xz-utils
@@ -93,14 +94,14 @@ multilib_src_configure() {
 		--localstatedir="${EPREFIX}"/var/state/gmp
 		--enable-shared
 
+		$(use_enable asm assembly)
 		# fat is needed to avoid gmp installing either purely generic
 		# or specific-to-used-CPU (which our config.guess refresh prevents at the moment).
 		# Both Fedora and opensuse use this option to tackle the issue, bug #883201.
 		#
 		# This only works for x86, so we're still getting non-performant
 		# builds on other arches until we figure something out!
-		$(use_enable asm fat)
-		$(use_enable asm assembly)
+		$(use_enable cpudetection fat)
 		$(use_enable cxx)
 		$(use_enable static-libs static)
 
