@@ -86,6 +86,7 @@ multilib_src_configure() {
 
 	tc-export CC
 
+	# https://gmplib.org/manual/Notes-for-Package-Builds
 	local myeconfargs=(
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 
