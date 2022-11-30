@@ -12,7 +12,7 @@ S="${WORKDIR}/${P/a/A}"
 
 LICENSE="CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 FONT_SUFFIX="ttf"
