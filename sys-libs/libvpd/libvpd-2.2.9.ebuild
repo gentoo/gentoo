@@ -10,7 +10,7 @@ SRC_URI="https://github.com/power-ras/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="LGPL-2.1+"
 SLOT="0/3"
-KEYWORDS="~ppc ~ppc64"
+KEYWORDS="~ppc ppc64"
 
 DEPEND="
 	dev-db/sqlite:3
