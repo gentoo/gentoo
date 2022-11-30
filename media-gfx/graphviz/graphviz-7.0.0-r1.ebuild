@@ -50,7 +50,7 @@ RDEPEND="
 	lasi? ( media-libs/lasi )
 	pdf? ( app-text/poppler )
 	perl? ( dev-lang/perl:= )
-	postscript? ( app-text/ghostscript-gpl )
+	postscript? ( app-text/ghostscript-gpl:= )
 	python? ( ${PYTHON_DEPS} )
 	qt5? (
 		dev-qt/qtcore:5
@@ -137,11 +137,6 @@ BDEPEND="
 #   needs x11-libs/gtkglext, gnome-base/libglade, media-libs/freeglut
 #   sci-libs/gts, x11-libs/gtk.  Also needs 'gtk','glade','glut','gts' and 'png'
 #   with flags enabled at configure time
-
-PATCHES=(
-	# backport
-	"${FILESDIR}"/${P}-private-ghostscript-symbols.patch
-)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
