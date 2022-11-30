@@ -11,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">gsd</remote-id>
+		<remote-id type="github">glotzerlab/gsd</remote-id>
 	</upstream>
 </pkgmetadata>
