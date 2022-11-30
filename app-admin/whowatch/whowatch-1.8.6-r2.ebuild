@@ -19,6 +19,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.4-tinfo.patch
+	"${FILESDIR}"/${PN}-1.8.4-configure-clang16.patch
 )
 
 src_prepare() {
