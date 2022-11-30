@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-11-29)
+# Needed for new mechanism in gcc-13
+>sys-devel/gcc-12.99 default-znow default-stack-clash-protection
 
 # Needed for XATTR_PAX flags
 app-arch/tar xattr
 sys-apps/coreutils xattr
 sys-apps/portage xattr
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (29/Nov/2022)
-# Needed for new mechanism in gcc-13
->sys-devel/gcc-12.99 default-znow default-stack-clash-protection
