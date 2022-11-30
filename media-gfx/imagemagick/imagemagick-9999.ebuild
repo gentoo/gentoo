@@ -53,7 +53,7 @@ RDEPEND="
 	pango? ( x11-libs/pango )
 	perl? ( >=dev-lang/perl-5.8.8:= )
 	png? ( media-libs/libpng:= )
-	postscript? ( app-text/ghostscript-gpl )
+	postscript? ( app-text/ghostscript-gpl:= )
 	raw? ( media-libs/libraw:= )
 	svg? (
 		gnome-base/librsvg
