@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-30)
+# No Haskell on loong yet (port under review), hence no virtual/pandoc and
+# friends.
+www-apps/hugo test
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-11-30)
 # Test phase apparently requires an ocamlopt port.
 dev-lang/ocaml test
 
