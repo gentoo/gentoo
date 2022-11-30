@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}
 
 BDEPEND=""
 
+PATCHES=( "${FILESDIR}/lsvpd-1.7.14-bashisms.patch" )
+
 src_prepare() {
 	default
 	eautoreconf
