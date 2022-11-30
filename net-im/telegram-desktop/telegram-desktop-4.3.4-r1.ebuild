@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit xdg cmake python-any-r1 optfeature
+inherit xdg cmake python-any-r1 optfeature flag-o-matic
 
 DESCRIPTION="Official desktop client for Telegram"
 HOMEPAGE="https://desktop.telegram.org"
@@ -124,6 +124,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# The ABI of media-libs/tg_owt breaks if the -DNDEBUG flag doesn't keep
+	# the same state across both projects.
+	# See https://bugs.gentoo.org/866055
+	append-cppflags '-DNDEBUG'
+
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_tl-expected=ON  # header only lib, some git version. prevents warnings.
 		-DQT_VERSION_MAJOR=$(usex qt6 6 5)
