@@ -10,6 +10,7 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">Libvisual/libvisual</remote-id>
 		<remote-id type="sourceforge">libvisual</remote-id>
 	</upstream>
 </pkgmetadata>
