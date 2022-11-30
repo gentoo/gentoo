@@ -37,6 +37,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 BDEPEND="virtual/pkgconfig"
+PATCHES=( "${FILESDIR}/7d60151ba9.patch" )
 
 multilib_src_configure() {
 	local myeconfargs=(
