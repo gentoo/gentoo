@@ -291,7 +291,8 @@ fi
 
 #---->> DEPEND <<----
 
-RDEPEND="sys-libs/zlib
+RDEPEND="
+	sys-libs/zlib
 	virtual/libiconv
 	nls? ( virtual/libintl )
 "
@@ -322,7 +323,8 @@ BDEPEND="
 	test? (
 		>=dev-util/dejagnu-1.4.4
 		>=sys-devel/autogen-5.5.4
-	)"
+	)
+"
 DEPEND="${RDEPEND}"
 
 if [[ ${PN} == gcc && ${PV} == *_p* ]] ; then
