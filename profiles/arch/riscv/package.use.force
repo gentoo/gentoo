@@ -1,6 +1,10 @@
 # Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Rivnak <rivnakm1@gmail.com> (2022-11-30)
+# luajit is currently not supported on riscv, so use lua instead
+app-editors/neovim lua_single_target_lua5-1
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-11-13)
 # 1.64 segfaults, so we force 1.65 bootstrapping 1.65
 ~dev-lang/rust-1.65.0 system-bootstrap
