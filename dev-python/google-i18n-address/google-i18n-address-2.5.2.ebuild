@@ -15,6 +15,6 @@ SRC_URI="https://github.com/mirumee/google-i18n-address/archive/refs/tags/${PV}.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 distutils_enable_tests pytest
