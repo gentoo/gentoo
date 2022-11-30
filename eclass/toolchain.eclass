@@ -277,6 +277,7 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 10 && IUSE+=" zstd" TC_FEATURES+=( zstd )
 	tc_version_is_at_least 11 && IUSE+=" valgrind" TC_FEATURES+=( valgrind )
 	tc_version_is_at_least 11 && IUSE+=" custom-cflags"
+	tc_version_is_at_least 12 && IUSE+=" ieee-long-double"
 	tc_version_is_at_least 12.99 && IUSE+=" default-znow"
 	tc_version_is_at_least 12.99 && IUSE+=" default-stack-clash-protection"
 fi
@@ -1326,6 +1327,13 @@ toolchain_src_configure() {
 			# - bug #704784
 			# - https://gcc.gnu.org/PR93157
 			[[ ${CTARGET} == powerpc64-*-musl ]] && confgcc+=( --with-abi=elfv2 )
+
+			if in_iuse ieee-long-double; then
+				# musl requires 64-bit long double, not IBM double-double or IEEE quad.
+				if [[ ${CTARGET} == powerpc64le-*-gnu ]]; then
+					use ieee-long-double && confgcc+=( --with-long-double-format=ieee )
+				fi
+			fi
 			;;
 		riscv)
 			# Add --with-abi flags to set default ABI
