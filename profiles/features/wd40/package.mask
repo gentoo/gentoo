@@ -79,6 +79,7 @@ media-libs/libavif
 >=media-libs/libopenraw-0.3.2
 media-video/ogmrip
 media-video/rav1e
+net-im/gajim
 >=net-irc/polari-3.37
 net-libs/quiche
 net-misc/electrum-ltc
