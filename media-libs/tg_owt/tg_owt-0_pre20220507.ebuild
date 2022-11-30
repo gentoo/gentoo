@@ -23,6 +23,8 @@ IUSE="screencast +X"
 # This package's USE flags may change the ABI and require a rebuild of
 #  dependent pacakges. As such, one should make sure to depend on
 #  media-libs/tg_owt[x=,y=,z=] for any package that uses this.
+# Furthermore, the -DNDEBUG preprocessor flag should be defined by any
+#  dependent package, failure to do so will change the ABI in the header files.
 
 # Bundled libs:
 # - libyuv (no stable versioning, www-client/chromium and media-libs/libvpx bundle it)
@@ -85,7 +87,7 @@ src_prepare() {
 
 src_configure() {
 	# Defined by -DCMAKE_BUILD_TYPE=Release, avoids crashes
-	# see https://bugs.gentoo.org/754012
+	# See https://bugs.gentoo.org/754012
 	# EAPI 8 still wipes this flag.
 	append-cppflags '-DNDEBUG'
 
