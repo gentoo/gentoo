@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://downloads.linux.hpe.com/SDR/repo/spp/2019.03.0/packages/ssacli-
 
 LICENSE="hpe"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE=""
 
 DEPEND=""
