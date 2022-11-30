@@ -9,7 +9,7 @@ SRC_URI="https://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libst
 
 LICENSE="|| ( GPL-2 LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong ppc ~riscv x86"
 IUSE="examples"
 
 RDEPEND="sys-libs/ncurses"
