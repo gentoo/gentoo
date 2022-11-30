@@ -32,7 +32,8 @@ src_prepare() {
 		"${FILESDIR}"/0002-Don-t-build-libtorch-again-for-PyTorch-1.7.1.patch \
 		"${FILESDIR}"/pytorch-1.9.0-Change-library-directory-according-to-CMake-build.patch \
 		"${FILESDIR}"/${PN}-1.6.0-global-dlopen.patch \
-		"${FILESDIR}"/pytorch-1.7.1-torch_shm_manager.patch
+		"${FILESDIR}"/pytorch-1.7.1-torch_shm_manager.patch \
+		"${FILESDIR}"/pytorch-1.12.0-CVE-2022-45907.patch
 
 	# Set build dir for pytorch's setup
 	sed -i \
