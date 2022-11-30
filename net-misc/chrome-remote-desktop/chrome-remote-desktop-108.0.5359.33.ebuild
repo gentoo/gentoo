@@ -44,12 +44,12 @@ RDEPEND+="
 	dev-libs/nspr
 	dev-libs/nss
 	$(python_gen_cond_dep 'dev-python/psutil[${PYTHON_USEDEP}]')
-	gnome-base/gconf:2
 	media-libs/fontconfig
 	media-libs/freetype:2
 	sys-apps/dbus
 	sys-devel/gcc
 	sys-libs/glibc
+	sys-libs/libutempter
 	sys-libs/pam
 	x11-apps/xdpyinfo
 	x11-apps/setxkbmap
