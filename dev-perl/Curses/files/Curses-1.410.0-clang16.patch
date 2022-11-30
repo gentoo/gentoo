@@ -1,0 +1,84 @@
+Fedora sent upstream by email: https://bugzilla.redhat.com/show_bug.cgi?id=2148432#c2.
+
+https://src.fedoraproject.org/rpms/perl-Curses/c/2633f3adcd14dff61d6d45f97c8bc4f65ce06d82?branch=rawhide
+Add missing int types for C99 compatibility.
+--- a/testint.c
++++ b/testint.c
+@@ -8,6 +8,7 @@
+ 
+ #include "c-config.h"
+ 
++int
+ main() {
+   int ret;
+ 
+--- a/testtyp.c
++++ b/testtyp.c
+@@ -8,6 +8,7 @@
+ 
+ #include "c-config.h"
+ 
++int
+ main() {
+   typedef SYM c_sym_t;
+ }
+
+--- a/test.syms
++++ b/test.syms
+@@ -24,6 +24,9 @@ use warnings;
+ use English;
+ 
+ my $verbose;
++my $panels;
++my $menus;
++my $forms;
+ 
+ sub makeCompileCommand($) {
+     my ($compileR) = @_;
+@@ -74,22 +77,31 @@ sub makeCompileCommand($) {
+     #
+     #  _C_SYM_ and _C_FILE_ will be filled in later
+ 
++    my $defs_prefix = '-D';
+     if ($OSNAME =~ m{VMS}i) {
+-        $compile =~ s{#DEFS#}{DEFINE=SYM="_C_SYM_"};
++	$defs_prefix = 'DEFINE-';
+         $compile =~ s{#FILE#}{_C_FILE_.c};
+         $compile =~ s{#NULL#}{};  # no non-verbose way
+     }
+     elsif ($OSNAME eq 'MSWin32') {
+-        $compile =~ s{#DEFS#}{-DSYM="_C_SYM_"};
+         $compile =~ s{#FILE#}{_C_FILE_.c};
+         $compile =~ s{#NULL#}{>nul 2>&1};
+     }
+     else {
+-        $compile =~ s{#DEFS#}{-DSYM="_C_SYM_"};
+         $compile =~ s{#FILE#}{-o _C_FILE_ _C_FILE_.c};
+         $compile =~ s{#NULL#}{>/dev/null 2>&1};
+     }
+ 
++    # Make these defines from CursesDef.h available early, so that
++    # the feature probing uses the correct build configuration.
++    my @defs = (qq(${defs_prefix}SYM="_C_SYM_"));
++    push @defs, qq(${defs_prefix}C_PANELFUNCTION="1") if $panels;
++    push @defs, qq(${defs_prefix}C_MENUFUNCTION="1") if $menus;
++    push @defs, qq(${defs_prefix}C_FORMFUNCTION="1") if $forms;
++
++    $compile =~ s{#DEFS#}{join " ", @defs}e;
++    
++
+     if ($compile =~ m{#.+#}) {
+         die "OOPS: internal error constructing a compile command.  " .
+             "We failed to substitute for a #xxx# substitution variable " .
+@@ -109,10 +121,6 @@ print("Set CURSES_VERBOSE environment variable to see the details of the " .
+       "tests.\n");
+ print("\n");
+ 
+-my $panels;
+-my $menus;
+-my $forms;
+-
+ if ($ENV{CURSES_VERBOSE}) {
+     $verbose = 1;
+ } else {
+
