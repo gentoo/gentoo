@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2022-11-30)
+# SLOTs 23 and 24 of app-editors/emacs, corresponding to GNU Emacs
+# versions 23.4 and 24.5. These versions were released in January 2012
+# and April 2015, respectively, and have a non-trivial security issue
+# with ctags. Please upgrade to >=app-editors/emacs-25 and update your
+# Emacs Lisp packages with emacs-updater.
+# Masked for removal in 30 days. Bugs #882347, #882349, #883687.
+app-editors/emacs:23
+app-editors/emacs:24
+
 # John Helmert III <ajak@gentoo.org> (2022-11-29)
 # Unmaintained and outdated in Gentoo, compatibility issues with
 # openssl-1.1. Removal in 30 days. Bug #696936.
