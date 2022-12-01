@@ -41,11 +41,13 @@ RDEPEND="
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
+		dev-python/build[${PYTHON_USEDEP}]
 		>=dev-python/distlib-0.3.6[${PYTHON_USEDEP}]
 		>=dev-python/filelock-3.8[${PYTHON_USEDEP}]
 		>=dev-python/flaky-3.7[${PYTHON_USEDEP}]
 		>=dev-python/psutil-5.9.4[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		>=dev-python/re-assert-1.1[${PYTHON_USEDEP}]
 		>=dev-python/time-machine-2.8.2[${PYTHON_USEDEP}]
 	)
