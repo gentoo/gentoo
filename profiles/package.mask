@@ -398,13 +398,6 @@ dev-python/tempita
 # Removal on 2022-12-04.  Bug #879515.
 dev-python/watchgod
 
-# Matt Turner <mattst88@gentoo.org> (2022-11-01)
-# Added by a proxied maintainer in 2018 who then never touched it again before
-# disappearing. Doesn't build with Python 3.9. Depends on gnome-base/gconf.
-# Bugs #846233, #873877
-# Removal on 2022-12-01
-sci-electronics/drahnr-oregano
-
 # Anton Fischl <github@fischl-online.de> (2022-10-23)
 # Version 3.1.* is not meant for production according to upstream
 =app-backup/burp-3.1*
