@@ -9,15 +9,11 @@ MY_P="${P/_p/-}"
 DESCRIPTION="An (often faster than gawk) awk-interpreter"
 HOMEPAGE="https://invisible-island.net/mawk/mawk.html"
 SRC_URI="https://invisible-mirror.net/archives/${PN}/${MY_P}.tgz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-
-RDEPEND="app-eselect/eselect-awk"
-DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${MY_P}"
 
 DOCS=( ACKNOWLEDGMENT CHANGES README )
 
@@ -35,9 +31,15 @@ src_install() {
 }
 
 pkg_postinst() {
-	eselect awk update ifunset
+	if has_version app-admin/eselect && has_version app-eselect/eselect-awk
+	then
+		eselect awk update ifunset
+	fi
 }
 
 pkg_postrm() {
-	eselect awk update ifunset
+	if has_version app-admin/eselect && has_version app-eselect/eselect-awk
+	then
+		eselect awk update ifunset
+	fi
 }
