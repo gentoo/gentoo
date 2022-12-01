@@ -78,7 +78,20 @@ Bug: https://bugs.gentoo.org/871372
  {
  	int epfd = epoll_create(256);
  	exit (epfd == -1 ? 1 : 0);
-@@ -1551,6 +1555,9 @@ dnl			esac
+@@ -1493,10 +1497,8 @@ pthread_rwlock_t rwlock;
+ 				dnl save the flags
+ 				AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+ #include <pthread.h>
+-#ifndef NULL
+-#define NULL (void*)0
+-#endif
+-]], [[pthread_detach(NULL);]])],[ol_cv_func_pthread_detach=yes],[ol_cv_func_pthread_detach=no])
++pthread_t thread;
++]], [[pthread_detach(thread);]])],[ol_cv_func_pthread_detach=yes],[ol_cv_func_pthread_detach=no])
+ 			])
+ 
+ 			if test $ol_cv_func_pthread_detach = no ; then
+@@ -1551,6 +1553,9 @@ dnl			esac
  				AC_CACHE_CHECK([if select yields when using pthreads],
  					ol_cv_pthread_select_yields,[
  				AC_RUN_IFELSE([AC_LANG_SOURCE([[
@@ -88,7 +101,7 @@ Bug: https://bugs.gentoo.org/871372
  #include <sys/types.h>
  #include <sys/time.h>
  #include <unistd.h>
-@@ -1561,8 +1568,7 @@ dnl			esac
+@@ -1561,8 +1566,7 @@ dnl			esac
  
  static int fildes[2];
  
@@ -98,7 +111,7 @@ Bug: https://bugs.gentoo.org/871372
  {
  	int i;
  	struct timeval tv;
-@@ -1586,9 +1592,7 @@ static void *task(p)
+@@ -1586,9 +1590,7 @@ static void *task(p)
  	exit(0); /* if we exit here, the select blocked the whole process */
  }
  
@@ -167,3 +180,6 @@ Bug: https://bugs.gentoo.org/871372
  {
  	(void)close(LogFile);
  	LogFile = -1;
+-- 
+2.38.1
+
