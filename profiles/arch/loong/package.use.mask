@@ -50,6 +50,7 @@ mate-base/mate help
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
 # virtual/{jdk,jre} is not available on loong yet.
+app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript
 media-libs/rubberband jni
 www-client/chromium js-type-check
 
