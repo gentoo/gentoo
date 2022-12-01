@@ -17,7 +17,7 @@ SRC_URI="https://github.com/socketry/async-io/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~sparc"
+KEYWORDS="~amd64 ~arm64 ~sparc"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/async"
