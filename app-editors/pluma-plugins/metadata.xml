@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>mate@gentoo.org</email>
+	<name>Gentoo MATE Desktop</name>
+</maintainer>
+<use>
+	<flag name="bracketcompletion">Auto complete bracket pairs</flag>
+	<flag name="codecomment">Comment code blocks</flag>
+	<flag name="smartspaces">Insert smart spaces</flag>
+	<flag name="synctex">Enable synctex support for pdflatex</flag>
+	<flag name="terminal">Embed a terminal in the bottom pane</flag>
+</use>
+</pkgmetadata>
