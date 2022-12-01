@@ -76,11 +76,12 @@ src_configure() {
 	fi
 
 	# The autodetection for these two commands can hang if localhost is
-	# down or ICMP traffic is filtered. Bug #468296.
-	myconf+=( --with-ping-command="/bin/ping -4 -n -U -w %d -c %d %s" )
+	# down or ICMP traffic is filtered (bug #468296). But also the path
+	# likes to move around on us (bug #883729).
+	myconf+=( --with-ping-command="$(command -v ping) -4 -n -U -w %d -c %d %s" )
 
 	if use ipv6; then
-		myconf+=( --with-ping6-command="/bin/ping -6 -n -U -w %d -c %d %s" )
+		myconf+=( --with-ping6-command="$(command -v ping) -6 -n -U -w %d -c %d %s" )
 	fi
 
 	econf \
