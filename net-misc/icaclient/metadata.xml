@@ -9,4 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="hdx">Install and enable hdx-realtime-media-engine plugin</flag>
+	</use>
 </pkgmetadata>
