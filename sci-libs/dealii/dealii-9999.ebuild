@@ -76,7 +76,6 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] dev-lang/perl )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9.1.1-no-ld-flags.patch
 )
 
 src_configure() {
