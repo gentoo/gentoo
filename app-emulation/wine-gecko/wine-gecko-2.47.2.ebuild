@@ -4,7 +4,9 @@
 EAPI=8
 
 DESCRIPTION="Mozilla Gecko based version of Internet Explorer for Wine"
-HOMEPAGE="https://winehq.org"
+HOMEPAGE="
+	https://wiki.winehq.org/Gecko
+	https://gitlab.winehq.org/wine/wine-gecko/"
 SRC_URI="
 	shared? (
 		abi_x86_32? ( https://dl.winehq.org/wine/${PN}/${PV}/${P}-x86.tar.xz )
