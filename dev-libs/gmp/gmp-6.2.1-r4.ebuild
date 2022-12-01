@@ -25,10 +25,10 @@ S="${WORKDIR}"/${MY_P%a}
 LICENSE="|| ( LGPL-3+ GPL-2+ )"
 # The subslot reflects the C & C++ SONAMEs.
 SLOT="0/10.4"
-# Unkeyworded temporarily for some more testing
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="+asm doc +cpudetection +cxx pic static-libs"
 REQUIRED_USE="cpudetection? ( asm )"
+RESTRICT="!cpudetection? ( bindist )"
 
 BDEPEND="
 	app-arch/xz-utils
@@ -99,8 +99,13 @@ multilib_src_configure() {
 		# or specific-to-used-CPU (which our config.guess refresh prevents at the moment).
 		# Both Fedora and opensuse use this option to tackle the issue, bug #883201.
 		#
-		# This only works for x86, so we're still getting non-performant
-		# builds on other arches until we figure something out!
+		# This only works for amd64/x86, so to get accelerated performance
+		# (i.e. not using the generic C), one needs USE=-cpudetection if
+		# on non-amd64/x86.
+		#
+		# (We do not mask USE=cpudetection on !amd64/x86 because we want
+		# the flag to be useful on other arches to allow opting out of the
+		# config.guess logic below.)
 		$(use_enable cpudetection fat)
 		$(use_enable cxx)
 		$(use_enable static-libs static)
@@ -109,6 +114,25 @@ multilib_src_configure() {
 		# and without TEXTRELs. musl does not support TEXTRELs: bug #707332
 		$(use pic && echo --with-pic)
 	)
+
+	if use cpudetection && ! use amd64 && ! use x86 ; then
+		elog "Using generic C implementation on non-amd64/x86 with USE=cpudetection"
+		elog "--enable-fat is a no-op on alternative arches."
+		elog "To obtain an optimized build, set USE=-cpudetection, but binpkgs should not then be made."
+	fi
+
+	# See bug #883201 again.
+	if ! use cpudetection && ! tc-is-cross-compiler ; then
+		local gmp_host=$("${S}"/config.guess || die "failed to run config.guess")
+
+		if [[ -z ${gmp_host} ]] ; then
+			die "Empty result from GMP's custom config.guess!"
+		fi
+
+		einfo "GMP guessed processor type: ${gmp_host}"
+		ewarn "This build will only work on this machine. Enable USE=cpudetection for binary packages!"
+		export ac_cv_host="${gmp_host}"
+	fi
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
