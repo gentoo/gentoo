@@ -70,6 +70,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-unsigned-char-checksum.patch
 	# https://github.com/WayneD/rsync/issues/324
 	"${FILESDIR}"/${P}-strlcpy.patch
+	"${FILESDIR}"/${P}-notpedantic.patch
 )
 
 pkg_setup() {
