@@ -1,7 +1,7 @@
 # Copyright 2000-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 LUA_COMPAT=( lua5-{1..2} )
 
@@ -243,7 +243,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	xdg_src_prepare # bug 608256
+	default
+
+	# bug 608256
+	xdg_environment_reset
 
 	has_version 'net-libs/libupnp:1.8' && \
 		eapply "${FILESDIR}"/${PN}-2.2.8-libupnp-slot-1.8.patch

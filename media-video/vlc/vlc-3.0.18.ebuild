@@ -20,7 +20,7 @@ else
 	else
 		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 -sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv -sparc ~x86"
 fi
 inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
 
@@ -28,17 +28,17 @@ DESCRIPTION="Media player and framework with support for most multimedia files a
 HOMEPAGE="https://www.videolan.org/vlc/"
 
 LICENSE="LGPL-2.1 GPL-2"
-SLOT="0/12-9" # vlc - vlccore
+SLOT="0/5-9" # vlc - vlccore
 
 IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d dbus
 	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
-	fontconfig +gcrypt gme gnome-keyring gstreamer +gui ieee1394 jack jpeg kate kms
-	libass libcaca libnotify libplacebo +libsamplerate libtar libtiger linsys lirc live
-	loudness lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
-	nfs ogg omxil optimisememory opus png projectm pulseaudio rdp run-as-root samba
-	sdl-image sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype
-	twolame udev upnp vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf
-	zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse
+	fontconfig +gcrypt gme gnome-keyring gstreamer +gui ieee1394 jack jpeg kate
+	libass libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua
+	macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses nfs ogg
+	omxil optimisememory opus png projectm pulseaudio rdp run-as-root samba sdl-image
+	sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype twolame
+	udev upnp vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf zvbi
+	cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	chromecast? ( encode )
@@ -84,7 +84,7 @@ RDEPEND="
 		>=dev-libs/protobuf-2.5.0:=
 		>=net-libs/libmicrodns-0.1.2:=
 	)
-	dav1d? ( >=media-libs/dav1d-0.5.0:= )
+	dav1d? ( media-libs/dav1d:= )
 	dbus? ( sys-apps/dbus )
 	dc1394? (
 		media-libs/libdc1394:2
@@ -129,7 +129,6 @@ RDEPEND="
 	jack? ( virtual/jack )
 	jpeg? ( media-libs/libjpeg-turbo:0 )
 	kate? ( media-libs/libkate )
-	kms? ( x11-libs/libdrm )
 	libass? (
 		media-libs/fontconfig:1.0
 		media-libs/libass:=
@@ -138,16 +137,15 @@ RDEPEND="
 	libnotify? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf:2
+		x11-libs/gtk+:3
 		x11-libs/libnotify
 	)
-	libplacebo? ( media-libs/libplacebo )
 	libsamplerate? ( media-libs/libsamplerate )
 	libtar? ( dev-libs/libtar )
 	libtiger? ( media-libs/libtiger )
 	linsys? ( media-libs/zvbi )
 	lirc? ( app-misc/lirc )
 	live? ( media-plugins/live:= )
-	loudness? ( >=media-libs/libebur128-1.2.4:= )
 	lua? ( ${LUA_DEPS} )
 	mad? ( media-libs/libmad )
 	matroska? (
@@ -209,13 +207,11 @@ RDEPEND="
 	vpx? ( media-libs/libvpx:= )
 	wayland? (
 		>=dev-libs/wayland-1.15
-		>=dev-libs/wayland-protocols-1.12
+		dev-libs/wayland-protocols
 	)
 	X? (
 		x11-libs/libX11
 		x11-libs/libxcb
-		x11-libs/libXcursor
-		x11-libs/libxkbcommon[X]
 		x11-libs/xcb-util
 		x11-libs/xcb-util-keysyms
 	)
@@ -232,10 +228,11 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
-	"${FILESDIR}"/${PN}-configure_lua_version.patch
+	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
+	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
 )
 
-DOCS=( AUTHORS THANKS NEWS README.md doc/fortunes.txt )
+DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
 
 S="${WORKDIR}/${MY_P}"
 
@@ -252,7 +249,7 @@ src_prepare() {
 	xdg_environment_reset
 
 	has_version 'net-libs/libupnp:1.8' && \
-		eapply "${FILESDIR}"/${P}-libupnp-slot-1.8.patch
+		eapply "${FILESDIR}"/${PN}-2.2.8-libupnp-slot-1.8.patch
 
 	# Bootstrap when we are on a git checkout.
 	if [[ ${PV} = *9999 ]] ; then
@@ -287,6 +284,7 @@ src_configure() {
 	local -x BUILDCC="$(tc-getBUILD_CC)"
 
 	local myeconfargs=(
+		--disable-aa
 		--disable-optimizations
 		--disable-rpath
 		--disable-update-check
@@ -343,18 +341,15 @@ src_configure() {
 		$(use_enable jack)
 		$(use_enable jpeg)
 		$(use_enable kate)
-		$(use_enable kms)
 		$(use_enable libass)
 		$(use_enable libcaca caca)
 		$(use_enable libnotify notify)
-		$(use_enable libplacebo)
 		$(use_enable libsamplerate samplerate)
 		$(use_enable libtar)
 		$(use_enable libtiger tiger)
 		$(use_enable linsys)
 		$(use_enable lirc)
 		$(use_enable live live555)
-		$(use_enable loudness ebur128)
 		$(use_enable lua)
 		$(use_enable macosx-notifications osx-notifications)
 		$(use_enable mad)
@@ -368,6 +363,7 @@ src_configure() {
 		$(use_enable nfs)
 		$(use_enable ogg)
 		$(use_enable omxil)
+		$(use_enable omxil omxil-vout)
 		$(use_enable optimisememory optimize-memory)
 		$(use_enable opus)
 		$(use_enable png)
@@ -401,6 +397,7 @@ src_configure() {
 		$(use_enable wayland)
 		$(use_with X x)
 		$(use_enable X xcb)
+		$(use_enable X xvideo)
 		$(use_enable x264)
 		$(use_enable x264 x26410b)
 		$(use_enable x265)
@@ -412,11 +409,13 @@ src_configure() {
 		--disable-asdcp
 		--disable-coverage
 		--disable-cprof
+		--disable-crystalhd
 		--disable-decklink
 		--disable-gles2
 		--disable-goom
 		--disable-kai
 		--disable-kva
+		--disable-libplacebo
 		--disable-maintainer-mode
 		--disable-merge-ffmpeg
 		--disable-mfx
@@ -431,6 +430,7 @@ src_configure() {
 		--disable-spatialaudio
 		--disable-vsxu
 		--disable-wasapi
+		--disable-wma-fixed
 	)
 	# ^ We don't have these disabled libraries in the Portage tree yet.
 
