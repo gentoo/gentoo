@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Remove "multilib-strict" for now wrt #424423
-FEATURES="collision-protect sign splitdebug test test-fail-continue userpriv usersandbox"
+FEATURES="protect-owned sign splitdebug test test-fail-continue userpriv usersandbox"
 
 # Disable branding (from desktop)
 USE="-branding"
