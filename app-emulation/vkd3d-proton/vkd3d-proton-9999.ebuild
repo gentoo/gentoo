@@ -167,4 +167,12 @@ pkg_postinst() {
 		elog
 		elog "See ${EROOT}/usr/share/doc/${PF}/README.md* for details."
 	fi
+
+	if [[ ! ${REPLACING_VERSIONS##* } ]] ||
+		ver_test ${REPLACING_VERSIONS##* } -lt 2.7
+	then
+		elog
+		elog ">=${PN}-2.7 requires drivers and Wine to support vulkan-1.3, meaning:"
+		elog ">=wine-*-7.1 (or >=wine-proton-7.0), and >=mesa-22.0 (or >=nvidia-drivers-510)"
+	fi
 }
