@@ -35,6 +35,7 @@ RDEPEND="
 	app-arch/unzip
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
+		dev-python/distro[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
@@ -44,13 +45,12 @@ RDEPEND="
 		dev-python/requests[${PYTHON_USEDEP}]
 	')
 	media-sound/fluid-soundfont
-	net-libs/webkit-gtk:4[introspection]
+	net-libs/webkit-gtk:4.1[introspection]
 	x11-apps/mesa-progs
 	x11-apps/xgamma
 	x11-apps/xrandr
 	x11-libs/gtk+:3[introspection]
 	x11-libs/gdk-pixbuf[jpeg]
-	x11-libs/libnotify[introspection]
 "
 
 distutils_enable_tests pytest
