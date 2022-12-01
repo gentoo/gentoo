@@ -17,7 +17,7 @@ SRC_URI="https://github.com/socketry/fiber-local/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc"
 IUSE=""
 
 all_ruby_prepare() {
