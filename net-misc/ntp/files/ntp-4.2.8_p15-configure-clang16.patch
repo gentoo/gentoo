@@ -1,6 +1,21 @@
 Sync with OpenLDAP. Uses Arsen's patch from https://bugs.gentoo.org/871288.
 
 https://bugs.gentoo.org/871372
+--- a/sntp/m4/openldap-thread-check.m4
++++ b/sntp/m4/openldap-thread-check.m4
+@@ -262,10 +262,8 @@ pthread_rwlock_t rwlock;
+ 				dnl save the flags
+ 				AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+ #include <pthread.h>
+-#ifndef NULL
+-#define NULL (void*)0
+-#endif
+-]], [[pthread_detach(NULL);]])],[ol_cv_func_pthread_detach=yes],[ol_cv_func_pthread_detach=no])
++pthread_t thread;
++]], [[pthread_detach(thread);]])],[ol_cv_func_pthread_detach=yes],[ol_cv_func_pthread_detach=no])
+ 			])
+ 
+ 			if test $ol_cv_func_pthread_detach = no ; then
 --- a/sntp/m4/openldap.m4
 +++ b/sntp/m4/openldap.m4
 @@ -1,16 +1,16 @@
@@ -590,3 +605,6 @@ https://bugs.gentoo.org/871372
 -#endif
 -	], [ol_cv_ssl_crl_compat=yes], [ol_cv_ssl_crl_compat=no])])
 -])
+-- 
+2.38.1
+
