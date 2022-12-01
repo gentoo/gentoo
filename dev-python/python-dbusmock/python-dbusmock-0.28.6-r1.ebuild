@@ -35,6 +35,8 @@ src_prepare() {
 	> tests/__init__.py || die
 	# linter tests, fragile to newer linter versions
 	rm tests/test_code.py || die
+	# dev-python/dbus-python uses autotools, so no .dist-info there
+	sed -i '/dbus-python/d' pyproject.toml setup.cfg || die
 
 	distutils-r1_src_prepare
 }
