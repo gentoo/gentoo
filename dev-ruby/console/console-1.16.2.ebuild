@@ -16,7 +16,7 @@ SRC_URI="https://github.com/socketry/console/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~sparc"
+KEYWORDS="~amd64 ~arm64 ~sparc"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/fiber-local"
