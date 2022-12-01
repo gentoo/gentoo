@@ -2,6 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Andrey Grozin <grozin@gentoo.org> (2022-12-01)
+# These packages depend on dev-lisp/sbcl unconditionally
+app-emacs/sly
+dev-lisp/alexandria
+dev-ros/roslisp
+x11-wm/stumpwm
+
+# Andrey Grozin <grozin@gentoo.org> (2022-12-01)
 # The upstream supports only glibc Linux systems
 dev-lisp/sbcl
 
