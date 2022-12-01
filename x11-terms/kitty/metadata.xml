@@ -13,9 +13,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="transfer">Enable transfer kitten using <pkg>net-libs/librsync</pkg></flag>
-	</use>
 	<upstream>
 		<remote-id type="github">kovidgoyal/kitty</remote-id>
 		<changelog>https://sw.kovidgoyal.net/kitty/changelog</changelog>
