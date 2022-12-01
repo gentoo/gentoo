@@ -30,22 +30,19 @@ src_install() {
 	if use lbzip2; then
 		dosym "${usr_prefix}lbzip2" /bin/bzip2
 		newman - bzip2.1 <<<".so lbzip2.1"
-		newman - bunzip2.1 <<<".so lbzip2.1"
-		newman - bzcat.1 <<<".so lbzip2.1"
 	elif use pbzip2; then
 		dosym "${usr_prefix}pbzip2" /bin/bzip2
 		newman - bzip2.1 <<<".so pbzip2.1"
-		newman - bunzip2.1 <<<".so pbzip2.1"
-		newman - bzcat.1 <<<".so pbzip2.1"
 	elif use reference; then
 		dosym bzip2-reference /bin/bzip2
 		newman - bzip2.1 <<<".so bzip2-reference.1"
-		newman - bunzip2.1 <<<".so bzip2-reference.1"
-		newman - bzcat.1 <<<".so bzip2-reference.1"
 	else
 		die "Invalid USE flag combination (broken REQUIRED_USE?)"
 	fi
 
 	dosym bzip2 /bin/bunzip2
 	dosym bzip2 /bin/bzcat
+
+	newman - bunzip2.1 <<<".so bzip2.1"
+	newman - bzcat.1 <<<".so bzip2.1"
 }
