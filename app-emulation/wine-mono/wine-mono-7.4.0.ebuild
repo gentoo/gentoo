@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="Replacement for the .NET runtime and class libraries in Wine"
-HOMEPAGE="https://www.winehq.org/"
+HOMEPAGE="https://wiki.winehq.org/Mono"
 SRC_URI="
 	shared? ( https://github.com/madewokherd/wine-mono/releases/download/${P}/${P}-x86.tar.xz )
 	!shared? ( https://github.com/madewokherd/wine-mono/releases/download/${P}/${P}-x86.msi )"
