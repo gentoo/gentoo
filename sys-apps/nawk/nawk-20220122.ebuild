@@ -30,8 +30,8 @@ src_compile() {
 		CFLAGS="${CFLAGS}" \
 		CPPFLAGS=-DHAS_ISBLANK \
 		ALLOC="${LDFLAGS}" \
-		YACC=$(type -p bison) \
-		YFLAGS="-d"
+		YACC=$(type -p yacc) \
+		YFLAGS="-d -b awkgram"
 }
 
 src_install() {
