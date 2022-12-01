@@ -16,3 +16,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 BDEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-6.580.0
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-configure-clang16.patch
+)
