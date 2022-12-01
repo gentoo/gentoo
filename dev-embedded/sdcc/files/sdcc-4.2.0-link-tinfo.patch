@@ -1,0 +1,24 @@
+Link -ltinfo for ucsim
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/11.3.0/../../../../x86_64-pc-linux-gnu/bin/ld: /var/tmp/portage/dev-embedded/sdcc-4.2.0/temp/cc3R2ckl.ltrans0.ltrans.o: undefined reference to symbol 'nodelay'
+/usr/lib/gcc/x86_64-pc-linux-gnu/11.3.0/../../../../x86_64-pc-linux-gnu/bin/ld: /lib64/libtinfo.so.6: error adding symbols: DSO missing from command line
+
+--- sdcc-4.2.0.orig/sim/ucsim/configure.ac
++++ sdcc-4.2.0/sim/ucsim/configure.ac
+@@ -405,14 +405,14 @@
+   if test $curses_ok != yes; then
+     AC_CHECK_LIB(curses,nl,
+       curses_ok="yes"
+-      CURSES_LIBS="${CURSES_LIBS} -lcurses",
++      CURSES_LIBS="${CURSES_LIBS} -lcurses -ltinfo",
+       curses_ok="no")
+   fi
+ 
+   if test $curses_ok != yes; then
+     AC_CHECK_LIB(ncurses,nl,
+       curses_ok="yes"
+-      CURSES_LIBS="${CURSES_LIBS} -lncurses",
++      CURSES_LIBS="${CURSES_LIBS} -lncurses -ltinfo",
+       curses_ok="no")
+   fi
+ fi
