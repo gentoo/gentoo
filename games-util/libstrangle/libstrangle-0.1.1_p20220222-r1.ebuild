@@ -9,7 +9,7 @@ STRANGLE_COMMIT="0273e318e3b0cc759155db8729ad74266b74cb9b"
 
 DESCRIPTION="Frame rate limiter for OpenGL/Vulkan"
 HOMEPAGE="https://gitlab.com/torkel104/libstrangle/"
-SRC_URI="https://gitlab.com/torkel104/libstrangle/-/archive/${STRANGLE_COMMIT}/${P}.tar.gz"
+SRC_URI="https://gitlab.com/torkel104/libstrangle/-/archive/${STRANGLE_COMMIT}/${P}.tar.bz2"
 S="${WORKDIR}/${PN}-${STRANGLE_COMMIT}"
 
 LICENSE="GPL-3+"
