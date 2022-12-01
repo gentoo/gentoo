@@ -19,6 +19,7 @@
   datasets and recursive iteration over entire files.
   </longdescription>
   <upstream>
+    <remote-id type="github">h5py/h5py</remote-id>
     <remote-id type="google-code">h5py</remote-id>
     <remote-id type="pypi">h5py</remote-id>
   </upstream>
