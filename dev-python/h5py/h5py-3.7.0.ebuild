@@ -52,6 +52,10 @@ distutils_enable_sphinx docs \
 #}
 
 python_prepare_all() {
+	local PATCHES=(
+		"${FILESDIR}"/${P}-types.patch
+	)
+
 	# avoid pytest-mpi dep, we do not use mpi anyway
 	sed -i -e 's:pytest-mpi::' pytest.ini || die
 	distutils-r1_python_prepare_all
