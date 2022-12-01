@@ -13,12 +13,9 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
 
-RDEPEND="
-	app-eselect/eselect-awk"
-
 DEPEND="
-	${RDEPEND}
-	virtual/yacc"
+	virtual/yacc
+"
 
 S="${WORKDIR}/awk-${PV}"
 
@@ -46,9 +43,15 @@ src_install() {
 }
 
 pkg_postinst() {
-	eselect awk update ifunset
+	if has_version app-admin/eselect && has_version app-eselect/eselect-awk
+	then
+		eselect awk update ifunset
+	fi
 }
 
 pkg_postrm() {
-	eselect awk update ifunset
+	if has_version app-admin/eselect && has_version app-eselect/eselect-awk
+	then
+		eselect awk update ifunset
+	fi
 }
