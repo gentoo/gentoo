@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-12-01)
+# Old slot without dependencies on it. Blocks removal of
+# ruby27-only dev-util/cucumber-3.x. Use a newer slot instead.
+# Removal in 30 days.
+dev-util/aruba:1
+
 # Ionen Wolkens <ionen@gentoo.org> (2022-11-30)
 # Stuck on ruby27 and ruby-gtk2, upstream gone and no other distros
 # seem to package this (also barely functional using current ruby
