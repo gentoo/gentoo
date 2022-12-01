@@ -1,6 +1,10 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-01)
+# app-emulation/xen has arch-specific code, hence not available for loong yet.
+xen
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-28)
 # media-sound/nas currently not buildable due to x11-misc/xorg-cf-files
 # lacking arch-specific adaptation
