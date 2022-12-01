@@ -6,10 +6,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Sam James <sam@gentoo.org> (2022-11-30)
-# Upstream is down but source has been manually verified.
-=app-arch/xz-utils-5.2.9 verify-sig
-
 # John Helmert III <ajak@gentoo.org> (2022-11-29)
 # sys-apps/ucspi-ssl is last rited
 mail-mta/netqmail pop3
