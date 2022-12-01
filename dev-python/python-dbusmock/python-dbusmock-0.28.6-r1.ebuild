@@ -28,13 +28,14 @@ RDEPEND="
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
+
+EPYTEST_IGNORE=(
+	# linter tests, fragile to newer linter versions
+	tests/test_code.py
+)
 
 src_prepare() {
-	# needed for unittest discovery
-	> tests/__init__.py || die
-	# linter tests, fragile to newer linter versions
-	rm tests/test_code.py || die
 	# dev-python/dbus-python uses autotools, so no .dist-info there
 	sed -i '/dbus-python/d' pyproject.toml setup.cfg || die
 
