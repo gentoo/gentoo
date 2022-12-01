@@ -1,13 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools toolchain-funcs
 
 DESCRIPTION="network Audit Record Generation and Utilization System"
 HOMEPAGE="https://openargus.org/"
 SRC_URI="https://www.qosient.com/argus/dev/${P/_rc/.rc.}.tar.gz"
+S="${WORKDIR}"/${P/_rc/.rc.}
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -35,8 +36,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.7.3-DLT_IPNET.patch
 	"${FILESDIR}"/${PN}-3.0.8.3-ar.patch
 	"${FILESDIR}"/${PN}-3.0.8.3-as-needed.patch
+	"${FILESDIR}"/${PN}-3.0.8.3-configure-clang16.patch
 )
-S=${WORKDIR}/${P/_rc/.rc.}
 
 src_prepare() {
 	find . -type f -execdir chmod +w {} \; #561360
