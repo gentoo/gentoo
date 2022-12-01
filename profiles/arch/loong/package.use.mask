@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-01)
+# sys-libs/libhugetlbfs isn't buildable here yet due to arch-specific code.
+sys-apps/nvme-cli hugepages
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-01)
 # Mask GRUB2 platforms not applicable to loong.
 sys-boot/grub:2 grub_platforms_efi-32 grub_platforms_ieee1275 grub_platforms_pc grub_platforms_uboot grub_platforms_xen grub_platforms_xen-pvh
 
@@ -23,6 +27,7 @@ media-plugins/gst-plugins-meta libvisual
 # lack of testing or simply being unsupported upstream (the opaque pointers
 # in particular need downstream changes).
 app-office/libreoffice clang
+<dev-db/postgresql-16 llvm
 <media-libs/mesa-22.3.0 llvm
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-27)
