@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Displays info about your card's VDPAU support"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/VDPAU/"
-SRC_URI="https://gitlab.freedesktop.org/vdpau/vdpauinfo/-/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://gitlab.freedesktop.org/vdpau/vdpauinfo/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
