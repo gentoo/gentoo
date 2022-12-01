@@ -73,6 +73,8 @@ multilib_src_configure() {
 	filter-lto
 
 	local wafargs=(
+		--mandir="${EPREFIX}"/usr/share/man/man1 # override eclass' for man1
+
 		--alsa=$(usex alsa)
 		--celt=no
 		$(usev classic --classic)
