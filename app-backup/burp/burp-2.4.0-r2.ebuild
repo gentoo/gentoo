@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="acct-group/burp
 	acct-user/burp
 	dev-libs/uthash
-	dev-libs/openssl:0=
+	<dev-libs/openssl-3.0.0:=
 	net-libs/librsync:=
 	sys-libs/ncurses:0=
 	sys-libs/libcap
