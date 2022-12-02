@@ -74,7 +74,7 @@ BDEPEND="
 # Some tests fail due to missing locales.
 # Also, dbus tests are flaky, bugs #397975 #501834
 # It looks like a nightmare to disable those for now.
-RESTRICT="test !test? ( test )"
+RESTRICT="!test? ( test )"
 
 # global scope PATCHES or DOCS array mustn't be used due to double default_src_prepare call
 src_prepare() {
