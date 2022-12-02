@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/CVE2009-0858_0001-check-response-domain-name-length.patch"
 	"${FILESDIR}/CVE2012-1191_0001-ghost-domain-attack.patch"
 	"${FILESDIR}/AR-and-RANLIB-support.patch"
+	"${FILESDIR}/tinydns-softlimit.patch"
 )
 
 src_prepare() {
