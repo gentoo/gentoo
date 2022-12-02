@@ -23,6 +23,7 @@ BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/feedparser[${PYTHON_USEDEP}]
+		dev-python/gmpy[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
