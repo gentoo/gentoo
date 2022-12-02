@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2022-12-02)
+# The patch we apply from Fedora doesn't apply.
+>x11-terms/gnome-terminal-3.46.3 vanilla
+
 # Patrick McLean <chutzpah@gentoo.org> (2022-06-27)
 # Doesn't build with boost installed on the system, some deps require boost
 # so force the flag on until problem fixed upstream
