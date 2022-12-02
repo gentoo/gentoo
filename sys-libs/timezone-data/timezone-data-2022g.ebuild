@@ -23,6 +23,10 @@ RDEPEND="
 	!sys-libs/glibc[vanilla(+)]
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-c23.patch
+)
+
 src_unpack() {
 	mkdir "${S}" && cd "${S}" || die
 	default
