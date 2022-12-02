@@ -377,6 +377,12 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.4.1-fix-perl-install-path.patch"
 	eapply "${FILESDIR}/${PN}-httpoxy-mitigation-r1.patch"
 
+	if use nginx_modules_http_auth_ldap; then
+		cd "${HTTP_LDAP_MODULE_WD}" || die
+		eapply "${FILESDIR}/${PN}-1.23.2-mod_auth_ldap-fix.patch"
+		cd "${S}" || die
+	fi
+
 	if use nginx_modules_http_sticky; then
 		cd "${HTTP_STICKY_MODULE_WD}" || die
 		eapply "${FILESDIR}"/http_sticky-nginx-1.23.0.patch
