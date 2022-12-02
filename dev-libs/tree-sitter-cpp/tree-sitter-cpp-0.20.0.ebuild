@@ -11,3 +11,6 @@ HOMEPAGE="https://github.com/tree-sitter/tree-sitter-cpp"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64"
+
+# requires test data from tree-sitter-c
+RESTRICT="test"
