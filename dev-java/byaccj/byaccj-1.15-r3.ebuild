@@ -5,8 +5,8 @@ EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="A java extension of BSD YACC-compatible parser generator"
-HOMEPAGE="http://byaccj.sourceforge.net/"
+DESCRIPTION="A Java extension of BSD YACC-compatible parser generator"
+HOMEPAGE="https://byaccj.sourceforge.net/"
 MY_P="${PN}${PV}_src"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
