@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="${ADA_DEPS}
-	dev-ada/gprconfig_kb[${ADA_USEDEP}]"
+	~dev-ada/gprconfig_kb-${PV}[${ADA_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
