@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<use>
+		<flag name="ipv6">Add support for IPv6 in burp</flag>
+	</use>
 	<maintainer type="person">
 		<email>github@fischl-online.de</email>
 		<name>Anton Fischl</name>
