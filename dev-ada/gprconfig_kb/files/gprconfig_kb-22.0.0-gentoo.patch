@@ -5,17 +5,17 @@
    <compiler_description>
      <name>GCC</name>
 -    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-)?gcc</executable>
-+    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-)?gcc-@VER@</executable>
++    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-|.*pc-linux-gnu-)?gcc-@VER@</executable>
      <version>
 -      <external>${PREFIX}gcc -v</external>
-+      <external>${PREFIX}gcc-@VER@ -v</external>
++      <external>${EXEC} -v</external>
        <nogrep regexp="for GNAT Pro"></nogrep>
        <grep regexp="^gcc \S+ (\S+)" group="1"></grep>
      </version>
      <languages>C</languages>
      <target>
 -      <external>${PREFIX}gcc -dumpmachine</external>
-+      <external>${PREFIX}gcc-@VER@ -dumpmachine</external>
++      <external>${EXEC} -dumpmachine</external>
        <grep regexp="[^\r\n]+"></grep>
      </target>
    </compiler_description>
@@ -24,10 +24,10 @@
    <compiler_description>
      <name>GNAT</name>
 -    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-|.*-qnx.*|.*-rtems.*)?gnatls</executable>
-+    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-|.*-qnx.*|.*-rtems.*)?gnatls-@VER@</executable>
++    <executable prefix="1">(.*-wrs-.*|.*-sysgo.*|.*-elf-.*|.*-eabi-.*|.*-eabispe-.*|avr-.*|.*-elinos-linux.*|.*-generic-linux-gnu-|.*mingw32.*|.*-xcoff-.*|arm-linux-androideabi-|arm-linux-gnueabi-|arm-linux-gnueabihf-|e500v2-gnu-linux-|powerpc-.*-linux.*-|.*-darwin.*-|aarch64-linux-gnu-|.*-qnx.*|.*-rtems.*|.*pc-linux-gnu-)?gnatls-@VER@</executable>
      <version>
 -      <external>${PREFIX}gnatls -v --version</external>
-+      <external>${PREFIX}gnatls-@VER@ -v --version</external>
++      <external>${EXEC} -v --version</external>
        <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
      </version>
      <languages>Ada</languages>
@@ -37,7 +37,7 @@
        <grep regexp="^[-\w]*gcc \S+ (\S+)" group="1"></grep>
      </variable>
      <runtimes default="default,kernel,native">
-@@ -202,68 +202,11 @@
+@@ -202,7 +202,7 @@
         <directory group="1" >\.\./$TARGET/lib/gnat/(.*)/adalib/</directory>
      </runtimes>
      <target>
@@ -46,142 +46,24 @@
        <grep regexp="[^\r\n]+"></grep>
      </target>
    </compiler_description>
- 
--  <!--  CodePeer -->
--
--  <compiler_description>
--    <name>GNAT_CODEPEER</name>
--    <executable prefix="1">(.*gnsa-|.*codepeer-)gnatls</executable>
--    <version>
--      <external>${PREFIX}gnatls -v</external>
--      <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
--    </version>
--    <languages>Ada,C,C++</languages>
--    <variable name="gcc_version">
--      <external>${PREFIX}gcc -v</external>
--      <grep regexp="^[-\w]*gcc \S+ (\S+)" group="1"></grep>
--    </variable>
--    <runtimes default="default,native">
--       <directory group="default" >\.\./lib/gcc/.*/$gcc_version/adalib/</directory>
--       <directory group="1" >\.\./lib/gnat/(.*)/adalib/</directory>
--       <directory group="1" >\.\./lib/gcc/.*/$gcc_version/rts-(.*)/adalib/</directory>
--    </runtimes>
--    <target>codepeer</target>
--  </compiler_description>
--
--  <!--  Generic GNAT LLVM Target -->
--
--  <compiler_description>
--    <name>GNAT_LLVM</name>
--    <executable prefix="1">(llvm-)gnatls</executable>
--    <version>
--      <external>${PREFIX}gnatls -v</external>
--      <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
--    </version>
--    <languages>Ada</languages>
--    <variable name="gcc_version">
--      <external>${PREFIX}gcc -v</external>
--      <grep regexp="^[-\w]*gcc \S+ (\S+)" group="1"></grep>
--    </variable>
--    <runtimes default="default,native">
--       <directory group="default" >\.\./lib/rts-native/adalib/</directory>
--       <directory group="1" >\.\./lib/rts-(.*)/adalib/</directory>
--    </runtimes>
--    <target>llvm</target>
--  </compiler_description>
--
--  <!--  Generic C compiler for LLVM  -->
--  <compiler_description>
--    <name>C_LLVM</name>
+@@ -254,7 +254,7 @@
+   <!--  Generic C compiler for LLVM  -->
+   <compiler_description>
+     <name>C_LLVM</name>
 -    <executable>clang</executable>
--    <version>
--      <external>clang --version</external>
--
--      <!--  '...clang version 6.0.0...'  -->
--      <grep regexp="clang version (\S+)" group="1"></grep>
--    </version>
--    <languages>C</languages>
--    <target>llvm</target>
--  </compiler_description>
--
-   <!--  Generic C++ compiler for LLVM  -->
++    <executable>fake-clang</executable>
+     <version>
+       <external>clang --version</external>
+ 
+@@ -424,7 +424,7 @@
+   <!-- LLVM Compiler -->
    <compiler_description>
-     <name>C++_LLVM</name>
-@@ -221,28 +221,6 @@
-     <target>llvm</target>
-   </compiler_description>
- 
--  <!--  C Target -->
--
--  <compiler_description>
--    <name>GNAT_C</name>
--    <executable prefix="1">(c-)gnatls</executable>
--    <version>
--      <external>${PREFIX}gnatls -v</external>
--      <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
--    </version>
--    <languages>Ada</languages>
--    <variable name="gcc_version">
--      <external>${PREFIX}gcc -v</external>
--      <grep regexp="^[-\w]*gcc \S+ (\S+)" group="1"></grep>
--    </variable>
--    <runtimes default="default,ccg">
--       <directory group="default" >\.\./libexec/gnat_ccg/lib/gcc/.*/$gcc_version/adalib/</directory>
--       <directory group="1" >\.\./libexec/gnat_ccg/lib/gcc/.*/$gcc_version/rts-(.*)/adalib/</directory>
--       <directory group="1" >\.\./lib/gnat/(.*)/adalib/</directory>
--    </runtimes>
--    <target>c</target>
--  </compiler_description>
--
-   <!--  CCG Target (C generation via LLVM) -->
- 
-   <compiler_description>
-@@ -286,23 +264,6 @@
-   </compiler_description>
- 
- 
--  <!--  GNAT_DOTNET -->
--
--  <compiler_description>
--    <name>GNAT_DOTNET</name>
--    <executable prefix="1">(.*dotnet-)gnatls</executable>
--    <version>
--      <external>${PREFIX}gnatls -v</external>
--      <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
--    </version>
--    <languages>Ada</languages>
--    <runtimes default="default,kernel">
--       <directory group="default" >\.\./lib/dotgnat/adalib/</directory>
--       <directory group="1" >\.\./lib/dotgnat/rts-(.*)/adalib/</directory>
--    </runtimes>
--    <target>dotnet</target>
--  </compiler_description>
--
-   <!--  JGNAT -->
- 
-   <compiler_description>
-@@ -421,21 +326,6 @@
-     </target>
-   </compiler_description>
- 
--  <!-- LLVM Compiler -->
--  <compiler_description>
--    <name>LLVM</name>
+     <name>LLVM</name>
 -    <executable>clang</executable>
--    <version>
--      <external>clang -v</external>
--      <grep regexp=".*(LLVM|clang) version ([0-9.]*)" group="2"></grep>
--    </version>
--    <languages>C,C++</languages>
--    <target>
--      <external>clang -dumpmachine</external>
--      <grep regexp="[^\r\n]+"></grep>
--    </target>
--  </compiler_description>
--
-   <!--  Windres compiler -->
-   <compiler_description>
-     <name>WINDRES</name>
++    <executable>fake-clang</executable>
+     <version>
+       <external>clang -v</external>
+       <grep regexp=".*(LLVM|clang) version ([0-9.]*)" group="2"></grep>
 --- a/db/gnat.xml	2019-06-01 21:53:53.383281607 +0200
 +++ b/db/gnat.xml	2019-06-01 21:57:08.414196529 +0200
 @@ -60,7 +60,7 @@
@@ -197,7 +79,7 @@
        for Objects_Path_File     ("Ada") use "ADA_PRJ_OBJECTS_FILE";
        for Driver         ("Ada") use
            "${GPRCONFIG_PREFIX}libexec/gprbuild/gprbind";
-+      for Switches ("Ada") use ("--gnatbind_path=gnatbind-@VER@");
++      for Switches ("Ada") use ("--gnatbind_path=${PREFIX(ada)}gnatbind-@VER@");
 +      for Required_Switches ("Ada") use
 +        Binder'Required_Switches ("Ada") &amp; ("--RTS=${RUNTIME_DIR(ada)}");
     end Binder;
