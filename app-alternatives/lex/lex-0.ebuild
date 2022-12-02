@@ -15,25 +15,25 @@ IUSE="+flex reflex"
 REQUIRED_USE="^^ ( flex reflex )"
 
 RDEPEND="
-	flex? ( sys-devel/flex )
+	flex? ( >=sys-devel/flex-2.6.4-r5 )
 	reflex? ( sys-devel/reflex )
 	!<sys-devel/flex-2.6.4-r5
 "
 
 src_install() {
-	if use reflex; then
-		dosym reflex /bin/lex
-		newman - lex.1 <<<".so reflex.1"
-
-		newenvd - 90lex <<-EOF
-		LEX=reflex
-		EOF
-	elif use flex; then
+	if use flex; then
 		dosym flex /bin/lex
 		newman - lex.1 <<<".so flex.1"
 
 		newenvd - 90lex <<-EOF
-		LEX=flex
+			LEX=flex
+		EOF
+	elif use reflex; then
+		dosym reflex /bin/lex
+		newman - lex.1 <<<".so reflex.1"
+
+		newenvd - 90lex <<-EOF
+			LEX=reflex
 		EOF
 	else
 		die "Invalid USE flag combination (broken REQUIRED_USE?)"
