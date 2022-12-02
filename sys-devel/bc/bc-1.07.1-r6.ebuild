@@ -57,6 +57,10 @@ src_configure() {
 	# who knows when they'll make another release.
 	append-lfs-flags
 
+	# configure dies with other lexes:
+	# "configure: error: readline works only with flex."
+	export LEX=flex
+
 	econf "${myconf[@]}"
 
 	# Do not regen docs -- configure produces a small fragment that includes
