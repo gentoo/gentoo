@@ -1,6 +1,11 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-03)
+# sys-cluster/ceph is not keyworded yet.
+ceph
+rbd
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-01)
 # app-emulation/xen has arch-specific code, hence not available for loong yet.
 xen

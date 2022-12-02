@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-02)
+# sys-cluster/ceph is not keyworded yet.
+net-analyzer/rrdtool rados
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-02)
 # Boost.Context has had support for loong since 1.79.0.
 dev-libs/boost -context
 
