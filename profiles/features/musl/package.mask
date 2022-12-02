@@ -10,7 +10,7 @@ x11-wm/stumpwm
 x11-wm/stumpwm-contrib
 
 # Andrey Grozin <grozin@gentoo.org> (2022-12-01)
-# The upstream supports only glibc Linux systems
+# The upstream supports only glibc Linux systems, bug #712626
 dev-lisp/sbcl
 
 # Sam James <sam@gentoo.org> (2022-10-17)
