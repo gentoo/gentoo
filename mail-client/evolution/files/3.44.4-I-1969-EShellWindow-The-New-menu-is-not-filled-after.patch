@@ -1,0 +1,119 @@
+From 080791256d78a6d97384b4eef0d411cdc73feeb0 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Fri, 23 Sep 2022 11:34:51 +0200
+Subject: [PATCH 2/2] I#1969 - EShellWindow: The 'New' menu is not filled after
+ start
+
+Related to https://gitlab.gnome.org/GNOME/evolution/-/issues/1969
+---
+ src/shell/e-shell-window.c | 45 ++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 43 insertions(+), 2 deletions(-)
+
+diff --git a/src/shell/e-shell-window.c b/src/shell/e-shell-window.c
+index e7be30feee..86c83e5e1e 100644
+--- a/src/shell/e-shell-window.c
++++ b/src/shell/e-shell-window.c
+@@ -47,6 +47,7 @@ enum {
+ enum {
+ 	CLOSE_ALERT,
+ 	SHELL_VIEW_CREATED,
++	UPDATE_NEW_MENU,
+ 	LAST_SIGNAL
+ };
+ 
+@@ -120,6 +121,17 @@ shell_window_toolbar_update_new_menu (GtkMenuToolButton *menu_tool_button,
+ 	gtk_menu_tool_button_set_menu (menu_tool_button, menu);
+ }
+ 
++static void
++shell_window_toolbar_update_new_menu_sig (EShellWindow *shell_window,
++                                          GtkMenuToolButton *menu_tool_button)
++{
++	GtkWidget *menu;
++
++	/* Update the "New" menu tool button submenu. */
++	menu = e_shell_window_create_new_menu (shell_window);
++	gtk_menu_tool_button_set_menu (menu_tool_button, menu);
++}
++
+ static gboolean
+ shell_window_active_view_to_prefer_item (GBinding *binding,
+                                          const GValue *source_value,
+@@ -160,6 +172,8 @@ shell_window_set_notebook_page (EShellWindow *shell_window,
+ 	g_return_if_fail (page_num >= 0);
+ 
+ 	gtk_notebook_set_current_page (notebook, page_num);
++
++	g_signal_emit (shell_window, signals[UPDATE_NEW_MENU], 0, NULL);
+ }
+ 
+ static void
+@@ -463,8 +477,8 @@ shell_window_construct_menubar (EShellWindow *shell_window)
+ 		main_menu, "visible",
+ 		G_BINDING_SYNC_CREATE);
+ 
+-	e_signal_connect_notify (
+-		shell_window, "notify::active-view",
++	g_signal_connect (
++		shell_window, "update-new-menu",
+ 		G_CALLBACK (shell_window_menubar_update_new_menu), NULL);
+ 
+ 	return main_menu;
+@@ -544,6 +558,11 @@ shell_window_construct_toolbar (EShellWindow *shell_window)
+ 		G_CALLBACK (shell_window_toolbar_update_new_menu),
+ 		shell_window);
+ 
++	g_signal_connect_object (
++		shell_window, "update-new-menu",
++		G_CALLBACK (shell_window_toolbar_update_new_menu_sig),
++		item, 0);
++
+ 	gtk_box_pack_start (GTK_BOX (box), toolbar, TRUE, TRUE, 0);
+ 
+ 	toolbar = e_shell_window_get_managed_widget (
+@@ -1133,6 +1152,24 @@ e_shell_window_class_init (EShellWindowClass *class)
+ 		G_TYPE_NONE, 1,
+ 		E_TYPE_SHELL_VIEW);
+ 
++	/*
++	 * EShellWindow::update-new-menu
++	 * @shell_window: the #EShellWindow
++	 *
++	 * Emitted when the 'New' menu should be updated.
++	 *
++	 * Since: 3.44.5
++	 */
++	signals[UPDATE_NEW_MENU] = g_signal_new (
++		"update-new-menu",
++		G_OBJECT_CLASS_TYPE (object_class),
++		G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
++		0,
++		NULL, NULL,
++		g_cclosure_marshal_VOID__VOID,
++		G_TYPE_NONE, 0,
++		G_TYPE_NONE);
++
+ 	binding_set = gtk_binding_set_by_class (class);
+ 	gtk_binding_entry_add_signal (
+ 		binding_set, GDK_KEY_Escape, 0, "close-alert", 0);
+@@ -2049,6 +2086,8 @@ e_shell_window_register_new_item_actions (EShellWindow *shell_window,
+ 				G_OBJECT (action),
+ 				"primary", GINT_TO_POINTER (TRUE));
+ 	}
++
++	g_signal_emit (shell_window, signals[UPDATE_NEW_MENU], 0, NULL);
+ }
+ 
+ /**
+@@ -2126,6 +2165,8 @@ e_shell_window_register_new_source_actions (EShellWindow *shell_window,
+ 			G_OBJECT (action),
+ 			"backend-name", (gpointer) backend_name);
+ 	}
++
++	g_signal_emit (shell_window, signals[UPDATE_NEW_MENU], 0, NULL);
+ }
+ 
+ /**
+-- 
+2.37.4
+

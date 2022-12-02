@@ -1,0 +1,417 @@
+From 44ac716d199b1c0a07a92014d2d64c28a077f876 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Fri, 16 Sep 2022 08:47:07 +0200
+Subject: [PATCH 1/2] I#2001 - Mail: Update preview's iframe height to match
+ its content
+
+Closes https://gitlab.gnome.org/GNOME/evolution/-/issues/2001
+---
+ data/webkit/e-web-view.js                     | 60 ++++++++++++----
+ data/webkit/webview.css                       | 32 ++++-----
+ src/em-format/e-mail-formatter-text-plain.c   |  2 +-
+ src/mail/e-mail-display.c                     | 69 ++++++++++++++++++-
+ .../e-mail-formatter-text-highlight.c         | 14 +++-
+ 5 files changed, 140 insertions(+), 37 deletions(-)
+
+diff --git a/data/webkit/e-web-view.js b/data/webkit/e-web-view.js
+index a8f99c4668..058b4e578c 100644
+--- a/data/webkit/e-web-view.js
++++ b/data/webkit/e-web-view.js
+@@ -772,6 +772,38 @@ Evo.EnsureMainDocumentInitialized = function()
+ 	Evo.initializeAndPostContentLoaded(null);
+ }
+ 
++Evo.mailDisplayUpdateIFramesHeightRecursive = function(doc)
++{
++	if (!doc)
++		return;
++
++	var ii, iframes;
++
++	iframes = doc.getElementsByTagName("iframe");
++
++	/* Update from bottom to top */
++	for (ii = 0; ii < iframes.length; ii++) {
++		Evo.mailDisplayUpdateIFramesHeightRecursive(iframes[ii].contentDocument);
++	}
++
++	if (!doc.body || !doc.defaultView || !doc.defaultView.frameElement)
++		return;
++
++	if (doc.defaultView.frameElement.height == doc.body.scrollHeight)
++		doc.defaultView.frameElement.height = 10;
++	doc.defaultView.frameElement.height = doc.body.scrollHeight + 2 + (doc.body.scrollWidth > doc.body.clientWidth ? 20 : 0);
++}
++
++Evo.MailDisplayUpdateIFramesHeight = function()
++{
++	var scrolly = document.defaultView ? document.defaultView.scrollY : -1;
++
++	Evo.mailDisplayUpdateIFramesHeightRecursive(document);
++
++	if (scrolly != -1 && document.defaultView.scrollY != scrolly)
++		document.defaultView.scrollTo(0, scrolly);
++}
++
+ if (this instanceof Window && this.document) {
+ 	this.document.onload = function() { Evo.initializeAndPostContentLoaded(this); };
+ 
+@@ -857,9 +889,8 @@ Evo.mailDisplayResizeContentToPreviewWidth = function()
+ 				local_width -= 2; /* 1 + 1 frame borders */
+ 			} else if (!iframes.length) {
+ 				/* Message main body */
+-				local_width -= 8; /* 8 + 8 margins of body without iframes */
+-				if (level > 1)
+-					local_width -= 8;
++				local_width -= level * 20; /* 10 + 10 margins of body without iframes */
++				local_width -= 4;
+ 
+ 				Evo.addRuleIntoStyleSheetDocument(doc, "-e-mail-formatter-style-sheet", "body", "width: " + local_width + "px;");
+ 				Evo.addRuleIntoStyleSheetDocument(doc, "-e-mail-formatter-style-sheet", ".part-container", "width: " + local_width + "px;");
+@@ -869,7 +900,7 @@ Evo.mailDisplayResizeContentToPreviewWidth = function()
+ 				Evo.addRuleIntoStyleSheetDocument(doc, "-e-mail-formatter-style-sheet", "body",
+ 					"width: " + local_width + "px;");
+ 
+-				local_width -= 2; /* 1 + 1 frame borders */
++				local_width -= 4; /* 2 + 2 frame borders */
+ 
+ 				Evo.addRuleIntoStyleSheetDocument(doc, "-e-mail-formatter-style-sheet", ".part-container-nostyle iframe",
+ 					"width: " + local_width + "px;");
+@@ -881,19 +912,15 @@ Evo.mailDisplayResizeContentToPreviewWidth = function()
+ 				Evo.addRuleIntoStyleSheetDocument(doc, "-e-mail-formatter-style-sheet", ".part-container iframe",
+ 					"width: " + (local_width - 10) + "px;");
+ 			} else {
+-				local_width -= 20; /* 10 + 10 margins of body with iframes */
+-				local_width -= 8; /* attachment margin */
+-				local_width -= 2; /* 1 + 1 frame borders */
++				local_width -= (level - 1) * 20; /* 10 + 10 margins of body with iframes */
++				local_width -= 4; /* 2 + 2 frame borders */
++				local_width -= 10; /* attachment margin */
+ 
+-				/* We need to subtract another 10 pixels from the iframe width to
+-				 * have the iframe's borders on the correct place. We can't subtract
+-				 * it from local_width as we don't want to propagate this change
+-				 * further. */
+ 				Evo.addRuleIntoStyleSheetDocument(doc, "-e-mail-formatter-style-sheet", ".part-container-nostyle iframe",
+-					"width: " + (local_width - 10) + "px;");
++					"width: " + local_width + "px;");
+ 
+ 				Evo.addRuleIntoStyleSheetDocument(doc, "-e-mail-formatter-style-sheet", "body > .part-container-nostyle iframe",
+-					"width: " + (local_width - 10) + "px;");
++					"width: " + local_width + "px;");
+ 			}
+ 
+ 			/* Add rules to every sub document */
+@@ -904,7 +931,7 @@ Evo.mailDisplayResizeContentToPreviewWidth = function()
+ 				var tmp_local_width = local_width;
+ 
+ 				if (level == 0) {
+-					tmp_local_width -= 8; /* attachment's margin */
++					tmp_local_width -= 10; /* attachment's margin */
+ 
+ 					Evo.addRuleIntoStyleSheetDocument(doc, "-e-mail-formatter-style-sheet", ".attachment-wrapper iframe:not([src*=\"__formatas=\"])",
+ 						"width: " + tmp_local_width + "px;");
+@@ -913,7 +940,7 @@ Evo.mailDisplayResizeContentToPreviewWidth = function()
+ 						"width: " + tmp_local_width + "px;");
+ 
+ 					Evo.addRuleIntoStyleSheetDocument(doc, "-e-mail-formatter-style-sheet", "body > .part-container-nostyle iframe",
+-						"width: " + local_width + "px;");
++						"width: " + tmp_local_width + "px;");
+ 				}
+ 
+ 				this.set_iframe_and_body_width (iframes[ii].contentDocument, tmp_local_width, original_width, level + 1);
+@@ -926,6 +953,7 @@ Evo.mailDisplayResizeContentToPreviewWidth = function()
+ 	width -= 20; /* 10 + 10 margins of body */
+ 
+ 	traversar.set_iframe_and_body_width(document, width, width, 0);
++	window.webkit.messageHandlers.scheduleIFramesHeightUpdate.postMessage(0);
+ }
+ 
+ Evo.mailDisplayUpdateMagicSpacebarState = function()
+@@ -1294,6 +1322,8 @@ Evo.MailDisplayShowAttachment = function(element_id, show)
+ 			window.webkit.messageHandlers.contentLoaded.postMessage(iframe_id);
+ 			Evo.mailDisplayUpdateMagicSpacebarState();
+ 		}
++	} else if (elem.ownerDocument.defaultView.frameElement) {
++		window.webkit.messageHandlers.scheduleIFramesHeightUpdate.postMessage(0);
+ 	}
+ }
+ 
+diff --git a/data/webkit/webview.css b/data/webkit/webview.css
+index 0d21253644..5b08388672 100644
+--- a/data/webkit/webview.css
++++ b/data/webkit/webview.css
+@@ -12,8 +12,8 @@ img {
+ }
+ 
+ body {
+-  /* Use margin so that children can safely use width=100% */
+-  margin: 5px 10px 5px 10px;
++  /* Use padding so that children can safely use width=100% */
++  padding: 8px;
+ }
+ 
+ body, div, p, td {
+@@ -38,21 +38,21 @@ img#__evo-contact-photo {
+ 
+ img.navigable {
+   cursor: pointer;
+-  margin-right: 4px;
++  padding-right: 4px;
+ }
+ 
+ .attachments {
+   background: #FFF;
+   border: 1px solid silver;
+-  margin: 10px 10px 10px 10px;
++  padding: 10px 10px 10px 10px;
+   border-left: 0;
+   border-right: 0;
+   border-bottom: 0;
+ }
+ 
+ .attachment {
+-  margin-left: 8px;
+-  margin-right: 0px;
++  padding-left: 8px;
++  padding-right: 0px;
+ }
+ 
+ .attachment td {
+@@ -66,21 +66,21 @@ iframe:not([id$=".itip"]) {
+ 
+ .part-container {
+   height: 100%;
+-  margin-top: 2px;
+-  margin-bottom: 2px;
++  padding: 0px;
+ }
+ 
+ .part-container-nostyle iframe {
+-  margin-right: 10px;
++  margin: 0px;
++  padding-right: 0px;
+ }
+ 
+ .part-container-inner-margin {
+-  margin: 8px;
++  padding: 0px;
+ }
+ 
+ object { /* GtkWidgets */
+-  margin-top: 2px;
+-  margin-bottom: 2px;
++  padding-top: 2px;
++  padding-bottom: 2px;
+ }
+ 
+ .__evo-highlight {
+@@ -175,7 +175,7 @@ th.rtl {
+ /***** PRINTING *******/
+ 
+ .printing-header {
+-  margin-bottom: 20px;
++  padding-bottom: 20px;
+ }
+ 
+ .printing-header h1,
+@@ -195,7 +195,7 @@ th.rtl {
+ /******* ITIP *********/
+ .itip.icon {
+   float: left;
+-  margin-right: 5px;
++  padding-right: 5px;
+ }
+ 
+ .itip.content {
+@@ -204,7 +204,7 @@ th.rtl {
+ }
+ 
+ .itip.description {
+-  margin: 5px;
++  padding: 5px;
+ }
+ 
+ .itip tr {
+@@ -228,7 +228,7 @@ th.rtl {
+ }
+ 
+ #table_row_buttons img {
+-  margin-right: 5px;
++  padding-right: 5px;
+   vertical-align: middle;
+ }
+ 
+diff --git a/src/em-format/e-mail-formatter-text-plain.c b/src/em-format/e-mail-formatter-text-plain.c
+index 7c6befda6b..3858bcdb3d 100644
+--- a/src/em-format/e-mail-formatter-text-plain.c
++++ b/src/em-format/e-mail-formatter-text-plain.c
+@@ -111,7 +111,7 @@ emfe_text_plain_format (EMailFormatterExtension *extension,
+ 		string =
+ 			"<div class=\"part-container pre "
+ 			"-e-web-view-background-color -e-web-view-text-color\" "
+-			"style=\"border: none; padding: 8px; margin: 0;\">";
++			"style=\"border: none; padding: 0; margin: 0;\">";
+ 
+ 		g_output_stream_write_all (
+ 			stream, string, strlen (string),
+diff --git a/src/mail/e-mail-display.c b/src/mail/e-mail-display.c
+index cc38c65957..c60ab45cc5 100644
+--- a/src/mail/e-mail-display.c
++++ b/src/mail/e-mail-display.c
+@@ -83,6 +83,7 @@ struct _EMailDisplayPrivate {
+ 	GSettings *settings;
+ 
+ 	guint scheduled_reload;
++	guint iframes_height_update_id;
+ 
+ 	GHashTable *old_settings;
+ 
+@@ -537,6 +538,43 @@ initialize_web_view_colors (EMailDisplay *display,
+ 		e_web_view_get_cancellable (E_WEB_VIEW (display)));
+ }
+ 
++static gboolean
++mail_display_can_use_frame_flattening (void)
++{
++	guint wk_major, wk_minor;
++
++	wk_major = webkit_get_major_version ();
++	wk_minor = webkit_get_minor_version ();
++
++	/* The 2.38 is the last version, which supports frame-flattening;
++	   prefer it over the manual and expensive calculations. */
++	return (wk_major < 2) || (wk_major == 2 && wk_minor <= 38);
++}
++
++static gboolean
++mail_display_iframes_height_update_cb (gpointer user_data)
++{
++	EMailDisplay *mail_display = user_data;
++
++	mail_display->priv->iframes_height_update_id = 0;
++
++	e_web_view_jsc_run_script (WEBKIT_WEB_VIEW (mail_display), e_web_view_get_cancellable (E_WEB_VIEW (mail_display)),
++		"Evo.MailDisplayUpdateIFramesHeight();");
++
++	return G_SOURCE_REMOVE;
++}
++
++static void
++mail_display_schedule_iframes_height_update (EMailDisplay *mail_display)
++{
++	if (mail_display_can_use_frame_flattening ())
++		return;
++
++	if (mail_display->priv->iframes_height_update_id)
++		g_source_remove (mail_display->priv->iframes_height_update_id);
++	mail_display->priv->iframes_height_update_id = g_timeout_add (100, mail_display_iframes_height_update_cb, mail_display);
++}
++
+ static void
+ mail_display_change_one_attachment_visibility (EMailDisplay *display,
+ 					       EAttachment *attachment,
+@@ -1353,6 +1391,8 @@ mail_display_content_loaded_cb (EWebView *web_view,
+ 			gtk_widget_grab_focus (widget);
+ 		}
+ 	}
++
++	mail_display_schedule_iframes_height_update (mail_display);
+ }
+ 
+ static void
+@@ -1475,6 +1515,11 @@ mail_display_dispose (GObject *object)
+ 		priv->scheduled_reload = 0;
+ 	}
+ 
++	if (priv->iframes_height_update_id > 0) {
++		g_source_remove (priv->iframes_height_update_id);
++		priv->iframes_height_update_id = 0;
++	}
++
+ 	if (priv->settings != NULL) {
+ 		g_signal_handlers_disconnect_matched (
+ 			priv->settings, G_SIGNAL_MATCH_DATA,
+@@ -1599,6 +1644,18 @@ mail_display_magic_spacebar_state_changed_cb (WebKitUserContentManager *manager,
+ 	mail_display->priv->magic_spacebar_state = jsc_value_to_int32 (jsc_value);
+ }
+ 
++static void
++mail_display_schedule_iframes_height_update_cb (WebKitUserContentManager *manager,
++						WebKitJavascriptResult *js_result,
++						gpointer user_data)
++{
++	EMailDisplay *mail_display = user_data;
++
++	g_return_if_fail (mail_display != NULL);
++
++	mail_display_schedule_iframes_height_update (mail_display);
++}
++
+ static void
+ mail_display_constructed (GObject *object)
+ {
+@@ -1611,9 +1668,11 @@ mail_display_constructed (GObject *object)
+ 	/* Chain up to parent's constructed() method. */
+ 	G_OBJECT_CLASS (e_mail_display_parent_class)->constructed (object);
+ 
+-	g_object_set (webkit_web_view_get_settings (WEBKIT_WEB_VIEW (object)),
+-		"enable-frame-flattening", TRUE,
+-		NULL);
++	if (mail_display_can_use_frame_flattening ()) {
++		g_object_set (webkit_web_view_get_settings (WEBKIT_WEB_VIEW (object)),
++			"enable-frame-flattening", TRUE,
++			NULL);
++	}
+ 
+ 	display = E_MAIL_DISPLAY (object);
+ 	web_view = E_WEB_VIEW (object);
+@@ -1661,8 +1720,12 @@ mail_display_constructed (GObject *object)
+ 	g_signal_connect_object (manager, "script-message-received::mailDisplayMagicSpacebarStateChanged",
+ 		G_CALLBACK (mail_display_magic_spacebar_state_changed_cb), display, 0);
+ 
++	g_signal_connect_object (manager, "script-message-received::scheduleIFramesHeightUpdate",
++		G_CALLBACK (mail_display_schedule_iframes_height_update_cb), display, 0);
++
+ 	webkit_user_content_manager_register_script_message_handler (manager, "mailDisplayHeadersCollapsed");
+ 	webkit_user_content_manager_register_script_message_handler (manager, "mailDisplayMagicSpacebarStateChanged");
++	webkit_user_content_manager_register_script_message_handler (manager, "scheduleIFramesHeightUpdate");
+ 
+ 	e_extensible_load_extensions (E_EXTENSIBLE (object));
+ }
+diff --git a/src/modules/text-highlight/e-mail-formatter-text-highlight.c b/src/modules/text-highlight/e-mail-formatter-text-highlight.c
+index d7c641c157..f1db9bf79c 100644
+--- a/src/modules/text-highlight/e-mail-formatter-text-highlight.c
++++ b/src/modules/text-highlight/e-mail-formatter-text-highlight.c
+@@ -135,16 +135,26 @@ text_hightlight_read_data_thread (gpointer user_data)
+ {
+ 	TextHighlightClosure *closure = user_data;
+ 	gint nbuffer = 10240;
++	gssize read;
++	gsize wrote = 0;
+ 	gchar *buffer;
+ 
+ 	g_return_val_if_fail (closure != NULL, NULL);
+ 
+ 	buffer = g_new (gchar, nbuffer);
+ 
++	strcpy (buffer, "<style>body{margin:0; padding:8px;}</style>");
++	read = strlen (buffer);
++
++	if (!g_output_stream_write_all (closure->output_stream, buffer, read, &wrote, closure->cancellable, &closure->error) ||
++	    (gssize) wrote != read || closure->error) {
++		g_free (buffer);
++		return NULL;
++	}
++
+ 	while (!camel_stream_eos (closure->read_stream) &&
+ 	       !g_cancellable_set_error_if_cancelled (closure->cancellable, &closure->error)) {
+-		gssize read;
+-		gsize wrote = 0;
++		wrote = 0;
+ 
+ 		read = camel_stream_read (closure->read_stream, buffer, nbuffer, closure->cancellable, &closure->error);
+ 		if (read < 0 || closure->error)
+-- 
+2.37.4
+
