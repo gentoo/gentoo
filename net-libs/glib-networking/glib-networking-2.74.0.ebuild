@@ -30,6 +30,10 @@ BDEPEND="
 	test? ( sys-apps/dbus )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.74.0-gnutls-tls-1.3-test.patch
+)
+
 src_prepare() {
 	default
 	xdg_environment_reset

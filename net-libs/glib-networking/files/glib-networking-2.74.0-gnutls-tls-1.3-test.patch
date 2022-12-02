@@ -1,0 +1,85 @@
+https://bugs.gentoo.org/877077
+https://gitlab.gnome.org/GNOME/glib-networking/-/issues/201
+https://gitlab.gnome.org/GNOME/glib-networking/-/commit/205b578c6de0a6b42dd24d97f08ab47d0347431a
+
+From 205b578c6de0a6b42dd24d97f08ab47d0347431a Mon Sep 17 00:00:00 2001
+From: Natanael Copa <ncopa@alpinelinux.org>
+Date: Wed, 2 Nov 2022 13:26:53 +0100
+Subject: [PATCH] tests: skip tls-exporter test for TLS 1.2
+
+TLS exporter does not exist before TLS 1.3 so skip the tls-exporter test
+for TLS 1.2.
+
+Fixes https://gitlab.gnome.org/GNOME/glib-networking/-/issues/201
+
+Part-of: <https://gitlab.gnome.org/GNOME/glib-networking/-/merge_requests/227>
+--- a/tls/tests/connection.c
++++ b/tls/tests/connection.c
+@@ -2988,6 +2988,8 @@ test_connection_binding_match_tls_exporter (TestConnection *test,
+   GByteArray *client_cb, *server_cb;
+   gchar *client_b64, *server_b64;
+   GError *error = NULL;
++  gboolean client_supports_tls_exporter;
++  gboolean server_supports_tls_exporter;
+ 
+   test->database = g_tls_file_database_new (tls_test_file_path ("ca-roots.pem"), &error);
+   g_assert_no_error (error);
+@@ -3016,27 +3018,38 @@ test_connection_binding_match_tls_exporter (TestConnection *test,
+   g_main_loop_run (test->loop);
+ 
+   /* Smoke test: ensure both sides support tls-exporter */
+-  g_assert_true (g_tls_connection_get_channel_binding_data (G_TLS_CONNECTION (test->client_connection),
+-                                                    G_TLS_CHANNEL_BINDING_TLS_EXPORTER, NULL, NULL));
+-  g_assert_true (g_tls_connection_get_channel_binding_data (G_TLS_CONNECTION (test->server_connection),
+-                                                    G_TLS_CHANNEL_BINDING_TLS_EXPORTER, NULL, NULL));
++  client_supports_tls_exporter = g_tls_connection_get_channel_binding_data (G_TLS_CONNECTION (test->client_connection),
++                                                    G_TLS_CHANNEL_BINDING_TLS_EXPORTER, NULL, NULL);
++  server_supports_tls_exporter = g_tls_connection_get_channel_binding_data (G_TLS_CONNECTION (test->server_connection),
++                                                    G_TLS_CHANNEL_BINDING_TLS_EXPORTER, NULL, NULL);
+ 
+-  /* Real test: retrieve bindings and compare */
+-  client_cb = g_byte_array_new ();
+-  server_cb = g_byte_array_new ();
+-  g_assert_true (g_tls_connection_get_channel_binding_data (G_TLS_CONNECTION (test->client_connection),
+-                                                    G_TLS_CHANNEL_BINDING_TLS_EXPORTER, client_cb, NULL));
+-  g_assert_true (g_tls_connection_get_channel_binding_data (G_TLS_CONNECTION (test->server_connection),
+-                                                    G_TLS_CHANNEL_BINDING_TLS_EXPORTER, server_cb, NULL));
++  g_assert_true (client_supports_tls_exporter == server_supports_tls_exporter);
+ 
+-  client_b64 = g_base64_encode (client_cb->data, client_cb->len);
+-  server_b64 = g_base64_encode (server_cb->data, server_cb->len);
+-  g_assert_cmpstr (client_b64, ==, server_b64);
++  if (client_supports_tls_exporter)
++    {
++      /* Real test: retrieve bindings and compare */
++      client_cb = g_byte_array_new ();
++      server_cb = g_byte_array_new ();
++      g_assert_true (g_tls_connection_get_channel_binding_data (G_TLS_CONNECTION (test->client_connection),
++                                                        G_TLS_CHANNEL_BINDING_TLS_EXPORTER, client_cb, NULL));
++      g_assert_true (g_tls_connection_get_channel_binding_data (G_TLS_CONNECTION (test->server_connection),
++                                                        G_TLS_CHANNEL_BINDING_TLS_EXPORTER, server_cb, NULL));
+ 
+-  g_free (client_b64);
+-  g_free (server_b64);
+-  g_byte_array_unref (client_cb);
+-  g_byte_array_unref (server_cb);
++      client_b64 = g_base64_encode (client_cb->data, client_cb->len);
++      server_b64 = g_base64_encode (server_cb->data, server_cb->len);
++      g_assert_cmpstr (client_b64, ==, server_b64);
++
++      g_free (client_b64);
++      g_free (server_b64);
++      g_byte_array_unref (client_cb);
++      g_byte_array_unref (server_cb);
++    }
++  else
++    {
++      g_assert_true (g_tls_connection_get_protocol_version (
++            G_TLS_CONNECTION (test->client_connection)) == G_TLS_PROTOCOL_VERSION_TLS_1_2);
++      g_test_skip ("tls-exporter is not supported before TLS 1.3");
++    }
+ 
+   /* drop the mic */
+   close_server_connection (test);
+-- 
+GitLab
