@@ -24,9 +24,17 @@ src_install() {
 	if use reflex; then
 		dosym reflex /bin/lex
 		newman - lex.1 <<<".so reflex.1"
+
+		newenvd - 90lex <<-EOF
+		LEX=reflex
+		EOF
 	elif use flex; then
 		dosym flex /bin/lex
 		newman - lex.1 <<<".so flex.1"
+
+		newenvd - 90lex <<-EOF
+		LEX=flex
+		EOF
 	else
 		die "Invalid USE flag combination (broken REQUIRED_USE?)"
 	fi
