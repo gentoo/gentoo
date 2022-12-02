@@ -29,7 +29,11 @@ S="${WORKDIR}"/${PN}-${TS_PV:-${PV}}/src
 # Needed for tree_sitter/parser.h
 DEPEND="dev-libs/tree-sitter"
 
-EXPORT_FUNCTIONS src_compile src_install
+BDEPEND+=" test? ( dev-util/tree-sitter-cli )"
+IUSE+=" test"
+RESTRICT+=" !test? ( test )"
+
+EXPORT_FUNCTIONS src_compile src_test src_install
 
 # @ECLASS_VARIABLE: TS_PV
 # @PRE_INHERIT
@@ -87,6 +91,16 @@ tree-sitter-grammar_src_compile() {
 			*.o \
 			${soname_args} \
 			-o "${WORKDIR}"/${soname}
+}
+
+# @FUNCTION: tree-sitter-grammar_src_test
+# @DESCRIPTION:
+# Runs the Tree Sitter parser's test suite.
+# See: https://tree-sitter.github.io/tree-sitter/creating-parsers#command-test
+tree-sitter-grammar_src_test() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	(cd .. && tree-sitter test) || die "Test suite failed"
 }
 
 # @FUNCTION: tree-sitter-grammar_src_install
