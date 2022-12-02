@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">docstring-to-markdown</remote-id>
+		<remote-id type="github">python-lsp/docstring-to-markdown</remote-id>
 	</upstream>
 </pkgmetadata>
