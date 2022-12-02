@@ -28,12 +28,24 @@ src_install() {
 		# around bison(1).
 		dosym yacc.bison /usr/bin/yacc
 		newman - yacc.1 <<<".so yacc.bison.1"
+
+		newenvd - 90yacc <<-EOF
+			YACC=bison
+		EOF
 	elif use byacc; then
 		dosym byacc /usr/bin/yacc
 		newman - yacc.1 <<<".so byacc.1"
+
+		newenvd - 90yacc <<-EOF
+			YACC=byacc
+		EOF
 	elif use reference; then
 		dosym yacc-reference /usr/bin/yacc
 		newman - yacc.1 <<<".so yacc-reference.1"
+
+		newenvd - 90yacc <<-EOF
+			YACC=yacc
+		EOF
 	else
 		die "Invalid USE flag combination (broken REQUIRED_USE?)"
 	fi
