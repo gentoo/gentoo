@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-PYTHON_COMPAT=( python{3_7,3_8,3_9,3_10} )
+PYTHON_COMPAT=( python{3_8,3_9,3_10,3_11} )
 
 inherit meson python-single-r1
 
@@ -30,10 +30,9 @@ RDEPEND="${COMMON_DEPEND}
 	sys-auth/polkit
 	x11-terms/mate-terminal
 "
-DEPEND="${COMMON_DEPEND}
+BDEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 "
-BDEPEND=""
 
 src_install() {
 	meson_src_install
