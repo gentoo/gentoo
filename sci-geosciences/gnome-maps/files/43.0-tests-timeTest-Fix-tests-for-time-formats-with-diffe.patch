@@ -1,0 +1,58 @@
+From bec3d2f26de1b3a8c8b7e603f6d6a46c853426fa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Correa=20G=C3=B3mez?= <ablocorrea@hotmail.com>
+Date: Fri, 28 Oct 2022 01:05:28 +0200
+Subject: [PATCH] tests/timeTest: Fix tests for time formats with different
+ kind of spaces
+
+Time.format does not warranty the character used for spaces, neither
+that it will not introduce preceding byte order marks. Solve it by
+comparing inclusion of the data and that it finishes with AM or PM.
+
+Closes #506
+---
+ tests/timeTest.js | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/tests/timeTest.js b/tests/timeTest.js
+index 96803f2f..d025e8e8 100644
+--- a/tests/timeTest.js
++++ b/tests/timeTest.js
+@@ -23,6 +23,11 @@ const JsUnit = imports.jsUnit;
+ 
+ import * as Time from './time.js';
+ 
++function compare12HourTime(format, hoursMinutes, AMPM) {
++    JsUnit.assertTrue(format.includes(hoursMinutes));
++    JsUnit.assertTrue(format.endsWith(AMPM));
++}
++
+ function formatTimeWithTZOffsetTest() {
+     // mock to always use 24 hour format
+     Time._setIs12HourFunction(() => { return false; });
+@@ -35,8 +40,8 @@ function formatTimeWithTZOffsetTest() {
+     // mock to always use 12 hour format
+     Time._setIs12HourFunction(() => { return true; });
+ 
+-    JsUnit.assertEquals('10:54 PM',
+-                        Time.formatTimeWithTZOffset(1607982864000, 3600000));
++    compare12HourTime(Time.formatTimeWithTZOffset(1607982864000, 3600000),
++                      '10:54', 'PM');
+ }
+ 
+ function formatTimeFromHoursAndMinsTest() {
+@@ -50,9 +55,9 @@ function formatTimeFromHoursAndMinsTest() {
+     // mock to always use 12 hour format
+     Time._setIs12HourFunction(() => { return true; });
+ 
+-    JsUnit.assertEquals('12:34 PM', Time.formatTimeFromHoursAndMins(12, 34));
+-    JsUnit.assertEquals('12:00 AM', Time.formatTimeFromHoursAndMins(24, 0));
+-    JsUnit.assertEquals('12:01 PM', Time.formatTimeFromHoursAndMins(12, 1));
++    compare12HourTime(Time.formatTimeFromHoursAndMins(12, 34), '12:34', 'PM');
++    compare12HourTime(Time.formatTimeFromHoursAndMins(24, 0), '12:00', 'AM');
++    compare12HourTime(Time.formatTimeFromHoursAndMins(12, 1), '12:01', 'PM');
+ }
+ 
+ formatTimeWithTZOffsetTest();
+-- 
+2.37.4
+
