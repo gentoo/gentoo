@@ -1,0 +1,15 @@
+See https://github.com/tgalal/python-axolotl-curve25519/pull/26
+
+diff --git a/curve25519module.c b/curve25519module.c
+index f4bd3d7..cf8bb45 100644
+--- a/curve25519module.c
++++ b/curve25519module.c
+@@ -158,7 +158,7 @@ curve25519_functions[] = {
+         PyModuleDef_HEAD_INIT,
+         "axolotl_curve25519",
+         NULL,
+-        NULL,
++        0,
+         curve25519_functions,
+     };
+ 
