@@ -50,6 +50,10 @@ media-sound/qmmp -xmp
 # Need intel-hybrid-codec-driver, which only works on amd64
 media-libs/libva-intel-driver -hybrid
 
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
+# Unmask AMF keyword on amd64 only
+media-video/ffmpeg -amf
+
 # James Le Cuirot <chewi@gentoo.org> (2021-10-22)
 # The JIT feature only works on amd64 and x86.
 app-emulation/fs-uae -jit

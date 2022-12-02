@@ -43,6 +43,11 @@ sys-libs/libseccomp experimental-loong
 # These GRUB platforms are only for MIPS.
 sys-boot/grub grub_platforms_loongson grub_platforms_qemu-mips
 
+# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
+# Mask AMF keyword on non-amd64 arches
+# It is unusable, for now, in other arches
+media-video/ffmpeg amf
+
 # Sam James <sam@gentoo.org> (2021-11-15)
 # Only available on PPC*.
 sys-apps/util-linux rtas

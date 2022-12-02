@@ -42,11 +42,6 @@ media-gfx/graphicsmagick jpegxl
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
 
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
-# Mask AMF keyword on non-amd64 arches
-# It is unusable, for now, in other arches
-media-video/ffmpeg amf
-
 # Sam James <sam@gentoo.org> (2022-01-29)
 # app-text/ronn-ng not keyworded here, bug #801103
 app-accessibility/espeak-ng man
