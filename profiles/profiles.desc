@@ -336,7 +336,7 @@ amd64		default/linux/amd64/17.0/musl/clang			exp
 amd64		default/linux/amd64/17.0/musl/hardened			exp
 amd64		default/linux/amd64/17.0/musl/hardened/selinux		exp
 arm		default/linux/arm/17.0/musl/armv6j			dev
-arm             default/linux/arm/17.0/musl/armv6j/llvm                 dev
+arm             default/linux/arm/17.0/musl/armv6j/llvm                 exp
 arm		default/linux/arm/17.0/musl/armv6j/hardened		exp
 arm		default/linux/arm/17.0/musl/armv6j/hardened/selinux	exp
 arm		default/linux/arm/17.0/musl/armv7a			dev
