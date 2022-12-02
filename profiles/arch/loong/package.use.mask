@@ -1,6 +1,10 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-02)
+# dev-qt/qtlocation:5 fails to compile with gcc-13 for now.
+dev-python/PyQt5 location
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-01)
 # sys-libs/libhugetlbfs isn't buildable here yet due to arch-specific code.
 sys-apps/nvme-cli hugepages
