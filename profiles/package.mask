@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-12-02)
+# Old cucumber slots and dependencies for already removed
+# cucumber-3. These have no value as standalone packages.
+# Removal in 14 days.
+dev-ruby/gherkin
+dev-util/cucumber-core:3.2
+dev-util/cucumber-expressions
+dev-util/cucumber-tag_expressions
+dev-util/cucumber-wire:0
+
 # Hans de Graaff <graaff@gentoo.org> (2022-12-01)
 # Old slot without dependencies on it. Blocks removal of
 # ruby27-only dev-util/cucumber-3.x. Use a newer slot instead.
