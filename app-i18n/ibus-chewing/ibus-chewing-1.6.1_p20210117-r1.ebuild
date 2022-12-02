@@ -16,14 +16,13 @@ SRC_URI="https://github.com/definite/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gconf nls"
+IUSE="nls"
 
 RDEPEND="app-i18n/ibus
 	app-i18n/libchewing
 	dev-libs/glib:2
 	x11-libs/gtk+:3
 	x11-libs/libX11
-	gconf? ( gnome-base/gconf )
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-util/cmake-fedora
@@ -38,6 +37,8 @@ DOCS=( AUTHORS ChangeLog README.md RELEASE-NOTES.txt USER-GUIDE )
 
 src_configure() {
 	local mycmakeargs=(
+		-DGCONF2_SUPPORT=OFF
+		-DGSETTINGS_SUPPORT=ON
 		-DMANAGE_DEPENDENCY_PACKAGE_EXISTS_CMD=false
 		-DPRJ_DOC_DIR="${EPREFIX}"/usr/share/doc/${PF}
 	)
@@ -54,12 +55,10 @@ src_test() {
 }
 
 pkg_preinst() {
-	use gconf && gnome2_gconf_savelist
 	gnome2_schemas_savelist
 }
 
 pkg_postinst() {
-	use gconf && gnome2_gconf_install
 	gnome2_schemas_update
 }
 

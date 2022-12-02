@@ -5,9 +5,6 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
-	<use>
-		<flag name="gconf">Enable support for <pkg>gnome-base/gconf</pkg></flag>
-	</use>
 	<upstream>
 		<remote-id type="github">definite/ibus-chewing</remote-id>
 	</upstream>
