@@ -3,6 +3,10 @@
 
 # Sam James <sam@gentoo.org> (2022-12-02)
 # Not keyworded here
+app-alternatives/yacc reference
+
+# Sam James <sam@gentoo.org> (2022-12-02)
+# Not keyworded here
 app-alternatives/lex reflex
 
 # Mike Rivnak <rivnakm1@gmail.com> (2022-11-30)
