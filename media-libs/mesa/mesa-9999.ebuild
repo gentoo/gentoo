@@ -190,8 +190,7 @@ BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
 	$(python_gen_any_dep ">=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]")
-	vulkan? ( video_cards_radeonsi? ( dev-util/glslang ) )
-	vulkan-overlay? ( dev-util/glslang )
+	vulkan? ( dev-util/glslang )
 	wayland? ( dev-util/wayland-scanner )
 "
 
