@@ -1,7 +1,2 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# WANG Xuerui <xen0n@gentoo.org> (2022-12-01)
-# Not buildable with latest gcc-13 snapshot, we're the only arch on gcc-13
-# right now. Bug 883719
-=sys-libs/timezone-data-2022g
