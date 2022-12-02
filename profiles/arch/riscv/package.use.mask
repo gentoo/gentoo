@@ -96,11 +96,6 @@ sys-block/fio rbd
 # Upstream bug for criu: https://github.com/checkpoint-restore/criu/issues/1702
 app-containers/crun criu
 
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
-# Mask AMF keyword on non-amd64 arches
-# It is unusable, for now, in other arches
-media-video/ffmpeg amf
-
 # Yongxinag Liang <tanekliang@gmail.com> (2022-01-09)
 # app-emulation/xen-tools doesn't support riscv yet
 app-emulation/qemu xen

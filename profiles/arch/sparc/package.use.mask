@@ -73,11 +73,6 @@ media-video/ffmpeg vmaf
 # Unkeyworded dependencies
 net-mail/cyrus-imapd http
 
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
-# Mask AMF keyword on non-amd64 arches
-# It is unusable, for now, in other arches
-media-video/ffmpeg amf
-
 # Daniel Pielmeier <billie@gentoo.org> (2021-11-07)
 # gnome-base/librsvg is not keyworded here, bug #807130
 app-admin/conky lua-rsvg

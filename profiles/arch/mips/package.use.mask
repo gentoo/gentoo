@@ -27,11 +27,6 @@ media-video/ffmpeg vmaf
 # These GRUB platforms are only for MIPS.
 sys-boot/grub -grub_platforms_loongson -grub_platforms_qemu-mips
 
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-01-17)
-# Mask AMF keyword on non-amd64 arches
-# It is unusable, for now, in other arches
-media-video/ffmpeg amf
-
 # Fabian Groffen <grobian@gentoo.org> (2022-02-13)
 # needs unkeyworded virtual/gsasl
 mail-client/mutt gsasl

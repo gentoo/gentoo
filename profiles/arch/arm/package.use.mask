@@ -47,11 +47,6 @@ kde-frameworks/kfilemetadata mobi
 # https://www.boost.org/doc/libs/1_78_0/libs/context/doc/html/context/architectures.html
 dev-libs/boost -context
 
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-01-17)
-# Mask AMF keyword on non-amd64 arches
-# It is unusable, for now, in other arches
-media-video/ffmpeg amf
-
 # Sam James <sam@gentoo.org> (2022-01-15)
 # Deps not yet stable:
 # app-emulation/spice

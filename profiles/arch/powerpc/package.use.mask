@@ -30,11 +30,6 @@ app-text/enchant nuspell
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf
 
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2021-12-11)
-# Mask AMF keyword on non-amd64 arches
-# It is unusable, for now, in other arches
-media-video/ffmpeg amf
-
 # Sam James <sam@gentoo.org> (2021-11-15)
 # librtas is available on (only) ppc*
 sys-apps/util-linux -rtas

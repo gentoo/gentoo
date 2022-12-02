@@ -73,11 +73,6 @@ media-video/ffmpeg vmaf
 # Unkeyworded dependencies
 net-mail/cyrus-imapd http
 
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-02-17)
-# Mask AMF keyword on non-amd64 arches
-# It is unusable, for now, in other arches
-media-video/ffmpeg amf
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-02-08)
 # bash becomes corrupted and system breaks, bug #832946
 app-shells/bash mem-scramble
