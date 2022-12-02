@@ -16,7 +16,7 @@ IUSE=""
 RDEPEND="acct-user/milter-regex
 	>=mail-filter/libmilter-1.0.2_p2:="
 DEPEND="${RDEPEND}
-	virtual/yacc"
+	app-alternatives/yacc"
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-2.6-gentoo.patch"

@@ -43,7 +43,7 @@ REQUIRED_USE="
 BDEPEND="
 	sys-devel/bison
 	sys-devel/flex
-	virtual/yacc
+	app-alternatives/yacc
 	doc? ( media-libs/libpng )
 	lua? ( dev-lang/swig )
 	nls? ( sys-devel/gettext )

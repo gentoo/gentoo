@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/xz-utils
 	sys-apps/texinfo
-	virtual/yacc"
+	app-alternatives/yacc"
 
 CONFIG_CHECK="~INPUT_MOUSEDEV"
 ERROR_INPUT_MOUSEDEV="CONFIG_INPUT_MOUSEDEV:\tis not set (required to expose mice for GPM)"

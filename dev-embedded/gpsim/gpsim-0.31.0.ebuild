@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
-	virtual/yacc
+	app-alternatives/yacc
 "
 DOCS=( ANNOUNCE AUTHORS ChangeLog HISTORY PROCESSORS README README.MODULES TODO )
 

@@ -69,7 +69,7 @@ BDEPEND="
 		)
 	)
 	virtual/pkgconfig
-	virtual/yacc
+	app-alternatives/yacc
 	"
 
 S=${WORKDIR}/${MY_P}/source

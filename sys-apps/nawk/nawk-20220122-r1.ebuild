@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux"
 
 DEPEND="
-	virtual/yacc
+	app-alternatives/yacc
 "
 
 S="${WORKDIR}/awk-${PV}"

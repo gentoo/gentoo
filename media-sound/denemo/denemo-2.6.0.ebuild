@@ -55,7 +55,7 @@ BDEPEND="
 	>=dev-util/intltool-0.51.0-r1
 	>=sys-devel/flex-2.6.1
 	virtual/pkgconfig
-	virtual/yacc
+	app-alternatives/yacc
 	gtk-doc? ( >=dev-util/gtk-doc-1.25-r1 )
 	nls? ( >=sys-devel/gettext-0.19.8.1 )
 "

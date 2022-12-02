@@ -93,7 +93,7 @@ RDEPEND="
 "
 # We only need yacc when the .y files get patched (bash42-005, bash51-011)
 BDEPEND="
-	virtual/yacc
+	app-alternatives/yacc
 	pgo? ( dev-util/gperf )
 	verify-sig? ( sec-keys/openpgp-keys-chetramey )
 "

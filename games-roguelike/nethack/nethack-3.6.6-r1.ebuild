@@ -31,7 +31,7 @@ DEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
-	virtual/yacc
+	app-alternatives/yacc
 	X? (
 		x11-apps/bdftopcf
 		x11-apps/mkfontscale

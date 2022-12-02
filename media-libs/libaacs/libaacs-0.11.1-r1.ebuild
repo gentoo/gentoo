@@ -17,7 +17,7 @@ RDEPEND=">=dev-libs/libgcrypt-1.5.3:0=[${MULTILIB_USEDEP}]
 	>=dev-libs/libgpg-error-1.12[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/flex
-	virtual/yacc"
+	app-alternatives/yacc"
 
 DOCS=( ChangeLog KEYDB.cfg README.md )
 

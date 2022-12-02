@@ -29,7 +29,7 @@ BDEPEND="
 	sys-apps/texinfo
 	sys-devel/flex
 	virtual/pkgconfig
-	virtual/yacc
+	app-alternatives/yacc
 "
 
 PATCHES=(

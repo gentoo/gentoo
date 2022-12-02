@@ -70,7 +70,7 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
-	virtual/yacc
+	app-alternatives/yacc
 	server? ( net-libs/rpcsvc-proto )
 	test? (
 		acct-group/mysql acct-user/mysql

@@ -30,7 +30,7 @@ BDEPEND="
 	sys-devel/flex
 	virtual/os-headers
 	virtual/pkgconfig
-	virtual/yacc
+	app-alternatives/yacc
 "
 
 src_prepare() {

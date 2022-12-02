@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}"
 
 BDEPEND="dev-tex/hevea
 	virtual/pkgconfig
-	virtual/yacc"
+	app-alternatives/yacc"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.7.0.1-gsl_lapack.patch"

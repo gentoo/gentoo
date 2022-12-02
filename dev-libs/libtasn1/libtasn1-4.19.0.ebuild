@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	sys-apps/help2man
-	virtual/yacc
+	app-alternatives/yacc
 	test? ( valgrind? ( dev-util/valgrind ) )
 	verify-sig? ( sec-keys/openpgp-keys-libtasn1 )
 "

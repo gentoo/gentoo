@@ -37,7 +37,7 @@ BDEPEND="
 	app-arch/zip
 	app-text/xmlto
 	sys-devel/gettext
-	virtual/yacc
+	app-alternatives/yacc
 	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/ffmpeg5.patch "${FILESDIR}"/wx30.patch )

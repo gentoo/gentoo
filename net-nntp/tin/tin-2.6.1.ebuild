@@ -28,7 +28,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	virtual/yacc
+	app-alternatives/yacc
 "
 
 DOCS=(

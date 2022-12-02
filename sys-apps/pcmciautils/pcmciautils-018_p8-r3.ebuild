@@ -21,7 +21,7 @@ IUSE="debug staticsocket"
 
 RDEPEND="sys-apps/kmod[tools]"
 DEPEND="${RDEPEND}
-	virtual/yacc
+	app-alternatives/yacc
 	sys-devel/flex"
 
 PATCHES=(

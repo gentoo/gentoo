@@ -38,7 +38,7 @@ CDEPEND="
 "
 RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}
-	virtual/yacc
+	app-alternatives/yacc
 	sys-devel/flex
 "
 

@@ -84,7 +84,7 @@ COMMON_DEPEND="
 	>=dev-libs/libpcre-8.41-r1:3=
 	virtual/libcrypt:=
 "
-BDEPEND="virtual/yacc"
+BDEPEND="app-alternatives/yacc"
 DEPEND="static? ( sys-libs/ncurses[static-libs] )
 	server? (
 		extraengine? ( jdbc? ( >=virtual/jdk-1.8 ) )

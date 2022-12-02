@@ -67,7 +67,7 @@ RDEPEND="${DEPEND}
 DEPEND+=" test? ( dev-util/cunit )"
 BDEPEND="sys-devel/flex
 	virtual/pkgconfig
-	virtual/yacc"
+	app-alternatives/yacc"
 
 REQUIRED_USE="afs? ( kerberos )
 	backup? ( sqlite )

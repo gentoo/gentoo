@@ -47,7 +47,7 @@ BDEPEND="
 	sys-devel/bc
 	sys-devel/flex
 	virtual/libelf
-	virtual/yacc
+	app-alternatives/yacc
 "
 
 QA_PREBUILT='*'

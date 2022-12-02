@@ -86,7 +86,7 @@ BDEPEND="
 		)
 	)
 	virtual/pkgconfig
-	virtual/yacc
+	app-alternatives/yacc
 	"
 
 PATCHES=(

@@ -15,7 +15,7 @@ KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 BDEPEND="
 	sys-devel/flex
-	virtual/yacc"
+	app-alternatives/yacc"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-infopage.patch

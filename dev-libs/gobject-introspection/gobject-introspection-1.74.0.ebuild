@@ -31,7 +31,7 @@ RDEPEND="
 	virtual/pkgconfig
 	${PYTHON_DEPS}
 "
-# Wants real bison, not virtual/yacc
+# Wants real bison, not app-alternatives/yacc
 DEPEND="${RDEPEND}"
 BDEPEND="
 	gtk-doc? (

@@ -16,7 +16,7 @@ IUSE=""
 
 BDEPEND="
 	dev-util/netsurf-buildsystem
-	virtual/yacc"
+	app-alternatives/yacc"
 
 _emake() {
 	netsurf_define_makeconf

@@ -11,3 +11,4 @@ move dev-python/libsass dev-python/libsass-python
 move dev-lang/open-cobol dev-lang/gnucobol
 move dev-python/miniupnpc dev-python/python-miniupnpc
 move virtual/awk app-alternatives/awk
+move virtual/yacc app-alternatives/yacc

@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="
 	sys-devel/flex
-	virtual/yacc"
+	app-alternatives/yacc"
 
 src_configure() {
 	local XORG_CONFIGURE_OPTIONS=(
