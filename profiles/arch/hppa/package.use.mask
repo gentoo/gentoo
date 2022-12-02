@@ -5,6 +5,10 @@
 # request bug for the hppa arch.
 
 # Sam James <sam@gentoo.org> (2022-12-02)
+# Unkeyworded dependencies
+app-alternatives/bc gh
+
+# Sam James <sam@gentoo.org> (2022-12-02)
 # Not keyworded here
 app-alternatives/lex reflex
 

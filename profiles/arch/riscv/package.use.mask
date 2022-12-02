@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-12-02)
+# Unkeyworded dependencies
+app-alternatives/bc gh
+
+# Sam James <sam@gentoo.org> (2022-12-02)
 # Not keyworded here
 app-alternatives/yacc reference
 
