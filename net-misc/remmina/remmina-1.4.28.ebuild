@@ -5,13 +5,13 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{9..11} )
 
-COMMIT=347f84e41882219704693794621ebd18db36bd14
-
 inherit cmake optfeature python-single-r1 xdg
+
+MY_P="${PN^}-v${PV}"
 
 DESCRIPTION="A GTK+ RDP, SPICE, VNC and SSH client"
 HOMEPAGE="https://remmina.org/"
-SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/${COMMIT}/Remmina-${COMMIT}.tar.bz2"
+SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
@@ -65,9 +65,7 @@ RDEPEND="
 
 DOCS=( AUTHORS CHANGELOG.md README.md THANKS.md )
 
-S="${WORKDIR}/Remmina-${COMMIT}"
-
-PATCHES=( "${FILESDIR}/${P}-missing-gdk-include.patch" )
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
