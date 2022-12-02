@@ -24,6 +24,7 @@ DOCS=( README.md FIXES )
 src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
+		HOSTCC="$(tc-getBUILD_CC)" \
 		CFLAGS="${CFLAGS}" \
 		CPPFLAGS=-DHAS_ISBLANK \
 		ALLOC="${LDFLAGS}" \
