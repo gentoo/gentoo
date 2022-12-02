@@ -17,6 +17,7 @@ nas
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-18)
 # net-libs/webkit-gtk is not available on loong yet.
+gnome-online-accounts
 webkit
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-01)

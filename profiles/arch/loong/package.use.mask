@@ -1,6 +1,11 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-03)
+# Things requiring net-libs/gnome-online-accounts, which depends on
+# net-libs/webkit-gtk.
+gnome-base/gvfs google
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-02)
 # sys-cluster/ceph is not keyworded yet.
 net-analyzer/rrdtool rados
