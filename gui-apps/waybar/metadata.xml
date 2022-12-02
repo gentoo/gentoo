@@ -5,11 +5,16 @@
 		<email>gentoo@jonas-toth.eu</email>
 		<name>Jonas Toth</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>julien@jroy.ca</email>
+		<name>Julien Roy</name>
+	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="experimental">Enable experimental features</flag>
 		<flag name="mpd">Enable support for the Music Player Daemon</flag>
 		<flag name="network">Enable libnl support for network related features</flag>
 		<flag name="popups">Enable popup support with gtk-layer-shell</flag>
