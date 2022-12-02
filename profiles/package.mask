@@ -418,10 +418,6 @@ dev-python/tempita
 # Removal on 2022-12-04.  Bug #879515.
 dev-python/watchgod
 
-# Anton Fischl <github@fischl-online.de> (2022-10-23)
-# Version 3.1.* is not meant for production according to upstream
-=app-backup/burp-3.1*
-
 # David Seifert <soap@gentoo.org> (2022-10-31)
 # EAPI 6, last release over 17 years ago, requires <ghostscript-gpl-10
 # drivers, relies on -Wimplicit-function-declaration.
