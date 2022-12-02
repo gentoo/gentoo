@@ -37,7 +37,7 @@ BDEPEND="
 	sys-devel/bc
 	sys-devel/flex
 	virtual/libelf
-	virtual/yacc
+	app-alternatives/yacc
 "
 
 # @FUNCTION: kernel-build_src_configure

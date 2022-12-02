@@ -17,6 +17,6 @@ KEYWORDS="~alpha amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 DEPEND="
 	sys-devel/flex
-	virtual/yacc
+	app-alternatives/yacc
 "
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-thomasdickey )"

@@ -15,7 +15,7 @@ IUSE="header-parser +legacy"
 
 BDEPEND="
 	sys-devel/flex
-	virtual/yacc
+	app-alternatives/yacc
 "
 
 DOCS=( ChangeLog{,_V{0..2}} README TODO doc/sec_review.txt )

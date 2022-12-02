@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
-	virtual/yacc
+	app-alternatives/yacc
 "
 
 PATCHES=(

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE=""
 RDEPEND="acct-user/milter-regex
 	|| ( mail-filter/libmilter mail-mta/sendmail )"
 DEPEND="${RDEPEND}
-	virtual/yacc"
+	app-alternatives/yacc"
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-2.6-gentoo.patch"

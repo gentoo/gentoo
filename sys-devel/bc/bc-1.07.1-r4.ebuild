@@ -23,7 +23,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/flex
-	virtual/yacc"
+	app-alternatives/yacc"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.07.1-no-ed-its-sed.patch )
 

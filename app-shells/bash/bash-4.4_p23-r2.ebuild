@@ -66,7 +66,7 @@ RDEPEND="
 	${DEPEND}
 "
 # We only need yacc when the .y files get patched (bash42-005)
-#BDEPEND="virtual/yacc"
+#BDEPEND="app-alternatives/yacc"
 
 S="${WORKDIR}/${MY_P}"
 

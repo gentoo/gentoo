@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,7 @@ IUSE="emacs examples"
 RDEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
 BDEPEND="${RDEPEND}
 	sys-devel/flex
-	virtual/yacc"
+	app-alternatives/yacc"
 
 S="${WORKDIR}/${MY_P}"
 SITEFILE="50${PN}-gentoo.el"

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,7 +45,7 @@ DEPEND="${RDEPEND}
 		sys-apps/groff )
 	test? ( dev-libs/check )
 	sys-devel/flex
-	virtual/yacc"
+	app-alternatives/yacc"
 
 src_prepare() {
 	sed -i "s:Release:Release Gentoo:" CMakeLists.txt || die

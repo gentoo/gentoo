@@ -21,7 +21,7 @@ DEPEND="
 	sys-apps/texinfo
 	sys-devel/flex
 	virtual/pkgconfig
-	virtual/yacc
+	app-alternatives/yacc
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.8.3-fno-common.patch

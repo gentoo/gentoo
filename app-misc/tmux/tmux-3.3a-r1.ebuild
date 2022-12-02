@@ -33,7 +33,7 @@ DEPEND="
 
 BDEPEND="
 	virtual/pkgconfig
-	virtual/yacc
+	app-alternatives/yacc
 "
 
 RDEPEND="

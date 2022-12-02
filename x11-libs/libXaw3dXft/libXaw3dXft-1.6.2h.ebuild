@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="
 	sys-devel/flex
-	virtual/yacc
+	app-alternatives/yacc
 	x11-misc/util-macros"
 
 QA_PKGCONFIG_VERSION="${PV//[!0-9.]}"

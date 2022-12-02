@@ -26,7 +26,7 @@ RDEPEND="app-text/ghostscript-gpl
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	>=dev-util/gperf-2.7.2
-	virtual/yacc
+	app-alternatives/yacc
 	nls? ( sys-devel/gettext )"
 
 SITEFILE=50${PN}-gentoo.el

@@ -27,7 +27,7 @@ DEPEND="
 	x11-base/xorg-proto"
 BDEPEND="
 	sys-devel/flex
-	virtual/yacc"
+	app-alternatives/yacc"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-clang16.patch

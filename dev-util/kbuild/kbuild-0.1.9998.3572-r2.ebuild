@@ -19,7 +19,7 @@ BDEPEND="
 	sys-devel/flex
 	sys-devel/gettext
 	virtual/pkgconfig
-	virtual/yacc
+	app-alternatives/yacc
 "
 
 PATCHES=(

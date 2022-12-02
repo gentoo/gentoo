@@ -90,7 +90,7 @@ COMMON_DEPEND="
 		>=dev-libs/openssl-1.0.0:0=
 	)
 "
-BDEPEND="virtual/yacc"
+BDEPEND="app-alternatives/yacc"
 DEPEND="${COMMON_DEPEND}
 	server? (
 		extraengine? ( jdbc? ( >=virtual/jdk-1.8 ) )

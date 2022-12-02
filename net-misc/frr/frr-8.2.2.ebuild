@@ -36,7 +36,7 @@ COMMON_DEPEND="
 BDEPEND="
 	~dev-util/clippy-${PV}
 	sys-devel/flex
-	virtual/yacc
+	app-alternatives/yacc
 	doc? ( dev-python/sphinx )
 "
 DEPEND="

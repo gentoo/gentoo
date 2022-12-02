@@ -19,7 +19,7 @@ RDEPEND=">=sys-libs/ncurses-5.2:0=
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/flex
 	virtual/pkgconfig
-	virtual/yacc"
+	app-alternatives/yacc"
 
 SITEFILE="50${PN}-gentoo.el"
 

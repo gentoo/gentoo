@@ -23,7 +23,7 @@ RDEPEND="sys-devel/gcc
 		dev-lang/tk
 		graphviz? ( media-gfx/graphviz )
 	)"
-BDEPEND="virtual/yacc"
+BDEPEND="app-alternatives/yacc"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.5.2-makefile.patch

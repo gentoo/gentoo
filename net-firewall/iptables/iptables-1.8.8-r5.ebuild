@@ -34,7 +34,7 @@ BDEPEND="
 	virtual/pkgconfig
 	nftables? (
 		sys-devel/flex
-		virtual/yacc
+		app-alternatives/yacc
 	)
 "
 RDEPEND="

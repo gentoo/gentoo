@@ -28,7 +28,7 @@ BDEPEND="app-doc/doxygen[dot]
 	sys-devel/flex
 	virtual/os-headers
 	virtual/pkgconfig
-	virtual/yacc"
+	app-alternatives/yacc"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.18_p1-build-system.patch

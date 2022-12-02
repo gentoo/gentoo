@@ -17,7 +17,7 @@ RESTRICT="test"
 # libsmi-0.5.0-implicit-function-declarations.patch touches parser
 BDEPEND="
 	sys-devel/flex
-	virtual/yacc
+	app-alternatives/yacc
 "
 
 PATCHES=(

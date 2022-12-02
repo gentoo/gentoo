@@ -35,7 +35,7 @@ RDEPEND="${DEPEND}
 	virtual/latex-base
 	!<app-text/texlive-2007"
 BDEPEND="sys-devel/flex
-	virtual/yacc
+	app-alternatives/yacc
 	virtual/pkgconfig"
 
 src_prepare() {

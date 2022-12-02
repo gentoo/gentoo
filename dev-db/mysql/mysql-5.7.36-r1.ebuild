@@ -71,7 +71,7 @@ DEPEND="
 	${COMMON_DEPEND}
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 	dev-libs/protobuf
-	virtual/yacc
+	app-alternatives/yacc
 	server? (
 		dev-libs/libevent:=[ssl]
 		experimental? ( net-libs/rpcsvc-proto )

@@ -44,7 +44,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-devel/flex
-	virtual/yacc
+	app-alternatives/yacc
 	systemd? ( virtual/pkgconfig )
 "
 

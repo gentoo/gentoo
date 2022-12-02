@@ -18,7 +18,7 @@ BDEPEND="
 	app-text/txt2man
 	sys-devel/flex
 	virtual/pkgconfig
-	virtual/yacc
+	app-alternatives/yacc
 "
 RDEPEND="
 	sys-libs/ncurses:0=
