@@ -6,7 +6,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<use>
-		<flag name="gconf">Enable support for <pkg>gnome-base/gconf</pkg></flag>
 		<flag name="xfconf">Enable support for <pkg>xfce-base/xfconf</pkg></flag>
 	</use>
 	<upstream>

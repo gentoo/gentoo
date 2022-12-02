@@ -12,7 +12,7 @@ SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="gconf qt5 +introspection xfconf"
+IUSE="qt5 +introspection xfconf"
 RESTRICT="test"
 
 RDEPEND="dev-libs/glib:2
@@ -22,7 +22,6 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/libX11
 	x11-libs/libgxim
 	x11-libs/libnotify
-	gconf? ( gnome-base/gconf )
 	introspection? ( dev-libs/gobject-introspection )
 	xfconf? ( xfce-base/xfconf )"
 DEPEND="${RDEPEND}"
@@ -37,7 +36,7 @@ MY_XINPUTSH="90-xinput"
 
 src_prepare() {
 	sed -i \
-		-e "/PKG_CHECK_MODULES/s/\(gconf-2\.0\)/$(usex gconf '\1' _)/" \
+		-e "/PKG_CHECK_MODULES/s/\(gconf-2\.0\)/_/" \
 		-e "/PKG_CHECK_MODULES/s/\(gtk+-2\.0\)/_/" \
 		-e "/PKG_CHECK_MODULES/s/\(check\)/_/" \
 		-e "/PKG_CHECK_MODULES/s/\(libxfconf-0\)/$(usex xfconf '\1' _)/" \
