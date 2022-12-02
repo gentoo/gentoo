@@ -14,13 +14,16 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="X"
 
-RDEPEND="sys-libs/ncurses:0=
-	X? ( x11-libs/libX11  )"
-DEPEND="${RDEPEND}
-	X? ( >=x11-misc/imake-1.0.8-r1 )"
+RDEPEND="
+	sys-libs/ncurses:=
+	X? ( x11-libs/libX11 )"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	X? ( sys-devel/gcc )"
+	X? (
+		sys-devel/gcc
+		>=x11-misc/imake-1.0.8-r1
+	)"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-clang16.patch
