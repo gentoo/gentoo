@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 arm ~hppa ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="cdb"
 
-DEPEND="virtual/awk
+DEPEND="app-alternatives/awk
 	cdb? (
 		|| (
 			dev-db/tinycdb

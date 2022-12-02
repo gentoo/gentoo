@@ -23,7 +23,7 @@ REQUIRED_USE="?? ( iodbc odbc )"
 
 RESTRICT="test"
 
-COMMON_DEPEND="virtual/awk
+COMMON_DEPEND="app-alternatives/awk
 	gnutls? ( net-libs/gnutls:= )
 	iconv? ( virtual/libiconv )
 	iodbc? ( dev-db/libiodbc )

@@ -25,7 +25,7 @@ DEPEND="
 	dev-perl/JSON
 	net-misc/openssh
 	sys-libs/readline:=
-	virtual/awk
+	app-alternatives/awk
 	kerberos? ( app-crypt/mit-krb5 )
 	ndmp? ( net-libs/libtirpc:= )
 	nls? ( virtual/libintl )

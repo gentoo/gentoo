@@ -18,7 +18,7 @@ LICENSE="GPL-2"
 RDEPEND="
 	app-shells/bash
 	sys-apps/coreutils
-	virtual/awk
+	app-alternatives/awk
 "
 
 PATCHES=(

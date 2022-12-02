@@ -35,7 +35,7 @@ RDEPEND="
 "
 BDEPEND="
 	>=app-text/xmlto-0.0.28-r3[text(+)]
-	virtual/awk
+	app-alternatives/awk
 "
 
 DOCS=( ChangeLog README RELEASE_NOTES TODO )

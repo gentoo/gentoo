@@ -18,7 +18,7 @@ IUSE="a-like-o +center-tilde distinct-l +otf pcf-8bit +pcf-unicode +psf quote
 
 BDEPEND="app-arch/gzip
 	${PYTHON_DEPS}
-	virtual/awk
+	app-alternatives/awk
 	pcf-8bit? ( x11-apps/bdftopcf )
 	pcf-unicode? ( x11-apps/bdftopcf )"
 RDEPEND=""

@@ -19,7 +19,7 @@ SLOT="0"
 
 RDEPEND="
 	dev-lang/perl
-	virtual/awk
+	app-alternatives/awk
 "
 
 src_test() {

@@ -13,7 +13,7 @@ DEPEND="
 	dev-lang/perl
 	sys-apps/groff
 	sys-apps/texinfo
-	virtual/awk
+	app-alternatives/awk
 	fax? ( !net-misc/efax )
 "
 

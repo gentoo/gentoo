@@ -23,7 +23,7 @@ DEPEND="
 	media-libs/tiff:0[jbig?]
 	!net-dialup/mgetty[fax]
 	>=sys-libs/zlib-1.1.4
-	virtual/awk
+	app-alternatives/awk
 	virtual/jpeg:0
 	virtual/mta
 	jbig? ( media-libs/jbigkit )

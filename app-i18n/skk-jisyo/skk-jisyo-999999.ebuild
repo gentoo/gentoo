@@ -19,7 +19,7 @@ IUSE="cdb ${USE_RUBY//ruby/ruby_targets_ruby}"
 
 DEPEND="${RUBY_DEPS}
 	app-i18n/skktools
-	virtual/awk
+	app-alternatives/awk
 	cdb? (
 		|| (
 			dev-db/tinycdb

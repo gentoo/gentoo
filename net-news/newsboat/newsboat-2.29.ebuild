@@ -139,7 +139,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	>=dev-ruby/asciidoctor-1.5.3
-	virtual/awk
+	app-alternatives/awk
 	virtual/pkgconfig
 	>=virtual/rust-1.46.0
 "

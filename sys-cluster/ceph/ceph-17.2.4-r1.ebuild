@@ -150,7 +150,7 @@ RDEPEND="
 	sys-fs/cryptsetup
 	sys-fs/lsscsi
 	sys-fs/lvm2[lvm]
-	virtual/awk
+	app-alternatives/awk
 	dev-python/bcrypt[${PYTHON_USEDEP}]
 	dev-python/cherrypy[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]

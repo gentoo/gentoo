@@ -29,7 +29,7 @@ RDEPEND="${PYTHON_DEPS}
 	|| ( x11-misc/hsetroot media-gfx/feh )
 	sys-apps/sed
 	sys-devel/bc
-	virtual/awk
+	app-alternatives/awk
 	x11-apps/xwd
 	media-sound/alsa-utils"
 

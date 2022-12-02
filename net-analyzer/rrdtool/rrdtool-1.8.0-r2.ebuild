@@ -62,7 +62,7 @@ BDEPEND="
 	${DISTUTILS_DEPS}
 	sys-apps/groff
 	virtual/pkgconfig
-	virtual/awk
+	app-alternatives/awk
 	python? ( $(python_gen_cond_dep 'dev-python/setuptools[${PYTHON_USEDEP}]') )
 	test? (
 		sys-devel/bc

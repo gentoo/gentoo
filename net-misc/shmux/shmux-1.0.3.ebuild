@@ -22,7 +22,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	virtual/awk"
+	app-alternatives/awk"
 
 PATCHES=( "${FILESDIR}"/${P}-tinfo.patch )
 

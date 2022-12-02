@@ -40,7 +40,7 @@ RDEPEND="
 	net-misc/curl
 	net-misc/wget
 	sys-apps/util-linux
-	virtual/awk
+	app-alternatives/awk
 	caps? ( sys-libs/libcap )
 	cups? ( net-print/cups )
 	dbengine? (

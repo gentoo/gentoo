@@ -23,7 +23,7 @@ DEPEND="
 	media-libs/tiff[jbig?]
 	media-libs/libjpeg-turbo:=
 	>=sys-libs/zlib-1.1.4
-	virtual/awk
+	app-alternatives/awk
 	virtual/libcrypt:=
 	virtual/mta
 	jbig? ( media-libs/jbigkit )

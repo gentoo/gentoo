@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 RDEPEND="
 	app-shells/bash
 	sys-apps/coreutils
-	virtual/awk
+	app-alternatives/awk
 "
 
 src_install() {

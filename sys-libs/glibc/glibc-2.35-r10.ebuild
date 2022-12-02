@@ -110,7 +110,7 @@ BDEPEND="
 	!compile-locales? (
 		app-arch/gzip
 		sys-apps/grep
-		virtual/awk
+		app-alternatives/awk
 	)
 "
 COMMON_DEPEND="
@@ -127,14 +127,14 @@ DEPEND="${COMMON_DEPEND}
 	compile-locales? (
 		app-arch/gzip
 		sys-apps/grep
-		virtual/awk
+		app-alternatives/awk
 	)
 	test? ( >=net-dns/libidn2-2.3.0 )
 "
 RDEPEND="${COMMON_DEPEND}
 	app-arch/gzip
 	sys-apps/grep
-	virtual/awk
+	app-alternatives/awk
 	sys-apps/gentoo-functions
 	!<app-misc/pax-utils-${MIN_PAX_UTILS_VER}
 	!<net-misc/openssh-8.1_p1-r2

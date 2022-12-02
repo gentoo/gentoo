@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	sys-devel/gettext
-	virtual/awk
+	app-alternatives/awk
 	virtual/pkgconfig"
 
 pkg_setup() {

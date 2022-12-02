@@ -17,7 +17,7 @@ IUSE="X minimal"
 RDEPEND="
 	app-misc/jq
 	net-misc/curl[ssl]
-	virtual/awk
+	app-alternatives/awk
 	!minimal? (
 		X? ( media-gfx/ueberzug )
 		app-shells/fzf

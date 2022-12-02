@@ -19,6 +19,6 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	>=dev-util/itstool-1.2.0
 	>=sys-devel/gettext-0.19.8
-	virtual/awk
+	app-alternatives/awk
 	virtual/pkgconfig
 "

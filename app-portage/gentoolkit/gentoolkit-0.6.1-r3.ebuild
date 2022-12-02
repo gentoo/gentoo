@@ -27,7 +27,7 @@ SLOT="0"
 DEPEND="
 	>=sys-apps/portage-3.0.32[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
-	virtual/awk
+	app-alternatives/awk
 	sys-apps/gentoo-functions"
 
 PATCHES=(

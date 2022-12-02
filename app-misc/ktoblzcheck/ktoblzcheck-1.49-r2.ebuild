@@ -16,7 +16,7 @@ RDEPEND="
 	app-text/recode:0=
 	sys-apps/grep
 	sys-apps/sed
-	virtual/awk
+	app-alternatives/awk
 	|| ( net-misc/wget www-client/lynx )
 "
 DEPEND="${RDEPEND}

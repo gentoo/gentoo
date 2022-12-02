@@ -38,7 +38,7 @@ RDEPEND="${DEPEND}"
 
 BDEPEND="
 	dev-lang/perl
-	virtual/awk
+	app-alternatives/awk
 "
 
 # we want dist-kernel block in BDEPEND because of portage resolver.

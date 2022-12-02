@@ -17,4 +17,4 @@ RESTRICT="test" # needs fixing
 
 RDEPEND="dev-tcltk/expect"
 #DEPEND="test? ( dev-tcltk/expect )"
-BDEPEND="virtual/awk"
+BDEPEND="app-alternatives/awk"

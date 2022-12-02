@@ -15,7 +15,7 @@ RDEPEND="net-dns/bind-tools
 	net-fs/samba
 	net-misc/iputils
 	sys-apps/net-tools
-	virtual/awk"
+	app-alternatives/awk"
 
 S=${WORKDIR}
 PATCHES=( "${FILESDIR}"/${P}-head.diff )

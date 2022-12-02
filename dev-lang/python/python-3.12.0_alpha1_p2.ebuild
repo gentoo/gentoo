@@ -76,7 +76,7 @@ DEPEND="
 # autoconf-archive needed to eautoreconf
 BDEPEND="
 	sys-devel/autoconf-archive
-	virtual/awk
+	app-alternatives/awk
 	virtual/pkgconfig
 	verify-sig? ( >=sec-keys/openpgp-keys-python-20221025 )
 "

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ RDEPEND="
 	>=app-text/psutils-1.17
 	>=app-text/a2ps-4.13b-r4
 	net-print/cups
-	virtual/awk
+	app-alternatives/awk
 	virtual/imagemagick-tools
 	virtual/mta"
 DEPEND="${RDEPEND}"

@@ -97,7 +97,7 @@ DEPEND="${DEPEND_COM}
 		dev-perl/IO-Socket-INET6
 	)"
 RDEPEND="${DEPEND_COM}
-		virtual/awk
+		app-alternatives/awk
 		ipmi? ( >=sys-libs/freeipmi-1.1.6-r1 )
 		java? (
 			>=virtual/jre-1.8:*

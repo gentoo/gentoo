@@ -22,7 +22,7 @@ S="${WORKDIR}/${PN}-${COMMIT_ID}"
 
 RDEPEND="
 	dev-lang/perl
-	virtual/awk
+	app-alternatives/awk
 "
 
 src_test() {

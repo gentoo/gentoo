@@ -20,7 +20,7 @@ fi
 LICENSE="GPL-3+"
 SLOT="0"
 
-RDEPEND="virtual/awk"
+RDEPEND="app-alternatives/awk"
 
 src_compile() {
 	:
