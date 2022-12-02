@@ -27,6 +27,9 @@ IUSE="
 # disable tests until out of beta, tests themselves are new and can be volatile
 RESTRICT="test"
 
+# libX11 range is temporary while this is being looked into:
+# - https://github.com/godotengine/godot/issues/69352
+# - https://gitlab.freedesktop.org/xorg/lib/libx11/-/issues/170
 # dlopen: alsa-lib,dbus,fontconfig,pulseaudio,speech-dispatcher,udev
 RDEPEND="
 	app-arch/zstd:=
@@ -46,7 +49,10 @@ RDEPEND="
 		media-libs/alsa-lib
 		media-libs/libglvnd[X]
 		media-libs/vulkan-loader[X]
-		x11-libs/libX11
+		|| (
+			>x11-libs/libX11-1.8.2-r1
+			<x11-libs/libX11-1.8.2-r1
+		)
 		x11-libs/libXcursor
 		x11-libs/libXext
 		x11-libs/libXi
