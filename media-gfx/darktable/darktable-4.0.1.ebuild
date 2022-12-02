@@ -95,8 +95,11 @@ pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		# Bug #695658
 		if tc-is-gcc; then
-			test-flags-CC -floop-block &> /dev/null || \
-				die "Please switch to a gcc version built with USE=graphite"
+			if ! test-flags-CC -floop-block &> /dev/null; then
+				eerror "Building ${PN} with GCC requires Graphite support."
+				eerror "Please switch to a version of sys-devel/gcc built with USE=graphite, or use a different compiler."
+				die "Selected compiler is sys-devel/gcc[-graphite]"
+			fi
 		fi
 
 		use openmp && tc-check-openmp
