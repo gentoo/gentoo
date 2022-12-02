@@ -101,6 +101,9 @@ file from /usr/share/applications if you use a different browser)."
 src_prepare() {
 	cmake_src_prepare
 	gnome2_src_prepare
+
+	eapply "${FILESDIR}"/${PV}-I-2001-Mail-Update-preview-s-iframe-height-to-match-.patch
+	eapply "${FILESDIR}"/${PV}-I-1969-EShellWindow-The-New-menu-is-not-filled-after.patch
 }
 
 src_configure() {
