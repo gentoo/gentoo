@@ -9,7 +9,7 @@
      <version>
        <external>$EXEC -v</external>
        <nogrep regexp="for GNAT Pro"></nogrep>
-@@ -173,14 +173,14 @@
+@@ -173,18 +173,18 @@
     -->
    <compiler_description>
      <name>GNAT</name>
@@ -27,6 +27,11 @@
        <grep regexp="^[-\w]*gcc \S+ (\S+)" group="1"></grep>
      </variable>
      <variable name="gcc_version_major">
+-      <external>${PREFIX}gcc -v</external>
++      <external>${PREFIX}gcc-@VER@ -v</external>
+       <grep regexp="^[-\w]*gcc \S+ (\d+)\.\d+\.\d+" group="1"></grep>
+     </variable>
+     <runtimes default="default,kernel,native">
 @@ -194,7 +194,7 @@
         <directory group="2" >\.\./$TARGET/lib(32|64)?/gnat/(.*)/adalib/</directory>
      </runtimes>
