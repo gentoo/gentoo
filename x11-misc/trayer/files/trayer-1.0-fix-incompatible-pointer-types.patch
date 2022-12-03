@@ -1,0 +1,19 @@
+Clang16 will not allow incompatible pointer types by default.
+
+Bug: https://bugs.gentoo.org/881081
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+--- a/plugin.h
++++ b/plugin.h
+@@ -9,6 +9,8 @@
+ #include <stdio.h>
+ #include "panel.h"
+ 
++struct _plugin;
++
+ typedef struct {
+     /* common */
+     char *fname;
+-- 
+2.38.1
+
