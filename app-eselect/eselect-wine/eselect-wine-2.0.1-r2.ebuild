@@ -39,8 +39,7 @@ src_install() {
 
 	newenvd - 95${PN} <<-EOF
 		PATH="${EPREFIX}/etc/eselect/wine/bin"
-		MANPATH="${EPREFIX}/etc/eselect/wine/share/man"\
-		$(usev xdg "
+		MANPATH="${EPREFIX}/etc/eselect/wine/share/man"$(usev xdg "
 		XDG_DATA_DIRS=\"${EPREFIX}/etc/eselect/wine/share\"")
 	EOF
 
