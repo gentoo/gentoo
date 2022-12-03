@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby24 ruby25 ruby26 ruby27"
+USE_RUBY="ruby27 ruby30"
 
 # git-r3 goes after ruby-ng so that it overrides src_unpack properly
 inherit cmake ruby-ng
@@ -25,7 +25,7 @@ fi
 
 RESTRICT="!test? ( test )"
 
-ruby_add_bdepend "test? ( dev-ruby/rake dev-ruby/rspec:2 dev-ruby/mocha:0.14 )"
+ruby_add_bdepend "test? ( dev-ruby/rake dev-ruby/rspec:3 dev-ruby/mocha:0.14 )"
 
 RDEPEND="
 	>=dev-cpp/cpp-hocon-0.2.1:=
