@@ -423,12 +423,6 @@ dev-python/tempita
 # Removal on 2022-12-04.  Bug #879515.
 dev-python/watchgod
 
-# David Seifert <soap@gentoo.org> (2022-10-31)
-# EAPI 6, last release over 17 years ago, requires <ghostscript-gpl-10
-# drivers, relies on -Wimplicit-function-declaration.
-# Removal on 2022-11-30. Bug #871216, #876382.
-media-gfx/peps
-
 # Sam James <sam@gentoo.org> (2022-10-28)
 # Please upgrade to >=media-libs/fontconfig-2.14.1-r1 for fixed
 # cache dir to avoid sandbox violation errors, bug #878471.
