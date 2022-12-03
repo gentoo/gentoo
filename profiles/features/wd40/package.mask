@@ -57,7 +57,6 @@ dev-python/trustme
 dev-python/trio
 dev-python/twine
 dev-python/watchfiles
-dev-python/watchgod
 dev-ros/roswtf
 dev-util/cargo-c
 dev-util/cbindgen
