@@ -31,6 +31,8 @@ IUSE="doc"
 RDEPEND+=" >=media-gfx/imagemagick-6.9.0:="
 DEPEND+=" >=media-gfx/imagemagick-6.9.0 test? ( >=media-gfx/imagemagick-7.1.0:=[jpeg,lqr,lcms,postscript,tiff,webp] )"
 
+ruby_add_bdepend "dev-ruby/pkg-config"
+
 all_ruby_prepare() {
 	# Avoid unused dependency on rake-compiler. This also avoids an
 	# extra compile during tests.
