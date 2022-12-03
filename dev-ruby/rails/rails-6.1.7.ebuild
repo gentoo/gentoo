@@ -17,7 +17,7 @@ HOMEPAGE="https://rubyonrails.org"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 IUSE=""
 
