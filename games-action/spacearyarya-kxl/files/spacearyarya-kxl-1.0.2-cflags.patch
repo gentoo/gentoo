@@ -1,9 +1,0 @@
-https://bugs.gentoo.org/429422
---- a/src/Makefile.am
-+++ b/src/Makefile.am
-@@ -6,4 +6,4 @@
- 		boss.c boss.h
- 
--CFLAGS = @X_CFLAGS@ @KXL_CFLAGS@
-+AM_CFLAGS = @X_CFLAGS@ @KXL_CFLAGS@
- LIBS = @X_LIBS@ -lX11 @KXL_LIBS@ -lKXL
