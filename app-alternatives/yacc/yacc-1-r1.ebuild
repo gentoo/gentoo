@@ -30,7 +30,7 @@ src_install() {
 		newman - yacc.1 <<<".so yacc.bison.1"
 
 		newenvd - 90yacc <<-EOF
-			YACC=bison
+			YACC=yacc.bison
 		EOF
 	elif use byacc; then
 		dosym byacc /usr/bin/yacc
