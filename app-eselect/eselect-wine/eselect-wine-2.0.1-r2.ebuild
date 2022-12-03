@@ -10,8 +10,12 @@ SRC_URI="https://gitweb.gentoo.org/proj/eselect-wine.git/snapshot/${P}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
+IUSE="+xdg"
 
-RDEPEND="app-admin/eselect"
+# xdg-utils needed for bug #884077
+RDEPEND="
+	app-admin/eselect
+	xdg? ( x11-misc/xdg-utils )"
 
 pkg_pretend() {
 	# /usr/bin/wine and /usr/include/wine are removed by pkg_preinst's unset,
@@ -35,8 +39,9 @@ src_install() {
 
 	newenvd - 95${PN} <<-EOF
 		PATH="${EPREFIX}/etc/eselect/wine/bin"
-		MANPATH="${EPREFIX}/etc/eselect/wine/share/man"
-		XDG_DATA_DIRS="${EPREFIX}/etc/eselect/wine/share"
+		MANPATH="${EPREFIX}/etc/eselect/wine/share/man"\
+		$(usev xdg "
+		XDG_DATA_DIRS=\"${EPREFIX}/etc/eselect/wine/share\"")
 	EOF
 
 	# links for building, e.g. wineasio (bug #657748)
