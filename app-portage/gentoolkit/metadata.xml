@@ -5,6 +5,7 @@
     <email>tools-portage@gentoo.org</email>
     <name>Gentoo Portage tools team</name>
   </maintainer>
+  <stabilize-allarches/>
   <longdescription>
   Gentoolkit is a collection of useful adminstration scripts particular to
   the Gentoo Linux distribution. It contains rough drafts and
