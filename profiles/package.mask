@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2022-12-03)
+# Obsolete slot without reverse dependencies. Use a newer net-ssh
+# slot instead. Masked for removal in 30 days.
+dev-ruby/net-ssh:5
+
+# Hans de Graaff <graaff@gentoo.org> (2022-12-03)
 # ruby27-only packages. No recent releases. No reverse dependencies
 # anymore. Maksed for removal in 30 days.
 dev-ruby/rspec-retry
