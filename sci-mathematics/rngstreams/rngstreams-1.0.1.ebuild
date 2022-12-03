@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,8 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 my_src_configure() {
-	econf --enable-shared --disable-static
+	# bash for bug #818532
+	CONFIG_SHELL="${BROOT}"/bin/bash econf --enable-shared --disable-static
 }
 
 my_src_install_all() {
