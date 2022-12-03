@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/875557
+https://github.com/OpenRC/openrc/issues/548
+https://github.com/OpenRC/openrc/commit/9380347f042f7d294317f4420b648422817eb75a
+
+From 9380347f042f7d294317f4420b648422817eb75a Mon Sep 17 00:00:00 2001
+From: Stefan Linke <particleflux@gmail.com>
+Date: Wed, 7 Sep 2022 17:18:09 +0200
+Subject: [PATCH] Avoid warning on grep 3.8 in hwclock
+
+Starting with grep version 3.8, the hwclock init script logs warnings
+about stray backslashes:
+
+> hwclock | * Setting system clock using the hardware clock [UTC] ...
+> hwclock |grep: warning: stray \ before -
+> hwclock |grep: warning: stray \ before -
+
+This is caused by the check for existence of the `--noadjfile` argument
+in function `get_noadjfile()`.
+
+Replacing the affected logic with an explicit argument denoting the
+pattern as such resolves the issue.
+
+Fixes #548
+--- a/init.d/hwclock.in
++++ b/init.d/hwclock.in
+@@ -72,7 +72,7 @@ get_noadjfile()
+ {
+ 	if ! yesno $clock_adjfile; then
+ 		# Some implementations don't handle adjustments
+-		if LC_ALL=C hwclock --help 2>&1 | grep -q "\-\-noadjfile"; then
++		if LC_ALL=C hwclock --help 2>&1 | grep -q -e "--noadjfile"; then
+ 			echo --noadjfile
+ 		fi
+ 	fi
+

@@ -55,10 +55,14 @@ RDEPEND="${COMMON_DEPEND}
 
 PDEPEND="netifrc? ( net-misc/netifrc )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-grep-3.8.patch
+)
+
 src_configure() {
 	local emesonargs=(
-	$(meson_feature audit)
-	"-Dbranding=\"Gentoo Linux\""
+		$(meson_feature audit)
+		"-Dbranding=\"Gentoo Linux\""
 		$(meson_use newnet)
 		-Dos=Linux
 		$(meson_use pam)
