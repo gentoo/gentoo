@@ -22,14 +22,14 @@ RDEPEND="
 
 src_install() {
 	if use flex; then
-		dosym flex /bin/lex
+		dosym flex /usr/bin/lex
 		newman - lex.1 <<<".so flex.1"
 
 		newenvd - 90lex <<-EOF
 			LEX=flex
 		EOF
 	elif use reflex; then
-		dosym reflex /bin/lex
+		dosym reflex /usr/bin/lex
 		newman - lex.1 <<<".so reflex.1"
 
 		newenvd - 90lex <<-EOF
