@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/874729
+https://src.fedoraproject.org/rpms/dia/blob/0a14169fc36b959598074065678e0126830317f8/f/dia-configure-c99.patch
+
+C99 removes support for implicit ints, so declare the return type
+of main explicitly.  Future compilers are likely to require explicit
+type declarations.
+
+Upstream has switched to Meson, and it does not seem to use this
+particular check anymore.
+
+--- a/configure.in
++++ b/configure.in
+@@ -197,7 +197,7 @@ if test "$png_ok" = yes; then
+                   png_structp pp;
+ 		  png_infop info; 
+ 		  png_colorp cmap; 
+-		  main() { void*foo = png_create_read_struct; }],
++		  int main(void) { void*foo = png_create_read_struct; }],
+                  png_ok=yes,
+                  png_ok=no)
+   LDFLAGS="${old_LDFLAGS}"
+
