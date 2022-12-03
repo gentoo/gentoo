@@ -26,6 +26,9 @@ src_install() {
 	local root_prefix=
 	use split-usr && root_prefix=../../bin/
 
+	# We could consider setting AWK=... like we do for yacc & lex,
+	# but it would need some testing with a fair amount of packages first,
+	# as autoconf prefers gawk.
 	if use busybox; then
 		dosym "${root_prefix}busybox" /usr/bin/awk
 		newman - awk.1 <<<".so busybox.1"
