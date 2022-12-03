@@ -6,8 +6,8 @@ EAPI=7
 inherit out-of-source
 
 DESCRIPTION="Multiple independent streams of pseudo-random numbers"
-HOMEPAGE="http://statmath.wu.ac.at/software/RngStreams/"
-SRC_URI="http://statmath.wu.ac.at/software/RngStreams/${P}.tar.gz"
+HOMEPAGE="https://statmath.wu.ac.at/software/RngStreams/"
+SRC_URI="https://statmath.wu.ac.at/software/RngStreams/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
