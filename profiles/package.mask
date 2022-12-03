@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-12-03)
+# ruby27-only packages. No recent releases. No reverse dependencies
+# anymore. Maksed for removal in 30 days.
+dev-ruby/rspec-retry
+
 # Oz Tiram <oz.tiram@gmail.com> (2022-12-03)
 # Mate-desktop no longer supports gtk+:2, so there is
 # no need for this package. Removal on 2023-01-03.
