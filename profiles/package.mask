@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Oz Tiram <oz.tiram@gmail.com> (2022-12-03)
+# Mate-desktop no longer supports gtk+:2, so there is
+# no need for this package. Removal on 2023-01-03.
+x11-themes/mate-themes-meta
+
 # Hans de Graaff <graaff@gentoo.org> (2022-12-02)
 # Old cucumber slots and dependencies for already removed
 # cucumber-3. These have no value as standalone packages.
