@@ -14,7 +14,7 @@ inherit ${SCM} toolchain-funcs java-pkg-opt-2
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
-	KEYWORDS="amd64 ~arm"
+	KEYWORDS="amd64 ~arm ~arm64"
 	SRC_URI="https://github.com/occipital/OpenNI2/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${P/_/-}"
 fi
@@ -42,6 +42,8 @@ PATCHES=(
 	"${FILESDIR}/soname.patch"
 	"${FILESDIR}/pthread.patch"
 	"${FILESDIR}/c++14.patch"
+	"${FILESDIR}/build_on_arm64_and_ppc.patch"
+	"${FILESDIR}/build_on_arm64_and_ppc_PS1200Device.cpp.patch"
 )
 
 src_prepare() {
