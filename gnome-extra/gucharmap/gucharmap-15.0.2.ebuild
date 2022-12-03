@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+PYTHON_COMPAT=( python3_{8..11} )
 
-inherit gnome2-utils meson vala xdg
+inherit gnome2-utils meson python-any-r1 vala xdg
 
 DESCRIPTION="Unicode character map viewer and library"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gucharmap"
@@ -27,6 +28,7 @@ RDEPEND="media-libs/freetype:2
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	${PYTHON_DEPS}
 	app-text/docbook-xml-dtd:4.1.2
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
