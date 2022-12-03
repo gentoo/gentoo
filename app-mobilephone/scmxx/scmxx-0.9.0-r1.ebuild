@@ -1,7 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
+inherit autotools
 
 DESCRIPTION="Exchange data with Siemens phones"
 HOMEPAGE="http://www.hendrik-sattler.de/scmxx/"
@@ -13,8 +15,15 @@ KEYWORDS="~amd64 x86"
 IUSE="bluetooth nls"
 
 RDEPEND="bluetooth? ( net-wireless/bluez )"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )"
+
+src_prepare() {
+	default
+
+	# Clang 16
+	eautoreconf
+}
 
 src_install() {
 	default
