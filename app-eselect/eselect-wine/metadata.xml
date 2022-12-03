@@ -7,7 +7,10 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<use>
-		<flag name="xdg">Make use of XDG_DATA_DIRS to provide desktop entries</flag>
+		<flag name="xdg">
+			Set XDG_DATA_DIRS to use the selected wine.desktop,
+			allows e.g. 'xdg-open my.exe' for file managers
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="gentoo">proj/eselect-wine</remote-id>
