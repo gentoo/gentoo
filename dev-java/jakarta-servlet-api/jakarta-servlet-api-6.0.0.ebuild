@@ -19,7 +19,7 @@ SRC_URI="https://github.com/jakartaee/servlet/archive/${PV}-RELEASE.tar.gz -> ${
 
 LICENSE="EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="6"
-KEYWORDS="amd64 ~arm arm64 ppc64"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-11:*"
