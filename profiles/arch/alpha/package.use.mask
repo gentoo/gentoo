@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2022-12-03)
+# Keyworded here.
+app-alternatives/vi -vile -xvile
+
 # matoro <matoro_gentoo@matoro.tk> (2022-09-22)
 # Unable to test due to mask, bug #763963
 net-misc/openntpd constraints

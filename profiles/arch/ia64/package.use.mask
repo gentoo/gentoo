@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2022-12-03)
+# Keyworded here.
+app-alternatives/vi -vile -xvile
+
 # Sam James <sam@gentoo.org> (2022-12-02)
 # Unkeyworded dependencies
 app-alternatives/bc gh

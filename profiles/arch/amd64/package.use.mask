@@ -20,6 +20,7 @@
 # Michał Górny <mgorny@gentoo.org> (2022-12-01)
 # Keyworded here.
 app-alternatives/awk -nawk
+app-alternatives/vi -elvis -nvim -pyvim -vile -vis -xvile
 
 # Guillermo Joandet <gjoandet@gmail.com> (2022-11-22)
 # app-text/pandoc is keyworded on this architecture
