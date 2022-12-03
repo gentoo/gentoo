@@ -29,9 +29,13 @@ src_install() {
 		dosym yacc.bison /usr/bin/yacc
 		newman - yacc.1 <<<".so yacc.bison.1"
 
-		newenvd - 90yacc <<-EOF
-			YACC=yacc.bison
-		EOF
+		# Leaving this for now to be safe, as it's closer to pre-alternatives
+		# status quo to leave it unset and let autoconf probe for Bison by itself
+		# as it prefers it anyway, and might be a CPP-like situation wrt
+		# calling bison or bison -y if YACC is set.
+		#newenvd - 90yacc <<-EOF
+		#	YACC=yacc.bison
+		#EOF
 	elif use byacc; then
 		dosym byacc /usr/bin/yacc
 		newman - yacc.1 <<<".so byacc.1"
