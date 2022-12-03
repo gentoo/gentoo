@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-12-03)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+www-client/chromium:0/dev
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-12-03)
 # No purpose anymore after <dev-libs/boost-1.80 cleanup.
 # Removal on 2022-12-16
@@ -465,12 +471,6 @@ x11-drivers/xf86-video-nv
 # Mask RC versions for initial testing
 <dev-lang/php-8.2.0:8.2
 virtual/httpd-php:8.2
-
-# Stephan Hartmann <sultan@gentoo.org> (2022-09-29)
-# Dev channel releases are only for people who
-# are developers or want more experimental features
-# and accept a more unstable release.
->=www-client/chromium-108
 
 # John Helmert III <ajak@gentoo.org> (2022-09-18)
 # Unfixed root privilege escalation, bug #631552
