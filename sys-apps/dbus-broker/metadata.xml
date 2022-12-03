@@ -8,4 +8,7 @@
 	<use>
 		<flag name="launcher">dbus-daemon compatibility launcher</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">bus1/dbus-broker</remote-id>
+	</upstream>
 </pkgmetadata>
