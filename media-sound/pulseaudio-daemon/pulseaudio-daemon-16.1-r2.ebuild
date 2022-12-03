@@ -167,6 +167,7 @@ PATCHES=(
 	"${FILESDIR}"/pulseaudio-16.0-optional-module-console-kit.patch
 	"${FILESDIR}"/pulseaudio-16.1-module-combine-sink-load-crash.patch
 	"${FILESDIR}"/pulseaudio-16.1-module-combine-sink-unload-crash.patch
+	"${FILESDIR}"/pulseaudio-16.1-move-qpaeq-to-daemon.patch
 )
 
 src_prepare() {
