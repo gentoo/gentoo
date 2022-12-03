@@ -8,7 +8,7 @@ GO_OPTIONAL=1
 inherit autotools desktop flag-o-matic go-module python-single-r1 toolchain-funcs
 
 DESCRIPTION="A multiple large virtual desktop window manager derived from fvwm"
-HOMEPAGE="http://www.fvwm.org/"
+HOMEPAGE="https://www.fvwm.org/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
