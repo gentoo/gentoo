@@ -210,8 +210,10 @@ _old_layout_cleanup() {
 pkg_postinst() {
 	# check for old module layout before doing anything else.
 	# only attempt layout cleanup if new .ko location is used.
-	[[ -f "${EROOT}/lib/modules/${KV_FULL}/extra/zfs.ko" ]] && _old_layout_cleanup
-
+	local newko=( "${EROOT}/lib/modules/${KV_FULL}/extra"/{zfs,spl}.ko* )
+	# we check first array member, if glob above did not exand, it will be "zfs.ko*" and -f will return false.
+	# if glob expanded -f will do correct file precense check.
+	[[ -f ${newko[0]} ]] && _old_layout_cleanup
 	linux-mod_pkg_postinst
 
 	if [[ -z ${ROOT} ]] && use dist-kernel; then
