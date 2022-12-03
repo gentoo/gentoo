@@ -21,7 +21,10 @@ DEPEND="dev-libs/libpcre
 	x11-wm/windowmaker"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-ar.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-ar.patch
+	"${FILESDIR}"/${P}-configure-clang16.patch
+)
 
 src_prepare() {
 	default
