@@ -33,7 +33,7 @@ src_install() {
 
 	keepdir /etc/eselect/wine
 
-	newenvd - 60${PN} <<-EOF
+	newenvd - 95${PN} <<-EOF
 		PATH="${EPREFIX}/etc/eselect/wine/bin"
 		MANPATH="${EPREFIX}/etc/eselect/wine/share/man"
 		XDG_DATA_DIRS="${EPREFIX}/etc/eselect/wine/share"
