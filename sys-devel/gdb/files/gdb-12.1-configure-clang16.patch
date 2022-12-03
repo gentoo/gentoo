@@ -1,0 +1,112 @@
+https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=0075c53724f78c78aa1692cc8e3bf1433eeb0b9f
+https://gcc.gnu.org/git/?p=gcc.git;a=commitdiff;h=885b6660c17fb91980b5682514ef54668e544b02
+https://bugzilla.redhat.com/show_bug.cgi?id=2143992
+
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Keith Seitz <keiths@redhat.com>
+Date: Tue, 29 Nov 2022 13:43:34 -0800
+Subject: gdb-rhbz2143992-libiberty-fix-c89isms-in-configure.patch
+
+;; libiberty: Fix C89-isms in configure tests
+;; (Florian Weimer, RHBZ 2143992)
+
+    libiberty/
+
+            * acinclude.m4 (ac_cv_func_strncmp_works): Add missing
+            int return type and parameter list to the definition of main.
+            Include <stdlib.h> and <string.h> for prototypes.
+            (ac_cv_c_stack_direction): Add missing
+            int return type and parameter list to the definitions of
+            main, find_stack_direction.  Include <stdlib.h> for exit
+            prototype.
+            * configure: Regenerate.
+
+--- a/libiberty/acinclude.m4
++++ b/libiberty/acinclude.m4
+@@ -24,6 +24,8 @@ AC_CACHE_CHECK([for working strncmp], ac_cv_func_strncmp_works,
+ [AC_TRY_RUN([
+ /* Test by Jim Wilson and Kaveh Ghazi.
+    Check whether strncmp reads past the end of its string parameters. */
++#include <stdlib.h>
++#include <string.h>
+ #include <sys/types.h>
+ 
+ #ifdef HAVE_FCNTL_H
+@@ -51,7 +53,8 @@ AC_CACHE_CHECK([for working strncmp], ac_cv_func_strncmp_works,
+ 
+ #define MAP_LEN 0x10000
+ 
+-main ()
++int
++main (void)
+ {
+ #if defined(HAVE_MMAP) || defined(HAVE_MMAP_ANYWHERE)
+   char *p;
+@@ -157,7 +160,10 @@ if test $ac_cv_os_cray = yes; then
+ fi
+ 
+ AC_CACHE_CHECK(stack direction for C alloca, ac_cv_c_stack_direction,
+-[AC_TRY_RUN([find_stack_direction ()
++[AC_TRY_RUN([#include <stdlib.h>
++
++int
++find_stack_direction (void)
+ {
+   static char *addr = 0;
+   auto char dummy;
+@@ -169,7 +175,9 @@ AC_CACHE_CHECK(stack direction for C alloca, ac_cv_c_stack_direction,
+   else
+     return (&dummy > addr) ? 1 : -1;
+ }
+-main ()
++
++int
++main (void)
+ {
+   exit (find_stack_direction() < 0);
+ }],
+--- a/libiberty/configure
++++ b/libiberty/configure
+@@ -6918,7 +6918,10 @@ else
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+-find_stack_direction ()
++#include <stdlib.h>
++
++int
++find_stack_direction (void)
+ {
+   static char *addr = 0;
+   auto char dummy;
+@@ -6930,7 +6933,9 @@ find_stack_direction ()
+   else
+     return (&dummy > addr) ? 1 : -1;
+ }
+-main ()
++
++int
++main (void)
+ {
+   exit (find_stack_direction() < 0);
+ }
+@@ -7755,6 +7760,8 @@ else
+ 
+ /* Test by Jim Wilson and Kaveh Ghazi.
+    Check whether strncmp reads past the end of its string parameters. */
++#include <stdlib.h>
++#include <string.h>
+ #include <sys/types.h>
+ 
+ #ifdef HAVE_FCNTL_H
+@@ -7782,7 +7789,8 @@ else
+ 
+ #define MAP_LEN 0x10000
+ 
+-main ()
++int
++main (void)
+ {
+ #if defined(HAVE_MMAP) || defined(HAVE_MMAP_ANYWHERE)
+   char *p;
+
