@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_P=${PN/f/F}-$(ver_rs 4 '-')
 inherit autotools flag-o-matic
@@ -9,7 +9,7 @@ inherit autotools flag-o-matic
 DESCRIPTION="Relational database offering many ANSI SQL:2003 and some SQL:2008 features"
 HOMEPAGE="https://www.firebirdsql.org/"
 SRC_URI="
-	https://github.com/FirebirdSQL/firebird/releases/download/R$(ver_rs 1-3 '_' $(ver_cut 1-3))/${MY_P}.tar.bz2
+	https://github.com/FirebirdSQL/firebird/releases/download/v$(ver_cut 1-3)/${MY_P}.tar.bz2
 	doc? ( ftp://ftpc.inprise.com/pub/interbase/techpubs/ib_b60_doc.zip )
 "
 S="${WORKDIR}/${MY_P}"
@@ -19,8 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples +server xinetd"
 
+# FIXME: btyacc?
 BDEPEND="
-	>=dev-util/btyacc-3.0-r2
 	doc? ( app-arch/unzip )
 "
 # FIXME: cloop?
@@ -38,8 +38,9 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.2.32703.0-unbundle.patch
-	"${FILESDIR}"/${PN}-3.0.2.32703.0-cloop-compiler.patch
+	"${FILESDIR}"/${PN}-3.0.10.33601.0-unbundle.patch
+	"${FILESDIR}"/${P}-configure-autoconf2.72.patch
+	"${FILESDIR}"/${P}-configure-clang16.patch
 )
 
 pkg_pretend() {
@@ -84,12 +85,17 @@ src_prepare() {
 		src/msgs/messages2.sql | wc -l)" "6" "src/msgs/messages2.sql" # 6 lines
 
 	find . -name \*.sh -exec chmod +x {} + || die
-	rm -r extern/{btyacc,editline,icu} || die
+	# TODO: unbundle btyacc again
+	# https://github.com/FirebirdSQL/firebird/commit/9aab6ed8cc6872e2ebc6bfa2531e089cb96e8305#diff-a01303d63fcb967bea34359c3c7f79e4356d6549ab22a1a9190e8020c0b33a3d
+	# breaks usage of system copy.
+	rm -r extern/{editline,icu} || die
 
 	eautoreconf
 }
 
 src_configure() {
+	tc-export PKG_CONFIG
+
 	filter-flags -fprefetch-loop-arrays
 	filter-mfpmath sse
 
@@ -121,6 +127,7 @@ src_configure() {
 		--with-fbplugins=/usr/$(get_libdir)/${PN}/plugins
 		--with-gnu-ld
 	)
+
 	econf "${myeconfargs[@]}"
 }
 
@@ -224,5 +231,5 @@ src_install() {
 	elog "Starting with version 3, server mode is set in firebird.conf"
 	elog "The default setting is superserver."
 	elog
-	elog "If you're using UDFs, please remember to move them to /usr/$(get_libdir)/firebird/UDF"
+	elog "If you're using UDFs, please remember to move them to ${EPREFIX}/usr/$(get_libdir)/firebird/UDF"
 }
