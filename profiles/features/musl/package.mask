@@ -109,6 +109,7 @@ app-arch/rar
 app-backup/tsm
 app-benchmarks/geekbench
 app-crypt/rainbowcrack
+app-editors/sublime-text
 app-editors/vscode
 app-editors/vscodium
 app-emulation/crossover-bin

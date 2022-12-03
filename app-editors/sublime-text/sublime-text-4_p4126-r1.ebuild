@@ -23,6 +23,7 @@ RESTRICT="bindist mirror strip"
 
 RDEPEND="
 	dev-libs/glib:2
+	sys-libs/glibc
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	dbus? ( sys-apps/dbus )"
