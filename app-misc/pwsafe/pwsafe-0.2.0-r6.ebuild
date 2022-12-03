@@ -1,7 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit autotools
 
 DESCRIPTION="A Password Safe compatible command-line password manager"
 HOMEPAGE="https://github.com/nsd20463/pwsafe"
@@ -10,12 +12,12 @@ SRC_URI="https://web.archive.org/web/20171006105548if_/http://nsd.dyndns.org/pws
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-
 IUSE="X readline"
 
-DEPEND="sys-libs/ncurses:0=
-	dev-libs/openssl:0=
-	readline? ( sys-libs/readline:0= )
+DEPEND="
+	dev-libs/openssl:=
+	sys-libs/ncurses:=
+	readline? ( sys-libs/readline:= )
 	X? (
 		x11-libs/libSM
 		x11-libs/libICE
@@ -31,7 +33,10 @@ src_prepare() {
 	eapply -p0 "${FILESDIR}/${P}-fake-readline.patch"
 	eapply -p0 "${FILESDIR}/${P}-man-page-option-syntax.patch"
 	eapply -p0 "${FILESDIR}/${P}-XChangeProperty.patch"
+	eapply "${FILESDIR}/${P}-modern-autoconf-automake.patch"
 	eapply_user
+	# Clang 16
+	eautoreconf
 }
 
 src_configure() {
