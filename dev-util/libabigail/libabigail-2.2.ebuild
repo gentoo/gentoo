@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	doc? (
-		app-doc/doxygen
+		app-doc/doxygen[dot]
 		dev-python/sphinx
 		sys-apps/texinfo
 	)
