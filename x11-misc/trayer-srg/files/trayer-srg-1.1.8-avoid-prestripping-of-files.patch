@@ -1,20 +1,9 @@
-From 5414b1b6f89238d60e160f580ee36505b0988447 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Pascal=20J=C3=A4ger?= <pascal.jaeger@leimstift.de>
 Date: Sat, 3 Dec 2022 17:24:58 +0100
 Subject: [PATCH] avoid prestripping of files
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
 
 Bug: https://bugs.gentoo.org/837260
 
 Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
----
- Makefile | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/Makefile b/Makefile
-index d530e25..380b46f 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -20,9 +20,9 @@ endif
