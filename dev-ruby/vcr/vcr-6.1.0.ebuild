@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/vcr/vcr/"
 SRC_URI="https://github.com/vcr/vcr/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
 SLOT="$(ver_cut 1)"
 IUSE="json test"
 
