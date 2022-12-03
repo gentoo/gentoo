@@ -429,13 +429,6 @@ dev-python/watchgod
 # Removal on 2022-11-30. Bug #871216, #876382.
 media-gfx/peps
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2022-10-29)
-# Last upstream commit in 2016, no tests, implements functions
-# which are implemented by pathlib Python module. No reverse
-# dependencies in gentoo tree for a long time.
-# Removal: 2022-11-28.  Bug #878733.
-dev-python/pathtools
-
 # Sam James <sam@gentoo.org> (2022-10-28)
 # Please upgrade to >=media-libs/fontconfig-2.14.1-r1 for fixed
 # cache dir to avoid sandbox violation errors, bug #878471.
