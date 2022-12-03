@@ -1,21 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 MY_P="hfsplus_${PV}"
 
 DESCRIPTION="HFS+ Filesystem Access Utilities (a PPC filesystem)"
 HOMEPAGE="http://penguinppc.org/historical/hfsplus/"
 SRC_URI="http://penguinppc.org/historical/hfsplus/${MY_P}.src.tar.bz2"
+S="${WORKDIR}/hfsplus-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ppc ppc64 x86"
-
-S="${WORKDIR}/hfsplus-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-glob.patch
@@ -31,18 +30,20 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# let's avoid the Makefile.cvs since isn't working for us
-	mv configure.{in,ac} || die
+	# let's avoid the Makefile.cvs since it isn't working for us
 	eautoreconf
 }
 
 src_configure() {
-	econf --disable-static
+	# brittle codebase with lots of type punning, breaks LTO (#863902)
+	append-cflags -fno-strict-aliasing
+
+	default
 }
 
 src_install() {
 	default
 	newman doc/man/hfsp.man hfsp.1
 
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
