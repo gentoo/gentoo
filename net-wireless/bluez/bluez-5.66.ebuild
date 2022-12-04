@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit autotools linux-info python-single-r1 readme.gentoo-r1 systemd udev multilib-minimal
+inherit autotools linux-info python-single-r1 systemd udev multilib-minimal #readme.gentoo-r1
 
 DESCRIPTION="Bluetooth Tools and System Daemons for Linux"
 HOMEPAGE="http://www.bluez.org"
