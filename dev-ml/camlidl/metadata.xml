@@ -5,4 +5,7 @@
 		<email>ml@gentoo.org</email>
 		<name>ML</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">xavierleroy/camlidl</remote-id>
+	</upstream>
 </pkgmetadata>
