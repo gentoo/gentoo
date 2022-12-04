@@ -18,7 +18,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libxml2
 	net-libs/libsoup:2.4
-	net-libs/webkit-gtk:4
+	net-libs/webkit-gtk:4[introspection?]
 	x11-libs/gtk+:3
 	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
 "
