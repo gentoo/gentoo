@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby25 ruby26 ruby27"
+USE_RUBY="ruby27"
 
-RUBY_FAKEGEM_RECIPE_TEST="rspec"
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_EXTRADOC="History.txt README.rdoc examples/*"
 
@@ -22,4 +22,6 @@ ruby_add_rdepend ">=dev-ruby/json-1.1.3:* >=dev-ruby/oauth-0.3.6"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/d' -e '/check_dependencies/ s:^:#:' Rakefile || die
+
+	sed -i -e 's/stub!/stub/ ; 250 s/pending/skip/' spec/rubytter_spec.rb || die
 }
