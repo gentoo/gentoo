@@ -328,6 +328,7 @@ src_prepare() {
 		"${FILESDIR}/chromium-107-system-zlib.patch"
 		"${FILESDIR}/chromium-108-EnumTable-crash.patch"
 		"${FILESDIR}/chromium-108-revert-GlobalMediaControlsCastStartStop.patch"
+		"${FILESDIR}/chromium-108-DocumentLoader-private.patch"
 		"${FILESDIR}/chromium-use-oauth2-client-switches-as-default.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 		"${FILESDIR}/chromium-cross-compile.patch"
