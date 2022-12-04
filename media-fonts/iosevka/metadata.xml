@@ -5,7 +5,4 @@
 		<email>matthew@gentoo.org</email>
 		<name>Matthew Smith</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="github">be5invis/iosevka</remote-id>
-	</upstream>
 </pkgmetadata>
