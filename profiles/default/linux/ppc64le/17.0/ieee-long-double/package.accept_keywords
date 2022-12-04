@@ -1,0 +1,6 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-04)
+# only gcc-12 provides ieee-long-double, which is not stable yet.
+=sys-devel/gcc-12* ~ppc64
