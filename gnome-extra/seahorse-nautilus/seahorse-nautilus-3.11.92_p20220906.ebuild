@@ -27,10 +27,7 @@ DEPEND="
 	>=x11-libs/libnotify-0.3:=
 	>=app-crypt/gnupg-1.4
 "
-# seahorse-nautilus was formerly part of seahorse-plugins
-RDEPEND="${DEPEND}
-	!app-crypt/seahorse-plugins[nautilus]
-"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
