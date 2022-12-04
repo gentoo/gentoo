@@ -38,6 +38,11 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	# https://gitlab.gnome.org/GNOME/libnma/-/issues/18
+	"${FILESDIR}/${PN}-1.10.4-path-eap-schema.patch"
+)
+
 src_prepare() {
 	default
 	use vala && vala_setup
