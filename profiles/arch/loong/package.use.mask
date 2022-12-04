@@ -1,6 +1,11 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-04)
+# dev-libs/boxfort is only supported on amd64, arm64, arm and x86 due to
+# inline asm, so we have no dev-libs/criterion
+app-admin/syslog-ng test
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-03)
 # Things requiring net-libs/gnome-online-accounts, which depends on
 # net-libs/webkit-gtk.
