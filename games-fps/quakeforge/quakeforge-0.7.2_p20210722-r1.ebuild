@@ -69,6 +69,7 @@ src_prepare() {
 
 src_configure() {
 	filter-lto #858755
+	unset YACC #884287
 
 	qf_client() {
 		echo $(usex client $(use_enable ${1}) --disable-${1})
