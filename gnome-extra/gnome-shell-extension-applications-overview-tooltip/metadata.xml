@@ -5,4 +5,7 @@
 		<email>pacho@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">RaphaelRochet/applications-overview-tooltip</remote-id>
+	</upstream>
 </pkgmetadata>
