@@ -5,4 +5,7 @@
 		<email>pacho@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">bjarosze/gnome-bluetooth-quick-connect</remote-id>
+	</upstream>
 </pkgmetadata>
