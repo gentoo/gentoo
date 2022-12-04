@@ -15,7 +15,7 @@ check_configuration() {
 		eerror "file. In /etc/proftpd you can find a sample configuration."
 		return 1
 	fi
-	/usr/sbin/proftpd -t &>/dev/null
+	/usr/sbin/proftpd -t >/dev/null 2>&1
 	if [ $? -ne 0 ] ; then
 		eerror "The ProFTPD configuration file /etc/proftpd/proftpd.conf is invalid! You have to"
 		eerror "fix your configuration in order to run the ProFTPD server. For more information"
