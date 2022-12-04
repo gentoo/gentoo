@@ -166,9 +166,9 @@ while [[ -r "${rundir}/${progname}.pid" ]]; do
 		if [[ -r core ]]; then
 			if [[ -n "${corerename+yes}" ]]; then
 				core_target="${core_pattern}"
-				core_target="${core_target//%h/$(hostname)}"
-				core_target="${core_target//%D/$(date +%Y%m%d)}"
-				core_target="${core_target//%T/$(date +%H%M%S)}"
+				core_target="${core_target//%h/"$(hostname)"}"
+				core_target="${core_target//%D/"$(date +%Y%m%d)"}"
+				core_target="${core_target//%T/"$(date +%H%M%S)"}"
 				mv core "${core_target}"
 				core_target=$(readlink -f "${core_target}")
 			else
