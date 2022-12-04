@@ -1,0 +1,5 @@
+# Copyright 2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# DT_RELR needs glibc-2.36
+<sys-libs/glibc-2.36
