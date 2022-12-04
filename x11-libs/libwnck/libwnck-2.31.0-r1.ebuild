@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic gnome2
+inherit gnome2
 
 DESCRIPTION="A window navigation construction kit"
 HOMEPAGE="https://www.gnome.org/"
