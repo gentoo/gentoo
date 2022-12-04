@@ -1,0 +1,185 @@
+From e515f4b6e25c971c47ab79e9cbdfa17119bbde23 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Wed, 9 Nov 2022 16:17:55 +0100
+Subject: [PATCH 1/2] hostname: Add '' around printed strings
+
+Otherwise we can't see whether the string is nul, or empty.
+---
+ plugins/hostname.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/plugins/hostname.c b/plugins/hostname.c
+index 1a9513adb..14b6450b5 100644
+--- a/plugins/hostname.c
++++ b/plugins/hostname.c
+@@ -128,7 +128,7 @@ static void property_changed(GDBusProxy *proxy, const char *name,
+ 
+ 			dbus_message_iter_get_basic(iter, &str);
+ 
+-			DBG("pretty hostname: %s", str);
++			DBG("pretty hostname: '%s'", str);
+ 
+ 			g_free(pretty_hostname);
+ 			pretty_hostname = g_strdup(str);
+@@ -146,7 +146,7 @@ static void property_changed(GDBusProxy *proxy, const char *name,
+ 
+ 			dbus_message_iter_get_basic(iter, &str);
+ 
+-			DBG("static hostname: %s", str);
++			DBG("static hostname: '%s'", str);
+ 
+ 			g_free(static_hostname);
+ 			static_hostname = g_strdup(str);
+@@ -165,7 +165,7 @@ static void property_changed(GDBusProxy *proxy, const char *name,
+ 
+ 			dbus_message_iter_get_basic(iter, &str);
+ 
+-			DBG("chassis: %s", str);
++			DBG("chassis: '%s'", str);
+ 
+ 			for (i = 0; chassis_table[i].chassis; i++) {
+ 				if (strcmp(chassis_table[i].chassis, str))
+-- 
+2.37.3
+
+
+From e2b2b1675f310023862319ea10ffd205a75cc0cb Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Wed, 9 Nov 2022 16:17:56 +0100
+Subject: [PATCH 2/2] hostname: Fallback to transient hostname
+
+After pretty hostname, and static hostname, also support transient
+hostname as a last resort before 'BlueZ X.XX'.
+
+This happens on Fedora's Workstation installation as it calls
+"hostnamectl set-hostname" on startup. In Fedora Silverblue, the default
+hostname is set as fedora in /etc/os-release.
+
+In both cases, we should fall back to that transient hostname, as bad as
+it could be.
+
+Note that the transient hostname needs to be monitored through the
+kernel directly, as explained in:
+https://www.freedesktop.org/software/systemd/man/org.freedesktop.hostname1.html
+---
+ plugins/hostname.c | 57 ++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 55 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/hostname.c b/plugins/hostname.c
+index 14b6450b5..51707f07d 100644
+--- a/plugins/hostname.c
++++ b/plugins/hostname.c
+@@ -16,6 +16,8 @@
+ #include <stdint.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <fcntl.h>
++#include <sys/utsname.h>
+ 
+ #include "lib/bluetooth.h"
+ #include "lib/sdp.h"
+@@ -44,8 +46,10 @@
+ static uint8_t major_class = MAJOR_CLASS_MISCELLANEOUS;
+ static uint8_t minor_class = MINOR_CLASS_UNCATEGORIZED;
+ 
+-static char *pretty_hostname = NULL;
+-static char *static_hostname = NULL;
++static char *pretty_hostname    = NULL;
++static char *static_hostname    = NULL;
++static char *transient_hostname = NULL;
++static guint hostname_id = 0;
+ 
+ /*
+  * Fallback to static hostname only if empty pretty hostname was already
+@@ -60,6 +64,10 @@ static const char *get_hostname(void)
+ 		if (static_hostname &&
+ 				g_str_equal(static_hostname, "") == FALSE)
+ 			return static_hostname;
++
++		if (transient_hostname &&
++				g_str_equal(transient_hostname, "") == FALSE)
++			return transient_hostname;
+ 	}
+ 
+ 	return NULL;
+@@ -181,6 +189,32 @@ static void property_changed(GDBusProxy *proxy, const char *name,
+ 	}
+ }
+ 
++static void read_transient_hostname(void)
++{
++	struct utsname u;
++
++	if (uname(&u) != 0) {
++		g_free(transient_hostname);
++		transient_hostname = NULL;
++		DBG("failed to read transient hostname");
++		return;
++	}
++
++	g_free(transient_hostname);
++	transient_hostname = g_strdup(u.nodename);
++
++	DBG("read transient hostname: '%s'", transient_hostname);
++}
++
++static gboolean hostname_cb(GIOChannel *io, GIOCondition cond,
++							gpointer user_data)
++{
++	DBG("transient hostname changed");
++	read_transient_hostname();
++	adapter_foreach(update_class, NULL);
++	return TRUE;
++}
++
+ static int hostname_probe(struct btd_adapter *adapter)
+ {
+ 	DBG("");
+@@ -261,9 +295,11 @@ static GDBusProxy *hostname_proxy = NULL;
+ static int hostname_init(void)
+ {
+ 	DBusConnection *conn = btd_get_dbus_connection();
++	int fd;
+ 	int err;
+ 
+ 	read_dmi_fallback();
++	read_transient_hostname();
+ 
+ 	hostname_client = g_dbus_client_new(conn, "org.freedesktop.hostname1",
+ 						"/org/freedesktop/hostname1");
+@@ -289,6 +325,17 @@ static int hostname_init(void)
+ 		hostname_client = NULL;
+ 	}
+ 
++	fd = open("/proc/sys/kernel/hostname", O_RDONLY);
++	if (fd < 0) {
++		error("open(/proc/sys/kernel/hostname): %s (%d)",
++					strerror(errno), errno);
++	} else {
++		GIOChannel *io = g_io_channel_unix_new(fd);
++
++		hostname_id = g_io_add_watch(io, G_IO_ERR, hostname_cb, NULL);
++		g_io_channel_unref(io);
++	}
++
+ 	return err;
+ }
+ 
+@@ -306,8 +353,14 @@ static void hostname_exit(void)
+ 		hostname_client = NULL;
+ 	}
+ 
++	if (hostname_id != 0) {
++		g_source_remove(hostname_id);
++		hostname_id = 0;
++	}
++
+ 	g_free(pretty_hostname);
+ 	g_free(static_hostname);
++	g_free(transient_hostname);
+ }
+ 
+ BLUETOOTH_PLUGIN_DEFINE(hostname, VERSION, BLUETOOTH_PLUGIN_PRIORITY_DEFAULT,
+-- 
+2.37.3
+
