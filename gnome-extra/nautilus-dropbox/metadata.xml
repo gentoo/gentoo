@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">dropbox/nautilus-dropbox</remote-id>
+	</upstream>
 	<longdescription lang="en">
 		A extension of nautilus to display the sync state of an Dropbox folder and add a right click menu to mange files in the Dropbox folder.
 	</longdescription>
