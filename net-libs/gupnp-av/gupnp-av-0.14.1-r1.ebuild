@@ -26,11 +26,11 @@ BDEPEND="
 		dev-util/gtk-doc
 		app-text/docbook-xml-dtd:4.1.2
 	)
-	introspection? ( $(vala_depend) )
+	vala? ( $(vala_depend) )
 "
 
 src_prepare() {
-	use vala && vala_src_prepare
+	use vala && vala_setup
 	default
 }
 
