@@ -88,6 +88,6 @@ pkg_postinst() {
 	# ensure to preserve the symlinks before app-alternatives/yacc
 	# is installed
 	if [[ ! -h ${EROOT}/usr/bin/yacc ]]; then
-		ln -s yacc "${EROOT}/usr/bin/yacc.bison" || die
+		ln -s yacc.bison "${EROOT}/usr/bin/yacc" || die
 	fi
 }
