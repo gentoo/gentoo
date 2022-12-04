@@ -5,4 +5,7 @@
 		<email>pacho@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">neffo/bing-wallpaper-gnome-extension</remote-id>
+	</upstream>
 </pkgmetadata>
