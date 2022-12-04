@@ -9,4 +9,7 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">NVIDIA/cudnn-frontend</remote-id>
+	</upstream>
 </pkgmetadata>
