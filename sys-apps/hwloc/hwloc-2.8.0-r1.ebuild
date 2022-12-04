@@ -3,12 +3,13 @@
 
 EAPI=8
 
-inherit autotools bash-completion-r1 cuda flag-o-matic systemd toolchain-funcs multilib-minimal
+inherit autotools bash-completion-r1 cuda desktop flag-o-matic systemd toolchain-funcs multilib-minimal
 
 MY_PV="v$(ver_cut 1-2)"
 DESCRIPTION="Displays the hardware topology in convenient formats"
 HOMEPAGE="https://www.open-mpi.org/projects/hwloc/"
-SRC_URI="https://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2"
+SRC_URI="https://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2
+	https://raw.githubusercontent.com/open-mpi/hwloc/master/contrib/android/assets/lstopo.png"
 
 LICENSE="BSD"
 SLOT="0/15"
@@ -107,4 +108,5 @@ multilib_src_install_all() {
 	bashcomp_alias hwloc-annotate lstopo{,-no-graphics}
 
 	find "${ED}" -name '*.la' -delete || die
+	doicon "${DISTDIR}/lstopo.png"
 }
