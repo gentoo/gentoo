@@ -31,7 +31,7 @@ RDEPEND="
 	>=gnome-extra/seahorse-nautilus-3.11.92_p20220906
 	>=media-fonts/fonts-meta-2
 	x11-themes/papirus-icon-theme
-	
+
 	bluetooth? ( >=gnome-extra/gnome-shell-extension-bluetooth-quick-connect-30 )
 	qt5? ( x11-themes/adwaita-qt )
 	webp? ( gui-libs/gdk-pixbuf-loader-webp )
