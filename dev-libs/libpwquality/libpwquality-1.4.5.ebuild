@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-inherit autotools pam python-r1 usr-ldscript
+inherit pam python-r1 usr-ldscript
 
 DESCRIPTION="Library for password quality checking and generating random passwords"
 HOMEPAGE="https://github.com/libpwquality/libpwquality"
@@ -36,9 +36,6 @@ src_prepare() {
 	# ensure pkgconfig files go in /usr
 	sed -e "s:\(pkgconfigdir *=\).*:\1 ${EPREFIX}/usr/$(get_libdir)/pkgconfig:" \
 		-i src/Makefile.{am,in} || die "sed failed"
-
-	# Needed for musl patch, drop on next release
-	eautoreconf
 
 	if use python ; then
 		# bug #830397
