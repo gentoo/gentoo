@@ -62,6 +62,7 @@ sys-devel/clang-runtime libcxx openmp
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-18)
 # net-libs/webkit-gtk is not available on loong yet.
 app-text/atril epub
+gnome-extra/evolution-data-server oauth
 mate-base/mate help
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-04)
