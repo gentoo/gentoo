@@ -259,6 +259,7 @@ ppc64		default/linux/ppc64le/17.0/systemd/merged-usr			stable
 ppc64		default/linux/ppc64le/17.0/developer				exp
 ppc64		default/linux/ppc64le/17.0/musl					dev
 ppc64		default/linux/ppc64le/17.0/musl/hardened			exp
+ppc64		default/linux/ppc64le/17.0/ieee-long-double			exp
 
 # RISC-V Profiles
 # @MAINTAINER: riscv@gentoo.org
