@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/882609
+https://github.com/WebKit/WebKit/pull/7036
+
+From b6b8028ff267470b593e5763b285283295d6e855 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Thu, 1 Dec 2022 14:30:55 -0600
+Subject: [PATCH] [GTK] Fix build failure in ClipboardGtk4.cpp
+ https://bugs.gentoo.org/882609
+
+Reviewed by Michael Catanzaro
+
+* Source/WebKit/UIProcess/gtk/ClipboardGtk4.cpp:
+---
+ Source/WebKit/UIProcess/gtk/ClipboardGtk4.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Source/WebKit/UIProcess/gtk/ClipboardGtk4.cpp b/Source/WebKit/UIProcess/gtk/ClipboardGtk4.cpp
+index 4fd9616c5f7f..c6faa02957c7 100644
+--- a/Source/WebKit/UIProcess/gtk/ClipboardGtk4.cpp
++++ b/Source/WebKit/UIProcess/gtk/ClipboardGtk4.cpp
+@@ -34,6 +34,7 @@
+ #include <WebCore/SharedBuffer.h>
+ #include <gtk/gtk.h>
+ #include <wtf/glib/GRefPtr.h>
++#include <wtf/glib/GUniquePtr.h>
+ 
+ namespace WebKit {
+ 
+-- 
+2.37.4
+
