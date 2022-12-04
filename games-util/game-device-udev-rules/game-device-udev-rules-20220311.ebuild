@@ -51,7 +51,7 @@ src_prepare() {
 	local SRC DEST EXTRA
 	for SRC in 60-steam-{input,vr}.rules; do
 		DEST=${SRC//steam/game}
-		EXTRA=${FILESDIR}/${DEST/./-${PV}.}
+		EXTRA=${FILESDIR}/${DEST/./-"${PV}".}
 
 		# Make changes in a copy.
 		cp -v "${SRC}" "${DEST}" || die
