@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Portable version of Joe's Own Editor"
 HOMEPAGE="http://www.mirbsd.org/jupp.htm"
-SRC_URI="http://www.mirbsd.org/MirOS/dist/${PN}/joe-${PV/_p/${PN}}.tgz"
+SRC_URI="http://www.mirbsd.org/MirOS/dist/${PN}/joe-${PV/_p/"${PN}"}.tgz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-1"
