@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2022-12-03)
+# ruby27-only packages with no other reverse dependencies.
+# Last releases in 2013 and 2015. Removal in 30 days.
+dev-ruby/textpow
+dev-ruby/ultraviolet
+
+# Hans de Graaff <graaff@gentoo.org> (2022-12-03)
 # Obsolete slot without reverse dependencies. Use a newer vcr
 # slot instead. Masked for removal in 30 days.
 dev-ruby/vcr:3
