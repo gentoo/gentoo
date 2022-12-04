@@ -5,4 +5,7 @@
 		<email>pacho@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">PRATAP-KUMAR/Control_Blur_Effect_On_Lock_Screen</remote-id>
+	</upstream>
 </pkgmetadata>
