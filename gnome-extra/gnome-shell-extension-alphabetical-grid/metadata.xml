@@ -5,4 +5,7 @@
 		<email>pacho@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">stuarthayhurst/alphabetical-grid-extension</remote-id>
+	</upstream>
 </pkgmetadata>
