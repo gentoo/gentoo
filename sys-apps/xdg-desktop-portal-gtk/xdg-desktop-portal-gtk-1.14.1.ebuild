@@ -25,6 +25,7 @@ BDEPEND="
 
 DEPEND="
 	dev-libs/glib:2
+	gnome-base/gsettings-desktop-schemas
 	media-libs/fontconfig
 	sys-apps/dbus
 	>=sys-apps/xdg-desktop-portal-1.14.0
