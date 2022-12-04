@@ -6,7 +6,7 @@ EAPI=8
 ASPELL_LANG="Italian"
 ASPELL_VERSION=6
 MY_PV="${PV#*.}"
-MY_P="${PN/aspell/aspell${ASPELL_VERSION}}-${PV%%.*}.${MY_PV//./-}"
+MY_P="${PN/aspell/aspell"${ASPELL_VERSION}"}-${PV%%.*}.${MY_PV//./-}"
 
 inherit aspell-dict-r1
 

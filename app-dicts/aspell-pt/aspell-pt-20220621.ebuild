@@ -6,8 +6,8 @@ EAPI=8
 ASPELL_LANG="Portuguese"
 ASPELL_VERSION=6
 MY_PN="${PN/-/.}"
-MY_P="${MY_PN/aspell/aspell${ASPELL_VERSION}}-${PV}"
-MY_S="${PN/aspell/aspell${ASPELL_VERSION}}-${PV}"
+MY_P="${MY_PN/aspell/aspell"${ASPELL_VERSION}"}-${PV}"
+MY_S="${PN/aspell/aspell"${ASPELL_VERSION}"}-${PV}"
 
 inherit aspell-dict-r1
 

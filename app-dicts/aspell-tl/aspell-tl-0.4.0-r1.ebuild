@@ -5,7 +5,7 @@ EAPI=8
 
 ASPELL_LANG="Tagalog"
 ASPELL_VERSION=6
-MY_P="${PN/aspell/aspell${ASPELL_VERSION}}-${PV%.*}-${PV##*.}"
+MY_P="${PN/aspell/aspell"${ASPELL_VERSION}"}-${PV%.*}-${PV##*.}"
 
 inherit aspell-dict-r1
 

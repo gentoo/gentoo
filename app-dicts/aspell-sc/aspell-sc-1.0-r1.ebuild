@@ -5,7 +5,7 @@ EAPI=8
 
 ASPELL_LANG="Sardinian"
 ASPELL_VERSION=5
-MY_P="${PN/aspell/aspell${ASPELL_VERSION}}-${PV}"
+MY_P="${PN/aspell/aspell"${ASPELL_VERSION}"}-${PV}"
 
 inherit aspell-dict-r1
 

@@ -5,7 +5,7 @@ EAPI=8
 
 ASPELL_LANG="Catalan"
 ASPELL_VERSION=6
-MY_PN="${PN/aspell/aspell${ASPELL_VERSION}}"
+MY_PN="${PN/aspell/aspell"${ASPELL_VERSION}"}"
 MY_P="${MY_PN}-${PV}"
 
 inherit aspell-dict-r1

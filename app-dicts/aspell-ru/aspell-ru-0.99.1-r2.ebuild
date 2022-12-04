@@ -6,7 +6,7 @@ EAPI=8
 ASPELL_LANG="Russian"
 ASPELL_VERSION=6
 MY_PV="$(ver_cut 1-2)f7-$(ver_cut 3)"
-MY_P="${PN/aspell/aspell${ASPELL_VERSION}}-${MY_PV}"
+MY_P="${PN/aspell/aspell"${ASPELL_VERSION}"}-${MY_PV}"
 
 inherit aspell-dict-r1
 
