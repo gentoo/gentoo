@@ -2,6 +2,33 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# The loong port of sys-boot/grub:2 isn't upstreamed yet.
+dev-util/ostree grub
+sys-libs/efivar test
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# sci-libs/adolc fails to build on loong for now.
+dev-cpp/eigen test
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# app-misc/tracker fails tests on loong.
+app-cdr/brasero tracker
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# dev-libs/libcdio fails to build on loong for now.
+gnome-base/gvfs cdda
+media-video/ffmpeg cdio
+media-video/mpv cdda
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# Respective dependency fails to build, pending investigation, mask for the
+# time being
+app-text/enchant voikko
+dev-cpp/libcmis man
+media-libs/opencv tesseract
+media-video/ffmpeg libilbc libtesseract
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # sys-auth/sssd isn't keyworded here yet
 app-admin/sudo sssd
 
