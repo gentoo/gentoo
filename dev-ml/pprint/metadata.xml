@@ -13,4 +13,7 @@
     while respecting the constraints imposed by the structure of the document
     and by the text width.
   </longdescription>
+  <upstream>
+    <remote-id type="github">fpottier/pprint</remote-id>
+  </upstream>
 </pkgmetadata>
