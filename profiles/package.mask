@@ -68,7 +68,7 @@ dev-ruby/vcr:3
 # Dev channel releases are only for people who
 # are developers or want more experimental features
 # and accept a more unstable release.
-www-client/chromium:0/dev
+>=www-client/chromium-110
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-12-03)
 # No purpose anymore after <dev-libs/boost-1.80 cleanup.
