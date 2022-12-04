@@ -5,4 +5,7 @@
 		<email>pacho@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="gitlab">pachoramos/pch-session</remote-id>
+	</upstream>
 </pkgmetadata>
