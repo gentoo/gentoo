@@ -1,6 +1,10 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# sys-auth/sssd isn't keyworded here yet
+app-admin/sudo sssd
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-04)
 # neither app-text/ronn or app-text/ronn-ng can be built with
 # RUBY_TARGETS=ruby30
