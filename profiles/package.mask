@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-12-03)
+# ruby27-only package with no reverse dependencies.
+# Last release in 2019. Removal in 30 days.
+dev-ruby/logue
+
 # Hans de Graaff <graaff@gentoo.org> (2022-12-04)
 # Obsolete slot without reverse dependencies. Use a newer
 # public_suffix slot instead. Masked for removal in 30 days.
