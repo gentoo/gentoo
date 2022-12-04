@@ -63,7 +63,7 @@ src_prepare() {
 		sed -i -e 's:@$(ZOPFLIPNG) -y "$<" "$@" 1> /dev/null 2>&1:@$(ZOPFLIPNG) -y "$<" "$@":g' Makefile || die
 
 		# Based on Fedora patch to allow graphicsmagick usage
-		if has_version -b media-gfx/graphicsmagick; then
+		if has_version -b media-gfx/graphicsmagick[png]; then
 			eapply "${FILESDIR}/${PN}-20190328-use-gm.patch"
 		fi
 	fi
