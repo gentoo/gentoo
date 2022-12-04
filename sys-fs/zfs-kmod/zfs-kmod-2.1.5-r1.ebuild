@@ -209,7 +209,7 @@ pkg_postinst() {
 		ewarn "Do *NOT* upgrade root pools to use the new feature flags."
 		ewarn "Any new pools will be created with the new feature flags by default"
 		ewarn "and will not be compatible with older versions of OpenZFS. To"
-		ewarn "create a newpool that is backward compatible wih GRUB2, use "
+		ewarn "create a new pool that is backward compatible wih GRUB2, use "
 		ewarn
 		ewarn "zpool create -o compatibility=grub2 ..."
 		ewarn
