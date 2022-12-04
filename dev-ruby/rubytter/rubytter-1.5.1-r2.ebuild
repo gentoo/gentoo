@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby27"
+USE_RUBY="ruby27 ruby30"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -23,5 +23,9 @@ ruby_add_rdepend ">=dev-ruby/json-1.1.3:* >=dev-ruby/oauth-0.3.6"
 all_ruby_prepare() {
 	sed -i -e '/bundler/d' -e '/check_dependencies/ s:^:#:' Rakefile || die
 
+	# Make specs work with rspec 3
 	sed -i -e 's/stub!/stub/ ; 250 s/pending/skip/' spec/rubytter_spec.rb || die
+
+	# Make specs work with ruby30
+	sed -i -e '27i{' -e '30i}' spec/rubytter/oauth_spec.rb || die
 }
