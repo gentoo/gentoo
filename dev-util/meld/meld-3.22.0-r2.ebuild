@@ -5,7 +5,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit gnome.org meson python-single-r1 xdg
+inherit gnome.org gnome2-utils meson python-single-r1 xdg
 
 DESCRIPTION="A graphical diff and merge tool"
 HOMEPAGE="http://meldmerge.org/"
@@ -64,11 +64,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
+	gnome2_schemas_update
 }
 
 pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
+	gnome2_schemas_update
 }
