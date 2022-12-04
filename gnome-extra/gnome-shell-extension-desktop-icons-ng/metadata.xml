@@ -5,4 +5,7 @@
 		<email>pacho@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="gitlab">rastersoft/desktop-icons-ng</remote-id>
+	</upstream>
 </pkgmetadata>
