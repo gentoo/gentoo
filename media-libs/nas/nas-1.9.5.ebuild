@@ -53,8 +53,10 @@ multilib_src_configure() {
 	pushd config || die
 	econf
 	popd || die
+
+	local cpp=($(get_abi_CHOST ${DEFAULT_ABI})-gcc $(get_abi_CFLAGS) -E) #884203
 	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
-		IMAKECPP="${IMAKECPP:-$(get_abi_CHOST ${DEFAULT_ABI})-gcc $(get_abi_CFLAGS) -E}" \
+		IMAKECPP="${IMAKECPP:-${cpp[*]}}" \
 		xmkmf -a || die
 }
 
