@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 MY_PN="NetworkManager"
-MY_P="${P/networkmanager/${MY_PN}}"
+MY_P="${P/networkmanager/"${MY_PN}"}"
 
 DESCRIPTION="NetworkManager StrongSwan plugin"
 HOMEPAGE="https://www.strongswan.org/"
