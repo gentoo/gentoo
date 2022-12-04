@@ -26,6 +26,10 @@ DEPEND="${RDEPEND}
 	vala? ( $(vala_depend) )
 "
 BDEPEND="
+	gtk-doc? (
+		dev-util/gtk-doc
+		app-text/docbook-xml-dtd:4.3
+	)
 	>=dev-util/gtk-doc-am-1.14
 	virtual/pkgconfig
 "
