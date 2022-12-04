@@ -1,4 +1,6 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
->=sys-devel/gcc-12.3 default-znow default-stack-clash-protection
+# Mike Gilbert <floppym@gentoo.org> (2022-08-30)
+# Mask split-usr.
+split-usr
