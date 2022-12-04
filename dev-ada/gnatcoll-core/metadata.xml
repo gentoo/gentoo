@@ -22,4 +22,7 @@
 		Several of the components are especially useful in enterprise
 		applications.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">AdaCore/gnatcoll-core</remote-id>
+	</upstream>
 </pkgmetadata>
