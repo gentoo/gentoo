@@ -35,6 +35,11 @@
 
 # Hans de Graaff <graaff@gentoo.org> (2022-12-04)
 # Obsolete slot without reverse dependencies. Use a newer
+# rspec-rails slot instead. Masked for removal in 30 days.
+dev-ruby/rspec-rails:4
+
+# Hans de Graaff <graaff@gentoo.org> (2022-12-04)
+# Obsolete slot without reverse dependencies. Use a newer
 # selenium-webdriver slot instead. Masked for removal in 30 days.
 dev-ruby/selenium-webdriver:3
 
