@@ -1,0 +1,22 @@
+diff --git a/src/main.cpp b/src/main.cpp
+index ebe0e62..8561fed 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -110,7 +110,7 @@ static void print_usage()
+     fprintf(stderr, "  -s scale             upscale ratio (can be 2, 3, 4. default=4)\n");
+     fprintf(stderr, "  -t tile-size         tile size (>=32/0=auto, default=0) can be 0,0,0 for multi-gpu\n");
+     fprintf(stderr, "  -m model-path        folder path to the pre-trained models. default=models\n");
+-    fprintf(stderr, "  -n model-name        model name (default=realesr-animevideov3, can be realesr-animevideov3 | realesrgan-x4plus | realesrgan-x4plus-anime | realesrnet-x4plus)\n");
++    fprintf(stderr, "  -n model-name        model name (default=realesrgan-x4plus, can be realesr-animevideov3 | realesrgan-x4plus | realesrgan-x4plus-anime | realesrnet-x4plus)\n");
+     fprintf(stderr, "  -g gpu-id            gpu device to use (default=auto) can be 0,1,2 for multi-gpu\n");
+     fprintf(stderr, "  -j load:proc:save    thread count for load/proc/save (default=1:2:2) can be 1:2,2,2:2 for multi-gpu\n");
+     fprintf(stderr, "  -x                   enable tta mode\n");
+@@ -439,7 +439,7 @@ int main(int argc, char** argv)
+     int scale = 4;
+     std::vector<int> tilesize;
+     path_t model = PATHSTR("models");
+-    path_t modelname = PATHSTR("realesr-animevideov3");
++    path_t modelname = PATHSTR("realesrgan-x4plus");
+     std::vector<int> gpuid;
+     int jobs_load = 1;
+     std::vector<int> jobs_proc;
