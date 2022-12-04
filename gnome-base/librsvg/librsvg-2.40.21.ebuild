@@ -3,9 +3,8 @@
 
 EAPI=7
 GNOME2_EAUTORECONF="yes"
-VALA_USE_DEPEND="vapigen"
 
-inherit autotools gnome2 multilib-minimal vala
+inherit gnome2 multilib-minimal vala
 
 DESCRIPTION="Scalable Vector Graphics (SVG) rendering library"
 HOMEPAGE="https://wiki.gnome.org/Projects/LibRsvg"
