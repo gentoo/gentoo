@@ -39,7 +39,7 @@ RDEPEND=">=net-libs/libsrtp-2.3.0:=
 		media-libs/speexdsp
 	)
 	ssl? (
-		dev-libs/openssl:0=
+		<dev-libs/openssl-3.0.0:0=
 	)
 "
 DEPEND="${RDEPEND}"
