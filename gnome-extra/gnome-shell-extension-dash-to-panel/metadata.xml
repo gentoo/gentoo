@@ -5,4 +5,7 @@
 		<email>pacho@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">home-sweet-gnome/dash-to-panel</remote-id>
+	</upstream>
 </pkgmetadata>
