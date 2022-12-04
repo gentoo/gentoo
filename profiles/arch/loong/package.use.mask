@@ -2,6 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-04)
+# neither app-text/ronn or app-text/ronn-ng can be built with
+# RUBY_TARGETS=ruby30
+app-accessibility/espeakup man
+app-accessibility/espeak-ng man
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-04)
 # dev-libs/boxfort is only supported on amd64, arm64, arm and x86 due to
 # inline asm, so we have no dev-libs/criterion
 app-admin/syslog-ng test
