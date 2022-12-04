@@ -4,4 +4,7 @@
 	<maintainer type="person">
 		<email>pacho@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="gnome-gitlab">World/gnome-firmware</remote-id>
+	</upstream>
 </pkgmetadata>
