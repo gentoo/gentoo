@@ -76,7 +76,7 @@ src_configure() {
 		$(meson_use gtk-doc gtk_doc)
 		$(meson_use introspection)
 		-Dman=true
-		$(meson use vala vapi)
+		$(meson_use vala vapi)
 	)
 	meson_src_configure
 }
