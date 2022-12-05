@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 arm64 ~loong ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc ppc64 ~riscv x86"
 
 RDEPEND="!sys-firmware/edk2-ovmf"
 
