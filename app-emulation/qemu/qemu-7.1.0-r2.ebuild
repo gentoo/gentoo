@@ -41,7 +41,7 @@ else
 	fi
 
 	S="${WORKDIR}/${MY_P}"
-	KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
