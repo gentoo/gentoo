@@ -20,7 +20,7 @@ SRC_URI="https://github.com/oauth-xx/oauth2/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend "
