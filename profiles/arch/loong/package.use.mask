@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# <dev-cpp/tbb-2021 fails to build on loong w/ gcc-13
+sci-libs/spqr tbb
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # in-tree version of sys-apps/flashrom (1.2) is outdated and cannot build
 # on loong
 sys-apps/fwupd flashrom
