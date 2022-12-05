@@ -12,7 +12,7 @@ LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos"
 IUSE="
-	default-compiler-rt default-libcxx default-lld llvm-libunwind
+	default-compiler-rt default-libcxx default-lld ieee-long-double llvm-libunwind
 	stricter
 "
 
@@ -87,6 +87,19 @@ src_install() {
 		@gentoo-runtimes.cfg
 		@gentoo-gcc-install.cfg
 	EOF
+
+	# needed until https://reviews.llvm.org/D117181#3266224 is done.
+	# silently drop support on musl even if enabled, it does not support it.
+	if use ppc64 && use ieee-long-double && ! use elibc_musl; then
+		newins - gentoo-ppc64le-ieeelongdouble.cfg <<-EOF
+			# This file forces 128bit long double on ppc64le systems.
+			-mabi=ieeelongdouble
+		EOF
+
+		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
+			@gentoo-ppc64le-ieeelongdouble.cfg
+		EOF
+	fi
 
 	if use stricter; then
 		newins - gentoo-stricter.cfg <<-EOF
