@@ -9,4 +9,7 @@
 		<flag name="duktape">Use <pkg>dev-lang/duktape</pkg> instead of <pkg>dev-lang/spidermonkey</pkg> as JavaScript engine</flag>
 		<flag name="systemd">Use <pkg>sys-apps/systemd</pkg> for session tracking</flag>
 	</use>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">polkit/polkit</remote-id>
+	</upstream>
 </pkgmetadata>
