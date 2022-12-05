@@ -22,7 +22,7 @@ if [[ ${PV} == 9999 ]]; then
 	"
 else
 	SRC_URI="mirror://gnu/poke/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 	REGEN_BDEPEND=""
 fi
 
