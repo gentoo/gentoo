@@ -17,4 +17,7 @@
     <email>mjo@gentoo.org</email>
     <name>Michael Orlitzky</name>
   </maintainer>
+  <upstream>
+    <remote-id type="gitlab">davical-project/awl</remote-id>
+  </upstream>
 </pkgmetadata>
