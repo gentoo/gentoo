@@ -13,4 +13,7 @@
 		complete set of Gtk+ widgets using the Object-Oriented features of
 		this language. GtkAda supports the latest 3.14 stable releases.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">AdaCore/gtkada</remote-id>
+	</upstream>
 </pkgmetadata>
