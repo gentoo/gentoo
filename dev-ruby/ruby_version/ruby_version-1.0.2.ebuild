@@ -14,5 +14,5 @@ HOMEPAGE="https://github.com/janlelis/ruby_version"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
