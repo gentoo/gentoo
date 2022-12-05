@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="First-Class interactive DataTable for Dash"
 HOMEPAGE="https://plot.ly/dash"
 SRC_URI="https://github.com/plotly/${PN}/archive/refs/tags/v${PV}.tar.gz
-	-> ${P}.tar.gz"
+	-> ${P}.gh.tar.gz"
 # Test execution depends on sci-visualization/dash being installed
 # but sci-visualization/dash depends on this
 RESTRICT="test"
