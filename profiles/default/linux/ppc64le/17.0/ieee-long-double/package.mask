@@ -2,5 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-04)
-# We need gcc-12 for ieee-long-double.
+# We only need versions that support ieee-long-double.
+<sys-devel/clang-common-15.0.5
 <sys-devel/gcc-12
