@@ -2,6 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# sys-boot/gnu-efi upstream hasn't merged the loong port yet
+sys-apps/fwupd uefi
+sys-apps/systemd gnuefi
+sys-apps/systemd-utils boot
+sys-kernel/installkernel-systemd-boot
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # The loong port of sys-boot/grub:2 isn't upstreamed yet.
 dev-util/ostree grub
 sys-libs/efivar test
