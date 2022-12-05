@@ -6,7 +6,7 @@ EAPI=8
 inherit java-pkg-2
 
 DESCRIPTION="sbt, a build tool for Scala"
-HOMEPAGE="https://scala-sbt.org"
+HOMEPAGE="https://www.scala-sbt.org/"
 SRC_URI="https://github.com/sbt/sbt/releases/download/v${PV}/${PN/-bin}-${PV}.tgz"
 
 LICENSE="BSD"
