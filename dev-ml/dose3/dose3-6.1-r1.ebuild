@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Library to perform analysis on package repositories"
 HOMEPAGE="http://www.mancoosi.org/software/ https://gforge.inria.fr/projects/dose"
-SRC_URI="https://gitlab.com/irill/${PN}/-/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://gitlab.com/irill/${PN}/-/archive/${PV}/${P}.tar.bz2"
 S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 
 LICENSE="LGPL-3"
