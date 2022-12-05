@@ -186,7 +186,6 @@ RDEPEND="
 	${MODULES_OPTIONAL_USE:+)}"
 DEPEND="${RDEPEND}
     ${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (}
-	sys-apps/sed
 	kernel_linux? ( virtual/linux-sources virtual/libelf )
 	${MODULES_OPTIONAL_USE:+)}"
 
