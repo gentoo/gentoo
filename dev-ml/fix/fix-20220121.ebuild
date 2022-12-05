@@ -7,7 +7,7 @@ inherit dune
 
 DESCRIPTION="Facilities for memoization and fixed points"
 HOMEPAGE="https://gitlab.inria.fr/fpottier/fix"
-SRC_URI="https://gitlab.inria.fr/fpottier/fix/-/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://gitlab.inria.fr/fpottier/fix/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0/${PV}"
