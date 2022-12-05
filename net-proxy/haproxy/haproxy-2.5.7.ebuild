@@ -6,7 +6,7 @@ EAPI="7"
 LUA_COMPAT=( lua5-3 )
 
 [[ ${PV} == *9999 ]] && SCM="git-r3"
-inherit toolchain-funcs flag-o-matic lua-single systemd linux-info ${SCM}
+inherit toolchain-funcs lua-single systemd linux-info ${SCM}
 
 MY_P="${PN}-${PV/_beta/-dev}"
 
