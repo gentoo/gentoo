@@ -410,6 +410,15 @@ multilib_src_configure() {
 	use vulkan-overlay && vulkan_layers+=",overlay"
 	emesonargs+=(-Dvulkan-layers=${vulkan_layers#,})
 
+	# In LLVM 16, we've switched to building LLVM with EH/RTTI disabled
+	# to match upstream defaults.  Mesa requires being built the same way.
+	# https://bugs.gentoo.org/883955
+	if [[ ${LLVM_SLOT} -ge 16 ]]; then
+		emesonargs+=(
+			-Dcpp_rtti=false
+		)
+	fi
+
 	emesonargs+=(
 		$(meson_use test build-tests)
 		-Dglx=$(usex X dri disabled)
