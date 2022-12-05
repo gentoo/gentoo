@@ -17,7 +17,7 @@ if [[ ${PV} == *9999* || -n "${EGIT_COMMIT}" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://www.seabios.org/downloads/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 arm64 ~loong ~m68k ~mips ~ppc ppc64 x86"
+	KEYWORDS="~alpha amd64 arm64 ~loong ~m68k ~mips ~ppc ppc64 x86"
 fi
 
 DESCRIPTION="Open Source implementation of a 16-bit x86 BIOS"
