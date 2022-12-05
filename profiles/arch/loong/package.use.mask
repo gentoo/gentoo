@@ -1,6 +1,15 @@
 # Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
+# dev-python/pyside2 not keyworded yet
+dev-python/QtPy pyside2
+dev-python/qtconsole test
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
+# dev-qt/qtwebengine:5 isn't available on loong.
+dev-python/QtPy webengine
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # app-arch/p7zip fails one test
 kde-apps/kdeutils-meta 7zip
@@ -78,6 +87,7 @@ dev-libs/boost -context
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-02)
 # dev-qt/qtlocation:5 fails to compile with gcc-13 for now.
 dev-python/PyQt5 location
+dev-python/QtPy test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-01)
 # sys-libs/libhugetlbfs isn't buildable here yet due to arch-specific code.
