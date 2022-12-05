@@ -27,7 +27,7 @@ QA_PRESTRIPPED="${QA_WX_LOAD}"
 QA_FLAGS_IGNORED="${QA_WX_LOAD}"
 
 # Don't strip it either; this binary reboots your host!
-RESTRICT="binchecks strip"
+RESTRICT="strip"
 
 src_prepare() {
 	default
@@ -46,6 +46,11 @@ src_prepare() {
 
 src_compile() {
 	emake CC="$(tc-getCC)"
+	# validate the size, it MUST fit into an MBR (440 bytes!)
+	size=$(stat --printf='%s' mbr)
+	if test $size -gt 440; then
+		die "Compiled MBR is too large! Must be at most 440 bytes, was $size"
+	fi
 }
 
 src_install() {

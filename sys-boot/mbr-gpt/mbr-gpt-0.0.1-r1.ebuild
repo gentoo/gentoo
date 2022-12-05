@@ -44,6 +44,11 @@ src_prepare() {
 
 src_compile() {
 	emake CC="$(tc-getCC)"
+	# validate the size, it MUST fit into an MBR (440 bytes!)
+	size=$(stat --printf='%s' mbr)
+	if test $size -gt 440; then
+		die "Compiled MBR is too large! Must be at most 440 bytes, was $size"
+	fi
 }
 
 src_install() {
