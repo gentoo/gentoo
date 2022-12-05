@@ -11,7 +11,7 @@ SRC_URI="https://download.libguestfs.org/libnbd/$(ver_cut 1-2)-stable/${P}.tar.g
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="fuse gnutls uri-support test"
 
 RESTRICT="!test? ( test )"
