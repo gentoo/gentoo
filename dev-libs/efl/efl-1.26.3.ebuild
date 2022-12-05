@@ -20,7 +20,7 @@ SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE="+X avif bmp connman cpu_flags_arm_neon dds debug drm +eet efl-one elogind examples fbcon
 	+fontconfig fribidi gif gnutls glib +gstreamer harfbuzz heif hyphen ibus ico
 	jpeg2k json nls mono opengl +pdf physics pmaps postscript psd pulseaudio raw scim
