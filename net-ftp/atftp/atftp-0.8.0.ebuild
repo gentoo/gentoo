@@ -38,6 +38,8 @@ src_prepare() {
 }
 
 src_configure() {
+	filter-lto # https://bugs.gentoo.org/876939
+
 	econf \
 		$(use_enable tcpd libwrap) \
 		$(use_enable readline libreadline) \
