@@ -5,6 +5,18 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<use>
+		<flag name="egrep-fgrep">
+			Install deprecated 'egrep' and 'fgrep' wrappers
+			for 'grep -E' and 'grep -F' respectively.
+
+			GNU grep 3.8 onwards warns about their usage by
+			default, but the versions installed by this flag do not.
+
+			No deprecation warnings are emitted when this
+			flag is enabled.
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnu:grep</remote-id>
 	</upstream>
