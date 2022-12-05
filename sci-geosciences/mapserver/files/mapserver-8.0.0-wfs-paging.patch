@@ -1,0 +1,12 @@
+diff --git a/maporaclespatial.c b/maporaclespatial.c
+index e7a50319e..5558f0231 100644
+--- a/maporaclespatial.c
++++ b/maporaclespatial.c
+@@ -2086,6 +2086,7 @@ int msOracleSpatialLayerWhichShapes( layerObj *layer, rectObj rect, int isQuery)
+     msFree(tmp1_str);
+ 
+     tmp_str = msStringConcatenate(tmp_str,  query_str2);
++    memset(query_str,0,strlen(query_str));
+     query_str = msStringConcatenate(query_str, tmp_str);
+     msFree(tmp_str);
+   }
