@@ -1,0 +1,32 @@
+From e176b676cff17948d68299c00dddefe41638c752 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Sun, 4 Dec 2022 22:19:20 +0100
+Subject: [PATCH] ICEmsg: Fix C++ interoperability error due to static_assert
+ define
+
+Commit 0269c687e954db7aca2a4344e32cb203315a00b6 added a static_assert helper
+that gets defined to blank if left undefined by assert.h.  As this is not a
+macro in other languages that use this header, this can lead to a compile-time
+error.
+
+Bug: https://bugs.gentoo.org/884369
+---
+ include/X11/ICE/ICEmsg.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/X11/ICE/ICEmsg.h b/include/X11/ICE/ICEmsg.h
+index b6bad13..13e1509 100644
+--- a/include/X11/ICE/ICEmsg.h
++++ b/include/X11/ICE/ICEmsg.h
+@@ -34,7 +34,7 @@ Author: Ralph Mor, X Consortium
+ #include <X11/ICE/ICEconn.h>
+ 
+ #include <assert.h>
+-#ifndef static_assert
++#if !defined(__cplusplus) && !defined(static_assert)
+ #define static_assert(cond, msg) /* skip for non-C11 compilers */
+ #endif
+ 
+-- 
+GitLab
+
