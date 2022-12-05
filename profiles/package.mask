@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2022-12-05)
+# ruby27-only package. No longer maintained upstream. Last release in 2017.
+# No reverse dependencies. Removal in 30 days.
+dev-ruby/hipchat
+
+# Hans de Graaff <graaff@gentoo.org> (2022-12-05)
 # This package has been subsumed into its only consumer:
 # dev-ruby/nio4r. It is no longer developed, and its last standalone
 # release was 11 years ago. Removal in 30 days.
