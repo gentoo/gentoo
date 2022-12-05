@@ -44,6 +44,27 @@ src_install() {
 	fi
 }
 
+pkg_preinst() {
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		# if we are upgrading from a new enough version, leftover manpage
+		# symlink cleanup was done already
+		if ver_test "${v}" -ge 3; then
+			return
+		fi
+	done
+
+	# otherwise, remove leftover files/symlinks created by eselect-awk (sic!)
+	shopt -s nullglob
+	local files=( "${EROOT}"/usr/share/man/man1/awk.1* )
+	shopt -u nullglob
+
+	if [[ ${files[@]} ]]; then
+		einfo "Cleaning up leftover manpage symlinks from eselect-awk ..."
+		rm -v "${files[@]}" || die
+	fi
+}
+
 pkg_postrm() {
 	# make sure we don't leave the user without the symlinks, since
 	# they've not been owned by any other package
