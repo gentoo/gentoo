@@ -1,0 +1,35 @@
+https://gitlab.gnome.org/GNOME/tracker-miners/-/merge_requests/423
+
+From f6ed245afd3c387bd347fa00e35e34e95b991da2 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Mon, 5 Dec 2022 19:13:21 -0500
+Subject: [PATCH] functional-tests: Run png-region-of-interest only if exempi
+ is found
+
+---
+ tests/functional-tests/meson.build | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/tests/functional-tests/meson.build b/tests/functional-tests/meson.build
+index ef4dcab65..c33b620f8 100644
+--- a/tests/functional-tests/meson.build
++++ b/tests/functional-tests/meson.build
+@@ -81,10 +81,11 @@ if libgif.found()
+ endif
+ 
+ if libpng.found()
+-  extractor_tests += [
+-    'images/png-basic',
+-    'images/png-region-of-interest',
+-  ]
++  extractor_tests += 'images/png-basic'
++
++  if exempi.found()
++    extractor_tests += 'images/png-region-of-interest'
++  endif
+ endif
+ 
+ if gexiv2.found()
+-- 
+2.37.4
+
