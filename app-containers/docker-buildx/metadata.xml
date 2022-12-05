@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>nic@boet.cc</email>
+		<name>Nic Boet</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">docker/buildx</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		buildx is a Docker CLI plugin for extended build capabilities with BuildKit.
+		BuildKit is a toolkit for converting source code to build artifacts in an efficient, expressive and repeatable manner.
+	</longdescription>
+</pkgmetadata>
