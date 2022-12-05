@@ -16,4 +16,7 @@
 		with them. We provide two implementations of the same API - the
 		integrated into Glib event loop and the independent.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">AdaCore/spawn</remote-id>
+	</upstream>
 </pkgmetadata>
