@@ -13,7 +13,7 @@ SLOT="0"
 IUSE="gtk-doc +introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 DEPEND=">=dev-libs/glib-2.51.2:2
 	introspection? ( dev-libs/gobject-introspection )"
