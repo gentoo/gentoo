@@ -20,10 +20,7 @@ RDEPEND="
 QA_TEXTRELS="usr/share/sbt-bin/lib/sbtn-x86_64-pc-linux"
 QA_FLAGS_IGNORED="usr/share/sbt-bin/lib/sbtn-x86_64-pc-linux"
 
-src_unpack() {
-	default
-	mv "${WORKDIR}/sbt" "${S}" || die
-}
+S="${WORKDIR}/sbt"
 
 src_prepare() {
 	default
