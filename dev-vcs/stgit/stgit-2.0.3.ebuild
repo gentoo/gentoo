@@ -131,7 +131,7 @@ RESTRICT="mirror"
 # use cargo-license for a more accurate license picture
 LICENSE="Apache-2.0 MIT BSD BSL-1.1 GPL-2 Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc"
 
 DEPEND="doc? ( app-text/asciidoc )"
