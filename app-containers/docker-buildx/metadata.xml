@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>nic+gentoo@boet.cc</email>
+		<email>nic@boet.cc</email>
 		<name>Nic Boet</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
