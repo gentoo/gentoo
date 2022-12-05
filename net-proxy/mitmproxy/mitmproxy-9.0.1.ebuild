@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mitmproxy/mitmproxy/archive/${PV}.tar.gz -> ${P}.gh.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	>=app-arch/brotli-1.0.0[python,${PYTHON_USEDEP}]
