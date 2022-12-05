@@ -11,7 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="eselect">
-			Support blacklisting of completions via 'eselect bash-completion'.
+			Support blacklisting of completions via 'eselect bashcomp'.
 			This enables custom Gentoo patching of upstream completion loader.
 		</flag>
 	</use>
