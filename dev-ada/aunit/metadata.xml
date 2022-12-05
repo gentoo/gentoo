@@ -13,4 +13,7 @@
 		supports easy composition of sets of unit tests to provide flexibility
 		in determining what tests to run for a given purpose.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">AdaCore/aunit</remote-id>
+	</upstream>
 </pkgmetadata>
