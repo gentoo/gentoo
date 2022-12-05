@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-11-29)
-# Needed for new mechanism in gcc-13
->sys-devel/gcc-12.99 default-znow default-stack-clash-protection
+# Needed for new mechanism
+>=sys-devel/gcc-12.2 default-znow default-stack-clash-protection
 
 # Needed for XATTR_PAX flags
 app-arch/tar xattr
