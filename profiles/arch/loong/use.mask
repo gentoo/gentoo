@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# media-libs/xine-lib not tested
+xine
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # Respective dependency fails to build, pending investigation, mask for the
 # time being
 chromaprint
