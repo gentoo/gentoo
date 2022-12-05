@@ -87,11 +87,11 @@ DEPEND="!!sys-devel/llvm:0"
 # Correct values of LLVM slots, newest first.
 declare -g -r _LLVM_KNOWN_SLOTS=( {16..8} )
 
-# @FUNCTION: get_llvm_prefix
+# @FUNCTION: get_llvm_slot
 # @USAGE: [-b|-d] [<max_slot>]
 # @DESCRIPTION:
 # Find the newest LLVM install that is acceptable for the package,
-# and print an absolute path to it.
+# and print its major version number (i.e. slot).
 #
 # If -b is specified, the checks are performed relative to BROOT,
 # and BROOT-path is returned.  This is appropriate when your package
@@ -114,7 +114,7 @@ declare -g -r _LLVM_KNOWN_SLOTS=( {16..8} )
 # is acceptable, false otherwise. If llvm_check_deps() is not defined,
 # the function defaults to checking whether sys-devel/llvm:${LLVM_SLOT}
 # is installed.
-get_llvm_prefix() {
+get_llvm_slot() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local hv_switch=-d
@@ -126,23 +126,12 @@ get_llvm_prefix() {
 		shift
 	done
 
-	local prefix=
-	if [[ ${EAPI} != 6 ]]; then
-		case ${hv_switch} in
-			-b)
-				prefix=${BROOT}
-				;;
-			-d)
-				prefix=${ESYSROOT}
-				;;
-		esac
-	else
+	if [[ ${EAPI} == 6 ]]; then
 		case ${hv_switch} in
 			-b)
 				die "${FUNCNAME} -b is not supported in EAPI ${EAPI}"
 				;;
 			-d)
-				prefix=${EPREFIX}
 				hv_switch=
 				;;
 		esac
@@ -168,7 +157,7 @@ get_llvm_prefix() {
 			has_version ${hv_switch} "sys-devel/llvm:${slot}" || continue
 		fi
 
-		echo "${prefix}/usr/lib/llvm/${slot}"
+		echo "${slot}"
 		return
 	done
 
@@ -178,6 +167,31 @@ get_llvm_prefix() {
 	fi
 
 	die "No LLVM slot${1:+ <= ${1}} satisfying the package's dependencies found installed!"
+}
+
+# @FUNCTION: get_llvm_prefix
+# @USAGE: [-b|-d] [<max_slot>]
+# @DESCRIPTION:
+# Find the newest LLVM install that is acceptable for the package,
+# and print an absolute path to it.
+#
+# The options and behavior is the same as for get_llvm_slot.
+get_llvm_prefix() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local prefix=${EPREFIX}
+	if [[ ${EAPI} != 6 ]]; then
+		case ${1} in
+			-b)
+				prefix=${BROOT}
+				;;
+			*)
+				prefix=${ESYSROOT}
+				;;
+		esac
+	fi
+
+	echo "${prefix}/usr/lib/llvm/$(get_llvm_slot "${@}")"
 }
 
 # @FUNCTION: llvm_fix_clang_version
@@ -256,12 +270,16 @@ llvm_pkg_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
+		LLVM_SLOT=$(get_llvm_slot "${LLVM_MAX_SLOT}")
+
 		llvm_fix_clang_version CC CPP CXX
 		# keep in sync with profiles/features/llvm/make.defaults!
 		llvm_fix_tool_path ADDR2LINE AR AS LD NM OBJCOPY OBJDUMP RANLIB
 		llvm_fix_tool_path READELF STRINGS STRIP
 
-		local llvm_path=$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin
+		local prefix=${EPREFIX}
+		[[ ${EAPI} != 6 ]] && prefix=${ESYSROOT}
+		local llvm_path=${prefix}/usr/lib/llvm/${LLVM_SLOT}/bin
 		local IFS=:
 		local split_path=( ${PATH} )
 		local new_path=()
