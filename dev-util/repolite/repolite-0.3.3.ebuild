@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 
 inherit distutils-r1 optfeature
 
-DESCRIPTION="Manage a small set of git repository dependencies with YAML"
+DESCRIPTION="Manage a small set of git repository dependencies with YAML."
 HOMEPAGE="https://github.com/sarnold/repolite"
 
 if [[ ${PV} = 9999* ]]; then
