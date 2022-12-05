@@ -184,7 +184,6 @@ RDEPEND="
 	>=dev-libs/glib-2.40.0:2[${MULTILIB_USEDEP}]
 "
 BDEPEND="
-	>=sys-apps/sed-4
 	virtual/pkgconfig
 	virtual/perl-JSON-PP
 "
