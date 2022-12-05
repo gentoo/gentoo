@@ -5,4 +5,7 @@
 		<email>tcltk@gentoo.org</email>
 		<name>Gentoo Tcltk Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">tkcvs</remote-id>
+	</upstream>
 </pkgmetadata>
