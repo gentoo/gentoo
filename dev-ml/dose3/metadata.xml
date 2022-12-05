@@ -15,6 +15,6 @@
 		<flag name="rpm4">Adds support for handling rpm4 files.</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">irill/dose3</remote-id>
+		<remote-id type="gitlab">irill/dose3</remote-id>
 	</upstream>
 </pkgmetadata>
