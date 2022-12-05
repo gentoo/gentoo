@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/Archive/nautilus-sendto"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="debug"
 
 RDEPEND=">=dev-libs/glib-2.25.9:2"
