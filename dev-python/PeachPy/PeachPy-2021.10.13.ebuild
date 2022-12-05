@@ -12,7 +12,7 @@ CommitId=257881e0a7ce985c1cf96653db1264bf09adf510
 DESCRIPTION="Portable Efficient Assembly Code-generator in Higher-level Python"
 HOMEPAGE="https://pypi.org/project/PeachPy/"
 SRC_URI="https://github.com/Maratyszcza/${PN}/archive/${CommitId}.tar.gz
-	-> ${P}.tar.gz"
+	-> ${P}.gh.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
