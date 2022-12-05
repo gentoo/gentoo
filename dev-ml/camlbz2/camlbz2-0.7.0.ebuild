@@ -8,7 +8,7 @@ inherit autotools findlib
 
 DESCRIPTION="OCaml bindings for libbz (AKA, bzip2)"
 HOMEPAGE="https://gitlab.com/irill/camlbz2"
-SRC_URI="https://gitlab.com/irill/camlbz2/-/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://gitlab.com/irill/camlbz2/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
