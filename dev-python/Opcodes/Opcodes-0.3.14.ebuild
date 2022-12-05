@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/Opcodes/
 "
 SRC_URI="https://github.com/Maratyszcza/${PN}/archive/${CommitId}.tar.gz
-	-> ${P}.tar.gz"
+	-> ${P}.gh.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
