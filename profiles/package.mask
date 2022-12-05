@@ -802,7 +802,7 @@ app-office/texmacs
 # If you still use one of these old toolchain packages, please upgrade (and
 # switch the compiler / the binutils) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
-<sys-libs/glibc-2.33
+<sys-libs/glibc-2.36-r5
 <sys-devel/binutils-2.38
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-01-07)
