@@ -12,7 +12,7 @@ LICENSE="BSD BSD-4 ISC RSA"
 SRC_URI="https://ftp.sdaoden.eu/${P}.tar.xz"
 SLOT="0"
 KEYWORDS="~amd64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-IUSE="idn kerberos net ssl"
+IUSE="idn kerberos net +split-usr ssl"
 
 RDEPEND="
 	sys-libs/ncurses:0=
@@ -81,8 +81,10 @@ src_install() {
 
 	dodoc INSTALL NEWS README THANKS
 
-	dodir /bin
-	dosym ../usr/bin/mailx /bin/mail
+	if use split-usr ; then
+		dodir /bin
+		dosym ../usr/bin/mailx /bin/mail
+	fi
 	dosym s-nail /usr/bin/mailx
 	dosym mailx /usr/bin/mail
 	dosym mailx /usr/bin/Mail
