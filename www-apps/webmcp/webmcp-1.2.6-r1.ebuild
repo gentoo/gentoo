@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,11 @@ src_prepare() {
 	default
 
 	# Use correct LUA version
-	sed -e "s/-llua/$(lua_get_LIBS)/g" -i libraries/multirand/Makefile -i libraries/mondelefant/Makefile -i libraries/extos/Makefile || die
+	sed -i \
+		-e "s/-llua/$(lua_get_LIBS)/g" \
+		libraries/multirand/Makefile \
+		libraries/mondelefant/Makefile \
+		libraries/extos/Makefile || die
 }
 
 src_compile() {
