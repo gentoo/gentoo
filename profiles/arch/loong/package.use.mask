@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# app-arch/p7zip fails one test
+kde-apps/kdeutils-meta 7zip
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # <dev-cpp/tbb-2021 fails to build on loong w/ gcc-13
 sci-libs/spqr tbb
 
