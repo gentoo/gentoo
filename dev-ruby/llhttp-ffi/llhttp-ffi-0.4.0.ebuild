@@ -16,7 +16,7 @@ SRC_URI="https://github.com/metabahn/llhttp/archive/refs/tags/${MY_PV}.tar.gz ->
 
 LICENSE="MPL-2.0"
 SLOT="$(ver_cut 1)/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 RUBY_S="llhttp-${MY_PV}/ffi"
 
