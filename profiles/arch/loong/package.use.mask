@@ -2,6 +2,23 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
+# dev-cpp/glog fails tests, needs checknig
+media-libs/opencv glog contribsfm
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
+# sci-libs/gdal not keyworded yet
+media-libs/opencv gdal
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
+# app-crypt/heimdal not keyworded yet
+net-nds/openldap kerberos
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
+# net-vpn/ocserv fails tests, probably kernel config related but needs
+# further investigation.
+net-vpn/openconnect test
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
 # dev-python/pyside2 not keyworded yet
 dev-python/QtPy pyside2
 dev-python/qtconsole test
