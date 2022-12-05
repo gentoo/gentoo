@@ -17,4 +17,7 @@
 		the validity (or, dually, the satisfiability) of first-order formulas
 		in a large number of built-in logical theories and their combination.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">CVC4/CVC4-archived</remote-id>
+	</upstream>
 </pkgmetadata>
