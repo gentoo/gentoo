@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
+# in-tree version of sys-apps/flashrom (1.2) is outdated and cannot build
+# on loong
+sys-apps/fwupd flashrom
+
+# WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
 # sys-boot/gnu-efi upstream hasn't merged the loong port yet
 sys-apps/fwupd uefi
 sys-apps/systemd gnuefi
