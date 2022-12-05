@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="DRY Django forms"
 HOMEPAGE="https://github.com/django-crispy-forms/django-crispy-forms"
 SRC_URI="https://github.com/django-crispy-forms/${PN}/archive/${PV}.tar.gz
-	-> ${P}.tar.gz"
+	-> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
