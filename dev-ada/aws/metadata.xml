@@ -12,4 +12,7 @@
 		Firefox for example. Around this Web server a lot of services have been
 		developed.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">AdaCore/aws</remote-id>
+	</upstream>
 </pkgmetadata>
