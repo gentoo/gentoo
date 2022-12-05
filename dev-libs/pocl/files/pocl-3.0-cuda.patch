@@ -1,0 +1,48 @@
+https://github.com/pocl/pocl/pull/1146
+
+From 978afab0ba9f90fbdb39ed4ffc52f8ca46d2bfa9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 5 Dec 2022 04:17:05 +0000
+Subject: [PATCH] pocl-cuda: fix build with -DPOCL_DEBUG_MESSAGES=OFF
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes build failure:
+```
+/var/tmp/portage2/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/CL/devices/cuda/pocl-cuda.c: In function ‘load_or_generate_kernel’:
+/var/tmp/portage2/portage/dev-libs/pocl-3.0/work/pocl-3.0/lib/CL/devices/cuda/pocl-cuda.c:981:9: error: ‘pocl_debug_messages_filter’ undeclared (first use in this function)
+  981 |   if (!(pocl_debug_messages_filter & POCL_DEBUG_FLAG_CUDA))
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+Bug: https://bugs.gentoo.org/862633
+--- a/lib/CL/devices/cuda/pocl-cuda.c
++++ b/lib/CL/devices/cuda/pocl-cuda.c
+@@ -1093,6 +1093,7 @@ load_or_generate_kernel (cl_kernel kernel, cl_device_id device,
+   /* TODO: When can we unload the module? */
+   CUmodule module;
+ 
++#ifdef POCL_DEBUG_MESSAGES
+   if (!(pocl_debug_messages_filter & POCL_DEBUG_FLAG_CUDA))
+     {
+       result = cuModuleLoad (&module, ptx_filename);
+@@ -1100,6 +1101,7 @@ load_or_generate_kernel (cl_kernel kernel, cl_device_id device,
+     }
+   else
+     {
++#endif
+       struct stat st;
+       stat (ptx_filename, &st);
+ 
+@@ -1132,7 +1134,9 @@ load_or_generate_kernel (cl_kernel kernel, cl_device_id device,
+ 
+       free (log);
+       free (buffer);
++#ifdef POCL_DEBUG_MESSAGES
+     }
++#endif
+ 
+   /* Get kernel function */
+   CUfunction function;
+

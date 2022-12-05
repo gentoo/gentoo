@@ -47,6 +47,7 @@ BDEPEND="${CLANG_DEPS}
 PATCHES=(
 	"${FILESDIR}"/${P}-icd.patch
 	"${FILESDIR}"/${P}-fix-version.patch
+	"${FILESDIR}"/${P}-cuda.patch
 )
 
 python_check_deps() {
