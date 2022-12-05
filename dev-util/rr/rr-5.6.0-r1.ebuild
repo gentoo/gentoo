@@ -45,6 +45,7 @@ RESTRICT="test" # toolchain and kernel version dependent
 
 PATCHES=(
 	"${FILESDIR}"/${P}-linux-headers-6.0.patch
+	"${FILESDIR}"/${P}-tests-clang16.patch
 )
 
 pkg_setup() {
