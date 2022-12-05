@@ -22,5 +22,3 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 BDEPEND=">=dev-util/cmake-3.10.2"
-
-PATCHES="${FILESDIR}/${P}-cmake-Install-cmake-files-to-CMAKE_INSTALL_DATADIR.patch"
