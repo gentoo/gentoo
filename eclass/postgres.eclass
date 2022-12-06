@@ -106,7 +106,7 @@ postgres_check_slot() {
 	fi
 
 	# Don't die because we can't run postgresql-config during pretend.
-	[[ "$EBUILD_PHASE" = "pretend" && -z "$(which postgresql-config 2> /dev/null)" ]] \
+	[[ "$EBUILD_PHASE" = "pretend" && -z "$(type -P postgresql-config 2> /dev/null)" ]] \
 		&& return 0
 
 	if has $(postgresql-config show 2> /dev/null) "${POSTGRES_COMPAT[@]}"; then
@@ -148,7 +148,7 @@ postgres_pkg_setup() {
 	fi
 
 	export PG_SLOT=${best_slot}
-	export PG_CONFIG=$(which pg_config${best_slot//./})
+	export PG_CONFIG=$(type -P pg_config${best_slot//./})
 
 	local pg_pkg_config_path="$(${PG_CONFIG} --libdir)/pkgconfig"
 	if [[ -n "${PKG_CONFIG_PATH}" ]]; then
