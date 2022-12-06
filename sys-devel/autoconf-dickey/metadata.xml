@@ -6,6 +6,7 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<upstream>
+		<changelog>https://invisible-island.net/autoconf/autoconf-252/ChangeLog</changelog>
 		<remote-id type="github">ThomasDickey/my-autoconf-snapshots</remote-id>
 	</upstream>
 </pkgmetadata>
