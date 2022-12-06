@@ -1,0 +1,45 @@
+From a98f34df525dce54a96f443806599978b293d7c5 Mon Sep 17 00:00:00 2001
+From: Jose <pepone@users.noreply.github.com>
+Date: Thu, 3 Nov 2022 16:52:58 +0100
+Subject: [PATCH] Python 3.11 build fixes (#1394)
+
+---
+ python/modules/IcePy/Slice.cpp | 7 ++++++-
+ python/modules/IcePy/Util.cpp  | 5 +++++
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/python/modules/IcePy/Slice.cpp b/python/modules/IcePy/Slice.cpp
+index e11365d8d40..7138e76dac0 100644
+--- a/python/modules/IcePy/Slice.cpp
++++ b/python/modules/IcePy/Slice.cpp
+@@ -14,7 +14,12 @@
+ // Python headers needed for PyEval_EvalCode.
+ //
+ #include <compile.h>
+-#include <eval.h>
++// Use ceval.h instead of eval.h with Pyhthon 3.11 and greater
++#if PY_VERSION_HEX >= 0x030B0000
++#   include <ceval.h>
++#else
++#   include <eval.h>
++#endif
+ 
+ using namespace std;
+ using namespace IcePy;
+diff --git a/python/modules/IcePy/Util.cpp b/python/modules/IcePy/Util.cpp
+index f15c7a5c690..73955c933a2 100644
+--- a/python/modules/IcePy/Util.cpp
++++ b/python/modules/IcePy/Util.cpp
+@@ -225,7 +225,12 @@ IcePy::getFunction()
+     //
+     // Get name of current function.
+     //
++    // Use PyEval_GetFrame with Pyhthon >= 3.11
++#if PY_VERSION_HEX >= 0x030B0000
++    PyFrameObject *f = PyEval_GetFrame();
++#else
+     PyFrameObject *f = PyThreadState_GET()->frame;
++#endif
+     PyObjectHandle code = getAttr(reinterpret_cast<PyObject*>(f), "f_code", false);
+     assert(code.get());
+     PyObjectHandle func = getAttr(code.get(), "co_name", false);
