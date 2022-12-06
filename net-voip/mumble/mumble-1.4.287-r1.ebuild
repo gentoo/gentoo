@@ -21,7 +21,7 @@ else
 		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 		S="${WORKDIR}/${P}.src"
 	fi
-	KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${PN}-1.4-openssl3.patch.xz"
@@ -77,6 +77,7 @@ PATCHES=(
 	"${WORKDIR}/${PN}-1.4-openssl3.patch"
 	"${WORKDIR}/${PN}-1.4-crypto-threads.patch"
 	"${WORKDIR}/${PN}-1.4-odr.patch"
+	"${FILESDIR}/${PN}-1.4-force-alignment.patch"
 )
 
 pkg_setup() {
@@ -122,6 +123,13 @@ src_configure() {
 	append-cxxflags -fsigned-char
 
 	cmake_src_configure
+}
+
+src_test() {
+	# https://bugs.gentoo.org/884049
+	# increase timeout for tests
+	local -x QTEST_FUNCTION_TIMEOUT=600000
+	cmake_src_test
 }
 
 src_install() {
