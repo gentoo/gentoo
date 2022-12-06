@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64"
-	EGIT_COMMIT="7d43285a5054e4b2b18dbba771b57d365943a0f7"
+	EGIT_COMMIT="4b466e92a2d9f76ce1082cde982c7be0be91e248"
 	SRC_URI="https://github.com/gnif/vendor-reset/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 fi
 
@@ -24,9 +24,13 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
+PATCHES=( "${FILESDIR}/Respect-eselect-kernel.patch" )
+
 pkg_setup() {
 	local CONFIG_CHECK="FTRACE KPROBES PCI_QUIRKS KALLSYMS FUNCTION_TRACER"
 	linux-mod_pkg_setup
+	export KV_FULL=${KV_FULL}
+	export KERNEL_DIR=${KERNEL_DIR}
 }
 
 src_compile() {

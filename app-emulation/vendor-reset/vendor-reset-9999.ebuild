@@ -11,7 +11,8 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/gnif/vendor-reset/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	EGIT_COMMIT="4b466e92a2d9f76ce1082cde982c7be0be91e248"
+	SRC_URI="https://github.com/gnif/vendor-reset/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="Linux kernel vendor specific hardware reset module"
@@ -22,9 +23,13 @@ SLOT="0"
 DEPEND=""
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/Respect-eselect-kernel.patch" )
+
 pkg_setup() {
 	local CONFIG_CHECK="FTRACE KPROBES PCI_QUIRKS KALLSYMS FUNCTION_TRACER"
 	linux-mod_pkg_setup
+	export KV_FULL=${KV_FULL}
+	export KERNEL_DIR=${KERNEL_DIR}
 }
 
 src_compile() {

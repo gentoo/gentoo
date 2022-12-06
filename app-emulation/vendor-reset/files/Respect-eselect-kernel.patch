@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index b8a0652..79f60e8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ USER  := $(shell whoami)
+-KVER ?= $(shell uname -r)
+-KDIR ?= /lib/modules/$(KVER)/build
++KVER ?= $(KV_FULL)
++KDIR ?= ${KERNEL_DIR}
+ 
+ all: build
+ 
