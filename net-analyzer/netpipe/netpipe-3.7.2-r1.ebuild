@@ -1,16 +1,18 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
-MY_PN=NetPIPE
-MY_P=${MY_PN}-${PV}
+MY_PN="NetPIPE"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="network protocol independent performance evaluator"
 HOMEPAGE="http://bitspjoule.org/netpipe/"
 SRC_URI="http://bitspjoule.org/netpipe/code/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-1+"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -24,21 +26,20 @@ DOCS=(
 	dox/netpipe_paper.ps
 	dox/np_cluster2002.pdf
 	dox/np_euro.pdf
-	)
+)
 
-PATCHES=(
-	"${FILESDIR}"/${P}-fix-makefile.patch
-	)
+PATCHES=( "${FILESDIR}"/${P}-fix-makefile.patch )
 
-S="${WORKDIR}"/${MY_P}
+src_configure() {
+	tc-export CC
+}
 
 src_compile() {
-	emake CC="$(tc-getCC)" LD="$(tc-getLD)" memcpy tcp $(usex ipv6 tcp6 '')
+	emake memcpy tcp $(usev ipv6 tcp6)
 }
 
 src_install() {
-	dobin NPmemcpy NPtcp
-	use ipv6 && dobin NPtcp6
+	dobin NPmemcpy NPtcp $(usev ipv6 NPtcp6)
 	doman dox/netpipe.1
 	einstalldocs
 }

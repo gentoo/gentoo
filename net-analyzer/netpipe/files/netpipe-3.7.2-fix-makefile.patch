@@ -1,5 +1,3 @@
-diff --git a/makefile b/makefile
-index 16f9052..3ada81f 100644
 --- a/makefile
 +++ b/makefile
 @@ -21,8 +21,6 @@
@@ -11,3 +9,36 @@ index 16f9052..3ada81f 100644
  SRC        = ./src
  
  # For MPI, mpicc will set up the proper include and library paths
+@@ -91,26 +89,26 @@
+ 
+ 
+ tcp: $(SRC)/tcp.c $(SRC)/netpipe.c $(SRC)/netpipe.h 
+-	$(CC) $(CFLAGS) $(SRC)/netpipe.c $(SRC)/tcp.c -DTCP -o NPtcp -I$(SRC)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(SRC)/netpipe.c $(SRC)/tcp.c -DTCP -o NPtcp -I$(SRC)
+ 
+ tcp6: $(SRC)/tcp.c $(SRC)/netpipe.c $(SRC)/netpipe.h 
+-	$(CC) $(CFLAGS) $(SRC)/netpipe.c $(SRC)/tcp6.c -DTCP6 \
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(SRC)/netpipe.c $(SRC)/tcp6.c -DTCP6 \
+ 		-o NPtcp6 -I$(SRC)
+ 
+ sctp: $(SRC)/sctp.c $(SRC)/netpipe.c $(SRC)/netpipe.h 
+-	$(CC) $(CFLAGS) $(SRC)/netpipe.c $(SRC)/sctp.c -DSCTP \
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(SRC)/netpipe.c $(SRC)/sctp.c -DSCTP \
+ 		-o NPsctp -I$(SRC)
+ 
+ sctp6: $(SRC)/sctp6.c $(SRC)/netpipe.c $(SRC)/netpipe.h 
+-	$(CC) $(CFLAGS) $(SRC)/netpipe.c $(SRC)/sctp6.c -DSCTP6 \
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(SRC)/netpipe.c $(SRC)/sctp6.c -DSCTP6 \
+ 		-o NPsctp6 -I$(SRC)
+ 
+ ipx: $(SRC)/ipx.c $(SRC)/netpipe.c $(SRC)/netpipe.h 
+-	$(CC) $(CFLAGS) $(SRC)/netpipe.c $(SRC)/ipx.c -DIPX \
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(SRC)/netpipe.c $(SRC)/ipx.c -DIPX \
+ 		-o NPipx -I$(SRC) -lipx
+ 
+ memcpy: $(SRC)/memcpy.c $(SRC)/netpipe.c $(SRC)/netpipe.h
+-	$(CC) $(CFLAGS) $(SRC)/netpipe.c $(SRC)/memcpy.c \
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(SRC)/netpipe.c $(SRC)/memcpy.c \
+               -DMEMCPY -o NPmemcpy -I$(SRC)
+ 
+ MP_memcpy: $(SRC)/memcpy.c $(SRC)/netpipe.c $(SRC)/netpipe.h $(SRC)/MP_memcpy.c
