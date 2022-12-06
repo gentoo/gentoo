@@ -27,7 +27,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		<dev-db/redis-7
+		dev-db/redis
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)
@@ -41,6 +41,8 @@ python_test() {
 		tests/test_pubsub.py::TestPubSubDeadlock::test_pubsub_deadlock
 		# TODO
 		tests/test_commands.py::TestRedisCommands::test_acl_list
+		# redis-7 different return
+		tests/test_commands.py::TestRedisCommands::test_xautoclaim
 	)
 
 	# TODO: try to run more servers?
@@ -51,17 +53,22 @@ src_test() {
 	local redis_pid="${T}"/redis.pid
 	local redis_port=6379
 
+	if has_version ">=dev-db/redis-7"; then
+		local extra_conf="
+			enable-debug-command yes
+			enable-module-command yes
+		"
+	fi
+
 	# Spawn Redis itself for testing purposes
-	# NOTE: On sam@'s machine, spawning Redis can hang in the sandbox.
-	# I'm not restricting tests yet because this doesn't happen for anyone else AFAICT.
 	einfo "Spawning Redis"
 	einfo "NOTE: Port ${redis_port} must be free"
-	# "${EPREFIX}"/usr/sbin/redis-server - <<< "${redis_test_config}" || die
 	"${EPREFIX}"/usr/sbin/redis-server - <<- EOF || die "Unable to start redis server"
 		daemonize yes
 		pidfile ${redis_pid}
 		port ${redis_port}
-		bind 127.0.0.1
+		bind 127.0.0.1 ::1
+		${extra_conf}
 	EOF
 
 	# Run the tests
