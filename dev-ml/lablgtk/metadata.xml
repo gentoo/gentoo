@@ -10,9 +10,15 @@
 		<name>Mark Wright</name>
 	</maintainer>
 	<use>
-		<flag name="glade">Enable libglade bindings compilation.</flag>
-		<flag name="gnomecanvas">Enable libgnomecanvas bindings compilation.</flag>
-		<flag name="sourceview">Enable GtkSourceView support</flag>
+		<flag name="glade" restrict="&lt;dev-ml/lablgtki-3">
+			Enable <pkg>gnome-base/libglade</pkg> bindings compilation
+		</flag>
+		<flag name="gnomecanvas" restrict="&lt;dev-ml/lablgtki-3">
+			Enable <pkg>gnome-base/libgnomecanvas</pkg> bindings compilation
+		</flag>
+		<flag name="sourceview">
+			Enable GtkSourceView (<pkg>x11-libs/gtksourceview</pkg>) support
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">garrigue/lablgtk</remote-id>
