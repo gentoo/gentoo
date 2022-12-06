@@ -280,5 +280,5 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	optfeature "URL support" net-misc/yt-dlp
+	optfeature "URL support with USE=lua" net-misc/yt-dlp
 }
