@@ -75,7 +75,6 @@ RDEPEND="
 		dev-db/libdbi-drivers[sqlite]
 	)
 "
-
 DEPEND="
 	${RDEPEND}
 	>=sys-devel/gettext-0.20
@@ -84,36 +83,29 @@ DEPEND="
 	sys-devel/libtool
 	test? ( >=dev-cpp/gtest-1.8.0 )
 "
-
 BDEPEND="
 	dev-lang/swig
 	dev-util/cmake
 	virtual/pkgconfig
-	|| (
-		>=sys-devel/gcc-8:*
-		>=sys-devel/clang-6:*
-	)
 "
-
-# For 4.10, they released gnucash-docs-4.10.1 to fix an issue.
 PDEPEND="
 	doc? (
-		~app-doc/gnucash-docs-"${PV}"
+		~app-doc/gnucash-docs-${PV}
 		gnome-extra/yelp
 	)
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}"-3.8-examples-subdir.patch
-	"${FILESDIR}/${PN}"-3.8-exclude-license.patch
-	"${FILESDIR}/${P}"-drop-broken-test.patch
+	"${FILESDIR}"/${PN}-3.8-examples-subdir.patch
+	"${FILESDIR}"/${PN}-3.8-exclude-license.patch
+	"${FILESDIR}"/${P}-drop-broken-test.patch
 	# will be fixed on future version, see
 	# https://github.com/Gnucash/gnucash/pull/1472
-	"${FILESDIR}/${P}"-fix-test.patch
+	"${FILESDIR}"/${P}-fix-test.patch
 )
 
 # guile generates ELF files without use of C or machine code
-# It's a portage's false positive. bug #677600
+# It's a portage false positive, bug #677600
 QA_PREBUILT='*[.]go'
 
 pkg_setup() {
@@ -161,7 +153,7 @@ src_configure() {
 		-DWITH_AQBANKING=$(usex aqbanking)
 		-DWITH_OFX=$(usex ofx)
 		-DWITH_PYTHON=$(usex python)
-		-DWITH_SQL="${sql_on_off}"
+		-DWITH_SQL=${sql_on_off}
 		-DWITH_GNUCASH=$(usex gui)
 	)
 
@@ -198,9 +190,9 @@ src_install() {
 	cmake_src_install
 
 	if use examples ; then
-		docompress -x /usr/share/doc/"${PF}"/examples
+		docompress -x /usr/share/doc/${PF}/examples
 	else
-		rm -r "${ED}"/usr/share/doc/"${PF}"/examples
+		rm -r "${ED}"/usr/share/doc/${PF}/examples
 	fi
 
 	if use python ; then

@@ -1,15 +1,11 @@
+https://github.com/Gnucash/gnucash/pull/1472
+
 From a52795b022e040d7a93bb4dc352780d832c55390 Mon Sep 17 00:00:00 2001
 From: Marco Scardovi <mscardovi@icloud.com>
 Date: Sat, 26 Nov 2022 22:38:02 +0100
 Subject: [PATCH] Fix test
 
 Signed-off-by: Marco Scardovi <mscardovi@icloud.com>
----
- libgnucash/core-utils/test/CMakeLists.txt | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
-
-diff --git a/libgnucash/core-utils/test/CMakeLists.txt b/libgnucash/core-utils/test/CMakeLists.txt
-index 3b724c7c632..07add8b8699 100644
 --- a/libgnucash/core-utils/test/CMakeLists.txt
 +++ b/libgnucash/core-utils/test/CMakeLists.txt
 @@ -19,9 +19,6 @@ endmacro()
