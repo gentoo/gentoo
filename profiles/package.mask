@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-12-06)
+# Broke C++ reverse dependencies. Please upgrade to 1.1.0-r1. See bug #884369.
+=x11-libs/libICE-1.1.0
+
 # Hans de Graaff <graaff@gentoo.org> (2022-12-05)
 # ruby27-only package. No longer maintained upstream. Last release in 2017.
 # No reverse dependencies. Removal in 30 days.
