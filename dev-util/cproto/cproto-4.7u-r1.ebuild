@@ -15,8 +15,9 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
-DEPEND="
-	sys-devel/flex
+DEPEND="app-alternatives/lex"
+BDEPEND="
+	app-alternatives/lex
 	app-alternatives/yacc
+	verify-sig? ( sec-keys/openpgp-keys-thomasdickey )
 "
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-thomasdickey )"
