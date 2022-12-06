@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 inherit multibuild postgres
@@ -58,7 +58,7 @@ export _POSTGRES_INTERSECT_SLOTS=( )
 _postgres-multi_multibuild_wrapper() {
 	debug-print-function ${FUNCNAME} "${@}"
 	export PG_SLOT=${MULTIBUILD_VARIANT}
-	export PG_CONFIG=$(which pg_config${MULTIBUILD_VARIANT//./})
+	export PG_CONFIG=$(type -P pg_config${MULTIBUILD_VARIANT//./})
 	if [[ -n ${PKG_CONFIG_PATH} ]] ; then
 		PKG_CONFIG_PATH="$(${PG_CONFIG} --libdir)/pkgconfig:${PKG_CONFIG_PATH}"
 	else
@@ -139,7 +139,7 @@ postgres-multi_src_prepare() {
 	# Portage, but won't be caught by /usr/bin/ebuild)
 	local slot
 	for slot in ${_POSTGRES_INTERSECT_SLOTS[@]} ; do
-		if [[ -z $(which pg_config${slot/.} 2> /dev/null) ]] ; then
+		if [[ -z $(type -P pg_config${slot/.} 2> /dev/null) ]] ; then
 			eerror
 			eerror "postgres_targets_postgres${slot/.} use flag is enabled, but hasn't been emerged."
 			eerror
