@@ -1,0 +1,13 @@
+https://sources.debian.org/patches/aiksaurus/1.2.1%2Bdev-0.12-7/01-changes-from-pristine-tarball.patch/
+--- a/configure.ac
++++ b/configure.ac
+@@ -50,6 +50,9 @@ AC_SUBST(LT_RELEASE)
+ LT_CURRENT=`expr $AIK_MICRO_VERSION - $AIK_INTERFACE_AGE`
+ LT_REVISION=$AIK_INTERFACE_AGE
+ LT_AGE=`expr $AIK_BINARY_AGE - $AIK_INTERFACE_AGE`
++m4_pattern_allow([LT_CURRENT])
++m4_pattern_allow([LT_REVISION])
++m4_pattern_allow([LT_AGE])
+ 
+ LT_AIK_VERSION_INFO="$LT_CURRENT:$LT_REVISION:$LT_AGE"
+ 

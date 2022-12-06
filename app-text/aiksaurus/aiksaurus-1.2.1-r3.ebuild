@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit flag-o-matic libtool
+inherit autotools flag-o-matic
 
-DESCRIPTION="A thesaurus lib, tool and database"
+DESCRIPTION="A thesaurus lib, tool, and database"
 HOMEPAGE="https://sourceforge.net/projects/aiksaurus"
 SRC_URI="
 	mirror://sourceforge/${PN}/${P}.tar.gz
@@ -24,13 +24,17 @@ PATCHES=(
 	"${WORKDIR}"/patches/${P}-gcc43.patch
 	"${WORKDIR}"/patches/${P}-format-security.patch
 	"${WORKDIR}"/patches/${P}-c++17.patch
+	"${FILESDIR}"/aiksaurus-1.2.1-autoconf.patch
 )
 
 src_prepare() {
 	default
+
 	# Needed to make relink work on FreeBSD, without it won't install.
 	# Also needed for a sane .so versionning there.
-	elibtoolize
+	#elibtoolize
+	# Clang 16
+	eautoreconf
 }
 
 src_configure() {
