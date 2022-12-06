@@ -1,0 +1,246 @@
+Patch emailed to upstream.
+
+From 216e770ced47ad0017cd43033ef213c2634fe87a Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 6 Dec 2022 08:53:14 +0000
+Subject: [PATCH] sgmls-1.1: fix configure script with Clang 16
+
+Clang 16 makes -Wimplicit-function-declaration and -Wimplicit-int errors by default.
+
+Unfortunately, this can lead to misconfiguration or miscompilation of software as configure
+tests may then return the wrong result. In this case, it led to a build failure
+(see https://bugs.gentoo.org/883203).
+
+We also fix -Wstrict-prototypes while here as it's easy to do and it prepares
+us for C23.
+
+For more information, see LWN.net [0] or LLVM's Discourse [1], the Gentoo wiki [2],
+or the (new) c-std-porting mailing list [3].
+
+[0] https://lwn.net/Articles/913505/
+[1] https://discourse.llvm.org/t/configure-script-breakage-with-the-new-werror-implicit-function-declaration/65213
+[2] https://wiki.gentoo.org/wiki/Modern_C_porting
+[3] hosted at lists.linux.dev.
+
+Bug: https://bugs.gentoo.org/883203
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/sgmls-1.1/configure
++++ b/sgmls-1.1/configure
+@@ -110,13 +110,14 @@ cat >doit.c <<\EOF
+ 
+ #include <ctype.h>
+ #include <signal.h>
++#include <stdlib.h>
+ 
+-static int whoops()
++static void whoops(int signal)
+ {
+   _exit(1);
+ }
+ 
+-main()
++int main(void)
+ {
+   int c;
+ #ifdef isascii
+@@ -213,9 +214,9 @@ else
+ fi
+ 
+ cat >doit.c <<\EOF
+-main(argc, argv)
+-int argc;
+-char **argv;
++#include <stdio.h>
++#include <stdlib.h>
++int main(int argc, char **argv)
+ {
+   if (argc == 0)
+     remove("foo");
+@@ -231,9 +232,9 @@ else
+ fi
+ 
+ cat >doit.c <<\EOF
+-main(argc, argv)
+-int argc;
+-char **argv;
++#include <unistd.h>
++#include <stdlib.h>
++int main(int argc, char **argv)
+ {
+   if (argc == 0)
+     getopt(argc, argv, "v");
+@@ -249,9 +250,9 @@ else
+ fi
+ 
+ cat >doit.c <<\EOF
+-main(argc, argv)
+-int argc;
+-char **argv;
++#include <stdlib.h>
++#include <unistd.h>
++int main(int argc, char **argv)
+ {
+   if (argc == 0)
+     access("foo", 4);
+@@ -267,9 +268,9 @@ else
+ fi
+ 
+ cat >doit.c <<\EOF
+-main(argc, argv)
+-int argc;
+-char **argv;
++#include <stdlib.h>
++#include <unistd.h>
++int main(int argc, char **argv)
+ {
+   if (argc == 0)
+     vfork();
+@@ -285,9 +286,9 @@ else
+ fi
+ 
+ cat >doit.c <<\EOF
+-main(argc, argv)
+-int argc;
+-char **argv;
++#include <stdlib.h>
++#include <sys/wait.h>
++int main(int argc, char **argv)
+ {
+ 
+   if (argc == 0) {
+@@ -306,10 +307,9 @@ else
+ fi
+ 
+ cat >doit.c <<\EOF
++#include <stdlib.h>
+ #include <string.h>
+-main(argc, argv)
+-int argc;
+-char **argv;
++int main(int argc, char **argv)
+ {
+   if (argc == 0)
+     strerror(0);
+@@ -326,9 +326,8 @@ fi
+ 
+ cat >doit.c <<\EOF
+ #include <strings.h>
+-main(argc, argv)
+-int argc;
+-char **argv;
++#include <stdlib.h>
++int main(int argc, char **argv)
+ {
+   if (argc == 0)
+ 	bcopy((char *)0, (char *)0, 0);
+@@ -340,10 +339,9 @@ if $CC $CFLAGS -o doit doit.c $LIBS >/dev/null 2>&1 && ./doit 2>/dev/null
+ then
+ 	# Only use BSD_STRINGS if ANSI string functions don't work.
+ 	cat >doit.c <<\EOF
++#include <stdlib.h>
+ #include <string.h>
+-main(argc, argv)
+-int argc;
+-char **argv;
++int main(int argc, char **argv)
+ {
+   if (argc == 0)
+ 	memcpy((char *)0, (char *)0, 0);
+@@ -363,9 +361,8 @@ fi
+ 
+ cat >doit.c <<\EOF
+ #include <signal.h>
+-main(argc, argv)
+-int argc;
+-char **argv;
++#include <stdlib.h>
++int main(int argc, char **argv)
+ {
+   if (argc == 0)
+     raise(SIGINT);
+@@ -382,9 +379,8 @@ fi
+ 
+ cat >doit.c <<\EOF
+ #include <stdio.h>
+-main(argc, argv)
+-int argc;
+-char **argv;
++#include <stdlib.h>
++int main(int argc, char **argv)
+ {
+   if (argc == 0) {
+     fpos_t pos;
+@@ -404,12 +400,11 @@ fi
+ 
+ cat >doit.c <<\EOF
+ #include <unistd.h>
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ 
+-main(argc, argv)
+-int argc;
+-char **argv;
++int main(int argc, char **argv)
+ {
+   if (argc == 0) {
+     pid_t pid;
+@@ -436,14 +431,15 @@ fi
+ 
+ cat >doit.c <<\EOF
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <signal.h>
+ 
+-static int whoops()
++static void whoops(int signal)
+ {
+   _exit(1);
+ }
+ 
+-main()
++int main(void)
+ {
+   char buf[30];
+ #ifdef SIGSEGV
+@@ -469,10 +465,9 @@ fi
+ 
+ cat >doit.c <<\EOF
+ #include <nl_types.h>
++#include <stdlib.h>
+ 
+-main(argc, argv)
+-int argc;
+-char **argv;
++int main(int argc, char **argv)
+ {
+   if (argc == 0) {
+     nl_catd d = catopen("foo", 0);
+@@ -492,12 +487,11 @@ fi
+ 
+ cat >doit.c <<\EOF
+ #include <limits.h>
++#include <stdlib.h>
+ 
+ char c = UCHAR_MAX;
+ 
+-main(argc, argv)
+-int argc;
+-char **argv;
++int main(int argc, char **argv)
+ {
+ #if CHAR_MIN < 0
+   exit(!(c < 0));
+@@ -512,7 +506,8 @@ then
+ 	char_signed=
+ else
+ 	cat >doit.c <<\EOF
+-main()
++#include <stdlib.h>
++int main(void)
+ {
+   int i;
+ 
+-- 
+2.38.1
+
