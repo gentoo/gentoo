@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-12-06)
+# Quick Sync Video (through intel-mediasdk or oneVPL) is
+# only keyworded on amd64
+media-video/ffmpeg -qsv
+media-libs/gst-plugins-bad -qsv
+
 # Michał Górny <mgorny@gentoo.org> (2022-12-01)
 # Keyworded here.
 app-alternatives/awk -nawk

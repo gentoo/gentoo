@@ -1,6 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-12-06)
+# Quick Sync Video (through intel-mediasdk or oneVPL) is
+# only keyworded on amd64
+media-video/ffmpeg qsv
+media-libs/gst-plugins-bad qsv
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-01)
 # Only supported on ppc64le.
 sys-devel/gcc ieee-long-double
