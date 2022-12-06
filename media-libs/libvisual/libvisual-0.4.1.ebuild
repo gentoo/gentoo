@@ -36,7 +36,7 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		--disable-static \
-                --disable-examples \
+		--disable-examples \
 		$(use_enable nls) \
 		$(use_enable threads) \
 		$(use_enable debug)
