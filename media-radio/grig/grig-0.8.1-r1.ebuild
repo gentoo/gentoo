@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,8 @@ DEPEND="
 	>=media-libs/hamlib-4:="
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/grig-0.8.1-hamlib4.patch )
+PATCHES=( "${FILESDIR}"/grig-0.8.1-hamlib4.patch
+		  "${FILESDIR}"/grig-0.8.1-hamlib45.patch )
 
 src_configure() {
 	econf --enable-hardware
@@ -32,7 +33,7 @@ src_prepare() {
 		eapply -p1 "${FILESDIR}"/${P}-hamlib42.patch
 	fi
 
-	eapply ${PATCHES}
+	eapply ${PATCHES[@]}
 
 	eapply_user
 }
