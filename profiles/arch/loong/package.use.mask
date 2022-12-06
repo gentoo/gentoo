@@ -173,7 +173,6 @@ net-libs/libssh mbedtls
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
 # Unmask experimental-loong on packages; we're loong.
 dev-libs/libffi -experimental-loong
-sys-kernel/linux-headers -experimental-loong
 sys-libs/glibc -experimental-loong
 sys-libs/libseccomp -experimental-loong
 
