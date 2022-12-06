@@ -1,12 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit systemd
 
 DESCRIPTION="Nagios addon to store Nagios data in a MySQL database"
 HOMEPAGE="https://www.nagios.org/"
 SRC_URI="https://github.com/NagiosEnterprises/${PN}/archive/${P}.tar.gz"
+S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -14,30 +16,19 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 # We require the "nagios" user from net-analyzer/nagios-core at build
 # time.
-DEPEND="dev-db/mysql-connector-c
+DEPEND="
+	dev-db/mysql-connector-c
 	dev-perl/DBD-mysql
 	dev-perl/DBI
 	>=net-analyzer/nagios-core-4.4.5"
 RDEPEND="${DEPEND}
 	virtual/mysql"
 
-S="${WORKDIR}/${PN}-${P}"
-
-DOCS=(
-	Changelog
-	README
-	THANKS
-	TODO
-	UPGRADING
-	"docs/NDOUTILS DB Model.pdf"
-	"docs/NDOUtils Documentation.pdf"
-)
-
 PATCHES=(
-	"${FILESDIR}/format-security.patch"
-	"${FILESDIR}/ndoutils-2.0.0-asprintf.patch"
-	"${FILESDIR}/sample-config-piddir.patch"
-	"${FILESDIR}/openrc-init.patch"
+	"${FILESDIR}"/format-security.patch
+	"${FILESDIR}"/ndoutils-2.0.0-asprintf.patch
+	"${FILESDIR}"/sample-config-piddir.patch
+	"${FILESDIR}"/openrc-init.patch
 )
 
 src_configure() {
@@ -58,34 +49,38 @@ src_compile() {
 	# Avoid "emake all" so that we don't build the stuff for nagios-2.x
 	# and nagios-3.x, some of which throws QA warnings. We don't use it
 	# anyway.
-	pushd src
-	emake file2sock log2ndo ndo2db-4x ndomod-4x.o sockdebug
-	popd
+	emake -C src file2sock log2ndo ndo2db-4x ndomod-4x.o sockdebug
 }
 
 src_install() {
+	# The documentation isn't installed by the build system
+	HTML_DOCS=( docs/html/. )
 	default
+
+	dodoc Changelog UPGRADING \
+		"docs/NDOUTILS DB Model.pdf" "docs/NDOUtils Documentation.pdf"
+
+	systemd_newunit startup/default-service ndoutils.service
+
 	insinto /etc/nagios
 	newins config/ndo2db.cfg-sample ndo2db.cfg
 	newins config/ndomod.cfg-sample ndomod.cfg
-	newinitd "startup/openrc-init" ndo2db
-	newconfd "startup/openrc-conf" ndo2db
-	systemd_newunit "startup/default-service" "${PN}.service"
+	newinitd startup/openrc-init ndo2db
+	newconfd startup/openrc-conf ndo2db
 
-	# The documentation isn't installed by the build system
-	dodoc -r docs/html
-
-	insinto "/usr/share/${PN}"
+	insinto /usr/share/ndoutils
 	doins -r db
 
 	# These need to be executable...
-	exeinto "/usr/share/${PN}/db"
+	exeinto /usr/share/ndoutils/db
 	doexe db/{installdb,prepsql,upgradedb}
 
 	# Use symlinks because the installdb/upgradedb scripts use relative
 	# paths to the SQL queries.
-	dosym "../share/${PN}/db/installdb" /usr/bin/ndoutils-installdb
-	dosym "../share/${PN}/db/upgradedb" /usr/bin/ndoutils-upgradedb
+	dosym ../share/ndoutils/db/installdb /usr/bin/ndoutils-installdb
+	dosym ../share/ndoutils/db/upgradedb /usr/bin/ndoutils-upgradedb
+
+	keepdir /var/lib/nagios
 }
 
 pkg_postinst() {
