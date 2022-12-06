@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit libtool multilib-minimal toolchain-funcs
+inherit gnuconfig libtool multilib-minimal toolchain-funcs
 
 MY_PV=${PV/_p*}
 MY_PV=${MY_PV/_/-}
@@ -47,6 +47,14 @@ PATCHES=(
 	"${FILESDIR}"/${P}-CVE-2021-43618.patch
 )
 
+pkg_pretend() {
+	if use cpudetection && ! use amd64 && ! use x86 ; then
+		elog "Using generic C implementation on non-amd64/x86 with USE=cpudetection"
+		elog "--enable-fat is a no-op on alternative arches."
+		elog "To obtain an optimized build, set USE=-cpudetection, but binpkgs should not then be made."
+	fi
+}
+
 src_prepare() {
 	default
 
@@ -68,6 +76,19 @@ src_prepare() {
 
 	# Patches to original configure might have lost the +x bit.
 	chmod a+rx configure{,.wrapped} || die
+
+	# Save the upstream files named config.{guess,sub} which are
+	# wrappers around the gnuconfig versions.
+	mkdir "${T}"/gmp-gnuconfig || die
+	mv config.guess "${T}"/gmp-gnuconfig/config.guess || die
+	mv config.sub "${T}"/gmp-gnuconfig/config.sub || die
+	# Grab fresh copies from gnuconfig.
+	touch config.guess config.sub || die
+	gnuconfig_update
+	# Rename the fresh copies to the filenames the wrappers from GMP
+	# expect.
+	mv config.guess configfsf.guess || die
+	mv config.sub configfsf.sub || die
 }
 
 multilib_src_configure() {
@@ -115,11 +136,9 @@ multilib_src_configure() {
 		$(use pic && echo --with-pic)
 	)
 
-	if use cpudetection && ! use amd64 && ! use x86 ; then
-		elog "Using generic C implementation on non-amd64/x86 with USE=cpudetection"
-		elog "--enable-fat is a no-op on alternative arches."
-		elog "To obtain an optimized build, set USE=-cpudetection, but binpkgs should not then be made."
-	fi
+	# Move the wrappers from GMP back into place (may have been destroyed by previous econf run)
+	cp "${T}"/gmp-gnuconfig/config.guess "${S}"/config.guess || die
+	cp "${T}"/gmp-gnuconfig/config.sub "${S}"/config.sub || die
 
 	# See bug #883201 again.
 	if ! use cpudetection && ! tc-is-cross-compiler ; then
@@ -131,6 +150,7 @@ multilib_src_configure() {
 
 		einfo "GMP guessed processor type: ${gmp_host}"
 		ewarn "This build will only work on this machine. Enable USE=cpudetection for binary packages!"
+		export ac_cv_build="${gmp_host}"
 		export ac_cv_host="${gmp_host}"
 	fi
 
