@@ -986,7 +986,7 @@ append-atomic-flags() {
 	# fails because -latomic is actually needed or if we have a
 	# broken toolchain (like due to bad FLAGS)
 	read -r -d '' code <<- EOF
-		int main()
+		int main(void)
 		{
 			return 0;
 		}
@@ -1007,7 +1007,7 @@ append-atomic-flags() {
 		# https://github.com/buildroot/buildroot/commit/6856e417da4f3aa77e2a814db2a89429af072f7d
 		read -r -d '' code <<- EOF
 			#include <stdint.h>
-			int main()
+			int main(void)
 			{
 				uint$((${bytesize} * 8))_t a = 0;
 				__atomic_add_fetch(&a, 3, __ATOMIC_RELAXED);
