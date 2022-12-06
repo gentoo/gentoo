@@ -25,23 +25,29 @@ BDEPEND="
 	dev-libs/libxslt
 "
 
+src_compile() {
+	cmake_src_compile -j1
+}
+
 src_install() {
 	local doc_type my_lang
 
 	for doc_type in manual guide; do
 		for my_lang in C "${L10N}"; do
+			[[ -z ${my_lang} ]] && continue
+
 			case "${my_lang}" in
 				# Both help and guides translated
 				C|de|it|pt) ;;
 				ja|ru) # Only guides translated
-					if [[ "${doc_type}" = "manual" ]] ; then
+					if [[ "${doc_type}" == "manual" ]] ; then
 						elog "Help documentation hasn't been translated for ${my_lang}"
 						elog "Will do English instead."
 						continue
 					fi
 					;;
 				*)
-					die "Invalid locale: $my_lang"
+					die "Invalid locale: ${my_lang}"
 					;;
 			esac
 
