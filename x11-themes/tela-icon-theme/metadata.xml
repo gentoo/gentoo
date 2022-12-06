@@ -20,6 +20,8 @@
 		<flag name="yellow">Install yellow folder version</flag>
 		<flag name="manjaro">Install manjaro folder version</flag>
 		<flag name="ubuntu">Install ubuntu folder version</flag>
+		<flag name="dracula">Install dracula folder version</flag>
+		<flag name="nord">Install nord folder version</flag>
 		<flag name="kde">Install colorshceme version for KDE plasma (folder color follow the colorscheme)</flag>
 		<flag name="hardlink">Hardlink duplicate icons to greatly reduce installation size</flag>
 	</use>
