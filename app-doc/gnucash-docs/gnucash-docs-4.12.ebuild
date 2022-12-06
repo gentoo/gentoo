@@ -33,7 +33,7 @@ src_install() {
 	local doc_type my_lang
 
 	for doc_type in manual guide; do
-		for my_lang in C "${L10N}"; do
+		for my_lang in C ${L10N}; do
 			[[ -z ${my_lang} ]] && continue
 
 			case "${my_lang}" in
