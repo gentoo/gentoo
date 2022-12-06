@@ -21,7 +21,7 @@ else
 		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 		S="${WORKDIR}/${P}.src"
 	fi
-	KEYWORDS="~amd64 ~arm64 ~ppc64 x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 fi
 
 SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${PN}-1.4-openssl3.patch.xz"
