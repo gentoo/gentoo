@@ -216,8 +216,10 @@ src_configure() {
 		$(usev !odbc ac_cv_lib_soname_odbc=)
 	)
 
-	tc-ld-force-bfd #867097
-	use custom-cflags || strip-flags # can break in obscure ways, also no lto
+	tc-ld-force-bfd # builds with non-bfd but broken at runtime (bug #867097)
+	filter-lto # build failure
+	use mingw || filter-flags -fno-plt # build failure
+	use custom-cflags || strip-flags # can break in obscure ways at runtime
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
 	# temporary workaround for tc-ld-force-bfd not yet enforcing with mold
