@@ -13,7 +13,6 @@ S=${WORKDIR}
 LICENSE="public-domain"
 SLOT="${PV}"
 KEYWORDS="~loong"
-PROPERTIES="live"
 IUSE="multilib-symlinks +native-symlinks"
 
 RDEPEND="
