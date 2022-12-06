@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,18 +13,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="net-libs/libpcap
-	>=net-libs/libnet-1.1.2.1-r2"
+DEPEND="
+	net-libs/libnet
+	net-libs/libpcap"
 RDEPEND="${DEPEND}"
-
-DOCS=(
-	AUTHORS
-	ChangeLog
-	NEWS
-	README
-	TODO
-	extras/dhcp_probe.cf.sample
-)
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.1-respect-AR.patch
@@ -50,7 +42,7 @@ src_configure() {
 src_install() {
 	default
 
-	dodoc "${FILESDIR}"/${PN}_mail
+	dodoc extras/dhcp_probe.cf.sample "${FILESDIR}"/${PN}_mail
 
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
