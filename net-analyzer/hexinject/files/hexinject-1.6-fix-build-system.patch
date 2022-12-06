@@ -1,18 +1,22 @@
 Author: holgersson <holgersson@posteo.de>
 Date:   Fri Oct 20 18:30:00 2017 +0200
 
-Don’t call gcc directly, and respect CFLAGS. As this project
-is plain C I don’t care fore CXXFLAGS here.
+Respect CC, CFLAGS, CPPFLAGS and LDFLAGS.
 
---- a/Makefile	2017-10-20 18:15:11.743805540 +0200
-+++ b/Makefile	2017-10-20 18:24:55.120009439 +0200
-@@ -1,6 +1,6 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,11 +1,7 @@
 -CC = gcc
 -CFLAGS = -Wall
 -LDFLAGS = -lpcap
-+CC ?= gcc
 +CFLAGS += -Wall
-+LDFLAGS = -lpcap
++LDLIBS = -lpcap
  
- all:
- 	$(CC) $(CFLAGS) $(LDFLAGS) -o hexinject hexinject.c
+-all:
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o hexinject hexinject.c
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o prettypacket prettypacket.c
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o hex2raw hex2raw.c
++all: hexinject prettypacket hex2raw
+ 
+ clean:
+ 	rm -f hexinject prettypacket hex2raw *~

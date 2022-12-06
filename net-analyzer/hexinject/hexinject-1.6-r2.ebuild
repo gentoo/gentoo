@@ -1,13 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit toolchain-funcs
 
 DESCRIPTION="Network packet sniffer and injector"
 HOMEPAGE="http://hexinject.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="BSD"
 SLOT="0"
@@ -18,13 +19,9 @@ DEPEND="net-libs/libpcap"
 RDEPEND="${DEPEND}
 	experimental? ( dev-lang/tcl )"
 
-S="${WORKDIR}/${PN}"
-
 PATCHES=( "${FILESDIR}"/${PN}-1.6-fix-build-system.patch )
 
 src_configure() {
-	default
-
 	tc-export CC
 }
 
