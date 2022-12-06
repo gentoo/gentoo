@@ -9,6 +9,7 @@ DESCRIPTION="Data files for NLTK"
 HOMEPAGE="https://www.nltk.org/nltk_data/"
 
 # at least some of the files have poorly documented licenses
+# https://github.com/nltk/nltk_data/issues/102
 # TODO: create a USE flag for free-ish subset
 LICENSE="all-rights-reserved"
 SLOT="0"
