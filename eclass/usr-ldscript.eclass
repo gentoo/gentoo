@@ -70,7 +70,7 @@ gen_usr_ldscript() {
 		# If they're using gold, manually invoke the old bfd. #487696
 		local d="${T}/bfd-linker"
 		mkdir -p "${d}"
-		ln -sf $(which ${CHOST}-ld.bfd) "${d}"/ld
+		ln -sf $(type -P ${CHOST}-ld.bfd) "${d}"/ld
 		flags+=( -B"${d}" )
 	fi
 	output_format=$($(tc-getCC) "${flags[@]}" 2>&1 | sed -n 's/^OUTPUT_FORMAT("\([^"]*\)",.*/\1/p')
