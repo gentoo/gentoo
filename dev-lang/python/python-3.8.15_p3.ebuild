@@ -186,7 +186,6 @@ src_configure() {
 	if tc-is-cross-compiler ; then
 		# Hack to workaround get_libdir not being able to handle CBUILD, bug #794181
 		local cbuild_libdir=$(unset PKG_CONFIG_PATH ; $(tc-getBUILD_PKG_CONFIG) --keep-system-libs --libs-only-L libffi)
-		append-flags "${cbuild_libdir}"
 
 		# pass system CFLAGS & LDFLAGS as _NODIST, otherwise they'll get
 		# propagated to sysconfig for built extensions
