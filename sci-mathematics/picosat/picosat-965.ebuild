@@ -13,12 +13,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 LICENSE="MIT"
 
+PATCHES=( "${FILESDIR}"/${P}-makefile.in.patch )
+
 src_configure() {
 	CC="$(tc-getCC)" sh ./configure.sh --shared --trace || die
 }
 
 src_compile() {
-	emake CFLAGS="${CFLAGS} ${LDFLAGS} -fPIC"
+	emake AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" \
+		CFLAGS="${CFLAGS} ${LDFLAGS} -fPIC"
 }
 
 src_install() {
