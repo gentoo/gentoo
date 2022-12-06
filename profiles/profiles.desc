@@ -162,12 +162,12 @@ ia64		default/linux/ia64/17.0/systemd/merged-usr			exp
 
 # LoongArch Profiles
 # @MAINTAINER: loong@gentoo.org
-loong		default/linux/loong/22.0/la64v100/lp64d					exp
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop				exp
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd			exp
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd/merged-usr	exp
-loong		default/linux/loong/22.0/la64v100/lp64d/systemd				exp
-loong		default/linux/loong/22.0/la64v100/lp64d/systemd/merged-usr		exp
+loong		default/linux/loong/22.0/la64v100/lp64d					stable
+loong		default/linux/loong/22.0/la64v100/lp64d/desktop				dev
+loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd			dev
+loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd/merged-usr	dev
+loong		default/linux/loong/22.0/la64v100/lp64d/systemd				stable
+loong		default/linux/loong/22.0/la64v100/lp64d/systemd/merged-usr		stable
 
 # M68K Profiles
 # @MAINTAINER: m68k@gentoo.org
