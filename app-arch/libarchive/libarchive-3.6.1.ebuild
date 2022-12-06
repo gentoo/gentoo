@@ -47,6 +47,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-glibc-2.36.patch
+	"${FILESDIR}"/${P}-CVE-2022-36227.patch
 )
 
 multilib_src_configure() {
