@@ -466,7 +466,7 @@ tc-ld-is-gold() {
 	# options and not CFLAGS/CXXFLAGS.
 	local base="${T}/test-tc-gold"
 	cat <<-EOF > "${base}.c"
-	int main() { return 0; }
+	int main(void) { return 0; }
 	EOF
 	out=$($(tc-getCC "$@") ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -Wl,--version "${base}.c" -o "${base}" 2>&1)
 	rm -f "${base}"*
@@ -499,7 +499,7 @@ tc-ld-is-lld() {
 	# options and not CFLAGS/CXXFLAGS.
 	local base="${T}/test-tc-lld"
 	cat <<-EOF > "${base}.c"
-	int main() { return 0; }
+	int main(void) { return 0; }
 	EOF
 	out=$($(tc-getCC "$@") ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -Wl,--version "${base}.c" -o "${base}" 2>&1)
 	rm -f "${base}"*
@@ -583,7 +583,7 @@ _tc-has-openmp() {
 	local base="${T}/test-tc-openmp"
 	cat <<-EOF > "${base}.c"
 	#include <omp.h>
-	int main() {
+	int main(void) {
 		int nthreads, tid, ret = 0;
 		#pragma omp parallel private(nthreads, tid)
 		{
