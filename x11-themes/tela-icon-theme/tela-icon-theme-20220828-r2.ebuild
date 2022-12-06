@@ -10,7 +10,7 @@ MY_PV="${PV:0:4}-${PV:4:2}-${PV:6:2}"
 MY_PN="${PN^}"
 
 # standard comes first
-MY_COLOR_VARIANTS=( standard black blue brown green grey orange pink purple red yellow manjaro ubuntu )
+MY_COLOR_VARIANTS=( standard black blue brown green grey orange pink purple red yellow manjaro ubuntu nord )
 
 inherit xdg
 
