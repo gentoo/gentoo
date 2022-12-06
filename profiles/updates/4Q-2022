@@ -12,3 +12,4 @@ move dev-lang/open-cobol dev-lang/gnucobol
 move dev-python/miniupnpc dev-python/python-miniupnpc
 move virtual/awk app-alternatives/awk
 move virtual/yacc app-alternatives/yacc
+slotmove sys-devel/autoconf-dickey 2.52_p20210509 2.52
