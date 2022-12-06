@@ -16,7 +16,7 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/pulseaudio/pulseaudio"
 else
 	SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -65,10 +65,6 @@ COMMON_DEPEND="
 	dev-libs/libatomic_ops
 	>=media-libs/libsndfile-1.0.20
 	>=media-libs/speexdsp-1.2
-	|| (
-		elibc_glibc? ( virtual/libc )
-		dev-libs/libpcre:3
-	)
 	alsa? ( >=media-libs/alsa-lib-1.0.24 )
 	aptx? ( ${gstreamer_deps} )
 	asyncns? ( >=net-libs/libasyncns-0.1 )
@@ -80,6 +76,7 @@ COMMON_DEPEND="
 	sys-kernel/linux-headers
 	>=sys-libs/libcap-2.22-r2
 	dbus? ( >=sys-apps/dbus-1.4.12 )
+	elibc_mingw? ( dev-libs/libpcre:3 )
 	elogind? ( sys-auth/elogind )
 	equalizer? (
 		sci-libs/fftw:3.0=
@@ -165,9 +162,6 @@ S="${WORKDIR}/${MY_P}"
 # patches merged upstream, to be removed with 16.2 or later bump
 PATCHES=(
 	"${FILESDIR}"/pulseaudio-16.0-optional-module-console-kit.patch
-	"${FILESDIR}"/pulseaudio-16.1-module-combine-sink-load-crash.patch
-	"${FILESDIR}"/pulseaudio-16.1-module-combine-sink-unload-crash.patch
-	"${FILESDIR}"/pulseaudio-16.1-move-qpaeq-to-daemon.patch
 )
 
 src_prepare() {
