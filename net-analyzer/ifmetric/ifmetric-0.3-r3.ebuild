@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Set metrics of all IPv4 routes attached to a given network interface at once"
 HOMEPAGE="http://0pointer.de/lennart/projects/ifmetric/"
@@ -13,15 +13,11 @@ KEYWORDS="~amd64 ~ppc x86"
 
 DEPEND="sys-kernel/linux-headers"
 
-DOCS=(
-	README
-	doc/README.html
-)
-
 PATCHES=(
 	"${FILESDIR}"/${P}-ul.patch
 	"${FILESDIR}"/${P}-replybuf.patch
 )
+HTML_DOCS=( doc/README.html )
 
 src_configure() {
 	# man page and HTML are already generated
