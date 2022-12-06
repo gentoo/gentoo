@@ -47,6 +47,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-glibc-2.36.patch
+	# https://github.com/libarchive/libarchive/pull/1759
+	"${FILESDIR}"/${P}-CVE-2022-36227.patch
 )
 
 multilib_src_configure() {
