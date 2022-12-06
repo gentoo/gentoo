@@ -1,12 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="Support for printing to ZjStream-based printers"
-HOMEPAGE="http://foo2zjs.rkkda.com/"
+COMMIT="e04290de6b7a30d588f3411fd9834618e09f7b9b"
+
+DESCRIPTION="support for printing to ZjStream-based printers"
+HOMEPAGE="https://github.com/koenkooi/foo2zjs"
+SRC_URI="https://github.com/koenkooi/foo2zjs/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,24 +18,32 @@ IUSE="test"
 
 RESTRICT="bindist !test? ( test )"
 
-RDEPEND="net-print/cups
+RDEPEND="
+	net-print/cups
 	net-print/foomatic-db-engine
 	>=net-print/cups-filters-1.0.43-r1[foomatic]
-	virtual/udev"
-DEPEND="${RDEPEND}
+	virtual/udev
+"
+
+DEPEND="
+	${RDEPEND}
 	app-arch/unzip
+	app-text/ghostscript-gpl
 	app-editors/vim
 	net-misc/wget
 	sys-apps/ed
 	sys-devel/bc
-	test? ( sys-process/time )"
+	test? ( sys-process/time )
+"
 
-SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz"
+PATCHES=(
+	"${FILESDIR}/${PN}-usbbackend.patch"
+	"${FILESDIR}/${PN}-udev.patch"
+)
+
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
-	eapply "${FILESDIR}/${PN}-udev.patch"\
-		"${FILESDIR}/${PN}-usbbackend.patch"
-
 	# Prevent an access violation.
 	sed -e "s~/etc~${D}/etc~g" -i Makefile || die
 	sed -e "s~/etc~${D}/etc~g" -i hplj1000 || die
@@ -46,6 +57,9 @@ src_prepare() {
 	sed -e '/rm .*LIBUDEVDIR)\//d' -i Makefile || die
 	sed -e '/rm .*lib\/udev\/rules.d\//d' -i hplj1000 || die
 
+	# Fix doc installation warning
+	sed -e 's@DOCDIR=$(PREFIX)/share/doc/foo2zjs/@DOCDIR=$(PREFIX)/share/doc/${PF}/@' -i Makefile || die
+
 	default
 }
 
@@ -54,8 +68,7 @@ src_compile() {
 }
 
 src_install() {
-	# ppd files are installed automagically. We have to create a directory
-	# for them.
+	# ppd files are installed automagically. We have to create a directory for them.
 	dodir /usr/share/ppd
 
 	emake DESTDIR="${D}" -j1 install install-hotplug

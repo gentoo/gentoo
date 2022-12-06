@@ -22,3 +22,4 @@ move net-print/ink media-print/ink
 move net-print/libinklevel media-print/libinklevel
 move net-print/splix media-print/splix
 move net-print/c2esp media-print/c2esp
+move net-print/foo2zjs media-print/foo2zjs
