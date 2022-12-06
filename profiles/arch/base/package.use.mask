@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2022-12-03)
+# Flag name collision.
+app-alternatives/vi -vis
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-01)
 # Only supported on ppc64le.
 sys-devel/gcc ieee-long-double
@@ -8,6 +12,7 @@ sys-devel/gcc ieee-long-double
 # Michał Górny <mgorny@gentoo.org> (2022-12-01)
 # Not widely keyworded.
 app-alternatives/awk nawk
+app-alternatives/vi elvis nvim pyvim vile vis xvile
 
 # Mike Gilbert <floppym@gentoo.org> (2022-10-16)
 # Only supported on MIPS.

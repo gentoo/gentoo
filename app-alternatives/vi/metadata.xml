@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="busybox">Symlink to <pkg>sys-apps/busybox</pkg></flag>
+		<flag name="elvis">Symlink to <pkg>app-editors/elvis</pkg></flag>
+		<flag name="gvim">Symlink to <pkg>app-editors/gvim</pkg></flag>
+		<flag name="nvim">Symlink to <pkg>app-editors/neovim</pkg></flag>
+		<flag name="pyvim">Symlink to <pkg>app-editors/pyvim</pkg></flag>
+		<flag name="vile">Symlink to <pkg>app-editors/vile</pkg></flag>
+		<flag name="vim">Symlink to <pkg>app-editors/vim</pkg></flag>
+		<flag name="vis">Symlink to <pkg>app-editors/vis</pkg></flag>
+		<flag name="xvile">Symlink to <pkg>app-editors/xvile</pkg></flag>
+	</use>
+</pkgmetadata>
