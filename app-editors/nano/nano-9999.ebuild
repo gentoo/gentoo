@@ -19,7 +19,7 @@ HOMEPAGE="https://www.nano-editor.org/ https://wiki.gentoo.org/wiki/Nano/Basics_
 
 LICENSE="GPL-3+ LGPL-2.1+ || ( GPL-3+ FDL-1.2+ )"
 SLOT="0"
-IUSE="debug justify magic minimal ncurses nls +spell +split-usr static unicode"
+IUSE="debug justify magic minimal ncurses nls +spell static unicode"
 
 LIB_DEPEND="
 	>=sys-libs/ncurses-5.9-r1:=[unicode(+)?]
@@ -97,8 +97,6 @@ src_install() {
 		insinto "${rcdir}"
 		newins "${FILESDIR}/gentoo.nanorc-r1" gentoo.nanorc
 	fi
-
-	use split-usr && dosym ../../bin/nano /usr/bin/nano
 }
 
 pkg_postrm() {
