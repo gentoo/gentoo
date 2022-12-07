@@ -27,9 +27,6 @@ DEPEND="${RDEPEND}
 	doc? ( app-text/xhtml1 )"
 
 DOCS=( ChangeLog NEWS README )
-# Remove the insane check for pecl-imagick which is only used in examples
-# and is not called upon in any build
-PATCHES=( "${FILESDIR}/remove-imagick-check.patch" )
 
 src_unpack() {
 	git-r3_src_unpack
