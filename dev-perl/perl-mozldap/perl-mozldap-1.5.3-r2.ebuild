@@ -21,7 +21,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 "
 BDEPEND="${RDEPEND}
-	sys-apps/sed
 "
 
 src_configure() {
