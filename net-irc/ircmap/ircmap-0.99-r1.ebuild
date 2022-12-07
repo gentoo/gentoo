@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,21 +6,17 @@ EAPI=7
 DESCRIPTION="Scripts to treate diagrams of IRC networks using the LINKS command"
 HOMEPAGE="http://pasky.or.cz/irc/"
 SRC_URI="http://pasky.or.cz/irc/${PN}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE=""
 
 RDEPEND="
 	media-gfx/graphviz
 	dev-lang/perl
 "
-BDEPEND="${RDEPEND}
-	>=sys-apps/sed-4
-"
-DEPEND=""
-
-S="${WORKDIR}"/${PN}
+BDEPEND="${RDEPEND}"
 
 src_compile() {
 	sed -i \
