@@ -656,7 +656,6 @@ kernel_is() {
 
 # Capture the sources type and set DEPENDs
 if [[ ${ETYPE} == sources ]]; then
-	BDEPEND="!build? ( sys-apps/sed )"
 	RDEPEND="!build? (
 		app-arch/cpio
 		dev-lang/perl
