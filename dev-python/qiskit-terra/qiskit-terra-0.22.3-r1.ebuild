@@ -141,7 +141,8 @@ QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/qiskit/_accelerate.*.so"
 distutils_enable_tests pytest
 
 src_prepare() {
-	find -name '*.py' -exec sed -i -e 's:retworkx:rustworkx:' {} + || die
+	find '(' -name '*.py' -o -name 'requirements.txt' ')' \
+		-exec sed -i -e 's:retworkx:rustworkx:' {} + || die
 	distutils-r1_src_prepare
 }
 
