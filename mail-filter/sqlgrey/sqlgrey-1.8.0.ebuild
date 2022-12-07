@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,8 +24,7 @@ RDEPEND="acct-user/sqlgrey
 	mysql? ( dev-perl/DBD-mysql )
 	postgres? ( dev-perl/DBD-Pg )
 	sqlite? ( dev-perl/DBD-SQLite )"
-DEPEND="${RDEPEND}
-	sys-apps/sed"
+DEPEND="${RDEPEND}"
 
 DOCS=( HOWTO FAQ README README.OPTINOUT README.PERF TODO Changelog )
 PATCHES=(
