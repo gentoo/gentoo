@@ -65,7 +65,6 @@ DEPEND="
 	sys-apps/hwloc:=
 	sys-apps/keyutils:=
 	sys-apps/util-linux:=
-	sys-apps/sed
 	sys-apps/util-linux
 	sys-libs/libcap-ng:=
 	sys-libs/ncurses:0=
