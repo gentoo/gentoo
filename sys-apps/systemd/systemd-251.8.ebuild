@@ -466,16 +466,15 @@ migrate_locale() {
 pkg_preinst() {
 	if ! use split-usr; then
 		local dir
-		for dir in bin sbin lib; do
-			if [[ ! ${EROOT}/${dir} -ef ${EROOT}/usr/${dir} ]]; then
-				eerror "\"${EROOT}/${dir}\" and \"${EROOT}/usr/${dir}\" are not merged."
-				eerror "One of them should be a symbolic link to the other one."
+		for dir in bin sbin lib usr/sbin; do
+			if [[ ! -L ${EROOT}/${dir} ]]; then
+				eerror "'${EROOT}/${dir}' is not a symbolic link."
 				FAIL=1
 			fi
 		done
 		if [[ ${FAIL} ]]; then
 			eerror "Migration to system layout with merged directories must be performed before"
-			eerror "rebuilding ${CATEGORY}/${PN} with USE=\"-split-usr\" to avoid run-time breakage."
+			eerror "installing ${CATEGORY}/${PN} with USE=\"-split-usr\" to avoid run-time breakage."
 			die "System layout with split directories still used"
 		fi
 	fi
