@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,19 +12,14 @@ MY_P=${MY_PN}_${MY_PV}
 DESCRIPTION="Monkey's Audio Codecs"
 HOMEPAGE="http://www.deb-multimedia.org/dists/testing/main/binary-amd64/package/monkeys-audio.php"
 SRC_URI="http://www.deb-multimedia.org/pool/main/m/monkeys-audio/${MY_P}.orig.tar.gz"
+S="${WORKDIR}/${MY_P/_/-}"
 
 LICENSE="mac"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ppc64 ~riscv sparc x86"
 IUSE="cpu_flags_x86_mmx static-libs"
 
-RDEPEND=""
-DEPEND="
-	sys-apps/sed
-	cpu_flags_x86_mmx? ( dev-lang/yasm )
-"
-
-S=${WORKDIR}/${MY_P/_/-}
+BDEPEND="cpu_flags_x86_mmx? ( dev-lang/yasm )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-output.patch
