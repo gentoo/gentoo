@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 name="Monitorix"
@@ -9,7 +9,7 @@ command_args="-c /etc/monitorix/monitorix.conf -p /var/run/$name.pid"
 pidfile=/var/run/monitorix.pid
 
 checkconfig() {
-    if [[ ! -e /etc/monitorix/monitorix.conf ]]; then
+    if [ ! -e /etc/monitorix/monitorix.conf ]; then
         eerror "Please check that the configuration file exists."
         return 1
     fi
