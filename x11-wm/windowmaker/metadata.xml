@@ -11,4 +11,7 @@
 			it."</flag>
 		<flag name="xrandr">Enable XRandR window extension support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">window-maker/wmaker</remote-id>
+	</upstream>
 </pkgmetadata>
