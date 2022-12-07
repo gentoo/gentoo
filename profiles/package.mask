@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Naohiro Aota <naota@gentoo.org> (2022-12-07)
+# Masked for removal in 30 days. Depends on gnome-base/gconf. Last release
+# in 2011. See bug #873880.
+sys-apps/gpet
+
 # David Seifert <soap@gentoo.org> (2022-12-06)
 # EAPI 6, untouched for years, no revdeps. Removal on 2023-01-05.
 media-video/nvidia-video-codec
