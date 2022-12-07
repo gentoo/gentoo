@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,8 +12,6 @@ LICENSE="BSD"
 KEYWORDS="~alpha amd64 ~ia64 ~mips ppc sparc x86"
 
 VIM_PLUGIN_HELPFILES="EnhancedCommentify"
-
-DEPEND="sys-apps/sed"
 
 # See bug #74897.
 RDEPEND="
