@@ -39,7 +39,6 @@ DEPEND="
 	test? ( dev-cpp/gtest )
 "
 BDEPEND="
-	sys-apps/sed
 	app-arch/xz-utils
 	sys-devel/flex
 	sys-devel/bison
