@@ -21,7 +21,8 @@ SLOT="0"
 
 BUILD_DIR="${S}/build"
 
-# Zig requires zstd and zlib compression support in LLVM, if using LLVM backend (non-LLVM backends don't require these).
+# Zig requires zstd and zlib compression support in LLVM, if using LLVM backend.
+# (non-LLVM backends don't require these)
 # They are not required "on their own", so please don't add them here.
 # You can check https://github.com/ziglang/zig-bootstrap in future, to see
 # options that are passed to LLVM CMake building (excluding "static" ofc).
@@ -39,11 +40,9 @@ RDEPEND="
 # see https://github.com/ziglang/zig/issues/3382
 QA_FLAGS_IGNORED="usr/bin/zig"
 
-# see https://ziglang.org/download/0.10.0/release-notes.html#Self-Hosted-Compiler
-# 0.10.0 release - 9.6 GiB, since we use compiler written in C++ for bootstrapping
-# 0.11.0 release - ~2.8 GiB, since we will (at least according to roadmap) use self-hosted compiler
-# (transpiled to C via C backend) for bootstrapping
-CHECKREQS_MEMORY="10G"
+# Since commit https://github.com/ziglang/zig/commit/e7d28344fa3ee81d6ad7ca5ce1f83d50d8502118
+# Zig uses self-hosted compiler only
+CHECKREQS_MEMORY="4G"
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"

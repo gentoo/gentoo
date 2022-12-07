@@ -21,7 +21,8 @@ SLOT="0"
 
 BUILD_DIR="${S}/build"
 
-# Zig requires zstd and zlib compression support in LLVM, if using LLVM backend (non-LLVM backends don't require these).
+# Zig requires zstd and zlib compression support in LLVM, if using LLVM backend.
+# (non-LLVM backends don't require these)
 # They are not required "on their own", so please don't add them here.
 # You can check https://github.com/ziglang/zig-bootstrap in future, to see
 # options that are passed to LLVM CMake building (excluding "static" ofc).
@@ -52,6 +53,9 @@ llvm_check_deps() {
 
 pkg_setup() {
 	llvm_pkg_setup
+	ewarn "This version requires 10G of memory for building compiler."
+	ewarn "If you don't have enough memory, you can wait until 0.11.0 release"
+	ewarn "or (if you are risky) use 9999 version (currently requires only 4GB)"
 	check-reqs_pkg_setup
 }
 
@@ -73,9 +77,10 @@ src_test() {
 pkg_postinst() {
 	elog "0.10.0 release introduces self-hosted compiler for general use by default"
 	elog "It means that your code can be un-compilable since this compiler has some new or removed features and new or fixed bugs"
-	elog "Upstream recommends using stage1 if experiencing such breakage,"
-	elog "until bugfix release 0.10.1 or release 0.11.0 where old compiler will be fully replaced"
-	elog "You can use old compiler by using '-fstage1' flag"
+	elog "Upstream recommends:"
+	elog " * Using old compiler if experiencing such breakage (flag '-fstage1')"
+	elog " * Waiting for bugfix release 0.10.1"
+	elog " * Waiting for release 0.11.0 with old compiler removed (these changes are already merged in 9999)"
 	elog "Also see: https://ziglang.org/download/0.10.0/release-notes.html#Self-Hosted-Compiler"
 	elog "and https://ziglang.org/download/0.10.0/release-notes.html#How-to-Upgrade"
 }
