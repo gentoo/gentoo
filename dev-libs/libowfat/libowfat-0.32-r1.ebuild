@@ -15,8 +15,7 @@ KEYWORDS="amd64 hppa sparc x86"
 IUSE="diet"
 
 RDEPEND="diet? ( >=dev-libs/dietlibc-0.33_pre20090721 )"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+DEPEND="${RDEPEND}"
 
 pkg_setup() {
 	# Required for mult/umult64.c to be usable
