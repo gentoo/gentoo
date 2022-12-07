@@ -85,7 +85,12 @@ DOCS=( docs/TODO HACKING.md NEWS.md README.md )
 
 QA_MULTILIB_PATHS="
 	usr/lib/polkit-1/polkit-agent-helper-1
-	usr/lib/polkit-1/polkitd"
+	usr/lib/polkit-1/polkitd
+"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-122-libs-only-postinstall.patch
+)
 
 python_check_deps() {
 	python_has_version "dev-python/dbus-python[${PYTHON_USEDEP}]" &&
