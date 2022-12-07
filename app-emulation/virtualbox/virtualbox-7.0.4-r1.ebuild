@@ -17,7 +17,8 @@ EAPI=8
 #  See bug #785835, bug #856121.
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
+inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature pax-utils \
+	python-single-r1 tmpfiles toolchain-funcs udev xdg
 
 MY_PN="VirtualBox"
 MY_P=${MY_PN}-${PV}
@@ -31,7 +32,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
-IUSE="alsa dbus debug doc dtrace +gui java lvm pam pch pulseaudio +opengl python +sdk +sdl +udev vboxwebsrv vnc"
+IUSE="alsa dbus debug doc dtrace +gui java lvm pam pch pulseaudio +opengl python +sdk +sdl +udev vboxwebsrv vde vnc"
 
 unset WATCOM #856769
 
@@ -74,6 +75,7 @@ COMMON_DEPEND="
 		x11-libs/libXt
 	)
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
+	vde? ( net-misc/vde )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )
 "
 # We're stuck on JDK (and JRE, I guess?) 1.8 because of need for wsimport
@@ -312,8 +314,11 @@ src_prepare() {
 
 	# 489208
 	# Cannot patch the whole text, many translations.  Use sed instead to replace the command
-	find src/VBox/Frontends/VirtualBox/nls -name \*.ts -exec sed -i 's/&apos;[^&]*\(vboxdrv setup\|vboxconfig\)&apos;/\&apos;emerge -1 virtualbox-modules\&apos;/' {} \+ || die
-	sed -i "s:'/sbin/vboxconfig':'emerge -1 virtualbox-modules':" src/VBox/Frontends/VirtualBox/src/main.cpp src/VBox/VMM/VMMR3/VM.cpp
+	find src/VBox/Frontends/VirtualBox/nls -name \*.ts -exec sed -i \
+		's/&apos;[^&]*\(vboxdrv setup\|vboxconfig\)&apos;/\&apos;emerge -1 virtualbox-modules\&apos;/' {} \+ || die
+	sed -i "s:'/sbin/vboxconfig':'emerge -1 virtualbox-modules':" \
+		src/VBox/Frontends/VirtualBox/src/main.cpp \
+		src/VBox/VMM/VMMR3/VM.cpp || die
 }
 
 src_configure() {
@@ -328,23 +333,24 @@ src_configure() {
 
 		--disable-kmods
 
-		$(usex alsa '' --disable-alsa)
-		$(usex dbus '' --disable-dbus)
-		$(usex debug --build-debug '')
-		$(usex doc '' --disable-docs)
-		$(usex java '' --disable-java)
-		$(usex lvm '' --disable-devmapper)
-		$(usex pulseaudio '' --disable-pulse)
-		$(usex python '' --disable-python)
-		$(usex vboxwebsrv --enable-webservice '')
-		$(usex vnc --enable-vnc '')
+		$(usev !alsa --disable-alsa)
+		$(usev !dbus --disable-dbus)
+		$(usev debug --build-debug)
+		$(usev !doc --disable-docs)
+		$(usev !java --disable-java)
+		$(usev !lvm --disable-devmapper)
+		$(usev !pulseaudio --disable-pulse)
+		$(usev !python --disable-python)
+		$(usev vboxwebsrv --enable-webservice)
+		$(usev vde --enable-vde)
+		$(usev vnc --enable-vnc)
 	)
 
 	if use gui || use sdl || use opengl; then
 		myconf+=(
-			$(usex opengl '' --disable-opengl)
-			$(usex gui '' --disable-qt)
-			$(usex sdl '' --disable-sdl)
+			$(usev !opengl --disable-opengl)
+			$(usev !gui --disable-qt)
+			$(usev !sdl --disable-sdl)
 		)
 	else
 		myconf+=(
@@ -494,7 +500,8 @@ src_install() {
 	insinto ${vbox_inst_path}
 	doins -r components
 
-	for each in VBox{Autostart,BalloonCtrl,BugReport,CpuReport,ExtPackHelperApp,Manage,SVC,VMMPreload,XPCOMIPCD} vboximg-mount vbox-img *so *r0; do
+	for each in VBox{Autostart,BalloonCtrl,BugReport,CpuReport,ExtPackHelperApp,Manage,SVC,VMMPreload,XPCOMIPCD} \
+		vboximg-mount vbox-img *so *r0; do
 		vbox_inst ${each}
 	done
 
@@ -515,8 +522,9 @@ src_install() {
 	done
 
 	# Symlink binaries to the shipped wrapper
-	for each in vbox{autostart,balloonctrl,bugreport,headless,manage} VBox{Autostart,BalloonCtrl,BugReport,Headless,Manage,VRDP} ; do
-		dosym ${vbox_inst_path}/VBox /usr/bin/${each}
+	for each in vbox{autostart,balloonctrl,bugreport,headless,manage} \
+		VBox{Autostart,BalloonCtrl,BugReport,Headless,Manage,VRDP} ; do
+			dosym ${vbox_inst_path}/VBox /usr/bin/${each}
 	done
 	dosym ${vbox_inst_path}/vboximg-mount /usr/bin/vboximg-mount
 	dosym ${vbox_inst_path}/vbox-img /usr/bin/vbox-img
