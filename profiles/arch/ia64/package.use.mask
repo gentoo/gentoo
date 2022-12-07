@@ -496,7 +496,7 @@ x11-wm/fvwm lock
 dev-lisp/clisp hyperspec svm
 
 # missing keywords
-media-plugins/gst-plugins-meta dts dv lame libvisual modplug taglib vcd wavpack
+media-plugins/gst-plugins-meta dts dv lame libvisual modplug jack taglib vcd wavpack
 
 # Marius Brehler <marfbre@linux.sungazer.de> (2015-08-13)
 # missing keyword
