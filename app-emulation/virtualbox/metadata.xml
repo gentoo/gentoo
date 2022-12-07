@@ -13,5 +13,6 @@
   <flag name="sdk">Enable building of SDK</flag>
   <flag name="udev">Controls installation of special USB udev rules.</flag>
   <flag name="vboxwebsrv">Build and install the VirtualBox webservice</flag>
+  <flag name="vde">Support for VDE networking via <pkg>net-misc/vde</pkg></flag>
 </use>
 </pkgmetadata>
