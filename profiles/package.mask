@@ -159,6 +159,7 @@ dev-util/cucumber-core:3.2
 dev-util/cucumber-expressions
 dev-util/cucumber-tag_expressions
 dev-util/cucumber-wire:0
+dev-util/protobuf-cucumber
 
 # Hans de Graaff <graaff@gentoo.org> (2022-12-01)
 # Old slot without dependencies on it. Blocks removal of
