@@ -1,7 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
+inherit perl-functions
 
 DESCRIPTION="onis not irc stats"
 HOMEPAGE="http://verplant.org/onis/"
@@ -12,9 +14,9 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND="dev-lang/perl"
-DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/0.6.0-nochdir.patch" )
+PATCHES=( "${FILESDIR}"/0.6.0-nochdir.patch )
 
 src_prepare() {
 	default
@@ -22,17 +24,15 @@ src_prepare() {
 }
 
 src_install() {
-	eval $(perl -V:installprivlib)
-
 	dobin onis
 
-	insinto "${installprivlib}"
-	doins -r lib/Onis
+	perl_domodule -r lib/Onis
 
 	insinto /usr/share/onis
-	doins -r lang reports/*
+	doins -r lang reports/.
 
-	dodoc CHANGELOG README THANKS onis.conf users.conf
+	einstalldocs
+	dodoc onis.conf users.conf
 }
 
 pkg_postinst() {
