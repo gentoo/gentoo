@@ -14,9 +14,7 @@ KEYWORDS="~alpha amd64 arm64 ~hppa ~ia64 ~ppc ppc64 x86"
 IUSE="+ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"
-DEPEND="${RDEPEND}
-	sys-apps/sed
-"
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}"-1.1-make.patch ) # Fix building on FreeBSD
 
