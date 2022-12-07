@@ -33,7 +33,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	>=sys-apps/sed-4
 	app-alternatives/awk
 	cpu_flags_x86_mmx? ( dev-lang/nasm )
 "
