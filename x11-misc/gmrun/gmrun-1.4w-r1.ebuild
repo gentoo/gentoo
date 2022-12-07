@@ -3,7 +3,7 @@
 
 EAPI=8
 
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/WdesktopX/${PN}.git"
 	EGIT_BRANCH="master"
@@ -17,20 +17,15 @@ HOMEPAGE="https://github.com/wdlkmpx/gmrun"
 
 LICENSE="ISC"
 SLOT="0"
-IUSE="elibc_glibc nls xdg"
+IUSE="nls xdg"
 
-RDEPEND="
-	x11-libs/gtk+:3
-"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	elibc_glibc? ( >=sys-libs/glibc-2.10 )"
+RDEPEND="x11-libs/gtk+:3"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
-	econf --disable-gtk2 $(use_enable nls) $(use_enable xdg)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc AUTHORS ChangeLog README.md
+	econf \
+		--disable-gtk2 \
+		$(use_enable nls) \
+		$(use_enable xdg)
 }
