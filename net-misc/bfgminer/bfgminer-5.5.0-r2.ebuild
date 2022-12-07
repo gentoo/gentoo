@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -102,7 +102,6 @@ RDEPEND="${DEPEND}
 DEPEND="${DEPEND}
 	virtual/pkgconfig
 	>=dev-libs/uthash-1.9.7
-	sys-apps/sed
 	cpumining? (
 		amd64? (
 			>=dev-lang/yasm-1.0.1
