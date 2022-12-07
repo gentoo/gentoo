@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic systemd
 
 DESCRIPTION="High-performance authoritative-only DNS server"
-HOMEPAGE="https://www.knot-dns.cz/"
+HOMEPAGE="https://www.knot-dns.cz/ https://gitlab.nic.cz/knot/knot-dns"
 SRC_URI="https://secure.nic.cz/files/knot-dns/${P/_/-}.tar.xz"
 
 LICENSE="GPL-3+"
