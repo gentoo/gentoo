@@ -1,0 +1,46 @@
+From 2b0a0fcde875a89e2beffbe5c43c7518f682b482 Mon Sep 17 00:00:00 2001
+From: Christophe Grenier <grenier@cgsecurity.org>
+Date: Wed, 6 Apr 2022 07:43:45 +0200
+Subject: [PATCH] src/ntfs_io.c: fix ntfs_device_testdisk_io_ioctl() prototype
+ for ntfs-3g
+
+---
+Gentoo note: link to upstream commit:
+https://git.cgsecurity.org/cgit/testdisk/commit/?id=2b0a0fcde875a89e2beffbe5c43c7518f682b482
+
+ src/ntfs_io.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/src/ntfs_io.c b/src/ntfs_io.c
+index 5ca494a5..fa056724 100644
+--- a/src/ntfs_io.c
++++ b/src/ntfs_io.c
+@@ -159,6 +159,7 @@ static int ntfs_device_testdisk_io_stat(struct ntfs_device *dev, struct stat *bu
+ 	return -1;
+ }
+ 
++#ifdef HAVE_LIBNTFS
+ static int ntfs_device_testdisk_io_ioctl(struct ntfs_device *dev, int request,
+ 		void *argp)
+ {
+@@ -168,6 +169,17 @@ static int ntfs_device_testdisk_io_ioctl(struct ntfs_device *dev, int request,
+ #endif
+ 	return -1;
+ }
++#else
++static int ntfs_device_testdisk_io_ioctl(struct ntfs_device *dev, unsigned long request,
++		void *argp)
++{
++	log_warning( "ntfs_device_testdisk_io_ioctl() unimplemented\n");
++#ifdef ENOTSUP
++	errno = ENOTSUP;
++#endif
++	return -1;
++}
++#endif
+ 
+ /**
+  * Device operations for working with unix style devices and files.
+-- 
+2.37.4
+
