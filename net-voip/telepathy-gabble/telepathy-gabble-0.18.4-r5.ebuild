@@ -1,7 +1,8 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 # Python is used during build for some scripted source files generation (and twisted tests)
 PYTHON_COMPAT=( python3_{8..11} )
 
@@ -45,7 +46,8 @@ RDEPEND="
 
 	!<net-im/telepathy-mission-control-5.5.0
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	${PYTHON_DEPS}
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.17
@@ -65,10 +67,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-openssl-1.1.patch # bug #658902
 	"${DISTDIR}"/${P}-python3.patch
 )
-
-pkg_setup() {
-	python-any-r1_pkg_setup
-}
 
 src_configure() {
 	gnome2_src_configure \
