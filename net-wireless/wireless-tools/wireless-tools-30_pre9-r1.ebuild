@@ -18,10 +18,6 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="multicall"
 
-BDEPEND="sys-apps/sed"
-DEPEND=""
-RDEPEND=""
-
 PATCHES=("${FILESDIR}"/${PN}-29-asneeded.patch)
 
 src_prepare() {
