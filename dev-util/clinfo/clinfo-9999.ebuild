@@ -14,9 +14,9 @@ fi
 
 DESCRIPTION="A tool to display info about the system's OpenCL capabilities"
 HOMEPAGE="https://github.com/Oblomov/clinfo"
+
 LICENSE="CC0-1.0"
 SLOT="0"
-
 DEPEND=">=virtual/opencl-3"
 RDEPEND="${DEPEND}"
 

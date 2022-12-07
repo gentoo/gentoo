@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,9 +14,9 @@ fi
 
 DESCRIPTION="A tool to display info about the system's OpenCL capabilities"
 HOMEPAGE="https://github.com/Oblomov/clinfo"
+
 LICENSE="CC0-1.0"
 SLOT="0"
-
 DEPEND=">=virtual/opencl-3"
 RDEPEND="${DEPEND}"
 
