@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2022-12-07)
+# Formerly added to apply binary git patches to wine-staging without git, but
+# has not been used since 2017 and stuck on EAPI-6. Alternatives: dev-vcs/git
+# Removal: 2023-01-06.
+dev-util/patchbin
+
 # Sam James <sam@gentoo.org> (2022-12-07)
 # HOMEPAGE & remote-id are for a different project, SRC_URI is gone,
 # only results on Google are for Gentoo mirrors, EAPI 6. Removal on 2023-01-07.
