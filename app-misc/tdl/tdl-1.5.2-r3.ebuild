@@ -22,7 +22,6 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	sys-apps/sed
 	sys-apps/texinfo
 	doc? ( virtual/texi2dvi )"
 
