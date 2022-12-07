@@ -44,7 +44,7 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-solaris"
 
-COMMON_DEPEND=">=sys-apps/sed-4.0.5
+COMMON_DEPEND="
 	dev-libs/libpcre2:=
 	tdb? ( sys-libs/tdb:= )
 	!tdb? ( berkdb? ( >=sys-libs/db-3.2:= <sys-libs/db-6:= ) )

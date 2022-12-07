@@ -41,7 +41,7 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~ppc ppc64 sparc x86 ~x86-solaris"
 
-COMMON_DEPEND=">=sys-apps/sed-4.0.5
+COMMON_DEPEND="
 	( >=sys-libs/db-3.2:= <sys-libs/db-6:= )
 	dev-libs/libpcre
 	idn? ( net-dns/libidn:= net-dns/libidn2:= )
