@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-12-07)
+# Needs unstable media-libs/oneVPL
+media-libs/gst-plugins-bad qsv
+
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
 # Dependency media-libs/intel-hybrid-codec-driver is only available on unstable
 # branch
