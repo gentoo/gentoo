@@ -48,8 +48,7 @@ SLOT="0"
 KEYWORDS="-* ~alpha"
 IUSE=""
 
-DEPEND="sys-apps/kbd
-	>=sys-apps/sed-4"
+DEPEND="sys-apps/kbd"
 RDEPEND="sys-fs/mtools"
 
 S=${WORKDIR}/milo-${milo_version}
