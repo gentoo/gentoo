@@ -111,7 +111,6 @@ BDEPEND="
 	dev-util/valgrind
 	sys-apps/coreutils
 	sys-apps/grep
-	sys-apps/sed
 	sys-apps/which
 	sys-devel/bc
 	sys-devel/patch
