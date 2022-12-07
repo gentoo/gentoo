@@ -118,7 +118,6 @@ BDEPEND="
 	dev-util/valgrind
 	sys-apps/coreutils
 	sys-apps/grep
-	sys-apps/sed
 	sys-apps/util-linux
 	sys-apps/which
 	sys-devel/bc
