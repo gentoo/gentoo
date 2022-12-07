@@ -6,7 +6,10 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="Memory efficient serialization library"
-HOMEPAGE="https://google.github.io/flatbuffers/"
+HOMEPAGE="
+	https://google.github.io/flatbuffers/
+	https://github.com/google/flatbuffers/
+"
 SRC_URI="
 	https://github.com/google/flatbuffers/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
