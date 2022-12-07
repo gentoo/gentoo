@@ -35,7 +35,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-util/intltool
-	sys-apps/sed
 	virtual/pkgconfig
 	doc? ( dev-libs/libxslt )"
 
