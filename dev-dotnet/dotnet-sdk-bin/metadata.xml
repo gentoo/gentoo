@@ -12,7 +12,7 @@
     </flag>
   </use>
   <upstream>
-    <doc>https://docs.microsoft.com/en-us/dotnet/</doc>
+    <doc>https://learn.microsoft.com/en-us/dotnet/</doc>
     <remote-id type="github">dotnet/sdk</remote-id>
   </upstream>
 </pkgmetadata>
