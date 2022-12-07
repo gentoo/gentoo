@@ -14,6 +14,7 @@ IUSE="debug +munge pmi"
 
 RDEPEND="
 	dev-libs/libevent:=
+	sys-apps/hwloc:=
 	sys-cluster/ucx
 	sys-libs/zlib:=
 	munge? ( sys-auth/munge )
@@ -26,4 +27,11 @@ src_configure() {
 		--disable-werror \
 		$(use_enable debug) \
 		$(use_with munge)
+}
+
+src_install() {
+	default
+
+	# bug #884765
+	mv "${ED}"/usr/bin/pquery "${ED}"/usr/bin/pmix-pquery || die
 }
