@@ -652,6 +652,7 @@ linux-mod_src_compile() {
 			einfo "Preparing ${modulename} module"
 			if [[ -n ${ECONF_PARAMS} ]]
 			then
+				eqawarn "This package relies on the deprecated functionality of econf being called in linux-mod_src_compile (ECONF_PARAMS), which will go away in 30 days (20230107) (https://bugs.gentoo.org/340597)"
 				econf ${ECONF_PARAMS} || \
 				die "Unable to run econf ${ECONF_PARAMS}"
 			fi
