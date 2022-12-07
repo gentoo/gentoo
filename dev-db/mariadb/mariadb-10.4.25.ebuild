@@ -45,7 +45,6 @@ COMMON_DEPEND="
 		sys-process/procps:0=
 		dev-libs/libaio:0=
 	)
-	>=sys-apps/sed-4
 	>=sys-apps/texinfo-4.7-r1
 	jemalloc? ( dev-libs/jemalloc:0= )
 	tcmalloc? ( dev-util/google-perftools:0= )
