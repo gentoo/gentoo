@@ -10,6 +10,7 @@
 		<flag name="ice">Use <pkg>dev-libs/Ice</pkg> to enable remote control capabilities.</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">mumble-voip/mumble</remote-id>
 		<remote-id type="sourceforge">mumble</remote-id>
 	</upstream>
 </pkgmetadata>
