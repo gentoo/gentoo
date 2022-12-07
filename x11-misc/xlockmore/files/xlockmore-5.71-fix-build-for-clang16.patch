@@ -1,0 +1,28 @@
+Clang16 will not allow assigning imcompatbile function pointer types.
+Therefore this patch adds casts to the function pointers.
+
+Bug: https://bugs.gentoo.org/880909
+This patch has been sent to upstream via mail. 
+
+Pascal Jäger <pascal.jaeger@leimstift.de> (2022-12-07)
+
+--- a/xlock/vtlock_proc.c
++++ b/xlock/vtlock_proc.c
+@@ -188,7 +188,7 @@ find_x_proc(int disp_nr, dev_t lxdev, ino_t lxino)
+     lencmd = strlen(xcmd_ref);
+     if ( stat( PROCDIR, &stbuf ) == -1 ) return( (pid_t)-1 );
+     namelist = (struct dirent **) malloc(sizeof (struct dirent *));
+-    if ((names = scan_dir(PROCDIR, &namelist, proc_dir_select, alphasort)) == -1 )
++    if ((names = scan_dir(PROCDIR, &namelist, proc_dir_select, (int (*)(const void *, const void *))alphasort)) == -1 )
+     {
+       free(namelist);
+       return( (pid_t)-1 );
+@@ -301,7 +301,7 @@ scan_x_fds( struct inode_ref *inotab, int ln_ttys, pid_t proc )
+ 
+     (void) sprintf(xfddir, PROCDIR "/%d/fd", proc);
+     namelist = (struct dirent **) malloc(sizeof (struct dirent *));
+-    if (scan_dir(xfddir, &namelist, NULL, alphasort) == -1) {
++    if (scan_dir(xfddir, &namelist, NULL, (int (*)(const void *, const void *))alphasort) == -1) {
+         free(namelist);
+         return 0;
+     }
