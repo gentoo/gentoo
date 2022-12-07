@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-12-07)
+# These versions have been masked for testing since 2014(!). These versions
+# had a controversial licence change and therefore had limited adoption.
+# See also the old 2021-05-30-deprecate-old-bdb-slots news item for
+# additional context.
+# Removal on 2023-01-07.
+=sys-libs/db-6.1*
+=sys-libs/db-6.2*
+=sys-libs/db-18.1*
+
 # Naohiro Aota <naota@gentoo.org> (2022-12-07)
 # Masked for removal in 30 days. Depends on gnome-base/gconf. Last release
 # in 2011. See bug #873880.
@@ -823,15 +833,6 @@ app-office/texmacs
 # people may still find it useful. It is masked to prevent accidental
 # use. See bugs 603346 and 604998 for more information.
 app-admin/amazon-ec2-init
-
-# Robin H. Johnson <robbat2@gentoo.org> (2014-08-04)
-# Masked for testing, presently fails upstream testsuite:
-# FAIL:07:02:35 (00:00:00) db_dump/db_load(./TESTDIR.3/recd001.db:child killed: kill signal): expected 0, got 1
-# FAIL:07:02:35 (00:00:00) Dump/load of ./TESTDIR.3/recd001.db failed.
-# FAIL:07:02:35 (00:00:00) db_verify_preop: expected 0, got 1
-=sys-libs/db-6.1*
-=sys-libs/db-6.2*
-=sys-libs/db-18.1*
 
 # Mike Gilbert <floppym@gentoo.org> (2014-03-04)
 # Dev channel releases are only for people who are developers or want more
