@@ -5,9 +5,9 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="sqlite,threads(+)"
-DISTUTILS_SINGLE_IMPL=true
-DISTUTILS_USE_SETUPTOOLS=no
-inherit distutils-r1
+DISTUTILS_SINGLE_IMPL=yes
+DISTUTILS_USE_PEP517=setuptools
+inherit distutils-r1 bash-completion-r1
 
 DESCRIPTION="C++ man pages for Linux, with source from cplusplus.com and cppreference.com"
 HOMEPAGE="https://github.com/aitjcize/cppman"
@@ -26,8 +26,21 @@ RDEPEND="
 "
 
 src_prepare() {
-	default
+	# Install data manually, nearly all of it is misplaced
+	sed -i '/data_files = _data_files,/d' setup.py || die
 
-	# Don't allow setup.py to install documentation directly
-	sed -i '\:share/doc/cppman:d' setup.py || die "sed failed"
+	distutils-r1_src_prepare
+}
+
+src_install() {
+	distutils-r1_src_install
+	doman misc/cppman.1
+
+	newbashcomp misc/completions/cppman.bash cppman
+
+	insinto /usr/share/zsh/site-functions
+	doins misc/completions/zsh/_cppman
+
+	insinto /usr/share/fish/vendor_completions.d
+	doins misc/completions/fish/cppman.fish
 }
