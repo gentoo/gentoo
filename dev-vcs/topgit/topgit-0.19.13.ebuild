@@ -14,7 +14,6 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 BDEPEND="dev-lang/perl
-	sys-apps/sed
 	app-alternatives/awk"
 RDEPEND=">=dev-vcs/git-2.10.0"
 IUSE="test"
