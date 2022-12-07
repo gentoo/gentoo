@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 [[ ${PV} == *9999 ]] && GNOME2_EAUTORECONF=yes
 
@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/xournal/code"
 	unset SRC_URI
 else
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 fi
 
@@ -21,9 +21,9 @@ HOMEPAGE="http://xournal.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+pdf"
+IUSE="+pdf vanilla"
 
-COMMONDEPEND="
+DEPEND="
 	app-text/poppler[cairo]
 	dev-libs/atk
 	dev-libs/glib
@@ -36,16 +36,23 @@ COMMONDEPEND="
 	x11-libs/gtk+:2
 	x11-libs/pango
 "
-RDEPEND="${COMMONDEPEND}
+RDEPEND="
+	${DEPEND}
 	pdf? ( app-text/poppler[utils] app-text/ghostscript-gpl )
 "
-DEPEND="${COMMONDEPEND}
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
+
+src_prepare() {
+	default
+
+	if ! use vanilla; then
+		eapply "${FILESDIR}"/xournal-0.4.8-aspectratio.patch
+	fi
+}
 
 src_install() {
-	default
-	emake DESTDIR="${D}" desktop-install
+	emake DESTDIR="${D}" install desktop-install
 
+	dodoc ChangeLog AUTHORS README
 	dodoc -r html-doc/*
 }
