@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>cedk@gentoo.org</email>
+		<name>Cédric Krier</name>
 	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>nrk@disroot.org</email>
@@ -12,13 +13,13 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<upstream>
-		<bugs-to>mailto:hiltjo@codemadness.org</bugs-to>
-	</upstream>
 	<use>
 		<flag name="theme-mono">Use mono theme</flag>
 		<flag name="theme-mono-highlight">Use mono_highlight theme</flag>
 		<flag name="theme-newsboat">Use newsboat theme</flag>
 		<flag name="theme-templeos">Use templeos theme</flag>
 	</use>
+	<upstream>
+		<bugs-to>mailto:hiltjo@codemadness.org</bugs-to>
+	</upstream>
 </pkgmetadata>
