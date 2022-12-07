@@ -43,9 +43,11 @@ amd64		default/linux/amd64/17.1/no-multilib/hardened/selinux		stable
 amd64		default/linux/amd64/17.1/no-multilib/systemd			dev
 amd64		default/linux/amd64/17.1/no-multilib/systemd/merged-usr		dev
 amd64		default/linux/amd64/17.1/no-multilib/systemd/selinux		exp
+amd64		default/linux/amd64/17.1/no-multilib/systemd/selinux/merged-usr		exp
 amd64		default/linux/amd64/17.1/systemd				stable
 amd64		default/linux/amd64/17.1/systemd/merged-usr			stable
 amd64		default/linux/amd64/17.1/systemd/selinux			exp
+amd64		default/linux/amd64/17.1/systemd/selinux/merged-usr			exp
 amd64		default/linux/amd64/17.1/clang					exp
 amd64		default/linux/amd64/17.1/systemd/clang				exp
 amd64		default/linux/amd64/17.1/systemd/clang/merged-usr		exp
@@ -129,6 +131,7 @@ arm64		default/linux/arm64/17.0/developer				exp
 arm64		default/linux/arm64/17.0/systemd				stable
 arm64		default/linux/arm64/17.0/systemd/merged-usr			stable
 arm64		default/linux/arm64/17.0/systemd/selinux			exp
+arm64		default/linux/arm64/17.0/systemd/selinux/merged-usr			exp
 arm64		default/linux/arm64/17.0/llvm					exp
 arm64		default/linux/arm64/17.0/systemd/llvm				exp
 arm64		default/linux/arm64/17.0/systemd/llvm/merged-usr		exp
