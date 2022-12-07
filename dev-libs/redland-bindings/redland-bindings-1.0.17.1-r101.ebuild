@@ -27,8 +27,7 @@ REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
-BDEPEND="sys-apps/sed
-	virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 RDEPEND="dev-libs/redland
 	lua? ( ${LUA_DEPS} )
