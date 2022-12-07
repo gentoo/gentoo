@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-12-07)
+# HOMEPAGE & remote-id are for a different project, SRC_URI is gone,
+# only results on Google are for Gentoo mirrors, EAPI 6. Removal on 2023-01-07.
+# bug #630264, bug #655964, bug #750071.
+dev-vcs/git-pimp
+
+# Sam James <sam@gentoo.org> (2022-12-07)
 # These versions have been masked for testing since 2014(!). These versions
 # had a controversial licence change and therefore had limited adoption.
 # See also the old 2021-05-30-deprecate-old-bdb-slots news item for
