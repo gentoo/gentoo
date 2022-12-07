@@ -164,12 +164,12 @@ pkg_setup() {
 	fi
 
 	if kernel_is -ge 5 18 13; then
-		# https://github.com/NVIDIA/open-gpu-kernel-modules/issues/341
 		if linux_chkconfig_present FB_SIMPLE; then
 			warn+=(
-				"  CONFIG_FB_SIMPLE: is set, recommended to disable and switch to FB_EFI"
-				"    as it is currently known broken with >=kernel-5.18.13 + NVIDIA."
+				"  CONFIG_FB_SIMPLE: is set, recommended to disable and switch to FB_EFI or"
+				"    FB_VESA as it currently may be broken with >=kernel-5.18.13 + NVIDIA:"
 				"    https://github.com/NVIDIA/open-gpu-kernel-modules/issues/341"
+				"    (feel free to ignore this if it works for you)"
 			)
 		fi
 
