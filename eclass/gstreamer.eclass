@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gstreamer.eclass
@@ -95,7 +95,6 @@ RDEPEND="
 	>=media-libs/gstreamer-${GST_MIN_PV}:${SLOT}[${MULTILIB_USEDEP}]
 "
 DEPEND="
-	>=sys-apps/sed-4
 	virtual/pkgconfig
 "
 
