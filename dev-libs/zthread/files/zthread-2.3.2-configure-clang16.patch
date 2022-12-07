@@ -1,0 +1,22 @@
+pthread_yield needs GNU_SOURCE (missing in the test here), but pthread_yield
+is both deprecated and also not actually used (even conditionally!) in zthread,
+so let's just drop the test.
+
+(zthread uses sched_yield conditionally, however.)
+--- a/share/pthread.m4
++++ b/share/pthread.m4
+@@ -128,14 +128,6 @@ pthread_explicit="no"
+       AC_DEFINE(HAVE_SCHED_YIELD,,[Defined if sched_yield() is available]) ],  
+     [ AC_MSG_RESULT(no) ])
+ 
+-  dnl Check for pthread_yield
+-  AC_MSG_CHECKING(for pthread_yield);
+-  AC_TRY_LINK([#include <pthread.h>],
+-    [ pthread_yield(); ], 
+-    [ AC_MSG_RESULT(yes)
+-      AC_DEFINE(HAVE_PTHREAD_YIELD,,[Defined if pthread_yield() is available]) ],  
+-    [ AC_MSG_RESULT(no) ])
+-
+   dnl Check for pthread_key_create
+   AC_MSG_CHECKING(for pthread_key_create)
+   AC_TRY_LINK([#include <pthread.h>],

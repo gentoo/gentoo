@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -25,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-automake-r2.patch
 	"${FILESDIR}"/${P}-gcc47.patch
 	"${FILESDIR}"/${P}-clang.patch
+	"${FILESDIR}"/${P}-configure-clang16.patch
 )
 
 src_prepare() {
@@ -41,8 +42,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable debug) \
-		$(use_enable kernel_linux atomic-linux) \
-		--disable-static
+		$(use_enable kernel_linux atomic-linux)
 }
 
 src_compile() {
