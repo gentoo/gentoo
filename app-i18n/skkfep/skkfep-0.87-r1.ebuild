@@ -17,7 +17,7 @@ IUSE=""
 DEPEND="sys-libs/ncurses:="
 RDEPEND="${DEPEND}
 	app-i18n/skk-jisyo"
-BDEPEND="sys-apps/sed
+BDEPEND="
 	app-alternatives/awk
 	virtual/pkgconfig"
 
