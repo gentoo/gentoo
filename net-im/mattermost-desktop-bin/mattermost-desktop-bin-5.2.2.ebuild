@@ -19,7 +19,7 @@ SRC_URI="
 LICENSE="Apache-2.0 GPL-2+ LGPL-2.1+ MIT"
 SLOT="0"
 # Starting with 5.2.0 upstream dropped x86 for their binary release #879519
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2[X]
