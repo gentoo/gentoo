@@ -45,7 +45,6 @@ VERSION_XFSPROGS="5.13.0"
 VERSION_XZ="5.2.5"
 VERSION_ZLIB="1.2.11"
 VERSION_ZSTD="1.5.0"
-VERSION_KEYUTILS="1.6.3"
 
 COMMON_URI="
 	https://github.com/g2p/bcache-tools/archive/399021549984ad27bf4a13ae85e458833fe003d7.tar.gz -> bcache-tools-${VERSION_BCACHE_TOOLS}.tar.gz
@@ -81,7 +80,6 @@ COMMON_URI="
 	https://tukaani.org/xz/xz-${VERSION_XZ}.tar.gz
 	https://zlib.net/zlib-${VERSION_ZLIB}.tar.gz
 	https://github.com/facebook/zstd/archive/v${VERSION_ZSTD}.tar.gz -> zstd-${VERSION_ZSTD}.tar.gz
-	https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/snapshot/keyutils-${VERSION_KEYUTILS}.tar.gz
 "
 
 if [[ ${PV} == 9999* ]] ; then
@@ -90,9 +88,10 @@ if [[ ${PV} == 9999* ]] ; then
 	S="${WORKDIR}/${P}"
 	SRC_URI="${COMMON_URI}"
 else
-	SRC_URI="https://dev.gentoo.org/~mattst88/distfiles/${P}.tar.xz
+	SRC_URI="https://dev.gentoo.org/~whissi/dist/genkernel/${P}.tar.xz
 		${COMMON_URI}"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	SRC_URI+=" https://gitweb.gentoo.org/proj/genkernel.git/patch/?id=8c9de489290dc470e30f8c7d0aaa3456eb124537 -> ${P}-s390x.patch"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 DESCRIPTION="Gentoo automatic kernel building scripts"
@@ -133,6 +132,13 @@ if [[ ${PV} == 9999* ]]; then
 fi
 
 PATCHES=(
+	"${FILESDIR}"/${P}-devicemanager.patch
+	"${FILESDIR}"/${P}-fix-btrfs-progs-deps.patch
+	"${FILESDIR}"/${P}-fuse-glibc-2.34.patch
+	"${FILESDIR}"/${P}-gcc-12-boost-1.79.patch
+	"${FILESDIR}"/${P}-chroot-path.patch
+	"${FILESDIR}"/${P}-slibtool.patch # 836012
+	"${DISTDIR}"/${P}-s390x.patch
 )
 
 src_unpack() {
