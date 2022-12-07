@@ -72,4 +72,7 @@
 			Reflect sonames of libknot, libdnssec, and libzscanner.
 		</subslots>
 	</slots>
+	<upstream>
+		<remote-id type="github">CZ-NIC/knot</remote-id>
+	</upstream>
 </pkgmetadata>
