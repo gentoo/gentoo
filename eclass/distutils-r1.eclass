@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on the work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: python-r1 python-single-r1
 # @BLURB: A simple eclass to build Python packages using distutils.
 # @DESCRIPTION:
@@ -44,15 +44,9 @@
 # For more information, please see the Python Guide:
 # https://projects.gentoo.org/python/guide/
 
-case "${EAPI:-0}" in
-	[0-5])
-		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
-		;;
-	[6-8])
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI:-0} in
+	7|8) ;;
+	*) die "EAPI=${EAPI:-0} not supported";;
 esac
 
 # @ECLASS_VARIABLE: DISTUTILS_OPTIONAL
@@ -177,7 +171,6 @@ esac
 
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
-[[ ${EAPI} == 6 ]] && inherit eutils xdg-utils
 inherit multibuild multiprocessing ninja-utils toolchain-funcs
 
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
@@ -322,11 +315,7 @@ _distutils_set_globals() {
 
 	if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
 		RDEPEND="${PYTHON_DEPS} ${rdep}"
-		if [[ ${EAPI} != 6 ]]; then
-			BDEPEND="${PYTHON_DEPS} ${bdep}"
-		else
-			DEPEND="${PYTHON_DEPS} ${bdep}"
-		fi
+		BDEPEND="${PYTHON_DEPS} ${bdep}"
 		REQUIRED_USE=${PYTHON_REQUIRED_USE}
 	fi
 }
@@ -539,11 +528,7 @@ distutils_enable_sphinx() {
 	python_compile_all() { sphinx_compile_all; }
 
 	IUSE+=" doc"
-	if [[ ${EAPI} == 6 ]]; then
-		DEPEND+=" doc? ( ${deps} )"
-	else
-		BDEPEND+=" doc? ( ${deps} )"
-	fi
+	BDEPEND+=" doc? ( ${deps} )"
 
 	# we need to ensure successful return in case we're called last,
 	# otherwise Portage may wrongly assume sourcing failed
@@ -624,11 +609,7 @@ distutils_enable_tests() {
 	if [[ -n ${test_deps} ]]; then
 		IUSE+=" test"
 		RESTRICT+=" !test? ( test )"
-		if [[ ${EAPI} == 6 ]]; then
-			DEPEND+=" test? ( ${test_deps} )"
-		else
-			BDEPEND+=" test? ( ${test_deps} )"
-		fi
+		BDEPEND+=" test? ( ${test_deps} )"
 	fi
 
 	# we need to ensure successful return in case we're called last,
@@ -672,7 +653,7 @@ esetup.py() {
 		setup_py=( -c "from setuptools import setup; setup()" )
 	fi
 
-	if [[ ${EAPI} != [67] && ${mydistutilsargs[@]} ]]; then
+	if [[ ${EAPI} != 7 && ${mydistutilsargs[@]} ]]; then
 		die "mydistutilsargs is banned in EAPI ${EAPI} (use DISTUTILS_ARGS)"
 	fi
 
@@ -744,7 +725,7 @@ distutils_install_for_testing() {
 	local install_method=root
 	case ${1} in
 		--via-home)
-			[[ ${EAPI} == [67] ]] || die "${*} is banned in EAPI ${EAPI}"
+			[[ ${EAPI} == 7 ]] || die "${*} is banned in EAPI ${EAPI}"
 			install_method=home
 			shift
 			;;
@@ -895,7 +876,7 @@ _distutils-r1_check_all_phase_mismatch() {
 		eqawarn "QA Notice: distutils-r1_python_${EBUILD_PHASE}_all called"
 		eqawarn "from python_${EBUILD_PHASE}.  Did you mean to use"
 		eqawarn "python_${EBUILD_PHASE}_all()?"
-		[[ ${EAPI} != [67] ]] &&
+		[[ ${EAPI} != 7 ]] &&
 			die "distutils-r1_python_${EBUILD_PHASE}_all called from python_${EBUILD_PHASE}."
 	fi
 }
@@ -1050,7 +1031,6 @@ distutils-r1_python_prepare_all() {
 	fi
 
 	python_export_utf8_locale
-	[[ ${EAPI} == 6 ]] && xdg_environment_reset # Bug 577704
 	_distutils-r1_print_package_versions
 
 	_DISTUTILS_DEFAULT_CALLED=1
@@ -1516,7 +1496,7 @@ _distutils-r1_wrap_scripts() {
 
 			debug-print "${FUNCNAME}: installing wrapper at ${bindir}/${basename}"
 			local dosym=dosym
-			[[ ${EAPI} == [67] ]] && dosym=dosym8
+			[[ ${EAPI} == 7 ]] && dosym=dosym8
 			"${dosym}" -r /usr/lib/python-exec/python-exec2 \
 				"${bindir#${EPREFIX}}/${basename}"
 		done
