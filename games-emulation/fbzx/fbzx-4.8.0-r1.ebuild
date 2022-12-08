@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop toolchain-funcs
 
 DESCRIPTION="Full Screen Sinclair Spectrum emulator"
-HOMEPAGE="http://www.rastersoft.com/programas/fbzx.html"
-SRC_URI="http://www.rastersoft.com/descargas/fbzx/${PN}_${PV}.tar.bz2"
+HOMEPAGE="https://www.rastersoft.com/programas/fbzx.html"
+SRC_URI="https://www.rastersoft.com/descargas/fbzx/${PN}_${PV}.tar.bz2"
 S="${WORKDIR}/${PN}_${PV}"
 
 LICENSE="GPL-3+"
@@ -18,7 +18,7 @@ IUSE="alsa pulseaudio"
 RDEPEND="
 	media-libs/libsdl2[joystick,video]
 	alsa? ( media-libs/alsa-lib )
-	pulseaudio? ( media-sound/pulseaudio )"
+	pulseaudio? ( media-libs/libpulse )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
@@ -41,12 +41,13 @@ src_compile() {
 src_install() {
 	dobin src/${PN}
 	dodoc AMSTRAD CAPABILITIES FAQ HISTORY.md README.{TZX,md} TODO
-	doicon data/${PN}.svg
-	domenu data/${PN}.desktop
 
 	insinto /usr/share/${PN}
 	doins -r data/spectrum-roms
 
 	insinto /usr/share/${PN}/${PN}
 	doins data/keymap.bmp
+
+	doicon data/${PN}.svg
+	domenu data/${PN}.desktop
 }
