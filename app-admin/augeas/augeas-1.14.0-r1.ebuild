@@ -8,7 +8,6 @@ inherit autotools
 DESCRIPTION="A library for changing configuration files"
 HOMEPAGE="http://augeas.net/"
 SRC_URI="https://github.com/hercules-team/augeas/releases/download/release-${PV}/${P}.tar.gz"
-SRC_URI="https://github.com/hercules-team/augeas/archive/refs/tags/release-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -27,7 +26,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-selinux.patch
 )
 
 src_prepare() {
