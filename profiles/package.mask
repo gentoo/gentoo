@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-12-08)
+# Seems to break some logic in pkg_resources.  Masked for the time being
+# to prevent breakage.
+>=dev-python/packaging-22.0
+
 # Ionen Wolkens <ionen@gentoo.org> (2022-12-07)
 # Formerly added to apply binary git patches to wine-staging without git, but
 # has not been used since 2017 and stuck on EAPI-6. Alternatives: dev-vcs/git
