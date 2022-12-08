@@ -64,7 +64,6 @@ emacs
 fam
 ldap
 mpi
-sctp
 systemtap
 tk
 tpm
