@@ -236,7 +236,7 @@ _distutils_set_globals() {
 				;;
 			meson-python)
 				bdep+='
-					>=dev-python/meson-python-0.10.0-r1[${PYTHON_USEDEP}]
+					>=dev-python/meson-python-0.11.0[${PYTHON_USEDEP}]
 				'
 				;;
 			pbr)
@@ -1312,29 +1312,24 @@ distutils_pep517_install() {
 	local config_settings=
 	case ${DISTUTILS_USE_PEP517} in
 		meson-python)
-			# TODO: remove the condition once we BDEP on >=0.11
-			if has_version -b ">=dev-python/meson-python-0.11"; then
-				local -x NINJAOPTS=$(get_NINJAOPTS)
-				config_settings=$(
-					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
-						import json
-						import os
-						import shlex
-						import sys
+			local -x NINJAOPTS=$(get_NINJAOPTS)
+			config_settings=$(
+				"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
+					import json
+					import os
+					import shlex
+					import sys
 
-						ninjaopts = shlex.split(os.environ["NINJAOPTS"])
-						print(json.dumps({
-							"setup-args": sys.argv[1:],
-							"compile-args": [
-								"-v",
-								f"--ninja-args={ninjaopts!r}",
-							],
-						}))
-					EOF
-				)
-			elif [[ -n ${DISTUTILS_ARGS[@]} ]]; then
-				die "DISTUTILS_ARGS requires >=dev-python/meson-python-0.11 (missing BDEP?)"
-			fi
+					ninjaopts = shlex.split(os.environ["NINJAOPTS"])
+					print(json.dumps({
+						"setup-args": sys.argv[1:],
+						"compile-args": [
+							"-v",
+							f"--ninja-args={ninjaopts!r}",
+						],
+					}))
+				EOF
+			)
 			;;
 		setuptools)
 			if [[ -n ${DISTUTILS_ARGS[@]} ]]; then
