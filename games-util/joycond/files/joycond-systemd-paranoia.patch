@@ -11,8 +11,8 @@ diff --git a/systemd/joycond.service b/systemd/joycond.service
 index cc8e408..5a8b045 100644
 --- a/systemd/joycond.service
 +++ b/systemd/joycond.service
-@@ -4,12 +4,26 @@ After=network.target
- 
+@@ -4,12 +4,27 @@ After=network.target
+
  [Service]
  ExecStart=/usr/bin/joycond
 -WorkingDirectory=/root
@@ -21,6 +21,7 @@ index cc8e408..5a8b045 100644
  Restart=always
 -User=root
 +
++DeviceAllow=/dev/uinput
 +DeviceAllow=char-input
 +DevicePolicy=closed
 +LockPersonality=yes
