@@ -26,7 +26,7 @@ SRC_URI="https://github.com/tianocore/edk2/archive/edk2-stable${PV}.tar.gz -> ${
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="-* amd64"
 
 BDEPEND="app-emulation/qemu
 	>=dev-lang/nasm-2.0.7
