@@ -47,8 +47,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	sys-devel/bison
-	sys-devel/flex
 	virtual/acl
 	test? ( >=dev-util/cmocka-1.0.1
 		app-benchmarks/dbench
@@ -60,6 +58,8 @@ DEPEND="
 		sys-apps/attr )
 "
 BDEPEND="
+	sys-devel/bison
+	sys-devel/flex
 	virtual/pkgconfig
 "
 
