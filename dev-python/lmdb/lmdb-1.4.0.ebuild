@@ -36,5 +36,6 @@ src_compile() {
 }
 
 python_test() {
+	rm -rf lmdb || die
 	epytest tests
 }
