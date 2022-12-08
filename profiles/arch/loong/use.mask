@@ -60,7 +60,6 @@ valgrind
 # Temporarily masked during initial keywording
 audit
 doc
-efl
 elogind
 emacs
 fam
