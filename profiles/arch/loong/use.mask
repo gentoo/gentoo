@@ -58,7 +58,6 @@ opencl
 valgrind
 
 # Temporarily masked during initial keywording
-audit
 doc
 elogind
 emacs
