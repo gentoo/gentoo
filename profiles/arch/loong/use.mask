@@ -62,7 +62,6 @@ doc
 elogind
 emacs
 fam
-kde
 ldap
 mpi
 sctp
