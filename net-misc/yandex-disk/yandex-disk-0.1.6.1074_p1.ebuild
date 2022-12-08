@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="YDSLA"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 
 DEPEND="app-arch/gzip"
 RDEPEND="sys-libs/zlib"
