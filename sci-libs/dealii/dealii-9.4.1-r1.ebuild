@@ -8,7 +8,7 @@ EAPI=8
 # any of these modules:
 CMAKE_REMOVE_MODULES_LIST=""
 
-inherit cmake flag-o-matic
+inherit cmake flag-o-matic verify-sig
 
 DESCRIPTION="Solving partial differential equations with the finite element method"
 HOMEPAGE="https://www.dealii.org/"
@@ -19,8 +19,10 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz
+		verify-sig? ( https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz.asc )
 		doc? (
 			https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}-offline_documentation.tar.gz
+			verify-sig? ( https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}-offline_documentation.tar.gz.asc )
 			)"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
@@ -75,9 +77,14 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen[dot] dev-lang/perl )"
 
+BDEPEND="
+	verify-sig? ( sec-keys/openpgp-keys-dealii )"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.1.1-no-ld-flags.patch
 )
+
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/dealii.asc"
 
 src_configure() {
 	# deal.II needs a custom build type:
