@@ -30,7 +30,7 @@ COMMON_DEPEND="
 	grpc? ( net-libs/grpc:= )
 	nhrp? ( net-dns/c-ares:0= )
 	pam? ( sys-libs/pam )
-	rpki? ( >=net-libs/rtrlib-0.6.3[ssh] )
+	rpki? ( >=net-libs/rtrlib-0.8.0[ssh] )
 	snmp? ( net-analyzer/net-snmp:= )
 "
 BDEPEND="
