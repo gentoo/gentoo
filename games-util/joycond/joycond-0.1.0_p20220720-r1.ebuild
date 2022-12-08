@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake linux-info udev
 
-COMMIT="f9a66914622514c13997c2bf7ec20fa98e9dfc1d"
+COMMIT="5b590ecc9bca181d8bc21377e752126bc9180319"
 DESCRIPTION="Daemon that uses hid-nintendo evdev devices to implement joycon pairing"
 HOMEPAGE="https://github.com/DanielOgorchock/joycond"
 SRC_URI="https://github.com/DanielOgorchock/joycond/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
