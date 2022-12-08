@@ -62,7 +62,6 @@ doc
 elogind
 emacs
 fam
-gtk4
 gtk-doc
 kde
 ldap
