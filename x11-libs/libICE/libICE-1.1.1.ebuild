@@ -18,10 +18,6 @@ RDEPEND="${DEPEND}
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.1.0-static-assert-fix.patch"
-)
-
 XORG_CONFIGURE_OPTIONS=(
 	--enable-ipv6
 	--disable-docs
