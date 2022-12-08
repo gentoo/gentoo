@@ -33,6 +33,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Jaco Kroon <jaco@uls.co.za> (2022-12-14)
+# Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
+# is trivial to solve.
+# With more and more SIP traffic using TLS rather than plaintext UDP or TCP
+# this is fast becomming less and less useful.  You should rather use
+# asterisk's res_hep which can also report encrypted SIP and RTP to any HEP
+# compatible reporting tool (including Homer).
+# I'm no longer using this and don't recommend it's use, if you want this to be
+# unmasked again, please contact me so that we can figure out how to approach
+# maintenance thereof.
+# Removal on 2023-01-31.
+net-voip/captagent
+
 # Hans de Graaff <graaff@gentoo.org> (2022-12-11)
 # ruby27-only package. No reverse dependencies.
 # Last release in 2012. Removal in 30 days.
