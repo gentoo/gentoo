@@ -62,7 +62,6 @@ doc
 elogind
 emacs
 fam
-gtk-doc
 kde
 ldap
 mpi
