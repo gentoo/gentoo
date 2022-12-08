@@ -33,6 +33,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Marco Scardovi <mscardovi@icloud.com> (2022-12-14)
+# We are literally the only distro that still have
+# an installation option for that package.
+# It still uses EAPI 6 and no real support since
+# years.
+# Removal on 2023-01-14. Bug #885605
+net-print/kyocera-mita-ppds
+
+# Marco Scardovi <mscardovi@icloud.com> (2022-12-14)
+# Dead upstream, dead homepage, dead symlinks,
+# no revdeps and no version bump since 2011
+# Removal on 2023-01-14. Bug #884307
+net-print/apsfilter
+
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
