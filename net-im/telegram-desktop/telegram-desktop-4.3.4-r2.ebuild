@@ -48,7 +48,6 @@ RDEPEND="
 	~media-libs/tg_owt-0_pre20220507:=[screencast=,X=]
 	media-video/ffmpeg:=[opus]
 	sys-libs/zlib:=[minizip]
-	x11-libs/xcb-util-keysyms
 	virtual/opengl
 	dbus? ( dev-cpp/glibmm:2.68 )
 	enchant? ( app-text/enchant:= )
@@ -71,11 +70,14 @@ RDEPEND="
 		wayland? ( dev-qt/qtwayland:6 )
 		qt6-imageformats? ( ${KIMAGEFORMATS_RDEPEND} )
 	)
-	X? ( x11-libs/libxcb:= )
+	X? (
+		x11-libs/libxcb:=
+		x11-libs/xcb-util-keysyms
+	)
 "
 DEPEND="${RDEPEND}
 	dev-cpp/range-v3
-	=dev-cpp/ms-gsl-3*
+	dev-cpp/ms-gsl
 "
 BDEPEND="
 	${PYTHON_DEPS}
