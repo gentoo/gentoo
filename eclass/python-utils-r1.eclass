@@ -629,13 +629,14 @@ python_optimize() {
 
 		einfo "Optimize Python modules for ${instpath}"
 		case "${EPYTHON}" in
-			python3.8|pypy3)
+			python3.8)
 				# both levels of optimization are separate since 3.5
 				"${PYTHON}" -m compileall -j "${jobs}" -q -f -d "${instpath}" "${d}"
 				"${PYTHON}" -O -m compileall -j "${jobs}" -q -f -d "${instpath}" "${d}"
 				"${PYTHON}" -OO -m compileall -j "${jobs}" -q -f -d "${instpath}" "${d}"
 				;;
-			python*)
+			python*|pypy3)
+				# Python 3.9+
 				"${PYTHON}" -m compileall -j "${jobs}" -o 0 -o 1 -o 2 --hardlink-dupes -q -f -d "${instpath}" "${d}"
 				;;
 			pypy)
