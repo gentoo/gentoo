@@ -67,7 +67,6 @@ fam
 gtk4
 gtk-doc
 kde
-latex
 ldap
 mpi
 sctp
