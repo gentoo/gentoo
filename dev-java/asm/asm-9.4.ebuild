@@ -64,10 +64,12 @@ src_compile() {
 	done
 
 	if use doc; then
+		einfo "Compiling javadocs"
 		JAVA_JAR_FILENAME="ignoreme.jar"
 		JAVA_SRC_DIR=()
 		for module in "${ASM_MODULES[@]}"; do
-			JAVA_SRC_DIR+="$module/src/main/java"
+			rm "$module/src/main/java/module-info.java" || die
+			JAVA_SRC_DIR+=("$module/src/main/java")
 		done
 		java-pkg-simple_src_compile
 	fi
