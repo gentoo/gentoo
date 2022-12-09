@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 	)
 "
 BDEPEND="
-	verify-sig? ( sec-keys/openpgp-keys-libarchive )
+	verify-sig? ( <sec-keys/openpgp-keys-libarchive-20221209 )
 "
 
 PATCHES=(
