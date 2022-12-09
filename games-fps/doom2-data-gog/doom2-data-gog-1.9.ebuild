@@ -8,7 +8,7 @@ HOMEPAGE="https://www.gog.com/en/game/doom_ii_final_doom"
 SRC_URI="setup_doom_ii_with_master_levels_${PV}_(28044).exe"
 LICENSE="GOG-EULA"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~m68k ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~x86"
 RESTRICT="bindist fetch"
 
 BDEPEND="app-arch/innoextract"
