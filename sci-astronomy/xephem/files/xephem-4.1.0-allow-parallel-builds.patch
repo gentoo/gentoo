@@ -1,0 +1,26 @@
+From 89cc80f47cdf71d3a5eae0ea6a2bade329a3e1fb Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Fri, 9 Dec 2022 12:30:24 +0100
+Subject: [PATCH] allow parallel builds
+
+Ensure all libraries are ready before the final binary is
+going to get linked.
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/GUI/xephem/Makefile
++++ b/GUI/xephem/Makefile
+@@ -182,9 +182,9 @@ OBJS =			\
+ 	xephem.o	\
+ 	xmisc.o
+ 
+-all: libs xephem xephem.1
++all: xephem xephem.1
+ 
+-xephem: $(INCS) $(OBJS)
++xephem: libs $(INCS) $(OBJS)
+ 	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
+ xephem.1: xephem.man
+-- 
+2.38.1
+
