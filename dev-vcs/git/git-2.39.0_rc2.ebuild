@@ -79,6 +79,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
+	dev-perl/LWP-Protocol-https
 	gpg? ( app-crypt/gnupg )
 	perl? (
 		dev-perl/Error
