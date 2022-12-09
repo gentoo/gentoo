@@ -22,7 +22,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="${MY_PV}"
-#KEYWORDS="-* ~amd64 ~arm64 ~x86"
+KEYWORDS="-* ~amd64 ~arm64 ~x86"
 
 RESTRICT="strip"
 
