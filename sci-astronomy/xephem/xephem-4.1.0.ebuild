@@ -16,9 +16,9 @@ KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-libs/openssl:=
-	>=x11-libs/motif-2.3:0
-	virtual/jpeg:0
+	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
+	>=x11-libs/motif-2.3:0
 	x11-libs/libXext
 	x11-libs/libXmu
 	x11-libs/libXt
@@ -28,9 +28,12 @@ BDEPEND="sys-apps/groff"
 
 HTML_DOCS=( GUI/xephem/help/. )
 
+# NOTE: order is relevant - parallel build patch requires respect env vars
+# patch to be already applied
 PATCHES=(
 	"${FILESDIR}/${PN}-3.7.7-implicits.patch"
 	"${FILESDIR}/${P}-respect_env_vars.patch"
+	"${FILESDIR}/${P}-allow-parallel-builds.patch"
 )
 
 src_compile() {

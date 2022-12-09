@@ -13,4 +13,7 @@
 		the moons of Jupiter, Saturn and Earth; Mars' and Jupiter's central
 		meridian longitude; Saturn's rings; and Jupiter's Great Red Spot.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">XEphem/XEphem</remote-id>
+	</upstream>
 </pkgmetadata>
