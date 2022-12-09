@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-12-09)
+# Breaks compilation of reverse dependencies with broken pkgconfig (pc) file
+# bug #885075, https://github.com/libarchive/libarchive/issues/1766
+=app-arch/libarchive-3.6.2
+
+# Sam James <sam@gentoo.org> (2022-12-09)
 # mpc.h breaks compilation of reverse dependencies, reported upstream to ML
 =dev-libs/mpc-1.3.0
 
