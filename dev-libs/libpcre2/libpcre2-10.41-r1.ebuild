@@ -45,6 +45,7 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.10-000-Fix-multilib.patch
+	"${FILESDIR}"/${P}-pcre2posix-header.patch
 )
 
 src_prepare() {
