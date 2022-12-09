@@ -1,0 +1,34 @@
+In newer musl, the type of NULL in C++ is nullptr rather than an
+integer.
+
+Upstream: https://git.musl-libc.org/cgit/musl/commit/?id=98e688a9da5e7b2925dda17a2d6820dddf1fb287
+Bug: https://bugs.gentoo.org/853883
+
+diff --git a/src/server/partimaged-client.cpp b/src/server/partimaged-client.cpp
+index 7c5f856..35b3514 100644
+--- a/src/server/partimaged-client.cpp
++++ b/src/server/partimaged-client.cpp
+@@ -89,9 +89,9 @@ void CPartimagedClients::Release(unsigned int client)
+   pthread_mutex_lock(&mClients);
+   showDebug(1, "%d released\n", client);
+   shutdown(Clients[client].Sock, SHUT_RDWR);
+-  Clients[client].Sock = NULL;
++  Clients[client].Sock = 0x0;
+   Clients[client].Present = false;
+-  Clients[client].MyPid = NULL;
++  Clients[client].MyPid = 0x0;
+   pthread_mutex_unlock(&mClients);
+ }
+ 
+@@ -109,9 +109,9 @@ void CPartimagedClients::ReleaseClientByPid(unsigned int client_pid)
+           found = true;
+           showDebug(1, "client %d pid = %d released by pid\n", next, client_pid);
+           shutdown(Clients[next].Sock, SHUT_RDWR);
+-          Clients[next].Sock = NULL;
++          Clients[next].Sock = 0x0;
+           Clients[next].Present = false;
+-          Clients[next].MyPid = NULL;
++          Clients[next].MyPid = 0x0;
+ 	    }
+       else
+         next++;
