@@ -66,9 +66,9 @@ S="${WORKDIR}"
 
 src_install() {
 	if use amd64; then
-		cd mattermost-desktop-${MY_PV}-linux-x64
+		cd mattermost-desktop-${MY_PV}-linux-x64 || die
 	elif use arm64; then
-		cd mattermost-desktop-${MY_PV}-linux-arm64
+		cd mattermost-desktop-${MY_PV}-linux-arm64 || die
 	fi
 	newicon app_icon.png ${MY_PN}.png
 
