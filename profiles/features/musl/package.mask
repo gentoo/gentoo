@@ -48,6 +48,7 @@ dev-util/rr
 # masking for now to allow musl profiles to graduate from exp->dev.
 dev-db/pgbouncer
 dev-libs/cgreen
+media-print/pnm2ppa
 media-sound/xwax
 net-analyzer/gsad
 net-analyzer/gvm
@@ -56,7 +57,6 @@ net-analyzer/gvm-libs
 net-analyzer/openvas-scanner
 net-analyzer/ospd-openvas
 net-misc/grive
-media-print/pnm2ppa
 net-wireless/neard
 sys-apps/noexec
 
@@ -210,6 +210,7 @@ kde-apps/dolphin-plugins-dropbox
 mate-extra/caja-dropbox
 media-gfx/brscan4
 media-libs/amdgpu-pro-vulkan
+media-print/hplip-plugin
 media-sound/baudline
 media-sound/teamspeak-server
 media-video/amdgpu-pro-amf
@@ -237,7 +238,6 @@ net-misc/yandex-disk
 net-nntp/sabnzbd
 net-p2p/resilio-sync
 net-print/cnijfilter2
-media-print/hplip-plugin
 sci-chemistry/cara-bin
 sci-electronics/eagle
 sci-electronics/labone

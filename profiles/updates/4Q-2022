@@ -18,3 +18,5 @@ move net-print/brlaser media-print/brlaser
 move net-print/hplip media-print/hplip
 move net-print/hplip-plugin media-print/hplip-plugin
 move net-print/pnm2ppa media-print/pnm2ppa
+move net-print/ink media-print/ink
+move net-print/libinklevel media-print/libinklevel
