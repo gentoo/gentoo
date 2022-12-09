@@ -279,6 +279,10 @@ dev-vcs/git-annex
 games-strategy/colobot
 www-apps/ikiwiki
 
+# Kai-Chun Ning <kaichun.ning@gmail.com> (2022-12-09)
+# Requires app-text/po4a to build
+gui-apps/modem-manager-gui
+
 # Hank Leininger <hlein@korelogic.com> (2021-07-14)
 # Uses glibc-specific rexec(3) function, bug #715898
 net-misc/netkit-rsh
