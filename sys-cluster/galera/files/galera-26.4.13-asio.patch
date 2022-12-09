@@ -1,0 +1,22 @@
+diff --git a/SConstruct b/SConstruct
+index ce955fc..3ff241a 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -325,7 +325,7 @@ def CheckSystemASIOVersion(context):
+ #pragma message "Asio version:" XSTR(ASIO_VERSION)
+ #if ASIO_VERSION < 101008
+ #error Included asio version is too old
+-#elif ASIO_VERSION >= 101100
++#elif ASIO_VERSION >= 102600
+ #error Included asio version is too new
+ #endif
+ 
+@@ -335,7 +335,7 @@ int main()
+ }
+ 
+ """
+-    context.Message('Checking ASIO version (>= 1.10.8 and < 1.11.0) ... ')
++    context.Message('Checking ASIO version (>= 1.10.8 and < 1.26.0) ... ')
+     result = context.TryLink(system_asio_test_source_file, '.cpp')
+     context.Result(result)
+     return result
