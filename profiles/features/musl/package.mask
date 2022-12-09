@@ -237,7 +237,7 @@ net-misc/yandex-disk
 net-nntp/sabnzbd
 net-p2p/resilio-sync
 net-print/cnijfilter2
-net-print/hplip-plugin
+media-print/hplip-plugin
 sci-chemistry/cara-bin
 sci-electronics/eagle
 sci-electronics/labone

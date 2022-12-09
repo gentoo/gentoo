@@ -285,7 +285,7 @@ app-metrics/collectd collectd_plugins_write_mongodb
 sci-mathematics/flint ntl
 
 # Markus Meier <maekke@gentoo.org> (2016-02-26)
-# unmask scanner for net-print/hplip, bug #518456
+# unmask scanner for media-print/hplip, bug #518456
 media-sound/moc timidity
 
 # Brian Evans <grknight@gentoo.org> (2015-11-23)
@@ -293,8 +293,8 @@ media-sound/moc timidity
 >=dev-db/mariadb-10.1.0 -galera
 
 # Markus Meier <maekke@gentoo.org> (2015-11-22)
-# unmask scanner for net-print/hplip, bug #518456
-net-print/hplip -scanner kde
+# unmask scanner for media-print/hplip, bug #518456
+media-print/hplip -scanner kde
 media-gfx/xsane ocr
 
 # Pacho Ramos <pacho@gentoo.org> (2015-11-15)

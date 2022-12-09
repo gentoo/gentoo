@@ -75,7 +75,7 @@ media-video/pipewire -echo-cancel
 
 # James Le Cuirot <chewi@gentoo.org> (2021-08-07)
 # The ORBlite scanner plugin only works on amd64 and x86.
-net-print/hplip-plugin -orblite
+media-print/hplip-plugin -orblite
 
 # Sam James <sam@gentoo.org> (2021-07-12)
 # Haskell is (only) available on amd64/x86 right now in Gentoo

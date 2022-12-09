@@ -22,7 +22,7 @@ IUSE="doc fax +hpcups hpijs kde libnotify libusb0 minimal parport policykit qt5 
 COMMON_DEPEND="
 	net-print/cups
 	sys-apps/dbus
-	virtual/jpeg:0
+	media-libs/libjpeg-turbo
 	hpijs? ( net-print/cups-filters[foomatic] )
 	!libusb0? ( virtual/libusb:1 )
 	libusb0? ( virtual/libusb:0 )
