@@ -1,13 +1,13 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit linux-info
 
 DESCRIPTION="Create tunnels over TCP/IP networks with shaping, encryption, and compression"
 SRC_URI="https://sourceforge.net/projects/vtun/files/${PN}/${PV}/${P}.tar.gz"
-HOMEPAGE="http://vtun.sourceforge.net/"
+HOMEPAGE="https://vtun.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
