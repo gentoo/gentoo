@@ -7,7 +7,7 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-06-14)
 # Only python 3.9 supported, bug #835921
-dev-util/kdevelop-python:5 python_single_target_python3_9
+<dev-util/kdevelop-python-22.12.0:5 python_single_target_python3_9
 
 # Patrick McLean <chutzpah@gentoo.org) (2022-05-04)
 # Default to lua 5.4 (upstream requires 5.3 or higher)
