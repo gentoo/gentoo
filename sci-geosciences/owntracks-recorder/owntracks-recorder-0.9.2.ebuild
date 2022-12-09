@@ -13,7 +13,7 @@ HOMEPAGE="https://owntracks.org"
 SRC_URI="https://github.com/${PN/-//}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+ MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="crypt +http greenwich kill lua +mqtt +ping +tours"
 
 REQUIRED_USE="
