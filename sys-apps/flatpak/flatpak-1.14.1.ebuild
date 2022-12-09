@@ -103,4 +103,6 @@ src_install() {
 	default
 	# https://projects.gentoo.org/qa/policy-guide/installed-files.html#pg0303
 	find "${ED}" -name '*.la' -delete || die
+	# resolve conflict with acct-user/flatpak for #856706
+	rm -rf "${ED}/usr/lib/sysusers.d"
 }

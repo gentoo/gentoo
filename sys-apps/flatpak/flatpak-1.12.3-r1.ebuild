@@ -100,3 +100,9 @@ src_configure() {
 
 	econf "${myeconfargs[@]}"
 }
+
+src_install() {
+	default
+	# resolve conflict with acct-user/flatpak for #856706
+	rm -rf "${ED}/usr/lib/sysusers.d"
+}
