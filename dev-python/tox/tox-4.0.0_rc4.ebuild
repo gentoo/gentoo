@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
 
 inherit distutils-r1
 
@@ -49,7 +49,9 @@ BDEPEND="
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-3.1[${PYTHON_USEDEP}]
 		>=dev-python/re-assert-1.1[${PYTHON_USEDEP}]
-		>=dev-python/time-machine-2.8.2[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/time-machine-2.8.2[${PYTHON_USEDEP}]
+		' 'python*')
 	)
 "
 
@@ -72,6 +74,11 @@ python_test() {
 		# requires devpi*
 		tests/test_provision.py
 	)
+	if ! has_version "dev-python/time_machine[${PYTHON_USEDEP}]"; then
+		EPYTEST_IGNORE+=(
+			tests/util/test_spinner.py
+		)
+	fi
 
 	epytest
 }
