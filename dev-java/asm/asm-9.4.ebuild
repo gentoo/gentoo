@@ -14,7 +14,7 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Bytecode manipulation framework for Java"
 HOMEPAGE="https://asm.ow2.io"
 MY_P="ASM_${PV//./_}"
-SRC_URI="https://gitlab.ow2.org/asm/asm/-/archive/${MY_P}/asm-${MY_P}.tar.gz"
+SRC_URI="https://gitlab.ow2.org/asm/asm/-/archive/${MY_P}/asm-${MY_P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="9"
