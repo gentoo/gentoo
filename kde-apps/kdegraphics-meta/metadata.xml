@@ -8,4 +8,7 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
+	<use>
+		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg></flag>
+	</use>
 </pkgmetadata>
