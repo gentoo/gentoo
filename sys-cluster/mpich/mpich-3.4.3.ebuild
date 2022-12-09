@@ -127,6 +127,7 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
+	export USE_VALGRIND=0 #884809
 	emake -j1 check
 }
 
