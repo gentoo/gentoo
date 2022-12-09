@@ -6,7 +6,9 @@ EAPI=8
 LUA_COMPAT=( lua5-3 )
 LUA_REQ_USE="deprecated"
 PYTHON_COMPAT=( python3_{8..11} )
-inherit autotools lua-single python-any-r1 toolchain-funcs
+PLOCALES="de es fr hi hr hu id it ja pl pt_BR pt_PR ro ru sk zh"
+PLOCALE_BACKUP="en"
+inherit autotools lua-single plocale python-single-r1 toolchain-funcs
 
 DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
@@ -27,8 +29,9 @@ fi
 
 LICENSE="|| ( NPSL GPL-2 )"
 SLOT="0"
-IUSE="ipv6 libssh2 ncat nping +nse ssl symlink +system-lua"
+IUSE="ipv6 libssh2 ncat ndiff nping nls +nse ssl symlink +system-lua zenmap"
 REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	system-lua? ( nse ${LUA_REQUIRED_USE} )
 	symlink? ( ncat )
 "
@@ -37,12 +40,14 @@ RDEPEND="
 	dev-libs/liblinear:=
 	dev-libs/libpcre
 	net-libs/libpcap
+	ndiff? ( ${PYTHON_DEPS} )
 	libssh2? (
 		net-libs/libssh2[zlib]
 		sys-libs/zlib
 	)
+	nls? ( virtual/libintl )
 	nse? ( sys-libs/zlib )
-	ssl? ( dev-libs/openssl:0= )
+	ssl? ( dev-libs/openssl:= )
 	symlink? (
 		ncat? (
 			!net-analyzer/netcat
@@ -50,11 +55,18 @@ RDEPEND="
 		)
 	)
 	system-lua? ( ${LUA_DEPS} )
+	zenmap? (
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			dev-python/pygobject:3[${PYTHON_USEDEP}]
+		')
+	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
 "
 
 if [[ ${PV} != *9999* ]] ; then
@@ -72,20 +84,30 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.80-ac-config-subdirs.patch
 	"${FILESDIR}"/${PN}-7.91-no-FORTIFY_SOURCE.patch
 	"${FILESDIR}"/${PN}-9999-netutil-else.patch
+	"${FILESDIR}"/${PN}-9999-python3.patch
 )
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-single-r1_pkg_setup
 
 	use system-lua && lua-single_pkg_setup
 }
 
 src_prepare() {
+	default
+
+	# Drop bundled libraries
 	rm -r liblinear/ libpcap/ libpcre/ libssh2/ libz/ || die
 
 	cat "${FILESDIR}"/nls.m4 >> "${S}"/acinclude.m4 || die
 
-	default
+	delete_disabled_locale() {
+		# Force here as PLOCALES contains supported locales for man
+		# pages and zenmap doesn't have all of those
+		rm -rf zenmap/share/zenmap/locale/${1} || die
+		rm -f zenmap/share/zenmap/locale/${1}.po || die
+	}
+	plocale_for_each_disabled_locale delete_disabled_locale
 
 	sed -i \
 		-e '/^ALL_LINGUAS =/{s|$| id|g;s|jp|ja|g}' \
@@ -105,23 +127,27 @@ src_configure() {
 	export ac_cv_path_PYTHON="${PYTHON}"
 	export am_cv_pathless_PYTHON="${EPYTHON}"
 
-	# The bundled libdnet is incompatible with the version available in the
-	# tree, so we cannot use the system library here.
-	econf \
-		$(use_enable ipv6) \
-		$(use_with libssh2) \
-		$(use_with ncat) \
-		$(use_with nping) \
-		$(use_with ssl openssl) \
-		$(usex libssh2 --with-zlib) \
-		$(usex nse --with-liblua=$(usex system-lua yes included '' '') --without-liblua) \
-		$(usex nse --with-zlib) \
-		--cache-file="${S}"/config.cache \
-		--with-libdnet=included \
-		--with-pcre="${ESYSROOT}"/usr \
-		--without-dpdk \
-		--without-ndiff \
-		--without-zenmap
+	local myeconfargs=(
+		$(use_enable ipv6)
+		$(use_enable nls)
+		$(use_with libssh2)
+		$(use_with ncat)
+		$(use_with ndiff)
+		$(use_with nping)
+		$(use_with ssl openssl)
+		$(use_with zenmap)
+		$(usex libssh2 --with-zlib)
+		$(usex nse --with-liblua=$(usex system-lua yes included '' '') --without-liblua)
+		$(usex nse --with-zlib)
+		--cache-file="${S}"/config.cache
+		# The bundled libdnet is incompatible with the version available in the
+		# tree, so we cannot use the system library here.
+		--with-libdnet=included
+		--with-pcre="${ESYSROOT}"/usr
+		--without-dpdk
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -145,6 +171,10 @@ src_install() {
 		install
 
 	dodoc CHANGELOG HACKING docs/README docs/*.txt
+
+	if use ndiff || use zenmap ; then
+		python_optimize
+	fi
 
 	use symlink && dosym /usr/bin/ncat /usr/bin/nc
 }
