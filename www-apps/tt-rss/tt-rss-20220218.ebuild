@@ -9,7 +9,7 @@ DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using A
 HOMEPAGE="https://tt-rss.org/"
 SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.tar.gz" # Upstream git frontend blocks wget?
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~arm ~mips ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
 
