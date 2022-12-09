@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 MY_PN=${PN/-gpl}
 MY_P="${MY_PN}-${PV/_}"
@@ -116,13 +116,16 @@ src_prepare() {
 }
 
 src_configure() {
+	# Unsupported upstream, bug #884841
+	filter-lto
+
 	local FONTPATH
 	for path in \
 		"${EPREFIX}"/usr/share/fonts/urw-fonts \
 		"${EPREFIX}"/usr/share/fonts/Type1 \
 		"${EPREFIX}"/usr/share/fonts
 	do
-		FONTPATH="$FONTPATH${FONTPATH:+:}${EPREFIX}$path"
+		FONTPATH="${FONTPATH}${FONTPATH:+:}${EPREFIX}${path}"
 	done
 
 	PKGCONFIG=$(type -P $(tc-getPKG_CONFIG)) \
@@ -135,7 +138,7 @@ src_configure() {
 		--enable-openjpeg \
 		--disable-compile-inits \
 		--with-drivers=ALL \
-		--with-fontpath="$FONTPATH" \
+		--with-fontpath="${FONTPATH}" \
 		--with-ijs \
 		--with-jbig2dec \
 		--with-libpaper \
