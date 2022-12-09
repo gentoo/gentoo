@@ -19,13 +19,14 @@ RDEPEND="
 	=dev-libs/libliftoff-0.3*
 	>=dev-libs/wayland-1.21
 	>=dev-libs/wayland-protocols-1.17
-	=gui-libs/wlroots-0.15*[X]
-	media-libs/libsdl2[video]
+	=gui-libs/wlroots-0.16*[X]
+	media-libs/libsdl2[video,vulkan]
 	media-libs/vulkan-loader
 	sys-apps/hwdata
 	sys-libs/libcap
 	>=x11-libs/libdrm-2.4.109
 	x11-libs/libX11
+	x11-libs/libxcb
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
 	x11-libs/libXext
@@ -41,6 +42,7 @@ DEPEND="
 	${RDEPEND}
 	dev-libs/stb
 	dev-util/vulkan-headers
+	media-libs/vkroots
 "
 BDEPEND="
 	dev-util/glslang
@@ -59,7 +61,12 @@ src_prepare() {
 	# Normally uses stb from a git submodule. Upstream does not ship a
 	# pkg-config file so we don't install one. Work around this using symlinks.
 	mkdir subprojects/stb || die
-	ln -snf "${ESYSROOT}"/usr/include/stb/* "${S}"/subprojects/packagefiles/stb/* subprojects/stb/ || die
+	ln -sn "${ESYSROOT}"/usr/include/stb/* "${S}"/subprojects/packagefiles/stb/* subprojects/stb/ || die
+
+	# Normally uses vkroots from a git submodule. Upstream ships a Meson file
+	# that is sourced by this project. Create a symlink to it.
+	rm -r subprojects/vkroots || die
+	ln -sn "${ESYSROOT}"/usr/include/vkroots subprojects/ || die
 }
 
 src_configure() {
