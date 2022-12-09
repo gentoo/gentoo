@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>cyrevolt@googlemail.com</email>
+		<name>Daniel Maslowski</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>printing@gentoo.org</email>
+		<name>Gentoo Printing Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		brlaser is a CUPS driver for Brother laser printers. Although most Brother
+		printers support a standard printer language such as PCL or PostScript, not all do.
+		If you have a monochrome Brother laser printer (or multi-function device) and the
+		other open source drivers don't work, this one might help.
+	</longdescription>
+	<longdescription lang="it">
+		brlaser è un driver CUPS per le stampanti laser Brother. Sebbene la maggior
+		parte delle stampanti Brother supporti un linguaggio stampante standard come
+		PCL o PostScript, non tutte lo fanno. Se hai una stampante laser Brother
+		monocromatica (o un dispositivo multifunzione) e gli altri driver open source
+		non dovessero funzionare, questo potrebbe aiutarti.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">scardracs/brlaser</remote-id>
+	</upstream>
+</pkgmetadata>

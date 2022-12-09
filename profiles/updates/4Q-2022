@@ -14,3 +14,4 @@ move virtual/awk app-alternatives/awk
 move virtual/yacc app-alternatives/yacc
 slotmove sys-devel/autoconf-dickey 2.52_p20210509 2.52
 move dev-python/nuitka dev-python/Nuitka
+move net-print/brlaser media-print/brlaser
