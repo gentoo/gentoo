@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/Blub/netevent"
 SRC_URI="https://github.com/Blub/netevent/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="doc"
 
 BDEPEND="
