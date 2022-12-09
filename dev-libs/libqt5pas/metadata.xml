@@ -8,7 +8,4 @@
     <upstream>
         <remote-id type="gitlab">freepascal.org/lazarus</remote-id>
     </upstream>
-    <upstream>
-        <remote-id type="sourceforge">lazarus</remote-id>
-    </upstream>
 </pkgmetadata>
