@@ -56,7 +56,7 @@ net-analyzer/gvm-libs
 net-analyzer/openvas-scanner
 net-analyzer/ospd-openvas
 net-misc/grive
-net-print/pnm2ppa
+media-print/pnm2ppa
 net-wireless/neard
 sys-apps/noexec
 

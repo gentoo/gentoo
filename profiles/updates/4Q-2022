@@ -17,3 +17,4 @@ move dev-python/nuitka dev-python/Nuitka
 move net-print/brlaser media-print/brlaser
 move net-print/hplip media-print/hplip
 move net-print/hplip-plugin media-print/hplip-plugin
+move net-print/pnm2ppa media-print/pnm2ppa
