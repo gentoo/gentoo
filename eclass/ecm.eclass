@@ -228,21 +228,12 @@ case ${ECM_QTHELP} in
 		COMMONDEPEND+=" doc? ( dev-qt/qt-docs:${KFSLOT} )"
 		BDEPEND+=" doc? (
 			>=app-doc/doxygen-1.8.13-r1
-			|| (
-				(
-					=dev-qt/qtcore-5.15.7*:5
-					=dev-qt/qtgui-5.15.7*:5
-					=dev-qt/qthelp-5.15.7*:5
-					=dev-qt/qtsql-5.15.7*:5
-					=dev-qt/qtwidgets-5.15.7*:5
-				)
-				(
-					=dev-qt/qtcore-5.15.5*:5
-					=dev-qt/qtgui-5.15.5*:5
-					=dev-qt/qthelp-5.15.5*:5
-					=dev-qt/qtsql-5.15.5*:5
-					=dev-qt/qtwidgets-5.15.5*:5
-				)
+			(
+				=dev-qt/qtcore-5.15.7*:5
+				=dev-qt/qtgui-5.15.7*:5
+				=dev-qt/qthelp-5.15.7*:5
+				=dev-qt/qtsql-5.15.7*:5
+				=dev-qt/qtwidgets-5.15.7*:5
 			)
 		)"
 		;;
