@@ -10,10 +10,6 @@
 # Bug #875053
 video_cards_nv
 
-# Brian Evans <grknight@gentoo.org> (2022-09-30)
-# PHP 8.2 is in RC
-php_targets_php8-2
-
 # Sam James <sam@gentoo.org> (2022-08-02)
 # Masked for testing. The split of some packages may still
 # change. bug #838970.

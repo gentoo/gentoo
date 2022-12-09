@@ -571,11 +571,6 @@ x11-drivers/xf86-video-nv
 =sys-apps/portage-3.0.37
 =sys-apps/portage-3.0.38
 
-# Brian Evans <grknight@gentoo.org> (2022-09-30)
-# Mask RC versions for initial testing
-<dev-lang/php-8.2.0:8.2
-virtual/httpd-php:8.2
-
 # John Helmert III <ajak@gentoo.org> (2022-09-18)
 # Unfixed root privilege escalation, bug #631552
 sys-cluster/slurm
