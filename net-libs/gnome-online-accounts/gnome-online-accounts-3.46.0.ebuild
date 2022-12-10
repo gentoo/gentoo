@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome.org meson vala
+inherit gnome.org meson vala xdg
 
 DESCRIPTION="GNOME framework for accessing online accounts"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeOnlineAccounts"
