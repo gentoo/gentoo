@@ -32,6 +32,5 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnu:gcc</remote-id>
-		<remote-id type="sourceforge">dgcc</remote-id>
 	</upstream>
 </pkgmetadata>
