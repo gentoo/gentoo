@@ -15,8 +15,7 @@
 # @DESCRIPTION:
 # The cmake eclass makes creating ebuilds for cmake-based packages much easier.
 # It provides all inherited features (DOCS, HTML_DOCS, PATCHES) along with
-# out-of-source builds (default), in-source builds and an implementation of the
-# well-known use_enable function for CMake.
+# out-of-source builds (default) and in-source builds.
 
 case ${EAPI} in
 	7|8) ;;
