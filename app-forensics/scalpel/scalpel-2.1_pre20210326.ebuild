@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="A high performance file carver"
 HOMEPAGE="https://github.com/sleuthkit/scalpel"
@@ -34,6 +34,8 @@ src_prepare() {
 
 	default
 	eautoreconf
+
+	filter-lto # https://bugs.gentoo.org/865687
 }
 
 src_install() {
