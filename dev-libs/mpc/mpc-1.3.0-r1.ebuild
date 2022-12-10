@@ -27,6 +27,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-header.patch
+)
+
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf $(use_enable static-libs static)
 }
