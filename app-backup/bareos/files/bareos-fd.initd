@@ -6,16 +6,6 @@ depend() {
 	use dns
 }
 
-start() {
-	ebegin "Starting bareos file daemon"
-	checkpath -d -m 0750 -o root:bareos /run/bareos
-	start-stop-daemon --start --quiet --exec /usr/sbin/bareos-fd \
-		-- ${FD_OPTIONS}
-	eend $?
-}
-
-stop() {
-	ebegin "Stopping bareos file daemon"
-	start-stop-daemon --stop --quiet --pidfile /run/bareos/bareos-fd.*.pid
-	eend $?
-}
+command="/usr/sbin/bareos-fd"
+command_args="${FD_OPTIONS}"
+pidfile="/run/bareos/bareos-fd.9102.pid"

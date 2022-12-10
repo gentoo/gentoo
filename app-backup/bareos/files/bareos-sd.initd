@@ -1,30 +1,20 @@
 #!/sbin/openrc-run
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
 	use dns
 }
 
-start() {
-	ebegin "Starting bareos storage daemon"
-	# g+w until #631598 is resolved
-	checkpath -d -m 0770 -o root:bareos /run/bareos
-	start-stop-daemon --start --quiet --exec /usr/sbin/bareos-sd \
-		-- ${SD_OPTIONS}
-	# harden pid file until #631598 is resolved
-	ewaitfile 10 /run/bareos/bareos-sd.9103.pid
-	chown root:bareos /run/bareos/bareos-sd.9103.pid
-	eend $?
+start_pre() {
+	checkpath --directory --owner root:bareos --mode 01775 /run/bareos
 }
 
-stop() {
-	ebegin "Stopping bareos storage daemon"
-	# check pid file until #631598 is resolved
-	if [[ $(stat -c %U /run/bareos/bareos-sd.9103.pid) != "root" ]]; then
-		eerror "SECURITY ALERT: pid file is not root owned anymore?! (see #631598)"
-	else
-		start-stop-daemon --stop --quiet --pidfile /run/bareos/bareos-sd.9103.pid
-	fi
-	eend $?
+start_post() {
+	ewaitfile 10 /run/bareos/bareos-sd.9103.pid
+	checkpath --file --owner root:bareos /run/bareos/bareos-sd.9103.pid
 }
+
+command="/usr/sbin/bareos-sd"
+command_args="${SD_OPTIONS}"
+pidfile="/run/bareos/bareos-sd.9103.pid"
