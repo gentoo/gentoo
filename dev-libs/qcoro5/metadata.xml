@@ -10,6 +10,7 @@
 	</upstream>
 	<use>
 		<flag name="network">Build <pkg>dev-qt/qtnetwork</pkg> support</flag>
+		<flag name="qml">Enable QML/QtQuick support via dev-qt/qtdeclarative</flag>
 		<flag name="websockets">Build <pkg>dev-qt/qtwebsockets</pkg> support</flag>
 	</use>
 </pkgmetadata>
