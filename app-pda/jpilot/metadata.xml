@@ -2,4 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <!-- maintainer-needed -->
+	<upstream>
+		<maintainer status="active">
+			<email>judd@engineer.com</email>
+			<name>Judd Montgomery</name>
+		</maintainer>
+		<remote-id type="github">juddmon/jpilot</remote-id>
+	</upstream>
 </pkgmetadata>
