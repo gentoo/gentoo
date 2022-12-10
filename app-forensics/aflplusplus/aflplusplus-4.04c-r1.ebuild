@@ -30,6 +30,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=sys-devel/llvm-13:=
 	|| (
 		sys-devel/clang:13
+		sys-devel/clang:14
 		sys-devel/clang:${LLVM_MAX_SLOT}
 	)
 	!app-forensics/afl"
