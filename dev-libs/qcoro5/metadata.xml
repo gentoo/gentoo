@@ -6,7 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://github.com/danvratil/qcoro/issues</bugs-to>
+		<remote-id type="github">danvratil/qcoro</remote-id>
 	</upstream>
 	<use>
 		<flag name="network">Build <pkg>dev-qt/qtnetwork</pkg> support</flag>
