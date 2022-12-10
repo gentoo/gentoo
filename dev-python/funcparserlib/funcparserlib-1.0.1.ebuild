@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
+
 inherit distutils-r1
 
 DESCRIPTION="Recursive descent parsing library based on functional combinators"
-HOMEPAGE="https://pypi.org/project/funcparserlib/
-	https://github.com/vlasovskikh/funcparserlib"
+HOMEPAGE="
+	https://github.com/vlasovskikh/funcparserlib/
+	https://pypi.org/project/funcparserlib/
+"
 SRC_URI="
 	https://github.com/vlasovskikh/funcparserlib/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
