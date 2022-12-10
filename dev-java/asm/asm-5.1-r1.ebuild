@@ -39,6 +39,7 @@ src_prepare() {
 }
 
 src_install() {
+	local x
 	for x in output/dist/lib/*.jar ; do
 		java-pkg_newjar "${x}" $(basename "${x%-*}.jar")
 	done

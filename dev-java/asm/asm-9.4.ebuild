@@ -55,11 +55,11 @@ src_prepare() {
 src_compile() {
 	local module
 	for module in "${ASM_MODULES[@]}"; do
-		einfo "Compiling $module"
-		JAVA_JAR_FILENAME="$module.jar"
-		JAVA_SRC_DIR="$module/src/main/java"
+		einfo "Compiling ${module}"
+		JAVA_JAR_FILENAME="${module}.jar"
+		JAVA_SRC_DIR="${module}/src/main/java"
 		java-pkg-simple_src_compile
-		JAVA_GENTOO_CLASSPATH_EXTRA+=":$module.jar"
+		JAVA_GENTOO_CLASSPATH_EXTRA+=":${module}.jar"
 		rm -r target || die
 	done
 
@@ -68,8 +68,8 @@ src_compile() {
 		JAVA_JAR_FILENAME="ignoreme.jar"
 		JAVA_SRC_DIR=()
 		for module in "${ASM_MODULES[@]}"; do
-			rm "$module/src/main/java/module-info.java" || die
-			JAVA_SRC_DIR+=("$module/src/main/java")
+			rm "${module}/src/main/java/module-info.java" || die
+			JAVA_SRC_DIR+=("${module}/src/main/java")
 		done
 		java-pkg-simple_src_compile
 	fi
@@ -78,9 +78,9 @@ src_compile() {
 src_install() {
 	local module
 	for module in "${ASM_MODULES[@]}"; do
-		java-pkg_dojar $module.jar
+		java-pkg_dojar ${module}.jar
 		if use source; then
-			java-pkg_dosrc "$module/src/main/java/*"
+			java-pkg_dosrc "${module}/src/main/java/*"
 		fi
 	done
 	if use doc; then

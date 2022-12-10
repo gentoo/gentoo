@@ -29,14 +29,14 @@ src_compile() {
 		einfo "Compiling ${module}"
 		JAVA_RESOURCE_DIRS=()
 		JAVA_MAIN_CLASS=""
-		JAVA_SRC_DIR="$module/src/main/java"
-		JAVA_JAR_FILENAME="$module.jar"
+		JAVA_SRC_DIR="${module}/src/main/java"
+		JAVA_JAR_FILENAME="${module}.jar"
 		# Not all of the modules have resources.
-		if [[ -d $module/src/main/resources ]]; then \
-			JAVA_RESOURCE_DIRS="$module/src/main/resources"
+		if [[ -d ${module}/src/main/resources ]]; then \
+			JAVA_RESOURCE_DIRS="${module}/src/main/resources"
 		fi
 		java-pkg-simple_src_compile
-		JAVA_GENTOO_CLASSPATH_EXTRA+=":$module.jar"
+		JAVA_GENTOO_CLASSPATH_EXTRA+=":${module}.jar"
 		rm -r target || die
 	done
 
@@ -44,7 +44,7 @@ src_compile() {
 		JAVA_SRC_DIR=()
 		JAVA_JAR_FILENAME="ignoreme.jar"
 		for module in "${ASM_MODULES[@]}"; do
-			JAVA_SRC_DIR+=( "$module/src/main/java" )
+			JAVA_SRC_DIR+=( "${module}/src/main/java" )
 		done
 		java-pkg-simple_src_compile
 	fi
@@ -54,9 +54,9 @@ src_install() {
 	einstalldocs # https://bugs.gentoo.org/789582
 	local module
 	for module in "${ASM_MODULES[@]}"; do
-		java-pkg_dojar $module.jar
+		java-pkg_dojar ${module}.jar
 		if use source; then
-			java-pkg_dosrc "$module/src/main/java/*"
+			java-pkg_dosrc "${module}/src/main/java/*"
 		fi
 	done
 	if use doc; then
