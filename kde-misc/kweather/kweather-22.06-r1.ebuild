@@ -19,7 +19,7 @@ LICENSE="GPL-2+"
 SLOT="5"
 
 DEPEND="
-	>=dev-libs/kweathercore-0.6
+	=dev-libs/kweathercore-0.6*:5
 	>=dev-qt/qtcharts-${QTMIN}:5[qml]
 	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
