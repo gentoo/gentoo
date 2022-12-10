@@ -6,7 +6,7 @@ EAPI=7
 inherit multilib-minimal
 
 DESCRIPTION="A library for multiprecision complex arithmetic with exact rounding"
-HOMEPAGE="https://www.multiprecision.org/mpc/"
+HOMEPAGE="https://www.multiprecision.org/mpc/ https://gitlab.inria.fr/mpc/mpc"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
