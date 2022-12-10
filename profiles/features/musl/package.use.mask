@@ -1,6 +1,13 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-12-10)
+# sci-libs/mkl is binary only and links to glibc
+sci-chemistry/gromacs mkl
+sci-libs/armadillo mkl
+sci-libs/dlib mkl
+sci-libs/trilinos mkl
+
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2022-10-04)
 # Mask loguru until fixed upstream #873601
 sci-libs/vtk logging
