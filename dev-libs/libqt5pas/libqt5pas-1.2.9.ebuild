@@ -7,11 +7,12 @@ inherit qmake-utils
 
 LAZRELEASE="2.2.4"
 
+DESCRIPTION="Free Pascal Qt5 bindings library updated by lazarus IDE."
+HOMEPAGE="https://gitlab.com/freepascal.org/lazarus/lazarus"
+
 SRC_URI="https://sourceforge.net/projects/lazarus/files/Lazarus%20Zip%20_%20GZip/Lazarus%20${LAZRELEASE}/lazarus-${LAZRELEASE}-0.tar.gz/download -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
-DESCRIPTION="Free Pascal Qt5 bindings library updated by lazarus IDE."
-HOMEPAGE="https://gitlab.com/freepascal.org/lazarus/lazarus"
 LICENSE="LGPL-3"
 SLOT="0/2.2"
 
