@@ -11,7 +11,7 @@
 # @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Provides functions for installing Dune packages.
 # @DESCRIPTION:
-# Provides dependencies on dDne and OCaml and default src_compile, src_test and
+# Provides dependencies on Dune and OCaml and default src_compile, src_test and
 # src_install for Dune-based packages.
 
 # @ECLASS_VARIABLE: DUNE_PKG_NAME
