@@ -26,12 +26,7 @@ DEPEND="
 S="${WORKDIR}/lazarus/lcl/interfaces/qt5/cbindings"
 
 src_unpack () {
-	if [[ ${PV} = 9999* ]]; then
-		git-r3_fetch ${EGIT_REPO_URI}
-		git-r3_checkout ${EGIT_REPO_URI} "${WORKDIR}/lazarus" "" "lcl/interfaces/qt5/cbindings"
-	else
-		unpack ${P}.tar.gz
-	fi
+	unpack ${P}.tar.gz
 }
 
 src_configure() {
