@@ -77,6 +77,7 @@ DOCS=( NEWS README )
 # patches merged upstream, to be removed with 16.2 or later bump
 PATCHES=(
 	"${FILESDIR}"/pulseaudio-16.1-memfd-cleanup.patch
+	"${FILESDIR}"/pulseaudio-16.1-proplist-util-without-gdkx.patch
 )
 
 src_prepare() {
