@@ -11,7 +11,7 @@ QA_PKGCONFIG_VERSION="$(ver_cut 1-3)"
 # GraphicsMagick maintainer Bob Friesenhahn. Please be careful when verifying
 # who made releases.
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/rouault.asc
-inherit autotools multilib-minimal verify-sig libtool flag-o-matic
+inherit autotools multilib-minimal verify-sig flag-o-matic
 
 MY_P="${P/_rc/rc}"
 DESCRIPTION="Tag Image File Format (TIFF) library"
