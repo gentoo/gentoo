@@ -11,7 +11,7 @@ HOMEPAGE="https://lib.openmpt.org/libopenmpt/"
 SRC_URI="https://lib.openmpt.org/files/libopenmpt/src/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="flac portaudio pulseaudio sdl sndfile"
 
 RDEPEND="
