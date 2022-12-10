@@ -24,7 +24,7 @@ DOCS=( README.rst )
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	tests/test_core.py::TablenamesTest::test_tablenames
-	tests/test_onimport.py::SqliteDictPython24Test::test_py24_error
-)
+python_test() {
+	mkdir -p tests/db || die
+	distutils-r1_python_test
+}
