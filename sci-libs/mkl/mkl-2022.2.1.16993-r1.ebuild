@@ -27,6 +27,7 @@ RESTRICT="strip"
 RDEPEND="
 	app-eselect/eselect-blas
 	app-eselect/eselect-lapack
+	sys-cluster/mpich
 	sys-libs/libomp
 "
 # bug #801460
@@ -55,34 +56,6 @@ src_install() {
 	done
 	popd || die
 
-	# Symlink files in include directory
-	pushd "opt/intel/oneapi/mkl/$(ver_cut 1-3)/include" || die
-	for file in *.h; do
-		dosym "../../opt/intel/oneapi/mkl/$(ver_cut 1-3)/include/${file}" "/usr/include/${file}"
-	done
-	for file in *.f90; do
-		dosym "../../opt/intel/oneapi/mkl/$(ver_cut 1-3)/include/${file}" "/usr/include/${file}"
-	done
-	for file in *.fi; do
-		dosym "../../opt/intel/oneapi/mkl/$(ver_cut 1-3)/include/${file}" "/usr/include/${file}"
-	done
-	popd || die
-	pushd "opt/intel/oneapi/mkl/$(ver_cut 1-3)/include/fftw" || die
-	for file in *; do
-		dosym "../../../opt/intel/oneapi/mkl/$(ver_cut 1-3)/include/fftw/${file}" "/usr/include/fftw/${file}"
-	done
-	popd || die
-	pushd "opt/intel/oneapi/mkl/$(ver_cut 1-3)/include/intel64" || die
-	for file in *; do
-		dosym "../../opt/intel/oneapi/mkl/$(ver_cut 1-3)/include/intel64/${file}" "/usr/include/${file}"
-	done
-	popd || die
-	pushd "opt/intel/oneapi/mkl/$(ver_cut 1-3)/include/oneapi" || die
-	for file in *; do
-		dosym "../../../opt/intel/oneapi/mkl/$(ver_cut 1-3)/include/oneapi/${file}" "/usr/include/oneapi/${file}"
-	done
-	popd || die
-
 	# Symlink files in locale directory
 	pushd "opt/intel/oneapi/mkl/$(ver_cut 1-3)/lib/intel64/locale/en_US" || die
 	for file in *; do
@@ -92,6 +65,9 @@ src_install() {
 
 	# Move everything over to the image directory
 	mv "${S}/"* "${ED}" || die
+
+	# Create convenience symlink that does not include the version number
+	dosym "$(ver_cut 1-3)" /opt/intel/oneapi/mkl/latest
 
 	dodir /usr/$(get_libdir)/blas/mkl
 	dosym ../../../../opt/intel/oneapi/mkl/$(ver_cut 1-3)/lib/intel64/libmkl_rt.so usr/$(get_libdir)/blas/mkl/libblas.so
