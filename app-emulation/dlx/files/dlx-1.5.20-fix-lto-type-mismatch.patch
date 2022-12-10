@@ -1,0 +1,193 @@
+Date: Sat, 10 Dec 2022 14:14:35 +0100
+Subject: [PATCH] fix lto-type-mismatch
+
+This gets rid of a double definition of the function Error and renames
+one of the Error functions to Error_s
+
+Bug: https://bugs.gentoo.org/854513
+This patch has been sent upstream via mail.
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+--- a/masm.c
++++ b/masm.c
+@@ -51,7 +51,7 @@ extern  char    LinkDate [];
+ 
+ /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+ 
+-VOID Error (STRPTR Msg);
++VOID Error_s (STRPTR Msg);
+ 
+ FILE    *In;                    /* Input file */
+ 
+@@ -274,7 +274,7 @@ STRPTR Decode2Table [] =
+ 
+ /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+ 
+-VOID Error (STRPTR Msg)
++VOID Error_s (STRPTR Msg)
+ {
+     if (strlen (Line))
+     {
+@@ -381,7 +381,7 @@ BOOL HandleSymbol (BOOL Jump)
+     if (ST->SetUp && !Jump)
+     {
+         sprintf (Txt, "Multiple definition of label <%s>\n", Sym);
+-        Error (Txt);
++        Error_s (Txt);
+     }
+ 
+     if (!Jump)
+@@ -414,7 +414,7 @@ VOID WriteTables (STRPTR FName)
+     if (!o)
+     {
+         sprintf (Txt, "Cannot open output microcode file '%s'", FName);
+-        Error (Txt);
++        Error_s (Txt);
+     }
+ 
+     for (i = 0; i < MICROSIZE; i++)
+@@ -493,7 +493,7 @@ VOID SetJump (SymTab ST)
+     if (!ST->SetUp)
+     {
+         sprintf (Txt, "Label <%s> never defined\n", ST->Name);
+-        Error (Txt);
++        Error_s (Txt);
+     }
+ 
+     if (ST->NoRefs)
+@@ -536,7 +536,7 @@ VOID DoDecode1 ()
+     if (!Found)
+     {
+         sprintf (Txt, "Unrecognised Decode1 keyword <%s>\n", Keyword);
+-        Error (Txt);
++        Error_s (Txt);
+     }
+ 
+     ptr++;
+@@ -553,13 +553,13 @@ VOID DoDecode1 ()
+     if (!ST)    /* New label */
+     {
+         sprintf (Txt, "Unrecognised label <%s>\n", Sym);
+-        Error (Txt);
++        Error_s (Txt);
+     }
+ 
+     if (!ST->SetUp)
+     {
+         sprintf (Txt, "Label <%s> not declared\n", ST->Name);
+-        Error (Txt);
++        Error_s (Txt);
+     }
+ 
+     Decode1 [Ind] = ST->Val;
+@@ -591,7 +591,7 @@ VOID DoDecode2 ()
+     if (!Found)
+     {
+         sprintf (Txt, "Unrecognised Decode2 keyword <%s>\n", Keyword);
+-        Error (Txt);
++        Error_s (Txt);
+     }
+ 
+     ptr++;
+@@ -608,13 +608,13 @@ VOID DoDecode2 ()
+     if (!ST)    /* New label */
+     {
+         sprintf (Txt, "Unrecognised label <%s>\n", Sym);
+-        Error (Txt);
++        Error_s (Txt);
+     }
+ 
+     if (!ST->SetUp)
+     {
+         sprintf (Txt, "Label <%s> not declared\n", ST->Name);
+-        Error (Txt);
++        Error_s (Txt);
+     }
+ 
+     Decode2 [Ind] = ST->Val;
+@@ -649,7 +649,7 @@ VOID DoMicroCode ()
+         if (Ind == INVALID)
+         {
+             sprintf (Txt, "Unrecognised Dest keyword <%s>\n", Keyword);
+-            Error (Txt);
++            Error_s (Txt);
+         }
+ 
+         Microcode [Addr] |= ((Ind + 1) << 28);    /* 0 = no dest */
+@@ -671,7 +671,7 @@ VOID DoMicroCode ()
+         if (Ind == INVALID)
+         {
+             sprintf (Txt, "Unrecognised ALU keyword <%s>\n", Keyword);
+-            Error (Txt);
++            Error_s (Txt);
+         }
+ 
+         Microcode [Addr] |= (Ind << 22);
+@@ -695,7 +695,7 @@ VOID DoMicroCode ()
+         if (Ind == INVALID)
+         {
+             sprintf (Txt, "Unrecognised Source 1 keyword <%s>\n", Keyword);
+-            Error (Txt);
++            Error_s (Txt);
+         }
+ 
+         Microcode [Addr] |= (Ind << 18);
+@@ -719,7 +719,7 @@ VOID DoMicroCode ()
+         if (Ind == INVALID)
+         {
+             sprintf (Txt, "Unrecognised Source 2 keyword <%s>\n", Keyword);
+-            Error (Txt);
++            Error_s (Txt);
+         }
+ 
+         Microcode [Addr] |= (Ind << 14);
+@@ -755,7 +755,7 @@ VOID DoMicroCode ()
+         if (Ind == INVALID)
+         {
+             sprintf (Txt, "Unrecognised Misc keyword <%s>\n", Keyword);
+-            Error (Txt);
++            Error_s (Txt);
+         }
+ 
+         Microcode [Addr] |= (Ind << 5);
+@@ -779,7 +779,7 @@ VOID DoMicroCode ()
+         if (Ind == INVALID)
+         {
+             sprintf (Txt, "Unrecognised Condition keyword <%s>\n", Keyword);
+-            Error (Txt);
++            Error_s (Txt);
+         }
+ 
+         Microcode [Addr] |= (Ind + 1); /* 0 = no cond */
+@@ -933,7 +933,7 @@ int main (int argc, char **argv)
+                                 if (Addr >= MICROSIZE)
+                                 {
+                                     sprintf (Txt, "Too many microcode lines - maximum %d", MICROSIZE);
+-                                    Error (Txt);
++                                    Error_s (Txt);
+                                 }
+ 
+                                 break;
+--- a/msym.c
++++ b/msym.c
+@@ -15,7 +15,7 @@
+ 
+ SymTab SymBase = (SymTab) NULL;
+ 
+-extern void     Error (STRPTR Msg, BOOL PrintLine);
++extern VOID Error_s (STRPTR Msg);
+ BOOL    DoTitle;
+ 
+ /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@@ -84,7 +84,7 @@ SymTab AddSymbol (STRPTR Sym, ULONG Val, BOOL SetUp)
+     S = (SymTab) calloc (1, sizeof (struct SymTabType));
+ 
+     if (!S)
+-        Error ("Out of memory (AddSymbol)", FALSE);
++        Error_s ("Out of memory (AddSymbol)");
+ 
+     strcpy (S->Name, Sym);
+ 
+-- 
+2.38.1
+
