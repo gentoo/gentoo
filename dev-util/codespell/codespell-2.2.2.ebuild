@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${P::1}/${PN}/${P}.tar.gz"
 # Code licensed under GPL-2, dictionary licensed under CC-BY-SA-3.0
 LICENSE="GPL-2 CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 BDEPEND="test? ( dev-python/chardet[${PYTHON_USEDEP}] )"
 
