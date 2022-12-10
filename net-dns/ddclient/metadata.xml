@@ -17,7 +17,6 @@
 	</longdescription>
 	<use>
 		<flag name="examples">Install various example files, like for cron.</flag>
-		<flag name="iproute2">Use <pkg>sys-apps/iproute2</pkg> instead of <pkg>sys-apps/net-tools</pkg> for interaction.</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/ddclient/ddclient/issues</bugs-to>
