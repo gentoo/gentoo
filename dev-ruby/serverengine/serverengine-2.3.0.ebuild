@@ -24,11 +24,15 @@ ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/timecop )"
 
 all_ruby_prepare() {
 	sed -i -e '/rake/ s/~>/>=/' \
-		-e '/rspec/ s/2.13.0/2.13/' \
+		-e '/rspec/ s/2.13.0/3.0/' \
 		-e '/rake-compiler/ s:^:#:' serverengine.gemspec || die
+
+	sed -i -e '/color_enabled/ s:^:#:' -e '1irequire "fileutils"' spec/spec_helper.rb || die
+
+	sed -i -e '/raises SystemExit/askip "Exits rspec 3"' spec/multi_process_server_spec.rb || die
 }
 
 each_ruby_test() {
 	# The specs spawn ruby processes with bundler support
-	${RUBY} -S bundle exec rspec-2 spec || die
+	${RUBY} -S bundle exec rspec-3 spec || die
 }
