@@ -354,7 +354,7 @@ cmake_src_prepare() {
 
 	default_src_prepare
 
-	# check if CMakeLists.txt exist and if no then die
+	# check if CMakeLists.txt exists and if not then die
 	if [[ ! -e ${CMAKE_USE_DIR}/CMakeLists.txt ]] ; then
 		eerror "Unable to locate CMakeLists.txt under:"
 		eerror "\"${CMAKE_USE_DIR}/CMakeLists.txt\""
