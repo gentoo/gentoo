@@ -8,6 +8,10 @@ depend() {
 
 start_pre() {
 	checkpath --directory --owner root:bareos --mode 01775 /run/bareos
+	if [[ -e /run/bareos/bareos-dir.9101.pid && $(stat -c %U /run/bareos/bareos-dir.9101.pid) != "root" ]]; then
+		eerror "SECURITY ALERT: bareos owned pidfile found! (see #631598)"
+		exit 1
+	fi
 }
 
 start_post() {
