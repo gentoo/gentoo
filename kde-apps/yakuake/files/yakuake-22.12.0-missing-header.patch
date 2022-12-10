@@ -1,0 +1,33 @@
+From 1f2df3b0f57f5b3f4e4a5da8608cccde4edb2de5 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 10 Dec 2022 12:22:46 +0100
+Subject: [PATCH] Re-add missing header when building without KF5Wayland
+
+Otherwise we rely on KWayland/Client/surface.h to implicitly provide
+QWindow which may not be available.
+
+Partial revert of 9b93462943ab26ab015989321881dee13404d711
+See also: https://invent.kde.org/utilities/yakuake/-/merge_requests/80
+
+Downstream report: https://bugs.gentoo.org/885101
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ app/mainwindow.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/app/mainwindow.cpp b/app/mainwindow.cpp
+index 4ea361e..8b0aab3 100644
+--- a/app/mainwindow.cpp
++++ b/app/mainwindow.cpp
+@@ -42,6 +42,7 @@
+ #include <QPainter>
+ #include <QScreen>
+ #include <QWhatsThis>
++#include <QWindow>
+ 
+ #if HAVE_X11
+ #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-- 
+2.38.1
+

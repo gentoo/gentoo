@@ -48,6 +48,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-missing-header.patch" ) # bug 885101
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package absolute-position KF5Wayland)
