@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2022-12-10)
+# Fails to build with recent perl. No maintainer, no revdeps.
+# Removal in 30 days. Bug 849518
+net-p2p/opendchub
+
 # Sam James <sam@gentoo.org> (2022-12-09)
 # Breaks compilation of reverse dependencies with broken pkgconfig (pc) file
 # bug #885075, https://github.com/libarchive/libarchive/issues/1766
