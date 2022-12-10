@@ -1,0 +1,25 @@
+Date: Sat, 10 Dec 2022 21:27:26 +0100
+Subject: [PATCH] fix -lto-type-mismatch
+
+glob_date_label is declared everywhere as 'extern GtkWidget*'.
+Except where it is actually declared.
+
+Bug: https://bugs.gentoo.org/865945
+PR to merge this upstream: https://github.com/juddmon/jpilot/pull/51
+
+Pascal Jäger <pascal.jaeger@leimstift.de> (2022-12-10)
+
+--- a/jpilot-sync.c
++++ b/jpilot-sync.c
+@@ -47,7 +47,7 @@ unsigned char skip_plugins;
+  * this code but must be instantiated for the code to compile.  
+  * The same is true of the functions which are only used in GUI mode. */
+ pid_t jpilot_master_pid = -1;
+-int *glob_date_label;
++GtkWidget *glob_date_label;
+ GtkWidget *glob_dialog;
+ gint glob_date_timer_tag;
+ 
+-- 
+2.38.1
+
