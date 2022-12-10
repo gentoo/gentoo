@@ -1,0 +1,102 @@
+Date: Sat, 10 Dec 2022 13:25:28 +0100
+Subject: [PATCH] fix implicit function declarations
+
+By default clang16 will not allow implicit function declarations.
+This patch overhauls the whole source code to fix that. 
+
+Bug: https://bugs.gentoo.org/874933
+This patch has been sent upstream via mail.
+
+Pascal Jaeger <pascal.jaeger@leimstift.de> (2022-12-10)
+
+--- a/cpu.h
++++ b/cpu.h
+@@ -573,4 +573,4 @@ extern struct DecodeTables DecodeT [128];
+ 
+ /////////////////////////////////////////////////////////////////////////////////////////
+ 
+-
++VOID DoMcLoad (STRPTR Cmd);
+--- a/dsym.c
++++ b/dsym.c
+@@ -19,6 +19,7 @@
+ 
+ SymTab SymBase = (SymTab) NULL;
+ 
++extern VOID Error (STRPTR Msg, BOOL PrintLine);
+ BOOL    DoTitle;
+ 
+ /////////////////////////////////////////////////////////////////////////////////////////
+--- a/dsym.h
++++ b/dsym.h
+@@ -38,6 +38,7 @@ extern SymTab   AddSymbol (STRPTR Sym, ULONG Val, BOOL SetUp);
+ extern VOID     DeleteSymbolTable ();
+ extern VOID     DisplaySymbolTable (BOOL NotFound);
+ extern SymTab   FindSymbol (STRPTR Sym);
++extern VOID     CopyMacro (SymTab S);
+ 
+ /////////////////////////////////////////////////////////////////////////////////////////
+ 
+--- a/io.c
++++ b/io.c
+@@ -14,6 +14,8 @@
+ 
+ #include "cpu.h"
+ 
++extern  ULONG   ExtractNo (STRPTR Str, WORD *Pos, BOOL *Blank);
++
+ /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+ /* Extract a file name from Cmd at position Pos                           */
+ /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+--- a/masm.c
++++ b/masm.c
+@@ -51,6 +51,8 @@ extern  char    LinkDate [];
+ 
+ /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+ 
++VOID Error (STRPTR Msg);
++
+ FILE    *In;                    /* Input file */
+ 
+ BOOL    LittleEndian = FALSE, Ok = TRUE, ESym = FALSE;
+--- a/masm.h
++++ b/masm.h
+@@ -13,5 +13,3 @@
+ 
+ #define LINELEN     130
+ 
+-
+-
+--- a/mon.c
++++ b/mon.c
+@@ -88,6 +88,7 @@
+ #include "mon.h"
+ #include "io.h"
+ 
++extern void Error (STRPTR Msg, BOOL PrintLine);
+ ULONG   LastAddr = 0;
+ 
+ /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+--- a/mon.h
++++ b/mon.h
+@@ -46,6 +46,7 @@ extern  UBYTE   PauseForKey (UBYTE Msg);
+ 
+ extern  ULONG   DebugLevel;
+ extern  FILE    *Log;
++VOID DisMicrocode ();
+ 
+ #define DB_DISASSEM     0x0001
+ #define DB_MICROCODE    0x0002
+--- a/msym.c
++++ b/msym.c
+@@ -15,6 +15,7 @@
+ 
+ SymTab SymBase = (SymTab) NULL;
+ 
++extern void     Error (STRPTR Msg, BOOL PrintLine);
+ BOOL    DoTitle;
+ 
+ /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+-- 
+2.38.1
+
