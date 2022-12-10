@@ -27,6 +27,8 @@ RESTRICT="strip"
 RDEPEND="
 	app-eselect/eselect-blas
 	app-eselect/eselect-lapack
+	dev-cpp/tbb
+	dev-libs/opencl-icd-loader
 	sys-cluster/mpich
 	sys-libs/libomp
 "
