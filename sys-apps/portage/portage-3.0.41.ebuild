@@ -160,7 +160,7 @@ python_prepare_all() {
 	fi
 
 	cd "${S}/cnf" || die
-	if [ -f "make.conf.example.${ARCH}".diff ]; then
+	if [[ -f "make.conf.example.${ARCH}".diff ]] ; then
 		patch make.conf.example "make.conf.example.${ARCH}".diff || \
 			die "Failed to patch make.conf.example"
 	else
