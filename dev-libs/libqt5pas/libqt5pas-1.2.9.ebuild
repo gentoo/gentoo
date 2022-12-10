@@ -22,8 +22,6 @@ DEPEND="
 	dev-qt/qtprintsupport:5
 	dev-qt/qtx11extras:5
 "
-RDEPEND="${DEPEND}"
-BDEPEND=""
 
 S="${WORKDIR}/lazarus/lcl/interfaces/qt5/cbindings"
 
