@@ -220,6 +220,7 @@ sci-electronics/labone
 sci-mathematics/gimps
 sci-misc/jupyterlab-desktop-bin
 sci-misc/netlogo-bin
+sci-libs/mkl
 sys-apps/ipmicfg
 sys-apps/tas
 sys-block/hpssacli
