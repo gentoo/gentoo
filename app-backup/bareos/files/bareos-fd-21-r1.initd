@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 1999-2022 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	use dns
+}
+
+command="/usr/sbin/bareos-fd"
+command_args="-f ${DIR_OPTIONS}"
+command_background="true"
+pidfile="/run/bareos/bareos-fd.9102.pid"

@@ -342,7 +342,7 @@ src_install() {
 	fi
 	for script in ${myscripts}; do
 		# install init script and config
-		newinitd "${FILESDIR}/${script}-21".initd "${script}"
+		newinitd "${FILESDIR}/${script}-21-r1".initd "${script}"
 		newconfd "${FILESDIR}/${script}-21".confd "${script}"
 	done
 
@@ -360,7 +360,7 @@ src_install() {
 	keepdir /var/lib/bareos
 	keepdir /var/lib/bareos/storage
 
-	diropts -m0755
+	diropts -m0755 -o bareos -g bareos
 	keepdir /var/log/bareos
 
 	newtmpfiles "${FILESDIR}"/tmpfiles.d-bareos.conf bareos.conf
@@ -382,9 +382,20 @@ pkg_postinst() {
 		einfo
 		einfo "If this is a new install, you must create the database:"
 		einfo
-		einfo "  su postgres -c '/usr/libexec/bareos/create_bareos_database postgresql'"
-		einfo "  su postgres -c '/usr/libexec/bareos/make_bareos_tables postgresql'"
-		einfo "  su postgres -c '/usr/libexec/bareos/grant_bareos_privileges postgresql'"
+		einfo "  su postgres -c '/usr/libexec/bareos/create_bareos_database'"
+		einfo "  su postgres -c '/usr/libexec/bareos/make_bareos_tables'"
+		einfo "  su postgres -c '/usr/libexec/bareos/grant_bareos_privileges'"
 		einfo
+		einfo "or run"
+		einfo
+		einfo " emerge --config app-backup/bareos"
+		einfo
+		einfo "to do this"
 	fi
+}
+
+pkg_config() {
+	su postgres -c '/usr/libexec/bareos/create_bareos_database' || die "could not create bareos database"
+	su postgres -c '/usr/libexec/bareos/make_bareos_tables' || die "could not create bareos database tables"
+	su postgres -c '/usr/libexec/bareos/grant_bareos_privileges' || die "could not grant bareos database privileges"
 }
