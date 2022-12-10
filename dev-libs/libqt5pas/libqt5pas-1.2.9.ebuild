@@ -21,6 +21,8 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtx11extras:5
+	dev-qt/qtcore:5
+	dev-qt/qtwidgets:5
 "
 
 S="${WORKDIR}/lazarus/lcl/interfaces/qt5/cbindings"
