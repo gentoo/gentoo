@@ -91,7 +91,8 @@ pkg_config() {
 	local DATABASE_URL="$(sed -n 's/^DATABASE_URL=\(.*\)/\1/p' "${EROOT}/etc/${PN}.conf")"
 	[[ -n "${DATABASE_URL}" ]] || die "Failed getting DATABASE_URL from config file"
 
-	DATABASE_URL="${DATABASE_URL}" "${EROOT}"/usr/bin/miniflux -migrate || die "miniflux -migrate failed. Please check the above output for errors."
+	DATABASE_URL="${DATABASE_URL}" "${EROOT}"/usr/bin/miniflux -migrate \
+		|| die "miniflux -migrate failed. Please check the above output for errors."
 
 	echo
 	elog "Database migrations complete."
