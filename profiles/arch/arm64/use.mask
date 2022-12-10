@@ -119,6 +119,7 @@ lpsol
 zvbi
 gts
 anthy
+snapcast
 
 # Unmask ARM-only video-cards
 -video_cards_exynos
