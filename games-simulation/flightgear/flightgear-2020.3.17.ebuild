@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake bash-completion-r1 toolchain-funcs
+inherit cmake toolchain-funcs
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="https://www.flightgear.org/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="cpu_flags_x86_sse2 dbus debug examples gdal openmp qt5 +udev +utils vim-syntax"
+IUSE="cpu_flags_x86_sse2 dbus debug examples gdal openmp qt5 +udev +utils"
 
 # Needs --fg-root with path to flightgear-data passed to test runner passed,
 # not really worth patching
@@ -89,6 +89,7 @@ src_configure() {
 		-DENABLE_GDAL=$(usex gdal)
 		-DENABLE_GPSSMOOTH=$(usex utils)
 		-DENABLE_HID_INPUT=$(usex udev)
+		-DENABLE_IAX=$(usex utils)
 		-DENABLE_JS_DEMO=$(usex utils)
 		-DENABLE_JSBSIM=ON
 		-DENABLE_LARCSIM=ON
@@ -156,12 +157,10 @@ src_install() {
 	fi
 
 	# Install nasal script syntax
-	if use vim-syntax; then
-		insinto /usr/share/vim/vimfiles/syntax
-		doins scripts/syntax/{ac3d,nasal}.vim
-		insinto /usr/share/vim/vimfiles/ftdetect/
-		doins "${FILESDIR}"/{ac3d,nasal}.vim
-	fi
+	insinto /usr/share/vim/vimfiles/syntax
+	doins scripts/syntax/{ac3d,nasal}.vim
+	insinto /usr/share/vim/vimfiles/ftdetect/
+	doins "${FILESDIR}"/{ac3d,nasal}.vim
 }
 
 pkg_postinst() {
