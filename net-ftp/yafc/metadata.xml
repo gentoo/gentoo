@@ -5,4 +5,7 @@
 	<use>
 		<flag name="ssh">Build with SFTP support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">sebastinas/yafc</remote-id>
+	</upstream>
 </pkgmetadata>
