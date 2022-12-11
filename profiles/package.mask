@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2022-12-11)
+# ruby27-only package. No reverse dependencies.
+# Last release in 2012. Removal in 30 days.
+dev-ruby/log_buddy
+
+# Hans de Graaff <graaff@gentoo.org> (2022-12-11)
 # ruby27-only slot. No reverse dependencies.
 # Use a newer mime-types slot.
 # Removal in 30 days.
