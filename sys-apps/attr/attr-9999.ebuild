@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs multilib-minimal usr-ldscript
+inherit toolchain-funcs multilib-minimal usr-ldscript
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/${PN}.git"
@@ -39,13 +39,6 @@ src_prepare() {
 		# bug #580792
 		elibtoolize
 	fi
-}
-
-src_configure() {
-	# bug #760857
-	append-lfs-flags
-
-	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {
