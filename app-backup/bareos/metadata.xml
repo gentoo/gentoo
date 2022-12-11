@@ -6,13 +6,13 @@
     <name>Marc Schiffbauer</name>
   </maintainer>
   <use>
-    <flag name="ceph">Enable ceph support</flag>
+    <flag name="ceph">Enable <pkg>sys-cluster/ceph</pkg> support</flag>
     <flag name="clientonly">Only install file-daemon (client)</flag>
     <flag name="director">Install director</flag>
-    <flag name="glusterfs">Enable glusterfs storage backend</flag>
-    <flag name="jansson">JSON API support using JANSSON for director</flag>
-    <flag name="lmdb">enable build of LMDB support for faster accurate backup</flag>
-    <flag name="logwatch">Install support files for logwatch</flag>
+    <flag name="glusterfs">Enable <pkg>sys-cluster/glusterfs</pkg> storage backend</flag>
+    <flag name="jansson">JSON API support using <pkg>dev-libs/jansson</pkg> for director</flag>
+    <flag name="lmdb">enable build of <pkg>dev-db/lmdb</pkg> support for faster accurate backup</flag>
+    <flag name="logwatch">Install support files for <pkg>sys-apps/logwatch</pkg></flag>
     <flag name="ndmp">Enable support for NDMP (Network Data Management Protocol)</flag>
     <flag name="scsi-crypto">Enable low level SCSI crypto support</flag>
     <flag name="storage-daemon">Install storage daemon (bareos-sd)</flag>
