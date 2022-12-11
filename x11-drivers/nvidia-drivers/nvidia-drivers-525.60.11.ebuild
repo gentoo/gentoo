@@ -82,6 +82,7 @@ QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
 
 PATCHES=(
 	"${FILESDIR}"/nvidia-drivers-525.23-clang15.patch
+	"${FILESDIR}"/nvidia-kernel-module-source-515.86.01-raw-ldflags.patch
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 	"${FILESDIR}"/nvidia-settings-390.144-desktop.patch
 	"${FILESDIR}"/nvidia-settings-390.144-raw-ldflags.patch
@@ -259,6 +260,7 @@ options nvidia NVreg_OpenRmEnableUnsupportedGpus=1' "${T}"/nvidia.conf || die
 
 src_compile() {
 	tc-export AR CC CXX LD OBJCOPY OBJDUMP
+	local -x RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" # raw-ldflags.patch
 
 	NV_ARGS=(
 		PREFIX="${EPREFIX}"/usr
@@ -295,9 +297,7 @@ src_compile() {
 
 	if use tools; then
 		# cflags: avoid noisy logs, only use here and set first to let override
-		# ldflags: abi currently needed if LD=ld.lld
 		CFLAGS="-Wno-deprecated-declarations ${CFLAGS}" \
-			RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" \
 			emake "${NV_ARGS[@]}" -C nvidia-settings
 	elif use static-libs; then
 		# pretend GTK+3 is available, not actually used (bug #880879)
