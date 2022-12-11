@@ -157,7 +157,10 @@ mate-base/mate help
 # Sanitizers partially supported on this architecture.
 #
 # ASan: https://reviews.llvm.org/D129418 (LLVM 15 and above)
+# TSan: https://reviews.llvm.org/D139292 (LLVM 16 since 20221208)
+# UBSan: https://reviews.llvm.org/D139292 (LLVM 16 since 20221208)
 >=sys-libs/compiler-rt-sanitizers-15 -asan
+>=sys-libs/compiler-rt-sanitizers-16.0.0_pre20221210 -tsan -ubsan
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
 # virtual/{jdk,jre} is not available on loong yet.
