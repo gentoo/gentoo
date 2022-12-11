@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-12-11)
+# ruby27-only package. No reverse dependencies.
+# Removal in 30 days.
+dev-ruby/posix-spawn
+
 # Jonas Stein <jstein@gentoo.org> (2022-12-11)
 # Unfetchable and mirror-restricted.
 # Upstream discontinued
