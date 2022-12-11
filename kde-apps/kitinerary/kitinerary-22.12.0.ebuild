@@ -38,6 +38,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="x11-misc/shared-mime-info"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-22.12.0-gcc13.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		# sci-geosciences/osmctools; TODO: useful at all?
