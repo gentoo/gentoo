@@ -357,7 +357,7 @@ SRC_URI="
 
 LICENSE="
 	0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD
-	CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 openssl
+	CC0-1.0 ISC MIT MPL-2.0 SSLeay Unicode-DFS-2016 openssl
 	doc? ( CC-BY-4.0 OFL-1.1 )"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
