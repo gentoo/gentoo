@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!--maintainer-needed-->
-  <use>
-    <flag name="minimal">Disable bundled drivers and extra libraries (most users don't need these)</flag>
-    <flag name="odbcmanual">Administrator, Internal Structure, Programmer and User documentation</flag>
-  </use>
+	<!--maintainer-needed-->
+	<use>
+		<flag name="minimal">Disable bundled drivers and extra libraries (most users don't need these)</flag>
+		<flag name="odbcmanual">Administrator, Internal Structure, Programmer and User documentation</flag>
+		<flag name="stats">Build with statistic-gathering support</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">unixODBC</remote-id>
+		<bugs-to>https://sourceforge.net/p/unixodbc/bugs</bugs-to>
+	</upstream>
 </pkgmetadata>
