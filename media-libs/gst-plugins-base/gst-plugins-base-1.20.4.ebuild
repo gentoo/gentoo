@@ -62,7 +62,9 @@ GL_DEPS="
 " # graphene for optional gltransformation and glvideoflip elements and more GLSL Uniforms support in glshader; libpng/jpeg for gloverlay element
 # >=media-libs/graphene-1.4.0[${MULTILIB_USEDEP}]
 
+# The >=gstreamer-1.20.4 is a one-time need over eclass due to added API in upstream MR !3090, drop for 1.22
 RDEPEND="
+	>=media-libs/gstreamer-1.20.4[${MULTILIB_USEDEP}]
 	app-text/iso-codes
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
