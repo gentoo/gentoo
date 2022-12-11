@@ -35,6 +35,11 @@
 
 # Hans de Graaff <graaff@gentoo.org> (2022-12-11)
 # ruby27-only package. No reverse dependencies.
+# Last release in 2009. Removal in 30 days.
+dev-ruby/ntlm-http
+
+# Hans de Graaff <graaff@gentoo.org> (2022-12-11)
+# ruby27-only package. No reverse dependencies.
 # Removal in 30 days.
 dev-ruby/posix-spawn
 
