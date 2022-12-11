@@ -101,4 +101,6 @@ python_install_all() {
 	if use shared; then
 		build relocatable
 	fi
+	gprinstall -v -P sigsegv_handler/langkit_sigsegv_handler.gpr -p -XBUILD_MODE=dev \
+		--prefix="${D}"/usr || die
 }
