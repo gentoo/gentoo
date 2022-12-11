@@ -25,7 +25,16 @@
 		<flag name="gcrypt">Enables gcrypt support: Needed for rtmp(t)e support if openssl, librtmp or gmp is not used.</flag>
 		<flag name="gme">Enables support for <pkg>media-libs/game-music-emu</pkg> for playing various video game music formats.</flag>
 		<flag name="gpl">Build GPL code. Should be enabled unless you require LGPL binaries.</flag>
-		<flag name="hardcoded-tables">Use pre-calculated tables rather than calculating them on the fly.</flag>
+		<flag name="hardcoded-tables">
+			Use pre-calculated tables rather than calculating them on the fly.
+
+			It results in an increase of approximately 15% in the size of libavcodec, the main library impacted by this change.
+			It enables savings in table generation time, done once at codec initialization, since by hardcoding the tables,
+			they do not need to be computed at runtime. However, the savings are often negligible (~100k cycles is a typical number) especially when amortized
+			over the entire encoding/decoding operation.
+
+			Improvements are being made to the runtime initialization, and so over time, this option will have an impact on fewer and fewer codecs.
+		</flag>
 		<flag name="iec61883"> Support for FireWire DV/HDV input device using <pkg>media-libs/libiec61883</pkg>.</flag>
 		<flag name="jpegxl">Enable JPEG XL de/encoding via <pkg>media-libs/libjxl</pkg>.</flag>
 		<flag name="kvazaar">Enables <pkg>media-libs/kvazaar</pkg> based HEVC encoder.</flag>
