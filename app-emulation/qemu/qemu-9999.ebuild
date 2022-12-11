@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# TODO:
+# [08:43:15]  <@slashbeast> as long as there is switch somewhere allwoing me to inject the F flag :)
+# [08:43:24]  <@slashbeast> in qemu-binfmt init I can use conf.d
+
 EAPI=8
 
 # Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-qemu-docs
@@ -806,6 +810,59 @@ src_install() {
 		# Install binfmt/qemu.conf.
 		insinto "/usr/share/qemu/binfmt.d"
 		doins "${T}/qemu.conf"
+
+		insinto "/lib/binfmt.d"
+		"${S}"/scripts/qemu-binfmt-conf.sh \
+			--systemd ALL \
+			--exportdir "${T}/binfmt.d" \
+			--qemu-path "${EPREFIX}/usr/bin" || die
+
+		# We don't want to install an interpreter for the native arch.
+		# Sorting order matches QEMU_USER_TARGETS, approximately
+		delete_binfmt_file() {
+			[[ -z ${1} ]] && die "Blank argument given to delete_binfmt_file!"
+
+			# Intentionally no die as they may not exist if not enabled in QEMU_USER_TARGETS
+			rm -v "${T}"/binfmt.d/qemu-${1}*
+		}
+
+		if use arm64 ; then
+			delete_binfmt_file aarch64
+		elif use alpha ; then
+			delete_binfmt_file alpha
+		elif use arm ; then
+			delete_binfmt_file arm
+		elif use hppa ; then
+			delete_binfmt_file hppa
+		elif use loong ; then
+			delete_binfmt_file loongarch64
+		elif use m68k ; then
+			delete_binfmt_file m68k
+		elif use ppc64 ; then
+			delete_binfmt_file ppc64
+		elif use ppc ; then
+			delete_binfmt_file ppc
+		elif use sparc ; then
+			delete_binfmt_file sparc
+		elif use mips ; then
+			delete_binfmt_file mips
+		elif use s390 ; then
+			delete_binfmt_file s390
+		elif use amd64 || use x86 ; then
+			delete_binfmt_file x86_64
+			delete_binfmt_file i386
+			delete_binfmt_file i586
+		elif use riscv ; then
+			delete_binfmt_file riscv
+		fi
+
+		local user_target
+		local mangled_user_target
+		for user_target in $(IFS=,; echo ${user_targets[*]}) ; do
+			mangled_user_target=${user_target/-linux-user/}
+
+			mv -v "${T}/binfmt.d/qemu-${mangled_user_target}"{,.conf} "${ED}"/lib/binfmt.d/ || die
+		done
 	fi
 
 	if [[ -n ${softmmu_targets} ]]; then
