@@ -40,7 +40,7 @@ lbmethod_heartbeat log_config log_forensic logio lua macro md mime mime_magic ne
 proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_hcheck proxy_html proxy_http proxy_scgi
 proxy_http2 proxy_fcgi proxy_uwsgi proxy_wstunnel rewrite ratelimit remoteip reqtimeout
 session session_cookie session_crypto session_dbd setenvif slotmem_shm socache_memcache
-socache_shmcb speling status substitute systemd unique_id userdir usertrack
+socache_shmcb speling status substitute systemd tls unique_id userdir usertrack
 unixd version vhost_alias watchdog xml2enc"
 # The following are also in the source as of this version, but are not available
 # for user selection:
