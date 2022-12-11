@@ -92,6 +92,7 @@ socache_shmcb - A shared object cache provider using a high-performance cyclic b
 speling - Attempts to correct mistaken URLs that users might have entered by ignoring capitalization and by allowing up to one misspelling
 status - Provides information on server activity and performance
 substitute - Perform search and replace operations on response bodies
+tls - mod_tls TLS module for Apache, intended to replace mod_ssl
 unique_id - Provides an environment variable with a unique identifier for each request
 unixd - Basic (required) security for Unix-family platforms
 userdir - User-specific directories
