@@ -26,8 +26,8 @@ RESTRICT="!full-stdlib? ( test )"
 
 RDEPEND="
 	|| (
-		>=dev-python/pypy-exe-${PYPY_PV}:${PYPY_PV}[bzip2?,ncurses?]
 		>=dev-python/pypy-exe-bin-${PYPY_PV}:${PYPY_PV}
+		>=dev-python/pypy-exe-${PYPY_PV}:${PYPY_PV}[bzip2?,ncurses?]
 	)
 	dev-libs/openssl:0=
 	gdbm? ( sys-libs/gdbm:0= )
