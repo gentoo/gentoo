@@ -1,0 +1,24 @@
+https://invent.kde.org/network/kdenetwork-filesharing/-/commit/5c2d4ff3092155d24164c24a2a9a610325ff7174
+
+From: Sam James <sam@gentoo.org>
+Date: Sun, 11 Dec 2022 13:23:56 +0000
+Subject: [PATCH] samba: Fix build with GCC 13 (add missing <cstdint> include)
+
+GCC 13 (as usual for new compiler releases) shuffles around some
+internal includes and so <cstdint> is no longer transitively included.
+
+Explicitly include <cstdint> for uint32_t.
+
+Bug: https://bugs.gentoo.org/885315
+--- a/samba/aclproperties/debug.h
++++ b/samba/aclproperties/debug.h
+@@ -3,6 +3,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ 
+ struct ACE;
+-- 
+GitLab
