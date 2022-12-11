@@ -10,7 +10,7 @@ inherit kernel-2
 detect_version
 detect_arch
 
-KEYWORDS="~m68k ~mips ppc ~riscv ~s390"
+KEYWORDS="~m68k ~mips ppc ~s390"
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches"
 IUSE="experimental"
 
