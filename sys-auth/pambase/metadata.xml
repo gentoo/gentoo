@@ -98,4 +98,8 @@
 			and local terminals imply secure access in the first place.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="gentoo">proj/pambase</remote-id>
+		<remote-id type="github">gentoo/pambase</remote-id>
+	</upstream>
 </pkgmetadata>
