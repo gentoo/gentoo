@@ -24,7 +24,7 @@ SRC_URI="https://pythia.org/download/${PN}${MV//./}/${MY_P}.tgz
 
 SLOT="8"
 LICENSE="GPL-2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc examples fastjet +hepmc lhapdf root test zlib"
 RESTRICT="!test? ( test )"
 
