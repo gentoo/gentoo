@@ -1033,6 +1033,11 @@ distutils-r1_python_prepare_all() {
 	python_export_utf8_locale
 	_distutils-r1_print_package_versions
 
+	if [[ -n ${SYSROOT} ]] && ! has_version -b ">=dev-python/gpep517-12"; then
+		ewarn ">=dev-python/gpep517-12 features cross-compilation fixes."
+		ewarn "Please consider upgrading to avoid issues."
+	fi
+
 	_DISTUTILS_DEFAULT_CALLED=1
 }
 
@@ -1356,16 +1361,18 @@ distutils_pep517_install() {
 
 	local build_backend=$(_distutils-r1_get_backend)
 	einfo "  Building the wheel for ${PWD#${WORKDIR}/} via ${build_backend}"
-	local config_args=()
-	[[ -n ${config_settings} ]] &&
-		config_args+=( --config-json "${config_settings}" )
 	local cmd=(
 		gpep517 build-wheel
 			--backend "${build_backend}"
 			--output-fd 3
 			--wheel-dir "${WHEEL_BUILD_DIR}"
-			"${config_args[@]}"
 	)
+	if [[ -n ${config_settings} ]]; then
+		cmd+=( --config-json "${config_settings}" )
+	fi
+	if [[ -n ${SYSROOT} ]] && has_version -b ">=dev-python/gpep517-12"; then
+		cmd+=( --sysroot "${SYSROOT}" )
+	fi
 	printf '%s\n' "${cmd[*]}"
 	local wheel=$(
 		"${cmd[@]}" 3>&1 >&2 || die "Wheel build failed"
@@ -1428,7 +1435,9 @@ distutils-r1_python_compile() {
 				#
 				# see extension.py for list of suffixes
 				# .pyx is added for Cython
-				if [[ 1 -ne ${jobs} && 2 -eq $(
+				#
+				# esetup.py does not respect SYSROOT, so skip it there
+				if [[ -z ${SYSROOT} && 1 -ne ${jobs} && 2 -eq $(
 					find '(' -name '*.c' -o -name '*.cc' -o -name '*.cpp' \
 						-o -name '*.cxx' -o -name '*.c++' -o -name '*.m' \
 						-o -name '*.mm' -o -name '*.pyx' ')' -printf '\n' |
