@@ -1,0 +1,46 @@
+Subject: [PATCH] advice user to run as root when paranoid_level==3
+
+Corresponds with Debian patch 0003_Report_root_needed
+https://sources.debian.org/patches/tiptop/2.3.1-4/0003-Report_root_needed.patch/
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+--- a/src/requisite.c
++++ b/src/requisite.c
+@@ -17,13 +17,34 @@
+ #include "pmc.h"
+ #include "requisite.h"
+ 
++#define PARANOID1 "/proc/sys/kernel/perf_counter_paranoid"
++#define PARANOID2 "/proc/sys/kernel/perf_event_paranoid"
+ 
+ void check()
+ {
+   int fd, cpu, grp, flags, pid;
++  FILE* paranoid;
++  int   paranoia_level = 999;
+   struct utsname os;
+   struct STRUCT_NAME events = {0, };
++  int    n;
+ 
++  paranoid = fopen(PARANOID1, "r");
++  if (!paranoid)
++    paranoid = fopen(PARANOID2, "r");
++
++  if (!paranoid) {
++    fprintf(stderr, "System does not support performance events.\n");
++    fprintf(stderr, "File '/proc/sys/kernel/perf_*_paranoid' is missing.\n");
++    exit(EXIT_FAILURE);
++  }
++  n = fscanf(paranoid, "%d", &paranoia_level);
++  if (n != 1) {
++    fprintf(stderr, "Could not read '/proc/sys/kernel/perf_*_paranoid'.\n");
++    fprintf(stderr, "Trying to proceed anyway...\n");
++  }
++
++  fclose(paranoid);
+   events.disabled = 0;
+   events.exclude_hv = 1;
+   events.exclude_kernel = 1;
+-- 
+2.38.1
+
