@@ -5,7 +5,7 @@ https://bugs.gentoo.org/885483
 https://github.com/NVIDIA/open-gpu-kernel-modules/issues/405
 https://github.com/NVIDIA/open-gpu-kernel-modules/issues/214
 --- a/kernel-module-source/utils.mk
-+++ b/utils.mk
++++ b/kernel-module-source/utils.mk
 @@ -556,3 +556,3 @@
  	$(at_if_quiet)cd $$(dir $(1)); \
 -	$$(call quiet_cmd_no_at,LD) -r -z noexecstack --format=binary \
