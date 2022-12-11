@@ -156,6 +156,7 @@ RDEPEND="
 	apache2_modules_session_crypto? (
 		dev-libs/apr-util[openssl]
 	)
+	apache2_modules_tls? ( net-libs/rustls-ffi:= )
 	gdbm? ( sys-libs/gdbm:= )
 	ldap? ( =net-nds/openldap-2* )
 	selinux? ( sec-policy/selinux-apache )

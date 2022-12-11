@@ -19,6 +19,10 @@
 
 # Sam James <sam@gentoo.org> (2022-12-11)
 # net-libs/rustls-ffi is keyworded here
+www-servers/apache -apache2_modules_tls
+
+# Sam James <sam@gentoo.org> (2022-12-11)
+# net-libs/rustls-ffi is keyworded here
 net-misc/curl -rustls -curl_ssl_rustls
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-12-06)

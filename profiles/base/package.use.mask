@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.rog> (2022-12-11)
+# Ebuilds not fully wired up for these older versions.
+<www-servers/apache-2.4.54-r6 apache2_modules_tls
+
 # John Helmert III <ajak@gentoo.org> (2022-11-29)
 # sys-apps/ucspi-ssl is last rited
 mail-mta/netqmail pop3

@@ -3,6 +3,10 @@
 
 # Sam James <sam@gentoo.org> (2022-12-11)
 # Unkeyworded dependencies
+www-servers/apache apache2_modules_tls
+
+# Sam James <sam@gentoo.org> (2022-12-11)
+# Unkeyworded dependencies
 net-misc/curl rustls curl_ssl_rustls
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-12-06)
