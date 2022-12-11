@@ -982,7 +982,7 @@ _distutils-r1_print_package_versions() {
 	local pkg
 	einfo "Build system packages:"
 	for pkg in "${packages[@]}"; do
-		local installed=$(best_version "${pkg}")
+		local installed=$(best_version -b "${pkg}")
 		einfo "  $(printf '%-30s' "${pkg}"): ${installed#${pkg}-}"
 	done
 }
