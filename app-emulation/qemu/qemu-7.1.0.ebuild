@@ -6,7 +6,8 @@ EAPI=8
 # Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-qemu-docs
 # Set to 1 if prebuilt, 0 if not
 # (the construct below is to allow overriding from env for script)
-QEMU_DOCS_PREBUILT=${QEMU_DOCS_PREBUILT:-1}
+: ${QEMU_DOCS_PREBUILT:=1}
+
 QEMU_DOCS_PREBUILT_DEV=ajak
 QEMU_DOCS_VERSION="${PV}"
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
@@ -824,6 +825,59 @@ src_install() {
 		# Install binfmt/qemu.conf.
 		insinto "/usr/share/qemu/binfmt.d"
 		doins "${T}/qemu.conf"
+
+		insinto "/lib/binfmt.d"
+		"${S}"/scripts/qemu-binfmt-conf.sh \
+			--systemd ALL \
+			--exportdir "${T}/binfmt.d" \
+			--qemu-path "${EPREFIX}/usr/bin" || die
+
+		# We don't want to install an interpreter for the native arch.
+		# Sorting order matches QEMU_USER_TARGETS, approximately
+		delete_binfmt_file() {
+			[[ -z ${1} ]] && die "Blank argument given to delete_binfmt_file!"
+
+			# Intentionally no die as they may not exist if not enabled in QEMU_USER_TARGETS
+			rm -v "${T}"/binfmt.d/qemu-${1}*
+		}
+
+		if use arm64 ; then
+			delete_binfmt_file aarch64
+		elif use alpha ; then
+			delete_binfmt_file alpha
+		elif use arm ; then
+			delete_binfmt_file arm
+		elif use hppa ; then
+			delete_binfmt_file hppa
+		elif use loong ; then
+			delete_binfmt_file loongarch64
+		elif use m68k ; then
+			delete_binfmt_file m68k
+		elif use ppc64 ; then
+			delete_binfmt_file ppc64
+		elif use ppc ; then
+			delete_binfmt_file ppc
+		elif use sparc ; then
+			delete_binfmt_file sparc
+		elif use mips ; then
+			delete_binfmt_file mips
+		elif use s390 ; then
+			delete_binfmt_file s390
+		elif use amd64 || use x86 ; then
+			delete_binfmt_file x86_64
+			delete_binfmt_file i386
+			delete_binfmt_file i586
+		elif use riscv ; then
+			delete_binfmt_file riscv
+		fi
+
+		local user_target
+		local mangled_user_target
+		for user_target in $(IFS=,; echo ${user_targets[*]}) ; do
+			mangled_user_target=${user_target/-linux-user/}
+
+			mv -v "${T}/binfmt.d/qemu-${mangled_user_target}"{,.conf} "${ED}"/lib/binfmt.d/ || die
+		done
 	fi
 
 	if [[ -n ${softmmu_targets} ]]; then
