@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	"
 
 	# TODO: Add tomlplusplus as a system library, like quazip
-	EGIT_SUBMODULES=( '*' '-libraries/quazip' '-libraries/filesystem' )
+	EGIT_SUBMODULES=( '*' '-libraries/quazip' '-libraries/filesystem' '-libraries/zlib' '-libraries/extra-cmake-modules' )
 else
 	MY_PN="PrismLauncher"
 
