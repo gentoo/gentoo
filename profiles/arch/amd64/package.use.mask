@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-05-15)
+# net-libs/rustls-ffi is keyworded here
+www-servers/apache -apache2_modules_tls
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-04-22)
 # snap only works on amd64
 kde-plasma/discover -snap
