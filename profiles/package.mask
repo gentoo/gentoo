@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2022-12-11)
+# Unfetchable and mirror-restricted.
+# Upstream discontinued
+# Removal after 2023-02-01.  Bug #884715.
+dev-cpp/sourcetrail
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-12-10)
 # Fails to build with recent perl. No maintainer, no revdeps.
 # Removal in 30 days. Bug 849518
