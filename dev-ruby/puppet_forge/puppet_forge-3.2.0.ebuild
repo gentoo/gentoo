@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby27 ruby30"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -32,4 +32,6 @@ all_ruby_prepare() {
 	rm -rf spec/integration spec/unit/forge/v3/user_spec.rb || die
 
 	sed -i -e 's/git ls-files -z/find * -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	sed -i -e '1igem "faraday", "<2"' spec/spec_helper.rb || die
 }
