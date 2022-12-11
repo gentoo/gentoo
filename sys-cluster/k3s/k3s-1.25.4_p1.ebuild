@@ -92,6 +92,7 @@ src_compile() {
 
 src_install() {
 	dobin "dist/artifacts/${PN}"
+	newbin "${FILESDIR}/k3s-killall.sh" k3s-killall
 	use kubectl-symlink && dosym k3s /usr/bin/kubectl
 	systemd_dounit "${FILESDIR}/${PN}.service"
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
