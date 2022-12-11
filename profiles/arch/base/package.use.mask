@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-12-11)
+# Unkeyworded dependencies
+net-misc/curl rustls curl_ssl_rustls
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-12-06)
 # Quick Sync Video (through intel-mediasdk or oneVPL) is
 # only keyworded on amd64

@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-12-11)
+# net-libs/rustls-ffi needs Rust.
+net-misc/curl rustls curl_ssl_rustls
+
 # matoro <matoro_gentoo@matoro.tk> (2022-12-01)
 # tree-sitter-grammar.eclass adds dev-util/tree-sitter-cli as test dep
 dev-libs/tree-sitter-bash test
