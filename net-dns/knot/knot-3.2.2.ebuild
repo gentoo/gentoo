@@ -14,7 +14,7 @@ SRC_URI="https://secure.nic.cz/files/knot-dns/${P/_/-}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0/${KNOT_SUBSLOT}"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 KNOT_MODULES=(
 	"+cookies"
