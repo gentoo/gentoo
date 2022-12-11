@@ -29,6 +29,7 @@
 		<flag name="rubberband">Enable high quality pitch correction via <pkg>media-libs/rubberband</pkg></flag>
 		<flag name="sdl">Enable <pkg>media-libs/libsdl2</pkg> based video and audio outputs
 			(Note: these outputs exist for compatibility reasons only, avoid if possible)</flag>
+		<flag name="sixel">Enable support for the sixel video backend using <pkg>media-libs/libsixel</pkg></flag>
 		<flag name="sndio">Enable sound support via <pkg>media-sound/sndio</pkg></flag>
 		<flag name="tools">Install extra tools: mpv_identify.sh, mpv_idet.sh, and umpv</flag>
 		<flag name="uchardet">Enable subtitles charset discovery via <pkg>app-i18n/uchardet</pkg></flag>

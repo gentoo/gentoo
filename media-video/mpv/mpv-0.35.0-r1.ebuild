@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
 else
 	SRC_URI="https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux"
+	KEYWORDS="~amd64 ~loong ~x86 ~amd64-linux"
 fi
 
 DESCRIPTION="Media player for the command line"
@@ -45,7 +45,7 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	media-libs/libass:=[fontconfig]
-	>=media-video/ffmpeg-4.4:=[encode,threads,vaapi?,vdpau?]
+	media-video/ffmpeg:=[encode,threads,vaapi?,vdpau?]
 	X? (
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
