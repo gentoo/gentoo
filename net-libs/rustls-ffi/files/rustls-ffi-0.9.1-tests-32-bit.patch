@@ -1,0 +1,106 @@
+https://github.com/rustls/rustls-ffi/pull/275
+
+From ab059728729dc53da0bac64a42cccde92535b7c5 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 11 Dec 2022 01:46:59 +0000
+Subject: [PATCH] tests: fix -Wformat
+
+Bug: https://github.com/rustls/rustls-ffi/issues/235
+--- a/tests/client.c
++++ b/tests/client.c
+@@ -129,7 +129,7 @@ do_read(struct conndata *conn, struct rustls_connection *rconn)
+   signed_n = read(conn->fd, buf, sizeof(buf));
+   if(signed_n > 0) {
+     fprintf(stderr,
+-            "client: error: read returned %ld bytes after receiving close_notify\n",
++            "client: error: read returned %zu bytes after receiving close_notify\n",
+             n);
+     return CRUSTLS_DEMO_ERROR;
+   }
+@@ -237,7 +237,7 @@ send_request_and_read_response(struct conndata *conn,
+           body = body_beginning(&conn->data);
+           if(body != NULL) {
+             headers_len = body - conn->data.data;
+-            fprintf(stderr, "client: body began at %ld\n", headers_len);
++            fprintf(stderr, "client: body began at %zu\n", headers_len);
+             content_length_str = get_first_header_value(conn->data.data,
+                                                         headers_len,
+                                                         CONTENT_LENGTH,
+@@ -256,7 +256,7 @@ send_request_and_read_response(struct conndata *conn,
+                       content_length_str);
+               goto cleanup;
+             }
+-            fprintf(stderr, "client: content length %ld\n", content_length);
++            fprintf(stderr, "client: content length %lu\n", content_length);
+           }
+         }
+         if(headers_len != 0 &&
+@@ -294,7 +294,7 @@ send_request_and_read_response(struct conndata *conn,
+   if(result != CRUSTLS_DEMO_OK && result != CRUSTLS_DEMO_EOF) {
+     goto cleanup;
+   }
+-  fprintf(stderr, "client: writing %ld bytes to stdout\n", conn->data.len);
++  fprintf(stderr, "client: writing %zu bytes to stdout\n", conn->data.len);
+   if(write(STDOUT_FILENO, conn->data.data, conn->data.len) < 0) {
+     fprintf(stderr, "error writing to stderr\n");
+     goto cleanup;
+@@ -375,15 +375,15 @@ verify(void *userdata, const rustls_verify_server_cert_params *params)
+           "client: custom certificate verifier called for %.*s\n",
+           (int)params->dns_name.len,
+           params->dns_name.data);
+-  fprintf(stderr, "client: end entity len: %ld\n", params->end_entity_cert_der.len);
++  fprintf(stderr, "client: end entity len: %zu\n", params->end_entity_cert_der.len);
+   fprintf(stderr, "client: intermediates:\n");
+   for(i = 0; i < intermediates_len; i++) {
+     bytes = rustls_slice_slice_bytes_get(intermediates, i);
+     if(bytes.data != NULL) {
+-      fprintf(stderr, "client:   intermediate, len = %ld\n", bytes.len);
++      fprintf(stderr, "client:   intermediate, len = %zu\n", bytes.len);
+     }
+   }
+-  fprintf(stderr, "client: ocsp response len: %ld\n", params->ocsp_response.len);
++  fprintf(stderr, "client: ocsp response len: %zu\n", params->ocsp_response.len);
+   if(0 != strcmp(conn->verify_arg, "verify_arg")) {
+     fprintf(stderr, "client: invalid argument to verify: %p\n", userdata);
+     return RUSTLS_RESULT_GENERAL;
+--- a/tests/common.c
++++ b/tests/common.c
+@@ -197,7 +197,7 @@ bytevec_ensure_available(struct bytevec *vec, size_t n)
+     }
+     newdata = realloc(vec->data, newsize);
+     if(newdata == NULL) {
+-      fprintf(stderr, "out of memory trying to get %ld bytes\n", newsize);
++      fprintf(stderr, "out of memory trying to get %zu bytes\n", newsize);
+       return CRUSTLS_DEMO_ERROR;
+     }
+     vec->data = newdata;
+--- a/tests/server.c
++++ b/tests/server.c
+@@ -86,7 +86,7 @@ do_read(struct conndata *conn, struct rustls_connection *rconn)
+   if(n == 0) {
+     return CRUSTLS_DEMO_EOF;
+   }
+-  fprintf(stderr, "server: read %ld bytes from socket\n", n);
++  fprintf(stderr, "server: read %zu bytes from socket\n", n);
+ 
+   result = rustls_connection_process_new_packets(rconn);
+   if(result != RUSTLS_RESULT_OK) {
+@@ -105,7 +105,7 @@ do_read(struct conndata *conn, struct rustls_connection *rconn)
+   signed_n = read(conn->fd, buf, sizeof(buf));
+   if(signed_n > 0) {
+     fprintf(stderr,
+-            "server: error: read returned %ld bytes after receiving close_notify\n",
++            "server: error: read returned %zu bytes after receiving close_notify\n",
+             n);
+     return CRUSTLS_DEMO_ERROR;
+   }
+@@ -144,7 +144,7 @@ send_response(struct conndata *conn)
+ 
+   free(response);
+   if(n != response_size) {
+-    fprintf(stderr, "server: failed to write all response bytes. wrote %ld\n", n);
++    fprintf(stderr, "server: failed to write all response bytes. wrote %zu\n", n);
+     return CRUSTLS_DEMO_ERROR;
+   }
+   return CRUSTLS_DEMO_OK;
+
