@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR=emake  # keep dependencies down
 
-inherit cmake toolchain-funcs
+inherit cmake
 
 DESCRIPTION="Darwin Xtools matching Xcode Tools ${PN}"
 HOMEPAGE="https://github.com/iains/darwin-xtools"

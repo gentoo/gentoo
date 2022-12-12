@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 RESTRICT="test" # the test suite will test what's installed.
 
@@ -34,7 +34,7 @@ S=${WORKDIR}
 
 is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 
-prepare_ld64() {
+eprepare_ld64() {
 	cd "${S}"/${LD64}/src
 	cp "${WORKDIR}"/Makefile Makefile || die
 
@@ -90,14 +90,14 @@ prepare_ld64() {
 }
 
 src_prepare() {
-	prepare_ld64
+	eprepare_ld64
 
 	cd "${S}"/${CCTOOLS}
-	epatch "${WORKDIR}"/${PN}-3.2.6-as-dir.patch
-	epatch "${WORKDIR}"/${PN}-3.1.1-libtool-ranlib.patch
-	epatch "${WORKDIR}"/${PN}-3.1.1-nmedit.patch
-	epatch "${WORKDIR}"/${PN}-3.1.1-no-headers.patch
-	epatch "${WORKDIR}"/${PN}-3.1.1-no-oss-dir.patch
+	eapply -p1 "${WORKDIR}"/${PN}-3.2.6-as-dir.patch
+	eapply -p1 "${WORKDIR}"/${PN}-3.1.1-libtool-ranlib.patch
+	eapply -p1 "${WORKDIR}"/${PN}-3.1.1-nmedit.patch
+	eapply -p1 "${WORKDIR}"/${PN}-3.1.1-no-headers.patch
+	eapply -p1 "${WORKDIR}"/${PN}-3.1.1-no-oss-dir.patch
 
 	# drop as targets which are not suported by anything
 	sed -i \
@@ -109,8 +109,8 @@ src_prepare() {
 		as/Makefile || die
 
 	cd "${S}"/${LD64}
-	epatch "${WORKDIR}"/${PN}-3.1.1-testsuite.patch
-	epatch "${WORKDIR}"/${PN}-3.2.6-lto.patch
+	eapply -p1 "${WORKDIR}"/${PN}-3.1.1-testsuite.patch
+	eapply -p1 "${WORKDIR}"/${PN}-3.2.6-lto.patch
 
 	cd "${S}"
 	ebegin "cleaning Makefiles from unwanted CFLAGS"
@@ -200,19 +200,19 @@ install_cctools() {
 		COMMON_SUBDIRS='ar misc otool' \
 		SUBDIRS_32= \
 		RC_CFLAGS="${CFLAGS}" OFLAG="${CFLAGS}" \
-		DSTROOT=\"${D}\" \
-		BINDIR=\"${EPREFIX}\"${BINPATH} \
-		LOCBINDIR=\"${EPREFIX}\"${BINPATH} \
-		USRBINDIR=\"${EPREFIX}\"${BINPATH} \
-		LOCLIBDIR=\"${EPREFIX}\"${LIBPATH} \
-		MANDIR=\"${EPREFIX}\"${DATAPATH}/man/
+		DSTROOT="\"${D}\"" \
+		BINDIR="\"${EPREFIX}\"${BINPATH}" \
+		LOCBINDIR="\"${EPREFIX}\"${BINPATH}" \
+		USRBINDIR="\"${EPREFIX}\"${BINPATH}" \
+		LOCLIBDIR="\"${EPREFIX}\"${LIBPATH}" \
+		MANDIR="\"${EPREFIX}\"${DATAPATH}/man/"
 	cd "${S}"/${CCTOOLS}/as
 	emake install \
 		BUILD_OBSOLETE_ARCH= \
-		DSTROOT=\"${D}\" \
-		USRBINDIR=\"${EPREFIX}\"${BINPATH} \
-		LIBDIR=\"${EPREFIX}\"${LIBPATH} \
-		LOCLIBDIR=\"${EPREFIX}\"${LIBPATH}
+		DSTROOT="\"${D}\"" \
+		USRBINDIR="\"${EPREFIX}\"${BINPATH}" \
+		LIBDIR="\"${EPREFIX}\"${LIBPATH}" \
+		LOCLIBDIR="\"${EPREFIX}\"${LIBPATH}"
 
 	cd "${ED}"${BINPATH}
 	insinto ${DATAPATH}/man/man1

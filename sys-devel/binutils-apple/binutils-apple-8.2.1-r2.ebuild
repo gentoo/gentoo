@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit eutils flag-o-matic toolchain-funcs llvm prefix
+inherit flag-o-matic llvm prefix
 
 # versions:
 # XCode-11.3.1                 ld64-530        cctools-949.0.1
@@ -64,12 +64,12 @@ src_prepare() {
 	cp "${S}"/ld64-136-compile_stubs.h ld/compile_stubs.h
 	cp "${S}"/ld64-274.2-Makefile Makefile
 
-	epatch "${S}"/ld64-274.1-nolto.patch
-	epatch "${S}"/ld64-236.3-crashreporter.patch
-	epatch "${S}"/ld64-264.3.102-bitcode-case.patch
-	epatch "${S}"/ld64-274.1-unknown-fixup.patch
-	epatch "${S}"/ld64-274.1-notapi.patch
-	epatch "${S}"/ld64-274.2-cfi-info-type.patch
+	eapply -p2 "${S}"/ld64-274.1-nolto.patch
+	eapply -p2 "${S}"/ld64-236.3-crashreporter.patch
+	eapply -p2 "${S}"/ld64-264.3.102-bitcode-case.patch
+	eapply -p2 "${S}"/ld64-274.1-unknown-fixup.patch
+	eapply -p2 "${S}"/ld64-274.1-notapi.patch
+	eapply -p2 "${S}"/ld64-274.2-cfi-info-type.patch
 
 	# workound llvm-3.9.{0,1} issue
 	# https://bugs.gentoo.org/show_bug.cgi?id=603580
@@ -87,27 +87,27 @@ src_prepare() {
 	cp ../../${CCTOOLS}/include/mach/machine.h include/mach/machine.h
 	# add alias for newer identifiers, because ld64 uses both but cctools
 	# header only defines the older
-	epatch "${S}"/ld64-236.3-missing-cputypes.patch
+	eapply -p2 "${S}"/ld64-236.3-missing-cputypes.patch
 
 	local VER_STR="\"@(#)PROGRAM:ld  PROJECT:${LD64} (Gentoo ${PN}-${PVR})\\n\""
 	echo "char ldVersionString[] = ${VER_STR};" > version.cpp
 
-	epatch "${S}"/ld64-123.2-debug-backtrace.patch
+	eapply -p0 "${S}"/ld64-123.2-debug-backtrace.patch
 
 	cd "${S}"/${CCTOOLS}
-	epatch "${S}"/${PN}-4.5-as.patch
-	epatch "${S}"/${PN}-5.1-as-dir.patch
-	epatch "${S}"/${PN}-5.1-ranlib.patch
-	epatch "${S}"/${PN}-3.1.1-libtool-ranlib.patch
-	epatch "${S}"/${PN}-3.1.1-no-headers.patch
-	epatch "${S}"/${PN}-4.0-no-oss-dir.patch
-	epatch "${S}"/cctools-839-intel-retf.patch
-	epatch "${S}"/${PN}-5.1-extraneous-includes.patch
-	epatch "${S}"/${PN}-5.1-strnlen.patch
-	epatch "${S}"/${PN}-7.3-make-j.patch
-	epatch "${S}"/${PN}-7.3-no-developertools-dir.patch
-	epatch "${S}"/${PN}-8.2.1-llvm-prefix-3.patch
-	epatch "${S}"/${PN}-8.2.1-llvm-shim.patch
+	eapply -p1 "${S}"/${PN}-4.5-as.patch
+	eapply -p1 "${S}"/${PN}-5.1-as-dir.patch
+	eapply -p2 "${S}"/${PN}-5.1-ranlib.patch
+	eapply -p1 "${S}"/${PN}-3.1.1-libtool-ranlib.patch
+	eapply -p1 "${S}"/${PN}-3.1.1-no-headers.patch
+	eapply -p0 "${S}"/${PN}-4.0-no-oss-dir.patch
+	eapply -p1 "${S}"/cctools-839-intel-retf.patch
+	eapply -p2 "${S}"/${PN}-5.1-extraneous-includes.patch
+	eapply -p1 "${S}"/${PN}-5.1-strnlen.patch
+	eapply -p1 "${S}"/${PN}-7.3-make-j.patch
+	eapply -p1 "${S}"/${PN}-7.3-no-developertools-dir.patch
+	eapply -p1 "${S}"/${PN}-8.2.1-llvm-prefix-3.patch
+	eapply -p1 "${S}"/${PN}-8.2.1-llvm-shim.patch
 	eprefixify libstuff/execute.c
 	cp ../${LD64}/src/other/prune_trie.h include/mach-o/ || die
 
@@ -263,19 +263,19 @@ install_cctools() {
 		EFITOOLS= \
 		COMMON_SUBDIRS='ar misc otool' \
 		SUBDIRS_32= \
-		DSTROOT=\"${D}\" \
-		BINDIR=\"${EPREFIX}\"${BINPATH} \
-		LOCBINDIR=\"${EPREFIX}\"${BINPATH} \
-		USRBINDIR=\"${EPREFIX}\"${BINPATH} \
-		LOCLIBDIR=\"${EPREFIX}\"${LIBPATH} \
-		MANDIR=\"${EPREFIX}\"${DATAPATH}/man/
+		DSTROOT="\"${D}\"" \
+		BINDIR="\"${EPREFIX}\"${BINPATH}" \
+		LOCBINDIR="\"${EPREFIX}\"${BINPATH}" \
+		USRBINDIR="\"${EPREFIX}\"${BINPATH}" \
+		LOCLIBDIR="\"${EPREFIX}\"${LIBPATH}" \
+		MANDIR="\"${EPREFIX}\"${DATAPATH}/man/"
 	cd "${S}"/${CCTOOLS}/as
 	emake install \
 		BUILD_OBSOLETE_ARCH= \
-		DSTROOT=\"${D}\" \
-		USRBINDIR=\"${EPREFIX}\"${BINPATH} \
-		LIBDIR=\"${EPREFIX}\"${LIBPATH} \
-		LOCLIBDIR=\"${EPREFIX}\"${LIBPATH}
+		DSTROOT="\"${D}\"" \
+		USRBINDIR="\"${EPREFIX}\"${BINPATH}" \
+		LIBDIR="\"${EPREFIX}\"${LIBPATH}" \
+		LOCLIBDIR="\"${EPREFIX}\"${LIBPATH}"
 
 	# upstream is starting to replace classic binutils with llvm-integrated
 	# ones. In Xcode, nm and size are now symlinks to llvm-{nm,size} while the
@@ -294,7 +294,7 @@ install_cctools() {
 	#    -> $EPREFIX/usr/lib/llvm/<major/bin/llvm-<tool>
 	#    -> $EPREFIX/usr/bin/llvm-<tool>
 	#    -> binutils-bin/<version>/<tool>-classic
-	budir=${D}/${EPREFIX}/${BINPATH}
+	budir="${D}"/${EPREFIX}/${BINPATH}
 	for tool in nm size ; do
 		use classic && \
 			ln -sfn ${tool}-classic "${budir}/${tool}" || \
@@ -314,7 +314,7 @@ install_cctools() {
 		ln -sfn llvm-shim "${budir}/${tool}"
 	done
 
-	cd "${ED}"${BINPATH}
+	cd "${ED}"/${BINPATH}
 	insinto ${DATAPATH}/man/man1
 	local skips manpage
 	# ar brings an up-to-date manpage with it
