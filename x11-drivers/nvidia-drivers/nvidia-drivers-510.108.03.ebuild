@@ -240,6 +240,7 @@ src_prepare() {
 
 src_compile() {
 	tc-export AR CC CXX LD OBJCOPY OBJDUMP
+	local -x RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" # raw-ldflags.patch
 
 	NV_ARGS=(
 		PREFIX="${EPREFIX}"/usr
@@ -274,9 +275,7 @@ src_compile() {
 
 	if use tools; then
 		# cflags: avoid noisy logs, only use here and set first to let override
-		# ldflags: abi currently needed if LD=ld.lld
 		CFLAGS="-Wno-deprecated-declarations ${CFLAGS}" \
-			RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" \
 			emake "${NV_ARGS[@]}" -C nvidia-settings
 	elif use static-libs; then
 		emake "${NV_ARGS[@]}" -C nvidia-settings/src out/libXNVCtrl.a
@@ -461,7 +460,9 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 	# MODULE:powerd extras
 	if use amd64; then
 		systemd_dounit systemd/system/nvidia-powerd.service
-		dodoc nvidia-dbus.conf
+
+		insinto /usr/share/dbus-1/system.d
+		doins nvidia-dbus.conf
 	fi
 
 	# symlink non-versioned so nvidia-settings can use it even if misdetected
