@@ -1,0 +1,26 @@
+From 37e03fb4289a3f46a5201caaebbdce8e441d55f5 Mon Sep 17 00:00:00 2001
+From: John Helmert III <ajak@gentoo.org>
+Date: Sun, 11 Dec 2022 14:21:32 -0600
+Subject: [PATCH] fix duplicate main declaration
+
+Bug: https://bugs.gentoo.org/883935
+Signed-off-by: John Helmert III <ajak@gentoo.org>
+---
+ cmake/external/cld3/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/cmake/external/cld3/CMakeLists.txt b/cmake/external/cld3/CMakeLists.txt
+index f351ca1..54c524b 100644
+--- a/cmake/external/cld3/CMakeLists.txt
++++ b/cmake/external/cld3/CMakeLists.txt
+@@ -80,7 +80,6 @@ PRIVATE
+     script_span/generated_entities.cc
+     script_span/getonescriptspan.cc
+     script_span/getonescriptspan.h
+-    script_span/getonescriptspan_test.cc
+     script_span/utf8statetable.cc
+     script_span/offsetmap.cc
+     script_span/text_processing.cc
+-- 
+2.38.1
+
