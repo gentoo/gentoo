@@ -30,7 +30,7 @@ IUSE+=" +randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump 
 IUSE+=" sdjournal test +text2pcap tfshark +tshark +udpdump zlib +zstd"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
-	plugin-ifdemo? ( plugins )"
+	plugin-ifdemo? ( plugins qt5 )"
 
 RESTRICT="!test? ( test )"
 
