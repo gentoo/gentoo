@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    parseedn is an Emacs Lisp library for parsing EDN data. It uses parseclj's
+    shift-reduce parser internally. EDN and Emacs Lisp have some important
+    differences that make translation from one to the other not transparent
+    (think representing an EDN map into Elisp, or being able to differentiate
+    between false and nil in Elisp). Because of this, parseedn takes certain
+    decisions when parsing and transforming EDN data into Elisp data types.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/clojure-emacs/parseedn/issues/</bugs-to>
+    <remote-id type="github">clojure-emacs/parseedn</remote-id>
+  </upstream>
+</pkgmetadata>
