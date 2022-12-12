@@ -38,9 +38,7 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs dev-python/matplotlib
 
 python_compile_all() {
 	rm -r shapely || die
-	distutils-r1_python_compile_all
 }
