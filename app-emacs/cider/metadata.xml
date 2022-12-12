@@ -15,6 +15,7 @@
     documentation lookup, running tests and so on.
   </longdescription>
   <upstream>
+    <doc>https://docs.cider.mx/</doc>
     <bugs-to>https://github.com/clojure-emacs/cider/issues/</bugs-to>
     <remote-id type="github">clojure-emacs/cider</remote-id>
   </upstream>

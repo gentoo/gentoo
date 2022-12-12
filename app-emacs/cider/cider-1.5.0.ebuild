@@ -8,7 +8,8 @@ NEED_EMACS=26
 inherit elisp optfeature
 
 DESCRIPTION="Clojure Interactive Development Environment for GNU Emacs"
-HOMEPAGE="https://github.com/clojure-emacs/cider/"
+HOMEPAGE="https://cider.mx/
+	https://github.com/clojure-emacs/cider/"
 SRC_URI="https://github.com/clojure-emacs/${PN}/archive/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
