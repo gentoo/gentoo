@@ -64,23 +64,7 @@ tmpfile=$(mktemp)
 
 inherit python-utils-r1
 
-ebegin "Testing python2.7"
-eindent
-test_var EPYTHON python2_7 python2.7
-test_var PYTHON python2_7 /usr/bin/python2.7
-if [[ -x /usr/bin/python2.7 ]]; then
-	test_var PYTHON_SITEDIR python2_7 "/usr/lib*/python2.7/site-packages"
-	test_var PYTHON_INCLUDEDIR python2_7 /usr/include/python2.7
-	test_var PYTHON_LIBPATH python2_7 "/usr/lib*/libpython2.7$(get_libname)"
-	test_var PYTHON_CONFIG python2_7 /usr/bin/python2.7-config
-	test_var PYTHON_CFLAGS python2_7 "*-I/usr/include/python2.7*"
-	test_var PYTHON_LIBS python2_7 "*-lpython2.7*"
-fi
-test_var PYTHON_PKG_DEP python2_7 '*dev-lang/python*:2.7'
-test_var PYTHON_SCRIPTDIR python2_7 /usr/lib/python-exec/python2.7
-eoutdent
-
-for minor in 6 7 8 9 10 11; do
+for minor in 8 9 10 11; do
 	ebegin "Testing python3.${minor}"
 	eindent
 	test_var EPYTHON "python3_${minor}" "python3.${minor}"
