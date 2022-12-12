@@ -8,7 +8,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Paul de Vrieze <pauldv@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: This is a common location for functions that aid the use of sys-libs/db
 # @DESCRIPTION:
 # This eclass is designed to provide helpful functions for depending on
@@ -16,7 +16,6 @@
 
 # multilib is used for get_libname in all EAPI
 case ${EAPI} in
-	5|6) inherit eapi7-ver ;& # fallthrough
 	7|8) inherit multilib ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
