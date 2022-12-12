@@ -18,6 +18,6 @@
     <bugs-to>https://github.com/shapely/shapely/issues</bugs-to>
     <doc>https://shapely.readthedocs.io</doc>
     <remote-id type="github">shapely/shapely</remote-id>
-    <remote-id type="pypi">Shapely</remote-id>
+    <remote-id type="pypi">shapely</remote-id>
   </upstream>
 </pkgmetadata>
