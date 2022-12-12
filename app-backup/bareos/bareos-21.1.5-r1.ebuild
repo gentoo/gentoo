@@ -360,7 +360,10 @@ src_install() {
 	keepdir /var/lib/bareos
 	keepdir /var/lib/bareos/storage
 
-	diropts -m0755 -o bareos -g bareos
+	# set log directory ownership
+	if ! use clientonly; then
+		diropts -m0755 -o bareos -g bareos
+	fi
 	keepdir /var/log/bareos
 
 	newtmpfiles "${FILESDIR}"/tmpfiles.d-bareos.conf bareos.conf
