@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
-USE_PHP="php7-3 php7-4 php8-0"
+USE_PHP="php7-4 php8-0 php8-1 php8-2"
 
 inherit php-ext-pecl-r3
 
@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="net-analyzer/rrdtool[graph(-)]"
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 #PATCHES=( "${FILESDIR}/${PV}" )
 PHP_EXT_ECONF_ARGS=()
