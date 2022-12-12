@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,6 +44,8 @@ src_configure() {
 		-DCOMPILE_STUBGEN=$(usex stubgen)
 		-DCOMPILE_TESTS=$(usex test)
 		-DCATCH_INCLUDE_DIR="${EPREFIX}/usr/include/catch2"
+		# disable coverage-related flags
+		-DWITH_COVERAGE=OFF
 	)
 
 	cmake_src_configure
