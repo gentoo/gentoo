@@ -29,15 +29,15 @@ src_configure() {
 
 src_install() {
 	into /usr
-	newbin "${PN}" "${PN}sh"
-	newman "${PN}.1" "${PN}sh.1"
+	dobin "${PN}"
+	doman "${PN}.1"
 	einstalldocs
 }
 
 pkg_postinst() {
-	if ! grep -q '^/usr/bin/rcsh$' "${EROOT}"/etc/shells ; then
+	if ! grep -q '^/usr/bin/rc$' "${EROOT}"/etc/shells ; then
 		ebegin "Updating /etc/shells"
-		echo "/usr/bin/rcsh" >> "${EROOT}"/etc/shells
+		echo "/usr/bin/rc" >> "${EROOT}"/etc/shells
 		eend $?
 	fi
 }
