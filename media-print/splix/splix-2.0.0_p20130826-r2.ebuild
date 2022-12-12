@@ -1,25 +1,30 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit toolchain-funcs
 
 DESCRIPTION="A set of CUPS printer drivers for SPL (Samsung Printer Language) printers"
-HOMEPAGE="http://splix.sourceforge.net/"
-SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.bz2
-	https://dev.gentoo.org/~voyageur/distfiles/samsung-cms-20120312.tar.xz"
+HOMEPAGE="https://splix.sourceforge.net/"
+SRC_URI="
+	https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.bz2
+	https://dev.gentoo.org/~voyageur/distfiles/samsung-cms-20120312.tar.xz
+"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+jbig"
 
-DEPEND=">=app-text/ghostscript-gpl-9.02
+DEPEND="
+	>=app-text/ghostscript-gpl-9.02
 	>=net-print/cups-1.4.0
-	jbig? ( media-libs/jbigkit )"
+	jbig? ( media-libs/jbigkit )
+"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-algo0x11_le.patch )
+PATCHES=( "${FILESDIR}/${P}-algo0x11_le.patch" )
 
 src_prepare() {
 	default

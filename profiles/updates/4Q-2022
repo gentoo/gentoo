@@ -20,3 +20,4 @@ move net-print/hplip-plugin media-print/hplip-plugin
 move net-print/pnm2ppa media-print/pnm2ppa
 move net-print/ink media-print/ink
 move net-print/libinklevel media-print/libinklevel
+move net-print/splix media-print/splix
