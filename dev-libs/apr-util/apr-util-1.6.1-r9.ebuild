@@ -96,7 +96,7 @@ src_configure() {
 			# We use $T for the libdir because otherwise it'd simply be the normal
 			# system libdir.  That's pointless as the compiler will search it for
 			# us already.  This makes cross-compiling and such easier.
-			--with-berkeley-db="${SYSROOT}$(db_includedir 2>/dev/null):${T}"
+			--with-berkeley-db="$(db_includedir 2>/dev/null):${T}"
 		)
 	else
 		myconf+=( --without-berkeley-db )
