@@ -92,6 +92,20 @@ src_compile() {
 
 	einfo "Generating caches and CFFI modules ..."
 
+	# Generate sysconfig data
+	local host_gnu_type=$(sh pypy/tool/release/config.guess)
+	local overrides=(
+		HOST_GNU_TYPE "${host_gnu_type:-unknown}"
+		INCLUDEPY "${EPREFIX}/usr/include/pypy3.9"
+		LIBDIR "${EPREFIX}/usr/$(get_libdir)"
+		TZPATH "${EPREFIX}/usr/share/zoneinfo"
+		WHEEL_PKG_DIR "${EPREFIX}/usr/lib/python/ensurepip"
+	)
+	./pypy3.9-c -m sysconfig --generate-posix-vars "${overrides[@]}" || die
+	local outdir
+	outdir=$(<pybuilddir.txt) || die
+	cp "${outdir}"/_sysconfigdata__*.py lib-python/3/ || die
+
 	# Generate Grammar and PatternGrammar pickles.
 	./pypy3.9-c - <<-EOF || die "Generation of Grammar and PatternGrammar pickles failed"
 		import lib2to3.pygram
