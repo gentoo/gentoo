@@ -52,6 +52,7 @@ EPYTEST_DESELECT=(
 	test/test_eco.py
 	test/test_examples.py::test_custom_kinds
 	test/test_examples.py::test_example
+	test/test_file_path_evaluation.py
 	test/test_import_playbook.py::test_task_hook_import_playbook
 	test/test_list_rules.py::test_list_rules_includes_opt_in_rules
 	test/test_list_rules.py::test_list_rules_with_format_option
@@ -64,6 +65,7 @@ EPYTEST_DESELECT=(
 	test/test_profiles.py::test_profile_listing
 	test/test_rules_collection.py::test_rich_rule_listing
 	test/test_rules_collection.py::test_rules_id_format
+	test/test_schemas.py::test_refresh_schemas
 	test/test_skip_inside_yaml.py::test_role_meta
 	test/test_utils.py::test_cli_auto_detect
 	test/test_utils.py::test_template_lookup
