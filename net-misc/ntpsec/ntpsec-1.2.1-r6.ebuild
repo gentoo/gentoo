@@ -34,7 +34,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( rclock_local )"
 
 # net-misc/pps-tools oncore,pps
 DEPEND="${PYTHON_DEPS}
-	dev-libs/openssl:=
+	<dev-libs/openssl-3:=
 	dev-python/psutil[${PYTHON_USEDEP}]
 	sys-libs/libcap
 	libbsd? ( dev-libs/libbsd:0= )
