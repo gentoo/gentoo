@@ -25,6 +25,8 @@ BDEPEND="
 	dev-util/desktop-file-utils
 "
 
+PATCHES=( "${FILESDIR}"/${P}-dont-validate-appstream.patch )
+
 src_prepare() {
 	# Do not use the provided postinstall script.
 	sed -i "/^meson.add_install_script/d" meson.build || die
