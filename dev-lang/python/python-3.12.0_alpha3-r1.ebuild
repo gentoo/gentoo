@@ -398,6 +398,10 @@ src_test() {
 src_install() {
 	local libdir=${ED}/usr/lib/python${PYVER}
 
+	# the Makefile rules are broken
+	# https://github.com/python/cpython/issues/100221
+	mkdir -p "${libdir}"/lib-dynload || die
+
 	# -j1 hack for now for bug #843458
 	emake -j1 DESTDIR="${D}" altinstall
 
