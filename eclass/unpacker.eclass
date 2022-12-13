@@ -30,7 +30,7 @@ inherit multiprocessing toolchain-funcs
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Utility to use to decompress bzip2 files.  Will dynamically pick between
-# `lbzip2`, `pbzip2` and `bzip2`.  Make sure your choice accepts the "-dc"
+# `lbzip2`, `pbzip2`, and `bzip2`.  Make sure your choice accepts the "-dc"
 # options.
 # Note: this is meant for users to set, not ebuilds.
 
@@ -39,7 +39,7 @@ inherit multiprocessing toolchain-funcs
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Utility to use to decompress lzip files.  Will dynamically pick between
-# `plzip`, `pdlzip` and `lzip`.  Make sure your choice accepts the "-dc" options.
+# `xz`, `plzip`, `pdlzip`, and `lzip`.  Make sure your choice accepts the "-dc" options.
 # Note: this is meant for users to set, not ebuilds.
 
 # for internal use only (unpack_pdv and unpack_makeself)
@@ -429,7 +429,22 @@ _unpacker_get_decompressor() {
 	*.lzma|*.xz|*.txz)
 		echo "xz -T$(makeopts_jobs) -dc" ;;
 	*.lz)
-		: ${UNPACKER_LZIP:=$(type -P plzip || type -P pdlzip || type -P lzip)}
+		find_lz_unpacker() {
+			local has_version_arg="-b"
+
+			[[ ${EAPI} == 6 ]] && has_version_arg="--host-root"
+			if has_version "${has_version_arg}" ">=app-arch/xz-utils-5.4.0" ; then
+				echo xz
+				return
+			fi
+
+			local x
+			for x in plzip pdlzip lzip ; do
+				type -P ${x} && break
+			done
+		}
+
+		: ${UNPACKER_LZIP:=$(find_lz_unpacker)}
 		echo "${UNPACKER_LZIP} -dc" ;;
 	*.zst)
 		echo "zstd -dc" ;;
@@ -604,7 +619,15 @@ unpacker_src_uri_depends() {
 		*.zip)
 			d="app-arch/unzip" ;;
 		*.lz)
-			d="|| ( app-arch/plzip app-arch/pdlzip app-arch/lzip )" ;;
+			d="
+				|| (
+					>=app-arch/xz-utils-5.4.0
+					app-arch/plzip
+					app-arch/pdlzip
+					app-arch/lzip
+				)
+			"
+			;;
 		*.zst)
 			d="app-arch/zstd" ;;
 		*.lha|*.lzh)
