@@ -13,7 +13,7 @@ SRC_URI="https://download.sourceforge.net/squirrel/${PN}_${PV/./_}_stable.tar.gz
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="examples static-libs"
 
 RDEPEND=""
