@@ -32,7 +32,4 @@
   <upstream>
     <remote-id type="github">JuliaLang/julia</remote-id>
   </upstream>
-  <use>
-    <flag name="system-llvm">(Try to) Use the system LLVM install. YMMV.</flag>
-  </use>
 </pkgmetadata>
