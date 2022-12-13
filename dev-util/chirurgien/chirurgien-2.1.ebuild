@@ -25,6 +25,13 @@ BDEPEND="
 	dev-util/desktop-file-utils
 "
 
+src_prepare() {
+	# Do not use the provided postinstall script.
+	sed -i "/^meson.add_install_script/d" meson.build || die
+
+	default
+}
+
 src_install() {
 	meson_src_install
 
