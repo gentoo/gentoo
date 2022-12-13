@@ -18,4 +18,7 @@
     instances of your application and have them act as a highly-available 
     cluster, with no dependency on external databases.
   </longdescription>
+  <upstream>
+    <remote-id type="github">canonical/dqlite</remote-id>
+  </upstream>
 </pkgmetadata>
