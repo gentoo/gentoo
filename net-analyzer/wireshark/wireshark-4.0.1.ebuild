@@ -169,12 +169,15 @@ src_configure() {
 	fi
 
 	mycmakeargs+=(
+		-DPython3_EXECUTABLE="${PYTHON}"
 		-DCMAKE_DISABLE_FIND_PACKAGE_{Asciidoctor,DOXYGEN}=$(usex !doc)
+
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
 		$(usex gui LRELEASE=$(qt5_get_bindir)/lrelease '')
 		$(usex gui MOC=$(qt5_get_bindir)/moc '')
 		$(usex gui RCC=$(qt5_get_bindir)/rcc '')
 		$(usex gui UIC=$(qt5_get_bindir)/uic '')
+
 		-DBUILD_androiddump=$(usex androiddump)
 		-DBUILD_capinfos=$(usex capinfos)
 		-DBUILD_captype=$(usex captype)
