@@ -246,6 +246,8 @@ src_compile() {
 
 		emake CFLAGS="${CFLAGS} -fprofile-generate=${T}/pgo -fprofile-dir=${T}/pgo" -k check
 
+		tc-is-clang && llvm-profdata merge "${T}"/pgo --output="${T}"/pgo/default.profdata || die
+
 		# Rebuild Bash using the profiling data we just generated.
 		emake clean
 		emake CFLAGS="${CFLAGS} -fprofile-use=${T}/pgo -fprofile-dir=${T}/pgo"
