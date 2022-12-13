@@ -21,3 +21,4 @@ move net-print/pnm2ppa media-print/pnm2ppa
 move net-print/ink media-print/ink
 move net-print/libinklevel media-print/libinklevel
 move net-print/splix media-print/splix
+move net-print/c2esp media-print/c2esp
