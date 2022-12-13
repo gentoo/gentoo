@@ -6,6 +6,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">rombust/Methane</remote-id>
 		<remote-id type="sourceforge">methane</remote-id>
 	</upstream>
 </pkgmetadata>
