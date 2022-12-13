@@ -11,7 +11,7 @@ SRC_URI="https://github.com/amzn/amzn-drivers/archive/ena_linux_${PV}.tar.gz -> 
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 BDEPEND="app-arch/unzip"
 
@@ -36,5 +36,5 @@ src_prepare() {
 
 src_install() {
 	linux-mod_src_install
-	dodoc README RELEASENOTES.md
+	dodoc README.rst RELEASENOTES.md
 }
