@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Utility functions to build against slotted LLVM
 # @DESCRIPTION:
 # The llvm.eclass provides utility functions that can be used to build
@@ -56,15 +56,9 @@
 # }
 # @CODE
 
-case "${EAPI:-0}" in
-	0|1|2|3|4|5)
-		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
-		;;
-	6|7|8)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "EAPI=${EAPI:-0} not supported";;
 esac
 
 EXPORT_FUNCTIONS pkg_setup
@@ -95,7 +89,7 @@ declare -g -r _LLVM_KNOWN_SLOTS=( {16..8} )
 #
 # If -b is specified, the checks are performed relative to BROOT,
 # and BROOT-path is returned.  This is appropriate when your package
-# calls llvm-config executable.  -b is supported since EAPI 7.
+# calls llvm-config executable.
 #
 # If -d is specified, the checks are performed relative to ESYSROOT,
 # and ESYSROOT-path is returned.  This is appropriate when your package
@@ -125,17 +119,6 @@ get_llvm_slot() {
 		esac
 		shift
 	done
-
-	if [[ ${EAPI} == 6 ]]; then
-		case ${hv_switch} in
-			-b)
-				die "${FUNCNAME} -b is not supported in EAPI ${EAPI}"
-				;;
-			-d)
-				hv_switch=
-				;;
-		esac
-	fi
 
 	local max_slot=${1}
 	local slot
@@ -179,17 +162,8 @@ get_llvm_slot() {
 get_llvm_prefix() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local prefix=${EPREFIX}
-	if [[ ${EAPI} != 6 ]]; then
-		case ${1} in
-			-b)
-				prefix=${BROOT}
-				;;
-			*)
-				prefix=${ESYSROOT}
-				;;
-		esac
-	fi
+	local prefix=${ESYSROOT}
+	[[ ${1} == -b ]] && prefix=${BROOT}
 
 	echo "${prefix}/usr/lib/llvm/$(get_llvm_slot "${@}")"
 }
@@ -277,8 +251,7 @@ llvm_pkg_setup() {
 		llvm_fix_tool_path ADDR2LINE AR AS LD NM OBJCOPY OBJDUMP RANLIB
 		llvm_fix_tool_path READELF STRINGS STRIP
 
-		local prefix=${EPREFIX}
-		[[ ${EAPI} != 6 ]] && prefix=${ESYSROOT}
+		local prefix=${ESYSROOT}
 		local llvm_path=${prefix}/usr/lib/llvm/${LLVM_SLOT}/bin
 		local IFS=:
 		local split_path=( ${PATH} )

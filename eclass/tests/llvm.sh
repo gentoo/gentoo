@@ -74,13 +74,6 @@ eindent
 	check_prefix /sysroot/eprefix/usr/lib/llvm/11 -d
 eoutdent
 
-ebegin "Testing check_setup_path EAPI 6 API"
-eindent
-	EAPI=6 \
-	LLVM_INSTALLED_SLOT=11 \
-	check_prefix /usr/lib/llvm/11 -d
-eoutdent
-
 BASEPATH=/usr/lib/ccache/bin:/usr/bin:/usr/sbin:/bin:/sbin
 
 # TODO: cross support?
