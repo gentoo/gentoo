@@ -26,11 +26,13 @@ RDEPEND="dev-vcs/git
 		>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
 		>=dev-python/virtualenv-20.0.8[${PYTHON_USEDEP}]
 	')"
+# coreutils requirement: see Bug #885559
 BDEPEND="test? (
 	$(python_gen_cond_dep '
 		dev-python/pytest-env[${PYTHON_USEDEP}]
 		dev-python/re-assert[${PYTHON_USEDEP}]
 	')
+	sys-apps/coreutils[-multicall]
 )"
 
 PATCHES=(
