@@ -148,6 +148,7 @@ BDEPEND="
 	dev-lang/perl
 	dev-perl/XML-Parser
 	sys-devel/gettext
+	sys-devel/m4
 	virtual/libiconv
 	virtual/libintl
 	virtual/pkgconfig
