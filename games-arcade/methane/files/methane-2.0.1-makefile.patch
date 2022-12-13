@@ -1,0 +1,41 @@
+From 7fa0b482546993d5279911a43ad6cb75c96ec1f0 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Wed, 14 Dec 2022 00:28:51 +0300
+Subject: [PATCH] Use portable variables in Makefile
+
+---
+ Makefile | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 35c3eb1..f827efc 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,6 @@
+-METHANE_FLAGS = `pkg-config --cflags clanCore-4.1 clanDisplay-4.1 clanApp-4.1 clanGL-4.1 clanSound-4.1 libmikmod` -Isources
+-METHANE_LIBS = `pkg-config --libs clanCore-4.1 clanDisplay-4.1 clanApp-4.1 clanGL-4.1 clanSound-4.1 libmikmod`
++PKG_CONFIG ?= pkg-config
++METHANE_FLAGS := $(shell ${PKG_CONFIG} --cflags clanCore-4.1 clanDisplay-4.1 clanApp-4.1 clanGL-4.1 clanSound-4.1 libmikmod) -Isources
++METHANE_LIBS := $(shell ${PKG_CONFIG} --libs clanCore-4.1 clanDisplay-4.1 clanApp-4.1 clanGL-4.1 clanSound-4.1 libmikmod)
+ 
+ OBJF = sources/precomp.o \
+     sources/player.o \
+@@ -37,7 +38,7 @@ message:
+ 	@echo "================================="
+ 
+ methane: ${OBJF}
+-	g++ ${CXXFLAGS} ${OBJF}	-o methane ${METHANE_LIBS}
++	$(CXX) ${CXXFLAGS} ${LDFLAGS} ${OBJF}	-o methane ${METHANE_LIBS}
+ 
+ clean:
+ 	@rm -f sources/*.o
+@@ -49,5 +50,5 @@ distclean: clean
+ # The main source code
+ %.o:%.cpp
+ 	@echo "  Compiling $<..."
+-	gcc ${CXXFLAGS} ${METHANE_FLAGS} -c $< -o $@
++	$(CXX) ${CXXFLAGS} ${METHANE_FLAGS} -c $< -o $@
+ 
+-- 
+2.37.4
+
