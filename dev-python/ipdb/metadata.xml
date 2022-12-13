@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">ipdb</remote-id>
+		<remote-id type="github">gotcha/ipdb</remote-id>
 	</upstream>
 </pkgmetadata>
