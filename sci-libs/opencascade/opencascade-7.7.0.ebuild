@@ -45,7 +45,7 @@ RDEPEND="
 	ffmpeg? ( <media-video/ffmpeg-5:= )
 	freeimage? ( media-libs/freeimage )
 	tbb? ( dev-cpp/tbb:= )
-	vtk? ( sci-libs/vtk:=[rendering] )
+	vtk? ( <sci-libs/vtk-9.3.0:=[rendering] )
 "
 DEPEND="
 	${RDEPEND}
@@ -132,7 +132,13 @@ src_configure() {
 	fi
 
 	if use vtk; then
-		if has_version ">=sci-libs/vtk-9.1.0"; then
+		if has_version ">=sci-libs/vtk-9.2.0"; then
+			mycmakeargs+=(
+				-D3RDPARTY_VTK_DIR="${ESYSROOT}"/usr
+				-D3RDPARTY_VTK_INCLUDE_DIR="${ESYSROOT}"/usr/include/vtk-9.2
+				-D3RDPARTY_VTK_LIBRARY_DIR="${ESYSROOT}"/usr/$(get_libdir)
+			)
+		elif has_version ">=sci-libs/vtk-9.1.0"; then
 			mycmakeargs+=(
 				-D3RDPARTY_VTK_DIR="${ESYSROOT}"/usr
 				-D3RDPARTY_VTK_INCLUDE_DIR="${ESYSROOT}"/usr/include/vtk-9.1

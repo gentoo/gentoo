@@ -49,7 +49,7 @@ RDEPEND="
 	ffmpeg? ( <media-video/ffmpeg-5:= )
 	freeimage? ( media-libs/freeimage )
 	tbb? ( dev-cpp/tbb:= )
-	vtk? ( sci-libs/vtk:=[rendering] )
+	vtk? ( <sci-libs/vtk-9.2.0:=[rendering] )
 "
 DEPEND="
 	${RDEPEND}
