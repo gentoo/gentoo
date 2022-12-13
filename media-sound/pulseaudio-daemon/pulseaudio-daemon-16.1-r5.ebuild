@@ -135,6 +135,10 @@ RDEPEND="
 		ldac? ( media-plugins/gst-plugins-ldac )
 		aptx? ( media-plugins/gst-plugins-openaptx )
 	)
+	equalizer? (
+		dev-python/PyQt5[gui,widgets]
+		dev-python/dbus-python
+	)
 	!media-video/pipewire[sound-server(+)]
 "
 unset gstreamer_deps
@@ -247,6 +251,11 @@ src_configure() {
 
 src_install() {
 	meson_src_install
+
+	# Upstream installs qpaeq if fftw is found, we only want it with USE equalizer
+	if ! use equalizer; then
+		rm "${ED}"/usr/bin/qpaeq || die
+	fi
 
 	# Upstream installs 'pactl' if client is built, with all symlinks except for
 	# 'pulseaudio', 'pacmd' and 'pasuspender' which are installed if server is built.
