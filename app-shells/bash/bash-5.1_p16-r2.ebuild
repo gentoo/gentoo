@@ -115,6 +115,11 @@ src_unpack() {
 	else
 		if use verify-sig ; then
 			verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.gz{,.sig}
+
+			local patch
+			for patch in "${MY_PATCHES[@]}" ; do
+				verify-sig_verify_detached ${patch}{,.sig}
+			done
 		fi
 
 		unpack ${MY_P}.tar.gz
