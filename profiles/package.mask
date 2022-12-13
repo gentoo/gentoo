@@ -800,13 +800,6 @@ media-libs/webrtc-audio-processing:1
 # old de-ANSI-fication/ansi2knr/AM_C_PROTOTYPES code. Please uninstall.
 sys-devel/automake:1.11
 
-# Thomas Deutschmann <whissi@gentoo.org> (2021-09-07)
-# Masked while being tested and reverse deps aren't fully compatible
-# bug #797325.
-=dev-libs/openssl-3.0*
-=dev-libs/openssl-compat-1.1.1*
-=dev-libs/gost-engine-3.0*
-
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
 # Upstream provided migration instructions from 2. -> 3. update,
 # breaks if not all at least many revdeps. #805011 for tracker bug.
