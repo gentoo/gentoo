@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,10 +14,11 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc64 ~riscv x86"
 IUSE="berkdb +mta pam split-usr"
 
+# < openssl 3 for bug #881701
 DEPEND="
 	acct-user/smtpd
 	acct-user/smtpq
-	>=dev-libs/openssl-1.1:0=
+	<dev-libs/openssl-3:=
 	elibc_musl? ( sys-libs/fts-standalone )
 	sys-libs/zlib
 	pam? ( sys-libs/pam )
