@@ -36,3 +36,8 @@ src_configure() {
 src_compile() {
 	emake GPROPTS=-v
 }
+
+src_install() {
+	emake DESTDIR="${D}" -j1 install
+	einstalldocs
+}
