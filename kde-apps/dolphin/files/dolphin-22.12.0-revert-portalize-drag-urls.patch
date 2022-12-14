@@ -1,0 +1,94 @@
+From c8aed8ac81d9f7f3dc93a7570037041228a98bf4 Mon Sep 17 00:00:00 2001
+From: Felix Ernst <felixernst@kde.org>
+Date: Wed, 14 Dec 2022 12:33:51 +0000
+Subject: [PATCH] Revert "portalize drag urls"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This reverts commit 8d7e600f63a1961294dfe2c278a710b4ce0716e9.
+
+While this revert unfortunately removes Dolphin's ability to copy to
+sandboxed applications, the bugs being temporarily fixed by this seem
+more important. See the bugs mentioned below for details.
+
+Especially copy-pasting needs to work flawlessly for an application
+like Dolphin. After the revert this will either work correctly or – in
+the case of sandboxed applications – not at all.
+
+CCBUG: 457529
+CCBUG: 462928
+---
+ src/kitemviews/kitemlistcontroller.cpp     | 4 +---
+ src/panels/folders/treeviewcontextmenu.cpp | 1 -
+ src/views/dolphinview.cpp                  | 5 +----
+ 3 files changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/src/kitemviews/kitemlistcontroller.cpp b/src/kitemviews/kitemlistcontroller.cpp
+index 955e418e8..29dd13aac 100644
+--- a/src/kitemviews/kitemlistcontroller.cpp
++++ b/src/kitemviews/kitemlistcontroller.cpp
+@@ -17,7 +17,6 @@
+ 
+ #include <KTwoFingerSwipe>
+ #include <KTwoFingerTap>
+-#include <KUrlMimeData>
+ 
+ #include <QAccessible>
+ #include <QApplication>
+@@ -1334,11 +1333,10 @@ void KItemListController::startDragging()
+         return;
+     }
+ 
+-    QMimeData *data = m_model->createMimeData(selectedItems);
++    QMimeData* data = m_model->createMimeData(selectedItems);
+     if (!data) {
+         return;
+     }
+-    KUrlMimeData::exportUrlsToPortal(data);
+ 
+     // The created drag object will be owned and deleted
+     // by QApplication::activeWindow().
+diff --git a/src/panels/folders/treeviewcontextmenu.cpp b/src/panels/folders/treeviewcontextmenu.cpp
+index 893a494fb..e0da9e976 100644
+--- a/src/panels/folders/treeviewcontextmenu.cpp
++++ b/src/panels/folders/treeviewcontextmenu.cpp
+@@ -168,7 +168,6 @@ void TreeViewContextMenu::populateMimeData(QMimeData* mimeData, bool cut)
+     bool dummy;
+     mostLocalUrls.append(m_fileItem.mostLocalUrl(&dummy));
+     KIO::setClipboardDataCut(mimeData, cut);
+-    KUrlMimeData::exportUrlsToPortal(mimeData);
+     KUrlMimeData::setUrls(kdeUrls, mostLocalUrls, mimeData);
+ }
+ 
+diff --git a/src/views/dolphinview.cpp b/src/views/dolphinview.cpp
+index e8603858f..88f275557 100644
+--- a/src/views/dolphinview.cpp
++++ b/src/views/dolphinview.cpp
+@@ -45,7 +45,6 @@
+ #include <KLocalizedString>
+ #include <KMessageBox>
+ #include <KProtocolManager>
+-#include <KUrlMimeData>
+ 
+ #include <kwidgetsaddons_version.h>
+ 
+@@ -802,14 +801,12 @@ void DolphinView::cutSelectedItemsToClipboard()
+ {
+     QMimeData* mimeData = selectionMimeData();
+     KIO::setClipboardDataCut(mimeData, true);
+-    KUrlMimeData::exportUrlsToPortal(mimeData);
+     QApplication::clipboard()->setMimeData(mimeData);
+ }
+ 
+ void DolphinView::copySelectedItemsToClipboard()
+ {
+-    QMimeData *mimeData = selectionMimeData();
+-    KUrlMimeData::exportUrlsToPortal(mimeData);
++    QMimeData* mimeData = selectionMimeData();
+     QApplication::clipboard()->setMimeData(mimeData);
+ }
+ 
+-- 
+GitLab
+
