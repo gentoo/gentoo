@@ -24,7 +24,9 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/tomli[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/tomli[${PYTHON_USEDEP}]
+		' 3.8 3.9 3.10)
 	)
 "
 
