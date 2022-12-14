@@ -553,13 +553,6 @@ net-mail/vchkuser
 <dev-lang/erlang-25
 <net-misc/rabbitmq-server-3.11.0
 
-# Matt Turner <mattst88@gentoo.org> (2022-11-11)
-# Relies on function no longer present in the Xserver since v1.20
-# (released May 2018), and no user has noticed. Use xf86-video-nouveau instead.
-# Bug #875053
-# Removal on 2022-12-11
-x11-drivers/xf86-video-nv
-
 # Sam James <sam@gentoo.org> (2022-11-11)
 # Causes memory corruption when building x11-misc/colord on x86
 # bug #880865
