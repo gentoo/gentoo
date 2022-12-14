@@ -3,6 +3,8 @@
 
 EAPI=7
 
+GENTOO_USE_PCRE1=1
+
 # latest gentoo apache files
 GENTOO_PATCHSTAMP="20210212"
 GENTOO_DEVELOPER="polynomial-c"
