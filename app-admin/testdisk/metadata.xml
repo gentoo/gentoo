@@ -14,4 +14,7 @@
 		<flag name="reiserfs">Include reiserfs reading ability</flag>
 		<flag name="ewf">Include ewf library</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">cgsecurity/testdisk</remote-id>
+	</upstream>
 </pkgmetadata>
