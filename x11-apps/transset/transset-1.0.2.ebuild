@@ -8,7 +8,7 @@ inherit xorg-3
 DESCRIPTION="An utility for setting opacity property"
 
 LICENSE="SGI-B-2.0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 
 RDEPEND="x11-libs/libX11"
 DEPEND="
