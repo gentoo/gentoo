@@ -51,7 +51,7 @@ In order to use the firmware you can run qemu the following way
 		..."
 
 src_unpack() {
-	tar -x < <(xz -c -d --single-stream "${DISTDIR}/${BINPKG}.xpak") || die "unpacking binpkg failed"
+	tar -xf - < <(xz -c -d --single-stream "${DISTDIR}/${BINPKG}.xpak") || die "unpacking binpkg failed"
 }
 
 src_install() {
