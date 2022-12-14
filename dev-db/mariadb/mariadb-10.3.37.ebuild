@@ -53,7 +53,7 @@ COMMON_DEPEND="
 	kerberos? ( virtual/krb5 )
 	yassl? ( net-libs/gnutls:0= )
 	!yassl? (
-		>=dev-libs/openssl-1.0.0:0=
+		<dev-libs/openssl-3:=
 	)
 	sys-libs/ncurses:0=
 	!bindist? (

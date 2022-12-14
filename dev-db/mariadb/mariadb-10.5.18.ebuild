@@ -86,7 +86,7 @@ COMMON_DEPEND="
 	tcmalloc? ( dev-util/google-perftools:0= )
 	yassl? ( net-libs/gnutls:0= )
 	!yassl? (
-		>=dev-libs/openssl-1.0.0:0=
+		<dev-libs/openssl-3:=
 	)
 "
 BDEPEND="app-alternatives/yacc"
