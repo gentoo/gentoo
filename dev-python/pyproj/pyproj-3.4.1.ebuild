@@ -39,8 +39,6 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs \
-	dev-python/furo
 distutils_enable_tests pytest
 
 src_configure() {
