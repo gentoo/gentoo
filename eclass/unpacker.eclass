@@ -487,7 +487,7 @@ unpack_gpkg() {
 	local dirname=${images[0]%/*}
 	mkdir -p "${dirname}" || die
 	tar -xOf "${gpkg}" "${images[0]}" | ${decomp:-cat} |
-		tar --no-same-owner -xC "${dirname}"
+		tar --no-same-owner -C "${dirname}" -xf -
 	assert "Unpacking ${gpkg} failed"
 }
 
