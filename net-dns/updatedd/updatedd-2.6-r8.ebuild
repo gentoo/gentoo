@@ -34,5 +34,7 @@ src_prepare() {
 }
 
 src_install() {
+	default
+
 	find "${ED}" -name '*.la' -delete || die
 }
