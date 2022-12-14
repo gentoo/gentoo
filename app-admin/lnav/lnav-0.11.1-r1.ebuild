@@ -19,7 +19,7 @@ RDEPEND="
 	app-arch/bzip2:0=
 	app-arch/libarchive:=
 	>=dev-db/sqlite-3.9.0
-	dev-libs/libpcre[cxx]
+	dev-libs/libpcre2
 	>=net-misc/curl-7.23.0
 	sys-libs/ncurses:=
 	sys-libs/readline:=
