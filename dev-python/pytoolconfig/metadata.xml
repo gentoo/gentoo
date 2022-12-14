@@ -8,6 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">pytoolconfig</remote-id>
-    <remote-id type="github">bageljrkhanofemus/pytoolconfig</remote-id>
+    <remote-id type="github">bagel897/pytoolconfig</remote-id>
   </upstream>
 </pkgmetadata>

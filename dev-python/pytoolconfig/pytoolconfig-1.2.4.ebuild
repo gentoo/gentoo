@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Python tool configuration"
 HOMEPAGE="
 	https://pypi.org/project/pytoolconfig/
-	https://github.com/bageljrkhanofemus/pytoolconfig/
+	https://github.com/bagel897/pytoolconfig/
 "
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
