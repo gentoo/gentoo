@@ -1,0 +1,31 @@
+commit 455ffaa393267beef7886fa6c32932b65497581f
+Author: John Helmert III <ajak@gentoo.org>
+Date:   Tue Dec 13 20:28:27 2022 -0600
+
+    drop hg usage during configure
+
+    Builds aren't run from a mercurial repository, we're always building
+    from a release tarball, and we don't want a dependency on mercurial
+    anyway.
+
+    Signed-off-by: John Helmert III <ajak@gentoo.org>
+
+diff --git a/meson.build b/meson.build
+index e141508..3116a8b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -9,14 +9,8 @@ wayland = dependency('wayland-client')
+ threads = dependency('threads')
+ dl = cc.find_library('dl')
+ 
+-hg = find_program('hg', native : true, required : false)
+-
+ version = meson.project_version()
+ 
+-if hg.found()
+-	version = run_command(hg, 'identify', check : true).stdout().strip()
+-endif
+-
+ add_project_arguments('-D_GNU_SOURCE', '-DVERSION="' + version + '"', language : 'c')
+ add_project_link_arguments('-rdynamic', language : 'c')
+ 
