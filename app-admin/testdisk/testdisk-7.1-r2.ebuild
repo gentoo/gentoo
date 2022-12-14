@@ -55,6 +55,7 @@ PATCHES=(
 )
 
 src_configure() {
+	export MOC="$(qt5_get_bindir)/moc"
 	export PATH="$(qt5_get_bindir):${PATH}"
 
 	local myconf=(
