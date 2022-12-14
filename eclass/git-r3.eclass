@@ -344,7 +344,7 @@ _git-r3_set_gitdir() {
 			umask "${EVCS_UMASK}" || die "Bad options to umask: ${EVCS_UMASK}"
 		fi
 		mkdir "${GIT_DIR}" || die
-		git init --bare || die
+		git init --bare -b __init__ || die
 		if [[ ${saved_umask} ]]; then
 			umask "${saved_umask}" || die
 		fi
@@ -874,7 +874,7 @@ git-r3_checkout() {
 		# use git init+fetch instead of clone since the latter doesn't like
 		# non-empty directories.
 
-		git init --quiet || die
+		git init --quiet -b __init__ || die
 		# setup 'alternates' to avoid copying objects
 		echo "${orig_repo}/objects" > "${GIT_DIR}"/objects/info/alternates || die
 		# now copy the refs
