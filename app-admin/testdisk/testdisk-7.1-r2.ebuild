@@ -12,9 +12,9 @@ SRC_URI="https://www.cgsecurity.org/${P}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv ~x86"
-IUSE="ewf jpeg ntfs qt5 reiserfs static zlib"
+IUSE="ewf jpeg ntfs gui reiserfs static zlib"
 
-REQUIRED_USE="static? ( !qt5 )"
+REQUIRED_USE="static? ( !gui )"
 
 # WARNING: reiserfs support does NOT work with reiserfsprogs
 # you MUST use progsreiserfs-0.3.1_rc8 (the last version ever released).
@@ -35,7 +35,7 @@ DEPEND="
 		sys-libs/ncurses:0=
 		jpeg? ( media-libs/libjpeg-turbo:= )
 		ntfs? ( sys-fs/ntfs3g:= )
-		qt5? (
+		gui? (
 			dev-qt/qtcore:5
 			dev-qt/qtgui:5
 			dev-qt/qtwidgets:5
@@ -46,7 +46,7 @@ DEPEND="
 	)
 "
 RDEPEND="!static? ( ${DEPEND} )"
-BDEPEND="qt5? ( dev-qt/linguist-tools:5 )"
+BDEPEND="gui? ( dev-qt/linguist-tools:5 )"
 
 DOCS=()
 
@@ -64,7 +64,7 @@ src_configure() {
 		$(use_with ewf)
 		$(use_with jpeg)
 		$(use_with ntfs ntfs3g)
-		$(use_enable qt5 qt)
+		$(use_enable gui qt)
 		$(use_with reiserfs)
 		$(use_with zlib)
 	)
