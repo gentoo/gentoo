@@ -228,7 +228,6 @@ video_cards_amdgpu
 video_cards_glint
 video_cards_mga
 video_cards_nouveau
-video_cards_nv
 video_cards_r100
 video_cards_r128
 video_cards_r200

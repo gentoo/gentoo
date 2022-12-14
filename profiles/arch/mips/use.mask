@@ -116,7 +116,6 @@ dri
 # more modular X stuff
 video_cards_mga
 video_cards_nouveau
-video_cards_nv
 video_cards_r128
 video_cards_radeon
 input_devices_elographics

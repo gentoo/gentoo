@@ -4,12 +4,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Matt Turner <mattst88@gentoo.org> (2022-11-11)
-# xf86-video-nv relies on function no longer present in the Xserver since v1.20
-# (released May 2018), and no user has noticed.
-# Bug #875053
-video_cards_nv
-
 # Sam James <sam@gentoo.org> (2022-08-02)
 # Masked for testing. The split of some packages may still
 # change. bug #838970.

@@ -200,7 +200,6 @@ hdf5
 
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-02-05)
 # Modular X: mask for architectures on which they aren't available
-video_cards_nv
 video_cards_nouveau
 
 # Matt Turner <mattst88@gentoo.org>
