@@ -135,7 +135,6 @@ src_install() {
 	fowners smmsp:smmsp /var/spool/clientmqueue
 	fperms 770 /var/spool/clientmqueue
 	fperms 700 /var/spool/mqueue
-	dosym ../sbin/makemap /usr/bin/makemap
 	dodoc FAQ KNOWNBUGS README RELEASE_NOTES doc/op/op.ps
 
 	dodoc sendmail/{SECURITY,TUNING}
