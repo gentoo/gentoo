@@ -21,6 +21,8 @@ DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
 IUSE="+shared static-libs"
+REQUIRED_USE="|| ( shared static-libs )
+	${ADA_REQUIRED_USE}"
 
 src_configure() {
 	emake PROCESSORS=$(makeopts_jobs) \
