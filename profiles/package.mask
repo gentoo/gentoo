@@ -42,7 +42,7 @@
 # compatible reporting tool (including Homer).
 # I'm no longer using this and don't recommend it's use, if you want this to be
 # unmasked again, please contact me so that we can figure out how to approach
-# maintenance thereof.
+# maintenance thereof. Last-rites bug #885845.
 # Removal on 2023-01-31.
 net-voip/captagent
 
