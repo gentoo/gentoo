@@ -35,6 +35,7 @@ IUSE="+abi_x86_32 crossdev-mingw +d3d9 +d3d10 +d3d11 debug +dxgi"
 REQUIRED_USE="
 	|| ( d3d9 d3d10 d3d11 dxgi )
 	d3d10? ( d3d11 )
+	d3d11? ( dxgi )
 	dxgi? ( d3d11 )"
 
 BDEPEND="
