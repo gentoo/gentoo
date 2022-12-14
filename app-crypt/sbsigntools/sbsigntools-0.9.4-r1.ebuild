@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.4-no-werror.patch
+	"${FILESDIR}"/${PN}-0.9.4-openssl3.patch
 )
 
 src_prepare() {
