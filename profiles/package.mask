@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2022-12-14)
+# Merged into games-engines/scummvm a while back. No longer maintained upstream.
+# Removal in 30 days.
+games-engines/residualvm
+
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
