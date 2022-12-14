@@ -21,6 +21,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
+	dev-python/platformdirs[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/tomli[${PYTHON_USEDEP}]
 	' 3.{8..10} )
