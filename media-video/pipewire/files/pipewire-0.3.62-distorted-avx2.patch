@@ -1,0 +1,41 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/b927063b89b791c5fc5485ce4d9eac2cd17a4ad6
+
+From b927063b89b791c5fc5485ce4d9eac2cd17a4ad6 Mon Sep 17 00:00:00 2001
+From: Sefa Eyeoglu <contact@scrumplex.net>
+Date: Sun, 11 Dec 2022 20:14:09 +0100
+Subject: [PATCH] audioconvert: fix distorted audio on AVX2
+
+Closes pipewire/pipewire#2885
+
+Signed-off-by: Sefa Eyeoglu <contact@scrumplex.net>
+--- a/spa/plugins/audioconvert/fmt-ops-avx2.c
++++ b/spa/plugins/audioconvert/fmt-ops-avx2.c
+@@ -339,7 +339,7 @@ conv_s32_to_f32d_4s_avx2(void *data, void * SPA_RESTRICT dst[], const void * SPA
+ 	__m256i in[4];
+ 	__m256 out[4], factor = _mm256_set1_ps(1.0f / S24_SCALE);
+ 	__m256i mask1 = _mm256_setr_epi32(0*n_channels, 1*n_channels, 2*n_channels, 3*n_channels,
+-					  3*n_channels, 5*n_channels, 6*n_channels, 7*n_channels);
++					  4*n_channels, 5*n_channels, 6*n_channels, 7*n_channels);
+ 
+ 	if (SPA_IS_ALIGNED(d0, 32) &&
+ 	    SPA_IS_ALIGNED(d1, 32) &&
+@@ -405,7 +405,7 @@ conv_s32_to_f32d_2s_avx2(void *data, void * SPA_RESTRICT dst[], const void * SPA
+ 	__m256i in[4];
+ 	__m256 out[4], factor = _mm256_set1_ps(1.0f / S24_SCALE);
+ 	__m256i mask1 = _mm256_setr_epi32(0*n_channels, 1*n_channels, 2*n_channels, 3*n_channels,
+-					  3*n_channels, 5*n_channels, 6*n_channels, 7*n_channels);
++					  4*n_channels, 5*n_channels, 6*n_channels, 7*n_channels);
+ 
+ 	if (SPA_IS_ALIGNED(d0, 32) &&
+ 	    SPA_IS_ALIGNED(d1, 32))
+@@ -453,7 +453,7 @@ conv_s32_to_f32d_1s_avx2(void *data, void * SPA_RESTRICT dst[], const void * SPA
+ 	__m256i in[2];
+ 	__m256 out[2], factor = _mm256_set1_ps(1.0f / S24_SCALE);
+ 	__m256i mask1 = _mm256_setr_epi32(0*n_channels, 1*n_channels, 2*n_channels, 3*n_channels,
+-					  3*n_channels, 5*n_channels, 6*n_channels, 7*n_channels);
++					  4*n_channels, 5*n_channels, 6*n_channels, 7*n_channels);
+ 
+ 	if (SPA_IS_ALIGNED(d0, 32))
+ 		unrolled = n_samples & ~15;
+-- 
+GitLab

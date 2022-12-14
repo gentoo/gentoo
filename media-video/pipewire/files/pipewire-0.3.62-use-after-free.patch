@@ -1,0 +1,185 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/3bdd2e01c56ec13179340ecdce0b766f72e4339e
+https://gitlab.freedesktop.org/pipewire/pipewire/-/commit/8c892443eb5989ea3e660dedc6a506a9bfb42eac
+
+From 3bdd2e01c56ec13179340ecdce0b766f72e4339e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Barnab=C3=A1s=20P=C5=91cze?= <pobrn@protonmail.com>
+Date: Sat, 10 Dec 2022 00:40:21 +0100
+Subject: [PATCH] pipewire: store SPA handles in a global list by age
+
+Operating on the assumption that every SPA handle
+can reference any other older SPA handle, the only
+safe destruction order is from youngest to oldest.
+
+To achieve this, store all handles across all plugins
+sorted by age (youngest first), and use that as the
+order of destruction in `pw_deinit()`.
+
+This line of thinking does not account for what happens
+when a handle that is referenced by others is unloaded,
+but it does not make that case worse either.
+
+See #2881
+--- a/src/pipewire/pipewire.c
++++ b/src/pipewire/pipewire.c
+@@ -64,7 +64,6 @@ struct plugin {
+ 	char *filename;
+ 	void *hnd;
+ 	spa_handle_factory_enum_func_t enum_func;
+-	struct spa_list handles;
+ 	int ref;
+ };
+ 
+@@ -78,6 +77,7 @@ struct handle {
+ 
+ struct registry {
+ 	struct spa_list plugins;
++	struct spa_list handles; /* all handles across all plugins by age (youngest first) */
+ };
+ 
+ struct support {
+@@ -149,7 +149,6 @@ open_plugin(struct registry *registry,
+ 	plugin->filename = strdup(filename);
+ 	plugin->hnd = hnd;
+ 	plugin->enum_func = enum_func;
+-	spa_list_init(&plugin->handles);
+ 
+ 	spa_list_append(&registry->plugins, &plugin->link);
+ 
+@@ -290,7 +289,7 @@ static struct spa_handle *load_spa_handle(const char *lib,
+ 	handle->ref = 1;
+ 	handle->plugin = plugin;
+ 	handle->factory_name = strdup(factory_name);
+-	spa_list_append(&plugin->handles, &handle->link);
++	spa_list_prepend(&sup->registry.handles, &handle->link);
+ 
+ 	return &handle->handle;
+ 
+@@ -321,15 +320,13 @@ struct spa_handle *pw_load_spa_handle(const char *lib,
+ static struct handle *find_handle(struct spa_handle *handle)
+ {
+ 	struct registry *registry = &global_support.registry;
+-	struct plugin *p;
+ 	struct handle *h;
+ 
+-	spa_list_for_each(p, &registry->plugins, link) {
+-		spa_list_for_each(h, &p->handles, link) {
+-			if (&h->handle == handle)
+-				return h;
+-		}
++	spa_list_for_each(h, &registry->handles, link) {
++		if (&h->handle == handle)
++			return h;
+ 	}
++
+ 	return NULL;
+ }
+ 
+@@ -611,6 +608,7 @@ void pw_init(int *argc, char **argv[])
+ 	support->support_lib = str;
+ 
+ 	spa_list_init(&support->registry.plugins);
++	spa_list_init(&support->registry.handles);
+ 
+ 	if (pw_log_is_default()) {
+ 		char *patterns = NULL;
+@@ -684,7 +682,7 @@ void pw_deinit(void)
+ {
+ 	struct support *support = &global_support;
+ 	struct registry *registry = &support->registry;
+-	struct plugin *p;
++	struct handle *h;
+ 
+ 	pthread_mutex_lock(&init_lock);
+ 	if (support->init_count == 0)
+@@ -694,13 +692,10 @@ void pw_deinit(void)
+ 
+ 	pthread_mutex_lock(&support_lock);
+ 	pw_log_set(NULL);
+-	spa_list_consume(p, &registry->plugins, link) {
+-		struct handle *h;
+-		p->ref++;
+-		spa_list_consume(h, &p->handles, link)
+-			unref_handle(h);
+-		unref_plugin(p);
+-	}
++
++	spa_list_consume(h, &registry->handles, link)
++		unref_handle(h);
++
+ 	pw_free_strv(support->categories);
+ 	free(support->i18n_domain);
+ 	spa_zero(global_support);
+-- 
+GitLab
+
+From 8c892443eb5989ea3e660dedc6a506a9bfb42eac Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Barnab=C3=A1s=20P=C5=91cze?= <pobrn@protonmail.com>
+Date: Sat, 10 Dec 2022 02:43:13 +0100
+Subject: [PATCH] spa: audioadapter: fix stack-use-after-scope when configuring
+ format
+
+It is not enough for `buffer` to be alive in its current
+scope because when execution enters that branch, `format`
+will be set to `fmt`, which points inside `buffer`. And
+since `format` is used outside that scope, `buffer` must
+live longer.
+
+This was detected by ASAN when Audacity was starting up.
+
+  ==25007==ERROR: AddressSanitizer: stack-use-after-scope on address 0x7ffdbcfef560 at pc 0x7fe44ca95db3 bp 0x7ffdbcfeeda0 sp 0x7ffdbcfeed90
+  READ of size 4 at 0x7ffdbcfef560 thread T0
+      #0 0x7fe44ca95db2 in spa_pod_parser_pod ../spa/include/spa/pod/parser.h:67
+      #1 0x7fe44ca9a805 in spa_format_parse ../spa/include/spa/param/format-utils.h:44
+      #2 0x7fe44cad293a in port_set_format ../spa/plugins/audioconvert/audioconvert.c:1934
+      #3 0x7fe44cadad14 in impl_node_port_set_param ../spa/plugins/audioconvert/audioconvert.c:2038
+      #4 0x7fe44ca587e2 in configure_format ../spa/plugins/audioconvert/audioadapter.c:509
+      #5 0x7fe44ca60dff in negotiate_format ../spa/plugins/audioconvert/audioadapter.c:822
+      #6 0x7fe44ca62bbf in impl_node_send_command ../spa/plugins/audioconvert/audioadapter.c:846
+      #7 0x7fe45ea1c2f1 in node_update_state ../src/pipewire/impl-node.c:407
+      #8 0x7fe45ea5137e in pw_impl_node_set_state ../src/pipewire/impl-node.c:2251
+      #9 0x7fe45eb3355f in pw_work_queue_destroy ../src/pipewire/work-queue.c:142
+      #10 0x7fe45b2cd6f4 in source_event_func ../spa/plugins/support/loop.c:615
+      #11 0x7fe45b2c634f in loop_iterate ../spa/plugins/support/loop.c:452
+      #12 0x7fe45e9ebebc in spa_hook_list_clean ../spa/include/spa/utils/hook.h:395
+      #13 0x5561e03dc722 in main ../src/daemon/pipewire.c:131
+      #14 0x7fe45da3c28f  (/usr/lib/libc.so.6+0x2328f)
+      #15 0x7fe45da3c349 in __libc_start_main (/usr/lib/libc.so.6+0x23349)
+      #16 0x5561e03db2a4 in _start ../sysdeps/x86_64/start.S:115
+
+  Address 0x7ffdbcfef560 is located in stack of thread T0 at offset 160 in frame
+      #0 0x7fe44ca56fa9 in configure_format ../spa/plugins/audioconvert/audioadapter.c:475
+
+    This frame has 4 object(s):
+      [32, 36) 'state' (line 493)
+      [48, 56) 'fmt' (line 494)
+      [80, 128) 'b' (line 492)
+      [160, 4256) 'buffer' (line 491) <== Memory access at offset 160 is inside this variable
+--- a/spa/plugins/audioconvert/audioadapter.c
++++ b/spa/plugins/audioconvert/audioadapter.c
+@@ -473,6 +473,7 @@ static int negotiate_buffers(struct impl *this)
+ 
+ static int configure_format(struct impl *this, uint32_t flags, const struct spa_pod *format)
+ {
++	uint8_t buffer[4096];
+ 	int res;
+ 
+ 	if (format == NULL && !this->have_format)
+@@ -487,14 +488,13 @@ static int configure_format(struct impl *this, uint32_t flags, const struct spa_
+ 					   SPA_PARAM_Format, flags,
+ 					   format)) < 0)
+ 			return res;
++
+ 	if (res > 0) {
+-		uint8_t buffer[4096];
+-		struct spa_pod_builder b = { 0 };
++		struct spa_pod_builder b = SPA_POD_BUILDER_INIT(buffer, sizeof(buffer));
+ 		uint32_t state = 0;
+ 		struct spa_pod *fmt;
+ 
+ 		/* format was changed to nearest compatible format */
+-		spa_pod_builder_init(&b, buffer, sizeof(buffer));
+ 
+ 		if ((res = spa_node_port_enum_params_sync(this->follower,
+ 					this->direction, 0,
+-- 
+GitLab
