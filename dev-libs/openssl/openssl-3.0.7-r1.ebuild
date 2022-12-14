@@ -92,7 +92,7 @@ src_unpack() {
 
 src_prepare() {
 	# Allow openssl to be cross-compiled
-	cp "${FILESDIR}"/gentoo.config-1.0.2 gentoo.config || die
+	cp "${FILESDIR}"/gentoo.config-1.0.3 gentoo.config || die
 	chmod a+rx gentoo.config || die
 
 	# Keep this in sync with app-misc/c_rehash
