@@ -36,7 +36,6 @@ IUSE_VIDEO_CARDS="
 	video_cards_intel
 	video_cards_mga
 	video_cards_nouveau
-	video_cards_nv
 	video_cards_omap
 	video_cards_qxl
 	video_cards_r128
@@ -80,7 +79,6 @@ PDEPEND="
 	video_cards_intel?         ( >=x11-base/xorg-server-${PV}[-minimal] )
 	video_cards_mga?           ( >=x11-drivers/xf86-video-mga-1.6.5 )
 	video_cards_nouveau?       ( >=x11-drivers/xf86-video-nouveau-1.0.13 )
-	video_cards_nv?            ( >=x11-drivers/xf86-video-nv-2.1.21 )
 	video_cards_omap?          ( >=x11-drivers/xf86-video-omap-0.4.5 )
 	video_cards_qxl?           ( x11-drivers/xf86-video-qxl )
 	video_cards_nvidia?        ( x11-drivers/nvidia-drivers )
