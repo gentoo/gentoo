@@ -8,7 +8,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86"
+KEYWORDS="amd64 ~ppc ppc64 x86"
 
 RDEPEND="
 	x11-apps/appres
