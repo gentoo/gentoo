@@ -59,6 +59,7 @@ RDEPEND="${COMMON_DEPEND}
 			media-plugins/gst-plugins-gtk
 		)
 		omemo? (
+			dev-python/jaraco-classes[${PYTHON_USEDEP}]
 			dev-python/python-axolotl[${PYTHON_USEDEP}]
 			dev-python/qrcode[${PYTHON_USEDEP}]
 			dev-python/cryptography[${PYTHON_USEDEP}]
