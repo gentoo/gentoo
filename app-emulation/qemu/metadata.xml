@@ -9,10 +9,6 @@
 		<email>dilfridge@gentoo.org</email>
 		<name>Andreas K. Hüttel</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>zlogene@gentoo.org</email>
-		<name>Mikle Kolyada</name>
-	</maintainer>
 	<use>
 		<flag name="accessibility">Adds support for braille displays using brltty</flag>
 		<flag name="aio">Enables support for Linux's Async IO</flag>
