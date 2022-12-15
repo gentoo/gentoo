@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/sidplay-residfp/${PN}/$(ver_cut 1-2)/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/6"
-KEYWORDS="~amd64 ~hppa ~riscv ~x86"
+KEYWORDS="amd64 ~hppa ~riscv ~x86"
 IUSE="static-libs"
 
 src_prepare() {
