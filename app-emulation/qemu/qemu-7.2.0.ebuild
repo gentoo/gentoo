@@ -307,9 +307,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-make.patch
 	"${FILESDIR}"/${PN}-7.1.0-also-build-virtfs-proxy-helper.patch
 	"${FILESDIR}"/${PN}-7.1.0-capstone-include-path.patch
-	#"${FILESDIR}"/${PN}-7.1.0-mips-n32-syscalls.patch
-	#"${FILESDIR}"/${PN}-7.1.0-loong-stat.patch
-	#"${FILESDIR}"/${PN}-7.1.0-faccessat2.patch
 )
 
 QA_PREBUILT="
