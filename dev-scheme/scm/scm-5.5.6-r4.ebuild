@@ -27,8 +27,11 @@ DEPEND=">=dev-scheme/slib-3.1.5
 	readline? ( sys-libs/libtermcap-compat )"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-multiplefixes.patch"
-	"${FILESDIR}/${P}-respect-ldflags.patch" )
+PATCHES=(
+	"${FILESDIR}"/${P}-multiplefixes.patch
+	"${FILESDIR}"/${P}-ncurses.patch
+	"${FILESDIR}"/${P}-respect-ldflags.patch
+)
 
 src_prepare() {
 	default

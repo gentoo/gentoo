@@ -1,0 +1,11 @@
+--- a/build.scm
++++ b/build.scm
+@@ -565,7 +565,7 @@
+      (regex linux "" "" #f () ())
+      (graphics linux "-I/usr/include/X11 -DX11" "-L/usr/X11R6/lib -lX11"
+ 	       "/usr/X11R6/lib/libX11.so" () ())
+-     (curses linux "" "-lcurses" "/lib/libncurses.so" () ())
++     (curses linux "" "-lncurses" "/lib/libncurses.so" () ())
+      (nostart linux "" "" #f () ())
+      (dump linux "" "" #f ("unexelf.c" "gmalloc.c") ())
+ 
