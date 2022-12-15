@@ -1,0 +1,84 @@
+Clang16 will not support implicit integers, implicit function declarations and
+implicit integer to pointer conversions by default. 
+This patch overhauls the source code to comply with modern C standards.
+
+Bug: https://bugs.gentoo.org/871213
+This patch was sent upstream via mail. 
+
+Pascal Jäger <pascal.jaeger@leimstift.de> (2022-12-15)
+
+--- a/kernel/colors.c
++++ b/kernel/colors.c
+@@ -117,11 +117,7 @@ int CalcWeightsum(struct realpal_struct *realpal)
+    return(0);
+ }
+ 
+-int CreateDispPal(disppal, realpal, maxcol, phongmax, rdepth, gdepth, bdepth)
+-   struct disppal_struct *disppal;
+-   struct realpal_struct *realpal;
+-   int maxcol, rdepth, gdepth, bdepth;
+-   double phongmax;
++int CreateDispPal (struct disppal_struct *disppal, struct realpal_struct *realpal, int maxcol, double phongmax, int rdepth, int gdepth, int bdepth)
+ {
+    int i, j, requiredcols, maxdepth, maxbright, oswcols;
+    int disppos; 
+
+--- a/kernel/files.c
++++ b/kernel/files.c
+@@ -374,22 +374,7 @@ int ParseFile(const char *nam, const char *_altpath, struct keyword_struct kword
+    return(0);
+ }
+ 
+-int PNGInitialization(name, mode, png, png_info, png_internal, xstart, ystart, calctime, f,
+-   v, pal, realpal, colorscheme, cutbuf, zflag)
+-const char *name;
+-int mode;
+-FILE **png;
+-struct png_info_struct *png_info;
+-struct png_internal_struct *png_internal;
+-int xstart, ystart;
+-long calctime;
+-struct frac_struct *f;
+-struct view_struct *v;
+-struct disppal_struct *pal;
+-struct realpal_struct *realpal;
+-char *colorscheme;
+-double *cutbuf;
+-int zflag;
++int PNGInitialization (const char *name, int mode, FILE **png, struct png_info_struct *png_info, struct png_internal_struct *png_internal, int xstart, int ystart, long calctime, struct frac_struct *f, struct view_struct *v, struct disppal_struct *pal, struct realpal_struct *realpal, char *colorscheme, double *cutbuf, int zflag)
+ /* rewrites file "name" */
+ {
+    int i, j, pos, cutpos;
+--- a/kernel/quat.c
++++ b/kernel/quat.c
+@@ -794,7 +794,7 @@ int CalculateFractal(char *Error, char *pngfile, FILE **png,/* struct png_info_s
+       return(-1);
+    }
+ 	   
+-   my_time = (long)time((time_t)NULL);
++   my_time = (long)time((time_t*)NULL);
+    if (frac.formula==0)
+    { 
+       cr.iterate = iterate_0; cr.iternorm = iternorm_0;
+--- a/kernel/textver.c
++++ b/kernel/textver.c
+@@ -143,7 +143,7 @@ int TEXTVER_putline(long x1, long x2, long xres, int y, unsigned char *Buf, int
+    return(0);
+ }
+ 
+-int TEXTVER_check_event()
++int TEXTVER_check_event (void)
+ {
+ #ifdef __unix__
+ 	if (keypressed()) 
+--- a/kernel/quat.c
++++ b/kernel/quat.c
+@@ -949,7 +949,7 @@ int CalculateFractal(char *Error, char *pngfile, FILE **png,/* struct png_info_s
+ 	 { 
+ 	    i = view.xres*3; if (IsStereo(&view)) i *= 2;
+ 	    memset(line, 0, (size_t)i+1);
+-	    calc_time += (long)time((time_t)NULL) - my_time;
++	    calc_time += (long)time((time_t*)NULL) - my_time;
+ 	    if (png != NULL)
+ 	    {
+ 	       PNGEnd(png_internal, line, 0, j);
