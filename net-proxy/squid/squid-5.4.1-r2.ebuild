@@ -42,7 +42,7 @@ COMMON_DEPEND="acct-group/squid
 	qos? ( net-libs/libnetfilter_conntrack )
 	ssl? (
 		!gnutls? (
-			dev-libs/openssl:0=
+			<dev-libs/openssl-3:=
 		)
 		dev-libs/nettle:=
 	)
