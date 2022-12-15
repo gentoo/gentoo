@@ -34,7 +34,7 @@ SRC_URI="https://dev.gentoo.org/~sultan/distfiles/www-client/chromium-bin/${MY_P
 
 LICENSE="BSD"
 SLOT="0/stable"
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* amd64 ~arm64"
 IUSE="cpu_flags_x86_sse2 +suid qt5 wayland widevine"
 
 RDEPEND="
