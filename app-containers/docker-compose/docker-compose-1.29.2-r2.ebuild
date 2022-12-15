@@ -1,7 +1,7 @@
-# Copyright 2018-2021 Gentoo Authors
+# Copyright 2018-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/docker/compose/archive/${MY_PV}.tar.gz -> ${P}.gh.ta
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm64"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	>=dev-python/distro-1.5.0[${PYTHON_USEDEP}]
@@ -45,6 +45,7 @@ PATCHES=(
 	# Bug #679968 -- https://bugs.gentoo.org/679968
 	# Bug #681002 -- https://bugs.gentoo.org/681002
 	"${FILESDIR}"/${PN}-1.29.0-setup-py.patch
+	"${FILESDIR}"/${P}-tests-unit-cli-test-py.patch
 )
 
 DOCS=( CHANGELOG.md README.md )
