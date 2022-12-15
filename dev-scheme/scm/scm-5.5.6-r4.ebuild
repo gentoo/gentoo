@@ -39,6 +39,7 @@ src_prepare() {
 	sed \
 		-e "s|\"gcc\"|\"$(tc-getCC)\"|g" \
 		-e "s|\"ld\"|\"$(tc-getLD)\"|g" \
+		-e "s|\"-shared\"|\"-shared ${LDFLAGS}\"|g" \
 		-i ./build.scm || die
 }
 
