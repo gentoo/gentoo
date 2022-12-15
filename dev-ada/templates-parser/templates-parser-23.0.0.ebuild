@@ -16,7 +16,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
-RDEPEND="${ADA_DEPS}"
+RDEPEND="${ADA_DEPS}
+	dev-ada/xmlada[${ADA_USEDEP},shared?,static-libs?]
+	shared? ( static-libs? ( dev-ada/xmlada[static-pic] ) )"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
