@@ -93,6 +93,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		dev-libs/glib:2
+		media-fonts/cantarell
 		wayland? ( dev-libs/weston[headless] )
 	)
 "
