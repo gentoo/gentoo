@@ -21,7 +21,8 @@ fi
 LICENSE="LGPL-2.1"
 SLOT="0/3" # libmpc.so.3
 IUSE="static-libs"
-# 1.3.1_rc1 is identical to 1.3.0-r1 so just keyword it
+# 1.3.1_rc1 is identical to 1.3.0-r1 so just keyword it and later RCs
+# contain further build fixes for consumers.
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 DEPEND="
