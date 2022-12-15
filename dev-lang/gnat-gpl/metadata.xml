@@ -9,6 +9,8 @@
 		<flag name="bootstrap">Used to bootstrap gnat-gpl</flag>
 		<flag name="cet" restrict="&gt;=dev-lang/gnat-gpl-2021">Enable support for Intel Control Flow Enforcement Technology (CET)</flag>
 		<flag name="d">Enable support for the D programming language</flag>
+		<flag name="default-stack-clash-protection">Build packages with stack clash protection on by default</flag>
+		<flag name="default-znow">Request full relocation on start from ld.so by default</flag>
 		<flag name="fixed-point">Enable fixed-point arithmetic support for MIPS
 			targets in gcc (Warning: significantly increases compile time!)
 		</flag>
@@ -26,6 +28,7 @@
 		<flag name="objc-gc">Build support for the Objective C code language
 			Garbage Collector</flag>
 		<flag name="pgo">Build GCC using Profile Guided Optimization (PGO)</flag>
+		<flag name="rust">Build support for the Rust language, installs gccrs.</flag>
 		<flag name="sanitize">Build support for various sanitizer functions (ASAN/TSAN/etc...)</flag>
 		<flag name="systemtap">enable systemtap static probe points</flag>
 		<flag name="ssp">Build packages with stack smashing protector on by default</flag>
