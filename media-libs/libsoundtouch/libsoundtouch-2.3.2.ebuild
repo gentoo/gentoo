@@ -14,7 +14,7 @@ SRC_URI="https://www.surina.net/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="LGPL-2.1"
 # subslot = libSoundTouch.so soname
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="cpu_flags_x86_sse openmp static-libs"
 
 BDEPEND="virtual/pkgconfig"
