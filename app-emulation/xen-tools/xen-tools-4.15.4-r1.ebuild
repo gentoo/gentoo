@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 	SEABIOS_VER="1.14.0"
 	EDK2_COMMIT="7b4a99be8a39c12d3a7fc4b8db9f0eab4ac688d5"
@@ -23,13 +23,17 @@ else
 	EDK2_BROTLI_COMMIT="666c3280cc11dc433c303d79a83d4ffbdd12cc8d"
 	IPXE_COMMIT="3c040ad387099483102708bb1839110bc788cefb"
 
-	XEN_PRE_PATCHSET_NUM=1
+	XEN_PRE_PATCHSET_NUM=
+	XEN_GENTOO_PATCHSET_BASE=4.15.3
 	XEN_GENTOO_PATCHSET_NUM=2
-	XEN_PRE_VERSION_BASE=4.15.3
+	XEN_PRE_VERSION_BASE=
 
 	XEN_BASE_PV="${PV}"
 	if [[ -n "${XEN_PRE_VERSION_BASE}" ]]; then
 		XEN_BASE_PV="${XEN_PRE_VERSION_BASE}"
+	fi
+	if [[ -z "${XEN_GENTOO_PATCHSET_BASE}" ]]; then
+		XEN_GENTOO_PATCHSET_BASE="${XEN_BASE_PV}"
 	fi
 
 	SRC_URI="
@@ -50,7 +54,7 @@ else
 		XEN_UPSTREAM_PATCHES_DIR="${WORKDIR}/${XEN_UPSTREAM_PATCHES_NAME}"
 	fi
 	if [[ -n "${XEN_GENTOO_PATCHSET_NUM}" ]]; then
-		XEN_GENTOO_PATCHES_TAG="$(ver_cut 1-3 ${XEN_BASE_PV})-gentoo-patchset-${XEN_GENTOO_PATCHSET_NUM}"
+		XEN_GENTOO_PATCHES_TAG="$(ver_cut 1-3 ${XEN_GENTOO_PATCHSET_BASE})-gentoo-patchset-${XEN_GENTOO_PATCHSET_NUM}"
 		XEN_GENTOO_PATCHES_NAME="xen-gentoo-patches-${XEN_GENTOO_PATCHES_TAG}"
 		SRC_URI+=" https://gitweb.gentoo.org/proj/xen-gentoo-patches.git/snapshot/${XEN_GENTOO_PATCHES_NAME}.tar.bz2"
 		XEN_GENTOO_PATCHES_DIR="${WORKDIR}/${XEN_GENTOO_PATCHES_NAME}"
@@ -125,7 +129,12 @@ DEPEND="${COMMON_DEPEND}
 		)
 	!amd64? ( >=sys-apps/dtc-1.4.0 )
 	amd64? ( sys-power/iasl
-		system-seabios? ( sys-firmware/seabios )
+		system-seabios? (
+			|| (
+				sys-firmware/seabios
+				sys-firmware/seabios-bin
+			)
+		)
 		system-ipxe? ( sys-firmware/ipxe[qemu] )
 		rombios? ( sys-devel/bin86 sys-devel/dev86 ) )
 	arm64? ( sys-power/iasl

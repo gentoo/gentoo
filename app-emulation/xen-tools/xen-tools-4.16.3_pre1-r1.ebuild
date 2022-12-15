@@ -128,7 +128,12 @@ DEPEND="${COMMON_DEPEND}
 		)
 	!amd64? ( >=sys-apps/dtc-1.4.0 )
 	amd64? ( sys-power/iasl
-		system-seabios? ( sys-firmware/seabios )
+		system-seabios? (
+			|| (
+				sys-firmware/seabios
+				sys-firmware/seabios-bin
+			)
+		)
 		system-ipxe? ( sys-firmware/ipxe[qemu] )
 		rombios? ( sys-devel/bin86 sys-devel/dev86 ) )
 	arm64? ( sys-power/iasl
