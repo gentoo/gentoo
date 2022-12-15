@@ -26,4 +26,7 @@
 		<flag name="system-png">Use system libpng instead of the bundled one.</flag>
 		<flag name="widevine">Unsupported closed-source DRM capability (required by Netflix VOD)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">stha09/chromium-patches</remote-id>
+	</upstream>
 </pkgmetadata>
