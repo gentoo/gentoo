@@ -3,10 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE='ncurses,xml(+),threads(+)'
 
-inherit bash-completion-r1 flag-o-matic multilib python-single-r1 readme.gentoo-r1 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic multilib python-single-r1 toolchain-funcs
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -23,10 +23,9 @@ else
 	EDK2_BROTLI_COMMIT="666c3280cc11dc433c303d79a83d4ffbdd12cc8d"
 	IPXE_COMMIT="3c040ad387099483102708bb1839110bc788cefb"
 
+	XEN_PRE_PATCHSET_NUM=1
 	XEN_GENTOO_PATCHSET_NUM=2
-	XEN_GENTOO_PATCHSET_BASE=4.16.1
-	XEN_PRE_PATCHSET_NUM=0
-	XEN_PRE_VERSION_BASE=4.16.2
+	XEN_PRE_VERSION_BASE=4.15.3
 
 	XEN_BASE_PV="${PV}"
 	if [[ -n "${XEN_PRE_VERSION_BASE}" ]]; then
@@ -51,7 +50,7 @@ else
 		XEN_UPSTREAM_PATCHES_DIR="${WORKDIR}/${XEN_UPSTREAM_PATCHES_NAME}"
 	fi
 	if [[ -n "${XEN_GENTOO_PATCHSET_NUM}" ]]; then
-		XEN_GENTOO_PATCHES_TAG="$(ver_cut 1-3 ${XEN_GENTOO_PATCHSET_BASE})-gentoo-patchset-${XEN_GENTOO_PATCHSET_NUM}"
+		XEN_GENTOO_PATCHES_TAG="$(ver_cut 1-3 ${XEN_BASE_PV})-gentoo-patchset-${XEN_GENTOO_PATCHSET_NUM}"
 		XEN_GENTOO_PATCHES_NAME="xen-gentoo-patches-${XEN_GENTOO_PATCHES_TAG}"
 		SRC_URI+=" https://gitweb.gentoo.org/proj/xen-gentoo-patches.git/snapshot/${XEN_GENTOO_PATCHES_NAME}.tar.bz2"
 		XEN_GENTOO_PATCHES_DIR="${WORKDIR}/${XEN_GENTOO_PATCHES_NAME}"
@@ -69,7 +68,7 @@ SLOT="0/$(ver_cut 1-2)"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api debug doc +hvm +ipxe lzma ocaml ovmf pygrub python +qemu +qemu-traditional +rombios screen selinux sdl static-libs system-ipxe system-qemu system-seabios systemd zstd"
+IUSE="api debug doc +hvm +ipxe lzma ocaml ovmf pygrub python +qemu +qemu-traditional +rombios screen selinux sdl static-libs system-ipxe system-qemu system-seabios"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -87,9 +86,7 @@ COMMON_DEPEND="
 		dev-libs/glib:2
 		sys-libs/pam
 	)
-	zstd? ( app-arch/zstd )
 	app-arch/bzip2
-	app-arch/zstd
 	dev-libs/libnl:3
 	dev-libs/lzo:2
 	dev-libs/yajl
@@ -128,7 +125,12 @@ DEPEND="${COMMON_DEPEND}
 		)
 	!amd64? ( >=sys-apps/dtc-1.4.0 )
 	amd64? ( sys-power/iasl
-		system-seabios? ( sys-firmware/seabios )
+		system-seabios? (
+			|| (
+				sys-firmware/seabios
+				sys-firmware/seabios-bin
+			)
+		)
 		system-ipxe? ( sys-firmware/ipxe[qemu] )
 		rombios? ( sys-devel/bin86 sys-devel/dev86 ) )
 	arm64? ( sys-power/iasl
@@ -246,11 +248,10 @@ src_prepare() {
 	# collisions with app-emulation/qemu.
 	sed -i 's/qemu-bridge-helper/xen-bridge-helper/g' \
 		tools/qemu-xen/include/net/net.h \
-		tools/qemu-xen/meson.build \
+		tools/qemu-xen/Makefile \
 		tools/qemu-xen/qemu-bridge-helper.c \
 		tools/qemu-xen/qemu-options.hx \
 		|| die
-	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
 
 	if use ovmf; then
 		mv ../edk2-${EDK2_COMMIT} tools/firmware/ovmf-dir-remote || die
@@ -266,11 +267,11 @@ src_prepare() {
 
 		# Bug #816987
 		pushd tools/firmware/ovmf-dir-remote/BaseTools/Source/C/BrotliCompress/brotli > /dev/null
-			eapply "${XEN_GENTOO_PATCHES_DIR}/ovmf/${PN}-4.15.1-brotli-gcc11.patch"
+			eapply "${FILESDIR}/${PN}-4.15.1-brotli-gcc11.patch"
 		popd > /dev/null
 
 		pushd tools/firmware/ovmf-dir-remote/MdeModulePkg/Library/BrotliCustomDecompressLib/brotli > /dev/null
-			eapply "${XEN_GENTOO_PATCHES_DIR}/ovmf/${PN}-4.15.1-brotli-gcc11.patch"
+			eapply "${FILESDIR}/${PN}-4.15.1-brotli-gcc11.patch"
 		popd > /dev/null
 	fi
 
@@ -282,6 +283,8 @@ src_prepare() {
 		cp "${XEN_GENTOO_PATCHES_DIR}/ipxe/${PN}-4.15.0-ipxe-gcc11.patch" tools/firmware/etherboot/patches/ipxe-gcc11.patch || die
 		echo ipxe-gcc11.patch >> tools/firmware/etherboot/patches/series || die
 	fi
+
+	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
 
 	# Fix texi2html build error with new texi2html, qemu.doc.html
 	sed -i -e "/texi2html -monolithic/s/-number//" tools/qemu-xen-traditional/Makefile || die
@@ -405,7 +408,6 @@ src_configure() {
 		$(use_enable ocaml ocamltools)
 		$(use_enable ovmf)
 		$(use_enable rombios)
-		$(use_enable systemd)
 		--with-xenstored=$(usex ocaml 'oxenstored' 'xenstored')
 	)
 
@@ -430,16 +432,7 @@ src_compile() {
 		local -x NO_WERROR=1
 	fi
 
-	emake \
-		HOSTCC="$(tc-getBUILD_CC)" \
-		HOSTCXX="$(tc-getBUILD_CXX)" \
-		CC="$(tc-getCC)" \
-		CXX="$(tc-getCXX)" \
-		LD="$(tc-getLD)" \
-		AR="$(tc-getAR)" \
-		OBJDUMP="$(tc-getOBJDUMP)" \
-		RANLIB="$(tc-getRANLIB)" \
-		build-tools ${myopt}
+	emake CC="$(tc-getCC)" LD="$(tc-getLD)" AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" build-tools ${myopt}
 
 	if use doc; then
 		emake -C docs build
@@ -518,10 +511,27 @@ src_install() {
 	fi
 
 	python_optimize
-
-	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	readme.gentoo_print_elog
+	elog "Official Xen Guide and the offical wiki page:"
+	elog "https://wiki.gentoo.org/wiki/Xen"
+	elog "https://wiki.xen.org/wiki/Main_Page"
+	elog ""
+	elog "Recommended to utilise the xencommons script to config system at boot"
+	elog "Add by use of rc-update on completion of the install"
+
+	if ! use hvm; then
+		echo
+		elog "HVM (VT-x and AMD-V) support has been disabled. If you need hvm"
+		elog "support enable the hvm use flag."
+		elog "An x86 or amd64 system is required to build HVM support."
+	fi
+
+	if use qemu; then
+		elog "The qemu-bridge-helper is renamed to the xen-bridge-helper in the in source"
+		elog "build of qemu.  This allows for app-emulation/qemu to be emerged concurrently"
+		elog "with the qemu capable xen.  It is up to the user to distinguish between and utilise"
+		elog "the qemu-bridge-helper and the xen-bridge-helper. File bugs of any issues that arise"
+	fi
 }
