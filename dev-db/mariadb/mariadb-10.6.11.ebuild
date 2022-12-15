@@ -207,6 +207,7 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}"/mariadb-patches
+	eapply "${FILESDIR}"/${PN}-10.6.11-gssapi.patch
 
 	eapply_user
 
