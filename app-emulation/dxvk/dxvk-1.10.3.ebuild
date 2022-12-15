@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# note: version <2.0 should be kept for longer given it's the
+# last version to support <wine-7.1 and <nvidia-drivers-510
+
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 inherit flag-o-matic meson-multilib
 
