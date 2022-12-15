@@ -12,7 +12,7 @@ MY_PN="OpenRCT2"
 MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
 MY_PN_TS="title-sequences"
-MY_PV_OBJ="1.3.5"
+MY_PV_OBJ="1.3.7"
 MY_PV_RPL="0.0.70"
 MY_PV_TS="0.4.0"
 
@@ -117,6 +117,8 @@ src_configure() {
 		-DDISABLE_TTF=$(usex !truetype)
 		$(usex !dedicated "-DDISABLE_VORBIS=$(usex !vorbis)" "")
 		-DDOWNLOAD_OBJECTS=OFF
+		-DDOWNLOAD_OPENMSX=OFF
+		-DDOWNLOAD_OPENSFX=OFF
 		-DDOWNLOAD_REPLAYS=OFF
 		-DDOWNLOAD_TITLE_SEQUENCES=OFF
 		-DENABLE_SCRIPTING=$(usex scripting)
