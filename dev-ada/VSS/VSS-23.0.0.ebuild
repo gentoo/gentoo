@@ -18,7 +18,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
-RDEPEND="${ADA_DEPS}"
+RDEPEND="${ADA_DEPS}
+	dev-ada/xmlada[${ADA_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]
 	test? (
