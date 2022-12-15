@@ -1,0 +1,27 @@
+From c4ee41ebc0f7fabbf4717450c889292464dbeb6d Mon Sep 17 00:00:00 2001
+From: aristocratos <gnmjpl@gmail.com>
+Date: Thu, 15 Dec 2022 17:42:07 +0100
+Subject: [PATCH] Fixed: Makefile, VERBOSE flag now shows directory creation,
+ Issue #480
+
+---
+ Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index a52929c..c746c00 100644
+--- a/Makefile
++++ b/Makefile
+@@ -200,7 +200,9 @@ help:
+ 
+ #? Make the Directories
+ directories:
++	@$(VERBOSE) || printf "mkdir -p $(TARGETDIR)\n"
+ 	@mkdir -p $(TARGETDIR)
++	@$(VERBOSE) || printf "mkdir -p $(BUILDDIR)/$(PLATFORM_DIR)\n"
+ 	@mkdir -p $(BUILDDIR)/$(PLATFORM_DIR)
+ 
+ #? Clean only Objects
+-- 
+2.37.4
+
