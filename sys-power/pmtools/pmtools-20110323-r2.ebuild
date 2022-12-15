@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Collection of tools for ACPI and power management"
 HOMEPAGE="https://github.com/anyc/pmtools/"
-SRC_URI="https://github.com/anyc/pmtools/tarball/${PV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/anyc/pmtools/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/pmtools"
 
 LICENSE="GPL-2"
@@ -16,8 +16,9 @@ KEYWORDS="amd64 ppc x86"
 IUSE="doc"
 
 RDEPEND="
-		dev-lang/perl
-		>=sys-power/iasl-20090521"
+	dev-lang/perl
+	>=sys-power/iasl-20090521
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20100123-acpixtract-pmtools.patch
