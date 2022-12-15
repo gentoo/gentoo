@@ -12,16 +12,18 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu
 
 VIRTUALX_REQUIRED="pgo"
 
-inherit check-reqs chromium-2 desktop flag-o-matic llvm ninja-utils pax-utils python-any-r1 qmake-utils readme.gentoo-r1 toolchain-funcs virtualx xdg-utils
+inherit check-reqs chromium-2 desktop flag-o-matic llvm ninja-utils pax-utils
+inherit python-any-r1 qmake-utils readme.gentoo-r1 toolchain-funcs virtualx xdg-utils
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
 PATCHSET="2"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
+PATCHSET_URI_PPC64="https://quickbuild.io/~raptor-engineering-public"
 PATCHSET_NAME_PPC64="chromium_108.0.5359.71-2raptor0~deb11u1.debian"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz
-	ppc64? ( https://quickbuild.io/~raptor-engineering-public/+archive/ubuntu/chromium/+files/${PATCHSET_NAME_PPC64}.tar.xz )
+	ppc64? ( ${PATCHSET_URI_PPC64}/+archive/ubuntu/chromium/+files/${PATCHSET_NAME_PPC64}.tar.xz )
 	pgo? ( https://github.com/elkablo/chromium-profiler/releases/download/v0.2/chromium-profiler-0.2.tar )"
 
 LICENSE="BSD"
@@ -1024,8 +1026,6 @@ chromium_compile() {
 
 	# Don't inherit PYTHONPATH from environment, bug #789021, #812689
 	local -x PYTHONPATH=
-
-	#"${EPYTHON}" tools/clang/scripts/update.py --force-local-build --gcc-toolchain /usr --skip-checkout --use-system-cmake --without-android || die
 
 	# Build mksnapshot and pax-mark it.
 	local x
