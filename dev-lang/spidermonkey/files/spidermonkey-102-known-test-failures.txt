@@ -29,6 +29,7 @@ non262/Intl/NumberFormat/format.js
 non262/Intl/NumberFormat/notation-compact-long.js
 non262/Intl/available-locales-resolved.js
 non262/Intl/available-locales-supported.js
+non262/Intl/supportedValuesOf-timeZones-canonical.js
 test262/built-ins/RegExp/property-escapes/generated/Alphabetic.js
 test262/built-ins/RegExp/property-escapes/generated/Assigned.js
 test262/built-ins/RegExp/property-escapes/generated/Case_Ignorable.js
