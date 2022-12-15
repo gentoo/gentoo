@@ -8,4 +8,7 @@
 	<use>
 		<flag name="grub">Re-generate grub.cfg on each kernel installation</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">projg2/installkernel-gentoo</remote-id>
+	</upstream>
 </pkgmetadata>
