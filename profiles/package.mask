@@ -33,6 +33,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Marco Scardovi <mscardovi@icloud.com> (2022-12-15)
+# We are literally the only distro that still have
+# an installation option for that package.
+# It still uses EAPI 6 and no real support since
+# years.
+# Removal on 2023-01-14. Bug #885605
+net-print/kyocera-mita-ppds
+
+# Marco Scardovi <mscardovi@icloud.com> (2022-12-15)
+# Dead upstream, dead homepage, dead symlinks,
+# no revdeps and no version bump since 2011
+# Removal on 2023-01-14. Bug #884881
+net-print/apsfilter
+
 # James Le Cuirot <chewi@gentoo.org> (2022-12-14)
 # Merged into games-engines/scummvm a while back. No longer maintained upstream.
 # Removal in 30 days.
