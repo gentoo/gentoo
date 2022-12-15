@@ -45,7 +45,8 @@ suitable_db_version() {
 src_prepare() {
 	eapply \
 		"${FILESDIR}/${P}-gentoo.patch" \
-		"${FILESDIR}/${P}-gcc-10.patch"
+		"${FILESDIR}/${P}-gcc-10.patch" \
+		"${FILESDIR}/${P}-stdlib.patch"
 
 	# Link only with specific BerkDB versions
 	# Do not inject default paths for library searching
