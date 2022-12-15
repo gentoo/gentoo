@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-12-15)
+# Fails to build since 2019.  Last bumped in 2017.
+# Removal on 2023-01-14.  Bug #688950.
+sci-astronomy/skycat
+
 # Marco Scardovi <mscardovi@icloud.com> (2022-12-15)
 # We are literally the only distro that still have
 # an installation option for that package.
