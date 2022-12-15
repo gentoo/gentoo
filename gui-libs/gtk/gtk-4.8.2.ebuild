@@ -31,6 +31,7 @@ COMMON_DEPEND="
 	media-libs/tiff:0
 	media-libs/libjpeg-turbo:0=
 	>=media-libs/harfbuzz-2.6.0:=
+	app-text/iso-codes
 	x11-misc/shared-mime-info
 
 	colord? ( >=x11-misc/colord-0.1.9:0= )
