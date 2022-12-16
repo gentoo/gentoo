@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,10 +16,10 @@ KEYWORDS="x86"
 RDEPEND="
 	media-libs/libpng
 	>=media-libs/svgalib-1.4.2
-	>=media-libs/tiff-3.5.5
+	>=media-libs/tiff-3.5.5:=
+	media-libs/libjpeg-turbo:=
 	sys-apps/gawk
 	>=sys-libs/zlib-1.1.4
-	virtual/jpeg
 "
 DEPEND="${RDEPEND}"
 
