@@ -13,7 +13,7 @@ SRC_URI+=" verify-sig? ( https://invisible-island.net/archives/${PN}/${P}.tgz.as
 
 LICENSE="FLEX"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-thomasdickey )"
 
