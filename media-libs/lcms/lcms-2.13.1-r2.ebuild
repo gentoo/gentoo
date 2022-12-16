@@ -19,8 +19,8 @@ REQUIRED_USE="tiff? ( zlib )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
-	tiff? ( >=media-libs/tiff-4.0.3-r6:0=[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
+	tiff? ( >=media-libs/tiff-4.0.3-r6:=[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
