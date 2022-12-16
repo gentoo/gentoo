@@ -34,7 +34,7 @@ RDEPEND="
 	raw? ( media-libs/libraw:= )
 	tiff? (
 		dev-qt/qtimageformats:5
-		media-libs/tiff
+		media-libs/tiff:=
 	)
 	zip? ( dev-libs/quazip:0=[qt5(+)] )
 "
