@@ -33,3 +33,15 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_DESELECT=()
+
+	[[ ${EPYTHON} == python3.11 ]] && EPYTEST_DESELECT+=(
+		# fails due to deprecation warnings
+		test/test_autopep8.py::CommandLineTests::test_in_place_no_modifications_no_writes
+		test/test_autopep8.py::CommandLineTests::test_in_place_no_modifications_no_writes_with_empty_file
+	)
+
+	epytest
+}
