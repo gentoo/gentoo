@@ -89,12 +89,15 @@ RDEPEND="${DEPEND}
 	vulkan? ( media-libs/vulkan-loader[abi_x86_32(-)] )
 	dev-libs/glib:2
 	dev-libs/gobject-introspection
-	dev-libs/openssl:0
+	|| (
+		dev-libs/openssl-compat:1.1.1
+		=dev-libs/openssl-1.1.1*
+	)
 	dev-util/desktop-file-utils
 	media-libs/alsa-lib[abi_x86_32(-)]
 	media-libs/freetype:2[abi_x86_32(-)]
 	media-libs/mesa[abi_x86_32(-),osmesa?]
-	media-libs/tiff:0[abi_x86_32(-)]
+	|| ( media-libs/tiff-compat:4[abi_x86_32(-)] media-libs/tiff:0/0[abi_x86_32(-)] )
 	sys-auth/nss-mdns[abi_x86_32(-)]
 	sys-apps/util-linux[abi_x86_32(-)]
 	sys-libs/libunwind[abi_x86_32(-)]
