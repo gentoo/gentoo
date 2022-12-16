@@ -9,9 +9,10 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.sr.ht/~exec64/imv/"
 else
-	SRC_URI="https://git.sr.ht/~exec64/imv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-v${PV}"
-	KEYWORDS="~amd64 ~x86"
+	IMV_HASH=4448fb6104d67e3dfff3e71babe257992fce556
+	SRC_URI="https://git.sr.ht/~exec64/imv/archive/${IMV_HASH}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${IMV_HASH}"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Minimal image viewer designed for tiling window manager users"
@@ -42,7 +43,7 @@ RDEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( media-libs/libpng:= )
 	svg? ( >=gnome-base/librsvg-2.44:2 )
-	tiff? ( media-libs/tiff )
+	tiff? ( media-libs/tiff:= )
 	wayland? ( dev-libs/wayland )
 	!sys-apps/renameutils"
 DEPEND="
@@ -54,8 +55,8 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.3.1_p20211221-animated-gif.patch
-	"${FILESDIR}"/${PN}-4.3.1_p20211221-libgrapheme2.patch
+	"${FILESDIR}"/${P}-animated-gif.patch
+	"${FILESDIR}"/${P}-libgrapheme2.patch
 )
 
 src_prepare() {

@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://git.sr.ht/~exec64/imv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-v${PV}"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Minimal image viewer designed for tiling window manager users"
@@ -19,13 +19,12 @@ HOMEPAGE="https://sr.ht/~exec64/imv/"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-IUSE="+X +freeimage gif heif jpeg png svg test tiff wayland"
+IUSE="+X +freeimage gif heif icu jpeg png svg test tiff wayland"
 REQUIRED_USE="|| ( X wayland )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/glib:2
-	dev-libs/icu:=
 	dev-libs/inih
 	media-libs/libglvnd[X?]
 	x11-libs/cairo
@@ -38,10 +37,12 @@ RDEPEND="
 	freeimage? ( media-libs/freeimage )
 	gif? ( media-libs/libnsgif )
 	heif? ( media-libs/libheif:= )
+	icu? ( dev-libs/icu:= )
+	!icu? ( >=dev-libs/libgrapheme-2:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( media-libs/libpng:= )
 	svg? ( >=gnome-base/librsvg-2.44:2 )
-	tiff? ( media-libs/tiff )
+	tiff? ( media-libs/tiff:= )
 	wayland? ( dev-libs/wayland )
 	!sys-apps/renameutils"
 DEPEND="
@@ -51,6 +52,11 @@ DEPEND="
 BDEPEND="
 	app-text/asciidoc
 	wayland? ( dev-util/wayland-scanner )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.3.1_p20211221-animated-gif.patch
+	"${FILESDIR}"/${PN}-4.3.1_p20211221-libgrapheme2.patch
+)
 
 src_prepare() {
 	default
@@ -74,6 +80,7 @@ src_configure() {
 		$(meson_feature svg librsvg)
 		$(meson_feature test)
 		$(meson_feature tiff libtiff)
+		-Dunicode=$(usex icu{,} grapheme)
 		-Dwindows=$(usex X $(usex wayland all x11) wayland)
 	)
 
