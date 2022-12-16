@@ -33,13 +33,13 @@ RDEPEND="
 	dev-qt/qtxml:5
 	media-gfx/exiv2:=
 	media-libs/lcms:2
-	media-libs/libpng:0=
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
 	media-libs/libraw:=
 	>=media-libs/openexr-3:0=
-	media-libs/tiff:0
+	media-libs/tiff:=
 	sci-libs/fftw:3.0=[threads]
 	sci-libs/gsl:=
-	virtual/jpeg:0
 	fits? ( sci-libs/cfitsio:= )
 "
 DEPEND="${RDEPEND}
