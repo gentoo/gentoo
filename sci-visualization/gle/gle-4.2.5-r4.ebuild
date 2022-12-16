@@ -20,7 +20,7 @@ IUSE="doc emacs jpeg png tiff vim-syntax X"
 DEPEND="
 	sys-libs/ncurses:=
 	emacs? ( >=app-editors/emacs-23.1:* )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( media-libs/libpng:= )
 	tiff? ( media-libs/tiff:= )
 	X? ( x11-libs/libX11 )"
