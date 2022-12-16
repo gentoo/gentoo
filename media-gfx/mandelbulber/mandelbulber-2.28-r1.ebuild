@@ -4,20 +4,18 @@
 EAPI=8
 
 MY_P="${PN}2-${PV}"
-inherit desktop qmake-utils toolchain-funcs xdg-utils
+inherit desktop qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="Tool to render 3D fractals"
 HOMEPAGE="https://www.mandelbulber.com"
 SRC_URI="https://github.com/buddhi1980/${PN}2/releases/download/${PV}/${MY_P}.tar.gz mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="CC-BY-4.0 GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="joystick opencl openexr sndfile tiff"
 
-BDEPEND="
-	virtual/pkgconfig
-"
 RDEPEND="
 	dev-libs/lzo
 	dev-qt/qtcore:5
@@ -26,7 +24,7 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qttest:5
 	dev-qt/qtwidgets:5
-	media-libs/libpng:0=
+	media-libs/libpng:=
 	sci-libs/gsl:=
 	joystick? ( dev-qt/qtgamepad:5 )
 	opencl? (
@@ -38,17 +36,12 @@ RDEPEND="
 		media-libs/openexr:=
 	)
 	sndfile? ( media-libs/libsndfile )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 "
 DEPEND="${RDEPEND}
 	dev-qt/designer:5
 "
-
-S=${WORKDIR}/${MY_P}
-
-PATCHES=(
-	"${FILESDIR}"/${P}-openexr-3-imath.patch
-)
+BDEPEND="virtual/pkgconfig"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
@@ -86,12 +79,4 @@ src_install() {
 	domenu ${PN}2.desktop
 
 	newicon -s 256 qt/icons/${PN}.png ${PN}2.png
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
