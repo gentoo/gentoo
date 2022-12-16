@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,10 +20,10 @@ RDEPEND="
 			  x11-libs/libXext
 			  x11-libs/libXrender )
 	gif?	( media-libs/giflib:0= )
-	jpeg?	( virtual/jpeg:0 )
+	jpeg?	( media-libs/libjpeg-turbo:= )
 	png?	( >=media-libs/libpng-1.4:0= )
 	svg?	( gnome-base/librsvg:2 )
-	tiff?	( media-libs/tiff:0 )
+	tiff?	( media-libs/tiff:= )
 	truetype? ( media-libs/freetype )"
 DEPEND="${RDEPEND}
 	X?		( x11-base/xorg-proto )"
