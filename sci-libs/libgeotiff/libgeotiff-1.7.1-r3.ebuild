@@ -15,8 +15,8 @@ KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong ppc ppc64 ~riscv x86 ~amd64-linux ~x86-l
 IUSE="doc jpeg +tiff zlib"
 
 DEPEND=">=sci-libs/proj-6.0.0:=
-	jpeg? ( virtual/jpeg:= )
-	tiff? ( >=media-libs/tiff-3.9.1 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
+	tiff? ( >=media-libs/tiff-3.9.1:= )
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}"
 BDEPEND="doc? ( app-doc/doxygen )"
