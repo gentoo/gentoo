@@ -20,8 +20,8 @@ IUSE="doc examples gnutls ssl test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	media-libs/libjpeg-turbo:=
 	sys-libs/zlib
-	virtual/jpeg:0=
 	ssl? (
 		gnutls? ( net-libs/gnutls:= )
 		!gnutls? ( dev-libs/openssl:= )
