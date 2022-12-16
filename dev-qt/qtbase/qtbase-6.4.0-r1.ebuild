@@ -52,7 +52,7 @@ DEPEND="
 	media-libs/fontconfig
 	>=media-libs/freetype-2.6.1:2
 	>=media-libs/harfbuzz-1.6.0:=
-	media-libs/tiff:0
+	media-libs/tiff:=
 	>=sys-apps/dbus-1.4.20
 	sys-libs/zlib:=
 	brotli? ( app-arch/brotli:= )
@@ -66,7 +66,7 @@ DEPEND="
 		x11-libs/libX11
 		x11-libs/pango
 	)
-	gui? ( media-libs/libpng:0= )
+	gui? ( media-libs/libpng:= )
 	icu? ( dev-libs/icu:= )
 	!icu? ( virtual/libiconv )
 	jpeg? ( media-libs/libjpeg-turbo:= )
