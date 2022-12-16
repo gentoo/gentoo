@@ -1,8 +1,8 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby27 ruby30"
 
 RUBY_FAKEGEM_RECIPE_DOC="task"
 RUBY_FAKEGEM_DOCDIR="htmldoc/rdoc"
@@ -43,6 +43,9 @@ all_ruby_prepare() {
 
 	# Avoid tests for unpackaged dependencies
 	rm -f test/webgen/content_processor/test_{css_minify,tikz}.rb || die
+
+	# Avoid tests failing with newer Psych versions
+	rm -f test/test_documentation.rb || die
 }
 
 all_ruby_install() {
