@@ -14,10 +14,10 @@ SLOT="0/3"
 KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="java suitesparse"
 
-DEPEND="media-libs/libpng:0=
-	media-libs/tiff:0
+DEPEND="media-libs/libpng:=
+	media-libs/tiff:=
+	media-libs/libjpeg-turbo:=
 	sys-libs/zlib
-	virtual/jpeg:0
 	java? ( >=virtual/jdk-1.8:* )
 	suitesparse? ( sci-libs/suitesparse )"
 RDEPEND="${DEPEND}"
