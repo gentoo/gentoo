@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MATE_BRANCH="$(ver_cut 1-2)"
 	MATE_THEMES_V=3
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 fi
 
 SRC_URI=""
