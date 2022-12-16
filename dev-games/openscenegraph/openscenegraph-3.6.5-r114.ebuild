@@ -60,7 +60,7 @@ RDEPEND="
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 	)
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	las? ( >=sci-geosciences/liblas-1.8.0 )
 	lua? ( ${LUA_DEPS} )
 	openexr? (
@@ -75,7 +75,7 @@ RDEPEND="
 		gnome-base/librsvg
 		x11-libs/cairo
 	)
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 	truetype? ( media-libs/freetype:2 )
 	vnc? ( net-libs/libvncserver )
 	xrandr? ( x11-libs/libXrandr )
