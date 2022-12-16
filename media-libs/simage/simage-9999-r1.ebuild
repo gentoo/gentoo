@@ -13,7 +13,7 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/coin3d/simage.git"
 else
 	SRC_URI="https://github.com/coin3d/simage/releases/download/v${PV}/${P}-src.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
+	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 	S="${WORKDIR}/${PN}"
 fi
 
@@ -35,7 +35,7 @@ RDEPEND="
 		media-libs/flac:=
 	)
 	tiff? (
-		media-libs/tiff[lzma,zstd]
+		media-libs/tiff:=[lzma,zstd]
 		app-arch/xz-utils
 		app-arch/zstd:=
 	)
@@ -50,8 +50,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="test? ( media-libs/libsndfile )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-0001-Gentoo-specific-remove-RELEASE-flag-from-pkg-config.patch
-	"${FILESDIR}"/${PN}-1.8.1-fail-on-missing-quicktime.patch
+	"${FILESDIR}"/${PN}-1.8.1-0001-Gentoo-specific-remove-RELEASE-flag-from-pkg-config.patch
 )
 
 DOCS=(AUTHORS ChangeLog NEWS README)

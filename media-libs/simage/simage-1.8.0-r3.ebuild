@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,14 +18,14 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	sys-libs/zlib:=
 	gif? ( media-libs/giflib:= )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( media-libs/libpng:0= )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 	)
 	sndfile? ( media-libs/libsndfile )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 	vorbis? (
 		media-libs/libogg
 		media-libs/libvorbis
