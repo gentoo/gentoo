@@ -42,7 +42,7 @@ DEPEND="
 	mp4? ( media-libs/libmp4v2 )
 	mpeg? ( media-libs/libmpeg2 )
 	tidy? ( >=app-text/htmltidy-5.0.0 )
-	tiff? ( media-libs/tiff )
+	tiff? ( media-libs/tiff:= )
 	vorbis? (
 		media-libs/libogg
 		media-libs/libvorbis
