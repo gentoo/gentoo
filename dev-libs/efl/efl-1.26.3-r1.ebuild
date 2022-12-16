@@ -46,10 +46,10 @@ RDEPEND="${LUA_DEPS}
 	dev-libs/libinput:=
 	net-misc/curl
 	media-libs/giflib:=
-	media-libs/libpng:0=
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
 	sys-apps/dbus
 	sys-libs/zlib
-	virtual/jpeg
 	X? (
 		!opengl? ( media-libs/mesa[egl(+),gles2] )
 		media-libs/freetype
@@ -109,7 +109,7 @@ RDEPEND="${LUA_DEPS}
 	svg? ( gnome-base/librsvg:2 )
 	system-lz4? ( app-arch/lz4:= )
 	systemd? ( sys-apps/systemd:= )
-	tiff? ( media-libs/tiff )
+	tiff? ( media-libs/tiff:= )
 	tslib? ( x11-libs/tslib:= )
 	unwind? ( sys-libs/libunwind:= )
 	v4l? ( media-libs/libv4l )
