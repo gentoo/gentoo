@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2022-12-16)
+# Not installable since at least Dec 2020 due to checksum mismatch.
+# Ebuild not touched since 2018.
+# Removal on 2023-01-15.  Bug #759121.
+games-puzzle/mindless
+
+# Michał Górny <mgorny@gentoo.org> (2022-12-16)
 # NTLK relies on a large number of corpora that either have unknown
 # license, a non-free license or that may be in violation of copyright.
 # We have been rubber stamping over this in dev-python/nltk-data
