@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/phodav https://gitlab.gnome.org/GNOME/phodav"
 
 LICENSE="LGPL-2.1+"
 SLOT="3.0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ppc ppc64 ~x86"
 IUSE="gtk-doc systemd test zeroconf"
 RESTRICT="!test? ( test )"
 
