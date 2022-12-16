@@ -143,7 +143,7 @@ RDEPEND="
 	sane_backends_dc210? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	sane_backends_dc240? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	sane_backends_dell1600n_net? (
-		>=media-libs/tiff-3.9.7-r1:0=[${MULTILIB_USEDEP}]
+		>=media-libs/tiff-3.9.7-r1:=[${MULTILIB_USEDEP}]
 		media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
 	)
 	sane_backends_escl? (
