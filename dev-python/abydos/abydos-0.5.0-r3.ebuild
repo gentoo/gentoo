@@ -22,10 +22,6 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 ~riscv x86"
 
-# Requires access to the internet
-RESTRICT="test"
-PROPERTIES="test_network"
-
 RDEPEND="
 	dev-python/deprecation[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
@@ -38,6 +34,14 @@ PATCHES=(
 distutils_enable_tests pytest
 # Extension error: You must configure the bibtex_bibfiles setting
 #distutils_enable_sphinx docs dev-python/sphinx_rtd_theme dev-python/sphinxcontrib-bibtex
+
+EPYTEST_DESELECT=(
+	# Internet
+	tests/distance/test_distance_meta_levenshtein.py::MetaLevenshteinTestCases::test_meta_levenshtein_corpus
+	tests/distance/test_distance_softtf_idf.py::SoftTFIDFTestCases::test_softtf_idf_corpus
+	tests/distance/test_distance_tf_idf.py::TFIDFTestCases::test_tf_idf_corpus
+	tests/util/test_data.py::DataTestCases::test_data
+)
 
 python_prepare_all() {
 	# do not depend on pytest-cov
