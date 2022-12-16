@@ -37,11 +37,11 @@ DEPEND="
 	>=media-libs/freetype-2.4.9:2=
 	>=media-libs/jbig2dec-0.19:=
 	>=media-libs/lcms-2.6:2
+	media-libs/libjpeg-turbo:=
 	>=media-libs/libpng-1.6.2:0=
 	>=media-libs/openjpeg-2.1.0:2=
 	>=media-libs/tiff-4.0.1:0=
 	>=sys-libs/zlib-1.2.7
-	virtual/jpeg:0
 	cups? ( >=net-print/cups-1.3.8 )
 	dbus? ( sys-apps/dbus )
 	gtk? ( || ( x11-libs/gtk+:3 x11-libs/gtk+:2 ) )
