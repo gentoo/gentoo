@@ -31,12 +31,15 @@ RESTRICT="!test? ( test )"
 # bug #483132
 REQUIRED_USE="test? ( jpeg )"
 
-RDEPEND="jbig? ( >=media-libs/jbigkit-2.1:=[${MULTILIB_USEDEP}] )
+RDEPEND="
+	jbig? ( >=media-libs/jbigkit-2.1:=[${MULTILIB_USEDEP}] )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
-	zstd? ( >=app-arch/zstd-1.3.7-r1:=[${MULTILIB_USEDEP}] )"
+	zstd? ( >=app-arch/zstd-1.3.7-r1:=[${MULTILIB_USEDEP}] )
+	!=media-libs/tiff-4.4*
+"
 DEPEND="${RDEPEND}"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-evenrouault )"
 
