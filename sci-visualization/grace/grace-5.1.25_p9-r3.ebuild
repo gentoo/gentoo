@@ -1,10 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 FORTRAN_NEEDED=fortran
 
-inherit desktop fortran-2 toolchain-funcs xdg
+inherit desktop fortran-2 toolchain-funcs
 
 DESCRIPTION="Motif based XY-plotting tool"
 HOMEPAGE="https://plasma-gate.weizmann.ac.il/Grace/"
@@ -20,12 +20,12 @@ IUSE="fftw fortran jpeg netcdf png"
 
 DEPEND="
 	media-libs/t1lib
-	media-libs/tiff:0
+	media-libs/tiff:=
 	sys-libs/zlib
 	>=x11-libs/motif-2.3:0
 	x11-libs/xbae
 	fftw? ( sci-libs/fftw:3.0= )
-	jpeg? ( media-libs/libjpeg-turbo:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	netcdf? ( sci-libs/netcdf:= )
 	png? ( media-libs/libpng:0= )"
 RDEPEND="${DEPEND}
