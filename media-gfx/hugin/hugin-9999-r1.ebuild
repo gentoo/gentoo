@@ -6,15 +6,17 @@ EAPI=7
 WX_GTK_VER="3.0-gtk3"
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit python-single-r1 wxwidgets cmake xdg
+inherit mercurial python-single-r1 wxwidgets cmake xdg
 
 DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI=""
+EHG_REPO_URI="http://hg.code.sf.net/p/hugin/hugin"
+EHG_PROJECT="${PN}-${PN}"
 
 LICENSE="GPL-2+ BSD BSD-2 MIT wxWinLL-3 ZLIB FDL-1.2"
 SLOT="0"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS=""
 
 LANGS=" ca ca-valencia cs da de en-GB es eu fi fr hu it ja nl pl pt-BR ro ru sk sv zh-CN zh-TW"
 IUSE="debug lapack python raw sift $(echo ${LANGS//\ /\ l10n_})"
@@ -28,16 +30,16 @@ CDEPEND="
 	media-gfx/exiv2:=
 	media-libs/freeglut
 	media-libs/glew:=
-	>=media-libs/libpano13-2.9.19_beta1:0=
-	media-libs/libpng:0=
-	media-libs/openexr:0=
-	media-libs/tiff:0
+	>=media-libs/libpano13-2.9.19_beta1:=
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
+	media-libs/openexr:=
+	media-libs/tiff:=
 	>=media-libs/vigra-1.11.1-r5[openexr]
 	sci-libs/fftw:3.0=
 	sci-libs/flann
 	sys-libs/zlib
 	virtual/glu
-	virtual/jpeg:0
 	virtual/opengl
 	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]
 	lapack? ( virtual/blas virtual/lapack )
@@ -64,10 +66,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i \
-		-e "/COMMAND.*GZIP/d" \
-		-e "s/\.gz//g" \
-		"${S}"/doc/CMakeLists.txt || die
 	cmake_src_prepare
 }
 
