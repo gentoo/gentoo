@@ -27,7 +27,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	media-libs/lcms:2
 	media-libs/libpng:0=
-	media-libs/tiff:0
+	media-libs/tiff:=
 	sys-libs/zlib:=
 "
 DEPEND="${RDEPEND}"
