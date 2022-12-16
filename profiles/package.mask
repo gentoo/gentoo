@@ -434,7 +434,6 @@ dev-libs/ocl-icd
 # app-office/sc: bug #877051, last release in 2002
 # net-libs/ortp: bug #874003, last bumped in 2014
 # net-nntp/brag: revdep of app-text/uudeview
-# net-vpn/vtun: bug #875443, last bumped in 2012, last release in 2016
 # sys-apps/fakeroot-ng: bug #851543, last release in 2013
 # sys-apps/pmount-gui: bug #776397, last bumped in 2013, commit in 2019
 # www-apache/mod_common_redirect: bug #874660, bumped in 2010, repo gone
@@ -445,7 +444,6 @@ app-emulation/dlx
 app-office/sc
 net-libs/ortp
 net-nntp/brag
-net-vpn/vtun
 sys-apps/fakeroot-ng
 sys-apps/pmount-gui
 www-apache/mod_common_redirect
