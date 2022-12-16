@@ -20,7 +20,7 @@ IUSE="html jbig lcms ldap mgetty pam"
 
 DEPEND="
 	app-text/ghostscript-gpl
-	media-libs/tiff[jbig?]
+	media-libs/tiff:=[jbig?]
 	media-libs/libjpeg-turbo:=
 	>=sys-libs/zlib-1.1.4
 	app-alternatives/awk
