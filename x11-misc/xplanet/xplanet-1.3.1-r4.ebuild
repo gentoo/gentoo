@@ -15,12 +15,12 @@ IUSE="gif jpeg png tiff truetype X"
 
 RDEPEND="
 	gif? ( media-libs/giflib:= )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? (
 		media-libs/libpng:0=
 		media-libs/netpbm
 	)
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 	truetype? (
 		media-libs/freetype:2
 		x11-libs/pango
