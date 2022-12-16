@@ -46,7 +46,7 @@ RDEPEND="
 	')
 	sci-libs/gdal:=
 	sys-libs/gdbm:=
-	sys-libs/ncurses:0=
+	sys-libs/ncurses:=
 	sci-libs/proj:=
 	sci-libs/xdrfile
 	sys-libs/zlib
@@ -65,12 +65,12 @@ RDEPEND="
 	odbc? ( dev-db/unixODBC )
 	opencl? ( virtual/opencl )
 	opengl? ( virtual/opengl )
-	pdal? ( >=sci-libs/pdal-2.0.0:0= )
-	png? ( media-libs/libpng:0= )
+	pdal? ( >=sci-libs/pdal-2.0.0:= )
+	png? ( media-libs/libpng:= )
 	postgres? ( >=dev-db/postgresql-8.4:= )
-	readline? ( sys-libs/readline:0= )
+	readline? ( sys-libs/readline:= )
 	sqlite? ( dev-db/sqlite:3 )
-	tiff? ( media-libs/tiff:0= )
+	tiff? ( media-libs/tiff:= )
 	truetype? ( media-libs/freetype:2 )
 	X? (
 		dev-python/wxpython:4.0
@@ -81,7 +81,7 @@ RDEPEND="
 		x11-libs/libXext
 		x11-libs/libXt
 	)
-	zstd? ( app-arch/zstd )"
+	zstd? ( app-arch/zstd:= )"
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 BDEPEND="

@@ -6,13 +6,12 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 
-inherit autotools desktop python-single-r1 toolchain-funcs xdg
+inherit desktop python-single-r1 toolchain-funcs xdg
 
 DESCRIPTION="A free GIS with raster and vector functionality, as well as 3D vizualization"
 HOMEPAGE="https://grass.osgeo.org/"
 
 LICENSE="GPL-2"
-SLOT="0/8.2"
 
 GVERSION=${SLOT#*/}
 MY_PM="${PN}${GVERSION}"
@@ -20,18 +19,20 @@ MY_PM="${MY_PM/.}"
 
 if [[ ${PV} =~ "9999" ]]; then
 	inherit git-r3
+	SLOT="0/8.3"
 	EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
 else
 	MY_P="${P/_rc/RC}"
+	SLOT="0/$(ver_cut 1-2 ${PV})"
 	SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="amd64 ~ppc x86"
+		KEYWORDS="~amd64 ~ppc ~x86"
 	fi
 
 	S="${WORKDIR}/${MY_P}"
 fi
 
-IUSE="blas cxx fftw geos lapack las mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype X zstd"
+IUSE="blas cxx fftw geos lapack las mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite threads tiff truetype X zstd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	opengl? ( X )"
@@ -45,7 +46,7 @@ RDEPEND="
 	')
 	sci-libs/gdal:=
 	sys-libs/gdbm:=
-	sys-libs/ncurses:0=
+	sys-libs/ncurses:=
 	sci-libs/proj:=
 	sci-libs/xdrfile
 	sys-libs/zlib
@@ -64,11 +65,12 @@ RDEPEND="
 	odbc? ( dev-db/unixODBC )
 	opencl? ( virtual/opencl )
 	opengl? ( virtual/opengl )
-	png? ( media-libs/libpng:0= )
+	pdal? ( >=sci-libs/pdal-2.0.0:= )
+	png? ( media-libs/libpng:= )
 	postgres? ( >=dev-db/postgresql-8.4:= )
-	readline? ( sys-libs/readline:0= )
+	readline? ( sys-libs/readline:= )
 	sqlite? ( dev-db/sqlite:3 )
-	tiff? ( media-libs/tiff:0= )
+	tiff? ( media-libs/tiff:= )
 	truetype? ( media-libs/freetype:2 )
 	X? (
 		dev-python/wxpython:4.0
@@ -79,7 +81,7 @@ RDEPEND="
 		x11-libs/libXext
 		x11-libs/libXt
 	)
-	zstd? ( app-arch/zstd )"
+	zstd? ( app-arch/zstd:= )"
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 BDEPEND="
@@ -88,11 +90,6 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 	X? ( dev-lang/swig )"
-
-PATCHES=(
-	# bug 746590
-	"${FILESDIR}/${PN}-flock.patch"
-)
 
 pkg_setup() {
 	if use lapack; then
@@ -126,7 +123,11 @@ src_prepare() {
 	sed -e "s:= python3:= ${EPYTHON}:" -i "${S}/include/Make/Platform.make.in" || die
 
 	default
-	eautoreconf
+
+	# When patching the build system, avoid running autoheader here. The file
+	# config.in.h is maintained manually upstream. Changes to it may lead to
+	# undefined behavior. See bug #866554.
+	# AT_NOEAUTOHEADER=1 eautoreconf
 
 	ebegin "Fixing python shebangs"
 	python_fix_shebang -q "${S}"
@@ -178,6 +179,7 @@ src_configure() {
 		$(use_with threads pthread)
 		$(use_with openmp)
 		$(use_with opencl)
+		$(use_with pdal pdal "${EPREFIX}"/usr/bin/pdal-config)
 		$(use_with las liblas "${EPREFIX}"/usr/bin/liblas-config)
 		$(use_with netcdf netcdf "${EPREFIX}"/usr/bin/nc-config)
 		$(use_with geos geos "${EPREFIX}"/usr/bin/geos-config)
