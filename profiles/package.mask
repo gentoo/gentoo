@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-12-16)
+# The distfile was removed from Gentoo servers in 2021, and it is
+# unclear if we were allowed to host it in the first place.  Also,
+# it had a build failure reported in 2020.  No reverse dependencies.
+# Removal on 2023-01-15.  Bug #790026.
+sci-libs/libcmatrix
+
 # Hans de Graaff <graaff@gentoo.org> (2022-12-16)
 # ruby27-only package. No longer maintained upstream.
 # No reverse dependencies. Masked for removal in 30 days.
