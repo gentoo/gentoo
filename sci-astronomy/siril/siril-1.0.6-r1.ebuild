@@ -39,7 +39,7 @@ DEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( >=media-libs/libpng-1.6.0 )
 	raw? ( media-libs/libraw )
-	tiff? ( media-libs/tiff )
+	tiff? ( media-libs/tiff:= )
 	wcs? ( >=sci-astronomy/wcslib-7.7 )
 "
 RDEPEND="
