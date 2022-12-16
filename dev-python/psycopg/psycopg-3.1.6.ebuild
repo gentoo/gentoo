@@ -71,9 +71,8 @@ python_test() {
 		tests/crdb/test_typing.py
 		# TODO, relying on undefined ordering in Python?
 		tests/test_dns_srv.py::test_srv
-		# brittle
-		tests/test_client_cursor.py::test_leak
 	)
 
-	epytest -p no:django
+	# leak tests seem to be brittle
+	epytest -p no:django -k "not leak"
 }
