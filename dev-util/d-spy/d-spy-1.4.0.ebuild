@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/d-spy https://gitlab.gnome.org/GNOME/d-spy
 
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="1"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	>=dev-libs/glib-2.68:2
