@@ -28,7 +28,7 @@ DEPEND=">=x11-libs/motif-2.3:0
 	media-gfx/graphicsmagick:=[-q32]
 	geotiff? ( sci-libs/proj
 		sci-libs/libgeotiff:=
-		media-libs/tiff:0 )"
+		media-libs/tiff:= )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MY_P}
