@@ -12,12 +12,15 @@ LICENSE="GPL-2+ CC-BY-SA-3.0"
 # subslot = evd3.(suffix of libevdocument3)-evv3.(suffix of libevview3)
 SLOT="0/evd3.4-evv3.3"
 IUSE="cups djvu dvi gstreamer gnome gnome-keyring gtk-doc +introspection nautilus postscript spell tiff xps"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
 
 # atk used in libview
 # bundles unarr
 DEPEND="
-	dev-libs/atk
+	|| (
+		>=app-accessibility/at-spi2-core-2.46.0
+		dev-libs/atk
+	)
 	>=dev-libs/glib-2.44.0:2
 	>=gui-libs/libhandy-1.5.0:1=
 	>=dev-libs/libxml2-2.5:2
@@ -43,7 +46,7 @@ DEPEND="
 	nautilus? ( >=gnome-base/nautilus-3.28.0 <gnome-base/nautilus-42.20 )
 	postscript? ( >=app-text/libspectre-0.2:= )
 	spell? ( >=app-text/gspell-1.6.0:= )
-	tiff? ( >=media-libs/tiff-4.0:0= )
+	tiff? ( >=media-libs/tiff-4.0:= )
 	xps? ( >=app-text/libgxps-0.2.1:= )
 "
 RDEPEND="${DEPEND}
