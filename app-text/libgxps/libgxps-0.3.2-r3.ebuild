@@ -22,7 +22,7 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	lcms? ( media-libs/lcms:2 )
-	tiff? ( media-libs/tiff:0[zlib] )
+	tiff? ( media-libs/tiff:=[zlib] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
