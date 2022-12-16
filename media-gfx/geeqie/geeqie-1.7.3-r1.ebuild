@@ -21,13 +21,13 @@ RDEPEND="
 	doc? ( app-text/gnome-doc-utils )
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
 	gpu-accel? ( media-libs/clutter-gtk )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	lcms? ( media-libs/lcms:2 )
 	lirc? ( app-misc/lirc )
 	lua? ( ${LUA_DEPS} )
 	map? ( media-libs/libchamplain:0.12 )
 	pdf? ( >=app-text/poppler-0.62[cairo] )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 	xmp? ( >=media-gfx/exiv2-0.17:=[xmp] )
 	!xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) )"
 DEPEND="${RDEPEND}"
