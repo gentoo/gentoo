@@ -57,14 +57,14 @@ DEPEND="dev-db/sqlite:3
 	dev-libs/icu:=
 	dev-libs/json-glib
 	dev-libs/libxml2:2
-	>=dev-libs/pugixml-1.8:0=
+	>=dev-libs/pugixml-1.8:=
 	gnome-base/librsvg:2
-	>=media-gfx/exiv2-0.25-r2:0=[xmp]
+	>=media-gfx/exiv2-0.25-r2:=[xmp]
 	media-libs/lcms:2
-	>=media-libs/lensfun-0.2.3:0=
+	>=media-libs/lensfun-0.2.3:=
 	media-libs/libjpeg-turbo:=
-	media-libs/libpng:0=
-	media-libs/tiff:0
+	media-libs/libpng:=
+	media-libs/tiff:=
 	net-libs/libsoup:2.4
 	net-misc/curl
 	sys-libs/zlib:=
@@ -72,7 +72,7 @@ DEPEND="dev-db/sqlite:3
 	>=x11-libs/gtk+-3.22:3
 	x11-libs/pango
 	avif? ( >=media-libs/libavif-0.8.2:= )
-	colord? ( x11-libs/colord-gtk:0= )
+	colord? ( x11-libs/colord-gtk:= )
 	cups? ( net-print/cups )
 	flickr? ( media-libs/flickcurl )
 	gamepad? ( media-libs/libsdl2 )
@@ -87,7 +87,7 @@ DEPEND="dev-db/sqlite:3
 	midi? ( media-libs/portmidi )
 	opencl? ( virtual/opencl )
 	openexr? ( media-libs/openexr:= )
-	webp? ( media-libs/libwebp:0= )"
+	webp? ( media-libs/libwebp:= )"
 RDEPEND="${DEPEND}
 	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )"
 
