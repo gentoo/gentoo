@@ -12,8 +12,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc fixed-point cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3"
 
-RDEPEND="media-libs/tiff
-	virtual/jpeg"
+RDEPEND="media-libs/tiff:=
+	media-libs/libjpeg-turbo:="
 DEPEND="${RDEPEND}"
 BDEPEND="doc? (
 	app-doc/doxygen
