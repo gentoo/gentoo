@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python3_{8..11} )
 VALA_MIN_API_VERSION="0.50"
 VALA_USE_DEPEND=vapigen
 
-inherit lua-single meson python-single-r1 vala xdg
+inherit git-r3 lua-single meson python-single-r1 vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
-SRC_URI="mirror://gimp/v$(ver_cut 1-2)/${P}.tar.xz"
-
+EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
+SRC_URI=""
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
 
@@ -28,27 +28,27 @@ RESTRICT="!test? ( test )"
 # media-libs/{babl,gegl} are required to be built with USE="introspection"
 # to fix the compilation checking of /usr/share/gir-1.0/{Babl-0.1gir,Gegl-0.4.gir}
 COMMON_DEPEND="
+	>=app-accessibility/at-spi2-core-2.46.0
 	>=app-text/poppler-0.90.1[cairo]
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/appstream-glib-0.7.16
-	>=dev-libs/atk-2.34.1
 	>=dev-libs/glib-2.68.0:2
 	>=dev-libs/json-glib-1.4.4
 	dev-libs/libxml2:2
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.21:2
 	>=media-gfx/mypaint-brushes-2.0.2:=
-	>=media-libs/babl-0.1.96[introspection,lcms,vala?]
+	>=media-libs/babl-0.1.98[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
-	>=media-libs/gegl-0.4.38:0.4[cairo,introspection,lcms,vala?]
+	>=media-libs/gegl-0.4.40:0.4[cairo,introspection,lcms,vala?]
 	>=media-libs/gexiv2-0.14.0
 	>=media-libs/harfbuzz-2.6.5:=
-	>=media-libs/lcms-2.9:2
-	media-libs/libjpeg-turbo
+	>=media-libs/lcms-2.13.1:2
+	media-libs/libjpeg-turbo:=
 	>=media-libs/libmypaint-1.6.1:=
-	>=media-libs/libpng-1.6.37:0=
-	>=media-libs/tiff-4.1.0:0
+	>=media-libs/libpng-1.6.37:=
+	>=media-libs/tiff-4.1.0:=
 	net-libs/glib-networking[ssl]
 	sys-libs/zlib
 	>=x11-libs/cairo-1.16.0
@@ -57,7 +57,7 @@ COMMON_DEPEND="
 	>=x11-libs/pango-1.44.7
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
-	heif? ( >=media-libs/libheif-1.9.1:= )
+	heif? ( >=media-libs/libheif-1.13.0:= )
 	javascript? ( dev-libs/gjs )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.1:2= )
 	jpegxl? ( >=media-libs/libjxl-0.6.1:= )
@@ -109,9 +109,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-DOCS=( "AUTHORS" "devel-docs/CODING_STYLE.md" "devel-docs/HACKING.md" "NEWS" "README" "README.i18n" )
-
-PATCHES=( "${FILESDIR}/${P}_fix_libheif-1.13_build.patch" )
+DOCS=( "AUTHORS" "devel-docs/HACKING.md" "NEWS" "README" "README.i18n" )
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
@@ -125,9 +123,6 @@ src_prepare() {
 	default
 
 	sed -i -e 's/mypaint-brushes-1.0/mypaint-brushes-2.0/' meson.build || die #737794
-
-	# Fix (typo) MMX and SSE support detection
-	sed -i -e "s/'-mmx'/'-mmmx'/" -e "s/'-sse'/'-msse'/" meson.build || die
 
 	# Fix Gimp  and GimpUI devel doc installation paths
 	sed -i -e "s/'doc'/'gtk-doc'/" devel-docs/reference/gimp/meson.build || die
