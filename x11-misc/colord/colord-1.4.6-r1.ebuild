@@ -57,6 +57,10 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-lcms2-corruption.patch
+)
+
 src_prepare() {
 	default
 	use vala && vala_src_prepare
