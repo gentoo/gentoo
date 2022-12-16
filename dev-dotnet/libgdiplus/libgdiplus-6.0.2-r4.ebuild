@@ -23,7 +23,7 @@ RDEPEND="dev-libs/glib
 	media-libs/libexif
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	media-libs/tiff
+	media-libs/tiff:=
 	x11-libs/cairo[X]
 	x11-libs/libX11
 	x11-libs/libXrender
