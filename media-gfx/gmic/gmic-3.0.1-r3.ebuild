@@ -38,23 +38,23 @@ DEPEND="
 		media-gfx/gimp:0/2
 		${QT_DEPEND}
 	)
-	graphicsmagick? ( media-gfx/graphicsmagick:0= )
+	graphicsmagick? ( media-gfx/graphicsmagick:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	opencv? ( >=media-libs/opencv-2.3.1a-r1:0= )
+	opencv? ( >=media-libs/opencv-2.3.1a-r1:= )
 	openexr? (
 		dev-libs/imath:=
 		media-libs/openexr:=
 	)
-	png? ( media-libs/libpng:0= )
+	png? ( media-libs/libpng:= )
 	qt5? ( ${QT_DEPEND} )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXext
 	)
-	zlib? ( sys-libs/zlib:0= )"
+	zlib? ( sys-libs/zlib:= )"
 RDEPEND="${DEPEND}
-	ffmpeg? ( media-video/ffmpeg:0= )
+	ffmpeg? ( media-video/ffmpeg:= )
 "
 BDEPEND="
 	virtual/pkgconfig
