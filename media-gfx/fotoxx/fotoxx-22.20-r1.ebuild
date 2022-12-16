@@ -24,8 +24,8 @@ DEPEND="
 	media-libs/clutter-gtk
 	media-libs/lcms:2
 	media-libs/libjpeg-turbo:=
-	media-libs/libpng:0
-	media-libs/tiff:0
+	media-libs/libpng:=
+	media-libs/tiff:=
 	media-libs/libchamplain[gtk]
 	x11-libs/gtk+:3"
 RDEPEND="
