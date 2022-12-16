@@ -84,7 +84,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.80-ac-config-subdirs.patch
 	"${FILESDIR}"/${PN}-7.91-no-FORTIFY_SOURCE.patch
 	"${FILESDIR}"/${PN}-9999-netutil-else.patch
-	"${FILESDIR}"/${PN}-9999-python3.patch
 )
 
 pkg_setup() {
