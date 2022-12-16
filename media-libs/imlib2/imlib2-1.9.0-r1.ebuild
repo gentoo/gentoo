@@ -1,20 +1,20 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit multilib-minimal toolchain-funcs
 
 DESCRIPTION="Version 2 of an advanced replacement library for libraries like libXpm"
 HOMEPAGE="https://www.enlightenment.org/
 	https://sourceforge.net/projects/enlightenment/files/imlib2-src/"
-SRC_URI="https://downloads.sourceforge.net/enlightenment/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/enlightenment/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+X bzip2 cpu_flags_x86_mmx cpu_flags_x86_sse2 doc +gif +jpeg mp3 +png +shm
-	static-libs +tiff +webp zlib"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="+X bzip2 cpu_flags_x86_mmx cpu_flags_x86_sse2 debug doc +gif +jpeg mp3 +png +shm
+	static-libs +tiff +webp zlib svg heif eps jpeg2k jpegxl"
 
 REQUIRED_USE="shm? ( X )"
 
@@ -22,11 +22,16 @@ RDEPEND="
 	media-libs/freetype:2[${MULTILIB_USEDEP}]
 	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP}] )
 	gif? ( media-libs/giflib:=[${MULTILIB_USEDEP}] )
-	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	mp3? ( media-libs/libid3tag:=[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
-	tiff? ( >=media-libs/tiff-4.0.4:0[${MULTILIB_USEDEP}] )
+	tiff? ( >=media-libs/tiff-4.0.4:=[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
+	svg? ( >=gnome-base/librsvg-2.46.0:=[${MULTILIB_USEDEP}] )
+	heif? ( media-libs/libheif:=[${MULTILIB_USEDEP}] )
+	eps? ( app-text/libspectre )
+	jpeg2k? ( media-libs/openjpeg:=[${MULTILIB_USEDEP}] )
+	jpegxl? ( media-libs/libjxl:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
@@ -41,7 +46,8 @@ BDEPEND="virtual/pkgconfig"
 multilib_src_configure() {
 	local myeconfargs=(
 		$(use_with X x)
-		$(use_with bzip2)
+		$(use_with bzip2 bz2)
+		$(use_enable debug)
 		$(use_with gif)
 		$(use_with jpeg)
 		$(use_with mp3 id3)
@@ -51,6 +57,11 @@ multilib_src_configure() {
 		$(use_with tiff)
 		$(use_with webp)
 		$(use_with zlib)
+		$(use_with svg)
+		$(use_with heif)
+		$(multilib_native_use_with eps ps)
+		$(use_with jpeg2k j2k)
+		$(use_with jpegxl jxl)
 	)
 
 	# imlib2 has different configure options for x86/amd64 assembly

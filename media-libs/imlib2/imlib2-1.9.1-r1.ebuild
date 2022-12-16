@@ -38,7 +38,7 @@ RDEPEND="
 	mp3? ( media-libs/libid3tag:=[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
 	svg? ( >=gnome-base/librsvg-2.46.0:=[${MULTILIB_USEDEP}] )
-	tiff? ( >=media-libs/tiff-4.0.4:0[${MULTILIB_USEDEP}] )
+	tiff? ( >=media-libs/tiff-4.0.4:=[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
 	!<media-plugins/imlib2_loaders-1.7.0

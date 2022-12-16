@@ -1,19 +1,19 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 inherit multilib-minimal toolchain-funcs
 
 DESCRIPTION="Version 2 of an advanced replacement library for libraries like libXpm"
 HOMEPAGE="https://www.enlightenment.org/
 	https://sourceforge.net/projects/enlightenment/files/imlib2-src/"
-SRC_URI="https://downloads.sourceforge.net/enlightenment/${P}.tar.xz"
+SRC_URI="https://downloads.sourceforge.net/enlightenment/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+X bzip2 cpu_flags_x86_mmx cpu_flags_x86_sse2 debug doc +gif +jpeg mp3 +png +shm
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="+X bzip2 cpu_flags_x86_mmx cpu_flags_x86_sse2 doc +gif +jpeg mp3 +png +shm
 	static-libs +tiff +webp zlib"
 
 REQUIRED_USE="shm? ( X )"
@@ -22,10 +22,10 @@ RDEPEND="
 	media-libs/freetype:2[${MULTILIB_USEDEP}]
 	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP}] )
 	gif? ( media-libs/giflib:=[${MULTILIB_USEDEP}] )
-	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	mp3? ( media-libs/libid3tag:=[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}] )
-	tiff? ( >=media-libs/tiff-4.0.4:0[${MULTILIB_USEDEP}] )
+	tiff? ( >=media-libs/tiff-4.0.4:=[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]
@@ -37,13 +37,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
 BDEPEND="virtual/pkgconfig"
-PATCHES=( "${FILESDIR}/7d60151ba9.patch" )
 
 multilib_src_configure() {
 	local myeconfargs=(
 		$(use_with X x)
 		$(use_with bzip2)
-		$(use_enable debug)
 		$(use_with gif)
 		$(use_with jpeg)
 		$(use_with mp3 id3)
