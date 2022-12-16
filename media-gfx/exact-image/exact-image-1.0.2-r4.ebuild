@@ -28,13 +28,13 @@ RDEPEND="
 	x11-libs/agg[truetype]
 	sys-libs/zlib
 	expat? ( dev-libs/expat )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	lua? ( ${LUA_DEPS} )
 	openexr? ( media-libs/openexr:= )
 	perl? ( dev-lang/perl )
 	png? ( >=media-libs/libpng-1.2.43 )
 	ruby? ( dev-lang/ruby:* )
-	tiff? ( media-libs/tiff )
+	tiff? ( media-libs/tiff:= )
 	truetype? ( >=media-libs/freetype-2 )
 	X? (
 		x11-libs/libXext
