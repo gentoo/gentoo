@@ -18,7 +18,7 @@ IUSE="pgf tiff"
 RDEPEND="
 	media-libs/fontconfig
 	media-libs/libjpeg-turbo:=
-	media-libs/libpng:0=
+	media-libs/libpng:=
 	media-libs/netpbm
 	x11-libs/libX11
 	>=x11-libs/libXaw3dXft-1.6.2h[unicode(+)]
@@ -28,7 +28,7 @@ RDEPEND="
 	x11-libs/libXpm
 	x11-libs/libXt
 	pgf? ( media-libs/libpgf )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
