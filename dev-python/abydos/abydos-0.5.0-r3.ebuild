@@ -24,10 +24,6 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
 
-BDEPEND="test? (
-	dev-python/nltk[${PYTHON_USEDEP}]
-)"
-
 PATCHES=(
 	"${FILESDIR}/${P}-fix-py3.10.patch"
 )
