@@ -19,13 +19,13 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	gif? ( >=media-libs/giflib-5.1.3:=[${MULTILIB_USEDEP}] )
-	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	jpeg2k? ( media-libs/openjpeg:2=[${MULTILIB_USEDEP}] )
 	png? (
 		media-libs/libpng:0=[${MULTILIB_USEDEP}]
 		sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	)
-	tiff? ( media-libs/tiff:0=[${MULTILIB_USEDEP}] )
+	tiff? ( media-libs/tiff:=[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
