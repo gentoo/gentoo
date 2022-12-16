@@ -17,9 +17,9 @@ IUSE="doc png ssl tcpd tiff +threads xml zlib"
 RDEPEND="
 	dev-libs/icu:=
 	png? ( media-libs/libpng:* )
-	ssl? ( dev-libs/openssl:0= )
+	ssl? ( dev-libs/openssl:= )
 	tcpd? ( sys-apps/tcp-wrappers )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 	xml? ( dev-libs/libxml2:2 )
 	zlib? ( sys-libs/zlib )
 "
