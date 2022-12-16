@@ -47,7 +47,7 @@ DEPEND="${PYTHON_DEPS}
 	media-libs/libpng:0=
 	media-libs/libvisio
 	media-libs/libzmf
-	media-libs/tiff:0
+	media-libs/tiff:=
 	net-print/cups
 	sys-libs/zlib[minizip]
 	x11-libs/cairo[X,svg(+)]
