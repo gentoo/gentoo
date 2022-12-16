@@ -12,5 +12,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">libnids</remote-id>
+		<remote-id type="github">MITRECND/libnids</remote-id>
 	</upstream>
 </pkgmetadata>
