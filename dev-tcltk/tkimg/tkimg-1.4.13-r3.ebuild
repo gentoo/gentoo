@@ -3,14 +3,14 @@
 
 EAPI=7
 
-inherit autotools edos2unix prefix toolchain-funcs
+inherit autotools edos2unix prefix toolchain-funcs virtualx
 
 MYP=Img-${PV}-Source
 
 DESCRIPTION="Adds a lot of image formats to Tcl/Tk"
 HOMEPAGE="http://tkimg.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}/$(ver_cut 1-2)/${PN}%20${PV}/${MYP}.tar.gz
-	https://dev.gentoo.org/~tupone/distfiles/${PN}-1.4.7-patchset-1.tar.xz"
+	https://dev.gentoo.org/~tupone/distfiles/${PN}-1.4.12-patchset-1.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -19,61 +19,53 @@ IUSE="doc test static-libs"
 
 RDEPEND="
 	dev-lang/tk:=
-	>=dev-tcltk/tcllib-1.11
-	media-libs/tiff:0=
-	>=media-libs/libpng-1.6:0=
-	>=sys-libs/zlib-1.2.7:=
+	dev-tcltk/tcllib
+	media-libs/tiff:=
+	media-libs/libpng:0=
+	sys-libs/zlib:=
 	x11-libs/libX11
-	virtual/jpeg:="
+	media-libs/libjpeg-turbo:="
 DEPEND="${RDEPEND}
 	test? (
 		x11-apps/xhost
 		media-fonts/font-misc-misc
 		media-fonts/font-cursor-misc )"
 
-# Fails tests
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/Img-${PV}"
 
 PATCHES=(
-	"${WORKDIR}"/${PN}-1.4.7-tclconfig.patch
-	"${WORKDIR}"/${PN}-1.4.7-jpeg.patch
-	"${WORKDIR}"/${PN}-1.4.7-zlib.patch
-	"${WORKDIR}"/${PN}-1.4.7-png.patch
-	"${WORKDIR}"/${PN}-1.4.7-tiff.patch
-	"${FILESDIR}"/${PN}-1.4-jpeg-9.patch
-	"${FILESDIR}"/${P}-fno-common.patch
+	"${WORKDIR}"/patchset-1
+	"${FILESDIR}"/${P}-test.patch
 )
 
 src_prepare() {
 	edos2unix \
 		libjpeg/jpegtclDecls.h \
-		libjpeg/Makefile.in \
-		zlib/Makefile.in \
-		zlib/zlibtcl.decls \
 		zlib/zlibtclDecls.h \
-		libpng/Makefile.in \
 		libpng/pngtclDecls.h \
-		libtiff/Makefile.in \
-		libtiff/tifftclDecls.h \
-		libtiff/tifftclStubInit.c \
-		tiff/tiff.c \
-		jpeg/jpeg.c
+		libtiff/tifftclDecls.h
 
 	default
 
-	find . -name configure -delete || die
-	find compat/{libjpeg,libpng,zlib,libtiff} -delete || die
+	find compat/libtiff/config -name ltmain.sh -delete || die
+	sed -i \
+		-e 's:"--with-CC=$TIFFCC"::' \
+		libtiff/configure.ac || die
 
 	eautoreconf
 	for dir in zlib libpng libtiff libjpeg base bmp gif ico jpeg pcx pixmap png\
 		ppm ps sgi sun tga tiff window xbm xpm dted raw flir ; do
-		(cd ${dir}; eautoreconf)
+		(cd ${dir}; AT_NOELIBTOOLIZE=yes eautoreconf)
 	done
 
 	eprefixify */*.h
 	tc-export AR
+}
+
+src_test() {
+	virtx default
 }
 
 src_install() {
