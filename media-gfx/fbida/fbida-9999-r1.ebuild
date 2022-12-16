@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,12 +23,12 @@ CDEPEND="
 	media-libs/giflib:=
 	media-libs/libepoxy
 	media-libs/libexif
-	media-libs/libpng:*
-	media-libs/libwebp
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
+	media-libs/libwebp:=
 	media-libs/mesa[X(+)]
-	media-libs/tiff:*
+	media-libs/tiff:=
 	net-misc/curl
-	virtual/jpeg:*
 	virtual/ttf-fonts
 	x11-libs/cairo[opengl]
 	x11-libs/libX11

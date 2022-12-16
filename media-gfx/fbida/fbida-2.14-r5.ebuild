@@ -25,7 +25,7 @@ CDEPEND="
 	app-text/poppler
 	media-libs/libepoxy
 	media-libs/libexif
-	virtual/jpeg:*
+	media-libs/libjpeg-turbo:=
 	virtual/ttf-fonts
 	x11-libs/cairo[opengl]
 	curl? ( net-misc/curl )
@@ -37,10 +37,10 @@ CDEPEND="
 	)
 	gif? ( media-libs/giflib:= )
 	lirc? ( app-misc/lirc )
-	png? ( media-libs/libpng:* )
+	png? ( media-libs/libpng:= )
 	scanner? ( media-gfx/sane-backends )
-	tiff? ( media-libs/tiff:* )
-	webp? ( media-libs/libwebp )
+	tiff? ( media-libs/tiff:= )
+	webp? ( media-libs/libwebp:= )
 	X? (
 		>=x11-libs/motif-2.3:0[xft]
 		x11-libs/libX11
