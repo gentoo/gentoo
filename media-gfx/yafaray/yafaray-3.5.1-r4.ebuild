@@ -33,7 +33,7 @@ RDEPEND="
 	png? ( media-libs/libpng:= )
 	python? ( ${PYTHON_DEPS} )
 	qt5? ( dev-qt/qtwidgets:5 )
-	tiff? ( media-libs/tiff )
+	tiff? ( media-libs/tiff:= )
 	truetype? ( media-libs/freetype:2 )
 "
 DEPEND="${RDEPEND}"
