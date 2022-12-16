@@ -5,9 +5,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<use>
-		<flag name="physfs">Enable support for various formats through <pkg>dev-games/physfs</pkg>.</flag>
-	</use>
 	<upstream>
 		<bugs-to>mailto:sdlsound@icculus.org</bugs-to>
 		<!-- stable-1.0 branch -->
