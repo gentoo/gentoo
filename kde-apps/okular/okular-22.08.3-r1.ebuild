@@ -6,7 +6,7 @@ EAPI=8
 ECM_HANDBOOK="optional"
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-3)
-KFMIN=5.99.0
+KFMIN=5.96.0
 QTMIN=5.15.5
 VIRTUALX_REQUIRED="test"
 inherit ecm gear.kde.org
@@ -16,12 +16,10 @@ HOMEPAGE="https://okular.kde.org https://apps.kde.org/okular/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="crypt djvu epub +image-backend markdown mobi +pdf +plucker +postscript qml share speech +tiff"
 
-# slot op: Uses Qt5::CorePrivate
 DEPEND="
-	>=dev-qt/qtcore-${QTMIN}:5=
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtprintsupport-${QTMIN}:5
@@ -59,7 +57,7 @@ DEPEND="
 	postscript? ( app-text/libspectre )
 	share? ( >=kde-frameworks/purpose-${KFMIN}:5 )
 	speech? ( >=dev-qt/qtspeech-${QTMIN}:5 )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 "
 RDEPEND="${DEPEND}
 	image-backend? ( >=kde-frameworks/kimageformats-${KFMIN}:5 )
@@ -72,6 +70,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-21.11.80-tests.patch" # bug 734138
 	"${FILESDIR}/${PN}-20.08.2-hide-mobile-app.patch" # avoid same-name entry
+	"${FILESDIR}/${P}-drop-broken-kf-version-check.patch"
 )
 
 src_configure() {
