@@ -9,7 +9,7 @@ SRC_URI="https://github.com/gavinhoward/bc/releases/download/${PV}/bc-${PV}.tar.
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~x86"
 
 S="${WORKDIR}/bc-${PV}"
 
