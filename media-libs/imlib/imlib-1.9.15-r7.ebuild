@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,10 +16,10 @@ KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="doc static-libs"
 
 RDEPEND="
-	>=media-libs/tiff-3.9.7-r1:0[${MULTILIB_USEDEP}]
+	>=media-libs/tiff-3.9.7-r1:=[${MULTILIB_USEDEP}]
 	>=media-libs/giflib-5.1:0=[${MULTILIB_USEDEP}]
-	>=media-libs/libpng-1.2.51:0=[${MULTILIB_USEDEP}]
-	>=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}]
+	media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
+	>=media-libs/libpng-1.2.51:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libICE-1.0.8-r1[${MULTILIB_USEDEP}]
 	>=x11-libs/libSM-1.2.1-r1[${MULTILIB_USEDEP}]
 	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
