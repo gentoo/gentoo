@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,16 +21,16 @@ RDEPEND="media-fonts/terminus-font
 	djvu? ( app-text/djvu )
 	exif? ( media-libs/libexif )
 	gif? ( media-libs/giflib )
-	graphicsmagick? ( media-gfx/graphicsmagick )
+	graphicsmagick? ( media-gfx/graphicsmagick:= )
 	imagemagick? ( virtual/imagemagick-tools )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	pdf? ( >=app-text/poppler-0.31 )
-	png? ( media-libs/libpng:0= )
+	png? ( media-libs/libpng:= )
 	postscript? ( app-text/libspectre )
-	readline? ( sys-libs/readline:0= )
+	readline? ( sys-libs/readline:= )
 	sdl? ( media-libs/libsdl )
 	svg? ( media-gfx/inkscape )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 	xfig? ( media-gfx/xfig )"
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/bison
