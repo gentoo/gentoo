@@ -36,8 +36,7 @@ S="${WORKDIR}/${ABBREV}-${PV}"
 src_prepare() {
 	default
 	use amd64 && export CPU_TARGET="x86_64" || export CPU_TARGET="i386"
-	export lazpath="${EPREFIX}/usr/share/lazarus"
-	find ./ -type f -name "build.sh" -exec sed -i 's#$lazbuild #$lazbuild --lazarusdir=${lazpath} #g' {} \; || die
+	find ./ -type f -name "build.sh" -exec sed -i 's#$lazbuild #$lazbuild --lazarusdir=${EPREFIX}/usr/share/lazarus #g' {} \; || die
 }
 
 src_compile() {
