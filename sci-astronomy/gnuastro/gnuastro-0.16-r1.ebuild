@@ -21,13 +21,13 @@ IUSE="static-libs threads"
 RDEPEND="
 	app-text/ghostscript-gpl
 	dev-libs/libgit2:=
-	media-libs/tiff
+	media-libs/tiff:=
+	media-libs/libjpeg-turbo:=
 	net-misc/curl
 	sci-astronomy/wcslib:0=
 	sci-libs/cfitsio:0=
 	sci-libs/gsl:0=
 	sys-libs/zlib:=
-	virtual/jpeg:0=
 "
 DEPEND="${RDEPEND}"
 
