@@ -9,11 +9,11 @@ inherit perl-module systemd flag-o-matic
 DESCRIPTION="Cups filters"
 HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/cups-filters"
 SRC_URI="https://www.openprinting.org/download/${PN}/${P}.tar.xz"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
-IUSE="dbus exif +foomatic jpeg ldap pclm pdf perl png +postscript test tiff zeroconf"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="dbus +foomatic jpeg ldap pclm pdf perl png +postscript test tiff zeroconf"
 
 RESTRICT="!test? ( test )"
 
@@ -28,16 +28,15 @@ RDEPEND="
 	!<=net-print/cups-1.5.9999
 	sys-devel/bc
 	sys-libs/zlib
-	exif? ( media-libs/libexif )
 	dbus? ( sys-apps/dbus )
 	foomatic? ( !net-print/foomatic-filters )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	ldap? ( net-nds/openldap:= )
-	pdf? ( app-text/mupdf )
+	pdf? ( app-text/mupdf:= )
 	perl? ( dev-lang/perl:= )
-	png? ( media-libs/libpng:0= )
+	png? ( media-libs/libpng:= )
 	postscript? ( >=app-text/ghostscript-gpl-9.09[cups] )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
 DEPEND="${RDEPEND}"
@@ -63,8 +62,7 @@ src_configure() {
 		--with-pdftops=pdftops
 		--with-rcdir=no
 		--without-php
-
-		$(use_enable exif)
+		--disable-static
 		$(use_enable dbus)
 		$(use_enable foomatic)
 		$(use_enable ldap)
@@ -78,40 +76,28 @@ src_configure() {
 	)
 
 	econf "${myeconfargs[@]}"
-
-	if use perl; then
-		pushd "${S}"/scripting/perl > /dev/null || die
-		perl-module_src_configure
-		popd > /dev/null || die
-	fi
 }
 
 src_compile() {
 	default
 
 	if use perl; then
-		pushd "${S}"/scripting/perl > /dev/null || die
+		pushd "${S}/scripting/perl" > /dev/null || die
+		perl-module_src_configure
 		perl-module_src_compile
 		popd > /dev/null || die
 	fi
 }
 
 src_test() {
-	# Avoid perl-module_src_test
-	default
-
-	if use perl; then
-		pushd "${S}/scripting/perl" > /dev/null || die
-		perl-module_src_test
-		popd > /dev/null || die
-	fi
+	emake check
 }
 
 src_install() {
 	default
 
 	if use perl; then
-		pushd "${S}"/scripting/perl > /dev/null || die
+		pushd "${S}/scripting/perl" > /dev/null || die
 		perl-module_src_install
 		perl_delete_localpod
 		popd > /dev/null || die
