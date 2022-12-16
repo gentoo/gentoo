@@ -20,7 +20,7 @@ IUSE="jpeg tiff png"
 DEPEND="
 	x11-libs/libXt
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	tiff? ( media-libs/tiff )
+	tiff? ( media-libs/tiff:= )
 	png? (
 		>=media-libs/libpng-1.2:=
 		sys-libs/zlib
