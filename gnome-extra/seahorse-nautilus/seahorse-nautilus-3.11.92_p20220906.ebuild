@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${COMMIT}/${PN}-${SHORT_
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND="
