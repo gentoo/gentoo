@@ -86,7 +86,7 @@ RDEPEND="${PYTHON_DEPS}
 	openimageio? ( >=media-libs/openimageio-2.3.12.0-r3:= )
 	openexr? (
 		>=dev-libs/imath-3.1.4-r2:=
-		>=media-libs/openexr-3:0=
+		>=media-libs/openexr-3:=
 	)
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0 )
 	openvdb? (
@@ -101,7 +101,7 @@ RDEPEND="${PYTHON_DEPS}
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
 	tbb? ( dev-cpp/tbb:= )
-	tiff? ( media-libs/tiff )
+	tiff? ( media-libs/tiff:= )
 	valgrind? ( dev-util/valgrind )
 "
 
