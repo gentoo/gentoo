@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	virtual/glu
 	x11-libs/libX11
 	dbus? ( >=sys-apps/dbus-1.6.18-r1 )
-	gdal? ( >=sci-libs/gdal-2.0.0:0 )
+	gdal? ( >=sci-libs/gdal-2.0.0:= )
 	qt5? (
 		>=dev-qt/qtcore-5.7.1:5
 		>=dev-qt/qtdeclarative-5.7.1:5
