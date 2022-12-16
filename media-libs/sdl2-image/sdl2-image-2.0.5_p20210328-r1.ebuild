@@ -20,9 +20,9 @@ RDEPEND="
 	>=media-libs/libsdl2-2.0.9[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	png? ( >=media-libs/libpng-1.6.10:0[${MULTILIB_USEDEP}] )
-	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
-	tiff? ( >=media-libs/tiff-3.9.7-r1:0[${MULTILIB_USEDEP}] )
-	webp? ( >=media-libs/libwebp-0.3.0[${MULTILIB_USEDEP}] )"
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
+	tiff? ( >=media-libs/tiff-3.9.7-r1:=[${MULTILIB_USEDEP}] )
+	webp? ( >=media-libs/libwebp-0.3.0:=[${MULTILIB_USEDEP}] )"
 DEPEND=${RDEPEND}
 
 S=${WORKDIR}/SDL_image-${MY_COMMIT}
