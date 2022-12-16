@@ -33,6 +33,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-12-16)
+# NTLK relies on a large number of corpora that either have unknown
+# license, a non-free license or that may be in violation of copyright.
+# We have been rubber stamping over this in dev-python/nltk-data
+# via LICENSE=all-rights-reserved + RESTRICT=bindist but this
+# is not a feasible long-term solution.
+#
+# dev-python/lunr is the only revdep and has no reverse dependencies
+# itself.
+#
+# Removal on 2023-01-15.  Bug #886203.
+dev-python/lunr
+dev-python/nltk
+dev-python/nltk-data
+
 # Michał Górny <mgorny@gentoo.org> (2022-12-15)
 # Fails to build since 2019.  Last bumped in 2017.
 # Removal on 2023-01-14.  Bug #688950.
