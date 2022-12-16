@@ -142,7 +142,7 @@ RDEPEND="
 	)
 	tesseract? ( app-text/tesseract[opencl=,${MULTILIB_USEDEP}] )
 	threads? ( dev-cpp/tbb:=[${MULTILIB_USEDEP}] )
-	tiff? ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
+	tiff? ( media-libs/tiff:=[${MULTILIB_USEDEP}] )
 	v4l? ( >=media-libs/libv4l-0.8.3[${MULTILIB_USEDEP}] )
 	vaapi? ( media-libs/libva[${MULTILIB_USEDEP}] )
 	vtk? ( sci-libs/vtk[rendering] )
