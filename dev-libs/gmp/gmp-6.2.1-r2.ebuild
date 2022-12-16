@@ -13,9 +13,11 @@ MY_P=${PN}-${MY_PV}
 PLEVEL=${PV/*p}
 DESCRIPTION="Library for arbitrary-precision arithmetic on different type of numbers"
 HOMEPAGE="https://gmplib.org/"
-SRC_URI="ftp://ftp.gmplib.org/pub/${MY_P}/${MY_P}.tar.xz
+SRC_URI="
+	https://gmplib.org/download/gmp/${MY_P}.tar.xz
 	mirror://gnu/${PN}/${MY_P}.tar.xz
-	doc? ( https://gmplib.org/${PN}-man-${MANUAL_PV}.pdf )"
+	doc? ( https://gmplib.org/${PN}-man-${MANUAL_PV}.pdf )
+"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-arm64-darwin.patch.bz2"
 
 LICENSE="|| ( LGPL-3+ GPL-2+ )"
