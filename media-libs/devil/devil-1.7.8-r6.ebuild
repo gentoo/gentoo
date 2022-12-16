@@ -28,9 +28,9 @@ RDEPEND="
 		virtual/opengl
 		virtual/glu
 	)
-	png? ( media-libs/libpng:0= )
+	png? ( media-libs/libpng:= )
 	sdl? ( media-libs/libsdl )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 	X? (
 		x11-libs/libXext
 		x11-libs/libX11
