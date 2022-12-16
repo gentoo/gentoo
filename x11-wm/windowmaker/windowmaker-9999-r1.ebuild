@@ -2,17 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools desktop eutils
+inherit autotools desktop git-r3
 
 DESCRIPTION="The fast and light GNUstep window manager"
 HOMEPAGE="https://www.windowmaker.org/"
-SRC_URI="https://windowmaker.org/pub/source/release/${P/windowm/WindowM}.tar.gz
-	https://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz"
+SRC_URI="https://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz"
+EGIT_REPO_URI="https://repo.or.cz/wmaker-crm.git"
+EGIT_BRANCH="next"
 
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="gif imagemagick jpeg modelock nls png tiff webp xinerama +xpm xrandr"
-KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS=""
 
 DEPEND="media-libs/fontconfig
 	>=x11-libs/libXft-2.1.0
@@ -22,21 +23,25 @@ DEPEND="media-libs/fontconfig
 	x11-libs/libXv
 	gif? ( >=media-libs/giflib-4.1.0-r3 )
 	imagemagick? ( >=media-gfx/imagemagick-7:0= )
-	jpeg? ( virtual/jpeg:0= )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	nls? ( virtual/libintl )
-	png? ( media-libs/libpng:0= )
-	tiff? ( media-libs/tiff:0 )
-	webp? ( media-libs/libwebp )
+	png? ( media-libs/libpng:= )
+	tiff? ( media-libs/tiff:= )
+	webp? ( media-libs/libwebp:= )
 	xinerama? ( x11-libs/libXinerama )
 	xrandr? ( x11-libs/libXrandr )"
 RDEPEND="${DEPEND}"
 BDEPEND="nls? ( >=sys-devel/gettext-0.10.39 )"
 
-S=${WORKDIR}/${P/windowm/WindowM}
-
 DOCS=( AUTHORS BUGFORM BUGS ChangeLog INSTALL-WMAKER FAQ
 	NEWS README README.definable-cursor README.i18n TODO )
-PATCHES=( "${FILESDIR}"/${PN}-0.95.8-configure_default_search_paths.patch )
+
+src_unpack() {
+	# wm-extras
+	unpack ${A}
+
+	git-r3_src_unpack
+}
 
 src_prepare() {
 	# Fix some paths
