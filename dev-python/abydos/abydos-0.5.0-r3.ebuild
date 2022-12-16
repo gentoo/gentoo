@@ -3,13 +3,20 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{8..11} )
+
 inherit distutils-r1
 
 DESCRIPTION="Abydos NLP/IR library"
-HOMEPAGE="https://github.com/chrislit/abydos"
-SRC_URI="https://github.com/chrislit/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/chrislit/abydos/
+	https://pypi.org/project/abydos/
+"
+SRC_URI="
+	https://github.com/chrislit/abydos/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="GPL-3+"
 SLOT="0"
