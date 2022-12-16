@@ -27,7 +27,7 @@ DEPEND="
 	=kde-frameworks/knotifications-${PVCUT}*:5
 	=kde-frameworks/kservice-${PVCUT}*:5
 	=kde-frameworks/kwidgetsaddons-${PVCUT}*:5
-	=kde-frameworks/kwindowsystem-${PVCUT}*:5
+	=kde-frameworks/kwindowsystem-${PVCUT}*:5[X]
 	gpg? ( >=app-crypt/gpgme-1.7.1:=[cxx,qt5] )
 "
 RDEPEND="${DEPEND}"
