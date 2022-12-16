@@ -11,7 +11,7 @@ SRC_URI="https://github.com/onetrueawk/awk/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~x86 ~amd64-linux"
 
 DEPEND="
 	app-alternatives/yacc
