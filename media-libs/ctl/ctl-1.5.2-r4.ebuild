@@ -18,7 +18,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="media-libs/ilmbase:=
-	media-libs/openexr:0=
+	media-libs/openexr:=
 	media-libs/tiff:=
 	!media-libs/openexr_ctl"
 DEPEND="${RDEPEND}
