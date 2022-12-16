@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/grosser/parallel"
 LICENSE="MIT"
 SRC_URI="https://github.com/grosser/parallel/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 SLOT="1"
 IUSE="test"
 
