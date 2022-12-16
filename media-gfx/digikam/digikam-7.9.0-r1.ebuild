@@ -57,9 +57,9 @@ COMMON_DEPEND="
 	media-libs/lcms:2
 	media-libs/libjpeg-turbo:=
 	media-libs/liblqr
-	media-libs/libpng:0=
+	media-libs/libpng:=
 	>=media-libs/opencv-3.3.0:=[contrib,contribdnn,features2d]
-	media-libs/tiff:0
+	media-libs/tiff:=
 	addressbook? (
 		>=kde-apps/akonadi-contacts-19.04.3:5
 		>=kde-frameworks/kcontacts-${KFMIN}:5
