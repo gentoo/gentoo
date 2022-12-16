@@ -28,7 +28,7 @@ DEPEND="
 	cairo? ( x11-libs/cairo )
 	ffmpeg? ( media-video/ffmpeg:= )
 	postscript? ( app-text/ghostscript-gpl )
-	tiff? ( media-libs/tiff )
+	tiff? ( media-libs/tiff:= )
 	truetype? ( media-libs/freetype )
 "
 RDEPEND="${DEPEND}"
