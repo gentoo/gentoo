@@ -25,10 +25,10 @@ IUSE="systemd"
 # ldd /opt/kingsoft/wps-office/office6/wps
 # ldd /opt/kingsoft/wps-office/office6/wpp
 RDEPEND="
+	>=app-accessibility/at-spi2-core-2.46:2
 	app-arch/bzip2:0
 	app-arch/xz-utils
 	app-arch/lz4
-	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/libbsd
@@ -45,7 +45,8 @@ RDEPEND="
 	media-libs/libsndfile
 	media-libs/libvorbis
 	media-libs/libpng:0
-	media-sound/pulseaudio
+	media-libs/libpulse
+	|| ( media-libs/tiff:0/0 media-libs/tiff-compat:4 )
 	net-libs/libasyncns
 	net-print/cups
 	sys-apps/attr
