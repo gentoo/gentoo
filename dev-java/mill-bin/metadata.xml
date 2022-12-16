@@ -8,6 +8,6 @@
 	<upstream>
 		<remote-id type="github">com-lihaoyi/mill</remote-id>
 		<bugs-to>https://github.com/com-lihaoyi/mill/issues</bugs-to>
-		<changelog>https://github.com/paul-j-lucas/cdecl/releases</changelog>
+		<changelog>https://github.com/com-lihaoyi/mill/releases</changelog>
 	</upstream>
 </pkgmetadata>
