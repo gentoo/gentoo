@@ -23,10 +23,10 @@ COMMON_DEPEND="
 	dev-qt/qtopengl:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	media-libs/libpng:0=
-	media-libs/tiff:0
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
+	media-libs/tiff:=
 	sys-libs/zlib
-	virtual/jpeg:0
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
