@@ -33,7 +33,7 @@ RDEPEND="
 	tiff? (
 		>=dev-libs/imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
-		>=media-libs/tiff-4.4.0
+		>=media-libs/tiff-4.4.0:=
 	)
 	webp? ( media-libs/libwebp:= )"
 DEPEND="${RDEPEND}"
