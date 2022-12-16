@@ -14,12 +14,12 @@ SLOT="2"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="brotli bzip2 fbcon freetype gpm ipv6 jpeg libevent livecd lzip lzma ssl suid svga tiff unicode webp X zlib zstd"
 
-GRAPHICS_DEPEND="media-libs/libpng:0="
+GRAPHICS_DEPEND="media-libs/libpng:="
 
 RDEPEND="
 	dev-libs/libbsd
 	brotli? (
-		app-arch/brotli
+		app-arch/brotli:=
 	)
 	bzip2? (
 		app-arch/bzip2
@@ -38,7 +38,7 @@ RDEPEND="
 		media-libs/libjpeg-turbo:=
 	)
 	libevent? (
-		dev-libs/libevent:0=
+		dev-libs/libevent:=
 	)
 	livecd? (
 		${GRAPHICS_DEPEND}
@@ -52,14 +52,14 @@ RDEPEND="
 		app-arch/xz-utils
 	)
 	ssl? (
-		dev-libs/openssl:0=
+		dev-libs/openssl:=
 	)
 	svga? (
 		${GRAPHICS_DEPEND}
 		media-libs/svgalib
 	)
 	tiff? (
-		media-libs/tiff:0
+		media-libs/tiff:=
 	)
 	webp? (
 		media-libs/libwebp:=
@@ -72,7 +72,7 @@ RDEPEND="
 		sys-libs/zlib
 	)
 	zstd? (
-		app-arch/zstd
+		app-arch/zstd:=
 	)"
 
 DEPEND="${RDEPEND}
