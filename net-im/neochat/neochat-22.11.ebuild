@@ -14,7 +14,7 @@ DESCRIPTION="Client for Matrix, the decentralized communication protocol"
 HOMEPAGE="https://apps.kde.org/neochat/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 LICENSE="GPL-3+ handbook? ( CC-BY-SA-4.0 )"
