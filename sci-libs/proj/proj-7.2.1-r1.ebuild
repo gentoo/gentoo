@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-db/sqlite:3
 	curl? ( net-misc/curl )
-	tiff? ( media-libs/tiff )
+	tiff? ( media-libs/tiff:= )
 "
 DEPEND="${RDEPEND}"
 
