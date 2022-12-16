@@ -42,7 +42,7 @@ RDEPEND="
 	iso? ( >=sys-libs/libosinfo-1.10.0-r1 )
 	>=media-libs/libpng-1.2:0=
 	seccomp? ( >=sys-libs/libseccomp-2.0 )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 	xml? ( >=dev-libs/libxml2-2.6 )
 	pdf? ( >=app-text/poppler-0.16.0:=[cairo] )
 	playlist? ( >=dev-libs/totem-pl-parser-3:= )
@@ -77,6 +77,10 @@ BDEPEND="
 		)
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-functional-tests-Run-png-region-of-interest-only-if-.patch
+)
 
 python_check_deps() {
 	python_has_version -b \

@@ -16,12 +16,12 @@ IUSE="cue exif ffmpeg gif gsf +gstreamer iptc +iso +jpeg networkmanager +pdf +pl
 REQUIRED_USE="cue? ( gstreamer )" # cue is currently only supported via gstreamer, not ffmpeg
 RESTRICT="!test? ( test )"
 
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 # tracker-2.1.7 currently always depends on ICU (theoretically could be libunistring instead); so choose ICU over enca always here for the time being (ICU is preferred)
 RDEPEND="
 	>=dev-libs/glib-2.70:2
-	>=app-misc/tracker-3.4.0:3=
+	>=app-misc/tracker-3.4.0:3
 	gstreamer? (
 		>=media-libs/gstreamer-1.20:1.0
 		>=media-libs/gst-plugins-base-1.20:1.0
@@ -39,10 +39,10 @@ RDEPEND="
 	xps? ( app-text/libgxps )
 	iptc? ( media-libs/libiptcdata )
 	jpeg? ( media-libs/libjpeg-turbo:0= )
-	iso? ( >=sys-libs/libosinfo-0.2.10 )
+	iso? ( >=sys-libs/libosinfo-1.10.0-r1 )
 	>=media-libs/libpng-1.2:0=
 	seccomp? ( >=sys-libs/libseccomp-2.0 )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 	xml? ( >=dev-libs/libxml2-2.6 )
 	pdf? ( >=app-text/poppler-0.16.0:=[cairo] )
 	playlist? ( >=dev-libs/totem-pl-parser-3:= )
