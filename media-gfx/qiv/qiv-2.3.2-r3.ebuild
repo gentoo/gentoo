@@ -20,8 +20,8 @@ RDEPEND="
 	exif? ( media-libs/libexif )
 	lcms? (
 		media-libs/lcms:2
-		media-libs/tiff:0
-		virtual/jpeg:0
+		media-libs/libjpeg-turbo:=
+		media-libs/tiff:=
 	)
 	magic? ( sys-apps/file )"
 DEPEND="${RDEPEND}"
