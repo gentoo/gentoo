@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,19 +10,19 @@ HOMEPAGE="http://www.fox-toolkit.org/"
 SRC_URI="ftp://ftp.fox-toolkit.org/pub/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-SLOT="1.6"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="+bzip2 +jpeg +opengl +png tiff +truetype +zlib debug doc profile"
+SLOT="1.7"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+IUSE="+bzip2 +jpeg +opengl +png tiff +truetype +zlib debug doc profile tools"
 
 RDEPEND="
 	x11-libs/fox-wrapper
 	x11-libs/libXcursor
 	x11-libs/libXrandr
 	bzip2? ( app-arch/bzip2 )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	opengl? ( virtual/glu virtual/opengl )
-	png? ( media-libs/libpng:0= )
-	tiff? ( media-libs/tiff:0= )
+	png? ( media-libs/libpng:= )
+	tiff? ( media-libs/tiff:= )
 	truetype? (
 		media-libs/freetype:2
 		x11-libs/libXft
@@ -33,13 +33,19 @@ DEPEND="${RDEPEND}
 	x11-libs/libXt"
 BDEPEND="doc? ( app-doc/doxygen )"
 
+PATCHES=( "${FILESDIR}"/"${PN}"-1.7.67-no-truetype.patch )
+
 src_prepare() {
 	default
 
-	local d
-	for d in utils windows adie calculator pathfinder shutterbug; do
-		sed -i -e "s:${d}::" Makefile.am || die
-	done
+	sed -i '/#define REXDEBUG 1/d' lib/FXRex.cpp || die "Unable to remove spurious debug line."
+	sed -i -e "s:windows::" Makefile.am || die
+	if ! use tools; then
+		local d
+		for d in adie calculator pathfinder shutterbug; do
+			sed -i -e "s:${d}::" Makefile.am || die
+		done
+	fi
 
 	# Respect system CXXFLAGS
 	sed -i -e 's:CXXFLAGS=""::' configure.ac || die "Unable to force cxxflags."
