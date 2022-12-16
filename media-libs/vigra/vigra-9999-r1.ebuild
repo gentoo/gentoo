@@ -36,7 +36,7 @@ BDEPEND="
 DEPEND="
 	fftw? ( sci-libs/fftw:3.0= )
 	hdf5? ( >=sci-libs/hdf5-1.8.0:=[mpi=] )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	openexr? (
 		>=dev-libs/imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
@@ -47,7 +47,7 @@ DEPEND="
 		dev-libs/boost:=[python?,${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
-	tiff? ( media-libs/tiff:0= )
+	tiff? ( media-libs/tiff:= )
 	zlib? ( sys-libs/zlib )
 "
 RDEPEND="${PYTHON_DEPS}
