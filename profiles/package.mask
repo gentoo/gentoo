@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-12-16)
+# ruby27-only package. No longer maintained upstream.
+# No reverse dependencies. Masked for removal in 30 days.
+dev-ruby/ferret
+
 # Michał Górny <mgorny@gentoo.org> (2022-12-16)
 # Not installable since at least Dec 2020 due to checksum mismatch.
 # Ebuild not touched since 2018.
