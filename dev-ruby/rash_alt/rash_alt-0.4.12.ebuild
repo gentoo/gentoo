@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/shishi/rash_alt"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/hashie-3.4:*"
