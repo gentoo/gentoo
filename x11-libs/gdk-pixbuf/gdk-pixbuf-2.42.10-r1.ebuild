@@ -19,8 +19,8 @@ DEPEND="
 	>=dev-libs/glib-2.56.0:2[${MULTILIB_USEDEP}]
 	x11-misc/shared-mime-info
 	>=media-libs/libpng-1.4:0=[${MULTILIB_USEDEP}]
-	jpeg? ( media-libs/libjpeg-turbo:0=[${MULTILIB_USEDEP}] )
-	tiff? ( >=media-libs/tiff-3.9.2:0[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
+	tiff? ( >=media-libs/tiff-3.9.2:=[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
 RDEPEND="${DEPEND}"
