@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="media-libs/libpng
-	media-libs/tiff"
+	media-libs/tiff:="
 RDEPEND="${DEPEND}"
 
 # "make check" in 0.0.7 fails with newer tiff versions (4.0.0) altough the
