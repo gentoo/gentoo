@@ -26,10 +26,10 @@ IUSE="debug +io-restrictions tiff X"
 
 DEPEND="
 	dev-libs/boost:=
-	media-libs/libpng:0
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
 	sys-libs/zlib
-	virtual/jpeg:0
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 	X? ( media-libs/libsdl )"
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
