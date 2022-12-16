@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="jpeg png tiff X"
 
 RDEPEND="
-	jpeg? ( virtual/jpeg )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? (
 		media-libs/libpng:=
 		sys-libs/zlib
