@@ -17,9 +17,10 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
 RDEPEND="
-	${DEPEND}
+	dev-ml/camlp-streams:=
 	dev-ml/num:=
 "
+DEPEND="${RDEPEND}"
 BDEPEND="dev-ml/ocamlbuild"
 
 src_compile() {
