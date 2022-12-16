@@ -18,7 +18,7 @@ DEPEND="
 	=dev-qt/qtcore-${QT5_PV}*
 	=dev-qt/qtgui-${QT5_PV}*
 	media-libs/libwebp:=
-	media-libs/tiff:0
+	media-libs/tiff:=
 	mng? ( media-libs/libmng:= )
 "
 RDEPEND="${DEPEND}"

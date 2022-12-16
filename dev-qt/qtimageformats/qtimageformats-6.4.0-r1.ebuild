@@ -16,7 +16,7 @@ IUSE="mng"
 DEPEND="
 	=dev-qt/qtbase-${PV}*[gui]
 	media-libs/libwebp:=
-	media-libs/tiff
+	media-libs/tiff:=
 	mng? ( media-libs/libmng:= )
 "
 RDEPEND="${DEPEND}"
