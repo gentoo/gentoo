@@ -46,8 +46,7 @@ REQUIRED_USE="test? ( yara )"
 
 RESTRICT="!test? ( test )"
 
-python_test()
-{
+python_test() {
 	# see .github/workflows/test.yaml
 	"${EPYTHON}" "${S}/test/test_volatility.py" --volatility=vol.py \
 		--image "${WORKDIR}/${PN}-win-xp-laptop-2005-06-25.img" -k test_windows -v || \
