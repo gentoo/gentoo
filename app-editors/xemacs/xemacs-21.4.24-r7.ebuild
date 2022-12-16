@@ -38,9 +38,9 @@ RDEPEND="
 	Xaw3d? ( x11-libs/libXaw3d[unicode(+)] )
 	neXt? ( x11-libs/neXtaw )
 	xface? ( media-libs/compface )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 	png? ( >=media-libs/libpng-1.2:0 )
-	jpeg? ( media-libs/libjpeg-turbo:0= )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	!amd64? ( freewnn? ( app-i18n/freewnn ) )
 	>=sys-libs/ncurses-5.2:=
 	>=app-eselect/eselect-emacs-1.15"

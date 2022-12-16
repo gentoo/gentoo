@@ -39,9 +39,9 @@ RDEPEND="
 	xft? ( media-libs/freetype:2 x11-libs/libXft x11-libs/libXrender >=media-libs/fontconfig-2.5.0 )
 	neXt? ( x11-libs/neXtaw )
 	xface? ( media-libs/compface )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 	png? ( >=media-libs/libpng-1.2:0 )
-	jpeg? ( media-libs/libjpeg-turbo:0= )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	freewnn? ( app-i18n/freewnn )
 	>=sys-libs/ncurses-5.2:=
 	>=app-eselect/eselect-emacs-1.15"
