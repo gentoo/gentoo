@@ -1,44 +1,46 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{7..9} )
 
-inherit cmake python-single-r1 toolchain-funcs virtualx wxwidgets
+# gdl's build system is a travesty, and actually calls
+# itself in the testsuite, which is something that ninja
+# obviously doesn't support.
+CMAKE_MAKEFILE_GENERATOR=emake
+
+inherit cmake python-r1 toolchain-funcs virtualx wxwidgets
 
 DESCRIPTION="GNU Data Language"
 HOMEPAGE="https://github.com/gnudatalanguage/gdl"
-SRC_URI="https://github.com/gnudatalanguage/gdl/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/gnudatalanguage/gdl/archive/v$(ver_cut 1-3)-rc.$(ver_cut 5).tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="
-	+eigen fftw glpk graphicsmagick gshhs hdf hdf5 +imagemagick netcdf
-	openmp png proj postscript python shapelib tiff udunits wxwidgets
-"
+IUSE="+eigen fftw glpk graphicsmagick gshhs hdf hdf5 +imagemagick netcdf
+	openmp png proj postscript python tiff udunits wxwidgets"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-cpp/antlr-cpp:2=
 	dev-libs/expat
-	net-libs/libtirpc:=
-	sci-libs/gsl:0=
-	sci-libs/plplot:0=[X,cxx,-dynamic,wxwidgets?]
-	sys-libs/ncurses:0=
-	sys-libs/readline:0=
+	sci-libs/gsl:=
+	sci-libs/plplot:=[X,cxx,-dynamic]
+	sys-libs/ncurses:=
+	sys-libs/readline:=
 	sys-libs/zlib
 	x11-libs/libX11
 	fftw? ( sci-libs/fftw:3.0= )
 	glpk? ( sci-mathematics/glpk:= )
 	gshhs? (
 		sci-geosciences/gshhs-data
-		sci-geosciences/gshhs:0=
+		sci-geosciences/gshhs:=
 	)
-	hdf? ( sci-libs/hdf:0= )
-	hdf5? ( sci-libs/hdf5:0= )
+	hdf? ( sci-libs/hdf:= )
+	hdf5? ( sci-libs/hdf5:= )
 	imagemagick? (
 		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
 		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
@@ -48,28 +50,24 @@ RDEPEND="
 	postscript? ( dev-libs/pslib )
 	python? (
 		${PYTHON_DEPS}
-		$(python_gen_cond_dep '
-			dev-python/numpy[${PYTHON_USEDEP}]
-		')
+		dev-python/numpy[${PYTHON_USEDEP}]
 	)
-	shapelib? (	sci-libs/shapelib:= )
 	tiff? (
-		media-libs/tiff
-		sci-libs/libgeotiff
+		media-libs/tiff:=
+		sci-libs/libgeotiff:=
 	)
 	udunits? ( sci-libs/udunits )
-	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
-"
+	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )"
 DEPEND="${RDEPEND}
-	eigen? ( dev-cpp/eigen:3 )
-"
+	eigen? ( dev-cpp/eigen:3 )"
 BDEPEND="
 	dev-util/intltool
 	virtual/pkgconfig
-"
+	python? ( app-admin/chrpath )"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.0.1-cmake.patch )
-DOCS=( AUTHORS HACKING NEWS PYTHON.txt README README.md )
+S="${WORKDIR}/${PN}-$(ver_cut 1-3)-rc.$(ver_cut 5)"
+
+PATCHES=( "${FILESDIR}"/${PN}-1.0.0_rc3-cmake.patch )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -77,7 +75,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -90,7 +87,6 @@ src_prepare() {
 	# gentoo: avoid install files in datadir directory
 	# and manually install them in src_install
 	sed -e '/AUTHORS/d' -i CMakeLists.txt || die
-
 	cmake_src_prepare
 }
 
@@ -108,7 +104,7 @@ src_configure() {
 		-DGLPK=$(usex glpk)
 		-DHDF=$(usex hdf)
 		-DHDF5=$(usex hdf5)
-		-DLIBPROJ=$(usex proj)
+		-DLIBPROJ4=$(usex proj)
 		-DNETCDF=$(usex netcdf)
 		-DOPENMP=$(usex openmp)
 		-DPNGLIB=$(usex png)
@@ -118,27 +114,38 @@ src_configure() {
 		-DMAGICK=$(usex imagemagick $(usex !graphicsmagick))
 		-DTIFF=$(usex tiff)
 		-DGEOTIFF=$(usex tiff)
-		-DPYTHON_MODULE=$(usex python)
-		-DPYTHON=$(usex python)
-		-DSHAPELIB=$(usex shapelib)
+		-DSHAPELIB=OFF
+		-DPLPLOTDIR="${EPREFIX}"/usr/$(get_libdir)
 	)
 
-	if use python; then
-		# automatically selection ignores EPYTHON
-		mycmakeargs+=(
-			-DPYTHONVERSION="${EPYTHON#python}"
-		)
-	fi
+	configuration() {
+		mycmakeargs+=( "$@" )
+		cmake_src_configure
+	}
+	configuration -DPYTHON_MODULE=OFF -DPYTHON=OFF
+	use python && python_foreach_impl configuration -DPYTHON_MODULE=ON -DPYTHON=ON
+}
 
-	cmake_src_configure
+src_compile() {
+	cmake_src_compile
+	use python && python_foreach_impl cmake_src_compile
 }
 
 src_test() {
-	virtx cmake_src_test
+	# there is check target instead of the ctest to define some LDPATH
+	virtx cmake_build check
 }
 
 src_install() {
 	cmake_src_install
+	if use python; then
+		installation() {
+			chrpath -d src/GDL.so || die
+			python_domodule src/GDL.so
+		}
+		python_foreach_impl run_in_build_dir installation
+		dodoc PYTHON.txt
+	fi
 
 	newenvd - 50gdl <<-_EOF_
 		GDL_PATH="+${EPREFIX}/usr/share/gnudatalanguage"
