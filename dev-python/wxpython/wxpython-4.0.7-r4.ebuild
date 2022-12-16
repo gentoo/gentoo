@@ -29,9 +29,9 @@ RESTRICT="test"
 # which makes us have to require all features from wxGTK
 RDEPEND="
 	>=x11-libs/wxGTK-3.0.4-r301:${WX_GTK_VER}=[gstreamer,libnotify,opengl,sdl,tiff,webkit?,X]
-	media-libs/libpng:0=
-	media-libs/tiff:0
-	media-libs/libjpeg-turbo:0"
+	media-libs/libpng:=
+	media-libs/tiff:=
+	media-libs/libjpeg-turbo:="
 
 BDEPEND="${RDEPEND}
 	app-doc/doxygen
