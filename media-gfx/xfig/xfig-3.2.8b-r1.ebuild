@@ -16,9 +16,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~
 COMMON_DEPEND="
 	app-text/ghostscript-gpl:=
 	>=media-gfx/transfig-3.2.5-r1
-	media-libs/libjpeg-turbo:0=
-	media-libs/libpng:0=
-	media-libs/tiff
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
+	media-libs/tiff:=
 	x11-libs/libX11
 	x11-libs/libXaw3d[unicode(+)]
 	x11-libs/libXpm
