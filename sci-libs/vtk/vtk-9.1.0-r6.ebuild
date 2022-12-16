@@ -76,7 +76,7 @@ RDEPEND="
 	media-libs/libogg
 	media-libs/libpng:=
 	media-libs/libtheora
-	media-libs/tiff
+	media-libs/tiff:=
 	>=sci-libs/cgnslib-4.1.1:=[hdf5,mpi=]
 	sci-libs/hdf5:=[mpi=]
 	sci-libs/netcdf:=[mpi=]

@@ -64,7 +64,7 @@ RDEPEND="
 	media-libs/libogg
 	media-libs/libpng
 	media-libs/libtheora
-	media-libs/tiff
+	media-libs/tiff:=
 	<sci-libs/hdf5-1.12:=[mpi=]
 	sci-libs/kissfft[openmp?]
 	sci-libs/netcdf:=[mpi=]
