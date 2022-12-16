@@ -33,7 +33,7 @@ BDEPEND="
 "
 RDEPEND="
 	media-libs/lcms:2
-	media-libs/tiff:0
+	media-libs/tiff:=
 	media-libs/vigra[openexr]
 	sci-libs/gsl:=
 	debug? ( dev-libs/dmalloc )

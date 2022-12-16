@@ -34,7 +34,7 @@ BDEPEND="
 RDEPEND="
 	media-libs/lcms:2
 	media-libs/openexr:=
-	media-libs/tiff:0
+	media-libs/tiff:=
 	media-libs/vigra[openexr]
 	sci-libs/gsl:=
 	debug? ( dev-libs/dmalloc )
@@ -43,7 +43,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-libs/boost
 	media-libs/libpng:0
-	virtual/jpeg:0
+	media-libs/libjpeg-turbo
 "
 
 PATCHES=(
