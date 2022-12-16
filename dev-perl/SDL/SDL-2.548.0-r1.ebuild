@@ -21,6 +21,7 @@ RDEPEND="
 	>=virtual/perl-ExtUtils-CBuilder-0.260.301
 	>=dev-perl/File-ShareDir-1.0.0
 	>=dev-perl/Module-Build-0.400.0
+	media-libs/libjpeg-turbo
 	virtual/perl-Scalar-List-Utils
 	dev-perl/Tie-Simple
 	media-libs/libpng:0
@@ -33,7 +34,6 @@ RDEPEND="
 	media-libs/smpeg
 	media-libs/tiff:0
 	virtual/glu
-	virtual/jpeg:0
 	virtual/opengl
 "
 BDEPEND="${RDEPEND}
