@@ -9,7 +9,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShell/Extensions"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~ppc64 ~riscv ~x86"
 
 DEPEND="
 	>=dev-libs/glib-2.26:2
