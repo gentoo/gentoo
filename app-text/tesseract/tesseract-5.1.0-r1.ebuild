@@ -17,7 +17,7 @@ IUSE="doc float32 jpeg opencl openmp png static-libs tiff training webp"
 COMMON_DEPEND=">=media-libs/leptonica-1.74:=[${MULTILIB_USEDEP},zlib,tiff?,jpeg?,png?,webp?]
 	opencl? (
 		virtual/opencl[${MULTILIB_USEDEP}]
-		media-libs/tiff:0=[${MULTILIB_USEDEP}]
+		media-libs/tiff:=[${MULTILIB_USEDEP}]
 		media-libs/leptonica:=[tiff]
 	)
 	training? (
