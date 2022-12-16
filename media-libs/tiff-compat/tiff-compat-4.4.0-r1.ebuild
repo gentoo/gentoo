@@ -14,7 +14,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/rouault.asc
 inherit multilib-minimal verify-sig libtool flag-o-matic
 
 MY_P="${P/_rc/rc}"
-DESCRIPTION="Tag Image File Format (TIFF) library (compat package for libtiff.so.4)"
+DESCRIPTION="Tag Image File Format (TIFF) library (compat package for libtiff.so.5)"
 HOMEPAGE="http://libtiff.maptools.org"
 SRC_URI="https://download.osgeo.org/libtiff/${MY_P/-compat}.tar.xz"
 SRC_URI+=" verify-sig? ( https://download.osgeo.org/libtiff/${MY_P/-compat}.tar.xz.sig )"
