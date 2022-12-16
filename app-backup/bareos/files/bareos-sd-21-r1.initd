@@ -13,4 +13,4 @@ start_pre() {
 command="/usr/sbin/bareos-sd"
 command_args="-f ${DIR_OPTIONS}"
 command_background="true"
-pidfile="/run/bareos/bareos-dir.9103.pid"
+pidfile="/run/bareos/bareos-sd.9103.pid"
