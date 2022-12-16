@@ -3,13 +3,15 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit cmake java-pkg-opt-2 python-single-r1
 
 DESCRIPTION="Translator library for raster geospatial data formats (includes OGR support)"
 HOMEPAGE="https://gdal.org/"
 SRC_URI="https://download.osgeo.org/${PN}/${PV}/${P}.tar.xz"
-SRC_URI+=" test? ( https://download.osgeo.org/${PN}/${PV}/${PN}autotest-${PV}.tar.gz )"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-build-fixes-no-deps.patch.xz"
+# Seems to not be compressed...
+SRC_URI+=" test? ( https://download.osgeo.org/${PN}/${PV}/${PN}autotest-${PV}.tar.gz -> ${PN}autotest-${PV}.tar )"
 
 LICENSE="BSD Info-ZIP MIT"
 SLOT="0/31" # subslot is libgdal.so.<SONAME>
@@ -40,7 +42,7 @@ DEPEND="dev-libs/expat
 	dev-libs/libpcre2
 	dev-libs/libxml2:2
 	dev-libs/openssl:=
-	media-libs/tiff
+	media-libs/tiff:=
 	>=sci-libs/libgeotiff-1.5.1-r1:=
 	>=sci-libs/proj-6.0.0:=
 	sys-libs/zlib[minizip(+)]
@@ -80,6 +82,10 @@ DEPEND="dev-libs/expat
 	zstd? ( app-arch/zstd:= )"
 RDEPEND="${DEPEND}
 	java? ( >=virtual/jre-1.8:* )"
+
+PATCHES=(
+	"${WORKDIR}"/${P}-build-fixes-no-deps.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -228,7 +234,7 @@ src_test() {
 
 src_install() {
 	cmake_src_install
-	use python && python_optimize
+
 	# TODO: install docs?
 }
 

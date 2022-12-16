@@ -40,7 +40,7 @@ DEPEND="dev-libs/expat
 	dev-libs/libpcre2
 	dev-libs/libxml2:2
 	dev-libs/openssl:=
-	media-libs/tiff
+	media-libs/tiff:=
 	>=sci-libs/libgeotiff-1.5.1-r1:=
 	>=sci-libs/proj-6.0.0:=
 	sys-libs/zlib[minizip(+)]
