@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit mate python-single-r1
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 DESCRIPTION="A set of plugins for Pluma, the MATE text editor."
