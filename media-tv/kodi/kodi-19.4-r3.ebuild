@@ -208,6 +208,11 @@ src_unpack() {
 }
 
 src_prepare() {
+	# https://bugs.gentoo.org/885419
+	if has_version ">=media-libs/mesa-22.3.0"; then
+		PATCHES+=( "${FILESDIR}/${P}-fix-mesa-22.3.0-build.patch" )
+	fi
+
 	cmake_src_prepare
 
 	# avoid long delays when powerkit isn't running #348580
