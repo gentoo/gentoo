@@ -51,7 +51,7 @@ COMMON_DEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.6:= )
 	postscript? ( >=app-text/libspectre-0.2 )
 	synctex? ( virtual/tex-base )
-	tiff? ( >=media-libs/tiff-3.6:0 )
+	tiff? ( >=media-libs/tiff-3.6:= )
 	xps? ( >=app-text/libgxps-0.2.1 )
 "
 

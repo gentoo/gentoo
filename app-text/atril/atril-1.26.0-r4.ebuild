@@ -1,32 +1,32 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MATE_LA_PUNT="yes"
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit mate python-any-r1 virtualx
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 fi
 
 DESCRIPTION="Atril document viewer for MATE"
 LICENSE="FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+"
 SLOT="0"
 
-IUSE="caja dbus debug djvu dvi epub +introspection gnome-keyring +postscript synctex t1lib test tiff xps"
+IUSE="caja dbus debug djvu dvi epub +introspection gnome-keyring nls +postscript synctex t1lib test tiff xps"
 
 REQUIRED_USE="t1lib? ( dvi )"
 
 COMMON_DEPEND="
-	>=app-text/poppler-0.22[cairo]
 	|| (
 		>=app-accessibility/at-spi2-core-2.46.0:2
 		dev-libs/atk
 	)
+	>=app-text/poppler-0.22[cairo]
 	>=dev-libs/glib-2.62:2
 	>=dev-libs/libxml2-2.5:2
 	sys-libs/zlib
@@ -51,7 +51,7 @@ COMMON_DEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.6:= )
 	postscript? ( >=app-text/libspectre-0.2 )
 	synctex? ( virtual/tex-base )
-	tiff? ( >=media-libs/tiff-3.6:0 )
+	tiff? ( >=media-libs/tiff-3.6:= )
 	xps? ( >=app-text/libgxps-0.2.1 )
 "
 
@@ -60,11 +60,9 @@ RDEPEND="${COMMON_DEPEND}
 	!!app-text/mate-document-viewer
 "
 
-DEPEND="${COMMON_DEPEND}
+BDEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
-	app-text/rarian
 	app-text/yelp-tools
-	>=app-text/scrollkeeper-dtd-1:1.0
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	dev-util/gtk-doc
@@ -79,10 +77,8 @@ DEPEND="${COMMON_DEPEND}
 # Until we figure out how to run successfully, don't run tests
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}/${PN}-1.24.0-make-synctex-optional.patch" )
-
 python_check_deps() {
-	use test && has_version "dev-util/dogtail[${PYTHON_USEDEP}]"
+	use test && python_has_version "dev-util/dogtail[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
@@ -106,6 +102,7 @@ src_configure() {
 		$(use_enable dvi) \
 		$(use_enable epub) \
 		$(use_enable introspection) \
+		$(use_enable nls) \
 		$(use_enable postscript ps) \
 		$(use_enable synctex) \
 		$(use_enable t1lib) \
