@@ -18,8 +18,8 @@ KEYWORDS="amd64 ~hppa ppc x86"
 
 RDEPEND="
 	dev-libs/boost:=
-	media-libs/tiff:0
-	virtual/jpeg:0"
+	media-libs/libjpeg-turbo:=
+	media-libs/tiff:="
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip"
 
