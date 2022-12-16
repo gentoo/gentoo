@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 IUSE="debug doc jpeg tiff xml"
 
-RDEPEND="jpeg? ( virtual/jpeg:0 )
-	tiff? ( media-libs/tiff:0= )"
+RDEPEND="jpeg? ( media-libs/libjpeg-turbo:= )
+	tiff? ( media-libs/tiff:= )"
 DEPEND="${RDEPEND}"
 
 # inkscape/rsvg-convert are used to generate icons at build-time only
