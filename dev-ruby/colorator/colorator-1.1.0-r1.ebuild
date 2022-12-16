@@ -16,7 +16,7 @@ SRC_URI="https://github.com/octopress/colorator/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE=""
 
 all_ruby_prepare() {
