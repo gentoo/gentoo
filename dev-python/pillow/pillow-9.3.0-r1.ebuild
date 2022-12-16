@@ -32,15 +32,15 @@ REQUIRED_USE="test? ( jpeg jpeg2k tiff truetype )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	imagequant? ( media-gfx/libimagequant:0 )
-	jpeg? ( media-libs/libjpeg-turbo )
+	imagequant? ( media-gfx/libimagequant:= )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	lcms? ( media-libs/lcms:2= )
-	tiff? ( media-libs/tiff:0=[jpeg,zlib] )
+	tiff? ( media-libs/tiff:=[jpeg,zlib] )
 	truetype? ( media-libs/freetype:2= )
-	webp? ( media-libs/libwebp:0= )
+	webp? ( media-libs/libwebp:= )
 	xcb? ( x11-libs/libxcb )
-	zlib? ( sys-libs/zlib:0= )
+	zlib? ( sys-libs/zlib:= )
 "
 RDEPEND="
 	${DEPEND}
