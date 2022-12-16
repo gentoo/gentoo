@@ -27,16 +27,16 @@ COMMON_DEPEND="
 	>=x11-libs/cairo-1.14[aqua?,glib,svg(+),X?]
 	>=x11-libs/gdk-pixbuf-2.30:2[introspection?]
 	>=x11-libs/pango-1.50.0[introspection?]
-	media-libs/libpng:0=
-	media-libs/tiff:0
-	media-libs/libjpeg-turbo:0=
+	media-libs/libpng:=
+	media-libs/tiff:=
+	media-libs/libjpeg-turbo:=
 	>=media-libs/harfbuzz-2.6.0:=
 	app-text/iso-codes
 	x11-misc/shared-mime-info
 
 	colord? ( >=x11-misc/colord-0.1.9:0= )
 	cups? ( >=net-print/cups-2.0 )
-	ffmpeg? ( media-video/ffmpeg )
+	ffmpeg? ( media-video/ffmpeg:= )
 	gstreamer? (
 		>=media-libs/gst-plugins-bad-1.12.3:1.0
 		>=media-libs/gst-plugins-base-1.12.3:1.0[opengl]
