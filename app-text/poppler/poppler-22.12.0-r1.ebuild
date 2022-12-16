@@ -48,7 +48,7 @@ COMMON_DEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtxml:5
 	)
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:= )
 "
 RDEPEND="${COMMON_DEPEND}
 	cjk? ( app-text/poppler-data )
