@@ -1,28 +1,23 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
-# Python3.11 does not have longintrepr.h causing compile failure
-PYTHON_COMPAT=( python3_{8..10} )
-DOCS_BUILDER="doxygen"
-inherit cmake desktop docs python-single-r1 qmake-utils toolchain-funcs xdg
+PYTHON_COMPAT=( python3_{8,9,10} )
+inherit cmake desktop python-single-r1 qmake-utils toolchain-funcs xdg-utils
 
 MAIN_PV=$(ver_cut 0-1)
 MAJOR_PV=$(ver_cut 1-2)
-MY_PN="ParaView"
-MY_PV="${PV//_rc2}-RC2"
+MY_P="ParaView-v${PV}"
 
 DESCRIPTION="Powerful scientific data visualization application"
 HOMEPAGE="https://www.paraview.org"
-SRC_URI="https://www.paraview.org/files/v${MAJOR_PV}/${MY_PN}-v${MY_PV}.tar.xz"
-S="${WORKDIR}/${MY_PN}-v${MY_PV}"
+SRC_URI="https://www.paraview.org/files/v${MAJOR_PV}/${MY_P}.tar.xz"
 
-# TODO: check licenses of plugins (USE=plugins)
-LICENSE="BSD MIT PSF-2 VTK"
+LICENSE="paraview GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="boost cg examples ffmpeg mpi nvcontrol openmp offscreen plugins python +qt5 +sqlite test tk +webengine"
+IUSE="boost cg doc examples ffmpeg mpi nvcontrol openmp offscreen plugins python +qt5 +sqlite test tk +webengine"
 
 RESTRICT="mirror test"
 
@@ -47,7 +42,7 @@ RDEPEND="
 	media-libs/glew:0
 	media-libs/libpng:0
 	media-libs/libtheora
-	media-libs/tiff:0=
+	media-libs/tiff:=
 	sci-libs/cgnslib
 	sci-libs/hdf5:=[mpi=]
 	>=sci-libs/netcdf-4.2[hdf5]
@@ -71,7 +66,7 @@ RDEPEND="
 			dev-python/matplotlib[${PYTHON_USEDEP}]
 			dev-python/numpy[${PYTHON_USEDEP}]
 			dev-python/pygments[${PYTHON_USEDEP}]
-			dev-python/sip:5[${PYTHON_USEDEP}]
+			dev-python/sip:0[${PYTHON_USEDEP}]
 			dev-python/six[${PYTHON_USEDEP}]
 			dev-python/twisted[${PYTHON_USEDEP}]
 			dev-python/zope-interface[${PYTHON_USEDEP}]
@@ -100,11 +95,9 @@ DEPEND="${RDEPEND}
 			dev-libs/boost[mpi?,python,${PYTHON_USEDEP}]
 		')
 	)
-"
+	doc? ( app-doc/doxygen )"
 
-BDEPEND="
-	openmp? ( virtual/fortran )
-"
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.0-allow_custom_build_type.patch
@@ -228,5 +221,13 @@ src_install() {
 	newicon "${S}"/Clients/ParaView/pvIcon-96x96.png paraview.png
 	make_desktop_entry paraview "Paraview" paraview
 
-	use python && python_optimize "${ED}/usr/$(get_libdir)/${PN}-${MAJOR_PV}"
+	use python && python_optimize "${D}"/usr/$(get_libdir)/${PN}-${MAJOR_PV}
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }

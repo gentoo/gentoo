@@ -47,7 +47,7 @@ RDEPEND="
 	media-libs/glew:0
 	media-libs/libpng:0
 	media-libs/libtheora
-	media-libs/tiff:0=
+	media-libs/tiff:=
 	sci-libs/cgnslib
 	sci-libs/hdf5:=[mpi=]
 	>=sci-libs/netcdf-4.2[hdf5]
