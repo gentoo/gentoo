@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic"
 
 RDEPEND="${ADA_DEPS}
-	dev-libs/atk
+	app-accessibility/at-spi2-core
 	dev-libs/glib:2
 	media-libs/fontconfig
 	media-libs/freetype
@@ -30,10 +30,15 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2017-r1-gentoo.patch
+	"${FILESDIR}"/${PN}-2019-gentoo.patch
+	"${FILESDIR}"/${PN}-2021-uninstall.patch
+)
 
 src_prepare() {
 	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
@@ -41,7 +46,8 @@ src_configure() {
 	econf \
 		$(use_enable static-libs static) \
 		$(use_enable shared) \
-		$(use_enable static-pic)
+		$(use_enable static-pic) \
+		--without-GL
 }
 
 src_compile() {

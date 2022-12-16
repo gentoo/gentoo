@@ -20,7 +20,7 @@ KEYWORDS="amd64 x86"
 IUSE="+shared static-libs"
 
 RDEPEND="${ADA_DEPS}
-	dev-libs/atk
+	app-accessibility/at-spi2-core
 	dev-libs/glib:2
 	media-libs/fontconfig
 	media-libs/freetype
