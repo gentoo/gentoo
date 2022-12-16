@@ -13,13 +13,13 @@ SRC_URI="http://www.argyllcms.com/${MY_P}_src.zip"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~loong ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~hppa x86"
 IUSE="doc"
 
 RDEPEND="
-	media-libs/tiff:0
+	media-libs/libjpeg-turbo:=
+	media-libs/tiff:=
 	sys-libs/zlib
-	virtual/jpeg:0
 	x11-libs/libX11
 	x11-libs/libXau
 	x11-libs/libXdmcp
@@ -28,11 +28,13 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXxf86vm
 	x11-libs/libXScrnSaver
-	dev-libs/openssl:0=
+	dev-libs/openssl:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip
 	dev-util/ftjam"
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 S="${WORKDIR}/${MY_P}"
 

@@ -17,9 +17,9 @@ KEYWORDS="~amd64 ~arm64 ~hppa ~loong ~riscv ~x86"
 IUSE="doc"
 
 RDEPEND="
-	dev-libs/openssl:0=
+	dev-libs/openssl:=
 	media-libs/libjpeg-turbo:=
-	media-libs/tiff:0
+	media-libs/tiff:=
 	sys-libs/zlib
 	x11-libs/libX11
 	x11-libs/libXScrnSaver
