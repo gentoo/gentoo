@@ -7,7 +7,7 @@ if [[ ${PV} == 9999 ]]; then
 	MATE_BRANCH=9999
 else
 	MATE_BRANCH="$(ver_cut 1-2)"
-	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 fi
 
 DESCRIPTION="Meta package for MATE panel applets"
