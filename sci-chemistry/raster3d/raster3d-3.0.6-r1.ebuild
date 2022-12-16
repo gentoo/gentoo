@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ IUSE="gd tiff"
 
 RDEPEND="
 	gd? ( media-libs/gd[jpeg,png] )
-	tiff? ( media-libs/tiff:0 )"
+	tiff? ( media-libs/tiff:= )"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
