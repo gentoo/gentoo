@@ -27,8 +27,8 @@ BDEPEND="
 RDEPEND="
 	dev-libs/boost:=
 	media-gfx/sane-backends
-	media-libs/tiff
-	virtual/jpeg
+	media-libs/libjpeg-turbo:=
+	media-libs/tiff:=
 	virtual/libusb:1
 	graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
