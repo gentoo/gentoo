@@ -30,7 +30,7 @@ RDEPEND="
 	>=dev-cpp/glog-0.5.0
 	dev-libs/cpuinfo
 	dev-libs/libfmt
-	dev-libs/protobuf
+	dev-libs/protobuf:=
 	dev-libs/pthreadpool
 	dev-libs/sleef
 	sci-libs/lapack
