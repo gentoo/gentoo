@@ -50,7 +50,7 @@ RDEPEND="
 		media-libs/libglvnd[X]
 		media-libs/vulkan-loader[X]
 		|| (
-			>x11-libs/libX11-1.8.2-r1
+			>x11-libs/libX11-1.8.3
 			<x11-libs/libX11-1.8.2-r1
 		)
 		x11-libs/libXcursor
