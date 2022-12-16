@@ -637,7 +637,6 @@ net-mail/vchkuser
 # Please update to Erlang/OTP 25. Removal in 30 days.
 # Bug #864543
 <dev-lang/erlang-25
-<net-misc/rabbitmq-server-3.11.0
 
 # Jaco Kroon <jaco@uls.co.za> (2022-11-05)
 # Some potentially breaking changes here, please check the UPGRADE.txt file.
