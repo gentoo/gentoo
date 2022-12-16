@@ -42,7 +42,7 @@ RDEPEND="
 	svg? ( >=gnome-base/librsvg-2.34:2 )
 	webp? ( >=media-libs/libwebp-0.2.0:= )
 	jpegxl? ( >=media-libs/libjxl-0.3.0 )
-	heif? ( >=media-libs/libheif-1.11:0= )
+	heif? ( >=media-libs/libheif-1.11:= )
 	lcms? ( >=media-libs/lcms-2.6:2 )
 	colord? (
 		>=x11-misc/colord-1.3
@@ -50,7 +50,7 @@ RDEPEND="
 	)
 
 	sys-libs/zlib
-	media-libs/libjpeg-turbo:0=
+	media-libs/libjpeg-turbo:=
 	tiff? ( media-libs/tiff:= )
 	media-libs/libpng:0=
 	>=gnome-base/gsettings-desktop-schemas-0.1.4
