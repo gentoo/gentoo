@@ -29,3 +29,7 @@ RDEPEND="
 	yara? ( >=dev-python/yara-python-3.8.0[${PYTHON_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-dont-install-tests.patch"
+)
