@@ -59,8 +59,8 @@ RDEPEND="${PYTHON_DEPS}
 	media-gfx/exiv2:=
 	media-libs/lcms
 	media-libs/libjpeg-turbo:=
-	media-libs/libpng:0=
-	media-libs/tiff:0
+	media-libs/libpng:=
+	media-libs/tiff:=
 	sys-libs/zlib
 	virtual/opengl
 	x11-libs/libX11
