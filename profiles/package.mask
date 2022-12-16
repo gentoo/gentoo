@@ -633,11 +633,6 @@ dev-python/pytest-html
 # Removal after 2023-01-01.  Bug #881249.
 net-mail/vchkuser
 
-# Matthew Smith <matthew@gentoo.org> (2022-11-13)
-# Please update to Erlang/OTP 25. Removal in 30 days.
-# Bug #864543
-<dev-lang/erlang-25
-
 # Jaco Kroon <jaco@uls.co.za> (2022-11-05)
 # Some potentially breaking changes here, please check the UPGRADE.txt file.
 # Most important:  chan_sip no longer builds by default, if you've migrated to
