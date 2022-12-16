@@ -24,8 +24,8 @@ RDEPEND="
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	>=media-libs/libsdl-1.2.15-r4[${MULTILIB_USEDEP}]
 	png? ( media-libs/libpng:0[${MULTILIB_USEDEP}] )
-	jpeg? ( virtual/jpeg:0[${MULTILIB_USEDEP}] )
-	tiff? ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
+	tiff? ( media-libs/tiff:=[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 

@@ -27,7 +27,7 @@ RDEPEND="
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	png? ( media-libs/libpng[${MULTILIB_USEDEP}] )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
-	tiff? ( media-libs/tiff[${MULTILIB_USEDEP}] )
+	tiff? ( media-libs/tiff:=[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
