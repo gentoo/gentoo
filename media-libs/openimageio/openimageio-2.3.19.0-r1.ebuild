@@ -6,7 +6,7 @@ EAPI=8
 FONT_PN=OpenImageIO
 PYTHON_COMPAT=( python3_{8..10} )
 
-TEST_OIIO_IMAGE_COMMIT="245e50edede2792205080eadc1dedce33ff5c1e4"
+TEST_OIIO_IMAGE_COMMIT="b85d7a3a10a3256b50325ad310c33e7f7cf2c6cb"
 TEST_OEXR_IMAGE_COMMIT="f17e353fbfcde3406fe02675f4d92aeae422a560"
 inherit cmake font python-single-r1
 
@@ -23,7 +23,7 @@ LICENSE="BSD"
 # TODO: drop .1 on next SONAME change (2.3 -> 2.4?) as we needed to nudge it
 # for changing to openexr 3 which broke ABI.
 SLOT="0/$(ver_cut 1-2).1"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 
 X86_CPU_FEATURES=(
 	aes:aes sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2
@@ -59,7 +59,7 @@ RDEPEND="
 	>=dev-libs/imath-3.1.2-r4:=
 	>=media-libs/opencolorio-2.1.1-r4:=
 	>=media-libs/openexr-3:0=
-	media-libs/tiff:0=
+	media-libs/tiff:=
 	sys-libs/zlib:=
 	dicom? ( sci-libs/dcmtk )
 	ffmpeg? ( media-video/ffmpeg:= )
@@ -149,7 +149,6 @@ src_configure() {
 		-DUSE_FREETYPE=$(usex truetype)
 		-DUSE_SIMD=$(local IFS=','; echo "${mysimd[*]}")
 	)
-
 	if use python; then
 		mycmakeargs+=(
 			-DPYTHON_VERSION=${EPYTHON#python}
@@ -158,15 +157,6 @@ src_configure() {
 	fi
 
 	cmake_src_configure
-}
-
-src_test() {
-	# TODO: investigate failures
-	local myctestargs=(
-		-E "(openexr-damaged|openvdb-broken|texture-texture3d-broken|texture-texture3d-broken.batch|psd|ptex-broken|raw-broken|rla|targa|tiff-depths|zfile|unit_simd)"
-	)
-
-	cmake_src_test
 }
 
 src_install() {

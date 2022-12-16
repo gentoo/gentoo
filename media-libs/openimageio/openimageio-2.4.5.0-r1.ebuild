@@ -57,7 +57,7 @@ RDEPEND="
 	>=dev-libs/imath-3.1.2-r4:=
 	>=media-libs/opencolorio-2.1.1-r4:=
 	>=media-libs/openexr-3:0=
-	media-libs/tiff:0=
+	media-libs/tiff:=
 	sys-libs/zlib:=
 	dicom? ( sci-libs/dcmtk )
 	ffmpeg? ( media-video/ffmpeg:= )
@@ -162,7 +162,7 @@ src_configure() {
 src_test() {
 	# TODO: investigate failures
 	local myctestargs=(
-		-E "(oiiotool|maketx|oiiotool-maketx|texture-crop|texture-crop.batch|texture-half|texture-half.batch|texture-uint16|texture-uint16.batch|texture-interp-bilinear|texture-interp-bilinear.batch|texture-interp-closest|texture-interp-closest.batch|texture-levels-stochaniso|texture-levels-stochaniso.batch|texture-levels-stochmip|texture-levels-stochmip.batch|texture-mip-onelevel|texture-mip-onelevel.batch|texture-mip-stochastictrilinear|texture-mip-stochastictrilinear.batch|texture-mip-stochasticaniso|texture-mip-stochasticaniso.batch|texture-uint8|texture-uint8.batch|texture-skinny|texture-skinny.batch|texture-icwrite|texture-icwrite.batch|jpeg2000-broken|openexr-damaged|openvdb-broken|texture-texture3d-broken|texture-texture3d-broken.batch|psd|ptex-broken|raw-broken|targa|tiff-depths|zfile|unit_simd|cineon|dds|openvdb.batch-broken|texture-texture3d.batch-broken|cmake-consumer|texture-udim|texture-udim2|texture-udim.batch|texture-udim2.batch)"
+		-E "(oiiotool|maketx|oiiotool-maketx|texture-crop|texture-crop.batch|texture-half|texture-half.batch|texture-uint16|texture-uint16.batch|texture-interp-bilinear|texture-interp-bilinear.batch|texture-interp-closest|texture-interp-closest.batch|texture-levels-stochaniso|texture-levels-stochaniso.batch|texture-levels-stochmip|texture-levels-stochmip.batch|texture-mip-onelevel|texture-mip-onelevel.batch|texture-mip-stochastictrilinear|texture-mip-stochastictrilinear.batch|texture-mip-stochasticaniso|texture-mip-stochasticaniso.batch|texture-uint8|texture-uint8.batch|texture-skinny|texture-skinny.batch|texture-icwrite|texture-icwrite.batch|jpeg2000-broken|openexr-damaged|openvdb-broken|texture-texture3d-broken|texture-texture3d-broken.batch|psd|ptex-broken|raw-broken|targa|tiff-depths|zfile|unit_simd|cineon|dds|openvdb.batch-broken|texture-texture3d.batch-broken)"
 	)
 
 	cmake_src_test
