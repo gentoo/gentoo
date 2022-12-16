@@ -26,7 +26,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	virtual/opengl
 	dns? ( net-libs/udns )
-	gdal? ( sci-libs/gdal )
+	gdal? ( sci-libs/gdal:= )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
