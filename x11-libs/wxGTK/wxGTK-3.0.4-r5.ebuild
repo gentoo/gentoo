@@ -37,7 +37,7 @@ RDEPEND="
 		)
 		libnotify? ( x11-libs/libnotify[${MULTILIB_USEDEP}] )
 		opengl? ( virtual/opengl[${MULTILIB_USEDEP}] )
-		tiff?   ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
+		tiff?   ( media-libs/tiff:=[${MULTILIB_USEDEP}] )
 	)"
 DEPEND="
 	${RDEPEND}
