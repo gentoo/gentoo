@@ -122,7 +122,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 		jpeg? ( media-libs/libjpeg-turbo:0= )
 		png? ( >=media-libs/libpng-1.4:0= )
 		svg? ( >=gnome-base/librsvg-2.0 )
-		tiff? ( media-libs/tiff:0 )
+		tiff? ( media-libs/tiff:= )
 		webp? ( media-libs/libwebp:0= )
 		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= )
 		!aqua? (
