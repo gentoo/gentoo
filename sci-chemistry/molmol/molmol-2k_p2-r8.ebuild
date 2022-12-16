@@ -36,8 +36,8 @@ RDEPEND="
 		media-libs/mesa[motif(-),X(+)]
 	)
 	media-libs/libjpeg-turbo:=
-	media-libs/libpng:0=
-	media-libs/tiff:0
+	media-libs/libpng:=
+	media-libs/tiff:=
 	sys-libs/zlib
 	virtual/glu
 	x11-libs/libXpm
