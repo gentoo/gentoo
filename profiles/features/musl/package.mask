@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-12-17)
+# Segfaults when building on musl, bug #885501
+>=sys-devel/gcc-12.2.1_p20221203:12
+
 # Andrey Grozin <grozin@gentoo.org> (2022-12-01)
 # These packages depend on dev-lisp/sbcl unconditionally
 app-emacs/sly
