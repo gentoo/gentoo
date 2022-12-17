@@ -27,20 +27,21 @@ src_install() {
 		MimeType=x-scheme-handler/mailto;
 	EOF
 
+	# The Desktop Entry Specification does not allow field codes like %u
+	# inside a quoted argument, therefore we need a shell wrapper.
+	# We want to pass a literal '"(message-mailto \"$1\")"' in the -c
+	# command, but in the desktop entry '"', '\', and '$' must be escaped
+	# as '\\"', '\\\\', and '\\$', respectively. Yet another level of
+	# backslash escapes is needed for '\' and '$' in the here-document.
 	newmenu - emacsclient-mail.desktop <<-EOF
 		[Desktop Entry]
 		Type=Application
 		Name=Emacsclient (mail)
 		NoDisplay=true
-		Exec=${EPREFIX}/usr/libexec/emacs/emacsclient-mail-wrapper.sh %u
+		Exec=${EPREFIX}/bin/bash -c "exec ${EPREFIX}/usr/bin/emacsclient \
+--eval \\\\"(message-mailto \\\\\\\\\\\\"\\\\\$1\\\\\\\\\\\\")\\\\"" bash %u
 		Terminal=false
 		MimeType=x-scheme-handler/mailto;
-	EOF
-
-	exeinto /usr/libexec/emacs
-	newexe - emacsclient-mail-wrapper.sh <<-EOF
-		#!${EPREXIX}/bin/bash
-		exec ${EPREFIX}/usr/bin/emacsclient --eval "(message-mailto \\"\$1\\")"
 	EOF
 }
 
