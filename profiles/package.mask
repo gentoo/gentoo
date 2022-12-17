@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2022-12-17)
+# No longer downloadable.  Pending version bump with no reply from
+# the maintainer.
+# Removal on 2023-01-16.  Bug #786912.
+media-gfx/iscan-plugin-network-nt
+
+# Michał Górny <mgorny@gentoo.org> (2022-12-17)
 # Merged into sys-apps/util-linux.
 # Removal on 2023-01-16.  Bug #867220.
 net-wireless/rfkill
