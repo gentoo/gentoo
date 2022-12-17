@@ -5,7 +5,7 @@ EAPI=8
 
 inherit check-reqs toolchain-funcs unpacker
 
-DRIVER_PV="520.61.05"
+DRIVER_PV="515.43.04"
 
 DESCRIPTION="NVIDIA CUDA Toolkit (compiler and friends)"
 HOMEPAGE="https://developer.nvidia.com/cuda-zone"
@@ -31,6 +31,10 @@ RDEPEND="
 		|| (
 			dev-libs/openssl-compat:1.1.1
 			=dev-libs/openssl-1.1.1*
+		)
+		|| (
+			media-libs/tiff-compat:4
+			media-libs/tiff:0/0
 		)
 		sys-libs/zlib
 	)
@@ -67,7 +71,7 @@ src_install() {
 	local builddirs=(
 		builds/cuda_{cccl,cudart,cuobjdump,cuxxfilt,memcheck,nvcc,nvdisasm,nvml_dev,nvprune,nvrtc,nvtx}
 		builds/lib{cublas,cufft,curand,cusolver,cusparse,npp,nvjpeg}
-		$(usex profiler "builds/cuda_nvprof builds/cuda_cupti builds/cuda_profiler_api" "")
+		$(usex profiler "builds/cuda_nvprof builds/cuda_cupti" "")
 		$(usex vis-profiler "builds/cuda_nvvp" "")
 		$(usex debugger "builds/cuda_gdb" "")
 	)
