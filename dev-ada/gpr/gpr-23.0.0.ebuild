@@ -4,13 +4,13 @@
 EAPI=7
 
 ADA_COMPAT=( gnat_2021 gcc_12_2_0 )
-PYTHON_COMPAT=( python3_{6,7,8,9,10,11} pypy3 )
+PYTHON_COMPAT=( python3_{8,9,10,11} )
 
 inherit python-any-r1 ada multiprocessing
 
 DESCRIPTION="LibGPR2 - Parser for GPR Project files"
 HOMEPAGE="https://github.com/AdaCore/gpr"
-SRC_URI="https://github.com/AdaCore/gpr/archive/refs/tags/v${PV}.tar.gz
+SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
