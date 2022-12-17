@@ -14,7 +14,7 @@ SLOT="0"
 IUSE="+colord +cups debug elogind input_devices_wacom modemmanager networkmanager smartcard systemd test wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="^^ ( elogind systemd )"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 COMMON_DEPEND="
 	>=sci-geosciences/geocode-glib-3.10:2
