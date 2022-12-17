@@ -1,0 +1,25 @@
+From b8d2ff44ef16fb395c283d53a1fa723bff818a9a Mon Sep 17 00:00:00 2001
+From: Marco Scardovi <mscardovi@icloud.com>
+Date: Sun, 18 Dec 2022 21:19:26 +0100
+Subject: [PATCH] Drop libs
+
+---
+ OpenRGB.pro                                                   | 2 --
+ 1 files changed, 0 insertions(+), 2 deletions(-)
+
+diff --git a/OpenRGB.pro b/OpenRGB.pro
+index aabbd161..8e644960 100644
+--- a/OpenRGB.pro
++++ b/OpenRGB.pro
+@@ -63,11 +63,9 @@ INCLUDEPATH +=
+     dependencies/CRCpp/                                                                         \
+     dependencies/hueplusplus-1.0.0/include                                                      \
+     dependencies/hueplusplus-1.0.0/include/hueplusplus                                          \
+-    dependencies/httplib                                                                        \
+     dependencies/json/                                                                          \
+     dependencies/libe131/src/                                                                   \
+     dependencies/libcmmk/include/                                                               \
+-    dependencies/mdns                                                                           \
+     i2c_smbus/                                                                                  \
+     i2c_tools/                                                                                  \
+     net_port/                                                                                   \
