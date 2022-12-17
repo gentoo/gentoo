@@ -94,8 +94,13 @@ src_prepare() {
 	# let eclass handle python
 	sed -i '/setup.py/d' misc/Makefile || die
 
-	# live version lacks pre-generated docs
-	[[ ${PV} != *9999 ]] || ${EPYTHON} scripts/asciidoc2html.py || die
+	if [[ ${PV} == *9999 ]]; then
+		# call asciidoc(1) rather than the single target python module
+		sed '/cmdline = /s/= .*/= ["asciidoc"]/' \
+			-i scripts/asciidoc2html.py || die
+
+		"${EPYTHON}" scripts/asciidoc2html.py || die
+	fi
 
 	# disable unnecessary tests/plugins that need extras (_ignore not enough)
 	sed -e '/pytest-benchmark/d' -e 's/--benchmark[^ ]*//' \
