@@ -10,6 +10,7 @@
 		<flag name="vies">Enable VIES</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">arthurdejong/python-stdnum</remote-id>
 		<remote-id type="pypi">python-stdnum</remote-id>
 	</upstream>
 </pkgmetadata>
