@@ -27,7 +27,7 @@ S="${WORKDIR}/disruptor-${PV}"
 JAVA_SRC_DIR="src/main"
 
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
-JAVA_TEST_SRC_DIR="src/test"
+JAVA_TEST_SRC_DIR="src/test/java"
 JAVA_TEST_EXCLUDES=(
 	# valid test classes have pattern *Test with nothing behind
 	com.lmax.disruptor.dsl.stubs.TestWorkHandler # No runnable methods
