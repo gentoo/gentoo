@@ -3,8 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-inherit python-any-r1 systemd tmpfiles
+inherit multiprocessing systemd tmpfiles
 
 MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"
@@ -15,11 +14,12 @@ RRL_PV="${MY_PV}"
 DESCRIPTION="Berkeley Internet Name Domain - Name Server"
 HOMEPAGE="https://www.isc.org/software/bind"
 SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+caps dnsrps dnstap doc doh fixed-rrset idn geoip gssapi lmdb selinux static-libs test xml"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+IUSE="+caps dnsrps dnstap doc doh fixed-rrset idn jemalloc geoip gssapi lmdb selinux static-libs test xml"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -30,8 +30,11 @@ DEPEND="
 	sys-libs/zlib
 	dev-libs/openssl:=[-bindist(-)]
 	caps? ( >=sys-libs/libcap-2.1.0 )
-	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c )
-	doh? ( net-libs/nghttp2 )
+	dnstap? (
+		dev-libs/fstrm
+		dev-libs/protobuf-c
+	)
+	doh? ( net-libs/nghttp2:= )
 	geoip? ( dev-libs/libmaxminddb )
 	gssapi? ( virtual/krb5 )
 	idn? ( net-dns/libidn2 )
@@ -39,21 +42,21 @@ DEPEND="
 	lmdb? ( dev-db/lmdb )
 	xml? ( dev-libs/libxml2 )
 "
-BDEPEND="
-	test? (
-		${PYTHON_DEPS}
-		dev-python/pytest
-		dev-perl/Net-DNS-SEC
-		dev-util/cmocka
-	)
-"
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	selinux? ( sec-policy/selinux-bind )
 	sys-process/psmisc
-	!net-dns/bind-tools
+	!<net-dns/bind-tools-9.18.0
 "
-
-S="${WORKDIR}/${MY_P}"
+# sphinx required for man-page and html creation
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( dev-python/sphinx )
+	test? (
+		dev-util/cmocka
+		dev-util/kyua
+	)
+"
 
 src_configure() {
 	local myeconfargs=(
@@ -85,12 +88,9 @@ src_configure() {
 }
 
 src_test() {
-	# "${WORKDIR}/${P}"/bin/tests/system/README
-	# ifconfig.sh up and then down as root
-	#default
-
-	# just run the tests that dont mock around with IPs
-	emake -C lib/ check
+	# system tests ('emake test') require network configuration for IPs etc
+	# so we run the unit tests instead.
+	TEST_PARALLEL_JOBS="$(makeopts_jobs)" emake unit
 }
 
 src_install() {
@@ -152,13 +152,6 @@ pkg_postinst() {
 	einfo
 	einfo "You can edit /etc/conf.d/named to customize named settings"
 	einfo
-
-	use mysql || use postgres || use ldap && {
-		elog "If your named depends on MySQL/PostgreSQL or LDAP,"
-		elog "uncomment the specified rc_named_* lines in your"
-		elog "/etc/conf.d/named config to ensure they'll start before bind"
-		einfo
-	}
 
 	einfo "If you'd like to run bind in a chroot AND this is a new"
 	einfo "install OR your bind doesn't already run in a chroot:"
