@@ -50,10 +50,6 @@ DEPEND="
 
 need_httpd_cgi # From webapp.eclass
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-no-chmod-r2.patch
-)
-
 src_install() {
 	webapp_src_preinst
 

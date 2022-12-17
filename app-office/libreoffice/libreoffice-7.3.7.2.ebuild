@@ -294,6 +294,9 @@ PATCHES=(
 
 	# 7.4 branch
 	"${FILESDIR}/${PN}-7.3.5.2-gpgme-1.18.0.patch"
+
+	# backport
+	"${FILESDIR}/${P}-boost-1.81-locale.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"

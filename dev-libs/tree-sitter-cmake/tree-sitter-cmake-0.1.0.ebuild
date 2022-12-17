@@ -5,7 +5,7 @@ EAPI=8
 
 inherit tree-sitter-grammar
 
-DESCRIPTION="C grammar for Tree-sitter"
+DESCRIPTION="CMake grammar for tree-sitter"
 HOMEPAGE="https://github.com/uyha/tree-sitter-cmake"
 SRC_URI="https://github.com/uyha/tree-sitter-cmake/archive/${PV}.tar.gz -> ${P}.tar.gz"
 

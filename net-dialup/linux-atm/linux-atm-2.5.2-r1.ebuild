@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
-BDEPEND="app-alternatives/yacc"
+BDEPEND="sys-devel/bison"
 
 RESTRICT="test"
 
@@ -36,6 +36,7 @@ src_prepare() {
 
 src_configure() {
 	append-flags -fno-strict-aliasing
+	export YACC=bison
 	econf
 }
 
