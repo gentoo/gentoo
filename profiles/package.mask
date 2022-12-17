@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2022-12-17)
+# The new version requires `multipart` that conflicts
+# with dev-python/python-multipart used by dev-python/starlette.
+# No reverse dependencies.
+# Removal on 2023-01-16.  Bug #886475.
+dev-python/test_server
+
+# Michał Górny <mgorny@gentoo.org> (2022-12-17)
 # Discontinued upstream.  Fails to build for some users.  No reverse
 # dependencies.
 # Removal on 2023-01-16.  Bug #650346.
