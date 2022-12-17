@@ -44,7 +44,7 @@ python_check_deps() {
 src_configure() {
 	emake PROCESSORS=$(makeopts_jobs) \
 		GPR2KBDIR=/usr/share/gprconfig \
-		ENABLE_SHARED=$(usex shared true false) \
+		ENABLE_SHARED=$(usex shared) \
 		setup
 }
 
