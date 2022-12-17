@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,6 +42,12 @@ pkg_pretend() {
 			ewarn "with more recent kernels:"
 			ewarn "# WARNING: CPU: 3 PID: 18172 at fs/btrfs/backref.c:1391 find_parent_nodes+0xc41/0x14e0"
 			ewarn
+		elif kernel_is -lt 5 7 0; then
+			ewarn "With kernel versions below 5.4.96 and 5.7, the kernel may hold file system"
+			ewarn "locks for a long time while at the same time CPU usage increases when bees is"
+			ewarn "operating. bees tries to avoid this behavior by excluding very common extents"
+			ewarn "from deduplication. This has only a minimal impact on dedupe effectiveness."
+			ewarn
 		fi
 		if kernel_is -lt 5 1 0; then
 			ewarn "IMPORTANT: With kernel versions below 5.1.0, you may experience data corruption"
@@ -51,13 +57,21 @@ pkg_pretend() {
 			ewarn "# commit 8e92821 btrfs: fix corruption reading shared and compressed extents after hole punching"
 			ewarn
 		fi
-		if kernel_is -lt 5 3 4; then
-			ewarn "With kernel versions below 5.3.4, bees may trigger a btrfs bug when running"
+		if kernel_is -lt 5 4 19; then
+			ewarn "With kernel versions below 5.4.19, bees may trigger a btrfs bug when running"
 			ewarn "btrfs-balance in parallel. This may lead to meta-data corruption in the worst"
 			ewarn "case. Especially, kernels 5.1.21 and 5.2.21 should be avoided. Kernels 5.0.x"
 			ewarn "after 5.0.21 should be safe. In the best case, affected kernels may force"
 			ewarn "the device RO without writing corrupted meta-data. More details:"
 			ewarn "https://github.com/Zygo/bees/blob/master/docs/btrfs-kernel.md"
+			ewarn
+		fi
+		if kernel_is -ge 5 4 0; then
+			ewarn "With kernel version 5.4 or later, the kernel may hang when multiple threads"
+			ewarn "are running LOGICAL_INO and dedupe ioctl. This is not exclusively triggered"
+			ewarn "by bees but also other software running such operations, bees will just more"
+			ewarn "likely to trigger the bug. You can work around this issue by reducing the"
+			ewarn "thread count of bees to 1."
 			ewarn
 		fi
 
