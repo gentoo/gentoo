@@ -48,6 +48,8 @@ src_prepare() {
 }
 
 src_configure() {
+	export LEX=flex
+
 	econf \
 		$(use_with ncurses) \
 		$(use_with numa) \
