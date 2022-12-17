@@ -97,7 +97,7 @@ linux)
 		i[0-9]86*|\
 		x86_64*:x86)  machine=elf;;
 		ia64*)        machine=ia64;;
-		loongarch64*) machine="generic64 -DL_ENDIAN";;
+		loongarch64*) machine="loongarch64 -DL_ENDIAN" system=linux64;;
 		m68*)         machine="latomic -DB_ENDIAN";;
 		mips*el*:o32) machine="mips32 -DL_ENDIAN";;
 		mips*:o32)    machine="mips32 -DB_ENDIAN";;
