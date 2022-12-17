@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2022-12-17)
+# Broken when trying to use sys-libs/binutils-libs header, bug #879067
+>=x11-libs/cairo-1.17.6 debug
+
 # John Helmert III <ajak@gentoo.org> (2022-11-29)
 # sys-apps/ucspi-ssl is last rited
 mail-mta/netqmail pop3
