@@ -26,7 +26,7 @@ SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd
 
 LICENSE="google-chrome"
 SLOT="0"
-IUSE="selinux"
+IUSE="qt5 selinux"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
@@ -36,7 +36,6 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	>=dev-libs/nss-3.26
-	dev-libs/wayland
 	media-fonts/liberation-fonts
 	media-libs/alsa-lib
 	media-libs/mesa[gbm(+)]
@@ -63,6 +62,11 @@ RDEPEND="
 	x11-libs/libxshmfence
 	x11-libs/pango
 	x11-misc/xdg-utils
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5[X]
+		dev-qt/qtwidgets:5
+	)
 	selinux? ( sec-policy/selinux-chromium )
 "
 
@@ -106,6 +110,10 @@ src_install() {
 	pushd "${CHROME_HOME}/locales" > /dev/null || die
 	chromium_remove_language_paks
 	popd > /dev/null || die
+
+	if ! use qt5; then
+		rm "${CHROME_HOME}/libqt5_shim.so" || die
+	fi
 
 	local suffix=
 	[[ ${PN} == google-chrome-beta ]] && suffix=_beta
