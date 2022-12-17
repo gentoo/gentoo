@@ -10,6 +10,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">fonttools/pyclipper</remote-id>
 		<remote-id type="pypi">pyclipper</remote-id>
 	</upstream>
 </pkgmetadata>
