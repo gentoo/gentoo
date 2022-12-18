@@ -11,7 +11,7 @@ SRC_URI="https://github.com/vrothberg/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD GPL-3+ MIT MIT-with-advertising"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # golangci-lint is required to run tests which is not yet packaged
 RESTRICT="strip test"
