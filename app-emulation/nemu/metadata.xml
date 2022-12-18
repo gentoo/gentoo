@@ -14,11 +14,10 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="vnc-client">Adds support for external VNC client</flag>
-		<flag name="savevm">Adds support for QEMU savevm snapshots (experimental, QEMU must be patched)</flag>
-		<flag name="spice">Adds Spice protocol support</flag>
 		<flag name="ovf">Adds support for OVA/OVF import</flag>
 		<flag name="network-map">Adds possibility of exporting network map to SVG</flag>
 		<flag name="remote-api">Adds API for remote control</flag>
+		<flag name="spice">Adds Spice protocol support</flag>
+		<flag name="vnc-client">Adds support for external VNC client</flag>
 	</use>
 </pkgmetadata>
