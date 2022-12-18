@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>alicef@gentoo.org</email>
-	<name>Alice Ferrazzi</name>
-</maintainer>
-<longdescription>
-shmux is program for executing the same command on many hosts in parallel.
-For each target, a child process is spawned by shmux, and a shell on the
-target obtained one of the supported methods: rsh, ssh, or sh. The output
-produced by the children is received by shmux and either (optionally)
-output in turn to the user, and/or written to files for later processing.
-The list of targets may either be specified on the command line or be read
-from the standard input.
-</longdescription>
+	<maintainer type="person">
+		<email>alicef@gentoo.org</email>
+		<name>Alice Ferrazzi</name>
+	</maintainer>
+	<longdescription>
+	shmux is program for executing the same command on many hosts in parallel.
+	For each target, a child process is spawned by shmux, and a shell on the
+	target obtained one of the supported methods: rsh, ssh, or sh. The output
+	produced by the children is received by shmux and either (optionally)
+	output in turn to the user, and/or written to files for later processing.
+	The list of targets may either be specified on the command line or be read
+	from the standard input.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">shmux/shmux</remote-id>
+	</upstream>
 </pkgmetadata>
