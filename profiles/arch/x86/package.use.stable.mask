@@ -23,8 +23,9 @@ dev-lang/python-exec -python_targets_python3_11
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-09-14)
 # sci-libs/vtk is not stable on x86 and we don't want to complicate
-# newer maxima stabilisation, bug #867547
+# newer maxima and geant stabilisation, bug #867547, #886975
 sci-mathematics/maxima vtk
+sci-physics/geant vtk
 
 # Sam James <sam@gentoo.org> (2022-07-06)
 # sci-libs/sundials is not marked stable on x86
