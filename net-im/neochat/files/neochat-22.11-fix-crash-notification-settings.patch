@@ -1,0 +1,61 @@
+From 6b3f44e9232bd1bf49752934a896a9aa3afe5a65 Mon Sep 17 00:00:00 2001
+From: James Graham <james.h.graham@protonmail.com>
+Date: Sun, 11 Dec 2022 11:53:21 +0000
+Subject: [PATCH] Fix crash when opening notification settings with no account
+ by making sure that the keyword model doesn't try to update the noficiation
+ settings when there is no active connection. Also make sure that ability to
+ add a keyword or change the global notiifcaiton state is disabled without an
+ active connection as these will cause the same crash.
+
+---
+ src/keywordnotificationrulemodel.cpp         | 4 +++-
+ src/qml/Settings/GlobalNotificationsPage.qml | 4 +++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/keywordnotificationrulemodel.cpp b/src/keywordnotificationrulemodel.cpp
+index a15f4aa0..e9ac6145 100644
+--- a/src/keywordnotificationrulemodel.cpp
++++ b/src/keywordnotificationrulemodel.cpp
+@@ -15,7 +15,9 @@
+ KeywordNotificationRuleModel::KeywordNotificationRuleModel(QObject *parent)
+     : QAbstractListModel(parent)
+ {
+-    controllerConnectionChanged();
++    if (Controller::instance().activeConnection()) {
++        controllerConnectionChanged();
++    }
+     connect(&Controller::instance(), &Controller::activeConnectionChanged, this, &KeywordNotificationRuleModel::controllerConnectionChanged);
+ }
+ 
+diff --git a/src/qml/Settings/GlobalNotificationsPage.qml b/src/qml/Settings/GlobalNotificationsPage.qml
+index f81b1a65..ab6bdc3f 100644
+--- a/src/qml/Settings/GlobalNotificationsPage.qml
++++ b/src/qml/Settings/GlobalNotificationsPage.qml
+@@ -23,7 +23,7 @@ Kirigami.ScrollablePage {
+             contentItem: MobileForm.FormCheckDelegate {
+                 text: i18n("Enable notifications for this account")
+                 checked: Config.showNotifications
+-                enabled: !Config.isShowNotificationsImmutable
++                enabled: !Config.isShowNotificationsImmutable && Controller.activeConnection
+                 onToggled: {
+                     Config.showNotifications = checked
+                     Config.save()
+@@ -225,6 +225,7 @@ Kirigami.ScrollablePage {
+                             Layout.fillWidth: true
+ 
+                             placeholderText: i18n("Keyword…")
++                            enabled: NotificationsManager.keywordNotificationAction !== PushNotificationAction.Unknown
+ 
+                             rightActions: Kirigami.Action {
+                                 icon.name: "edit-clear"
+@@ -246,6 +247,7 @@ Kirigami.ScrollablePage {
+                             Accessible.name: text
+                             icon.name: "list-add"
+                             display: QQC2.AbstractButton.IconOnly
++                            enabled: NotificationsManager.keywordNotificationAction !== PushNotificationAction.Unknown
+ 
+                             onClicked: {
+                                 keywordNotificationRuleModel.addKeyword(keywordAddField.text, PushNotificationAction.On)
+-- 
+GitLab
+

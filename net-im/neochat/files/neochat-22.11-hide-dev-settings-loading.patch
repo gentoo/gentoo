@@ -1,0 +1,41 @@
+From 25c7b7b780d2913c323b8c048e8999ea9f72997f Mon Sep 17 00:00:00 2001
+From: James Graham <james.h.graham@protonmail.com>
+Date: Sun, 11 Dec 2022 16:47:16 +0000
+Subject: [PATCH] Hide loading item and show info message when on the devices
+ page and not logged in.
+
+---
+ src/qml/Settings/DevicesPage.qml | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/qml/Settings/DevicesPage.qml b/src/qml/Settings/DevicesPage.qml
+index dd3f2eab..71a9d950 100644
+--- a/src/qml/Settings/DevicesPage.qml
++++ b/src/qml/Settings/DevicesPage.qml
+@@ -27,7 +27,7 @@ Kirigami.ScrollablePage {
+                 }
+                 MobileForm.AbstractFormDelegate {
+                     Layout.fillWidth: true
+-                    visible: deviceRepeater.count === 0 // We can assume 0 means loading since there is at least one device
++                    visible: Controller.activeConnection && deviceRepeater.count === 0 // We can assume 0 means loading since there is at least one device
+                     contentItem: Kirigami.LoadingPlaceholder { }
+                 }
+                 Repeater {
+@@ -160,6 +160,14 @@ Kirigami.ScrollablePage {
+                 }
+             }
+         }
++        Kirigami.InlineMessage {
++            Layout.fillWidth: true
++            Layout.maximumWidth: Kirigami.Units.gridUnit * 30
++            Layout.alignment: Qt.AlignHCenter
++            text: i18n("Please login to view the signed-in devices for your account.")
++            type: Kirigami.MessageType.Information
++            visible: !Controller.activeConnection
++        }
+     }
+ 
+     Kirigami.OverlaySheet {
+-- 
+GitLab
+
