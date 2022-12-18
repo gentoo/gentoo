@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}/Methane-${PV}"
 
 RDEPEND="
-	dev-games/clanlib:4.1[opengl]
+	dev-games/clanlib:4.1[opengl,sound]
 	media-libs/libmikmod
 "
 DEPEND="${RDEPEND}"
