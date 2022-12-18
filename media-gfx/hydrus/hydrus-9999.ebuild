@@ -58,6 +58,7 @@ RDEPEND="
 		dev-python/twisted[${PYTHON_USEDEP}]
 		media-libs/opencv[python,png,jpeg,${PYTHON_USEDEP}]
 		media-video/ffmpeg
+		media-video/mpv[libmpv,${PYTHON_USEDEP}]
 
 		>=dev-python/QtPy-1.9.0-r4[pyside2,${PYTHON_USEDEP}]
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
@@ -83,10 +84,12 @@ src_prepare() {
 
 	# Contains pre-built binaries for other systems and a broken swf renderer for linux
 	rm -r bin/ || die
-	# Build files used for CI, not actually needed
-	rm -r static/build_files || die
-	# Python requirements files, not needed
-	rm requirements_*.txt || die
+	# Build files used for CI and development, not actually needed
+	rm -r static/build_files static/requirements || die
+	# Python requirements file, not needed
+	rm requirements.txt || die
+	# Remove unneeded additional scripts
+	rm *.command *.sh *.bat || die
 }
 
 src_compile() {
