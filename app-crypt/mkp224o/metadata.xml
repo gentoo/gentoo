@@ -6,7 +6,7 @@
     <name>Matthew Smith</name>
   </maintainer>
   <use>
-    <flag name="pcre2">Search with a regex instead of prefix/suffix matching</flag>
+    <flag name="pcre">Search with a regex instead of prefix/suffix matching</flag>
   </use>
   <upstream>
     <remote-id type="github">cathugger/mkp224o</remote-id>

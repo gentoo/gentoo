@@ -10,11 +10,11 @@ SRC_URI="https://github.com/cathugger/${PN}/releases/download/v${PV}/${PN}-${PV}
 LICENSE="CC0-1.0"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="cpu_flags_x86_sse2 pcre2"
+IUSE="cpu_flags_x86_sse2 pcre"
 
 DEPEND="
 	dev-libs/libsodium:=
-	pcre2? ( dev-libs/libpcre2:= )
+	pcre? ( dev-libs/libpcre2:= )
 "
 RDEPEND="${DEPEND}"
 
@@ -22,7 +22,7 @@ DOCS=( OPTIMISATION.txt README.md )
 
 src_configure() {
 	local myeconfargs=(
-		--enable-regex=$(usex pcre2)
+		--enable-regex=$(usex pcre)
 		--enable-statistics
 	)
 	use cpu_flags_x86_sse2 && myeconfargs+=( --enable-donna-sse2 )
