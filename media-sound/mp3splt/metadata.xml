@@ -6,6 +6,7 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">mp3splt/mp3splt</remote-id>
 		<remote-id type="sourceforge">mp3splt</remote-id>
 	</upstream>
 </pkgmetadata>
