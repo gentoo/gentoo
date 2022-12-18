@@ -1,0 +1,36 @@
+From: http://git.dev.opencascade.org/gitweb/?p=occt.git;a=commitdiff_plain;h=7f523af8e8a63ee17d8fc26f107c191cd51dcd44;hp=0b4962a7f04caef12d090d087b7196cefde0703c
+
+From: Aiden Grossman <agrossman154@yahoo.com>
+Date: Mon, 10 Oct 2022 18:25:13 +0000 (-0700)
+Subject: Fix naming conflict between X11 headers and VTK 9.2.2+
+X-Git-Url: http://git.dev.opencascade.org/gitweb/?p=occt.git;a=commitdiff_plain;h=7f523af8e8a63ee17d8fc26f107c191cd51dcd44;hp=0b4962a7f04caef12d090d087b7196cefde0703c
+
+Fix naming conflict between X11 headers and VTK 9.2.2+
+
+Currently, the GLX headers include the X11 headers which use a
+preprocessor define to make Status an int. However, VTK has a class
+called Status, and this define replaces this class name with int which
+results in compilation errors. This patch undefs Status and Success,
+which are both defined in the X11 headers if they exist so that there
+are no conflicts within the VTK headers for newer versions.
+---
+
+--- a/src/IVtkDraw/IVtkDraw_Interactor.cxx
++++ b/src/IVtkDraw/IVtkDraw_Interactor.cxx
+@@ -27,6 +27,16 @@
+ #undef AllValues
+ #endif
+ 
++// Prevent naming collisions between X11
++// and VTK versions 9.2.0 and above.
++// X11 is included through glx
++#ifdef Status
++#undef Status
++#endif
++#ifdef Success
++#undef Success
++#endif
++
+ #include <vtkXRenderWindowInteractor.h>
+ #include <vtkXOpenGLRenderWindow.h>
+ #endif
