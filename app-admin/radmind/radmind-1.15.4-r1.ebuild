@@ -11,7 +11,7 @@ SRC_URI="https://github.com/voretaq7/radmind/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="pam zlib"
 
 DEPEND="
