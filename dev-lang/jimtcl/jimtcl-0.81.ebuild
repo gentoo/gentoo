@@ -4,7 +4,7 @@
 EAPI="8"
 
 SRC_URI="https://github.com/msteveb/jimtcl/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 arm ~arm64 ~m68k ~mips ~s390 ~x86"
+KEYWORDS="~amd64 arm ~arm64 ~m68k ~mips ~s390 x86"
 
 DESCRIPTION="Small footprint implementation of Tcl programming language"
 HOMEPAGE="http://jim.tcl.tk/"
