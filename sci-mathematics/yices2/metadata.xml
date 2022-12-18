@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    Yices 2 is an SMT solver that decides the satisfiability of formulas
+    containing uninterpreted function symbols with equality, real and integer
+    arithmetic, bitvectors, scalar types, and tuples. Yices 2 supports both
+    linear and nonlinear arithmetic. Yices 2 can process input written in the
+    SMT-LIB notation (both versions 2.0 and 1.2 are supported). Alternatively,
+    you can write specifications using Yices 2's own specification language,
+    which includes tuples and scalar types. You can also use Yices 2 as a
+    library in your software.
+  </longdescription>
+  <use>
+    <flag name="mcsat">Enable support for MCSAT</flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/SRI-CSL/yices2/issues/</bugs-to>
+    <remote-id type="github">SRI-CSL/yices2</remote-id>
+  </upstream>
+</pkgmetadata>
