@@ -113,6 +113,7 @@ src_prepare() {
 }
 
 src_configure() {
+	# spotify is not in portage
 	local mycmakeargs=(
 		-DBUILD_WERROR=OFF
 		# force to find crypto++ see bug #548544
@@ -122,6 +123,8 @@ src_configure() {
 		-DCCACHE_EXECUTABLE=OFF
 		-DENABLE_BREAKPAD=OFF  #< disable crash reporting
 		-DENABLE_GIO=ON
+		-DENABLE_SPOTIFY=OFF
+		-DENABLE_SPOTIFY_BLOB=OFF
 		-DUSE_SYSTEM_GMOCK=ON
 		-DUSE_SYSTEM_PROJECTM=ON
 		-DBUNDLE_PROJECTM_PRESETS=OFF
