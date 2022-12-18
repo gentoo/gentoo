@@ -11,7 +11,7 @@ SRC_URI="https://github.com/libofx/libofx/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/10"
-KEYWORDS="~amd64 ~arm64 ppc ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ppc ppc64 ~riscv x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
