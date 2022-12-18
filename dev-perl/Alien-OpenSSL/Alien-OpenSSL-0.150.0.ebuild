@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Alien wrapper for OpenSSL"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=dev-perl/Alien-Build-0.38.0
