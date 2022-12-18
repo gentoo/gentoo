@@ -12,4 +12,8 @@
 		Virtual Machine. STklos can also be compiled as a library and 
 		embedded in an application.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">egallesio/STklos</remote-id>
+		<remote-id type="gitlab">Gallesio/STklos</remote-id>
+	</upstream>
 </pkgmetadata>
