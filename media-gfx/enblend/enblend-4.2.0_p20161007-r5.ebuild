@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~soap/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2+ FDL-1.2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="cpu_flags_x86_sse2 debug doc openmp tcmalloc"
 
 REQUIRED_USE="tcmalloc? ( !debug )"
