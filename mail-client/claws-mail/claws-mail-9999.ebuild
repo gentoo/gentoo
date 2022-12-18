@@ -142,6 +142,8 @@ src_configure() {
 		$(use_enable clamav clamd-plugin)
 		$(use_enable dbus)
 		$(use_enable debug crash-dialog)
+		$(use_enable debug more-addressbook-debug)
+		$(use_enable debug more-ldap-debug)
 		$(use_enable dillo dillo-plugin)
 		$(use_enable doc manual)
 		$(use_enable gdata gdata-plugin)
