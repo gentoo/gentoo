@@ -10,7 +10,7 @@ if [[ "${PV}" == "99999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~jsmolic/distfiles/${P}.tar.xz"
-	KEYWORDS="~amd64 ppc x86"
+	KEYWORDS="amd64 ppc x86"
 fi
 
 DESCRIPTION="A small utility for fast and easy GUI building"
