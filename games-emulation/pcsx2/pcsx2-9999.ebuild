@@ -68,7 +68,6 @@ RDEPEND="
 	)
 	!qt6? (
 		dev-libs/glib:2
-		media-libs/libsamplerate
 		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:3[wayland?]
 		x11-libs/wxGTK:${WX_GTK_VER}[X]
@@ -92,7 +91,6 @@ FILECAPS=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.0-crcs.patch
 	"${FILESDIR}"/${PN}-1.7.3329-lto.patch
-	"${FILESDIR}"/${PN}-1.7.3329-musl.patch
 	"${FILESDIR}"/${PN}-1.7.3329-qt6.patch
 	"${FILESDIR}"/${PN}-1.7.3351-unbundle.patch
 	"${FILESDIR}"/${PN}-1.7.3468-cubeb-automagic.patch
@@ -143,9 +141,6 @@ src_prepare() {
 	# qt6 build doesn't support PACKAGE_MODE and need to set resources location
 	sed -e "/EmuFolders::AppRoot =/s|=.*|= \"${EPREFIX}/usr/share/PCSX2\";|" \
 		-i pcsx2/Frontend/CommonHost.cpp || die
-
-	# non-cubeb pulseaudio is only used for usb-mic without qt6, not output
-	use pulseaudio || :> cmake/FindPulseAudio.cmake || die
 
 	if [[ ${PV} != 9999 ]]; then
 		sed -e '/set(PCSX2_GIT_TAG "")/s/""/"v'${PV}'"/' \
