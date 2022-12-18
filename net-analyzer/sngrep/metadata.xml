@@ -7,7 +7,6 @@
 	<use>
 		<flag name="eep">Enable EEP packet send/receive support</flag>
 		<flag name="gnutls">Use <pkg>net-libs/gnutls</pkg> to parse captured TLS packets</flag>
-		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> to parse captured TLS packets</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">irontec/sngrep</remote-id>
