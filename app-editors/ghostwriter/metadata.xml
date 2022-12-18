@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
 	<maintainer type="person" proxied="yes">
 		<email>reagentoo@gmail.com</email>
 		<name>Dmitry Baranov</name>
@@ -15,5 +19,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">wereturtle/ghostwriter</remote-id>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 </pkgmetadata>
