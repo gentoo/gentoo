@@ -1,0 +1,30 @@
+https://github.com/apertium/apertium/pull/181
+
+From 08578745ba3988ece9596eaca734d08e64bae4e1 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 18 Dec 2022 03:39:58 +0000
+Subject: [PATCH] configure.ac: fix bashism
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+configure scripts need to be runnable with a POSIX-compliant /bin/sh.
+
+On many (but not all!) systems, /bin/sh is provided by Bash, so errors
+like this aren't spotted. Notably Debian defaults to /bin/sh provided
+by dash which doesn't tolerate such bashisms as '=='.
+
+This retains compatibility with bash.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -95,7 +95,7 @@ for version in 23 2b 20 2a 17; do
+   version_flag="-std=c++${version}"
+   AX_CHECK_COMPILE_FLAG([${version_flag}], [break], [version_flag=none])
+ done
+-AS_IF([test "$version_flag" == none], [
++AS_IF([test "$version_flag" = none], [
+   AC_MSG_ERROR([Could not enable at least C++17 - upgrade your compiler])
+ ])
+ CXXFLAGS="$CXXFLAGS ${version_flag}"
