@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Encrypt Data with Cipher Block Chaining Mode"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~mips ~ppc64 ~riscv ~sparc"
+KEYWORDS="~alpha ~amd64 arm64 ~ia64 ~mips ~ppc64 ~riscv ~sparc"
 
 RDEPEND="
 	dev-perl/CryptX
