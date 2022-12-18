@@ -12,7 +12,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/umurmur/umurmur.git"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV/_}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 LICENSE="BSD"
 SLOT="0"
