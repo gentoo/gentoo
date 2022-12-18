@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-12-18)
+# Unstable test dependencies
+dev-util/pkgdev test
+
 # Michał Górny <mgorny@gentoo.org> (2022-11-06)
 # Unmask the target on python-exec while it's masked elsewhere.
 dev-lang/python-exec -python_targets_python3_11
