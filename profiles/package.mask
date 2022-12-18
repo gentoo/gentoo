@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-12-18)
+# Stuck at 2.7.0, no revdeps; removal on 2023-01-19
+dev-libs/rocm-hostcall
+
 # Pacho Ramos <pacho@gentoo.org> (2022-12-18)
 # Dead for ages, still included and barely maintained in bluez[deprecated].
 # See bug #885459
