@@ -13,7 +13,7 @@ S="${WORKDIR}"/${PN}-$(ver_cut 1-3)
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv x86"
+KEYWORDS="~amd64 ppc ~riscv x86"
 
 DEPEND=">=dev-libs/eb-3.3.4"
 RDEPEND="${DEPEND}"
