@@ -10,8 +10,8 @@
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
     </maintainer>
-    <bugs-to>https://github.com/mgorny/python-exec/issues/</bugs-to>
-    <remote-id type="github">mgorny/python-exec</remote-id>
+    <bugs-to>https://github.com/projg2/python-exec/issues/</bugs-to>
+    <remote-id type="github">projg2/python-exec</remote-id>
   </upstream>
   <use>
     <flag name="native-symlinks">
