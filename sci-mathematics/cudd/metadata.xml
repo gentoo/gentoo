@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>
+    CUDD stands for Colorado University Decision Diagram. It is a package for
+    the manipulation of Binary Decision Diagrams (BDDs), Algebraic Decision
+    Diagrams (ADDs) and Zero-suppressed Binary Decision Diagrams (ZDDs).
+  </longdescription>
+</pkgmetadata>
