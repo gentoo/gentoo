@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="Condor's classified advertisement language"
-HOMEPAGE="http://www.cs.wisc.edu/condor/classad/"
+HOMEPAGE="https://research.cs.wisc.edu/htcondor/classad/"
 SRC_URI="ftp://ftp.cs.wisc.edu/condor/classad/c++/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
