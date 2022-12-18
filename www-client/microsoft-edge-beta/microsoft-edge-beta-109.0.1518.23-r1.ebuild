@@ -23,13 +23,10 @@ SRC_URI="https://packages.microsoft.com/repos/edge/pool/main/m/${MY_PN}/${MY_P}_
 LICENSE="microsoft-edge"
 SLOT="0"
 RESTRICT="bindist mirror strip"
-IUSE="+mip"
+IUSE="+mip qt5"
 
 RDEPEND="
-	|| (
-		>=app-accessibility/at-spi2-core-2.46.0:2
-		( app-accessibility/at-spi2-atk dev-libs/atk )
-	)
+	>=app-accessibility/at-spi2-core-2.46.0:2
 	app-misc/ca-certificates
 	dev-libs/expat
 	dev-libs/glib:2
@@ -59,6 +56,11 @@ RDEPEND="
 	x11-libs/pango
 	x11-misc/xdg-utils
 	mip? ( app-crypt/libsecret )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5[X]
+		dev-qt/qtwidgets:5
+	)
 "
 
 QA_PREBUILT="*"
@@ -111,6 +113,10 @@ src_install() {
 
 	if ! use mip; then
 		rm "${EDGE_HOME}"/libmip_{core,protection_sdk}.so || die
+	fi
+
+	if ! use qt5; then
+		rm "${EDGE_HOME}/libqt5_shim.so" || die
 	fi
 
 	pax-mark m "${EDGE_HOME}/msedge"
