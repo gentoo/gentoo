@@ -7,7 +7,9 @@ inherit desktop toolchain-funcs
 
 DESCRIPTION="Port from an old Amiga game"
 HOMEPAGE="https://methane.sourceforge.net/"
-SRC_URI="https://github.com/rombust/Methane/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rombust/Methane/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	https://src.fedoraproject.org/rpms/methane/raw/f37/f/methane.png
+"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -37,7 +39,7 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins resources/*
 
-	newicon docs/puff.gif ${PN}.gif
-	make_desktop_entry ${PN} "Super Methane Brothers" /usr/share/pixmaps/${PN}.gif
+	doicon "${DISTDIR}/${PN}.png"
+	make_desktop_entry ${PN} "Super Methane Brothers"
 	HTML_DOCS="docs/*" dodoc authors.txt history.txt readme.txt
 }
