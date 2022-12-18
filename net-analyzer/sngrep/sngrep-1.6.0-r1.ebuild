@@ -36,7 +36,7 @@ src_configure() {
 	local myeconfargs=(
 		--enable-ipv6
 		--enable-unicode
-
+		--without-pcre
 		$(use_enable eep)
 		$(use_with pcre pcre2)
 		$(use_with ssl $(usex gnutls gnutls openssl))
