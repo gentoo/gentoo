@@ -8,6 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">zeroconf</remote-id>
-    <remote-id type="github">jstasiak/python-zeroconf</remote-id>
+    <remote-id type="github">python-zeroconf/python-zeroconf</remote-id>
   </upstream>
 </pkgmetadata>
