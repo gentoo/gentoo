@@ -362,4 +362,10 @@ pkg_postinst() {
 		elog "If you want remote clients to connect, edit"
 		elog "/etc/sane.d/saned.conf and /etc/hosts.allow"
 	fi
+
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }
