@@ -12,7 +12,7 @@ S="${WORKDIR}/${P/s/S}"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 RDEPEND="
 	app-admin/gkrellm:2[X]
