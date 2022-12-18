@@ -31,7 +31,7 @@ RDEPEND="dev-libs/libev
 	dbus? ( sys-apps/dbus )
 	drm? ( x11-libs/libdrm )
 	opengl? ( virtual/opengl )
-	pcre? ( dev-libs/libpcre )
+	pcre? ( dev-libs/libpcre2:= )
 	!x11-misc/compton"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
