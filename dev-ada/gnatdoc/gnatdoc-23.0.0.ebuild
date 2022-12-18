@@ -13,7 +13,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv,shared,static-libs,static-pic]
@@ -28,6 +28,8 @@ RDEPEND="${ADA_DEPS}
 	dev-ada/xmlada[${ADA_USEDEP},shared,static-libs,static-pic]"
 DEPEND="${RDEPEND}"
 BDEPEND=""
+
+REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 src_compile() {
 	gprbuild -v -j$(makeopts_jobs) -p -P gnat/libgnatdoc.gpr \
