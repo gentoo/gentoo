@@ -14,7 +14,7 @@ SRC_URI="https://github.com/getpelican/pelican/archive/${PV}.tar.gz -> ${P}.gh.t
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="doc examples markdown"
 
 RDEPEND=">=dev-python/docutils-0.16[${PYTHON_USEDEP}]
