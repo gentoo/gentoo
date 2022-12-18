@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mej/libast/archive/refs/tags/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm ~hppa ~ia64 ~mips ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="imlib cpu_flags_x86_mmx pcre"
 
 RDEPEND="
