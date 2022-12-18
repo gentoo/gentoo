@@ -22,9 +22,13 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc examples +geant4 +root test"
 
+# upper version bound for Geant, see https://github.com/vmc-project/vgm/issues/10
 RDEPEND="
 	sci-physics/clhep:=
-	geant4? ( >=sci-physics/geant-4.11[c++17] )
+	geant4? (
+		>=sci-physics/geant-4.11[c++17]
+		<sci-physics/geant-4.11.1[c++17]
+	)
 	root? ( sci-physics/root:=[c++17] )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
