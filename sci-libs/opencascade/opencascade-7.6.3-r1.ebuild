@@ -38,7 +38,7 @@ RDEPEND="
 	media-libs/ftgl
 	virtual/glu
 	virtual/opengl
-	x11-libs/libXmu
+	x11-libs/libX11
 	examples? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -49,7 +49,7 @@ RDEPEND="
 	ffmpeg? ( <media-video/ffmpeg-5:= )
 	freeimage? ( media-libs/freeimage )
 	tbb? ( dev-cpp/tbb:= )
-	vtk? ( <sci-libs/vtk-9.2.0:=[rendering] )
+	vtk? ( <sci-libs/vtk-9.3.0:=[rendering] )
 "
 DEPEND="
 	${RDEPEND}
@@ -68,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.5.1-0006-fix-creation-of-custom.sh-script.patch
 	"${FILESDIR}"/${PN}-7.6.2-avoid-pre-stripping-binaries.patch
 	"${FILESDIR}"/${PN}-7.5.3-tbb-2021.patch
+	"${FILESDIR}"/${PN}-7.7.0-build-against-vtk-9.2.patch
 )
 
 src_prepare() {
@@ -131,18 +132,16 @@ src_configure() {
 	fi
 
 	if use vtk; then
-		if has_version ">=sci-libs/vtk-9.1.0"; then
-			mycmakeargs+=(
-				-D3RDPARTY_VTK_DIR="${ESYSROOT}"/usr
-				-D3RDPARTY_VTK_INCLUDE_DIR="${ESYSROOT}"/usr/include/vtk-9.1
-				-D3RDPARTY_VTK_LIBRARY_DIR="${ESYSROOT}"/usr/$(get_libdir)
-			)
+		mycmakeargs+=(
+			-D3RDPARTY_VTK_DIR="${ESYSROOT}"/usr
+			-D3RDPARTY_VTK_LIBRARY_DIR="${ESYSROOT}"/usr/$(get_libdir)
+		)
+		if has_version ">=sci-libs/vtk-9.2.0"; then
+			mycmakeargs+=( -D3RDPARTY_VTK_INCLUDE_DIR="${ESYSROOT}"/usr/include/vtk-9.2 )
+		elif has_version ">=sci-libs/vtk-9.1.0"; then
+			mycmakeargs+=( -D3RDPARTY_VTK_INCLUDE_DIR="${ESYSROOT}"/usr/include/vtk-9.1 )
 		elif has_version ">=sci-libs/vtk-9.0.0"; then
-			mycmakeargs+=(
-				-D3RDPARTY_VTK_DIR="${ESYSROOT}"/usr
-				-D3RDPARTY_VTK_INCLUDE_DIR="${ESYSROOT}"/usr/include/vtk-9.0
-				-D3RDPARTY_VTK_LIBRARY_DIR="${ESYSROOT}"/usr/$(get_libdir)
-			)
+			mycmakeargs+=( -D3RDPARTY_VTK_INCLUDE_DIR="${ESYSROOT}"/usr/include/vtk-9.0 )
 		fi
 	fi
 
