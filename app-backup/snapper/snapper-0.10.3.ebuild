@@ -38,6 +38,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/cron-confd.patch
 	"${FILESDIR}"/${PN}-0.10.1-testsuite.patch
+	"${FILESDIR}"/${P}-boost-1.81.patch
 )
 
 src_prepare() {
