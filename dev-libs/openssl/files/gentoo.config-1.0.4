@@ -110,7 +110,7 @@ linux)
 		powerpc*le*)  machine="generic32 -DL_ENDIAN";;
 		powerpc*)     machine=ppc;;
 		riscv32*)     machine="generic32 -DL_ENDIAN";;
-		riscv64*)     machine="generic64 -DL_ENDIAN";;
+		riscv64*)     machine="riscv64 -DL_ENDIAN" system=linux64;;
 	#	sh64*)        machine=elf;;
 		sh*b*)        machine="generic32 -DB_ENDIAN";;
 		sh*)          machine="generic32 -DL_ENDIAN";;
