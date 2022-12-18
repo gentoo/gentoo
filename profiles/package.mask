@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (2022-12-18)
+# Dead for ages, still included and barely maintained in bluez[deprecated].
+# See bug #885459
+# Removal: 2023-01-17.  Bug #885459.
+net-wireless/bluez-hcidump
+
 # Michał Górny <mgorny@gentoo.org> (2022-12-17)
 # The new version requires `multipart` that conflicts
 # with dev-python/python-multipart used by dev-python/starlette.
