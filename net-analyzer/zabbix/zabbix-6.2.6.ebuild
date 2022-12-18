@@ -25,7 +25,7 @@ LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
 KEYWORDS="~amd64 ~x86"
-IUSE="agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl oracle +pcre2 +postgres proxy server snmp sqlite ssh static"
+IUSE="agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl oracle +postgres proxy server snmp sqlite ssh static"
 REQUIRED_USE="|| ( agent agent2 frontend proxy server )
 	?? ( gnutls openssl )
 	proxy? ( ^^ ( mysql oracle postgres sqlite ) )
@@ -67,14 +67,12 @@ RDEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.8:* )
 	mysql? ( virtual/mysql )
 	proxy? (
-		!pcre2? ( dev-libs/libpcre )
-		pcre2? ( dev-libs/libpcre2:= )
+		dev-libs/libpcre2:=
 		net-analyzer/fping[suid]
 	)
 	server? (
 		app-admin/webapp-config
-		!pcre2? ( dev-libs/libpcre )
-		pcre2? ( dev-libs/libpcre2:= )
+		dev-libs/libpcre2:=
 		net-analyzer/fping[suid]
 	)
 	frontend? (
@@ -147,6 +145,7 @@ pkg_setup() {
 
 src_configure() {
 	local econf_args=(
+		--with-libpcre2
 		"$(use_enable agent)"
 		"$(use_enable agent2)"
 		"$(use_enable ipv6)"
@@ -168,13 +167,6 @@ src_configure() {
 		"$(use_with sqlite sqlite3)"
 		"$(use_with ssh ssh2)"
 	)
-
-	if use pcre2; then
-		econf_args+=( --with-libpcre2 )
-	else
-		# If pcre2 is not enabled, then use the old pcre library.
-		econf_args+=( --with-libpcre )
-	fi
 
 	econf ${econf_args[@]}
 }
@@ -354,12 +346,6 @@ pkg_postinst() {
 		elog "This will convert database data for use with Node ID"
 		elog "and also adds a local node."
 		elog
-
-		if ! use pcre2; then
-			ewarn "You are using zabbix with dev-libs/libpcre which is deprecated."
-			ewarn "Consider switching to dev-libs/libpcre2 (USE=pcre2) as soon as possible."
-			ewarn "See https://www.zabbix.com/documentation/6.0/en/manual/installation/upgrade_notes_600#pcre2-support"
-		fi
 	fi
 
 	if use proxy; then
