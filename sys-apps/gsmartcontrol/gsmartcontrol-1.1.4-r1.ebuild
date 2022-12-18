@@ -16,7 +16,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="dev-cpp/gtkmm:3.0
-	dev-libs/libpcre:3
+	dev-libs/libpcre:3[cxx]
 	sys-apps/smartmontools"
 RDEPEND="${DEPEND}
 	x11-apps/xmessage"
