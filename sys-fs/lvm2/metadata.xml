@@ -5,11 +5,6 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>agk@redhat.com</email>
-		<name>Alasdair Kergon</name>
-		<description>Upstream Maintainer (please CC on bugs)</description>
-	</maintainer>
 	<use>
 		<flag name="lvm2create-initrd">Install lvm2create_initrd script and pull in <pkg>sys-apps/makedev</pkg> for the /sbin/MAKEDEV command</flag>
 		<flag name="thin">Support for thin volumes</flag>
