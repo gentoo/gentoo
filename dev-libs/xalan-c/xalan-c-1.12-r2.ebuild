@@ -43,6 +43,7 @@ BDEPEND+="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-lto.patch
+	"${FILESDIR}"/${P}-fix-threads.patch
 )
 
 src_configure() {
