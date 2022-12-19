@@ -12,4 +12,7 @@
 		combines the kernel-specific nature of the traditional UNIX crash
 		utility with the source code level debugging capabilities of gdb. 
 	</longdescription>
+	<upstream>
+		<remote-id type="github">crash-utility/crash</remote-id>
+	</upstream>
 </pkgmetadata>
