@@ -131,6 +131,10 @@ DEPEND="${RDEPEND}
 	zeromq? ( net-libs/cppzmq )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-3.10.3.0-fix-fmt-v9.patch" #858659
+)
+
 src_prepare() {
 	xdg_environment_reset #534582
 
