@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit gnome2 python-any-r1
+inherit gnome2 python-any-r1 xdg
 
 DESCRIPTION="GNOME default icon theme"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/adwaita-icon-theme"
@@ -72,6 +72,7 @@ pkg_preinst() {
 	if [[ -d "${EROOT}"/usr/share/cursors/xorg-x11/Adwaita ]] ; then
 		rm -r "${EROOT}"/usr/share/cursors/xorg-x11/Adwaita || die
 	fi
+	xdg_pkg_preinst
 }
 
 src_install() {
