@@ -119,13 +119,13 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.2
 	$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')
-	$(python_gen_cond_dep 'dev-python/pygccxml[${PYTHON_USEDEP}]')
 	virtual/pkgconfig
 	doc? (
 		>=app-doc/doxygen-1.5.7.1
 		dev-libs/mathjax
 	)
 	grc? ( x11-misc/xdg-utils )
+	modtool? ( $(python_gen_cond_dep 'dev-python/pygccxml[${PYTHON_USEDEP}]') )
 	oss? ( virtual/os-headers )
 	test? ( >=dev-util/cppunit-1.9.14 )
 	zeromq? ( net-libs/cppzmq )
