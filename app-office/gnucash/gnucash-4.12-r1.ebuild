@@ -40,7 +40,7 @@ RDEPEND="
 	dev-libs/libxslt
 	aqbanking? (
 		>=net-libs/aqbanking-6[ofx?]
-		sys-libs/gwenhywfar:=
+		>=sys-libs/gwenhywfar-4.20.0:=
 		smartcard? ( sys-libs/libchipcard )
 	)
 	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
@@ -54,7 +54,7 @@ RDEPEND="
 		dev-db/libdbi
 		dev-db/libdbi-drivers[mysql]
 	)
-	ofx? ( >=dev-libs/libofx-0.9.1:= )
+	ofx? ( >=dev-libs/libofx-0.9.12:= )
 	postgres? (
 		dev-db/libdbi
 		dev-db/libdbi-drivers[postgres]
@@ -75,17 +75,20 @@ RDEPEND="
 		dev-db/libdbi-drivers[sqlite]
 	)
 "
+
+# gtest is a required dep
+# see https://bugs.gnucash.org/show_bug.cgi?id=795250
 DEPEND="
 	${RDEPEND}
 	>=sys-devel/gettext-0.20
 	dev-lang/perl
 	dev-perl/XML-Parser
 	sys-devel/libtool
-	test? ( >=dev-cpp/gtest-1.8.0 )
+	>=dev-cpp/gtest-1.8.0
 "
 BDEPEND="
 	dev-lang/swig
-	dev-util/cmake
+	>=dev-util/cmake-3.10
 	virtual/pkgconfig
 "
 PDEPEND="
@@ -96,12 +99,12 @@ PDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.8-examples-subdir.patch
-	"${FILESDIR}"/${PN}-3.8-exclude-license.patch
-	"${FILESDIR}"/${P}-drop-broken-test.patch
+	"${FILESDIR}/${PN}-3.8-examples-subdir.patch"
+	"${FILESDIR}/${PN}-3.8-exclude-license.patch"
+	"${FILESDIR}/${P}-drop-broken-test.patch"
 	# will be fixed on future version, see
 	# https://github.com/Gnucash/gnucash/pull/1472
-	"${FILESDIR}"/${P}-fix-test.patch
+	"${FILESDIR}/${P}-fix-test.patch"
 )
 
 # guile generates ELF files without use of C or machine code
@@ -134,7 +137,7 @@ src_prepare() {
 		libgnucash/backend/xml/test/test-xml-pricedb.cpp
 	)
 	for x in "${fixtestfiles[@]}"; do
-		sed -i -e "s|\"/tmp/|\"${T}/|g" "${S}/${x}" || die "sed of "${S}/${x}" failed"
+		sed -i -e "s|\"/tmp/|\"${T}/|g" "${S}/${x}" || die "sed of ${S}/${x} failed"
 	done
 }
 
@@ -208,11 +211,6 @@ pkg_postinst() {
 	fi
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-
-	ewarn "Backup all financial files or databases before using GnuCash >=2.7.0!"
-	ewarn
-	ewarn "GnuCash 2.7.0 introduced large changes in its file format and database"
-	ewarn "schema that WILL prevent you from reverting back to GnuCash 2.6."
 }
 
 pkg_postrm() {
