@@ -1,0 +1,25 @@
+diff --color -ur synapse-0.2.99.4.orig/configure.ac synapse-0.2.99.4/configure.ac
+--- synapse-0.2.99.4.orig/configure.ac	2018-04-08 20:52:10.000000000 +0200
++++ synapse-0.2.99.4/configure.ac	2021-11-24 16:47:10.073022755 +0100
+@@ -110,16 +110,16 @@
+ AM_CONDITIONAL(HAVE_ZEITGEIST, test "x$enable_zeitgeist" = "xyes")
+ 
+ if test "x$enable_indicator" = "xauto" ; then
+-	PKG_CHECK_EXISTS([appindicator3-0.1],
++	PKG_CHECK_EXISTS([ayatana-appindicator3-0.1],
+ 	                 enable_indicator="yes",
+ 	                 enable_indicator="no")
+ fi
+ 
+ if test "x$enable_indicator" = "xyes" ; then
+-	PKG_CHECK_EXISTS([appindicator3-0.1],,
+-	                 AC_MSG_ERROR([appindicator3-0.1 is not installed]))
+-	PKG_CHECK_MODULES(APP_INDICATOR, appindicator3-0.1)
+-	APP_INDICATOR_VALAFLAGS=" --pkg appindicator3-0.1 -D HAVE_INDICATOR"
++	PKG_CHECK_EXISTS([ayatana-appindicator3-0.1],,
++	                 AC_MSG_ERROR([ayatana-appindicator3-0.1 is not installed]))
++	PKG_CHECK_MODULES(APP_INDICATOR, ayatana-appindicator3-0.1)
++	APP_INDICATOR_VALAFLAGS=" --pkg ayatana-appindicator3-0.1 -D HAVE_INDICATOR"
+ 	AC_SUBST(APP_INDICATOR_VALAFLAGS)
+ 	AC_DEFINE(HAVE_INDICATOR, 1, [Have AppIndicator])
+ fi
