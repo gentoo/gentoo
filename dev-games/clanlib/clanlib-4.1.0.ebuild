@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="ZLIB"
 SLOT="4.1"
 KEYWORDS="~amd64 ~x86" #not big endian safe #82779
-IUSE="cpu_flags_x86_sse2 doc examples ipv6 opengl sound static-libs X"
+IUSE="cpu_flags_x86_sse2 doc examples ipv6 opengl +sound static-libs X"
 REQUIRED_USE="opengl? ( X )"
 
 RDEPEND="
