@@ -28,6 +28,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		>=dev-python/aiohttp-3.8.1[${PYTHON_USEDEP}]
 		>=dev-python/httpx-0.23.0[${PYTHON_USEDEP}]
 		>=dev-python/httpx-socks-0.7.4[${PYTHON_USEDEP}]
 		>=dev-python/pytest-asyncio-0.18.3[${PYTHON_USEDEP}]
