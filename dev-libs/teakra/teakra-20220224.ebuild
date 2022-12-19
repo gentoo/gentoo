@@ -16,6 +16,12 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+src_prepare() {
+	sed -i "s|-Werror||g" "${S}"/CMakeLists.txt || die
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
