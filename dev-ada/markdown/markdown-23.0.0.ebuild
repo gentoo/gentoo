@@ -15,6 +15,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND="${ADA_DEPS}
+	dev-ada/gprbuild[${ADA_USEDEP}]
+	dev-ada/VSS[${ADA_USEDEP}]"
+DEPEND="${RDEPEND}"
 BDEPEND=""
