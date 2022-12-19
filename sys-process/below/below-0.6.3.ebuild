@@ -262,14 +262,6 @@ DEPEND="
 
 QA_FLAGS_IGNORED="usr/bin/below"
 
-PATCHES=(
-	"${FILESDIR}/${PV}-format.patch"
-)
-
-src_compile() {
-	cargo fmt --all -v --message-format human
-	cargo_src_compile
-}
 src_test() {
 	local skip=(
 		--skip disable_disk_stat
@@ -280,6 +272,7 @@ src_test() {
 	)
 	cargo_src_test --workspace below -- "${skip[@]}"
 }
+
 src_install() {
 	cargo_src_install --path below
 
