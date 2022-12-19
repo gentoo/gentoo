@@ -9,6 +9,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/realtime/start"
 
 CKV="$(ver_cut 1-3)"
 K_SECURITY_UNSUPPORTED="1"
+K_DEBLOB_AVAILABLE="1"
 RT_PATCHSET="${PV/*_p}"
 
 inherit kernel-2
@@ -33,7 +34,7 @@ src_prepare() {
 
 	# 627796
 	sed \
-		"s/default PREEMPT_NONE/default PREEMPT_RT_FULL/g" \
+		"s/default PREEMPT_NONE/default PREEMPT_RT/g" \
 		-i "${S}/kernel/Kconfig.preempt" || die "sed failed"
 }
 
