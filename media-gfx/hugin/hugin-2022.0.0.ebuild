@@ -4,19 +4,17 @@
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
-inherit mercurial python-single-r1 wxwidgets cmake xdg
+inherit python-single-r1 wxwidgets cmake xdg
 
 DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
-SRC_URI=""
-EHG_REPO_URI="http://hg.code.sf.net/p/hugin/hugin"
-EHG_PROJECT="${PN}-${PN}"
+SRC_URI="mirror://sourceforge/${PN}/${P/_/}.tar.bz2"
 
 LICENSE="GPL-2+ BSD BSD-2 MIT wxWinLL-3 ZLIB FDL-1.2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64 arm64 x86"
 
 LANGS=" ca ca-valencia cs da de en-GB es eu fi fr hu it ja nl pl pt-BR ro ru sk sv zh-CN zh-TW"
 IUSE="debug lapack python raw sift $(echo ${LANGS//\ /\ l10n_})"
@@ -65,6 +63,10 @@ pkg_setup() {
 }
 
 src_prepare() {
+	sed -i \
+		-e "/COMMAND.*GZIP/d" \
+		-e "s/\.gz//g" \
+		"${S}"/doc/CMakeLists.txt || die
 	cmake_src_prepare
 }
 
