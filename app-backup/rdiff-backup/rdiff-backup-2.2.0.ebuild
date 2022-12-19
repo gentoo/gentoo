@@ -26,10 +26,16 @@ RDEPEND="dev-python/pylibacl[${PYTHON_USEDEP}]
 	dev-python/pyxattr[${PYTHON_USEDEP}]
 	>=net-libs/librsync-1.0:0="
 
-src_prepare() {
-	mkdir build || die
-	cp "${S}"-manpages/*.1 build || die
+PATCHES=(
+	"${FILESDIR}/${PN}-2.2.0-no-manpages.patch"
+)
 
+src_prepare() {
 	sed -e "s#share/doc/${PN}#share/doc/${PF}#" -i setup.py || die
 	default
+}
+
+python_install_all() {
+	distutils-r1_python_install_all
+	doman "${S}"-manpages/*.1
 }
