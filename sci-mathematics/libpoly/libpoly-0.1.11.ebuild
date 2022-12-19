@@ -34,6 +34,14 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
+src_prepare() {
+	sed -i "s| -Werror||g"                          \
+		"${S}"/src/CMakeLists.txt                   \
+		"${S}"/test/polyxx/CMakeLists.txt || die
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DLIBPOLY_BUILD_PYTHON_API=$(usex python)
