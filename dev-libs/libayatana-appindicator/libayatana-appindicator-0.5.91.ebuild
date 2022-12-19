@@ -23,7 +23,10 @@ RDEPEND="
 	>=dev-libs/libayatana-indicator-0.8.4
 "
 DEPEND="${RDEPEND}"
-BDEPEND="$(vala_depend)"
+BDEPEND="
+	$(vala_depend)
+	test? ( dev-util/dbus-test-runner )
+"
 
 src_prepare() {
 	vala_setup
