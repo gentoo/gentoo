@@ -24,6 +24,10 @@ IUSE="use-firmware"
 CONFIG_CHECK="~!R8169"
 WARNING_R8169="CONFIG_R8169 is enabled. ${P} will not be loaded unless kernel driver Realtek 8169 PCI Gigabit Ethernet (CONFIG_R8169) is DISABLED."
 
+PATCHES=(
+	"${FILESDIR}/${PN}-8.051.02-6.1-fix.patch"
+)
+
 pkg_setup() {
 	linux-mod_pkg_setup
 	BUILD_PARAMS="KERNELDIR=${KV_DIR}"
