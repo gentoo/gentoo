@@ -23,8 +23,7 @@ SLOT="$(ver_cut 1)"
 IUSE="doc"
 
 ruby_add_rdepend ">=dev-ruby/tilt-2.0.6:* =dev-ruby/tilt-2.0*:*
-	>=dev-ruby/temple-0.7.6:0.7
-	!!<dev-ruby/slim-3.0.9-r1"
+	>=dev-ruby/temple-0.7.6:0.7"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard dev-ruby/redcarpet )"
 
