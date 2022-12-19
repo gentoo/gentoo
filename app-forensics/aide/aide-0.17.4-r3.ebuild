@@ -65,6 +65,9 @@ src_configure() {
 	local myeconfargs=(
 		--sysconfdir="${EPREFIX}"/etc/${PN}
 
+		# Needed even in EAPI=8, >=portage-3.0.40 skips passing it here
+		--disable-static
+
 		# Disable broken l10n support: https://sourceforge.net/p/aide/bugs/98/
 		# This doesn't affect anything because there are no localizations yet.
 		--without-locale
