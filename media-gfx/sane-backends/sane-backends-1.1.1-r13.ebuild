@@ -103,7 +103,7 @@ IUSE_SANE_BACKENDS=(
 	xerox_mfp
 )
 
-IUSE="gphoto2 ipv6 snmp systemd threads usb v4l xinetd +zeroconf"
+IUSE="gphoto2 snmp systemd threads usb v4l xinetd +zeroconf"
 
 for GBACKEND in ${IUSE_SANE_BACKENDS[@]}; do
 	case ${GBACKEND} in
@@ -134,16 +134,17 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~
 # For pixma: see https://gitlab.com/sane-project/backends/-/releases/1.0.28#build
 RDEPEND="
 	acct-user/saned
+	acct-group/scanner
 	gphoto2? (
-		media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
 		>=media-libs/libgphoto2-2.5.3.1:=[${MULTILIB_USEDEP}]
+		media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
 	)
 	sane_backends_canon_pp? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
 	sane_backends_dc210? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	sane_backends_dc240? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	sane_backends_dell1600n_net? (
-		media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
 		>=media-libs/tiff-3.9.7-r1:=[${MULTILIB_USEDEP}]
+		media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
 	)
 	sane_backends_escl? (
 		app-text/poppler[cairo]
@@ -182,6 +183,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.30-add_hpaio_epkowa_dll.conf.patch
 	# https://gitlab.com/sane-project/backends/-/merge_requests/688
 	"${FILESDIR}"/${PN}-1.1.1-genesys-gl845-crash.patch
+	"${FILESDIR}"/${P}-gcc12-tests.patch
+	"${FILESDIR}"/${PN}-1.1.1-configure-clang16.patch
+	"${FILESDIR}"/${P}-musl.patch
 )
 
 MULTILIB_CHOST_TOOLS=(
@@ -250,14 +254,15 @@ multilib_src_configure() {
 	# that break in many ways, bug #636202, #668232, #668350
 	# People can refer to the "Programmer's Documentation" at http://www.sane-project.org/docs.html
 	myconf+=(
+		--enable-ipv6
 		--disable-locking
 		$(use_with gphoto2)
 		$(multilib_native_use_with systemd)
 		$(use_with v4l)
-		$(use_enable ipv6)
 		$(use_enable threads pthread)
 		$(use_with zeroconf avahi)
 	)
+
 	ECONF_SOURCE="${S}" \
 	SANEI_JPEG="sanei_jpeg.o" SANEI_JPEG_LO="sanei_jpeg.lo" \
 	BACKENDS="${lbackends}" \
@@ -324,7 +329,7 @@ multilib_src_install() {
 		printf "\n" >> "${ED}/$(get_udevdir)/hwdb.d/20-${PN}.hwdb" || die
 		tools/sane-desc -m hwdb -s doc/descriptions-external/ >> "${ED}/$(get_udevdir)/hwdb.d/20-${PN}.hwdb" || die
 		# udev rule for saned (SANE scanning daemon) to be able to write on usb port
-		udev_dorules "${FILESDIR}/66-saned.rules"
+		udev_newrules "${FILESDIR}/66-saned.rules-r1" 66-saned.rules
 	fi
 }
 
@@ -332,7 +337,7 @@ multilib_src_install_all() {
 	dodir /etc/env.d
 
 	if use systemd ; then
-		systemd_newunit "${FILESDIR}"/saned_at.service "saned@.service"
+		systemd_newunit "${FILESDIR}"/saned_at.service-r1 "saned@.service"
 		systemd_newunit "${FILESDIR}"/saned.socket saned.socket
 	fi
 
@@ -354,7 +359,13 @@ multilib_src_install_all() {
 	newconfd "${FILESDIR}"/saned.confd saned
 }
 
+pkg_postrm() {
+	udev_reload
+}
+
 pkg_postinst() {
+	udev_reload
+
 	optfeature "Network scanner backend" media-gfx/sane-airscan
 	optfeature "Epson-specific backend" media-gfx/iscan
 	optfeature "HP-specific backend" net-print/hplip
@@ -363,10 +374,4 @@ pkg_postinst() {
 		elog "If you want remote clients to connect, edit"
 		elog "/etc/sane.d/saned.conf and /etc/hosts.allow"
 	fi
-
-	udev_reload
-}
-
-pkg_postrm() {
-	udev_reload
 }
