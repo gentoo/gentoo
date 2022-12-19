@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-desktop/"
 
 LICENSE="GPL-2+ LGPL-2+ FDL-1.1+"
 SLOT="3/20" # subslot = libgnome-desktop-3 soname version
-IUSE="debug gtk-doc +introspection seccomp systemd udev"
+IUSE="debug +introspection seccomp systemd udev"
 KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 COMMON_DEPEND="
@@ -37,7 +37,6 @@ RDEPEND="${COMMON_DEPEND}
 BDEPEND="
 	app-text/docbook-xml-dtd:4.1.2
 	dev-util/gdbus-codegen
-	gtk-doc? ( >=dev-util/gtk-doc-1.14 )
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
@@ -58,7 +57,7 @@ src_configure() {
 		$(meson_use introspection)
 		$(meson_feature udev)
 		$(meson_feature systemd)
-		$(meson_use gtk-doc gtk_doc)
+		-Dgtk_doc=false
 		-Dinstalled_tests=false
 		-Dbuild_gtk4=false
 		-Dlegacy_library=true
