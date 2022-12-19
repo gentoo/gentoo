@@ -25,20 +25,3 @@ https://bugs.gentoo.org/874624
  #include <string.h>
 +#include <strings.h>
  
---- a/gtk.c
-+++ b/gtk.c
-@@ -370,3 +370,3 @@
- 	gtk_signal_connect_object(GTK_OBJECT(menu_item), "activate",
--				  gtk_ui_popup_dialog, (gpointer) dialog);
-+				  GTK_SIGNAL_FUNC(gtk_ui_popup_dialog), (gpointer) dialog);
- 	return (menu_item);
-@@ -592,3 +592,3 @@
- 	CreateDialog(DIALOG_PAUSEGAME, 0, icon, "Continue", NULL);
--	CreateEnterText(DIALOG_WARPLEVEL, warp_apply);
-+	CreateEnterText(DIALOG_WARPLEVEL, GTK_SIGNAL_FUNC(warp_apply));
- 	CreateDialog(DIALOG_HIGHSCORE, 0, NULL, NULL, NULL);
-@@ -602,3 +602,3 @@
- 	CreateDialog(DIALOG_ENDGAME, 0, NULL, "Nuts!", NULL);
--	CreateEnterText(DIALOG_ENTERNAME, enter_name);
-+	CreateEnterText(DIALOG_ENTERNAME, GTK_SIGNAL_FUNC(enter_name));
- }
