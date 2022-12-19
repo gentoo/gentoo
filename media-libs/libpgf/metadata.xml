@@ -5,4 +5,7 @@
 		<email>ceamac@gentoo.org</email>
 		<name>Viorel Munteanu</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">libpgf</remote-id>
+	</upstream>
 </pkgmetadata>
