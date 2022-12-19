@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Multi-platform game development library"
-HOMEPAGE="http://www.clanlib.org/"
-SRC_URI="http://clanlib.org/download/releases-${PV:0:3}/ClanLib-${PV}.tgz"
+HOMEPAGE="https://github.com/sphair/ClanLib"
+SRC_URI="mirror://gentoo/ClanLib-${PV}.tgz"
 S="${WORKDIR}"/ClanLib-${PV}
 
 LICENSE="ZLIB"

@@ -7,8 +7,8 @@ inherit autotools toolchain-funcs
 
 MY_P=ClanLib-${PV}
 DESCRIPTION="Multi-platform game development library"
-HOMEPAGE="http://www.clanlib.org/"
-SRC_URI="http://clanlib.org/download/releases-2.0/${MY_P}.tgz"
+HOMEPAGE="https://github.com/sphair/ClanLib"
+SRC_URI="mirror://gentoo/${MY_P}.tgz"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="ZLIB"
