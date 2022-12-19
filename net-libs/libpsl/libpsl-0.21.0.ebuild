@@ -32,8 +32,7 @@ BDEPEND="${PYTHON_DEPS}
 
 pkg_pretend() {
 	if use icu && use idn ; then
-		ewarn "\"icu\" and \"idn\" USE flags are enabled."
-		ewarn "Using \"idn\"."
+		ewarn "\"icu\" and \"idn\" USE flags are enabled. Using \"idn\"."
 	fi
 }
 
