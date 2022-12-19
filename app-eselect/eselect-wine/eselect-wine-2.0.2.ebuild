@@ -17,20 +17,6 @@ RDEPEND="
 	app-admin/eselect
 	xdg? ( x11-misc/xdg-utils )"
 
-pkg_pretend() {
-	# /usr/bin/wine and /usr/include/wine are removed by pkg_preinst's unset,
-	# but portage currently checks collisions and errors out /before/ preinst
-	if has_version '<app-eselect/eselect-wine-2' &&
-		has collision-protect ${FEATURES}
-	then
-		eerror
-		eerror "!Warning! will likely need to either disable FEATURES=collision-protect or"
-		eerror "delete ${EROOT}/usr/bin/wine and ${EROOT}/usr/include/wine to merge ${P}"
-		eerror "(these files should be orphaned, so default FEATURES=protect-owned is fine)"
-		eerror
-	fi
-}
-
 src_install() {
 	insinto /usr/share/eselect/modules
 	doins wine.eselect
@@ -83,10 +69,8 @@ pkg_postinst() {
 	if [[ ! ${REPLACING_VERSIONS##* } ]] ||
 		ver_test ${REPLACING_VERSIONS##* } -lt 2; then
 		elog
-		if [[ ${REPLACING_VERSIONS} ]]; then
+		[[ ${REPLACING_VERSIONS} ]] &&
 			elog "${PN} changed a bit, suggest reviewing 'eselect wine help' (and list)."
-			elog "Note: if seen bin/wine or include/wine merge collisions, they are harmless."
-		fi
 		elog "Please run '. ${EROOT}/etc/profile' to update PATH in current shells."
 	fi
 }
