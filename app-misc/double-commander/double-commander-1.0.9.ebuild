@@ -36,7 +36,8 @@ S="${WORKDIR}/${ABBREV}-${PV}"
 src_prepare() {
 	default
 	use amd64 && export CPU_TARGET="x86_64" || export CPU_TARGET="i386"
-	find ./ -type f -name "build.sh" -exec sed -i 's#$lazbuild #$lazbuild --lazarusdir=${EPREFIX}/usr/share/lazarus #g' {} \; || die
+	find ./ -type f -name "build.sh" -exec \
+		sed -i 's#$lazbuild #$lazbuild --lazarusdir=${EPREFIX}/usr/share/lazarus #g' {} \; || die
 }
 
 src_compile() {
@@ -48,11 +49,12 @@ src_install() {
 
 	# Since we're installing a polkit action, let's utilize it. For extra fanciness.
 	printf "\nActions=StartAsRoot;\n\n[Desktop Action StartAsRoot]\nExec=/usr/bin/pkexec ${EPREFIX}/usr/bin/doublecmd\nName=Start as root\n" >> \
-		${S}/build/usr/share/applications/${ABBREV}.desktop || die
+		"${S}/build/usr/share/applications/${ABBREV}.desktop" || die
 
 	# Without the following, the .desktop file doesn't show up in the KDE menu, specifically under the Utility category.
 	# Can't figure out why, but you're welcome to try. Absurdly, it works fine in any other category.
-	mv "${S}/build/usr/share/applications/${ABBREV}.desktop" "${S}/build/usr/share/applications/${ABBREV}-${PN}.desktop" || die
+	mv "${S}/build/usr/share/applications/${ABBREV}.desktop" \
+		"${S}/build/usr/share/applications/${ABBREV}-${PN}.desktop" || die
 
 	#using rsync to speed things up.
 	rsync -a "${S}/build/" "${D}/" || die "Unable to copy files"
