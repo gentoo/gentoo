@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-12-19)
+# Unmaintained.  The current sawfish version in ::gentoo is a prerelease
+# from 2017, there was a single release in 2021.  Bugs are accumulating.
+# Includes dependencies specific to Sawfish.
+# Removal on 2023-01-18.  Bug #637978.
+dev-libs/librep
+x11-libs/rep-gtk
+x11-themes/sawfish-themes
+x11-wm/sawfish
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-12-18)
 # Bundled by >=dev-util/hip-5, removal on 2023-01-19
 dev-libs/rocclr
