@@ -138,6 +138,11 @@ src_unpack() {
 }
 
 src_prepare() {
+	# could depend on >=0.5 for unconditional, but rather not force it yet
+	# https://github.com/PCSX2/pcsx2/issues/7623
+	has_version '>=dev-cpp/rapidyaml-0.5' &&
+		eapply "${FILESDIR}"/${PN}-1.7.3602-rapidyaml-0.5.0.patch
+
 	cmake_src_prepare
 
 	# qt6 build doesn't support PACKAGE_MODE and need to set resources location
