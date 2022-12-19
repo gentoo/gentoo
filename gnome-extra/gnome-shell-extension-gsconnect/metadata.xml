@@ -8,4 +8,7 @@
 	<use>
 		<flag name="nautilus">Install Nautilus extension for sending files via GSConnect</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">GSConnect/gnome-shell-extension-gsconnect</remote-id>
+	</upstream>
 </pkgmetadata>
