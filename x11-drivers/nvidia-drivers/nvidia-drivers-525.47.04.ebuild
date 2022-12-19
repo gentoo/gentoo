@@ -8,12 +8,13 @@ inherit desktop flag-o-matic linux-mod multilib readme.gentoo-r1 \
 	systemd toolchain-funcs unpacker user-info
 
 NV_KERNEL_MAX="6.1"
-NV_PIN="515.65.01"
+NV_PIN="525.60.13"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
 HOMEPAGE="https://developer.nvidia.com/vulkan-driver"
 SRC_URI="
-	https://developer.nvidia.com/vulkan-beta-${PV//.}-linux -> NVIDIA-Linux-x86_64-${PV}.run
+	https://developer.nvidia.com/downloads/vulkan-beta-${PV//.}-linux
+		-> NVIDIA-Linux-x86_64-${PV}.run
 	$(printf "https://download.nvidia.com/XFree86/%s/%s-${NV_PIN}.tar.bz2 " \
 		nvidia-{installer,modprobe,persistenced,settings,xconfig}{,})
 	https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${PV}.tar.gz
@@ -81,11 +82,10 @@ BDEPEND="
 QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
 
 PATCHES=(
-	"${FILESDIR}"/nvidia-drivers-470.141.03-clang15.patch
+	"${FILESDIR}"/nvidia-drivers-525.23-clang15.patch
 	"${FILESDIR}"/nvidia-kernel-module-source-515.86.01-raw-ldflags.patch
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 	"${FILESDIR}"/nvidia-settings-390.144-desktop.patch
-	"${FILESDIR}"/nvidia-settings-390.144-no-gtk2.patch
 	"${FILESDIR}"/nvidia-settings-390.144-raw-ldflags.patch
 )
 
@@ -98,16 +98,12 @@ pkg_setup() {
 		~SYSVIPC
 		~!LOCKDEP
 		~!SLUB_DEBUG_ON
-		~!X86_KERNEL_IBT
 		!DEBUG_MUTEXES"
 	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
 	of drivers (no custom config), and for wayland / nvidia-drm.modeset=1.
 	Cannot be directly selected in the kernel's menuconfig, and may need
 	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
 	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in."
-	local ERROR_X86_KERNEL_IBT="CONFIG_X86_KERNEL_IBT: is set, be warned the modules may not load.
-	If run into problems, either unset or pass ibt=off to the kernel.
-	https://github.com/NVIDIA/open-gpu-kernel-modules/issues/256"
 
 	use amd64 && kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
@@ -233,7 +229,7 @@ src_prepare() {
 	mv open-gpu-kernel-modules-${PV} kernel-module-source || die
 
 	eapply --directory=kernel-module-source/kernel-open \
-		-p2 "${FILESDIR}"/nvidia-drivers-470.141.03-clang15.patch
+		-p2 "${FILESDIR}"/nvidia-drivers-525.23-clang15.patch
 
 	default
 
@@ -271,6 +267,7 @@ src_compile() {
 		PREFIX="${EPREFIX}"/usr
 		HOST_CC="$(tc-getBUILD_CC)"
 		HOST_LD="$(tc-getBUILD_LD)"
+		BUILD_GTK2LIB=
 		NV_USE_BUNDLED_LIBJANSSON=0
 		NV_VERBOSE=1 DO_STRIP= MANPAGE_GZIP= OUTPUTDIR=out
 		WAYLAND_AVAILABLE=$(usex wayland 1 0)
@@ -304,7 +301,9 @@ src_compile() {
 		CFLAGS="-Wno-deprecated-declarations ${CFLAGS}" \
 			emake "${NV_ARGS[@]}" -C nvidia-settings
 	elif use static-libs; then
-		emake "${NV_ARGS[@]}" -C nvidia-settings/src out/libXNVCtrl.a
+		# pretend GTK+3 is available, not actually used (bug #880879)
+		emake "${NV_ARGS[@]}" BUILD_GTK3LIB=1 \
+			-C nvidia-settings/src out/libXNVCtrl.a
 	fi
 }
 
