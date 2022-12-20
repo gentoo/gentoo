@@ -531,11 +531,6 @@ dev-python/glob2
 # Removal on 2022-12-21.
 app-text/agrep
 
-# Michał Górny <mgorny@gentoo.org> (2022-11-19)
-# Fails to build.  Last bumped in 2017.  Library with no revdeps.
-# Removal on 2022-12-19.  Bug #630396.
-dev-cpp/pstreams
-
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
 # Removal after 2023-01-01.  Bug #881249.
