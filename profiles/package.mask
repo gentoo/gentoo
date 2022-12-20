@@ -671,7 +671,6 @@ net-misc/selfdhcp
 # Removal on 2022-12-17.  Bug #881673.
 app-admin/prelude-manager
 dev-libs/libprelude
-dev-libs/libpreludedb
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
