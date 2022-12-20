@@ -35,3 +35,9 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# remove overstrict dep
+	sed -i -e '/packaging/s:>=22.0::' pyproject.toml || die
+	distutils-r1_src_prepare
+}
