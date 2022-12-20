@@ -578,13 +578,6 @@ sys-apps/intel-performance-counter-monitor
 media-sound/retrovol
 media-sound/umix
 
-# Michał Górny <mgorny@gentoo.org> (2022-11-19)
-# Agavi and its dependencies that are unmaintained and have no other
-# reverse dependencies.  It has received no activity since 2016,
-# and at least PEAR-VersionControl_SVN has reported test failures.
-# Removal on 2022-12-19.  Bug #737854.
-dev-php/agavi
-
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
 # Removal after 2023-01-01.  Bug #881249.
