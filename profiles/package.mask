@@ -672,7 +672,6 @@ net-misc/selfdhcp
 app-admin/prelude-manager
 dev-libs/libprelude
 dev-libs/libpreludedb
-net-analyzer/prelude-correlator
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
