@@ -615,7 +615,6 @@ app-vim/pydiction
 app-vim/vimoutliner
 dev-libs/aws-sdk-cpp
 dev-python/Rx
-dev-python/bert
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
