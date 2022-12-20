@@ -56,17 +56,6 @@ mail-mta/notqmail authcram
 # Require packages masked for removal.
 net-analyzer/netdata kinesis
 
-# Michał Górny <mgorny@gentoo.org> (2022-11-17)
-# Requires dev-python/gevent that is masked for removal.
-x11-misc/py3status gevent
-dev-python/rpyc gevent
-mail-filter/pyzor gevent
-www-servers/uwsgi python-gevent
-
-# Michał Górny <mgorny@gentoo.org> (2022-11-17)
-# Requires net-misc/pyhoca-cli that is masked for removal.
-net-misc/remmina x2go
-
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # gnome-music and gnome-photos have not been ported to libsoup:3.0, while
 # other non-slotted dependencies have been.
