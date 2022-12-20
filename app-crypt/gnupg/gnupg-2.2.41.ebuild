@@ -163,12 +163,14 @@ my_src_install() {
 
 	dodir /etc/env.d
 	echo "CONFIG_PROTECT=/usr/share/gnupg/qualified.txt" >> "${ED}"/etc/env.d/30gnupg || die
+
+	use doc && dodoc doc/gnupg.html/*
 }
 
 my_src_install_all() {
 	einstalldocs
 
-	use doc && dodoc doc/gnupg.html/* doc/*.png
+	use doc && dodoc doc/*.png
 
 	systemd_douserunit doc/examples/systemd-user/*.{service,socket}
 }
