@@ -12,7 +12,7 @@ SRC_URI="https://github.com/AyatanaIndicators/${PN}/archive/${PV}.tar.gz -> ${P}
 
 LICENSE="GPL-3"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 IUSE="test"
 RESTRICT="!test? ( test )"
