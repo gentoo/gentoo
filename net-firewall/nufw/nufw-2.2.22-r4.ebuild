@@ -13,7 +13,7 @@ SRC_URI="http://www.nufw.org/attachments/download/39/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE="debug ldap mysql pam pam_nuauth plaintext postgres prelude unicode nfqueue nfconntrack static syslog test"
+IUSE="debug ldap mysql pam pam_nuauth plaintext postgres unicode nfqueue nfconntrack static syslog test"
 
 REQUIRED_USE="pam_nuauth? ( plaintext )"
 DEPEND="
@@ -30,7 +30,6 @@ DEPEND="
 	pam? ( sys-libs/pam )
 	pam_nuauth? ( sys-libs/pam )
 	postgres? ( dev-db/postgresql:*[server] )
-	prelude? ( dev-libs/libprelude )
 "
 RDEPEND=${DEPEND}
 
@@ -67,9 +66,9 @@ src_configure() {
 		$(use_with pam system-auth) \
 		$(use_with plaintext plaintext-auth) \
 		$(use_with postgres pgsql-log) \
-		$(use_with prelude prelude-log) \
 		$(use_with syslog syslog-log) \
 		$(use_with unicode utf8) \
+		--without-prelude-log \
 		--enable-shared \
 		--includedir="/usr/include/nufw" \
 		--localstatedir="/var" \
