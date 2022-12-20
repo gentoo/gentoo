@@ -1,0 +1,57 @@
+From 65fb97ead94f7d531491ca6e59f2acff0192023f Mon Sep 17 00:00:00 2001
+From: Michael Webster <miketwebster@gmail.com>
+Date: Mon, 19 Dec 2022 10:42:00 -0500
+Subject: [PATCH] Fix build when the color panel is disabled.
+
+A typo in the display panel's build was resulting in it using
+the 'sizes' variable defined in the color panel, as its build
+file was being processed first.
+
+When the color panel is disabled, that variable is no longer
+pre-defined, exposing the typo and breaking the build.
+
+Fixes #309.
+---
+ panels/color/icons/meson.build   | 4 ++--
+ panels/display/icons/meson.build | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/panels/color/icons/meson.build b/panels/color/icons/meson.build
+index 1d5680e1..271d894d 100644
+--- a/panels/color/icons/meson.build
++++ b/panels/color/icons/meson.build
+@@ -1,5 +1,5 @@
+ 
+-sizes = [
++color_icon_sizes = [
+   '16x16',
+   '22x22',
+   '24x24',
+@@ -10,7 +10,7 @@ sizes = [
+   'scalable',
+ ]
+ 
+-foreach size : sizes
++foreach size : color_icon_sizes
+   install_subdir(size,
+     strip_directory: true,
+     install_dir: get_option('datadir') / 'icons' / 'hicolor' / size / 'apps',
+diff --git a/panels/display/icons/meson.build b/panels/display/icons/meson.build
+index 3ee26b87..454f608f 100644
+--- a/panels/display/icons/meson.build
++++ b/panels/display/icons/meson.build
+@@ -1,4 +1,4 @@
+-icon_sizes = [
++display_icon_sizes = [
+   '16x16',
+   '22x22',
+   '24x24',
+@@ -6,7 +6,7 @@ icon_sizes = [
+   'scalable'
+ ]
+ 
+-foreach size : sizes
++foreach size : display_icon_sizes
+   install_subdir(size,
+     strip_directory: true,
+     install_dir: get_option('datadir') / 'icons' / 'hicolor' / size / 'apps',
