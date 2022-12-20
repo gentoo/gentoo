@@ -563,7 +563,6 @@ dev-db/cpp-driver
 dev-erlang/riakc
 dev-util/stubgen
 media-gfx/xzgv
-net-dns/dnssec-check
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
