@@ -652,7 +652,6 @@ dev-python/geventhttpclient
 # net-misc/x2goclient remains as a replacement.
 # Removal on 2022-12-17.  Bug #879011.
 net-misc/pyhoca-cli
-net-misc/pyhoca-gui
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
