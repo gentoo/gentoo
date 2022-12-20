@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -10,6 +10,7 @@ MY_P="${P/-/_}"
 DEBIAN_URI="mirror://debian/pool/main/${PN:0:1}/${PN}"
 DEBIAN_PATCH="${MY_P}-${DEBIAN_PV}.debian.tar.xz"
 DEBIAN_SRC="${MY_P}.orig.tar.gz"
+
 DESCRIPTION="Display or set the kernel time variables"
 HOMEPAGE="https://www.ibiblio.org/pub/Linux/system/admin/time/adjtimex.lsm https://github.com/rogers0/adjtimex"
 SRC_URI="${DEBIAN_URI}/${DEBIAN_PATCH}
@@ -18,6 +19,8 @@ SRC_URI="${DEBIAN_URI}/${DEBIAN_PATCH}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc x86"
+
+RDEPEND="!net-misc/sntpd[adjtimex]"
 
 src_unpack() {
 	unpack "${DEBIAN_SRC}"
