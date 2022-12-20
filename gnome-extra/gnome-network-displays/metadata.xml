@@ -7,4 +7,7 @@
 	<use>
 		<flag name="firewalld">Install firewalld zones</flag>
 	</use>
+	<upstream>
+		<remote-id type="gnome-gitlab">GNOME/gnome-network-displays</remote-id>
+	</upstream>
 </pkgmetadata>
