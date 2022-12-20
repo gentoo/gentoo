@@ -590,7 +590,6 @@ dev-php/PEAR-PEAR_PackageFileManager2
 dev-php/PEAR-PEAR_PackageFileManager_Plugins
 dev-php/PEAR-VersionControl_SVN
 dev-php/phpmd
-dev-php/simpletest
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
