@@ -51,7 +51,7 @@ dev-lang/rust wasm
 # Sam James <sam@gentoo.org> (2022-06-25)
 # We're not (yet?) providing our own tarballs for these and
 # upstream don't offer them for this arch (see bug #769467).
-dev-lang/rust-bin clippy doc rls rustfmt
+dev-lang/rust-bin clippy doc rustfmt rust-analyzer
 
 # Nickolas Raymond Kaczynski <nrk@disroot.org> (2022-04-24)
 # Dependencies are missing keywords
