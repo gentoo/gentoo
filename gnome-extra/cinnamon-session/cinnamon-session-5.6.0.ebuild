@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9,10,11} )
+PYTHON_COMPAT=( python3_{8..11} )
 
 inherit meson gnome2-utils python-any-r1 xdg-utils
 
