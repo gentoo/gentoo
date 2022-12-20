@@ -605,7 +605,6 @@ app-i18n/fcitx-sunpinyin
 app-i18n/ibus-kkc
 app-i18n/ibus-sunpinyin
 app-i18n/libkkc
-app-i18n/libkkc-data
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
