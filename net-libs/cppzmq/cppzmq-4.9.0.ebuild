@@ -11,7 +11,7 @@ SRC_URI="https://github.com/zeromq/${PN}/archive/v${PV}.tar.gz ->  ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv x86 ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~x86-linux"
 
 IUSE="test"
 RESTRICT="!test? ( test )"
