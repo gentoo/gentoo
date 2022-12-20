@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
 	dev-libs/glib:2
+	sci-libs/gsl:=
 	sys-apps/dbus
 	x11-libs/cairo
 	x11-libs/gtk+:3
