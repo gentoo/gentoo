@@ -17,6 +17,7 @@
 		<flag name="parallel-compiler">Build a multi-threaded rustc (experimental, not tested by upstream)</flag>
 		<flag name="profiler">Build the profiler runtime and rust-demangler tool (needed for '-C profile-generate' or '-C instrument-coverage' codegen opts)</flag>
 		<flag name="rls">Install rls, Rust Language Server (used with IDEs supporting RLS protocol)</flag>
+		<flag name="rust-lld">Enable building of the rust-lld linker (not compatible with system-llvm)</flag>
 		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
 		<flag name="rust-analyzer">Install rust-analyzer, A Rust compiler front-end for IDEs (like rls)</flag>
 		<flag name="rust-src">Install rust-src, needed by developer tools and for build-std (cross)</flag>
