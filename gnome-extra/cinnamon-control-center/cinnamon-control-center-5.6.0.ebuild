@@ -69,6 +69,12 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# Fix build when colord flag disabled
+	# https://github.com/linuxmint/cinnamon-control-center/issues/309
+	"${FILESDIR}"/${PN}-5.6.0-fix-icon-build.patch
+)
+
 src_prepare() {
 	default
 	python_fix_shebang meson_install_schemas.py
