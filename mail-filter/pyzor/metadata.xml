@@ -18,9 +18,6 @@
       Enables the redis back-end database engine for pyzord through
       <pkg>dev-python/redis-py</pkg>
     </flag>
-    <flag name="gevent">
-      Use <pkg>dev-python/gevent</pkg> to enable asynchronous operation
-    </flag>
   </use>
   <upstream>
     <remote-id type="github">SpamExperts/pyzor</remote-id>

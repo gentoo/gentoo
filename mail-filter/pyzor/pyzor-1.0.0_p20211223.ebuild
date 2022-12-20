@@ -16,13 +16,12 @@ S="${WORKDIR}/${PN}-${MY_COMMIT}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="doc gdbm gevent mysql pyzord redis test"
+IUSE="doc gdbm mysql pyzord redis test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	pyzord? (
 		gdbm? ( $(python_gen_impl_dep 'gdbm') )
-		gevent? ( dev-python/gevent[${PYTHON_USEDEP}] )
 		mysql? ( dev-python/mysqlclient[${PYTHON_USEDEP}] )
 		redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )
 	)"
