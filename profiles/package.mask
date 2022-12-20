@@ -576,7 +576,6 @@ sys-apps/intel-performance-counter-monitor
 #
 # Removal on 2022-12-19.
 media-sound/retrovol
-media-sound/umix
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
