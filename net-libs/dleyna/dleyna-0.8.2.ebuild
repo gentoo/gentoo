@@ -23,6 +23,8 @@ RDEPEND="
 	>=net-libs/libsoup-3.0:3.0
 	dev-libs/libxml2
 
+	${PYTHON_DEPS}
+
 	!net-libs/dleyna-connector-dbus
 	!net-libs/dleyna-core
 	!net-libs/dleyna-renderer
@@ -30,7 +32,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	${PYTHON_DEPS}
 	dev-python/docutils
 	virtual/pkgconfig
 "
