@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
-IUSE="caps cloud +compression cpu_flags_x86_sse2 cups +dbengine ipmi +jsonc kinesis +lto mongodb mysql nfacct nodejs postgres prometheus +python tor xen"
+IUSE="caps cloud +compression cpu_flags_x86_sse2 cups +dbengine ipmi +jsonc +lto mongodb mysql nfacct nodejs postgres prometheus +python tor xen"
 REQUIRED_USE="
 	mysql? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -53,7 +53,6 @@ RDEPEND="
 	compression? ( sys-libs/zlib )
 	ipmi? ( sys-libs/freeipmi )
 	jsonc? ( dev-libs/json-c:= )
-	kinesis? ( dev-libs/aws-sdk-cpp[kinesis] )
 	mongodb? ( dev-libs/mongo-c-driver )
 	nfacct? (
 		net-firewall/nfacct
@@ -109,7 +108,7 @@ src_configure() {
 		$(use_enable dbengine) \
 		$(use_enable nfacct plugin-nfacct) \
 		$(use_enable ipmi plugin-freeipmi) \
-		$(use_enable kinesis exporting-kinesis) \
+		--disable-exporting-kinesis \
 		$(use_enable lto lto) \
 		$(use_enable mongodb exporting-mongodb) \
 		$(use_enable prometheus exporting-prometheus-remote-write) \
