@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/${PN}/${MY_PV}/${PV}/+download/${PN}-${PV}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 arm64 ~riscv"
 IUSE="doc"
 
 # Was restricted previously b/c needs apparmor support in kernel
