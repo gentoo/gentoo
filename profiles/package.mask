@@ -525,12 +525,6 @@ net-misc/gnome-online-miners
 # Removal: 2022-12-21.
 dev-python/glob2
 
-# David Seifert <soap@gentoo.org> (2022-11-21)
-# Release more than 30 years (!) old, K&R C, full of implicit function
-# declarations, EAPI 6, problematic license. Bug #729536, #854879, #870736.
-# Removal on 2022-12-21.
-app-text/agrep
-
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
 # Removal after 2023-01-01.  Bug #881249.
