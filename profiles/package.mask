@@ -629,7 +629,6 @@ dev-util/rosinstall_generator
 games-util/pyfa
 mate-extra/caja-hide
 media-gfx/netpaint
-media-plugins/mythplugins
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
