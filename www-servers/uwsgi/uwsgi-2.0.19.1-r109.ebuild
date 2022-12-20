@@ -43,7 +43,7 @@ UWSGI_PLUGINS_OPT=( alarm_{curl,xmpp} clock_{monotonic,realtime} curl_cron
 	systemd_logger transformation_toupper tuntap webdav xattr xslt zabbix )
 
 LANG_SUPPORT_SIMPLE=( cgi mono perl ) # plugins which can be built in the main build process
-LANG_SUPPORT_EXTENDED=( go lua php python python-asyncio python-gevent ruby )
+LANG_SUPPORT_EXTENDED=( go lua php python python-asyncio ruby )
 
 # plugins to be ignored (for now):
 # cheaper_backlog2: example plugin
@@ -71,7 +71,6 @@ REQUIRED_USE="|| ( ${LANG_SUPPORT_SIMPLE[@]} ${LANG_SUPPORT_EXTENDED[@]} )
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	python-asyncio? ( python )
-	python-gevent? ( python )
 	expat? ( xml )"
 
 # util-linux is required for libuuid when requesting zeromq support
@@ -120,7 +119,6 @@ CDEPEND="
 	)
 	python? ( ${PYTHON_DEPS} )
 	python-asyncio? ( virtual/python-greenlet[${PYTHON_USEDEP}] )
-	python-gevent? ( >=dev-python/gevent-1.3.5[${PYTHON_USEDEP}] )
 	ruby? ( $(ruby_implementations_depend) )"
 DEPEND="${CDEPEND}"
 RDEPEND="${CDEPEND}
@@ -256,11 +254,8 @@ python_compile_plugins() {
 		fi
 	fi
 
-	if use python-gevent ; then
-		${PYTHON} uwsgiconfig.py --plugin plugins/gevent gentoo gevent${PYV} || die "building plugin for gevent-support in ${EPYTHON} failed"
-	fi
 
-	if use python-gevent || use python-asyncio; then
+	if use python-asyncio; then
 			${PYTHON} uwsgiconfig.py --plugin plugins/greenlet gentoo greenlet${PYV} || die "building plugin for greenlet-support in ${EPYTHON} failed"
 	fi
 }
@@ -364,9 +359,6 @@ pkg_postinst() {
 			else
 				elog "  (asyncio is only supported in python3.4)"
 			fi
-		fi
-		if use python-gevent ; then
-			elog "  '--plugins ${EPYV},gevent${PYV}' for gevent support in ${EPYTHON}"
 		fi
 	}
 
