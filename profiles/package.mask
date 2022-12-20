@@ -586,7 +586,6 @@ media-sound/umix
 dev-php/agavi
 dev-php/phing
 dev-php/PEAR-PEAR_PackageFileManager
-dev-php/PEAR-PEAR_PackageFileManager2
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
