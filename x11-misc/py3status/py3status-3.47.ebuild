@@ -18,14 +18,13 @@ HOMEPAGE="https://github.com/ultrabug/py3status"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gevent minimal +udev"
+IUSE="minimal +udev"
 # It feels useless to run tests on this simple package
 # since upstream (I) runs tox on CI
 RESTRICT="test"
 
 RDEPEND="
 	!minimal? ( x11-misc/i3status )
-	gevent? ( >=dev-python/gevent-1.2.0[${PYTHON_USEDEP}] )
 	udev? ( >=dev-python/pyudev-0.21.0[${PYTHON_USEDEP}] )
 "
 DEPEND="${RDEPEND}
