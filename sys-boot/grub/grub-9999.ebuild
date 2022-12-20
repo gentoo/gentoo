@@ -82,7 +82,7 @@ REQUIRED_USE="
 
 BDEPEND="
 	${PYTHON_DEPS}
-	sys-devel/flex
+	>=sys-devel/flex-2.5.35
 	sys-devel/bison
 	sys-apps/help2man
 	sys-apps/texinfo
@@ -257,6 +257,9 @@ src_configure() {
 
 	tc-export CC NM OBJCOPY RANLIB STRIP
 	tc-export BUILD_CC BUILD_PKG_CONFIG
+
+	# Force configure to use flex, bug 887211.
+	export LEX=flex
 
 	MULTIBUILD_VARIANTS=()
 	local p
