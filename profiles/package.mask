@@ -608,7 +608,6 @@ app-i18n/libkkc
 app-i18n/libkkc-data
 app-i18n/sunpinyin
 app-i18n/sunpinyin-data
-app-i18n/xsunpinyin
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
