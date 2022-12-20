@@ -665,12 +665,6 @@ net-analyzer/thcrut
 net-dns/dnshijacker
 net-misc/selfdhcp
 
-# Michał Górny <mgorny@gentoo.org> (2022-11-17)
-# No maintainer.  No upstream activity since 2020.  Multiple bugs
-# reported.
-# Removal on 2022-12-17.  Bug #881673.
-app-admin/prelude-manager
-
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
 # Removal after 2023-01-01.  Bug #881249.
