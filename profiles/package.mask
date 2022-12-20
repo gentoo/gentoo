@@ -584,7 +584,6 @@ media-sound/umix
 # and at least PEAR-VersionControl_SVN has reported test failures.
 # Removal on 2022-12-19.  Bug #737854.
 dev-php/agavi
-dev-php/phing
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
