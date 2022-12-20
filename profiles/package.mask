@@ -634,7 +634,6 @@ media-sound/marrie
 media-tv/tvnamer
 net-analyzer/carl
 net-im/skype-dbus-mock
-sci-libs/bmrblib
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
