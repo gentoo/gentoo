@@ -4,4 +4,7 @@
 	<maintainer type="person">
 		<email>dilfridge@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type='sourceforge'>xsnow</remote-id>
+	</upstream>
 </pkgmetadata>
