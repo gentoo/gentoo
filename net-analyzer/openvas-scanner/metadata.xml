@@ -10,8 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="cron">Install a cron job to update GVM's feed daily.</flag>
-		<flag name="extras">Html docs support</flag>
 		<flag name="snmp">Build againts <pkg>net-analyzer/net-snmp</pkg> for "improved SNMP support"</flag>
 	</use>
 	<longdescription lang="en">
