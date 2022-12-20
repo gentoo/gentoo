@@ -678,12 +678,6 @@ net-analyzer/prelude-lml
 sec-policy/selinux-prelude
 www-apps/prewikka
 
-# Michał Górny <mgorny@gentoo.org> (2022-11-15)
-# Test-restricted since its introduction in 2016.  Not receiving package
-# maintainer's attention.  No revdeps left.
-# Removal on 2022-12-15.  Bug #759931.
-dev-python/pytest-html
-
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
 # Removal after 2023-01-01.  Bug #881249.
