@@ -587,7 +587,6 @@ dev-php/agavi
 dev-php/phing
 dev-php/PEAR-PEAR_PackageFileManager
 dev-php/PEAR-PEAR_PackageFileManager2
-dev-php/PEAR-PEAR_PackageFileManager_Plugins
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
