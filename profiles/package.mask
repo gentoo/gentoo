@@ -560,7 +560,6 @@ app-emulation/aqemu
 app-forensics/ovaldi
 app-misc/glimpse
 dev-db/cpp-driver
-dev-erlang/riakc
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
