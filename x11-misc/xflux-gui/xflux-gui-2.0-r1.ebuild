@@ -15,10 +15,10 @@ S="${WORKDIR}/fluxgui-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 
 RDEPEND="
-	dev-libs/libappindicator:3
+	dev-libs/libayatana-appindicator
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	dev-python/pygobject[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
