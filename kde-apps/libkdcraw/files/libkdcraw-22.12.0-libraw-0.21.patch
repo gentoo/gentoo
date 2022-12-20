@@ -1,0 +1,28 @@
+From 0843c601cbb9a9bb5774ed01b7d90e68fd17950a Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Sun, 18 Dec 2022 15:59:51 +0100
+Subject: [PATCH] Fix build with libraw 0.21
+
+---
+ src/kdcraw.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/kdcraw.cpp b/src/kdcraw.cpp
+index 376a37d..1433c4b 100644
+--- a/src/kdcraw.cpp
++++ b/src/kdcraw.cpp
+@@ -357,7 +357,11 @@ bool KDcraw::extractRAWData(const QString& filePath, QByteArray& rawData, DcrawI
+     d->setProgress(0.3);
+ 
+     raw.imgdata.params.output_bps  = 16;
++#if LIBRAW_COMPILE_CHECK_VERSION_NOTLESS(0, 21)
++    raw.imgdata.rawparams.shot_select = shotSelect;
++#else
+     raw.imgdata.params.shot_select = shotSelect;
++#endif
+     ret                            = raw.unpack();
+ 
+     if (ret != LIBRAW_SUCCESS)
+-- 
+GitLab
+

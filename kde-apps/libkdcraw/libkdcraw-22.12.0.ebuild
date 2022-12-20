@@ -18,3 +18,5 @@ DEPEND="
 	>=media-libs/libraw-0.16:=
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-libraw-0.21.patch ) # bug 887355
