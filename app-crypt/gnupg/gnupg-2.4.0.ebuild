@@ -154,11 +154,7 @@ my_src_test() {
 my_src_install() {
 	emake DESTDIR="${D}" install
 
-	use tools &&
-		dobin \
-			tools/{convert-from-106,gpg-check-pattern} \
-			tools/{gpgconf,gpgsplit,lspgpot,mail-signed-keys} \
-			tools/make-dns-cert
+	use tools && dobin tools/{gpgconf,gpgsplit,gpg-check-pattern} tools/make-dns-cert
 
 	dosym gpg /usr/bin/gpg2
 	dosym gpgv /usr/bin/gpgv2
@@ -173,6 +169,8 @@ my_src_install() {
 
 my_src_install_all() {
 	einstalldocs
+
+	use tools && dobin tools/{convert-from-106,mail-signed-keys,lspgpot}
 
 	use doc && dodoc doc/*.png
 
