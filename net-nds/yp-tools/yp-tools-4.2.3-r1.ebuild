@@ -20,7 +20,8 @@ DEPEND="
 	>=net-libs/libnsl-1.2.0:0=
 	virtual/libcrypt:=
 	nls? ( virtual/libintl )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!sys-apps/net-tools[nis(-)]"
 BDEPEND="virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
