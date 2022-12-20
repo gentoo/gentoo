@@ -16,7 +16,7 @@ SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/${MY_P}.tar.gz"
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
-IUSE="+appindicator crypt cups examples gnome-keyring gvnc kwallet nls python spice ssh rdp telemetry vnc wayland webkit x2go zeroconf"
+IUSE="+appindicator crypt cups examples gnome-keyring gvnc kwallet nls python spice ssh rdp telemetry vnc wayland webkit zeroconf"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -44,7 +44,6 @@ COMMON_DEPEND="
 		x11-libs/vte:2.91 )
 	vnc? ( net-libs/libvncserver[jpeg] )
 	webkit? ( net-libs/webkit-gtk:4 )
-	x2go? ( net-misc/pyhoca-cli )
 	zeroconf? ( >=net-dns/avahi-0.8-r2[dbus,gtk] )
 "
 
@@ -98,7 +97,7 @@ src_configure() {
 		-DWITH_UPDATE_DESKTOP_DB=OFF
 		-DWITH_VTE=$(usex ssh)
 		-DWITH_WWW=$(usex webkit)
-		-DWITH_X2GO=$(usex x2go)
+		-DWITH_X2GO=OFF
 		# when this feature is stable, add python eclass usage to optionally enable
 		-DWITH_PYTHON=OFF
 	)

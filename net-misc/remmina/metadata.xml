@@ -18,7 +18,6 @@
 		<flag name="kwallet">Enable KDE Wallet plugin</flag>
 		<flag name="spice">Support connecting to SPICE-enabled virtual machines</flag>
 		<flag name="ssh">Enable support for SSH/SFTP protocol</flag>
-		<flag name="x2go">Enable support for X2Go</flag>
 	</use>
 	<upstream>
 		<remote-id type="gitlab">Remmina/Remmina</remote-id>
