@@ -60,7 +60,7 @@ BDEPEND="
 	dev-util/cbindgen
 	>=sys-devel/binutils-2.16.1
 	virtual/pkgconfig
-	<virtual/rust-1.65.0
+	virtual/rust
 	amd64? ( >=dev-lang/yasm-1.1 )
 	lto? ( sys-devel/binutils[gold] )
 	x86? ( >=dev-lang/yasm-1.1 )
