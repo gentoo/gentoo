@@ -631,7 +631,6 @@ mate-extra/caja-hide
 media-gfx/netpaint
 media-plugins/mythplugins
 media-sound/marrie
-media-tv/tvnamer
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
