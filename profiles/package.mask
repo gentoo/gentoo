@@ -637,15 +637,6 @@ net-im/skype-dbus-mock
 sci-libs/bmrblib
 sci-mathematics/relational
 
-# Michał Górny <mgorny@gentoo.org> (2022-11-17)
-# Rarely used package with very high maintenance cost.  Hacky, requires
-# explicit support code for every architecture, effectively preventing
-# it from being keyworded on some of the Gentoo architectures.  The test
-# suite is problematic.  The current release blocks dev-python/greenlet
-# upgrade, the new release fails many tests again.
-# Removal on 2022-12-17.  Bug #879011.
-dev-python/gevent
-
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
 # Removal after 2023-01-01.  Bug #881249.
