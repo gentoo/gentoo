@@ -49,6 +49,10 @@ BDEPEND="
 # having trouble getting tests to compile
 RESTRICT+=" test"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-compile-hangs-under-make-4.4.patch
+)
+
 pkg_setup() {
 	local CONFIG_CHECK="
 		~TRACING

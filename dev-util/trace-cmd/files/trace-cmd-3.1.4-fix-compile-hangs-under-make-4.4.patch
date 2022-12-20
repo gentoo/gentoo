@@ -1,0 +1,65 @@
+From e95be06da53eceeac332424d9893463c6c758b3d Mon Sep 17 00:00:00 2001
+From: jinqiang zhang <peeweep@0x0.ee>
+Date: Mon, 19 Dec 2022 22:57:32 +0000
+Subject: [PATCH] Fix compile hangs under make 4.4
+
+And run `make -d` with see below error messages:
+
+Makefile:224: not recursively expanding LIBTRACECMD_SHARED_VERSION to export to shell function
+Makefile:225: not recursively expanding LIBTRACECMD_SHARED_SO to export to shell function
+Makefile:237: not recursively expanding LIBTRACEEVENT_CFLAGS to export to shell function
+Makefile:238: not recursively expanding LIBTRACEEVENT_LDLAGS to export to shell function
+Makefile:79: not recursively expanding pkgconfig_dir to export to shell function
+
+Since make 4.4, recursively variables will set as empty string.
+
+Releated:
+  * [SV 10593] Export variables to $(shell ...) commands: https://git.savannah.gnu.org/cgit/make.git/commit/?id=98da874c
+  * [SV 63016] Don't fail exporting to $(shell ...): https://git.savannah.gnu.org/cgit/make.git/commit/?id=7d484017
+  * dev-util/trace-cmd-3.1.4 fails to compile: hangs: https://bugs.gentoo.org/881605
+
+Signed-off-by: jinqiang zhang <peeweep@0x0.ee>
+---
+ Makefile | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index e67cb77..ed98732 100644
+--- a/Makefile
++++ b/Makefile
+@@ -221,8 +221,8 @@ LIBS ?= -ldl
+ LIBTRACECMD_DIR = $(obj)/lib/trace-cmd
+ LIBTRACECMD_STATIC = $(LIBTRACECMD_DIR)/libtracecmd.a
+ LIBTRACECMD_SHARED = $(LIBTRACECMD_DIR)/libtracecmd.so.$(LIBTRACECMD_VERSION)
+-LIBTRACECMD_SHARED_VERSION = $(shell echo $(LIBTRACECMD_SHARED) | sed -e 's/\(\.so\.[0-9]*\).*/\1/')
+-LIBTRACECMD_SHARED_SO = $(shell echo $(LIBTRACECMD_SHARED) | sed -e 's/\(\.so\).*/\1/')
++LIBTRACECMD_SHARED_VERSION := $(shell echo $(LIBTRACECMD_SHARED) | sed -e 's/\(\.so\.[0-9]*\).*/\1/')
++LIBTRACECMD_SHARED_SO := $(shell echo $(LIBTRACECMD_SHARED) | sed -e 's/\(\.so\).*/\1/')
+ 
+ export LIBTRACECMD_STATIC LIBTRACECMD_SHARED
+ export LIBTRACECMD_SHARED_VERSION LIBTRACECMD_SHARED_SO
+@@ -234,8 +234,8 @@ TEST_LIBTRACEEVENT = $(shell sh -c "$(PKG_CONFIG) --atleast-version $(LIBTRACEEV
+ TEST_LIBTRACEFS = $(shell sh -c "$(PKG_CONFIG) --atleast-version $(LIBTRACEFS_MIN_VERSION) $(LIBTRACEFS) > /dev/null 2>&1 && echo y")
+ 
+ ifeq ("$(TEST_LIBTRACEEVENT)", "y")
+-LIBTRACEEVENT_CFLAGS = $(shell sh -c "$(PKG_CONFIG) --cflags $(LIBTRACEEVENT)")
+-LIBTRACEEVENT_LDLAGS = $(shell sh -c "$(PKG_CONFIG) --libs $(LIBTRACEEVENT)")
++LIBTRACEEVENT_CFLAGS := $(shell sh -c "$(PKG_CONFIG) --cflags $(LIBTRACEEVENT)")
++LIBTRACEEVENT_LDLAGS := $(shell sh -c "$(PKG_CONFIG) --libs $(LIBTRACEEVENT)")
+ else
+ .PHONY: warning
+ warning:
+@@ -253,8 +253,8 @@ endif
+ export LIBTRACEEVENT_CFLAGS LIBTRACEEVENT_LDLAGS
+ 
+ ifeq ("$(TEST_LIBTRACEFS)", "y")
+-LIBTRACEFS_CFLAGS = $(shell sh -c "$(PKG_CONFIG) --cflags $(LIBTRACEFS)")
+-LIBTRACEFS_LDLAGS = $(shell sh -c "$(PKG_CONFIG) --libs $(LIBTRACEFS)")
++LIBTRACEFS_CFLAGS := $(shell sh -c "$(PKG_CONFIG) --cflags $(LIBTRACEFS)")
++LIBTRACEFS_LDLAGS := $(shell sh -c "$(PKG_CONFIG) --libs $(LIBTRACEFS)")
+ else
+ .PHONY: warning
+ warning:
+-- 
+2.39.0
+
