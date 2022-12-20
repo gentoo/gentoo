@@ -592,14 +592,6 @@ dev-php/PEAR-VersionControl_SVN
 dev-php/phpmd
 dev-php/simpletest
 
-# Michał Górny <mgorny@gentoo.org> (2022-11-18)
-# These packages still lack support for Python 3.10.  In general, they
-# did not see any activity recently and either have no maintainer
-# or their respective maintainers did not reply to the bug.  Many
-# of them do not have tests enabled or have unresolved test failures.
-# Removal on 2022-12-18.  Tracker bug #823185.
-app-admin/ansible-cmdb
-
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
 # Removal after 2023-01-01.  Bug #881249.
