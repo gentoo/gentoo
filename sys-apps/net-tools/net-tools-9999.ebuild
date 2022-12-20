@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -23,7 +23,8 @@ REQUIRED_USE="nis? ( hostname )"
 
 DEPEND="selinux? ( sys-libs/libselinux )"
 RDEPEND="${DEPEND}
-	hostname? ( !sys-apps/coreutils[hostname] )"
+	hostname? ( !sys-apps/coreutils[hostname] )
+	nis? ( !net-nds/yp-tools )"
 BDEPEND="
 	selinux? ( virtual/pkgconfig )
 	app-arch/xz-utils
