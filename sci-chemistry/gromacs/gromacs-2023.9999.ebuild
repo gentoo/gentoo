@@ -74,6 +74,7 @@ REQUIRED_USE="
 	|| ( single-precision double-precision )
 	doc? ( !build-manual )
 	cuda? ( single-precision )
+	opencl? ( single-precision )
 	cuda? ( !opencl )
 	clang-cuda? ( clang cuda )
 	mkl? ( !blas !fftw !lapack )

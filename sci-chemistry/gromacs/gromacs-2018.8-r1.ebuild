@@ -48,6 +48,7 @@ RDEPEND="${CDEPEND}"
 REQUIRED_USE="
 	|| ( single-precision double-precision )
 	cuda? ( single-precision )
+	opencl? ( single-precision )
 	cuda? ( !opencl )
 	mkl? ( !blas !fftw !lapack )"
 

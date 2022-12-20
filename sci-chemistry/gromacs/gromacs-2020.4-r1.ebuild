@@ -76,6 +76,7 @@ REQUIRED_USE="
 	|| ( single-precision double-precision )
 	doc? ( !build-manual )
 	cuda? ( single-precision )
+	opencl? ( single-precision )
 	cuda? ( !opencl )
 	mkl? ( !blas !fftw !lapack )
 	${PYTHON_REQUIRED_USE}"
