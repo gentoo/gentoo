@@ -22,24 +22,24 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="
-		http://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
-		doc? ( https://ftp.gromacs.org/manual/manual-${PV/_/-}.pdf -> manual-${PV}.pdf )
-		test? ( http://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
+		https://ftp.gromacs.org/gromacs/${P}.tar.gz
+		doc? ( https://ftp.gromacs.org/manual/manual-${PV}.pdf )
+		test? ( https://ftp.gromacs.org/regressiontests/regressiontests-${PV}.tar.gz )"
 	# since 2022 arm support was dropped (but not arm64)
-	KEYWORDS="~amd64 -arm ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~amd64 -arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_arm_neon"
 
 DESCRIPTION="The ultimate molecular dynamics simulation package"
-HOMEPAGE="http://www.gromacs.org/"
+HOMEPAGE="https://www.gromacs.org/"
 
 # see COPYING for details
 # https://repo.or.cz/w/gromacs.git/blob/HEAD:/COPYING
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="blas cuda +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="blas clang clang-cuda cuda  +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
 
 CDEPEND="
 	blas? ( virtual/blas )
@@ -56,6 +56,7 @@ CDEPEND="
 	"
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
+	clang? ( >=sys-devel/clang-6:* )
 	build-manual? (
 		app-doc/doxygen
 		$(python_gen_cond_dep '
@@ -75,6 +76,7 @@ REQUIRED_USE="
 	doc? ( !build-manual )
 	cuda? ( single-precision )
 	cuda? ( !opencl )
+	clang-cuda? ( clang cuda )
 	mkl? ( !blas !fftw !lapack )
 	${PYTHON_REQUIRED_USE}"
 
@@ -114,6 +116,19 @@ src_prepare() {
 	# -on apple: there is framework support
 
 	xdg_environment_reset #591952
+
+	# we can use clang as default
+	if use clang && ! tc-is-clang ; then
+		export CC=${CHOST}-clang
+		export CXX=${CHOST}-clang++
+	else
+		tc-export CXX CC
+	fi
+	# clang-cuda need to filter mfpmath
+	if use clang-cuda ; then
+		filter-mfpmath sse
+		filter-mfpmath i386
+	fi
 
 	cmake_src_prepare
 
@@ -232,6 +247,7 @@ src_configure() {
 		[[ ${x} = "double" ]] && p="-DGMX_DOUBLE=ON" || p="-DGMX_DOUBLE=OFF"
 		local gpu=( "-DGMX_GPU=OFF" )
 		[[ ${x} = "float" ]] && use cuda && gpu=( "-DGMX_GPU=CUDA" )
+		[[ ${x} = "float" ]] && use clang-cuda && gpu=( "-DGMX_GPU=CUDA" "-DGMX_CLANG_CUDA=ON" )
 		use opencl && gpu=( "-DGMX_GPU=OPENCL" )
 		mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}

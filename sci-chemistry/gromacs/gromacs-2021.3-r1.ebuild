@@ -22,16 +22,16 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="
-		http://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
+		https://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
 		doc? ( https://ftp.gromacs.org/manual/manual-${PV/_/-}.pdf )
-		test? ( http://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
+		test? ( https://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
 	KEYWORDS="amd64 arm x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_arm_neon"
 
 DESCRIPTION="The ultimate molecular dynamics simulation package"
-HOMEPAGE="http://www.gromacs.org/"
+HOMEPAGE="https://www.gromacs.org/"
 
 # see COPYING for details
 # https://repo.or.cz/w/gromacs.git/blob/HEAD:/COPYING
