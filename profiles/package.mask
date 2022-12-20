@@ -558,7 +558,6 @@ acct-group/cmd5checkpw
 acct-user/cmd5checkpw
 app-emulation/aqemu
 app-forensics/ovaldi
-app-misc/glimpse
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
