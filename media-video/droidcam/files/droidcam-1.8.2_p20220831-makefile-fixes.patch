@@ -1,0 +1,68 @@
+diff --git a/Makefile b/Makefile
+index b372b09..d18ddba 100644
+--- a/Makefile
++++ b/Makefile
+@@ -11,31 +11,21 @@
+ # Example:
+ #  APPINDICATOR=ayatana-appindicator3-0.1 make droidcam
+ 
+-APPINDICATOR ?= appindicator3-0.1
+-JPEG_DIR     ?= /opt/libjpeg-turbo
+-JPEG_INCLUDE ?= $(JPEG_DIR)/include
+-JPEG_LIB     ?= $(JPEG_DIR)/lib`getconf LONG_BIT`
+-
+-
+-CC   = gcc
+-CFLAGS = -Wall -O2
+ GTK   = `pkg-config --libs --cflags gtk+-3.0` `pkg-config --libs x11`
+-GTK  += `pkg-config --libs --cflags $(APPINDICATOR)`
++GTK  += `pkg-config --libs --cflags ayatana-appindicator3-0.1`
+ LIBAV = `pkg-config --libs --cflags libswscale libavutil`
+ LIBS  =  -lspeex -lasound -lpthread -lm
+-JPEG  = -I$(JPEG_INCLUDE) $(JPEG_LIB)/libturbojpeg.a
++JPEG  = `pkg-config --libs --cflags libturbojpeg`
+ SRC   = src/connection.c src/settings.c src/decoder*.c src/av.c src/usb.c src/queue.c
+-USBMUXD = -lusbmuxd
++USBMUXD = -lusbmuxd-2.0
+ 
+-ifneq ($(findstring ayatana,$(APPINDICATOR)),)
+-	CFLAGS += -DUSE_AYATANA_APPINDICATOR
+-endif
++CFLAGS += -DUSE_AYATANA_APPINDICATOR
+ 
+ 
+ all: droidcam-cli droidcam
+ 
+ ifneq "$(RELEASE)" ""
+-SRC  += src/libusbmuxd.a src/libxml2.a src/libplist-2.0.a
++SRC  += src/libusbmuxd-2.0.s0 src/libxml2.so src/libplist-2.0.so
+ package: clean all
+ 	zip "droidcam_$(RELEASE).zip" \
+ 		LICENSE README* icon2.png  \
+@@ -51,11 +41,11 @@ gresource: .gresource.xml icon2.png
+ 
+ droidcam-cli: LDLIBS += $(JPEG) $(LIBAV) $(LIBS)
+ droidcam-cli: src/droidcam-cli.c $(SRC)
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
++	$(CC) $(CXXFLAGS) $(CPPFLAGS) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
+ 
+ droidcam: LDLIBS += $(GTK) $(JPEG) $(LIBAV) $(LIBS)
+ droidcam: src/droidcam.c src/resources.c $(SRC)
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
++	$(CC) $(CXXFLAGS) $(CPPFLAGS) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
+ 
+ clean:
+ 	rm -f droidcam
+diff --git a/v4l2loopback/Makefile b/v4l2loopback/Makefile
+index 28c4502..02356e9 100644
+--- a/v4l2loopback/Makefile
++++ b/v4l2loopback/Makefile
+@@ -11,7 +11,7 @@ install:
+ 	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) modules_install
+ 
+ test:
+-	gcc test.c -o test
++	$(CC) test.c -o test
+ 
+ clean:
+ 	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) clean
