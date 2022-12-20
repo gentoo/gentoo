@@ -585,7 +585,6 @@ media-sound/umix
 # Removal on 2022-12-19.  Bug #737854.
 dev-php/agavi
 dev-php/phing
-dev-php/PEAR-PEAR_PackageFileManager
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
