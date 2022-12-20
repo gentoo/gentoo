@@ -8,7 +8,11 @@
 	<use>
 		<flag name="lvm2create-initrd">Install lvm2create_initrd script and pull in <pkg>sys-apps/makedev</pkg> for the /sbin/MAKEDEV command</flag>
 		<flag name="thin">Support for thin volumes</flag>
-		<flag name="lvm">Build all of LVM2, not just device-mapper</flag>
+		<flag name="lvm">
+			Build all of LVM2 including daemons and tools like lvchange, not just the device-mapper library (for other packages to use).
+
+			If your system uses LVM2 for managing disks and partitions, enable this flag.
+		</flag>
 		<flag name="sanlock">Enable lvmlockd with support for sanlock</flag>
 	</use>
 	<upstream>
