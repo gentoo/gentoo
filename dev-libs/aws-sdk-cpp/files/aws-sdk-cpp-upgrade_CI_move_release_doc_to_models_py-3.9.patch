@@ -1,9 +1,0 @@
---- a/CI/move_release_doc_to_models.py	(original)
-+++ b/CI/move_release_doc_to_models.py	(refactored)
-@@ -1,5 +1,5 @@
- 
--from __future__ import print_function
-+
- 
- import json
- import zipfile

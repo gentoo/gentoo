@@ -1,9 +1,0 @@
---- a/CI/handle_release_notification.py	(original)
-+++ b/CI/handle_release_notification.py	(refactored)
-@@ -1,5 +1,5 @@
- 
--from __future__ import print_function
-+
- 
- import json
- import zipfile
