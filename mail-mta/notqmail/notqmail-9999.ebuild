@@ -61,8 +61,8 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/notqmail.asc
 
 LICENSE="public-domain"
 SLOT="0"
-IUSE="authcram gencertdaily highvolume pop3 qmail-spp ssl test vanilla"
-REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume !authcram !gencertdaily ) gencertdaily? ( ssl )"
+IUSE="gencertdaily highvolume pop3 qmail-spp ssl test vanilla"
+REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume !gencertdaily ) gencertdaily? ( ssl )"
 RESTRICT="!test? ( test )"
 
 if [[ ${PV} != 9999 ]] ; then
@@ -86,7 +86,6 @@ RDEPEND="${DEPEND}
 	acct-user/qmailr
 	acct-user/qmails
 	sys-apps/ucspi-tcp
-	authcram? ( >=net-mail/cmd5checkpw-0.30 )
 	ssl? (
 		pop3? ( sys-apps/ucspi-ssl )
 	)
@@ -142,12 +141,7 @@ src_prepare() {
 
 	qmail_src_postunpack
 
-	if ! use authcram; then
-		einfo "Disabled CRAM_MD5 support"
-		sed -e 's,^#define CRAM_MD5$,/*&*/,' -i "${S}"/qmail-smtpd.c || die
-	else
-		einfo "Enabled CRAM_MD5 support"
-	fi
+	einfo "Enabled CRAM_MD5 support"
 
 	ht_fix_file Makefile*
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -56,8 +56,8 @@ SRC_URI="${SRC_URI}
 
 LICENSE="public-domain"
 SLOT="0"
-IUSE="authcram gencertdaily highvolume pop3 qmail-spp ssl test vanilla"
-REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume !authcram !gencertdaily ) gencertdaily? ( ssl )"
+IUSE=" gencertdaily highvolume pop3 qmail-spp ssl test vanilla"
+REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume !gencertdaily ) gencertdaily? ( ssl )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -78,7 +78,6 @@ RDEPEND="${DEPEND}
 	acct-user/qmailr
 	acct-user/qmails
 	sys-apps/ucspi-tcp
-	authcram? ( >=net-mail/cmd5checkpw-0.30 )
 	ssl? (
 		pop3? ( sys-apps/ucspi-ssl )
 	)
@@ -133,12 +132,7 @@ src_prepare() {
 
 	qmail_src_postunpack
 
-	if ! use authcram; then
-		einfo "Disabled CRAM_MD5 support"
-		sed -e 's,^#define CRAM_MD5$,/*&*/,' -i "${S}"/qmail-smtpd.c || die
-	else
-		einfo "Enabled CRAM_MD5 support"
-	fi
+	einfo "Enabled CRAM_MD5 support"
 
 	ht_fix_file Makefile*
 }
