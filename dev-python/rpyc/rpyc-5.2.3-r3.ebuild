@@ -20,11 +20,10 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 # USE flags gdb, numpy are used *only* to run tests depending on these packages
-IUSE="test numpy gdb gevent"
+IUSE="test numpy gdb"
 RESTRICT="!test? ( test )"
 
 CDEPEND="numpy? ( dev-python/numpy[${PYTHON_USEDEP}] dev-python/pandas[${PYTHON_USEDEP}] )
-	gevent? ( dev-python/gevent[${PYTHON_USEDEP}] )
 	gdb? ( sys-devel/gdb )"
 
 DEPEND="${CDEPEND}
@@ -52,9 +51,7 @@ src_prepare() {
 	then rm tests/test_service_pickle.py || die "rm test_service_pickle.py failed"
 	fi
 
-	if ! use gevent
-	then rm tests/test_gevent_server.py || die "rm test_gevent_server.py failed"
-	fi
+	rm tests/test_gevent_server.py || die "rm test_gevent_server.py failed"
 
 	if ! use gdb
 	then rm tests/test_gdb.py || die "rm test_gdb.py failed"
