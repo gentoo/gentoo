@@ -635,7 +635,6 @@ media-tv/tvnamer
 net-analyzer/carl
 net-im/skype-dbus-mock
 sci-libs/bmrblib
-sci-mathematics/relational
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
