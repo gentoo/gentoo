@@ -107,7 +107,7 @@ DEPEND="virtual/rust[rustfmt]"
 RDEPEND="${DEPEND}
 	sys-devel/clang:="
 
-QA_FLAGS_IGNORED=( /usr/bin/bindgen )
+QA_FLAGS_IGNORED="usr/bin/bindgen"
 
 S="${WORKDIR}/rust-${P}"
 
