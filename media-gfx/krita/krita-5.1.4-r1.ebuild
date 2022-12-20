@@ -85,7 +85,10 @@ BDEPEND="
 	sys-devel/gettext
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-4.3.1-tests-optional.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.3.1-tests-optional.patch
+	"${FILESDIR}"/${P}-libraw-0.21.patch # bug 887473
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
