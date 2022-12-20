@@ -556,8 +556,6 @@ dev-cpp/pstreams
 # Removal on 2022-12-19.
 acct-group/cmd5checkpw
 acct-user/cmd5checkpw
-app-emulation/aqemu
-app-forensics/ovaldi
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
