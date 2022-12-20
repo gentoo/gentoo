@@ -154,7 +154,6 @@ app-metrics/ceph_exporter
 # Broken multilib dependencies.
 net-im/mattermost-desktop-bin
 net-im/skypeforlinux
-net-im/skype-dbus-mock
 net-im/slack
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (2012-10-07)
