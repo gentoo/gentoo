@@ -612,7 +612,6 @@ app-i18n/xsunpinyin
 app-portage/distpatch
 app-text/q-text-as-data
 app-vim/pydiction
-app-vim/vimoutliner
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
