@@ -618,7 +618,6 @@ dev-python/Rx
 dev-python/bert
 dev-python/flask-assets
 dev-python/libpy_simdjson
-dev-python/pytest-salt
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
