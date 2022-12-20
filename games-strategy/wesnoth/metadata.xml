@@ -10,5 +10,6 @@
   </use>
   <upstream>
     <remote-id type="sourceforge">wesnoth</remote-id>
+    <remote-id type="github">wesnoth/wesnoth</remote-id>
   </upstream>
 </pkgmetadata>
