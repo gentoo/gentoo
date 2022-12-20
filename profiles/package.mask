@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2022-12-20)
+# Proprietary MPEG library that is no longer fetchable.  No reverse
+# dependencies.
+# Removal on 2023-01-19.  Bug #759190.
+media-video/mpeg2vidcodec
+
+# Michał Górny <mgorny@gentoo.org> (2022-12-20)
 # An unmaintained library that was "quickly whipped up for some demos".
 # Last bumped in 2011.  No reverse dependencies.
 # Removal on 2023-01-19.  Bug #847406.
