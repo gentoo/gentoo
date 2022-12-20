@@ -8,14 +8,16 @@ inherit toolchain-funcs
 DESCRIPTION="SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders"
 HOMEPAGE="https://www.syslinux.org/"
 MY_P=${P/_/-}
-SRC_URI="https://www.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/${MY_P}.tar.xz"
+SRC_URI="https://git.zytor.com/syslinux/syslinux.git/snapshot/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+#KEYWORDS="-* ~amd64 ~x86"
 IUSE="abi_x86_32 abi_x86_64 +bios +efi"
 REQUIRED_USE="|| ( bios efi )
 	efi? ( || ( abi_x86_32 abi_x86_64 ) )"
+
+RESTRICT="test"
 
 BDEPEND="
 	dev-lang/perl
@@ -32,6 +34,7 @@ RDEPEND="
 	dev-perl/Digest-SHA1
 "
 DEPEND="${RDEPEND}
+	efi? ( sys-boot/gnu-efi[abi_x86_32(-)?,abi_x86_64(-)?] )
 	virtual/os-headers
 "
 
@@ -44,11 +47,25 @@ QA_FLAGS_IGNORED=".*"
 
 src_prepare() {
 	local PATCHES=(
-		"${FILESDIR}/syslinux-6.03-sysmacros.patch"
-		"${FILESDIR}/${PV}"
+		"${FILESDIR}/6.04_pre1"
+		"${FILESDIR}/6.04_pre3"
 	)
 	default
 }
+
+efimake() {
+	local ABI="${1}"
+	local libdir="$(get_libdir)"
+	shift
+	local args=(
+		EFIINC="${ESYSROOT}/usr/include/efi"
+		LIBDIR="${ESYSROOT}/usr/${libdir}"
+		LIBEFI="${ESYSROOT}/usr/${libdir}/libefi.a"
+		"${@}"
+	)
+	emake "${args[@]}"
+}
+
 src_compile() {
 	local DATE=$(date -u -r NEWS +%Y%m%d)
 	local HEXDATE=$(printf '0x%08x' "${DATE}")
@@ -61,10 +78,10 @@ src_compile() {
 	fi
 	if use efi; then
 		if use abi_x86_32; then
-			emake efi32 DATE="${DATE}" HEXDATE="${HEXDATE}"
+			efimake x86 efi32 DATE="${DATE}" HEXDATE="${HEXDATE}"
 		fi
 		if use abi_x86_64; then
-			emake efi64 DATE="${DATE}" HEXDATE="${HEXDATE}"
+			efimake amd64 efi64 DATE="${DATE}" HEXDATE="${HEXDATE}"
 		fi
 	fi
 }
@@ -82,6 +99,7 @@ src_install() {
 		install
 	)
 	emake -j1 "${args[@]}"
+	mv "${ED}"/usr/bin/keytab-{lilo,syslinux} || die
 	einstalldocs
 	dostrip -x /usr/share/syslinux
 }

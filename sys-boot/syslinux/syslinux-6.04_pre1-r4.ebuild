@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -116,5 +116,6 @@ src_install() {
 	# parallel install fails sometimes
 	einfo "loaderarch=${loaderarch}"
 	_emake -j1 INSTALLROOT="${D}" MANDIR=/usr/share/man bios ${loaderarch} install
+	mv "${ED}"/usr/bin/keytab-{lilo,syslinux} || die
 	dodoc README NEWS doc/*.txt
 }
