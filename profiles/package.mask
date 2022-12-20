@@ -622,7 +622,6 @@ dev-python/pytest-salt
 dev-python/requests_pkcs12
 dev-python/slackclient
 dev-python/tvdb_api
-dev-python/webassets
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
