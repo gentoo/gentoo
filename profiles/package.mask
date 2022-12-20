@@ -600,7 +600,6 @@ dev-php/simpletest
 # Removal on 2022-12-18.  Tracker bug #823185.
 app-admin/ansible-cmdb
 app-arch/bloscpack
-app-backup/borgweb
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
