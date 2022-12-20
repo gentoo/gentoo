@@ -645,7 +645,6 @@ sci-mathematics/relational
 # upgrade, the new release fails many tests again.
 # Removal on 2022-12-17.  Bug #879011.
 dev-python/gevent
-dev-python/geventhttpclient
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
