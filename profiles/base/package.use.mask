@@ -384,7 +384,6 @@ www-servers/apache apache2_modules_lua
 # Old phpunit does not work with new PHP and last is vulnerable
 <dev-php/PEAR-Crypt_GPG-1.6.4 test
 dev-php/PEAR-Text_Wiki_Mediawiki test
-dev-php/PEAR-VersionControl_SVN test
 dev-php/PHP_CodeSniffer test
 dev-php/php-redmine-api test
 dev-php/phptal test

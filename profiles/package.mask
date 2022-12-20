@@ -588,7 +588,6 @@ dev-php/phing
 dev-php/PEAR-PEAR_PackageFileManager
 dev-php/PEAR-PEAR_PackageFileManager2
 dev-php/PEAR-PEAR_PackageFileManager_Plugins
-dev-php/PEAR-VersionControl_SVN
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
