@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
+# This version currently is not compatible with kernel build (yet)
+~dev-util/bindgen-0.63.0
+
 # Matt Turner <mattst88@gentoo.org> (2022-12-19)
 # Only reverse dependency was x11-terms/eterm which was removed almost a year
 # ago.
