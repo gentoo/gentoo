@@ -663,7 +663,6 @@ net-analyzer/angst
 net-analyzer/egressor
 net-analyzer/thcrut
 net-dns/dnshijacker
-net-misc/selfdhcp
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
