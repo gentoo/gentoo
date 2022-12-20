@@ -624,7 +624,6 @@ dev-python/slackclient
 dev-python/tvdb_api
 dev-python/webassets
 dev-python/ws4py
-dev-util/comparator
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
