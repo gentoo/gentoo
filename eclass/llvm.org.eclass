@@ -489,7 +489,7 @@ llvm_install_manpages() {
 	# install pre-generated manpages
 	if ! llvm_are_manpages_built; then
 		# (doman does not support custom paths)
-		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
+		insinto "/usr/lib/llvm/${LLVM_MAJOR}/share/man/man1"
 		doins "${WORKDIR}/llvm-${PV}-manpages/${LLVM_COMPONENTS[0]}"/*.1
 	fi
 }
