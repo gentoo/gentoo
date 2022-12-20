@@ -655,11 +655,6 @@ net-misc/pyhoca-cli
 net-misc/pyhoca-gui
 net-misc/python-x2go
 
-# Matthew Smith <matthew@gentoo.org> (2022-11-17)
-# libnet:1.0's remaining rdeps. Dead upstreams.
-# Removal on 2022-12-17. Bug #881677
-net-libs/libnet:1.0
-
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
 # Removal after 2023-01-01.  Bug #881249.
