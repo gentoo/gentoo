@@ -6,6 +6,7 @@
     <name>Python</name>
   </maintainer>
   <upstream>
+    <remote-id type="github">SmileyChris/easy-thumbnails</remote-id>
     <remote-id type="pypi">easy-thumbnails</remote-id>
   </upstream>
 </pkgmetadata>
