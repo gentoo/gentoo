@@ -675,7 +675,6 @@ dev-libs/libpreludedb
 net-analyzer/prelude-correlator
 net-analyzer/prelude-lml-rules
 net-analyzer/prelude-lml
-sec-policy/selinux-prelude
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
