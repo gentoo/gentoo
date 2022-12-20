@@ -564,7 +564,6 @@ dev-erlang/riakc
 dev-util/stubgen
 media-gfx/xzgv
 net-dns/dnssec-check
-net-mail/cmd5checkpw
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
