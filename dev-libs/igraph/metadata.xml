@@ -13,5 +13,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">igraph</remote-id>
+		<remote-id type="github">igraph/igraph</remote-id>
 	</upstream>
 </pkgmetadata>
