@@ -660,7 +660,6 @@ net-misc/python-x2go
 # Removal on 2022-12-17. Bug #881677
 net-libs/libnet:1.0
 net-analyzer/angst
-net-analyzer/egressor
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
