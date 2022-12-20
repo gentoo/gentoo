@@ -296,11 +296,6 @@ sci-libs/gdal armadillo
 # Pulls in dev-db/redis which is not keyworded on ia64.
 mail-filter/pyzor test
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2017-06-17)
-# dev-python/gevent requires dev-python/greenlet which has not been ported to
-# ia64 (bug #538510)
-mail-filter/pyzor gevent
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2017-06-10)
 # media-libs/libilbc has not been ported to ia64, bug #610546
 media-video/ffmpeg libilbc

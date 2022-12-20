@@ -315,11 +315,6 @@ net-analyzer/rrdtool rados
 # (bug #544378)
 dev-db/mariadb galera
 
-# Jeroen Roovers <jer@gentoo.org> (2015-02-02)
-# dev-python/gevent requires dev-python/greenlet which has not been ported to
-# HPPA (bug #538510)
-mail-filter/pyzor gevent
-
 # Jeroen Roovers <jer@gentoo.org> (2014-10-19)
 # requires dev-python/restkit which requires
 # dev-python/socketpool which requires dev-python/gevent which requires
