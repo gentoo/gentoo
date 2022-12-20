@@ -626,7 +626,6 @@ dev-python/webassets
 dev-python/ws4py
 dev-util/comparator
 dev-util/rosinstall_generator
-games-util/pyfa
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
