@@ -14,7 +14,10 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="adjtimex systemd"
 
-RDEPEND="systemd? ( sys-apps/systemd )"
+RDEPEND="
+	adjtimex? ( !net-misc/adjtimex )
+	systemd? ( sys-apps/systemd )
+"
 DEPEND="${RDEPEND}"
 
 src_configure() {
