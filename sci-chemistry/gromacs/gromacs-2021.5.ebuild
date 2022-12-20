@@ -7,7 +7,8 @@ CMAKE_MAKEFILE_GENERATOR="ninja"
 
 PYTHON_COMPAT=( python3_{8..11} )
 
-DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_OPTIONAL=1
+DISTUTILS_USE_PEP517=no
 DISTUTILS_SINGLE_IMPL=1
 
 inherit bash-completion-r1 cmake cuda distutils-r1 flag-o-matic readme.gentoo-r1 toolchain-funcs xdg-utils
