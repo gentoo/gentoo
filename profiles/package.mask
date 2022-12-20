@@ -566,7 +566,6 @@ media-gfx/xzgv
 net-dns/dnssec-check
 net-mail/cmd5checkpw
 net-ftp/gproftpd
-sys-apps/intel-performance-counter-monitor
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
