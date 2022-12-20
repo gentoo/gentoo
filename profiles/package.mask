@@ -601,7 +601,6 @@ dev-php/simpletest
 app-admin/ansible-cmdb
 app-arch/bloscpack
 app-backup/borgweb
-app-i18n/fcitx-sunpinyin
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream

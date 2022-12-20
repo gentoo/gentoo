@@ -16,7 +16,6 @@ slotmove app-i18n/fcitx-m17n 0 4
 slotmove app-i18n/fcitx-qt5 0 4
 slotmove app-i18n/fcitx-rime 0 4
 slotmove app-i18n/fcitx-sayura 0 4
-slotmove app-i18n/fcitx-sunpinyin 0 4
 slotmove app-i18n/fcitx-table-extra 0 4
 slotmove app-i18n/fcitx-unikey 0 4
 slotmove app-i18n/kcm-fcitx 4 4-plasma4
