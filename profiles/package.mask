@@ -568,15 +568,6 @@ net-mail/cmd5checkpw
 net-ftp/gproftpd
 sys-apps/intel-performance-counter-monitor
 
-# Michał Górny <mgorny@gentoo.org> (2022-11-19)
-# Packages with reported failures and no maintainer activity.
-#
-# media-sound/retrovol: bug #624136, last bumped in 2013, homepage dead
-# media-sound/umix: bug #726076, last release in 2003 (!)
-#
-# Removal on 2022-12-19.
-media-sound/retrovol
-
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
 # Removal after 2023-01-01.  Bug #881249.
