@@ -20,7 +20,7 @@ KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 
 # libXfixes-5.0 needed for pointer barriers and #include <X11/extensions/Xfixes.h>
 DEPEND="
-	>=gnome-extra/evolution-data-server-3.33.1:=
+	>=gnome-extra/evolution-data-server-3.46.0:=
 	>=app-crypt/gcr-3.90.0:4=[introspection]
 	>=dev-libs/glib-2.68:2
 	>=dev-libs/gobject-introspection-1.49.1:=
