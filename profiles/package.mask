@@ -661,7 +661,6 @@ net-misc/python-x2go
 net-libs/libnet:1.0
 net-analyzer/angst
 net-analyzer/egressor
-net-analyzer/thcrut
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
