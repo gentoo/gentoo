@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit meson python-any-r1
+inherit meson python-single-r1
 
 DESCRIPTION="A set of services and D-Bus APIs to simplify access to UPnP/DLNA media devices"
 HOMEPAGE="https://gitlab.gnome.org/World/dLeyna"
@@ -13,6 +13,7 @@ SRC_URI="https://gitlab.gnome.org/World/dLeyna/-/archive/v${PV}/dLeyna-v${PV}.ta
 LICENSE="LGPL-2.1"
 SLOT="1.0/6" # soname of libdleyna-core-1.0.so
 KEYWORDS="~amd64"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	>=dev-libs/glib-2.28:2
