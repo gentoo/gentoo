@@ -623,7 +623,6 @@ dev-python/requests_pkcs12
 dev-python/slackclient
 dev-python/tvdb_api
 dev-python/webassets
-dev-python/ws4py
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
