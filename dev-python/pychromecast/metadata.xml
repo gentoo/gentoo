@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">PyChromecast</remote-id>
+		<remote-id type="github">home-assistant-libs/pychromecast</remote-id>
 	</upstream>
 </pkgmetadata>
