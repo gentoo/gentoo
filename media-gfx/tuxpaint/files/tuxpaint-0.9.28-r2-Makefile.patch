@@ -68,6 +68,24 @@
  
  .SUFFIXES:
  
+@@ -447,7 +447,7 @@ INSTALLED_MODIRS:=$(patsubst trans/%.mo,$(LOCALE_PREFIX)/%/LC_MESSAGES,$(MOFILES
+ 
+ $(INSTALLED_MODIRS): $(LOCALE_PREFIX)/%/LC_MESSAGES: trans/%.mo
+ 	install -d -m 755 $@
+-$(INSTALLED_MOFILES): $(LOCALE_PREFIX)/%/LC_MESSAGES/tuxpaint.mo: trans/%.mo
++$(INSTALLED_MOFILES): $(LOCALE_PREFIX)/%/LC_MESSAGES/tuxpaint.mo: trans/%.mo $(INSTALLED_MODIRS)
+ 	install -m 644 $< $@
+ 
+ .PHONY: uninstall-i18n
+@@ -526,7 +526,7 @@ endif
+ 
+ # Build the translation files for gettext
+ 
+-$(MOFILES): trans/%.mo: src/po/%.po  
++$(MOFILES): trans/%.mo: src/po/%.po trans
+ 	msgfmt -o $@ $<
+ 
+ .PHONY: translations
 @@ -551,7 +551,7 @@ trans:
  windows_ARCH_INSTALL:=
  macos_ARCH_INSTALL:=install-macbundle
@@ -77,6 +95,15 @@
  ARCH_INSTALL:=$($(OS)_ARCH_INSTALL)
  
  # "make install" installs all of the various parts
+@@ -627,7 +627,7 @@ install-magic-plugins:
+ 			$(DATA_PREFIX)/sounds/magic/*.ogg
+ 
+ .PHONY: install-magic-plugins
+-install-magic-plugin-dev:	src/tp_magic_api.h
++install-magic-plugin-dev:	src/tp_magic_api.h install-bin
+ 	@echo
+ 	@echo "...Installing Magic Tool plug-in development files and docs..."
+ 	@cp tp-magic-config $(BIN_PREFIX)
 @@ -719,12 +719,12 @@ uninstall:	uninstall-i18n
  	-rm $(BIN_PREFIX)/tuxpaint-import
  	-rm -r $(DATA_PREFIX)
@@ -96,7 +123,16 @@
  	-rm -f -r $(CONFDIR)
  	-rm $(COMPLETIONDIR)/tuxpaint-completion.bash
  	-rm -r $(MAGIC_PREFIX)
-@@ -817,11 +817,11 @@ $(THUMB_STARTERS):
+@@ -783,7 +783,7 @@ install-example-stamps:
+ STARTERS:=$(wildcard starters/*.*)
+ INSTALLED_STARTERS:=$(patsubst %,$(DATA_PREFIX)/%,$(STARTERS))
+ 
+-$(INSTALLED_STARTERS): $(DATA_PREFIX)/%: %
++$(INSTALLED_STARTERS): $(DATA_PREFIX)/%: % install-example-starters-dirs
+ 	install -m 644 $< $@
+ 
+ install-example-starters-dirs:
+@@ -817,14 +817,14 @@ $(THUMB_STARTERS):
  	@mkdir -p starters/.thumbs
  	@if [ "x" != "x"$(STARTER_BACK_NAME) ] ; \
  	then \
@@ -110,7 +146,20 @@
 +		gm convert $(CONVERT_OPTS) $(STARTER_NAME) $@ 2> /dev/null || ( echo "($@ failed)" ; rm $@ ) ; \
  	fi
  
- $(INSTALLED_THUMB_STARTERS): $(DATA_PREFIX)/%: %
+-$(INSTALLED_THUMB_STARTERS): $(DATA_PREFIX)/%: %
++$(INSTALLED_THUMB_STARTERS): $(DATA_PREFIX)/%: % install-example-starters-dirs
+ 	@install -D -m 644 $< $@ || ( echo "NO THUMB $<" )
+ 
+ .PHONY: echo-thumb-starters
+@@ -849,7 +849,7 @@ install-thumb-starters: echo-install-thumb-starters $(INSTALLED_THUMB_STARTERS)
+ TEMPLATES:=$(wildcard templates/*.*)
+ INSTALLED_TEMPLATES:=$(patsubst %,$(DATA_PREFIX)/%,$(TEMPLATES))
+ 
+-$(INSTALLED_TEMPLATES): $(DATA_PREFIX)/%: %
++$(INSTALLED_TEMPLATES): $(DATA_PREFIX)/%: % install-example-template-dirs
+ 	install -m 644 $< $@
+ 
+ install-example-template-dirs:
 @@ -876,7 +876,7 @@ TEMPLATE_NAME=$(or $(wildcard $(subst templates/.thumbs,templates,$(@:-t.png=.sv
  $(THUMB_TEMPLATES):
  	@printf "."
@@ -133,6 +182,15 @@
  
  # Install symlink:
  .PHONY: install-haiku
+@@ -1001,7 +1001,7 @@ install-haiku:
+ 
+ # Install the import script:
+ .PHONY: install-importscript
+-install-importscript:
++install-importscript: install-bin
+ 	@echo
+ 	@echo "...Installing 'tuxpaint-import' script..."
+ 	@cp src/tuxpaint-import.sh $(BIN_PREFIX)/tuxpaint-import
 @@ -1065,24 +1065,20 @@ install-man:
  	@install -d $(MAN_PREFIX)/man1
  	@# tuxpaint.1
@@ -162,3 +220,12 @@
  	done
  	@# FIXME: The other man pages aren't localizable yet -bjk 2021.08.14
  
+@@ -1382,7 +1378,7 @@ SHARED_FLAGS:=-shared -fpic -lm
+ MAGIC_C:=$(wildcard magic/src/*.c)
+ MAGIC_SO:=$(patsubst magic/src/%.c,magic/%.$(SO_TYPE),$(MAGIC_C))
+ 
+-$(MAGIC_SO): magic/%.$(SO_TYPE): magic/src/%.c  
++$(MAGIC_SO): magic/%.$(SO_TYPE): magic/src/%.c src/tp_magic_api.h 
+ 	$(CC) $(MAGIC_CFLAGS) $(LDFLAGS) $(SHARED_FLAGS) -o $@ $< $(PLUGIN_LIBS)
+ # Probably should separate the various flags like the following:
+ #	$(CC) $(PLUG_CPPFLAGS) $(PLUG_CFLAGS) $(PLUG_LDFLAGS) -o $@ $< $(PLUG_LIBS)
