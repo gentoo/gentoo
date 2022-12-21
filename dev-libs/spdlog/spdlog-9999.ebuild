@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake
 
-DESCRIPTION="Very fast, header only, C++ logging library"
+DESCRIPTION="Fast C++ logging library"
 HOMEPAGE="https://github.com/gabime/spdlog"
 
 if [[ ${PV} == *9999 ]]; then
