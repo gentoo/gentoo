@@ -5,7 +5,7 @@
 		<email>mscardovi@icloud.com</email>
 		<name>Marco Scardovi</name>
 	</maintainer>
-		<maintainer type="person" proxied="proxy">
+	<maintainer type="person" proxied="proxy">
 		<email>mattst88@gentoo.org</email>
 		<name>Matt Turner</name>
 	</maintainer>
