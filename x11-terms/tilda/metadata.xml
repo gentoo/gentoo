@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-	<remote-id type="sourceforge">tilda</remote-id>
+		<remote-id type="sourceforge">tilda</remote-id>
+		<remote-id type="github">lanoxx/tilda</remote-id>
 	</upstream>
 </pkgmetadata>
