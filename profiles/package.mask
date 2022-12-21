@@ -542,12 +542,6 @@ media-sound/gnome-music
 net-libs/libzapojit
 net-misc/gnome-online-miners
 
-# Ionen Wolkens <ionen@gentoo.org> (2022-11-21)
-# Was added only for dev-python/pytest-bdd which no longer needs it.
-# If using, migrate to stdlib glob which supports `**` since python-3.5.
-# Removal: 2022-12-21.
-dev-python/glob2
-
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream
 # Removal after 2023-01-01.  Bug #881249.
