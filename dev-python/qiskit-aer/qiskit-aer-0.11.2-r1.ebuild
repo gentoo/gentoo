@@ -30,7 +30,7 @@ KEYWORDS="~amd64"
 DEPEND="
 	>=dev-python/numpy-1.16.3[${PYTHON_USEDEP}]
 	>=dev-cpp/nlohmann_json-3.1.1
-	>=dev-libs/spdlog-1.5.0
+	>=dev-libs/spdlog-1.5.0:=
 	>=dev-cpp/muParserX-4.0.8
 	virtual/cblas[eselect-ldso]
 	sci-libs/openblas[eselect-ldso]
