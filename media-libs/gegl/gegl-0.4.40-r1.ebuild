@@ -76,6 +76,10 @@ BDEPEND="
 
 DOCS=( AUTHORS docs/ChangeLog docs/NEWS.adoc )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.40-strict-prototypes.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
