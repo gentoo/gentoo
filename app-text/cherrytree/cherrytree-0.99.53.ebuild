@@ -37,7 +37,7 @@ RDEPEND="app-i18n/uchardet
 	dev-libs/glib:2
 	dev-libs/libfmt:=
 	dev-libs/libxml2:2
-	dev-libs/spdlog
+	dev-libs/spdlog:=
 	gui-libs/vte:2.91-gtk4
 	net-misc/curl
 	x11-libs/cairo
