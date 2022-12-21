@@ -401,6 +401,8 @@ BDEPEND=">=virtual/rust-1.60"
 PATCHES=(
 	# https://bugs.gentoo.org/866133
 	"${FILESDIR}"/${PN}-1.10.3-no-strip.patch
+	# https://bugs.gentoo.org/864034
+	"${FILESDIR}"/${PN}-1.11.0-no-old-time.patch
 )
 
 QA_FLAGS_IGNORED="usr/bin/starship"
