@@ -69,6 +69,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-link-with-x11.patch
+	"${FILESDIR}"/${PV}-libraw-0.21.patch
 )
 
 src_configure() {
