@@ -11,7 +11,7 @@ MY_P="${P/-amber}"
 MY_P="${MY_P/_/-}"
 
 DESCRIPTION="OpenGL-like graphic library for Linux"
-HOMEPAGE="https://www.mesa3d.org/ https://mesa.freedesktop.org/"
+HOMEPAGE="https://docs.mesa3d.org/amber.html"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/mesa.git"
