@@ -5,11 +5,12 @@ EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="userspace utility for testing the memory subsystem for faults"
+DESCRIPTION="Userspace utility for testing the memory subsystem for faults"
 HOMEPAGE="http://pyropus.ca/software/memtester/"
 SRC_URI="
-	http://pyropus.ca/software/memtester/${P}.tar.gz
-	http://pyropus.ca/software/memtester/old-versions/${P}.tar.gz"
+	https://pyropus.ca./software/memtester/${P}.tar.gz
+	https://pyropus.ca./software/memtester/old-versions/${P}.tar.gz
+"
 
 LICENSE="GPL-2"
 SLOT="0"
