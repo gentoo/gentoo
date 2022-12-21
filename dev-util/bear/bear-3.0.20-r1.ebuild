@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-db/sqlite-3.14:=
 	dev-libs/libfmt:=
 	dev-libs/protobuf:=
-	>=dev-libs/spdlog-1.5
+	>=dev-libs/spdlog-1.5:=
 	>=net-libs/grpc-1.26:=
 "
 
