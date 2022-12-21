@@ -40,6 +40,10 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}"/${P}-sitepkg-junk.patch
+	)
+
 	# unbundle tomli
 	sed -i -e 's:from ._vendored ::' isort/settings.py || die
 	rm -r isort/_vendored || die
