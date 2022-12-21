@@ -38,3 +38,17 @@ src_prepare() {
 	default
 	eautoreconf
 }
+
+src_install() {
+	default
+
+	# Install xscreensaver hack, which calls xsnow with the correct
+	# arguments. xscreensaver calls all hacks with --root, however xsnow
+	# only understands -root and will exit with an error if an unknown
+	# argument (--root) is provided.
+	exeinto usr/$(get_libdir)/misc/xscreensaver
+	newexe - xsnow <<-EOF
+	#/usr/bin/env bash
+	exec "${EPREFIX}/usr/bin/xsnow" -nomenu -root
+EOF
+}
