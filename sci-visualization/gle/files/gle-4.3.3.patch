@@ -1,0 +1,134 @@
+diff -r -U2 src.orig/CMakeLists.txt src/CMakeLists.txt
+--- src.orig/CMakeLists.txt	2022-04-14 02:47:12.000000000 +0700
++++ src/CMakeLists.txt	2022-12-20 13:03:11.386586253 +0700
+@@ -9,4 +9,7 @@
+ project (gle VERSION 4.3.3)
+ 
++set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD_REQUIRED ON)
++
+ add_compile_definitions(GLEVN="${PROJECT_VERSION}")
+ set( CMAKE_DEBUG_POSTFIX  "d")
+@@ -130,5 +133,5 @@
+ 	string(COMPARE NOTEQUAL "${CAIRO_LIBRARIES}" "CAIRO_LIBRARIES-NOTFOUND" CAIRO_FOUND)
+ endif()
+-find_path(CAIRO_INCLUDE_DIRS cairo.h PATHS ${CAIRO_ROOT} PATH_SUFFIXES include REQUIRED)
++find_path(CAIRO_INCLUDE_DIRS cairo.h PATHS ${CAIRO_ROOT} PATH_SUFFIXES include include/cairo REQUIRED)
+ if(CAIRO_FOUND)
+ 	message("-- Found CAIRO: " ${CAIRO_LIBRARIES} )
+@@ -154,8 +157,8 @@
+ 	endif()
+ else()
+-	find_library(PIXMAN_LIBRARIES NAMES pixman pixmand PATHS ${PIXMAN_ROOT} PATH_SUFFIXES lib REQUIRED)
++	find_library(PIXMAN_LIBRARIES NAMES pixman pixmand pixman-1 PATHS ${PIXMAN_ROOT} PATH_SUFFIXES lib lib64 REQUIRED)
+ 	string(COMPARE NOTEQUAL "${PIXMAN_LIBRARIES}" "PIXMAN_LIBRARIES-NOTFOUND" PIXMAN_FOUND)
+ endif()
+-find_path(PIXMAN_INCLUDE_DIRS pixman.h PATHS ${PIXMAN_ROOT} PATH_SUFFIXES include REQUIRED)
++find_path(PIXMAN_INCLUDE_DIRS pixman.h PATHS ${PIXMAN_ROOT} PATH_SUFFIXES include include/pixman-1 REQUIRED)
+ if(PIXMAN_FOUND)
+ 	message("-- Found PIXMAN: " ${PIXMAN_LIBRARIES} )
+@@ -164,9 +167,9 @@
+ # -- GHOSTscript or GHOSTPDL include directory only since gle links to installed version at runtime
+ #
+-find_path(GDIR1 iapi.h PATHS ${GHOSTPDL_ROOT} PATH_SUFFIXES psi base devices )
++find_path(GDIR1 iapi.h PATHS ${GHOSTPDL_ROOT} PATH_SUFFIXES psi base devices ghostscript )
+ list(APPEND GHOSTPDL_INCLUDE_DIRS ${GDIR1} )
+-find_path(GDIR2 gdevdsp.h PATHS ${GHOSTPDL_ROOT} PATH_SUFFIXES psi base devices )
++find_path(GDIR2 gdevdsp.h PATHS ${GHOSTPDL_ROOT} PATH_SUFFIXES psi base devices ghostscript )
+ list(APPEND GHOSTPDL_INCLUDE_DIRS ${GDIR2} )
+-find_path(GDIR3 gserrors.h PATHS ${GHOSTPDL_ROOT} PATH_SUFFIXES psi base devices )
++find_path(GDIR3 gserrors.h PATHS ${GHOSTPDL_ROOT} PATH_SUFFIXES psi base devices ghostscript )
+ list(APPEND GHOSTPDL_INCLUDE_DIRS ${GDIR3} )
+ 
+@@ -398,5 +401,4 @@
+ # documentation file installation in doc folder
+ install(FILES 
+-	../doc/LICENSE.txt 
+ 	../doc/README.txt 
+ 	../doc/ChangeLog.txt
+diff -r -U2 src.orig/gui/CMakeLists.txt src/gui/CMakeLists.txt
+--- src.orig/gui/CMakeLists.txt	2022-04-14 02:47:12.000000000 +0700
++++ src/gui/CMakeLists.txt	2022-12-19 10:21:59.026388957 +0700
+@@ -54,11 +54,14 @@
+ 	$<$<PLATFORM_ID:Windows>:qgle.rc>
+ )
+-# no jpeg as its contianed in Qt
++# no jpeg as its contained in Qt
++# but need to add JPEG for Debian!
++# order matters: first static files (and libgle), then dynamic libraries
+ target_link_libraries ( qgle LINK_PUBLIC 
++	libgle-graphics_s
+ 	${ZLIB_LIBRARIES}
++	${JPEG_LIBRARIES}
+ 	${TIFF_LIBRARIES}
+ 	${PNG_LIBRARIES}
+ 	${PIXMAN_LIBRARIES}
+-	libgle-graphics_s
+ 	Qt::Core
+ 	Qt::Gui
+@@ -70,5 +73,6 @@
+ 
+ if(UNIX AND NOT APPLE)
+- 	target_link_libraries ( qgle LINK_PUBLIC 
++ 	target_link_libraries ( qgle LINK_PUBLIC
++		dl
+  		glut
+  		GLU
+diff -r -U2 src.orig/gui/main.cpp src/gui/main.cpp
+--- src.orig/gui/main.cpp	2022-04-14 02:47:12.000000000 +0700
++++ src/gui/main.cpp	2022-12-19 10:21:59.046388957 +0700
+@@ -277,5 +277,5 @@
+ 	#endif
+ 	#ifdef Q_OS_LINUX
+-	Q_IMPORT_PLUGIN(QWaylandIntegrationPlugin)
++	// Q_IMPORT_PLUGIN(QWaylandIntegrationPlugin)
+ 	#endif
+ 	QLocale curLocale("C");
+diff -r -U2 src.orig/gui/qgs.h src/gui/qgs.h
+--- src.orig/gui/qgs.h	2022-04-14 02:47:12.000000000 +0700
++++ src/gui/qgs.h	2022-12-19 10:21:59.068388958 +0700
+@@ -40,7 +40,7 @@
+ #include "gsinc/ierrors.h"
+ #else
+-#include <ierrors.h>
+-#include <iapi.h>
+-#include <gdevdsp.h>
++#include <ghostscript/ierrors.h>
++#include <ghostscript/iapi.h>
++#include <ghostscript/gdevdsp.h>
+ 
+ #endif
+diff -r -U2 src.orig/makefmt/makefmt.cpp src/makefmt/makefmt.cpp
+--- src.orig/makefmt/makefmt.cpp	2022-04-14 02:47:12.000000000 +0700
++++ src/makefmt/makefmt.cpp	2022-12-18 14:09:54.399896247 +0700
+@@ -115,6 +115,6 @@
+ 
+ int main(int argc, char *argv[]) {
+-	char filename[80];
+-	char fmtname[80];
++	char filename[200];
++	char fmtname[200];
+ 	init_accents();
+ 	/* encoding file given? */
+diff -r -U2 src.orig/TeX/CMakeLists.txt src/TeX/CMakeLists.txt
+--- src.orig/TeX/CMakeLists.txt	2022-04-14 02:47:12.000000000 +0700
++++ src/TeX/CMakeLists.txt	2022-12-20 13:34:00.953502995 +0700
+@@ -52,11 +52,11 @@
+ )
+ # make the inittex.ini in the install folder
+-install(CODE "execute_process(COMMAND ${CMAKE_INSTALL_PREFIX}/bin/gle$<$<CONFIG:Debug>:d> -mkinittex)")
++# install(CODE "execute_process(COMMAND ${CMAKE_INSTALL_PREFIX}/bin/gle$<$<CONFIG:Debug>:d> -mkinittex)")
+ # explicity install inittex.ini for cpack even though its created in this directory
+ # from gle -mkinittex command above
+-install(FILES 
+-	${CMAKE_INSTALL_PREFIX}/inittex.ini
+- 	CONFIGURATIONS Release Debug
+- 	DESTINATION . 
+-)
++# install(FILES 
++# 	${CMAKE_INSTALL_PREFIX}/inittex.ini
++#  	CONFIGURATIONS Release Debug
++#  	DESTINATION . 
++# )
+ 
+Только в src/TeX: CMakeLists.txt~
