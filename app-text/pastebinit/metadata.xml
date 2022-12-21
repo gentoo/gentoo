@@ -3,9 +3,6 @@
 <pkgmetadata>
 	<!--maintainer-needed-->
 	<stabilize-allarches/>
-	<use>
-		<flag name="crypt">Install pbputs for gpg-encrypted pastes</flag>
-	</use>
 	<upstream>
 		<remote-id type="launchpad">pastebinit</remote-id>
 	</upstream>
