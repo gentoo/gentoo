@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="lzma">Support automatic decompression of LZMA-compressed files and kernel images</flag>
-		<flag name="threads">Build the libraries with thread safe support</flag>
 		<flag name="utils">Install command-line utilities (all the eu-* programs)</flag>
 		<flag name="valgrind">Add support for memory debugging using <pkg>dev-util/valgrind</pkg></flag>
 	</use>
