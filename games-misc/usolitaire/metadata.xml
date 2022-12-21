@@ -9,4 +9,7 @@
         <email>shell-tools@gentoo.org</email>
         <name>Gentoo Shell Tools Project</name>
     </maintainer>
+    <upstream>
+        <remote-id type="github">eliasdorneles/usolitaire</remote-id>
+    </upstream>
 </pkgmetadata>
