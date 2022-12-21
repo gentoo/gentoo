@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop xdg cmake
+inherit xdg cmake
 
 DESCRIPTION="A PSP emulator written in C++"
 HOMEPAGE="https://www.ppsspp.org/
