@@ -9,7 +9,7 @@ SRC_URI="https://github.com/paul-j-lucas/cdecl/releases/download/${P}/${P}.tar.g
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug readline ncurses"
 
 DEPEND="
