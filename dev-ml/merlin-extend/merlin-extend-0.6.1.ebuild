@@ -12,7 +12,7 @@ SRC_URI="https://github.com/let-def/merlin-extend/archive/v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="dev-lang/ocaml:="
