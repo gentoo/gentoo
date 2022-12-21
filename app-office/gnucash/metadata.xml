@@ -33,5 +33,7 @@
 	<upstream>
 		<remote-id type="sourceforge">gnucash</remote-id>
 		<remote-id type="github">Gnucash/gnucash</remote-id>
+		<changelog>https://github.com/Gnucash/gnucash/releases</changelog>
+		<bugs-to>https://bugs.gnucash.org/</bugs-to>
 	</upstream>
 </pkgmetadata>
