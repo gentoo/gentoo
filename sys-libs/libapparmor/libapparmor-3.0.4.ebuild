@@ -55,6 +55,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# Fails with reflex/byacc, heavily relies on bisonisms
+	export LEX=flex
+	export YACC=yacc.bison
+
 	econf \
 		$(use_enable static-libs static) \
 		$(use_with perl) \

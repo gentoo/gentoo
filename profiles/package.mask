@@ -33,6 +33,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-12-21)
+# Fails to build both against MySQL and PostgreSQL.  Homepage gone.
+# Last bumped in 2005.
+# Removal on 2023-01-20.  Bug #677528, #807835.
+dev-db/mysql-super-smack
+
+# Michał Górny <mgorny@gentoo.org> (2022-12-21)
+# Reported to be incompatible with PHP 7+.  Abandoned upstream.
+# No reverse dependencies.  There is a maintained fork, should anyone
+# want to revive it.
+# Removal on 2023-01-20.  Bug #737842.
+dev-php/phptal
+
 # Michał Górny <mgorny@gentoo.org> (2022-12-20)
 # Pending version bump since 2015.  No new upstream releases since.
 # Removal on 2023-01-19.  Bug #887489.
@@ -541,12 +554,6 @@ media-gfx/gnome-photos
 media-sound/gnome-music
 net-libs/libzapojit
 net-misc/gnome-online-miners
-
-# Ionen Wolkens <ionen@gentoo.org> (2022-11-21)
-# Was added only for dev-python/pytest-bdd which no longer needs it.
-# If using, migrate to stdlib glob which supports `**` since python-3.5.
-# Removal: 2022-12-21.
-dev-python/glob2
 
 # Jonas Stein <jstein@gentoo.org> (2022-11-13)
 # Dead upstream

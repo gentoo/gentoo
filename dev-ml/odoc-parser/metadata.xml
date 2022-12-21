@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ml@gentoo.org</email>
+		<name>ML</name>
+	</maintainer>
+	<longdescription>
+		Odoc_parser is a library for parsing the contents of OCaml
+		documentation comments, formatted using 'odoc' syntax, an extension
+		of the language understood by ocamldoc.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/ocaml-doc/odoc-parser/issues/</bugs-to>
+		<remote-id type="github">ocaml-doc/odoc-parser</remote-id>
+	</upstream>
+</pkgmetadata>
