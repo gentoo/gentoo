@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2022-12-21)
+# Fails to build both against MySQL and PostgreSQL.  Homepage gone.
+# Last bumped in 2005.
+# Removal on 2023-01-20.  Bug #677528, #807835.
+dev-db/mysql-super-smack
+
+# Michał Górny <mgorny@gentoo.org> (2022-12-21)
 # Reported to be incompatible with PHP 7+.  Abandoned upstream.
 # No reverse dependencies.  There is a maintained fork, should anyone
 # want to revive it.
