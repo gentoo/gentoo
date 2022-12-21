@@ -78,6 +78,7 @@ DOCS=( AUTHORS docs/ChangeLog docs/NEWS.adoc )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.40-strict-prototypes.patch
+	"${FILESDIR}"/${PN}-0.4.40-libraw-0.21.patch
 )
 
 pkg_pretend() {
