@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2022-12-21)
+# The mauve project is no longer maintained upstream, and the actual
+# program has been removed from Gentoo in 2016.  These are leftover
+# libraries with no reverse dependencies.  Last bumped in 2009.
+# Removal on 2023-01-20.  Bug #677558.
+sci-libs/libgenome
+sci-libs/libmems
+
+# Michał Górny <mgorny@gentoo.org> (2022-12-21)
 # Fails to build both against MySQL and PostgreSQL.  Homepage gone.
 # Last bumped in 2005.
 # Removal on 2023-01-20.  Bug #677528, #807835.
