@@ -56,5 +56,5 @@ src_install() {
 
 pkg_postinst() {
 	einfo "As of tpm2-abrmd 3.0.0, users must be in the tss group"
-	einfo "To access the TPM"
+	einfo "to access the TPM"
 }
