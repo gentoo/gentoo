@@ -11,7 +11,7 @@ SRC_URI="https://github.com/reasonml/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
