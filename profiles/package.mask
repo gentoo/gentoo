@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2022-12-21)
+# Archived upstream, now that fwupd can handle updates.
+# Removal on 2023-01-20.
+media-gfx/colorhug-client
+
+# Matt Turner <mattst88@gentoo.org> (2022-12-21)
 # No reverse dependencies. GTK 4 doesn't use it.
 # See https://gitlab.gnome.org/GNOME/atkmm/-/issues/4
 # Removal on 2023-01-20.
