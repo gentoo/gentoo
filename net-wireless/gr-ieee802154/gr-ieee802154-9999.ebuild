@@ -28,12 +28,12 @@ RDEPEND="net-wireless/gnuradio:0=[${PYTHON_SINGLE_USEDEP}]
 		dev-libs/boost:=[python,${PYTHON_USEDEP}]
 		dev-python/pybind11[${PYTHON_USEDEP}]
 	')
-	dev-libs/gmp
+	dev-libs/gmp:=
+	dev-libs/spdlog:=
 	sci-libs/volk:=
 	${PYTHON_DEPS}"
-DEPEND="${RDEPEND}
-	dev-libs/spdlog
-	dev-lang/swig:0"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-lang/swig"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
