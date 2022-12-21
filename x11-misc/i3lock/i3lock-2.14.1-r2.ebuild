@@ -20,6 +20,7 @@ RDEPEND="
 	x11-libs/libxcb
 	x11-libs/libxkbcommon[X]
 	x11-libs/xcb-util
+	x11-libs/xcb-util-image
 	x11-libs/xcb-util-xrm"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
