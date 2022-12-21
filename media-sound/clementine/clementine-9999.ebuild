@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,8 +14,8 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 	inherit git-r3
 else
-	S="${WORKDIR}/Clementine-${PV/_}"
 	SRC_URI="https://github.com/clementine-player/Clementine/archive/refs/tags/${PV/_}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/Clementine-${PV/_}"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
@@ -29,19 +29,8 @@ REQUIRED_USE="
 	wiimote? ( dbus )
 "
 
-BDEPEND="
-	>=dev-cpp/gtest-1.8.0
-	dev-qt/linguist-tools:5
-	sys-devel/gettext
-	virtual/pkgconfig
-	test? (
-		dev-qt/qttest:5
-		gnome-base/gsettings-desktop-schemas
-	)
-"
 COMMON_DEPEND="
 	dev-db/sqlite:3
-	dev-libs/crypto++:=
 	dev-libs/glib:2
 	dev-libs/protobuf:=
 	dev-qt/qtconcurrent:5
@@ -64,12 +53,13 @@ COMMON_DEPEND="
 	ipod? ( >=media-libs/libgpod-0.8.0 )
 	lastfm? ( >=media-libs/liblastfm-1.1.0_pre20150206 )
 	moodbar? ( sci-libs/fftw:3.0= )
-	mtp? ( >=media-libs/libmtp-1.0.0 )
+	mtp? ( >=media-libs/libmtp-1.0.0:= )
 	projectm? (
 		media-libs/glew:=
 		>=media-libs/libprojectm-3.1.12:0=
 		virtual/opengl
 	)
+	pulseaudio? ( media-libs/libpulse )
 "
 RDEPEND="${COMMON_DEPEND}
 	media-plugins/gst-plugins-meta:1.0
@@ -88,9 +78,18 @@ DEPEND="${COMMON_DEPEND}
 	box? ( dev-cpp/sparsehash )
 	dropbox? ( dev-cpp/sparsehash )
 	googledrive? ( dev-cpp/sparsehash )
-	pulseaudio? ( media-sound/pulseaudio )
 	seafile? ( dev-cpp/sparsehash )
 	skydrive? ( dev-cpp/sparsehash )
+"
+BDEPEND="
+	>=dev-cpp/gtest-1.8.0
+	dev-qt/linguist-tools:5
+	sys-devel/gettext
+	virtual/pkgconfig
+	test? (
+		dev-qt/qttest:5
+		gnome-base/gsettings-desktop-schemas
+	)
 "
 
 DOCS=( Changelog README.md )
@@ -115,9 +114,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_WERROR=OFF
-		# force to find crypto++ see bug #548544
-		-DCRYPTOPP_LIBRARIES="cryptopp"
-		-DCRYPTOPP_FOUND=ON
 		# avoid automagically enabling of ccache (bug #611010)
 		-DCCACHE_EXECUTABLE=OFF
 		-DENABLE_BREAKPAD=OFF  #< disable crash reporting
@@ -141,6 +137,7 @@ src_configure() {
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DENABLE_WIIMOTEDEV="$(usex wiimote)"
+		"$(cmake_use_find_package alsa ALSA)"
 	)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
