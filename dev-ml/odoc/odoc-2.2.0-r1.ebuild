@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit dune
 
 DESCRIPTION="OCaml documentation generator"
-HOMEPAGE="http://github.com/ocaml/odoc"
+HOMEPAGE="http://github.com/ocaml/odoc/"
 SRC_URI="https://github.com/ocaml/${PN}/releases/download/${PV}/${P}.tbz"
 
 LICENSE="ISC"
@@ -16,11 +16,12 @@ IUSE="+ocamlopt test"
 RESTRICT="test" # ocaml-crunch not in the tree
 
 RDEPEND="
-	dev-ml/odoc-parser:=
 	dev-ml/astring:=
 	dev-ml/cmdliner:=
 	dev-ml/cppo:=
+	dev-ml/fmt:=
 	dev-ml/fpath:=
+	dev-ml/odoc-parser:=
 	dev-ml/result:=
 	dev-ml/tyxml:=
 "
