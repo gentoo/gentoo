@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson-multilib flag-o-matic
+inherit meson-multilib flag-o-matic toolchain-funcs
 
 DESCRIPTION="An audio time-stretching and pitch-shifting library and utility program"
 HOMEPAGE="https://www.breakfastquay.com/rubberband/"
@@ -25,7 +25,10 @@ CDEPEND="
 	programs? ( media-libs/libsndfile )
 	vamp? ( media-libs/vamp-plugin-sdk[${MULTILIB_USEDEP}] )
 "
-RDEPEND="${CDEPEND}"
+RDEPEND="
+	${CDEPEND}
+	sys-devel/gcc:*
+"
 DEPEND="${CDEPEND}"
 
 PATCHES=(
@@ -37,6 +40,10 @@ multilib_src_configure() {
 		# bug #827203
 		# meson doesn't respect/use LIBS but mangles LDFLAGS with libs
 		# correctly. Use this until we get a Meson test for libatomic.
+		append-ldflags -latomic
+	elif tc-is-clang && [[ $(tc-get-cxx-stdlib) == libstdc++ ]] ; then
+		# bug #860078
+		# undefined reference to `__atomic_is_lock_free'
 		append-ldflags -latomic
 	fi
 
