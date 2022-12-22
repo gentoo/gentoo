@@ -13,7 +13,7 @@ media-libs/gst-plugins-bad qsv
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-01)
 # Only supported on ppc64le.
-sys-devel/clang-common ieee-long-double
+sys-devel/clang ieee-long-double
 sys-devel/gcc ieee-long-double
 
 # Michał Górny <mgorny@gentoo.org> (2022-12-01)
