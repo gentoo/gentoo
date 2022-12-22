@@ -15,7 +15,7 @@ SRC_URI="https://thelambdalab.xyz/gitweb/index.cgi?p=${PN}.git;a=snapshot;h=${H}
 S="${WORKDIR}"/${PN}-${H}
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 
 DOCS=( ISSUES.org README )
