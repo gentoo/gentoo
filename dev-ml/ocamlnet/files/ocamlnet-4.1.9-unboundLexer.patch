@@ -1,0 +1,10 @@
+--- a/src/rpc-generator/Makefile	2022-12-22 08:32:49.839794123 +0100
++++ b/src/rpc-generator/Makefile	2022-12-22 08:34:48.185817182 +0100
+@@ -31,4 +31,7 @@
+ rpcgen-packlist:
+ 	echo $(BINDIR)/ocamlrpcgen >rpcgen-packlist
+ 
++main.cmo: lexer.cmo
++lexer.cmo: parser.cmo
++
+ include depend

@@ -35,6 +35,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-unboundLexer.patch )
+
 ocamlnet_use_with() {
 	if use $1; then
 		echo "-with-$2"
