@@ -40,6 +40,7 @@ IUSE="alsa cpu_flags_x86_sse4_1 jack pulseaudio qt6 sndio test vulkan wayland"
 REQUIRED_USE="cpu_flags_x86_sse4_1" # dies at runtime if no support
 RESTRICT="!test? ( test )"
 
+# dlopen: ffmpeg, qtsvg, vulkan-loader
 RDEPEND="
 	app-arch/xz-utils
 	app-arch/zstd:=
@@ -53,6 +54,7 @@ RDEPEND="
 	media-libs/libpng:=
 	>=media-libs/libsdl2-2.0.22[haptic,joystick]
 	media-libs/libsoundtouch:=
+	media-video/ffmpeg:=
 	net-libs/libpcap
 	sys-libs/zlib:=
 	virtual/libudev:=
