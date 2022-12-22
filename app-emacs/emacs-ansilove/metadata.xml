@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    This package provides some integration with the ansilove tool, which is a
+    ANSI and ASCII art to PNG converter.
+  </longdescription>
+  <upstream>
+    <maintainer status="active">
+      <email>xgqt@riseup.net</email>
+      <name>Maciej Barć</name>
+    </maintainer>
+    <bugs-to>https://gitlab.com/xgqt/emacs-ansilove/-/issues/</bugs-to>
+    <remote-id type="gitlab">xgqt/emacs-ansilove</remote-id>
+  </upstream>
+</pkgmetadata>
