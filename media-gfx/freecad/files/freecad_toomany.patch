@@ -1,0 +1,10 @@
+--- FreeCAD-0.20.1/src/Mod/Part/App/OCCError.h.orig     2022-11-27 08:47:14.905666640 -0800
++++ FreeCAD-0.20.1/src/Mod/Part/App/OCCError.h  2022-11-27 08:47:47.769840954 -0800
+@@ -50,7 +50,6 @@
+ # include <Standard_Overflow.hxx>
+ # include <Standard_ProgramError.hxx>
+ # include <Standard_RangeError.hxx>
+-# include <Standard_TooManyUsers.hxx>
+ # include <Standard_TypeMismatch.hxx>
+ # include <Standard_Underflow.hxx>
+
