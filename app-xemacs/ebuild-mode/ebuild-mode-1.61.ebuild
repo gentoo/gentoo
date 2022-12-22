@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit optfeature
+
 DESCRIPTION="Emacs modes for editing ebuilds and other Gentoo specific files"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
 SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
@@ -33,4 +35,10 @@ src_compile() {
 src_install() {
 	insinto /usr/share/xemacs/site-packages/lisp/${PN}
 	doins *.el *.elc
+}
+
+pkg_postinst() {
+	optfeature "ebuild commands support" sys-apps/portage
+	optfeature "additional development tools" dev-util/pkgdev
+	optfeature "ebuild QA utilities" dev-util/pkgcheck
 }
