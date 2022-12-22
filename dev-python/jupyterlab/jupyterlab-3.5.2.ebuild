@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD MIT GPL-3 Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 BDEPEND="dev-python/jupyter_packaging[${PYTHON_USEDEP}]"
 
@@ -38,6 +38,7 @@ BDEPEND="test? (
 	dev-python/openapi-core[${PYTHON_USEDEP}]
 	dev-python/openapi-spec-validator[${PYTHON_USEDEP}]
 	dev-python/pytest-console-scripts[${PYTHON_USEDEP}]
+	dev-python/pytest_jupyter[${PYTHON_USEDEP}]
 	dev-python/pytest-tornasync[${PYTHON_USEDEP}]
 	dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
