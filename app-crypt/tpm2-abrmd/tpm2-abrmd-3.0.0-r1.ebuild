@@ -50,6 +50,10 @@ src_configure() {
 }
 
 src_install() {
+	default
+
+	find "${D}" -name '*.la' -delete || die
+
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 }
