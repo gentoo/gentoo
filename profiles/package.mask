@@ -57,6 +57,15 @@ app-portage/flaggie
 # No reverse dependencies. Removal in 30 days.
 dev-ruby/hiredis
 
+# Marco Scardovi <mscardovi@icloud.com> (2022-12-22)
+# Per robbat2 request, I'm gonna treeclean it as we
+# are actually the only one maintaining it.
+# No update upstream, EAPI 6 and with a bug #687786
+# As replacement, it is possible to use pv --rate-limit
+# instead.
+# Removal on 2023-01-21
+net-misc/valve
+
 # Ionen Wolkens <ionen@gentoo.org> (2022-12-24)
 # Upstream dropped wxGTK support in >=games-emulation/pcsx2-1.7.3773,
 # and it now always requires Qt6. Masked given Qt6 is also masked in
