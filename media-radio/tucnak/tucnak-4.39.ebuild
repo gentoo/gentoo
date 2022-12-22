@@ -16,7 +16,7 @@ IUSE="alsa fftw gpm hamlib suid"
 RDEPEND="dev-libs/glib:2
 	~dev-libs/libzia-4.39
 	media-libs/libsndfile
-	>=media-libs/libsdl-1.2
+	media-libs/libsdl2
 	alsa? ( media-libs/alsa-lib )
 	fftw? ( sci-libs/fftw:3.0 )
 	gpm? ( sys-libs/gpm )
