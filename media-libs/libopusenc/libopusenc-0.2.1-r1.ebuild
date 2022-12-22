@@ -11,7 +11,7 @@ SRC_URI="https://archive.mozilla.org/pub/opus/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm64 ppc ppc64 ~riscv x86"
 IUSE="doc"
 
 RDEPEND=">=media-libs/opus-1.1:="
