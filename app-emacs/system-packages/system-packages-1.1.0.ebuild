@@ -13,7 +13,7 @@ SRC_URI="https://gitlab.com/jabranham/${PN}/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 DOCS=( README.org )
 ELISP_REMOVE=".dir-locals.el"
