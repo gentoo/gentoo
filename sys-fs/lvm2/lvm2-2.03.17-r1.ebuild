@@ -72,6 +72,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.03.14-freopen_n2.patch
 	"${FILESDIR}"/${PN}-2.03.16-musl-strerror_r.patch
 	"${FILESDIR}"/${PN}-2.03.17-readelf.patch
+	"${FILESDIR}"/${PN}-2.03.17-musl-LOCK_EX.patch #887259
 )
 
 QA_CONFIGURE_OPTIONS="--disable-static"

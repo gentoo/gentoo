@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/887259
+
+From ab715e56feec4bbb135cc97d2d1e8e7340a8ee44 Mon Sep 17 00:00:00 2001
+From: Jory Pratt <anarchy@gentoo.org>
+Date: Tue, 20 Dec 2022 08:12:49 -0600
+Subject: [PATCH] Add missing include for LOCK_EX
+
+Signed-off-by: Jory Pratt <anarchy@gentoo.org>
+--- a/tools/vgimportdevices.c
++++ b/tools/vgimportdevices.c
+@@ -15,6 +15,7 @@
+ #include "tools.h"
+ #include "lib/cache/lvmcache.h"
+ #include "lib/device/device_id.h"
++#include <sys/file.h>
+ 
+ struct vgimportdevices_params {
+ 	uint32_t added_devices;
+-- 
+2.38.2
