@@ -228,7 +228,6 @@ CRATES="
 
 inherit cargo gnome2-utils meson xdg 
 
-
 HOMEPAGE="https://gitlab.gnome.org/World/amberol"
 DESCRIPTION="Simple GUI Music Player"
 SRC_URI=" https://gitlab.gnome.org/World/${PN}/-/archive/${PV}/${P}.tar.bz2
