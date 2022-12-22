@@ -147,12 +147,12 @@ pkg_setup() {
 		ewarn "Those belong to upstream: https://bugzilla.mozilla.org"
 	fi
 
-	if ver_test $(rustc -V | tr -cd '[0-9.]' | cut -d" " -f2) -ge "1.65"; then
-	    ewarn "Rust-1.65 or newer is currently unsupported for building ${P}."
-	    ewarn "Please use 'eselect rust' to switch to a lower version, then resume"
-	    ewarn "building ${PN}."
-	    die "Rust-1.65 or newer detected. Use eselect rust to choose <1.65"
-	fi
+	#if ver_test $(rustc -V | tr -cd '[0-9.]' | cut -d" " -f2) -ge "1.65"; then
+	#    ewarn "Rust-1.65 or newer is currently unsupported for building ${P}."
+	#    ewarn "Please use 'eselect rust' to switch to a lower version, then resume"
+	#    ewarn "building ${PN}."
+	#    die "Rust-1.65 or newer detected. Use eselect rust to choose <1.65"
+	#fi
 
 	moz_pkgsetup
 }
