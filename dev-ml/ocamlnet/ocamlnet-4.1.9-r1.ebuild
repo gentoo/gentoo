@@ -53,6 +53,14 @@ ocamlnet_use_enable() {
 	fi
 }
 
+src_prepare() {
+	sed -i \
+		-e "s:^version.*$:version=${PV}:" \
+		configure \
+		|| die
+	default
+}
+
 src_configure() {
 	./configure \
 		-bindir /usr/bin \
