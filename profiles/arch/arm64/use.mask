@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Roy Bamford <neddyseagoon@gentoo.org> (2022-12-22)
+# dev-libs/OpenNI won't build here so its not really an option 
+# on sci-libs/pcl which is about to got an ~arm64 keyword
+openni
+
 # Unmask the flag which corresponds to ARCH.
 -arm64
 
