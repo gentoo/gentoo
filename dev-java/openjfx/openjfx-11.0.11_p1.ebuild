@@ -172,12 +172,27 @@ src_prepare() {
 	java-pkg_jar-from --build-only --with-dependencies --into "${d}" hamcrest-core
 
 	sed -i "s#__gentoo_swt_jar__#$(java-pkg_getjars swt-4.10)#" "${S}"/build.gradle || die
+
+	sed -i \
+		-e "/def compiler/s/gcc/${CC:?}/g" \
+		-e "/def linker/s/g++/${CXX:?}/g" \
+		-e "/def linker/s/\"ar\"/\"${AR:?}\"/" \
+		"${S}"/buildSrc/linux.gradle  || die
+
+	if tc-is-clang; then
+		sed -i 's/, "-Werror=trampolines"//' "${S}"/buildSrc/linux.gradle || die
+		sed -i '405s/(const gchar \*)pos/(gssize)pos/' "${S}"/modules/javafx.graphics/src/main/native-font/pango.c
+		sed -i '246s/arg0/(void *)&/' "${S}"/modules/javafx.graphics/src/main/native-font/pango.c
+	fi
+
+	append-flags '-v'  # gradle doesn't give any meaningful information
+	filter-ldflags '-unwindlib*'
 }
 
 src_configure() {
 	append-flags -Wno-error -fcommon
 
-	#FIXME: still calls gcc, pkg-config etc by name without chost prefix
+	#FIXME: pkg-config etc by name without chost prefix
 	#FIXME: should we enable webkit? doubt so
 
 	# build is very sensetive to doc presense, take extra steps
