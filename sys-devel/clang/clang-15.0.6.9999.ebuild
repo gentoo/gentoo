@@ -16,7 +16,7 @@ HOMEPAGE="https://llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
 KEYWORDS=""
-IUSE="debug doc +extra +pie +static-analyzer test xml"
+IUSE="debug doc +extra ieee-long-double +pie +static-analyzer test xml"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -278,6 +278,13 @@ multilib_src_configure() {
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
+
+	if use ppc64 && ! use elibc_musl; then
+		mycmakeargs+=(
+			-DPPC_LINUX_DEFAULT_IEEELONGDOUBLE=$(usex ieee-long-double)
+		)
+	fi
+
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_EXTERNAL_LIT="${BUILD_DIR}/bin/llvm-lit"
