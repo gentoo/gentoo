@@ -10,7 +10,7 @@ SRC_URI="https://github.com/rofirrim/eiciel/archive/refs/tags/${PV/_/-}.tar.gz -
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~x86"
 IUSE="nautilus xattr"
 
 DEPEND="
