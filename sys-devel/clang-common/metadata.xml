@@ -11,7 +11,6 @@
 		<flag name="default-compiler-rt">Use compiler-rt + libunwind instead of libgcc as the default rtlib for clang</flag>
 		<flag name="default-libcxx">Use libc++ instead of libstdc++ as the default stdlib for clang</flag>
 		<flag name="default-lld">Use lld as the default linker for clang</flag>
-		<flag name="ieee-long-double">Use accelerated 128-bit IEEE long double ABI (ppc64le only)</flag>
 		<flag name="stricter">Default to stricter behavior known from newer clang versions, turning more warnings into errors</flag>
 	</use>
 </pkgmetadata>
