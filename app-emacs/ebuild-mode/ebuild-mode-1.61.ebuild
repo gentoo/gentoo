@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit elisp readme.gentoo-r1
+inherit elisp optfeature
 
 DESCRIPTION="Emacs modes for editing ebuilds and other Gentoo specific files"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
@@ -18,5 +18,11 @@ BDEPEND="sys-apps/texinfo"
 DOCS="ChangeLog keyword-generation.sh"
 ELISP_TEXINFO="${PN}.texi"
 SITEFILE="50${PN}-gentoo-1.54.el"
-DOC_CONTENTS="Some optional features may require installation of additional
-	packages, like dev-python/docutils-glep for glep."
+
+pkg_postinst() {
+	elisp_pkg_postinst
+	optfeature "ebuild commands support" sys-apps/portage
+	optfeature "additional development tools" dev-util/pkgdev
+	optfeature "ebuild QA utilities" dev-util/pkgcheck
+	optfeature "generating HTML from GLEPs" dev-python/docutils-glep
+}
