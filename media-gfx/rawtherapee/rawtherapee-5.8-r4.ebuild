@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~riscv x86"
 IUSE="openmp tcmalloc"
 
 RDEPEND="
-	dev-cpp/atkmm:=
+	dev-cpp/atkmm:0
 	dev-cpp/cairomm:=
 	dev-cpp/glibmm:=
 	dev-cpp/gtkmm:3.0
