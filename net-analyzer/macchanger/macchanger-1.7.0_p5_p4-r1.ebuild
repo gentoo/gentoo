@@ -29,7 +29,7 @@ S=${WORKDIR}/${P/_p*}
 src_configure() {
 	# Shared data is installed below /lib, see Bug #57046
 	econf \
-		--bindir="${EPREFIX}/sbin" \
+		--bindir="${EPREFIX}/usr/bin" \
 		--datadir="${EPREFIX}/lib"
 }
 
@@ -38,7 +38,5 @@ src_install() {
 
 	newdoc "${WORKDIR}"/debian/changelog debian.changelog
 
-	dodir /usr/bin
-	dosym ../../sbin/macchanger /usr/bin/macchanger
 	dosym ../../lib/macchanger /usr/share/macchanger
 }
