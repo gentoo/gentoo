@@ -26,6 +26,7 @@ BDEPEND="
 	test? (
 		dev-python/pytest-console-scripts[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+		dev-python/click[${PYTHON_USEDEP}]
 		dev-python/rich[${PYTHON_USEDEP}]
 	)
 "
