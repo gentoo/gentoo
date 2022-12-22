@@ -301,7 +301,7 @@ src_install() {
 
 		if use doc; then
 			if [[ ${PV} != *9999* ]]; then
-				newdoc "${DISTDIR}/manual-${PV}.pdf" "${PN}-manual-${PV}.pdf"
+				newdoc "${DISTDIR}/manual-${PV/_/-}.pdf" "${PN}-manual-${PV}.pdf"
 			fi
 		fi
 	done
