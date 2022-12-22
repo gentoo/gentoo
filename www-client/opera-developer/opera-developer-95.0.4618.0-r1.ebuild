@@ -42,21 +42,18 @@ fi
 
 KEYWORDS="-* ~amd64"
 
-FFMPEG_VERSION="105.0.5195.19"
+FFMPEG_VERSION="109.0.5414.25"
 
 SRC_URI="${SRC_URI_BASE[@]/%//${PV}/linux/${MY_PN}_${PV}_amd64.${OPERA_ARCHIVE_EXT}}
 	proprietary-codecs? (
 		mirror+https://dev.gentoo.org/~sultan/distfiles/www-client/opera/opera-ffmpeg-codecs-${FFMPEG_VERSION}.tar.xz
 	)"
 
-IUSE="+proprietary-codecs suid"
+IUSE="+proprietary-codecs +suid qt5"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
-	|| (
-		>=app-accessibility/at-spi2-core-2.46.0:2
-		( app-accessibility/at-spi2-atk dev-libs/atk )
-	)
+	>=app-accessibility/at-spi2-core-2.46.0:2
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
@@ -82,6 +79,11 @@ RDEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXrandr
 	x11-libs/pango
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5[X]
+		dev-qt/qtwidgets:5
+	)
 "
 
 QA_PREBUILT="*"
@@ -152,8 +154,12 @@ src_install() {
 		mv lib_extra "${OPERA_HOME}"
 	fi
 
+	if ! use qt5; then
+		rm "${OPERA_HOME}/libqt5_shim.so" || die
+	fi
+
 	# pax mark opera, bug #562038
 	pax-mark m "${OPERA_HOME}/opera"
 	# enable suid sandbox if requested
-	use suid && fperms 4711 "${OPERA_HOME}/opera_sandbox"
+	use suid && fperms 4711 "/${OPERA_HOME}/opera_sandbox"
 }
