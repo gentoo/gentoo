@@ -45,7 +45,6 @@
     reevalúe y CONTINÚE!
   </longdescription>
   <use>
-    <flag name="contrib">Install contrib modules</flag>
     <flag name="doc">Include documentation</flag>
   </use>
   <upstream>
