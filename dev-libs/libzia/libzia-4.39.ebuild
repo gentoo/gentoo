@@ -16,7 +16,7 @@ IUSE="ftdi"
 
 RDEPEND="dev-libs/glib:2
 	x11-libs/gtk+:2
-	media-libs/libsdl
+	media-libs/libsdl2
 	media-libs/libpng:0
 	ftdi? ( dev-embedded/libftdi:1 )
 	elibc_musl? ( sys-libs/libunwind )"
