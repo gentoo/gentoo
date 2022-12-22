@@ -44,6 +44,10 @@ BDEPEND="
 	gui? ( kde-frameworks/extra-cmake-modules:5 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-boost-1.81.patch # bug #887033, in master
+)
+
 src_prepare() {
 	cmake_src_prepare
 	rm -rf 3rdparty/boost-zstd || die # ensure no bundling
