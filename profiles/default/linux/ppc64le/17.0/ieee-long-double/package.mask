@@ -3,5 +3,5 @@
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-04)
 # We only need versions that support ieee-long-double.
-<sys-devel/clang-common-15.0.5
+<sys-devel/clang-15.0.5
 <sys-devel/gcc-12

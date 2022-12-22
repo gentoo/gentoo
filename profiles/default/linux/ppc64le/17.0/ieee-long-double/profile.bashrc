@@ -5,7 +5,7 @@ if [[ "${EBUILD_PHASE}" == "setup" ]] ; then
                         eerror "${CC:-cc} should provide ieee-long-double on this profile by default"
                         eerror "reinstall sys-devel/gcc with USE=ieee-long-double and try again."
 			eerror
-			die "install >=sys-devel/gcc-12[ieee-long-double]"
+			die "install >=sys-devel/gcc-12[ieee-long-double] OR >=sys-devel/clang-15.0.5[ieee-long-double]"
                 fi
         fi
 fi
