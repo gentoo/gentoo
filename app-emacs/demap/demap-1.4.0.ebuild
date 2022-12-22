@@ -13,7 +13,7 @@ SRC_URI="https://gitlab.com/sawyerjgardner/${PN}.el/-/archive/v${PV}/${PN}.el-v$
 S="${WORKDIR}"/${PN}.el-v${PV}
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 SLOT="0"
 
 # "make test" is just a practical check if "demap-open" works, maintainers of
