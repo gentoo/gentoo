@@ -49,7 +49,7 @@
  set(TORCH_PYTHON_COMPILE_DEFINITIONS)
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -750,7 +750,7 @@
+@@ -777,7 +777,7 @@
  
  # ---[ Build flags
  if(NOT MSVC)
@@ -58,6 +58,26 @@
    string(APPEND CMAKE_CXX_FLAGS " -Wno-narrowing")
    # Eigen fails to build with some versions, so convert this to a warning
    # Details at http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1459
+@@ -783,7 +783,6 @@
+   # Details at http://eigen.tuxfamily.org/bz/show_bug.cgi?id=1459
+   string(APPEND CMAKE_CXX_FLAGS " -Wall")
+   string(APPEND CMAKE_CXX_FLAGS " -Wextra")
+-  string(APPEND CMAKE_CXX_FLAGS " -Werror=return-type")
+   string(APPEND CMAKE_CXX_FLAGS " -Wno-missing-field-initializers")
+   string(APPEND CMAKE_CXX_FLAGS " -Wno-type-limits")
+   string(APPEND CMAKE_CXX_FLAGS " -Wno-array-bounds")
+@@ -883,11 +882,9 @@
+   string(APPEND CMAKE_CXX_FLAGS " -fno-trapping-math")
+   check_cxx_compiler_flag("-Werror=format" HAS_WERROR_FORMAT)
+   if(HAS_WERROR_FORMAT)
+-    string(APPEND CMAKE_CXX_FLAGS " -Werror=format")
+   endif()
+   check_cxx_compiler_flag("-Werror=cast-function-type" HAS_WERROR_CAST_FUNCTION_TYPE)
+   if(HAS_WERROR_CAST_FUNCTION_TYPE)
+-    string(APPEND CMAKE_CXX_FLAGS " -Werror=cast-function-type")
+   endif()
+   check_cxx_compiler_flag("-Werror=sign-compare" HAS_WERROR_SIGN_COMPARE)
+   # This doesn't work globally so we use the test on specific
 --- a/cmake/public/utils.cmake
 +++ b/cmake/public/utils.cmake
 @@ -512,8 +512,6 @@
