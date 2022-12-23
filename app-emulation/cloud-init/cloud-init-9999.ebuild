@@ -23,6 +23,7 @@ HOMEPAGE="https://launchpad.net/cloud-init"
 
 LICENSE="GPL-3"
 SLOT="0"
+IUSE="selinux"
 
 CDEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -51,6 +52,7 @@ RDEPEND="
 	sys-apps/iproute2
 	sys-fs/growpart
 	virtual/logger
+	selinux? ( sec-policy/selinux-cloudinit )
 "
 
 distutils_enable_tests pytest

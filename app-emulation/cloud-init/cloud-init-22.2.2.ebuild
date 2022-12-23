@@ -23,7 +23,7 @@ HOMEPAGE="https://launchpad.net/cloud-init"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="test"
+IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
 CDEPEND="
@@ -53,6 +53,7 @@ RDEPEND="
 	sys-apps/iproute2
 	sys-fs/growpart
 	virtual/logger
+	selinux? ( sec-policy/selinux-cloudinit )
 "
 
 distutils_enable_tests pytest
