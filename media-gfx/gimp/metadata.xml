@@ -14,4 +14,7 @@
 		<flag name="jpegxl">Enable support for JPEG XL image format</flag>
 		<flag name="vector-icons">Enable support for vector icons (experimental)</flag>
 	</use>
+	<upstream>
+		<remote-id type="gnome-gitlab">GNOME/gimp</remote-id>
+	</upstream>
 </pkgmetadata>
