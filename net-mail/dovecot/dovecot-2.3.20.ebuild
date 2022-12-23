@@ -33,7 +33,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~
 
 IUSE_DOVECOT_AUTH="kerberos ldap lua mysql pam postgres sqlite"
 IUSE_DOVECOT_COMPRESS="lz4 zstd"
-IUSE_DOVECOT_OTHER="argon2 caps doc ipv6 lucene managesieve rpc
+IUSE_DOVECOT_OTHER="argon2 caps doc lucene managesieve rpc
 	selinux sieve solr static-libs stemmer suid systemd tcpd textcat unwind"
 
 IUSE="${IUSE_DOVECOT_AUTH} ${IUSE_DOVECOT_COMPRESS} ${IUSE_DOVECOT_OTHER}"
@@ -234,12 +234,6 @@ src_install() {
 			's/#!include auth-system.conf.ext/!include auth-system.conf.ext/' \
 			"${confd}/10-auth.conf" \
 			|| die "failed to update PAM settings in 10-auth.conf"
-	fi
-
-	# Disable ipv6 if necessary
-	if ! use ipv6; then
-		sed -i -e 's/^#listen = \*, ::/listen = \*/g' "${conf}" \
-			|| die "failed to update listen settings in dovecot.conf"
 	fi
 
 	# Update ssl cert locations
