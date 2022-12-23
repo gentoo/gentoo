@@ -13,7 +13,11 @@ HOMEPAGE="
 	https://codespeak.net/execnet/
 	https://pypi.org/project/execnet/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="
+	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+	https://github.com/pytest-dev/execnet/commit/c0459b92bc4a42b08281e69b8802d24c5d3415d4.patch
+		-> ${P}-pytest-7.2.patch
+"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,10 +25,17 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	test? (
+		dev-python/py[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_sphinx doc
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${DISTDIR}"/${P}-pytest-7.2.patch
+)
 
 EPYTEST_DESELECT=(
 	# needs python2.7 with apipkg?
