@@ -71,7 +71,6 @@ dev-python/www-authenticate
 # sci-libs/votca-tools fail to build with GCC 12.  Pending version bump
 # since January 2022.
 # Removal on 2023-01-22.  Bug #841830.
-sci-chemistry/votca
 sci-chemistry/votca-csg
 sci-chemistry/votca-csgapps
 sci-chemistry/votca-xtp
