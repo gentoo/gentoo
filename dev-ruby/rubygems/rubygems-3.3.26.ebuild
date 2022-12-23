@@ -49,6 +49,9 @@ all_ruby_prepare() {
 	# Avoid test that requires additional utility scripts
 	rm -f test/test_changelog_generator.rb || die
 
+	# Avoid tests that require a network connection (for crates.io)
+	rm -f test/rubygems/test_gem_ext_cargo_builder.rb || die
+
 	# Update manifest after changing files to avoid a test failure
 	if use test; then
 		rake update_manifest || die
