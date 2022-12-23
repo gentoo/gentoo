@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic optfeature toolchain-funcs
+inherit cmake optfeature
 
 DESCRIPTION="Tail with multiple windows"
 HOMEPAGE="http://www.vanheusden.com/multitail/ https://github.com/folkertvanheusden/multitail/"
