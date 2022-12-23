@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -10,12 +10,13 @@ DESCRIPTION="OpenSM - InfiniBand Subnet Manager and Administration for OpenIB"
 
 SRC_URI="https://github.com/linux-rdma/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="amd64 x86 ~amd64-linux"
-IUSE="tools"
+IUSE="selinux tools"
 SLOT="0"
 LICENSE="|| ( GPL-2 BSD-2 )"
 
 DEPEND="sys-cluster/rdma-core"
 RDEPEND="${DEPEND}
+	selinux? ( sec-policy/selinux-opensm )
 	 tools? (
 		net-misc/iputils
 		net-misc/openssh
