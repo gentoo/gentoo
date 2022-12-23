@@ -14,8 +14,7 @@ HOMEPAGE="
 	https://github.com/Nuitka/Nuitka/
 	https://pypi.org/project/Nuitka/
 "
-SRC_URI="https://nuitka.net/releases/${P^}.tar.gz"
-S=${WORKDIR}/${P^}
+SRC_URI="https://nuitka.net/releases/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
