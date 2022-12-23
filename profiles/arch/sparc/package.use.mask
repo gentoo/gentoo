@@ -310,10 +310,6 @@ dev-libs/dbus-c++ ecore
 # PPS should work on all arches, but only keyworded on some arches
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
-# Matt Turner <mattst88@gentoo.org> (2019-12-01)
-# Fails to build, bug #676060
-dev-libs/openssl asm
-
 # Eugene Bright <eugene@bright.gdn> (2019-09-09)
 # Missing keyword on dev-embedded/libjaylink
 sys-apps/flashrom jlink-spi
