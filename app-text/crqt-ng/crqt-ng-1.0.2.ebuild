@@ -19,6 +19,7 @@ CDEPEND="app-text/crengine-ng[png,jpeg,fontconfig,gif=,svg=,chm=,harfbuzz=,fribi
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5"
+RDEPEND="${CDEPEND}"
 BDEPEND="${CDEPEND}
 	dev-qt/linguist-tools:5"
 
