@@ -11,7 +11,7 @@ HOMEPAGE="https://users.aalto.fi/~tjunttil/bliss/index.html"
 
 LICENSE="LGPL-3"
 SLOT="0/1"
-KEYWORDS="amd64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~riscv x86 ~amd64-linux ~x86-linux"
 IUSE="gmp"
 
 RDEPEND="gmp? ( dev-libs/gmp:0= )"
