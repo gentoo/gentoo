@@ -16,7 +16,7 @@ S="${WORKDIR}"/${P}-source
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
-IUSE="+javascript opengl ssl X"
+IUSE="+drm +javascript opengl ssl X"
 REQUIRED_USE="opengl? ( javascript )"
 
 # Although we use the bundled, patched version of freeglut in mupdf (because of
@@ -52,12 +52,15 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.15-openssl-x11.patch
 	# General cross fixes from Debian (refreshed)
 	"${FILESDIR}"/${PN}-1.19.0-cross-fixes.patch
+	"${FILESDIR}"/$P-no-drm.patch
 )
 
 src_prepare() {
 	default
 
 	use hppa && append-cflags -ffunction-sections
+
+	use drm && append-cflags -Ddrm
 
 	append-cflags "-DFZ_ENABLE_JS=$(usex javascript 1 0)"
 
