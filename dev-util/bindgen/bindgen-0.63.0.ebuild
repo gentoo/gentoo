@@ -64,7 +64,6 @@ regex-1.5.5
 regex-syntax-0.3.9
 regex-syntax-0.6.25
 remove_dir_all-0.5.3
-rustc-hash-1.0.1
 rustc-hash-1.1.0
 shlex-1.0.0
 strsim-0.10.0
