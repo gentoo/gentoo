@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-mod
+inherit linux-mod toolchain-funcs
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/gnif/vendor-reset.git"
@@ -23,26 +23,17 @@ SLOT="0"
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/Respect-eselect-kernel.patch" )
+MODULE_NAMES="vendor-reset(extra)"
 
 pkg_setup() {
 	local CONFIG_CHECK="FTRACE KPROBES PCI_QUIRKS KALLSYMS FUNCTION_TRACER"
 	linux-mod_pkg_setup
-	export KV_FULL=${KV_FULL}
-	export KERNEL_DIR=${KERNEL_DIR}
-}
-
-src_compile() {
-	set_arch_to_kernel
-	default
+	BUILD_TARGETS="build"
+	BUILD_PARAMS="CC=\"$(tc-getBUILD_CC)\" KDIR=${KERNEL_DIR}"
 }
 
 src_install() {
-	set_arch_to_kernel
-	emake \
-		DESTDIR="${ED}" \
-		INSTALL_MOD_PATH="${ED}" \
-		install
+	linux-mod_src_install
 
 	insinto /etc/modules-load.d/
 	newins "${FILESDIR}"/modload.conf vendor-reset.conf
