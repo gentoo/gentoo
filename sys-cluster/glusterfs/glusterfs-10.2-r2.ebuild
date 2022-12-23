@@ -15,7 +15,7 @@ LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0/${PV%%.*}"
 KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ppc64 ~riscv x86"
 
-IUSE="debug emacs +fuse georeplication ipv6 +libtirpc rsyslog static-libs tcmalloc test +uring xml"
+IUSE="debug emacs +fuse georeplication ipv6 +libtirpc rsyslog selinux static-libs tcmalloc test +uring xml"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	georeplication? ( xml )
@@ -40,6 +40,7 @@ RDEPEND="
 	georeplication? ( ${PYTHON_DEPS} )
 	libtirpc? ( net-libs/libtirpc:= )
 	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
+	selinux? ( sec-policy/selinux-glusterfs )
 	tcmalloc? ( dev-util/google-perftools )
 	uring? ( sys-libs/liburing:= )
 	xml? ( dev-libs/libxml2 )

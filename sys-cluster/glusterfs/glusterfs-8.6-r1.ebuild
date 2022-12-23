@@ -15,7 +15,7 @@ LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0/${PV%%.*}"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86"
 
-IUSE="debug emacs +fuse +georeplication ipv6 +libtirpc rsyslog static-libs +syslog test +xml"
+IUSE="debug emacs +fuse +georeplication ipv6 +libtirpc rsyslog selinux static-libs +syslog test +xml"
 
 REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} xml )
 	ipv6? ( libtirpc )"
@@ -35,6 +35,7 @@ RDEPEND="
 	emacs? ( >=app-editors/emacs-23.1:* )
 	fuse? ( >=sys-fs/fuse-2.7.0:0 )
 	georeplication? ( ${PYTHON_DEPS} )
+	selinux? ( sec-policy/selinux-glusterfs )
 	xml? ( dev-libs/libxml2 )
 	!elibc_glibc? ( sys-libs/argp-standalone )
 	libtirpc? ( net-libs/libtirpc:= )
