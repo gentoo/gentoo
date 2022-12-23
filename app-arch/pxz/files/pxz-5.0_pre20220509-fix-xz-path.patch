@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/887255
+https://github.com/jnovy/pxz/issues/34
+https://github.com/jnovy/pxz/pull/40
+
+From 20014a968d2330ac90f48fc2091e15a44cb1e759 Mon Sep 17 00:00:00 2001
+From: Tobias Faller <fallert@tf.uni-freiburg.de>
+Date: Tue, 20 Dec 2022 22:41:59 +0100
+Subject: [PATCH] Updated default path for xz binary
+
+--- a/pxz.c
++++ b/pxz.c
+@@ -43,7 +43,7 @@
+ #endif
+ 
+ #ifndef XZ_BINARY
+-#define XZ_BINARY "xz"
++#define XZ_BINARY "/usr/bin/xz"
+ #endif
+ 
+ #define BUFFSIZE 0x10000
+
