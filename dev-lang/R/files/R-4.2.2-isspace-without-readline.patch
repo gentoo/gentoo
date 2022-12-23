@@ -1,0 +1,22 @@
+From 6e36141598b78add7fb841480260b0a57ae79330 Mon Sep 17 00:00:00 2001
+From: smeyer <smeyer@00db46b3-68df-0310-9c12-caf00c1e9a41>
+Date: Wed, 26 Oct 2022 08:22:41 +0000
+Subject: [PATCH] avoid implicit declaration of 'isspace' --without-readline
+
+git-svn-id: https://svn.r-project.org/R/trunk@83178 00db46b3-68df-0310-9c12-caf00c1e9a41
+---
+ src/unix/sys-std.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/unix/sys-std.c b/src/unix/sys-std.c
+index 7b93d63884a..f95ff0cf7b3 100644
+--- a/src/unix/sys-std.c
++++ b/src/unix/sys-std.c
+@@ -1339,6 +1339,7 @@ Rstd_ShowFiles(int nfile,		/* number of files */
+     */
+ 
+ 
++#include <ctype.h>  /* for isspace */
+ 
+ int attribute_hidden Rstd_ChooseFile(int _new, char *buf, int len)
+ {

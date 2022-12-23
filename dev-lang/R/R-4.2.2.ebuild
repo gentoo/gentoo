@@ -76,6 +76,7 @@ PATCHES=(
 	"${FILESDIR}"/R-3.6.2-no-LDFLAGS-in-libR-pkg-config.patch
 	"${FILESDIR}"/R-3.6.2-no-gzip-doc.patch
 	"${FILESDIR}"/R-4.2.2-browser-pdf-prefs.patch
+	"${FILESDIR}"/R-4.2.2-isspace-without-readline.patch
 )
 
 pkg_pretend() {
