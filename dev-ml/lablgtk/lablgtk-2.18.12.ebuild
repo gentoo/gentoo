@@ -28,6 +28,7 @@ DOCS=( CHANGES README CHANGES.API )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cflags.patch
+	"${FILESDIR}"/${P}-Makefile.patch
 )
 
 src_configure() {
