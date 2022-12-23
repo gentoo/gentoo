@@ -274,7 +274,7 @@ multilib_src_configure() {
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 
-	if use ppc64 && ! use elibc_musl; then
+	if ! use elibc_musl; then
 		mycmakeargs+=(
 			-DPPC_LINUX_DEFAULT_IEEELONGDOUBLE=$(usex ieee-long-double)
 		)
