@@ -11,9 +11,10 @@ SRC_URI="https://github.com/kubernetes/kubernetes/archive/v${PV}.tar.gz -> kuber
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64"
-IUSE="hardened"
+IUSE="hardened selinux"
 
 BDEPEND=">=dev-lang/go-1.18.1"
+RDEPEND="selinux? ( sec-policy/selinux-kubernetes )"
 
 RESTRICT+=" test "
 S="${WORKDIR}/kubernetes-${PV}"
