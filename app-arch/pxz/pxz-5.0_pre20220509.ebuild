@@ -7,7 +7,7 @@ inherit toolchain-funcs vcs-snapshot
 
 PXZ_COMMIT="136e5c25daf545753329d7cee1b06ae482fb9c44"
 DESCRIPTION="Parallel implementation of the XZ compression utility"
-HOMEPAGE="http://jnovy.fedorapeople.org/pxz/"
+HOMEPAGE="https://jnovy.fedorapeople.org/pxz/"
 SRC_URI="https://github.com/jnovy/pxz/archive/${PXZ_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
