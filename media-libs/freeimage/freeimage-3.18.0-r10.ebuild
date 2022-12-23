@@ -57,7 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.18.0-libraw-0.20.0.patch
 	"${FILESDIR}"/${PN}-3.18.0-tiff-4.4.0.patch
 	"${FILESDIR}"/${PN}-3.18.0-null-to-false.patch
-	"${FILESDIR}"/${PN}-3.18.0-libraw-0.21.patch
+	"${FILESDIR}"/${PN}-3.18.0-libraw-0.21.0.patch
 )
 
 src_prepare() {
