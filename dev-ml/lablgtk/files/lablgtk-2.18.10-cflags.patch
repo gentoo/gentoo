@@ -8,10 +8,11 @@
  
  TARGETS = varcc$(XE) lablgtktop$(XE) lablgtk2$(XB) gdk_pixbuf_mlsource$(XE) \
  	$(THINITOBJS) build.ml
-@@ -45,14 +46,13 @@
+@@ -44,15 +45,13 @@
+ endif
  
  ifdef DEBUG
- COMPILER += -warn-error A-52
+-COMPILER += -warn-error A-52
 -CFLAGS = -g $(GTKCFLAGS)
 +OCAMLCFLAGS = $(GTKCFLAGS)
  CUSTOM = -custom
