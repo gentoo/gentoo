@@ -107,7 +107,7 @@ RE="\bx86\b"; [[ ${KEYWORDS} =~ ${RE} ]] && SRC_URI+=" x86? ( ${VIVALDI_BASE_URI
 
 LICENSE="Vivaldi"
 SLOT="0"
-IUSE="proprietary-codecs widevine"
+IUSE="gtk proprietary-codecs qt5 widevine"
 RESTRICT="bindist mirror"
 
 RDEPEND="
@@ -134,8 +134,13 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/libXrandr
 	x11-libs/pango[X]
-	|| ( gui-libs/gtk:4 x11-libs/gtk+:3 )
+	gtk? ( gui-libs/gtk:4 x11-libs/gtk+:3 )
 	proprietary-codecs? ( media-video/ffmpeg-chromium:${CHROMIUM_VERSION} )
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+	)
 	widevine? ( www-plugins/chrome-binary-plugins )
 "
 
@@ -171,6 +176,10 @@ src_prepare() {
 	if use proprietary-codecs; then
 		rm ${VIVALDI_HOME}/lib/libffmpeg.so || die
 		rmdir ${VIVALDI_HOME}/lib || die
+	fi
+
+	if ! use qt5; then
+		rm ${VIVALDI_HOME}/libqt5_shim.so || die
 	fi
 
 	eapply_user
