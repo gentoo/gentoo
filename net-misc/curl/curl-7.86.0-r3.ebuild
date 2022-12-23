@@ -6,9 +6,9 @@ EAPI="8"
 inherit autotools prefix multilib-minimal verify-sig
 
 DESCRIPTION="A Client that groks URLs"
-HOMEPAGE="https://curl.haxx.se/"
-SRC_URI="https://curl.haxx.se/download/${P}.tar.xz
-	verify-sig? ( https://curl.haxx.se/download/${P}.tar.xz.asc )"
+HOMEPAGE="https://curl.se/"
+SRC_URI="https://curl.se/download/${P}.tar.xz
+	verify-sig? ( https://curl.se/download/${P}.tar.xz.asc )"
 
 LICENSE="curl"
 SLOT="0"
