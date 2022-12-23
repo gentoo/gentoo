@@ -16,6 +16,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">breathe</remote-id>
-    <remote-id type="github">michaeljones/breathe</remote-id>
+    <remote-id type="github">breathe-doc/breathe</remote-id>
   </upstream>
 </pkgmetadata>
