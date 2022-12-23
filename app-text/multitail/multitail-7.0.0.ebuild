@@ -19,9 +19,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-  "${FILESDIR}"/${PN}-7.0.0-gentoo.patch
-  "${FILESDIR}"/${PN}-7.0.0-fix-clang16-build.patch
-  "${FILESDIR}"/${PN}-7.0.0-fix-lto-type-mismatch.patch
+	"${FILESDIR}"/${PN}-7.0.0-gentoo.patch
+	"${FILESDIR}"/${PN}-7.0.0-fix-clang16-build.patch
+	"${FILESDIR}"/${PN}-7.0.0-fix-lto-type-mismatch.patch
 )
 
 src_prepare() {
