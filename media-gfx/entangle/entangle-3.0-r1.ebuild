@@ -27,7 +27,7 @@ DEPEND="
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
 	media-libs/lcms:2
-	>=media-libs/libraw-0.9.0
+	>=media-libs/libraw-0.9.0:=
 	>=x11-libs/gdk-pixbuf-2.12.0:2
 	>=x11-libs/gtk+-3.22:3[introspection]
 	>=x11-libs/libXext-1.3.0
