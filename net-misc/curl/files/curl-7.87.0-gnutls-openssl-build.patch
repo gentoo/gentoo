@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/887833
+https://github.com/curl/curl/issues/10110
+https://github.com/curl/curl/commit/aef4dc892d012d990c85c7bad0d9d06c2ebfa775
+
+From aef4dc892d012d990c85c7bad0d9d06c2ebfa775 Mon Sep 17 00:00:00 2001
+From: Daniel Stenberg <daniel@haxx.se>
+Date: Thu, 22 Dec 2022 17:40:26 +0100
+Subject: [PATCH] md4: fix build with GnuTLS + OpenSSL v1
+
+Reported-by: Esdras de Morais da Silva
+
+Fixes #10110
+Closes #10142
+--- a/lib/md4.c
++++ b/lib/md4.c
+@@ -86,11 +86,7 @@
+ #include "memdebug.h"
+ 
+ 
+-#if defined(USE_WOLFSSL) && !defined(WOLFSSL_NO_MD4)
+-
+-#elif defined(USE_OPENSSL) && !defined(OPENSSL_NO_MD4)
+-
+-#elif defined(USE_GNUTLS)
++#if defined(USE_GNUTLS)
+ 
+ typedef struct md4_ctx MD4_CTX;
+ 
+@@ -109,6 +105,10 @@ static void MD4_Final(unsigned char *result, MD4_CTX *ctx)
+   md4_digest(ctx, MD4_DIGEST_SIZE, result);
+ }
+ 
++#elif defined(USE_WOLFSSL) && !defined(WOLFSSL_NO_MD4)
++
++#elif defined(USE_OPENSSL) && !defined(OPENSSL_NO_MD4)
++
+ #elif defined(AN_APPLE_OS)
+ typedef CC_MD4_CTX MD4_CTX;
+ 
