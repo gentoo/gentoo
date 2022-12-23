@@ -9,4 +9,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="drm">Enable support for Digital rights management (DRM)</flag>
+	</use>
 </pkgmetadata>
