@@ -13,7 +13,7 @@ MY_DIR=$(ver_rs 1- '-' ${MY_DIR2})
 
 DESCRIPTION="Computer algebra system for polynomial computations"
 HOMEPAGE="https://www.singular.uni-kl.de/ https://github.com/Singular/Singular"
-SRC_URI="ftp://jim.mathematik.uni-kl.de/pub/Math/${MY_PN}/SOURCES/${MY_DIR}/${PN}-${MY_PV}.tar.gz"
+SRC_URI="https://www.singular.uni-kl.de/ftp/pub/Math/${MY_PN}/SOURCES/${MY_DIR}/${PN}-${MY_PV}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_DIR2}"
 
 LICENSE="BSD GPL-2 GPL-3"
