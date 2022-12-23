@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/openssl.org.asc
-inherit edo flag-o-matic toolchain-funcs multilib-minimal verify-sig
+inherit edo flag-o-matic toolchain-funcs multilib-minimal verify-sig linux-info
 
 MY_P=${P/_/-}
 DESCRIPTION="Full-strength general purpose cryptography library (including SSL and TLS)"
@@ -61,6 +61,9 @@ pkg_setup() {
 			die "FEATURES=test with USE=sctp requires net.sctp.auth_enable=1!"
 		fi
 	fi
+
+	use test && CONFIG_CHECK="~CRYPTO_USER_API_SKCIPHER"
+	linux-info_pkg_setup
 }
 
 src_unpack() {
