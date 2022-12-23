@@ -33,6 +33,7 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# bug #887255
 	eprefixify pxz.c
 
 	if use elibc_musl ; then
