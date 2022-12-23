@@ -1,0 +1,43 @@
+From 877d88e5aecd1d39978a46fe7f3df35474d7cd8d Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Fri, 28 Oct 2022 08:45:33 +0200
+Subject: [PATCH] Fix tests for Sphinx 5.3.0
+
+Fix https://github.com/breathe-doc/breathe/issues/863
+---
+ tests/test_renderer.py | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_renderer.py b/tests/test_renderer.py
+index 1688981..a858c65 100644
+--- a/tests/test_renderer.py
++++ b/tests/test_renderer.py
+@@ -109,6 +109,12 @@ class WrappedCompoundDef(compounddefTypeSub, WrappedDoxygenNode):
+         WrappedDoxygenNode.__init__(self, compounddefTypeSub, **kwargs)
+ 
+ 
++class MockMemo:
++    def __init__(self):
++        self.title_styles = ""
++        self.section_level = ""
++
++
+ class MockState:
+     def __init__(self, app):
+         from breathe.project import ProjectInfoFactory
+@@ -123,7 +129,11 @@ class MockState:
+         settings.env = env
+         self.document = utils.new_document("", settings)
+ 
+-    def nested_parse(self, content, content_offset, contentnode):
++        # In sphinx 5.3.0 the method state.nested_parse is not called directly
++        # so this memo object should exists here
++        self.memo = MockMemo()
++
++    def nested_parse(self, content, content_offset, contentnode, match_titles=1):
+         pass
+ 
+ 
+-- 
+2.39.0
+

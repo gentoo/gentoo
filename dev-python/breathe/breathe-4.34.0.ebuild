@@ -34,3 +34,7 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-sphinx-5.3.0.patch
+)
