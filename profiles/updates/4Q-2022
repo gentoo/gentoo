@@ -24,3 +24,4 @@ move net-print/splix media-print/splix
 move net-print/c2esp media-print/c2esp
 move net-print/foo2zjs media-print/foo2zjs
 move net-print/gutenprint media-print/gutenprint
+move net-print/epson-inkjet-printer-escpr media-print/epson-inkjet-printer-escpr
