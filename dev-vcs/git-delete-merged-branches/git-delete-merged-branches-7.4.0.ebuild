@@ -38,5 +38,6 @@ src_install() {
 
 	if ! use full-name-executable; then
 	    rm "${D}"/usr/bin/git-delete-merged-branches || die
+	    rm "${D}"/usr/share/man/man1/git-delete-merged-branches.1* || die
 	fi
 }
