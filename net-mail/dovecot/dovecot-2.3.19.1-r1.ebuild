@@ -44,7 +44,7 @@ DEPEND="
 	app-arch/bzip2
 	app-arch/xz-utils
 	dev-libs/icu:=
-	dev-libs/openssl:0=
+	dev-libs/openssl:0/1.1
 	sys-libs/zlib:=
 	virtual/libiconv
 	argon2? ( dev-libs/libsodium:= )
