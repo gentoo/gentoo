@@ -1,0 +1,44 @@
+Binary files darktable-4.2.0.orig/.DefineOptions.cmake.swp and darktable-4.2.0/.DefineOptions.cmake.swp differ
+diff -ru darktable-4.2.0.orig/DefineOptions.cmake darktable-4.2.0/DefineOptions.cmake
+--- darktable-4.2.0.orig/DefineOptions.cmake	2022-12-21 20:32:43.490671000 +0100
++++ darktable-4.2.0/DefineOptions.cmake	2022-12-21 20:33:13.413673557 +0100
+@@ -41,6 +41,7 @@
+ option(USE_ICU "Use ICU - International Components for Unicode." ON)
+ option(USE_GAME "Build 1st April easter egg game" ON)
+ option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GNU/Clang only)." OFF)
++option(USE_SDL2 "Enable SDL2 support" ON)
+ 
+ if (USE_OPENCL)
+     option(TESTBUILD_OPENCL_PROGRAMS "Test-compile opencl programs (needs llvm and clang 3.9+)" ON)
+Only in darktable-4.2.0/src/libs: .CMakeLists.txt.swp
+diff -ru darktable-4.2.0.orig/src/libs/CMakeLists.txt darktable-4.2.0/src/libs/CMakeLists.txt
+--- darktable-4.2.0.orig/src/libs/CMakeLists.txt	2022-12-21 20:32:43.485670999 +0100
++++ darktable-4.2.0/src/libs/CMakeLists.txt	2022-12-21 20:34:59.240682599 +0100
+@@ -84,6 +84,7 @@
+ add_library(timeline MODULE "tools/timeline.c")
+ add_library(image_infos MODULE "tools/image_infos.c")
+ 
++if (USE_PORTMIDI)
+ if(PortMidi_FOUND)
+   add_definitions("-DHAVE_PORTMIDI")
+   include_directories(${PortMidi_INCLUDE_DIR})
+@@ -91,8 +92,10 @@
+   add_library(midi MODULE "tools/midi.c")
+   target_link_libraries (midi ${PortMidi_LIBRARY})
+ endif()
++endif()
+ 
+-find_package(SDL2)
++if (USE_SDL2)
++find_package(SDL2 REQUIRED)
+ if(SDL2_FOUND)
+   add_definitions("-DHAVE_SDL")
+   set(MODULES ${MODULES} gamepad)
+@@ -104,6 +107,7 @@
+     target_link_libraries(gamepad ${SDL2_LIBRARIES})
+   endif()
+ endif()
++endif()
+ 
+ if(BUILD_BATTERY_INDICATOR)
+   add_library(battery_indicator MODULE "tools/battery_indicator.c")
