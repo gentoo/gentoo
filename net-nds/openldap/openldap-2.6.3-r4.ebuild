@@ -37,7 +37,8 @@ REQUIRED_USE="cxx? ( sasl )
 	pbkdf2? ( ssl )
 	test? ( cleartext sasl )
 	autoca? ( !gnutls )
-	?? ( test minimal )"
+	?? ( test minimal )
+	kerberos? ( ?? ( kinit smbkrb5passwd ) )"
 
 # openssl is needed to generate lanman-passwords required by samba
 COMMON_DEPEND="
@@ -68,7 +69,7 @@ COMMON_DEPEND="
 		smbkrb5passwd? (
 			dev-libs/openssl:0=
 			kerberos? ( app-crypt/heimdal )
-			)
+		)
 		kerberos? (
 			virtual/krb5
 			kinit? ( !app-crypt/heimdal )

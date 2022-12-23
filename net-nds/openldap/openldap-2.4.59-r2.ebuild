@@ -36,7 +36,8 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="cxx? ( sasl )
 	pbkdf2? ( ssl )
 	test? ( berkdb )
-	?? ( test minimal )"
+	?? ( test minimal )
+	kerberos? ( ?? ( kinit smbkrb5passwd ) )"
 
 # always list newer first
 # Do not add any AGPL-3 BDB here!
