@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mate-desktop.org.eclass
@@ -6,23 +6,21 @@
 # mate@gentoo.org
 # @AUTHOR:
 # Authors: NP-Hardass <NP-Hardass@gentoo.org> based upon the gnome.org eclass.
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Helper eclass for mate-desktop.org hosted archives
 # @DESCRIPTION:
 # Provide a default SRC_URI and EGIT_REPO_URI for MATE packages as well as
 # exporting some useful values like the MATE_BRANCH
 
-# EAPIs < 6 are banned.
+# EAPIs < 7 are banned.
 case "${EAPI:-0}" in
-	6|7) ;;
+	7) ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 fi
-
-[[ ${EAPI:-0} -eq 6 ]] && inherit eapi7-ver
 
 # @ECLASS_VARIABLE: MATE_TARBALL_SUFFIX
 # @INTERNAL
