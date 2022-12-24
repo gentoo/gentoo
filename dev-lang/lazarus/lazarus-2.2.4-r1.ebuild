@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,13 +11,26 @@ FPCVER="3.2.2"
 
 DESCRIPTION="feature rich visual programming environment emulating Delphi"
 HOMEPAGE="https://www.lazarus-ide.org/"
-SRC_URI="mirror://sourceforge/lazarus/${P}-0.tar.gz"
+SRC_URI="mirror://sourceforge/lazarus/${P}-0.tar.gz https://dev.gentoo.org/~amynka/snap/lazarus-2.2.4-makefile.patch.bz2"
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0/2.2" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk2 +gui extras"
 REQUIRED_USE="gtk2? ( gui ) extras? ( gui )"
+
+# Pascal ignores CFLAGS and does its own stripping. Nothing else can be done about it.
+QA_FLAGS_IGNORED="
+/usr/share/lazarus/startlazarus \
+/usr/share/lazarus/lazarus \
+/usr/share/lazarus/tools/lazres \
+/usr/share/lazarus/tools/lrstolfm \
+/usr/share/lazarus/tools/updatepofiles \
+/usr/share/lazarus/tools/svn2revisioninc \
+/usr/share/lazarus/lazbuild \
+/usr/share/lazarus/components/chmhelp/lhelp/lhelp"
+
+QA_PRESTRIPPED=${QA_FLAGS_IGNORED}
 
 DEPEND="
 	>=dev-lang/fpc-${FPCVER}[source]
@@ -33,7 +46,9 @@ RESTRICT="strip" #269221
 
 S="${WORKDIR}/${PN}"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.9.26-fpcsrc.patch )
+PATCHES=(
+	"${WORKDIR}/${P}"-makefile.patch
+	"${FILESDIR}"/${PN}-0.9.26-fpcsrc.patch )
 
 src_prepare() {
 	default
