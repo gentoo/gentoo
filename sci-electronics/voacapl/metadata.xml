@@ -5,4 +5,7 @@
 		<email>tomjbe@gentoo.org</email>
 		<name>Thomas Beierlein</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">jawatson/voacapl</remote-id>
+	</upstream>
 </pkgmetadata>
