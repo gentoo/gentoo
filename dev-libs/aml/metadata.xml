@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">any1/aml</remote-id>
+	</upstream>
 	<use>
 		<flag name="examples">Build and install examples</flag>
 	</use>
