@@ -23,6 +23,9 @@ src_prepare() {
 
 	# https://github.com/wader/fq/issues/494
 	sed -i -e '/test_repl.exp/d' Makefile || die
+	# Don't unconditionally (and therefore twice) build tests
+	# TODO: upstream
+	sed -i -e 's/all: test fq/all: fq/' Makefile || die
 }
 
 src_compile() {
