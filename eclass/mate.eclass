@@ -8,6 +8,7 @@
 # Authors: NP-Hardass <NP-Hardass@gentoo.org> based upon the gnome2
 # and autotools-utils eclasses
 # @SUPPORTED_EAPIS: 6 7
+# @PROVIDES: mate-desktop.org
 # @BLURB: Provides phases for MATE based packages.
 # @DESCRIPTION:
 # Exports portage base functions used by ebuilds written for packages using the
