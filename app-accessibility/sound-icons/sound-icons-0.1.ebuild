@@ -3,9 +3,9 @@
 
 EAPI=7
 
-DESCRIPTION="a collection of Sound Icons for speech-dispatcher"
-HOMEPAGE="http://www.freebsoft.org"
-SRC_URI="http://www.freebsoft.org/pub/projects/${PN}/${P}.tar.gz"
+DESCRIPTION="Collection of Sound Icons for speech-dispatcher"
+HOMEPAGE="https://www.freebsoft.org"
+SRC_URI="https://www.freebsoft.org/pub/projects/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
