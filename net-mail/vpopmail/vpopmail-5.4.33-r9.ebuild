@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.4.33-use-proper-printf-format-strings.patch
 	"${FILESDIR}"/${PN}-5.4.33-vpgsql-onchange.patch
 	"${FILESDIR}"/${PN}-5.4.33-avoid-duplicate-definitions-of-MYSQL_READ_-and-MYSQL.patch
+	"${FILESDIR}"/${PN}-5.4.33-add-missing-headers-in-configure-tests.patch
 )
 DOCS=(
 	ChangeLog
