@@ -9,4 +9,7 @@
   <maintainer type="project">
     <email>radio@gentoo.org</email>
   </maintainer>
+  <upstream>
+    <remote-id type="github">CastXML/CastXML</remote-id>
+  </upstream>
 </pkgmetadata>
