@@ -518,7 +518,6 @@ dev-tcltk/mysqltcl
 # dev-python/pika: active, uses nose + nose2 (sic!)
 # dev-python/pilkit: EAPI 7, last rel. in 2017, uses pytest in git
 # dev-python/PyContracts: EAPI 7, last rel. in 2019, git act. in 2020
-# dev-python/python-redmine: EAPI 7, last rel. in 2020, git may be good
 # dev-python/python-zipstream: EAPI 7, last rel. in 2016, git in 2018
 # dev-python/PyUtilib: EAPI 7, last rel. and git act. in 2020
 # dev-python/socketio-client: EAPI 7, last rel. in 2016, git in 2017
@@ -534,7 +533,6 @@ dev-python/nose-random
 dev-python/pika
 dev-python/pilkit
 dev-python/PyContracts
-dev-python/python-redmine
 dev-python/python-zipstream
 dev-python/PyUtilib
 dev-python/socketio-client
