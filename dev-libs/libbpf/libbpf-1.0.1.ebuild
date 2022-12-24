@@ -25,6 +25,7 @@ DEPEND="
 	sys-kernel/linux-headers
 	virtual/libelf"
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/libbpf-9999-paths.patch
