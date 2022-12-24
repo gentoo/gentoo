@@ -1,4 +1,4 @@
-# Copyright 2012-2021 Gentoo Authors
+# Copyright 2012-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: plocale.eclass
@@ -6,7 +6,7 @@
 # Ulrich Müller <ulm@gentoo.org>
 # @AUTHOR:
 # Ben de Groot <yngwin@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: convenience functions to handle localizations
 # @DESCRIPTION:
 # The plocale (localization) eclass offers a number of functions to more
@@ -52,7 +52,7 @@
 # translations and check if the ebuild's PLOCALES are still up to date.
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
