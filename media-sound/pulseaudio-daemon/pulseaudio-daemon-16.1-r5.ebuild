@@ -253,7 +253,7 @@ src_install() {
 	meson_src_install
 
 	# Upstream installs qpaeq if fftw is found, we only want it with USE equalizer
-	if ! use equalizer; then
+	if ! use equalizer && [[ -f "${ED}"/usr/bin/qpaeq ]]; then
 		rm "${ED}"/usr/bin/qpaeq || die
 	fi
 
