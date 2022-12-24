@@ -11,5 +11,7 @@
     <bugs-to>https://bugs.freedesktop.org/</bugs-to>
     <remote-id type="pypi">pyxdg</remote-id>
     <remote-id type="launchpad">pyxdg</remote-id>
+    <remote-id type="github">takluyver/pyxdg</remote-id>
+    <remote-id type="freedesktop-gitlab">xdg/pyxdg</remote-id>
   </upstream>
 </pkgmetadata>

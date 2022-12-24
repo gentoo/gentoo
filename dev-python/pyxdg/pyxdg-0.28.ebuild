@@ -12,7 +12,6 @@ MY_P="${PN}-rel-${PV}"
 DESCRIPTION="A Python module to deal with freedesktop.org specifications"
 HOMEPAGE="
 	https://freedesktop.org/wiki/Software/pyxdg/
-	https://cgit.freedesktop.org/xdg/pyxdg/
 	https://pypi.org/project/pyxdg/
 "
 SRC_URI="
