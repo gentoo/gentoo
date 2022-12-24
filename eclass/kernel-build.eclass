@@ -6,7 +6,7 @@
 # Distribution Kernel Project <dist-kernel@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @PROVIDES: kernel-install
 # @BLURB: Build mechanics for Distribution Kernels
 # @DESCRIPTION:
@@ -20,12 +20,13 @@
 # the kernel and installing it along with its modules and subset
 # of sources needed to build external modules.
 
-if [[ ! ${_KERNEL_BUILD_ECLASS} ]]; then
-
 case ${EAPI} in
-	7|8) ;;
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ ! ${_KERNEL_BUILD_ECLASS} ]]; then
+_KERNEL_BUILD_ECLASS=1
 
 PYTHON_COMPAT=( python3_{8..11} )
 
@@ -281,7 +282,6 @@ kernel-build_merge_configs() {
 		.config "${@}" "${user_configs[@]}" || die
 }
 
-_KERNEL_BUILD_ECLASS=1
 fi
 
 EXPORT_FUNCTIONS src_configure src_compile src_test src_install pkg_postinst
