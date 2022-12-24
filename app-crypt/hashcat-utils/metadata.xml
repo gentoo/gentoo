@@ -5,4 +5,7 @@
 		<name>Rick Farina</name>
 		<email>zerochaos@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">hashcat/hashcat-utils</remote-id>
+	</upstream>
 </pkgmetadata>
