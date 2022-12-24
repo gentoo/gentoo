@@ -2,9 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">any1/neatvnc</remote-id>
+	</upstream>
 	<use>
 		<flag name="examples">Build and install examples</flag>
-		<flag name="jpeg">Enable fast encodings</flag>
+		<flag name="gbm">Enable support for the Generic Buffer Manager (gbm)</flag>
+		<flag name="h264">Enable fast encodings</flag>
+		<flag name="jpeg">Enable H.264 encoding</flag>
 		<flag name="tracing">Trace kernel and memory calls</flag>
 	</use>
 </pkgmetadata>
