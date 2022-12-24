@@ -12,4 +12,7 @@
 	<use>
 		<flag name="fapi">Enable feature API backend</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">tpm2-software/tpm2-pkcs11</remote-id>
+	</upstream>
 </pkgmetadata>
