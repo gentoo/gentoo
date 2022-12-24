@@ -3,8 +3,7 @@
 
 EAPI=8
 
-WX_GTK_VER="3.0-gtk3"
-inherit cmake fcaps flag-o-matic wxwidgets
+inherit cmake desktop fcaps flag-o-matic
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -36,44 +35,34 @@ LICENSE="
 	GPL-3+ Apache-2.0 BSD BSD-2 BSD-4 Boost-1.0 CC0-1.0 GPL-2+
 	ISC LGPL-2.1+ LGPL-3+ MIT OFL-1.1 ZLIB public-domain"
 SLOT="0"
-IUSE="alsa cpu_flags_x86_sse4_1 jack pulseaudio qt6 sndio test vulkan wayland"
+IUSE="alsa cpu_flags_x86_sse4_1 jack pulseaudio sndio test vulkan wayland"
 REQUIRED_USE="cpu_flags_x86_sse4_1" # dies at runtime if no support
 RESTRICT="!test? ( test )"
 
-# dlopen: ffmpeg, qtsvg, vulkan-loader
+# dlopen: ffmpeg, qtsvg, vulkan-loader, wayland
 RDEPEND="
 	app-arch/xz-utils
 	app-arch/zstd:=
 	dev-cpp/rapidyaml:=
 	dev-libs/libaio
 	dev-libs/libchdr
-	>=dev-libs/libfmt-7.1.3:=
+	dev-libs/libfmt:=
 	dev-libs/libzip:=[zstd]
-	media-libs/harfbuzz
+	dev-qt/qtbase:6[gui,network,widgets]
+	dev-qt/qtsvg:6
 	media-libs/libglvnd
 	media-libs/libpng:=
 	>=media-libs/libsdl2-2.0.22[haptic,joystick]
 	media-libs/libsoundtouch:=
 	media-video/ffmpeg:=
 	net-libs/libpcap
+	net-misc/curl
 	sys-libs/zlib:=
 	virtual/libudev:=
-	x11-libs/libX11
 	x11-libs/libXrandr
 	alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )
 	pulseaudio? ( media-libs/libpulse )
-	qt6? (
-		dev-qt/qtbase:6[gui,network,widgets]
-		dev-qt/qtsvg:6
-		net-misc/curl
-	)
-	!qt6? (
-		dev-libs/glib:2
-		x11-libs/gdk-pixbuf:2
-		x11-libs/gtk+:3[wayland?]
-		x11-libs/wxGTK:${WX_GTK_VER}[X]
-	)
 	sndio? ( media-sound/sndio:= )
 	vulkan? ( media-libs/vulkan-loader )
 	wayland? ( dev-libs/wayland )"
@@ -83,8 +72,7 @@ DEPEND="
 	test? ( dev-cpp/gtest )"
 BDEPEND="
 	dev-lang/perl
-	qt6? ( dev-qt/qttools[linguist] )
-	!qt6? ( sys-devel/gettext )"
+	dev-qt/qttools[linguist]"
 
 FILECAPS=(
 	-m 0755 "CAP_NET_RAW+eip CAP_NET_ADMIN+eip" usr/bin/pcsx2
@@ -92,10 +80,9 @@ FILECAPS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.0-crcs.patch
-	"${FILESDIR}"/${PN}-1.7.3329-lto.patch
-	"${FILESDIR}"/${PN}-1.7.3329-qt6.patch
 	"${FILESDIR}"/${PN}-1.7.3351-unbundle.patch
 	"${FILESDIR}"/${PN}-1.7.3468-cubeb-automagic.patch
+	"${FILESDIR}"/${PN}-1.7.3773-lto.patch
 )
 
 src_unpack() {
@@ -145,8 +132,7 @@ src_prepare() {
 
 	cmake_src_prepare
 
-	# qt6 build doesn't support PACKAGE_MODE and need to set resources location
-	sed -e "/EmuFolders::AppRoot =/s|=.*|= \"${EPREFIX}/usr/share/PCSX2\";|" \
+	sed -e "/EmuFolders::AppRoot =/s|=.*|= \"${EPREFIX}/usr/share/${PN}\";|" \
 		-i pcsx2/Frontend/CommonHost.cpp || die
 
 	if [[ ${PV} != 9999 ]]; then
@@ -157,7 +143,7 @@ src_prepare() {
 		local keep=(
 			# TODO?: rapidjson and xbyak are packaged and could be unbundlable
 			# w/ patch, and discord-rpc be optional w/ dependency on rapidjson
-			cpuinfo cubeb discord-rpc glad imgui include jpgd lzma
+			cpuinfo cubeb demangler discord-rpc glad imgui include jpgd lzma
 			rapidjson rapidyaml rcheevos simpleini xbyak zydis
 			$(usev vulkan 'glslang vulkan-headers')
 		)
@@ -167,23 +153,19 @@ src_prepare() {
 }
 
 src_configure() {
-	use qt6 || setup-wxwidgets
-
 	# for bundled glslang (bug #858374)
 	use vulkan && append-flags -fno-strict-aliasing
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
 		-DDISABLE_BUILD_DATE=yes
-		-DDISABLE_PCSX2_WRAPPER=yes
 		-DDISABLE_SETCAP=yes
 		-DENABLE_TESTS=$(usex test)
-		-DPACKAGE_MODE=yes
-		-DQT_BUILD=$(usex qt6)
 		-DUSE_SYSTEM_LIBS=yes
 		-DUSE_VTUNE=no
 		-DUSE_VULKAN=$(usex vulkan)
 		-DWAYLAND_API=$(usex wayland)
+		-DX11_API=yes # fails if X libs are missing even if disabled
 		-DXDG_STD=yes
 
 		# sse4.1 is the bare minimum required, -m is required at build time
@@ -207,26 +189,43 @@ src_test() {
 }
 
 src_install() {
-	cmake_src_install
+	# package mode was removed turning cmake_src_install into a noop
+	newbin "${BUILD_DIR}"/pcsx2-qt/pcsx2-qt ${PN}
 
-	use qt6 && newbin "${BUILD_DIR}"/pcsx2-qt/pcsx2-qt pcsx2
+	insinto /usr/share/${PN}
+	doins -r "${BUILD_DIR}"/pcsx2-qt/resources
+
+	dodoc README.md bin/docs/{Debugger.pdf,GameIndex.pdf,PCSX2_FAQ.pdf,debugger.txt}
+	newman bin/docs/PCSX2.1 ${PN}.1
+
+	newicon linux_various/PCSX2.xpm ${PN}.xpm
+	make_desktop_entry ${PN} ${PN^^}
 }
 
 pkg_postinst() {
 	fcaps_pkg_postinst
 
-	local replacing_old
-	if [[ ${REPLACING_VERSIONS##* } ]] &&
-		ver_test ${REPLACING_VERSIONS##* } -lt 1.6.1
-	then
-		replacing_old=
-		elog ">=${PN}-1.7 has received several changes since <=${PN}-1.6.0, just-in-case"
-		elog "it is recommended to backup your save states and memory cards before use."
-		elog "Note that the executable was also renamed from 'PCSX2' to 'pcsx2'."
+	local replacing=
+	if [[ ${REPLACING_VERSIONS##* } ]]; then
+		if ver_test ${REPLACING_VERSIONS##* } -lt 1.6.1; then
+			replacing=old
+		elif ver_test ${REPLACING_VERSIONS##* } -lt 1.7.3773; then
+			replacing=wx
+		else
+			replacing=any
+		fi
 	fi
 
-	if [[ ${PV} != 9999 && ( ! ${REPLACING_VERSIONS} || -v replacing_old ) ]]; then
-		[[ -v replacing_old ]] && elog
+	if [[ ${replacing} == old ]]; then
+		elog
+		elog ">=${PN}-1.7 has received several changes since <=${PN}-1.6.0, notably"
+		elog "it is now a 64bit build using Qt6. Just-in-case it is recommended to"
+		elog "backup your configs, save states, and memory cards before use."
+		elog "The executable was also renamed from 'PCSX2' to 'pcsx2'."
+	fi
+
+	if [[ ${replacing} == @(|old) && ${PV} != 9999 ]]; then
+		elog
 		elog "${PN}-1.7.x is a development branch using a nightly release model"
 		elog "(new 'release' every 1-2 days). Stable 1.6.0 is getting old and lacks"
 		elog "many notable features (e.g. native 64bit builds). Given it may be a long"
@@ -235,5 +234,11 @@ pkg_postinst() {
 		elog
 		elog "Please report an issue if feel a picked nightly release needs to be"
 		elog "updated ahead of time or masked (notably for handling regressions)."
+	fi
+
+	if [[ ${replacing} == wx ]]; then
+		ewarn
+		ewarn "Note that wxGTK support been dropped upstream since >=${PN}-1.7.3773,"
+		ewarn "and so USE=qt6 is gone and Qt6 is now always used."
 	fi
 }
