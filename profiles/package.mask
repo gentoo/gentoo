@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-12-24)
+# EAPI=6 ebuilds, live only packages for 5.79 years!
+# maintainer-needed packages for a long time.
+# Removal: 2023-01-23.  Bug #888173.
+x11-misc/xowl
+x11-wm/xoat
+
 # Michał Górny <mgorny@gentoo.org> (2022-12-24)
 # RobotOS is suffering from serious lack of manpower in Gentoo.
 # While the packages are being bumped, the bugs reported against them
