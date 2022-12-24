@@ -105,7 +105,6 @@ mssql
 # havent tested yet
 darcs
 afs
-scanner
 zvbi
 sid
 mms
