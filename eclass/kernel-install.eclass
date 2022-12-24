@@ -6,7 +6,7 @@
 # Distribution Kernel Project <dist-kernel@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @PROVIDES: dist-kernel-utils
 # @BLURB: Installation mechanics for Distribution Kernels
 # @DESCRIPTION:
@@ -29,9 +29,10 @@
 # kernel-build.eclass obtains it from kernel config.
 
 if [[ ! ${_KERNEL_INSTALL_ECLASS} ]]; then
+_KERNEL_INSTALL_ECLASS=1
 
 case ${EAPI} in
-	7|8) ;;
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -46,17 +47,12 @@ RESTRICT+="
 "
 
 # note: we need installkernel with initramfs support!
-_INSTALL_DEPEND="
+IDEPEND="
 	|| (
 		sys-kernel/installkernel-gentoo
 		sys-kernel/installkernel-systemd-boot
 	)
 	initramfs? ( >=sys-kernel/dracut-049-r3 )"
-if [[ ${EAPI} == 7 ]]; then
-	RDEPEND="${_INSTALL_DEPEND}"
-else
-	IDEPEND="${_INSTALL_DEPEND}"
-fi
 # needed by objtool that is installed along with the kernel and used
 # to build external modules
 # NB: linux-mod.eclass also adds this dep but it's cleaner to have
@@ -533,7 +529,6 @@ kernel-install_pkg_config() {
 	kernel-install_install_all "${PV}${KV_LOCALVERSION}"
 }
 
-_KERNEL_INSTALL_ECLASS=1
 fi
 
 EXPORT_FUNCTIONS src_test pkg_preinst pkg_postinst pkg_prerm pkg_postrm
