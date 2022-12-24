@@ -25,7 +25,7 @@ fi
 LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="+desktop +drm editor examples fullscreen +gles2 headless ivi jpeg kiosk lcms pipewire rdp remoting +resize-optimization screen-sharing +seatd +suid systemd test wayland-compositor webp +X xwayland"
+IUSE="+desktop +drm editor examples fullscreen +gles2 headless ivi jpeg kiosk lcms pipewire rdp remoting +resize-optimization screen-sharing +suid systemd test vnc wayland-compositor webp +X xwayland"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -33,20 +33,17 @@ REQUIRED_USE="
 	pipewire? ( drm )
 	remoting? ( drm gles2 )
 	screen-sharing? ( rdp )
-	test? ( desktop headless lcms xwayland  )
+	test? ( desktop headless lcms xwayland )
 	wayland-compositor? ( gles2 )
-	|| ( drm headless rdp wayland-compositor X )
-	|| ( seatd systemd )
+	|| ( drm headless rdp vnc wayland-compositor X )
 "
 
 RDEPEND="
 	>=dev-libs/libinput-0.8.0
 	>=dev-libs/wayland-1.20.0
 	>=dev-libs/wayland-protocols-1.24
-	lcms? ( >=media-libs/lcms-2.9:2 )
 	media-libs/libpng:0=
-	webp? ( media-libs/libwebp:0= )
-	jpeg? ( media-libs/libjpeg-turbo:0= )
+	sys-auth/seatd:=
 	>=x11-libs/cairo-1.11.3
 	>=x11-libs/libdrm-2.4.108
 	>=x11-libs/libxkbcommon-0.5.0
@@ -59,21 +56,22 @@ RDEPEND="
 	)
 	editor? ( x11-libs/pango )
 	examples? ( x11-libs/pango )
-	gles2? (
-		media-libs/mesa[gles2,wayland]
-	)
+	gles2? ( media-libs/mesa[gles2,wayland] )
+	jpeg? ( media-libs/libjpeg-turbo:0= )
+	lcms? ( >=media-libs/lcms-2.9:2 )
 	pipewire? ( >=media-video/pipewire-0.3:= )
 	rdp? ( >=net-misc/freerdp-2.3.0:=[server] )
 	remoting? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 	)
-	seatd? ( sys-auth/seatd:= )
-	systemd? (
-		sys-auth/pambase[systemd]
-		>=sys-apps/dbus-1.6
-		>=sys-apps/systemd-209[pam]
+	systemd? ( sys-apps/systemd )
+	vnc? (
+		=dev-libs/aml-0.2*
+		=gui-libs/neatvnc-0.5*
+		sys-libs/pam
 	)
+	webp? ( media-libs/libwebp:0= )
 	X? (
 		>=x11-libs/libxcb-1.9
 		x11-libs/libX11
@@ -98,12 +96,13 @@ src_configure() {
 		$(meson_use headless backend-headless)
 		$(meson_use rdp backend-rdp)
 		$(meson_use screen-sharing screenshare)
+		$(meson_use vnc backend-vnc)
 		$(meson_use wayland-compositor backend-wayland)
 		$(meson_use X backend-x11)
 		-Dbackend-default=auto
 		$(meson_use gles2 renderer-gl)
 		$(meson_use xwayland)
-		$(meson_use seatd launcher-libseat)
+		-Dlauncher-libseat=true
 		$(meson_use systemd)
 		$(meson_use remoting)
 		$(meson_use pipewire)
@@ -112,7 +111,6 @@ src_configure() {
 		$(meson_use ivi shell-ivi)
 		$(meson_use kiosk shell-kiosk)
 		$(meson_use lcms color-management-lcms)
-		$(meson_use systemd launcher-logind)
 		$(meson_use jpeg image-jpeg)
 		$(meson_use webp image-webp)
 		-Dtools=debug,info,terminal
