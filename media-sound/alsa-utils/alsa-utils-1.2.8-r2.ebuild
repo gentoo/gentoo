@@ -60,21 +60,20 @@ src_install() {
 	newinitd "${FILESDIR}"/alsasound.initd-r8 alsasound
 	newconfd "${FILESDIR}"/alsasound.confd-r4 alsasound
 
-	insinto /etc/modprobe.d
-	newins "${FILESDIR}"/alsa-modules.conf-rc alsa.conf
-
 	keepdir /var/lib/alsa
 
 	# ALSA lib parser.c:1266:(uc_mgr_scan_master_configs) error: could not
 	# scan directory /usr/share/alsa/ucm: No such file or directory
 	# alsaucm: unable to obtain card list: No such file or directory
 	keepdir /usr/share/alsa/ucm
+
+	find "${ED}" -type f -name '*.la' -delete || die
 }
 
 pkg_postinst() {
 	udev_reload
 
-	if [[ -z ${REPLACING_VERSIONS} ]]; then
+	if [[ -z ${REPLACING_VERSIONS} ]] && ! systemd_is_booted ; then
 		elog
 		elog "To take advantage of the init script, and automate the process of"
 		elog "saving and restoring sound-card mixer levels you should"
