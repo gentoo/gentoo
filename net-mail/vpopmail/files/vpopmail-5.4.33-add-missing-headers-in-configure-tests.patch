@@ -1,0 +1,40 @@
+From 6a2bc617c8ca8368697e971b6456b5b07a1c8b18 Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Thu, 15 Dec 2022 21:34:18 +0100
+Subject: [PATCH 1/5] add missing headers in configure tests
+
+See: https://bugs.gentoo.org/885873
+---
+ configure    | 2 ++
+ configure.in | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/configure b/configure
+index 43030d8..a4b0d54 100755
+--- a/configure
++++ b/configure
+@@ -5686,6 +5686,8 @@ else
+   #include <stdio.h>
+   #include <pwd.h>
+   #include <stdlib.h>
++  #include <string.h>
++  #include <unistd.h>
+ 
+   int main() {
+     struct passwd *pw;
+diff --git a/configure.in b/configure.in
+index c4e32d4..f557f26 100644
+--- a/configure.in
++++ b/configure.in
+@@ -423,6 +423,8 @@ AC_TRY_RUN( [
+   #include <stdio.h>
+   #include <pwd.h>
+   #include <stdlib.h>
++  #include <string.h>
++  #include <unistd.h>
+ 
+   int main() {
+     struct passwd *pw;
+-- 
+2.35.3
+
