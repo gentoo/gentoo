@@ -33,7 +33,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Ionen Wolkens <ionen@gentoo.org (2022-12-24)
+# Ionen Wolkens <ionen@gentoo.org> (2022-12-24)
 # Upstream dropped wxGTK support in >=games-emulation/pcsx2-1.7.3773,
 # and it now always requires Qt6. Masked given Qt6 is also masked in
 # Gentoo at the moment. It is recommended to use <=pcsx2-1.7.3772 for
