@@ -16,4 +16,7 @@
 	<use>
 		<flag name="fuse">Support <pkg>sys-fs/fuse</pkg> based /dev/tpm interface</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">stefanberger/swtpm</remote-id>
+	</upstream>
 </pkgmetadata>
