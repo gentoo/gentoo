@@ -1,0 +1,71 @@
+From 89134a5847bc143ce0c7acf1ca860861b4639a6b Mon Sep 17 00:00:00 2001
+From: ranma <ranma+github@tdiedrich.de>
+Date: Wed, 4 Nov 2020 10:20:08 +0100
+Subject: [PATCH] Avoid running depend.sh before config.mk is included
+
+Should fix "./depend.sh: line 27: exec: : not found"
+---
+ Makefile  | 9 ++++++++-
+ configure | 1 +
+ depend.sh | 2 +-
+ 3 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 26aa20b..de4e761 100644
+--- a/Makefile
++++ b/Makefile
+@@ -50,6 +50,7 @@ SPLINTFLAGS := \
+ 	-shiftnegative \
+ 	-shiftimplementation
+ 
++configured := no
+ ifneq ($(noincludes),yes)
+ -include config.mk
+ endif
+@@ -247,15 +248,21 @@ endif
+ # include the rules for each subdir
+ include $(shell find . -type f -name "subdir.mk")
+ 
++ifeq ($(configured),yes)
+ default: config.mk $(objs) $(dsts) $(mans) $(EXTRA_ALL) $(TEST_TARGETS)
++else
++default: config.mk
++endif
+ 
+ # include the dependency files
+ 
+ ifneq ($(noincludes),yes)
++ifeq ($(configured),yes)
+ deps := $(patsubst %.o,%.d,$(filter %.o,$(objs)))
+ deps += $(patsubst %.lo,%.d,$(filter %.lo,$(objs)))
+ -include $(deps)
+ endif
++endif
+ 
+ distclean: clean
+ 	find . -regex ".*\.d" -exec rm -f "{}" \;
+diff --git a/configure b/configure
+index 455e5a0..e5882dc 100755
+--- a/configure
++++ b/configure
+@@ -1046,6 +1046,7 @@ __EOF__
+     echo plugout_nas := $use_nas
+     echo plugout_pulse := $use_pulse
+     echo plugout_stdout := $use_stdout
++    echo configured := yes
+ ) > config.mk
+ 
+ (
+diff --git a/depend.sh b/depend.sh
+index 09a2cb7..29ac15b 100755
+--- a/depend.sh
++++ b/depend.sh
+@@ -24,7 +24,7 @@ if [ -f "${DIR}subdir.mk" ]; then
+ 	SUBMK=" ${DIR}subdir.mk"
+ fi
+ 
+-exec "$CC" -M $GBSCFLAGS "$FILE" |
++exec "$BUILDCC" -M $GBSCFLAGS "$FILE" |
+ 	sed -n -e "
+ 		s@^\\(.*\\)\\.o:@$DIR\\1.d $DIR\\1.o $DIR\\1.lo: depend.sh Makefile$SUBMK$EXTRADEP@
+ 		s@/usr/[^	 ]*@@g

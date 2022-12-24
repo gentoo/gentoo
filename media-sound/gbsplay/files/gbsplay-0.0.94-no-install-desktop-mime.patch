@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index 28f2c55..8753496 100644
+--- a/Makefile
++++ b/Makefile
+@@ -282,9 +282,5 @@ install-default:
+ 	install -m 644 man/gbsplay.1 man/gbsinfo.1 $(man1dir)
+ 	install -m 644 man/gbsplayrc.5 $(man5dir)
+-	install -m 644 mime/gbsplay.xml $(mimedir)/packages
+-	-update-mime-database $(mimedir)
+-	install -m 644 desktop/gbsplay.desktop $(appdir)
+-	-update-desktop-database $(appdir)
+ 	install -m 644 $(docs) $(docdir)
+ 	install -m 644 $(examples) $(exampledir)
+ 	for i in $(mos); do \
