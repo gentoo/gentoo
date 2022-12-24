@@ -42,7 +42,6 @@ CONFIG_PROTECT="${CONFIG_PROTECT} /var/spool/fax/etc /usr/lib/fax"
 CONFIG_PROTECT_MASK="${CONFIG_PROTECT_MASK} /var/spool/fax/etc/xferfaxlog"
 
 # See bug #706154, bug #810658 if need to patch for newer libtiff.
-
 PATCHES=(
 	"${FILESDIR}"/ldconfig-patch
 )
