@@ -35,9 +35,6 @@ inherit kde.org
 
 HOMEPAGE="https://plasma-mobile.org/"
 
-SLOT=5/${PV}
-[[ ${KDE_BUILD_TYPE} == release ]] && SLOT=$(ver_cut 1)/$(ver_cut 1-2)
-
 # @ECLASS_VARIABLE: KDE_ORG_SCHEDULE_URI
 # @INTERNAL
 # @DESCRIPTION:
