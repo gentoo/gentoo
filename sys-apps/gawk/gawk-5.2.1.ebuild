@@ -34,6 +34,9 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
+# While tempting to enable mpfr by default as e.g. Fedora do, as of 5.2.x,
+# MPFR support is "on parole" and may be removed:
+# https://www.gnu.org/software/gawk/manual/html_node/MPFR-On-Parole.html.
 IUSE="mpfr pma nls readline"
 
 RDEPEND="
