@@ -1,0 +1,44 @@
+From b10f73f78eb223dd799a87474c537a69113edee1 Mon Sep 17 00:00:00 2001
+From: Vince van Oosten <techhazard@codeforyouand.me>
+Date: Sun, 23 Oct 2022 10:55:46 +0200
+Subject: [PATCH] include systemd overrides to zfs-dracut module
+
+If a user that uses systemd and dracut wants to overide certain
+settings, they typically use `systemctl edit [unit]` or place a file in
+`/etc/systemd/system/[unit].d/override.conf` directly.
+
+The zfs-dracut module did not include those overrides however, so this
+did not have any effect at boot time.
+
+For zfs-import-scan.service and zfs-import-cache.service, overrides are
+now included in the dracut initramfs image.
+
+Reviewed-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Signed-off-by: Vince van Oosten <techhazard@codeforyouand.me>
+Closes #14075
+Closes #14076
+---
+ contrib/dracut/90zfs/module-setup.sh.in | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/contrib/dracut/90zfs/module-setup.sh.in b/contrib/dracut/90zfs/module-setup.sh.in
+index 81d7d2abe49..b16529de905 100755
+--- a/contrib/dracut/90zfs/module-setup.sh.in
++++ b/contrib/dracut/90zfs/module-setup.sh.in
+@@ -86,6 +86,16 @@ install() {
+ 			"zfs-import-cache.service"; do
+ 			inst_simple "${systemdsystemunitdir}/${_service}"
+ 			systemctl -q --root "${initdir}" add-wants zfs-import.target "${_service}"
++
++			# Add user-provided unit overrides
++			# - /etc/systemd/system/zfs-import-{scan,cache}.service
++			# - /etc/systemd/system/zfs-import-{scan,cache}.service.d/overrides.conf
++			# -H ensures they are marked host-only
++			# -o ensures there is no error upon absence of these files
++			inst_multiple -o -H \
++				"${systemdsystemconfdir}/${_service}" \
++				"${systemdsystemconfdir}/${_service}.d/"*.conf
++
+ 		done
+ 
+ 		for _service in \
