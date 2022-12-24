@@ -8,4 +8,7 @@
 	<use>
 		<flag name="btrfs">Enables dependencies for the "btrfs" graph driver.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">containers/skopeo</remote-id>
+	</upstream>
 </pkgmetadata>
