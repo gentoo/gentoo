@@ -45,7 +45,7 @@ SLOT=5/${PV}
 KDE_ORG_SCHEDULE_URI="https://invent.kde.org/plasma/plasma-mobile/-/wikis/Release-Schedule"
 
 if [[ ${KDE_BUILD_TYPE} != live && -z ${KDE_ORG_COMMIT} ]]; then
-	SRC_URI="mirror://kde/stable/plasma-mobile/${PV}/${KDE_ORG_NAME}-${PV}.tar.xz"
+	SRC_URI="mirror://kde/stable/plasma-mobile/$(ver_cut 1-2)/${KDE_ORG_NAME}-${PV}.tar.xz"
 fi
 
 fi
