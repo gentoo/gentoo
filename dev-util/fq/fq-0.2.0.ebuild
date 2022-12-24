@@ -5,7 +5,7 @@ EAPI=8
 
 inherit go-module
 
-DESCRIPTION="Tool for working with binary data (jq for binary formats)"
+DESCRIPTION="Tool for working with binary data (app-misc/jq for binary formats)"
 HOMEPAGE="https://github.com/wader/fq"
 SRC_URI="https://github.com/wader/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz"
