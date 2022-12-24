@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-12-24)
+# dev-util/hip and its rocm dependencies not stable yet
+sci-physics/lammps hip
+
 # Sam James <sam@gentoo.org> (2022-12-07)
 # Needs unstable media-libs/oneVPL
 media-libs/gst-plugins-bad qsv
