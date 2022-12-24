@@ -254,9 +254,8 @@ python_compile_plugins() {
 		fi
 	fi
 
-
 	if use python-asyncio; then
-			${PYTHON} uwsgiconfig.py --plugin plugins/greenlet gentoo greenlet${PYV} || die "building plugin for greenlet-support in ${EPYTHON} failed"
+		${PYTHON} uwsgiconfig.py --plugin plugins/greenlet gentoo greenlet${PYV} || die "building plugin for greenlet-support in ${EPYTHON} failed"
 	fi
 }
 
