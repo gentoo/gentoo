@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit fortran-2
+inherit autotools fortran-2
 
 MY_P=${PN}-v.${PV}
 
@@ -19,6 +19,11 @@ IUSE=""
 RESTRICT="mirror bindist"
 
 S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	eapply_user
+	eautoreconf
+}
 
 src_compile() {
 	# bug 513766
