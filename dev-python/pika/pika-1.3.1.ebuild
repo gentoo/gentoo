@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1
 
 DESCRIPTION="Pure-Python implementation of the AMQP"
@@ -24,7 +24,6 @@ PROPERTIES="test_network"
 
 BDEPEND="
 	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/nose2[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
 		dev-python/tornado[${PYTHON_USEDEP}]
