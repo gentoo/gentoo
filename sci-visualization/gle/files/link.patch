@@ -1,0 +1,20 @@
+diff -r -U2 src.orig/gui/CMakeLists.txt src/gui/CMakeLists.txt
+--- src.orig/gui/CMakeLists.txt	2022-04-14 02:47:12.000000000 +0700
++++ src/gui/CMakeLists.txt	2022-12-19 10:21:59.026388957 +0700
+@@ -54,11 +54,14 @@
+ 	$<$<PLATFORM_ID:Windows>:qgle.rc>
+ )
+-# no jpeg as its contianed in Qt
++# no jpeg as its contained in Qt
++# but need to add JPEG for Linux!
++# order matters: first static files (and libgle), then dynamic libraries
+ target_link_libraries ( qgle LINK_PUBLIC 
++	libgle-graphics_s
+ 	${ZLIB_LIBRARIES}
++	${JPEG_LIBRARIES}
+ 	${TIFF_LIBRARIES}
+ 	${PNG_LIBRARIES}
+ 	${PIXMAN_LIBRARIES}
+-	libgle-graphics_s
+ 	Qt::Core
+ 	Qt::Gui

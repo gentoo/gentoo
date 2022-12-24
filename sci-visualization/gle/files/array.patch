@@ -1,0 +1,15 @@
+diff -r -U2 src.orig/makefmt/makefmt.cpp src/makefmt/makefmt.cpp
+--- src.orig/makefmt/makefmt.cpp	2022-04-14 02:47:12.000000000 +0700
++++ src/makefmt/makefmt.cpp	2022-12-18 14:09:54.399896247 +0700
+@@ -115,6 +115,6 @@
+ 
+ int main(int argc, char *argv[]) {
+-	char filename[80];
+-	char fmtname[80];
++	char filename[200];
++	char fmtname[200];
+ 	init_accents();
+ 	/* encoding file given? */
+diff -r -U2 src.orig/TeX/CMakeLists.txt src/TeX/CMakeLists.txt
+--- src.orig/TeX/CMakeLists.txt	2022-04-14 02:47:12.000000000 +0700
++++ src/TeX/CMakeLists.txt	2022-12-20 13:34:00.953502995 +0700

@@ -1,0 +1,20 @@
+diff -r -U2 src.orig/TeX/CMakeLists.txt src/TeX/CMakeLists.txt
+--- src.orig/TeX/CMakeLists.txt	2022-04-14 02:47:12.000000000 +0700
++++ src/TeX/CMakeLists.txt	2022-12-20 13:34:00.953502995 +0700
+@@ -52,11 +52,11 @@
+ )
+ # make the inittex.ini in the install folder
+-install(CODE "execute_process(COMMAND ${CMAKE_INSTALL_PREFIX}/bin/gle$<$<CONFIG:Debug>:d> -mkinittex)")
++# install(CODE "execute_process(COMMAND ${CMAKE_INSTALL_PREFIX}/bin/gle$<$<CONFIG:Debug>:d> -mkinittex)")
+ # explicity install inittex.ini for cpack even though its created in this directory
+ # from gle -mkinittex command above
+-install(FILES 
+-	${CMAKE_INSTALL_PREFIX}/inittex.ini
+- 	CONFIGURATIONS Release Debug
+- 	DESTINATION . 
+-)
++# install(FILES 
++# 	${CMAKE_INSTALL_PREFIX}/inittex.ini
++#  	CONFIGURATIONS Release Debug
++#  	DESTINATION . 
++# )

@@ -1,0 +1,21 @@
+diff -r -U2 src.orig/CMakeLists.txt src/CMakeLists.txt
+--- src.orig/CMakeLists.txt	2022-04-14 02:47:12.000000000 +0700
++++ src/CMakeLists.txt	2022-12-20 13:03:11.386586253 +0700
+@@ -130,5 +133,5 @@
+ 	string(COMPARE NOTEQUAL "${CAIRO_LIBRARIES}" "CAIRO_LIBRARIES-NOTFOUND" CAIRO_FOUND)
+ endif()
+-find_path(CAIRO_INCLUDE_DIRS cairo.h PATHS ${CAIRO_ROOT} PATH_SUFFIXES include REQUIRED)
++find_path(CAIRO_INCLUDE_DIRS cairo.h PATHS ${CAIRO_ROOT} PATH_SUFFIXES include include/cairo REQUIRED)
+ if(CAIRO_FOUND)
+ 	message("-- Found CAIRO: " ${CAIRO_LIBRARIES} )
+@@ -154,8 +157,8 @@
+ 	endif()
+ else()
+-	find_library(PIXMAN_LIBRARIES NAMES pixman pixmand PATHS ${PIXMAN_ROOT} PATH_SUFFIXES lib REQUIRED)
++	find_library(PIXMAN_LIBRARIES NAMES pixman pixmand pixman-1 PATHS ${PIXMAN_ROOT} PATH_SUFFIXES lib REQUIRED)
+ 	string(COMPARE NOTEQUAL "${PIXMAN_LIBRARIES}" "PIXMAN_LIBRARIES-NOTFOUND" PIXMAN_FOUND)
+ endif()
+-find_path(PIXMAN_INCLUDE_DIRS pixman.h PATHS ${PIXMAN_ROOT} PATH_SUFFIXES include REQUIRED)
++find_path(PIXMAN_INCLUDE_DIRS pixman.h PATHS ${PIXMAN_ROOT} PATH_SUFFIXES include include/pixman-1 REQUIRED)
+ if(PIXMAN_FOUND)
+ 	message("-- Found PIXMAN: " ${PIXMAN_LIBRARIES} )

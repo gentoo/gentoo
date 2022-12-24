@@ -1,0 +1,10 @@
+diff -r -U2 src.orig/gui/main.cpp src/gui/main.cpp
+--- src.orig/gui/main.cpp	2022-04-14 02:47:12.000000000 +0700
++++ src/gui/main.cpp	2022-12-19 10:21:59.046388957 +0700
+@@ -277,5 +277,5 @@
+ 	#endif
+ 	#ifdef Q_OS_LINUX
+-	Q_IMPORT_PLUGIN(QWaylandIntegrationPlugin)
++	// Q_IMPORT_PLUGIN(QWaylandIntegrationPlugin)
+ 	#endif
+ 	QLocale curLocale("C");
