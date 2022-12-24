@@ -5,10 +5,15 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..11} pypy3 )
+
 inherit distutils-r1
 
 DESCRIPTION="Easy, clean, reliable Python 2/3 compatibility"
-HOMEPAGE="https://python-future.org/"
+HOMEPAGE="
+	https://python-future.org/
+	https://github.com/PythonCharmers/python-future/
+	https://pypi.org/project/future/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -20,7 +25,8 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]
 		' 'python*')
-	)"
+	)
+"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs dev-python/sphinx-bootstrap-theme
@@ -30,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-py39.patch
 	"${FILESDIR}"/${P}-py39-fileurl.patch
 	"${FILESDIR}"/${P}-py3.10.patch
+	"${FILESDIR}"/${P}-cve-2022-40899.patch
 )
 
 EPYTEST_DESELECT=(
