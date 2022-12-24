@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,8 +17,6 @@ S="${WORKDIR}/python-${PV}"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-
-RDEPEND="dev-python/future[${PYTHON_USEDEP}]"
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix.py3.10.patch"
