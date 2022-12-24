@@ -1,0 +1,11 @@
+--- a/generic/mysqltcl.c	2022-12-24 18:24:12.451620838 +0100
++++ b/generic/mysqltcl.c	2022-12-24 18:24:24.075438534 +0100
+@@ -911,7 +911,7 @@
+ #if (MYSQL_VERSION_ID>=32350)
+   if(mysql_options_reconnect)
+   {
+-      my_bool reconnect = 1;
++      bool reconnect = 1;
+       mysql_options(handle->connection, MYSQL_OPT_RECONNECT, &reconnect);
+   }
+   mysql_options(handle->connection,MYSQL_READ_DEFAULT_GROUP,groupname);

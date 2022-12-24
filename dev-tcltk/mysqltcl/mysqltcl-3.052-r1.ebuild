@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,10 @@ DEPEND="
 	dev-lang/tcl:0=
 	dev-db/mysql-connector-c:0="
 RDEPEND="${DEPEND}"
-PATCHES=( "${FILESDIR}"/${PN}-3.05-ldflags.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.05-ldflags.patch
+	"${FILESDIR}"/${PN}-3.05-API.patch
+)
 HTML_DOCS=( doc/mysqltcl.html )
 
 src_prepare() {
