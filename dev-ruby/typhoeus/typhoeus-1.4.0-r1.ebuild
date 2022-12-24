@@ -23,7 +23,7 @@ IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/ethon-0.9.0"
 
-ruby_add_bdepend "test? ( dev-ruby/json || ( dev-ruby/faraday:1 >=dev-ruby/faraday-0.9 ) >=dev-ruby/sinatra-1.3 >=dev-ruby/redis-3.0 >=dev-ruby/dalli-2.7.9 )"
+ruby_add_bdepend "test? ( dev-ruby/json || ( dev-ruby/faraday:1 >=dev-ruby/faraday-0.9:0 ) >=dev-ruby/sinatra-1.3 >=dev-ruby/redis-3.0 >=dev-ruby/dalli-2.7.9 )"
 
 all_ruby_prepare() {
 	sed -e '/bundler/I s:^:#:' -i Rakefile spec/spec_helper.rb || die
