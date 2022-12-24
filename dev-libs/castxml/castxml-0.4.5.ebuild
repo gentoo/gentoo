@@ -28,6 +28,10 @@ BDEPEND="
 		man? ( dev-python/sphinx )
 	"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-fix-tests.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCastXML_INSTALL_DOC_DIR="share/doc/${P}"
