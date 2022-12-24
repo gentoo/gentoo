@@ -9,7 +9,7 @@ MY_P=${P/speech-/speech_}
 PATCHSET="r3"
 
 DESCRIPTION="Speech tools for Festival Text to Speech engine"
-HOMEPAGE="http://www.cstr.ed.ac.uk/projects/speech_tools/"
+HOMEPAGE="https://www.cstr.ed.ac.uk/projects/speech_tools/"
 SRC_URI="http://www.festvox.org/packed/festival/$(ver_cut 1-2)/${MY_P}-release.tar.gz
 	https://dev.gentoo.org/~neurogeek/${PN}/speech_tools-2.1-${PATCHSET}-patches.tar.gz"
 S="${WORKDIR}/speech_tools"
