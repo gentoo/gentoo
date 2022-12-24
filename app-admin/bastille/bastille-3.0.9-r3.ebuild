@@ -9,7 +9,7 @@ PATCHVER=0.2
 MY_PN=${PN/b/B}
 MY_P=${MY_PN}-${PV}
 DESCRIPTION="Bastille-Linux is a security hardening tool"
-HOMEPAGE="http://bastille-linux.sourceforge.net/"
+HOMEPAGE="https://bastille-linux.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}-linux/${MY_P}.tar.bz2
 	mirror://gentoo/${P}-gentoo-${PATCHVER}.patch.bz2"
 S="${WORKDIR}"/${MY_PN}
