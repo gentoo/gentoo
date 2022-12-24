@@ -36,5 +36,7 @@ src_compile() {
 }
 
 src_install() {
+	einstalldocs
+
 	dobin fq
 }
