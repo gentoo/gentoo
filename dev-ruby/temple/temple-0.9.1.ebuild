@@ -18,5 +18,5 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? (
-	dev-ruby/erubis
+	dev-ruby/erubi
 	>=dev-ruby/tilt-2.0.1 )"
