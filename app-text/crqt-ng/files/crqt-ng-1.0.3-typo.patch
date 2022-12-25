@@ -1,0 +1,25 @@
+From 90523e75b7e4dbb6e1dbe0ffe41035b9c174c977 Mon Sep 17 00:00:00 2001
+From: Aleksey Chernov <valexlin@gmail.com>
+Date: Sun, 25 Dec 2022 09:36:55 +0400
+Subject: [PATCH] Update src/i18n/crqt_ru.ts: typo fixed
+
+---
+ src/i18n/crqt_ru.ts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/i18n/crqt_ru.ts b/src/i18n/crqt_ru.ts
+index 124dc9c..2d9415f 100644
+--- a/src/i18n/crqt_ru.ts
++++ b/src/i18n/crqt_ru.ts
+@@ -939,7 +939,7 @@
+     <message>
+         <location filename="../mainwindow.ui" line="307"/>
+         <source>Go to the next position in navigation history</source>
+-        <translation>Перейти к следующей позиции і истории навигации</translation>
++        <translation>Перейти к следующей позиции в истории навигации</translation>
+     </message>
+     <message>
+         <location filename="../mainwindow.ui" line="310"/>
+-- 
+2.37.4
+
