@@ -22,6 +22,6 @@
     <flag name="libutf8proc">Use <pkg>dev-libs/libutf8proc</pkg> for manipulating unicode strings</flag>
   </use>
   <upstream>
-    <remote-id type="gitlab">coolreader-ng/crqt-ng</remote-id>
+    <remote-id type="gitlab">coolreader-ng/crwx-ng</remote-id>
   </upstream>
 </pkgmetadata>
