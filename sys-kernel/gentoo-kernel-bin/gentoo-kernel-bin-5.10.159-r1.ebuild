@@ -111,7 +111,7 @@ src_install() {
 	mv "${BINPKG}"/image/{lib,usr} "${ED}"/ || die
 
 	# FIXME: requires proper mount-boot
-	if [[ -d boot/dtbs ]]; then
+	if [[ -d ${BINPKG}/image/boot/dtbs ]]; then
 		mv "${BINPKG}"/image/boot "${ED}"/ || die
 	fi
 

@@ -13,8 +13,8 @@ DESCRIPTION="Pre-built Linux kernel with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+="
 	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
-	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.base.tar.xz
-	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
+	https://dev.gentoo.org/~alicef/dist/genpatches/${GENPATCHES_P}.base.tar.xz
+	https://dev.gentoo.org/~alicef/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
 	amd64? (
 		https://dev.gentoo.org/~mgorny/binpkg/amd64/kernel/sys-kernel/gentoo-kernel/${BINPKG}.gpkg.tar
 			-> ${BINPKG}.amd64.gpkg.tar
@@ -35,7 +35,7 @@ SRC_URI+="
 S=${WORKDIR}
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 arm64 ppc64 x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 RDEPEND="
 	!sys-kernel/gentoo-kernel:${SLOT}
@@ -111,7 +111,7 @@ src_install() {
 	mv "${BINPKG}"/image/{lib,usr} "${ED}"/ || die
 
 	# FIXME: requires proper mount-boot
-	if [[ -d boot/dtbs ]]; then
+	if [[ -d ${BINPKG}/image/boot/dtbs ]]; then
 		mv "${BINPKG}"/image/boot "${ED}"/ || die
 	fi
 

@@ -6,7 +6,7 @@ EAPI=8
 inherit kernel-install toolchain-funcs unpacker
 
 MY_P=linux-${PV%.*}
-GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 4 ))
+GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 9 ))
 BINPKG=${P/-bin}-1
 
 DESCRIPTION="Pre-built Linux kernel with Gentoo patches"
@@ -111,7 +111,7 @@ src_install() {
 	mv "${BINPKG}"/image/{lib,usr} "${ED}"/ || die
 
 	# FIXME: requires proper mount-boot
-	if [[ -d boot/dtbs ]]; then
+	if [[ -d ${BINPKG}/image/boot/dtbs ]]; then
 		mv "${BINPKG}"/image/boot "${ED}"/ || die
 	fi
 
