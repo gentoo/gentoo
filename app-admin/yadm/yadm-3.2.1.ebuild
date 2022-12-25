@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit bash-completion-r1 python-any-r1 python-utils-r1
+inherit bash-completion-r1 python-any-r1
 
 DESCRIPTION="Git based tool for managing dotfiles"
 HOMEPAGE="https://github.com/TheLocehiliosan/yadm"
