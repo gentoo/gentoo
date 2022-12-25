@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..11} )
-inherit python-utils-r1 python-r1 meson
+inherit python-r1 meson
 
 DESCRIPTION="C Library for NVM Express on Linux"
 HOMEPAGE="https://github.com/linux-nvme/libnvme"
