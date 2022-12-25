@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -12,9 +12,6 @@ SRC_URI="https://github.com/baruch/gpart/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~hppa x86"
-IUSE=""
-
-RDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.1h-errno.patch
