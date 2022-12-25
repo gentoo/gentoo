@@ -27,4 +27,4 @@ IUSE="doc test"
 
 ruby_add_rdepend virtual/rubygems
 
-RDEPEND+=" dev-vcs/git !<dev-ruby/bundler-1.17.3-r1:0"
+RDEPEND+=" dev-vcs/git"
