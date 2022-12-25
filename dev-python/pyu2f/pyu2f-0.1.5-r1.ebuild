@@ -31,3 +31,13 @@ BDEPEND="
 DOCS=( CONTRIBUTING.md README.md )
 
 distutils_enable_tests pytest
+
+python_prepare_all() {
+	# adjust pyfakefs usage #888223
+	sed -e "s:CreateFile:create_file:" \
+		-e "s:CreateDirectory:create_dir:" \
+		-e "s:RemoveObject:remove_object:" \
+		-e "s:SetContents:set_contents:" \
+		-i pyu2f/tests/hid/linux_test.py || die
+	distutils-r1_python_prepare_all
+}
