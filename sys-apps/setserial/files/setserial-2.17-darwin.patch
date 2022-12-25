@@ -1,8 +1,6 @@
 https://541536.bugs.gentoo.org/attachment.cgi?id=397618
 https://bugs.gentoo.org/show_bug.cgi?id=541536
 
-diff --git a/setserial.c b/setserial.c
-index 3474402..3ce8009 100644
 --- a/setserial.c
 +++ b/setserial.c
 @@ -31,6 +31,25 @@
