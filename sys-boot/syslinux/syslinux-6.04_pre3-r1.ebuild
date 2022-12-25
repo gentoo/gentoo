@@ -21,11 +21,7 @@ RESTRICT="test"
 
 BDEPEND="
 	dev-lang/perl
-	bios? (
-		app-arch/upx
-		app-text/asciidoc
-		dev-lang/nasm
-	)
+	bios? ( dev-lang/nasm )
 "
 RDEPEND="
 	sys-apps/util-linux
