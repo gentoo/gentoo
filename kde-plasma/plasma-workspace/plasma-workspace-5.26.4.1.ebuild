@@ -188,6 +188,11 @@ src_prepare() {
 	if ! use policykit; then
 		cmake_run_in kcms cmake_comment_add_subdirectory users
 	fi
+
+	if ! use fontconfig; then
+		ecm_punt_bogus_dep XCB IMAGE
+		sed -e "s/check_X11_lib(Xft)/#&/" -i CMakeLists.txt || die
+	fi
 }
 
 src_configure() {
