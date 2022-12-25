@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2022-12-25)
+# Broken with pytest-7.2.  Repository archived upstream.  No reverse
+# dependencies.
+# Removal on 2023-01-24.  Bug #888219.
+dev-python/pytest-toolbox
+
+# Michał Górny <mgorny@gentoo.org> (2022-12-25)
 # The project did not catch, with hardly any data submissions.
 # Removal on 2023-01-24.  Bug #843344.
 app-portage/gander
