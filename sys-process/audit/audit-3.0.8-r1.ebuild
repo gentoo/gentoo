@@ -3,6 +3,10 @@
 
 EAPI=7
 
+# As with sys-libs/libcap-ng, same maintainer in Fedora as upstream, so
+# check Fedora's packaging (https://src.fedoraproject.org/rpms/audit/tree/rawhide)
+# on bumps (or if hitting a bug) to see what they've done there.
+
 PYTHON_COMPAT=( python3_{8..11} )
 
 inherit autotools multilib-minimal toolchain-funcs python-r1 linux-info systemd usr-ldscript
@@ -13,7 +17,7 @@ SRC_URI="https://people.redhat.com/sgrubb/audit/${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="gssapi ldap python static-libs test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -21,14 +25,21 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="gssapi? ( virtual/krb5 )
 	ldap? ( net-nds/openldap:= )
-	sys-libs/libcap-ng
-	python? ( ${PYTHON_DEPS} )"
+	python? ( ${PYTHON_DEPS} )
+	sys-libs/libcap-ng"
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-2.6.34
 	test? ( dev-libs/check )"
-BDEPEND="python? ( dev-lang/swig:0 )"
+BDEPEND="python? ( dev-lang/swig )"
 
 CONFIG_CHECK="~AUDIT"
+
+PATCHES=(
+	# See bug #836702 before removing / verify builds fine w/ USE=python
+	# with latest kernel headers.
+	"${FILESDIR}"/${PN}-3.0.8-linux-headers-5.17.patch
+	"${FILESDIR}"/${PN}-3.0.8-musl-malloc.patch
+)
 
 src_prepare() {
 	# audisp-remote moved in multilib_src_install_all
@@ -37,7 +48,7 @@ src_prepare() {
 		audisp/plugins/remote/au-remote.conf || die
 
 	# Disable installing sample rules so they can be installed as docs.
-	echo -e '%:\n\t:' | tee rules/Makefile.{am,in} >/dev/null
+	echo -e '%:\n\t:' | tee rules/Makefile.{am,in} >/dev/null || die
 
 	default
 	eautoreconf
@@ -55,23 +66,28 @@ multilib_src_configure() {
 		--without-python3
 	)
 
-	ECONF_SOURCE=${S} econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 
 	if multilib_is_native_abi && use python; then
 		python_configure() {
-			mkdir -p "${BUILD_DIR}"
+			mkdir -p "${BUILD_DIR}" || die
 			pushd "${BUILD_DIR}" &>/dev/null || die
-			ECONF_SOURCE=${S} econf "${myeconfargs[@]}" --with-python3
+
+			ECONF_SOURCE="${S}" econf "${myeconfargs[@]}" --with-python3
+
 			popd &>/dev/null || die
 		}
+
 		python_foreach_impl python_configure
 	fi
 }
 
 src_configure() {
 	tc-export_build_env BUILD_{CC,CPP}
+
 	local -x CC_FOR_BUILD="${BUILD_CC}"
 	local -x CPP_FOR_BUILD="${BUILD_CPP}"
+
 	multilib-minimal_src_configure
 }
 
@@ -80,10 +96,12 @@ multilib_src_compile() {
 		default
 
 		local native_build="${BUILD_DIR}"
+
 		python_compile() {
 			emake -C "${BUILD_DIR}"/bindings/swig top_builddir="${native_build}"
 			emake -C "${BUILD_DIR}"/bindings/python/python3 top_builddir="${native_build}"
 		}
+
 		use python && python_foreach_impl python_compile
 	else
 		emake -C common
@@ -97,14 +115,16 @@ multilib_src_install() {
 		emake DESTDIR="${D}" initdir="$(systemd_get_systemunitdir)" install
 
 		local native_build="${BUILD_DIR}"
+
 		python_install() {
 			emake -C "${BUILD_DIR}"/bindings/swig DESTDIR="${D}" top_builddir="${native_build}" install
 			emake -C "${BUILD_DIR}"/bindings/python/python3 DESTDIR="${D}" top_builddir="${native_build}" install
 			python_optimize
 		}
+
 		use python && python_foreach_impl python_install
 
-		# things like shadow use this so we need to be in /
+		# Things like shadow use this so we need to be in /
 		gen_usr_ldscript -a audit auparse
 	else
 		emake -C lib DESTDIR="${D}" install
@@ -132,6 +152,7 @@ multilib_src_install_all() {
 	insinto /etc/audit
 	newins "${FILESDIR}"/audit.rules-2.1.3 audit.rules
 	doins "${FILESDIR}"/audit.rules.stop*
+	keepdir /etc/audit/rules.d
 
 	# audit logs go here
 	keepdir /var/log/audit
