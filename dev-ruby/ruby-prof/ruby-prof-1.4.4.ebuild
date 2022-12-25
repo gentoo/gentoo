@@ -13,7 +13,7 @@ RUBY_FAKEGEM_GEMSPEC="ruby-prof.gemspec"
 RUBY_FAKEGEM_EXTENSIONS=(ext/ruby_prof/extconf.rb)
 RUBY_FAKEGEM_EXTENSION_LIBDIR="lib/ruby_prof"
 
-inherit multilib ruby-fakegem
+inherit ruby-fakegem
 
 DESCRIPTION="A module for profiling Ruby code"
 HOMEPAGE="https://github.com/ruby-prof/ruby-prof"
