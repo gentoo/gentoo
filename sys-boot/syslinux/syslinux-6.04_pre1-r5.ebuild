@@ -52,7 +52,7 @@ src_compile() {
 	local HEXDATE=$(printf '0x%08x' "${DATE}")
 
 	tc-export AR CC LD OBJCOPY RANLIB
-	unset LDFLAGS
+	unset CFLAGS LDFLAGS
 
 	if use bios; then
 		emake bios DATE="${DATE}" HEXDATE="${HEXDATE}"
