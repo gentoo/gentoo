@@ -1,30 +1,31 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 MY_P=${PN}${PV//.}
 
 DESCRIPTION="Mother Board Monitor Program for X Window System"
 HOMEPAGE="http://www.nt.phys.kyushu-u.ac.jp/shimizu/download/download.html"
 SRC_URI="http://www.nt.phys.kyushu-u.ac.jp/shimizu/download/xmbmon/${MY_P}.tar.gz"
-#	http://www.nt.phys.kyushu-u.ac.jp/shimizu/download/xmbmon/${MY_P}_A7N8X-VM.patch
+# http://www.nt.phys.kyushu-u.ac.jp/shimizu/download/xmbmon/${MY_P}_A7N8X-VM.patch
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="X"
+IUSE="gui"
 
 RDEPEND="
-	X? (
+	gui? (
 		x11-libs/libXt
 		x11-libs/libSM
 		x11-libs/libX11
 		x11-libs/libICE
-	)"
+	)
+"
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/${MY_P}
 PATCHES=(
 	# "${DISTDIR}"/${MY_P}_A7N8X-VM.patch
 	"${FILESDIR}"/${P}-fflush.patch
@@ -47,7 +48,7 @@ src_prepare() {
 
 src_compile() {
 	emake mbmon
-	use X && emake xmbmon
+	use gui && emake xmbmon
 }
 
 src_install() {
@@ -55,7 +56,7 @@ src_install() {
 	doman mbmon.1
 	dodoc ChangeLog* ReadMe* mbmon-rrd.pl
 
-	if use X; then
+	if use gui; then
 		dosbin xmbmon
 		doman xmbmon.1x
 
