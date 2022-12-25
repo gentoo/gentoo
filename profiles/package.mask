@@ -915,11 +915,6 @@ dev-ruby/vcr:3
 # and accept a more unstable release.
 >=www-client/chromium-110
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-12-03)
-# No purpose anymore after <dev-libs/boost-1.80 cleanup.
-# Removal on 2022-12-16
-dev-util/boost-build
-
 # Hans de Graaff <graaff@gentoo.org> (2022-12-03)
 # Obsolete slot without reverse dependencies. Use a newer faraday
 # slot instead. Masked for removal in 30 days.
