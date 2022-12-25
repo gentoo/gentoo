@@ -1,0 +1,68 @@
+From 29852b895d5d39006d1f129397cffae3578a694e Mon Sep 17 00:00:00 2001
+From: Andrew Davison <andrew.davison@cnrs.fr>
+Date: Thu, 7 Jul 2022 10:03:32 +0200
+Subject: [PATCH] fix failure to handle units with floordiv
+
+fixes #205
+---
+ quantities/dimensionality.py        |  2 +-
+ quantities/tests/test_arithmetic.py | 16 +++++++++++++++-
+ 2 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/quantities/dimensionality.py b/quantities/dimensionality.py
+index cea68ca..d54f96f 100644
+--- a/quantities/dimensionality.py
++++ b/quantities/dimensionality.py
+@@ -238,6 +238,7 @@ def _d_divide(q1, q2, out=None):
+             return q2.dimensionality**-1
+ p_dict[np.divide] = _d_divide
+ p_dict[np.true_divide] = _d_divide
++p_dict[np.floor_divide] = _d_divide
+ 
+ def _d_check_uniform(q1, q2, out=None):
+     try:
+@@ -273,7 +274,6 @@ p_dict[np.subtract] = _d_check_uniform
+ p_dict[np.mod] = _d_check_uniform
+ p_dict[np.fmod] = _d_check_uniform
+ p_dict[np.remainder] = _d_check_uniform
+-p_dict[np.floor_divide] = _d_check_uniform
+ p_dict[np.hypot] = _d_check_uniform
+ p_dict[np.equal] = _d_check_uniform
+ p_dict[np.not_equal] = _d_check_uniform
+diff --git a/quantities/tests/test_arithmetic.py b/quantities/tests/test_arithmetic.py
+index fe5670e..534702c 100644
+--- a/quantities/tests/test_arithmetic.py
++++ b/quantities/tests/test_arithmetic.py
+@@ -52,7 +52,7 @@ class iter_dtypes:
+ 
+     def __init__(self):
+         self._i = 1
+-        self._typeDict = np.typeDict.copy()
++        self._typeDict = np.sctypeDict.copy()
+         self._typeDict[17] = int
+         self._typeDict[18] = long
+         self._typeDict[19] = float
+@@ -132,6 +132,20 @@ class TestDTypes(TestCase):
+                         self.check_rmul(x, y)
+             dtypes.pop(0)
+ 
++    def test_truediv(self):
++        q = Quantity([44, 40, 36, 32], units=pq.ms)
++        self.assertQuantityEqual(
++            q/(4 * pq.ms),
++            Quantity([11, 10, 9, 8], units=pq.dimensionless)
++        )
++
++    def test_floordiv(self):
++        q = Quantity([45, 43, 39, 32], units=pq.ms)
++        self.assertQuantityEqual(
++            q//(4 * pq.ms),
++            Quantity([11, 10, 9, 8], units=pq.dimensionless)
++        )
++
+     def test_mixed_addition(self):
+         self.assertQuantityEqual(1*pq.ft + 1*pq.m, 4.280839895 * pq.ft)
+         self.assertQuantityEqual(1*pq.ft + pq.m, 4.280839895 * pq.ft)
+-- 
+2.39.0
+

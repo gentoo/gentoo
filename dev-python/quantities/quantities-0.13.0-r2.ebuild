@@ -10,10 +10,14 @@ inherit distutils-r1
 
 MY_P="python-quantities-${PV}"
 DESCRIPTION="Support for physical quantities with units, based on numpy"
-HOMEPAGE="https://github.com/python-quantities/python-quantities"
+HOMEPAGE="
+	https://github.com/python-quantities/python-quantities/
+	https://pypi.org/project/quantities/
+"
 SRC_URI="
 	https://github.com/python-quantities/python-quantities/archive/v${PV}.tar.gz
-		-> ${MY_P}.tar.gz"
+		-> ${MY_P}.gh.tar.gz
+"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
@@ -25,3 +29,7 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-numpy.patch
+)
