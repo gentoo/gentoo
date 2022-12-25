@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2022-12-25)
+# Last release in 2018. Poor quality C extension code. Package
+# consistently segfaults on it tests with the latest ruby versions.
+# No reverse dependencies. Removal in 30 days.
+dev-ruby/hiredis
+
 # Ionen Wolkens <ionen@gentoo.org> (2022-12-24)
 # Upstream dropped wxGTK support in >=games-emulation/pcsx2-1.7.3773,
 # and it now always requires Qt6. Masked given Qt6 is also masked in
