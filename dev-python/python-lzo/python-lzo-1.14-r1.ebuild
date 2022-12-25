@@ -19,9 +19,13 @@ KEYWORDS="amd64 ~riscv x86 ~amd64-linux ~x86-linux"
 RDEPEND="dev-libs/lzo:2"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-pytest.patch
+)
+
 # We can't use pytest at the moment because the package uses "yield tests"
 # https://docs.pytest.org/en/6.2.x/deprecations.html#yield-tests
-distutils_enable_tests nose
+distutils_enable_tests pytest
 
 python_prepare_all() {
 	hprefixify setup.py
