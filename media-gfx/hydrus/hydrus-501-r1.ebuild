@@ -69,7 +69,6 @@ BDEPEND="
 		test? (
 			dev-python/httmock[${PYTHON_USEDEP}]
 			dev-python/mock[${PYTHON_USEDEP}]
-			dev-python/nose[${PYTHON_USEDEP}]
 		)
 	')
 "
