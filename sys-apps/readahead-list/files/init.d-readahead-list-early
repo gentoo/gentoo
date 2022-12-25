@@ -2,7 +2,6 @@
 # Copyright 2005 Robin H. Johnson <robbat2@orbis-terrarum.net>
 # Distributed under the terms of the GNU General Public License v2
 
-
 depend() {
 	after checkroot
 	# this should start as early as possible
@@ -12,7 +11,7 @@ depend() {
 
 start() {
 	# force reading
-	source /etc/conf.d/readahead-list
+	. /etc/conf.d/readahead-list
 	f="${READAHEAD_LIST_call_early}"
 	ebegin "readahead(2): ${f}"
 	/sbin/readahead-list ${f}

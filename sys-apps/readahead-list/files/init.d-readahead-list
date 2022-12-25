@@ -11,7 +11,7 @@ depend() {
 
 start() {
 	# force reading
-	source /etc/conf.d/readahead-list
+	. /etc/conf.d/readahead-list
 
 	f="${READAHEAD_LIST_call_main}"
 	ebegin "readahead(2): ${f}"
