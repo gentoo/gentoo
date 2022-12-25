@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>mscardovi@icloud.com</email>
+		<name>Marco Scardovi</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="fuse">Use fuse libraries</flag>
 		<flag name="iso">Install <pkg>app-cdr/cdrtools</pkg> in order to prepare iso images</flag>
