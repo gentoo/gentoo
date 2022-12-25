@@ -1,5 +1,5 @@
---- a/src/gettext.h	2006-01-27 18:23:31.000000000 +0100
-+++ b/src/gettext.h	2006-01-27 18:25:07.000000000 +0100
+--- a/src/gettext.h
++++ b/src/gettext.h
 @@ -24,6 +24,7 @@
  
  /* Get declarations of GNU message catalog functions.  */
