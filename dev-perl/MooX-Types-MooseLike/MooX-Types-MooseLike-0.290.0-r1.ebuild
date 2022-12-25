@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Some Moosish types and a type builder"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm64 ~hppa ppc ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 
 RDEPEND="
 	>=dev-perl/strictures-2
