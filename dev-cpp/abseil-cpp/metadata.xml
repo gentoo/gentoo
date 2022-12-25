@@ -8,4 +8,7 @@
 	<use>
 		<flag name="cxx17">Build with -DCMAKE_CXX_STANDARD=17 (required by some revdeps)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">abseil/abseil-cpp</remote-id>
+	</upstream>
 </pkgmetadata>
