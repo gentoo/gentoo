@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2022-12-25)
+# make.conf writing is broken and package.use support incomplete.
+# Last release in 2013.  Attempted unsuccessfully fixing it in 2017.
+# Use an editor instead.
+# Removal on 2023-01-24.  Bug #888423.
+app-portage/flaggie
+
 # Hans de Graaff <graaff@gentoo.org> (2022-12-25)
 # Last release in 2018. Poor quality C extension code. Package
 # consistently segfaults on it tests with the latest ruby versions.
