@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="project">
-	<email>mysql-bugs@gentoo.org</email>
-	<name>MySQL</name>
+	<email>tcltk@gentoo.org</email>
+	<name>Gentoo Tcltk Project</name>
 </maintainer>
 </pkgmetadata>
