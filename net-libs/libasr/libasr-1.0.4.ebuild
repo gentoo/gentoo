@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ SRC_URI="https://www.opensmtpd.org/archives/${P}.tar.gz"
 
 LICENSE="ISC BSD BSD-1 BSD-2 BSD-4"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
 
 src_configure() {
 	econf --disable-static
