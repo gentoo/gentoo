@@ -11,6 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">PyCQA/doc8</remote-id>
 		<remote-id type="pypi">doc8</remote-id>
 	</upstream>
 </pkgmetadata>
