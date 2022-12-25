@@ -22,6 +22,7 @@ LICENSE="GPL-2"
 SLOT="0/2"
 
 RDEPEND="
+	dev-cpp/cpp-httplib:=
 	dev-libs/hidapi
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -31,7 +32,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-cpp/cpp-httplib
 	dev-cpp/nlohmann_json
 	dev-libs/mdns
 "
@@ -42,7 +42,6 @@ BDEPEND="
 
 PATCHES+=(
 	"${FILESDIR}"/OpenRGB-0.7-r1-udev.patch
-	"${FILESDIR}"/OpenRGB-0.8-drop-bundled-libs.patch
 )
 
 src_prepare() {
@@ -62,7 +61,8 @@ src_configure() {
 
 	eqmake5 \
 		INCLUDEPATH+="${ESYSROOT}/usr/include/nlohmann" \
-		DEFINES+="OPENRGB_EXTRA_PLUGIN_DIRECTORY=\\\\\"\\\"${EPREFIX}/usr/$(get_libdir)/OpenRGB/plugins\\\\\"\\\""
+		DEFINES+="OPENRGB_EXTRA_PLUGIN_DIRECTORY=\\\\\"\\\"${EPREFIX}/usr/$(get_libdir)/OpenRGB/plugins\\\\\"\\\"" \
+		LIBS+=-lhttplib
 }
 
 src_install() {
