@@ -12,7 +12,7 @@ SRC_URI="https://www.kernel.org/pub/linux/utils/boot/syslinux/Testing/6.04/${MY_
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64 x86"
 IUSE="abi_x86_32 abi_x86_64 +bios +efi"
 REQUIRED_USE="|| ( bios efi )
 	efi? ( || ( abi_x86_32 abi_x86_64 ) )"
