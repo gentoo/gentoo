@@ -113,7 +113,6 @@ BDEPEND="${PYTHON_DEPS}
 	x86? ( >=dev-lang/nasm-2.14 )"
 
 COMMON_DEPEND="${FF_ONLY_DEPEND}
-	>=app-accessibility/at-spi2-core-2.46.0:2
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/libffi:=
@@ -144,6 +143,7 @@ COMMON_DEPEND="${FF_ONLY_DEPEND}
 	dbus? (
 		dev-libs/dbus-glib
 		sys-apps/dbus
+		>=app-accessibility/at-spi2-core-2.46.0:2
 	)
 	jack? ( virtual/jack )
 	libproxy? ( net-libs/libproxy )
