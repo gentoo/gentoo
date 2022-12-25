@@ -28,15 +28,15 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.2.2-disable-failing-tests.patch
-	"${FILESDIR}"/${P}-fix-version.patch
+	"${FILESDIR}"/${PN}-5.2.5-fix-version.patch
+	"${FILESDIR}"/${PN}-5.2.5-disable-failing-tests.patch
 )
 
 DOCS=( CodeConventions.md Readme.md )
 
 src_prepare() {
 	if use x86 ; then
-		eapply "${FILESDIR}"/${P}-drop-failing-tests-for-abi_x86_32.patch
+		eapply "${FILESDIR}"/${PN}-5.2.5-drop-failing-tests-for-abi_x86_32.patch
 	fi
 
 	cmake_src_prepare
