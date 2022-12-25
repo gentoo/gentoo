@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit flag-o-matic qmail
 
@@ -14,14 +14,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~loong ~x86"
 IUSE="selinux static"
 
-DEPEND=""
-RDEPEND="selinux? ( sec-policy/selinux-daemontools )
+RDEPEND="
+	!app-doc/daemontools-man
 	!sys-process/daemontools
-	!app-doc/daemontools-man"
+	selinux? ( sec-policy/selinux-daemontools )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.11-do-not-always-run-tests.patch
 	"${FILESDIR}"/${PN}-1.11-add-missing-setuser-man-page.patch
+	"${FILESDIR}"/${PN}-1.11-implicit-func-decl-clang16.patch
 )
 
 src_compile() {
@@ -33,8 +35,8 @@ src_compile() {
 src_install() {
 	keepdir /service
 
-	echo "${ED%/}/usr/bin" >conf-bin
-	echo "${ED%/}/usr/share/man" >conf-man
+	echo "${ED}/usr/bin" > conf-bin || die
+	echo "${ED}/usr/share/man" > conf-man || die
 	dodir /usr/bin
 	dodir /usr/share/man
 	emake install
