@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake-multilib
 
@@ -14,14 +14,12 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="evdev sdl uinput"
 
-BDEPEND="
-	evdev? ( virtual/pkgconfig )
-"
 DEPEND="
 	evdev? ( dev-libs/libevdev[${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="evdev? ( virtual/pkgconfig )"
 
 DOCS=( AUTHORS NEWS README{,.md} )
 
