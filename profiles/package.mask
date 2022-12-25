@@ -513,12 +513,6 @@ ros-meta/visualization_tutorials
 ros-meta/viz
 
 # Michał Górny <mgorny@gentoo.org> (2022-12-23)
-# Does not build against current MySQL libraries.  Last release in 2012.
-# No reverse dependencies.
-# Removal on 2023-01-22.  Bug #692562.
-dev-tcltk/mysqltcl
-
-# Michał Górny <mgorny@gentoo.org> (2022-12-23)
 # Packages that still use dev-python/nose and have no revdeps.
 #
 # dev-python/blessings: EAPI 7, last rel. in 2018, git act. in 2020
