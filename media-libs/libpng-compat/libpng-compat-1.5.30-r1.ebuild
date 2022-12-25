@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-# this ebuild is only for the libpng15.so.15 SONAME for ABI compat
+# This ebuild is only for the libpng15.so.15 SONAME for ABI compat
 
 inherit libtool multilib-minimal
 
@@ -18,10 +18,11 @@ SLOT="1.5"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="cpu_flags_arm_neon"
 
-RDEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
-	!=media-libs/libpng-1.5*"
+RDEPEND="
+	sys-libs/zlib:=[${MULTILIB_USEDEP}]
+	!=media-libs/libpng-1.5*
+"
 DEPEND="${RDEPEND}"
-BDEPEND="app-arch/xz-utils"
 
 # Don't install any docs here because we're literally just installing the
 # old library for compatibility. Use libpng for the full contents.
@@ -34,14 +35,15 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
 	elibtoolize
 }
 
 multilib_src_configure() {
 	local myeconfargs=(
-		--disable-static
 		$(use_enable cpu_flags_arm_neon arm-neon check)
 	)
+
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
