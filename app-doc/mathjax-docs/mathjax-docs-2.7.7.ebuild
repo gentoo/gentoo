@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} pypy3 )
-inherit python-any-r1 python-utils-r1 vcs-clean
+inherit python-any-r1 vcs-clean
 
 COMMIT="9d711f40638202b02f2154d7f05ea35088ff9388"
 
