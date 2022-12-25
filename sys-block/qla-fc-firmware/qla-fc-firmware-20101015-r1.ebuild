@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards"
 HOMEPAGE="ftp://ftp.qlogic.com/outgoing/linux/firmware/"
@@ -10,10 +10,8 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="qlogic-fibre-channel-firmware"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 sparc x86"
-IUSE=""
 
-# really depends on absolutely nothing
-DEPEND=""
+# Really depends on absolutely nothing
 RDEPEND="!sys-kernel/linux-firmware"
 
 src_install() {
@@ -25,6 +23,7 @@ src_install() {
 	# the system.
 	dodoc LICENSE
 	dodoc README.* CURRENT_VERSIONS
+
 	insinto /lib/firmware
 	# some older firmware are always provided by upstream
 	# for reasons documented in CURRENT_VERSIONS.
