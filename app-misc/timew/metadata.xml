@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>ddenoncin@gmail.com</email>
+		<email>gentoo@denoncin.fr</email>
 		<name>David Denoncin</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
