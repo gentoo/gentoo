@@ -4,7 +4,7 @@
 # Note: xemacs currently does not work with position independent code
 # so the build forces the use of the -no-pie option
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic xdg-utils desktop
 
@@ -62,14 +62,6 @@ src_unpack() {
 src_prepare() {
 	use neXt && cp "${WORKDIR}"/NeXT.XEmacs/xemacs-icons/* "${S}"/etc/toolbar/
 	find "${S}"/lisp -name '*.elc' -exec rm {} \; || die
-	# eapply "${FILESDIR}/${P}-ncurses-tinfo.patch"
-	# eapply "${FILESDIR}/${P}-gcc5.patch"
-	# eapply "${FILESDIR}/${P}-glibc-macro.patch"
-	# eapply "${FILESDIR}/${P}-as-needed.patch"
-	# eapply "${FILESDIR}/${P}-configure-libc-version.patch"
-	# eapply "${FILESDIR}/${P}-ar.patch"
-	# eapply "${FILESDIR}/${P}-strsignal.patch"
-	# eapply "${FILESDIR}/${P}-process-test-qa.patch"
 
 	eapply_user
 
@@ -166,7 +158,7 @@ src_configure() {
 	fi
 
 	use debug && myconf="${myconf} --with-debug" ||
-		myconf="${myconf} --with-optimization"
+		myconf="${myconf} --with-optimization --with-cflags-debugging="
 
 	econf ${myconf} \
 		$(use_with gif ) \
