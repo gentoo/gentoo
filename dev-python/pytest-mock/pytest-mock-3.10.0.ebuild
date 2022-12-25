@@ -31,6 +31,12 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	# obsolete, upst. e2016928db1147a2a46de6ee9fa878ca0e9d8fc8
+	sed -i -e '/import py\.code/d' tests/test_pytest_mock.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTEST_PLUGINS=pytest_mock,pytest_asyncio.plugin
