@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A library for sending email"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~riscv x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~riscv x86"
 
 RDEPEND="
 	virtual/perl-Carp
