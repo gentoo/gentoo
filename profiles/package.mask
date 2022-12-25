@@ -548,7 +548,6 @@ ros-meta/viz
 # dev-python/imread: non-PEP517, last rel. in 2020, uses pytest in git
 # dev-python/influxdb: EAPI 7, last rel. 2020, archived on GitHub
 # dev-python/nose-random: nose plugin
-# dev-python/pika: active, uses nose + nose2 (sic!)
 # dev-python/pilkit: EAPI 7, last rel. in 2017, uses pytest in git
 # dev-python/PyContracts: EAPI 7, last rel. in 2019, git act. in 2020
 # dev-python/python-zipstream: EAPI 7, last rel. in 2016, git in 2018
@@ -563,7 +562,6 @@ dev-python/flask-restful
 dev-python/imread
 dev-python/influxdb
 dev-python/nose-random
-dev-python/pika
 dev-python/pilkit
 dev-python/PyContracts
 dev-python/python-zipstream
