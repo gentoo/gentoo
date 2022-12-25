@@ -1,0 +1,18 @@
+--- a/OpenRGBVisualMapPlugin.pro
++++ b/OpenRGBVisualMapPlugin.pro
+@@ -96,7 +96,6 @@ HEADERS +=
+     OpenRGB/qt/hsv.h                                                                            \
+ 
+ SOURCES +=                                                                                      \
+-    OpenRGB/RGBController/RGBController.cpp                                                     \
+     OpenRGBVisualMapPlugin.cpp                                                                  \
+     VirtualController.cpp                                                                       \
+     VisualMapSettingsManager.cpp                                                                \
+@@ -120,7 +119,6 @@ SOURCES +=
+     ui/widget-editor/EditorGrid.cpp                                                             \
+     ui/widget-editor/LedItem.cpp                                                                \
+     ui/widget-editor/WidgetEditor.cpp                                                           \
+-    OpenRGB/qt/hsv.cpp                                                                          \
+ 
+ FORMS +=                                                                                        \
+     ui/BackgroundApplier.ui                                                                     \
