@@ -19,6 +19,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-fno-common.patch
 	"${FILESDIR}"/${P}-install-static-lib.patch
+	"${FILESDIR}"/${P}-not-a-literal-string.patch
 )
 
 src_prepare() {
