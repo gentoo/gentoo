@@ -8,7 +8,7 @@ HOMEPAGE="https://www.geekbench.com/"
 SRC_URI="https://cdn.geekbench.com/Geekbench-${PV}-Linux.tar.gz"
 S="${WORKDIR}/Geekbench-${PV}-Linux"
 
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 LICENSE="geekbench"
 SLOT="5"
 
