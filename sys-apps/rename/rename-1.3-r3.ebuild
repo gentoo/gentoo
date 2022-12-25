@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Easily rename files"
 HOMEPAGE="http://rename.sourceforge.net/"
@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
-MY_PATCHES=(
+PATCHES=(
 	"${FILESDIR}"/${P}-rename.patch
 	"${FILESDIR}"/${P}-build.patch
 	"${FILESDIR}"/${P}-gcc44.patch
@@ -22,13 +22,21 @@ MY_PATCHES=(
 DOCS=( README ChangeLog )
 
 src_prepare() {
-	default
 	sed -i \
 		-e '/^CFLAGS/s:-O3:@CFLAGS@:' \
 		-e '/strip /s:.*::' \
 		Makefile.in || die
-	eapply "${MY_PATCHES[@]}"
+
+	default
+
+	# Clang 16
+	eautoreconf
+}
+
+src_configure() {
 	tc-export CC
+
+	default
 }
 
 src_install() {
