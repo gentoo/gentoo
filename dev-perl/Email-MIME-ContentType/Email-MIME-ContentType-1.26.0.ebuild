@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Parse a MIME Content-Type Header or Content-Disposition Header"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 ~riscv x86 ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm64 ppc ppc64 ~riscv x86 ~sparc-solaris ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
