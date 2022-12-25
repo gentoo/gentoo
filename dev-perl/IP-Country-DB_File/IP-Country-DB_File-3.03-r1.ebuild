@@ -15,4 +15,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc 
 
 RDEPEND="dev-perl/IP-Country"
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( virtual/perl-Test-Harness )"
+BDEPEND="test? (
+		virtual/perl-DB_File
+		virtual/perl-Test-Harness
+	)
+"
