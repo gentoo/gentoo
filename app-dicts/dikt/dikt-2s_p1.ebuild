@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_P=${P/_p/}
 KFMIN=5.60.0
@@ -9,8 +9,9 @@ QTMIN=5.12.3
 inherit ecm
 
 DESCRIPTION="Dictionary application that implements the Dict protocol"
-HOMEPAGE="https://www.dikt.tv/"
+HOMEPAGE="https://dikt.tv/"
 SRC_URI="https://bitbucket-archive.softwareheritage.org/static/67/67f37093-df38-43b8-845b-2952e0a33bb3/attachments/${MY_P}.txz -> ${MY_P}.tar.xz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"
 SLOT="5"
@@ -37,5 +38,3 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!app-dicts/dikt:4
 "
-
-S="${WORKDIR}/${MY_P}"
