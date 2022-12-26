@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 KFMIN=5.76.0
@@ -15,7 +15,7 @@ SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="5"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug"
+IUSE=""
 
 DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
