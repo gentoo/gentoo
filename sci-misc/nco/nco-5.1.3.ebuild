@@ -47,6 +47,12 @@ src_configure() {
 		$(use_enable udunits udunits2)
 }
 
+src_test() {
+	emake test
+	# testsuite doesn't run through automake
+	rm src/nco/test-suite.log || die
+}
+
 src_install() {
 	default
 	dodoc doc/ChangeLog
