@@ -5,9 +5,6 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<use>
-		<flag name="rbd">Enable Rados block device support via <pkg>sys-cluster/ceph</pkg></flag>
-	</use>
 	<upstream>
 		<remote-id type="github">opensvc/multipath-tools</remote-id>
 	</upstream>
