@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2022-12-26)
+# Lots of K&R C, hidden behind an annoying authwall, fails with modern
+# GCC and Clang (-fcommon), license prohibits distributing, EAPI 6,
+# last release 8 years ago. Removal on 2023-01-25.
+sci-biology/consed
+sci-biology/phrap
+sci-biology/phred
+
+# David Seifert <soap@gentoo.org> (2022-12-26)
 # EAPI 6, cheesy build system, last release over 13 years ago, no other
 # distro packages this. Removal on 2023-01-25.
 sci-misc/flashdot
