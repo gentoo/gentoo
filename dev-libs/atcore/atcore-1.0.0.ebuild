@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ECM_TEST="forceoptional"
 QTMIN=5.12.3
@@ -16,10 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc gui test"
 
-BDEPEND="
-	>=dev-qt/linguist-tools-${QTMIN}:5
-	doc? ( app-doc/doxygen[dot] )
-"
 DEPEND="
 	>=dev-qt/qtserialport-${QTMIN}:5
 	gui? (
@@ -29,13 +25,17 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
+BDEPEND="
+	>=dev-qt/linguist-tools-${QTMIN}:5
+	doc? ( app-doc/doxygen[dot] )
+"
 
 src_prepare() {
 	ecm_src_prepare
 
 	sed -e "s/${PN}/${PF}/" -i doc/CMakeLists.txt || die
 
-	use gui || ecm_punt_bogus_dep Qt5 Charts
+	use gui || ecm_punt_qt_module Charts
 	use test || cmake_comment_add_subdirectory unittests
 }
 
