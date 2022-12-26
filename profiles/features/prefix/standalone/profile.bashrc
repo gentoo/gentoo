@@ -21,9 +21,6 @@ if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; the
 	fi
 	eend $?
     done
-
-    # use sysroot of toolchain to get correct include and library at compile time
-    EXTRA_ECONF="${EXTRA_ECONF} --with-sysroot=${EPREFIX}"
 elif [[ ${CATEGORY}/${PN} == sys-devel/clang && ${EBUILD_PHASE} == configure ]]; then
     ebegin "Use ${EPREFIX} as default sysroot"
     sed -i -e "s@DEFAULT_SYSROOT \"\"@DEFAULT_SYSROOT \"${EPREFIX}\"@" "${S}"/CMakeLists.txt

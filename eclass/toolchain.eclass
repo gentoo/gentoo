@@ -1200,6 +1200,21 @@ toolchain_src_configure() {
 				confgcc+=( --enable-threads=posix )
 				;;
 		esac
+
+		if ! use prefix-guest ; then
+			# GNU ld scripts, such as those in glibc, reference unprefixed paths
+			# as the sysroot given here is automatically prepended. For
+			# prefix-guest, we use the host's libc instead.
+			if [[ -n ${EPREFIX} ]] ; then
+				confgcc+=( --with-sysroot="${EPREFIX}" )
+			fi
+
+			# We need to build against the right headers and libraries. Again,
+			# for prefix-guest, this is the host's.
+			if [[ -n ${ESYSROOT} ]] ; then
+				confgcc+=( --with-build-sysroot="${ESYSROOT}" )
+			fi
+		fi
 	fi
 
 	# __cxa_atexit is "essential for fully standards-compliant handling of
