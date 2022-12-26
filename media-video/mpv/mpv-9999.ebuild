@@ -37,7 +37,10 @@ REQUIRED_USE="
 	test? ( cli )
 	tools? ( cli )
 	uchardet? ( iconv )
-	vaapi? ( || ( X egl libplacebo wayland ) )
+	vaapi? (
+		|| ( X egl libplacebo wayland )
+		wayland? ( drm )
+	)
 	vdpau? ( X )
 	vulkan? ( || ( X wayland ) libplacebo )
 	xv? ( X )"
