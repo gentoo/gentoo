@@ -1,0 +1,10 @@
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,7 @@
++PKG_CONFIG ?= pkg-config
++
++CPPFLAGS += -DSTANDALONE $(shell $(PKG_CONFIG) --cflags cfitsio)
++LIBS += $(shell $(PKG_CONFIG) --libs cfitsio)
++
++fitsverify: ftverify.o fvrf_data.o fvrf_file.o fvrf_head.o fvrf_key.o fvrf_misc.o
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ $(LIBS)
