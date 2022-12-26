@@ -1,14 +1,15 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ECM_TEST="forceoptional"
 KFMIN=5.60.0
 QTMIN=5.12.3
 inherit ecm kde.org
 
-DESCRIPTION="KJob based DAV protocol implementation"
+DESCRIPTION="DAV protocol implementation with KJobs"
+HOMEPAGE="https://invent.kde.org/pim/kdav2"
 SRC_URI="mirror://kde/unstable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2+"
@@ -16,7 +17,7 @@ SLOT="5"
 KEYWORDS="~amd64"
 
 # bug 803524
-RESTRICT+=" test"
+RESTRICT="test"
 
 DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
