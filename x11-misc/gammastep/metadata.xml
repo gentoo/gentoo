@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>sping@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="geoclue">Control dependency on <pkg>app-misc/geoclue</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="gitlab">chinstrap/gammastep</remote-id>
+  </upstream>
+</pkgmetadata>
