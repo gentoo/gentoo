@@ -39,6 +39,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 PATCHES=( )
 
 src_prepare() {
+	default
 	sed -i -e '/kingpin.Flag.*\<command\>.*/s,/usr/sbin/lvm,/sbin/lvm,g' "${S}"/main.go || die
 }
 
