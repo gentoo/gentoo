@@ -42,7 +42,8 @@ src_prepare() {
 	# force optimisation
 	# can't do this in one sed, because it all happens back-to-back
 	for e in '-O[01234567s]' '-g' '-Werror' '-ansi' '-pendantic' ; do
-		sed -i -e 's/ '"${e}"'\( \|$\)/ /g' util/*/Makefile{.inc,} || die
+		sed -i -e 's/\( \|=\)'"${e}"'\( \|$\)/\1/g' util/*/Makefile{.inc,} \
+			|| die
 	done
 }
 
