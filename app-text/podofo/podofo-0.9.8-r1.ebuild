@@ -9,7 +9,8 @@ inherit cmake flag-o-matic lua-single toolchain-funcs
 
 DESCRIPTION="PoDoFo is a C++ library to work with the PDF file format"
 HOMEPAGE="https://sourceforge.net/projects/podofo/"
-SRC_URI="https://cfhcable.dl.sourceforge.net/project/podofo/podofo/${PV}/${P}.tar.gz"
+SRC_URI="https://cfhcable.dl.sourceforge.net/project/podofo/podofo/${PV}/${P}.tar.gz
+	https://github.com/podofo/podofo/commit/d0e9f5d503b0cb79516ec9bff989f3d7d625b678.patch -> ${P}-bug-888463.patch"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/${PV}"
@@ -37,6 +38,7 @@ BDEPEND="virtual/pkgconfig
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.6_p20190928-cmake_lua_version.patch
+	"${DISTDIR}"/${P}-bug-888463.patch
 )
 
 DOCS="AUTHORS ChangeLog TODO"
