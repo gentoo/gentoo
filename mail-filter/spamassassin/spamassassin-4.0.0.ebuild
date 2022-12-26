@@ -3,12 +3,16 @@
 
 EAPI=8
 
-inherit perl-functions systemd toolchain-funcs
+inherit perl-functions systemd toolchain-funcs verify-sig
 
 MY_P="Mail-SpamAssassin-${PV//_/-}"
 DESCRIPTION="An extensible mail filter which can identify and tag spam"
 HOMEPAGE="https://spamassassin.apache.org/"
-SRC_URI="mirror://apache/spamassassin/source/${MY_P}.tar.bz2"
+SRC_URI="mirror://apache/spamassassin/source/${MY_P}.tar.bz2
+	verify-sig? (
+		https://downloads.apache.org/spamassassin/source/${MY_P}.tar.bz2.asc
+	)
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 GPL-2"
@@ -79,12 +83,16 @@ DEPEND="${REQDEPEND}
 		virtual/perl-Test-Harness
 	)"
 RDEPEND="${REQDEPEND} ${OPTDEPEND}"
+BDEPEND="${RDEPEND}
+	verify-sig? ( sec-keys/openpgp-keys-spamassassin )"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/spamassassin.apache.org.asc
 
 PATCHES=(
 	"${FILESDIR}/mention-geoip.cf-in-init.pre.patch"
 )
 
-# There are a few renames and use-dependent ones in src_istall as well.
+# There are a few renames and use-dependent ones in src_install as well.
 DOCS=(
 	NOTICE TRADEMARK CREDITS UPGRADE USAGE sql/README.bayes
 	sql/README.awl procmailrc.example sample-nonspam.txt
