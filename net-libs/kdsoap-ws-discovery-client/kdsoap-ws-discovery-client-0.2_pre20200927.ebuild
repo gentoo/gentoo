@@ -1,33 +1,27 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+COMMIT=dcefb65c88e76f1f9eda8b0318006e93d15a0e1e
 ECM_QTHELP="false"
 ECM_TEST="true"
 inherit ecm
 
-if [[ ${PV} != *9999* ]]; then
-	COMMIT=dcefb65c88e76f1f9eda8b0318006e93d15a0e1e
-	SRC_URI="https://gitlab.com/caspermeijn/${PN}/repository/${COMMIT}/archive.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
-	S="${WORKDIR}/${PN}-${COMMIT}-${COMMIT}"
-else
-	EGIT_REPO_URI="https://gitlab.com/caspermeijn/${PN}.git"
-	inherit git-r3
-fi
-
 DESCRIPTION="WS-Discovery client library based on KDSoap"
-HOMEPAGE="https://gitlab.com/caspermeijn/kdsoap-ws-discovery-client
+HOMEPAGE="https://invent.kde.org/libraries/kdsoap-ws-discovery-client
+https://gitlab.com/caspermeijn/kdsoap-ws-discovery-client
 https://caspermeijn.gitlab.io/kdsoap-ws-discovery-client"
+SRC_URI="https://gitlab.com/caspermeijn/${PN}/repository/${COMMIT}/archive.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}-${COMMIT}"
 
 LICENSE="CC0-1.0 GPL-3+"
 SLOT="0"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="doc"
 
-BDEPEND="
-	doc? ( app-doc/doxygen[dot] )
-"
+RESTRICT="test"
+
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5
@@ -35,8 +29,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-qt/qtxml:5 )
 "
-
-RESTRICT+=" test"
+BDEPEND="doc? ( app-doc/doxygen[dot] )"
 
 PATCHES=( "${FILESDIR}"/${PN}-0.2_pre20200317-no-install-docs.patch )
 
