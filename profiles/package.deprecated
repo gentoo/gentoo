@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2022-12-26)
+# Last-rites pending and waiting for revdeps, bug 877311
+x11-libs/snorenotify
+
 # Michał Górny <mgorny@gentoo.org> (2022-12-25)
 # Archived upstream.  Last activity in 2018.  Broken with Python 3.8.
 # Broken with Django 2.
