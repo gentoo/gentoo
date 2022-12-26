@@ -7,7 +7,8 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/tdf/libcmis.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/tdf/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/tdf/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~asturm/distfiles/${P}-patchset.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
 inherit autotools
@@ -41,10 +42,10 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${P}-icu-64.2.patch" # bug 674414
-	"${FILESDIR}/${P}-fix-onedrive.patch"
-	"${FILESDIR}/${P}-gdrive-do-not-allow-copying.patch"
-	"${FILESDIR}/${P}-onedrive-do-not-allow-copying.patch"
-	"${FILESDIR}/${P}-fix-gdrive-onedrive.patch"
+	"${WORKDIR}/${P}-patchset/${P}-fix-onedrive.patch"
+	"${WORKDIR}/${P}-patchset/${P}-gdrive-do-not-allow-copying.patch"
+	"${WORKDIR}/${P}-patchset/${P}-onedrive-do-not-allow-copying.patch"
+	"${WORKDIR}/${P}-patchset/${P}-fix-gdrive-onedrive.patch"
 )
 
 src_prepare() {
