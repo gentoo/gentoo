@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc"
 
 RDEPEND="
 	>=dev-python/cachetools-5.2[${PYTHON_USEDEP}]
