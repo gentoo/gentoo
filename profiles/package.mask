@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2022-12-26)
+# EAPI 6, cheesy build system, last release over 13 years ago, no other
+# distro packages this. Removal on 2023-01-25.
+sci-misc/flashdot
+
 # Michał Górny <mgorny@gentoo.org> (2022-12-25)
 # Broken with pytest-7.2.  Repository archived upstream.  No reverse
 # dependencies.
