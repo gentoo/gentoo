@@ -38,6 +38,10 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 PATCHES=( )
 
+src_prepare() {
+	sed -i -e '/kingpin.Flag.*\<command\>.*/s,/usr/sbin/lvm,/sbin/lvm,g' "${S}"/main.go || die
+}
+
 src_compile() {
 	default
 	go build .
