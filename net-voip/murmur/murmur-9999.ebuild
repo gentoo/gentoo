@@ -38,7 +38,7 @@ RDEPEND="
 	>=dev-libs/openssl-1.0.0b:0=
 	>=dev-libs/protobuf-2.2.0:=
 	dev-qt/qtcore:5
-	dev-qt/qtnetwork:5
+	dev-qt/qtnetwork:5[ssl]
 	|| (
 		dev-qt/qtsql:5[sqlite]
 		dev-qt/qtsql:5[mysql]

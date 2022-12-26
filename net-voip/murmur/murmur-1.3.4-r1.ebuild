@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic systemd readme.gentoo-r1 tmpfiles
+inherit qmake-utils systemd readme.gentoo-r1 tmpfiles
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
@@ -15,26 +15,21 @@ else
 	MY_PN="mumble"
 	if [[ "${PV}" == *_pre* ]] ; then
 		MY_P="${MY_PN}-${PV}"
-		SRC_URI="https://dev.gentoo.org/~concord/distfiles/${MY_P}.tar.xz"
+		SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${MY_P}.tar.xz"
 		S="${WORKDIR}/${MY_P}"
 	else
 		MY_PV="${PV/_/-}"
 		MY_P="${MY_PN}-${MY_PV}"
-		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/v${MY_PV}/${MY_P}.tar.gz
+		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/${MY_PV}/${MY_P}.tar.gz
 			https://dl.mumble.info/${MY_P}.tar.gz"
-		S="${WORKDIR}/${MY_P}.src"
+		S="${WORKDIR}/${MY_PN}-${PV/_*}"
 	fi
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
-
-SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/mumble-1.4-openssl3.patch.xz"
-SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/mumble-1.4-crypto-threads.patch.xz"
-SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/mumble-1.4-odr.patch.xz"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="+dbus grpc +ice test zeroconf"
-RESTRICT="!test? ( test )"
+IUSE="+dbus debug +ice pch zeroconf"
 
 RDEPEND="
 	acct-group/murmur
@@ -42,7 +37,7 @@ RDEPEND="
 	>=dev-libs/openssl-1.0.0b:0=
 	>=dev-libs/protobuf-2.2.0:=
 	dev-qt/qtcore:5
-	dev-qt/qtnetwork:5
+	dev-qt/qtnetwork:5[ssl]
 	|| (
 		dev-qt/qtsql:5[sqlite]
 		dev-qt/qtsql:5[mysql]
@@ -51,14 +46,12 @@ RDEPEND="
 	sys-apps/lsb-release
 	>=sys-libs/libcap-2.15
 	dbus? ( dev-qt/qtdbus:5 )
-	grpc? ( net-libs/grpc )
 	ice? ( dev-libs/Ice:= )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
 
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	dev-qt/qttest:5
 "
 BDEPEND="
 	acct-group/murmur
@@ -83,13 +76,9 @@ DOC_CONTENTS="
 	registration will fail.
 "
 
-PATCHES=(
-	"${WORKDIR}/mumble-1.4-openssl3.patch"
-	"${WORKDIR}/mumble-1.4-crypto-threads.patch"
-	"${WORKDIR}/mumble-1.4-odr.patch"
-)
-
 src_prepare() {
+	default
+
 	if [[ "${PV}" == *9999 ]] ; then
 		pushd scripts &>/dev/null || die
 		./mkini.sh || die
@@ -99,15 +88,11 @@ src_prepare() {
 	sed \
 		-e 's:mumble-server:murmur:g' \
 		-e 's:/var/run:/run:g' \
-		-i "${S}"/scripts/murmur.{conf,ini} || die
+		-i "${S}"/scripts/murmur.{conf,ini.system} || die
 
 	# Adjust systemd service file to our config location #689208
-	sed \
-		-e "s@/etc/${PN}\.ini@/etc/${PN}/${PN}.ini@" \
-		-e "s@murmurd@mumble-server@" \
+	sed "s@/etc/${PN}\.ini@/etc/${PN}/${PN}.ini@" \
 		-i scripts/${PN}.service || die
-
-	cmake_src_prepare
 }
 
 src_configure() {
@@ -115,40 +100,32 @@ src_configure() {
 		[[ -n "${1}" ]] || die "myconf: No use flag given."
 		use ${1} || echo "no-${1}"
 	}
-	local mycmakeargs=(
-		-DBUILD_TESTING="$(usex test)"
-		-Dclient="OFF"
-		-Ddbus="$(usex dbus)"
-		-Dg15="OFF"
-		-Dgrpc="$(usex grpc)"
-		-Dice="$(usex ice)"
-		-Doverlay="OFF"
-		-Dserver="ON"
-		-Dzeroconf="$(usex zeroconf)"
+	local conf_add=(
+		no-client
+		$(myuse dbus)
+		$(usex debug 'symbols debug' release)
+		$(myuse ice)
+		$(myuse pch)
+		$(usex zeroconf '' no-bonjour)
 	)
-	if [[ "${PV}" != 9999 ]] ; then
-		mycmakeargs+=( -DBUILD_NUMBER="$(ver_cut 3)" )
-	fi
 
-	# https://bugs.gentoo.org/832978
-	# fix tests (and possibly runtime issues) on arches with unsigned chars
-	append-cxxflags -fsigned-char
-
-	cmake_src_configure
+	eqmake5 main.pro -recursive \
+		CONFIG+="${conf_add[*]}"
 }
 
 src_install() {
-	cmake_src_install
-
-	dodoc README.md CHANGES
+	dodoc README CHANGES
 
 	docinto scripts
 	dodoc -r scripts/server
 	docompress -x /usr/share/doc/${PF}/scripts
 
+	local dir="$(usex debug debug release)"
+	dobin "${dir}"/murmurd
+
 	local etcdir="/etc/murmur"
 	insinto ${etcdir}
-	doins scripts/${PN}.ini
+	newins scripts/${PN}.ini.system ${PN}.ini
 
 	insinto /etc/logrotate.d/
 	newins "${FILESDIR}"/murmur.logrotate murmur
@@ -159,7 +136,7 @@ src_install() {
 	insinto /usr/share/murmur/
 	doins src/murmur/Murmur.ice
 
-	newinitd "${FILESDIR}"/murmur.initd-r2 murmur
+	newinitd "${FILESDIR}"/murmur.initd-r1 murmur
 	newconfd "${FILESDIR}"/murmur.confd murmur
 
 	systemd_dounit scripts/${PN}.service
@@ -174,7 +151,7 @@ src_install() {
 	fowners root:murmur ${etcdir}/murmur.ini
 	fperms 640 ${etcdir}/murmur.ini
 
-	doman man/mumble-server.1
+	doman man/murmurd.1
 
 	readme.gentoo_create_doc
 }
