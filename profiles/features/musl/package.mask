@@ -198,6 +198,7 @@ mate-extra/caja-dropbox
 media-gfx/brscan4
 media-libs/amdgpu-pro-vulkan
 media-sound/baudline
+media-sound/spotify
 media-sound/teamspeak-server
 media-video/amdgpu-pro-amf
 media-video/dvbackup
