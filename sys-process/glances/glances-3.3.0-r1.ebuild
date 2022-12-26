@@ -21,7 +21,6 @@ KEYWORDS="amd64 arm arm64 ppc64 x86 ~amd64-linux ~x86-linux"
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/defusedxml[${PYTHON_USEDEP}]
-		dev-python/future[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
 		>=dev-python/psutil-5.4.3[${PYTHON_USEDEP}]
 	')
