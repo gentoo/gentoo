@@ -101,6 +101,7 @@ multilib_src_compile() {
 		--prefix=/usr
 		--libdir="/usr/$(get_libdir)"
 		--target="$(rust_abi)"
+		$(usex debug --debug --release)
 	)
 
 	cargo cbuild "${cargoargs[@]}" || die "cargo cbuild failed"
@@ -117,6 +118,7 @@ multilib_src_install() {
 		--libdir="/usr/$(get_libdir)"
 		--target="$(rust_abi)"
 		--destdir="${ED}"
+		$(usex debug --debug --release)
 	)
 
 	cargo cinstall "${cargoargs[@]}" || die "cargo cinstall failed"
