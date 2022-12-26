@@ -64,7 +64,6 @@ emacs
 fam
 ldap
 mpi
-systemtap
 tk
 tpm
 xemacs
