@@ -3,8 +3,10 @@
 
 # @ECLASS: apache-2.eclass
 # @MAINTAINER:
+# apache-bugs@gentoo.org
+# @AUTHOR:
 # polynomial-c@gentoo.org
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Provides a common set of functions for apache-2.x ebuilds
 # @DESCRIPTION:
 # This eclass handles apache-2.x ebuild functions such as LoadModule generation
@@ -544,7 +546,7 @@ apache-2_src_prepare() {
 		EOF
 		chmod a+x "${T}"/pcre-config || die
 	else
-	        # This package really should upgrade to using pcre's .pc file.
+			# This package really should upgrade to using pcre's .pc file.
 		cat <<-\EOF > "${T}"/pcre2-config
 		#!/usr/bin/env bash
 		flags=()
