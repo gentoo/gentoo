@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="s3 test"
 
 CDEPEND="
