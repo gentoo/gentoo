@@ -33,8 +33,6 @@ RDEPEND="
 	sys-devel/gdb[python,${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-libs/capstone[python,${PYTHON_USEDEP}]
-		dev-python/future[${PYTHON_USEDEP}]
-		dev-python/isort[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pycparser[${PYTHON_USEDEP}]
 		dev-python/pyelftools[${PYTHON_USEDEP}]
