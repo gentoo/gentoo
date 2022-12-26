@@ -4,12 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( pypy3 python3_{8..11} )
 
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Natural sorting for Python"
-HOMEPAGE="https://pypi.org/project/natsort/"
+HOMEPAGE="
+	https://github.com/SethMMorton/natsort/
+	https://pypi.org/project/natsort/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -20,7 +23,8 @@ BDEPEND="
 	test? (
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 distutils_enable_tests pytest
 
