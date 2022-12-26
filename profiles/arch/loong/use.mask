@@ -59,7 +59,6 @@ valgrind
 
 # Temporarily masked during initial keywording
 doc
-elogind
 emacs
 fam
 mpi
