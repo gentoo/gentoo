@@ -27,6 +27,7 @@ dev-python/josepy
 dev-python/keyring
 dev-python/libcloud
 dev-python/moto
+dev-python/mkdocs-redirects
 dev-python/ndg-httpsclient
 dev-python/oauth2client
 dev-python/oauthlib
