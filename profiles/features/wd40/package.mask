@@ -33,6 +33,7 @@ dev-python/mkdocs_pymdownx_material_extras
 dev-python/mkdocs-git-authors-plugin
 dev-python/mkdocs-i18n
 dev-python/mkdocs-material-extensions
+dev-python/mkdocs-git-revision-date-localized-plugin
 dev-python/ndg-httpsclient
 dev-python/oauth2client
 dev-python/oauthlib
@@ -65,6 +66,7 @@ dev-python/trustme
 dev-python/trio
 dev-python/twine
 dev-python/watchfiles
+dev-python/wcmatch
 dev-ros/roswtf
 dev-util/cargo-c
 dev-util/cbindgen
