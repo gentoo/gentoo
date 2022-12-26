@@ -14,12 +14,14 @@ SRC_URI="https://github.com/prometheus/node_exporter/archive/${MY_PV}.tar.gz -> 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~riscv ~x86"
+IUSE="selinux"
 
 CDEPEND="acct-group/node_exporter
 	acct-user/node_exporter"
 DEPEND=">=dev-util/promu-0.3.0
 	${CDEPEND}"
-RDEPEND="${CDEPEND}"
+RDEPEND="${CDEPEND}
+	selinux? ( sec-policy/selinux-node_exporter )"
 
 S="${WORKDIR}/${PN}-${PV/_rc/-rc.}"
 
