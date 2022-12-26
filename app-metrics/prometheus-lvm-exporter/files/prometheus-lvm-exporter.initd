@@ -5,8 +5,8 @@
 description="Prometheus exporter for LVM metrics"
 
 EXPORTER_FLAGS=${EXPORTER_FLAGS:-""}
-EXPORTER_USER=${EXPORTER_USER:-"prometheus-lvm-exporter"}
-EXPORTER_GROUP=${EXPORTER_GROUP:-"prometheus-lvm-exporter"}
+#EXPORTER_USER=${EXPORTER_USER:-"prometheus-lvm-exporter"}
+#EXPORTER_GROUP=${EXPORTER_GROUP:-"prometheus-lvm-exporter"}
 EXPORTER_PIDFILE=${EXPORTER_PIDFILE:-"/run/${RC_SVCNAME}.pid"}
 EXPORTER_SSDARGS=${EXPORTER_SSDARGS:-"--wait 1000"}
 EXPORTER_TERMTIMEOUT=${EXPORTER_TERMTIMEOUT:-"TERM/60/KILL/5"}
