@@ -11,6 +11,5 @@
 	<use>
 		<flag name="json">Support JSON output via <pkg>dev-libs/json-c</pkg></flag>
 		<flag name="hugepages">Use huge pages for memory allocations via <pkg>sys-libs/libhugetlbfs</pkg></flag>
-		<flag name="uuid">UUID support via <pkg>sys-apps/util-linux</pkg></flag>
 	</use>
 </pkgmetadata>
