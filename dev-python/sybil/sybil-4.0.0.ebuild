@@ -26,6 +26,7 @@ BDEPEND="
 	test? (
 		dev-python/myst_parser[${PYTHON_USEDEP}]
 		dev-python/seedir[${PYTHON_USEDEP}]
+		dev-python/testfixtures[${PYTHON_USEDEP}]
 	)
 "
 
