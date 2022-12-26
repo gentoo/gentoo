@@ -90,6 +90,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/spamassassin.apache.
 
 PATCHES=(
 	"${FILESDIR}/mention-geoip.cf-in-init.pre.patch"
+	"${FILESDIR}/4.0.0-tests-dnsbl_subtests.t.patch"
 )
 
 # There are a few renames and use-dependent ones in src_install as well.

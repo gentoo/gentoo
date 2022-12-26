@@ -1,0 +1,14 @@
+https://bz.apache.org/SpamAssassin/show_bug.cgi?id=8095
+--- a/t/dnsbl_subtests.t
++++ b/t/dnsbl_subtests.t
+@@ -20,6 +20,10 @@
+ 
+ use Mail::SpamAssassin;
+ 
++tstpre ("
++  loadplugin Mail::SpamAssassin::Plugin::URIDNSBL
++");
++
+ # Bug 5761 (no 127.0.0.1 in jail, use SPAMD_LOCALHOST if specified)
+ my $dns_server_localaddr = $ENV{'SPAMD_LOCALHOST'};
+ if (!$dns_server_localaddr) {
