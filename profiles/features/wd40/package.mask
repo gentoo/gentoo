@@ -61,7 +61,6 @@ dev-python/watchfiles
 dev-ros/roswtf
 dev-util/cargo-c
 dev-util/cbindgen
-dev-util/gef
 dev-util/git-delta
 dev-util/maturin
 dev-util/tree-sitter-cli
