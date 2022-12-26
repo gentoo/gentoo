@@ -74,17 +74,6 @@ elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; 
 	-e "s,/(etc|var),${EPREFIX}/\1,g" \
 	nss/db-Makefile
     eend $?
-elif [[ ${CATEGORY}/${PN} == dev-lang/python && ${EBUILD_PHASE} == configure ]]; then
-    # Guide h2py to look into glibc of Prefix
-    ebegin "Guiding h2py to look into Prefix"
-    export include="${EPREFIX}"/usr/include
-    sed -i -r \
-	-e "s,/usr/include,\"${EPREFIX}\"/usr/include,g" "${S}"/Lib/plat-linux*/regen
-    eend $?
-    ebegin "Prefixifying distutils paths"
-    sed -re "s,([^[:alnum:]])(/usr[/[:alnum:]]*/(lib[[:alnum:]]*|include)|/lib[[:alnum:]]*),\1${EPREFIX}\2,g" \
-	-i "${S}"/setup.py
-    eend $?
 elif [[ ${CATEGORY}/${PN} == dev-lang/perl && ${EBUILD_PHASE} == configure ]]; then
     ebegin "Prefixifying pwd path"
     sed -r "s,'((|/usr)/bin/pwd),'${EPREFIX}\1," -i "${S}"/dist/PathTools/Cwd.pm
