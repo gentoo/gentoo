@@ -8,19 +8,22 @@
 # Original Author: Gilles Dartiguelongue <eva@gentoo.org>
 # Various improvements based on cmake-utils.eclass: Tomáš Chvátal <scarabeus@gentoo.org>
 # Proper prefix support: Jonathan Callen <jcallen@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: common ebuild functions for waf-based packages
 # @DESCRIPTION:
 # The waf-utils eclass contains functions that make creating ebuild for
 # waf-based packages much easier.
 # Its main features are support of common portage default settings.
 
-inherit multilib toolchain-funcs multiprocessing
-
-case ${EAPI:-0} in
-	6|7|8) EXPORT_FUNCTIONS src_configure src_compile src_install ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ ! ${_WAF_UTILS_ECLASS} ]]; then
+_WAF_UTILS_ECLASS=1
+
+inherit multilib toolchain-funcs multiprocessing
 
 # @ECLASS_VARIABLE: WAF_VERBOSE
 # @USER_VARIABLE
@@ -141,3 +144,7 @@ waf-utils_src_install() {
 	# Manual document installation
 	einstalldocs
 }
+
+fi
+
+EXPORT_FUNCTIONS src_configure src_compile src_install
