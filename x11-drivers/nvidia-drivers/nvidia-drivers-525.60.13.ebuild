@@ -262,6 +262,10 @@ src_compile() {
 	tc-export AR CC CXX LD OBJCOPY OBJDUMP
 	local -x RAW_LDFLAGS="$(get_abi_LDFLAGS) $(raw-ldflags)" # raw-ldflags.patch
 
+	local xnvflags=-fPIC #840389
+	# lto static libraries tend to cause problems without fat objects
+	is-flagq '-flto@(|=*)' && xnvflags+=" $(test-flags-CC -ffat-lto-objects)"
+
 	NV_ARGS=(
 		PREFIX="${EPREFIX}"/usr
 		HOST_CC="$(tc-getBUILD_CC)"
@@ -270,7 +274,7 @@ src_compile() {
 		NV_USE_BUNDLED_LIBJANSSON=0
 		NV_VERBOSE=1 DO_STRIP= MANPAGE_GZIP= OUTPUTDIR=out
 		WAYLAND_AVAILABLE=$(usex wayland 1 0)
-		XNVCTRL_CFLAGS=-fPIC #840389
+		XNVCTRL_CFLAGS="${xnvflags}"
 	)
 
 	if use driver; then
