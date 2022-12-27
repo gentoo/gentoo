@@ -51,6 +51,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Doesn't work with reflex, bug #887049
+	export LEX=flex
+
 	tc-export CC
 
 	local myeconfargs=(
