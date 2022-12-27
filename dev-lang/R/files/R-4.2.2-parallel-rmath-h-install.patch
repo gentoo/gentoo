@@ -1,0 +1,23 @@
+From ee1428e77095e52a7396fa7b455f63b7c5b9495b Mon Sep 17 00:00:00 2001
+From: kalibera <kalibera@00db46b3-68df-0310-9c12-caf00c1e9a41>
+Date: Tue, 27 Dec 2022 11:21:33 +0000
+Subject: [PATCH] Declare dependency to ensure include dir exists (PR#17743).
+
+git-svn-id: https://svn.r-project.org/R/trunk@83504 00db46b3-68df-0310-9c12-caf00c1e9a41
+---
+ src/nmath/standalone/Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/nmath/standalone/Makefile.in b/src/nmath/standalone/Makefile.in
+index 68b45006155..946795a0439 100644
+--- a/src/nmath/standalone/Makefile.in
++++ b/src/nmath/standalone/Makefile.in
+@@ -151,7 +151,7 @@ install-strip: installdirs install-header install-pc
+ 	fi
+ 	@!(test -f libRmath.a) || $(SHELL) $(top_srcdir)/tools/copy-if-change libRmath.a $(DESTDIR)$(libdir)/libRmath.a
+ 
+-install-header:
++install-header: installdirs
+ 	@(cd ../../include; $(MAKE) Rmath.h)
+ @WANT_R_FRAMEWORK_FALSE@	@$(SHELL) $(top_srcdir)/tools/copy-if-change ../../include/Rmath.h $(DESTDIR)$(includedir)/Rmath.h
+ @WANT_R_FRAMEWORK_TRUE@	@$(SHELL) $(top_srcdir)/tools/copy-if-change ../../include/Rmath.h $(R_FRAMEWORK_DIR)/Versions/$(FW_VERSION)/Resources/include/Rmath.h
