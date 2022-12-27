@@ -1,6 +1,14 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+#Marco Scardovi <mscardovi@icloud.com> (2022-12-27)
+# sys/cdefs.h is not present in musl, so we are gonna
+# mask it and their revdeps. Bug #716706
+app-arch/rpm
+app-emulation/guestfs-tools
+app-emulation/libguestfs
+sys-apps/fakechroot
+
 # Sam James <sam@gentoo.org> (2022-12-17)
 # Segfaults when building on musl, bug #885501
 >=sys-devel/gcc-12.2.1_p20221203:12
