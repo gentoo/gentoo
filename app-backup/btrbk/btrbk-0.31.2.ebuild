@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ DEPEND="doc? ( >=dev-ruby/asciidoctor-1.5.7 )"
 RDEPEND="dev-lang/perl
 	net-misc/openssh
 	mbuffer? ( >=sys-block/mbuffer-20180505 )
-	>=sys-fs/btrfs-progs-4.12"
+	<sys-fs/btrfs-progs-6.1"
 
 src_compile() {
 	emake clean
