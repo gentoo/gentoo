@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: alternatives.eclass
@@ -6,7 +6,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Alastair Tse <liquidx@gentoo.org> (03 Oct 2003)
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Creates symlink to the latest version of multiple slotted packages.
 # @DESCRIPTION:
 # When a package is SLOT'ed, very often we need to have a symlink to the
@@ -42,11 +42,9 @@
 # consider using this unless you are want to do something special.
 
 case ${EAPI} in
-	[5-7]) ;;
-	*)     die "EAPI=${EAPI:-0} is not supported" ;;
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-EXPORT_FUNCTIONS pkg_postinst pkg_postrm
 
 if [[ -z ${_ALTERNATIVES_ECLASS} ]]; then
 _ALTERNATIVES_ECLASS=1
@@ -95,8 +93,7 @@ alternatives_makesym() {
 	# usage: alternatives_makesym <resulting symlink> [alternative targets..]
 	# make sure it is in the prefix, allow it already to be in the prefix
 	SYMLINK=${EPREFIX}/${1#${EPREFIX}}
-	# this trick removes the trailing / from ${ROOT}
-	pref=${ROOT%/}
+	pref=${ROOT}
 	shift
 	ALTERNATIVES=$@
 
@@ -154,3 +151,5 @@ alternatives_pkg_postrm() {
 }
 
 fi
+
+EXPORT_FUNCTIONS pkg_postinst pkg_postrm
