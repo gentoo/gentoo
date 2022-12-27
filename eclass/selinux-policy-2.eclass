@@ -7,7 +7,7 @@
 # @ECLASS: selinux-policy-2.eclass
 # @MAINTAINER:
 # selinux@gentoo.org
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: This eclass supports the deployment of the various SELinux modules in sec-policy
 # @DESCRIPTION:
 # The selinux-policy-2.eclass supports deployment of the various SELinux modules
@@ -17,6 +17,14 @@
 #
 # Also, it supports for bundling patches to make the whole thing just a bit more
 # manageable.
+
+case ${EAPI} in
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ ! ${_SELINUX_POLICY_2_ECLASS} ]]; then
+_SELINUX_POLICY_2_ECLASS=1
 
 # @ECLASS_VARIABLE: MODS
 # @DESCRIPTION:
@@ -74,12 +82,6 @@
 # The default value is the 'master' branch.
 : ${SELINUX_GIT_BRANCH:="master"};
 
-case "${EAPI:-0}" in
-	0|1|2|3|4|5) die "EAPI<6 is not supported";;
-	6|7) : ;;
-	*) die "unknown EAPI" ;;
-esac
-
 case ${BASEPOL} in
 	9999)	inherit git-r3
 			EGIT_REPO_URI="${SELINUX_GIT_REPO}";
@@ -113,17 +115,12 @@ else
 	RDEPEND=">=sys-apps/policycoreutils-2.0.82
 		>=sec-policy/selinux-base-policy-${PV}"
 fi
-if [[ ${EAPI} == 6 ]]; then
-	DEPEND="${RDEPEND}
-		sys-devel/m4
-		>=sys-apps/checkpolicy-2.0.21"
-else
-	DEPEND="${RDEPEND}"
-	BDEPEND="sys-devel/m4
-		>=sys-apps/checkpolicy-2.0.21"
-fi
 
-EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install pkg_postinst pkg_postrm
+DEPEND="${RDEPEND}"
+BDEPEND="
+	sys-devel/m4
+	>=sys-apps/checkpolicy-2.0.21
+"
 
 # @FUNCTION: selinux-policy-2_src_unpack
 # @DESCRIPTION:
@@ -219,7 +216,7 @@ selinux-policy-2_src_compile() {
 	for i in ${POLICY_TYPES}; do
 		# Support USE flags in builds
 		export M4PARAM="${makeuse}"
-		emake NAME=$i SHAREDIR="${ROOT%/}"/usr/share/selinux -C "${S}"/${i} || die "${i} compile failed"
+		emake NAME=$i SHAREDIR="${EPREFIX}"/usr/share/selinux -C "${S}"/${i}
 	done
 }
 
@@ -255,8 +252,8 @@ selinux-policy-2_src_install() {
 selinux-policy-2_pkg_postinst() {
 	# Set root path and don't load policy into the kernel when cross compiling
 	local root_opts=""
-	if [[ "${ROOT%/}" != "" ]]; then
-		root_opts="-p ${ROOT%/} -n"
+	if [[ -n ${ROOT} ]]; then
+		root_opts="-p ${ROOT} -n"
 	fi
 
 	# build up the command in the case of multiple modules
@@ -274,7 +271,7 @@ selinux-policy-2_pkg_postinst() {
 
 		einfo "Inserting the following modules into the $i module store: ${MODS}"
 
-		cd "${ROOT%/}/usr/share/selinux/${i}" || die "Could not enter /usr/share/selinux/${i}"
+		cd "${ROOT}/usr/share/selinux/${i}" || die "Could not enter /usr/share/selinux/${i}"
 		for j in ${MODS} ; do
 			if [[ -f "${j}.pp" ]] ; then
 				COMMAND="${j}.pp ${COMMAND}"
@@ -323,7 +320,7 @@ selinux-policy-2_pkg_postinst() {
 	done
 
 	# Don't relabel when cross compiling
-	if [[ "${ROOT%/}" == "" ]]; then
+	if [[ -z ${ROOT} ]]; then
 		# Relabel depending packages
 		local PKGSET="";
 		if [[ -x /usr/bin/qdepends ]] ; then
@@ -346,8 +343,8 @@ selinux-policy-2_pkg_postrm() {
 	if [[ -z "${REPLACED_BY_VERSION}" ]]; then
 		# Set root path and don't load policy into the kernel when cross compiling
 		local root_opts=""
-		if [[ "${ROOT%/}" != "" ]]; then
-			root_opts="-p ${ROOT%/} -n"
+		if [[ -n ${ROOT} ]]; then
+			root_opts="-p ${ROOT} -n"
 		fi
 
 		# build up the command in the case of multiple modules
@@ -368,3 +365,7 @@ selinux-policy-2_pkg_postrm() {
 		done
 	fi
 }
+
+fi
+
+EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install pkg_postinst pkg_postrm
