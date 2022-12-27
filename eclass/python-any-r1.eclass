@@ -48,7 +48,7 @@ _PYTHON_ANY_R1_ECLASS=1
 
 if [[ ${_PYTHON_R1_ECLASS} ]]; then
 	die 'python-any-r1.eclass can not be used with python-r1.eclass.'
-elif [[ ${_PYTHON_SINGLE_R1} ]]; then
+elif [[ ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
 	die 'python-any-r1.eclass can not be used with python-single-r1.eclass.'
 fi
 

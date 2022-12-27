@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: python-utils-r1
 # @BLURB: An eclass for Python packages not installed for multiple implementations.
 # @DESCRIPTION:
@@ -37,18 +37,13 @@
 # For more information, please see the Python Guide:
 # https://projects.gentoo.org/python/guide/
 
-case "${EAPI:-0}" in
-	[0-5])
-		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
-		;;
-	[6-8])
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
+if [[ ! ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
+_PYTHON_SINGLE_R1_ECLASS=1
 
 if [[ ${_PYTHON_R1_ECLASS} ]]; then
 	die 'python-single-r1.eclass can not be used with python-r1.eclass.'
@@ -57,10 +52,6 @@ elif [[ ${_PYTHON_ANY_R1_ECLASS} ]]; then
 fi
 
 inherit python-utils-r1
-
-fi
-
-EXPORT_FUNCTIONS pkg_setup
 
 # @ECLASS_VARIABLE: PYTHON_COMPAT
 # @REQUIRED
@@ -256,8 +247,6 @@ _python_single_set_globals() {
 }
 _python_single_set_globals
 unset -f _python_single_set_globals
-
-if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 
 # @FUNCTION: python_gen_useflags
 # @USAGE: [<pattern>...]
@@ -463,5 +452,6 @@ python-single-r1_pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && python_setup
 }
 
-_PYTHON_SINGLE_R1=1
 fi
+
+EXPORT_FUNCTIONS pkg_setup
