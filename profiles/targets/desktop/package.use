@@ -1,6 +1,11 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2022-12-27)
+# On desktops it's common to use browser to browse internet, which these
+# days is full of emojis, which wouldn't render properly without the fonts.
+media-fonts/fonts-meta emoji
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-04-18)
 # Avoid a circular dependency, bug 764623
 dev-lang/python -bluetooth
