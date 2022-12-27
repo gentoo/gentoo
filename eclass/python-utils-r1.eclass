@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Utility functions for packages with Python parts.
 # @DESCRIPTION:
 # A utility eclass providing functions to query Python implementations,
@@ -22,20 +22,16 @@
 # NOTE: When dropping support for EAPIs here, we need to update
 # metadata/install-qa-check.d/60python-pyc
 # See bug #704286, bug #781878
-case "${EAPI:-0}" in
-	[0-5]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
-	[6-8]) ;;
-	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ${_PYTHON_ECLASS_INHERITED} ]]; then
-	die 'python-r1 suite eclasses can not be used with python.eclass.'
-fi
+if [[ ! ${_PYTHON_UTILS_R1_ECLASS} ]]; then
+_PYTHON_UTILS_R1_ECLASS=1
 
-if [[ ! ${_PYTHON_UTILS_R1} ]]; then
-
-[[ ${EAPI} == [67] ]] && inherit eapi8-dosym
-[[ ${EAPI} == 6 ]] && inherit eqawarn
+[[ ${EAPI} == 7 ]] && inherit eapi8-dosym
 inherit multiprocessing toolchain-funcs
 
 # @ECLASS_VARIABLE: _PYTHON_ALL_IMPLS
@@ -218,7 +214,7 @@ _python_impl_matches() {
 	for pattern; do
 		case ${pattern} in
 			-2|python2*|pypy)
-				if [[ ${EAPI} != [67] ]]; then
+				if [[ ${EAPI} != 7 ]]; then
 					eerror
 					eerror "Python 2 is no longer supported in Gentoo, please remove Python 2"
 					eerror "${FUNCNAME[1]} calls."
@@ -227,7 +223,7 @@ _python_impl_matches() {
 				;;
 			-3)
 				# NB: "python3*" is fine, as "not pypy3"
-				if [[ ${EAPI} != [67] ]]; then
+				if [[ ${EAPI} != 7 ]]; then
 					eerror
 					eerror "Python 2 is no longer supported in Gentoo, please remove Python 2"
 					eerror "${FUNCNAME[1]} calls."
@@ -724,7 +720,7 @@ python_newexe() {
 
 	# install the wrapper
 	local dosym=dosym
-	[[ ${EAPI} == [67] ]] && dosym=dosym8
+	[[ ${EAPI} == 7 ]] && dosym=dosym8
 	"${dosym}" -r /usr/lib/python-exec/python-exec2 "${wrapd}/${newfn}"
 
 	# don't use this at home, just call python_doscript() instead
@@ -1368,15 +1364,13 @@ _python_run_check_deps() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local impl=${1}
-	local hasv_args=( -b )
-	[[ ${EAPI} == 6 ]] && hasv_args=( --host-root )
 
 	einfo "Checking whether ${impl} is suitable ..."
 
 	local PYTHON_PKG_DEP
 	_python_export "${impl}" PYTHON_PKG_DEP
 	ebegin "  ${PYTHON_PKG_DEP}"
-	has_version "${hasv_args[@]}" "${PYTHON_PKG_DEP}"
+	has_version -b "${PYTHON_PKG_DEP}"
 	eend ${?} || return 1
 	declare -f python_check_deps >/dev/null || return 0
 
@@ -1393,10 +1387,8 @@ _python_run_check_deps() {
 # A convenience wrapper for has_version() with verbose output and better
 # defaults for use in python_check_deps().
 #
-# The wrapper accepts EAPI 7+-style -b/-d/-r options to indicate
-# the root to perform the lookup on.  Unlike has_version, the default
-# is -b.  In EAPI 6, -b and -d are translated to --host-root
-# for compatibility.
+# The wrapper accepts -b/-d/-r options to indicate the root to perform
+# the lookup on.  Unlike has_version, the default is -b.
 #
 # The wrapper accepts multiple package specifications.  For the check
 # to succeed, *all* specified atoms must match.
@@ -1411,14 +1403,6 @@ python_has_version() {
 			;;
 	esac
 
-	if [[ ${EAPI} == 6 ]]; then
-		if [[ ${root_arg} == -r ]]; then
-			root_arg=()
-		else
-			root_arg=( --host-root )
-		fi
-	fi
-
 	local pkg
 	for pkg; do
 		ebegin "    ${pkg}"
@@ -1429,5 +1413,4 @@ python_has_version() {
 	return 0
 }
 
-_PYTHON_UTILS_R1=1
 fi
