@@ -334,7 +334,15 @@ src_compile() {
 			fi
 		fi
 
+		local o_cflags=${CFLAGS} o_cxxflags=${CXXFLAGS} o_ldflags=${LDFLAGS}
+		if use kernel-open; then
+			# building the nvidia "blob" fails with lto, and also need
+			# to strip in case of a different toolchain for the kernel
+			filter-lto
+			strip-unsupported-flags
+		fi
 		linux-mod_src_compile
+		CFLAGS=${o_cflags} CXXFLAGS=${o_cxxflags} LDFLAGS=${o_ldflags}
 	fi
 
 	emake "${NV_ARGS[@]}" -C nvidia-modprobe
