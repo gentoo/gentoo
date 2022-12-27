@@ -1163,38 +1163,6 @@ net-mail/vchkuser
 # migrate to a newer branch.
 <dev-libs/openssl-1.1.1
 
-# Sam James <sam@gentoo.org> (2022-10-12)
-# Upstream has withdrawn these releases because of a (yet unexplained)
-# "significant regression".
-# See https://mta.openssl.org/pipermail/openssl-announce/2022-October/000237.html.
-# and https://github.com/openssl/openssl/issues/19389.
-=dev-libs/openssl-1.1.1r
-=dev-libs/openssl-3.0.6
-
-# Sam James <sam@gentoo.org> (2022-10-04)
-# Regression for some Intel LCDs which may cause physical damage
-# Please upgrade to 5.19.13 if affected!
-# https://lore.kernel.org/all/YzwooNdMECzuI5+h@intel.com/
-# https://lore.kernel.org/lkml/1664893073238194@kroah.com/T/
-=sys-kernel/gentoo-sources-5.19.12
-=sys-kernel/vanilla-sources-5.19.12
-=sys-kernel/gentoo-kernel-5.19.12
-=sys-kernel/gentoo-kernel-bin-5.19.12
-=sys-kernel/vanilla-kernel-5.19.12
-=virtual/dist-kernel-5.19.12
-
-# Sam James <sam@gentoo.org> (2022-10-04)
-# Please upgrade to >= portage-3.0.38.1 for binpkg fixes.
-# bug #870283, bug #874771.
-=sys-apps/portage-3.0.31
-=sys-apps/portage-3.0.32
-=sys-apps/portage-3.0.33
-=sys-apps/portage-3.0.34
-=sys-apps/portage-3.0.35
-=sys-apps/portage-3.0.36
-=sys-apps/portage-3.0.37
-=sys-apps/portage-3.0.38
-
 # John Helmert III <ajak@gentoo.org> (2022-09-18)
 # Unfixed root privilege escalation, bug #631552
 sys-cluster/slurm
