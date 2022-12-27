@@ -195,20 +195,60 @@ pkg_setup() {
 	BUILD_PARAMS='NV_VERBOSE=1 IGNORE_CC_MISMATCH=yes SYSSRC="${KV_DIR}" SYSOUT="${KV_OUT_DIR}"'
 	BUILD_TARGETS="modules"
 
-	if linux_chkconfig_present CC_IS_CLANG; then
-		ewarn "Warning: clang-built kernel detected, using clang for modules (experimental)"
-		ewarn "Can use KERNEL_CC and KERNEL_LD environment variables to override if needed."
+	# Try to match toolchain with kernel only for modules
+	# (experimental, ideally this should be handled in linux-mod.eclass)
+	nvidia-tc-set() {
+		local -n var=KERNEL_${1}
+		if [[ ! -v var ]]; then
+			read -r var < <(type -P "${@:2}") ||
+				die "failed to find in PATH at least one of: ${*:2}"
+			einfo "Forcing '${var}' for modules (set ${!var} to override)"
+		fi
+	}
 
-		tc-is-clang || : "${KERNEL_CC:=${CHOST}-clang}"
-		if linux_chkconfig_present LD_IS_LLD; then
-			: "${KERNEL_LD:=ld.lld}"
-			if linux_chkconfig_present LTO_CLANG_THIN; then
-				# kernel enables cache by default leading to sandbox violations
-				BUILD_PARAMS+=' ldflags-y=--thinlto-cache-dir= LDFLAGS_MODULE=--thinlto-cache-dir='
-			fi
+	local tool switch
+	if linux_chkconfig_present CC_IS_GCC; then
+		if ! tc-is-gcc; then
+			switch=
+			nvidia-tc-set CC {${CHOST}-,}gcc
+			nvidia-tc-set CXX {${CHOST}-,}g++ # needed by kernel-open
+		fi
+	elif linux_chkconfig_present CC_IS_CLANG; then
+		ewarn "Warning: using ${PN} with a clang-built kernel is largely untested"
+		if ! tc-is-clang; then
+			switch=llvm-
+			nvidia-tc-set CC {${CHOST}-,}clang
+			nvidia-tc-set CXX {${CHOST}-,}clang++
 		fi
 	fi
-	BUILD_PARAMS+=' ${KERNEL_CC:+CC="${KERNEL_CC}"} ${KERNEL_LD:+LD="${KERNEL_LD}"}'
+
+	if linux_chkconfig_present LD_IS_BFD; then
+		# tc-ld-is-bfd needs https://github.com/gentoo/gentoo/pull/28355
+		[[ $(LC_ALL=C $(tc-getLD) --version 2>/dev/null) == "GNU ld"* ]] ||
+			nvidia-tc-set LD {${CHOST}-,}{ld.bfd,ld}
+	elif linux_chkconfig_present LD_IS_LLD; then
+		tc-ld-is-lld || nvidia-tc-set LD {${CHOST}-,}{ld.lld,lld}
+	fi
+
+	if [[ -v switch ]]; then
+		# only need llvm-nm for lto, but use complete set to be safe
+		for tool in AR NM OBJCOPY OBJDUMP READELF STRIP; do
+			case $(LC_ALL=C $(tc-get${tool}) --version 2>/dev/null) in
+				LLVM*|llvm*) [[ ! ${switch} ]];;
+				*) [[ ${switch} ]];;
+			esac && nvidia-tc-set ${tool} {${CHOST}-,}${switch}${tool,,}
+		done
+	fi
+
+	# pass unconditionally given exports are semi-ignored except CC/LD
+	for tool in CC CXX LD AR NM OBJCOPY OBJDUMP READELF STRIP; do
+		BUILD_PARAMS+=" ${tool}=\"\${KERNEL_${tool}:-\$(tc-get${tool})}\""
+	done
+
+	if linux_chkconfig_present LTO_CLANG_THIN; then
+		# kernel enables cache by default leading to sandbox violations
+		BUILD_PARAMS+=' ldflags-y=--thinlto-cache-dir= LDFLAGS_MODULE=--thinlto-cache-dir='
+	fi
 
 	if kernel_is -gt ${NV_KERNEL_MAX/./ }; then
 		ewarn "Kernel ${KV_MAJOR}.${KV_MINOR} is either known to break this version of ${PN}"
