@@ -95,7 +95,7 @@ inherit multiprocessing
 
 SCONS_DEPEND=">=dev-util/scons-${SCONS_MIN_VERSION}"
 
-if [[ ${_PYTHON_ANY_R1} ]]; then
+if [[ ${_PYTHON_ANY_R1_ECLASS} ]]; then
 	# when using python-any-r1, use any-of dep API
 	BDEPEND="$(python_gen_any_dep "${SCONS_DEPEND}[\${PYTHON_USEDEP}]")"
 
@@ -137,7 +137,7 @@ escons() {
 	if [[ ! ${EPYTHON} ]]; then
 		eerror "EPYTHON is unset while calling escons. This most likely means that"
 		eerror "the ebuild did not call the appropriate eclass function before calling scons."
-		if [[ ${_PYTHON_ANY_R1} ]]; then
+		if [[ ${_PYTHON_ANY_R1_ECLASS} ]]; then
 			eerror "Please ensure that python-any-r1_pkg_setup is called in pkg_setup()."
 		elif [[ ${_PYTHON_SINGLE_R1} ]]; then
 			eerror "Please ensure that python-single-r1_pkg_setup is called in pkg_setup()."
