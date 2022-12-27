@@ -6,7 +6,7 @@
 # Gentoo Science Project <sci@gentoo.org>
 # @AUTHOR:
 # Yiyang Wu <xgreenlandforwyy@gmail.com>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @BLURB: Common functions and variables for ROCm packages written in HIP
 # @DESCRIPTION:
 # ROCm packages such as sci-libs/<roc|hip>*, and packages built on top of ROCm
@@ -82,12 +82,13 @@
 # }
 # @CODE
 
-if [[ ! ${_ROCM_ECLASS} ]]; then
-
 case ${EAPI} in
-	7|8) ;;
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ ! ${_ROCM_ECLASS} ]]; then
+_ROCM_ECLASS=1
 
 # @ECLASS_VARIABLE: ROCM_VERSION
 # @REQUIRED
@@ -219,5 +220,4 @@ check_amdgpu() {
 	done
 }
 
-_ROCM_ECLASS=1
 fi
