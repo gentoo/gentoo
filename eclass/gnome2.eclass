@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome2.eclass
@@ -235,7 +235,7 @@ gnome2_src_install() {
 	# create bogus directories in /var/lib/
 	if has ${EAPI} 5; then
 		dodir "${sk_tmp_dir}" || die "dodir failed"
-		emake DESTDIR="${D}" "scrollkeeper_localstate_dir=${ED}${sk_tmp_dir} " "$@" install || die "install failed"
+		emake DESTDIR="${D}" "scrollkeeper_localstate_dir=${ED}${sk_tmp_dir} " "$@" install
 	else
 		default
 	fi
