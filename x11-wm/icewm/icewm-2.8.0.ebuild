@@ -70,12 +70,11 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	$(unpacker_src_uri_depends)
 	x11-base/xorg-proto
 	gdk-pixbuf? ( gnome-base/librsvg:2 )
 "
-
 BDEPEND="
+	$(unpacker_src_uri_depends)
 	app-text/asciidoc
 	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.19.8 )
