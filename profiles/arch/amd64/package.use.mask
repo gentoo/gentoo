@@ -27,10 +27,6 @@ net-misc/curl -rustls -curl_ssl_rustls
 media-video/ffmpeg -qsv
 media-libs/gst-plugins-bad -qsv
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-01)
-# Keyworded here.
-app-alternatives/awk -nawk
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
 # sys-libs/libsmbios is available here.
 app-laptop/pbbuttonsd -macbook

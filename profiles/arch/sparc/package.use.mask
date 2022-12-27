@@ -9,14 +9,6 @@ dev-util/diffoscope opendocument pascal pdf R
 # gui-libs/gtk is not keyworded here
 app-crypt/gcr:4 gtk
 
-# Sam James <sam@gentoo.org> (2022-12-02)
-# Unkeyworded dependencies
-app-alternatives/bc gh
-
-# Sam James <sam@gentoo.org> (2022-12-02)
-# Not keyworded here
-app-alternatives/lex reflex
-
 # Sam James <sam@gentoo.org> (2022-11-24)
 # Pulls in gjs which is broken on sparc, bug #882071
 app-crypt/libsecret test-rust

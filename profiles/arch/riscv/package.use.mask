@@ -1,25 +1,9 @@
 # Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2022-12-02)
-# Unkeyworded dependencies
-app-alternatives/bc gh
-
-# Sam James <sam@gentoo.org> (2022-12-02)
-# Not keyworded here
-app-alternatives/yacc reference
-
-# Sam James <sam@gentoo.org> (2022-12-02)
-# Not keyworded here
-app-alternatives/lex reflex
-
 # Mike Rivnak <rivnakm1@gmail.com> (2022-11-30)
 # luajit is currently not supported on riscv
 app-editors/neovim lua_single_target_luajit
-
-# Michał Górny <mgorny@gentoo.org> (2022-11-30)
-# Mask unkeyworded providers.
-app-alternatives/bzip2 pbzip2
 
 # Yixun Lan <dlan@gentoo.org> (2022-11-24)
 # depend on dev-libs/libpcre2[jit] which not supported yet, bug #879511
