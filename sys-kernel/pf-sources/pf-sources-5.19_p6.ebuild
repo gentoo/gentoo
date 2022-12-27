@@ -36,7 +36,7 @@ inherit kernel-2 optfeature
 detect_version
 
 DESCRIPTION="Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches"
-HOMEPAGE="https://codeberg.org/pf-kernel/linux/wiki/README
+HOMEPAGE="https://pfkernel.natalenko.name/
 	https://dev.gentoo.org/~mpagano/genpatches/"
 SRC_URI="https://codeberg.org/pf-kernel/linux/archive/v${PFPV}.tar.gz -> linux-${PFPV}.tar.gz
 	https://dev.gentoo.org/~mpagano/genpatches/tarballs/genpatches-${SHPV}-${K_GENPATCHES_VER}.base.tar.xz
