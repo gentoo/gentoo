@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: multibuild python-utils-r1
 # @BLURB: A common, simple eclass for Python packages.
 # @DESCRIPTION:
@@ -30,18 +30,13 @@
 # For more information, please see the Python Guide:
 # https://projects.gentoo.org/python/guide/
 
-case "${EAPI:-0}" in
-	[0-5])
-		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
-		;;
-	[6-8])
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_PYTHON_R1} ]]; then
+if [[ ! ${_PYTHON_R1_ECLASS} ]]; then
+_PYTHON_R1_ECLASS=1
 
 if [[ ${_PYTHON_SINGLE_R1} ]]; then
 	die 'python-r1.eclass can not be used with python-single-r1.eclass.'
@@ -49,10 +44,7 @@ elif [[ ${_PYTHON_ANY_R1_ECLASS} ]]; then
 	die 'python-r1.eclass can not be used with python-any-r1.eclass.'
 fi
 
-[[ ${EAPI} == 6 ]] && inherit eqawarn
 inherit multibuild python-utils-r1
-
-fi
 
 # @ECLASS_VARIABLE: PYTHON_COMPAT
 # @REQUIRED
@@ -243,8 +235,6 @@ _python_set_globals() {
 }
 _python_set_globals
 unset -f _python_set_globals
-
-if [[ ! ${_PYTHON_R1} ]]; then
 
 # @FUNCTION: _python_validate_useflags
 # @INTERNAL
@@ -636,7 +626,7 @@ python_foreach_impl() {
 			eqawarn "instead."
 			_DISTUTILS_FOREACH_IMPL_WARNED=1
 
-			if ! has "${EAPI}" 6 7 8; then
+			if ! has "${EAPI}" 7 8; then
 				die "Calling python_foreach_impl from distutils-r1 is banned in EAPI ${EAPI}"
 			fi
 		fi
@@ -805,10 +795,9 @@ python_replicate_script() {
 	local f
 	for f; do
 		local dosym=dosym
-		[[ ${EAPI} == [67] ]] && dosym=dosym8
+		[[ ${EAPI} == 7 ]] && dosym=dosym8
 		"${dosym}" -r /usr/lib/python-exec/python-exec2 "${f#${ED}}"
 	done
 }
 
-_PYTHON_R1=1
 fi

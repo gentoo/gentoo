@@ -50,7 +50,7 @@ esac
 
 if [[ ! ${_PYTHON_SINGLE_R1} ]]; then
 
-if [[ ${_PYTHON_R1} ]]; then
+if [[ ${_PYTHON_R1_ECLASS} ]]; then
 	die 'python-single-r1.eclass can not be used with python-r1.eclass.'
 elif [[ ${_PYTHON_ANY_R1_ECLASS} ]]; then
 	die 'python-single-r1.eclass can not be used with python-any-r1.eclass.'
