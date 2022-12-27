@@ -9,7 +9,7 @@ SRC_URI="https://www.apache.org/dist/logging/KEYS -> ${P}-KEYS.asc"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc64 x86"
 
 S="${WORKDIR}"
 
