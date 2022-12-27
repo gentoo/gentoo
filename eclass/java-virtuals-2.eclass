@@ -6,14 +6,14 @@
 # java@gentoo.org
 # @AUTHOR:
 # Original Author: Alistair John Bush <ali_bush@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 8
 # @BLURB: Java virtuals eclass
 # @DESCRIPTION:
 # To provide a default (and only) src_install function for ebuilds in the
 # java-virtuals category.
 
-case ${EAPI:-0} in
-	[5678]) ;;
+case ${EAPI} in
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
