@@ -255,12 +255,13 @@ src_compile() {
 			echo "obj-m += test.o" > "${T}"/plugin-test/Kbuild || die
 			:> "${T}"/plugin-test/test.c || die
 			if [[ $(LC_ALL=C make -C "${KV_OUT_DIR}" ARCH="$(tc-arch-kernel)" \
-				HOSTCC="$(tc-getBUILD_CC)" M="${T}"/plugin-test 2>&1) \
+				HOSTCC="$(tc-getBUILD_CC)" CC="${CC}" M="${T}"/plugin-test 2>&1) \
 				=~ "error: incompatible gcc/plugin version" ]]
 			then
-				ewarn "Warning: detected kernel was built with different gcc/plugin versions,"
-				ewarn "you may need to 'make clean' and rebuild your kernel with the current"
-				ewarn "gcc version (or re-emerge for distribution kernels, including kernel-bin)."
+				eerror "Detected kernel was built with a different gcc/plugin version,"
+				eerror "Please 'make clean' and rebuild your kernel with the current"
+				eerror "gcc (or re-emerge for distribution kernels, including kernel-bin)."
+				die "kernel ${KV_FULL} needs to be rebuilt"
 			fi
 		fi
 
