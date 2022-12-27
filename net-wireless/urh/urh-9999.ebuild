@@ -42,6 +42,11 @@ RDEPEND="${DEPEND}
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	default
+	touch "${WORKDIR}/src/__init__.py" || die
+}
+
 python_configure_all() {
 	DISTUTILS_ARGS=(
 			$(use_with airspy)
