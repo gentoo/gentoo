@@ -46,6 +46,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=mate-base/mate-session-manager-1.6
 	virtual/libintl
 	!!<gnome-extra/gnome-screensaver-3
+	mate-base/mate-panel
 "
 
 DEPEND="${COMMON_DEPEND}
