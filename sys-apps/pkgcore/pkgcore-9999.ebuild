@@ -29,7 +29,7 @@ RDEPEND="
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND+=" ~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	RDEPEND+=" >=dev-python/snakeoil-0.10.1[${PYTHON_USEDEP}]"
+	RDEPEND+=" >=dev-python/snakeoil-0.10.4[${PYTHON_USEDEP}]"
 fi
 BDEPEND="
 	>=dev-python/flit_core-3.8[${PYTHON_USEDEP}]
