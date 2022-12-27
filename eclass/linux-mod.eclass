@@ -7,7 +7,7 @@
 # @AUTHOR:
 # John Mylchreest <johnm@gentoo.org>,
 # Stefan Schweizer <genstef@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: linux-info
 # @BLURB: It provides the functionality required to install external modules against a kernel source tree.
 # @DESCRIPTION:
@@ -149,12 +149,8 @@
 # @DESCRIPTION:
 # It's a read-only variable. It contains the extension of the kernel modules.
 
-case ${EAPI:-0} in
-	[67])
-		inherit eutils
-		;;
-	8)
-		;;
+case ${EAPI} in
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -168,10 +164,6 @@ inherit linux-info multilib multiprocessing toolchain-funcs
 case ${MODULES_OPTIONAL_USE_IUSE_DEFAULT:-n} in
   [nNfF]*|[oO][fF]*|0|-) _modules_optional_use_iuse_default='' ;;
   *) _modules_optional_use_iuse_default='+' ;;
-esac
-
-[[ -n "${_modules_optional_use_iuse_default}" ]] && case ${EAPI:-0} in
-	0) die "EAPI=${EAPI} is not supported with MODULES_OPTIONAL_USE_IUSE_DEFAULT due to lack of IUSE defaults" ;;
 esac
 
 IUSE="dist-kernel
@@ -255,8 +247,8 @@ update_depmod() {
 move_old_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
-	local OLDDIR="${ROOT%/}"/usr/share/module-rebuild
-	local NEWDIR="${ROOT%/}"/var/lib/module-rebuild
+	local OLDDIR="${ROOT}"/usr/share/module-rebuild
+	local NEWDIR="${ROOT}"/var/lib/module-rebuild
 
 	if [[ -f "${OLDDIR}"/moduledb ]]; then
 		[[ ! -d "${NEWDIR}" ]] && mkdir -p "${NEWDIR}"
@@ -273,7 +265,7 @@ move_old_moduledb() {
 update_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
-	local MODULEDB_DIR="${ROOT%/}"/var/lib/module-rebuild
+	local MODULEDB_DIR="${ROOT}"/var/lib/module-rebuild
 	move_old_moduledb
 
 	if [[ ! -f "${MODULEDB_DIR}"/moduledb ]]; then
@@ -293,7 +285,7 @@ update_moduledb() {
 remove_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
-	local MODULEDB_DIR="${ROOT%/}"/var/lib/module-rebuild
+	local MODULEDB_DIR="${ROOT}"/var/lib/module-rebuild
 	move_old_moduledb
 
 	if grep -qs ${CATEGORY}/${PN}-${PVR} "${MODULEDB_DIR}"/moduledb ; then
@@ -722,8 +714,8 @@ linux-mod_pkg_preinst() {
 	debug-print-function ${FUNCNAME} $*
 	[[ -n ${MODULES_OPTIONAL_USE} ]] && use !${MODULES_OPTIONAL_USE} && return
 
-	[[ -d ${D%/}/lib/modules ]] && UPDATE_DEPMOD=true || UPDATE_DEPMOD=false
-	[[ -d ${D%/}/lib/modules ]] && UPDATE_MODULEDB=true || UPDATE_MODULEDB=false
+	[[ -d ${D}/lib/modules ]] && UPDATE_DEPMOD=true || UPDATE_DEPMOD=false
+	[[ -d ${D}/lib/modules ]] && UPDATE_MODULEDB=true || UPDATE_MODULEDB=false
 }
 
 # @FUNCTION: linux-mod_pkg_postinst
