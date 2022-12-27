@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.2-doc-install-dir-fix.patch
 	"${FILESDIR}"/${P}-cmake.patch
 	"${FILESDIR}"/${P}-gcc-10.patch
+	"${FILESDIR}"/${P}-doc-scaleable-fonts.patch
 )
 
 src_prepare() {
