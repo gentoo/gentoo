@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 
+# Fabian Groffen <grobian@gentoo.org> (2022-12-27)
+# Solaris must keep system libelf, else things break down
+dev-libs/glib elf
+
 # Fabian Groffen <grobian@gentoo.org> (2019-04-15)
 # chg client fails to compile, bug #683374
 dev-vcs/mercurial chg
