@@ -30,7 +30,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	RDEPEND="
 		>=dev-python/snakeoil-0.10.3[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.12.17[${PYTHON_USEDEP}]"
+		~sys-apps/pkgcore-0.12.17[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
 	dev-libs/tree-sitter
