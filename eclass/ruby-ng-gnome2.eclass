@@ -6,20 +6,20 @@
 # Ruby herd <ruby@gentoo.org>
 # @AUTHOR:
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 7
 # @PROVIDES: ruby-ng
 # @BLURB: An eclass to simplify handling of various ruby-gnome2 parts.
 # @DESCRIPTION:
 # This eclass simplifies installation of the various pieces of
 # ruby-gnome2 since they share a very common installation procedure.
 
-case "${EAPI:-0}" in
-	6)	inherit eapi7-ver ;;
-	7)	;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI} in
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ ! ${_RUBY_NG_GNOME2_ECLASS} ]]; then
+_RUBY_NG_GNOME2_ECLASS=1
 
 RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN#ruby-}}"
 RUBY_FAKEGEM_TASK_TEST=""
@@ -40,7 +40,7 @@ fi
 IUSE="test"
 RESTRICT+=" !test? ( test )"
 
-DEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 ruby_add_bdepend "
 	dev-ruby/pkg-config
 	test? ( >=dev-ruby/test-unit-2 )"
@@ -157,3 +157,5 @@ each_ruby_test() {
 		${RUBY} test/run-test.rb || die
 	fi
 }
+
+fi
