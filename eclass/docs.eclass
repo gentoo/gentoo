@@ -153,7 +153,7 @@ _DOCS_ECLASS=1
 case ${DOCS_BUILDER} in
 	"sphinx"|"mkdocs")
 		# We need the python_gen_any_dep function
-		if [[ ! ${_PYTHON_R1} && ! ${_PYTHON_ANY_R1} && ! ${_PYTHON_SINGLE_R1} ]]; then
+		if [[ ! ${_PYTHON_R1} && ! ${_PYTHON_ANY_R1_ECLASS} && ! ${_PYTHON_SINGLE_R1} ]]; then
 			die "distutils-r1, python-r1, python-single-r1 or python-any-r1 needs to be inherited to use python based documentation builders"
 		fi
 		;;
