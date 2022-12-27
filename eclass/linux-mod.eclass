@@ -199,14 +199,13 @@ DEPEND="${RDEPEND}
 use_m() {
 	debug-print-function ${FUNCNAME} $*
 
-	# if we haven't determined the version yet, we need too.
-	get_version;
+	# If we haven't determined the version yet, we need to.
+	get_version
 
-	# if the kernel version is greater than 2.6.6 then we should use
+	# If the kernel version is greater than 2.6.6 then we should use
 	# M= instead of SUBDIRS=
-	[ ${KV_MAJOR} -ge 3 ] && return 0
-	[ ${KV_MAJOR} -eq 2 -a ${KV_MINOR} -gt 5 -a ${KV_PATCH} -gt 5 ] && \
-		return 0 || return 1
+	[[ ${KV_MAJOR} -ge 3 ]] && return 0
+	[[ ${KV_MAJOR} -eq 2 && ${KV_MINOR} -gt 5 && ${KV_PATCH} -gt 5 ]]
 }
 
 # @FUNCTION: convert_to_m
@@ -216,10 +215,10 @@ use_m() {
 convert_to_m() {
 	debug-print-function ${FUNCNAME} $*
 
-	if use_m
-	then
-		[ ! -f "${1}" ] && \
+	if use_m; then
+		[[ ! -f "${1}" ]] && \
 			die "convert_to_m() requires a filename as an argument"
+
 		ebegin "Converting ${1/${WORKDIR}\//} to use M= instead of SUBDIRS="
 		sed -i 's:SUBDIRS=:M=:g' "${1}"
 		eend $?
@@ -233,12 +232,11 @@ convert_to_m() {
 update_depmod() {
 	debug-print-function ${FUNCNAME} $*
 
-	# if we haven't determined the version yet, we need too.
-	get_version;
+	# If we haven't determined the version yet, we need to.
+	get_version
 
 	ebegin "Updating module dependencies for ${KV_FULL}"
-	if [ -r "${KV_OUT_DIR}"/System.map ]
-	then
+	if [[ -r "${KV_OUT_DIR}"/System.map ]]; then
 		depmod -ae -F "${KV_OUT_DIR}"/System.map -b "${ROOT:-/}" ${KV_FULL}
 		eend $?
 	else
@@ -310,15 +308,15 @@ remove_moduledb() {
 set_kvobj() {
 	debug-print-function ${FUNCNAME} $*
 
-	if kernel_is ge 2 6
-	then
+	if kernel_is ge 2 6; then
 		KV_OBJ="ko"
 	else
 		KV_OBJ="o"
 	fi
+
 	# Do we really need to know this?
-	# Lets silence it.
-	# einfo "Using KV_OBJ=${KV_OBJ}"
+	# Let's silence it.
+	#einfo "Using KV_OBJ=${KV_OBJ}"
 }
 
 # @FUNCTION: get-KERNEL_CC
@@ -334,7 +332,7 @@ get-KERNEL_CC() {
 	fi
 
 	local kernel_cc
-	if [ -n "${KERNEL_ABI}" ]; then
+	if [[ -n "${KERNEL_ABI}" ]]; then
 		# In future, an arch might want to define CC_$ABI
 		#kernel_cc="$(get_abi_CC)"
 		#[ -z "${kernel_cc}" ] &&
@@ -358,14 +356,13 @@ get-KERNEL_CC() {
 # At the end the documentation specified with MODULESD_<modulename>_DOCS is installed.
 generate_modulesd() {
 	debug-print-function ${FUNCNAME} $*
-	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
+	[[ -n "${MODULES_OPTIONAL_USE}" ]] && use !${MODULES_OPTIONAL_USE} && return
 
 	local currm_path currm currm_t t myIFS myVAR
 	local module_docs module_enabled module_aliases \
 			module_additions module_examples module_modinfo module_opts
 
-	for currm_path in ${@}
-	do
+	for currm_path in ${@}; do
 		currm=${currm_path//*\/}
 		currm=$(echo ${currm} | tr '[:lower:]' '[:upper:]')
 		currm_t=${currm}
@@ -388,8 +385,7 @@ generate_modulesd() {
 		[[ ${module_enabled} == no ]] && return 0
 
 		# unset any unwanted variables.
-		for t in ${!module_*}
-		do
+		for t in ${!module_*}; do
 			[[ -z ${!t} ]] && unset ${t}
 		done
 
@@ -427,19 +423,16 @@ generate_modulesd() {
 		fi
 
 		#-----------------------------------------------------------------------
-		if [[ -n ${module_modinfo} ]]
-		then
+		if [[ -n ${module_modinfo} ]]; then
 			echo >> "${module_config}"
 			echo  "# Configurable module parameters" >> "${module_config}"
 			echo  "# ------------------------------" >> "${module_config}"
 			myIFS="${IFS}"
 			IFS="$(echo -en "\n\b")"
 
-			for t in ${module_modinfo}
-			do
+			for t in ${module_modinfo}; do
 				myVAR="$(echo ${t#*:}  | grep -o "[^ ]*[0-9][ =][^ ]*" | tail -1  | grep -o "[0-9]")"
-				if [[ -n ${myVAR} ]]
-				then
+				if [[ -n ${myVAR} ]]; then
 					module_opts="${module_opts} ${t%%:*}:${myVAR}"
 				fi
 				echo -e "# ${t%%:*}:\t${t#*:}" >> "${module_config}"
@@ -449,11 +442,9 @@ generate_modulesd() {
 		fi
 
 		#-----------------------------------------------------------------------
-		if [[ $(eval echo \${MODULESD_${currm}_ALIASES[0]}) == guess ]]
-		then
-			# So lets do some guesswork eh?
-			if [[ -n ${module_opts} ]]
-			then
+		if [[ $(eval echo \${MODULESD_${currm}_ALIASES[0]}) == guess ]]; then
+			# So, let's do some guesswork, eh?
+			if [[ -n ${module_opts} ]]; then
 				echo "# For Example..." >> "${module_config}"
 				echo "# --------------" >> "${module_config}"
 				for t in ${module_opts}
@@ -462,12 +453,10 @@ generate_modulesd() {
 				done
 				echo '' >> "${module_config}"
 			fi
-		elif [[ ${module_examples} -gt 0 ]]
-		then
+		elif [[ ${module_examples} -gt 0 ]]; then
 			echo "# For Example..." >> "${module_config}"
 			echo "# --------------" >> "${module_config}"
-			for((t=0; t<${module_examples}; t++))
-			do
+			for ((t=0; t<${module_examples}; t++)); do
 				echo "options $(eval echo \${MODULESD_${currm}_EXAMPLES[$t]})" \
 					>> "${module_config}"
 			done
@@ -475,10 +464,8 @@ generate_modulesd() {
 		fi
 
 		#-----------------------------------------------------------------------
-		if [[ ${module_additions} -gt 0 ]]
-		then
-			for((t=0; t<${module_additions}; t++))
-			do
+		if [[ ${module_additions} -gt 0 ]]; then
+			for ((t=0; t<${module_additions}; t++)); do
 				echo "$(eval echo \${MODULESD_${currm}_ADDITIONS[$t]})" \
 					>> "${module_config}"
 			done
@@ -510,8 +497,7 @@ find_module_params() {
 	local matched_offset=0 matched_opts=0 test="${@}" temp_var result
 	local i=0 y=0 z=0
 
-	for((i=0; i<=${#test}; i++))
-	do
+	for ((i=0; i<=${#test}; i++)); do
 		case ${test:${i}:1} in
 			\()		matched_offset[0]=${i};;
 			\:)		matched_opts=$((${matched_opts} + 1));
@@ -521,8 +507,7 @@ find_module_params() {
 		esac
 	done
 
-	for((i=0; i<=${matched_opts}; i++))
-	do
+	for ((i=0; i<=${matched_opts}; i++)); do
 		# i			= offset were working on
 		# y			= last offset
 		# z			= current offset - last offset
@@ -556,7 +541,7 @@ find_module_params() {
 # in the kernel and sets the object extension KV_OBJ.
 linux-mod_pkg_setup() {
 	debug-print-function ${FUNCNAME} $*
-	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
+	[[ -n "${MODULES_OPTIONAL_USE}" ]] && use !${MODULES_OPTIONAL_USE} && return
 
 	local is_bin="${MERGE_TYPE}"
 
@@ -569,12 +554,12 @@ linux-mod_pkg_setup() {
 	# External modules use kernel symbols (bug #591832)
 	CONFIG_CHECK+=" !TRIM_UNUSED_KSYMS"
 
-	linux-info_pkg_setup;
+	linux-info_pkg_setup
 	require_configured_kernel
-	check_kernel_built;
-	strip_modulenames;
+	check_kernel_built
+	strip_modulenames
 	[[ -n ${MODULE_NAMES} ]] && check_modules_supported
-	set_kvobj;
+	set_kvobj
 }
 
 # @FUNCTION: linux-mod_pkg_setup_binary
@@ -586,13 +571,13 @@ linux-mod_pkg_setup_binary() {
 	debug-print-function ${FUNCNAME} $*
 	local new_CONFIG_CHECK
 	# ~ needs always to be quoted, else bash expands it.
-	for config in $CONFIG_CHECK ; do
+	for config in ${CONFIG_CHECK} ; do
 		optional='~'
 		[[ ${config:0:1} == "~" ]] && optional=''
 		new_CONFIG_CHECK="${new_CONFIG_CHECK} ${optional}${config}"
 	done
 	CONFIG_CHECK="${new_CONFIG_CHECK}"
-	linux-info_pkg_setup;
+	linux-info_pkg_setup
 }
 
 # @FUNCTION: strip_modulenames
@@ -617,7 +602,7 @@ strip_modulenames() {
 # Look at the description of these variables for more details.
 linux-mod_src_compile() {
 	debug-print-function ${FUNCNAME} $*
-	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
+	[[ -n "${MODULES_OPTIONAL_USE}" ]] && use !${MODULES_OPTIONAL_USE} && return
 
 	local modulename libdir srcdir objdir i n myABI="${ABI}"
 	set_arch_to_kernel
@@ -631,30 +616,25 @@ linux-mod_src_compile() {
 	local -x CROSS_COMPILE=${CROSS_COMPILE-${CHOST}-}
 
 	BUILD_TARGETS=${BUILD_TARGETS:-clean module}
-	strip_modulenames;
-	cd "${S}"
-	touch Module.symvers
-	for i in ${MODULE_NAMES}
-	do
+	strip_modulenames
+	cd "${S}" || die
+	touch Module.symvers || die
+	for i in ${MODULE_NAMES}; do
 		unset libdir srcdir objdir
-		for n in $(find_module_params ${i})
-		do
+		for n in $(find_module_params ${i}); do
 			eval ${n/:*}=${n/*:/}
 		done
 		libdir=${libdir:-misc}
 		srcdir=${srcdir:-${S}}
 		objdir=${objdir:-${srcdir}}
 
-		if [ ! -f "${srcdir}/.built" ];
-		then
-			cd "${srcdir}"
-			ln -s "${S}"/Module.symvers Module.symvers
+		if [[ ! -f "${srcdir}/.built" ]]; then
+			cd "${srcdir}" || die
+			ln -s "${S}"/Module.symvers Module.symvers || die
 			einfo "Preparing ${modulename} module"
-			if [[ -n ${ECONF_PARAMS} ]]
-			then
+			if [[ -n ${ECONF_PARAMS} ]]; then
 				eqawarn "This package relies on the deprecated functionality of econf being called in linux-mod_src_compile (ECONF_PARAMS), which will go away in 30 days (20230107) (https://bugs.gentoo.org/340597)"
-				econf ${ECONF_PARAMS} || \
-				die "Unable to run econf ${ECONF_PARAMS}"
+				econf ${ECONF_PARAMS}
 			fi
 
 			# This looks messy, but it is needed to handle multiple variables
@@ -668,8 +648,8 @@ linux-mod_src_compile() {
 						${BUILD_PARAMS} \
 						${BUILD_TARGETS} " \
 				|| die "Unable to emake HOSTCC="$(tc-getBUILD_CC)" LDFLAGS="$(get_abi_LDFLAGS)" ${BUILD_FIXES} ${BUILD_PARAMS} ${BUILD_TARGETS}"
-			cd "${OLDPWD}"
-			touch "${srcdir}"/.built
+			cd "${OLDPWD}" || die
+			touch "${srcdir}"/.built || die
 		fi
 	done
 
@@ -690,18 +670,16 @@ linux-mod_src_compile() {
 # Look at the description of these variables for more details.
 linux-mod_src_install() {
 	debug-print-function ${FUNCNAME} $*
-	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
+	[[ -n "${MODULES_OPTIONAL_USE}" ]] && use !${MODULES_OPTIONAL_USE} && return
 
 	local modulename libdir srcdir objdir i n
 
 	[[ -n ${KERNEL_DIR} ]] && addpredict "${KERNEL_DIR}/null.dwo"
 
-	strip_modulenames;
-	for i in ${MODULE_NAMES}
-	do
+	strip_modulenames
+	for i in ${MODULE_NAMES}; do
 		unset libdir srcdir objdir
-		for n in $(find_module_params ${i})
-		do
+		for n in $(find_module_params ${i}); do
 			eval ${n/:*}=${n/*:/}
 		done
 		libdir=${libdir:-misc}
@@ -742,22 +720,22 @@ linux-mod_src_install() {
 # It checks what to do after having merged the package.
 linux-mod_pkg_preinst() {
 	debug-print-function ${FUNCNAME} $*
-	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
+	[[ -n ${MODULES_OPTIONAL_USE} ]] && use !${MODULES_OPTIONAL_USE} && return
 
-	[ -d "${D%/}/lib/modules" ] && UPDATE_DEPMOD=true || UPDATE_DEPMOD=false
-	[ -d "${D%/}/lib/modules" ] && UPDATE_MODULEDB=true || UPDATE_MODULEDB=false
+	[[ -d ${D%/}/lib/modules ]] && UPDATE_DEPMOD=true || UPDATE_DEPMOD=false
+	[[ -d ${D%/}/lib/modules ]] && UPDATE_MODULEDB=true || UPDATE_MODULEDB=false
 }
 
 # @FUNCTION: linux-mod_pkg_postinst
 # @DESCRIPTION:
 # It executes /sbin/depmod and adds the package to the /var/lib/module-rebuild/moduledb
-# database (if ${D}/lib/modules is created)"
+# database (if ${D}/lib/modules is created)
 linux-mod_pkg_postinst() {
 	debug-print-function ${FUNCNAME} $*
-	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
+	[[ -n "${MODULES_OPTIONAL_USE}" ]] && use !${MODULES_OPTIONAL_USE} && return
 
-	${UPDATE_DEPMOD} && update_depmod;
-	${UPDATE_MODULEDB} && update_moduledb;
+	${UPDATE_DEPMOD} && update_depmod
+	${UPDATE_MODULEDB} && update_moduledb
 }
 
 # @FUNCTION: linux-mod_pkg_postrm
@@ -766,8 +744,8 @@ linux-mod_pkg_postinst() {
 # call /sbin/depmod because the modules are still installed.
 linux-mod_pkg_postrm() {
 	debug-print-function ${FUNCNAME} $*
-	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
-	remove_moduledb;
+	[[ -n "${MODULES_OPTIONAL_USE}" ]] && use !${MODULES_OPTIONAL_USE} && return
+	remove_moduledb
 }
 
 fi
