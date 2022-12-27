@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE="tcl"
 
 DEPEND="
-	app-text/ghostscript-gpl
+	app-text/ghostscript-gpl:=
 	media-libs/fontconfig:1.0=
 	sys-libs/zlib:=
 	x11-libs/cairo
