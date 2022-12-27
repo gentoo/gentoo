@@ -1,14 +1,12 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EXPORT_FUNCTIONS pkg_setup
-
 # @ECLASS: postgres.eclass
 # @MAINTAINER:
 # PostgreSQL <pgsql-bugs@gentoo.org>
 # @AUTHOR:
 # Aaron W. Swenson <titanofold@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: An eclass for PostgreSQL-related packages
 # @DESCRIPTION:
 # This eclass provides common utility functions that many
@@ -16,11 +14,13 @@ EXPORT_FUNCTIONS pkg_setup
 # currently selected PostgreSQL slot is within a range, adding a system
 # user to the postgres system group, and generating dependencies.
 
-
-case ${EAPI:-0} in
-	5|6|7) ;;
-	*) die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+case ${EAPI} in
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ ! ${_POSTGRES_ECLASS} ]]; then
+_POSTGRES_ECLASS=1
 
 # @ECLASS_VARIABLE: _POSTGRES_ALL_VERSIONS
 # @INTERNAL
@@ -159,3 +159,7 @@ postgres_pkg_setup() {
 
 	elog "PostgreSQL Target: ${best_slot}"
 }
+
+fi
+
+EXPORT_FUNCTIONS pkg_setup
