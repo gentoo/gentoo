@@ -41,7 +41,7 @@ waf-utils_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local fail
-	if [[ ! ${_PYTHON_ANY_R1_ECLASS} && ! ${_PYTHON_SINGLE_R1} && ! ${_PYTHON_R1_ECLASS} ]]; then
+	if [[ ! ${_PYTHON_ANY_R1_ECLASS} && ! ${_PYTHON_SINGLE_R1_ECLASS} && ! ${_PYTHON_R1_ECLASS} ]]; then
 		eerror "Using waf-utils.eclass without any python-r1 suite eclass is not supported."
 		eerror "Please make sure to configure and inherit appropriate -r1 eclass."
 		eerror "For more information and examples, please see:"
@@ -53,7 +53,7 @@ waf-utils_src_configure() {
 			eerror "the ebuild did not call the appropriate eclass function before calling waf."
 			if [[ ${_PYTHON_ANY_R1_ECLASS} ]]; then
 				eerror "Please ensure that python-any-r1_pkg_setup is called in pkg_setup()."
-			elif [[ ${_PYTHON_SINGLE_R1} ]]; then
+			elif [[ ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
 				eerror "Please ensure that python-single-r1_pkg_setup is called in pkg_setup()."
 			else # python-r1
 				eerror "Please ensure that python_setup is called before waf-utils_src_configure(),"

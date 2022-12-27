@@ -103,7 +103,7 @@ if [[ ${_PYTHON_ANY_R1_ECLASS} ]]; then
 		python_has_version "${SCONS_DEPEND}[${PYTHON_USEDEP}]"
 	}
 	python_check_deps() { scons-utils_python_check_deps; }
-elif [[ ${_PYTHON_SINGLE_R1} ]]; then
+elif [[ ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
 	# when using python-single-r1, use PYTHON_USEDEP API
 	BDEPEND="
 		$(python_gen_cond_dep "${SCONS_DEPEND}[\${PYTHON_USEDEP}]")
@@ -139,7 +139,7 @@ escons() {
 		eerror "the ebuild did not call the appropriate eclass function before calling scons."
 		if [[ ${_PYTHON_ANY_R1_ECLASS} ]]; then
 			eerror "Please ensure that python-any-r1_pkg_setup is called in pkg_setup()."
-		elif [[ ${_PYTHON_SINGLE_R1} ]]; then
+		elif [[ ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
 			eerror "Please ensure that python-single-r1_pkg_setup is called in pkg_setup()."
 		else # python-r1
 			eerror "Please ensure that python_setup is called before escons, or that escons"
