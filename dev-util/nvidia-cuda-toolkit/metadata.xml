@@ -11,5 +11,6 @@
 		<flag name="profiler">Install the NVIDIA CUDA profiler (nvprof) and the related libraries</flag>
 		<flag name="sanitizer">Install compute-sanitizer tool</flag>
 		<flag name="vis-profiler">Install the NVIDIA CUDA visual profiler (nvvp)</flag>
+		<flag name="cuda-minor-compat">Relax version requirements for driver</flag>
 	</use>
 </pkgmetadata>
