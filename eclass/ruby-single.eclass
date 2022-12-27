@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Hans de Graaff <graaff@gentoo.org>
 # Based on python-single-r1 by: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: ruby-utils
 # @BLURB: An eclass for Ruby packages not installed for multiple implementations.
 # @DESCRIPTION:
@@ -23,18 +23,13 @@
 # RDEPEND="${RUBY_DEPS}"
 # @CODE
 
-case "${EAPI:-0}" in
-	0|1|2|3)
-		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
-		;;
-	4|5|6|7|8)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_RUBY_SINGLE} ]]; then
+if [[ ! ${_RUBY_SINGLE_ECLASS} ]]; then
+_RUBY_SINGLE_ECLASS=1
 
 inherit ruby-utils
 
@@ -88,6 +83,4 @@ _ruby_single_set_globals() {
 }
 _ruby_single_set_globals
 
-
-_RUBY_SINGLE=1
 fi
