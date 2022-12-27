@@ -18,10 +18,9 @@ inherit autotools flag-o-matic lua-single multilib ssl-cert toolchain-funcs
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6)
-		die "This eclass is banned for EAPI<7"
-	;;
+case ${EAPI} in
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # settings which are version specific go in here:
@@ -390,7 +389,7 @@ setup_modules() {
 # This internal function generates the LoadModule lines for httpd.conf based on
 # the current module selection and MODULE_DEFINES
 generate_load_module() {
-	local def= endit=0 m= mod_lines= mod_dir="${ED%/}/usr/$(get_libdir)/apache2/modules"
+	local def= endit=0 m= mod_lines= mod_dir="${ED}/usr/$(get_libdir)/apache2/modules"
 
 	if use static; then
 		sed -i -e "/%%LOAD_MODULE%%/d" \
@@ -677,23 +676,23 @@ apache-2_src_install() {
 	# drop in a convenient link to the manual
 	if use doc ; then
 		sed -i -e "s:VERSION:${PVR}:" \
-			"${ED%/}/etc/apache2/modules.d/00_apache_manual.conf" \
+			"${ED}/etc/apache2/modules.d/00_apache_manual.conf" \
 			|| die
 		docompress -x /usr/share/doc/${PF}/manual # 503640
 	else
-		rm -f "${ED%/}/etc/apache2/modules.d/00_apache_manual.conf" \
+		rm -f "${ED}/etc/apache2/modules.d/00_apache_manual.conf" \
 			|| die
-		rm -Rf "${ED%/}/usr/share/doc/${PF}/manual" || die
+		rm -rf "${ED}/usr/share/doc/${PF}/manual" || die
 	fi
 
 	# the default icons and error pages get stored in
 	# /usr/share/apache2/{error,icons}
 	dodir /usr/share/apache2
-	mv -f "${ED%/}/var/www/localhost/error" \
-		"${ED%/}/usr/share/apache2/error" || die
-	mv -f "${ED%/}/var/www/localhost/icons" \
-		"${ED%/}/usr/share/apache2/icons" || die
-	rm -rf "${ED%/}/var/www/localhost/" || die
+	mv -f "${ED}/var/www/localhost/error" \
+		"${ED}/usr/share/apache2/error" || die
+	mv -f "${ED}/var/www/localhost/icons" \
+		"${ED}/usr/share/apache2/icons" || die
+	rm -rf "${ED}/var/www/localhost/" || die
 
 	# set some sane permissions for suexec
 	if use suexec ; then
