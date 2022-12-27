@@ -6,6 +6,6 @@
 		<name>Zac Medico</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">outbrain/zookeepercli</remote-id>
+		<remote-id type="github">openark/zookeepercli</remote-id>
 	</upstream>
 </pkgmetadata>
