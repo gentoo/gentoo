@@ -33,3 +33,8 @@ src_configure() {
 	# not autotools-based
 	./configure "${myconf[@]}" || die
 }
+
+src_install() {
+	emake DESTDIR="${D}" install install-man
+	einstalldocs
+}
