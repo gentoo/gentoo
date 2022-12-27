@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-ext-source-r3.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Compile and install standalone PHP extensions.
 # @DESCRIPTION:
 # A unified interface for compiling and installing standalone PHP
@@ -12,11 +12,9 @@
 
 inherit autotools
 
-case ${EAPI:-0} in
-	6) inherit eapi7-ver ;;
+case ${EAPI} in
 	7|8) ;;
-	*)
-		die "${ECLASS} is not compatible with EAPI=${EAPI}"
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @ECLASS_VARIABLE: PHP_EXT_NAME
@@ -128,14 +126,17 @@ unset _php_slot _php_target
 # the USE-conditional if PHP_EXT_OPTIONAL_USE is non-null.
 REQUIRED_USE+=") ${PHP_EXT_OPTIONAL_USE:+ )}"
 PHPDEPEND+=" ${PHP_EXT_OPTIONAL_USE:+ )}"
-TOOLDEPS="sys-devel/m4 sys-devel/libtool"
+TOOLDEPS="
+	sys-devel/m4
+	sys-devel/libtool
+"
 
 RDEPEND="${PHPDEPEND}"
-
-case ${EAPI:-0} in
-	6) DEPEND="${TOOLDEPS} ${PHPDEPEND}" ;;
-	7|8) DEPEND="${PHPDEPEND}" ; BDEPEND="${TOOLDEPS} ${PHPDEPEND}" ;;
-esac
+DEPEND="${PHPDEPEND}"
+BDEPEND="
+	${TOOLDEPS}
+	${PHPDEPEND}
+"
 
 unset PHPDEPEND TOOLDEPS
 
