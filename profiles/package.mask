@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Marco Scardovi <mscardovi@icloud.com> (2022-12-27)
+# It builds only with a really old version of libfprint
+# and has never been updated to new one. No revdeps, no real usage
+# Removal on 2023-01-26. Bug #888665
+sys-auth/pam_fprint
+
 # Sam James <sam@gentoo.org> (2022-12-27)
 # Obsolete and incompatible with app-alternatives/* (see news item).
 # Removal on 2023-01-27. bug #886019 and bug #886021 respectivly.
