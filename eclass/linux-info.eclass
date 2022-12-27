@@ -140,13 +140,12 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # A read-only variable. It's a string containing the kernel object directory, will be KV_DIR unless
 # KBUILD_OUTPUT is used. This should be used for referencing .config.
 
-
 # @ECLASS_VARIABLE: SKIP_KERNEL_CHECK
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Do not check for kernel sources or a running kernel version 
-# Main use-case is for chroots
+# Do not check for kernel sources or a running kernel version.
+# Main use-case is for chroots.
 # This is a user flag and should under _no circumstances_ be set in the ebuild.
 : ${SKIP_KERNEL_CHECK:=""}
 
@@ -156,8 +155,7 @@ inherit toolchain-funcs
 
 EXPORT_FUNCTIONS pkg_setup
 
-# Bug fixes
-# fix to bug #75034
+# bug #75034
 case ${ARCH} in
 	ppc)	BUILD_FIXES="${BUILD_FIXES} TOUT=${T}/.tmp_gas_check";;
 	ppc64)	BUILD_FIXES="${BUILD_FIXES} TOUT=${T}/.tmp_gas_check";;
@@ -175,7 +173,7 @@ set_arch_to_pkgmgr() { export ARCH=$(tc-arch); }
 
 # @FUNCTION: qout
 # @DESCRIPTION:
-# qout <einfo | ewarn | eerror>  is a quiet call when EBUILD_PHASE should not have visible output.
+# qout <einfo | ewarn | eerror> is a quiet call when EBUILD_PHASE should not have visible output.
 qout() {
 	local outputmsg type
 	type=${1}
@@ -186,7 +184,7 @@ qout() {
 		clean)   unset outputmsg;;
 		preinst) unset outputmsg;;
 	esac
-	[ -n "${outputmsg}" ] && ${type} "${outputmsg}"
+	[[ -n "${outputmsg}" ]] && ${type} "${outputmsg}"
 }
 
 # @FUNCTION: qeinfo
@@ -196,14 +194,12 @@ qeinfo() { qout einfo "${@}" ; }
 
 # @FUNCTION: qewarn
 # @DESCRIPTION:
-# qewarn is a quiet ewarn call when EBUILD_PHASE
-# should not have visible output.
+# qewarn is a quiet ewarn call when EBUILD_PHASE should not have visible output.
 qewarn() { qout ewarn "${@}" ; }
 
 # @FUNCTION: qeerror
 # @DESCRIPTION:
-# qeerror is a quiet error call when EBUILD_PHASE
-# should not have visible output.
+# qeerror is a quiet error call when EBUILD_PHASE should not have visible output.
 qeerror() { qout eerror "${@}" ; }
 
 # File Functions
@@ -213,18 +209,17 @@ qeerror() { qout eerror "${@}" ; }
 # @USAGE: <variable> <configfile>
 # @RETURN: the value of the variable
 # @DESCRIPTION:
-# It detects the value of the variable defined in the file configfile. This is
-# done by including the configfile, and printing the variable with Make.
+# It detects the value of the variable defined in the file 'configfile'. This is
+# done by including the 'configfile', and printing the variable with Make.
 # It WILL break if your makefile has missing dependencies!
 getfilevar() {
 	local ERROR basefname basedname myARCH="${ARCH}"
 	ERROR=0
 
-	[ -z "${1}" ] && ERROR=1
-	[ ! -f "${2}" ] && ERROR=1
+	[[ -z "${1}" ]] && ERROR=1
+	[[ ! -f "${2}" ]] && ERROR=1
 
-	if [ "${ERROR}" = 1 ]
-	then
+	if [[ "${ERROR}" = 1 ]]; then
 		echo -e "\n"
 		eerror "getfilevar requires 2 variables, with the second a valid file."
 		eerror "   getfilevar <VARIABLE> <CONFIGFILE>"
@@ -250,7 +245,7 @@ getfilevar() {
 # @USAGE: <variable> <configfile>
 # @RETURN: the value of the variable
 # @DESCRIPTION:
-# It detects the value of the variable defined in the file configfile.
+# It detects the value of the variable defined in the file 'configfile'.
 # This is done with sed matching an expression only. If the variable is defined,
 # you will run into problems. See getfilevar for those cases.
 getfilevar_noexec() {
@@ -258,12 +253,11 @@ getfilevar_noexec() {
 	ERROR=0
 	mycat='cat'
 
-	[ -z "${1}" ] && ERROR=1
-	[ ! -f "${2}" ] && ERROR=1
-	[ "${2%.gz}" != "${2}" ] && mycat='zcat'
+	[[ -z "${1}" ]] && ERROR=1
+	[[ ! -f "${2}" ]] && ERROR=1
+	[[ "${2%.gz}" != "${2}" ]] && mycat='zcat'
 
-	if [ "${ERROR}" = 1 ]
-	then
+	if [[ "${ERROR}" = 1 ]]; then
 		echo -e "\n"
 		eerror "getfilevar_noexec requires 2 variables, with the second a valid file."
 		eerror "   getfilevar_noexec <VARIABLE> <CONFIGFILE>"
@@ -293,7 +287,8 @@ _LINUX_CONFIG_EXISTS_DONE=
 # Helper funciton which returns an error before the function argument is run if no config exists
 linux_config_qa_check() {
 	local f="$1"
-	if [ -z "${_LINUX_CONFIG_EXISTS_DONE}" ]; then
+
+	if [[ -z "${_LINUX_CONFIG_EXISTS_DONE}" ]]; then
 		ewarn "QA: You called $f before any linux_config_exists!"
 		ewarn "QA: The return value of $f will NOT guaranteed later!"
 	fi
@@ -351,7 +346,6 @@ linux_config_path() {
 # This function verifies that the current kernel is configured (it checks against the existence of .config)
 # otherwise it dies.
 require_configured_kernel() {
-
 	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 
 	if ! use kernel_linux; then
@@ -365,6 +359,7 @@ require_configured_kernel() {
 		qeerror "it points to the necessary object directory so that it might find .config."
 		die "Kernel not configured; no .config found in ${KV_OUT_DIR}"
 	fi
+
 	get_version || die "Unable to determine configured kernel version"
 }
 
@@ -445,7 +440,7 @@ kernel_is() {
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
 	fi
 
-	# if we haven't determined the version yet, we need to.
+	# If we haven't determined the version yet, we need to.
 	linux-info_get_any_version
 
 	# Now we can continue
@@ -459,7 +454,7 @@ kernel_is() {
 	  eq) operator="-eq"; shift;;
 	   *) operator="-eq";;
 	esac
-	[[ $# -gt 3 ]] && die "Error in kernel-2_kernel_is(): too many parameters"
+	[[ $# -gt 3 ]] && die "Error in ${ECLASS}_${FUNCNAME}(): too many parameters"
 
 	ver_test \
 		"${KV_MAJOR:-0}.${KV_MINOR:-0}.${KV_PATCH:-0}" \
@@ -488,7 +483,7 @@ get_makefile_extract_function() {
 
 # @ECLASS_VARIABLE: get_version_warning_done
 # @INTERNAL
-# @DESCRIPTION: 
+# @DESCRIPTION:
 # Internal variable, so we know to only print the warning once.
 get_version_warning_done=
 
@@ -511,26 +506,25 @@ get_version() {
 
 	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 
-	# no need to execute this twice assuming KV_FULL is populated.
-	# we can force by unsetting KV_FULL
-	[ -n "${KV_FULL}" ] && return 0
+	# No need to execute this twice assuming KV_FULL is populated.
+	# We can force by unsetting KV_FULL.
+	[[ -n "${KV_FULL}" ]] && return 0
 
-	# if we dont know KV_FULL, then we need too.
-	# make sure KV_DIR isnt set since we need to work it out via KERNEL_DIR
+	# If we don't know KV_FULL, then we need to.
+	# Make sure KV_DIR isn't set since we need to work it out via KERNEL_DIR.
 	unset KV_DIR
 
 	# KV_DIR will contain the full path to the sources directory we should use
-	[ -z "${get_version_warning_done}" ] && \
+	[[ -z "${get_version_warning_done}" ]] && \
 	qeinfo "Determining the location of the kernel source code"
-	[ -d "${KERNEL_DIR}" ] && KV_DIR="${KERNEL_DIR}"
+	[[ -d "${KERNEL_DIR}" ]] && KV_DIR="${KERNEL_DIR}"
 
-	if [ -z "${KV_DIR}" ]
-	then
-		if [ -z "${get_version_warning_done}" ]; then
+	if [[ -z "${KV_DIR}" ]]; then
+		if [[ -z "${get_version_warning_done}" ]]; then
 			get_version_warning_done=1
 			qewarn "Unable to find kernel sources at ${KERNEL_DIR}"
 			#qeinfo "This package requires Linux sources."
-			if [ "${KERNEL_DIR}" == "/usr/src/linux" ] ; then
+			if [[ "${KERNEL_DIR}" == "/usr/src/linux" ]] ; then
 				qeinfo "Please make sure that ${KERNEL_DIR} points at your running kernel, "
 				qeinfo "(or the kernel you wish to build against)."
 				qeinfo "Alternatively, set the KERNEL_DIR environment variable to the kernel sources location"
@@ -542,22 +536,21 @@ get_version() {
 	fi
 
 	# See if the kernel dir is actually an output dir. #454294
-	if [ -z "${KBUILD_OUTPUT}" -a -L "${KERNEL_DIR}/source" ]; then
+	if [[ -z "${KBUILD_OUTPUT}" && -L "${KERNEL_DIR}/source" ]]; then
 		KBUILD_OUTPUT=${KERNEL_DIR}
 		KERNEL_DIR=$(readlink -f "${KERNEL_DIR}/source")
 		KV_DIR=${KERNEL_DIR}
 	fi
 
-	if [ -z "${get_version_warning_done}" ]; then
+	if [[ -z "${get_version_warning_done}" ]]; then
 		qeinfo "Found kernel source directory:"
 		qeinfo "    ${KV_DIR}"
 	fi
 
 	kernel_get_makefile
 
-	if [[ ! -s ${KERNEL_MAKEFILE} ]]
-	then
-		if [ -z "${get_version_warning_done}" ]; then
+	if [[ ! -s ${KERNEL_MAKEFILE} ]]; then
+		if [[ -z "${get_version_warning_done}" ]]; then
 			get_version_warning_done=1
 			qeerror "Could not find a Makefile in the kernel source directory."
 			qeerror "Please ensure that ${KERNEL_DIR} points to a complete set of Linux sources"
@@ -567,8 +560,9 @@ get_version() {
 
 	# OK so now we know our sources directory, but they might be using
 	# KBUILD_OUTPUT, and we need this for .config and localversions-*
-	# so we better find it eh?
-	# do we pass KBUILD_OUTPUT on the CLI?
+	# so we better find it, eh?
+	#
+	# Do we pass KBUILD_OUTPUT on the CLI?
 	local OUTPUT_DIR=${KBUILD_OUTPUT}
 
 	if [[ -z ${OUTPUT_DIR} ]]; then
@@ -579,17 +573,16 @@ get_version() {
 		OUTPUT_DIR=$(${mkfunc} KBUILD_OUTPUT "${KERNEL_MAKEFILE}")
 	fi
 
-	# And contrary to existing functions I feel we shouldn't trust the
+	# And contrary to existing functions, I feel we shouldn't trust the
 	# directory name to find version information as this seems insane.
-	# So we parse ${KERNEL_MAKEFILE}.  
+	# So we parse ${KERNEL_MAKEFILE}.
 	KV_MAJOR=$(getfilevar VERSION "${KERNEL_MAKEFILE}")
 	KV_MINOR=$(getfilevar PATCHLEVEL "${KERNEL_MAKEFILE}")
 	KV_PATCH=$(getfilevar SUBLEVEL "${KERNEL_MAKEFILE}")
 	KV_EXTRA=$(getfilevar EXTRAVERSION "${KERNEL_MAKEFILE}")
 
-	if [ -z "${KV_MAJOR}" -o -z "${KV_MINOR}" -o -z "${KV_PATCH}" ]
-	then
-		if [ -z "${get_version_warning_done}" ]; then
+	if [[ -z "${KV_MAJOR}" || -z "${KV_MINOR}" || -z "${KV_PATCH}" ]]; then
+		if [[ -z "${get_version_warning_done}" ]]; then
 			get_version_warning_done=1
 			qeerror "Could not detect kernel version."
 			qeerror "Please ensure that ${KERNEL_DIR} points to a complete set of Linux sources."
@@ -597,9 +590,8 @@ get_version() {
 		return 1
 	fi
 
-	[ -d "${OUTPUT_DIR}" ] && KV_OUT_DIR="${OUTPUT_DIR}"
-	if [ -n "${KV_OUT_DIR}" ];
-	then
+	[[ -d "${OUTPUT_DIR}" ]] && KV_OUT_DIR="${OUTPUT_DIR}"
+	if [[ -n "${KV_OUT_DIR}" ]]; then
 		qeinfo "Found kernel object directory:"
 		qeinfo "    ${KV_OUT_DIR}"
 	fi
@@ -609,9 +601,9 @@ get_version() {
 	# Grab the kernel release from the output directory.
 	# TODO: we MUST detect kernel.release being out of date, and 'return 1' from
 	# this function.
-	if [ -s "${KV_OUT_DIR}"/include/config/kernel.release ]; then
+	if [[ -s "${KV_OUT_DIR}"/include/config/kernel.release ]]; then
 		KV_LOCAL=$(<"${KV_OUT_DIR}"/include/config/kernel.release)
-	elif [ -s "${KV_OUT_DIR}"/.kernelrelease ]; then
+	elif [[ -s "${KV_OUT_DIR}"/.kernelrelease ]]; then
 		KV_LOCAL=$(<"${KV_OUT_DIR}"/.kernelrelease)
 	else
 		KV_LOCAL=
@@ -624,13 +616,13 @@ get_version() {
 	# Clear out KV_LOCAL in that case.
 	# TODO: this does not detect a change in the localversion part between
 	# kernel.release and the value that would be generated.
-	if [ "$KV_LOCAL" = "$tmplocal" ]; then
+	if [[ "${KV_LOCAL}" = "${tmplocal}" ]]; then
 		KV_LOCAL=
 	else
-		KV_LOCAL=$tmplocal
+		KV_LOCAL=${tmplocal}
 	fi
 
-	# and in newer versions we can also pull LOCALVERSION if it is set.
+	# and in newer versions, we can also pull LOCALVERSION if it is set.
 	# but before we do this, we need to find if we use a different object directory.
 	# This *WILL* break if the user is using localversions, but we assume it was
 	# caught before this if they are.
@@ -718,7 +710,7 @@ check_kernel_built() {
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
 	fi
 
-	# if we haven't determined the version yet, we need to
+	# If we haven't determined the version yet, we need to
 
 	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
 
@@ -731,8 +723,7 @@ check_kernel_built() {
 		versionh_path="include/linux/version.h"
 	fi
 
-	if [ ! -f "${KV_OUT_DIR}/${versionh_path}" ]
-	then
+	if [[ ! -f "${KV_OUT_DIR}/${versionh_path}" ]]; then
 		eerror "These sources have not yet been prepared."
 		eerror "We cannot build against an unprepared tree."
 		eerror "To resolve this, please type the following:"
@@ -754,7 +745,7 @@ check_modules_supported() {
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
 	fi
 
-	# if we haven't determined the version yet, we need too.
+	# If we haven't determined the version yet, we need to.
 	require_configured_kernel
 
 	if ! linux_chkconfig_builtin "MODULES"; then
@@ -774,12 +765,12 @@ check_extra_config() {
 
 	local config negate die error reworkmodulenames
 	local soft_errors_count=0 hard_errors_count=0 config_required=0
-	# store the value of the QA check, because otherwise we won't catch usages
+	# Store the value of the QA check, because otherwise we won't catch usages
 	# after if check_extra_config is called AND other direct calls are done
 	# later.
 	local old_LINUX_CONFIG_EXISTS_DONE="${_LINUX_CONFIG_EXISTS_DONE}"
 
-	# if we haven't determined the version yet, we need to
+	# If we haven't determined the version yet, we need to.
 	linux-info_get_any_version
 
 	# Determine if we really need a .config. The only time when we don't need
@@ -820,9 +811,8 @@ check_extra_config() {
 
 	ebegin "Checking for suitable kernel configuration options"
 
-	for config in ${CONFIG_CHECK}
-	do
-		# if we specify any fatal, ensure we honor them
+	for config in ${CONFIG_CHECK}; do
+		# If we specify any fatal, ensure we honor them
 		die=1
 		error=0
 		negate=0
@@ -919,7 +909,7 @@ check_zlibinflate() {
 		die "${FUNCNAME}() called on non-Linux system, please fix the ebuild"
 	fi
 
-	# if we haven't determined the version yet, we need to
+	# If we haven't determined the version yet, we need to.
 	require_configured_kernel
 
 	# although I restructured this code - I really really really dont support it!
@@ -951,15 +941,15 @@ check_zlibinflate() {
 
 	LINENO_END="$(grep -n 'CONFIG_ZLIB_INFLATE y' ${KV_DIR}/lib/Config.in | cut -d : -f 1)"
 	LINENO_START="$(head -n $LINENO_END ${KV_DIR}/lib/Config.in | grep -n 'if \[' | tail -n 1 | cut -d : -f 1)"
-	(( LINENO_AMOUNT = $LINENO_END - $LINENO_START ))
-	(( LINENO_END = $LINENO_END - 1 ))
+	(( LINENO_AMOUNT = ${LINENO_END} - ${LINENO_START} ))
+	(( LINENO_END = ${LINENO_END} - 1 ))
 	SYMBOLS="$(head -n $LINENO_END ${KV_DIR}/lib/Config.in | tail -n $LINENO_AMOUNT | sed -e 's/^.*\(CONFIG_[^\" ]*\).*/\1/g;')"
 
 	# okay, now we have a list of symbols
 	# we need to check each one in turn, to see whether it is set or not
-	for x in $SYMBOLS ; do
-		if [ "${!x}" = "y" ]; then
-			# we have a winner!
+	for x in ${SYMBOLS} ; do
+		if [[ "${!x}" = "y" ]]; then
+			# We have a winner!
 			einfo "${x} ensures zlib is linked into your kernel - excellent"
 			return 0
 		fi
@@ -974,7 +964,7 @@ check_zlibinflate() {
 	eerror "Please ensure that you enable at least one of these options:"
 	eerror
 
-	for x in $SYMBOLS ; do
+	for x in ${SYMBOLS} ; do
 		eerror "  * $x"
 	done
 
@@ -997,7 +987,7 @@ linux-info_pkg_setup() {
 
 	linux-info_get_any_version
 
-	[[ -n "${CONFIG_CHECK}" && -z ${CHECKCONFIG_DONOTHING} ]] && check_extra_config;
+	[[ -n "${CONFIG_CHECK}" && -z ${CHECKCONFIG_DONOTHING} ]] && check_extra_config
 }
 
 # @FUNCTION: kernel_get_makefile
