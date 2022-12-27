@@ -41,7 +41,7 @@ waf-utils_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local fail
-	if [[ ! ${_PYTHON_ANY_R1_ECLASS} && ! ${_PYTHON_SINGLE_R1} && ! ${_PYTHON_R1} ]]; then
+	if [[ ! ${_PYTHON_ANY_R1_ECLASS} && ! ${_PYTHON_SINGLE_R1} && ! ${_PYTHON_R1_ECLASS} ]]; then
 		eerror "Using waf-utils.eclass without any python-r1 suite eclass is not supported."
 		eerror "Please make sure to configure and inherit appropriate -r1 eclass."
 		eerror "For more information and examples, please see:"

@@ -108,7 +108,7 @@ elif [[ ${_PYTHON_SINGLE_R1} ]]; then
 	BDEPEND="
 		$(python_gen_cond_dep "${SCONS_DEPEND}[\${PYTHON_USEDEP}]")
 		${PYTHON_DEPS}"
-elif [[ ${_PYTHON_R1} ]]; then
+elif [[ ${_PYTHON_R1_ECLASS} ]]; then
 	# when using python-r1, you need to depend on scons yourself
 	# (depending on whether you need any-r1 or full -r1 API)
 	# -- since this is a breaking API change, it applies to EAPI 7+ only

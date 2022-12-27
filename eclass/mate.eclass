@@ -45,7 +45,7 @@ DEPEND=">=mate-base/mate-common-${MATE_BRANCH}"
 # This function should only be used if the ebuild also inherits the
 # python-r1 eclass
 mate_py_cond_func_wrap() {
-	if [[ ! ${_PYTHON_R1} ]]; then
+	if [[ ! ${_PYTHON_R1_ECLASS} ]]; then
 		die "This function requires the inheritence of the python-r1 eclass"
 	fi
 	if use python; then
