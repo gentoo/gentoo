@@ -4,7 +4,7 @@
 # @ECLASS: rust-toolchain.eclass
 # @MAINTAINER:
 # Rust Project <rust@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 8
 # @BLURB: helps map gentoo arches to rust ABIs
 # @DESCRIPTION:
 # This eclass contains a src_unpack default phase function, and
@@ -12,10 +12,8 @@
 # gentoo arches.
 
 case ${EAPI} in
-	6) : ;;
-	7) : ;;
-	8) : ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
+	8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit multilib-build
