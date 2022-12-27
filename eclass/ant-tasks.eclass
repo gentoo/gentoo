@@ -1,4 +1,4 @@
-# Copyright 2007-2021 Gentoo Authors
+# Copyright 2007-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ant-tasks.eclass
@@ -6,22 +6,16 @@
 # java@gentoo.org
 # @AUTHOR:
 # Vlastimil Babka <caster@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 7
 # @PROVIDES: java-utils-2
 # @BLURB: Eclass for building dev-java/ant-* packages
 # @DESCRIPTION:
 # This eclass provides functionality and default ebuild variables for building
 # dev-java/ant-* packages easily.
 
-case "${EAPI:-0}" in
-	0|1|2|3|4|5)
-		die "ant-tasks.eclass: EAPI ${EAPI} is too old."
-		;;
-	6|7)
-		;;
-	*)
-		die "ant-tasks.eclass: EAPI ${EAPI} is not supported yet."
-		;;
+case ${EAPI} in
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # we set ant-core dep ourselves, restricted
@@ -29,7 +23,6 @@ JAVA_ANT_DISABLE_ANT_CORE_DEP=true
 # rewriting build.xml for are the testcases has no reason atm
 JAVA_PKG_BSFIX_ALL=no
 inherit java-pkg-2 java-ant-2
-[[ ${EAPI:-0} -eq 6 ]] && inherit eapi7-ver
 
 EXPORT_FUNCTIONS src_unpack src_compile src_install
 
