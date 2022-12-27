@@ -58,12 +58,11 @@
 
 case ${EAPI} in
 	7|8) ;;
-	*) die "EAPI=${EAPI:-0} not supported";;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS pkg_setup
-
 if [[ ! ${_LLVM_ECLASS} ]]; then
+_LLVM_ECLASS=1
 
 # make sure that the versions installing straight into /usr/bin
 # are uninstalled
@@ -278,5 +277,6 @@ llvm_pkg_setup() {
 	fi
 }
 
-_LLVM_ECLASS=1
 fi
+
+EXPORT_FUNCTIONS pkg_setup
