@@ -8,7 +8,7 @@
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
 # Mike Gilbert <floppym@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: common bits to run dev-util/ninja builder
 # @DESCRIPTION:
 # This eclass provides a single function -- eninja -- that can be used
@@ -19,7 +19,7 @@
 # Meson).
 
 case ${EAPI} in
-	5|6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -76,16 +76,13 @@ get_NINJAOPTS() {
 # @USAGE: [<args>...]
 # @DESCRIPTION:
 # Call Ninja, passing the NINJAOPTS (or converted MAKEOPTS), followed
-# by the supplied arguments. This function dies if ninja fails. Starting
-# with EAPI 6, it also supports being called via 'nonfatal'.
+# by the supplied arguments.  This function dies if ninja fails.  It
+# also supports being called via 'nonfatal'.
 eninja() {
-	local nonfatal_args=()
-	[[ ${EAPI} != 5 ]] && nonfatal_args+=( -n )
-
 	[[ -n "${NINJA_DEPEND}" ]] || ewarn "Unknown value '${NINJA}' for \${NINJA}"
 	set -- "${NINJA}" -v $(get_NINJAOPTS) "$@"
 	echo "$@" >&2
-	"$@" || die "${nonfatal_args[@]}" "${*} failed"
+	"$@" || die -n "${*} failed"
 }
 
 fi
