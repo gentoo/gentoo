@@ -5,14 +5,6 @@
 # Unkeyworded dependencies
 dev-util/diffoscope opendocument pascal pdf R
 
-# Sam James <sam@gentoo.org> (2022-12-02)
-# Unkeyworded dependencies
-app-alternatives/bc gh
-
-# Sam James <sam@gentoo.org> (2022-12-02)
-# Not keyworded here
-app-alternatives/lex reflex
-
 # Sam James <sam@gentoo.org> (2022-11-19)
 # Fails to compile because of size, bug #829602.
 sys-devel/clang extra

@@ -16,10 +16,6 @@ media-libs/gst-plugins-bad qsv
 sys-devel/clang ieee-long-double
 sys-devel/gcc ieee-long-double
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-01)
-# Not widely keyworded.
-app-alternatives/awk nawk
-
 # Mike Gilbert <floppym@gentoo.org> (2022-10-16)
 # Only supported on MIPS.
 dev-lang/gnat-gpl fixed-point

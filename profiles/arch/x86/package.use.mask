@@ -9,14 +9,6 @@
 # Here we prevent its only direct consumer from pulling it in.
 sci-mathematics/polymake lrs
 
-# Sam James <sam@gentoo.org> (2022-12-02)
-# Not keyworded here
-app-alternatives/lex reflex
-
-# Michał Górny <mgorny@gentoo.org> (2022-12-01)
-# Keyworded here.
-app-alternatives/awk -nawk
-
 # Michał Górny <mgorny@gentoo.org> (2022-11-16)
 # spirv-llvm-translator is not keyworded x86.
 dev-libs/libclc spirv
