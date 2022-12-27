@@ -80,7 +80,9 @@ src_install() {
 		install
 	)
 	emake -j1 "${args[@]}"
-	mv "${ED}"/usr/bin/keytab-{lilo,syslinux} || die
+	if use bios; then
+		mv "${ED}"/usr/bin/keytab-{lilo,syslinux} || die
+	fi
 	einstalldocs
 	dostrip -x /usr/share/syslinux
 }
