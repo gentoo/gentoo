@@ -43,3 +43,7 @@ distutils_enable_tests pytest
 PATCHES=(
 	"${DISTDIR}"/${P}-tomli.patch
 )
+
+python_test() {
+	epytest -p no:localserver
+}
