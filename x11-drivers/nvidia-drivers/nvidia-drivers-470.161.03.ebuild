@@ -454,6 +454,9 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 	# symlink non-versioned so nvidia-settings can use it even if misdetected
 	dosym nvidia-application-profiles-${PV}-key-documentation \
 		${paths[APPLICATION_PROFILE]}/nvidia-application-profiles-key-documentation
+
+	# don't attempt to strip firmware files (silences errors)
+	dostrip -x ${paths[FIRMWARE]}
 }
 
 pkg_preinst() {
