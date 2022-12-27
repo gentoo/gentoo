@@ -1,13 +1,19 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-#
 
 # @ECLASS: mozextension.eclass
 # @MAINTAINER:
 # Mozilla team <mozilla@gentoo.org>
+# @SUPPORTED_EAPIS: 8
 # @BLURB: Install extensions for use in Mozilla products.
 
-if [[ ! ${_MOZEXTENSION} ]]; then
+case ${EAPI} in
+	8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ ! ${_MOZEXTENSION_ECLASS} ]]; then
+_MOZEXTENSION_ECLASS=1
 
 # @ECLASS_VARIABLE: MOZEXTENSION_TARGET
 # @DESCRIPTION:
@@ -17,7 +23,7 @@ if [[ ! ${_MOZEXTENSION} ]]; then
 # paths specified in the eclass.
 : ${MOZEXTENSION_TARGET:=""}
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 mozversion_extension_location() {
 	case ${PN} in
@@ -117,8 +123,7 @@ xpi_copy() {
 		insinto "${MOZILLA_FIVE_HOME}"/extensions
 	fi
 
-	newins "${DISTDIR%/}"/${x##*/}.xpi ${emid}.xpi
+	newins "${DISTDIR}"/${x##*/}.xpi ${emid}.xpi
 }
 
-_MOZEXTENSION=1
 fi
