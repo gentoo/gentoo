@@ -1,0 +1,45 @@
+commit c009c4c1800086e7f4c4e80939e9ddc8964c8e12
+Author: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date:   Thu Aug 4 00:27:08 2022 +0200
+
+    Include execinfo.h only if available
+
+Bug: https://bugs.gentoo.org/873016
+Upstream: https://gitlab.com/free-astro/siril/-/merge_requests/284
+
+diff --git a/src/core/signals.c b/src/core/signals.c
+index 74100b3a..0eefd460 100644
+--- a/src/core/signals.c
++++ b/src/core/signals.c
+@@ -25,7 +25,7 @@
+ #ifdef _WIN32
+ #include <windows.h>
+ #include <dbghelp.h>
+-#else
++#elif HAVE_EXECINFO_H
+ #include <execinfo.h>
+ #endif
+ 
+commit 13bafd227500018bef052cad1d73e9c681be1b8a
+Author: Cyril Richard <cyril.richard42@gmail.com>
+Date:   Thu Aug 4 11:29:23 2022 +0200
+
+    Fix for merge_requests/284
+
+Bug: https://bugs.gentoo.org/883121
+Upstream: https://gitlab.com/free-astro/siril/-/commit/13bafd227500018bef052cad1d73e9c681be1b8a
+
+diff --git a/src/core/signals.c b/src/core/signals.c
+index 0eefd460..bbce5fa7 100644
+--- a/src/core/signals.c
++++ b/src/core/signals.c
+@@ -21,6 +21,9 @@
+ #define ANSI_COLOR_RED     "\e[1m\x1b[31m"
+ #define ANSI_COLOR_RESET   "\x1b[0m\e[0m"
+ 
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
+ #include <signal.h>
+ #ifdef _WIN32
+ #include <windows.h>
