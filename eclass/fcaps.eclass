@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fcaps.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: function to set POSIX file-based capabilities
 # @DESCRIPTION:
 # This eclass provides a function to set file-based capabilities on binaries.
@@ -30,8 +30,8 @@
 # @CODE
 
 case ${EAPI} in
-	6|7|8) ;;
-	*) die "EAPI ${EAPI:-0} is unsupported" ;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_FCAPS_ECLASS} ]]; then
@@ -41,8 +41,8 @@ IUSE="+filecaps"
 
 # Since it is needed in pkg_postinst() it must be in IDEPEND
 case ${EAPI} in
-	7) BDEPEND="filecaps? ( sys-libs/libcap )" ;& # fallthrough
-	6) RDEPEND="filecaps? ( sys-libs/libcap )" ;;
+	7) BDEPEND="filecaps? ( sys-libs/libcap )"
+	   RDEPEND="filecaps? ( sys-libs/libcap )" ;;
 	*) IDEPEND="filecaps? ( sys-libs/libcap )" ;;
 esac
 
