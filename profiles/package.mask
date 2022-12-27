@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2022-12-27)
+# Regression in listing subvolumes (no UUIDs), bug #888549
+# https://github.com/kdave/btrfs-progs/issues/562
+=sys-fs/btrfs-progs-6.1
+
 # Fabian Groffen <grobian@gentoo.org> (2022-12-27)
 # Old SVN version, with open bugs #830031, #770946, #712534, all fixed
 # in app-admin/coreboot-utils package.  (Conflict in #888581)  Removal
