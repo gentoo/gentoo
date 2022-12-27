@@ -1,0 +1,19 @@
+softmagic: include limits.h for UINT_MAX usage
+
+Platforms like Solaris need this to compile.
+
+Bug: https://bugs.astron.com/view.php?id=413
+Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+
+--- a/src/softmagic.c
++++ b/src/softmagic.c
+@@ -42,6 +42,7 @@
+ #include <ctype.h>
+ #include <stdlib.h>
+ #include <time.h>
++#include <limits.h>
+ #include "der.h"
+
+ file_private int match(struct magic_set *, struct magic *, file_regex_t **,    size_t,
+
+
