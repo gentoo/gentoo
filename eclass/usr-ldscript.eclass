@@ -4,11 +4,11 @@
 # @ECLASS: usr-ldscript.eclass
 # @MAINTAINER:
 # Toolchain Ninjas <toolchain@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Defines the gen_usr_ldscript function.
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -84,27 +84,27 @@ gen_usr_ldscript() {
 			# Ensure /lib/${lib} exists to avoid dangling scripts/symlinks.
 			# This especially is for AIX where $(get_libname) can return ".a",
 			# so /lib/${lib} might be moved to /usr/lib/${lib} (by accident).
-			[[ -r ${ED%/}/${libdir}/${lib} ]] || continue
+			[[ -r ${ED}/${libdir}/${lib} ]] || continue
 			#TODO: better die here?
 		fi
 
 		case ${CTARGET:-${CHOST}} in
 		*-darwin*)
 			if ${auto} ; then
-				tlib=$(scanmacho -qF'%S#F' "${ED%/}"/usr/${libdir}/${lib})
+				tlib=$(scanmacho -qF'%S#F' "${ED}"/usr/${libdir}/${lib})
 			else
-				tlib=$(scanmacho -qF'%S#F' "${ED%/}"/${libdir}/${lib})
+				tlib=$(scanmacho -qF'%S#F' "${ED}"/${libdir}/${lib})
 			fi
 			[[ -z ${tlib} ]] && die "unable to read install_name from ${lib}"
 			tlib=${tlib##*/}
 
 			if ${auto} ; then
-				mv "${ED%/}"/usr/${libdir}/${lib%${suffix}}.*${suffix#.} "${ED%/}"/${libdir}/ || die
+				mv "${ED}"/usr/${libdir}/${lib%${suffix}}.*${suffix#.} "${ED}"/${libdir}/ || die
 				# some install_names are funky: they encode a version
 				if [[ ${tlib} != ${lib%${suffix}}.*${suffix#.} ]] ; then
-					mv "${ED%/}"/usr/${libdir}/${tlib%${suffix}}.*${suffix#.} "${ED%/}"/${libdir}/ || die
+					mv "${ED}"/usr/${libdir}/${tlib%${suffix}}.*${suffix#.} "${ED}"/${libdir}/ || die
 				fi
-				rm -f "${ED%/}"/${libdir}/${lib}
+				rm -f "${ED}"/${libdir}/${lib}
 			fi
 
 			# Mach-O files have an id, which is like a soname, it tells how
@@ -114,34 +114,36 @@ gen_usr_ldscript() {
 			# libdir=/lib because that messes up libtool files.
 			# Make sure we don't lose the specific version, so just modify the
 			# existing install_name
-			if [[ ! -w "${ED%/}/${libdir}/${tlib}" ]] ; then
-				chmod u+w "${ED%/}/${libdir}/${tlib}" # needed to write to it
+			if [[ ! -w "${ED}/${libdir}/${tlib}" ]] ; then
+				chmod u+w "${ED}/${libdir}/${tlib}" || die # needed to write to it
 				local nowrite=yes
 			fi
 			install_name_tool \
 				-id "${EPREFIX}"/${libdir}/${tlib} \
-				"${ED%/}"/${libdir}/${tlib} || die "install_name_tool failed"
-			[[ -n ${nowrite} ]] && chmod u-w "${ED%/}/${libdir}/${tlib}"
+				"${ED}"/${libdir}/${tlib} || die "install_name_tool failed"
+			if [[ -n ${nowrite} ]] ; then
+				chmod u-w "${ED}/${libdir}/${tlib}" || die
+			fi
 			# Now as we don't use GNU binutils and our linker doesn't
 			# understand linker scripts, just create a symlink.
-			pushd "${ED%/}/usr/${libdir}" > /dev/null
+			pushd "${ED}/usr/${libdir}" > /dev/null
 			ln -snf "../../${libdir}/${tlib}" "${lib}"
 			popd > /dev/null
 			;;
 		*)
 			if ${auto} ; then
-				tlib=$(scanelf -qF'%S#F' "${ED%/}"/usr/${libdir}/${lib})
+				tlib=$(scanelf -qF'%S#F' "${ED}"/usr/${libdir}/${lib})
 				[[ -z ${tlib} ]] && die "unable to read SONAME from ${lib}"
-				mv "${ED%/}"/usr/${libdir}/${lib}* "${ED%/}"/${libdir}/ || die
+				mv "${ED}"/usr/${libdir}/${lib}* "${ED}"/${libdir}/ || die
 				# some SONAMEs are funky: they encode a version before the .so
 				if [[ ${tlib} != ${lib}* ]] ; then
-					mv "${ED%/}"/usr/${libdir}/${tlib}* "${ED%/}"/${libdir}/ || die
+					mv "${ED}"/usr/${libdir}/${tlib}* "${ED}"/${libdir}/ || die
 				fi
-				rm -f "${ED%/}"/${libdir}/${lib}
+				rm -f "${ED}"/${libdir}/${lib}
 			else
 				tlib=${lib}
 			fi
-			cat > "${ED%/}/usr/${libdir}/${lib}" <<-END_LDSCRIPT
+			cat > "${ED}/usr/${libdir}/${lib}" <<-END_LDSCRIPT
 			/* GNU ld script
 			   Since Gentoo has critical dynamic libraries in /lib, and the static versions
 			   in /usr/lib, we need to have a "fake" dynamic lib in /usr/lib, otherwise we
