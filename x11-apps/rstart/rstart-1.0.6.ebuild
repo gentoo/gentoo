@@ -8,7 +8,7 @@ inherit xorg-3
 
 DESCRIPTION="X.Org rstart application"
 
-KEYWORDS="amd64 arm ~mips ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 ~s390 ~sparc x86"
 
 DEPEND="x11-base/xorg-proto"
 RDEPEND=""
