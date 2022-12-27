@@ -22,7 +22,7 @@
 # @DESCRIPTION:
 # Utilized for 32-bit userland on ppc64.
 
-# @ECLASS_VARIABLE: CKV 
+# @ECLASS_VARIABLE: CKV
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Used as a comparison kernel version, which is used when
@@ -187,36 +187,36 @@
 # Apply genpatches to kernel source. Provide any
 # combination of "base", "extras" or "experimental".
 
-# @ECLASS_VARIABLE: KERNEL_URI 
+# @ECLASS_VARIABLE: KERNEL_URI
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Upstream kernel src URI
 
-# @ECLASS_VARIABLE: KV 
+# @ECLASS_VARIABLE: KV
 # @DEFAULT_UNSET
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Kernel Version (2.6.0-gentoo/2.6.0-test11-gentoo-r1)
 
-# @ECLASS_VARIABLE: KV_FULL 
+# @ECLASS_VARIABLE: KV_FULL
 # @DEFAULT_UNSET
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Kernel full version
 
-# @ECLASS_VARIABLE: KV_MAJOR 
+# @ECLASS_VARIABLE: KV_MAJOR
 # @DEFAULT_UNSET
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Kernel major version from <KV_MAJOR>.<KV_MINOR>.<KV_PATCH
 
-# @ECLASS_VARIABLE: KV_MINOR 
+# @ECLASS_VARIABLE: KV_MINOR
 # @DEFAULT_UNSET
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Kernel minor version from <KV_MAJOR>.<KV_MINOR>.<KV_PATCH
 
-# @ECLASS_VARIABLE: KV_PATCH 
+# @ECLASS_VARIABLE: KV_PATCH
 # @DEFAULT_UNSET
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
@@ -227,12 +227,12 @@
 # @DESCRIPTION:
 # Default cflags if not already set
 
-# @ECLASS_VARIABLE: OKV  
+# @ECLASS_VARIABLE: OKV
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Original Kernel Version (2.6.0/2.6.0-test11)
 
-# @ECLASS_VARIABLE: RELEASE 
+# @ECLASS_VARIABLE: RELEASE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Representative of the kernel release tag (-rc3/-git3)
@@ -261,15 +261,15 @@
 # @DESCRIPTION:
 # space delimetered list of patches to be applied to the kernel
 
-# @ECLASS_VARIABLE: UNIPATCH_LIST_DEFAULT 
+# @ECLASS_VARIABLE: UNIPATCH_LIST_DEFAULT
 # @INTERNAL
 # @DESCRIPTION:
 # Upstream kernel patch archive
 
-# @ECLASS_VARIABLE: UNIPATCH_LIST_GENPATCHES 
+# @ECLASS_VARIABLE: UNIPATCH_LIST_GENPATCHES
 # @INTERNAL
 # @DESCRIPTION:
-# List of genpatches archives to apply to the kernel 
+# List of genpatches archives to apply to the kernel
 
 # @ECLASS_VARIABLE: UNIPATCH_STRICTORDER
 # @DEFAULT_UNSET
@@ -646,7 +646,7 @@ kernel_is() {
 	  eq) operator="-eq"; shift;;
 	   *) operator="-eq";;
 	esac
-	[[ $# -gt 3 ]] && die "Error in kernel-2_kernel_is(): too many parameters"
+	[[ $# -gt 3 ]] && die "Error in ${ECLASS}_${FUNCNAME}(): too many parameters"
 
 	ver_test \
 		"${KV_MAJOR:-0}.${KV_MINOR:-0}.${KV_PATCH:-0}" \
@@ -1190,14 +1190,14 @@ unipatch() {
 		fi
 	done
 
-	#populate KPATCH_DIRS so we know where to look to remove the excludes
+	# Populate KPATCH_DIRS so we know where to look to remove the excludes
 	x=${KPATCH_DIR}
 	KPATCH_DIR=""
 	for i in $(find ${x} -type d | sort -n); do
 		KPATCH_DIR="${KPATCH_DIR} ${i}"
 	done
 
-	#so now lets get rid of the patchno's we want to exclude
+	# So now lets get rid of the patch numbers we want to exclude
 	UNIPATCH_DROP="${UNIPATCH_EXCLUDE} ${UNIPATCH_DROP}"
 	for i in ${UNIPATCH_DROP}; do
 		ebegin "Excluding Patch #${i}"
@@ -1224,7 +1224,7 @@ unipatch() {
 			# addition of a file with the same name as the symlink in the      #
 			# same location; this causes the dry-run to fail, see bug #507656. #
 			#                                                                  #
-			# https://bugs.gentoo.org/show_bug.cgi?id=507656                   #
+			# https://bugs.gentoo.org/507656                                   #
 			####################################################################
 			if [[ -n ${K_NODRYRUN} ]]; then
 				ebegin "Applying ${i/*\//} (-p1)"
