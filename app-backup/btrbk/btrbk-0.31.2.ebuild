@@ -25,7 +25,7 @@ DEPEND="doc? ( >=dev-ruby/asciidoctor-1.5.7 )"
 RDEPEND="dev-lang/perl
 	net-misc/openssh
 	mbuffer? ( >=sys-block/mbuffer-20180505 )
-	<sys-fs/btrfs-progs-6.1"
+	sys-fs/btrfs-progs"
 
 src_compile() {
 	emake clean
