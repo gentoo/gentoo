@@ -122,6 +122,7 @@ src_prepare() {
 	eapply     "${FILESDIR}"/exim-4.94-localscan_dlopen.patch
 	eapply     "${FILESDIR}"/exim-4.94.2-fix-crash-resolve.patch # 799368 upstr
 	eapply     "${FILESDIR}"/exim-4.94-CVE-2022-3559.patch  # 877607 upstr
+	eapply     "${FILESDIR}"/exim-4.94.2-openssl3.patch # 888619 backport
 
 	# for this reason we have a := dep on opendmarc, they changed their
 	# API in a minor release

@@ -1,0 +1,34 @@
+Based on original commit, but applied to 4.94.2 tarball.
+
+From ff7829398d74e67f1c1f40339a772fd76708e5ac Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaroslav=20=C5=A0karvada?= <jskarvad@redhat.com>
+Date: Sat, 27 Nov 2021 21:07:15 +0000
+Subject: [PATCH] Fix build for OpenSSL 3.0.0 .  Bug 2810
+
+---
+ src/src/tls-openssl.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+--- a/src/tls-openssl.c
++++ b/src/tls-openssl.c
+@@ -227,12 +227,16 @@
+   { US"no_tlsv1", SSL_OP_NO_TLSv1 },
+ #endif
+ #ifdef SSL_OP_NO_TLSv1_1
+-#if SSL_OP_NO_TLSv1_1 == 0x00000400L
++# if OPENSSL_VERSION_NUMBER < 0x30000000L
++#  if SSL_OP_NO_TLSv1_1 == 0x00000400L
+   /* Error in chosen value in 1.0.1a; see first item in CHANGES for 1.0.1b */
+-#warning OpenSSL 1.0.1a uses a bad value for SSL_OP_NO_TLSv1_1, ignoring
+-#else
++#   warning OpenSSL 1.0.1a uses a bad value for SSL_OP_NO_TLSv1_1, ignoring
++#   define NO_SSL_OP_NO_TLSv1_1
++#  endif
++# endif
++# ifndef NO_SSL_OP_NO_TLSv1_1
+   { US"no_tlsv1_1", SSL_OP_NO_TLSv1_1 },
+-#endif
++# endif
+ #endif
+ #ifdef SSL_OP_NO_TLSv1_2
+   { US"no_tlsv1_2", SSL_OP_NO_TLSv1_2 },
