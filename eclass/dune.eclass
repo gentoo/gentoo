@@ -8,11 +8,19 @@
 # ML <ml@gentoo.org>
 # @AUTHOR:
 # Rafael Kitover <rkitover@gmail.com>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Provides functions for installing Dune packages.
 # @DESCRIPTION:
 # Provides dependencies on Dune and OCaml and default src_compile, src_test and
 # src_install for Dune-based packages.
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ ! ${_DUNE_ECLASS} ]]; then
+_DUNE_ECLASS=1
 
 # @ECLASS_VARIABLE: DUNE_PKG_NAME
 # @PRE_INHERIT
@@ -21,28 +29,20 @@
 # Set before inheriting the eclass.
 : ${DUNE_PKG_NAME:=${PN}}
 
-case ${EAPI:-0} in
-	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
-esac
-
 inherit multiprocessing
 
 # Do not complain about CFLAGS etc since ml projects do not use them.
 QA_FLAGS_IGNORED='.*'
 
-EXPORT_FUNCTIONS src_compile src_test src_install
-
-RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?] dev-ml/dune:="
-case ${EAPI:-0} in
-	6)
-		DEPEND="${RDEPEND} dev-ml/dune"
-		;;
-	*)
-		BDEPEND="dev-ml/dune dev-lang/ocaml"
-		DEPEND="${RDEPEND}"
-		;;
-esac
+RDEPEND="
+	>=dev-lang/ocaml-4:=[ocamlopt?]
+	dev-ml/dune:=
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	dev-lang/ocaml
+	dev-ml/dune
+"
 
 dune_src_compile() {
 	ebegin "Building"
@@ -72,9 +72,9 @@ dune-install() {
 	[[ ${#pkgs[@]} -eq 0 ]] && pkgs=( "${DUNE_PKG_NAME}" )
 
 	local -a myduneopts=(
-		--prefix="${ED%/}/usr"
-		--libdir="${D%/}$(ocamlc -where)"
-		--mandir="${ED%/}/usr/share/man"
+		--prefix="${ED}/usr"
+		--libdir="${D}$(ocamlc -where)"
+		--mandir="${ED}/usr/share/man"
 	)
 
 	local pkg
@@ -84,10 +84,10 @@ dune-install() {
 		eend $? || die
 
 		# Move docs to the appropriate place.
-		if [ -d "${ED%/}/usr/doc/${pkg}" ] ; then
-			mkdir -p "${ED%/}/usr/share/doc/${PF}/" || die
-			mv "${ED%/}/usr/doc/${pkg}" "${ED%/}/usr/share/doc/${PF}/" || die
-			rm -rf "${ED%/}/usr/doc" || die
+		if [[ -d "${ED}/usr/doc/${pkg}" ]] ; then
+			mkdir -p "${ED}/usr/share/doc/${PF}/" || die
+			mv "${ED}/usr/doc/${pkg}" "${ED}/usr/share/doc/${PF}/" || die
+			rm -rf "${ED}/usr/doc" || die
 		fi
 	done
 }
@@ -95,3 +95,7 @@ dune-install() {
 dune_src_install() {
 	dune-install ${1:-${DUNE_PKG_NAME}}
 }
+
+fi
+
+EXPORT_FUNCTIONS src_compile src_test src_install
