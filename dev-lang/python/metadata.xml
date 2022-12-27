@@ -20,6 +20,8 @@
 		</flag>
 		<flag name="pgo">
 			Optimize the build using Profile Guided Optimization (PGO)
+			by running Python's test suite and collecting statistics
+			based on its performance. This will take longer to build.
 		</flag>
 		<flag name="lto">
 			Optimize the build using Link Time Optimization (LTO)
