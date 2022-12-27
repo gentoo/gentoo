@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit toolchain-funcs flag-o-matic
 
 HOMEPAGE="https://www.sdaoden.eu/code.html"
 DESCRIPTION="Enhanced mailx-compatible mail client based on Heirloom mailx (nail)"
@@ -33,9 +33,11 @@ BDEPEND="
 "
 
 src_configure() {
+	# Fails to build without replace Bug 860357
+	replace-flags -O[0gs] -O1
+	append-cflags -std=c99
 	local confopts=(
 		CC="$(tc-getCC)"
-		EXTRA_CFLAGS=-std=c99
 		strip=/bin/true
 		OPT_AUTOCC=no
 		VAL_PREFIX="${EPREFIX}"/usr
