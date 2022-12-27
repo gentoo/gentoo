@@ -18,6 +18,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
+# TODO: Detect at runtime what's available and fallback if needed, possibly
+# integrate with eselect-package-manager, bug #779007.
 IUSE="pkgcore"
 
 [[ "${PV}" == "9999" ]] && BDEPEND="sys-apps/help2man"
