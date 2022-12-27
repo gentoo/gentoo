@@ -121,12 +121,12 @@ qmail_src_postunpack() {
 
 qmail_src_compile() {
 	cd "${S}"
-	emake it man "$@" || die "make failed"
+	emake it man "$@"
 }
 
 qmail_spp_src_compile() {
 	cd "${GENQMAIL_S}"/spp/
-	emake || die "make spp failed"
+	emake
 }
 
 qmail_base_install() {
