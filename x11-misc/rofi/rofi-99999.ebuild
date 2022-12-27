@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	sys-devel/bison
-	sys-devel/flex
+	>=sys-devel/flex-2.5.39
 	virtual/pkgconfig
 "
 RDEPEND="
