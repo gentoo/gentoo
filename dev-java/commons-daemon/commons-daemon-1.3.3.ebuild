@@ -15,7 +15,7 @@ inherit java-pkg-2 java-pkg-simple toolchain-funcs verify-sig
 DESCRIPTION="Tools to allow Java programs to run as UNIX daemons"
 HOMEPAGE="https://commons.apache.org/proper/commons-daemon/"
 SRC_URI="mirror://apache/commons/daemon/source/${P}-src.tar.gz
-	verify-sig? ( https://downloads.apache.org/commons/daemon/source/commons-daemon-${PV}-src.tar.gz.asc )"
+	verify-sig? ( https://downloads.apache.org/commons/daemon/source/${P}-src.tar.gz.asc )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
