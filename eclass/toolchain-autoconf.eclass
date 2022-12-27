@@ -1,29 +1,22 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-autoconf.eclass
 # @MAINTAINER:
 # <base-system@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Common code for sys-devel/autoconf ebuilds
 # @DESCRIPTION:
 # This eclass contains the common phase functions migrated from
 # sys-devel/autoconf eblits.
 
-case ${EAPI:-0} in
-	[0-5])
-		die "${ECLASS} is banned in EAPI ${EAPI:-0}"
-		;;
-	[6-7])
-		;;
-	*)
-		die "Unknown EAPI ${EAPI:-0}"
-		;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_TOOLCHAIN_AUTOCONF_ECLASS} ]]; then
-
-EXPORT_FUNCTIONS src_prepare src_configure src_install
+_TOOLCHAIN_AUTOCONF_ECLASS=1
 
 toolchain-autoconf_src_prepare() {
 	find -name Makefile.in -exec sed -i '/^pkgdatadir/s:$:-@VERSION@:' {} + || die
@@ -75,5 +68,6 @@ toolchain-autoconf_src_install() {
 	slot_info_pages
 }
 
-_TOOLCHAIN_AUTOCONF_ECLASS=1
 fi
+
+EXPORT_FUNCTIONS src_prepare src_configure src_install
