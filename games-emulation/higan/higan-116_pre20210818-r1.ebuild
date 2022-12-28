@@ -33,7 +33,7 @@ RDEPEND="
 		dev-libs/glib:2
 		x11-libs/cairo
 		x11-libs/gdk-pixbuf:2
-		x11-libs/gtk+:3
+		x11-libs/gtk+:3[X]
 		x11-libs/gtksourceview:3.0=
 		x11-libs/pango
 	)
