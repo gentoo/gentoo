@@ -139,13 +139,10 @@ app-office/libreoffice clang
 # LLVM toolchain now partially usable on loong, mask the remaining pieces
 # pending test/bugfixes/porting.
 #
-# - sys-libs/libcxxabi: fails many tests but is apparently working
-# - sys-libs/libcxx: fails many tests, more upstream work likely needed
-# - sys-libs/libomp: fails 4 tests
-#   - need at least https://reviews.llvm.org/D138177 but there could be more
+# - sys-libs/libcxx: will work once https://reviews.llvm.org/D139297 lands
 # - sys-devel/lld: port is still under review
 sys-devel/clang-common default-libcxx default-lld
-sys-devel/clang-runtime libcxx openmp
+sys-devel/clang-runtime libcxx
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-18)
 # net-libs/webkit-gtk is not available on loong yet.
@@ -159,8 +156,9 @@ mate-base/mate help
 # ASan: https://reviews.llvm.org/D129418 (LLVM 15 and above)
 # TSan: https://reviews.llvm.org/D139292 (LLVM 16 since 20221208)
 # UBSan: https://reviews.llvm.org/D139292 (LLVM 16 since 20221208)
+# SafeStack: https://reviews.llvm.org/D139494 (LLVM 16 since 20221210)
 >=sys-libs/compiler-rt-sanitizers-15 -asan
->=sys-libs/compiler-rt-sanitizers-16.0.0_pre20221210 -tsan -ubsan
+>=sys-libs/compiler-rt-sanitizers-16.0.0_pre20221210 -safestack -tsan -ubsan
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
 # virtual/{jdk,jre} is not available on loong yet.
