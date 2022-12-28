@@ -300,7 +300,7 @@ sys-boot/grub:2 -grub_platforms_xen-32
 
 # Brian Evans <grknight@gentoo.org (2015-09-14)
 # Unmask new USE flags for mariadb on supported arches
->=dev-db/mariadb-10.1.0 -mroonga -sst-xtrabackup -galera
+>=dev-db/mariadb-10.1.0 -mroonga -galera
 
 # Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sys-boot/gnu-efi is not supported on all archs.

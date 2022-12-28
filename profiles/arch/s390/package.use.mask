@@ -35,10 +35,6 @@ app-admin/syslog-ng kafka test
 dev-cpp/eigen test
 
 # Sam James <sam@gentoo.org> (2022-04-26)
-# Avoid unkeyworded sci-libs/umfpack
-dev-python/scipy sparse
-
-# Sam James <sam@gentoo.org> (2022-04-26)
 # Avoid unkeyworded media-gfx/libimagequant
 dev-python/pillow imagequant
 

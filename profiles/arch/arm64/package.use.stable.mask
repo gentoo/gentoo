@@ -88,7 +88,6 @@ net-misc/ntpsec rclock_oncore rclock_pps
 dev-util/bcc test
 dev-libs/libisoburn launch-frontend launch-frontend-setuid frontend-optional
 net-analyzer/rrdtool rados
-sys-fs/multipath-tools rbd
 www-servers/uwsgi uwsgi_plugins_rados
 dev-libs/boost mpi
 media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack

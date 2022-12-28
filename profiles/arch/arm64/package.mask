@@ -1,8 +1,2 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Sam James <sam@gentoo.org> (2022-01-22)
-# Fails to build on arm64.
-# marbling.c:181:44: error: incompatible type for argument 1 of ‘vqdmulhq_s16’
-# bug #830914
-~x11-misc/xscreensaver-6.02

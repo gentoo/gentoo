@@ -58,10 +58,6 @@ sys-apps/nvme-cli hugepages
 # due to network access issues #829430
 net-libs/grpc test
 
-# Ben Kohler <bkohler@gentoo.org> (2021-11-27)
-# net-misc/pyhoca-cli and several of its deps will need stable first
-net-misc/remmina x2go
-
 # Sergey Popov <pinkbyte@gentoo.org> (2021-10-14)
 # net-libs/grpc is not yet stabilized,
 # so mask optional use flag on net-misc/frr
@@ -236,12 +232,6 @@ net-libs/gnutls test-full
 # Lars Wendler <polynomial-c@gentoo.org> (2016-12-15)
 # Requires php:7.0 and ruby:2.2 being stable
 >=dev-libs/Ice-3.6.3 php ruby
-
-# Kristian Fiskerstrand <k_f@gentoo.org> (2016-08-18)
-# Dropping stable for xtrabackup-bin, stable masking use
-# flag until a source based version that doesn't depend
-# on a vulnerable libgcrypt version is in tree
-dev-db/mariadb sst-xtrabackup
 
 # Pacho Ramos <pacho@gentoo.org> (2015-05-15)
 # Version compatible with current ffmpeg is not ready to be stabilized
