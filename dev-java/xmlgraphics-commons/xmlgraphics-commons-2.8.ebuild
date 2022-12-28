@@ -47,7 +47,7 @@ DEPEND="${CP_DEPEND}
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
 
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-commons )"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-apache-xmlgraphics-commons )"
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/xmlgraphics-commons.apache.org.asc"
 
 DOCS=( NOTICE README )
