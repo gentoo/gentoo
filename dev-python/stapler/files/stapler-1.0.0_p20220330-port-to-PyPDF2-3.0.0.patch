@@ -1,0 +1,302 @@
+From 48d6ab21369f1e71dc57890f9bf78fff66c00a90 Mon Sep 17 00:00:00 2001
+From: Ben Kohler <bkohler@gentoo.org>
+Date: Wed, 28 Dec 2022 10:08:30 -0600
+Subject: [PATCH 2/2] Port to PyPDF2-3.0.0
+
+Lots of functions got renamed in the recent PyPDF2-3.0.0 release
+
+Signed-off-by: Ben Kohler <bkohler@gentoo.org>
+---
+ staplelib/commands.py | 46 +++++++++++++++++++++----------------------
+ staplelib/iohelper.py | 12 +++++------
+ staplelib/tests.py    | 34 ++++++++++++++++----------------
+ 3 files changed, 46 insertions(+), 46 deletions(-)
+
+diff --git a/staplelib/commands.py b/staplelib/commands.py
+index d37bfa7..caf75f9 100644
+--- a/staplelib/commands.py
++++ b/staplelib/commands.py
+@@ -4,9 +4,9 @@ import math
+ import os
+ 
+ try:
+-    from PyPDF2 import PdfFileWriter, PdfFileReader
++    from PyPDF2 import PdfWriter, PdfReader
+ except:
+-    from pyPdf import PdfFileWriter, PdfFileReader
++    from pyPdf import PdfWriter, PdfReader
+ 
+ from . import CommandError, iohelper
+ import staplelib
+@@ -33,7 +33,7 @@ def select(args, inverse=False):
+     if not filesandranges or not outputfilename:
+         raise CommandError("Both input and output filenames are required.")
+ 
+-    output = PdfFileWriter()
++    output = PdfWriter()
+     try:
+         for input in filesandranges:
+             pdf = input['pdf']
+@@ -44,21 +44,21 @@ def select(args, inverse=False):
+             if not inverse:
+                 pagerange = input['pages'] or [
+                     (p, iohelper.ROTATION_NONE) for p in
+-                    range(1, pdf.getNumPages() + 1)]
++                    range(1, len(pdf.pages) + 1)]
+             else:
+                 excluded = [p for p, r in input['pages']]
+                 pagerange = [(p, iohelper.ROTATION_NONE) for p in
+-                             range(1, pdf.getNumPages() + 1) if
++                             range(1, len(pdf.pages) + 1) if
+                              p not in excluded]
+ 
+             for pageno, rotate in pagerange:
+-                if 1 <= pageno <= pdf.getNumPages():
++                if 1 <= pageno <= len(pdf.pages):
+                     if verbose:
+                         print("Using page: {} (rotation: {} deg.)".format(
+                             pageno, rotate))
+ 
+-                    output.addPage(pdf.getPage(pageno-1)
+-                                   .rotateClockwise(rotate))
++                    output.add_page(pdf.pages[pageno-1]
++                                   .rotate(rotate))
+                 else:
+                     raise CommandError("Page {} not found in {}.".format(
+                         pageno, input['name']))
+@@ -98,14 +98,14 @@ def split(args):
+             base,
+             '_',
+             '%0',
+-            str(math.ceil(math.log10(input.getNumPages()))),
++            str(math.ceil(math.log10(len(input.pages)))),
+             'd',
+             ext
+         ])
+ 
+-        for pageno in range(input.getNumPages()):
+-            output = PdfFileWriter()
+-            output.addPage(input.getPage(pageno))
++        for pageno in range(len(input.pages)):
++            output = PdfWriter()
++            output.add_page(input.pages[pageno])
+ 
+             outputname = output_template % (pageno + 1)
+             if verbose:
+@@ -150,17 +150,17 @@ def zip_pdf_pages(filesandranges, verbose):
+         # empty range means "include all pages"
+         pagerange = input['pages'] or [
+             (p, iohelper.ROTATION_NONE) for p in
+-            range(1, pdf.getNumPages() + 1)]
++            range(1, len(pdf.pages) + 1)]
+ 
+         pagestozip = []
+         for pageno, rotate in pagerange:
+-            if 1 <= pageno <= pdf.getNumPages():
++            if 1 <= pageno <= len(pdf.pages):
+                 if verbose:
+                     print("Using page: {} (rotation: {} deg.)".format(
+                         pageno, rotate))
+ 
+-                pagestozip.append(pdf.getPage(pageno-1)
+-                               .rotateClockwise(rotate))
++                pagestozip.append(pdf.pages[pageno-1]
++                               .rotate(rotate))
+             else:
+                 raise CommandError("Page {} not found in {}.".format(
+                     pageno, input['name']))
+@@ -181,7 +181,7 @@ def background(args):
+     try:
+         filestozip = zip_pdf_pages(filesandranges, verbose)
+ 
+-        output = PdfFileWriter()
++        output = PdfWriter()
+         for pageno in range(max(map(len, filestozip))):
+             page = None
+             for listno in range(len(filestozip)):
+@@ -190,8 +190,8 @@ def background(args):
+                     if not page:
+                         page = p
+                     else:
+-                        page.mergePage(p)
+-            output.addPage(page)
++                        page.merge_page(p)
++            output.add_page(page)
+ 
+     except Exception as e:
+         import sys
+@@ -213,11 +213,11 @@ def zip(args):
+     filestozip = zip_pdf_pages(filesandranges, verbose)
+ 
+     # Interweave pages.
+-    output = PdfFileWriter()
++    output = PdfWriter()
+     for pageno in range(max(map(len, filestozip))):
+         for listno in range(len(filestozip)):
+             if pageno < len(filestozip[listno]):
+-                output.addPage(filestozip[listno][pageno])
++                output.add_page(filestozip[listno][pageno])
+ 
+     _write_output(output, outputfilename)
+ 
+@@ -266,7 +266,7 @@ def pdf_page_enumeration(pdf):
+         pagelabels = pdf.trailer["/Root"]["/PageLabels"]
+     except:
+         # ("No /Root/PageLabels object"), so infer the list.
+-        return range(1, pdf.getNumPages() + 1)
++        return range(1, len(pdf.pages) + 1)
+     
+     # """Select the item that is most likely to contain the information you desire; e.g.
+     #        {'/Nums': [0, IndirectObject(42, 0)]}
+@@ -292,7 +292,7 @@ def pdf_page_enumeration(pdf):
+     style = '/D'
+     prefix = ''
+     next_pageno = 1
+-    for i in range(0, pdf.getNumPages()):
++    for i in range(0, len(pdf.pages)):
+         if len(pagelabels_nums_list) > 0 and i >= pagelabels_nums_list[0]:
+             pagelabels_nums_list.pop(0)  # discard index
+             pnle = pagelabels_nums_list.pop(0)
+diff --git a/staplelib/iohelper.py b/staplelib/iohelper.py
+index 959e900..8df365c 100644
+--- a/staplelib/iohelper.py
++++ b/staplelib/iohelper.py
+@@ -7,9 +7,9 @@ import re
+ import sys
+ 
+ try:
+-    from PyPDF2 import PdfFileWriter, PdfFileReader
++    from PyPDF2 import PdfWriter, PdfReader
+ except ImportError:
+-    from pyPdf import PdfFileWriter, PdfFileReader
++    from pyPdf import PdfWriter, PdfReader
+ 
+ 
+ from . import CommandError
+@@ -31,8 +31,8 @@ def read_pdf(filename):
+     """Open a PDF file with PyPDF2."""
+     if not os.path.exists(filename):
+         raise CommandError("{} does not exist".format(filename))
+-    pdf = PdfFileReader(open(filename, "rb"))
+-    if pdf.isEncrypted:
++    pdf = PdfReader(open(filename, "rb"))
++    if pdf.is_encrypted:
+         while True:
+             pw = prompt_for_pw(filename)
+             matched = pdf.decrypt(pw)
+@@ -46,7 +46,7 @@ def read_pdf(filename):
+ def write_pdf(pdf, filename):
+     force = staplelib.OPTIONS.force
+ 
+-    """Write the content of a PdfFileWriter object to a file."""
++    """Write the content of a PdfWriter object to a file."""
+     if os.path.exists(filename) and not force:
+         raise CommandError("File already exists: {}".format(filename))
+ 
+@@ -123,7 +123,7 @@ def parse_ranges(handles_files_and_ranges):
+                         "page range '{}'".format(handle_key, inputname))
+ 
+             current = operations[-1]
+-            max_page = current['pdf'].getNumPages()
++            max_page = len(current['pdf'].pages)
+             # allow "end" as alias for the last page
+             replace_end = lambda page: (
+                 max_page if page.lower() == 'end' else int(page))
+diff --git a/staplelib/tests.py b/staplelib/tests.py
+index 4d59153..3350dfc 100755
+--- a/staplelib/tests.py
++++ b/staplelib/tests.py
+@@ -5,7 +5,7 @@ import shutil
+ import tempfile
+ import unittest
+ 
+-from PyPDF2 import PdfFileReader
++from PyPDF2 import PdfReader
+ 
+ from staplelib import main, CommandError
+ 
+@@ -38,40 +38,40 @@ class TestStapler(unittest.TestCase):
+                      self.outputfile])
+         self.assertTrue(os.path.isfile(self.outputfile))
+         with open(self.outputfile, 'rb') as outputfile:
+-            pdf = PdfFileReader(outputfile)
+-            self.assertEqual(pdf.getNumPages(), 6)
++            pdf = PdfReader(outputfile)
++            self.assertEqual(len(pdf.pages), 6)
+ 
+     def test_sel_one_page(self):
+         """Test select of a one page from a PDF file."""
+         run_stapler(['sel', 'A=' + FIVEPAGE_PDF, 'A2', self.outputfile])
+         self.assertTrue(os.path.isfile(self.outputfile))
+         with open(self.outputfile, 'rb') as outputfile:
+-            pdf = PdfFileReader(outputfile)
+-            self.assertEqual(pdf.getNumPages(), 1)
++            pdf = PdfReader(outputfile)
++            self.assertEqual(len(pdf.pages), 1)
+ 
+     def test_sel_range(self):
+         """Test select of more pages from a PDF file."""
+         run_stapler(['cat', 'A=' + FIVEPAGE_PDF, 'A2-4', self.outputfile])
+         self.assertTrue(os.path.isfile(self.outputfile))
+         with open(self.outputfile, 'rb') as outputfile:
+-            pdf = PdfFileReader(outputfile)
+-            self.assertEqual(pdf.getNumPages(), 3)
++            pdf = PdfReader(outputfile)
++            self.assertEqual(len(pdf.pages), 3)
+ 
+     def test_del_one_page(self):
+         """Test del command for inverse select of one page."""
+         run_stapler(['del', 'A=' + FIVEPAGE_PDF, 'A1', self.outputfile])
+         self.assertTrue(os.path.isfile(self.outputfile))
+         with open(self.outputfile, 'rb') as outputfile:
+-            pdf = PdfFileReader(outputfile)
+-            self.assertEqual(pdf.getNumPages(), 4)
++            pdf = PdfReader(outputfile)
++            self.assertEqual(len(pdf.pages), 4)
+ 
+     def test_del_range(self):
+         """Test del command for inverse select multiple pages."""
+         run_stapler(['del', 'A=' + FIVEPAGE_PDF, 'A2-4', self.outputfile])
+         self.assertTrue(os.path.isfile(self.outputfile))
+         with open(self.outputfile, 'rb') as outputfile:
+-            pdf = PdfFileReader(outputfile)
+-            self.assertEqual(pdf.getNumPages(), 2)
++            pdf = PdfReader(outputfile)
++            self.assertEqual(len(pdf.pages), 2)
+ 
+     def test_split(self):
+         """Make sure a file is properly split into pages."""
+@@ -81,24 +81,24 @@ class TestStapler(unittest.TestCase):
+         self.assertEqual(len(filelist), 5)
+         for f in os.listdir(self.tmpdir):
+             with open(os.path.join(self.tmpdir, f), 'rb') as pdf_file:
+-                pdf = PdfFileReader(pdf_file)
+-                self.assertEqual(pdf.getNumPages(), 1)
++                pdf = PdfReader(pdf_file)
++                self.assertEqual(len(pdf.pages), 1)
+ 
+     def test_background(self):
+         """Test background."""
+         run_stapler(['background', ONEPAGE_PDF, FIVEPAGE_PDF, self.outputfile])
+         self.assertTrue(os.path.isfile(self.outputfile))
+         with open(self.outputfile, 'rb') as outputfile:
+-            pdf = PdfFileReader(outputfile)
+-            self.assertEqual(pdf.getNumPages(), 5)
++            pdf = PdfReader(outputfile)
++            self.assertEqual(len(pdf.pages), 5)
+ 
+     def test_zip(self):
+         """Test zip."""
+         run_stapler(['zip', ONEPAGE_PDF, FIVEPAGE_PDF, self.outputfile])
+         self.assertTrue(os.path.isfile(self.outputfile))
+         with open(self.outputfile, 'rb') as outputfile:
+-            pdf = PdfFileReader(outputfile)
+-            self.assertEqual(pdf.getNumPages(), 6)
++            pdf = PdfReader(outputfile)
++            self.assertEqual(len(pdf.pages), 6)
+ 
+     def test_output_file_already_exists(self):
+         """Test zip."""
+-- 
+2.39.0
+

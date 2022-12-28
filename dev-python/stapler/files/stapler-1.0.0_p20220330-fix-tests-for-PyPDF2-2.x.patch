@@ -1,0 +1,13 @@
+diff --git a/staplelib/tests.py b/staplelib/tests.py
+index 4d59153..447d48a 100755
+--- a/staplelib/tests.py
++++ b/staplelib/tests.py
+@@ -5,7 +5,7 @@ import shutil
+ import tempfile
+ import unittest
+ 
+-from PyPDF2.pdf import PdfFileReader
++from PyPDF2 import PdfFileReader
+ 
+ from staplelib import main, CommandError
+ 
