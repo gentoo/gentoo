@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="SSL/STARTTLS support for Net::SMTP"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-perl/Authen-SASL-2.0.0
