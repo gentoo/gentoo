@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit gnome2-utils xdg
+inherit xdg
 
 DESCRIPTION="Platform game about a blob and his quest to rescue MIAs from an alien invader"
 HOMEPAGE="https://sourceforge.net/projects/blobwars/ https://www.parallelrealities.co.uk/games/metalBlobSolid/ https://github.com/perpendicular-dimensions/blobwars"
