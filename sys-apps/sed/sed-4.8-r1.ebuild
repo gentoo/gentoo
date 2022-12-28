@@ -7,7 +7,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/sed.asc
 inherit flag-o-matic verify-sig
 
 DESCRIPTION="Super-useful stream editor"
-HOMEPAGE="http://sed.sourceforge.net/"
+HOMEPAGE="https://www.gnu.org/software/sed/"
 SRC_URI="mirror://gnu/sed/${P}.tar.xz"
 SRC_URI+=" verify-sig? ( mirror://gnu/sed/${P}.tar.xz.sig )"
 
