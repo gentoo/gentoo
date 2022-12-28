@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License, v2
 
 # Gentoo Base Profile
@@ -24,6 +24,11 @@
 # of the minimum set of packages needed for any Gentoo based system.
 
 *>=sys-apps/baselayout-2
+*app-alternatives/awk
+*app-alternatives/bzip2
+*app-alternatives/gzip
+*app-alternatives/sh
+*app-alternatives/tar
 *app-admin/eselect
 *app-arch/bzip2
 *app-arch/gzip
