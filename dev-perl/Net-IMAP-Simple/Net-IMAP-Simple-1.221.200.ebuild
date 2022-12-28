@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for simple IMAP account handling"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	virtual/perl-IO
