@@ -820,6 +820,10 @@ make_gcc_hard() {
 			# * -z now
 			# See gcc *_all_extra-options.patch patches.
 			gcc_hard_flags+=" -DEXTRA_OPTIONS"
+			# Default to -D_FORTIFY_SOURCE=3 instead of -D_FORTIFY_SOURCE=2
+			gcc_hard_flags+=" -DGENTOO_FORTIFY_SOURCE_LEVEL=3"
+			# Add -D_GLIBCXX_ASSERTIONS
+			gcc_hard_flags+=" -DDEF_GENTOO_GLIBCXX_ASSERTIONS"
 
 			if _tc_use_if_iuse cet && [[ ${CTARGET} == *x86_64*-linux* ]] ; then
 				gcc_hard_flags+=" -DEXTRA_OPTIONS_CF"
