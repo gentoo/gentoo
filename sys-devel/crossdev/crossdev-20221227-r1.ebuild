@@ -20,7 +20,6 @@ SLOT="0"
 
 RDEPEND="
 	>=sys-apps/portage-2.1
-	>=app-portage/portage-utils-0.55
 	app-shells/bash
 	sys-apps/gentoo-functions
 "
