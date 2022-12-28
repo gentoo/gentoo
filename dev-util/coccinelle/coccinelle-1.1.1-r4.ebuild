@@ -101,7 +101,7 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}" VERBOSE=yes install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}" VERBOSE=yes -j1 install
 
 	if use python ; then
 		python_optimize
