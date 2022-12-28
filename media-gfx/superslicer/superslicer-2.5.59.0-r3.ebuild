@@ -6,7 +6,7 @@ EAPI=8
 WX_GTK_VER="3.0-gtk3"
 MY_PN="SuperSlicer"
 
-inherit cmake wxwidgets xdg
+inherit cmake wxwidgets xdg flag-o-matic
 
 DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
 HOMEPAGE="https://github.com/supermerill/SuperSlicer/"
@@ -73,6 +73,8 @@ src_unpack() {
 
 src_configure() {
 	CMAKE_BUILD_TYPE="Release"
+
+	append-flags -fno-strict-aliasing
 
 	setup-wxwidgets
 
