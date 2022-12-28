@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2022-12-27)
+# Obsolete and incompatible with app-alternatives/* (see news item).
+# Removal on 2023-01-27. bug #886019 and bug #886021 respectivly.
+app-eselect/eselect-awk
+app-eselect/eselect-sh
+
+# Sam James <sam@gentoo.org> (2022-12-27)
 # Regression in listing subvolumes (no UUIDs), bug #888549
 # https://github.com/kdave/btrfs-progs/issues/562
 =sys-fs/btrfs-progs-6.1
