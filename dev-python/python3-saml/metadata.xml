@@ -11,6 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">python3-saml</remote-id>
-		<remote-id type="github">onelogin/python3-saml</remote-id>
+		<remote-id type="github">SAML-Toolkits/python3-saml</remote-id>
 	</upstream>
 </pkgmetadata>
