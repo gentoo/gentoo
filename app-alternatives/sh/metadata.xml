@@ -13,6 +13,9 @@
 		<flag name="bash">
 			Symlink to <pkg>app-shells/bash</pkg>
 		</flag>
+		<flag name="busybox">
+			Symlink to <pkg>sys-apps/busybox</pkg>
+		</flag>
 		<flag name="dash">
 			Symlink to <pkg>app-shells/dash</pkg>
 		</flag>
