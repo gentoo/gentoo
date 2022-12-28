@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+PYTHON_COMPAT=( python3_{9..11} )
 
-inherit meson udev
+inherit meson python-r1 udev
 
 MY_P="${PN}-v${PV}"
 
@@ -16,7 +17,10 @@ SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="examples gtk-doc +introspection"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 RDEPEND="
+	${PYTHON_DEPS}
 	dev-libs/glib:2
 	dev-libs/libgudev
 	dev-libs/nss
@@ -56,4 +60,8 @@ src_configure() {
 	)
 
 	meson_src_configure
+}
+
+pkg_postinst() {
+	udev_reload
 }
