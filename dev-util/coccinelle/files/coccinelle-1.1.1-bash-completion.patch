@@ -1,0 +1,19 @@
+--- a/scripts/spatch.bash_completion
++++ b/scripts/spatch.bash_completion
+@@ -34,7 +34,6 @@ __spatchcomp_1 ()
+         done
+ }
+ 
+-have spatch &&
+ _spatch()
+ {
+     local cur prev xspec
+@@ -89,8 +88,6 @@ _spatch()
+ complete -F _spatch -o bashdefault -o default -o nospace spatch \
+  || complete -F _spatch -o default -o nospace spatch
+ 
+-complete -F _spatch -o bashdefault -o default -o nospace spatch.opt \
+- || complete -F _spatch -o default -o nospace spatch.opt
+ 
+ # Local variables:
+ # mode: shell-script
