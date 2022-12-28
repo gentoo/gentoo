@@ -114,6 +114,7 @@ src_install() {
 		elisp-site-file-install "${FILESDIR}"/${SITEFILE}
 	fi
 
+	einstalldocs
 	use doc && dodoc docs/manual/*.pdf
 
 	newdoc editors/vim/README README-vim
