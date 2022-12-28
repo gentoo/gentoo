@@ -54,11 +54,6 @@ media-libs/coin javascript
 # Michał Górny <mgorny@gentoo.org> (2022-11-19)
 # Requires packages masked for removal.
 mail-mta/netqmail authcram
-mail-mta/notqmail authcram
-
-# Michał Górny <mgorny@gentoo.org> (2022-11-17)
-# Require packages masked for removal.
-net-analyzer/netdata kinesis
 
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # gnome-music and gnome-photos have not been ported to libsoup:3.0, while
@@ -74,10 +69,6 @@ gnome-base/gnome-extra-apps tracker
 # Incomplete dependency tree, no qmake6 instrumentation in either
 # qmake-utils.eclass nor the ebuilds yet.
 dev-python/pyotherside qt6
-
-# Sam James <sam@gentoo.org> (2022-10-08)
-# Older versions of libvirt need a vulnerable version of wireshark
-<app-emulation/libvirt-8.0.0 wireshark-plugins
 
 # Viorel Munteanu <ceamac.paragon@gmail.com> (2022-10-07)
 # Cannot test and fix pax-kernel related bugs on a current grsec kernel
@@ -132,15 +123,6 @@ app-arch/pigz symlink
 # Sam James <sam@gentoo.org> (2022-08-26)
 # Broken at runtime for now (bug #865113).
 sys-devel/binutils gprofng
-
-# Matthew Smith <matthew@gentoo.org> (2022-08-19)
-# Upstream recommends that tbb be built with a patch to avoid bugs.
-# https://github.com/rui314/mold/releases/tag/v1.4.1
-sys-devel/mold system-tbb
-
-# John Helmert III <ajak@gentoo.org> (2022-08-14)
-# libaacplus is last rited
-media-sound/darkice aacplus
 
 # John Helmert III <ajak@gentoo.org> (2022-08-14)
 # slurm is last rited
@@ -270,10 +252,6 @@ app-text/texlive pdfannotextractor
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-10-16)
 # openjfx for openjdk17 is not yet available
 dev-java/openjdk:17 javafx
-
-# Sam James <sam@gentoo.org> (2021-10-16)
-# Fails to compile, bug #787134
-=sys-fs/dd-rescue-1.99.11 cpu_flags_x86_avx2
 
 # Marek Szuba <marecki@gentoo.org> (2021-10-10)
 # Legacy interface that depends on dev-libs/libx86 and specific kernel

@@ -237,11 +237,6 @@ x11-wm/mutter screencast
 # Requires net-libs/webkit-gtk which has no keywords on alpha
 dev-util/geany-plugins markdown
 
-# Tobias Klausmann <klausman@gentoo.rog> (2018-11-23)
-# Requires sys-cluster/ceph, which is unlikely to be used on Alpha
-# and a rather large dependency.
-sys-fs/multipath-tools rbd
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-15)
 # Requires app-text/mecab which isn't yet keyworded
 # on alpha, bug 668674

@@ -11,7 +11,6 @@ net-analyzer/rrdtool rados
 net-fs/samba ceph
 sys-block/fio rbd
 sys-block/tgt rbd
-sys-fs/multipath-tools rbd
 www-servers/uwsgi uwsgi_plugins_rados
 
 # Mike Frysinger <vapier@gentoo.org> (2016-05-08)

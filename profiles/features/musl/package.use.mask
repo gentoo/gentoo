@@ -96,10 +96,6 @@ sys-libs/compiler-rt-sanitizers gwp-asan
 # Broken as "error: unknown type name '_Unwind_Word'"
 <sys-libs/compiler-rt-sanitizers-14 hwasan
 
-# Andreas K. Hüttel <dilfridge@gentoo.org>
-# Restore mask here that is gone elsewhere
-<sys-libs/libxcrypt-4.4.28-r2 split-usr system
-
 # James Le Cuirot <chewi@gentoo.org> (2020-05-16)
 # execinfo.h is required for debug.
 dev-games/cegui debug

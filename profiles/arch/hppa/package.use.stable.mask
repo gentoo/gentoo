@@ -85,7 +85,7 @@ dev-python/matplotlib cairo gtk3
 # Prepare for stabilizing a minimal xorg-server, for Xvfb.
 media-libs/libglvnd -X
 x11-apps/xinit twm
-x11-base/xorg-server dmx kdrive xephyr
+x11-base/xorg-server xephyr
 
 # Matt Turner <mattst88@gentoo.org> (2021-09-10)
 # dev-libs/tomsfastmath does not have stable keywords on hppa

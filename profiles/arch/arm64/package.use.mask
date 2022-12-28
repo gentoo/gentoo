@@ -58,10 +58,6 @@ dev-libs/libgcrypt -cpu_flags_arm_neon
 # dev-python/pyilmbase isn't keyworded on arm64
 media-gfx/alembic python
 
-# Ben Kohler <bkohler@gentoo.org> (2021-10-18)
-# missing keywords on net-misc/pyhoca-cli and its deps
-net-misc/remmina x2go
-
 # Jakov Smolić <jsmolic@gentoo.org> (2021-10-07)
 # dev-libs/mongo-c-driver is not keyworded here
 net-analyzer/zmap mongo
@@ -315,7 +311,7 @@ dev-libs/boost -context
 
 # Michał Górny <mgorny@gentoo.org> (2018-03-03)
 # Requires masked dependent flags.
-net-fs/samba addns cluster test
+net-fs/samba cluster test
 
 # Michał Górny <mgorny@gentoo.org> (2018-03-03)
 # Some more unkeyworded dependencies.

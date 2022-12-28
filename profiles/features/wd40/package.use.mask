@@ -101,7 +101,7 @@ media-libs/imlib2 svg
 dev-python/dnspython dnssec
 dev-python/twisted conch ssl
 dev-python/urllib3 test
-net-fs/samba addc addns ads
+net-fs/samba addc ads
 
 # Matt Turner <mattst88@gentoo.org> (2021-07-25)
 # gdm requires gnome-shell requires rustified librsvg.
