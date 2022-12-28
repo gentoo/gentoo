@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ MY_COMMIT="6a0b37f85c7d644e9217cbab1542792d646f59a6"
 inherit autotools flag-o-matic linux-info toolchain-funcs
 
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
-HOMEPAGE="http://www.adaptivecomputing.com/products/open-source/torque"
+HOMEPAGE="https://adaptivecomputing.com/cherry-services/torque-resource-manager/ https://github.com/adaptivecomputing/torque/"
 SRC_URI="https://github.com/adaptivecomputing/torque/archive/${MY_COMMIT}.tar.gz -> ${P}-gh-20170829.tar.gz
 	https://dev.gentoo.org/~juippis/distfiles/tmp/torque-6.0.4-gcc7.patch
 	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-6.0.4-glibc-2.34-pthread.patch.bz2"
