@@ -10,6 +10,7 @@
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
 	<use>
+		<flag name="arpack">Adds support for ARPACK (<pkg>sci-libs/arpack</pkg>)</flag>
 		<flag name="complex-scalars">Make scalars complex</flag>
 	</use>
 </pkgmetadata>
