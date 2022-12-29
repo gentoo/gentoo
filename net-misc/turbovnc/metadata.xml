@@ -14,7 +14,6 @@
 		By The VirtualGL Project.
 	</longdescription>
 	<use>
-		<flag name="java">Build the client (vncviewer)</flag>
 		<flag name="client">Build the client (vncviewer)</flag>
 		<flag name="server">Build the server (vncserver, Xvnc)</flag>
 	</use>
