@@ -54,7 +54,7 @@ BDEPEND+="
 PATCHES=(
 	"${FILESDIR}/file-5.39-portage-sandbox.patch" #713710 #728978
 	"${FILESDIR}/file-5.40-seccomp-fstatat64-musl.patch" #789336, not upstream yet
-	"${FILESDIR}/file-5.44-limits-solaris.patch" # not upstream yet
+	"${FILESDIR}/file-5.44-limits-solaris.patch" # applied upstream
 )
 
 src_prepare() {
