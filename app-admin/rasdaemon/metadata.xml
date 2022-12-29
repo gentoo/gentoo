@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
 	<maintainer type="person">
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
 	<longdescription lang="en">
 		Rasdaemon is a RAS (Reliability, Availability and Serviceability) logging tool.
-It currently records memory errors, using the EDAC tracing events.
-EDAC is drivers in the Linux kernel that handle detection of ECC errors
-from memory controllers for most chipsets on i386 and x86_64 architectures.
-EDAC drivers for other architectures like arm also exists.
-This userspace component consists of an init script which makes sure
-EDAC drivers and DIMM labels are loaded at system startup, as well as
-an utility for reporting current error counts from the EDAC sysfs files.
+		It currently records memory errors, using the EDAC tracing events.
+		EDAC is drivers in the Linux kernel that handle detection of ECC errors
+		from memory controllers for most chipsets on i386 and x86_64 architectures.
+		EDAC drivers for other architectures like arm also exists.
+		This userspace component consists of an init script which makes sure
+		EDAC drivers and DIMM labels are loaded at system startup, as well as
+		an utility for reporting current error counts from the EDAC sysfs files.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">mchehab/rasdaemon</remote-id>
+	</upstream>
 </pkgmetadata>
