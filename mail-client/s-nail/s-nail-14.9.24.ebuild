@@ -33,8 +33,18 @@ BDEPEND="
 "
 
 src_configure() {
+	has_cflag() {
+		local x var="CFLAGS[*]"
+		for x in ${!var} ; do
+			[[ ${x} == $1 ]] && return 0
+		done
+		return 1
+	}
+
 	# Fails to build without replace Bug 860357
 	replace-flags -O[0gs] -O1
+	# A valid -O option is necessary Bug 888613
+	has_cflag -O* || append-cflags -O1
 	append-cflags -std=c99
 	local confopts=(
 		CC="$(tc-getCC)"
