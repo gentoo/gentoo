@@ -9,5 +9,6 @@
 		<remote-id type="cpan">MIME-Types</remote-id>
 		<remote-id type="cpan-module">MIME::Type</remote-id>
 		<remote-id type="cpan-module">MIME::Types</remote-id>
+		<remote-id type="github">markov2/perl5-MIME-Types</remote-id>
 	</upstream>
 </pkgmetadata>
