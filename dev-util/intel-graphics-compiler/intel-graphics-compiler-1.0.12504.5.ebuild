@@ -52,6 +52,17 @@ src_configure() {
 	local llvm_version="$(best_version -d sys-devel/llvm:${LLVM_MAX_SLOT})"
 	local llvm_version="${llvm_version%%-r*}"
 
+	local igc_version_major igc_version_minor igc_version_build igc_version_rest
+
+	igc_version_major="${PV%.*}"
+	igc_version_rest="${PV#*.}"
+
+	igc_version_minor="${igc_version_rest%.*}"
+	igc_version_rest="${igc_version_rest#*.}"
+
+	igc_version_build="${igc_version_rest%.*}"
+	igc_version_rest="${igc_version_rest#*.}"
+
 	# See https://github.com/intel/intel-graphics-compiler/issues/212
 	append-ldflags -Wl,-z,undefs
 
@@ -80,6 +91,10 @@ src_configure() {
 		# See https://github.com/intel/intel-graphics-compiler/issues/236
 		-DIGC_BUILD__VC_ENABLED="OFF"
 		# -DIGC_OPTION__VC_INTRINSICS_MODE="Prebuilds"
+
+		-DIGC_API_MAJOR_VERSION="${igc_version_major}"
+		-DIGC_API_MINOR_VERSION="${igc_version_minor}"
+		-DIGC_PACKAGE_RELEASE="${igc_version_build}"
 	)
 
 	cmake_src_configure
