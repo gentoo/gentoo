@@ -60,7 +60,7 @@ src_prepare() {
 
 	use hppa && append-cflags -ffunction-sections
 
-	use drm && append-cflags -Ddrm
+	use drm && append-cflags -DGENTOO_MUPDF_DRM
 
 	append-cflags "-DFZ_ENABLE_JS=$(usex javascript 1 0)"
 

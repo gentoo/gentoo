@@ -6,7 +6,7 @@ index f764242..83888dc 100644
  	epub_chapter **tailp;
  	int i;
  
-+	#ifdef drm
++	#ifdef GENTOO_MUPDF_DRM
 	if (fz_has_archive_entry(ctx, zip, "META-INF/rights.xml"))
  		fz_throw(ctx, FZ_ERROR_GENERIC, "EPUB is locked by DRM");
  	if (fz_has_archive_entry(ctx, zip, "META-INF/encryption.xml"))
