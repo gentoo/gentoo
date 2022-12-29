@@ -4,4 +4,7 @@
 	<maintainer type="person">
 		<email>pacho@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">hadess/switcheroo-control</remote-id>
+	</upstream>
 </pkgmetadata>
