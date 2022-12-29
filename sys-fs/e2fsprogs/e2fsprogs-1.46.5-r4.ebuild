@@ -12,7 +12,7 @@ SRC_URI="https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${PV}/$
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="cron fuse lto nls static-libs test +tools"
+IUSE="cron fuse nls static-libs test +tools"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -77,7 +77,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable tools e2initrd-helper)
 		--disable-fsck
 		--disable-uuidd
-		$(use_enable lto)
+		--disable-lto
 		--with-pthread
 	)
 
