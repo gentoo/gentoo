@@ -1144,7 +1144,7 @@ unipatch() {
 				UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
 				UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
 				UNIPATCH_DROP+=" 5013_enable-cpu-optimizations-for-gcc10.patch"
-				if [[ ${GCC_MAJOR_VER} -lt 9 ]]; then
+				if [[ ${GCC_MAJOR_VER} -lt 9 ]] && ! tc-is-clang; then
 					UNIPATCH_DROP+=" 5010_enable-cpu-optimizations-universal.patch"
 				fi
 				# this legacy section should be targeted for removal
