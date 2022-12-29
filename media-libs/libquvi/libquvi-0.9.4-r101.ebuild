@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-LUA_COMPAT=( lua5-1 )
-LUA_REQ_USE="deprecated"
+LUA_COMPAT=( lua5-{1,4} luajit )
+LUA_REQ_USE="deprecated(+)"
 
 inherit autotools lua-single
 
