@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Barć <xgqt@gentoo.org> (2022-12-29)
+# Real upstream dead, uses old R5RS standard, many open bugs.
+# Removal on 2022-01-29.
+app-shells/scsh
+dev-scheme/scsh-lib
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-12-29)
 # Upstream is dead, last activity in Nov 2017. Does not
 # work with newer log4j, bug #857663. Use net-p2p/biglybt
