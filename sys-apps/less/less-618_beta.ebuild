@@ -5,6 +5,11 @@ EAPI=8
 WANT_AUTOMAKE=none
 WANT_LIBTOOL=none
 
+if [[ $PV == 9999 ]]; then
+	EGIT_REPO_URI="https://github.com/gwsw/less"
+	inherit git-r3
+fi
+
 inherit autotools
 
 # Releases are usually first a beta then promoted to stable if no
@@ -12,9 +17,12 @@ inherit autotools
 # the beta versions. It's okay to keyword beta versions if they fix
 # a serious bug, but otherwise try to avoid it.
 
+MY_PV=${PV/_beta/-beta}
+MY_P=${PN}-${MY_PV}
 DESCRIPTION="Excellent text file viewer"
 HOMEPAGE="http://www.greenwoodsoftware.com/less/"
-SRC_URI="http://www.greenwoodsoftware.com/less/${P}-beta.tar.gz"
+[ $PV != 9999 ] && SRC_URI="http://www.greenwoodsoftware.com/less/${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P/?beta}
 
 LICENSE="|| ( GPL-3 BSD-2 )"
 SLOT="0"
@@ -28,6 +36,8 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
+	# Per upstream README to prepare live build
+	[ $PV == 9999 ] && emake -f Makefile.aut distfiles
 	# Upstream uses unpatched autoconf-2.69, which breaks with clang-16.
 	# https://bugs.gentoo.org/870412
 	eautoreconf
