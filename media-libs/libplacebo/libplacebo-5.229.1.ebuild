@@ -69,6 +69,14 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	default
+
+	# typically auto-skipped, but may assume usable opengl/vulkan then hang
+	sed -i "/tests += 'opengl_surfaceless.c'/d" src/opengl/meson.build || die
+	sed -i "/tests += 'vulkan.c'/d" src/vulkan/meson.build || die
+}
+
 multilib_src_configure() {
 	local emesonargs=(
 		-Ddemos=false #851927
