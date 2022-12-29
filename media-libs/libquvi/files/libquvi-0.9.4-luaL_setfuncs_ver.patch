@@ -1,0 +1,70 @@
+--- libquvi-0.9.4/src/lua/init.c	2013-11-04 13:55:26.000000000 +0100
++++ libquvi-0.9.4/src/lua/init.c	2022-12-29 09:25:41.579621070 +0100
+@@ -43,11 +43,19 @@ static const luaL_Reg quvi_reg_meth[] =
+ 
+ static const luaL_Reg quvi_http_reg_meth[] =
+ {
++#if (LUA_VERSION_NUM == 501)
+   {"metainfo", l_quvi_http_metainfo},
+   {"resolve", l_quvi_http_resolve},
+   {"cookie", l_quvi_http_cookie},
+   {"header", l_quvi_http_header},
+   {"fetch", l_quvi_http_fetch},
++#elif (LUA_VERSION_NUM >= 504)
++  {"quvi.http.metainfo", l_quvi_http_metainfo},
++  {"quvi.http.resolve", l_quvi_http_resolve},
++  {"quvi.http.cookie", l_quvi_http_cookie},
++  {"quvi.http.header", l_quvi_http_header},
++  {"quvi.http.fetch", l_quvi_http_fetch},
++#endif
+   {NULL, NULL}
+ };
+ 
+@@ -57,9 +65,15 @@ extern gint l_quvi_crypto_hash(lua_State
+ 
+ static const luaL_Reg quvi_crypto_reg_meth[] =
+ {
++#if (LUA_VERSION_NUM == 501)
+   {"encrypt", l_quvi_crypto_encrypt},
+   {"decrypt", l_quvi_crypto_decrypt},
+   {"hash",    l_quvi_crypto_hash},
++#elif (LUA_VERSION_NUM >= 504)
++  {"quvi.crypto.encrypt", l_quvi_crypto_encrypt},
++  {"quvi.crypto.decrypt", l_quvi_crypto_decrypt},
++  {"quvi.crypto.hash",    l_quvi_crypto_hash},
++#endif
+   {NULL, NULL}
+ };
+ 
+@@ -68,8 +82,13 @@ extern gint l_quvi_base64_decode(lua_Sta
+ 
+ static const luaL_Reg quvi_base64_reg_meth[] =
+ {
++#if (LUA_VERSION_NUM == 501)
+   {"encode",    l_quvi_base64_encode},
+   {"decode",    l_quvi_base64_decode},
++#elif (LUA_VERSION_NUM >= 504)
++  {"quvi.base64.encode",    l_quvi_base64_encode},
++  {"quvi.base64.decode",    l_quvi_base64_decode},
++#endif
+   {NULL, NULL}
+ };
+ 
+@@ -80,10 +99,17 @@ QuviError l_init(_quvi_t q)
+     return (QUVI_ERROR_LUA_INIT);
+ 
+   luaL_openlibs(q->handle.lua);
++#if (LUA_VERSION_NUM == 501)
+   luaL_register(q->handle.lua, "quvi", quvi_reg_meth);
+   luaL_register(q->handle.lua, "quvi.http", quvi_http_reg_meth);
+   luaL_register(q->handle.lua, "quvi.crypto", quvi_crypto_reg_meth);
+   luaL_register(q->handle.lua, "quvi.base64", quvi_base64_reg_meth);
++#elif (LUA_VERSION_NUM >= 504)
++  luaL_newlib(q->handle.lua, quvi_reg_meth);
++  luaL_newlib(q->handle.lua, quvi_http_reg_meth);
++  luaL_newlib(q->handle.lua, quvi_crypto_reg_meth);
++  luaL_newlib(q->handle.lua, quvi_base64_reg_meth);
++#endif
+ 
+   return (QUVI_OK);
+ }
