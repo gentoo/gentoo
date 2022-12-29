@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qmake-utils vcs-snapshot
+inherit qmake-utils vcs-snapshot xdg-utils
 
 GIT_COMMIT="65f0eab8ca0640447d2e84cdc5fadc66d2c07efb"
 
@@ -52,4 +52,16 @@ src_install() {
 
 	insinto /usr/share/${PN}/translations
 	doins common/resources/translations/${PN}_*.qm
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
 }

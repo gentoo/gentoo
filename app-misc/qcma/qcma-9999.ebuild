@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qmake-utils git-r3
+inherit qmake-utils git-r3 xdg-utils
 
 DESCRIPTION="Cross-platform content manager assistant for the PS Vita"
 HOMEPAGE="https://github.com/codestation/qcma"
@@ -50,4 +50,16 @@ src_install() {
 
 	insinto /usr/share/${PN}/translations
 	doins common/resources/translations/${PN}_*.qm
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+	xdg_mimeinfo_database_update
 }
