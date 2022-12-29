@@ -14,7 +14,7 @@
 # written in the go programming language that uses modules.
 # If the software you are packaging has a file named go.mod in its top level
 # directory, it uses modules.
-# 
+#
 # Modules have been the preferred method of tracking dependencies in software
 # written in Go since version 1.16,
 # so if the software isn't using modules, it should be updated.
@@ -119,13 +119,13 @@ RESTRICT+=" strip"
 #
 # You can use some combination of sed/awk/cut to extract the
 # contents of EGO_SUM or use the dev-go/get-ego-vendor tool.
-# 
+#
 # One manual way to do this is the following:
 #
 # @CODE
 #
 # cat go.sum | cut -d" " -f1,2 | awk '{print "\t\"" $0 "\""}'
-# 
+#
 # @CODE
 #
 # The format of go.sum is described upstream here:
@@ -484,6 +484,27 @@ go-module_live_vendor() {
 		die "${FUNCNAME} only allowed in src_unpack"
 	[[ -d "${S}"/vendor ]] &&
 		die "${FUNCNAME} only allowed when upstream isn't vendoring"
+
+	local hp
+	local -a hps
+	if [[ -n $HTTP_PROXY ]]; then
+		hps+=( HTTP_PROXY )
+	elif [[ -n $http_proxy ]]; then
+		hps+=( http_proxy )
+	fi
+	if [[ -n $HTTPS_PROXY ]]; then
+		hps+=( HTTPS_PROXY )
+	elif [[ -n $https_proxy ]]; then
+		hps+=( https_proxy )
+	fi
+	for hp in "${hps[@]}"; do
+		if [[ -n ${!hp} ]] && [[ ${!hp} =~ ^socks5h:// ]]; then
+			set -- export ${hp}="socks5${!hp#socks5h}"
+			ewarn "golang does not support the 'socks5h://' schema for '${hp}', fallback to the 'socks5://' schema"
+			einfo "${@}"
+			"${@}"
+		fi
+	done
 
 	pushd "${S}" >& /dev/null || die
 	ego mod vendor
