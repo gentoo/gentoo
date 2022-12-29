@@ -41,8 +41,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.1-headers-reinstall.patch
 	"${FILESDIR}"/${PN}-0.9.4-autoconf-2.70.patch #749816
-  "${FILESDIR}"/${PN}-0.9.4-luajit.patch            # 504876
-  "${FILESDIR}"/${PN}-0.9.4-luaL_setfuncs_ver.patch # 504876
+	"${FILESDIR}"/${PN}-0.9.4-luajit.patch            # 504876
+	"${FILESDIR}"/${PN}-0.9.4-luaL_setfuncs_ver.patch # 504876
 )
 
 src_prepare() {
