@@ -13,7 +13,6 @@
 	</upstream>
 	<use>
 		<flag name="addressbook">Enable akonadi contact integration</flag>
-		<flag name="heif">Enable support for ISO/IEC 23008-12:2017 HEIF files using <pkg>media-libs/x265</pkg></flag>
 		<flag name="imagemagick">Enable support for additional image formats such as XCF, FITS, HEIC etc.</flag>
 		<flag name="lensfun">Enable support for <pkg>media-libs/lensfun</pkg></flag>
 		<flag name="marble">Enable support for geolocation using <pkg>kde-apps/marble</pkg></flag>
