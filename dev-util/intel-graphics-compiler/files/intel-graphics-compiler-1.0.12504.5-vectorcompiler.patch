@@ -1,0 +1,165 @@
+From 753a6a4efd5fcb42a86a5f62b64c29393513d807 Mon Sep 17 00:00:00 2001
+From: Victor Mustya <victor.mustya@intel.com>
+Date: Thu, 29 Dec 2022 05:03:39 +0000
+Subject: [PATCH]  Fix open source build for some configurations
+
+When building for some Linux distros, cmake configures IGC to build all
+the libraries as shared by default. So we have to explicitly configure
+all the libraries as static or object.
+---
+ IGC/Options/CMakeLists.txt                                   | 2 +-
+ IGC/VectorCompiler/CMCL/lib/Support/CMakeLists.txt           | 2 +-
+ IGC/VectorCompiler/lib/BiF/CMakeLists.txt                    | 2 +-
+ IGC/VectorCompiler/lib/Driver/CMakeLists.txt                 | 2 +-
+ IGC/VectorCompiler/lib/GenXCodeGen/CMakeLists.txt            | 2 +-
+ IGC/VectorCompiler/lib/GenXCodeGen/TargetInfo/CMakeLists.txt | 2 +-
+ IGC/VectorCompiler/lib/GenXOpts/CMakeLists.txt               | 2 +-
+ IGC/VectorCompiler/lib/InternalIntrinsics/CMakeLists.txt     | 2 +-
+ IGC/VectorCompiler/lib/Support/CMakeLists.txt                | 2 +-
+ IGC/VectorCompiler/lib/Utils/GenX/CMakeLists.txt             | 2 +-
+ IGC/VectorCompiler/lib/Utils/General/CMakeLists.txt          | 2 +-
+ 11 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/IGC/Options/CMakeLists.txt b/IGC/Options/CMakeLists.txt
+index 834d74d37ce..1dc079d1c1e 100644
+--- a/IGC/Options/CMakeLists.txt
++++ b/IGC/Options/CMakeLists.txt
+@@ -6,7 +6,7 @@
+ #
+ #============================ end_copyright_notice =============================
+ 
+-add_library(IGCOptions "")
++add_library(IGCOptions STATIC "")
+ 
+ add_subdirectory(src)
+ add_subdirectory(include/igc/Options)
+diff --git a/IGC/VectorCompiler/CMCL/lib/Support/CMakeLists.txt b/IGC/VectorCompiler/CMCL/lib/Support/CMakeLists.txt
+index ebab3db0005..eda77667ddf 100644
+--- a/IGC/VectorCompiler/CMCL/lib/Support/CMakeLists.txt
++++ b/IGC/VectorCompiler/CMCL/lib/Support/CMakeLists.txt
+@@ -12,7 +12,7 @@ set(CM_CL_SUPPORT_SOURCES
+   InitializePasses.cpp
+   )
+ 
+-add_library(CMCLSupport ${CM_CL_SUPPORT_SOURCES})
++add_library(CMCLSupport STATIC ${CM_CL_SUPPORT_SOURCES})
+ 
+ # LLVM dependencies
+ igc_get_llvm_targets(LLVM_LIBS
+diff --git a/IGC/VectorCompiler/lib/BiF/CMakeLists.txt b/IGC/VectorCompiler/lib/BiF/CMakeLists.txt
+index 6235fc1d21e..c439f334a98 100644
+--- a/IGC/VectorCompiler/lib/BiF/CMakeLists.txt
++++ b/IGC/VectorCompiler/lib/BiF/CMakeLists.txt
+@@ -275,7 +275,7 @@ add_custom_target(VCBiFPreparation
+           ${SPIRV_EXEC_BUILTINS_SRC_PATH}
+           ${SPIRV_ATOMIC_BUILTINS_SRC_PATH})
+ 
+-add_library(VCEmbeddedBiF
++add_library(VCEmbeddedBiF OBJECT
+   ${PRINTF_OCL_32_CPP_PATH}
+   ${PRINTF_OCL_64_CPP_PATH}
+   ${PRINTF_ZE_32_CPP_PATH}
+diff --git a/IGC/VectorCompiler/lib/Driver/CMakeLists.txt b/IGC/VectorCompiler/lib/Driver/CMakeLists.txt
+index 74e4e661e74..fc14937a1c6 100644
+--- a/IGC/VectorCompiler/lib/Driver/CMakeLists.txt
++++ b/IGC/VectorCompiler/lib/Driver/CMakeLists.txt
+@@ -11,7 +11,7 @@ set(DRIVER_SOURCES
+   SPIRVWrapper.cpp
+   )
+ 
+-add_library(VCDriver ${DRIVER_SOURCES})
++add_library(VCDriver STATIC ${DRIVER_SOURCES})
+ igc_get_llvm_targets(LLVM_LIBS
+   Analysis
+   BitReader
+diff --git a/IGC/VectorCompiler/lib/GenXCodeGen/CMakeLists.txt b/IGC/VectorCompiler/lib/GenXCodeGen/CMakeLists.txt
+index 185a7533a89..4c3eada26fb 100644
+--- a/IGC/VectorCompiler/lib/GenXCodeGen/CMakeLists.txt
++++ b/IGC/VectorCompiler/lib/GenXCodeGen/CMakeLists.txt
+@@ -88,7 +88,7 @@ set(CODEGEN_SOURCES
+   GenXFixInvalidFuncName.cpp
+ )
+ 
+-add_library(VCCodeGen ${CODEGEN_SOURCES})
++add_library(VCCodeGen STATIC ${CODEGEN_SOURCES})
+ add_dependencies(VCCodeGen
+   GenXUtilBuild
+   GenXCommonTableGen_target
+diff --git a/IGC/VectorCompiler/lib/GenXCodeGen/TargetInfo/CMakeLists.txt b/IGC/VectorCompiler/lib/GenXCodeGen/TargetInfo/CMakeLists.txt
+index dca9455f464..8a0b66f7b55 100644
+--- a/IGC/VectorCompiler/lib/GenXCodeGen/TargetInfo/CMakeLists.txt
++++ b/IGC/VectorCompiler/lib/GenXCodeGen/TargetInfo/CMakeLists.txt
+@@ -10,7 +10,7 @@ set(INFO_SOURCES
+   GenXTargetInfo.cpp
+ )
+ 
+-add_library(VCTargetInfo ${INFO_SOURCES})
++add_library(VCTargetInfo OBJECT ${INFO_SOURCES})
+ 
+ igc_get_llvm_targets(LLVM_LIBS Support)
+ 
+diff --git a/IGC/VectorCompiler/lib/GenXOpts/CMakeLists.txt b/IGC/VectorCompiler/lib/GenXOpts/CMakeLists.txt
+index 44ebf851d6e..0f56a8c1a26 100644
+--- a/IGC/VectorCompiler/lib/GenXOpts/CMakeLists.txt
++++ b/IGC/VectorCompiler/lib/GenXOpts/CMakeLists.txt
+@@ -27,7 +27,7 @@ set(OPT_SOURCES
+   CMPacketize/PacketBuilder_misc.cpp
+ )
+ 
+-add_library(VCTransforms ${OPT_SOURCES})
++add_library(VCTransforms OBJECT ${OPT_SOURCES})
+ 
+ igc_get_llvm_targets(LLVM_LIBS
+   Analysis
+diff --git a/IGC/VectorCompiler/lib/InternalIntrinsics/CMakeLists.txt b/IGC/VectorCompiler/lib/InternalIntrinsics/CMakeLists.txt
+index 332d74e25dd..060cccc91fc 100644
+--- a/IGC/VectorCompiler/lib/InternalIntrinsics/CMakeLists.txt
++++ b/IGC/VectorCompiler/lib/InternalIntrinsics/CMakeLists.txt
+@@ -14,7 +14,7 @@ set(LLVM_COMPONENTS
+ )
+ 
+ igc_get_llvm_targets(LLVM_LIBS ${LLVM_COMPONENTS})
+-add_library(VCInternalIntrinsics
++add_library(VCInternalIntrinsics OBJECT
+   InternalIntrinsics.cpp
+ )
+ 
+diff --git a/IGC/VectorCompiler/lib/Support/CMakeLists.txt b/IGC/VectorCompiler/lib/Support/CMakeLists.txt
+index 047f2528761..12b7bb62cca 100644
+--- a/IGC/VectorCompiler/lib/Support/CMakeLists.txt
++++ b/IGC/VectorCompiler/lib/Support/CMakeLists.txt
+@@ -15,7 +15,7 @@ set(SUPPORT_SOURCES
+   PassPrinters.cpp
+   )
+ 
+-add_library(VCSupport ${SUPPORT_SOURCES})
++add_library(VCSupport OBJECT ${SUPPORT_SOURCES})
+ igc_get_llvm_targets(LLVM_LIBS
+   Support
+   Core
+diff --git a/IGC/VectorCompiler/lib/Utils/GenX/CMakeLists.txt b/IGC/VectorCompiler/lib/Utils/GenX/CMakeLists.txt
+index e5a7bff2392..b77547c6bcd 100644
+--- a/IGC/VectorCompiler/lib/Utils/GenX/CMakeLists.txt
++++ b/IGC/VectorCompiler/lib/Utils/GenX/CMakeLists.txt
+@@ -21,7 +21,7 @@ set(GENX_UTILS_SOURCES
+   TransformArgCopy.cpp
+   )
+ 
+-add_library(VCGenXUtils ${GENX_UTILS_SOURCES})
++add_library(VCGenXUtils OBJECT ${GENX_UTILS_SOURCES})
+ igc_get_llvm_targets(LLVM_LIBS
+   Core
+   Support
+diff --git a/IGC/VectorCompiler/lib/Utils/General/CMakeLists.txt b/IGC/VectorCompiler/lib/Utils/General/CMakeLists.txt
+index 873d45e8025..8408828f748 100644
+--- a/IGC/VectorCompiler/lib/Utils/General/CMakeLists.txt
++++ b/IGC/VectorCompiler/lib/Utils/General/CMakeLists.txt
+@@ -16,7 +16,7 @@ set(GENERAL_UTILS_SOURCES
+   IndexFlattener.cpp
+   )
+ 
+-add_library(VCGeneralUtils ${GENERAL_UTILS_SOURCES})
++add_library(VCGeneralUtils OBJECT ${GENERAL_UTILS_SOURCES})
+ igc_get_llvm_targets(LLVM_LIBS
+   Core
+   Support

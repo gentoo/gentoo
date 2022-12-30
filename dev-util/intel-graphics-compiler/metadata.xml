@@ -13,6 +13,9 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
+	<use>
+		<flag name="vc">Enable VectorCompiler for a better performance.</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">intel/intel-graphics-compiler</remote-id>
 	</upstream>
