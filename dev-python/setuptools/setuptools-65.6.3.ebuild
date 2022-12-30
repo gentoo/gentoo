@@ -79,6 +79,8 @@ src_prepare() {
 		"${FILESDIR}"/setuptools-62.4.0-py-compile.patch
 	)
 
+	distutils-r1_src_prepare
+
 	# remove bundled dependencies, setuptools will switch to system deps
 	# automatically
 	rm -r */_vendor || die
@@ -88,8 +90,6 @@ src_prepare() {
 	find -name '*.py' -exec sed \
 		-e 's:from \w*[.]\+extern ::' -e 's:\w*[.]\+extern[.]::' \
 		-i {} + || die
-
-	distutils-r1_src_prepare
 
 	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 }
