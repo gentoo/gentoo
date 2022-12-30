@@ -23,9 +23,3 @@ python_install_all() {
 	doman ${PN}.1
 	distutils-r1_python_install_all
 }
-
-pkg_postinst() {
-	ewarn "net-analyzer/speedtest-cli is often times inaccurate, especially on faster"
-	ewarn "links, due to its use of the older HTTP-based API. In order to have more"
-	ewarn "accurate measurements, please use net-analyzer/speedtest++ instead."
-}
