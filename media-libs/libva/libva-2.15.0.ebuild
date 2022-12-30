@@ -63,6 +63,6 @@ multilib_src_configure() {
 
 pkg_postinst() {
 	optfeature_header
-	optfeature "Older Intel GPU support" media-libs/libva-intel-driver
-	optfeature "Newer Intel GPU support" media-libs/libva-intel-media-driver
+	optfeature "Older Intel GPU support up to Gen8" media-libs/libva-intel-driver
+	optfeature "Newer Intel GPU support from Gen9+" media-libs/libva-intel-media-driver
 }
