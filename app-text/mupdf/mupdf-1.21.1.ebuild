@@ -53,6 +53,7 @@ PATCHES=(
 	# General cross fixes from Debian (refreshed)
 	"${FILESDIR}"/${PN}-1.19.0-cross-fixes.patch
 	"${FILESDIR}"/$P-no-drm.patch
+	"${FILESDIR}"/$P-fix-aliasing-violation.patch
 )
 
 src_prepare() {
