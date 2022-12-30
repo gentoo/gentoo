@@ -82,6 +82,11 @@ src_configure() {
 	# Avoid automagic dependency on libsigsegv
 	export ac_cv_libsigsegv=no
 
+	# README says gawk may not work properly if built with non-Bison.
+	# We already BDEPEND on Bison, so just unset YACC rather than
+	# guessing if we need to do yacc.bison or bison -y.
+	unset YACC
+
 	local myeconfargs=(
 		--cache-file="${S}"/config.cache
 		--libexec='$(libdir)/misc'
