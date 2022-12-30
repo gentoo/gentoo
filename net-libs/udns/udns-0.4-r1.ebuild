@@ -1,9 +1,9 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit toolchain-funcs
+inherit edo toolchain-funcs
 
 DESCRIPTION="Async-capable DNS stub resolver library"
 HOMEPAGE="http://www.corpit.ru/mjt/udns.html"
@@ -14,9 +14,13 @@ SLOT="0"
 KEYWORDS="amd64 ~hppa ppc ~ppc64 sparc x86"
 IUSE="ipv6 static +tools"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4-configure-clang16.patch
+)
+
 src_configure() {
 	# Uses non-standard configure script, econf doesn't work
-	CC="$(tc-getCC)" ./configure $(use_enable ipv6) || die "Configure failed"
+	CC="$(tc-getCC)" edo ./configure $(use_enable ipv6)
 }
 
 src_compile() {
