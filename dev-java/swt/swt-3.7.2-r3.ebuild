@@ -6,11 +6,11 @@ EAPI=7
 inherit java-pkg-2 java-ant-2 java-osgi toolchain-funcs
 
 MY_PV="${PV/_rc/RC}"
-MY_DMF="http://archive.eclipse.org/eclipse/downloads/drops/R-${MY_PV}-201202080800"
+MY_DMF="https://archive.eclipse.org/eclipse/downloads/drops/R-${MY_PV}-201202080800"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="GTK based SWT Library"
-HOMEPAGE="http://www.eclipse.org/"
+HOMEPAGE="https://www.eclipse.org/"
 SRC_URI="
 	amd64? ( ${MY_DMF}/${MY_P}-gtk-linux-x86_64.zip )
 	ppc? ( ${MY_DMF}/${MY_P}-gtk-linux-x86.zip )
