@@ -105,10 +105,10 @@ src_configure() {
 	# Allow users to explicitly avoid flag sanitization via
 	# USE=custom-cflags.
 	if ! use custom-cflags; then
-	# Over-zealous CFLAGS can often cause problems.  What may work for one
-	# person may not work for another.  To avoid a large influx of bugs
-	# relating to failed builds, we strip most CFLAGS out to ensure as few
-	# problems as possible.
+		# Over-zealous CFLAGS can often cause problems.  What may work for one
+		# person may not work for another.  To avoid a large influx of bugs
+		# relating to failed builds, we strip most CFLAGS out to ensure as few
+		# problems as possible.
 		strip-flags
 	else
 		# While allowing the user to set their own CFLAGS with this option
