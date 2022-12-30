@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>ruby@gentoo.org</email>
-		<name>Gentoo Ruby Project</name>
-	</maintainer>
-	<longdescription>Rack provides a common API for connecting web frameworks, web servers and layers
-of software inbetween.</longdescription>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Gentoo Ruby Project</name>
+  </maintainer>
+  <longdescription>
+    Rack provides a common API for connecting web frameworks, web servers and layers
+    of software inbetween.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">rack/rack</remote-id>
+    <remote-id type="rubygems">rack</remote-id>
+  </upstream>
 </pkgmetadata>
