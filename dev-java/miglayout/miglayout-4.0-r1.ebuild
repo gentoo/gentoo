@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc examples source"
 inherit java-pkg-2
 
 DESCRIPTION="Easy to use yet very powerful Java Swing layout manager"
-HOMEPAGE="http://www.miglayout.com/"
+HOMEPAGE="https://www.miglayout.com"
 SRC_URI="http://www.migcalendar.com/miglayout/versions/${PV}/${P}-sources.jar"
 
 LICENSE="BSD"
