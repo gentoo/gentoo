@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,5 +32,6 @@ EOF
 }
 
 src_test() {
+	cd .. || die
 	bash t/run_tests || die
 }

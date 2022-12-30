@@ -33,6 +33,7 @@ python_prepare_all() {
 }
 
 src_test() {
+	cd .. || die
 	bash t/run_tests || die
 }
 
