@@ -1026,13 +1026,6 @@ dev-util/protobuf-cucumber
 # Removal in 30 days.
 dev-util/aruba:1
 
-# Ionen Wolkens <ionen@gentoo.org> (2022-11-30)
-# Stuck on ruby27 and ruby-gtk2, upstream gone and no other distros
-# seem to package this (also barely functional using current ruby
-# and has a tendency to crash).
-# Removal: 2022-12-30.
-games-board/camato
-
 # Ulrich Müller <ulm@gentoo.org> (2022-11-30)
 # SLOTs 23 and 24 of app-editors/emacs, corresponding to GNU Emacs
 # versions 23.4 and 24.5. These versions were released in January 2012
