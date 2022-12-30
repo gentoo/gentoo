@@ -25,7 +25,8 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="bluetooth dbus netlink rdma remote static-libs usb yydebug"
+IUSE="bluetooth dbus netlink rdma remote static-libs test usb yydebug"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	bluetooth? ( net-wireless/bluez:=[${MULTILIB_USEDEP}] )
@@ -37,8 +38,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/flex
 	app-alternatives/yacc
+	sys-devel/flex
 	dbus? ( virtual/pkgconfig )
 "
 
@@ -48,6 +49,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.0-usbmon.patch
+
 	"${FILESDIR}"/${PN}-1.10.1-pcap-config.patch
 )
 
@@ -62,8 +64,10 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" \
-	econf \
+	# bug #884275
+	export LEX=flex
+
+	ECONF_SOURCE="${S}" econf \
 		$(use_enable bluetooth) \
 		$(use_enable dbus) \
 		$(use_enable rdma) \
@@ -76,6 +80,11 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	emake all shared
+	use test && emake testprogs
+}
+
+multilib_src_test() {
+	testprogs/findalldevstest || die
 }
 
 multilib_src_install_all() {

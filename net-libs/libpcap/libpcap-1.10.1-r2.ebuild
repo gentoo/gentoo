@@ -38,8 +38,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/flex
 	app-alternatives/yacc
+	sys-devel/flex
 	dbus? ( virtual/pkgconfig )
 "
 
@@ -70,8 +70,10 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" \
-	econf \
+	# bug #884275
+	export LEX=flex
+
+	ECONF_SOURCE="${S}" econf \
 		$(use_enable bluetooth) \
 		$(use_enable dbus) \
 		$(use_enable rdma) \
