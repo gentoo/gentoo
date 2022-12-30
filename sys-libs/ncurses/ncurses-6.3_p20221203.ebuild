@@ -463,7 +463,7 @@ multilib_src_install_all() {
 	elif use minimal ; then
 		# Keep only the basic terminfo files
 		find "${ED}"/usr/share/terminfo/ \
-			-type f ${terms[*]/#/! -name } -delete , \
+			\( -type f -o -type l \) ${terms[*]/#/! -name } -delete , \
 			-type d -empty -delete || die
 	fi
 
