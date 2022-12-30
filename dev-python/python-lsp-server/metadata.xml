@@ -12,6 +12,7 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">python-lsp-server</remote-id>
+		<remote-id type="github">python-lsp/python-lsp-server</remote-id>
 	</upstream>
 	<use>
 		<flag name="all-plugins">Pull in all optional plugins</flag>
