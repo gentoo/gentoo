@@ -61,6 +61,7 @@ python_prepare_all() {
 
 	rm -r c-blosc/{blosc,internal-complibs} || die
 	rm tables/libblosc2.so || die
+	sed -i -e '/blosc2/d' requirements.txt || die
 	distutils-r1_python_prepare_all
 }
 
