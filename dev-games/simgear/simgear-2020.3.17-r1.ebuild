@@ -37,6 +37,7 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-2019.1.1-gdal3.patch"
 	"${FILESDIR}/${PN}-2020.1.2-do-not-assume-libc++-clang.patch"
+	"${FILESDIR}/${PN}-2020.3.17-boost-1.81.patch"
 )
 
 pkg_pretend() {
