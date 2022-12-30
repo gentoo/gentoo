@@ -123,7 +123,7 @@ src_compile() {
 
 		if ! use dot; then
 			sed -i -e "s/HAVE_DOT               = YES/HAVE_DOT    = NO/" \
-				{Doxyfile,doc/Doxyfile} \
+				{testing/Doxyfile,doc/Doxyfile} \
 				|| die "disabling dot failed"
 		fi
 
