@@ -22,7 +22,7 @@ RDEPEND="
 	dev-python/argon2-cffi[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_client-6.1.1[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_core-4.12.0[${PYTHON_USEDEP}]
+	>=dev-python/jupyter_core-5.1.0[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_events-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/nbconvert-6.4.4[${PYTHON_USEDEP}]
 	>=dev-python/nbformat-5.3.0[${PYTHON_USEDEP}]
