@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,11 +6,11 @@ EAPI=7
 inherit flag-o-matic java-pkg-2 java-ant-2 toolchain-funcs java-osgi
 
 MY_PV="${PV/_rc/RC}"
-MY_DMF="http://download.eclipse.org/eclipse/downloads/drops4/R-${MY_PV}-201812060815"
+MY_DMF="https://archive.eclipse.org/eclipse/downloads/drops4/R-${MY_PV}-201812060815"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="GTK based SWT Library"
-HOMEPAGE="http://www.eclipse.org/"
+HOMEPAGE="https://www.eclipse.org/"
 SRC_URI="
 	amd64? ( ${MY_DMF}/${MY_P}-gtk-linux-x86_64.zip )
 	ppc64? ( ${MY_DMF}/${MY_P}-gtk-linux-ppc64le.zip )"
