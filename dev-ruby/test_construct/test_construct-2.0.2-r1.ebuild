@@ -18,10 +18,12 @@ IUSE=""
 
 ruby_add_bdepend "test? (
 	>=dev-ruby/minitest-5.0.8
-	>=dev-ruby/mocha-0.14.0
+	dev-ruby/mocha:1.0
 	dev-ruby/rspec:3
 )"
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' Rakefile || die
+
+	sed -i -e '1igem "mocha", "<2"' test/test_helper.rb || die
 }
