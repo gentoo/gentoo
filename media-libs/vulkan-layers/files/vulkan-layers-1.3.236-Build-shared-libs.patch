@@ -1,0 +1,26 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f29022f96..cf34d8e21 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -255,7 +255,7 @@ endif()
+ # files directly in layers.
+ 
+ add_library(VkLayer_utils
+-            STATIC
++            SHARED
+             layers/vk_layer_config.cpp
+             layers/vk_layer_extension_utils.cpp
+             layers/vk_layer_utils.cpp
+diff --git a/layers/CMakeLists.txt b/layers/CMakeLists.txt
+index 96d52b5f8..3f75aa3a8 100644
+--- a/layers/CMakeLists.txt
++++ b/layers/CMakeLists.txt
+@@ -226,7 +226,7 @@ if (NOT BUILD_LAYERS)
+     return()
+ endif()
+ 
+-add_library(VkLayer_khronos_validation MODULE)
++add_library(VkLayer_khronos_validation SHARED)
+ 
+ target_sources(VkLayer_khronos_validation PRIVATE
+     ${CHASSIS_LIBRARY_FILES}
