@@ -18,6 +18,7 @@
   for interactively save and retrieve large amounts of data.
   </longdescription>
   <upstream>
+    <remote-id type="github">PyTables/PyTables</remote-id>
     <remote-id type="pypi">tables</remote-id>
   </upstream>
 </pkgmetadata>
