@@ -71,6 +71,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# bug #884277
+	export YACC=yacc.bison
+
 	ECONF_SOURCE="${S}" econf \
 		$(multilib_native_use_enable utils cli) \
 		$(use_enable debug)
