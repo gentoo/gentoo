@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.18-flags.patch
 )
 
+# selection from README.md that seem useful outside coreboot
 coreboot_utils=(
 	#cbfstool  has textrels and is not really necessary outside coreboot
 	cbmem
@@ -48,8 +49,6 @@ src_prepare() {
 }
 
 src_compile() {
-	# selection from README.md that seem useful outside coreboot
-
 	tc-export CC
 	export HOSTCFLAGS="${CFLAGS}"
 	for tool in ${coreboot_utils[*]} ; do
@@ -61,7 +60,9 @@ src_compile() {
 src_install() {
 	exeinto /usr/sbin
 	for tool in ${coreboot_utils[*]} ; do
-		[[ -e util/${tool}/${tool} ]] && doexe util/${tool}/${tool}
+		[[ -e util/${tool}/${tool} ]]    && doexe util/${tool}/${tool}
 		[[ -e util/${tool}/${tool}.py ]] && doexe util/${tool}/${tool}.py
+		[[ -e util/${tool}/${tool}.8 ]]  && doman util/${tool}/${tool}.8
+		[[ -d util/${tool}/man ]]        && doman util/${tool}/man/*.[12345678]
 	done
 }
