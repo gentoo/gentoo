@@ -1,9 +1,0 @@
-[Unit]
-Description=Boa web server
-After=network.target
-
-[Service]
-ExecStart=/usr/sbin/boa -d
-
-[Install]
-WantedBy=multi-user.target

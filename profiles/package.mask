@@ -1072,11 +1072,6 @@ app-metrics/prometheus-bin
 # Bug #883559
 =net-p2p/qbittorrent-4.5.0
 
-# John Helmert III <ajak@gentoo.org> (2022-11-27)
-# Unmaintained upstream, several unresolved public vulnerabilities,
-# Removal in 30 days. Bug #882773.
-www-servers/boa
-
 # David Seifert <soap@gentoo.org> (2022-11-27)
 # Broke API for C++, causes massive carnage for consumers.
 # Bug #883223.
