@@ -1099,12 +1099,6 @@ dev-python/slimit
 # Removal on 2022-12-27.  Bug #821118.
 games-util/xgamer
 
-# Michał Górny <mgorny@gentoo.org> (2022-11-27)
-# Unmaintained, ancient package.  x11-misc/unclutter-xfixes is
-# a superior replacement.
-# Removal on 2022-12-27.  Bug #880845.
-x11-misc/unclutter
-
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # Packages or their dependencies have not been ported to libsoup:3.0, while
 # other non-slotted dependencies have been.
