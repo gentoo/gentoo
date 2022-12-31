@@ -55,6 +55,10 @@ BDEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-replay-bin.patch"
+)
+
 SITEFILE="50${PN}-gentoo.el"
 
 distutils_enable_tests pytest
