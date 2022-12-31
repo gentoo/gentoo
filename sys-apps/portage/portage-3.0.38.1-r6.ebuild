@@ -22,7 +22,8 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	app-arch/xz-utils
 	test? ( dev-vcs/git )"
-DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
+DEPEND="
+	!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	>=app-arch/tar-1.27
 	dev-lang/python-exec:2
 	>=sys-apps/sed-4.0.5 sys-devel/patch
@@ -30,7 +31,8 @@ DEPEND="!build? ( $(python_gen_impl_dep 'ssl(+)') )
 	apidoc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinx-epytext[${PYTHON_USEDEP}]
-	)"
+	)
+"
 # Require sandbox-2.2 for bug #288863.
 # For whirlpool hash, require python[ssl] (bug #425046).
 # For compgen, require bash[readline] (bug #445576).
@@ -63,13 +65,19 @@ RDEPEND="
 	!<app-admin/logrotate-3.8.0
 	!<app-portage/gentoolkit-0.4.6
 	!<app-portage/repoman-2.3.10
-	!~app-portage/repoman-3.0.0"
+	!~app-portage/repoman-3.0.0
+"
+# Weird dep construct for sys-apps/file can be removed once >=file-5.44-r1 stable
 PDEPEND="
 	!build? (
 		>=net-misc/rsync-2.6.4
-		>=sys-apps/file-5.41
+		|| (
+			>=sys-apps/file-5.44-r1
+			=sys-apps/file-5.43-r2
+		)
 		>=sys-apps/coreutils-6.4
-	)"
+	)
+"
 # coreutils-6.4 rdep is for date format in emerge-webrsync #164532
 # NOTE: FEATURES=installsources requires debugedit and rsync
 
