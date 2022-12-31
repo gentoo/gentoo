@@ -40,6 +40,13 @@ esac
 if [[ ! ${_OUT_OF_SOURCE_ECLASS} ]]; then
 _OUT_OF_SOURCE_ECLASS=1
 
+# @ECLASS_VARIABLE: BUILD_DIR
+# @OUTPUT_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# The current build directory.  Defaults to ${WORKDIR}/${P}_build
+# if unset.
+
 # @FUNCTION: out-of-source_src_configure
 # @DESCRIPTION:
 # The default src_configure() implementation establishes a BUILD_DIR,
