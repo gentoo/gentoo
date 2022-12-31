@@ -1056,11 +1056,6 @@ dev-util/aruba:1
 app-editors/emacs:23
 app-editors/emacs:24
 
-# John Helmert III <ajak@gentoo.org> (2022-11-29)
-# Unmaintained and outdated in Gentoo, compatibility issues with
-# openssl-1.1. Removal in 30 days. Bug #696936.
-sys-apps/ucspi-ssl
-
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-11-29)
 # Multiple stability issues, deadlocks on exit, broken API.
 # Bug #883559
