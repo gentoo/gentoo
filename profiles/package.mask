@@ -1061,12 +1061,6 @@ app-editors/emacs:24
 # openssl-1.1. Removal in 30 days. Bug #696936.
 sys-apps/ucspi-ssl
 
-# John Helmert III <ajak@gentoo.org> (2022-11-29)
-# Authentication bypass vulnerability, unmaintained in Gentoo, source
-# package available. Use app-metrics/prometheus instead. Removal in 30
-# days. Bug #883637.
-app-metrics/prometheus-bin
-
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-11-29)
 # Multiple stability issues, deadlocks on exit, broken API.
 # Bug #883559
