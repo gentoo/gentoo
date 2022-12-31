@@ -1127,14 +1127,6 @@ dev-db/percona-xtrabackup-bin
 # in tree is EOL upstream. Removal in 30 days. Bug #882759.
 net-misc/cfengine
 
-# Pascal Jäger <pascal.jaeger@leimstift.de> (2022-11-24)
-# No maintainer, last release in 1994. Fails to build
-# with clang-16. Runtime crash in certain conditions.
-# Removal on 2022-12-23.
-# Bugs #549922 #713492 #731256 #875464 #882263
-# Removal Bug: #882631
-net-mail/metamail
-
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # Packages or their dependencies have not been ported to libsoup:3.0, while
 # other non-slotted dependencies have been.
