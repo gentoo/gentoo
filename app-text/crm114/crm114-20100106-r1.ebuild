@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,13 +13,12 @@ SRC_URI="http://crm114.sourceforge.net/tarballs/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="examples mew mimencode nls normalizemime test"
+IUSE="examples mew nls normalizemime test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/tre
 	mew? ( app-emacs/mew )
-	mimencode? ( net-mail/metamail )
 	normalizemime? ( mail-filter/normalizemime )"
 DEPEND="${RDEPEND}
 	test? ( sys-apps/miscfiles )"
@@ -31,12 +30,7 @@ PATCHES=( "${FILESDIR}"/${P}-fix-makefile.patch )
 src_prepare() {
 	default
 
-	if use mimencode; then
-		sed \
-			-e 's%#:mime_decoder: /mimencode -u/%:mime_decoder: /mimencode -u/%' \
-			-e 's%:mime_decoder: /mewdecode/%#:mime_decoder: /mewdecode/%' \
-			-i mailfilter.cf || die
-	elif use normalizemime; then
+	if use normalizemime; then
 		sed \
 			-e 's%#:mime_decoder: /normalizemime/%:mime_decoder: /normalizemime/%' \
 			-e 's%:mime_decoder: /mewdecode/%#:mime_decoder: /mewdecode/%' \
