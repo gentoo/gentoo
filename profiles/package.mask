@@ -1035,7 +1035,6 @@ x11-themes/mate-themes-meta
 # Removal in 14 days.
 dev-ruby/gherkin
 dev-util/cucumber-core:3.2
-dev-util/cucumber-expressions
 
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-11-29)
 # Multiple stability issues, deadlocks on exit, broken API.
