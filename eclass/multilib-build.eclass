@@ -1,4 +1,4 @@
-# Copyright 2013-2022 Gentoo Authors
+# Copyright 2013-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib-build.eclass
@@ -7,7 +7,6 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7 8
-# @PROVIDES: multibuild
 # @BLURB: flags and utility functions for building multilib packages
 # @DESCRIPTION:
 # The multilib-build.eclass exports USE flags and utility functions
