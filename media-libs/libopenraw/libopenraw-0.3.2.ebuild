@@ -77,6 +77,11 @@ src_compile() {
 	default
 }
 
+src_test() {
+	# Avoid cargo_src_test
+	default
+}
+
 src_install() {
 	default
 
