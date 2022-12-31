@@ -1135,12 +1135,6 @@ net-misc/cfengine
 # Removal Bug: #882631
 net-mail/metamail
 
-# Michał Górny <mgorny@gentoo.org> (2022-11-23)
-# Unpredictable build failures reported.  No revdeps left.
-# dev-libs/opencl-icd-loader is a good replacement.
-# Removal on 2022-12-23.  Bug #733018.
-dev-libs/ocl-icd
-
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # Packages or their dependencies have not been ported to libsoup:3.0, while
 # other non-slotted dependencies have been.
