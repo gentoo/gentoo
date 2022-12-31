@@ -16,6 +16,9 @@ IUSE="+nnp"
 
 # pax-utils lower bound for bug #265376
 DEPEND=">=app-misc/pax-utils-0.1.19"
+# Avoid folks installing with older file, bug #889046. We still need the
+# >= dep in Portage but this is a safety net if people do partial upgrades.
+RDEPEND="!<sys-apps/file-5.44-r1"
 BDEPEND="app-arch/xz-utils"
 
 has sandbox_death_notice ${EBUILD_DEATH_HOOKS} || EBUILD_DEATH_HOOKS+=" sandbox_death_notice"
