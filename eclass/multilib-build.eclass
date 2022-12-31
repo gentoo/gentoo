@@ -7,7 +7,6 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7 8
-# @PROVIDES: multibuild
 # @BLURB: flags and utility functions for building multilib packages
 # @DESCRIPTION:
 # The multilib-build.eclass exports USE flags and utility functions
