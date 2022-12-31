@@ -1029,12 +1029,6 @@ dev-ruby/rspec-retry
 # no need for this package. Removal on 2023-01-03.
 x11-themes/mate-themes-meta
 
-# Hans de Graaff <graaff@gentoo.org> (2022-12-02)
-# Old cucumber slots and dependencies for already removed
-# cucumber-3. These have no value as standalone packages.
-# Removal in 14 days.
-dev-ruby/gherkin
-
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-11-29)
 # Multiple stability issues, deadlocks on exit, broken API.
 # Bug #883559
