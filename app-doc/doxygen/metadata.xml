@@ -14,6 +14,7 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">doxygen/doxygen</remote-id>
+		<remote-id type="sourceforge">doxygen</remote-id>
 	</upstream>
 	<use>
 		<flag name="clang">support for <pkg>sys-devel/clang</pkg> assisted parsing</flag>
