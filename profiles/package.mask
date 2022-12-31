@@ -1116,12 +1116,6 @@ x11-misc/vnc2swf
 # Removal in 30 days.
 net-analyzer/snortsam
 
-# John Helmert III <ajak@gentoo.org> (2022-11-24)
-# Binary package several releases behind the source-based package,
-# multiple vulnerabilities, unmaintained for several years. Removal in
-# 30 days. Bugs #849389, #882783.
-dev-db/percona-xtrabackup-bin
-
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # Packages or their dependencies have not been ported to libsoup:3.0, while
 # other non-slotted dependencies have been.
