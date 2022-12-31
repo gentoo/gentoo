@@ -49,8 +49,8 @@ BDEPEND+="
 	)"
 
 PATCHES=(
-	"${FILESDIR}/file-5.39-portage-sandbox.patch" #713710 #728978
-	"${FILESDIR}/file-5.40-seccomp-fstatat64-musl.patch" #789336, not upstream yet
+	"${FILESDIR}/file-5.43-portage-sandbox.patch" #713710 #728978
+	"${FILESDIR}/file-5.43-seccomp-fstatat64-musl.patch" #789336, not upstream yet
 	"${FILESDIR}/${P}-configure-clang16.patch"
 )
 

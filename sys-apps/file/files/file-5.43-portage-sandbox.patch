@@ -1,0 +1,28 @@
+Allow syscalls for Gentoo's portage sandbox
+
+- Add getcwd (bug #728978)
+- Add faccessat2 (bug #889046)
+
+Bug: https://bugs.gentoo.org/728978
+Bug: https://bugs.gentoo.org/889046
+--- a/src/seccomp.c
++++ b/src/seccomp.c
+@@ -174,6 +174,9 @@ enable_sandbox_full(void)
+ 	ALLOW_RULE(exit_group);
+ #ifdef __NR_faccessat
+ 	ALLOW_RULE(faccessat);
++#endif
++#ifdef __NR_faccessat2
++        ALLOW_RULE(faccessat2);
+ #endif
+ 	ALLOW_RULE(fcntl);
+  	ALLOW_RULE(fcntl64);
+@@ -237,6 +240,8 @@ enable_sandbox_full(void)
+ 	ALLOW_RULE(write);
+ 	ALLOW_RULE(writev);
+ 
++	// needed by Gentoo's portage sandbox
++	ALLOW_RULE(getcwd);
+ 
+ #if 0
+ 	// needed by valgrind
