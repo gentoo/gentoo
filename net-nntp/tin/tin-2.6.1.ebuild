@@ -82,6 +82,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "MIME articles support" net-mail/metamail
 	optfeature "spell checker support" app-text/aspell
 }
