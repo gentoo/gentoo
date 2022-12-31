@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-<!-- maintainer-needed -->
-	<use>
-		<flag name="ntp-timestamp">Turn on NTP timestamping on received packet</flag>
-		<flag name="srtp">Add support for Secure RTP</flag>
-	</use>
-</pkgmetadata>

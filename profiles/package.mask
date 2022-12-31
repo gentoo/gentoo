@@ -1157,7 +1157,6 @@ dev-libs/ocl-icd
 app-cdr/xbiso
 app-emulation/dlx
 app-office/sc
-net-libs/ortp
 
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # Packages or their dependencies have not been ported to libsoup:3.0, while
