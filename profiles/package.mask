@@ -1037,7 +1037,6 @@ dev-ruby/gherkin
 dev-util/cucumber-core:3.2
 dev-util/cucumber-expressions
 dev-util/cucumber-tag_expressions
-dev-util/cucumber-wire:0
 
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-11-29)
 # Multiple stability issues, deadlocks on exit, broken API.
