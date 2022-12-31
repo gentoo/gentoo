@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,7 +42,7 @@ SRC_URI="mirror://qmail/${P}.tar.gz
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
-IUSE="authcram gencertdaily highvolume pop3 qmail-spp ssl vanilla"
+IUSE="authcram gencertdaily highvolume qmail-spp ssl vanilla"
 REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume )"
 RESTRICT="test"
 
@@ -67,9 +67,6 @@ RDEPEND="${DEPEND}
 	virtual/checkpassword
 	virtual/daemontools
 	authcram? ( >=net-mail/cmd5checkpw-0.30 )
-	ssl? (
-		pop3? ( sys-apps/ucspi-ssl )
-	)
 	!mail-mta/courier
 	!mail-mta/esmtp
 	!mail-mta/exim
