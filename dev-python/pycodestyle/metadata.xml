@@ -7,6 +7,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
+    <remote-id type="github">PyCQA/pycodestyle</remote-id>
     <remote-id type="pypi">pycodestyle</remote-id>
   </upstream>
 </pkgmetadata>
