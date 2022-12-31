@@ -1036,7 +1036,6 @@ x11-themes/mate-themes-meta
 dev-ruby/gherkin
 dev-util/cucumber-core:3.2
 dev-util/cucumber-expressions
-dev-util/cucumber-tag_expressions
 
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-11-29)
 # Multiple stability issues, deadlocks on exit, broken API.
