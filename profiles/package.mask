@@ -1111,11 +1111,6 @@ x11-misc/unclutter
 # Removal on 2022-12-27.  Bug #880927.
 x11-misc/vnc2swf
 
-# Michael Mair-Keimberger <mmk@levelnine.at> (2022-11-25)
-# Unmaintained, last release a decade ago, upstream declared it EOL
-# Removal in 30 days.
-net-analyzer/snortsam
-
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # Packages or their dependencies have not been ported to libsoup:3.0, while
 # other non-slotted dependencies have been.
