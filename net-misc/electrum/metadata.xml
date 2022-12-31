@@ -18,4 +18,7 @@
 		<flag name="cli">Enables the CLI interface</flag>
 		<flag name="qrcode">Enable QR code scanning with <pkg>media-gfx/zbar</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">spesmilo/electrum</remote-id>
+	</upstream>
 </pkgmetadata>
