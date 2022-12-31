@@ -12,7 +12,6 @@ RDEPEND="
 	|| (
 		www-servers/apache
 		www-servers/lighttpd
-		www-servers/boa
 		www-servers/fnord
 		www-servers/h2o
 		www-servers/monkeyd
