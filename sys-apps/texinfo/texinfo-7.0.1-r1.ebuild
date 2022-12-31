@@ -33,7 +33,10 @@ RDEPEND="
 	nls? ( virtual/libintl )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="nls? ( >=sys-devel/gettext-0.19.6 )"
+BDEPEND="
+	sys-apps/help2man
+	nls? ( >=sys-devel/gettext-0.19.6 )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-lto-type-mismatch.patch
