@@ -88,7 +88,10 @@ src_compile() {
 }
 
 src_install() {
-	dobin target/release/{agreety,fakegreet,greetd}
+	# if USE=debug, install binaries from the debug directory; else
+	# install binaries from the release directory
+	# https://bugs.gentoo.org/889052
+	dobin target/$(usex debug debug release)/{agreety,fakegreet,greetd}
 
 	insinto /etc/greetd
 	doins config.toml
