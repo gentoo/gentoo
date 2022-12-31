@@ -24,8 +24,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm gnutls guile idn"
 IUSE+=" javascript lua lzma +mouse nls nntp perl samba ssl test tre unicode X xml zlib zstd"
-# tests restricted for https://github.com/rkd77/elinks/issues/203
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
@@ -64,6 +63,11 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-tests.patch
+	"${FILESDIR}"/${PN}-0.16.0-fix-build-mujs.patch
+)
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
