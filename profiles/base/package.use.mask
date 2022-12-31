@@ -124,17 +124,6 @@ dev-lang/rust llvm-libunwind
 # ebuild support is there but currently failing to link
 app-antivirus/clamav jit
 
-# Sam James <sam@gentoo.org> (2022-09-06)
-# Incompatible with merged-usr and is a fundamentally flaky approach.
-# - app-arch/lbzip2: bug #868318 (possible solution in bug #868651)
-# - app-arch/pigz: bug #868312 (possible solution in bug #868648)
-# It's suggested that users who want this feature use a wrapper
-# script in /usr/local (or otherwise on PATH), or configure tools
-# like tar to use lbzip2 & pigz respectively using EXTRA_ECONF.
-app-arch/lbzip2 symlink
-app-arch/pbzip2 symlink
-app-arch/pigz symlink
-
 # Sam James <sam@gentoo.org> (2022-08-26)
 # Broken at runtime for now (bug #865113).
 sys-devel/binutils gprofng
@@ -755,10 +744,6 @@ net-analyzer/nmap system-lua
 # Mike Frysinger <vapier@gentoo.org> (2014-10-21)
 # Most targets do not support ASAN/etc... #504200.
 sys-devel/gcc sanitize
-
-# Mike Frysinger <vapier@gentoo.org> (2014-02-03)
-# Upstream says to not use this for now.
-dev-libs/elfutils threads
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2013-12-23)
 # Gstreamer support fails to build due to libtool shortcomings when using
