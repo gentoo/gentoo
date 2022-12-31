@@ -21,7 +21,6 @@ RDEPEND="
 	units-cur? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/future[${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
 		')
 	)
