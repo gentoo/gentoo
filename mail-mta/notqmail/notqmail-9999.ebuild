@@ -86,9 +86,6 @@ RDEPEND="${DEPEND}
 	acct-user/qmailr
 	acct-user/qmails
 	sys-apps/ucspi-tcp
-	ssl? (
-		pop3? ( sys-apps/ucspi-ssl )
-	)
 	!mail-mta/courier
 	!mail-mta/esmtp
 	!mail-mta/exim

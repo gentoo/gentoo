@@ -240,7 +240,7 @@ qmail_tcprules_install() {
 	insinto "${TCPRULES_DIR}"
 	doins "${GENQMAIL_S}"/tcprules/Makefile.qmail
 	doins "${GENQMAIL_S}"/tcprules/tcp.qmail-*
-	use ssl && use pop3 || rm -f "${D}${TCPRULES_DIR}"/tcp.qmail-pop3sd
+	rm -f "${D}${TCPRULES_DIR}"/tcp.qmail-pop3sd
 }
 
 qmail_supervise_install_one() {
@@ -263,7 +263,6 @@ qmail_supervise_install() {
 
 	if use pop3; then
 		qmail_supervise_install_one qmail-pop3d
-		use ssl && qmail_supervise_install_one qmail-pop3sd
 	fi
 }
 
@@ -344,7 +343,7 @@ qmail_rootmail_fixup() {
 }
 
 qmail_tcprules_build() {
-	for f in tcp.qmail-{smtp,qmtp,qmqp,pop3,pop3s}; do
+	for f in tcp.qmail-{smtp,qmtp,qmqp,pop3}; do
 		# please note that we don't check if it exists
 		# as we want it to make the cdb files anyway!
 		src="${ROOT}${TCPRULES_DIR}/${f}"
@@ -371,11 +370,6 @@ qmail_supervise_config_notice() {
 		elog "To start the pop3 server as well, create the following link:"
 		elog "ln -s ${SUPERVISE_DIR}/qmail-pop3d /service/qmail-pop3d"
 		elog
-		if use ssl; then
-			elog "To start the pop3s server as well, create the following link:"
-			elog "ln -s ${SUPERVISE_DIR}/qmail-pop3sd /service/qmail-pop3sd"
-			elog
-		fi
 	fi
 	elog "Additionally, the QMTP and QMQP protocols are supported, "
 	elog "and can be started as:"
