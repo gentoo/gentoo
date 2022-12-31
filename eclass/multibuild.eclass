@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multibuild.eclass
@@ -14,7 +14,10 @@
 # implementations).
 
 case ${EAPI} in
-	6|7|8) ;;
+	6|7|8)
+		# backwards compatibility for run_in_build_dir
+		inherit out-of-source-utils
+		;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -173,26 +176,6 @@ multibuild_copy_sources() {
 	}
 
 	multibuild_foreach_variant _multibuild_create_source_copy
-}
-
-# @FUNCTION: run_in_build_dir
-# @USAGE: <argv>...
-# @DESCRIPTION:
-# Run the given command in the directory pointed by BUILD_DIR.
-run_in_build_dir() {
-	debug-print-function ${FUNCNAME} "${@}"
-	local ret
-
-	[[ ${#} -ne 0 ]] || die "${FUNCNAME}: no command specified."
-	[[ ${BUILD_DIR} ]] || die "${FUNCNAME}: BUILD_DIR not set."
-
-	mkdir -p "${BUILD_DIR}" || die
-	pushd "${BUILD_DIR}" >/dev/null || die
-	"${@}"
-	ret=${?}
-	popd >/dev/null || die
-
-	return ${ret}
 }
 
 # @FUNCTION: multibuild_merge_root
