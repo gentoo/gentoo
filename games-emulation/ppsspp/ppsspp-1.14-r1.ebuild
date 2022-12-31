@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit xdg cmake
+PYTHON_COMPAT=( python3_{8..11} )
+
+inherit python-any-r1 xdg cmake
 
 DESCRIPTION="A PSP emulator written in C++"
 HOMEPAGE="https://www.ppsspp.org/
@@ -37,11 +39,16 @@ RDEPEND="
 	!qt5? ( media-libs/libsdl2[X,opengl,sound,video] )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-CMakeLists-flags.patch
 	"${FILESDIR}"/${PN}-disable-ccache-autodetection.patch
 )
+
+pkg_setup() {
+	python-any-r1_pkg_setup
+}
 
 src_configure() {
 	local mycmakeargs=(
