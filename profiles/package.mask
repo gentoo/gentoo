@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-12-31)
+# EAPI=6 ebuild, live only packages for 1 year! maintainer-needed package.
+# Removal: 2023-01-30.  Bug #889200.
+app-containers/docker-gc
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2022-12-31)
 # EAPI=6 ebuild, live only packages for 6 years!
 # Removal: 2023-01-30.  Bug #889198.
 app-vim/lightline
