@@ -1,0 +1,19 @@
+https://github.com/rkd77/elinks/issues/203
+https://github.com/rkd77/elinks/commit/aa8d7989815d48b6afdc3e321bd859f4453bacf2
+
+From aa8d7989815d48b6afdc3e321bd859f4453bacf2 Mon Sep 17 00:00:00 2001
+From: Witold Filipczyk <witekfl@poczta.onet.pl>
+Date: Fri, 30 Dec 2022 09:35:41 +0100
+Subject: [PATCH] [test] Strange endif . Refs #203
+
+--- a/src/dom/test/meson.build
++++ b/src/dom/test/meson.build
+@@ -28,7 +28,6 @@ meson.source_root()+'/src/dom/sgml/xbel/xbel.c',
+ testdeps,
+ c_args:['-DHAVE_CONFIG_H'], cpp_args:['-DHAVE_CONFIG_H'], include_directories:['.', '../..', '../../..'],
+ build_by_default:false)
+-endif
+ 
+ test_lib = environment({'TEST_LIB': meson.source_root()+'/test/libtest.sh'})
+ 
+
