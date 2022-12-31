@@ -1155,7 +1155,6 @@ dev-libs/ocl-icd
 #
 # Removal on 2022-12-23.
 app-cdr/xbiso
-app-emulation/dlx
 
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # Packages or their dependencies have not been ported to libsoup:3.0, while
