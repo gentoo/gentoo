@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Mair-Keimberger <mmk@levelnine.at> (2023-01-08)
+# EAPI=6, Installs only card pictures and has no reverse dependencies.
+# Bug #805278. Removal on 2023-02-08.
+dev-games/cardpics
+
+# Michael Mair-Keimberger <mmk@levelnine.at> (2023-01-08)
 # Dependencies of games-server/cyphesis, which got removed ~4 years ago, no
 # other reverse dependencies. Bug #728230
 # Removal on 2023-02-08.
