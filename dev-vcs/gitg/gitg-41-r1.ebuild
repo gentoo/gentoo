@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..11} )
+EAPI=8
 
-inherit gnome.org gnome2-utils meson python-r1 vala xdg-utils
+PYTHON_COMPAT=( python3_{8..11} )
+inherit gnome.org gnome2-utils meson python-r1 vala xdg
 
 DESCRIPTION="git repository viewer for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gitg"
@@ -40,20 +40,18 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	$(vala_depend)
 	>=dev-libs/libgit2-glib-1.0.0[vala]
+"
+BDEPEND="
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
+	$(vala_depend)
 "
 
-PATCHES=(
-	"${FILESDIR}/${PV}"-fix-build-with-meson-0.61.1.patch
-)
+PATCHES=( "${FILESDIR}"/${PV}-fix-build-with-meson-0.61.1.patch )
 
 src_prepare() {
 	default
-	vala_src_prepare
-	xdg_environment_reset
 
 	# it doesn't do anything in DESTDIR mode, except for failing
 	# when python3 symlink is not present
@@ -61,6 +59,8 @@ src_prepare() {
 }
 
 src_configure() {
+	vala_setup
+
 	local emesonargs=(
 		$(meson_use glade glade_catalog)
 		# we install the module manually anyway
@@ -81,12 +81,10 @@ src_install() {
 
 pkg_postinst() {
 	gnome2_schemas_update
-	xdg_desktop_database_update
-	xdg_icon_cache_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
 	gnome2_schemas_update
-	xdg_desktop_database_update
-	xdg_icon_cache_update
+	xdg_pkg_postrm
 }
