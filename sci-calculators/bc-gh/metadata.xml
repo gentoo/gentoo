@@ -16,6 +16,7 @@
 		</maintainer>
 		<bugs-to>https://git.yzena.com/gavin/bc</bugs-to>
 		<doc>https://git.yzena.com/gavin/bc/src/branch/master/manuals</doc>
+		<remote-id type="github">gavinhoward/bc</remote-id>
 	</upstream>
 	<longdescription lang="en">
 	An implementation of POSIX bc and Unix dc with GNU extensions and some of
