@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (2023-01-01)
+# Depends on nautilus < 43
+>=app-text/evince-43.0 nautilus
+
 # Sam James <sam@gentoo.org> (2022-12-31)
 # seccomp cannot be disabled via a runtime toggle which introduces substantial
 # fragility to Portage which relies on pax-utils' scanelf heavily. bug #815877.
