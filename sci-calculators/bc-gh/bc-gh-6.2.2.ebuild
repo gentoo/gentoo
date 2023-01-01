@@ -71,5 +71,5 @@ src_test() {
 	# locales, which might be different since the new locale files are not
 	# installed yet. (It is impossible to use uninstalled locales because of the
 	# poor design of POSIX locales.)
-	env LANG=C LC_ALL=C make check
+	env LANG=C LC_ALL=C emake check
 }
