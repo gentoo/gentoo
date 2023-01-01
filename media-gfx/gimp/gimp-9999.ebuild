@@ -1,11 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{8..11} )
-VALA_MIN_API_VERSION="0.50"
 VALA_USE_DEPEND=vapigen
 
 inherit git-r3 lua-single meson python-single-r1 vala xdg
