@@ -6,7 +6,11 @@ EAPI=7
 inherit myspell-r2
 
 DESCRIPTION="English dictionaries for myspell/hunspell"
-HOMEPAGE="https://extensions.libreoffice.org/extensions/english-dictionaries"
+HOMEPAGE="
+	https://extensions.libreoffice.org/extensions/english-dictionaries
+	https://proofingtoolgui.org
+	https://github.com/marcoagpinto/aoo-mozilla-en-dict
+"
 SRC_URI="https://extensions.libreoffice.org/assets/downloads/41/dict-en-${PV}.oxt"
 
 LICENSE="BSD MIT LGPL-3+"
