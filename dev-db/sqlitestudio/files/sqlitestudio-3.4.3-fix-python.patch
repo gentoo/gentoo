@@ -1,0 +1,13 @@
+diff --git a/Plugins/ScriptingPython/ScriptingPython.pro.orig b/Plugins/ScriptingPython/ScriptingPython.pro
+index 02fb5d3..d928aaf 100644
+--- a/Plugins/ScriptingPython/ScriptingPython.pro.orig
++++ b/Plugins/ScriptingPython/ScriptingPython.pro
+@@ -18,7 +18,7 @@ OTHER_FILES += \
+     scriptingpython.json
+ 
+ linux: {
+-    LIBS += -lpython3.9
++    # LIBS += -lpython3.9
+ }
+ 
+ macx: {

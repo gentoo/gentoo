@@ -1,33 +1,47 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PLOCALES="de es fr it pl pt_BR ro_RO ru sk zh_CN"
-inherit desktop plocale qmake-utils xdg
+PLOCALES="af_ZA ar_SA ca_ES cs_CZ da_DK de_DE el_GR en_US es_ES fa_IR fi_FI fr_FR he_IL hu_HU it_IT ja_JP ko_KR nl_NL no_NO pl_PL pt_BR pt_PT ro_RO ru_RU sk_SK sr_SP sv_SE tr_TR uk_UA vi_VN zh_CN zh_TW"
+
+# ScriptingPython says exactly 3.9
+PYTHON_COMPAT=( python3_{9..11} )
+
+inherit desktop plocale python-single-r1 qmake-utils xdg
 
 DESCRIPTION="Powerful cross-platform SQLite database manager"
 HOMEPAGE="https://sqlitestudio.pl"
-SRC_URI="https://sqlitestudio.pl/files/sqlitestudio3/complete/tar/${P}.tar.gz"
+SRC_URI="https://github.com/pawelsalawa/sqlitestudio/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cli cups tcl test"
+KEYWORDS="~amd64 ~x86"
+IUSE="cli cups python tcl test"
 
-REQUIRED_USE="test? ( cli )"
+REQUIRED_USE="
+	test? ( cli )
+	python? ( ${PYTHON_REQUIRED_USE} )
+"
+
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	dev-libs/openssl:=
 	dev-db/sqlite:3
 	dev-qt/qtcore:5
+	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtscript:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	cli? ( sys-libs/readline:0= )
+	cli? (
+		sys-libs/readline:=
+		sys-libs/ncurses:=
+	)
+	python? ( ${PYTHON_DEPS} )
 	cups? ( dev-qt/qtprintsupport:5 )
 	tcl? ( dev-lang/tcl:0= )
 "
@@ -38,17 +52,22 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	dev-qt/linguist-tools:5
+	virtual/pkgconfig
 "
 
-S="${WORKDIR}"
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-python.patch
+)
+
 core_build_dir="${S}/output/build"
 plugins_build_dir="${core_build_dir}/Plugins"
 
-src_prepare() {
-	xdg_src_prepare
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
 
-	sed -i -e 's/linux|portable/portable/' \
-		SQLiteStudio3/sqlitestudio/sqlitestudio.pro || die
+src_prepare() {
+	default
 
 	disable_modules() {
 		[[ $# -lt 2 ]] && die "not enough arguments"
@@ -66,6 +85,7 @@ src_prepare() {
 	local mod_lst=( DbSqlite2 )
 	use cups || mod_lst+=( Printing )
 	use tcl || mod_lst+=( ScriptingTcl )
+	use python || mod_lst+=( ScriptingPython )
 	disable_modules Plugins/Plugins.pro ${mod_lst[@]}
 
 	local mylrelease="$(qt5_get_bindir)"/lrelease
@@ -78,7 +98,7 @@ src_prepare() {
 		rm "${ts_dir}"/*.qm || die
 	done
 
-	prepare_locale() {
+	lrelease_locale() {
 		for ts_dir in ${ts_dir_lst[@]}; do
 			local ts=$(find "${ts_dir}" -type f -name "*${1}.ts" || continue)
 			"${mylrelease}" "${ts}" || die "preparing ${1} locale failed"
@@ -99,23 +119,35 @@ src_prepare() {
 
 	local ts_dir_main="SQLiteStudio3/sqlitestudio/translations"
 	plocale_find_changes ${ts_dir_main} "sqlitestudio_" '.ts'
-	plocale_for_each_locale prepare_locale
+	plocale_for_each_locale lrelease_locale
 	plocale_for_each_disabled_locale rm_locale
 
-	# prevent "multilib-strict check failed" with USE test
-	sed -i -e 's/\(target.*usr\/\)lib/\1'$(get_libdir)'/' \
+	# prevent "multilib-strict check failed" with USE test by
+	# replacing target paths with dynamic lib dir
+	#
+	sed -i -e 's/\(target\.path = .*\/\)lib/\1'$(get_libdir)'/' \
 		SQLiteStudio3/Tests/TestUtils/TestUtils.pro || die
 }
 
 src_configure() {
 	# NOTE: QMAKE_CFLAGS_ISYSTEM option prevents
 	# build error with tcl use enabled (stdlib.h is missing)
+	# "QMAKE_CFLAGS_ISYSTEM=\"\""
+	# CONFIG+ borrowed from compile.sh of tarball
 	local myqmakeargs=(
 		"BINDIR=${EPREFIX}/usr/bin"
 		"LIBDIR=${EPREFIX}/usr/$(get_libdir)"
-		"QMAKE_CFLAGS_ISYSTEM=\"\""
+		"CONFIG+=portable"
 		$(usex test 'DEFINES+=tests' '')
 	)
+
+	# Combination of kvirc ebuild and qtcompress
+	if use python; then
+		myqmakeargs+=(
+			INCLUDEPATH+=" $(python_get_includedir)"
+			LIBS+=" $(python_get_LIBS)"
+		)
+	fi
 
 	## Core
 	mkdir -p "${core_build_dir}" && cd "${core_build_dir}" || die
@@ -132,6 +164,12 @@ src_compile() {
 }
 
 src_install() {
+	if use test; then
+		# remove test artifacts that must not be installed
+		rm -r "${ED}"/lib64 || die
+		rm -r "${ED}"/usr/share/qt5/tests || die
+	fi
+
 	emake -C "${core_build_dir}" INSTALL_ROOT="${D}" install
 	emake -C "${plugins_build_dir}" INSTALL_ROOT="${D}" install
 
