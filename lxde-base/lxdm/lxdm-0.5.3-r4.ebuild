@@ -19,10 +19,10 @@ IUSE="debug elogind nls pam systemd"
 # They are directly referenced in the C code of the greeter and config util
 DEPEND="
 	dev-libs/glib:2
-	x11-libs/cairo
+	x11-libs/cairo[X(-)]
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:3
-	x11-libs/pango
+	x11-libs/gtk+:3[X(-)]
+	x11-libs/pango[X(-)]
 	x11-libs/libX11
 	x11-libs/libxcb:0=
 	virtual/libcrypt:0=
