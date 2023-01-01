@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit findlib
+inherit edo findlib
 
 DESCRIPTION="Uchar compatibility library"
 HOMEPAGE="https://github.com/ocaml/uchar"
@@ -14,8 +14,9 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="+ocamlopt"
 
-RDEPEND=">=dev-lang/ocaml-4.03:="
-DEPEND="${RDEPEND} dev-ml/ocamlbuild"
+RDEPEND=">=dev-lang/ocaml-4.03:=[ocamlopt?]"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-ml/ocamlbuild"
 
 # This is mostly a compat wrapper for older ocaml versions we don't support. No
 # need to test it, plus it fails when installing for the first time:
@@ -23,19 +24,21 @@ DEPEND="${RDEPEND} dev-ml/ocamlbuild"
 RESTRICT="test"
 
 src_compile() {
-	ocaml pkg/build.ml \
+	edo ocaml pkg/build.ml \
 		"native=$(usex ocamlopt true false)" \
-		"native-dynlink=$(usex ocamlopt true false)" || die
+		"native-dynlink=$(usex ocamlopt true false)"
 }
 
 src_test() {
-	ocamlbuild -X src -use-ocamlfind -pkg uchar test/testpkg.native || die
+	edo ocamlbuild -X src -use-ocamlfind -pkg uchar test/testpkg.native
 }
 
 src_install() {
 	# Can't use opam-installer here as it is an opam dep...
 	findlib_src_preinst
+
 	mv _build/pkg/META{.empty,} || die
 	ocamlfind install ${PN} _build/pkg/META || die
+
 	dodoc README.md CHANGES.md
 }
