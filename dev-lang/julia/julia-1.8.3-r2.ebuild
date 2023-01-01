@@ -22,6 +22,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	app-arch/p7zip
+	app-misc/ca-certificates
 	dev-libs/gmp:0=
 	dev-libs/libgit2:0
 	>=dev-libs/libpcre2-10.23:0=[jit,unicode]
