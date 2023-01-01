@@ -1,8 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-VALA_MIN_API_VERSION="0.40"
 
 inherit gnome.org gnome2-utils linux-info meson readme.gentoo-r1 vala xdg
 
