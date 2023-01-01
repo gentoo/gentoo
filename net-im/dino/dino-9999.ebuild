@@ -1,9 +1,8 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-CMAKE_MAKEFILE_GENERATOR="ninja"
 inherit cmake vala xdg readme.gentoo-r1
 
 DESCRIPTION="Modern Jabber/XMPP Client using GTK+/Vala"
@@ -46,19 +45,18 @@ RDEPEND="
 	notification-sound? ( media-libs/libcanberra:0[sound] )
 "
 DEPEND="
-	$(vala_depend)
 	${RDEPEND}
 	media-libs/gst-plugins-base
 	media-libs/gstreamer
+"
+BDEPEND="
 	sys-devel/gettext
+	$(vala_depend)
 "
 
-src_prepare() {
-	cmake_src_prepare
-	vala_src_prepare
-}
-
 src_configure() {
+	vala_setup
+
 	local disabled_plugins=(
 		$(usex gpg "" "openpgp")
 		$(usex omemo "" "omemo")
@@ -86,7 +84,7 @@ src_install() {
 	readme.gentoo_create_doc
 }
 
-src_postinst() {
+pkg_postinst() {
 	xdg_pkg_postinst
 	readme.gentoo_print_elog
 }
