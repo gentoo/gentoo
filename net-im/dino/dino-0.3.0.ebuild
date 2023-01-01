@@ -1,10 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
-VALA_MIN_API_VERSION="0.34"
 inherit cmake vala xdg readme.gentoo-r1
 
 DESCRIPTION="Modern Jabber/XMPP Client using GTK+/Vala"
