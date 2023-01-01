@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # correct versions for stdlibs are in deps/checksums
@@ -6,7 +6,7 @@
 
 EAPI=8
 
-# 1.8.2 still sits on LLVM 13, bug: https://bugs.gentoo.org/876184
+# >=1.8.2 still sits on LLVM 13, bug: https://bugs.gentoo.org/876184
 MY_LLVM_V=13.0.1
 
 inherit flag-o-matic pax-utils toolchain-funcs optfeature
@@ -171,6 +171,9 @@ src_install() {
 
 	# The appdata directory is deprecated.
 	mv "${ED}"/usr/share/{appdata,metainfo}/ || die
+
+	# Link ca-certificates.crt, bug: https://bugs.gentoo.org/888978
+	dosym -r /etc/ssl/certs/ca-certificates.crt /usr/share/julia/cert.pem
 }
 
 pkg_postinst() {
