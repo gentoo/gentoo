@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2023-01-01)
+# Package is broken and unusable, no activity upstream.
+# Removal after 2023-02-01.  Bug #722568.
+net-analyzer/chaosreader
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-12-31)
 # EAPI=6 ebuild, live only packages for 1 year! maintainer-needed package.
 # Removal: 2023-01-30.  Bug #889200.
