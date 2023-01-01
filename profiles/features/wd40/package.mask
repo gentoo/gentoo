@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Various packages requiring Rust.
@@ -47,7 +47,6 @@ dev-python/pymdown-extensions
 dev-python/pyspelling
 dev-python/pyspnego
 dev-python/pytest-trio
-dev-python/python-daemon
 dev-python/python-glanceclient
 dev-python/python-ironicclient
 dev-python/python-jose
