@@ -1,9 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-VALA_USE_DEPEND="vapigen"
+EAPI=8
 
 inherit gnome.org gnome2-utils meson vala xdg
 
@@ -22,18 +20,14 @@ RDEPEND="
 	>=gui-libs/libhandy-1.0.0:1=
 	>=app-misc/tracker-3.0.3:3=
 "
-
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	$(vala_depend)
 	>=sys-devel/gettext-0.19.8
 "
 
-src_prepare() {
-	vala_src_prepare
-	default
-}
-
 src_configure() {
+	vala_setup
 	meson_src_configure
 }
 
