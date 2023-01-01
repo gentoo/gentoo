@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Mair-Keimberger <mmk@levelnine.at> (2023-01-08)
+# Broken since many years, no reverse dependencies, last release from 2000
+# Bug #678518. Removal on 2023-02-08.
+net-dns/dnswalk
+
+# Michael Mair-Keimberger <mmk@levelnine.at> (2023-01-08)
 # EAPI=6, Installs only card pictures and has no reverse dependencies.
 # Bug #805278. Removal on 2023-02-08.
 dev-games/cardpics
