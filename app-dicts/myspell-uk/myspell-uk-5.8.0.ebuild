@@ -20,7 +20,10 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Ukrainian dictionaries for myspell/hunspell"
-HOMEPAGE="https://extensions.libreoffice.org/extension-center/ukrainian-spelling-dictionary-and-thesaurus"
+HOMEPAGE="
+	https://extensions.libreoffice.org/extension-center/ukrainian-spelling-dictionary-and-thesaurus
+	https://github.com/brown-uk/dict_uk
+"
 SRC_URI="https://extensions.libreoffice.org/assets/downloads/521/1655471128/dict-uk_UA-${PV}.oxt"
 
 LICENSE="GPL-3 LGPL-2.1 MPL-1.1"
