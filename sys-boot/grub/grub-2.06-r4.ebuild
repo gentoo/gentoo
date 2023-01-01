@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -262,8 +262,9 @@ src_configure() {
 	tc-export CC NM OBJCOPY RANLIB STRIP
 	tc-export BUILD_CC BUILD_PKG_CONFIG
 
-	# Force configure to use flex, bug 887211.
+	# Force configure to use flex & bison, bug 887211.
 	export LEX=flex
+	unset YACC
 
 	MULTIBUILD_VARIANTS=()
 	local p
