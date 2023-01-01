@@ -15,8 +15,7 @@
 # executables, pkgconfig files, etc., which Gentoo does not provide.
 
 case ${EAPI} in
-	7) inherit eutils multilib ;;
-	8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
