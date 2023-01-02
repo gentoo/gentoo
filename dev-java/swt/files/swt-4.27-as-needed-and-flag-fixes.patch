@@ -1,0 +1,82 @@
+diff -Naur a/make_linux.mak b/make_linux.mak
+--- a/make_linux.mak	2019-01-07 14:08:00.269147198 +0100
++++ b/make_linux.mak	2019-01-07 14:10:28.645155241 +0100
+@@ -98,7 +98,7 @@
+ WEBKIT_OBJECTS = swt.o webkitgtk.o webkitgtk_structs.o webkitgtk_stats.o webkitgtk_custom.o
+ GLX_OBJECTS = swt.o glx.o glx_structs.o glx_stats.o
+ 
+-CFLAGS := $(CFLAGS) \
++CFLAGS += -fPIC \
+ 		-DSWT_VERSION=$(SWT_VERSION) \
+ 		$(NATIVE_STATS) \
+ 		$(SWT_DEBUG) \
+@@ -130,13 +130,13 @@
+ make_swt: $(SWT_LIB) $(SWTPI_LIB)
+ 
+ $(SWT_LIB): $(SWT_OBJECTS)
+-	$(CC) $(LFLAGS) -o $(SWT_LIB) $(SWT_OBJECTS)
++	$(CC) $(LDFLAGS) $(LFLAGS) -o $(SWT_LIB) $(SWT_OBJECTS)
+ 
+ callback.o: callback.c callback.h
+ 	$(CC) $(CFLAGS) $(GTKCFLAGS) -DUSE_ASSEMBLER -c callback.c
+ 
+ $(SWTPI_LIB): $(SWTPI_OBJECTS)
+-	$(CC) $(LFLAGS) -o $(SWTPI_LIB) $(SWTPI_OBJECTS) $(GTKLIBS)
++	$(CC) $(LDFLAGS) $(LFLAGS) -o $(SWTPI_LIB) $(SWTPI_OBJECTS) $(GTKLIBS)
+ 
+ swt.o: swt.c swt.h
+ 	$(CC) $(CFLAGS) -c swt.c
+@@ -169,7 +169,7 @@
+ make_cairo: $(CAIRO_LIB)
+ 
+ $(CAIRO_LIB): $(CAIRO_OBJECTS)
+-	$(CC) $(LFLAGS) -o $(CAIRO_LIB) $(CAIRO_OBJECTS) $(CAIROLIBS)
++	$(CC) $(LDFLAGS) $(LFLAGS) -o $(CAIRO_LIB) $(CAIRO_OBJECTS) $(CAIROLIBS)
+ 
+ cairo.o: cairo.c cairo.h swt.h
+ 	$(CC) $(CFLAGS) $(CAIROCFLAGS) -c cairo.c
+@@ -184,7 +184,7 @@
+ make_awt:$(AWT_LIB)
+ 
+ $(AWT_LIB): $(AWT_OBJECTS)
+-	$(CC) $(AWT_LFLAGS) -o $(AWT_LIB) $(AWT_OBJECTS) $(AWT_LIBS)
++	$(CC) -fPIC $(LDFLAGS) $(AWT_LFLAGS) -o $(AWT_LIB) $(AWT_OBJECTS) $(AWT_LIBS)
+ 
+ #
+ # Atk lib
+@@ -192,7 +192,7 @@
+ make_atk: $(ATK_LIB)
+ 
+ $(ATK_LIB): $(ATK_OBJECTS)
+-	$(CC) $(LFLAGS) -o $(ATK_LIB) $(ATK_OBJECTS) $(ATKLIBS)
++	$(CC) $(LDFLAGS) $(LFLAGS) -o $(ATK_LIB) $(ATK_OBJECTS) $(ATKLIBS)
+ 
+ atk.o: atk.c atk.h
+ 	$(CC) $(CFLAGS) $(ATKCFLAGS) -c atk.c
+@@ -209,7 +209,7 @@
+ make_webkit: $(WEBKIT_LIB)
+ 
+ $(WEBKIT_LIB): $(WEBKIT_OBJECTS)
+-	$(CC) $(LFLAGS) -o $(WEBKIT_LIB) $(WEBKIT_OBJECTS) $(WEBKITLIBS)
++	$(CC) $(LDFLAGS) $(LFLAGS) -o $(WEBKIT_LIB) $(WEBKIT_OBJECTS) $(WEBKITLIBS)
+ 
+ webkitgtk.o: webkitgtk.c webkitgtk_custom.h
+ 	$(CC) $(CFLAGS) $(WEBKITCFLAGS) -c webkitgtk.c
+# @@ -217,7 +217,7 @@
+#  make_webkit2extension: $(WEBKIT_EXTENSION_LIB)
+#  
+#  $(WEBKIT_EXTENSION_LIB) : webkitgtk_extension.o
+# -	$(CC) $(LFLAGS) -o $@ $^ $(WEBKIT_EXTENSION_LFLAGS)
+# +	$(CC) $(LDFLAGS) $(LFLAGS) -o $@ $^ $(WEBKIT_EXTENSION_LFLAGS)
+#  
+#  webkitgtk_extension.o : webkitgtk_extension.c
+#  	$(CC) $(CFLAGS) $(WEBKIT_EXTENSION_CFLAGS) ${SWT_PTR_CFLAGS} -fPIC -c $^
+@@ -229,7 +229,7 @@
+ make_glx: $(GLX_LIB)
+ 
+ $(GLX_LIB): $(GLX_OBJECTS)
+-	$(CC) $(LFLAGS) -o $(GLX_LIB) $(GLX_OBJECTS) $(GLXLIBS)
++	$(CC) $(LDFLAGS) $(LFLAGS) -o $(GLX_LIB) $(GLX_OBJECTS) $(GLXLIBS)
+ 
+ glx.o: glx.c 
+ 	$(CC) $(CFLAGS) $(GLXCFLAGS) -c glx.c
