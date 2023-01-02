@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -198,7 +198,7 @@ src_install() {
 	dodoc README.md bin/docs/{Debugger.pdf,GameIndex.pdf,PCSX2_FAQ.pdf,debugger.txt}
 	newman bin/docs/PCSX2.1 ${PN}.1
 
-	newicon linux_various/PCSX2.xpm ${PN}.xpm
+	newicon bin/resources/icons/AppIconLarge.png ${PN}.png
 	make_desktop_entry ${PN} ${PN^^}
 }
 
