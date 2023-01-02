@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2023-01-02)
+# EAPI 6, pretty much no upstream activity, outdated, last upstream
+# release over 3 years ago, no revdeps. Removal on 2023-02-01.
+dev-cpp/pngpp
+
 # Jonas Stein <jstein@gentoo.org> (2023-01-01)
 # Package is broken and unusable, no activity upstream.
 # Removal after 2023-02-01.  Bug #722568.
