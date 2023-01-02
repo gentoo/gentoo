@@ -40,7 +40,7 @@ REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 	libgstreamer-0.10.so.0
 "
 
-BEPEND="
+BDEPEND="
 	hdx? ( >=media-plugins/hdx-realtime-media-engine-2.9.500.2802-r1 )
 "
 
@@ -121,12 +121,12 @@ src_prepare() {
 	default
 	rm lib/UIDialogLibWebKit.so || die
 
-	cp nls/en/module.ini .
+	cp nls/en/module.ini . || die
 	if use hdx; then
-		"${BROOT}${ICAROOT}"/rtme/RTMEconfig -install -ignoremm
-		mv new_module.ini module.ini
+		"${BROOT}${ICAROOT}"/rtme/RTMEconfig -install -ignoremm || die
+		mv new_module.ini module.ini || die
 	fi
-	mv module.ini config/
+	mv module.ini config/ || die
 }
 
 src_install() {
