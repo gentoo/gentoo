@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,6 +49,7 @@ RDEPEND="dev-libs/boost:=
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
 	assimp? ( media-libs/assimp:= )
+	cgal? ( sci-mathematics/cgal )
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	ginkgo? ( sci-libs/ginkgo )
 	gmsh? ( sci-libs/gmsh )
