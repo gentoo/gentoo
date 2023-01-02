@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -51,6 +51,11 @@ DOCS=(
 	ChangeLog.txt
 	README.md
 	TRANSLATE.md
+)
+
+PATCHES=(
+	"${FILESDIR}/biglybt-3.2.0.0-disable-SWTUpdateChecker.patch"
+	"${FILESDIR}/biglybt-3.2.0.0-disable-shared-plugins.patch"
 )
 
 S="${WORKDIR}/BiglyBT-${PV}"
