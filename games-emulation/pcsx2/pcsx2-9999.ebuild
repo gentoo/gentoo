@@ -161,12 +161,16 @@ src_configure() {
 		-DDISABLE_BUILD_DATE=yes
 		-DDISABLE_SETCAP=yes
 		-DENABLE_TESTS=$(usex test)
-		-DUSE_SYSTEM_LIBS=yes
 		-DUSE_VTUNE=no
 		-DUSE_VULKAN=$(usex vulkan)
 		-DWAYLAND_API=$(usex wayland)
 		-DX11_API=yes # fails if X libs are missing even if disabled
 		-DXDG_STD=yes
+
+		# note that the current upstream is somewhat hostile to using system
+		# libs, system installs, or any modifications and may disregard any
+		# bugs that is not reproducible with the appimage using bundled libs
+		-DUSE_SYSTEM_LIBS=yes
 
 		# sse4.1 is the bare minimum required, -m is required at build time
 		# (see PCSX2Base.h) and it dies if no support at runtime (AppInit.cpp)
@@ -189,7 +193,6 @@ src_test() {
 }
 
 src_install() {
-	# package mode was removed turning cmake_src_install into a noop
 	newbin "${BUILD_DIR}"/pcsx2-qt/pcsx2-qt ${PN}
 
 	insinto /usr/share/${PN}
