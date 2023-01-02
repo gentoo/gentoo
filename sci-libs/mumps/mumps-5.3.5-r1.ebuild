@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -145,7 +145,8 @@ src_compile() {
 	# Workaround #462602
 	export FAKEROOTKEY=1
 
-	emake alllib PIC="-fPIC"
+	# Use "-j1" to avoid a spurious race condition
+	emake -j1 alllib PIC="-fPIC"
 	if ! use mpi; then
 		#$(tc-getAR) crs lib/libmumps_common.a libseq/*.o || die
 		LIBADD+=" -Llibseq -lmpiseq"
