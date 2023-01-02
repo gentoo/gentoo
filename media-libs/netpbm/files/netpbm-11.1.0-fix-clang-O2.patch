@@ -1,0 +1,26 @@
+When compiling with clang and -O2, local variable origJmpbufP with value
+changed after setjmp contains garbage after longjmp.
+
+According to glibc documentation, making it volatile should have fixed the
+issue, but it didn't.  Static outside the function works.
+
+Bug: https://bugs.gentoo.org/885561
+
+--- a/lib/libpamread.c
++++ b/lib/libpamread.c
+@@ -25,6 +25,7 @@
+ #include "fileio.h"
+ #include "pam.h"
+ 
++static jmp_buf * origJmpbufP = NULL;
+ 
+ static void
+ readPbmRow(const struct pam * const pamP,
+@@ -35,7 +36,6 @@
+                  "It says PBM format, but 'depth' member is not 1.");
+     else {
+         jmp_buf jmpbuf;
+-        jmp_buf * origJmpbufP;
+         unsigned char * bitrow;
+ 
+         bitrow = (unsigned char *) pbm_allocrow(pbm_packed_bytes(pamP->width));

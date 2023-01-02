@@ -42,16 +42,14 @@ RDEPEND="
 	)
 	rle? ( media-libs/urt:= )
 	svga? ( media-libs/svgalib )
-	tiff? ( >=media-libs/tiff-3.5.5:= )
+	tiff? ( media-libs/tiff )
 	xml? ( dev-libs/libxml2 )
 	X? ( x11-libs/libX11 )
 "
-
 DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
 "
-
 BDEPEND="
 	app-arch/xz-utils
 	sys-devel/flex
@@ -61,6 +59,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/netpbm-10.86.21-build.patch
 	"${FILESDIR}"/netpbm-11.0.0-misc-deps.patch
+	"${FILESDIR}"/netpbm-11.1.0-fix-clang-O2.patch
 )
 
 netpbm_libtype() {
