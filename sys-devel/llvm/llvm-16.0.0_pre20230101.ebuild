@@ -455,7 +455,7 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	cmake_build distribution
+	tc-env_build cmake_build distribution
 
 	pax-mark m "${BUILD_DIR}"/bin/llvm-rtdyld
 	pax-mark m "${BUILD_DIR}"/bin/lli
