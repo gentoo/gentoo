@@ -57,6 +57,12 @@ BDEPEND=">=dev-util/meson-0.62.2
 # Build directory, location where all generated files should be placed.
 # If this isn't set, it defaults to ${WORKDIR}/${P}-build.
 
+# @ECLASS_VARIABLE: MESON_QUIET
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Disables verbose messages during compilation if non-empty.
+
 # @ECLASS_VARIABLE: EMESON_BUILDTYPE
 # @DESCRIPTION:
 # The buildtype value to pass to meson setup.
@@ -390,9 +396,13 @@ meson_src_compile() {
 		-C "${BUILD_DIR}"
 		--jobs "$(makeopts_jobs "${MAKEOPTS}" 0)"
 		--load-average "$(makeopts_loadavg "${MAKEOPTS}" 0)"
-		--verbose
-		"$@"
 	)
+
+	if [[ -z ${MESON_QUIET} ]]; then
+		mesoncompileargs+=( --verbose )
+	fi
+
+	mesoncompileargs+=( "$@" )
 
 	set -- meson compile "${mesoncompileargs[@]}"
 	echo "$@" >&2
