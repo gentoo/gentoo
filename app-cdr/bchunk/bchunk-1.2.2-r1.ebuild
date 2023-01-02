@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -13,8 +13,6 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
 
-DOCS=( "${PN}.spec" README ChangeLog )
-
 src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
@@ -23,7 +21,8 @@ src_compile() {
 }
 
 src_install() {
-	dobin "${PN}"
-	doman "${PN}.1"
+	dobin bchunk
+	doman bchunk.1
 	einstalldocs
+	dodoc bchunk.spec
 }
