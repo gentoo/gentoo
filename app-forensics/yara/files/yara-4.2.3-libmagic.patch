@@ -1,0 +1,65 @@
+Bug: https://bugs.gentoo.org/889182
+Bug: https://github.com/VirusTotal/yara/pull/1845
+
+From 0939464c359b4718779b9f071029624df98bae39 Mon Sep 17 00:00:00 2001
+From: Hilko Bengen <bengen@hilluzination.de>
+Date: Thu, 29 Dec 2022 00:06:40 +0100
+Subject: [PATCH] test-magic: Update expected strings
+
+As of file 5.44, some PE-related strings and MIME types have been
+updated, causing the test to fail.
+
+See [Debian bug#1027031](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1027031)
+---
+ tests/test-magic.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test-magic.c b/tests/test-magic.c
+index ff2f34c86..1d685e3dd 100644
+--- a/tests/test-magic.c
++++ b/tests/test-magic.c
+@@ -23,8 +23,10 @@ int main(int argc, char** argv)
+ 
+   assert_true_rule_blob(
+       "import \"magic\" rule test { condition: \
+-      magic.type() contains \"MS-DOS executable\" and \
+-      magic.mime_type() == \"application/x-dosexec\" }",
++      ( magic.type() contains \"MS-DOS executable\" or \
++        magic.type() contains \"PE32+ executable\" ) and                                                      \
++      ( magic.mime_type() == \"application/x-dosexec\" or \
++        magic.mime_type() == \"application/vnd.microsoft.portable-executable\" ) }",
+       PE32_FILE);
+ 
+   // Test case for https://github.com/VirusTotal/yara/issues/1663
+Bug: https://github.com/VirusTotal/yara/pull/1853
+
+From 1b5d787701e124a829af03cdb0009e48dc492aba Mon Sep 17 00:00:00 2001
+From: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date: Mon, 2 Jan 2023 20:37:59 +0100
+Subject: [PATCH] test-magic: Update expected strings (#1853)
+
+As of file 5.44, some PE-related strings and MIME types have been
+updated, causing the test to fail. This commit extends the fix in
+0939464c359b4718779b9f071029624df98bae39 to cover more cases.
+
+closes #1853
+
+See [Gentoo bug#889182](https://bugs.gentoo.org/889182)
+---
+ tests/test-magic.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test-magic.c b/tests/test-magic.c
+index 1d685e3d..0a327ee4 100644
+--- a/tests/test-magic.c
++++ b/tests/test-magic.c
+@@ -24,7 +24,8 @@ int main(int argc, char** argv)
+   assert_true_rule_blob(
+       "import \"magic\" rule test { condition: \
+       ( magic.type() contains \"MS-DOS executable\" or \
+-        magic.type() contains \"PE32+ executable\" ) and                                                      \
++        magic.type() contains \"PE32+ executable\" or \
++        magic.type() contains \"PE32 executable\") and \
+       ( magic.mime_type() == \"application/x-dosexec\" or \
+         magic.mime_type() == \"application/vnd.microsoft.portable-executable\" ) }",
+       PE32_FILE);
