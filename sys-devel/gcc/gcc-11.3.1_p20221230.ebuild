@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ TOOLCHAIN_PATCH_SUFFIX="xz"
 TOOLCHAIN_PATCH_DEV="sam"
 PATCH_VER="5"
 PATCH_GCC_VER="11.4.0"
-MUSL_VER="0"
+MUSL_VER="1"
 MUSL_GCC_VER="11.4.0"
 
 if [[ $(ver_cut 3) == 9999 ]] ; then
