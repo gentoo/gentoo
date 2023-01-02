@@ -159,13 +159,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
 		-DDISABLE_BUILD_DATE=yes
-		-DDISABLE_SETCAP=yes
 		-DENABLE_TESTS=$(usex test)
 		-DUSE_VTUNE=no
 		-DUSE_VULKAN=$(usex vulkan)
 		-DWAYLAND_API=$(usex wayland)
 		-DX11_API=yes # fails if X libs are missing even if disabled
-		-DXDG_STD=yes
 
 		# note that the current upstream is somewhat hostile to using system
 		# libs, system installs, or any modifications and may disregard any
@@ -193,10 +191,10 @@ src_test() {
 }
 
 src_install() {
-	newbin "${BUILD_DIR}"/pcsx2-qt/pcsx2-qt ${PN}
+	newbin "${BUILD_DIR}"/bin/pcsx2-qt ${PN}
 
 	insinto /usr/share/${PN}
-	doins -r "${BUILD_DIR}"/pcsx2-qt/resources
+	doins -r "${BUILD_DIR}"/bin/resources
 
 	dodoc README.md bin/docs/{Debugger.pdf,GameIndex.pdf,PCSX2_FAQ.pdf,debugger.txt}
 	newman bin/docs/PCSX2.1 ${PN}.1
