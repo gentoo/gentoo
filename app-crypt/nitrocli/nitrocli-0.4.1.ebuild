@@ -93,13 +93,20 @@ RDEPEND="
 RESTRICT="test"
 QA_FLAGS_IGNORED="usr/bin/nitrocli"
 
+src_compile() {
+	cargo_src_compile --bin=nitrocli
+	# Install shell-complete binary into source directory to be able to
+	# use it later on.
+	cargo install --bin=shell-complete --path . --root "${S}" || die
+}
+
 src_install() {
 	cargo_src_install --bin=nitrocli
 
-	target/release/shell-complete bash > ${PN}.bash || die
+	"${S}"/bin/shell-complete bash > ${PN}.bash || die
 	newbashcomp ${PN}.bash ${PN}
 
-	target/release/shell-complete fish > ${PN}.fish || die
+	"${S}"/bin/shell-complete fish > ${PN}.fish || die
 	insinto /usr/share/fish/vendor_conf.d/
 	insopts -m0755
 	doins ${PN}.fish
