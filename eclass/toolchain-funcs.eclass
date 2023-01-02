@@ -377,7 +377,6 @@ tc-export_build_env() {
 
 # @FUNCTION: tc-env_build
 # @USAGE: <command> [command args]
-# @INTERNAL
 # @DESCRIPTION:
 # Setup the compile environment to the build tools and then execute the
 # specified command.  We use tc-getBUILD_XX here so that we work with
