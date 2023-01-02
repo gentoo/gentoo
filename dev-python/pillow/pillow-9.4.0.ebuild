@@ -105,6 +105,11 @@ src_test() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		# TODO (is clipboard unreliable in Xvfb?)
+		Tests/test_imagegrab.py::TestImageGrab::test_grabclipboard
+	)
+
 	"${EPYTHON}" selftest.py --installed || die "selftest failed with ${EPYTHON}"
 	# no:relaxed: pytest-relaxed plugin make our tests fail. deactivate if installed
 	epytest -p no:relaxed || die "Tests failed with ${EPYTHON}"
