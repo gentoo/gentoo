@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
-	>=sys-auth/polkit-0.103
+	>=sys-auth/polkit-0.103[daemon(+)]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
