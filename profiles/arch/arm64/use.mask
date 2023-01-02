@@ -1,8 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -arm64
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2023-01-01)
+# unmask synaptics input driver
+-input_devices_synaptics
 
 # matoro <matoro_gentoo@matoro.tk> (2022-09-29)
 # dev-util/google-perftools is supported here
