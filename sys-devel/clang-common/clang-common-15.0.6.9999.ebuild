@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="
 	default-compiler-rt default-libcxx default-lld llvm-libunwind
-	stricter
+	hardened stricter
 "
 
 PDEPEND="
@@ -86,7 +86,40 @@ src_install() {
 		# This file contains flags common to clang, clang++ and clang-cpp.
 		@gentoo-runtimes.cfg
 		@gentoo-gcc-install.cfg
+		@gentoo-hardened.cfg
 	EOF
+
+	# Baseline hardening (bug #851111)
+	newins - gentoo-hardened.cfg <<-EOF
+		-fstack-clash-protection
+		-fstack-protector-strong
+		-fPIE
+		-include "${ESYSROOT}/usr/include/gentoo/fortify.h"
+	EOF
+
+	dodir /usr/include/gentoo
+
+	local fortify_level=$(usex hardened 3 2)
+	# We have to do this because glibc's headers warn if F_S is set
+	# without optimization and that would at the very least be very noisy
+	# during builds and at worst trigger many -Werror builds.
+	cat >> "${ED}/usr/include/gentoo/fortify.h" <<- EOF || die
+		#ifndef _FORTIFY_SOURCE
+			#if defined(__OPTIMIZE__) && __OPTIMIZE__ > 0
+				#define _FORTIFY_SOURCE ${fortify_level}
+			#endif
+		#endif
+	EOF
+
+	if use hardened ; then
+		cat >> "${ED}/etc/clang/gentoo-hardened.cfg" <<-EOF || die
+			-D_GLIBCXX_ASSERTIONS
+
+			# Analogue to GLIBCXX_ASSERTIONS
+			# https://libcxx.llvm.org/UsingLibcxx.html#assertions-mode
+			-D_LIBCPP_ENABLE_ASSERTIONS=1
+		EOF
+	fi
 
 	if use stricter; then
 		newins - gentoo-stricter.cfg <<-EOF
