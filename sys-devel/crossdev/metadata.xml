@@ -13,4 +13,7 @@
 		<email>embedded@gentoo.org</email>
 		<name>Embedded Gentoo</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="gentoo">proj/crossdev</remote-id>
+	</upstream>
 </pkgmetadata>
