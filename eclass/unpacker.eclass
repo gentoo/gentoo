@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: unpacker.eclass
@@ -122,7 +122,7 @@ unpack_pdv() {
 	local tmpfile="${T}/${FUNCNAME}"
 	tail -c +$((${tailskip}+1)) ${src} 2>/dev/null | head -c 512 > "${tmpfile}"
 
-	local iscompressed=$(file -b "${tmpfile}")
+	local iscompressed=$(file -S -b "${tmpfile}")
 	if [[ ${iscompressed:0:8} == "compress" ]] ; then
 		iscompressed=1
 		mv "${tmpfile}"{,.Z}
@@ -130,7 +130,7 @@ unpack_pdv() {
 	else
 		iscompressed=0
 	fi
-	local istar=$(file -b "${tmpfile}")
+	local istar=$(file -S -b "${tmpfile}")
 	if [[ ${istar:0:9} == "POSIX tar" ]] ; then
 		istar=1
 	else
@@ -244,7 +244,7 @@ unpack_makeself() {
 
 	# lets grab the first few bytes of the file to figure out what kind of archive it is
 	local decomp= filetype suffix
-	filetype=$("${exe[@]}" 2>/dev/null | head -c 512 | file -b -) || die
+	filetype=$("${exe[@]}" 2>/dev/null | head -c 512 | file -S -b -) || die
 	case ${filetype} in
 		*tar\ archive*)
 			decomp=cat
