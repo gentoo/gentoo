@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -158,7 +158,7 @@ pkg_postinst() {
 		"Allows use of dash instead of default bash (on your own risk)" \
 		app-shells/dash
 	optfeature "Support iSCSI" sys-block/open-iscsi
-	optfeature "Support Logical Volume Manager" sys-fs/lvm2
+	optfeature "Support Logical Volume Manager" sys-fs/lvm2[lvm]
 	optfeature "Support MD devices, also known as software RAID devices" \
 		sys-fs/mdadm
 	optfeature "Support Device Mapper multipathing" sys-fs/multipath-tools
