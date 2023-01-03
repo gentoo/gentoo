@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,7 @@ PATCHES=(
 	"${WORKDIR}"/${P}-CVE-2021-38185.patch
 	"${FILESDIR}"/${PN}-2.13-sysmacros-glibc-2.26.patch
 	"${FILESDIR}"/${PN}-2.13-fix-no-absolute-filenames-revert-CVE-2015-1197-handling.patch
+	"${FILESDIR}"/${PN}-2.13-wincompatible-function-pointer-types.patch
 )
 
 src_prepare() {
