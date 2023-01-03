@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ RDEPEND="usb3380? ( net-wireless/libusb3380 )"
 DEPEND="${RDEPEND}"
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DENABLE_PCIE=ON
 		-DENABLE_USB3380="$(usex usb3380 ON OFF)"
 	)

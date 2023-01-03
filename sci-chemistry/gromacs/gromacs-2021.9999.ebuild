@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -235,7 +235,7 @@ src_configure() {
 		local gpu=( "-DGMX_GPU=OFF" )
 		[[ ${x} = "float" ]] && use cuda && gpu=( "-DGMX_GPU=CUDA" )
 		use opencl && gpu=( "-DGMX_GPU=OPENCL" )
-		mycmakeargs=(
+		local mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}
 			-DGMX_MPI=OFF
 			-DGMX_THREAD_MPI=$(usex threads)
@@ -252,7 +252,7 @@ src_configure() {
 		  sed -i '/SET(CMAKE_INSTALL_NAME_DIR/s/^/#/' "${WORKDIR}/${P}_${x}/gentoo_rules.cmake" || die
 		use mpi || continue
 		einfo "Configuring for ${x} precision with mpi"
-		mycmakeargs=(
+		local mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}
 			-DGMX_THREAD_MPI=OFF
 			-DGMX_MPI=ON

@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -74,7 +74,7 @@ pkg_setup() {
 }
 
 src_configure() {
-	local -a mycmakeargs=(
+	local mycmakeargs=(
 		-DSTATIC_LINKING:BOOL=OFF
 		# bug 809362, 754648
 		-DBUILD_TESTING:BOOL=$(usex test)

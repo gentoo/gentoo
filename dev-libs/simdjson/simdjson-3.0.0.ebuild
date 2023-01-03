@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -62,7 +62,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local -a mycmakeargs=(
+	local mycmakeargs=(
 		-DSIMDJSON_ENABLE_THREADS=ON
 	)
 	use test && mycmakeargs+=(

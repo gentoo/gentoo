@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,8 +31,6 @@ PATCHES=(
 	"${FILESDIR}/${P}-install-dpx-library.patch"
 	"${FILESDIR}/${P}-fix-unit-tests.patch"
 )
-
-mycmakeargs=( -DCMAKE_INSTALL_DOCDIR="share/doc/${PF}" )
 
 src_test() {
 	pushd "${BUILD_DIR}" >/dev/null || die

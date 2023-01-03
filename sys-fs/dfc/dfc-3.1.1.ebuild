@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ DEPEND="nls? (
 RDEPEND="nls? ( virtual/libintl )"
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		# avoid installing xdg config in /usr
 		-DXDG_CONFIG_DIR="${EPREFIX}"/etc/xdg
 		# use the standard Gentoo doc path

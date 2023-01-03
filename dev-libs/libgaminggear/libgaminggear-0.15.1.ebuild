@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake xdg
+inherit xdg cmake
 
 DESCRIPTION="Provides functionality for gaming input devices"
 
@@ -39,30 +39,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-cmake-3.13.patch
 )
 
-# Required because xdg.eclass overrides src_prepare() from cmake.eclass
-src_prepare() {
-	cmake_src_prepare
-}
-
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DWITH_DOC="$(usex doc)"
 	)
 	cmake_src_configure
-}
-
-src_install() {
-	cmake_src_install
-}
-
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }

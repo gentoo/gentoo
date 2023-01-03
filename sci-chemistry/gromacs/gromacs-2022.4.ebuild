@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -245,7 +245,7 @@ src_configure() {
 		[[ ${x} = "float" ]] && use cuda && gpu=( "-DGMX_GPU=CUDA" )
 		[[ ${x} = "float" ]] && use clang-cuda && gpu=( "-DGMX_GPU=CUDA" "-DGMX_CLANG_CUDA=ON" )
 		use opencl && gpu=( "-DGMX_GPU=OPENCL" )
-		mycmakeargs=(
+		local mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}
 			-DGMX_MPI=$(usex mpi)
 			-DGMX_THREAD_MPI=$(usex threads)
