@@ -4,6 +4,7 @@
 # @ECLASS: cmake.eclass
 # @MAINTAINER:
 # kde@gentoo.org
+# base-system@gentoo.org
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
 # Maciej Mrozowski <reavertm@gentoo.org>
