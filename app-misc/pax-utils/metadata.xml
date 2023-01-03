@@ -15,5 +15,6 @@
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gentoo:pax-utils</remote-id>
 		<remote-id type="gentoo">proj/pax-utils</remote-id>
+		<remote-id type="github">gentoo/pax-utils</remote-id>
 	</upstream>
 </pkgmetadata>
