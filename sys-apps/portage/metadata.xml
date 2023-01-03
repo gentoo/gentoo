@@ -28,6 +28,7 @@
 		<changelog>https://gitweb.gentoo.org/proj/portage.git/plain/NEWS</changelog>
 		<doc>https://wiki.gentoo.org/wiki/Handbook:AMD64/Working/Portage</doc>
 		<remote-id type="cpe">cpe:/a:gentoo:portage</remote-id>
+		<remote-id type="gentoo">proj/portage</remote-id>
 		<remote-id type="github">gentoo/portage</remote-id>
 		<remote-id type="pypi">portage</remote-id>
 	</upstream>
