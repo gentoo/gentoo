@@ -11,5 +11,6 @@
 	</use>
 	<upstream>
 		<remote-id type="gentoo">proj/gcc-config</remote-id>
+		<remote-id type="github">gentoo/gcc-config</remote-id>
 	</upstream>
 </pkgmetadata>
