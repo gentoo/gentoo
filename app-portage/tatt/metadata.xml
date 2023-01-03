@@ -13,6 +13,7 @@
   It aims at developers. If you are a normal user you will not need tatt.
   </longdescription>
   <upstream>
+    <remote-id type="gentoo">proj/tatt</remote-id>
     <remote-id type="github">gentoo/tatt</remote-id>
   </upstream>
   <stabilize-allarches/>
