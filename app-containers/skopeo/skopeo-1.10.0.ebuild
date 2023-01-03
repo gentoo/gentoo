@@ -3,7 +3,7 @@
 
 EAPI=8
 COMMIT=ee60474d5a4d99745aac9855797ad4b26510d786
-inherit go-module bash-completion-r1
+inherit go-module
 
 DESCRIPTION="Command line utility foroperations on container images and image repositories"
 HOMEPAGE="https://github.com/containers/skopeo"
@@ -40,7 +40,6 @@ src_compile() {
 src_install() {
 	dobin skopeo
 	doman docs/*.1
-	dobashcomp completions/bash/skopeo
 	insinto /etc/containers
 	newins default-policy.json policy.json
 	insinto /etc/containers/registries.d
