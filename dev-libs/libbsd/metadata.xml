@@ -11,5 +11,6 @@
   </maintainer>
   <upstream>
     <remote-id type="cpe">cpe:/a:libbsd:libbsd</remote-id>
+    <remote-id type="freedesktop-gitlab">libbsd/libbsd</remote-id>
   </upstream>
 </pkgmetadata>
