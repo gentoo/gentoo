@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>base-system@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="gentoo">proj/elt-patches</remote-id>
+	</upstream>
 </pkgmetadata>
