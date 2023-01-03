@@ -1,10 +1,10 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit python-r1 cmake flag-o-matic
+inherit python-single-r1 cmake flag-o-matic
 
 MYPN=pytorch
 MYP=${MYPN}-${PV}
@@ -43,7 +43,9 @@ RDEPEND="
 	)
 	ffmpeg? ( media-video/ffmpeg:= )
 	nnpack? ( sci-libs/NNPACK )
-	numpy? ( dev-python/numpy[${PYTHON_USEDEP}] )
+	numpy? ( $(python_gen_cond_dep '
+		dev-python/numpy[${PYTHON_USEDEP}]
+		') )
 	opencl? ( virtual/opencl )
 	opencv? ( media-libs/opencv:= )
 	qnnpack? ( sci-libs/QNNPACK )
@@ -57,8 +59,10 @@ DEPEND="
 	dev-libs/FXdiv
 	dev-libs/pocketfft
 	dev-libs/flatbuffers
-	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/pybind11[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/pybind11[${PYTHON_USEDEP}]
+	')
 "
 
 S="${WORKDIR}"/${MYP}
@@ -91,7 +95,6 @@ src_configure() {
 		ewarn "or by running /opt/cuda/extras/demo_suite/deviceQuery | grep 'CUDA Capability'"
 	fi
 
-	python_setup
 	local mycmakeargs=(
 		-DBUILD_CUSTOM_PROTOBUF=OFF
 		-DBUILD_SHARED_LIBS=ON
@@ -144,11 +147,6 @@ src_configure() {
 	cmake_src_configure
 }
 
-python_install() {
-	python_domodule python/caffe2
-	python_domodule python/torch
-}
-
 src_install() {
 	cmake_src_install
 
@@ -156,8 +154,10 @@ src_install() {
 	doins "${BUILD_DIR}"/CMakeCache.txt
 
 	rm -rf python
-	mkdir -p python/torch || die
+	mkdir -p python/torch/include || die
 	mv "${ED}"/usr/lib/python*/site-packages/caffe2 python/ || die
+	mv "${ED}"/usr/include/torch python/torch/include || die
 	cp torch/version.py python/torch/ || die
-	python_foreach_impl python_install
+	python_domodule python/caffe2
+	python_domodule python/torch
 }
