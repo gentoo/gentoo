@@ -8,4 +8,7 @@
 	<use>
 		<flag name="native-symlinks">Install native symlinks like 'as' or 'ar' to /usr/bin. Otherwise keep only ${CTARGET}-as and friends.</flag>
 	</use>
+	<upstream>
+		<remote-id type="gentoo">proj/binutils-config</remote-id>
+	</upstream>
 </pkgmetadata>
