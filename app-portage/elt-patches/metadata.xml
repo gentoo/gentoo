@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="gentoo">proj/elt-patches</remote-id>
+		<remote-id type="github">gentoo/elt-patches</remote-id>
 	</upstream>
 </pkgmetadata>
