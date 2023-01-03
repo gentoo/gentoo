@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -67,8 +67,10 @@ src_prepare() {
 src_configure() {
 	filter-flags -ftracer -fomit-frame-pointer
 
+	local mycmakeargs=()
+
 	if use dedicated || use server ; then
-		mycmakeargs=(
+		mycmakeargs+=(
 			-DENABLE_CAMPAIGN_SERVER="ON"
 			-DENABLE_SERVER="ON"
 			-DSERVER_UID="${PN}"
@@ -76,7 +78,7 @@ src_configure() {
 			-DFIFO_DIR="/run/wesnothd"
 			)
 	else
-		mycmakeargs=(
+		mycmakeargs+=(
 			-DENABLE_CAMPAIGN_SERVER="OFF"
 			-DENABLE_SERVER="OFF"
 			)

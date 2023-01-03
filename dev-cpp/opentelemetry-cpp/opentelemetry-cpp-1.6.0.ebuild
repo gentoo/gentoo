@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,7 +40,7 @@ PATCHES=(
 )
 
 src_configure() {
-	local -a mycmakeargs=(
+	local mycmakeargs=(
 		-DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON
 		-DBUILD_SHARED_LIBS:BOOL=ON
 		-DBUILD_TESTING:BOOL=$(usex test)

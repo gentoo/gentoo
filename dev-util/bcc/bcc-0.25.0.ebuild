@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -94,7 +94,7 @@ src_configure() {
 	local bcc_python_impls
 	python_foreach_impl python_add_impl
 
-	local -a mycmakeargs=(
+	local mycmakeargs=(
 		-DREVISION=${PV%%_*}
 		-DENABLE_LLVM_SHARED=ON
 		-DCMAKE_USE_LIBBPF_PACKAGE=ON

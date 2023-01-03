@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,11 +16,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-li
 IUSE="doc openmp test wchar"
 RESTRICT="!test? ( test )"
 
-PATCHES=(
-)
-
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DENABLE_OPENMP=$(usex openmp)
 		-DENABLE_WIDE_CHAR=$(usex wchar)
 	)
@@ -29,8 +26,4 @@ src_configure() {
 
 src_test() {
 	cmake_src_compile test
-}
-
-src_install() {
-	cmake_src_install
 }

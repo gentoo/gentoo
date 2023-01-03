@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 PATCHES=( "${FILESDIR}/muParser-2.3-export-cmake.patch" )
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DENABLE_OPENMP=$(usex openmp)
 	)
 	cmake_src_configure

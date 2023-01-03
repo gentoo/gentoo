@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -120,10 +120,10 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs
+	local mycmakeargs=()
 
 	if use X; then
-		mycmakeargs=(
+		mycmakeargs+=(
 			-DBUILD_ARGB=yes
 			-DBUILD_X11=yes
 			-DBUILD_XDAMAGE=yes
@@ -132,7 +132,7 @@ src_configure() {
 			-DOWN_WINDOW=yes
 		)
 	else
-		mycmakeargs=(
+		mycmakeargs+=(
 			-DBUILD_X11=no
 		)
 	fi

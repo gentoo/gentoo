@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,7 +40,7 @@ pkg_setup() {
 }
 
 src_configure() {
-	local -a mycmakeargs=(
+	local mycmakeargs=(
 		-DCMAKE_BUILD_TYPE=Release
 		-DCBOR_CUSTOM_ALLOC=$(usex custom-alloc 'ON' 'OFF')
 		-DWITH_TESTS=$(usex test 'ON' 'OFF')
