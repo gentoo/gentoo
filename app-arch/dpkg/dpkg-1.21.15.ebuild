@@ -46,17 +46,13 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.18.12-flags.patch
+	"${FILESDIR}"/${PN}-1.21.15-buf-lengh.patch # sent upstream
 )
 
 src_prepare() {
 	default
 
 	sed -i -e 's|\<ar\>|${AR}|g' src/at/deb-format.at src/at/testsuite || die
-
-	# upstream sets 200, that's a bit too short.
-	# it may not fail in real usage, but fails with /var/tmp/portage/$cat/pkg added.
-	# on my system it's exactly 201 characters.
-	sed -i -e 's/char\ buf\[200\]/char\ buf\[300\]/' src/deb/extract.c || die
 
 	eautoreconf
 }
