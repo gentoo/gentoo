@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="gentoo">proj/sandbox</remote-id>
+		<remote-id type="github">gentoo/sandbox</remote-id>
 	</upstream>
 </pkgmetadata>
