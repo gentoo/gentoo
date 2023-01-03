@@ -15,5 +15,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="gentoo">proj/crossdev</remote-id>
+		<remote-id type="github">gentoo/crossdev</remote-id>
 	</upstream>
 </pkgmetadata>
