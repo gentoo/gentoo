@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~ppc64 ~riscv ~x64-macos"
 RESTRICT="test" # test requires cask and ert-runner which are not packaged yet
 
 RDEPEND=">=app-emacs/dash-2.12.1
