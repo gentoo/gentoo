@@ -10,6 +10,6 @@
 		<name>Gentoo Electronics Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">pythonprop</remote-id>
+		<remote-id type="github">jawatson/pythonprop</remote-id>
 	</upstream>
 </pkgmetadata>
