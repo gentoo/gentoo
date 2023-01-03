@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="debug experimental"
+IUSE="experimental"
 RESTRICT="test"  # need to sort out depends and numerous failures
 
 # BDEPEND="sys-process/parallel"
@@ -49,7 +49,7 @@ nim_gen_config() {
 	gcc.cpp.options.linker:"${LDFLAGS}"
 
 	$([[ "${NOCOLOR}" == true || "${NOCOLOR}" == yes ]] && echo '--colors:"off"')
-	-d:"$(usex debug debug release)"
+	-d:"release"
 	--parallelBuild:"$(makeopts_jobs)"
 	EOF
 }

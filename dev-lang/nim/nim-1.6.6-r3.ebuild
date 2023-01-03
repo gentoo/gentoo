@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,13 +9,16 @@ DESCRIPTION="compiled, garbage-collected systems programming language"
 HOMEPAGE="https://nim-lang.org/"
 SRC_URI="
 	https://nim-lang.org/download/${P}.tar.xz
-	experimental? ( https://git.sr.ht/~cyber/${PN}-patches/archive/${PV}.tar.gz -> ${PN}-patches-${PV}.tar.gz )
+	experimental? (
+		https://git.sr.ht/~cyber/${PN}-patches/archive/${PV}.tar.gz
+			-> ${PN}-patches-${PV}.tar.gz
+	)
 "
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="debug experimental"
+IUSE="experimental"
 RESTRICT="test"  # need to sort out depends and numerous failures
 
 # BDEPEND="sys-process/parallel"
@@ -46,7 +49,7 @@ nim_gen_config() {
 	gcc.cpp.options.linker:"${LDFLAGS}"
 
 	$([[ "${NOCOLOR}" == true || "${NOCOLOR}" == yes ]] && echo '--colors:"off"')
-	-d:"$(usex debug debug release)"
+	-d:"release"
 	--parallelBuild:"$(makeopts_jobs)"
 	EOF
 }
@@ -55,8 +58,7 @@ src_prepare() {
 	default
 
 	# note: there are consumers in the ::guru overlay
-	use experimental && \
-		eapply "${WORKDIR}"/${PN}-patches-${PV}
+	use experimental && eapply "${WORKDIR}"/${PN}-patches-${PV}
 }
 
 src_configure() {
