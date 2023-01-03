@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: if your package uses the texi2dvi utility, it must depend on the
@@ -34,7 +34,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-apps/help2man
 	nls? ( >=sys-devel/gettext-0.19.6 )
 "
 
@@ -46,9 +45,12 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# Drop after 7.0.1 (patch touches install-info which causes regeneration)
+	touch man/install-info.1 || die
+
 	if use prefix ; then
 		sed -i -e '1c\#!/usr/bin/env sh' util/texi2dvi util/texi2pdf || die
-		touch doc/{texi2dvi,texi2pdf,pdftexi2dvi}.1
+		touch {doc,man}/{texi2dvi,texi2pdf,pdftexi2dvi}.1 || die
 	fi
 }
 
