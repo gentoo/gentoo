@@ -46,7 +46,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.18.12-flags.patch
-	"${FILESDIR}"/${PN}-1.21.15-buf-lengh.patch # sent upstream
+	"${FILESDIR}"/${P}-buf-overflow.patch
 )
 
 src_prepare() {
