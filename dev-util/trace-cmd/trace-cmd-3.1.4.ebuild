@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,7 +43,10 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	virtual/pkgconfig
 	python? ( dev-lang/swig )
-	doc? ( app-text/asciidoc )
+	doc? (
+		app-text/asciidoc
+		dev-util/source-highlight
+	)
 "
 
 # having trouble getting tests to compile
@@ -65,7 +68,13 @@ pkg_setup() {
 src_prepare() {
 	default
 	sed -r -e 's:([[:space:]]+)install_bash_completion($|[[:space:]]+):\1:' \
+		-e '/^prefix/s:/usr/local:/usr:g' \
 		-i Makefile || die "sed failed"
+
+	sed -i -e "s|^htmldir.*|&-${PVR}|g" \
+		-e "s|^pdfdir.*|&-${PVR}|g" \
+		Documentation/libtracecmd/Makefile \
+		Documentation/trace-cmd/Makefile || die
 }
 
 src_configure() {
