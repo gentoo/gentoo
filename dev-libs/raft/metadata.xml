@@ -19,4 +19,7 @@
     (send/receive RPC messages) and disk persistence (store log entries and 
     snapshots).
   </longdescription>
+  <upstream>
+    <remote-id type="github">canonical/raft</remote-id>
+  </upstream> 
 </pkgmetadata>
