@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,10 +36,14 @@ DOCS=(
 	doc/{CHANGES{,.old},CREDITS,TODO,WHATSNEW,filtering}
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.6.1-configure-clang16.patch
+)
+
 src_configure() {
 	tc-export AR CC RANLIB
 
-	econf_args=(
+	local myeconfargs=(
 		$(use_enable cancel-locks) $(use_with cancel-locks canlock)
 		$(use_enable debug)
 		$(use_enable gpg pgp-gpg)
@@ -52,10 +56,8 @@ src_configure() {
 		--with-nntp-default-server="${TIN_DEFAULT_SERVER:-${NNTPSERVER:-news.gmane.io}}"
 		--with-pcre=/usr
 		--with-screen=ncursesw
-	)
 
-	# set default paths for utilities
-	econf_args+=(
+		# set default paths for utilities
 		--with-editor="${EPREFIX}"/usr/libexec/editor
 		--with-gpg="${EPREFIX}"/usr/bin/gpg
 		--with-ispell="${EPREFIX}"/usr/bin/aspell
@@ -64,7 +66,7 @@ src_configure() {
 		--with-sum="${EPREFIX}"/usr/bin/sum
 	)
 
-	econf "${econf_args[@]}"
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
