@@ -9,6 +9,7 @@
 		Wheeler's TagLib. It builds upon Boost.Python, a wrapper generation
 		library which is part of the Boost set of C++ libraries.</longdescription>
 	<upstream>
+		<remote-id type="github">palfrey/tagpy</remote-id>
 		<remote-id type="pypi">tagpy</remote-id>
 	</upstream>
 </pkgmetadata>
