@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.18.12-flags.patch
 	"${FILESDIR}"/${PN}-1.18.12-rsyncable.patch
 	"${FILESDIR}"/${PN}-1.20.5-dpkg_buildpackage-test.patch
+	"${FILESDIR}"/${P}-CVE-2022-1664.patch
 )
 
 src_prepare() {
