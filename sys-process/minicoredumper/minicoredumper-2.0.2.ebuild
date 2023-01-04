@@ -20,7 +20,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( ${FILESDIR}/${PV}-readme.patch )
+PATCHES=( "${FILESDIR}"/${PV}-readme.patch )
 
 src_configure() {
 	# regd daemon is disabled as there are no known consumers
