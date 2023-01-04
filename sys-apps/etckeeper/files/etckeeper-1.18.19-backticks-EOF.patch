@@ -1,0 +1,37 @@
+From 88cc70458f1dd902d001b63148b0df534b1ebdf6 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Wed, 4 Jan 2023 01:29:09 -0800
+Subject: [PATCH] init.d/50vcs-pre-commit-hook: replace backticks
+
+it's in EOF block, so bash tries to execute backticked commands despite
+being commented out.
+
+Initialized empty Git repository in /etc/.git/
+/etc/etckeeper/init.d/50vcs-pre-commit-hook: line 11: rev-parse: command not found
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+/etc/etckeeper/init.d/50vcs-pre-commit-hook: line 11: worktree: command not found
+
+Signed-off-by: Georgy Yakovlev <gyakovlev@gentoo.org>
+---
+ init.d/50vcs-pre-commit-hook | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/init.d/50vcs-pre-commit-hook b/init.d/50vcs-pre-commit-hook
+index 6e0669c..166540d 100755
+--- a/init.d/50vcs-pre-commit-hook
++++ b/init.d/50vcs-pre-commit-hook
+@@ -34,8 +34,8 @@ set -e
+ #
+ ################################################################################
+ 
+-# Using `rev-parse` + `grep` rather than for instance parsing output from
+-# `worktree list` since the worktree command is not present in older git version
++# Using 'rev-parse' + 'grep' rather than for instance parsing output from
++# 'worktree list' since the worktree command is not present in older git version
+ # and parsing it would be slightly more complex.
+ if git rev-parse --git-dir | grep -q /.git/worktrees
+ then
+-- 
+2.39.0
+
