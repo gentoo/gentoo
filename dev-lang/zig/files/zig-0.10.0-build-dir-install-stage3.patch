@@ -1,0 +1,28 @@
+From: Eric Joldasov <bratishkaerik@getgoogleoff.me>
+
+Install 'zig' binary in 'build_dir/stage3' directory so that we can find it and use for testing.
+Upstream PR https://github.com/ziglang/zig/pull/14255.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1094,7 +1094,7 @@ set(ZIG_BUILD_ARGS
+ )
+ 
+ add_custom_target(stage3 ALL
+-    COMMAND zig2 build compile ${ZIG_BUILD_ARGS}
++    COMMAND zig2 build --prefix "${CMAKE_BINARY_DIR}/stage3" ${ZIG_BUILD_ARGS}
+     DEPENDS zig2
+     COMMENT STATUS "Building stage3"
+     WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+--- a/build.zig
++++ b/build.zig
+@@ -148,10 +148,6 @@ pub fn build(b: *Builder) !void {
+     };
+ 
+     const exe = b.addExecutable("zig", main_file);
+-
+-    const compile_step = b.step("compile", "Build the self-hosted compiler");
+-    compile_step.dependOn(&exe.step);
+-
+     exe.stack_size = stack_size;
+     exe.strip = strip;
+     exe.sanitize_thread = sanitize_thread;
