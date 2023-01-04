@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,6 +53,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.4.2-stubby.service.patch"
+	"${FILESDIR}/${P}-clang16.patch"
 )
 
 src_configure() {
