@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,10 @@ IUSE="static-libs"
 # We do not depend on tor which might be running on a different box
 DEPEND=""
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.4.0-clang16.patch
+)
 
 src_prepare() {
 	# Disable tests requiring network access.
