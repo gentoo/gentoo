@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Provides a standard configuration setup for installing PKCS#11"
 HOMEPAGE="https://p11-glue.github.io/p11-glue/p11-kit.html"
@@ -22,6 +22,10 @@ RDEPEND="asn1? ( >=dev-libs/libtasn1-3.4:=[${MULTILIB_USEDEP}] )
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-configure-clang16.patch
+)
+
 pkg_setup() {
 	# disable unsafe tests, bug#502088
 	export FAKED_MODE=1
@@ -38,7 +42,10 @@ src_prepare() {
 		sed -i -e 's/SUN_LEN \(([^)]\+)\)/strlen (\1->sun_path)/' \
 			p11-kit/server.c || die
 	fi
+
 	default
+	# TODO: drop in next release (after 0.24.1), p11-kit-0.24.1-configure-clang16.patch is emrged
+	eautoreconf
 }
 
 multilib_src_configure() {
