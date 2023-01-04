@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
@@ -27,6 +27,10 @@ BDEPEND="${PYTHON_DEPS}
 	app-text/docbook-xml-dtd:4.2"
 
 WAF_BINARY="${S}/buildtools/bin/waf"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.7-configure-clang16.patch
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
