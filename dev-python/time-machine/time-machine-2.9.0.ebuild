@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc"
+KEYWORDS="~amd64 ~ppc ~riscv"
 
 RDEPEND="
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
