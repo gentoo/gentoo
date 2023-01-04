@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,17 +33,18 @@ DEPEND="${RDEPEND}
 SLOT="12/22" # subslot is soname version
 MAJOR="2.0"
 
+# guile generates ELF files without use of C or machine code
+# It's a false positive. bug #677600
+QA_PREBUILT='*[.]go'
+
+DOCS=( GUILE-VERSION HACKING README )
+
 PATCHES=(
 	"${FILESDIR}/${PN}-2-snarf.patch"
 	"${FILESDIR}/${P}-darwin.patch"
 	"${FILESDIR}/${P}-ia64-fix-crash-thread-context-switch.patch"
+	"${FILESDIR}/${P}-configure-clang16.patch"
 )
-
-# guile generates ELF files without use of C or machine code
-# It's a portage's false positive. bug #677600
-QA_PREBUILT='*[.]go'
-
-DOCS=( GUILE-VERSION HACKING README )
 
 src_prepare() {
 	default
