@@ -27,6 +27,10 @@ src_prepare() {
 		-e "/^   AR/s|ar|$(tc-getAR)|"              \
 		-e "/^   CC/s|gcc|$(tc-getCC)|"             \
 		-i "${S}"/Makefile.vars || die
+
+	sed -e "s|ar rc|$(tc-getAR) rc|g"                       \
+		-e "s|ranlib|$(tc-getRANLIB)|g"                     \
+		-i "${S}"/CONTRIB/picosat-965/makefile.in || die
 }
 
 src_configure() {
