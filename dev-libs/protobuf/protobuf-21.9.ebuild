@@ -1,4 +1,4 @@
-# Copyright 2008-2022 Gentoo Authors
+# Copyright 2008-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.19.0-disable_no-warning-test.patch"
 	"${FILESDIR}/${PN}-3.19.0-system_libraries.patch"
 	"${FILESDIR}/${PN}-3.20.2-protoc_input_output_files.patch"
+	"${FILESDIR}/${PN}-21.9-disable-32-bit-tests.patch"
 )
 
 DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)
