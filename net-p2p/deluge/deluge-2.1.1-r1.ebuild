@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,6 @@ BDEPEND="
 "
 
 RDEPEND="
-	acct-group/deluge
 	acct-user/deluge
 	net-libs/libtorrent-rasterbar:=[python,${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
