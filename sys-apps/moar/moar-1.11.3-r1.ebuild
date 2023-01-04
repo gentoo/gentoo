@@ -14,6 +14,8 @@ LICENSE="BSD-2 BSD MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND="!dev-lang/moarvm"
+
 src_compile() {
 	# https://github.com/walles/moar/blob/master/build.sh#L28
 	ego build -ldflags="-w -X main.versionString=${PV}" -o moar
