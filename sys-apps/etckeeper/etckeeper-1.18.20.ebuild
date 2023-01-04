@@ -30,10 +30,6 @@ RDEPEND="app-portage/portage-utils
 
 RESTRICT="!test? ( test )"
 
-PATCHES=(
-	"${FILESDIR}/etckeeper-1.18.19-backticks-EOF.patch" # sent upstream
-)
-
 src_prepare() {
 	default
 	hprefixify *.d/* etckeeper
