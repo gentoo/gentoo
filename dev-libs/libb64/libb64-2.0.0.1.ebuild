@@ -11,7 +11,7 @@ SRC_URI="
 LICENSE="CC-PD"
 # static library, so always rebuild
 SLOT="0/${PVR}"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="app-arch/unzip"
 
