@@ -163,13 +163,17 @@ multilib_layout() {
 				# make sure the old "lib" ABI location does not exist; we
 				# only symlinked the lib dir on systems where we moved it
 				# to "lib32" ...
-				if [[ -d ${prefix}lib32 && ! -h ${prefix}lib32 ]] ; then
-					rm -f "${prefix}lib32"/.keep || die
-					if ! rmdir "${prefix}lib32" 2>/dev/null ; then
-						ewarn "You need to merge ${prefix}lib32 into ${prefix}lib"
-						die "non-empty dir found where there should be none: ${prefix}lib32"
+				case ${CHOST} in
+				i?86*|x86_64*|powerpc*|sparc*|s390*)
+					if [[ -d ${prefix}lib32 && ! -h ${prefix}lib32 ]] ; then
+						rm -f "${prefix}lib32"/.keep || die
+						if ! rmdir "${prefix}lib32" 2>/dev/null ; then
+							ewarn "You need to merge ${prefix}lib32 into ${prefix}lib"
+							die "non-empty dir found where there should be none: ${prefix}lib32"
+						fi
 					fi
-				fi
+					;;
+				esac
 			else
 				# nothing exists, so just set it up sanely
 				ewarn "Initializing ${prefix}lib as a dir"
