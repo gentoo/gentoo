@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="The GNU Calendar - a replacement for cal"
 HOMEPAGE="https://www.gnu.org/software/gcal/"
@@ -24,12 +24,24 @@ BDEPEND="
 
 DOCS=( BUGS LIMITATIONS NEWS README THANKS TODO )
 
-PATCHES=( "${FILESDIR}/${P}-glibc228.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-glibc228.patch"
+	"${FILESDIR}/${PN}-4.1-configure-clang16.patch"
+)
+
+src_prepare() {
+	default
+
+	# Drop once ${PN}-4.1-configure-clang16.patch merged
+	eautoreconf
+}
 
 src_configure() {
 	tc-export CC
 	append-cppflags -D_GNU_SOURCE
+
 	use unicode && append-libs -lunistring
+
 	econf \
 		--disable-rpath \
 		$(use_enable nls) \
