@@ -1,6 +1,6 @@
 --- a/cmake/Dependencies.cmake
 +++ b/cmake/Dependencies.cmake
-@@ -1512,7 +1512,6 @@
+@@ -1523,7 +1523,6 @@
    if(NOT USE_SYSTEM_ONNX)
      add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../third_party/onnx EXCLUDE_FROM_ALL)
    endif()
@@ -8,7 +8,7 @@
  
    add_definitions(-DONNX_NAMESPACE=${ONNX_NAMESPACE})
    if(NOT USE_SYSTEM_ONNX)
-@@ -1810,7 +1809,6 @@
+@@ -1821,7 +1820,6 @@
  #
  set(TEMP_BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS})
  set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build shared libs" FORCE)
@@ -16,7 +16,7 @@
  
  # Disable compiler feature checks for `fmt`.
  #
-@@ -1819,9 +1817,7 @@
+@@ -1830,9 +1828,7 @@
  # CMAKE_CXX_FLAGS in ways that break feature checks. Since we already know
  # `fmt` is compatible with a superset of the compilers that PyTorch is, it
  # shouldn't be too bad to just disable the checks.
@@ -25,10 +25,10 @@
 -list(APPEND Caffe2_DEPENDENCY_LIBS fmt::fmt-header-only)
  set(BUILD_SHARED_LIBS ${TEMP_BUILD_SHARED_LIBS} CACHE BOOL "Build shared libs" FORCE)
  
- if(USE_BREAKPAD)
+ # ---[ Kineto
 --- a/c10/CMakeLists.txt
 +++ b/c10/CMakeLists.txt
-@@ -59,7 +59,7 @@
+@@ -62,7 +62,7 @@
  if(${USE_GLOG})
      target_link_libraries(c10 PUBLIC glog::glog)
  endif()
@@ -39,9 +39,9 @@
  if(Backtrace_FOUND)
 --- a/torch/CMakeLists.txt
 +++ b/torch/CMakeLists.txt
-@@ -82,7 +82,6 @@
- 
- set(TORCH_PYTHON_LINK_LIBRARIES
+@@ -86,7 +86,6 @@
+     python::python
+     pybind::pybind11
      shm
 -    fmt::fmt-header-only
      ATEN_CPU_FILES_GEN_LIB)
@@ -80,7 +80,7 @@
    # This doesn't work globally so we use the test on specific
 --- a/cmake/public/utils.cmake
 +++ b/cmake/public/utils.cmake
-@@ -512,8 +512,6 @@
+@@ -510,8 +510,6 @@
    endif()
  
    # Use -O2 for release builds (-O3 doesn't improve perf, and -Os results in perf regression)
@@ -102,7 +102,7 @@
      endif()
 --- a/caffe2/CMakeLists.txt
 +++ b/caffe2/CMakeLists.txt
-@@ -109,7 +109,7 @@
+@@ -111,7 +111,7 @@
  # Note: the folders that are being commented out have not been properly
  # addressed yet.
  
@@ -111,7 +111,23 @@
    if(NOT TARGET fxdiv)
      set(FXDIV_BUILD_TESTS OFF CACHE BOOL "")
      set(FXDIV_BUILD_BENCHMARKS OFF CACHE BOOL "")
-@@ -967,7 +967,6 @@
+@@ -557,7 +557,6 @@
+   if(NOT MSVC)
+     set_source_files_properties(${TORCH_SRC_DIR}/csrc/jit/tensorexpr/llvm_jit.cpp PROPERTIES COMPILE_FLAGS -Wno-noexcept-type)
+     # Force -Werror on several files
+-    set_source_files_properties(${CMAKE_CURRENT_LIST_DIR}/../aten/src/ATen/native/mkldnn/Pooling.cpp PROPERTIES COMPILE_FLAGS "-Werror")
+   endif()
+   # Disable certain warnings for GCC-9.X
+   if(CMAKE_COMPILER_IS_GNUCXX AND (CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 9.0.0))
+@@ -825,7 +824,6 @@
+ torch_compile_options(torch_cpu)  # see cmake/public/utils.cmake
+ if(HAS_WERROR_SIGN_COMPARE AND WERROR)
+   # target_compile_options(torch_cpu PRIVATE "-Werror=sign-compare")
+-  set_property(SOURCE ${ATen_CORE_SRCS} ${ATen_CPU_SRCS} APPEND PROPERTY COMPILE_OPTIONS "-Werror=sign-compare")
+ endif()
+ 
+ set_property(SOURCE ${ATen_CORE_SRCS} APPEND
+@@ -1017,7 +1015,6 @@
  endif()
  
  if(NOT MSVC AND USE_XNNPACK)
