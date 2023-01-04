@@ -130,6 +130,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.1-openexr.patch
 	"${FILESDIR}"/${PN}-3.0.1-openimageio-2.3.patch
 	"${WORKDIR}"/${PN}-3.0.1-ffmpeg-5.0.patch
+	"${FILESDIR}"/${PN}-3.3.0-fix-build-with-boost-1.81.patch
 )
 
 blender_check_requirements() {
