@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -26,10 +26,16 @@ RDEPEND="
 	acct-user/ngrep
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.47-regex.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.47-regex.patch
+	"${FILESDIR}"/${PN}-1.47-clang16.patch
+)
 
 src_prepare() {
 	default
+
+	sed -i -e "s:configure.in:configure.ac:" regex*/{configure.in,Makefile.in} || die
+
 	eautoreconf
 }
 
