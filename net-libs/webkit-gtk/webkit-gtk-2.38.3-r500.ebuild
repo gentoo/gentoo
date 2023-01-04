@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -156,6 +156,8 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 	gnome2_src_prepare
+
+	eapply "${FILESDIR}"/2.38.2-GTK-Fix-build-failure-in-ClipboardGtk4.cpp.patch
 }
 
 src_configure() {
