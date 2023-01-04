@@ -87,6 +87,9 @@ src_install() {
 	local DOCS=( debian/changelog THANKS TODO )
 	default
 
+	# https://bugs.gentoo.org/835520
+	mv -v "${ED}"/usr/share/zsh/{vendor-completions,site-functions} || die
+
 	keepdir \
 		/usr/$(get_libdir)/db/methods/{mnt,floppy,disk} \
 		/var/lib/dpkg/{alternatives,info,parts,updates}
