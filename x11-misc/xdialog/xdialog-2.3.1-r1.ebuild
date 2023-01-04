@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -28,10 +28,16 @@ S="${WORKDIR}/${P/x/X}"
 
 DOCS=( AUTHORS BUGS ChangeLog README )
 
-PATCHES=( "${FILESDIR}"/${P}-{no-strip,install}.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-no-strip.patch
+	"${FILESDIR}"/${P}-install.patch
+)
 
 src_prepare() {
 	default
+
+	sed -i -e 's:configure.in:configure.ac:' configure.in || die
+
 	eautoreconf
 }
 
@@ -44,12 +50,12 @@ src_configure() {
 src_install() {
 	default
 
-	rm -r "${D}"/usr/share/doc || die
+	rm -r "${ED}"/usr/share/doc || die
 	use doc && local HTML_DOCS=( doc/. )
 	einstalldocs
 
 	if use examples; then
-		insinto "/usr/share/doc/${PF}/examples"
-		doins samples/*
+		docinto examples
+		dodoc samples/*
 	fi
 }
