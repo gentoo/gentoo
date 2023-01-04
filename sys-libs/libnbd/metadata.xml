@@ -18,7 +18,11 @@
 			Enable nbd:// URI support via <pkg>dev-libs/libxml2</pkg>.
 		</flag>
 		<flag name="fuse">
-			Install the <pkg>sys-fs/fuse</pkg> powered nbdfuse.
+			Install the <pkg>sys-fs/fuse</pkg> powered nbdfuse
+			which lets you turn NBD servers into virtual files.
+		</flag>
+		<flag name="go">
+			Build the GO bindings.
 		</flag>
 	</use>
 </pkgmetadata>
