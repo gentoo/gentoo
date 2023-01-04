@@ -90,6 +90,15 @@ src_install() {
 	# https://bugs.gentoo.org/835520
 	mv -v "${ED}"/usr/share/zsh/{vendor-completions,site-functions} || die
 
+	# https://bugs.gentoo.org/840320
+	insinto /etc/dpkg/origins
+	newins - gentoo <<-_EOF_
+		Vendor: Gentoo
+		Vendor-URL: https://www.gentoo.org/
+		Bugs: https://bugs.gentoo.org/
+	_EOF_
+	dosym gentoo /etc/dpkg/origins/default
+
 	keepdir \
 		/usr/$(get_libdir)/db/methods/{mnt,floppy,disk} \
 		/var/lib/dpkg/{alternatives,info,parts,updates}
