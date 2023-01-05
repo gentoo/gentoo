@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+  <maintainer type="person" proxied="yes">
+    <email>alex.fan.q@gmail.com</email>
+    <name>Alex Fan</name>
+  </maintainer>
+    <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
 <longdescription lang="en">
   StarPU is a runtime system that offers support for heterogeneous
   multicore machines. While many efforts are devoted to design efficient
