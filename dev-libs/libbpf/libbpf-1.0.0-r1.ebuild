@@ -41,6 +41,7 @@ src_configure() {
 src_install() {
 	emake \
 		DESTDIR="${D}" \
+		LIBSUBDIR="${LIBSUBDIR}" \
 		install install_uapi_headers
 
 	if ! use static-libs; then
