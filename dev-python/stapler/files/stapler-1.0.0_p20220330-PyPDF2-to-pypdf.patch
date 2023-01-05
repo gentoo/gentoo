@@ -1,0 +1,39 @@
+diff --git a/staplelib/commands.py b/staplelib/commands.py
+index caf75f9..e67f419 100644
+--- a/staplelib/commands.py
++++ b/staplelib/commands.py
+@@ -4,7 +4,7 @@ import math
+ import os
+ 
+ try:
+-    from PyPDF2 import PdfWriter, PdfReader
++    from pypdf import PdfWriter, PdfReader
+ except:
+     from pyPdf import PdfWriter, PdfReader
+ 
+diff --git a/staplelib/iohelper.py b/staplelib/iohelper.py
+index 8df365c..5474898 100644
+--- a/staplelib/iohelper.py
++++ b/staplelib/iohelper.py
+@@ -7,7 +7,7 @@ import re
+ import sys
+ 
+ try:
+-    from PyPDF2 import PdfWriter, PdfReader
++    from pypdf import PdfWriter, PdfReader
+ except ImportError:
+     from pyPdf import PdfWriter, PdfReader
+ 
+diff --git a/staplelib/tests.py b/staplelib/tests.py
+index 86db178..423406d 100755
+--- a/staplelib/tests.py
++++ b/staplelib/tests.py
+@@ -5,7 +5,7 @@ import shutil
+ import tempfile
+ import unittest
+ 
+-from PyPDF2 import PdfReader
++from pypdf import PdfReader
+ 
+ from staplelib import main, CommandError
+ 
