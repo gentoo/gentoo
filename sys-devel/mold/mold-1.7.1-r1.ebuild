@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ SLOT="0"
 
 RDEPEND="
 	app-arch/zstd:=
-	>=dev-cpp/tbb-2021.7.0:=
+	>=dev-cpp/tbb-2021.7.0-r1:=
 	sys-libs/zlib
 	!kernel_Darwin? (
 		>=dev-libs/mimalloc-2:=
