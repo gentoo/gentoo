@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples fuse gnutls +uri-support go ocaml python test"
 
-RESTRICT="!test? ( test )"
+RESTRICT="!test? ( test ) test? ( userpriv )"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -41,17 +41,6 @@ src_prepare() {
 	default
 
 	eautoreconf -i
-
-	# Some tests require impossible to provide features, such as fuse.
-	# These are marked by requires_... in the functions.sh shell
-	# library.  Rather than listing these tests, let's list out the
-	# impossible to support features and make them skip.
-	cat <<-EOF >> tests/functions.sh.in || die
-		requires_fuse ()
-		{
-			requires false
-		}
-	EOF
 }
 
 src_configure() {
@@ -76,4 +65,13 @@ src_install() {
 	find "${ED}" -name '*.la' -delete || die
 
 	use python && python_optimize
+}
+
+src_test() {
+	if use fuse ; then
+		[[ -e /dev/fuse1 ]] || die "/dev/fuse is required to run the test"
+			addwrite /dev/fuse
+	fi
+
+	default
 }
