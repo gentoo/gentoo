@@ -37,6 +37,10 @@ BDEPEND="dev-lang/perl"
 
 DOCS=( README.md SECURITY TODO )
 
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
+
 src_prepare() {
 	default
 
@@ -60,7 +64,7 @@ src_configure() {
 src_test() {
 	if use fuse ; then
 		[[ -e /dev/fuse ]] || die "/dev/fuse is required to run the test"
-			addwrite /dev/fuse
+		addwrite /dev/fuse
 	fi
 
 	default
