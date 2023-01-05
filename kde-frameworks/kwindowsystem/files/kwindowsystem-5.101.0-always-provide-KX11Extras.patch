@@ -1,0 +1,45 @@
+From 9f4229d2628d882b5aa2248546ad23f2e8d280dd Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 5 Jan 2023 13:38:38 +0100
+Subject: [PATCH 2/2] Always provide KX11Extras
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/CMakeLists.txt | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 27577ef..fb7c28e 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -36,6 +36,10 @@ ecm_qt_declare_logging_category(KF5WindowSystem
+     EXPORT KWINDOWSYSTEM
+ )
+ 
++target_sources(KF5WindowSystem PRIVATE
++    kx11extras.cpp
++)
++
+ if (KWINDOWSYSTEM_HAVE_X11)
+    if(NOT X11_Xfixes_LIB)
+       message(FATAL_ERROR "The XFixes library could not be found. Please install the development package for it.")
+@@ -71,7 +75,6 @@ if (KWINDOWSYSTEM_HAVE_X11)
+         platforms/xcb/kxmessages.cpp
+         platforms/xcb/kxutils.cpp
+         platforms/xcb/netwm.cpp
+-        kx11extras.cpp
+    )
+ 
+    # we install kkeyserver_x11.h which needs the X11 headers available
+@@ -149,7 +152,7 @@ ecm_generate_headers(KWindowSystem_HEADERS
+   REQUIRED_HEADERS KWindowSystem_HEADERS
+ )
+ 
+-if (KWINDOWSYSTEM_HAVE_X11)
++if (TRUE)
+     ecm_generate_headers(KWindowSystem_HEADERS
+     HEADER_NAMES
+     KX11Extras
+-- 
+2.39.0
+
