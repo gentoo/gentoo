@@ -24,6 +24,9 @@ REQUIRED_USE="
 	berkdb? ( wallet )
 	wallet? ( || ( berkdb sqlite ) )
 "
+# dev-libs/univalue is now bundled as upstream dropped support for system copy
+# and their version in the Bitcoin repo has deviated a fair bit from upstream.
+# Upstream also seems very inactive.
 RDEPEND="
 	acct-group/bitcoin
 	acct-user/bitcoin
