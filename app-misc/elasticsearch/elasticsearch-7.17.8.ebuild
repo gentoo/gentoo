@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,13 +50,12 @@ src_install() {
 	keepdir /var/{lib,log}/${PN}
 	fowners ${PN}:${PN} /var/{lib,log}/${PN}
 	fperms 0750 /var/{lib,log}/${PN}
-	dodir /usr/share/${PN}/plugins
 
 	insinto /etc/sysctl.d
 	newins "${FILESDIR}/${PN}.sysctl.d" ${PN}.conf
 
 	newconfd "${FILESDIR}/${PN}.conf.4" ${PN}
-	newinitd "${FILESDIR}/${PN}.init.8" ${PN}
+	newinitd "${FILESDIR}/${PN}.init.9" ${PN}
 
 	systemd_install_serviced "${FILESDIR}/${PN}.service.conf"
 	systemd_newunit "${FILESDIR}"/${PN}.service.3 ${PN}.service
