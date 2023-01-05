@@ -1,6 +1,11 @@
 # Copyright 2014-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2022-11-08)
+# Mask until dev-lang/python:3.11 becomes stable.
+python_targets_python3_11
+python_single_target_python3_11
+
 # Sam James <sam@gentoo.org> (2022-03-03)
 # dev-lang/ocaml and dev-ml/* not marked stable here
 ocaml
