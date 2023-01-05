@@ -13,7 +13,7 @@ SRC_URI="https://download.libguestfs.org/libnbd/$(ver_cut 1-2)-stable/${P}.tar.g
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples fuse gnutls +uri-support go ocaml python test"
+IUSE="examples fuse gnutls go ocaml python test"
 
 RESTRICT="!test? ( test ) test? ( fuse? ( userpriv ) )"
 
@@ -27,7 +27,7 @@ RDEPEND="
 	go? ( dev-lang/go )
 	ocaml? ( >=dev-lang/ocaml-4.03:=[ocamlopt] )
 	python? ( ${PYTHON_DEPS} )
-	uri-support? ( dev-libs/libxml2 )
+	dev-libs/libxml2
 "
 DEPEND="
 	${RDEPEND}
@@ -50,7 +50,6 @@ src_configure() {
 		$(use_enable ocaml)
 		$(use_enable python)
 		$(use_with gnutls)
-		$(use_with uri-support libxml2)
 		--disable-static
 	)
 
