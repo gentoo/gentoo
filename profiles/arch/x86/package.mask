@@ -1,9 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Joonas Niilola <juippis@gentoo.org> (2022-12-30)
-# Broken on x86, workaround mentioned in bug #887277.
->=www-client/firefox-108.0
 
 # Viorel Munteanu <ceamac@gentoo.org> (2022-12-22)
 # The x86 build is broken and no longer available.  Bug #887831
