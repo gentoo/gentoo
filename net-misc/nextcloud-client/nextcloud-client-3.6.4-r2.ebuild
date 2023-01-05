@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc dolphin nautilus test webengine"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="
+RDEPEND="
 	>=dev-db/sqlite-3.34:3
 	>=dev-libs/openssl-1.1.0:0=
 	dev-libs/qtkeychain:=[qt5(+)]
@@ -38,12 +38,8 @@ COMMON_DEPEND="
 	nautilus? ( dev-python/nautilus-python )
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
-RDEPEND="
-	${COMMON_DEPEND}
-	dev-qt/qtquickcontrols2:5
-"
 DEPEND="
-	${COMMON_DEPEND}
+	${R_DEPEND}
 	dev-qt/qtconcurrent:5
 	dev-qt/qtxml:5
 	|| ( gnome-base/librsvg media-gfx/inkscape )
@@ -62,6 +58,11 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 	dolphin? ( kde-frameworks/extra-cmake-modules )
 "
+
+PATCHES=(
+	# https://github.com/nextcloud/desktop/pull/5309
+	"${FILESDIR}"/${PN}-3.6.4-drop-dependency-on-Qt-Quick-Controls-1.patch
+)
 
 src_prepare() {
 	# Keep tests in ${T}
