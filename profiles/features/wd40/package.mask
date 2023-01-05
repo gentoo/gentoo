@@ -41,6 +41,7 @@ dev-python/openstacksdk
 dev-python/os-client-config
 dev-python/osc-lib
 dev-python/paramiko
+dev-python/pooch
 dev-python/pyfuse3
 >=dev-python/pyopenssl-22
 dev-python/pymdown-extensions
