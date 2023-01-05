@@ -69,7 +69,7 @@ src_install() {
 
 src_test() {
 	if use fuse ; then
-		[[ -e /dev/fuse1 ]] || die "/dev/fuse is required to run the test"
+		[[ -e /dev/fuse ]] || die "/dev/fuse is required to run the test"
 			addwrite /dev/fuse
 	fi
 
