@@ -10,7 +10,7 @@ PYTHON_REQ_USE="sqlite"
 # We could package more but would ideally only stabilise the LTS ones
 # at least.
 
-if [[ ${PV} = *9999* ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN^^}.git"
 	inherit git-r3
 else
