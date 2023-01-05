@@ -22,7 +22,7 @@
 			which lets you turn NBD servers into virtual files.
 		</flag>
 		<flag name="go">
-			Build the GO bindings.
+			Build the Go bindings.
 		</flag>
 	</use>
 </pkgmetadata>
