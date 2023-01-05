@@ -207,6 +207,7 @@ DEPEND="${COMMON_DEPEND}
 		)
 	)
 	X? (
+		x11-base/xorg-proto
 		x11-libs/libICE
 		x11-libs/libSM
 	)"
