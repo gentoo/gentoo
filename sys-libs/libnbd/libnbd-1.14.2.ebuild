@@ -54,6 +54,7 @@ src_configure() {
 		$(use_enable ocaml)
 		$(use_enable python)
 		$(use_with gnutls)
+		--with-uri-support
 	)
 
 	export bashcompdir="$(get_bashcompdir)"
