@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 prefix
 
 MY_PN=tables
 MY_P=${MY_PN}-${PV}
@@ -62,6 +62,7 @@ python_prepare_all() {
 	rm -r c-blosc/{blosc,internal-complibs} || die
 	rm tables/libblosc2.so || die
 	sed -i -e '/blosc2/d' requirements.txt || die
+	hprefixify -w '/prefixes =/' setup.py
 	distutils-r1_python_prepare_all
 }
 
