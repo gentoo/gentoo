@@ -58,6 +58,7 @@ DOCS=(
 
 PATCHES=(
 	"${FILESDIR}/biglybt-3.2.0.0-disable-SWTUpdateChecker.patch"
+	"${FILESDIR}/biglybt-3.2.0.0-disable-DorkBoxUpdaterPlugin.patch"
 	"${FILESDIR}/biglybt-3.2.0.0-disable-shared-plugins.patch"
 )
 
@@ -66,8 +67,13 @@ S="${WORKDIR}/BiglyBT-${PV}"
 src_prepare() {
 	default
 	# AENameServiceDescriptor fails to compile with jdk >= 11
+	# https://github.com/BiglySoftware/BiglyBT/pull/2611
 	# "error: package sun.net.spi.nameservice does not exist"
-	rm -r core/src/com/biglybt/core/util/spi/AENameServiceDescriptor.java || die
+	rm -r core/src/com/biglybt/core/util/spi || die
+
+	sed \
+		-e '/enable.update/s:true:false: ' \
+		-i core/src/com/biglybt/pifimpl/update/PluginUpdatePlugin.java || die
 
 	cp -r core/{src,resources} || die
 	find core/resources -type f -name '*.java' -exec rm -rf {} + || die "deleting classes failed"
