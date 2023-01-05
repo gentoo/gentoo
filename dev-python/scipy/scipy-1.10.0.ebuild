@@ -44,7 +44,7 @@ fi
 
 LICENSE="BSD LGPL-2"
 SLOT="0"
-IUSE="doc +fortran"
+IUSE="doc +fortran test-rust"
 
 # umfpack is technically optional but it's preferred to have it available.
 DEPEND="
@@ -69,8 +69,10 @@ BDEPEND="
 	doc? ( app-arch/unzip )
 	fortran? ( dev-python/pythran[${PYTHON_USEDEP}] )
 	test? (
-		dev-python/pooch[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
+	)
+	test-rust? (
+		dev-python/pooch[${PYTHON_USEDEP}]
 	)
 "
 
@@ -106,6 +108,12 @@ python_configure_all() {
 
 python_test() {
 	cd "${T}" || die
+
+	if ! has_version -b "dev-python/pooch[${PYTHON_USEDEP}]" ; then
+		EPYTEST_IGNORE+=(
+			datasets/tests/test_data.py
+		)
+	fi
 
 	epytest -n "$(makeopts_jobs)" --pyargs scipy
 }
