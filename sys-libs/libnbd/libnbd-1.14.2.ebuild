@@ -46,9 +46,9 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(use_enable fuse)
-		$(use_enable go golang) \
-		$(use_enable ocaml) \
-		$(use_enable python) \
+		$(use_enable go golang)
+		$(use_enable ocaml)
+		$(use_enable python)
 		$(use_with gnutls)
 		$(use_with uri-support libxml2)
 		--disable-static
