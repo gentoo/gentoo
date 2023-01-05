@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
@@ -14,8 +14,6 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="test"
-PROPERTIES="test_network"
 
 RDEPEND="
 	dev-python/appdirs[${PYTHON_USEDEP}]
@@ -28,7 +26,19 @@ BDEPEND="
 		dev-python/paramiko[${PYTHON_USEDEP}]
 		dev-python/pytest-localftpserver[${PYTHON_USEDEP}]
 		dev-python/tqdm[${PYTHON_USEDEP}]
-	)"
+	)
+"
+
+EPYTEST_DESELECT=(
+	# Needs network
+	"pooch/tests/test_core.py::test_check_availability_on_ftp"
+	"pooch/tests/test_downloaders.py::test_invalid_doi_repository"
+	"pooch/tests/test_downloaders.py::test_doi_url_not_found"
+	"pooch/tests/test_downloaders.py::test_figshare_url_file_not_found[figshare]"
+	"pooch/tests/test_downloaders.py::test_figshare_url_file_not_found[zenodo]"
+	"pooch/tests/test_downloaders.py::test_doi_downloader[figshare]"
+	"pooch/tests/test_downloaders.py::test_doi_downloader[zenodo]"
+)
 
 ### docs no included in pypi tarball
 # distutils_enable_sphinx doc \
@@ -36,3 +46,7 @@ BDEPEND="
 distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+python_test() {
+	epytest -k "not network"
+}
