@@ -9,7 +9,7 @@ SRC_URI="https://downloads.apache.org/tomcat/tomcat-$(ver_cut 1)/v${PV}/KEYS -> 
 
 LICENSE="public-domain"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~arm arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm arm64 ppc64 ~x86"
 
 S="${WORKDIR}"
 
