@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc dolphin nautilus test webengine"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+COMMON_DEPEND="
 	>=dev-db/sqlite-3.34:3
 	>=dev-libs/openssl-1.1.0:0=
 	dev-libs/qtkeychain:=[qt5(+)]
@@ -38,7 +38,12 @@ RDEPEND="
 	nautilus? ( dev-python/nautilus-python )
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
-DEPEND="${RDEPEND}
+RDEPEND="
+	${COMMON_DEPEND}
+	dev-qt/qtquickcontrols2:5
+"
+DEPEND="
+	${COMMON_DEPEND}
 	dev-qt/qtconcurrent:5
 	dev-qt/qtxml:5
 	|| ( gnome-base/librsvg media-gfx/inkscape )
