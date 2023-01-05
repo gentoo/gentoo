@@ -50,7 +50,6 @@ src_configure() {
 		$(use_enable ocaml)
 		$(use_enable python)
 		$(use_with gnutls)
-		--disable-static
 	)
 
 	export bashcompdir="$(get_bashcompdir)"
