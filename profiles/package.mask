@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-01-05)
+# Breaks reverse dependencies: bug #889694, bug #888579.
+=sys-fs/btrfs-progs-6.1.1
+
 # David Seifert <soap@gentoo.org> (2023-01-02)
 # EAPI 6, pretty much no upstream activity, outdated, last upstream
 # release over 3 years ago, no revdeps. Removal on 2023-02-01.
