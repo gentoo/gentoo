@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="Athena Widgets with N*XTSTEP appearance"
 HOMEPAGE="https://siag.nu/neXtaw/"
@@ -32,6 +32,13 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-clang16.patch
 )
+
+src_prepare() {
+	default
+
+	# Clang 16, bug #879779
+	eautoreconf
+}
 
 src_configure() {
 	append-cflags -std=gnu89 # old codebase, incompatible with c2x
