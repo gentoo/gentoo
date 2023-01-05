@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -20,10 +20,6 @@
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-12-18)
 # Unstable test dependencies
 dev-util/pkgdev test
-
-# Michał Górny <mgorny@gentoo.org> (2022-11-06)
-# Unmask the target on python-exec while it's masked elsewhere.
-dev-lang/python-exec -python_targets_python3_11
 
 # Sam James <sam@gentoo.org> (2022-02-02)
 # net-analyzer/net-snmp is not marked stable on HPPA
