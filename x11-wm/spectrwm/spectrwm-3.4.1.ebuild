@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,6 +23,8 @@ DEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXt
 	x11-libs/xcb-util
+	x11-libs/xcb-util-keysyms
+	x11-libs/xcb-util-wm
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.0-gentoo.patch
