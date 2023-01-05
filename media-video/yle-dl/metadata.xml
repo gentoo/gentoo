@@ -6,4 +6,7 @@
     <name>Joonas Niilola</name>
   </maintainer>
   <stabilize-allarches/>
+  <upstream>
+    <remote-id type="github">aajanki/yle-dl</remote-id>
+  </upstream>
 </pkgmetadata>
