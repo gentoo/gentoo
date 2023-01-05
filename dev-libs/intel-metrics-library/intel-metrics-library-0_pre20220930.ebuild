@@ -23,6 +23,6 @@ DEPEND="x11-libs/libdrm"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	sed -e '/-Werror/d' -i CMakeLists.txt
+	sed -e '/-Werror/d' -i CMakeLists.txt || die
 	cmake_src_prepare
 }
