@@ -83,7 +83,6 @@ COMMON_DEPEND="
 		${PYTHON_DEPS}
 		>=sci-libs/gdal-2.2.3[python,${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep '
-			dev-python/future[${PYTHON_USEDEP}]
 			dev-python/httplib2[${PYTHON_USEDEP}]
 			dev-python/jinja[${PYTHON_USEDEP}]
 			dev-python/markupsafe[${PYTHON_USEDEP}]
