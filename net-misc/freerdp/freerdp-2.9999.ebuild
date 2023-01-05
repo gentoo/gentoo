@@ -1,4 +1,4 @@
-# Copyright 2011-2022 Gentoo Authors
+# Copyright 2011-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,11 +19,11 @@ else
 fi
 
 DESCRIPTION="Free implementation of the Remote Desktop Protocol"
-HOMEPAGE="http://www.freerdp.com/"
+HOMEPAGE="https://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
+IUSE="alsa cpu_flags_arm_neon cups debug doc +ffmpeg gsm gstreamer icu jpeg openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -46,9 +46,11 @@ RDEPEND="
 		xv? ( x11-libs/libXv )
 	)
 	ffmpeg? ( media-video/ffmpeg:0= )
+	icu? ( dev-libs/icu:0= )
 	!ffmpeg? (
 		x11-libs/cairo:0=
 	)
+	gsm? ( media-sound/gsm )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -96,26 +98,30 @@ src_configure() {
 		-DBUILD_TESTING=$(usex test ON OFF)
 		-DCHANNEL_URBDRC=$(usex usb ON OFF)
 		-DWITH_ALSA=$(usex alsa ON OFF)
+		-DWITH_CAIRO=$(usex ffmpeg OFF ON)
 		-DWITH_CCACHE=OFF
 		-DWITH_CUPS=$(usex cups ON OFF)
 		-DWITH_DEBUG_ALL=$(usex debug ON OFF)
-		-DWITH_MANPAGES=$(usex doc ON OFF)
-		-DWITH_FFMPEG=$(usex ffmpeg ON OFF)
-		-DWITH_SWSCALE=$(usex ffmpeg ON OFF)
-		-DWITH_CAIRO=$(usex ffmpeg OFF ON)
 		-DWITH_DSP_FFMPEG=$(usex ffmpeg ON OFF)
+		-DWITH_FFMPEG=$(usex ffmpeg ON OFF)
+		-DWITH_GSM=$(usex gsm ON OFF)
 		-DWITH_GSTREAMER_1_0=$(usex gstreamer ON OFF)
+		-DWITH_ICU=$(usex icu ON OFF)
 		-DWITH_JPEG=$(usex jpeg ON OFF)
+		-DWITH_LIBSYSTEMD=$(usex systemd ON OFF)
+		-DWITH_MANPAGES=$(usex doc ON OFF)
 		-DWITH_NEON=$(usex cpu_flags_arm_neon ON OFF)
 		-DWITH_OPENH264=$(usex openh264 ON OFF)
+		-DWITH_OSS=OFF
+		-DWITH_PCSC=$(usex smartcard ON OFF)
 		-DWITH_PULSE=$(usex pulseaudio ON OFF)
 		-DWITH_SERVER=$(usex server ON OFF)
-		-DWITH_PCSC=$(usex smartcard ON OFF)
-		-DWITH_LIBSYSTEMD=$(usex systemd ON OFF)
+		-DWITH_SWSCALE=$(usex ffmpeg ON OFF)
+		-DWITH_WAYLAND=$(usex wayland ON OFF)
 		-DWITH_X11=$(usex X ON OFF)
 		-DWITH_XINERAMA=$(usex xinerama ON OFF)
 		-DWITH_XV=$(usex xv ON OFF)
-		-DWITH_WAYLAND=$(usex wayland ON OFF)
+		-Wno-dev
 	)
 	cmake_src_configure
 }
