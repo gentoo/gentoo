@@ -14,5 +14,6 @@
 	</slots>
 	<upstream>
 		<remote-id type="github">protocolbuffers/protobuf</remote-id>
+		<remote-id type="pypi">protobuf</remote-id>
 	</upstream>
 </pkgmetadata>
