@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples fuse gnutls +uri-support go ocaml python test"
 
-RESTRICT="!test? ( test ) test? ( userpriv )"
+RESTRICT="!test? ( test ) test? ( fuse? ( userpriv ) )"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
