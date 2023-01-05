@@ -16,9 +16,12 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
+# TODO: Can we drop virtual/bitcoin-leveldb from some bitcoin-*?
+# (only bitcoin-qt, bitcoind should need it?)
 RDEPEND="
 	dev-libs/boost:=
 	dev-libs/libevent:=
+	virtual/bitcoin-leveldb
 "
 DEPEND="${RDEPEND}"
 
