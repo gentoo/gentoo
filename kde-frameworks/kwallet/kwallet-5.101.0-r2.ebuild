@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ DEPEND="
 	=kde-frameworks/knotifications-${PVCUT}*:5
 	=kde-frameworks/kservice-${PVCUT}*:5
 	=kde-frameworks/kwidgetsaddons-${PVCUT}*:5
-	=kde-frameworks/kwindowsystem-${PVCUT}*:5[X]
+	=kde-frameworks/kwindowsystem-${PVCUT}*:5
 	gpg? ( >=app-crypt/gpgme-1.7.1:=[cxx,qt5] )
 "
 RDEPEND="${DEPEND}"
