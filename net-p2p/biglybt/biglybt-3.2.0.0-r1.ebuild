@@ -35,8 +35,11 @@ CP_DEPEND="
 # test? org.assertj:assertj-core:3.12.1 -> !!!suitable-mavenVersion-not-found!!!
 # test? org.junit.jupiter:junit-jupiter:5.4.0 -> !!!groupId-not-found!!!
 
+# Due to removal of AENameServiceDescriptor it would fail to start under jdk:1.8
+# StartServer ERROR: unable to bind to 127.0.0.1:6880 listening for passed torrent info: \
+# sun.net.spi.nameservice.NameServiceDescriptor: Provider com.biglybt.core.util.spi.AENameServiceDescriptor not found
 DEPEND="
-	>=virtual/jdk-1.8:*
+	>=virtual/jdk-11:*
 	${CP_DEPEND}
 "
 
@@ -62,9 +65,9 @@ S="${WORKDIR}/BiglyBT-${PV}"
 
 src_prepare() {
 	default
-	# This directory would break compilation with jdk >= 11
+	# AENameServiceDescriptor fails to compile with jdk >= 11
 	# "error: package sun.net.spi.nameservice does not exist"
-	rm -r core/src/com/biglybt/core/util/spi || die
+	rm -r core/src/com/biglybt/core/util/spi/AENameServiceDescriptor.java || die
 
 	cp -r core/{src,resources} || die
 	find core/resources -type f -name '*.java' -exec rm -rf {} + || die "deleting classes failed"
