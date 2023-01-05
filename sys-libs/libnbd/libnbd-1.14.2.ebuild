@@ -59,14 +59,6 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
-src_install() {
-	default
-
-	find "${ED}" -name '*.la' -delete || die
-
-	use python && python_optimize
-}
-
 src_test() {
 	if use fuse ; then
 		[[ -e /dev/fuse ]] || die "/dev/fuse is required to run the test"
@@ -74,4 +66,12 @@ src_test() {
 	fi
 
 	default
+}
+
+src_install() {
+	default
+
+	find "${ED}" -name '*.la' -delete || die
+
+	use python && python_optimize
 }
