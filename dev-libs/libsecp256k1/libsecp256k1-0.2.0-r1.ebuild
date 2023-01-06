@@ -23,7 +23,6 @@ REQUIRED_USE="
 "
 BDEPEND="
 	virtual/pkgconfig
-	test? ( dev-libs/openssl )
 	valgrind? ( dev-util/valgrind )
 "
 
