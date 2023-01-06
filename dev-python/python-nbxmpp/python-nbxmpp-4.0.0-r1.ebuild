@@ -23,7 +23,7 @@ KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
 RDEPEND="
 	dev-libs/gobject-introspection
-	net-libs/libsoup:2.4[introspection]
+	net-libs/libsoup:3.0[introspection]
 	dev-python/idna[${PYTHON_USEDEP}]
 	dev-python/precis-i18n[${PYTHON_USEDEP}]
 	dev-python/pygobject[${PYTHON_USEDEP}]
