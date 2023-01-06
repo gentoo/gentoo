@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: distutils-r1.eclass
@@ -1559,7 +1559,7 @@ distutils-r1_python_test() {
 	esac
 
 	if [[ ${?} -ne 0 ]]; then
-		die "Tests failed with ${EPYTHON}"
+		die -n "Tests failed with ${EPYTHON}"
 	fi
 }
 
