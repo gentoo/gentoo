@@ -14,7 +14,7 @@ SRC_URI="amd64? ( HDX_RealTime_Media_Engine_${MY_PV}_for_Linux_x64.zip )
 LICENSE="icaclient"
 SLOT="0"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="fetch mirror strip"
 
 BDEPEND="app-arch/unzip"
