@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -70,8 +70,8 @@ src_install() {
 
 	dodoc README.md OpenRGB.patch
 
-	udev_dorules 60-openrgb.rules
 	rm -r "${ED}"/usr/lib/udev/ || die
+	udev_dorules 60-openrgb.rules
 
 	# This is for plugins. Upstream doesn't install any headers at all.
 	insinto /usr/include/OpenRGB
