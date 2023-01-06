@@ -15,8 +15,7 @@
     <flag name="endomorphism">Enable endomorphism</flag>
     <flag name="experimental">Allow experimental USE flags</flag>
     <flag name="extrakeys">Enable extrakeys module</flag>
-    <flag name="lowmem">Reduce runtime memory usage at the expense of performance (ecmult window size 2, gen precision 2)</flag>
-    <flag name="precompute-ecmult">Use over 512 MB memory at runtime for better performance (ecmult window size 24, gen precision 8)</flag>
+    <flag name="lowmem">Reduce runtime memory usage at the expense of performance (ecmult window size 4, gen precision 2)</flag>
     <flag name="recovery">Enable ECDSA pubkey recovery module</flag>
     <flag name="schnorr">Enable Schnorr signature module</flag>
     <flag name="test-openssl">Enable OpenSSL comparison tests</flag>
