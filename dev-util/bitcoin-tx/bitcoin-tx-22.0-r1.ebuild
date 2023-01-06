@@ -1,19 +1,19 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools bash-completion-r1
+inherit autotools bash-completion-r1 flag-o-matic
 
-BITCOINCORE_COMMITHASH="95ea54ba089610019a74c1176a2c7c0dba144b1c"
-KNOTS_PV="${PV}.knots20210130"
+BITCOINCORE_COMMITHASH="a0988140b71485ad12c3c3a4a9573f7c21b1eff8"
+KNOTS_PV="${PV}.knots20211108"
 KNOTS_P="bitcoin-${KNOTS_PV}"
 
 DESCRIPTION="Command-line Bitcoin transaction tool"
 HOMEPAGE="https://bitcoincore.org/ https://bitcoinknots.org/"
 SRC_URI="
 	https://github.com/bitcoin/bitcoin/archive/${BITCOINCORE_COMMITHASH}.tar.gz -> bitcoin-v${PV}.tar.gz
-	https://bitcoinknots.org/files/$(ver_cut 1-2).x/${KNOTS_PV}/${KNOTS_P}.patches.txz -> ${KNOTS_P}.patches.tar.xz
+	https://bitcoinknots.org/files/$(ver_cut 1).x/${KNOTS_PV}/${KNOTS_P}.patches.txz -> ${KNOTS_P}.patches.tar.xz
 "
 
 LICENSE="MIT"
@@ -21,15 +21,15 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="knots"
 
-DEPEND="
+RDEPEND="
 	dev-libs/boost:=
-	>dev-libs/libsecp256k1-0.1_pre20200911:=[recovery,schnorr]
+	~dev-libs/libsecp256k1-0.1_pre20201028:=[recovery,schnorr]
 	>=dev-libs/univalue-1.0.4:=
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="
-	>=sys-devel/autoconf-2.69
 	>=sys-devel/automake-1.13
+	|| ( >=sys-devel/gcc-7[cxx] >=sys-devel/clang-5 )
 "
 
 DOCS=(
@@ -43,30 +43,34 @@ pkg_pretend() {
 	if use knots; then
 		elog "You are building ${PN} from Bitcoin Knots."
 		elog "For more information, see:"
-		elog "https://bitcoinknots.org/files/0.21.x/${KNOTS_PV}/${KNOTS_P}.desc.html"
+		elog "https://bitcoinknots.org/files/22.x/${KNOTS_PV}/${KNOTS_P}.desc.html"
 	else
 		elog "You are building ${PN} from Bitcoin Core."
 		elog "For more information, see:"
-		elog "https://bitcoincore.org/en/2021/01/14/release-${PV}/"
+		elog "https://bitcoincore.org/en/2021/09/13/release-${PV}/"
+	fi
+
+	if [[ ${MERGE_TYPE} != "binary" ]] ; then
+		if ! test-flag-CXX -std=c++17 ; then
+			die "Building ${CATEGORY}/${P} requires at least GCC 7 or Clang 5"
+		fi
 	fi
 }
 
 src_prepare() {
 	local knots_patchdir="${WORKDIR}/${KNOTS_P}.patches/"
 
-	eapply "${knots_patchdir}/${KNOTS_P}.syslibs.patch"
+	eapply "${knots_patchdir}/${KNOTS_P}_p1-syslibs.patch"
+	eapply "${FILESDIR}/${PV}-fix_build_without_leveldb.patch"
 
 	if use knots; then
-		eapply "${knots_patchdir}/${KNOTS_P}.f.patch"
-		eapply "${knots_patchdir}/${KNOTS_P}.branding.patch"
-		eapply "${knots_patchdir}/${KNOTS_P}.ts.patch"
+		eapply "${knots_patchdir}/${KNOTS_P}_p2-fixes.patch"
+		eapply "${knots_patchdir}/${KNOTS_P}_p3-features.patch"
+		eapply "${knots_patchdir}/${KNOTS_P}_p4-branding.patch"
+		eapply "${knots_patchdir}/${KNOTS_P}_p5-ts.patch"
 	fi
 
-	eapply_user
-
-	echo '#!/bin/true' >share/genbuild.sh || die
-	mkdir -p src/obj || die
-	echo "#define BUILD_SUFFIX gentoo${PVR#${PV}}" >src/obj/build.h || die
+	default
 
 	eautoreconf
 	rm -r src/leveldb src/secp256k1 || die
@@ -76,12 +80,15 @@ src_configure() {
 	local my_econf=(
 		--disable-asm
 		--without-qtdbus
+		--disable-ebpf
+		--without-natpmp
 		--without-qrencode
 		--without-miniupnpc
 		--disable-tests
 		--disable-wallet
 		--disable-zmq
 		--enable-util-tx
+		--disable-util-util
 		--disable-util-cli
 		--disable-util-wallet
 		--disable-bench
@@ -89,6 +96,7 @@ src_configure() {
 		--without-daemon
 		--without-gui
 		--disable-fuzz
+		--disable-fuzz-binary
 		--disable-ccache
 		--disable-static
 		--with-system-libsecp256k1
