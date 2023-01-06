@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -103,6 +103,11 @@ src_install() {
 
 	local SCRIPT
 	if use monitor; then
+		# ovs-bugtool is installed to sbin by the build system, but we
+		# install it to bin below, and these clash in merged-usr
+		# https://bugs.gentoo.org/889846
+		rm "${ED}"/usr/sbin/ovs-bugtool || die
+
 		for SCRIPT in ovs-{pcap,parse-backtrace,dpctl-top,l3ping,tcpdump,tcpundump,test,vlan-test} bugtool/ovs-bugtool; do
 			python_doscript utilities/"${SCRIPT}"
 		done
