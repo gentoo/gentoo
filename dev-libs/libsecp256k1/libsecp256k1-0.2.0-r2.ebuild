@@ -21,9 +21,14 @@ REQUIRED_USE="
 	schnorr? ( extrakeys )
 "
 BDEPEND="
+	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	valgrind? ( dev-util/valgrind )
 "
+
+PATCHES=(
+	"${FILESDIR}/0.2.0-fix-cross-compile.patch"
+)
 
 S="${WORKDIR}/${MyPN}-${PV}"
 
