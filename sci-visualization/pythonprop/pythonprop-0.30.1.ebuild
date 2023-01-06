@@ -30,7 +30,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-text/yelp-tools
-	app-text/rarian
 "
 
 PATCHES=( "${FILESDIR}/${PN}-drop-portland.patch" )
