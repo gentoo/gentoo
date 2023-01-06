@@ -40,6 +40,9 @@ BDEPEND="
 src_prepare() {
 	default
 	eautoreconf
+
+	# Generate during build
+	rm -f src/precomputed_ecmult.c src/precomputed_ecmult_gen.c || die
 }
 
 src_configure() {
