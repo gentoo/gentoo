@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -162,7 +162,7 @@ RDEPEND+="selinux? ( sec-policy/selinux-mplayer )"
 LICENSE="GPL-2"
 SLOT="0"
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 # faac codecs are nonfree
