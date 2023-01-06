@@ -13,7 +13,7 @@ SRC_URI="https://github.com/bitcoin-core/secp256k1/archive/v${PV}.tar.gz -> ${P}
 LICENSE="MIT"
 SLOT="0/1"  # subslot is "$((_LIB_VERSION_CURRENT-_LIB_VERSION_AGE))" from configure.ac
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+asm ecdh experimental +extrakeys lowmem precompute-ecmult +schnorr +recovery test valgrind"
+IUSE="+asm +ecdh experimental +extrakeys lowmem precompute-ecmult +schnorr +recovery test valgrind"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
