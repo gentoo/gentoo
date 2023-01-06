@@ -46,6 +46,8 @@ src_prepare() {
 
 	default
 
+	echo "#define TKIMG_VERSION_UUID unknown" > base/tkimgUuid.h || die
+
 	find compat/libtiff/config -name ltmain.sh -delete || die
 	sed -i \
 		-e 's:"--with-CC=$TIFFCC"::' \
