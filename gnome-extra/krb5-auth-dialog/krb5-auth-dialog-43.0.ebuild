@@ -25,3 +25,5 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-util/itstool"
+
+PATCHES=( "${FILESDIR}"/${P}-remove-postinstall-script.patch )
