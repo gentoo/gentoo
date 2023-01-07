@@ -18,7 +18,7 @@ SRC_URI="
 		-> ${P}.gh.tar.gz
 "
 
-LICENSE="Unlicense"  # or MIT-0
+LICENSE="|| ( Unlicense MIT-0 )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="test"
