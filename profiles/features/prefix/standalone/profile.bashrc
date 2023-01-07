@@ -9,19 +9,7 @@
 # Disable RAP trick during bootstrap stage2
 [[ -z ${BOOTSTRAP_RAP_STAGE2} ]] || return 0
 
-if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; then
-    cd "${S}"
-    einfo "Prefixifying dynamic linkers..."
-    for h in gcc/config/*/*linux*.h; do
-	ebegin "  Updating $h"
-	if [[ "${h}" == gcc/config/rs6000/linux*.h ]]; then
-	    sed -i -r "s,(DYNAMIC_LINKER_PREFIX\s+)\"\",\1\"${EPREFIX}\",g" $h
-	else
-	    sed -i -r "/_DYNAMIC_LINKER/s,([\":])(/lib),\1${EPREFIX}\2,g" $h
-	fi
-	eend $?
-    done
-elif [[ ${CATEGORY}/${PN} == sys-devel/clang && ${EBUILD_PHASE} == configure ]]; then
+if [[ ${CATEGORY}/${PN} == sys-devel/clang && ${EBUILD_PHASE} == configure ]]; then
     ebegin "Use ${EPREFIX} as default sysroot"
     sed -i -e "s@DEFAULT_SYSROOT \"\"@DEFAULT_SYSROOT \"${EPREFIX}\"@" "${S}"/CMakeLists.txt
     eend $?
