@@ -33,7 +33,7 @@ RDEPEND="
 	cli? (
 		=dev-python/click-8*[${PYTHON_USEDEP}]
 		=dev-python/pygments-2*[${PYTHON_USEDEP}]
-		<dev-python/rich-13[${PYTHON_USEDEP}]
+		dev-python/rich[${PYTHON_USEDEP}]
 	)
 "
 BDEPEND="
@@ -57,7 +57,7 @@ src_prepare() {
 	if ! use cli; then
 		sed -i -e '/^httpx =/d' pyproject.toml || die
 	fi
-	sed -i -e '/rfc3986/s:,<2::' pyproject.toml || die
+	sed -i -e '/rfc3986/s:,<2::' -e '/rich/s:,<13::' pyproject.toml || die
 	distutils-r1_src_prepare
 }
 
