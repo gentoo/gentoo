@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2022-08-25)
@@ -16,7 +16,9 @@
 # Broken on big endian, but should be fine on le.
 # bug #818424
 -dev-games/openscenegraph
+-dev-games/openscenegraph-openmw
 -dev-games/openscenegraph-qt
+-games-engines/openmw
 -media-libs/openexr
 -media-libs/ctl
 -media-gfx/openvdb
