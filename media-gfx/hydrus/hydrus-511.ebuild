@@ -1,13 +1,13 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"
 
 DOCS_BUILDER=mkdocs
-DOCS_DEPEND="dev-python/mkdocs-material"
+DOCS_DEPEND="dev-python/mkdocs-material dev-python/regex"
 
 inherit python-single-r1 desktop docs optfeature
 
