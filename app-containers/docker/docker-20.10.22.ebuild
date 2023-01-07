@@ -77,7 +77,6 @@ CONFIG_CHECK="
 	~USER_NS
 	~SECCOMP
 	~CGROUP_PIDS
-	~MEMCG_SWAP
 
 	~BLK_CGROUP ~BLK_DEV_THROTTLING
 	~CGROUP_PERF
@@ -139,6 +138,12 @@ pkg_setup() {
 	if kernel_is lt 5 8; then
 		CONFIG_CHECK+="
 			~MEMCG_SWAP_ENABLED
+		"
+	fi
+
+	if kernel_is lt 6 1; then
+		CONFIG_CHECK+="
+			~MEMCG_SWAP
 		"
 	fi
 
