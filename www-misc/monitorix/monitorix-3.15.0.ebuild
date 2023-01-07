@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
 inherit systemd optfeature
 
@@ -14,22 +14,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	acct-user/monitorix
 	acct-group/monitorix
+	acct-user/monitorix
+	dev-perl/CGI
 	dev-perl/Config-General
 	dev-perl/DBI
 	dev-perl/HTTP-Server-Simple
 	dev-perl/IO-Socket-SSL
-	dev-perl/libwww-perl
 	dev-perl/MIME-Lite
 	dev-perl/XML-Simple
-	net-analyzer/rrdtool[graph,perl]
-	dev-perl/CGI"
+	dev-perl/libwww-perl
+	net-analyzer/rrdtool[graph,perl]"
 
 src_prepare() {
 	# Put better Gentoo defaults in the configuration file.
-	sed -e "s|\(base_dir.*\)/usr/share/${PN}|\1/usr/share/${PN}/htdocs|" \
-		-e "s|\(secure_log.*\)/var/log/secure|\1/var/log/auth.log|" \
+	sed -e "s|\(secure_log.*\)/var/log/secure|\1/var/log/auth.log|" \
 		-e "s|nobody|${PN}|g" -i ${PN}.conf || die
 	# Update systemd binary location
 	sed -e "s|/usr/bin|/usr/sbin|g" -i docs/${PN}.service || die
