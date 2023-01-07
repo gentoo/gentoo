@@ -85,6 +85,10 @@ src_prepare() {
 	eprefixify \
 		lib/Lex/InitHeaderSearch.cpp \
 		lib/Driver/ToolChains/Darwin.cpp || die
+
+	if ! use prefix-guest && [[ -n ${EPREFIX} ]]; then
+		sed -i "/LibDir.*Loader/s@return \"\/\"@return \"${EPREFIX}/\"@" lib/Driver/ToolChains/Linux.cpp || die
+	fi
 }
 
 check_distribution_components() {
@@ -248,6 +252,7 @@ get_distribution_components() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DDEFAULT_SYSROOT=$(usex prefix-guest "" "${EPREFIX}")
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}/share/man"
 		-DCLANG_CONFIG_FILE_SYSTEM_DIR="${EPREFIX}/etc/clang"
