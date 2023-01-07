@@ -5,4 +5,8 @@
     <email>ruby@gentoo.org</email>
     <name>Gentoo Ruby Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">janlelis/unicode-display_width</remote-id>
+    <remote-id type="rubygems">unicode-display_width</remote-id>
+  </upstream>
 </pkgmetadata>
