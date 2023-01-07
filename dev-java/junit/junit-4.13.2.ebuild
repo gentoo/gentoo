@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -40,7 +40,7 @@ DEPEND="
 RDEPEND="
 	>=virtual/jre-1.8:*
 	${CDEPEND}"
-
+BDEPEND="app-arch/unzip"
 S="${WORKDIR}"
 
 JAVA_ENCODING="ISO-8859-1"
