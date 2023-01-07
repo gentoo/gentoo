@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -198,6 +198,9 @@ get_distribution_components() {
 			clang-scan-deps
 			diagtool
 			hmaptool
+
+			# needed for cross-compiling Clang
+			clang-tblgen
 		)
 
 		if use extra; then
@@ -303,6 +306,9 @@ multilib_src_configure() {
 		fi
 		mycmakeargs+=(
 			-DCLANG_INCLUDE_DOCS=${build_docs}
+
+			# Hack to install clang-tblgen: https://reviews.llvm.org/D141092
+			-DLLVM_BUILD_UTILS=ON
 		)
 	fi
 	if multilib_native_use extra; then
@@ -323,11 +329,10 @@ multilib_src_configure() {
 	fi
 
 	if tc-is-cross-compiler; then
-		[[ -x "/usr/bin/clang-tblgen" ]] \
-			|| die "/usr/bin/clang-tblgen not found or usable"
+		has_version -b sys-devel/clang:${LLVM_MAJOR} ||
+			die "sys-devel/clang:${LLVM_MAJOR} is required on the build host."
 		mycmakeargs+=(
-			-DCMAKE_CROSSCOMPILING=ON
-			-DCLANG_TABLEGEN=/usr/bin/clang-tblgen
+			-DLLVM_TOOLS_BINARY_DIR="${BROOT}"/usr/lib/llvm/${LLVM_MAJOR}/bin
 		)
 	fi
 
