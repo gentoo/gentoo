@@ -1,6 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Maciej Barć <xgqt@gentoo.org> (2023-01-07)
+# Currently ACL2 (sci-mathematics/acl2) unconditionally depends
+# on SBCL (dev-lisp/sbcl), which is masked on the musl profile.
+sci-mathematics/acl2
+
 # Sam James <sam@gentoo.org> (2023-01-02)
 # Uses error.h, bug #888956
 =sys-libs/liburing-2.3
