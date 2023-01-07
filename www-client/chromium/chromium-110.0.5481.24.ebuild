@@ -1,4 +1,4 @@
-# Copyright 2009-2022 Gentoo Authors
+# Copyright 2009-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ inherit python-any-r1 qmake-utils readme.gentoo-r1 toolchain-funcs virtualx xdg-
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="1"
+PATCHSET="2"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz
@@ -266,6 +266,10 @@ pre_build_checks() {
 			if ! ver_test "$(clang-major-version)" -ge 13; then
 				die "At least clang 13 is required"
 			fi
+			# bug #889374
+			if ! use libcxx; then
+				die "Builds using clang fail with USE=-libcxx"
+			fi
 		fi
 		if [[ ${EBUILD_PHASE_FUNC} == pkg_setup ]] && use js-type-check; then
 			"${BROOT}"/usr/bin/java -version 2>1 > /dev/null || die "Java VM not setup correctly"
@@ -330,7 +334,7 @@ src_prepare() {
 	# disable global media controls, crashes with libstdc++
 	sed -i -e \
 		"/\"GlobalMediaControlsCastStartStop\",/{n;s/ENABLED/DISABLED/;}" \
-		"third_party/blink/common/features.cc" || die
+		"chrome/browser/media/router/media_router_feature.cc" || die
 
 	local PATCHES=(
 		"${WORKDIR}/patches"
