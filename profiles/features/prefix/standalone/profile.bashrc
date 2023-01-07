@@ -9,16 +9,7 @@
 # Disable RAP trick during bootstrap stage2
 [[ -z ${BOOTSTRAP_RAP_STAGE2} ]] || return 0
 
-if [[ ${CATEGORY}/${PN} == sys-devel/clang && ${EBUILD_PHASE} == configure ]]; then
-    ebegin "Use ${EPREFIX} as default sysroot"
-    sed -i -e "s@DEFAULT_SYSROOT \"\"@DEFAULT_SYSROOT \"${EPREFIX}\"@" "${S}"/CMakeLists.txt
-    eend $?
-    pushd "${S}/lib/Driver/ToolChains" >/dev/null
-    ebegin "Use dynamic linker from ${EPREFIX}"
-    sed -i -e "/LibDir.*Loader/s@return \"\/\"@return \"${EPREFIX%/}/\"@" Linux.cpp
-    eend $?
-    popd >/dev/null
-elif [[ ${CATEGORY}/${PN} == sys-devel/binutils && ${EBUILD_PHASE} == prepare ]]; then
+if [[ ${CATEGORY}/${PN} == sys-devel/binutils && ${EBUILD_PHASE} == prepare ]]; then
     ebegin "Prefixifying native library path"
     sed -i -r "/NATIVE_LIB_DIRS/s,((/usr(/local|)|)/lib),${EPREFIX}\1,g" \
 	"${S}"/ld/configure.tgt
