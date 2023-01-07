@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 inherit autotools flag-o-matic
 
@@ -17,6 +17,7 @@ IUSE="debug static"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3-s_isreg.patch
 	"${FILESDIR}"/${P}-fix-unaligned.patch
+	"${FILESDIR}"/${P}-clang16.patch
 )
 
 src_prepare() {

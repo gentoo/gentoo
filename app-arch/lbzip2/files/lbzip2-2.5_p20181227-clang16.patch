@@ -1,0 +1,27 @@
+https://github.com/kjn/lbzip2/pull/33
+
+From 32b5167940ec817e454431956040734af405a9de Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Thu, 5 Jan 2023 18:02:26 +0100
+Subject: [PATCH] Define the GNULIB_XALLOC_DIE macro
+
+This avoids an implicit function declaration when building gnulib's
+xmalloc.c, addressing a build failure with future compiler version.
+
+Solution proposed by Bruno Haible here:
+
+  Re: xmalloc calling undeclared xalloc_die function
+  <https://lists.gnu.org/archive/html/bug-gnulib/2022-12/msg00038.html>
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,6 +31,9 @@ AC_PROG_LN_S
+ AC_PROG_RANLIB
+ AC_PROG_CC_C89
+ 
++AC_DEFINE(GNULIB_XALLOC_DIE, 1,
++  [This package is providing its own definition of the xalloc_die function.])
++
+ gl_ASSERT_NO_GNULIB_TESTS
+ gl_ASSERT_NO_GNULIB_POSIXCHECK
+ gl_EARLY
+
