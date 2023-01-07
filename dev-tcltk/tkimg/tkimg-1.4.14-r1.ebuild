@@ -46,7 +46,7 @@ src_prepare() {
 
 	default
 
-	echo "#define TKIMG_VERSION_UUID unknown" > base/tkimgUuid.h || die
+	echo "unknown" > manifest.uuid || die
 
 	find compat/libtiff/config -name ltmain.sh -delete || die
 	sed -i \
