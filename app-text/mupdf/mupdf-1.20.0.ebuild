@@ -30,7 +30,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	>=media-libs/openjpeg-2.1:2=
 	>=media-libs/libjpeg-turbo-1.5.3-r2:0
-	javascript? ( >=dev-lang/mujs-1.0.7:= )
+	javascript? ( >=dev-lang/mujs-1.2.0:= )
 	opengl? ( >=media-libs/freeglut-3.0.0 )
 	ssl? ( >=dev-libs/openssl-1.1:0= )
 	X? (
