@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,6 +46,10 @@ QA_FLAGS_IGNORED="usr/bin/zig"
 # 0.11.0 release - ~2.8 GiB, since we will (at least according to roadmap) use self-hosted compiler
 # (transpiled to C via C backend) for bootstrapping
 CHECKREQS_MEMORY="10G"
+
+PATCHES=(
+	"${FILESDIR}/${P}-avoid-cmake-bug.patch"
+)
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
