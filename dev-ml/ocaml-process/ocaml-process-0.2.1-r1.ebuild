@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit findlib
 
@@ -27,12 +27,12 @@ src_compile() {
 	emake TARGETS="${exts}"
 }
 
-src_install() {
-	local archive=''
-	use ocamlopt && archive='_build/lib/process.a'
-	findlib_src_install TARGETS="${exts}" ARCHIVES=${archives}
-}
-
 src_test() {
 	emake -j1 TARGETS=${exts} test
+}
+
+src_install() {
+	local archives=''
+	use ocamlopt && archives='_build/lib/process.a'
+	findlib_src_install TARGETS="${exts}" ARCHIVES="${archives}"
 }
