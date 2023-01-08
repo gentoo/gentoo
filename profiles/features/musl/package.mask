@@ -315,7 +315,6 @@ dev-libs/cudnn-frontend
 dev-python/pycuda
 dev-util/nvidia-cuda-sdk
 dev-util/nvidia-cuda-toolkit
-media-video/nvidia-video-codec
 dev-libs/optix
 x11-drivers/nvidia-drivers
 x11-misc/primus
