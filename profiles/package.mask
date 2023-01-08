@@ -981,16 +981,6 @@ dev-ruby/iobuffer
 # EAPI 6. Removal in 30 days (#884429)
 app-editors/elvis
 
-# Robin H. Johnson <robbat2@gentoo.org> (2022-12-04)
-# sys-boot/mbr-gpt was a bizzare package extremely sensitive to compiler &
-# linker changes. I don't know of any remaining consumers other than one weird
-# system I have.
-# If you're a consumer: syslinux gptmbr was the successor to this approach,
-# you'll need to replace the contents of your BIOS Boot Partition, because it's
-# not a direct 1:1 change.
-# Only upstream release in 2008. Removal in 30 days.
-sys-boot/mbr-gpt
-
 # Sam James <sam@gentoo.org> (2022-12-03)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
