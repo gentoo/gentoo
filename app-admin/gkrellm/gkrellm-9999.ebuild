@@ -1,11 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop systemd toolchain-funcs
-
-MY_P="${P/_/-}"
 
 DESCRIPTION="Single process stack of various system monitors"
 HOMEPAGE="http://www.gkrellm.net/"
@@ -13,7 +11,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.srcbox.net/gkrellm/gkrellm.git"
 else
-	SRC_URI="http://gkrellm.srcbox.net/${MY_P}.tar.bz2"
+	SRC_URI="http://gkrellm.srcbox.net/releases/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 LICENSE="GPL-3+"
@@ -41,21 +39,20 @@ RDEPEND="
 		x11-libs/libSM
 		x11-libs/libX11
 		x11-libs/pango
-		)"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
-
-BDEPEND="
-	virtual/pkgconfig
+		)
+"
+DEPEND="
+	${RDEPEND}
+	nls? ( sys-devel/gettext )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.3.5-config.patch
-	"${FILESDIR}"/${PN}-2.3.5-width.patch
-	"${FILESDIR}"/${PN}-2.3.5-sansfont.patch
-)
+BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${MY_P}"
+PATCHES=(
+	"${FILESDIR}/${PN}-2.3.5-config.patch"
+	"${FILESDIR}/${PN}-2.3.5-width.patch"
+	"${FILESDIR}/${PN}-2.3.5-sansfont.patch"
+)
 
 DOCS=( Changelog CREDITS README )
 
