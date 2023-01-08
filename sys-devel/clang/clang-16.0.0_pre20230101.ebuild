@@ -331,8 +331,10 @@ multilib_src_configure() {
 	if tc-is-cross-compiler; then
 		has_version -b sys-devel/clang:${LLVM_MAJOR} ||
 			die "sys-devel/clang:${LLVM_MAJOR} is required on the build host."
+		local tools_bin=${BROOT}/usr/lib/llvm/${LLVM_MAJOR}/bin
 		mycmakeargs+=(
-			-DLLVM_TOOLS_BINARY_DIR="${BROOT}"/usr/lib/llvm/${LLVM_MAJOR}/bin
+			-DLLVM_TOOLS_BINARY_DIR="${tools_bin}"
+			-DCLANG_TABLEGEN="${tools_bin}"/clang-tblgen
 		)
 	fi
 
