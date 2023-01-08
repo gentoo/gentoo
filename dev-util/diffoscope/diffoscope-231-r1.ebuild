@@ -117,4 +117,8 @@ EPYTEST_DESELECT=(
 	tests/comparators/test_macho.py::test_llvm_diff
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-231-pypdf.patch
+)
+
 distutils_enable_tests pytest
