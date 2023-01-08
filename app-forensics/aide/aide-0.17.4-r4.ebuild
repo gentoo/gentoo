@@ -12,9 +12,10 @@ SRC_URI="https://github.com/aide/aide/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="acl audit curl e2fs mhash selinux xattr zlib"
+IUSE="acl audit curl e2fs mhash selinux xattr"
 
 DEPEND="dev-libs/libpcre
+	sys-libs/zlib
 	acl? ( virtual/acl )
 	audit? ( sys-process/audit )
 	curl? ( net-misc/curl )
@@ -25,8 +26,7 @@ DEPEND="dev-libs/libpcre
 	)
 	mhash? ( app-crypt/mhash )
 	selinux? ( sys-libs/libselinux )
-	xattr? ( sys-apps/attr )
-	zlib? ( sys-libs/zlib )"
+	xattr? ( sys-apps/attr )"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-aide )"
 BDEPEND="sys-devel/bison
@@ -73,7 +73,8 @@ src_configure() {
 		--without-locale
 
 		--without-prelink
-		$(use_with zlib)
+
+		--with-zlib
 		$(use_with curl)
 		$(use_with acl posix-acl)
 		$(use_with selinux)
