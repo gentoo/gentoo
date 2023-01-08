@@ -991,11 +991,6 @@ app-editors/elvis
 # Only upstream release in 2008. Removal in 30 days.
 sys-boot/mbr-gpt
 
-# Hans de Graaff <graaff@gentoo.org> (2022-12-03)
-# ruby27-only package with no reverse dependencies.
-# Last release in 2019. Removal in 30 days.
-dev-ruby/logue
-
 # Sam James <sam@gentoo.org> (2022-12-03)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
