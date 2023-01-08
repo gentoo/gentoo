@@ -1001,11 +1001,6 @@ dev-ruby/logue
 # public_suffix slot instead. Masked for removal in 30 days.
 dev-ruby/public_suffix:3
 
-# Hans de Graaff <graaff@gentoo.org> (2022-12-04)
-# Obsolete slot without reverse dependencies. Use a newer
-# rspec-rails slot instead. Masked for removal in 30 days.
-dev-ruby/rspec-rails:4
-
 # Sam James <sam@gentoo.org> (2022-12-03)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
