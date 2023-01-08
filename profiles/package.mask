@@ -1043,11 +1043,6 @@ dev-ruby/net-ssh:5
 # anymore. Maksed for removal in 30 days.
 dev-ruby/rspec-retry
 
-# Oz Tiram <oz.tiram@gmail.com> (2022-12-03)
-# Mate-desktop no longer supports gtk+:2, so there is
-# no need for this package. Removal on 2023-01-03.
-x11-themes/mate-themes-meta
-
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-11-29)
 # Multiple stability issues, deadlocks on exit, broken API.
 # Bug #883559
