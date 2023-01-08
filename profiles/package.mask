@@ -1028,11 +1028,6 @@ dev-ruby/vcr:3
 # and accept a more unstable release.
 >=www-client/chromium-110
 
-# Hans de Graaff <graaff@gentoo.org> (2022-12-03)
-# Obsolete slot without reverse dependencies. Use a newer faraday
-# slot instead. Masked for removal in 30 days.
-dev-ruby/faraday:0
-
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-11-29)
 # Multiple stability issues, deadlocks on exit, broken API.
 # Bug #883559
