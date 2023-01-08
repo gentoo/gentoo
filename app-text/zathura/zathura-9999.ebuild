@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,17 +18,17 @@ else
 fi
 
 LICENSE="ZLIB"
-SLOT="0"
-IUSE="doc +magic seccomp sqlite synctex test"
+SLOT="0/$(ver_cut 1-2)"
+IUSE="doc seccomp sqlite synctex test"
 
 RESTRICT="!test? ( test )"
 
-DEPEND=">=dev-libs/girara-0.3.6
+DEPEND=">=dev-libs/girara-0.3.7
 	>=dev-libs/glib-2.50:2
 	>=sys-devel/gettext-0.19.8
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.22:3
-	magic? ( sys-apps/file )
+	sys-apps/file
 	seccomp? ( sys-libs/libseccomp )
 	sqlite? ( >=dev-db/sqlite-3.5.9:3 )
 	synctex? ( app-text/texlive-core )"
@@ -40,10 +40,13 @@ BDEPEND="doc? ( dev-python/sphinx )
 		dev-libs/check )
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/zathura-disable-seccomp-tests.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Dconvert-icon=disabled
-		-Dmagic=$(usex magic enabled disabled)
 		-Dmanpages=$(usex doc enabled disabled)
 		-Dseccomp=$(usex seccomp enabled disabled)
 		-Dsqlite=$(usex sqlite enabled disabled)

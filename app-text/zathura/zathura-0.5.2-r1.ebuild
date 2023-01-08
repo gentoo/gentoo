@@ -18,7 +18,7 @@ else
 fi
 
 LICENSE="ZLIB"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)"
 IUSE="doc seccomp sqlite synctex test"
 
 RESTRICT="!test? ( test )"
