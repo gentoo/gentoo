@@ -930,12 +930,6 @@ games-strategy/netherearth
 # to prevent breakage.
 >=dev-python/packaging-22.0
 
-# Sam James <sam@gentoo.org> (2022-12-07)
-# HOMEPAGE & remote-id are for a different project, SRC_URI is gone,
-# only results on Google are for Gentoo mirrors, EAPI 6. Removal on 2023-01-07.
-# bug #630264, bug #655964, bug #750071.
-dev-vcs/git-pimp
-
 # Sam James <sam@gentoo.org> (2022-12-06)
 # Broke C++ reverse dependencies. Please upgrade to 1.1.0-r1. See bug #884369.
 =x11-libs/libICE-1.1.0
