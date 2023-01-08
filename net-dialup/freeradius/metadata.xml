@@ -19,4 +19,7 @@
       Include support for MongoDB database
     </flag>
   </use>
+  <upstream>
+    <remote-id type="github">FreeRADIUS/freeradius-server</remote-id>
+  </upstream>
 </pkgmetadata>
