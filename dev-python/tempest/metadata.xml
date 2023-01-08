@@ -9,5 +9,6 @@
 	<upstream>
 		<remote-id type="pypi">tempest</remote-id>
 		<remote-id type="github">openstack/tempest</remote-id>
+		<remote-id type="launchpad">tempest</remote-id>
 	</upstream>
 </pkgmetadata>
