@@ -1206,11 +1206,6 @@ dev-ml/patience_diff:0/0.15
 dev-util/patdiff:0/0.15
 =dev-ml/alcotest-1.6.0*
 
-# David Seifert <soap@gentoo.org> (2022-04-06)
-# Unsupported branches, no consumers left, removal on 2023-01-01.
-sys-devel/automake:1.13
-sys-devel/automake:1.15
-
 # Maciej Barć <xgqt@gentoo.org> (2022-02-20)
 # Masked for testing, builds and passes tests but randomly segfaults,
 # meaningless backtrace, debugging (flags, symbols) do not help
