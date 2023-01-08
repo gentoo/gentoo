@@ -30,6 +30,11 @@ RDEPEND="
 	>=dev-python/packaging-20.9[${PYTHON_USEDEP}]
 	>=dev-python/virtualenv-14[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/py[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
