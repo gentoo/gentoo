@@ -66,7 +66,6 @@ src_install() {
 	doexe ${saved_name}
 	insinto /usr/share/acl2
 	doins ${saved_name}.core
-	doins TAGS
 	dosym -r /usr/share/acl2/${saved_name} /usr/bin/acl2
 
 	if use doc ; then
@@ -76,6 +75,7 @@ src_install() {
 		einstalldocs
 	fi
 	if use emacs ; then
+		doins TAGS
 		elisp-install ${PN}                     \
 			books/emacs/*.el{,c}                \
 			books/interface/emacs/*.el{,c}
