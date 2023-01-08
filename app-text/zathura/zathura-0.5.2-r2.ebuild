@@ -19,7 +19,7 @@ fi
 
 LICENSE="ZLIB"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="doc seccomp sqlite synctex test"
+IUSE="seccomp sqlite synctex test"
 
 RESTRICT="!test? ( test )"
 
@@ -35,7 +35,7 @@ DEPEND=">=dev-libs/girara-0.3.7
 
 RDEPEND="${DEPEND}"
 
-BDEPEND="doc? ( dev-python/sphinx )
+BDEPEND="dev-python/sphinx
 	test? ( dev-libs/appstream-glib
 		dev-libs/check )
 	virtual/pkgconfig"
@@ -47,7 +47,7 @@ PATCHES=(
 src_configure() {
 	local emesonargs=(
 		-Dconvert-icon=disabled
-		-Dmanpages=$(usex doc enabled disabled)
+		-Dmanpages=enabled
 		-Dseccomp=$(usex seccomp enabled disabled)
 		-Dsqlite=$(usex sqlite enabled disabled)
 		-Dsynctex=$(usex synctex enabled disabled)
