@@ -119,7 +119,6 @@ src_configure() {
 		-DSWIPL_PACKAGES_JAVA=$(usex java)
 		-DSWIPL_PACKAGES_ODBC=$(usex odbc)
 		-DSWIPL_PACKAGES_PCRE=$(usex pcre)
-		-DSWIPL_PACKAGES_QT=$(usex gui)
 		-DSWIPL_PACKAGES_SSL=$(usex ssl)
 		-DSWIPL_PACKAGES_TERM=$(usex cli)
 		-DSWIPL_PACKAGES_TIPC=$(usex ipc)
@@ -127,8 +126,16 @@ src_configure() {
 		-DSWIPL_PACKAGES_YAML=$(usex yaml)
 		-DUSE_GMP=$(usex gmp)
 		-DUSE_TCMALLOC=OFF
-		$(cmake_use_find_package qt6 Qt6)
 	)
+
+	if use gui; then
+		mycmakeargs+=(
+			-DSWIPL_PACKAGES_QT=yes
+			$(cmake_use_find_package qt6 Qt6)
+		)
+	else
+		mycmakeargs+=( -DSWIPL_PACKAGES_QT=no )
+	fi
 
 	if use test && use java; then
 		mycmakeargs+=( -DJUNIT_JAR="${ESYSROOT}"/usr/share/junit-4/lib/junit.jar )
