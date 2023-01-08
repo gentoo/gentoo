@@ -976,11 +976,6 @@ dev-ruby/hipchat
 # release was 11 years ago. Removal in 30 days.
 dev-ruby/iobuffer
 
-# Marek Szuba <marecki@gentoo.org> (2022-12-05)
-# No releases since 2003 (!), upstream effectively dead, no Unicode support,
-# EAPI 6. Removal in 30 days (#884429)
-app-editors/elvis
-
 # Sam James <sam@gentoo.org> (2022-12-03)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
