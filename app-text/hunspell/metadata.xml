@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!--maintainer-needed-->
+	<maintainer type="person" proxied="yes">
+		<email>scardracs-gentoo@proton.me</email>
+		<name>Marco Scardovi</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">hunspell</remote-id>
 		<remote-id type="github">hunspell/hunspell</remote-id>
