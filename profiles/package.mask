@@ -1006,11 +1006,6 @@ dev-ruby/public_suffix:3
 # rspec-rails slot instead. Masked for removal in 30 days.
 dev-ruby/rspec-rails:4
 
-# Hans de Graaff <graaff@gentoo.org> (2022-12-04)
-# Obsolete slot without reverse dependencies. Use a newer
-# selenium-webdriver slot instead. Masked for removal in 30 days.
-dev-ruby/selenium-webdriver:3
-
 # Sam James <sam@gentoo.org> (2022-12-03)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
