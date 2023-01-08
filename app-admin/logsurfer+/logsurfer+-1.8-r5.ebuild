@@ -8,7 +8,7 @@ MY_P="${P/+/}"
 inherit toolchain-funcs
 
 DESCRIPTION="Real Time Log Monitoring and Alerting"
-HOMEPAGE="https://www.crypt.gen.nz/logsurfer/"
+HOMEPAGE="https://crypt.gen.nz/logsurfer/"
 SRC_URI="mirror://sourceforge/logsurfer/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
