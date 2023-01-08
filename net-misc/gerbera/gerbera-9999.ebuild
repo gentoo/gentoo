@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ HOMEPAGE="https://gerbera.io"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript lastfm +magic +matroska mysql systemd +taglib"
+IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript +magic +matroska mysql systemd +taglib"
 
 RDEPEND="
 	acct-user/gerbera
@@ -38,7 +38,6 @@ RDEPEND="
 	ffmpeg? ( media-video/ffmpeg:= )
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
 	javascript? ( dev-lang/duktape:= )
-	lastfm? ( media-libs/lastfmlib )
 	magic? ( sys-apps/file )
 	matroska? ( media-libs/libmatroska:= )
 	mysql? ( dev-db/mysql-connector-c )
@@ -59,7 +58,7 @@ src_configure() {
 		-DWITH_FFMPEGTHUMBNAILER=$(usex ffmpegthumbnailer)
 		-DWITH_INOTIFY=1
 		-DWITH_JS=$(usex javascript)
-		-DWITH_LASTFM=$(usex lastfm)
+		-DWITH_LASTFM=NO
 		-DWITH_MAGIC=$(usex magic)
 		-DWITH_MATROSKA=$(usex matroska)
 		-DWITH_MYSQL=$(usex mysql)
