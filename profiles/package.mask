@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2023-01-08)
+# Multiple vulnerabilities include remote code execution, maintainer
+# needed, removal in 30 days. Bug #834501
+dev-util/artifactory-bin
+
 # Michael Mair-Keimberger <mmk@levelnine.at> (2023-01-08)
 # Broken since many years, no reverse dependencies, last release from 2000
 # Bug #678518. Removal on 2023-02-08.
