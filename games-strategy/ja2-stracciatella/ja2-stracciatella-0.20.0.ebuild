@@ -149,6 +149,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 DEPEND="
 	${LUA_DEPS}
+	>=dev-cpp/magic_enum-0.8.2
 	>=dev-cpp/sol2-3.3.0
 	>=dev-cpp/string-theory-3.1
 	>=dev-games/libsmacker-1.1.1
