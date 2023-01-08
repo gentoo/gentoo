@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CRATES="
 addr2line-0.17.0
@@ -162,27 +162,25 @@ src_prepare() {
 }
 
 src_configure() {
-		local mycmakeargs=()
+	local mycmakeargs=(
+		-DLOCAL_GTEST_LIB=OFF
+		-DLOCAL_LUA_LIB=OFF
+		-DLOCAL_MAGICENUM_LIB=OFF
+		-DLOCAL_MINIAUDIO_LIB=OFF
+		-DLOCAL_RAPIDJSON_LIB=OFF
+		-DLOCAL_SOL_LIB=OFF
+		-DLOCAL_STRING_THEORY_LIB=OFF
+		-DWITH_MAGICENUM=OFF
+		-DWITH_RUST_BINARIES=OFF
+		-DBUILD_LAUNCHER=OFF
+		-DINSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)"
+		-DEXTRA_DATA_DIR="${EPREFIX}/usr/share/ja2"
+		-DMINIAUDIO_INCLUDE_DIR="${EPREFIX}/usr/include/miniaudio"
+		-DMAGICENUM_INCLUDE_DIR="${EPREFIX}/usr/include"
+	)
 
-		mycmakeargs+=(
-			-DLOCAL_GTEST_LIB=OFF
-			-DLOCAL_LUA_LIB=OFF
-			-DLOCAL_MAGICENUM_LIB=OFF
-			-DLOCAL_MINIAUDIO_LIB=OFF
-			-DLOCAL_RAPIDJSON_LIB=OFF
-			-DLOCAL_SOL_LIB=OFF
-			-DLOCAL_STRING_THEORY_LIB=OFF
-			-DWITH_MAGICENUM=OFF
-			-DWITH_RUST_BINARIES=OFF
-			-DBUILD_LAUNCHER=OFF
-			-DINSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)"
-			-DEXTRA_DATA_DIR="${EPREFIX}/usr/share/ja2"
-			-DMINIAUDIO_INCLUDE_DIR="${EPREFIX}/usr/include/miniaudio"
-			-DMAGICENUM_INCLUDE_DIR="${EPREFIX}/usr/include"
-		)
-
-		cargo_gen_config
-		cmake_src_configure
+	cargo_gen_config
+	cmake_src_configure
 }
 
 src_install() {
