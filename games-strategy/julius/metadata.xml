@@ -5,10 +5,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>gentoo@chymera.eu</email>
-		<name>Horea Christian</name>
-	</maintainer>
 	<longdescription lang="en">
 		The aim of this project is to create an open-source version of
 		Caesar 3, with the same logic as the original, but with some UI

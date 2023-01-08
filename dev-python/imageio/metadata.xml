@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>gentoo@chymera.eu</email>
-		<name>Horea Christian</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 		<name>Python</name>
 	</maintainer>
 	<longdescription lang="en">
 		Imageio is a Python library that provides an easy interface to read
-		and write a wide range of image data, including animated images, 
+		and write a wide range of image data, including animated images,
 		video, volumetric data, and scientific formats. It is cross-platform,
 		runs on Python 2.x and 3.x, and is easy to install.
 	</longdescription>
