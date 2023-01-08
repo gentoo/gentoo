@@ -1,0 +1,43 @@
+From a5cea1bfc38ceafc74f4baddd6ab94ea13757ef8 Mon Sep 17 00:00:00 2001
+From: Lei Zhang <thestig@chromium.org>
+Date: Fri, 21 May 2021 10:55:53 -0700
+Subject: [PATCH] Mark Node::opcode() and Operator::opcode() as constexpr.
+
+Without the explicit constexpr keyword, Clang seems to be able to treat
+these methods as constexpr, whereas MSVC will not.
+
+Bug: v8:11760
+Change-Id: I9f6492f38fb50dcaf7a4f09da0bd79c0da6a50eb
+Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2912916
+Reviewed-by: Clemens Backes <clemensb@chromium.org>
+Reviewed-by: Maya Lekova <mslekova@chromium.org>
+Commit-Queue: Lei Zhang <thestig@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#74791}
+---
+
+diff --git a/src/3rdparty/chromium/v8/src/compiler/node.h b/src/3rdparty/chromium/v8/src/compiler/node.h
+index 37b45c4..57d49fe 100644
+--- a/src/3rdparty/chromium/v8/src/compiler/node.h
++++ b/src/3rdparty/chromium/v8/src/compiler/node.h
+@@ -50,7 +50,7 @@
+ 
+   const Operator* op() const { return op_; }
+ 
+-  IrOpcode::Value opcode() const {
++  constexpr IrOpcode::Value opcode() const {
+     DCHECK_GE(IrOpcode::kLast, op_->opcode());
+     return static_cast<IrOpcode::Value>(op_->opcode());
+   }
+diff --git a/src/3rdparty/chromium/v8/src/compiler/operator.h b/src/3rdparty/chromium/v8/src/compiler/operator.h
+index 4206e75..f641394 100644
+--- a/src/3rdparty/chromium/v8/src/compiler/operator.h
++++ b/src/3rdparty/chromium/v8/src/compiler/operator.h
+@@ -73,7 +73,7 @@
+   // A small integer unique to all instances of a particular kind of operator,
+   // useful for quick matching for specific kinds of operators. For fast access
+   // the opcode is stored directly in the operator object.
+-  Opcode opcode() const { return opcode_; }
++  constexpr Opcode opcode() const { return opcode_; }
+ 
+   // Returns a constant string representing the mnemonic of the operator,
+   // without the static parameters. Useful for debugging.

@@ -1,0 +1,82 @@
+From b99042fb839021a0a3d2fe0cac7ac3899c4acbba Mon Sep 17 00:00:00 2001
+From: Allan Sandfeld Jensen <allan.jensen@qt.io>
+Date: Tue, 14 Jun 2022 14:19:24 +0200
+Subject: [PATCH] Find modern Chrome, Chromium and Firefox CDM modules
+
+The default download location has moved again, but we can now
+also use firefox CDMs.
+
+Pick-to: 6.4 6.3
+Task-number: QTBUG-104238
+Change-Id: I7ee581fa63e50df970acb31ea6d3f67d332aef59
+Reviewed-by: Peter Varga <pvarga@inf.u-szeged.hu>
+---
+ src/core/content_client_qt.cpp | 54 ++++++++++++++++++++++++++++++----
+ 1 file changed, 49 insertions(+), 5 deletions(-)
+
+diff --git a/src/core/content_client_qt.cpp b/src/core/content_client_qt.cpp
+index 6c914b7729..7167332d9b 100644
+--- a/src/core/content_client_qt.cpp
++++ b/src/core/content_client_qt.cpp
+@@ -250,15 +251,56 @@ static bool IsWidevineAvailable(base::FilePath *cdm_path,
+         }
+     }
+ #elif defined(Q_OS_LINUX)
+-        pluginPaths << QStringLiteral("/opt/google/chrome/libwidevinecdm.so") // Old Google Chrome
++        QList<QDir> potentialWidevineVersionDirs;
++
++        // Google Chrome widevine modules
++        QDir chromeWidevineDir(QDir::homePath() + "/.config/google-chrome/WidevineCdm");
++        if (chromeWidevineDir.exists())
++            potentialWidevineVersionDirs << chromeWidevineDir;
++
++        // Firefox widevine modules
++        QDir firefoxPotentialProfilesDir(QDir::homePath() + "/.mozilla/firefox");
++        if (firefoxPotentialProfilesDir.exists()) {
++            QFileInfoList firefoxProfileDirs = firefoxPotentialProfilesDir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name | QDir::Reversed);
++            for (const QFileInfo &info : firefoxProfileDirs) {
++                QDir widevinePluginsDir(info.absoluteFilePath() + "/gmp-widevinecdm");
++                if (widevinePluginsDir.exists())
++                    potentialWidevineVersionDirs << widevinePluginsDir;
++            }
++        }
++
++        // Chromium widevine modules (might not work with proprietary codecs)
++        QDir chromiumWidevineDir(QDir::homePath() + "/.config/chromium/WidevineCdm");
++        if (chromiumWidevineDir.exists())
++            potentialWidevineVersionDirs << chromiumWidevineDir;
++
++        // Search for widewine versions
++        for (const QDir &dir : potentialWidevineVersionDirs) {
++            QFileInfoList widevineVersionDirs = dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name | QDir::Reversed);
++            // ### alternatively look up in the manifest.json and take the path from there.
+ #if Q_PROCESSOR_WORDSIZE == 8
+-                    << QStringLiteral("/opt/google/chrome/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so")
++            const QString library = QLatin1String("/_platform_specific/linux_x64/libwidevinecdm.so");
+ #else
+-                    << QStringLiteral("/opt/google/chrome/WidevineCdm/_platform_specific/linux_x86/libwidevinecdm.so")
++            const QString library = QLatin1String("/_platform_specific/linux_x86/libwidevinecdm.so");
+ #endif
+-                    << QStringLiteral("/usr/lib/chromium/libwidevinecdm.so") // Arch
++            for (const QFileInfo &info : widevineVersionDirs) {
++                pluginPaths << info.absoluteFilePath() + "/libwidevinecdm.so";
++                pluginPaths << info.absoluteFilePath() + library;
++            }
++        }
++
++        // Fixed paths:
++        pluginPaths << QStringLiteral("/usr/lib/chromium/libwidevinecdm.so") // Arch
+                     << QStringLiteral("/usr/lib/chromium-browser/libwidevinecdm.so") // Ubuntu/neon
+-                    << QStringLiteral("/usr/lib64/chromium/libwidevinecdm.so"); // OpenSUSE style
++                    << QStringLiteral("/usr/lib64/chromium/libwidevinecdm.so") // OpenSUSE style
++#if Q_PROCESSOR_WORDSIZE == 8
++                    << QStringLiteral("/usr/lib64/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so") // Gentoo
++                    << QStringLiteral("/opt/google/chrome/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so") // Old Google Chrome
++#else
++                    << QStringLiteral("/usr/lib/chromium-browser/WidevineCdm/_platform_specific/linux_x86/libwidevinecdm.so") // Gentoo
++                    << QStringLiteral("/opt/google/chrome/WidevineCdm/_platform_specific/linux_x86/libwidevinecdm.so") // Old Google Chrome
++#endif
++                    << QStringLiteral("/opt/google/chrome/libwidevinecdm.so"); // Older Google Chrome
+ #endif
+     }
+ 
