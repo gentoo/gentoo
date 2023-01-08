@@ -31,8 +31,7 @@ start() {
 
 	# Create necessary systemd paths in order for systemd containers to work on openrc host.
 	# /etc/rc.conf should have following values:
-	# rc_cgroup_mode="hybrid"
-	# rc_cgroup_controllers="yes"
+	#   rc_cgroup_mode="hybrid"
 	if [ -d /sys/fs/cgroup/unified ] &&
 	[ ! -d /sys/fs/cgroup/systemd ]; then
 		install -d /sys/fs/cgroup/systemd --group lxd --owner root
