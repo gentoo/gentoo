@@ -126,11 +126,15 @@ winapi-x86_64-pc-windows-gnu-0.4.0
 yaml-rust-0.4.5
 "
 
-inherit cargo cmake xdg
+# See dependencies/lib-lua/CMakeLists.txt
+LUA_COMPAT=( lua5-3 )
+
+inherit cargo cmake lua-single xdg
 
 DESCRIPTION="An improved, cross-platform, stable Jagged Alliance 2 runtime"
 HOMEPAGE="https://github.com/ja2-stracciatella/"
-SRC_URI="https://github.com/ja2-stracciatella/ja2-stracciatella/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="
+	https://github.com/ja2-stracciatella/ja2-stracciatella/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	editor? ( https://github.com/ja2-stracciatella/free-ja2-resources/releases/download/v1/editor.slf -> ${P}-editor.slf )
 "
 SRC_URI+=" $(cargo_crate_uris ${CRATES})"
@@ -138,24 +142,30 @@ SRC_URI+=" $(cargo_crate_uris ${CRATES})"
 LICENSE="public-domain SFI-SCLA"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cdinstall editor ru-gold"
+IUSE="cdinstall editor ru-gold test"
+# ./ja2 -unittest can't find save files
+RESTRICT="!test? ( test ) test"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 DEPEND="
-	media-libs/libsdl2[X,sound,video]
-	!~media-libs/libsdl2-2.0.6
-	>=virtual/rust-1.40.0
-	>=x11-libs/fltk-1.3.5[opengl]
+	${LUA_DEPS}
 	>=dev-cpp/sol2-3.3.0
 	>=dev-cpp/string-theory-3.1
 	>=dev-games/libsmacker-1.1.1
-	>=dev-lang/lua-5.3:*
 	>=dev-libs/miniaudio-0.11.11
 	>=dev-libs/rapidjson-1.1.0
+	media-libs/libsdl2[X,sound,video]
+	>=x11-libs/fltk-1.3.5[opengl]
+	>=virtual/rust-1.40.0
 "
 RDEPEND="
 	${DEPEND}
 	cdinstall? ( games-strategy/ja2-stracciatella-data )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.20.0-lua-cmake.patch
+)
 
 src_prepare() {
 	cmake_src_prepare
@@ -163,16 +173,27 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DUSE_SCCACHE=OFF
+
 		-DLOCAL_GTEST_LIB=OFF
+		-DLOCAL_FLTK_LIB=OFF
+
 		-DLOCAL_LUA_LIB=OFF
+		-DLUA_VERSION="${ELUA#lua}"
+
 		-DLOCAL_MAGICENUM_LIB=OFF
 		-DLOCAL_MINIAUDIO_LIB=OFF
 		-DLOCAL_RAPIDJSON_LIB=OFF
+		-DLOCAL_SDL_LIB=OFF
 		-DLOCAL_SOL_LIB=OFF
 		-DLOCAL_STRING_THEORY_LIB=OFF
+
 		-DWITH_MAGICENUM=OFF
 		-DWITH_RUST_BINARIES=OFF
+		-DWITH_UNITTESTS=$(usex test)
+
 		-DBUILD_LAUNCHER=OFF
+
 		-DINSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)"
 		-DEXTRA_DATA_DIR="${EPREFIX}/usr/share/ja2"
 		-DMINIAUDIO_INCLUDE_DIR="${EPREFIX}/usr/include/miniaudio"
@@ -191,6 +212,10 @@ src_install() {
 	fi
 
 	cmake_src_install
+}
+
+src_test() {
+	"${BUILD_DIR}"/ja2 -unittests || die
 }
 
 pkg_postinst() {
