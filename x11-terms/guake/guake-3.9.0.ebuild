@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 inherit distutils-r1 gnome2-utils plocale virtualx xdg
 
 PLOCALES="ca cs de el es fa fi fr gl hr hu id it ja ko nb nl pa pl pt_BR ru sv tr uk zh_CN zh_TW"
