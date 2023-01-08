@@ -1011,11 +1011,6 @@ dev-ruby/rspec-rails:4
 # selenium-webdriver slot instead. Masked for removal in 30 days.
 dev-ruby/selenium-webdriver:3
 
-# Hans de Graaff <graaff@gentoo.org> (2022-12-03)
-# ruby27-only packages with no other reverse dependencies.
-# Last releases in 2013 and 2015. Removal in 30 days.
-dev-ruby/textpow
-
 # Sam James <sam@gentoo.org> (2022-12-03)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
