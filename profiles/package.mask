@@ -1015,7 +1015,6 @@ dev-ruby/selenium-webdriver:3
 # ruby27-only packages with no other reverse dependencies.
 # Last releases in 2013 and 2015. Removal in 30 days.
 dev-ruby/textpow
-dev-ruby/ultraviolet
 
 # Sam James <sam@gentoo.org> (2022-12-03)
 # Dev channel releases are only for people who
