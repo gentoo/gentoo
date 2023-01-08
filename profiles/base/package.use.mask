@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Joonas Niilola <juippis@gentoo.org> (2023-01-08)
+# Doesn't compile currently, bug #853094.
+>=net-dialup/freeradius-3.2.0 oracle
+
 # David Seifert <soap@gentoo.org> (2023-01-04)
 # Out of date patchset, warns on latest version about being "expired",
 # unofficial and maintainer discourages people upgrading to latest (non-packaged)
