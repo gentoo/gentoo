@@ -6,7 +6,7 @@ diff -r -U2 a/reduze/CMakeLists.txt b/reduze/CMakeLists.txt
  	find_path(DB_INCLUDE_PATH NAMES dbstl_common.h
 -	          PATHS /usr/local/include/db4 /usr/local/include
 -	                /usr/include/db4 /usr/include)
-+	          PATHS /usr/include/db6.0)
++	          PATHS /usr/include/db5.3)
      # we also need db.h but just assume its in the same directory
  	find_library(DB_LIBRARY NAMES db_stl
 -	             PATHS /usr/lib /usr/local/lib)
