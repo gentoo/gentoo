@@ -46,9 +46,7 @@ src_compile() {
 }
 
 src_install() {
-	# Parallel install may break the building process
-	# See: https://bugs.gentoo.org/859169
-	emake -j1 DESTDIR="${D}" GENTOO_LIBDIR="$(get_libdir)" install
+	emake DESTDIR="${D}" GENTOO_LIBDIR="$(get_libdir)" install
 	local file size
 	for file in data/images/icon[0-9]*x[0-9]*.png; do
 		size=${file##*/icon}
