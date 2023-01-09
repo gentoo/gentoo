@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,7 +39,7 @@ RDEPEND="${POSTGRES_DEP}
 	>=sci-libs/geos-3.9.0
 	>=sci-libs/proj-4.9.0:=
 	>=sci-libs/gdal-1.10.0:=
-	address-standardizer? ( dev-libs/libpcre )
+	address-standardizer? ( dev-libs/libpcre2 )
 	gtk? ( x11-libs/gtk+:2 )
 "
 DEPEND="${RDEPEND}
