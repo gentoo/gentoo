@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -96,13 +96,13 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	libreoffice_extensions_wiki-publisher? ( java )
 "
 
-RESTRICT="!test? ( test )"
-
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 
 [[ ${MY_PV} == *9999* ]] || \
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux"
+
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
@@ -296,6 +296,7 @@ PATCHES=(
 
 	# 7.5 branch
 	"${FILESDIR}/${PN}-7.3.7.2-boost-1.81-locale.patch"
+	"${FILESDIR}/${PN}-7.3.7.2-zxing-cpp-1.4.0.patch"
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
