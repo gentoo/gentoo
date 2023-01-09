@@ -21,7 +21,7 @@ COMMON_DEPEND="
 	acct-user/vdr
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/libjpeg-turbo
+	media-libs/libjpeg-turbo:=
 	sys-libs/libcap"
 DEPEND="${COMMON_DEPEND}
 	>=virtual/linuxtv-dvb-headers-5.3"
@@ -121,7 +121,7 @@ src_prepare() {
 	use naludump && eapply "${FILESDIR}/${PN}-2.6.1_naludump.patch"
 	use permashift && eapply "${FILESDIR}/${PN}-2.6.1-patch-for-permashift.patch"
 	use pinplugin && eapply "${FILESDIR}/${PN}-2.6.1_pinplugin.patch"
-	use ttxtsubs && eapply "${DISTDIR}/${P}_ttxtsubs_v2.patch"
+	use ttxtsubs && eapply "${DISTDIR}/vdr-2.6.1_ttxtsubs_v2.patch"
 	use menuorg && eapply "${DISTDIR}/vdr-menuorg-2.3.x.diff"
 	use mainmenuhooks && eapply "${FILESDIR}/${PN}-2.4.1_mainmenuhook-1.0.1.patch"
 
