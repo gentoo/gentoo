@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-01-09)
+# This version had a controversial licence change which stinted its adoption.
+# No reverse dependencies.
+# See also the old 2021-05-30-deprecate-old-bdb-slots news item for
+# additional context.
+# Removal on 2023-02-09.
+sys-libs/db:6.0
+
 # John Helmert III <ajak@gentoo.org> (2023-01-08)
 # Multiple vulnerabilities include remote code execution, maintainer
 # needed, removal in 30 days. Bug #834501
