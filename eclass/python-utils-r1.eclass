@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-utils-r1.eclass
@@ -633,7 +633,7 @@ python_optimize() {
 				# Python 3.9+
 				"${PYTHON}" -m compileall -j "${jobs}" -o 0 -o 1 -o 2 --hardlink-dupes -q -f -d "${instpath}" "${d}"
 				;;
-			pypy)
+			pypy|jython2.7)
 				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
 				;;
 			*)
