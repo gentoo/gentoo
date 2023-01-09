@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -62,7 +62,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	')
 	net-misc/curl
 	archive? ( app-arch/libarchive:= )
-	cbor? ( dev-libs/libcbor )
+	cbor? ( dev-libs/libcbor:= )
 	dell? (
 		>=app-crypt/tpm2-tss-2.0
 		>=sys-libs/libsmbios-2.4.0
