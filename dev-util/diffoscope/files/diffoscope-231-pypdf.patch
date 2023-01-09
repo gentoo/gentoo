@@ -1,6 +1,16 @@
+https://salsa.debian.org/reproducible-builds/diffoscope/-/commit/6aed2e5320b5d412f0f81a36dd493ae4bd7c3ff4
 https://bugs.gentoo.org/889250
 
-(Can't yet submit upstream as can't login to gitlab.)
+From 6aed2e5320b5d412f0f81a36dd493ae4bd7c3ff4 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 9 Jan 2023 04:05:09 +0000
+Subject: [PATCH] Support PyPDF version 3.
+
+pypdf upstream has renamed the package from PyPDF2 to pypdf. This patch
+supporst the new pypdf version while keeping compatibility for older PyPDF2,
+adjusting to API changes.
+
+Signed-off-by: Chris Lamb <lamby@debian.org>
 --- a/diffoscope.egg-info/requires.txt
 +++ b/diffoscope.egg-info/requires.txt
 @@ -11,7 +11,7 @@ binwalk
