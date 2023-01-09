@@ -27,7 +27,8 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
-LICENSE="|| ( NPSL GPL-2 )"
+# https://github.com/nmap/nmap/issues/2199
+LICENSE="NPSL-0.94"
 SLOT="0"
 IUSE="ipv6 libssh2 ncat ndiff nping nls +nse ssl symlink +system-lua zenmap"
 REQUIRED_USE="
