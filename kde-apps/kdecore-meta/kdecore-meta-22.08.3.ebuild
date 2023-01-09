@@ -4,7 +4,7 @@
 EAPI=8
 
 DESCRIPTION="kdecore - merge this to pull in the most basic applications"
-HOMEPAGE="https://kde.org/"
+HOMEPAGE="https://apps.kde.org/"
 
 LICENSE="metapackage"
 SLOT="5"
