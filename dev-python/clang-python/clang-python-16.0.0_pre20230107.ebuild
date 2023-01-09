@@ -41,6 +41,7 @@ python_test() {
 	# tests rely on results from a specific clang version, so override
 	# the search path
 	local -x CLANG_LIBRARY_PATH=${BROOT}/usr/lib/llvm/${LLVM_MAJOR}/$(get_libdir)
+	local -x CLANG_NO_DEFAULT_CONFIG=1
 	"${EPYTHON}" -m unittest discover -v || die "Tests fail with ${EPYTHON}"
 }
 
