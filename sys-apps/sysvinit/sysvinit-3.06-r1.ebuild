@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,9 +51,13 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# We already enforce F_S=2 as a minimum in our toolchain, and
+	# allow 3. Also, SSP doesn't always make sense for some platforms
+	# e.g. HPPA. It's default-on in our toolchain where it works.
 	sed -i \
 		-e '/^CPPFLAGS =$/d' \
 		-e '/^override CFLAGS +=/s/ -fstack-protector-strong//' \
+		-e '/^override CFLAGS +=/s/ -D_FORTIFY_SOURCE=2//' \
 		src/Makefile || die
 
 	# last/lastb/mesg/mountpoint/sulogin/utmpdump/wall have moved to util-linux
