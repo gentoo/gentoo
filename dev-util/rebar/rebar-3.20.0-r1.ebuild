@@ -55,8 +55,8 @@ src_install() {
 	doman manpages/${MY_PN}.1
 
 	# MIX_REBAR3: Used by elixir
-	newenvd - 98rebar3 <<EOF
-MIX_REBAR3=${EPREFIX}/usr/bin/${MY_PN}
+	newenvd - 98rebar3 <<-EOF
+	MIX_REBAR3=${EPREFIX}/usr/bin/${MY_PN}
 EOF
 
 	insinto /usr/share/fish/completion
