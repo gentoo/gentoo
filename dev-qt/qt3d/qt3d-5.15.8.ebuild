@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	rm -r src/3rdparty/assimp/{code,contrib,include} || die
+	rm -r src/3rdparty/assimp/src/{code,contrib,include} || die
 
 	qt_use_disable_mod gamepad gamepad src/input/frontend/frontend.pri
 	qt_use_disable_mod qml quick src/src.pro
