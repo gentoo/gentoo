@@ -76,5 +76,9 @@ src_configure() {
 }
 
 src_test() {
+	# bugs 797898, 889942: flaky test
+	local myctestargs=(
+		-E "(sensortreemodeltest)"
+	)
 	LC_NUMERIC="C" ecm_src_test # bug 695514
 }
