@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -16,12 +16,14 @@ IUSE="berkdb doc examples mpi"
 
 RDEPEND="
 	>=sci-mathematics/ginac-1.4.1
-	berkdb? ( sys-libs/db:6.0[cxx] )
-	mpi? ( virtual/mpi )"
+	berkdb? ( sys-libs/db:5.3=[cxx] )
+	mpi? ( virtual/mpi )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake.patch
