@@ -214,4 +214,3 @@ Subject: [PATCH] Add missing includes (mostly Qt)
  #include <vector>
  
  
-
