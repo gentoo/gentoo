@@ -9,8 +9,7 @@ QTMIN=5.15.5
 inherit ecm gear.kde.org
 
 DESCRIPTION="Tool to manage the passwords on your system using KDE Wallet"
-HOMEAGE="https://apps.kde.org/kwalletmanager5/
-https://utils.kde.org/projects/kwalletmanager/"
+HOMEPAGE="https://apps.kde.org/kwalletmanager5/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
