@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2023-01-09)
+# Dead upstream, open bugs unmaintained.
+# Removal after 2023-03-01.  Bug #890244.
+www-client/dillo
+
 # John Helmert III <ajak@gentoo.org> (2023-01-08)
 # Multiple vulnerabilities include remote code execution, maintainer
 # needed, removal in 30 days. Bug #834501
