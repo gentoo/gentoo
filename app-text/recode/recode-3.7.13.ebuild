@@ -33,8 +33,9 @@ BDEPEND="
 	)
 "
 
-# False positive (runs within a conditional)
-QA_AM_MAINTAINER_MODE=".*help2man.*"
+PATCHES=(
+	"${FILESDIR}"/${P}-no-help2man.patch
+)
 
 python_check_deps() {
 	python_has_version "dev-python/cython[${PYTHON_USEDEP}]"
