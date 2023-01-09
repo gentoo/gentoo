@@ -11,7 +11,8 @@ HOMEPAGE="http://fixounet.free.fr/avidemux"
 SRC_URI="https://github.com/mean00/avidemux2/archive/${PV}.tar.gz -> avidemux-${PV}.tar.gz"
 
 # Multiple licenses because of all the bundled stuff.
-LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
+# See License.txt.
+LICENSE="GPL-2 MIT PSF-2 LGPL-2 OFL-1.1"
 SLOT="2.7"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug nls sdl system-ffmpeg vaapi vdpau xv"
