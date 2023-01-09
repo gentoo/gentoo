@@ -14,7 +14,8 @@ SRC_URI="
 "
 
 # Multiple licenses because of all the bundled stuff.
-LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
+# See License.txt.
+LICENSE="GPL-2 MIT PSF-2 LGPL-2 OFL-1.1"
 SLOT="2.7"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug nls opengl gui sdl vaapi vdpau xv"
