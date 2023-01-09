@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -183,6 +183,8 @@ src_configure() {
 	local myconf=(
 		--disable-mono
 		--disable-static
+		# Don't downgrade F_S, we already set it in toolchain, bug #890276
+		--disable-fortify
 		--with-dynamic-prpls="${DEFAULT_PRPLS}"
 		--with-system-ssl-certs="${EPREFIX}/etc/ssl/certs/"
 		--x-includes="${EPREFIX}"/usr/include/X11
