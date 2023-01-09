@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ DEPEND="
 	media-libs/lcms:2
 	>=media-libs/libraw-0.9.0:=
 	>=x11-libs/gdk-pixbuf-2.12.0:2
-	>=x11-libs/gtk+-3.22:3[introspection]
+	>=x11-libs/gtk+-3.22:3[X,introspection]
 	>=x11-libs/libXext-1.3.0
 	>=x11-libs/pango-1.40.11
 	x11-themes/adwaita-icon-theme
