@@ -1,9 +1,9 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="Quickly rewrite git repository history (filter-branch replacement)"
@@ -32,7 +32,7 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-src_test() {
+python_test() {
 	cd .. || die
 	bash t/run_tests || die
 }
@@ -42,7 +42,7 @@ python_install_all() {
 
 	# Points to dead symlink
 	rm "${ED}"/usr/share/doc/${PF}/README.md || die
-	rmdir "${ED}"/usr/share/doc/${PF} || Die
+	rmdir "${ED}"/usr/share/doc/${PF} || die
 
 	dodoc "${WORKDIR}"/${P}/README.md
 }
