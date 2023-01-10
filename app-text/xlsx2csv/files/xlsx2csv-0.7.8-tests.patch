@@ -1,0 +1,13 @@
+diff --git a/test/run b/test/run
+index 990421c..081729d 100755
+--- a/test/run
++++ b/test/run
+@@ -5,7 +5,7 @@ import sys
+ import subprocess
+ from io import open
+ 
+-PYTHON_VERSIONS = ["2", "3"]
++PYTHON_VERSIONS = ["3"]
+ 
+ """
+ This test uses sys.stdout.
