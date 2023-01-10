@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		OpenDBX is an extremely lightweight but extensible database access library written in C.
+		It provides an abstraction layer to all supported databases with a single, clean and simple
+		interface that leads to an elegant code design automatically. If you want your application
+		to support different databases with little effort, this is definitively the right thing for
+		you!
+	</longdescription>
+	<upstream>
+		<bugs-to>http://bugs.linuxnetworks.de/index.php?project=3</bugs-to>
+	</upstream>
 </pkgmetadata>
