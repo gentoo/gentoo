@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,6 +46,7 @@ src_prepare() {
 		|| die
 	sed -i \
 		-e "/AC_INIT/s:0.1:${PVR}:" \
+		-e "/AS_VAR_APPEND/d" \
 		configure.ac \
 		|| die
 	eautoreconf
