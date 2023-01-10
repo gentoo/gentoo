@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend "
-	|| ( dev-ruby/faraday:2 dev-ruby/faraday:1 >=dev-ruby/faraday-0.17.3:0 )
+	|| ( dev-ruby/faraday:2 dev-ruby/faraday:1 )
 	dev-ruby/jwt:2
 	>=dev-ruby/multi_json-1.3 =dev-ruby/multi_json-1*
 	>=dev-ruby/multi_xml-0.5:0
