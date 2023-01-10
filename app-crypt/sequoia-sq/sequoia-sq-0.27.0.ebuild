@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Generate base ebuild via
@@ -411,6 +411,10 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc64"
 
 S="${WORKDIR}/${PN}-v${PV}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.27.0-Explicitly-drop-the-Box.patch
+)
 
 QA_FLAGS_IGNORED="usr/bin/sq"
 
