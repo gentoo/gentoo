@@ -13,9 +13,6 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 
 	EGIT_REPO_URI="https://github.com/nmap/nmap"
-
-	# Just in case for now as future seems undecided.
-	LICENSE="NPSL"
 else
 	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/nmap.asc
 	inherit verify-sig
@@ -25,7 +22,7 @@ else
 
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
-	LICENSE="|| ( NPSL GPL-2 )"
+	LICENSE="|| ( NPSL-0.92 GPL-2 )"
 fi
 
 SLOT="0"
