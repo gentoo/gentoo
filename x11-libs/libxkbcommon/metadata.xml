@@ -10,6 +10,6 @@
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:xkbcommon:libxkbcommon</remote-id>
-    <remote-id type="freedesktop-gitlab">xkbcommon/libxkbcommon</remote-id>
+    <remote-id type="github">xkbcommon/libxkbcommon</remote-id>
   </upstream>
 </pkgmetadata>
