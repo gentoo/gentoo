@@ -1,0 +1,20 @@
+From 7916f90421ecb9a75e32f0284459bcc9a3fd02b0 Mon Sep 17 00:00:00 2001
+From: Justus Winter <justus@sequoia-pgp.org>
+Date: Wed, 19 Oct 2022 14:55:58 +0200
+Subject: [PATCH] openpgp: Explicitly drop the Box.
+
+  - Appeases the compiler that now complains about the unused result.
+--- a/openpgp/src/crypto/mem.rs
++++ b/openpgp/src/crypto/mem.rs
+@@ -159,7 +159,7 @@ impl Drop for Protected {
+         unsafe {
+             let len = self.len();
+             memsec::memzero(self.as_mut().as_mut_ptr(), len);
+-            Box::from_raw(self.0);
++            drop(Box::from_raw(self.0));
+         }
+     }
+ }
+-- 
+2.38.2
+
