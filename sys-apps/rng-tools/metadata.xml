@@ -19,6 +19,9 @@
 	<flag name="pkcs11">
 		Enable PKCS11 entropy support
 	</flag>
+	<flag name="qrypt">
+		Enable qrypt beacon entropy support
+	</flag>
 	<flag name="rtlsdr">
 		Enable atmospheric-static entropy support with <pkg>net-wireless/rtl-sdr</pkg>
 	</flag>
