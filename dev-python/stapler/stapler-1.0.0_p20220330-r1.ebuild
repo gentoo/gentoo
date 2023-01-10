@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ COMMIT="382f1edc62296e071093a5419811a2fca9d78d93"
 
 DESCRIPTION="Suite of tools for PDF files manipulation written in Python"
 HOMEPAGE="https://github.com/hellerbarde/stapler"
-SRC_URI="https://github.com/hellerbarde/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hellerbarde/${PN}/archive/${COMMIT}.tar.gz -> ${PN}-${COMMIT}.tar.gz"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="BSD"
