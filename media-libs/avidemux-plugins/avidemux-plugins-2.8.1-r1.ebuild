@@ -25,7 +25,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # see https://github.com/mean00/avidemux2/blob/master/avidemux_plugins/ADM_scriptEngines/CMakeLists.txt
 COMMON_DEPEND="
 	${PYTHON_DEPS}
-	~media-libs/avidemux-core-${PV}:${SLOT}[vdpau?]
+	~media-libs/avidemux-core-${PV}:${SLOT}[nvenc?,vdpau?]
 	~media-video/avidemux-${PV}:${SLOT}[opengl?,gui?]
 	dev-libs/libxml2:2
 	media-libs/a52dec
