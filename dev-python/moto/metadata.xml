@@ -12,6 +12,6 @@
   <!-- no allarches: package had portability problems before -->
   <upstream>
     <remote-id type="pypi">moto</remote-id>
-    <remote-id type="github">spulec/moto</remote-id>
+    <remote-id type="github">getmoto/moto</remote-id>
   </upstream>
 </pkgmetadata>
