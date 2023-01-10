@@ -1,0 +1,17 @@
+https://src.fedoraproject.org/rpms/freeradius-client/c/12ee8b567ce2a1b6637ad01e5806a15eeef410cc?branch=rawhide
+
+Add return type to main for autoconf check for C99 compliance.
+https://github.com/FreeRADIUS/freeradius-client/issues/113
+
+--- a/configure.in
++++ b/configure.in
+@@ -212,7 +212,7 @@ then
+ 	AC_TRY_RUN([
+ 	#include <sys/utsname.h>
+ 	
+-	main(int argc, char **argv)
++	int main(int argc, char **argv)
+ 	{
+ 		struct utsname uts;
+ 		uts.domainname[0] = '\0';
+
