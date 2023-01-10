@@ -25,6 +25,6 @@ RDEPEND="dev-python/pypdf[${PYTHON_USEDEP}]"
 distutils_enable_tests unittest
 
 PATCHES=( "${FILESDIR}"/${P}-fix-tests-for-PyPDF2-2.x.patch
-	"${FILESDIR}"/${P}-port-to-PyPDF2-3.0.0.patch 
+	"${FILESDIR}"/${P}-port-to-PyPDF2-3.0.0.patch
 	"${FILESDIR}"/${P}-use-poetry-core-backend-for-PEP517.patch
 	"${FILESDIR}"/${P}-PyPDF2-to-pypdf.patch )
