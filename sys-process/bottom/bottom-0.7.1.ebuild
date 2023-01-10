@@ -23,7 +23,7 @@ CRATES="
 	backtrace-0.3.65
 	bitflags-1.3.2
 	blocking-1.2.0
-	bottom-0.7.0
+	bottom-0.7.1
 	bstr-0.2.17
 	byteorder-1.4.3
 	cache-padded-1.2.0
