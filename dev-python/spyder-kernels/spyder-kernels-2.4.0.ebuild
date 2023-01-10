@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,11 +34,9 @@ RDEPEND="
 	>=dev-python/pyzmq-22.1.0[${PYTHON_USEDEP}]
 	>=dev-python/wurlitzer-1.0.3[${PYTHON_USEDEP}]
 "
-
 BDEPEND="
 	test? (
 		dev-python/cython[${PYTHON_USEDEP}]
-		dev-python/dask[${PYTHON_USEDEP}]
 		dev-python/django[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
@@ -54,7 +52,7 @@ BDEPEND="
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
-	# we no longer package distributed
+	# we no longer package distributed, and also removed dependency on dask
 	spyder_kernels/console/tests/test_console_kernel.py::test_dask_multiprocessing
 	# RuntimeError: There is no current event loop in thread 'MainThread'.
 	# https://bugs.gentoo.org/834893
