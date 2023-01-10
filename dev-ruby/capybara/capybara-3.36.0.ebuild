@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ DEPEND="${DEPEND} test? ( || ( www-client/firefox www-client/firefox-bin ) )"
 ruby_add_bdepend "test? (
 	dev-ruby/rspec:3
 	>=dev-ruby/launchy-2.4.0
-	|| ( dev-ruby/selenium-webdriver:4 >=dev-ruby/selenium-webdriver-3.142.7:3 )
+	dev-ruby/selenium-webdriver:4
 	dev-ruby/sinatra:2
 	www-servers/puma
 )"
