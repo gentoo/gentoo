@@ -25,7 +25,7 @@ SLOT="0"
 # Require latest version of pax-utils to avoid users breaking their systems again
 # The tool itself works fine with older versions
 RDEPEND="
-	>=app-misc/pax-utils-1.3.3
+	>=app-misc/pax-utils-1.3.5
 	sys-apps/file
 	$(python_gen_cond_dep 'sys-apps/portage[${PYTHON_USEDEP}]')
 "
