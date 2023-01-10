@@ -74,7 +74,8 @@ all_ruby_prepare() {
 
 each_ruby_install() {
 	each_fakegem_install
-#	dosym "/usr/$(get_libdir)/ruby/gems/$(ruby_get_version)/gems/${P}" "/usr/$(get_libdir)/ruby/gems/$(ruby_get_version)/gems/${PN}"
+#	dosym "/usr/$(get_libdir)/ruby/gems/$(ruby_get_version)/gems/${P}" \
+#	"/usr/$(get_libdir)/ruby/gems/$(ruby_get_version)/gems/${PN}"
 }
 
 all_ruby_install() {
