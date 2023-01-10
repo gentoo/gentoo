@@ -13,4 +13,7 @@
 		<flag name="pixman">Enable pixman font rendering</flag>
 		<flag name="systemd">Enable multiseat support via systemd</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">Aetf/kmscon</remote-id>
+	</upstream>
 </pkgmetadata>
