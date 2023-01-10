@@ -57,16 +57,6 @@ src_prepare() {
 		}
 	EOF
 
-	# adjustment for recent mockito versions
-	sed \
-		-e 's:verifyZeroInteractions:verifyNoInteractions:g' \
-		-i byte-buddy-dep/src/test/java/net/bytebuddy/*.java \
-		-i byte-buddy-dep/src/test/java/net/bytebuddy/*/*Test.java \
-		-i byte-buddy-dep/src/test/java/net/bytebuddy/*/*/*Test.java \
-		-i byte-buddy-dep/src/test/java/net/bytebuddy/*/*/*/*Test.java \
-		-i byte-buddy-dep/src/test/java/net/bytebuddy/*/*/*/*/*Test.java \
-		|| die
-
 	# instead of shading byte-buddy-dep we move it into byte-buddy.
 	mv byte-buddy{-dep,}/src/main/java || die "cannot move sources"
 
