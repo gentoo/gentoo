@@ -15,12 +15,13 @@ SRC_URI="https://github.com/mean00/avidemux2/archive/${PV}.tar.gz -> avidemux-${
 LICENSE="GPL-2 MIT PSF-2 LGPL-2 OFL-1.1"
 SLOT="2.7"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug nls sdl system-ffmpeg vaapi vdpau xv"
+IUSE="debug nls nvenc sdl system-ffmpeg vaapi vdpau xv"
 
 # Trying to use virtual; ffmpeg misses aac,cpudetection USE flags now though, are they needed?
 DEPEND="
 	dev-db/sqlite:3
 	sys-libs/zlib
+	nvenc? ( amd64? ( media-libs/nv-codec-headers ) )
 	sdl? ( media-libs/libsdl )
 	system-ffmpeg? ( >=media-video/ffmpeg-9:0[mp3,theora] )
 	vaapi? ( media-libs/libva:= )
@@ -81,6 +82,7 @@ src_configure() {
 		-DNVENC=no
 		-DSDL="$(usex sdl)"
 		-DLIBVA="$(usex vaapi)"
+		-DNVENC="$(usex nvenc)"
 		-DVDPAU="$(usex vdpau)"
 		-DXVIDEO="$(usex xv)"
 	)
