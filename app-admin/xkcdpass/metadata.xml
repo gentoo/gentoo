@@ -5,4 +5,8 @@
 		<email>bkohler@gentoo.org</email>
 		<name>Ben Kohler</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">redacted/XKCD-password-generator</remote-id>
+		<remote-id type="pypi">xkcdpass</remote-id>
+	</upstream>
 </pkgmetadata>
