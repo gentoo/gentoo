@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,5 +25,5 @@ RDEPEND=">=dev-python/PyPDF2-3.0.0[${PYTHON_USEDEP}]"
 distutils_enable_tests unittest
 
 PATCHES=( "${FILESDIR}"/${P}-fix-tests-for-PyPDF2-2.x.patch
-	"${FILESDIR}"/${P}-port-to-PyPDF2-3.0.0.patch 
+	"${FILESDIR}"/${P}-port-to-PyPDF2-3.0.0.patch
 	"${FILESDIR}"/${P}-use-poetry-core-backend-for-PEP517.patch )
