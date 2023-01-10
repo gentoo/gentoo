@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2023-01-10)
+# They were added as a dependency of sci-libs/pytorch
+# but they are no more
+# Bug #890365
+# Removal on 2023-01-30
+dev-util/breakpad
+dev-libs/linux-syscall-support
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-01-10)
 # Unmaintained and reportedly broken by KDE Plasma 5.25 already.
 # Masking current stable version is the first step towards last-rites.
