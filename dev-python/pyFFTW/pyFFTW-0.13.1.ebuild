@@ -5,17 +5,21 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="A pythonic python wrapper around FFTW"
 HOMEPAGE="
 	https://github.com/pyFFTW/pyFFTW/
 	https://pypi.org/project/pyFFTW/
 "
-EGIT_REPO_URI="https://github.com/pyFFTW/pyFFTW.git"
+SRC_URI="
+	https://github.com/pyFFTW/pyFFTW/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	>=dev-python/numpy-1.20[${PYTHON_USEDEP}]
