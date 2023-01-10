@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30"
+USE_RUBY="ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_BINWRAP=""
 
@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-ruby_add_rdepend "|| ( dev-ruby/faraday:1 >=dev-ruby/faraday-0.17:0 )"
+ruby_add_rdepend "dev-ruby/faraday:1"
 
 ruby_add_bdepend "test? (
 	>=dev-ruby/vcr-2.9.3
