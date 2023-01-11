@@ -26,6 +26,7 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXfixes
+	x11-libs/libXinerama
 	|| (
 		media-libs/imlib2[gif]
 		media-libs/imlib2[jpeg]
