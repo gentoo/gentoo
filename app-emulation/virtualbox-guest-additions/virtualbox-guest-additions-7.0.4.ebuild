@@ -16,7 +16,7 @@ SRC_URI="https://download.virtualbox.org/virtualbox/${PV}/${MY_P}.tar.bz2
 # Reminder: see the LICENSE related comment in app-emulation/virtualbox-additions ebuild
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="+dbus gui"
 
 # automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
