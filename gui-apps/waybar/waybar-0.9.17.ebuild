@@ -23,6 +23,7 @@ IUSE="experimental mpd network +popups pulseaudio sndio tray +udev wifi"
 
 BDEPEND="
 	>=app-text/scdoc-1.9.2
+	>=dev-cpp/catch-3.0.1
 	dev-util/gdbus-codegen
 	virtual/pkgconfig
 "
