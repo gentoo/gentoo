@@ -1,0 +1,22 @@
+From 87ca5c5bbe63ea3c9227fdd4a01ccdc1ce723323 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 6 Jan 2023 05:39:43 +0000
+Subject: [PATCH 2/3] fix-gnustack: add 'set -x' in tests for easier debugging
+
+It's hard to see why something failed otherwise, as we only have the
+exit code.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/tests/gnustacktest.sh
++++ b/tests/gnustacktest.sh
+@@ -16,6 +16,7 @@
+ #    You should have received a copy of the GNU General Public License
+ #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #
++set -x
+ 
+ before=$(../fix-gnustack -f bad-gnustack)
+ before=$(echo ${before} | awk '{ print $2 }')
+-- 
+2.39.0
+
