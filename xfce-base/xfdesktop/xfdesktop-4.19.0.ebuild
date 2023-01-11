@@ -15,12 +15,13 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE="X libnotify +thunar wayland"
+IUSE="libnotify +thunar wayland X"
+REQUIRED_USE="|| ( wayland X )"
 
 DEPEND="
 	>=x11-libs/cairo-1.16
 	>=dev-libs/glib-2.66.0
-	>=x11-libs/gtk+-3.24.0:3[X?,wayland?]
+	>=x11-libs/gtk+-3.24.0:3[wayland?,X?]
 	x11-libs/libX11
 	>=xfce-base/exo-0.11:=
 	>=xfce-base/garcon-0.6:=
@@ -43,9 +44,9 @@ BDEPEND="
 
 src_configure() {
 	local myconf=(
-		$(use_enable X x11)
 		$(use_enable wayland)
 		$(use_enable wayland gtk-layer-shell)
+		$(use_enable X x11)
 		$(use_enable thunar file-icons)
 		$(use_enable thunar thunarx)
 		$(use_enable libnotify notifications)
