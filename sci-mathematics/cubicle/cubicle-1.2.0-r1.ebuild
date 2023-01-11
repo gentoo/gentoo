@@ -53,6 +53,8 @@ src_compile() {
 src_install() {
 	default
 
+	doman doc/${PN}.1
+
 	if use emacs ; then
 	   elisp-install ${PN} emacs/*.el{,c}
 	   elisp-site-file-install "${FILESDIR}/${SITEFILE}"
