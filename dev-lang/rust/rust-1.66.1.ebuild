@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -286,7 +286,7 @@ esetup_unwind_hack() {
 src_prepare() {
 	# this supidity is needed because patch is too large to be in filesdir
 	# and if we move it to devspace - it lacks checksum for sig verification
-	if [[ "${PV}" == 1.66.0 ]]; then
+	if [[ "${PV}" == 1.66.1 ]]; then
 			sed -i \
 			-e 's/516ba32a547b46a8e80ad20d4a17bf24a00bff0b69b74f56df119f770f3dfff6/fc7eb88c2f5104865379128b76767d36ce5b5fdb9f3483e683d150e514ebc3a3/' \
 			-e 's/fba10dc8ca9eaf4d481cb82bd1540cf5c05620533c44f917c09a22ea55ef408c/9cc4d1b4511a1f0d91231eb0f11c67ae5e8e38e4becd0bf5eb9e26d043796056/' \
