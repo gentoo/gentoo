@@ -13,6 +13,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="+introspection wayland X"
+REQUIRED_USE="|| ( wayland X )"
 
 DEPEND="
 	>=dev-libs/glib-2.68.0
