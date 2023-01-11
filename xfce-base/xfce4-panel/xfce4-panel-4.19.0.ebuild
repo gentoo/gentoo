@@ -15,8 +15,11 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE="X +dbusmenu introspection vala wayland"
-REQUIRED_USE="vala? ( introspection )"
+IUSE="+dbusmenu introspection vala wayland X"
+REQUIRED_USE="
+	|| ( wayland X )
+	vala? ( introspection )
+"
 
 DEPEND="
 	>=dev-libs/glib-2.72.0
@@ -28,15 +31,15 @@ DEPEND="
 	>=xfce-base/libxfce4util-4.17.2:=[introspection?,vala?]
 	>=xfce-base/libxfce4windowing-4.19.1:=
 	>=xfce-base/xfconf-4.13:=
-	X? (
-		x11-libs/libX11
-		x11-libs/libwnck:3
-	)
 	dbusmenu? ( >=dev-libs/libdbusmenu-16.04.0[gtk3] )
 	introspection? ( >=dev-libs/gobject-introspection-1.66:= )
 	wayland? (
 		>=dev-libs/wayland-1.15
 		>=gui-libs/gtk-layer-shell-0.7.0
+	)
+	X? (
+		x11-libs/libX11
+		x11-libs/libwnck:3
 	)
 "
 RDEPEND="
@@ -57,10 +60,10 @@ src_configure() {
 		$(use_enable introspection)
 		$(use_enable dbusmenu dbusmenu-gtk3)
 		$(use_enable vala)
-		$(use_enable X gtk-x11)
-		$(use_enable X libwnck)
 		$(use_enable wayland wayland-client)
 		$(use_enable wayland gtk-layer-shell)
+		$(use_enable X gtk-x11)
+		$(use_enable X libwnck)
 	)
 
 	use vala && vala_setup
