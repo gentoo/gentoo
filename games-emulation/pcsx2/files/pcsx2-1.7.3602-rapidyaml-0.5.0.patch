@@ -1,8 +1,5 @@
-Quick fix taken from Alpine, fixes >=0.5.0 but breaks <0.5.0
-
-Upstream seem to have no intention to acknowledge this as an issue
-until they bump their bundled copy of rapidyaml:
-https://github.com/PCSX2/pcsx2/issues/7623#issuecomment-1357048378
+https://github.com/PCSX2/pcsx2/issues/7623
+https://github.com/PCSX2/pcsx2/pull/7847
 --- a/pcsx2/GameDatabase.cpp
 +++ b/pcsx2/GameDatabase.cpp
 @@ -151,5 +151,5 @@
