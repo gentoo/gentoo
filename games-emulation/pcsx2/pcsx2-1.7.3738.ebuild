@@ -43,7 +43,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/xz-utils
 	app-arch/zstd:=
-	dev-cpp/rapidyaml:=
+	>=dev-cpp/rapidyaml-0.5:=
 	dev-libs/libaio
 	dev-libs/libchdr
 	>=dev-libs/libfmt-7.1.3:=
@@ -94,6 +94,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.3329-qt6.patch
 	"${FILESDIR}"/${PN}-1.7.3351-unbundle.patch
 	"${FILESDIR}"/${PN}-1.7.3468-cubeb-automagic.patch
+	"${FILESDIR}"/${PN}-1.7.3602-rapidyaml-0.5.0.patch
 )
 
 src_unpack() {
@@ -136,11 +137,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	# could depend on >=0.5 for unconditional, but rather not force it yet
-	# https://github.com/PCSX2/pcsx2/issues/7623
-	has_version '>=dev-cpp/rapidyaml-0.5' &&
-		eapply "${FILESDIR}"/${PN}-1.7.3602-rapidyaml-0.5.0.patch
-
 	cmake_src_prepare
 
 	# qt6 build doesn't support PACKAGE_MODE and need to set resources location
