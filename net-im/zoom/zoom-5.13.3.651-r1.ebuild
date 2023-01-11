@@ -107,6 +107,7 @@ src_install() {
 		translations
 	doins *.pcm Embedded.properties version.txt
 	doexe zoom zopen ZoomLauncher *.sh
+	fperms a+x /opt/zoom/cef/chrome-sandbox
 	dosym -r {"/usr/$(get_libdir)",/opt/zoom}/libmpg123.so
 	dosym -r "/usr/$(get_libdir)/libfdk-aac.so.2" /opt/zoom/libfdkaac2.so
 	dosym -r "/usr/$(get_libdir)/libquazip1-qt5.so" /opt/zoom/libquazip.so
