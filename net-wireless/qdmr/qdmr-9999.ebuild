@@ -16,6 +16,8 @@ else
 	S="${WORKDIR}/${PN}-${MY_PV}"
 	KEYWORDS="~amd64 ~x86"
 fi
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -32,7 +34,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-qt/designer:5
-	dev-qt/qttest:5
+	test? ( dev-qt/qttest:5 )
 "
 BDEPEND="dev-qt/linguist-tools:5"
 
@@ -47,6 +49,13 @@ pkg_setup() {
 src_prepare() {
 	sed -i "s#/etc/udev/rules.d/#$(get_udevdir)/rules.d#" lib/CMakeLists.txt
 	cmake_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTS="$(usex test)"
+	)
+	cmake_src_configure
 }
 
 pkg_postinst() {
