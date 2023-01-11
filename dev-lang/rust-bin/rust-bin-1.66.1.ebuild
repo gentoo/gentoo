@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit multilib prefix rust-toolchain toolchain-funcs verify-sig multilib-minim
 
 MY_P="rust-${PV}"
 # curl -L static.rust-lang.org/dist/channel-rust-${PV}.toml 2>/dev/null | grep "xz_url.*rust-src"
-MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL%/}/2022-12-15/rust-src-${PV}.tar.xz"
+MY_SRC_URI="${RUST_TOOLCHAIN_BASEURL%/}/2023-01-10/rust-src-${PV}.tar.xz"
 GENTOO_BIN_BASEURI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}" # omit leading slash
 
 DESCRIPTION="Systems programming language from Mozilla"
