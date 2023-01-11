@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SRC_URI="https://download.virtualbox.org/virtualbox/${PV}/${MY_P}.iso"
 # File a bug if the situation does not improve after a few more releases
 LICENSE="GPL-3 CDDL"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 S="${WORKDIR}"
 
