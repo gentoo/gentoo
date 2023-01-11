@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ SLOT="2"
 KEYWORDS="amd64 ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
-ruby_add_rdepend "|| ( dev-ruby/net-ssh:6 dev-ruby/net-ssh:5 )"
+ruby_add_rdepend "dev-ruby/net-ssh:6"
 
 ruby_add_bdepend "
 	test? (
