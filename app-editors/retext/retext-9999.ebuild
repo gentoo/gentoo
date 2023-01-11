@@ -37,12 +37,12 @@ RDEPEND="
 	>=dev-python/markups-3.1.1[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/python-markdown-math[${PYTHON_USEDEP}]
-	dev-python/PyQt5[dbus,gui,printsupport,widgets,${PYTHON_USEDEP}]
+	dev-python/PyQt6[dbus,gui,printsupport,widgets,${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-qt/linguist-tools
-	test? ( dev-python/PyQt5[testlib,${PYTHON_USEDEP}] )
+	test? ( dev-python/PyQt6[testlib,${PYTHON_USEDEP}] )
 "
 
 distutils_enable_tests unittest
@@ -57,7 +57,7 @@ src_test() {
 }
 
 python_test() {
-	eunittest || die
+	virtx eunittest
 }
 
 pkg_postinst() {
@@ -65,7 +65,7 @@ pkg_postinst() {
 
 	optfeature "dictionary support" dev-python/pyenchant
 	# See https://bugs.gentoo.org/772197.
-	optfeature "rendering with webengine" dev-python/PyQtWebEngine
+	optfeature "rendering with webengine" dev-python/PyQt6-WebEngine
 
 	einfo "Starting with retext-7.0.4 the markdown-math plugin is installed."
 	einfo "Note that you can use different math delimiters, e.g. \(...\) for inline math."
