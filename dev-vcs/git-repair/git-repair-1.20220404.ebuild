@@ -22,7 +22,6 @@ GHC_BOOTSTRAP_PACKAGES=(
 	hslogger
 	IfElse
 	split
-	time
 	unix-compat
 )
 
