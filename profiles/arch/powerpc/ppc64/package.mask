@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jimi Huotari <chiitoo@gentoo.org> (2023-01-11)
+# Requires media-libs/libva since 29.0.0.
+>=media-video/obs-studio-29.0.0
+
 # Sam James <sam@gentoo.org> (2022-10-08)
 # sys-boot/gnu-efi isn't keyworded here right now
 sys-kernel/installkernel-systemd-boot
