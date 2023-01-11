@@ -11,5 +11,6 @@
   </use>
   <upstream>
     <remote-id type="gentoo">proj/catalyst</remote-id>
+    <remote-id type="github">gentoo/catalyst</remote-id>
   </upstream>
 </pkgmetadata>
