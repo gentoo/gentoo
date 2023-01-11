@@ -11,7 +11,7 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+introspection wayland X"
 
 DEPEND="
