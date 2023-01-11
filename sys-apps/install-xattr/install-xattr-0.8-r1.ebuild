@@ -1,9 +1,9 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-DESCRIPTION="Wrapper to coreutil's install to preserve Filesystem Extended Attributes"
+DESCRIPTION="Wrapper to coreutils install to preserve Filesystem Extended Attributes"
 HOMEPAGE="https://dev.gentoo.org/~blueness/install-xattr/"
 
 inherit flag-o-matic toolchain-funcs
@@ -14,16 +14,22 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/install-xattr/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-	S=${WORKDIR}/${PN}
+	S="${WORKDIR}"/${PN}
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
 
+PATCHES=(
+	# Backports from master, drop on next release
+	"${FILESDIR}"/${PV}
+)
+
 src_prepare() {
 	default
+
 	tc-export CC
-	append-cppflags "-D_FILE_OFFSET_BITS=64"
+	append-lfs-flags
 }
 
 src_compile() {
@@ -37,10 +43,6 @@ src_install() {
 	if [[ ${PV} == "9999" ]] ; then
 		cd "${WORKDIR}/${P}/misc/${PN}" || die
 	fi
-	DESTDIR=${ED} emake install
-}
 
-# We need to fix how tests are done
-src_test() {
-	true
+	emake DESTDIR="${ED}" install
 }
