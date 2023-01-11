@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Remember: we cannot leverage autotools in this ebuild in order
@@ -9,7 +9,7 @@ EAPI=7
 inherit libtool multilib multilib-minimal preserve-libs usr-ldscript
 
 if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://git.tukaani.org/xz.git"
+	EGIT_REPO_URI="https://github.com/tukaani-project/xz"
 	inherit git-r3 autotools
 
 	# bug #272880 and bug #286068
