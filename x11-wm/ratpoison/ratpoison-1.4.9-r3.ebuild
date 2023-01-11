@@ -1,14 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit elisp-common toolchain-funcs
 
 DESCRIPTION="window manager without mouse dependency"
-HOMEPAGE="http://www.nongnu.org/ratpoison/"
-SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.xz"
+HOMEPAGE="https://www.nongnu.org/ratpoison/"
+SRC_URI="https://download.savannah.gnu.org/releases/${PN}/${P}.tar.xz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ || ( GPL-2+ FDL-1.2+ )"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ppc x86 ~amd64-linux ~x86-linux"
 IUSE="debug emacs +history sloppy +xft +xrandr"
@@ -24,9 +25,9 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto
 "
+BDEPEND="virtual/pkgconfig"
 
 SITEFILE=50ratpoison-gentoo.el
 DOCS=(
@@ -53,7 +54,7 @@ src_configure() {
 src_compile() {
 	emake CFLAGS="${CFLAGS}"
 	if use emacs; then
-		elisp-compile contrib/ratpoison.el || die
+		elisp-compile contrib/ratpoison.el
 	fi
 
 	if use sloppy; then
@@ -82,7 +83,7 @@ src_install() {
 	dodoc contrib/{genrpbindings,split.sh} \
 		doc/{ipaq.ratpoisonrc,sample.ratpoisonrc}
 
-	rm -rf "${ED}/usr/share/"{doc/ratpoison,ratpoison}
+	rm -rf "${ED}/usr/share/"{doc/ratpoison,ratpoison} || die
 
 	if use emacs; then
 		elisp-install ${PN} contrib/ratpoison.*
