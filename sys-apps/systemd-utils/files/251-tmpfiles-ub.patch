@@ -1,0 +1,71 @@
+https://github.com/systemd/systemd/pull/25957
+https://github.com/systemd/systemd/pull/25959
+https://github.com/systemd/systemd/commit/9f804ab04d566ff745849e1c4ced680a0447cf76
+https://github.com/systemd/systemd/commit/34680637e838415204850f77c93ca6ca219abaf1
+
+From 9f804ab04d566ff745849e1c4ced680a0447cf76 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 6 Jan 2023 10:58:32 +0000
+Subject: [PATCH] tmpfiles: avoid null free() for acl attributes
+
+When built with ACL support, we might be processing a tmpfiles
+entry where there's no cause for us to call parse_acls_from_arg,
+then we get to the end of parse_line without having ever populated
+i.{acl_access, acl_default}.
+
+Then we pass a null pointer into acl_free().
+
+From UBSAN w/ GCC 13.0.0_pre20230101:
+```
+$ systemd-tmpfiles --clean
+/var/tmp/portage/sys-apps/acl-2.3.1-r1/work/acl-2.3.1/libacl/acl_free.c:44:14: runtime error: applying non-zero offset 18446744073709551608 to null pointer
+    #0 0x7f65d868b482 in acl_free /var/tmp/portage/sys-apps/acl-2.3.1-r1/work/acl-2.3.1/libacl/acl_free.c:44
+    #1 0x55fe7e592249 in item_free_contents ../systemd-9999/src/tmpfiles/tmpfiles.c:2855
+    #2 0x55fe7e5a347a in parse_line ../systemd-9999/src/tmpfiles/tmpfiles.c:3158
+    #3 0x55fe7e5a347a in read_config_file ../systemd-9999/src/tmpfiles/tmpfiles.c:3897
+    #4 0x55fe7e590c61 in read_config_files ../systemd-9999/src/tmpfiles/tmpfiles.c:3985
+    #5 0x55fe7e590c61 in run ../systemd-9999/src/tmpfiles/tmpfiles.c:4157
+    #6 0x55fe7e590c61 in main ../systemd-9999/src/tmpfiles/tmpfiles.c:4218
+    #7 0x7f65d7ebe289  (/usr/lib64/libc.so.6+0x23289)
+    #8 0x7f65d7ebe344 in __libc_start_main (/usr/lib64/libc.so.6+0x23344)
+    #9 0x55fe7e591900 in _start (/usr/bin/systemd-tmpfiles+0x11900)
+```
+--- a/src/tmpfiles/tmpfiles.c
++++ b/src/tmpfiles/tmpfiles.c
+@@ -2852,8 +2852,11 @@ static void item_free_contents(Item *i) {
+         strv_free(i->xattrs);
+ 
+ #if HAVE_ACL
+-        acl_free(i->acl_access);
+-        acl_free(i->acl_default);
++        if (i->acl_access)
++                acl_free(i->acl_access);
++
++        if (i->acl_default)
++                acl_free(i->acl_default);
+ #endif
+ }
+ 
+
+From 34680637e838415204850f77c93ca6ca219abaf1 Mon Sep 17 00:00:00 2001
+From: Lennart Poettering <lennart@poettering.net>
+Date: Fri, 6 Jan 2023 12:30:36 +0100
+Subject: [PATCH] nspawn: guard acl_free() with a NULL check
+
+Inspired by #25957 there's one other place where we don't guard
+acl_free() calls with a NULL check.
+
+Fix that.
+--- a/src/nspawn/nspawn-patch-uid.c
++++ b/src/nspawn/nspawn-patch-uid.c
+@@ -181,7 +181,9 @@ static int patch_acls(int fd, const char *name, const struct stat *st, uid_t shi
+ 
+         if (S_ISDIR(st->st_mode)) {
+                 acl_free(acl);
+-                acl_free(shifted);
++
++                if (shifted)
++                        acl_free(shifted);
+ 
+                 acl = shifted = NULL;
+ 
