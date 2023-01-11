@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,6 +42,11 @@ PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 python_check_deps() {
 	python_has_version "dev-python/PeachPy[${PYTHON_USEDEP}]"
+}
+
+src_prepare() {
+	sed -i -e "/-O/d" CMakeLists.txt || die
+	cmake_src_prepare
 }
 
 src_configure() {
