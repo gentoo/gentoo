@@ -9,7 +9,12 @@ EAPI=7
 inherit libtool multilib multilib-minimal preserve-libs usr-ldscript
 
 if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/tukaani-project/xz"
+	# Per tukaani.org, git.tukaani.org is a mirror of github and
+	# may be behind.
+	EGIT_REPO_URI="
+		https://github.com/tukaani-project/xz
+		https://git.tukaani.org/xz.git
+	"
 	inherit git-r3 autotools
 
 	# bug #272880 and bug #286068
