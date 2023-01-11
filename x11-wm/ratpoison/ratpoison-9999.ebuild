@@ -1,16 +1,16 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit autotools elisp-common git-r3 toolchain-funcs
 
 DESCRIPTION="window manager without mouse dependency"
 HOMEPAGE="https://www.nongnu.org/ratpoison/"
 EGIT_REPO_URI="https://git.savannah.gnu.org/git/ratpoison.git"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ || ( GPL-2+ FDL-1.2+ )"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug emacs +history sloppy +xft +xrandr"
 
 RDEPEND="
@@ -36,13 +36,13 @@ DOCS=(
 	README
 	TODO
 )
+
 PATCHES=(
 	"${FILESDIR}"/ratpoison.el-gentoo.patch
 )
 
 src_prepare() {
 	default
-
 	eautoreconf
 }
 
@@ -58,7 +58,7 @@ src_configure() {
 src_compile() {
 	emake CFLAGS="${CFLAGS}"
 	if use emacs; then
-		elisp-compile contrib/ratpoison.el || die
+		elisp-compile contrib/ratpoison.el
 	fi
 
 	if use sloppy; then
@@ -87,7 +87,7 @@ src_install() {
 	dodoc contrib/{genrpbindings,split.sh} \
 		doc/{ipaq.ratpoisonrc,sample.ratpoisonrc}
 
-	rm -rf "${ED}/usr/share/"{doc/ratpoison,ratpoison}
+	rm -rf "${ED}/usr/share/"{doc/ratpoison,ratpoison} || die
 
 	if use emacs; then
 		elisp-install ${PN} contrib/ratpoison.*
