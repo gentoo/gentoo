@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ S="${WORKDIR}/${P}-src"
 
 LICENSE="MIT Boost-1.0 BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 arm64 ~ppc64 ~x86"
 IUSE="debug test"
 RESTRICT="!test? ( test )"
 
