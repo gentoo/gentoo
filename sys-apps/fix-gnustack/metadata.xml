@@ -10,5 +10,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="gentoo">proj/elfix</remote-id>
+		<remote-id type="github">gentoo/elfix</remote-id>
 	</upstream>
 </pkgmetadata>
