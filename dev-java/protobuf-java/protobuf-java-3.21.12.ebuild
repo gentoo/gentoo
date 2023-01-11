@@ -55,7 +55,8 @@ src_prepare() {
 		"${S}/core/pom.xml") > "${T}/core_proto" || die "echo to core_proto failed"
 	# Copy them from ../src/google/protobuf to JAVA_RESOURCE_DIRS
 	pushd "${JAVA_RESOURCE_DIRS}" || die
-		jar cv "@${T}/core_proto" | jar xv || die "Copying protos failed"
+	jar cv "@${T}/core_proto" | jar xv
+	assert"Copying protos failed"
 	popd || die
 
 	# https://github.com/protocolbuffers/protobuf/blob/v21.12/java/core/generate-sources-build.xml
