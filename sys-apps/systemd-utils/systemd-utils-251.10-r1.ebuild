@@ -4,6 +4,15 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
 
+if [[ ${PV} != 25[12].* ]] ; then
+	# The F_S=3 issues should be fixed in 253.
+	# - https://github.com/systemd/systemd/issues/22801
+	# - https://github.com/systemd/systemd/pull/25967
+	# - https://github.com/systemd/systemd/commit/7929e180aa47a2692ad4f053afac2857d7198758
+	# - https://github.com/systemd/systemd/commit/4f79f545b3c46c358666c9f5f2b384fe50aac4b4
+	die "Please remove the FORTIFY_SOURCE hacks in src_configure."
+fi
+
 QA_PKGCONFIG_VERSION=$(ver_cut 1)
 
 inherit bash-completion-r1 flag-o-matic meson-multilib python-any-r1 toolchain-funcs udev usr-ldscript
