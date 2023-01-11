@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,8 +22,6 @@ SLOT="0"
 
 RDEPEND="
 	dev-cpp/yaml-cpp:=
-	dev-qt/designer:5
-	dev-qt/qttest:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtgui:5
 	dev-qt/qtcore:5
@@ -32,7 +30,10 @@ RDEPEND="
 	dev-qt/qtserialport:5
 	virtual/libusb:1
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/designer:5
+	dev-qt/qttest:5
+"
 BDEPEND="dev-qt/linguist-tools:5"
 
 pkg_setup() {
@@ -44,8 +45,14 @@ pkg_setup() {
 }
 
 src_prepare() {
-	#no devil perms
-	sed -i 's#666#660#' dist/99-qdmr.rules
 	sed -i "s#/etc/udev/rules.d/#$(get_udevdir)/rules.d#" lib/CMakeLists.txt
 	cmake_src_prepare
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }
