@@ -1,0 +1,126 @@
+https://bugs.astron.com/view.php?id=415
+https://github.com/file/file/commit/1dd21dd360472d7b830825df8e40a06cdc1cbbcf
+
+From 1dd21dd360472d7b830825df8e40a06cdc1cbbcf Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Sun, 8 Jan 2023 18:09:16 +0000
+Subject: [PATCH] fix decompression always returning empty.
+
+--- a/src/compress.c
++++ b/src/compress.c
+@@ -609,6 +609,7 @@ uncompresszlib(const unsigned char *old, unsigned char **newch,
+ 	int rc;
+ 	z_stream z;
+ 
++	DPRINTF("builtin zlib decompression\n");
+ 	z.next_in = CCAST(Bytef *, old);
+ 	z.avail_in = CAST(uint32_t, *n);
+ 	z.next_out = *newch;
+@@ -650,6 +651,7 @@ uncompressbzlib(const unsigned char *old, unsigned char **newch,
+ 	int rc;
+ 	bz_stream bz;
+ 
++	DPRINTF("builtin bzlib decompression\n");
+ 	memset(&bz, 0, sizeof(bz));
+ 	rc = BZ2_bzDecompressInit(&bz, 0, 0);
+ 	if (rc != BZ_OK)
+@@ -690,6 +692,7 @@ uncompressxzlib(const unsigned char *old, unsigned char **newch,
+ 	int rc;
+ 	lzma_stream xz;
+ 
++	DPRINTF("builtin xzlib decompression\n");
+ 	memset(&xz, 0, sizeof(xz));
+ 	rc = lzma_auto_decoder(&xz, UINT64_MAX, 0);
+ 	if (rc != LZMA_OK)
+@@ -729,6 +732,7 @@ uncompresszstd(const unsigned char *old, unsigned char **newch,
+ 	ZSTD_inBuffer in;
+ 	ZSTD_outBuffer out;
+ 
++	DPRINTF("builtin zstd decompression\n");
+ 	if ((zstd = ZSTD_createDStream()) == NULL) {
+ 		return makeerror(newch, n, "No ZSTD decompression stream, %s",
+ 		    strerror(errno));
+@@ -777,6 +781,7 @@ uncompresslzlib(const unsigned char *old, unsigned char **newch,
+ 
+ 	bufp = *newch;
+ 
++	DPRINTF("builtin lzlib decompression\n");
+ 	dec = LZ_decompress_open();
+ 	if (!dec) {
+ 		return makeerror(newch, n, "unable to allocate LZ_Decoder");
+@@ -833,11 +838,13 @@ makeerror(unsigned char **buf, size_t *len, const char *fmt, ...)
+ 	va_list ap;
+ 	int rv;
+ 
++	DPRINTF("Makeerror %s\n", fmt);
+ 	free(*buf);
+ 	va_start(ap, fmt);
+ 	rv = vasprintf(&msg, fmt, ap);
+ 	va_end(ap);
+ 	if (rv < 0) {
++		DPRINTF("Makeerror failed");
+ 		*buf = NULL;
+ 		*len = 0;
+ 		return NODATA;
+@@ -1048,7 +1055,7 @@ uncompressbuf(int fd, size_t bytes_max, size_t method, int nofork,
+ 	pid_t pid;
+ 	pid_t writepid = -1;
+ 	size_t i;
+-	ssize_t r;
++	ssize_t r, re;
+ 	char *const *args;
+ #ifdef HAVE_POSIX_SPAWNP
+ 	posix_spawn_file_actions_t fa;
+@@ -1103,6 +1110,7 @@ uncompressbuf(int fd, size_t bytes_max, size_t method, int nofork,
+ 
+ 	handledesc(&fa, fd, fdp);
+ 
++	DPRINTF("Executing %s\n", compr[method].argv[0]);
+ 	status = posix_spawnp(&pid, compr[method].argv[0], &fa, NULL,
+ 	    args, NULL);
+ 
+@@ -1128,6 +1136,7 @@ uncompressbuf(int fd, size_t bytes_max, size_t method, int nofork,
+ 		 * do not modify fdp[i][j].
+ 		 */
+ 		handledesc(NULL, fd, fdp);
++		DPRINTF("Executing %s\n", compr[method].argv[0]);
+ 
+ 		(void)execvp(compr[method].argv[0], args);
+ 		dprintf(STDERR_FILENO, "exec `%s' failed, %s",
+@@ -1146,6 +1155,7 @@ uncompressbuf(int fd, size_t bytes_max, size_t method, int nofork,
+ 		if (writepid == (pid_t)-1) {
+ 			rv = makeerror(newch, n, "Write to child failed, %s",
+ 			    strerror(errno));
++			DPRINTF("Write to child failed\n");
+ 			goto err;
+ 		}
+ 		closefd(fdp[STDIN_FILENO], 1);
+@@ -1153,6 +1163,7 @@ uncompressbuf(int fd, size_t bytes_max, size_t method, int nofork,
+ 
+ 	rv = OKDATA;
+ 	r = sread(fdp[STDOUT_FILENO][0], *newch, bytes_max, 0);
++	DPRINTF("read got %zd\n", r);
+ 	if (r < 0) {
+ 		rv = ERRDATA;
+ 		DPRINTF("Read stdout failed %d (%s)\n", fdp[STDOUT_FILENO][0],
+@@ -1165,15 +1176,17 @@ uncompressbuf(int fd, size_t bytes_max, size_t method, int nofork,
+ 		 * errors, otherwise we risk the child blocking and never
+ 		 * exiting.
+ 		 */
++		DPRINTF("Closing stdout for bytes_max\n");
+ 		closefd(fdp[STDOUT_FILENO], 0);
+ 		goto ok;
+ 	}
+-	if ((r = sread(fdp[STDERR_FILENO][0], *newch, bytes_max, 0)) > 0) {
++	if ((re = sread(fdp[STDERR_FILENO][0], *newch, bytes_max, 0)) > 0) {
++		DPRINTF("Got stuff from stderr %s\n", *newch);
+ 		rv = ERRDATA;
+ 		r = filter_error(*newch, r);
+ 		goto ok;
+ 	}
+-	if  (r == 0)
++	if  (re == 0)
+ 		goto ok;
+ 	rv = makeerror(newch, n, "Read stderr failed, %s",
+ 	    strerror(errno));
+
