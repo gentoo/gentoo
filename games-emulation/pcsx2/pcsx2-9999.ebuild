@@ -79,7 +79,6 @@ FILECAPS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.0-crcs.patch
 	"${FILESDIR}"/${PN}-1.7.3351-unbundle.patch
 	"${FILESDIR}"/${PN}-1.7.3468-cubeb-automagic.patch
 	"${FILESDIR}"/${PN}-1.7.3773-lto.patch
