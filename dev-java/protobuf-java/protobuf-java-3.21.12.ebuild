@@ -56,7 +56,7 @@ src_prepare() {
 	# Copy them from ../src/google/protobuf to JAVA_RESOURCE_DIRS
 	pushd "${JAVA_RESOURCE_DIRS}" || die
 	jar cv "@${T}/core_proto" | jar xv
-	assert"Copying protos failed"
+	assert "Copying protos failed"
 	popd || die
 
 	# https://github.com/protocolbuffers/protobuf/blob/v21.12/java/core/generate-sources-build.xml
