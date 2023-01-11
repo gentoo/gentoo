@@ -1,0 +1,17 @@
+diff --git a/pipenv/core.py b/pipenv/core.py
+index e42f184d1..02f8994de 100644
+--- a/pipenv/core.py
++++ b/pipenv/core.py
+@@ -791,6 +791,12 @@ def batch_install_iteration(
+         strip_extras_markers_from_requirement,
+     )
+ 
++    # Gentoo patch: install dependencies into the venv even if they exist in the system
++    # This is needed because pipenv imports the system packages to run.
++    # It does not change your system's packages.
++    if (extra_pip_args is not None) and ("-I" not in extra_pip_args):
++        extra_pip_args.append("-I")
++
+     is_artifact = False
+     for dep in deps_to_install:
+         if dep.req.req:
