@@ -38,6 +38,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-no-x.patch
+)
+
 src_configure() {
 	local myconf=(
 		$(use_enable introspection)
