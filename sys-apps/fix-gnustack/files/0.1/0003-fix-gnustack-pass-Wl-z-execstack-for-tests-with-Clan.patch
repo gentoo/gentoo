@@ -1,0 +1,26 @@
+From c8a1d365ff1349cc438352917863ed98ee34a80f Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 11 Jan 2023 07:09:53 +0000
+Subject: [PATCH 3/3] fix-gnustack: pass -Wl,-z,execstack for tests with Clang
+
+Clang doesn't create executable stacks by default, so we need to force it
+for the purposes of the tests.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -8,8 +8,10 @@ bad-gnustack.s: bad-gnustack.c
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) -S $<
+ 	$(SED) -i -e 's/GNU-stack,"",/GNU-stack,"x",/' $@
+ 
++# Clang doesn't create executable stacks by default, so
++# tests for fix-gnustack fail without this.
+ bad-gnustack$(EXEEXT): bad-gnustack.s
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
++	$(CC) $(CFLAGS) $(LDFLAGS) -Wl,-z,execstack -o $@ $<
+ 
+ check_SCRIPTS = gnustacktest
+ TEST = $(check_SCRIPTS)
+-- 
+2.39.0
+
