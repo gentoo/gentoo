@@ -3,7 +3,7 @@
 
 # Jimi Huotari <chiitoo@gentoo.org> (2023-01-11)
 # Requires media-libs/libva since 29.0.0, which is unmasked here.
--media-video/obs-studio
+->=media-video/obs-studio-29.0.0
 
 # Michał Górny <mgorny@gentoo.org> (2022-08-25)
 # Only ppc64le binpkg is provided.
