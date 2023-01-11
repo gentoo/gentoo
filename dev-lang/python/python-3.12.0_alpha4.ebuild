@@ -199,7 +199,6 @@ src_configure() {
 		--enable-loadable-sqlite-extensions
 		--without-ensurepip
 		--with-system-expat
-		--with-system-ffi
 		--with-platlibdir=lib
 		--with-pkg-config=yes
 		--with-wheel-pkg-dir="${EPREFIX}"/usr/lib/python/ensurepip
