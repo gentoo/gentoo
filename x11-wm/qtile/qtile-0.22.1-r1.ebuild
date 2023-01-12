@@ -64,7 +64,10 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	# Avoid automagic dependency on libpulse
 	if ! use pulseaudio ; then
-		sed -i -e 's/call("libpulse", "--libs")/throw PkgConfigError/' setup.py || die
+		sed -i -e "s/call('libpulse', '--libs')/raise PkgConfigError/" setup.py || die
+
+		# TODO: use this sed for next release after 0.22.1, quoting changed
+		# sed -i -e 's/call("libpulse", "--libs")/throw PkgConfigError/' setup.py || die
 	fi
 
 	# Avoid automagic dependency on pywlroots
