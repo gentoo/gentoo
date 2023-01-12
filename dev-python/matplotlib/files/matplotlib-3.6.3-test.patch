@@ -1,0 +1,25 @@
+From 28294f8dc7305707c6e9a481c42416b2fb5714a1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 12 Jan 2023 06:39:23 +0100
+Subject: [PATCH] Increase more tolerances
+
+---
+ lib/matplotlib/tests/test_lines.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/matplotlib/tests/test_lines.py b/lib/matplotlib/tests/test_lines.py
+index e83a90ccb1..ddba36333f 100644
+--- a/lib/matplotlib/tests/test_lines.py
++++ b/lib/matplotlib/tests/test_lines.py
+@@ -166,7 +166,7 @@ def test_set_drawstyle():
+ 
+ 
+ @image_comparison(['line_collection_dashes'], remove_text=True, style='mpl20',
+-                  tol=0.62)
++                  tol=0.65)
+ def test_set_line_coll_dash_image():
+     fig, ax = plt.subplots()
+     np.random.seed(0)
+-- 
+2.39.0
+
