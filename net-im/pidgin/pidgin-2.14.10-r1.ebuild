@@ -10,9 +10,7 @@ inherit autotools gnome2-utils flag-o-matic perl-module python-single-r1 xdg
 
 DESCRIPTION="GTK Instant Messenger client"
 HOMEPAGE="https://pidgin.im/"
-SRC_URI="
-	mirror://sourceforge/${PN}/${P}.tar.bz2
-	https://gist.githubusercontent.com/imcleod/77f38d11af11b2413ada/raw/46e9d6cb4d2f839832dad2d697bb141a88028e04/pidgin-irc-join-sleep.patch -> ${PN}-2.10.9-irc_join_sleep.patch"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/2" # libpurple version
@@ -136,9 +134,7 @@ DEFAULT_PRPLS="irc,jabber,simple"
 #	x11-plugins/pidgin-sendscreenshot
 #	x11-plugins/pidgimpd
 
-PATCHES=(
-	"${DISTDIR}/${PN}-2.10.9-irc_join_sleep.patch" # 577286
-)
+PATCHES=( "${FILESDIR}/${PN}-2.10.9-irc_join_sleep.patch" ) # 577286
 
 pkg_pretend() {
 	if ! use gtk && ! use ncurses ; then
