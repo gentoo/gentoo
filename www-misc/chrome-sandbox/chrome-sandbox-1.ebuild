@@ -11,7 +11,7 @@ SRC_URI="https://github.com/floppym/chrome-sandbox/archive/refs/tags/v${PV}.tar.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 x86"
 
 src_compile() {
 	tc-export CC
