@@ -47,7 +47,6 @@ PATCHES=(
 )
 
 src_prepare() {
-	xdg_environment_reset
 	sed -i -e '/pytest-runner/d' setup.py || die
 	distutils-r1_src_prepare
 }
