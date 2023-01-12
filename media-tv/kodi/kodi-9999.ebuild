@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,9 +7,9 @@ PYTHON_REQ_USE="sqlite,ssl"
 LIBDVDCSS_VERSION="1.4.3-Next-Nexus-Alpha2"
 LIBDVDREAD_VERSION="6.1.3-Next-Nexus-Alpha2"
 LIBDVDNAV_VERSION="6.1.1-Next-Nexus-Alpha2"
-FFMPEG_VERSION="4.4.1"
+FFMPEG_VERSION="5.1.2"
 CODENAME="Nexus"
-FFMPEG_KODI_VERSION="Alpha1"
+FFMPEG_KODI_VERSION="Alpha3"
 PYTHON_COMPAT=( python3_11 )
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz -> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
