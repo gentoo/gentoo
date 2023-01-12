@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ RDEPEND="
 		dev-db/redis
 		dev-libs/hiredis
 	)
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0/1.1 )
 "
 DEPEND="${RDEPEND}
 "
