@@ -28,7 +28,7 @@ else
 fi
 
 # https://github.com/nmap/nmap/issues/2199
-LICENSE="NPSL-0.94"
+LICENSE="NPSL-0.95"
 SLOT="0"
 IUSE="ipv6 libssh2 ncat ndiff nping nls +nse ssl symlink +system-lua zenmap"
 REQUIRED_USE="
