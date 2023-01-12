@@ -306,9 +306,6 @@ multilib_src_configure() {
 		fi
 		mycmakeargs+=(
 			-DCLANG_INCLUDE_DOCS=${build_docs}
-
-			# Hack to install clang-tblgen: https://reviews.llvm.org/D141092
-			-DLLVM_BUILD_UTILS=ON
 		)
 	fi
 	if multilib_native_use extra; then
