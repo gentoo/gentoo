@@ -71,6 +71,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.11.0-gentoo.patch
 	"${FILESDIR}"/${PN}-1.12.0-install-dirs.patch
 	"${FILESDIR}"/${P}-glog-0.6.0.patch
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 src_prepare() {
@@ -134,6 +135,7 @@ src_configure() {
 		-DUSE_SYSTEM_PTHREADPOOL=ON
 		-DUSE_SYSTEM_FXDIV=ON
 		-DUSE_SYSTEM_FP16=ON
+		-DUSE_SYSTEM_GLOO=ON
 		-DUSE_SYSTEM_ONNX=ON
 		-DUSE_SYSTEM_SLEEF=ON
 		-DUSE_TENSORPIPE=OFF
