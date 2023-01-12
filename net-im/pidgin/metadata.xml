@@ -3,7 +3,10 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription>
-	Pidgin is an instant messaging program for Windows, Linux, BSD, and other Unixes. You can talk to your friends using AIM, ICQ, Jabber/XMPP, MSN Messenger, Yahoo!, Bonjour, Gadu-Gadu, IRC, Novell GroupWise Messenger, QQ, Lotus Sametime, SIMPLE, and Zephyr.
+		Pidgin is an instant messaging program for Windows, Linux, BSD, and other Unixes.
+		You can talk to your friends using AIM, ICQ, Jabber/XMPP, MSN Messenger, Yahoo!,
+		Bonjour, Gadu-Gadu, IRC, Novell GroupWise Messenger, QQ, Lotus Sametime, SIMPLE,
+		and Zephyr.
 	</longdescription>
 	<use>
 		<flag name="gadu">Enable Gadu Gadu protocol support</flag>
