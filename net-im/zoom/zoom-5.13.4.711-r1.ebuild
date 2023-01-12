@@ -34,6 +34,7 @@ RDEPEND="!games-engines/zoom
 	sys-apps/util-linux
 	sys-libs/glibc
 	virtual/opengl
+	www-misc/chrome-sandbox
 	x11-libs/cairo
 	x11-libs/libdrm
 	x11-libs/libX11
@@ -107,7 +108,8 @@ src_install() {
 		translations
 	doins *.pcm Embedded.properties version.txt
 	doexe zoom zopen ZoomLauncher *.sh
-	fperms a+x /opt/zoom/cef/chrome-sandbox
+	rm "${ED}/opt/zoom/cef/chrome-sandbox" || die
+	dosym -r /usr/libexec/chrome-sandbox /opt/zoom/cef/chrome-sandbox
 	dosym -r {"/usr/$(get_libdir)",/opt/zoom}/libmpg123.so
 	dosym -r "/usr/$(get_libdir)/libfdk-aac.so.2" /opt/zoom/libfdkaac2.so
 	dosym -r "/usr/$(get_libdir)/libquazip1-qt5.so" /opt/zoom/libquazip.so
