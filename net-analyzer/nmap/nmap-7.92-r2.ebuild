@@ -22,7 +22,7 @@ else
 
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
-	LICENSE="|| ( NPSL-0.92 GPL-2 )"
+	LICENSE="|| ( NPSL-0.92 NPSL-0.95 GPL-2 )"
 fi
 
 SLOT="0"
