@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">spyder-notebook</remote-id>
+		<remote-id type="github">spyder-ide/spyder-notebook</remote-id>
 	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>
