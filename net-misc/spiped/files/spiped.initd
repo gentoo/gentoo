@@ -21,7 +21,7 @@ depend() {
 }
 
 checkconfig() {
-    if [[ ! "$IS_CONFIGURED" == "yes" ]]; then
+    if [ ! "$IS_CONFIGURED" = "yes" ]; then
         eerror "You need to setup /etc/conf.d/spiped first!"
         return 1
     fi
