@@ -24,7 +24,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="test"
 
 # Block on other packages trying to install a /usr/bin/listen
-RDEPEND+="!!media-radio/ax25-apps !!<dev-ruby/listen-2.8.6-r1:2"
+RDEPEND+="!!media-radio/ax25-apps"
 
 ruby_add_rdepend ">=dev-ruby/rb-inotify-0.9.10"
 
