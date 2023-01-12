@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Marco Scardovi <mscardovi@icloud.com> (2023-01-25)
+# Dead upstream, we are the only distro that still
+# maintains it. It does not support tpm 1.3+
+# Removal after 2023-02-12
+acct-group/tpm
+acct-user/tpm
+app-crypt/tpm-emulator
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-01-24)
 # Mostly obsoleted by the better maintained net-misc/yt-dlp, please
 # migrate. If had USE=yt-dlp enabled (default) then was likely already
