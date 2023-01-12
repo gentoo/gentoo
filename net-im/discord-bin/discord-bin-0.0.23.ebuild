@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -121,7 +121,7 @@ src_install() {
 
 	exeinto "${DESTDIR}"
 
-	doexe "${MY_PN^}" chrome-sandbox libEGL.so libGLESv2.so libvk_swiftshader.so
+	doexe "${MY_PN^}" chrome_crashpad_handler chrome-sandbox libEGL.so libGLESv2.so libvk_swiftshader.so
 
 	if use system-ffmpeg; then
 		dosym "../../usr/$(get_libdir)/chromium/libffmpeg.so" "${DESTDIR}/libffmpeg.so" || die
