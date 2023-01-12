@@ -6,4 +6,8 @@
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">spyder-ide/spyder-vim</remote-id>
+		<remote-id type="pypi">spyder-vim</remote-id>
+	</upstream>
 </pkgmetadata>
