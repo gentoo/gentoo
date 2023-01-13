@@ -6,10 +6,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Nick Sarnie <sarnex@gentoo.org> (2023-01-12)
-# Fails with in-tree media-video/ffmpeg
-net-im/discord-bin system-ffmpeg
-
 # Sam James <sam@gentoo.org> (2023-01-10)
 # Needs last-rited www-client/dillo, bug #890244
 mail-client/claws-mail dillo
