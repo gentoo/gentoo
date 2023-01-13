@@ -35,7 +35,7 @@ src_prepare() {
 	default
 
 	# Only needed for Clang 16 patch
-	ln -s "${S}"/Tools CCache/
+	ln -s "${S}"/Tools CCache/ || die
 	AT_M4DIR="Tools/config" eautoreconf
 }
 
