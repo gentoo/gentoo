@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>ML</name>
+  </maintainer>
+  <longdescription>
+    Uuseg is an OCaml library for segmenting Unicode text. It implements the
+    locale independent Unicode text segmentation algorithms to detect grapheme
+    cluster, word and sentence boundaries and the Unicode line breaking
+    algorithm to detect line break opportunities. The library is independent
+    from any IO mechanism or Unicode text data structure and it can process
+    text without a complete in-memory representation. Uuseg depends on Uucp and
+    optionally on Uutf for support on OCaml UTF-X encoded strings. It is
+    distributed under the ISC license.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/dbuenzli/uuseg/issues/</bugs-to>
+    <remote-id type="github">dbuenzli/uuseg</remote-id>
+  </upstream>
+</pkgmetadata>
