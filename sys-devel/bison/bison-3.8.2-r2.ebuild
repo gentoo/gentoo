@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -88,6 +88,14 @@ pkg_postinst() {
 	# ensure to preserve the symlinks before app-alternatives/yacc
 	# is installed
 	if [[ ! -h ${EROOT}/usr/bin/yacc ]]; then
+		if [[ -e ${EROOT}/usr/bin/yacc ]] ; then
+			# bug #886123
+			ewarn "${EROOT}/usr/bin/yacc exists but is not a symlink."
+			ewarn "This is expected during Prefix bootstrap and unsual otherwise."
+			ewarn "Moving away unexpected ${EROOT}/usr/bin/yacc to .bak."
+			mv "${EROOT}/usr/bin/yacc" "${EROOT}/usr/bin/yacc.bak" || die
+		fi
+
 		ln -s yacc.bison "${EROOT}/usr/bin/yacc" || die
 	fi
 }
