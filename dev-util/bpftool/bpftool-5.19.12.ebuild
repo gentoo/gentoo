@@ -43,6 +43,7 @@ DEPEND="
 BDEPEND="
 	${LINUX_PATCH+dev-util/patchutils}
 	${PYTHON_DEPS}
+	app-arch/tar
 	dev-python/docutils
 "
 
@@ -56,10 +57,9 @@ src_unpack() {
 		tools/{arch,build,include,lib,perf,scripts} {scripts,include,lib} "arch/*/lib"
 	)
 
-	# We expect the tar implementation to support the -j option (both
-	# GNU tar and libarchive's tar support that).
+	# We expect the tar implementation to support the -j and --wildcards option
 	echo ">>> Unpacking ${LINUX_SOURCES} (${paths[*]}) to ${PWD}"
-	tar --wildcards -xpf "${DISTDIR}"/${LINUX_SOURCES} \
+	gtar --wildcards -xpf "${DISTDIR}"/${LINUX_SOURCES} \
 		"${paths[@]/#/linux-${LINUX_VER}/}" || die
 
 	if [[ -n ${LINUX_PATCH} ]] ; then
