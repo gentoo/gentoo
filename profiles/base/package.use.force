@@ -41,6 +41,7 @@ dev-java/openjdk:17 system-bootstrap
 >=sys-devel/clang-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
 >=sys-devel/clang-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
 >=sys-devel/clang-14 llvm_targets_VE
+>=sys-devel/clang-16 llvm_targets_LoongArch
 >=sys-devel/llvm-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
 >=sys-devel/llvm-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
 >=sys-devel/llvm-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
@@ -50,6 +51,7 @@ dev-java/openjdk:17 system-bootstrap
 >=sys-devel/llvm-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
 >=sys-devel/llvm-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
 >=sys-devel/llvm-14 llvm_targets_VE
+>=sys-devel/llvm-16 llvm_targets_LoongArch
 
 # Sam James <sam@gentoo.org> (2021-03-08)
 # Broken without USE=unicode
