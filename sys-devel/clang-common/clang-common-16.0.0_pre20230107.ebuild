@@ -91,6 +91,8 @@ src_install() {
 
 	# Baseline hardening (bug #851111)
 	newins - gentoo-hardened.cfg <<-EOF
+		# Some of these options are added unconditionally, regardless of
+		# USE=hardened, for parity with sys-devel/gcc.
 		-fstack-clash-protection
 		-fstack-protector-strong
 		-fPIE
@@ -113,6 +115,7 @@ src_install() {
 
 	if use hardened ; then
 		cat >> "${ED}/etc/clang/gentoo-hardened.cfg" <<-EOF || die
+			# Options below are conditional on USE=hardened.
 			-D_GLIBCXX_ASSERTIONS
 
 			# Analogue to GLIBCXX_ASSERTIONS
