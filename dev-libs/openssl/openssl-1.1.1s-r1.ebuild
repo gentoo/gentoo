@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -160,10 +160,12 @@ src_prepare() {
 
 	local sslout=$(./gentoo.config)
 	einfo "Using configuration: ${sslout:-(openssl knows best)}"
+	local config="Configure"
+	[[ -z ${sslout} ]] && config="config"
 
 	# The config script does stupid stuff to prompt the user.  Kill it.
 	sed -i '/stty -icanon min 0 time 50; read waste/d' config || die
-	./config ${sslout} --test-sanity || die "I AM NOT SANE"
+	edo ./${config} ${sslout} --test-sanity || die "I AM NOT SANE"
 
 	multilib_copy_sources
 }
