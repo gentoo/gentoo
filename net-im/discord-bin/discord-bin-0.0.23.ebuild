@@ -6,6 +6,7 @@ EAPI=8
 MY_PN="${PN/-bin/}"
 MY_PV="${PV/-r*/}"
 
+CHROMIUM_VERSION="102"
 CHROMIUM_LANGS="
 	am ar bg bn ca cs da de el en-GB en-US es es-419 et fa fi fil fr gu he hi
 	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv
@@ -56,7 +57,7 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/libxshmfence
 	x11-libs/pango
-	system-ffmpeg? ( media-video/ffmpeg[chromium] )
+	system-ffmpeg? ( media-video/ffmpeg-chromium:${CHROMIUM_VERSION} )
 "
 
 DESTDIR="/opt/${MY_PN}"
@@ -125,7 +126,7 @@ src_install() {
 	doexe "${MY_PN^}" chrome_crashpad_handler chrome-sandbox libEGL.so libGLESv2.so libvk_swiftshader.so
 
 	if use system-ffmpeg; then
-		dosym "../../usr/$(get_libdir)/chromium/libffmpeg.so" "${DESTDIR}/libffmpeg.so" || die
+		dosym "../../usr/$(get_libdir)/chromium/libffmpeg.so.${CHROMIUM_VERSION}" "${DESTDIR}/libffmpeg.so" || die
 	else
 		doexe libffmpeg.so
 	fi
