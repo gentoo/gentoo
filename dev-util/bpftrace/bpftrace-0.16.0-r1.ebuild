@@ -18,7 +18,7 @@ SLOT="0"
 
 # remove keywords until build works:
 # https://github.com/iovisor/bpftrace/issues/2349
-#KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="fuzzing test"
 
 # lots of fixing needed
@@ -27,7 +27,6 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-libs/libbpf-1.0:=
 	>=dev-util/bcc-0.25.0:=
-	dev-util/systemtap
 	<sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=
 	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_BPF(+)]
 	sys-libs/binutils-libs:=
