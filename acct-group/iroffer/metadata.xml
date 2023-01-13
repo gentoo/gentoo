@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<name>Mikle Kolyada</name>
-		<email>zlogene@gentoo.org</email>
-	</maintainer>
-	<maintainer type="person">
 		<name>Sergey Popov</name>
 		<email>pinkbyte@gentoo.org</email>
 	</maintainer>
