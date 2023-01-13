@@ -13,6 +13,7 @@
   </longdescription>
   <stabilize-allarches/>
   <upstream>
+    <remote-id type="github">psf/requests</remote-id>
     <remote-id type="pypi">requests</remote-id>
     <remote-id type="cpe">cpe:/a:python-requests:requests</remote-id>
   </upstream>
