@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ LICENSE="|| ( AFL-3.0 AGPL-3 APL-1.0 Apache-2.0 BSD-2 Boost-1.0 CDDL CPAL-1.0
 	QPL-1.0 OFL-1.1 Sleepycat Watcom-1.0 W3C wxWinLL-3 ZLIB libpng
 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="test minimal"
 RESTRICT="!test? ( test )"
 
