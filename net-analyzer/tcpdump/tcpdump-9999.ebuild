@@ -26,6 +26,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="+drop-root +smi +ssl +samba suid test"
 REQUIRED_USE="test? ( samba )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=net-libs/libpcap-1.10.1
@@ -36,7 +37,7 @@ RDEPEND="
 	)
 	smi? ( net-libs/libsmi )
 	ssl? (
-		>=dev-libs/openssl-0.9.6m:0=
+		>=dev-libs/openssl-0.9.6m:=
 	)
 	suid? (
 		acct-group/pcap
