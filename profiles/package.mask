@@ -49,14 +49,6 @@ dev-libs/linux-syscall-support
 # Removal on 2023-01-30.
 =kde-misc/latte-dock-0.10.8*
 
-# Sam James <sam@gentoo.org> (2023-01-10)
-# This version had a controversial licence change which stinted its adoption.
-# No reverse dependencies.
-# See also the old 2021-05-30-deprecate-old-bdb-slots news item for
-# additional context and bug #837629.
-# Removal on 2023-02-09.
-sys-libs/db:6.0
-
 # Jonas Stein <jstein@gentoo.org> (2023-01-09)
 # Dead upstream, open bugs unmaintained.
 # Removal after 2023-03-01.  Bug #890244.
