@@ -18,14 +18,6 @@ S=${WORKDIR}/unix-${P}
 RDEPEND=""
 DEPEND=""
 
-src_prepare() {
-	if use !elibc_glibc ; then
-		# 433972, also previously done only for elibc_uclibc
-		sed -i -e '/^OBJS=/s/$/ strverscmp.o/' Makefile || die
-	fi
-	default
-}
-
 src_compile() {
 	append-lfs-flags
 	emake \
