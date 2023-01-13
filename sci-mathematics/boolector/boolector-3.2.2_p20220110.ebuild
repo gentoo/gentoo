@@ -49,6 +49,7 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
+		-DBtor2Tools_LIBRARIES=/usr/$(get_libdir)/libbtor2parser.so
 		-DUSE_PYTHON2=OFF
 		-DPYTHON=$(usex python)
 		-DTESTING=$(usex test)
