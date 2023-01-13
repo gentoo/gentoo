@@ -21,10 +21,11 @@ ELISP_DEPEND="
 	)
 "
 DEPEND="
-	dev-ml/camomile:=
 	dev-ml/lambda-term:=
+	dev-ml/logs:=
 	dev-ml/lwt:=
 	dev-ml/react:=
+	dev-ml/zed:=
 "
 RDEPEND="
 	${DEPEND}
