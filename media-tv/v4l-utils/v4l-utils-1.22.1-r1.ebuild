@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,6 +44,10 @@ BDEPEND="
 
 # Not really prebuilt but BPF objects make our QA checks go crazy.
 QA_PREBUILT="*/rc_keymaps/protocols/*.o"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.22.1-no-stack-protector-bpf.patch
+)
 
 check_llvm() {
 	if [[ ${MERGE_TYPE} != binary ]] && use bpf; then
