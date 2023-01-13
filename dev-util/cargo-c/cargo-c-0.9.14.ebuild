@@ -1,4 +1,4 @@
-# Copyright 2017-2022 Gentoo Authors
+# Copyright 2017-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -177,7 +177,7 @@ SRC_URI+=" $(cargo_crate_uris)"
 
 LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 MIT MPL-2.0 Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="dev-libs/libgit2:=
 	dev-libs/openssl:=
