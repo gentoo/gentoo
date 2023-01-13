@@ -1,0 +1,29 @@
+https://github.com/python-babel/babel/commit/f7af1b72e765278b3431de3f3b92c6b9a189b18e
+
+From f7af1b72e765278b3431de3f3b92c6b9a189b18e Mon Sep 17 00:00:00 2001
+From: Aarni Koskela <akx@iki.fi>
+Date: Wed, 2 Nov 2022 08:25:47 +0200
+Subject: [PATCH] Update docs build configuration (#924)
+
+* Use Python 3.11
+* Use Sphinx 5 (and update extlinks configuration)
+* Use Python 3 intersphinx mapping
+* Install Babel from the build directory
+
+Refs https://github.com/python-babel/babel/issues/920
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -251,10 +251,10 @@
+ #texinfo_show_urls = 'footnote'
+ 
+ intersphinx_mapping = {
+-    'https://docs.python.org/2/': None,
++    'https://docs.python.org/3/': None,
+ }
+ 
+ extlinks = {
+-    'gh': ('https://github.com/python-babel/babel/issues/%s', '#'),
+-    'trac': ('http://babel.edgewall.org/ticket/%s', 'ticket #'),
++    'gh': ('https://github.com/python-babel/babel/issues/%s', '#%s'),
++    'trac': ('http://babel.edgewall.org/ticket/%s', 'ticket #%s'),
+ }
