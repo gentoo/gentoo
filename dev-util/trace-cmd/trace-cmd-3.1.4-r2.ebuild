@@ -33,8 +33,9 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	udis86? ( dev-libs/udis86 )
 	zstd? ( >=app-arch/zstd-1.4 )
-	>=dev-libs/libtracefs-1.4
-	>=dev-libs/libtraceevent-1.5
+	!<dev-libs/libtracefs-1.6.1
+	>=dev-libs/libtracefs-1.6.1-r1
+	>=dev-libs/libtraceevent-1.6.3
 "
 DEPEND="${RDEPEND}
 	sys-kernel/linux-headers
