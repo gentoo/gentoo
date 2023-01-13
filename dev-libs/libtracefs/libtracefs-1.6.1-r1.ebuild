@@ -19,7 +19,9 @@ fi
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="doc"
+
 RDEPEND="
+	!<dev-util/trace-cmd-1.6.1
 	>=dev-libs/libtraceevent-1.3.0
 "
 DEPEND="${RDEPEND}"
