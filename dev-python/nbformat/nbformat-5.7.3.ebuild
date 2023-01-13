@@ -34,7 +34,8 @@ BDEPEND="
 "
 
 distutils_enable_sphinx docs \
-	dev-python/numpydoc
+	dev-python/numpydoc \
+	dev-python/myst_parser
 distutils_enable_tests pytest
 
 PATCHES=(
