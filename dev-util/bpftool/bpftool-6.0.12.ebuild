@@ -86,6 +86,11 @@ src_prepare() {
 		popd || die
 	fi
 
+	pushd "${S_K}" >/dev/null || die
+	# bug #890638
+	eapply "${FILESDIR}"/${PV}-no-stack-protector.patch
+	popd || die
+
 	# dev-python/docutils installs rst2man.py, not rst2man
 	sed -i -e 's/rst2man/rst2man.py/g' Documentation/Makefile || die
 }
