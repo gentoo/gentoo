@@ -24,10 +24,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="examples"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-cmake-also-static.patch
-	"${FILESDIR}"/${P}-cmake-clfags.patch
-)
+PATCHES=( "${FILESDIR}"/${P}-cmake-clfags.patch )
 
 src_install() {
 	cmake_src_install
