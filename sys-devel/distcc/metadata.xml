@@ -8,4 +8,7 @@
 	<use>
 		<flag name="gssapi">Enable support for <pkg>net-libs/libgssglue</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">distcc/distcc</remote-id>
+	</upstream>
 </pkgmetadata>
