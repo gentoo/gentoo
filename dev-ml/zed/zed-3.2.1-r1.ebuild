@@ -16,9 +16,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
-	dev-ml/camomile:=
-	dev-ml/charinfo_width:=
 	dev-ml/react:=
+	dev-ml/result:=
+	dev-ml/uchar:=
+	dev-ml/uucp:=
 	dev-ml/uuseg:=
+	dev-ml/uutf:=
 "
 DEPEND="${RDEPEND}"
