@@ -205,11 +205,12 @@ case ${LLVM_MAJOR} in
 		;;
 	*)
 		ALL_LLVM_EXPERIMENTAL_TARGETS=(
-			ARC CSKY DirectX LoongArch M68k SPIRV Xtensa
+			ARC CSKY DirectX M68k SPIRV Xtensa
 		)
 		ALL_LLVM_PRODUCTION_TARGETS=(
-			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
-			PowerPC RISCV Sparc SystemZ VE WebAssembly X86 XCore
+			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai LoongArch Mips
+			MSP430 NVPTX PowerPC RISCV Sparc SystemZ VE WebAssembly X86
+			XCore
 		)
 		;;
 esac
