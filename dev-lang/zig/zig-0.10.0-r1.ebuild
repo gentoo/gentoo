@@ -4,7 +4,7 @@
 EAPI=8
 
 LLVM_MAX_SLOT=15
-inherit cmake llvm check-reqs
+inherit edo cmake llvm check-reqs
 
 DESCRIPTION="A robust, optimal, and maintainable programming language"
 HOMEPAGE="https://ziglang.org/"
@@ -76,22 +76,17 @@ src_configure() {
 
 src_test() {
 	cd "${BUILD_DIR}" || die
-	local ZIG_TESTARGS=("-Dstatic-llvm=false -Denable-llvm=true -Dskip-non-native=true -Drelease -Dtarget=native")
-	./stage3/bin/zig build test-cases ${ZIG_TESTARGS[@]} || die
-	./stage3/bin/zig build test-fmt ${ZIG_TESTARGS[@]} || die
-	./stage3/bin/zig build test-behavior ${ZIG_TESTARGS[@]} || die
-	./stage3/bin/zig build test-compiler-rt ${ZIG_TESTARGS[@]} || die
-	./stage3/bin/zig build test-universal-libc ${ZIG_TESTARGS[@]} || die
-	./stage3/bin/zig build test-compare-output ${ZIG_TESTARGS[@]} || die
-	./stage3/bin/zig build test-standalone ${ZIG_TESTARGS[@]} || die
-	./stage3/bin/zig build test-c-abi ${ZIG_TESTARGS[@]} || die
-	./stage3/bin/zig build test-link ${ZIG_TESTARGS[@]} || die
-	./stage3/bin/zig build test-stack-traces ${ZIG_TESTARGS[@]} || die
-	./stage3/bin/zig build test-cli ${ZIG_TESTARGS[@]} || die
-	./stage3/bin/zig build test-asm-link ${ZIG_TESTARGS[@]} || die
-	./stage3/bin/zig build test-translate-c ${ZIG_TESTARGS[@]} || die
-	./stage3/bin/zig build test-run-translated-c ${ZIG_TESTARGS[@]} || die
-	./stage3/bin/zig build test-std ${ZIG_TESTARGS[@]} || die
+	local ZIG_TEST_ARGS="-Dstatic-llvm=false -Denable-llvm=true -Dskip-non-native=true -Drelease -Dtarget=native"
+	local ZIG_TEST_STEPS=(
+		test-cases test-fmt test-behavior test-compiler-rt test-universal-libc test-compare-output
+		test-standalone test-c-abi test-link test-stack-traces test-cli test-asm-link test-translate-c
+		test-run-translated-c test-std
+	)
+
+	local step
+	for step in "${ZIG_TEST_STEPS[@]}" ; do
+		edob ./stage3/bin/zig build ${step} ${ZIG_TEST_ARGS}
+	done
 }
 
 pkg_postinst() {
