@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/889354
+https://github.com/quodlibet/mutagen/pull/590
+
+From 37b4e6bddc03e1f715425c418ea84bac15116907 Mon Sep 17 00:00:00 2001
+From: Martin Weinelt <hexa@darmstadt.ccc.de>
+Date: Tue, 3 Jan 2023 17:32:55 +0100
+Subject: [PATCH] docs: Make extlinks compatible with sphinx 6.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The caption must contain `%s` exactly once¹ and because it did not
+building the docs using sphinx 6.0 failed.
+
+```
+mutagen> reading sources... [ 62%] changelog0mmm00m
+mutagen> Exception occurred:
+mutagen>   File "/nix/store/45b9bmcr6w6k05syyflc4r8j4gzzbjkm-python3.10-sphinx-6.0.0/lib/python3.10/site-packages/sphinx/ext/extlinks.py", line 101, in role
+mutagen>     title = caption % part
+mutagen> TypeError: not all arguments converted during string formatting
+mutagen> The full traceback has been saved in /build/sphinx-err-kzqq6ki_.log, if you want to report the issue to the developers.
+```
+
+[1] https://www.sphinx-doc.org/en/master/usage/extensions/extlinks.html#confval-extlinks
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -26,10 +26,10 @@
+ exclude_patterns = ['_build']
+ 
+ extlinks = {
+-    'bug': ('https://github.com/quodlibet/mutagen/issues/%s', '#'),
+-    'pr': ('https://github.com/quodlibet/mutagen/pull/%s', '#pr'),
+-    'commit': ('https://github.com/quodlibet/mutagen/commit/%s', '#'),
+-    'user': ('https://github.com/%s', ''),
++    'bug': ('https://github.com/quodlibet/mutagen/issues/%s', '#%s'),
++    'pr': ('https://github.com/quodlibet/mutagen/pull/%s', '#pr%s'),
++    'commit': ('https://github.com/quodlibet/mutagen/commit/%s', '%s'),
++    'user': ('https://github.com/%s', '%s'),
+ }
+ 
+ 
