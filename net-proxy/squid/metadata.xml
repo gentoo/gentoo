@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>zlogene@gentoo.org</email>
-		<name>Mikle Kolyada</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="ecap">Adds support for loadable content adaptation modules (http://www.e-cap.org)</flag>
 		<flag name="esi">Enable ESI for accelerators, will cause squid reverse proxies to be capable of the Edge Acceleration Specification (www.esi.org)</flag>
