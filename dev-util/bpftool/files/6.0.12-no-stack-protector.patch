@@ -1,0 +1,14 @@
+
+https://bugs.gentoo.org/890638
+
+--- a/tools/bpf/bpftool/Makefile	2022-12-11 23:15:18.000000000 +0100
++++ b/tools/bpf/bpftool/Makefile	2023-01-13 10:32:09.615048492 +0100
+@@ -187,7 +187,7 @@ $(OUTPUT)%.bpf.o: skeleton/%.bpf.c $(OUT
+ 		-I$(or $(OUTPUT),.) \
+ 		-I$(srctree)/tools/include/uapi/ \
+ 		-I$(LIBBPF_BOOTSTRAP_INCLUDE) \
+-		-g -O2 -Wall -target bpf -c $< -o $@
++		-g -O2 -Wall -fno-stack-protector -target bpf -c $< -o $@
+ 	$(Q)$(LLVM_STRIP) -g $@
+ 
+ $(OUTPUT)%.skel.h: $(OUTPUT)%.bpf.o $(BPFTOOL_BOOTSTRAP)
