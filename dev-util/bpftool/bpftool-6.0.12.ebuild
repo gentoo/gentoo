@@ -88,7 +88,7 @@ src_prepare() {
 
 	pushd "${S_K}" >/dev/null || die
 	# bug #890638
-	eapply "${FILESDIR}"/${PV}-no-stack-protector.patch
+	eapply "${FILESDIR}"/5.19.12-no-stack-protector.patch
 	popd || die
 
 	# dev-python/docutils installs rst2man.py, not rst2man
