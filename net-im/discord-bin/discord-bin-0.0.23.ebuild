@@ -64,7 +64,7 @@ DESTDIR="/opt/${MY_PN}"
 
 QA_PREBUILT="
 	${DESTDIR#/}/${MY_PN^}
-	${DESTDIT#/}/chrome_crashpad_handler
+	${DESTDIR#/}/chrome_crashpad_handler
 	${DESTDIR#/}/chrome-sandbox
 	${DESTDIR#/}/libffmpeg.so
 	${DESTDIR#/}/libvk_swiftshader.so
