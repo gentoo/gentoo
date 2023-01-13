@@ -121,6 +121,7 @@ RDEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
+	app-arch/tar
 	>=dev-lang/yasm-0.6.2
 	dev-libs/libIDL
 	dev-qt/linguist-tools:5
@@ -319,6 +320,9 @@ src_prepare() {
 	sed -i "s:'/sbin/vboxconfig':'emerge -1 virtualbox-modules':" \
 		src/VBox/Frontends/VirtualBox/src/main.cpp \
 		src/VBox/VMM/VMMR3/VM.cpp || die
+
+	# 890561
+	echo -e "\nVBOX_GTAR=gtar" >> LocalConfig.kmk || die
 }
 
 src_configure() {
