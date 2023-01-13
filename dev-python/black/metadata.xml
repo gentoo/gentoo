@@ -10,5 +10,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">black</remote-id>
+		<remote-id type="github">psf/black</remote-id>
 	</upstream>
 </pkgmetadata>
