@@ -40,7 +40,6 @@ src_prepare() {
 	cmake_src_prepare
 
 	echo "add_subdirectory(unit)" > "${S}"/test/CMakeLists.txt || die
-	echo "add_subdirectory(unit)" > "${S}"/parallel-test/CMakeLists.txt || die
 }
 
 src_configure() {
