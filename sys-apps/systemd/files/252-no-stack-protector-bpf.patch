@@ -1,0 +1,26 @@
+https://github.com/systemd/systemd/pull/26050
+
+From d6a0784a350fb27698ed04f7ada17137324b31bb Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 13 Jan 2023 05:17:56 +0000
+Subject: [PATCH] bpf: disable -fstack-protector in meson
+
+In Gentoo, we recently started making Clang behave the same way as
+our GCC, with -fstack-protector and some friends enabled by default.
+
+SSP doesn't make sense for BPF, so disable it explicitly.
+
+See also e.g. https://www.spinics.net/lists/netdev/msg556400.html.
+
+Bug: https://bugs.gentoo.org/890004
+--- a/src/core/bpf/meson.build
++++ b/src/core/bpf/meson.build
+@@ -7,6 +7,7 @@ endif
+ bpf_clang_flags = [
+         '-std=gnu11',
+         '-Wno-compare-distinct-pointer-types',
++        '-fno-stack-protector',
+         '-O2',
+         '-target',
+         'bpf',
+

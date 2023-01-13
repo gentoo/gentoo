@@ -241,6 +241,7 @@ src_unpack() {
 src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/252-tmpfiles-ub.patch"
+		"${FILESDIR}/252-no-stack-protector-bpf.patch"
 	)
 
 	if ! use vanilla; then
