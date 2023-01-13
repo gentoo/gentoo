@@ -3,7 +3,7 @@
 
 # @ECLASS: pam.eclass
 # @MAINTAINER:
-# No maintainer <maintainer-needed@gentoo.org>
+# base-system@gentoo.org
 # @AUTHOR:
 # Diego Pettenò <flameeyes@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7 8
