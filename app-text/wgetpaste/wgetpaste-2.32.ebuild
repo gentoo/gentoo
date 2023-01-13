@@ -1,11 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Command-line interface to various pastebins"
-HOMEPAGE="https://wgetpaste.zlin.dk/"
-
+HOMEPAGE="https://github.com/zlin/wgetpaste"
 SRC_URI="https://github.com/zlin/wgetpaste/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
