@@ -34,6 +34,7 @@ ruby_add_bdepend "
 		>=dev-ruby/railties-6.0
 		>=dev-ruby/activemodel-6.0
 		>=dev-ruby/actionpack-6.0
+		dev-ruby/unindent
 	)
 	doc? (
 		dev-ruby/yard
