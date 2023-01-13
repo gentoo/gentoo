@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,12 +12,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="ssl diet"
-REQUIRED_USE="ssl? ( !diet )"
+IUSE="ssl"
 
-DEPEND=">=dev-libs/libowfat-0.32-r2[diet=]
+DEPEND=">=dev-libs/libowfat-0.32-r2
 	virtual/libcrypt:=
-	diet? ( dev-libs/dietlibc )
 	ssl? (
 		dev-libs/openssl:0=
 	)"
@@ -38,13 +36,10 @@ src_prepare() {
 }
 
 src_compile() {
-	local DIET=
-	use diet && DIET='/usr/bin/diet'
-
 	local targets='gatling'
 	use ssl && targets+=' tlsgatling'
 
-	emake DIET="${DIET}" CC="$(tc-getCC)" \
+	emake CC="$(tc-getCC)" \
 			CFLAGS="${CFLAGS} -I${ESYSROOT}/usr/include/libowfat" \
 			LDFLAGS="${LDFLAGS}" prefix=/usr ${targets}
 }

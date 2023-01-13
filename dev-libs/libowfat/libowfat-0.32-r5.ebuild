@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
@@ -12,10 +12,6 @@ HOMEPAGE="https://www.fefe.de/libowfat/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 hppa sparc x86"
-IUSE="diet"
-
-RDEPEND="diet? ( >=dev-libs/dietlibc-0.33_pre20090721 )"
-DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc10.patch
@@ -43,10 +39,8 @@ src_compile() {
 		AR="$(tc-getAR)" \
 		RANLIB="$(tc-getRANLIB)" \
 		CFLAGS="-I. ${CFLAGS}" \
-		DIET="${EPREFIX}/usr/bin/diet -Os" \
 		prefix="${EPREFIX}/usr" \
-		INCLUDEDIR="${EPREFIX}/usr/include" \
-		$( use diet || echo 'DIET=' )
+		INCLUDEDIR="${EPREFIX}/usr/include"
 }
 
 src_install() {

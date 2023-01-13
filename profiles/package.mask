@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Marco Scardovi <mscardovi@icloud.com> (2023-01-25)
+# It's finally time to drop that masterpiece.
+# if You have a stronger opinion to maintain it feel free
+# to drop that mask. removal after 30 days. # Bug 890977
+app-shells/shish
+dev-libs/dietlibc
+sys-process/minit
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-01-24)
 # Mostly obsoleted by the better maintained net-misc/yt-dlp, please
 # migrate. If had USE=yt-dlp enabled (default) then was likely already
