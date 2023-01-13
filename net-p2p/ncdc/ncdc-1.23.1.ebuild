@@ -11,7 +11,7 @@ SRC_URI="
 	https://dev.yorhel.nl/download/${P}.tar.gz
 	verify-sig? ( https://dev.yorhel.nl/download/${P}.tar.gz.asc )
 "
-KEYWORDS="~amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 LICENSE="MIT"
 SLOT="0"
