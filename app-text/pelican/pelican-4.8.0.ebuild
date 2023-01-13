@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,6 +43,10 @@ EPYTEST_DESELECT=(
 	pelican/tests/test_testsuite.py::TestSuiteTest::test_error_on_warning
 	pelican/tests/test_pelican.py::TestPelican::test_basic_generation_works
 	pelican/tests/test_pelican.py::TestPelican::test_custom_generation_works
+)
+
+PATCHES=(
+	"${FILESDIR}"/${P}-sphinx-6.patch
 )
 
 distutils_enable_tests pytest
