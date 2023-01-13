@@ -1,0 +1,36 @@
+https://gerrit.libreoffice.org/c/core/+/145479
+
+From a7a6b436f1a83321ccba5b6b44a275205aa729e0 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 13 Jan 2023 15:09:59 +0000
+Subject: [PATCH] configure.ac: Fix build with --with-system-zxing and < Clang
+ 16
+
+Clang 15 and older default to -std=c++14, not -std=c++17 (unlike Clang 16 onwards).
+
+This doesn't show up with GCC because GCC 11 onwards defaults to -std=c++17.
+
+The new version of libzxing requires C++ 17, per its release notes. Adapt
+the configure check accordingly to pass -std=c++17 when checking for its
+headers and save accordingly if successful.
+
+(Do this via ${CXXFLAGS_CXX11} which has the appropriate switch
+for our compiler, despite its name.)
+
+Bug: https://bugs.gentoo.org/890324
+Change-Id: Iaaa8fdc05eea0e26416b605bfda8f2d831f8729c
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -11187,7 +11187,7 @@ else
+                 continue
+             fi
+             dnl TODO: White space in $i would cause problems:
+-            CXXFLAGS="$save_CXXFLAGS -I$i/ZXing"
++            CXXFLAGS="$save_CXXFLAGS ${CXXFLAGS_CXX11} -I$i/ZXing"
+             AC_CHECK_HEADER(MultiFormatWriter.h, [ZXING_CFLAGS=-I$i/ZXing; break],
+                 [unset ac_cv_header_MultiFormatWriter_h], [#include <stdexcept>])
+         done
+-- 
+2.39.0
+
