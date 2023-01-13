@@ -62,20 +62,7 @@ RDEPEND="
 
 DESTDIR="/opt/${MY_PN}"
 
-QA_PREBUILT="
-	${DESTDIR#/}/${MY_PN^}
-	${DESTDIR#/}/chrome_crashpad_handler
-	${DESTDIR#/}/chrome-sandbox
-	${DESTDIR#/}/libffmpeg.so
-	${DESTDIR#/}/libvk_swiftshader.so
-	${DESTDIR#/}/libvulkan.so
-	${DESTDIR#/}/libEGL.so
-	${DESTDIR#/}/libGLESv2.so
-	${DESTDIR#/}/libVkICD_mock_icd.so
-	${DESTDIR#/}/swiftshader/libEGL.so
-	${DESTDIR#/}/swiftshader/libGLESv2.so
-	${DESTDIR#/}/swiftshader/libvk_swiftshader.so
-"
+QA_PREBUILT="*"
 
 CONFIG_CHECK="~USER_NS"
 
