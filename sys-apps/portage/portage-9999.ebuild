@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -66,15 +66,11 @@ RDEPEND="
 	!<app-portage/gentoolkit-0.4.6
 	!<app-portage/repoman-2.3.10
 	!~app-portage/repoman-3.0.0"
-# Weird dep construct for sys-apps/file can be removed once >=file-5.44-r1 stable
 PDEPEND="
 	!build? (
 		>=net-misc/rsync-2.6.4
-		|| (
-			>=sys-apps/file-5.44-r1
-			=sys-apps/file-5.43-r2
-		)
 		>=sys-apps/coreutils-6.4
+		>=sys-apps/file-5.44-r3
 	)
 "
 # coreutils-6.4 rdep is for date format in emerge-webrsync #164532
