@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg_dojar dist/abcl.jar
+	java-pkg_dojar dist/abcl.jar dist/abcl-contrib.jar
 	java-pkg_dolauncher ${PN} --java_args "-server -Xrs" --main org.armedbear.lisp.Main
 	dodoc README
 }
