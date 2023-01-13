@@ -38,6 +38,7 @@ BDEPEND="
 	test? (
 		dev-python/colorlog[${PYTHON_USEDEP}]
 		dev-python/Faker[${PYTHON_USEDEP}]
+		dev-python/jsonschema[${PYTHON_USEDEP}]
 	)
 "
 
