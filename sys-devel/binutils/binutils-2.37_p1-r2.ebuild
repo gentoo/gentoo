@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -169,6 +169,13 @@ src_configure() {
 
 	# Keep things sane
 	strip-flags
+
+	# ideally we want !tc-ld-is-bfd for best future-proofing, but it needs
+	# https://github.com/gentoo/gentoo/pull/28355
+	# mold needs this too but right now tc-ld-is-mold is also not available
+	if tc-ld-is-lld; then
+		append-ldflags -Wl,--undefined-version
+	fi
 
 	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
 
