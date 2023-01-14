@@ -1,0 +1,86 @@
+From 543abf86e6747e406e176ac4e8fc52090bae373b Mon Sep 17 00:00:00 2001
+From: Alexander Lohnau <alexander.lohnau@gmx.de>
+Date: Thu, 5 Jan 2023 20:57:54 +0100
+Subject: [PATCH] Fix loading of external extractors and writers
+
+In 5bbdfc4749f92c510cc82dbd66f5d3b2bc3763ac, the external extractors were mistakenly ported to KPluginMetaData::findPlugins.
+
+However, the logic was broken before, because the dir entries must *not* be plugins, but normal files.
+This was introduced in 73da9a53cb500da000c50b164dd5693ef7474041.
+
+Considering that we tell QDir to only list dirs, the check if we have a plugin or not doesn't make sense anyways.
+
+BUG: 463598
+(cherry picked from commit 5bd67e925db7db2f9619139f7e8000ce0321d52d)
+---
+ src/extractorcollection.cpp | 23 ++++++++++++-----------
+ src/writercollection.cpp    |  3 ---
+ 2 files changed, 12 insertions(+), 14 deletions(-)
+
+
+From 36efc6c632ad88bf6b1f16649ec28cc78dad5c15 Mon Sep 17 00:00:00 2001
+From: Alexander Lohnau <alexander.lohnau@gmx.de>
+Date: Thu, 12 Jan 2023 15:15:14 +0100
+Subject: [PATCH] Also add external extractors to vector of all plugins
+
+Amends 5bd67e925db7db2f9619139f7e8000ce0321d52d
+
+BUG: 463598
+
+
+(cherry picked from commit 34637beb6bb4dbaf80377f12142c799ed9e000d5)
+---
+ src/extractorcollection.cpp | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/extractorcollection.cpp b/src/extractorcollection.cpp
+--- a/src/extractorcollection.cpp
++++ b/src/extractorcollection.cpp
+@@ -72,19 +72,30 @@
+         }
+     }
+ 
+-    const QVector<KPluginMetaData> externalExtractors =
+-        KPluginMetaData::findPlugins(QStringLiteral(LIBEXEC_INSTALL_DIR "/kfilemetadata/externalextractors"), {}, KPluginMetaData::AllowEmptyMetaData);
+-    for (const KPluginMetaData &externalPlugin : externalExtractors) {
+-        qCDebug(KFILEMETADATA_LOG) << "Adding plugin - " << externalPlugin.fileName();
++    QStringList externalPlugins;
++    const QDir externalPluginDir(QStringLiteral(LIBEXEC_INSTALL_DIR "/kfilemetadata/externalextractors"));
++    qCDebug(KFILEMETADATA_LOG) << "Searching for external extractors:" << externalPluginDir.path();
++    // For external plugins, we look into the directories
++    const QStringList externalPluginEntryList = externalPluginDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
++    for (const QString &externalPlugin : externalPluginEntryList) {
++        if (externalPlugins.contains(externalPlugin)) {
++            qCDebug(KFILEMETADATA_LOG) << "Skipping duplicate - " << externalPluginDir.path() << ":" << externalPlugin;
++            continue;
++        }
++
++        qCDebug(KFILEMETADATA_LOG) << "Adding plugin - " << externalPluginDir.path() << ":" << externalPlugin;
++        externalPlugins << externalPlugin;
+ 
+         Extractor extractor;
+-        ExternalExtractor *plugin = new ExternalExtractor(externalPlugin.fileName());
++        auto pluginPath = externalPluginDir.absoluteFilePath(externalPlugin);
++        ExternalExtractor *plugin = new ExternalExtractor(pluginPath);
+         if (plugin && !plugin->mimetypes().isEmpty()) {
+             extractor.setExtractorPlugin(plugin);
+             extractor.setAutoDeletePlugin(Extractor::AutoDeletePlugin);
+             m_allExtractors.push_back(std::move(extractor));
+         }
+     }
++    externalPlugins.clear();
+ 
+     for (Extractor& extractor : m_allExtractors) {
+         auto pluginProperties = extractor.extractorProperties();
+--- a/src/writercollection.cpp
++++ b/src/writercollection.cpp
+@@ -68,9 +68,6 @@ void WriterCollectionPrivate::findWriters()
+     // For external plugins, we look into the directories. Those are executables and not C++ plugins.
+     const QStringList externalPluginEntryList = externalPluginDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+     for (const QString& externalPlugin : externalPluginEntryList) {
+-        if (!QLibrary::isLibrary(externalPlugin)) {
+-            continue;
+-        }
+         if (externalPlugins.contains(externalPlugin)) {
+             continue;
+         }
