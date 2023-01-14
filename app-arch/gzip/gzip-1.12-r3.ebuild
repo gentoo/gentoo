@@ -56,8 +56,6 @@ src_install() {
 	for x in gunzip gzip zcat; do
 		mv "${ED}/usr/bin/${x}" "${ED}/bin/${x}-reference" || die
 	done
-	sed -i -e 's:exec gzip:&-reference:' \
-		"${ED}"/bin/{gunzip,zcat}-reference || die
 	mv "${ED}"/usr/share/man/man1/gzip{,-reference}.1 || die
 	rm "${ED}"/usr/share/man/man1/{gunzip,zcat}.1 || die
 }
