@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
@@ -24,13 +24,6 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv"
 
 RDEPEND="
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
-"
-BDEPEND="
-	test? (
-		$(python_gen_cond_dep '
-			dev-python/backports-zoneinfo[${PYTHON_USEDEP}]
-		' 3.8)
-	)
 "
 
 distutils_enable_tests pytest
