@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..10} )
-inherit meson-multilib udev python-any-r1
+inherit flag-o-matic meson-multilib udev python-any-r1
 
 DESCRIPTION="An interface for filesystems implemented in userspace"
 HOMEPAGE="https://github.com/libfuse/libfuse"
@@ -34,6 +34,9 @@ pkg_setup() {
 }
 
 multilib_src_configure() {
+	# bug #853058
+	filter-lto
+
 	local emesonargs=(
 		$(meson_use test examples)
 		$(meson_use test tests)
