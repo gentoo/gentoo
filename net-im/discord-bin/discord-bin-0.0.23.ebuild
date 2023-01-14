@@ -23,7 +23,7 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="amd64"
 RESTRICT="bindist mirror strip test"
-IUSE="+seccomp system-ffmpeg"
+IUSE="+seccomp"
 
 RDEPEND="
 		|| (
@@ -57,7 +57,6 @@ RDEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/libxshmfence
 	x11-libs/pango
-	system-ffmpeg? ( media-video/ffmpeg-chromium:${CHROMIUM_VERSION} )
 "
 
 DESTDIR="/opt/${MY_PN}"
@@ -95,11 +94,6 @@ src_prepare() {
 			"${MY_PN}.desktop" ||
 			die "sed failed for seccomp"
 	fi
-	# USE system-ffmpeg
-	if use system-ffmpeg; then
-		rm libffmpeg.so || die
-		elog "Using system ffmpeg. This is experimental and may lead to crashes."
-	fi
 }
 
 src_install() {
@@ -110,13 +104,7 @@ src_install() {
 
 	exeinto "${DESTDIR}"
 
-	doexe "${MY_PN^}" chrome_crashpad_handler chrome-sandbox libEGL.so libGLESv2.so libvk_swiftshader.so
-
-	if use system-ffmpeg; then
-		dosym "../../usr/$(get_libdir)/chromium/libffmpeg.so.${CHROMIUM_VERSION}" "${DESTDIR}/libffmpeg.so" || die
-	else
-		doexe libffmpeg.so
-	fi
+	doexe "${MY_PN^}" chrome_crashpad_handler chrome-sandbox libEGL.so libffmpeg.so libGLESv2.so libvk_swiftshader.so
 
 	insinto "${DESTDIR}"
 	doins chrome_100_percent.pak chrome_200_percent.pak icudtl.dat resources.pak snapshot_blob.bin v8_context_snapshot.bin
