@@ -7,7 +7,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="xml(+)"
-inherit flag-o-matic python-r1 multilib-minimal
+inherit flag-o-matic python-r1 multilib-minimal toolchain-funcs
 
 XSTS_HOME="http://www.w3.org/XML/2004/xml-schema-test-suite"
 XSTS_NAME_1="xmlschema2002-01-16"
@@ -101,6 +101,13 @@ src_prepare() {
 multilib_src_configure() {
 	# Filter seemingly problematic CFLAGS (bug #26320)
 	filter-flags -fprefetch-loop-arrays -funroll-loops
+
+	# ideally we want !tc-ld-is-bfd for best future-proofing, but it needs
+	# https://github.com/gentoo/gentoo/pull/28355
+	# mold needs this too but right now tc-ld-is-mold is also not available
+	if tc-ld-is-lld; then
+		append-ldflags -Wl,--undefined-version
+	fi
 
 	# Notes:
 	# The meaning of the 'debug' USE flag does not apply to the --with-debug
