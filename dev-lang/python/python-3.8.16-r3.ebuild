@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -28,7 +28,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="
 	bluetooth build +ensurepip examples gdbm hardened lto +ncurses pgo
 	+readline +sqlite +ssl test tk valgrind wininst +xml
@@ -43,7 +43,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
-	dev-lang/python-exec[python_targets_python3_8(-)]
 	dev-libs/libffi:=
 	sys-apps/util-linux:=
 	>=sys-libs/zlib-1.1.3:=
@@ -111,6 +110,10 @@ src_prepare() {
 	local jobs=$(makeopts_jobs)
 	sed -i -e "s:-j0:-j${jobs}:" Makefile.pre.in || die
 	sed -i -e "/self\.parallel/s:True:${jobs}:" setup.py || die
+
+	if ! use wininst; then
+		rm Lib/distutils/command/wininst*.exe || die
+	fi
 
 	eautoreconf
 }
@@ -368,9 +371,6 @@ src_install() {
 	if ! use tk; then
 		rm -r "${ED}/usr/bin/idle${PYVER}" || die
 		rm -r "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
-	fi
-	if ! use wininst; then
-		rm "${libdir}/distutils/command/"wininst-*.exe || die
 	fi
 
 	dodoc Misc/{ACKS,HISTORY,NEWS}
