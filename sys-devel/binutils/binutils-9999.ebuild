@@ -9,8 +9,7 @@ DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 
 LICENSE="GPL-3+"
-IUSE="cet default-gold doc gold gprofng multitarget +nls pgo +plugins static-libs test vanilla zstd"
-REQUIRED_USE="default-gold? ( gold )"
+IUSE="cet doc gold gprofng multitarget +nls pgo +plugins static-libs test vanilla zstd"
 
 # Variables that can be set here  (ignored for live ebuilds)
 # PATCH_VER          - the patchset version
@@ -190,9 +189,6 @@ src_configure() {
 	# enable gold (installed as ld.gold) and ld's plugin architecture
 	if use gold ; then
 		myconf+=( --enable-gold )
-		if use default-gold; then
-			myconf+=( --enable-gold=default )
-		fi
 	fi
 
 	if use nls ; then
