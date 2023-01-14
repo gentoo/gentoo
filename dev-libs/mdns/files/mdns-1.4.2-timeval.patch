@@ -1,0 +1,12 @@
+https://github.com/mjansson/mdns/pull/69
+
+--- a/mdns.c
++++ b/mdns.c
+@@ -16,6 +16,7 @@
+ #include <netdb.h>
+ #include <ifaddrs.h>
+ #include <net/if.h>
++#include <sys/time.h>
+ #endif
+ 
+ // Alias some things to simulate recieving data to fuzz library
