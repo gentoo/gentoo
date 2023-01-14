@@ -452,5 +452,5 @@ src_install() {
 
 pkg_postinst() {
 	optfeature_header "Optional runtime features:"
-	optfeature "media-sound/rescrobbled" MPRIS song scrobbling support
+	optfeature "MPRIS song scrobbling support" media-sound/rescrobbled
 }
