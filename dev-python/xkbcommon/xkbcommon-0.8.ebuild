@@ -20,7 +20,7 @@ S="${WORKDIR}"/python-${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 # x11-libs/libxkbcommon dep per README
 RDEPEND="
