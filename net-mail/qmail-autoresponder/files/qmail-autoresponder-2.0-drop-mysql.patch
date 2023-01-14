@@ -1,0 +1,21 @@
+Patch: https://github.com/bruceg/qmail-autoresponder/commit/514a15e22d2eaf888592690f6be3e7c7dd18b7d0
+Bug: https://bugs.gentoo.org/740804
+From 514a15e22d2eaf888592690f6be3e7c7dd18b7d0 Mon Sep 17 00:00:00 2001
+From: Bruce Guenter <bruce@untroubled.org>
+Date: Fri, 13 Apr 2018 10:27:03 -0600
+Subject: [PATCH] options: Drop the extraneous #include <mysql/mysql.h>
+
+---
+ options.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/options.c b/options.c
+index 8d1d1e4..325ea83 100644
+--- a/options.c
++++ b/options.c
+@@ -1,5 +1,4 @@
+ #define _XOPEN_SOURCE
+-#include <mysql/mysql.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <time.h>
