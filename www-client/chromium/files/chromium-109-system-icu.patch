@@ -1,0 +1,58 @@
+From 4885090741554be61cb2ed10194cefb29bf8be64 Mon Sep 17 00:00:00 2001
+From: Yoshisato Yanagisawa <yyanagisawa@chromium.org>
+Date: Wed, 11 Jan 2023 23:51:39 +0000
+Subject: [PATCH] Fix the way to handle codecs in the system icu.
+
+The previous code does not register codecs whose standard name is
+different from the bundled ICU.  As a result, looking up such codecs
+seems to fail unexpectedly.
+
+Bug: 1382032
+Change-Id: I8a61f77d0f70104415d24dd954b3b7061ffca556
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4154277
+Reviewed-by: Kent Tamura <tkent@chromium.org>
+Commit-Queue: Yoshisato Yanagisawa <yyanagisawa@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1091571}
+---
+
+diff --git a/third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc b/third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc
+index a70b359..33ce43f 100644
+--- a/third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc
++++ b/third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc
+@@ -116,6 +116,10 @@
+       continue;
+     }
+ #endif
++    // Avoid codecs supported by `TextCodecCJK`.
++    if (is_text_codec_cjk_enabled && TextCodecCJK::IsSupported(standard_name)) {
++      continue;
++    }
+ 
+ // A number of these aliases are handled in Chrome's copy of ICU, but
+ // Chromium can be compiled with the system ICU.
+@@ -144,12 +148,13 @@
+     }
+ #endif
+ 
+-    if (is_text_codec_cjk_enabled && TextCodecCJK::IsSupported(standard_name)) {
+-      continue;
++    // Avoid registering codecs registered by
++    // `TextCodecCJK::RegisterEncodingNames`.
++    if (!is_text_codec_cjk_enabled ||
++        !TextCodecCJK::IsSupported(standard_name)) {
++      registrar(standard_name, standard_name);
+     }
+ 
+-    registrar(standard_name, standard_name);
+-
+     uint16_t num_aliases = ucnv_countAliases(name, &error);
+     DCHECK(U_SUCCESS(error));
+     if (U_SUCCESS(error))
+@@ -289,6 +294,7 @@
+       continue;
+     }
+ #endif
++    // Avoid codecs supported by `TextCodecCJK`.
+     if (is_text_codec_cjk_enabled && TextCodecCJK::IsSupported(standard_name)) {
+       continue;
+     }
