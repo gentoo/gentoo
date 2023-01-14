@@ -43,3 +43,9 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# strip unnecessary pins, upstream doesn't update them a lot
+	sed -i -E -e 's:,?<=?[0-9.]+::' -e 's:~=:>=:' pyproject.toml || die
+	distutils-r1_src_prepare
+}
