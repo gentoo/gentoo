@@ -408,7 +408,7 @@ LICENSE+=" Apache-2.0 BSD-2 BSD ISC MIT MPL-2.0 Unicode-DFS-2016"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="clipboard cover +notify mpris"
+IUSE="clipboard cover mpris +notify"
 
 RDEPEND="dev-libs/openssl:=
 	media-libs/libpulse
