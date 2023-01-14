@@ -14,7 +14,7 @@ HOMEPAGE="https://llvm.org/"
 # sorttable.js: MIT
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA MIT"
-SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
+SLOT="${LLVM_MAJOR}/${LLVM_SOABI}g1"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x64-macos"
 IUSE="debug doc +extra ieee-long-double +pie +static-analyzer test xml"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
