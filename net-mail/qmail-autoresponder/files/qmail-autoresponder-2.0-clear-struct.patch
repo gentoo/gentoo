@@ -1,0 +1,25 @@
+Patch: https://github.com/bruceg/qmail-autoresponder/commit/baea8ec70d62fbc50868074c050dcb89f1a43f63
+
+From baea8ec70d62fbc50868074c050dcb89f1a43f63 Mon Sep 17 00:00:00 2001
+From: Bruce Guenter <bruce@untroubled.org>
+Date: Fri, 13 Apr 2018 10:39:45 -0600
+Subject: [PATCH] options: Clear time struct before using
+
+The strptime may not set all the fields in struct tm, so we need to
+clear it before parsing, so that mktime doesn't use uninitialized data.
+---
+ options.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/options.c b/options.c
+index 325ea83..ce63867 100644
+--- a/options.c
++++ b/options.c
+@@ -87,6 +87,7 @@ static const char* copy_time(void* ptr, const char* value, unsigned int length)
+   }
+   for (i = 0; i < sizeof time_formats / sizeof *time_formats; i++) {
+     struct tm tm;
++    memset(&tm, 0, sizeof tm);
+     if (strptime(value, time_formats[i], &tm) == value + length) {
+       if ((*dest = mktime(&tm)) != (time_t)-1)
+         return NULL;
