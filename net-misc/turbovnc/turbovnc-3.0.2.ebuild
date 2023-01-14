@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-JAVA_PKG_OPT_USE=client
+JAVA_PKG_OPT_USE=viewer
 inherit cmake desktop java-pkg-opt-2 verify-sig
 
 DESCRIPTION="A fast replacement for TigerVNC"
@@ -16,19 +16,14 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+server +ssl"
-REQUIRED_USE="|| ( client server )"
+IUSE="+server +ssl +viewer"
+REQUIRED_USE="|| ( server viewer )"
 
 COMMON_DEPEND="
 	x11-apps/xauth
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-misc/xkeyboard-config
-	client? (
-		media-libs/libjpeg-turbo:=[java]
-		x11-libs/libXi
-		!net-misc/tigervnc
-	)
 	server? (
 		media-libs/libjpeg-turbo:=
 		sys-libs/pam
@@ -41,12 +36,17 @@ COMMON_DEPEND="
 		ssl? ( dev-libs/openssl:= )
 		!net-misc/tigervnc[server]
 	)
+	viewer? (
+		media-libs/libjpeg-turbo:=[java]
+		x11-libs/libXi
+		!net-misc/tigervnc[viewer(+)]
+	)
 "
 
 RDEPEND="
 	${COMMON_DEPEND}
 	x11-apps/xkbcomp
-	client? ( >=virtual/jre-1.8:* )
+	viewer? ( >=virtual/jre-1.8:* )
 "
 
 # libbz2.so.1, libfontenc.so.1 and libfreetype.so.6 are used by libXfont2.so.2
@@ -54,7 +54,7 @@ RDEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	x11-libs/xtrans
-	client? ( >=virtual/jdk-1.8:* )
+	viewer? ( >=virtual/jdk-1.8:* )
 	server? (
 		app-arch/bzip2
 		media-libs/freetype
@@ -77,14 +77,14 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	use client && java-pkg-opt-2_src_prepare
+	use viewer && java-pkg-opt-2_src_prepare
 	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DTVNC_BUILDVIEWER=$(usex client)
-		-DTVNC_BUILDHELPER=$(usex client)
+		-DTVNC_BUILDVIEWER=$(usex viewer)
+		-DTVNC_BUILDHELPER=$(usex viewer)
 		-DTVNC_BUILDSERVER=$(usex server)
 		-DTVNC_BUILDWEBSERVER=$(usex server)
 	)
@@ -109,7 +109,7 @@ src_configure() {
 		fi
 	fi
 
-	if use client ; then
+	if use viewer ; then
 		export JAVACFLAGS="$(java-pkg_javac-args)"
 		export JNI_CFLAGS="$(java-pkg_get-jni-cflags)"
 	fi
@@ -120,7 +120,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	if use client ; then
+	if use viewer ; then
 		java-pkg_dojar "${BUILD_DIR}"/java/VncViewer.jar
 		make_desktop_entry vncviewer "TurboVNC Viewer" /usr/share/icons/hicolor/48x48/apps/${PN}.png
 	fi
