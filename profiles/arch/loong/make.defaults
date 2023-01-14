@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Main LoongArch profile directory. Common settings for all loong profiles.
@@ -33,11 +33,32 @@ SYMLINK_LIB="no"
 # Should any official spec be revised such that a multilib layout is given,
 # definitions here should be updated to stay compliant.
 
+# Note about the CHOST:
+#
+# The LIBC part ("gnuf64"), that now explicitly calls out the "ABI modifier"
+# in addition to the libc flavor, comes from the multiarch ID as defined by
+# the official Toolchain Conventions document.
+#
+# It was originally "loongarch64-unknown-linux-gnu" for the 22.0 profile,
+# simply because this Gentoo port long predated that spec document itself --
+# the port was started in August 2021 but the initial version of the toolchain
+# conventions spec was only merged in November that year. At that point there
+# were already users on this port, and a large part of loong's userland ABI
+# was still in flux, so the CHOST value didn't get changed when the port was
+# merged into ::gentoo, to hopefully lessen users' workload necessary to catch
+# up with the development.
+#
+# Now that much of loong's userland ABI has been stable for a while, it's
+# probably time to migrate to the spec-compliant CHOST for better
+# interoperability with other distributions like the WIP Debian loong64 port.
+# The original value is to be restored in the 22.0 profile directories for
+# compatibility.
+
 # Flags for lp64d
 LIBDIR_lp64d="lib64"
 CFLAGS_lp64d="-mabi=lp64d"
 LDFLAGS_lp64d="-m elf64loongarch"
-CHOST_lp64d="loongarch64-unknown-linux-gnu"
+CHOST_lp64d="loongarch64-unknown-linux-gnuf64"
 
 # Since many people will want to test this in qemu...
 FEATURES="-pid-sandbox -network-sandbox -ipc-sandbox"

@@ -1,0 +1,5 @@
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Restore the old CHOST for compatibility.
+CHOST_lp64d="loongarch64-unknown-linux-gnu"
