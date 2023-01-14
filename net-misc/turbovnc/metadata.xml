@@ -14,8 +14,8 @@
 		By The VirtualGL Project.
 	</longdescription>
 	<use>
-		<flag name="client">Build the client (vncviewer)</flag>
 		<flag name="server">Build the server (vncserver, Xvnc)</flag>
+		<flag name="viewer">Build the viewer (vncviewer)</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">turbovnc</remote-id>
