@@ -1,0 +1,34 @@
+From 2c6eeac036f8243363df6da9314f3fa0b8ee0834 Mon Sep 17 00:00:00 2001
+From: Jean-Baptiste Mardelle <jb@kdenlive.org>
+Date: Fri, 13 Jan 2023 13:21:03 +0100
+Subject: [PATCH] Fix monitor qml overlay painting corruption with Qt 5.15.8
+ CCBUG: 464027
+
+---
+ src/monitor/glwidget.cpp | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/monitor/glwidget.cpp b/src/monitor/glwidget.cpp
+index b221e0f8e..36a4cc6f9 100644
+--- a/src/monitor/glwidget.cpp
++++ b/src/monitor/glwidget.cpp
+@@ -587,14 +587,13 @@ void GLWidget::paintGL()
+     float width = this->width() * devicePixelRatioF();
+     float height = this->height() * devicePixelRatioF();
+ 
++    f->glClearColor(float(m_bgColor.redF()), float(m_bgColor.greenF()), float(m_bgColor.blueF()), 0);
++    f->glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+     f->glDisable(GL_BLEND);
+     f->glDisable(GL_DEPTH_TEST);
+     f->glDepthMask(GL_FALSE);
+     f->glViewport(0, qRound(m_displayRulerHeight * devicePixelRatioF() * 0.5), int(width), int(height));
+     check_error(f);
+-    f->glClearColor(float(m_bgColor.redF()), float(m_bgColor.greenF()), float(m_bgColor.blueF()), 0);
+-    f->glClear(GL_COLOR_BUFFER_BIT);
+-    check_error(f);
+ 
+     if (!acquireSharedFrameTextures()) return;
+ 
+-- 
+GitLab
+
