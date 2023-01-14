@@ -1,0 +1,66 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+# Tests not enabled, wants junit-jupiter.
+# "${S}/settings.gradle.kts"
+JAVA_PKG_IUSE="doc source"
+MAVEN_ID="org.mockito:mockito-core:5.1.1"
+
+inherit java-pkg-2 java-pkg-simple
+
+DESCRIPTION="Mockito mock objects library core API and implementation"
+HOMEPAGE="https://github.com/mockito/mockito"
+SRC_URI="https://github.com/mockito/mockito/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P}"
+
+LICENSE="MIT"
+SLOT="5"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+
+CP_DEPEND="
+	dev-java/asm:9
+	dev-java/byte-buddy:0
+	dev-java/objenesis:0
+"
+
+DEPEND="
+	dev-java/junit:4
+	dev-java/opentest4j:0
+	>=virtual/jdk-11:*
+	${CP_DEPEND}
+"
+
+RDEPEND="
+	>=virtual/jre-11:*
+	${CP_DEPEND}
+"
+
+BDEPEND="app-arch/unzip"
+
+JAVA_AUTOMATIC_MODULE_NAME="org.mockito"
+JAVA_CLASSPATH_EXTRA="junit-4 opentest4j"
+JAVA_SRC_DIR="src/main/java"
+
+src_prepare() {
+	default
+	# dev-java/byte-buddy is built from byte-buddy-dep without shaded stuff.
+	sed \
+		-e 's:net.bytebuddy.jar.asm:org.objectweb.asm:' \
+		-i src/main/java/org/mockito/internal/creation/bytebuddy/MockMethodAdvice.java \
+		-i src/main/java/org/mockito/internal/creation/bytebuddy/InlineBytecodeGenerator.java || die
+}
+
+src_compile() {
+	java-pkg-simple_src_compile
+
+	# gradle/mockito-core/inline-mock.gradle
+	unzip "${S}"/mockito.jar \
+		org/mockito/internal/creation/bytebuddy/inject/MockMethodDispatcher.class || die
+	zip -d "${S}"/mockito.jar \
+		org/mockito/internal/creation/bytebuddy/inject/MockMethodDispatcher.class || die
+	mv org/mockito/internal/creation/bytebuddy/inject/MockMethodDispatcher.{class,raw} || die
+	jar uf "${S}"/mockito.jar \
+		org/mockito/internal/creation/bytebuddy/inject/MockMethodDispatcher.raw || die
+}

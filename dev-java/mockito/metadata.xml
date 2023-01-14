@@ -6,6 +6,8 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/mockito/mockito/issues</bugs-to>
+		<doc>https://github.com/mockito/mockito/wiki</doc>
 		<remote-id type="github">mockito/mockito</remote-id>
 	</upstream>
 </pkgmetadata>
