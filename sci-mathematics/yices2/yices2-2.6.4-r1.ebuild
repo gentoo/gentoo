@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,4 +44,6 @@ src_install() {
 	default
 
 	doman doc/*.1
+
+	rm "${ED}"/usr/$(get_libdir)/libyices.a || die
 }
