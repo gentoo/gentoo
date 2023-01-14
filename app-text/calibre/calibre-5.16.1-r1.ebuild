@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_9 )
 PYTHON_REQ_USE="ipv6(+),sqlite,ssl"
 
 inherit bash-completion-r1 desktop toolchain-funcs python-single-r1 qmake-utils xdg-utils

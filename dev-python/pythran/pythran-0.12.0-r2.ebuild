@@ -1,10 +1,10 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( python3_{8..10} )
+PYTHON_TESTED=( python3_{9..10} )
 PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_11 )
 
 inherit distutils-r1 multiprocessing

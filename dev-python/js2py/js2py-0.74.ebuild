@@ -7,7 +7,7 @@ MY_PN=Js2Py
 MY_P=${MY_PN}-${PV}
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit distutils-r1
 

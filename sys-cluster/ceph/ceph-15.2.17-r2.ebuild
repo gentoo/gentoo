@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_9 )
 CMAKE_MAKEFILE_GENERATOR=emake
 
 DISTUTILS_OPTIONAL=1

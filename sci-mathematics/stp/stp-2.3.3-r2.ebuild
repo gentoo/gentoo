@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 OC_H=119fe41a83bc455a24a11ecc9b78e7b13fcfcc45
 GT_H=2ad076167a676e3ed62f90b754b30fac5caa1f88
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{9,10} )
 
 inherit flag-o-matic python-single-r1 cmake
 

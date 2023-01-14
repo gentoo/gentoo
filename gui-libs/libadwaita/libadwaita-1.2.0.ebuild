@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit gnome.org meson python-any-r1 vala virtualx
 
 DESCRIPTION="Building blocks for modern adaptive GNOME applications"

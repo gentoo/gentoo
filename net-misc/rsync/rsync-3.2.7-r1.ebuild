@@ -5,7 +5,7 @@ EAPI=8
 
 # Uncomment when introducing a patch which touches configure
 #RSYNC_NEEDS_AUTOCONF=1
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit prefix python-single-r1 systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"

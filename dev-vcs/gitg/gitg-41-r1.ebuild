@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit gnome.org gnome2-utils meson python-r1 vala xdg
 
 DESCRIPTION="git repository viewer for GNOME"

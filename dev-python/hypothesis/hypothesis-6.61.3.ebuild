@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-CLI_COMPAT=( python3_{8..10} )
+CLI_COMPAT=( python3_{9..10} )
 PYTHON_COMPAT=( "${CLI_COMPAT[@]}" python3_11 pypy3 )
 PYTHON_REQ_USE="threads(+),sqlite"
 

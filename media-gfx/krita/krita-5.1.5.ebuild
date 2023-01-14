@@ -4,7 +4,7 @@
 EAPI=8
 
 ECM_TEST="forceoptional"
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 KFMIN=5.82.0
 QTMIN=5.15.5
 VIRTUALX_REQUIRED="test"

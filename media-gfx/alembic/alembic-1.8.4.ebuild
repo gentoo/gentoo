@@ -4,7 +4,7 @@
 EAPI=8
 
 # py311 needs imath-3.1.6+, see PR #28265
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit cmake python-single-r1
 

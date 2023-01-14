@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTICE: Check package version in "lisp/ein-pkg.el".
@@ -8,7 +8,7 @@ EAPI=8
 
 H=388c8f753cfb99b4f82acbdff26bbe27189d2299
 NEED_EMACS=25
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit elisp readme.gentoo-r1 python-single-r1
 

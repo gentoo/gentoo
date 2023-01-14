@@ -1,9 +1,9 @@
-# Copyright 2012-2022 Gentoo Authors
+# Copyright 2012-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit edo bash-completion-r1 elisp-common flag-o-matic python-any-r1 toolchain-funcs
 

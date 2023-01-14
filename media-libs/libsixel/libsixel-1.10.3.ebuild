@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 DISTUTILS_OPTIONAL="1"
 
 inherit bash-completion-r1 distutils-r1 meson

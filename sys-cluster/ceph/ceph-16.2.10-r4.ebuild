@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 LUA_COMPAT=( lua5-3 )
 
 CMAKE_MAKEFILE_GENERATOR=emake

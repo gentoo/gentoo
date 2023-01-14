@@ -12,7 +12,7 @@ EAPI=8
 # "/usr/bin/shiboken2" at build time and "libshiboken2-*.so" at runtime.
 # TODO: Add PyPy once officially supported. See also:
 #     https://bugreports.qt.io/browse/PYSIDE-535
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake llvm python-r1 toolchain-funcs
 

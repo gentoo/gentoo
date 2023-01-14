@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 JAVA_PKG_OPT_USE="collectd_plugins_java"
 LUA_COMPAT=( lua5-{1..4} )
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit autotools fcaps java-pkg-opt-2 linux-info lua-single perl-functions python-single-r1 systemd tmpfiles udev
 

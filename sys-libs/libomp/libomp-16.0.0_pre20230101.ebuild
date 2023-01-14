@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit flag-o-matic cmake-multilib linux-info llvm llvm.org python-single-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"

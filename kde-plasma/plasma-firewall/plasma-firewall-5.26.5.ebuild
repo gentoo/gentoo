@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 KFMIN=5.99.0
 QTMIN=5.15.5
 inherit ecm plasma.kde.org python-single-r1

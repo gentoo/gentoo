@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit meson-multilib python-any-r1
 
 if [[ ${PV} == 9999 ]]; then

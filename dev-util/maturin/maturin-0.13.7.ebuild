@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -345,7 +345,7 @@ CRATES_TEST="
 	unicode-xid-0.2.3
 	unindent-0.1.9"
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{8..11} )
+PYTHON_COMPAT=( pypy3 python3_{9..11} )
 inherit cargo distutils-r1 flag-o-matic
 
 DESCRIPTION="Build and publish crates with pyo3, rust-cpython and cffi bindings"
