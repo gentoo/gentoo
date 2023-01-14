@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>juippis@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="clipboard">Use the system clipboard to e.g. share a link</flag>
+    <flag name="cover">Support displaying the album cover</flag>
+    <flag name="mpris">Allow ncspot to be controlled via MPRIS API</flag>
+    <flag name="notify">Show what's playing via a notification</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">hrkfdn/ncspot</remote-id>
+  </upstream>
+</pkgmetadata>
