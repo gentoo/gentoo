@@ -416,7 +416,7 @@ RDEPEND="dev-libs/openssl:=
 	sys-libs/ncurses
 	x11-libs/libxcb:=
 	cover? ( media-gfx/ueberzug )"
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig"
 
