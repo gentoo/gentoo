@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 USE_RUBY="ruby27 ruby26"
 
 inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2 libtool multilib perl-module prefix python-any-r1 ruby-single xdg-utils

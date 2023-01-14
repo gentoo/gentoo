@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools python-r1 s6 systemd tmpfiles multilib-minimal
 
 DESCRIPTION="NSS module for name lookups using LDAP"

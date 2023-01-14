@@ -4,7 +4,7 @@
 EAPI=8
 
 VALA_USE_DEPEND="vapigen"
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit desktop meson optfeature python-any-r1 readme.gentoo-r1 vala xdg
 

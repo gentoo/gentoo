@@ -5,7 +5,7 @@ EAPI=8
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cmake lua-single optfeature python-single-r1 xdg
 

@@ -1,9 +1,9 @@
-# Copyright 2017-2022 Gentoo Authors
+# Copyright 2017-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit desktop flag-o-matic python-any-r1 scons-utils toolchain-funcs xdg
 

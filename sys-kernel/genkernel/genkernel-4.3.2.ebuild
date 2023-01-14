@@ -6,7 +6,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit bash-completion-r1 python-single-r1
 

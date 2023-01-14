@@ -1,4 +1,4 @@
-# Copyright 2018-2022 Gentoo Authors
+# Copyright 2018-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 VIRTUALX_REQUIRED=manual
 
 inherit ${GIT_ECLASS} meson-multilib python-any-r1 virtualx

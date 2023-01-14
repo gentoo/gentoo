@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ EAPI=8
 #  trunk branch but not release branch.
 #
 #  See bug #785835, bug #856121.
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 
 inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
 

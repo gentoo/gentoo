@@ -4,7 +4,7 @@
 EAPI=7
 GCONF_DEBUG="no"
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{9,10} )
 PYTHON_REQ_USE="sqlite"
 
 ANTLR_VERSION=4.9.1

@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-3 )
 LUA_REQ_USE="deprecated"
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools lua-single python-any-r1 toolchain-funcs
 
 DESCRIPTION="Network exploration tool and security / port scanner"

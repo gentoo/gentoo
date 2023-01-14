@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 LLVM_MAX_SLOT=14
 inherit cmake python-any-r1 llvm
 

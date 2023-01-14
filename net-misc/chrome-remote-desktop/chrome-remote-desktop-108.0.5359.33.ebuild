@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Base URL: https://dl.google.com/linux/chrome-remote-desktop/deb/
@@ -15,7 +15,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{9,10} )
 PLOCALES="am ar bg bn ca cs da de el en_GB en es_419 es et fa fil fi fr gu he hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt_BR pt_PT ro ru sk sl sr sv sw ta te th tr uk vi zh_CN zh_TW"
 
 inherit unpacker python-single-r1 optfeature plocale

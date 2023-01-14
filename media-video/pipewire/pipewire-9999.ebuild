@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ EAPI=8
 # continue to move quickly. It's not uncommon for fixes to be made shortly
 # after releases.
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd udev
 

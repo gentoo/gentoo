@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_8 python3_9 python3_10 )
+PYTHON_COMPAT=( python3_9 python3_10 )
 
 # The built-in ipaddress module handles the parsing of IP addresses. If
 # python is built without ipv6 support, then ipaddress can't parse ipv6

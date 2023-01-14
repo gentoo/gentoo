@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_9 )
 
 MY_P="${P/_}"
 inherit desktop flag-o-matic font python-single-r1 qmake-utils toolchain-funcs xdg-utils

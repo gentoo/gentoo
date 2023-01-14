@@ -5,7 +5,7 @@ EAPI=8
 
 FORTRAN_NEEDED=fortran
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit fortran-2 distutils-r1 multiprocessing

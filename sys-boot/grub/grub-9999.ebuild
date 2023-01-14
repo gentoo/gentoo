@@ -21,7 +21,7 @@ if [[ ${PV} == 9999  ]]; then
 	GRUB_BOOTSTRAP=1
 fi
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 WANT_LIBTOOL=none
 
 if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then

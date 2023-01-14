@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="Pure Python read/write support for ESRI Shapefile format"

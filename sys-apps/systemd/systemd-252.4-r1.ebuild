@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 if [[ ${PV} != 252.* ]] ; then
 	# The F_S=3 issues should be fixed in 253.

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit bash-completion-r1 desktop python-any-r1 scons-utils toolchain-funcs xdg
 
 MY_P="${PN}-$(ver_rs 2 -)"

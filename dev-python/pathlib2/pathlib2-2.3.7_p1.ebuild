@@ -1,11 +1,11 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 # this is a backport, please do not add newer impls unless necessary
-PYTHON_COMPAT=( pypy3 python3_{8..9} )
+PYTHON_COMPAT=( pypy3 python3_9 )
 
 inherit distutils-r1
 

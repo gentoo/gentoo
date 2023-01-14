@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..11} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit cmake desktop flag-o-matic python-any-r1 xdg verify-sig virtualx
 
 DESCRIPTION="3D photo-realistic skies in real time"

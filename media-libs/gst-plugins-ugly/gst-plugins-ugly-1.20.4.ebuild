@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 GST_ORG_MODULE="gst-plugins-ugly"
-PYTHON_COMPAT=( python3_{8,9,10,11} )
+PYTHON_COMPAT=( python3_{9,10,11} )
 inherit gstreamer-meson python-any-r1
 
 DESCRIPTION="Basepack of plugins for gstreamer"

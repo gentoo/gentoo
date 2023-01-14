@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..10} )
 inherit bash-completion-r1 gnome2-utils linux-info optfeature plocale python-single-r1 systemd xdg-utils
 
 DESCRIPTION="A firewall daemon with D-Bus interface providing a dynamic firewall"
