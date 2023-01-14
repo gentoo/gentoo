@@ -1,0 +1,93 @@
+https://bugs.gentoo.org/888063
+https://github.com/Icinga/icinga2/issues/9618
+https://github.com/Icinga/icinga2/pull/9624
+
+From 5bcbc96e221bb3aafc370449941bfbd70939915c Mon Sep 17 00:00:00 2001
+From: "Alexander A. Klimov" <alexander.klimov@icinga.com>
+Date: Wed, 4 Jan 2023 17:02:19 +0100
+Subject: [PATCH 1/2] Handle boost::beast::http::basic_fields#set() signature
+ change (v1.81)
+
+Make String convertible to boost::beast::string_view (always working),
+not boost::string_view (broken).
+--- a/lib/base/string.cpp
++++ b/lib/base/string.cpp
+@@ -128,15 +128,15 @@ String::operator const std::string&() const
+ }
+ 
+ /**
+- * Conversion function to boost::string_view.
++ * Conversion function to boost::beast::string_view.
+  *
+  * This allows using String as the value for HTTP headers in boost::beast::http::basic_fields::set.
+  *
+- * @return A boost::string_view representing this string.
++ * @return A boost::beast::string_view representing this string.
+  */
+-String::operator boost::string_view() const
++String::operator boost::beast::string_view() const
+ {
+-	return boost::string_view(m_Data);
++	return boost::beast::string_view(m_Data);
+ }
+ 
+ const char *String::CStr() const
+--- a/lib/base/string.hpp
++++ b/lib/base/string.hpp
+@@ -5,6 +5,7 @@
+ 
+ #include "base/i2-base.hpp"
+ #include "base/object.hpp"
++#include <boost/beast/core.hpp>
+ #include <boost/range/iterator.hpp>
+ #include <boost/utility/string_view.hpp>
+ #include <functional>
+@@ -73,7 +74,7 @@ class String
+ 	bool operator<(const String& rhs) const;
+ 
+ 	operator const std::string&() const;
+-	operator boost::string_view() const;
++	operator boost::beast::string_view() const;
+ 
+ 	const char *CStr() const;
+ 
+
+From 99c2d69dc85dfcd044e4a83d4894aa52eedfe09d Mon Sep 17 00:00:00 2001
+From: "Alexander A. Klimov" <alexander.klimov@icinga.com>
+Date: Wed, 4 Jan 2023 17:34:49 +0100
+Subject: [PATCH 2/2] Handle boost::beast::http::basic_fields#operator[]()
+ signature change (v1.81)
+
+Use always working std::string(x), not broken x.to_string().
+(x is a return value.)
+--- a/lib/remote/httphandler.cpp
++++ b/lib/remote/httphandler.cpp
+@@ -58,7 +58,7 @@ void HttpHandler::ProcessRequest(
+ 	Dictionary::Ptr node = m_UrlTree;
+ 	std::vector<HttpHandler::Ptr> handlers;
+ 
+-	Url::Ptr url = new Url(request.target().to_string());
++	Url::Ptr url = new Url(std::string(request.target()));
+ 	auto& path (url->GetPath());
+ 
+ 	for (std::vector<String>::size_type i = 0; i <= path.size(); i++) {
+--- a/lib/remote/httpserverconnection.cpp
++++ b/lib/remote/httpserverconnection.cpp
+@@ -246,7 +246,7 @@ bool HandleAccessControl(
+ 			if (!allowedOrigins.empty()) {
+ 				auto& origin (request[http::field::origin]);
+ 
+-				if (allowedOrigins.find(origin.to_string()) != allowedOrigins.end()) {
++				if (allowedOrigins.find(std::string(origin)) != allowedOrigins.end()) {
+ 					response.set(http::field::access_control_allow_origin, origin);
+ 				}
+ 
+@@ -536,7 +536,7 @@ void HttpServerConnection::ProcessMessages(boost::asio::yield_context yc)
+ 			if (!authenticatedUser) {
+ 				CpuBoundWork fetchingAuthenticatedUser (yc);
+ 
+-				authenticatedUser = ApiUser::GetByAuthHeader(request[http::field::authorization].to_string());
++				authenticatedUser = ApiUser::GetByAuthHeader(std::string(request[http::field::authorization]));
+ 			}
+ 
+ 			Log logMsg (LogInformation, "HttpServerConnection");
