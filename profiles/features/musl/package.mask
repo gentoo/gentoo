@@ -216,7 +216,7 @@ media-video/amdgpu-pro-amf
 media-video/dvbackup
 media-video/makemkv
 media-video/popcorntime-bin
-net-im/discord-bin
+net-im/discord
 net-im/element-desktop-bin
 net-im/gitter-bin
 net-im/mattermost-desktop-bin
