@@ -991,11 +991,6 @@ net-misc/gnome-online-miners
 # Unfixed root privilege escalation, bug #631552
 sys-cluster/slurm
 
-# Matthias Schwarzott <zzam@gentoo.org> (2022-09-08)
-# Breaks kernel builds with BTF enabled.
-# Bug #868762.
-=dev-util/pahole-1.24
-
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
 # haskell-cabal.eclass)
