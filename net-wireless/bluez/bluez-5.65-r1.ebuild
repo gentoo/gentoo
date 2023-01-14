@@ -55,6 +55,7 @@ DEPEND="
 	udev? ( >=virtual/udev-172 )
 "
 RDEPEND="${DEPEND}
+	deprecated? ( !net-wireless/bluez-hcidump )
 	selinux? ( sec-policy/selinux-bluetooth )
 	test-programs? ( ${TEST_DEPS} )
 "
