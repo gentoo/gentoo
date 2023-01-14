@@ -15,5 +15,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">ranger/ranger</remote-id>
+		<remote-id type="pypi">ranger-fm</remote-id>
 	</upstream>
 </pkgmetadata>
