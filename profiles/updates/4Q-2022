@@ -14,14 +14,3 @@ move virtual/awk app-alternatives/awk
 move virtual/yacc app-alternatives/yacc
 slotmove sys-devel/autoconf-dickey 2.52_p20210509 2.52
 move dev-python/nuitka dev-python/Nuitka
-move net-print/brlaser media-print/brlaser
-move net-print/hplip media-print/hplip
-move net-print/hplip-plugin media-print/hplip-plugin
-move net-print/pnm2ppa media-print/pnm2ppa
-move net-print/ink media-print/ink
-move net-print/libinklevel media-print/libinklevel
-move net-print/splix media-print/splix
-move net-print/c2esp media-print/c2esp
-move net-print/foo2zjs media-print/foo2zjs
-move net-print/gutenprint media-print/gutenprint
-move net-print/epson-inkjet-printer-escpr media-print/epson-inkjet-printer-escpr
