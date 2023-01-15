@@ -34,8 +34,6 @@ PDEPEND="wayland? ( >=kde-plasma/kwayland-integration-5.25.5-r1:5 )"
 
 DOCS=( docs/README.kstartupinfo )
 
-PATCHES=( "${FILESDIR}/${PN}-5.101.0-always-provide-KX11Extras.patch" ) # bug 885525
-
 src_configure() {
 	local mycmakeargs=(
 		-DKWINDOWSYSTEM_NO_WIDGETS=ON
