@@ -105,6 +105,9 @@ multilib_src_configure() {
 		# systems with debuginfod library, bug #754753
 		--without-debuginfod
 
+		# Revisit if it's useful, we do have binutils[zstd] though
+		--without-zstd
+
 		# Allow user to opt into CET for host libraries.
 		# Ideally we would like automagic-or-disabled here.
 		# But the check does not quite work on i686: bug #760926.
