@@ -148,24 +148,9 @@ src_prepare() {
 
 	append-flags $(test-flags-CC -Wa,--noexecstack)
 
-	# Prefixify Configure shebang (bug #141906)
-	sed \
-		-e "1s,/usr/bin/env,${BROOT}&," \
-		-i Configure || die
-
-	# Remove test target when FEATURES=test isn't set
-	if ! use test ; then
-		sed \
-			-e '/^$config{dirs}/s@ "test",@@' \
-			-i Configure || die
-	fi
-
 	local sslout=$(./gentoo.config)
 	einfo "Using configuration: ${sslout:-(openssl knows best)}"
-
-	# The config script does stupid stuff to prompt the user. Kill it.
-	sed -i '/stty -icanon min 0 time 50; read waste/d' config || die
-	./config ${sslout} --test-sanity || die "I AM NOT SANE"
+	edo perl Configure ${sslout} --test-sanity
 
 	multilib_copy_sources
 }
@@ -198,8 +183,6 @@ multilib_src_configure() {
 
 	local sslout=$(./gentoo.config)
 	einfo "Using configuration: ${sslout:-(openssl knows best)}"
-	local config="Configure"
-	[[ -z ${sslout} ]] && config="config"
 
 	# https://github.com/openssl/openssl/blob/master/INSTALL.md#enable-and-disable-features
 	local myeconfargs=(
@@ -232,7 +215,7 @@ multilib_src_configure() {
 		threads
 	)
 
-	CFLAGS= LDFLAGS= edo ./${config} "${myeconfargs[@]}"
+	CFLAGS= LDFLAGS= edo perl Configure "${myeconfargs[@]}"
 
 	# Clean out hardcoded flags that openssl uses
 	local DEFAULT_CFLAGS=$(grep ^CFLAGS= Makefile | LC_ALL=C sed \
