@@ -14,13 +14,15 @@ HOMEPAGE="https://apps.kde.org/yakuake/"
 LICENSE="GPL-2 LGPL-2"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~x86"
-IUSE="absolute-position X"
+IUSE="absolute-position"
 
+# kde-frameworks/kwindowsystem[X]: Unconditional use of KX11Extras
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtx11extras-${QTMIN}:5
 	>=kde-apps/konsole-${PVCUT}:5
 	>=kde-frameworks/karchive-${KFMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
@@ -38,20 +40,16 @@ DEPEND="
 	>=kde-frameworks/kparts-${KFMIN}:5
 	>=kde-frameworks/kservice-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
-	>=kde-frameworks/kwindowsystem-${KFMIN}:5
+	>=kde-frameworks/kwindowsystem-${KFMIN}:5[X]
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
+	x11-libs/libX11
 	absolute-position? ( >=kde-frameworks/kwayland-${KFMIN}:5 )
-	X? (
-		>=dev-qt/qtx11extras-${QTMIN}:5
-		x11-libs/libX11
-	)
 "
 RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package absolute-position KF5Wayland)
-		-DWITHOUT_X11=$(usex !X)
 	)
 
 	ecm_src_configure
