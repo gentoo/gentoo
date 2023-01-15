@@ -63,6 +63,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/knewstuff-${KFMIN}:5
 	>=kde-frameworks/knotifications-${KFMIN}:5
 	>=kde-frameworks/knotifyconfig-${KFMIN}:5
+	>=kde-frameworks/kpackage-${KFMIN}:5
 	>=kde-frameworks/kparts-${KFMIN}:5
 	>=kde-frameworks/krunner-${KFMIN}:5
 	>=kde-frameworks/kservice-${KFMIN}:5
@@ -78,9 +79,11 @@ COMMON_DEPEND="
 	>=kde-plasma/plasma-workspace-${PVCUT}:5[screencast?]
 	>=media-libs/phonon-4.11.0
 	x11-libs/libX11
+	x11-libs/libXcursor
 	x11-libs/libXfixes
 	x11-libs/libXi
 	x11-libs/libxcb
+	x11-libs/libxkbcommon
 	x11-libs/libxkbfile
 	emoji? (
 		app-i18n/ibus[emoji]
@@ -130,6 +133,7 @@ BDEPEND="
 
 PATCHES=(
 	"${WORKDIR}/${XORGHDRS}/${PN}-5.25.80-override-include-dirs.patch" # downstream patch
+	"${FILESDIR}"/${P}-missing-kpackage-{1,2}.patch
 )
 
 src_prepare() {

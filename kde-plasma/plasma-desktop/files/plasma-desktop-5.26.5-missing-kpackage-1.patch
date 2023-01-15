@@ -1,0 +1,24 @@
+From 8447cfdf67458768627def4f481d9f52f8d444e1 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Mon, 28 Nov 2022 13:08:09 +0100
+Subject: [PATCH] Add missing KPackage link
+
+---
+ kcms/ksplash/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/kcms/ksplash/CMakeLists.txt b/kcms/ksplash/CMakeLists.txt
+index ea75dd743..8bf51f997 100644
+--- a/kcms/ksplash/CMakeLists.txt
++++ b/kcms/ksplash/CMakeLists.txt
+@@ -28,6 +28,7 @@ target_link_libraries(kcm_splashscreen
+   KF5::Plasma
+   KF5::PlasmaQuick
+   KF5::NewStuff
++  KF5::Package
+ 
+   Qt::DBus
+   Qt::Widgets
+-- 
+2.39.0
+

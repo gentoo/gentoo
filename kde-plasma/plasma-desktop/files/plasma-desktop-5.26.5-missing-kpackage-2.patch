@@ -1,0 +1,40 @@
+From 8ad8d248b91d9357f4ee421e4933d89595faf80a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 15 Jan 2023 15:17:09 +0100
+Subject: [PATCH] Add missing KPackage search and link
+
+Follow-up to 8447cfdf67458768627def4f481d9f52f8d444e1
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                  | 1 +
+ kcms/landingpage/CMakeLists.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e797efa50..ef2db360d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -74,6 +74,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+     WidgetsAddons
+     Codecs
+     Sonnet
++    Package
+     KDELibs4Support # kcms/dateandtime
+ )
+ 
+diff --git a/kcms/landingpage/CMakeLists.txt b/kcms/landingpage/CMakeLists.txt
+index 215d51234..e39da9f51 100644
+--- a/kcms/landingpage/CMakeLists.txt
++++ b/kcms/landingpage/CMakeLists.txt
+@@ -26,6 +26,7 @@ target_link_libraries(kcm_landingpage
+     KF5::KCMUtils
+     KF5::ConfigWidgets
+     KF5::Declarative
++    KF5::Package
+     PW::KWorkspace
+     KF5::ActivitiesStats
+ 
+-- 
+2.39.0
+
