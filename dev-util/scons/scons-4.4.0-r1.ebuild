@@ -39,7 +39,6 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	test? (
-		dev-libs/libxml2[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 	)
