@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # System-wide defaults for the Portage system
@@ -101,8 +101,8 @@ LCD_DEVICES="bayrad cfontz cfontz633 glk hd44780 lb216 lcdm001 mtxorb ncurses te
 
 # Manuel Rüger <mrueg@gentoo.org> (2015-09-09)
 # Default Ruby build target(s)
-# Updated to include ruby27 on 2021-10-10
-RUBY_TARGETS="ruby27"
+# Updated to include ruby30 on 2023-01-15
+RUBY_TARGETS="ruby27 ruby30"
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-10-22)
 # These USE flags are what is common between the various sub-profiles. Stages 2
