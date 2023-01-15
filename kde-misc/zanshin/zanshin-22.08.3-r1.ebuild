@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,7 @@ IUSE=""
 
 RESTRICT="test" # bug 785844
 
+# kde-frameworks/kwindowsystem[X]: Unconditional use of KX11Extras
 COMMON_DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -47,7 +48,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kparts-${KFMIN}:5
 	>=kde-frameworks/krunner-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
-	>=kde-frameworks/kwindowsystem-${KFMIN}:5
+	>=kde-frameworks/kwindowsystem-${KFMIN}:5[X]
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 "
 DEPEND="${COMMON_DEPEND}
