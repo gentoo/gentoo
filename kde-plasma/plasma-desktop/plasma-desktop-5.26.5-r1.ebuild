@@ -20,6 +20,7 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="emoji ibus +kaccounts scim screencast +semantic-desktop telemetry"
 
+# kde-frameworks/kwindowsystem[X]: Uses KX11Extras
 COMMON_DEPEND="
 	dev-libs/wayland
 	>=dev-qt/qtconcurrent-${QTMIN}:5
@@ -66,7 +67,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/krunner-${KFMIN}:5
 	>=kde-frameworks/kservice-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
-	>=kde-frameworks/kwindowsystem-${KFMIN}:5
+	>=kde-frameworks/kwindowsystem-${KFMIN}:5[X]
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/plasma-${KFMIN}:5
 	>=kde-frameworks/solid-${KFMIN}:5
