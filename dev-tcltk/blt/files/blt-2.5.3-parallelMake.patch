@@ -1,0 +1,12 @@
+--- a/man/Makefile.in	2023-01-15 13:10:49.541445995 +0100
++++ b/man/Makefile.in	2023-01-15 13:11:44.483619553 +0100
+@@ -34,7 +34,8 @@
+ 
+ all: man.macros $(MANPAGES)
+ 
+-install: mkdirs install-mann install-man3
++install: mkdirs
++	$(MAKE) install-mann install-man3
+ 
+ install-mann: $(MAN_N)
+ 	for i in *.n ; do \
