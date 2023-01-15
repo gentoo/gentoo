@@ -1,18 +1,20 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit linux-info systemd toolchain-funcs
+inherit flag-o-matic linux-info systemd toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://pagure.io/numad.git"
 	inherit git-r3
 else
-	EGIT_COMMIT="334278ff3d774d105939743436d7378a189e8693"
-	SRC_URI="mirror://gentoo/numad-${PV}-${EGIT_COMMIT:0:7}.tar.bz2"
+	# sync with fedora (as numad upstream) and add couple of commis.
+	# at time of writing f37 uses 20150602
+	# git archive --format=tar.gz --prefix="${P}/" -o ${P}.tar.gz ${EGIT_COMMIT}
+	EGIT_COMMIT="d696d6c413c5b47b4bbae79e29ea132e52095af3"
+	SRC_URI="https://dev.gentoo.org/~gyakovlev/distfiles/${P}.tar.gz"
 	KEYWORDS="~amd64 -arm ~arm64 ~ppc64 ~s390 ~x86"
-	S="${WORKDIR}/${PN}-${EGIT_COMMIT:0:7}"
 fi
 
 DESCRIPTION="The NUMA daemon that manages application locality"
@@ -23,13 +25,17 @@ SLOT="0"
 
 CONFIG_CHECK="~NUMA ~CPUSETS"
 
-src_prepare() {
-	default
-	tc-export CC
+src_configure() {
+	tc-export AR CC RANLIB
+
+	# FIXME: https://bugs.gentoo.org/890985
+	# temp workaround
+	filter-flags -D_FORTIFY_SOURCE=3
+	append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 }
 
 src_compile() {
-	emake CFLAGS="${CFLAGS} -std=gnu99"
+	emake OPT_CFLAGS="${CFLAGS}"
 }
 
 src_install() {
@@ -41,7 +47,5 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/numad.logrotated numad
 
-	insinto /etc
-	doins numad.conf
 	systemd_dounit numad.service
 }
