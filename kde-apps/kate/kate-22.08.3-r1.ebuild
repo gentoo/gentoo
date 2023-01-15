@@ -4,7 +4,7 @@
 EAPI=8
 
 ECM_HANDBOOK="optional"
-KFMIN=5.101.0
+KFMIN=5.96.0
 QTMIN=5.15.5
 VIRTUALX_REQUIRED="test"
 inherit ecm flag-o-matic gear.kde.org
@@ -14,9 +14,10 @@ HOMEPAGE="https://kate-editor.org/ https://apps.kde.org/kate/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 IUSE=""
 
+# kde-frameworks/kwindowsystem[X]: Unconditional use of KX11Extras
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -26,7 +27,7 @@ DEPEND="
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/kdbusaddons-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
-	>=kde-frameworks/kwindowsystem-${KFMIN}:5
+	>=kde-frameworks/kwindowsystem-${KFMIN}:5[X]
 "
 RDEPEND="${DEPEND}
 	~kde-apps/kate-addons-${PV}:5
@@ -39,8 +40,10 @@ src_prepare() {
 	cmake_run_in apps/lib cmake_comment_add_subdirectory autotests
 
 	# delete colliding kwrite translations
-	rm -f po/*/*.po || die # installed by kde-apps/kate-lib
-	rm -rf po/*/docs/kwrite || die
+	if [[ ${KDE_BUILD_TYPE} = release ]]; then
+		rm -f po/*/*.po || die # installed by kde-apps/kate-lib
+		rm -rf po/*/docs/kwrite || die
+	fi
 }
 
 src_configure() {
