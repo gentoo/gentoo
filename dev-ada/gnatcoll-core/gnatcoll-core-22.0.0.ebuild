@@ -18,11 +18,7 @@ REQUIRED_USE="|| ( shared static-libs static-pic )
 	${ADA_REQUIRED_USE}"
 
 RDEPEND="
-	|| (
-		>=dev-ada/libgpr-2021
-		~dev-ada/libgpr-22.0.0
-	)
-	dev-ada/libgpr:=[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+	~dev-ada/libgpr-22.0.0:=[${ADA_USEDEP},shared?,static-libs?,static-pic?]
 "
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
