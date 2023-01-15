@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-darwin.patch
 	"${FILESDIR}"/${P}-gbsd.patch
 	"${FILESDIR}"/${P}-lto.patch
+	"${FILESDIR}"/${P}-parallelMake.patch
 )
 
 src_prepare() {
@@ -96,7 +97,7 @@ src_configure() {
 		--with-cflags="${CFLAGS}" \
 		--with-gnu-ld \
 		$(use_enable jpeg) \
-		--with-X \
+		--with-x \
 		CC="$(tc-getCC)"
 }
 
