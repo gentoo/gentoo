@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -160,6 +160,9 @@ src_install() {
 	emake DESTDIR="${D}" -C bdl install
 	emake DESTDIR="${D}" -C bdb install
 	emake DESTDIR="${D}" -C cigloo install
+
+	# Remove static libs, bug #890820
+	find "${ED}" -type f -name "*.a" -delete || die
 
 	# The ".sh" scripts set proper environment and library order for Bigloo,
 	# but programs (and the Bigloo Emacs library, "bee-mode") want "bigloo",
