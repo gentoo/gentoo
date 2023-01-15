@@ -22,6 +22,7 @@ screencast +semantic-desktop telemetry +wallpaper-metadata"
 REQUIRED_USE="gps? ( geolocation )"
 RESTRICT="test"
 
+# kde-frameworks/kwindowsystem[X]: Uses KX11Extras
 # slot op: various private QtWaylandClient headers
 COMMON_DEPEND="
 	dev-libs/icu:=
@@ -72,7 +73,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kwallet-${KFMIN}:5
 	>=kde-frameworks/kwayland-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
-	>=kde-frameworks/kwindowsystem-${KFMIN}:5
+	>=kde-frameworks/kwindowsystem-${KFMIN}:5[X]
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/plasma-${KFMIN}:5
 	>=kde-frameworks/prison-${KFMIN}:5[qml]
