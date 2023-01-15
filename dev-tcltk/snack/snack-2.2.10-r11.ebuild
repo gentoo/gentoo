@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{9,10} )
+DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_OPTIONAL=yes
 
 inherit distutils-r1 flag-o-matic toolchain-funcs virtualx
@@ -25,6 +26,10 @@ DEPEND="
 	python? ( ${PYTHON_DEPS} )
 	vorbis? ( media-libs/libvorbis )"
 RDEPEND="${DEPEND}"
+BDEPEND="python? (
+	${PYTHON_DEPS}
+	${DISTUTILS_DEPS}
+)"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
