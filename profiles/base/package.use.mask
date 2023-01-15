@@ -118,7 +118,7 @@ sys-libs/minizip-ng compat
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-17)
 # po4a crashes while translating
 # mask for now
-=dev-util/schroot-1.6.13_p2 nls
+dev-util/schroot nls
 
 # Sam James <sam@gentoo.org> (2022-09-15)
 # Doesn't work on e.g. glibc systems. Unmasked on the LLVM profiles.
