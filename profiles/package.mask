@@ -948,11 +948,11 @@ dev-cpp/sourcetrail
 # Broke C++ reverse dependencies. Please upgrade to 1.1.0-r1. See bug #884369.
 =x11-libs/libICE-1.1.0
 
-# Sam James <sam@gentoo.org> (2022-12-03)
+# Stephan Hartmann <sultan@gentoo.org> (2023-01-15)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
 # and accept a more unstable release.
->=www-client/chromium-110
+>=www-client/chromium-111
 
 # Piotr Karbowski <slashbeast@gentoo.org> (2022-11-29)
 # Multiple stability issues, deadlocks on exit, broken API.
