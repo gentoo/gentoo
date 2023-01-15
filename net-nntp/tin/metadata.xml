@@ -9,6 +9,5 @@
 		<flag name="cancel-locks">Enable Cancel-Lock header functionality</flag>
 		<flag name="gpg">Enable <pkg>app-crypt/gnupg</pkg> support</flag>
 		<flag name="libtls" restrict="&gt;=net-nntp/tin-2.6.2">Prefer <pkg>dev-libs/libretls</pkg> as SSL/TLS provider (ineffective with USE=-ssl)</flag>
-		<flag name="pcre2" restrict="&gt;=net-nntp/tin-2.6.2">Use <pkg>dev-libs/libpcre2</pkg> instead of <pkg>dev-libs/libpcre</pkg></flag>
 	</use>
 </pkgmetadata>

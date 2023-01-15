@@ -12,18 +12,17 @@ SRC_URI="ftp://ftp.tin.org/pub/news/clients/tin/stable/${P}.tar.xz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="cancel-locks debug gnutls gpg libtls nls +pcre2 sasl socks5 ssl"
+IUSE="cancel-locks debug gnutls gpg libtls nls sasl socks5 ssl"
 
 RDEPEND="
 	dev-libs/icu:=
+	dev-libs/libpcre2:=
 	dev-libs/uulib
 	sys-libs/ncurses:=
 	virtual/libiconv
 	cancel-locks? ( >=net-libs/canlock-3.0:= )
 	gpg? ( app-crypt/gnupg )
 	nls? ( virtual/libintl )
-	pcre2? ( dev-libs/libpcre2:= )
-	!pcre2? ( dev-libs/libpcre:3 )
 	sasl? ( virtual/gsasl )
 	socks5? ( net-proxy/dante )
 	ssl? (
@@ -37,6 +36,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-alternatives/yacc
+	dev-libs/libpcre2
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
@@ -56,9 +56,6 @@ src_configure() {
 		$(use_enable cancel-locks)
 		$(use_with cancel-locks canlock)
 
-		$(use_with pcre2 pcre2-config)
-		$(use_with !pcre2 pcre "${ESYSROOT}"/usr)
-
 		$(use_enable debug)
 		$(use_enable gpg pgp-gpg)
 		$(use_enable nls)
@@ -66,6 +63,8 @@ src_configure() {
 		--disable-mime-strict-charset
 		--enable-nntp
 		--enable-prototypes
+		--without-pcre
+		--with-pcre2-config
 		--with-coffee # easter egg :)
 		--with-nntp-default-server="${TIN_DEFAULT_SERVER:-${NNTPSERVER:-news.gmane.io}}"
 		--with-screen=ncursesw
