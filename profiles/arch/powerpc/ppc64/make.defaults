@@ -39,7 +39,3 @@ VIDEO_CARDS="fbdev mga r128 radeon"
 
 # Enable abi_ppc_64 for packages that don't have it forced.
 ABI_PPC="64"
-
-# Hans de Graaff <graaff@gentoo.org> (2023-01-15)
-# Temporary mask for https://bugs.gentoo.org/890915
-RUBY_TARGETS="ruby27"
