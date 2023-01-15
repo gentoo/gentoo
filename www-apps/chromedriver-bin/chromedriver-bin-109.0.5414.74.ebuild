@@ -9,7 +9,7 @@ SRC_URI="amd64? ( https://chromedriver.storage.googleapis.com/${PV}/chromedriver
 
 LICENSE="google-chrome"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RESTRICT="bindist mirror strip"
 
