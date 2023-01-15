@@ -1,19 +1,20 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson optfeature virtualx
 
 DESCRIPTION="An improved dynamic tiling window manager"
 HOMEPAGE="https://i3wm.org/"
+
 if [[ "${PV}" = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/i3/i3"
 	EGIT_BRANCH="next"
 	inherit git-r3
 else
 	SRC_URI="https://i3wm.org/downloads/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="BSD"
