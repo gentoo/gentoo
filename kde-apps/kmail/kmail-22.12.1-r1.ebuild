@@ -22,6 +22,7 @@ IUSE="pch speech telemetry"
 
 RESTRICT="test" # bug 616878
 
+# kde-frameworks/kwindowsystem[X]: Unconditional use of KX11Extras
 COMMON_DEPEND="
 	>=app-crypt/gpgme-1.16.0:=[cxx,qt5]
 	>=dev-qt/qtcore-${QTMIN}:5
@@ -69,7 +70,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/kservice-${KFMIN}:5
 	>=kde-frameworks/ktextwidgets-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
-	>=kde-frameworks/kwindowsystem-${KFMIN}:5
+	>=kde-frameworks/kwindowsystem-${KFMIN}:5[X]
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/sonnet-${KFMIN}:5
 	telemetry? ( >=dev-libs/kuserfeedback-1.2.0:5 )
