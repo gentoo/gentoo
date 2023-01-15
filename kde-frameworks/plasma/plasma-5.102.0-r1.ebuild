@@ -13,18 +13,20 @@ DESCRIPTION="Plasma framework"
 
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="gles2-only man wayland X"
+IUSE="gles2-only man wayland"
 
 RESTRICT="test"
 
+# kde-frameworks/kwindowsystem[X]: Unconditional use of KX11Extras
 RDEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5[gles2-only=,X=]
+	>=dev-qt/qtgui-${QTMIN}:5[gles2-only=,X]
 	>=dev-qt/qtquickcontrols-${QTMIN}:5
 	>=dev-qt/qtsql-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtx11extras-${QTMIN}:5
 	=kde-frameworks/kactivities-${PVCUT}*:5
 	=kde-frameworks/karchive-${PVCUT}*:5
 	=kde-frameworks/kconfig-${PVCUT}*:5[qml]
@@ -41,21 +43,18 @@ RDEPEND="
 	=kde-frameworks/kpackage-${PVCUT}*:5
 	=kde-frameworks/kservice-${PVCUT}*:5
 	=kde-frameworks/kwidgetsaddons-${PVCUT}*:5
-	=kde-frameworks/kwindowsystem-${PVCUT}*:5[X?]
+	=kde-frameworks/kwindowsystem-${PVCUT}*:5[X]
 	=kde-frameworks/kxmlgui-${PVCUT}*:5
-	!gles2-only? ( media-libs/libglvnd[X?] )
+	x11-libs/libX11
+	x11-libs/libxcb
+	!gles2-only? ( media-libs/libglvnd[X] )
 	wayland? (
 		=kde-frameworks/kwayland-${PVCUT}*:5
 		media-libs/libglvnd
 	)
-	X? (
-		>=dev-qt/qtx11extras-${QTMIN}:5
-		x11-libs/libX11
-		x11-libs/libxcb
-	)
 "
 DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )
+	x11-base/xorg-proto
 "
 BDEPEND="man? ( >=kde-frameworks/kdoctools-${PVCUT}:5 )"
 
@@ -65,7 +64,6 @@ src_configure() {
 		$(cmake_use_find_package man KF5DocTools)
 		$(cmake_use_find_package wayland EGL)
 		$(cmake_use_find_package wayland KF5Wayland)
-		-DWITHOUT_X11=$(usex !X)
 	)
 
 	ecm_src_configure
