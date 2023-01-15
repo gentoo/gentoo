@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-darwin.patch
 	"${FILESDIR}"/${P}-gbsd.patch
 	"${FILESDIR}"/${P}-lto.patch
+	"${FILESDIR}"/${P}-parallelMake.patch
 )
 
 src_prepare() {
