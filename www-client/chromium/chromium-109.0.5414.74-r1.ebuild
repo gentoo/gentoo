@@ -356,6 +356,7 @@ src_prepare() {
 		done
 		eapply "${FILESDIR}/ppc64le/libpng-pdfium-compile-98.patch"
 		eapply "${FILESDIR}/ppc64le/fix-swiftshader-compile.patch"
+		eapply "${FILESDIR}/ppc64le/chromium-ppc64-libpng.patch"
 	fi
 
 	default
