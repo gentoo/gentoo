@@ -23,7 +23,10 @@ PATCHSET_URI_PPC64="https://quickbuild.io/~raptor-engineering-public"
 PATCHSET_NAME_PPC64="chromium_109.0.5414.74-2raptor0~deb11u1.debian"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz
-	ppc64? ( ${PATCHSET_URI_PPC64}/+archive/ubuntu/chromium/+files/${PATCHSET_NAME_PPC64}.tar.xz )
+	ppc64? (
+		${PATCHSET_URI_PPC64}/+archive/ubuntu/chromium/+files/${PATCHSET_NAME_PPC64}.tar.xz
+		https://dev.gentoo.org/~sultan/distfiles/www-client/chromium/chromium-ppc64le-gentoo-patches-1.tar.xz
+	)
 	pgo? ( https://github.com/elkablo/chromium-profiler/releases/download/v0.2/chromium-profiler-0.2.tar )"
 
 LICENSE="BSD"
@@ -348,15 +351,11 @@ src_prepare() {
 	if use ppc64 ; then
 		local p
 		for p in $(grep -v "^#" "${WORKDIR}"/debian/patches/series | grep "^ppc64le" || die); do
-			if [[ $p =~ "fix-breakpad-compile.patch" ]]; then
-				eapply "${FILESDIR}/ppc64le/fix-breakpad-compile.patch"
-			else
+			if [[ ! $p =~ "fix-breakpad-compile.patch" ]]; then
 				eapply "${WORKDIR}/debian/patches/${p}"
 			fi
 		done
-		eapply "${FILESDIR}/ppc64le/libpng-pdfium-compile-98.patch"
-		eapply "${FILESDIR}/ppc64le/fix-swiftshader-compile.patch"
-		eapply "${FILESDIR}/ppc64le/chromium-ppc64-libpng.patch"
+		PATCHES+=( "${WORKDIR}/ppc64le" )
 	fi
 
 	default
