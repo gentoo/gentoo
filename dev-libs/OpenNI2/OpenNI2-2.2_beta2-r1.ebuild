@@ -54,7 +54,7 @@ src_prepare() {
 }
 
 src_compile() {
-	if use elibc_glibc ; then
+	if ! use elibc_glibc ; then
 		# Build system doesn't respect CPPFLAGS.
 		# bug #716346
 		append-flags -DXN_PLATFORM_LINUX_NO_GLIBC -DXN_PLATFORM_HAS_NO_SCHED_PARAM
