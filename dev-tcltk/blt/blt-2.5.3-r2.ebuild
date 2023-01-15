@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ HOMEPAGE="https://sourceforge.net/projects/wize/"
 SRC_URI="mirror://sourceforge/wize/${PN}-src-${PV}.zip
 	https://dev.gentoo.org/~tupone/distfiles/${P}-debian-patches.tar.gz"
 
-IUSE="jpeg static-libs X"
+IUSE="jpeg static-libs"
 SLOT="0/${SHVER}"
 LICENSE="BSD"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
@@ -21,7 +21,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390
 DEPEND="
 	dev-lang/tk:0=
 	jpeg? ( media-libs/libjpeg-turbo:0= )
-	X? ( x11-libs/libX11 )"
+	x11-libs/libX11"
 RDEPEND="${DEPEND}"
 BDEPEND="app-arch/unzip"
 
@@ -96,7 +96,7 @@ src_configure() {
 		--with-cflags="${CFLAGS}" \
 		--with-gnu-ld \
 		$(use_enable jpeg) \
-		$(use_with X x) \
+		--with-X \
 		CC="$(tc-getCC)"
 }
 
