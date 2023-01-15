@@ -68,7 +68,7 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )"
 [[ ${PV} == 9999 ]] || BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-kovidgoyal )"
 
-QA_FLAGS_IGNORED="usr/bin/kitty-tool" # written in Go
+QA_FLAGS_IGNORED="usr/bin/kitten" # written in Go
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
