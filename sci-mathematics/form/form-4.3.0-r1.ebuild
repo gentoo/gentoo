@@ -55,12 +55,12 @@ src_compile() {
 	default
 	if use devref; then
 		pushd doc/devref > /dev/null || die "doc/devref does not exist"
-		LANG=C emake pdf
+		LANG=C VARTEXFONTS="${T}/fonts" emake pdf
 		popd > /dev/null
 	fi
 	if use doc; then
 		pushd doc/manual > /dev/null || die "doc/manual does not exist"
-		LANG=C emake pdf
+		LANG=C VARTEXFONTS="${T}/fonts" emake pdf
 		popd > /dev/null
 	fi
 	if use doxygen; then
