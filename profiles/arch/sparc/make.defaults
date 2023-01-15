@@ -42,7 +42,3 @@ VIDEO_CARDS="fbdev mga r128 radeon"
 # Enable USE=libtirpc by default, to ease dependency resolution during
 # the stabilization of glibc-2.26. Bug 657148
 USE="libtirpc"
-
-# Hans de Graaff <graaff@gentoo.org> (2023-01-15)
-# Temporary mask for https://bugs.gentoo.org/890915
-RUBY_TARGETS="ruby27"
