@@ -5,5 +5,8 @@
 		<email>grknight@gentoo.org</email>
 		<name>Brian Evans</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">osamuaoki/imediff</remote-id>
+	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>
