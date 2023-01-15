@@ -263,20 +263,37 @@ src_install() {
 	dodoc README VERSION* WHATS_NEW WHATS_NEW_DM doc/*.{c,txt} conf/*.conf
 }
 
+pkg_preinst() {
+	HAD_LVM=0
+
+	if has_version 'sys-fs/lvm2[lvm(+)]' ; then
+		HAD_LVM=1
+	fi
+}
+
 pkg_postinst() {
 	use lvm && tmpfiles_process lvm2.conf
+	use udev && udev_reload
 
-	if use udev; then
-		udev_reload
-	fi
-
+	# This is a new installation
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		# This is a new installation
-		ewarn "Make sure the \"lvm\" init script is in the runlevels:"
-		ewarn "# rc-update add lvm boot"
-		ewarn
-		ewarn "Make sure to enable lvmetad in /etc/lvm/lvm.conf if you want"
-		ewarn "to enable lvm autoactivation and metadata caching."
+		if use lvm ; then
+			ewarn "Make sure the \"lvm\" init script is in the runlevels:"
+			ewarn "# rc-update add lvm boot"
+			ewarn
+			ewarn "Make sure to enable lvmetad in ${EROOT}/etc/lvm/lvm.conf if you want"
+			ewarn "to enable lvm autoactivation and metadata caching."
+		else
+			ewarn "Please enable USE=lvm if you need the LVM daemon and"
+			ewarn "tools like 'lvchange', 'vgchange', etc!"
+		fi
+	else
+		if ! use lvm && [[ ${HAD_LVM} -eq 1 ]] ; then
+			ewarn "LVM was previously enabled but is now disabled."
+			ewarn "Please enable USE=lvm if you need the LVM daemon and"
+			ewarn "tools like 'lvchange', 'vgchange', etc!"
+			ewarn "See the 2022-11-19-lvm2-default-USE-flags news item for more details."
+		fi
 	fi
 
 	if use udev && [[ -d /run ]] ; then
@@ -291,7 +308,7 @@ pkg_postinst() {
 			ewarn ""
 			ewarn "    ${permission_run_expected} /run"
 			ewarn ""
-			ewarn "This is known to be causing problems for UDEV-enabled LVM services."
+			ewarn "This is known to cause problems for udev-enabled LVM services."
 		fi
 	fi
 }
