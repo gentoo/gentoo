@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # All extra USE/etc should be specified in sub-profiles.
@@ -31,3 +31,7 @@ IUSE_IMPLICIT="abi_ppc_32"
 
 # Enable abi_ppc_32 for packages that don't have it forced.
 ABI_PPC="32"
+
+# Hans de Graaff <graaff@gentoo.org> (2023-01-15)
+# Temporary mask for https://bugs.gentoo.org/890915
+RUBY_TARGETS="ruby27"
