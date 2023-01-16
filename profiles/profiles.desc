@@ -141,7 +141,9 @@ arm64		default/linux/arm64/17.0/systemd/llvm/merged-usr		exp
 # @MAINTAINER: steev@gentoo.org, slyfox@gentoo.org
 # big-endian profile intentionally does not contain all flavours
 # until it's lightly tested.
-arm64		default/linux/arm64/17.0/big-endian		exp
+arm64		default/linux/arm64/17.0/big-endian				exp
+arm64		default/linux/arm64/17.0/big-endian/systemd			exp
+arm64		default/linux/arm64/17.0/big-endian/systemd/merged-usr		exp
 
 # HPPA Profiles
 # @MAINTAINER: hppa@gentoo.org
