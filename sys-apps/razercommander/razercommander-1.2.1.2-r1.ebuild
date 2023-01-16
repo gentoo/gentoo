@@ -6,7 +6,7 @@ EAPI=8
 MY_PN="razerCommander"
 MY_P=${MY_PN}-${PV}
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit meson python-single-r1 xdg
 
