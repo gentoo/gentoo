@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Marco Scardovi <scardracs-gentoo@proton.me> (2023-01-25)
+# The $HOMEPAGE is broken since lots of time, it lacks of interest,
+# both downstream and upstream. Removal after 30 days. # Bug 684372
+app-misc/away
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-01-24)
 # Mostly obsoleted by the better maintained net-misc/yt-dlp, please
 # migrate. If had USE=yt-dlp enabled (default) then was likely already
