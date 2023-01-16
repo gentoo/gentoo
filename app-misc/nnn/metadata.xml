@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>gentoo-bugs@ares-macrotechnology.com</email>
+		<name>Sebastian Hamann</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">jarun/nnn</remote-id>
+	</upstream>
 	<use>
 		<flag name="8contexts">Enable 8 contexts (instead of 4)</flag>
 		<flag name="qsort">Use Alexey Tourbin's quick sort implementation</flag>
