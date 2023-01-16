@@ -29,6 +29,7 @@ DNSPythonはPython言語用のDNSツールキットです。ほとんどのレ�
 	</use>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">rthalley/dnspython</remote-id>
 		<remote-id type="pypi">dnspython</remote-id>
 	</upstream>
 </pkgmetadata>
