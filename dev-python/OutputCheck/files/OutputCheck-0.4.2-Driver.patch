@@ -1,0 +1,11 @@
+--- a/OutputCheck/Driver.py
++++ b/OutputCheck/Driver.py
+@@ -34,7 +34,7 @@ ExitCode = enum('SUCCESS',
+ 
+ def main(args):
+     parser = argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument('check_file', type=argparse.FileType('rU'), help='File containing check commands')
++    parser.add_argument('check_file', type=argparse.FileType('r'), help='File containing check commands')
+     parser.add_argument('--file-to-check=', type=argparse.FileType('r'), default='-', help='File to check (default %(default)s)')
+     parser.add_argument('--check-prefix=', default='CHECK', help='Prefix to use from check_file')
+     parser.add_argument("-l","--log-level",type=str, default="INFO", choices=['debug','info','warning','error'])

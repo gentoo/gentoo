@@ -20,6 +20,8 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( dev-python/lit[${PYTHON_USEDEP}] )"
 
+PATCHES=( "${FILESDIR}"/${P}-Driver.patch )
+
 src_prepare() {
 	distutils-r1_src_prepare
 
@@ -33,5 +35,5 @@ src_prepare() {
 }
 
 python_test() {
-	lit "${S}"/tests || die "running test with ${EPYTHON} failed"
+	lit --verbose "${S}"/tests || die "running test with ${EPYTHON} failed"
 }
