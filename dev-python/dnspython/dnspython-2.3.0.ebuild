@@ -30,6 +30,11 @@ RDEPEND="
 	)
 	<dev-python/idna-4.0[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/cryptography[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
