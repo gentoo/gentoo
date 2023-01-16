@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ HOMEPAGE="https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git"
 LICENSE="GPL-2+"
 
 SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/xiang/${PN}.git/snapshot/${P}.tar.gz"
-KEYWORDS="~amd64 ~loong"
+KEYWORDS="amd64 ~loong"
 
 SLOT="0"
 IUSE="fuse +lz4 selinux +uuid"
