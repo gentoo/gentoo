@@ -1,0 +1,92 @@
+--- a/generic/sigproc2.c	2023-01-16 08:03:06.605091947 +0100
++++ b/generic/sigproc2.c	2023-01-16 08:11:03.641089339 +0100
+@@ -465,9 +465,7 @@
+ }
+ 
+ /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+-int get_window(dout, n, type)
+-     register double *dout;
+-     register int n;
++int get_window(register double *dout, register int n, int type)
+ {
+   static short *din = NULL;
+   static int n0 = 0;
+@@ -506,9 +504,7 @@
+ }
+ 
+ /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+-int get_float_window(fout, n, type)
+-     register float *fout;
+-     register int n;
++int get_float_window(register float *fout, register int n, int type)
+ {
+   static int n0 = 0;
+   static double *dout = NULL;
+@@ -533,10 +529,7 @@
+ }
+ 
+ /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+-int fwindow(din, dout, n, preemp, type)
+-     register short *din;
+-     register float *dout, preemp;
+-     register int n;
++int fwindow(register short *din, register float *dout, register int n, register float preemp, int type)
+ {
+   static float *fwind=NULL;
+   static int size=0, otype= (-100);
+@@ -572,10 +565,7 @@
+   
+ /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+ /* same as fwindow() but input is float */
+-int fwindow_f(din, dout, n, preemp, type)
+-     register float *din;
+-     register float *dout, preemp;
+-     register int n;
++int fwindow_f(register float *din, register float *dout, register int n, register float preemp, int type)
+ {
+   static float *fwind=NULL;
+   static int size=0, otype= (-100);
+@@ -611,10 +601,7 @@
+   
+ /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+ /* same as fwindow() but I/O is double */
+-int fwindow_d(din, dout, n, preemp, type)
+-     register double *din;
+-     register double *dout, preemp;
+-     register int n;
++int fwindow_d(register double *din, register double *dout, register int n, register double preemp, int type)
+ {
+   static float *fwind=NULL;
+   static int size=0, otype= (-100);
+@@ -651,10 +638,7 @@
+ 
+ 
+ /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+-void w_window(din, dout, n, preemp, type)
+-     register short *din;
+-     register double *dout, preemp;
+-     register int n;
++void w_window(register short *din, register double *dout, register int n, register double preemp, int type)
+ {
+   switch(type) {
+   case 0:
+--- a/generic/jkCanvSpeg.c	2023-01-16 08:25:51.880415841 +0100
++++ b/generic/jkCanvSpeg.c	2023-01-16 08:26:43.667561725 +0100
+@@ -92,7 +92,7 @@
+ 			 Tk_Window tkwin, CONST84 char *value, char *recordPtr,
+ 			 int offset);
+ 
+-static char *PrintColorMap(ClientData clientData, Tk_Window tkwin,
++static const char *PrintColorMap(ClientData clientData, Tk_Window tkwin,
+ 			   char *recordPtr, int offset,
+ 			   Tcl_FreeProc **freeProcPtr);
+ 
+@@ -1797,7 +1797,7 @@
+   return TCL_OK;
+ }
+ 
+-static char*
++static const char*
+ PrintColorMap(ClientData clientData, Tk_Window tkwin, char *recordPtr,
+ 	      int offset, Tcl_FreeProc **freeProcPtr)
+ {
