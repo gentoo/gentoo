@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,6 +40,8 @@ src_configure() {
 	use elibc_glibc && export gl_cv_func_getopt_gnu=yes
 
 	local myeconfargs=(
+		# Interferes with F_S (sets F_S=2)
+		--disable-gcc-warnings
 		--with-packager="Gentoo"
 		--with-packager-version="${PVR}"
 		--with-packager-bug-reports="https://bugs.gentoo.org/"
