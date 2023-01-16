@@ -7,7 +7,7 @@ H=b16d7ce90ac9c03358010c1599c3e87698c9993f
 MY_PN=Js2Py
 MY_P=${MY_PN}-${PV}
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
