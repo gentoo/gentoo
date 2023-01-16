@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-lto.patch
 	"${FILESDIR}"/${P}-configure-clang16.patch
 	"${FILESDIR}"/${P}-implicit.patch
+	"${FILESDIR}"/${P}-parallelMake.patch
 )
 
 HTML_DOCS="${WORKDIR}/${PN}${PV}/doc/*"
