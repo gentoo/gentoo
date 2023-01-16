@@ -805,8 +805,14 @@ check_extra_config() {
 			export LINUX_CONFIG_EXISTS_DONE="${old_LINUX_CONFIG_EXISTS_DONE}"
 			return 0
 		fi
-	else
-		require_configured_kernel
+	elif ! linux_config_exists; then
+		qeerror "Could not find a neither a usable .config in the kernel source directory"
+		qeerror "nor a /proc/config.gz file,"
+		qeerror "Please ensure that ${KERNEL_DIR} points to a configured set of Linux sources."
+		qeerror "If you are using KBUILD_OUTPUT, please set the environment var so that"
+		qeerror "it points to the necessary object directory so that it might find .config"
+		qeerror "or have a properly configured kernel to produce a config.gz file. (CONFIG_IKCONFIG)."
+		die "Kernel not configured; no .config found in ${KV_OUT_DIR} or /proc/config.gz found"
 	fi
 
 	ebegin "Checking for suitable kernel configuration options"
