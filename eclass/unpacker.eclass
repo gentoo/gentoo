@@ -596,7 +596,8 @@ unpacker_src_unpack() {
 #
 # Note: USE flags are not yet handled.
 unpacker_src_uri_depends() {
-	local uri deps d
+	local uri
+	local -A deps
 
 	if [[ $# -eq 0 ]] ; then
 		# Disable path expansion for USE conditionals. #654960
@@ -606,20 +607,19 @@ unpacker_src_uri_depends() {
 	fi
 
 	for uri in "$@" ; do
-		local m=${uri,,}
-		case ${m} in
+		case ${uri,,} in
 		*.cpio.*|*.cpio)
-			d="app-arch/cpio" ;;
+			deps[cpio]="app-arch/cpio" ;;
 		*.rar)
-			d="app-arch/unrar" ;;
+			deps[rar]="app-arch/unrar" ;;
 		*.7z)
-			d="app-arch/p7zip" ;;
+			deps[7z]="app-arch/p7zip" ;;
 		*.xz)
-			d="app-arch/xz-utils" ;;
+			deps[xz]="app-arch/xz-utils" ;;
 		*.zip)
-			d="app-arch/unzip" ;;
+			deps[zip]="app-arch/unzip" ;;
 		*.lz)
-			d="
+			deps[lz]="
 				|| (
 					>=app-arch/xz-utils-5.4.0
 					app-arch/plzip
@@ -629,18 +629,17 @@ unpacker_src_uri_depends() {
 			"
 			;;
 		*.zst)
-			d="app-arch/zstd" ;;
+			deps[zst]="app-arch/zstd" ;;
 		*.lha|*.lzh)
-			d="app-arch/lha" ;;
+			deps[lhah]="app-arch/lha" ;;
 		*.lz4)
-			d="app-arch/lz4" ;;
+			deps[lz4]="app-arch/lz4" ;;
 		*.lzo)
-			d="app-arch/lzop" ;;
+			deps[lzo]="app-arch/lzop" ;;
 		esac
-		deps+=" ${d}"
 	done
 
-	echo "${deps}"
+	echo "${deps[*]}"
 }
 
 EXPORT_FUNCTIONS src_unpack
