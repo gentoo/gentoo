@@ -33,12 +33,7 @@ fi
 # and takes ages to resolve (bug #891137). It should merge them together.
 BDEPEND="
 	sys-apps/texinfo
-	|| (
-		>=app-arch/xz-utils-5.4.0
-		app-arch/plzip
-		app-arch/pdlzip
-		app-arch/lzip
-	)
+	$(unpacker_src_uri_depends)
 	verify-sig? ( sec-keys/openpgp-keys-antoniodiazdiaz )
 "
 
