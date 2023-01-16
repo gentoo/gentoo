@@ -28,6 +28,9 @@ CONFIG_CHECK="~NUMA ~CPUSETS"
 PATCHES=(
 	# https://pagure.io/numad/pull-request/3
 	"${FILESDIR}/${PN}-0.5-fix-sparse-node-ids.patch"
+
+	# from debian/ubuntu: https://sources.debian.org/patches/numad
+	"${FILESDIR}/${PN}-0.5-fix-build-for-no-NR-migrate-pages.patch"
 )
 
 src_configure() {
