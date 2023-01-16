@@ -26,9 +26,19 @@ if [[ ${PV} != *_rc* ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
+# We don't use unpacker_src_uri_depends here right now because:
+# 1. unpacker_src_uri_depends doesn't flatten the deps (bug #891133) and emits
+# several || ( ... ) blocks (4).
+# 2. Portage doesn't handle several repeated identical || ( ...) blocks correctly
+# and takes ages to resolve (bug #891137). It should merge them together.
 BDEPEND="
 	sys-apps/texinfo
-	$(unpacker_src_uri_depends)
+	|| (
+		>=app-arch/xz-utils-5.4.0
+		app-arch/plzip
+		app-arch/pdlzip
+		app-arch/lzip
+	)
 	verify-sig? ( sec-keys/openpgp-keys-antoniodiazdiaz )
 "
 
