@@ -161,9 +161,6 @@ src_install() {
 	emake DESTDIR="${D}" -C bdb install
 	emake DESTDIR="${D}" -C cigloo install
 
-	# Remove static libs, bug #890820
-	find "${ED}" -type f -name "*.a" -delete || die
-
 	# The ".sh" scripts set proper environment and library order for Bigloo,
 	# but programs (and the Bigloo Emacs library, "bee-mode") want "bigloo",
 	# not "bigloo.sh". To make programs work we install all executable files
@@ -191,6 +188,9 @@ src_install() {
 	fi
 
 	einstalldocs
+
+	# Remove static libs, bug #890820, #891041
+	find "${ED}" -name "*.a" -delete || die
 }
 
 pkg_postinst() {
