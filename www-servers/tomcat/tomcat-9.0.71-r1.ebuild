@@ -32,7 +32,7 @@ RESTRICT="test" # can we run them on a production system?
 # though it could work with 4.22 and upstream uses 4.20,
 # we still use 4.15 because 4.20+ is currently built with java 11
 # and it would force Tomcat to use at least java 11 too
-ECJ_SLOT="4.26"
+ECJ_SLOT="4.15"
 SERVLET_API_SLOT="4.0"
 JSP_API_SLOT="2.3"
 EL_API_SLOT="3.0"
