@@ -3,9 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
-inherit readme.gentoo-r1 systemd udev xdg-utils distutils-r1 python-r1 linux-mod
+inherit readme.gentoo-r1 systemd udev xdg-utils distutils-r1 linux-mod
 
 DESCRIPTION="Drivers and user-space daemon to control Razer devices on GNU/Linux"
 HOMEPAGE="https://openrazer.github.io/
