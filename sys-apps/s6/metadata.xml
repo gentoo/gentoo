@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>arkamar@atlas.cz</email>
+		<name>Petr Vaněk</name>
+	</maintainer>
 	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
@@ -8,10 +12,6 @@
 	<maintainer type="person" proxied="yes">
 		<email>samuel@sholland.org</email>
 		<name>Samuel Holland</name>
-	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>arkamar@atlas.cz</email>
-		<name>Petr Vaněk</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
