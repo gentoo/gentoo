@@ -35,7 +35,7 @@ RDEPEND="
 	>=dev-python/ordered-set-4.0.2-r1[${PYTHON_USEDEP}]
 	<dev-python/packaging-22[${PYTHON_USEDEP}]
 	>=dev-python/packaging-21.3-r2[${PYTHON_USEDEP}]
-	>=dev-python/platformdirs-2.6.2[${PYTHON_USEDEP}]
+	>=dev-python/platformdirs-2.6.2-r1[${PYTHON_USEDEP}]
 	>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/importlib_metadata-4.11.1[${PYTHON_USEDEP}]
