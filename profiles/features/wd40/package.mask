@@ -68,6 +68,7 @@ dev-python/twine
 dev-python/watchfiles
 dev-python/wcmatch
 dev-ros/roswtf
+dev-util/buildbot-worker
 dev-util/cargo-c
 dev-util/cbindgen
 dev-util/git-delta
