@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Random number sequence test and entropy calculation"
 HOMEPAGE="https://www.fourmilab.ch/random/ https://github.com/Fourmilab/ent_random_sequence_tester"
-SRC_URI="mirror://gentoo/random-${PV}.zip"
+SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.zip"
 S="${WORKDIR}"
 
 LICENSE="public-domain"
