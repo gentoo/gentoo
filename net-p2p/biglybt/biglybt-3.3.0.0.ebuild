@@ -1,13 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom core/pom.xml --download-uri https://github.com/BiglySoftware/BiglyBT/archive/v3.2.0.0.tar.gz --slot 0 --keywords "~amd64" --ebuild biglybt-3.2.0.0.ebuild
-
 EAPI=8
 
 JAVA_PKG_IUSE="doc source"
-MAVEN_ID="com.biglybt:biglybt-core:3.1.0.1"
+MAVEN_ID="com.biglybt:biglybt-core:3.3.0.0"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -25,7 +22,7 @@ KEYWORDS="~amd64 ~ppc64"
 
 CP_DEPEND="
 	dev-java/commons-cli:1
-	dev-java/swt:4.10
+	dev-java/swt:4.27
 "
 
 # Compile dependencies
@@ -38,8 +35,9 @@ CP_DEPEND="
 # Due to removal of AENameServiceDescriptor it would fail to start under jdk:1.8
 # StartServer ERROR: unable to bind to 127.0.0.1:6880 listening for passed torrent info: \
 # sun.net.spi.nameservice.NameServiceDescriptor: Provider com.biglybt.core.util.spi.AENameServiceDescriptor not found
+# Restricting to jdk:11 for https://bugs.gentoo.org/888859
 DEPEND="
-	>=virtual/jdk-11:*
+	virtual/jdk:11
 	${CP_DEPEND}
 "
 
@@ -54,6 +52,7 @@ DOCS=(
 	ChangeLog.txt
 	README.md
 	TRANSLATE.md
+	issue_template.md
 )
 
 PATCHES=(
@@ -66,6 +65,7 @@ S="${WORKDIR}/BiglyBT-${PV}"
 
 src_prepare() {
 	default
+	java-pkg-2_src_prepare
 	# AENameServiceDescriptor fails to compile with jdk >= 11
 	# https://github.com/BiglySoftware/BiglyBT/pull/2611
 	# "error: package sun.net.spi.nameservice does not exist"
@@ -111,13 +111,7 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg_dojar "biglybt-core.jar"
-	java-pkg_dojar "BiglyBT.jar"
-	java-pkg_dolauncher "biglybt" --main com.biglybt.ui.Main
-
-	if use doc; then
-		java-pkg_dojavadoc target/api
-	fi
+	java-pkg-simple_src_install
 
 	if use source; then
 		java-pkg_dosrc "core/src/*"
