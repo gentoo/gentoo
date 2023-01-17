@@ -736,13 +736,13 @@ src_configure() {
 		--disable-gpsd \
 		--disable-install-strip \
 		--disable-parental-controls \
+		--disable-real-time-tracing \
 		--disable-strip \
 		--disable-tests \
 		--disable-updater \
 		--enable-negotiateauth \
 		--enable-new-pass-manager \
 		--enable-official-branding \
-		--enable-real-time-tracing \
 		--enable-release \
 		--enable-system-ffi \
 		--enable-system-pixman \
