@@ -297,7 +297,7 @@ src_install() {
 	einstalldocs
 
 	insinto /etc/default
-	newins "${FILESDIR}"/grub.default-3 grub
+	newins "${FILESDIR}"/grub.default-4 grub
 
 	# https://bugs.gentoo.org/231935
 	dostrip -x /usr/lib/grub
