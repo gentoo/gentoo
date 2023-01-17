@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit desktop python-single-r1
 
 DESCRIPTION="Angry, Drunken Dwarves, a falling blocks game similar to Puzzle Fighter"
