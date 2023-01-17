@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..10} )
-inherit estack linux-info optfeature python-any-r1 toolchain-funcs
+inherit estack linux-info optfeature python-any-r1 bash-completion-r1 toolchain-funcs
 
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-pre/-git}"
@@ -103,6 +103,7 @@ bpftool_make() {
 		HOSTCC="$(tc-getBUILD_CC)" HOSTLD="$(tc-getBUILD_LD)" \
 		EXTRA_CFLAGS="${CFLAGS}" ARCH="${arch}" BPFTOOL_VERSION="${MY_PV}" \
 		prefix="${EPREFIX}"/usr \
+		bash_compdir="$(get_bashcompdir)" \
 		feature-libcap="$(usex caps 1 0)" \
 		"$@"
 }
