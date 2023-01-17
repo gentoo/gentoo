@@ -25,6 +25,7 @@ SLOT="0"
 
 IUSE="selinux"
 
+# See certbot/setup.py for acme >= dep
 RDEPEND="
 	>=app-crypt/acme-${PV}[${PYTHON_USEDEP}]
 	>=dev-python/ConfigArgParse-0.9.3[${PYTHON_USEDEP}]
