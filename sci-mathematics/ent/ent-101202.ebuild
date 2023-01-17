@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="Pseudorandom number sequence test"
-HOMEPAGE="http://www.fourmilab.ch/random/"
+DESCRIPTION="Random number sequence test and entropy calculation"
+HOMEPAGE="https://www.fourmilab.ch/random/ https://github.com/Fourmilab/ent_random_sequence_tester"
 SRC_URI="mirror://gentoo/random-${PV}.zip"
 S="${WORKDIR}"
 
