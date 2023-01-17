@@ -62,6 +62,7 @@ DEPEND="${RDEPEND}
 	dev-cpp/doctest
 "
 BDEPEND="
+	dev-lang/perl
 	dev-util/ragel
 	virtual/pkgconfig
 "
