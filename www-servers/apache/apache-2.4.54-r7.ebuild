@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -144,7 +144,7 @@ HOMEPAGE="https://httpd.apache.org/"
 # some helper scripts are Apache-1.1, thus both are here
 LICENSE="Apache-2.0 Apache-1.1"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.54-no-which.patch # bug #844868
