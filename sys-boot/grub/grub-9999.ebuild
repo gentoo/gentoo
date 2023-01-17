@@ -5,13 +5,13 @@ EAPI=7
 
 # This ebuild uses 3 special global variables:
 # GRUB_BOOTSTRAP: Depend on python and invoke bootstrap (gnulib).
-# GRUB_AUTOGEN: Depend on python and invoke the autogen.sh.
+# GRUB_AUTOGEN: Depend on python and invoke autogen.sh.
 # GRUB_AUTORECONF: Inherit autotools and invoke eautoreconf.
 #
 # When applying patches:
 # If gnulib is updated, set GRUB_BOOTSTRAP=1
-# If *.def is updated, set GRUB_AUTOGEN=1
-# If gnulib, *.def, or any autotools files are updated, set GRUB_AUTORECONF=1
+# If gentpl.py or *.def is updated, set GRUB_AUTOGEN=1
+# If gnulib, gentpl.py, *.def, or any autotools files are updated, set GRUB_AUTORECONF=1
 #
 # If any of the above applies to a user patch, the user should set the
 # corresponding variable in make.conf or the environment.
@@ -156,8 +156,6 @@ src_unpack() {
 src_prepare() {
 	default
 
-	sed -i -e /autoreconf/d autogen.sh || die
-
 	if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
 		python_setup
 	else
@@ -168,7 +166,7 @@ src_prepare() {
 		eautopoint --force
 		AUTOPOINT=: AUTORECONF=: ./bootstrap || die
 	elif [[ -n ${GRUB_AUTOGEN} ]]; then
-		./autogen.sh || die
+		FROM_BOOTSTRAP=1 ./autogen.sh || die
 	fi
 
 	if [[ -n ${GRUB_AUTORECONF} ]]; then
