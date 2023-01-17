@@ -24,6 +24,7 @@ DOCS=( ChangeLog README.txt release.txt )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-parallelMake.patch
+	"${FILESDIR}"/${P}-clang6.patch
 )
 
 src_prepare() {
