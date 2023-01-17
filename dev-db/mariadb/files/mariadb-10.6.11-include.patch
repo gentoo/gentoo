@@ -1,0 +1,66 @@
+https://github.com/mariadb-corporation/mariadb-columnstore-engine/pull/2698
+
+From 20b5dbb6171604b151ec2dd8c56bef26cc27d201 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 17 Jan 2023 01:18:41 +0000
+Subject: [PATCH] Add missing includes
+
+These seem to have all fallen out of a recent Boost update to 1.81 which
+dropped some internal includes. All of these uses within columnstore
+relied on these transitive includes, so explicitly include what we need
+to fix build.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+
+--- a/storage/columnstore/columnstore/tools/passwd/secrets.cpp
++++ b/storage/columnstore/columnstore/tools/passwd/secrets.cpp
+@@ -12,6 +12,8 @@
+  */
+ #include "secrets.h"
+ 
++#include <array>
++#include <cstdint>
+ #include <cctype>
+ #include <fstream>
+ #include <pwd.h>
+--- a/storage/columnstore/columnstore/storage-manager/src/S3Storage.h
++++ b/storage/columnstore/columnstore/storage-manager/src/S3Storage.h
+@@ -18,6 +18,7 @@
+ #ifndef S3STORAGE_H_
+ #define S3STORAGE_H_
+ 
++#include <deque>
+ #include <string>
+ #include <map>
+ #include "CloudStorage.h"
+--- a/storage/columnstore/columnstore/storage-manager/src/MetadataFile.cpp
++++ b/storage/columnstore/columnstore/storage-manager/src/MetadataFile.cpp
+@@ -19,6 +19,7 @@
+  * MetadataFile.cpp
+  */
+ #include "MetadataFile.h"
++#include <set>
+ #include <boost/filesystem.hpp>
+ #define BOOST_SPIRIT_THREADSAFE
+ #include <boost/property_tree/ptree.hpp>
+--- a/storage/columnstore/columnstore/dbcon/mysql/ha_mcs_impl_if.h
++++ b/storage/columnstore/columnstore/dbcon/mysql/ha_mcs_impl_if.h
+@@ -19,6 +19,7 @@
+ 
+ #ifndef HA_MCS_IMPL_IF_H__
+ #define HA_MCS_IMPL_IF_H__
++#include <bitset>
+ #include <string>
+ #include <stdint.h>
+ #ifdef _MSC_VER
+--- a/storage/columnstore/columnstore/utils/cloudio/SocketPool.h
++++ b/storage/columnstore/columnstore/utils/cloudio/SocketPool.h
+@@ -18,6 +18,8 @@
+ #ifndef _SOCKETPOOL_H_
+ #define _SOCKETPOOL_H_
+ 
++#include <deque>
++
+ #include <boost/utility.hpp>
+ #include <boost/thread/mutex.hpp>
+ #include <boost/thread/condition_variable.hpp>
