@@ -1,0 +1,29 @@
+--- a/generic/Window.c	2023-01-17 19:39:55.697886490 +0100
++++ b/generic/Window.c	2023-01-17 19:41:15.619618094 +0100
+@@ -350,7 +350,7 @@
+ #endif /* ifdef _WIN32 */
+ 
+    /* Reset externalwindow */
+-   wind->externalwindow = NULL;
++   wind->externalwindow = 0;
+ }
+ 
+ 
+@@ -384,7 +384,7 @@
+   wind->connection_anchor = TK_ANCHOR_SW;
+   wind->win = NULL;
+   wind->windowtitle = NULL;
+-  wind->externalwindow = NULL;
++  wind->externalwindow = 0;
+   
+   return TCL_OK;
+ }
+@@ -407,7 +407,7 @@
+    */
+   wind->win = NULL;
+   wind->windowtitle = NULL;
+-  wind->externalwindow = NULL;
++  wind->externalwindow = 0;
+ }
+ 
+ 

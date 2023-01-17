@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,8 @@ S="${WORKDIR}/Tkzinc-${PV//.}+"
 PATCHES=(
 	"${FILESDIR}"/${PV}-ldflags.patch
 	"${FILESDIR}"/${PN}-3.3.4-latex.patch
-	)
+	"${FILESDIR}"/${P}-clang.patch
+)
 
 HTML_DOCS='doc/*png doc/*html doc/*css'
 
