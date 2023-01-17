@@ -7,14 +7,11 @@ inherit desktop pax-utils rpm xdg-utils
 
 DESCRIPTION="Project collaboration and tracking software for upwork.com"
 HOMEPAGE="https://www.upwork.com/"
-SRC_URI="
-	amd64? ( https://updates-desktopapp.upwork.com/binaries/v${PV//./_}_941af939eff74e21/${P}-1fc24.x86_64.rpm -> ${P}_x86_64.rpm )
-	x86? ( https://updates-desktopapp.upwork.com/binaries/v${PV//./_}_941af939eff74e21/${P}-1fc24.i386.rpm -> ${P}_i386.rpm )"
-
 LICENSE="ODESK"
+PROPERTIES+=" live"  # because otherwise you have to download it manually
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 RESTRICT="bindist mirror"
+KEYWORDS="amd64 x86"  # upwork ships it as a stable version
 
 RDEPEND="
 	dev-libs/expat
@@ -38,12 +35,22 @@ PATCHES=( "${FILESDIR}/${PN}-desktop-r2.patch" )
 # Binary only distribution
 QA_PREBUILT="*"
 
+src_unpack() {
+	# mimic AUR package: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=upwork#n19
+	use amd64 && pkg_uri="https://upwork-usw2-desktopapp.upwork.com/binaries/v5_8_0_24_aef0dc8c37cf46a8/upwork-5.8.0.24-1fc24.x86_64.rpm"
+	use x86   && pkg_uri="https://upwork-usw2-desktopapp.upwork.com/binaries/v5_8_0_24_aef0dc8c37cf46a8/upwork-5.8.0.24-1fc24.i386.rpm"
+
+	header="--header=User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:104.0) Gecko/20100101 Firefox/104.0"
+	pkg_binary="upwork.rpm"
+	wget "$header" "$pkg_uri" -O "$WORKDIR/$pkg_binary"
+
+	rpm_unpack "./$pkg_binary"
+}
+
 src_install() {
 	pax-mark m opt/Upwork/upwork
 
-	insinto /opt
-	doins -r opt/Upwork
-	fperms 0755 /opt/Upwork/upwork
+	mv opt "$ED"
 
 	insinto /usr/share
 	doins -r usr/share/icons
@@ -54,6 +61,7 @@ src_install() {
 
 pkg_postinst() {
 	xdg_icon_cache_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
