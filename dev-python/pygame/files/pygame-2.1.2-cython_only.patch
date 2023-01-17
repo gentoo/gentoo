@@ -1,0 +1,36 @@
+Backport to ease running cythonize, DISTUTILS_ARGS=(cython) resulted in
+reconfigure attempts that failed without PORTMIDI* being exported.
+
+https://github.com/pygame/pygame/commit/4eeffc049cf
+From: Ankith <46915066+ankith26@users.noreply.github.com>
+Date: Fri, 3 Jun 2022 21:27:57 +0530
+Subject: [PATCH] Add cython_only option to setup.py
+--- a/setup.py
++++ b/setup.py
+@@ -209,7 +209,16 @@ def consume_arg(name):
+     cflags += '-mfpu=neon'
+     os.environ['CFLAGS'] = cflags
+ 
++compile_cython = False
++cython_only = False
+ if consume_arg('cython'):
++    compile_cython = True
++
++if consume_arg('cython_only'):
++    compile_cython = True
++    cython_only = True
++
++if compile_cython:
+     # compile .pyx files
+     # So you can `setup.py cython` or `setup.py cython install`
+     try:
+@@ -280,6 +289,9 @@ def consume_arg(name):
+     for i, kwargs in enumerate(queue):
+         kwargs['progress'] = f'[{i + 1}/{count}] '
+         cythonize_one(**kwargs)
++    
++    if cython_only:
++        sys.exit(0)
+ 
+ no_compilation = any(x in ['lint', 'format', 'docs'] for x in sys.argv)
+ AUTO_CONFIG = not os.path.isfile('Setup') and not no_compilation
