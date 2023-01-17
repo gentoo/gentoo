@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/890178
+https://github.com/stapelberg/X11-XCB/pull/3
+
+From 95539af3ff38ebc221f92893aade612305c2aba8 Mon Sep 17 00:00:00 2001
+From: Peter Levine <plevine457@gmail.com>
+Date: Mon, 16 Jan 2023 03:40:24 -0500
+Subject: [PATCH 1/2] Fix undeclared __PACKAGE__ in C context
+
+--- a/XCB.xs
++++ b/XCB.xs
+@@ -180,7 +180,7 @@ _connect_and_attach_struct(self)
+   PREINIT:
+     XCBConnection *xcbconnbuf;
+   CODE:
+-    assert(sv_derivered_from(self, __PACKAGE__));
++    assert(sv_derivered_from(self, HvNAME(PL_curstash)));
+     SV **disp = hv_fetch((HV*)SvRV(self), "display", strlen("display"), 0);
+     if(!disp)
+         croak("Attribute 'display' is required");
+
+From 0922360b6fc1d2273dd3e15d0584bea983fdde9a Mon Sep 17 00:00:00 2001
+From: Peter Levine <plevine457@gmail.com>
+Date: Mon, 16 Jan 2023 03:42:08 -0500
+Subject: [PATCH 2/2] Fix typo in  'sv_derived_from'
+
+--- a/XCB.xs
++++ b/XCB.xs
+@@ -180,7 +180,7 @@ _connect_and_attach_struct(self)
+   PREINIT:
+     XCBConnection *xcbconnbuf;
+   CODE:
+-    assert(sv_derivered_from(self, HvNAME(PL_curstash)));
++    assert(sv_derived_from(self, HvNAME(PL_curstash)));
+     SV **disp = hv_fetch((HV*)SvRV(self), "display", strlen("display"), 0);
+     if(!disp)
+         croak("Attribute 'display' is required");
+
