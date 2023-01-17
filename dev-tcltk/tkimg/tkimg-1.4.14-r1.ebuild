@@ -55,7 +55,7 @@ src_prepare() {
 
 	eautoreconf
 	for dir in zlib libpng libtiff libjpeg base bmp gif ico jpeg pcx pixmap png\
-		ppm ps sgi sun tga tiff window xbm xpm dted raw flir ; do
+		ppm ps sgi sun tga tiff window xbm xpm dted raw flir compat/libtiff ; do
 		(cd ${dir}; AT_NOELIBTOOLIZE=yes eautoreconf)
 	done
 
