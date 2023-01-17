@@ -20,10 +20,7 @@ IUSE="+X +introspection wayland"
 REQUIRED_USE="|| ( X wayland )"
 
 COMMON_DEPEND="
-	|| (
-		>=app-accessibility/at-spi2-core-2.46.0:2
-		dev-libs/atk
-	)
+	>=app-accessibility/at-spi2-core-2.46.0:2
 	>=dev-libs/glib-2.50:2
 	>=dev-libs/libmateweather-1.17.0
 	dev-libs/libxml2:2
