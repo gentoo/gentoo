@@ -1,0 +1,188 @@
+https://gitlab.freedesktop.org/xorg/lib/libx11/-/commit/eb1c272ab5230d548077b9f59aca4b3457c3a8f8
+
+From eb1c272ab5230d548077b9f59aca4b3457c3a8f8 Mon Sep 17 00:00:00 2001
+From: GaryOderNichts <garyodernichts@gmail.com>
+Date: Sat, 17 Dec 2022 16:28:40 +0100
+Subject: [PATCH] Fix a9e845 and 797755 Allow X*IfEvent() to reenter libX11
+
+--- a/include/X11/Xlibint.h
++++ b/include/X11/Xlibint.h
+@@ -43,6 +43,10 @@ from The Open Group.
+ #include <X11/Xproto.h>		/* to declare xEvent */
+ #include <X11/XlibConf.h>	/* for configured options like XTHREADS */
+ 
++#ifdef XTHREADS
++#include <X11/Xthreads.h>
++#endif
++
+ /* The Xlib structs are full of implicit padding to properly align members.
+    We can't clean that up without breaking ABI, so tell clang not to bother
+    complaining about it. */
+@@ -207,7 +211,10 @@ struct _XDisplay
+ 
+ 	XIOErrorExitHandler exit_handler;
+ 	void *exit_handler_data;
+-        CARD32 in_ifevent;
++	CARD32 in_ifevent;
++#ifdef XTHREADS
++	xthread_t ifevent_thread;
++#endif
+ };
+ 
+ #define XAllocIDs(dpy,ids,n) (*(dpy)->idlist_alloc)(dpy,ids,n)
+--- a/src/ChkIfEv.c
++++ b/src/ChkIfEv.c
+@@ -49,8 +49,11 @@ Bool XCheckIfEvent (
+ 	unsigned long qe_serial = 0;
+ 	int n;			/* time through count */
+ 
+-	dpy->in_ifevent++;
+ 	LockDisplay(dpy);
++#ifdef XTHREADS
++	dpy->ifevent_thread = xthread_self();
++#endif
++	dpy->in_ifevent++;
+ 	prev = NULL;
+ 	for (n = 3; --n >= 0;) {
+ 	    for (qelt = prev ? prev->next : dpy->head;
+--- a/src/IfEvent.c
++++ b/src/IfEvent.c
+@@ -48,8 +48,11 @@ XIfEvent (
+ 	register _XQEvent *qelt, *prev;
+ 	unsigned long qe_serial = 0;
+ 
+-	dpy->in_ifevent++;
+ 	LockDisplay(dpy);
++#ifdef XTHREADS
++	dpy->ifevent_thread = xthread_self();
++#endif
++	dpy->in_ifevent++;
+ 	prev = NULL;
+ 	while (1) {
+ 	    for (qelt = prev ? prev->next : dpy->head;
+--- a/src/PeekIfEv.c
++++ b/src/PeekIfEv.c
+@@ -49,8 +49,11 @@ XPeekIfEvent (
+ 	register _XQEvent *prev, *qelt;
+ 	unsigned long qe_serial = 0;
+ 
+-	dpy->in_ifevent++;
+ 	LockDisplay(dpy);
++#ifdef XTHREADS
++	dpy->ifevent_thread = xthread_self();
++#endif
++	dpy->in_ifevent++;
+ 	prev = NULL;
+ 	while (1) {
+ 	    for (qelt = prev ? prev->next : dpy->head;
+--- a/src/locking.c
++++ b/src/locking.c
+@@ -240,7 +240,9 @@ static void _XUnlockDisplay(
+     if (lock_hist_loc >= LOCK_HIST_SIZE)
+ 	lock_hist_loc = 0;
+ #endif /* XTHREADS_WARN */
+-    xmutex_unlock(dpy->lock->mutex);
++
++    if (dpy->in_ifevent == 0 || !xthread_equal(dpy->ifevent_thread, xthread_self()))
++        xmutex_unlock(dpy->lock->mutex);
+ }
+ 
+ 
+@@ -453,63 +455,24 @@ static void _XDisplayLockWait(
+ }
+ 
+ static void _XLockDisplay(
+-    Display *dpy
+-    XTHREADS_FILE_LINE_ARGS
+-    );
+-
+-static void _XIfEventLockDisplay(
+     Display *dpy
+     XTHREADS_FILE_LINE_ARGS
+     )
+ {
+-    /* assert(dpy->in_ifevent); */
+-}
++    struct _XErrorThreadInfo *ti;
+ 
+-static void _XInternalLockDisplay(
+-    Display *dpy,
+-    Bool wskip
+-    XTHREADS_FILE_LINE_ARGS
+-    );
++    if (dpy->in_ifevent && xthread_equal(dpy->ifevent_thread, xthread_self()))
++        return;
+ 
+-static void _XIfEventInternalLockDisplay(
+-    Display *dpy,
+-    Bool wskip
+-    XTHREADS_FILE_LINE_ARGS
+-    )
+-{
+-    /* assert(dpy->in_ifevent); */
+-}
+-
+-static void _XIfEventUnlockDisplay(
+-    Display *dpy
+-    XTHREADS_FILE_LINE_ARGS
+-    )
+-{
+-    if (dpy->in_ifevent == 0) {
+-	dpy->lock_fns->lock_display = _XLockDisplay;
+-	dpy->lock_fns->unlock_display = _XUnlockDisplay;
+-	dpy->lock->internal_lock_display = _XInternalLockDisplay;
+-	UnlockDisplay(dpy);
+-    } else
+-	return;
+-}
+-
+-static void _XLockDisplay(
+-    Display *dpy
+-    XTHREADS_FILE_LINE_ARGS
+-    )
+-{
+-#ifdef XTHREADS
+-    struct _XErrorThreadInfo *ti;
+-#endif
+ #ifdef XTHREADS_WARN
+     _XLockDisplayWarn(dpy, file, line);
+ #else
+     xmutex_lock(dpy->lock->mutex);
+ #endif
++
+     if (dpy->lock->locking_level > 0)
+-	_XDisplayLockWait(dpy);
+-#ifdef XTHREADS
++    _XDisplayLockWait(dpy);
++
+     /*
+      * Skip the two function calls below which may generate requests
+      * when LockDisplay is called from within _XError.
+@@ -517,14 +480,9 @@ static void _XLockDisplay(
+     for (ti = dpy->error_threads; ti; ti = ti->next)
+ 	    if (ti->error_thread == xthread_self())
+ 		    return;
+-#endif
++
+     _XIDHandler(dpy);
+     _XSeqSyncFunction(dpy);
+-    if (dpy->in_ifevent) {
+-	dpy->lock_fns->lock_display = _XIfEventLockDisplay;
+-	dpy->lock_fns->unlock_display = _XIfEventUnlockDisplay;
+-	dpy->lock->internal_lock_display = _XIfEventInternalLockDisplay;
+-    }
+ }
+ 
+ /*
+@@ -537,6 +495,9 @@ static void _XInternalLockDisplay(
+     XTHREADS_FILE_LINE_ARGS
+     )
+ {
++    if (dpy->in_ifevent && xthread_equal(dpy->ifevent_thread, xthread_self()))
++        return;
++
+ #ifdef XTHREADS_WARN
+     _XLockDisplayWarn(dpy, file, line);
+ #else
+-- 
+GitLab
