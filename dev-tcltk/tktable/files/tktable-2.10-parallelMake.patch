@@ -1,0 +1,12 @@
+--- a/Makefile.in	2023-01-17 21:41:13.532754760 +0100
++++ b/Makefile.in	2023-01-17 21:41:35.153416999 +0100
+@@ -189,7 +189,8 @@
+ # for the BINARIES that you specified above have already been done.
+ #========================================================================
+ 
+-all: binaries libraries doc
++all: tkTable.tcl.h
++	$(MAKE) binaries libraries doc
+ 
+ #========================================================================
+ # The binaries target builds executable programs, Windows .dll's, unix
