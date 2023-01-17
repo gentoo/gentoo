@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{9..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{9..11} )
 inherit desktop distutils-r1
 
 SINGULARITY_MUSIC="endgame-${PN}-music-007"
@@ -35,12 +36,15 @@ BDEPEND="app-arch/unzip"
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
 
-src_install() {
-	local DOCS=( AUTHORS.txt Changelog.txt README.txt TODO )
-	distutils-r1_src_install
+python_install() {
+	distutils-r1_python_install
 
 	python_moduleinto ${PN}/music
-	python_domodule ../${SINGULARITY_MUSIC}/.
+	python_domodule "${WORKDIR}"/${SINGULARITY_MUSIC}/.
+}
+
+python_install_all() {
+	dodoc AUTHORS.txt Changelog.txt README.txt TODO
 
 	newicon ${PN}/data/themes/default/images/icon.png ${PN}.png
 	domenu ${PN}.desktop
