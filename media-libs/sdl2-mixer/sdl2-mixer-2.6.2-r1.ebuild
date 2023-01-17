@@ -34,9 +34,7 @@ RDEPEND="
 	opus? ( >=media-libs/opusfile-0.2 )
 	vorbis? (
 		tremor? ( >=media-libs/tremor-0_pre20130223[${MULTILIB_USEDEP}] )
-		!tremor? (
-			>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
-			>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}] )
+		!tremor? ( >=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}] )
 	)
 "
 DEPEND="${RDEPEND}"
@@ -61,10 +59,15 @@ multilib_src_configure() {
 		$(use_enable fluidsynth music-midi-fluidsynth)
 		--disable-music-midi-fluidsynth-shared
 		$(use_enable vorbis music-ogg)
+		$(usex vorbis \
+			$(use_enable !tremor music-ogg-vorbis) \
+			--disable-music-ogg-vorbis)
+		--disable-music-ogg-vorbis-shared
 		$(use_enable tremor music-ogg-tremor)
-		--disable-music-ogg
+		--disable-music-ogg-tremor-shared
 		$(use_enable flac music-flac)
-		--disable-music-flac
+		$(use_enable flac music-flac-libflac)
+		--disable-music-flac-libflac-shared
 		$(use_enable mp3 music-mp3)
 		$(use_enable mp3 music-mp3-mpg123)
 		--disable-music-mp3-mpg123-shared
