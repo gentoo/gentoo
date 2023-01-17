@@ -45,6 +45,10 @@ BDEPEND="
 		sys-apps/util-linux
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-libsdl2-2.26-tests.patch
+)
+
 src_prepare() {
 	if ! use midi; then
 		rm test/midi_test.py || die
