@@ -39,7 +39,8 @@ src_configure() {
 	export ac_cv_header_selinux_selinux_h=$(usex selinux)
 
 	if use rpc ; then
-		append-cppflags $(tc-getPKG_CONFIG) libtirpc --cflags)
+		append-cppflags $($(tc-getPKG_CONFIG) libtirpc --cflags)
+		append-libs $($(tc-getPKG_CONFIG) libtirpc --libs)
 	fi
 
 	[[ ${CHOST} == *-solaris2.11 ]] && append-cppflags -DHAS_PAD_MUTEX
