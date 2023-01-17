@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic toolchain-funcs
 
 MY_P="${P/-/_}"
 DESCRIPTION="Lists open files for running Unix processes"
@@ -37,6 +37,10 @@ src_prepare() {
 src_configure() {
 	export ac_cv_header_rpc_rpc_h=$(usex rpc)
 	export ac_cv_header_selinux_selinux_h=$(usex selinux)
+
+	if use rpc ; then
+		append-cppflags $(tc-getPKG_CONFIG) libtirpc --cflags)
+	fi
 
 	[[ ${CHOST} == *-solaris2.11 ]] && append-cppflags -DHAS_PAD_MUTEX
 
