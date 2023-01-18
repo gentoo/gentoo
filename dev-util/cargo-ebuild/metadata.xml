@@ -9,6 +9,6 @@
 		<email>rust@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">cardeo/cargo-ebuild</remote-id>
+		<remote-id type="github">gentoo/cargo-ebuild</remote-id>
 	</upstream>
 </pkgmetadata>
