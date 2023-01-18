@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 MY_P="Tix${PV}"
 DESCRIPTION="A widget library for Tcl/Tk"
 HOMEPAGE="http://tix.sourceforge.net/"
@@ -28,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-tcl8.6.patch
 	"${FILESDIR}"/${P}-wimplicit-int.patch
 	"${FILESDIR}"/${P}-clang6.patch
+	"${FILESDIR}"/${P}-noopt.patch
 )
 
 src_prepare() {
@@ -37,6 +40,7 @@ src_prepare() {
 		-e 's:-Os::g' \
 		-i configure tclconfig/tcl.m4 || die
 	default
+	eautoreconf
 }
 
 src_configure() {
