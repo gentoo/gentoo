@@ -1,0 +1,114 @@
+--- a/generic/tixDiStyle.c	2023-01-18 12:17:57.150995223 +0100
++++ b/generic/tixDiStyle.c	2023-01-18 12:18:33.855410140 +0100
+@@ -31,7 +31,7 @@
+ static int   		DItemStyleParseProc _ANSI_ARGS_((ClientData clientData,
+ 			    Tcl_Interp *interp, Tk_Window tkwin,
+ 			    CONST84 char *value,char *widRec, int offset));
+-static char *		DItemStylePrintProc _ANSI_ARGS_((
++static const char *DItemStylePrintProc _ANSI_ARGS_((
+ 			    ClientData clientData, Tk_Window tkwin, 
+ 			    char *widRec, int offset,
+ 			    Tcl_FreeProc **freeProcPtr));
+@@ -998,7 +998,7 @@
+     return TCL_ERROR;
+ }
+ 
+-static char *DItemStylePrintProc(clientData, tkwin, widRec,offset, freeProcPtr)
++static const char *DItemStylePrintProc(clientData, tkwin, widRec,offset, freeProcPtr)
+     ClientData clientData;
+     Tk_Window tkwin;
+     char *widRec;
+--- a/generic/tixDItem.c	2023-01-18 12:16:16.448599643 +0100
++++ b/generic/tixDItem.c	2023-01-18 12:16:48.979081490 +0100
+@@ -30,7 +30,7 @@
+ 		Tcl_Interp *interp, Tk_Window tkwin, CONST84 char *value,
+ 		char *widRec, int offset));
+ 
+-static char *DItemPrintProc _ANSI_ARGS_((
++static const char *DItemPrintProc _ANSI_ARGS_((
+ 		ClientData clientData, Tk_Window tkwin, char *widRec,
+ 		int offset, Tcl_FreeProc **freeProcPtr));
+ 
+@@ -548,7 +548,7 @@
+     return TCL_OK;
+ }
+ 
+-static char *DItemPrintProc(clientData, tkwin, widRec,offset, freeProcPtr)
++static const char *DItemPrintProc(clientData, tkwin, widRec,offset, freeProcPtr)
+     ClientData clientData;
+     Tk_Window tkwin;
+     char *widRec;
+--- a/generic/tixImgCmp.c	2023-01-18 12:19:03.138943264 +0100
++++ b/generic/tixImgCmp.c	2023-01-18 12:21:32.884554265 +0100
+@@ -142,8 +142,8 @@
+  * The type record for bitmap images:
+  */
+ static int		ImgCmpCreate _ANSI_ARGS_((Tcl_Interp *interp,
+-			    char *name, int argc, Tcl_Obj *CONST objv[],
+-			    Tk_ImageType *typePtr, Tk_ImageMaster master,
++			    const char *name, int argc, Tcl_Obj *CONST objv[],
++			    const Tk_ImageType *typePtr, Tk_ImageMaster master,
+ 			    ClientData *clientDataPtr));
+ static ClientData	ImgCmpGet _ANSI_ARGS_((Tk_Window tkwin,
+ 			    ClientData clientData));
+@@ -378,11 +378,11 @@
+ ImgCmpCreate(interp, name, argc, objv, typePtr, master, clientDataPtr)
+     Tcl_Interp *interp;		/* Interpreter for application containing
+ 				 * image. */
+-    char *name;			/* Name to use for image. */
++    const char *name;			/* Name to use for image. */
+     int argc;			/* Number of arguments. */
+     Tcl_Obj *CONST objv[];	/* Argument strings for options (doesn't
+ 				 * include image name or type). */
+-    Tk_ImageType *typePtr;	/* Pointer to our type record (not used). */
++    const Tk_ImageType *typePtr;	/* Pointer to our type record (not used). */
+     Tk_ImageMaster master;	/* Token for image, to be used by us in
+ 				 * later callbacks. */
+     ClientData *clientDataPtr;	/* Store manager's token for image here;
+--- a/generic/tixImgXpm.c	2023-01-18 12:22:25.967706824 +0100
++++ b/generic/tixImgXpm.c	2023-01-18 12:23:05.589074088 +0100
+@@ -22,8 +22,8 @@
+  */
+ 
+ static int		ImgXpmCreate _ANSI_ARGS_((Tcl_Interp *interp,
+-			    char *name, int argc, Tcl_Obj *CONST objv[],
+-			    Tk_ImageType *typePtr, Tk_ImageMaster master,
++			    const char *name, int argc, Tcl_Obj *CONST objv[],
++			    const Tk_ImageType *typePtr, Tk_ImageMaster master,
+ 			    ClientData *clientDataPtr));
+ static ClientData	ImgXpmGet _ANSI_ARGS_((Tk_Window tkwin,
+ 			    ClientData clientData));
+@@ -115,11 +115,11 @@
+ ImgXpmCreate(interp, name, argc, objv, typePtr, master, clientDataPtr)
+     Tcl_Interp *interp;		/* Interpreter for application containing
+ 				 * image. */
+-    char *name;			/* Name to use for image. */
++    const char *name;			/* Name to use for image. */
+     int argc;			/* Number of arguments. */
+     Tcl_Obj *CONST objv[];	/* Argument strings for options (doesn't
+ 				 * include image name or type). */
+-    Tk_ImageType *typePtr;	/* Pointer to our type record (not used). */
++    const Tk_ImageType *typePtr;	/* Pointer to our type record (not used). */
+     Tk_ImageMaster master;	/* Token for image, to be used by us in
+ 				 * later callbacks. */
+     ClientData *clientDataPtr;	/* Store manager's token for image here;
+--- a/generic/tixUtils.c	2023-01-18 12:14:01.374751235 +0100
++++ b/generic/tixUtils.c	2023-01-18 12:14:36.414192268 +0100
+@@ -24,7 +24,7 @@
+ static int	ReliefParseProc(ClientData clientData,
+ 	Tcl_Interp *interp, Tk_Window tkwin, CONST84 char *value,
+ 	char *widRec, int offset);
+-static char *	ReliefPrintProc(ClientData clientData,
++static const char *ReliefPrintProc(ClientData clientData,
+ 	Tk_Window tkwin, char *widRec, int offset,
+ 	Tix_FreeProc **freeProcPtr);
+ 
+@@ -637,7 +637,7 @@
+     return TCL_ERROR;
+ }
+ 
+-static char *
++static const char *
+ ReliefPrintProc(clientData, tkwin, widRec,offset, freeProcPtr)
+     ClientData clientData;
+     Tk_Window tkwin;
