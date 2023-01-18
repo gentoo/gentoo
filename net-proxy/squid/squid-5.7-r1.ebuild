@@ -85,19 +85,6 @@ pkg_pretend() {
 	fi
 }
 
-pkg_setup() {
-	if [[ -n ${REPLACING_VERSIONS} ]]; then
-		local v
-		for v in ${REPLACING_VERSIONS}; do
-			if ver_test "${v}" -lt 5; then
-				ewarn "Moving ${EROOT}/usr/share/squid/errors out of the way (bug 834503)"
-				mv -v "${EROOT}"/usr/share/squid/errors{,.bak}
-				break
-			fi
-		done
-	fi
-}
-
 src_prepare() {
 	default
 
@@ -368,13 +355,23 @@ src_install() {
 
 	diropts -m0750 -o squid -g squid
 	keepdir /var/log/squid /etc/ssl/squid /var/lib/squid
+
+	# Hack for bug #834503 (see also bug #664940)
+	# Please keep this for a few years until it's no longer plausible
+	# someone is upgrading from < squid 5.7.
+	mv "${ED}"/usr/share/squid/errors{,.new} || die
+}
+
+pkg_preinst() {
+	# Remove file in EROOT that the directory collides with.
+	rm -rf "${EROOT}"/usr/share/squid/errors || die
+
+	# Following the collision protection check, reverse
+	# src_install's rename in ED.
+	mv "${ED}"/usr/share/squid/errors{.new,} || die
 }
 
 pkg_postinst() {
-	if [[ -e ${EROOT}/usr/share/squid/errors.bak ]]; then
-		rm -rv "${EROOT}"/usr/share/squid/errors.bak
-	fi
-
 	elog "A good starting point to debug Squid issues is to use 'squidclient mgr:' commands such as 'squidclient mgr:info'."
 
 	if [[ ${#r} -gt 0 ]]; then
