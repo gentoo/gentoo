@@ -1,0 +1,48 @@
+From 1fb019b26d54f777ea7a2781f96adec369a25cbc Mon Sep 17 00:00:00 2001
+From: Oliver Freyermuth <o.freyermuth@googlemail.com>
+Date: Tue, 17 Jan 2023 19:00:11 +0100
+Subject: [PATCH] PR #1538: configure: Remove bashisms, fix dash compatibility
+Bug: https://bugs.gentoo.org/890873
+Bug: https://github.com/hpc/charliecloud/pull/1538
+
++= and |& are not supported by systems using dash as shell.
+---
+ configure.ac | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 683a532..1c878d7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -216,15 +216,15 @@ AC_PROG_CC
+ # Set up CFLAGS.
+ ch_cflags='-std=c99 -Wall'
+ AS_IF([test -n "$lib_libsquashfuse"],
+-      [ch_cflags+=" -I$inc_libsquashfuse -L$lib_libsquashfuse"
++      [ch_cflags="$ch_cflags -I$inc_libsquashfuse -L$lib_libsquashfuse"
+        # Without this, clang fails with "error: argument unused during
+        # compilation" on the -L. GCC ignores it.
+-       ch_cflags+=' -Wno-unused-command-line-argument'])
++       ch_cflags="$ch_cflags -Wno-unused-command-line-argument"])
+ AS_IF([test $use_werror = yes],
+-      [ch_cflags+=' -Werror'])
++      [ch_cflags="$ch_cflags -Werror"])
+
+ AX_CHECK_COMPILE_FLAG([$ch_cflags], [
+-  CFLAGS+=" $ch_cflags"
++  CFLAGS="$CFLAGS $ch_cflags"
+ ], [
+   AC_MSG_ERROR([no suitable C99 compiler found])
+ ])
+@@ -434,7 +434,7 @@ CH_CHECK_VERSION([GIT], [$vmin_git], [--version | cut -d' ' -f3])
+ # DOT
+ vmin_dot=2.30.1
+ AC_CHECK_PROG([DOT], [dot], [dot])
+-CH_CHECK_VERSION([DOT], [$vmin_dot], [dot -V |& cut -d' ' -f5])
++CH_CHECK_VERSION([DOT], [$vmin_dot], [dot -V 2>&1 | cut -d' ' -f5])
+
+ # git2dot
+ vmin_git2dot=0.8.3
+--
+2.38.2
+
