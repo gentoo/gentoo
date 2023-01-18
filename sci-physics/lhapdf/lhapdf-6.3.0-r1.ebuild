@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,6 @@ IUSE="examples"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
-	dev-libs/boost:=
 	$(python_gen_cond_dep '
 	     >=dev-python/cython-0.19[${PYTHON_USEDEP}]
 	')
@@ -72,7 +71,6 @@ src_install() {
 
 	cd "${S}"/wrappers/python || die
 	distutils-r1_src_install
-	python_optimize
 
 	find "${ED}" -name '*.la' -delete || die
 }
