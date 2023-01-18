@@ -165,7 +165,7 @@ src_install() {
 	default
 
 	# Compatibility with other distributions who install to /etc/chrony.conf (bug #835461)
-	dosym /etc/chrony/chrony.conf /etc/chronyd.conf
+	dosym -r /etc/chrony/chrony.conf /etc/chrony.conf
 
 	newinitd "${FILESDIR}"/chronyd.init-r2 chronyd
 	newconfd "${T}"/chronyd.conf chronyd
