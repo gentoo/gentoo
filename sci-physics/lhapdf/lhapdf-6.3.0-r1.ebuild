@@ -32,7 +32,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
 	dev-libs/boost:=
-	>=dev-python/cython-0.19
+	$(python_gen_cond_dep '
+	     >=dev-python/cython-0.19[${PYTHON_USEDEP}]
+	')
 "
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
