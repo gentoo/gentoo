@@ -65,6 +65,7 @@ BDEPEND="
 DEPEND="
 	${RDEPEND}
 	virtual/os-headers
+	acct-group/root
 "
 RDEPEND+="
 	hardlink? ( !app-arch/hardlink )
