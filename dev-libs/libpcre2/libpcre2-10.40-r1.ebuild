@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,8 +21,7 @@ else
 fi
 
 if [[ -n "${PATCH_SET}" ]] ; then
-	SRC_URI+=" https://dev.gentoo.org/~whissi/dist/${PN}/${PATCH_SET}
-		https://dev.gentoo.org/~polynomial-c/dist/${PATCH_SET}"
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PATCH_SET}"
 fi
 
 S="${WORKDIR}/${MY_P}"
