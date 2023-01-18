@@ -57,6 +57,10 @@ llvm_check_deps() {
 		has_version -b "sys-devel/clang:${LLVM_SLOT}${usedep}"
 }
 
+PATCHES=(
+	"${FILESDIR}"/${P}-nodebug.patch
+)
+
 pkg_setup() {
 	use doc && python-any-r1_pkg_setup
 
