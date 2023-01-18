@@ -51,6 +51,6 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-	python_foreach_impl python_newexe python_smi_tools/rocm_smi.py rocm-smi
+	python_foreach_impl python_newscript python_smi_tools/rocm_smi.py rocm-smi
 	python_foreach_impl python_domodule python_smi_tools/rsmiBindings.py
 }
