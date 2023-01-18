@@ -12,7 +12,7 @@ SRC_URI="https://github.com/lsof-org/lsof/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="lsof"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc"
+KEYWORDS="~amd64 ~ppc ~riscv"
 IUSE="rpc selinux"
 
 RDEPEND="
