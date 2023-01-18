@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}-src"
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="debug dedicated"
+IUSE="dedicated"
 
 RDEPEND="
 	!dedicated? (
@@ -37,7 +37,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DCLIENT=$(usex !dedicated)
 		-DCMAKE_DISABLE_FIND_PACKAGE_X11=yes # unused
-		-DDEV=$(usex debug)
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
 
