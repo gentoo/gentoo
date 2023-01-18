@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,7 @@ S="${WORKDIR}/${PN}${MY_PV}"
 DOCS=( schreier.txt formats.txt changes24-28.txt )
 
 PATCHES=(
+	"${FILESDIR}/${P}-gentreeg-gentourng.patch"
 	"${WORKDIR}/debian/patches/upstream-fix-gt_numorbits.patch"
 	"${WORKDIR}/debian/patches/upstream-C2help2man.patch"
 	"${WORKDIR}/debian/patches/upstream-autotoolization.patch"
