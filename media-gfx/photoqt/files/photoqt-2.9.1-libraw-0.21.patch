@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/891325
+https://gitlab.com/lspies/photoqt/-/commit/a8908dbfac01886204a5d911106208bd0f15b467
+
+From a8908dbfac01886204a5d911106208bd0f15b467 Mon Sep 17 00:00:00 2001
+From: Lukas Spies <Lukas@photoqt.org>
+Date: Thu, 22 Dec 2022 03:07:40 -0600
+Subject: [PATCH] [PQLoadImageRAW] make raw loader work when libraw is compiled
+ without rawspeed support. Not aware of macro to chewck at compile time, thsu
+ disabled for now
+
+--- a/cplusplus/imageprovider/loader/loadimage_raw.cpp
++++ b/cplusplus/imageprovider/loader/loadimage_raw.cpp
+@@ -57,7 +57,6 @@ QImage PQLoadImageRAW::load(QString filename, QSize maxSize, QSize &origSize, bo
+     // Since we don't care about manipulating RAW images but only want to display
+     // them, we can optimise for speed
+     raw.imgdata.params.user_qual = 2;
+-    raw.imgdata.params.use_rawspeed = 1;
+     raw.imgdata.params.use_camera_wb = 1;
+ 
+     // Open the RAW image
+-- 
+GitLab
