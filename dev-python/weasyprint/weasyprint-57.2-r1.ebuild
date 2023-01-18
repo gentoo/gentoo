@@ -29,6 +29,7 @@ RDEPEND="
 	>=dev-python/pydyf-0.5.0[${PYTHON_USEDEP}]
 	>=dev-python/pyphen-0.9.1[${PYTHON_USEDEP}]
 	>=dev-python/tinycss2-1.0.0[${PYTHON_USEDEP}]
+	media-fonts/dejavu
 	x11-libs/pango
 "
 
@@ -39,7 +40,6 @@ BDEPEND="
 			<app-text/ghostscript-gpl-9.56.0
 		)
 		media-fonts/ahem
-		media-fonts/dejavu
 	)
 "
 
