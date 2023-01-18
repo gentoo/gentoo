@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit bash-completion-r1 desktop python-any-r1 scons-utils toolchain-funcs xdg
 
 DESCRIPTION="Multi-platform 2D and 3D game engine with a feature-rich editor"
