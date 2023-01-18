@@ -48,6 +48,10 @@ DEPEND="
 		net-misc/rsync
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-dash.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
