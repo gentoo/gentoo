@@ -26,6 +26,7 @@ fi
 IUSE="selinux ibm nls static"
 
 COMMON_DEPEND="
+	acct-group/root
 	selinux? (
 		>=sys-libs/libselinux-1.28
 	)"
