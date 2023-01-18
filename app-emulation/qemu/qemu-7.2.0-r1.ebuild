@@ -41,7 +41,7 @@ else
 	fi
 
 	S="${WORKDIR}/${MY_P}"
-	# [[ "${PV}" != *_rc* ]] && KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	[[ "${PV}" != *_rc* ]] && KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -151,7 +151,7 @@ done
 # respected).  This is because qemu supports using the C library's API
 # when available rather than always using the external library.
 ALL_DEPEND="
-	>=dev-libs/glib-2.0[static-libs(+)]
+	dev-libs/glib:2[static-libs(+)]
 	sys-libs/zlib[static-libs(+)]
 	python? ( ${PYTHON_DEPS} )
 	systemtap? ( dev-util/systemtap )
@@ -176,11 +176,14 @@ SOFTMMU_TOOLS_DEPEND="
 	fuse? ( >=sys-fs/fuse-3.1:3[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
-		dev-libs/nettle:=[static-libs(+)]
 		>=net-libs/gnutls-3.0:=[static-libs(+)]
+		dev-libs/nettle:=[static-libs(+)]
 	)
 	gtk? (
+		x11-libs/cairo
+		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:3
+		x11-libs/libX11
 		vte? ( x11-libs/vte:2.91 )
 	)
 	infiniband? ( sys-cluster/rdma-core[static-libs(+)] )
@@ -205,7 +208,7 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	pam? ( sys-libs/pam )
 	png? ( media-libs/libpng:0=[static-libs(+)] )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	rbd? ( sys-cluster/ceph )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)] )
 	sdl? (
@@ -223,7 +226,7 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	ssh? ( >=net-libs/libssh-0.8.6[static-libs(+)] )
 	udev? ( virtual/libudev:= )
-	usb? ( >=virtual/libusb-1-r2[static-libs(+)] )
+	usb? ( >=virtual/libusb-1-r2:1[static-libs(+)] )
 	usbredir? ( >=sys-apps/usbredir-0.6[static-libs(+)] )
 	vde? ( net-misc/vde[static-libs(+)] )
 	virgl? ( media-libs/virglrenderer[static-libs(+)] )
@@ -311,6 +314,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-make.patch
 	"${FILESDIR}"/${PN}-7.1.0-also-build-virtfs-proxy-helper.patch
 	"${FILESDIR}"/${PN}-7.1.0-capstone-include-path.patch
+	"${FILESDIR}"/${PN}-7.2.0-disable-gmp.patch
 )
 
 QA_PREBUILT="
