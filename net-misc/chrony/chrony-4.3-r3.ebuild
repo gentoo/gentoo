@@ -55,7 +55,9 @@ RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-chronyd )
 "
+# bison dep only for 4.3-r1 for ${P}-strict-prototypes-clang16.patch
 BDEPEND="
+	sys-devel/bison
 	html? ( dev-ruby/asciidoctor )
 	nts? ( virtual/pkgconfig )
 	sechash? (
