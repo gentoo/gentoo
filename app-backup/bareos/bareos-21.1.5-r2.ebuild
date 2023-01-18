@@ -234,6 +234,13 @@ src_install() {
 	rm -f "${D}"/etc/bareos/bareos-regress.conf
 	rm -f "${D}"/etc/logrotate.d/bareos-dir
 
+	# remove duplicate binaries being installed in /usr/sbin and replace
+	# them by symlinks to not break systems that still use split-usr
+	for f in bwild bregex bsmtp bconsole; do
+		rm -f "${D}/usr/sbin/$f" || die
+		ln -s "../bin/$f" "${D}/usr/sbin/$f" || die
+	done
+
 	# get rid of py2 stuff
 	rm -rf "$D"/usr/lib64/python2.7 || die
 	rm -f "$D"/usr/lib64/bareos/plugin/python-fd.so || die
