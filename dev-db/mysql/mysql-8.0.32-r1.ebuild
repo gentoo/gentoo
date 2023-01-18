@@ -555,6 +555,9 @@ src_test() {
 src_install() {
 	cmake_src_install
 
+	# Not a GNU info file, more like a tiny README.
+	rm "${ED}"/usr/share/info/mysql.info || die
+
 	# Make sure the vars are correctly initialized
 	mysql_init_vars
 
