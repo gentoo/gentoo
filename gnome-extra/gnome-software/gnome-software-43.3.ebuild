@@ -27,7 +27,7 @@ RDEPEND="
 	sys-auth/polkit
 	firmware? ( >=sys-apps/fwupd-1.5.6 )
 	flatpak? (
-		>=sys-apps/flatpak-1.9.1
+		>=sys-apps/flatpak-1.14.0-r1
 		dev-util/ostree
 	)
 	udev? ( dev-libs/libgudev )
