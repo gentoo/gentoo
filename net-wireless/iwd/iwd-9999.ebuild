@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit flag-o-matic linux-info systemd
 
 #Set this variable to the required external ell version
@@ -33,6 +33,7 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
+	acct-group/netdev
 	net-wireless/wireless-regdb
 	crda? ( net-wireless/crda )
 	standalone? (
