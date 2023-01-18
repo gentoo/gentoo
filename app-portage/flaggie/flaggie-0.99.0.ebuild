@@ -1,0 +1,36 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=flit
+PYTHON_COMPAT=( python3_{9..11} )
+
+inherit distutils-r1
+
+DESCRIPTION="A smart CLI mangler for package.* files"
+HOMEPAGE="
+	https://github.com/projg2/flaggie/
+"
+SRC_URI="
+	https://github.com/projg2/flaggie/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS=""
+
+RDEPEND="
+	app-portage/gentoopm[${PYTHON_USEDEP}]
+	dev-python/more-itertools[${PYTHON_USEDEP}]
+	dev-vcs/git
+"
+
+distutils_enable_tests pytest
+
+pkg_postinst() {
+	ewarn "This is a preview release of flaggie 1.x. It it not fully featured"
+	ewarn "yet and it may have significant bugs. Please back your /etc/portage"
+	ewarn "up before using it. Verify the results using --pretend."
+}
