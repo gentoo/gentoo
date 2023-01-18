@@ -12,7 +12,6 @@ SRC_URI="https://www.skarnet.org/software/${PN}/${P}.tar.gz"
 LICENSE="ISC"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="doc ipv6"
 
 HTML_DOCS=( doc/. )
 
@@ -33,10 +32,11 @@ src_configure() {
 		--dynlibdir=/usr/$(get_libdir)
 		--libdir=/usr/$(get_libdir)/${PN}
 		--sysdepdir=/usr/$(get_libdir)/${PN}
-		--enable-clock
-		--enable-shared
+
 		--disable-static
-		$(use_enable ipv6)
+		--enable-clock
+		--enable-ipv6
+		--enable-shared
 	)
 
 	econf "${myconf[@]}"
