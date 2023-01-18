@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-02-07)
+# Unused Java libraries. Removal on 2023-03-08.
+# jspeex had last upstream activities in 2005.
+dev-java/jspeex
+dev-java/osgi-annotation-versioning
+dev-java/commons-text
+
 # Michał Górny <mgorny@gentoo.org> (2023-02-05)
 # dev-python/python-box has broken build system that prevents us from
 # bumping it.  Its only used by dev-python/tavern that is last rited,
