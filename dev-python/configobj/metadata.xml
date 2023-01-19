@@ -13,7 +13,7 @@
   for config files.
   </longdescription>
   <upstream>
+    <remote-id type="github">DiffSK/configobj</remote-id>
     <remote-id type="pypi">configobj</remote-id>
-    <remote-id type="sourceforge">configobj</remote-id>
   </upstream>
 </pkgmetadata>
