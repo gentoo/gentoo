@@ -96,7 +96,7 @@ src_install() {
 		-fstack-clash-protection
 		-fstack-protector-strong
 		-fPIE
-		-include "${ESYSROOT}/usr/include/gentoo/fortify.h"
+		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
 	EOF
 
 	dodir /usr/include/gentoo
