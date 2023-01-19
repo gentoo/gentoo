@@ -729,11 +729,6 @@ dev-db/mysql-super-smack
 # Removal on 2023-01-20.  Bug #737842.
 dev-php/phptal
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-20)
-# Pending version bump since 2015.  No new upstream releases since.
-# Removal on 2023-01-19.  Bug #887489.
-sys-cluster/ganglia
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
 ~dev-util/bindgen-0.63.0
