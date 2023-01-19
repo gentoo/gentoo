@@ -31,7 +31,7 @@ PATCHES=(
 
 pkg_setup() {
 	linux-info_pkg_setup
-	local CONFIG_CHECK="~ACPI_EXTLOG"
+	local CONFIG_CHECK="~ACPI_EXTLOG ~DEBUG_FS"
 	check_extra_config
 }
 
