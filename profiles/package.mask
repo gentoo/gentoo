@@ -899,11 +899,6 @@ net-print/apsfilter
 # Removal on 2023-01-31.
 net-voip/captagent
 
-# Hans de Graaff <graaff@gentoo.org> (2022-12-11)
-# ruby27-only package. No reverse dependencies.
-# Last release in 2012. Removal in 30 days.
-dev-ruby/log_buddy
-
 # Jonas Stein <jstein@gentoo.org> (2022-12-11)
 # Unfetchable and mirror-restricted.
 # Upstream discontinued
