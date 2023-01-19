@@ -815,7 +815,6 @@ net-wireless/rfkill
 # issues.  Last release in 2014.
 # Removal on 2023-01-15.  Bug #873871.
 media-video/ogmrip
-media-video/shrip
 
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
