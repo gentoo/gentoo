@@ -817,12 +817,6 @@ net-wireless/rfkill
 media-video/ogmrip
 media-video/shrip
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-16)
-# Multiple build failures reported.  Last bumped in 2010.
-# Homepage gone.
-# Removal on 2023-01-15.  Bug #839723.
-net-firewall/nufw
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
