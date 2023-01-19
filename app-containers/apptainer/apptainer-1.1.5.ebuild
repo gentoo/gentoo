@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -65,9 +65,11 @@ src_install() {
 	keepdir /var/${PN}/mnt/session
 
 	if use systemd; then
-		sed -i -e '/systemd cgroups/ s/no/yes/' "${ED}"/etc/${PN}/${PN}.conf || die "Failed to enable systemd use in configuration"
+		sed -i -e '/systemd cgroups/ s/no/yes/' "${ED}"/etc/${PN}/${PN}.conf \
+			|| die "Failed to enable systemd use in configuration"
 	else
-		sed -i -e '/systemd cgroups/ s/yes/no/' "${ED}"/etc/${PN}/${PN}.conf || die "Failed to disable systemd use in configuration"
+		sed -i -e '/systemd cgroups/ s/yes/no/' "${ED}"/etc/${PN}/${PN}.conf \
+			|| die "Failed to disable systemd use in configuration"
 	fi
 
 	einstalldocs
