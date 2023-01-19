@@ -746,12 +746,6 @@ sys-cluster/ganglia-web
 # Removal on 2023-01-19.  Bug #759190.
 media-video/mpeg2vidcodec
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-20)
-# An unmaintained library that was "quickly whipped up for some demos".
-# Last bumped in 2011.  No reverse dependencies.
-# Removal on 2023-01-19.  Bug #847406.
-media-libs/guilib
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
 ~dev-util/bindgen-0.63.0
