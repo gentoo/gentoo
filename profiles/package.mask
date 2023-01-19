@@ -823,12 +823,6 @@ media-video/shrip
 # Removal on 2023-01-15.  Bug #839723.
 net-firewall/nufw
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-16)
-# Unmaintained.  Broken with >=net-nds/openldap-2.6.
-# Last release in 2009.
-# Removal on 2023-01-15.  Bug #835649.
-net-nds/adtool
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
