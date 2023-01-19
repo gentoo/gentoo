@@ -762,13 +762,6 @@ media-libs/guilib
 # Removal on 2023-01-20. Bug #875143.
 x11-libs/libast
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-19)
-# Unmaintained.  The current sawfish version in ::gentoo is a prerelease
-# from 2017, there was a single release in 2021.  Bugs are accumulating.
-# Includes dependencies specific to Sawfish.
-# Removal on 2023-01-18.  Bug #637978.
-dev-libs/librep
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
