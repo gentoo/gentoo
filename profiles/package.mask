@@ -860,7 +860,6 @@ games-puzzle/mindless
 # is not a feasible long-term solution.
 #
 # Removal on 2023-01-15.  Bug #886203.
-dev-python/nltk
 dev-python/nltk-data
 
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
