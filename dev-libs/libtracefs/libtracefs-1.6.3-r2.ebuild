@@ -21,7 +21,7 @@ SLOT="0"
 IUSE="doc"
 
 RDEPEND="
-	!<dev-util/trace-cmd-1.6.1
+	!<dev-util/trace-cmd-3.1.4-r2
 	>=dev-libs/libtraceevent-1.3.0
 "
 DEPEND="${RDEPEND}"
