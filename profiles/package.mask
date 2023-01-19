@@ -734,12 +734,6 @@ dev-php/phptal
 # Removal on 2023-01-19.  Bug #887489.
 sys-cluster/ganglia
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-20)
-# Unmaintained.  Pending version bump since 2019.  Even then, the newest
-# upstream release has known vulnerabilities.
-# Removal on 2023-01-19.  Bug #696480.
-sys-cluster/ganglia-web
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
 ~dev-util/bindgen-0.63.0
