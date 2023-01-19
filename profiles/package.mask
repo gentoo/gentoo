@@ -915,11 +915,6 @@ dev-ruby/mime-types:2
 # Last release in 2013. Removal in 30 days.
 dev-ruby/nagios_analyzer
 
-# Hans de Graaff <graaff@gentoo.org> (2022-12-11)
-# ruby27-only package. No reverse dependencies.
-# Last release in 2009. Removal in 30 days.
-dev-ruby/ntlm-http
-
 # Jonas Stein <jstein@gentoo.org> (2022-12-11)
 # Unfetchable and mirror-restricted.
 # Upstream discontinued
