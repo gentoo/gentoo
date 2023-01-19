@@ -780,12 +780,6 @@ dev-libs/rocclr
 # Stuck at 2.7.0, no revdeps; removal on 2023-01-19
 dev-libs/rocm-hostcall
 
-# Pacho Ramos <pacho@gentoo.org> (2022-12-18)
-# Dead for ages, still included and barely maintained in bluez[deprecated].
-# See bug #885459
-# Removal: 2023-01-17.  Bug #885459.
-net-wireless/bluez-hcidump
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
