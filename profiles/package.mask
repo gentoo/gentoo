@@ -846,12 +846,6 @@ dev-ruby/daemon_controller
 # No reverse dependencies. Masked for removal in 30 days.
 dev-ruby/ferret
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-16)
-# Not installable since at least Dec 2020 due to checksum mismatch.
-# Ebuild not touched since 2018.
-# Removal on 2023-01-15.  Bug #759121.
-games-puzzle/mindless
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
