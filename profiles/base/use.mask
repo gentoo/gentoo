@@ -12,6 +12,8 @@ ruby_targets_ruby27
 # Masked for testing. The split of some packages may still
 # change. bug #838970.
 qt6
+pyqt6
+pyside6
 
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # dev-util/sysprof not keyworded on most arches yet

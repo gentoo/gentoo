@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jimi Huotari <chiitoo@gentoo.org> (2023-06-10)
+# Mask to allow qt6 unmask.
+<dev-python/pyside6-6.5.0
+<dev-python/pyside6-tools-6.5.0
+<dev-python/shiboken6-6.5.0
+
 # Sam James <sam@gentoo.org> (2023-06-10)
 # Integrated into media-libs/gst-plugins-bad[vaapi]. Please use that instead.
 # Removal in 14 days.
@@ -429,15 +435,6 @@ x11-drivers/nvidia-drivers:0/390
 # Breaks too many revdeps for now
 =app-text/discount-3*
 
-# Ionen Wolkens <ionen@gentoo.org> (2022-12-24)
-# Upstream dropped wxGTK support in >=games-emulation/pcsx2-1.7.3773,
-# and it now always requires Qt6. Masked given Qt6 is also masked in
-# Gentoo at the moment. It is recommended to use <=pcsx2-1.7.3772 for
-# now, but you can opt-in for testing by searching for "qtbase" in:
-# https://gitweb.gentoo.org/repo/gentoo.git/tree/profiles/package.mask
-# and package.unmask the whole list alongside pcsx2.
->=games-emulation/pcsx2-1.7.3773
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
 ~dev-util/bindgen-0.63.0
@@ -466,44 +463,6 @@ sys-cluster/slurm
 # haskell-cabal.eclass)
 # See: <https://github.com/martijnbastiaan/doctest-parallel/issues/45>
 dev-haskell/doctest-parallel
-
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-08-12)
-# Masked for testing, depends on dev-qt/qt*:6
-# Pyside6 is stuck on python3_10 for the moment being
-dev-python/shiboken6
-dev-python/pyside6
-dev-python/pyside6-tools
-
-# Jimi Huotari <chiitoo@gentoo.org> (2022-08-02)
-# Masked for testing. The split of some packages may still
-# change. bug #838970.
->=app-editors/retext-8.0.0
-dev-python/PyQt6
-dev-python/PyQt6-WebEngine
-dev-qt/qt3d:6
-dev-qt/qt5compat:6
-dev-qt/qtbase:6
-dev-qt/qtcharts:6
-dev-qt/qtdeclarative:6
-dev-qt/qtimageformats:6
-dev-qt/qtlocation:6
-dev-qt/qtmultimedia:6
-dev-qt/qtnetworkauth:6
-dev-qt/qtpositioning:6
-dev-qt/qtquick3d:6
-dev-qt/qtquicktimeline:6
-dev-qt/qtscxml:6
-dev-qt/qtserialport:6
-dev-qt/qtshadertools:6
-dev-qt/qtsvg:6
-dev-qt/qttools:6
-dev-qt/qtwayland:6
-dev-qt/qtwebchannel:6
-dev-qt/qtwebengine:6
-dev-qt/qtwebsockets:6
->=games-board/tetzle-2.2.2
->=media-video/bino-2
->=x11-misc/albert-0.20.13
 
 # Sam James <sam@gentoo.org> (2022-05-28)
 # GCC 9 and older no longer receive upstream support or fixes for
