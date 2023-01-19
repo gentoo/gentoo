@@ -232,7 +232,6 @@ net-libs/libproxy kde
 sys-auth/polkit kde
 sys-block/gparted kde
 virtual/notification-daemon kde
-x11-wm/sawfish kde
 
 # Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
