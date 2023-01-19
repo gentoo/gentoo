@@ -841,11 +841,6 @@ sci-libs/libcmatrix
 # No reverse dependencies. Masked for removal in 30 days.
 dev-ruby/daemon_controller
 
-# Hans de Graaff <graaff@gentoo.org> (2022-12-16)
-# ruby27-only package. No longer maintained upstream.
-# No reverse dependencies. Masked for removal in 30 days.
-dev-ruby/ferret
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
