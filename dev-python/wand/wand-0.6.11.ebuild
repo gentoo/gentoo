@@ -31,6 +31,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-sphinx-6.patch
+)
+
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
 
