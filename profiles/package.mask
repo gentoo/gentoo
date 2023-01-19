@@ -859,11 +859,7 @@ games-puzzle/mindless
 # via LICENSE=all-rights-reserved + RESTRICT=bindist but this
 # is not a feasible long-term solution.
 #
-# dev-python/lunr is the only revdep and has no reverse dependencies
-# itself.
-#
 # Removal on 2023-01-15.  Bug #886203.
-dev-python/lunr
 dev-python/nltk
 dev-python/nltk-data
 
