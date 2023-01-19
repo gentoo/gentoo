@@ -769,7 +769,6 @@ x11-libs/libast
 # Removal on 2023-01-18.  Bug #637978.
 dev-libs/librep
 x11-libs/rep-gtk
-x11-themes/sawfish-themes
 x11-wm/sawfish
 
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
