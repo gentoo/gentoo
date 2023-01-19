@@ -4,10 +4,10 @@
 	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
-		</maintainer>
-		<upstream>
+	</maintainer>
+	<upstream>
 		<remote-id type="github">python-gitlab/python-gitlab</remote-id>
 		<remote-id type="pypi">python-gitlab</remote-id>
 		<bugs-to>https://github.com/python-gitlab/python-gitlab/issues</bugs-to>
-		</upstream>
+	</upstream>
 </pkgmetadata>
