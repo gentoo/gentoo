@@ -3,3 +3,6 @@
 
 # Full path to config file. /etc/ksmbd/ksmbd.conf is default if not set.
 #KSMBD_CONF="/etc/ksmbd/ksmbd.conf"
+
+# Extra options to pass to ksmbd.mountd(8) at startup
+#KSMBD_OPTS=""
