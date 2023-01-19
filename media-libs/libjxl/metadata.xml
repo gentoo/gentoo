@@ -17,4 +17,7 @@
   <use>
     <flag name="gdk-pixbuf">Build a gdk-pixbuf loader</flag>
   </use>
+  <upstream>
+    <remote-id type="github">libjxl/libjxl</remote-id>
+  </upstream>
 </pkgmetadata>
