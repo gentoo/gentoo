@@ -10,7 +10,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
-KEYWORDS="~loong"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos"
 IUSE="
 	default-compiler-rt default-libcxx default-lld llvm-libunwind
 	hardened stricter
@@ -96,7 +96,7 @@ src_install() {
 		-fstack-clash-protection
 		-fstack-protector-strong
 		-fPIE
-		-include "${ESYSROOT}/usr/include/gentoo/fortify.h"
+		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
 	EOF
 
 	dodir /usr/include/gentoo
@@ -133,12 +133,6 @@ src_install() {
 			-Werror=implicit-function-declaration
 			-Werror=implicit-int
 			-Werror=incompatible-function-pointer-types
-
-			# constructs banned by C2x
-			-Werror=deprecated-non-prototype
-
-			# deprecated but large blast radius
-			#-Werror=strict-prototypes
 		EOF
 
 		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
