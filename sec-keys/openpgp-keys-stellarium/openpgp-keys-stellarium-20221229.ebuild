@@ -8,7 +8,7 @@ HOMEPAGE="https://stellarium.org/ https://github.com/Stellarium/stellarium"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 riscv ~x86"
+KEYWORDS="amd64 ppc ppc64 ~riscv ~x86"
 
 S="${WORKDIR}"
 
