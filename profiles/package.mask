@@ -872,14 +872,6 @@ dev-python/nltk-data
 # Removal on 2023-01-14.  Bug #688950.
 sci-astronomy/skycat
 
-# Marco Scardovi <mscardovi@icloud.com> (2022-12-15)
-# We are literally the only distro that still have
-# an installation option for that package.
-# It still uses EAPI 6 and no real support since
-# years.
-# Removal on 2023-01-14. Bug #885605
-net-print/kyocera-mita-ppds
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
