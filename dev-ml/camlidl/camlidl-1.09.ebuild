@@ -40,6 +40,7 @@ src_compile() {
 	ln -s Makefile.unix config/Makefile || die
 
 	# Make
+	emake depend
 	emake -j1 RANLIB="$(tc-getRANLIB)" CPP="$(tc-getPROG CPP cpp)"
 }
 
