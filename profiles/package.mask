@@ -910,11 +910,6 @@ dev-ruby/log_buddy
 # Removal in 30 days.
 dev-ruby/mime-types:2
 
-# Hans de Graaff <graaff@gentoo.org> (2022-12-11)
-# ruby27-only package. No reverse dependencies.
-# Last release in 2013. Removal in 30 days.
-dev-ruby/nagios_analyzer
-
 # Jonas Stein <jstein@gentoo.org> (2022-12-11)
 # Unfetchable and mirror-restricted.
 # Upstream discontinued
