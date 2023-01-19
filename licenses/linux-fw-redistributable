@@ -5,3 +5,7 @@ many of them being non-free. However, all images whose license is
 subsumed under this license label should at least be redistributable.
 You will need to check the WHENCE and LICEN[CS]E.* files in the
 package for specific licensing terms.
+
+Some firmware images are distributed under a free software license
+(e.g. MIT or BSD), but only in binary form. These images are non-free
+in spite of their license, because their source code is not available.
