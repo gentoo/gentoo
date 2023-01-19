@@ -793,12 +793,6 @@ net-wireless/bluez-hcidump
 # Removal on 2023-01-16.  Bug #886475.
 dev-python/test_server
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-17)
-# Discontinued upstream.  Fails to build for some users.  No reverse
-# dependencies.
-# Removal on 2023-01-16.  Bug #650346.
-dev-perl/perl-mozldap
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
