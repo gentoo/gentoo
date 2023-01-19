@@ -776,10 +776,6 @@ x11-wm/sawfish
 # Bundled by >=dev-util/hip-5, removal on 2023-01-19
 dev-libs/rocclr
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-12-18)
-# Stuck at 2.7.0, no revdeps; removal on 2023-01-19
-dev-libs/rocm-hostcall
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
