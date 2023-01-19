@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -55,7 +55,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.3.1_p20211221-animated-gif.patch
-	"${FILESDIR}"/${PN}-4.3.1_p20211221-libgrapheme2.patch
 )
 
 src_prepare() {
