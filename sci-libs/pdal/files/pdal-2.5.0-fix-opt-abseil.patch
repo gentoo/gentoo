@@ -1,0 +1,94 @@
+From: https://github.com/PDAL/PDAL/commit/a3a8d6f1759f848b1ec6f3a2fcb3e6b40f12d892
+From: Howard Butler <hobu.inc@gmail.com>
+Date: Thu, 19 Jan 2023 09:58:47 -0600
+Subject: [PATCH] Make Abseil/re2 an opt-in, not required when Abseil is lazily
+ found (#3948)
+
+* address #3944, Abseil/re2 being required. It is now an opt-in
+
+* missing endif()
+
+* WITH_ABSEIL FALSE
+---
+ cmake/gtest.cmake   | 48 ++++++++++++++++++++++++---------------------
+ cmake/options.cmake |  4 ++++
+ 2 files changed, 30 insertions(+), 22 deletions(-)
+
+diff --git a/cmake/gtest.cmake b/cmake/gtest.cmake
+index c0a0d44ba5..df230a10b2 100644
+--- a/cmake/gtest.cmake
++++ b/cmake/gtest.cmake
+@@ -4,32 +4,36 @@ if (MSVC)
+     option(gtest_force_shared_crt "Always use shared Visual C++ run-time DLL" ON)
+ endif()
+ 
+-set(GOOGLETEST_VERSION 1.10.0)
++set(GOOGLETEST_VERSION 1.12.1)
+ add_subdirectory(vendor/gtest)
+ 
+ set(FPHSA_NAME_MISMATCHED 1) # Suppress warnings, see https://cmake.org/cmake/help/v3.17/module/FindPackageHandleStandardArgs.html
+-find_package(absl QUIET)
+-set(FPHSA_NAME_MISMATCHED 0)
+ 
+-if (absl_FOUND)
+-    find_package(re2 REQUIRED)
+ 
+-    if(${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.13.0")
+-        cmake_policy(SET CMP0079 NEW)
++if (WITH_ABSEIL)
++    find_package(absl REQUIRED)
++    set(FPHSA_NAME_MISMATCHED 0)
++
++    if (absl_FOUND)
++        find_package(re2 REQUIRED)
++
++        if(${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.13.0")
++            cmake_policy(SET CMP0079 NEW)
++        endif()
++        target_compile_definitions(gtest PUBLIC GTEST_HAS_ABSL=1)
++        target_compile_definitions(gtest_main PUBLIC GTEST_HAS_ABSL=1)
++        target_link_libraries(gtest PRIVATE absl::algorithm
++                                            absl::base
++                                            absl::flags
++                                            absl::flags_internal
++                                            absl::flags_usage
++                                            absl::flags_commandlineflag
++                                            absl::flags_parse
++                                            absl::debugging
++                                            absl::numeric
++                                            absl::strings
++                                            absl::utility
++                                            absl::failure_signal_handler)
++        target_link_libraries(gtest PUBLIC re2::re2)
+     endif()
+-    target_compile_definitions(gtest PUBLIC GTEST_HAS_ABSL=1)
+-    target_compile_definitions(gtest_main PUBLIC GTEST_HAS_ABSL=1)
+-    target_link_libraries(gtest PRIVATE absl::algorithm
+-                                        absl::base
+-                                        absl::flags
+-                                        absl::flags_internal
+-                                        absl::flags_usage
+-                                        absl::flags_commandlineflag
+-                                        absl::flags_parse
+-                                        absl::debugging
+-                                        absl::numeric
+-                                        absl::strings
+-                                        absl::utility
+-                                        absl::failure_signal_handler)
+-    target_link_libraries(gtest PRIVATE re2::re2)
+ endif()
+diff --git a/cmake/options.cmake b/cmake/options.cmake
+index 73be6788b2..ca3460e629 100644
+--- a/cmake/options.cmake
++++ b/cmake/options.cmake
+@@ -105,6 +105,10 @@ add_feature_info("Unit tests" WITH_TESTS "PDAL unit tests")
+ option(ENABLE_CTEST
+     "Enable CTest to support submissions of results to CDash at http://cdash.org" FALSE)
+ 
++option(WITH_ABSEIL
++    "Choose if PDAL should be built with Abseil support for testing" FALSE)
++add_feature_info("Abseil debugging support " WITH_ABSEIL "unit tests")
++
+ #
+ # Choose dependent options
+ #
