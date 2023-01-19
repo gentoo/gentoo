@@ -772,10 +772,6 @@ x11-libs/rep-gtk
 x11-themes/sawfish-themes
 x11-wm/sawfish
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2022-12-18)
-# Bundled by >=dev-util/hip-5, removal on 2023-01-19
-dev-libs/rocclr
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
