@@ -852,16 +852,6 @@ dev-ruby/ferret
 # Removal on 2023-01-15.  Bug #759121.
 games-puzzle/mindless
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-16)
-# NTLK relies on a large number of corpora that either have unknown
-# license, a non-free license or that may be in violation of copyright.
-# We have been rubber stamping over this in dev-python/nltk-data
-# via LICENSE=all-rights-reserved + RESTRICT=bindist but this
-# is not a feasible long-term solution.
-#
-# Removal on 2023-01-15.  Bug #886203.
-dev-python/nltk-data
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
