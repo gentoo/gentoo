@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="OCaml constraint programming library on integer & integer set finite domains"
 HOMEPAGE="http://opti.recherche.enac.fr/"
@@ -17,6 +17,8 @@ RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}"-1.1-make.patch ) # Fix building on FreeBSD
+
+QA_FLAGS_IGNORED='.*'
 
 src_prepare() {
 	default
