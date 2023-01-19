@@ -867,11 +867,6 @@ dev-python/lunr
 dev-python/nltk
 dev-python/nltk-data
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-15)
-# Fails to build since 2019.  Last bumped in 2017.
-# Removal on 2023-01-14.  Bug #688950.
-sci-astronomy/skycat
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
