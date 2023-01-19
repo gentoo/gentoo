@@ -740,12 +740,6 @@ sys-cluster/ganglia
 # Removal on 2023-01-19.  Bug #696480.
 sys-cluster/ganglia-web
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-20)
-# Proprietary MPEG library that is no longer fetchable.  No reverse
-# dependencies.
-# Removal on 2023-01-19.  Bug #759190.
-media-video/mpeg2vidcodec
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
 ~dev-util/bindgen-0.63.0
