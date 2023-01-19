@@ -768,7 +768,6 @@ x11-libs/libast
 # Includes dependencies specific to Sawfish.
 # Removal on 2023-01-18.  Bug #637978.
 dev-libs/librep
-x11-libs/rep-gtk
 
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
