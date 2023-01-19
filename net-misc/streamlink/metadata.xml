@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>leio@gentoo.org</email>
-		<name>Mart Raudsepp</name>
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">streamlink/streamlink</remote-id>
