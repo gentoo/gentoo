@@ -799,12 +799,6 @@ dev-python/test_server
 # Removal on 2023-01-16.  Bug #650346.
 dev-perl/perl-mozldap
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-17)
-# No longer downloadable.  Pending version bump with no reply from
-# the maintainer.
-# Removal on 2023-01-16.  Bug #786912.
-media-gfx/iscan-plugin-network-nt
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
