@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -18,7 +18,6 @@ KEYWORDS="-* ~amd64"
 RDEPEND="
 	dev-libs/atk
 	dev-libs/glib:2
-	media-libs/libcanberra[gtk2]
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	media-libs/glu

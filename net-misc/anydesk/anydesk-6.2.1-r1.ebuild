@@ -19,6 +19,7 @@ KEYWORDS="-* ~amd64"
 RDEPEND="
 	app-accessibility/at-spi2-core:2
 	dev-libs/glib:2
+	media-libs/libcanberra[gtk2]
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	media-libs/glu

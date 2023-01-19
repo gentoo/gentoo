@@ -15,14 +15,13 @@ LICENSE="AnyDesk-TOS BSD BSD-2 openssl ZLIB"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
-# x11-libs/gtkglext is required and cannot be mitigated: https://bugs.gentoo.org/868255
 RDEPEND="
-	app-accessibility/at-spi2-core:2
+	dev-libs/atk
 	dev-libs/glib:2
+	media-libs/libcanberra[gtk2]
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	media-libs/glu
-	media-libs/libglvnd
 	sys-auth/polkit
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
