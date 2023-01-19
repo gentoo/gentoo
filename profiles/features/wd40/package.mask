@@ -87,7 +87,6 @@ gnome-extra/sushi
 >=media-gfx/libimagequant-4
 media-libs/libavif
 >=media-libs/libopenraw-0.3.2
-media-video/ogmrip
 media-video/rav1e
 net-im/gajim
 >=net-irc/polari-3.37

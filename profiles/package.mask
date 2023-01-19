@@ -810,12 +810,6 @@ media-gfx/iscan-plugin-network-nt
 # Removal on 2023-01-16.  Bug #867220.
 net-wireless/rfkill
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-16)
-# Requires legacy gnome-base/gconf.  A number of other unresolved
-# issues.  Last release in 2014.
-# Removal on 2023-01-15.  Bug #873871.
-media-video/ogmrip
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
