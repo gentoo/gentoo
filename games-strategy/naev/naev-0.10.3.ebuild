@@ -54,7 +54,8 @@ BDEPEND="
 		app-doc/doxygen
 		dev-lua/ldoc
 		media-gfx/graphviz
-	)"
+	)
+	test? ( x11-base/xorg-server[-minimal] )"
 
 python_check_deps() {
 	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
