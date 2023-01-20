@@ -37,12 +37,8 @@ NEWLIBBUILD="${WORKDIR}/build"
 NEWLIBNANOBUILD="${WORKDIR}/build.nano"
 NEWLIBNANOTMPINSTALL="${WORKDIR}/nano_tmp_install"
 
-# Adding -U_FORTIFY_SOURCE to counter the effect of Gentoo's
-# auto-addition of _FORTIFY_SOURCE at gcc site: bug #656018#c4
-# Currently newlib can't be built itself when _FORTIFY_SOURCE
-# is set.
-CFLAGS_FULL="-ffunction-sections -fdata-sections -U_FORTIFY_SOURCE"
-CFLAGS_NANO="-Os -ffunction-sections -fdata-sections -U_FORTIFY_SOURCE"
+CFLAGS_FULL="-ffunction-sections -fdata-sections"
+CFLAGS_NANO="-Os -ffunction-sections -fdata-sections"
 
 pkg_setup() {
 	# Reject newlib-on-glibc type installs
