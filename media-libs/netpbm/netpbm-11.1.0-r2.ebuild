@@ -42,7 +42,7 @@ RDEPEND="
 	)
 	rle? ( media-libs/urt:= )
 	svga? ( media-libs/svgalib )
-	tiff? ( media-libs/tiff )
+	tiff? ( >=media-libs/tiff-3.5.5:= )
 	xml? ( dev-libs/libxml2 )
 	X? ( x11-libs/libX11 )
 "
