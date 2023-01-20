@@ -10,14 +10,20 @@
     <name>Richard Ash</name>
     <description>Upstream - please CC on bugs that concerns upstream</description>
   </maintainer>
+  <upstream>
+    <remote-id type="github">audacity/audacity</remote-id>
+  </upstream>
   <use>
+    <flag name="audiocom">Enable integrated uploading to audio.com</flag>
     <flag name="id3tag">Enables ID3 tagging with id3tag library</flag>
     <flag name="lv2">Add support for Ladspa V2</flag>
+    <flag name="mpg123">Use <pkg>media-sound/mpg123</pkg> instead of
+      <pkg>media-libs/libmad</pkg> for decoding MPEG decoding</flag>
     <flag name="portmidi">Enable support for MIDI via <pkg>media-libs/portmidi</pkg></flag>
     <flag name="portmixer">Enable the internal portmixer feature</flag>
     <flag name="portsmf">Enable support for Portable Standard Midi File Library</flag>
-    <flag name="sbsms">Enables sbsms library support for slower, more accurate
-      pitch and tempo changing</flag>
+    <flag name="sbsms">Enables sbsms library support for slower, more
+      accurate pitch and tempo changing</flag>
     <flag name="twolame">Enables twolame support (MPEG Audio Layer 2 encoder)</flag>
     <flag name="vamp">Enables vamp plugins support (Audio analysing plugins)</flag>
     <flag name="vst">Enable VST plugin support</flag>
