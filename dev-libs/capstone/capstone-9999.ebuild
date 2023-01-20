@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit cmake distutils-r1 toolchain-funcs
 
 DESCRIPTION="disassembly/disassembler framework + bindings"
-HOMEPAGE="http://www.capstone-engine.org/"
+HOMEPAGE="https://www.capstone-engine.org/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
