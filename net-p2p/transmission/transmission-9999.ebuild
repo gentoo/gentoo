@@ -13,7 +13,7 @@ else
 	MY_P="${PN}-${MY_PV}+r634b1e8fc1"
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://github.com/transmission/transmission/releases/download/${MY_PV}/${MY_P}.tar.xz"
-	#KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="A fast, easy, and free BitTorrent client"
@@ -51,7 +51,7 @@ COMMON_DEPEND="
 	gtk? (
 		>=dev-cpp/gtkmm-3.24.0:3.0
 		>=dev-cpp/glibmm-2.60.0:2
-		appindicator? ( >=dev-libs/libappindicator-0.4.90:3 )
+		appindicator? ( dev-libs/libayatana-appindicator )
 	)
 	qt5? (
 		dev-qt/qtcore:5
