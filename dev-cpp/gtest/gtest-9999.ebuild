@@ -13,9 +13,9 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/google/googletest"
 else
 	if [[ -z ${GOOGLETEST_COMMIT} ]]; then
-		SRC_URI="https://github.com/google/googletest/archive/refs/tags/release-${PV}.tar.gz
+		SRC_URI="https://github.com/google/googletest/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz"
-		S="${WORKDIR}"/googletest-release-${PV}
+		S="${WORKDIR}"/googletest-${PV}
 	else
 		SRC_URI="https://github.com/google/googletest/archive/${GOOGLETEST_COMMIT}.tar.gz
 			-> ${P}.tar.gz"
