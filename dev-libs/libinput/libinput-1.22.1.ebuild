@@ -44,6 +44,10 @@ BDEPEND="
 "
 #	test? ( dev-util/valgrind )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-sphinx-6.patch
+)
+
 python_check_deps() {
 	python_has_version "dev-python/commonmark[${PYTHON_USEDEP}]" && \
 	python_has_version "dev-python/recommonmark[${PYTHON_USEDEP}]" && \
