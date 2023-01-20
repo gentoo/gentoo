@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!--maintainer-needed-->
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="minimal">Disable bundled drivers and extra libraries (most users don't need these)</flag>
 		<flag name="odbcmanual">Administrator, Internal Structure, Programmer and User documentation</flag>
 		<flag name="stats">Build with statistic-gathering support</flag>
 	</use>
+	<longdescription lang="en">
+		unixODBC is an Open Source ODBC sub-system and an ODBC SDK for Linux, Mac OSX, and UNIX.
+		The unixODBC Project goals are to develop and promote unixODBC to be the definitive
+		standard for ODBC on non MS Windows platforms. 
+	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">unixODBC</remote-id>
-		<bugs-to>https://sourceforge.net/p/unixodbc/bugs</bugs-to>
+		<remote-id type="github">lurcher/unixODBC</remote-id>
+		<bugs-to>https://github.com/lurcher/unixODBC/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
