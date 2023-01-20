@@ -1,7 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit xdg-utils
 
 DESCRIPTION="Themes for the Murrine GTK+2 Cairo Engine"
 HOMEPAGE="https://tracker.debian.org/pkg/murrine-themes"
@@ -28,4 +30,12 @@ src_install() {
 
 	insinto /usr/share/themes
 	doins -r usr/share/themes/*
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
