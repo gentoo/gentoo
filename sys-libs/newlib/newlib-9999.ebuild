@@ -128,11 +128,11 @@ src_compile() {
 
 src_install() {
 	cd "${NEWLIBBUILD}" || die
-	emake -j1 DESTDIR="${D}" install
+	emake DESTDIR="${D}" install
 
 	if use nano ; then
 		cd "${NEWLIBNANOBUILD}" || die
-		emake -j1 DESTDIR="${NEWLIBNANOTMPINSTALL}" install
+		emake DESTDIR="${NEWLIBNANOTMPINSTALL}" install
 		# Rename nano lib* files to lib*_nano and move to the real ${D}
 		local nanolibfiles=""
 		nanolibfiles=$(find "${NEWLIBNANOTMPINSTALL}" -regex ".*/lib\(c\|g\|m\|rdimon\|gloss\)\.a" -print)
