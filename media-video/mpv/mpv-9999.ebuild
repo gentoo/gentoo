@@ -260,6 +260,9 @@ src_test() {
 		[[ ${test} == @($(IFS='|'; echo "${skip[*]}")) ]] ||
 			edo "${BUILD_DIR}"/mpv -v --no-config --unittest="${test}"
 	done
+
+	# currently only does basic libmpv testing, do in addition to --unittest
+	meson_src_test
 }
 
 src_install() {
