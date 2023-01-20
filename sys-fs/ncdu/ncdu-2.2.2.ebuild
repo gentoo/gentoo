@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit verify-sig
+inherit verify-sig edo
 
 DESCRIPTION="NCurses Disk Usage"
 HOMEPAGE="https://dev.yorhel.nl/ncdu"
@@ -39,7 +39,7 @@ src_unpack() {
 }
 
 src_test() {
-	zig build test || die "Tests failed"
+	edo zig build test
 }
 
 src_install() {
