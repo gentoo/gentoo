@@ -100,7 +100,7 @@ export GOMODCACHE="${WORKDIR}/go-mod"
 # -modcacherw makes the build cache read/write
 # -v prints the names of packages as they are compiled
 # -x prints commands as they are executed
-export GOFLAGS="-buildmod=pie -buildvcs=false -modcacherw -v -x"
+export GOFLAGS="-buildmode=pie -buildvcs=false -modcacherw -v -x"
 
 # Do not complain about CFLAGS etc since go projects do not use them.
 QA_FLAGS_IGNORED='.*'
