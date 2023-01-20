@@ -9,7 +9,7 @@ SRC_URI="https://downloads.apache.org/xalan/xalan-c/KEYS -> ${P}"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 
 S="${WORKDIR}"
 
