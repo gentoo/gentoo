@@ -105,12 +105,12 @@ src_prepare() {
 
 	# test may fail/hang depending on environment and shell initialization scripts
 	rm kitty_tests/{shell_integration,ssh}.py || die
-
 }
 
 src_compile() {
 	tc-export CC
-	export PKGCONFIG_EXE=$(tc-getPKG_CONFIG)
+	local -x GOFLAGS="-buildmode=pie -v -x"
+	local -x PKGCONFIG_EXE=$(tc-getPKG_CONFIG)
 
 	local conf=(
 		--disable-link-time-optimization
