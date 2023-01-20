@@ -156,4 +156,12 @@ src_install() {
 
 pkg_postinst() {
 	systemd_reenable "${PN}.service"
+
+	# Bug #886607
+	ewarn
+	ewarn "If you have a Nvidia GPU and ${PN} fails to launch X, edit /etc/${PN}/${PN}.conf to include the line"
+	ewarn
+	ewarn "logind-check-graphical=false"
+	ewarn
+	ewarn "in the section [LightDM]. See https://github.com/canonical/lightdm/issues/263 for details."
 }
