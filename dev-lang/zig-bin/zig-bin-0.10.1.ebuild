@@ -29,7 +29,7 @@ QA_PREBUILT="opt/${P}/zig"
 src_unpack() {
 	unpack ${A}
 
-	mv "${WORKDIR}/"* "${S}"
+	mv "${WORKDIR}/"* "${S}" || die
 }
 
 src_install() {
