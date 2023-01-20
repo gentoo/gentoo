@@ -17,7 +17,7 @@ else
 fi
 
 DESCRIPTION="OpenOCD - Open On-Chip Debugger"
-HOMEPAGE="https://openocd.sourceforge.net"
+HOMEPAGE="https://openocd.sourceforge.io"
 
 LICENSE="GPL-2+"
 SLOT="0"
