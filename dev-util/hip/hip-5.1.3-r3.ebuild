@@ -44,8 +44,15 @@ BDEPEND="profile? ( $(python_gen_any_dep '
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1-DisableTest.patch"
+	"${FILESDIR}/${PN}-4.2.0-config-cmake-in.patch"
 	"${FILESDIR}/${PN}-5.0.1-hip_vector_types.patch"
+	"${FILESDIR}/${PN}-4.2.0-cancel-hcc-header-removal.patch"
 	"${FILESDIR}/${PN}-5.0.2-set-build-id.patch"
+	"${FILESDIR}/${PN}-5.1.3-fix-hip_prof_gen.patch"
+	"${FILESDIR}/${PN}-5.1.3-correct-sample-install-location.patch"
+	"${FILESDIR}/${PN}-5.1.3-remove-cmake-doxygen-commands.patch"
+	"${FILESDIR}/0001-SWDEV-316128-HIP-surface-API-support.patch"
+	"${FILESDIR}/${PN}-5.1.3-llvm-15-noinline-keyword.patch"
 )
 
 python_check_deps() {
@@ -92,6 +99,8 @@ src_prepare() {
 	pushd ${HIP_S} || die
 	eapply "${FILESDIR}/${PN}-5.1.3-clang-include-path.patch"
 	eapply "${FILESDIR}/${PN}-5.1.3-rocm-path.patch"
+	eapply "${FILESDIR}/${PN}-5.0.2-correct-ldflag.patch"
+	eapply "${FILESDIR}/${PN}-5.1.3-fno-stack-protector.patch"
 	# Setting HSA_PATH to "/usr" results in setting "-isystem /usr/include"
 	# which makes "stdlib.h" not found when using "#include_next" in header files;
 	sed -e "/FLAGS .= \" -isystem \$HSA_PATH/d" \
@@ -161,5 +170,5 @@ src_install() {
 	rm "${ED}/usr/include/hip/hcc_detail" || die
 
 	# Don't install .hipInfo and .hipVersion to bin/lib
-	rm "${ED}/usr/bin/.hipVersion" || die
+	rm "${ED}/usr/lib/.hipInfo" "${ED}/usr/bin/.hipVersion" || die
 }
