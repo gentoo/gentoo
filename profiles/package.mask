@@ -82,7 +82,6 @@
 ~kde-plasma/plasma-workspace-5.26.90
 ~kde-plasma/plasma-workspace-wallpapers-5.26.90
 ~kde-plasma/plasma-vault-5.26.90
-~kde-plasma/plasma-welcome-5.26.90
 ~kde-plasma/plymouth-kcm-5.26.90
 ~kde-plasma/polkit-kde-agent-5.26.90
 ~kde-plasma/powerdevil-5.26.90
