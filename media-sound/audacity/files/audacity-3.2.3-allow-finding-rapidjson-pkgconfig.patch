@@ -1,0 +1,24 @@
+From 0a786020046c9d608f1e2f463575d4ca8febf909 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Sun, 18 Dec 2022 13:41:06 +0100
+Subject: [PATCH 3/3] Add pkg-config fallback for RapidJSON
+
+---
+ cmake-proxies/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cmake-proxies/CMakeLists.txt b/cmake-proxies/CMakeLists.txt
+index 7568bb32f..db40dcf63 100644
+--- a/cmake-proxies/CMakeLists.txt
++++ b/cmake-proxies/CMakeLists.txt
+@@ -289,6 +289,7 @@ if( ${_OPT}has_sentry_reporting OR ${_OPT}has_audiocom_upload )
+       RapidJSON
+       rapidjson/1.1.0
+       REQUIRED
++      PKG_CONFIG "RapidJSON"
+    )
+ endif()
+ 
+-- 
+2.39.0
+
