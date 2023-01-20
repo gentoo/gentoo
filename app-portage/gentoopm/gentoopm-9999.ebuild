@@ -20,7 +20,7 @@ SLOT="0"
 
 RDEPEND="
 	|| (
-		>=sys-apps/pkgcore-0.9.4[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.12.19[${PYTHON_USEDEP}]
 		>=sys-apps/portage-2.1.10.3[${PYTHON_USEDEP}]
 	)
 "
