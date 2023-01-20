@@ -86,7 +86,7 @@ python_test() {
 	# Force usage of built module
 	rm -rf "${S}"/libqtile || die
 
-	# TODO: remove "-p no:xdist" when https://github.com/qtile/qtile/issues/1634 will be resolved.
+	# TODO: remove "-p no:xdist" for next release when https://github.com/qtile/qtile/issues/1634 will be resolved.
 	epytest -p no:xdist --backend=x11 $(usev wayland '--backend=wayland') || die "Tests failed with ${EPYTHON}"
 }
 
