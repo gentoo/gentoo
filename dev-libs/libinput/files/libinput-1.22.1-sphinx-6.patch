@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/891371
+https://bugs.gentoo.org/889908
+https://gitlab.freedesktop.org/libinput/libinput/-/commit/bf2e8a406e6ebfdb62ffa67f00822c17ff9b2c6a
+
+From bf2e8a406e6ebfdb62ffa67f00822c17ff9b2c6a Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Tue, 17 Jan 2023 12:28:58 +1000
+Subject: [PATCH] doc/user: fix sphinx warning
+
+WARNING: extlinks: Sphinx-6.0 will require a caption string to contain
+exactly one '%s' and all other '%' need to be escaped as '%%'.
+
+Well, let's do that then!
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+--- a/doc/user/conf.py.in
++++ b/doc/user/conf.py.in
+@@ -169,7 +169,7 @@ from recommonmark.parser import CommonMarkParser
+ 
+ extlinks = { 'commit' :
+ 		('https://gitlab.freedesktop.org/libinput/libinput/commit/%s',
+-			'git commit ')
++			'git commit %s')
+ }
+ 
+ # -- git version hack -------------------------------------------------
+-- 
+GitLab
