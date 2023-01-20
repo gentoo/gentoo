@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: wxwidgets.eclass
@@ -43,7 +43,7 @@ case ${WX_GTK_VER} in
 		fi
 		;;
 	"") die "WX_GTK_VER not declared" ;;
-	*)  die "Invalid WX_GTK_VER: must be set to a valid wxGTK SLOT ('3.0' or '3.0-gtk3')" ;;
+	*)  die "Invalid WX_GTK_VER: must be set to a valid wxGTK SLOT ('3.0', '3.0-gtk3', or '3.2-gtk3')" ;;
 esac
 readonly WX_GTK_VER
 
