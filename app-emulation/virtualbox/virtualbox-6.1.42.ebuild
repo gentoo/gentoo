@@ -15,7 +15,7 @@ EAPI=8
 #  trunk branch but not release branch.
 #
 #  See bug #785835, bug #856121.
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature pax-utils \
 	python-single-r1 tmpfiles toolchain-funcs udev xdg
@@ -173,6 +173,7 @@ PATCHES=(
 	# (see the rest of the ebuild's logic for the remainder) to handle
 	# proper Python selection.
 	"${FILESDIR}"/${PN}-6.1.34-r3-python.patch
+	"${FILESDIR}"/${PN}-6.1.42-python3_11.patch
 
 	# 865361
 	"${FILESDIR}"/${PN}-6.1.36-fcf-protection.patch
