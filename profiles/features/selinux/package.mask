@@ -123,7 +123,6 @@
 =sec-policy/selinux-logsentry-2.20221101-r1
 =sec-policy/selinux-logwatch-2.20221101-r1
 =sec-policy/selinux-lpd-2.20221101-r1
-=sec-policy/selinux-mailman-2.20221101-r1
 =sec-policy/selinux-makewhatis-2.20221101-r1
 =sec-policy/selinux-mandb-2.20221101-r1
 =sec-policy/selinux-matrixd-2.20221101-r1
