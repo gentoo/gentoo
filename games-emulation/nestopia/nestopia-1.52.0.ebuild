@@ -7,17 +7,11 @@ inherit autotools flag-o-matic xdg
 
 DESCRIPTION="Portable Nintendo Entertainment System emulator written in C++"
 HOMEPAGE="http://0ldsk00l.ca/nestopia/"
-
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/0ldsk00l/nestopia.git"
-else
-	SRC_URI="https://github.com/0ldsk00l/nestopia/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
+SRC_URI="https://github.com/0ldsk00l/nestopia/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="
