@@ -43,6 +43,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	x11-base/xorg-proto
 	nls? ( sys-devel/gettext )
 "
 
