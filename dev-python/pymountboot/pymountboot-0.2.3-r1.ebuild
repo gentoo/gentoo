@@ -20,3 +20,4 @@ KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND=">=sys-apps/util-linux-2.20"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
