@@ -5,20 +5,14 @@ EAPI=8
 
 inherit meson xdg
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://git.sr.ht/~exec64/imv/"
-else
-	SRC_URI="https://git.sr.ht/~exec64/imv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-v${PV}"
-	KEYWORDS="~amd64 ~x86"
-fi
-
 DESCRIPTION="Minimal image viewer designed for tiling window manager users"
 HOMEPAGE="https://sr.ht/~exec64/imv/"
+SRC_URI="https://git.sr.ht/~exec64/imv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="+X +freeimage gif heif icu jpeg png svg test tiff wayland"
 REQUIRED_USE="|| ( X wayland )"
 RESTRICT="!test? ( test )"
