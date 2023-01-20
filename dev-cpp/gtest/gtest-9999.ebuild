@@ -60,7 +60,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	# Exclude tests that fail with FEATURES="usersandbox"
-	cmake_src_test -E "googletest-death-test-test"
+	cmake_src_test -E "googletest-(death-test|port)-test"
 }
 
 multilib_src_install_all() {
