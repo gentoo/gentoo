@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -71,6 +71,9 @@ src_configure() {
 	CFLAGS_ORIG="${CFLAGS}"
 
 	local myconf=(
+		# The top-level configure doesn't utilize this flag, but subdirs do,
+		# so autodetection for econf doesn't work.  Add ourselves.
+		--disable-silent-rules
 		# Disable legacy syscall stub code in newlib.  These have been
 		# moved to libgloss for a long time now, so the code in newlib
 		# itself just gets in the way.
