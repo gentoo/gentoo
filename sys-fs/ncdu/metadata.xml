@@ -14,7 +14,7 @@
 	</longdescription>
 	<upstream>
 		<changelog>https://dev.yorhel.nl/ncdu/changes2</changelog>
-		<doc lang="en">https://dev.yorhel.nl/ncdu/man2</doc>
+		<doc lang="en">https://dev.yorhel.nl/ncdu/man</doc>
 		<bugs-to>https://code.blicky.net/yorhel/ncdu/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
