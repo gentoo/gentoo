@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..11} )
-inherit distutils-r1 gnome2-utils plocale virtualx xdg
+inherit distutils-r1 gnome2-utils optfeature plocale virtualx xdg
 
 PLOCALES="ca cs de el es fa fi fr gl hr hu id it ja ko nb nl pa pl pt_BR ru sv tr uk zh_CN zh_TW"
 
@@ -17,7 +17,6 @@ SRC_URI="https://github.com/Guake/guake/archive/refs/tags/${PV}.tar.gz -> ${P}.g
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="utempter"
 
 RDEPEND="
 	$(python_gen_cond_dep '
@@ -28,8 +27,7 @@ RDEPEND="
 	dev-libs/keybinder:3[introspection]
 	x11-libs/libnotify[introspection]
 	x11-libs/libwnck:3[introspection]
-	x11-libs/vte:2.91[introspection]
-	utempter? ( sys-libs/libutempter )"
+	x11-libs/vte:2.91[introspection]"
 BDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/setuptools_scm[${PYTHON_USEDEP}]
@@ -79,6 +77,8 @@ python_install_all() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
+
+	optfeature "utmp management support" sys-libs/libutempter
 }
 
 pkg_postrm() {
