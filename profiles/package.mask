@@ -790,12 +790,6 @@ dev-php/phptal
 # This version currently is not compatible with kernel build (yet)
 ~dev-util/bindgen-0.63.0
 
-# Matt Turner <mattst88@gentoo.org> (2022-12-19)
-# Only reverse dependency was x11-terms/eterm which was removed almost a year
-# ago.
-# Removal on 2023-01-20. Bug #875143.
-x11-libs/libast
-
 # Jaco Kroon <jaco@uls.co.za> (2022-12-14)
 # Multiple open bugs (bug #870910, bug #877731, bug #884815), only one of which
 # is trivial to solve.
