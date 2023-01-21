@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv ~x86"
 
 python_test() {
 	"${EPYTHON}" tests/test.py -v || die "Tests failed with ${EPYTHON}"
