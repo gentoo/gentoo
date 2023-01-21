@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ pkg_setup() {
 }
 
 multilib_src_configure() {
-	if use arm && tc-is-clang ; then
+	if ( use arm || use arm64 ) && tc-is-clang ; then
 		# See bug #768138 and https://gitlab.freedesktop.org/pixman/pixman/-/issues/46
 		append-cflags $(test-flags-CC -fno-integrated-as)
 	fi
