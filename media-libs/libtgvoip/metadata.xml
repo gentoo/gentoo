@@ -12,4 +12,7 @@
 	<use>
 		<flag name="dsp">Enable signal processing (echo cancellation, noise suppression, and automatic gain control)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">telegramdesktop/libtgvoip</remote-id>
+	</upstream>
 </pkgmetadata>
