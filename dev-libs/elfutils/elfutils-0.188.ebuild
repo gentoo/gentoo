@@ -1,4 +1,4 @@
-# Copyright 2003-2022 Gentoo Authors
+# Copyright 2003-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -100,6 +100,10 @@ multilib_src_configure() {
 		$(use_with lzma)
 		$(use_with zstd)
 	)
+
+	# Needed because sets alignment macro
+	is-flagq -fsanitize=address && myeconfargs+=( --enable-sanitize-address )
+	is-flagq -fsanitize=undefined && myeconfargs+=( --enable-sanitize-undefined )
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
