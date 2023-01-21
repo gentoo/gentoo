@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/findlib.patch"
 	"${FILESDIR}"/${PN}-8.06.9-configure-clang16.patch
+	"${FILESDIR}"/${P}-shuffle.patch
 )
 
 src_prepare() {
