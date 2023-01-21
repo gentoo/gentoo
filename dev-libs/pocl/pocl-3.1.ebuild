@@ -3,13 +3,9 @@
 
 EAPI=8
 
-DOCS_AUTODOC=0
-DOCS_BUILDER="sphinx"
-DOCS_DIR="doc/sphinx/source"
-PYTHON_COMPAT=( python3_{9..10} pypy3 )
 LLVM_MAX_SLOT=15
 
-inherit cmake llvm python-any-r1 docs
+inherit cmake llvm
 
 DESCRIPTION="Portable Computing Language (an implementation of OpenCL)"
 HOMEPAGE="http://portablecl.org https://github.com/pocl/pocl"
@@ -26,8 +22,10 @@ RESTRICT="!test? ( test ) test"
 # TODO: add dependencies for cuda
 # Note: No := on LLVM because it pulls in Clang
 # see llvm.eclass for why
-CLANG_DEPS="!cuda? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):= )
-	cuda? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_NVPTX] )"
+CLANG_DEPS="
+	!cuda? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):= )
+	cuda? ( <sys-devel/clang-$((${LLVM_MAX_SLOT} + 1)):=[llvm_targets_NVPTX] )
+"
 RDEPEND="
 	dev-libs/libltdl
 	<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):*
@@ -38,15 +36,10 @@ RDEPEND="
 	hwloc? ( sys-apps/hwloc:=[cuda?] )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="${CLANG_DEPS}
+BDEPEND="
+	${CLANG_DEPS}
 	virtual/pkgconfig
-	doc? (
-		$(python_gen_any_dep '<dev-python/markupsafe-2.0[${PYTHON_USEDEP}]')
-	)"
-
-python_check_deps() {
-	python_has_version "<dev-python/markupsafe-2.0[${PYTHON_USEDEP}]"
-}
+"
 
 llvm_check_deps() {
 	local usedep=$(usex cuda "[llvm_targets_NVPTX]" '')
@@ -62,8 +55,6 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use doc && python-any-r1_pkg_setup
-
 	llvm_pkg_setup
 }
 
@@ -111,7 +102,6 @@ src_configure() {
 
 src_compile() {
 	cmake_src_compile
-	docs_compile
 }
 
 src_test() {
@@ -127,11 +117,6 @@ src_test() {
 
 src_install() {
 	cmake_src_install
-
-	if use doc; then
-		dodoc -r _build/html
-		docompress -x /usr/share/doc/${P}/html
-	fi
 
 	if use examples; then
 		dodoc -r examples
