@@ -77,6 +77,10 @@ PATCHES=(
 
 	# Fixed in next release
 	"${FILESDIR}"/${P}-transient-hostname-fix.patch
+
+	# https://github.com/nilfs-dev/nilfs-utils/commit/115fe4b976858c487cf83065f513d8626089579a
+	# https://bugs.gentoo.org/888467
+	"${FILESDIR}"/${PN}-5.66-musl-max-input.patch
 )
 
 pkg_setup() {
