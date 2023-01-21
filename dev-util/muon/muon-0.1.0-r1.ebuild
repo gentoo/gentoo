@@ -43,6 +43,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/muon-0.1.0-fix-potential-overflow.patch"
+	"${FILESDIR}/muon-0.1.0-test-Wincompatible-function-pointer-types.patch"
 )
 
 python_check_deps() {
