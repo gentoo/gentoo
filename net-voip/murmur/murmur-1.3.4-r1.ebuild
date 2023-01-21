@@ -69,7 +69,7 @@ fi
 DOC_CONTENTS="
 	Useful scripts are located in /usr/share/doc/${PF}/scripts.\n
 	Please execute:\n
-	murmurd -ini /etc/murmur/murmur.ini -supw <pw>\n
+	mumble-server -ini /etc/murmur/murmur.ini -supw <pw>\n
 	chown murmur:murmur /var/lib/murmur/murmur.sqlite\n
 	to set the build-in 'SuperUser' password before starting murmur.
 	Please restart dbus before starting murmur, or else dbus
