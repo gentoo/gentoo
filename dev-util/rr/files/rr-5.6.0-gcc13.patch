@@ -1,0 +1,32 @@
+https://github.com/rr-debugger/rr/commit/2248c85c424e8c257ca88af2732782574d6a3544
+
+From 2248c85c424e8c257ca88af2732782574d6a3544 Mon Sep 17 00:00:00 2001
+From: William Cohen <wcohen@redhat.com>
+Date: Wed, 18 Jan 2023 12:15:04 -0500
+Subject: [PATCH] Explicitly include <cstdint> where required.
+
+The uint8_t and uintptr_t ptr types are from the header <cstdint>.
+Earlier versions of gcc appear to declare them even if the header
+is not included, but gcc-13 does not.  Explicitly including the
+header to allow compilations with gcc-13.
+--- a/src/log.h
++++ b/src/log.h
+@@ -9,6 +9,7 @@
+ #include <iostream>
+ #include <type_traits>
+ #include <vector>
++#include <cstdint>
+ 
+ /**
+  * Print siginfo on ostream.
+--- a/src/remote_ptr.h
++++ b/src/remote_ptr.h
+@@ -5,6 +5,7 @@
+ 
+ #include <cstddef>
+ #include <iostream>
++#include <cstdint>
+ 
+ namespace rr {
+ 
+
