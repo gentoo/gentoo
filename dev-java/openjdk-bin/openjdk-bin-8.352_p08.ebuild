@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,19 +6,25 @@ EAPI=8
 inherit java-vm-2
 
 abi_uri() {
+	local baseuri="https://github.com/adoptium/temurin${SLOT}-binaries/releases/download/jdk${MY_PV}"
+	local musl=
 	local os=linux
+
 	case ${2} in
 		*-macos)    os=mac      ;;
 		*-solaris)  os=solaris  ;;
 	esac
-	echo "${2-$1}? (
-			https://github.com/adoptium/temurin${SLOT}-binaries/releases/download/jdk${MY_PV}/OpenJDK8U-jdk_${1}_${os}_hotspot_${3-${MY_PV/-/}}.tar.gz
-		)"
-}
 
-# they have different tarball names for different arches...
-# https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u282-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u282b08.tar.gz
-# https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u282-b08/OpenJDK8U-jdk_aarch64_linux_hotspot_jdk8u282-b08.tar.gz
+	if [[ ${3} == musl ]]; then
+		os=alpine-linux
+		musl=true
+	fi
+
+	echo "${2-$1}? (
+		${musl:+ elibc_musl? ( }
+			${baseuri}/OpenJDK${SLOT}U-jdk_${1}_${os}_hotspot_${MY_PV//-/}.tar.gz
+		${musl:+ ) } )"
+}
 
 MY_PV=$(ver_rs 1 'u' 2 '-' ${PV//p/b})
 SLOT=$(ver_cut 1)
@@ -30,6 +36,7 @@ SRC_URI="
 	$(abi_uri aarch64 arm64)
 	$(abi_uri ppc64le ppc64)
 	$(abi_uri x64 amd64)
+	$(abi_uri x64 amd64 musl)
 	$(abi_uri x64 x64-macos)
 "
 
@@ -43,7 +50,8 @@ RDEPEND="
 	kernel_linux? (
 		media-libs/fontconfig:1.0
 		media-libs/freetype:2
-		>=sys-libs/glibc-2.2.5:*
+		elibc_glibc? ( >=sys-libs/glibc-2.2.5:* )
+		elibc_musl? ( sys-libs/musl )
 		sys-libs/zlib
 		alsa? ( media-libs/alsa-lib )
 		arm? ( dev-libs/libffi-compat:6 )
