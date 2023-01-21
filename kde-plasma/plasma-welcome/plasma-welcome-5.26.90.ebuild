@@ -11,7 +11,7 @@ DESCRIPTION="A friendly onboarding wizard for Plasma"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE="telemetry"
 
 RDEPEND="
