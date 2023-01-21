@@ -759,12 +759,6 @@ sci-libs/votca-tools
 # Removal on 2023-01-20.
 media-gfx/colorhug-client
 
-# Matt Turner <mattst88@gentoo.org> (2022-12-21)
-# No reverse dependencies. GTK 4 doesn't use it.
-# See https://gitlab.gnome.org/GNOME/atkmm/-/issues/4
-# Removal on 2023-01-20.
-dev-cpp/atkmm:2.36
-
 # Michał Górny <mgorny@gentoo.org> (2022-12-21)
 # The mauve project is no longer maintained upstream, and the actual
 # program has been removed from Gentoo in 2016.  These are leftover
