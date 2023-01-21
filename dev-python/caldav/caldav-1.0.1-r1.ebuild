@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="|| ( GPL-3 Apache-2.0 )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/lxml[${PYTHON_USEDEP}]
