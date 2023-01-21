@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+start() {
+	start-stop-daemon --start --user freenet --chdir /var/freenet/ --background --stdout=/var/freenet/freenet.log --stderr=/var/freenet/freenet.log --make-pidfile --pidfile=/var/run/freenet.pid --name freenet --exec java -- -cp $classpath $additional_options $configurable_options $target
+}
+
+stop() {
+	start-stop-daemon --stop --user freenet --pidfile=/var/run/freenet.pid
+}
