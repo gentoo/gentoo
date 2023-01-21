@@ -754,11 +754,6 @@ sci-chemistry/votca-csgapps
 sci-chemistry/votca-xtp
 sci-libs/votca-tools
 
-# Matt Turner <mattst88@gentoo.org> (2022-12-21)
-# Archived upstream, now that fwupd can handle updates.
-# Removal on 2023-01-20.
-media-gfx/colorhug-client
-
 # Michał Górny <mgorny@gentoo.org> (2022-12-21)
 # The mauve project is no longer maintained upstream, and the actual
 # program has been removed from Gentoo in 2016.  These are leftover
