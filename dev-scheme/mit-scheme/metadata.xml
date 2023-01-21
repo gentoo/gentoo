@@ -17,5 +17,6 @@
   </use>
   <upstream>
     <bugs-to>https://savannah.gnu.org/bugs/?group=mit-scheme</bugs-to>
+    <remote-id type="savannah">mit-scheme</remote-id>
   </upstream>
 </pkgmetadata>
