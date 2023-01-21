@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2023-01-21)
+# 102.7.0 has a critical authentication issue with Microsoft 365
+# Business accounts. Fix should land in 102.7.1. If you're not affected
+# and really want this update, please unmask it for yourself.
+~mail-client/thunderbird-102.7.0
+~mail-client/thunderbird-bin-102.7.1
+
 # Hans de Graaff <graaff@gentoo.org> (2023-01-21)
 # No longer maintained upstream and missing recent security fixes.
 # Use a newer Rails version instead.
