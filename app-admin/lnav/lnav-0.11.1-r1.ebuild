@@ -36,6 +36,7 @@ DOCS=( AUTHORS NEWS.md README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.11.0-disable-tests.patch
+	"${FILESDIR}"/0001-Fix-build-with-GCC-13-add-missing-cstdint-include.patch
 )
 
 src_prepare() {
