@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/867832
+https://rt.cpan.org/Public/Bug/Display.html?id=141822
+
+From 5fb151e46ce03c960ae05405c6f6360ccb7efa6f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Fri, 18 Mar 2022 12:28:26 +0100
+Subject: [PATCH] Fix configure check with optimizing and lto-enabled GCC 12
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+After upgrading GCC to version 12 on Linux (where strlcpy() does not exist)
+tests fail like this if CFLAGS="-O1 -flto=auto":
+
+    make[1]: Entering directory '/home/test/fedora/perl-File-RsyncP/File-RsyncP-0.76/FileList'
+    "/usr/bin/perl" -MExtUtils::Command::MM -e 'cp_nonempty' -- FileList.bs ../blib/arch/auto/File/RsyncP/FileList/FileList.bs 644
+    PERL_DL_NONLAZY=1 "/usr/bin/perl" "-MExtUtils::Command::MM" "-MTest::Harness" "-e" "undef *Test::Harness::Switches; test_harness(0, '../blib/lib', '../blib/arch')" t/*.t
+    t/exclude.t ... Can't load '/home/test/fedora/perl-File-RsyncP/File-RsyncP-0.76/FileList/../blib/arch/auto/File/RsyncP/FileList/FileList.so' for module File::RsyncP::FileList: /home/test/fedora/perl-File-RsyncP/File-RsyncP-0.76/FileList/../blib/arch/auto/File/RsyncP/FileList/FileList.so: undefined symbol: strlcpy at /usr/lib64/perl5/DynaLoader.pm line 193.
+
+The new compiler optimizes out a check for strlcpy() perform by
+FileList/configure script. This patch changes the check to actually depend on
+strlcpy() function address. That should prevent a compiler from optimizing it
+out.
+
+CPAN RT#141822
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+--- a/FileList/configure
++++ b/FileList/configure
+@@ -9330,7 +9330,7 @@ char (*f) () = $ac_func;
+ int
+ main ()
+ {
+-return f != $ac_func;
++return (int)f;
+   ;
+   return 0;
+ }
+-- 
+2.34.1
