@@ -76,6 +76,7 @@ multilib_src_configure() {
 	if use debug; then
 		myconf+=( --enable-debug )
 	else
+		myconf+=( --disable-debug )
 		myconf+=( --enable-optimize="${my_optlvl}" )
 	fi
 
