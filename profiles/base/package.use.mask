@@ -224,13 +224,6 @@ media-video/wireplumber system-service
 sys-libs/glibc custom-cflags
 sys-devel/gcc custom-cflags
 
-# Sam James <sam@gentoo.org> (2022-01-12)
-# Unmask PCH for now for GCC to avoid unnecessary rebuilds
-# (USE=pch is now use.mask-ed globally)
-<sys-devel/gcc-10.4:10 -pch
-=sys-devel/gcc-9* -pch
-=sys-devel/gcc-8* -pch
-
 # John Helmert III <ajak@gentoo.org> (2021-12-31)
 # Rizin tests require a tarball of binaries of ambiguous license.
 # As such, we cannot properly test it, so mask the flag until this
@@ -299,14 +292,6 @@ dev-lang/rust parallel-compiler
 # Matt Turner <mattst88@gentoo.org> (2021-08-28)
 # Mask experimental options.
 gui-libs/gtk ffmpeg vulkan
-
-# Sam James <sam@gentoo.org> (2021-07-24)
-# USE=exec-static-trampoline can break consumers due to
-# faulty assumptions. Masked for now due to the possibility
-# of breaking systems.
-# https://archives.gentoo.org/gentoo-dev/message/576259af17d008d4ec935f69a9049af7
-# bug #801109
-dev-libs/libffi exec-static-trampoline
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
 # Makes two tests fail (when linked against openmpi, at least) due to
