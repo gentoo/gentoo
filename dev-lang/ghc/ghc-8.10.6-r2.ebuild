@@ -87,7 +87,7 @@ RDEPEND="
 	dev-libs/gmp:0=
 	sys-libs/ncurses:=[unicode(+)]
 	elfutils? ( dev-libs/elfutils )
-	!ghcmakebinary? ( dev-libs/libffi:= )
+	!ghcmakebinary? ( dev-libs/libffi:=[-exec-static-trampoline] )
 	numa? ( sys-process/numactl )
 "
 
