@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Marco Scardovi <scardracs-gentoo@proton.me> (2023-01-21)
+# net-libs/cvm: no upstream releases since 2015 and it's used only by
+# net-mail/mailfront: no releases upstream since 2018. No revdep.
+# Drop after 30 days
+net-mail/mailfront
+net-libs/cvm
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-01-24)
 # Mostly obsoleted by the better maintained net-misc/yt-dlp, please
 # migrate. If had USE=yt-dlp enabled (default) then was likely already
