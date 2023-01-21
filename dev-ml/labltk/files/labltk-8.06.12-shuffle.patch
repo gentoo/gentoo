@@ -1,0 +1,12 @@
+--- a/compiler/Makefile	2023-01-21 22:23:29.676828969 +0100
++++ b/compiler/Makefile	2023-01-21 22:24:16.204141261 +0100
+@@ -73,6 +73,9 @@
+ .ml.cmo:
+ 	$(CAMLCOMP) $(COMPFLAGS) -I ../support $<
+ 
++maincompile.cmo: copyright.cmo
++maincompile.cmx: copyright.cmx
++
+ depend: parser.ml parser.mli lexer.ml pplex.ml ppyac.ml ppyac.mli
+ 	$(CAMLDEP) *.mli *.ml > .depend
+ 
