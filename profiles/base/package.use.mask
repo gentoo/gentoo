@@ -224,13 +224,6 @@ media-video/wireplumber system-service
 sys-libs/glibc custom-cflags
 sys-devel/gcc custom-cflags
 
-# Sam James <sam@gentoo.org> (2022-01-12)
-# Unmask PCH for now for GCC to avoid unnecessary rebuilds
-# (USE=pch is now use.mask-ed globally)
-<sys-devel/gcc-10.4:10 -pch
-=sys-devel/gcc-9* -pch
-=sys-devel/gcc-8* -pch
-
 # John Helmert III <ajak@gentoo.org> (2021-12-31)
 # Rizin tests require a tarball of binaries of ambiguous license.
 # As such, we cannot properly test it, so mask the flag until this
