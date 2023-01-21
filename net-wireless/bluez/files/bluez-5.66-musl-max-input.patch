@@ -1,0 +1,18 @@
+# musl does provide _POSIX_MAX_INPUT, but no MAX_INPUT out of the box.
+# This patch assigns _POSIX_MAX_INPUT to MAX_INPUT.
+# Please refer: https://github.com/nilfs-dev/nilfs-utils/commit/115fe4b976858c487cf83065f513d8626089579a
+# Closes: #888467
+--- a/src/shared/util.c
++++ b/src/shared/util.c
+@@ -28,6 +28,11 @@
+ #include <sys/random.h>
+ #endif
+
++/* define MAX_INPUT for musl */
++#ifndef MAX_INPUT
++#define MAX_INPUT _POSIX_MAX_INPUT
++#endif
++
+ #include "src/shared/util.h"
+
+ void *util_malloc(size_t size)
