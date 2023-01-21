@@ -1,0 +1,37 @@
+From e0b17e4e31acd5657a3488936ef619c5ae2dc689 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@aarsen.me>
+Date: Sat, 21 Jan 2023 19:39:09 +0100
+Subject: [PATCH] mu-error: Add missing <cstdint> include
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GCC 13s libstdc++ reduced its dependency on some headers like <cstdint>, so it's
+no longer transitively included through various headers.  Include it explicitly.
+
+See also: https://gcc.gnu.org/gcc-13/porting_to.html#header-dep-changes
+
+  ../lib/utils/mu-error.hh:36:26: error: ‘uint32_t’ does not name a type
+     36 |         static constexpr uint32_t SoftError = 1 << 23;
+        |                          ^~~~~~~~
+---
+https://github.com/djcb/mu/pull/2421
+
+ lib/utils/mu-error.hh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/utils/mu-error.hh b/lib/utils/mu-error.hh
+index c67fc5a1..61923c6c 100644
+--- a/lib/utils/mu-error.hh
++++ b/lib/utils/mu-error.hh
+@@ -21,6 +21,7 @@
+ #define MU_ERROR_HH__
+ 
+ #include <stdexcept>
++#include <cstdint>
+ #include "mu-utils-format.hh"
+ #include "mu-util.h"
+ #include <glib.h>
+-- 
+2.39.1
+

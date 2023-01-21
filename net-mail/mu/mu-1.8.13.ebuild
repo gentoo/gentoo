@@ -26,6 +26,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/mu-1.8.13-add-cstdint-inc.patch"
+)
+
 SITEFILE="70mu-gentoo-autoload.el"
 
 src_prepare() {
