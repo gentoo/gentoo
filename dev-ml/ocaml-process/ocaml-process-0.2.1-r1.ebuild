@@ -28,7 +28,7 @@ src_compile() {
 }
 
 src_test() {
-	emake -j1 TARGETS=${exts} test
+	emake -j1 TARGETS="${exts}" test
 }
 
 src_install() {
