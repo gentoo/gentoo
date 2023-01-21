@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2023-01-21)
+# Fails to compile: https://github.com/libffi/libffi/issues/760
+dev-libs/libffi exec-static-trampoline
+
 # Sam James <sam@gentoo.org> (2023-01-10)
 # Needs last-rited www-client/dillo, bug #890244
 mail-client/claws-mail dillo
