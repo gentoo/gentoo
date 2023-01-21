@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,11 +21,11 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64"
 
 ruby_add_rdepend ">=dev-ruby/roadie-3.1:4
-	|| ( dev-ruby/railties:7.0 dev-ruby/railties:6.1 dev-ruby/railties:6.0 dev-ruby/railties:5.2 )"
+	|| ( dev-ruby/railties:7.0 dev-ruby/railties:6.1 dev-ruby/railties:6.0 )"
 ruby_add_bdepend "
 	test? (
 		dev-ruby/bundler
-		dev-ruby/rails:7.0 dev-ruby/rails:6.0 dev-ruby/rails:5.2
+		dev-ruby/rails:7.0 dev-ruby/rails:6.0
 		dev-ruby/rspec-rails
 		dev-ruby/rspec-collection_matchers )"
 
@@ -34,7 +34,7 @@ all_ruby_prepare() {
 	sed -i -e 's/git ls-files/find * -print/' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Avoid already removed rails version
-	sed -i -e '/rails_51/ s:^:#:' spec/integration_spec.rb || die
+	sed -i -e '/rails_5\(1\|2\)/ s:^:#:' spec/integration_spec.rb || die
 
 	# Avoid dependency on optional bootsnap
 	sed -i -e '/bootsnap/ s:^:#:' spec/railsapps/rails_70/Gemfile spec/railsapps/rails_70/config/boot.rb || die
