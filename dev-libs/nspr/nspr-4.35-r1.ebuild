@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -70,11 +70,14 @@ multilib_src_configure() {
 		&& export CROSS_COMPILE=1 \
 		|| unset CROSS_COMPILE
 
-	local myconf=(
-		--libdir="${EPREFIX}/usr/$(get_libdir)"
-		$(use_enable debug)
-		$(use_enable !debug optimize="${my_optlvl}")
-	)
+	local myconf=( --libdir="${EPREFIX}/usr/$(get_libdir)" )
+
+	# Optimization is disabled when debug is enabled.
+	if use debug; then
+		myconf+=( --enable-debug )
+	else
+		myconf+=( --enable-optimize="${my_optlvl}" )
+	fi
 
 	# The configure has some fancy --enable-{{n,x}32,64bit} switches
 	# that trigger some code conditional to platform & arch. This really
