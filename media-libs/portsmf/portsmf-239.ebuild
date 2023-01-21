@@ -6,10 +6,11 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="The Tenacity fork of PortSMF, a Standard MIDI File library"
-HOMEPAGE="https://github.com/tenacityteam/portsmf"
+HOMEPAGE="https://codeberg.org/tenacityteam/portsmf"
 SRC_URI="
-	https://github.com/tenacityteam/portsmf/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+	https://codeberg.org/tenacityteam/portsmf/archive/${PV}.tar.gz -> ${P}.tar.gz
 "
+S="${WORKDIR}/${PN}"
 LICENSE="MIT"
 SLOT="0/1"  # SOVERSION in CMakeLists.txt / SONAME suffix
 KEYWORDS="~amd64"
