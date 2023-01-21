@@ -153,10 +153,7 @@ src_unpack() {
 		EGIT_CHECKOUT_DIR=${WORKDIR}/${P}
 		git-r3_src_unpack
 
-		# call script for now given the upstream-commit file is sometime outdated
 		EGIT_COMMIT=$("${BASH}" "${EGIT_CHECKOUT_DIR}"/patches/patchinstall.sh --upstream-commit) || die
-		#EGIT_COMMIT=$(<"${EGIT_CHECKOUT_DIR}"/staging/upstream-commit) || die
-
 		EGIT_REPO_URI=${WINE_EGIT_REPO_URI}
 		EGIT_CHECKOUT_DIR=${S}
 		einfo "Fetching Wine commit matching the current patchset by default (${EGIT_COMMIT})"
