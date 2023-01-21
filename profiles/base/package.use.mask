@@ -6,6 +6,15 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2023-01-21)
+# media-libs/libextractor is masked for removal.
+media-plugins/vdr-xineliboutput libextractor
+
+# Michał Górny <mgorny@gentoo.org> (2023-01-21)
+# media-libs/qtav is masked for removal.
+media-gfx/digikam mediaplayer
+media-gfx/kphotoalbum qtav
+
 # Sam James <sam@gentoo.org> (2023-01-21)
 # Fails to compile: https://github.com/libffi/libffi/issues/760
 dev-libs/libffi exec-static-trampoline
