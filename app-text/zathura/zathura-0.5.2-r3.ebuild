@@ -13,7 +13,10 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
 	EGIT_BRANCH="develop"
 else
-	SRC_URI="https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="
+		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz
+		https://dev.gentoo.org/~slashbeast/distfiles/${PN}/${P}-manpages.tar.xz
+	"
 	KEYWORDS="~amd64 ~arm ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -35,7 +38,7 @@ DEPEND=">=dev-libs/girara-0.3.7
 
 RDEPEND="${DEPEND}"
 
-BDEPEND="dev-python/sphinx
+BDEPEND="
 	test? ( dev-libs/appstream-glib
 		dev-libs/check )
 	virtual/pkgconfig"
@@ -47,12 +50,18 @@ PATCHES=(
 src_configure() {
 	local emesonargs=(
 		-Dconvert-icon=disabled
-		-Dmanpages=enabled
+		-Dmanpages=disabled
 		-Dseccomp=$(usex seccomp enabled disabled)
 		-Dsqlite=$(usex sqlite enabled disabled)
 		-Dsynctex=$(usex synctex enabled disabled)
 		)
 	meson_src_configure
+}
+
+src_install() {
+	default
+
+	doman "${WORKDIR}"/man/zathura*
 }
 
 src_test() {
