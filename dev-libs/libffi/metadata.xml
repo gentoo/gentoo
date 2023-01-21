@@ -35,7 +35,6 @@
 	</longdescription>
 	<use>
 		<flag name="exec-static-trampoline">Don't rely on dynamic code generation for trampolines.</flag>
-		<flag name="experimental-loong">Add experimental LoongArch patchset</flag>
 		<flag name="pax-kernel">Use PaX emulated trampolines, for we can't use PROT_EXEC</flag>
 	</use>
 	<upstream>
