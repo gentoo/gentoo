@@ -31,7 +31,7 @@ LICENSE="GPL-2+
 	audiocom? ( ZLIB )
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="alsa audiocom doc ffmpeg +flac id3tag +ladspa +lv2 mad mpg123 ogg
 	opus +portmixer sbsms twolame vamp +vorbis wavpack"
 
