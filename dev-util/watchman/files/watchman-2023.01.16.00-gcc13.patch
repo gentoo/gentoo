@@ -1,0 +1,10 @@
+--- a/watchman/Errors.h
++++ b/watchman/Errors.h
+@@ -8,6 +8,7 @@
+ #pragma once
+ 
+ #include <fmt/core.h>
++#include <cstdint>
+ #include <string>
+ #include <system_error>
+ 
