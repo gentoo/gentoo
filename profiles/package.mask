@@ -33,6 +33,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-01-21)
+# No longer maintained upstream and missing recent security fixes.
+# Use a newer Rails version instead.
+# This mask also includes several supporting or rails 5.2-only packages.
+# Masked for removal after 2023-02-21.
+dev-ruby/actioncable:5.2
+dev-ruby/actionmailer:5.2
+dev-ruby/actionpack:5.2
+dev-ruby/actionview:5.2
+dev-ruby/activejob:5.2
+dev-ruby/activemodel:5.2
+dev-ruby/activerecord:5.2
+dev-ruby/activestorage:5.2
+dev-ruby/activesupport:5.2
+dev-ruby/rails:5.2
+dev-ruby/railties:5.2
+dev-ruby/arel
+=www-apps/redmine-4.2.9
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-01-20)
 # KDE Plasma 5.26.90 (5.27 Beta) mask
 # Pre-release version - happy testing!
