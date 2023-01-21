@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Python color representations manipulation library"
 HOMEPAGE="https://github.com/vaab/colour/"
 SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 LICENSE="GPL-3+"
 SLOT="0"
