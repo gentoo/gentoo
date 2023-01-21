@@ -1,0 +1,24 @@
+https://github.com/Warzone2100/warzone2100/pull/3090
+
+From 0b8eed53d99c0491ffbcd903463a3b6eb0081525 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 21 Jan 2023 21:00:02 +0000
+Subject: [PATCH] Fix build with GCC 13 (add missing <cstdint> include)
+
+GCC 13 (as usual for new compiler releases) shuffles around some
+internal includes and so <cstdint> is no longer transitively included.
+
+Explicitly include <cstdint> for uint32_t.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/lib/framework/wzstring.h
++++ b/lib/framework/wzstring.h
+@@ -20,6 +20,7 @@
+ #ifndef _LIB_FRAMEWORK_WZSTRING_H
+ #define _LIB_FRAMEWORK_WZSTRING_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ #include <locale>
+
