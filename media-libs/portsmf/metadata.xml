@@ -6,6 +6,7 @@
     <name>Arsen Arsenović</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">tenacityteam/portsmf</remote-id>
+    <changelog>https://codeberg.org/tenacityteam/portsmf/releases/</changelog>
+    <bugs-to>https://codeberg.org/tenacityteam/portsmf/issues/</bugs-to>
   </upstream>
 </pkgmetadata>
