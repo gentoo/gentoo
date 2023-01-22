@@ -22,6 +22,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug discord nls videos vulkan"
 
 COMMON_DEPEND="
+	dev-libs/fribidi
 	>=dev-games/physfs-2[zip]
 	dev-db/sqlite:3
 	>=dev-libs/libsodium-1.0.14:=
@@ -42,7 +43,6 @@ COMMON_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	dev-libs/fribidi
 	media-libs/fontconfig
 "
 RDEPEND="
