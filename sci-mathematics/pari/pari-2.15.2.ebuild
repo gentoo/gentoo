@@ -32,7 +32,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}"-2.9.4-strip.patch
 	"${FILESDIR}/${PN}"-2.9.4-ppc.patch
 	"${FILESDIR}/${PN}"-2.11.2-no-automagic.patch
 	"${FILESDIR}/${PN}"-2.9.4-fltk-detection.patch
@@ -114,7 +113,11 @@ src_test() {
 
 src_install() {
 	DOCS=( AUTHORS CHANGES* COMPAT NEW README* )
-	default
+
+	# Use "true" in place of "strip" to sabotage the unconditional
+	# binary stripping.
+	emake DESTDIR="${D}" STRIP="true" install
+	einstalldocs
 
 	if use doc; then
 		docompress -x "/usr/share/doc/${PF}"
