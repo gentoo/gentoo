@@ -20,7 +20,6 @@
 	</slots>
 	<use>
 		<flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs</flag>
-		<flag name="gentoo-vm">Allow this JDK to be recognised by Gentoo (package manager, eselect, java-config, EXPERIMENTAL!)</flag>
 		<flag name="javafx" restrict="&lt;=dev-java/openjdk-9">Provide JavaFX support via <pkg>dev-java/openjfx</pkg></flag>
 		<flag name="javafx" restrict="&gt;=dev-java/openjdk-11">Import OpenJFX modules at build time, via <pkg>dev-java/openjfx</pkg></flag>
 		<flag name="jbootstrap">Build OpenJDK twice, the second time using the result of the first</flag>
