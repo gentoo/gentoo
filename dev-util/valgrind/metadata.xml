@@ -5,6 +5,10 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo Toolchain Project</name>
+	</maintainer>
 	<longdescription>
 		Valgrind is a GPL'd tool to help you find memory-management problems
 		in your programs. When a program is run under Valgrind's supervision,
