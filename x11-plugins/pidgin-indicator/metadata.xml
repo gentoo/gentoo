@@ -2,7 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-  <email>pacho@gentoo.org</email>
-  <name>Pacho Ramos</name>
+	<email>pacho@gentoo.org</email>
+	<name>Pacho Ramos</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">philipl/pidgin-indicator</remote-id>
+</upstream>
 </pkgmetadata>
