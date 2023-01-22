@@ -26,9 +26,9 @@ BDEPEND="
 )
 "
 RDEPEND="
-	dev-libs/serd
-	dev-libs/sord
-	media-libs/lv2
+	>=dev-libs/serd-0.30.10
+	>=dev-libs/sord-0.16.10
+	>=media-libs/lv2-1.18.4
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
