@@ -1,4 +1,4 @@
-# Copyright 2018-2022 Gentoo Authors
+# Copyright 2018-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,10 +22,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/i2p-${PV}/core"
-
-PATCHES=(
-	"${FILESDIR}/${P}-asmfix.patch"
-)
 
 src_compile() {
 	local compile_lib
