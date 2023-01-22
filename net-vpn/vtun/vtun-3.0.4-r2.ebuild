@@ -21,7 +21,10 @@ RDEPEND="
 	zlib? ( sys-libs/zlib )
 	dev-libs/libbsd"
 DEPEND="${RDEPEND}"
-BDEPEND="sys-devel/bison"
+BDEPEND="
+	app-alternatives/lex
+	app-alternatives/yacc
+"
 
 DOCS=( ChangeLog Credits FAQ README README.Setup README.Shaper TODO )
 CONFIG_CHECK="~TUN"
