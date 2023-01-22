@@ -75,7 +75,8 @@ RDEPEND="
 	wavpack? ( media-sound/wavpack )
 	"
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-cpp/ms-gsl"
 BDEPEND="virtual/pkgconfig
 	dev-qt/qttest:5
 	dev-qt/qtxmlpatterns:5"
