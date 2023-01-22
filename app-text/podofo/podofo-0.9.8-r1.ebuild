@@ -14,7 +14,7 @@ SRC_URI="https://cfhcable.dl.sourceforge.net/project/podofo/podofo/${PV}/${P}.ta
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc ~x86"
 IUSE="+boost idn debug test +tools"
 RESTRICT="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}
