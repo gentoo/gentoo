@@ -78,7 +78,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	dev-qt/qttest:5
-	dev-qt/qtxmlpatterns:5"
+	dev-qt/qtxmlpatterns:5
+	dev-cpp/ms-gsl"
 
 PATCHES=(
 	"${FILESDIR}"/mixxx-9999-docs.patch
