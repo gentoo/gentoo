@@ -8,28 +8,30 @@ inherit bash-completion-r1 go-module linux-info optfeature systemd verify-sig
 DESCRIPTION="Modern, secure and powerful system container and virtual machine manager"
 HOMEPAGE="https://linuxcontainers.org/lxd/introduction/ https://github.com/lxc/lxd"
 SRC_URI="https://linuxcontainers.org/downloads/lxd/${P}.tar.gz
+	https://github.com/lxc/lxd/commit/d55a590ea50a75c3cb2ea67894be8253074d6093.patch -> lxd-5.0.2-move-shellcheck-version-call-into-static-analysis.patch
+	https://patch-diff.githubusercontent.com/raw/lxc/lxd/pull/11011.patch -> lxd-5.8-add-tcp-keepalives-to-exec-channels.patch
 	verify-sig? ( https://linuxcontainers.org/downloads/lxd/${P}.tar.gz.asc )"
 
-LICENSE="Apache-2.0 BSD LGPL-3 MIT"
+LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="apparmor nls"
 
 DEPEND="acct-group/lxd
 	app-arch/xz-utils
-	>=app-containers/lxc-5.0.0:=[apparmor?,seccomp(+)]
+	>=app-containers/lxc-3.0.0[apparmor?,seccomp(+)]
 	dev-db/sqlite:3
-	>=dev-libs/dqlite-1.13.0:=
+	dev-libs/dqlite:=
 	dev-libs/lzo
-	>=dev-libs/raft-0.17.1:=[lz4]
+	dev-libs/raft[lz4]
 	>=dev-util/xdelta-3.0[lzma(+)]
-	net-dns/dnsmasq[dhcp,ipv6(+)]
+	net-dns/dnsmasq[dhcp]
 	sys-libs/libcap
 	virtual/udev"
 RDEPEND="${DEPEND}
 	net-firewall/ebtables
-	net-firewall/iptables[ipv6(+)]
-	sys-apps/iproute2[ipv6(+)]
+	net-firewall/iptables
+	sys-apps/iproute2
 	sys-fs/fuse:*
 	>=sys-fs/lxcfs-5.0.0
 	sys-fs/squashfs-tools[lzma]
@@ -80,7 +82,17 @@ RESTRICT="test"
 
 GOPATH="${S}/_dist"
 
-PATCHES=( "${FILESDIR}"/lxd-5.0.2-remove-shellcheck-buildsystem-checks.patch )
+PATCHES=( "${DISTDIR}"/lxd-5.0.2-move-shellcheck-version-call-into-static-analysis.patch
+	"${DISTDIR}"/lxd-5.8-add-tcp-keepalives-to-exec-channels.patch
+	"${FILESDIR}"/lxd-5.0.2-fix-btrfs-driver-to-support-btrfs-6.0.patch )
+
+src_unpack() {
+	if use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
+	fi
+
+	default
+}
 
 src_prepare() {
 	export GOPATH="${S}/_dist"
@@ -175,6 +187,7 @@ pkg_postinst() {
 	elog
 	optfeature "virtual machine support" app-emulation/qemu[spice,usbredir,virtfs]
 	optfeature "btrfs storage backend" sys-fs/btrfs-progs
+	optfeature "ipv6 support" net-dns/dnsmasq[ipv6] net-firewall/iptables[ipv6] sys-apps/iproute2[ipv6]
 	optfeature "lvm2 storage backend" sys-fs/lvm2
 	optfeature "zfs storage backend" sys-fs/zfs
 	elog
