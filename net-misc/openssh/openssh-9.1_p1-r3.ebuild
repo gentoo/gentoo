@@ -126,7 +126,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-8.9_p1-allow-ppoll_time64.patch" #834019
 	"${FILESDIR}/${PN}-8.9_p1-gss-use-HOST_NAME_MAX.patch" #834044
 	"${FILESDIR}/${PN}-9.1_p1-build-tests.patch"
-	"${DISTDIR}"/${PN}-9.1_p1-getentropy.patch # https://bugzilla.mindrot.org/show_bug.cgi?id=3487
+	#"${DISTDIR}"/${PN}-9.1_p1-getentropy.patch # https://bugzilla.mindrot.org/show_bug.cgi?id=3487 # Conditionally applied below
 	"${DISTDIR}"/${PN}-9.1_p1-sandbox-writev.patch # https://bugzilla.mindrot.org/show_bug.cgi?id=3512
 )
 
@@ -167,6 +167,11 @@ src_prepare() {
 
 	# don't break .ssh/authorized_keys2 for fun
 	sed -i '/^AuthorizedKeysFile/s:^:#:' sshd_config || die
+
+	# openssh-9.1_p1: X509 patch includes a different fix for the getentropy bug
+	# will need removal in 9.2, because x509 will have to normalize onto
+	# upstream openssh fix.
+	use X509 || PATCHES+=( "${DISTDIR}/${PN}-9.1_p1-getentropy.patch" )
 
 	eapply "${PATCHES[@]}"
 
