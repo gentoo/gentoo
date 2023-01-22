@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit autotools xdg
 
 DESCRIPTION="AppIndicator/KStatusNotifierItem plugin for Pidgin"
@@ -10,13 +10,13 @@ SRC_URI="https://github.com/philipl/pidgin-indicator/releases/download/${PV}/${P
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv"
 IUSE=""
 
 # No direct gtk3 until pidgin migrates:
 # https://github.com/philipl/pidgin-indicator/issues/32
 RDEPEND="
-	dev-libs/libappindicator:3
+	dev-libs/libayatana-indicator
 	net-im/pidgin[gtk]
 	x11-libs/gtk+:2
 "
@@ -31,14 +31,15 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${P}-appindicator3.patch"
+	"${FILESDIR}/${P}-ayatana-indicator.patch"
 )
 
 src_prepare() {
-	xdg_src_prepare
+	default
 	eautoreconf
 }
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die "Pruning failed"
+	find "${ED}" -type f -name '*.la' -delete || die
 }
