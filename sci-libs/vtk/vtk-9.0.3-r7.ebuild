@@ -151,6 +151,12 @@ pkg_pretend() {
 		# 10.2 GiB install directory, 6.4 GiB build directory with max. USE flags
 		CHECKREQS_MEMORY="7G"
 		CHECKREQS_DISK_BUILD="14G"
+		if [[ ${VTK_CUDA_ARCH} = native ]]; then
+			eerror "Using native CUDA arches is currently broken."
+			eerror "Please set it to one of the common arch names:"
+			eerror "kepler, maxwell, pascal, turing or ampere."
+			die "Please set VTK_CUDA_ARCH environment variable!"
+		fi
 	fi
 	check-reqs_pkg_setup
 }
@@ -162,6 +168,12 @@ pkg_setup() {
 	if use cuda; then
 		CHECKREQS_MEMORY="7G"
 		CHECKREQS_DISK_BUILD="14G"
+		if [[ ${VTK_CUDA_ARCH} = native ]]; then
+			eerror "Using native CUDA arches is currently broken."
+			eerror "Please set it to one of the common arch names:"
+			eerror "kepler, maxwell, pascal, turing or ampere."
+			die "Please set VTK_CUDA_ARCH environment variable!"
+		fi
 	fi
 	check-reqs_pkg_setup
 

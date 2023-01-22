@@ -204,6 +204,16 @@ pkg_pretend() {
 		ewarn "Both qt5 and qt6 USE flags have been selected. Using qt5!"
 	fi
 
+	# bug #835659
+	if use cuda; then
+		if [[ ${VTK_CUDA_ARCH} = native ]]; then
+			eerror "Using native CUDA arches is currently broken."
+			eerror "Please set it to one of the common arch names:"
+			eerror "kepler, maxwell, pascal, turing or ampere."
+			die "Please set VTK_CUDA_ARCH environment variable!"
+		fi
+	fi
+
 	vtk_check_reqs
 }
 
@@ -218,6 +228,16 @@ pkg_setup() {
 
 	if use qt6 && use qt5; then
 		ewarn "Both qt5 and qt6 USE flags have been selected. Using qt5!"
+	fi
+
+	# bug #835659
+	if use cuda; then
+		if [[ ${VTK_CUDA_ARCH} = native ]]; then
+			eerror "Using native CUDA arches is currently broken."
+			eerror "Please set it to one of the common arch names:"
+			eerror "kepler, maxwell, pascal, turing or ampere."
+			die "Please set VTK_CUDA_ARCH environment variable!"
+		fi
 	fi
 
 	vtk_check_reqs
@@ -399,12 +419,12 @@ src_configure() {
 			kepler|maxwell|pascal|volta|turing|ampere|all)
 				cuda_arch=${VTK_CUDA_ARCH}
 				;;
-			native)
-				ewarn "If auto detection fails for you, please try and export the"
-				ewarn "VTK_CUDA_ARCH environment variable to one of the common arch"
-				ewarn "names: kepler, maxwell, pascal, volta, turing, ampere or all."
-				cuda_arch=native
-				;;
+#			native)
+#				ewarn "If auto detection fails for you, please try and export the"
+#				ewarn "VTK_CUDA_ARCH environment variable to one of the common arch"
+#				ewarn "names: kepler, maxwell, pascal, volta, turing, ampere or all."
+#				cuda_arch=native
+#				;;
 			*)
 				eerror "Please properly set the VTK_CUDA_ARCH environment variable to"
 				eerror "one of: kepler, maxwell, pascal, volta, turing, ampere, all"
