@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~x86"
 # Upstream requested debug support
 IUSE="debug discord nls videos vulkan"
 
-CDEPEND="
+COMMON_DEPEND="
 	>=dev-games/physfs-2[zip]
 	dev-db/sqlite:3
 	>=dev-libs/libsodium-1.0.14:=
@@ -33,6 +33,7 @@ CDEPEND="
 	media-libs/libtheora
 	media-libs/libvorbis
 	media-libs/openal
+	media-libs/opus
 	net-libs/miniupnpc:=
 	net-misc/curl
 	sys-libs/zlib
@@ -40,12 +41,12 @@ CDEPEND="
 	vulkan? ( media-libs/libsdl2:=[vulkan] )
 "
 DEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	dev-libs/fribidi
 	media-libs/fontconfig
 "
 RDEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	media-fonts/dejavu
 "
 BDEPEND="
