@@ -8,4 +8,7 @@
 	<use>
 		<flag name="tools">Build command line utilities</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">drobilla/sord</remote-id>
+	</upstream>
 </pkgmetadata>
