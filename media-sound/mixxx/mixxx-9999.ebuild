@@ -107,6 +107,7 @@ src_configure() {
 		-DQTKEYCHAIN="$(usex qtkeychain on off)"
 		-DKEYFINDER="$(usex keyfinder on off)"
 		-DDOWNLOAD_MANUAL=OFF
+		-DBUILD_SHARED_LIBS=OFF
 	)
 
 	if [[ "${PV}" == 9999 ]] ; then
