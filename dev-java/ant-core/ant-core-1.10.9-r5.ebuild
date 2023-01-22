@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -67,7 +67,6 @@ src_prepare() {
 
 	# See bug #196080 for more details.
 	java-ant_bsfix_one build.xml
-	java-pkg-2_src_prepare
 
 	# Remove JDK9+ stuff
 	einfo "Removing JDK9+ classes (Jmod and Link)"
