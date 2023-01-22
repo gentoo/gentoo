@@ -6,7 +6,7 @@ EAPI=8
 DESCRIPTION="Virtual package for building against PoDoFo"
 
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="+boost idn debug test +tools"
 RESTRICT="!test? ( test )"
 
