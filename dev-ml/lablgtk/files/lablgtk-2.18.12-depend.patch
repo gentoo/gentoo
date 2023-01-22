@@ -1,0 +1,11 @@
+--- a/src/.depend	2023-01-22 20:48:06.026147545 +0100
++++ b/src/.depend	2023-01-22 20:49:11.170105871 +0100
+@@ -438,6 +438,8 @@
+ ogtkBrokenProps.cmx : gtkSignal.cmx gtkBrokenProps.cmx gobject.cmx gData.cmx
+ ogtkAssistantProps.cmo : gtkSignal.cmi gtkAssistantProps.cmo gobject.cmi
+ ogtkAssistantProps.cmx : gtkSignal.cmx gtkAssistantProps.cmx gobject.cmx
++gtkThInit.cmo : gtkThread.cmi
++gtkThInit.cmx : gtkThread.cmx
+ gtkThread.cmo : gtkSignal.cmi gtkMain.cmo glib.cmi gtkThread.cmi
+ gtkThread.cmx : gtkSignal.cmx gtkMain.cmx glib.cmx gtkThread.cmi
+ gtkThTop.cmo : gtkThread.cmi
