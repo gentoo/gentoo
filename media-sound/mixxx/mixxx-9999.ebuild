@@ -105,6 +105,7 @@ src_configure() {
 		-DWAVPACK="$(usex wavpack on off)"
 		-DQTKEYCHAIN="$(usex qtkeychain on off)"
 		-DKEYFINDER="$(usex keyfinder on off)"
+		-DDOWNLOAD_MANUAL=OFF
 	)
 
 	if [[ "${PV}" == 9999 ]] ; then
@@ -125,7 +126,7 @@ src_install() {
 	udev_newrules "${S}"/res/linux/mixxx-usb-uaccess.rules 69-mixxx-usb-uaccess.rules
 
 	if use doc ; then
-		dodoc README Mixxx-Manual.pdf
+		dodoc README res/Mixxx-Keyboard-Shortcuts.pdf
 	fi
 }
 
