@@ -24,7 +24,7 @@ LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="X acl ceph clientonly +director glusterfs ipv6 lmdb
-	logwatch ndmp readline scsi-crypto
+	logwatch ndmp readline scsi-crypto split-usr
 	static +storage-daemon systemd tcpd test vim-syntax vmware xattr"
 
 # get cmake variables from core/cmake/BareosSetVariableDefaults.cmake
@@ -236,10 +236,12 @@ src_install() {
 
 	# remove duplicate binaries being installed in /usr/sbin and replace
 	# them by symlinks to not break systems that still use split-usr
-	for f in bwild bregex bsmtp bconsole; do
-		rm -f "${D}/usr/sbin/$f" || die
-		ln -s "../bin/$f" "${D}/usr/sbin/$f" || die
-	done
+	if use split-usr; then
+		for f in bwild bregex bsmtp bconsole; do
+			rm -f "${D}/usr/sbin/$f" || die
+			ln -s "../bin/$f" "${D}/usr/sbin/$f" || die
+		done
+	fi
 
 	# get rid of py2 stuff
 	rm -rf "$D"/usr/lib64/python2.7 || die
