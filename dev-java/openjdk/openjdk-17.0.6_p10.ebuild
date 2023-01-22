@@ -48,7 +48,8 @@ SRC_URI="
 	)
 	riscv? ( https://dev.gentoo.org/~gyakovlev/distfiles/dev-java/openjdk/java17-riscv64.patch )
 "
-# riscv patch origin: https://raw.githubusercontent.com/felixonmars/archriscv-packages/master/java17-openjdk/java17-riscv64.patch
+# riscv patch origin:
+# https://raw.githubusercontent.com/felixonmars/archriscv-packages/master/java17-openjdk/java17-riscv64.patch
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
