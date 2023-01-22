@@ -29,11 +29,11 @@ BDEPEND="
 "
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-libs/serd[${MULTILIB_USEDEP}]
-	dev-libs/sord[${MULTILIB_USEDEP}]
+	>=dev-libs/serd-0.30.10[${MULTILIB_USEDEP}]
+	>=dev-libs/sord-0.16.10[${MULTILIB_USEDEP}]
 	media-libs/libsndfile
-	media-libs/lv2[${MULTILIB_USEDEP}]
-	media-libs/sratom[${MULTILIB_USEDEP}]
+	>=media-libs/lv2-1.18.2[${MULTILIB_USEDEP}]
+	>=media-libs/sratom-0.6.10[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
