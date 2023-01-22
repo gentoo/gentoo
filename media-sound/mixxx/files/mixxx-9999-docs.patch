@@ -1,19 +1,27 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 0cc5b3a7ba..63f18bfda4 100644
+index e35d8dd4e1..798179955c 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1142,15 +1142,6 @@ install(
+@@ -1504,23 +1504,6 @@ install(
      "${MIXXX_INSTALL_LICENSEDIR}"
  )
- 
+
 -# Documentation
 -install(
 -  FILES
--    "${CMAKE_CURRENT_SOURCE_DIR}/README"
--    "${CMAKE_CURRENT_SOURCE_DIR}/Mixxx-Manual.pdf"
+-    "${CMAKE_CURRENT_SOURCE_DIR}/README.md"
+-    "${CMAKE_CURRENT_SOURCE_DIR}/res/Mixxx-Keyboard-Shortcuts.pdf"
 -  DESTINATION
 -    "${MIXXX_INSTALL_DOCDIR}"
 -)
+-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/res/Mixxx-Manual.pdf")
+-  install(
+-    FILES
+-      "${CMAKE_CURRENT_SOURCE_DIR}/res/Mixxx-Manual.pdf"
+-    DESTINATION
+-      "${MIXXX_INSTALL_DOCDIR}"
+-  )
+-endif()
 -
  # Additional Linux-only files
  if(UNIX AND NOT APPLE)
