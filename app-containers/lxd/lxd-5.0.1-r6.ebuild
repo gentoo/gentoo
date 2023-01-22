@@ -187,7 +187,7 @@ pkg_postinst() {
 	elog
 	optfeature "virtual machine support" app-emulation/qemu[spice,usbredir,virtfs]
 	optfeature "btrfs storage backend" sys-fs/btrfs-progs
-	optfeature "ipv6 support" net-dns/dnsmasq[ipv6] net-firewall/iptables[ipv6] sys-apps/iproute2[ipv6]
+	optfeature "ipv6 support" net-dns/dnsmasq[ipv6]
 	optfeature "lvm2 storage backend" sys-fs/lvm2
 	optfeature "zfs storage backend" sys-fs/zfs
 	elog
