@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="gtk-doc test"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=dev-libs/glib-2.56.0:2
