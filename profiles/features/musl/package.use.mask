@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-12-10)
@@ -108,7 +108,8 @@ dev-lang/gforth check
 net-misc/iputils idn
 
 # See bug #504200, #723370
-sys-devel/gcc sanitize nls vtv
+<sys-devel/gcc-12 sanitize
+sys-devel/gcc nls vtv
 
 # These cause collisions with <libintl.h>
 # even with --without-included-gettext
