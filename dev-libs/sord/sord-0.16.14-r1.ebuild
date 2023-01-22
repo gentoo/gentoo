@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ BDEPEND="
 "
 RDEPEND="
 	dev-libs/libpcre
-	dev-libs/serd
+	>=dev-libs/serd-0.30.10
 "
 DEPEND="${RDEPEND}"
 
