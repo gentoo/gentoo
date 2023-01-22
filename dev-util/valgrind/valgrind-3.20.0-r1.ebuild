@@ -26,6 +26,7 @@ PATCHES=(
 	# Respect CFLAGS, LDFLAGS
 	"${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
 	"${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
+	"${FILESDIR}"/${P}-tests-clang16.patch
 )
 
 src_prepare() {
