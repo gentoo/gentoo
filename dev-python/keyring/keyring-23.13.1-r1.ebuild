@@ -53,3 +53,10 @@ EPYTEST_IGNORE=(
 	# hangs
 	tests/backends/test_kwallet.py
 )
+
+python_compile() {
+	distutils-r1_python_compile
+	# https://github.com/jaraco/keyring/issues/621
+	python_moduleinto keyring
+	python_domodule keyring/{py.typed,*.zsh}
+}
