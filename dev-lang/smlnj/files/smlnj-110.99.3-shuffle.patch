@@ -1,0 +1,12 @@
+--- a/base/runtime/c-libs/smlnj-date/makefile	2023-01-23 08:32:22.450319630 +0100
++++ b/base/runtime/c-libs/smlnj-date/makefile	2023-01-23 08:37:23.920174357 +0100
+@@ -26,7 +26,8 @@
+ 		strftime.o \
+ 		unix-date.o
+ 
+-$(LIBRARY)	: $(VERSION) $(OBJS)
++$(LIBRARY) : $(VERSION)
++	$(MAKE) $(OBJS)
+ 	rm -rf $(LIBRARY)
+ 	$(AR) $(ARFLAGS) $(LIBRARY) $(OBJS)
+ 	$(RANLIB) $(LIBRARY)
