@@ -43,8 +43,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	eautoreconf -i
 }
 
 src_configure() {
