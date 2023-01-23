@@ -39,6 +39,7 @@ PATCHES=(
 	# TODO upstream:
 	"${FILESDIR}/${PN}-0.10.2-unbundle-libs.patch"
 	"${FILESDIR}/${PN}-0.10.2-install-targets.patch"
+	"${FILESDIR}/${PN}-0.10.3-gcc13.patch"
 	# From upstream
 	"${FILESDIR}/${PN}-0.10.3-gcc11.patch"
 	"${FILESDIR}/${PN}-0.10.3-fix-build-with-boost-1-77.patch"
