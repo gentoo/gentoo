@@ -1,0 +1,21 @@
+Need to unbundle capstone due to broken capstone-5 compatibility:
+
+https://github.com/radareorg/radare2/issues/21204
+https://bugs.gentoo.org/891805
+
+diff --git a/shlr/Makefile b/shlr/Makefile
+index 5626a061ff..5e8af3b99b 100644
+--- a/shlr/Makefile
++++ b/shlr/Makefile
+@@ -225,10 +225,7 @@ capstone-sync: capstone
+ capstone-clean:
+ 	-$(MAKE) -C capstone clean
+ 
+-capstone: capstone-$(CS_VER).tar.gz
+-	tar xzvf capstone-$(CS_VER).tar.gz
+-	rm -rf capstone
+-	mv capstone-$(CS_VER) capstone
++capstone:
+ 	$(MAKE) patch-capstone
+ 
+ # already implemented in capstone.sh
