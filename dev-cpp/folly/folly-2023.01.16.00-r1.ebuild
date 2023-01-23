@@ -35,7 +35,7 @@ RDEPEND="app-arch/bzip2
 	dev-libs/libfmt:=
 	dev-libs/libsodium:=
 	dev-libs/openssl:=
-	>=sys-libs/liburing-2.2:=
+	>=sys-libs/liburing-2.3:=
 	sys-libs/zlib
 	llvm-libunwind? ( sys-libs/llvm-libunwind:= )
 	!llvm-libunwind? ( sys-libs/libunwind:= )"
