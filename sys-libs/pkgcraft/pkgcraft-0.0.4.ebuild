@@ -152,7 +152,7 @@ CRATES+="
 	pkgcraft-c-${PV}
 "
 
-inherit edo cargo
+inherit edo cargo toolchain-funcs
 
 DESCRIPTION="C library for pkgcraft"
 HOMEPAGE="https://pkgcraft.github.io/"
@@ -203,6 +203,10 @@ src_compile() {
 		--libdir="/usr/$(get_libdir)"
 	)
 
+	# For scallop building bash
+	tc-export AR CC
+
+	# Can pass -vv if need more output from e.g. scallop configure
 	edo cargo cbuild "${cargoargs[@]}"
 }
 
