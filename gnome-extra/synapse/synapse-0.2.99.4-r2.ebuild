@@ -10,7 +10,7 @@ SRC_URI="https://launchpad.net/synapse-project/0.3/${PV}/+download/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="appindicator nls plugins"
 
 RDEPEND="
