@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,6 +41,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.0_pre20200723-cmake_lua_version.patch
+	"${FILESDIR}"/${PN}-0.9.5-gcc-13.patch
 )
 
 S="${WORKDIR}/${MY_PN}_v${PV}"
