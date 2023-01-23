@@ -203,6 +203,9 @@ src_configure() {
 
 			--libdir="${cbuild_libdir:2}"
 
+			# Avoid needing to load the right libpython.so.
+			--disable-shared
+
 			# As minimal as possible for the mini CBUILD Python
 			# we build just for cross.
 			--without-lto
