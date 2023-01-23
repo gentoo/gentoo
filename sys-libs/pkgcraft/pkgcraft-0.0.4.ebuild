@@ -178,8 +178,6 @@ SLOT="0/${PV}"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-# TODO: drop cargo-nextest, it's mostly used for testing the other crates, not
-# pkgcraft-c.
 BDEPEND+="
 	dev-util/cargo-c
 	>=virtual/rust-1.65
