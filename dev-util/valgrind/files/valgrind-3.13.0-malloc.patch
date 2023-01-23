@@ -1,5 +1,3 @@
-From: https://git.alpinelinux.org/aports/tree/main/valgrind/
-
 --- valgrind-3.13.0/coregrind/m_replacemalloc/vg_replace_malloc.c
 +++ valgrind-3.13.0/coregrind/m_replacemalloc/vg_replace_malloc.c
 @@ -765,13 +765,15 @@ static void init(void);
