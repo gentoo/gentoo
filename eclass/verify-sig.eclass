@@ -160,7 +160,7 @@ verify-sig_verify_detached() {
 			# https://bugs.gentoo.org/854492
 			local -x TMPDIR=/tmp
 			gemato openpgp-verify-detached -K "${key}" \
-				"${extra_args[@]}" \
+				"${extra_args[@]}" --no-require-all-good \
 				"${sig}" "${file}" ||
 				die "PGP signature verification failed"
 			;;
