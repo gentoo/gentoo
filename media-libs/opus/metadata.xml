@@ -12,4 +12,7 @@
 	<use>
 		<flag name="custom-modes">Enable non-Opus modes, e.g. 44.1 kHz and 2^n frames</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">xiph/opus</remote-id>
+	</upstream>
 </pkgmetadata>
