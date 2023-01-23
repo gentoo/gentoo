@@ -19,7 +19,7 @@ SRC_URI="https://github.com/aunkrig/jdisasm/archive/${MY_COMMIT}.tar.gz -> ${P}.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 
 # There was 1 failure:
 # 1) testWideLocals(jdisasm.Tests)
