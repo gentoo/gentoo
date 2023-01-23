@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.5-fix-version.patch
 	"${FILESDIR}"/${PN}-5.2.5-disable-failing-tests.patch
+	"${FILESDIR}"/${PN}-5.2.5-disable-collada-tests.patch
 )
 
 DOCS=( CodeConventions.md Readme.md )
@@ -55,6 +56,9 @@ src_configure() {
 		-DASSIMP_IGNORE_GIT_HASH=ON
 		-DASSIMP_UBSAN=OFF
 		-DASSIMP_WARNINGS_AS_ERRORS=OFF
+		# bug #891787, intentionally not in alphabetic ordering
+		-DASSIMP_BUILD_COLLADA_IMPORTER=OFF
+		-DASSIMP_BUILD_COLLADA_EXPORTER=OFF
 	)
 
 	if use samples; then
