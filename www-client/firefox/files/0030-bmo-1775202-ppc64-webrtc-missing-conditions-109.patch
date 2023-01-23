@@ -1,0 +1,16 @@
+diff --git a/third_party/libwebrtc/moz.build b/third_party/libwebrtc/moz.build
+index 8579f8bb3622..d9ca79d4fcb8 100644
+--- a/third_party/libwebrtc/moz.build
++++ b/third_party/libwebrtc/moz.build
+@@ -520,7 +520,9 @@ if CONFIG["CPU_ARCH"] == "ppc64" and CONFIG["OS_TARGET"] == "Linux":
+         "/third_party/libwebrtc/api/audio_codecs/isac/audio_decoder_isac_float_gn",
+         "/third_party/libwebrtc/api/audio_codecs/isac/audio_encoder_isac_float_gn",
+         "/third_party/libwebrtc/modules/audio_coding/isac_c_gn",
+-        "/third_party/libwebrtc/modules/audio_coding/isac_gn"
++        "/third_party/libwebrtc/modules/audio_coding/isac_gn",
++        "/third_party/libwebrtc/modules/desktop_capture/desktop_capture_gn",
++        "/third_party/libwebrtc/modules/desktop_capture/primitives_gn"
+     ]
+ 
+ if CONFIG["CPU_ARCH"] == "x86" and CONFIG["OS_TARGET"] == "Linux":
+
