@@ -91,8 +91,8 @@ src_prepare() {
 	eautopoint --force
 	eautoreconf
 
-	# Get rid of bundled gettext.
-	drop_and_stub "${S}/intl"
+	# Get rid of bundled gettext. (Avoid build failures with musl)
+	use elibc_musl || drop_and_stub "${S}/intl"
 
 	# Plugins that are undesired for whatever reason, candidates for unbundling and such.
 	for i in adplug alac dumb ffap mms gme mono2stereo psf shn sid soundtouch wma; do
