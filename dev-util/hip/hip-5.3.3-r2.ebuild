@@ -71,22 +71,15 @@ src_prepare() {
 	# Use Gentoo slot number, otherwise git hash is attempted in vain.
 	sed -e "/set (HIP_LIB_VERSION_STRING/cset (HIP_LIB_VERSION_STRING ${SLOT#*/})" -i CMakeLists.txt || die
 
-	# disable PCH, because it results in a build error in ROCm 4.0.0
-	sed -e "s:option(__HIP_ENABLE_PCH:#option(__HIP_ENABLE_PCH:" -i CMakeLists.txt || die
-
 	# correctly find HIP_CLANG_INCLUDE_PATH using cmake
 	local LLVM_PREFIX="$(get_llvm_prefix "${LLVM_MAX_SLOT}")"
 	local CLANG_RESOURCE_DIR=$("${LLVM_PREFIX}/bin/clang" -print-resource-dir)
 	sed -e "/set(HIP_CLANG_ROOT/s:\"\${ROCM_PATH}/llvm\":${LLVM_PREFIX}:" -i hip-config.cmake.in || die
 
 	# correct libs and cmake install dir
-	sed -e "/LIB_INSTALL_DIR/s:PREFIX}/lib:PREFIX}/$(get_libdir):" \
-		-e "/\${HIP_COMMON_DIR}/s:cmake DESTINATION .):cmake/ DESTINATION share/cmake/Modules):" -i CMakeLists.txt || die
-	sed -e "/LIBRARY DESTINATION/s:lib:$(get_libdir):" -i src/CMakeLists.txt || die
+	sed -e "/\${HIP_COMMON_DIR}/s:cmake DESTINATION .):cmake/ DESTINATION share/cmake/Modules):" -i CMakeLists.txt || die
 
 	sed -e "/\.hip/d" \
-		-e "s,DESTINATION lib,DESTINATION $(get_libdir),g" \
-		-e "/cmake DESTINATION/d" \
 		-e "/CPACK_RESOURCE_FILE_LICENSE/d" -i packaging/CMakeLists.txt || die
 
 	pushd ${HIP_S} || die
