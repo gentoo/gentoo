@@ -21,7 +21,6 @@ SLOT="$(ver_cut 1-2)"
 IUSE="doc"
 
 BUILD_DIR="${S}/build"
-
 # Zig requires zstd and zlib compression support in LLVM, if using LLVM backend.
 # (non-LLVM backends don't require these)
 # They are not required "on their own", so please don't add them here.
@@ -42,9 +41,15 @@ RDEPEND="
 # For now, Zig Build System doesn't support enviromental CFLAGS/LDFLAGS/etc.
 QA_FLAGS_IGNORED="usr/bin/zig"
 
-# Since commit https://github.com/ziglang/zig/commit/e7d28344fa3ee81d6ad7ca5ce1f83d50d8502118
-# Zig uses self-hosted compiler only
-CHECKREQS_MEMORY="4G"
+# see https://ziglang.org/download/0.10.0/release-notes.html#Self-Hosted-Compiler
+# 0.10.0 release - ~9.6 GiB, since we use compiler written in C++ for bootstrapping
+# 0.11.0 release - ~2.8 GiB, since we will (at least according to roadmap) use self-hosted compiler
+# (transpiled to C via C backend) for bootstrapping
+CHECKREQS_MEMORY="10G"
+
+PATCHES=(
+	"${FILESDIR}/zig-0.10.0-build-dir-install-stage3.patch"
+)
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
@@ -92,6 +97,9 @@ get_zig_target() {
 
 pkg_setup() {
 	llvm_pkg_setup
+	ewarn "This version requires 10G of memory for building compiler."
+	ewarn "If you don't have enough memory, you can wait until 0.11.0 release"
+	ewarn "or (if you are risky) use 9999 version (currently requires only 4GB)"
 	check-reqs_pkg_setup
 }
 
@@ -114,7 +122,7 @@ src_compile() {
 
 	if use doc; then
 		cd "${BUILD_DIR}" || die
-		edo ./zig2 run ../doc/docgen.zig -- --zig ./zig2 ../doc/langref.html.in "${S}/langref.html"
+		edo ./zig2 run ../doc/docgen.zig -- ./zig2 ../doc/langref.html.in "${S}/langref.html"
 		edo ./zig2 test ../lib/std/std.zig --zig-lib-dir ../lib -fno-emit-bin -femit-docs="${S}/std"
 	fi
 }
@@ -123,17 +131,35 @@ src_test() {
 	cd "${BUILD_DIR}" || die
 	local ZIG_TEST_ARGS="-Dstatic-llvm=false -Denable-llvm -Dskip-non-native \
 		-Drelease -Dtarget=$(get_zig_target) -Dcpu=$(get_zig_mcpu)"
-	# TBF zig2 -> stage3/bin/zig when (if) https://github.com/ziglang/zig/pull/14255 will be merged
-	edo ./zig2 build test ${ZIG_TEST_ARGS}
+	local ZIG_TEST_STEPS=(
+		test-cases test-fmt test-behavior test-compiler-rt test-universal-libc test-compare-output
+		test-standalone test-c-abi test-link test-stack-traces test-cli test-asm-link test-translate-c
+		test-run-translated-c test-std
+	)
+
+	local step
+	for step in "${ZIG_TEST_STEPS[@]}" ; do
+		edob ./stage3/bin/zig build ${step} ${ZIG_TEST_ARGS}
+	done
 }
 
 src_install() {
 	use doc && local HTML_DOCS=( "langref.html" "std" )
 	cmake_src_install
-
 	cd "${ED}/usr/$(get_libdir)/zig/${PV}/" || die
 	mv lib/zig/ lib2/ || die
 	rm -rf lib/ || die
 	mv lib2/ lib/ || die
+
 	dosym -r "/usr/$(get_libdir)/zig/${PV}/bin/zig" "/usr/bin/zig-${PV}"
+}
+
+pkg_postinst() {
+	elog "0.10.1 release uses self-hosted compiler by default and fixes some bugs from 0.10.0"
+	elog "But your code still can be un-compilable since some features still not implemented or bugs not fixed"
+	elog "Upstream recommends:"
+	elog " * Using old compiler if experiencing such breakage (flag '-fstage1')"
+	elog " * Waiting for release 0.11.0 with old compiler removed (these changes are already merged in 9999)"
+	elog "Also see: https://ziglang.org/download/0.10.0/release-notes.html#Self-Hosted-Compiler"
+	elog "and https://ziglang.org/download/0.10.0/release-notes.html#How-to-Upgrade"
 }
