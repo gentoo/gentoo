@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake toolchain-funcs
 
 DESCRIPTION="Library for parsing mathematical expressions"
 HOMEPAGE="https://beltoforion.de/en/muparser/"
@@ -15,6 +15,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc openmp test"
 RESTRICT="!test? ( test )"
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
 
 src_configure() {
 	local mycmakeargs=(
