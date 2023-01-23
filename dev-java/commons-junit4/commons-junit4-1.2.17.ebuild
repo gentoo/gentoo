@@ -15,7 +15,7 @@ SRC_URI="https://github.com/aunkrig/commons/archive/V${PV}.tar.gz -> unkrig-comm
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
 
 CP_DEPEND="
 	~dev-java/commons-nullanalysis-${PV}:0
