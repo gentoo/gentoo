@@ -178,8 +178,10 @@ SLOT="0/${PV}"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+# clang needed for bindgen
 BDEPEND+="
 	dev-util/cargo-c
+	sys-devel/clang
 	>=virtual/rust-1.65
 "
 
