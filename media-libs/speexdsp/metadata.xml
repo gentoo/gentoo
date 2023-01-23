@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="cpe">cpe:/a:xiph:speex</remote-id>
+    <remote-id type="github">xiph/speexdsp</remote-id>
   </upstream>
 </pkgmetadata>
