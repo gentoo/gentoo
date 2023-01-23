@@ -7,18 +7,21 @@ DISTUTILS_USE_PEP517=flit
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Stand-alone Manifest generation & verification tool"
 HOMEPAGE="
 	https://github.com/projg2/gemato/
 	https://pypi.org/project/gemato/
 "
-EGIT_REPO_URI="https://github.com/projg2/gemato.git"
+SRC_URI="
+	https://github.com/projg2/gemato/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux"
 IUSE="+gpg pretty-log tools"
 
 RDEPEND="
