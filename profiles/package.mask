@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-01-23)
+# Please upgrade to >=app-eselect/eselect-wxwidgets-20230114-r1 as -r0 may
+# lead to build failures.
+=app-eselect/eselect-wxwidgets-20230114
+
 # Michał Górny <mgorny@gentoo.org> (2023-01-21)
 # Packages that are incompatible with ffmpeg-5.
 #
