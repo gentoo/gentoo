@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,7 +33,10 @@ RDEPEND="
 	upnp? ( net-libs/miniupnpc:= )"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-system-leveldb.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-system-leveldb.patch
+	"${FILESDIR}"/${P}-gcc12.patch
+)
 
 src_prepare() {
 	default
