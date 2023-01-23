@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/888605
+--- a/src/bench/block_assemble.cpp
++++ b/src/bench/block_assemble.cpp
+@@ -22,6 +22,7 @@
+ 
+ #include <list>
+ #include <vector>
++#include <array>
+ 
+ static std::shared_ptr<CBlock> PrepareBlock(const CScript& coinbase_scriptPubKey)
+ {
+--- a/src/net_processing.cpp
++++ b/src/net_processing.cpp
+@@ -29,6 +29,7 @@
+ #include <util/system.h>
+ #include <util/moneystr.h>
+ #include <util/strencodings.h>
++#include <array>
+ 
+ #include <memory>
+ 
+
