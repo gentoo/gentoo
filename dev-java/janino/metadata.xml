@@ -8,4 +8,7 @@
 	<longdescription>
 		The "JANINO" implementation of the "commons-compiler" API: Super-small, super-fast, independent from the JDK's "tools.jar".
 	</longdescription>
+	<upstream>
+		<remote-id type="github">janino-compiler/janino</remote-id>
+	</upstream>
 </pkgmetadata>
