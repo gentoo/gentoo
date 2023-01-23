@@ -36,7 +36,10 @@ src_prepare() {
 	sed -i -e 's:-arch \(i386\|x86_64\)::g' Makefile.all.am || die
 
 	if use elibc_musl ; then
-		PATCHES+=( "${FILESDIR}"/valgrind-3.13.0-malloc.patch )
+		PATCHES+=(
+			"${FILESDIR}"/${PN}-3.13.0-malloc.patch
+			"${FILESDIR}"/${PN}-3.20.0-musl-interpose.patch
+		)
 	fi
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
