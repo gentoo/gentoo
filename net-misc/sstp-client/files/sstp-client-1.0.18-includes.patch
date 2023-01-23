@@ -1,0 +1,42 @@
+https://gitlab.com/eivnaes/sstp-client/-/merge_requests/4
+
+From 1d822cca1c4e5b4db91bcbabe29bf43c05449af7 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 23 Jan 2023 02:26:28 +0000
+Subject: [PATCH 1/2] libsstp-log: add missing <time.h> include
+
+Needed for time_t. Fixes build w/ GCC 12 on musl.
+
+Bug: https://bugs.gentoo.org/854858
+--- a/src/libsstp-log/sstp-log-private.h
++++ b/src/libsstp-log/sstp-log-private.h
+@@ -24,6 +24,7 @@
+ #ifndef __SSTP_LOG_PRIVATE_H__
+ #define __SSTP_LOG_PRIVATE_H__
+ 
++#include <time.h>
+ 
+ /*! Keep attributes aligned to a 32-bit boundary */
+ #define LOG_ALIGN32(n)  \
+
+From 835c6226aaccb4c39a8c50dec5d3afd87315fddd Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 23 Jan 2023 02:28:18 +0000
+Subject: [PATCH 2/2] pppd-plugin: workaround broken pppd.h header for memcpy
+
+ppp's pppd.h defines a BCOPY macro which expands to memcpy but doesn't
+include <string.h> which provides it. Include it in pppd-plugin instead
+to workaround it, as it'll be a while before we can assume the system ppp
+is fixed.
+
+Bug: https://bugs.gentoo.org/870865
+--- a/src/pppd-plugin/sstp-mppe.c
++++ b/src/pppd-plugin/sstp-mppe.c
+@@ -24,6 +24,7 @@
+ 
+ #include <config.h>
+ 
++#include <string.h>
+ #include <pppd/pppd.h>
+ #include <sstp-mppe.h>
+ 
