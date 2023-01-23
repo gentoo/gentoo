@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2023-01-23)
+# EOL branch, switch to mariadb-10.4/galera-26.4, removal on 2023-02-22.
+<dev-db/mariadb-10.4
+<sys-cluster/galera-26.4
+
 # Sam James <sam@gentoo.org> (2023-01-23)
 # Please upgrade to >=app-eselect/eselect-wxwidgets-20230114-r1 as -r0 may
 # lead to build failures.
