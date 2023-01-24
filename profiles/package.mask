@@ -367,7 +367,6 @@ acct-user/ros
 dev-python/ament_package
 dev-python/catkin_pkg
 dev-python/osrf_pycommon
-dev-python/python_orocos_kdl
 
 # Michał Górny <mgorny@gentoo.org> (2022-12-23)
 # Packages that still use dev-python/nose and have no revdeps.
