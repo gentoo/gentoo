@@ -12,10 +12,12 @@ S="${WORKDIR}/desktop-${PV/_/-}"
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc dolphin nautilus test webengine"
 RESTRICT="!test? ( test )"
 
+# slot op for qtqui as this package uses private API parts of qtqui
+# src/gui/generalsettings.cpp:#include <private/qzipwriter_p.h>
 RDEPEND="
 	>=dev-db/sqlite-3.34:3
 	>=dev-libs/openssl-1.1.0:0=
@@ -23,13 +25,12 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5=
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtquickcontrols2:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
-	net-libs/libcloudproviders
 	sys-libs/zlib
 	dolphin? (
 		kde-frameworks/kcoreaddons:5
@@ -38,8 +39,7 @@ RDEPEND="
 	nautilus? ( dev-python/nautilus-python )
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
-DEPEND="
-	${R_DEPEND}
+DEPEND="${RDEPEND}
 	dev-qt/qtconcurrent:5
 	dev-qt/qtxml:5
 	|| ( gnome-base/librsvg media-gfx/inkscape )
@@ -59,12 +59,10 @@ BDEPEND="
 	dolphin? ( kde-frameworks/extra-cmake-modules )
 "
 
-PATCHES=(
-	# https://github.com/nextcloud/desktop/pull/5309
-	"${FILESDIR}"/${PN}-3.6.4-drop-dependency-on-Qt-Quick-Controls-1.patch
-)
-
 src_prepare() {
+	# We do not package libcloudproviders
+	sed -e "s/pkg_check_modules.*cloudproviders/#&/" -i CMakeLists.txt || die
+
 	# Keep tests in ${T}
 	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.cpp || die
 
