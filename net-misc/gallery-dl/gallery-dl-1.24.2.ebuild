@@ -35,5 +35,5 @@ python_compile_all() {
 
 pkg_postinst() {
 	optfeature "Pixiv Ugoira to WebM conversion" media-video/ffmpeg
-	optfeature "video downloads" net-misc/youtube-dl
+	optfeature "video downloads" net-misc/yt-dlp
 }
