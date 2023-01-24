@@ -86,7 +86,15 @@
  	for f in maildrop mailbot maildirmake reformail lockmail makemime reformime maildirkw maildirwatch; do \
 --- a/configure.ac	2023-01-23 20:25:07.119321103 +0100
 +++ b/configure.ac	2023-01-23 20:30:33.445719448 +0100
-@@ -203,7 +203,7 @@
+@@ -129,7 +129,6 @@
+ 	AC_MSG_ERROR([libidn not found])
+ fi
+ 
+-AX_COURIER_UNICODE_VERSION(2.1)
+ 
+ AC_ARG_WITH(plentyofbeer,
+ [  --enable-sendmail=prog       set sendmail location
+@@ -203,7 +202,7 @@
  
  AC_SUBST(REPOSITORY)
  
