@@ -5,7 +5,6 @@ move kde-apps/kstars sci-astronomy/kstars
 move media-video/kamoso kde-apps/kamoso
 move app-backup/kbackup kde-apps/kbackup
 move x11-proto/xcb-proto x11-base/xcb-proto
-move ros-meta/geometry_experimental ros-meta/geometry2
 slotmove =dev-ruby/websocket-driver-0.7.0 0 0.7
 move kde-plasma/oxygen-fonts media-fonts/oxygen-fonts
 move media-libs/vulkan-tools dev-util/vulkan-tools

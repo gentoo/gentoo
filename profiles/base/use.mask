@@ -31,13 +31,6 @@ pch
 # Please upgrade to a newer slot
 php_targets_php7-2
 
-# Alexis Ballier <aballier@gentoo.org> (2020-10-13)
-# Nothing depends on those ROS messages. dev-ros/geneus
-# is half broken in our setup where it looks for packages
-# on the filesystem and causes build failures.
-# See e.g. bug #741076
-ros_messages_eus
-
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # app-office/texmacs is package.mask'd. Bug #436400
 texmacs

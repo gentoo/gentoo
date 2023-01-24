@@ -27,15 +27,6 @@ dev-libs/intel-compute-runtime
 # These packages depend on dev-lisp/sbcl unconditionally
 app-emacs/sly
 dev-lisp/alexandria
-dev-ros/roslisp
-ros-meta/desktop
-ros-meta/desktop_full
-ros-meta/perception
-ros-meta/robot
-ros-meta/ros_core
-ros-meta/ros_base
-ros-meta/simulators
-ros-meta/viz
 x11-wm/stumpwm
 x11-wm/stumpwm-contrib
 

@@ -67,7 +67,6 @@ dev-python/trio
 dev-python/twine
 dev-python/watchfiles
 dev-python/wcmatch
-dev-ros/roswtf
 dev-util/buildbot-worker
 dev-util/cargo-c
 dev-util/cbindgen
@@ -95,7 +94,6 @@ net-misc/electrum-ltc
 net-misc/gsutil
 net-news/newsboat
 net-p2p/deluge
-ros-meta/ros_comm
 sci-geosciences/gnome-maps
 >=sys-apps/bat-0.18.1
 sys-fs/bcachefs-tools
