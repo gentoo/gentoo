@@ -16,7 +16,4 @@
   <upstream>
     <remote-id type="github">ROCmSoftwarePlatform/hipFFT</remote-id>
   </upstream>
-    <use>
-        <flag name="benchmark">Build and install benchmark programs hipfft-rider.</flag>
-    </use>
 </pkgmetadata>
