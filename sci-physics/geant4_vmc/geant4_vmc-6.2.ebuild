@@ -23,12 +23,12 @@ SLOT="4"
 IUSE="doc examples geant3 +g4root vgm test"
 
 RDEPEND="
-	sci-physics/geant:=[c++17,opengl,geant3?]
+	>=sci-physics/geant-4.11.1:=[c++17,opengl,geant3?]
 	sci-physics/root:=[c++17,-vmc(-)]
-	sci-physics/vmc:=[c++17]
-	vgm? ( sci-physics/vgm:= )"
+	>=sci-physics/vmc-2.0:=[c++17]
+	vgm? ( >=sci-physics/vgm-5.1:= )"
 DEPEND="${RDEPEND}
-	test? ( sci-physics/geant:=[gdml] )"
+	test? ( >=sci-physics/geant-4.11.1:=[gdml] )"
 BDEPEND="doc? ( app-doc/doxygen[dot] )"
 RESTRICT="
 	!examples? ( test )
