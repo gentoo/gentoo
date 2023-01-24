@@ -31,6 +31,7 @@ src_prepare() {
 		eapply "${FILESDIR}"/${PV}-protos-ipv6.patch
 		eapply "${FILESDIR}"/${PV}-tcprules.patch #135571
 		eapply "${FILESDIR}"/${PV}-bigendian.patch #18892
+		eapply "${FILESDIR}"/${PV}-implicit-int-ipv6.patch
 	else
 		eapply "${FILESDIR}"/${PV}-protos-no-ipv6.patch
 	fi
