@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
-inherit distutils-r1 optfeature
+inherit distutils-r1
 
 DESCRIPTION="A WSGI HTTP Server for UNIX"
 HOMEPAGE="
@@ -47,9 +47,4 @@ python_install_all() {
 	use doc && local HTML_DOCS=( docs/source/_build/html/. )
 
 	distutils-r1_python_install_all
-}
-
-pkg_postinst() {
-	optfeature_header "Alternative worker types need additional packages to be installed:"
-	optfeature "eventlet-based greenlets workers" "dev-python/eventlet"
 }
