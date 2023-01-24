@@ -224,6 +224,11 @@ pkg_pretend() {
 		einfo "will have NLS support."
 	fi
 
+	if use gui && ! use doc; then
+		einfo "You have disabled the \"doc\" USE flag.  Built-in help"
+		einfo "will not be available."
+	fi
+
 	# 749273
 	local d=${ROOT}
 	for i in usr "$(get_libdir)"; do
@@ -319,6 +324,9 @@ src_prepare() {
 		-e 's/&larr;/\&#8592;/g' \
 		-e 's/&rarr;/\&#8594;/g' \
 		-e 's/&harr;/\&#8596;/g' {} \+ || die
+
+	# fix help path #891879
+	echo -e "\nVBOX_PATH_PACKAGE_DOCS=/usr/share/doc/${PF}" >> LocalConfig.kmk || die
 
 	# 489208
 	# Cannot patch the whole text, many translations.  Use sed instead to replace the command
@@ -666,10 +674,8 @@ src_install() {
 	fi
 
 	if use doc; then
-		dodoc UserManual.pdf
-		docompress -x /usr/share/doc/${PF}/qt
-		docinto qt
-		dodoc UserManual.q{ch,hc}
+		dodoc UserManual.pdf UserManual.q{ch,hc}
+		docompress -x /usr/share/doc/${PF}
 	fi
 
 	if use python; then
