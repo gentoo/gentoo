@@ -60,6 +60,11 @@ RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
 
+PATCHES=(
+	# https://github.com/openzfs/zfs/issues/14413
+	"${FILESDIR}/${PV}-gang-revert.patch"
+)
+
 pkg_pretend() {
 	use rootfs || return 0
 
