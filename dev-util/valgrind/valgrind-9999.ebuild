@@ -83,6 +83,7 @@ src_configure() {
 	filter-flags -fstack-protector-all
 	filter-flags -fstack-protector-strong
 	filter-flags -m64 -mx32
+	filter-flags -fsanitize -fsanitize=*
 	replace-flags -ggdb3 -ggdb2
 	filter-lto
 
