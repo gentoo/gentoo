@@ -51,7 +51,7 @@ LLVM_COMPONENTS=(
 )
 LLVM_MANPAGES=1
 LLVM_TEST_COMPONENTS=(
-	llvm/lib/Testing/Support
+	llvm/lib/Testing
 	llvm/utils
 	third-party
 )
