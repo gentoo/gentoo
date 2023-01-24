@@ -16,7 +16,7 @@ IUSE=""
 # No direct gtk3 until pidgin migrates:
 # https://github.com/philipl/pidgin-indicator/issues/32
 RDEPEND="
-	dev-libs/libayatana-indicator
+	dev-libs/libayatana-appindicator
 	net-im/pidgin[gtk]
 	x11-libs/gtk+:2
 "
