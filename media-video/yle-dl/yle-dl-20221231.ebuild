@@ -51,5 +51,5 @@ pkg_postinst() {
 	elog "Sample configuration file has been installed to "
 	elog " /usr/share/doc/yle-dl-${PVR}/yledl.conf.sample"
 	elog
-	optfeature "youtube-dl download engine" net-misc/youtube-dl net-misc/yt-dlp
+	optfeature "youtube-dl download engine" net-misc/yt-dlp
 }
