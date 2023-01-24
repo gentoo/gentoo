@@ -745,24 +745,25 @@ cross_pre_c_headers() {
 	use headers-only && [[ ${CHOST} != ${CTARGET} ]]
 }
 
-# @FUNCTION: env_setup_xmakeopts
+# @FUNCTION: env_setup_kernel_makeopts
 # @USAGE:
 # @DESCRIPTION:
-# set the ARCH/CROSS_COMPILE when cross compiling
+# Set the toolchain variables, as well as ARCH and CROSS_COMPILE when
+# cross-compiling.
 
-env_setup_xmakeopts() {
+env_setup_kernel_makeopts() {
 	# Kernel ARCH != portage ARCH
 	export KARCH=$(tc-arch-kernel)
 
 	# When cross-compiling, we need to set the ARCH/CROSS_COMPILE
 	# variables properly or bad things happen !
-	xmakeopts=( ARCH="${KARCH}" )
+	KERNEL_MAKEOPTS=( ARCH="${KARCH}" )
 	if [[ ${CTARGET} != ${CHOST} ]] && ! cross_pre_c_headers; then
-		xmakeopts+=( CROSS_COMPILE="${CTARGET}-" )
+		KERNEL_MAKEOPTS+=( CROSS_COMPILE="${CTARGET}-" )
 	elif type -p ${CHOST}-ar >/dev/null; then
-		xmakeopts+=( CROSS_COMPILE="${CHOST}-" )
+		KERNEL_MAKEOPTS+=( CROSS_COMPILE="${CHOST}-" )
 	fi
-	xmakeopts+=(
+	KERNEL_MAKEOPTS+=(
 		HOSTCC="$(tc-getBUILD_CC)"
 		CC="$(tc-getCC)"
 		LD="$(tc-getLD)"
@@ -772,7 +773,7 @@ env_setup_xmakeopts() {
 		READELF="$(tc-getREADELF)"
 		STRIP="$(tc-getSTRIP)"
 	)
-	export xmakeopts
+	export KERNEL_MAKEOPTS
 }
 
 # @FUNCTION: universal_unpack
@@ -858,8 +859,8 @@ install_universal() {
 install_headers() {
 	local ddir=$(kernel_header_destdir)
 
-	env_setup_xmakeopts
-	emake headers_install INSTALL_HDR_PATH="${ED}"${ddir}/.. "${xmakeopts[@]}"
+	env_setup_kernel_makeopts
+	emake headers_install INSTALL_HDR_PATH="${ED}"${ddir}/.. "${KERNEL_MAKEOPTS[@]}"
 
 	# let other packages install some of these headers
 	rm -rf "${ED}"${ddir}/scsi || die #glibc/uclibc/etc...
@@ -1425,8 +1426,8 @@ kernel-2_src_unpack() {
 	[[ -z ${K_NOSETEXTRAVERSION} ]] && unpack_set_extraversion
 	unpack_fix_install_path
 
-	# Setup xmakeopts and cd into sourcetree.
-	env_setup_xmakeopts
+	# Setup KERNEL_MAKEOPTS and cd into sourcetree.
+	env_setup_kernel_makeopts
 	cd "${S}" || die
 
 	if [[ ${K_DEBLOB_AVAILABLE} == 1 ]] && use deblob; then
