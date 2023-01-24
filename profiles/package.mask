@@ -371,7 +371,6 @@ dev-python/python_orocos_kdl
 dev-python/rosdistro
 dev-python/rospkg
 dev-python/urdf_parser_py
-dev-python/vcstools
 
 # Michał Górny <mgorny@gentoo.org> (2022-12-23)
 # Packages that still use dev-python/nose and have no revdeps.
