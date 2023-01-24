@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -53,5 +53,5 @@ pkg_postinst() {
 	optfeature "rofi-calendar" x11-misc/rofi
 	optfeature "ssid and wlan-dbm" net-wireless/iw
 	optfeature "temperature" sys-apps/lm-sensors
-	optfeature "ytdl-mpv" "media-fonts/fontawesome media-video/mpv x11-misc/xclip net-misc/youtube-dl"
+	optfeature "ytdl-mpv" "media-fonts/fontawesome media-video/mpv[lua] x11-misc/xclip net-misc/yt-dlp"
 }
