@@ -35,12 +35,12 @@ python_prepare_all() {
 
 	sed -e "s/'  Linux %s' % ' '\.join(platform.linux_distribution())/'  Linux'/" -i gyptest.py || die
 	sed \
-		-e "s/import collections/import collections.abc/" \
+		-e "s/^import collections/import collections.abc/" \
 		-e "s/collections\.MutableSet/collections.abc.MutableSet/" \
 		-i pylib/gyp/common.py || die
 	sed -e "s/the_dict_key is 'variables'/the_dict_key == 'variables'/" -i pylib/gyp/input.py || die
 	sed \
-		-e "s/import collections/import collections.abc/" \
+		-e "s/^import collections/import collections.abc/" \
 		-e "s/collections\.Iterable/collections.abc.Iterable/" \
 		-i pylib/gyp/msvs_emulation.py || die
 	sed \
