@@ -20,6 +20,5 @@
     <flag name="vgm">Enable the Virtual Geometry Model (<pkg>sci-physics/vgm</pkg>)</flag>
     <flag name="g4root">Build G4Root (interface for GEANT4 simulation with a ROOT geometry)</flag>
     <flag name="geant3">Build with Geant4 G3toG4 library</flag>
-    <flag name="mtroot">Build MTRoot (provides ROOT IO manager classes with multi-threading support)</flag>
   </use>
 </pkgmetadata>
