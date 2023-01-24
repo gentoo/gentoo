@@ -7,8 +7,8 @@
     <name>Maciej Barć</name>
   </maintainer>
   <upstream>
-    <bugs-to>https://github.com/plamere/spotipy/issues/</bugs-to>
-    <remote-id type="github">plamere/spotipy</remote-id>
+    <bugs-to>https://github.com/spotipy-dev/spotipy/issues/</bugs-to>
+    <remote-id type="github">spotipy-dev/spotipy</remote-id>
     <remote-id type="pypi">spotipy</remote-id>
   </upstream>
 </pkgmetadata>
