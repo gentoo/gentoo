@@ -476,11 +476,6 @@ dev-util/meson test
 # Ada support is not yet ready for sys-devel/gcc
 sys-devel/gcc ada
 
-# Michał Górny <mgorny@gentoo.org> (2020-03-28)
-# Requires masked dev-vcs/bzr.  Remove the mask if breezy is packaged
-# and the package is confirmed to work with it.
-<=dev-util/rosinstall-0.7.8 test
-
 # Guilherme Amadio <amadio@gentoo.org> (2020-03-16)
 # Requires dev-libs/cudnn which is only available on amd64
 sci-physics/root cudnn
