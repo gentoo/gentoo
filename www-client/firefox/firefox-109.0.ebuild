@@ -3,7 +3,7 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-109-patches-02j.tar.xz"
+FIREFOX_PATCHSET="firefox-109-patches-03j.tar.xz"
 
 LLVM_MAX_SLOT=15
 
@@ -612,12 +612,6 @@ src_unpack() {
 src_prepare() {
 	use lto && rm -v "${WORKDIR}"/firefox-patches/*-LTO-Only-enable-LTO-*.patch
 	! use ppc64 && rm -v "${WORKDIR}"/firefox-patches/*bmo-1775202-ppc64*.patch
-	
-	# workaround for https://bugs.gentoo.org/891389 until new patch gets into tarball
-	if use ppc64; then
-		rm -v "${WORKDIR}"/firefox-patches/0030-bmo-1775202-ppc64-webrtc-missing-conditions.patch
-		eapply "${FILESDIR}"/0030-bmo-1775202-ppc64-webrtc-missing-conditions-109.patch
-	fi
 
 	eapply "${WORKDIR}/firefox-patches"
 
