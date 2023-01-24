@@ -9,4 +9,7 @@
 	<email>java@gentoo.org</email>
 	<name>Java</name>
 </maintainer>
+<upstream>
+	<remote-id type="gitlab">pdftk-java/pdftk</remote-id>
+</upstream>
 </pkgmetadata>
