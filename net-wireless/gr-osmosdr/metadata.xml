@@ -17,6 +17,6 @@
 		<flag name="xtrx">Build with xtrx Hardware Driver support through <pkg>net-wireless/libxtrx</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="github">osmocom/gr-osmocom</remote-id>
+		<remote-id type="github">osmocom/gr-osmosdr</remote-id>
 	</upstream>
 </pkgmetadata>
