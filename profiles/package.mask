@@ -33,6 +33,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2023-01-24)
+# Mostly obsoleted by the better maintained net-misc/yt-dlp, please
+# migrate. If had USE=yt-dlp enabled (default) then was likely already
+# using through its youtube-dl compatibility wrapper and this will
+# change nothing beside needing to ensure that it is not depcleaned.
+#
+# Upstream is mostly focusing on compatibility and old python support,
+# still uses deprecated Nose for tests, and has not seen a new release
+# to deploy fixes in a long time despite major issues (e.g. throttling).
+#
+# Been kept due to some packages lacking compatibility with yt-dlp's
+# python modules, but none are left in tree. Those that call the command
+# rather than modules will often work as-is with yt-dlp's wrapper.
+# Removal: 2023-02-23. Bug #891917
+net-misc/youtube-dl
+
 # Michał Górny <mgorny@gentoo.org> (2023-01-24)
 # mps-youtube does not seem to work "out of the box".  It has had its
 # last release in 2018, and no commits since 2020.  It is the only
