@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/${PN}.git/snapshot/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	KEYWORDS="~riscv"
 fi
 
 LICENSE="GPL-2"
@@ -164,6 +164,7 @@ multilib_layout() {
 				# only symlinked the lib dir on systems where we moved it
 				# to "lib32" ...
 				case ${CHOST} in
+				*-gentoo-freebsd*) ;; # We want it the other way on fbsd.
 				i?86*|x86_64*|powerpc*|sparc*|s390*)
 					if [[ -d ${prefix}lib32 && ! -h ${prefix}lib32 ]] ; then
 						rm -f "${prefix}lib32"/.keep || die
@@ -256,6 +257,7 @@ src_prepare() {
 
 src_install() {
 	emake \
+		OS=Linux \
 		DESTDIR="${ED}" \
 		install
 
