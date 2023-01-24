@@ -12,7 +12,7 @@ SRC_URI="https://www.xach.com/snarf/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc ~sparc ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/snarf-basename-patch.diff
