@@ -75,6 +75,6 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	optfeature "track length detection for device sync (only one package is needed)" media-video/mplayer dev-python/eyeD3
-	optfeature "for the YouTube extension" net-misc/yt-dlp net-misc/youtube-dl
+	optfeature "for the YouTube extension" net-misc/yt-dlp
 	optfeature "iPod sync support" media-libs/libgpod
 }
