@@ -182,17 +182,6 @@
  {
  #ifdef NeXT
    printf("nextstep\n"); exit(0);
---- a/tryip6.c
-+++ b/tryip6.c
-@@ -2,7 +2,7 @@
- #include <sys/socket.h>
- #include <netinet/in.h>
- 
--main() {
-+int main() {
-   struct sockaddr_in6 sa;
-   sa.sin6_family = PF_INET6;
- }
 --- a/trylsock.c
 +++ b/trylsock.c
 @@ -1,4 +1,4 @@
