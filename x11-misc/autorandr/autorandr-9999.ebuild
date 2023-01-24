@@ -29,7 +29,11 @@ RDEPEND="
 	udev? ( virtual/udev )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+# desktop-file-util: uses desktop-file-edit in Makefile
+BDEPEND="
+	dev-util/desktop-file-utils
+	virtual/pkgconfig
+"
 
 src_compile() {
 	distutils-r1_src_compile
