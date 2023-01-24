@@ -1,10 +1,11 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+PYTHON_COMPAT=( python3_{9..11} )
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-inherit flag-o-matic meson-multilib
+inherit flag-o-matic meson-multilib python-any-r1
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -17,13 +18,15 @@ if [[ ${PV} == 9999 ]]; then
 else
 	HASH_SPIRV=0bcc624926a25a2a273d07877fd25a6ff5ba1cfb
 	HASH_VULKAN=98f440ce6868c94f5ec6e198cc1adda4760e8849
+	HASH_DISPLAYINFO=d39344f466caae0495ebac4d49b03a886d83ba3a
 	SRC_URI="
 		https://github.com/doitsujin/dxvk/archive/refs/tags/v${PV}.tar.gz
 			-> ${P}.tar.gz
 		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV}.tar.gz
 			-> ${PN}-spirv-headers-${HASH_SPIRV::10}.tar.gz
 		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz
-			-> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz"
+			-> ${PN}-vulkan-headers-${HASH_VULKAN::10}.tar.gz
+		https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info/-/archive/${HASH_DISPLAYINFO}/${PN}-libdisplay-info-${HASH_DISPLAYINFO::10}.tar.bz2"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 # setup_dxvk.sh is no longer provided, fetch old until a better solution
@@ -41,6 +44,7 @@ REQUIRED_USE="
 	d3d11? ( dxgi )"
 
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-util/glslang
 	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
 
@@ -67,9 +71,10 @@ pkg_pretend() {
 
 src_prepare() {
 	if [[ ${PV} != 9999 ]]; then
-		rmdir include/{spirv,vulkan} || die
+		rmdir include/{spirv,vulkan} subprojects/libdisplay-info || die
 		mv ../SPIRV-Headers-${HASH_SPIRV} include/spirv || die
 		mv ../Vulkan-Headers-${HASH_VULKAN} include/vulkan || die
+		mv ../libdisplay-info-${HASH_DISPLAYINFO} subprojects/libdisplay-info || die
 	fi
 
 	default
@@ -82,7 +87,8 @@ src_configure() {
 	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
 
 	# AVX has a history of causing issues with this package, disable for safety
-	# https://github.com/Tk-Glitch/PKGBUILDS/issues/515
+	# https://bugs.winehq.org/show_bug.cgi?id=43516
+	# https://bugs.winehq.org/show_bug.cgi?id=45289
 	append-flags -mno-avx
 
 	if [[ ${CHOST} != *-mingw* ]]; then
