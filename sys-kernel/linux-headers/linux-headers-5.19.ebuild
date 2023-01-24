@@ -42,7 +42,7 @@ src_prepare() {
 }
 
 src_test() {
-	emake headers_check ${xmakeopts}
+	emake headers_check "${KERNEL_MAKEOPTS[@]}"
 }
 
 src_install() {
