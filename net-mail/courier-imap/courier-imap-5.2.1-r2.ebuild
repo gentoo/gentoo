@@ -12,7 +12,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
-IUSE="berkdb debug fam +gdbm gnutls ipv6 selinux trashquota"
+IUSE="berkdb debug +gdbm gnutls ipv6 selinux trashquota"
 REQUIRED_USE="|| ( berkdb gdbm )"
 
 CDEPEND="
@@ -24,15 +24,9 @@ CDEPEND="
 	>=net-libs/courier-unicode-2:=
 	>=net-mail/mailbase-0.00-r8
 	net-dns/libidn:=
-	berkdb? (
-		sys-libs/db:=
-		net-mail/courier-makedat[berkdb?,gdbm?]
-	)
-	fam? ( virtual/fam )
-	gdbm? (
-		>=sys-libs/gdbm-1.8.0:=
-		net-mail/courier-makedat[berkdb?,gdbm?]
-	)
+	net-mail/courier-makedat[berkdb?,gdbm?]
+	berkdb? ( sys-libs/db:= )
+	gdbm? ( >=sys-libs/gdbm-1.8.0:= )
 "
 DEPEND="${CDEPEND}
 	dev-lang/perl
@@ -118,16 +112,10 @@ src_configure() {
 		--with-mailuser=mail \
 		--with-mailgroup=mail \
 		--with-certsdir="/etc/courier-imap" \
-		$(use_with fam) \
 		$(use_with ipv6) \
 		$(use_with gnutls) \
 		${myconf}
 }
-
-#src_compile() {
-	# spurious failures with parallel compiles, bug #????
-#	emake -j1
-#}
 
 src_install() {
 	dodir "/var/lib/${PN}" /etc/pam.d
