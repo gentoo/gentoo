@@ -480,7 +480,6 @@ sys-devel/gcc ada
 # Requires masked dev-vcs/bzr.  Remove the mask if breezy is packaged
 # and the package is confirmed to work with it.
 <=dev-util/rosinstall-0.7.8 test
-<=dev-util/wstool-0.1.18 test
 
 # Guilherme Amadio <amadio@gentoo.org> (2020-03-16)
 # Requires dev-libs/cudnn which is only available on amd64
