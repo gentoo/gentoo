@@ -28,7 +28,6 @@ REQUIRED_USE="
 LIB_DEPEND="
 	dev-libs/json-c:=[static-libs(+)]
 	dev-libs/popt[static-libs(+)]
-	dev-ruby/asciidoctor
 	>=sys-apps/util-linux-2.31-r1[static-libs(+)]
 	argon2? ( app-crypt/argon2:=[static-libs(+)] )
 	gcrypt? (
@@ -85,6 +84,7 @@ src_configure() {
 
 	local myeconfargs=(
 		--disable-internal-argon2
+		--disable-asciidoc
 		--enable-shared
 		--sbindir="${EPREFIX}"/sbin
 		# for later use
