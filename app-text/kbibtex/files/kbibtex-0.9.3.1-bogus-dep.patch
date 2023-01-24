@@ -1,0 +1,34 @@
+From f12d17d38011fd8b432ed4ba8952eb9241b152a6 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 24 Jan 2023 20:17:55 +0100
+Subject: [PATCH] Revert "Fixing minore build system issues"
+
+This reverts commit 6860474d423c47f0633d537851b793fda76ae223.
+---
+ CMakeLists.txt | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c375a34b..48196146 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -43,8 +43,6 @@ include(KDECMakeSettings)
+ include(ECMInstallIcons)
+ include(ECMSetupVersion)
+ include(ECMAddAppIcon)
+-include(ECMQtDeclareLoggingCategory)
+-include(ECMGenerateHeaders)
+ include(GenerateExportHeader)
+ 
+ find_package(
+@@ -54,7 +52,6 @@ find_package(
+     Core
+     Widgets
+     Network
+-    NetworkAuth
+     XmlPatterns
+     Concurrent
+ )
+-- 
+2.39.1
+
