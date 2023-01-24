@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{9..10} )
 inherit cmake python-single-r1
 
 DESCRIPTION="GNU Radio source block for OsmoSDR and rtlsdr and hackrf"
-HOMEPAGE="http://sdr.osmocom.org/trac/wiki/GrOsmoSDR"
+HOMEPAGE="https://sdr.osmocom.org/trac/wiki/GrOsmoSDR"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
