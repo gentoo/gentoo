@@ -4,7 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit flag-o-matic cmake-multilib linux-info llvm llvm.org python-single-r1
+inherit flag-o-matic cmake-multilib linux-info llvm llvm.org
+inherit python-single-r1 toolchain-funcs
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
@@ -86,6 +87,17 @@ multilib_src_configure() {
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 
+	local build_omptarget=OFF
+	# upstream disallows building libomptarget when sizeof(void*) != 8
+	if use offload &&
+		"$(tc-getCC)" ${CFLAGS} ${CPPFLAGS} -c -x c - -o /dev/null \
+		<<-EOF &>/dev/null
+			int test[sizeof(void *) == 8 ? 1 : -1];
+		EOF
+	then
+		build_omptarget=ON
+	fi
+
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
 		-DOPENMP_LIBDIR_SUFFIX="${libdir#lib}"
@@ -94,7 +106,7 @@ multilib_src_configure() {
 		-DLIBOMP_OMPD_GDB_SUPPORT=$(multilib_native_usex gdb-plugin)
 		-DLIBOMP_OMPT_SUPPORT=$(usex ompt)
 
-		-DOPENMP_ENABLE_LIBOMPTARGET=$(usex offload)
+		-DOPENMP_ENABLE_LIBOMPTARGET=${build_omptarget}
 
 		# do not install libgomp.so & libiomp5.so aliases
 		-DLIBOMP_INSTALL_ALIASES=OFF
@@ -102,7 +114,7 @@ multilib_src_configure() {
 		-DLIBOMP_COPY_EXPORTS=OFF
 	)
 
-	if use offload; then
+	if [[ ${build_omptarget} == ON ]]; then
 		if has "${CHOST%%-*}" aarch64 powerpc64le x86_64; then
 			mycmakeargs+=(
 				-DLIBOMPTARGET_BUILD_AMDGPU_PLUGIN=$(usex llvm_targets_AMDGPU)
