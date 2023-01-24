@@ -1,0 +1,13 @@
+--- a/Makefile	2023-01-24 08:35:02.515456277 +0100
++++ b/Makefile	2023-01-24 08:35:45.459755298 +0100
+@@ -161,7 +161,9 @@
+                    $(INSTALL_HEADERS) \
+                    $(if $(filter yes,$($(PROJECT).install_native_objects)),$(NATIVE_OBJECTS)))
+ 
+-install: META-install $(PROJECTS:%=install-%)
++install:
++	$(MAKE) META-install
++	$(MAKE) $(PROJECTS:%=install-%)
+ 
+ uninstall:
+ 	$(OCAMLFIND) remove ctypes
