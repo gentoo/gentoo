@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-01-24)
+# mps-youtube does not seem to work "out of the box".  It has had its
+# last release in 2018, and no commits since 2020.  It is the only
+# package needing dev-python/pafy, and pafy is the final package
+# requiring net-misc/youtube-dl.
+# Removal on 2023-02-23.  Bug #891911.
+dev-python/pafy
+media-sound/mps-youtube
+
 # David Seifert <soap@gentoo.org> (2023-01-23)
 # EOL branch, switch to mariadb-10.4/galera-26.4, removal on 2023-02-22.
 <dev-db/mariadb-10.4
