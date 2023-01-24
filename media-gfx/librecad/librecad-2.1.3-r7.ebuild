@@ -17,7 +17,7 @@ else
 		https://github.com/Fat-Zer/librecad-gentoo-CVE-patches/archive/v${PV/_/}.tar.gz -> librecad-gentoo-CVE-patches-${PV}.tar.gz
 	"
 	S="${WORKDIR}/LibreCAD-${PV}"
-	KEYWORDS="~amd64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2"
