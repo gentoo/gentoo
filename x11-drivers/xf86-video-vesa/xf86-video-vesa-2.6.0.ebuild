@@ -7,7 +7,7 @@ XORG_TARBALL_SUFFIX="xz"
 inherit linux-info xorg-3
 
 DESCRIPTION="Generic VESA video driver"
-KEYWORDS="-* ~alpha ~amd64 x86"
+KEYWORDS="-* ~alpha amd64 x86"
 
 pkg_pretend() {
 	linux-info_pkg_setup
