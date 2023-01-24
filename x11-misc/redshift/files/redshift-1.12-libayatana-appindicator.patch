@@ -1,0 +1,33 @@
+From f2df94b6ad23eceea8c163f9c910e1f6ea122428 Mon Sep 17 00:00:00 2001
+From: Kentaro Hayashi <kenhys@gmail.com>
+Date: Mon, 27 Apr 2020 11:56:02 +0900
+Subject: [PATCH] redshift-gtk: use Ayatana AppIndicator3 instead of App
+ Indicator3
+
+libappindicator was deprecated and it will be removed in the
+future Debian release.
+
+  https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=895037
+
+There is a successor API compatible library - Ayatana Indicator.
+
+  https://ayatanaindicators.github.io/code/
+---
+ src/redshift-gtk/statusicon.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/redshift-gtk/statusicon.py b/src/redshift-gtk/statusicon.py
+index b4adfb00..68752ed6 100644
+--- a/src/redshift-gtk/statusicon.py
++++ b/src/redshift-gtk/statusicon.py
+@@ -33,8 +33,8 @@
+ from gi.repository import Gtk, GLib
+ 
+ try:
+-    gi.require_version('AppIndicator3', '0.1')
+-    from gi.repository import AppIndicator3 as appindicator
++    gi.require_version('AyatanaAppIndicator3', '0.1')
++    from gi.repository import AyatanaAppIndicator3 as appindicator
+ except (ImportError, ValueError):
+     appindicator = None
+ 
