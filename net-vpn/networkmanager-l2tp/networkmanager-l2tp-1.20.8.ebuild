@@ -17,9 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk"
 
-RDEPEND="
-	dev-libs/dbus-glib
-	>=dev-libs/glib-2.32
+COMMON_DEPEND="dev-libs/glib:2
+	dev-libs/nspr
+	dev-libs/nss
+	dev-libs/openssl:=
 	net-dialup/ppp:=[eap-tls]
 	net-dialup/xl2tpd
 	>=net-misc/networkmanager-1.20[ppp]
@@ -28,12 +29,20 @@ RDEPEND="
 		net-vpn/libreswan
 	)
 	gtk? (
-		x11-libs/gtk+:3
 		app-crypt/libsecret
 		gnome-extra/nm-applet
+		media-libs/harfbuzz:=
+		net-libs/libnma
+		x11-libs/cairo
+		x11-libs/gdk-pixbuf:2
+		x11-libs/gtk+:3
+		x11-libs/pango
 	)"
-DEPEND="${RDEPEND}"
-BDEPEND="
+DEPEND="${COMMON_DEPEND}
+	x11-base/xorg-proto"
+RDEPEND="${COMMON_DEPEND}
+	dev-libs/dbus-glib"
+BDEPEND="dev-util/gdbus-codegen
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
