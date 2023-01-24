@@ -9,7 +9,7 @@ DPF_P="DPF-${DPF_COMMIT}"
 PUGL_P="pugl-${PUGL_COMMIT}"
 
 DESCRIPTION="Collection of LV2/LADSPA/VST/JACK audio plugins for high quality processing"
-HOMEPAGE="http://www.zamaudio.com/ https://github.com/zamaudio/zam-plugins"
+HOMEPAGE="https://www.zamaudio.com/ https://github.com/zamaudio/zam-plugins"
 SRC_URI="https://github.com/zamaudio/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/DISTRHO/DPF/archive/${DPF_COMMIT}.tar.gz -> ${DPF_P}.tar.gz
 	https://github.com/DISTRHO/pugl/archive/${PUGL_COMMIT}.tar.gz -> ${PUGL_P}.tar.gz"

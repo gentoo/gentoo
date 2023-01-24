@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ DPF_COMMIT="9243625aacb9fb8dd9fe4bd479b227149eb37959"
 DPF_P="DPF-${DPF_COMMIT}"
 
 DESCRIPTION="Collection of LV2/LADSPA/VST/JACK audio plugins for high quality processing"
-HOMEPAGE="http://www.zamaudio.com/ https://github.com/zamaudio/zam-plugins"
+HOMEPAGE="https://www.zamaudio.com/ https://github.com/zamaudio/zam-plugins"
 SRC_URI="https://github.com/zamaudio/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/DISTRHO/DPF/archive/${DPF_COMMIT}.tar.gz -> ${DPF_P}.tar.gz"
 
