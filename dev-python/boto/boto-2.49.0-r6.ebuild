@@ -33,6 +33,7 @@ RDEPEND="
 "
 
 BDEPEND="
+	${RDEPEND}
 	test? (
 		dev-python/httpretty[${PYTHON_USEDEP}]
 		dev-python/keyring[${PYTHON_USEDEP}]
