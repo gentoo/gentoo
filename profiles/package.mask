@@ -364,7 +364,6 @@ dev-python/ndg-httpsclient
 # Removal on 2023-01-23.  Bug #888167.
 acct-group/ros
 acct-user/ros
-dev-python/ament_package
 
 # Michał Górny <mgorny@gentoo.org> (2022-12-23)
 # Packages that still use dev-python/nose and have no revdeps.
