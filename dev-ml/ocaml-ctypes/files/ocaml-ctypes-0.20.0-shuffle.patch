@@ -4,10 +4,9 @@
                     $(INSTALL_HEADERS) \
                     $(if $(filter yes,$($(PROJECT).install_native_objects)),$(NATIVE_OBJECTS)))
  
--install: META-install $(PROJECTS:%=install-%)
-+install:
-+	$(MAKE) META-install
-+	$(MAKE) $(PROJECTS:%=install-%)
++$(PROJECTS:%=install-%): META-install
++
+ install: META-install $(PROJECTS:%=install-%)
  
  uninstall:
  	$(OCAMLFIND) remove ctypes
