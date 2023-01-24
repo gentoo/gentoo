@@ -1,8 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom jaf-1.2.2/activationapi/pom.xml --download-uri https://github.com/eclipse-ee4j/jaf/archive/refs/tags/1.2.2.tar.gz --slot 1 --keywords "~amd64 ~arm ~arm64 ~ppc64 ~x86" --ebuild jakarta-activation-api-1.2.2.ebuild
 
 EAPI=8
 
@@ -12,8 +9,8 @@ MAVEN_ID="jakarta.activation:jakarta.activation-api:1.2.2"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Jakarta Activation API jar"
-HOMEPAGE="https://eclipse-ee4j.github.io/jaf/"
-SRC_URI="https://github.com/eclipse-ee4j/jaf/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://jakartaee.github.io/jaf-api/"
+SRC_URI="https://github.com/jakartaee/jaf-api/archive/${PV}.tar.gz -> jakarta-activation-${PV}.tar.gz"
 
 LICENSE="EPL-1.0"
 SLOT="1"
@@ -25,7 +22,7 @@ BDEPEND="app-arch/zip"
 
 DOCS=( ../{CONTRIBUTING,NOTICE,README}.md )
 
-S="${WORKDIR}/jaf-${PV}/activation"
+S="${WORKDIR}/jaf-api-${PV}/activation"
 
 JAVA_ENCODING="iso-8859-1"
 
@@ -33,7 +30,7 @@ JAVA_SRC_DIR="src/main/java"
 JAVA_RESOURCE_DIRS="src/main/resources"
 
 src_prepare() {
-	default
+	java-pkg-2_src_prepare
 	# these files are not present in the upstream jar
 	find ${JAVA_RESOURCE_DIRS} -name "*.default" -delete || die "Failed to delete *.default files"
 }
@@ -45,7 +42,6 @@ src_compile() {
 }
 
 src_install() {
-	default
 	# we remove the implementation sources so that they don't land in sources
 	rm -fr ${JAVA_SRC_DIR}/com || "Failed to delete implementation sources"
 	java-pkg-simple_src_install
