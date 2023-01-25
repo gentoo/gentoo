@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1-DisableTest.patch"
 	"${FILESDIR}/${PN}-5.0.1-hip_vector_types.patch"
 	"${FILESDIR}/${PN}-5.0.2-set-build-id.patch"
+	"${FILESDIR}/${PN}-5.3.3-remove-cmake-doxygen-commands.patch"
 )
 
 python_check_deps() {
