@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit elisp-common flag-o-matic
+inherit elisp-common flag-o-matic toolchain-funcs
 
 DESCRIPTION="Extensible editor for structured binary data"
 HOMEPAGE="https://www.jemarch.net/poke"
@@ -47,6 +47,7 @@ DEPEND="
 BDEPEND="
 	${REGEN_BDEPEND}
 	virtual/pkgconfig
+	pvm-profiling? ( sys-devel/gcc )
 	emacs? ( >=app-editors/emacs-23.1:* )
 	test? (
 		dev-util/dejagnu
@@ -55,6 +56,12 @@ BDEPEND="
 "
 
 SITEFILE="50${PN}-gentoo.el"
+
+pkg_pretend() {
+	if use pvm-profiling && ! tc-is-gcc; then
+		die "USE=pvm-profiling requires GCC"
+	fi
+}
 
 pkg_setup() {
 	use emacs && elisp-check-emacs-version
