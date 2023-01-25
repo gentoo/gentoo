@@ -1,0 +1,23 @@
+--- golangci-lint-1.50.1.ebuild	2023-01-25 13:09:02.452292865 -0600
++++ golangci-lint-1.50.1-r1.ebuild	2023-01-25 13:08:57.892292243 -0600
+@@ -3,6 +3,7 @@
+ 
+ EAPI=8
+ inherit go-module
++GIT_COMMIT=8926a95f
+ 
+ DESCRIPTION="Fast linters runner for Go"
+ HOMEPAGE="https://github.com/golangci/golangci-lint"
+@@ -16,7 +17,11 @@
+ RESTRICT="test"
+ 
+ src_compile() {
+-	emake build
++	CGO_ENABLED=0 ego build -trimpath -ldflags "
++		-X main.commit=${GIT_COMMIT}
++		-X main.date=$(date -u +%Y-%m-%dT%H:%M:%SZ)
++		-X main.version=${PV}" \
++			-o golangci-lint ./cmd/golangci-lint
+ }
+ 
+ src_test() {
