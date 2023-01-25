@@ -51,6 +51,11 @@ RTC_S="${WORKDIR}"/roctracer-rocm-${PV}
 DOCS_DIR="${HIP_S}"/docs/doxygen-input
 DOCS_CONFIG_NAME=doxy.cfg
 
+pkg_setup() {
+	# Ignore QA FLAGS check for library compiled from assembly sources
+	QA_FLAGS_IGNORED="/usr/$(get_libdir)/libhiprtc-builtins.so.$(ver_cut 1-2)"
+}
+
 src_prepare() {
 	cmake_src_prepare
 
