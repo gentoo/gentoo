@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -7,7 +7,7 @@ WANT_LIBTOOL="none"
 inherit autotools check-reqs flag-o-matic multiprocessing pax-utils
 inherit prefix python-utils-r1 toolchain-funcs verify-sig
 
-MY_PV=${PV/_rc/rc}
+MY_PV=${PV/_alpha/a}
 MY_P="Python-${MY_PV%_p*}"
 PYVER=$(ver_cut 1-2)
 PATCHSET="python-gentoo-patches-${MY_PV}"
@@ -28,10 +28,10 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="
-	bluetooth build +ensurepip examples gdbm hardened lto +ncurses pgo
-	+readline +sqlite +ssl test tk valgrind +xml
+	bluetooth build +ensurepip examples gdbm hardened libedit lto
+	+ncurses pgo +readline +sqlite +ssl test tk valgrind
 "
 RESTRICT="!test? ( test )"
 
@@ -43,8 +43,10 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
-	dev-lang/python-exec[python_targets_python3_9(-)]
+	app-crypt/libb2
+	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
+	dev-python/gentoo-common
 	sys-apps/util-linux:=
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libcrypt:=
@@ -52,7 +54,10 @@ RDEPEND="
 	ensurepip? ( dev-python/ensurepip-wheels )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
-	readline? ( >=sys-libs/readline-4.1:= )
+	readline? (
+		!libedit? ( >=sys-libs/readline-4.1:= )
+		libedit? ( dev-libs/libedit:= )
+	)
 	sqlite? ( >=dev-db/sqlite-3.3.8:3= )
 	ssl? ( >=dev-libs/openssl-1.1.1:= )
 	tk? (
@@ -61,7 +66,7 @@ RDEPEND="
 		dev-tcltk/blt:=
 		dev-tcltk/tix
 	)
-	xml? ( >=dev-libs/expat-2.1:= )
+	!!<sys-apps/sandbox-2.21
 "
 # bluetooth requires headers from bluez
 DEPEND="
@@ -75,11 +80,16 @@ BDEPEND="
 	sys-devel/autoconf-archive
 	app-alternatives/awk
 	virtual/pkgconfig
-	verify-sig? ( sec-keys/openpgp-keys-python )
+	verify-sig? ( >=sec-keys/openpgp-keys-python-20221025 )
 "
 RDEPEND+="
 	!build? ( app-misc/mime-types )
 "
+if [[ ${PV} != *_alpha* ]]; then
+	RDEPEND+="
+		dev-lang/python-exec[python_targets_python${PYVER/./_}(-)]
+	"
+fi
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/python.org.asc
 
@@ -105,8 +115,8 @@ src_unpack() {
 
 src_prepare() {
 	# Ensure that internal copies of expat and libffi are not used.
-	rm -r Modules/expat || die
-	rm -r Modules/_ctypes/libffi* || die
+	# TODO: Makefile has annoying deps on expat headers
+	#rm -r Modules/expat || die
 
 	local PATCHES=(
 		"${WORKDIR}/${PATCHSET}"
@@ -114,41 +124,18 @@ src_prepare() {
 
 	default
 
-	# https://bugs.gentoo.org/850151
-	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" setup.py || die
-
 	# force the correct number of jobs
 	# https://bugs.gentoo.org/737660
-	local jobs=$(makeopts_jobs)
-	sed -i -e "s:-j0:-j${jobs}:" Makefile.pre.in || die
-	sed -i -e "/self\.parallel/s:True:${jobs}:" setup.py || die
+	sed -i -e "s:-j0:-j$(makeopts_jobs):" Makefile.pre.in || die
 
 	eautoreconf
 }
 
 src_configure() {
+	local disable
 	# disable automagic bluetooth headers detection
 	if ! use bluetooth; then
 		local -x ac_cv_header_bluetooth_bluetooth_h=no
-	fi
-	local disable
-	use gdbm      || disable+=" gdbm"
-	use ncurses   || disable+=" _curses _curses_panel"
-	use readline  || disable+=" readline"
-	use sqlite    || disable+=" _sqlite3"
-	use ssl       || export PYTHON_DISABLE_SSL="1"
-	use tk        || disable+=" _tkinter"
-	use xml       || disable+=" _elementtree pyexpat" # _elementtree uses pyexpat.
-	export PYTHON_DISABLE_MODULES="${disable}"
-
-	if ! use xml; then
-		ewarn "You have configured Python without XML support."
-		ewarn "This is NOT a recommended configuration as you"
-		ewarn "may face problems parsing any XML documents."
-	fi
-
-	if [[ -n "${PYTHON_DISABLE_MODULES}" ]]; then
-		einfo "Disabled modules: ${PYTHON_DISABLE_MODULES}"
 	fi
 
 	append-flags -fwrapv
@@ -203,6 +190,7 @@ src_configure() {
 		ac_cv_header_stropts_h=no
 
 		--enable-shared
+		--without-static-libpython
 		--enable-ipv6
 		--infodir='${prefix}/share/info'
 		--mandir='${prefix}/share/man'
@@ -212,11 +200,13 @@ src_configure() {
 		--enable-loadable-sqlite-extensions
 		--without-ensurepip
 		--with-system-expat
-		--with-system-ffi
+		--with-platlibdir=lib
+		--with-pkg-config=yes
 		--with-wheel-pkg-dir="${EPREFIX}"/usr/lib/python/ensurepip
 
 		$(use_with lto)
 		$(use_enable pgo optimizations)
+		$(use_with readline readline "$(usex libedit editline readline)")
 		$(use_with valgrind)
 	)
 
@@ -234,7 +224,7 @@ src_configure() {
 		local -x CFLAGS= LDFLAGS=
 
 		# We need to build our own Python on CBUILD first, and feed it in.
-		# bug #847910 and bug #864911.
+		# bug #847910
 		local myeconfargs_cbuild=(
 			"${myeconfargs[@]}"
 
@@ -244,14 +234,17 @@ src_configure() {
 			--disable-shared
 
 			# As minimal as possible for the mini CBUILD Python
-			# we build just for cross.
+			# we build just for cross to satisfy --with-build-python.
 			--without-lto
+			--without-readline
 			--disable-optimizations
 		)
 
-		# Point the imminent CHOST build to the Python we just
-		# built for CBUILD.
-		export PATH="${WORKDIR}/${P}-${CBUILD}:${PATH}"
+		myeconfargs+=(
+			# Point the imminent CHOST build to the Python we just
+			# built for CBUILD.
+			--with-build-python="${WORKDIR}"/${P}-${CBUILD}/python
+		)
 
 		mkdir "${WORKDIR}"/${P}-${CBUILD} || die
 		pushd "${WORKDIR}"/${P}-${CBUILD} &> /dev/null || die
@@ -262,24 +255,24 @@ src_configure() {
 
 		# Avoid as many dependencies as possible for the cross build.
 		cat >> Makefile <<-EOF || die
-			MODULE_NIS=disabled
-			MODULE__DBM=disabled
-			MODULE__GDBM=disabled
-			MODULE__DBM=disabled
-			MODULE__SQLITE3=disabled
-			MODULE__HASHLIB=disabled
-			MODULE__SSL=disabled
-			MODULE__CURSES=disabled
-			MODULE__CURSES_PANEL=disabled
-			MODULE_READLINE=disabled
-			MODULE__TKINTER=disabled
-			MODULE_PYEXPAT=disabled
-			MODULE_ZLIB=disabled
+			MODULE_NIS_STATE=disabled
+			MODULE__DBM_STATE=disabled
+			MODULE__GDBM_STATE=disabled
+			MODULE__DBM_STATE=disabled
+			MODULE__SQLITE3_STATE=disabled
+			MODULE__HASHLIB_STATE=disabled
+			MODULE__SSL_STATE=disabled
+			MODULE__CURSES_STATE=disabled
+			MODULE__CURSES_PANEL_STATE=disabled
+			MODULE_READLINE_STATE=disabled
+			MODULE__TKINTER_STATE=disabled
+			MODULE_PYEXPAT_STATE=disabled
+			MODULE_ZLIB_STATE=disabled
 		EOF
 
 		# Unfortunately, we do have to build this immediately, and
 		# not in src_compile, because CHOST configure for Python
-		# will check the existence of the Python it was pointed to
+		# will check the existence of the --with-build-python value
 		# immediately.
 		PYTHON_DISABLE_MODULES="${PYTHON_DISABLE_MODULES} _ctypes _crypt" emake
 		popd &> /dev/null || die
@@ -305,6 +298,20 @@ src_configure() {
 		die "Broken sem_open function (bug 496328)"
 	fi
 
+	# force-disable modules we don't want built
+	local disable_modules=( NIS )
+	use gdbm || disable_modules+=( _GDBM _DBM )
+	use sqlite || disable_modules+=( _SQLITE3 )
+	use ssl || disable_modules+=( _HASHLIB _SSL )
+	use ncurses || disable_modules+=( _CURSES _CURSES_PANEL )
+	use readline || disable_modules+=( READLINE )
+	use tk || disable_modules+=( _TKINTER )
+
+	local mod
+	for mod in "${disable_modules[@]}"; do
+		echo "MODULE_${mod}_STATE=disabled"
+	done >> Makefile || die
+
 	# install epython.py as part of stdlib
 	echo "EPYTHON='python${PYVER}'" > Lib/epython.py || die
 }
@@ -313,9 +320,7 @@ src_compile() {
 	# Ensure sed works as expected
 	# https://bugs.gentoo.org/594768
 	local -x LC_ALL=C
-	# Prevent using distutils bundled by setuptools.
-	# https://bugs.gentoo.org/823728
-	export SETUPTOOLS_USE_DISTUTILS=stdlib
+	export PYTHONSTRICTEXTENSIONBUILD=1
 
 	# Save PYTHONDONTWRITEBYTECODE so that 'has_version' doesn't
 	# end up writing bytecode & violating sandbox.
@@ -352,6 +357,11 @@ src_test() {
 		return
 	fi
 
+	# this just happens to skip test_support.test_freeze that is broken
+	# without bundled expat
+	# TODO: get a proper skip for it upstream
+	local -x LOGNAME=buildbot
+
 	local test_opts=(
 		-u-network
 		-j "$(makeopts_jobs)"
@@ -376,6 +386,8 @@ src_test() {
 	# bug 660358
 	local -x COLUMNS=80
 	local -x PYTHONDONTWRITEBYTECODE=
+	# workaround https://bugs.gentoo.org/775416
+	addwrite "/usr/lib/python${PYVER}/site-packages"
 
 	nonfatal emake test EXTRATESTOPTS="${test_opts[*]}" \
 		CPPFLAGS= CFLAGS= LDFLAGS= < /dev/tty
@@ -389,10 +401,12 @@ src_test() {
 src_install() {
 	local libdir=${ED}/usr/lib/python${PYVER}
 
-	emake DESTDIR="${D}" altinstall
+	# the Makefile rules are broken
+	# https://github.com/python/cpython/issues/100221
+	mkdir -p "${libdir}"/lib-dynload || die
 
-	# Remove static library
-	rm "${ED}"/usr/$(get_libdir)/libpython*.a || die
+	# -j1 hack for now for bug #843458
+	emake -j1 DESTDIR="${D}" altinstall
 
 	# Fix collisions between different slots of Python.
 	rm "${ED}/usr/$(get_libdir)/libpython3.so" || die
@@ -422,12 +436,14 @@ src_install() {
 		rm -r "${libdir}"/ensurepip || die
 	fi
 	if ! use sqlite; then
-		rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
+		rm -r "${libdir}/"sqlite3 || die
 	fi
 	if ! use tk; then
 		rm -r "${ED}/usr/bin/idle${PYVER}" || die
 		rm -r "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
 	fi
+
+	ln -s ../python/EXTERNALLY-MANAGED "${libdir}/EXTERNALLY-MANAGED" || die
 
 	dodoc Misc/{ACKS,HISTORY,NEWS}
 
@@ -475,4 +491,20 @@ src_install() {
 	if use tk; then
 		ln -s "../../../bin/idle${PYVER}" "${scriptdir}/idle" || die
 	fi
+}
+
+pkg_postinst() {
+	local v
+	for v in ${REPLACING_VERSIONS}; do
+		if ver_test "${v}" -lt 3.11.0_beta4-r2; then
+			ewarn "Python 3.11.0b4 has changed its module ABI.  The .pyc files"
+			ewarn "installed previously are no longer valid and will be regenerated"
+			ewarn "(or ignored) on the next import.  This may cause sandbox failures"
+			ewarn "when installing some packages and checksum mismatches when removing"
+			ewarn "old versions.  To actively prevent this, rebuild all packages"
+			ewarn "installing Python 3.11 modules, e.g. using:"
+			ewarn
+			ewarn "  emerge -1v /usr/lib/python3.11/site-packages"
+		fi
+	done
 }
