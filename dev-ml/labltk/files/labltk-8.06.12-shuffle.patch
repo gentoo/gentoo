@@ -10,3 +10,12 @@
  depend: parser.ml parser.mli lexer.ml pplex.ml ppyac.ml ppyac.mli
  	$(CAMLDEP) *.mli *.ml > .depend
  
+--- a/browser/Makefile	2023-01-25 22:29:40.784044151 +0100
++++ b/browser/Makefile	2023-01-25 22:29:56.579838693 +0100
+@@ -18,3 +18,6 @@
+ 
+ dummy.ml:
+ 	cp dummyUnix.ml dummy.ml
++
++shell.cmo : dummy.cmo
++shell.cmx : dummy.cmx
