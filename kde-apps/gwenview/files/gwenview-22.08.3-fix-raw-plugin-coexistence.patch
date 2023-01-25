@@ -1,0 +1,58 @@
+From c419ec4a052b39eae7c17caf2a89d39d76b43777 Mon Sep 17 00:00:00 2001
+From: Mirco Miranda <mirco.miranda@systemceramics.com>
+Date: Tue, 10 Jan 2023 14:53:30 +0000
+Subject: [PATCH] Fixed coexistence between Qt Raw plugin and KDcraw
+
+Use the RAW plugin to load raw images if installed:
+- Previews are always generated from the RAW image at the fastest possible speed.
+- Images are loaded in the highest possible quality (default plugin raw).
+- If the raw plugin is not installed everything works as before (use KDcraw).
+
+BUG: 463132
+FIXED-IN: 22.12.2
+
+
+(cherry picked from commit a7dc8feefc2147a08526b61bf361b63f78645ea0)
+---
+ lib/document/loadingdocumentimpl.cpp         | 3 ++-
+ lib/thumbnailprovider/thumbnailgenerator.cpp | 8 +++++++-
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/lib/document/loadingdocumentimpl.cpp b/lib/document/loadingdocumentimpl.cpp
+index baa0542a..ece4d9e2 100644
+--- a/lib/document/loadingdocumentimpl.cpp
++++ b/lib/document/loadingdocumentimpl.cpp
+@@ -205,7 +205,8 @@ struct LoadingDocumentImplPrivate {
+         QImageReader reader;
+ 
+ #ifdef KDCRAW_FOUND
+-        if (KDcrawIface::KDcraw::rawFilesList().contains(QString::fromLatin1(mFormatHint))) {
++        if (!QImageReader::supportedImageFormats().contains(QByteArray("raw"))
++            && KDcrawIface::KDcraw::rawFilesList().contains(QString::fromLatin1(mFormatHint))) {
+             QByteArray previewData;
+ 
+             // if the image is in format supported by dcraw, fetch its embedded preview
+diff --git a/lib/thumbnailprovider/thumbnailgenerator.cpp b/lib/thumbnailprovider/thumbnailgenerator.cpp
+index 3179dfae..f01d5c04 100644
+--- a/lib/thumbnailprovider/thumbnailgenerator.cpp
++++ b/lib/thumbnailprovider/thumbnailgenerator.cpp
+@@ -70,9 +70,15 @@ bool ThumbnailContext::load(const QString &pixPath, int pixelSize)
+     QBuffer buffer;
+     int previewRatio = 1;
+ 
++    bool useRawPlugin = QImageReader::imageFormat(pixPath) == QByteArray("raw");
++    if (useRawPlugin) { // make preview generation faster (same as KDcrawIface::KDcraw::loadHalfPreview)
++        reader.setQuality(1);
++        previewRatio = 2;
++    }
++
+ #ifdef KDCRAW_FOUND
+     // raw images deserve special treatment
+-    if (KDcrawIface::KDcraw::rawFilesList().contains(QString::fromLatin1(formatHint))) {
++    if (!useRawPlugin && KDcrawIface::KDcraw::rawFilesList().contains(QString::fromLatin1(formatHint))) {
+         // use KDCraw to extract the preview
+         bool ret = KDcrawIface::KDcraw::loadEmbeddedPreview(data, pixPath);
+ 
+-- 
+GitLab
+
