@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,6 +37,7 @@ RDEPEND="
 	)
 	dev-lang/python-exec[python_targets_pypy3(-)]
 	dev-libs/openssl:0=
+	dev-python/gentoo-common
 	ensurepip? ( dev-python/ensurepip-wheels )
 	gdbm? ( sys-libs/gdbm:0= )
 	sqlite? ( dev-db/sqlite:3= )
@@ -189,6 +190,7 @@ src_install() {
 			"${ED}${dest}"/_tkinter \
 			"${ED}${dest}"/test/test_{tcl,tk,ttk*}.py || die
 	fi
+	dosym ../python/EXTERNALLY-MANAGED "${dest}/EXTERNALLY-MANAGED"
 
 	local -x EPYTHON=pypy3
 	local -x PYTHON=${ED}/usr/bin/pypy3.9-c-${PYPY_PV}
