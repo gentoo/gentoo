@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-01-25)
+# Unmaintained.  Multiple build failure bugs reported.  This version
+# predates 2008.
+# Removal on 2023-02-24.  Bug #837611.
+sys-cluster/wulfware
+
+# Michał Górny <mgorny@gentoo.org> (2023-01-25)
 # Unfetchable since at least 2021.  Mirror-restricted.
 # Removal on 2023-02-24.  Bug #761817.
 sci-physics/herwig
