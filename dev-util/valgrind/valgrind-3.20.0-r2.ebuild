@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools flag-o-matic toolchain-funcs multilib pax-utils
 
 DESCRIPTION="An open-source memory debugger for GNU/Linux"
-HOMEPAGE="https://www.valgrind.org"
+HOMEPAGE="https://valgrind.org"
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://sourceware.org/git/${PN}.git"
 	inherit git-r3
