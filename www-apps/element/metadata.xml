@@ -5,4 +5,7 @@
 		<email>voyageur@gentoo.org</email>
 		<name>Bernard Cafarelli</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">vector-im/element-web</remote-id>
+	</upstream>
 </pkgmetadata>
