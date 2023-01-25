@@ -1,0 +1,229 @@
+https://github.com/rpm-software-management/createrepo_c/pull/341
+From: Matt Jolly <Matt.Jolly@footclan.ninja>
+Date: Thu, 26 Jan 2023 01:48:16 +1100
+Subject: [PATCH 1/3] Add `cr_gio_cp` and deprecate `cr_cp`
+
+It's preferable to use glib gio to copy files rather than
+rely on the behaviour of the system cp binary.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,7 +32,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+ SET(G_LOG_DOMAIN "C_CREATEREPOLIB")
+ 
+ # Find necessary libraries
+-
++find_package(PkgConfig)
+ find_package(BZip2 REQUIRED)
+ find_package(CURL REQUIRED)
+ find_package(LibXml2 REQUIRED)
+@@ -40,6 +40,7 @@ find_package(OpenSSL REQUIRED)
+ find_package(ZLIB REQUIRED)
+ 
+ pkg_check_modules(GLIB2 REQUIRED glib-2.0)
++pkg_check_modules(GIO REQUIRED gio-2.0)
+ pkg_check_modules(GTHREAD2 REQUIRED gthread-2.0)
+ pkg_check_modules(LZMA REQUIRED liblzma)
+ pkg_check_modules(SQLITE3 REQUIRED sqlite3)
+@@ -57,6 +58,7 @@ ENDIF()
+ include_directories(${BZIP2_INCLUDE_DIRS})
+ include_directories(${CURL_INCLUDE_DIRS})
+ include_directories(${GLIB2_INCLUDE_DIRS})
++include_directories(${GIO_INCLUDE_DIRS})
+ include_directories(${LIBXML2_INCLUDE_DIR})
+ include_directories(${OPENSSL_INCLUDE_DIR})
+ include_directories(${ZLIB_INCLUDE_DIR})
+@@ -154,4 +156,3 @@ ADD_SUBDIRECTORY (src)
+ ADD_SUBDIRECTORY (doc)
+ ENABLE_TESTING()
+ ADD_SUBDIRECTORY (tests EXCLUDE_FROM_ALL)
+-
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -70,6 +70,7 @@ ADD_LIBRARY(libcreaterepo_c ${createrepo_c_library_type} ${createrepo_c_SRCS})
+ TARGET_LINK_LIBRARIES(libcreaterepo_c ${BZIP2_LIBRARIES})
+ TARGET_LINK_LIBRARIES(libcreaterepo_c ${CURL_LIBRARY})
+ TARGET_LINK_LIBRARIES(libcreaterepo_c ${GLIB2_LIBRARIES})
++TARGET_LINK_LIBRARIES(libcreaterepo_c ${GIO_LIBRARIES})
+ TARGET_LINK_LIBRARIES(libcreaterepo_c ${LIBMAGIC_LIBRARIES})
+ TARGET_LINK_LIBRARIES(libcreaterepo_c ${LIBMODULEMD_LIBRARIES})
+ TARGET_LINK_LIBRARIES(libcreaterepo_c ${LIBXML2_LIBRARIES})
+--- a/src/helpers.c
++++ b/src/helpers.c
+@@ -19,6 +19,7 @@
+ 
+ #include <glib.h>
+ #include <glib/gstdio.h>
++#include <gio/gio.h>
+ #include <errno.h>
+ #include <string.h>
+ #include <time.h>
+@@ -448,10 +449,9 @@ cr_old_metadata_retention(const char *old_repo,
+             continue;
+         }
+ 
+-        // COPY!
+-        cr_cp(full_path,
+-              new_full_path,
+-              CR_CP_RECURSIVE|CR_CP_PRESERVE_ALL,
++        cr_gio_cp(g_file_new_for_path(full_path),
++              g_file_new_for_path(new_full_path),
++              G_FILE_COPY_ALL_METADATA,
+               NULL,
+               &tmp_err);
+ 
+@@ -476,5 +476,3 @@ cr_old_metadata_retention(const char *old_repo,
+ 
+     return ret;
+ }
+-
+-
+--- a/src/misc.c
++++ b/src/misc.c
+@@ -21,6 +21,7 @@
+ 
+ #include <glib/gstdio.h>
+ #include <glib.h>
++#include <gio/gio.h>
+ #include <arpa/inet.h>
+ #include <assert.h>
+ #include <curl/curl.h>
+@@ -794,8 +795,6 @@ cr_download(CURL *in_handle,
+     return CRE_OK;
+ }
+ 
+-
+-
+ gboolean
+ cr_better_copy_file(const char *src, const char *in_dst, GError **err)
+ {
+@@ -820,7 +819,6 @@ cr_better_copy_file(const char *src, const char *in_dst, GError **err)
+     return TRUE;
+ }
+ 
+-
+ int
+ cr_remove_dir_cb(const char *fpath,
+                  G_GNUC_UNUSED const struct stat *sb,
+@@ -856,7 +854,7 @@ gboolean
+ cr_move_recursive(const char *srcDir, const char *dstDir, GError **err)
+ {
+     if (rename(srcDir, dstDir) == -1) {
+-        if (!cr_cp(srcDir, dstDir, CR_CP_RECURSIVE, NULL, err))
++        if (!cr_gio_cp(g_file_new_for_path(srcDir), g_file_new_for_path(dstDir), G_FILE_COPY_ALL_METADATA, NULL, err))
+             return FALSE;
+         return (cr_remove_dir(srcDir, err) == CRE_OK);
+     }
+@@ -1425,6 +1423,44 @@ cr_cp(const char *src,
+     return ret;
+ }
+ 
++gboolean
++cr_gio_cp(GFile *src,
++      GFile *dst,
++      GFileCopyFlags flags,
++      GCancellable *cancellable,
++      GError **err)
++{
++    assert(src);
++    assert(dst);
++    assert(!err || *err == NULL);
++
++    GFileType type = g_file_query_file_type(src, G_FILE_QUERY_INFO_NONE, NULL);
++
++    if (type == G_FILE_TYPE_DIRECTORY) {
++        g_file_make_directory(dst, cancellable, err);
++        g_file_copy_attributes(src, dst, flags, cancellable, err);
++
++        GFileEnumerator *enumerator = g_file_enumerate_children(src, G_FILE_ATTRIBUTE_STANDARD_NAME, G_FILE_QUERY_INFO_NONE, cancellable, err);
++        for (GFileInfo *info = g_file_enumerator_next_file(enumerator, cancellable, err); info != NULL; info = g_file_enumerator_next_file(enumerator, cancellable, err)) {
++            const char *relative_path = g_file_info_get_name(info);
++            cr_gio_cp(
++                g_file_resolve_relative_path(src, relative_path),
++                g_file_resolve_relative_path(dst, relative_path),
++                flags, cancellable, err);
++        }
++    } else if (type == G_FILE_TYPE_REGULAR) {
++        g_file_copy(src, dst, flags, cancellable, NULL, NULL, err);
++    }
++
++    if (err != NULL) {
++        return TRUE;
++    }
++    else {
++        return FALSE;
++    }
++
++}
++
+ gboolean
+ cr_rm(const char *path,
+       cr_RmFlags flags,
+--- a/src/misc.h
++++ b/src/misc.h
+@@ -26,6 +26,7 @@ extern "C" {
+ 
+ #include <glib.h>
+ #include <string.h>
++#include <gio/gio.h>
+ #include <curl/curl.h>
+ #include "compression_wrapper.h"
+ #include "xml_parser.h"
+@@ -449,7 +450,7 @@ typedef enum {
+         preserve the all attributes (if possible) */
+ } cr_CpFlags;
+ 
+-/** Recursive copy of directory (works on files as well)
++/** Wrapper for cp
+  * @param src           Source (supports wildcards)
+  * @param dst           Destination (supports wildcards)
+  * @param flags         Flags
+@@ -461,6 +462,20 @@ cr_cp(const char *src,
+       const char *dst,
+       cr_CpFlags flags,
+       const char *working_directory,
++      GError **err) __attribute__ ((deprecated ("please use `cr_gio_cp` instead")));
++
++/** Recursive copy of directory (works on files as well)
++ * @param src           Source (supports wildcards)
++ * @param dst           Destination (supports wildcards)
++ * @param flags         Flags
++ * @param cancellable   Can this be cancelled by another thread?
++ * @param err           GError **
++ */
++gboolean
++cr_gio_cp(GFile *src,
++      GFile *dst,
++      GFileCopyFlags flags,
++      GCancellable *cancellable,
+       GError **err);
+ 
+ typedef enum {
+
+From 9fa5809150d2021186d4a822c38d5488cd4986dc Mon Sep 17 00:00:00 2001
+From: Matt Jolly <Matt.Jolly@footclan.ninja>
+Date: Fri, 27 Jan 2023 18:17:23 +1100
+Subject: [PATCH 2/3] Add to AUTHORS
+
+--- a/AUTHORS
++++ b/AUTHORS
+@@ -10,3 +10,4 @@ Neal Gompa <ngompa13@gmail.com>
+ Ralph Bean <rbean@redhat.com>
+ Frank Schreiner <schreiner@suse.de>
+ Daniel Alley <dalley@redhat.com>
++Matt Jolly <matt.jolly@footclan.ninja>
+
+From e6769f0e343cbeea1beee703b984307634691677 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <Matt.Jolly@footclan.ninja>
+Date: Fri, 27 Jan 2023 20:06:21 +1100
+Subject: [PATCH 3/3] Update minimum CMake version
+
+Modern CMake warns of deprecation of <2.8.12, let's use that instead
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ PROJECT (createrepo_c C)
+-CMAKE_MINIMUM_REQUIRED (VERSION 2.8.10)
++CMAKE_MINIMUM_REQUIRED (VERSION 2.8.12)
+ 
+ include(GNUInstallDirs)
+ 
