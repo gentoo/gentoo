@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}/findlib.patch"
 	"${FILESDIR}"/${PN}-8.06.9-configure-clang16.patch
 	"${FILESDIR}"/${P}-shuffle.patch
+	"${FILESDIR}"/${P}-c2x.patch
 )
 
 src_prepare() {
