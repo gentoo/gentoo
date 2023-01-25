@@ -1,0 +1,47 @@
+--- a/support/cltkWait.c	2023-01-25 19:38:41.920494229 +0100
++++ b/support/cltkWait.c	2023-01-25 19:39:51.246347410 +0100
+@@ -44,9 +44,7 @@
+   Tk_Window win;
+ };
+ 
+-static void WaitVisibilityProc(clientData, eventPtr)
+-    ClientData clientData;
+-    XEvent *eventPtr;           /* Information about event (not used). */
++static void WaitVisibilityProc(ClientData clientData, XEvent *eventPtr)
+ {
+   struct WinCBData *vis = clientData;
+   value cbid = Val_int(vis->cbid);
+--- a/support/cltkImg.c	2023-01-25 19:42:03.647173018 +0100
++++ b/support/cltkImg.c	2023-01-25 19:42:49.290423395 +0100
+@@ -111,9 +111,7 @@
+   return Val_int(0);
+ }
+ 
+-CAMLprim value camltk_setimgdata_bytecode(argv,argn)
+-     value *argv;
+-     int argn;
++CAMLprim value camltk_setimgdata_bytecode(value *argv, int argn)
+ {
+   return camltk_setimgdata_native(argv[0], argv[1], argv[2], argv[3],
+                                   argv[4], argv[5]);
+--- a/support/cltkVar.c	2023-01-25 19:44:11.880066940 +0100
++++ b/support/cltkVar.c	2023-01-25 19:46:16.580018764 +0100
+@@ -74,12 +74,12 @@
+ typedef char *(Tcl_VarTraceProc) _ANSI_ARGS_((ClientData clientData,
+         Tcl_Interp *interp, char *part1, char *part2, int flags));
+  */
+-static char * tracevar(clientdata, interp, name1, name2, flags)
+-     ClientData clientdata;
+-     Tcl_Interp *interp;        /* Interpreter containing variable. */
+-     char *name1;               /* Name of variable. */
+-     char *name2;               /* Second part of variable name. */
+-     int flags;                 /* Information about what happened. */
++static char * tracevar(ClientData clientdata, Tcl_Interp *interp,
++                char *name1, char *name2, int flags)
++     /* interp -> Interpreter containing variable. */
++     /* name1  -> Name of variable. */
++     /* name2  -> Second part of variable name. */
++     /* flags  -> Information about what happened. */
+ {
+   Tcl_UntraceVar2(interp, name1, name2,
+                 TCL_GLOBAL_ONLY|TCL_TRACE_WRITES|TCL_TRACE_UNSETS,
