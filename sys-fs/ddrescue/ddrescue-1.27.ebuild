@@ -14,8 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
 IUSE="static"
 
-DEPEND="$(unpacker_src_uri_depends)"
-RDEPEND=""
+BDEPEND="$(unpacker_src_uri_depends)"
 
 src_configure() {
 	use static && append-ldflags -static
