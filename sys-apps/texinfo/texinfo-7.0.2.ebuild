@@ -12,11 +12,21 @@ inherit flag-o-matic toolchain-funcs
 DESCRIPTION="The GNU info program and utilities"
 HOMEPAGE="https://www.gnu.org/software/texinfo/"
 
-if [[ $(ver_cut 3) -ge 90 || $(ver_cut 4) -ge 90 ]] ; then
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/texinfo.git"
+	REGEN_BDEPEND="
+		>=sys-devel/autoconf-2.62
+		>=sys-devel/automake-1.16
+		sys-devel/libtool
+	"
+elif [[ $(ver_cut 3) -ge 90 || $(ver_cut 4) -ge 90 ]] ; then
 	SRC_URI="https://alpha.gnu.org/gnu/${PN}/${P}.tar.xz"
+	REGEN_BDEPEND=""
 else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	REGEN_BDEPEND=""
 fi
 
 LICENSE="GPL-3+"
@@ -34,11 +44,16 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	${REGEN_BDEPEND}
 	nls? ( >=sys-devel/gettext-0.19.6 )
 "
 
 src_prepare() {
 	default
+
+	if [[ ${PV} == 9999 ]]; then
+		./autogen.sh || die
+	fi
 
 	# Needed if a patch touches install-info.c
 	#touch man/install-info.1 || die
