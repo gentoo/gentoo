@@ -1,0 +1,106 @@
+From 2ada52cffbff11074abfaac18938bf02d85454f5 Mon Sep 17 00:00:00 2001
+From: Frank Tang <ftang@chromium.org>
+Date: Wed, 16 Nov 2022 09:18:45 -0800
+Subject: [PATCH] [intl] Enhance Date parser to take Unicode SPACE
+
+This is needed to prepare for the landing of ICU72.
+Allow U+202F in the Date String, which the toLocaleString("en-US")
+will generate w/ ICU72.
+
+Bug: v8:13494
+Change-Id: I41b83c4094ce3d0737a72dcd6310b52c68fdcdca
+Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/4027341
+Reviewed-by: Yang Guo <yangguo@chromium.org>
+Reviewed-by: Jungshik Shin <jshin@chromium.org>
+Commit-Queue: Frank Tang <ftang@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#84308}
+---
+
+diff --git a/src/date/dateparser-inl.h b/src/date/dateparser-inl.h
+index 623986d..b45479d 100644
+--- a/v8/src/date/dateparser-inl.h
++++ b/v8/src/date/dateparser-inl.h
+@@ -192,7 +192,7 @@
+   if (in_->Skip('+')) return DateToken::Symbol('+');
+   if (in_->Skip('.')) return DateToken::Symbol('.');
+   if (in_->Skip(')')) return DateToken::Symbol(')');
+-  if (in_->IsAsciiAlphaOrAbove()) {
++  if (in_->IsAsciiAlphaOrAbove() && !in_->IsWhiteSpaceChar()) {
+     DCHECK_EQ(KeywordTable::kPrefixLength, 3);
+     uint32_t buffer[3] = {0, 0, 0};
+     int length = in_->ReadWord(buffer, 3);
+diff --git a/src/date/dateparser.h b/src/date/dateparser.h
+index 1a0a0b1..59b2f3c 100644
+--- a/v8/src/date/dateparser.h
++++ b/v8/src/date/dateparser.h
+@@ -91,7 +91,8 @@
+     // Return word length.
+     int ReadWord(uint32_t* prefix, int prefix_size) {
+       int len;
+-      for (len = 0; IsAsciiAlphaOrAbove(); Next(), len++) {
++      for (len = 0; IsAsciiAlphaOrAbove() && !IsWhiteSpaceChar();
++           Next(), len++) {
+         if (len < prefix_size) prefix[len] = AsciiAlphaToLower(ch_);
+       }
+       for (int i = len; i < prefix_size; i++) prefix[i] = 0;
+@@ -115,6 +116,7 @@
+     bool IsEnd() const { return ch_ == 0; }
+     bool IsAsciiDigit() const { return IsDecimalDigit(ch_); }
+     bool IsAsciiAlphaOrAbove() const { return ch_ >= 'A'; }
++    bool IsWhiteSpaceChar() const { return IsWhiteSpace(ch_); }
+     bool IsAsciiSign() const { return ch_ == '+' || ch_ == '-'; }
+ 
+     // Return 1 for '+' and -1 for '-'.
+diff --git a/test/intl/regress-13494.js b/test/intl/regress-13494.js
+new file mode 100644
+index 0000000..d1446af
+--- /dev/null
++++ b/v8/test/intl/regress-13494.js
+@@ -0,0 +1,47 @@
++// Copyright 2022 the V8 project authors. All rights reserved.
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++// Test the new Date( date.toLocaleString("en-US")) is not invalid.
++// This is not guaranteed by the standard but many code use that to set the
++// timezone as suggested in
++// https://stackoverflow.com/questions/15141762/how-to-initialize-a-javascript-date-to-a-particular-time-zone
++
++let d = new Date();
++
++// https://tc39.es/ecma262/#sec-todatestring
++// 21.4.4.41.4 ToDateString ( tv )
++// 1. If tv is NaN, return "Invalid Date".
++let invalid = "Invalid Date";
++let largestDiff = 25*60*60*1000;
++
++let garbage = new Date("garbage");
++assertTrue(invalid == garbage);
++assertEquals(NaN, garbage.getTime());
++
++let d1 = new Date(d.toLocaleString("en-US"));
++assertTrue(d1 != invalid);
++assertTrue(d1.getTime() != NaN);
++// The milliseconds are different between d1 and d.
++assertTrue(Math.abs(d1-d) < 1000);
++
++// Force a version of date string which have  U+202f before AM
++let nnbsp_am = new Date("11/16/2022, 9:04:55\u202fAM");
++assertTrue(nnbsp_am  != invalid);
++assertTrue(nnbsp_am.getTime() != NaN);
++// Force a version of date string which have  U+202f before PM
++let nnbsp_pm = new Date("11/16/2022, 9:04:55\u202fPM");
++assertTrue(nnbsp_pm  != invalid);
++assertTrue(nnbsp_pm.getTime() != NaN);
++
++let d2 = new Date(d.toLocaleString("en-US", {timeZone: "Asia/Taipei"}));
++assertTrue(d2 != invalid);
++assertTrue(d2.getTime() != NaN);
++// The differences should be within 25 hours.
++assertTrue(Math.abs(d2-d) < largestDiff);
++
++let d3 = new Date(d.toLocaleString("en-US", {timeZone: "Africa/Lusaka"}));
++assertTrue(d3 != invalid);
++assertTrue(d3.getTime() != NaN);
++// The differences should be within 25 hours.
++assertTrue(Math.abs(d3-d) < largestDiff);
