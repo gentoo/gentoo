@@ -71,7 +71,7 @@ RDEPEND+="
 # - The config takes over the active display in addition to starting up a virtual one.
 RDEPEND+="
 	x11-base/xorg-server[xvfb]"
-DEPEND="$(unpacker_src_uri_depends)"
+BDEPEND="$(unpacker_src_uri_depends)"
 
 S=${WORKDIR}
 
