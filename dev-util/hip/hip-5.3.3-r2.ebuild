@@ -3,11 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
 DOCS_BUILDER="doxygen"
 DOCS_DEPEND="media-gfx/graphviz"
 
-inherit cmake docs llvm prefix python-any-r1
+inherit cmake docs llvm prefix
 
 LLVM_MAX_SLOT=15
 
@@ -16,16 +15,13 @@ HOMEPAGE="https://github.com/ROCm-Developer-Tools/hipamd"
 SRC_URI="https://github.com/ROCm-Developer-Tools/hipamd/archive/rocm-${PV}.tar.gz -> rocm-hipamd-${PV}.tar.gz
 	https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-${PV}.tar.gz -> rocm-hip-${PV}.tar.gz
 	https://github.com/ROCm-Developer-Tools/ROCclr/archive/rocm-${PV}.tar.gz -> rocclr-${PV}.tar.gz
-	https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/rocm-${PV}.tar.gz -> rocm-opencl-runtime-${PV}.tar.gz
-	profile? ( https://github.com/ROCm-Developer-Tools/roctracer/archive/refs/tags/rocm-${PV}.tar.gz -> rocm-tracer-${PV}.tar.gz
-			https://github.com/ROCm-Developer-Tools/hipamd/files/8991181/hip_prof_str_diff.gz -> ${P}-update-header.patch.gz
-	)"
+	https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/rocm-${PV}.tar.gz -> rocm-opencl-runtime-${PV}.tar.gz"
 
 KEYWORDS="~amd64"
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 
-IUSE="debug profile"
+IUSE="debug"
 
 DEPEND="
 	>=dev-util/rocminfo-5
@@ -37,10 +33,6 @@ RDEPEND="${DEPEND}
 	dev-perl/URI-Encode
 	sys-devel/clang-runtime:=
 	>=dev-libs/roct-thunk-interface-5"
-BDEPEND="profile? ( $(python_gen_any_dep '
-	dev-python/CppHeaderParser[${PYTHON_USEDEP}]
-	') )
-"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1-DisableTest.patch"
@@ -49,12 +41,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3.3-remove-cmake-doxygen-commands.patch"
 	"${FILESDIR}/0001-SWDEV-352878-LLVM-pkg-search-directly-using-find_dep.patch"
 )
-
-python_check_deps() {
-	if use profile; then
-		python_has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]"
-	fi
-}
 
 S="${WORKDIR}/hipamd-rocm-${PV}"
 HIP_S="${WORKDIR}"/HIP-rocm-${PV}
@@ -66,7 +52,6 @@ DOCS_CONFIG_NAME=doxy.cfg
 
 src_prepare() {
 	cmake_src_prepare
-	use profile && eapply "${WORKDIR}/${P}-update-header.patch"
 
 	eapply_user
 
@@ -128,14 +113,12 @@ src_configure() {
 		-DHIP_PLATFORM=amd
 		-DHIP_COMPILER=clang
 		-DROCM_PATH="${EPREFIX}/usr"
-		-DUSE_PROF_API=$(usex profile 1 0)
+		-DUSE_PROF_API=0
 		-DFILE_REORG_BACKWARD_COMPATIBILITY=OFF
 		-DROCCLR_PATH=${CLR_S}
 		-DHIP_COMMON_DIR=${HIP_S}
 		-DAMD_OPENCL_PATH=${OCL_S}
 	)
-
-	use profile && mycmakeargs+=( -DPROF_API_HEADER_PATH="${RTC_S}"/inc/ext )
 
 	cmake_src_configure
 }
