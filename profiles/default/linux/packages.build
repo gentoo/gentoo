@@ -40,4 +40,3 @@ virtual/editor
 virtual/libc
 virtual/os-headers
 virtual/pkgconfig
-sys-apps/which
