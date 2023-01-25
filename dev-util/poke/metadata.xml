@@ -6,7 +6,6 @@
     <name>Arsen Arsenović</name>
   </maintainer>
   <use>
-    <flag name="machine-interface">Enable machine-interface protocol using <pkg>dev-libs/json-c</pkg></flag>
     <flag name="pvm-profiling">Enable profiling in the PVM</flag>
     <flag name="nbd">Enable poking at networked block devices via <pkg>sys-libs/libnbd</pkg>.</flag>
   </use>
