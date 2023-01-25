@@ -1,0 +1,173 @@
+From fddbcef9a5a45ab63d4805c53d1f8fcf5c30d095 Mon Sep 17 00:00:00 2001
+From: ROCm CI Service Account <66695075+rocm-ci@users.noreply.github.com>
+Date: Fri, 6 Jan 2023 02:37:15 +0530
+Subject: [PATCH 3/3] SWDEV-352878 - Removed relative path based CLANG include,
+ CLANGRT dependencies (#3124)
+
+Change-Id: Ifdcd117679bff548a6351ba915a8272689e647de
+Signed-off-by: Yiyang Wu <xgreenlandforwyy@gmail.com>
+---
+ cmake/FindHIP.cmake      | 37 ++++++++++++++++++++++++++++-
+ hip-lang-config.cmake.in | 51 +++++++++++++++++++++-------------------
+ 2 files changed, 63 insertions(+), 25 deletions(-)
+
+diff --git a/cmake/FindHIP.cmake b/cmake/FindHIP.cmake
+index 8b196dea..109c9f65 100644
+--- a/cmake/FindHIP.cmake
++++ b/cmake/FindHIP.cmake
+@@ -48,6 +48,29 @@ mark_as_advanced(HIP_HOST_COMPILATION_CPP)
+ # FIND: HIP and associated helper binaries
+ ###############################################################################
+ 
++if(NOT HIP_CXX_COMPILER)
++  set(HIP_CXX_COMPILER ${CMAKE_CXX_COMPILER})
++endif()
++
++# Approach: To find HIP_CLANG_PATH using HIP_CXX_COMPILER options
++# Using --version option of HIP_CXX_COMPILER get the Install Directory
++# This install directory is set as the HIP_CLANG_PATH.
++# IF not successful in getting the Install Directory using HIP_CXX_COMPILER
++# fallback to Old Method to find HIP_CLANG_PATH from ENV Vars, ROCMPATH, HIPPATH etc.
++execute_process(COMMAND ${HIP_CXX_COMPILER} --version
++             OUTPUT_STRIP_TRAILING_WHITESPACE
++             OUTPUT_VARIABLE HIP_CXX_COMPILER_VERSION_OUTPUT)
++if(HIP_CXX_COMPILER MATCHES ".*hipcc")
++  if(HIP_CXX_COMPILER_VERSION_OUTPUT MATCHES "InstalledDir:[ \t]*([^\n]*)")
++    get_filename_component(HIP_CLANG_INSTALL_DIR "${CMAKE_MATCH_1}" DIRECTORY)
++  endif()
++elseif (HIP_CXX_COMPILER MATCHES ".*clang\\+\\+")
++  get_filename_component(_HIP_CLANG_REAL_PATH "${HIP_CXX_COMPILER}" REALPATH)
++  get_filename_component(_HIP_CLANG_BIN_PATH "${_HIP_CLANG_REAL_PATH}" DIRECTORY)
++  get_filename_component(HIP_CLANG_INSTALL_DIR "${_HIP_CLANG_BIN_PATH}" DIRECTORY)
++endif()
++
++
+ get_filename_component(_IMPORT_PREFIX "${CMAKE_CURRENT_LIST_DIR}/../" REALPATH)
+ 
+ # HIP is currently not supported for apple
+@@ -230,6 +253,10 @@ if("${HIP_COMPILER}" STREQUAL "nvcc")
+ elseif("${HIP_COMPILER}" STREQUAL "clang")
+     #Set HIP_CLANG_PATH
+     if("x${HIP_CLANG_PATH}" STREQUAL "x")
++      # IF HIP_CLANG_INSTALL_DIR is Found
++      if( HIP_CLANG_INSTALL_DIR )
++        set(HIP_CLANG_PATH ${HIP_CLANG_INSTALL_DIR})
++      else() # IF HIP_CLANG_INSTALL_DIR is not found
+         if(DEFINED ENV{HIP_CLANG_PATH})
+             set(HIP_CLANG_PATH $ENV{HIP_CLANG_PATH})
+         elseif(DEFINED ENV{ROCM_PATH})
+@@ -252,7 +279,9 @@ elseif("${HIP_COMPILER}" STREQUAL "clang")
+         else()
+             message(FATAL_ERROR "Unable to find the clang compiler path. Set ROCM_PATH or HIP_PATH in env ")
+         endif()
+-    endif()
++      endif() # HIP_CLANG_INSTALL_DIR Check
++    endif() # Set HIP_CLANG_PATH
++
+     #Number of parallel jobs by default is 1
+     if(NOT DEFINED HIP_CLANG_NUM_PARALLEL_JOBS)
+       set(HIP_CLANG_NUM_PARALLEL_JOBS 1)
+@@ -660,6 +689,10 @@ macro(HIP_ADD_EXECUTABLE hip_target)
+     endif()
+     if("${HIP_COMPILER}" STREQUAL "clang")
+         if("x${HIP_CLANG_PATH}" STREQUAL "x")
++          # IF HIP_CLANG_INSTALL_DIR is Found
++          if( HIP_CLANG_INSTALL_DIR )
++            set(HIP_CLANG_PATH ${HIP_CLANG_INSTALL_DIR})
++          else() # IF HIP_CLANG_INSTALL_DIR is not found
+             if(DEFINED ENV{HIP_CLANG_PATH})
+                 set(HIP_CLANG_PATH $ENV{HIP_CLANG_PATH})
+             elseif(DEFINED ENV{ROCM_PATH})
+@@ -682,7 +715,9 @@ macro(HIP_ADD_EXECUTABLE hip_target)
+             else()
+                 message(FATAL_ERROR "Unable to find the clang compiler path. Set ROCM_PATH or HIP_PATH in env")
+             endif()
++          endif() # HIP_CLANG_INSTALL_DIR Check
+         endif()
++
+         set(CMAKE_HIP_LINK_EXECUTABLE "${HIP_HIPCC_CMAKE_LINKER_HELPER} ${HIP_CLANG_PATH} ${HIP_CLANG_PARALLEL_BUILD_LINK_OPTIONS} <FLAGS> <CMAKE_CXX_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES>")
+     else()
+         set(CMAKE_HIP_LINK_EXECUTABLE "${HIP_HIPCC_CMAKE_LINKER_HELPER} <FLAGS> <CMAKE_CXX_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES>")
+diff --git a/hip-lang-config.cmake.in b/hip-lang-config.cmake.in
+index 9250a68a..1cf4e40f 100644
+--- a/hip-lang-config.cmake.in
++++ b/hip-lang-config.cmake.in
+@@ -70,15 +70,6 @@ get_filename_component(_DIR "${CMAKE_CURRENT_LIST_DIR}" REALPATH)
+ get_filename_component(_IMPORT_PREFIX "${_DIR}/../../../" REALPATH)
+ 
+ 
+-#need _IMPORT_PREFIX to be set #FILE_REORG_BACKWARD_COMPATIBILITY
+-file(GLOB HIP_CLANG_INCLUDE_SEARCH_PATHS "${_IMPORT_PREFIX}/../llvm/lib/clang/*/include")
+-file(GLOB HIP_CLANG_INCLUDE_SEARCH_PATHS_REORG "${_IMPORT_PREFIX}/llvm/lib/clang/*/include")
+-find_path(HIP_CLANG_INCLUDE_PATH __clang_cuda_math.h
+-    HINTS ${HIP_CLANG_INCLUDE_SEARCH_PATHS}
+-          ${HIP_CLANG_INCLUDE_SEARCH_PATHS_REORG}
+-    NO_DEFAULT_PATH)
+-get_filename_component(HIP_CLANG_INCLUDE_PATH "${HIP_CLANG_INCLUDE_PATH}" DIRECTORY)
+-
+ #If HIP isnot installed under ROCm, need this to find HSA assuming HSA is under ROCm
+ if( DEFINED ENV{ROCM_PATH} )
+   set(ROCM_PATH "$ENV{ROCM_PATH}")
+@@ -96,18 +87,10 @@ if (NOT HSA_HEADER)
+   message (FATAL_ERROR "HSA header not found! ROCM_PATH environment not set")
+ endif()
+ 
+-get_filename_component(HIP_COMPILER_INSTALL_PATH ${CMAKE_HIP_COMPILER} DIRECTORY)
+-file(GLOB HIP_CLANGRT_LIB_SEARCH_PATHS "${HIP_COMPILER_INSTALL_PATH}/../lib/clang/*/lib/*")
+-find_library(CLANGRT_BUILTINS
+-    NAMES
+-      clang_rt.builtins
+-      clang_rt.builtins-x86_64
+-    PATHS
+-      ${HIP_CLANGRT_LIB_SEARCH_PATHS}
+-      ${HIP_CLANG_INCLUDE_PATH}/../lib/linux)
++
+ set_target_properties(hip-lang::device PROPERTIES
+-  INTERFACE_INCLUDE_DIRECTORIES "$<$<COMPILE_LANGUAGE:HIP>:${_IMPORT_PREFIX}/include;${HIP_CLANG_INCLUDE_PATH}>"
+-  INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "$<$<COMPILE_LANGUAGE:HIP>:${_IMPORT_PREFIX}/include;${HIP_CLANG_INCLUDE_PATH}>"
++  INTERFACE_INCLUDE_DIRECTORIES "$<$<COMPILE_LANGUAGE:HIP>:${_IMPORT_PREFIX}/include>"
++  INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "$<$<COMPILE_LANGUAGE:HIP>:${_IMPORT_PREFIX}/include>"
+ )
+ 
+ set_target_properties(hip-lang::amdhip64 PROPERTIES
+@@ -133,13 +116,33 @@ set_property(TARGET hip-lang::device APPEND PROPERTY
+   INTERFACE_LINK_OPTIONS "$<$<LINK_LANGUAGE:HIP>:--hip-link>"
+ )
+ 
++# Approach: Check CLANGRT LIB support for CMAKE_HIP_COMPILER
++# Use CMAKE_HIP_COMPILER option -print-libgcc-file-name --rtlib=compiler-rt
++# Note: For Linux add additional option -unwindlib=libgcc also
++# To fetch the compiler rt library file name and confirm.
++# If unsuccessful in getting clangrt using this option then
++# FATAL_ERROR message send since compiler-rt linkage dependency is mandatory.
++# If successful then --rtlib=compiler-rt (and -unwindlib=libgcc for non windows)
++# added to Target's INTERFACE_LINK_LIBRARIES property
++if (NOT WIN32)
++  set(CLANGRT_LINUX_OPTION "-unwindlib=libgcc")
++endif()
++
++execute_process(
++  COMMAND ${CMAKE_HIP_COMPILER} -print-libgcc-file-name --rtlib=compiler-rt ${CLANGRT_LINUX_OPTION}
++  OUTPUT_VARIABLE CLANGRT_BUILTINS
++  OUTPUT_STRIP_TRAILING_WHITESPACE
++  RESULT_VARIABLE CLANGRT_BUILTINS_FETCH_EXIT_CODE)
++
+ # Add support for __fp16 and _Float16, explicitly link with compiler-rt
+-if(NOT CLANGRT_BUILTINS)
+-    message(FATAL_ERROR "clangrt builtins lib not found")
+-else()
++if( "${CLANGRT_BUILTINS_FETCH_EXIT_CODE}" STREQUAL "0" )
+   set_property(TARGET hip-lang::device APPEND PROPERTY
+-    INTERFACE_LINK_LIBRARIES "$<$<LINK_LANGUAGE:HIP>:${CLANGRT_BUILTINS}>"
++    INTERFACE_LINK_OPTIONS $<$<LINK_LANGUAGE:HIP>:--rtlib=compiler-rt ${CLANGRT_LINUX_OPTION}>
+   )
++else()
++  # FATAL_ERROR send if not successfull on compiler-rt linkage dependency
++  message(FATAL_ERROR
++	"${CMAKE_FIND_PACKAGE_NAME} Error:${CLANGRT_BUILTINS_FETCH_EXIT_CODE} - clangrt builtins lib could not be found.")
+ endif()
+ 
+ # Approved by CMake to use this name. This is used so that HIP can
+-- 
+2.38.1
+
