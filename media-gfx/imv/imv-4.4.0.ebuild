@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+X +freeimage gif heif icu jpeg png svg test tiff wayland"
 REQUIRED_USE="|| ( X wayland )"
 RESTRICT="!test? ( test )"
