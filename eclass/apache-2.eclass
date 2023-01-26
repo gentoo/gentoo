@@ -37,12 +37,6 @@ esac
 # INTERNAL VARIABLES
 # ==============================================================================
 
-# @ECLASS_VARIABLE: GENTOO_USE_PCRE1
-# @DESCRIPTION:
-# Temporary variable to allow older Apache versions to force using legacy
-# dev-libs/libpcre.  This will be removed once ebuilds using dev-libs/libpcre2
-# ar stable.
-
 # @ECLASS_VARIABLE: GENTOO_PATCHNAME
 # @DESCRIPTION:
 # This internal variable contains the prefix for the patch tarball.
@@ -150,6 +144,7 @@ RDEPEND="
 	dev-lang/perl
 	>=dev-libs/apr-1.5.1:=
 	=dev-libs/apr-util-1*:=[gdbm=,ldap?]
+	dev-libs/libpcre2
 	virtual/libcrypt:=
 	apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
 	apache2_modules_deflate? ( sys-libs/zlib )
@@ -176,13 +171,6 @@ RDEPEND="
 	)
 	systemd? ( sys-apps/systemd )
 "
-
-if [[ -n ${GENTOO_USE_PCRE1} ]] ; then
-	RDEPEND+=" dev-libs/libpcre"
-else
-	RDEPEND+=" dev-libs/libpcre2"
-fi
-
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
@@ -534,37 +522,20 @@ apache-2_src_prepare() {
 	# ${T} must be not group-writable, else grsec TPE will block it
 	chmod g-w "${T}" || die
 
-	if [[ -n ${GENTOO_USE_PCRE1} ]] ; then
-		# This package really should upgrade to using pcre's .pc file.
-		cat <<-\EOF > "${T}"/pcre-config
-		#!/usr/bin/env bash
-		flags=()
-		for flag; do
-			if [[ ${flag} == "--version" ]]; then
-				flags+=( --modversion )
-			else
-				flags+=( "${flag}" )
-			fi
-		done
-		exec ${PKG_CONFIG} libpcre "${flags[@]}"
-		EOF
-		chmod a+x "${T}"/pcre-config || die
-	else
-			# This package really should upgrade to using pcre's .pc file.
-		cat <<-\EOF > "${T}"/pcre2-config
-		#!/usr/bin/env bash
-		flags=()
-		for flag; do
-			if [[ ${flag} == "--version" ]]; then
-				flags+=( --modversion )
-			else
-				flags+=( "${flag}" )
-			fi
-		done
-		exec ${PKG_CONFIG} libpcre2-8 "${flags[@]}"
-		EOF
-		chmod a+x "${T}"/pcre2-config || die
-	fi
+	# This package really should upgrade to using pcre's .pc file.
+	cat <<-\EOF > "${T}"/pcre2-config
+	#!/usr/bin/env bash
+	flags=()
+	for flag; do
+		if [[ ${flag} == "--version" ]]; then
+			flags+=( --modversion )
+		else
+			flags+=( "${flag}" )
+		fi
+	done
+	exec ${PKG_CONFIG} libpcre2-8 "${flags[@]}"
+	EOF
+	chmod a+x "${T}"/pcre2-config || die
 }
 
 # @FUNCTION: apache-2_src_configure
@@ -576,8 +547,8 @@ apache-2_src_configure() {
 	export ac_cv_path_PKGCONFIG="${PKG_CONFIG}"
 
 	# Sanity check in case people have bad mounts/TPE settings. #500928
-	if ! "${T}"/pcre-config --help &>/dev/null && ! "${T}"/pcre2-config --help &>/dev/null ; then
-		eerror "Could not execute ${T}/pcre-config (or pcre2-config); do you have bad mount"
+	if ! "${T}"/pcre2-config --help &>/dev/null ; then
+		eerror "Could not execute ${T}/pcre2-config; do you have bad mount"
 		eerror "permissions in ${T} or have TPE turned on in your kernel?"
 		die "check your runtime settings #500928"
 	fi
@@ -608,21 +579,12 @@ apache-2_src_configure() {
 		--enable-layout=Gentoo
 	)
 
-	if [[ -n ${GENTOO_USE_PCRE1} ]] ; then
-		export ac_cv_prog_ac_ct_PCRE_CONFIG="${T}"/pcre-config
+	export ac_cv_prog_ac_ct_PCRE_CONFIG="${T}"/pcre2-config
 
-		MY_CONF+=(
-			--without-pcre2
-			--with-pcre="${T}"/pcre-config
-		)
-	else
-		export ac_cv_prog_ac_ct_PCRE_CONFIG="${T}"/pcre2-config
-
-		MY_CONF+=(
-			--without-pcre
-			--with-pcre2="${T}"/pcre2-config
-		)
-	fi
+	MY_CONF+=(
+		--without-pcre
+		--with-pcre2="${T}"/pcre2-config
+	)
 
 	econf "${MY_CONF[@]}"
 
