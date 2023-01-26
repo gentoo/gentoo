@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,10 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="doc? ( app-doc/doxygen )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-13.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
