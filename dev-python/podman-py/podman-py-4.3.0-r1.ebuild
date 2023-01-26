@@ -25,8 +25,10 @@ KEYWORDS="~amd64"
 RDEPEND="
 	>=dev-python/pyxdg-0.26[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.24[${PYTHON_USEDEP}]
-	>=dev-python/toml-0.10.2[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.24.2[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/tomli-1.2.3[${PYTHON_USEDEP}]
+	' 3.{8..10})
 "
 BDEPEND="
 	test? (
@@ -35,6 +37,10 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-tomli.patch
+)
 
 python_test() {
 	local EPYTEST_DESELECT=(
