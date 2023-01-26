@@ -29,7 +29,7 @@ else
 	PKGCRAFT_VERSION_MIN="0.0.4"
 fi
 
-LICENSE="BSD-1"
+LICENSE="MIT"
 SLOT="0"
 IUSE="+examples"
 
