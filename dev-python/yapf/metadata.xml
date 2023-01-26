@@ -12,6 +12,7 @@
 		didn't violate the style guide.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">google/yapf</remote-id>
 		<remote-id type="pypi">yapf</remote-id>
 	</upstream>
 </pkgmetadata>
