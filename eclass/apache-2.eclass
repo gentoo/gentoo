@@ -138,6 +138,11 @@ _apache2_set_mpms() {
 _apache2_set_mpms
 unset -f _apache2_set_mpms
 
+NGHTTP2_VERSION=1.2.1
+if ver_test ${PV} -ge 2.4.55 ; then
+	NGHTTP2_VERSION=1.50.0
+fi
+
 # Dependencies
 RDEPEND="
 	acct-group/apache
@@ -149,14 +154,14 @@ RDEPEND="
 	apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
 	apache2_modules_deflate? ( sys-libs/zlib )
 	apache2_modules_http2? (
-		>=net-libs/nghttp2-1.2.1:=
+		>=net-libs/nghttp2-${NGHTTP2_VERSION}:=
 		kernel_linux? ( sys-apps/util-linux )
 	)
 	apache2_modules_lua? ( ${LUA_DEPS} )
 	apache2_modules_md? ( >=dev-libs/jansson-2.10:= )
 	apache2_modules_mime? ( app-misc/mime-types )
 	apache2_modules_proxy_http2? (
-		>=net-libs/nghttp2-1.2.1:=
+		>=net-libs/nghttp2-${NGHTTP2_VERSION}:=
 		kernel_linux? ( sys-apps/util-linux )
 	)
 	apache2_modules_session_crypto? (
