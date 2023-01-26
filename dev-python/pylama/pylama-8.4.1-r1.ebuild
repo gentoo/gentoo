@@ -9,8 +9,14 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="Code audit tool for python"
-HOMEPAGE="https://github.com/klen/pylama"
-SRC_URI="https://github.com/klen/pylama/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/klen/pylama/
+	https://pypi.org/project/pylama/
+"
+SRC_URI="
+	https://github.com/klen/pylama/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
@@ -28,12 +34,18 @@ BDEPEND="
 		dev-python/mypy[${PYTHON_USEDEP}]
 		dev-python/pylint[${PYTHON_USEDEP}]
 		dev-python/radon[${PYTHON_USEDEP}]
-		dev-python/toml[${PYTHON_USEDEP}]
 		dev-vcs/git
+		$(python_gen_cond_dep '
+			dev-python/tomli[${PYTHON_USEDEP}]
+		' 3.{8..10})
 	)
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-tomli.patch
+)
 
 EPYTEST_DESELECT=(
 	# not packaged
