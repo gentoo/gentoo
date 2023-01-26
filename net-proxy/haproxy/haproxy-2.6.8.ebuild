@@ -52,7 +52,7 @@ S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS README )
 EXTRAS=( admin/halog admin/iprange dev/tcploop dev/hpack )
-PATCHES=( "${FILESDIR}/${P}-hpack.patch" )
+PATCHES=( "${FILESDIR}/${PN}-2.7.2-hpack.patch" )
 
 haproxy_use() {
 	(( $# != 2 )) && die "${FUNCNAME} <USE flag> <make option>"
