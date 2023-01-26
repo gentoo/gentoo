@@ -39,7 +39,7 @@ LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
 IUSE="bluetooth dbus doc echo-cancel extra flatpak gstreamer gsettings jack-client jack-sdk lv2
-modemmanager pipewire-alsa readline sound-server ssl system-service systemd test udev v4l X zeroconf"
+modemmanager pipewire-alsa readline sound-server ssl system-service systemd test v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -72,11 +72,14 @@ BDEPEND="
 		media-gfx/graphviz
 	)
 "
+# While udev could technically be optional, it's needed for a numebr of options,
+# and not really worth it, bug #877769.
 RDEPEND="
 	acct-group/audio
 	media-libs/alsa-lib
 	sys-libs/ncurses:=[unicode(+)]
 	virtual/libintl[${MULTILIB_USEDEP}]
+	virtual/libudev[${MULTILIB_USEDEP}]
 	bluetooth? (
 		media-libs/fdk-aac
 		media-libs/libldac
@@ -123,7 +126,6 @@ RDEPEND="
 		acct-user/pipewire
 		acct-group/pipewire
 	)
-	udev? ( virtual/libudev[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l )
 	X? (
 		media-libs/libcanberra
@@ -251,7 +253,7 @@ multilib_src_configure() {
 		-Dvolume=enabled # Matches upstream
 		-Dvulkan=disabled # Uses pre-compiled Vulkan compute shader to provide a CGI video source (dev thing; disabled by upstream)
 		$(meson_native_use_feature extra pw-cat)
-		$(meson_feature udev)
+		-Dudev=enabled
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
 		-Dsdl2=disabled # Controls SDL2 dependent code (currently only examples when -Dinstalled_tests=enabled which we never install)
 		$(meson_native_use_feature extra sndfile) # Enables libsndfile dependent code (currently only pw-cat)
@@ -317,11 +319,11 @@ multilib_src_install_all() {
 }
 
 pkg_postrm() {
-	use udev && udev_reload
+	udev_reload
 }
 
 pkg_postinst() {
-	use udev && udev_reload
+	udev_reload
 
 	elog "It is recommended to raise RLIMIT_MEMLOCK to 256 for users"
 	elog "using PipeWire. Do it either manually or add yourself"
