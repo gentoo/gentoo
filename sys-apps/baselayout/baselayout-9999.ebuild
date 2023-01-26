@@ -259,12 +259,6 @@ src_install() {
 		DESTDIR="${ED}" \
 		install
 
-	# FHS compatibility symlinks
-	dosym ../proc/self/mounts /etc/mtab
-	dosym ../run /var/run
-	dosym ../run/lock /var/lock
-	dosym ../var/tmp /usr/tmp
-
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# add SDK path which contains development manpages
 		echo "MANPATH=${EPREFIX}/MacOSX.sdk/usr/share/man" \
