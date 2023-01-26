@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: apache-2.eclass
@@ -149,24 +149,24 @@ RDEPEND="
 	apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
 	apache2_modules_deflate? ( sys-libs/zlib )
 	apache2_modules_http2? (
-		>=net-libs/nghttp2-1.2.1
+		>=net-libs/nghttp2-1.2.1:=
 		kernel_linux? ( sys-apps/util-linux )
 	)
 	apache2_modules_lua? ( ${LUA_DEPS} )
-	apache2_modules_md? ( >=dev-libs/jansson-2.10 )
+	apache2_modules_md? ( >=dev-libs/jansson-2.10:= )
 	apache2_modules_mime? ( app-misc/mime-types )
 	apache2_modules_proxy_http2? (
-		>=net-libs/nghttp2-1.2.1
+		>=net-libs/nghttp2-1.2.1:=
 		kernel_linux? ( sys-apps/util-linux )
 	)
 	apache2_modules_session_crypto? (
 		dev-libs/apr-util[openssl]
 	)
 	gdbm? ( sys-libs/gdbm:= )
-	ldap? ( =net-nds/openldap-2* )
+	ldap? ( net-nds/openldap:= )
 	selinux? ( sec-policy/selinux-apache )
 	ssl? (
-		>=dev-libs/openssl-1.0.2:0=
+		>=dev-libs/openssl-1.0.2:=
 		kernel_linux? ( sys-apps/util-linux )
 	)
 	systemd? ( sys-apps/systemd )
