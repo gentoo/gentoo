@@ -576,7 +576,7 @@ apache-2_src_configure() {
 	export ac_cv_path_PKGCONFIG="${PKG_CONFIG}"
 
 	# Sanity check in case people have bad mounts/TPE settings. #500928
-	if ! "${T}"/pcre-config --help >/dev/null && ! "${T}"/pcre2-config --help >/dev/null ; then
+	if ! "${T}"/pcre-config --help &>/dev/null && ! "${T}"/pcre2-config --help &>/dev/null ; then
 		eerror "Could not execute ${T}/pcre-config (or pcre2-config); do you have bad mount"
 		eerror "permissions in ${T} or have TPE turned on in your kernel?"
 		die "check your runtime settings #500928"
