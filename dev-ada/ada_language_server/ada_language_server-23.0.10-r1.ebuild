@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="${ADA_DEPS}
 	dev-ada/ada_libfswatch[${ADA_USEDEP}]
+	sys-fs/fswatch:=
 	dev-ada/gnatcoll-core[${ADA_USEDEP},shared]
 	dev-ada/gnatdoc[${ADA_USEDEP}]
 	dev-ada/gpr-unit-provider[${ADA_USEDEP}]
