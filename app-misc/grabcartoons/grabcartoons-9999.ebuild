@@ -29,6 +29,6 @@ RDEPEND="
 PATCHES=( "${FILESDIR}"/2.8.4-fix-install-paths.patch )
 
 src_install() {
-	emake PREFIX="${ED%/}"/usr install
+	emake PREFIX="${ED}"/usr install
 	einstalldocs
 }
