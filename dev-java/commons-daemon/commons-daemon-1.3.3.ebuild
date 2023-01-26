@@ -38,7 +38,6 @@ JAVA_SRC_DIR="src/main/java"
 
 src_prepare() {
 	default #780585
-	java-pkg-2_src_prepare
 }
 
 src_compile() {
