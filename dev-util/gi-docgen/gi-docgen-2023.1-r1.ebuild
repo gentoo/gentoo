@@ -26,11 +26,8 @@ RDEPEND="
 		>=dev-python/typogrify-2[${PYTHON_USEDEP}]
 	')
 	$(python_gen_cond_dep '
-		dev-python/toml[${PYTHON_USEDEP}]
-	' python3_{8..10})
-	$(python_gen_cond_dep '
 		dev-python/tomli[${PYTHON_USEDEP}]
-	' python3_11)
+	' 3.{8..10})
 "
 DEPEND="${RDEPEND}"
 
