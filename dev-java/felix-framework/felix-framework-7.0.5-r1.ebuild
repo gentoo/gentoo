@@ -1,8 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom pom.xml --download-uri mirror://apache/felix/org.apache.felix.framework-7.0.5-source-release.tar.gz --slot 0 --keywords "~amd64" --ebuild felix-framework-7.0.5.ebuild
 
 EAPI=8
 
@@ -15,6 +12,7 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Implementation of the OSGi R8 core framework specification"
 HOMEPAGE="https://felix.apache.org/documentation/subprojects/apache-felix-framework.html"
 SRC_URI="mirror://apache/felix/org.apache.${PN//-/.}-${PV}-source-release.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/org.apache.felix.framework-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -42,7 +40,7 @@ DEPEND="
 	dev-java/osgi-annotation:0
 	dev-java/felix-resolver:0
 	test? (
-		dev-java/asm:4
+		dev-java/asm:9
 		dev-java/easymock:2.5
 		dev-java/mockito:0
 	)
@@ -52,8 +50,6 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 	${CP_DEPEND}"
 
-S="${WORKDIR}/org.apache.felix.framework-${PV}"
-
 JAVA_CLASSPATH_EXTRA="felix-resolver,osgi-annotation"
 JAVA_SRC_DIR="src/main/java"
 JAVA_RESOURCE_DIRS="src/main/resources"
@@ -62,7 +58,7 @@ JAVA_TEST_GENTOO_CLASSPATH="asm-4,junit-4,easymock-2.5,mockito"
 JAVA_TEST_SRC_DIR="src/test/java"
 
 src_prepare() {
-	default
+	java-pkg-2_src_prepare
 	# 58,91 pom.xml
 	cat > src/main/java/module-info.java <<-EOF
 		$( sed -n '/<moduleInfoSource>/,/<\/moduleInfoSource/p' pom.xml \
