@@ -41,11 +41,15 @@ case ${PV} in
 		;;
 esac
 
+PATCH_DEV=""
+PATCH_VER=""
 DESCRIPTION="GNU debugger"
 HOMEPAGE="https://sourceware.org/gdb/"
-SRC_URI="${SRC_URI}
-	${PATCH_DEV:+https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz}
-	${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}"
+SRC_URI="
+	${SRC_URI}
+	${PATCH_DEV:+https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${P}-patches-${PATCH_VER}.tar.xz}
+	${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}
+"
 
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
@@ -58,16 +62,7 @@ fi
 
 IUSE="cet guile lzma multitarget nls +python +server sim source-highlight test vanilla xml xxhash zstd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-
-# In fact, gdb's test suite needs some work to get passing.
-# See e.g. https://sourceware.org/gdb/wiki/TestingGDB.
-# As of 11.2, on amd64: "# of unexpected failures    8600"
-# Also, ia64 kernel crashes when gdb testsuite is running.
-RESTRICT="
-	ia64? ( test )
-	!test? ( test )
-	test
-"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/mpfr:0=
@@ -233,6 +228,18 @@ src_compile() {
 	emake V=1
 }
 
+src_test() {
+	# Run the unittests (nabbed invocation from Fedora's spec file) at least
+	emake -k -C gdb run GDBFLAGS='-batch -ex "maintenance selftest"'
+
+	# Too many failures
+	# In fact, gdb's test suite needs some work to get passing.
+	# See e.g. https://sourceware.org/gdb/wiki/TestingGDB.
+	# As of 11.2, on amd64: "# of unexpected failures    8600"
+	# Also, ia64 kernel crashes when gdb testsuite is running.
+	#emake -k check
+}
+
 src_install() {
 	emake V=1 DESTDIR="${D}" install
 
@@ -273,10 +280,6 @@ src_install() {
 	if use server ; then
 		docinto gdbserver
 		dodoc gdbserver/README
-	fi
-
-	if [[ -n ${PATCH_VER} ]] ; then
-		dodoc "${WORKDIR}"/extra/gdbinit.sample
 	fi
 
 	# Remove shared info pages
