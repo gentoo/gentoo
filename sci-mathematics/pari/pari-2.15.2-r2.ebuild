@@ -35,7 +35,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}"-2.9.4-ppc.patch
 	"${FILESDIR}/${PN}"-2.11.2-no-automagic.patch
 	"${FILESDIR}/${PN}"-2.9.4-fltk-detection.patch
-	"${FILESDIR}/${PN}"-2.15.2-ellsea.patch
+	"${FILESDIR}/${PN}"-2.15.2-ellsea-r1.patch
 	"${FILESDIR}/${PN}"-2.15.2-install-doctex.patch
 )
 
