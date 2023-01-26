@@ -1,0 +1,93 @@
+diff --git a/setup.py b/setup.py
+index 586606d..312a431 100644
+--- a/setup.py
++++ b/setup.py
+@@ -51,7 +51,7 @@ setup(
+         version=version,
+         license='SIP',
+         python_requires='>=3.7',
+-        install_requires=['packaging', 'ply', 'setuptools', 'toml'],
++        install_requires=['packaging', 'ply', 'setuptools', 'tomli; python_version<"3.11"'],
+         packages=find_packages(),
+         package_data={
+             'sipbuild.module': ['source/*/*'],
+diff --git a/sip.egg-info/requires.txt b/sip.egg-info/requires.txt
+index b465c08..8547535 100644
+--- a/sip.egg-info/requires.txt
++++ b/sip.egg-info/requires.txt
+@@ -1,4 +1,4 @@
+ packaging
+ ply
+ setuptools
+-toml
++tomli; python_version<"3.11"
+diff --git a/sipbuild/bindings_configuration.py b/sipbuild/bindings_configuration.py
+index 8197e27..a942f3f 100644
+--- a/sipbuild/bindings_configuration.py
++++ b/sipbuild/bindings_configuration.py
+@@ -22,11 +22,16 @@
+ 
+ 
+ import os
+-import toml
++import sys
+ 
+ from .exceptions import UserFileException, UserParseException
+ from .module import resolve_abi_version
+ 
++if sys.version_info >= (3, 11):
++    import tomllib
++else:
++    import tomli as tomllib
++
+ 
+ def get_bindings_configuration(abi_major, sip_file, sip_include_dirs):
+     """ Get the configuration of a set of bindings. """
+@@ -47,7 +52,8 @@ def get_bindings_configuration(abi_major, sip_file, sip_include_dirs):
+ 
+     # Read the configuration.
+     try:
+-        cfg = toml.load(toml_file)
++        with open(toml_file, "rb") as f:
++            cfg = tomllib.load(f)
+     except Exception as e:
+         raise UserParseException(toml_file, detail=str(e))
+ 
+diff --git a/sipbuild/pyproject.py b/sipbuild/pyproject.py
+index 1ba2223..6e4a7c6 100644
+--- a/sipbuild/pyproject.py
++++ b/sipbuild/pyproject.py
+@@ -22,11 +22,16 @@
+ 
+ 
+ from collections import OrderedDict
+-import toml
++import sys
+ 
+ from .exceptions import UserFileException
+ from .py_versions import OLDEST_SUPPORTED_MINOR
+ 
++if sys.version_info >= (3, 11):
++    import tomllib
++else:
++    import tomli as tomllib
++
+ 
+ class PyProjectException(UserFileException):
+     """ An exception related to a pyproject.toml file. """
+@@ -69,7 +74,8 @@ class PyProject:
+         self.toml_error = None
+ 
+         try:
+-            self._pyproject = toml.load('pyproject.toml', _dict=OrderedDict)
++            with open('pyproject.toml', 'rb') as f:
++                self._pyproject = tomllib.load(f)
+         except FileNotFoundError:
+             self.toml_error = "there is no such file in the current directory"
+         except Exception as e:
+@@ -174,4 +180,4 @@ class PyProject:
+     def _is_section(value):
+         """ Returns True if a section value is itself a section. """
+ 
+-        return isinstance(value, (OrderedDict, list))
++        return isinstance(value, (OrderedDict, dict, list))
