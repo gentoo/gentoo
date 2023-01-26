@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 # upstream's config/version script.
 SLOT="0/8"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="data doc fltk gmp test threads X"
+IUSE="data doc examples fltk gmp test threads X"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -35,8 +35,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}"-2.9.4-ppc.patch
 	"${FILESDIR}/${PN}"-2.11.2-no-automagic.patch
 	"${FILESDIR}/${PN}"-2.9.4-fltk-detection.patch
-	"${FILESDIR}/${PN}"-2.11.2-Makefile-docinstall.patch
 	"${FILESDIR}/${PN}"-2.15.2-ellsea.patch
+	"${FILESDIR}/${PN}"-2.15.2-install-doctex.patch
 )
 
 src_prepare() {
@@ -64,13 +64,6 @@ src_configure() {
 	# Workaraound to "asm operand has impossible constraints" as
 	# suggested in bug #499996.
 	use x86 && append-cflags $(test-flags-CC -fno-stack-check)
-
-	# need to force optimization here, as it breaks without
-	if is-flag -O0; then
-		replace-flags -O0 -O2
-	elif ! is-flag -O?; then
-		append-flags -O2
-	fi
 
 	# sysdatadir installs a pari.cfg stuff which is informative only.
 	# It is supposed to be for "architecture-dependent" data.  It needs
@@ -115,17 +108,28 @@ src_test() {
 src_install() {
 	DOCS=( AUTHORS CHANGES* COMPAT NEW README* )
 
+	# Install examples to a junk location by default because "make
+	# install-nodata" includes the examples with it. Only if the user
+	# has USE=examples set do we provide the correct directory.
+	local exdir="${T}"
+	if use examples; then
+		docompress -x "/usr/share/doc/${PF}/examples"
+		exdir="${ED}/usr/share/doc/${PF}/examples"
+	fi
+
 	# Use "true" in place of "strip" to sabotage the unconditional
 	# binary stripping.
-	emake DESTDIR="${D}" STRIP="true" install
+	emake DESTDIR="${D}" \
+		  EXDIR="${exdir}" \
+		  STRIP="true" \
+		  install-nodata install-data
 	einstalldocs
 
 	if use doc; then
 		docompress -x "/usr/share/doc/${PF}"
 		emake \
 			DESTDIR="${D}" \
-			EXDIR="${ED}/usr/share/doc/${PF}/examples" \
 			DOCDIR="${ED}/usr/share/doc/${PF}" \
-			install-doc
+			install-docpdf install-doctex
 	fi
 }
