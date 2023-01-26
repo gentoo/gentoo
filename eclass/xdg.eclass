@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xdg.eclass
@@ -6,7 +6,7 @@
 # freedesktop-bugs@gentoo.org
 # @AUTHOR:
 # Original author: Gilles Dartiguelongue <eva@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @PROVIDES: xdg-utils
 # @BLURB: Provides phases for XDG compliant packages.
 # @DESCRIPTION:
@@ -17,7 +17,7 @@ inherit xdg-utils
 
 _DEFINE_XDG_SRC_PREPARE=false
 case "${EAPI}" in
-	5|6|7)
+	6|7)
 		# src_prepare is only exported in EAPI < 8.
 		EXPORT_FUNCTIONS src_prepare
 		_DEFINE_XDG_SRC_PREPARE=true
@@ -36,7 +36,7 @@ _XDG_DEPEND="
 "
 
 case "${EAPI}" in
-	5|6|7)
+	6|7)
 		DEPEND="${_XDG_DEPEND}"
 		;;
 	*)
@@ -126,4 +126,3 @@ xdg_pkg_postrm() {
 		debug-print "No mime info files to add to database"
 	fi
 }
-
