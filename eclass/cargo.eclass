@@ -75,6 +75,43 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # SRC_URI="$(cargo_crate_uris)"
 # @CODE
 
+# @ECLASS_VARIABLE: GIT_CRATES
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# bash associative array containing all crates that a package wants
+# to be fetch by git.
+# The key is the crate name, the value is a semicolon separated list of
+# the following fields:
+#
+# - the URI to to fetch the crate from
+#     - this intelligentally handles GitHub URIs and GitLab URIs so
+#       just the path is needed.
+#     - the string "%commit%" gets replaced with the commit
+# - the hash of the commit to use
+# - (optional) the path to look for Cargo.toml in
+#   - this will also replace  the string "%commit%" with the commit
+#   - if this not provided, it will be generated using the crate name and
+#     the commit
+# Used by cargo_crate_uris
+#
+# If this is defined, then cargo_src_install will add --frozen to "cargo install"
+#
+# Example of simple definition of GIT_CRATES without any paths defined
+# @CODE
+# declare -A GIT_CRATES=(
+# 	[home]="https://github.com/rbtcollins/home;a243ee2fbee6022c57d56f5aa79aefe194eabe53"
+# )
+# @CODE
+#
+# Example code of how to define GIT_CRATES with paths defined.
+# @CODE
+# declare -A GIT_CRATES=(
+# 	[rustpython-common]="https://github.com/RustPython/RustPython;4f38cb68e4a97aeea9eb19673803a0bd5f655383;RustPython-%commit%/common"
+# 	[rustpython-parser]="https://github.com/RustPython/RustPython;4f38cb68e4a97aeea9eb19673803a0bd5f655383;RustPython-%commit%/compiler/parser"
+# )
+# @CODE
+
 # @ECLASS_VARIABLE: CARGO_OPTIONAL
 # @DEFAULT_UNSET
 # @PRE_INHERIT
@@ -160,6 +197,37 @@ cargo_crate_uris() {
 		url="https://crates.io/api/v1/crates/${name}/${version}/download -> ${crate}.crate"
 		echo "${url}"
 	done
+
+	local git_crates_type
+	git_crates_type="$(declare -p GIT_CRATES)"
+	if [[ ${git_crates_type} == "declare -A "* ]]; then
+		local crate commit crate_uri crate_dir repo_ext feat_expr
+
+		for crate in "${!GIT_CRATES[@]}"; do
+			IFS=';' read -r crate_uri commit crate_dir <<< "${GIT_CRATES[${crate}]}"
+
+			case "${crate_uri}" in
+				https://github.com/*)
+					repo_ext=".gh"
+					repo_name="${crate_uri##*/}"
+					crate_uri="${crate_uri%/}/archive/%commit%.tar.gz"
+				;;
+				https://gitlab.com/*)
+					repo_ext=".gl"
+					repo_name="${crate_uri##*/}"
+					crate_uri="${crate_uri%/}/archive/-/%commit%/${repo_name}/%commit%.tar.gz"
+				;;
+				*)
+					repo_ext=
+					repo_name="${crate}"
+				;;
+			esac
+
+			printf -- '%s -> %s\n' "${crate_uri//%commit%/${commit}}" "${repo_name}-${commit}${repo_ext}.tar.gz"
+		done
+	elif [[ -n ${git_crates_type} ]]; then
+		die "GIT_CRATE must be declared as an associative array"
+	fi
 }
 
 # @FUNCTION: cargo_gen_config
@@ -195,10 +263,44 @@ cargo_gen_config() {
 	[term]
 	verbose = true
 	$([[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo "color = 'never'")
+	$(_cargo_gen_git_config)
 	_EOF_
 
 	export CARGO_HOME="${ECARGO_HOME}"
 	_CARGO_GEN_CONFIG_HAS_RUN=1
+}
+
+# @FUNCTION: _cargo_gen_git_config
+# @USAGE:
+# @INTERNAL
+# @DESCRIPTION:
+# Generate the cargo config for git crates, this will output the
+# configuration for cargo to override the cargo config so the local git crates
+# specified in GIT_CRATES will be used rather than attempting to fetch
+# from git.
+#
+# Called by cargo_gen_config when generating the config.
+_cargo_gen_git_config() {
+	local git_crates_type
+	git_crates_type="$(declare -p GIT_CRATES)"
+
+	if [[ ${git_crates_type} == "declare -A "* ]]; then
+		local crate commit crate_uri crate_dir
+		local -A crate_patches
+
+		for crate in "${!GIT_CRATES[@]}"; do
+			IFS=';' read -r crate_uri commit crate_dir <<< "${GIT_CRATES[${crate}]}"
+			: "${crate_dir:=${crate}-%commit%}"
+			crate_patches["${crate_uri}"]+="${crate} = { path = \"${WORKDIR}/${crate_dir//%commit%/${commit}}\" };;"
+		done
+
+		for crate_uri in "${!crate_patches[@]}"; do
+			printf -- "[patch.'%s']\\n%s\n" "${crate_uri}" "${crate_patches["${crate_uri}"]//;;/$'\n'}"
+		done
+
+	elif [[ -n ${git_crates_type} ]]; then
+		die "GIT_CRATE must be declared as an associative array"
+	fi
 }
 
 # @FUNCTION: cargo_src_unpack
@@ -412,6 +514,7 @@ cargo_src_install() {
 
 	set -- cargo install $(has --path ${@} || echo --path ./) \
 		--root "${ED}/usr" \
+		 ${GIT_CRATES:---frozen} \
 		$(usex debug --debug "") \
 		${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
