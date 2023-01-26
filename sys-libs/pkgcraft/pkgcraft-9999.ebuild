@@ -171,7 +171,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="BSD-1"
+LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD GPL-3+ ISC MIT Unicode-DFS-2016"
 SLOT="0/${PV}"
