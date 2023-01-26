@@ -9,7 +9,10 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="A security linter from OpenStack Security"
-HOMEPAGE="https://github.com/PyCQA/bandit"
+HOMEPAGE="
+	https://github.com/PyCQA/bandit/
+	https://pypi.org/project/bandit/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -30,8 +33,14 @@ BDEPEND="
 		>=dev-python/testtools-2.3.0[${PYTHON_USEDEP}]
 		>=dev-python/beautifulsoup4-4.8.0[${PYTHON_USEDEP}]
 		>=dev-python/pylint-1.9.4[${PYTHON_USEDEP}]
-		dev-python/toml[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/tomli[${PYTHON_USEDEP}]
+		' 3.{8..10})
 	)
 "
 
 distutils_enable_tests unittest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-tomli.patch
+)
