@@ -1,14 +1,20 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
 inherit distutils-r1
 
 DESCRIPTION="Command-line YAML processor - jq wrapper for YAML documents"
-HOMEPAGE="https://yq.readthedocs.io/ https://github.com/kislyuk/yq/ https://pypi.org/project/yq/"
+HOMEPAGE="
+	https://yq.readthedocs.io/
+	https://github.com/kislyuk/yq/
+	https://pypi.org/project/yq/
+"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -19,8 +25,10 @@ RDEPEND="
 	app-misc/jq
 	dev-python/argcomplete[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.3.1[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
 	dev-python/xmltodict[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/tomli[${PYTHON_USEDEP}]
+	' 3.{8..10})
 "
 DEPEND="
 	${RDEPEND}
@@ -31,6 +39,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/yq-2.13.0-tests.patch"
+	"${FILESDIR}/${P}-tomli.patch"
 )
 
 python_prepare_all() {
