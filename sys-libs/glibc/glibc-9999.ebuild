@@ -1017,8 +1017,8 @@ glibc_do_configure() {
 		# up a Perl from outside the prefix instead. configure will fail to
 		# execute Perl during configure if we're cross-compiling a prefix, but
 		# it will just disable mtrace in that case.
-		ac_cv_path_PERL="$(usex perl "${EPREFIX}"/usr/bin/perl no)"
-		use test && ac_cv_path_PERL="${EPREFIX}/usr/bin/perl"
+		# Note: mtrace is needed by the test suite.
+		ac_cv_path_PERL="$(usex perl "${EPREFIX}"/usr/bin/perl $(usex test "${EPREFIX}"/usr/bin/perl no))"
 
 		# locale data is arch-independent
 		# https://bugs.gentoo.org/753740
