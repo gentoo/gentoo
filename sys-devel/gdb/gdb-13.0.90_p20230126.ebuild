@@ -41,11 +41,15 @@ case ${PV} in
 		;;
 esac
 
+PATCH_DEV=""
+PATCH_VER=""
 DESCRIPTION="GNU debugger"
 HOMEPAGE="https://sourceware.org/gdb/"
-SRC_URI="${SRC_URI}
-	${PATCH_DEV:+https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz}
-	${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}"
+SRC_URI="
+	${SRC_URI}
+	${PATCH_DEV:+https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${P}-patches-${PATCH_VER}.tar.xz}
+	${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}
+"
 
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
@@ -276,10 +280,6 @@ src_install() {
 	if use server ; then
 		docinto gdbserver
 		dodoc gdbserver/README
-	fi
-
-	if [[ -n ${PATCH_VER} ]] ; then
-		dodoc "${WORKDIR}"/extra/gdbinit.sample
 	fi
 
 	# Remove shared info pages
