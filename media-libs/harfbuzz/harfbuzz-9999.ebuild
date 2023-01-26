@@ -64,9 +64,6 @@ src_prepare() {
 		test/shape/data/in-house/Makefile.sources \
 		|| die
 
-	# bug #618772
-	append-cxxflags -std=c++14
-
 	# bug #790359
 	filter-flags -fexceptions -fthreadsafe-statics
 
