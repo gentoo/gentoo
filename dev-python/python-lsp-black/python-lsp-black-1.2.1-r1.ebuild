@@ -29,8 +29,14 @@ RDEPEND="
 
 BDEPEND="
 	test? (
-		dev-python/toml[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/tomli[${PYTHON_USEDEP}]
+		' 3.{8..10})
 	)
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-tomli.patch
+)

@@ -1,0 +1,94 @@
+From 80d34ca4f35baa654e5f1fee7860214950f1ae37 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 26 Jan 2023 12:07:11 +0100
+Subject: [PATCH] Replace the obsolete toml package with tomllib/tomli
+
+Use the modern `tomllib` module (in Python 3.11+) or its drop-in
+replacement `tomli` (for older Python versions) instead of the obsolete
+`toml` module.  The latter is unmaintained and does not support TOML
+1.0.
+---
+ .pre-commit-config.yaml |  2 +-
+ pylsp_black/plugin.py   | 12 +++++++++---
+ setup.cfg               |  7 +++++--
+ 3 files changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/.pre-commit-config.yaml b/.pre-commit-config.yaml
+index 304770e..d5bd147 100644
+--- a/.pre-commit-config.yaml
++++ b/.pre-commit-config.yaml
+@@ -17,7 +17,7 @@ repos:
+   rev: v0.942
+   hooks:
+   - id: mypy
+-    additional_dependencies: [black, types-pkg_resources, types-setuptools, types-toml]
++    additional_dependencies: [black, types-pkg_resources, types-setuptools]
+ - repo: https://github.com/pre-commit/pre-commit-hooks
+   rev: v4.1.0
+   hooks:
+diff --git a/pylsp_black/plugin.py b/pylsp_black/plugin.py
+index f013171..090b1b0 100644
+--- a/pylsp_black/plugin.py
++++ b/pylsp_black/plugin.py
+@@ -1,15 +1,20 @@
+ import logging
+ import os
++import sys
+ from functools import lru_cache
+ from pathlib import Path
+ from typing import Dict, Optional
+ 
+ import black
+-import toml
+ from pylsp import hookimpl
+ from pylsp._utils import get_eol_chars
+ from pylsp.config.config import Config
+ 
++if sys.version_info >= (3, 11):
++    import tomllib
++else:
++    import tomli as tomllib
++
+ logger = logging.getLogger(__name__)
+ 
+ 
+@@ -154,8 +159,9 @@ def _load_config(filename: str, client_config: Config) -> Dict:
+             return defaults
+ 
+     try:
+-        pyproject_toml = toml.load(str(pyproject_filename))
+-    except (toml.TomlDecodeError, OSError):
++        with open(pyproject_filename, "rb") as f:
++            pyproject_toml = tomllib.load(f)
++    except (tomllib.TOMLDecodeError, OSError):
+         logger.warning(
+             "Error decoding pyproject.toml, using defaults: %r",
+             defaults,
+diff --git a/setup.cfg b/setup.cfg
+index 47510d5..257add6 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -18,7 +18,10 @@ classifiers =
+ 
+ [options]
+ packages = find:
+-install_requires = python-lsp-server>=1.4.0; black>=22.3.0; toml
++install_requires =
++    python-lsp-server>=1.4.0
++    black>=22.3.0
++    tomli; python_version<'3.11'
+ python_requires = >= 3.7
+ 
+ [options.entry_points]
+@@ -26,7 +29,7 @@ pylsp = pylsp_black = pylsp_black.plugin
+ 
+ [options.extras_require]
+ # add any types-* packages to .pre-commit-config.yaml mypy additional_dependencies
+-dev = isort>=5.0; flake8; pre-commit; pytest; mypy; pytest; types-pkg_resources; types-setuptools; types-toml
++dev = isort>=5.0; flake8; pre-commit; pytest; mypy; pytest; types-pkg_resources; types-setuptools
+ 
+ [flake8]
+ max-line-length = 88
+-- 
+2.39.1
+
