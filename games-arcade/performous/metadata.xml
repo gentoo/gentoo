@@ -11,7 +11,6 @@
 	<use>
 		<flag name="midi">Enable MIDI I/O support</flag>
 		<flag name="songs">Install a few demo songs</flag>
-		<flag name="tools">Enable building of song extraction utilities for SingStar and Guitar Hero</flag>
 		<flag name="webcam">Enable Webcam support</flag>
 	</use>
 	<upstream>
