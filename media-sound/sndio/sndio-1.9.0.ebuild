@@ -13,7 +13,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_MIN_CLONE_TYPE="single+tags"
 else
 	SRC_URI="http://www.sndio.org/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="ISC"
@@ -28,6 +28,8 @@ RDEPEND="
 	${DEPEND}
 	acct-user/sndiod
 "
+
+PATCHES=( "${FILESDIR}"/sndio-1.8.0-fix-hardcoded-pkgconfdir.patch )
 
 src_prepare() {
 	default
