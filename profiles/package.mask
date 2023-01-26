@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-01-26)
+# Unmaintained.  Last release in 2003.  The package fails to install
+# since Aug 2021 and while a fix would be trivial, there does not seem
+# to have been any interest in it during that period.
+# Removal on 2023-02-25.  Bug #806384.
+www-misc/wsmake
+
 # Marek Szuba <marecki@gentoo.org> (2023-01-26)
 # Upstream keeps the module files unversioned so it is only the use of
 # mirroring that has prevented us from seeing regular hash mismatches
