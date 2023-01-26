@@ -1,0 +1,94 @@
+From 425ebfb12908c0d5f72f5a4eec06a235e8bbd54b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 23 Oct 2022 11:38:58 +0200
+Subject: [PATCH] Use tomllib/tomli/tomli-w instead of unmaintained toml
+ package
+
+Replace the use of the unmaintained `toml` package with the modern
+trinity: built-in `tomllib` module for reading TOML in Python 3.11+,
+`tomli` for reading TOML in older Python versions and `tomli-w` for
+writing TOML in all Python versions.  This ensures correct TOML 1.0
+support that the old `toml` package lacks.
+---
+ README.rst     |  4 +++-
+ setup.py       |  3 ++-
+ yq/__init__.py | 18 ++++++++++++------
+ 3 files changed, 17 insertions(+), 8 deletions(-)
+
+diff --git a/README.rst b/README.rst
+index 69d77e1..237b89e 100644
+--- a/README.rst
++++ b/README.rst
+@@ -109,7 +109,9 @@ the ``xq --xml-output``/``xq -x`` option. Multiple XML documents can be passed i
+ TOML support
+ ------------
+ ``yq`` supports `TOML <https://toml.io/>`_ as well. The ``yq`` package installs an executable, ``tomlq``, which uses the
+-`toml library <https://github.com/uiri/toml>`_ to transcode TOML to JSON, then pipes it to ``jq``. Roundtrip transcoding
++`tomllib module <https://docs.python.org/3.11/library/tomllib.html>` or `tomli library
++<https://github.com/hukkin/tomli>`_ to transcode TOML to JSON, then pipes it to ``jq``. Transcoding to TOML uses the
++`tomli-w <https://github.com/hukkin/toml-w`_ package. Roundtrip transcoding
+ is available with the ``tomlq --toml-output``/``tomlq -t`` option.
+ 
+ .. admonition:: Compatibility note
+diff --git a/setup.py b/setup.py
+index 9a7f643..71774ed 100755
+--- a/setup.py
++++ b/setup.py
+@@ -19,7 +19,8 @@
+     install_requires=[
+         "PyYAML >= 5.3.1",
+         "xmltodict >= 0.11.0",
+-        "toml >= 0.10.0",
++        "tomli >= 1.2.3; python_version < '3.11'",
++        "tomli-w",
+         "argcomplete >= 1.8.1"
+     ],
+     extras_require={
+diff --git a/yq/__init__.py b/yq/__init__.py
+index 1043ff7..dd89408 100755
+--- a/yq/__init__.py
++++ b/yq/__init__.py
+@@ -201,8 +201,11 @@ def yq(input_streams=None, output_stream=None, input_format="yaml", output_forma
+                     json.dump(doc, json_buffer, cls=JSONDateTimeEncoder)
+                     json_buffer.write("\n")
+                 elif input_format == "toml":
+-                    import toml
+-                    doc = toml.load(input_stream)
++                    if sys.version_info >= (3, 11):
++                        import tomllib
++                    else:
++                        import tomli as tomllib
++                    doc = tomllib.loads(input_stream.read())
+                     json.dump(doc, json_buffer, cls=JSONDateTimeEncoder)
+                     json_buffer.write("\n")
+                 else:
+@@ -235,12 +238,12 @@ def yq(input_streams=None, output_stream=None, input_format="yaml", output_forma
+                             raise
+                     output_stream.write(b"\n" if sys.version_info < (3, 0) else "\n")
+             elif output_format == "toml":
+-                import toml
++                import tomli_w
+                 for doc in decode_docs(jq_out, json_decoder):
+                     if not isinstance(doc, dict):
+                         msg = "{}: Error converting JSON to TOML: cannot represent non-object types at top level."
+                         exit_func(msg.format(program_name))
+-                    toml.dump(doc, output_stream)
++                    output_stream.write(tomli_w.dumps(doc))
+         else:
+             if input_format == "yaml":
+                 loader_class = get_loader(use_annotations=False, expand_aliases=expand_aliases,
+@@ -255,9 +258,12 @@ def yq(input_streams=None, output_stream=None, input_format="yaml", output_forma
+                                               force_list=xml_force_list), jq.stdin)
+                     jq.stdin.write("\n")
+             elif input_format == "toml":
+-                import toml
++                if sys.version_info >= (3, 11):
++                    import tomllib
++                else:
++                    import tomli as tomllib
+                 for input_stream in input_streams:
+-                    json.dump(toml.load(input_stream), jq.stdin)
++                    json.dump(tomllib.loads(input_stream.read()), jq.stdin)
+                     jq.stdin.write("\n")
+             else:
+                 raise Exception("Unknown input format")
