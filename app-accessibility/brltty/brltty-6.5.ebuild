@@ -53,7 +53,7 @@ DEPEND="
 	usb? ( virtual/libusb:1 )
 	xml? ( dev-libs/expat )
 	X? (
-	app-accessibility/at-spi2-core:2
+		app-accessibility/at-spi2-core:2
 		sys-apps/dbus
 		x11-libs/libX11
 		x11-libs/libXaw
@@ -192,10 +192,10 @@ src_install() {
 	newinitd "${FILESDIR}"/brltty.initd brltty
 	pushd Autostart/Systemd 1> /dev/null || die
 	emake -j1 INSTALL_ROOT="${ED}" install
-	popd
+	popd || die
 	pushd Autostart/Udev 1> /dev/null || die
 	emake -j1 INSTALL_ROOT="${ED}" install
-	popd
+	popd || die
 
 	dodoc Documents/{CONTRIBUTORS,ChangeLog,HISTORY,README*,TODO}
 	if use doc; then
