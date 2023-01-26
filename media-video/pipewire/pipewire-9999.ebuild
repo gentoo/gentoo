@@ -53,6 +53,7 @@ modemmanager pipewire-alsa readline sound-server ssl system-service systemd test
 # If that works, pulseaudio defaults are loaded into alsa-lib runtime replacing default PCM and CTL.
 # When pipewire-alsa will be able to perform similar check, pipewire-alsa can be enabled unconditionally.
 REQUIRED_USE="
+	bluetooth? ( dbus )
 	jack-sdk? ( !jack-client )
 	modemmanager? ( bluetooth )
 	system-service? ( systemd )
