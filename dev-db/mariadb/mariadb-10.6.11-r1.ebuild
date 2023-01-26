@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
@@ -9,13 +9,10 @@ JAVA_PKG_OPT_USE="jdbc"
 inherit systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
-# Patch version
-PATCH_SET="https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.6.10-patches-01.tar.xz"
-
-SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
-	${PATCH_SET[@]}"
-
 HOMEPAGE="https://mariadb.org/"
+SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
+	https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.6.10-patches-01.tar.xz"
+
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="$(ver_cut 1-2)/${SUBSLOT:-0}"
