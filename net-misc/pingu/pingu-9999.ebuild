@@ -1,25 +1,25 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit git-r3 systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="Policy routing daemon with failover and load-balancing"
 HOMEPAGE="https://github.com/ncopa/pingu"
-SRC_URI=""
 EGIT_REPO_URI="https://github.com/ncopa/${PN}.git"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug doc"
 
 RDEPEND="dev-libs/libev:="
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	sys-kernel/linux-headers
 	virtual/pkgconfig
-	doc? ( app-text/asciidoc )"
+	doc? ( app-text/asciidoc )
+"
 
 # Fix QA with install into path /run/pingu must be created at runtime
 PATCHES=( "${FILESDIR}"/"${PN}"-1.5-makefile.patch )

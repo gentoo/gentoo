@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 if [[ ${PV} != 99999999 ]]; then
 	SRC_URI="http://www.idlcoyote.com/programs/zip_files/coyoteprograms.zip -> ${P}.zip"
@@ -19,7 +19,6 @@ HOMEPAGE="http://www.idlcoyote.com/"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-IUSE=""
 
 RDEPEND="dev-lang/gdl"
 

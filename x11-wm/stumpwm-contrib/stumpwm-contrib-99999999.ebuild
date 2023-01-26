@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit common-lisp-3
 
@@ -18,7 +18,6 @@ HOMEPAGE="https://github.com/stumpwm/stumpwm-contrib/"
 
 LICENSE="GPL-2 GPL-3 BSD-2"
 SLOT="0"
-IUSE=""
 
 RDEPEND=">=x11-wm/stumpwm-0.9.9"
 

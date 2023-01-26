@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 MY_P=tinynotify-send-${PV}
 DESCRIPTION="Common CLI routines for tinynotify-send & sw-notify-send"
@@ -14,11 +14,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc static-libs"
 
 RDEPEND="x11-libs/libtinynotify:0="
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	virtual/pkgconfig
-	doc? ( dev-util/gtk-doc )"
+	doc? ( dev-util/gtk-doc )
+"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	local myconf=(

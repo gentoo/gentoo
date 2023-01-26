@@ -1,12 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit readme.gentoo-r1
 
 DESCRIPTION="Flameeyes's Ruleset for ModSecurity"
 HOMEPAGE="http://www.flameeyes.eu/projects/modsec"
+
 if [[ ${PV} == "99999999" ]]; then
 	EGIT_REPO_URI="https://github.com/Flameeyes/modsec-flameeyes.git"
 	inherit git-r3
@@ -19,7 +20,6 @@ LICENSE="CC-BY-SA-3.0"
 SLOT="0"
 
 RDEPEND=">=www-apache/mod_security-2.5.1"
-DEPEND=""
 
 RULESDIR=/etc/modsecurity/flameeyes
 

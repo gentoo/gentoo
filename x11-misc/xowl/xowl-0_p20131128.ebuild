@@ -3,11 +3,13 @@
 
 EAPI=8
 
-inherit flag-o-matic git-r3 savedconfig toolchain-funcs
+inherit flag-o-matic savedconfig toolchain-funcs
+
+COMMIT="cf0827876835721b8a253111ea6f065b6608164a"
 
 DESCRIPTION="X11 Obstinate Window Lister"
 HOMEPAGE="https://github.com/seanpringle/xowl"
-EGIT_REPO_URI="https://github.com/seanpringle/xowl"
+SRC_URI="https://github.com/seanpringle/xowl/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,6 +23,8 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
+
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
 	default

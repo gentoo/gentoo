@@ -1,26 +1,27 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 inherit autotools git-r3
 
 DESCRIPTION="A notification sending utility (using libtinynotify)"
 HOMEPAGE="https://github.com/mgorny/tinynotify-send/"
-SRC_URI=""
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
-RDEPEND="app-eselect/eselect-notify-send
+RDEPEND="
+	app-eselect/eselect-notify-send
 	x11-libs/libtinynotify:0=
-	~x11-libs/libtinynotify-cli-${PV}"
-DEPEND="${RDEPEND}
+	~x11-libs/libtinynotify-cli-${PV}
+"
+DEPEND="
+	${RDEPEND}
 	dev-util/gtk-doc
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	default

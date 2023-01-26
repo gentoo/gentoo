@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
@@ -23,7 +23,8 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-lang/perl
-	virtual/perl-Getopt-Long"
+	virtual/perl-Getopt-Long
+"
 
 PATCHES=( "${FILESDIR}"/2.8.4-fix-install-paths.patch )
 

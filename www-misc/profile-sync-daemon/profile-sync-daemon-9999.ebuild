@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit git-r3
 
@@ -11,9 +11,9 @@ EGIT_REPO_URI="https://github.com/graysky2/${PN}"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
 
 RDEPEND="
 	app-shells/bash
 	net-misc/rsync[xattr]
-	sys-apps/systemd"
+	sys-apps/systemd
+"

@@ -3,25 +3,21 @@
 
 EAPI=8
 
-inherit autotools git-r3 udev
+inherit udev
 
 DESCRIPTION="Simple udev-based automounter for removable USB media"
 HOMEPAGE="https://github.com/mgorny/uam/"
-EGIT_REPO_URI="https://github.com/mgorny/uam.git"
+SRC_URI="https://github.com/mgorny/uam/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ìx86"
 
 RDEPEND="
 	acct-group/plugdev
 	virtual/udev
 "
 DEPEND="virtual/pkgconfig"
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 pkg_postinst() {
 	elog "To be able to access uam-mounted filesystems, you have to be"

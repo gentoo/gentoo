@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/mgorny/tinynotify-send.git"
 inherit autotools git-r3
@@ -9,18 +9,18 @@ inherit autotools git-r3
 MY_P=tinynotify-send-${PV}
 DESCRIPTION="Common CLI routines for tinynotify-send & sw-notify-send"
 HOMEPAGE="https://github.com/mgorny/tinynotify-send/"
-SRC_URI=""
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
 IUSE="doc static-libs"
 
 RDEPEND="x11-libs/libtinynotify:0="
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	>=dev-util/gtk-doc-1.18
 	virtual/pkgconfig
-	doc? ( dev-util/gtk-doc )"
+	doc? ( dev-util/gtk-doc )
+"
 
 src_prepare() {
 	default

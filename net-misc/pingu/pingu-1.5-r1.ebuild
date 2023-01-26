@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit systemd tmpfiles toolchain-funcs
 
@@ -15,10 +15,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug doc"
 
 RDEPEND="dev-libs/libev:="
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	sys-kernel/linux-headers
 	virtual/pkgconfig
-	doc? ( app-text/asciidoc )"
+	doc? ( app-text/asciidoc )
+"
 
 # Fix QA with install into path /run/pingu must be created at runtime
 PATCHES=( "${FILESDIR}"/"${P}"-makefile.patch )

@@ -3,11 +3,14 @@
 
 EAPI=8
 
-inherit git-r3
+MY_PN="funyahoo-plusplus"
+MY_P="${MY_PN}-${PV}"
+COMMIT="fbbd9c591100aa00a0487738ec7b6acd3d924b3f"
 
 DESCRIPTION="Yahoo! (2016) Protocol Plugin for Pidgin"
 HOMEPAGE="https://github.com/EionRobb/funyahoo-plusplus"
-EGIT_REPO_URI="https://github.com/EionRobb/funyahoo-plusplus"
+SRC_URI="https://github.com/EionRobb/funyahoo-plusplus/archive/${COMMIT}.tar.gz -> ${MY_P}.tar.gz"
+
 LICENSE="GPL-3+"
 SLOT="0"
 
@@ -19,3 +22,5 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
+
+S="${WORKDIR}/${MY_PN}-${COMMIT}"
