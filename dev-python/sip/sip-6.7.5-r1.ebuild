@@ -5,10 +5,14 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
+
 inherit distutils-r1
 
 DESCRIPTION="Python bindings generator for C/C++ libraries"
-HOMEPAGE="https://www.riverbankcomputing.com/software/sip/ https://pypi.org/project/sip/"
+HOMEPAGE="
+	https://www.riverbankcomputing.com/software/sip/
+	https://pypi.org/project/sip/
+"
 
 MY_P=${PN}-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
@@ -28,7 +32,13 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/ply[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/tomli[${PYTHON_USEDEP}]
+	' 3.{8..10})
 "
 
 distutils_enable_sphinx doc --no-autodoc
+
+PATCHES=(
+	"${FILESDIR}"/${P}-tomli.patch
+)
