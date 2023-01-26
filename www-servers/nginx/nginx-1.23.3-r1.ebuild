@@ -40,13 +40,13 @@ HTTP_HEADERS_MORE_MODULE_P="ngx_http_headers_more-${HTTP_HEADERS_MORE_MODULE_PV}
 HTTP_HEADERS_MORE_MODULE_URI="https://github.com/openresty/headers-more-nginx-module/archive/${HTTP_HEADERS_MORE_MODULE_PV}.tar.gz"
 HTTP_HEADERS_MORE_MODULE_WD="${WORKDIR}/headers-more-nginx-module-${HTTP_HEADERS_MORE_MODULE_PV}"
 
-# http_cache_purge (http://labs.frickle.com/nginx_ngx_cache_purge/ - https://github.com/FRiCKLE/ngx_cache_purge - BSD-2 license)
+# http_cache_purge (http://labs.frickle.com/nginx_ngx_cache_purge/ - BSD-2 license)
 HTTP_CACHE_PURGE_MODULE_PV="2.3"
 HTTP_CACHE_PURGE_MODULE_P="ngx_http_cache_purge-${HTTP_CACHE_PURGE_MODULE_PV}"
 HTTP_CACHE_PURGE_MODULE_URI="http://labs.frickle.com/files/ngx_cache_purge-${HTTP_CACHE_PURGE_MODULE_PV}.tar.gz"
 HTTP_CACHE_PURGE_MODULE_WD="${WORKDIR}/ngx_cache_purge-${HTTP_CACHE_PURGE_MODULE_PV}"
 
-# http_slowfs_cache (https://github.com/FRiCKLE/ngx_slowfs_cache/ - http://labs.frickle.com/nginx_ngx_slowfs_cache/ - BSD-2 license)
+# http_slowfs_cache (https://github.com/FRiCKLE/ngx_slowfs_cache/ - BSD-2 license)
 HTTP_SLOWFS_CACHE_MODULE_PV="1.10"
 HTTP_SLOWFS_CACHE_MODULE_P="ngx_http_slowfs_cache-${HTTP_SLOWFS_CACHE_MODULE_PV}"
 HTTP_SLOWFS_CACHE_MODULE_URI="http://labs.frickle.com/files/ngx_slowfs_cache-${HTTP_SLOWFS_CACHE_MODULE_PV}.tar.gz"
@@ -65,7 +65,7 @@ HTTP_LUA_MODULE_URI="https://github.com/openresty/lua-nginx-module/archive/v${HT
 HTTP_LUA_MODULE_WD="${WORKDIR}/lua-nginx-module-${HTTP_LUA_MODULE_PV}"
 LUA_COMPAT=( luajit )
 
-# http_auth_pam (https://github.com/stogh/ngx_http_auth_pam_module/ - http://web.iti.upv.es/~sto/nginx/ - BSD-2 license)
+# http_auth_pam (https://github.com/stogh/ngx_http_auth_pam_module/ - BSD-2 license)
 HTTP_AUTH_PAM_MODULE_PV="1.5.3"
 HTTP_AUTH_PAM_MODULE_P="ngx_http_auth_pam-${HTTP_AUTH_PAM_MODULE_PV}"
 HTTP_AUTH_PAM_MODULE_URI="https://github.com/stogh/ngx_http_auth_pam_module/archive/v${HTTP_AUTH_PAM_MODULE_PV}.tar.gz"
@@ -118,13 +118,13 @@ HTTP_ECHO_MODULE_P="ngx_http_echo-${HTTP_ECHO_MODULE_PV}"
 HTTP_ECHO_MODULE_URI="https://github.com/openresty/echo-nginx-module/archive/v${HTTP_ECHO_MODULE_PV}.tar.gz"
 HTTP_ECHO_MODULE_WD="${WORKDIR}/echo-nginx-module-${HTTP_ECHO_MODULE_PV}"
 
-# modsecurity for nginx (https://github.com/SpiderLabs/ModSecurity-nginx - https://github.com/SpiderLabs/ModSecurity - Apache-2.0 license)
+# modsecurity for nginx (https://github.com/SpiderLabs/ModSecurity-nginx - Apache-2.0 license)
 HTTP_SECURITY_MODULE_PV="1.0.3"
 HTTP_SECURITY_MODULE_P="modsecurity-nginx-${HTTP_SECURITY_MODULE_PV}"
 HTTP_SECURITY_MODULE_URI="https://github.com/SpiderLabs/ModSecurity-nginx/archive/refs/tags/v${HTTP_SECURITY_MODULE_PV}.tar.gz"
 HTTP_SECURITY_MODULE_WD="${WORKDIR}/ModSecurity-nginx-${HTTP_SECURITY_MODULE_PV}"
 
-# push-stream-module (http://www.nginxpushstream.com - https://github.com/wandenberg/nginx-push-stream-module - GPL-3 license)
+# push-stream-module (https://github.com/wandenberg/nginx-push-stream-module - GPL-3 license)
 HTTP_PUSH_STREAM_MODULE_PV="8c02220d484d7848bc8e3a6d9b1c616987e86f66"
 HTTP_PUSH_STREAM_MODULE_P="ngx_http_push_stream-${HTTP_PUSH_STREAM_MODULE_PV}"
 HTTP_PUSH_STREAM_MODULE_URI="https://github.com/wandenberg/nginx-push-stream-module/archive/${HTTP_PUSH_STREAM_MODULE_PV}.tar.gz"
@@ -201,7 +201,9 @@ SRC_URI="
 	nginx_modules_http_sticky? ( ${HTTP_STICKY_MODULE_URI} -> ${HTTP_STICKY_MODULE_P}.tar.bz2 )
 	nginx_modules_http_upload_progress? ( ${HTTP_UPLOAD_PROGRESS_MODULE_URI} -> ${HTTP_UPLOAD_PROGRESS_MODULE_P}.tar.gz )
 	nginx_modules_http_upstream_check? ( ${HTTP_UPSTREAM_CHECK_MODULE_URI} -> ${HTTP_UPSTREAM_CHECK_MODULE_P}.tar.gz )
-	nginx_modules_http_vhost_traffic_status? ( ${HTTP_VHOST_TRAFFIC_STATUS_MODULE_URI} -> ${HTTP_VHOST_TRAFFIC_STATUS_MODULE_P}.tar.gz )
+	nginx_modules_http_vhost_traffic_status? (
+		${HTTP_VHOST_TRAFFIC_STATUS_MODULE_URI} -> ${HTTP_VHOST_TRAFFIC_STATUS_MODULE_P}.tar.gz
+	)
 	nginx_modules_stream_geoip2? ( ${GEOIP2_MODULE_URI} -> ${GEOIP2_MODULE_P}.tar.gz )
 	nginx_modules_stream_javascript? ( ${NJS_MODULE_URI} -> ${NJS_MODULE_P}.tar.gz )
 	rtmp? ( ${RTMP_MODULE_URI} -> ${RTMP_MODULE_P}.tar.gz )
