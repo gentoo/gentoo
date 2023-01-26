@@ -958,68 +958,6 @@ dev-qt/qtwebsockets:6
 # should update to that. #841437
 ~sci-physics/bullet-3.22b
 
-# Alfredo Tupone <tupone@gentoo.org> (2022-04-27)
-# New release of janestreet packages need to tested
-dev-ml/sexplib0:0/0.15
-dev-ml/sexplib:0/0.15
-dev-ml/base:0/0.15
-dev-ml/stdio:0/0.15
-dev-ml/ppx_sexp_conv:0/0.15
-dev-ml/ppx_enumerate:0/0.15
-dev-ml/ppx_compare:0/0.15
-dev-ml/ppx_hash:0/0.15
-dev-ml/ppx_cold:0/0.15
-dev-ml/parsexp:0/0.15
-dev-ml/ppx_base:0/0.15
-dev-ml/ppx_fields_conv:0/0.15
-dev-ml/ppx_here:0/0.15
-dev-ml/ppx_let:0/0.15
-dev-ml/ppx_sexp_message:0/0.15
-dev-ml/ppx_sexp_value:0/0.15
-dev-ml/ppx_assert:0/0.15
-dev-ml/ppx_optcomp:0/0.15
-dev-ml/time_now:0/0.15
-dev-ml/ppx_inline_test:0/0.15
-dev-ml/ppx_bench:0/0.15
-dev-ml/splittable_random:0/0.15
-dev-ml/base_quickcheck:0/0.15
-dev-ml/ppx_bin_prot:0/0.15
-dev-ml/ppx_custom_printf:0/0.15
-dev-ml/ppx_disable_unused_warnings:0/0.15
-dev-ml/ppx_expect:0/0.15
-dev-ml/ppx_fixed_literal:0/0.15
-dev-ml/ppx_log:0/0.15
-dev-ml/ppx_module_timer:0/0.15
-dev-ml/ppx_optional:0/0.15
-dev-ml/ppx_stable:0/0.15
-dev-ml/ppx_string:0/0.15
-dev-ml/typerep:0/0.15
-dev-ml/ppx_typerep_conv:0/0.15
-dev-ml/variantslib:0/0.15
-dev-ml/ppx_variants_conv:0/0.15
-dev-ml/ppx_jane:0/0.15
-dev-ml/int_repr:0/0.15
-dev-ml/base_bigstring:0/0.15
-dev-ml/ppx_js_style:0/0.15
-dev-ml/core:0/0.15
-dev-ml/core_kernel:0/0.15
-dev-ml/sexp_pretty:0/0.15
-dev-ml/expect_test_helpers_core:0/0.15
-dev-ml/timezone:0/0.15
-dev-ml/core_unix:0/0.15
-dev-ml/textutils_kernel:0/0.15
-dev-ml/textutils:0/0.15
-dev-ml/async_kernel:0/0.15
-dev-ml/protocol_version_header:0/0.15
-dev-ml/async_rpc_kernel:0/0.15
-dev-ml/async_unix:0/0.15
-dev-ml/async:0/0.15
-dev-ml/async_extra:0/0.15
-dev-ml/core_bench:0/0.15
-dev-ml/patience_diff:0/0.15
-dev-util/patdiff:0/0.15
-=dev-ml/alcotest-1.6.0*
-
 # Maciej Barć <xgqt@gentoo.org> (2022-02-20)
 # Masked for testing, builds and passes tests but randomly segfaults,
 # meaningless backtrace, debugging (flags, symbols) do not help
