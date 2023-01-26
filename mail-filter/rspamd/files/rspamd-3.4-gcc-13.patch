@@ -1,0 +1,30 @@
+https://github.com/rspamd/rspamd/commit/0a916c632e18e6686e1a2256d5ef2fe1a1cc239f
+
+From 0a916c632e18e6686e1a2256d5ef2fe1a1cc239f Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Wed, 18 Jan 2023 23:54:24 +0100
+Subject: [PATCH] Fix build with gcc 13 by including <cstdint>
+
+Like other versions before, gcc 13 moved some includes around and as a
+result <cstdint> is no longer transitively included. Explicitly include
+it for uint8_t.
+--- a/src/libserver/css/css_tokeniser.hxx
++++ b/src/libserver/css/css_tokeniser.hxx
+@@ -24,6 +24,7 @@
+ #include <variant>
+ #include <list>
+ #include <functional>
++#include <cstdint>
+ #include "mem_pool.h"
+ 
+ namespace rspamd::css {
+--- a/src/libserver/html/html_tag.hxx
++++ b/src/libserver/html/html_tag.hxx
+@@ -23,6 +23,7 @@
+ #include <variant>
+ #include <vector>
+ #include <optional>
++#include <cstdint>
+ 
+ #include "html_tags.h"
+ 

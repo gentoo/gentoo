@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.5-unbundle-snowball.patch"
 	"${FILESDIR}/${PN}-3.3-remove-test-case.patch"
 	"${FILESDIR}/${PN}-3.4-hyperscan-page-alignment.patch"
+	"${FILESDIR}/${P}-gcc-13.patch"
 )
 
 src_prepare() {
