@@ -140,7 +140,7 @@ HTTP_STICKY_MODULE_WD="${WORKDIR}/nginx-goodies-nginx-sticky-module-ng-08a395c66
 HTTP_MOGILEFS_MODULE_PV="020937ff4624fc31928adb51a5c43753bf256b34"
 HTTP_MOGILEFS_MODULE_P="ngx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}"
 HTTP_MOGILEFS_MODULE_URI="https://github.com/vkholodkov/nginx-mogilefs-module/archive/${HTTP_MOGILEFS_MODULE_PV}.tar.gz"
-HTTP_MOGILEFS_MODULE_WD="${WORKDIR}/nginx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}"
+HTTP_MOGILEFS_MODULE_WD="${WORKDIR}/nginx-mogilefs-module-${HTTP_MOGILEFS_MODULE_PV}"
 
 # memc-module (https://github.com/openresty/memc-nginx-module - BSD-2 license)
 HTTP_MEMC_MODULE_PV="c507601211b971fc8b22ed2ce642c80b154791f6"
