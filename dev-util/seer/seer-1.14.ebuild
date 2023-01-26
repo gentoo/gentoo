@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/epasveer/seer/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~ppc64"
 fi
 
 S="${WORKDIR}"/${P}/src
