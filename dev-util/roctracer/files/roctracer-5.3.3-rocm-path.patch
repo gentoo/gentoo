@@ -1,0 +1,12 @@
+Append flags for clang to recognize device lib path
+===================================================================
+--- roctracer-rocm-5.3.3.orig/test/CMakeLists.txt
++++ roctracer-rocm-5.3.3/test/CMakeLists.txt
+@@ -80,6 +80,7 @@ add_dependencies(mytest codeobj_test)
+ function(generate_hsaco TARGET_ID INPUT_FILE OUTPUT_FILE)
+   separate_arguments(CLANG_ARG_LIST UNIX_COMMAND
+     "-O2 -x cl -Xclang -finclude-default-header -cl-denorms-are-zero -cl-std=CL2.0 -Wl,--build-id=sha1
++    --rocm-path=@GENTOO_PORTAGE_EPREFIX@/usr --rocm-device-lib-path=@GENTOO_PORTAGE_EPREFIX@/usr/lib/amdgcn/bitcode
+     -target amdgcn-amd-amdhsa -mcpu=${TARGET_ID} -o ${OUTPUT_FILE} ${INPUT_FILE}")
+   add_custom_command(OUTPUT ${PROJECT_BINARY_DIR}/${OUTPUT_FILE}
+     COMMAND clang ${CLANG_ARG_LIST}
