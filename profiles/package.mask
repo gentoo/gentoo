@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2023-02-19)
+# Obsolete, last consumer is gone.
+# Removal on 2023-03-21. Bug #892209
+app-eselect/eselect-opencascade
+
 # Michał Górny <mgorny@gentoo.org> (2023-02-19)
 # Incompatible with Python 3.11.  Last commit in 2017, archived in 2020.
 # No revdeps.
