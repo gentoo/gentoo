@@ -716,12 +716,6 @@ sci-biology/phred
 # distro packages this. Removal on 2023-01-25.
 sci-misc/flashdot
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-25)
-# Broken with pytest-7.2.  Repository archived upstream.  No reverse
-# dependencies.
-# Removal on 2023-01-24.  Bug #888219.
-dev-python/pytest-toolbox
-
 # Ionen Wolkens <ionen@gentoo.org> (2022-12-24)
 # Upstream dropped wxGTK support in >=games-emulation/pcsx2-1.7.3773,
 # and it now always requires Qt6. Masked given Qt6 is also masked in
