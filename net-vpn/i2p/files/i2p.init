@@ -6,12 +6,10 @@ depend() {
 	need net
 }
 
-readonly WRAPPER_CONF="/usr/share/i2p/wrapper.config"
-
-command=wrapper
-command_args="$WRAPPER_CONF wrapper.syslog.ident=i2p"
+command=i2prouter
+pidfile=/var/run/i2p.pid
 command_background=true
 command_progress=true
 command_user=i2p
-pidfile=/var/run/i2p.pid
-retry='SIGTERM/20 SIGKILL/20'
+stopsig=SIGHUP
+retry=20

@@ -1,0 +1,24 @@
+diff --git a/apps/routerconsole/java/build.xml b/apps/routerconsole/java/build.xml
+index 48f9245..2fba5e4 100644
+--- a/apps/routerconsole/java/build.xml
++++ b/apps/routerconsole/java/build.xml
+@@ -85,6 +85,7 @@
+                 <!-- following jars only present for debian builds -->
+                 <pathelement location="../../jetty/jettylib/tomcat-api.jar" />
+                 <pathelement location="../../../core/java/build/json-simple.jar" />
++                <pathelement location="../../../core/java/build/gnu-getopt.jar" />
+             </classpath>
+         </javac>
+     </target>
+diff --git a/router/java/build.xml b/router/java/build.xml
+index 3449609..bcd9602 100644
+--- a/router/java/build.xml
++++ b/router/java/build.xml
+@@ -277,6 +277,7 @@
+                 <pathelement location="${hamcrest.home}/hamcrest-all.jar" />
+                 <pathelement location="${junit.home}/junit4.jar" />
+                 <pathelement location="../../core/java/build/i2ptest.jar" />
++                <pathelement location="../../core/java/build/gnu-getopt.jar" />
+             </classpath>
+             <compilerarg line="${javac.compilerargs}" />
+         </javac>
