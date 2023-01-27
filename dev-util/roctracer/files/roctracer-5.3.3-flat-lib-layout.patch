@@ -1,0 +1,34 @@
+Install libs directly into /usr/lib64
+===================================================================
+Index: roctracer-rocm-5.3.3/src/CMakeLists.txt
+===================================================================
+--- roctracer-rocm-5.3.3.orig/src/CMakeLists.txt
++++ roctracer-rocm-5.3.3/src/CMakeLists.txt
+@@ -215,12 +215,12 @@ target_include_directories(roctracer_too
+ target_link_libraries(roctracer_tool util roctracer hsa-runtime64::hsa-runtime64 stdc++fs Threads::Threads atomic dl)
+ target_link_options(roctracer_tool PRIVATE -Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/tracer_tool/exportmap -Wl,--no-undefined)
+ 
+-install(TARGETS roctracer_tool LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME} COMPONENT runtime)
++install(TARGETS roctracer_tool LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT runtime)
+ 
+ add_library(hip_stats SHARED hip_stats/hip_stats.cpp)
+ target_compile_definitions(hip_stats PRIVATE __HIP_PLATFORM_AMD__)
+ target_link_libraries(hip_stats roctracer stdc++fs)
+-install(TARGETS hip_stats LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME} COMPONENT runtime)
++install(TARGETS hip_stats LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT runtime)
+ 
+ endif()
+ 
+Index: roctracer-rocm-5.3.3/plugin/file/CMakeLists.txt
+===================================================================
+--- roctracer-rocm-5.3.3.orig/plugin/file/CMakeLists.txt
++++ roctracer-rocm-5.3.3/plugin/file/CMakeLists.txt
+@@ -38,5 +38,5 @@ target_link_options(file_plugin PRIVATE
+ target_link_libraries(file_plugin PRIVATE util roctracer hsa-runtime64::hsa-runtime64 stdc++fs)
+ 
+ install(TARGETS file_plugin LIBRARY
+-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}
+-        COMPONENT runtime)
+\ No newline at end of file
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}
++        COMPONENT runtime)
