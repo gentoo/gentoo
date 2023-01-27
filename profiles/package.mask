@@ -751,12 +751,6 @@ net-misc/valve
 # and package.unmask the whole list alongside pcsx2.
 >=games-emulation/pcsx2-1.7.3773
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2022-12-24)
-# Live only packages for 4 years! Upstream repositories are archived
-# or inactive.
-# Removal: 2023-01-23.  Bug #888175.
-media-libs/kodi-platform
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
 ~dev-util/bindgen-0.63.0
