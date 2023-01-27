@@ -28,7 +28,8 @@ BDEPEND="
 
 PATCHES=( "${FILESDIR}/${PN}-4.3.0-nostrip.patch"
 		"${FILESDIR}/${PN}-4.3.0-no-aqlprofile.patch"
-		"${FILESDIR}/${PN}-5.0.2-gentoo-location.patch" )
+		"${FILESDIR}/${PN}-5.0.2-gentoo-location.patch"
+		"${FILESDIR}/${PN}-5.1.3-remove-Werror.patch" )
 
 python_check_deps() {
 	python_has_version "dev-python/CppHeaderParser[${PYTHON_USEDEP}]"
