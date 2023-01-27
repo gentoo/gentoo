@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,6 @@ DESCRIPTION="User for ceph"
 
 ACCT_USER_ID=267
 ACCT_USER_HOME=/var/lib/ceph
-ACCT_USER_HOME_OWNER=ceph:ceph
 ACCT_USER_GROUPS=( ceph )
 
 acct-user_add_deps

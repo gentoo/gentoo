@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,6 @@ DESCRIPTION="A user for the UniFi Controller"
 
 ACCT_USER_GROUPS=( "unifi" )
 ACCT_USER_HOME="/var/lib/unifi"
-ACCT_USER_HOME_OWNER="unifi:unifi"
 ACCT_USER_ID="113"
 
 acct-user_add_deps
