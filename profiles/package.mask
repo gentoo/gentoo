@@ -794,7 +794,6 @@ dev-python/errorhandler
 dev-python/flask-restful
 dev-python/imread
 dev-python/influxdb
-dev-python/nose-random
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
