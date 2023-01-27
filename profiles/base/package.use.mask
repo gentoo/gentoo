@@ -379,7 +379,6 @@ www-servers/apache apache2_modules_lua
 dev-php/PEAR-Text_Wiki_Mediawiki test
 dev-php/PHP_CodeSniffer test
 dev-php/php-redmine-api test
-dev-php/phptal test
 dev-php/recaptcha test
 dev-php/symfony-config test
 dev-php/symfony-event-dispatcher test
