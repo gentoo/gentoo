@@ -1,0 +1,35 @@
+https://github.com/pauldreik/rdfind/pull/129
+
+(drop limits bit as we already had a patch for that)
+
+From 8c317f0fd5fde95a9aae2319053a196a166aec88 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Wed, 25 Jan 2023 21:12:47 -0800
+Subject: [PATCH] include standard headers <limits> and <cstdint>
+
+gcc 13 moved some includes around and as a result <cstdint> is no longer
+transitively included [1]. Explicitly include it for uint64_t.
+
+Fixes errors like below
+
+../rdfind-1.5.0/rdfind.cc:225:30: error: 'numeric_limits' is not a member of 'std'
+  225 |     o.maximumfilesize = std::numeric_limits<decltype(o.maximumfilesize)>::max();
+      |                              ^~~~~~~~~~~~~~
+
+...
+
+| ../rdfind-1.5.0/Fileinfo.hh:70:20: error: 'std::int64_t' has not been declared
+
+[1] https://gcc.gnu.org/gcc-13/porting_to.html#header-dep-changes
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+--- a/Fileinfo.hh
++++ b/Fileinfo.hh
+@@ -8,6 +8,7 @@
+ #define Fileinfo_hh
+ 
+ #include <array>
++#include <cstdint>
+ #include <string>
+ 
+ // os specific headers
