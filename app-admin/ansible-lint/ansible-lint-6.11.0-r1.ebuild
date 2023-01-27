@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Checks ansible playbooks for practices and behaviour that can be improved"
 HOMEPAGE="https://github.com/ansible/ansible-lint"
-SRC_URI="https://github.com/ansible/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -48,3 +48,8 @@ EPYTEST_DESELECT=(
 )
 
 distutils_enable_tests pytest
+
+# Test suite fails to start without this
+python_test() {
+	epytest test
+}
