@@ -1,0 +1,37 @@
+Remove all install commands for test
+===================================================================
+--- roctracer-rocm-5.3.3.orig/test/CMakeLists.txt
++++ roctracer-rocm-5.3.3/test/CMakeLists.txt
+@@ -87,7 +87,6 @@ function(generate_hsaco TARGET_ID INPUT_
+     DEPENDS ${INPUT_FILE} clang
+     COMMENT "Building ${OUTPUT_FILE}..."
+     VERBATIM)
+-  install(FILES ${PROJECT_BINARY_DIR}/${OUTPUT_FILE} DESTINATION test/${PROJECT_NAME} COMPONENT tests)
+   set(HSACO_TARGET_LIST ${HSACO_TARGET_LIST} ${PROJECT_BINARY_DIR}/${OUTPUT_FILE} PARENT_SCOPE)
+ endfunction(generate_hsaco)
+ 
+@@ -150,24 +149,10 @@ add_dependencies(mytest dlopen)
+ ## Copy the golden traces and test scripts
+ configure_file(run.sh ${PROJECT_BINARY_DIR} COPYONLY)
+ execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink run.sh ${PROJECT_BINARY_DIR}/run_ci.sh)
+-install(PROGRAMS ${PROJECT_BINARY_DIR}/run.sh DESTINATION test/${PROJECT_NAME} COMPONENT tests)
+ 
+ configure_file(${PROJECT_SOURCE_DIR}/script/check_trace.py ${PROJECT_BINARY_DIR}/test/check_trace.py COPYONLY)
+-install(PROGRAMS ${PROJECT_BINARY_DIR}/test/check_trace.py DESTINATION test/${PROJECT_NAME}/test COMPONENT tests)
+ 
+ file(GLOB files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "golden_traces/tests_trace_cmp_levels.txt" "golden_traces/*_trace.txt")
+ foreach(file ${files})
+   configure_file(${file} ${PROJECT_BINARY_DIR}/test/${file} COPYONLY)
+ endforeach()
+-install(DIRECTORY ${PROJECT_BINARY_DIR}/test/golden_traces DESTINATION test/${PROJECT_NAME}/test COMPONENT tests)
+-
+-# install all executables
+-set(all_executables)
+-get_property(all_targets DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY BUILDSYSTEM_TARGETS)
+-foreach(target IN LISTS all_targets)
+-  get_target_property(target_type ${target} TYPE)
+-  if (target_type STREQUAL "EXECUTABLE")
+-    list(APPEND all_executables ${target})
+-  endif()
+-endforeach()
+-install(TARGETS ${all_executables} DESTINATION test/${PROJECT_NAME}/test COMPONENT tests)
