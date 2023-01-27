@@ -696,7 +696,6 @@ sys-auth/pam_fprint
 # Obsolete and incompatible with app-alternatives/* (see news item).
 # Removal on 2023-01-27. bug #886019 and bug #886021 respectively.
 app-eselect/eselect-awk
-app-eselect/eselect-sh
 
 # Sam James <sam@gentoo.org> (2022-12-27)
 # Regression in listing subvolumes (no UUIDs), bug #888549
