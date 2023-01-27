@@ -766,12 +766,6 @@ media-plugins/kodi-peripheral-steamcontroller
 x11-misc/xowl
 x11-wm/xoat
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-24)
-# Obsolete package with broken tests.  Last released in 2018, last
-# activity in 2021.  No reverse dependencies.
-# Removal on 2023-01-23.  Bug #888147.
-dev-python/ndg-httpsclient
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
 ~dev-util/bindgen-0.63.0
