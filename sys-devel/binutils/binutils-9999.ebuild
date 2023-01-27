@@ -171,6 +171,8 @@ src_configure() {
 
 	# Keep things sane
 	strip-flags
+	use cet && filter-flags -mindirect-branch -mindirect-branch=*
+	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
 
 	# ideally we want !tc-ld-is-bfd for best future-proofing, but it needs
 	# https://github.com/gentoo/gentoo/pull/28355
