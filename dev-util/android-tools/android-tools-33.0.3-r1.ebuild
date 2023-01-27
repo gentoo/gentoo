@@ -55,8 +55,9 @@ src_prepare() {
 
 	cd "${S}/vendor/adb" || die
 	eapply "${FILESDIR}/${P}-adb-0023-Update-usage-of-usbdevfs_urb-to-match-new-kernel-UAP.patch"
+	eapply "${FILESDIR}/${P}-adb-gcc-13.patch"
 
-	cd "${S}"
+	cd "${S}" || die
 	rm -r patches || die
 	cmake_src_prepare
 }
