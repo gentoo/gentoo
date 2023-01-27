@@ -703,12 +703,6 @@ app-eselect/eselect-sh
 # https://github.com/kdave/btrfs-progs/issues/562
 =sys-fs/btrfs-progs-6.1
 
-# David Seifert <soap@gentoo.org> (2022-12-26)
-# Lots of K&R C, hidden behind an annoying authwall, fails with modern
-# GCC and Clang (-fcommon), license prohibits distributing, EAPI 6,
-# last release 8 years ago. Removal on 2023-01-25.
-sci-biology/consed
-
 # Ionen Wolkens <ionen@gentoo.org> (2022-12-24)
 # Upstream dropped wxGTK support in >=games-emulation/pcsx2-1.7.3773,
 # and it now always requires Qt6. Masked given Qt6 is also masked in
