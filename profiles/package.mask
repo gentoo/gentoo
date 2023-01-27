@@ -709,7 +709,6 @@ app-eselect/eselect-sh
 # last release 8 years ago. Removal on 2023-01-25.
 sci-biology/consed
 sci-biology/phrap
-sci-biology/phred
 
 # Ionen Wolkens <ionen@gentoo.org> (2022-12-24)
 # Upstream dropped wxGTK support in >=games-emulation/pcsx2-1.7.3773,
