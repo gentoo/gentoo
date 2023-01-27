@@ -764,7 +764,6 @@ media-plugins/kodi-peripheral-steamcontroller
 # maintainer-needed packages for a long time.
 # Removal: 2023-01-23.  Bug #888173.
 x11-misc/xowl
-x11-wm/xoat
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
