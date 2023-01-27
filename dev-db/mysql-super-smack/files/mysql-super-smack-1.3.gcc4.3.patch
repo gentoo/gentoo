@@ -1,9 +1,0 @@
---- a/src/dictionary.h.orig	2008-10-31 19:12:51.000000000 +0100
-+++ b/src/dictionary.h	2008-10-31 19:13:12.000000000 +0100
-@@ -23,6 +23,7 @@
- 
- #include <string>
- #include <vector>
-+#include <cstring>
- #include <time.h>
- #include <stdlib.h>

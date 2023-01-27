@@ -819,12 +819,6 @@ sci-libs/votca-tools
 sci-libs/libgenome
 sci-libs/libmems
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-21)
-# Fails to build both against MySQL and PostgreSQL.  Homepage gone.
-# Last bumped in 2005.
-# Removal on 2023-01-20.  Bug #677528, #807835.
-dev-db/mysql-super-smack
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
 ~dev-util/bindgen-0.63.0
