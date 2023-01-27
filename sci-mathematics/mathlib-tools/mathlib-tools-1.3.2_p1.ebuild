@@ -15,10 +15,10 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/leanprover-community/${PN}.git"
 else
-	H=1ce2e7143b2456867f4a671a078a4e9af3c73c11
-	SRC_URI="https://github.com/leanprover-community/${PN}/archive/${H}.tar.gz
-		-> ${P}.tar.gz"
-	S="${WORKDIR}"/${PN}-${H}
+	_PV=${PV/_p1/}
+	SRC_URI="https://github.com/leanprover-community/${PN}/archive/v${_PV}.tar.gz
+		-> ${P}.gh.tar.gz"
+	S="${WORKDIR}"/${PN}-${_PV}
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -27,7 +27,6 @@ SLOT="0"
 
 BDEPEND="
 	>=dev-python/GitPython-2.1.11[${PYTHON_USEDEP}]
-	>=dev-python/toml-0.10.0[${PYTHON_USEDEP}]
 	dev-python/PyGithub[${PYTHON_USEDEP}]
 	dev-python/atomicwrites[${PYTHON_USEDEP}]
 	dev-python/certifi[${PYTHON_USEDEP}]
@@ -36,12 +35,16 @@ BDEPEND="
 	dev-python/pydot[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/tomli-w[${PYTHON_USEDEP}]
+	dev-python/tomli[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
 "
 RDEPEND="
 	${BDEPEND}
 	sci-mathematics/lean:0/3
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-1.3.2-pull-131.patch )
 
 distutils_enable_tests pytest
 
