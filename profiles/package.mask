@@ -963,20 +963,6 @@ dev-qt/qtwebsockets:6
 # meaningless backtrace, debugging (flags, symbols) do not help
 >app-shells/scsh-0.6.9
 
-# Zoltan Puskas <zoltan@sinustrom.info> (2022-02-18)
-# Multiple vulnerabilities (CVE-2022-{23803,23804,23946,23947})
-# 5.X series is masked to avoid accidental use, but it's kept for
-# industrial users who are in the process of migrating to the new
-# format of the 6.X series.
-<sci-electronics/kicad-6.0.2
-<sci-electronics/kicad-footprints-6.0.2
-<sci-electronics/kicad-i18n-6.0.2
-<sci-electronics/kicad-meta-6.0.2
-<sci-electronics/kicad-packages3d-6.0.2
-<sci-electronics/kicad-symbols-6.0.2
-<sci-electronics/kicad-templates-6.0.2
-<app-doc/kicad-doc-6.0.2
-
 # Eray Aslan <eras@gentoo.org> (2022-01-24)
 # Mask experimental software
 =mail-mta/postfix-3.8*
