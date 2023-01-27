@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Yiyang Wu <xgreenlandforwyy@gmail.com> (2023-01-27)
+# AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
+# See also: https://bugs.gentoo.org/891499
+sys-libs/libomp -llvm_targets_AMDGPU
+
 # Michał Górny <mgorny@gentoo.org> (2023-01-24)
 # libomptarget is only supported on 64-bit architectures.
 >=sys-libs/libomp-16.0.0_pre20230124 -offload
