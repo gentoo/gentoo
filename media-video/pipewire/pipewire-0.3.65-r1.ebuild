@@ -235,6 +235,7 @@ multilib_src_configure() {
 		$(meson_native_use_feature bluetooth libusb) # At least for now only used by bluez5 native (quirk detection of adapters)
 		$(meson_native_use_feature echo-cancel echo-cancel-webrtc) #807889
 		# Not yet packaged.
+		# http://www.bluez.org/le-audio-support-in-pipewire/
 		-Dbluez5-codec-lc3=disabled
 		-Dbluez5-codec-lc3plus=disabled
 		-Dcontrol=enabled # Matches upstream
