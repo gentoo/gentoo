@@ -799,7 +799,6 @@ dev-python/pilkit
 dev-python/PyContracts
 dev-python/python-zipstream
 dev-python/PyUtilib
-dev-python/socketio-client
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
