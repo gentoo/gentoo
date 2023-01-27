@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>arsen@gentoo.org</email>
+    <description>Arsen Arsenović</description>
+  </maintainer>
+  <longdescription>
+    poke.el is an Emacs interface for GNU poke, the extensible editor
+    for structured binary data.
+  </longdescription>
+</pkgmetadata>
