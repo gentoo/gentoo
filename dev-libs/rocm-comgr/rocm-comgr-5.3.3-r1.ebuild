@@ -17,6 +17,9 @@ else
 	KEYWORDS="~amd64"
 fi
 
+IUSE="test"
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	"${FILESDIR}/${PN}-5.1.3-clang-fix-include.patch"
 	"${FILESDIR}/${PN}-5.1.3-rocm-path.patch"
@@ -24,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}/0001-Specify-clang-exe-path-in-Driver-Creation.patch"
 	"${FILESDIR}/0001-Find-CLANG_RESOURCE_DIR-using-clang-print-resource-d.patch"
 	"${FILESDIR}/${PN}-5.3.3-HIPIncludePath-not-needed.patch"
+	"${FILESDIR}/${PN}-5.3.3-fix-tests.patch"
 )
 
 DESCRIPTION="Radeon Open Compute Code Object Manager"
