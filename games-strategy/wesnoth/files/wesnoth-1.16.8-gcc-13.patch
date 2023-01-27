@@ -1,0 +1,32 @@
+https://github.com/wesnoth/wesnoth/commit/5fa07ea15c1736f74d89786d5ae449ed0f91c8a8
+
+From 5fa07ea15c1736f74d89786d5ae449ed0f91c8a8 Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Mon, 23 May 2022 13:44:39 +0200
+Subject: [PATCH] Fix building with GCC 13.
+
+Fixes the following issue:
+base64.hpp:23:49: error: 'uint8_t' was not declared in this scope
+
+and:
+deprecation.hpp:20:22: error: found ':' in nested-name-specifier, expected '::'
+--- a/src/deprecation.hpp
++++ b/src/deprecation.hpp
+@@ -14,6 +14,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ 
+ /** See https://wiki.wesnoth.org/CompatibilityStandards for more info. */
+--- a/src/serialization/base64.hpp
++++ b/src/serialization/base64.hpp
+@@ -15,6 +15,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string_view>
+ #include <vector>
+ 
