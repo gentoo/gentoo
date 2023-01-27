@@ -56,9 +56,6 @@ pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "To generate a sample configuration file, run:"
 		elog "    generate-borgmatic-config"
-	else
-		ewarn "Please note that since version 1.7.0 ${PN} no longer supports old-style command-line action flags like '--create', '--list', etc."
-		ewarn "Make sure all your scripts use actions, e.g. 'create', 'list' and so on"
 	fi
 	elog
 	elog "Systemd users wishing to periodically run borgmatic can use the provided timer and service units."
