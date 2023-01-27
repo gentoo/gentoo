@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/892071
+
+commit eaea31cb93ecddda69a373f83f632e1a450c3c90
+Author: Brock Zheng Techyauld Ltd <yzheng@techyauld.com>
+Date:   Tue Aug 25 20:28:11 2020 +0800
+
+    emacs plugin fixup: GNU/Emacs 27.1 removes function process-kill-without-query
+
+--- a/contrib/xcscope/xcscope.el
++++ b/contrib/xcscope/xcscope.el
+@@ -2006,7 +2006,7 @@
+ 	      (set-process-filter cscope-process cscope-filter-func)
+ 	      (set-process-sentinel cscope-process cscope-sentinel-func)
+ 	      (set-marker (process-mark cscope-process) (point))
+-	      (process-kill-without-query cscope-process)
++              (set-process-query-on-exit-flag cscope-process nil)
+ 	      (if cscope-running-in-xemacs
+ 		  (setq modeline-process ": Searching ..."))
+ 	      (setq buffer-read-only t)
+@@ -2139,7 +2139,7 @@
+ 		   cscope-indexing-script args))
+       (set-process-sentinel cscope-unix-index-process
+ 			    'cscope-unix-index-files-sentinel)
+-      (process-kill-without-query cscope-unix-index-process)
++      (set-process-query-on-exit-flag cscope-unix-index-process nil)
+       )
+     ))
+ 
