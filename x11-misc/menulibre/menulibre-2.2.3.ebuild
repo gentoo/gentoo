@@ -27,7 +27,8 @@ RDEPEND="
 	x11-themes/hicolor-icon-theme"
 BDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/python-distutils-extra[${PYTHON_USEDEP}]')"
+		dev-python/python-distutils-extra[${PYTHON_USEDEP}]')
+	dev-util/intltool"
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
