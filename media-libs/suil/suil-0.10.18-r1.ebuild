@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,15 +23,15 @@ BDEPEND="
 	)
 "
 # This could be way refined, but it's quickly a rabbit hole
-
+# Take care on bumps to check lv2 minimum version!
 RDEPEND="
-	media-libs/lv2
+	>=media-libs/lv2-1.18.3
 	gtk2? (
-		x11-libs/gtk+:2
+		>=x11-libs/gtk+-2.18.0:2
 		dev-libs/glib:2
 	)
 	gtk? (
-		x11-libs/gtk+:3
+		>=x11-libs/gtk+-3.14.0:3
 		dev-libs/glib:2
 	)
 	qt5? (
