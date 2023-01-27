@@ -1,3 +1,5 @@
+https://gitlab.com/samba-team/samba/-/commit/fb937ddc838043deb82b6a557dce8f29001d0a19
+
 # Gentoo bug 855047
 --- a/lib/util/access.c
 +++ b/lib/util/access.c
