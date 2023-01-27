@@ -20,7 +20,7 @@ DESCRIPTION="Open source implementation of the Java programming language"
 HOMEPAGE="https://openjdk.org"
 SRC_URI="https://github.com/openjdk/jdk${SLOT}u/archive/refs/tags/jdk${MY_PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2-with-classpath-exception"
 KEYWORDS="amd64 arm64 ppc64 x86"
 IUSE="alsa debug cups doc examples headless-awt javafx +jbootstrap selinux source"
 
