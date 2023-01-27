@@ -25,6 +25,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
+# Take care on bumps to check minimum versions!
 RDEPEND="
 	dev-libs/libpcre
 	>=dev-libs/serd-0.30.10
