@@ -791,7 +791,6 @@ dev-python/ndg-httpsclient
 # Removal on 2023-01-22.  Bug #888087.
 dev-python/blessings
 dev-python/errorhandler
-dev-python/flask-restful
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
