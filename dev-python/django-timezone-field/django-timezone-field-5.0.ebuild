@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
@@ -21,9 +21,6 @@ KEYWORDS="~amd64"
 RDEPEND="
 	>=dev-python/django-2.2[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/backports-zoneinfo[${PYTHON_USEDEP}]
-	' 3.8)
 "
 BDEPEND="
 	test? (
