@@ -29,7 +29,7 @@ DEPEND="
 	x11-libs/pango
 "
 RDEPEND="
-	!<x11-libs/vte-0.70.0
+	!<x11-libs/vte-0.70.0:2.91
 "
 BDEPEND="
 	${PYTHON_DEPS}
