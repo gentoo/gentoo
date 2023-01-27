@@ -318,11 +318,6 @@ multilib_src_install() {
 		insinto /etc/security
 		doins examples/pam_winbind/pam_winbind.conf
 	fi
-
-	keepdir /var/cache/samba
-	keepdir /var/lib/ctdb
-	keepdir /var/lib/samba/{bind-dns,private}
-	keepdir /var/log/samba
 }
 
 multilib_src_test() {
