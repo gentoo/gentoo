@@ -21,6 +21,20 @@ IUSE="build +split-usr"
 
 RDEPEND="!sys-apps/baselayout-prefix"
 
+pkg_pretend() {
+	local stop
+	if [[ ! -L "${EROOT}"/var/run ]]; then
+		eerror "${EROOT}/var/run must be a symlink to ${EROOT}/run"
+		stop=1
+	fi
+	if [[ ! -L "${EROOT}"/var/lock ]]; then
+		eerror "${EROOT}/var/lock must be a symlink to ${EROOT}/run/lock"
+		stop=1
+	fi
+	[[ -n ${stop} ]] &&
+		die "please fix this before emerging baselayout"
+}
+
 pkg_setup() {
 	multilib_layout
 }
