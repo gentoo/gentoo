@@ -48,7 +48,7 @@ SRC_URI="
 	riscv? ( https://dev.gentoo.org/~arthurzam/distfiles/dev-java/openjdk/openjdk-11.0.14-riscv.patch.xz )
 "
 
-LICENSE="GPL-2"
+LICENSE="GPL-2-with-classpath-exception"
 KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
 
 IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source system-bootstrap systemtap"
