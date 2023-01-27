@@ -4,6 +4,12 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Arsen Arsenović <arsen@gentoo.org> (2023-01-27)
+# Pulls in large amounts of unstable dependencies, blocking
+# stabilization of other packages.
+# Bug #891965.
+sys-block/nbdkit libguestfs
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2022-12-24)
 # dev-util/hip and its rocm dependencies not stable yet
 sci-physics/lammps hip
