@@ -756,7 +756,6 @@ net-misc/valve
 # or inactive.
 # Removal: 2023-01-23.  Bug #888175.
 media-libs/kodi-platform
-media-plugins/kodi-game-libretro-fceumm
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
