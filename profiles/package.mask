@@ -817,7 +817,6 @@ sci-libs/votca-tools
 # libraries with no reverse dependencies.  Last bumped in 2009.
 # Removal on 2023-01-20.  Bug #677558.
 sci-libs/libgenome
-sci-libs/libmems
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
