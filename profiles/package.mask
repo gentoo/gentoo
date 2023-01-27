@@ -73,7 +73,7 @@ x11-plugins/gkwebmon
 x11-plugins/i8krellm
 x11-themes/gkrellm-themes
 
-# Florian Schmaus <flow@gentoo.org> (2013-01-27)
+# Florian Schmaus <flow@gentoo.org> (2023-01-27)
 # Previous dependencies of dev-lang/clojure, now part of the clojure
 # ebuild and no longer needed.
 # Removal on 2023-02-27.
