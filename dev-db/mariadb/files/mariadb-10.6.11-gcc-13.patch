@@ -1,0 +1,71 @@
+https://github.com/MariaDB/server/pull/2460
+https://github.com/facebook/rocksdb/pull/11118
+https://github.com/facebook/rocksdb/commit/bda8d93ba95f34aa91ae8578fe7d3454f3324f6a
+
+From e534c26cb5ce4f62d8f413c91d67ef9e214fd30e Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Tue, 24 Jan 2023 14:07:18 +0100
+Subject: [PATCH] Add include for std::runtime_error
+
+--- a/tpool/aio_liburing.cc
++++ b/tpool/aio_liburing.cc
+@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02111 - 1301 USA*/
+ #include <vector>
+ #include <thread>
+ #include <mutex>
++#include <stdexcept>
+ 
+ namespace
+ {
+
+From 7e32e24397cf651412113017f9abd133a9d2a600 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Tue, 24 Jan 2023 16:23:03 +0100
+Subject: [PATCH] Fix build with gcc 13 by including <cstdint>
+
+Like other versions before, gcc 13 moved some includes around and as a
+result <cstdint> is no longer transitively included [1]. Explicitly include
+it for uint{32,64}_t.
+
+[1] https://gcc.gnu.org/gcc-13/porting_to.html#header-dep-changes
+--- a/storage/rocksdb/rocksdb/db/compaction/compaction_iteration_stats.h
++++ b/storage/rocksdb/rocksdb/db/compaction/compaction_iteration_stats.h
+@@ -5,6 +5,8 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
++
+ #include "rocksdb/rocksdb_namespace.h"
+ 
+ struct CompactionIterationStats {
+--- a/storage/rocksdb/rocksdb/include/rocksdb/utilities/checkpoint.h
++++ b/storage/rocksdb/rocksdb/include/rocksdb/utilities/checkpoint.h
+@@ -8,6 +8,7 @@
+ #pragma once
+ #ifndef ROCKSDB_LITE
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ #include "rocksdb/status.h"
+--- a/storage/rocksdb/rocksdb/table/block_based/data_block_hash_index.h
++++ b/storage/rocksdb/rocksdb/table/block_based/data_block_hash_index.h
+@@ -5,6 +5,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+--- a/storage/rocksdb/rocksdb/util/string_util.h
++++ b/storage/rocksdb/rocksdb/util/string_util.h
+@@ -6,6 +6,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <sstream>
+ #include <string>
+ #include <unordered_map>
