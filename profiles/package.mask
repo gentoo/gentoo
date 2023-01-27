@@ -807,7 +807,6 @@ dev-python/www-authenticate
 # since January 2022.
 # Removal on 2023-01-22.  Bug #841830.
 sci-chemistry/votca-csg
-sci-chemistry/votca-csgapps
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
