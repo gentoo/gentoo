@@ -27,6 +27,7 @@ BDEPEND="
 		dev-python/sphinx_lv2_theme
 	)
 "
+# Take care on bumps to check minimum versions!
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/serd-0.30.10[${MULTILIB_USEDEP}]
