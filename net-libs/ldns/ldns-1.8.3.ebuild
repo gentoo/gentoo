@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{9,10} )
-inherit python-single-r1 multilib-minimal
+inherit autotools python-single-r1 multilib-minimal
 
 DESCRIPTION="A library with the aim to simplify DNS programming in C"
 HOMEPAGE="https://www.nlnetlabs.nl/projects/ldns/"
@@ -13,10 +14,8 @@ LICENSE="BSD"
 SLOT="0/3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc examples python static-libs"
-
-REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
-"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+RESTRICT="test" # missing test directory
 
 BDEPEND="
 	python? ( dev-lang/swig )
@@ -27,14 +26,19 @@ DEPEND="
 	>=dev-libs/openssl-1.1.1l-r1:0=[${MULTILIB_USEDEP},static-libs?]
 	examples? ( net-libs/libpcap )
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	!<net-dns/ldns-utils-1.8.0-r2
 "
 
-RESTRICT="test" # missing test directory
-
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/ldns-config
+)
+
+PATCHES=(
+	"${FILESDIR}/ldns-1.8.1-pkgconfig.patch"
+	"${FILESDIR}/${P}-docs.patch"
+	"${FILESDIR}/${P}-configure-strict.patch"
 )
 
 pkg_setup() {
@@ -42,15 +46,14 @@ pkg_setup() {
 }
 
 src_prepare() {
-	local PATCHES=(
-		"${FILESDIR}/ldns-1.8.1-pkgconfig.patch"
-	)
 	default
+
+	# Drop after 1.8.3
+	eautoreconf
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} \
-	econf \
+	ECONF_SOURCE="${S}" econf \
 		$(use_enable static-libs static) \
 		$(multilib_native_use_with python pyldns) \
 		$(multilib_native_use_with python pyldnsx) \
