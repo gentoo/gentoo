@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/875575
+https://android-review.googlesource.com/c/platform/packages/modules/adb/+/2399311
+
+From ddffab649b12dce1502d63711836b58d007f6a28 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Mon, 23 Jan 2023 23:09:52 +0100
+Subject: [PATCH] Fix build with gcc 13 by including <cstdint>
+
+Like other versions before, gcc 13 moved some includes around and as a
+result <cstdint> is no longer transitively included. Explicitly include
+it for uint{32,64}_t.
+
+Test: local build
+Change-Id: I05a27726b05427c486fd01b013dba4d698abac97
+--- a/file_sync_protocol.h
++++ b/file_sync_protocol.h
+@@ -16,6 +16,8 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
++
+ #define MKID(a, b, c, d) ((a) | ((b) << 8) | ((c) << 16) | ((d) << 24))
+ 
+ #define ID_LSTAT_V1 MKID('S', 'T', 'A', 'T')
