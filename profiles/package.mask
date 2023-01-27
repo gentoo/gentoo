@@ -33,6 +33,46 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-01-27)
+# GKrellM and a variety of plugins.  It's unmaintained for some time.
+# Upstream homepage is gone, and the whole suite is collecting dust
+# and patches.
+# Removal on 2023-02-26.  Bug #892251.
+acct-group/gkrellmd
+acct-user/gkrellmd
+app-admin/gkrellm
+app-laptop/ibam
+media-plugins/gkrellmpc
+x11-plugins/bfm
+x11-plugins/gkrellaclock
+x11-plugins/gkrellfire
+x11-plugins/gkrellkam
+x11-plugins/gkrellm-bgchanger
+x11-plugins/gkrellm-bluez
+x11-plugins/gkrellm-countdown
+x11-plugins/gkrellm-cpupower
+x11-plugins/gkrellm-imonc
+x11-plugins/gkrellmlaunch
+x11-plugins/gkrellm-leds
+x11-plugins/gkrellm-mailwatch
+x11-plugins/gkrellmoon
+x11-plugins/gkrellm-plugins
+x11-plugins/gkrellm-radio
+x11-plugins/gkrellmss
+x11-plugins/gkrellm-trayicons
+x11-plugins/gkrellm-vaiobright
+x11-plugins/gkrellm-volume
+x11-plugins/gkrellmwireless
+x11-plugins/gkrellm-xkb
+x11-plugins/gkrellshoot
+x11-plugins/gkrellstock
+x11-plugins/gkrellsun
+x11-plugins/gkrelltop
+x11-plugins/gkrellweather
+x11-plugins/gkwebmon
+x11-plugins/i8krellm
+x11-themes/gkrellm-themes
+
 # Florian Schmaus <flow@gentoo.org> (2013-01-27)
 # Previous dependencies of dev-lang/clojure, now part of the clojure
 # ebuild and no longer needed.
