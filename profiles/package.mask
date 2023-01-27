@@ -772,25 +772,6 @@ x11-wm/xoat
 # Removal on 2023-01-23.  Bug #888147.
 dev-python/ndg-httpsclient
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-23)
-# Packages that still use dev-python/nose and have no revdeps.
-#
-# dev-python/blessings: EAPI 7, last rel. in 2018, git act. in 2020
-# dev-python/errorhandler: EAPI 7, last rel. in 2016, git act. in 2018
-# dev-python/flask-restful: EAPI 7, last rel. in 2021, git act. in Mar
-# dev-python/imread: non-PEP517, last rel. in 2020, uses pytest in git
-# dev-python/influxdb: EAPI 7, last rel. 2020, archived on GitHub
-# dev-python/nose-random: nose plugin
-# dev-python/pilkit: EAPI 7, last rel. in 2017, uses pytest in git
-# dev-python/PyContracts: EAPI 7, last rel. in 2019, git act. in 2020
-# dev-python/python-zipstream: EAPI 7, last rel. in 2016, git in 2018
-# dev-python/PyUtilib: EAPI 7, last rel. and git act. in 2020
-# dev-python/socketio-client: EAPI 7, last rel. in 2016, git in 2017
-# dev-python/www-authenticate: EAPI 7, last rel. in 2015, git in 2019
-#
-# Removal on 2023-01-22.  Bug #888087.
-dev-python/blessings
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
 ~dev-util/bindgen-0.63.0
