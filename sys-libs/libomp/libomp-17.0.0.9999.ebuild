@@ -28,6 +28,7 @@ RDEPEND="
 	offload? (
 		dev-libs/libffi:=[${MULTILIB_USEDEP}]
 		~sys-devel/llvm-${PV}[${MULTILIB_USEDEP}]
+		llvm_targets_AMDGPU? ( dev-libs/rocr-runtime:0/5.3 )
 	)
 "
 # tests:

@@ -12,6 +12,11 @@
 # https://github.com/gentoo/gentoo/pull/29236#issuecomment-1407373536
 sci-libs/vtk debug
 
+# Yiyang Wu <xgreenlandforwyy@gmail.com> (2023-01-27)
+# AMDGPU enablement depends on dev-libs/rocr-runtime, ~amd64 only
+# See also: https://bugs.gentoo.org/891499
+sys-libs/libomp llvm_targets_AMDGPU
+
 # Michał Górny <mgorny@gentoo.org> (2023-01-21)
 # media-libs/libextractor is masked for removal.
 media-plugins/vdr-xineliboutput libextractor
