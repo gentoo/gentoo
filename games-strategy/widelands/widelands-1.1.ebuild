@@ -40,6 +40,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 	sys-devel/gettext"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1-gcc-13.patch
+)
+
 src_configure() {
 	CMAKE_BUILD_TYPE=Release # disables -Werror
 
