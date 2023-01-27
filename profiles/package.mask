@@ -809,7 +809,6 @@ dev-python/www-authenticate
 sci-chemistry/votca-csg
 sci-chemistry/votca-csgapps
 sci-chemistry/votca-xtp
-sci-libs/votca-tools
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-12-19)
 # This version currently is not compatible with kernel build (yet)
