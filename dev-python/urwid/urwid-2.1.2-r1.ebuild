@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="ncurses"
 inherit distutils-r1 optfeature
 
@@ -23,6 +23,11 @@ IUSE="examples"
 
 distutils_enable_sphinx docs
 distutils_enable_tests setup.py
+
+PATCHES=(
+	# https://github.com/urwid/urwid/pull/517
+	"${FILESDIR}/${P}-fix-py3.11.patch"
+)
 
 src_prepare() {
 	# optional tests broken by modern tornado versions
