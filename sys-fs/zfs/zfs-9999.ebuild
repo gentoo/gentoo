@@ -214,6 +214,9 @@ src_configure() {
 		# Building zfs-mount-generator.c on musl breaks as strndupa
 		# isn't available. But systemd doesn't support musl anyway, so
 		# just disable building it.
+		# UPDATE: it has been fixed since,
+		# https://github.com/openzfs/zfs/commit/1f19826c9ac85835cbde61a7439d9d1fefe43a4a
+		# but we still leave it as this for now.
 		$(use_enable !elibc_musl systemd)
 		$(use_enable debug)
 		$(use_enable nls)
