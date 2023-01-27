@@ -25,6 +25,7 @@ BDEPEND="
 		dev-python/sphinx_lv2_theme
 )
 "
+# Take care on bumps to check minimum versions!
 RDEPEND="
 	>=dev-libs/serd-0.30.10
 	>=dev-libs/sord-0.16.10
