@@ -27,6 +27,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 RDEPEND="
 	dev-python/httplib2[${PYTHON_USEDEP}]
 	dev-python/google-auth[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
