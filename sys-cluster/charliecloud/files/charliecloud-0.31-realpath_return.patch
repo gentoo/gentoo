@@ -1,0 +1,32 @@
+From e6d25474fcd326ae657c08d7b49606aeabc98b51 Mon Sep 17 00:00:00 2001
+From: Oliver Freyermuth <o.freyermuth@googlemail.com>
+Date: Sat, 28 Jan 2023 21:25:09 +0100
+Subject: [PATCH] ch-misc: Do not check errno in realpath_ unless realpath
+ returns NULL
+Bug: https://github.com/hpc/charliecloud/pull/1550
+
+glibc's realpath may set errno also on success, as POSIX specifies
+errno should only be checked after realpath if the return value is not NULL.
+
+See for example:
+ https://bugzilla.redhat.com/show_bug.cgi?id=1916968
+---
+ bin/ch_misc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/ch_misc.c b/bin/ch_misc.c
+index 04ac52a..93a3339 100644
+--- a/bin/ch_misc.c
++++ b/bin/ch_misc.c
+@@ -589,7 +589,7 @@ char *realpath_(const char *path, bool fail_ok)
+    errno = 0;
+    pathc = realpath(path, NULL);
+ 
+-   if (errno != 0) {
++   if (pathc == NULL && errno != 0) {
+       if (fail_ok) {
+          T_ (pathc = strdup(path));
+       } else {
+-- 
+2.39.1
+

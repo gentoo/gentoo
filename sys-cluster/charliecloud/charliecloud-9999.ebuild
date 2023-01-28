@@ -72,6 +72,11 @@ src_configure() {
 	econf "${econf_args[@]}"
 }
 
+src_install() {
+	docompress -x "${EPREFIX}"/usr/share/doc/"${PF}"/examples
+	default
+}
+
 pkg_postinst() {
 	elog "Various builders are supported, as alternative to the internal ch-image."
 	optfeature "Building with Buildah" app-containers/buildah
