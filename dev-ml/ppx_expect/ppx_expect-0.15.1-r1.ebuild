@@ -17,6 +17,7 @@ IUSE="+ocamlopt"
 RESTRICT="test"
 
 RDEPEND="
+	dev-ml/ppxlib:=
 	dev-ml/ppx_inline_test:${SLOT}
 	dev-ml/re:=
 "
