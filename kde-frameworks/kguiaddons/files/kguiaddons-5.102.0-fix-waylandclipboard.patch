@@ -1,0 +1,47 @@
+From dcb254dc6b4e5b76e04a5ee8b4db8177aff10d29 Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Fri, 27 Jan 2023 13:17:43 +0100
+Subject: [PATCH] waylandclipboard: roundtrip to get accurate focus state
+
+The current approach is too complicated and not correct anyway.
+To summarize QGuiApplication::focusWindow is delayed so the focus
+watcher was introduced, however when the window is hidden and
+setMimeData called before Wayland events have been processed,
+then focusWatcher is naturally out of sync, so the check
+was complicated to work around this state. However the same
+issue arises when the window is deleted before calling
+setMimeData.
+Instead of introducing more complicated checks and workaround
+roundtrip so the focusWatcher state is up to date before setting
+the clipboard.
+BUG:463199
+FIXED-IN: 5.103
+---
+ src/systemclipboard/waylandclipboard.cpp | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/src/systemclipboard/waylandclipboard.cpp b/src/systemclipboard/waylandclipboard.cpp
+index 4c68904..d6c4c08 100644
+--- a/src/systemclipboard/waylandclipboard.cpp
++++ b/src/systemclipboard/waylandclipboard.cpp
+@@ -591,9 +591,14 @@ void WaylandClipboard::setMimeData(QMimeData *mime, QClipboard::Mode mode)
+     if (!m_device) {
+         return;
+     }
+-    // If the application is focused, use the normal mechanism so a future paste will not deadlock itself
+-    // On enter Qt delays processing of the enter event but when a window is hidden the leave event arrives after hiding the window
+-    if (const auto fw = QGuiApplication::focusWindow(); (fw && fw->isVisible()) || (!fw && m_keyboardFocusWatcher->hasFocus())) {
++
++    // roundtrip to have accurate focus state when losing focus but setting mime data before processing wayland events.
++    auto native = qGuiApp->platformNativeInterface();
++    auto display = static_cast<struct ::wl_display *>(native->nativeResourceForIntegration("wl_display"));
++    wl_display_roundtrip(display);
++
++    // If the application is focused, use the normal mechanism so a future paste will not deadlock itselfs
++    if (m_keyboardFocusWatcher->hasFocus()) {
+         QGuiApplication::clipboard()->setMimeData(mime, mode);
+         return;
+     }
+-- 
+GitLab
+
