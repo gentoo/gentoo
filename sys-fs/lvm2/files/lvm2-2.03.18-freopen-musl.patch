@@ -1,0 +1,60 @@
+From c2817ff30c4ad1e1a171ee0e914dbecdd486e3cf Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Sat, 28 Jan 2023 14:22:42 +0100
+Subject: [PATCH] Use `freopen()` on {stdin,stdout,stderr}
+
+* ISO C does not guarantee that the standard streams are modifiable
+  lvalues. Glibc even calls out this behaviour as non-portable:
+    https://www.gnu.org/software/libc/manual/html_node/Standard-Streams.html
+---
+ lib/log/log.c      | 2 +-
+ tools/lvmcmdline.c | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/lib/log/log.c b/lib/log/log.c
+index 118a3ba42..aecc72611 100644
+--- a/lib/log/log.c
++++ b/lib/log/log.c
+@@ -208,7 +208,7 @@ int reopen_standard_stream(FILE **stream, const char *mode)
+ 
+ 	_check_and_replace_standard_log_streams(old_stream, new_stream);
+ 
+-	*stream = new_stream;
++	freopen(NULL, mode, *stream);
+ 	return 1;
+ }
+ 
+diff --git a/tools/lvmcmdline.c b/tools/lvmcmdline.c
+index a5bb6a5c5..0ebfa375c 100644
+--- a/tools/lvmcmdline.c
++++ b/tools/lvmcmdline.c
+@@ -3422,7 +3422,7 @@ static int _check_standard_fds(void)
+ 	int err = is_valid_fd(STDERR_FILENO);
+ 
+ 	if (!is_valid_fd(STDIN_FILENO) &&
+-	    !(stdin = fopen(_PATH_DEVNULL, "r"))) {
++	    !freopen(_PATH_DEVNULL, "r", stdin)) {
+ 		if (err)
+ 			perror("stdin stream open");
+ 		else
+@@ -3432,7 +3432,7 @@ static int _check_standard_fds(void)
+ 	}
+ 
+ 	if (!is_valid_fd(STDOUT_FILENO) &&
+-	    !(stdout = fopen(_PATH_DEVNULL, "w"))) {
++	    !freopen(_PATH_DEVNULL, "w", stdout)) {
+ 		if (err)
+ 			perror("stdout stream open");
+ 		/* else no stdout */
+@@ -3440,7 +3440,7 @@ static int _check_standard_fds(void)
+ 	}
+ 
+ 	if (!is_valid_fd(STDERR_FILENO) &&
+-	    !(stderr = fopen(_PATH_DEVNULL, "w"))) {
++	    !freopen(_PATH_DEVNULL, "w", stderr)) {
+ 		printf("stderr stream open: %s\n",
+ 		       strerror(errno));
+ 		return 0;
+-- 
+2.39.1
+
