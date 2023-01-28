@@ -5,7 +5,8 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="sqlite,threads(+)"
-DISTUTILS_SINGLE_IMPL="1"
+DISTUTILS_SINGLE_IMPL=1
+DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 optfeature virtualx xdg
 
@@ -34,18 +35,23 @@ RDEPEND="
 	app-arch/p7zip
 	app-arch/unzip
 	$(python_gen_cond_dep '
+		dev-python/certifi[${PYTHON_USEDEP}]
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-python/distro[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/pypresence[${PYTHON_USEDEP}]
 		dev-python/python-evdev[${PYTHON_USEDEP}]
-		dev-python/python-magic[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/moddb[${PYTHON_USEDEP}]
 	')
 	media-sound/fluid-soundfont
-	net-libs/webkit-gtk:4.1[introspection]
+	|| (
+		net-libs/webkit-gtk:4[introspection]
+		net-libs/webkit-gtk:4.1[introspection]
+	)
 	x11-apps/mesa-progs
 	x11-apps/xgamma
 	x11-apps/xrandr
@@ -56,6 +62,10 @@ RDEPEND="
 distutils_enable_tests pytest
 
 DOCS=( AUTHORS README.rst docs/installers.rst docs/steam.rst )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.5.13-webkit-gtk-4-1.patch"
+)
 
 python_test() {
 	virtx epytest
@@ -69,7 +79,7 @@ python_install_all() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	optfeature "running windows games through wine+DXVK/proton or other Vulkan games (plus ICD for your hardware)" media-libs/vulkan-loader
+	optfeature "running MS Windows games through wine+DXVK/proton or other Vulkan games (plus ICD for your hardware)" media-libs/vulkan-loader
 
 	# Quote README.rst
 	elog ""
