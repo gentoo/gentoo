@@ -84,7 +84,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	caps? ( sys-libs/libcap )
 	dbus? ( sys-apps/dbus )
 	dev-db/sqlite
-	dev-libs/crossguid
+	<dev-libs/crossguid-0.2.2_p20190529
 	>=dev-libs/fribidi-1.0.5
 	cec? ( >=dev-libs/libcec-4.0[raspberry-pi?] )
 	dev-libs/libpcre[cxx]
