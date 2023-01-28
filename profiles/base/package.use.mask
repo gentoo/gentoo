@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2023-01-28)
+# Has some issues building and needs some love first.
+# Bug #891829
+# https://github.com/gentoo/gentoo/pull/29236#issuecomment-1407373536
+sci-libs/vtk debug
+
 # Michał Górny <mgorny@gentoo.org> (2023-01-21)
 # media-libs/libextractor is masked for removal.
 media-plugins/vdr-xineliboutput libextractor
