@@ -48,6 +48,10 @@ DEPEND="
 		net-misc/rsync
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-realpath_return.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
@@ -70,6 +74,11 @@ src_configure() {
 		--with-python="${PYTHON}"
 	)
 	econf "${econf_args[@]}"
+}
+
+src_install() {
+	docompress -x "${EPREFIX}"/usr/share/doc/"${PF}"/examples
+	default
 }
 
 pkg_postinst() {
