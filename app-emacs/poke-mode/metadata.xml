@@ -5,4 +5,8 @@
     <email>arsen@gentoo.org</email>
     <description>Arsen Arsenović</description>
   </maintainer>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
 </pkgmetadata>
