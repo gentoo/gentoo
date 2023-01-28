@@ -1,0 +1,20 @@
+From 69d9c2da29adc9b7a209e78aae950d9834683f58 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Mon, 31 Oct 2022 13:07:05 +0100
+Subject: [PATCH] link against ffmpeg
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/ng/CMakeLists.txt
++++ b/ng/CMakeLists.txt
+@@ -28,7 +28,7 @@ if(USE_GUI)
+     if(APPLE)
+         set_target_properties(netgen PROPERTIES OUTPUT_NAME netgen)
+     endif(APPLE)
+-    target_link_libraries( netgen ${PYTHON_LIBRARIES} ${TCL_LIBRARY} ${TK_LIBRARY})
++    target_link_libraries( netgen ${PYTHON_LIBRARIES} ${TCL_LIBRARY} ${TK_LIBRARY} ${FFMPEG_LIBRARIES})
+     endif(NOT BUILD_FOR_CONDA)
+ 
+     install(TARGETS nggui ${NG_INSTALL_DIR})
+-- 
+2.38.1
+
