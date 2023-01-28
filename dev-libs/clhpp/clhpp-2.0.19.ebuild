@@ -18,7 +18,7 @@ SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/refs/tags/v${MY_PV}.ta
 
 LICENSE="Khronos-CLHPP"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 # Tests require CMock (NOT cmocka), which is currently unpackaged
