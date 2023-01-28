@@ -1,0 +1,44 @@
+From 3fcd43a6ed03d0aff188dfc190cc464c34302a1f Mon Sep 17 00:00:00 2001
+From: Arjen Hiemstra <ahiemstra@heimr.nl>
+Date: Tue, 10 Jan 2023 12:46:20 +0100
+Subject: [PATCH] iconitem: Adjust fade animation to not flicker as much
+
+As it turns out, mix(old texture, new texture, animation value) does
+actually result in a different visual from simply blending the two
+textures on top of each other, because the old texture first gets
+blended with the underlying color. This results in some of the
+underlying color bleeding through, which can cause flickering if the two
+textures are almost the same. To avoid this, change the animation
+slightly so that rather than crossfading, we first fade in the new
+texture then fade out the old texture. This doesn't cause a whole lot of
+visual difference for two completely different textures, but removes the
+flickering when they are very similar.
+
+BUG: 463061
+BUG: 463685
+---
+ src/declarativeimports/core/iconitem.cpp | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/declarativeimports/core/iconitem.cpp b/src/declarativeimports/core/iconitem.cpp
+index de1f56c69..a474a72f9 100644
+--- a/src/declarativeimports/core/iconitem.cpp
++++ b/src/declarativeimports/core/iconitem.cpp
+@@ -645,8 +645,12 @@ QSGNode *IconItem::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *update
+             m_textureChanged = true;
+         }
+ 
+-        updateSubtree(oldNode->firstChild(), 1.0 - m_animValue);
+-        updateSubtree(oldNode->lastChild(), m_animValue);
++        // Rather than doing a perfect crossfade, first fade in the new texture
++        // then fade out the old texture. This is done to avoid the underlying
++        // color bleeding through when both textures are at ~0.5 opacity, which
++        // causes flickering if the two textures are very similar.
++        updateSubtree(oldNode->firstChild(), 2.0 - m_animValue * 2.0);
++        updateSubtree(oldNode->lastChild(), m_animValue * 2.0);
+     } else {
+         if (oldNode->childCount() == 0) {
+             oldNode->appendChildNode(createSubtree(1.0));
+-- 
+GitLab
+
