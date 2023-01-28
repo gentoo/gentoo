@@ -1,0 +1,27 @@
+From b5a581d98d9b57363c44bd98eeab7243fbf13a22 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Mon, 21 Nov 2022 13:00:41 +0100
+Subject: [PATCH] AccountManager: Don't keep finished promises in the cache
+
+AccountPromises are destroyed one event loop cycle after they finished().
+They won't emit finished() again, so they can't be used.
+---
+ src/core/accountmanager.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/core/accountmanager.cpp b/src/core/accountmanager.cpp
+index 42719c5e..da5c37b6 100644
+--- a/src/core/accountmanager.cpp
++++ b/src/core/accountmanager.cpp
+@@ -134,7 +134,7 @@ public:
+         auto promise = mPendingPromises.value(key, nullptr);
+         if (!promise) {
+             promise = new AccountPromise(q);
+-            QObject::connect(promise, &QObject::destroyed, q, [key, this]() {
++            QObject::connect(promise, &AccountPromise::finished, q, [key, this]() {
+                 mPendingPromises.remove(key);
+             });
+             mPendingPromises.insert(key, promise);
+-- 
+GitLab
+
