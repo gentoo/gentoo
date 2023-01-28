@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ RDEPEND="
 	>=x11-libs/cairo-1.6.0
 	>=x11-libs/gdk-pixbuf-2.22.0
 	>=x11-libs/goffice-0.10.12
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[X]
 	>=x11-libs/libX11-1.0.0
 	virtual/glu
 	gnumeric? ( >=app-office/gnumeric-1.12.42:= )
