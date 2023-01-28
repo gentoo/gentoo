@@ -46,4 +46,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-convert-event-start-time-to-local-tz.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-fix-hidpi-scaling.patch"
+	"${FILESDIR}/${P}-fix-kalendarac-crash.patch"
+	"${FILESDIR}/${P}-convert-event-start-time-to-local-tz.patch"
+)
