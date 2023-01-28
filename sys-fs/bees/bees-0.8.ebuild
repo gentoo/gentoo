@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -70,7 +70,7 @@ pkg_pretend() {
 			ewarn "With kernel version 5.4 or later, the kernel may hang when multiple threads"
 			ewarn "are running LOGICAL_INO and dedupe ioctl. This is not exclusively triggered"
 			ewarn "by bees but also other software running such operations, bees will just more"
-			ewarn "likely to trigger the bug. You can work around this issue by reducing the"
+			ewarn "likely trigger this bug. You can work around this issue by reducing the"
 			ewarn "thread count of bees to 1."
 			ewarn
 		fi
