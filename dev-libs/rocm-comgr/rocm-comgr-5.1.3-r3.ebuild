@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}/0001-COMGR-changes-needed-for-upstream-llvm.patch"
 	"${FILESDIR}/${PN}-5.1.3-llvm-15-remove-zlib-gnu"
 	"${FILESDIR}/${PN}-5.1.3-llvm-15-args-changed"
+	"${FILESDIR}/${PN}-5.3.3-fno-stack-protecter.patch"
 )
 
 DESCRIPTION="Radeon Open Compute Code Object Manager"
