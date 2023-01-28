@@ -1,0 +1,33 @@
+From fdbd7e42b6707cf99db48f62d43ca104de632159 Mon Sep 17 00:00:00 2001
+From: Kishore Gopalakrishnan <kishore96@gmail.com>
+Date: Sun, 6 Nov 2022 13:03:22 +0530
+Subject: [PATCH] Convert event start time to user's local timezone
+
+Since we don't display the timezone of the event in the notification,
+this is required when the event is in a different timezone from the
+user's local one.
+
+BUG: 453805
+
+
+(cherry picked from commit 750200aa58e3a8c4073e6304a0e214c1c5beafb9)
+---
+ reminder-daemon/alarmnotification.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/reminder-daemon/alarmnotification.cpp b/reminder-daemon/alarmnotification.cpp
+index 6082e9a..27e53e2 100644
+--- a/reminder-daemon/alarmnotification.cpp
++++ b/reminder-daemon/alarmnotification.cpp
+@@ -30,7 +30,7 @@ AlarmNotification::~AlarmNotification()
+ 
+ void AlarmNotification::send(KalendarAlarmClient *client, const KCalendarCore::Incidence::Ptr &incidence)
+ {
+-    const QDateTime startTime = m_occurrence.isValid() ? m_occurrence : incidence->dtStart();
++    const QDateTime startTime = m_occurrence.isValid() ? m_occurrence.toLocalTime() : incidence->dtStart().toLocalTime();
+     const bool notificationExists = m_notification;
+     if (!notificationExists) {
+         m_notification = new KNotification(QStringLiteral("alarm"));
+-- 
+GitLab
+
