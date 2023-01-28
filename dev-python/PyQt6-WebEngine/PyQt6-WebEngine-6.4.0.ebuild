@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=sip
 PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1 flag-o-matic multiprocessing qmake-utils
 
-QT_PV="6.3:6" # minimum tested qt version
+QT_PV="$(ver_cut 1-2):6"
 MY_P="${P/-/_}"
 
 DESCRIPTION="Python bindings for QtWebEngine"
@@ -35,22 +35,19 @@ BDEPEND="
 src_prepare() {
 	default
 
-	# hack: qmake wants g++ (not clang), try to respect ${CHOST} #726112
+	# hack: qmake queries g++ directly for info (not building) and that doesn't
+	# work with clang, this is to make it at least respect CHOST (bug #726112)
 	mkdir "${T}"/cxx || die
 	ln -s "$(type -P ${CHOST}-g++ || type -P g++ || die)" "${T}"/cxx/g++ || die
 	PATH=${T}/cxx:${PATH}
 }
 
 src_configure() {
-	append-cxxflags -std=c++17 # for clang and old gcc that default to <17
-
-	# workaround until bug 863395 has something to offer
-	local qmake6=$(qt5_get_bindir)/qmake
-	qmake6=${qmake6//qt5/qt6}
+	append-cxxflags -std=c++17 # for old gcc / clang that use <17 (bug #892331)
 
 	DISTUTILS_ARGS=(
 		--jobs=$(makeopts_jobs)
-		--qmake="${qmake6}"
+		--qmake="$(type -P qmake6 || die)"
 		--qmake-setting="$(qt5_get_qmake_args)"
 		--verbose
 
