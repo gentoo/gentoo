@@ -15,7 +15,10 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 
-RDEPEND="dev-python/locket[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/locket[${PYTHON_USEDEP}]
+	dev-python/toolz[${PYTHON_USEDEP}]
+"
 BDEPEND="
 	test? (
 		dev-python/blosc[${PYTHON_USEDEP}]
