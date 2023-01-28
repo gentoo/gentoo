@@ -16,8 +16,12 @@ IUSE="+ocamlopt"
 
 DEPEND="
 	dev-ml/base:=
-	dev-ml/ppx_assert:=
-	dev-ml/stdio:=
 	dev-ml/dune-configurator:=
+	dev-ml/ppxlib:=
+	dev-ml/ppx_assert:=
+	dev-ml/ppx_compare:=
+	dev-ml/ppx_here:=
+	dev-ml/ppx_sexp_conv:=
+	dev-ml/stdio:=
 "
 RDEPEND="${DEPEND}"
