@@ -15,6 +15,9 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="dev-python/mypy_extensions[${PYTHON_USEDEP}]"
+RDEPEND="
+	>=dev-python/mypy_extensions-0.3.0[${PYTHON_USEDEP}]
+	>=dev-python/six-1.11.0[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
