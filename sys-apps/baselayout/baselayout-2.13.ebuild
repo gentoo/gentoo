@@ -21,19 +21,6 @@ IUSE="build +split-usr"
 
 RDEPEND="!sys-apps/baselayout-prefix"
 
-pkg_pretend() {
-	local stop=
-	if [[ ! -L ${EROOT}/var/run ]] && [[ -d ${EROOT}/var/run ]]; then
-		eerror "${EROOT}/var/run must be a symlink to ${EROOT}/run"
-		stop=1
-	fi
-	if [[ ! -L ${EROOT}/var/lock ]] && [[ -d ${EROOT}/var/lock ]]; then
-		eerror "${EROOT}/var/lock must be a symlink to ${EROOT}/run/lock"
-		stop=1
-	fi
-	[[ -z ${stop} ]] || die "please fix this before emerging baselayout"
-}
-
 pkg_setup() {
 	multilib_layout
 }
@@ -377,5 +364,13 @@ pkg_postinst() {
 	if [[ -e "${EROOT}"/etc/env.d/00basic ]]; then
 		ewarn "${EROOT}/etc/env.d/00basic is now ${EROOT}/etc/env.d/50baselayout"
 		ewarn "Please migrate your changes."
+	fi
+
+	# Restore /var/run and /var/lock if we just removed them from 2.11 or 2.12
+	if [[ ! -L ${EROOT}/var/run && ! -e ${EROOT}/var/run ]]; then
+		ln -s ../run "${EROOT}"/var/run
+	fi
+	if [[ ! -L ${EROOT}/var/lock && ! -e ${EROOT}/var/lock ]]; then
+		ln -s ../run/lock "${EROOT}"/var/lock
 	fi
 }
