@@ -270,6 +270,9 @@ multilib_src_install() {
 	# smbspool_krb5_wrapper must only be accessible to root, bug #880739
 	find "${ED}" -type f -name "smbspool_krb5_wrapper" -exec chmod go-rwx {} + || die
 
+	# Remove empty runtime dirs created by build system (bug #892341)
+	find "${ED}"/{run,var} -type d -empty -delete || die
+
 	if multilib_is_native_abi ; then
 		# install ldap schema for server (bug #491002)
 		if use ldap ; then
