@@ -8,7 +8,7 @@ PYTHON_REQ_USE="xml(+)"
 inherit meson python-any-r1 systemd vala xdg
 
 DESCRIPTION="A location information D-Bus service"
-HOMEPAGE="https://gitlab.freedesktop.org/geoclue/geoclue/wikis/home"
+HOMEPAGE="https://gitlab.freedesktop.org/geoclue/geoclue/-/wikis/home"
 SRC_URI="https://gitlab.freedesktop.org/geoclue/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1+ GPL-2+"
