@@ -9,7 +9,8 @@ inherit elisp
 
 DESCRIPTION="Emacs meets GNU poke!"
 HOMEPAGE="https://elpa.gnu.org/packages/poke.html"
-SRC_URI="https://elpa.gnu.org/packages/poke-${PV}.tar"
+# Rehosted ELPA tarballs for compression.
+SRC_URI="https://dev.gentoo.org/~arsen/poke-${PV}.tar.gz -> ${P}-el.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
