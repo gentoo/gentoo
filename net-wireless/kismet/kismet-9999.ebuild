@@ -104,14 +104,13 @@ src_prepare() {
 	#	log_tools/kismetdb_to_wiglecsv.cc trackedcomponent.h \
 	#	trackedelement.h trackedelement_workers.h
 
-	# Don't strip and set correct mangrp
-	sed -i -e 's| -s||g' \
-		-e 's|@mangrp@|root|g' Makefile.in || die
-
 	eapply_user
 
 	if [ "${PV}" = "9999" ]; then
+		sed -i -e 's|@mangrp@|root|g' Makefile.inc.in || die
 		eautoreconf
+	else
+		sed -i -e 's|@mangrp@|root|g' Makefile.inc || die
 	fi
 	# VERSION was incorrectly removed in 4e490cf0b49a287e964df9c5e5c4067f6918909e upstream
 	# https://github.com/kismetwireless/kismet/issues/427
