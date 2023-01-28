@@ -5,8 +5,4 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>blueness@gentoo.org</email>
-		<name>Anthony G. Basile</name>
-	</maintainer>
 </pkgmetadata>
