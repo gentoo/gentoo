@@ -15,7 +15,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd udev
+inherit flag-o-matic meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
@@ -29,7 +29,7 @@ else
 		SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.bz2"
 	fi
 
-	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 DESCRIPTION="Multimedia processing graphs"
@@ -38,8 +38,8 @@ HOMEPAGE="https://pipewire.org/"
 LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
-IUSE="bluetooth dbus doc echo-cancel extra flatpak gstreamer gsettings jack-client jack-sdk lv2
-modemmanager pipewire-alsa readline sound-server ssl system-service systemd test udev v4l X zeroconf"
+IUSE="bluetooth dbus doc echo-cancel extra ffmpeg flatpak gstreamer gsettings jack-client jack-sdk lv2
+modemmanager pipewire-alsa readline sound-server ssl system-service systemd test v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -47,12 +47,15 @@ modemmanager pipewire-alsa readline sound-server ssl system-service systemd test
 # JACK's sink - doing so is likely to yield no audio, cause a CPU
 # cycles consuming loop (and may even cause GUI crashes)!
 
-# TODO: There should be "sound-server? ( || ( alsa bluetooth ) )" here, but ALSA is always enabled
-# TODO: Pulseaudio alsa plugin performs runtime check that pulseaudio server connection will work
-# which provides adequate guarantee that alsa-lib will be able to provide audio services.
-# If that works, pulseaudio defaults are loaded into alsa-lib runtime replacing default PCM and CTL.
-# When pipewire-alsa will be able to perform similar check, pipewire-alsa can be enabled unconditionally.
+# - TODO: There should be "sound-server? ( || ( alsa bluetooth ) )" here, but ALSA is always enabled
+# - TODO: Pulseaudio alsa plugin performs runtime check that pulseaudio server connection will work
+#   which provides adequate guarantee that alsa-lib will be able to provide audio services.
+#   If that works, pulseaudio defaults are loaded into alsa-lib runtime replacing default PCM and CTL.
+#   When pipewire-alsa will be able to perform similar check, pipewire-alsa can be enabled unconditionally.
+# - ffmpeg is only used for pw-cat. We don't build the spa plugin which receives barely any activity.
 REQUIRED_USE="
+	ffmpeg? ( extra )
+	bluetooth? ( dbus )
 	jack-sdk? ( !jack-client )
 	modemmanager? ( bluetooth )
 	system-service? ( systemd )
@@ -72,12 +75,16 @@ BDEPEND="
 		media-gfx/graphviz
 	)
 "
+# While udev could technically be optional, it's needed for a numebr of options,
+# and not really worth it, bug #877769.
 RDEPEND="
 	acct-group/audio
 	media-libs/alsa-lib
 	sys-libs/ncurses:=[unicode(+)]
 	virtual/libintl[${MULTILIB_USEDEP}]
+	virtual/libudev[${MULTILIB_USEDEP}]
 	bluetooth? (
+		dev-libs/glib
 		media-libs/fdk-aac
 		media-libs/libldac
 		media-libs/libfreeaptx
@@ -91,6 +98,7 @@ RDEPEND="
 	extra? (
 		>=media-libs/libsndfile-1.0.20
 	)
+	ffmpeg? ( media-video/ffmpeg:= )
 	flatpak? (
 		dev-libs/glib
 	)
@@ -123,7 +131,6 @@ RDEPEND="
 		acct-user/pipewire
 		acct-group/pipewire
 	)
-	udev? ( virtual/libudev[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l )
 	X? (
 		media-libs/libcanberra
@@ -142,7 +149,6 @@ PDEPEND=">=media-video/wireplumber-0.4.8-r3"
 # Present RDEPEND that are currently always disabled due to the PW
 # code using them being required to be disabled by Gentoo guidelines
 # (i.e. developer binaries not meant for users) and unready code
-#	media-video/ffmpeg:=
 #	media-libs/libsdl2
 #	>=media-libs/vulkan-loader-1.1.69
 #
@@ -153,10 +159,6 @@ DOCS=( {README,INSTALL}.md NEWS )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
-	"${FILESDIR}"/${P}-alsa-node-target.patch
-	"${FILESDIR}"/${P}-bluez-ldac_abr.patch
-	"${FILESDIR}"/${P}-bluetooth-typo.patch
-	"${FILESDIR}"/${P}-rate-update.patch
 )
 
 # limitsdfile related code taken from =sys-auth/realtime-base-0.1
@@ -169,6 +171,9 @@ python_check_deps() {
 
 src_prepare() {
 	default
+
+	# Used for upstream backports
+	[[ -d "${FILESDIR}"/${PV} ]] && eapply "${FILESDIR}"/${PV}
 
 	einfo "Generating ${limitsdfile}"
 	cat > ${limitsdfile} <<- EOF || die
@@ -213,6 +218,7 @@ multilib_src_configure() {
 		$(meson_feature pipewire-alsa) # Allows integrating ALSA apps into PW graph
 		-Dspa-plugins=enabled
 		-Dalsa=enabled # Allows using kernel ALSA for sound I/O (NOTE: media-session is gone so IUSE=alsa/spa_alsa/alsa-backend might be possible)
+		-Dcompress-offload=disabled # Matches upstream, tinycompress unpackaged too
 		-Daudiomixer=enabled # Matches upstream
 		-Daudioconvert=enabled # Matches upstream
 		$(meson_native_use_feature bluetooth bluez5)
@@ -229,11 +235,13 @@ multilib_src_configure() {
 		$(meson_native_use_feature bluetooth libusb) # At least for now only used by bluez5 native (quirk detection of adapters)
 		$(meson_native_use_feature echo-cancel echo-cancel-webrtc) #807889
 		# Not yet packaged.
+		# http://www.bluez.org/le-audio-support-in-pipewire/
 		-Dbluez5-codec-lc3=disabled
 		-Dbluez5-codec-lc3plus=disabled
 		-Dcontrol=enabled # Matches upstream
 		-Daudiotestsrc=enabled # Matches upstream
 		-Dffmpeg=disabled # Disabled by upstream and no major developments to spa/plugins/ffmpeg/ since May 2020
+		$(meson_native_use_feature ffmpeg pw-cat-ffmpeg)
 		$(meson_native_use_feature flatpak)
 		-Dpipewire-jack=enabled # Allows integrating JACK apps into PW graph
 		$(meson_native_use_feature jack-client jack) # Allows PW to act as a JACK client
@@ -252,7 +260,7 @@ multilib_src_configure() {
 		-Dvolume=enabled # Matches upstream
 		-Dvulkan=disabled # Uses pre-compiled Vulkan compute shader to provide a CGI video source (dev thing; disabled by upstream)
 		$(meson_native_use_feature extra pw-cat)
-		$(meson_feature udev)
+		-Dudev=enabled
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
 		-Dsdl2=disabled # Controls SDL2 dependent code (currently only examples when -Dinstalled_tests=enabled which we never install)
 		$(meson_native_use_feature extra sndfile) # Enables libsndfile dependent code (currently only pw-cat)
@@ -301,6 +309,12 @@ multilib_src_install_all() {
 		echo "bluez_monitor.enabled = true" > "${ED}"/etc/wireplumber/bluetooth.lua.d/89-gentoo-sound-server-enable-bluez-monitor.lua || die
 	fi
 
+	if use system-service; then
+		newtmpfiles - pipewire.conf <<-EOF || die
+			d /run/pipewire 0755 pipewire pipewire - -
+		EOF
+	fi
+
 	if ! use systemd; then
 		insinto /etc/xdg/autostart
 		newins "${FILESDIR}"/pipewire.desktop-r1 pipewire.desktop
@@ -318,11 +332,12 @@ multilib_src_install_all() {
 }
 
 pkg_postrm() {
-	use udev && udev_reload
+	udev_reload
 }
 
 pkg_postinst() {
-	use udev && udev_reload
+	udev_reload
+	use system-service && tmpfiles_process pipewire.conf
 
 	elog "It is recommended to raise RLIMIT_MEMLOCK to 256 for users"
 	elog "using PipeWire. Do it either manually or add yourself"
