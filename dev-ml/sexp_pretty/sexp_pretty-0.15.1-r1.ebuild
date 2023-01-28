@@ -16,11 +16,12 @@ KEYWORDS="~amd64"
 IUSE="+ocamlopt"
 
 DEPEND="
-	dev-ml/ppx_base:${SLOT}
-	dev-ml/ppx_hash:=
 	dev-ml/ppxlib:=
-	dev-ml/sexplib:${SLOT}
+	dev-ml/ppx_base:${SLOT}
+	dev-ml/ppx_enumerate:=
+	dev-ml/ppx_hash:=
 	dev-ml/re:=
+	dev-ml/sexplib:${SLOT}
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
