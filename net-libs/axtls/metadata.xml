@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>blueness@gentoo.org</email>
-    <name>Anthony G. Basile</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="httpd">Enables axhttpd web server component</flag>
     <flag name="static">Statically build axhttpd server</flag>
