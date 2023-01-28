@@ -1,0 +1,75 @@
+From d677a08c21fd99e7e8be0a0899f797f9237207e4 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Mon, 21 Nov 2022 13:02:27 +0100
+Subject: [PATCH] Don't cache promises for AccountManager::findAccount
+
+Unlike AccountManager::getAccount and AccountManager::refreshTokens, this
+method does not return an authenticated account. However, the promises are
+cached for all of them in the same store, so it was possible for a call to
+e.g. refreshTokens to get a promise created by findAccount instead, resulting
+in an unexpected result. Just don't cache promises created by findAccount.
+
+BUG: 406839
+BUG: 409122
+BUG: 421664
+BUG: 456923
+---
+ src/core/accountmanager.cpp | 38 ++++++++++++++++++-------------------
+ 1 file changed, 18 insertions(+), 20 deletions(-)
+
+diff --git a/src/core/accountmanager.cpp b/src/core/accountmanager.cpp
+index da5c37b6..c6b8189d 100644
+--- a/src/core/accountmanager.cpp
++++ b/src/core/accountmanager.cpp
+@@ -265,30 +265,28 @@ AccountPromise *AccountManager::refreshTokens(const QString &apiKey, const QStri
+ 
+ AccountPromise *AccountManager::findAccount(const QString &apiKey, const QString &accountName, const QList<QUrl> &scopes)
+ {
+-    auto promise = d->createPromise(apiKey, accountName);
+-    if (!promise->d->isRunning()) {
+-        QTimer::singleShot(0, this, [=]() {
+-            d->ensureStore([=](bool storeOpened) {
+-                if (!storeOpened) {
+-                    promise->d->setError(tr("Failed to open account store"));
+-                    return;
+-                }
++    auto promise = new AccountPromise(this);
++    QTimer::singleShot(0, this, [=]() {
++        d->ensureStore([=](bool storeOpened) {
++            if (!storeOpened) {
++                promise->d->setError(tr("Failed to open account store"));
++                return;
++            }
+ 
+-                const auto account = d->mStore->getAccount(apiKey, accountName);
+-                if (!account) {
+-                    promise->d->setAccount({});
++            const auto account = d->mStore->getAccount(apiKey, accountName);
++            if (!account) {
++                promise->d->setAccount({});
++            } else {
++                const auto currentScopes = account->scopes();
++                if (scopes.isEmpty() || d->compareScopes(currentScopes, scopes)) {
++                    promise->d->setAccount(account);
+                 } else {
+-                    const auto currentScopes = account->scopes();
+-                    if (scopes.isEmpty() || d->compareScopes(currentScopes, scopes)) {
+-                        promise->d->setAccount(account);
+-                    } else {
+-                        promise->d->setAccount({});
+-                    }
++                    promise->d->setAccount({});
+                 }
+-            });
++            }
+         });
+-        promise->d->setRunning();
+-    }
++    });
++    promise->d->setRunning();
+     return promise;
+ }
+ 
+-- 
+GitLab
+
