@@ -1,0 +1,47 @@
+https://github.com/python-greenlet/greenlet/commit/3be53248cd1f8e4859563b84b04054de7a9fcad2
+https://github.com/python-greenlet/greenlet/commit/86c4e2a98f1bd27eff38edd5dba8c10300bc8e64
+
+From 3be53248cd1f8e4859563b84b04054de7a9fcad2 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Mon, 16 Jan 2023 21:37:26 -0800
+Subject: [PATCH] greenlet: Drop using 'register' storage class keyword
+
+This has been dropped in c++17 and newer
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+--- a/src/greenlet/platform/switch_riscv_unix.h
++++ b/src/greenlet/platform/switch_riscv_unix.h
+@@ -11,8 +11,8 @@
+ static int
+ slp_switch(void)
+ {
+-  register int ret;
+-  register long *stackref, stsizediff;
++  int ret;
++  long *stackref, stsizediff;
+   __asm__ volatile ("" : : : REGS_TO_SAVE);
+   __asm__ volatile ("mv %0, sp" : "=r" (stackref) : );
+   {
+
+From 86c4e2a98f1bd27eff38edd5dba8c10300bc8e64 Mon Sep 17 00:00:00 2001
+From: Jason Madden <jamadden@gmail.com>
+Date: Thu, 26 Jan 2023 12:58:46 -0600
+Subject: [PATCH] Add the rebind member to the allocator.
+
+Based on, and fixes #335
+--- a/src/greenlet/greenlet_allocator.hpp
++++ b/src/greenlet/greenlet_allocator.hpp
+@@ -51,6 +51,11 @@ namespace greenlet
+             else
+                 PyMem_Free(p);
+         }
++        // This member is deprecated in C++17 and removed in C++20
++        template< class U >
++        struct rebind {
++            typedef PythonAllocator<U> other;
++        };
+ 
+     };
+ }
+
+
