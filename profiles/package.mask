@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2023-01-28)
+# No upstream releases since 2008.
+# No Gentoo maintainer since 2009.
+# Installs files in the wrong places (bug #455542)
+# and with the wrong mode (bug #892325).
+# Removal on 2023-02-27.
+app-admin/bastille
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-01-28)
 # Recently broke at runtime, and its relationship with evolving
 # swig+python is likely to keep breaking this further without an
