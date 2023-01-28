@@ -1,0 +1,41 @@
+From fc0b487d3f3ac9c9ca0650aa635795b5478de85b Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Fri, 16 Dec 2022 07:28:28 +0100
+Subject: [PATCH] Remove info about removed feature (ShowUserAgent)
+
+CCBUG: 448348
+---
+ doc/kmail2/configure.docbook | 17 -----------------
+ 1 file changed, 17 deletions(-)
+
+diff --git a/doc/kmail2/configure.docbook b/doc/kmail2/configure.docbook
+index 4916acd8b..bb2648370 100644
+--- a/doc/kmail2/configure.docbook
++++ b/doc/kmail2/configure.docbook
+@@ -4167,23 +4167,6 @@ behavior, add to the [OutOfOffice] section:</para>
+ </itemizedlist>
+ </listitem>
+ </varlistentry>
+-<varlistentry>
+-<term><guilabel>ShowUserAgent</guilabel></term>
+-<listitem>
+-<para>
+-Starting in version 1.9, &kmail; can show the User-Agent or X-Mailer value
+-from the message header when using Fancy Headers (see <menuchoice><guimenu>View</guimenu>
+-<guisubmenu>Headers</guisubmenu></menuchoice> menu).
+-To enable this feature, add to the <quote>[Reader]</quote> section:</para>
+-<itemizedlist>
+-<listitem><para>Configuration file:</para>
+-<programlisting>ShowUserAgent=true</programlisting></listitem>
+-<listitem><para><command>kwriteconfig</command></para>
+-<para><prompt>&percnt;</prompt> <userinput><command>kwriteconfig</command> <option>--file <replaceable>/path/to/kmail2rc</replaceable> --group Reader --key ShowUserAgent true</option></userinput>
+-</para></listitem>
+-</itemizedlist>
+-</listitem>
+-</varlistentry>
+ </variablelist>
+ </sect1>
+ 
+-- 
+GitLab
+

@@ -1,0 +1,52 @@
+From 437295a534eca2907e749f18d8d895da50d343b9 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Sat, 10 Dec 2022 19:55:33 +0100
+Subject: [PATCH] Fix bug 460289:  Opening the detailed progress window does
+ nothing
+
+BUG: 460289
+FIXED-IN: 5.22.1
+---
+ src/kmmainwin.cpp | 5 ++++-
+ src/kmmainwin.h   | 2 +-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/kmmainwin.cpp b/src/kmmainwin.cpp
+index 5900bf309..9952667fe 100644
+--- a/src/kmmainwin.cpp
++++ b/src/kmmainwin.cpp
+@@ -36,7 +36,6 @@ using namespace std::chrono_literals;
+ 
+ KMMainWin::KMMainWin(QWidget *)
+     : KXmlGuiWindow(nullptr)
+-    , mProgressBar(new KPIM::ProgressStatusBarWidget(statusBar(), this))
+     , mMessageLabel(new QLabel(i18n("Starting...")))
+ 
+ {
+@@ -51,6 +50,10 @@ KMMainWin::KMMainWin(QWidget *)
+     resize(700, 500); // The default size
+ 
+     mKMMainWidget = new KMMainWidget(this, this, actionCollection());
++
++    // Don't initialize in constructor. We need this statusbar created
++    // Bug 460289
++    mProgressBar = new KPIM::ProgressStatusBarWidget(statusBar(), this);
+     connect(mKMMainWidget, &KMMainWidget::recreateGui, this, &KMMainWin::slotUpdateGui);
+     setCentralWidget(mKMMainWidget);
+     setupStatusBar();
+diff --git a/src/kmmainwin.h b/src/kmmainwin.h
+index 314f14d47..377f6818b 100644
+--- a/src/kmmainwin.h
++++ b/src/kmmainwin.h
+@@ -57,7 +57,7 @@ private:
+     void updateHamburgerMenu();
+     void slotShortcutSaved();
+     void slotFullScreen(bool t);
+-    KPIM::ProgressStatusBarWidget *const mProgressBar;
++    KPIM::ProgressStatusBarWidget *mProgressBar = nullptr;
+     KMMainWidget *mKMMainWidget = nullptr;
+     KToggleAction *mShowMenuBarAction = nullptr;
+     QLabel *const mMessageLabel;
+-- 
+GitLab
+

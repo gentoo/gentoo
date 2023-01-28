@@ -1,0 +1,47 @@
+From 9d37b837eca35bd7976709a9d25d3700c70e321e Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Sat, 31 Dec 2022 10:55:34 +0100
+Subject: [PATCH] Fix bug 460747: Kontact Crashes Upon Start
+
+BUG: 460747
+FIXED-IN: 5.22.1
+---
+ src/kmmainwidget.cpp | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/src/kmmainwidget.cpp b/src/kmmainwidget.cpp
+index 8d332b36b..8c7013f8b 100644
+--- a/src/kmmainwidget.cpp
++++ b/src/kmmainwidget.cpp
+@@ -3403,6 +3403,14 @@ void KMMainWidget::setupActions()
+     QAction *act = actionCollection()->addAction(KStandardAction::Undo, QStringLiteral("kmail_undo"));
+     connect(act, &QAction::triggered, this, &KMMainWidget::slotUndo);
+ 
++    mAccountSettings = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("Account &Settings"), this);
++    actionCollection()->addAction(QStringLiteral("resource_settings"), mAccountSettings);
++    connect(mAccountSettings, &QAction::triggered, this, &KMMainWidget::slotAccountSettings);
++
++    mRestartAccountSettings = new QAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18n("Restart Account"), this);
++    actionCollection()->addAction(QStringLiteral("resource_restart"), mRestartAccountSettings);
++    connect(mRestartAccountSettings, &QAction::triggered, this, &KMMainWidget::slotRestartAccount);
++
+     menutimer = new QTimer(this);
+     menutimer->setObjectName(QStringLiteral("menutimer"));
+     menutimer->setSingleShot(true);
+@@ -3535,13 +3543,6 @@ void KMMainWidget::setupActions()
+     actionCollection()->addAction(QStringLiteral("remove_duplicate_recursive"), mRemoveDuplicateRecursiveAction);
+     connect(mRemoveDuplicateRecursiveAction, &KToggleAction::triggered, this, &KMMainWidget::slotRemoveDuplicateRecursive);
+ 
+-    mAccountSettings = new QAction(QIcon::fromTheme(QStringLiteral("configure")), i18n("Account &Settings"), this);
+-    actionCollection()->addAction(QStringLiteral("resource_settings"), mAccountSettings);
+-    connect(mAccountSettings, &QAction::triggered, this, &KMMainWidget::slotAccountSettings);
+-
+-    mRestartAccountSettings = new QAction(QIcon::fromTheme(QStringLiteral("view-refresh")), i18n("Restart Account"), this);
+-    actionCollection()->addAction(QStringLiteral("resource_restart"), mRestartAccountSettings);
+-    connect(mRestartAccountSettings, &QAction::triggered, this, &KMMainWidget::slotRestartAccount);
+     {
+         QList<QAction *> listActions;
+         auto act = new QAction(i18n("Previous Selected Folder"), this); // TODO fix me i18n
+-- 
+GitLab
+
