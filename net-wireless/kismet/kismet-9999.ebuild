@@ -43,6 +43,7 @@ CDEPEND="
 	networkmanager? ( net-misc/networkmanager:= )
 	dev-libs/glib:=
 	dev-libs/elfutils:=
+	dev-libs/openssl:=
 	sys-libs/zlib:=
 	dev-db/sqlite:=
 	net-libs/libmicrohttpd:=
@@ -59,10 +60,10 @@ CDEPEND="
 		dev-python/websockets[${PYTHON_USEDEP}]
 	')
 	sys-libs/ncurses:=
-	lm-sensors? ( sys-apps/lm-sensors )
+	lm-sensors? ( sys-apps/lm-sensors:= )
 	pcre? ( dev-libs/libpcre )
 	suid? ( sys-libs/libcap )
-	ubertooth? ( net-wireless/ubertooth:= )
+	ubertooth? ( net-wireless/ubertooth )
 	"
 RDEPEND="${CDEPEND}
 	$(python_gen_cond_dep '
