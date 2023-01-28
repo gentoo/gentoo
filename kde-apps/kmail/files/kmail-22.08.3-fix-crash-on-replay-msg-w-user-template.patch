@@ -1,0 +1,38 @@
+From 94e28559c96b71721b02393a23cbfeefa93a607b Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Sat, 7 Jan 2023 00:31:18 +0100
+Subject: [PATCH] Fix bug 463935: Crash on attempting to replay a message with
+ an user template
+
+BUG: 463935
+FIXED-IN: 5.22.2
+---
+ src/kmmainwidget.cpp | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/kmmainwidget.cpp b/src/kmmainwidget.cpp
+index b00db6f53..3ab6a18af 100644
+--- a/src/kmmainwidget.cpp
++++ b/src/kmmainwidget.cpp
+@@ -2096,8 +2096,7 @@ void KMMainWidget::slotCustomReplyAllToMsg(const QString &tmpl)
+     qCDebug(KMAIL_LOG) << "Reply to All with template:" << tmpl;
+ 
+     auto command = new KMReplyCommand(this, msg, MessageComposer::ReplyAll, text, false, tmpl);
+-    command->setReplyAsHtml(messageView()->htmlMail());
+-
++    command->setReplyAsHtml(messageView() ? messageView()->htmlMail() : false);
+     command->start();
+ }
+ 
+@@ -4745,7 +4744,7 @@ void KMMainWidget::slotRedirectCurrentMessage()
+ void KMMainWidget::replyMessageTo(const Akonadi::Item &item, bool replyToAll)
+ {
+     auto command = new KMReplyCommand(this, item, replyToAll ? MessageComposer::ReplyAll : MessageComposer::ReplyAuthor);
+-    command->setReplyAsHtml(messageView()->htmlMail());
++    command->setReplyAsHtml(messageView() ? messageView()->htmlMail() : false);
+     command->start();
+ }
+ 
+-- 
+GitLab
+

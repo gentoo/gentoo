@@ -1,0 +1,29 @@
+From 6618f8f80ccadff908d11db7506b3af8d15ad032 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Fri, 16 Dec 2022 06:59:17 +0100
+Subject: [PATCH] BUG: 459399 Fix Random text in kmail's message list
+ configuration settings
+
+Apply patch from Yaroslav Sidlovsky (thanks)
+BUG: 459399
+FIXED-IN: 5.22.1
+---
+ src/configuredialog/configureappearancepage.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/configuredialog/configureappearancepage.cpp b/src/configuredialog/configureappearancepage.cpp
+index 085179f05..0909db227 100644
+--- a/src/configuredialog/configureappearancepage.cpp
++++ b/src/configuredialog/configureappearancepage.cpp
+@@ -622,7 +622,7 @@ AppearancePageHeadersTab::AppearancePageHeadersTab(QWidget *parent)
+                               .subs(DateFormatter::formatCurrentDate(dateDisplayConfig[i].dateDisplay))
+                               .toString(); // i18n(label, DateFormatter::formatCurrentDate(dateDisplayConfig[i].dateDisplay));
+         } else {
+-            buttonLabel = i18n(label);
++            buttonLabel = KLocalizedString(dateDisplayConfig[i].displayName).toString();
+         }
+         if (dateDisplayConfig[i].dateDisplay == DateFormatter::Custom) {
+             auto hbox = new QWidget(this);
+-- 
+GitLab
+
