@@ -1,0 +1,32 @@
+From cb8e88e6b50a6edc399510b1a8d6307177f00bb7 Mon Sep 17 00:00:00 2001
+From: Moody Liu <mooodyhunter@outlook.com>
+Date: Fri, 14 Oct 2022 23:19:25 +0000
+Subject: [PATCH] kalendarac: set AA_EnableHighDpiScaling attribute before
+ constructing QGuiApplication
+
+---
+ reminder-daemon/kalendaracmain.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/reminder-daemon/kalendaracmain.cpp b/reminder-daemon/kalendaracmain.cpp
+index 0566c7f..c0ae2be 100644
+--- a/reminder-daemon/kalendaracmain.cpp
++++ b/reminder-daemon/kalendaracmain.cpp
+@@ -12,10 +12,13 @@
+ 
+ int main(int argc, char **argv)
+ {
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++    // set this attribute before contructing QGuiApplication
++    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
++#endif
+     QGuiApplication app(argc, argv);
+     app.setQuitOnLastWindowClosed(false);
+ #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+ #endif
+ 
+-- 
+GitLab
+

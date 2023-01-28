@@ -1,0 +1,36 @@
+From 9baa8ca070a73658bec0c5a9a1854e4ec73abd8a Mon Sep 17 00:00:00 2001
+From: Allen Winter <winter@kde.org>
+Date: Fri, 30 Dec 2022 09:29:02 -0500
+Subject: [PATCH] Ensure Akonadi IncidenceChanger doesn't try to show dialogs
+
+Since kalendarac is not a proper QApplication it can't
+show dialogs anyway.  Else you'll see crashes with:
+"QWidget: Cannot create a QWidget without QApplication"
+---
+ reminder-daemon/kalendaralarmclient.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/reminder-daemon/kalendaralarmclient.cpp b/reminder-daemon/kalendaralarmclient.cpp
+index b726ac1..da3b050 100644
+--- a/reminder-daemon/kalendaralarmclient.cpp
++++ b/reminder-daemon/kalendaralarmclient.cpp
+@@ -6,6 +6,7 @@
+ #include "calendarinterface.h"
+ #include "logging.h"
+ 
++#include <Akonadi/IncidenceChanger>
+ #include <KIO/ApplicationLauncherJob>
+ 
+ #include <KCheckableProxyModel>
+@@ -52,6 +53,8 @@ void KalendarAlarmClient::setupAkonadi()
+     const QStringList mimeTypes{Event::eventMimeType(), Todo::todoMimeType()};
+     mCalendar = Akonadi::ETMCalendar::Ptr(new Akonadi::ETMCalendar(mimeTypes));
+     mCalendar->setObjectName(QStringLiteral("KalendarAC's calendar"));
++    Akonadi::IncidenceChanger *changer = mCalendar->incidenceChanger();
++    changer->setShowDialogsOnError(false);
+     mETM = mCalendar->entityTreeModel();
+ 
+     connect(&mCheckTimer, &QTimer::timeout, this, &KalendarAlarmClient::checkAlarms);
+-- 
+GitLab
+
