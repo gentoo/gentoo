@@ -1,0 +1,28 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/1511
+
+From 18fa7a555cc43c7219a53d836d9561faec6d6310 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 28 Jan 2023 11:04:48 +0000
+Subject: [PATCH] spa: bluez5: fix dependency on glib in bluez5_deps
+
+In de595a78ff958b8314d853f6266d5832529d9729, we started to require glib
+for building bluez and introduced dependencies for the needed gio* bits,
+but we only ever check for glib itself for gstreamer or flatpak.
+
+Drop glib from the dep list to match the summary() & subsequent bluez_deps_found
+logic in spa/meson.build.
+
+Fixes: https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/2999
+--- a/spa/plugins/bluez5/meson.build
++++ b/spa/plugins/bluez5/meson.build
+@@ -1,6 +1,6 @@
+ gnome = import('gnome')
+ 
+-bluez5_deps = [ mathlib, dbus_dep, glib2_dep, sbc_dep, bluez_dep, gio_dep, gio_unix_dep ]
++bluez5_deps = [ mathlib, dbus_dep, sbc_dep, bluez_dep, gio_dep, gio_unix_dep ]
+ foreach dep: bluez5_deps
+   if not dep.found()
+     subdir_done()
+-- 
+2.39.1
+
