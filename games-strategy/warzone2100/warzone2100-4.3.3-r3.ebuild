@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0 public-domain vulkan? ( GPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 # Upstream requested debug support
 IUSE="debug discord nls videos vulkan"
 
