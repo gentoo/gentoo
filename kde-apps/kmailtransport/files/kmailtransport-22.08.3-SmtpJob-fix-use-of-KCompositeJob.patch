@@ -1,0 +1,49 @@
+From 7b2a5ccea0c54b81245acdbbea77a13e570bba2b Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Mon, 21 Nov 2022 11:57:51 +0100
+Subject: [PATCH] SmtpJob: Fix use of KCompositeJob
+
+SmtpJob overrides slotResult, but this had two issues. First, it connected
+to LoginJob::result itself, though addJob already does that. Second, in two
+cases it did not remove finished jobs from the list of subjobs, leading to
+dangling pointers and messing up state. This was most likely only reached
+in the case of an expired XOAUTH2 access_token and caused the job to fail
+after a successful refresh.
+
+BUG: 406839
+BUG: 409122
+BUG: 421664
+BUG: 456923
+---
+ src/kmailtransport/plugins/smtp/smtpjob.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/kmailtransport/plugins/smtp/smtpjob.cpp b/src/kmailtransport/plugins/smtp/smtpjob.cpp
+index 9d565af..5be220a 100644
+--- a/src/kmailtransport/plugins/smtp/smtpjob.cpp
++++ b/src/kmailtransport/plugins/smtp/smtpjob.cpp
+@@ -308,7 +308,6 @@ void SmtpJobPrivate::doLogin()
+         break;
+     }
+ 
+-    q->connect(login, &KJob::result, q, &SmtpJob::slotResult);
+     q->addSubjob(login);
+     login->start();
+     qCDebug(MAILTRANSPORT_SMTP_LOG) << "Login started";
+@@ -352,11 +351,12 @@ bool SmtpJob::doKill()
+ void SmtpJob::slotResult(KJob *job)
+ {
+     if (s_sessionPool.isDestroyed()) {
++        removeSubjob(job);
+         return;
+     }
+-
+     if (qobject_cast<KSmtp::LoginJob *>(job)) {
+         if (job->error() == KSmtp::LoginJob::TokenExpired) {
++            removeSubjob(job);
+             startPasswordRetrieval(/*force refresh */ true);
+             return;
+         }
+-- 
+GitLab
+
