@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# See https://sourceware.org/gdb/wiki/DistroAdvice for general packaging
+# tips & notes.
+
 PYTHON_COMPAT=( python3_{9..11} )
 inherit flag-o-matic python-single-r1 strip-linguas toolchain-funcs
 
