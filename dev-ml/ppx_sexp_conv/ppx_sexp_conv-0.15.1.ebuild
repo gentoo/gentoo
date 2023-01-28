@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ IUSE="+ocamlopt"
 DEPEND="
 	dev-ml/base:${SLOT}
 	dev-ml/findlib:=
-	>=dev-ml/ppxlib-0.23:=
+	>=dev-ml/ppxlib-0.26:=
 	>=dev-ml/ocaml-compiler-libs-0.11.0:=
 "
 RDEPEND="${DEPEND}"
