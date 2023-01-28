@@ -20,9 +20,10 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
+	>=dev-python/click-7.0[${PYTHON_USEDEP}]
 	>=dev-python/cloudpickle-0.2.2[${PYTHON_USEDEP}]
 	>=dev-python/fsspec-0.6.0[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.15.1[${PYTHON_USEDEP}]
