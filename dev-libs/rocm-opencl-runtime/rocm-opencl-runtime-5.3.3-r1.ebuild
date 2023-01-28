@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,24 +27,11 @@ BDEPEND=">=dev-util/rocm-cmake-${PV}
 	test? ( >=x11-apps/mesa-progs-8.5.0[X] )
 	"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-3.5.0-do-not-install-libopencl.patch"
-)
-
 S="${WORKDIR}/ROCm-OpenCL-Runtime-rocm-${PV}"
 S1="${WORKDIR}/ROCclr-rocm-${PV}"
 
 src_prepare() {
-	# Remove "clinfo" - use "dev-util/clinfo" instead
-	#[ -d tools/clinfo ] && rm -rf tools/clinfo || die
-
 	cmake_src_prepare
-
-	hprefixify amdocl/CMakeLists.txt
-
-	sed -e "s/DESTINATION lib/DESTINATION ${CMAKE_INSTALL_LIBDIR}/g" -i packaging/CMakeLists.txt || die
-	# remove trailing CR or it won't work
-	sed -e "s/\r$//g" -i tests/ocltst/module/perf/oclperf.exclude || die
 
 	pushd ${S1} || die
 	# Bug #753377
@@ -64,7 +51,8 @@ src_configure() {
 		-DROCM_PATH="${EPREFIX}/usr"
 		-DBUILD_TESTS=$(usex test ON OFF)
 		-DEMU_ENV=ON
-		# -DCMAKE_STRIP=""
+		-DBUILD_ICD=OFF
+		-DFILE_REORG_BACKWARD_COMPATIBILITY=OFF
 	)
 	cmake_src_configure
 }
