@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="tools"
+IUSE=""
 
 DEPEND="
 	>=sys-apps/util-linux-2.30.2
@@ -96,9 +96,6 @@ src_configure() {
 	EOF
 	if [[ ${PV} != "9999" ]] ; then
 		echo BEES_VERSION=v${PV} >>localconf || die
-	fi
-	if use tools; then
-		echo OPTIONAL_INSTALL_TARGETS=install_tools >>localconf || die
 	fi
 }
 
