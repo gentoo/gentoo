@@ -1,0 +1,34 @@
+From 23cb03267ae1b1cdb8a75be1992d2fbf122aaa6e Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Tue, 24 Jan 2023 10:20:01 +0100
+Subject: [PATCH] Only recreate icons if an icon dir changed
+
+Other paths that we are watching can end in "icons"
+as we are watching subdirs. Make sure to not take the wrong code
+path and only do an icon change if one our watched icon dirs
+changes.
+BUG:463353
+FIXED-IN:5.103
+
+
+(cherry picked from commit b6a3e25e81014110f1e0f470832006cc60cbc86d)
+---
+ src/kded.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/kded.cpp b/src/kded.cpp
+index 1f90f9c..b473f1c 100644
+--- a/src/kded.cpp
++++ b/src/kded.cpp
+@@ -525,7 +525,7 @@ void Kded::dirDeleted(const QString &path)
+ 
+ void Kded::update(const QString &path)
+ {
+-    if (path.endsWith(QLatin1String("/icons"))) {
++    if (path.endsWith(QLatin1String("/icons")) && m_pDirWatch->contains(path)) {
+         // If the dir was created or updated there could be new folders to merge into the active theme(s)
+         QDBusMessage message = QDBusMessage::createSignal(QStringLiteral("/KIconLoader"), QStringLiteral("org.kde.KIconLoader"), QStringLiteral("iconChanged"));
+         message << 0;
+-- 
+GitLab
+
