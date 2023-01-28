@@ -35,10 +35,6 @@ S="${WORKDIR}/idea-IC-${PV}"
 
 QA_PREBUILT="opt/${PN}/*"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-jdk.patch"
-)
-
 src_unpack() {
 
 	default_src_unpack
