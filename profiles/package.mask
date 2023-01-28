@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-01-28)
+# No upstream releases since 2010. No longer maintained
+# upstream. ruby27-only package. Masked for removal on 2023-02-27.
+dev-ruby/ruby_gntp
+
 # Mike Gilbert <floppym@gentoo.org> (2023-01-28)
 # No upstream releases since 2008.
 # No Gentoo maintainer since 2009.
