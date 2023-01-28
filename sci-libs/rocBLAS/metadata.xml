@@ -12,8 +12,11 @@
     <email>xgreenlandforwyy@gmail.com</email>
     <name>Yiyang Wu</name>
   </maintainer>
-    <use>
-        <flag name="test">Perform rocblas-test to compare the result between rocBLAS and system BLAS.</flag>
-        <flag name="benchmark">Build and install rocblas-bench.</flag>
-    </use>
+  <use>
+    <flag name="test">Perform rocblas-test to compare the result between rocBLAS and system BLAS.</flag>
+    <flag name="benchmark">Build and install rocblas-bench.</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">ROCmSoftwarePlatform/rocBLAS</remote-id>
+  </upstream>
 </pkgmetadata>
