@@ -15,12 +15,14 @@ SRC_URI="
 
 LICENSE="GPL-2 GPL-3 CC-BY-SA-3.0 CC-BY-SA-4.0 CC0-1.0 public-domain ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="debug nettle recorder sqlite vulkan wiimote"
+KEYWORDS="~amd64 ~ppc64 ~x86"
+IUSE="debug nettle recorder sqlite wiimote"
 
-# Don't unbundle irrlicht and bullet
+# - Don't unbundle irrlicht and bullet
 # both are modified and system versions will break the game
 # https://sourceforge.net/p/irrlicht/feature-requests/138/
+# - For >1.4, restore USE=vulkan and make shaderc dep optional,
+# and pass -DNO_SHADERC to cmake.
 RDEPEND="
 	dev-cpp/libmcpp
 	dev-libs/angelscript:=
@@ -31,6 +33,7 @@ RDEPEND="
 	media-libs/libsdl2[opengl,video]
 	media-libs/libvorbis
 	media-libs/openal
+	media-libs/shaderc
 	net-libs/enet:1.3=
 	net-misc/curl
 	sys-libs/zlib
@@ -39,7 +42,6 @@ RDEPEND="
 	!nettle? ( >=dev-libs/openssl-1.0.1d:= )
 	recorder? ( media-libs/libopenglrecorder )
 	sqlite? ( dev-db/sqlite:3 )
-	vulkan? ( media-libs/shaderc )
 	wiimote? ( net-wireless/bluez )
 "
 DEPEND="${RDEPEND}"
@@ -67,7 +69,6 @@ src_configure() {
 		-DUSE_CRYPTO_OPENSSL=$(usex nettle no yes)
 		-DBUILD_RECORDER=$(usex recorder)
 		-DUSE_WIIUSE=$(usex wiimote)
-		-DNO_SHADERC=$(usex !vulkan)
 		-DSTK_INSTALL_BINARY_DIR=bin
 		-DSTK_INSTALL_DATA_DIR=share/${PN}
 		-DBUILD_SHARED_LIBS=OFF # build bundled libsquish as static library
