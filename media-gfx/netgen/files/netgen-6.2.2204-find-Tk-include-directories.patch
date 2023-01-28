@@ -1,0 +1,21 @@
+From 53c45343f5a26841be10d930467e215da4a779f2 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sun, 30 Oct 2022 15:17:55 +0100
+Subject: [PATCH] find Tk include directories
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -270,6 +270,9 @@ if (USE_GUI)
+     endif(APPLE)
+     find_package(OpenGL REQUIRED)
+ 
++    include_directories(${TK_INCLUDE_PATH}/generic)
++    include_directories(${TK_INCLUDE_PATH}/unix)
++
+     target_compile_definitions(netgen_gui INTERFACE -DTCL -DOPENGL -DUSE_TOGL_2 -DUSE_TCL_STUBS -DUSE_TK_STUBS)
+     target_include_directories(netgen_gui INTERFACE ${TCL_INCLUDE_PATH} ${TK_INCLUDE_PATH})
+     target_link_libraries(netgen_gui INTERFACE ${TCL_STUB_LIBRARY} ${TK_STUB_LIBRARY})
+-- 
+2.38.1
+
