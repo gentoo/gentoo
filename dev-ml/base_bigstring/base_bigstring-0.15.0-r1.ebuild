@@ -14,5 +14,8 @@ SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 IUSE="+ocamlopt"
 
-DEPEND="dev-ml/int_repr:${SLOT}"
+DEPEND="
+	dev-ml/base:=
+	dev-ml/int_repr:${SLOT}
+"
 RDEPEND="${DEPEND}"
