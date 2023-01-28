@@ -16,11 +16,12 @@ IUSE="+ocamlopt"
 
 DEPEND="
 	>=dev-lang/ocaml-4.09
+	dev-ml/core:=
 	dev-ml/core_kernel:${SLOT}
 	dev-ml/expect_test_helpers_core:${SLOT}
 	dev-ml/ocaml_intrinsics:${SLOT}
-	dev-ml/timezone:${SLOT}
 	dev-ml/spawn:${SLOT}
+	dev-ml/timezone:${SLOT}
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
