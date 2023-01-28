@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rocm.eclass
@@ -138,17 +138,18 @@ _rocm_set_globals() {
 	# may help. Gentoo have patches to enable gfx1031 as well.
 	local unofficial_amdgpu_targets official_amdgpu_targets
 	case ${ROCM_VERSION} in
-		4.*)
-			unofficial_amdgpu_targets=(
-				gfx803 gfx900 gfx1010 gfx1011 gfx1012 gfx1030
-			)
-			official_amdgpu_targets=(
-				gfx906 gfx908
-			)
-			;;
-		5.*)
+		5.[0-3].*)
 			unofficial_amdgpu_targets=(
 				gfx803 gfx900 gfx1010 gfx1011 gfx1012 gfx1031
+			)
+			official_amdgpu_targets=(
+				gfx906 gfx908 gfx90a gfx1030
+			)
+			;;
+		5.*|9999)
+			unofficial_amdgpu_targets=(
+				gfx803 gfx900 gfx1010 gfx1011 gfx1012
+				gfx1031 gfx1100 gfx1101 gfx1102
 			)
 			official_amdgpu_targets=(
 				gfx906 gfx908 gfx90a gfx1030
