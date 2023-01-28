@@ -1,0 +1,18 @@
+https://src.fedoraproject.org/rpms/msort/blob/addd4dfbb265c79e76f3329c691639d3cf837cb4/f/msort-configure-c99.patch
+
+Include <stdio.h> for the printf function.  This avoids a check
+failure with future compilers which do not support implicit function
+declarations.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -18,7 +18,7 @@ AC_DEFUN([AC_C_LONG_LONG],
+ ])
+ 
+ AC_DEFUN([AC_C_PRINTF_THSEP],
+-[AC_TRY_COMPILE(,[printf("%'2d",101);],ac_cv_c_printf_thsep=yes,ac_cv_c_printf_thsep=no)
++[AC_TRY_COMPILE([#include <stdio.h>],[printf("%'2d",101);],ac_cv_c_printf_thsep=yes,ac_cv_c_printf_thsep=no)
+  if test $ac_cv_c_printf_thsep = yes; then
+   AC_DEFINE(HAVE_PRINTF_THSEP, 1, [compiler understands printf flag for thousands separation in ints])
+  fi
+
