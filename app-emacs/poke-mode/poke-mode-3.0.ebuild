@@ -9,7 +9,8 @@ inherit elisp
 
 DESCRIPTION="Major mode for editing Poke programs"
 HOMEPAGE="https://elpa.gnu.org/packages/poke-mode.html"
-SRC_URI="https://elpa.gnu.org/packages/${P}.tar"
+# Rehosted ELPA tarballs for compression.
+SRC_URI="https://dev.gentoo.org/~arsen/poke-mode-${PV}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
