@@ -673,7 +673,7 @@ apache-2_src_install() {
 
 	# empty dirs
 	local i
-	for i in /var/lib/dav /var/log/apache2 /var/cache/apache2 ; do
+	for i in /var/lib/dav /var/log/apache2 ; do
 		keepdir ${i}
 		fowners apache:apache ${i}
 		fperms 0750 ${i}
