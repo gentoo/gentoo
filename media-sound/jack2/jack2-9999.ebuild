@@ -56,10 +56,6 @@ PDEPEND="tools? ( media-sound/jack-example-tools )"
 
 DOCS=( AUTHORS.rst ChangeLog.rst README.rst README_NETJACK2 )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.9.21-python3.11.patch
-)
-
 src_prepare() {
 	default
 
