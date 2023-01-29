@@ -1,0 +1,114 @@
+From eacfc6961158cc4f493a5d7e3c47619157f54291 Mon Sep 17 00:00:00 2001
+From: ivan tkachenko <me@ratijas.tk>
+Date: Wed, 11 Jan 2023 23:00:03 +0300
+Subject: [PATCH] Page: Split default page title delegate into separate
+ component
+
+There's no need to clutter Page component with potentially unused Items
+and IDs, and an extra self-contained component wouldn't hurt.
+
+(cherry picked from commit e9f19ecd20a881a6bfeaf0676fc8d6f570fe387f)
+---
+ src/CMakeLists.txt                            |  1 +
+ src/controls/Page.qml                         | 22 +---------
+ .../private/DefaultPageTitleDelegate.qml      | 43 +++++++++++++++++++
+ 3 files changed, 46 insertions(+), 20 deletions(-)
+ create mode 100644 src/controls/private/DefaultPageTitleDelegate.qml
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 28c17c137..e3e7b3569 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -216,6 +216,7 @@ ecm_target_qml_sources(KirigamiPlugin PRIVATE PATH private SOURCES
+     controls/private/DefaultCardBackground.qml
+     controls/private/DefaultChipBackground.qml
+     controls/private/DefaultListItemBackground.qml
++    controls/private/DefaultPageTitleDelegate.qml
+     controls/private/EdgeShadow.qml
+     controls/private/GlobalDrawerActionItem.qml
+     controls/private/PageActionPropertyGroup.qml
+diff --git a/src/controls/Page.qml b/src/controls/Page.qml
+index 8c9aa04ab..2641b96cf 100644
+--- a/src/controls/Page.qml
++++ b/src/controls/Page.qml
+@@ -248,26 +248,8 @@ QQC2.Page {
+      */
+     property Component titleDelegate: Component {
+         id: defaultTitleDelegate
+-        Item {
+-            Layout.fillWidth: true
+-            Layout.minimumWidth: 0
+-            Layout.maximumWidth: implicitWidth
+-            implicitWidth: Math.ceil(metrics.advanceWidth)
+-            implicitHeight: metrics.height
+-
+-            Kirigami.Heading {
+-                id: heading
+-                anchors.fill: parent
+-                maximumLineCount: 1
+-                elide: Text.ElideRight
+-                text: root.title
+-                textFormat: Text.PlainText
+-            }
+-            TextMetrics {
+-                id: metrics
+-                font: heading.font
+-                text: heading.text
+-            }
++        P.DefaultPageTitleDelegate {
++            text: root.title
+         }
+     }
+ 
+diff --git a/src/controls/private/DefaultPageTitleDelegate.qml b/src/controls/private/DefaultPageTitleDelegate.qml
+new file mode 100644
+index 000000000..8c84d1b5c
+--- /dev/null
++++ b/src/controls/private/DefaultPageTitleDelegate.qml
+@@ -0,0 +1,43 @@
++/*
++ *  SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
++ *
++ *  SPDX-License-Identifier: LGPL-2.0-or-later
++ */
++
++import QtQuick 2.15
++import QtQuick.Layouts 1.15
++import org.kde.kirigami 2.20 as Kirigami
++
++/**
++ * This component is used as a default representation for a page title within
++ * page's header/toolbar. It is just a Heading item with shrinking + eliding
++ * behavior.
++ *
++ * \private
++ */
++Item {
++    property alias text: heading.text
++
++    Layout.fillWidth: true
++    Layout.minimumWidth: 0
++    Layout.maximumWidth: implicitWidth
++
++    implicitWidth: Math.ceil(metrics.advanceWidth)
++    implicitHeight: metrics.height
++
++    Kirigami.Heading {
++        id: heading
++
++        anchors.fill: parent
++        maximumLineCount: 1
++        elide: Text.ElideRight
++        textFormat: Text.PlainText
++    }
++
++    TextMetrics {
++        id: metrics
++
++        font: heading.font
++        text: heading.text
++    }
++}
+-- 
+GitLab
+
