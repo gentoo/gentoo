@@ -25,6 +25,7 @@ RDEPEND="
 	!sys-devel/lld:0
 "
 BDEPEND="
+	sys-devel/llvm:${LLVM_MAJOR}
 	test? (
 		>=dev-util/cmake-3.16
 		$(python_gen_any_dep ">=dev-python/lit-${PV}[\${PYTHON_USEDEP}]")
@@ -76,13 +77,9 @@ src_configure() {
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
 
-	if tc-is-cross-compiler; then
-		has_version -b sys-devel/llvm:${LLVM_MAJOR} ||
-			die "sys-devel/llvm:${LLVM_MAJOR} is required on the build host."
-		mycmakeargs+=(
-			-DLLVM_TABLEGEN_EXE="${BROOT}/usr/lib/llvm/${LLVM_MAJOR}/bin/llvm-tblgen"
-		)
-	fi
+	tc-is-cross-compiler &&	mycmakeargs+=(
+		-DLLVM_TABLEGEN_EXE="${BROOT}/usr/lib/llvm/${LLVM_MAJOR}/bin/llvm-tblgen"
+	)
 
 	cmake_src_configure
 }
