@@ -802,11 +802,6 @@ dev-cpp/sourcetrail
 # bug #885075, https://github.com/libarchive/libarchive/issues/1766
 =app-arch/libarchive-3.6.2
 
-# Michał Górny <mgorny@gentoo.org> (2022-12-08)
-# Seems to break some logic in pkg_resources.  Masked for the time being
-# to prevent breakage.
->=dev-python/packaging-22.0
-
 # Stephan Hartmann <sultan@gentoo.org> (2023-01-15)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
