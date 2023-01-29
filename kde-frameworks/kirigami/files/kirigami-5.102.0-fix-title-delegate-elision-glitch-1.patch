@@ -1,0 +1,59 @@
+From f69ff1b0fec56486fd96fd1154160593c1ccedeb Mon Sep 17 00:00:00 2001
+From: ivan tkachenko <me@ratijas.tk>
+Date: Wed, 11 Jan 2023 02:50:10 +0300
+Subject: [PATCH] Page: Fix title delegate elision glitch
+
+Implicitly sized items like QtQuick/Text don't play nicely with Loader,
+and generally with kinda-recursive bindings on Layout.* properties.
+
+This combination of two fixes does the trick:
+
+1. Use extra TextMetrics for reliable width/height values.
+2. Round up text's advance width, so that container loader or layout
+won't ever round it down (which it did with implicitWidth before).
+
+(cherry picked from commit bc03a15b52c7512a1757da77963be5e1e48d5df1)
+---
+ src/controls/Page.qml | 24 ++++++++++++++++++------
+ 1 file changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/src/controls/Page.qml b/src/controls/Page.qml
+index fccb96ebb..8c9aa04ab 100644
+--- a/src/controls/Page.qml
++++ b/src/controls/Page.qml
+@@ -248,14 +248,26 @@ QQC2.Page {
+      */
+     property Component titleDelegate: Component {
+         id: defaultTitleDelegate
+-        Kirigami.Heading {
++        Item {
+             Layout.fillWidth: true
+-            Layout.maximumWidth: implicitWidth + 1 // The +1 is to make sure we do not trigger eliding at max width
+             Layout.minimumWidth: 0
+-            maximumLineCount: 1
+-            elide: Text.ElideRight
+-            text: root.title
+-            textFormat: Text.PlainText
++            Layout.maximumWidth: implicitWidth
++            implicitWidth: Math.ceil(metrics.advanceWidth)
++            implicitHeight: metrics.height
++
++            Kirigami.Heading {
++                id: heading
++                anchors.fill: parent
++                maximumLineCount: 1
++                elide: Text.ElideRight
++                text: root.title
++                textFormat: Text.PlainText
++            }
++            TextMetrics {
++                id: metrics
++                font: heading.font
++                text: heading.text
++            }
+         }
+     }
+ 
+-- 
+GitLab
+
