@@ -13,7 +13,10 @@ CONFIG_VER=6.1.7-gentoo
 GENTOO_CONFIG_VER=g6
 
 DESCRIPTION="Linux kernel built with Gentoo patches"
-HOMEPAGE="https://www.kernel.org/"
+HOMEPAGE="
+	https://wiki.gentoo.org/wiki/Project:Distribution_Kernel
+	https://www.kernel.org/
+"
 SRC_URI+="
 	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
 	https://dev.gentoo.org/~alicef/dist/genpatches/${GENPATCHES_P}.base.tar.xz
