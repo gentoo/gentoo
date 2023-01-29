@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/879891
+https://debbugs.gnu.org/cgi/bugreport.cgi?bug=59905
+https://git.savannah.gnu.org/cgit/diffutils.git/commit/?id=89f3daeaaf021a77177daec8666bcd80ec476833
+
+From 89f3daeaaf021a77177daec8666bcd80ec476833 Mon Sep 17 00:00:00 2001
+From: Jim Meyering <meyering@fb.com>
+Date: Mon, 16 Jan 2023 15:48:10 -0800
+Subject: tests: accommodate newer GNU make's SIGPIPE-ignore
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* tests/colors: Allow an exit code of not just 141 (SIGPIPE),
+but also "error": 2.
+Reported by Tomasz Kłoczko in http://bugs.gnu.org/59905.
+--- a/tests/colors
++++ b/tests/colors
+@@ -128,6 +128,9 @@ printf '%1000000s-a' > a
+ printf '%1000000s-b' > b
+ head -c 10 < fifo > /dev/null &
+ diff --color=always ---presume-output-tty a b > fifo
+-test $? = 141 || fail=1
++
++# Depending on version of GNU make (4.3.92-4.4 set SIGPIPE to "ignore"),
++# either of these is acceptable.
++case $? in 2|141) ;; *) fail=1 ;; esac
+ 
+ Exit $fail
+-- 
+cgit v1.1

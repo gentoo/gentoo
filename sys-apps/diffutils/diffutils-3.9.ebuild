@@ -27,8 +27,14 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="nls static"
 
-BDEPEND="nls? ( sys-devel/gettext )
-	verify-sig? ( sec-keys/openpgp-keys-diffutils )"
+BDEPEND="
+	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-diffutils )
+"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-make-4.4-test-color.patch
+)
 
 src_configure() {
 	use static && append-ldflags -static
