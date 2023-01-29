@@ -115,7 +115,7 @@ src_install() {
 	dosym ../../../usr/share/Lmod/init/profile /etc/bash/bashrc.d/z00_lmod.sh
 	dosym ../../usr/share/Lmod/init/profile /etc/profile.d/z00_lmod.sh
 	dosym ../../usr/share/Lmod/init/cshrc /etc/profile.d/z00_lmod.csh
-	dosym ../../usr/share/Lmod/init/profile.fish /etc/fish/conf.d/z00_lmod.fish
+	dosym ../../../usr/share/Lmod/init/profile.fish /etc/fish/conf.d/z00_lmod.fish
 	default
 	newman "${FILESDIR}"/module.1-8.4.20 module.1
 	# not a real man page
