@@ -13,17 +13,21 @@ HOMEPAGE="https://grass.osgeo.org/"
 
 LICENSE="GPL-2"
 
+if [[ ${PV} =~ "9999" ]]; then
+	SLOT="0/8.3"
+else
+	SLOT="0/$(ver_cut 1-2 ${PV})"
+fi
+
 GVERSION=${SLOT#*/}
 MY_PM="${PN}${GVERSION}"
 MY_PM="${MY_PM/.}"
 
 if [[ ${PV} =~ "9999" ]]; then
 	inherit git-r3
-	SLOT="0/8.3"
 	EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
 else
 	MY_P="${P/_rc/RC}"
-	SLOT="0/$(ver_cut 1-2 ${PV})"
 	SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 	if [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="amd64 ~x86"
