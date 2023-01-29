@@ -23,5 +23,6 @@ operations, including with ssh.
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">dar</remote-id>
+		<remote-id type="github">Edrusb/DAR</remote-id>
 	</upstream>
 </pkgmetadata>
