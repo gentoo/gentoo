@@ -1,8 +1,11 @@
---- a/setup.py	2022-12-11 07:36:25.144000930 +0100
-+++ b/setup.py	2022-12-11 07:37:00.856204252 +0100
-@@ -47,7 +47,7 @@
+--- a/setup.py	2023-01-29 09:29:13.885165525 +0100
++++ b/setup.py	2023-01-29 09:30:32.585630680 +0100
+@@ -45,9 +45,9 @@
+     else:
+         DIST, DIST_VERSION, DIST_NAME = platform.dist()
      NAME = NAME.lower()
- VERSION = AppInfo.VERSION.replace('-', '.') + '.' + DIST + DIST_VERSION
+-VERSION = AppInfo.VERSION.replace('-', '.') + '.' + DIST + DIST_VERSION
++VERSION = AppInfo.VERSION.replace('-', '.')
  
 -NAGSTAMON_SCRIPT = 'nagstamon.py'
 +NAGSTAMON_SCRIPT = 'nagstamon'
