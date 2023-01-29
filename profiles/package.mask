@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-01-29)
+# Commands trigger an assertion and crashes, bug #892487
+=sys-fs/lvm2-2.03.18
+
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2023-01-28)
 # Possible security issues, obsolete. Use OpenEXR-3 / Imath instead.
 # No revdeps and consumers left in ::gentoo
