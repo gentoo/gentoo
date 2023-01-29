@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
 
@@ -69,7 +69,7 @@ RDEPEND="dev-db/sqlite:3
 	media-libs/portmidi
 	media-libs/portsmf:=
 	media-libs/soxr
-	>=media-sound/lame-3.100-r3
+	media-sound/lame
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
@@ -85,12 +85,12 @@ RDEPEND="dev-db/sqlite:3
 	lv2? (
 		dev-libs/serd
 		dev-libs/sord
-		>=media-libs/lilv-0.24.6-r2
+		media-libs/lilv
 		media-libs/lv2
 		media-libs/sratom
 		media-libs/suil
 	)
-	mad? ( >=media-libs/libmad-0.15.1b )
+	mad? ( media-libs/libmad )
 	mpg123? ( media-sound/mpg123 )
 	ogg? ( media-libs/libogg )
 	opus? ( media-libs/opus )
