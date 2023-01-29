@@ -34,6 +34,7 @@ BDEPEND="
 DOCS=( AUTHORS ChangeLog NEWS MAINTAINERS README.md RELEASE )
 
 PATCHES=(
+	"${FILESDIR}"/${P}-tests-race.patch
 )
 
 multilib_src_configure() {
