@@ -161,6 +161,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.2.2-vtkGeometryFilter-add-missing-mutex-header-file.patch
 	"${FILESDIR}"/${PN}-9.2.2-VTKm-respect-user-CXXFLAGS.patch
 	"${FILESDIR}"/${PN}-9.2.2-link-with-glut-library-for-freeglut.patch
+	"${FILESDIR}"/${PN}-9.2.5-Add-include-cstdint-to-compile-with-gcc-13.patch
+	"${FILESDIR}"/${PN}-9.2.5-Add-include-cstdint-for-gcc-13.patch
 )
 
 DOCS=( CONTRIBUTING.md README.md )
