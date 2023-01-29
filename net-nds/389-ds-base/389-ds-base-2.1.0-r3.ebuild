@@ -147,7 +147,7 @@ DEPEND="
 	dev-libs/libpcre:3
 	dev-libs/openssl:0=
 	>=net-analyzer/net-snmp-5.1.2:=
-	net-nds/openldap:=[sasl]
+	<net-nds/openldap-2.6:=[sasl]
 	sys-libs/cracklib
 	sys-libs/db:5.3
 	sys-fs/e2fsprogs
