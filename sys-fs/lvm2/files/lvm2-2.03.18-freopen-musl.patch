@@ -1,4 +1,4 @@
-From c2817ff30c4ad1e1a171ee0e914dbecdd486e3cf Mon Sep 17 00:00:00 2001
+From a2b9c9d2fe4d3f3869e8748dd44da44b67ba5a66 Mon Sep 17 00:00:00 2001
 From: David Seifert <soap@gentoo.org>
 Date: Sat, 28 Jan 2023 14:22:42 +0100
 Subject: [PATCH] Use `freopen()` on {stdin,stdout,stderr}
@@ -7,20 +7,23 @@ Subject: [PATCH] Use `freopen()` on {stdin,stdout,stderr}
   lvalues. Glibc even calls out this behaviour as non-portable:
     https://www.gnu.org/software/libc/manual/html_node/Standard-Streams.html
 ---
- lib/log/log.c      | 2 +-
+ lib/log/log.c      | 4 ++++
  tools/lvmcmdline.c | 6 +++---
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ 2 files changed, 7 insertions(+), 3 deletions(-)
 
 diff --git a/lib/log/log.c b/lib/log/log.c
-index 118a3ba42..aecc72611 100644
+index 118a3ba42..a94016d81 100644
 --- a/lib/log/log.c
 +++ b/lib/log/log.c
-@@ -208,7 +208,7 @@ int reopen_standard_stream(FILE **stream, const char *mode)
+@@ -208,7 +208,11 @@ int reopen_standard_stream(FILE **stream, const char *mode)
  
  	_check_and_replace_standard_log_streams(old_stream, new_stream);
  
--	*stream = new_stream;
++#ifdef __GLIBC__
+ 	*stream = new_stream;
++#else
 +	freopen(NULL, mode, *stream);
++#endif
  	return 1;
  }
  
