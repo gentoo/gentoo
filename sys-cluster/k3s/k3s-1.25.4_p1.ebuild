@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,6 @@ CONFIG_CHECK="~BRIDGE_NETFILTER ~CFS_BANDWIDTH ~CGROUP_DEVICE ~CGROUP_PERF ~CGRO
 
 MY_PV=${PV%_p*}+k3s${PV#*_p}
 SRC_URI="https://github.com/zmedico/k3s/archive/refs/tags/v${MY_PV}-vendor.tar.gz -> ${P}-vendor.tar.gz
-	${EGO_SUM_SRC_URI}
 	https://github.com/k3s-io/containerd/archive/refs/tags/v${K3S_CONTAINERD_VERSION}.tar.gz -> k3s-containerd-${K3S_CONTAINERD_VERSION}.tar.gz
 	https://github.com/opencontainers/runc/archive/refs/tags/${K3S_RUNC_VERSION}.tar.gz -> k3s-runc-${K3S_RUNC_VERSION}.tar.gz
 	https://traefik.github.io/charts/traefik/traefik-${K3S_TRAEFIK_VERSION}.tgz
