@@ -9,7 +9,7 @@ SRC_URI="https://download3.ebz.epson.net/dsc/f/03/00/13/96/55/c6fced63098ae1ba10
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"
 
 DEPEND="net-print/cups"
 RDEPEND="${DEPEND}"
