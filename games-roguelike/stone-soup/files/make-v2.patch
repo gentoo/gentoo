@@ -1,0 +1,120 @@
+--- a/Makefile	2023-01-29 16:54:29.445857641 -0600
++++ b/Makefile	2023-01-29 16:55:57.363274244 -0600
+@@ -92,7 +92,7 @@
+ # processes. Not supported for MSYS2/cygwin builds, and will be overridden for
+ # mac universal builds. This does not count as a change in build flags.
+ ifndef GAME
+-	GAME = crawl
++	GAME = crawl-0.30
+ endif
+ 
+ # Disable GNU Make implicit rules and variables. Leaving them enabled will slow
+@@ -206,7 +206,7 @@
+ uname_S := $(shell sh -c 'uname -s 2>/dev/null || echo not')
+ uname_M := $(shell sh -c 'uname -m 2>/dev/null || echo not')
+ 
+-HOST := $(shell sh -c 'cc -dumpmachine || echo unknown')
++HOST :=
+ ARCH := $(HOST)
+ 
+ ifdef CROSSHOST
+@@ -509,15 +509,7 @@
+ GCC_VER_SUFFIX:=-$(GCC_VER)
+ endif
+ 
+-# Attempt to use a full compiler name, to make
+-# distcc builds work nicely.
+-LMACH := $(shell gcc -dumpmachine)-
+-ifeq ($(LMACH),-)
+ LMACH :=
+-endif
+-ifeq ($(shell which $(LMACH)gcc$(GCC_VER_SUFFIX) > /dev/null 2> /dev/null && echo "Yes"),)
+-LMACH :=
+-endif
+ 
+ ifneq ($(FORCE_CC),)
+ GCC := $(FORCE_CC)
+@@ -862,10 +854,11 @@
+ 	COVERAGE=YesPlease
+ 	# current catch2 doesn't support c++11
+ 	STDFLAG = -std=c++14
++	# tests require this
++	LIBS += -lgcov
+ endif
+ 
+ ifdef HURRY
+-	NO_OPTIMIZE=YesPlease
+ endif
+ 
+ ifdef COVERAGE
+@@ -1017,7 +1010,7 @@
+     INSTALL_FONTS += "$(PROPORTIONAL_FONT)"
+   endif
+ else
+-  SYS_PROPORTIONAL_FONT = $(shell util/find_font "$(OUR_PROPORTIONAL_FONT)")
++  SYS_PROPORTIONAL_FONT = /usr/share/fonts/dejavu/DejaVuSans.ttf
+   ifneq (,$(SYS_PROPORTIONAL_FONT))
+     ifeq (,$(COPY_FONTS))
+       DEFINES += -DPROPORTIONAL_FONT=\"$(SYS_PROPORTIONAL_FONT)\"
+@@ -1037,7 +1030,7 @@
+     INSTALL_FONTS += "$(MONOSPACED_FONT)"
+   endif
+ else
+-  SYS_MONOSPACED_FONT = $(shell util/find_font "$(OUR_MONOSPACED_FONT)")
++  SYS_MONOSPACED_FONT = /usr/share/fonts/dejavu/DejaVuSansMono.ttf
+   ifneq (,$(SYS_MONOSPACED_FONT))
+     ifeq (,$(COPY_FONTS))
+       DEFINES += -DMONOSPACED_FONT=\"$(SYS_MONOSPACED_FONT)\"
+@@ -1177,14 +1170,8 @@
+ 
+ ifdef TILES_ANY
+ ifndef NO_OPTIMIZE
+-  ifneq (,$(shell which advpng))
+-    USE_ADVPNG = y
+-  else
+-    ifneq (,$(shell which pngcrush))
+       PNGCRUSH = pngcrush -q -m 113
+       PNGCRUSH_LABEL = PNGCRUSH
+-    endif
+-  endif
+ endif
+ endif
+ 
+@@ -1280,9 +1266,8 @@
+ 
+ LANGUAGES = $(filter-out en, $(notdir $(wildcard dat/descript/??)))
+ SRC_PKG_BASE  := stone_soup
+-SRC_VERSION   := $(shell git describe $(MERGE_BASE) 2>/dev/null || cat util/release_ver)
++SRC_VERSION   := $(shell cat util/release_ver)
+ MAJOR_VERSION = $(shell echo "$(SRC_VERSION)"|$(SED) -r 's/-.*//;s/^([^.]+\.[^.]+).*/\1/')
+-RECENT_TAG    := $(shell git describe --abbrev=0 $(MERGE_BASE))
+ WINARCH := $(shell $(GXX) -dumpmachine | grep -q x64_64 && echo win64 || echo win32)
+ 
+ export SRC_VERSION
+@@ -1644,7 +1629,7 @@
+ 	$(COPY) dat/tiles/stone_soup_icon-512x512.png $(prefix_fp)/share/icons/hicolor/512x512/apps/$(XDG_NAME).png
+ 	$(COPY) dat/tiles/stone_soup_icon.svg $(prefix_fp)/share/icons/hicolor/scalable/apps/$(XDG_NAME).svg
+ 
+-install: all install-data
++install: install-data
+ 	[ -d $(prefix_fp)/$(bin_prefix) ] || mkdir -p $(prefix_fp)/$(bin_prefix)
+ 	$(COPY) $(GAME) $(prefix_fp)/$(bin_prefix)/
+ 	$(STRIP) $(prefix_fp)/$(bin_prefix)/$(GAME)
+@@ -1667,7 +1652,6 @@
+ 	+$(MAKE) -C contrib clean
+ 
+ clean-android:
+-	$(RM) -r $(datadir_fp)
+ 	+cd android-project && rm -f local.properties && rm -f app/build.gradle
+ 
+ distclean: clean clean-contrib clean-rltiles
+@@ -1899,9 +1883,6 @@
+ 
+ dat/tiles/%.png: $(RLTILES)/%.png
+ 	$(QUIET_PNGCRUSH)$(PNGCRUSH) $< $@
+-ifdef USE_ADVPNG
+-	$(QUIET_ADVPNG)$(ADVPNG) $@
+-endif
+ 
+ clean-rltiles:
+ 	$(RM) $(DESTTILEFILES)
