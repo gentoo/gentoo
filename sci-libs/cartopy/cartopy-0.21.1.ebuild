@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python3_{9..10} )
 
-inherit distutils-r1 multiprocessing virtualx
+inherit distutils-r1 multibuild multiprocessing virtualx
 
 MY_PV=${PV/_beta/b}
 MY_P=${PN}-${MY_PV}
@@ -41,7 +41,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
+		dev-python/setuptools_scm[${PYTHON_USEDEP}]
 		dev-python/cython[${PYTHON_USEDEP}]
 	')
 	test? (
