@@ -13,7 +13,10 @@ CONFIG_HASH=2809b7faa6a8cb232cd825096c146b7bdc1e08ea
 GENTOO_CONFIG_VER=g5
 
 DESCRIPTION="Linux kernel built with Gentoo patches"
-HOMEPAGE="https://www.kernel.org/"
+HOMEPAGE="
+	https://wiki.gentoo.org/wiki/Project:Distribution_Kernel
+	https://www.kernel.org/
+"
 SRC_URI+="
 	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
 	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.base.tar.xz
