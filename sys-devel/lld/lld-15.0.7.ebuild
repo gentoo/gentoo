@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit cmake flag-o-matic llvm llvm.org python-any-r1
+inherit cmake flag-o-matic llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="The LLVM linker (link editor)"
 HOMEPAGE="https://llvm.org/"
@@ -69,12 +69,22 @@ src_configure() {
 		-DLLVM_INCLUDE_TESTS=$(usex test)
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 	)
+
 	use test && mycmakeargs+=(
 		-DLLVM_BUILD_TESTS=ON
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
 		-DLLVM_LIT_ARGS="$(get_lit_flags)"
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
+
+	if tc-is-cross-compiler; then
+		has_version -b sys-devel/llvm:${LLVM_MAJOR} ||
+			die "sys-devel/llvm:${LLVM_MAJOR} is required on the build host."
+		mycmakeargs+=(
+			-DLLVM_TABLEGEN_EXE="${BROOT}/usr/lib/llvm/${LLVM_MAJOR}/bin/llvm-tblgen"
+		)
+	fi
+
 	cmake_src_configure
 }
 
