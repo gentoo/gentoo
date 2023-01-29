@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
-CDEPEND="java-virtuals/servlet-api:2.4"
+CDEPEND="dev-java/tomcat-servlet-api:2.4"
 
 RDEPEND=">=virtual/jre-1.4
 	${CDEPEND}"
@@ -30,8 +30,8 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 _eant() {
 	local \
-		servlet_jar=$(java-pkg_getjar --virtual servlet-api-2.4 servlet-api.jar) \
-		jsp_jar=$(java-pkg_getjar --virtual servlet-api-2.4 jsp-api.jar)
+		servlet_jar=$(java-pkg_getjar tomcat-servlet-api-2.4 servlet-api.jar) \
+		jsp_jar=$(java-pkg_getjar tomcat-servlet-api-2.4 jsp-api.jar)
 
 	eant \
 		-f javahelp_nbproject/build.xml \
