@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-26)
@@ -13,6 +13,7 @@ net-analyzer/gsad
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-02-13)
 # Requires qtwebengine
 sci-electronics/eagle
+sci-geosciences/gpsbabel
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-09-09)
 # Jupyterlab and friends require net-libs/nodejs
