@@ -1,0 +1,20 @@
+From 69351f357a82c0bb7f97f4f707962de3400760a8 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sun, 29 Jan 2023 12:17:36 +0100
+Subject: [PATCH] Add #include <cstdint> for gcc-13
+
+Bug: https://gitlab.kitware.com/vtk/vtk/-/issues/18782
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/Rendering/Matplotlib/vtkMatplotlibMathTextUtilities.h
++++ b/Rendering/Matplotlib/vtkMatplotlibMathTextUtilities.h
+@@ -50,6 +50,7 @@
+ #include "vtkRenderingMatplotlibModule.h" // For export macro
+ 
+ #include <vector> // for std::vector
++#include <cstdint> // for std::uint64_t
+ 
+ struct _object;
+ typedef struct _object PyObject;
+-- 
+2.39.1
+
