@@ -12,7 +12,10 @@ CONFIG_HASH=ec69da7a42b5b7c3da91572ef22097b069ddbd01
 GENTOO_CONFIG_VER=g5
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
-HOMEPAGE="https://www.kernel.org/"
+HOMEPAGE="
+	https://wiki.gentoo.org/wiki/Project:Distribution_Kernel
+	https://www.kernel.org/
+"
 SRC_URI+="
 	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
 	https://github.com/projg2/gentoo-kernel-config/archive/${GENTOO_CONFIG_VER}.tar.gz
