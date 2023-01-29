@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	app-crypt/gcr:=
+	app-crypt/gcr:0=[gtk]
 	dev-libs/glib:2
 	sys-libs/pam
 	x11-libs/gtk+:3
