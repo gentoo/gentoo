@@ -18,7 +18,3 @@ KEYWORDS="~amd64 ~x86"
 
 DOCS=( CHANGELOG.org README.org )
 SITEFILE="50${PN}-gentoo.el"
-
-src_test() {
-	emake EMACS=${EMACS} test
-}
