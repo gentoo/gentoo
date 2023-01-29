@@ -57,6 +57,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/waybar-0.9.17-wireplumber.patch"
+)
+
 src_configure() {
 	local emesonargs=(
 		$(meson_feature mpd)
