@@ -21,7 +21,7 @@ MOZ_PV="${MOZ_PV/_beta/b}"
 MOZ_PV="${MOZ_PV/_rc/rc}"
 MOZ_P="${P}"
 MY_MOZ_P="${PN}-${MOZ_PV}"
-PATCH="${PN}-${PV}-patches"
+PATCH="${P}-patches"
 
 if [[ ${PV} == *_pre* ]] ; then
 	MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/candidates/${MOZ_PV}-candidates/build${PV##*_pre}"
@@ -48,7 +48,7 @@ SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,png,sqlite} )
 IUSE="+chatzilla cpu_flags_arm_neon dbus +gmp-autoupdate +ipc jack
 lto pulseaudio selinux startup-notification test webrtc wifi"
 IUSE+=" ${SYSTEM_IUSE[@]}"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 
 RESTRICT="!test? ( test )"
 
@@ -129,6 +129,7 @@ RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mozilla )
 "
 DEPEND="${COMMON_DEPEND}
+	x11-base/xorg-proto
 	amd64? ( virtual/opengl )
 	x86? ( virtual/opengl )
 "
