@@ -1,0 +1,82 @@
+https://bugs.gentoo.org/892523
+https://gerrit.libreoffice.org/c/core/+/141833
+https://gerrit.libreoffice.org/c/core/+/145552
+https://github.com/LibreOffice/core/commit/3e009159cd1801507f6e965444a7dade5497f89a
+https://github.com/LibreOffice/core/commit/5877c6b118c99c9ec807a111471bfd67720a5086
+
+From 3e009159cd1801507f6e965444a7dade5497f89a Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <sbergman@redhat.com>
+Date: Wed, 26 Oct 2022 08:06:01 +0200
+Subject: [PATCH] external/skia: Missing include
+
+...at least when building with Visual Studio 2022 Preview 17.4.0,
+
+> In file included from workdir/UnpackedTarball/skia/src/core/SkKeyHelpers.cpp:14:
+> workdir/UnpackedTarball/skia\src/core/SkShaderCodeDictionary.h(45,43): error: no type named 'string' in namespace 'std'
+>     using GenerateGlueCodeForEntry = std::string (*)(const std::string& resultName,
+>                                      ~~~~~^
+
+etc.
+
+Change-Id: Idd8dafb4e57e04088ee60954ecfa601cc7588e55
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/141833
+Tested-by: Jenkins
+Reviewed-by: Stephan Bergmann <sbergman@redhat.com>
+--- a/external/skia/UnpackedTarball_skia.mk
++++ b/external/skia/UnpackedTarball_skia.mk
+@@ -38,6 +38,7 @@ skia_patches := \
+     allow-no-es2restrictions.patch.1 \
+     vk_mem_alloc.patch.1 \
+     tdf148624.patch.1 \
++    missing-include.patch.0 \
+
+ $(eval $(call gb_UnpackedTarball_set_patchlevel,skia,1))
+ 
+--- /dev/null
++++ b/external/skia/missing-include.patch.0
+@@ -0,0 +1,10 @@
++--- src/core/SkShaderCodeDictionary.h
+++++ src/core/SkShaderCodeDictionary.h
++@@ -9,6 +9,7 @@
++ #define SkShaderCodeDictionary_DEFINED
++ 
++ #include <array>
+++#include <string>
++ #include <unordered_map>
++ #include <vector>
++ #include "include/core/SkSpan.h"
+
+From 5877c6b118c99c9ec807a111471bfd67720a5086 Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <sbergman@redhat.com>
+Date: Mon, 16 Jan 2023 08:16:00 +0100
+Subject: [PATCH] external/skia: Missing include
+
+> In file included from workdir/UnpackedTarball/skia/third_party/vulkanmemoryallocator/GrVulkanMemoryAllocator.cpp:27:
+> In file included from workdir/UnpackedTarball/skia/third_party/vulkanmemoryallocator/GrVulkanMemoryAllocator.h:35:
+> workdir/UnpackedTarball/skia/third_party/vulkanmemoryallocator/include/vk_mem_alloc.h:2817:9: error: use of undeclared identifier 'snprintf'
+>         snprintf(outStr, strLen, "%u", static_cast<unsigned int>(num));
+>         ^
+
+etc.
+
+Change-Id: I4f13c8a137f23ef62d67c3b4dfa8f1c0ddfc5ec9
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/145552
+Tested-by: Jenkins
+Reviewed-by: Stephan Bergmann <sbergman@redhat.com>
+--- a/external/skia/missing-include.patch.0
++++ b/external/skia/missing-include.patch.0
+@@ -8,3 +8,13 @@
+  #include <unordered_map>
+  #include <vector>
+  #include "include/core/SkSpan.h"
++--- third_party/vulkanmemoryallocator/include/vk_mem_alloc.h
+++++ third_party/vulkanmemoryallocator/include/vk_mem_alloc.h
++@@ -2570,6 +2570,7 @@
++ #include <cstring>
++ #include <utility>
++ #include <type_traits>
+++#include <stdio.h>
++ 
++ #ifdef _MSC_VER
++     #include <intrin.h> // For functions like __popcnt, _BitScanForward etc.
+
