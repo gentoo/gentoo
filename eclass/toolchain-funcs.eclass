@@ -996,6 +996,15 @@ gcc-specs-stack-check() {
 	[[ "${directive/\{!fno-stack-check:}" != "${directive}" ]]
 }
 
+# @FUNCTION: tc-enables-cxx-assertions
+# @RETURN: Truth if the current compiler enables assertions in the C++ standard library
+# @DESCRIPTION:
+# Return truth if the current compiler enables assertions in the C++ standard
+# library. For libstdc++, this is -D_GLIBCXX_ASSERTIONS, and for libcxx/libc++,
+# this is -D_LIBCPP_ENABLE_ASSERTIONS.
+tc-enables-cxx-assertions() {
+	tc-cpp-is-true "defined(_GLIBCXX_ASSERTIONS) || defined(_LIBCPP_ENABLE_ASSERTIONS)" ${CPPFLAGS} ${CXXFLAGS}
+}
 
 # @FUNCTION: tc-enables-pie
 # @RETURN: Truth if the current compiler generates position-independent code (PIC) which can be linked into executables
