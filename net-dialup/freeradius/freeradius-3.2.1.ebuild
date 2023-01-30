@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools pam python-single-r1 systemd
 
 MY_PN=${PN}-server
@@ -106,7 +106,6 @@ src_prepare() {
 
 	use python || { rm -r src/modules/rlm_python3 || die ; }
 	#use rest || { rm -r src/modules/rlm_rest || die ; }
-	use redis || { rm -r src/modules/rlm_redis{,who} || die ; }
 	# Do not install ruby rlm module, bug #483108
 	rm -r src/modules/rlm_ruby || die
 
@@ -207,6 +206,9 @@ src_configure() {
 
 		$(use_enable debug developer)
 		$(use_with ldap edir)
+		$(use_with redis rlm_cache_redis)
+		$(use_with redis rlm_redis)
+		$(use_with redis rlm_rediswho)
 		$(use_with ssl openssl)
 		$(use_with systemd systemd)
 	)
