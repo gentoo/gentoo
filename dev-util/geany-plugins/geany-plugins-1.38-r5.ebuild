@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ DEPEND="
 	gtkspell? ( app-text/gtkspell:3= )
 	lua? ( ${LUA_DEPS} )
 	markdown? (
-		app-text/discount
+		app-text/discount:=
 		net-libs/webkit-gtk:4
 		)
 	pretty-printer? ( dev-libs/libxml2:2 )
