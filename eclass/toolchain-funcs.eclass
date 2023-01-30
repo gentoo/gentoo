@@ -1,4 +1,4 @@
-# Copyright 2002-2022 Gentoo Authors
+# Copyright 2002-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-funcs.eclass
@@ -1004,6 +1004,15 @@ gcc-specs-stack-check() {
 # which can be linked into executables.
 tc-enables-pie() {
 	tc-cpp-is-true "defined(__PIE__)" ${CPPFLAGS} ${CFLAGS}
+}
+
+# @FUNCTION: tc-enables-fortify-source
+# @RETURN: Truth if the current compiler enables FORTIFY_SOURCE at any level
+# @DESCRIPTION:
+# Return truth if the current compiler enables fortification (FORTIFY_SOURCE)
+# at any level (-D_FORTIFY_SOURCE).
+tc-enables-fortify-source() {
+	tc-cpp-is-true "defined(_FORTIFY_SOURCE)" ${CPPFLAGS} ${CFLAGS} ${CXXFLAGS}
 }
 
 # @FUNCTION: tc-enables-ssp
