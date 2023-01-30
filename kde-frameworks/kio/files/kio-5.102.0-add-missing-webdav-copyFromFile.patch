@@ -1,0 +1,36 @@
+From fe76c7e7224bde6a93e327de097c8a1e14c7d323 Mon Sep 17 00:00:00 2001
+From: Alberto Mattea <alberto@mattea.info>
+Date: Thu, 26 Jan 2023 13:19:27 +0100
+Subject: [PATCH] Add missing copyFromFile entries to http.json for webdav and
+ webdavs
+
+copyFromFile support was already implemented but not enabled due to the missing entries.
+
+BUG: 464450
+---
+ src/kioworkers/http/http.json | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/kioworkers/http/http.json b/src/kioworkers/http/http.json
+index 42e963c8d..f6c2d55a8 100644
+--- a/src/kioworkers/http/http.json
++++ b/src/kioworkers/http/http.json
+@@ -35,6 +35,7 @@
+             "Class": ":internet", 
+             "Icon": "folder-remote", 
+             "X-DocPath": "kioslave5/webdav/index.html", 
++            "copyFromFile": true, 
+             "defaultMimetype": "application/octet-stream", 
+             "deleteRecursive": true, 
+             "deleting": true, 
+@@ -62,6 +63,7 @@
+             "Icon": "folder-remote", 
+             "X-DocPath": "kioslave5/webdav/index.html", 
+             "config": "webdav", 
++            "copyFromFile": true, 
+             "defaultMimetype": "application/octet-stream", 
+             "deleteRecursive": true, 
+             "deleting": true, 
+-- 
+GitLab
+
