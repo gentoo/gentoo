@@ -33,14 +33,12 @@ RDEPEND="
 	sys-devel/gdb[python,${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-libs/capstone-4.0.2[python,${PYTHON_USEDEP}]
-		>=dev-python/psutil-5.9.4[${PYTHON_USEDEP}]
+		>=dev-python/psutil-5.9.2[${PYTHON_USEDEP}]
 		>=dev-python/pycparser-2.21[${PYTHON_USEDEP}]
 		>=dev-python/pyelftools-0.29[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.13.0[${PYTHON_USEDEP}]
-		>=dev-python/tabulate-0.8.10[${PYTHON_USEDEP}]
-		>=dev-python/typing-extensions-4.3.0[${PYTHON_USEDEP}]
-		>=dev-util/pwntools-4.9.0[${PYTHON_USEDEP}]
-		>=dev-util/ROPgadget-7.2[${PYTHON_USEDEP}]
+		>=dev-util/pwntools-4.8.0[${PYTHON_USEDEP}]
+		>=dev-util/ROPgadget-7.1[${PYTHON_USEDEP}]
 		>=dev-util/unicorn-2.0.1[python,${PYTHON_USEDEP}]
 	')"
 
