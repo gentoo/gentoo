@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>samuelbernardo.mail@gmail.com</email>
+    <name>Samuel Bernardo</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">rstcheck</remote-id>
+    <remote-id type="github">rstcheck/rstcheck</remote-id>
+    <bugs-to>https://github.com/rstcheck/rstcheck/issues</bugs-to>
+  </upstream>
+</pkgmetadata>
+<!-- vim: set ts=2 sw=2 sts=2 et sta: -->
