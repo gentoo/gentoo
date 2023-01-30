@@ -123,7 +123,7 @@ HOMEPAGE="https://directory.fedoraproject.org/"
 SRC_URI="https://github.com/389ds/${PN}/archive/refs/tags/${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 LICENSE="GPL-3+ Apache-2.0 BSD MIT MPL-2.0"
-SLOT="$(ver_cut 1-2)/0"
+SLOT="0"
 KEYWORDS="~amd64"
 IUSE_PLUGINS="+accountpolicy +bitwise +dna +pam-passthru"
 IUSE="${IUSE_PLUGINS} +autobind auto-dn-suffix debug doc +ldapi selinux systemd"
