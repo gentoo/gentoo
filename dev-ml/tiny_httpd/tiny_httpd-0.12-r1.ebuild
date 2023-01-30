@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,9 +18,8 @@ KEYWORDS="~amd64"
 IUSE="camlzip ocamlopt test"
 
 RDEPEND="
+	>=dev-lang/ocaml-4.08
 	dev-ml/result:=
-	dev-ml/seq:=
-
 	camlzip? ( >=dev-ml/camlzip-1.06:= )
 "
 DEPEND="
@@ -36,6 +35,8 @@ DEPEND="
 
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( camlzip )"
+
+PATCHES=( "${FILESDIR}"/${P}-noseq.patch )
 
 src_compile() {
 	local pkgs="tiny_httpd"
