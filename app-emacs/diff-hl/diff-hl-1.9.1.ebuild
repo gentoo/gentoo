@@ -3,14 +3,15 @@
 
 EAPI=8
 
-H=8f2e4eb345f0639c8fc41e3f7576f77ba6987655
+[[ ${PV} == 1.9.1 ]] && H=8f2e4eb345f0639c8fc41e3f7576f77ba6987655
 NEED_EMACS=25.1
 
 inherit elisp
 
 DESCRIPTION="Highlight uncommitted changes, jump between and revert them selectively"
 HOMEPAGE="https://github.com/dgutov/diff-hl/"
-SRC_URI="https://github.com/dgutov/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dgutov/${PN}/archive/${H}.tar.gz
+	-> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-${H}
 
 LICENSE="GPL-3+"

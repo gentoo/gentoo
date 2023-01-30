@@ -1,16 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=37b00f3bad841e131d69442a89cbebc3041d996b
+[[ ${PV} == 1.9.0 ]] && H=37b00f3bad841e131d69442a89cbebc3041d996b
 NEED_EMACS=25.1
 
 inherit elisp
 
 DESCRIPTION="Highlight uncommitted changes, jump between and revert them selectively"
 HOMEPAGE="https://github.com/dgutov/diff-hl/"
-SRC_URI="https://github.com/dgutov/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dgutov/${PN}/archive/${H}.tar.gz
+	-> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-${H}
 
 LICENSE="GPL-3+"
