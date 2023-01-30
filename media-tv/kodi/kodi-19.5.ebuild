@@ -36,6 +36,7 @@ inherit autotools cmake desktop libtool linux-info pax-utils python-single-r1 xd
 PATCHES=(
 	"${FILESDIR}/${PN}-19.4-atomic.patch"
 	"${FILESDIR}/${PN}-19.4-dav1d-1.0.0.patch"
+	"${FILESDIR}/${PN}-19.5-gcc-13.patch"
 )
 
 DESCRIPTION="A free and open source media-player and entertainment hub"
