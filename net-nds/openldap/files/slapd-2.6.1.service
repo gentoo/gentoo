@@ -7,6 +7,7 @@ Type=notify
 PIDFile=/run/openldap/slapd.pid
 ExecStartPre=/usr/sbin/slaptest -Q -u $SLAPD_OPTIONS
 ExecStart=/usr/lib/openldap/slapd -u ldap -h ${SLAPD_URLS} $SLAPD_OPTIONS
+NotifyAccess=all
 
 [Install]
 WantedBy=multi-user.target
