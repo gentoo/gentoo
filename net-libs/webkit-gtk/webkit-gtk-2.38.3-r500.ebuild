@@ -158,6 +158,7 @@ src_prepare() {
 	gnome2_src_prepare
 
 	eapply "${FILESDIR}"/2.38.2-GTK-Fix-build-failure-in-ClipboardGtk4.cpp.patch
+	eapply "${FILESDIR}"/2.38.3-gcc-13.patch
 }
 
 src_configure() {
