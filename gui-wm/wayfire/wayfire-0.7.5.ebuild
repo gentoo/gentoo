@@ -1,7 +1,7 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson toolchain-funcs
 
@@ -70,12 +70,12 @@ src_configure() {
 		$(meson_feature system-wlroots use_system_wlroots)
 		$(meson_feature X xwayland)
 		$(meson_use gles enable_gles32)
-		$(usex debug --buildtype=debug "")
-		$(usex debug -Db_sanitize=address,undefined "")
+		$(usev debug --buildtype=debug)
+		$(usev debug -Db_sanitize=address,undefined)
 	)
 
 	# Clang will fail to link without this
-	tc-is-clang && emesonargs+=( $(usex debug -Db_lundef=false "") )
+	tc-is-clang && emesonargs+=( $(usev debug -Db_lundef=false) )
 
 	meson_src_configure
 }
