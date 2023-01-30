@@ -6,4 +6,8 @@
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
 <stabilize-allarches/>
+<upstream>
+  <bugs-to>https://github.com/stigbjorlykke/rpm-spec-mode/issues/</bugs-to>
+  <remote-id type="github">stigbjorlykke/rpm-spec-mode</remote-id>
+</upstream>
 </pkgmetadata>
