@@ -5,7 +5,7 @@
     <email>accessibility@gentoo.org</email>
     <name>Gentoo Accessibility Project</name>
   </maintainer>
-<maintainer type="project">
+  <maintainer type="project">
     <email>sound@gentoo.org</email>
     <name>Gentoo Sound project</name>
   </maintainer>
