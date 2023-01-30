@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="github">spiculator/jail</remote-id>
 		<bugs-to>https://github.com/spiculator/jail/issues</bugs-to>
 	</upstream>
 	<longdescription>
-Jail Chroot Project is an attempt of write a tool that builds a chrooted environment.
-The main goal of Jail is to be as simple as possible, and highly portable. The most
-difficult step when building a chrooted environment is to set up the right libraries and
-files. Here, Jail comes to the rescue with a tool to automagically configures and builds
-all the required files, directories and libraries.</longdescription>
+		Jail Chroot Project is an attempt of write a tool that builds a chrooted environment.
+		The main goal of Jail is to be as simple as possible, and highly portable. The most
+		difficult step when building a chrooted environment is to set up the right libraries and
+		files. Here, Jail comes to the rescue with a tool to automagically configures and builds
+		all the required files, directories and libraries.
+	</longdescription>
 </pkgmetadata>
