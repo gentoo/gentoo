@@ -26,5 +26,12 @@ src_install() {
 		   python -m venv /path/to/venv
 		   . /path/to/venv/bin/activate
 		   pip install mypackage
+
+		 To exit the virtual environment, run:
+
+		   deactivate
+
+		 The virtual environment is not deleted, and can be re-entered by
+		 re-sourcing the activate file.
 	EOF
 }
