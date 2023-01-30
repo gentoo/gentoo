@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">Flask-Babel</remote-id>
+		<remote-id type="pypi">flask-babel</remote-id>
 		<remote-id type="github">python-babel/flask-babel</remote-id>
 		<bugs-to>https://github.com/python-babel/flask-babel/issues</bugs-to>
 	</upstream>
