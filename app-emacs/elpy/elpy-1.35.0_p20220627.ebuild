@@ -3,7 +3,7 @@
 
 EAPI=8
 
-H=de31d30003c515c25ff7bfd3a361c70c298f78bb
+COMMIT=de31d30003c515c25ff7bfd3a361c70c298f78bb
 
 DISTUTILS_SINGLE_IMPL=ON
 DISTUTILS_USE_PEP517=setuptools
@@ -15,9 +15,9 @@ inherit distutils-r1 elisp
 
 DESCRIPTION="Emacs Python Development Environment"
 HOMEPAGE="https://github.com/jorgenschaefer/elpy/"
-SRC_URI="https://github.com/jorgenschaefer/${PN}/archive/${H}.tar.gz
+SRC_URI="https://github.com/jorgenschaefer/${PN}/archive/${COMMIT}.tar.gz
 			-> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"

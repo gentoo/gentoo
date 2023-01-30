@@ -4,15 +4,15 @@
 EAPI=8
 
 NEED_EMACS=25
-[[ "${PV}" == 0.1.2 ]] && H=67237f284f2dfb94f3cfba672ff64a37e1cb860f
+[[ "${PV}" == 0.1.2 ]] && COMMIT=67237f284f2dfb94f3cfba672ff64a37e1cb860f
 
 inherit elisp
 
 DESCRIPTION="GraphQL utilities"
 HOMEPAGE="https://github.com/vermiculus/graphql.el/"
-SRC_URI="https://github.com/vermiculus/graphql.el/archive/${H}.tar.gz
+SRC_URI="https://github.com/vermiculus/graphql.el/archive/${COMMIT}.tar.gz
 	-> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}.el-${H}
+S="${WORKDIR}"/${PN}.el-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"

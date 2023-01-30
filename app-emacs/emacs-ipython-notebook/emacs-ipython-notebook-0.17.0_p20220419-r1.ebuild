@@ -6,7 +6,7 @@
 
 EAPI=8
 
-H=388c8f753cfb99b4f82acbdff26bbe27189d2299
+COMMIT=388c8f753cfb99b4f82acbdff26bbe27189d2299
 NEED_EMACS=25
 PYTHON_COMPAT=( python3_{9..10} )
 
@@ -14,8 +14,8 @@ inherit elisp readme.gentoo-r1 python-single-r1
 
 DESCRIPTION="Jupyter notebook client in Emacs"
 HOMEPAGE="https://github.com/millejoh/emacs-ipython-notebook/"
-SRC_URI="https://github.com/millejoh/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+SRC_URI="https://github.com/millejoh/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64 ~x86"

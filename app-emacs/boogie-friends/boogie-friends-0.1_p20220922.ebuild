@@ -1,16 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=8d1bafab5dffc3c63324b5306503943e67497ddc
+COMMIT=8d1bafab5dffc3c63324b5306503943e67497ddc
 
 inherit elisp
 
 DESCRIPTION="Emacs tools for interacting with Boogie, Dafny and Z3 (SMT2)"
 HOMEPAGE="https://github.com/boogie-org/boogie-friends/"
-SRC_URI="https://github.com/boogie-org/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${H}/emacs"
+SRC_URI="https://github.com/boogie-org/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${COMMIT}/emacs"
 
 LICENSE="MIT"
 SLOT="0"

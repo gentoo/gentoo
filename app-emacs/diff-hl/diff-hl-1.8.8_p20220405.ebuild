@@ -3,16 +3,16 @@
 
 EAPI=8
 
-[[ ${PV} == *_p20220405 ]] && H=9d5dc2ffa1e4c7b43734b03dccb5ae6a80800569
+[[ ${PV} == *_p20220405 ]] && COMMIT=9d5dc2ffa1e4c7b43734b03dccb5ae6a80800569
 NEED_EMACS=25.1
 
 inherit elisp
 
 DESCRIPTION="Highlight uncommitted changes, jump between and revert them selectively"
 HOMEPAGE="https://github.com/dgutov/diff-hl/"
-SRC_URI="https://github.com/dgutov/${PN}/archive/${H}.tar.gz
+SRC_URI="https://github.com/dgutov/${PN}/archive/${COMMIT}.tar.gz
 	-> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"

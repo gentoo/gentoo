@@ -1,17 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=db7baebe64d5c1620c06e9bfca267a81ddc64aca
+[[ ${PV} == *_p20220830 ]] && COMMIT=db7baebe64d5c1620c06e9bfca267a81ddc64aca
 NEED_EMACS=25.1
 
 inherit elisp
 
 DESCRIPTION="Emacs modes for Racket: edit, REPL, check-syntax, debug, profile, and more"
 HOMEPAGE="https://github.com/greghendershott/racket-mode/"
-SRC_URI="https://github.com/greghendershott/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+SRC_URI="https://github.com/greghendershott/${PN}/archive/${COMMIT}.tar.gz
+	-> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-2+"
 SLOT="0"

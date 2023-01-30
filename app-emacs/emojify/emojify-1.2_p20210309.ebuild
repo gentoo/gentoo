@@ -3,16 +3,16 @@
 
 EAPI=8
 
-H=1b726412f19896abf5e4857d4c32220e33400b55
+COMMIT=1b726412f19896abf5e4857d4c32220e33400b55
 NEED_EMACS=24.3
 
 inherit elisp
 
 DESCRIPTION="Display emojis in Emacs, like :smile: or plain ASCII ones like :)"
 HOMEPAGE="https://github.com/iqbalansari/emacs-emojify/"
-SRC_URI="https://github.com/iqbalansari/emacs-${PN}/archive/${H}.tar.gz
+SRC_URI="https://github.com/iqbalansari/emacs-${PN}/archive/${COMMIT}.tar.gz
 			-> ${P}.tar.gz"
-S="${WORKDIR}"/emacs-${PN}-${H}
+S="${WORKDIR}"/emacs-${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"
