@@ -1,17 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=362bc6fa3efb1874c525ed6b4b6f24f76af22596
+[[ ${PV} == 20220501 ]] && COMMIT=362bc6fa3efb1874c525ed6b4b6f24f76af22596
 NEED_EMACS=24.3
 
 inherit elisp
 
 DESCRIPTION="Emacs mode for the Lean 3 theorem prover"
 HOMEPAGE="https://github.com/leanprover/lean-mode/"
-SRC_URI="https://github.com/leanprover/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+SRC_URI="https://github.com/leanprover/${PN}/archive/${COMMIT}.tar.gz
+	-> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-2+"
 SLOT="0"

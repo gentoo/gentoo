@@ -1,16 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=fe8b9fccb3690178be7fc455202c941c4c674ac3
+COMMIT=fe8b9fccb3690178be7fc455202c941c4c674ac3
 
 inherit wrapper elisp
 
 DESCRIPTION="A generic interface for proof assistants"
 HOMEPAGE="https://proofgeneral.github.io/"
-SRC_URI="https://github.com/ProofGeneral/PG/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/PG-${H}"
+SRC_URI="https://github.com/ProofGeneral/PG/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/PG-${COMMIT}"
 
 LICENSE="GPL-2+ GPL-2 GPL-3+ HPND CC-BY-SA-3.0"
 SLOT="0"

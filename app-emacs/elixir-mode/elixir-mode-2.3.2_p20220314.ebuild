@@ -1,18 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=e0d0466d83ec80ddb412bb1473908a21baad1ec3
+COMMIT=e0d0466d83ec80ddb412bb1473908a21baad1ec3
 NEED_EMACS=25
 
 inherit elisp
 
 DESCRIPTION="Emacs major mode for editing Elixir files"
 HOMEPAGE="https://github.com/elixir-editors/emacs-elixir/"
-SRC_URI="https://github.com/elixir-editors/emacs-elixir/archive/${H}.tar.gz
+SRC_URI="https://github.com/elixir-editors/emacs-elixir/archive/${COMMIT}.tar.gz
 			-> ${P}.tar.gz"
-S="${WORKDIR}"/emacs-elixir-${H}
+S="${WORKDIR}"/emacs-elixir-${COMMIT}
 
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"

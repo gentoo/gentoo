@@ -1,17 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=6357a1c2d1718778503f7ee0909585094117525b
+COMMIT=6357a1c2d1718778503f7ee0909585094117525b
 NEED_EMACS=24.1
 
 inherit elisp
 
 DESCRIPTION="Web server running Emacs Lisp handlers"
 HOMEPAGE="https://github.com/eschulte/emacs-web-server/"
-SRC_URI="https://github.com/eschulte/emacs-${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/emacs-${PN}-${H}
+SRC_URI="https://github.com/eschulte/emacs-${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/emacs-${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"

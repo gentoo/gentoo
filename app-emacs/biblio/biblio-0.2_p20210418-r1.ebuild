@@ -1,20 +1,20 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTICE: This package contains libraries: biblio-core and biblio
 
 EAPI=8
 
-H=517ec18f00f91b61481214b178f7ae0b8fbc499b
+COMMIT=517ec18f00f91b61481214b178f7ae0b8fbc499b
 NEED_EMACS=24.4
 
 inherit elisp
 
 DESCRIPTION="Browse and import bibliographic references with Emacs"
 HOMEPAGE="https://github.com/cpitclaudel/biblio.el/"
-SRC_URI="https://github.com/cpitclaudel/${PN}.el/archive/${H}.tar.gz
+SRC_URI="https://github.com/cpitclaudel/${PN}.el/archive/${COMMIT}.tar.gz
 			-> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}.el-${H}
+S="${WORKDIR}"/${PN}.el-${COMMIT}
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64 ~x86"

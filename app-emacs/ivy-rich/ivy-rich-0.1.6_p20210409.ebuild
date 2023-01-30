@@ -3,15 +3,15 @@
 
 EAPI=8
 
-H=600b8183ed0be8668dcc548cc2c8cb94b001363b
+COMMIT=600b8183ed0be8668dcc548cc2c8cb94b001363b
 NEED_EMACS=25.1
 
 inherit elisp
 
 DESCRIPTION="More friendly interface for ivy"
 HOMEPAGE="https://github.com/Yevgnen/ivy-rich/"
-SRC_URI="https://github.com/Yevgnen/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+SRC_URI="https://github.com/Yevgnen/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"

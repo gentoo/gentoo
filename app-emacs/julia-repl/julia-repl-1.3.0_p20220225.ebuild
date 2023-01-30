@@ -1,17 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=6c1d63511fb2b3b3f2e342eff6a375d78be6c12c
+COMMIT=6c1d63511fb2b3b3f2e342eff6a375d78be6c12c
 NEED_EMACS=25.1
 
 inherit optfeature elisp
 
 DESCRIPTION="Run an inferior Julia REPL in a terminal inside Emacs"
 HOMEPAGE="https://github.com/tpapp/julia-repl/"
-SRC_URI="https://github.com/tpapp/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+SRC_URI="https://github.com/tpapp/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="MIT"
 SLOT="0"

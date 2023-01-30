@@ -3,16 +3,16 @@
 
 EAPI=8
 
-H=b2fdf248682364d2a9b8f7e97dd98ed02454d7bb
+[[ ${PV} == *_p20221216 ]] && COMMIT=b2fdf248682364d2a9b8f7e97dd98ed02454d7bb
 NEED_EMACS=25.1
 
 inherit elisp
 
 DESCRIPTION="Emacs modes for Racket: edit, REPL, check-syntax, debug, profile, and more"
 HOMEPAGE="https://github.com/greghendershott/racket-mode/"
-SRC_URI="https://github.com/greghendershott/${PN}/archive/${H}.tar.gz
+SRC_URI="https://github.com/greghendershott/${PN}/archive/${COMMIT}.tar.gz
 	-> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-2+"
 SLOT="0"

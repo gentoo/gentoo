@@ -3,7 +3,7 @@
 
 EAPI=8
 
-H=097f5be6e0c228790a6e78ffee5f0c599cb58b20
+COMMIT=097f5be6e0c228790a6e78ffee5f0c599cb58b20
 NEED_EMACS=25.1
 
 inherit elisp
@@ -11,8 +11,8 @@ inherit elisp
 DESCRIPTION="Transient commands abstraction for GNU Emacs"
 HOMEPAGE="https://magit.vc/manual/transient
 	https://github.com/magit/transient"
-SRC_URI="https://github.com/magit/transient/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+SRC_URI="https://github.com/magit/transient/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"

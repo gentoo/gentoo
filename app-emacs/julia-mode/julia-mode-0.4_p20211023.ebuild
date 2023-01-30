@@ -1,18 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=47f43f7d839019cac3ba6559d93b29487ca118cb
+COMMIT=47f43f7d839019cac3ba6559d93b29487ca118cb
 NEED_EMACS=24.3
 
 inherit elisp
 
 DESCRIPTION="Emacs major mode for the Julia programming language"
 HOMEPAGE="https://github.com/JuliaEditorSupport/julia-emacs/"
-SRC_URI="https://github.com/JuliaEditorSupport/julia-emacs/archive/${H}.tar.gz
+SRC_URI="https://github.com/JuliaEditorSupport/julia-emacs/archive/${COMMIT}.tar.gz
 		-> ${P}.tar.gz"
-S="${WORKDIR}"/julia-emacs-${H}
+S="${WORKDIR}"/julia-emacs-${COMMIT}
 
 LICENSE="MIT"
 SLOT="0"
