@@ -10,8 +10,8 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <stabilize-allarches/>
-<longdescription lang="en">
-Cantera Doxygen API Documentation for C++ library
-and Sphinx API Documentation for CTI tool, Python module and Matlab interface.
-</longdescription>
+  <longdescription lang="en">
+    Cantera Doxygen API Documentation for C++ library
+    and Sphinx API Documentation for CTI tool, Python module and Matlab interface.
+  </longdescription>
 </pkgmetadata>
