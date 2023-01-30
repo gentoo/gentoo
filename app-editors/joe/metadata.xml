@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-            <email>amynka@gentoo.org</email>
+  <email>amynka@gentoo.org</email>
 </maintainer>
 <maintainer type="project">
   <email>emacs@gentoo.org</email>
