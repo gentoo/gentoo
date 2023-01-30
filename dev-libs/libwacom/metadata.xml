@@ -5,6 +5,6 @@
 		<email>freedesktop-bugs@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">linuxwacom</remote-id>
+		<remote-id type="github">linuxwacom/libwacom</remote-id>
 	</upstream>
 </pkgmetadata>
