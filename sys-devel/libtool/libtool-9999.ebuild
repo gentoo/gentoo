@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,8 @@ RDEPEND="
 	sys-devel/gnuconfig
 	>=sys-devel/autoconf-2.69:*
 	>=sys-devel/automake-1.13:*
-	>=dev-libs/libltdl-2.4.7"
+	>=dev-libs/libltdl-2.4.7
+"
 DEPEND="${RDEPEND}"
 [[ ${PV} == *9999 ]] && BDEPEND="sys-apps/help2man"
 
@@ -43,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.6-mint.patch
 	"${FILESDIR}"/${PN}-2.2.6a-darwin-module-bundle.patch
 	"${FILESDIR}"/${PN}-2.4.6-darwin-use-linux-version.patch
+	"${FILESDIR}"/${PN}-2.4.7-grep-3.8.patch
 )
 
 src_prepare() {
