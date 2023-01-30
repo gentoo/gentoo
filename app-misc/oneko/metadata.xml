@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription lang="en">
-"oneko-sakura" is modified version of oneko. KINOMOTO Sakura chases around your
-mouse cursor.
-To stop the program, run this command:
-	killall oneko
-If your mouse cursor changes to the default black cross after running oneko,
-you should install <pkg>x11-apps/xsetroot</pkg> and run:
-	xsetroot -cursor_name left_ptr
-</longdescription>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		"oneko-sakura" is modified version of oneko. KINOMOTO Sakura chases around your
+		mouse cursor.
+		To stop the program, run this command:
+			killall oneko
+		If your mouse cursor changes to the default black cross after running oneko,
+		you should install <pkg>x11-apps/xsetroot</pkg> and run:
+			xsetroot -cursor_name left_ptr
+	</longdescription>
 </pkgmetadata>
