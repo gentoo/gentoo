@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<!--
-<maintainer type="person">
-	<email>rich@annexia.org</email>
-	<name>Richard Jones</name>
-	<description>Upstream - please CC on bugs that concerns upstream</description>
-</maintainer>
--->
+	<!-- maintainer-needed -->
+	<upstream>
+		<maintainer>
+			<email>rjones@redhat.com</email>
+			<name>Richard Jones</name>
+		</maintainer>
+	</upstream>
 </pkgmetadata>
