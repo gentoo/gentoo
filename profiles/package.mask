@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ben Kohler <bkohler@gentoo.org> (2023-01-30)
+# Breaks too many revdeps for now
+=app-text/discount-3*
+
 # Sam James <sam@gentoo.org> (2023-01-29)
 # Commands trigger an assertion and crashes, bug #892487
 =sys-fs/lvm2-2.03.18
