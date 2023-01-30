@@ -1,0 +1,79 @@
+From e9eda87eaf8838d5ee29860129817e5b90afd78e Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Sun, 29 Jan 2023 16:32:01 +0100
+Subject: [PATCH] Fix kdepim-addons: support Spamassassin 4.0.0 with Kmail
+
+BUG: 464973
+FIXED-IN: 5.22.2
+---
+ kmail/plugins/common/kmail.antispamrc | 52 ++++++++++++++++++++++++++-
+ 1 file changed, 51 insertions(+), 1 deletion(-)
+
+diff --git a/kmail/plugins/common/kmail.antispamrc b/kmail/plugins/common/kmail.antispamrc
+index 67f920b85..acdf1c205 100644
+--- a/kmail/plugins/common/kmail.antispamrc
++++ b/kmail/plugins/common/kmail.antispamrc
+@@ -1,5 +1,5 @@
+ [General]
+-tools=12
++tools=14
+ 
+ [Spamtool #1]
+ Ident=spamassassin
+@@ -258,3 +258,53 @@ ScoreHeader=X-Spamd-Result
+ ScoreType=Adjusted
+ ScoreValueRegexp=\\[([\\d\\.-]+)[^\\d\\.]
+ ScoreThresholdRegexp= \\/ ([\\d\\.-]+)[^\\d\\.]
++
++[Spamtool #13]
++Ident=spamassassin
++Version=1
++Priority=42
++VisibleName=SpamAssassin 4.x (Perl)
++Executable=spamassassin -V | grep "SpamAssassin version 4"
++URL=https://spamassassin.apache.org/
++PipeFilterName=SpamAssassin Check
++PipeCmdDetect=spamassassin -L
++PipeCmdNoSpam=spamassassin -d
++ExecCmdSpam=sa-learn -L --spam --no-sync
++ExecCmdHam=sa-learn -L --ham --no-sync
++DetectionHeader=X-Spam-Flag
++DetectionPattern=(yes)|(YES)
++DetectionPattern2=
++DetectionOnly=0
++UseRegExp=1
++SupportsBayes=1
++SupportsUnsure=0
++ScoreName=Spamassassin
++ScoreHeader=X-Spam-Status
++ScoreType=Adjusted
++ScoreValueRegexp=(?:hits|score)=([\\d\\.-]+)[^\\d\\.]
++ScoreThresholdRegexp=required=([\\d\\.-]+)[^\\d\\.]
++
++[Spamtool #14]
++Ident=spamd
++Version=1
++Priority=46
++VisibleName=SpamAssassin 4.x (Daemon)
++Executable=echo "From: test" | spamc -x && spamassassin -V | grep "SpamAssassin version 4"
++URL=https://spamassassin.apache.org/
++PipeFilterName=SpamAssassin Service Check
++PipeCmdDetect=spamc
++PipeCmdNoSpam=spamassassin -d
++ExecCmdSpam=sa-learn -L --spam --no-sync --single
++ExecCmdHam=sa-learn -L --ham --no-sync --single
++DetectionHeader=X-Spam-Flag
++DetectionPattern=(yes)|(YES)
++DetectionPattern2=
++DetectionOnly=0
++UseRegExp=1
++SupportsBayes=1
++SupportsUnsure=0
++ScoreName=Spamassassin
++ScoreHeader=X-Spam-Status
++ScoreType=Adjusted
++ScoreValueRegexp=(?:hits|score)=([\\d\\.-]+)[^\\d\\.]
++ScoreThresholdRegexp=required=([\\d\\.-]+)[^\\d\\.]
+-- 
+GitLab
+
