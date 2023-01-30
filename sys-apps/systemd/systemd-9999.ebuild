@@ -237,7 +237,7 @@ src_prepare() {
 		PATCHES+=(
 			"${FILESDIR}/gentoo-generator-path-r2.patch"
 			"${FILESDIR}/gentoo-systemctl-disable-sysv-sync-r1.patch"
-			"${FILESDIR}/gentoo-journald-audit.patch"
+			"${FILESDIR}/gentoo-journald-audit-r1.patch"
 		)
 	fi
 
