@@ -28,7 +28,7 @@ KEYWORDS="amd64 x86"
 IUSE="+gstreamer"
 
 RDEPEND="
-	app-text/discount
+	app-text/discount:=
 	app-text/poppler:=[cairo]
 	dev-libs/glib:2
 	dev-libs/json-glib
