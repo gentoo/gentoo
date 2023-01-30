@@ -422,19 +422,19 @@ tc-env_build() {
 # src_configure() {
 # 	ECONF_SOURCE=${S}
 # 	if tc-is-cross-compiler ; then
-# 		mkdir "${WORKDIR}"/${CBUILD}
-# 		pushd "${WORKDIR}"/${CBUILD} >/dev/null
+# 		mkdir "${WORKDIR}"/${CBUILD} || die
+# 		pushd "${WORKDIR}"/${CBUILD} >/dev/null || die
 # 		econf_build --disable-some-unused-stuff
-# 		popd >/dev/null
+# 		popd >/dev/null || die
 # 	fi
 # 	... normal build paths ...
 # }
 # src_compile() {
 # 	if tc-is-cross-compiler ; then
-# 		pushd "${WORKDIR}"/${CBUILD} >/dev/null
+# 		pushd "${WORKDIR}"/${CBUILD} >/dev/null || die
 # 		emake one-or-two-build-tools
-# 		ln/mv build-tools to normal build paths in ${S}/
-# 		popd >/dev/null
+# 		ln/mv build-tools to normal build paths in ${S}/ || die
+# 		popd >/dev/null || die
 # 	fi
 # 	... normal build paths ...
 # }
@@ -676,7 +676,7 @@ tc-has-tls() {
 # Parse information from CBUILD/CHOST/CTARGET rather than
 # use external variables from the profile.
 tc-ninja_magic_to_arch() {
-ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
+	ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 
 	local type=$1
 	local host=$2
@@ -815,8 +815,8 @@ tc-get-compiler-type() {
 	case ${res} in
 		*HAVE_PATHCC*)	echo pathcc;;
 		*HAVE_CLANG*)	echo clang;;
-		*HAVE_GCC*)		echo gcc;;
-		*)				echo unknown;;
+		*HAVE_GCC*)	echo gcc;;
+		*)		echo unknown;;
 	esac
 }
 
@@ -834,11 +834,11 @@ tc-is-clang() {
 
 # Internal func.  The first argument is the version info to expand.
 # Query the preprocessor to improve compatibility across different
-# compilers rather than maintaining a --version flag matrix. #335943
+# compilers rather than maintaining a --version flag matrix, bug #335943.
 _gcc_fullversion() {
 	local ver="$1"; shift
 	set -- $($(tc-getCPP "$@") -E -P - <<<"__GNUC__ __GNUC_MINOR__ __GNUC_PATCHLEVEL__")
-	eval echo "$ver"
+	eval echo "${ver}"
 }
 
 # @FUNCTION: gcc-fullversion
@@ -871,7 +871,7 @@ gcc-micro-version() {
 _clang_fullversion() {
 	local ver="$1"; shift
 	set -- $($(tc-getCPP "$@") -E -P - <<<"__clang_major__ __clang_minor__ __clang_patchlevel__")
-	eval echo "$ver"
+	eval echo "${ver}"
 }
 
 # @FUNCTION: clang-fullversion
@@ -1098,7 +1098,7 @@ gen_usr_ldscript() {
 	# is referenced ... makes multilib saner
 	local flags=( ${CFLAGS} ${LDFLAGS} -Wl,--verbose )
 	if $(tc-getLD) --version | grep -q 'GNU gold' ; then
-		# If they're using gold, manually invoke the old bfd. #487696
+		# If they're using gold, manually invoke the old bfd, bug #487696
 		local d="${T}/bfd-linker"
 		mkdir -p "${d}"
 		ln -sf $(type -P ${CHOST}-ld.bfd) "${d}"/ld
