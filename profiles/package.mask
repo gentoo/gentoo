@@ -179,6 +179,11 @@ net-misc/gsutil
 dev-python/citeproc-py
 dev-python/duecredit
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-02-02)
+# No revdeps left. Bug #745234
+# Removal in 30 days.
+dev-libs/qtcompress
+
 # Michał Górny <mgorny@gentoo.org> (2023-02-01)
 # dev-python/blockdiag still requires dev-python/nose.  There was a PR
 # made to switch to pytest in Feb 2020 but it's not progressing at all.
