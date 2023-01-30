@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/892495
+https://github.com/WebKit/WebKit/commit/d318bb461f040b90453bc4e100dcf967243ecd98
+
+From d318bb461f040b90453bc4e100dcf967243ecd98 Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@redhat.com>
+Date: Mon, 16 Jan 2023 16:55:26 -0800
+Subject: [PATCH] WebKitGTK 2.39.4 does not build due to missing #include in
+ ANGLE https://bugs.webkit.org/show_bug.cgi?id=250689
+
+Unreviewed build fix.
+
+* Source/ThirdParty/ANGLE/include/GLSLANG/ShaderVars.h:
+
+Canonical link: https://commits.webkit.org/258968@main
+--- a/Source/ThirdParty/ANGLE/include/GLSLANG/ShaderVars.h
++++ b/Source/ThirdParty/ANGLE/include/GLSLANG/ShaderVars.h
+@@ -12,6 +12,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+
