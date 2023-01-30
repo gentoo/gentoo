@@ -23,7 +23,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="doc gui"
+IUSE="doc qt6"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -32,28 +32,41 @@ BDEPEND="
 		dev-lang/perl
 		dev-libs/libxslt
 	)
-	gui? ( dev-qt/linguist-tools:5 )
+	!qt6? ( dev-qt/linguist-tools:5 )
+	qt6? ( dev-qt/qttools:6[linguist] )
 "
-# Even with gui disabled, still links with qtcore
+
 RDEPEND="
 	dev-libs/expat
 	sci-libs/shapelib:=
 	sys-libs/zlib:=[minizip]
 	virtual/libusb:1
-	dev-qt/qtcore:5
-	gui? (
+	!qt6? (
+		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
-		dev-qt/qttranslations:5
+		dev-qt/qtserialport:5
 		dev-qt/qtwebchannel:5
 		dev-qt/qtwebengine:5[widgets]
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 	)
+	qt6? (
+		dev-qt/qtbase:6[gui,network,widgets,xml]
+		dev-qt/qtserialport:6
+		dev-qt/qtwebchannel:6
+		dev-qt/qtwebengine:6[widgets]
+		dev-qt/qt5compat:6
+	)
 "
+
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS NEWS README.{contrib,igc,mapconverter,md} gui/README.{contrib,gui} )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.8.0-no-automagic-qt5-qt6.patch"
+)
 
 src_prepare() {
 	cmake_src_prepare
@@ -63,13 +76,14 @@ src_prepare() {
 }
 
 src_configure() {
-	mycmakeargs=(
+	local mycmakeargs=(
 		-DGPSBABEL_WITH_LIBUSB=pkgconfig
 		-DGPSBABEL_WITH_SHAPELIB=pkgconfig
 		-DGPSBABEL_WITH_ZLIB=pkgconfig
-		-DGPSBABEL_MAPPREVIEW=$(usex gui)
-		-DGPSBABEL_EMBED_MAP=$(usex gui)
-		-DGPSBABEL_EMBED_TRANSLATIONS=$(usex gui)
+		-DGPSBABEL_MAPPREVIEW=ON
+		-DGPSBABEL_EMBED_MAP=ON
+		-DGPSBABEL_EMBED_TRANSLATIONS=ON
+		-DUSE_QT6="$(usex qt6)"
 	)
 
 	cmake_src_configure
@@ -77,7 +91,7 @@ src_configure() {
 
 cmake_src_compile() {
 	cmake_build gpsbabel
-	use gui && cmake_build gpsbabelfe
+	cmake_build gpsbabelfe
 	use doc && cmake_build gpsbabel.html
 }
 
@@ -86,11 +100,9 @@ src_install() {
 	einstalldocs
 
 	dobin gpsbabel
-	if use gui; then
-		dobin gui/GPSBabelFE/gpsbabelfe
-		insinto /usr/share/${PN}/translations/
-		doins gui/gpsbabel*_*.qm
-		newicon gui/images/appicon.png ${PN}.png
-		domenu gui/gpsbabel.desktop
-	fi
+	dobin gui/GPSBabelFE/gpsbabelfe
+	insinto /usr/share/${PN}/translations/
+	doins gui/gpsbabel*_*.qm
+	newicon gui/images/appicon.png ${PN}.png
+	domenu gui/gpsbabel.desktop
 }
