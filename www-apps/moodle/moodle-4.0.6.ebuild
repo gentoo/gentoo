@@ -1,15 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 inherit webapp
 
-MY_BRANCH="stable$(ver_cut 1)$(ver_cut 2)"
-
 DESCRIPTION="The Moodle Course Management System"
 HOMEPAGE="https://moodle.org"
-SRC_URI="https://download.moodle.org/${MY_BRANCH}/${P}.tgz"
+
+MY_BRANCH="stable$(ver_cut 1)$(ver_cut 2)0"
+#SRC_URI="https://download.moodle.org/download.php/direct/stable400/moodle-4.0.tgz"
+SRC_URI="https://download.moodle.org/download.php/direct/${MY_BRANCH}/${P}.tgz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-3+"
