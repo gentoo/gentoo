@@ -52,6 +52,7 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
+	dev-libs/glib:2
 	x11-misc/xkeyboard-config
 "
 
