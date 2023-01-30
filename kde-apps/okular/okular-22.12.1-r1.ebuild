@@ -52,7 +52,7 @@ DEPEND="
 		>=dev-qt/qtgui-${QTMIN}:5[gif(+),jpeg,png]
 		>=kde-apps/libkexiv2-${PVCUT}:5
 	)
-	markdown? ( >=app-text/discount-2.2.7-r1 )
+	markdown? ( >=app-text/discount-2.2.7-r1:= )
 	mobi? ( >=kde-apps/kdegraphics-mobipocket-${PVCUT}:5 )
 	pdf? ( >=app-text/poppler-21.10.0[nss,qt5] )
 	plucker? ( media-libs/libjpeg-turbo:= )
