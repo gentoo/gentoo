@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.8-no-compass.patch"
 	"${FILESDIR}/${PN}-4.4.1-boost.patch"
 	"${FILESDIR}/${PN}-4.4.1-gcc11.patch"
+	"${FILESDIR}/${PN}-4.4.8-gcc-13.patch"
 	"${FILESDIR}/${PN}-5.0.2-glibc-2.34.patch"
 )
 
