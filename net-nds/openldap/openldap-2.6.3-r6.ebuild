@@ -326,12 +326,6 @@ src_prepare() {
 		-e "s:\$(localstatedir)/run:${EPREFIX}/run:" \
 		servers/slapd/Makefile.in || die 'adjusting slapd Makefile.in failed'
 
-	# Hack for bug #885457
-	sed -i \
-		-e "s:systemdsystemunitdir=/usr/lib/systemd/system:systemdsystemunitdir=$(systemd_get_systemunitdir):" \
-		-e "s:systemdsystemunitdir=/lib/systemd/system:systemdsystemunitdir=$(systemd_get_systemunitdir):" \
-		configure.ac || die
-
 	pushd build &>/dev/null || die "pushd build"
 	einfo "Making sure upstream build strip does not do stripping too early"
 	sed -i.orig \
@@ -669,11 +663,15 @@ multilib_src_install() {
 		doinitd "${T}"/slapd
 		newconfd "${FILESDIR}"/slapd-confd-2.6.1 slapd
 
-		einfo "Install systemd service"
-		sed -e "s,/usr/lib/,/usr/$(get_libdir)/," "${FILESDIR}"/slapd-2.6.1.service > "${T}"/slapd.service || die
-		systemd_dounit "${T}"/slapd.service
-		systemd_install_serviced "${FILESDIR}"/slapd.service.conf
-		newtmpfiles "${FILESDIR}"/slapd.tmpfilesd slapd.conf
+		if use systemd; then
+			# The systemd unit uses Type=notify, so it is useless without USE=systemd
+			einfo "Install systemd service"
+			rm -rf "${ED}"/{,usr/}lib/systemd
+			sed -e "s,/usr/lib/,/usr/$(get_libdir)/," "${FILESDIR}"/slapd-2.6.1.service > "${T}"/slapd.service || die
+			systemd_dounit "${T}"/slapd.service
+			systemd_install_serviced "${FILESDIR}"/slapd.service.conf
+			newtmpfiles "${FILESDIR}"/slapd.tmpfilesd slapd.conf
+		fi
 
 		# if built without SLP, we don't need to be before avahi
 			sed -i \
@@ -763,7 +761,9 @@ pkg_preinst() {
 
 pkg_postinst() {
 	if ! use minimal ; then
-		tmpfiles_process slapd.conf
+		if use systemd; then
+			tmpfiles_process slapd.conf
+		fi
 
 		# You cannot build SSL certificates during src_install that will make
 		# binary packages containing your SSL key, which is both a security risk
