@@ -1211,7 +1211,7 @@ tc-get-cxx-stdlib() {
 #endif
 '
 	local res=$(
-		$(tc-getCXX) ${CXXFLAGS} ${CPPFLAGS} -x c++ -E -P - \
+		$(tc-getCXX) ${CPPFLAGS} ${CXXFLAGS} -x c++ -E -P - \
 			<<<"${code}" 2>/dev/null
 	)
 
@@ -1239,7 +1239,7 @@ tc-get-cxx-stdlib() {
 # If the runtime is not recognized, the function returns 1.
 tc-get-c-rtlib() {
 	local res=$(
-		$(tc-getCC) ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} \
+		$(tc-getCC) ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} \
 			-print-libgcc-file-name 2>/dev/null
 	)
 
