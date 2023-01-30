@@ -12,6 +12,6 @@
 		<flag name="vulkan">Add support for the vulkan graphics API</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://code.videolan.org/videolan/libplacebo/issues</bugs-to>
+		<bugs-to>https://code.videolan.org/videolan/libplacebo/-/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
