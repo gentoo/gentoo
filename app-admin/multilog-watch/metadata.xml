@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription lang="en">This program reads logs written by multilog (part of the
-daemontools package by Dan Bernstein), discards any lines matching regular
-expressions in its configuration file, and mails the rest to a configured e-mail
-address. The e-mail is sent using qmail-remote directly, which requires qmail be
-installed on the system but which allows multilog-watch to send mail even if the
-local mail system is down.</longdescription>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		This program reads logs written by multilog (part of the
+		daemontools package by Dan Bernstein), discards any lines matching regular
+		expressions in its configuration file, and mails the rest to a configured e-mail
+		address. The e-mail is sent using qmail-remote directly, which requires qmail be
+		installed on the system but which allows multilog-watch to send mail even if the
+		local mail system is down.
+	</longdescription>
 </pkgmetadata>
