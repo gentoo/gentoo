@@ -1,0 +1,31 @@
+From b654f20ecebc30ab73022a6b32c2fd1cef162ea6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Novomesk=C3=BD?= <dnovomesky@gmail.com>
+Date: Sun, 29 Jan 2023 16:16:52 +0100
+Subject: [PATCH] heif: reject invalid files with zero size
+
+---
+ src/imageformats/heif.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/imageformats/heif.cpp b/src/imageformats/heif.cpp
+index 3365d92..c938c0d 100644
+--- a/src/imageformats/heif.cpp
++++ b/src/imageformats/heif.cpp
+@@ -449,6 +449,14 @@ bool HEIFHandler::ensureDecoder()
+         return false;
+     }
+ 
++    if ((heif_image_handle_get_width(handle) == 0) || (heif_image_handle_get_height(handle) == 0)) {
++        m_parseState = ParseHeicError;
++        heif_image_handle_release(handle);
++        heif_context_free(ctx);
++        qWarning() << "HEIC image has zero dimension";
++        return false;
++    }
++
+     const bool hasAlphaChannel = heif_image_handle_has_alpha_channel(handle);
+     const int bit_depth = heif_image_handle_get_luma_bits_per_pixel(handle);
+     heif_chroma chroma;
+-- 
+GitLab
+
