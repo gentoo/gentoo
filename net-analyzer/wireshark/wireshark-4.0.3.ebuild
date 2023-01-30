@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-{1..2} )
 PYTHON_COMPAT=( python3_{9..10} )
 
-inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils xdg cmake
+inherit fcaps flag-o-matic readme.gentoo-r1 lua-single python-any-r1 qmake-utils xdg cmake
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
@@ -292,6 +292,8 @@ src_install() {
 	if [[ -d "${ED}"/usr/share/appdata ]] ; then
 		rm -r "${ED}"/usr/share/appdata || die
 	fi
+
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
@@ -306,7 +308,5 @@ pkg_postinst() {
 			"${EROOT}"/usr/bin/dumpcap
 	fi
 
-	ewarn "NOTE: To capture traffic with wireshark as normal user you have to"
-	ewarn "add yourself to the pcap group. This security measure ensures"
-	ewarn "that only trusted users are allowed to sniff your traffic."
+	readme.gentoo_print_elog
 }
