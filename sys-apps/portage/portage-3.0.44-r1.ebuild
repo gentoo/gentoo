@@ -7,20 +7,20 @@ PYTHON_COMPAT=( pypy3 python3_{9..11} )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 TMPFILES_OPTIONAL=1
 
-inherit distutils-r1 git-r3 linux-info toolchain-funcs tmpfiles prefix
+inherit distutils-r1 linux-info toolchain-funcs tmpfiles prefix
 
 DESCRIPTION="The package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
-EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage.git
-	https://github.com/gentoo/portage.git"
+SRC_URI="https://gitweb.gentoo.org/proj/portage.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 SLOT="0"
 IUSE="apidoc build doc gentoo-dev +ipc +native-extensions +rsync-verify selinux test xattr"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
+	app-arch/xz-utils
 	test? ( dev-vcs/git )
 "
 DEPEND="
@@ -32,7 +32,8 @@ DEPEND="
 	apidoc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinx-epytext[${PYTHON_USEDEP}]
-	)"
+	)
+"
 # Require sandbox-2.2 for bug #288863.
 # For whirlpool hash, require python[ssl] (bug #425046).
 # For compgen, require bash[readline] (bug #445576).
@@ -65,7 +66,8 @@ RDEPEND="
 	!<app-admin/logrotate-3.8.0
 	!<app-portage/gentoolkit-0.4.6
 	!<app-portage/repoman-2.3.10
-	!~app-portage/repoman-3.0.0"
+	!~app-portage/repoman-3.0.0
+"
 PDEPEND="
 	!build? (
 		>=net-misc/rsync-2.6.4
@@ -87,7 +89,12 @@ pkg_pretend() {
 }
 
 python_prepare_all() {
+	local PATCHES=(
+	)
+
 	distutils-r1_python_prepare_all
+
+	sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
 
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
@@ -257,6 +264,16 @@ pkg_preinst() {
 	# This is allowed to fail if the user/group are invalid for prefix users.
 	if chown portage:portage "${ED}"/var/log/portage{,/elog} 2>/dev/null ; then
 		chmod g+s,ug+rwx "${ED}"/var/log/portage{,/elog}
+	fi
+
+	if has_version "<${CATEGORY}/${PN}-2.3.77"; then
+		elog "The emerge --autounmask option is now disabled by default, except for"
+		elog "portions of behavior which are controlled by the --autounmask-use and"
+		elog "--autounmask-license options. For backward compatibility, previous"
+		elog "behavior of --autounmask=y and --autounmask=n is entirely preserved."
+		elog "Users can get the old behavior simply by adding --autounmask to the"
+		elog "make.conf EMERGE_DEFAULT_OPTS variable. For the rationale for this"
+		elog "change, see https://bugs.gentoo.org/658648."
 	fi
 }
 
