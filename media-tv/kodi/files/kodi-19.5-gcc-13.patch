@@ -1,0 +1,58 @@
+https://bugs.gentoo.org/892503
+https://github.com/xbmc/xbmc/pull/22627
+https://github.com/xbmc/xbmc/pull/22631
+
+From 6730f62c5d709f8789e11d3f979c597fe702daa3 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 29 Jan 2023 22:14:16 +0000
+Subject: [PATCH] windowing: X11: Add missing <cstdint> include (fix build with
+ GCC 13)
+
+GCC 13 (as usual for new compiler releases) shuffles around some
+internal includes and so <cstdint> etc is no longer transitively included.
+
+See https://www.gnu.org/software/gcc/gcc-13/porting_to.html.
+
+Bug: https://bugs.gentoo.org/892503
+--- a/xbmc/windowing/X11/GLContext.h
++++ b/xbmc/windowing/X11/GLContext.h
+@@ -8,6 +8,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ 
+ #include <X11/Xlib.h>
+
+--- a/xbmc/cores/VideoPlayer/VideoRenderers/ColorManager.h
++++ b/xbmc/cores/VideoPlayer/VideoRenderers/ColorManager.h
+@@ -12,6 +12,7 @@
+ #include <lcms2.h>
+ #endif
+ 
++#include <cstdint>
+ #include <string>
+ 
+ extern "C"
+--- a/xbmc/pictures/Picture.h
++++ b/xbmc/pictures/Picture.h
+@@ -11,6 +11,8 @@
+ #include "pictures/PictureScalingAlgorithm.h"
+ #include "utils/Job.h"
+ 
++#include <cstddef>
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+--- a/xbmc/platform/Filesystem.h
++++ b/xbmc/platform/Filesystem.h
+@@ -8,6 +8,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ #include <system_error>
+ namespace KODI
