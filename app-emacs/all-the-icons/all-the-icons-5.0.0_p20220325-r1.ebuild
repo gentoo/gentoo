@@ -3,7 +3,7 @@
 
 EAPI=8
 
-H=65c496d3d1d1298345beb9845840067bffb2ffd8
+[[ ${PV} == *_p20220325 ]] && H=65c496d3d1d1298345beb9845840067bffb2ffd8
 NEED_EMACS=24.3
 
 inherit elisp font readme.gentoo-r1
@@ -11,7 +11,7 @@ inherit elisp font readme.gentoo-r1
 DESCRIPTION="Various icon fonts propertized for Emacs"
 HOMEPAGE="https://github.com/domtronn/all-the-icons.el/"
 SRC_URI="https://github.com/domtronn/${PN}.el/archive/${H}.tar.gz
-			-> ${P}.tar.gz"
+	-> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}.el-${H}
 
 LICENSE="MIT"
@@ -38,9 +38,9 @@ src_compile() {
 }
 
 src_test() {
-	${EMACS} ${EMACSFLAGS} ${BYTECOMPFLAGS} \
-			 -L . -L data -L test -l test/all-the-icons-test.el \
-			 -f ert-run-tests-batch-and-exit || die "tests failed"
+	${EMACS} ${EMACSFLAGS} ${BYTECOMPFLAGS}                     \
+		-L . -L data -L test -l test/all-the-icons-test.el      \
+		-f ert-run-tests-batch-and-exit || die "tests failed"
 }
 
 src_install() {
