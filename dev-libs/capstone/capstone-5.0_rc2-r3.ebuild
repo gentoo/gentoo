@@ -19,7 +19,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/capstone-engine/capstone/archive/${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
 	S=${WORKDIR}/${P/_rc/-rc}
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="BSD"
@@ -34,6 +34,11 @@ BDEPEND="${DISTUTILS_DEPS}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 distutils_enable_tests setup.py
+
+PATCHES=(
+	"${FILESDIR}"/${P}-pkgconfig.patch
+	"${FILESDIR}"/${P}-oob-mem-access.patch
+)
 
 if [[ ${PV} == *_rc* ]]; then
 	# Upstream doesn't flag release candidates (bug 858350)
