@@ -1,0 +1,10 @@
+--- a/setup.py.orig	2020-05-09 10:43:06.946464282 +0800
++++ b/setup.py	2020-05-09 10:44:20.572463455 +0800
+@@ -52,7 +52,6 @@
+                         'ropgadget>=5.3',
+                         'pyserial>=2.7',
+                         'requests>=2.0',
+-                        'pip>=6.0.8',
+                         'pygments>=2.0',
+                         'pysocks',
+                         'python-dateutil',
