@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=0e243a78f435038dda31953c5b48cbddf2a89e27
+COMMIT=0e243a78f435038dda31953c5b48cbddf2a89e27
 NEED_EMACS=26.1
 
 inherit elisp
@@ -11,9 +11,9 @@ inherit elisp
 DESCRIPTION="BibTeX database manager for Emacs"
 HOMEPAGE="https://joostkremers.github.io/ebib/
 	https://github.com/joostkremers/ebib/"
-SRC_URI="https://github.com/joostkremers/${PN}/archive/${H}.tar.gz
+SRC_URI="https://github.com/joostkremers/${PN}/archive/${COMMIT}.tar.gz
 			-> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86"

@@ -3,15 +3,15 @@
 
 EAPI=8
 
-H=ae79e7dd283890072da69b8f48aeec1afd0d9442
+COMMIT=ae79e7dd283890072da69b8f48aeec1afd0d9442
 NEED_EMACS=24.4
 
 inherit elisp
 
 DESCRIPTION="HTTP REST client tool for GNU Emacs"
 HOMEPAGE="https://github.com/pashky/restclient.el/"
-SRC_URI="https://github.com/pashky/${PN}.el/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}.el-${H}
+SRC_URI="https://github.com/pashky/${PN}.el/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}.el-${COMMIT}
 
 LICENSE="public-domain"
 SLOT="0"

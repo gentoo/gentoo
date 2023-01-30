@@ -3,15 +3,15 @@
 
 EAPI=8
 
-H=071c1c29bac30351ad338136f2b625e5601365cd
+COMMIT=071c1c29bac30351ad338136f2b625e5601365cd
 NEED_EMACS=25.1
 
 inherit elisp
 
 DESCRIPTION="Emacs major mode for editing jq queries"
 HOMEPAGE="https://github.com/ljos/jq-mode/"
-SRC_URI="https://github.com/ljos/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+SRC_URI="https://github.com/ljos/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"

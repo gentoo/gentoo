@@ -3,16 +3,16 @@
 
 EAPI=8
 
-[[ ${PV} == 0.16 ]] && H=7d06d19a31e888b932da6c8202ff2c73f42703a1
+[[ ${PV} == 0.16 ]] && COMMIT=7d06d19a31e888b932da6c8202ff2c73f42703a1
 
 inherit elisp
 
 DESCRIPTION="Emacs mode to ease editing of RPM spec files"
 HOMEPAGE="https://www.emacswiki.org/emacs/RpmSpecMode
 	https://github.com/stigbjorlykke/rpm-spec-mode/"
-SRC_URI="https://github.com/stigbjorlykke/${PN}/archive/${H}.tar.gz
+SRC_URI="https://github.com/stigbjorlykke/${PN}/archive/${COMMIT}.tar.gz
 	-> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-2+"
 SLOT="0"

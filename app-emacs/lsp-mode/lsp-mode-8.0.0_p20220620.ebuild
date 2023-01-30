@@ -1,17 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=9957623d93b13fabaca8ba35b85da8fcceaeef69
+COMMIT=9957623d93b13fabaca8ba35b85da8fcceaeef69
 NEED_EMACS=26.1
 
 inherit elisp
 
 DESCRIPTION="Emacs client/library for the Language Server Protocol"
 HOMEPAGE="https://emacs-lsp.github.io/lsp-mode/"
-SRC_URI="https://github.com/emacs-lsp/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+SRC_URI="https://github.com/emacs-lsp/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
 KEYWORDS="~amd64"

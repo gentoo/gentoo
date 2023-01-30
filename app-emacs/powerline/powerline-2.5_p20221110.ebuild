@@ -3,15 +3,15 @@
 
 EAPI=8
 
-[[ ${PV} = *_p20221110 ]] && H=c35c35bdf5ce2d992882c1f06f0f078058870d4a
+[[ ${PV} = *_p20221110 ]] && COMMIT=c35c35bdf5ce2d992882c1f06f0f078058870d4a
 
 inherit elisp
 
 DESCRIPTION="GNU Emacs version of the Vim powerline"
 HOMEPAGE="https://github.com/milkypostman/powerline/"
-SRC_URI="https://github.com/milkypostman/${PN}/archive/${H}.tar.gz
+SRC_URI="https://github.com/milkypostman/${PN}/archive/${COMMIT}.tar.gz
 	-> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${H}
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"
