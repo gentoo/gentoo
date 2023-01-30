@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-01-30)
+# The package is on keep-alive by Debian.  Nevertheless, they can't
+# keep up with changes in dev-python/setuptools, and they do not accept
+# bug reports.  PEP517 build systems are simply a no-go for this class
+# of packages (partially due to the limitations of wheel format), meson
+# and autotools are both much better choices.
+dev-python/python-distutils-extra
+
 # Michał Górny <mgorny@gentoo.org> (2023-01-18)
 # Renamed to dev-python/pyproject-hooks (with upstream module name change).
 dev-python/pep517
