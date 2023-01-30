@@ -406,7 +406,7 @@ PYTHON_COMPAT=( pypy3 python3_{9..11} )
 inherit cargo distutils-r1 flag-o-matic
 
 DESCRIPTION="Build and publish crates with pyo3, rust-cpython and cffi bindings"
-HOMEPAGE="https://maturin.rs/"
+HOMEPAGE="https://www.maturin.rs/"
 SRC_URI="
 	https://github.com/PyO3/maturin/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz
 	$(cargo_crate_uris)
