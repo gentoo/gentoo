@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-3)
-KFMIN=5.96.0
+KFMIN=5.101.0
 QTMIN=5.15.5
 VIRTUALX_REQUIRED="test"
 inherit ecm gear.kde.org optfeature
@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/kontact/"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="5"
-KEYWORDS="amd64 arm64 ~ppc64 x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="importwizard markdown"
 
 RESTRICT="test"
@@ -64,7 +64,7 @@ RDEPEND="
 	>=kde-frameworks/prison-${KFMIN}:5
 	>=kde-frameworks/syntax-highlighting-${KFMIN}:5
 	importwizard? ( >=kde-apps/akonadi-import-wizard-${PVCUT}:5 )
-	markdown? ( app-text/discount )
+	markdown? ( app-text/discount:= )
 "
 DEPEND="${RDEPEND}"
 
