@@ -6,7 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="cpuhistory">Enable 65xx CPU history support (may decrease performance)</flag>
 		<flag name="ethernet">Enable ethernet emulation</flag>
 		<flag name="headless">Include the headless variant of the emulator</flag>
 		<flag name="mpg123">Enable mp3@64 cartridge support</flag>
