@@ -14,10 +14,14 @@ SLOT="0"
 KEYWORDS=""
 IUSE="spirv video_cards_nvidia video_cards_r600 video_cards_radeonsi"
 
-LLVM_MAX_SLOT=16
+LLVM_MAX_SLOT=17
 BDEPEND="
 	${PYTHON_DEPS}
 	|| (
+		(
+			sys-devel/clang:17
+			spirv? ( dev-util/spirv-llvm-translator:17 )
+		)
 		(
 			sys-devel/clang:16
 			spirv? ( dev-util/spirv-llvm-translator:16 )
