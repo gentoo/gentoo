@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription lang="en">WSCR is a program to solve word jumbles, print all
-permutations of a string, and print pseudo-anagrams. It will use /usr/dict/words
-or a user-specified wordlist file</longdescription>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		WSCR is a program to solve word jumbles, print all permutations of a
+		string, and print pseudo-anagrams. It will use /usr/dict/words or a
+		user-specified wordlist file
+	</longdescription>
 </pkgmetadata>
