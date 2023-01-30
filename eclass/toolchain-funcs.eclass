@@ -1012,7 +1012,7 @@ tc-enables-cxx-assertions() {
 # Return truth if the current compiler generates position-independent code (PIC)
 # which can be linked into executables.
 tc-enables-pie() {
-	tc-cpp-is-true "defined(__PIE__)" ${CPPFLAGS} ${CFLAGS}
+	tc-cpp-is-true "defined(__PIE__)" ${CPPFLAGS} ${CFLAGS} ${CXXFLAGS}
 }
 
 # @FUNCTION: tc-enables-fortify-source
@@ -1033,7 +1033,7 @@ tc-enables-fortify-source() {
 #  -fstack-protector-strong
 #  -fstack-protector-all
 tc-enables-ssp() {
-	tc-cpp-is-true "defined(__SSP__) || defined(__SSP_STRONG__) || defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS}
+	tc-cpp-is-true "defined(__SSP__) || defined(__SSP_STRONG__) || defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS} ${CXXFLAGS}
 }
 
 # @FUNCTION: tc-enables-ssp-strong
@@ -1044,7 +1044,7 @@ tc-enables-ssp() {
 #  -fstack-protector-strong
 #  -fstack-protector-all
 tc-enables-ssp-strong() {
-	tc-cpp-is-true "defined(__SSP_STRONG__) || defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS}
+	tc-cpp-is-true "defined(__SSP_STRONG__) || defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS} ${CXXFLAGS}
 }
 
 # @FUNCTION: tc-enables-ssp-all
@@ -1054,7 +1054,7 @@ tc-enables-ssp-strong() {
 # on level corresponding to any of the following options:
 #  -fstack-protector-all
 tc-enables-ssp-all() {
-	tc-cpp-is-true "defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS}
+	tc-cpp-is-true "defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS} ${CXXFLAGS}
 }
 
 
