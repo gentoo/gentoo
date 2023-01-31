@@ -1039,11 +1039,6 @@ distutils-r1_python_prepare_all() {
 	python_export_utf8_locale
 	_distutils-r1_print_package_versions
 
-	if [[ -n ${SYSROOT} ]] && ! has_version -b ">=dev-python/gpep517-12"; then
-		ewarn ">=dev-python/gpep517-12 features cross-compilation fixes."
-		ewarn "Please consider upgrading to avoid issues."
-	fi
-
 	_DISTUTILS_DEFAULT_CALLED=1
 }
 
@@ -1378,7 +1373,7 @@ distutils_pep517_install() {
 	if [[ -n ${config_settings} ]]; then
 		cmd+=( --config-json "${config_settings}" )
 	fi
-	if [[ -n ${SYSROOT} ]] && has_version -b ">=dev-python/gpep517-12"; then
+	if [[ -n ${SYSROOT} ]]; then
 		cmd+=( --sysroot "${SYSROOT}" )
 	fi
 	printf '%s\n' "${cmd[*]}"
