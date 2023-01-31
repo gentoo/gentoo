@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/ngtcp2/ngtcp2/"
 
 LICENSE="MIT"
 SLOT="0/0"
-IUSE="+gnutls openssl +ssl test"
+IUSE="+gnutls openssl +ssl static-libs test"
 REQUIRED_USE="ssl? ( || ( gnutls openssl ) )"
 
 BDEPEND="virtual/pkgconfig"
