@@ -12,10 +12,12 @@
 	<maintainer type="project">
 		<email>java@gentoo.org</email>
 	</maintainer>
-	<slots>
-		<subslots>Soname version number of Protobuf</subslots>
-	</slots>
 	<upstream>
+		<bugs-to>https://github.com/protocolbuffers/protobuf/issues</bugs-to>
+		<doc>https://protobuf.dev/getting-started/javatutorial/</doc>
 		<remote-id type="github">protocolbuffers/protobuf</remote-id>
 	</upstream>
+	<use>
+		<flag name="system-protoc">Use protoc provided by dev-libs/protobuf</flag>
+	</use>
 </pkgmetadata>
