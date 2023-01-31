@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,9 +6,9 @@ EAPI=7
 inherit linux-info systemd
 
 DESCRIPTION="LogMeIn Hamachi VPN tunneling engine"
-HOMEPAGE="https://www.vpn.net/"
-SRC_URI="x86?	( https://www.vpn.net/installers/${P}-x86.tgz )
-	amd64?	( https://www.vpn.net/installers/${P}-x64.tgz )"
+HOMEPAGE="https://vpn.net/"
+SRC_URI="x86?	( https://vpn.net/installers/${P}-x86.tgz )
+	amd64?	( https://vpn.net/installers/${P}-x64.tgz )"
 
 LICENSE="LogMeIn"
 SLOT="0"
