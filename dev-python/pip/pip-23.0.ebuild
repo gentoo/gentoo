@@ -43,21 +43,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~
 SLOT="0"
 IUSE="test-rust"
 
-# TODO: remove the explicit deps when we update distutils-r1
 RDEPEND="
 	>=dev-python/setuptools-39.2.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-lang/python-3.9.16-r1:3.9
-	' python3_9)
-	$(python_gen_cond_dep '
-		>=dev-lang/python-3.10.9-r1:3.10
-	' python3_10)
-	$(python_gen_cond_dep '
-		>=dev-lang/python-3.11.1-r1:3.11
-	' python3_11)
-	$(python_gen_cond_dep '
-		>=dev-python/pypy3-7.3.11-r1
-	' pypy3)
 "
 BDEPEND="
 	${RDEPEND}
