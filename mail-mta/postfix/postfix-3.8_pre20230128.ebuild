@@ -16,7 +16,7 @@ SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
 LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind lmdb mbox memcached mysql nis pam postgres sasl selinux sqlite ssl"
+IUSE="berkdb cdb dovecot-sasl +eai ldap ldap-bind lmdb mbox memcached mysql nis pam postgres sasl selinux sqlite ssl"
 
 DEPEND="
 	acct-group/postfix
@@ -53,7 +53,12 @@ RDEPEND="${DEPEND}
 	!mail-mta/ssmtp[mta]
 	selinux? ( sec-policy/selinux-postfix )"
 
-REQUIRED_USE="ldap-bind? ( ldap sasl )"
+# require at least one of db implementations for newalias (and postmap)
+# command to function correctly
+REQUIRED_USE="
+	|| ( berkdb cdb lmdb )
+	ldap-bind? ( ldap sasl )
+	"
 
 S="${WORKDIR}/${MY_SRC}"
 
@@ -141,10 +146,10 @@ src_configure() {
 	if ! use berkdb; then
 		mycc="${mycc} -DNO_DB"
 		# change default database type
-		if use cdb; then
-			mycc="${mycc} -DDEF_DB_TYPE=\\\"cdb\\\""
-		elif use lmdb; then
+		if use lmdb; then
 			mycc="${mycc} -DDEF_DB_TYPE=\\\"lmdb\\\""
+		elif use cdb; then
+			mycc="${mycc} -DDEF_DB_TYPE=\\\"cdb\\\""
 		fi
 	fi
 
