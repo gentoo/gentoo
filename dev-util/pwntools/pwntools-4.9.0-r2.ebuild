@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Gallopsled/pwntools.git"
 else
-	SRC_URI="https://github.com/Gallopsled/pwntools/archive/${PV/_beta/beta}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/Gallopsled/pwntools/archive/${PV/_beta/beta}.tar.gz -> ${P}.gh.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}-${PV/_beta/beta}"
 fi
@@ -48,6 +48,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.0.0_do_not_mess_with_docs.patch"
 	"${FILESDIR}/${PN}-4.1.0_update_deps.patch"
 )
+
+python_configure_all() {
+	DISTUTILS_ARGS=(
+		--only-use-pwn-command
+	)
+}
 
 src_install() {
 	distutils-r1_src_install
