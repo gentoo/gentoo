@@ -582,7 +582,7 @@ distutils_enable_tests() {
 			test_pkg=">=dev-python/nose-1.3.7_p20221026"
 			;;
 		pytest)
-			test_pkg=">=dev-python/pytest-7.1.3"
+			test_pkg=">=dev-python/pytest-7.2.1"
 			;;
 		setup.py)
 			;;
