@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Virtual for notification daemon dbus service"
 SLOT="0"
@@ -16,6 +16,7 @@ RDEPEND="
 		x11-misc/notification-daemon
 		gnome-extra/cinnamon
 		gui-apps/mako
+		gui-apps/swaync
 		xfce-extra/xfce4-notifyd
 		x11-misc/notify-osd
 		x11-misc/dunst
