@@ -647,7 +647,13 @@ esetup.py() {
 
 	local setup_py=( setup.py )
 	if [[ ! -f setup.py ]]; then
-		if [[ ! -f setup.cfg ]]; then
+		# The following call can succeed even if the package does not
+		# feature any setuptools configuration.  In non-PEP517 mode this
+		# could lead to installing an "empty" package.  In PEP517 mode,
+		# we verify the build system when invoking the backend,
+		# rendering this check redundant (and broken for projects using
+		# pyproject.toml configuration).
+		if [[ ! ${DISTUTILS_USE_PEP517} && ! -f setup.cfg ]]; then
 			die "${FUNCNAME}: setup.py nor setup.cfg not found"
 		fi
 		setup_py=( -c "from setuptools import setup; setup()" )
