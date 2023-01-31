@@ -1,0 +1,35 @@
+java/core/src/test/java/com/google/protobuf/DescriptorsTest.java:68: error: cannot find symbol
+import protobuf_unittest.UnittestRetention;
+                        ^
+  symbol:   class UnittestRetention
+  location: package protobuf_unittest
+java/core/src/test/java/com/google/protobuf/DescriptorsTest.java:402: error: cannot find symbol
+    FileOptions options = UnittestRetention.getDescriptor().getOptions();
+                          ^
+  symbol:   variable UnittestRetention
+  location: class DescriptorsTest
+java/core/src/test/java/com/google/protobuf/DescriptorsTest.java:403: error: cannot find symbol
+    assertThat(options.hasExtension(UnittestRetention.plainOption)).isTrue();
+                                    ^
+  symbol:   variable UnittestRetention
+  location: class DescriptorsTest
+java/core/src/test/java/com/google/protobuf/DescriptorsTest.java:404: error: cannot find symbol
+    assertThat(options.hasExtension(UnittestRetention.runtimeRetentionOption)).isTrue();
+                                    ^
+  symbol:   variable UnittestRetention
+  location: class DescriptorsTest
+java/core/src/test/java/com/google/protobuf/DescriptorsTest.java:405: error: cannot find symbol
+    assertThat(options.hasExtension(UnittestRetention.sourceRetentionOption)).isFalse();
+                                    ^
+  symbol:   variable UnittestRetention
+  location: class DescriptorsTest
+--- a/java/core/generate-test-sources-build.xml
++++ b/java/core/generate-test-sources-build.xml
+@@ -19,6 +19,7 @@
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_optimize_for.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_proto3.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_proto3_optional.proto"/>
++        <arg value="${protobuf.source.dir}/google/protobuf/unittest_retention.proto"/>
+         <arg value="${protobuf.source.dir}/google/protobuf/unittest_well_known_types.proto"/>
+         <arg value="${test.proto.dir}/com/google/protobuf/any_test.proto"/>
+         <arg value="${test.proto.dir}/com/google/protobuf/cached_field_size_test.proto"/>
