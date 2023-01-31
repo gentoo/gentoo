@@ -11,13 +11,13 @@ SRC_URI="https://github.com/linux-nvme/nvme-cli/archive/v${PV}.tar.gz -> ${P}.gh
 
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv x86"
-IUSE="hugepages +json"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+IUSE="hugepages"
 
 RDEPEND="
-	>=sys-libs/libnvme-1.2:=[json(+)=]
+	>=sys-libs/libnvme-1.3:=
 	hugepages? ( sys-libs/libhugetlbfs:= )
-	json? ( dev-libs/json-c:= )
+	dev-libs/json-c:=
 	sys-libs/zlib:=
 "
 
@@ -30,6 +30,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/nvme-cli-2.2-docdir.patch"
+	"${FILESDIR}/nvme-cli-2.3-no-hugetlbfs-automatic-dep.patch"
 )
 
 src_configure() {
@@ -39,6 +40,7 @@ src_configure() {
 		-Dhtmldir="${EPREFIX}/usr/share/doc/${P}/html"
 		-Dsystemddir="${unitdir%/system}"
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)"
+		$(meson_use hugepages)
 	)
 	meson_src_configure
 }
