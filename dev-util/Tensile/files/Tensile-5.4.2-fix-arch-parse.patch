@@ -1,0 +1,12 @@
+Index: Tensile-rocm-5.3.3/Tensile/Tensile.py
+===================================================================
+--- Tensile-rocm-5.3.3.orig/Tensile/Tensile.py
++++ Tensile-rocm-5.3.3/Tensile/Tensile.py
+@@ -101,7 +101,6 @@ def addCommonArguments(argParser):
+         Allows the --global-parameters option to specify any parameters from the command line.
+         """
+         (key, value) = par.split("=")
+-        value = eval(value)
+         return (key, value)
+ 
+     argParser.add_argument("-d", "--device", dest="device", type=int, \
