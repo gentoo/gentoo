@@ -29,7 +29,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 RDEPEND="
 	>=dev-python/cerberus-1.3.4[${PYTHON_USEDEP}]
 	dev-python/license-expression[${PYTHON_USEDEP}]
-	=dev-python/packaging-23*[${PYTHON_USEDEP}]
+	>=dev-python/packaging-23[${PYTHON_USEDEP}]
 	>=dev-python/tomli-2[${PYTHON_USEDEP}]
 	dev-python/tomli-w[${PYTHON_USEDEP}]
 "
