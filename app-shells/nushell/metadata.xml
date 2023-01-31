@@ -13,6 +13,5 @@
 	</upstream>
 	<use>
 		<flag name="dataframe">Dataframe feature for nushell</flag>
-		<flag name="sqlite">SQLite commands for nushell</flag>
 	</use>
 </pkgmetadata>
