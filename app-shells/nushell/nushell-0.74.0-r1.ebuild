@@ -577,7 +577,7 @@ SRC_URI="https://github.com/nushell/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
-IUSE="+extra"
+IUSE="dataframe"
 
 DEPEND="
 	>=dev-libs/libgit2-0.99:=
@@ -586,11 +586,9 @@ DEPEND="
 	net-libs/libssh2:=
 	net-libs/nghttp2:=
 	net-misc/curl
-	extra? (
-		dev-db/sqlite:3=
-		x11-libs/libX11
-		x11-libs/libxcb
-	)
+	dev-db/sqlite:3=
+	x11-libs/libX11
+	x11-libs/libxcb
 "
 
 RDEPEND="${DEPEND}"
@@ -618,7 +616,7 @@ src_configure() {
 
 	local myfeatures=(
 		stable
-		$(usev extra)
+		$(usev dataframe)
 	)
 
 	cargo_src_configure

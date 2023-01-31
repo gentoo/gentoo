@@ -12,6 +12,6 @@
 		<remote-id type="github">nushell/nushell</remote-id>
 	</upstream>
 	<use>
-		<flag name="extra">Install extra plugins: binaryview, tree, clipboard-cli, trash-support and others</flag>
+		<flag name="dataframe">Dataframe feature for nushell</flag>
 	</use>
 </pkgmetadata>
