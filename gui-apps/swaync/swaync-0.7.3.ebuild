@@ -13,8 +13,8 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="+man scripting"
+KEYWORDS="~amd64"
+IUSE="+man +scripting"
 
 DEPEND="
 	dev-libs/glib:2
