@@ -13,6 +13,7 @@ else
 	inherit verify-sig
 	SRC_URI="
 		https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz
+		https://dev.gentoo.org/~ionen/distfiles/${P}-vendor.tar.xz
 		verify-sig? ( https://github.com/kovidgoyal/kitty/releases/download/v${PV}/${P}.tar.xz.sig )"
 	VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/kovidgoyal.gpg"
 	KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
@@ -76,14 +77,16 @@ src_unpack() {
 		cd "${S}" || die
 		edo go mod vendor
 	else
-		verify-sig_src_unpack
+		use verify-sig &&
+			verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.sig}
+		default
 	fi
 }
 
 src_prepare() {
 	default
 
-	# sed unfortunately feels easier on maintainenance than patches here
+	# sed unfortunately feels easier on maintenance than patches here
 	local sedargs=(
 		-e "/num_workers =/s/=.*/= $(makeopts_jobs)/"
 		-e "s/cflags.append.*-O3.*/pass/" -e 's/-O3//'
@@ -100,11 +103,15 @@ src_prepare() {
 
 	sed -i setup.py "${sedargs[@]}" || die
 
-	# test relies on 'who' command which doesn't detect users with pid-sandbox
-	rm kitty_tests/utmp.py || die
-
-	# test may fail/hang depending on environment and shell initialization scripts
-	rm kitty_tests/{shell_integration,ssh}.py || die
+	local skiptests=(
+		# relies on 'who' command which doesn't detect users with pid-sandbox
+		kitty_tests/utmp.py
+		# may fail/hang depending on environment and shell initialization
+		kitty_tests/{shell_integration,ssh}.py
+		# relies on /proc/self/fd and gets confused when ran from here
+		tools/utils/tpmfile_test.go
+	)
+	use !test || rm "${skiptests[@]}" || die
 }
 
 src_compile() {
@@ -144,7 +151,6 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	optfeature "in-terminal image display with kitty icat" media-gfx/imagemagick
 	optfeature "audio-based terminal bell support" media-libs/libcanberra
 	optfeature "opening links from the terminal" x11-misc/xdg-utils
 }
