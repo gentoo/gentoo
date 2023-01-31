@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -24,8 +24,8 @@ RDEPEND="${DEPEND} "
 # created and cause collisions.
 
 pkg_setup() {
-	if [ -f "${ROOT}/${EPREFIX}/var/lib/texmf/web2c/metapost/mplib-luatex.mem" ]; then
-		einfo "Removing ${ROOT}/${EPREFIX}/var/lib/texmf/web2c/metapost/mplib-luatex.mem"
-		rm -f "${ROOT}/${EPREFIX}/var/lib/texmf/web2c/metapost/mplib-luatex.mem"
+	if [[ -f ${EROOT}/var/lib/texmf/web2c/metapost/mplib-luatex.mem ]]; then
+		einfo "Removing ${EROOT}/var/lib/texmf/web2c/metapost/mplib-luatex.mem"
+		rm -f "${EROOT}/var/lib/texmf/web2c/metapost/mplib-luatex.mem"
 	fi
 }
