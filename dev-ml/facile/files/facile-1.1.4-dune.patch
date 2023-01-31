@@ -21,10 +21,9 @@ new file mode 100644
 index 0000000..d28179f
 --- /dev/null
 +++ b/lib/dune
-@@ -0,0 +1,5 @@
+@@ -0,0 +1,4 @@
 +(library
 +  (public_name facile)
-+  (libraries stdlib-shims)
 +  (ocamlopt_flags (-unsafe -noassert -inline 10))
 +)
 diff --git a/lib_test/dune b/lib_test/dune
