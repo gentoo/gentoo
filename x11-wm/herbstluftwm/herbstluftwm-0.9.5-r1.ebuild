@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_OPTIONAL=1
 
-inherit cmake distutils-r1
+inherit cmake desktop distutils-r1
 
 DESCRIPTION="A manual tiling window manager for X"
 HOMEPAGE="https://herbstluftwm.org/"
@@ -123,6 +123,11 @@ src_install() {
 			doman "doc/${man_page}"
 		done
 	fi
+
+	# Do not only install the herbstluftwm.desktop file in xsessions/ but
+	# also in applications/. This allows herbstluftwm to be used as
+	# window manager of a Gnome flashback session.
+	domenu "${ED}"/usr/share/xsessions/herbstluftwm.desktop
 }
 
 distutils_enable_tests pytest
