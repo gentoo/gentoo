@@ -71,6 +71,9 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" LIBDIR="/usr/$(get_libdir)" install
-	dodoc BUGS ChangeLog README TODO
+	dune_src_install
+	mv "${ED}"/usr/share/doc/${PF}/{cudf/README,} || die
+	rmdir "${ED}"/usr/share/doc/${PF}/cudf || die
+	emake DESTDIR="${ED}" -C c-lib/ LIBDIR="/usr/$(get_libdir)" -e install
+	dodoc BUGS ChangeLog
 }
