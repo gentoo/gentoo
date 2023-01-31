@@ -15,6 +15,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">vstinner/python-ptrace</remote-id>
-		<remote-id type="pypi">pefile</remote-id>
+		<remote-id type="pypi">python-ptrace</remote-id>
 	</upstream>
 </pkgmetadata>
