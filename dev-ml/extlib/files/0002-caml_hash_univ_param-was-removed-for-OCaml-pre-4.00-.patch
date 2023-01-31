@@ -1,0 +1,38 @@
+From 574e8eae2d358b6db62c2d062b194a7aa06ac02c Mon Sep 17 00:00:00 2001
+From: Kate <kit.ty.kate@disroot.org>
+Date: Fri, 6 Nov 2020 14:10:26 +0000
+Subject: [PATCH 2/2] caml_hash_univ_param was removed for OCaml (pre-4.00
+ function)
+
+---
+ src/extHashtbl.ml | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/extHashtbl.ml b/src/extHashtbl.ml
+index 140e9c2..3c69df4 100644
+--- a/src/extHashtbl.ml
++++ b/src/extHashtbl.ml
+@@ -22,7 +22,7 @@
+ module Hashtbl =
+   struct
+ 
+-#if OCAML >= 400
++#if OCAML >= 400 && OCAML < 412
+   external old_hash_param :
+     int -> int -> 'a -> int = "caml_hash_univ_param" "noalloc"
+ #endif
+@@ -114,7 +114,11 @@ module Hashtbl =
+     (* compatibility with old hash tables *)
+     if Obj.size (Obj.repr h) >= 3
+     then (seeded_hash_param 10 100 (h_conv h).seed key) land (Array.length (h_conv h).data - 1)
++  #if OCAML >= 412
++    else failwith "Old hash function not supported anymore"
++  #else
+     else (old_hash_param 10 100 key) mod (Array.length (h_conv h).data)
++  #endif
+ #else
+   let key_index h key = (hash key) mod (Array.length (h_conv h).data)
+ #endif
+-- 
+2.30.0
+
