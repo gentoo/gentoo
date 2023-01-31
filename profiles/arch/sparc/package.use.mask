@@ -1,5 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2023-01-31)
+# jit not supported on sparc32 or sparc64
+dev-libs/libpcre2 jit
 
 # Sam James <sam@gentoo.org> (2022-12-26)
 # Unkeyworded dependencies
