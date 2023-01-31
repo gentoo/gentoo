@@ -4,4 +4,7 @@
 <maintainer type="person">
 	<email>sping@gentoo.org</email>
 </maintainer>
+<upstream>
+	<remote-id type="github">xroche/httrack</remote-id>
+</upstream>
 </pkgmetadata>
