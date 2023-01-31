@@ -20,7 +20,7 @@ HOMEPAGE="https://chromium.org/"
 PATCHSET="2"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 PATCHSET_URI_PPC64="https://quickbuild.io/~raptor-engineering-public"
-PATCHSET_NAME_PPC64="chromium_109.0.5414.74-2raptor0~deb11u1.debian"
+PATCHSET_NAME_PPC64="chromium_109.0.5414.119-1raptor0~deb11u1.debian"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz
 	ppc64? (
