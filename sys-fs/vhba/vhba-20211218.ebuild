@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,11 +14,14 @@ S=${WORKDIR}/${MY_P}
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
-RDEPEND="virtual/udev"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="
+	virtual/udev
+"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 
 MODULE_NAMES="vhba(block:${S})"
 BUILD_TARGETS=modules
@@ -33,7 +36,6 @@ pkg_setup() {
 src_prepare() {
 	# Avoid -Werror problems
 	sed -i -e '/ccflags/s/-Werror/-Wall/' Makefile || die "sed failed"
-
 	eapply_user
 }
 
@@ -47,4 +49,12 @@ src_install() {
 		#
 		KERNEL=="vhba_ctl", SUBSYSTEM=="misc", TAG+="uaccess"
 	EOF
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }
