@@ -50,14 +50,6 @@ BDEPEND="
 DOCS=( CHANGES.rst CONTRIBUTORS.txt README.rst )
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs \
-	'>=dev-python/alabaster-0.6.2' \
-	'dev-python/sphinxcontrib-asyncio' \
-	'dev-python/sphinxcontrib-blockdiag' \
-	'dev-python/sphinxcontrib-newsfeed' \
-	'dev-python/sphinxcontrib-spelling' \
-	'dev-python/sphinx' \
-	'dev-python/sphinx-aiohttp-theme'
 
 src_prepare() {
 	# increase the timeout a little
