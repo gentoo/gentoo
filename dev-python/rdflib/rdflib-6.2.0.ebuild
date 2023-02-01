@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..10} )
 PYTHON_REQ_USE="sqlite?,threads(+)"
 
-inherit distutils-r1 optfeature
+inherit distutils-r1
 
 DESCRIPTION="RDF library containing a triple store and parser/serializer"
 HOMEPAGE="
@@ -31,7 +31,6 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/berkeleydb[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	)
 "
@@ -88,8 +87,4 @@ python_install_all() {
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
-}
-
-pkg_postinst() {
-	optfeature "support for sys-libs/db (Berkeley DB for MySQL)" dev-python/berkeleydb
 }
