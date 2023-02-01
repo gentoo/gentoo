@@ -13,7 +13,7 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${PN}/archive/v${PV}.tar.g
 
 LICENSE="MPL-2.0"
 SLOT="0/10.0.1"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="+abi10-compat abi8-compat abi9-compat ax +blosc cpu_flags_x86_avx cpu_flags_x86_sse4_2
 	cuda doc +nanovdb numpy python static-libs test utils"
 RESTRICT="!test? ( test )"
