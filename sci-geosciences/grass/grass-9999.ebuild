@@ -74,7 +74,7 @@ RDEPEND="
 	truetype? ( media-libs/freetype:2 )
 	X? (
 		dev-python/wxpython:4.0
-		x11-libs/cairo[X,opengl?]
+		x11-libs/cairo[X]
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
