@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{9..10} pypy3 )
+PYTHON_COMPAT=( python3_{9..11} pypy3 )
 PYTHON_REQ_USE="xml(+),sqlite?"
 DISTUTILS_USE_SETUPTOOLS=no
 
