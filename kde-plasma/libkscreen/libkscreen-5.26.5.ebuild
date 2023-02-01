@@ -35,6 +35,7 @@ DEPEND="${RDEPEND}
 	>=dev-libs/plasma-wayland-protocols-1.6.0
 "
 BDEPEND="
+	>=dev-qt/linguist-tools-${QTMIN}:5
 	>=dev-qt/qtwaylandscanner-${QTMIN}:5
 	dev-util/wayland-scanner
 "
