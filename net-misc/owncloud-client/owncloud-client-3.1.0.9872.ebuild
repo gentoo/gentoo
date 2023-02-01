@@ -6,9 +6,12 @@ EAPI=8
 inherit cmake xdg
 
 MY_PN="ownCloud"
+REGRAPHAPI_PV="1.0.1"
 DESCRIPTION="Synchronize files from ownCloud Server with your computer"
 HOMEPAGE="https://owncloud.org/"
-SRC_URI="https://download.owncloud.com/desktop/${MY_PN}/stable/${PV}/source/${MY_PN}-${PV}.tar.xz"
+SRC_URI="https://download.owncloud.com/desktop/${MY_PN}/stable/${PV}/source/${MY_PN}-${PV}.tar.xz
+	https://github.com/owncloud/libre-graph-api-cpp-qt-client/archive/refs/tags/v${REGRAPHAPI_PV}.tar.gz
+		-> libregraphapi-${REGRAPHAPI_PV}.tar.gz"
 S=${WORKDIR}/${MY_PN}-${PV}
 
 LICENSE="CC-BY-3.0 GPL-2"
@@ -44,7 +47,12 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 	kde-frameworks/extra-cmake-modules"
 
+PATCHES=( "${FILESDIR}"/${PN}-3.1.0.9872-no_cmake_fetch.patch )
+
 src_prepare() {
+	mv ../libre-graph-api-cpp-qt-client-${REGRAPHAPI_PV} \
+		src/libsync/libregraphapisrc-src || die
+
 	# Keep tests in ${T}
 	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.cpp || die
 
