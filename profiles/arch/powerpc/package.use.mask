@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2023-02-23)
+# Mask openvdb, as it pulls in masked media-libs/openexr
+sci-libs/vtk openvdb
+
 # Sam James <sam@gentoo.org> (2022-11-19)
 # Drags in Rails (propshaft->rails)
 dev-ruby/actiontext test
