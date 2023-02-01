@@ -25,7 +25,7 @@ IUSE="fuzzing test"
 RESTRICT="test"
 
 RDEPEND="
-	>=dev-libs/libbpf-1.0:=
+	>=dev-libs/libbpf-1.1:=
 	>=dev-util/bcc-0.25.0:=
 	>=sys-devel/llvm-10:=[llvm_targets_BPF(+)]
 	>=sys-devel/clang-10:=
