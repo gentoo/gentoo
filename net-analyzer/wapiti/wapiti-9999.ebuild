@@ -3,7 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='xml(+)'
 
 inherit distutils-r1 git-r3
@@ -17,6 +18,7 @@ SLOT="0"
 KEYWORDS=""
 # Requires httpx-ntlm (to package)
 #IUSE="ntlm"
+IUSE="test"
 
 # httpx requires brotli and socks, so depending on
 # dev-python/socksio and dev-python/brotlicffi
@@ -30,7 +32,7 @@ RDEPEND="dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	dev-python/tld[${PYTHON_USEDEP}]
 	dev-python/yaswfp[${PYTHON_USEDEP}]"
 
-distutils_enable_tests --install pytest
+distutils_enable_tests pytest
 # Tests also require unpackaged respx
 BDEPEND+=" test? (
 				dev-python/pytest-asyncio[${PYTHON_USEDEP}]
