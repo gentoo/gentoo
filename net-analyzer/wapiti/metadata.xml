@@ -14,7 +14,6 @@ Once it gets this list, Wapiti acts like a fuzzer, injecting payloads to see if 
 		<remote-id type="sourceforge">wapiti</remote-id>
 	</upstream>
 	<use>
-		<flag name="kerberos">Support Kerberos authentication</flag>
-		<flag name="ntlm">Support NTLM authentication</flag>
+		<!-- Need extra dep <flag name="ntlm">Support NTLM authentication</flag> -->
 	</use>
 </pkgmetadata>
