@@ -9,7 +9,4 @@
 		<flag name="daemon">Build/install msmtpd MTA daemon</flag>
 		<flag name="mta">Enable this to install as system-wide MTA</flag>
 	</use>
-	<upstream>
-		<remote-id type="sourceforge">msmtp</remote-id>
-	</upstream>
 </pkgmetadata>
