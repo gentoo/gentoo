@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI="7"
 
 MY_PN=${PN}.sh
 DESCRIPTION="Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)"
@@ -15,7 +15,13 @@ IUSE=""
 
 S="${WORKDIR}"/${MY_PN}-${PV}
 
+RDEPEND="!<dev-util/pwntools-4.10.0_beta0-r2"
+
 DOCS=( ChangeLog README.md )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7.2-path.patch
+)
 
 src_prepare() {
 	sed 's,^pkg_release=false,pkg_release=true,' -i ${PN} || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -14,6 +14,8 @@ KEYWORDS="amd64 arm arm64 ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE=""
 
 S="${WORKDIR}"/${MY_PN}-${PV}
+
+RDEPEND="!<dev-util/pwntools-4.10.0_beta0-r2"
 
 DOCS=( ChangeLog README.md )
 
