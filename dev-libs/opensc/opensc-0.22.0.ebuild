@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/OpenSC/OpenSC/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE="ctapi doc openct notify +pcsc-lite readline secure-messaging ssl test zlib"
 RESTRICT="!test? ( test )"
 
