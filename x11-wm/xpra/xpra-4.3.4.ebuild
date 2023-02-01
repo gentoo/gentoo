@@ -12,7 +12,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_SINGLE_IMPL=yes
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -131,7 +131,8 @@ python_prepare_all() {
 		-i setup.py || die
 
 	if use minimal; then
-		sed -r -e 's/^(pam|scripts|xdg_open)_ENABLED.*/\1_ENABLED=False/' \
+		sed -r -e '/pam_ENABLED/s/DEFAULT/False/' \
+			-e 's/^(xdg_open)_ENABLED = .*/\1_ENABLED = False/' \
 			-i setup.py || die
 	fi
 }
@@ -199,6 +200,7 @@ python_install_all() {
 		mv -vnT "${ED}"/usr/lib/udev "${ED}${dir}" || die
 	else
 		rm -vr "${ED}"/usr/lib/udev || die
+		rm -v "${ED}"/usr/bin/xpra_udev_product_version || die
 	fi
 }
 
