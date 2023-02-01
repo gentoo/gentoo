@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ CDEPEND="
 	media-libs/tiff:=
 	net-misc/curl
 	virtual/ttf-fonts
-	x11-libs/cairo[opengl]
+	x11-libs/cairo
 	x11-libs/libX11
 	x11-libs/libXpm
 	x11-libs/libXt
