@@ -85,7 +85,7 @@ IUSE="big-endian +doc elfutils ghcbootstrap ghcmakebinary +gmp llvm numa profile
 IUSE+=" binary"
 RESTRICT="!test? ( test )"
 
-LLVM_MAX_SLOT="13"
+LLVM_MAX_SLOT="14"
 RDEPEND="
 	>=dev-lang/perl-5.6.1
 	dev-libs/gmp:0=
@@ -96,7 +96,7 @@ RDEPEND="
 	llvm? (
 		<sys-devel/llvm-$((${LLVM_MAX_SLOT} + 1)):=
 		|| (
-			sys-devel/llvm:13
+			sys-devel/llvm:14
 		)
 	)
 "
@@ -540,6 +540,7 @@ src_prepare() {
 		eapply "${FILESDIR}"/${PN}-8.10.1-allow-cross-bootstrap.patch
 		eapply "${FILESDIR}"/${PN}-9.0.2-disable-unboxed-arrays.patch
 		eapply "${FILESDIR}"/${PN}-9.0.2-llvm-13.patch
+		eapply "${FILESDIR}"/${PN}-9.0.2-llvm-14.patch
 		eapply "${FILESDIR}"/latomic-subword
 		eapply "${WORKDIR}"/${P}-riscv64-llvm.patch
 		eapply "${FILESDIR}"/${PN}-9.0.2-fptools.patch # clang-16 workaround
