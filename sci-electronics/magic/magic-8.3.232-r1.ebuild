@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ RDEPEND="sys-libs/ncurses:0=
 	dev-lang/tcl:0=
 	dev-lang/tk:0=
 	dev-tcltk/blt
-	cairo? ( x11-libs/cairo[opengl?] )
+	cairo? ( x11-libs/cairo )
 	opengl? (
 		virtual/glu
 		virtual/opengl

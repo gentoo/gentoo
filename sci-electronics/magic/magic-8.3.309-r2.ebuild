@@ -27,7 +27,7 @@ RDEPEND="
 	dev-lang/tcl:0=
 	dev-lang/tk:0=
 	dev-tcltk/blt
-	cairo? ( x11-libs/cairo[opengl?] )
+	cairo? ( x11-libs/cairo )
 	opengl? (
 		virtual/glu
 		virtual/opengl
