@@ -18,12 +18,6 @@
 		<flag name="abi10-compat">
 			Disables newer features to maintain compatibility with ABI10
 		</flag>
-		<flag name="abi6-compat">
-			Disables newer features to maintain compatibility with ABI6
-		</flag>
-		<flag name="abi7-compat">
-			Disables newer features to maintain compatibility with ABI7
-		</flag>
 		<flag name="abi8-compat">
 			Disables newer features to maintain compatibility with ABI8
 		</flag>
