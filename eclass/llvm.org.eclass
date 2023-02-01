@@ -106,7 +106,7 @@ fi
 
 inherit multiprocessing
 
-if [[ ${_LLVM_SOURCE_TYPE} == tar ]] && ver_test -ge 14.0.5; then
+if [[ ${_LLVM_SOURCE_TYPE} == tar ]]; then
 	inherit verify-sig
 fi
 
@@ -177,16 +177,6 @@ fi
 # version.  The value depends on ${PV}.
 
 case ${LLVM_MAJOR} in
-	10|11|12)
-		# this API is not present for old LLVM versions
-		;;
-	13)
-		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k VE )
-		ALL_LLVM_PRODUCTION_TARGETS=(
-			AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
-			PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
-		)
-		;;
 	14)
 		ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k )
 		ALL_LLVM_PRODUCTION_TARGETS=(
@@ -253,24 +243,18 @@ llvm.org_set_globals() {
 				EGIT_BRANCH="release/${LLVM_MAJOR}.x"
 			;;
 		tar)
-			if ver_test -ge 14.0.5; then
-				SRC_URI+="
-					https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz
-					verify-sig? (
-						https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz.sig
-					)
-				"
-				BDEPEND+="
-					verify-sig? (
-						>=sec-keys/openpgp-keys-llvm-15
-					)
-				"
-				VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/llvm.asc
-			else
-				SRC_URI+="
-					https://github.com/llvm/llvm-project/archive/llvmorg-${PV/_/-}.tar.gz
-				"
-			fi
+			SRC_URI+="
+				https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz
+				verify-sig? (
+					https://github.com/llvm/llvm-project/releases/download/llvmorg-${PV/_/-}/llvm-project-${PV/_/}.src.tar.xz.sig
+				)
+			"
+			BDEPEND+="
+				verify-sig? (
+					>=sec-keys/openpgp-keys-llvm-15
+				)
+			"
+			VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/llvm.asc
 			;;
 		snapshot)
 			SRC_URI+="
@@ -363,25 +347,16 @@ llvm.org_src_unpack() {
 			git-r3_checkout '' . '' "${components[@]}"
 			;;
 		tar)
-			archive=llvmorg-${PV/_/-}.tar.gz
-			if ver_test -ge 14.0.5; then
-				archive=llvm-project-${PV/_/}.src.tar.xz
-				if use verify-sig; then
-					verify-sig_verify_detached \
-						"${DISTDIR}/${archive}" "${DISTDIR}/${archive}.sig"
-				fi
+			archive=llvm-project-${PV/_/}.src.tar.xz
+			if use verify-sig; then
+				verify-sig_verify_detached \
+					"${DISTDIR}/${archive}" "${DISTDIR}/${archive}.sig"
 			fi
 
 			ebegin "Unpacking from ${archive}"
-			if ver_test -ge 14.0.5; then
-				tar -x -J -o --strip-components 1 \
-					-f "${DISTDIR}/${archive}" \
-					"${components[@]/#/${archive%.tar*}/}" || die
-			else
-				tar -x -z -o --strip-components 1 \
-					-f "${DISTDIR}/${archive}" \
-					"${components[@]/#/llvm-project-${archive%.tar*}/}" || die
-			fi
+			tar -x -J -o --strip-components 1 \
+				-f "${DISTDIR}/${archive}" \
+				"${components[@]/#/${archive%.tar*}/}" || die
 			eend ${?}
 			;;
 		snapshot)
