@@ -12,6 +12,6 @@
 		it can run on any platform that supports these components.
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">vitables</remote-id>
+		<remote-id type="github">uvemas/ViTables</remote-id>
 	</upstream>
 </pkgmetadata>
