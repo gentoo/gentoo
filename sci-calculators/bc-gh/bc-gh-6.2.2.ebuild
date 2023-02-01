@@ -6,7 +6,7 @@ EAPI=8
 MY_P="bc-${PV}"
 DESCRIPTION="Implementation of POSIX bc with GNU extensions"
 HOMEPAGE="
-	https://git.yzena.com/gavin/bc/
+	https://git.gavinhoward.com/gavin/bc/
 	https://github.com/gavinhoward/bc/
 "
 SRC_URI="
