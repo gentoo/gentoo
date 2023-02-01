@@ -39,10 +39,21 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# the usual nondescript gpg-agent failure
-	testing/test_git.py::test_git_getdate_signed_commit
+python_test() {
+	local EPYTEST_DESELECT=(
+		# the usual nondescript gpg-agent failure
+		testing/test_git.py::test_git_getdate_signed_commit
 
-	# fetching from the Internet
-	testing/test_regressions.py::test_pip_download
-)
+		# fetching from the Internet
+		testing/test_regressions.py::test_pip_download
+	)
+
+	if has_version dev-python/nose; then
+		EPYTEST_DESELECT+=(
+			# https://bugs.gentoo.org/892639
+			testing/test_integration.py::test_pyproject_support
+		)
+	fi
+
+	epytest
+}
