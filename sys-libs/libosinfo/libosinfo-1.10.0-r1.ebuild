@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson udev vala xdg
+inherit meson vala xdg
 
 DESCRIPTION="GObject library for managing information about real and virtual OSes"
 HOMEPAGE="https://libosinfo.org/"
