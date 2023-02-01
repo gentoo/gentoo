@@ -3,14 +3,11 @@
 
 EAPI=8
 
-MY_PN=${PN#ensurepip-}
-WHL=${MY_PN}-${PV}-py3-none-any.whl
+inherit pypi
 
 DESCRIPTION="Shared setuptools wheel for ensurepip Python module"
 HOMEPAGE="https://pypi.org/project/setuptools/"
-SRC_URI="
-	https://files.pythonhosted.org/packages/py3/${MY_PN::1}/${MY_PN}/${WHL}
-"
+SRC_URI="$(pypi_wheel_url "${PN#ensurepip-}")"
 S=${DISTDIR}
 
 LICENSE="MIT"
@@ -23,5 +20,5 @@ RDEPEND="
 
 src_install() {
 	insinto /usr/lib/python/ensurepip
-	doins "${WHL}"
+	doins "${A}"
 }
