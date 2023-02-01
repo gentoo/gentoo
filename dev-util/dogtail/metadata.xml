@@ -6,6 +6,6 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">dogtail/dogtail</remote-id>
+    <remote-id type="gitlab">dogtail/dogtail</remote-id>
   </upstream>
 </pkgmetadata>
