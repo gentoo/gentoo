@@ -40,6 +40,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# don't want to run upstream's clang-tidy checks
+	export ac_cv_path_CLANGTIDY=""
+
 	econf \
 		--with-completiondir="$(get_bashcompdir)" \
 		--disable-strict \
