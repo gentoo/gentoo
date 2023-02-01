@@ -13,7 +13,7 @@ HOMEPAGE+=" https://cukic.co/2017/02/03/vaults-encryption-in-plasma/"
 
 LICENSE="LGPL-3"
 SLOT="5"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="networkmanager"
 
 DEPEND="
