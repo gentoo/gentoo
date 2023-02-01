@@ -1,8 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
+
+# David Seifert <soap@gentoo.org> (2023-02-01)
+# not keyworded yet, bug #892802
+dev-libs/opensc openpace
 
 # Sam James <sam@gentoo.org> (2022-12-26)
 # Unkeyworded dependencies
