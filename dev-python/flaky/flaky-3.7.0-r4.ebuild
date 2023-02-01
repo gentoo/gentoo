@@ -31,6 +31,7 @@ DEPEND="
 
 src_prepare() {
 	rm flaky/flaky_nose_plugin.py || die
+	sed -i -e '/flaky_nose_plugin/d' setup.py || die
 	distutils-r1_src_prepare
 }
 
