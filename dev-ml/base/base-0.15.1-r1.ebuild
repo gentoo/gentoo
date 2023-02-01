@@ -16,7 +16,7 @@ IUSE="+ocamlopt"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.10.0
-	dev-ml/sexplib0:${SLOT}
+	=dev-ml/sexplib0-0.15*:=
 	dev-ml/dune-configurator:=
 "
 DEPEND="${RDEPEND}"

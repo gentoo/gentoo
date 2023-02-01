@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="+ocamlopt"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.10.0
-	dev-ml/sexplib0:${SLOT}
+	=dev-ml/sexplib0-0.15*:=
 	dev-ml/dune-configurator:=
 "
 DEPEND="${RDEPEND}"
