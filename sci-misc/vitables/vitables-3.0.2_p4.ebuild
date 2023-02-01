@@ -5,17 +5,15 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{8..11} )
 
-inherit distutils-r1
-
-MY_PN="ViTables"
-MY_P="${MY_PN}-${PV}"
+inherit distutils-r1 virtualx
 
 DESCRIPTION="A graphical tool for browsing / editing files in both PyTables and HDF5 formats"
 HOMEPAGE="https://vitables.org/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_$(ver_cut 1-3).orig.tar.gz
+	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_$(ver_cut 1-3)-$(ver_cut 5).debian.tar.xz"
+S="${WORKDIR}/ViTables-$(ver_cut 1-3)"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -29,13 +27,14 @@ RDEPEND="
 		dev-python/QtPy[gui,${PYTHON_USEDEP}]
 	')"
 DEPEND="${RDEPEND}"
-BDEPEND="
-	test? (
-		$(python_gen_cond_dep '
-			<dev-python/sip-5[${PYTHON_USEDEP}]
-			dev-python/nose[${PYTHON_USEDEP}]
-	')
-	)
-"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	eapply ../debian/patches
+	default
+}
+
+python_test() {
+	virtx epytest
+}
