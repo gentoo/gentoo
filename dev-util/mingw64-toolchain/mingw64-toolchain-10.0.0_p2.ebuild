@@ -22,8 +22,7 @@ HOMEPAGE="
 SRC_URI="
 	mirror://sourceforge/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v${MINGW_PV}.tar.bz2
 	mirror://gnu/gcc/gcc-${GCC_PV}/gcc-${GCC_PV}.tar.xz
-	mirror://gnu/binutils/binutils-${BINUTILS_PV}.tar.xz
-	https://sourceware.org/pub/binutils/releases/binutils-${BINUTILS_PV}.tar.xz"
+	mirror://gnu/binutils/binutils-${BINUTILS_PV}.tar.xz"
 S="${WORKDIR}"
 
 # l1:binutils+gcc, l2:gcc(libraries), l3:mingw64-runtime
