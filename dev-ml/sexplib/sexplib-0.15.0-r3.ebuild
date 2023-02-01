@@ -17,7 +17,7 @@ IUSE="+ocamlopt"
 RDEPEND="
 	dev-ml/parsexp:0/0.15
 	dev-ml/base:0/0.15
-	dev-ml/sexplib0:0/0.15
+	=dev-ml/sexplib0-0.15*:=
 	dev-ml/num:=
 "
 DEPEND="${RDEPEND}"
