@@ -257,4 +257,7 @@ src_install() {
 
 pkg_postinst() {
 	optfeature "geolocation service (used at runtime if available)" "app-misc/geoclue"
+	optfeature "Common Multimedia codecs" "media-plugins/gst-plugins-meta"
+	optfeature "(MPEG-)DASH support" "media-plugins/gst-plugins-dash"
+	optfeature "HTTP-Live-Streaming support" "media-plugins/gst-plugins-hls"
 }
