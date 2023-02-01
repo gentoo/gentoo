@@ -1,0 +1,44 @@
+From 1e0042c750756d0963d11d125978f47ea830d495 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Niccol=C3=B2=20Venerandi?= <niccolo@venerandi.com>
+Date: Tue, 31 Jan 2023 20:25:06 +0000
+Subject: [PATCH] Dialog: Fix calculation of distance between dialog and parent
+ applet
+
+`ParentRect` is not using the same coordinate system as `dialogPos` and `avail`,
+which could result in incorrect placement of dialogs when you have e.g. multiple
+monitors or a non-maximized panel. This replaces `ParentRect` with `dialogPos` so
+the coordinate systems remain in sync.
+
+BUG:464201
+BUG:464513
+FIXED-IN: 5.103
+
+
+(cherry picked from commit eda6caabcffff484544af8949d0ca0a3ea3ce333)
+---
+ src/plasmaquick/dialog.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/plasmaquick/dialog.cpp b/src/plasmaquick/dialog.cpp
+index 786d7ebe2..bdbdd028b 100644
+--- a/src/plasmaquick/dialog.cpp
++++ b/src/plasmaquick/dialog.cpp
+@@ -1249,13 +1249,13 @@ QPoint Dialog::popupPosition(QQuickItem *item, const QSize &size)
+         switch (d->location) {
+         case Plasma::Types::TopEdge:
+         case Plasma::Types::BottomEdge:
+-            if (qAbs(parentRect.center().x() - avail.center().x() ) < size.width() / 2 - parentRect.width() / 3) {
++            if (qAbs(dialogPos.x() + size.width() / 2 - avail.center().x() ) < size.width() / 2 - parentRect.width() / 3) {
+                 dialogPos.setX(avail.center().x() - size.width() / 2);
+             }
+             break;
+         case Plasma::Types::LeftEdge:
+         case Plasma::Types::RightEdge:
+-            if (qAbs(parentRect.center().y() - avail.center().y() ) < size.height() / 2 - parentRect.height() / 3) {
++            if (qAbs(dialogPos.y() + size.height() / 2 - avail.center().y() ) < size.height() / 2 - parentRect.height() / 3) {
+                 dialogPos.setY(avail.center().y() - size.height() / 2);
+             }
+             break;
+-- 
+GitLab
+
