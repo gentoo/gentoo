@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
 		<name>Gavin D. Howard</name>
-		<email>gavin@yzena.com</email>
+		<email>gavin@gavinhoward.com</email>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
@@ -12,10 +12,10 @@
 	<upstream>
 		<maintainer>
 			<name>Gavin D. Howard</name>
-			<email>gavin@yzena.com</email>
+			<email>gavin@gavinhoward.com</email>
 		</maintainer>
-		<bugs-to>https://git.yzena.com/gavin/bc</bugs-to>
-		<doc>https://git.yzena.com/gavin/bc/src/branch/master/manuals</doc>
+		<bugs-to>https://git.gavinhoward.com/gavin/bc</bugs-to>
+		<doc>https://git.gavinhoward.com/gavin/bc/src/branch/master/manuals</doc>
 		<remote-id type="github">gavinhoward/bc</remote-id>
 	</upstream>
 	<longdescription lang="en">
