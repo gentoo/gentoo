@@ -17,7 +17,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-python/pillow[${PYTHON_USEDEP}]
+RDEPEND="app-text/openpaperwork-core[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	gui-libs/libhandy
