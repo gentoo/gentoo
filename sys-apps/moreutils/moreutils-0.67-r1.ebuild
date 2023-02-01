@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,17 +15,22 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ppc ~ppc64 x86 ~x86-linux ~x64-macos"
 IUSE="+doc +perl"
 
-RDEPEND="perl? (
+RDEPEND="
+	!<dev-util/pwntools-4.10.0_beta0-r2
+	perl? (
 		dev-lang/perl
 		dev-perl/IPC-Run
 		dev-perl/Time-Duration
 		dev-perl/TimeDate
-	)"
-BDEPEND="doc? (
+	)
+	"
+BDEPEND="
+	doc? (
 		>=app-text/docbook2X-0.8.8-r2
 		app-text/docbook-xml-dtd:4.4
 		dev-lang/perl
-	)"
+	)
+"
 IDEPEND="app-admin/eselect"
 
 PATCHES=(
