@@ -28,7 +28,6 @@ BDEPEND="
 	test? (
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP},tiff,jpeg]
-		dev-python/py[${PYTHON_USEDEP}]
 	)
 "
 
