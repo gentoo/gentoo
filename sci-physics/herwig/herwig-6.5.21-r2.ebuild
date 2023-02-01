@@ -1,43 +1,38 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit autotools fortran-2 versionator
+inherit autotools fortran-2
 
-PV1=$(get_version_component_range 1 ${PV})
-PV2=$(get_version_component_range 2 ${PV})
-PV3=$(get_version_component_range 3 ${PV})
-MY_P=${PN}${PV1}${PV2}${PV3}
-MY_PINC="${PN^^}${PV1}${PV2}.INC"
+MY_P=${PN}$(ver_rs 1- '')
+MY_PINC="${PN^^}$(ver_cut 1)$(ver_cut 2).INC"
 
 DESCRIPTION="High Energy Physics Event Generator"
 HOMEPAGE="https://www.hep.phy.cam.ac.uk/theory/webber/Herwig/"
 SRC_URI="
 	https://www.hep.phy.cam.ac.uk/theory/webber/Herwig/${MY_P}.f
-	https://www.hep.phy.cam.ac.uk/theory/webber/Herwig/${MY_P}.inc
+	https://www.hep.phy.cam.ac.uk/theory/webber/Herwig/${MY_P}.INC
 	https://www.hep.phy.cam.ac.uk/theory/webber/Herwig/${MY_PINC}
 	doc? ( https://www.hep.phy.cam.ac.uk/theory/webber/Herwig/hw65_manual.pdf )"
-
-LICENSE="all-rights-reserved"
-RESTRICT="mirror bindist"
-
-SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE="doc static-libs"
-
-RDEPEND="!sci-physics/cernlib-montecarlo[herwig]"
-DEPEND="${RDEPEND}"
-
 S="${WORKDIR}"
 
+LICENSE="all-rights-reserved"
+SLOT="0"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+
+IUSE="doc static-libs"
+RESTRICT="mirror bindist"
+
+DEPEND="${RDEPEND}"
+
 src_unpack() {
-	cp "${DISTDIR}"/{"${MY_P}".f,"${MY_P}".inc,"${MY_PINC}"} "${S}" || die
+	cp "${DISTDIR}"/{"${MY_P}".f,"${MY_P}".INC,"${MY_PINC}"} "${S}" || die
 }
 
 src_prepare() {
 	sed -i \
-		-e "s/${PN}.*.inc/${MY_P}.inc/" \
+		-e "s/${PN}.*.inc/${MY_P}.INC/" \
 		${MY_PINC} || die
 	cat > configure.ac <<-EOF || die
 		AC_INIT(${PN},${PV})
@@ -52,10 +47,10 @@ src_prepare() {
 		lib${PN}_la_SOURCES = ${MY_P}.f
 		include_HEADERS = \
 			${MY_PINC} \
-			${MY_P}.inc
+			${MY_P}.INC
 
 	EOF
-	eapply_user
+	default
 	eautoreconf
 }
 
