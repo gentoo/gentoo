@@ -1,10 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{9..10} )
-inherit distutils-r1
+inherit distutils-r1 virtualx
 
 DESCRIPTION="Universal Radio Hacker: investigate wireless protocols like a boss"
 HOMEPAGE="https://github.com/jopohl/urh"
@@ -40,6 +40,8 @@ RDEPEND="${DEPEND}
 		dev-python/PyQt5[${PYTHON_USEDEP},testlib]
 		net-wireless/gr-osmosdr"
 
+distutils_enable_tests pytest
+
 python_configure_all() {
 	DISTUTILS_ARGS=(
 			$(use_with airspy)
@@ -51,4 +53,25 @@ python_configure_all() {
 			$(use_with sdrplay)
 			$(use_with uhd usrp)
 			)
+}
+
+src_test() {
+	virtx distutils-r1_src_test
+}
+
+python_test() {
+	# Why are these disabled?
+	# import errors AND hangs forever after 'tests/test_spectrogram.py::TestSpectrogram::test_cancel_filtering'
+	# import errors	'tests/test_continuous_modulator.py::TestContinuousModulator::test_modulate_continuously'
+	# import errors	'tests/test_send_recv_dialog_gui.py::TestSendRecvDialog::test_continuous_send_dialog'
+	# import errors	'tests/test_spectrogram.py::TestSpectrogram::test_channel_separation_with_negative_frequency'
+	local EPYTEST_DESELECT=(
+		'tests/test_spectrogram.py::TestSpectrogram::test_cancel_filtering'
+		'tests/test_continuous_modulator.py::TestContinuousModulator::test_modulate_continuously'
+		'tests/test_send_recv_dialog_gui.py::TestSendRecvDialog::test_continuous_send_dialog'
+		'tests/test_spectrogram.py::TestSpectrogram::test_channel_separation_with_negative_frequency'
+
+	)
+	cd "${T}" || die
+	epytest -s --pyargs urh.cythonext "${S}/tests" || die
 }
