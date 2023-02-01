@@ -12,14 +12,14 @@ SRC_URI="https://github.com/OpenSC/OpenSC/releases/download/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="ctapi doc openct openpace notify +pcsc-lite readline secure-messaging ssl test zlib"
+IUSE="ctapi doc openct notify pace +pcsc-lite readline secure-messaging ssl test zlib"
 RESTRICT="!test? ( test )"
 
 RDEPEND="zlib? ( sys-libs/zlib )
 	readline? ( sys-libs/readline:0= )
 	ssl? ( dev-libs/openssl:0= )
 	openct? ( >=dev-libs/openct-0.5.0 )
-	openpace? ( dev-libs/openpace:= )
+	pace? ( dev-libs/openpace:= )
 	pcsc-lite? ( >=sys-apps/pcsc-lite-1.3.0 )
 	notify? ( dev-libs/glib:2 )"
 DEPEND="${RDEPEND}
@@ -49,9 +49,9 @@ src_configure() {
 		--enable-man \
 		$(use_enable ctapi) \
 		$(use_enable doc) \
-		$(use_enable notify ) \
+		$(use_enable notify) \
 		$(use_enable openct) \
-		$(use_enable openpace ) \
+		$(use_enable pace openpace) \
 		$(use_enable pcsc-lite pcsc) \
 		$(use_enable readline) \
 		$(use_enable secure-messaging sm) \
