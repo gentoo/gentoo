@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
-MY_PN=python-${PN}
+MY_PN=python-snappy
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Python library for the snappy compression library from Google"
