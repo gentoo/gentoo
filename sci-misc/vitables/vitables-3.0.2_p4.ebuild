@@ -32,6 +32,7 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	eapply ../debian/patches
+	sed -e '/QtTest/d' -i tests/test_samples.py || die
 	default
 }
 
