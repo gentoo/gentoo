@@ -51,7 +51,7 @@ CDEPEND="
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi[cxx] )
 	sci-libs/lmfit:=
-	>=dev-cpp/muParser-2.3.4:=[-wchar]
+	>=dev-cpp/muParser-2.3:=
 	${PYTHON_DEPS}
 	"
 BDEPEND="${CDEPEND}
