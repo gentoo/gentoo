@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit user-info flag-o-matic autotools pam systemd toolchain-funcs verify-sig
 
@@ -269,10 +269,6 @@ src_prepare() {
 			"${S}"/version.h || die "Failed to patch SSH_RELEASE (version.h)"
 	fi
 
-	sed -i \
-		-e "/#UseLogin no/d" \
-		"${S}"/sshd_config || die "Failed to remove removed UseLogin option (sshd_config)"
-
 	eapply_user #473004
 
 	# These tests are currently incompatible with PORTAGE_TMPDIR/sandbox
@@ -282,8 +278,6 @@ src_prepare() {
 	tc-export PKG_CONFIG
 	local sed_args=(
 		-e "s:-lcrypto:$(${PKG_CONFIG} --libs openssl):"
-		# Disable PATH reset, trust what portage gives us #254615
-		-e 's:^PATH=/:#PATH=/:'
 		# Disable fortify flags ... our gcc does this for us
 		-e 's:-D_FORTIFY_SOURCE=2::'
 	)
@@ -443,8 +437,9 @@ src_install() {
 	dodir /etc/skel/.ssh
 	rmdir "${ED}"/var/empty || die
 
-	systemd_dounit "${FILESDIR}"/sshd.{service,socket}
-	systemd_newunit "${FILESDIR}"/sshd_at.service 'sshd@.service'
+	systemd_dounit "${FILESDIR}"/sshd.socket
+	systemd_newunit "${FILESDIR}"/sshd.service.1 sshd.service
+	systemd_newunit "${FILESDIR}"/sshd_at.service.1 'sshd@.service'
 }
 
 pkg_preinst() {
@@ -491,6 +486,14 @@ pkg_postinst() {
 			ewarn "After upgrading to openssh-8.2p1 please restart sshd, otherwise you"
 			ewarn "will not be able to establish new sessions. Restarting sshd over a ssh"
 			ewarn "connection is generally safe."
+		fi
+		if ver_test "${old_ver}" -lt "9.2_p1-r1" && systemd_is_booted; then
+			ewarn "From openssh-9.2_p1-r1 the supplied systemd unit file defaults to"
+			ewarn "'Restart=on-failure', which causes the service to automatically restart if it"
+			ewarn "terminates with an unclean exit code or signal. This feature is useful for most users,"
+			ewarn "but it can increase the vulnerability of the system in the event of a future exploit."
+			ewarn "If you have a web-facing setup or are concerned about security, it is recommended to"
+			ewarn "set 'Restart=no' in your sshd unit file."
 		fi
 	done
 
