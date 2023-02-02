@@ -96,8 +96,8 @@ src_unpack() {
 			3rdparty/rapidyaml/rapidyaml/extern/c4core
 			3rdparty/rapidyaml/rapidyaml/ext/c4core/src/c4/ext/fast_float
 
-			# uses glslang's StandAlone/ResourceLimits.h unavailable with
-			# system's (also keep bundled vulkan-headers to be in sync)
+			# glslang can be troublesome to unbundle (bug #831217),
+			# also keep vulkan-headers to stay in sync
 			$(usev vulkan '
 				3rdparty/glslang/glslang
 				3rdparty/vulkan-headers')
