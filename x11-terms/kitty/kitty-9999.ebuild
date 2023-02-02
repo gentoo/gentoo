@@ -140,12 +140,7 @@ src_test() {
 }
 
 src_install() {
-	insinto /usr
-	doins -r linux-package/.
-
-	local execbit
-	mapfile -t execbit < <(find linux-package -type f -perm /+x -printf '/usr/%P\n' || die)
-	fperms +x "${execbit[@]}"
+	edo mv linux-package "${ED}"/usr
 }
 
 pkg_postinst() {
