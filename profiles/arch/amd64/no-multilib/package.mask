@@ -31,7 +31,6 @@ app-emulation/crossover-bin
 app-emulation/protontricks
 app-emulation/q4wine
 app-emulation/winetricks
-<=app-shells/scsh-0.6.9
 dev-embedded/libftd2xx
 dev-embedded/openocd
 dev-util/android-ndk
