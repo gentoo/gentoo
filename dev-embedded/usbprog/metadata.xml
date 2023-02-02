@@ -6,6 +6,6 @@
 	<name>Embedded Gentoo</name>
 </maintainer>
 <upstream>
-	<remote-id type="bitbucket">bwalle/usbprog-tools</remote-id>
+	<remote-id type="github">bwalle/usbprog-tools</remote-id>
 </upstream>
 </pkgmetadata>
