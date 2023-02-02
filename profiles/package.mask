@@ -781,12 +781,6 @@ sys-auth/google-authenticator-libpam-hardened
 # Removal: 2023-01-30.  Bug #889194.
 x11-plugins/pidgin-funyahoo-plusplus
 
-# Maciej Barć <xgqt@gentoo.org> (2022-12-29)
-# Real upstream dead, uses old R5RS standard, many open bugs.
-# Removal on 2022-01-29.
-app-shells/scsh
-dev-scheme/scsh-lib
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-12-29)
 # Upstream is dead, last activity in Nov 2017. Does not
 # work with newer log4j, bug #857663. Use net-p2p/biglybt
@@ -929,11 +923,6 @@ dev-qt/qtwebsockets:6
 # Apparently the "b" in version means "beta". 3.24 is available, we
 # should update to that. #841437
 ~sci-physics/bullet-3.22b
-
-# Maciej Barć <xgqt@gentoo.org> (2022-02-20)
-# Masked for testing, builds and passes tests but randomly segfaults,
-# meaningless backtrace, debugging (flags, symbols) do not help
->app-shells/scsh-0.6.9
 
 # Eray Aslan <eras@gentoo.org> (2022-01-24)
 # Mask experimental software
