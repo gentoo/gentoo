@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit readme.gentoo-r1
+
 MY_PV=$(ver_cut 1-3)
 MY_DW=$(ver_rs 3 -)
 
@@ -14,9 +16,15 @@ LICENSE="BSD Apache-2.0 GPL-2 GPL-2+ GPL-3+ LGPL-2+ Ms-RL"
 SLOT="0"
 KEYWORDS="~amd64"
 S="${WORKDIR}"
+INSTALL_PATH=/usr/share/drivers/windows
 
 src_install() {
-	insinto /usr/share/drivers/windows
+	insinto "${INSTALL_PATH}"
 	doins "${DISTDIR}/${PN}-${MY_PV}.iso"
-	dosym "${PN}-${MY_PV}.iso" "/usr/share/drivers/windows/${PN}.iso"
+	dosym "${PN}-${MY_PV}.iso" "${INSTALL_PATH}/${PN}.iso"
+	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
