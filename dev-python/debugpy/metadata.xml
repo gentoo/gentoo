@@ -7,6 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">debugpy</remote-id>
+		<remote-id type="github">microsoft/debugpy</remote-id>
 		<maintainer status="unknown">
 			<email>ptvshelp@microsoft.com</email>
 			<name>Microsoft Corporation</name>
