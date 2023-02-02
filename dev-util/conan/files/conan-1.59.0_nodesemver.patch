@@ -1,0 +1,39 @@
+diff --git a/conans/client/conf/required_version.py b/conans/client/conf/required_version.py
+index f06342d66..f1f62d3c7 100644
+--- a/conans/client/conf/required_version.py
++++ b/conans/client/conf/required_version.py
+@@ -1,7 +1,7 @@
+ import six
+ 
+ from conans.client.cache.cache import ClientCache
+-from semver import satisfies
++from nodesemver import satisfies
+ from conans import __version__ as client_version
+ from conans.errors import ConanException
+ 
+diff --git a/conans/client/graph/range_resolver.py b/conans/client/graph/range_resolver.py
+index 616585967..856fb25da 100644
+--- a/conans/client/graph/range_resolver.py
++++ b/conans/client/graph/range_resolver.py
+@@ -56,7 +56,7 @@ def satisfying(list_versions, versionexpr, result):
+     if some version cannot be converted to loose SemVer, it is discarded with a msg
+     This provides some workaround for failing comparisons like "2.1" not matching "<=2.1"
+     """
+-    from semver import SemVer, Range, max_satisfying
++    from nodesemver import SemVer, Range, max_satisfying
+     version_range, loose, include_prerelease = _parse_versionexpr(versionexpr, result)
+ 
+     # Check version range expression
+diff --git a/conans/client/tools/version.py b/conans/client/tools/version.py
+index c6518302c..4c2206124 100644
+--- a/conans/client/tools/version.py
++++ b/conans/client/tools/version.py
+@@ -2,7 +2,7 @@
+ 
+ from functools import total_ordering
+ 
+-from semver import SemVer
++from nodesemver import SemVer
+ 
+ from conans.errors import ConanException
+ 
