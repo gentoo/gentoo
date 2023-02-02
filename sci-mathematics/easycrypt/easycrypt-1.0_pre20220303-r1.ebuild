@@ -1,21 +1,21 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=c98b014c131b6c0b147b852902953dd6c5771603
+[[ ${PV} == *_pre20220303 ]] && COMMIT=c98b014c131b6c0b147b852902953dd6c5771603
 
 inherit dune
 
 DESCRIPTION="Computer-Aided Cryptographic Proofs"
 HOMEPAGE="https://github.com/EasyCrypt/easycrypt"
 
-if [[ "${PV}" == *9999* ]]; then
+if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/EasyCrypt/${PN}.git"
 else
-	SRC_URI="https://github.com/EasyCrypt/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${H}"
+	SRC_URI="https://github.com/EasyCrypt/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 
 LICENSE="CeCILL-B CeCILL-C"

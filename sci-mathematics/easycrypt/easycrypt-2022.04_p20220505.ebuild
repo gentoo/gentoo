@@ -1,21 +1,21 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=a49a0acf5f7e2776f6b10cd49f8a201ebab0cf03
+[[ ${PV} == *_p20220505 ]] && COMMIT=a49a0acf5f7e2776f6b10cd49f8a201ebab0cf03
 
 inherit dune
 
 DESCRIPTION="Computer-Aided Cryptographic Proofs"
 HOMEPAGE="https://github.com/EasyCrypt/easycrypt"
 
-if [[ "${PV}" == *9999* ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/EasyCrypt/${PN}.git"
 else
-	SRC_URI="https://github.com/EasyCrypt/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}"/${PN}-${H}
+	SRC_URI="https://github.com/EasyCrypt/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}"/${PN}-${COMMIT}
 fi
 
 LICENSE="MIT"
