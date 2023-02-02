@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ada.eclass
@@ -45,16 +45,58 @@ EXPORT_FUNCTIONS pkg_setup
 # DEPEND="${RDEPEND}"
 # @CODE
 #
+# Example value:
+# @CODE
+# ada_target_gcc_12? ( sys-devel/gcc:12[ada] )
+# ada_target_gnat_2021? ( dev-lang/gnat-gps:2021[ada] )
+# @CODE
 
 # @ECLASS_VARIABLE: _ADA_ALL_IMPLS
 # @INTERNAL
 # @DESCRIPTION:
 # All supported Ada implementations, most preferred last.
 _ADA_ALL_IMPLS=(
-	gnat_2021 gcc_12_2_0
+	gnat_2021 gcc_12_2_0 gcc_12
 )
 readonly _ADA_ALL_IMPLS
 
+# @ECLASS_VARIABLE: ADA_REQUIRED_USE
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# This is an eclass-generated required-use expression which ensures
+# that exactly one ADA_TARGET value has been enabled.
+#
+# This expression should be utilized in an ebuild by including it in
+# REQUIRED_USE, optionally behind a use flag.
+#
+# Example use:
+# @CODE
+# REQUIRED_USE="ada? ( ${ADA_REQUIRED_USE} )"
+# @CODE
+#
+# Example value:
+# @CODE
+# ^^ ( ada_target_gnat_2021 ada_target_gcc_12 )
+# @CODE
+
+# @ECLASS_VARIABLE: ADA_USEDEP
+# @OUTPUT_VARIABLE
+# @DESCRIPTION:
+# This is a placeholder variable,
+# in order to depend on ada packages built for the same ada
+# implementations.
+#
+# Example use:
+# @CODE
+# RDEPEND="$(ada_gen_cond_dep '
+#     dev-ada/foo[${ADA_USEDEP}]
+#   ')"
+# @CODE
+#
+# Example value:
+# @CODE
+# ada_targets_gcc_12(-)
+# @CODE
 
 # @FUNCTION: _ada_impl_supported
 # @USAGE: <impl>
@@ -80,6 +122,9 @@ _ada_impl_supported() {
 			return 0
 			;;
 		gcc_12_2_0)
+			return 0
+			;;
+		gcc_12)
 			return 0
 			;;
 		*)
@@ -181,6 +226,10 @@ ada_export() {
 			impl=${1}
 			shift
 			;;
+		gcc_12)
+			impl=${1}
+			shift
+			;;
 		*)
 			impl=${EADA}
 			if [[ -z ${impl} ]]; then
@@ -199,6 +248,10 @@ ada_export() {
 			;;
 		gcc_12_2_0)
 			gcc_pv=12.2.0
+			slot=12
+			;;
+		gcc_12)
+			gcc_pv=12
 			slot=12
 			;;
 		*)
@@ -249,6 +302,9 @@ ada_export() {
 				case "${impl}" in
 					gnat_2021)
 						ADA_PKG_DEP="dev-lang/gnat-gpl:${slot}[ada]"
+						;;
+					gcc_12)
+						ADA_PKG_DEP="sys-devel/gcc:${slot}[ada]"
 						;;
 					*)
 						ADA_PKG_DEP="=sys-devel/gcc-${gcc_pv}*[ada]"
