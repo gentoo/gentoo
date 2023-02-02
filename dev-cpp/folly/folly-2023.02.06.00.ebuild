@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE="llvm-libunwind test"
 RESTRICT="!test? ( test )"
 
@@ -81,6 +81,9 @@ src_configure() {
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 
 		-DBUILD_TESTS=$(usex test)
+
+		# https://github.com/gentoo/gentoo/pull/29393
+		-DCMAKE_LIBRARY_ARCHITECTURE=$(usex amd64 x86_64 ${ARCH})
 	)
 
 	cmake_src_configure
