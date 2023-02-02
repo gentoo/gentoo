@@ -8,4 +8,7 @@
 	<use>
 		<flag name="custom-cflags">Do not override user CFLAGS like -march, -msse and similar with lib defaults. Not tested by upstream.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">intel/gmmlib</remote-id>
+	</upstream>
 </pkgmetadata>
