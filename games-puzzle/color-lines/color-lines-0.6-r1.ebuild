@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit desktop
 
 DESCRIPTION="Color lines game written with SDL with bonus features"
 HOMEPAGE="https://github.com/OpenA/color-lines-sdl"
-SRC_URI="https://color-lines.googlecode.com/files/lines_${PV}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.gz -> lines_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
