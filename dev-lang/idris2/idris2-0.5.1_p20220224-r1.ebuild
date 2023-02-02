@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=1011cc6162bad580b0c51237c86fbf4fe2035fbe
+[[ ${PV} == *_p20220224 ]] && COMMIT=1011cc6162bad580b0c51237c86fbf4fe2035fbe
 
 inherit toolchain-funcs
 
@@ -14,9 +14,9 @@ if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/idris-lang/${PN^}.git"
 else
-	SRC_URI="https://github.com/idris-lang/${PN^}/archive/${H}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/idris-lang/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN^}-${H}"
+	S="${WORKDIR}/${PN^}-${COMMIT}"
 fi
 
 LICENSE="BSD"
