@@ -571,11 +571,6 @@ app-text/sword-modules
 # Removal on 2023-02-24.  Bug #837611.
 sys-cluster/wulfware
 
-# Michał Górny <mgorny@gentoo.org> (2023-01-25)
-# Unfetchable since at least 2021.  Mirror-restricted.
-# Removal on 2023-02-24.  Bug #761817.
-sci-physics/herwig
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-01-24)
 # Mostly obsoleted by the better maintained net-misc/yt-dlp, please
 # migrate. If had USE=yt-dlp enabled (default) then was likely already
