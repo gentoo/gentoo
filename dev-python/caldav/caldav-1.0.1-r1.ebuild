@@ -31,7 +31,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/icalendar[${PYTHON_USEDEP}]
-		dev-python/python-recurring-ical-events[${PYTHON_USEDEP}]
+		dev-python/recurring-ical-events[${PYTHON_USEDEP}]
 		dev-python/tzlocal[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		www-apps/radicale[${PYTHON_USEDEP}]
