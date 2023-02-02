@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ DESCRIPTION="Java/Scala artifact fetching, bundling and deploying"
 HOMEPAGE="https://get-coursier.io/"
 SRC_URI="https://github.com/coursier/coursier/releases/download/v$(get_orig_coursier_pv)/cs-x86_64-pc-linux.gz -> ${P}.gz"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 LICENSE="Apache-2.0"
 SLOT="0"
 
