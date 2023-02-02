@@ -44,11 +44,6 @@ src_compile() {
 
 src_test() {
 	GPR_PROJECT_PATH=schema:input_sources:dom:sax:unicode \
-	echo gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=static \
-		-XBUILD=Production -XPROCESSORS=$(makeopts_jobs) xmlada.gpr \
-		-XTESTS_ACTIVATED=Only \
-		-largs ${LDFLAGS} \
-		-cargs ${ADAFLAGS} || die "gprbuild failed"
 	gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=static \
 		-XBUILD=Production -XPROCESSORS=$(makeopts_jobs) xmlada.gpr \
 		-XTESTS_ACTIVATED=Only \
