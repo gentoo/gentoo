@@ -1,18 +1,19 @@
-From 0baebcca66eb06aba0831e6596ff5c3245038cae Mon Sep 17 00:00:00 2001
+From 60fbad38f9a394607ac265902fc56c13dd8c9afc Mon Sep 17 00:00:00 2001
 From: Matt Turner <mattst88@gmail.com>
 Date: Fri, 27 Jan 2023 06:40:05 -0800
 Subject: [PATCH] Disable things we don't want
 
 v2: Enable libglad to satisfy egl dependencies
+v3: Enable most of libutil to fix undefined references in es2gears
 ---
  meson.build                   | 11 +++--------
  src/egl/opengl/meson.build    | 26 -------------------------
  src/egl/opengles2/meson.build |  5 -----
  src/meson.build               |  2 --
  src/util/gl_wrap.h            |  2 --
- src/util/meson.build          | 21 --------------------
+ src/util/meson.build          |  7 +------
  src/xdemos/meson.build        | 36 -----------------------------------
- 7 files changed, 3 insertions(+), 100 deletions(-)
+ 7 files changed, 4 insertions(+), 85 deletions(-)
 
 diff --git a/meson.build b/meson.build
 index 1fb8eeb1..76f035fb 100644
@@ -44,10 +45,10 @@ index 1fb8eeb1..76f035fb 100644
                                          dependencies: [dep_glut],
                                          prefix : '#include <GL/freeglut.h>')
 diff --git a/src/egl/opengl/meson.build b/src/egl/opengl/meson.build
-index 22b8d23c..18ec823d 100644
+index 6b7039dc..46e4bec7 100644
 --- a/src/egl/opengl/meson.build
 +++ b/src/egl/opengl/meson.build
-@@ -4,32 +4,11 @@ executable(
+@@ -24,32 +24,11 @@ executable(
    'eglgears_x11', files('eglgears.c'),
    dependencies: [_deps, dep_glu, idep_eglut_x11]
  )
@@ -80,7 +81,7 @@ index 22b8d23c..18ec823d 100644
  
  executable(
    'eglinfo', 'eglinfo.c',
-@@ -38,8 +17,3 @@ executable(
+@@ -58,8 +37,3 @@ executable(
    install: true
  )
  
@@ -90,10 +91,10 @@ index 22b8d23c..18ec823d 100644
 -)
 -
 diff --git a/src/egl/opengles2/meson.build b/src/egl/opengles2/meson.build
-index 9a442988..e912333b 100644
+index de47a69c..9b073a88 100644
 --- a/src/egl/opengles2/meson.build
 +++ b/src/egl/opengles2/meson.build
-@@ -9,11 +9,6 @@ executable(
+@@ -29,11 +29,6 @@ executable(
    dependencies: [dep_gles2, idep_eglut_x11, idep_util],
    install: true
  )
@@ -131,37 +132,28 @@ index b2ff9c8f..f482df5e 100644
  
  #ifndef GLAPIENTRY
 diff --git a/src/util/meson.build b/src/util/meson.build
-index ddcd4834..066073cc 100644
+index ddcd4834..72e9480d 100644
 --- a/src/util/meson.build
 +++ b/src/util/meson.build
-@@ -20,27 +20,6 @@
- 
+@@ -21,17 +21,12 @@
  inc_util = include_directories('.')
  
--files_libutil = files(
+ files_libutil = files(
 -  'readtex.c',
--  'showbuffer.c',
--  'trackball.c',
--  'matrix.c',
--)
--
+   'showbuffer.c',
+   'trackball.c',
+   'matrix.c',
+ )
+ 
 -_deps = [dep_glu, dep_m]
 -if dep_glut.found()
 -  files_libutil += files('shaderutil.c')
 -  _deps += dep_glut
 -endif
--
--_libutil = static_library(
--  'util',
--  files_libutil,
--  include_directories: inc_glad,
--  dependencies: _deps,
--)
--
- idep_util = declare_dependency(
--  link_with: _libutil,
-   include_directories: inc_util,
- )
++_deps = [dep_m]
+ 
+ _libutil = static_library(
+   'util',
 diff --git a/src/xdemos/meson.build b/src/xdemos/meson.build
 index d6d5d5d5..ce26699f 100644
 --- a/src/xdemos/meson.build
