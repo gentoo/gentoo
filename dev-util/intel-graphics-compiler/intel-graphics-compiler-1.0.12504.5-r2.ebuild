@@ -27,7 +27,7 @@ DEPEND="
 	sys-devel/lld:${LLVM_MAX_SLOT}=
 	sys-devel/llvm:${LLVM_MAX_SLOT}=
 	vc? (
-		dev-libs/intel-vc-intrinsics
+		<dev-libs/intel-vc-intrinsics-0.11.0
 		dev-util/spirv-llvm-translator:${LLVM_MAX_SLOT}=
 	)
 "
