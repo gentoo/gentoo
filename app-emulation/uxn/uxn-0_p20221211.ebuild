@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=6317b5cf181e56253da10e0e5051ac75bbb5c4b2
+[[ ${PV} == *_p20221211 ]] && COMMIT=6317b5cf181e56253da10e0e5051ac75bbb5c4b2
 
 inherit toolchain-funcs
 
@@ -15,8 +15,9 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.sr.ht/~rabbits/uxn.git"
 else
-	SRC_URI="https://git.sr.ht/~rabbits/uxn/archive/${H}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}"/${PN}-${H}
+	SRC_URI="https://git.sr.ht/~rabbits/uxn/archive/${COMMIT}.tar.gz
+		-> ${P}.tar.gz"
+	S="${WORKDIR}"/${PN}-${COMMIT}
 	KEYWORDS="~amd64 ~x86"
 fi
 
