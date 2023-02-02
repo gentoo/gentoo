@@ -28,7 +28,7 @@ PATCHES=(
 	"${FILESDIR}/0001-Find-CLANG_RESOURCE_DIR-using-clang-print-resource-d.patch"
 	"${FILESDIR}/${PN}-5.3.3-HIPIncludePath-not-needed.patch"
 	"${FILESDIR}/${PN}-5.3.3-fix-tests.patch"
-	"${FILESDIR}/${PN}-5.3.3-fno-stack-protecter.patch"
+	"${FILESDIR}/${PN}-5.3.3-fno-stack-protector.patch"
 )
 
 DESCRIPTION="Radeon Open Compute Code Object Manager"
