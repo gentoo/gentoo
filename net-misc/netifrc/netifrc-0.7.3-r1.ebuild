@@ -21,10 +21,8 @@ LICENSE="BSD-2"
 SLOT="0"
 IUSE="+dhcp"
 
-DEPEND="!<sys-fs/udev-172"
 RDEPEND="sys-apps/gentoo-functions
 	>=sys-apps/openrc-0.15
-	!<sys-fs/udev-init-scripts-27
 	dhcp? ( || ( net-misc/dhcpcd net-misc/dhcp[client] ) )"
 BDEPEND="kernel_linux? ( virtual/pkgconfig )"
 
