@@ -15,7 +15,7 @@ SRC_URI="https://www.openvswitch.org/releases/${P}.tar.gz"
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86"
-IUSE="debug modules monitor +ssl"
+IUSE="debug modules monitor +ssl unwind"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # Check python/ovs/version.py in tarball for dev-python/ovs dep
@@ -26,6 +26,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/zope-interface[${PYTHON_USEDEP}]
 	')
 	debug? ( dev-lang/perl )
+	unwind? ( sys-libs/libunwind:= )
 	ssl? ( dev-libs/openssl:= )"
 DEPEND="${RDEPEND}
 	sys-apps/util-linux[caps]"
@@ -81,6 +82,8 @@ src_configure() {
 
 	local linux_config
 	use modules && linux_config="--with-linux=${KV_OUT_DIR}"
+
+	export ac_cv_lib_unwind_unw_backtrace="$(usex unwind)"
 
 	# Need PYTHON3 variable for bug #860240
 	PYTHON3="${PYTHON}" CONFIG_SHELL="${BROOT}"/bin/bash SHELL="${BROOT}"/bin/bash econf ${linux_config} \
