@@ -32,7 +32,6 @@ case ${PV} in
 		SRC_URI="
 			https://sourceware.org/pub/gdb/snapshots/branch/gdb-weekly-${MY_PV}.tar.xz
 			https://sourceware.org/pub/gdb/snapshots/current/gdb-weekly-${MY_PV}.tar.xz
-			https://sourceware.org/pub/gdb/snapshots/branch/gdb-${MY_PV}.tar.xz
 		"
 		S="${WORKDIR}/${PN}-${MY_PV}"
 		;;
@@ -50,6 +49,8 @@ case ${PV} in
 			mirror://gnu/gdb/${P}.tar.xz
 			https://sourceware.org/pub/gdb/releases/${P}.tar.xz
 		"
+
+		#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 		;;
 esac
 
@@ -65,14 +66,12 @@ SRC_URI="
 
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
-
-if [[ ${PV} != 9999* ]] ; then
+IUSE="cet guile lzma multitarget nls +python +server sim source-highlight test vanilla xml xxhash zstd"
+# TODO: Drop once 13 is released
+if [[ ${PV} != 9999 ]] ; then
 	# for testing on loong only
-	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	KEYWORDS="~loong"
 fi
-
-IUSE="cet guile lzma multitarget nls +python +server sim source-highlight test vanilla xml xxhash zstd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
