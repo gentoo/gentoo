@@ -40,7 +40,7 @@ BDEPEND="
 	test? (
 		${RDEPEND}
 		>=dev-python/wsaccel-0.6.3[${PYTHON_USEDEP}]
-		>=dev-python/snappy-0.6.0[${PYTHON_USEDEP}]
+		>=dev-python/python-snappy-0.6.0[${PYTHON_USEDEP}]
 		>=dev-python/msgpack-1.0.2[${PYTHON_USEDEP}]
 		>=dev-python/ujson-4.0.2[${PYTHON_USEDEP}]
 		>=dev-python/cbor2-5.2.0[${PYTHON_USEDEP}]
@@ -101,7 +101,8 @@ python_test() {
 
 pkg_postinst() {
 	optfeature "C-based WebSocket acceleration" "dev-python/wsaccel"
-	optfeature "non-standard WebSocket compression support" "dev-python/snappy"
+	optfeature "non-standard WebSocket compression support" \
+		"dev-python/python-snappy"
 	optfeature "accelerated WAMP serialization support" \
 		"dev-python/msgpack dev-python/ujson dev-python/cbor2 dev-python/flatbuffers dev-python/py-ubjson"
 	optfeature "TLS transport encryption" \
