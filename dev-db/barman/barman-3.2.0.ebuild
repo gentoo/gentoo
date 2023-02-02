@@ -33,7 +33,7 @@ BDEPEND="
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
-		dev-python/snappy[${PYTHON_USEDEP}]
+		dev-python/python-snappy[${PYTHON_USEDEP}]
 	)
 "
 
