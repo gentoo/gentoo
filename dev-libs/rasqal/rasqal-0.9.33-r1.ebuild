@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit libtool
+inherit autotools
 
 DESCRIPTION="Library that handles Resource Description Framework (RDF)"
 HOMEPAGE="http://librdf.org/rasqal/"
@@ -38,9 +38,15 @@ BDEPEND="
 DOCS=( AUTHORS ChangeLog NEWS README )
 HTML_DOCS=( {NEWS,README,RELEASE}.html )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.33-configure-clang16.patch
+)
+
 src_prepare() {
 	default
-	elibtoolize # g/fbsd .so versioning
+
+	#elibtoolize # g/fbsd .so versioning
+	eautoreconf # for clang 16 patch
 }
 
 src_configure() {
