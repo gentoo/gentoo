@@ -8,16 +8,12 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
-MY_PN=python-snappy
-MY_P=${MY_PN}-${PV}
-
 DESCRIPTION="Python library for the snappy compression library from Google"
 HOMEPAGE="
 	https://github.com/andrix/python-snappy/
 	https://pypi.org/project/python-snappy/
 "
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
+SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 KEYWORDS="amd64 arm arm64 ~riscv x86 ~amd64-linux ~x86-linux"
