@@ -37,6 +37,10 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
 	doc? ( app-doc/doxygen )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-13.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
