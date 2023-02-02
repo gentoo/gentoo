@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
+MY_P=python-${P}
 DESCRIPTION="Repeat ICalendar events by RRULE, RDATE and EXDATE"
 HOMEPAGE="
 	https://github.com/niccokunzmann/python-recurring-ical-events/
@@ -15,8 +16,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/niccokunzmann/python-recurring-ical-events/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="LGPL-3+"
 SLOT="0"
