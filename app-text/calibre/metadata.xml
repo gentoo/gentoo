@@ -6,5 +6,6 @@
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">calibre</remote-id>
+    <remote-id type="github">kovidgoyal/calibre</remote-id>
   </upstream>
 </pkgmetadata>
