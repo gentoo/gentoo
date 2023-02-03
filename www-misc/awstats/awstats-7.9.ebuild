@@ -10,7 +10,7 @@ HOMEPAGE="https://www.awstats.org/"
 SRC_URI="https://www.awstats.org/files/${P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="geoip2 ipv6"
 
 SLOT="0"
