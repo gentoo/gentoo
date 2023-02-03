@@ -35,8 +35,6 @@ Makefile and configure should respect user's pkg-config
  LIBSD = 
  endif
  INSTALLDIRD ?= $(PREFIXD)/$(DESTDIR)
-diff --git a/configure b/configure
-index f0b7366..99f58d8 100755
 --- a/configure
 +++ b/configure
 @@ -4,8 +4,9 @@
