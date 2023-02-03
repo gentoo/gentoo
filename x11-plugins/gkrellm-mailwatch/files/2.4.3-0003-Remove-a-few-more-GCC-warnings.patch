@@ -4,12 +4,6 @@ Date: Mon, 1 Nov 2010 08:44:17 -0400
 Subject: [PATCH 3/3] Remove a few more GCC warnings
 
 These are mostly harmless, but no harm in cleaning them up.
----
- mailwatch.c |    5 +++--
- 1 files changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/mailwatch.c b/mailwatch.c
-index 5cca01e..fcb77a8 100644
 --- a/mailwatch.c
 +++ b/mailwatch.c
 @@ -198,7 +198,7 @@ check_mh(Mailbox * mbox) {

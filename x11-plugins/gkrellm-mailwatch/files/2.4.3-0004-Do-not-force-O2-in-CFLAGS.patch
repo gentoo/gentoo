@@ -5,12 +5,6 @@ Subject: [PATCH 4/4] Do not force -O2 in CFLAGS
 
 Only uses -O2 if the user has not specified any CFLAGS in the
 environment.
----
- Makefile |    3 ++-
- 1 files changed, 2 insertions(+), 1 deletions(-)
-
-diff --git a/Makefile b/Makefile
-index 02ca376..c4ca35c 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -10,7 +10,8 @@ GKRELLM_INCLUDE= -I/usr/local/include
