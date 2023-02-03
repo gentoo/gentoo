@@ -1,5 +1,3 @@
-diff --git a/gkrellmpc.c b/gkrellmpc.c
-index eb28982..08a3fb3 100644
 --- a/gkrellmpc.c
 +++ b/gkrellmpc.c
 @@ -140,7 +140,7 @@ void mpc_create_plugin (GtkWidget *vbox, gint first_create) {
@@ -29,8 +27,6 @@ index eb28982..08a3fb3 100644
  		mpc_update_label(_("NO MPD"));
  		mpc_update_songname("");
  		gtk_tooltips_set_tip(mpc_tooltip, mpc_panel->drawing_area, _("MPD is not running"), NULL);
-diff --git a/mpd.c b/mpd.c
-index 5918416..1d9ea6a 100644
 --- a/mpd.c
 +++ b/mpd.c
 @@ -12,18 +12,32 @@
@@ -141,8 +137,6 @@ index 5918416..1d9ea6a 100644
  	return (TRUE);
  }
  
-diff --git a/mpd.h b/mpd.h
-index efcb9f6..c6942c4 100644
 --- a/mpd.h
 +++ b/mpd.h
 @@ -10,5 +10,6 @@ gboolean     mpc_mpd_disconnect();
