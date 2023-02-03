@@ -10,6 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">linuxmint/xapps</remote-id>
+		<remote-id type="github">linuxmint/xapp</remote-id>
 	</upstream>
 </pkgmetadata>
