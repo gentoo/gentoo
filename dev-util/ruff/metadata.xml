@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">charliermarsh/ruff</remote-id>
+		<remote-id type="pypi">ruff</remote-id>
+	</upstream>
+</pkgmetadata>
