@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
 PYTHON_COMPAT=( python3_{9..10} )
 inherit python-any-r1 readme.gentoo-r1 systemd verify-sig
@@ -9,13 +9,15 @@ inherit python-any-r1 readme.gentoo-r1 systemd verify-sig
 MY_PV="$(ver_rs 4 -)"
 MY_PF="${PN}-${MY_PV}"
 DESCRIPTION="Anonymizing overlay network for TCP"
-HOMEPAGE="https://www.torproject.org/"
-SRC_URI="https://www.torproject.org/dist/${MY_PF}.tar.gz
+HOMEPAGE="https://www.torproject.org/ https://gitlab.torproject.org/tpo/core/tor/"
+SRC_URI="
+	https://www.torproject.org/dist/${MY_PF}.tar.gz
 	https://archive.torproject.org/tor-package-archive/${MY_PF}.tar.gz
 	verify-sig? (
 		https://dist.torproject.org/${MY_PF}.tar.gz.sha256sum
 		https://dist.torproject.org/${MY_PF}.tar.gz.sha256sum.asc
-	)"
+	)
+"
 S="${WORKDIR}/${MY_PF}"
 
 LICENSE="BSD GPL-2"
