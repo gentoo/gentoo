@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
 	<use>
 		<flag name="gnutls">Enable SSL support for mail checking with <pkg>net-libs/gnutls</pkg> (overrides 'ssl' USE flag)</flag>
 		<flag name="ssl">Enable SSL support for mail checking with <pkg>dev-libs/openssl</pkg></flag>
