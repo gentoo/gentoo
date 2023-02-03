@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_P=${PN}-${PV%_p*}
 
@@ -10,8 +10,8 @@ HOMEPAGE="https://www.awstats.org/"
 SRC_URI="https://www.awstats.org/files/${P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~x86"
-IUSE="geoip geoip2 ipv6"
+KEYWORDS="~amd64 ~riscv ~x86"
+IUSE="geoip2 ipv6"
 
 SLOT="0"
 
@@ -19,9 +19,6 @@ RDEPEND="
 	>=dev-lang/perl-5.6.1
 	dev-perl/URI
 	virtual/perl-Time-Local
-	geoip? (
-		dev-perl/Geo-IP
-	)
 	geoip2? (
 		dev-perl/GeoIP2
 	)
@@ -33,10 +30,6 @@ RDEPEND="
 DEPEND=""
 
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-7.1-gentoo.diff
-	eapply "${FILESDIR}"/${P}-mime.patch
-	eapply "${FILESDIR}"/${P}-Only-look-for-configuration-in-dedicated-awstats-dir.patch
-
 	# change default installation directory
 	find . -type f -exec sed \
 		-e "s#/usr/local/awstats/wwwroot#/usr/share/awstats/wwwroot#g" \
@@ -57,8 +50,10 @@ src_prepare() {
 			-i "${S}"/wwwroot/cgi-bin/awstats.model.conf || die "sed failed"
 	fi
 
-	if use geoip; then
-		sed -e '/LoadPlugin="geoip /aLoadPlugin="geoip GEOIP_STANDARD /usr/share/GeoIP/GeoIP.dat"' \
+	if use geoip2; then
+		sed -e '/LoadPlugin="geoip2_country /aLoadPlugin="geoip2_country /usr/share/GeoIP/GeoLite2-Country.mmdb"' \
+			-i "${S}"/wwwroot/cgi-bin/awstats.model.conf || die "sed failed"
+		sed -e '/LoadPlugin="geoip2_city /aLoadPlugin="geoip2_city /usr/share/GeoIP/GeoLite2-City.mmdb"' \
 			-i "${S}"/wwwroot/cgi-bin/awstats.model.conf || die "sed failed"
 	fi
 
