@@ -5,8 +5,8 @@ EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 PYTHON_COMPAT=( python3_{9..11} )
-inherit autotools flag-o-matic multilib multilib-build \
-	python-any-r1 readme.gentoo-r1 toolchain-funcs wrapper
+inherit autotools flag-o-matic multilib multilib-build python-any-r1
+inherit readme.gentoo-r1 toolchain-funcs wrapper
 
 WINE_GECKO=2.47.3
 WINE_MONO=7.3.1
