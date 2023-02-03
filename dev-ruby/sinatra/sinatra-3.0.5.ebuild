@@ -31,4 +31,7 @@ ruby_add_bdepend "doc? ( dev-ruby/yard )"
 
 all_ruby_prepare() {
 	sed -i -e '/active_support\/core_ext\/hash/igem "activesupport", "<7"' test/helper.rb || die
+
+	# Avoid spec broken by newer rack versions, already removed upstream.
+	sed -i -e 's/"bytes=IV-LXVI", //' test/static_test.rb || die
 }
