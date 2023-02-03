@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,8 @@ IUSE="threads"
 
 RDEPEND="
 	app-admin/gkrellm:2[X]
-	net-misc/curl"
+	net-misc/curl
+"
 DEPEND="${RDEPEND}"
 
 # Will open gkrellm in X11 display
