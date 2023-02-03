@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,7 @@ RDEPEND="
 	acct-group/dnscrypt-proxy
 	acct-user/dnscrypt-proxy
 "
+BDEPEND="<dev-lang/go-1.20"
 
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
 
