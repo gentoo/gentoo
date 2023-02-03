@@ -10,7 +10,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
-KEYWORDS="~loong"
+KEYWORDS=""
 IUSE="
 	default-compiler-rt default-libcxx default-lld llvm-libunwind
 	hardened stricter
@@ -90,10 +90,11 @@ src_install() {
 	EOF
 
 	# Baseline hardening (bug #851111)
+	# (-fstack-clash-protection is omitted because of a possible Clang bug,
+	# see bug #892537 and bug #865339.)
 	newins - gentoo-hardened.cfg <<-EOF
 		# Some of these options are added unconditionally, regardless of
 		# USE=hardened, for parity with sys-devel/gcc.
-		-fstack-clash-protection
 		-fstack-protector-strong
 		-fPIE
 		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
