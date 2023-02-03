@@ -1,13 +1,6 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# @DEAD
-# Michał Górny <mgorny@gentoo.org> (2023-01-27)
-# GKrellM and a variety of plugins.  It's unmaintained for some time.
-# Upstream homepage is gone, and the whole suite is collecting dust
-# and patches.
-# Removal on 2023-02-26.  Bug #892251.
-
 # @ECLASS: gkrellm-plugin.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
