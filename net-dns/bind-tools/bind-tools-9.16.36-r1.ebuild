@@ -21,8 +21,11 @@ IUSE="+caps doc gssapi idn libedit readline test xml"
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug #409687
 RESTRICT="!test? ( test )"
 
+# libuv lower bound should be the highest value seen at
+# https://gitlab.isc.org/isc-projects/bind9/-/blob/v9_16/lib/isc/netmgr/netmgr.c#L244
+# to avoid issues with matching stable/testing, etc
 COMMON_DEPEND="
-	dev-libs/libuv:=
+	>=dev-libs/libuv-1.42.0:=
 	dev-libs/openssl:=
 	caps? ( sys-libs/libcap )
 	xml? ( dev-libs/libxml2 )
