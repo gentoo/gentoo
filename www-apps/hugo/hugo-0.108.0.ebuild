@@ -1,4 +1,4 @@
-# Copyright 2018-2022 Gentoo Authors
+# Copyright 2018-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,6 +22,7 @@ IUSE="doc +sass test"
 
 BDEPEND="
 	>=dev-lang/go-1.18
+	<dev-lang/go-1.20
 	test? (
 		dev-python/docutils
 		dev-ruby/asciidoctor

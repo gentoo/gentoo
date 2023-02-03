@@ -22,6 +22,7 @@ IUSE="doc +sass test"
 
 BDEPEND="
 	>=dev-lang/go-1.18
+	<dev-lang/go-1.20
 	test? (
 		dev-python/docutils
 		dev-ruby/asciidoctor
