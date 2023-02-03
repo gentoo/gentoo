@@ -1,9 +1,0 @@
-https://bugs.gentoo.org/881851
-https://github.com/python-xlib/python-xlib/issues/240
-https://github.com/python-xlib/python-xlib/pull/238
---- a/Xlib/ext/randr.py
-+++ b/Xlib/ext/randr.py
-@@ -36,3 +36,2 @@
- 
--from tkinter import W
- from Xlib import X
