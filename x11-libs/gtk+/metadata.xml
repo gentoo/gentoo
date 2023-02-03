@@ -13,6 +13,7 @@
   </longdescription>
   <use>
     <flag name="broadway">Enable the GDK Broadway backend</flag>
+    <flag name="cloudproviders">Enable GtkPlacesSidebar to access cloud services</flag>
     <flag name="colord">Use <pkg>x11-misc/colord</pkg> for color management in printing</flag>
     <flag name="sysprof">Enable profiling data capture support using <pkg>dev-util/sysprof-capture</pkg></flag>
   </use>
