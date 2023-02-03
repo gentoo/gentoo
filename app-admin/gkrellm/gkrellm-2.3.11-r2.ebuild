@@ -6,7 +6,7 @@ EAPI=8
 inherit desktop systemd toolchain-funcs
 
 DESCRIPTION="Single process stack of various system monitors"
-HOMEPAGE="http://www.gkrellm.net/"
+HOMEPAGE="http://gkrellm.srcbox.net/"
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.srcbox.net/gkrellm/gkrellm.git"
