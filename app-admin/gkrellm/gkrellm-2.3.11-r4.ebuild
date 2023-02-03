@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit desktop systemd toolchain-funcs
+PLOCALES="bg cs da de es fr it ja nl pl po pt pt_BR ru sl sv uk"
+PLOCALE_BACKUP="en"
+inherit desktop plocale systemd toolchain-funcs
 
 DESCRIPTION="Single process stack of various system monitors"
 HOMEPAGE="http://gkrellm.srcbox.net/"
@@ -74,6 +76,13 @@ src_prepare() {
 	sed -e "s:/usr/lib:${EPREFIX}/usr/$(get_libdir):" \
 		-e "s:/usr/local/lib:${EPREFIX}/usr/local/$(get_libdir):" \
 		-i src/${PN}.h || die "sed ${PN}.h failed"
+
+	delete_locale() {
+		local locale=${1}
+		rm -f po/${locale}{.po,.mo} || die
+	}
+
+	plocale_for_each_disabled_locale delete_locale
 
 	default
 }
