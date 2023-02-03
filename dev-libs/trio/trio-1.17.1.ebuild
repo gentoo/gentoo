@@ -6,7 +6,7 @@ EAPI=8
 DOCS_BUILDER="doxygen"
 DOCS_DIR="doc"
 
-inherit autotools docs
+inherit docs
 
 DESCRIPTION="Portable string functions, focus on the *printf() and *scanf() clones"
 HOMEPAGE="https://daniel.haxx.se/projects/trio/"
