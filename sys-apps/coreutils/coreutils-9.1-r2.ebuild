@@ -7,7 +7,7 @@ EAPI=7
 # The upstream coreutils maintianers also maintain the package in Fedora and may
 # backport fixes which we want to pick up.
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/coreutils.asc
 inherit flag-o-matic python-any-r1 toolchain-funcs verify-sig
 
