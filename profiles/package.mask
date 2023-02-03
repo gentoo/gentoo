@@ -33,6 +33,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-02-03)
+# The package has been archived upstream.  It is broken with all Python
+# versions supported by Gentoo, and it is broken with django-2.
+# The other listed packages are its reverse dependencies.
+# Removal on 2023-03-05.  Bug #718972.
+app-misc/gcalcli
+app-misc/goobook
+dev-python/gcs-oauth2-boto-plugin
+dev-python/google-apitools
+dev-python/google-reauth-python
+dev-python/oauth2client
+net-misc/gsutil
+
 # Marek Szuba <marecki@gentoo.org> (2023-02-03)
 # New major version with breaking changes, mask until 2023-03-03
 # for revdep testing and porting. Bug #893006.
