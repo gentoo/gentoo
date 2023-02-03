@@ -126,6 +126,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-2.93.13-openvdb-10.patch
 	"${FILESDIR}"/${PN}-3.0.0-intern-ghost-fix-typo-in-finding-XF86VMODE.patch
 	"${FILESDIR}"/${PN}-3.0.1-openexr.patch
 	"${FILESDIR}"/${PN}-3.0.1-openimageio-2.3.patch
