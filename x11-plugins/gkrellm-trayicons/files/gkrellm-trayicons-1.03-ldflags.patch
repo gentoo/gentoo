@@ -1,5 +1,5 @@
---- a/Makefile	2003-11-26 00:27:29.000000000 +0100
-+++ b/Makefile_new	2013-03-15 21:36:05.331857288 +0100
+--- a/Makefile
++++ b/Makefile_new
 @@ -6,19 +6,18 @@
  GKRELLM_INCLUDE = -I$(PREFIX)/include
  GTK_CFLAGS = `$(GTK_CONFIG) --cflags` 
