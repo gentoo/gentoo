@@ -25,8 +25,11 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
-SRC_URI="https://download.virtualbox.org/virtualbox/${PV}/${MY_P}.tar.bz2
-	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-6.1.36.tar.bz2"
+SRC_URI="
+	https://download.virtualbox.org/virtualbox/${PV}/${MY_P}.tar.bz2
+	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-6.1.36.tar.bz2
+	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-help-${PV}.tar.xz ) )
+"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
@@ -223,11 +226,6 @@ pkg_pretend() {
 	if ! use nls && use gui; then
 		einfo "USE=\"gui\" also selects USE=\"nls\".  This build"
 		einfo "will have NLS support."
-	fi
-
-	if use gui && ! use doc; then
-		einfo "You have disabled the \"doc\" USE flag.  Built-in help"
-		einfo "will not be available."
 	fi
 
 	# 749273
@@ -676,6 +674,9 @@ src_install() {
 
 	if use doc; then
 		dodoc UserManual.pdf UserManual.q{ch,hc}
+		docompress -x /usr/share/doc/${PF}
+	elif use gui; then
+		dodoc "${WORKDIR}"/${PN}-help-${PV}/UserManual.q{ch,hc}
 		docompress -x /usr/share/doc/${PF}
 	fi
 
