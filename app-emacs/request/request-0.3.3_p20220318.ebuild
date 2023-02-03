@@ -14,7 +14,7 @@ SRC_URI="https://github.com/tkf/emacs-${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar
 S="${WORKDIR}"/emacs-${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 RESTRICT="test"
 
