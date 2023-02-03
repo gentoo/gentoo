@@ -1,11 +1,14 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
 if [[ ${PV} == "99999999" ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/crossdev.git"
+	EGIT_REPO_URI="
+		https://anongit.gentoo.org/git/proj/crossdev.git
+		https://github.com/gentoo/crossdev
+	"
 else
 	SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}.tar.xz
 		https://dev.gentoo.org/~vapier/dist/${P}.tar.xz"
