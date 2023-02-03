@@ -25,6 +25,7 @@ IUSE=""
 
 RDEPEND="
 	>=app-portage/gentoopm-0.3.2[${PYTHON_USEDEP}]
+	dev-python/packaging[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
