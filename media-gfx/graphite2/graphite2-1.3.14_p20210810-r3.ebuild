@@ -42,8 +42,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.3.14-fix-cmake-files-libdir.patch"
 	"${FILESDIR}/${PN}-1.3.14-no-libtool-file.patch"
 	"${FILESDIR}/${PN}-1.3.14-fix-nodefaultlibs-deux.patch"
-        "${FILESDIR}/${PN}-1.3.14-fix-nodefaultlibs.patch"
-        "${FILESDIR}/${PN}-1.3.5-fix-gcc-linking.patch"
+	"${FILESDIR}/${PN}-1.3.14-fix-nodefaultlibs.patch"
+	"${FILESDIR}/${PN}-1.3.5-fix-gcc-linking.patch"
 )
 
 pkg_setup() {
@@ -52,7 +52,7 @@ pkg_setup() {
 }
 
 python_check_deps() {
-	has_version -b "dev-python/fonttools[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/fonttools[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
