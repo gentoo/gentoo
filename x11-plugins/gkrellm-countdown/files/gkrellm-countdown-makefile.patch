@@ -1,10 +1,10 @@
 This patch is by Michael Mair-Keimberger, as part of bug 339657. It
 teaches the Makefile to support the user's LDFLAGS.
 
-Gentoo-Bug: 339657
+Gentoo-Bug: https://bugs.gentoo.org/339657
 
---- a/Makefile	2003-12-30 23:07:29.000000000 +0100
-+++ b/Makefile	2013-03-16 14:23:47.671010566 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -9,7 +9,7 @@
  IMLIB_LIB ?= 
  PLUGIN_DIR ?= /usr/local/lib/gkrellm2/plugins
