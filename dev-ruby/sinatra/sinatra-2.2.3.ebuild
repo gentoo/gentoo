@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,5 +30,8 @@ ruby_add_bdepend "test? ( >=dev-ruby/rack-test-0.5.6 dev-ruby/erubis dev-ruby/bu
 ruby_add_bdepend "doc? ( dev-ruby/yard )"
 
 all_ruby_prepare() {
-	sed -i -e '/active_support\/core_ext\/hash/igem "activesupport", "<7"' test/helper.rb || die
+	sed -i -e '/active_support\/core_ext\/hash/igem "activesupport", "<7"' -e '1igem "rack", "~> 2.2.0"' test/helper.rb || die
+
+	# Avoid spec broken by newer rack versions, already removed upstream.
+	sed -i -e 's/"bytes=IV-LXVI", //' test/static_test.rb || die
 }
