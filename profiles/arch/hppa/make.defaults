@@ -22,7 +22,3 @@ CHOST_hppa="${CHOST}"
 # Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
 VIDEO_CARDS="fbdev"
-
-# Hans de Graaff <graaff@gentoo.org> (2023-01-15)
-# Temporary mask for https://bugs.gentoo.org/890915
-RUBY_TARGETS="ruby27"

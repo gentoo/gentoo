@@ -4,10 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Hans de Graaff <graaff@gentoo.org> (2023-01-15)
-# Temporary mask for https://bugs.gentoo.org/890915
-ruby_targets_ruby30
-
 # Rolf Eike Beer <eike@sf-mail.de> (2021-11-12)
 # dev-libs/nspr and dev-libs/nss are not stable on hppa
 nss
