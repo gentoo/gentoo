@@ -28,7 +28,7 @@ BDEPEND="
 "
 CDEPEND="${PYTHON_DEPS}
 	dev-cpp/libxmlpp:2.6[${MULTILIB_USEDEP}]
-	dev-libs/dbus-c++
+	>=dev-libs/dbus-c++-0.9.0-r5
 	dev-libs/libconfig:=[cxx,${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
 	media-libs/libiec61883[${MULTILIB_USEDEP}]
