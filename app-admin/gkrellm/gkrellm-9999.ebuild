@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.5-config.patch"
 	"${FILESDIR}/${PN}-2.3.5-width.patch"
 	"${FILESDIR}/${PN}-2.3.5-sansfont.patch"
+	"${FILESDIR}/${PN}-2.3.11-clang16.patch"
 )
 
 DOCS=( Changelog CREDITS README )
