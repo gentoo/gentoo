@@ -1,5 +1,5 @@
---- gkrellweather-2.0.8/GrabWeather	2009-01-11 13:15:02.000000000 -0500
-+++ gkrellweather-2.0.8-r1/GrabWeather	2016-08-29 00:02:35.345041005 -0400
+--- a/GrabWeather
++++ b/GrabWeather
 @@ -12,7 +12,8 @@
  
  $ReportDir  = '.wmWeatherReports';
