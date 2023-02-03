@@ -57,6 +57,7 @@ BDEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-replay-bin.patch"
+	"${FILESDIR}/${PN}-0.10.19-fix-setup.patch"
 )
 
 SITEFILE="50${PN}-gentoo.el"

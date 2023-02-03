@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -57,6 +57,7 @@ BDEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-pkgcore-0.12.18.patch"
+	"${FILESDIR}/${PN}-0.10.19-fix-setup.patch"
 )
 
 SITEFILE="50${PN}-gentoo.el"
