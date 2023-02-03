@@ -1,0 +1,25 @@
+From 7e4a2a5724a184c418314f4fdbd7a065ba9e203d Mon Sep 17 00:00:00 2001
+From: Staudey <staudi.kaos@gmail.com>
+Date: Tue, 27 Dec 2022 04:54:52 +0000
+Subject: [PATCH] Fix build_gir logic
+
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index aed48fc3f6..6c711e9e9a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -849,7 +849,7 @@ endif
+ 
+ # Introspection
+ gir = find_program('g-ir-scanner', required : get_option('introspection'))
+-build_gir = gir.found() and (not meson.is_cross_build() or get_option('introspection'))
++build_gir = gir.found() and get_option('introspection')
+ 
+ subdir('gdk')
+ subdir('gtk')
+-- 
+GitLab
+
