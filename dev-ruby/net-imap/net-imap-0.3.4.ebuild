@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,8 @@ inherit ruby-fakegem
 
 DESCRIPTION="Ruby client api for Internet Message Access Protocol"
 HOMEPAGE="https://github.com/ruby/net-imap"
-SRC_URI="https://github.com/ruby/net-imap/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ruby/net-imap/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	test? ( https://www.rfc-editor.org/rfc/rfc3454.txt )"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -31,4 +32,7 @@ all_ruby_prepare() {
 		-e 's/__FILE__/"'${RUBY_FAKEGEM_GEMSPEC}'"/' \
 		-e 's/git ls-files -z/find * -print0/' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	mkdir rfcs || die
+	cp "${DISTDIR}/rfc3454.txt" rfcs/ || die
 }
