@@ -1,8 +1,6 @@
  Makefile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Makefile b/Makefile
-index eb26b17..79e4391 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -10,7 +10,7 @@ CC = gcc $(CFLAGS) $(FLAGS)
