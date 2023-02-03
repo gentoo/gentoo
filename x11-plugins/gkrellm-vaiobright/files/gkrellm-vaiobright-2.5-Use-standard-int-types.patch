@@ -1,0 +1,48 @@
+From ab824d40f56e3c8037df77a15114de6bd0a332e0 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 3 Feb 2023 09:48:01 +0000
+Subject: [PATCH 2/2] Use standard int types
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/vaiobright.c
++++ b/vaiobright.c
+@@ -15,6 +15,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <stdint.h>
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <sys/ioctl.h>
+@@ -24,8 +25,8 @@
+ #include <linux/types.h>
+ 
+ // Define our ioctl's (stolen from spicctrl)
+-#define SONYPI_IOCGBRT _IOR('v', 0, __u8)
+-#define SONYPI_IOCSBRT _IOW('v', 0, __u8)
++#define SONYPI_IOCGBRT _IOR('v', 0, uint8_t)
++#define SONYPI_IOCSBRT _IOW('v', 0, uint8_t)
+ 
+ static void create_vaiobright_plug_config(GtkWidget *tab);
+ static void load_vaiobright_plug_config(gchar *arg);
+@@ -88,7 +89,7 @@ static void vaiobright_close_device(void) {
+ 
+ // Write a new brightness level out to the control application
+ static void vaiobright_set_brightness(int level) {
+-    __u8 value = (__u8) level;
++    uint8_t value = (uint8_t) level;
+ 
+     // If we're broken, try again to open it
+     if (vaiobright_bslider->broken == 1) {
+@@ -105,7 +106,7 @@ static void vaiobright_set_brightness(int level) {
+ }
+ 
+ static int vaiobright_get_brightness() {
+-    __u8 value = 0;
++    uint8_t value = 0;
+ 
+     // If we're broken, try again to open it
+     if (vaiobright_bslider->broken == 1) {
+-- 
+2.39.1
+
