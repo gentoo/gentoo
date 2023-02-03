@@ -1,0 +1,107 @@
+--- a/intern/cycles/render/volume.cpp
++++ b/intern/cycles/render/volume.cpp
+@@ -259,7 +259,8 @@ void VolumeMeshBuilder::add_grid(openvdb::GridBase::ConstPtr grid,
+ void VolumeMeshBuilder::add_padding(int pad_size)
+ {
+ #ifdef WITH_OPENVDB
+-  openvdb::tools::dilateVoxels(topology_grid->tree(), pad_size);
++  openvdb::tools::dilateActiveValues(
++      topology_grid->tree(), pad_size, openvdb::tools::NN_FACE, openvdb::tools::IGNORE_TILES);
+ #else
+   (void)pad_size;
+ #endif
+diff --git a/source/blender/blenkernel/BKE_volume.h b/source/blender/blenkernel/BKE_volume.h
+index 8b42de7303d..068cdf87d16 100644
+--- a/source/blender/blenkernel/BKE_volume.h
++++ b/source/blender/blenkernel/BKE_volume.h
+@@ -104,7 +104,6 @@ typedef enum VolumeGridType {
+   VOLUME_GRID_INT,
+   VOLUME_GRID_INT64,
+   VOLUME_GRID_MASK,
+-  VOLUME_GRID_STRING,
+   VOLUME_GRID_VECTOR_FLOAT,
+   VOLUME_GRID_VECTOR_DOUBLE,
+   VOLUME_GRID_VECTOR_INT,
+@@ -218,8 +217,6 @@ auto BKE_volume_grid_type_operation(const VolumeGridType grid_type, OpType &&op)
+       return op.template operator()<openvdb::Vec3IGrid>();
+     case VOLUME_GRID_VECTOR_DOUBLE:
+       return op.template operator()<openvdb::Vec3dGrid>();
+-    case VOLUME_GRID_STRING:
+-      return op.template operator()<openvdb::StringGrid>();
+     case VOLUME_GRID_MASK:
+       return op.template operator()<openvdb::MaskGrid>();
+     case VOLUME_GRID_POINTS:
+diff --git a/source/blender/blenkernel/intern/volume.cc b/source/blender/blenkernel/intern/volume.cc
+index 39a7725bfa3..a0e2d1a83cd 100644
+--- a/source/blender/blenkernel/intern/volume.cc
++++ b/source/blender/blenkernel/intern/volume.cc
+@@ -1345,9 +1345,6 @@ VolumeGridType BKE_volume_grid_type_openvdb(const openvdb::GridBase &grid)
+   if (grid.isType<openvdb::Vec3dGrid>()) {
+     return VOLUME_GRID_VECTOR_DOUBLE;
+   }
+-  if (grid.isType<openvdb::StringGrid>()) {
+-    return VOLUME_GRID_STRING;
+-  }
+   if (grid.isType<openvdb::MaskGrid>()) {
+     return VOLUME_GRID_MASK;
+   }
+@@ -1383,7 +1380,6 @@ int BKE_volume_grid_channels(const VolumeGrid *grid)
+     case VOLUME_GRID_VECTOR_DOUBLE:
+     case VOLUME_GRID_VECTOR_INT:
+       return 3;
+-    case VOLUME_GRID_STRING:
+     case VOLUME_GRID_POINTS:
+     case VOLUME_GRID_UNKNOWN:
+       return 0;
+@@ -1624,13 +1620,8 @@ struct CreateGridWithChangedResolutionOp {
+ 
+   template<typename GridType> typename openvdb::GridBase::Ptr operator()()
+   {
+-    if constexpr (std::is_same_v<GridType, openvdb::StringGrid>) {
+-      return {};
+-    }
+-    else {
+-      return create_grid_with_changed_resolution(static_cast<const GridType &>(grid),
+-                                                 resolution_factor);
+-    }
++    return create_grid_with_changed_resolution(static_cast<const GridType &>(grid),
++                                               resolution_factor);
+   }
+ };
+ 
+diff --git a/source/blender/blenkernel/intern/volume_render.cc b/source/blender/blenkernel/intern/volume_render.cc
+index c0a205b5673..7ccf04df941 100644
+--- a/source/blender/blenkernel/intern/volume_render.cc
++++ b/source/blender/blenkernel/intern/volume_render.cc
+@@ -77,7 +77,6 @@ static void extract_dense_float_voxels(const VolumeGridType grid_type,
+     case VOLUME_GRID_VECTOR_INT:
+       return extract_dense_voxels<openvdb::Vec3IGrid, openvdb::Vec3f>(
+           grid, bbox, reinterpret_cast<openvdb::Vec3f *>(r_voxels));
+-    case VOLUME_GRID_STRING:
+     case VOLUME_GRID_POINTS:
+     case VOLUME_GRID_UNKNOWN:
+       /* Zero channels to copy. */
+diff --git a/source/blender/makesrna/intern/rna_volume.c b/source/blender/makesrna/intern/rna_volume.c
+index 3100c1195f4..2854f02a4d4 100644
+--- a/source/blender/makesrna/intern/rna_volume.c
++++ b/source/blender/makesrna/intern/rna_volume.c
+@@ -241,7 +241,6 @@
+       {VOLUME_GRID_INT, "INT", 0, "Integer", "32-bit integer"},
+       {VOLUME_GRID_INT64, "INT64", 0, "Integer 64-bit", "64-bit integer"},
+       {VOLUME_GRID_MASK, "MASK", 0, "Mask", "No data, boolean mask of active voxels"},
+-      {VOLUME_GRID_STRING, "STRING", 0, "String", "Text string"},
+       {VOLUME_GRID_VECTOR_FLOAT, "VECTOR_FLOAT", 0, "Float Vector", "3D float vector"},
+       {VOLUME_GRID_VECTOR_DOUBLE, "VECTOR_DOUBLE", 0, "Double Vector", "3D double vector"},
+       {VOLUME_GRID_VECTOR_INT, "VECTOR_INT", 0, "Integer Vector", "3D integer vector"},
+diff --git a/source/blender/modifiers/intern/MOD_volume_displace.cc b/source/blender/modifiers/intern/MOD_volume_displace.cc
+index af3a502162d..e2d7f445731 100644
+--- a/source/blender/modifiers/intern/MOD_volume_displace.cc
++++ b/source/blender/modifiers/intern/MOD_volume_displace.cc
+@@ -201,7 +201,6 @@
+   template<typename GridType> void operator()()
+   {
+     if constexpr (std::is_same_v<GridType, openvdb::points::PointDataGrid> ||
+-                  std::is_same_v<GridType, openvdb::StringGrid> ||
+                   std::is_same_v<GridType, openvdb::MaskGrid>) {
+       /* We don't support displacing these grid types yet. */
+       return;
