@@ -17,7 +17,4 @@
 		<remote-id type="github">ErikReider/SwayNotificationCenter</remote-id>
 		<bugs-to>https://github.com/ErikReider/SwayNotificationCenter/issues</bugs-to>
 	</upstream>
-	<use>
-		<flag name="scripting">Enable notification scripting</flag>
-	</use>
 </pkgmetadata>
