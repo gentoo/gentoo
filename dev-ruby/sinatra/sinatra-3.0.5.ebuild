@@ -13,7 +13,7 @@ RUBY_FAKEGEM_GEMSPEC="sinatra.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="A DSL for quickly creating web applications in Ruby with minimal effort"
-HOMEPAGE="http://www.sinatrarb.com/"
+HOMEPAGE="https://sinatrarb.com/"
 SRC_URI="https://github.com/sinatra/sinatra/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
