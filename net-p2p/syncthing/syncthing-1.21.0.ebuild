@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,7 @@ RDEPEND="acct-group/syncthing
 	tools? ( >=acct-user/stdiscosrv-1
 		>=acct-user/strelaysrv-1 )
 	selinux? ( sec-policy/selinux-syncthing )"
+BDEPEND="<dev-lang/go-1.20"
 
 DOCS=( README.md AUTHORS CONTRIBUTING.md )
 
