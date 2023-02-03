@@ -24,6 +24,7 @@ RDEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.16.3-respect-CFLAGS.patch
 	"${FILESDIR}"/${PN}-1.16.3-fix-RPATH.patch
+	"${FILESDIR}"/${PN}-1.16.3-SSE4.1-AVX-checks.patch
 )
 
 src_configure() {
