@@ -3,12 +3,6 @@ From: Thomas Bracht Laumann Jespersen <t@laumann.xyz>
 Date: Sat, 26 Mar 2022 16:08:49 +0100
 Subject: [PATCH] pkgconfig
 
----
- Makefile | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/Makefile b/Makefile
-index 13f2dd3..a63b4ab 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,10 +1,10 @@

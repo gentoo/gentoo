@@ -3,8 +3,8 @@ teaches the Makefile to support the user's LDFLAGS.
 
 Gentoo-Bug: 338786
 
---- a/Makefile	2004-01-05 07:34:36.000000000 +0100
-+++ b/Makefile	2013-03-15 22:11:58.105227982 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -5,18 +5,16 @@
  GKRELLM_INCLUDE = -I$(PREFIX)/include
  GTK_CFLAGS = `$(GTK_CONFIG) --cflags` 
