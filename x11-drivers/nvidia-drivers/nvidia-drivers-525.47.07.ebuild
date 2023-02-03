@@ -82,7 +82,6 @@ BDEPEND="
 QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
 
 PATCHES=(
-	"${FILESDIR}"/nvidia-drivers-525.23-clang15.patch
 	"${FILESDIR}"/nvidia-kernel-module-source-515.86.01-raw-ldflags.patch
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 	"${FILESDIR}"/nvidia-settings-390.144-desktop.patch
@@ -267,9 +266,6 @@ src_prepare() {
 	rm nvidia-settings && mv nvidia-settings{-${NV_PIN},} || die
 	rm nvidia-xconfig && mv nvidia-xconfig{-${NV_PIN},} || die
 	mv open-gpu-kernel-modules-${PV} kernel-module-source || die
-
-	eapply --directory=kernel-module-source/kernel-open \
-		-p2 "${FILESDIR}"/nvidia-drivers-525.23-clang15.patch
 
 	default
 
