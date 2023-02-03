@@ -14,7 +14,6 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+man +scripting"
 
 DEPEND="
 	dev-libs/glib:2
@@ -31,20 +30,16 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	$(vala_depend)
-	man? ( app-text/scdoc )
+	app-text/scdoc
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-min-meson-version.patch"
+)
 
 src_prepare() {
 	default
 	vala_setup
-}
-
-src_configure() {
-	local emesonargs=(
-		$(meson_use man man-pages)
-		$(meson_use scripting)
-	)
-	meson_src_configure
 }
 
 pkg_postinst() {
