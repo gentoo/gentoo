@@ -36,7 +36,6 @@ RDEPEND="
 		dev-lang/tk:0=
 		dev-tcltk/tix:0=
 	)
-	!<dev-python/pypy-bin-7.3.0:0
 "
 DEPEND="
 	${RDEPEND}
