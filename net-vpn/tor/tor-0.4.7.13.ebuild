@@ -3,7 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
+VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/torproject.org.asc
 inherit python-any-r1 readme.gentoo-r1 systemd verify-sig
 
 MY_PV="$(ver_rs 4 -)"
@@ -28,42 +29,37 @@ fi
 IUSE="caps doc lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
 RESTRICT="!test? ( test )"
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/torproject.org.asc
-
-BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20221213 )"
 DEPEND="
 	dev-libs/libevent:=[ssl]
 	sys-libs/zlib
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
-	dev-libs/openssl:0=[-bindist(-)]
+	dev-libs/openssl:=[-bindist(-)]
 	lzma? ( app-arch/xz-utils )
 	scrypt? ( app-crypt/libscrypt )
 	seccomp? ( >=sys-libs/libseccomp-2.4.1 )
 	systemd? ( sys-apps/systemd )
-	zstd? ( app-arch/zstd )"
+	zstd? ( app-arch/zstd )
+"
 RDEPEND="
 	acct-user/tor
 	acct-group/tor
 	${DEPEND}
-	selinux? ( sec-policy/selinux-tor )"
-
-# bug #764260
+	selinux? ( sec-policy/selinux-tor )
+"
 DEPEND+="
 	test? (
 		${DEPEND}
 		${PYTHON_DEPS}
-	)"
+	)
+"
+BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20221213 )"
 
 DOCS=()
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
 )
-
-# EAPI 8 tries to append it but it doesn't exist here
-# bug #831311 etc
-QA_CONFIGURE_OPTIONS="--disable-static"
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
@@ -81,33 +77,46 @@ src_unpack() {
 	default
 }
 
+src_prepare() {
+	default
+
+	# Running shellcheck automagically isn't useful for ebuild testing.
+	echo "exit 0" > scripts/maint/checkShellScripts.sh || die
+}
+
 src_configure() {
 	use doc && DOCS+=( README.md ChangeLog ReleaseNotes doc/HACKING )
+
 	export ac_cv_lib_cap_cap_init=$(usex caps)
-	econf \
-		--localstatedir="${EPREFIX}/var" \
-		--disable-all-bugs-are-fatal \
-		--enable-system-torrc \
-		--disable-android \
-		--disable-html-manual \
-		--disable-libfuzzer \
-		--enable-missing-doc-warnings \
-		--disable-module-dirauth \
-		--enable-pic \
-		--disable-restart-debugging \
-		--disable-zstd-advanced-apis  \
-		$(use_enable man asciidoc) \
-		$(use_enable man manpage) \
-		$(use_enable lzma) \
-		$(use_enable scrypt libscrypt) \
-		$(use_enable seccomp) \
-		$(use_enable server module-relay) \
-		$(use_enable systemd) \
-		$(use_enable tor-hardening gcc-hardening) \
-		$(use_enable tor-hardening linker-hardening) \
-		$(use_enable test unittests) \
-		$(use_enable test coverage) \
+	export tor_cv_PYTHON="${EPYTHON}"
+
+	local myeconfargs=(
+		--localstatedir="${EPREFIX}/var"
+		--disable-all-bugs-are-fatal
+		--enable-system-torrc
+		--disable-android
+		--disable-coverage
+		--disable-html-manual
+		--disable-libfuzzer
+		--enable-missing-doc-warnings
+		--disable-module-dirauth
+		--enable-pic
+		--disable-restart-debugging
+		--disable-zstd-advanced-apis
+		$(use_enable man asciidoc)
+		$(use_enable man manpage)
+		$(use_enable lzma)
+		$(use_enable scrypt libscrypt)
+		$(use_enable seccomp)
+		$(use_enable server module-relay)
+		$(use_enable systemd)
+		$(use_enable tor-hardening gcc-hardening)
+		$(use_enable tor-hardening linker-hardening)
+		$(use_enable test unittests)
 		$(use_enable zstd)
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
