@@ -65,7 +65,9 @@ src_install() {
 	einstalldocs
 
 	insinto /usr/share/nnn
+	insopts -m0755
 	doins -r plugins
+	fperms 0644 /usr/share/nnn/plugins/README.md
 }
 
 pkg_postinst() {
