@@ -1,0 +1,540 @@
+From 7df25a85ccbd28e22dee437272202fe966f861d1 Mon Sep 17 00:00:00 2001
+From: A Schenck <galiven@users.sourceforge.net>
+Date: Fri, 27 Jan 2023 15:09:58 -0800
+Subject: [PATCH] Declare arguments on function pointers
+
+Solves the errors with -Werror=implicit-function-declaration -Werror=implicit-int -Werror=incompatible-function-pointer-types -Werror=deprecated-non-prototype
+--- a/server/mail.c
++++ b/server/mail.c
+@@ -42,12 +42,13 @@
+ #define MBOX_MH_DIR		2
+ 
+ 
+-typedef struct
++typedef struct Mailbox Mailbox;
++struct Mailbox
+ 	{
+ 	gchar		*path;
+ 	gchar		*homedir_path;
+ 	gint		mboxtype;
+-	gboolean	(*check_func)();
++	gboolean	(*check_func)(Mailbox *mbox);
+ 	gint		mail_count;
+ 	gint		new_mail_count;
+ 	gint		old_mail_count;
+@@ -57,8 +58,7 @@ typedef struct
+ 	off_t		last_size;
+ 	gboolean	is_internal;	/* Internal mail message (ie: localmachine) */
+ 	gboolean	changed;
+-	}
+-	Mailbox;
++	};
+ 
+ static GList	*mailbox_list;
+ 
+--- a/src/alerts.c
++++ b/src/alerts.c
+@@ -765,7 +765,7 @@ gkrellm_alert_plugin_add(GkrellmMonitor *mon, gchar *name)
+ void
+ gkrellm_alert_plugin_alert_connect(GkrellmAlertPlugin *gap,
+ 			void (*alarm_func)(), void (*warn_func)(),
+-			void (*update_func)(), void (*check_func)(),
++			void (*update_func)(), void (*check_func)(GkrellmAlert* alert, gpointer data, gfloat value),
+ 			void (*destroy_func)())
+ 	{
+ 	gap->alarm_func = alarm_func;
+--- a/src/chart.c
++++ b/src/chart.c
+@@ -2107,7 +2107,7 @@ gkrellm_get_chartconfig_grid_resolution(GkrellmChartconfig *cf)
+ 
+ void
+ gkrellm_chartconfig_grid_resolution_connect(GkrellmChartconfig *cf,
+-			void (*func)(gpointer), gpointer data)
++			void (*func)(GkrellmChartconfig *, gpointer), gpointer data)
+ 	{
+ 	if (!cf)
+ 		return;
+@@ -2206,7 +2206,7 @@ gkrellm_get_chartconfig_fixed_grids(GkrellmChartconfig *cf)
+ 
+ void
+ gkrellm_chartconfig_fixed_grids_connect(GkrellmChartconfig *cf,
+-			void (*func)(gpointer), gpointer data)
++			void (*func)(GkrellmChartconfig*, gpointer), gpointer data)
+ 	{
+ 	if (!cf)
+ 		return;
+@@ -2224,7 +2224,7 @@ gkrellm_get_chartconfig_height(GkrellmChartconfig *cf)
+ 
+ void
+ gkrellm_chartconfig_height_connect(GkrellmChartconfig *cf,
+-			void (*func)(gpointer), gpointer data)
++			void (*func)(GkrellmChartconfig*, gpointer), gpointer data)
+ 	{
+ 	if (!cf)
+ 		return;
+--- a/src/cpu.c
++++ b/src/cpu.c
+@@ -50,7 +50,8 @@ static void	cb_alert_config_create(GkrellmAlert *ap, GtkWidget *vbox,
+ #endif
+ 
+ 
+-typedef struct
++typedef struct CpuMon CpuMon;
++struct CpuMon
+ 	{
+ 	gchar			*name;
+ 	gchar			*panel_label;
+@@ -87,8 +88,7 @@ typedef struct
+ 					nice,
+ 					sys,
+ 					idle;
+-	}
+-	CpuMon;
++	};
+ 
+ 
+ static GkrellmMonitor
+@@ -575,7 +575,7 @@ cb_cpu_extra(GtkWidget *widget, GdkEventButton *ev)
+ 	}
+ 
+ static void
+-setup_cpu_scaling(GkrellmChartconfig *cf)
++setup_cpu_scaling(GkrellmChartconfig *cf, gpointer data)
+ 	{
+ 	gint	grids;
+ 
+@@ -741,7 +741,7 @@ static gchar			*nice_color_string,
+ 						*nice_grid_color_string;
+ 
+ static void
+-cb_height(GkrellmChartconfig *cf, CpuMon *cpu)
++cb_height(GkrellmChartconfig *cf, gpointer data)
+ 	{
+ 	GList			*list;
+ 	GkrellmChart	*cp;
+@@ -879,7 +879,7 @@ create_cpu(GtkWidget *vbox, gint first_create)
+ 		gkrellm_chartconfig_fixed_grids_connect(cp->config,
+ 					setup_cpu_scaling, NULL);
+ 		gkrellm_chartconfig_height_connect(cp->config, cb_height, cpu);
+-		setup_cpu_scaling(cp->config);
++		setup_cpu_scaling(cp->config, NULL);
+ 
+ 		cpu->sensor_decal = cpu->fan_decal = NULL;
+ 		if (show_panel_labels)
+--- a/src/disk.c
++++ b/src/disk.c
+@@ -104,8 +104,8 @@ static gboolean	sys_handles_composite_reset;
+ static gboolean	units_are_blocks;
+ 
+ static void		(*read_disk_data)();
+-static gchar	*(*name_from_device)();
+-static gint		(*order_from_name)();
++static gchar	*(*name_from_device)(gint device_number, gint uint_number, gint *order);
++static gint		(*order_from_name)(const gchar *name);
+ 
+ 
+ 
+@@ -703,9 +703,10 @@ cb_disk_extra(GtkWidget *widget, GdkEventButton *ev)
+ 	}
+ 
+ static void
+-setup_disk_scaling(GkrellmChartconfig *cf, GkrellmChart *cp)
++setup_disk_scaling(GkrellmChartconfig *cf, gpointer data)
+ 	{
+ 	gint	grids, res;
++	GkrellmChart *cp = (GkrellmChart*)data;
+ 
+ 	grids = gkrellm_get_chartconfig_fixed_grids(cf);
+ 	if (!grids)
+--- a/src/fs.c
++++ b/src/fs.c
+@@ -115,7 +115,7 @@ static GList	*fstab_list;
+ static gint		uid;
+ 
+ void			(*get_mounts_list)(),
+-				(*get_fsusage)(),
++				(*get_fsusage)(gpointer mon, gchar *dir),
+ 				(*get_fstab_list)();
+ gboolean		(*get_fstab_modified)();
+ 
+@@ -123,8 +123,8 @@ gboolean		(*get_fstab_modified)();
+ /* If ejecting is available via an ioctl() or if there is an eject command,
+ |  set these up in gkrellm_sys_fs_init() by calling gkrellm_fs_setup_eject().
+ */
+-void			(*eject_cdrom_func)(),
+-				(*close_cdrom_func)();
++void			(*eject_cdrom_func)(gchar *dev),
++				(*close_cdrom_func)(gchar *dev);
+ static gchar	*eject_cdrom_command,
+ 				*close_cdrom_command;
+ static gboolean	cdrom_thread_busy;		/* for the cdrom_funcs */
+@@ -1536,7 +1536,7 @@ static GtkWidget	*alert_button;
+ 
+ static GtkWidget	*data_format_combo_box;
+ 
+-static gboolean	(*original_row_drop_possible)();
++static gboolean	(*original_row_drop_possible)(GtkTreeDragDest *dest, GtkTreePath *path, GtkSelectionData *selection_data);
+ 
+ 
+ static void
+--- a/src/gkrellm-public-proto.h
++++ b/src/gkrellm-public-proto.h
+@@ -116,8 +116,8 @@ void		gkrellm_chartconfig_grid_resolution_adjustment(
+ void		gkrellm_set_chartconfig_grid_resolution(GkrellmChartconfig *,
+ 						gint);
+ gint		gkrellm_get_chartconfig_grid_resolution(GkrellmChartconfig *);
+-void		gkrellm_chartconfig_grid_resolution_connect(
+-						GkrellmChartconfig *, void (*fn)(), gpointer);
++void		gkrellm_chartconfig_grid_resolution_connect(GkrellmChartconfig* cf,
++						void (*fn)(GkrellmChartconfig*, gpointer), gpointer);
+ void		gkrellm_set_chartconfig_flags(GkrellmChartconfig *, gint);
+ 
+ void		gkrellm_chartconfig_grid_resolution_label(
+@@ -131,10 +131,10 @@ void		gkrellm_set_chartconfig_sequence_125(GkrellmChartconfig *,
+ void		gkrellm_set_chartconfig_fixed_grids(GkrellmChartconfig *, gint);
+ gint		gkrellm_get_chartconfig_fixed_grids(GkrellmChartconfig *);
+ void		gkrellm_chartconfig_fixed_grids_connect(GkrellmChartconfig *,
+-						void (*fn)(), gpointer);
++						void (*fn)(GkrellmChartconfig*, gpointer), gpointer);
+ gint		gkrellm_get_chartconfig_height(GkrellmChartconfig *);
+-void		gkrellm_chartconfig_height_connect(GkrellmChartconfig *,
+-						void (*fn)(), gpointer);
++void		gkrellm_chartconfig_height_connect(GkrellmChartconfig* cf,
++						void (*fn)(GkrellmChartconfig*, gpointer), gpointer);
+ void		gkrellm_chartconfig_callback_block(GkrellmChartconfig *, gboolean);
+ void		gkrellm_save_chartconfig(FILE *, GkrellmChartconfig *,
+ 						gchar *, gchar *);
+@@ -274,7 +274,7 @@ GkrellmDecalbutton *gkrellm_make_scaled_button(GkrellmPanel *p,
+ GkrellmDecalbutton *gkrellm_decal_is_button(GkrellmDecal *);
+ void		gkrellm_set_in_button_callback(GkrellmDecalbutton *,
+ 						gint (*func)(), gpointer data);
+-gboolean	gkrellm_in_button(GkrellmDecalbutton *button, GdkEventButton *);
++gboolean	gkrellm_in_button(GkrellmDecalbutton *button, GdkEventButton *, gpointer data);
+ gboolean	gkrellm_in_decal(GkrellmDecal *, GdkEventButton *);
+ void		gkrellm_decal_button_connect(GkrellmDecalbutton *, void (*func)(),
+ 						void *);
+@@ -415,7 +415,7 @@ GkrellmAlertPlugin	*gkrellm_alert_plugin_add(GkrellmMonitor *mon,
+ 						gchar *name);
+ void		gkrellm_alert_plugin_alert_connect(GkrellmAlertPlugin *gap,
+             			void (*alarm_func)(), void (*warn_func)(),
+-						void (*update_func)(), void (*check_func)(),
++						void (*update_func)(), void (*check_func)(GkrellmAlert* alert, gpointer data, gfloat value),
+ 						void (*destroy_func)());
+ void		gkrellm_alert_plugin_config_connect(GkrellmAlertPlugin *gap,
+ 						gchar *tab_name,
+--- a/src/gkrellm.h
++++ b/src/gkrellm.h
+@@ -546,14 +546,15 @@ typedef struct
+ #define	NO_CONFIG_AUTO_GRID_RESOLUTION	1
+ #define	NO_CONFIG_FIXED_GRIDS			2
+ 
+-typedef struct
++typedef struct GkrellmChartconfig GkrellmChartconfig;
++struct GkrellmChartconfig
+ 	{
+ 	gint		flags;
+ 	gboolean	config_loaded;
+ 	gboolean	log;
+ 
+ 	gint		h;
+-	void		(*cb_height)();
++	void		(*cb_height)(GkrellmChartconfig *config, gpointer data);
+ 	gpointer	cb_height_data;
+ 	GtkWidget	*height_spin_button;
+ 
+@@ -566,7 +567,7 @@ typedef struct
+ 	gboolean	auto_grid_resolution;
+ 	gboolean	auto_resolution_stick;
+ 	gboolean	sequence_125;
+-	void		(*cb_grid_resolution)();
++	void		(*cb_grid_resolution)(GkrellmChartconfig *config, gpointer data);
+ 	gpointer	cb_grid_resolution_data;
+ 	GtkWidget	*grid_resolution_spin_button;
+ 	GtkWidget	*auto_resolution_control_menubar;
+@@ -583,7 +584,7 @@ typedef struct
+ 				width;
+ 
+ 	gboolean	fixed_grids;
+-	void		(*cb_fixed_grids)();
++	void		(*cb_fixed_grids)(GkrellmChartconfig *config, gpointer data);
+ 	gpointer	cb_fixed_grids_data;
+ 	GtkWidget	*fixed_grids_spin_button;
+ 
+@@ -591,8 +592,7 @@ typedef struct
+ 	GList		**chart_cd_list;
+ 
+ 	gboolean	cb_block;
+-	}
+-	GkrellmChartconfig;
++	};
+ 
+   /* GkrellmCharts are drawn in layers and each data value drawn has its own
+   |  layer (the GkrellmChartdata struct -> image/color of the drawn data and
+@@ -750,13 +750,14 @@ typedef struct
+ 	GkrellmChartdata;
+ 
+ 
+-typedef struct
++typedef struct GkrellmDecalbutton GkrellmDecalbutton;
++struct GkrellmDecalbutton
+ 	{
+ 	GkrellmPanel *panel;
+ 	GkrellmDecal *decal;
+-	void		(*cb_button_click)();
++	void		(*cb_button_click)(GkrellmDecalbutton *b, gpointer data);
+ 	gpointer	data;
+-	gint		(*cb_in_button)();
++	gint		(*cb_in_button)(GkrellmDecalbutton *b, GdkEventButton *ev, gpointer data);
+ 	gpointer	in_button_data;
+ 	gpointer	privat;
+ 	gint		cur_index;
+@@ -764,10 +765,9 @@ typedef struct
+ 	gint		saved_index;
+ 	gint		sensitive;
+ 	gint		type;
+-	void		(*cb_button_right_click)();
++	void		(*cb_button_right_click)(GkrellmDecalbutton *b, gpointer data);
+ 	gpointer	right_data;
+-	}
+-	GkrellmDecalbutton;
++	};
+ 
+ 
+ 
+@@ -791,20 +791,21 @@ typedef struct
+ /* ------- Alerts ------- */
+ #define	GKRELLM_ALERTCONFIG_KEYWORD			"alert_config"
+ 
++typedef struct GkrellmAlert GkrellmAlert;
+ typedef struct
+ 	{
+ 	struct _GkrellmMonitor	*mon;
+ 	gchar		*name,
+ 				*tab_name;
+-	void		(*warn_func)(),
+-				(*alarm_func)(),
+-				(*update_func)(),
+-				(*check_func)(),
+-				(*destroy_func)();
+-	void		(*config_create_func)(),
+-				(*config_apply_func)(),
+-				(*config_save_func)(),
+-				(*config_load_func)();
++	void		(*warn_func)(GkrellmAlert *alert, gpointer data, gboolean state),
++				(*alarm_func)(GkrellmAlert *alert, gpointer data, gboolean state),
++				(*update_func)(GkrellmAlert *alert, gpointer data),
++				(*check_func)(GkrellmAlert *alert, gpointer data, gfloat value),
++				(*destroy_func)(GkrellmAlert *alert, gpointer data);
++	void		(*config_create_func)(GtkWidget *vbox, GkrellmAlert *alert, gpointer data),
++				(*config_apply_func)(GkrellmAlert *alert, gpointer data, gboolean closing),
++				(*config_save_func)(GkrellmAlert *alert, gpointer data, FILE *f, gchar *p, gchar *id),
++				(*config_load_func)(GkrellmAlert *alert, gchar *config_id, gchar *alert_id);
+ 	}
+ 	GkrellmAlertPlugin;
+ 
+@@ -847,7 +848,7 @@ typedef struct
+ 	}
+ 	GkrellmAlertkrell;
+ 
+-typedef struct
++struct GkrellmAlert
+ 	{
+ 	GkrellmPanel *panel;
+ 	gchar		*name,
+@@ -870,15 +871,15 @@ typedef struct
+ 				alarm_repeat;
+ 	gint		delay;
+ 
+-	void		(*cb_trigger)();
++	void		(*cb_trigger)(GkrellmAlert *alert, gpointer data);
+ 	gpointer	cb_trigger_data;
+ 	void		(*cb_stop)();
+ 	gpointer	cb_stop_data;
+-	void		(*cb_config)();
++	void		(*cb_config)(GkrellmAlert *alert, gpointer data);
+ 	gpointer	cb_config_data;
+-	void		(*cb_config_create)();
++	void		(*cb_config_create)(GkrellmAlert *alert, GtkWidget *vbox1, gpointer data);
+ 	gpointer	cb_config_create_data;
+-	void		(*cb_command_process)();
++	void		(*cb_command_process)(GkrellmAlert *alert, gchar *src, gchar *buf, gint size, void* target);
+ 	gpointer	cb_command_process_data;
+ 
+ 	GtkWidget	*config_window,
+@@ -910,8 +911,7 @@ typedef struct
+ 
+ 	gchar		*id_string;		/* For unique alert names for alert plugins */
+ 	GList		*plugin_list;
+-	}
+-	GkrellmAlert;
++	};
+ 
+ /* ------------------------ */
+ 
+--- a/src/inet.c
++++ b/src/inet.c
+@@ -36,7 +36,8 @@
+ #include "gkrellm-sysdeps.h"
+ #include "inet.h"
+ 
+-typedef struct
++typedef struct InetMon InetMon;
++struct InetMon
+ 	{
+ 	GtkWidget	*vbox;
+ 	gchar		*name;
+@@ -87,8 +88,7 @@ typedef struct
+ 						port1_1;
+ 
+ 	gulong				krell_hits;
+-	}
+-	InetMon;
++	};
+ 
+ static GkrellmMonitor *mon_inet;
+ 
+@@ -824,9 +824,10 @@ cb_panel_press(GtkWidget *widget, GdkEventButton *ev)
+   /* Lock the hour and minute heights together.
+   */
+ static void
+-cb_inet_height(GkrellmChartconfig *cf, InetMon *in)
++cb_inet_height(GkrellmChartconfig *cf, gpointer data)
+ 	{
+ 	gint	h;
++	InetMon	*in = (InetMon*) data;
+ 
+ 	h = gkrellm_get_chartconfig_height(cf);
+ 	if (in->chart_minute->h != h)
+--- a/src/krell.c
++++ b/src/krell.c
+@@ -1483,7 +1483,7 @@ gkrellm_show_button(GkrellmDecalbutton *b)
+ 	}
+ 
+ gboolean
+-gkrellm_in_button(GkrellmDecalbutton *b, GdkEventButton *ev)
++gkrellm_in_button(GkrellmDecalbutton *b, GdkEventButton *ev, gpointer data)
+ 	{
+ 	return gkrellm_in_decal(b->decal, ev);
+ 	}
+--- a/src/mail.c
++++ b/src/mail.c
+@@ -255,12 +255,13 @@ typedef struct
+ 	}
+ 	MailAccount;
+ 
+-typedef struct
++typedef struct Mailbox Mailbox;
++struct Mailbox
+ 	{
+ 	MailAccount	*account;
+ 	gboolean	busy;
+ 	GString		*tcp_in;
+-	gboolean	(*check_func)();
++	gboolean	(*check_func)(Mailbox *mbox);
+ 	gpointer	data;			/* For external mailboxes (in plugins) */
+ 	GThread*	thread;
+ 	gint		mail_count;
+@@ -277,8 +278,7 @@ typedef struct
+ 	gchar		*uidl;
+ 	gboolean	warned;
+ 	void		*private;
+-	}
+-	Mailbox;
++	};
+ 
+ static GList	*mailbox_list;
+ 
+@@ -2309,9 +2309,8 @@ reset_mail_fetch(void)
+ 	}
+ 
+ static gboolean
+-run_fetch_program(void)
++run_fetch_program(Mailbox *mbox)
+ 	{
+-	Mailbox		*mbox;
+ 	Mailproc	*mp	= (Mailproc *) mail_fetch->private;
+ 	GList		*list;
+ 
+--- a/src/mem.c
++++ b/src/mem.c
+@@ -662,8 +662,9 @@ cb_panel_motion(GtkWidget *widget, GdkEventButton *ev)
+ 	}
+ 
+ static void
+-setup_scaling(GkrellmChartconfig *cf, MeminfoChart *mc)
++setup_scaling(GkrellmChartconfig *cf, gpointer data)
+ 	{
++	MeminfoChart* mc = (MeminfoChart*)data;
+ 	GkrellmChart	*cp	  = mc->chart;
+ 	gint	res   = DEFAULT_GRID_RES,
+ 			grids = FULL_SCALE_GRIDS;
+--- a/src/net.c
++++ b/src/net.c
+@@ -1165,8 +1165,9 @@ grid_resolution_default(NetMon *net)
+ 	}
+ 
+ static void
+-setup_net_scaling(GkrellmChartconfig *cf, NetMon *net)
++setup_net_scaling(GkrellmChartconfig *cf, gpointer data)
+ 	{
++	NetMon *net = (NetMon*)data;
+ 	GkrellmChart	*cp  = net->chart;
+ 	gint	grids, res;
+ 
+--- a/src/proc.c
++++ b/src/proc.c
+@@ -333,7 +333,7 @@ cb_proc_extra(GtkWidget *widget, GdkEventButton *ev)
+ 	}
+ 
+ static void
+-setup_proc_scaling(void)
++setup_proc_scaling(GkrellmChartconfig *config, gpointer data)
+ 	{
+ 	GkrellmChart	*cp		= proc.chart;
+ 	gint			grids, res, new_fork_scaling;
+@@ -567,7 +567,7 @@ create_proc_monitor(GtkWidget *vbox, gint first_create)
+ 					_("Average process load per minute"));
+ 
+ 	gkrellm_alloc_chartdata(cp);
+-	setup_proc_scaling();
++	setup_proc_scaling(NULL, NULL);
+ 
+ 	/* I put motherboard temp on Proc panel (if temperature sensors found)
+ 	*/
+--- a/src/sensors.c
++++ b/src/sensors.c
+@@ -1985,7 +1985,7 @@ static Sensor		*dragged_sensor;
+ 
+ static gint			sensor_last_group;
+ 
+-static gboolean		(*original_row_drop_possible)();
++static gboolean		(*original_row_drop_possible)(GtkTreeDragDest *drag_dest, GtkTreePath *path, GtkSelectionData *selection_data);
+ 
+ 
+ 
+--- a/src/sysdeps-unix.c
++++ b/src/sysdeps-unix.c
+@@ -89,7 +89,7 @@
+ #endif
+ 
+ #if !defined(SENSORS_COMMON) && !defined(WIN32)
+-static gboolean (*mbmon_check_func)();
++static gboolean (*mbmon_check_func)(gboolean);
+ #endif
+ 
+ gchar *
+--- a/src/sysdeps/sensors-common.c
++++ b/src/sysdeps/sensors-common.c
+@@ -54,7 +54,7 @@ static gchar	gkrellm_decimal_point,
+ 				mbmon_decimal_point;
+ static gboolean	mbmon_need_decimal_point_fix;
+ 
+-static gboolean (*mbmon_check_func)();
++static gboolean (*mbmon_check_func)(gboolean);
+ 
+ static gboolean
+ mbmon_decimal_point_fix(gchar *buf)
+-- 
+2.39.1
+
+
