@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,12 +51,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.26-ncurses-mouse.patch
 	"${FILESDIR}"/${P}-tests.patch #836812
 )
-
-pkg_pretend() {
-	if use slang && use unicode ; then
-		ewarn "\"unicode\" USE flag only takes effect when the \"slang\" USE flag is disabled."
-	fi
-}
 
 src_prepare() {
 	default

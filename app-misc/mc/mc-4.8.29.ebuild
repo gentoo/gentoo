@@ -52,12 +52,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.29-gentoo-tools.patch
 )
 
-pkg_pretend() {
-	if use slang && use unicode ; then
-		ewarn "\"unicode\" USE flag only takes effect when the \"slang\" USE flag is disabled."
-	fi
-}
-
 src_prepare() {
 	default
 	# patch touches configure.ac
