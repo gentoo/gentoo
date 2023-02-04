@@ -3,6 +3,7 @@
 
 EAPI=8
 
+DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="ncurses(+)"
@@ -24,6 +25,10 @@ RDEPEND="!sys-process/iotop-c"
 CONFIG_CHECK="~TASK_IO_ACCOUNTING ~TASK_DELAY_ACCT ~TASKSTATS ~VM_EVENT_COUNTERS"
 
 DOCS=( NEWS README THANKS )
+
+pkg_setup() {
+	python-single-r1_pkg_setup
+}
 
 pkg_postinst() {
 	ewarn "Since Linux 5.14, sysctl kernel.task_delayacct should be enabled"
