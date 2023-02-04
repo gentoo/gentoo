@@ -116,19 +116,6 @@ src_prepare() {
 		rm test/recipes/80-test_ssl_new.t || die
 	fi
 
-	# - Make sure the man pages are suffixed (bug #302165)
-	# - Don't bother building man pages if they're disabled
-	# - Make DOCDIR Gentoo compliant
-	sed -i \
-		-e '/^MANSUFFIX/s:=.*:=ssl:' \
-		-e '/^MAKEDEPPROG/s:=.*:=$(CC):' \
-		-e $(has noman FEATURES \
-			&& echo '/^install:/s:install_docs::' \
-			|| echo '/^MANDIR=/s:=.*:='${EPREFIX}'/usr/share/man:') \
-		-e "/^DOCDIR/s@\$(BASENAME)@&-${PVR}@" \
-		Configurations/unix-Makefile.tmpl \
-		|| die
-
 	# Quiet out unknown driver argument warnings since openssl
 	# doesn't have well-split CFLAGS and we're making it even worse
 	# and 'make depend' uses -Werror for added fun (bug #417795 again)
@@ -243,7 +230,11 @@ multilib_src_compile() {
 	# that it's -j1 as the code itself serializes subdirs
 	emake -j1 depend
 
-	emake all
+	emake build_sw
+
+	if multilib_is_native_abi; then
+		emake build_docs
+	fi
 }
 
 multilib_src_test() {
@@ -253,10 +244,15 @@ multilib_src_test() {
 }
 
 multilib_src_install() {
-	# We need to create ${ED}/usr on our own to avoid a race condition (bug #665130)
-	dodir /usr
+	emake DESTDIR="${D}" install_sw
+	if use fips; then
+		emake DESTDIR="${D}" install_fips
+	fi
 
-	emake DESTDIR="${D}" install
+	if multilib_is_native_abi; then
+		emake DESTDIR="${D}" install_ssldirs
+		emake DESTDIR="${D}" DOCDIR='$(INSTALLTOP)'/share/doc/${PF} install_docs
+	fi
 
 	# This is crappy in that the static archives are still built even
 	# when USE=static-libs. But this is due to a failing in the openssl
