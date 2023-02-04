@@ -164,7 +164,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/zxing-cpp:=
 	>=net-libs/neon-0.31.1:=
 	net-misc/curl
-	sci-mathematics/lpsolve
+	sci-mathematics/lpsolve:=
 	sys-libs/zlib
 	virtual/opengl
 	x11-libs/cairo[X]
