@@ -57,7 +57,6 @@ multilib_src_configure() {
 		-Dwith_glx=$(usex X)
 		-Dwith_wayland=$(usex wayland)
 		-Denable_docs=false
-		-Denable_va_messaging=true
 	)
 	meson_src_configure
 }
