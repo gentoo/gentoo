@@ -6,6 +6,7 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">schacon/ruby-git</remote-id>
+    <remote-id type="github">ruby-git/ruby-git</remote-id>
+    <remote-id type="rubygems">git</remote-id>
   </upstream>
 </pkgmetadata>
