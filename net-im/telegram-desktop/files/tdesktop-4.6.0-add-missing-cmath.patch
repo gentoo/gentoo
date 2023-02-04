@@ -1,0 +1,13 @@
+https://github.com/desktop-app/lib_ui/commit/6e81116513175870788671e172a3c608747ed171
+
+--- a/Telegram/lib_ui/ui/style/style_core_font.h
++++ b/Telegram/lib_ui/ui/style/style_core_font.h
+@@ -11,6 +11,8 @@
+ #include <QtGui/QFont>
+ #include <QtGui/QFontMetrics>
+ 
++#include <cmath>
++
+ namespace style {
+ namespace internal {
+ 
