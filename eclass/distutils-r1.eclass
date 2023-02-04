@@ -171,7 +171,7 @@ esac
 
 if [[ ! ${_DISTUTILS_R1} ]]; then
 
-inherit multibuild multiprocessing ninja-utils toolchain-funcs
+inherit multibuild multilib multiprocessing ninja-utils toolchain-funcs
 
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 	inherit python-r1
@@ -1985,12 +1985,34 @@ _distutils-r1_post_python_install() {
 			examples test tests
 			.pytest_cache .hypothesis _trial_temp
 		)
+		local strays=()
 		local p
+		mapfile -d $'\0' -t strays < <(
+			find "${sitedir}" -maxdepth 1 -type f '!' '(' \
+					-name '*.egg-info' -o \
+					-name '*.pth' -o \
+					-name '*.py' -o \
+					-name '*.pyi' -o \
+					-name "*$(get_modname)" \
+				')' -print0
+		)
 		for p in "${forbidden_package_names[@]}"; do
-			if [[ -d ${sitedir}/${p} ]]; then
-				die "Package installs '${p}' package which is forbidden and likely a bug in the build system."
-			fi
+			[[ -d ${sitedir}/${p} ]] && strays+=( "${sitedir}/${p}" )
 		done
+
+		if [[ -n ${strays[@]} ]]; then
+			eerror "The following unexpected files/directories were found top-level"
+			eerror "in the site-packages directory:"
+			eerror
+			for p in "${strays[@]}"; do
+				eerror "  ${p#${ED}}"
+			done
+			eerror
+			eerror "This is most likely a bug in the build system.  More information"
+			eerror "can be found in the Python Guide:"
+			eerror "https://projects.gentoo.org/python/guide/qawarn.html#stray-top-level-files-in-site-packages"
+			die "Failing install because of stray top-level files in site-packages"
+		fi
 	fi
 }
 
