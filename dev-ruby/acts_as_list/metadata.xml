@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">swanandp/acts_as_list</remote-id>
+    <remote-id type="github">brendon/acts_as_list</remote-id>
   </upstream>
 </pkgmetadata>
