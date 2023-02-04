@@ -1,0 +1,15 @@
+Fix missing header with gcc 12
+
+Upstream:
+https://github.com/telegramdesktop/tdesktop/commit/a8decf154f5aceeff0b977c0a5845e42404286b3
+
+--- tdesktop-4.6.2-full.orig/Telegram/SourceFiles/payments/stripe/stripe_card_validator.h
++++ tdesktop-4.6.2-full/Telegram/SourceFiles/payments/stripe/stripe_card_validator.h
+@@ -9,6 +9,7 @@
+ 
+ #include "stripe/stripe_card.h"
+ #include <vector>
++#include <optional>
+ 
+ class QDate;
+ 
