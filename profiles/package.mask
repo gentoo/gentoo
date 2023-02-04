@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2023-02-04)
+# pytest plugin, which breaks a lot of python_test of other ebuilds
+# if installed unless disabled. The package itself is hard to
+# maintain. No reverse dependencies.
+# Removal: 2023-03-06.  Bug #893212.
+dev-python/tavern
+
 # Michał Górny <mgorny@gentoo.org> (2023-02-03)
 # Uses unmaintained dev-python/future.  No reverse dependencies.
 # Removal on 2023-03-05.  Bug #888283.
