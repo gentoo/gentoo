@@ -205,10 +205,6 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	# depend is needed to use $confopts; it also doesn't matter
-	# that it's -j1 as the code itself serializes subdirs
-	emake -j1 depend
-
 	emake build_sw
 
 	if multilib_is_native_abi; then
