@@ -25,7 +25,7 @@ SLOT="0"
 IUSE="wayland X"
 
 BDEPEND=">=dev-util/cmake-3.10.2"
-RDEPEND="~dev-util/spirv-tools-99999999:=[${MULTILIB_USEDEP}]"
+RDEPEND="~dev-util/spirv-tools-${PV}:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-cpp/robin-hood-hashing-3.11.5
@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES="${FILESDIR}/${PN}-1.3.239-Build-shared-libs.patch"
+PATCHES="${FILESDIR}/${P}-Build-shared-libs.patch"
 
 multilib_src_configure() {
 	local mycmakeargs=(
