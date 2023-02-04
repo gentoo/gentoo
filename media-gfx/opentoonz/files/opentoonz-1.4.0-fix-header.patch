@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/723946k
+--- a/toonz/sources/common/twain/twain.h
++++ b/toonz/sources/common/twain/twain.h
+@@ -2209,7 +2209,7 @@ typedef struct {
+ #elif defined(TWH_CMP_GNU)
+ #pragma pack(pop, before_twain)
+ #elif defined(TWH_CMP_BORLAND)
+-#pragma option a.
++#pragma option_a.
+ #elif defined(TWH_CMP_XCODE)
+ #if PRAGMA_STRUCT_ALIGN
+ #pragma options align = reset
+ 
