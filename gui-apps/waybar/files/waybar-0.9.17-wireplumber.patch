@@ -1,3 +1,6 @@
+Commit: https://github.com/Alexays/Waybar/commit/4e8ccf36b54cacf5281726d23ea14312a133f977
+Commit: https://github.com/Alexays/Waybar/commit/8da5425189d52ebbaab063c9289c5de5adbe0ca5
+Issue: https://github.com/Alexays/Waybar/issues/1852
 From 4e8ccf36b54cacf5281726d23ea14312a133f977 Mon Sep 17 00:00:00 2001
 From: Sasha Moak <sasha.moak@gmail.com>
 Date: Thu, 12 Jan 2023 16:17:11 -0800
@@ -343,3 +346,29 @@ index 9a12a9b5b..9652e1e2b 100644
    g_autoptr(GError) error = NULL;
  
    if (!wp_core_load_component(wp_core_, "libwireplumber-module-default-nodes-api", "module", NULL,
+From a9c9f1d705991c7f6ff9de7eac3430a219011978 Mon Sep 17 00:00:00 2001
+From: Sasha Moak <sasha.moak@gmail.com>
+Date: Tue, 31 Jan 2023 17:56:58 -0800
+Subject: [PATCH] fix(wireplumber): free(): invalid pointer
+
+When freeing the `default_node_name_` pointer using `free`, the `&`
+operator was used to try to free the reference rather than the pointer.
+This caused a core dump. In order to fix this, the pointer is freed
+instead (ie the `&` operator is no longer used).
+---
+ src/modules/wireplumber.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/modules/wireplumber.cpp b/src/modules/wireplumber.cpp
+index fd1a0d389..4c7a2d0b1 100644
+--- a/src/modules/wireplumber.cpp
++++ b/src/modules/wireplumber.cpp
+@@ -47,7 +47,7 @@ waybar::modules::Wireplumber::~Wireplumber() {
+   g_clear_object(&wp_core_);
+   g_clear_object(&mixer_api_);
+   g_clear_object(&def_nodes_api_);
+-  g_free(&default_node_name_);
++  g_free(default_node_name_);
+ }
+
+ void waybar::modules::Wireplumber::updateNodeName(waybar::modules::Wireplumber* self, uint32_t id) {
