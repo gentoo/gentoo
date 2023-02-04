@@ -35,7 +35,7 @@ Index: Tensile-rocm-5.4.2/Tensile/ClientWriter.py
    callCreateLibraryCmd = ["python"] if os.name == "nt" else []
  
 -  callCreateLibraryCmd += [os.path.join(globalParameters["ScriptPath"] , "bin", "TensileCreateLibrary")]
-+  callCreateLibraryCmd += "TensileCreateLibrary"
++  callCreateLibraryCmd += ["TensileCreateLibrary"]
  
    if globalParameters["MergeFiles"]:
      callCreateLibraryCmd += ["--merge-files"]
