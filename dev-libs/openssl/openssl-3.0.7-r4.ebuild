@@ -201,28 +201,7 @@ multilib_src_configure() {
 		threads
 	)
 
-	CFLAGS= LDFLAGS= edo perl Configure "${myeconfargs[@]}"
-
-	# Clean out hardcoded flags that openssl uses
-	local DEFAULT_CFLAGS=$(grep ^CFLAGS= Makefile | LC_ALL=C sed \
-		-e 's:^CFLAGS=::' \
-		-e 's:\(^\| \)-fomit-frame-pointer::g' \
-		-e 's:\(^\| \)-O[^ ]*::g' \
-		-e 's:\(^\| \)-march=[^ ]*::g' \
-		-e 's:\(^\| \)-mcpu=[^ ]*::g' \
-		-e 's:\(^\| \)-m[^ ]*::g' \
-		-e 's:^ *::' \
-		-e 's: *$::' \
-		-e 's: \+: :g' \
-		-e 's:\\:\\\\:g'
-	)
-
-	# Now insert clean default flags with user flags
-	sed -i \
-		-e "/^CFLAGS=/s|=.*|=${DEFAULT_CFLAGS} ${CFLAGS}|" \
-		-e "/^LDFLAGS=/s|=[[:space:]]*$|=${LDFLAGS}|" \
-		Makefile \
-		|| die
+	edo perl Configure "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
