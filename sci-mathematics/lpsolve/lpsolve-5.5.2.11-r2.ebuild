@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/lp_solve_${PV}_source.tar.gz"
 S="${WORKDIR}"/lp_solve_$(ver_cut 1-2)
 
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="0/55"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND="sci-libs/colamd"
@@ -20,6 +20,17 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.2.11-misc.patch
 )
+
+src_prepare() {
+	default
+
+	local actual_soname=$(grep -iEo -- "-soname,liblpsolve([A-z0-9]+)" lpsolve*/ccc | sed -e 's:-soname,liblpsolve::')
+	if [[ ${actual_soname} != ${SLOT##*/} ]] ; then
+		eerror "Actual SONAME: ${actual_soname}"
+		eerror "Expected SONAME: ${SLOT##*/}"
+		die "Expected SONAME not found! Please update the subslot in the ebuild!"
+	fi
+}
 
 src_compile() {
 	tc-export AR CC RANLIB LD
