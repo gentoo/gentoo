@@ -22,7 +22,7 @@ HOMEPAGE="https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/ https:/
 PATCHES=( "${FILESDIR}/${PN}-1.3.236-Install-static-libs.patch" )
 
 LICENSE="BSD"
-SLOT="0/1"
+SLOT="0/12"
 
 BDEPEND="${PYTHON_DEPS}"
 
