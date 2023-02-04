@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,18 +19,19 @@ REQUIRED_USE="
 "
 RESTRICT="!test? ( test )"
 
+# https://github.com/SpectrumIM/spectrum2/issues/464 for log4cxx version limit
 RDEPEND="
 	acct-group/spectrum
 	acct-user/spectrum
 	dev-libs/boost:=[nls]
 	dev-libs/expat
 	dev-libs/libev:=
-	dev-libs/log4cxx
+	<dev-libs/log4cxx-1.0.0:=
 	dev-libs/jsoncpp:=
-	dev-libs/openssl:0=
+	dev-libs/openssl:=
 	dev-libs/popt
 	dev-libs/protobuf:=
-	net-dns/libidn:0=
+	net-dns/libidn:=
 	>=net-im/swift-4.0.2-r2:=
 	net-misc/curl
 	sys-libs/zlib:=
