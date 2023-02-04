@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,6 +24,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.4-gcc-13.patch
+)
 
 src_prepare() {
 	rm -rf licenses || die
