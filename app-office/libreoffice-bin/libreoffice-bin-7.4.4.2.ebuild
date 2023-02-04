@@ -62,6 +62,7 @@ BIN_COMMON_DEPEND="
 	media-libs/libpng:0/16
 	media-libs/openjpeg:2/7
 	media-libs/zxing-cpp:0/3
+	sci-mathematics/lpsolve:0/0
 	>=sys-devel/gcc-11.3.0
 	>=sys-libs/glibc-2.36
 "
