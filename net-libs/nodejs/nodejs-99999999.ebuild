@@ -50,7 +50,6 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-12.22.5-shared_c-ares_nameser_h.patch
-	"${FILESDIR}"/${PN}-15.2.0-global-npm-config.patch
 )
 
 # These are measured on a loong machine with -ggdb on, and only checked
@@ -205,6 +204,8 @@ src_install() {
 
 	if use npm; then
 		keepdir /etc/npm
+		echo "NPM_CONFIG_GLOBALCONFIG=${EPREFIX}/etc/npm/npmrc" > "${T}"/50npm
+		doenvd "${T}"/50npm
 
 		# Install bash completion for `npm`
 		local tmp_npm_completion_file="$(TMPDIR="${T}" mktemp -t npm.XXXXXXXXXX)"
@@ -247,4 +248,11 @@ src_test() {
 
 	out/${BUILDTYPE}/cctest || die
 	"${EPYTHON}" tools/test.py --mode=${BUILDTYPE,,} --flaky-tests=dontcare -J message parallel sequential || die
+}
+
+pkg_postinst() {
+	if use npm; then
+		ewarn "remember to run: source /etc/profile if you plan to use nodejs"
+		ewarn "	in your current shell"
+	fi
 }
