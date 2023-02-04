@@ -544,6 +544,7 @@ src_prepare() {
 		eapply "${FILESDIR}"/latomic-subword
 		eapply "${WORKDIR}"/${P}-riscv64-llvm.patch
 		eapply "${FILESDIR}"/${PN}-9.0.2-fptools.patch # clang-16 workaround
+		eapply "${FILESDIR}"/${PN}-9.0.2-sphinx-6.patch
 
 		# mingw32 target
 		pushd "${S}/libraries/Win32"
