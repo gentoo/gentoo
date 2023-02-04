@@ -14,7 +14,7 @@ HOMEPAGE="https://midnight-commander.org"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+edit gpm nls sftp slang spell test unicode X"
+IUSE="+edit gpm nls sftp +slang spell test unicode X"
 
 REQUIRED_USE="spell? ( edit )"
 
