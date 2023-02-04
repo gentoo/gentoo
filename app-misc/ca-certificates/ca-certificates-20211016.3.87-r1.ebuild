@@ -59,7 +59,7 @@ ${PRECOMPILED} || IUSE+=" cacert"
 
 # c_rehash: we run `c_rehash`
 # debianutils: we run `run-parts`
-CDEPEND="app-misc/c_rehash
+CDEPEND="
 	sys-apps/debianutils"
 
 BDEPEND="${CDEPEND}"
@@ -133,7 +133,6 @@ src_prepare() {
 	sed -i \
 		-e '/="$ROOT/s:ROOT:ROOT'"${EPREFIX}"':' \
 		-e '/RELPATH="\.\./s:"$:'"${relp}"'":' \
-		-e 's/openssl rehash/c_rehash/' \
 		usr/sbin/update-ca-certificates || die
 }
 
