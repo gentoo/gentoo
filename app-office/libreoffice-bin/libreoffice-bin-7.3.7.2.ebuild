@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -62,6 +62,7 @@ BIN_COMMON_DEPEND="
 	media-libs/libpng:0/16
 	media-libs/openjpeg:2/7
 	media-libs/zxing-cpp:0/1.4
+	sci-mathematics/lpsolve:0/0
 	>=sys-devel/gcc-11.3.0
 	>=sys-libs/glibc-2.35
 "
