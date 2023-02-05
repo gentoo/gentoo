@@ -15,7 +15,7 @@ SRC_URI="https://github.com/${PN}/${PN}-c/releases/download/c-${PV}/${MY_P}.tar.
 LICENSE="Boost-1.0"
 SLOT="0/2"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="doc examples test"
+IUSE="doc examples static-libs test"
 
 RESTRICT="!test? ( test )"
 
@@ -25,12 +25,17 @@ BDEPEND="doc? ( app-doc/doxygen[dot] )
 		sys-libs/zlib[${MULTILIB_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.0.0-static_libs.patch
+)
+
 S="${WORKDIR}"/${MY_P}
 
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DMSGPACK_BUILD_EXAMPLES=OFF
 		-DMSGPACK_BUILD_TESTS="$(usex test)"
+		-DMSGPACK_ENABLE_STATIC="$(usex static-libs)"
 	)
 
 	cmake_src_configure
