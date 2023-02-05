@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-02-05)
+# dev-python/python-box has broken build system that prevents us from
+# bumping it.  Its only used by dev-python/tavern that is last rited,
+# and dev-python/tavalidate that no longer has any revdeps.
+# Removal on 2023-03-07.
+dev-python/python-box
+dev-python/tavalidate
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2023-02-04)
 # pytest plugin, which breaks a lot of python_test of other ebuilds
 # if installed unless disabled. The package itself is hard to
