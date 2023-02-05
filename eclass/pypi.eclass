@@ -39,20 +39,22 @@ SRC_URI="
 "
 
 # @FUNCTION: pypi_sdist_url
-# @USAGE: <project> [<version> [<suffix>]]
+# @USAGE: [<project> [<version> [<suffix>]]]
 # @DESCRIPTION:
 # Output the URL to PyPI sdist for specified project/version tuple.
+#
+# If <package> is unspecified, it defaults to ${PN}.
 #
 # If <version> is unspecified, it defaults to ${PV}.
 #
 # If <format> is unspecified, it defaults to ".tar.gz".  Another valid
 # value is ".zip" (please remember to add a BDEPEND on app-arch/unzip).
 pypi_sdist_url() {
-	if ! has "${#}" {1..3}; then
+	if [[ ${#} -gt 3 ]]; then
 		die "Usage: ${FUNCNAME} <project> [<version> [<suffix>]]"
 	fi
 
-	local project=${1}
+	local project=${1-"${PN}"}
 	local version=${2-"${PV}"}
 	local suffix=${3-.tar.gz}
 	printf "https://files.pythonhosted.org/packages/source/%s" \
@@ -60,9 +62,11 @@ pypi_sdist_url() {
 }
 
 # @FUNCTION: pypi_wheel_name
-# @USAGE: <project> [<version> [<python-tag> [<abi-platform-tag>]]]
+# @USAGE: [<project> [<version> [<python-tag> [<abi-platform-tag>]]]]
 # @DESCRIPTION:
 # Output the wheel filename for the specified project/version tuple.
+#
+# If <package> is unspecified, it defaults to ${PN}.
 #
 # If <version> is unspecified, it defaults to ${PV}.
 #
@@ -73,11 +77,11 @@ pypi_sdist_url() {
 # You need to specify the correct value for non-pure wheels,
 # e.g. "abi3-linux_x86_64".
 pypi_wheel_name() {
-	if ! has "${#}" {1..4}; then
+	if [[ ${#} -gt 4 ]]; then
 		die "Usage: ${FUNCNAME} <project> [<version> [<python-tag> [<abi-platform-tag>]]]"
 	fi
 
-	local project=${1}
+	local project=${1-"${PN}"}
 	local version=${2-"${PV}"}
 	local pytag=${3-py3}
 	local abitag=${4-none-any}
@@ -85,9 +89,11 @@ pypi_wheel_name() {
 }
 
 # @FUNCTION: pypi_wheel_url
-# @USAGE: <project> [<version> [<python-tag> [<abi-platform-tag>]]]
+# @USAGE: [<project> [<version> [<python-tag> [<abi-platform-tag>]]]]
 # @DESCRIPTION:
 # Output the URL to PyPI wheel for specified project/version tuple.
+#
+# If <package> is unspecified, it defaults to ${PN}.
 #
 # If <version> is unspecified, it defaults to ${PV}.
 #
@@ -103,11 +109,11 @@ pypi_wheel_name() {
 # operator to rename it or call unzip directly.  Remember to BDEPEND
 # on app-arch/unzip.
 pypi_wheel_url() {
-	if ! has "${#}" {1..4}; then
+	if [[ ${#} -gt 4 ]]; then
 		die "Usage: ${FUNCNAME} <project> [<version> [<python-tag> [<abi-platform-tag>]]]"
 	fi
 
-	local project=${1}
+	local project=${1-"${PN}"}
 	local version=${2-"${PV}"}
 	local pytag=${3-py3}
 	printf "https://files.pythonhosted.org/packages/%s" \
