@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="+netcdf web"
 
 DEPEND="
-	dev-libs/msgpack[cxx]
+	dev-libs/msgpack[cxx(-)]
 	dev-libs/mmtf-cpp
 	dev-python/pyopengl[${PYTHON_USEDEP}]
 	dev-python/PyQt5[opengl,${PYTHON_USEDEP}]
