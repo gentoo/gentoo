@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 # htop which is often used on headless machines. bug #787470
 inherit linux-info optfeature python-any-r1 xdg-utils
 
-DESCRIPTION="interactive process viewer"
+DESCRIPTION="Interactive process viewer"
 HOMEPAGE="https://htop.dev/ https://github.com/htop-dev/htop"
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/htop-dev/htop.git"
