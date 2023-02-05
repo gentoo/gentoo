@@ -127,6 +127,7 @@ RDEPEND="${DEPEND}
 	systemd? ( dev-python/python-systemd[${PYTHON_USEDEP}] )
 "
 BDEPEND="
+	<dev-python/poetry-core-1.5.0[${PYTHON_USEDEP}]
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
 	test? (
 		dev-python/idna[${PYTHON_USEDEP}]
