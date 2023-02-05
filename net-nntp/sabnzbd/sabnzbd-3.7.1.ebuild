@@ -61,7 +61,6 @@ BDEPEND="
 			dev-python/pytest[${PYTHON_USEDEP}]
 			dev-python/requests[${PYTHON_USEDEP}]
 			dev-python/selenium[${PYTHON_USEDEP}]
-			dev-python/tavalidate[${PYTHON_USEDEP}]
 			dev-python/werkzeug[${PYTHON_USEDEP}]
 			dev-python/xmltodict[${PYTHON_USEDEP}]
 		')
