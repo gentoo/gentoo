@@ -20,21 +20,22 @@ HPN_PATCHES=(
 	${PN}-${HPN_PV/./_}-hpn-PeakTput-${HPN_VER}.diff
 )
 HPN_GLUE_PATCH="${PN}-9.2_p1-hpn-${HPN_VER}-glue.patch"
+HPN_PATCH_DIR="HPN-SSH%%20${HPN_VER/./v}%%20${HPN_PV/_P/p}"
 
 SCTP_VER="1.2"
 SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
 
-X509_VER="14.0.1"
-#X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
+X509_VER="14.1"
+X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
 X509_GLUE_PATCH="${P}-X509-glue-${X509_VER}.patch"
-X509_HPN_GLUE_PATCH="${PN}-9.1_p1-hpn-${HPN_VER}-X509-${X509_VER}-glue.patch"
+X509_HPN_GLUE_PATCH="${PN}-9.2_p1-hpn-${HPN_VER}-X509-${X509_VER}-glue.patch"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
 SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	${SCTP_PATCH:+sctp? ( https://dev.gentoo.org/~chutzpah/dist/openssh/${SCTP_PATCH} )}
 	${HPN_VER:+hpn? (
-		$(printf "mirror://sourceforge/project/hpnssh/Patches/HPN-SSH%%20${HPN_VER/./v}%%20${HPN_PV/_P/p}/%s\n" "${HPN_PATCHES[@]}")
+		$(printf "mirror://sourceforge/project/hpnssh/Patches/${HPN_PATCH_DIR}/%s\n" "${HPN_PATCHES[@]}")
 		https://dev.gentoo.org/~chutzpah/dist/openssh/${HPN_GLUE_PATCH}.xz
 	)}
 	${X509_PATCH:+X509? (
@@ -123,7 +124,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-8.0_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch"
 	"${FILESDIR}/${PN}-8.9_p1-allow-ppoll_time64.patch" #834019
 	"${FILESDIR}/${PN}-8.9_p1-gss-use-HOST_NAME_MAX.patch" #834044
-	#"${FILESDIR}/${PN}-9.1_p1-build-tests.patch"
 )
 
 pkg_pretend() {
@@ -164,7 +164,7 @@ src_prepare() {
 	# don't break .ssh/authorized_keys2 for fun
 	sed -i '/^AuthorizedKeysFile/s:^:#:' sshd_config || die
 
-	eapply "${PATCHES[@]}"
+	eapply -- "${PATCHES[@]}"
 
 	[[ -d ${WORKDIR}/patches ]] && eapply "${WORKDIR}"/patches
 
