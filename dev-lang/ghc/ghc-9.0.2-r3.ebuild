@@ -458,6 +458,9 @@ src_prepare() {
 		[[ -e "${f}" ]] || ln -sf "$($(tc-getPKG_CONFIG) --cflags-only-I libffi | sed "s/-I//g" | tr -d " ")/$(basename "${f}")" "${f}" || die
 	done
 
+
+	eapply "${FILESDIR}"/${PN}-9.0.2-sphinx-6.patch
+
 	if use binary; then
 		if use prefix; then
 			relocate_ghc "${EPREFIX}"
@@ -544,7 +547,6 @@ src_prepare() {
 		eapply "${FILESDIR}"/latomic-subword
 		eapply "${WORKDIR}"/${P}-riscv64-llvm.patch
 		eapply "${FILESDIR}"/${PN}-9.0.2-fptools.patch # clang-16 workaround
-		eapply "${FILESDIR}"/${PN}-9.0.2-sphinx-6.patch
 
 		# mingw32 target
 		pushd "${S}/libraries/Win32"
