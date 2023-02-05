@@ -29,7 +29,7 @@ src_prepare() {
 
 	# usr/bin/aclocal: bad substitution -> /bin/sh != POSIX shell
 	if use prefix ; then
-		sed -i -e '1c\#!'"${EPREFIX}"'/bin/sh' am-wrapper-${PV}.sh || die
+		sed -i -e '1c\#!'"${EPREFIX}"'/bin/sh' am-wrapper.sh || die
 	fi
 }
 
