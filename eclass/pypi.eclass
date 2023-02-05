@@ -89,9 +89,15 @@ pypi_wheel_name() {
 }
 
 # @FUNCTION: pypi_wheel_url
-# @USAGE: [<project> [<version> [<python-tag> [<abi-platform-tag>]]]]
+# @USAGE: [--unpack] [<project> [<version> [<python-tag> [<abi-platform-tag>]]]]
 # @DESCRIPTION:
 # Output the URL to PyPI wheel for specified project/version tuple.
+#
+# The `--unpack` option causes a SRC_URI with an arrow operator to
+# be generated, that adds a .zip suffix to the fetched distfile,
+# so that it is unpacked in default src_unpack().  Note that
+# the wheel contents will be unpacked straight into ${WORKDIR}.
+# You need to add a BDEPEND on app-arch/unzip.
 #
 # If <package> is unspecified, it defaults to ${PN}.
 #
@@ -103,21 +109,27 @@ pypi_wheel_name() {
 # If <abi-platform-tag> is unspecified, it defaults to "none-any".
 # You need to specify the correct value for non-pure wheels,
 # e.g. "abi3-linux_x86_64".
-#
-# Note that wheels are suffixed .whl by default and therefore are not
-# unpacked automatically.  If you need automatic unpacking, use "->"
-# operator to rename it or call unzip directly.  Remember to BDEPEND
-# on app-arch/unzip.
 pypi_wheel_url() {
+	local unpack=
+	if [[ ${1} == --unpack ]]; then
+		unpack=1
+		shift
+	fi
+
 	if [[ ${#} -gt 4 ]]; then
 		die "Usage: ${FUNCNAME} <project> [<version> [<python-tag> [<abi-platform-tag>]]]"
 	fi
 
+	local filename=$(pypi_wheel_name "${@}")
 	local project=${1-"${PN}"}
 	local version=${2-"${PV}"}
 	local pytag=${3-py3}
 	printf "https://files.pythonhosted.org/packages/%s" \
-		"${pytag}/${project::1}/${project}/$(pypi_wheel_name "${@}")"
+		"${pytag}/${project::1}/${project}/${filename}"
+
+	if [[ ${unpack} ]]; then
+		echo " -> ${filename}.zip"
+	fi
 }
 
 fi
