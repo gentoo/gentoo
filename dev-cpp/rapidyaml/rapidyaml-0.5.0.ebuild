@@ -69,6 +69,9 @@ src_configure() {
 		# TODO: enable this+tests, should(?) be easier to do with >=0.5.0 but
 		# still need looking into (please fill a bug if need this right away)
 		-DRYML_BUILD_API=no
+
+		# rapidyaml sets c++11, but >=gtest-1.13 wants >=c++14 (bug #893272)
+		-DC4_CXX_STANDARD=17
 	)
 
 	cmake_src_configure
