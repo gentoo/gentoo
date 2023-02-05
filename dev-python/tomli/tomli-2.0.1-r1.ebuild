@@ -7,7 +7,7 @@ EAPI=7
 DISTUTILS_USE_PEP517=no
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A lil' TOML parser"
 HOMEPAGE="
@@ -17,8 +17,7 @@ HOMEPAGE="
 SRC_URI="
 	https://github.com/hukkin/tomli/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
-	https://files.pythonhosted.org/packages/py3/${PN::1}/${PN}/${P}-py3-none-any.whl
-		-> ${P}-py3-none-any.whl.zip
+	$(pypi_wheel_url --unpack)
 "
 
 LICENSE="MIT"
