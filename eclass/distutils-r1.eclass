@@ -1267,6 +1267,8 @@ distutils_wheel_install() {
 		-o -path '*.dist-info/LICENSE*' \
 		-o -path '*.dist-info/license_files/*' \
 		-o -path '*.dist-info/license_files' \
+		-o -path '*.dist-info/licenses/*' \
+		-o -path '*.dist-info/licenses' \
 		\) -delete || die
 }
 
