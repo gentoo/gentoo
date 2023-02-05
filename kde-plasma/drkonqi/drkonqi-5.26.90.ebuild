@@ -13,7 +13,7 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PN}-5.26.80-revert-add-sen
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 COMMON_DEPEND="
