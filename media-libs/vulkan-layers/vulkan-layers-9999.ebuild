@@ -51,7 +51,6 @@ multilib_src_configure() {
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
 		-DBUILD_TESTS=OFF
-		-DVulkanRegistry_DIR="${ESYSROOT}/usr/share/vulkan/registry"
 	)
 	cmake_src_configure
 }
