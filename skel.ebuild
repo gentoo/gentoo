@@ -11,7 +11,7 @@
 # The PMS contains specifications for all EAPIs. Eclasses will test for this
 # variable if they need to use features that are not universal in all EAPIs.
 # If an eclass doesn't support latest EAPI, use the previous EAPI instead.
-EAPI=7
+EAPI=8
 
 
 # inherit lists eclasses to inherit functions from. For example, an ebuild
