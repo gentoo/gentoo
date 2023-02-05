@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,6 +12,11 @@ SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 LICENSE="Apache-2.0 MIT MPL-2.0 BSD BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
+
+src_prepare() {
+	default
+	sed -i -e 's/-short -race/-short/' makefile || die
+}
 
 src_compile() {
 	emake KUBEBENCH_VERSION=v${PV} build
