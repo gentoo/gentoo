@@ -1220,7 +1220,7 @@ _distutils-r1_get_backend() {
 		if [[ -n ${new_backend} ]]; then
 			if [[ ! -f ${T}/.distutils_deprecated_backend_warned ]]; then
 				eqawarn "${build_backend} backend is deprecated.  Please see:"
-				eqawarn "https://projects.gentoo.org/python/guide/distutils.html#deprecated-pep-517-backends"
+				eqawarn "https://projects.gentoo.org/python/guide/qawarn.html#deprecated-pep-517-backends"
 				eqawarn "The eclass will be using ${new_backend} instead."
 				> "${T}"/.distutils_deprecated_backend_warned || die
 			fi
