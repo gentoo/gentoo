@@ -69,6 +69,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	dev-libs/plasma-wayland-protocols
 	>=dev-qt/qtwaylandscanner-${QTMIN}:5
+	dev-util/wayland-scanner
 "
 
 PATCHES=( "${FILESDIR}/${PN}-21.07.80-revert-disable-kpeople.patch" )
