@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/kio_gdrive/"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="amd64 arm64 ~ppc64 x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~x86"
 IUSE="+share"
 
 COMMON_DEPEND="
