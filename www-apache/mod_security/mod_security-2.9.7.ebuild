@@ -21,10 +21,14 @@ IUSE="doc fuzzyhash geoip jit json lua mlogc pcre2"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
-COMMON_DEPEND="dev-libs/apr
-	dev-libs/apr-util[openssl]
+DEPEND="dev-libs/apr:1=
+	dev-libs/apr-util:1[openssl]
+	dev-libs/expat
 	dev-libs/libxml2
 	dev-libs/libpcre[jit?]
+	net-misc/curl
+	sys-apps/util-linux
+	sys-libs/gdbm:=
 	virtual/libcrypt:=
 	fuzzyhash? ( app-crypt/ssdeep )
 	json? ( dev-libs/yajl )
@@ -33,8 +37,7 @@ COMMON_DEPEND="dev-libs/apr
 	pcre2? ( dev-libs/libpcre2:= )
 	www-servers/apache[apache2_modules_unique_id]"
 BDEPEND="doc? ( app-doc/doxygen )"
-DEPEND="${COMMON_DEPEND}"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	geoip? ( dev-libs/geoip )
 	mlogc? ( dev-lang/perl )"
 PDEPEND=">=www-apache/modsecurity-crs-3.3.2"
