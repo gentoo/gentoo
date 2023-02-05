@@ -11,4 +11,7 @@
 	<use>
 		<flag name="dhcp">Allow interfaces to configure via DHCP</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">gentoo/netifrc</remote-id>
+	</upstream>
 </pkgmetadata>
