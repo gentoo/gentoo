@@ -14,14 +14,15 @@ SLOT="0"
 IUSE="+ofx"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-RDEPEND=">=dev-libs/glib-2.39
+RDEPEND=">=dev-libs/glib-2.39:2
 	>=net-libs/libsoup-2.26:2.4
 	x11-libs/cairo
-	x11-libs/gdk-pixbuf
+	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.22:3
 	x11-libs/pango
 	ofx? ( >=dev-libs/libofx-0.8.3:= )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND=">=dev-lang/perl-5.8.1
 	dev-perl/XML-Parser
 	>=dev-util/intltool-0.40.5
