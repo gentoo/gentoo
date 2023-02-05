@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: A helper eclass to generate PyPI source URIs
 # @DESCRIPTION:
 # The pypi.eclass can be used to easily obtain URLs for artifacts
@@ -27,7 +27,7 @@
 # @CODE@
 
 case ${EAPI} in
-	8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
