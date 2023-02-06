@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/890361
+--- a/src/level_game.cpp
++++ b/src/level_game.cpp
+@@ -27,6 +27,8 @@
+ 
+ #include "portability.h"
+ 
++#include <cassert>
++#include <cstddef>
+ #ifdef LINUX
+ #include <endian.h>
+ #endif // LINUX
+--- a/src/level_game.h
++++ b/src/level_game.h
+@@ -28,6 +28,7 @@
+ #ifndef __LEVEL_GAME_H__
+ #define __LEVEL_GAME_H__
+ 
++#include <cassert>
+ #include <time.h>
+ #include "stack.h"
+ 
