@@ -1,4 +1,4 @@
-# Copyright 2014-2022 Gentoo Authors
+# Copyright 2014-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,9 @@ HOMEPAGE="https://gitweb.gentoo.org/proj/gentoo-functions.git"
 
 LICENSE="GPL-2"
 SLOT="0"
+
+# Specifically needs GNU find, as well.
+RDEPEND=">=sys-apps/findutils-4.9"
 
 src_configure() {
 	tc-export CC
