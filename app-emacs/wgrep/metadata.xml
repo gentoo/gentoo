@@ -11,6 +11,7 @@
 </longdescription>
 <stabilize-allarches/>
 <upstream>
+  <bugs-to>https://github.com/mhayashi1120/Emacs-wgrep/issues/</bugs-to>
   <remote-id type="github">mhayashi1120/Emacs-wgrep</remote-id>
 </upstream>
 </pkgmetadata>
