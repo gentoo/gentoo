@@ -1,0 +1,25 @@
+--- a/Makefile	2023-02-06 18:47:21.311693323 +0300
++++ b/Makefile	2023-02-06 18:48:23.392517904 +0300
+@@ -2,6 +2,7 @@
+ PREFIX?=/usr
+ CFLAGS?=-Wall -O2
+ CC?=clang
++DESTDIR=
+ 
+ all: cpulimit
+ 
+@@ -21,10 +22,10 @@
+ 	$(MAKE) -C test
+ 
+ install: cpulimit
+-	mkdir -p ${PREFIX}/bin
+-	mkdir -p ${PREFIX}/share/man/man1
+-	cp cpulimit ${PREFIX}/bin
+-	cp cpulimit.1 ${PREFIX}/share/man/man1
++	mkdir -p ${DESTDIR}/${PREFIX}/bin
++	mkdir -p ${DESTDIR}/${PREFIX}/share/man/man1
++	cp cpulimit ${DESTDIR}/${PREFIX}/bin
++	cp cpulimit.1 ${DESTDIR}/${PREFIX}/share/man/man1
+ 
+ deinstall:
+ 	rm -f ${PREFIX}/bin/cpulimit
