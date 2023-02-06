@@ -1,0 +1,40 @@
+From 48733f4e2d9500b3bdc54563cf117c7fa07193ed Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Maciej=20Bar=C4=87?= <xgqt@gentoo.org>
+Date: Mon, 6 Feb 2023 14:34:05 +0100
+Subject: [PATCH] Minisat/utils/System.*: use fpu_control only on glibc
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Maciej Barć <xgqt@gentoo.org>
+---
+ Minisat/utils/System.cc | 2 +-
+ Minisat/utils/System.h  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Minisat/utils/System.cc b/Minisat/utils/System.cc
+index 942ddb712..2936faa5d 100644
+--- a/Minisat/utils/System.cc
++++ b/Minisat/utils/System.cc
+@@ -104,7 +104,7 @@ double Minisat::memUsedPeak(bool) {
+ 
+ void Minisat::setX86FPUPrecision()
+ {
+-#if defined(__linux__) && defined(_FPU_EXTENDED) && defined(_FPU_DOUBLE) && defined(_FPU_GETCW)
++#if defined(__GLIBC__) && defined(_FPU_EXTENDED) && defined(_FPU_DOUBLE) && defined(_FPU_GETCW)
+     // Only correct FPU precision on Linux architectures that needs and supports it:
+     fpu_control_t oldcw, newcw;
+     _FPU_GETCW(oldcw); newcw = (oldcw & ~_FPU_EXTENDED) | _FPU_DOUBLE; _FPU_SETCW(newcw);
+diff --git a/Minisat/utils/System.h b/Minisat/utils/System.h
+index ecdde991b..fd501eeec 100644
+--- a/Minisat/utils/System.h
++++ b/Minisat/utils/System.h
+@@ -26,7 +26,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
+ #ifndef Minisat_System_h
+ #define Minisat_System_h
+ 
+-#if defined(__linux__)
++#if defined(__GLIBC__)
+ #include <fpu_control.h>
+ #endif
+ 
