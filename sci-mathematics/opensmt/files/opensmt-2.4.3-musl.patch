@@ -1,0 +1,132 @@
+From e88b83b3b52ebc6ff4cdf1f92a876861fc2c5598 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Maciej=20Bar=C4=87?= <xgqt@gentoo.org>
+Date: Mon, 6 Feb 2023 17:27:34 +0100
+Subject: [PATCH] use fpu_control only on glibc
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Maciej Barć <xgqt@gentoo.org>
+---
+ bin/opensmt.C                   | 4 ++--
+ src/bin/opensmt.cc              | 2 +-
+ src/minisat/core/Main.C         | 4 ++--
+ src/minisat/simp/Main.C         | 4 ++--
+ src/minisat/utils/System.h      | 2 +-
+ src/parallel/opensmtSplitter.cc | 4 ++--
+ 6 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/bin/opensmt.C b/bin/opensmt.C
+index cb9c8943b..898a8fdd3 100644
+--- a/bin/opensmt.C
++++ b/bin/opensmt.C
+@@ -44,7 +44,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ #include <csignal>
+ #include <iostream>
+ 
+-#if defined(__linux__)
++#if defined(__GLIBC__)
+ #include <fpu_control.h>
+ #endif
+ 
+@@ -84,7 +84,7 @@ int main( int argc, char * argv[] )
+   // the repeatability of experiments that might be compromised
+   // by the floating point unit approximations on doubles
+   //
+-#if defined(__linux__) && !defined( SMTCOMP )
++#if defined(__GLIBC__) && !defined( SMTCOMP )
+   fpu_control_t oldcw, newcw;
+   _FPU_GETCW(oldcw); newcw = (oldcw & ~_FPU_EXTENDED) | _FPU_DOUBLE; _FPU_SETCW(newcw);
+ #endif
+diff --git a/src/bin/opensmt.cc b/src/bin/opensmt.cc
+index 6db12ffd8..67bfcd712 100644
+--- a/src/bin/opensmt.cc
++++ b/src/bin/opensmt.cc
+@@ -47,7 +47,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ #endif
+ #endif // ENABLE_LINE_EDITING
+ 
+-#if defined(__linux__)
++#if defined(__GLIBC__)
+ #include <fpu_control.h>
+ #endif
+ 
+diff --git a/src/minisat/core/Main.C b/src/minisat/core/Main.C
+index acef32cd5..2c232b71b 100644
+--- a/src/minisat/core/Main.C
++++ b/src/minisat/core/Main.C
+@@ -74,7 +74,7 @@ static inline uint64_t memUsed(void) {
+ static inline uint64_t memUsed() { return 0; }
+ #endif
+ 
+-#if defined(__linux__)
++#if defined(__GLIBC__)
+ #include <fpu_control.h>
+ #endif
+ 
+@@ -287,7 +287,7 @@ int main(int argc, char** argv)
+ 
+ 
+     reportf("This is MiniSat 2.0 beta\n");
+-#if defined(__linux__)
++#if defined(__GLIBC__)
+     fpu_control_t oldcw, newcw;
+     _FPU_GETCW(oldcw); newcw = (oldcw & ~_FPU_EXTENDED) | _FPU_DOUBLE; _FPU_SETCW(newcw);
+     reportf("WARNING: for repeatability, setting FPU to use double precision\n");
+diff --git a/src/minisat/simp/Main.C b/src/minisat/simp/Main.C
+index b6d194631..a3f22fb4f 100644
+--- a/src/minisat/simp/Main.C
++++ b/src/minisat/simp/Main.C
+@@ -74,7 +74,7 @@ static inline uint64_t memUsed(void) {
+ static inline uint64_t memUsed() { return 0; }
+ #endif
+ 
+-#if defined(__linux__)
++#if defined(__GLIBC__)
+ #include <fpu_control.h>
+ #endif
+ 
+@@ -244,7 +244,7 @@ const char* hasPrefix(const char* str, const char* prefix)
+ int main(int argc, char** argv)
+ {
+     reportf("This is MiniSat 2.0 beta\n");
+-#if defined(__linux__)
++#if defined(__GLIBC__)
+     fpu_control_t oldcw, newcw;
+     _FPU_GETCW(oldcw); newcw = (oldcw & ~_FPU_EXTENDED) | _FPU_DOUBLE; _FPU_SETCW(newcw);
+     reportf("WARNING: for repeatability, setting FPU to use double precision\n");
+diff --git a/src/minisat/utils/System.h b/src/minisat/utils/System.h
+index 5f9dc3f53..4b7f9c9f5 100644
+--- a/src/minisat/utils/System.h
++++ b/src/minisat/utils/System.h
+@@ -21,7 +21,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
+ #ifndef Minisat_System_h
+ #define Minisat_System_h
+ 
+-#if defined(__linux__)
++#if defined(__GLIBC__)
+ #include <fpu_control.h>
+ #endif
+ 
+diff --git a/src/parallel/opensmtSplitter.cc b/src/parallel/opensmtSplitter.cc
+index 05246e187..4b8c01a1a 100644
+--- a/src/parallel/opensmtSplitter.cc
++++ b/src/parallel/opensmtSplitter.cc
+@@ -27,7 +27,7 @@
+ #endif
+ #endif // ENABLE_LINE_EDITING
+ 
+-#if defined(__linux__)
++#if defined(__GLIBC__)
+ #include <fpu_control.h>
+ #endif
+ 
+@@ -55,7 +55,7 @@ int main( int argc, char * argv[] )
+     // the repeatability of experiments that might be compromised
+     // by the floating point unit approximations on doubles
+     //
+-#if defined(__linux__)
++#if defined(__GLIBC__)
+     fpu_control_t oldcw, newcw;
+     _FPU_GETCW(oldcw); newcw = (oldcw & ~_FPU_EXTENDED) | _FPU_DOUBLE; _FPU_SETCW(newcw);
+ #endif
