@@ -19,6 +19,9 @@ HOMEPAGE="https://gitweb.gentoo.org/proj/gentoo-functions.git"
 LICENSE="GPL-2"
 SLOT="0"
 
+# Specifically needs GNU find, as well.
+RDEPEND=">=sys-apps/findutils-4.9"
+
 src_configure() {
 	tc-export CC
 	append-lfs-flags
