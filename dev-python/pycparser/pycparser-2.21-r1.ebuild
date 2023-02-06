@@ -43,6 +43,9 @@ python_prepare_all() {
 
 	rm tests/test_examples.py || die
 
+	# bug #701878
+	MAKEOPTS+=" -j1"
+
 	distutils-r1_python_prepare_all
 }
 
