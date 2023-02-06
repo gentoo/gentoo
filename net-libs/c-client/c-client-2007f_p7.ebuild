@@ -8,20 +8,18 @@ inherit flag-o-matic libtool toolchain-funcs
 MY_PN=imap
 MY_P="${MY_PN}-${PV}"
 
-CHAPPA_PL=115
 DESCRIPTION="UW IMAP c-client library"
 HOMEPAGE="http://www.washington.edu/imap/"
 SRC_URI="
 	ftp://ftp.cac.washington.edu/imap/${MY_PN}-$(ver_cut 1-2).tar.Z
 	mirror://debian/pool/main/u/uw-${MY_PN}/uw-${MY_PN}_${PV/_p/"~dfsg-"}.debian.tar.xz
-	chappa? ( mirror://gentoo/${PN}-$(ver_cut 1-2)-chappa-${CHAPPA_PL}-all.patch.gz )
 "
 S="${WORKDIR}"/${MY_PN}-$(ver_cut 1-2)
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="doc +ipv6 kerberos pam ssl static-libs topal chappa"
+IUSE="doc +ipv6 kerberos pam ssl static-libs topal"
 
 RDEPEND="
 	ssl? (
@@ -55,11 +53,9 @@ PATCHES=(
 )
 
 src_prepare() {
-	use topal && PATCHES+=( "${FILESDIR}/${P}-topal.patch" )
+	use topal && PATCHES+=( "${FILESDIR}/${PN}-2007f-topal.patch" )
 
 	default
-
-	use chappa && eapply -p2 "${WORKDIR}/${P}-chappa-${CHAPPA_PL}-all.patch"
 
 	# Tarball packed with bad file perms
 	chmod -R u+rwX,go-w . || die "failed to fix permissions"
