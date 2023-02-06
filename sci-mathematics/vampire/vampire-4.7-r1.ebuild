@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=2d02e4655e1b08d1ca9ee7c0aade40f59f046460  # "bump to 4.7"
+[[ ${PV} == 4.7 ]] && COMMIT=2d02e4655e1b08d1ca9ee7c0aade40f59f046460  # "bump to 4.7"
 
 inherit flag-o-matic cmake
 
@@ -15,9 +15,9 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/vprover/${PN}.git"
 	EGIT_SUBMODULES=()
 else
-	SRC_URI="https://github.com/vprover/${PN}/archive/${H}.tar.gz
+	SRC_URI="https://github.com/vprover/${PN}/archive/${COMMIT}.tar.gz
 		-> ${P}.tar.gz"
-	S="${WORKDIR}"/${PN}-${H}
+	S="${WORKDIR}"/${PN}-${COMMIT}
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -35,6 +35,8 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-4.6.1-musl.patch )
 
 src_configure() {
 	# -Werror=strict-aliasing warnings, bug #863269
