@@ -8,14 +8,16 @@ PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
 
+MY_P=python-nbxmpp-${PV}
 DESCRIPTION="Python library to use Jabber/XMPP networks in a non-blocking way"
 HOMEPAGE="
 	https://dev.gajim.org/gajim/python-nbxmpp/
 	https://pypi.org/project/nbxmpp/
 "
 SRC_URI="
-	https://dev.gajim.org/gajim/python-nbxmpp/-/archive/${PV}/${P}.tar.bz2
+	https://dev.gajim.org/gajim/python-nbxmpp/-/archive/${PV}/${MY_P}.tar.bz2
 "
+S=${WORKDIR}/${MY_P}
 
 SLOT="0"
 LICENSE="GPL-3"
