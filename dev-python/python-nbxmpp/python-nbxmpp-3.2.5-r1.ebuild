@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,14 +8,16 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
+MY_P=python-nbxmpp-${PV}
 DESCRIPTION="Python library to use Jabber/XMPP networks in a non-blocking way"
 HOMEPAGE="
 	https://dev.gajim.org/gajim/python-nbxmpp/
 	https://pypi.org/project/nbxmpp/
 "
 SRC_URI="
-	https://dev.gajim.org/gajim/python-nbxmpp/-/archive/${PV}/${P}.tar.bz2
+	https://dev.gajim.org/gajim/python-nbxmpp/-/archive/${PV}/${MY_P}.tar.bz2
 "
+S=${WORKDIR}/${MY_P}
 
 SLOT="0"
 LICENSE="GPL-3"
