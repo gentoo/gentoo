@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    A language that unifies concepts to improve productivity and to use tools
+    for performance and correctness.
+  </longdescription>
+  <upstream>
+    <changelog>https://flang.dev/release_notes.txt</changelog>
+    <doc>https://flang.dev/docs/index</doc>
+    <bugs-to>https://github.com/tokiwa-software/fuzion/issues/</bugs-to>
+    <remote-id type="github">tokiwa-software/fuzion</remote-id>
+  </upstream>
+</pkgmetadata>
