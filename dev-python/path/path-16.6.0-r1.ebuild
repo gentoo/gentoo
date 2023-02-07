@@ -6,16 +6,12 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A module wrapper for os.path"
 HOMEPAGE="
 	https://github.com/jaraco/path/
 	https://pypi.org/project/path/
-"
-SRC_URI="
-	https://github.com/jaraco/path/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
 "
 
 SLOT="0"
@@ -38,5 +34,3 @@ EPYTEST_DESELECT=(
 	# unreliable, not really meaningful for end users
 	test_path.py::TestPerformance
 )
-
-export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
