@@ -31,7 +31,14 @@ src_test() {
 }
 
 src_install() {
-	rm -r "${S}"/build/tests || die
+	# Remove unnecessary files from build directory. bug #893450
+	local torm torm_path
+	for torm in tests run_tests.{failures,results} ; do
+		torm_path="${S}"/build/${torm}
+		if [[ -e "${torm_path}" ]] ; then
+			rm -r "${torm_path}" || die "failed to remove ${toremove_path}"
+		fi
+	done
 
 	insinto /usr/share/${PN}
 	doins -r build/.
