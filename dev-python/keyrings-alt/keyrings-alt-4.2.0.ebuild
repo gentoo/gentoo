@@ -6,19 +6,15 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_P="${P/-/.}"
 DESCRIPTION="Alternate keyring implementations"
 HOMEPAGE="
 	https://github.com/jaraco/keyrings.alt/
 	https://pypi.org/project/keyrings.alt/
 "
-SRC_URI="
-	https://github.com/jaraco/keyrings.alt/archive/v${PV}.tar.gz
-		-> ${MY_P}.gh.tar.gz
-"
-S=${WORKDIR}/${MY_P}
+SRC_URI="$(pypi_sdist_url "${PN/-/.}")"
+S=${WORKDIR}/${P/-/.}
 
 LICENSE="MIT"
 SLOT="0"
@@ -37,8 +33,6 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-
-export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 src_prepare() {
 	# oldschool namespaces
