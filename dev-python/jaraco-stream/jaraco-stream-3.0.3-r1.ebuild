@@ -6,16 +6,15 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_P=${P/-/.}
 DESCRIPTION="Routines for handling streaming data"
 HOMEPAGE="
 	https://github.com/jaraco/jaraco.stream/
 	https://pypi.org/project/jaraco.stream/
 "
-SRC_URI="mirror://pypi/${MY_P::1}/${PN/-/.}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
+SRC_URI="$(pypi_sdist_url "${PN/-/.}")"
+S=${WORKDIR}/${P/-/.}
 
 LICENSE="MIT"
 SLOT="0"
