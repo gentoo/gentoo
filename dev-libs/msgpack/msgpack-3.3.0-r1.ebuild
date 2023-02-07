@@ -18,7 +18,7 @@ HOMEPAGE="https://msgpack.org/ https://github.com/msgpack/msgpack-c/"
 
 LICENSE="Boost-1.0"
 SLOT="0/2"
-IUSE="boost +cxx doc examples static-libs test"
+IUSE="boost +cxx doc examples test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="doc? ( app-doc/doxygen[dot] )"
@@ -35,7 +35,6 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DMSGPACK_BOOST="$(usex boost)"
 		-DMSGPACK_ENABLE_CXX="$(usex cxx)"
-		-DMSGPACK_ENABLE_STATIC="$(usex static-libs)"
 		-DMSGPACK_BUILD_TESTS="$(usex test)"
 		# don't build the examples
 		-DMSGPACK_BUILD_EXAMPLES=OFF
