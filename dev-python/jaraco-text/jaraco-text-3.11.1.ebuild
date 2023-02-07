@@ -7,16 +7,15 @@ EAPI=7
 DISTUTILS_USE_PEP517=flit
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_P=${P/-/.}
 DESCRIPTION="Text utilities used by other projects by developer jaraco"
 HOMEPAGE="
 	https://github.com/jaraco/jaraco.text/
 	https://pypi.org/project/jaraco.text/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN/-/.}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
+SRC_URI="$(pypi_sdist_url "${PN/-/.}")"
+S=${WORKDIR}/${P/-/.}
 
 LICENSE="MIT"
 SLOT="0"
