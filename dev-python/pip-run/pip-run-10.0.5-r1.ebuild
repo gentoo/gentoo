@@ -6,16 +6,12 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Install packages and run Python with them"
 HOMEPAGE="
 	https://github.com/jaraco/pip-run/
 	https://pypi.org/project/pip-run/
-"
-SRC_URI="
-	https://github.com/jaraco/pip-run/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"
@@ -48,8 +44,6 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-
-export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 python_test() {
 	local EPYTEST_IGNORE=()
