@@ -36,7 +36,6 @@ RDEPEND="
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-vcs/git
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
@@ -54,14 +53,9 @@ distutils_enable_tests pytest
 src_prepare() {
 	# do not claim "bin" package (sic!)
 	rm bin/__init__.py || die
-	# setuptools_scm wants to read PV from git
-	git init -q || die
-	git config --global user.email "larry@gentoo.org" || die
-	git config --global user.name "Larry the Cow" || die
-	git add . || die
-	git commit -qm "init" || die
-	git tag -a "rel-${PV}" -m "rel-${PV}" || die
 	distutils-r1_src_prepare
+
+	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 }
 
 python_test() {
