@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="X archive berkdb +cli debug doc +gmp gui +ipc java minimal odbc pcre pgo qt6 ssl test yaml"
 RESTRICT="!test? ( test )"
 
