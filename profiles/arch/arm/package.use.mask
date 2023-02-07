@@ -145,15 +145,6 @@ games-strategy/0ad nvtt
 # Cinnamon is not keyworded on this architecture.
 x11-themes/arc-theme cinnamon
 
-# Sam James <sam@gentoo.org> (2020-07-11)
-# Don't drag in qtwebengine for Plasma right now
-# Not going for nuclear option of general mask
-# (or dropping keywords) because unclear if it's caused
-# by the use of a linux32 chroot.
-# See bug #713900
-kde-plasma/libksysguard webengine
-kde-plasma/kdeplasma-addons webengine
-
 # Sam James <sam@gentoo.org> (2020-06-27)
 # Tests require Valgrind, not available on <armv7a
 dev-libs/rapidjson test
