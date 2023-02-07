@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/kimwalisch/${PN}/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="BSD-2"
 SLOT="0/7"  # subslot is first component of libprimecount.so version
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="cpu_flags_x86_popcnt +executable openmp test"
 RESTRICT="!test? ( test )"
 
