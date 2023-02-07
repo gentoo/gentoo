@@ -21,7 +21,6 @@ REQUIRED_USE="?? ( log-debug log-error log-info log-trace log-warn )
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="dev-libs/libsodium:=[asm,urandom,-minimal]
-	dev-libs/msgpack
 	av? (
 		media-libs/libvpx:=
 		media-libs/opus
