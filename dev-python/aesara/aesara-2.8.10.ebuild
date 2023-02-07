@@ -55,7 +55,6 @@ src_prepare() {
 	# do not claim "bin" package (sic!)
 	rm bin/__init__.py || die
 	# setuptools_scm wants to read PV from git
-	touch setup.cfg || die
 	git init -q || die
 	git config --global user.email "larry@gentoo.org" || die
 	git config --global user.name "Larry the Cow" || die
