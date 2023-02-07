@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -11,17 +11,17 @@ HOMEPAGE="https://tmate.io/"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE="debug static-libs"
+IUSE="debug"
 
 SRC_URI="https://github.com/tmate-io/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 RDEPEND="
-	sys-libs/zlib[static-libs?]
-	sys-libs/libutempter[static-libs?]
-	dev-libs/libevent[static-libs?]
-	dev-libs/msgpack[static-libs?]
-	>=net-libs/libssh-0.6.0[static-libs?]
-	dev-libs/openssl:0=[static-libs?]
+	sys-libs/zlib
+	sys-libs/libutempter
+	dev-libs/libevent
+	dev-libs/msgpack
+	>=net-libs/libssh-0.6.0
+	dev-libs/openssl:0=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -34,6 +34,7 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(use_enable debug)
+		--disable-static
 	)
 	econf "${myeconfargs[@]}"
 }
