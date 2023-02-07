@@ -45,6 +45,8 @@ src_prepare() {
 	rm -r isort/_vendored || die
 	# leftover toml import used to determine .toml support
 	sed -i -e 's:import toml:toml = True:' tests/unit/test_isort.py || die
+	# syntax error that triggers with new poetry-core
+	sed -i -e 's:pip-shims<=0.3.4:pip-shims:' pyproject.toml || die
 
 	distutils-r1_src_prepare
 }
