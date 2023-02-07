@@ -3,6 +3,8 @@
 
 EAPI=8
 
+NEED_EMACS=25.1
+
 inherit elisp readme.gentoo-r1
 
 DESCRIPTION="Writable grep buffer and apply the changes to files"
@@ -14,6 +16,15 @@ S="${WORKDIR}"/Emacs-${P}
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+BDEPEND="
+	test? (
+		app-emacs/s
+		app-emacs/dash
+	)
+"
 
 ELISP_REMOVE="${PN}-subtest.el"
 
