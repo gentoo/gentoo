@@ -1,9 +1,9 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 MY_PV="${PV//_pre/-pre}"
 
@@ -13,13 +13,13 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 # format is 0/${CORE_SOVERSION//./}.${CPP_SOVERSION//./} , check top level CMakeLists.txt
-SLOT="0/29.151"
+SLOT="0/21.143"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="doc examples test"
 
 # look for submodule versions in third_party dir
 RDEPEND="
-	=dev-cpp/abseil-cpp-20220623.1*:=
+	=dev-cpp/abseil-cpp-20211102.0*:=
 	>=dev-libs/re2-0.2021.11.01:=
 	>=dev-libs/openssl-1.1.1:0=[-bindist(-)]
 	>=dev-libs/protobuf-3.18.1:=
@@ -58,15 +58,17 @@ src_prepare() {
 	cmake_src_prepare
 
 	# un-hardcode libdir
+	sed -i "s@lib/pkgconfig@$(get_libdir)/pkgconfig@" CMakeLists.txt || die
 	sed -i "s@/lib@/$(get_libdir)@" cmake/pkg-config-template.pc.in || die
-
-	# suppress network access, package builds fine without the submodules
-	mkdir "${S}/third_party/opencensus-proto/src" || die
 
 	soversion_check
 }
 
 src_configure() {
+	# https://github.com/grpc/grpc/issues/29652
+	# issue says 1.46.1 but apparently this is affected too
+	filter-lto
+
 	local mycmakeargs=(
 		-DgRPC_INSTALL=ON
 		-DgRPC_ABSL_PROVIDER=package
