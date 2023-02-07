@@ -33,9 +33,17 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# network
-	encutils/__init__.py::encutils
-	cssutils/tests/test_parse.py::TestCSSParser::test_parseUrl
-	examples/website.py::website.logging
-)
+python_test() {
+	local EPYTEST_DESELECT=(
+		# network
+		encutils/__init__.py::encutils
+		cssutils/tests/test_parse.py::TestCSSParser::test_parseUrl
+		examples/website.py::website.logging
+	)
+	local EPYTEST_IGNORE=(
+		# path mismatch with "parse" package
+		examples/parse.py
+	)
+
+	epytest
+}
