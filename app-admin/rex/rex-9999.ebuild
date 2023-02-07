@@ -94,7 +94,9 @@ BDEPEND="
 			dev-perl/File-LibMagic
 		)
 		virtual/perl-File-Temp
+		dev-perl/Sub-Override
 		dev-perl/Test-Deep
+		dev-perl/Test-Exception
 		dev-perl/Test-Output
 		dev-perl/Test-UseAllModules
 		virtual/perl-autodie
