@@ -6,16 +6,12 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Provides access to the system keyring service"
 HOMEPAGE="
 	https://github.com/jaraco/keyring/
 	https://pypi.org/project/keyring/
-"
-SRC_URI="
-	https://github.com/jaraco/keyring/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
 "
 
 SLOT="0"
@@ -39,8 +35,6 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
-
 EPYTEST_DESELECT=(
 	# this test fails if importlib-metadata returns more than one
 	# entry, i.e. when keyring is installed already
@@ -53,10 +47,3 @@ EPYTEST_IGNORE=(
 	# hangs
 	tests/backends/test_kwallet.py
 )
-
-python_compile() {
-	distutils-r1_python_compile
-	# https://github.com/jaraco/keyring/issues/621
-	python_moduleinto keyring
-	python_domodule keyring/{py.typed,*.zsh}
-}
