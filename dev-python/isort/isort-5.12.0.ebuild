@@ -43,8 +43,6 @@ src_prepare() {
 	# unbundle tomli
 	sed -i -e 's:from ._vendored ::' isort/settings.py || die
 	rm -r isort/_vendored || die
-	# leftover toml import used to determine .toml support
-	sed -i -e 's:import toml:toml = True:' tests/unit/test_isort.py || die
 
 	distutils-r1_src_prepare
 }
