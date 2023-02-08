@@ -13,9 +13,9 @@ HOMEPAGE="https://www.blender.org"
 if [[ ${PV} = *9999* ]] ; then
 	# Subversion is needed for downloading unit test files
 	inherit git-r3 subversion
-	EGIT_REPO_URI="https://git.blender.org/blender.git"
+	EGIT_REPO_URI="https://projects.blender.org/blender/blender.git"
 else
-	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
+	SRC_URI="https://projects.blender.org/blender/blender/archive/v${PV}.tar.gz"
 	# Update these between major releases.
 	TEST_TARBALL_VERSION="$(ver_cut 1-2).0"
 	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.xz )"
