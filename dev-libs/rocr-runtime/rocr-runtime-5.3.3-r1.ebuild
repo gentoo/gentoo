@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake llvm
+inherit cmake flag-o-matic llvm
 
 LLVM_MAX_SLOT=15
 
@@ -25,6 +25,7 @@ PATCHES=(
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
+IUSE="debug"
 
 COMMON_DEPEND="dev-libs/elfutils"
 RDEPEND="${COMMON_DEPEND}"
@@ -36,8 +37,6 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="app-editors/vim-core"
 	# vim-core is needed for "xxd"
 
-CMAKE_BUILD_TYPE=Release
-
 src_prepare() {
 	# ... otherwise system llvm/clang is used ...
 	sed -e "/find_package(Clang REQUIRED HINTS /s:\${CMAKE_INSTALL_PREFIX}/llvm \${CMAKE_PREFIX_PATH}/llvm PATHS /opt/rocm/llvm:$(get_llvm_prefix ${LLVM_MAX_SLOT}):" -i image/blit_src/CMakeLists.txt || die
@@ -46,4 +45,9 @@ src_prepare() {
 	sed -e "s:-O2:--rocm-path=${EPREFIX}/usr/lib/ -O2:" -i image/blit_src/CMakeLists.txt || die
 
 	cmake_src_prepare
+}
+
+src_configure() {
+	use debug || append-cxxflags "-DNDEBUG"
+	cmake_src_configure
 }
