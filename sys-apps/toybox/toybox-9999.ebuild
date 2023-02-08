@@ -53,7 +53,7 @@ src_compile() {
 }
 
 src_test() {
-	emake V=1 test
+	emake V=1 tests
 }
 
 src_install() {
