@@ -3,3 +3,4 @@ move dev-python/python-recurring-ical-events dev-python/recurring-ical-events
 move dev-python/snappy dev-python/python-snappy
 move dev-python/pkgcraft-python dev-python/pkgcraft
 move dev-python/python-nbxmpp dev-python/nbxmpp
+move dev-python/redis-py dev-python/redis

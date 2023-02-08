@@ -19,7 +19,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-python/filelock[${PYTHON_USEDEP}]
-	dev-python/redis-py[${PYTHON_USEDEP}]
+	dev-python/redis[${PYTHON_USEDEP}]
 "
 
 BDEPEND="test? (

@@ -41,7 +41,7 @@ BDEPEND="
 		dev-python/python-zstandard[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
-		>=dev-python/redis-py-4.2.2[${PYTHON_USEDEP}]
+		>=dev-python/redis-4.2.2[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	)
 "
@@ -85,7 +85,7 @@ pkg_postinst() {
 	optfeature "Etcd backend" dev-python/python-etcd
 	optfeature "MongoDB backend" dev-python/pymongo
 	optfeature "Pyro 4 backend" dev-python/Pyro4
-	optfeature "Redis backend" dev-python/redis-py
+	optfeature "Redis backend" dev-python/redis
 	optfeature "sqlalchemy backend" dev-python/sqlalchemy
 	optfeature "yaml backend" dev-python/pyyaml
 	optfeature "MessagePack (de)serializer for Python" dev-python/msgpack

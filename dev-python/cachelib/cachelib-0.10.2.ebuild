@@ -27,7 +27,7 @@ BDEPEND="
 		dev-db/redis
 		dev-python/pylibmc[${PYTHON_USEDEP}]
 		dev-python/pytest-xprocess[${PYTHON_USEDEP}]
-		dev-python/redis-py[${PYTHON_USEDEP}]
+		dev-python/redis[${PYTHON_USEDEP}]
 		net-misc/memcached
 		www-servers/uwsgi[python,${PYTHON_USEDEP}]
 	)

@@ -19,7 +19,7 @@ KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 BDEPEND="
 	test? (
 		dev-db/redis
-		dev-python/redis-py[${PYTHON_USEDEP}]
+		dev-python/redis[${PYTHON_USEDEP}]
 	)
 "
 

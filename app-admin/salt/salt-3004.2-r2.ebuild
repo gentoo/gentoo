@@ -62,7 +62,7 @@ RDEPEND="
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
 	portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
 	keyring? ( dev-python/keyring[${PYTHON_USEDEP}] )
-	redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )
+	redis? ( dev-python/redis[${PYTHON_USEDEP}] )
 	selinux? ( sec-policy/selinux-salt )
 	nova? (
 		>=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}]

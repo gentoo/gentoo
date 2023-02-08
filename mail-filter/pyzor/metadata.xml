@@ -16,7 +16,7 @@
     </flag>
     <flag name="redis">
       Enables the redis back-end database engine for pyzord through
-      <pkg>dev-python/redis-py</pkg>
+      <pkg>dev-python/redis</pkg>
     </flag>
   </use>
   <upstream>

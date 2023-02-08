@@ -24,7 +24,7 @@ DEPEND="
 	>=dev-python/packaging-20.4[${PYTHON_USEDEP}]
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5.7.0[${PYTHON_USEDEP}]
-	>=dev-python/redis-py-3.5.3[${PYTHON_USEDEP}]
+	>=dev-python/redis-3.5.3[${PYTHON_USEDEP}]
 	!net-analyzer/ospd[${PYTHON_USEDEP}]
 "
 RDEPEND="
