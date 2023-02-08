@@ -1,0 +1,27 @@
+--- a/qelectrotech.pro	2021-02-21 10:15:38.000000000 +0100
++++ b/qelectrotech.pro	2021-02-28 21:12:15.934876464 +0100
+@@ -5,21 +5,21 @@
+ # Chemins utilises pour la compilation et l'installation de QET
+ unix {
+         # Chemins UNIX
+-        COMPIL_PREFIX              = '/usr/local/'
+-        INSTALL_PREFIX             = '/usr/local/'
++        COMPIL_PREFIX              = '/usr/'
++        INSTALL_PREFIX             = '/usr/'
+         QET_BINARY_PATH            = 'bin/'
+         QET_COMMON_COLLECTION_PATH = 'share/qelectrotech/elements/'
+         QET_COMMON_TBT_PATH        = 'share/qelectrotech/titleblocks/'
+         QET_LANG_PATH              = 'share/qelectrotech/lang/'
+         QET_EXAMPLES_PATH          = 'share/qelectrotech/examples/'
+         QET_LICENSE_PATH           = 'doc/qelectrotech/'
+-        QET_MIME_PACKAGE_PATH      = '../share/mime/packages/'
++        QET_MIME_DESKTOP_PATH      = 'share/mimelnk/application/'
+         QET_DESKTOP_PATH           = 'share/applications/'
+         QET_ICONS_PATH             = 'share/icons/hicolor/'
+-        QET_MAN_PATH               = 'man/'
+-        QET_APPDATA_PATH           = 'share/appdata'
++        QET_MAN_PATH               = 'share/man/'
++        QET_APPDATA_PATH           = 'share/metainfo'
+ }
+ win32 {
+         # Chemins Windows
