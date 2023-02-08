@@ -25,8 +25,8 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
-	>=dev-python/redis-py-4.2[${PYTHON_USEDEP}]
-	<dev-python/redis-py-4.5[${PYTHON_USEDEP}]
+	>=dev-python/redis-4.2[${PYTHON_USEDEP}]
+	<dev-python/redis-4.5[${PYTHON_USEDEP}]
 	>=dev-python/sortedcontainers-2.4.0[${PYTHON_USEDEP}]
 "
 BDEPEND="

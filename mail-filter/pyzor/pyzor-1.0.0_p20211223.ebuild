@@ -23,12 +23,12 @@ RDEPEND="
 	pyzord? (
 		gdbm? ( $(python_gen_impl_dep 'gdbm') )
 		mysql? ( dev-python/mysqlclient[${PYTHON_USEDEP}] )
-		redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )
+		redis? ( dev-python/redis[${PYTHON_USEDEP}] )
 	)"
 DEPEND="
 	test? (
 		gdbm? ( $(python_gen_impl_dep 'gdbm') )
-		redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )
+		redis? ( dev-python/redis[${PYTHON_USEDEP}] )
 	)
 "
 

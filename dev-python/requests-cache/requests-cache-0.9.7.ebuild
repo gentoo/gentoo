@@ -62,7 +62,7 @@ python_test() {
 }
 
 pkg_postinst() {
-	optfeature "redis backend" "dev-python/redis-py"
+	optfeature "redis backend" "dev-python/redis"
 	optfeature "MongoDB backend" "dev-python/pymongo"
 
 	optfeature "JSON serialization" "dev-python/ujson"

@@ -25,7 +25,7 @@ SLOT="0"
 IUSE="examples"
 
 RDEPEND="
-	dev-python/redis-py[${PYTHON_USEDEP}]
+	dev-python/redis[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
