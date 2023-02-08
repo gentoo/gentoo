@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -319,10 +319,12 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/rust-lang/${PN}.git"
 else
-	HOME_COMMIT="a243ee2fbee6022c57d56f5aa79aefe194eabe53"
+	declare -A GIT_CRATES=(
+		[home]="https://github.com/rbtcollins/home;a243ee2fbee6022c57d56f5aa79aefe194eabe53"
+	)
 	SRC_URI="https://github.com/rust-lang/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/rbtcollins/home/archive/${HOME_COMMIT}.tar.gz -> home-${HOME_COMMIT}.tar.gz
-		$(cargo_crate_uris ${CRATES})"
+		$(cargo_crate_uris)
+	"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
@@ -350,14 +352,6 @@ src_unpack() {
 	else
 		cargo_src_unpack
 	fi
-}
-
-src_prepare() {
-	# patch git dep to use pre-fetched tarball
-	local home_path="home = { path = '"${WORKDIR}/home-${HOME_COMMIT}"' }"
-	sed -i "s@^home =.*@${home_path}@" "${S}/Cargo.toml" || die
-
-	default
 }
 
 src_configure() {
