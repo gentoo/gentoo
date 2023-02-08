@@ -1,10 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-TOOLCHAIN_PATCH_DEV="slyfox"
-PATCH_VER="2"
+TOOLCHAIN_PATCH_SUFFIX="xz"
+TOOLCHAIN_PATCH_DEV="sam"
+PATCH_VER="4"
 
 inherit toolchain
 
