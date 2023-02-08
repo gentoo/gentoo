@@ -20,3 +20,9 @@ KEYWORDS="amd64 ~x86"
 RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	sed -i '/ *python_requires/s|.*||' setup.py || die  # bug #893620
+
+	distutils-r1_src_prepare
+}
