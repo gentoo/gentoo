@@ -13,28 +13,33 @@
 if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
-# check and document RUST_DEPEND and options we need below in case conditions.
+# @ECLASS_VARIABLE: RUST_DEPEND
+# @INTERNAL
+# @DESCRIPTION:
+# Minimum rust/cargo version that should be used with this eclass.
+# Versions below that may not provide functionality we rely on.
+# This variable should not be overriden by ebuilds, just manually
+# add more recent version if package requires it.
 # https://github.com/rust-lang/cargo/blob/master/CHANGELOG.md
-RUST_DEPEND="virtual/rust"
+# 1.37 added 'cargo vendor' subcommand and net.offline config knob
+# 1.39 added --workspace
+# 1.46 added --target dir
+# 1.48 added term.progress config option
+# 1.51 added split-debuginfo profile option
+# 1.52 may need setting RUSTC_BOOTSTRAP envvar for some crates
+# 1.53 added cargo update --offline, can be used to update vulnerable crates from pre-fetched registry without editing toml
+# 1.57 added named profile support in stable
+# 1.59 stabilized strip in profiles
+readonly RUST_DEPEND=">=virtual/rust-1.59"
 
 case "${EAPI:-0}" in
 	0|1|2|3|4|5|6)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
 	7)
-		# 1.37 added 'cargo vendor' subcommand and net.offline config knob
-		RUST_DEPEND=">=virtual/rust-1.37.0"
 		;;
 
 	8)
-		# 1.39 added --workspace
-		# 1.46 added --target dir
-		# 1.48 added term.progress config option
-		# 1.51 added split-debuginfo profile option
-		# 1.52 may need setting RUSTC_BOOTSTRAP envvar for some crates
-		# 1.53 added cargo update --offline, can be used to update vulnerable crates from pre-fetched registry without editing toml
-		RUST_DEPEND=">=virtual/rust-1.53"
-
 		if [[ -z ${CRATES} && "${PV}" != *9999* ]]; then
 			eerror "undefined CRATES variable in non-live EAPI=8 ebuild"
 			die "CRATES variable not defined"
