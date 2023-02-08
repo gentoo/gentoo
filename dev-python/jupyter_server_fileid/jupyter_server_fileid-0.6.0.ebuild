@@ -23,7 +23,12 @@ KEYWORDS="~amd64"
 RDEPEND="
 	dev-python/jupyter_server[${PYTHON_USEDEP}]
 	dev-python/jupyter_events[${PYTHON_USEDEP}]
+"
 
+BDEPEND="
+	test? (
+		dev-python/pytest_jupyter[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests pytest
