@@ -26,6 +26,10 @@ BDEPEND="
 	${RDEPEND}
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.19-pygments-2.14.patch
+)
+
 python_compile_all() {
 	# Generate html docs from reStructured text sources.
 
