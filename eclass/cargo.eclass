@@ -198,7 +198,7 @@ cargo_crate_uris() {
 	done
 
 	local git_crates_type
-	git_crates_type="$(declare -p GIT_CRATES)"
+	git_crates_type="$(declare -p GIT_CRATES 2>&-)"
 	if [[ ${git_crates_type} == "declare -A "* ]]; then
 		local crate commit crate_uri crate_dir repo_ext feat_expr
 
