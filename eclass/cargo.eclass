@@ -267,9 +267,25 @@ cargo_gen_config() {
 	[net]
 	offline = true
 
+	[profile.gentoo]
+	# https://doc.rust-lang.org/cargo/reference/profiles.html#custom-profiles
+	inherits = "release"
+
+	# emulate dev profile with USE=debug
+	# https://doc.rust-lang.org/cargo/reference/profiles.html#dev
+	debug = $(usex debug true false)
+	debug-assertions = $(usex debug true false)
+	overflow-checks = $(usex debug true false)
+	strip = "none"
+	$(usex debug 'opt-level = 0' '')
+	$(usex debug 'lto = false' '')
+
 	[build]
 	jobs = $(makeopts_jobs)
 	incremental = false
+
+	[install]
+	root = "${ED}/usr"
 
 	[term]
 	verbose = true
@@ -507,7 +523,7 @@ cargo_src_compile() {
 
 	tc-export AR CC CXX PKG_CONFIG
 
-	set -- cargo build $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
+	set -- cargo build --profile gentoo ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	"${@}" || die "cargo build failed"
 }
@@ -525,13 +541,16 @@ cargo_src_install() {
 		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
 	set -- cargo install $(has --path ${@} || echo --path ./) \
-		--no-track \
-		--root "${ED}/usr" \
-		${GIT_CRATES[@]:+--frozen} \
-		$(usex debug --debug "") \
-		${ECARGO_ARGS[@]} "$@"
+		--profile gentoo --no-track \
+		 ${GIT_CRATES[@]:+--frozen} ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	"${@}" || die "cargo install failed"
+
+	# HACK: compat symlinks until old ebuilds migrate.
+	# create target/{debug,release} symlinks that some ebuilds rely on.
+	# This only affects ebuilds that pick extra generated files from target directory, that's rare.
+	ln -s gentoo "${S}"/target/debug || :
+	ln -s gentoo "${S}"/target/release || :
 
 	# it turned out to be non-standard dir, so get rid of it future EAPI
 	# and only run for EAPI=7
@@ -554,7 +573,7 @@ cargo_src_test() {
 	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
 		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
-	set -- cargo test $(usex debug "" --release) ${ECARGO_ARGS[@]} "$@"
+	set -- cargo test --profile gentoo ${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	"${@}" || die "cargo test failed"
 }
