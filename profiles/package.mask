@@ -56,11 +56,6 @@ dev-python/tavalidate
 dev-python/tavern
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-03)
-# Uses unmaintained dev-python/future.  No reverse dependencies.
-# Removal on 2023-03-05.  Bug #888283.
-dev-python/textX
-
-# Michał Górny <mgorny@gentoo.org> (2023-02-03)
 # Hacky build system that does not work via PEP517 build backend.
 # No reverse dependencies.
 # Removal on 2023-03-05.  Bug #890321.
