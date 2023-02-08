@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,6 +45,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DDOC_INSTALL_DIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
+		-DRAPIDJSON_BUILD_CXX11=OFF # latest gtest requires C++14 or later
+		-DRAPIDJSON_BUILD_CXX17=ON
 		-DRAPIDJSON_BUILD_DOC=$(usex doc)
 		-DRAPIDJSON_BUILD_EXAMPLES=$(usex examples)
 		-DRAPIDJSON_BUILD_TESTS=$(usex test)
