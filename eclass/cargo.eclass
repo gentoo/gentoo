@@ -517,15 +517,13 @@ cargo_src_install() {
 		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
 	set -- cargo install $(has --path ${@} || echo --path ./) \
+		--no-track \
 		--root "${ED}/usr" \
 		${GIT_CRATES[@]:+--frozen} \
 		$(usex debug --debug "") \
 		${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
 	"${@}" || die "cargo install failed"
-
-	rm -f "${ED}/usr/.crates.toml" || die
-	rm -f "${ED}/usr/.crates2.json" || die
 
 	# it turned out to be non-standard dir, so get rid of it future EAPI
 	# and only run for EAPI=7
