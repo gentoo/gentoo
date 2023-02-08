@@ -25,6 +25,10 @@ src_prepare() {
 	sed -i -e 's:/etc/rsnapshot.conf.default:rsnapshot.conf.default:' rsnapshot-program.pl || die
 }
 
+src_test() {
+	emake test
+}
+
 src_install() {
 	docompress -x "/usr/share/doc/${PF}/rsnapshot.conf.default"
 
