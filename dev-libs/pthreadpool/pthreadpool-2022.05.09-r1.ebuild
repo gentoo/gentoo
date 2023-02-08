@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,6 +25,14 @@ S="${WORKDIR}"/${PN}-${CommitId}
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 )
+
+src_prepare() {
+	cmake_src_prepare
+
+	# >=dev-cpp/gtest-1.13.0 requires C++14 standard or later
+	sed -i -e 's/CXX_STANDARD 11/CXX_STANDARD 14/g' \
+		CMakeLists.txt || die "sed failed"
+}
 
 src_configure() {
 	local mycmakeargs=(
