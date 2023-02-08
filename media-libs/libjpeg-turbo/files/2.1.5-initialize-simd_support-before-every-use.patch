@@ -1,4 +1,8 @@
-From d743a2c12e889f7605a56f5144ae2e3899c9dd4f Mon Sep 17 00:00:00 2001
+https://bugs.gentoo.org/893552
+https://github.com/libjpeg-turbo/libjpeg-turbo/commit/4e028ecd63aaa13c8a14937f9f1e9a272ed4b543
+https://github.com/libjpeg-turbo/libjpeg-turbo/issues/649
+
+From 4e028ecd63aaa13c8a14937f9f1e9a272ed4b543 Mon Sep 17 00:00:00 2001
 From: DRC <information@libjpeg-turbo.org>
 Date: Thu, 2 Feb 2023 08:55:37 -0600
 Subject: [PATCH] SIMD/x86: Initialize simd_support before every use
@@ -29,13 +33,6 @@ This patch has been verified to be performance-neutral to within
 W3530 and a 3.6 GHz Intel Xeon W2123.
 
 Fixes #649
----
- simd/i386/jsimd.c   | 71 ++++++++++++++++++++++++++++++++++++++++++++-
- simd/x86_64/jsimd.c | 47 +++++++++++++++++++++++++++++-
- 2 files changed, 116 insertions(+), 2 deletions(-)
-
-diff --git a/simd/i386/jsimd.c b/simd/i386/jsimd.c
-index 7bd61b62f..b429b0a53 100644
 --- a/simd/i386/jsimd.c
 +++ b/simd/i386/jsimd.c
 @@ -2,7 +2,7 @@
@@ -277,8 +274,6 @@ index 7bd61b62f..b429b0a53 100644
    if ((simd_support & JSIMD_SSE2) && IS_ALIGNED_SSE(jconst_idct_float_sse2))
      jsimd_idct_float_sse2(compptr->dct_table, coef_block, output_buf,
                            output_col);
-diff --git a/simd/x86_64/jsimd.c b/simd/x86_64/jsimd.c
-index 227e27657..3f5ee77eb 100644
 --- a/simd/x86_64/jsimd.c
 +++ b/simd/x86_64/jsimd.c
 @@ -2,7 +2,7 @@
