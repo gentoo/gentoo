@@ -280,6 +280,11 @@ cargo_gen_config() {
 	$(usex debug 'opt-level = 0' '')
 	$(usex debug 'lto = false' '')
 
+	# https://doc.rust-lang.org/rustc/codegen-options/index.html#codegen-units
+	# We use single codegen unit for most optimized code and to honor -j from MAKEOPTS.
+	# Users can override via e.g. CARGO_PROFILE_gentoo_CODEGEN_UNITS="16" in make.conf.
+	codegen-units = 1
+
 	[build]
 	jobs = $(makeopts_jobs)
 	incremental = false
