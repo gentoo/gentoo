@@ -231,7 +231,16 @@ openldap_find_versiontags() {
 		OLDVER="$(/usr/bin/ldd ${SLAPD_PATH} \
 			| awk '/libdb-/{gsub("^libdb-","",$1);gsub(".so$","",$1);print $1}')"
 		local fail=0
-		if [[ -z "${OLDVER}" ]] && [[ -z "${NEWVER}" ]]; then
+
+		if has_version "${CATEGORY}/${PN}[berkdb]" ; then
+			eerror "	OpenLDAP >= 2.6.x has dropped support for Berkeley DB."
+			eerror "	You will need to migrate per upstream's migration notes"
+			eerror "	at https://www.openldap.org/doc/admin25/appendix-upgrading.html."
+			eerror "	Your existing database will not be accessible until it is"
+			eerror "	converted to mdb!"
+			echo
+			fail=1
+		elif [[ -z "${OLDVER}" ]] && [[ -z "${NEWVER}" ]]; then
 			:
 			# Nothing wrong here.
 		elif [[ -z "${OLDVER}" ]] && [[ -n "${NEWVER}" ]]; then
@@ -287,8 +296,8 @@ openldap_upgrade_howto() {
 	eerror " 7. slapadd -l ${l}"
 	eerror " 8. chown ldap:ldap /var/lib/openldap-data/*"
 	eerror " 9. /etc/init.d/slapd start"
-	eerror "10. check that your data is intact."
-	eerror "11. set up the new replication system."
+	eerror "10. Check that your data is intact."
+	eerror "11. Set up the new replication system."
 	eerror
 	if [[ "${FORCE_UPGRADE}" != "1" ]]; then
 		die "You need to upgrade your database first"
