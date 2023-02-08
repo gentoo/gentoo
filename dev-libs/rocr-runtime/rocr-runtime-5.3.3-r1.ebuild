@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake llvm
+inherit cmake flag-o-matic llvm
 
 LLVM_MAX_SLOT=15
 
@@ -25,6 +25,7 @@ PATCHES=(
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
+IUSE="debug"
 
 COMMON_DEPEND="dev-libs/elfutils"
 RDEPEND="${COMMON_DEPEND}"
@@ -35,8 +36,6 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/lld"
 BDEPEND="app-editors/vim-core"
 	# vim-core is needed for "xxd"
-
-CMAKE_BUILD_TYPE=Release
 
 src_prepare() {
 	# ... otherwise system llvm/clang is used ...
@@ -49,6 +48,7 @@ src_prepare() {
 }
 
 src_configure() {
+	use debug || append-cxxflags "-DNDEBUG"
 	local mycmakeargs=( -DINCLUDE_PATH_COMPATIBILITY=OFF )
 	cmake_src_configure
 }
