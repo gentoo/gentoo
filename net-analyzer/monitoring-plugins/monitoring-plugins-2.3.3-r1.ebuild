@@ -58,7 +58,8 @@ RDEPEND="${DEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}/monitoring-plugins-gnutls.patch"
+	"${FILESDIR}/${PN}-gnutls.patch" #880211
+	"${FILESDIR}/${PN}-fix-check-http-segfault.patch" #893252
 )
 
 src_configure() {
