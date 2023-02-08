@@ -274,6 +274,7 @@ cargo_gen_config() {
 	[term]
 	verbose = true
 	$([[ "${NOCOLOR}" = true || "${NOCOLOR}" = yes ]] && echo "color = 'never'")
+	progress.when = "never"
 	$(_cargo_gen_git_config)
 	_EOF_
 
