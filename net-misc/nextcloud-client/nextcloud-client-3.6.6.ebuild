@@ -61,6 +61,10 @@ BDEPEND="
 	dolphin? ( kde-frameworks/extra-cmake-modules )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.6.6-no-redefine-fortify-source.patch
+)
+
 src_prepare() {
 	# Keep tests in ${T}
 	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.cpp || die
