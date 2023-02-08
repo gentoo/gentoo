@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 TOOLCHAIN_PATCH_DEV="sam"
 PATCH_GCC_VER="9.5.0"
-PATCH_VER="1"
+PATCH_VER="2"
 
 if [[ $(ver_cut 3) == 9999 ]] ; then
 	MY_PV_2=$(ver_cut 2)
