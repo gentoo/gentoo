@@ -1,0 +1,60 @@
+https://bugs.gentoo.org/722600
+--- a/Makefile
++++ b/Makefile
+@@ -2,4 +2,2 @@
+ #
+-CC = gcc
+-LD = gcc
+ # for testing. not to be used; build failures in misc/.
+@@ -7,4 +5,2 @@
+ #CFLAGS = -O2 -g
+-CFLAGS = -O2 
+-LDFLAGS = -lc
+ 
+@@ -37,9 +33,9 @@
+ xa:
+-	(cd src && LD=${LD} CC="${CC} ${CFLAGS}" ${MAKE})
++	(cd src && ${MAKE})
+ 
+ load:	
+-	(cd loader && CC="${CC} ${CFLAGS}" ${MAKE})
++	(cd loader && ${MAKE})
+ 
+ uncpk:
+-	(cd misc && CC="${CC} ${CFLAGS}" ${MAKE})
++	(cd misc && ${MAKE})
+ 
+--- a/misc/Makefile
++++ b/misc/Makefile
+@@ -4,3 +4,2 @@
+ # -Wall -ansi et al. cause compile problems.
+-CFLAGS =  -O2
+ 
+@@ -12,15 +11,15 @@
+ ../uncpk: uncpk.c
+-	${CC} ${CFLAGS} uncpk.c -o $(XCBMLIB)/uncpk
++	${CC} ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} uncpk.c -o $(XCBMLIB)/uncpk
+ 
+ ../printcbm: printcbm.c
+-	${CC} ${CFLAGS} printcbm.c -o $(XCBMLIB)/printcbm
++	${CC} ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} printcbm.c -o $(XCBMLIB)/printcbm
+ 
+ ../file65: file65.c
+-	${CC} ${CFLAGS} file65.c -o $(XCBMLIB)/file65
++	${CC} ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} file65.c -o $(XCBMLIB)/file65
+ 
+ ../ldo65: ldo65.c
+-	${CC} ${CFLAGS} ldo65.c -o $(XCBMLIB)/ldo65
++	${CC} ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} ldo65.c -o $(XCBMLIB)/ldo65
+ 
+ ../reloc65: reloc65.c
+-	${CC} ${CFLAGS} reloc65.c -o $(XCBMLIB)/reloc65
++	${CC} ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} reloc65.c -o $(XCBMLIB)/reloc65
+ 
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -10,3 +10,3 @@
+ xa: ${OBJ}
+-	${LD} -o ../xa ${OBJ} ${LDFLAGS}
++	${CC} ${LDFLAGS} -o ../xa ${OBJ}
+ 
