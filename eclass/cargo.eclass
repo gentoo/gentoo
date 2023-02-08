@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cargo.eclass
@@ -77,7 +77,6 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 
 # @ECLASS_VARIABLE: GIT_CRATES
 # @DEFAULT_UNSET
-# @PRE_INHERIT
 # @DESCRIPTION:
 # bash associative array containing all crates that a package wants
 # to be fetch by git.
