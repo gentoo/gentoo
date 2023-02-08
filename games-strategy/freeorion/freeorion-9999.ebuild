@@ -96,7 +96,7 @@ src_test() {
 
 	local EPYTEST_DESELECT=(
 		# broken with 3.11 but is not known to cause issues, just skip for now
-		default/python/tests/AI/save_game_codec/test_savegame_manager.py::test_setstate_call
+		tests/AI/save_game_codec/test_savegame_manager.py::test_setstate_call
 	)
 
 	epytest -o cache_dir="${T}"/pytest_cache default/python/tests
