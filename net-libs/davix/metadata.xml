@@ -8,4 +8,7 @@
   <use>
     <flag name="tools">Install additional tools</flag>
   </use>
+  <upstream>
+    <remote-id type="github">cern-fts/davix</remote-id>
+  </upstream>
 </pkgmetadata>
