@@ -59,8 +59,15 @@ fi
 
 IUSE="${IUSE} debug"
 
-ECARGO_HOME="${WORKDIR}/cargo_home"
-ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
+# @ECLASS_VARIABLE: ECARGO_HOME
+# @DESCRIPTION:
+# Directory for CARGO_HOME used by build process.
+readonly ECARGO_HOME="${WORKDIR}/cargo_home"
+
+# @ECLASS_VARIABLE: ECARGO_VENDOR
+# @DESCRIPTION:
+# Directory for 'cargo vendor' subcommand output.
+readonly ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 
 # @ECLASS_VARIABLE: CRATES
 # @DEFAULT_UNSET
