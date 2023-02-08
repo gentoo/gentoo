@@ -1,0 +1,18 @@
+https://github.com/landley/toybox/commit/c5e7495fe46d4b2b2c225f222efc6b9070de2c3a
+
+From c5e7495fe46d4b2b2c225f222efc6b9070de2c3a Mon Sep 17 00:00:00 2001
+From: Rob Landley <rob@landley.net>
+Date: Fri, 13 Jan 2023 11:50:58 -0600
+Subject: [PATCH] Ensure make wrapper sees success return code in verbose mode
+ (V=1)
+
+--- a/scripts/make.sh
++++ b/scripts/make.sh
+@@ -303,4 +303,5 @@ fi
+ # multiplexer binary via truncate-and-write through a symlink.
+ do_loudly chmod 555 "$OUTNAME" || exit 1
+ 
+-[ -z "$V" ] && echo >&2
++# Ensure make wrapper sees success return code
++[ -z "$V" ] && echo >&2 || true
+
