@@ -1,0 +1,672 @@
+https://bugs.gentoo.org/892213
+https://sourceforge.net/p/docutils/patches/201/
+--- a/test/test_parsers/test_rst/test_directives/test_code.py
++++ b/test/test_parsers/test_rst/test_directives/test_code.py
+@@ -10,14 +10,20 @@ Test the 'code' directive in parsers/rst
+ 
+ if __name__ == '__main__':
+     import __init__  # noqa: F401
++from packaging.version import Version
+ from test_parsers import DocutilsTestSupport
+-from docutils.utils.code_analyzer import with_pygments
++from docutils.utils.code_analyzer import with_pygments, pygments_version
+ 
+ 
+ def suite():
+     s = DocutilsTestSupport.ParserTestSuite()
+     if not with_pygments:
+         del(totest['code-parsing'])
++        del(totest['code-parsing-2-14'])
++    elif pygments_version >= Version('2.14.0'):
++        del(totest['code-parsing'])
++    else:
++        del(totest['code-parsing-2-14'])
+     s.generateTests(totest)
+     return s
+ 
+@@ -170,6 +176,165 @@ totest['code-parsing'] = [
+             \n\
+         <inline classes="name builtin">
+             print
++        <inline classes="punctuation">
++            (
++        <inline classes="literal number integer">
++            8
++        <inline classes="operator">
++            /
++        <inline classes="literal number integer">
++            2
++        <inline classes="punctuation">
++            )
++"""],
++["""\
++.. code:: latex
++  :class: testclass
++
++  hello \\emph{world} % emphasize
++""",
++"""\
++<document source="test data">
++    <literal_block classes="code latex testclass" xml:space="preserve">
++        hello \n\
++        <inline classes="keyword">
++            \\emph
++        <inline classes="name builtin">
++            {
++        world
++        <inline classes="name builtin">
++            }
++         \n\
++        <inline classes="comment">
++            % emphasize"""],
++["""\
++.. code:: rst
++  :number-lines:
++
++  This is a code block with text.
++""",
++"""\
++<document source="test data">
++    <literal_block classes="code rst" xml:space="preserve">
++        <inline classes="ln">
++            1 \n\
++        This is a code block with text.
++"""],
++["""\
++Code not parsed but warning silenced in ParserTestCase.
++
++.. code:: s-lang
++
++   % abc.sl
++   autoload("abc_mode", "abc");
++""",
++"""\
++<document source="test data">
++    <paragraph>
++        Code not parsed but warning silenced in ParserTestCase.
++    <literal_block classes="code s-lang" xml:space="preserve">
++        % abc.sl
++        autoload("abc_mode", "abc");
++"""],
++["""\
++Place the language name in a class argument to avoid the no-lexer warning:
++
++.. code::
++   :class: s-lang
++
++   % abc.sl
++   autoload("abc_mode", "abc");
++""",
++"""\
++<document source="test data">
++    <paragraph>
++        Place the language name in a class argument to avoid the no-lexer warning:
++    <literal_block classes="code s-lang" xml:space="preserve">
++        % abc.sl
++        autoload("abc_mode", "abc");
++"""],
++]
++
++totest['code-parsing-2-14'] = [
++["""\
++.. code:: python3
++  :class: testclass
++
++   print('hello world') # to stdout
++""",
++"""\
++<document source="test data">
++    <literal_block classes="code python3 testclass" xml:space="preserve">
++         \n\
++        <inline classes="name builtin">
++            print
++        <inline classes="punctuation">
++            (
++        <inline classes="literal string single">
++            'hello world'
++        <inline classes="punctuation">
++            )
++         \n\
++        <inline classes="comment single">
++            # to stdout
++"""],
++["""\
++.. code:: python3
++  :class: testclass
++  :name: my_function
++  :number-lines: 7
++
++  def my_function():
++      '''Test the lexer.
++      '''
++
++      # and now for something completely different
++      print(8/2)
++""",
++"""\
++<document source="test data">
++    <literal_block classes="code python3 testclass" ids="my-function" names="my_function" xml:space="preserve">
++        <inline classes="ln">
++             7 \n\
++        <inline classes="keyword">
++            def
++         \n\
++        <inline classes="name function">
++            my_function
++        <inline classes="punctuation">
++            ():
++        <inline classes="whitespace">
++            \n\
++        <inline classes="ln">
++             8 \n\
++        <inline classes="whitespace">
++                \n\
++        <inline classes="literal string doc">
++            \'\'\'Test the lexer.
++        <inline classes="ln">
++             9 \n\
++        <inline classes="literal string doc">
++                \'\'\'
++        <inline classes="whitespace">
++            \n\
++        <inline classes="ln">
++            10 \n\
++        <inline classes="whitespace">
++            \n\
++        <inline classes="ln">
++            11 \n\
++        <inline classes="whitespace">
++            \n\
++        <inline classes="comment single">
++            # and now for something completely different
++        <inline classes="whitespace">
++            \n\
++        <inline classes="ln">
++            12 \n\
++        <inline classes="whitespace">
++            \n\
++        <inline classes="name builtin">
++            print
+         <inline classes="punctuation">
+             (
+         <inline classes="literal number integer">
+--- a/test/test_parsers/test_rst/test_directives/test_code_long.py
++++ b/test/test_parsers/test_rst/test_directives/test_code_long.py
+@@ -10,15 +10,22 @@ Test the 'code' directive in body.py wit
+ 
+ if __name__ == '__main__':
+     import __init__  # noqa: F401
++from packaging.version import Version
+ from test_parsers import DocutilsTestSupport
+-from docutils.utils.code_analyzer import with_pygments
++from docutils.utils.code_analyzer import with_pygments, pygments_version
+ 
+ 
+ def suite():
+     settings = {'syntax_highlight': 'long'}
+     s = DocutilsTestSupport.ParserTestSuite(suite_settings=settings)
+     if with_pygments:
++        if pygments_version >= Version('2.14.0'):
++            del(totest['code-parsing-long'])
++        else:
++            del(totest['code-parsing-long-2-14'])
++
+         s.generateTests(totest)
++
+     return s
+ 
+ 
+@@ -73,6 +80,94 @@ totest['code-parsing-long'] = [
+             \n\
+         <inline classes="name builtin">
+             print
++        <inline classes="punctuation">
++            (
++        <inline classes="literal number integer">
++            8
++        <inline classes="operator">
++            /
++        <inline classes="literal number integer">
++            2
++        <inline classes="punctuation">
++            )
++"""],
++["""\
++.. code:: latex
++
++  hello \\emph{world} % emphasize
++""",
++"""\
++<document source="test data">
++    <literal_block classes="code latex" xml:space="preserve">
++        hello \n\
++        <inline classes="keyword">
++            \\emph
++        <inline classes="name builtin">
++            {
++        world
++        <inline classes="name builtin">
++            }
++         \n\
++        <inline classes="comment">
++            % emphasize"""],
++]
++
++totest['code-parsing-long-2-14'] = [
++["""\
++.. code:: python3
++  :number-lines: 7
++
++  def my_function():
++      '''Test the lexer.
++      '''
++
++      # and now for something completely different
++      print(8/2)
++""",
++"""\
++<document source="test data">
++    <literal_block classes="code python3" xml:space="preserve">
++        <inline classes="ln">
++             7 \n\
++        <inline classes="keyword">
++            def
++         \n\
++        <inline classes="name function">
++            my_function
++        <inline classes="punctuation">
++            ():
++        <inline classes="whitespace">
++            \n\
++        <inline classes="ln">
++             8 \n\
++        <inline classes="whitespace">
++                \n\
++        <inline classes="literal string doc">
++            \'\'\'Test the lexer.
++        <inline classes="ln">
++             9 \n\
++        <inline classes="literal string doc">
++                \'\'\'
++        <inline classes="whitespace">
++            \n\
++        <inline classes="ln">
++            10 \n\
++        <inline classes="whitespace">
++            \n\
++        <inline classes="ln">
++            11 \n\
++        <inline classes="whitespace">
++            \n\
++        <inline classes="comment single">
++            # and now for something completely different
++        <inline classes="whitespace">
++            \n\
++        <inline classes="ln">
++            12 \n\
++        <inline classes="whitespace">
++            \n\
++        <inline classes="name builtin">
++            print
+         <inline classes="punctuation">
+             (
+         <inline classes="literal number integer">
+--- a/test/test_parsers/test_rst/test_directives/test_include.py
++++ b/test/test_parsers/test_rst/test_directives/test_include.py
+@@ -10,9 +10,10 @@ Tests for misc.py "include" directive.
+ import os.path
+ if __name__ == '__main__':
+     import __init__  # noqa: F401
++from packaging.version import Version
+ from test_parsers import DocutilsTestSupport
+ from docutils import parsers
+-from docutils.utils.code_analyzer import with_pygments
++from docutils.utils.code_analyzer import with_pygments, pygments_version
+ 
+ # optional 3rd-party markdown parser
+ md_parser_name = 'recommonmark'
+@@ -27,6 +28,11 @@ def suite():
+     # eventually skip optional parts:
+     if not with_pygments:
+         del(totest['include-code'])
++        del(totest['include-code-2-14'])
++    elif pygments_version >= Version('2.14.0'):
++        del(totest['include-code'])
++    else:
++        del(totest['include-code-2-14'])
+     if not md_parser_class:
+         del(totest['include-markdown'])
+     s.generateTests(totest)
+@@ -1191,6 +1197,313 @@ Including includes/include14.txt
+         <inline classes="punctuation">
+             ..
+          \n\
++        <inline classes="operator word">
++            include
++        <inline classes="punctuation">
++            ::
++         ../sibling/include7.txt
++""" % reldir(include6)],
++["""\
++Circular inclusion
++
++.. include:: %s
++""" % include15,
++"""\
++<document source="test data">
++    <paragraph>
++        Circular inclusion
++    <paragraph>
++        File "include15.txt": example of rekursive inclusion.
++    <paragraph>
++        File "include16.txt": example of rekursive inclusion.
++    <system_message level="2" line="3" source="%s" type="WARNING">
++        <paragraph>
++            circular inclusion in "include" directive:
++            %s
++            > %s
++            > %s
++            > test data
++        <literal_block xml:space="preserve">
++            .. include:: include15.txt
++    <paragraph>
++        No loop when clipping before the "include" directive:
++    <paragraph>
++        File "include15.txt": example of rekursive inclusion.
++""" % (reldir(include16), reldir(include15),
++       reldir(include16), reldir(include15))],
++["""\
++Circular inclusion with clipping.
++
++.. include:: %s
++   :start-line: 2
++""" % include16,
++"""\
++<document source="test data">
++    <paragraph>
++        Circular inclusion with clipping.
++    <paragraph>
++        File "include15.txt": example of rekursive inclusion.
++    <paragraph>
++        File "include16.txt": example of rekursive inclusion.
++    <system_message level="2" line="3" source="%s" type="WARNING">
++        <paragraph>
++            circular inclusion in "include" directive:
++            %s
++            > %s
++            > %s
++            > %s
++            > test data
++        <literal_block xml:space="preserve">
++            .. include:: include15.txt
++    <paragraph>
++        No loop when clipping before the "include" directive:
++    <paragraph>
++        File "include15.txt": example of rekursive inclusion.
++    <paragraph>
++        No loop when clipping before the "include" directive:
++    <paragraph>
++        File "include15.txt": example of rekursive inclusion.
++""" % (reldir(include16), reldir(include15), reldir(include16),
++       reldir(include15), reldir(include16))],
++["""\
++Circular inclusion with specified parser.
++
++.. include:: %s
++   :parser: rst
++""" % include15,
++"""\
++<document source="test data">
++    <paragraph>
++        Circular inclusion with specified parser.
++    <paragraph>
++        File "include15.txt": example of rekursive inclusion.
++    <paragraph>
++        File "include16.txt": example of rekursive inclusion.
++    <system_message level="2" line="3" source="%s" type="WARNING">
++        <paragraph>
++            circular inclusion in "include" directive:
++            %s
++            > %s
++            > %s
++            > test data
++        <literal_block xml:space="preserve">
++            .. include:: include15.txt
++    <paragraph>
++        No loop when clipping before the "include" directive:
++    <paragraph>
++        File "include15.txt": example of rekursive inclusion.
++""" % (reldir(include16), reldir(include15),
++       reldir(include16), reldir(include15))],
++["""\
++No circular inclusion.
++
++============================= =============================
++.. include:: data/include.txt .. include:: data/include.txt
++============================= =============================
++""",
++"""\
++<document source="test data">
++    <paragraph>
++        No circular inclusion.
++    <table>
++        <tgroup cols="2">
++            <colspec colwidth="29">
++            <colspec colwidth="29">
++            <tbody>
++                <row>
++                    <entry>
++                        <paragraph>
++                            Some include text.
++                    <entry>
++                        <paragraph>
++                            Some include text."""],
++]
++
++totest['include-code-2-14'] = [
++["""\
++Included code
++
++.. include:: %s
++   :code: rst
++""" % include1,
++"""\
++<document source="test data">
++    <paragraph>
++        Included code
++    <literal_block classes="code rst" source="%s" xml:space="preserve">
++        <inline classes="generic heading">
++            Inclusion 1
++        \n\
++        <inline classes="generic heading">
++            -----------
++        \n\
++        <inline classes="whitespace">
++            \n\
++        This file is used by \n\
++        <inline classes="literal string">
++            ``test_include.py``
++        .
++""" % reldir(include1)],
++["""\
++Included code
++
++.. include:: %s
++   :code: rst
++   :number-lines:
++""" % include1,
++"""\
++<document source="test data">
++    <paragraph>
++        Included code
++    <literal_block classes="code rst" source="%s" xml:space="preserve">
++        <inline classes="ln">
++            1 \n\
++        <inline classes="generic heading">
++            Inclusion 1
++        \n\
++        <inline classes="ln">
++            2 \n\
++        <inline classes="generic heading">
++            -----------
++        \n\
++        <inline classes="ln">
++            3 \n\
++        <inline classes="whitespace">
++            \n\
++        <inline classes="ln">
++            4 \n\
++        <inline classes="whitespace">
++        This file is used by \n\
++        <inline classes="literal string">
++            ``test_include.py``
++        .
++""" % reldir(include1)],
++["""\
++TAB expansion with included code:
++
++.. include:: %s
++   :code: rst
++""" % include_literal,
++"""\
++<document source="test data">
++    <paragraph>
++        TAB expansion with included code:
++    <literal_block classes="code rst" source="%s" xml:space="preserve">
++        Literal included this should \n\
++        <inline classes="generic strong">
++            **not**
++         be \n\
++        <inline classes="generic emph">
++            *marked*
++         \n\
++        <inline classes="name variable">
++            `up`
++        .
++        <inline classes="whitespace">
++            \n\
++                <- leading raw tab.
++        <inline classes="whitespace">
++            \n\
++            \n\
++        Newlines
++        <inline classes="whitespace">
++            \n\
++        are
++        <inline classes="whitespace">
++            \n\
++        normalized.
++""" % include_literal],
++["""\
++Custom TAB expansion with included code:
++
++.. include:: %s
++   :code: rst
++   :tab-width: 2
++""" % include_literal,
++"""\
++<document source="test data">
++    <paragraph>
++        Custom TAB expansion with included code:
++    <literal_block classes="code rst" source="%s" xml:space="preserve">
++        Literal included this should \n\
++        <inline classes="generic strong">
++            **not**
++         be \n\
++        <inline classes="generic emph">
++            *marked*
++         \n\
++        <inline classes="name variable">
++            `up`
++        .
++        <inline classes="whitespace">
++            \n\
++          <- leading raw tab.
++        <inline classes="whitespace">
++            \n\
++            \n\
++        Newlines
++        <inline classes="whitespace">
++            \n\
++        are
++        <inline classes="whitespace">
++            \n\
++        normalized.
++""" % include_literal],
++["""\
++Custom TAB expansion with included code:
++
++.. include:: %s
++   :code: rst
++   :tab-width: -1
++""" % include_literal,
++"""\
++<document source="test data">
++    <paragraph>
++        Custom TAB expansion with included code:
++    <literal_block classes="code rst" source="%s" xml:space="preserve">
++        Literal included this should \n\
++        <inline classes="generic strong">
++            **not**
++         be \n\
++        <inline classes="generic emph">
++            *marked*
++         \n\
++        <inline classes="name variable">
++            `up`
++        .
++        <inline classes="whitespace">
++            \n\
++        \t<- leading raw tab.
++        <inline classes="whitespace">
++            \n\
++            \n\
++        Newlines
++        <inline classes="whitespace">
++            \n\
++        are
++        <inline classes="whitespace">
++            \n\
++        normalized.
++""" % include_literal],
++["""\
++Including includes/include14.txt
++
++.. include:: %s
++""" % include14,
++"""\
++<document source="test data">
++    <paragraph>
++        Including includes/include14.txt
++    <paragraph>
++        Including more/include6.txt as rst-code from includes/include14.txt:
++    <literal_block classes="code rst" source="%s" xml:space="preserve">
++        In includes/more/include6.txt
++        <inline classes="whitespace">
++            \n\
++            \n\
++        <inline classes="punctuation">
++            ..
++         \n\
+         <inline classes="operator word">
+             include
+         <inline classes="punctuation">
+--- a/docutils/utils/code_analyzer.py
++++ b/docutils/utils/code_analyzer.py
+@@ -9,11 +9,14 @@
+ from docutils import ApplicationError
+ try:
+     import pygments
++    from packaging.version import Version
+     from pygments.lexers import get_lexer_by_name
+     from pygments.formatters.html import _get_ttype_class
+     with_pygments = True
++    pygments_version = Version(pygments.__version__)
+ except ImportError:
+     with_pygments = False
++    pygments_version = '0'
+ 
+ # Filter the following token types from the list of class arguments:
+ unstyled_tokens = ['token',  # Token (base token type)
+
+
