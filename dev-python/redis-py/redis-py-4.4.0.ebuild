@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
 inherit distutils-r1
 
+MY_P=redis-py-${PV}
 DESCRIPTION="Python client for Redis key-value store"
 HOMEPAGE="
 	https://github.com/redis/redis-py/
@@ -15,8 +16,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/redis/redis-py/archive/v${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
