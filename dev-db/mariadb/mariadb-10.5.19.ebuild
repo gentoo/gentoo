@@ -108,6 +108,10 @@ RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb:10.6
 	!dev-db/mariadb:10.7
 	!dev-db/mariadb:10.8
+	!dev-db/mariadb:10.9
+	!dev-db/mariadb:10.10
+	!dev-db/mariadb:10.11
+	!dev-db/mariadb:11.0
 	!<virtual/mysql-5.6-r11
 	!<virtual/libmysqlclient-18-r1
 	selinux? ( sec-policy/selinux-mysql )
