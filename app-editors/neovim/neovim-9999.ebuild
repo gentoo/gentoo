@@ -21,7 +21,7 @@ fi
 
 LICENSE="Apache-2.0 vim"
 SLOT="0"
-IUSE="+lto +nvimpager test +tui"
+IUSE="+lto +nvimpager test"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 # Upstream say the test library needs LuaJIT
@@ -53,10 +53,8 @@ DEPEND="${LUA_DEPS}
 	>=dev-libs/libvterm-0.3
 	>=dev-libs/msgpack-3.0.0:=
 	>=dev-libs/tree-sitter-0.20.2:=
-	tui? (
-		>=dev-libs/libtermkey-0.22
-		>=dev-libs/unibilium-2.0.0:0=
-	)
+	>=dev-libs/libtermkey-0.22
+	>=dev-libs/unibilium-2.0.0:0=
 "
 RDEPEND="
 	${DEPEND}
@@ -98,7 +96,6 @@ src_configure() {
 	# TODO: Investigate USE_BUNDLED, doesn't seem to be needed right now
 	local mycmakeargs=(
 		-DENABLE_LTO=$(usex lto)
-		-DFEAT_TUI=$(usex tui)
 		-DPREFER_LUA=$(usex lua_single_target_luajit no "$(lua_get_version)")
 		-DLUA_PRG="${ELUA}"
 		-DMIN_LOG_LEVEL=3
