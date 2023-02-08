@@ -5,5 +5,5 @@
 # libsanitizer needs porting to arm on musl:
 # - https://archives.gentoo.org/gentoo-releng-autobuilds/message/c59c5775309deef44162d1337e6fb650
 # - https://archives.gentoo.org/gentoo-releng-autobuilds/message/e94e893c954fa50b84b84086a40c359f
-# - https://bugs.gentoo.org/892079#c10 (bug otherwise unrelated)
+# - bug #893654
 sys-devel/gcc sanitize
