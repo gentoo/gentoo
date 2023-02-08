@@ -116,7 +116,7 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
-	local -x GOFLAGS="-buildmode=pie -v -x"
+	local -x GOFLAGS="-buildmode=pie -p=$(makeopts_jobs) -v -x"
 	local -x PKGCONFIG_EXE=$(tc-getPKG_CONFIG)
 
 	local conf=(
