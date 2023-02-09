@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
@@ -154,11 +154,13 @@ mate-base/mate help
 # Sanitizers partially supported on this architecture.
 #
 # ASan: https://reviews.llvm.org/D129418 (LLVM 15 and above)
+# Scudo: https://reviews.llvm.org/D138350 (LLVM 16 since 20221122)
 # TSan: https://reviews.llvm.org/D139292 (LLVM 16 since 20221208)
 # UBSan: https://reviews.llvm.org/D139292 (LLVM 16 since 20221208)
 # SafeStack: https://reviews.llvm.org/D139494 (LLVM 16 since 20221210)
+# LSan: https://reviews.llvm.org/D139686 (LLVM 16 since 20230114)
 >=sys-libs/compiler-rt-sanitizers-15 -asan
->=sys-libs/compiler-rt-sanitizers-16.0.0_pre20221210 -safestack -tsan -ubsan
+>=sys-libs/compiler-rt-sanitizers-16.0.0_rc1 -lsan -safestack -scudo -tsan -ubsan
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
 # virtual/{jdk,jre} is not available on loong yet.
