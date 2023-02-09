@@ -1,9 +1,9 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cargo desktop flag-o-matic git-r3 xdg
+inherit cargo desktop flag-o-matic git-r3 virtualx xdg
 
 DESCRIPTION="Flash Player emulator written in Rust"
 HOMEPAGE="https://ruffle.rs/"
@@ -31,7 +31,11 @@ DEPEND="
 BDEPEND="
 	virtual/jre:*
 	virtual/pkgconfig
-	>=virtual/rust-1.64"
+	>=virtual/rust-1.64
+	test? (
+		media-libs/mesa[llvm]
+		x11-base/xorg-server[-minimal]
+	)"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}.*"
 
@@ -44,6 +48,10 @@ src_compile() {
 	filter-lto # does not play well with C code in crates
 
 	cargo_src_compile --bins # note: configure --bins would skip tests
+}
+
+src_test() {
+	virtx cargo_src_test
 }
 
 src_install() {
