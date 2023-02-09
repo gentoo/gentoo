@@ -6,4 +6,4 @@
 # - https://archives.gentoo.org/gentoo-releng-autobuilds/message/c59c5775309deef44162d1337e6fb650
 # - https://archives.gentoo.org/gentoo-releng-autobuilds/message/e94e893c954fa50b84b84086a40c359f
 # - bug #893654
-sys-devel/gcc sanitize
+<sys-devel/gcc-13 sanitize
