@@ -1,0 +1,32 @@
+https://forums.gentoo.org/viewtopic-t-1160959.html
+https://github.com/util-linux/util-linux/issues/1703
+https://github.com/util-linux/util-linux/commit/28b391ce7e58f8327c092b3911c05f526d0ad586
+
+From 28b391ce7e58f8327c092b3911c05f526d0ad586 Mon Sep 17 00:00:00 2001
+From: Karel Zak <kzak@redhat.com>
+Date: Wed, 15 Jun 2022 10:03:44 +0200
+Subject: [PATCH] more: restore exit-on-eof if POSIXLY_CORRECT is not set
+
+In version 2.38, exit-on-eof has been disabled by default. This change
+is annoying for users and forces many users to use 'alias more="more
+-e"'. It seems better to force POSIX lovers to use POSIXLY_CORRECT
+env. variable and stay backwardly compatible by default.
+
+Addresses: https://github.com/util-linux/util-linux/issues/1703
+Addresses: https://bugzilla.redhat.com/show_bug.cgi?id=2088493
+Signed-off-by: Karel Zak <kzak@redhat.com>
+--- a/text-utils/more.c
++++ b/text-utils/more.c
+@@ -2052,8 +2052,11 @@ int main(int argc, char **argv)
+ 	if (!(strcmp(program_invocation_short_name, "page")))
+ 		ctl.no_scroll++;
+ 
++	ctl.exit_on_eof = getenv("POSIXLY_CORRECT") ? 0 : 1;
++
+ 	if ((s = getenv("MORE")) != NULL)
+ 		env_argscan(&ctl, s);
++
+ 	argscan(&ctl, argc, argv);
+ 
+ 	/* clear any inherited settings */
+
