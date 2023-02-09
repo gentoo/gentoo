@@ -47,7 +47,7 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt5? ( root7 )
 	root7? ( || ( c++17 ) )
-	tmva? ( gsl )
+	tmva? ( gsl python )
 	uring? ( root7 )
 "
 
