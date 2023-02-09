@@ -254,7 +254,7 @@ _distutils_set_globals() {
 				bdep+='
 					|| (
 						>=dev-python/setuptools-67.2.0[${PYTHON_USEDEP}]
-						<dev-python/setuptools-65.6.4[${PYTHON_USEDEP}]
+						<dev-python/setuptools-65.7.1[${PYTHON_USEDEP}]
 					)
 					>=dev-python/wheel-0.38.4[${PYTHON_USEDEP}]
 				'
