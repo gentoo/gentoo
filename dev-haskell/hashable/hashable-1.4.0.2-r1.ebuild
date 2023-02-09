@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,7 @@ SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+IUSE="random-initial-seed"
 
 RDEPEND=">=dev-haskell/base-orphans-0.8.6:=[profile?]
 	>=dev-lang/ghc-8.4.3:=
@@ -34,5 +35,5 @@ DEPEND="${RDEPEND}
 src_configure() {
 	haskell-cabal_src_configure \
 		--flag=integer-gmp \
-		--flag=random-initial-seed
+		$(cabal_flag random-initial-seed random-initial-seed)
 }
