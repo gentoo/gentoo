@@ -643,7 +643,7 @@ multilib_src_install() {
 		# use our config
 		rm "${ED}"/etc/openldap/slapd.conf
 		insinto /etc/openldap
-		newins "${FILESDIR}"/${PN}-2.4.40-slapd-conf slapd.conf
+		newins "${FILESDIR}"/${PN}-2.6.3-slapd-conf slapd.conf
 		configfile="${ED}"/etc/openldap/slapd.conf
 
 		# populate with built backends
