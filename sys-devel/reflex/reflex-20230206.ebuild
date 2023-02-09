@@ -17,6 +17,11 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-thomasdickey )"
 
+src_compile() {
+	# bug #883611
+	emake -j1
+}
+
 src_install() {
 	default
 
