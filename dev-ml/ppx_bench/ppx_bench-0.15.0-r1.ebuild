@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,5 +14,10 @@ SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt"
 
-DEPEND="dev-ml/ppx_inline_test:${SLOT}"
+DEPEND="
+	dev-ml/ppx_inline_test:${SLOT}
+	>=dev-ml/ppxlib-0.23.0:=
+"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-ppxlib0.29.0.patch )

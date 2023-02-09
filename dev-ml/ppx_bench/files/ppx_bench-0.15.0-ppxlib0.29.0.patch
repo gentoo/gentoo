@@ -1,0 +1,23 @@
+From ce7bcca13aff40dd667e231fc0892c8753d0fc94 Mon Sep 17 00:00:00 2001
+From: Carl Eastlund <ceastlund@janestreet.com>
+Date: Thu, 19 Jan 2023 12:20:01 -0500
+Subject: [PATCH] Stop using [Ppxlib.File_path].
+
+Signed-off-by: Carl Eastlund <ceastlund@janestreet.com>
+---
+ src/ppx_bench.ml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ppx_bench.ml b/src/ppx_bench.ml
+index 0c027e8..b825997 100644
+--- a/src/ppx_bench.ml
++++ b/src/ppx_bench.ml
+@@ -49,7 +49,7 @@ let maybe_drop loc code =
+ ;;
+ 
+ let descr (loc : Location.t) ?(inner_loc = loc) () =
+-  let filename = File_path.get_default_path loc in
++  let filename = loc.loc_start.pos_fname in
+   let line = loc.loc_start.pos_lnum in
+   let start_pos = loc.loc_start.pos_cnum - loc.loc_start.pos_bol in
+   let end_pos = inner_loc.Location.loc_end.pos_cnum - loc.loc_start.pos_bol in
