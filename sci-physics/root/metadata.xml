@@ -21,7 +21,6 @@
   </longdescription>
   <use>
     <flag name="asimage">Enable support for <pkg>media-libs/libafterimage</pkg></flag>
-    <flag name="c++11">Build using the C++11 standard</flag>
     <flag name="c++14">Build using the C++14 standard</flag>
     <flag name="c++17">Build using the C++17 standard</flag>
     <flag name="cuda">Enable support for nVidia CUDA</flag>
@@ -31,6 +30,7 @@
     <flag name="fortran">Compile included Fortran programs</flag>
     <flag name="gdml">Enable GDML writer and reader</flag>
     <flag name="http">Enable http server support including but not limited to fastcgi support</flag>
+    <flag name="jupyter">Install dependencies to enable ROOT's C++ kernel in Jupyter notebooks</flag>
     <flag name="libcxx">Build ROOT against <pkg>sys-libs/libcxx</pkg></flag>
     <flag name="minuit">Build ROOT's internal versions of minuit (fortran) and minuit2 (C++)</flag>
     <flag name="pythia6">Build the interface for <pkg>sci-physics/pythia</pkg> version 6.x </flag>
@@ -44,7 +44,6 @@
     <flag name="unuran">Enable support for <pkg>sci-mathematics/unuran</pkg></flag>
     <flag name="uring">Enable support for <pkg>sys-libs/liburing</pkg> in RNTuple</flag>
     <flag name="vc">Enable support for <pkg>dev-libs/vc</pkg> with VecCore</flag>
-    <flag name="vmc">Built the Virtual Monte Carlo library</flag>
     <flag name="xrootd">Build the interface for <pkg>net-libs/xrootd</pkg> </flag>
   </use>
 </pkgmetadata>
