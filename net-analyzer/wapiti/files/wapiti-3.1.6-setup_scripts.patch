@@ -1,0 +1,14 @@
+diff -Naur wapiti3-3.1.6.orig/setup.py wapiti3-3.1.6/setup.py
+--- wapiti3-3.1.6.orig/setup.py	2023-01-31 22:19:30.000000000 +0100
++++ wapiti3-3.1.6/setup.py	2023-02-09 21:56:43.644507169 +0100
+@@ -81,10 +81,6 @@
+     packages=find_packages(exclude=["tests", "tests.*"]),
+     data_files=doc_and_conf_files,
+     include_package_data=True,
+-    scripts=[
+-        "bin/wapiti",
+-        "bin/wapiti-getcookie"
+-    ],
+     classifiers=[
+         "Development Status :: 5 - Production/Stable",
+         "Environment :: Console",
