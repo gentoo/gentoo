@@ -35,6 +35,7 @@ BDEPEND="
 			dev-python/pyopenssl[${PYTHON_USEDEP}]
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		')
+		sys-devel/gettext
 	)
 "
 
