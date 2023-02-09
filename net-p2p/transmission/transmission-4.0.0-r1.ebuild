@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake systemd xdg-utils
+inherit cmake tmpfiles systemd xdg-utils
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -31,7 +31,7 @@ ACCT_DEPEND="
 	acct-group/transmission
 	acct-user/transmission
 "
-BDEPEND="${ACCT_DEPEND}
+BDEPEND="
 	virtual/pkgconfig
 	nls? (
 		gtk? ( sys-devel/gettext )
@@ -124,10 +124,7 @@ src_install() {
 	insinto /usr/lib/sysctl.d
 	doins "${FILESDIR}"/60-transmission.conf
 
-	if [[ ${EUID} == 0 ]]; then
-		diropts -o transmission -g transmission
-	fi
-	keepdir /var/lib/transmission
+	newtmpfiles "${FILESDIR}"/transmission-daemon.tmpfiles transmission-daemon.conf
 }
 
 pkg_postrm() {
@@ -142,4 +139,5 @@ pkg_postinst() {
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi
+	tmpfiles_process transmission-daemon.conf
 }
