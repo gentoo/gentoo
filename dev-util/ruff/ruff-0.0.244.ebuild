@@ -373,6 +373,7 @@ src_prepare() {
 }
 
 src_configure() {
+	export RUSTFLAGS="${RUSTFLAGS}"
 	cargo_src_configure
 }
 
