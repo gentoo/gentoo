@@ -44,6 +44,7 @@ DOCS=( BUG-REPORT ChangeLog MORE.STUFF NEWS PROBLEMS PROJECTS README TODO )
 PATCHES=(
 	# bug #16108, bug #17580, bug #121502
 	"${FILESDIR}"/${PN}-1.19.2-man-unicode-dashes.patch
+	"${FILESDIR}"/${PN}-1.23.0_rc2-skip-broken-diffutils-test.patch
 )
 
 src_prepare() {
@@ -60,13 +61,6 @@ src_prepare() {
 	.ds operating-system Gentoo${pfx}/${KERNEL}
 	.ds default-operating-system Gentoo${pfx}/${KERNEL}
 	EOF
-
-	# https://savannah.gnu.org/bugs/?63726
-	sed -i \
-		-e '/TESTS += contrib\/gdiffmk\/tests\/gdiffmk_tests.sh/d' \
-		-e '/\tcontrib\/gdiffmk\/tests\/gdiffmk_tests.sh \\/d' \
-		contrib/gdiffmk/tests/gdiffmk_tests.sh \
-		contrib/gdiffmk/gdiffmk.am || die
 
 	# make sure we don't get a crappy `g' nameprefix on UNIX systems with real
 	# troff (GROFF_G macro runs some test to see, its own troff doesn't satisfy)
