@@ -494,33 +494,24 @@ CRATES="
 	xml-rs-0.8.4
 	yaml-rust-0.4.5
 	yansi-0.5.1"
-inherit cargo desktop flag-o-matic xdg
-
-# 0(github) 1(repo) 2(commit hash) 3(crate_name:workspace,...)
-# note: if this gets too hard to maintain, should switch to a vendor tarball
-RUFFLE_GIT=(
-	"Aaron1011 naga_oil f4474b53285a85fe67cc35372c9d7ff4517cb556 naga_oil:."
-	"RustAudio dasp f05a703d247bb504d7e812b51e95f3765d9c5e94 dasp"
-	"gfx-rs d3d12-rs a990c93ec64eeab78f2292763d0715da9dba1d59 d3d12:."
-	"gfx-rs naga 1be8024bda3594987b417bead5024b98be9ab521 naga:."
-	"gfx-rs wgpu c5851275c59b1d5d949b142d6aa973d0bb638181 wgpu"
-	"grovesNL glow c8a011fcd57a5c68cc917ed394baa484bdefc909 glow:."
-	"kyren gc-arena 318b2ea594dcdadd01f7789025e3b3940be96b2c gc-arena:src/gc-arena"
-	"ruffle-rs h263-rs 023e14c73e565c4c778d41f66cfbac5ece6419b2 h263-rs:h263,h263-rs-yuv:yuv"
-	"ruffle-rs nellymoser 4a33521c29a918950df8ae9fe07e527ac65553f5 nellymoser-rs:."
-	"ruffle-rs nihav-vp6 9416fcc9fc8aab8f4681aa9093b42922214abbd3 nihav_codec_support:nihav-codec-support,nihav_core:nihav-core,nihav_duck:nihav-duck"
-	"ruffle-rs quick-xml 8496365ec1412eb5ba5de350937b6bce352fa0ba quick-xml:."
-	"ruffle-rs rust-flash-lso 19fecd07b9888c4bdaa66771c468095783b52bed flash-lso"
+declare -A GIT_CRATES=(
+	[d3d12]="https://github.com/gfx-rs/d3d12-rs;a990c93ec64eeab78f2292763d0715da9dba1d59;d3d12-rs-%commit%"
+	[dasp]="https://github.com/RustAudio/dasp;f05a703d247bb504d7e812b51e95f3765d9c5e94;dasp-%commit%/dasp"
+	[flash-lso]="https://github.com/ruffle-rs/rust-flash-lso;19fecd07b9888c4bdaa66771c468095783b52bed;rust-flash-lso-%commit%/flash-lso"
+	[gc-arena]="https://github.com/kyren/gc-arena;318b2ea594dcdadd01f7789025e3b3940be96b2c;gc-arena-%commit%/src/gc-arena"
+	[glow]="https://github.com/grovesNL/glow;c8a011fcd57a5c68cc917ed394baa484bdefc909"
+	[h263-rs-yuv]="https://github.com/ruffle-rs/h263-rs;023e14c73e565c4c778d41f66cfbac5ece6419b2;h263-rs-%commit%/yuv"
+	[h263-rs]="https://github.com/ruffle-rs/h263-rs;023e14c73e565c4c778d41f66cfbac5ece6419b2;h263-rs-%commit%/h263"
+	[naga]="https://github.com/gfx-rs/naga;1be8024bda3594987b417bead5024b98be9ab521"
+	[naga_oil]="https://github.com/Aaron1011/naga_oil;f4474b53285a85fe67cc35372c9d7ff4517cb556"
+	[nellymoser-rs]="https://github.com/ruffle-rs/nellymoser;4a33521c29a918950df8ae9fe07e527ac65553f5;nellymoser-%commit%"
+	[nihav_codec_support]="https://github.com/ruffle-rs/nihav-vp6;9416fcc9fc8aab8f4681aa9093b42922214abbd3;nihav-vp6-%commit%/nihav-codec-support"
+	[nihav_core]="https://github.com/ruffle-rs/nihav-vp6;9416fcc9fc8aab8f4681aa9093b42922214abbd3;nihav-vp6-%commit%/nihav-core"
+	[nihav_duck]="https://github.com/ruffle-rs/nihav-vp6;9416fcc9fc8aab8f4681aa9093b42922214abbd3;nihav-vp6-%commit%/nihav-duck"
+	[quick-xml]="https://github.com/ruffle-rs/quick-xml;8496365ec1412eb5ba5de350937b6bce352fa0ba"
+	[wgpu]="https://github.com/gfx-rs/wgpu;c5851275c59b1d5d949b142d6aa973d0bb638181;wgpu-%commit%/wgpu"
 )
-ruffle_uris() {
-	cargo_crate_uris
-
-	local g
-	for g in "${RUFFLE_GIT[@]}"; do
-		g=(${g})
-		echo "https://github.com/${g[0]}/${g[1]}/archive/${g[2]}.tar.gz -> ${PN}-${g[1]}-${g[2]::10}.tar.gz"
-	done
-}
+inherit cargo desktop flag-o-matic xdg
 
 MY_PV="nightly-${PV:3:4}-${PV:7:2}-${PV:9:2}"
 MY_P="${PN}-${MY_PV}"
@@ -529,7 +520,7 @@ DESCRIPTION="Flash Player emulator written in Rust"
 HOMEPAGE="https://ruffle.rs/"
 SRC_URI="
 	https://github.com/ruffle-rs/ruffle/archive/refs/tags/${MY_PV}.tar.gz -> ${MY_P}.tar.gz
-	$(ruffle_uris)"
+	$(cargo_crate_uris)"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 BSD BSD-2 Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 ZLIB curl"
@@ -562,21 +553,6 @@ QA_FLAGS_IGNORED="usr/bin/${PN}.*"
 PATCHES=(
 	"${FILESDIR}"/${P}-no-patch-naga.patch
 )
-
-src_prepare() {
-	default
-
-	# use [patch] directive to register git snapshots of needed crates
-	local crate g
-	for g in "${RUFFLE_GIT[@]}"; do
-		g=(${g})
-		echo
-		echo "[patch.\"https://github.com/${g[0]}/${g[1]}\"]"
-		for crate in ${g[3]//,/ }; do
-			echo "${crate%:*} = { path = \"../${g[1]}-${g[2]}/${crate#*:}\" }"
-		done
-	done >> Cargo.toml || die
-}
 
 src_compile() {
 	filter-lto # does not play well with C code in crates
