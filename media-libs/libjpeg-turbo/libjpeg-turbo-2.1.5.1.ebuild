@@ -41,10 +41,6 @@ BDEPEND="
 	x64-cygwin? ( ${ASM_DEPEND} )
 "
 
-PATCHES=(
-	"${FILESDIR}/2.1.5-initialize-simd_support-before-every-use.patch"
-)
-
 MULTILIB_WRAPPED_HEADERS=( /usr/include/jconfig.h )
 
 src_prepare() {
