@@ -121,7 +121,7 @@ multilib_src_configure() {
 		)
 	fi
 
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	CONFIG_SHELL="${BROOT}"/bin/bash ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
