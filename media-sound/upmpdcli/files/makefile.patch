@@ -1,0 +1,22 @@
+--- a/Makefile.in	2023-02-08 13:40:15.504842769 -0600
++++ b/Makefile.in	2023-02-08 13:40:30.175898082 -0600
+@@ -2002,7 +2002,7 @@
+ @MAKECONFGUI_TRUE@                prefix=$(prefix) exec_prefix=$(exec_prefix) libdir=$(libdir) \
+ @MAKECONFGUI_TRUE@                install
+ 
+-install-data-hook:
++install-data-hook: install-dist_sysconfDATA
+ 	(cd $(DESTDIR)$(sysconfdir); test -f upmpdcli.conf || \
+ 		mv upmpdcli.conf-dist upmpdcli.conf; chmod 600 upmpdcli.conf)
+ 	(cd $(DESTDIR)$(pkgdatadir); test -d src_scripts || mkdir src_scripts)
+--- a/Makefile.am	2023-02-08 13:45:02.076935272 -0600
++++ b/Makefile.am	2023-02-08 13:45:20.889007724 -0600
+@@ -285,7 +285,7 @@
+     systemd/upmpdcli.service
+ 
+ 
+-install-data-hook:
++install-data-hook: install-dist_sysconfDATA
+ 	(cd $(DESTDIR)$(sysconfdir); test -f upmpdcli.conf || \
+ 		mv upmpdcli.conf-dist upmpdcli.conf; chmod 600 upmpdcli.conf)
+ 	(cd $(DESTDIR)$(pkgdatadir); test -d src_scripts || mkdir src_scripts)
