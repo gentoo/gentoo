@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Tools for using the Ogg Vorbis sound file format"
 HOMEPAGE="https://xiph.org/vorbis/"
@@ -29,7 +29,10 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
-PATCHES=( "${FILESDIR}"/${P}-docdir.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-docdir.patch
+	"${FILESDIR}"/${P}-clang16.patch
+)
 
 src_configure() {
 	local myeconfargs=(
