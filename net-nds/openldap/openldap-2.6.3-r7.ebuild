@@ -166,7 +166,7 @@ openldap_find_versiontags() {
 	openldap_found_tag=0
 	have_files=0
 	for each in ${openldap_datadirs[@]} ; do
-		CURRENT_TAGDIR="${ROOT}$(sed "s:\/::" <<< ${each})"
+		CURRENT_TAGDIR="${EROOT}$(sed "s:\/::" <<< ${each})"
 		CURRENT_TAG="${CURRENT_TAGDIR}/${OPENLDAP_VERSIONTAG}"
 		if [[ -d "${CURRENT_TAGDIR}" ]] && [[ "${openldap_found_tag}" == 0 ]] ; then
 			einfo "- Checking ${each}..."
@@ -232,7 +232,18 @@ openldap_find_versiontags() {
 			| awk '/libdb-/{gsub("^libdb-","",$1);gsub(".so$","",$1);print $1}')"
 		local fail=0
 
-		if has_version "${CATEGORY}/${PN}[berkdb]" ; then
+		# This will not cover detection of cn=Config based configuration, but
+		# it's hopefully good enough.
+		if grep -sq '^backend.*shell' "${EROOT}"/etc/openldap/slapd.conf; then
+			eerror "    OpenLDAP >= 2.6.x has dropped support for Shell backend."
+			eerror "	You will need to migrate per upstream's migration notes"
+			eerror "	at https://www.openldap.org/doc/admin25/appendix-upgrading.html."
+			eerror "	Your existing database will not be accessible until it is"
+			eerror "	converted away from backend shell!"
+			echo
+			fail=1
+		fi
+		if has_version "${CATEGORY}/${PN}[berkdb]" || grep -sq '^backend.*(bdb|hdb)' /etc/openldap/slapd.conf; then
 			eerror "	OpenLDAP >= 2.6.x has dropped support for Berkeley DB."
 			eerror "	You will need to migrate per upstream's migration notes"
 			eerror "	at https://www.openldap.org/doc/admin25/appendix-upgrading.html."
@@ -652,7 +663,7 @@ multilib_src_install() {
 		# use our config
 		rm "${ED}"/etc/openldap/slapd.conf
 		insinto /etc/openldap
-		newins "${FILESDIR}"/${PN}-2.4.40-slapd-conf slapd.conf
+		newins "${FILESDIR}"/${PN}-2.6.3-slapd-conf slapd.conf
 		configfile="${ED}"/etc/openldap/slapd.conf
 
 		# populate with built backends
