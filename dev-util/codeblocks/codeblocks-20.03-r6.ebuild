@@ -65,11 +65,14 @@ src_configure() {
 	# USE="-contrib fortran" setup:
 	use contrib || CONF_WITH_LST=$(use_with fortran contrib-plugins FortranProject)
 
-	econf \
-		--disable-pch \
-		$(use_with contrib boost-libdir "${ESYSROOT}/usr/$(get_libdir)") \
-		$(use_enable debug) \
+	local myeconfargs=(
+		--disable-pch
+		$(use_with contrib boost-libdir "${ESYSROOT}/usr/$(get_libdir)")
+		$(use_enable debug)
 		${CONF_WITH_LST}
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
