@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd
+inherit autotools systemd
 
 DESCRIPTION="UPnP Media Renderer front-end for MPD, the Music Player Daemon"
 HOMEPAGE="https://www.lesbonscomptes.com/upmpdcli/index.html"
@@ -27,6 +27,15 @@ RDEPEND="
 	app-misc/recoll
 	thirdparty? ( dev-python/requests )
 "
+
+PATCHES=(
+	"${FILESDIR}"/makefile.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 
