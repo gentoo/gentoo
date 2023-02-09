@@ -109,6 +109,7 @@ PATCHES=(
 	# Patches from Chet sent to bash-bug ml
 	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
 	"${FILESDIR}"/${PN}-5.2_p15-random-ub.patch
+	"${FILESDIR}"/${PN}-5.2_p15-configure-clang16.patch
 )
 
 pkg_setup() {
