@@ -51,7 +51,7 @@ COMMON_DEPEND="
 	gtk? (
 		>=dev-cpp/gtkmm-3.24.0:3.0
 		>=dev-cpp/glibmm-2.60.0:2
-		appindicator? ( dev-libs/libayatana-indicator )
+		appindicator? ( dev-libs/libayatana-appindicator )
 	)
 	qt5? (
 		dev-qt/qtcore:5
