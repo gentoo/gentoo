@@ -50,7 +50,7 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-inherit multiprocessing toolchain-funcs
+inherit flag-o-matic multiprocessing toolchain-funcs
 
 if [[ ! ${CARGO_OPTIONAL} ]]; then
 	BDEPEND="${RUST_DEPEND}"
@@ -526,6 +526,7 @@ cargo_src_compile() {
 	[[ ${_CARGO_GEN_CONFIG_HAS_RUN} ]] || \
 		die "FATAL: please call cargo_gen_config before using ${FUNCNAME}"
 
+	filter-lto
 	tc-export AR CC CXX PKG_CONFIG
 
 	set -- cargo build --profile gentoo ${ECARGO_ARGS[@]} "$@"
