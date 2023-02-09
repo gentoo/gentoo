@@ -67,7 +67,6 @@ src_configure() {
 
 	econf \
 		--disable-pch \
-		--disable-static \
 		$(use_with contrib boost-libdir "${ESYSROOT}/usr/$(get_libdir)") \
 		$(use_enable debug) \
 		${CONF_WITH_LST}
