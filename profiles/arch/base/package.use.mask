@@ -55,7 +55,6 @@ media-libs/libva-intel-driver hybrid
 # In the meantime, force-enable on loong only.
 # This is not inside use.mask, because crossdev toolchain packages would
 # want to have the flag enabled without hassle.
-<dev-libs/libffi-3.4.3 experimental-loong
 <sys-libs/glibc-2.36 experimental-loong
 sys-libs/libseccomp experimental-loong
 
