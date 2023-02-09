@@ -513,7 +513,7 @@ cargo_src_install() {
 
 	set -- cargo install $(has --path ${@} || echo --path ./) \
 		--root "${ED}/usr" \
-		 ${GIT_CRATES:---frozen} \
+		${GIT_CRATES[@]:+--frozen} \
 		$(usex debug --debug "") \
 		${ECARGO_ARGS[@]} "$@"
 	einfo "${@}"
