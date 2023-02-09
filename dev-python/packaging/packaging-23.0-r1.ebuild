@@ -22,6 +22,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~
 
 RDEPEND="
 	>=dev-python/pyparsing-3.0.7-r1[${PYTHON_USEDEP}]
+	!<dev-python/setuptools-67
 "
 DEPEND="
 	test? (
