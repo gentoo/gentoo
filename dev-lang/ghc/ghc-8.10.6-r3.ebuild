@@ -109,6 +109,7 @@ S="${WORKDIR}"/${GHC_P}
 
 BUMP_LIBRARIES=(
 	# "hackage-name          hackage-version"
+	"process          1.6.16.0"
 )
 
 LICENSE="BSD"
