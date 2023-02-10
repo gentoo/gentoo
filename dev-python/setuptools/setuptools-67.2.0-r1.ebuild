@@ -30,7 +30,7 @@ RDEPEND="
 	>=dev-python/more-itertools-8.12.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/nspektr-0.3.0[${PYTHON_USEDEP}]
 	>=dev-python/ordered-set-4.0.2-r1[${PYTHON_USEDEP}]
-	>=dev-python/packaging-23[${PYTHON_USEDEP}]
+	>=dev-python/packaging-21.3-r2[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-2.6.2-r1[${PYTHON_USEDEP}]
 	>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
@@ -116,6 +116,13 @@ python_test() {
 		# fails if python-xlib is installed
 		setuptools/tests/test_easy_install.py::TestSetupRequires::test_setup_requires_with_allow_hosts
 	)
+
+	if has_version "<dev-python/packaging-22"; then
+		EPYTEST_DESELECT+=(
+			# old packaging is more lenient
+			setuptools/tests/config/test_setupcfg.py::TestOptions::test_raises_accidental_env_marker_misconfig
+		)
+	fi
 
 	epytest -n "$(makeopts_jobs)" setuptools
 }
