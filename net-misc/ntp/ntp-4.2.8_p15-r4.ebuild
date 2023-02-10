@@ -7,8 +7,8 @@ inherit autotools flag-o-matic systemd
 
 MY_P=${P/_p/p}
 DESCRIPTION="Network Time Protocol suite/programs"
-HOMEPAGE="http://www.ntp.org/"
-SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-${PV:0:3}/${MY_P}.tar.gz
+HOMEPAGE="https://www.ntp.org/"
+SRC_URI="https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-${PV:0:3}/${MY_P}.tar.gz
 	https://dev.gentoo.org/~polynomial-c/${MY_P}-manpages.tar.xz"
 
 LICENSE="HPND BSD ISC"
@@ -110,7 +110,7 @@ src_install() {
 	sed -i "s:/usr/bin:/usr/sbin:" "${ED}"/etc/init.d/ntpd || die
 
 	keepdir /var/lib/ntp
-	use prefix || fowners ntp:ntp /var/lib/ntp
+	fowners ntp:ntp /var/lib/ntp
 
 	if use openntpd ; then
 		cd "${ED}" || die
