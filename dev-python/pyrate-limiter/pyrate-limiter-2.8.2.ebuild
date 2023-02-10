@@ -9,8 +9,14 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="Python Rate-Limiter using Leaky-Bucket Algorimth Family"
-HOMEPAGE="https://github.com/vutran1710/PyrateLimiter"
-SRC_URI="https://github.com/vutran1710/PyrateLimiter/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+HOMEPAGE="
+	https://github.com/vutran1710/PyrateLimiter/
+	https://pypi.org/project/pyrate-limiter/
+"
+SRC_URI="
+	https://github.com/vutran1710/PyrateLimiter/archive/refs/tags/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 S="${WORKDIR}/PyrateLimiter-${PV}"
 
 LICENSE="MIT"
@@ -22,15 +28,17 @@ RDEPEND="
 	dev-python/redis[${PYTHON_USEDEP}]
 "
 
-BDEPEND="test? (
-	dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-	dev-python/django[${PYTHON_USEDEP}]
-	dev-python/django-redis[${PYTHON_USEDEP}]
-	dev-python/fakeredis[${PYTHON_USEDEP}]
-	dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-	dev-python/pytest-xdist[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
-)"
+BDEPEND="
+	test? (
+		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+		dev-python/django[${PYTHON_USEDEP}]
+		dev-python/django-redis[${PYTHON_USEDEP}]
+		dev-python/fakeredis[${PYTHON_USEDEP}]
+		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+	)
+"
 
 EPYTEST_DESELECT=(
 	# Optional dependency redis-py-cluster not packaged
@@ -46,3 +54,9 @@ EPYTEST_DESELECT=(
 # 	dev-python/myst_parser \
 # 	dev-python/sphinxcontrib-apidoc
 distutils_enable_tests pytest
+
+src_prepare() {
+	# workaround installing LICENSE into site-packages
+	sed -i -e 's:^include:exclude:' pyproject.toml || die
+	distutils-r1_src_prepare
+}
