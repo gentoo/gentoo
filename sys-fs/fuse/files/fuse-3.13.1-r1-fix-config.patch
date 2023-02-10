@@ -1,0 +1,256 @@
+From d7560cc9916b086bfe5d86459cc9f04033edd904 Mon Sep 17 00:00:00 2001
+Message-Id: <d7560cc9916b086bfe5d86459cc9f04033edd904.1676039329.git.nert.pinx@gmail.com>
+From: Bernd Schubert <bschubert@ddn.com>
+Date: Tue, 7 Feb 2023 23:06:42 +0100
+Subject: [PATCH] Split config.h into private and public config
+
+This addresses https://github.com/libfuse/libfuse/issues/729
+
+commit db35a37def14b72181f3630efeea0e0433103c41 introduced a public
+config.h (rename to fuse_config.h to avoid conflicts) that
+was installed with the package and included by libfuse users
+through fuse_common.h. Probablem is that this file does not have
+unique defines so that they are unique to libfuse - on including
+the file conflicts with libfuse users came up.
+
+In principle all defines could be prefixed, but then most of them
+are internal for libfuse compilation only. So this splits out
+publically required defines to a new file 'libfuse_config.h'
+and changes back to include of "fuse_config.h" only when
+HAVE_LIBFUSE_PRIVATE_CONFIG_H is defined.
+
+This also renames HAVE_LIBC_VERSIONED_SYMBOLS to
+LIBFUSE_BUILT_WITH_VERSIONED_SYMBOLS, as it actually
+better explains for libfuse users what that variable
+is for.
+
+Signed-off-by: Martin Kletzander <nert.pinx@gmail.com>
+---
+ include/fuse.h          | 10 ++++-----
+ include/fuse_common.h   |  5 +++++
+ include/fuse_lowlevel.h |  4 ++--
+ lib/compat.c            |  2 +-
+ lib/fuse_misc.h         |  2 +-
+ lib/meson.build         |  2 +-
+ meson.build             | 45 ++++++++++++++++++++++++++++-------------
+ 7 files changed, 46 insertions(+), 24 deletions(-)
+
+diff --git a/include/fuse.h b/include/fuse.h
+index 2888d2b497c1..6f162dd07821 100644
+--- a/include/fuse.h
++++ b/include/fuse.h
+@@ -948,15 +948,15 @@ struct fuse *fuse_new_30(struct fuse_args *args, const struct fuse_operations *o
+ 			 size_t op_size, void *private_data);
+ #define fuse_new(args, op, size, data) fuse_new_30(args, op, size, data)
+ #else
+-#if (defined(HAVE_LIBC_VERSIONED_SYMBOLS))
++#if (defined(LIBFUSE_BUILT_WITH_VERSIONED_SYMBOLS))
+ struct fuse *fuse_new(struct fuse_args *args, const struct fuse_operations *op,
+ 		      size_t op_size, void *private_data);
+-#else /* HAVE_LIBC_VERSIONED_SYMBOLS */
++#else /* LIBFUSE_BUILT_WITH_VERSIONED_SYMBOLS */
+ struct fuse *fuse_new_31(struct fuse_args *args,
+ 		      const struct fuse_operations *op,
+ 		      size_t op_size, void *user_data);
+ #define fuse_new(args, op, size, data) fuse_new_31(args, op, size, data)
+-#endif /* HAVE_LIBC_VERSIONED_SYMBOLS */
++#endif /* LIBFUSE_BUILT_WITH_VERSIONED_SYMBOLS */
+ #endif
+ 
+ /**
+@@ -1053,11 +1053,11 @@ int fuse_loop_mt_32(struct fuse *f, struct fuse_loop_config *config);
+  *
+  * See also: fuse_loop()
+  */
+-#if (defined(HAVE_LIBC_VERSIONED_SYMBOLS))
++#if (defined(LIBFUSE_BUILT_WITH_VERSIONED_SYMBOLS))
+ int fuse_loop_mt(struct fuse *f, struct fuse_loop_config *config);
+ #else
+ #define fuse_loop_mt(f, config) fuse_loop_mt_312(f, config)
+-#endif /* HAVE_LIBC_VERSIONED_SYMBOLS */
++#endif /* LIBFUSE_BUILT_WITH_VERSIONED_SYMBOLS */
+ #endif
+ 
+ 
+diff --git a/include/fuse_common.h b/include/fuse_common.h
+index 1d050bb3a00a..8ee1a34029ff 100644
+--- a/include/fuse_common.h
++++ b/include/fuse_common.h
+@@ -14,7 +14,12 @@
+ #ifndef FUSE_COMMON_H_
+ #define FUSE_COMMON_H_
+ 
++#ifdef HAVE_LIBFUSE_PRIVATE_CONFIG_H
+ #include "fuse_config.h"
++#endif
++
++#include "libfuse_config.h"
++
+ #include "fuse_opt.h"
+ #include "fuse_log.h"
+ #include <stdint.h>
+diff --git a/include/fuse_lowlevel.h b/include/fuse_lowlevel.h
+index 96088d7ae8f2..9099e45357f3 100644
+--- a/include/fuse_lowlevel.h
++++ b/include/fuse_lowlevel.h
+@@ -1958,7 +1958,7 @@ struct fuse_cmdline_opts {
+  * @param opts output argument for parsed options
+  * @return 0 on success, -1 on failure
+  */
+-#if (defined(HAVE_LIBC_VERSIONED_SYMBOLS))
++#if (defined(LIBFUSE_BUILT_WITH_VERSIONED_SYMBOLS))
+ int fuse_parse_cmdline(struct fuse_args *args,
+ 		       struct fuse_cmdline_opts *opts);
+ #else
+@@ -2076,7 +2076,7 @@ int fuse_session_loop(struct fuse_session *se);
+ 	int fuse_session_loop_mt_32(struct fuse_session *se, struct fuse_loop_config *config);
+ 	#define fuse_session_loop_mt(se, config) fuse_session_loop_mt_32(se, config)
+ #else
+-	#if (defined(HAVE_LIBC_VERSIONED_SYMBOLS))
++	#if (defined(LIBFUSE_BUILT_WITH_VERSIONED_SYMBOLS))
+ 		/**
+ 		 * Enter a multi-threaded event loop.
+ 		 *
+diff --git a/lib/compat.c b/lib/compat.c
+index cab6cbfe9641..0bac39e597f4 100644
+--- a/lib/compat.c
++++ b/lib/compat.c
+@@ -34,7 +34,7 @@
+ /**
+  * Compatibility ABI symbol for systems that do not support version symboling
+  */
+-#if (!defined(HAVE_LIBC_VERSIONED_SYMBOLS))
++#if (!defined(LIBFUSE_BUILT_WITH_VERSIONED_SYMBOLS))
+ /* With current libfuse fuse_parse_cmdline is a macro pointing to the
+  * versioned function. Here in this file we need to provide the ABI symbol
+  * and the redirecting macro is conflicting.
+diff --git a/lib/fuse_misc.h b/lib/fuse_misc.h
+index 37e3635bbc1d..855edc326d0f 100644
+--- a/lib/fuse_misc.h
++++ b/lib/fuse_misc.h
+@@ -15,7 +15,7 @@
+   Note: "@@" denotes the default symbol, "@" is binary a compat version.
+ 
+ */
+-#ifdef HAVE_LIBC_VERSIONED_SYMBOLS
++#ifdef LIBFUSE_BUILT_WITH_VERSIONED_SYMBOLS
+ # if HAVE_SYMVER_ATTRIBUTE
+ #  define FUSE_SYMVER(sym1, sym2) __attribute__ ((symver (sym2)))
+ # else
+diff --git a/lib/meson.build b/lib/meson.build
+index 54d07597c519..904463095d98 100644
+--- a/lib/meson.build
++++ b/lib/meson.build
+@@ -11,7 +11,7 @@ else
+ endif
+ 
+ deps = [ thread_dep ]
+-if cfg.get('HAVE_ICONV')
++if private_cfg.get('HAVE_ICONV')
+    libfuse_sources += [ 'modules/iconv.c' ]
+    libiconv = cc.find_library('iconv', required: false)
+    if libiconv.found()
+diff --git a/meson.build b/meson.build
+index eb7b47727b4f..fb6451a0daac 100644
+--- a/meson.build
++++ b/meson.build
+@@ -16,11 +16,22 @@ elif platform == 'cygwin' or platform == 'windows'
+         'Take a look at http://www.secfs.net/winfsp/ instead')       
+ endif
+ 
++cc = meson.get_compiler('c')
++
+ #
+-# Feature detection
++# Feature detection, only available at libfuse compilation time,
++# but not for application linking to libfuse.
+ #
+-cfg = configuration_data()
+-cc = meson.get_compiler('c')
++private_cfg = configuration_data()
++
++#
++# Feature detection, the resulting config file is installed
++# with the package.
++# Note: Symbols need to be care fully named, to avoid conflicts
++#       with applications linking to libfuse and including
++#       this config.
++#
++public_cfg = configuration_data()
+ 
+ # Default includes when checking for presence of functions and
+ # struct members
+@@ -35,27 +46,27 @@ include_default = '''
+ '''
+ args_default = [ '-D_GNU_SOURCE' ]
+ 
+-cfg.set_quoted('PACKAGE_VERSION', meson.project_version())
++private_cfg.set_quoted('PACKAGE_VERSION', meson.project_version())
+ 
+ # Test for presence of some functions
+ test_funcs = [ 'fork', 'fstatat', 'openat', 'readlinkat', 'pipe2',
+                'splice', 'vmsplice', 'posix_fallocate', 'fdatasync',
+                'utimensat', 'copy_file_range', 'fallocate' ]
+ foreach func : test_funcs
+-    cfg.set('HAVE_' + func.to_upper(),
++    private_cfg.set('HAVE_' + func.to_upper(),
+         cc.has_function(func, prefix: include_default, args: args_default))
+ endforeach
+-cfg.set('HAVE_SETXATTR', 
++private_cfg.set('HAVE_SETXATTR', 
+         cc.has_function('setxattr', prefix: '#include <sys/xattr.h>'))
+-cfg.set('HAVE_ICONV', 
++private_cfg.set('HAVE_ICONV', 
+         cc.has_function('iconv', prefix: '#include <iconv.h>'))
+ 
+ # Test if structs have specific member
+-cfg.set('HAVE_STRUCT_STAT_ST_ATIM',
++private_cfg.set('HAVE_STRUCT_STAT_ST_ATIM',
+          cc.has_member('struct stat', 'st_atim',
+                        prefix: include_default,
+                        args: args_default))
+-cfg.set('HAVE_STRUCT_STAT_ST_ATIMESPEC',
++private_cfg.set('HAVE_STRUCT_STAT_ST_ATIMESPEC',
+          cc.has_member('struct stat', 'st_atimespec',
+                        prefix: include_default,
+                        args: args_default))
+@@ -63,7 +74,7 @@ cfg.set('HAVE_STRUCT_STAT_ST_ATIMESPEC',
+ #
+ # Compiler configuration
+ #
+-add_project_arguments('-D_REENTRANT', '-DHAVE_CONFIG_H', '-Wno-sign-compare',
++add_project_arguments('-D_REENTRANT', '-DHAVE_LIBFUSE_PRIVATE_CONFIG_H', '-Wno-sign-compare',
+                       '-Wstrict-prototypes', '-Wmissing-declarations', '-Wwrite-strings',
+                       '-fno-strict-aliasing', language: 'c')
+ add_project_arguments('-D_REENTRANT', '-DHAVE_CONFIG_H', '-D_GNU_SOURCE',
+@@ -111,7 +122,7 @@ endif
+ 
+ if versioned_symbols == 1
+      message('Enabling versioned libc symbols')
+-     cfg.set('HAVE_LIBC_VERSIONED_SYMBOLS', 1)
++     public_cfg.set('LIBFUSE_BUILT_WITH_VERSIONED_SYMBOLS', 1)
+ 
+      # gcc-10 and newer support the symver attribute which we need to use if we
+      # want to support LTO
+@@ -140,9 +151,15 @@ else
+      message('Disabling versioned libc symbols')
+ endif
+ 
+-# Write the test results into config.h (stored in build directory)
+-configure_file(output: 'fuse_config.h',
+-               configuration : cfg, install: true, install_dir: 'include/fuse3')
++# Write private test results into fuse_config.h (stored in build directory)
++configure_file(output: 'fuse_config.h', configuration : private_cfg)
++
++# Write the test results, installed with the package,
++# symbols need to be properly prefixed to avoid
++# symbol (define) conflicts
++configure_file(output: 'libfuse_config.h',
++               configuration : public_cfg,
++               install: true, install_dir: 'include/fuse3')
+ 
+ # '.' will refer to current build directory, which contains config.h
+ include_dirs = include_directories('include', 'lib', '.')
+-- 
+2.39.1
+
