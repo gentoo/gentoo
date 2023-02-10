@@ -1,7 +1,7 @@
 # Copyright 2006-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake tmpfiles systemd xdg-utils
 
@@ -70,9 +70,10 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/transmission-4.0.0-cmake-unused.patch"
+	)
 	cmake_src_prepare
-	# https://github.com/transmission/transmission/issues/3901
-	rm -f libtransmission/version.h || die
 }
 
 src_configure() {

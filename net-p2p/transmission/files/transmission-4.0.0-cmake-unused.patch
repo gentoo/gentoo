@@ -1,0 +1,33 @@
+https://github.com/transmission/transmission/pull/4807
+
+From 2c54813738ae5f9a3e2f99ffb86ed0858a5b3760 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 10 Feb 2023 17:55:54 -0500
+Subject: [PATCH] cmake: pass --no-warn-unused-cli to child cmake process
+
+Hides a warning when building the dht library.
+
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_CXX_FLAGS
+    CMAKE_INSTALL_LIBDIR
+---
+ cmake/TrMacros.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cmake/TrMacros.cmake b/cmake/TrMacros.cmake
+index 4b84c0af9..46643ff76 100644
+--- a/cmake/TrMacros.cmake
++++ b/cmake/TrMacros.cmake
+@@ -168,6 +168,7 @@ macro(tr_add_external_auto_library ID DIRNAME LIBNAME)
+             PREFIX "${${ID}_PREFIX}"
+             CMAKE_ARGS
+                 -Wno-dev # We don't want to be warned over unused variables
++                --no-warn-unused-cli
+                 "-DCMAKE_TOOLCHAIN_FILE:PATH=${CMAKE_TOOLCHAIN_FILE}"
+                 "-DCMAKE_USER_MAKE_RULES_OVERRIDE=${CMAKE_USER_MAKE_RULES_OVERRIDE}"
+                 "-DCMAKE_C_COMPILER=${CMAKE_C_COMPILER}"
+-- 
+2.39.1
+
