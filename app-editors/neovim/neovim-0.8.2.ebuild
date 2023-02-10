@@ -69,8 +69,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9999-cmake_lua_version.patch"
-	"${FILESDIR}/${PN}-9999-cmake-darwin.patch"
+	"${FILESDIR}/${PN}-0.8-cmake_lua_version.patch"
+	"${FILESDIR}/${PN}-0.8-cmake-darwin.patch"
 )
 
 if [[ ${PV} != 9999 ]]; then
