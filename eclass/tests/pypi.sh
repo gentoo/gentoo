@@ -32,6 +32,13 @@ test-eq "pypi_normalize_name foo___bar" foo_bar
 test-eq "pypi_normalize_name Flask-BabelEx" flask_babelex
 test-eq "pypi_normalize_name jaraco.context" jaraco_context
 
+test-eq "pypi_translate_version 1.2.3" 1.2.3
+test-eq "pypi_translate_version 1.2.3_p101" 1.2.3.post101
+test-eq "pypi_translate_version 1.2.3_alpha4" 1.2.3a4
+test-eq "pypi_translate_version 1.2.3_beta1" 1.2.3b1
+test-eq "pypi_translate_version 1.2.3_rc2" 1.2.3rc2
+test-eq "pypi_translate_version 1.2.3_rc2_p1" 1.2.3rc2.post1
+
 test-eq "pypi_wheel_name" foo_bar-1.2.3-py3-none-any.whl
 test-eq "pypi_wheel_name Flask-BabelEx" flask_babelex-1.2.3-py3-none-any.whl
 test-eq "pypi_wheel_name Flask-BabelEx 4" flask_babelex-4-py3-none-any.whl

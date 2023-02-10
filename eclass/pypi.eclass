@@ -54,6 +54,25 @@ pypi_normalize_name() {
 	echo "${name,,}"
 }
 
+# @FUNCTION: pypi_translate_version
+# @USAGE: <version>
+# @DESCRIPTION:
+# Translate the specified Gentoo version into the usual Python
+# counterpart.  Assumes PEP 440 versions.
+#
+# Note that we do not have clear counterparts for the epoch segment,
+# nor for development release segment.
+pypi_translate_version() {
+	[[ ${#} -ne 1 ]] && die "Usage: ${FUNCNAME} <version>"
+
+	local version=${1}
+	version=${version/_alpha/a}
+	version=${version/_beta/b}
+	version=${version/_rc/rc}
+	version=${version/_p/.post}
+	echo "${version}"
+}
+
 # @FUNCTION: pypi_sdist_url
 # @USAGE: [--no-normalize] [<project> [<version> [<suffix>]]]
 # @DESCRIPTION:
