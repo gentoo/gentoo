@@ -39,3 +39,16 @@ EPYTEST_DESELECT=(
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs --no-autodoc
+
+python_test() {
+	# https://github.com/readthedocs/sphinx-autoapi/issues/368
+	if has_version "<dev-python/sphinx-6.0"; then
+		EPYTEST_DESELECT+=(
+			tests/python/test_pyintegration.py::TestPositionalOnlyArgumentsModule::test_integration
+			tests/python/test_pyintegration.py::TestPy3Module::test_annotations
+			tests/python/test_pyintegration.py::TestAnnotationCommentsModule::test_integration
+		)
+	fi
+
+	distutils-r1_python_test
+}
