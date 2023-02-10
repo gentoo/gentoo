@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop savedconfig toolchain-funcs xdg
 
@@ -24,7 +24,7 @@ IUSE="tabbed"
 DEPEND="
 	app-crypt/gcr:0=[gtk]
 	dev-libs/glib:2
-	net-libs/webkit-gtk:4
+	net-libs/webkit-gtk:4.1=
 	x11-libs/gtk+:3
 	x11-libs/libX11
 "
@@ -41,8 +41,9 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	virtual/pkgconfig
 "
+
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.1-gentoo.patch
+	"${FILESDIR}/${PN}-2.1-gentoo-webkit-4.1.patch"
 )
 
 pkg_setup() {
