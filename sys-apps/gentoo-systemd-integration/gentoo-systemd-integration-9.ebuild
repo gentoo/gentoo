@@ -20,7 +20,9 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND=">=sys-apps/systemd-207
+RDEPEND="acct-group/floppy
+	acct-group/usb
+	>=sys-apps/systemd-207
 	!sys-fs/eudev
 	!sys-fs/udev"
 DEPEND=">=sys-apps/systemd-207"
