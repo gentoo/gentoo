@@ -1,0 +1,36 @@
+From a4a0e4ea61d41d379c9b535af11cb5845c364970 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 10 Feb 2023 13:29:21 +0100
+Subject: [PATCH] fix dummy Profiler class to be a proper context manager
+
+The dummy `Profiler` class that is used whenever `pyinstrument`
+is not available did not return a object in its `__enter__` method,
+effectively breaking statements like:
+
+    with g.Profiler() as P:
+        pass
+    print(P.output_text())
+
+Make it return itself to fix that.  This fixes 4 test failures for us.
+---
+ tests/generic.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/generic.py b/tests/generic.py
+index d18f55c1..7c418e10 100644
+--- a/tests/generic.py
++++ b/tests/generic.py
+@@ -49,8 +49,8 @@ try:
+ except BaseException:
+     # make a dummy profiler which does nothing
+     class Profiler(object):
+-        def __enter__(*args, **kwargs):
+-            pass
++        def __enter__(self, *args, **kwargs):
++            return self
+ 
+         def __exit__(*args, **kwargs):
+             pass
+-- 
+2.39.1
+

@@ -52,6 +52,10 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/trimesh-3.19.3-no-pyinstrument.patch
+)
+
 python_test() {
 	epytest -n "$(makeopts_jobs)"
 }
