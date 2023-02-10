@@ -38,7 +38,7 @@ EPYTEST_DESELECT=(
 )
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs --no-autodoc
+distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
 
 python_test() {
 	# https://github.com/readthedocs/sphinx-autoapi/issues/368
