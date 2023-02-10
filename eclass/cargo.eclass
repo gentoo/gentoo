@@ -281,7 +281,7 @@ cargo_gen_config() {
 # Called by cargo_gen_config when generating the config.
 _cargo_gen_git_config() {
 	local git_crates_type
-	git_crates_type="$(declare -p GIT_CRATES)"
+	git_crates_type="$(declare -p GIT_CRATES 2>&-)"
 
 	if [[ ${git_crates_type} == "declare -A "* ]]; then
 		local crate commit crate_uri crate_dir
