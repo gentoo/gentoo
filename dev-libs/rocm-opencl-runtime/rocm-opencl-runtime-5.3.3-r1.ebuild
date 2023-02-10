@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake edo flag-o-matic prefix
+inherit cmake edo flag-o-matic
 
 DESCRIPTION="Radeon Open Compute OpenCL Compatible Runtime"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime"
@@ -37,6 +37,7 @@ src_prepare() {
 	# Bug #753377
 	# patch re-enables accidentally disabled gfx800 family
 	eapply "${FILESDIR}/${PN}-5.0.2-enable-gfx800.patch"
+	eapply "${FILESDIR}/rocclr-${PV}-fix-include.patch"
 	popd || die
 }
 
