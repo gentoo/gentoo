@@ -55,26 +55,41 @@ pypi_normalize_name() {
 }
 
 # @FUNCTION: pypi_sdist_url
-# @USAGE: [<project> [<version> [<suffix>]]]
+# @USAGE: [--no-normalize] [<project> [<version> [<suffix>]]]
 # @DESCRIPTION:
 # Output the URL to PyPI sdist for specified project/version tuple.
 #
-# If <package> is unspecified, it defaults to ${PN}.
+# The `--no-normalize` option disables project name normalization
+# for sdist filename.  This may be necessary when dealing with distfiles
+# generated using build systems that did not follow PEP 625
+# (i.e. the sdist name contains uppercase letters, hyphens or dots).
+#
+# If <package> is unspecified, it defaults to ${PN}.  The package name
+# is normalized according to the specification unless `--no-normalize`
+# is passed.
 #
 # If <version> is unspecified, it defaults to ${PV}.
 #
 # If <format> is unspecified, it defaults to ".tar.gz".  Another valid
 # value is ".zip" (please remember to add a BDEPEND on app-arch/unzip).
 pypi_sdist_url() {
+	local normalize=1
+	if [[ ${1} == --no-normalize ]]; then
+		normalize=
+		shift
+	fi
+
 	if [[ ${#} -gt 3 ]]; then
-		die "Usage: ${FUNCNAME} <project> [<version> [<suffix>]]"
+		die "Usage: ${FUNCNAME} [--no-normalize] <project> [<version> [<suffix>]]"
 	fi
 
 	local project=${1-"${PN}"}
 	local version=${2-"${PV}"}
 	local suffix=${3-.tar.gz}
+	local fn_project=${project}
+	[[ ${normalize} ]] && fn_project=$(pypi_normalize_name "${project}")
 	printf "https://files.pythonhosted.org/packages/source/%s" \
-		"${project::1}/${project}/${project}-${version}${suffix}"
+		"${project::1}/${project}/${fn_project}-${version}${suffix}"
 }
 
 # @FUNCTION: pypi_wheel_name
