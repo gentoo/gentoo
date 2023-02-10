@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gkrellm-plugin toolchain-funcs
+inherit gkrellm-plugin multilib toolchain-funcs
 
 MY_P=${P/gkrellm-/}
 
