@@ -82,7 +82,8 @@ pypi_sdist_url() {
 # @DESCRIPTION:
 # Output the wheel filename for the specified project/version tuple.
 #
-# If <package> is unspecified, it defaults to ${PN}.
+# If <package> is unspecified, it defaults to ${PN}.  The package name
+# is normalized according to the wheel specification.
 #
 # If <version> is unspecified, it defaults to ${PV}.
 #
@@ -97,7 +98,7 @@ pypi_wheel_name() {
 		die "Usage: ${FUNCNAME} <project> [<version> [<python-tag> [<abi-platform-tag>]]]"
 	fi
 
-	local project=${1-"${PN}"}
+	local project=$(pypi_normalize_name "${1-"${PN}"}")
 	local version=${2-"${PV}"}
 	local pytag=${3-py3}
 	local abitag=${4-none-any}
