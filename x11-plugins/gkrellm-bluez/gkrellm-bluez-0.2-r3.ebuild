@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gkrellm-plugin
+inherit gkrellm-plugin multilib
 
 DESCRIPTION="GKrellm plugin for monitoring bluetooth (Linux BlueZ) adapters"
 HOMEPAGE="http://gkrellm-bluez.sourceforge.net"
