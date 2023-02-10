@@ -1,0 +1,11 @@
+--- a/Makefile  2023-02-10 01:13:45.028195480 +0000
++++ b/Makefile  2023-02-10 01:19:31.242807968 +0000
+@@ -70,7 +70,7 @@
+ endif
+ endif #CFLAGS
+
+-CFLAGS += -flto-partition=none
++CFLAGS +=
+
+ EXTRA_CXXFLAGS = ${CFLAGS} ${CPPFLAGS} ${CXX_WARNINGS} -std=gnu++0x
+ EXTRA_CFLAGS = ${EXTRA_CXXFLAGS} ${CPP_WARNINGS}

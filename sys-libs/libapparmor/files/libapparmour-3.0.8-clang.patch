@@ -1,0 +1,11 @@
+--- a/src/Makefile.am   2022-11-22 00:54:32.000000000 +0000
++++ b/src/Makefile.am   2023-02-09 22:53:52.200000000 +0000
+@@ -39,7 +39,7 @@
+ BUILT_SOURCES = grammar.h scanner.h af_protos.h
+ AM_LFLAGS = -v
+ AM_YFLAGS = -d -p aalogparse_
+-AM_CFLAGS = -Wall $(EXTRA_WARNINGS) -fPIC -flto-partition=none
++AM_CFLAGS = -Wall $(EXTRA_WARNINGS) -fPIC
+ AM_CPPFLAGS = -D_GNU_SOURCE -I$(top_srcdir)/include/
+ scanner.h: scanner.l
+       	$(LEX) -v $<
