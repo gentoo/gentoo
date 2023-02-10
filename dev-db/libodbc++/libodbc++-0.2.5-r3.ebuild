@@ -11,7 +11,7 @@ HOMEPAGE="http://libodbcxx.sourceforge.net/"
 
 LICENSE="LGPL-2.1"
 SLOT=0
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~riscv ~x86"
 
 DEPEND="dev-db/unixODBC
 		sys-libs/ncurses"
