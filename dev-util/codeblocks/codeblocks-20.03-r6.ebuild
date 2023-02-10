@@ -38,12 +38,14 @@ RDEPEND="app-arch/zip
 		app-admin/gamin
 		app-arch/bzip2
 		app-text/hunspell:=
+		dev-libs/boost:=
 		dev-libs/libgamin
 		media-libs/fontconfig
 		sys-libs/zlib
 	)"
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-env.patch
