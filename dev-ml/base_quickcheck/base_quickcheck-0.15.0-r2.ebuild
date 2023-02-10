@@ -22,5 +22,6 @@ DEPEND="
 	dev-ml/ppx_let:${SLOT}
 	dev-ml/ppx_sexp_value:${SLOT}
 	dev-ml/splittable_random:${SLOT}
+	>=dev-ml/ppxlib-0.23.0:=
 "
 RDEPEND="${DEPEND}"
