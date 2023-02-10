@@ -27,7 +27,7 @@ fi
 S="${WORKDIR}"/vim-${PV}
 
 DESCRIPTION="GUI version of the Vim text editor"
-HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
+HOMEPAGE="https://www.vim.org https://github.com/vim/vim"
 
 LICENSE="vim"
 SLOT="0"
