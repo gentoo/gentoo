@@ -25,7 +25,7 @@ else
 fi
 
 DESCRIPTION="Vim, an improved vi-style text editor"
-HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
+HOMEPAGE="https://www.vim.org https://github.com/vim/vim"
 
 LICENSE="vim"
 SLOT="0"
