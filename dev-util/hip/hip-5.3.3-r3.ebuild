@@ -101,6 +101,10 @@ src_prepare() {
 	sed -e "s,@HIP_BASE_VERSION_MAJOR@,$(ver_cut 1)," -e "s,@HIP_BASE_VERSION_MINOR@,$(ver_cut 2)," \
 		-e "s,@HIP_VERSION_PATCH@,$(ver_cut 3)," \
 		-e "s,@CLANG_PATH@,${LLVM_PREFIX}/bin," -i bin/hipvars.pm || die
+	popd || die
+
+	pushd ${CLR_S} || die
+	eapply "${FILESDIR}/rocclr-${PV}-fix-include.patch"
 }
 
 src_configure() {
