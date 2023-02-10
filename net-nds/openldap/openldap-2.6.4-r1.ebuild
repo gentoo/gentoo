@@ -40,6 +40,7 @@ REQUIRED_USE="cxx? ( sasl )
 	?? ( test minimal )
 	kerberos? ( ?? ( kinit smbkrb5passwd ) )"
 
+SYSTEM_LMDB_VER=0.9.30
 # openssl is needed to generate lanman-passwords required by samba
 COMMON_DEPEND="
 	kernel_linux? ( sys-apps/util-linux )
@@ -56,7 +57,7 @@ COMMON_DEPEND="
 	!minimal? (
 		dev-libs/libltdl
 		sys-fs/e2fsprogs
-		>=dev-db/lmdb-0.9.18:=
+		>=dev-db/lmdb-${SYSTEM_LMDB_VER}:=
 		argon2? ( app-crypt/argon2:= )
 		crypt? ( virtual/libcrypt:= )
 		tcpd? ( sys-apps/tcp-wrappers )
@@ -332,6 +333,20 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# The system copy of dev-db/lmdb must match the version that this copy
+	# of OpenLDAP shipped with! See bug #588792.
+	#
+	# Fish out MDB_VERSION_MAJOR/MDB_VERSION_MINOR/MDB_VERSION_PATCH from
+	# the bundled lmdb's header to find out the version.
+	local bundled_lmdb_version=$(sed -En '/^#define MDB_VERSION_(MAJOR|MINOR|PATCH)(\s+)?/{s/[^0-9.]//gp}' libraries/liblmdb/lmdb.h || die)
+	bundled_lmdb_version=$(printf "%s." ${bundled_lmdb_version})
+
+	if [[ ${SYSTEM_LMDB_VER}. != ${bundled_lmdb_version} ]] ; then
+		eerror "Source lmdb version: ${bundled_lmdb_version}"
+		eerror "Ebuild lmdb version: ${SYSTEM_LMDB_VER}"
+		die "Ebuild needs to update SYSTEM_LMDB_VER!"
+	fi
+
 	rm -r libraries/liblmdb || die 'could not removed bundled lmdb directory'
 
 	local filename
