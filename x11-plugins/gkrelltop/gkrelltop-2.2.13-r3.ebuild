@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit gkrellm-plugin toolchain-funcs
+inherit gkrellm-plugin multilib toolchain-funcs
 
 DESCRIPTION="a GKrellM2 plugin which displays the top three processes"
 HOMEPAGE="https://sourceforge.net/projects/gkrelltop"
