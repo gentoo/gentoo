@@ -87,7 +87,10 @@ pypi_translate_version() {
 # is normalized according to the specification unless `--no-normalize`
 # is passed.
 #
-# If <version> is unspecified, it defaults to ${PV}.
+# If <version> is unspecified, it defaults to ${PV} translated
+# via pypi_translate_version.  If it is specified, then it is used
+# verbatim (the function can be called explicitly to translate custom
+# version number).
 #
 # If <format> is unspecified, it defaults to ".tar.gz".  Another valid
 # value is ".zip" (please remember to add a BDEPEND on app-arch/unzip).
@@ -103,7 +106,7 @@ pypi_sdist_url() {
 	fi
 
 	local project=${1-"${PN}"}
-	local version=${2-"${PV}"}
+	local version=${2-"$(pypi_translate_version "${PV}")"}
 	local suffix=${3-.tar.gz}
 	local fn_project=${project}
 	[[ ${normalize} ]] && fn_project=$(pypi_normalize_name "${project}")
@@ -119,7 +122,10 @@ pypi_sdist_url() {
 # If <package> is unspecified, it defaults to ${PN}.  The package name
 # is normalized according to the wheel specification.
 #
-# If <version> is unspecified, it defaults to ${PV}.
+# If <version> is unspecified, it defaults to ${PV} translated
+# via pypi_translate_version.  If it is specified, then it is used
+# verbatim (the function can be called explicitly to translate custom
+# version number).
 #
 # If <python-tag> is unspecified, it defaults to "py3".  It can also be
 # "py2.py3", or a specific version in case of non-pure wheels.
@@ -133,7 +139,7 @@ pypi_wheel_name() {
 	fi
 
 	local project=$(pypi_normalize_name "${1-"${PN}"}")
-	local version=${2-"${PV}"}
+	local version=${2-"$(pypi_translate_version "${PV}")"}
 	local pytag=${3-py3}
 	local abitag=${4-none-any}
 	echo "${project}-${version}-${pytag}-${abitag}.whl"
@@ -152,7 +158,10 @@ pypi_wheel_name() {
 #
 # If <package> is unspecified, it defaults to ${PN}.
 #
-# If <version> is unspecified, it defaults to ${PV}.
+# If <version> is unspecified, it defaults to ${PV} translated
+# via pypi_translate_version.  If it is specified, then it is used
+# verbatim (the function can be called explicitly to translate custom
+# version number).
 #
 # If <python-tag> is unspecified, it defaults to "py3".  It can also be
 # "py2.py3", or a specific version in case of non-pure wheels.
@@ -173,7 +182,7 @@ pypi_wheel_url() {
 
 	local filename=$(pypi_wheel_name "${@}")
 	local project=${1-"${PN}"}
-	local version=${2-"${PV}"}
+	local version=${2-"$(pypi_translate_version "${PV}")"}
 	local pytag=${3-py3}
 	printf "https://files.pythonhosted.org/packages/%s" \
 		"${pytag}/${project::1}/${project}/${filename}"
