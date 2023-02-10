@@ -134,7 +134,7 @@ pypi_wheel_url() {
 	fi
 
 	if [[ ${#} -gt 4 ]]; then
-		die "Usage: ${FUNCNAME} <project> [<version> [<python-tag> [<abi-platform-tag>]]]"
+		die "Usage: ${FUNCNAME} [--unpack] <project> [<version> [<python-tag> [<abi-platform-tag>]]]"
 	fi
 
 	local filename=$(pypi_wheel_name "${@}")
