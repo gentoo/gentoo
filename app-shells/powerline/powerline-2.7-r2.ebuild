@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_BRANCH="develop"
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}-status/${PN}-status-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 S="${WORKDIR}/${PN}-status-${PV}"
 
