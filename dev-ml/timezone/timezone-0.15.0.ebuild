@@ -11,7 +11,7 @@ SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="+ocamlopt"
 
 RDEPEND="dev-ml/core:${SLOT}"
