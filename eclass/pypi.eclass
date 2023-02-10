@@ -34,10 +34,6 @@ esac
 if [[ ! ${_PYPI_ECLASS} ]]; then
 _PYPI_ECLASS=1
 
-SRC_URI="
-	https://files.pythonhosted.org/packages/source/${PN::1}/${PN}/${P}.tar.gz
-"
-
 # @FUNCTION: pypi_sdist_url
 # @USAGE: [<project> [<version> [<suffix>]]]
 # @DESCRIPTION:
@@ -131,5 +127,7 @@ pypi_wheel_url() {
 		echo " -> ${filename}.zip"
 	fi
 }
+
+SRC_URI="$(pypi_sdist_url)"
 
 fi
