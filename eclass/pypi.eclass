@@ -34,6 +34,26 @@ esac
 if [[ ! ${_PYPI_ECLASS} ]]; then
 _PYPI_ECLASS=1
 
+# @FUNCTION: pypi_normalize_name
+# @USAGE: <name>
+# @DESCRIPTION:
+# Normalize the project name according to sdist/wheel normalization
+# rules.  That is, convert to lowercase and replace runs of [._-]
+# with a single underscore.
+#
+# Based on the spec, as of 2023-02-10:
+# https://packaging.python.org/en/latest/specifications/#package-distribution-file-formats
+pypi_normalize_name() {
+	[[ ${#} -ne 1 ]] && die "Usage: ${FUNCNAME} <name>"
+
+	local name=${1}
+	local shopt_save=$(shopt -p extglob)
+	shopt -s extglob
+	name=${name//+([._-])/_}
+	${shopt_save}
+	echo "${name,,}"
+}
+
 # @FUNCTION: pypi_sdist_url
 # @USAGE: [<project> [<version> [<suffix>]]]
 # @DESCRIPTION:
