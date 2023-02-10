@@ -53,10 +53,8 @@ DEPEND="${LUA_DEPS}
 	>=dev-libs/libvterm-0.3
 	>=dev-libs/msgpack-3.0.0:=
 	>=dev-libs/tree-sitter-0.20.2:=
-	tui? (
-		>=dev-libs/libtermkey-0.22
-		>=dev-libs/unibilium-2.0.0:0=
-	)
+	>=dev-libs/libtermkey-0.22
+	>=dev-libs/unibilium-2.0.0:0=
 "
 RDEPEND="
 	${DEPEND}
@@ -68,14 +66,18 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-9999-cmake_lua_version.patch"
-	"${FILESDIR}/${PN}-9999-cmake-darwin.patch"
-)
+PATCHES=()
 
 if [[ ${PV} != 9999 ]]; then
 	PATCHES+=(
 		"${FILESDIR}/${PN}-0.8.0-cmake-release-type.patch"
+		"${FILESDIR}/${PN}-0.8.0-cmake_lua_version.patch"
+		"${FILESDIR}/${PN}-0.8.0-cmake-darwin.patch"
+	)
+else
+	PATCHES+=(
+		"${FILESDIR}/${PN}-9999-cmake_lua_version.patch"
+		"${FILESDIR}/${PN}-9999-cmake-darwin.patch"
 	)
 fi
 
