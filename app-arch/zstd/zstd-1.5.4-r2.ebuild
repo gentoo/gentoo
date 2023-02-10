@@ -44,6 +44,8 @@ multilib_src_configure() {
 	EOF
 
 	local emesonargs=(
+		-Ddefault_library=$(multilib_native_usex static-libs both shared)
+
 		$(meson_native_true bin_programs)
 		$(meson_native_true bin_contrib)
 		$(meson_use test bin_tests)
