@@ -16,4 +16,7 @@
 	<use>
 		<flag name="filecaps">Linux capabilities library is required for i3status to be able to read net bandwith</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">i3/i3status</remote-id>
+	</upstream>
 </pkgmetadata>
