@@ -1,0 +1,45 @@
+https://gitlab.com/sequoia-pgp/sequoia-chameleon-gnupg/-/commit/447e4747089731f322589299d3ff6fd54e56aefb
+
+From 447e4747089731f322589299d3ff6fd54e56aefb Mon Sep 17 00:00:00 2001
+From: Justus Winter <justus@sequoia-pgp.org>
+Date: Thu, 9 Feb 2023 10:44:26 +0100
+Subject: [PATCH] tests: Normalize underlines.
+
+  - GnuPG emits a header with underlines in key listings that changes
+    with the length of GNUPGHOME.  Now, since the state directories
+    are created within TMPDIR, the length of both GNUPGHOME and the
+    underline changes.  Previously, we normalized GNUPGHOME, but we
+    failed to normalize the underline.
+
+  - Fixes #8.
+--- a/tests/gpg.rs
++++ b/tests/gpg.rs
+@@ -243,12 +243,24 @@ impl Output {
+     }
+ 
+     /// Canonicalizes the paths in the output.
++    ///
++    /// This replaces `homedir` with `"/HOMEDIR"` and `experiment`
++    /// with `"/EXPERIMENT"` in stdout and stderr, and normalizes the
++    /// underline decorating `homedir` in key listings in stdout.
+     fn canonicalize(mut self, homedir: &Path, experiment: &Path) -> Self {
++        const DASHES: &str =
++            "\n------------------------------------------------------------";
++        let d = regex::bytes::Regex::new(
++            &DASHES[..DASHES.len().min(homedir.to_str().unwrap().len() + 1)])
++            .unwrap();
+         let h = regex::bytes::Regex::new(homedir.to_str().unwrap()).unwrap();
+         let e = regex::bytes::Regex::new(experiment.to_str().unwrap()).unwrap();
+         self.stdout =
+-            e.replace_all(&h.replace_all(&self.stdout, &b"/HOMEDIR"[..]),
+-                          &b"/EXPERIMENT"[..])
++            e.replace_all(
++                &h.replace_all(
++                    &d.replace_all(&self.stdout, &b"\n--------"[..]),
++                    &b"/HOMEDIR"[..]),
++                &b"/EXPERIMENT"[..])
+             .into();
+         self.stderr =
+             e.replace_all(&h.replace_all(&self.stderr, &b"/HOMEDIR"[..]),
+-- 
+GitLab
