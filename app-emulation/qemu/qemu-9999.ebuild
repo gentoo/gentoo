@@ -646,7 +646,7 @@ qemu_src_configure() {
 		conf_opts+=(
 			--disable-linux-user
 			--disable-system
-			--disable-blobs
+			--disable-install-blobs
 			--enable-tools
 			--enable-cap-ng
 		)
