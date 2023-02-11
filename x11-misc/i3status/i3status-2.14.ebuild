@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,17 @@ DEPEND="
 "
 
 PATCHES=(
+
 )
+
+src_prepare() {
+	default
+
+	# Needs an ALSA master device, bug #840622
+	# Also skipped in CI:
+	# https://github.com/i3/i3status/blob/07ad5aef2deea1f10eb6c544593e7a87205f24f8/.github/workflows/main.yml#L34
+	rm -rf testcases/020-percentliteral-volume || die
+}
 
 src_configure() {
 	local emesonargs=(
