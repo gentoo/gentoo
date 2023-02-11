@@ -1,0 +1,25 @@
+From 66f5f943bbd0fd3b41b02ce7a563bed9f59f9c38 Mon Sep 17 00:00:00 2001
+From: Yiyang Wu <xgreenlandforwyy@gmail.com>
+Date: Sat, 11 Feb 2023 15:37:11 +0800
+Subject: [PATCH] Change cmake name for msgpack-5 release
+
+---
+ Tensile/Source/lib/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Tensile/Source/lib/CMakeLists.txt b/Tensile/Source/lib/CMakeLists.txt
+index 47a5d15d..f1a6118b 100644
+--- a/Tensile/Source/lib/CMakeLists.txt
++++ b/Tensile/Source/lib/CMakeLists.txt
+@@ -97,7 +97,7 @@ if(TENSILE_USE_LLVM OR TENSILE_USE_MSGPACK)
+ endif()
+ 
+ if(TENSILE_USE_MSGPACK)
+-    find_package(msgpack REQUIRED)
++    find_package(msgpackc-cxx REQUIRED)
+     target_compile_definitions(TensileHost PUBLIC -DTENSILE_MSGPACK=1)
+ 
+     if(TARGET msgpackc-cxx)
+-- 
+2.39.1
+
