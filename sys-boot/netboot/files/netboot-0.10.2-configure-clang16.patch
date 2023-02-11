@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/875116
+--- a/configure
++++ b/configure
+@@ -10772,6 +10772,7 @@ else
+ #endif
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ #ifdef RTLD_GLOBAL
+ #  define LT_DLGLOBAL		RTLD_GLOBAL
+@@ -25362,7 +25363,7 @@ _ACEOF
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+-
++#include <stdlib.h>
+ #pragma pack(1)
+ 			struct {
+ 				char c[3];
+@@ -25441,7 +25442,7 @@ _ACEOF
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+-
++#include <stdlib.h>
+ #pragma options align=packed
+ 				struct {
+ 					char c[3];
+@@ -27724,6 +27725,7 @@ _ACEOF
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
++#include <stdlib.h>
+ 
+ #ifdef USE_PACKED
+ # define PACKED __attribute__((packed))
