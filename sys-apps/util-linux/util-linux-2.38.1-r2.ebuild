@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 usr-ldscript \
+inherit toolchain-funcs autotools flag-o-matic bash-completion-r1 usr-ldscript \
 	pam python-r1 multilib-minimal multiprocessing systemd
 
 MY_PV="${PV/_/-}"
@@ -93,6 +93,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-more-posix-exit-on-eof.patch
+	"${FILESDIR}"/util-linux-2.38.1-check-for-sys-pidfd.h.patch
 )
 
 pkg_pretend() {
@@ -153,12 +154,7 @@ src_prepare() {
 
 	fi
 
-	if [[ ${PV} == 9999 ]] ; then
-		po/update-potfiles
-		eautoreconf
-	else
-		elibtoolize
-	fi
+	eautoreconf
 }
 
 lfs_fallocate_test() {
