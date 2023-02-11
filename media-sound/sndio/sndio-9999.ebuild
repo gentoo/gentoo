@@ -37,6 +37,7 @@ src_prepare() {
 multilib_src_configure() {
 	tc-export CC
 
+	# Not autotools-based but a custom one.
 	./configure \
 		--prefix="${EPREFIX}"/usr \
 		--libdir="${EPREFIX}"/usr/$(get_libdir) \
