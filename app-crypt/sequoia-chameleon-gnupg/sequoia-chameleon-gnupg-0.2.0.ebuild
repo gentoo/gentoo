@@ -315,14 +315,10 @@ DEPEND="
 	dev-libs/nettle:=
 "
 RDEPEND="${DEPEND}"
+# Needed for bindgen
+BDEPEND="sys-devel/clang"
 
 QA_FLAGS_IGNORED="usr/bin/gpg-sq usr/bin/gpgv-sq"
-
-src_configure() {
-	export OPENSSL_NO_VENDOR=true
-
-	cargo_src_configure
-}
 
 src_test() {
 	export GNUPGHOME="${T}"/.gnupg
