@@ -19,7 +19,7 @@ SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+ocamlopt"
 
-RDEPEND="dev-lang/ocaml:0/$(ver_cut 1-2)[ocamlopt?]"
+RDEPEND="=dev-lang/ocaml-4.14*:=[ocamlopt?]"
 DEPEND="
 	${RDEPEND}
 	dev-ml/ocamlbuild[ocamlopt?]
