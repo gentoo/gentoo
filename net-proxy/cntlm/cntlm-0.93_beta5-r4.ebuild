@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit systemd toolchain-funcs
 
@@ -19,10 +19,10 @@ RDEPEND="
 	acct-user/cntlm
 "
 
-src_prepare() {
-	default
-	eapply -p0 "${FILESDIR}"/${P}-buildsystem.patch # 334647
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-buildsystem.patch # bug #334647
+	"${FILESDIR}"/${P}-configure-clang16.patch
+)
 
 src_configure() {
 	tc-export CC
