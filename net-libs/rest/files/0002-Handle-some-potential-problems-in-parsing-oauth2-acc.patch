@@ -1,0 +1,52 @@
+From 49c2d0ac00b959ce53cc00ca4e7758c21085722f Mon Sep 17 00:00:00 2001
+From: Adam Williamson <awilliam@redhat.com>
+Date: Tue, 30 Aug 2022 10:59:01 -0700
+Subject: [PATCH 2/2] Handle some potential problems in parsing oauth2 access
+ tokens
+
+It's possible for `_rest_proxy_send_message` to return `NULL`,
+which would mean the `payload` here would be `NULL`. If so,
+we're not going to be able to do anything, so we should just
+bail out.
+
+It's also possible for `json_parser_load_from_data` to return
+`FALSE` without setting an error. The most obvious way would be
+if `data` was `NULL`, which the bailout avoids, but it could
+also happen if we pass an invalid parser somehow. Let's just
+handle that too, to be safe.
+
+Signed-off-by: Adam Williamson <awilliam@redhat.com>
+---
+ rest/rest-oauth2-proxy.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/rest/rest-oauth2-proxy.c b/rest/rest-oauth2-proxy.c
+index 9511f97..a715b2b 100644
+--- a/rest/rest-oauth2-proxy.c
++++ b/rest/rest-oauth2-proxy.c
+@@ -68,18 +68,21 @@ rest_oauth2_proxy_parse_access_token (RestOAuth2Proxy *self,
+   gsize size;
+   gint expires_in;
+   gint created_at;
++  gboolean ret;
+ 
+   g_return_if_fail (REST_IS_OAUTH2_PROXY (self));
++  g_return_if_fail (payload);
+ 
+   data = g_bytes_get_data (payload, &size);
+ 
+   parser = json_parser_new ();
+-  json_parser_load_from_data (parser, data, size, &error);
++  ret = json_parser_load_from_data (parser, data, size, &error);
+   if (error != NULL)
+     {
+       g_task_return_error (task, error);
+       return;
+     }
++  g_return_if_fail (ret);
+ 
+   root = json_parser_get_root (parser);
+   root_object = json_node_get_object (root);
+-- 
+2.37.1
+
