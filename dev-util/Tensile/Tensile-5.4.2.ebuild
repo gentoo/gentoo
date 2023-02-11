@@ -5,7 +5,8 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1 llvm prefix
+ROCM_VERSION=${PV}
+inherit cmake distutils-r1 llvm prefix rocm
 
 LLVM_MAX_SLOT=15
 
@@ -17,6 +18,8 @@ S="${WORKDIR}/${PN}-rocm-${PV}"
 LICENSE="MIT"
 KEYWORDS="~amd64"
 SLOT="0/$(ver_cut 1-2)"
+IUSE="client"
+REQUIRED_USE="client? ( ${ROCM_REQUIRED_USE} )"
 
 # Not compatible with recent versions of pytest
 RESTRICT="test"
@@ -38,7 +41,7 @@ PATCHES=( "${FILESDIR}"/${PN}-4.3.0-output-commands.patch
 		  "${FILESDIR}"/0001-Change-cmake-name-for-msgpack-5-release.patch
 	  )
 
-CMAKE_USE_DIR="${WORKDIR}/Source"
+CMAKE_USE_DIR="${S}/${PN}/Source"
 
 src_prepare() {
 	distutils-r1_src_prepare
@@ -68,6 +71,26 @@ src_prepare() {
 	popd || die
 
 	sed -e "/package_data/d" -e "/data_files/d" -i setup.py || die
+	use client && PATCHES= cmake_src_prepare  # do not apply patches again in cmake_src_prepare
+}
+
+src_configure() {
+	distutils-r1_src_configure
+	if use client; then
+		local mycmakeargs=(
+			-DCMAKE_SKIP_RPATH=ON
+			-DTENSILE_USE_MSGPACK=ON
+			-DTENSILE_USE_LLVM=ON
+			-DTensile_LIBRARY_FORMAT=msgpack
+			-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
+		)
+		CXX=hipcc cmake_src_configure
+	fi
+}
+
+src_compile() {
+	distutils-r1_src_compile
+	use client && cmake_src_compile
 }
 
 python_install() {
@@ -87,4 +110,9 @@ src_install() {
 	doins -r Configs Perf ReplacementKernels ReplacementKernels-cov3 Source CustomKernels
 	insinto /usr/$(get_libdir)/cmake/${PN}
 	doins cmake/*.cmake
+
+	if use client; then
+		pushd "${BUILD_DIR}" || die
+		dobin client/tensile_client
+	fi
 }
