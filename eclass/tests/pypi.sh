@@ -7,6 +7,7 @@ source tests-common.sh || exit
 
 PN=Foo.Bar
 PV=1.2.3_beta2
+WORKDIR='<WORKDIR>'
 
 inherit pypi
 
@@ -89,5 +90,7 @@ test-eq "pypi_sdist_url --no-normalize Flask-BabelEx 4 .zip" \
 
 test-eq 'declare -p SRC_URI' \
 	'declare -- SRC_URI="https://files.pythonhosted.org/packages/source/F/Foo.Bar/foo_bar-1.2.3b2.tar.gz"'
+test-eq 'declare -p S' \
+	'declare -- S="<WORKDIR>/foo_bar-1.2.3b2"'
 
 texit
