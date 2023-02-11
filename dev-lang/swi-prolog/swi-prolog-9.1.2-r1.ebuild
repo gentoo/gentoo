@@ -73,6 +73,11 @@ DEPEND="${COMMON_DEPEND}
 "
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	# Upstream in >= 9.1.3
+	"${FILESDIR}"/${P}-configure-clang16.patch
+)
+
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
 }
