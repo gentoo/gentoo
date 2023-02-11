@@ -214,6 +214,9 @@ src_test() {
 	local -x SANDBOX_ON=0
 	# wipe LD_PRELOAD to make ASAN happy
 	local -x LD_PRELOAD=
+	# avoid confusing with hardening, upstreamed for >= 16
+	# https://github.com/llvm/llvm-project/issues/60394
+	local -x CLANG_NO_DEFAULT_CONFIG=1
 
 	cmake_build check-all
 }
