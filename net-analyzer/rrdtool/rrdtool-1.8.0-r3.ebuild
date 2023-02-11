@@ -74,6 +74,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.9-disable-rrd_graph-perl.patch
 	"${FILESDIR}"/${PN}-1.7.0-disable-rrd_graph-cgi.patch
 	"${FILESDIR}"/${PN}-1.7.1-configure.ac.patch
+	"${FILESDIR}"/${P}-configure-clang16.patch
 )
 
 pkg_setup() {
