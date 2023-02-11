@@ -67,6 +67,9 @@ src_configure() {
 	# blah, no real configure options #176333
 	export ac_cv_header_dns_sd_h=$(usex zeroconf)
 	export ac_cv_lib_dns_sd_DNSServiceRegister=${ac_cv_header_dns_sd_h}
+	# Unity builds, we don't really need support for it, bug #804109
+	export PATH_RUBY=/bin/false
+
 	local myeconfargs=(
 		--with-lineeditlibs=readline,edit,editline
 		--with-yielding-select
