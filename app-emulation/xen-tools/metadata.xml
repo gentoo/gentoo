@@ -27,7 +27,4 @@
 		<flag name="system-qemu">Using <pkg>app-emulation/qemu</pkg> instead of the bundled one</flag>
 		<flag name="system-seabios">Using <pkg>sys-firmware/seabios</pkg> instead of the bundled one</flag>
 	</use>
-	<upstream>
-		<remote-id type="github">xen-tools/xen-tools</remote-id>
-	</upstream>
 </pkgmetadata>
