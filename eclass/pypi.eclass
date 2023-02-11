@@ -11,12 +11,20 @@
 # @DESCRIPTION:
 # The pypi.eclass can be used to easily obtain URLs for artifacts
 # uploaded to PyPI.org.  When inherited, the eclass defaults SRC_URI
-# to fetch ${P}.tar.gz sdist.
+# and S to fetch .tar.gz sdist.  The project filename is normalized
+# by default, and the version is translated using
+# pypi_translate_version.
 #
-# If necessary, SRC_URI can be overriden by the ebuild.  Two helper
-# functions, pypi_sdist_url and pypi_wheel_url are provided to generate
-# URLs to artifacts of specified type, with customizable project name.
-# Additionally, pypi_wheel_name can be used to generate wheel filename.
+# If necessary, SRC_URI and S can be overriden by the ebuild.  Two
+# helper functions, pypi_sdist_url and pypi_wheel_url are provided
+# to generate URLs to artifacts of specified type, with customizable
+# URL components.  Additionally, pypi_wheel_name can be used to generate
+# wheel filename.
+#
+# pypi_normalize_name can be used to normalize an arbitrary project name
+# according to sdist/wheel normalization rules.  pypi_translate_version
+# can be used to translate a Gentoo version string into its PEP 440
+# equivalent.
 #
 # @EXAMPLE:
 # @CODE@
@@ -193,5 +201,6 @@ pypi_wheel_url() {
 }
 
 SRC_URI="$(pypi_sdist_url)"
+S="${WORKDIR}/$(pypi_normalize_name "${PN}")-$(pypi_translate_version "${PV}")"
 
 fi
