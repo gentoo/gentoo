@@ -28,8 +28,8 @@ BDEPEND="
 "
 
 DEPEND="
+	dev-cpp/msgpack-cxx
 	dev-util/hip
-	<dev-libs/msgpack-5.0.0
 	test? (
 		virtual/blas
 		dev-cpp/gtest
