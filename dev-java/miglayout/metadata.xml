@@ -11,4 +11,7 @@ For Java developers writing GUI layouts by hand that wants simplicity, power and
   <use>
     <flag name="swt">Add support for the SWT toolkit.</flag>
   </use>
+  <upstream>
+    <remote-id type="github">mikaelgrev/miglayout</remote-id>	
+  </upstream>
 </pkgmetadata>
