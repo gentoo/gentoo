@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/jaraco/keyrings.alt/
 	https://pypi.org/project/keyrings.alt/
 "
-SRC_URI="$(pypi_sdist_url "${PN/-/.}")"
+SRC_URI="$(pypi_sdist_url --no-normalize "${PN/-/.}")"
 S=${WORKDIR}/${P/-/.}
 
 LICENSE="MIT"
