@@ -1,9 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-inherit toolchain-funcs
 
 DESCRIPTION="Allows to remote boot a computer over an IP network"
 HOMEPAGE="http://netboot.sourceforge.net/"
@@ -19,12 +17,16 @@ DEPEND="
 	lzo? ( dev-libs/lzo:2= )
 	odbc? ( dev-db/unixODBC:= )
 "
-
 RDEPEND="${DEPEND}"
+BDEPEND="
+	sys-devel/bison
+	sys-devel/flex
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-ldflags.patch"
 	"${FILESDIR}/${P}-slibtool.patch"
+	"${FILESDIR}/${P}-configure-clang16.patch"
 )
 
 src_prepare() {
@@ -41,6 +43,11 @@ src_prepare() {
 }
 
 src_configure() {
+	# Force Bison
+	unset YACC
+	# Uses yy_fatal_error
+	export LEX=flex
+
 	local myeconfargs=(
 		--datadir="/usr/share/netboot"
 		$(use_with berkdb berkeley-db)
