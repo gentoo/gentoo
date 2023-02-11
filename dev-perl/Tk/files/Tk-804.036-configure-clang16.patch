@@ -1,0 +1,40 @@
+https://github.com/eserte/perl-tk/pull/79
+https://github.com/eserte/perl-tk/pull/80
+
+From f7565b07f40e0cc3820e8fb0c3d2e7b5abb5eeeb Mon Sep 17 00:00:00 2001
+From: Christopher Chavez <chrischavez@gmx.us>
+Date: Fri, 12 Mar 2021 07:24:18 -0600
+Subject: [PATCH] Fix some implicit function declarations
+
+Hstrdup.c: missing stdlib.h for exit()
+Hstrtoul.c: missing string.h for strcmp()
+--- a/pTk/config/Hstrdup.c
++++ b/pTk/config/Hstrdup.c
+@@ -1,3 +1,4 @@
++#include <stdlib.h>
+ #include <string.h>
+ 
+ #define STRING "Whatever"
+--- a/pTk/config/Hstrtoul.c
++++ b/pTk/config/Hstrtoul.c
+@@ -1,4 +1,5 @@
+ #include <stdlib.h>
++#include <string.h>
+ 
+ int main()
+ {char *e;
+
+From 47219864d6ef3fe0c5616cada78e3008447a96a1 Mon Sep 17 00:00:00 2001
+From: Christopher Chavez <chrischavez@gmx.us>
+Date: Fri, 12 Mar 2021 07:28:22 -0600
+Subject: [PATCH] signedchar.c: use int main to avoid C99 warning
+
+--- a/config/signedchar.c
++++ b/config/signedchar.c
+@@ -1,4 +1,4 @@
+-main()
++int main()
+ {
+  signed char x = 'a';
+  return (x - 'a');
+
