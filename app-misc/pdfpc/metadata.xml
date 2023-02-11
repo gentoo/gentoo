@@ -4,6 +4,17 @@
 	<maintainer type="person">
 		<email>ulm@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name="gstreamer">
+			Compile support for movie playback (<pkg>media-libs/gstreamer</pkg>)
+		</flag>
+		<flag name="soup">
+			Compile support for REST server (<pkg>net-libs/libsoup</pkg>)
+		</flag>
+		<flag name="webkit">
+			Enable viewing Markdown notes (<pkg>net-libs/webkit-gtk</pkg>)
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">pdfpc/pdfpc</remote-id>
 	</upstream>

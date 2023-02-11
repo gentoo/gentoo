@@ -25,7 +25,7 @@ fi
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+gstreamer"
+IUSE="+gstreamer soup webkit"
 
 RDEPEND="
 	app-text/discount:=
@@ -34,9 +34,6 @@ RDEPEND="
 	dev-libs/json-glib
 	dev-libs/libgee:0.8=
 	gnome-base/librsvg
-	media-gfx/qrencode
-	net-libs/libsoup:2.4
-	net-libs/webkit-gtk:4=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
@@ -49,6 +46,11 @@ RDEPEND="
 		media-plugins/gst-plugins-gtk:1.0=
 		media-plugins/gst-plugins-cairo:1.0=
 	)
+	soup? (
+		media-gfx/qrencode
+		net-libs/libsoup:2.4
+	)
+	webkit? ( net-libs/webkit-gtk:4= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="$(vala_depend)"
@@ -70,6 +72,8 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DMOVIES=$(usex gstreamer on off)
+		-DREST=$(usex soup on off)
+		-DMDVIEW=$(usex webkit on off)
 		-DCMAKE_VERBOSE_MAKEFILE=TRUE
 	)
 	cmake_src_configure
