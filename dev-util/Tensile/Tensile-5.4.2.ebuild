@@ -22,19 +22,20 @@ SLOT="0/$(ver_cut 1-2)"
 RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
-	sys-devel/clang:${LLVM_MAX_SLOT}
+	dev-cpp/msgpack-cxx
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
-	>=dev-util/rocm-smi-4.3.0
-"
-DEPEND="${RDEPEND}
 	dev-util/hip
+	>=dev-util/rocm-smi-4.3.0
+	sys-devel/clang:${LLVM_MAX_SLOT}
 "
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-4.3.0-output-commands.patch
 		  "${FILESDIR}"/${PN}-5.4.2-gfx1031.patch
 		  "${FILESDIR}"/${PN}-5.4.2-fix-arch-parse.patch
 		  "${FILESDIR}"/${PN}-5.4.2-use-ninja.patch
+		  "${FILESDIR}"/0001-Change-cmake-name-for-msgpack-5-release.patch
 	  )
 
 CMAKE_USE_DIR="${WORKDIR}/Source"
