@@ -8,6 +8,10 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>xen0n@gentoo.org</email>
+		<name>WANG Xuerui</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:grpc:grpc</remote-id>
 		<remote-id type="github">grpc/grpc</remote-id>
