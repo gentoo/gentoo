@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/jaraco/rst.linker/
 	https://pypi.org/project/rst.linker/
 "
-SRC_URI="$(pypi_sdist_url "${PN/-/.}")"
+SRC_URI="$(pypi_sdist_url --no-normalize "${PN/-/.}")"
 S=${WORKDIR}/${P/-/.}
 
 LICENSE="MIT"
