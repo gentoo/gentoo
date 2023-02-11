@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Tools for working with iterables. Complements itertools and more_itertools"
 HOMEPAGE="https://github.com/jaraco/jaraco.itertools"
-SRC_URI="$(pypi_sdist_url "${PN/-/.}")"
+SRC_URI="$(pypi_sdist_url --no-normalize "${PN/-/.}")"
 S=${WORKDIR}/${P/-/.}
 
 LICENSE="MIT"
