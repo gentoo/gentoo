@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://github.com/jaraco/jaraco.logging/
 	https://pypi.org/project/jaraco.logging/
 "
-SRC_URI="$(pypi_sdist_url "${PN/-/.}")"
+SRC_URI="$(pypi_sdist_url --no-normalize "${PN/-/.}")"
 S=${WORKDIR}/${P/-/.}
 
 LICENSE="MIT"
