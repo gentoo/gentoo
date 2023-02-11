@@ -15,6 +15,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">openstack/oslo.serialization</remote-id>
 		<remote-id type="pypi">oslo.serialization</remote-id>
 		<remote-id type="launchpad">oslo</remote-id>
 	</upstream>
