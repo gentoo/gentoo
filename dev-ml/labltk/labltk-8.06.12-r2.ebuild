@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit findlib toolchain-funcs
 
@@ -50,6 +50,7 @@ src_install() {
 	emake \
 		INSTALLDIR="${D}/$(ocamlc -where)/labltk" \
 		INSTALLBINDIR="${ED}/usr/bin/" \
+		RANLIB=$(tc-getRANLIB) \
 		install
 	dodoc Changes README.mlTk
 }
