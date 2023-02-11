@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://pypi.org/project/SQLAlchemy/
 	https://github.com/sqlalchemy/sqlalchemy/
 "
-SRC_URI="$(pypi_sdist_url "${MY_PN}")"
+SRC_URI="$(pypi_sdist_url --no-normalize "${MY_PN}")"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
