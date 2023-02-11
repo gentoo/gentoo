@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/retext-project/pymarkups
 	https://pypi.org/project/Markups/
 "
-SRC_URI="$(pypi_sdist_url "${PN^}")"
+SRC_URI="$(pypi_sdist_url --no-normalize "${PN^}")"
 S=${WORKDIR}/${P^}
 
 LICENSE="BSD"
