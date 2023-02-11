@@ -1,0 +1,33 @@
+From 3c806ec52f46d0a1f770f524d1e4f0ffeb8809c2 Mon Sep 17 00:00:00 2001
+From: Yiyang Wu <xgreenlandforwyy@gmail.com>
+Date: Sat, 11 Feb 2023 17:48:08 +0800
+Subject: [PATCH] Detect prebuilt tensile_client in PATH
+
+---
+ Tensile/Tensile.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Tensile/Tensile.py b/Tensile/Tensile.py
+index 961ea88f..123f8a7a 100644
+--- a/Tensile/Tensile.py
++++ b/Tensile/Tensile.py
+@@ -38,6 +38,7 @@ from . import LibraryIO
+ from . import LibraryLogic
+ from . import __version__
+ from datetime import datetime
++from shutil import which
+ 
+ 
+ ###############################################################################
+@@ -127,7 +128,7 @@ def addCommonArguments(argParser):
+         action="store", help="select which library format to use")
+     argParser.add_argument("--client-build-path", default=None)
+     argParser.add_argument("--client-lock", default=None)
+-    argParser.add_argument("--prebuilt-client", default=None)
++    argParser.add_argument("--prebuilt-client", default=which("tensile_client"))
+ 
+     argParser.add_argument("--global-parameters", nargs="+", type=splitExtraParameters, default=[])
+ 
+-- 
+2.39.1
+
