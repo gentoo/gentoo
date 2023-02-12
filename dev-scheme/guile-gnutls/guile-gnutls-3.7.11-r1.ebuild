@@ -30,6 +30,10 @@ src_prepare() {
 	find "${S}" -name "*.scm" -exec touch {} + || die
 }
 
+src_configure() {
+	econf --disable-srp-authentication  # bug #894050
+}
+
 src_install() {
 	default
 
