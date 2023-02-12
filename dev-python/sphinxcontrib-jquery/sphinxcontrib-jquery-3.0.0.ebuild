@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 # MIT for jQuery
 LICENSE="0BSD MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 
 BDEPEND="
 	test? (
