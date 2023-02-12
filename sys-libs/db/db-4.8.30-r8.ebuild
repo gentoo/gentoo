@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.8-libtool.patch
 	"${FILESDIR}"/${PN}-4.8.30-rename-atomic-compare-exchange.patch
 	"${FILESDIR}"/${PN}-4.8-wformat-security.patch
+	"${FILESDIR}"/${PN}-4.8.30-clang16.patch
 )
 
 src_prepare() {
