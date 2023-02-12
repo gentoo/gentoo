@@ -89,6 +89,10 @@ QA_FLAGS_IGNORED=".*/adblock.*.so"
 
 DOCS=( CHANGELOG.md README.md )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-maturin-0.14.13.patch
+)
+
 EPYTEST_IGNORE=(
 	# not very meaningful here (e.g. validates changelog),
 	# and needs the deprecated dev-python/toml

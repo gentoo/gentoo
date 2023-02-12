@@ -1,0 +1,16 @@
+These are unused by maturin since 0.14.0 (non-issue for us),
+and still having them is now fatal rather than a warning.
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -11,11 +11,2 @@
+ 
+-[package.metadata.maturin]
+-classifier = [
+-    "Programming Language :: Python",
+-    "Programming Language :: Rust",
+-    "License :: OSI Approved :: MIT License",
+-    "License :: OSI Approved :: Apache Software License",
+-]
+-requires-python = ">=3.7"
+-
+ [profile.release]
