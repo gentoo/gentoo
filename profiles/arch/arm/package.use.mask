@@ -120,6 +120,7 @@ app-text/enchant voikko
 sys-libs/compiler-rt-sanitizers -asan -lsan
 sys-libs/compiler-rt-sanitizers -ubsan -cfi -scudo
 sys-libs/compiler-rt-sanitizers -profile -xray
+>=sys-libs/compiler-rt-sanitizers-16 -gwp-asan -libfuzzer -orc
 
 # Rick Farina <zerochaos@gentoo.org> (2020-12-18)
 # net-wireless/libxtrx et all needs testing
