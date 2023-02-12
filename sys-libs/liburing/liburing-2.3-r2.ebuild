@@ -17,9 +17,9 @@ fi
 LICENSE="MIT"
 SLOT="0/2" # liburing.so major version
 
-IUSE="static-libs"
+IUSE="examples static-libs test"
 # fsync test hangs forever
-RESTRICT="test"
+RESTRICT="test !test? ( test )"
 
 # At least installed headers need <linux/*>, bug #802516
 DEPEND=">=sys-kernel/linux-headers-5.1"
@@ -37,6 +37,13 @@ src_prepare() {
 		# Make sure pkgconfig files contain the correct version
 		# bug #809095 and #833895
 		sed -i "/^Version:/s@[[:digit:]\.]\+@${PV}@" ${PN}.spec || die
+	fi
+
+	if ! use examples; then
+		sed -e '/examples/d' Makefile -i || die
+	fi
+	if ! use test; then
+		sed -e '/test/d' Makefile -i || die
 	fi
 
 	multilib_copy_sources
