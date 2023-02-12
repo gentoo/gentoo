@@ -10,7 +10,7 @@ MY_P="${PN}-${EGIT_COMMIT}"
 
 DESCRIPTION="Decode EDID data in a human-readable format"
 HOMEPAGE="https://git.linuxtv.org/edid-decode.git/"
-SRC_URI="https://dev.gentoo.org/~chewi/files/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 KEYWORDS="amd64 ~arm64 x86"
