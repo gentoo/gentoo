@@ -24,6 +24,8 @@ MODULE_NAMES="atlantic(drivers/net/ethernet/aquantia/atlantic:${S})"
 BUILD_TARGETS="all"
 CONFIG_CHECK="~!AQTION ~PTP_1588_CLOCK ~CRC_ITU_T"
 
+PATCHES=( "${FILESDIR}"/${P}-linux-6.1.0.patch )
+
 DOCS=(
 	README.md
 	README.txt
@@ -34,6 +36,11 @@ pkg_setup() {
 	linux-mod_pkg_setup
 
 	BUILD_PARAMS="CC=\"$(tc-getBUILD_CC)\" KERN_DIR=${KV_DIR} KERN_VER=${KV_FULL} O=${KV_OUT_DIR} V=1 KBUILD_VERBOSE=1"
+
+	if [[ ${KV_MAJOR} -gt 6 || ( ${KV_MAJOR} -eq 6 && ${KV_MINOR} -ge 1 ) ]]; then
+		ewarn "Warning: building ${P} against linux 6.1.0 or later is experimental."
+	fi
+
 	if linux_chkconfig_present CC_IS_CLANG; then
 		ewarn "Warning: building ${PN} with a clang-built kernel is experimental."
 
