@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <upstream>
+    <bugs-to>https://github.com/dtrx-py/dtrx/issues/</bugs-to>
+    <remote-id type="github">dtrx-py/dtrx</remote-id>
+    <remote-id type="pypi">dtrx</remote-id>
+  </upstream>
+</pkgmetadata>
