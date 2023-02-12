@@ -23,13 +23,13 @@ DEPEND="
 	dev-cpp/glibmm:2
 	x11-libs/pixman
 	gnome-base/librsvg
-	~gui-libs/wlroots-9999:=
-	~gui-wm/wayfire-9999
+	>=gui-libs/wlroots-0.16.0:0/16
+	<gui-libs/wlroots-0.17.0:=
+	>=gui-wm/wayfire-0.7.5
 	x11-libs/cairo
 	x11-libs/pixman
 "
 RDEPEND="${DEPEND}"
-
 BDEPEND="
 	dev-libs/wayland-protocols
 	virtual/pkgconfig
