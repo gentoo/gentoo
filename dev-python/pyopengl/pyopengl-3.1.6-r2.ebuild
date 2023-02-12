@@ -14,7 +14,11 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python OpenGL bindings"
 HOMEPAGE="http://pyopengl.sourceforge.net/ https://pypi.org/project/PyOpenGL/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="
+	mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz
+	https://github.com/mcfletch/pyopengl/commit/2d2457b4d565bce1c58b76b427e1f9027e8b4bcc.patch
+		-> ${P}-glut-font-egl.patch
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
@@ -47,6 +51,10 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${DISTDIR}/${P}-glut-font-egl.patch"
+)
 
 src_test() {
 	virtx distutils-r1_src_test
