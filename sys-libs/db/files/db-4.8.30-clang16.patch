@@ -1,0 +1,281 @@
+https://bugs.gentoo.org/883413
+--- a/dist/aclocal/clock.m4
++++ b/dist/aclocal/clock.m4
+@@ -20,12 +20,14 @@ esac
+ #	existence to mean the clock really exists.
+ AC_CACHE_CHECK([for clock_gettime monotonic clock], db_cv_clock_monotonic, [
+ AC_TRY_RUN([
++#include <time.h>
+ #include <sys/time.h>
+-main() {
++int main(void) {
+ 	struct timespec t;
+ 	return (clock_gettime(CLOCK_MONOTONIC, &t) != 0);
+ }], db_cv_clock_monotonic=yes, db_cv_clock_monotonic=no,
+ AC_TRY_LINK([
++#include <time.h>
+ #include <sys/time.h>], [
+ struct timespec t;
+ clock_gettime(CLOCK_MONOTONIC, &t);
+--- a/dist/aclocal/mutex.m4
++++ b/dist/aclocal/mutex.m4
+@@ -3,8 +3,9 @@
+ # POSIX pthreads tests: inter-process safe and intra-process only.
+ AC_DEFUN(AM_PTHREADS_SHARED, [
+ AC_TRY_RUN([
++#include <stdlib.h>
+ #include <pthread.h>
+-main() {
++int main(void) {
+ 	pthread_cond_t cond;
+ 	pthread_mutex_t mutex;
+ 	pthread_condattr_t condattr;
+@@ -24,6 +25,7 @@ main() {
+ 	pthread_mutexattr_destroy(&mutexattr));
+ }], [db_cv_mutex="$1"],,
+ AC_TRY_LINK([
++#include <stdlib.h>
+ #include <pthread.h>],[
+ 	pthread_cond_t cond;
+ 	pthread_mutex_t mutex;
+@@ -45,8 +47,9 @@ AC_TRY_LINK([
+ ], [db_cv_mutex="$1"]))])
+ AC_DEFUN(AM_PTHREADS_PRIVATE, [
+ AC_TRY_RUN([
++#include <stdlib.h>
+ #include <pthread.h>
+-main() {
++int main(void) {
+ 	pthread_cond_t cond;
+ 	pthread_mutex_t mutex;
+ 	pthread_condattr_t condattr;
+@@ -64,6 +67,7 @@ main() {
+ 	pthread_mutexattr_destroy(&mutexattr));
+ }], [db_cv_mutex="$1"],,
+ AC_TRY_LINK([
++#include <stdlib.h>
+ #include <pthread.h>],[
+ 	pthread_cond_t cond;
+ 	pthread_mutex_t mutex;
+@@ -158,6 +162,7 @@ if test "$db_cv_mutex" = no; then
+ 	# LWP threads: _lwp_XXX
+ 	if test "$db_cv_mutex" = no; then
+ 	AC_TRY_LINK([
++	#include <stdlib.h>
+ 	#include <synch.h>],[
+ 		static lwp_mutex_t mi = SHAREDMUTEX;
+ 		static lwp_cond_t ci = SHAREDCV;
+@@ -174,6 +179,7 @@ if test "$db_cv_mutex" = no; then
+ 	LIBS="$LIBS -lthread"
+ 	AC_TRY_LINK([
+ 	#include <thread.h>
++	#include <stdlib.h>
+ 	#include <synch.h>],[
+ 		mutex_t mutex;
+ 		cond_t cond;
+@@ -189,6 +195,7 @@ if test "$db_cv_mutex" = no; then
+ 	if test "$db_cv_mutex" = no -o "$db_cv_mutex" = ui_only; then
+ 	AC_TRY_LINK([
+ 	#include <thread.h>
++	#include <stdlib.h>
+ 	#include <synch.h>],[
+ 		mutex_t mutex;
+ 		cond_t cond;
+@@ -213,7 +220,7 @@ if test "$db_cv_mutex" = no; then
+ 	# x86/gcc: FreeBSD, NetBSD, BSD/OS, Linux
+ 	AC_TRY_COMPILE(,[
+ 	#if (defined(i386) || defined(__i386__)) && defined(__GNUC__)
+-		exit(0);
++		return 0;
+ 	#else
+ 		FAIL TO COMPILE/LINK
+ 	#endif
+@@ -222,7 +229,7 @@ if test "$db_cv_mutex" = no; then
+ 	# x86_64/gcc: FreeBSD, NetBSD, BSD/OS, Linux
+ 	AC_TRY_COMPILE(,[
+ 	#if (defined(x86_64) || defined(__x86_64__)) && defined(__GNUC__)
+-		exit(0);
++		return 0;
+ 	#else
+ 		FAIL TO COMPILE/LINK
+ 	#endif
+@@ -245,7 +252,7 @@ if test "$db_cv_mutex" = no; then
+ 	AC_TRY_COMPILE(,[
+ 	#if defined(__sparc__) && defined(__GNUC__)
+ 		asm volatile ("membar #StoreStore|#StoreLoad|#LoadStore");
+-		exit(0);
++		return 0;
+ 	#else
+ 		FAIL TO COMPILE/LINK
+ 	#endif
+@@ -287,7 +294,7 @@ AC_TRY_LINK([
+ 	msem_init(&x, 0);
+ 	msem_lock(&x, 0);
+ 	msem_unlock(&x, 0);
+-	exit(0);
++	return 0;
+ #else
+ 	FAIL TO COMPILE/LINK
+ #endif
+@@ -304,7 +311,7 @@ AC_TRY_LINK([
+ 	msem_init(&x, 0);
+ 	msem_lock(&x, 0);
+ 	msem_unlock(&x, 0);
+-	exit(0);
++	return 0;
+ ], [db_cv_mutex=UNIX/msem_init])
+ fi
+ 
+@@ -326,7 +333,7 @@ fi
+ if test "$db_cv_mutex" = no; then
+ AC_TRY_COMPILE(,[
+ #if defined(__USLC__)
+-	exit(0);
++	return 0;
+ #else
+ 	FAIL TO COMPILE/LINK
+ #endif
+@@ -383,7 +390,7 @@ fi
+ if test "$db_cv_mutex" = no; then
+ AC_TRY_COMPILE(,[
+ #if defined(__alpha) && defined(__DECC)
+-	exit(0);
++	return 0;
+ #else
+ 	FAIL TO COMPILE/LINK
+ #endif
+@@ -394,7 +401,7 @@ fi
+ if test "$db_cv_mutex" = no; then
+ AC_TRY_COMPILE(,[
+ #if defined(__alpha) && defined(__GNUC__)
+-	exit(0);
++	return 0;
+ #else
+ 	FAIL TO COMPILE/LINK
+ #endif
+@@ -405,7 +412,7 @@ fi
+ if test "$db_cv_mutex" = no; then
+ AC_TRY_COMPILE(,[
+ #if defined(__arm__) && defined(__GNUC__)
+-	exit(0);
++	return 0;
+ #else
+ 	FAIL TO COMPILE/LINK
+ #endif
+@@ -416,7 +423,7 @@ fi
+ if test "$db_cv_mutex" = no; then
+ AC_TRY_COMPILE(,[
+ #if (defined(__mips) || defined(__mips__)) && defined(__GNUC__)
+-	exit(0);
++	return 0;
+ #else
+ 	FAIL TO COMPILE/LINK
+ #endif
+@@ -427,7 +434,7 @@ fi
+ if test "$db_cv_mutex" = no; then
+ AC_TRY_COMPILE(,[
+ #if (defined(__hppa) || defined(__hppa__)) && defined(__GNUC__)
+-	exit(0);
++	return 0;
+ #else
+ 	FAIL TO COMPILE/LINK
+ #endif
+@@ -438,7 +445,7 @@ fi
+ if test "$db_cv_mutex" = no; then
+ AC_TRY_COMPILE(,[
+ #if (defined(__powerpc__) || defined(__ppc__)) && defined(__GNUC__)
+-	exit(0);
++	return 0;
+ #else
+ 	FAIL TO COMPILE/LINK
+ #endif
+@@ -449,7 +456,7 @@ fi
+ if test "$db_cv_mutex" = no; then
+ AC_TRY_COMPILE(,[
+ #if (defined(mc68020) || defined(sun3)) && defined(__GNUC__)
+-	exit(0);
++	return 0;
+ #else
+ 	FAIL TO COMPILE/LINK
+ #endif
+@@ -460,7 +467,7 @@ fi
+ if test "$db_cv_mutex" = no; then
+ AC_TRY_COMPILE(,[
+ #if defined(__MVS__) && defined(__IBMC__)
+-	exit(0);
++	return 0;
+ #else
+ 	FAIL TO COMPILE/LINK
+ #endif
+@@ -471,7 +478,7 @@ fi
+ if test "$db_cv_mutex" = no; then
+ AC_TRY_COMPILE(,[
+ #if defined(__s390__) && defined(__GNUC__)
+-	exit(0);
++	return 0;
+ #else
+ 	FAIL TO COMPILE/LINK
+ #endif
+@@ -482,7 +489,7 @@ fi
+ if test "$db_cv_mutex" = no; then
+ AC_TRY_COMPILE(,[
+ #if defined(__ia64) && defined(__GNUC__)
+-	exit(0);
++	return 0;
+ #else
+ 	FAIL TO COMPILE/LINK
+ #endif
+@@ -493,7 +500,7 @@ fi
+ if test "$db_cv_mutex" = no; then
+ AC_TRY_COMPILE(,[
+ #if defined(_UTS)
+-	exit(0);
++	return 0;
+ #else
+ 	FAIL TO COMPILE/LINK
+ #endif
+@@ -814,9 +821,9 @@ fi
+ if test "$db_cv_atomic" = no; then
+ 	AC_TRY_COMPILE(,[
+ 	#if ((defined(i386) || defined(__i386__)) && defined(__GNUC__))
+-		exit(0);
++		return 0;
+ 	#elif ((defined(x86_64) || defined(__x86_64__)) && defined(__GNUC__))
+-		exit(0);
++		return 0;
+ 	#else
+ 		FAIL TO COMPILE/LINK
+ 	#endif
+@@ -825,6 +832,7 @@ fi
+ 
+ if test "$db_cv_atomic" = no; then
+ AC_TRY_LINK([
++#include <stdlib.h>
+ #include <sys/atomic.h>],[
+ 	volatile unsigned val = 1;
+ 	exit (atomic_inc_uint_nv(&val) != 2 ||
+--- a/dist/aclocal/sequence.m4
++++ b/dist/aclocal/sequence.m4
+@@ -43,7 +43,9 @@ AC_DEFUN(AM_SEQUENCE_CONFIGURE, [
+ 	# test, which won't test for the appropriate printf format strings.
+ 	if test "$db_cv_build_sequence" = "yes"; then
+ 		AC_TRY_RUN([
+-		main() {
++		#include <stdio.h>
++		#include <string.h>
++		int main(void) {
+ 			$db_cv_seq_type l;
+ 			unsigned $db_cv_seq_type u;
+ 			char buf@<:@100@:>@;
+@@ -59,7 +61,10 @@ AC_DEFUN(AM_SEQUENCE_CONFIGURE, [
+ 				return (1);
+ 			return (0);
+ 		}],, [db_cv_build_sequence="no"],
+-		AC_TRY_LINK(,[
++		AC_TRY_LINK([
++		#include <stdio.h>
++		#include <string.h>
++		],[
+ 			$db_cv_seq_type l;
+ 			unsigned $db_cv_seq_type u;
+ 			char buf@<:@100@:>@;
