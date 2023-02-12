@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools edo
 
 DESCRIPTION="Sleeplike program that counts down the number of seconds specified"
 HOMEPAGE="https://onegeek.org/~tom/software/delay/"
@@ -40,4 +40,11 @@ src_configure() {
 	export YACC=byacc
 
 	econf
+}
+
+src_test() {
+	# No provided test suite, so let's add a smoketest which would've
+	# caught the segfault part of bug #881319.
+	edo ./delay 5
+	edo ./delay until now + 1 minutes
 }
