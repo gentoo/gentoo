@@ -10,5 +10,6 @@
 	</upstream>
 	<use>
 		<flag name="pipewire">Enable screen capture via PipeWire</flag>
+		<flag name="wsi-layer">Enable the WSI layer (required for HDR)</flag>
 	</use>
 </pkgmetadata>
