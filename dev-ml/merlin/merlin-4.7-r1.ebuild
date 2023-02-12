@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ IUSE="emacs +ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.12:=[ocamlopt?]
+	dev-lang/ocaml:=[ocamlopt?]
 	dev-ml/csexp:=
 	>=dev-ml/yojson-2.0.0:=
 	dev-ml/menhir:=
@@ -30,6 +30,7 @@ RDEPEND="
 		dev-lang/ocaml:0/4.12
 		dev-lang/ocaml:0/4.13
 		dev-lang/ocaml:0/4.14
+		dev-lang/ocaml:0/4.14.1
 	)
 	emacs? (
 		>=app-editors/emacs-23.1:*
@@ -56,6 +57,8 @@ src_unpack() {
 	elif has_version "dev-lang/ocaml:0/4.13" ; then
 		mv ${P}-413 "${S}" || die
 	elif has_version "dev-lang/ocaml:0/4.14" ; then
+		mv ${P}-414 "${S}" || die
+	elif has_version "dev-lang/ocaml:0/4.14.1" ; then
 		mv ${P}-414 "${S}" || die
 	fi
 }
