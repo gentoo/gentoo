@@ -137,7 +137,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 					>=dev-libs/libotf-0.9.4
 					>=dev-libs/m17n-lib-1.5.1
 				)
-				xwidgets? ( net-libs/webkit-gtk:4= )
+				xwidgets? ( net-libs/webkit-gtk:4.1= )
 			) )
 			!gtk? ( ${X_DEPEND} )
 			X? ( ${X_DEPEND} )
