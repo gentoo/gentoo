@@ -155,6 +155,7 @@ sys-libs/compiler-rt-sanitizers -asan -lsan
 sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 sys-libs/compiler-rt-sanitizers -gwp-asan
 sys-libs/compiler-rt-sanitizers -profile
+>=sys-libs/compiler-rt-sanitizers-16 -libfuzzer
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-10-06)
 # - aesni plugin is supported on x86
