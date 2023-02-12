@@ -22,4 +22,9 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 
+RDEPEND="
+	dev-python/colorama[${PYTHON_USEDEP}]
+	sys-apps/portage[${PYTHON_USEDEP}]
+"
+
 DOCS=( README.md )
