@@ -768,11 +768,6 @@ www-client/dillo
 # needed, removal in 30 days. Bug #834501
 dev-util/artifactory-bin
 
-# Michael Mair-Keimberger <mmk@levelnine.at> (2023-01-08)
-# Broken since many years, no reverse dependencies, last release from 2000
-# Bug #678518. Removal on 2023-02-08.
-net-dns/dnswalk
-
 # Sam James <sam@gentoo.org> (2023-01-05)
 # Breaks reverse dependencies: bug #889694, bug #888579.
 =sys-fs/btrfs-progs-6.1.1
