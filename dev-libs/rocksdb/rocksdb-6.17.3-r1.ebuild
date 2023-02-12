@@ -18,8 +18,8 @@ DEPEND="
 	app-arch/bzip2:=
 	app-arch/lz4:=
 	app-arch/snappy:=
+	app-arch/zstd:=
 	dev-cpp/gflags
-	dev-python/python-zstandard:=
 	sys-libs/zlib:=
 	jemalloc? ( dev-libs/jemalloc:= )
 "
