@@ -804,11 +804,6 @@ net-analyzer/chaosreader
 # Removal: 2023-01-30.  Bug #889200.
 app-containers/docker-gc
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2022-12-31)
-# Live only packages for 4 years!
-# Removal: 2023-01-30.  Bug #889196.
-sys-auth/google-authenticator-libpam-hardened
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-12-29)
 # Upstream is dead, last activity in Nov 2017. Does not
 # work with newer log4j, bug #857663. Use net-p2p/biglybt
