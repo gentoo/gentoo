@@ -27,7 +27,7 @@ BDEPEND="
 	)
 "
 
-PATCH=(
+PATCHES=(
 	"${FILESDIR}/${P}-no-which.patch"
 )
 
@@ -35,6 +35,7 @@ src_configure() {
 	tc-export CC
 	export PREFIX="${EPREFIX}/usr"
 	export SHELL="${BROOT}/bin/bash"
+	export TMUX_TMPDIR="${T}"
 
 	edo ./configure
 }
