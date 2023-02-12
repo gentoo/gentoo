@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -67,7 +67,7 @@ X_DEPEND="x11-libs/libICE
 	gtk? (
 		x11-libs/gtk+:3
 		xwidgets? (
-			net-libs/webkit-gtk:4=
+			net-libs/webkit-gtk:4.1=
 			x11-libs/libXcomposite
 		)
 	)
