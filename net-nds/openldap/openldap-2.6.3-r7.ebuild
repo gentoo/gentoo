@@ -344,6 +344,8 @@ src_prepare() {
 
 	sed -i \
 		-e "s:\$(localstatedir)/run:${EPREFIX}/run:" \
+		-e '/MKDIR.*.(DESTDIR)\/run/d' \
+		-e '/MKDIR.*.(DESTDIR).*.(runstatedir)/d' \
 		servers/slapd/Makefile.in || die 'adjusting slapd Makefile.in failed'
 
 	pushd build &>/dev/null || die "pushd build"
