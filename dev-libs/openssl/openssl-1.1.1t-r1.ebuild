@@ -47,6 +47,7 @@ PATCHES=(
 	# If they're Gentoo specific, add to USE=-vanilla logic in src_prepare!
 	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch # bug #671602
 	"${FILESDIR}"/${PN}-1.1.1i-riscv32.patch
+	"${FILESDIR}"/openssl-3.0.8-mips-cflags.patch
 )
 
 pkg_setup() {

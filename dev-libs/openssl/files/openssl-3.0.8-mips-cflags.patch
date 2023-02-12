@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/894140
+https://github.com/openssl/openssl/issues/20214
+
+From d500b51791cd56e73065e3a7f4487fc33f31c91c Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 12 Feb 2023 17:56:58 -0500
+Subject: [PATCH] Fix Configure test for -mips in CFLAGS
+
+We want to add -mips2 or -mips3 only if the user hasn't already
+specified a mips version in CFLAGS. The existing test was a
+double-negative.
+
+Fixes: https://github.com/openssl/openssl/issues/20214
+---
+ Configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Configure b/Configure
+index b6bbec0a85c4..ec48614d6b99 100755
+--- a/Configure
++++ b/Configure
+@@ -1475,7 +1475,7 @@ if ($target =~ /^mingw/ && `$config{CC} --target-help 2>&1` =~ m/-mno-cygwin/m)
+         }
+ 
+ if ($target =~ /linux.*-mips/ && !$disabled{asm}
+-        && !grep { $_ !~ /-m(ips|arch=)/ } (@{$config{CFLAGS}})) {
++        && !grep { $_ =~ /-m(ips|arch=)/ } (@{$config{CFLAGS}})) {
+         # minimally required architecture flags for assembly modules
+         my $value;
+         $value = '-mips2' if ($target =~ /mips32/);

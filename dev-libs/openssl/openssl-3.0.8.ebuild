@@ -50,6 +50,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/openssl/configuration.h
 )
 
+PATCHES=(
+	"${FILESDIR}"/openssl-3.0.8-mips-cflags.patch
+)
+
 pkg_setup() {
 	if use ktls ; then
 		if kernel_is -lt 4 18 ; then
@@ -98,6 +102,7 @@ src_prepare() {
 	# Make sure we only ever touch Makefile.org and avoid patching a file
 	# that gets blown away anyways by the Configure script in src_configure
 	rm -f Makefile
+
 
 	if ! use vanilla ; then
 		PATCHES+=(
