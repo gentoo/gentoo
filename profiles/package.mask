@@ -763,11 +763,6 @@ dev-python/pkgutil_resolve_name
 # Removal after 2023-03-01.  Bug #890244.
 www-client/dillo
 
-# John Helmert III <ajak@gentoo.org> (2023-01-08)
-# Multiple vulnerabilities include remote code execution, maintainer
-# needed, removal in 30 days. Bug #834501
-dev-util/artifactory-bin
-
 # Sam James <sam@gentoo.org> (2023-01-05)
 # Breaks reverse dependencies: bug #889694, bug #888579.
 =sys-fs/btrfs-progs-6.1.1
