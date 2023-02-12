@@ -794,11 +794,6 @@ dev-games/wfmath
 # release over 3 years ago, no revdeps. Removal on 2023-02-01.
 dev-cpp/pngpp
 
-# Jonas Stein <jstein@gentoo.org> (2023-01-01)
-# Package is broken and unusable, no activity upstream.
-# Removal after 2023-02-01.  Bug #722568.
-net-analyzer/chaosreader
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-12-29)
 # Upstream is dead, last activity in Nov 2017. Does not
 # work with newer log4j, bug #857663. Use net-p2p/biglybt
