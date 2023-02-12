@@ -2,4 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<upstream>
+		<maintainer>
+			<name>Kenneth J. Pronovici</name>
+			<email>pronovic@ieee.org</email>
+		</maintainer>
+		<changelog>https://github.com/pronovic/banner/blob/master/ChangeLog</changelog>
+		<bugs-to>mailto:support@cedar-solutions.com</bugs-to>
+		<remote-id type="github">pronovic/banner</remote-id>
+	</upstream>
 </pkgmetadata>
