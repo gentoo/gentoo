@@ -62,6 +62,7 @@ RDEPEND="${COMMON_DEPEND}
 		acct-group/cdrom
 		acct-group/dialout
 		acct-group/disk
+		acct-group/floppy
 		acct-group/input
 		acct-group/kmem
 		acct-group/kvm
@@ -70,6 +71,7 @@ RDEPEND="${COMMON_DEPEND}
 		acct-group/sgx
 		acct-group/tape
 		acct-group/tty
+		acct-group/usb
 		acct-group/video
 		!sys-apps/gentoo-systemd-integration
 		!sys-apps/hwids[udev]
