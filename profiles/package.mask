@@ -799,11 +799,6 @@ dev-cpp/pngpp
 # Removal after 2023-02-01.  Bug #722568.
 net-analyzer/chaosreader
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2022-12-31)
-# EAPI=6 ebuild, live only packages for 1 year! maintainer-needed package.
-# Removal: 2023-01-30.  Bug #889200.
-app-containers/docker-gc
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-12-29)
 # Upstream is dead, last activity in Nov 2017. Does not
 # work with newer log4j, bug #857663. Use net-p2p/biglybt
