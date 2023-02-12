@@ -13,7 +13,11 @@ MY_PN="PyOpenGL"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python OpenGL bindings"
-HOMEPAGE="http://pyopengl.sourceforge.net/ https://pypi.org/project/PyOpenGL/"
+HOMEPAGE="
+	https://pyopengl.sourceforge.net/
+	https://github.com/mcfletch/pyopengl/
+	https://pypi.org/project/PyOpenGL/
+"
 SRC_URI="
 	mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz
 	https://github.com/mcfletch/pyopengl/commit/2d2457b4d565bce1c58b76b427e1f9027e8b4bcc.patch
