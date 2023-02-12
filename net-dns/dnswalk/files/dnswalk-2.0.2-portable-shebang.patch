@@ -1,8 +1,0 @@
---- a/dnswalk
-+++ b/dnswalk
-@@ -1,4 +1,4 @@
--#!/usr/contrib/bin/perl
-+#!/usr/bin/env perl
- #
- # dnswalk    Walk through a DNS tree, pulling out zone data and
- # dumping it in a directory tree
