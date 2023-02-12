@@ -783,7 +783,6 @@ dev-games/cardpics
 # other reverse dependencies. Bug #728230
 # Removal on 2023-02-08.
 dev-games/mercator
-dev-games/wfmath
 
 # Sam James <sam@gentoo.org> (2023-01-05)
 # Breaks reverse dependencies: bug #889694, bug #888579.
