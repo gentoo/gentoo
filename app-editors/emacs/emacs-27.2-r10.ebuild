@@ -98,7 +98,8 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 		gtk? (
 			x11-libs/gtk+:3
 			xwidgets? (
-				net-libs/webkit-gtk:4.1=
+				|| ( net-libs/webkit-gtk:4.1 net-libs/webkit-gtk:4 )
+				net-libs/webkit-gtk:=
 				x11-libs/libXcomposite
 			)
 		)
