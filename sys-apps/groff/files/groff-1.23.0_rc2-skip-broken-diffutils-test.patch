@@ -1,4 +1,5 @@
 https://savannah.gnu.org/bugs/?63726
+https://git.savannah.gnu.org/cgit/groff.git/commit/?id=10274fb69e517b2c4b10fcd0ba3347e5bd0eefd7
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -4449,8 +4449,7 @@ SUFFIXES = .roff .in .ps .mom .pdf .me.in .me .man
