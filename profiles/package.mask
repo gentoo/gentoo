@@ -839,12 +839,6 @@ net-p2p/vuze-coreplugins
 # This version currently is not compatible with kernel build (yet)
 ~dev-util/bindgen-0.63.0
 
-# Jonas Stein <jstein@gentoo.org> (2022-12-11)
-# Unfetchable and mirror-restricted.
-# Upstream discontinued
-# Removal after 2023-02-01.  Bug #884715.
-dev-cpp/sourcetrail
-
 # Sam James <sam@gentoo.org> (2022-12-09)
 # Breaks compilation of reverse dependencies with broken pkgconfig (pc) file
 # bug #885075, https://github.com/libarchive/libarchive/issues/1766
