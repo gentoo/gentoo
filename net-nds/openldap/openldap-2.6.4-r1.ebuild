@@ -642,6 +642,7 @@ multilib_src_compile() {
 		$(tc-getCC) -shared \
 			-I"${BUILD_DIR}"/include \
 			-I../../../include \
+			${CPPFLAGS} \
 			${CFLAGS} \
 			-fPIC \
 			${LDFLAGS} \
@@ -655,6 +656,13 @@ multilib_src_test() {
 	if multilib_is_native_abi; then
 		cd tests || die
 		pwd
+
+		# Increase various test timeouts/delays, bug #894012
+		# We can't just double everything as there's a cumulative effect.
+		export SLEEP0=2 # originally 1
+		export SLEEP1=10 # originally 7
+		export SLEEP2=20 # originally 15
+		export TIMEOUT=16 # originally 8
 
 		# emake test => runs only lloadd & mdb, in serial; skips ldif,sql,wt,regression
 		# emake partests => runs ALL of the tests in parallel
