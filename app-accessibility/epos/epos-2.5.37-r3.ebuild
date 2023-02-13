@@ -1,23 +1,20 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
-DESCRIPTION="language independent text-to-speech system"
+DESCRIPTION="Language independent text-to-speech system"
 HOMEPAGE="http://epos.ufe.cz/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 x86"
-IUSE=""
+RESTRICT="test" # needs running eposd
 
-RESTRICT=test # needs running eposd
-
-DEPEND="dev-util/byacc"
-RDEPEND=""
+BDEPEND="dev-util/byacc"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.37-gcc43.patch
@@ -36,6 +33,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Uses removed 'register' keyword, bug #894178
+	append-cxxflags -std=c++03
+
 	econf \
 		--enable-charsets \
 		--disable-portaudio \
