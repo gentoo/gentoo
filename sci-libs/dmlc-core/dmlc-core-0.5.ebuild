@@ -83,14 +83,11 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 
-	if use doc; then
-		doxygen doc/Doxyfile || die
-	fi
+	use doc && emake doxygen
+	use test && emake test
 }
 
 src_test() {
-	emake test
-
 	LD_LIBRARY_PATH="${BUILD_DIR}" test/unittest/dmlc_unittest || die
 
 	cmake_src_test
