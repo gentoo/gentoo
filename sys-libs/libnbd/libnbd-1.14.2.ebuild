@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{8..11} )
 
-inherit autotools bash-completion-r1 python-single-r1
+inherit bash-completion-r1 python-single-r1
 
 DESCRIPTION="NBD client library in userspace"
 HOMEPAGE="https://gitlab.com/nbdkit/libnbd"
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples fuse gnutls go ocaml python test"
 
-RESTRICT="!test? ( test ) test? ( fuse? ( userpriv ) )"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -43,6 +43,15 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# Fuse tests require write access to /dev/fuse which can be a security risk,
+	# so they are disabledSome tests require impossible to provide features, such as fuse.
+	cat <<-EOF >>tests/functions.sh.in || die
+		requires_fuse ()
+		{
+			requires false
+		}
+	EOF
 }
 
 src_configure() {
@@ -58,15 +67,6 @@ src_configure() {
 	export bashcompdir="$(get_bashcompdir)"
 
 	econf "${myeconfargs[@]}"
-}
-
-src_test() {
-	if use fuse ; then
-		[[ -e /dev/fuse ]] || die "/dev/fuse is required to run the test"
-		addwrite /dev/fuse
-	fi
-
-	default
 }
 
 src_install() {
