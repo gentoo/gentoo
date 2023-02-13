@@ -26,13 +26,10 @@ SLOT="0"
 IUSE="cpu_flags_x86_sse2 doc openmp s3 test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="net-misc/curl[ssl]"
-DEPEND="${RDEPEND}
+RDEPEND="s3? ( net-misc/curl[ssl] )"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen )
 	test? ( dev-cpp/gtest )"
-BDEPEND="doc? (
-		app-doc/doxygen
-		dev-texlive/texlive-fontutils
-	)"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
