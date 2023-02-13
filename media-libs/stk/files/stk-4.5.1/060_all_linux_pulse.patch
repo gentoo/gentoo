@@ -1,0 +1,36 @@
+https://github.com/thestk/stk/commit/b3439132339fc0fc649b8e305d7872e60b9520bf
+
+From b3439132339fc0fc649b8e305d7872e60b9520bf Mon Sep 17 00:00:00 2001
+From: Tristan Matthews <tmatth@videolan.org>
+Date: Wed, 9 Feb 2022 17:20:26 -0500
+Subject: [PATCH] configure: fix build for --with-pulse
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -162,6 +162,14 @@ api="$api -D__UNIX_JACK__"
+     AC_MSG_RESULT(using ALSA)
+     AC_CHECK_LIB(asound, snd_pcm_open, , AC_MSG_ERROR(ALSA support requires the asound library!))])
+ 
++    # Look for PulseAudio flag
++    AC_ARG_WITH(pulse, [  --with-pulse = choose PulseAudio support (linux only)])
++    AS_IF([test "x$with_pulse" == "xyes"], [
++    api="$api -D__LINUX_PULSE__"
++    AC_MSG_RESULT(using PulseAudio)
++    AC_CHECK_LIB(pulse, pa_proplist_gets, , AC_MSG_ERROR(PulseAudio support requires the libpulse library!))
++    AC_CHECK_LIB(pulse-simple, pa_simple_new, , AC_MSG_ERROR(PulseAudio support requires the libpulse-simple library!))])
++
+     # Look for OSS flag
+     AC_ARG_WITH(oss, [  --with-oss = choose OSS API support (unixes only)])
+     AS_IF([test "x$with_oss" == "xyes"], [
+--- a/include/Stk.h
++++ b/include/Stk.h
+@@ -622,7 +622,7 @@ const StkFloat ONE_OVER_128 = 0.0078125;
+ #if defined(__WINDOWS_DS__) || defined(__WINDOWS_ASIO__) || defined(__WINDOWS_MM__)
+   #define __OS_WINDOWS__
+   #define __STK_REALTIME__
+-#elif defined(__LINUX_OSS__) || defined(__LINUX_ALSA__) || defined(__UNIX_JACK__)
++#elif defined(__LINUX_OSS__) || defined(__LINUX_ALSA__) || defined(__UNIX_JACK__) || defined(__LINUX_PULSE__)
+   #define __OS_LINUX__
+   #define __STK_REALTIME__
+ #elif defined(__IRIX_AL__)
+
