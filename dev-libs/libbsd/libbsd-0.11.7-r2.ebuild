@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/guillemjover.asc
-inherit multilib multilib-minimal verify-sig
+inherit autotools multilib multilib-minimal verify-sig
 
 DESCRIPTION="Library to provide useful functions commonly found on BSD systems"
 HOMEPAGE="https://libbsd.freedesktop.org/wiki/ https://gitlab.freedesktop.org/libbsd/libbsd"
@@ -21,6 +21,17 @@ DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-3.17
 "
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-guillemjover )"
+
+PATCHES=(
+	"${FILESDIR}/libbsd-build-Fix-version-script-linker-support-detection.patch"
+)
+
+src_prepare() {
+	default
+
+	# Drop on next release, only needed for lld patch
+	eautoreconf
+}
 
 multilib_src_configure() {
 	# The build system will install libbsd-ctor.a despite USE="-static-libs"
