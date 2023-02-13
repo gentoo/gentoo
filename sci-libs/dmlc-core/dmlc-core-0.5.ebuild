@@ -88,7 +88,9 @@ src_compile() {
 }
 
 src_test() {
-	LD_LIBRARY_PATH="${BUILD_DIR}" test/unittest/dmlc_unittest || die
+	DMLC_UNIT_TEST_LITTLE_ENDIAN=$([[ $(tc-endian) == little ]] && echo 1 || echo 0) \
+	LD_LIBRARY_PATH="${BUILD_DIR}" \
+		test/unittest/dmlc_unittest || die
 
 	cmake_src_test
 }
