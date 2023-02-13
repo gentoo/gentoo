@@ -1,0 +1,39 @@
+fix UB in strncpy (e.g. truncated ip route output)
+
+Fix overlapping buffers passed to strncpy which is UB. format_host_rta_r writes
+to the buffer passed to it, so hostname (derived from b1) & b1 partly overlap.
+
+This gets worse with sys-libs/glibc-2.37 where the ip route output can be truncated,
+but it was UB anyway and you can see it occurring w/ glibc-2.36.
+
+Bug: https://lore.kernel.org/netdev/0011AC38-4823-4D0A-8580-B108D08959C2@gentoo.org/T/#u
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30112
+Thanks-to: Doug Freed <dwfreed@mtu.edu>
+--- a/ip/iproute.c
++++ b/ip/iproute.c
+@@ -753,6 +753,7 @@ int print_route(struct nlmsghdr *n, void *arg)
+ 	int ret;
+ 
+ 	SPRINT_BUF(b1);
++	SPRINT_BUF(b2);
+ 
+ 	if (n->nlmsg_type != RTM_NEWROUTE && n->nlmsg_type != RTM_DELROUTE) {
+ 		fprintf(stderr, "Not a route: %08x %08x %08x\n",
+@@ -814,7 +815,7 @@ int print_route(struct nlmsghdr *n, void *arg)
+ 				 r->rtm_dst_len);
+ 		} else {
+ 			const char *hostname = format_host_rta_r(family, tb[RTA_DST],
+-					  b1, sizeof(b1));
++					  b2, sizeof(b2));
+ 			if (hostname)
+ 				strncpy(b1, hostname, sizeof(b1) - 1);
+ 		}
+@@ -837,7 +838,7 @@ int print_route(struct nlmsghdr *n, void *arg)
+ 				 r->rtm_src_len);
+ 		} else {
+ 			const char *hostname = format_host_rta_r(family, tb[RTA_SRC],
+-					  b1, sizeof(b1));
++					  b2, sizeof(b2));
+ 			if (hostname)
+ 				strncpy(b1, hostname, sizeof(b1) - 1);
+ 		}
