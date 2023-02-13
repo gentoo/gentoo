@@ -27,6 +27,7 @@ BDEPEND="
 	dev-python/jupyter_packaging[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-tornasync[${PYTHON_USEDEP}]
+		dev-python/pytest_jupyter[${PYTHON_USEDEP}]
 	)
 "
 
