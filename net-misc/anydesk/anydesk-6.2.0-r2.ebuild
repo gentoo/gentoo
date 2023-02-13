@@ -14,11 +14,11 @@ SRC_URI="https://download.anydesk.com/linux/${P}-amd64.tar.gz
 LICENSE="AnyDesk-TOS BSD BSD-2 openssl ZLIB"
 SLOT="0"
 KEYWORDS="-* ~amd64"
+IUSE="sound"
 
 RDEPEND="
 	dev-libs/atk
 	dev-libs/glib:2
-	media-libs/libcanberra[gtk2]
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	media-libs/glu
@@ -38,6 +38,7 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/pango
+	sound? ( media-libs/libcanberra[gtk2] )
 "
 BDEPEND="dev-util/patchelf"
 
