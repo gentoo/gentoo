@@ -1,5 +1,5 @@
 diff --git a/unittests/CMakeLists.txt b/unittests/CMakeLists.txt
-index 3397d798..1256e8e6 100644
+index 86a00bcc..5f5c36fb 100644
 --- a/unittests/CMakeLists.txt
 +++ b/unittests/CMakeLists.txt
 @@ -1,6 +1,7 @@
@@ -11,7 +11,7 @@ index 3397d798..1256e8e6 100644
  
  list(APPEND TF_UNITTESTS 
    utility 
-@@ -23,8 +24,7 @@ list(APPEND TF_UNITTESTS
+@@ -24,8 +25,7 @@ list(APPEND TF_UNITTESTS
  
  foreach(unittest IN LISTS TF_UNITTESTS)
    add_executable(${unittest} ${unittest}.cpp)
@@ -46,7 +46,7 @@ index 28eeaa8c..466687a2 100644
  
  // --------------------------------------------------------
 diff --git a/unittests/basics.cpp b/unittests/basics.cpp
-index f5b9e3dd..e93c3fd3 100644
+index 290abccf..44301011 100644
 --- a/unittests/basics.cpp
 +++ b/unittests/basics.cpp
 @@ -1,6 +1,6 @@
@@ -227,6 +227,30 @@ diff --git a/unittests/pipelines.cpp b/unittests/pipelines.cpp
 index 94d8f394..701365c0 100644
 --- a/unittests/pipelines.cpp
 +++ b/unittests/pipelines.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ 
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/algorithm/pipeline.hpp>
+diff --git a/unittests/runtimes.cpp b/unittests/runtimes.cpp
+index 5a6155b5..4f7e5b74 100644
+--- a/unittests/runtimes.cpp
++++ b/unittests/runtimes.cpp
+@@ -1,6 +1,6 @@
+ #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+ 
+-#include <doctest.h>
++#include <doctest/doctest.h>
+ #include <taskflow/taskflow.hpp>
+ #include <taskflow/algorithm/pipeline.hpp>
+ 
+diff --git a/unittests/scalable_pipelines.cpp b/unittests/scalable_pipelines.cpp
+index 2534878b..e2073563 100644
+--- a/unittests/scalable_pipelines.cpp
++++ b/unittests/scalable_pipelines.cpp
 @@ -1,6 +1,6 @@
  #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
  
