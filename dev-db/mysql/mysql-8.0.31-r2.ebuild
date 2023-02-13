@@ -1,33 +1,33 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
 CMAKE_MAKEFILE_GENERATOR=emake
-
-inherit check-reqs cmake flag-o-matic linux-info \
-	multiprocessing prefix toolchain-funcs
+inherit check-reqs cmake flag-o-matic linux-info multiprocessing prefix toolchain-funcs
 
 MY_PV="${PV//_pre*}"
 MY_P="${PN}-${MY_PV}"
 
 # Patch version
-PATCH_SET=( https://dev.gentoo.org/~{whissi,dlan}/dist/mysql/${P}-patches-03.tar.xz )
-
-SRC_URI="https://cdn.mysql.com/Downloads/MySQL-$(ver_cut 1-2)/mysql-boost-${MY_PV}.tar.gz
-	https://cdn.mysql.com/archives/mysql-$(ver_cut 1-2)/mysql-boost-${MY_PV}.tar.gz
-	http://downloads.mysql.com/archives/MySQL-$(ver_cut 1-2)/${PN}-boost-${MY_PV}.tar.gz
-	${PATCH_SET[@]}"
+PATCH_SET=( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-patches-01.tar.xz )
 
 HOMEPAGE="https://www.mysql.com/"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
+SRC_URI="https://cdn.mysql.com/Downloads/MySQL-$(ver_cut 1-2)/mysql-boost-${MY_PV}.tar.gz"
+SRC_URI+=" https://cdn.mysql.com/archives/mysql-$(ver_cut 1-2)/mysql-boost-${MY_PV}.tar.gz"
+SRC_URI+=" https://downloads.mysql.com/archives/MySQL-$(ver_cut 1-2)/${PN}-boost-${MY_PV}.tar.gz"
+SRC_URI+=" ${PATCH_SET[@]}"
+# Shorten the path because the socket path length must be shorter than 107 chars
+# and we will run a mysql server during test phase
+S="${WORKDIR}/mysql"
+
 LICENSE="GPL-2"
 SLOT="8.0"
-IUSE="cjk cracklib debug jemalloc latin1 numa +perl profiling
-	router selinux +server tcmalloc test"
-
+# -ppc, -riscv for bug #761715
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips -ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
+IUSE="cjk cracklib debug jemalloc latin1 numa +perl profiling router selinux +server tcmalloc test"
 RESTRICT="!test? ( test )"
-
 REQUIRED_USE="?? ( tcmalloc jemalloc )
 	cjk? ( server )
 	jemalloc? ( server )
@@ -36,14 +36,7 @@ REQUIRED_USE="?? ( tcmalloc jemalloc )
 	router? ( server )
 	tcmalloc? ( server )"
 
-# -ppc, -riscv for bug #761715
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips -ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
-
-# Shorten the path because the socket path length must be shorter than 107 chars
-# and we will run a mysql server during test phase
-S="${WORKDIR}/mysql"
-
-# Be warned, *DEPEND are version-dependant
+# Be warned, *DEPEND are version-dependent
 # These are used for both runtime and compiletime
 COMMON_DEPEND="
 	>=app-arch/lz4-0_p131:=
@@ -53,7 +46,7 @@ COMMON_DEPEND="
 	>=dev-libs/openssl-1.0.0:0=
 	server? (
 		dev-libs/icu:=
-		dev-libs/libevent:=[ssl,threads]
+		dev-libs/libevent:=[ssl,threads(+)]
 		>=dev-libs/protobuf-3.8:=
 		net-libs/libtirpc:=
 		cjk? ( app-text/mecab:= )
@@ -93,6 +86,11 @@ RDEPEND="
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )"
+
+PATCHES=(
+	"${WORKDIR}"/mysql-patches
+	"${FILESDIR}"/mysql-8.0.31-build-tmpdir-nodefault.patch
+)
 
 mysql_init_vars() {
 	: ${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mysql"}
@@ -169,9 +167,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply "${WORKDIR}"/mysql-patches
-	eapply "${FILESDIR}"/${PN}-8.0.27-gcc12.patch
-
 	# Avoid rpm call which would trigger sandbox, #692368
 	sed -i \
 		-e 's/MY_RPM rpm/MY_RPM rpmNOTEXISTENT/' \
@@ -203,10 +198,12 @@ src_configure() {
 
 	# debug hack wrt #497532
 	local mycmakeargs=(
-		-DCMAKE_C_FLAGS_RELWITHDEBINFO="$(usex debug '' '-DNDEBUG')"
-		-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="$(usex debug '' '-DNDEBUG')"
+		-DCMAKE_C_FLAGS_RELWITHDEBINFO="$(usev !debug '-DNDEBUG')"
+		-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="$(usev !debug '-DNDEBUG')"
+
 		-DMYSQL_DATADIR="${EPREFIX}/var/lib/mysql"
 		-DSYSCONFDIR="${EPREFIX}/etc/mysql"
+
 		-DINSTALL_BINDIR=bin
 		-DINSTALL_DOCDIR=share/doc/${PF}
 		-DINSTALL_DOCREADMEDIR=share/doc/${PF}
@@ -219,8 +216,10 @@ src_configure() {
 		-DINSTALL_MYSQLDATADIR="${EPREFIX}/var/lib/mysql"
 		-DINSTALL_SBINDIR=sbin
 		-DINSTALL_SUPPORTFILESDIR="${EPREFIX}/usr/share/mysql"
+
 		-DCOMPILATION_COMMENT="Gentoo Linux ${PF}"
 		-DWITH_UNIT_TESTS=$(usex test ON OFF)
+
 		# Using bundled editline to get CTRL+C working
 		-DWITH_EDITLINE=bundled
 		-DWITH_ZLIB=system
@@ -233,6 +232,7 @@ src_configure() {
 		# all the time for simplicity and to make sure it is actually correct.
 		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
 		-DCMAKE_POSITION_INDEPENDENT_CODE=ON
+
 		-DWITH_CURL=system
 		-DWITH_BOOST="${S}/boost"
 		-DWITH_ROUTER=$(usex router ON OFF)

@@ -4,13 +4,13 @@
 EAPI=8
 
 CMAKE_MAKEFILE_GENERATOR=emake
-inherit check-reqs cmake flag-o-matic linux-info multiprocessing prefix toolchain-funcs
+inherit check-reqs cmake edo flag-o-matic linux-info multiprocessing prefix toolchain-funcs
 
 MY_PV="${PV//_pre*}"
 MY_P="${PN}-${MY_PV}"
 
 # Patch version
-PATCH_SET=( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-patches-01.tar.xz )
+PATCH_SET=( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-8.0.31-patches-01.tar.xz )
 
 HOMEPAGE="https://www.mysql.com/"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
@@ -25,7 +25,7 @@ S="${WORKDIR}/mysql"
 LICENSE="GPL-2"
 SLOT="8.0"
 # -ppc, -riscv for bug #761715
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips -ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips -ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
 IUSE="cjk cracklib debug jemalloc latin1 numa +perl profiling router selinux +server tcmalloc test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="?? ( tcmalloc jemalloc )
@@ -39,30 +39,28 @@ REQUIRED_USE="?? ( tcmalloc jemalloc )
 # Be warned, *DEPEND are version-dependent
 # These are used for both runtime and compiletime
 COMMON_DEPEND="
-	>=app-arch/lz4-0_p131:=
+	>=app-arch/lz4-1.9.4:=
 	app-arch/zstd:=
-	sys-libs/ncurses:0=
-	>=sys-libs/zlib-1.2.3:0=
-	>=dev-libs/openssl-1.0.0:0=
+	>=dev-libs/openssl-1.0.0:=
+	sys-libs/ncurses:=
+	>=sys-libs/zlib-1.2.13:=
 	server? (
 		dev-libs/icu:=
-		dev-libs/libevent:=[ssl,threads]
+		dev-libs/libevent:=[ssl,threads(+)]
 		>=dev-libs/protobuf-3.8:=
 		net-libs/libtirpc:=
 		cjk? ( app-text/mecab:= )
-		jemalloc? ( dev-libs/jemalloc:0= )
+		jemalloc? ( dev-libs/jemalloc:= )
 		kernel_linux? (
-			dev-libs/libaio:0=
-			sys-process/procps:0=
+			dev-libs/libaio:=
+			sys-process/procps:=
 		)
 		numa? ( sys-process/numactl )
-		tcmalloc? ( dev-util/google-perftools:0= )
+		tcmalloc? ( dev-util/google-perftools:= )
 	)
 "
-
 DEPEND="
 	${COMMON_DEPEND}
-	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 	app-alternatives/yacc
 	server? ( net-libs/rpcsvc-proto )
 	test? (
@@ -70,10 +68,12 @@ DEPEND="
 		dev-perl/JSON
 	)
 "
-
 RDEPEND="
 	${COMMON_DEPEND}
-	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
+	!dev-db/mariadb
+	!dev-db/mariadb-galera
+	!dev-db/percona-server
+	!dev-db/mysql-cluster
 	!dev-db/mysql:0
 	!dev-db/mysql:5.7
 	selinux? ( sec-policy/selinux-mysql )
@@ -82,14 +82,12 @@ RDEPEND="
 		dev-db/mysql-init-scripts
 	)
 "
-
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )"
 
 PATCHES=(
 	"${WORKDIR}"/mysql-patches
-	"${FILESDIR}"/mysql-8.0.31-build-tmpdir-nodefault.patch
 )
 
 mysql_init_vars() {
@@ -109,7 +107,7 @@ pkg_pretend() {
 		if use server ; then
 			CHECKREQS_DISK_BUILD="3G"
 
-			if has test $FEATURES ; then
+			if has test ${FEATURES} ; then
 				CHECKREQS_DISK_BUILD="9G"
 			fi
 
@@ -134,8 +132,9 @@ pkg_setup() {
 			fi
 
 			local aio_max_nr=$(sysctl -n fs.aio-max-nr 2>/dev/null)
-			[[ -z "${aio_max_nr}" || ${aio_max_nr} -lt 250000 ]] \
-				&& die "FEATURES=test will require fs.aio-max-nr=250000 at minimum!"
+			if [[ -z "${aio_max_nr}" || ${aio_max_nr} -lt 250000 ]] ; then
+				die "FEATURES=test will require fs.aio-max-nr=250000 at minimum!"
+			fi
 
 			if use latin1 ; then
 				# Upstream only supports tests with default charset
@@ -143,17 +142,15 @@ pkg_setup() {
 			fi
 		fi
 
-		if use kernel_linux ; then
-			if use numa ; then
-				linux-info_get_any_version
+		if use kernel_linux && use numa ; then
+			linux-info_get_any_version
 
-				local CONFIG_CHECK="~NUMA"
+			local CONFIG_CHECK="~NUMA"
 
-				local WARNING_NUMA="This package expects NUMA support in kernel which this system does not have at the moment;"
-				WARNING_NUMA+=" Either expect runtime errors, enable NUMA support in kernel or rebuild the package without NUMA support"
+			local WARNING_NUMA="This package expects NUMA support in kernel which this system does not have at the moment;"
+			WARNING_NUMA+=" Either expect runtime errors, enable NUMA support in kernel or rebuild the package without NUMA support"
 
-				check_extra_config
-			fi
+			check_extra_config
 		fi
 
 		use server && check-reqs_pkg_setup
@@ -194,7 +191,19 @@ src_configure() {
 	# Code is now requiring C++17 due to https://github.com/mysql/mysql-server/commit/236ab55bedd8c9eacd80766d85edde2a8afacd08
 	append-cxxflags -std=c++17
 
-	CMAKE_BUILD_TYPE="RelWithDebInfo"
+	# Broken with FORTIFY_SOURCE=3
+	# Our toolchain sets F_S=2 by default w/ >= -O2, so we need
+	# to unset F_S first, then explicitly set 2, to negate any default
+	# and anything set by the user if they're choosing 3 (or if they've
+	# modified GCC to set 3).
+	#
+	# bug #891259
+	if is-flagq '-O[23]' || is-flagq '-Ofast' ; then
+		# We can't unconditionally do this b/c we fortify needs
+		# some level of optimisation.
+		filter-flags -D_FORTIFY_SOURCE=3
+		append-cppflags -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
+	fi
 
 	# debug hack wrt #497532
 	local mycmakeargs=(
@@ -334,26 +343,27 @@ src_configure() {
 }
 
 # Official test instructions:
-# ulimit -n 16500 && \
-# USE='perl server' \
-# FEATURES='test userpriv' \
-# ebuild mysql-X.X.XX.ebuild \
-# digest clean package
+# ulimit -n 16500 && USE='perl server' FEATURES='test userpriv' \
+# ebuild mysql-X.X.XX.ebuild digest clean test install
 src_test() {
 	_disable_test() {
 		local rawtestname bug reason
 		rawtestname="${1}" ; shift
 		bug="${1}" ; shift
 		reason="${@}"
+
 		ewarn "test '${rawtestname}' disabled: '${reason}' (BUG#${bug})"
-		echo ${rawtestname} : BUG#${bug} ${reason} >> "${T}/disabled.def"
+		echo "${rawtestname} : BUG#${bug} ${reason}" >> "${T}/disabled.def"
 	}
 
 	local TESTDIR="${BUILD_DIR}/mysql-test"
 	local retstatus_tests
 
+	einfo "Official test instructions:"
+	einfo "ulimit -n 16500 && USE='perl server' FEATURES='test userpriv' ebuild ..."
+
 	if ! use server ; then
-		einfo "Skipping server tests due to minimal build."
+		ewarn "Skipping server tests due to minimal build!"
 		return 0
 	fi
 
@@ -365,79 +375,88 @@ src_test() {
 
 		if [[ ${MTR_PARALLEL} -gt 4 ]] ; then
 			# Running multiple tests in parallel usually require higher ulimit
-			# and fs.aio-max-nr setting. In addition, tests like main.multi_update
-			# are known to hit timeout when system is busy.
+			# and fs.aio-max-nr settings. In addition, tests like main.multi_update
+			# are known to hit timeouts when the system is busy.
+			#
 			# To avoid test failure we will limit MTR_PARALLEL to 4 instead of
 			# using "auto".
-			local info_msg="Parallel MySQL test suite jobs limited to 4 (MAKEOPTS=${MTR_PARALLEL})"
-			info_msg+=" to avoid test failures. Set MTR_PARALLEL if you know what you are doing!"
-			einfo "${info_msg}"
-			unset info_msg
+			einfo "Parallel MySQL test suite jobs limited to 4 (MAKEOPTS=${MTR_PARALLEL})"
+			einfo "to avoid test failures. Set MTR_PARALLEL if you know what you are doing!"
 			MTR_PARALLEL=4
 		fi
 	else
 		einfo "MTR_PARALLEL is set to '${MTR_PARALLEL}'"
 	fi
 
-	# create directories because mysqladmin might run out of order
+	# Create directories because mysqladmin might run out of order
 	mkdir -p "${T}"/var-tests{,/log} || die
 
 	# Run mysql tests
 	pushd "${TESTDIR}" &>/dev/null || die
 
-	touch "${T}/disabled.def"
+	touch "${T}/disabled.def" || die
 
-	local -a disabled_tests
-	disabled_tests+=( "auth_sec.atomic_rename_user;103512;Depends on user running test" )
-	disabled_tests+=( "auth_sec.keyring_file_data_qa;0;Won't work with user privileges" )
-	disabled_tests+=( "auth_sec.openssl_without_fips;94718;Known test failure" )
-	disabled_tests+=( "gis.geometry_class_attri_prop;5452;Known rounding error with latest AMD processors (PS)" )
-	disabled_tests+=( "gis.geometry_property_function_issimple;5452;Known rounding error with latest AMD processors (PS)" )
-	disabled_tests+=( "gis.gis_bugs_crashes;5452;Known rounding error with latest AMD processors (PS)" )
-	disabled_tests+=( "gis.spatial_analysis_functions_buffer;5452;Known rounding error with latest AMD processors (PS)" )
-	disabled_tests+=( "gis.spatial_analysis_functions_centroid;5452;Known rounding error with latest AMD processors (PS)" )
-	disabled_tests+=( "gis.spatial_analysis_functions_distance;5452;Known rounding error with latest AMD processors (PS)" )
-	disabled_tests+=( "gis.spatial_op_testingfunc_mix;5452;Known rounding error with latest AMD processors (PS)" )
-	disabled_tests+=( "gis.spatial_operators_intersection;5452;Known rounding error with latest AMD processors (PS)" )
-	disabled_tests+=( "gis.spatial_utility_function_distance_sphere;5452;Known rounding error with latest AMD processors (PS)" )
-	disabled_tests+=( "gis.spatial_utility_function_simplify;5452;Known rounding error with latest AMD processors (PS)" )
-	disabled_tests+=( "gis.st_symdifference;5452;Known rounding error with latest AMD processors (PS)" )
-	disabled_tests+=( "innodb.alter_kill;0;Known test failure -- no upstream bug yet" )
-	disabled_tests+=( "main.derived_limit;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "main.explain_tree;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "main.gis-precise;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "main.mysql_load_data_local_dir;0;Known test failure -- no upstream bug yet" )
-	disabled_tests+=( "main.select_icp_mrr;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "main.subquery_bugs;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "main.subquery_sj_dupsweed;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "main.subquery_sj_dupsweed_bka;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "main.subquery_sj_dupsweed_bka_nobnl;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "main.subquery_sj_firstmatch;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "main.subquery_sj_firstmatch_bka;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "main.subquery_sj_firstmatch_bka_nobnl;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "main.subquery_sj_mat_bka_nobnl;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "main.window_std_var;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "main.window_std_var_optimized;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "main.with_recursive;0;Known rounding error with latest AMD processors -- no upstream bug yet" )
-	disabled_tests+=( "perfschema.statement_digest_query_sample;0;Test will fail on slow hardware")
-	disabled_tests+=( "rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch;0;Unstable test" )
-	disabled_tests+=( "rpl_gtid.rpl_gtid_stm_drop_table;90612;Known test failure" )
-	disabled_tests+=( "rpl_gtid.rpl_multi_source_mtr_includes;0;Known failure - no upstream bug yet" )
-	disabled_tests+=( "sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware")
-	disabled_tests+=( "x.connection;0;Known failure - no upstream bug yet" )
-	disabled_tests+=( "x.message_compressed_payload;0;False positive caused by protobuff-3.11+" )
-	disabled_tests+=( "x.message_protobuf_nested;0;False positive caused by protobuff-3.11+" )
+	local -a disabled_tests=(
+		"auth_sec.atomic_rename_user;103512;Depends on user running test"
+		"auth_sec.keyring_file_data_qa;0;Won't work with user privileges"
+		"auth_sec.openssl_without_fips;94718;Known test failure"
+
+		"gis.geometry_class_attri_prop;5452;Known rounding error with latest AMD processors (PS)"
+		"gis.geometry_property_function_issimple;5452;Known rounding error with latest AMD processors (PS)"
+		"gis.gis_bugs_crashes;5452;Known rounding error with latest AMD processors (PS)"
+		"gis.spatial_analysis_functions_buffer;5452;Known rounding error with latest AMD processors (PS)"
+		"gis.spatial_analysis_functions_centroid;5452;Known rounding error with latest AMD processors (PS)"
+		"gis.spatial_analysis_functions_distance;5452;Known rounding error with latest AMD processors (PS)"
+		"gis.spatial_op_testingfunc_mix;5452;Known rounding error with latest AMD processors (PS)"
+		"gis.spatial_operators_intersection;5452;Known rounding error with latest AMD processors (PS)"
+		"gis.spatial_utility_function_distance_sphere;5452;Known rounding error with latest AMD processors (PS)"
+		"gis.spatial_utility_function_simplify;5452;Known rounding error with latest AMD processors (PS)"
+		"gis.st_symdifference;5452;Known rounding error with latest AMD processors (PS)"
+
+		"innodb.alter_kill;0;Known test failure -- no upstream bug yet"
+
+		"main.derived_limit;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.explain_tree;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.gis-precise;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.mysql_load_data_local_dir;0;Known test failure -- no upstream bug yet"
+		"main.select_icp_mrr;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.subquery_bugs;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.subquery_sj_dupsweed;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.subquery_sj_dupsweed_bka;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.subquery_sj_dupsweed_bka_nobnl;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.subquery_sj_firstmatch;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.subquery_sj_firstmatch_bka;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.subquery_sj_firstmatch_bka_nobnl;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.subquery_sj_mat_bka_nobnl;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.window_std_var;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.window_std_var_optimized;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"main.with_recursive;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"perfschema.statement_digest_query_sample;0;Test will fail on slow hardware"
+
+		"rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch;0;Unstable test"
+		"rpl_gtid.rpl_gtid_stm_drop_table;90612;Known test failure"
+		"rpl_gtid.rpl_multi_source_mtr_includes;0;Known failure - no upstream bug yet"
+
+		"sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware"
+
+		"x.connection;0;Known failure - no upstream bug yet"
+		"x.message_compressed_payload;0;False positive caused by protobuff-3.11+"
+		"x.message_protobuf_nested;0;False positive caused by protobuff-3.11+"
+	)
 
 	if ! hash zip 1>/dev/null 2>&1 ; then
-		# no need to force dep app-arch/zip for one test
-		disabled_tests+=( "innodb.discarded_partition_create;0;Requires app-arch/zip" )
-		disabled_tests+=( "innodb.partition_upgrade_create;0;Requires app-arch/zip" )
+		# No need to force dep app-arch/zip for one test
+		disabled_tests+=(
+			"innodb.discarded_partition_create;0;Requires app-arch/zip"
+			"innodb.partition_upgrade_create;0;Requires app-arch/zip"
+		)
 	fi
 
 	if has_version ">=dev-libs/openssl-3" ; then
 		# >=dev-libs/openssl-3 defaults to security level 1 which disallow
 		# TLSv1/1.1 but tests will require TLSv1/1.1.
 		einfo "Set OpenSSL configuration for test suite ..."
+
 		cat > "${T}/openssl_tlsv1.cnf" <<- EOF || die
 		openssl_conf = default_conf
 
@@ -498,14 +517,14 @@ src_test() {
 	# Try to increase file limits to increase test coverage
 	if ! ulimit -n 16500 1>/dev/null 2>&1 ; then
 		# Upper limit comes from parts.partition_* tests
-		ewarn "For maximum test coverage please raise open file limit to 16500 (ulimit -n 16500) before calling the package manager."
+		ewarn "For maximum test coverage, please raise open file limit to 16500 (ulimit -n 16500) before calling the package manager."
 
 		if ! ulimit -n 4162 1>/dev/null 2>&1 ; then
 			# Medium limit comes from '[Warning] Buffered warning: Could not increase number of max_open_files to more than 3000 (request: 4162)'
 			ewarn "For medium test coverage please raise open file limit to 4162 (ulimit -n 4162) before calling the package manager."
 
 			if ! ulimit -n 3000 1>/dev/null 2>&1 ; then
-				ewarn "For minimum test coverage please raise open file limit to 3000 (ulimit -n 3000) before calling the package manager."
+				ewarn "For minimum test coverage, please raise open file limit to 3000 (ulimit -n 3000) before calling the package manager."
 			else
 				einfo "Will run test suite with open file limit set to 3000 (minimum test coverage)."
 			fi
@@ -517,7 +536,7 @@ src_test() {
 	fi
 
 	# run mysql-test tests
-	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
+	nonfatal edo perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
 	retstatus_tests=$?
 
 	popd &>/dev/null || die
@@ -535,6 +554,9 @@ src_test() {
 
 src_install() {
 	cmake_src_install
+
+	# Not a GNU info file, more like a tiny README.
+	rm "${ED}"/usr/share/info/mysql.info || die
 
 	# Make sure the vars are correctly initialized
 	mysql_init_vars
