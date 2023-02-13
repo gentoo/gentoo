@@ -5,4 +5,7 @@
     <email>zerochaos@gentoo.org</email>
     <name>Rick Farina</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">Yubico/yubikey-manager-qt</remote-id>
+  </upstream>
 </pkgmetadata>
