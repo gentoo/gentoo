@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	dev-python/aiofiles[${PYTHON_USEDEP}]
+	<dev-python/aiofiles-23[${PYTHON_USEDEP}]
 	dev-python/aiosqlite[${PYTHON_USEDEP}]
 	dev-python/y-py[${PYTHON_USEDEP}]
 "
