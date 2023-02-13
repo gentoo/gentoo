@@ -25,6 +25,12 @@ SLOT="0"
 
 DOCS=( README.md )
 
+src_prepare() {
+	sed -i '/ *platform==/s|.*||' setup.cfg || die  # bug #894148
+
+	distutils-r1_src_prepare
+}
+
 pkg_postinst() {
 	local supported_format
 	local -a supported_formats=(
