@@ -22,7 +22,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-python/jupyter_server[${PYTHON_USEDEP}]
-	dev-python/jupyter_events[${PYTHON_USEDEP}]
+	~dev-python/jupyter_events-0.5.0[${PYTHON_USEDEP}]
 "
 
 BDEPEND="
