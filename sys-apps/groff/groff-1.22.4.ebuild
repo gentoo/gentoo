@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 MY_P="${P/_/.}"
 
@@ -70,6 +70,9 @@ src_configure() {
 		# bug #678026
 		export gl_cv_func_signbit_gcc=yes
 	fi
+
+	# Drop in release after 1.22.4! bug #894154
+	append-cxxflags -std=gnu++11
 
 	local myeconfargs=(
 		--with-appresdir="${EPREFIX}"/usr/share/X11/app-defaults
