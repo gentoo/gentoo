@@ -23,7 +23,7 @@ SLOT="0"
 
 # hdfs needs big java hdfs not yet in portage
 # azure not yet in portage
-IUSE="doc openmp s3 test"
+IUSE="cpu_flags_x86_sse2 doc openmp s3 test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="net-misc/curl[ssl]"
@@ -47,9 +47,7 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 
-	# Respect user flags (SSE2 does nothing more than adding -msse2)
-	# Also doc installs everything, so remove
-	sed -e '/-O3/d' \
+	sed -e '/-O3/d' -e '/check_cxx_compiler_flag("-msse2"/d' \
 		-e '/check_cxx.*SSE2/d' \
 		-i CMakeLists.txt || die
 
@@ -58,7 +56,7 @@ src_prepare() {
 	sed -e "s|libdmlc.a||g" \
 		-i test/dmlc_test.mk test/unittest/dmlc_unittest.mk || die
 	cat <<-EOF > config.mk
-		USE_SSE=0
+		USE_SSE=$(usex cpu_flags_x86_sse2 1 0)
 		WITH_FPIC=1
 		USE_OPENMP=$(use openmp && echo 1 || echo 0)
 		USE_S3=$(use s3 && echo 1 || echo 0)
@@ -70,6 +68,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DSUPPORT_MSSE2=$(usex cpu_flags_x86_sse2)
 		-DUSE_S3=$(usex s3)
 		-DUSE_OPENMP=$(usex openmp)
 	)
