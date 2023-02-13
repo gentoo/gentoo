@@ -47,15 +47,22 @@ src_prepare() {
 		-i CMakeLists.txt || die
 
 	# All these hacks below to allow testing
-	sed -e 's|-O3||' -e 's|-lm|-lm -L$(LD_LIBRARY_PATH) -ldmlc|g' -i Makefile || die
+	sed -e 's|-O3||' -e 's|-std=c++11|-std=c++14|' \
+		-e "s|-lm|-lm -L\"${BUILD_DIR}\" -ldmlc|g" \
+		-i Makefile || die
 	sed -e "s|libdmlc.a||g" \
+		-e "/^GTEST_LIB=/s|=.*|=/usr/$(get_libdir)|" \
+		-e "/^GTEST_INC=/s|=.*|=/usr/include|" \
 		-i test/dmlc_test.mk test/unittest/dmlc_unittest.mk || die
+	# Don't ever download gtest
+	sed -e 's/^if (NOT GTEST_FOUND)$/if (FALSE)/' \
+		-i test/unittest/CMakeLists.txt || die
 	cat <<-EOF > config.mk
 		USE_SSE=$(usex cpu_flags_x86_sse2 1 0)
 		WITH_FPIC=1
-		USE_OPENMP=$(use openmp && echo 1 || echo 0)
-		USE_S3=$(use s3 && echo 1 || echo 0)
-		BUILD_TEST=$(use test && echo 1 || echo 0)
+		USE_OPENMP=$(usex openmp 1 0)
+		USE_S3=$(usex s3 1 0)
+		BUILD_TEST=$(usex test 1 0)
 		DMLC_CFLAGS=${CXXFLAGS}
 		DMLC_LDFLAGS=${LDFLAGS}
 	EOF
@@ -63,7 +70,9 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DGOOGLE_TEST=$(usex test)
 		-DSUPPORT_MSSE2=$(usex cpu_flags_x86_sse2)
+		-DUSE_CXX14_IF_AVAILABLE=YES # Newer gtest needs C++14 or later
 		-DUSE_S3=$(usex s3)
 		-DUSE_OPENMP=$(usex openmp)
 	)
@@ -80,12 +89,11 @@ src_compile() {
 }
 
 src_test() {
-	tc-export CXX
-	export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${BUILD_DIR}"
-
 	emake test
 
-	test/unittest/dmlc_unittest || die
+	LD_LIBRARY_PATH="${BUILD_DIR}" test/unittest/dmlc_unittest || die
+
+	cmake_src_test
 }
 
 src_install() {
