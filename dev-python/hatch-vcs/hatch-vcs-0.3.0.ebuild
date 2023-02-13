@@ -31,4 +31,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-Work-with-setuptools_scm-7.1-fix-25-26.patch
+)
+
 distutils_enable_tests pytest
