@@ -43,8 +43,12 @@ esac
 # Path to scrollkeeper-update
 : ${SCROLLKEEPER_UPDATE_BIN:="/usr/bin/scrollkeeper-update"}
 
+# @ECLASS_VARIABLE: GLIB_COMPILE_RESOURCES
+# @DESCRIPTION:
+# Path to glib-compile-resources
+: ${GLIB_COMPILE_RESOURCES:="/usr/bin/glib-compile-resources"}
+
 # @ECLASS_VARIABLE: GLIB_COMPILE_SCHEMAS
-# @INTERNAL
 # @DESCRIPTION:
 # Path to glib-compile-schemas
 : ${GLIB_COMPILE_SCHEMAS:="/usr/bin/glib-compile-schemas"}
