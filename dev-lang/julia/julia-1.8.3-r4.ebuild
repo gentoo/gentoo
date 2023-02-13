@@ -25,7 +25,6 @@ RDEPEND="
 	app-misc/ca-certificates
 	dev-libs/gmp:0=
 	dev-libs/libgit2:0
-	>=dev-libs/libpcre2-10.23:0=[jit,unicode]
 	dev-libs/mpfr:0=
 	>=dev-libs/libutf8proc-2.6.1:0=[-cjk]
 	>=dev-util/patchelf-0.13
