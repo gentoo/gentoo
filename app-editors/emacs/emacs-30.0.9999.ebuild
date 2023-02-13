@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -67,7 +67,8 @@ X_DEPEND="x11-libs/libICE
 	gtk? (
 		x11-libs/gtk+:3
 		xwidgets? (
-			net-libs/webkit-gtk:4=
+			|| ( net-libs/webkit-gtk:4.1 net-libs/webkit-gtk:4 )
+			net-libs/webkit-gtk:=
 			x11-libs/libXcomposite
 		)
 	)
@@ -137,7 +138,10 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 					>=dev-libs/libotf-0.9.4
 					>=dev-libs/m17n-lib-1.5.1
 				)
-				xwidgets? ( net-libs/webkit-gtk:4= )
+				xwidgets? (
+					|| ( net-libs/webkit-gtk:4.1 net-libs/webkit-gtk:4 )
+					net-libs/webkit-gtk:=
+				)
 			) )
 			!gtk? ( ${X_DEPEND} )
 			X? ( ${X_DEPEND} )
