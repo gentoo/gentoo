@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Synthesis ToolKit in C++"
 HOMEPAGE="https://ccrma.stanford.edu/software/stk/"
@@ -37,6 +37,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use kernel_linux && append-flags -D__OS_LINUX__
+
 	#breaks with --disable-foo...uses as --enable-foo
 	local myconf
 	if use debug; then
