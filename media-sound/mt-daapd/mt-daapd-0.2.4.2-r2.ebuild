@@ -25,7 +25,7 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	app-alternatives/yacc
+	dev-util/byacc
 	virtual/pkgconfig
 "
 
@@ -50,6 +50,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Incompatible with Bison 3, dead upstream
+	export YACC=byacc
+
 	econf \
 		$(use_enable vorbis oggvorbis) \
 		--disable-maintainer-mode \
