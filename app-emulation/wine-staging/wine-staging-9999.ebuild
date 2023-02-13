@@ -4,7 +4,9 @@
 EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-inherit autotools flag-o-matic multilib multilib-build toolchain-funcs wrapper
+PYTHON_COMPAT=( python3_{9..11} )
+inherit autotools edo flag-o-matic multilib multilib-build
+inherit python-any-r1 toolchain-funcs wrapper
 
 WINE_GECKO=2.47.3
 WINE_MONO=7.4.0
@@ -110,7 +112,16 @@ DEPEND="
 	${WINE_COMMON_DEPEND}
 	sys-kernel/linux-headers
 	X? ( x11-base/xorg-proto )"
+# gitapply.sh prefers git but can fallback to patch+extras
 BDEPEND="
+	${PYTHON_DEPS}
+	|| (
+		dev-vcs/git
+		(
+			sys-apps/gawk
+			sys-apps/util-linux
+		)
+	)
 	dev-lang/perl
 	sys-devel/binutils
 	sys-devel/bison
@@ -164,19 +175,14 @@ src_unpack() {
 }
 
 src_prepare() {
-	local staging=(
-		./patchinstall.sh DESTDIR="${S}"
+	local patchinstallargs=(
 		--all
-		--backend=eapply
 		--no-autoconf
 		-W winemenubuilder-Desktop_Icon_Path #652176
 		${MY_WINE_STAGING_CONF}
 	)
 
-	# source patcher in a subshell so can use eapply as a backend
-	ebegin "Running ${staging[*]}"
-	( cd ../${P}/patches && . "${staging[@]}" )
-	eend ${?} || die "Failed to apply the patchset"
+	edo "${PYTHON}" ../${P}/staging/patchinstall.py "${patchinstallargs[@]}"
 
 	# sanity check, bumping these has a history of oversights
 	local geckomono=$(sed -En '/^#define (GECKO|MONO)_VER/{s/[^0-9.]//gp}' \
