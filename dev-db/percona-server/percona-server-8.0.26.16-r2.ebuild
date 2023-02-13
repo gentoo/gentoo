@@ -58,7 +58,7 @@ COMMON_DEPEND="
 	>=dev-libs/openssl-1.0.0:0=
 	server? (
 		dev-libs/icu:=
-		dev-libs/libevent:=[ssl,threads]
+		dev-libs/libevent:=[ssl,threads(+)]
 		>=dev-libs/protobuf-3.8:=
 		net-libs/libtirpc:=
 		net-misc/curl:=
