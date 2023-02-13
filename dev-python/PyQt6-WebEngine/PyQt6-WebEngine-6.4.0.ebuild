@@ -5,15 +5,14 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=sip
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1 flag-o-matic multiprocessing qmake-utils
+inherit distutils-r1 flag-o-matic multiprocessing pypi qmake-utils
 
 QT_PV="$(ver_cut 1-2):6"
-MY_P="${P/-/_}"
 
 DESCRIPTION="Python bindings for QtWebEngine"
 HOMEPAGE="https://www.riverbankcomputing.com/software/pyqtwebengine/"
-SRC_URI="mirror://pypi/${P::1}/${PN}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="$(pypi_sdist_url --no-normalize ${PN/-/_})"
+S="${WORKDIR}/${P/-/_}"
 
 LICENSE="GPL-3"
 SLOT="0"
