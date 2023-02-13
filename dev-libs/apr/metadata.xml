@@ -6,6 +6,7 @@
 		<name>Apache project</name>
 	</maintainer>
 	<use>
+		<flag name="old-kernel">Enable compatibility with older kernels</flag>
 		<flag name="older-kernels-compatibility">Enable binary compatibility with older kernels</flag>
 		<flag name="urandom">Use /dev/urandom instead of /dev/random</flag>
 	</use>
