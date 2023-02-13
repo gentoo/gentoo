@@ -17,7 +17,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 IUSE="caps debug ipv6 openntpd parse-clocks readline samba selinux snmp ssl +threads vim-syntax zeroconf"
 
 COMMON_DEPEND="readline? ( >=sys-libs/readline-4.1:0= )
-	>=dev-libs/libevent-2.0.9:=[threads?]
+	>=dev-libs/libevent-2.0.9:=[threads(+)?]
 	kernel_linux? ( caps? ( sys-libs/libcap ) )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 	snmp? ( net-analyzer/net-snmp )
