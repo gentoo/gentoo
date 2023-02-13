@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ LICENSE="BSD"
 
 SLOT="0/2.1-7"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="debug +ssl static-libs test +threads"
+IUSE="debug +ssl static-libs test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -44,8 +44,7 @@ multilib_src_configure() {
 		$(use_enable debug malloc-replacement) \
 		$(use_enable ssl openssl) \
 		$(use_enable static-libs static) \
-		$(use_enable test libevent-regress) \
-		$(use_enable threads thread-support)
+		$(use_enable test libevent-regress)
 }
 
 src_test() {

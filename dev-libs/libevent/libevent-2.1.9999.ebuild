@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ SLOT="0/2.1-7"
 KEYWORDS=""
 IUSE="
 	+clock-gettime debug malloc-replacement +ssl static-libs test
-	+threads verbose-debug
+	verbose-debug
 "
 RESTRICT="test"
 
@@ -56,7 +56,6 @@ multilib_src_configure() {
 		$(use_enable ssl openssl) \
 		$(use_enable static-libs static) \
 		$(use_enable test libevent-regress) \
-		$(use_enable threads thread-support) \
 		$(use_enable verbose-debug) \
 		--disable-samples
 }
