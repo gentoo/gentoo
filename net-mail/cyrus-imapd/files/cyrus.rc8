@@ -9,12 +9,11 @@ depend() {
 }
 
 checkdirs() {
-	for dir in /run/cyrus/{,proc,lock,socket,sync}
-	do
-	checkpath -q -d -o cyrus:mail -m 0750 "${dir}" || {
-                eerror "Failed to create directory at $dir"
-                return 1
-	}
+	for dir in /run/cyrus /run/cyrus/proc /run/cyrus/lock /run/cyrus/socket /run/cyrus/sync; do
+		checkpath -q -d -o cyrus:mail -m 0750 "${dir}" || {
+			eerror "Failed to create directory at $dir"
+			return 1
+		}
 	done
 }
 
