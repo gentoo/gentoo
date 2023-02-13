@@ -157,7 +157,8 @@ src_install() {
 	fi
 
 	# Respect libdir (bug #734898)
-	sed -i -e "s:/lib:/$(get_libdir):" platform/debian/${PN}.pc || die "Failed to sed pkgconfig file to respect libdir in src_install()"
+	sed -i -e "s:/lib:/$(get_libdir):" platform/debian/${PN}.pc \
+		|| die "Failed to sed pkgconfig file to respect libdir in src_install()"
 
 	insinto /usr/$(get_libdir)/pkgconfig
 	doins platform/debian/${PN}.pc
