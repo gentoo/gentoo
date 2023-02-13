@@ -18,6 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	!<dev-perl/Kavorka-0.13.0
 	!<dev-perl/Types-ReadOnly-0.1.0
+	!dev-perl/Type-Tie
 	>=dev-perl/Exporter-Tiny-1.4.1
 	>=virtual/perl-Test-Simple-1.1.10
 	!minimal? (
