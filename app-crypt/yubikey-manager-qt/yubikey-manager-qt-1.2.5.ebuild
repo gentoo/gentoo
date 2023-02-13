@@ -19,7 +19,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 DEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=app-crypt/yubikey-manager-4.0.0[${PYTHON_USEDEP}]
+		>=app-crypt/yubikey-manager-5.0.0[${PYTHON_USEDEP}]
 		dev-python/cryptography[${PYTHON_USEDEP}]
 	')
 	dev-python/pyotherside[${PYTHON_SINGLE_USEDEP}]
