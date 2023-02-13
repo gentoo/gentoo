@@ -34,8 +34,6 @@ BDEPEND="doc? (
 		dev-texlive/texlive-fontutils
 	)"
 
-PATCHES=( "${FILESDIR}"/${PN}-install-dirs.patch )
-
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
