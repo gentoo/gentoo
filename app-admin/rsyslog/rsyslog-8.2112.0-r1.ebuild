@@ -115,6 +115,8 @@ fi
 CONFIG_CHECK="~INOTIFY_USER"
 WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"
 
+PATCHES=( "${FILESDIR}"/${PN}-8.2112.0-pr5024-configure.patch )
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
