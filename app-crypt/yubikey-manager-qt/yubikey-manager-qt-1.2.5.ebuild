@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit qmake-utils python-single-r1 desktop
 
 DESCRIPTION="Cross-platform application for configuring any YubiKey over all USB transports"
-HOMEPAGE="https://developers.yubico.com/yubikey-manager-qt https://github.com/Yubico/yubikey-manager-qt"
+HOMEPAGE="https://developers.yubico.com/yubikey-manager-qt/ https://github.com/Yubico/yubikey-manager-qt"
 SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.gz"
 S="${WORKDIR}/${PN}"
 
