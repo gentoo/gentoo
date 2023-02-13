@@ -50,7 +50,7 @@ https://bugs.gentoo.org/875011
 +#include <time.h>
  #include "playlist.h"
  
-+#define YYPARSE_PARAM
++#define YYPARSE_PARAM param
  #define YYERROR_VERBOSE 1
  
  extern int yyerror(char *msg);
