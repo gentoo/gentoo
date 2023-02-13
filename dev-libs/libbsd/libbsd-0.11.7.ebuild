@@ -22,6 +22,10 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-guillemjover )"
 
+PATCHES=(
+	"${FILESDIR}/libbsd-build-Fix-version-script-linker-support-detection.patch"
+)
+
 multilib_src_configure() {
 	# The build system will install libbsd-ctor.a despite USE="-static-libs"
 	# which is correct, see:
