@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 DOCS_BUILDER="mkdocs"
 DOCS_DEPEND="
+	dev-python/regex
 	dev-python/mkdocs-i18n
 	dev-python/mkdocs-material
 	dev-python/mkdocs-git-authors-plugin
