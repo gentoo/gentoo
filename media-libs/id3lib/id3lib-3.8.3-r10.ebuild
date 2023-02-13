@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -13,16 +13,15 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="doc static-libs"
+RESTRICT="test"
 
 RDEPEND="sys-libs/zlib:="
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
-
-RESTRICT="test"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 DOCS=( AUTHORS ChangeLog HISTORY README THANKS TODO )
 
-S=${WORKDIR}/${P/_}
+S="${WORKDIR}"/${P/_}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-zlib.patch
@@ -34,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-missing_nullpointer_check.patch
 	"${FILESDIR}"/${P}-security.patch
 	"${FILESDIR}"/${P}-vbr-stack-smashing.patch # bug 398571
+	"${FILESDIR}"/${P}-configure-clang.patch
 )
 
 src_prepare() {
@@ -41,7 +41,7 @@ src_prepare() {
 
 	sed -i 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' {.,zlib}/configure.in || die
 
-	AT_M4DIR=${S}/m4 eautoreconf
+	AT_M4DIR="${S}"/m4 eautoreconf
 }
 
 src_configure() {
@@ -50,6 +50,7 @@ src_configure() {
 
 src_compile() {
 	default
+
 	if use doc; then
 		pushd doc >/dev/null || die
 		doxygen Doxyfile || die
