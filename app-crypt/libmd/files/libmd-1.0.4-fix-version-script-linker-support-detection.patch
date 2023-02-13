@@ -1,0 +1,38 @@
+From e408786075b9540f76783f5c3ce87f6d1ece13cf Mon Sep 17 00:00:00 2001
+From: Guillem Jover <guillem@hadrons.org>
+Date: Sun, 12 Feb 2023 23:55:09 +0100
+Subject: [PATCH] build: Fix version script linker support detection
+
+When the linker uses --no-undefined-version either specified by the user
+or as the default behavior (such as with newer clang >= 16 releases), a missing symbol definition will cause a linker error if that symbol is
+listed in the version script.
+
+
+Bug: https://bugs.gentoo.org/894010
+Upstream issue: https://gitlab.freedesktop.org/libbsd/libmd/-/issues/1
+Upstream commit: https://gitlab.freedesktop.org/libbsd/libmd/-/commit/e408786075b9540f76783f5c3ce87f6d1ece13cf
+
+---
+ m4/libmd-linker.m4 | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/m4/libmd-linker.m4 b/m4/libmd-linker.m4
+index 7d1236a..3d6edcd 100644
+--- a/m4/libmd-linker.m4
++++ b/m4/libmd-linker.m4
+@@ -8,7 +8,11 @@ AC_DEFUN([LIBMD_LINKER_VERSION_SCRIPT], [
+     save_LDFLAGS=$LDFLAGS
+     LDFLAGS="$LDFLAGS -Wl,--version-script=conftest.map"
+     AC_LINK_IFELSE([
+-      AC_LANG_PROGRAM([], [])
++      AC_LANG_PROGRAM([[
++extern int symbol(void);
++int symbol(void) { return 0; }
++]], [[
++]])
+     ], [
+       libmd_cv_version_script=yes
+     ], [
+-- 
+GitLab
+
