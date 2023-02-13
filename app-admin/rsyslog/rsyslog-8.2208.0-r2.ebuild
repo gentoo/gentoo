@@ -81,7 +81,7 @@ RDEPEND="
 	rabbitmq? ( >=net-libs/rabbitmq-c-0.3.0:= )
 	redis? (
 		>=dev-libs/hiredis-0.11.0:=
-		dev-libs/libevent[threads]
+		dev-libs/libevent[threads(+)]
 	)
 	relp? ( >=dev-libs/librelp-1.2.17:= )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )

@@ -17,7 +17,7 @@ if [[ ${PV} == "9999" ]]; then
 
 	inherit git-r3
 else
-	KEYWORDS="amd64 arm arm64 ~hppa ~ia64 x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc64 ~riscv ~sparc x86"
 
 	SRC_URI="
 		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
@@ -81,7 +81,7 @@ RDEPEND="
 	rabbitmq? ( >=net-libs/rabbitmq-c-0.3.0:= )
 	redis? (
 		>=dev-libs/hiredis-0.11.0:=
-		dev-libs/libevent[threads]
+		dev-libs/libevent[threads(+)]
 	)
 	relp? ( >=dev-libs/librelp-1.2.17:= )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
@@ -117,7 +117,10 @@ fi
 CONFIG_CHECK="~INOTIFY_USER"
 WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"
 
-PATCHES=( "${FILESDIR}"/${PN}-8.2112.0-pr5024-configure.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.2112.0-pr5024-configure.patch
+	"${FILESDIR}"/${P}-5004-hostname.patch
+)
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
@@ -189,6 +192,7 @@ src_configure() {
 		--disable-generate-man-pages
 		--without-valgrind-testbench
 		--disable-liblogging-stdlog
+		--disable-imfile-tests  # Some imfile tests fail (noticed in version 8.2208.0)
 		$(use_enable test testbench)
 		$(use_enable test libfaketime)
 		$(use_enable test extended-tests)
