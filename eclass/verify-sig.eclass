@@ -65,9 +65,8 @@ case ${VERIFY_SIG_METHOD} in
 		BDEPEND="
 			verify-sig? (
 				app-crypt/gnupg
-				>=app-portage/gemato-18.0
-			)
-		"
+				>=app-portage/gemato-16
+			)"
 		;;
 	signify)
 		BDEPEND="verify-sig? ( app-crypt/signify )"
@@ -145,9 +144,8 @@ verify-sig_verify_detached() {
 			# gpg can't handle very long TMPDIR
 			# https://bugs.gentoo.org/854492
 			local -x TMPDIR=/tmp
-			gemato openpgp-verify-detached -K "${key}" \
-				"${extra_args[@]}" \
-				"${sig}" "${file}" ||
+			gemato gpg-wrap -K "${key}" "${extra_args[@]}" -- \
+				gpg --verify "${sig}" "${file}" ||
 				die "PGP signature verification failed"
 			;;
 		signify)
