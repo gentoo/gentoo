@@ -1,7 +1,7 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson toolchain-funcs
 
@@ -40,16 +40,28 @@ DEPEND="
 		x11-base/xwayland
 		x11-libs/libxcb
 	)
-	system-wfconfig? (
-		>=gui-libs/wf-config-0.7.1
-		<gui-libs/wf-config-0.8.0
-	)
-	!system-wfconfig? ( !gui-libs/wf-config )
-	system-wlroots? (
-		>=gui-libs/wlroots-0.16.0:0/16[X?]
-	)
-	!system-wlroots? ( !gui-libs/wlroots )
 "
+
+if [[ ${PV} == 9999 ]] ; then
+	DEPEND+="
+		system-wfconfig? ( ~gui-libs/wf-config-9999:= )
+		!system-wfconfig? ( !gui-libs/wf-config )
+		system-wlroots? ( ~gui-libs/wlroots-9999:=[X?] )
+		!system-wlroots? ( !gui-libs/wlroots )
+	"
+else
+	DEPEND+="
+		system-wfconfig? (
+			>=gui-libs/wf-config-0.7.1
+			<gui-libs/wf-config-0.8.0
+		)
+		!system-wfconfig? ( !gui-libs/wf-config )
+		system-wlroots? (
+			>=gui-libs/wlroots-0.16.0:0/16[X?]
+		)
+		!system-wlroots? ( !gui-libs/wlroots )
+	"
+fi
 
 RDEPEND="
 	${DEPEND}
