@@ -48,6 +48,8 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export AS CC CPP
+
 	local myconf=(
 		--enable-layout=gentoo
 		--enable-nonportable-atomics
