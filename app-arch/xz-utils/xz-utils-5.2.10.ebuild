@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Remember: we cannot leverage autotools in this ebuild in order
@@ -43,7 +43,7 @@ SLOT="0"
 IUSE="+extra-filters nls static-libs"
 
 if [[ ${PV} != 9999 ]] ; then
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-lassecollin )"
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-lassecollin-20230213 )"
 fi
 
 # Tests currently do not account for smaller feature set
