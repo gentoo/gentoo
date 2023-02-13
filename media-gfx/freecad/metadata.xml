@@ -52,6 +52,9 @@
 		<flag name="material">
 			Build the material module and workbench to work with materials
 		</flag>
+		<flag name="netgen">
+			Build support for the netgen mesher through <pkg>media-gfx/netgen</pkg>.
+		</flag>
 		<flag name="openscad">
 			Build the OpenSCAD module for interoperability with OpenSCAD 
 			and repairing Constructive Solid Geometry (CSG) history
