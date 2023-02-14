@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="GPGstats calculates statistics on the keys in your key-ring"
 HOMEPAGE="http://www.vanheusden.com/gpgstats/"
@@ -19,6 +19,9 @@ DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}"/${P}-flags.patch )
 
 src_compile() {
+	# Uses removed 'register' keyword, bug #894350
+	append-cxxflags -std=c++14
+
 	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" DEBUG=
 }
 
