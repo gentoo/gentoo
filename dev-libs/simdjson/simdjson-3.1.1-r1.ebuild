@@ -27,7 +27,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	tools? ( dev-libs/cxxopts:= )
+	tools? ( <dev-libs/cxxopts-3.1:= )
 "
 
 REQUIRED_USE="test? ( tools )"
