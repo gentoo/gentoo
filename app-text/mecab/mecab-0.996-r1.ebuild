@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
 
 inherit autotools
 
@@ -14,16 +14,24 @@ KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 SLOT="0"
 IUSE="static-libs unicode"
 
-DEPEND="dev-lang/perl
+BDEPEND="
+	dev-lang/perl
 	sys-devel/gettext
-	virtual/libiconv"
-RDEPEND=""
-PDEPEND="|| (
+"
+DEPEND="virtual/libiconv"
+RDEPEND="${DEPEND}"
+PDEPEND="
+	|| (
 		app-dicts/mecab-ipadic[unicode=]
 		app-dicts/mecab-naist-jdic[unicode=]
-	)"
+	)
+"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.98-iconv.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.98-iconv.patch
+	"${FILESDIR}"/${PN}-0.996-clang-16-register.patch
+)
+
 HTML_DOCS=( doc/. )
 
 src_prepare() {
