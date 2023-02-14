@@ -74,6 +74,16 @@ Signed-off-by: Steffen Winter <steffen.winter@proton.me>
  #include <sys/eventfd.h>
  #include <signal.h>
  #include <poll.h>
+--- a/test/send-zerocopy.c
++++ b/test/send-zerocopy.c
+@@ -4,7 +4,6 @@
+ #include <stdint.h>
+ #include <assert.h>
+ #include <errno.h>
+-#include <error.h>
+ #include <limits.h>
+ #include <fcntl.h>
+ #include <unistd.h>
 --- a/test/single-issuer.c
 +++ b/test/single-issuer.c
 @@ -5,7 +5,6 @@
