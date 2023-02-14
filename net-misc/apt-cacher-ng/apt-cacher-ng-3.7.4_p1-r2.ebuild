@@ -21,7 +21,7 @@ IUSE="doc fuse systemd tcpd"
 DEPEND="acct-user/apt-cacher-ng
 	acct-group/apt-cacher-ng
 	app-arch/bzip2
-	dev-libs/libevent:=[threads(+)]
+	dev-libs/libevent:=
 	dev-libs/openssl:0=
 	net-dns/c-ares:=
 	sys-libs/zlib
