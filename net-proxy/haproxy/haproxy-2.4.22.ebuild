@@ -52,7 +52,6 @@ S="${WORKDIR}/${MY_P}"
 
 DOCS=( CHANGELOG CONTRIBUTING MAINTAINERS README )
 EXTRAS=( admin/halog admin/iprange dev/tcploop dev/hpack )
-PATCHES=( "${FILESDIR}/${PN}-2.7.2-hpack.patch" )
 
 haproxy_use() {
 	(( $# != 2 )) && die "${FUNCNAME} <USE flag> <make option>"
@@ -141,7 +140,7 @@ src_install() {
 	doins examples/errorfiles/*
 
 	if use doc; then
-		dodoc doc/*.txt
+		dodoc ROADMAP doc/*.txt
 		#if use lua; then
 		# TODO: doc/lua-api/
 		#fi
