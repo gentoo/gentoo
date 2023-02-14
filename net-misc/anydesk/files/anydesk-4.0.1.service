@@ -6,7 +6,7 @@ After=systemd-user-sessions.service
 [Service]
 Type=simple
 ExecStart=/opt/bin/anydesk --service
-PIDFile=/var/run/anydesk.pid
+PIDFile=/run/anydesk.pid
 KillMode=mixed
 TimeoutStopSec=30
 User=root
