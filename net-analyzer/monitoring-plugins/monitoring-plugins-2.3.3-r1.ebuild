@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-inherit autotools flag-o-matic
+inherit flag-o-matic
 
 DESCRIPTION="50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu"
 HOMEPAGE="https://www.monitoring-plugins.org/"
@@ -53,7 +53,6 @@ RDEPEND="${DEPEND}
 	acct-group/nagios
 	acct-user/nagios
 	!net-analyzer/nagios-plugins"
-BDEPEND="sys-devel/gettext"
 
 # At least one test is interactive.
 RESTRICT="test"
@@ -62,19 +61,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-gnutls.patch" #880211
 	"${FILESDIR}/${PN}-fix-check-http-segfault.patch" #893252
 )
-
-src_prepare() {
-	default
-
-	# Refresh the gettext macro to fix musl build, bug #892645
-	# This should be unnecessary in the next release (>2.3.3) as upstream
-	# refreshed its copy of gnulib, so on next release:
-	# - We may be able to drop the gettext BDEPEND (check!)
-	# - Drop this cp call
-	# - Drop eautoreconf
-	cp "${BROOT}"/usr/share/aclocal/gettext.m4 gl/m4/ || die
-	eautoreconf
-}
 
 src_configure() {
 	append-flags -fno-strict-aliasing
