@@ -110,7 +110,6 @@ src_configure() {
 	sed -i -r \
 		-e "/^(apr_builddir|apr_builders|top_builddir)=/s:=:=${SYSROOT}:" \
 		-e "/^CC=/s:=.*:=$(tc-getCC):" \
-		-e '/^(C|CPP|CXX|LD)FLAGS=/d' \
 		-e '/^LTFLAGS/s:--silent::' \
 		build/rules.mk || die
 }
