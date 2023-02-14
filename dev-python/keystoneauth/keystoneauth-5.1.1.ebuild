@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
+MY_P=keystoneauth1-${PV}
 DESCRIPTION="This package contains tools for authenticating to an OpenStack-based cloud"
 HOMEPAGE="https://github.com/openstack/keystoneauth"
 HOMEPAGE="
@@ -15,8 +16,8 @@ HOMEPAGE="
 	https://github.com/openstack/keystoneauth/
 	https://pypi.org/project/keystoneauth1/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}1/${PN}1-${PV}.tar.gz"
-S="${WORKDIR}/${PN}1-${PV}"
+SRC_URI="mirror://pypi/${MY_P::1}/keystoneauth1/${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
