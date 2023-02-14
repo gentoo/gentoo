@@ -39,7 +39,7 @@ BDEPEND="
 	)
 "
 COMMON_DEPEND="
-	>=dev-libs/libevent-2.1.0:=[threads(+)]
+	>=dev-libs/libevent-2.1.0:=
 	!mbedtls? ( dev-libs/openssl:0= )
 	mbedtls? ( net-libs/mbedtls:0= )
 	net-libs/libnatpmp
