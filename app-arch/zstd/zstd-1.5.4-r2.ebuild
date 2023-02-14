@@ -25,12 +25,25 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=(
+MESON_PATCHES=(
 	# Workaround until Valgrind bugfix lands
 	"${FILESDIR}"/${PN}-1.5.4-no-find-valgrind.patch
 	# Allow building tests w/o programs (useful for multilib)
 	"${FILESDIR}"/${PN}-1.5.4-tests-no-programs.patch
 )
+
+PATCHES=(
+	# Fix build w/o zlib, bug #894058
+	"${FILESDIR}"/${P}-fix-no-zlib-build.patch
+)
+
+src_prepare() {
+	cd "${WORKDIR}"/${P} || die
+	default
+
+	cd "${S}" || die
+	eapply "${MESON_PATCHES[@]}"
+}
 
 multilib_src_configure() {
 	local native_file="${T}"/meson.${CHOST}.${ABI}.ini.local
