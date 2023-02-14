@@ -5,7 +5,7 @@ move dev-python/cfn-python-lint dev-python/cfn-lint
 move dev-python/dbusmock dev-python/python-dbusmock
 move dev-python/python-backoff dev-python/backoff
 move dev-python/python-musicbrainz-ngs dev-python/python-musicbrainzngs
-move dev-python/python-podman dev-python/podman-py
+move dev-python/python-podman dev-python/podman
 move dev-python/u-msgpack dev-python/u-msgpack-python
 move sci-physics/geant-vmc sci-physics/geant4_vmc
 move dev-python/beautifulsoup dev-python/beautifulsoup4
