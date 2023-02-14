@@ -36,7 +36,6 @@ src_prepare() {
 	postgres-multi_src_prepare
 }
 
-
 src_configure() {
 	postgres-multi_foreach econf
 }
