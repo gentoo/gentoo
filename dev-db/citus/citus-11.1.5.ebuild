@@ -30,6 +30,12 @@ DEPEND="${POSTGRES_DEP}
 	"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	eapply "${FILESDIR}"/citus-11.1.5-redefine.patch
+
+	postgres-multi_src_prepare
+}
+
 src_configure() {
 	postgres-multi_foreach econf
 }
