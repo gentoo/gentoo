@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic systemd
+inherit autotools flag-o-matic systemd tmpfiles
 
 MY_P=${P/_p/p}
 DESCRIPTION="Network Time Protocol suite/programs"
@@ -112,8 +112,7 @@ src_install() {
 	fi
 	sed -i "s:/usr/bin:/usr/sbin:" "${ED}"/etc/init.d/ntpd || die
 
-	keepdir /var/lib/ntp
-	use prefix || fowners ntp:ntp /var/lib/ntp
+	newtmpfiles "${FILESDIR}"/ntp.tmpfiles ntp.conf
 
 	if use openntpd ; then
 		cd "${ED}" || die
@@ -138,6 +137,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ntp.conf
 	if grep -qs '^[^#].*notrust' "${EROOT}"/etc/ntp.conf ; then
 		eerror "The notrust option was found in your /etc/ntp.conf!"
 		ewarn "If your ntpd starts sending out weird responses,"
