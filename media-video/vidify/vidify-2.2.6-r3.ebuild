@@ -28,7 +28,7 @@ RDEPEND="
 	!dbus? ( dev-python/tekore[${PYTHON_USEDEP}] )
 	mpv? ( dev-python/python-mpv[${PYTHON_USEDEP}] )
 	vlc? ( dev-python/python-vlc[${PYTHON_USEDEP}] )
-	zeroconf? ( dev-python/python-zeroconf[${PYTHON_USEDEP}] )
+	zeroconf? ( dev-python/zeroconf[${PYTHON_USEDEP}] )
 "
 
 # use yt-dlp instead of youtube-dl, otherwise download is too slow for playback

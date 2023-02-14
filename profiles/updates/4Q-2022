@@ -4,7 +4,6 @@ move x11-libs/libva-intel-driver media-libs/libva-intel-driver
 move x11-libs/libva-intel-media-driver media-libs/libva-intel-media-driver
 move x11-libs/intel-hybrid-codec-driver media-libs/intel-hybrid-codec-driver
 move dev-python/swagger-spec-validator dev-python/swagger_spec_validator
-move dev-python/zeroconf dev-python/python-zeroconf
 move dev-python/zstandard dev-python/python-zstandard
 move dev-python/retworkx dev-python/rustworkx
 move dev-python/libsass dev-python/libsass-python

@@ -6,3 +6,4 @@ move dev-python/python-nbxmpp dev-python/nbxmpp
 move dev-python/redis-py dev-python/redis
 move dev-python/podman-py dev-python/podman
 move dev-python/sphinx_rtd_theme dev-python/sphinx-rtd-theme
+move dev-python/python-zeroconf dev-python/zeroconf
