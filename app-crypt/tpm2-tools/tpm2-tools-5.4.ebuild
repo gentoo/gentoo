@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,6 +35,14 @@ BDEPEND="virtual/pkgconfig
 		$(python_gen_any_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
 	)
 	${PYTHON_DEPS}"
+
+python_check_deps() {
+	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+        use test && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	# tests fail with LTO enabbled. See bug 865275 and 865277
