@@ -22,8 +22,9 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
+# <zstd-1.5.4 for bug #893948
 DEPEND="
-	app-arch/zstd:=
+	<app-arch/zstd-1.5.4:=
 "
 RDEPEND="
 	${DEPEND}
