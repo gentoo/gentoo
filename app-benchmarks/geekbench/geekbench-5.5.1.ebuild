@@ -5,18 +5,23 @@ EAPI=8
 
 DESCRIPTION="A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows"
 HOMEPAGE="https://www.geekbench.com/"
-SRC_URI="https://cdn.geekbench.com/Geekbench-${PV}-Linux.tar.gz"
-S="${WORKDIR}/Geekbench-${PV}-Linux"
+SRC_URI="
+	amd64? ( https://cdn.geekbench.com/Geekbench-${PV}-Linux.tar.gz )
+	arm64? ( https://cdn.geekbench.com/Geekbench-${PV}-LinuxARMPreview.tar.gz )
+"
+S="${WORKDIR}"
 
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64 ~arm64"
 LICENSE="geekbench"
-SLOT="5"
+SLOT="6"
 
 RESTRICT="bindist mirror"
 
 QA_PREBUILT="
-	opt/geekbench5/geekbench5
+	opt/geekbench5/geekbench_aarch64
+	opt/geekbench5/geekbench_armv7
 	opt/geekbench5/geekbench_x86_64
+	opt/geekbench5/geekbench5
 "
 
 pkg_nofetch() {
@@ -25,11 +30,15 @@ pkg_nofetch() {
 }
 
 src_install() {
+	local MY_S="Geekbench-${PV}-Linux$(usex arm64 'ARMPreview' '')"
+
 	exeinto /opt/geekbench5
-	doexe geekbench5 geekbench_x86_64
+	use amd64 && doexe "${MY_S}"/geekbench_x86_64
+	use arm64 && doexe "${MY_S}"/geekbench_aarch64 "${MY_S}"/geekbench_armv7
+	doexe "${MY_S}"/geekbench5
 
 	insinto /opt/geekbench5
-	doins geekbench.plar
+	doins "${MY_S}"/geekbench.plar
 
 	dodir /opt/bin
 	dosym ../geekbench5/geekbench5 /opt/bin/geekbench5
