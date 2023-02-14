@@ -34,13 +34,23 @@ DOC_CONTENTS="See commentary in ${SITELISP}/${PN}/wgrep.el for documentation.
 	\n\t(require 'wgrep)"
 SITEFILE="50${PN}-gentoo.el"
 
+src_prepare() {
+	if ! use test ; then
+		rm ${PN}-test.el || die
+	fi
+
+	elisp_src_prepare
+}
+
 src_test() {
 	${EMACS} ${EMACSFLAGS} -L . -l ${PN}.el -l ${PN}-test.el    \
 		-f ert-run-tests-batch-and-exit || die "tests failed"
 }
 
 src_install() {
-	rm ${PN}-test.el{,c} || die
+	if use test ; then
+	   rm ${PN}-test.el{,c} || die
+	fi
 
 	elisp_src_install
 }
