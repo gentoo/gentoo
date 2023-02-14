@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -62,6 +62,11 @@ src_configure() {
 }
 
 src_test() {
+	# All tests fail with enabled sandbox
+	# TODO: Get all tests to pass
+	# See bug: #831592
+	local -x SANDBOX_ON=0
+
 	virtx "${BUILD_DIR}/tests/${PN}_test" || die
 }
 
