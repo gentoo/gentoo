@@ -26,7 +26,7 @@ else
 fi
 
 RDEPEND="
-	dev-libs/libevent:=[ssl,threads(+)]
+	dev-libs/libevent:=[ssl]
 	dev-libs/openssl:0=
 	net-libs/libnet:1.1
 	net-libs/libpcap
