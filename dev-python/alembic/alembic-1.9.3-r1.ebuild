@@ -24,10 +24,6 @@ RDEPEND="
 	dev-python/mako[${PYTHON_USEDEP}]
 	>=dev-python/python-editor-0.3[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
-		dev-python/importlib_resources[${PYTHON_USEDEP}]
-	' pypy3 python3_8)
 "
 
 distutils_enable_tests pytest

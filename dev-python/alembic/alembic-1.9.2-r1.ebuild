@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="doc"
 
 RDEPEND="
@@ -25,10 +25,6 @@ RDEPEND="
 	dev-python/mako[${PYTHON_USEDEP}]
 	>=dev-python/python-editor-0.3[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/importlib_metadata[${PYTHON_USEDEP}]
-		dev-python/importlib_resources[${PYTHON_USEDEP}]
-	' pypy3 python3_8)
 "
 
 distutils_enable_tests pytest
