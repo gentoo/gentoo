@@ -94,6 +94,7 @@ BDEPEND="
 			dev-perl/File-LibMagic
 		)
 		virtual/perl-File-Temp
+		dev-perl/Test-Exception
 		dev-perl/Sub-Override
 		dev-perl/Test-Deep
 		dev-perl/Test-Output
