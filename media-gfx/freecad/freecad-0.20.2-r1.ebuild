@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit check-reqs cmake optfeature python-single-r1 xdg
 
@@ -18,7 +18,7 @@ if [[ ${PV} = *9999 ]]; then
 	S="${WORKDIR}/freecad-${PV}"
 else
 	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 	S="${WORKDIR}/FreeCAD-${PV}"
 fi
 
@@ -28,7 +28,7 @@ LICENSE="LGPL-2 CC-BY-SA-4.0"
 SLOT="0"
 IUSE="debug designer +gui test"
 
-FREECAD_EXPERIMENTAL_MODULES="cloud pcl"
+FREECAD_EXPERIMENTAL_MODULES="cloud netgen pcl"
 FREECAD_STABLE_MODULES="addonmgr fem idf image inspection material
 	openscad part-design path points raytracing robot show surface
 	techdraw tux"
@@ -49,19 +49,11 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/libspnav[X]
 	dev-libs/xerces-c[icu]
-	dev-qt/designer:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
-	dev-qt/qtopengl:5
-	dev-qt/qtprintsupport:5
-	dev-qt/qtsvg:5
-	dev-qt/qtwebengine:5[widgets]
-	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	>=media-libs/coin-4.0.0
+	dev-qt/qtxmlpatterns:5
 	media-libs/freetype
 	media-libs/qhull:=
 	sci-libs/flann[openmp]
@@ -70,23 +62,37 @@ RDEPEND="
 	<sci-libs/opencascade-7.7.0:=[json,vtk]
 	sci-libs/orocos_kdl:=
 	sys-libs/zlib
-	virtual/glu
 	virtual/libusb:1
-	virtual/opengl
 	cloud? (
 		dev-libs/openssl:=
 		net-misc/curl
 	)
 	fem? ( sci-libs/vtk:=[qt5,rendering] )
+	gui? (
+		dev-qt/designer:5
+		dev-qt/qtgui:5
+		dev-qt/qtopengl:5
+		dev-qt/qtprintsupport:5
+		dev-qt/qtsvg:5
+		dev-qt/qtwebengine:5[widgets]
+		dev-qt/qtwidgets:5
+		dev-qt/qtx11extras:5
+		>=media-libs/coin-4.0.0
+		virtual/glu
+		virtual/opengl
+		$(python_gen_cond_dep '
+			dev-python/matplotlib[${PYTHON_USEDEP}]
+			>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
+			dev-python/pyside2[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
+			dev-python/shiboken2[${PYTHON_USEDEP}]
+		')
+	)
+	netgen? ( media-gfx/netgen[opencascade] )
 	openscad? ( media-gfx/openscad )
 	pcl? ( sci-libs/pcl:=[opengl,openni2,qt5,vtk] )
 	$(python_gen_cond_dep '
-		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		>=dev-python/pivy-0.6.5[${PYTHON_USEDEP}]
 		dev-python/pybind11[${PYTHON_USEDEP}]
-		dev-python/pyside2[gui,svg,webchannel,webengine,${PYTHON_USEDEP}]
-		dev-python/shiboken2[${PYTHON_USEDEP}]
 		addonmgr? ( dev-python/GitPython[${PYTHON_USEDEP}] )
 		fem? ( dev-python/ply[${PYTHON_USEDEP}] )
 	')
@@ -94,12 +100,18 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	>=dev-cpp/eigen-3.3.1:3
-	test? ( $(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]') )
+	test? (
+		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
+		dev-qt/qttest:5
+	)
 "
 BDEPEND="
 	app-text/dos2unix
 	dev-lang/swig
-	test? ( $(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]') )
+	test? (
+		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
+		dev-qt/qttest:5
+	)
 "
 
 # To get required dependencies:
@@ -117,6 +129,7 @@ BDEPEND="
 # test suite when compiled with a minimal set of USE flags.
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
+	designer? ( gui )
 	inspection? ( points )
 	path? ( robot )
 "
@@ -124,6 +137,8 @@ REQUIRED_USE="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.19.4-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-0.19.1-0001-Gentoo-specific-Remove-ccache-usage.patch
+	"${FILESDIR}"/${PN}-0.20.2-Netgen-add-headers-to-support-recent-Netgen.patch
+	"${FILESDIR}"/${PN}-0.20.2-Fixes-8206-FreeCAD-segfaults-being-run-with-paramete.patch
 )
 
 DOCS=( CODE_OF_CONDUCT.md ChangeLog.txt README.md )
@@ -157,7 +172,7 @@ src_configure() {
 		-DBUILD_DRAWING=ON
 		-DBUILD_ENABLE_CXX_STD:STRING="C++17"	# needed for >=boost-1.77.0
 		-DBUILD_FEM=$(usex fem)
-		-DBUILD_FEM_NETGEN=OFF
+		-DBUILD_FEM_NETGEN=$(usex netgen)
 		-DBUILD_FLAT_MESH=ON
 		-DBUILD_FORCE_DIRECTORY=ON				# force building in a dedicated directory
 		-DBUILD_FREETYPE=ON						# automagic dep
@@ -265,6 +280,8 @@ src_install() {
 	fi
 	dosym -r /usr/$(get_libdir)/${PN}/bin/FreeCADCmd /usr/bin/freecadcmd
 
+	rm -r "${ED}"/usr/$(get_libdir)/${PN}/include/E57Format || die "failed to drop unneeded include directory E57Format"
+
 	python_optimize "${ED}"/usr/share/${PN}/data/Mod/Start/StartPage "${ED}"/usr/$(get_libdir)/${PN}{/Ext,/Mod}/
 	# compile main package in python site-packages as well
 	python_optimize
@@ -277,7 +294,7 @@ pkg_postinst() {
 	einfo "AddonManager."
 
 	# ToDo: check opencv, pysolar (::science), elmerfem (::science)
-	#		ifc++, ifcopenshell, netgen, z88 (no pkgs), calculix-ccx (::waebbl)
+	#		ifc++, ifcopenshell, z88 (no pkgs), calculix-ccx (::waebbl)
 	einfo "There are a lot of additional tools, for which FreeCAD has builtin"
 	einfo "support. Some of them are available in Gentoo. Take a look at"
 	einfo "https://wiki.freecadweb.org/Installing#External_software_supported_by_FreeCAD"
