@@ -112,15 +112,13 @@ src_install() {
 	fi
 	sed -i "s:/usr/bin:/usr/sbin:" "${ED}"/etc/init.d/ntpd || die
 
-	newtmpfiles "${FILESDIR}"/ntp.tmpfiles ntp.conf
-
 	if use openntpd ; then
 		cd "${ED}" || die
 		rm usr/sbin/ntpd || die
-		rm -r var/lib || die
 		rm etc/{conf,init}.d/ntpd || die
 		rm usr/share/man/*/ntpd.8 || die
 	else
+		newtmpfiles "${FILESDIR}"/ntp.tmpfiles ntp.conf
 		systemd_newunit "${FILESDIR}"/ntpd.service-r2 ntpd.service
 		if use caps ; then
 			sed -i '/ExecStart/ s|$| -u ntp:ntp|' \
@@ -137,7 +135,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	tmpfiles_process ntp.conf
+	if ! use openntpd; then
+		tmpfiles_process ntp.conf
+	fi
 	if grep -qs '^[^#].*notrust' "${EROOT}"/etc/ntp.conf ; then
 		eerror "The notrust option was found in your /etc/ntp.conf!"
 		ewarn "If your ntpd starts sending out weird responses,"
