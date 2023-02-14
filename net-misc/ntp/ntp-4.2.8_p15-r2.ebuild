@@ -14,10 +14,10 @@ SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-${PV:0:3}/${MY_P}.tar
 LICENSE="HPND BSD ISC"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="caps debug ipv6 openntpd parse-clocks readline samba selinux snmp ssl +threads vim-syntax zeroconf"
+IUSE="caps debug ipv6 openntpd parse-clocks readline samba selinux snmp ssl vim-syntax zeroconf"
 
 COMMON_DEPEND="readline? ( >=sys-libs/readline-4.1:0= )
-	>=dev-libs/libevent-2.0.9:=[threads(+)?]
+	>=dev-libs/libevent-2.0.9:=
 	kernel_linux? ( caps? ( sys-libs/libcap ) )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 	snmp? ( net-analyzer/net-snmp )
