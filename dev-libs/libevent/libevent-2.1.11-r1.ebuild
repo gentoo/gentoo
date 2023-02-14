@@ -44,7 +44,8 @@ multilib_src_configure() {
 		$(use_enable debug malloc-replacement) \
 		$(use_enable ssl openssl) \
 		$(use_enable static-libs static) \
-		$(use_enable test libevent-regress)
+		$(use_enable test libevent-regress) \
+		--enable-thread-support
 }
 
 src_test() {

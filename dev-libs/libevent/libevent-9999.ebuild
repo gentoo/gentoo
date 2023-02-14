@@ -57,6 +57,7 @@ multilib_src_configure() {
 		$(use_enable static-libs static) \
 		$(use_enable test libevent-regress) \
 		$(use_enable verbose-debug) \
+		--enable-thread-support \
 		--disable-samples
 }
 
