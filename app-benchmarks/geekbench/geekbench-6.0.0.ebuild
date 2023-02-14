@@ -3,23 +3,27 @@
 
 EAPI=8
 
-MY_PV="k9ea2vqm"
+EGIT_COMMIT="k9ea2vqm"
 
 DESCRIPTION="A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows"
 HOMEPAGE="https://www.geekbench.com/"
-SRC_URI="https://cdn.geekbench.com/${MY_PV}/Geekbench-${PV}-Linux.tar.gz"
-S="${WORKDIR}/Geekbench-${PV}-Linux"
+SRC_URI="
+	amd64? ( https://cdn.geekbench.com/${EGIT_COMMIT}/Geekbench-${PV}-Linux.tar.gz )
+	arm64? ( https://cdn.geekbench.com/${EGIT_COMMIT}/Geekbench-${PV}-LinuxARMPreview.tar.gz )
+"
+S="${WORKDIR}"
 
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64 ~arm64"
 LICENSE="geekbench"
 SLOT="6"
 
 RESTRICT="bindist mirror"
 
 QA_PREBUILT="
-	opt/geekbench6/geekbench_avx
-	opt/geekbench6/geekbench6
+	opt/geekbench6/geekbench_aarch64
+	opt/geekbench6/geekbench_avx2
 	opt/geekbench6/geekbench_x86_64
+	opt/geekbench6/geekbench6
 "
 
 pkg_nofetch() {
@@ -28,11 +32,15 @@ pkg_nofetch() {
 }
 
 src_install() {
+	local MY_S="Geekbench-${PV}-Linux$(usex arm64 'ARMPreview' '')"
+
 	exeinto /opt/geekbench6
-	doexe geekbench_avx2 geekbench6 geekbench_x86_64
+	use amd64 && doexe "${MY_S}"/geekbench_avx2 "${MY_S}"/geekbench_x86_64
+	use arm64 && doexe "${MY_S}"/geekbench_aarch64
+	doexe "${MY_S}"/geekbench6
 
 	insinto /opt/geekbench6
-	doins geekbench.plar geekbench-workload.plar
+	doins "${MY_S}"/geekbench.plar "${MY_S}"/geekbench-workload.plar
 
 	dodir /opt/bin
 	dosym ../geekbench6/geekbench6 /opt/bin/geekbench6
