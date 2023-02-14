@@ -14,6 +14,7 @@ SRC_URI="https://download.anydesk.com/linux/${P}-amd64.tar.gz
 LICENSE="AnyDesk-TOS BSD BSD-2 openssl ZLIB"
 SLOT="0"
 KEYWORDS="-* ~amd64"
+IUSE="sound"
 
 # x11-libs/gtkglext is required and cannot be mitigated: https://bugs.gentoo.org/868255
 RDEPEND="
@@ -39,6 +40,7 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/pango
+	sound? ( media-libs/libcanberra[gtk2] )
 "
 BDEPEND="dev-util/patchelf"
 
