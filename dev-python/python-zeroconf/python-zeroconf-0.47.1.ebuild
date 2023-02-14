@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
+MY_P=python-zeroconf-${PV}
 DESCRIPTION="Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)"
 HOMEPAGE="
 	https://github.com/python-zeroconf/python-zeroconf/
@@ -15,8 +16,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/python-zeroconf/python-zeroconf/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
