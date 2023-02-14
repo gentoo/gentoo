@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-conditional-installs.patch
 	"${FILESDIR}"/${PN}-1.1.0-libcwrap.patch
 	"${FILESDIR}"/${PN}-1.1.0-ar.patch
+	"${FILESDIR}"/${PN}-1.1.0-clang-16-register.patch
 )
 
 ECONF_SOURCE="${S}"

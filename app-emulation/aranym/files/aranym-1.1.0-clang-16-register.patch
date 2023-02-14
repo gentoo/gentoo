@@ -1,0 +1,219 @@
+https://bugs.gentoo.org/894446
+https://github.com/aranym/aranym/commit/e19e21151d5e394dd45d4db08e68245e86e32ab7
+https://github.com/aranym/aranym/commit/64414e43deebc665772481d802b6c1c88d752ac3
+
+From e19e21151d5e394dd45d4db08e68245e86e32ab7 Mon Sep 17 00:00:00 2001
+From: Thorsten Otto <admin@tho-otto.de>
+Date: Tue, 2 Aug 2022 18:12:19 +0200
+Subject: [PATCH] Remove obsolete register keywords
+
+--- a/src/blitter.cpp
++++ b/src/blitter.cpp
+@@ -114,8 +114,8 @@ void BLITTER::SM_UW(memptr addr, UW value) {
+ #define HOP_OPS(_fn_name,_op,_do_source_shift,_get_source_data,_shifted_hopd_data, _do_halftone_inc) \
+ static void _fn_name ( BLITTER& b ) \
+ {												\
+-	register unsigned int skew       = (unsigned int) b.skewreg & 15;		\
+-	register unsigned int source_buffer=0;				\
++	unsigned int skew       = b.skewreg & 15;		\
++	unsigned int source_buffer=0;				\
+ 	if (b.hop & 1) {										\
+ 		if (b.line_num & 0x20) 		 					\
+ 			b.halftone_curroffset = b.skewreg & 15;			\
+@@ -127,7 +127,7 @@ static void _fn_name ( BLITTER& b ) \
+ 			b.halftone_direction = -1;					\
+ 	}													\
+ 	do 								\
+-	{	register UW x,dst_data,opd_data;			\
++	{	UW x,dst_data,opd_data;			\
+ 		if (b.FXSR) 						\
+ 		{ 	_do_source_shift; 				\
+ 			_get_source_data;				\
+--- a/src/md5.cpp
++++ b/src/md5.cpp
+@@ -168,7 +168,7 @@ MD5::MD5Final(md5byte digest[16])
+ void
+ MD5::MD5Transform(UWORD32 buf[4], UWORD32 const in[16])
+ {
+-	register UWORD32 a, b, c, d;
++	UWORD32 a, b, c, d;
+ 
+ 	a = buf[0];
+ 	b = buf[1];
+
+From 64414e43deebc665772481d802b6c1c88d752ac3 Mon Sep 17 00:00:00 2001
+From: Thorsten Otto <admin@tho-otto.de>
+Date: Tue, 9 Aug 2022 09:17:31 +0200
+Subject: [PATCH] Remove more obsolete register keywords
+
+--- a/src/disasm/disasm-builtin.cpp
++++ b/src/disasm/disasm-builtin.cpp
+@@ -277,7 +277,7 @@ static const char *const bitfieldtable[] =
+ 
+ static void ps(m68k_disasm_info *info, const char *str)
+ {
+-	register char c;
++	char c;
+ 
+ 	while ((c = *str++) != '\0')
+ 	{
+@@ -486,7 +486,7 @@ static void oadi(m68k_disasm_info *info, int regnum)
+ 
+ static int os(m68k_disasm_info *info, int opcode)
+ {
+-	register int size;
++	int size;
+ 
+ 	size = insize(opcode);
+ 	sputc('.');
+@@ -501,7 +501,7 @@ static int os(m68k_disasm_info *info, int opcode)
+ 
+ static int os2(m68k_disasm_info *info, int opcode)
+ {
+-	register int size;
++	int size;
+ 
+ 	size = (opcode >> 9) & 3;
+ 	sputc('.');
+@@ -968,10 +968,10 @@ static void doextended(m68k_disasm_info *info, int opcode2, int srcr)
+ 
+ static void doea(m68k_disasm_info *info, int opcode, int size)
+ {
+-	register int srcr;
+-	register int opcode2;
++	int srcr;
++	int opcode2;
+ 	uae_s32 offset;
+-	register uae_s32 adr;
++	uae_s32 adr;
+ 
+ 	srcr = srcreg(opcode);
+ 	switch (srcmod(opcode))
+@@ -1071,7 +1071,7 @@ static void doea(m68k_disasm_info *info, int opcode, int size)
+ 
+ static void reglist(m68k_disasm_info *info, int regmask)
+ {
+-	register int regnum;
++	int regnum;
+ 	int liststart;
+ 	int lastreg;
+ 	int status;
+@@ -1113,8 +1113,8 @@ static void reglist(m68k_disasm_info *info, int regmask)
+ 
+ static int revbits(int mask, int n)
+ {
+-	register int i;
+-	register int newmask;
++	int i;
++	int newmask;
+ 
+ 	for (newmask = 0, i = n; i > 0; i--)
+ 	{
+@@ -1390,7 +1390,7 @@ static void group0(m68k_disasm_info *info, int opcode)
+ 
+ static void group11(m68k_disasm_info *info, int opcode)
+ {
+-	register int size;
++	int size;
+ 
+ 	if ((opcode & 0x0100) != 0 && insize(opcode) != 3)
+ 	{
+@@ -1441,7 +1441,7 @@ static void group11(m68k_disasm_info *info, int opcode)
+ 
+ static void group1(m68k_disasm_info *info, int opcode)
+ {
+-	register int size = 0;
++	int size = 0;
+ 
+ 	ps(info, "move");
+ 	if (dstmod(opcode) == 1)
+@@ -1475,7 +1475,7 @@ static void group1(m68k_disasm_info *info, int opcode)
+ 
+ static void group14(m68k_disasm_info *info, int opcode)
+ {
+-	register short size;
++	short size;
+ 	unsigned int opcode2;
+ 	unsigned int bf;
+ 	
+@@ -2069,7 +2069,7 @@ static enum fpu_size print_fpsize(m68k_disasm_info *info, int mask)
+ static void print_freglist(m68k_disasm_info *info, int regmask, int mode, bool cntl)
+ {
+ 	const char *const * regs;
+-	register int regnum;
++	int regnum;
+ 	int liststart;
+ 	int lastreg;
+ 	int status;
+@@ -3011,8 +3011,8 @@ static void pspreg(m68k_disasm_info *info, int mask)
+ 
+ static void group4(m68k_disasm_info *info, int opcode)
+ {
+-	register int mask;
+-	register int size;
++	int mask;
++	int size;
+ 
+ 	if (opcode & 0x0100)
+ 	{
+@@ -3540,7 +3540,7 @@ static void group4(m68k_disasm_info *info, int opcode)
+ 
+ static void group5(m68k_disasm_info *info, int opcode)
+ {
+-	register uae_s32 adr;
++	uae_s32 adr;
+ 	
+ 	if (insize(opcode) == 3)
+ 	{
+@@ -3603,9 +3603,9 @@ static void group5(m68k_disasm_info *info, int opcode)
+ 
+ static void group6(m68k_disasm_info *info, int opcode)
+ {
+-	register uae_s32 adr;
+-	register int cond;
+-	register signed char dist;
++	uae_s32 adr;
++	int cond;
++	signed char dist;
+ 
+ 	/* 0110 cccc dddddddd */
+ 	switch (cond = (opcode >> 8) & 0x000f)
+@@ -3686,7 +3686,7 @@ static void group7(m68k_disasm_info *info, int opcode)
+ 
+ static void g812(m68k_disasm_info *info, int opcode, const char *andor, const char *muldiv, const char *as)
+ {
+-	register int size;
++	int size;
+ 
+ 	info->num_oper = 2;
+ 	if (dstmod(opcode) == 3)
+@@ -3772,7 +3772,7 @@ static void group8(m68k_disasm_info *info, int opcode)
+ 
+ static void group12(m68k_disasm_info *info, int opcode)
+ {
+-	register int d5;
++	int d5;
+ 
+ 	if ((d5 = (opcode >> 3) & 0x003f) == 0x0028)
+ 	{
+@@ -3813,7 +3813,7 @@ static void group12(m68k_disasm_info *info, int opcode)
+ 
+ static void g913(m68k_disasm_info *info, int opcode, const char *addsub)
+ {
+-	register int size;
++	int size;
+ 
+ 	ps(info, addsub);
+ 	if ((opcode & 0x0100) != 0 && insize(opcode) != 3 && ((opcode >> 4) & 3) == 0)
+@@ -4125,8 +4125,8 @@ static void (*const grphdlrs[])(m68k_disasm_info *, int) = {
+ 
+ int m68k_disasm_builtin(m68k_disasm_info *info)
+ {
+-    register int opcode;
+-    register void (*hdlr)(m68k_disasm_info *info, int opcode);
++    int opcode;
++    void (*hdlr)(m68k_disasm_info *info, int opcode);
+     unsigned int insn_size;
+ 	struct priv_data *priv;
+ 	
+
