@@ -32,7 +32,7 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx doc dev-python/sphinx_rtd_theme dev-python/sphinxcontrib-autoprogram
+distutils_enable_sphinx doc dev-python/sphinx-rtd-theme dev-python/sphinxcontrib-autoprogram
 
 python_prepare_all() {
 	# Exception: Versioning for this project requires either an sdist tarball, or access to an

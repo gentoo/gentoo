@@ -22,6 +22,6 @@ src_prepare() {
 
 distutils_enable_sphinx docs/source \
 	dev-python/sphinxcontrib-trio \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx-rtd-theme
 
 distutils_enable_tests --install pytest

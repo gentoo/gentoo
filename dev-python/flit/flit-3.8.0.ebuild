@@ -46,7 +46,7 @@ distutils_enable_tests pytest
 distutils_enable_sphinx doc \
 	dev-python/sphinxcontrib-github-alt \
 	dev-python/pygments-github-lexers \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx-rtd-theme
 
 src_prepare() {
 	# make sure system install is used

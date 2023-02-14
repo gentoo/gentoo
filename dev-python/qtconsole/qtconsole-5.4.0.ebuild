@@ -45,7 +45,7 @@ PDEPEND="
 	dev-python/ipython[${PYTHON_USEDEP}]
 "
 
-distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs/source dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
 python_test() {

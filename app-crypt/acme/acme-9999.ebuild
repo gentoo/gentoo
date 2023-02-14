@@ -35,5 +35,5 @@ RDEPEND="
 	>=dev-python/requests-toolbelt-0.3.0[${PYTHON_USEDEP}]
 "
 
-distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest

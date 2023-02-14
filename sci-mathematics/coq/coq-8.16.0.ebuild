@@ -37,7 +37,7 @@ BDEPEND="
 		dev-python/antlr4-python3-runtime
 		dev-python/beautifulsoup4
 		dev-python/pexpect
-		dev-python/sphinx_rtd_theme
+		dev-python/sphinx-rtd-theme
 		dev-python/sphinxcontrib-bibtex
 		dev-tex/latexmk
 		dev-texlive/texlive-fontsextra

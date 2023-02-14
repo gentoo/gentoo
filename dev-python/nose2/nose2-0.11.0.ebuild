@@ -22,7 +22,7 @@ RDEPEND="
 "
 
 distutils_enable_sphinx docs \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx-rtd-theme
 
 python_test() {
 	"${EPYTHON}" -m nose2.__main__ -vv || die "tests failed under ${EPYTHON}"

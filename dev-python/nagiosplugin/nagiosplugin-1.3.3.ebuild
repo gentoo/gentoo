@@ -17,4 +17,4 @@ LICENSE="ZPL"
 SLOT="0"
 
 distutils_enable_tests pytest
-distutils_enable_sphinx doc dev-python/sphinx_rtd_theme
+distutils_enable_sphinx doc dev-python/sphinx-rtd-theme

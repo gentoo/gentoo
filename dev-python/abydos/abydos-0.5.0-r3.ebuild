@@ -33,7 +33,7 @@ PATCHES=(
 
 distutils_enable_tests pytest
 # Extension error: You must configure the bibtex_bibfiles setting
-#distutils_enable_sphinx docs dev-python/sphinx_rtd_theme dev-python/sphinxcontrib-bibtex
+#distutils_enable_sphinx docs dev-python/sphinx-rtd-theme dev-python/sphinxcontrib-bibtex
 
 EPYTEST_DESELECT=(
 	# Internet

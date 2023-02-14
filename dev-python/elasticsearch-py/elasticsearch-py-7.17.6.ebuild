@@ -51,7 +51,7 @@ BDEPEND="
 	)"
 
 distutils_enable_sphinx docs/sphinx \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
 src_prepare() {

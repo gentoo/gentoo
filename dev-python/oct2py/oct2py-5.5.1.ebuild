@@ -36,7 +36,7 @@ EPYTEST_DESELECT=(
 )
 
 distutils_enable_sphinx docs/source \
-	dev-python/numpydoc dev-python/sphinx-bootstrap-theme dev-python/sphinx_rtd_theme
+	dev-python/numpydoc dev-python/sphinx-bootstrap-theme dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
 PATCHES=( "${FILESDIR}"/${PN}-5.2.0-mask-pkg-load-test.patch )

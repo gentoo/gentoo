@@ -38,7 +38,7 @@ BDEPEND="
 
 distutils_enable_sphinx docs/source \
 		dev-python/recommonmark \
-		dev-python/sphinx_rtd_theme
+		dev-python/sphinx-rtd-theme
 distutils_enable_tests --install pytest
 
 python_prepare_all() {

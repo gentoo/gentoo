@@ -32,4 +32,4 @@ RDEPEND="
 
 distutils_enable_tests unittest
 distutils_enable_sphinx doc/source \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx-rtd-theme

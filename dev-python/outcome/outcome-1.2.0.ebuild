@@ -34,4 +34,4 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-distutils_enable_sphinx docs/source dev-python/sphinxcontrib-trio dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs/source dev-python/sphinxcontrib-trio dev-python/sphinx-rtd-theme

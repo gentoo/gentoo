@@ -28,6 +28,6 @@ RDEPEND="
 	dev-python/ipywidgets[${PYTHON_USEDEP}]"
 PDEPEND=">=dev-python/jupyter_core-4.2.0[${PYTHON_USEDEP}]"
 
-distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs/source dev-python/sphinx-rtd-theme
 
 PATCHES=( "${DISTDIR}"/${P}-file-colision.patch )

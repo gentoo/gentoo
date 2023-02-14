@@ -27,7 +27,7 @@ RDEPEND="
 BDEPEND="test? ( media-libs/freetype )"
 
 # Requires currently unpackaged Sphinx plug-in autoclasstoc
-#distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
+#distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 
 distutils_enable_tests pytest
 

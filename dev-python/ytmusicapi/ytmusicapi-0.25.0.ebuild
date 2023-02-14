@@ -20,4 +20,4 @@ SLOT="0"
 RDEPEND="dev-python/requests[${PYTHON_USEDEP}]"
 
 distutils_enable_sphinx docs/source \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx-rtd-theme

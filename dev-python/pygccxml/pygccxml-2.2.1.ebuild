@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~riscv ~x86"
 IUSE="doc"
 
-distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 
 RESTRICT="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

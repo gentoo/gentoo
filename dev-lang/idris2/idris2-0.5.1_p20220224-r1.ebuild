@@ -31,7 +31,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	doc? ( dev-python/sphinx_rtd_theme )
+	doc? ( dev-python/sphinx-rtd-theme )
 	test-full? (
 		dev-scheme/chez[threads]
 		dev-scheme/racket[threads]

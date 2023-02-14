@@ -47,7 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/aesara-2.8.10-fix-tuple.patch
 )
 
-distutils_enable_sphinx doc 'dev-python/sphinx_rtd_theme'
+distutils_enable_sphinx doc 'dev-python/sphinx-rtd-theme'
 distutils_enable_tests pytest
 
 src_prepare() {

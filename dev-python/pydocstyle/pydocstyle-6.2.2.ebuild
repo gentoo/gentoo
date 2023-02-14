@@ -35,7 +35,7 @@ BDEPEND="
 
 distutils_enable_tests pytest
 # Requires network to lookup github issues
-#distutils_enable_sphinx docs dev-python/sphinx_rtd_theme dev-python/sphinxcontrib-issuetracker
+#distutils_enable_sphinx docs dev-python/sphinx-rtd-theme dev-python/sphinxcontrib-issuetracker
 
 PATCHES=(
 	"${FILESDIR}"/pydocstyle-6.1.1-disarm-pip-install.patch

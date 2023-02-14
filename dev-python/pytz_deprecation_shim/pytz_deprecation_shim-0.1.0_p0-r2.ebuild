@@ -37,7 +37,7 @@ BDEPEND="
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx-rtd-theme
 
 src_prepare() {
 	# apparently used only as a fallback

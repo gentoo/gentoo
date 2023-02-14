@@ -27,7 +27,7 @@ RDEPEND="
 "
 
 # PYTHON_USEDEP omitted on purpose
-BDEPEND="doc? ( dev-python/sphinx_rtd_theme )"
+BDEPEND="doc? ( dev-python/sphinx-rtd-theme )"
 
 CONFIG_CHECK="~TASK_IO_ACCOUNTING ~TASK_DELAY_ACCT ~TASKSTATS"
 

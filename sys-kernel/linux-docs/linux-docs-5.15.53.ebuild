@@ -24,7 +24,7 @@ DEPEND=""
 RDEPEND="graphviz? ( >=media-gfx/graphviz-5.0.0 )"
 BDEPEND="${PYTHON_DEPS}
 	dev-python/sphinx
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx-rtd-theme
 	media-libs/fontconfig"
 
 src_prepare() {

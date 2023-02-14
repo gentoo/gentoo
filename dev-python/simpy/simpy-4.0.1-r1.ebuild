@@ -24,5 +24,5 @@ BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
 # name 'StandaloneHTMLBuilder' from partially initialized module
 # 'sphinx.builders.html' (most likely due to a circular import)
 # (/usr/lib/python3.10/site-packages/sphinx/builders/html/__init__.py))
-#distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
+#distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest

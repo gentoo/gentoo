@@ -40,7 +40,7 @@ EPYTEST_IGNORE=(
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs/source \
-	dev-python/sphinx_rtd_theme \
+	dev-python/sphinx-rtd-theme \
 	dev-python/numpy \
 	dev-python/nbsphinx \
 	dev-python/matplotlib

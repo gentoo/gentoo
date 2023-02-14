@@ -47,7 +47,7 @@ BDEPEND="
 # (unpackaged deps)
 #distutils_enable_sphinx docs \
 #	dev-python/sphinx-argparse \
-#	dev-python/sphinx_rtd_theme \
+#	dev-python/sphinx-rtd-theme \
 #	dev-python/towncrier
 distutils_enable_tests pytest
 

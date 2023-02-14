@@ -10,7 +10,7 @@ EAPI=8
 # DOCS_BUILDER="sphinx"
 # DOCS_DEPEND="
 # 	dev-python/sphinxcontrib-bibtex
-# 	dev-python/sphinx_rtd_theme
+# 	dev-python/sphinx-rtd-theme
 # "
 
 inherit cmake xdg # python-any-r1 docs

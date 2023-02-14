@@ -28,4 +28,4 @@ DEPEND="${RDEPEND}"
 BDEPEND="test? ( app-shells/tcsh )"
 
 distutils_enable_tests nose
-distutils_enable_sphinx doc/source dev-python/sphinx_rtd_theme dev-python/numpydoc
+distutils_enable_sphinx doc/source dev-python/sphinx-rtd-theme dev-python/numpydoc

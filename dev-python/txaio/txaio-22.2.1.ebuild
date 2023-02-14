@@ -21,7 +21,7 @@ KEYWORDS="amd64 arm arm64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 distutils_enable_sphinx docs \
 	'>=dev-python/sphinxcontrib-spelling-2.1.2' \
-	'>=dev-python/sphinx_rtd_theme-0.1.9'
+	'>=dev-python/sphinx-rtd-theme-0.1.9'
 distutils_enable_tests pytest
 
 python_test() {

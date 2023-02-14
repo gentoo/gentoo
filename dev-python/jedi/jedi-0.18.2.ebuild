@@ -39,7 +39,7 @@ RDEPEND="
 # RDEPEND needed because of an import jedi inside conf.py
 distutils_enable_sphinx docs \
 	dev-python/parso \
-	dev-python/sphinx_rtd_theme
+	dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
 python_prepare_all() {

@@ -24,7 +24,7 @@ SLOT="0"
 KEYWORDS="amd64 ~riscv"
 
 RDEPEND="
-	dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+	dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>=dev-python/setuptools_scm-7.0.5[${PYTHON_USEDEP}]

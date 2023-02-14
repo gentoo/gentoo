@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..10} )
 DOCS_BUILDER="sphinx"
-DOCS_DEPEND="dev-python/sphinx_rtd_theme"
+DOCS_DEPEND="dev-python/sphinx-rtd-theme"
 DOCS_DIR="docs/source"
 inherit cmake-multilib python-any-r1 docs toolchain-funcs
 
