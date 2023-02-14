@@ -19,7 +19,7 @@ SLOT="0/2" # liburing.so major version
 
 IUSE="examples static-libs test"
 # fsync test hangs forever
-RESTRICT="test !test? ( test )"
+RESTRICT="!test? ( test )"
 
 # At least installed headers need <linux/*>, bug #802516
 DEPEND=">=sys-kernel/linux-headers-5.1"
@@ -28,6 +28,8 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	# https://bugs.gentoo.org/891633
 	"${FILESDIR}/${PN}-2.3-liburing.map-Export-io_uring_-enable_rings-register_.patch"
+	# https://github.com/axboe/liburing/pull/787
+	"${FILESDIR}/${PN}-2.3-remove-error-from-error_h-for-portability.patch"
 )
 
 src_prepare() {
@@ -75,5 +77,19 @@ multilib_src_install_all() {
 }
 
 multilib_src_test() {
-	emake V=1 runtests
+	local disabled_tests=(
+		accept.c
+		fpos.c
+		io_uring_register.c
+		link-timeout.c
+		read-before-exit.c
+		recv-msgall-stream.c
+	)
+	local disabled_test
+	for disabled_test in "${disabled_tests[@]}"; do
+		sed -i "/\s*${disabled_test}/d" test/Makefile \
+			|| die "Failed to remove ${disabled_test}"
+	done
+
+	emake -C test V=1 runtests
 }
