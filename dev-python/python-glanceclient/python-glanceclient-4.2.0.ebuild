@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 RDEPEND="
-	>=dev-python/keystoneauth-3.6.2[${PYTHON_USEDEP}]
+	>=dev-python/keystoneauth1-3.6.2[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.33.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-3.15.3[${PYTHON_USEDEP}]
 	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]

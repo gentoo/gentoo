@@ -22,7 +22,7 @@ RDEPEND="
 	>dev-python/cliff-2.9.0[${PYTHON_USEDEP}]
 	>=dev-python/dogpile-cache-0.8.0[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-3.2.0[${PYTHON_USEDEP}]
-	>=dev-python/keystoneauth-3.11.0[${PYTHON_USEDEP}]
+	>=dev-python/keystoneauth1-3.11.0[${PYTHON_USEDEP}]
 	>=dev-python/openstacksdk-0.18.0[${PYTHON_USEDEP}]
 	>=dev-python/osc-lib-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.33.0[${PYTHON_USEDEP}]

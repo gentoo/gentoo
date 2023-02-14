@@ -19,7 +19,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 RDEPEND="
 	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
-	>=dev-python/keystoneauth-3.4.0[${PYTHON_USEDEP}]
+	>=dev-python/keystoneauth1-3.4.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-5.2.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-3.15.3[${PYTHON_USEDEP}]
 	>dev-python/oslo-serialization-2.19.1[${PYTHON_USEDEP}]

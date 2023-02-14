@@ -27,7 +27,7 @@ RDEPEND="
 	>dev-python/oslo-serialization-2.19.1[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.33.0[${PYTHON_USEDEP}]
 	>=dev-python/os-client-config-1.28.0[${PYTHON_USEDEP}]
-	>=dev-python/keystoneauth-3.8.0[${PYTHON_USEDEP}]
+	>=dev-python/keystoneauth1-3.8.0[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-3.8.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.14.2[${PYTHON_USEDEP}]
 	>=dev-python/simplejson-3.5.1[${PYTHON_USEDEP}]

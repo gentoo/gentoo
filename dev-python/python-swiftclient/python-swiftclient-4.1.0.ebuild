@@ -22,7 +22,7 @@ RDEPEND="
 BDEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/keystoneauth-3.4.0[${PYTHON_USEDEP}]
+		>=dev-python/keystoneauth1-3.4.0[${PYTHON_USEDEP}]
 		dev-python/python-keystoneclient[${PYTHON_USEDEP}]
 		>=dev-python/mock-1.2.0[${PYTHON_USEDEP}]
 		>=dev-python/openstacksdk-0.11.0[${PYTHON_USEDEP}]

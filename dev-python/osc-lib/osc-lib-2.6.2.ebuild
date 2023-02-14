@@ -22,7 +22,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-python/cliff-3.2.0[${PYTHON_USEDEP}]
-	>=dev-python/keystoneauth-3.14.0[${PYTHON_USEDEP}]
+	>=dev-python/keystoneauth1-3.14.0[${PYTHON_USEDEP}]
 	>=dev-python/openstacksdk-0.15.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-3.15.3[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.33.0[${PYTHON_USEDEP}]

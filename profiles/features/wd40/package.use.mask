@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-12-26)
@@ -55,7 +55,7 @@ dev-python/docker-py test
 dev-python/google-api-python-client test
 dev-python/httpx-socks test
 dev-python/hypercorn test
-dev-python/keystoneauth test
+dev-python/keystoneauth1 test
 dev-python/libtmux test
 dev-python/locket test
 dev-python/pyjwt test

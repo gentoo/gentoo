@@ -23,7 +23,7 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	test? (
-		>=dev-python/keystoneauth-3.4.0[${PYTHON_USEDEP}]
+		>=dev-python/keystoneauth1-3.4.0[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
 		>=dev-python/requests-mock-1.2.0[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
