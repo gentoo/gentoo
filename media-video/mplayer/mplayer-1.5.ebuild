@@ -66,9 +66,10 @@ X_RDEPS="
 #	nemesi? ( net-libs/libnemesi )
 # - mplayer relies on private APIs in giflib that have been removed:
 #   https://sourceforge.net/p/giflib/bugs/132/
+# - depends on <ffmpeg-5 for bug #876760, a snapshot may help though.
 RDEPEND="
 	app-arch/bzip2
-	>=media-video/ffmpeg-4.0:=[vdpau?]
+	<media-video/ffmpeg-5:=[vdpau?]
 	sys-libs/ncurses:=
 	sys-libs/zlib
 	a52? ( media-libs/a52dec )
