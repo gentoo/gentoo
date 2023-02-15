@@ -12,8 +12,9 @@
 	<longdescription>
 		Nestopia JG is an emulator for the Nintendo Entertainment
 		System/Famicom, including support for the Famicom Disk
-		System. Though originally a fork, Nestopia JG is now the
-		de facto upstream branch of the Nestopia emulator.
+		System and VS. System. Though originally a fork, Nestopia JG
+		has become the de facto upstream branch of the Nestopia
+		emulator.
 	</longdescription>
 	<upstream>
 		<bugs-to>https://gitlab.com/jgemu/nestopia/-/issues</bugs-to>
