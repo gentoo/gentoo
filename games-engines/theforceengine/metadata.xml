@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
+  <longdescription>
+    Modern replacement Engine for the 1990's era LucasArts shooters
+    "Dark Forces" and in the future "Outlaws"; with full support for
+    Digital Audio, MIDI music and Mods.
+  </longdescription>
+  <use>
+    <flag name="softmidi">Adds runtime dependency on a known-working software midi synthesizer.</flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/luciusDXL/TheForceEngine/issues</bugs-to>
+    <changelog>https://github.com/luciusDXL/TheForceEngine/releases/</changelog>
+    <doc>https://theforceengine.github.io</doc>
+  </upstream>
+</pkgmetadata>
