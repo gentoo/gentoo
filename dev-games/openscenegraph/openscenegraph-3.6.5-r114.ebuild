@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,6 +38,8 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
+# <ffmpeg-5 for bug #831486 / bug #834425 and
+# https://github.com/openscenegraph/OpenSceneGraph/issues/1111
 RDEPEND="
 	media-libs/mesa[egl(+)?]
 	virtual/glu
@@ -53,7 +55,7 @@ RDEPEND="
 		sdl2? ( media-libs/libsdl2 )
 		wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[opengl,X] )
 	)
-	ffmpeg? ( media-video/ffmpeg:0= )
+	ffmpeg? ( <media-video/ffmpeg-5:= )
 	gdal? ( sci-libs/gdal:= )
 	gif? ( media-libs/giflib:= )
 	gstreamer? (
