@@ -8,9 +8,9 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit python-single-r1
 
 DESCRIPTION="Tool to fix screen dimensions in EDID data dumps"
-HOMEPAGE="https://github.com/mgorny/edid-fixdim/"
+HOMEPAGE="https://github.com/projg2/edid-fixdim/"
 SRC_URI="
-	https://github.com/mgorny/edid-fixdim/archive/v${PV}.tar.gz
+	https://github.com/projg2/edid-fixdim/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz
 "
 
