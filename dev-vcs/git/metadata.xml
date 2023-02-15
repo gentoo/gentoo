@@ -28,7 +28,6 @@
     <flag name="mediawiki">Support pulling and pushing from MediaWiki</flag>
     <flag name="mediawiki-experimental">Add experimental patches for improved MediaWiki support</flag>
     <flag name="perforce">Add support for Perforce version control system (requires manual installation of Perforce client)</flag>
-    <flag name="ppcsha1">Make use of a bundled routine that is optimized for the PPC arch</flag>
     <flag name="safe-directory">Respect the safe.directory setting</flag>
     <flag name="subversion">Include git-svn for <pkg>dev-vcs/subversion</pkg> support</flag>
     <flag name="tk">Include the 'gitk' and 'git gui' tools</flag>
