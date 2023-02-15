@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,6 +15,10 @@ IUSE="+netlink"
 RDEPEND="netlink? ( net-libs/libmnl )"
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/xz-utils"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-musl.patch
+)
 
 src_configure() {
 	econf $(use_enable netlink)
