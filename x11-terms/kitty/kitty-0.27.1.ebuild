@@ -49,7 +49,8 @@ RDEPEND="
 	~x11-terms/kitty-shell-integration-${PV}
 	~x11-terms/kitty-terminfo-${PV}
 	X? ( x11-libs/libX11 )
-	wayland? ( dev-libs/wayland )"
+	wayland? ( dev-libs/wayland )
+	!sci-mathematics/kissat"
 DEPEND="
 	${RDEPEND}
 	X? (
