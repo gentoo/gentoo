@@ -9,7 +9,7 @@ SRC_URI="https://github.com/garrigue/lablgtk/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="LGPL-2.1-with-linking-exception examples? ( lablgtk-examples )"
 SLOT="2/${PV}"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~ia64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug examples glade gnomecanvas +ocamlopt sourceview spell svg"
 
 DEPEND=">=dev-lang/ocaml-4.05:=[ocamlopt?]
