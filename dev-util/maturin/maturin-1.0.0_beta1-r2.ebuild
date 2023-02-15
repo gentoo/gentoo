@@ -399,7 +399,7 @@ CRATES_TEST="
 	windows_x86_64_msvc-0.42.0"
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
-inherit cargo distutils-r1 edo flag-o-matic
+inherit bash-completion-r1 cargo distutils-r1 edo flag-o-matic toolchain-funcs
 
 DESCRIPTION="Build and publish crates with pyo3, rust-cpython and cffi bindings"
 HOMEPAGE="https://www.maturin.rs/"
@@ -462,6 +462,15 @@ src_configure() {
 
 python_compile_all() {
 	use !doc || mdbook build -d html guide || die
+
+	if ! tc-is-cross-compiler; then
+		local maturin=target/$(usex debug{,} release)/maturin
+		${maturin} completions bash > "${T}"/${PN} || die
+		${maturin} completions fish > "${T}"/${PN}.fish || die
+		${maturin} completions zsh > "${T}"/_${PN} || die
+	else
+		ewarn "shell completion files were skipped due to cross-compilation"
+	fi
 }
 
 python_test() {
@@ -485,4 +494,14 @@ python_test() {
 python_install_all() {
 	dodoc Changelog.md README.md
 	use doc && dodoc -r guide/html
+
+	if ! tc-is-cross-compiler; then
+		dobashcomp "${T}"/${PN}
+
+		insinto /usr/share/fish/vendor_completions.d
+		doins "${T}"/${PN}.fish
+
+		insinto /usr/share/zsh/site-functions
+		doins "${T}"/_${PN}
+	fi
 }
