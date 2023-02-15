@@ -27,6 +27,7 @@ REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-musl-tests.patch
+	"${FILESDIR}"/${PN}-0.17-musl.patch
 )
 
 pkg_setup() {
