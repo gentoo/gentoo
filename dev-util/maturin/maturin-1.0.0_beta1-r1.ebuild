@@ -410,31 +410,28 @@ SRC_URI="
 	test? ( $(cargo_crate_uris ${CRATES_TEST}) )"
 S="${WORKDIR}/${P/_beta/-beta.}"
 
+# note: ring is unused, so SSLeay+openssl licenses can be skipped
 LICENSE="
-	0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD
-	CC0-1.0 ISC MIT MPL-2.0 SSLeay Unicode-DFS-2016 openssl
-	doc? ( CC-BY-4.0 OFL-1.1 )"
+	0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD CC0-1.0 ISC
+	MIT MPL-2.0 Unicode-DFS-2016 doc? ( CC-BY-4.0 OFL-1.1 )"
 SLOT="0"
 # unkeyworded beta for testing
 #KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="doc test"
+IUSE="doc +ssl test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.{9..10} pypy3)"
+RDEPEND="$(python_gen_cond_dep 'dev-python/tomli[${PYTHON_USEDEP}]' 3.{9,10})"
+DEPEND="ssl? ( dev-libs/openssl:= )"
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
 	doc? ( app-text/mdbook )
 	test? (
 		${RDEPEND}
-		$(python_gen_cond_dep '
-			dev-python/cffi[${PYTHON_USEDEP}]
-		' 'python*')
+		$(python_gen_cond_dep 'dev-python/cffi[${PYTHON_USEDEP}]' 'python*')
 		dev-python/boltons[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 	)"
+RDEPEND+=" ${DEPEND}"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
@@ -455,14 +452,12 @@ src_configure() {
 	local cargoargs=(
 		$(usev debug '--profile dev')
 		--no-default-features
-		--features full,password-storage # see release.yml
+		# like release.yml + native-tls for better platform support than rustls
+		--features full,password-storage$(usev ssl ,native-tls)
 	)
 
-	# rustls needs ring crate that only works on specific arches (bug #859577)
-	use amd64 || use x86 || use arm64 || use arm &&
-		cargoargs+=(--features rustls)
-
 	export MATURIN_SETUP_ARGS=${cargoargs[*]} # --no-default-features if empty
+	export OPENSSL_NO_VENDOR=1
 }
 
 python_compile_all() {
