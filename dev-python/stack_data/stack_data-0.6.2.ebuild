@@ -33,4 +33,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-pygments-2.14.0.patch
+)
+
 distutils_enable_tests pytest
