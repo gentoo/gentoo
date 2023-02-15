@@ -16,6 +16,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+RDEPEND="!>=x11-terms/kitty-0.27"
+
 src_configure() {
 	local myopts=(
 		CC="$(tc-getCC) ${CFLAGS} ${LDFLAGS}"
