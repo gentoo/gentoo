@@ -1,6 +1,6 @@
-From 39160b692fd051f2638f1a6e1df38eb616b6d6cb Mon Sep 17 00:00:00 2001
+From d8a654a61452c39e3e611493ad70b8c6e818130e Mon Sep 17 00:00:00 2001
 From: Bernd Waibel <waebbl-gentoo@posteo.net>
-Date: Sun, 30 Oct 2022 16:09:43 +0100
+Date: Wed, 15 Feb 2023 12:28:00 +0100
 Subject: [PATCH] find libjpeg-turbo library
 
 Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
@@ -10,8 +10,8 @@ Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
      vssolution.cpp
      visualpkg.cpp
  )
--target_link_libraries( nggui PUBLIC "$<BUILD_INTERFACE:netgen_python>" ${MPI_CXX_LIBRARIES} ${OPENGL_LIBRARIES} )
-+target_link_libraries( nggui PUBLIC "$<BUILD_INTERFACE:netgen_python>" ${MPI_CXX_LIBRARIES} ${OPENGL_LIBRARIES} ${JPEG_LIBRARIES} )
+-target_link_libraries( nggui PUBLIC "$<BUILD_INTERFACE:netgen_python>" ${MPI_CXX_LIBRARIES} ${OPENGL_LIBRARIES} nglib)
++target_link_libraries( nggui PUBLIC "$<BUILD_INTERFACE:netgen_python>" ${MPI_CXX_LIBRARIES} ${OPENGL_LIBRARIES} ${JPEG_LIBRARIES} nglib)
  
  install(FILES
    meshdoc.hpp mvdraw.hpp visual_api.hpp
@@ -30,5 +30,5 @@ Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
  
  install(TARGETS nglib netgen_cgns ${NG_INSTALL_DIR})
 -- 
-2.38.1
+2.39.1
 

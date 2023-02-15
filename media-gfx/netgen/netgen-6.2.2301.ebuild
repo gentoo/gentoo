@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_10 )
+PYTHON_COMPAT=( python3_{10,11} )
 inherit cmake desktop python-single-r1 xdg
 
 DESCRIPTION="Automatic 3d tetrahedral mesh generator"
@@ -66,14 +66,14 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-6.2.2204-use-external-pybind11.patch"
 	"${FILESDIR}/${PN}-6.2.2204-find-Tk-include-directories.patch"
-	"${FILESDIR}/${PN}-6.2.2204-find-libjpeg-turbo-library.patch"
 	"${FILESDIR}/${PN}-6.2.2204-link-against-ffmpeg.patch"
 	"${FILESDIR}/${PN}-6.2.2204-use-system-spdlog.patch"
 	"${FILESDIR}/${PN}-6.2.2204-use-system-catch.patch"
 	"${FILESDIR}/${PN}-6.2.2204-disable-failing-tests.patch"
 	"${FILESDIR}/${PN}-6.2.2204-disable-python-tests.patch"
+	"${FILESDIR}/${PN}-6.2.2301-find-libjpeg-turbo-library.patch"
+	"${FILESDIR}/${PN}-6.2.2301-fix-nullptr-deref-in-archive.patch"
 )
 
 pkg_setup() {
@@ -82,8 +82,9 @@ pkg_setup() {
 
 src_prepare() {
 	# NOTE: need to manually check and update this string on version bumps!
+	# git describe --tags --match "v[0-9]*" --long --dirty
 	cat <<- EOF > "${S}/version.txt" || die
-		v${PV}-0-gde0d706e
+		v${PV}-0-g26d12898
 	EOF
 	cmake_src_prepare
 }
@@ -119,8 +120,9 @@ src_configure() {
 	fi
 	if use python; then
 		mycmakeargs+=(
-			-DPYBIND_INCLUDE_DIR="/usr/lib/${EPYTHON}/site-packages/pybind11/include/"
-			-DNG_INSTALL_PYBIND=OFF
+			-DPREFER_SYSTEM_PYBIND11=ON
+			# needed, so the value gets passed to NetgenConfig.cmake instead of ${T}/pythonX.Y
+			-DPYTHON_EXECUTABLE="${PYTHON}"
 		)
 	fi
 	if use mpi && use python; then
