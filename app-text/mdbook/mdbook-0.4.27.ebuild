@@ -258,6 +258,5 @@ src_install() {
 	cargo_src_install
 
 	dodoc CHANGELOG.md README.md
-
-	[[ -e guide/html ]] && dodoc -r guide/html
+	use doc && ! tc-is-cross-compiler && dodoc -r guide/html
 }
