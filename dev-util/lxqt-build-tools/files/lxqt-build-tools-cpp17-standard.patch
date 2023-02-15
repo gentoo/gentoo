@@ -1,0 +1,30 @@
+Gentoo Bug: https://bugs.gentoo.org/894468
+Upstream: https://github.com/lxqt/lxqt-build-tools/pull/83
+
+From 4a3a7038b1927dc43942a930db103023efdcbe2c Mon Sep 17 00:00:00 2001
+From: Simon Quigley <simon@tsimonq2.net>
+Date: Wed, 25 Jan 2023 09:39:41 -0600
+Subject: [PATCH] Bump the minimum compatibility level to C++17.
+
+---
+ cmake/modules/LXQtCompilerSettings.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/modules/LXQtCompilerSettings.cmake b/cmake/modules/LXQtCompilerSettings.cmake
+index a8cb16d..acba891 100644
+--- a/cmake/modules/LXQtCompilerSettings.cmake
++++ b/cmake/modules/LXQtCompilerSettings.cmake
+@@ -181,11 +181,11 @@ endif()
+ 
+ 
+ #-----------------------------------------------------------------------------
+-# CXX14 requirements - no checks, we just set it
++# CXX17 requirements - no checks, we just set it
+ #-----------------------------------------------------------------------------
+ set(CMAKE_CXX_STANDARD_REQUIRED True)
+ set(CMAKE_CXX_EXTENSIONS OFF)
+-set(CMAKE_CXX_STANDARD 14 CACHE STRING "C++ ISO Standard")
++set(CMAKE_CXX_STANDARD 17 CACHE STRING "C++ ISO Standard")
+ 
+ 
+ #-----------------------------------------------------------------------------
