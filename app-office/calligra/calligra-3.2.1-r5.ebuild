@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ ECM_HANDBOOK="forceoptional"
 ECM_TEST="forceoptional"
 KFMIN=5.88.0
 QTMIN=5.15.2
-inherit check-reqs ecm kde.org
+inherit check-reqs ecm flag-o-matic kde.org
 
 DESCRIPTION="KDE Office Suite"
 HOMEPAGE="https://calligra.org/"
@@ -143,6 +143,9 @@ src_prepare() {
 
 src_configure() {
 	local cal_ft myproducts
+
+	# Uses removed 'register' keyword, drop on next release. bug #883067
+	append-cxxflags -std=c++14
 
 	# applications
 	for cal_ft in ${CAL_FTS[@]}; do
