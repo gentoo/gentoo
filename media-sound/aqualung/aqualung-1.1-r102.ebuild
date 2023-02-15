@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,6 +24,8 @@ BDEPEND="
 	virtual/pkgconfig
 	sys-devel/gettext
 "
+# <ffmpeg-5 dep for bug #834391
+# https://github.com/jeremyevans/aqualung/issues/29
 RDEPEND="
 	app-arch/bzip2
 	dev-libs/libxml2
@@ -32,7 +34,7 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	cdda? ( dev-libs/libcdio-paranoia )
 	cddb? ( media-libs/libcddb )
-	ffmpeg? ( media-video/ffmpeg:= )
+	ffmpeg? ( <media-video/ffmpeg-5:= )
 	flac? ( media-libs/flac:= )
 	ifp? ( media-libs/libifp )
 	jack? ( virtual/jack )
