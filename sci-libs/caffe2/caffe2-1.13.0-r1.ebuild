@@ -59,6 +59,7 @@ DEPEND="
 	dev-libs/FXdiv
 	dev-libs/pocketfft
 	dev-libs/flatbuffers
+	sci-libs/kineto
 	$(python_gen_cond_dep '
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/pybind11[${PYTHON_USEDEP}]
