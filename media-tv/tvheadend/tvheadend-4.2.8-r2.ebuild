@@ -22,14 +22,14 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
-
+# <ffmpeg-5 dep for bug #834399, https://github.com/tvheadend/tvheadend/pull/1460
 RDEPEND="
 	acct-user/tvheadend
 	virtual/libiconv
 	dbus? ( sys-apps/dbus )
 	dvbcsa? ( media-libs/libdvbcsa )
 	dvben50221? ( media-tv/linuxtv-dvb-apps )
-	ffmpeg? ( media-video/ffmpeg:0= )
+	ffmpeg? ( <media-video/ffmpeg-5:= )
 	hdhomerun? ( media-libs/libhdhomerun )
 	dev-libs/openssl:0=
 	uriparser? ( dev-libs/uriparser )
