@@ -4,12 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="Python binding for MeCab"
-HOMEPAGE="https://taku910.github.io/mecab/"
+HOMEPAGE="
+	https://taku910.github.io/mecab/
+	https://github.com/taku910/mecab/
+	https://pypi.org/project/mecab-python/
+"
 SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN%-*}/${P}.tar.gz"
 
 LICENSE="|| ( BSD LGPL-2.1 GPL-2 )"
