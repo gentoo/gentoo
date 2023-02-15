@@ -8,7 +8,7 @@ LUA_COMPAT=( lua5-1 )
 WX_GTK_VER="3.0-gtk3"
 inherit cmake flag-o-matic lua-single wxwidgets
 
-MY_COMMIT="bbe61c3bc510a4f5bb4aea21cce506519c2d24e6"
+MY_COMMIT="69cfecebfb6dc703b42e8de39eed750a84a87489"
 
 DESCRIPTION="OpenMW-specific fork of OpenSceneGraph"
 HOMEPAGE="https://github.com/OpenMW/osg"
@@ -19,7 +19,7 @@ LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/162" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="
-	+collada curl dicom debug doc egl examples +ffmpeg fltk fox gdal
+	+collada curl dicom debug doc egl examples fltk fox gdal
 	gif glut gstreamer +jpeg las lua openexr openinventor osgapps pdf +png
 	+sdl sdl2 +svg tiff +truetype vnc wxwidgets xrandr +zlib
 "
@@ -37,8 +37,6 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
-# <ffmpeg-5 for bug #831486 / bug #834425 and
-# https://github.com/openscenegraph/OpenSceneGraph/issues/1111
 RDEPEND="
 	!dev-games/openscenegraph
 	dev-libs/glib:2
@@ -57,7 +55,6 @@ RDEPEND="
 		sdl2? ( media-libs/libsdl2 )
 		wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[opengl,X] )
 	)
-	ffmpeg? ( <media-video/ffmpeg-5:= )
 	gdal? ( sci-libs/gdal:= )
 	gif? ( media-libs/giflib:= )
 	gstreamer? (
@@ -119,7 +116,7 @@ src_configure() {
 		$(cmake_use_find_package dicom DCMTK)
 		$(cmake_use_find_package egl EGL)
 		-DBUILD_OSG_EXAMPLES=$(usex examples)
-		$(cmake_use_find_package ffmpeg FFmpeg)
+		-DCMAKE_DISABLE_FIND_PACKAGE_FFmpeg=ON
 		$(cmake_use_find_package gdal GDAL)
 		$(cmake_use_find_package gif GIFLIB)
 		$(cmake_use_find_package gstreamer GLIB)
