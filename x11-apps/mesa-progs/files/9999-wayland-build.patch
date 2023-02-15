@@ -1,0 +1,25 @@
+Upstream-PR:
+https://gitlab.freedesktop.org/mesa/demos/-/merge_requests/114
+
+From 84e12c852937c03218e39048d7a2642d27e5d037 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Fri, 10 Feb 2023 07:44:54 -0800
+Subject: [PATCH] meson: dep_libdecor is disabled without wayland
+
+---
+ meson.build | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/meson.build b/meson.build
+index f93a731d..cd3f6048 100644
+--- a/meson.build
++++ b/meson.build
+@@ -77,6 +77,8 @@ if dep_wayland.found()
+     'xdg-shell', 'xdg-shell.xml'
+   )
+   dep_libdecor = dependency('libdecor-0', version : '>= 0.1')
++else
++  dep_libdecor = dependency('', required : false)
+ endif
+ 
+ dep_threads = dependency('threads')
