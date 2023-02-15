@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -alpha
 
+# Matt Turner <mattst88@gentoo.org> (2023-02-15)
+# dev-lang/ocaml is not keyworded here
+ocaml
+
 # Matt Turner <mattst88@gentoo.org> (2022-02-21)
 # app-crypt/tpm2-tss is not keyworded here
 tpm
