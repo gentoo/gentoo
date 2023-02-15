@@ -1,0 +1,40 @@
+https://github.com/sudo-project/sudo/commit/defec5d46eec7345b62060049f72215ffd7f3e7e
+
+From defec5d46eec7345b62060049f72215ffd7f3e7e Mon Sep 17 00:00:00 2001
+From: "Todd C. Miller" <Todd.Miller@sudo.ws>
+Date: Tue, 14 Feb 2023 14:24:28 -0700
+Subject: [PATCH] Add missing '[' to AS_IF() call. Fixes GitHub issue #238.
+
+--- a/configure
++++ b/configure
+@@ -24525,7 +24525,8 @@ fi
+ 
+ if test X"$with_noexec" != X"no"
+ then :
+-  # Check for non-standard exec functions
++
++    # Check for non-standard exec functions
+     ac_fn_c_check_func "$LINENO" "exect" "ac_cv_func_exect"
+ if test "x$ac_cv_func_exect" = xyes
+ then :
+@@ -24564,7 +24565,7 @@ fi
+ 
+ 
+ fi
+-]
++
+ fi
+ 
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+--- a/configure.ac
++++ b/configure.ac
+@@ -3022,7 +3022,7 @@ AC_CHECK_FUNCS([setpassent setgroupent])
+ dnl
+ dnl Function checks for sudo_noexec
+ dnl
+-AS_IF([test X"$with_noexec" != X"no"],
++AS_IF([test X"$with_noexec" != X"no"], [
+     # Check for non-standard exec functions
+     AC_CHECK_FUNCS([exect execvP execvpe])
+     # Check for posix_spawn, and posix_spawnp
+

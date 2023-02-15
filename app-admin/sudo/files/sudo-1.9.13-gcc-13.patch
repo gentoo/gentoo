@@ -1,0 +1,53 @@
+https://github.com/sudo-project/sudo/issues/239
+https://github.com/sudo-project/sudo/pull/240
+
+From 20d1348354ddbfb1b1f95522f81d73ec00988358 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 15 Feb 2023 03:20:36 +0000
+Subject: [PATCH] sudo_fatal: Fix build where compiler recognises [[noreturn]]
+ attribute (C23)
+
+If the compiler supports [[noreturn]] as a attribute as in C23,
+then we define sudo_noreturn to be it. When that's the case, we must place
+it at the beginning of the declaration, before any other *extension*
+attributes (__attribute(...)).
+
+sudo_dso_public is always an extension attribute, while sudo_noreturn only
+might be, so put it first.
+
+This only shows up with GCC 13 so far (see the linked GCC bug (notabug)
+for a bit more exploration). Clang 16 does support the attribute but doesn't let
+you sue it for earlier language versions (need to pass explicit -std=c2x,
+unlike with GCC here).
+
+This is essentially a followup to e707ffe58b3ccfe5c72f54c38eac1d7069d5021e.
+
+Tested with GCC 13.0.1 20230212 (unreleased), GCC 12.2.1 20230211,
+Clang 16.0.0_rc2, and Clang 15.0.7.
+
+Bug: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=108796
+Closes: https://github.com/sudo-project/sudo/issues/239
+Fixes: e707ffe58b3ccfe5c72f54c38eac1d7069d5021e
+Fixes: 16ae61dcd7d3cd8bf6eb10a22fa742d4505da4e9
+--- a/include/sudo_fatal.h
++++ b/include/sudo_fatal.h
+@@ -171,12 +171,12 @@ sudo_dso_public int  sudo_fatal_callback_deregister_v1(sudo_fatal_callback_t fun
+ sudo_dso_public int  sudo_fatal_callback_register_v1(sudo_fatal_callback_t func);
+ sudo_dso_public char *sudo_warn_gettext_v1(const char *domainname, const char *msgid) sudo_attr_fmt_arg(2);
+ sudo_dso_public void sudo_warn_set_locale_func_v1(sudo_warn_setlocale_t func);
+-sudo_dso_public sudo_noreturn void sudo_fatal_nodebug_v1(const char *fmt, ...) sudo_printf0like(1, 2);
+-sudo_dso_public sudo_noreturn void sudo_fatalx_nodebug_v1(const char *fmt, ...) sudo_printflike(1, 2);
+-sudo_dso_public sudo_noreturn void sudo_gai_fatal_nodebug_v1(int errnum, const char *fmt, ...) sudo_printflike(2, 3);
+-sudo_dso_public sudo_noreturn void sudo_vfatal_nodebug_v1(const char *fmt, va_list ap) sudo_printf0like(1, 0);
+-sudo_dso_public sudo_noreturn void sudo_vfatalx_nodebug_v1(const char *fmt, va_list ap) sudo_printflike(1, 0);
+-sudo_dso_public sudo_noreturn void sudo_gai_vfatal_nodebug_v1(int errnum, const char *fmt, va_list ap) sudo_printflike(2, 0);
++sudo_noreturn sudo_dso_public void sudo_fatal_nodebug_v1(const char *fmt, ...) sudo_printf0like(1, 2);
++sudo_noreturn sudo_dso_public void sudo_fatalx_nodebug_v1(const char *fmt, ...) sudo_printflike(1, 2);
++sudo_noreturn sudo_dso_public void sudo_gai_fatal_nodebug_v1(int errnum, const char *fmt, ...) sudo_printflike(2, 3);
++sudo_noreturn sudo_dso_public void sudo_vfatal_nodebug_v1(const char *fmt, va_list ap) sudo_printf0like(1, 0);
++sudo_noreturn sudo_dso_public void sudo_vfatalx_nodebug_v1(const char *fmt, va_list ap) sudo_printflike(1, 0);
++sudo_noreturn sudo_dso_public void sudo_gai_vfatal_nodebug_v1(int errnum, const char *fmt, va_list ap) sudo_printflike(2, 0);
+ sudo_dso_public void sudo_warn_nodebug_v1(const char *fmt, ...) sudo_printf0like(1, 2);
+ sudo_dso_public void sudo_warnx_nodebug_v1(const char *fmt, ...) sudo_printflike(1, 2);
+ sudo_dso_public void sudo_gai_warn_nodebug_v1(int errnum, const char *fmt, ...) sudo_printflike(2, 3);
+

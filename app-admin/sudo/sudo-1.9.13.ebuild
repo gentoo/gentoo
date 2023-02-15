@@ -86,6 +86,11 @@ REQUIRED_USE="
 
 MAKEOPTS+=" SAMPLES="
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.9.13-missing-bracket-as-if.patch
+	"${FILESDIR}"/${PN}-1.9.13-gcc-13.patch
+)
+
 src_prepare() {
 	default
 
