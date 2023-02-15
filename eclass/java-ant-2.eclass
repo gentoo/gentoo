@@ -1,4 +1,4 @@
-# Copyright 2004-2021 Gentoo Authors
+# Copyright 2004-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-ant-2.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # kiorky <kiorky@cryptelium.net>
 # Petteri Räty <betelgeuse@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @PROVIDES: java-utils-2
 # @BLURB: eclass for ant based Java packages
 # @DESCRIPTION:
@@ -18,7 +18,7 @@
 inherit java-utils-2 multilib
 
 case ${EAPI:-0} in
-	[5678]) ;;
+	[678]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -72,8 +72,8 @@ fi
 # We need some tools from javatoolkit. We also need ant dependencies
 # constructed above.
 JAVA_ANT_E_DEPEND="${JAVA_ANT_E_DEPEND}
-	   ${ANT_TASKS_DEPEND}
-	   dev-java/javatoolkit"
+	${ANT_TASKS_DEPEND}
+	dev-java/javatoolkit"
 
 # this eclass must be inherited after java-pkg-2 or java-pkg-opt-2
 # if it's java-pkg-opt-2, ant dependencies are pulled based on USE flag
