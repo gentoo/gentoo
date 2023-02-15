@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BUILD_TARGETS="all"
 MODULE_NAMES="vboxdrv(misc:${S}) vboxnetflt(misc:${S}) vboxnetadp(misc:${S})"
