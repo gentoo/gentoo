@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,9 +19,11 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 IUSE="test tools"
 RESTRICT="!test? ( test )"
 
-# Default to fftw to avoid awkward circular dependency w/ ffmpeg
+# - Default to fftw to avoid awkward circular dependency w/ ffmpeg
 # See bug #833821 for an example
-RDEPEND="tools? ( media-video/ffmpeg:=[${MULTILIB_USEDEP}] )
+# - <ffmpeg-5 dep for 1.5.1 for bug #884393, newer versions likely have
+# a hard requirement on >=ffmpeg-5
+RDEPEND="tools? ( <media-video/ffmpeg-5:=[${MULTILIB_USEDEP}] )
 	!tools? ( sci-libs/fftw:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )"
