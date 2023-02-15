@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/717014
+--- a/mp3tech.c
++++ b/mp3tech.c
+@@ -279,7 +279,7 @@ char *header_mode(mp3header *h) {
+ }
+ 
+ int sameConstant(mp3header *h1, mp3header *h2) {
+-    if((*(uint*)h1) == (*(uint*)h2)) return 1;
++    if((*(unsigned int*)h1) == (*(unsigned int*)h2)) return 1;
+ 
+     if((h1->version       == h2->version         ) &&
+        (h1->layer         == h2->layer           ) &&
