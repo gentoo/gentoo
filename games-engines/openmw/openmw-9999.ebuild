@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,8 +46,8 @@ RDEPEND="${LUA_DEPS}
 	media-video/ffmpeg:=
 	>=sci-physics/bullet-2.86:=[double-precision]
 	virtual/opengl
-	osg-fork? ( >=dev-games/openscenegraph-openmw-3.6:=[collada(-),ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
-	!osg-fork? ( >=dev-games/openscenegraph-3.5.5:=[collada(-),ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
+	osg-fork? ( >=dev-games/openscenegraph-openmw-3.6:=[collada(-),jpeg,png,sdl,svg,truetype,zlib] )
+	!osg-fork? ( >=dev-games/openscenegraph-3.5.5:=[collada(-),jpeg,png,sdl,svg,truetype,zlib] )
 	qt5? (
 		app-arch/unshield
 		dev-qt/qtcore:5
