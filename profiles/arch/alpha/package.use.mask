@@ -1,6 +1,10 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <tetromino@gentoo.org> (2023-02-15)
+# net-libs/libqmi and net-libs/libqrtr-glib are not keyworded here
+net-misc/modemmanager qmi qrtr
+
 # Matt Turner <mattst88@gentoo.org> (2023-02-15)
 # Depends on dev-util/umockdev which is broken on alpha.
 # See https://github.com/martinpitt/umockdev/issues/200
@@ -455,10 +459,6 @@ media-libs/gst-plugins-base ivorbis
 # Julian Ospald <hasufell@gentoo.org> (2013-03-31)
 # depends on mono
 >=net-irc/hexchat-2.9.4-r1 theme-manager
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-31)
-# remove mask when net-libs/libqmi is keyworded here
-net-misc/modemmanager qmi
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-22)
 # remove mask if/when media-gfx/argyllcms is keywored here.
