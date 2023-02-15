@@ -1955,6 +1955,12 @@ java-utils-2_src_prepare() {
 		find "${WORKDIR}" -name "*.class"
 		echo "Search done."
 	fi
+
+	# Delete bundled .class and .jar files.
+	case ${EAPI:-0} in
+		[678]) ;;
+		*) java-pkg_clean ;;
+	esac
 }
 
 # @FUNCTION: java-utils-2_pkg_preinst
