@@ -2,21 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-COMMIT=5d13c2828da3567210b370bfd8555fdcf01d70bd
 
 inherit toolchain-funcs
 
 DESCRIPTION="A Markdown-to HTML translator written in C"
 HOMEPAGE="http://www.pell.portland.or.us/~orc/Code/discount/"
-SRC_URI="https://github.com/Orc/discount/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Orc/discount/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/3.0.0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="minimal test"
 RESTRICT="!test? ( test )"
-
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
 	default
