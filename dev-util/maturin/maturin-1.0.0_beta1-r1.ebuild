@@ -452,15 +452,17 @@ src_prepare() {
 src_configure() {
 	filter-lto # TODO: cleanup after bug #893658
 
-	# no features if empty (pep517-only), this re-enables them like releases do
-	export MATURIN_SETUP_ARGS=" "
-
-	# cargo.eclass adds IUSE=debug, avoid it being a noop
-	use debug && MATURIN_SETUP_ARGS+=" --profile dev"
+	local cargoargs=(
+		$(usev debug '--profile dev')
+		--no-default-features
+		--features full,password-storage # see release.yml
+	)
 
 	# rustls needs ring crate that only works on specific arches (bug #859577)
-	use !amd64 && use !x86 && use !arm64 && use !arm &&
-		MATURIN_SETUP_ARGS+=" --no-default-features --features full"
+	use amd64 || use x86 || use arm64 || use arm &&
+		cargoargs+=(--features rustls)
+
+	export MATURIN_SETUP_ARGS=${cargoargs[*]} # --no-default-features if empty
 }
 
 python_compile_all() {
