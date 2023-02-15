@@ -1,32 +1,28 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_IN_SOURCE_BUILD=1
-inherit db-use distutils-r1
+inherit db-use distutils-r1 pypi
 
 DESCRIPTION="Python bindings for Berkeley DB"
 HOMEPAGE="https://www.jcea.es/programacion/pybsddb.htm https://pypi.org/project/bsddb3/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
-	https://dev.gentoo.org/~arthurzam/patches/dev-python/${P}-fix-py3.10.patch.gz"
+SRC_URI+=" https://dev.gentoo.org/~arthurzam/patches/dev-python/${P}-fix-py3.10.patch.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
-	<sys-libs/db-6.3:=
+	<sys-libs/db-6.1:=
 	|| (
-		sys-libs/db:6.2
-		sys-libs/db:6.1
 		sys-libs/db:5.3
-		sys-libs/db:5.1
 		sys-libs/db:4.8
-		sys-libs/db:4.7
-	)"
+	)
+"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -36,7 +32,7 @@ PATCHES=(
 python_prepare_all() {
 	# This list should be kept in sync with setup.py.
 	if [[ -z ${DB_VER} ]]; then
-		for DB_VER in 6.2 6.1 5.3 5.1 4.8 4.7; do
+		for DB_VER in 5.3 4.8; do
 			has_version "sys-libs/db:${DB_VER}" && break
 		done
 	fi
