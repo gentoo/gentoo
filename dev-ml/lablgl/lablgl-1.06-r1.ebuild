@@ -11,7 +11,7 @@ SRC_URI="https://github.com/garrigue/lablgl/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc glut +ocamlopt tk"
 
 RDEPEND="
