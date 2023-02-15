@@ -1,4 +1,4 @@
-From 60fbad38f9a394607ac265902fc56c13dd8c9afc Mon Sep 17 00:00:00 2001
+From aeb01fb49314017aa70b63531f728e61c983d4b9 Mon Sep 17 00:00:00 2001
 From: Matt Turner <mattst88@gmail.com>
 Date: Fri, 27 Jan 2023 06:40:05 -0800
 Subject: [PATCH] Disable things we don't want
@@ -7,19 +7,19 @@ v2: Enable libglad to satisfy egl dependencies
 v3: Enable most of libutil to fix undefined references in es2gears
 ---
  meson.build                   | 11 +++--------
- src/egl/opengl/meson.build    | 26 -------------------------
+ src/egl/opengl/meson.build    | 33 --------------------------------
  src/egl/opengles2/meson.build |  5 -----
  src/meson.build               |  2 --
  src/util/gl_wrap.h            |  2 --
  src/util/meson.build          |  7 +------
  src/xdemos/meson.build        | 36 -----------------------------------
- 7 files changed, 4 insertions(+), 85 deletions(-)
+ 7 files changed, 4 insertions(+), 92 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index 1fb8eeb1..76f035fb 100644
+index f93a731d..245d1655 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -80,14 +80,7 @@ endif
+@@ -81,14 +81,7 @@ endif
  
  dep_threads = dependency('threads')
  
@@ -35,7 +35,7 @@ index 1fb8eeb1..76f035fb 100644
  
  # GBM is needed for EGL on KMS
  dep_gbm = dependency('gbm', required : false, disabler : true)
-@@ -126,6 +119,8 @@ else
+@@ -127,6 +120,8 @@ else
    dep_glut = dependency('', required : false)
  endif
  
@@ -45,53 +45,61 @@ index 1fb8eeb1..76f035fb 100644
                                          dependencies: [dep_glut],
                                          prefix : '#include <GL/freeglut.h>')
 diff --git a/src/egl/opengl/meson.build b/src/egl/opengl/meson.build
-index 6b7039dc..46e4bec7 100644
+index 434adf21..e4b0c83a 100644
 --- a/src/egl/opengl/meson.build
 +++ b/src/egl/opengl/meson.build
-@@ -24,32 +24,11 @@ executable(
-   'eglgears_x11', files('eglgears.c'),
-   dependencies: [_deps, dep_glu, idep_eglut_x11]
+@@ -25,38 +25,12 @@ executable(
+   dependencies: [_deps, dep_glu, idep_eglut_x11],
+   install: true
  )
 -executable(
 -  'egltri_x11', files('egltri.c'),
--  dependencies: [_deps, dep_glu, idep_eglut_x11]
+-  dependencies: [_deps, dep_glu, idep_eglut_x11],
+-  install: true
 -)
 -executable(
 -  'xeglgears', files('xeglgears.c'),
--  dependencies: [_deps, dep_glu, dep_egl, dep_x11]
+-  dependencies: [_deps, dep_glu, dep_egl, dep_x11],
+-  install: true
 -)
 -executable(
 -  'xeglthreads', files('xeglthreads.c'),
--  dependencies: [_deps, dep_x11]
+-  dependencies: [_deps, dep_x11],
+-  install: true
 -)
  
  executable(
    'eglgears_wayland', files('eglgears.c'),
-   dependencies: [_deps, dep_glu, idep_eglut_wayland]
+   dependencies: [_deps, dep_glu, idep_eglut_wayland],
+   install: true
  )
 -executable(
 -  'egltri_wayland', files('egltri.c'),
--  dependencies: [_deps, dep_glu, idep_eglut_wayland]
+-  dependencies: [_deps, dep_glu, idep_eglut_wayland],
+-  install: true
 -)
 -
 -executable(
 -  'eglkms', 'eglkms.c',
--  dependencies: [_deps, dep_drm, dep_gbm, dep_egl]
+-  dependencies: [_deps, dep_drm, dep_gbm, dep_egl],
+-  install: true
 -)
  
  executable(
    'eglinfo', 'eglinfo.c',
-@@ -58,8 +37,3 @@ executable(
+@@ -64,10 +38,3 @@ executable(
+   include_directories: [inc_glad, '../../xdemos'],
    install: true
  )
- 
+-
 -executable(
 -  'peglgears', 'peglgears.c',
--  dependencies: [dep_gl, dep_glu, dep_egl, dep_m, idep_util]
+-  dependencies: [dep_gl, dep_glu, dep_egl, dep_m, idep_util],
+-  install: true
 -)
 -
 diff --git a/src/egl/opengles2/meson.build b/src/egl/opengles2/meson.build
-index de47a69c..9b073a88 100644
+index da083cf2..59b35d66 100644
 --- a/src/egl/opengles2/meson.build
 +++ b/src/egl/opengles2/meson.build
 @@ -29,11 +29,6 @@ executable(
@@ -107,10 +115,10 @@ index de47a69c..9b073a88 100644
    'es2gears_wayland', files('es2gears.c'),
    dependencies: [dep_gles2, idep_eglut_wayland, idep_util],
 diff --git a/src/meson.build b/src/meson.build
-index e230057a..198ab59d 100644
+index fd4a1673..cea622a6 100644
 --- a/src/meson.build
 +++ b/src/meson.build
-@@ -58,5 +58,3 @@ endif
+@@ -57,5 +57,3 @@ endif
  if host_machine.system() == 'windows'
    subdir('wgl')
  endif
