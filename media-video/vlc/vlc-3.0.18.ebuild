@@ -1,4 +1,4 @@
-# Copyright 2000-2022 Gentoo Authors
+# Copyright 2000-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,6 +60,7 @@ BDEPEND="
 	amd64? ( dev-lang/yasm )
 	x86? ( dev-lang/yasm )
 "
+# <ffmpeg-5 dep for USE="ffmpeg vaapi" for bug #864721
 RDEPEND="
 	media-libs/libvorbis
 	net-dns/libidn:=
@@ -201,7 +202,10 @@ RDEPEND="
 	udev? ( virtual/udev )
 	upnp? ( net-libs/libupnp:=[ipv6(+)] )
 	v4l? ( media-libs/libv4l:= )
-	vaapi? ( media-libs/libva:=[drm(+),wayland?,X?] )
+	vaapi? (
+		<media-video/ffmpeg-5
+		media-libs/libva:=[drm(+),wayland?,X?]
+	)
 	vdpau? ( x11-libs/libvdpau )
 	vnc? ( net-libs/libvncserver )
 	vpx? ( media-libs/libvpx:= )
