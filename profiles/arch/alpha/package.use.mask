@@ -12,6 +12,7 @@ net-misc/modemmanager qmi qrtr
 # Matt Turner <mattst88@gentoo.org> (2023-02-15)
 # Depends on dev-util/umockdev which is broken on alpha.
 # See https://github.com/martinpitt/umockdev/issues/200
+dev-libs/libgudev test
 dev-libs/libgusb test
 sys-power/upower test
 
