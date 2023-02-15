@@ -36,6 +36,7 @@ BDEPEND="
 		dev-python/pep517[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
+		dev-vcs/git
 	)
 "
 
