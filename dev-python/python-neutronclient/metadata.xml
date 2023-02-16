@@ -16,6 +16,7 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">python-neutronclient</remote-id>
+    <remote-id type="github">openstack/python-neutronclient</remote-id>
     <remote-id type="launchpad">neutron</remote-id>
   </upstream>
 </pkgmetadata>
