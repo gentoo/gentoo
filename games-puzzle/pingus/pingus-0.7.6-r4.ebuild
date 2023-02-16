@@ -1,9 +1,9 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit desktop flag-o-matic python-any-r1 scons-utils toolchain-funcs xdg
 
 DESCRIPTION="Free Lemmings clone"
@@ -16,13 +16,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE="opengl music"
 
 RDEPEND="
+	dev-libs/boost:=
+	media-libs/libpng:=
 	media-libs/libsdl[joystick,opengl?,video]
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer
 	music? ( media-libs/sdl-mixer[mod] )
-	opengl? ( virtual/opengl )
-	media-libs/libpng:0=
-	dev-libs/boost:=
+	opengl? ( media-libs/libglvnd[X] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -36,12 +36,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-python3.patch
 )
 
-src_prepare() {
-	xdg_src_prepare
-	strip-flags
-}
-
 src_compile() {
+	strip-flags
 	escons \
 		CXX="$(tc-getCXX)" \
 		CCFLAGS="${CXXFLAGS}" \
