@@ -23,7 +23,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.37.1-pthread.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.37.1-pthread.patch
+	"${FILESDIR}"/${PN}-0.41.0-gcc13.patch
+)
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
