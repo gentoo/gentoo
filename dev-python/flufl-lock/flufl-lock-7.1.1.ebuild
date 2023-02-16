@@ -6,16 +6,15 @@ EAPI=8
 DISTUTILS_USE_PEP517=pdm
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_P=${P/-/.}
 DESCRIPTION="NFS-safe file locking with timeouts for POSIX systems"
 HOMEPAGE="
 	https://gitlab.com/warsaw/flufl.lock/
 	https://pypi.org/project/flufl.lock/
 "
-SRC_URI="mirror://pypi/${PN::1}/${PN/-/.}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
+SRC_URI="$(pypi_sdist_url --no-normalize "${PN/-/.}")"
+S=${WORKDIR}/${P/-/.}
 
 LICENSE="Apache-2.0"
 SLOT="0"
