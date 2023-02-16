@@ -1,6 +1,10 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-10-16)
+# dnstap USE masked due to missing keywords
+net-dns/bind dnstap
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
 # dev-cpp/glog fails tests, needs checknig
 media-libs/opencv glog contribsfm
