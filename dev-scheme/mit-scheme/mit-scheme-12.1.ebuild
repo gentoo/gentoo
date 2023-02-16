@@ -24,7 +24,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-11.2-no-Werror.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-11.2-no-Werror.patch
+	"${FILESDIR}"/${PN}-11.2-implicit-int.patch
+)
 
 src_configure() {
 	local -a myconf=(
