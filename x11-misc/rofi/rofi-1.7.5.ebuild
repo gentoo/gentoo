@@ -7,11 +7,17 @@ inherit autotools toolchain-funcs xdg-utils
 
 DESCRIPTION="A window switcher, run dialog and dmenu replacement"
 HOMEPAGE="https://github.com/davatorium/rofi"
-SRC_URI="https://github.com/davatorium/rofi/releases/download/${PV}/${P}.tar.xz"
+
+if [[ "${PV}" == "9999" ]]; then
+	EGIT_REPO_URI="https://github.com/davatorium/rofi"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/davatorium/rofi/releases/download/${PV}/${P}.tar.xz"
+	KEYWORDS="amd64 arm64 x86"
+fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm64 x86"
 IUSE="+drun test +windowmode"
 RESTRICT="!test? ( test )"
 
