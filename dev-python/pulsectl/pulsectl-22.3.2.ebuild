@@ -6,11 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{9..10} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python high-level interface and ctypes-based bindings for PulseAudio (libpulse)"
-HOMEPAGE="https://github.com/mk-fg/python-pulse-control"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/mk-fg/python-pulse-control/
+	https://pypi.org/project/pulsectl/
+"
 
 LICENSE="MIT"
 SLOT="0"
