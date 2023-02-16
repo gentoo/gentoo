@@ -12,25 +12,26 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files"
 HOMEPAGE="https://www.gpxsee.org/"
 SRC_URI="https://github.com/tumic0/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-IUSE=""
-RDEPEND="dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
+
+RDEPEND="
 	dev-qt/qtconcurrent:5
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
-	dev-qt/qtserialport:5
-	dev-qt/qtprintsupport:5
-	dev-qt/qtsql:5
 	dev-qt/qtpositioning:5
+	dev-qt/qtprintsupport:5
 	dev-qt/qtserialport:5
-	dev-qt/qtsvg:5"
+	dev-qt/qtsql:5
+	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5
+"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=( "${FILESDIR}"/${PN}-7.33.patch )
 
