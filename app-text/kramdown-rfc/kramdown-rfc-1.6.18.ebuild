@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/cabo/kramdown-rfc"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 ruby_add_rdepend "
 	>=dev-ruby/certified-1.0.0
