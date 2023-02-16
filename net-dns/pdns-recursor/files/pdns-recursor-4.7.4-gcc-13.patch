@@ -1,0 +1,18 @@
+commit d8b4ea24dc5dbe7c53c24bfffba24bcae7f58e02
+Author: Peter van Dijk <peter.van.dijk@powerdns.com>
+Date:   Mon Jan 23 14:54:09 2023 +0100
+
+    lock.hh: include <stdexcept>
+
+diff --git a/lock.hh b/lock.hh
+index e8bd82988..a08951a26 100644
+--- a/lock.hh
++++ b/lock.hh
+@@ -22,6 +22,7 @@
+ #pragma once
+ #include <mutex>
+ #include <shared_mutex>
++#include <stdexcept>
+ 
+ /*
+   This file provides several features around locks:

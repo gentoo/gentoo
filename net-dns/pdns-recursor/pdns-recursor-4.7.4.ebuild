@@ -37,6 +37,10 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}"/${P/_/-}
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-13.patch
+)
+
 pkg_setup() {
 	lua-single_pkg_setup
 	filter-flags -ftree-vectorize
