@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,10 +13,12 @@ SRC_URI="https://gappa.gitlabpages.inria.fr/releases/${P}.tar.gz"
 LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="ocamlopt"
 
 RDEPEND="
-	>=sci-mathematics/coq-8.12
-	sci-mathematics/flocq
+	dev-lang/ocaml:=[ocamlopt?]
+	>=sci-mathematics/coq-8.12:=
+	sci-mathematics/flocq:=
 	sci-mathematics/gappa
 "
 DEPEND="${RDEPEND}"
