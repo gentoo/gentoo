@@ -1,0 +1,13 @@
+diff --git a/src/eeschema/eeschema_advanced.adoc b/src/eeschema/eeschema_advanced.adoc
+index d51209da642753d6cbbf862195d61b3c5317b9a3..be417983c5065164a6500e49b5b0e380c3fd9412 100644
+--- a/src/eeschema/eeschema_advanced.adoc
++++ b/src/eeschema/eeschema_advanced.adoc
+@@ -280,7 +280,7 @@ information for KiCad to connect to your database and retrieve data from tables.
+ below into a new file and save it with a `kicad_dbl` extension.  You can then add this file to your
+ global symbol library table using the Configure Symbol Libraries dialog.
+ 
+-[code,json]
++[source,json]
+ ----
+ {
+     "meta": {
