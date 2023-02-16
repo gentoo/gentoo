@@ -1,19 +1,16 @@
 # Copyright 2006-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
-inherit cmake tmpfiles systemd xdg-utils
+inherit cmake flag-o-matic systemd xdg-utils
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/transmission/transmission"
 else
-	MY_PV="${PV/_beta/-beta.}"
-	MY_P="${PN}-${MY_PV}"
-	S="${WORKDIR}/${MY_P}"
-	SRC_URI="https://github.com/transmission/transmission/releases/download/${MY_PV}/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+	SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
+	KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="A fast, easy, and free BitTorrent client"
@@ -24,14 +21,14 @@ HOMEPAGE="https://transmissionbt.com/"
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
-IUSE="appindicator cli gtk nls mbedtls qt5 systemd test"
+IUSE="appindicator cli debug gtk lightweight nls mbedtls qt5 systemd test"
 RESTRICT="!test? ( test )"
 
 ACCT_DEPEND="
 	acct-group/transmission
 	acct-user/transmission
 "
-BDEPEND="
+BDEPEND="${ACCT_DEPEND}
 	virtual/pkgconfig
 	nls? (
 		gtk? ( sys-devel/gettext )
@@ -39,19 +36,18 @@ BDEPEND="
 	)
 "
 COMMON_DEPEND="
-	>=dev-libs/libevent-2.1.0:=[threads(+)]
+	>=dev-libs/libevent-2.0.10:=
 	!mbedtls? ( dev-libs/openssl:0= )
 	mbedtls? ( net-libs/mbedtls:0= )
 	net-libs/libnatpmp
-	>=net-libs/libpsl-0.21.1
 	>=net-libs/miniupnpc-1.7:=
-	>=net-misc/curl-7.28.0[ssl]
+	>=net-misc/curl-7.16.3[ssl]
 	sys-libs/zlib:=
 	nls? ( virtual/libintl )
 	gtk? (
-		>=dev-cpp/gtkmm-3.24.0:3.0
-		>=dev-cpp/glibmm-2.60.0:2
-		appindicator? ( dev-libs/libayatana-appindicator )
+		>=dev-libs/glib-2.32:2
+		>=x11-libs/gtk+-3.4:3
+		appindicator? ( >=dev-libs/libappindicator-0.4.30:3 )
 	)
 	qt5? (
 		dev-qt/qtcore:5
@@ -69,43 +65,38 @@ RDEPEND="${COMMON_DEPEND}
 	${ACCT_DEPEND}
 "
 
-src_prepare() {
-	local PATCHES=(
-		"${FILESDIR}/transmission-4.0.0-cmake-unused.patch"
-	)
-	cmake_src_prepare
-}
+PATCHES=(
+	"${FILESDIR}"/cmake-unused-command-line.patch
+	"${FILESDIR}"/transmission-3.00-openssl-3.patch
+	"${FILESDIR}"/transmission-3.00-horizontal-progress-bars.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
 
-		-DENABLE_GTK=$(usex gtk ON OFF)
-		-DENABLE_QT=$(usex qt5 ON OFF)
-		-DENABLE_MAC=OFF
-		-DENABLE_WEB=OFF
 		-DENABLE_CLI=$(usex cli ON OFF)
-		-DENABLE_TESTS=$(usex test ON OFF)
+		-DENABLE_GTK=$(usex gtk ON OFF)
+		-DENABLE_LIGHTWEIGHT=$(usex lightweight ON OFF)
 		-DENABLE_NLS=$(usex nls ON OFF)
+		-DENABLE_QT=$(usex qt5 ON OFF)
+		-DENABLE_TESTS=$(usex test ON OFF)
 
-		-DRUN_CLANG_TIDY=OFF
-
-		-DUSE_GTK_VERSION=3
 		-DUSE_SYSTEM_EVENT2=ON
-		-DUSE_SYSTEM_DEFLATE=OFF
 		-DUSE_SYSTEM_DHT=OFF
 		-DUSE_SYSTEM_MINIUPNPC=ON
 		-DUSE_SYSTEM_NATPMP=ON
 		-DUSE_SYSTEM_UTP=OFF
 		-DUSE_SYSTEM_B64=OFF
-		-DUSE_SYSTEM_PSL=ON
-		-DUSE_QT_VERSION=5
 
-		-DWITH_CRYPTO=$(usex mbedtls mbedtls openssl)
+		-DWITH_CRYPTO=$(usex mbedtls polarssl openssl)
 		-DWITH_INOTIFY=ON
-		-DWITH_APPINDICATOR=$(usex appindicator ON OFF)
+		-DWITH_LIBAPPINDICATOR=$(usex appindicator ON OFF)
 		-DWITH_SYSTEMD=$(usex systemd ON OFF)
 	)
+
+	# Disable assertions by default, bug 893870.
+	use debug || append-cppflags -DNDEBUG
 
 	cmake_src_configure
 }
@@ -125,7 +116,10 @@ src_install() {
 	insinto /usr/lib/sysctl.d
 	doins "${FILESDIR}"/60-transmission.conf
 
-	newtmpfiles "${FILESDIR}"/transmission-daemon.tmpfiles transmission-daemon.conf
+	if [[ ${EUID} == 0 ]]; then
+		diropts -o transmission -g transmission
+	fi
+	keepdir /var/lib/transmission
 }
 
 pkg_postrm() {
@@ -140,5 +134,4 @@ pkg_postinst() {
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi
-	tmpfiles_process transmission-daemon.conf
 }

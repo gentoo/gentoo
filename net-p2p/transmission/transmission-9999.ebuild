@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake tmpfiles systemd xdg-utils
+inherit cmake flag-o-matic tmpfiles systemd xdg-utils
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -24,7 +24,7 @@ HOMEPAGE="https://transmissionbt.com/"
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
-IUSE="appindicator cli gtk nls mbedtls qt5 systemd test"
+IUSE="appindicator cli debug gtk nls mbedtls qt5 systemd test"
 RESTRICT="!test? ( test )"
 
 ACCT_DEPEND="
@@ -99,6 +99,9 @@ src_configure() {
 		-DWITH_APPINDICATOR=$(usex appindicator ON OFF)
 		-DWITH_SYSTEMD=$(usex systemd ON OFF)
 	)
+
+	# Disable assertions by default, bug 893870.
+	use debug || append-cppflags -DNDEBUG
 
 	cmake_src_configure
 }
