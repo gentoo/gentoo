@@ -22,8 +22,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="+rtlsdr soapysdr test"
 
-DEPEND="dev-libs/openssl:=
-	rtlsdr? ( net-wireless/rtl-sdr:=
+DEPEND="rtlsdr? ( net-wireless/rtl-sdr:=
 			virtual/libusb:1 )
 	soapysdr? ( net-wireless/soapysdr:= )"
 RDEPEND="${DEPEND}"
