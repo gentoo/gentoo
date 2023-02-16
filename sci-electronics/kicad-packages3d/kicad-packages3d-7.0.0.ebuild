@@ -22,7 +22,7 @@ IUSE=""
 LICENSE="CC-BY-SA-4.0"
 SLOT="0"
 
-RDEPEND=">=sci-electronics/kicad-6.0.0"
+RDEPEND=">=sci-electronics/kicad-7.0.0"
 
 if [[ ${PV} == 9999 ]] ; then
 	# x11-misc-util/macros only required on live ebuilds
