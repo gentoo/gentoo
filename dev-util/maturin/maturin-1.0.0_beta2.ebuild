@@ -173,7 +173,7 @@ CRATES="
 	num-traits-0.2.15
 	num_cpus-1.15.0
 	number_prefix-0.4.0
-	once_cell-1.17.0
+	once_cell-1.17.1
 	opaque-debug-0.3.0
 	openssl-0.10.45
 	openssl-macros-0.1.0
@@ -225,6 +225,7 @@ CRATES="
 	rustc_version-0.4.0
 	rustix-0.36.7
 	rustls-0.20.8
+	rustls-pemfile-1.0.1
 	rustversion-1.0.11
 	ryu-1.0.12
 	same-file-1.0.6
@@ -271,7 +272,7 @@ CRATES="
 	thiserror-1.0.38
 	thiserror-impl-1.0.38
 	thread_local-1.1.7
-	time-0.3.17
+	time-0.3.18
 	time-core-0.1.0
 	time-macros-0.2.6
 	tiny-keccak-2.0.2
@@ -355,18 +356,17 @@ CRATES_TEST="
 	memoffset-0.8.0
 	once_cell-1.15.0
 	once_cell-1.16.0
+	once_cell-1.17.0
 	parking_lot_core-0.9.3
 	parking_lot_core-0.9.4
 	paste-1.0.11
 	proc-macro2-1.0.46
 	proc-macro2-1.0.47
-	pyo3-0.18.0
-	pyo3-build-config-0.17.3
-	pyo3-build-config-0.18.0
-	pyo3-ffi-0.17.3
-	pyo3-ffi-0.18.0
-	pyo3-macros-0.18.0
-	pyo3-macros-backend-0.18.0
+	pyo3-0.18.1
+	pyo3-build-config-0.18.1
+	pyo3-ffi-0.18.1
+	pyo3-macros-0.18.1
+	pyo3-macros-backend-0.18.1
 	python3-dll-a-0.2.6
 	quote-1.0.21
 	siphasher-0.3.10
