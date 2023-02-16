@@ -33,7 +33,7 @@ else
 fi
 
 BDEPEND="doc? ( app-doc/doxygen )"
-CDEPEND=">=dev-libs/libusb-1.0.16
+CDEPEND=">=dev-libs/libusb-1.0.16:1
 	tecla? ( dev-libs/libtecla )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
