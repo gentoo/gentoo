@@ -35,7 +35,7 @@ REQUIRED_USE="
 BDEPEND="
 	app-arch/unzip
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
+	doc? ( app-doc/doxygen[dot] )
 "
 RDEPEND="
 	!dev-games/openscenegraph
