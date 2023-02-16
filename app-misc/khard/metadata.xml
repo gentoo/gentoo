@@ -10,6 +10,7 @@
 	<name>Proxy Maintainers</name>
 </maintainer>
 <upstream>
-	<remote-id type="github">scheibler/khard</remote-id>
+	<remote-id type="github">lucc/khard</remote-id>
+	<remote-id type="pypi">khard</remote-id>
 </upstream>
 </pkgmetadata>
