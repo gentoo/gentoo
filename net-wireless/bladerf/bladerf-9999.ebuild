@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake udev
 
@@ -32,12 +32,13 @@ else
 	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 fi
 
+BDEPEND="doc? ( app-doc/doxygen )"
 CDEPEND=">=dev-libs/libusb-1.0.16
 	tecla? ( dev-libs/libtecla )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
-RDEPEND="${CDEPEND}"
-PDEPEND=">=net-wireless/bladerf-firmware-2.4.0
+RDEPEND="${CDEPEND}
+	>=net-wireless/bladerf-firmware-2.4.0
 	>=net-wireless/bladerf-fpga-0.12.0"
 
 src_unpack() {
