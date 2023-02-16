@@ -122,6 +122,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-cxx17-fixes.patch
 	"${FILESDIR}"/${P}-poppler-22.03.0-{1,2}.patch
 	"${FILESDIR}"/${P}-poppler-22.04.0.patch
+	"${FILESDIR}"/${P}-clang-16-c++17.patch
 )
 
 pkg_pretend() {
@@ -143,9 +144,6 @@ src_prepare() {
 
 src_configure() {
 	local cal_ft myproducts
-
-	# Uses removed 'register' keyword, drop on next release. bug #883067
-	append-cxxflags -std=c++14
 
 	# applications
 	for cal_ft in ${CAL_FTS[@]}; do

@@ -1,0 +1,359 @@
+Fixed in upstream master but in a far larger patch.
+
+C++ 17 removes 'register'. GCC allows it as an extension (for now?) but Clang
+16 which defaults to -std=c++17 doesn't.
+
+Further, we have to use C++17 for Poppler, so we can't just force e.g. c++14.
+
+https://bugs.gentoo.org/883067#c4
+https://bugs.gentoo.org/894578
+--- a/sheets/part/Digest.cpp
++++ b/sheets/part/Digest.cpp
+@@ -250,8 +250,8 @@ typedef struct digest_impl_st {
+  */
+ static void __rtl_digest_swapLong(sal_uInt32 *pData, sal_uInt32 nDatLen)
+ {
+-    register sal_uInt32 *X;
+-    register int         i, n;
++    sal_uInt32 *X;
++    int         i, n;
+ 
+     X = pData;
+     n = nDatLen;
+@@ -465,10 +465,10 @@ static void __rtl_digest_initSHA(
+  */
+ static void __rtl_digest_updateSHA(DigestContextSHA *ctx)
+ {
+-    register sal_uInt32  A, B, C, D, E, T;
+-    register sal_uInt32 *X;
++    sal_uInt32  A, B, C, D, E, T;
++    sal_uInt32 *X;
+ 
+-    register DigestSHA_update_t *U;
++    DigestSHA_update_t *U;
+     U = ctx->m_update;
+ 
+     A = ctx->m_nA;
+@@ -577,10 +577,10 @@ static void __rtl_digest_endSHA(DigestContextSHA *ctx)
+     static const sal_uInt8 end[4] = {
+         0x80, 0x00, 0x00, 0x00
+     };
+-    register const sal_uInt8 *p = end;
++    const sal_uInt8 *p = end;
+ 
+-    register sal_uInt32 *X;
+-    register int         i;
++    sal_uInt32 *X;
++    int         i;
+ 
+     X = ctx->m_pData;
+     i = (ctx->m_nDatLen >> 2);
+--- a/sheets/ui/CellToolBase_p.cpp
++++ b/sheets/ui/CellToolBase_p.cpp
+@@ -246,7 +246,7 @@ void CellToolBase::Private::processArrowKey(QKeyEvent *event)
+     /* NOTE:  hitting the tab key also calls this function.  Don't forget
+         to account for it
+     */
+-    register Sheet * const sheet = q->selection()->activeSheet();
++    Sheet * const sheet = q->selection()->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -300,7 +300,7 @@ void CellToolBase::Private::processEscapeKey(QKeyEvent * event)
+ 
+ bool CellToolBase::Private::processHomeKey(QKeyEvent* event)
+ {
+-    register Sheet * const sheet = q->selection()->activeSheet();
++    Sheet * const sheet = q->selection()->activeSheet();
+     if (!sheet)
+         return false;
+ 
+@@ -355,7 +355,7 @@ bool CellToolBase::Private::processHomeKey(QKeyEvent* event)
+ 
+ bool CellToolBase::Private::processEndKey(QKeyEvent *event)
+ {
+-    register Sheet * const sheet = q->selection()->activeSheet();
++    Sheet * const sheet = q->selection()->activeSheet();
+     if (!sheet)
+         return false;
+ 
+@@ -438,7 +438,7 @@ bool CellToolBase::Private::processNextKey(QKeyEvent *event)
+ 
+ void CellToolBase::Private::processOtherKey(QKeyEvent *event)
+ {
+-    register Sheet * const sheet = q->selection()->activeSheet();
++    Sheet * const sheet = q->selection()->activeSheet();
+ 
+     // No null character ...
+     if (event->text().isEmpty() || !q->selection()->activeSheet()->map()->isReadWrite() ||
+@@ -456,7 +456,7 @@ void CellToolBase::Private::processOtherKey(QKeyEvent *event)
+ 
+ bool CellToolBase::Private::processControlArrowKey(QKeyEvent *event)
+ {
+-    register Sheet * const sheet = q->selection()->activeSheet();
++    Sheet * const sheet = q->selection()->activeSheet();
+     if (!sheet)
+         return false;
+ 
+@@ -801,7 +801,7 @@ QRect CellToolBase::Private::moveDirection(Calligra::Sheets::MoveTo direction, b
+ {
+     debugSheetsUI << "Canvas::moveDirection";
+ 
+-    register Sheet * const sheet = q->selection()->activeSheet();
++    Sheet * const sheet = q->selection()->activeSheet();
+     if (!sheet)
+         return QRect();
+ 
+--- a/sheets/part/Headers.cpp
++++ b/sheets/part/Headers.cpp
+@@ -102,7 +102,7 @@ void RowHeader::mousePress(KoPointerEvent * _ev)
+     if (!m_cellToolIsActive)
+         return;
+ 
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -192,7 +192,7 @@ void RowHeader::mouseRelease(KoPointerEvent * _ev)
+ 
+     m_bMousePressed = false;
+ 
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -295,7 +295,7 @@ void RowHeader::mouseDoubleClick(KoPointerEvent*)
+ {
+     if (!m_cellToolIsActive)
+         return;
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -317,7 +317,7 @@ void RowHeader::mouseMove(KoPointerEvent* _ev)
+         return;
+     }
+ 
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -379,7 +379,7 @@ void RowHeader::mouseMove(KoPointerEvent* _ev)
+ 
+ void RowHeader::paint(QPainter* painter, const QRectF& painterRect)
+ {
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -545,7 +545,7 @@ void ColumnHeader::mousePress(KoPointerEvent * _ev)
+         m_pCanvas->enableAutoScroll();
+     }
+ 
+-    const register Sheet * const sheet = m_pCanvas->activeSheet();
++    const Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -682,7 +682,7 @@ void ColumnHeader::mouseRelease(KoPointerEvent * _ev)
+ 
+     m_bMousePressed = false;
+ 
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -794,7 +794,7 @@ void ColumnHeader::mouseDoubleClick(KoPointerEvent*)
+ {
+     if (!m_cellToolIsActive)
+         return;
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -813,7 +813,7 @@ void ColumnHeader::mouseMove(KoPointerEvent* _ev)
+     if (!m_cellToolIsActive)
+         return;
+ 
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+ 
+     if (!sheet)
+         return;
+@@ -911,7 +911,7 @@ void ColumnHeader::mouseMove(KoPointerEvent* _ev)
+ 
+ void ColumnHeader::resize(const QSizeF& size, const QSizeF& oldSize)
+ {
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -929,7 +929,7 @@ void ColumnHeader::resize(const QSizeF& size, const QSizeF& oldSize)
+ 
+ void ColumnHeader::paint(QPainter* painter, const QRectF& painterRect)
+ {
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+--- a/sheets/part/CanvasBase.cpp
++++ b/sheets/part/CanvasBase.cpp
+@@ -230,7 +230,7 @@ bool CanvasBase::eventFilter(QObject *o, QEvent *e)
+ 
+ void CanvasBase::validateSelection()
+ {
+-    register Sheet * const sheet = activeSheet();
++    Sheet * const sheet = activeSheet();
+     if (!sheet)
+         return;
+ #if 0
+@@ -443,7 +443,7 @@ void CanvasBase::paint(QPainter* painter, const QRectF& painterRect)
+     if (doc()->map()->isLoading() || isViewLoading())
+         return;
+ 
+-    register Sheet * const sheet = activeSheet();
++    Sheet * const sheet = activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -513,7 +513,7 @@ bool CanvasBase::dragEnter(const QMimeData* mimeData)
+ 
+ bool CanvasBase::dragMove(const QMimeData* mimeData, const QPointF& eventPos, const QObject *source)
+ {
+-    register Sheet * const sheet = activeSheet();
++    Sheet * const sheet = activeSheet();
+     if (!sheet) {
+         return false;
+     }
+@@ -596,7 +596,7 @@ void CanvasBase::dragLeave()
+ 
+ bool CanvasBase::drop(const QMimeData* mimeData, const QPointF& eventPos, const QObject *source)
+ {
+-    register Sheet * const sheet = activeSheet();
++    Sheet * const sheet = activeSheet();
+     // FIXME Sheet protection: Not all cells have to be protected.
+     if (!sheet || sheet->isProtected()) {
+         return false;
+@@ -656,7 +656,7 @@ bool CanvasBase::drop(const QMimeData* mimeData, const QPointF& eventPos, const
+ 
+ QRect CanvasBase::viewToCellCoordinates(const QRectF& viewRect) const
+ {
+-    register Sheet * const sheet = activeSheet();
++    Sheet * const sheet = activeSheet();
+     if (!sheet)
+         return QRect();
+ 
+@@ -685,7 +685,7 @@ QRect CanvasBase::visibleCells() const
+ 
+ QRectF CanvasBase::cellCoordinatesToView(const QRect& cellRange) const
+ {
+-    register Sheet * const sheet = activeSheet();
++    Sheet * const sheet = activeSheet();
+     if (!sheet)
+         return QRectF();
+ 
+@@ -706,7 +706,7 @@ QRectF CanvasBase::cellCoordinatesToView(const QRect& cellRange) const
+ 
+ void CanvasBase::showToolTip(const QPoint& p)
+ {
+-    register Sheet * const sheet = activeSheet();
++    Sheet * const sheet = activeSheet();
+     if (!sheet)
+         return;
+     SheetView * const sheetView = this->sheetView(sheet);
+--- a/sheets/part/HeaderItems.cpp
++++ b/sheets/part/HeaderItems.cpp
+@@ -161,7 +161,7 @@ void RowHeaderItem::wheelEvent(QGraphicsSceneWheelEvent* _ev)
+ 
+ void RowHeaderItem::paintSizeIndicator(int mouseY)
+ {
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -216,7 +216,7 @@ void RowHeaderItem::removeSizeIndicator()
+ 
+ void RowHeaderItem::updateRows(int from, int to)
+ {
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -324,7 +324,7 @@ void ColumnHeaderItem::resizeEvent(QGraphicsSceneResizeEvent* _ev)
+ 
+ void ColumnHeaderItem::paintSizeIndicator(int mouseX)
+ {
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -389,7 +389,7 @@ void ColumnHeaderItem::removeSizeIndicator()
+ 
+ void ColumnHeaderItem::updateColumns(int from, int to)
+ {
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+--- a/sheets/part/HeaderWidgets.cpp
++++ b/sheets/part/HeaderWidgets.cpp
+@@ -155,7 +155,7 @@ void RowHeaderWidget::wheelEvent(QWheelEvent* _ev)
+ 
+ void RowHeaderWidget::paintSizeIndicator(int mouseY)
+ {
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -209,7 +209,7 @@ void RowHeaderWidget::removeSizeIndicator()
+ 
+ void RowHeaderWidget::updateRows(int from, int to)
+ {
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -314,7 +314,7 @@ void ColumnHeaderWidget::resizeEvent(QResizeEvent* _ev)
+ 
+ void ColumnHeaderWidget::paintSizeIndicator(int mouseX)
+ {
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+@@ -379,7 +379,7 @@ void ColumnHeaderWidget::removeSizeIndicator()
+ 
+ void ColumnHeaderWidget::updateColumns(int from, int to)
+ {
+-    register Sheet * const sheet = m_pCanvas->activeSheet();
++    Sheet * const sheet = m_pCanvas->activeSheet();
+     if (!sheet)
+         return;
+ 
+--- a/sheets/ui/CellToolBase.cpp
++++ b/sheets/ui/CellToolBase.cpp
+@@ -987,7 +987,7 @@ void CellToolBase::mouseDoubleClickEvent(KoPointerEvent* event)
+ 
+ void CellToolBase::keyPressEvent(QKeyEvent* event)
+ {
+-    register Sheet * const sheet = selection()->activeSheet();
++    Sheet * const sheet = selection()->activeSheet();
+     if (!sheet) {
+         return;
+     }
