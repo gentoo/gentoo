@@ -1,6 +1,10 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Yixun Lan <dlan@gentoo.org> (2023-02-16)
+# USE=java depend on virtual/jdk:1.8 which is not support on RISC-V
+app-office/libreoffice java libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript
+
 # Sam James <sam@gentoo.org> (2023-01-27)
 # media-libs/shaderc not keyworded here
 games-action/supertuxkart vulkan
