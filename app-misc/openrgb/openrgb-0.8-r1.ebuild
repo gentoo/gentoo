@@ -42,6 +42,7 @@ BDEPEND="
 
 PATCHES+=(
 	"${FILESDIR}"/OpenRGB-0.7-r1-udev.patch
+	"${FILESDIR}"/OpenRGB-0.8-includes.patch
 )
 
 src_prepare() {
