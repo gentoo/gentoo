@@ -4,13 +4,17 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..10} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A client for the OpenStack Nova API"
-HOMEPAGE="https://opendev.org/openstack/python-novaclient"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+HOMEPAGE="
+	https://opendev.org/openstack/python-novaclient/
+	https://github.com/openstack/python-novaclient/
+	https://pypi.org/project/python-novaclient/
+"
 
 LICENSE="Apache-2.0"
 SLOT="0"
