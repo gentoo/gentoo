@@ -1,0 +1,13 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -53,10 +53,2 @@
+ flags = ["-std=c++11", "-Wall", "-Wold-style-cast", "-fno-rtti"]
+-if env["mode"] != "debug":
+-	flags += ["-Werror", "-O3", "-flto"]
+-	env.Append(LINKFLAGS = ["-O3", "-flto"])
+-if env["mode"] == "debug":
+-	flags += ["-g"]
+-elif env["mode"] == "profile":
+-	flags += ["-pg"]
+-	env.Append(LINKFLAGS = ["-pg"])
+ env.Append(CCFLAGS = flags)
