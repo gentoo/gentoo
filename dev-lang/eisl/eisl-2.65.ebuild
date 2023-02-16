@@ -20,7 +20,10 @@ DOCS=( README{,-ja}.md documents )
 RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.63-Makefile.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.63-Makefile.patch
+	"${FILESDIR}"/${PN}-2.65-implicit.patch
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)" clean edlis eisl
