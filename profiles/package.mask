@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-02-16)
+# Broken HTTP/2 transfers
+# https://github.com/curl/curl/issues/10525
+=net-misc/curl-7.88.0
+
 # Michał Górny <mgorny@gentoo.org> (2023-02-15)
 # A number of test failures, and the test phase does not fail correctly.
 # Last release in 2019.  No revdeps.
