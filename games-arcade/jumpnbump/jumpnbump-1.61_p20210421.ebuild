@@ -10,7 +10,7 @@ MY_COMMIT="73c5fe86fd831dec45a22077e8d63dd2b6a6349e"
 
 DESCRIPTION="Funny multiplayer game about cute little fluffy bunnies"
 HOMEPAGE="https://libregames.gitlab.io/jumpnbump"
-SRC_URI="https://gitlab.com/LibreGames/jumpnbump/-/archive/${MY_COMMIT}/${P}.tar.gz"
+SRC_URI="https://gitlab.com/LibreGames/jumpnbump/-/archive/${MY_COMMIT}/${P}.tar.bz2"
 S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 LICENSE="GPL-2+"
