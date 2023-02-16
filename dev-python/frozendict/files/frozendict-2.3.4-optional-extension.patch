@@ -1,0 +1,20 @@
+Autodetect availability of C extension. Taken from upstream PR.
+
+Upstream-PR: https://github.com/Marco-Sulla/python-frozendict/pull/69
+
+diff --git a/setup.py b/setup.py
+index 0325383..0667b59 100755
+--- a/setup.py
++++ b/setup.py
+@@ -163,7 +163,7 @@ if len(argv) > 1 and argv[1] in custom_args:
+ impl = python_implementation()
+ 
+ if custom_arg == None:
+-    if impl == "PyPy":
++    if impl == "PyPy" or not src_path.exists():
+         custom_arg = "py"
+     else:
+         custom_arg = "c"
+-- 
+2.39.1
+
