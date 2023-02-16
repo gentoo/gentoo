@@ -31,6 +31,13 @@ IUSE="nls acl minimal"
 DEPEND=">=sys-libs/ncurses-5.2-r2:0"
 BDEPEND="sys-devel/autoconf"
 
+if [[ ${PV} != 9999* ]]; then
+	# Gentoo patches to fix runtime issues, cross-compile errors, etc
+	PATCHES=(
+		"${WORKDIR}/vim-patches-vim-${VIM_PATCHES_VERSION}-patches"
+	)
+fi
+
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug #82186.
 	unset LANG LC_ALL
@@ -38,10 +45,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if [[ ${PV} != 9999* ]] ; then
-		# Gentoo patches to fix runtime issues, cross-compile errors, etc
-		eapply "${WORKDIR}"/vim-patches-vim-${VIM_PATCHES_VERSION}-patches
-	fi
+	default
 
 	# Fixup a script to use awk instead of nawk
 	sed -i \
@@ -106,8 +110,6 @@ src_prepare() {
 
 	# Remove src/auto/configure file.
 	rm -v src/auto/configure || die "rm configure failed"
-
-	eapply_user
 }
 
 src_configure() {
