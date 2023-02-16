@@ -80,6 +80,13 @@ BDEPEND="
 "
 PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
+if [[ ${PV} != 9999* ]]; then
+	# Gentoo patches to fix runtime issues, cross-compile errors, etc
+	PATCHES=(
+		"${WORKDIR}/vim-patches-vim-${VIM_PATCHES_VERSION}-patches"
+	)
+fi
+
 # various failures (bugs #630042 and #682320)
 RESTRICT="test"
 
@@ -93,10 +100,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if [[ ${PV} != 9999* ]]; then
-		# Gentoo patches to fix runtime issues, cross-compile errors, etc
-		eapply "${WORKDIR}/vim-patches-vim-${VIM_PATCHES_VERSION}-patches"
-	fi
+	default
 
 	# Fixup a script to use awk instead of nawk
 	sed -i -e \
@@ -163,8 +167,6 @@ src_prepare() {
 		sed -i -e \
 			'/# define FEAT_CSCOPE/d' src/feature.h || die "couldn't disable cscope"
 	fi
-
-	eapply_user
 }
 
 src_configure() {
