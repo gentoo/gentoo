@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit git-r3 meson python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
