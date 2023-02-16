@@ -1,0 +1,10 @@
+Even if not actually used, ensure all symbols are available when linking
+tests to handle cases where unused symbols were not optimized out.
+https://bugs.gentoo.org/894702
+--- a/SConstruct
++++ b/SConstruct
+@@ -172,4 +172,2 @@
+ 	CPPPATH=(env.get('CPPPATH', []) + [pathjoin('tests', 'unit', 'include')]),
+-	# Do not link against the actual implementations of SDL, OpenGL, etc.
+-	LIBS=sys_libs,
+ 	# Pass the necessary link flags for a console program.
