@@ -4,11 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
+
 inherit distutils-r1
 
 DESCRIPTION="hashicorp vault client in python"
-HOMEPAGE="https://github.com/hvac/hvac"
+HOMEPAGE="
+	https://github.com/hvac/hvac/
+	https://pypi.org/project/hvac/
+"
 SRC_URI="https://github.com/hvac/hvac/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
