@@ -68,6 +68,13 @@ BDEPEND="
 "
 PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
+if [[ ${PV} != 9999* ]]; then
+	# Gentoo patches to fix runtime issues, cross-compile errors, etc
+	PATCHES=(
+		"${WORKDIR}/vim-patches-vim-${VIM_PATCHES_VERSION}-patches"
+	)
+fi
+
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug #82186.
 	unset LANG LC_ALL
@@ -78,10 +85,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if [[ ${PV} != 9999* ]] ; then
-		# Gentoo patches to fix runtime issues, cross-compile errors, etc
-		eapply "${WORKDIR}"/vim-patches-vim-${VIM_PATCHES_VERSION}-patches
-	fi
+	default
 
 	# Fixup a script to use awk instead of nawk
 	sed -i -e \
@@ -153,8 +157,6 @@ src_prepare() {
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
 	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
 	rm src/auto/configure || die "rm failed"
-
-	eapply_user
 }
 
 src_configure() {
