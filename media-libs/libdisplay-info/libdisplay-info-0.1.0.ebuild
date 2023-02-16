@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit meson
+inherit meson python-any-r1
 
 DESCRIPTION="Simple framework for writing Vulkan layers"
 HOMEPAGE="https://gitlab.freedesktop.org/emersion/libdisplay-info"
@@ -20,6 +20,7 @@ RDEPEND="sys-apps/hwdata"
 DEPEND="${RDEPEND}"
 
 BDEPEND="
+	${PYTHON_DEPS}
 	virtual/pkgconfig
 	test? ( >=sys-apps/edid-decode-0_pre20230131 )
 "

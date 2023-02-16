@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit meson
+inherit meson python-any-r1
 
 COMMIT="506925a66bfa3607c8de2c37dbe65659ecd1b9fb"
 DESCRIPTION="Simple framework for writing Vulkan layers"
@@ -21,6 +21,7 @@ RDEPEND="sys-apps/hwdata"
 DEPEND="${RDEPEND}"
 
 BDEPEND="
+	${PYTHON_DEPS}
 	virtual/pkgconfig
 	test? ( >=sys-apps/edid-decode-0_pre20230131 )
 "
