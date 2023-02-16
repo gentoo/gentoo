@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">powerpc-utils</remote-id>
+		<remote-id type="github">ibm-power-utilities/powerpc-utils</remote-id>
 	</upstream>
 </pkgmetadata>
