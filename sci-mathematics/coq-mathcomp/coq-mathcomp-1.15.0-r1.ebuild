@@ -13,5 +13,8 @@ LICENSE="CeCILL-B"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
 
-RDEPEND=">=sci-mathematics/coq-8.16.0:="
+RDEPEND="
+	dev-lang/ocaml:=
+	>=sci-mathematics/coq-8.16.0:=
+"
 DEPEND="${RDEPEND}"
