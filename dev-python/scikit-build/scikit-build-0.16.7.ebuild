@@ -66,4 +66,5 @@ python_test() {
 		"tests/test_command_line.py::test_hide_listing[True-bdist_wheel]"
 	)
 	epytest
+	rm -r "${BUILD_DIR}/install$(python_get_sitedir)"/{easy-install.pth,*.egg} || die
 }
