@@ -11,7 +11,7 @@ inherit distutils-r1 optfeature
 
 DESCRIPTION="A python SVG charts generator"
 HOMEPAGE="https://github.com/Kozea/pygal/"
-SRC_URI="https://github.com/Kozea/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Kozea/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="LGPL-3+"
 SLOT="0"
