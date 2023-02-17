@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
 inherit distutils-r1 pypi virtualx
 
@@ -21,9 +21,20 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos
 IUSE="gmp matplotlib"
 
 RDEPEND="
-	gmp? ( dev-python/gmpy[${PYTHON_USEDEP}] )
-	matplotlib? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
+	gmp? (
+		$(python_gen_cond_dep '
+			dev-python/gmpy[${PYTHON_USEDEP}]
+		' 'python3_*')
+	)
+	matplotlib? (
+		$(python_gen_cond_dep '
+			dev-python/matplotlib[${PYTHON_USEDEP}]
+		' 'python3_*')
+	)
 "
+
+BDEPEND="
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
