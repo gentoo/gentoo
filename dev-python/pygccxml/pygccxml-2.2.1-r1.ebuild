@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A specialized XML reader to navigate C++ declarations"
 HOMEPAGE="https://github.com/CastXML/pygccxml"
-SRC_URI="https://github.com/CastXML/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/CastXML/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Boost-1.0"
 SLOT="0"
