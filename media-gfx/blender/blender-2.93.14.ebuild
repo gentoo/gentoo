@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ else
 
 	TEST_TARBALL_VERSION=2.93.0
 	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.bz2 )"
-	KEYWORDS="amd64 ~arm ~arm64"
+	KEYWORDS="~amd64 ~arm ~arm64"
 fi
 
 SLOT="${PV%.*}"
