@@ -343,6 +343,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	unset DBUS_SESSION_BUS_ADDRESS XDG_RUNTIME_DIR
+	local -x COLUMNS=80
 	meson_src_test
 }
 
