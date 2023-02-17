@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=no
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
 inherit gnome.org meson virtualx xdg distutils-r1
 
@@ -29,7 +29,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	test? (
-		dev-libs/atk[introspection]
+		>=app-accessibility/at-spi2-core-2.46.0[introspection]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		x11-libs/gdk-pixbuf:2[introspection,jpeg]
 		x11-libs/gtk+:3[introspection]
