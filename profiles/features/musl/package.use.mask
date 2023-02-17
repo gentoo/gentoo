@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2023-02-17)
+# dev-lisp/sbcl is masked on musl
+sci-mathematics/fricas sbcl
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-12-10)
 # sci-libs/mkl is binary only and links to glibc
 sci-chemistry/gromacs mkl
