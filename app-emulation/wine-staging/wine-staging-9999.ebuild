@@ -32,7 +32,7 @@ SLOT="${PV}"
 IUSE="
 	+X +abi_x86_32 +abi_x86_64 +alsa capi crossdev-mingw cups dos
 	llvm-libunwind debug custom-cflags +fontconfig +gecko gphoto2
-	+gstreamer kerberos +mingw +mono netapi nls odbc opencl +opengl
+	+gstreamer kerberos +mingw +mono netapi nls opencl +opengl
 	osmesa pcap perl pulseaudio samba scanner +sdl selinux +ssl
 	+truetype udev udisks +unwind usb v4l +vulkan +xcomposite xinerama"
 REQUIRED_USE="
@@ -63,7 +63,6 @@ WINE_DLOPEN_DEPEND="
 	fontconfig? ( media-libs/fontconfig[${MULTILIB_USEDEP}] )
 	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	netapi? ( net-fs/samba[${MULTILIB_USEDEP}] )
-	odbc? ( dev-db/unixODBC[${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl2[haptic,joystick,${MULTILIB_USEDEP}] )
 	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
 	truetype? ( media-libs/freetype[${MULTILIB_USEDEP}] )
@@ -246,7 +245,6 @@ src_configure() {
 		$(use_with vulkan)
 		$(use_with xcomposite)
 		$(use_with xinerama)
-		$(usev !odbc ac_cv_lib_soname_odbc=)
 	)
 
 	tc-ld-force-bfd # builds with non-bfd but broken at runtime (bug #867097)
