@@ -9,15 +9,21 @@ PYTHON_COMPAT=( python3_{9..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for the XML Security Library"
-HOMEPAGE="https://github.com/mehcode/python-xmlsec"
-SRC_URI="https://github.com/mehcode/python-xmlsec/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/mehcode/python-xmlsec/
+	https://pypi.org/project/xmlsec/
+"
+SRC_URI="
+	https://github.com/mehcode/python-xmlsec/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86"
 
 RDEPEND="
-	dev-libs/xmlsec:=
+	dev-libs/xmlsec:=[openssl]
 	dev-python/lxml[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
@@ -37,6 +43,10 @@ PATCHES=(
 EPYTEST_DESELECT=(
 	# Fragile based on black version?
 	tests/test_type_stubs.py::test_xmlsec_constants_stub
+
+	# Broken with xmlsec-1.2.36+.
+	# https://github.com/xmlsec/python-xmlsec/issues/244
+	tests/test_ds.py::TestSignContext::test_sign_case5
 )
 
 distutils_enable_tests pytest
