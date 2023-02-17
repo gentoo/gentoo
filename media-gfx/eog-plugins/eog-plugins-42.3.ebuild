@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/EyeOfGnome/Plugins https://gitlab.gnome.or
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 IUSE="+exif map picasa +python test"
 RESTRICT="!test? ( test )"
