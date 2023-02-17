@@ -30,7 +30,7 @@ IUSE="caps doc lzma +man scrypt seccomp selinux +server systemd tor-hardening te
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-libs/libevent:=[ssl]
+	>=dev-libs/libevent-2.1.12-r1:=[ssl]
 	sys-libs/zlib
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
