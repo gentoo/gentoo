@@ -1,7 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+# Upstream sometimes pushes releases as pre-releases before marking them
+# official. Don't keyword the pre-releases!
+# Check https://github.com/shadow-maint/shadow/releases.
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/sergehallyn.asc
 inherit libtool pam verify-sig
@@ -57,7 +61,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.1.3-dots-in-usernames.patch"
+	"${FILESDIR}"/${P}-configure-clang16.patch
 )
 
 src_prepare() {
@@ -158,7 +162,7 @@ src_install() {
 	else
 		dopamd "${FILESDIR}"/pam.d-include/shadow
 
-		for x in chsh shfn ; do
+		for x in chsh chfn ; do
 			newpamd "${FILESDIR}"/pam.d-include/passwd ${x}
 		done
 
