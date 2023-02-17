@@ -48,6 +48,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( openmp cmake llvm/include )
+LLVM_PATCHSET=15.0.7-r2
 llvm.org_set_globals
 
 python_check_deps() {
