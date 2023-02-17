@@ -66,10 +66,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
 
-PATCHES=(
-	"${FILESDIR}/${P}-fix-includes.patch"
-)
-
 src_prepare() {
 	# disable compress man pages
 	sed -r \
