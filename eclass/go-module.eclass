@@ -355,7 +355,7 @@ go-module_src_unpack() {
 		( use ppc64 && ! use big-endian ) || use s390 || use x86; then
 			GOFLAGS="-buildmode=pie ${GOFLAGS}"
 	fi
-	GOFLAGS="${GOFLAGS} -p $(makeopts_jobs)"
+	GOFLAGS="${GOFLAGS} -p=$(makeopts_jobs)"
 	if [[ "${#EGO_SUM[@]}" -gt 0 ]]; then
 		eqawarn "This ebuild uses EGO_SUM which is deprecated"
 		eqawarn "Please migrate to a dependency tarball"
