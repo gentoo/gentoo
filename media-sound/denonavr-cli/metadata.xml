@@ -6,7 +6,7 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">mgorny/denonavr-cli</remote-id>
+		<remote-id type="github">projg2/denonavr-cli</remote-id>
 		<remote-id type="pypi">denonavr-cli</remote-id>
 	</upstream>
 </pkgmetadata>
