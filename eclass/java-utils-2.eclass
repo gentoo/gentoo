@@ -2947,7 +2947,7 @@ is-java-strict() {
 java-pkg_clean() {
 	NO_DELETE=()
 	for keep in ${JAVA_PKG_NO_CLEAN[@]}; do
-		NO_DELETE+=( '!' '-wholename' ${keep} )
+		NO_DELETE+=( '!' '-path' ${keep} )
 	done
 	find "${@}" '(' -name '*.class' -o -name '*.jar' ${NO_DELETE[@]} ')' -type f -delete -print || die
 }
