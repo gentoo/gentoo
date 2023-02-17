@@ -4,14 +4,17 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="A wrapper for the GitHub API written in python"
-HOMEPAGE="https://github3py.readthedocs.io/en/master/"
+HOMEPAGE="
+	https://github.com/sigmavirus24/github3.py/
+	https://pypi.org/project/github3.py/
+"
 SRC_URI="
-	https://github.com/sigmavirus24/${PN}.py/archive/${PV}.tar.gz
+	https://github.com/sigmavirus24/github3.py/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 S="${WORKDIR}/${PN}.py-${PV}"
@@ -35,7 +38,8 @@ BDEPEND="
 	test? (
 		>=dev-python/betamax-0.8.0[${PYTHON_USEDEP}]
 		>=dev-python/betamax-matchers-0.1.0[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 distutils_enable_tests pytest
 
