@@ -65,6 +65,8 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
+inherit multiprocessing
+
 if [[ -z ${_GO_MODULE} ]]; then
 
 _GO_MODULE=1
@@ -100,7 +102,7 @@ export GOMODCACHE="${WORKDIR}/go-mod"
 # -modcacherw makes the build cache read/write
 # -v prints the names of packages as they are compiled
 # -x prints commands as they are executed
-export GOFLAGS="-buildmode=pie -buildvcs=false -modcacherw -v -x"
+export GOFLAGS="-buildvcs=false -modcacherw -v -x"
 
 # Do not complain about CFLAGS etc since go projects do not use them.
 QA_FLAGS_IGNORED='.*'
@@ -349,6 +351,11 @@ go-module_setup_proxy() {
 # - Otherwise, if EGO_VENDOR is set, bail out.
 # - Otherwise do a normal unpack.
 go-module_src_unpack() {
+	if use amd64 || use arm || use arm64 ||
+		( use ppc64 && ! use big-endian ) || use s390 || use x86; then
+			GOFLAGS="-buildmode=pie ${GOFLAGS}"
+	fi
+	GOFLAGS="${GOFLAGS} -p $(makeopts_jobs)"
 	if [[ "${#EGO_SUM[@]}" -gt 0 ]]; then
 		eqawarn "This ebuild uses EGO_SUM which is deprecated"
 		eqawarn "Please migrate to a dependency tarball"
