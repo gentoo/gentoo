@@ -23,3 +23,11 @@ DEPEND="${RDEPEND}"
 
 distutils_enable_tests unittest
 distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
+
+python_prepare_all() {
+	# We're not interested in linter tests in Gentoo, needs pycodestyle
+	rm unittests/pep8_tester.py || die
+	sed -i -e '/pep8_tester/d' unittests/test_all.py || die
+
+	distutils-r1_python_prepare_all
+}
