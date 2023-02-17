@@ -1,10 +1,9 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
-
+PYTHON_COMPAT=( python3_{9..11} )
 inherit cmake-multilib python-r1
 
 DESCRIPTION="A tool to test PAM applications and PAM modules"
@@ -30,6 +29,10 @@ DEPEND="
 	${RDEPEND}
 	test? ( dev-util/cmocka[${MULTILIB_USEDEP}] )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.4-tests-import.patch
+)
 
 multilib_src_configure() {
 	configure_for_python() {
@@ -58,6 +61,21 @@ multilib_src_compile() {
 
 	# Compile the "proper" version without Python last
 	cmake_src_compile
+}
+
+multilib_src_test() {
+	cmake_src_test
+
+	# Fails b/c of sandbox?
+	#python_test() {
+	#	local -x PYTHONPATH="${BUILD_DIR}/src/python/python3:${PYTHONPATH}"
+	#	elog "${PYTHONPATH}"
+	#	${EPYTHON} "${S}"/tests/pypamtest_test.py || die "Tests failed with ${EPYTHON}"
+	#}
+
+	#if multilib_is_native_abi ; then
+	#	python_foreach_impl python_test
+	#fi
 }
 
 multilib_src_install() {
