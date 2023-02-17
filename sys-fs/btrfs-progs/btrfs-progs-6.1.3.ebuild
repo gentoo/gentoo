@@ -128,6 +128,17 @@ src_compile() {
 	emake V=1 all $(usev static)
 }
 
+src_test() {
+	default
+
+	if use python ; then
+		cd libbtrfsutil/python || die
+
+		local -x LD_LIBRARY_PATH="${S}:libbtrfsutil/python:${LD_LIBRARY_PATH}"
+		${EPYTHON} -m unittest tests/test_*.py || die
+	fi
+}
+
 src_install() {
 	local makeargs=(
 		$(usex python install_python '')
