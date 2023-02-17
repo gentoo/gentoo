@@ -14,15 +14,11 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
-IUSE="test"
 
-RDEPEND="
-	$(python_gen_cond_dep '>=dev-lang/python-3.7.4' python3_7)
-"
-BDEPEND="${RDEPEND}
+BDEPEND="
 	test? (
-		dev-python/pytest-salt-factories[${PYTHON_USEDEP}]
 		app-admin/salt[${PYTHON_USEDEP}]
+		dev-python/pytest-salt-factories[${PYTHON_USEDEP}]
 	)
 "
 
