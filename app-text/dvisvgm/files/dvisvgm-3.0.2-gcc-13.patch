@@ -1,0 +1,109 @@
+https://github.com/mgieseki/dvisvgm/commit/d5df85b403602c927fe56a1f692af91182a1facd
+
+From d5df85b403602c927fe56a1f692af91182a1facd Mon Sep 17 00:00:00 2001
+From: Martin Gieseking <martin.gieseking@uos.de>
+Date: Mon, 30 Jan 2023 10:51:15 +0100
+Subject: [PATCH] added missing includes of cstdint required for GCC 13
+
+--- a/src/BasicDVIReader.hpp
++++ b/src/BasicDVIReader.hpp
+@@ -21,6 +21,8 @@
+ #ifndef BASICDVIREADER_HPP
+ #define BASICDVIREADER_HPP
+ 
++#include <cstdint>
++
+ #include "Matrix.hpp"
+ #include "MessageException.hpp"
+ #include "StreamReader.hpp"
+--- a/src/Bitmap.hpp
++++ b/src/Bitmap.hpp
+@@ -21,6 +21,7 @@
+ #ifndef BITMAP_HPP
+ #define BITMAP_HPP
+ 
++#include <cstdint>
+ #include <ostream>
+ #include <vector>
+ 
+--- a/src/CMap.hpp
++++ b/src/CMap.hpp
+@@ -22,6 +22,7 @@
+ #define CMAP_HPP
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <ostream>
+ #include <vector>
+ #include "FontEncoding.hpp"
+--- a/src/Color.hpp
++++ b/src/Color.hpp
+@@ -21,6 +21,7 @@
+ #ifndef COLOR_HPP
+ #define COLOR_HPP
+ 
++#include <cstdint>
+ #include <string>
+ #include <valarray>
+ #include <vector>
+--- a/src/DVIReader.hpp
++++ b/src/DVIReader.hpp
+@@ -21,6 +21,7 @@
+ #ifndef DVIREADER_HPP
+ #define DVIREADER_HPP
+ 
++#include <cstdint>
+ #include <limits>
+ #include <map>
+ #include <stack>
+--- a/src/FileSystem.hpp
++++ b/src/FileSystem.hpp
+@@ -21,6 +21,7 @@
+ #ifndef FILESYSTEM_HPP
+ #define FILESYSTEM_HPP
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+--- a/src/InputBuffer.hpp
++++ b/src/InputBuffer.hpp
+@@ -22,6 +22,7 @@
+ #define INPUTBUFFER_HPP
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <cstring>
+ #include <istream>
+ #include <string>
+--- a/src/RangeMap.hpp
++++ b/src/RangeMap.hpp
+@@ -22,6 +22,7 @@
+ #define RANGEMAP_HPP
+ 
+ #include <algorithm>
++#include <cstdint>
+ #include <ostream>
+ #include <vector>
+ 
+--- a/src/Unicode.hpp
++++ b/src/Unicode.hpp
+@@ -21,6 +21,7 @@
+ #ifndef UNICODE_HPP
+ #define UNICODE_HPP
+ 
++#include <cstdint>
+ #include <string>
+ 
+ struct Unicode {
+--- a/src/ttf/TTFTable.hpp
++++ b/src/ttf/TTFTable.hpp
+@@ -19,6 +19,7 @@
+ *************************************************************************/
+ 
+ #pragma once
++#include <cstdint>
+ #include <ostream>
+ #include <sstream>
+ #include <vector>
+

@@ -1,0 +1,25 @@
+https://github.com/mgieseki/dvisvgm/issues/227
+https://github.com/mgieseki/dvisvgm/commit/62d695b0bf0220a209d143f32054d5a3c872c992
+
+From 62d695b0bf0220a209d143f32054d5a3c872c992 Mon Sep 17 00:00:00 2001
+From: Martin Gieseking <martin.gieseking@uos.de>
+Date: Sun, 5 Feb 2023 13:12:48 +0100
+Subject: [PATCH] popPageContext: reset initial char context by only one level
+ and don't rewind it back to the page element (fixes #227)
+
+--- a/src/SVGTree.cpp
++++ b/src/SVGTree.cpp
+@@ -330,11 +330,11 @@ void SVGTree::pushPageContext (unique_ptr<SVGElement> node) {
+ }
+ 
+ 
+-/** Pops the current context element and restored the previous one. */
++/** Pops the current context element and restores the previous one. */
+ void SVGTree::popPageContext () {
+ 	if (!_pageContextStack.empty())
+ 		_pageContextStack.pop();
+-	_charHandler->setInitialContextNode(_page);
++	_charHandler->setInitialContextNode(_pageContextStack.empty() ? _page : _pageContextStack.top());
+ }
+ 
+ 
