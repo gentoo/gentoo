@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
+MY_P=github3.py-${PV}
 DESCRIPTION="A wrapper for the GitHub API written in python"
 HOMEPAGE="
 	https://github.com/sigmavirus24/github3.py/
@@ -15,9 +16,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/sigmavirus24/github3.py/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
-S="${WORKDIR}/${PN}.py-${PV}"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
