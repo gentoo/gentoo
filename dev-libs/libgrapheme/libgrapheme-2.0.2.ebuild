@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,12 @@ src_prepare() {
 	tc-export CC AR RANLIB
 	tc-export_build_env BUILD_CC
 	sed -Ei '/^(BUILD_|)(CC|AR|RANLIB|CFLAGS|LDFLAGS|LDCONFIG).*=/d' config.mk || die
+
+	# does use libc and dropping this avoids QA noise with clang (bug #895068)
+	sed -i 's/-nostdlib //' config.mk || die
 }
+
+src_configure() { :; }
 
 src_install() {
 	local emakeargs=(
