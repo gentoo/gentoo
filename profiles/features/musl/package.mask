@@ -148,6 +148,7 @@ dev-games/ps2-packer
 dev-java/openjdk-bin
 dev-java/openjdk-jre-bin
 dev-libs/luise
+dev-libs/nwjs
 dev-perl/Lab-Zhinst
 dev-php/PEAR-MDB2_Driver_oci8
 dev-python/pyzotero
