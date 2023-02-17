@@ -16,6 +16,9 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+RDEPEND=">=app-emacs/compat-29.1.3.4"
+BDEPEND="${RDEPEND}"
+
 DOCS=( README.org )
 SITEFILE="50${PN}-gentoo.el"
 
