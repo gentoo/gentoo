@@ -41,6 +41,8 @@ RDEPEND="${CDEPEND}
 	>=net-wireless/bladerf-firmware-2.4.0
 	>=net-wireless/bladerf-fpga-0.15.0"
 
+PATCHES=( "${FILESDIR}/bladerf-cmake-glob.patch" )
+
 src_unpack() {
 	if [ "${PV}" = "9999" ]; then
 		git-r3_src_unpack
