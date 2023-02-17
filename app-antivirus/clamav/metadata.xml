@@ -9,6 +9,14 @@
 		<!-- for the LTS 0.103.x branch only -->
 		<email>mjo@gentoo.org</email>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>Matt.Jolly@footclan.ninja</email>
+		<name>Matt Jolly</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="clamapp">
 			Build applications (clamscan, clamd, clamdscan, clamonacc (also has its own USE flag), sigtool, clambc, clamav-milter (also requires milter USE flag), clamdtop, clamsubmit, clamconf).
