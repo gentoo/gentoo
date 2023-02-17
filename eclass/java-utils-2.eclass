@@ -1933,7 +1933,10 @@ etestng() {
 # src_prepare Searches for bundled jars
 # Don't call directly, but via java-pkg-2_src_prepare!
 java-utils-2_src_prepare() {
-	eapply_user
+	case ${EAPI:-0} in
+		[678]) eapply_user ;;
+		*) default_src_prepare ;;
+	esac
 
 	# Check for files in JAVA_RM_FILES array.
 	if [[ ${JAVA_RM_FILES[@]} ]]; then
