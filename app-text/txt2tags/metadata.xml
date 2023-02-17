@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>ceamac@gentoo.org</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">txt2tags/txt2tags</remote-id>
 		<remote-id type="google-code">txt2tags</remote-id>
+		<remote-id type="pypi">txt2tags</remote-id>
 	</upstream>
 </pkgmetadata>
