@@ -42,7 +42,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/9999-Disable-things-we-don-t-want.patch
-	"${FILESDIR}"/9999-wayland-build.patch
 )
 
 pkg_setup() {
