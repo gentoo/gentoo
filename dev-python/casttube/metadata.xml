@@ -10,5 +10,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">casttube</remote-id>
+		<remote-id type="github">ur1katz/casttube</remote-id>
 	</upstream>
 </pkgmetadata>
