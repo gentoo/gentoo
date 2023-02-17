@@ -39,6 +39,7 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+	printf '%s\n' "${PV}" > VERSION || die
 
 	sed -e 's|websocket-client==[[:digit:]\.]*|websocket-client|' \
 		-e "/'clean'/d" \
