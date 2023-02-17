@@ -3,12 +3,11 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
-inherit distutils-r1
+PYTHON_COMPAT=( python3_{9..11} )
+inherit distutils-r1 pypi
 
 DESCRIPTION="W3C provenance data dodel library"
 HOMEPAGE="https://pypi.org/project/prov/"
-SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
