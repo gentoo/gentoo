@@ -13,4 +13,7 @@
 		<flag name="ffmpeg">Link with ffmpeg to allow buffer displays using video streams</flag>
 		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
 	</use>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">mstoeckl/waypipe</remote-id>
+	</upstream>
 </pkgmetadata>
