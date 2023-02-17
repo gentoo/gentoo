@@ -5,4 +5,7 @@
 	<use>
 		<flag name="cli">Build CLI interface</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">pawelsalawa/sqlitestudio</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -164,14 +164,14 @@ src_compile() {
 }
 
 src_install() {
+	emake -C "${core_build_dir}" INSTALL_ROOT="${D}" install
+	emake -C "${plugins_build_dir}" INSTALL_ROOT="${D}" install
+
 	if use test; then
 		# remove test artifacts that must not be installed
 		rm -r "${ED}"/lib64 || die
 		rm -r "${ED}"/usr/share/qt5/tests || die
 	fi
-
-	emake -C "${core_build_dir}" INSTALL_ROOT="${D}" install
-	emake -C "${plugins_build_dir}" INSTALL_ROOT="${D}" install
 
 	doicon -s scalable "SQLiteStudio3/guiSQLiteStudio/img/${PN}.svg"
 
