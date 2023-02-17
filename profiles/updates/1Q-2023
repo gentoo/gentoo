@@ -8,3 +8,4 @@ move dev-python/podman-py dev-python/podman
 move dev-python/sphinx_rtd_theme dev-python/sphinx-rtd-theme
 move dev-python/python-zeroconf dev-python/zeroconf
 move dev-python/keystoneauth dev-python/keystoneauth1
+move dev-python/jupyter_server_fileid dev-python/jupyter-server-fileid

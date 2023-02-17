@@ -23,7 +23,7 @@ KEYWORDS="~amd64"
 RDEPEND="
 	dev-python/jupyter_ydoc[${PYTHON_USEDEP}]
 	dev-python/ypy-websocket[${PYTHON_USEDEP}]
-	dev-python/jupyter_server_fileid[${PYTHON_USEDEP}]
+	dev-python/jupyter-server-fileid[${PYTHON_USEDEP}]
 
 "
 BDEPEND="
