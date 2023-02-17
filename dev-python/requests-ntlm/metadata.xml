@@ -10,7 +10,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="pypi">requests_ntlm</remote-id>
+		<remote-id type="pypi">requests-ntlm</remote-id>
 		<remote-id type="github">requests/requests-ntlm</remote-id>
 	</upstream>
 </pkgmetadata>
