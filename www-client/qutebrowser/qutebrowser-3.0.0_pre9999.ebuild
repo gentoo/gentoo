@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1 multiprocessing xdg
+inherit distutils-r1 xdg
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -30,14 +30,16 @@ RDEPEND="
 		>=dev-python/jinja-3.1.2[${PYTHON_USEDEP}]
 		>=dev-python/markupsafe-2.1.1[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
-		>=dev-python/pyyaml-6[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/zipp[${PYTHON_USEDEP}]
-		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )')
+		adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )
+	')
 	qt6? (
 		dev-qt/qtbase:6[icu]
 		$(python_gen_cond_dep '
 			dev-python/PyQt6[${PYTHON_USEDEP},dbus,gui,network,opengl,printsupport,qml,sql,widgets]
-			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets]')
+			dev-python/PyQt6-WebEngine[${PYTHON_USEDEP},widgets]
+		')
 		pdf? ( www-plugins/pdfjs )
 	)
 	!qt6? (
@@ -45,7 +47,8 @@ RDEPEND="
 		dev-qt/qtgui:5[png]
 		$(python_gen_cond_dep '
 			dev-python/PyQt5[${PYTHON_USEDEP},dbus,declarative,gui,network,opengl,printsupport,sql,widgets]
-			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]')
+			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
+		')
 		pdf? ( <www-plugins/pdfjs-3 )
 	)
 	widevine? ( www-plugins/chrome-binary-plugins )"
@@ -60,12 +63,12 @@ BDEPEND="
 			dev-python/pytest-mock[${PYTHON_USEDEP}]
 			dev-python/pytest-qt[${PYTHON_USEDEP}]
 			dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
-			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 			dev-python/pytest-xvfb[${PYTHON_USEDEP}]
 			dev-python/tldextract[${PYTHON_USEDEP}]
 			qt6? ( dev-python/PyQt6[testlib] )
 			!qt6? ( dev-python/PyQt5[testlib] )
-		)')"
+		)
+	')"
 [[ ${PV} == *9999 ]] && BDEPEND+=" app-text/asciidoc"
 
 distutils_enable_tests pytest
@@ -78,8 +81,8 @@ src_prepare() {
 			-i ${PN}/config/configdata.yml || die
 	fi
 
-	if use widevine; then
-		# Qt6 knows Gentoo's, but pass for libdir, EPREFIX, and Qt5(bug #888783)
+	if use widevine && use prefix; then
+		# hack: QtWebEngine knows Gentoo's widevine, but not with ${EPREFIX}
 		local widevine=${EPREFIX}/usr/$(get_libdir)/chromium-browser/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so
 		sed -e "/yield from _qtwebengine_settings_args/a\    yield '--widevine-path=${widevine}'" \
 			-i ${PN}/config/qtargs.py || die
@@ -120,18 +123,17 @@ python_test() {
 		# https://github.com/qutebrowser/qutebrowser/issues/888 (not just OSX)
 		tests/end2end
 		tests/unit/misc/test_ipc.py
+		# calls eclass' python2 "failure" wrapper
+		tests/unit/misc/test_checkpyver.py::test_old_python
 		# not worth running dbus over
 		tests/unit/browser/test_notification.py::TestDBus
 		# bug 819393
 		tests/unit/commands/test_userscripts.py::test_custom_env[_POSIXUserscriptRunner]
-		# calls eclass' python2 "failure" wrapper
-		tests/unit/misc/test_checkpyver.py::test_old_python
-		# qtargs are mangled with USE=widevine
-		$(usev widevine tests/unit/config/test_qtargs.py)
+		# tests that don't know about our newer qtwebengine:5
+		tests/unit/browser/webengine/test_webenginedownloads.py::TestDataUrlWorkaround
 	)
-
-	# single thread is slow, but do half+1 given spikes ram usage quickly
-	local jobs=$(($(makeopts_jobs) / 2 + 1))
+	# qtargs are mangled with widevine+prefix
+	use widevine && use prefix && EPYTEST_DESELECT+=( tests/unit/config/test_qtargs.py )
 
 	# skip benchmarks (incl. _tree), and warning tests broken by -Wdefault
 	epytest -p xvfb -n ${jobs} -k 'not _bench and not _matches_tree and not _warning'
