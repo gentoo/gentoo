@@ -10,6 +10,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">xmlsec/python-xmlsec</remote-id>
 		<remote-id type="pypi">xmlsec</remote-id>
 	</upstream>
 </pkgmetadata>
