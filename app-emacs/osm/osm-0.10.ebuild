@@ -16,7 +16,10 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-BDEPEND=">=app-editors/emacs-${NEED_EMACS}:*[jpeg,json,libxml2,png,svg]"
+BDEPEND="
+	>=app-editors/emacs-${NEED_EMACS}:*[jpeg,json,libxml2,png,svg]
+	>=app-emacs/compat-29.1.3.4
+"
 RDEPEND="
 	${BDEPEND}
 	net-misc/curl[ssl]
