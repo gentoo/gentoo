@@ -38,10 +38,10 @@ BDEPEND="
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pretend[${PYTHON_USEDEP}]
-		dev-python/python-xmlsec[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/pytest-httpx[${PYTHON_USEDEP}]
 		dev-python/requests-mock[${PYTHON_USEDEP}]
+		dev-python/xmlsec[${PYTHON_USEDEP}]
 	)
 "
 
