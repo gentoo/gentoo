@@ -10,3 +10,4 @@ move dev-python/python-zeroconf dev-python/zeroconf
 move dev-python/keystoneauth dev-python/keystoneauth1
 move dev-python/jupyter_server_fileid dev-python/jupyter-server-fileid
 move dev-python/python-xmlsec dev-python/xmlsec
+move dev-python/github3 dev-python/github3-py
