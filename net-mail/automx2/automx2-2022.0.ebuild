@@ -30,8 +30,8 @@ python_prepare_all() {
 }
 
 python_test() {
-	export AUTOMX2_CONF="tests/unittest.conf"
-	${EPYTHON} -m unittest discover tests/ || die "Tests failed with ${EPYTHON}"
+	local -x AUTOMX2_CONF="tests/unittest.conf"
+	eunittest tests/
 }
 
 python_install_all() {
