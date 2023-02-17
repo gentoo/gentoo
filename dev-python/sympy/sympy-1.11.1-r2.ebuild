@@ -30,7 +30,7 @@ RDEPEND="
 		png? ( app-text/dvipng )
 		pdf? ( app-text/ghostscript-gpl )
 	)
-	mathml? ( dev-libs/libxml2:2[${PYTHON_USEDEP}] )
+	mathml? ( dev-python/lxml[${PYTHON_USEDEP}] )
 	opengl? ( dev-python/pyopengl[${PYTHON_USEDEP}] )
 	pyglet? ( dev-python/pyglet[${PYTHON_USEDEP}] )
 	symengine? ( dev-python/symengine[${PYTHON_USEDEP}] )
