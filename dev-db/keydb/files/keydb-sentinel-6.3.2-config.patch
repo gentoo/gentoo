@@ -1,0 +1,26 @@
+--- a/sentinel.conf	2023-01-20 21:58:11.000000000 +0100
++++ b/sentinel.conf	2023-02-07 17:46:33.709813634 +0100
+@@ -21,19 +21,19 @@
+ port 26379
+ 
+ # By default KeyDB Sentinel does not run as a daemon. Use 'yes' if you need it.
+-# Note that KeyDB will write a pid file in /var/run/keydb-sentinel.pid when
++# Note that KeyDB will write a pid file in /run/keydb-sentinel.pid when
+ # daemonized.
+ daemonize no
+ 
+ # When running daemonized, KeyDB Sentinel writes a pid file in
+-# /var/run/keydb-sentinel.pid by default. You can specify a custom pid file
++# /run/keydb-sentinel.pid by default. You can specify a custom pid file
+ # location here.
+-pidfile /var/run/keydb-sentinel.pid
++pidfile /run/keydb-sentinel.pid
+ 
+ # Specify the log file name. Also the empty string can be used to force
+ # Sentinel to log on the standard output. Note that if you use standard
+ # output for logging but daemonize, logs will be sent to /dev/null
+-logfile ""
++logfile /var/log/keydb/sentinel.log
+ 
+ # sentinel announce-ip <ip>
+ # sentinel announce-port <port>
