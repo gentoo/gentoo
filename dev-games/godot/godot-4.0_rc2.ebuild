@@ -62,9 +62,9 @@ DEPEND="
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.0-musl.patch
 	"${FILESDIR}"/${PN}-4.0_beta3-headless-header.patch
 	"${FILESDIR}"/${PN}-4.0_beta8-scons.patch
+	"${FILESDIR}"/${PN}-4.0_rc2-musl.patch
 )
 
 src_prepare() {
@@ -109,7 +109,6 @@ src_compile() {
 		verbose=yes
 
 		deprecated=$(usex deprecated)
-		#execinfo=$(usex !elibc_glibc) # libexecinfo is not packaged
 		opengl3=$(usex gui)
 		use_volk=no # unnecessary when linking directly to libvulkan
 		vulkan=$(usex gui $(usex vulkan))
