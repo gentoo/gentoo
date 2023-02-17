@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Edit tags and album art of multiple files, even across subfolders, all at
+    once. Support for multiple music file types (mp3, ogg, flac, wma, and wav).
+    Convert filenames to tags and tags to filenames with ease.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/nlogozzo/NickvisionTagger/issues/</bugs-to>
+    <remote-id type="github">nlogozzo/NickvisionTagger</remote-id>
+  </upstream>
+</pkgmetadata>
