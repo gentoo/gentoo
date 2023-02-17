@@ -71,11 +71,16 @@ pkg_setup() {
 src_compile() {
 	local -a args=(
 		V=1
-		TARGET=linux-glibc
 		# Switching to PCRE2 by default, bug 838013
 		PCRE=
 		PCRE_JIT=
 	)
+
+	if use elibc_musl; then
+		args+=( TARGET=linux-musl )
+	else
+		args+=( TARGET=linux-glibc )
+	fi
 
 	# TODO: PCRE2_WIDTH?
 	args+=( $(haproxy_use threads THREAD) )
