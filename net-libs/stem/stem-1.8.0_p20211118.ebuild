@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+# Fails w/ 3.11: https://github.com/torproject/stem/issues/130 (breaks net-misc/nyx)
 PYTHON_COMPAT=( python3_{9..10} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=no
 
