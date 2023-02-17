@@ -11,6 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">BoboTiG/python-mss</remote-id>
 		<remote-id type="pypi">mss</remote-id>
 	</upstream>
 </pkgmetadata>
