@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
 inherit distutils-r1 virtualx
 
@@ -21,9 +21,17 @@ IUSE="aesara examples imaging ipython latex mathml opengl pdf png pyglet symengi
 RDEPEND="
 	dev-python/mpmath[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
-	aesara? ( $(python_gen_cond_dep 'dev-python/aesara[${PYTHON_USEDEP}]' python3_{9..10}) )
+	aesara? (
+		$(python_gen_cond_dep '
+			dev-python/aesara[${PYTHON_USEDEP}]
+		' python3_{9..10})
+	)
 	imaging? ( dev-python/pillow[${PYTHON_USEDEP}] )
-	ipython? ( dev-python/ipython[${PYTHON_USEDEP}] )
+	ipython? (
+		$(python_gen_cond_dep '
+			dev-python/ipython[${PYTHON_USEDEP}]
+		' 'python3_*')
+	)
 	latex? (
 		virtual/latex-base
 		dev-texlive/texlive-fontsextra
@@ -31,8 +39,16 @@ RDEPEND="
 		pdf? ( app-text/ghostscript-gpl )
 	)
 	mathml? ( dev-python/lxml[${PYTHON_USEDEP}] )
-	opengl? ( dev-python/pyopengl[${PYTHON_USEDEP}] )
-	pyglet? ( dev-python/pyglet[${PYTHON_USEDEP}] )
+	opengl? (
+		$(python_gen_cond_dep '
+			dev-python/pyopengl[${PYTHON_USEDEP}]
+		' 'python3_*')
+	)
+	pyglet? (
+		$(python_gen_cond_dep '
+			dev-python/pyglet[${PYTHON_USEDEP}]
+		' 'python3_*')
+	)
 	symengine? ( dev-python/symengine[${PYTHON_USEDEP}] )
 	texmacs? ( app-office/texmacs )
 "
