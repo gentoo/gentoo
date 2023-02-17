@@ -9,6 +9,7 @@ command="/usr/bin/monit"
 
 depend() {
 	use net
+	after *
 }
 
 configtest() {
