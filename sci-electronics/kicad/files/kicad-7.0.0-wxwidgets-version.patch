@@ -1,0 +1,95 @@
+From b536580119c59fde78e38d8d6388f2540ecb6cf9 Mon Sep 17 00:00:00 2001
+From: Ian McInerney <ian.s.mcinerney@ieee.org>
+Date: Mon, 13 Feb 2023 21:24:26 +0000
+Subject: [PATCH] Support subrelease field in wxWidgets cmake detection
+
+Sometimes wxWidgets increments the subrelease to a non-zero value, and
+since wxPython will report a subrelease, we must ensure we can get the
+subrelease from the wx library properly, otherwise configure will fail
+thinking the library isn't the same version as that used by wxPython.
+
+Fixes: https://gitlab.com/kicad/code/kicad/-/issues/13887
+--- a/cmake/FindwxWidgets.cmake
++++ b/cmake/FindwxWidgets.cmake
+@@ -926,8 +926,17 @@ if(wxWidgets_FOUND)
+     "\\2" wxWidgets_VERSION_MINOR "${_wx_version_h}" )
+   string(REGEX REPLACE "^(.*\n)?#define +wxRELEASE_NUMBER +([0-9]+).*"
+     "\\2" wxWidgets_VERSION_PATCH "${_wx_version_h}" )
+-  set(wxWidgets_VERSION_STRING
+-    "${wxWidgets_VERSION_MAJOR}.${wxWidgets_VERSION_MINOR}.${wxWidgets_VERSION_PATCH}" )
++  string(REGEX REPLACE "^(.*\n)?#define +wxSUBRELEASE_NUMBER +([0-9]+).*"
++    "\\2" wxWidgets_VERSION_SUBRELEASE "${_wx_version_h}" )
++
++  if( ${wxWidgets_VERSION_SUBRELEASE} GREATER 0 )
++    set(wxWidgets_VERSION_STRING
++      "${wxWidgets_VERSION_MAJOR}.${wxWidgets_VERSION_MINOR}.${wxWidgets_VERSION_PATCH}.${wxWidgets_VERSION_SUBRELEASE}" )
++  else()
++    set(wxWidgets_VERSION_STRING
++      "${wxWidgets_VERSION_MAJOR}.${wxWidgets_VERSION_MINOR}.${wxWidgets_VERSION_PATCH}" )
++  endif()
++
+   DBG_MSG("wxWidgets_VERSION_STRING:    ${wxWidgets_VERSION_STRING}")
+ endif()
+ 
+-- 
+From 1e8cc6855d6a8fc1f9dfc933224c3a10fb759f9c Mon Sep 17 00:00:00 2001
+From: Ian McInerney <ian.s.mcinerney@ieee.org>
+Date: Tue, 14 Feb 2023 00:18:56 +0000
+Subject: [PATCH] Relax wxPython version mismatch check to major.minor
+
+The previous version check failed when the version was even slightly
+different, including on the revision field. Theoretically the ABI of the
+wx minor versions in use should be the same, so this might work. On the
+other hand, with wxPython it could break as well. YOLO.
+--- a/scripting/python_scripting.cpp
++++ b/scripting/python_scripting.cpp
+@@ -50,6 +50,7 @@
+ #include <kiplatform/environment.h>
+ 
+ #include <wx/app.h>
++#include <wx/regex.h>
+ #include <wx/utils.h>
+ 
+ #include <config.h>
+@@ -128,7 +129,39 @@ except:
+                                            wxVI.GetMajor(), wxVI.GetMinor(), wxVI.GetMicro() );
+         version = version.Mid( idx + 10 );
+ 
+-        if( wxVersion.Cmp( version ) != 0 )
++        int wxPy_major = 0;
++        int wxPy_minor = 0;
++        int wxPy_micro = 0;
++        int wxPy_rev   = 0;
++
++        // Compile a regex to extract the wxPython version
++        wxRegEx re( "([0-9]+)\\.([0-9]+)\\.?([0-9]+)?\\.?([0-9]+)?" );
++        wxASSERT( re.IsValid() );
++
++        if( re.Matches( version ) )
++        {
++            wxString v = re.GetMatch( version, 1 );
++
++            if( !v.IsEmpty() )
++                v.ToInt( &wxPy_major );
++
++            v = re.GetMatch( version, 2 );
++
++            if( !v.IsEmpty() )
++                v.ToInt( &wxPy_minor );
++
++            v = re.GetMatch( version, 3 );
++
++            if( !v.IsEmpty() )
++                v.ToInt( &wxPy_micro );
++
++            v = re.GetMatch( version, 4 );
++
++            if( !v.IsEmpty() )
++                v.ToInt( &wxPy_rev );
++        }
++
++        if( ( wxVI.GetMajor() != wxPy_major ) || ( wxVI.GetMinor() != wxPy_minor ) )
+         {
+             wxString msg = wxT( "The wxPython library was compiled against wxWidgets %s but KiCad is "
+                                 "using %s.  Python plugins will not be available." );
+-- 
