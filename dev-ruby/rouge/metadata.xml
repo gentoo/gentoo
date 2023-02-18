@@ -6,6 +6,7 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">jneen/rouge</remote-id>
+    <remote-id type="github">rouge-ruby/rouge</remote-id>
+    <remote-id type="rubygems">rouge</remote-id>
   </upstream>
 </pkgmetadata>
