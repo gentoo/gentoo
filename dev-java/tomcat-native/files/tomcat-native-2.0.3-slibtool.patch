@@ -18,8 +18,8 @@ Gentoo bug: https://bugs.gentoo.org/778914
 
 diff --git a/native/configure.in b/native/configure.in
 index 567894b10..e082ae6d2 100644
---- a/native/configure.in
-+++ b/native/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -50,6 +50,9 @@ AC_SUBST(TCN_CONFIG_LOCATION)
  AC_CANONICAL_TARGET
  AC_PROG_INSTALL
