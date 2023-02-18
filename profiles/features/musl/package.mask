@@ -186,6 +186,7 @@ games-fps/ut2004-demo
 games-puzzle/world-of-goo-demo
 games-puzzle/world-of-goo-gog
 games-puzzle/world-of-goo-hb
+games-rpg/crosscode
 games-server/bedrock-server
 games-server/etqw-ded
 games-server/mtavc
