@@ -94,6 +94,8 @@ src_prepare() {
 		-i src/osdep/unix/Makefile \
 		|| die "failed to fix build flags support in the Makefile"
 
+	sed -i -e "s:krb5-config.mit:krb5-config:" src/osdep/unix/Makefile.gss || die
+
 	elibtoolize
 }
 
