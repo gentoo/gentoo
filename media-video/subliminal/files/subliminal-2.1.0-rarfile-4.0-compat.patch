@@ -1,0 +1,25 @@
+https://github.com/Diaoul/subliminal/pull/1045
+
+From e9ed47e61a63ad0e0cdb036375ffa5a144953f1e Mon Sep 17 00:00:00 2001
+From: Eduardo Soares <eduardosoares.pt@gmail.com>
+Date: Fri, 24 Dec 2021 17:08:04 +0000
+Subject: [PATCH] Fix removal of custom check from rarfile dependency
+
+---
+ subliminal/providers/legendastv.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/subliminal/providers/legendastv.py b/subliminal/providers/legendastv.py
+index 9d696ca24..bf57a22dc 100644
+--- a/subliminal/providers/legendastv.py
++++ b/subliminal/providers/legendastv.py
+@@ -161,7 +161,7 @@ def __init__(self, username=None, password=None):
+ 
+         # Provider needs UNRAR installed. If not available raise ConfigurationError
+         try:
+-            rarfile.custom_check([rarfile.UNRAR_TOOL], True)
++            rarfile.tool_setup(True, False, False, True)
+         except rarfile.RarExecError:
+             raise ConfigurationError('UNRAR tool not available')
+ 
+
