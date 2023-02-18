@@ -792,11 +792,6 @@ net-p2p/vuze-coreplugins
 # and accept a more unstable release.
 >=www-client/chromium-111
 
-# Piotr Karbowski <slashbeast@gentoo.org> (2022-11-29)
-# Multiple stability issues, deadlocks on exit, broken API.
-# Bug #883559
-=net-p2p/qbittorrent-4.5.0
-
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # Packages or their dependencies have not been ported to libsoup:3.0, while
 # other non-slotted dependencies have been.
