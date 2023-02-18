@@ -46,10 +46,6 @@ RDEPEND="
 
 REQUIRED_USE="!minimal? ( || ( mariadb mysql postgres ) )"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-boost-1.81.patch
-)
-
 src_configure() {
 	local mycmakeargs=(
 		-DICINGA2_UNITY_BUILD=$(usex jumbo-build)
