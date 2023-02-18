@@ -1,0 +1,28 @@
+Matplotlib-3.7 has merged SubplotBase into AxesBase now, which makes the
+class string representation here GeoAxes now, even though we are
+still an _instance_ of GeoAxesSubplot
+
+Backported from https://github.com/SciTools/cartopy/commit/6b4572ba1a8a877f28e25dfe9559c14b7a565958?diff=unified
+diff --git a/lib/cartopy/tests/mpl/test_axes.py b/lib/cartopy/tests/mpl/test_axes.py
+index eaf5904..d4e37a1 100644
+--- a/lib/cartopy/tests/mpl/test_axes.py
++++ b/lib/cartopy/tests/mpl/test_axes.py
+@@ -13,7 +13,8 @@ import pytest
+ 
+ import cartopy.crs as ccrs
+ import cartopy.feature as cfeature
+-from cartopy.mpl.geoaxes import InterProjectionTransform, GeoAxes
++from cartopy.mpl.geoaxes import (
++    InterProjectionTransform, GeoAxes, GeoAxesSubplot)
+ 
+ 
+ class TestNoSpherical:
+@@ -119,7 +120,7 @@ class Test_Axes_add_geometries:
+ 
+ def test_geoaxes_subplot():
+     ax = plt.subplot(1, 1, 1, projection=ccrs.PlateCarree())
+-    assert str(ax.__class__) == "<class 'cartopy.mpl.geoaxes.GeoAxesSubplot'>"
++    assert isinstance(ax, GeoAxesSubplot)
+ 
+ 
+ @pytest.mark.mpl_image_compare(filename='geoaxes_subslice.png')

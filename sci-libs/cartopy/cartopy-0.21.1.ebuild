@@ -55,6 +55,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}"/${P}-fix-test.patch )
+
 EPYTEST_IGNORE=(
 	# Require network access, not covered by markers
 	lib/cartopy/tests/mpl/test_crs.py
