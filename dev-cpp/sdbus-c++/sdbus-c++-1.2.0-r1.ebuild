@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit python-any-r1 meson cmake
+inherit python-any-r1 meson cmake flag-o-matic
 
 SDP="systemd-stable-252.6"
 MUSL_PATCHSET="systemd-musl-patches-252.4"
@@ -80,6 +80,9 @@ src_prepare() {
 
 src_configure() {
 	if ! use systemd; then
+		# Avoid redefinition of struct ethhdr.
+		use elibc_musl && append-cppflags -D__UAPI_DEF_ETHHDR=0
+
 		EMESON_SOURCE=${SDS} \
 		BUILD_DIR=${SDB} \
 		meson_src_configure \
