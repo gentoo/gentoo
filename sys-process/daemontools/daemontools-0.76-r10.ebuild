@@ -1,42 +1,35 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit fixheadtails flag-o-matic qmail
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Collection of tools for managing UNIX services"
 HOMEPAGE="https://cr.yp.to/daemontools.html"
-SRC_URI="https://cr.yp.to/daemontools/${P}.tar.gz
+SRC_URI="
+	https://cr.yp.to/daemontools/${P}.tar.gz
 	http://smarden.org/pape/djb/manpages/${P}-man-20020131.tar.gz"
+S="${WORKDIR}/admin/${P}/src"
 
 LICENSE="public-domain GPL-2"	# GPL-2 for init script
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="selinux static"
 
-DEPEND=""
 RDEPEND="selinux? ( sec-policy/selinux-daemontools )"
-
-S="${WORKDIR}/admin/${P}/src"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-errno.patch
 	"${FILESDIR}"/${PV}-C99-decls.patch
+	"${FILESDIR}"/${PV}-makefile.patch
 )
 
-src_prepare() {
-	default
-
-	ht_fix_file Makefile print-{cc,ld}.sh
-
+src_configure() {
+	tc-export AR CC
 	use static && append-ldflags -static
-	qmail_set_cc
-}
 
-src_compile() {
 	touch home || die
-	emake
 }
 
 src_install() {
