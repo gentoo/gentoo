@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>base-system@gentoo.org</email>
-	<name>Gentoo Base System</name>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription lang="en">
 daemontools-encore is a collection of tools for managing UNIX services.
 It is derived from the public-domain release of daemontools by 
