@@ -90,6 +90,7 @@ src_prepare() {
 	elibtoolize
 
 	use elibc_musl && eapply "${FILESDIR}"/${PN}-0.21-musl-omit_setlocale_lock.patch
+	use elibc_Darwin && eapply "${FILESDIR}"/${PN}-0.21-musl-omit_setlocale_lock.patch
 }
 
 multilib_src_configure() {
