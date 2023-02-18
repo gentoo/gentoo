@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_TESTED=( python3_{9..11} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" pypy3 )
 
 inherit distutils-r1 multiprocessing
 
@@ -41,7 +41,6 @@ BDEPEND="
 		dev-python/scipy[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
 		virtual/cblas
-		!!dev-python/setuptools-declarative-requirements
 	)
 "
 
