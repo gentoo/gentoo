@@ -8,6 +8,7 @@ DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 xdg
 
+MY_COMMIT="8f01c76f0ec727fa336cb2cb6a645a58e3a29e64"
 DESCRIPTION="FFmpeg-based simple video cutter & joiner with a modern PyQt5 GUI"
 HOMEPAGE="http://vidcutter.ozmartians.com https://github.com/ozmartian/vidcutter"
 
@@ -15,7 +16,7 @@ if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ozmartian/vidcutter"
 else
-	SRC_URI="https://github.com/ozmartian/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ozmartian/${PN}/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -35,6 +36,8 @@ BDEPEND="
 	${PYTHON_DEPS}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 src_install() {
 	distutils-r1_src_install
