@@ -1,0 +1,127 @@
+From 81134b0dff93ecc9da4ae60cd4b0aeb0be95ab1e Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Sat, 18 Feb 2023 17:39:37 +0100
+Subject: [PATCH 1/2] Make it compile against discount 3
+
+---
+ cmake/modules/FindDiscount.cmake                  |  2 +-
+ .../bodypartformatter/markdown/CMakeLists.txt     |  1 -
+ .../markdown/markdowndiscount.cpp                 | 15 +++++++++++++++
+ 3 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/modules/FindDiscount.cmake b/cmake/modules/FindDiscount.cmake
+index 27acf46ed..8bb4e6d09 100644
+--- a/cmake/modules/FindDiscount.cmake
++++ b/cmake/modules/FindDiscount.cmake
+@@ -21,7 +21,7 @@ else ()
+       find_package(PkgConfig QUIET)
+       PKG_CHECK_MODULES(PC_LIBMARKDOWN QUIET libmarkdown)
+       set(PC_LIBMARKDOWN_VERSION_STRING ${PC_LIBMARKDOWN_VERSION})
+-      #MESSAGE(STATUS "VERSION ${PC_LIBMARKDOWN_VERSION_STRING}")
++      MESSAGE(STATUS "VERSION ${PC_LIBMARKDOWN_VERSION_STRING}")
+   endif ()	
+   find_library (discount_LIBRARY
+     NAMES markdown libmarkdown
+diff --git a/plugins/messageviewer/bodypartformatter/markdown/CMakeLists.txt b/plugins/messageviewer/bodypartformatter/markdown/CMakeLists.txt
+index 244810b2b..8e096b75b 100644
+--- a/plugins/messageviewer/bodypartformatter/markdown/CMakeLists.txt
++++ b/plugins/messageviewer/bodypartformatter/markdown/CMakeLists.txt
+@@ -23,5 +23,4 @@ target_link_libraries(messageviewer_bodypartformatter_text_markdown
+     KF5::MessageViewer
+     ${TEMPLATES_LIB}
+ )
+-
+ install(TARGETS messageviewer_bodypartformatter_text_markdown DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim${QT_MAJOR_VERSION}/messageviewer/bodypartformatter)
+diff --git a/plugins/messageviewer/bodypartformatter/markdown/markdowndiscount.cpp b/plugins/messageviewer/bodypartformatter/markdown/markdowndiscount.cpp
+index 8132b7b34..3ba689695 100644
+--- a/plugins/messageviewer/bodypartformatter/markdown/markdowndiscount.cpp
++++ b/plugins/messageviewer/bodypartformatter/markdown/markdowndiscount.cpp
+@@ -20,6 +20,8 @@ QString MarkdownDiscount::toHtml() const
+         return {};
+     }
+     const QByteArray textArray = mText.toUtf8();
++#if defined(MKD_NOLINKS)
++    // on discount 2 MKD_NOLINKS is a define
+     MMIOT *markdownHandle = mkd_string(textArray.constData(), textArray.count(), 0);
+     mkd_flag_t flags = MKD_FENCEDCODE | MKD_GITHUBTAGS | MKD_AUTOLINK;
+     if (!mkd_compile(markdownHandle, flags)) {
+@@ -27,6 +29,19 @@ QString MarkdownDiscount::toHtml() const
+         mkd_cleanup(markdownHandle);
+         return {};
+     }
++#else
++    // on discount 3 MKD_NOLINKS is an enum value
++    MMIOT *markdownHandle = mkd_string(textArray.constData(), textArray.size(), nullptr);
++    mkd_flag_t *flags = mkd_flags();
++    mkd_set_flag_bitmap(flags, MKD_FENCEDCODE | MKD_GITHUBTAGS | MKD_AUTOLINK | MKD_TOC | MKD_IDANCHOR);
++    if (!mkd_compile(markdownHandle, flags)) {
++        qWarning() << "Failed to compile the Markdown document.";
++        mkd_cleanup(markdownHandle);
++        mkd_free_flags(flags);
++        return {};
++    }
++    mkd_free_flags(flags);
++#endif
+ 
+     char *htmlDocument;
+     const int size = mkd_document(markdownHandle, &htmlDocument);
+-- 
+2.39.2
+
+
+From dab416ac2e2ec17bf5a7a9a83064f19a3b04a08c Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Sun, 19 Feb 2023 12:30:14 +0100
+Subject: [PATCH 2/2] Add missing push it
+
+---
+ .../markdownlib/markdownconverter.cpp         | 25 ++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
+
+diff --git a/kmail/editorconvertertextplugins/markdown/markdownlib/markdownconverter.cpp b/kmail/editorconvertertextplugins/markdown/markdownlib/markdownconverter.cpp
+index 204628656..34530dd11 100644
+--- a/kmail/editorconvertertextplugins/markdown/markdownlib/markdownconverter.cpp
++++ b/kmail/editorconvertertextplugins/markdown/markdownlib/markdownconverter.cpp
+@@ -52,7 +52,8 @@ QString MarkdownConverter::convertTextToMarkdown(const QString &str)
+         return {};
+     }
+     const QByteArray textArray = str.toUtf8();
+-
++#if defined(MKD_NOLINKS)
++    // on discount 2 MKD_NOLINKS is a define
+     MMIOT *markdownHandle = mkd_string(textArray.constData(), textArray.count(), 0);
+     mkd_flag_t flags = MKD_FENCEDCODE | MKD_GITHUBTAGS | MKD_AUTOLINK;
+     if (mEnableEmbeddedLabel) {
+@@ -69,7 +70,29 @@ QString MarkdownConverter::convertTextToMarkdown(const QString &str)
+         mkd_cleanup(markdownHandle);
+         return {};
+     }
++#else
++    // on discount 2 MKD_NOLINKS is a define
+ 
++    MMIOT *markdownHandle = mkd_string(textArray.constData(), textArray.size(), nullptr);
++    mkd_flag_t *flags = mkd_flags();
++    mkd_set_flag_bitmap(flags, MKD_FENCEDCODE | MKD_GITHUBTAGS | MKD_AUTOLINK);
++    if (mEnableEmbeddedLabel) {
++        mkd_set_flag_num(flags, MKD_LATEX);
++    }
++    if (mEnableExtraDefinitionLists) {
++        mkd_set_flag_num(flags, MKD_DLEXTRA);
++    }
++#if DISCOUNT_HAS_HIGHLIGHTING_SUPPORT
++    mkd_e_code_format(markdownHandle, external_codefmt);
++#endif
++    if (!mkd_compile(markdownHandle, flags)) {
++        Q_EMIT failed(i18n("Failed to compile the Markdown document."));
++        mkd_cleanup(markdownHandle);
++        mkd_free_flags(flags);
++        return {};
++    }
++    mkd_free_flags(flags);
++#endif
+     char *htmlDocument;
+     const int size = mkd_document(markdownHandle, &htmlDocument);
+ 
+-- 
+2.39.2
+

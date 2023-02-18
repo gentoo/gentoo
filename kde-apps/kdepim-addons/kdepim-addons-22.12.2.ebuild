@@ -68,6 +68,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-discount-3.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package importwizard KPimImportWizard)
