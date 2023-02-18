@@ -31,6 +31,7 @@ BDEPEND=">=dev-python/scikit-build-0.12.0"
 
 PATCHES=(
 	"${DISTDIR}"/${P}-fmt-e73beb23a3feeba02a851e3f8131e3c85a29de2b.patch
+	"${FILESDIR}"/${PN}-1.1.1-gcc-13.patch
 )
 
 distutils_enable_tests pytest
