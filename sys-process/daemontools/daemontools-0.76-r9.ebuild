@@ -22,7 +22,7 @@ S="${WORKDIR}/admin/${P}/src"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-errno.patch
-	"${FILESDIR}"/${PV}-warnings.patch
+	"${FILESDIR}"/${PV}-C99-decls.patch
 )
 
 src_prepare() {
