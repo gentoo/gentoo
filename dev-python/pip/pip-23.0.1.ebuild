@@ -14,7 +14,6 @@ inherit bash-completion-r1 distutils-r1 multiprocessing
 
 # setuptools & wheel .whl files are required for testing,
 # the exact version is not very important.
-SETUPTOOLS_WHL="setuptools-67.3.2-py3-none-any.whl"
 WHEEL_WHL="wheel-0.38.4-py3-none-any.whl"
 # upstream still requires virtualenv-16 for testing, we are now fetching
 # it directly to avoid blockers with virtualenv-20
@@ -29,7 +28,6 @@ HOMEPAGE="
 SRC_URI="
 	https://github.com/pypa/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
 	test? (
-		https://files.pythonhosted.org/packages/py3/s/setuptools/${SETUPTOOLS_WHL}
 		https://files.pythonhosted.org/packages/py3/w/wheel/${WHEEL_WHL}
 		https://github.com/pypa/virtualenv/archive/${VENV_PV}.tar.gz
 			-> virtualenv-${VENV_PV}.gh.tar.gz
@@ -50,6 +48,7 @@ BDEPEND="
 	${RDEPEND}
 	test? (
 		$(python_gen_cond_dep '
+			dev-python/ensurepip-setuptools
 			dev-python/freezegun[${PYTHON_USEDEP}]
 			dev-python/pretend[${PYTHON_USEDEP}]
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
@@ -74,8 +73,9 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 
 	if use test; then
+		local setuptools_whl=( "${BROOT}"/usr/lib/python/ensurepip/setuptools-*.whl )
 		mkdir tests/data/common_wheels/ || die
-		cp "${DISTDIR}"/{${SETUPTOOLS_WHL},${WHEEL_WHL}} \
+		cp "${setuptools_whl[@]}" "${DISTDIR}"/${WHEEL_WHL} \
 			tests/data/common_wheels/ || die
 	fi
 }
