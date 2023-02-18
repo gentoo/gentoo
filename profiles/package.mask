@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-02-18)
+# Backport to Python 3.5(!) hence irrelevant for newer versions of Python
+# where os.scandir() and os.walk() improvements were integrated in the stdlib.
+# Incompatible with Python 3.11. No reverse dependencies.
+# Removal on 2023-03-18. bug #895198
+dev-python/scandir
+
 # Michał Górny <mgorny@gentoo.org> (2023-02-17)
 # Merged into dev-python/pytest-cov in 2020.  No revdeps left.
 # Removal on 2023-03-19.  Bug #895120.
