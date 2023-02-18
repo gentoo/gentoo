@@ -4,7 +4,10 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..11} pypy3 )
+
+# GitPython doesn't support pypy3
+PYTHON_TESTED=( python3_{9..11} )
 
 inherit distutils-r1
 
@@ -36,7 +39,9 @@ RDEPEND="
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
-		dev-python/GitPython[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/GitPython[${PYTHON_USEDEP}]
+		' "${PYTHON_TESTED[@]}")
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)
 "
