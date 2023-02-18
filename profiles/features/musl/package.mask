@@ -115,13 +115,6 @@ www-client/chromium
 net-misc/netkit-telnetd
 net-misc/sitecopy
 
-# Sam James <sam@gentoo.org> (2022-02-06)
-# Latest version doesn't build on musl
-# bug #831363
-=sys-libs/efivar-38
-app-crypt/pesign
-sys-kernel/kpatch
-
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2022-01-05)
 # Binary package linked to glibc (rolling mask, use for all such binpkgs)
 app-admin/awscli-bin
