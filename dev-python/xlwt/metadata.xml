@@ -14,6 +14,7 @@
 	</longdescription>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">python-excel/xlwt</remote-id>
 		<remote-id type="pypi">xlwt</remote-id>
 	</upstream>
 </pkgmetadata>
