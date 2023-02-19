@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="app-portage/g-sorcery[${PYTHON_USEDEP}]
-	dev-python/sexpdata[${PYTHON_USEDEP}]"
+	<dev-python/sexpdata-0.0.4[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}"
 
 python_install_all() {
