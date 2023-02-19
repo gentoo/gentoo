@@ -107,7 +107,7 @@ src_install() {
 	fperms +x /opt/${PN}/{,bin/}code
 	fperms +x /opt/${PN}/chrome_crashpad_handler
 	fperms 4711 /opt/${PN}/chrome-sandbox
-	fperms 755 /opt/${PN}/resources/app/extensions/git/dist/{askpass,git-editor}{,-empty}.sh
+	fperms 755 /opt/${PN}/resources/app/extensions/git/dist/{askpass,git-editor,ssh-askpass}{,-empty}.sh
 	fperms -R +x /opt/${PN}/resources/app/out/vs/base/node
 	fperms +x /opt/${PN}/resources/app/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg
 	fperms +x /opt/${PN}/resources/app/node_modules.asar.unpacked/node-pty/build/Release/spawn-helper
