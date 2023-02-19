@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 
 inherit desktop python-single-r1 toolchain-funcs xdg
@@ -78,7 +78,7 @@ RDEPEND="
 	tiff? ( media-libs/tiff:= )
 	truetype? ( media-libs/freetype:2 )
 	X? (
-		dev-python/wxpython:4.0
+		>=dev-python/wxpython-4.1:4.0
 		x11-libs/cairo[X]
 		x11-libs/libICE
 		x11-libs/libSM
