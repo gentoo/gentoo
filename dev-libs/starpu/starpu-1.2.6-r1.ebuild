@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,15 +39,6 @@ BDEPEND="
 	doc? ( app-doc/doxygen virtual/latex-base )
 	test? ( gcc-plugin? ( dev-scheme/guile ) )
 "
-
-pkg_pretend() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-}
-
-pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-	fortran-2_pkg_setup
-}
 
 src_prepare() {
 	default
