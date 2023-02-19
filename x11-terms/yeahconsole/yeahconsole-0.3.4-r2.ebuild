@@ -19,7 +19,10 @@ DEPEND="
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${P}-make.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-make.patch
+	"${FILESDIR}"/${P}-C99-decls.patch
+)
 
 src_configure() {
 	tc-export CC PKG_CONFIG
