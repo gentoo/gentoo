@@ -20,7 +20,7 @@
 -$(TARGET): $(OBJECTS) 
 -	$(CC) $(DEFINES) $(INCLUDES) $(LIB_DIRS) $(LIBS) -o $@ $<
 -	strip $@
-+PKG_CONFIG ?= lol
++PKG_CONFIG ?= pkg-config
 +CFLAGS += -Wall
 +CPPFLAGS += $(shell $(PKG_CONFIG) --cflags x11)
 +LDLIBS += $(shell $(PKG_CONFIG) --libs x11)
