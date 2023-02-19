@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN=Vulkan-Tools
 PYTHON_COMPAT=( python3_{9..11} )
@@ -28,7 +28,6 @@ IUSE="cube wayland +X"
 REQUIRED_USE="cube? ( ^^ ( X wayland ) )"
 
 BDEPEND="${PYTHON_DEPS}
-	>=dev-util/cmake-3.10.2
 	cube? ( ~dev-util/glslang-${PV}:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
@@ -75,8 +74,4 @@ multilib_src_configure() {
 	)
 
 	cmake_src_configure
-}
-
-multilib_src_install() {
-	cmake_src_install
 }
