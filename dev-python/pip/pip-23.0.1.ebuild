@@ -6,15 +6,11 @@ EAPI=8
 # please bump dev-python/ensurepip-pip along with this package!
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( python3_{9..10} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_11 pypy3 )
+PYTHON_TESTED=( python3_{9..11} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" pypy3 )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
 inherit bash-completion-r1 distutils-r1 multiprocessing
-
-# upstream still requires virtualenv-16 for testing, we are now fetching
-# it directly to avoid blockers with virtualenv-20
-VENV_PV=16.7.12
 
 DESCRIPTION="The PyPA recommended tool for installing Python packages"
 HOMEPAGE="
@@ -23,11 +19,7 @@ HOMEPAGE="
 	https://github.com/pypa/pip/
 "
 SRC_URI="
-	https://github.com/pypa/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
-	test? (
-		https://github.com/pypa/virtualenv/archive/${VENV_PV}.tar.gz
-			-> virtualenv-${VENV_PV}.gh.tar.gz
-	)
+	https://github.com/pypa/pip/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"
@@ -51,6 +43,7 @@ BDEPEND="
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 			dev-python/scripttest[${PYTHON_USEDEP}]
 			dev-python/tomli-w[${PYTHON_USEDEP}]
+			dev-python/virtualenv[${PYTHON_USEDEP}]
 			dev-python/werkzeug[${PYTHON_USEDEP}]
 			dev-python/wheel[${PYTHON_USEDEP}]
 			test-rust? (
@@ -89,7 +82,7 @@ python_compile_all() {
 
 python_test() {
 	if ! has "${EPYTHON}" "${PYTHON_TESTED[@]/_/.}"; then
-		einfo "Skipping tests on ${EPYTHON} since virtualenv-16 is broken"
+		einfo "Skipping tests on ${EPYTHON}"
 		return 0
 	fi
 
@@ -119,7 +112,6 @@ python_test() {
 		)
 	fi
 
-	local -x PYTHONPATH="${WORKDIR}/virtualenv-${VENV_PV}"
 	local -x SETUPTOOLS_USE_DISTUTILS=stdlib
 	local -x PIP_DISABLE_PIP_VERSION_CHECK=1
 	epytest -m "not network" -n "$(makeopts_jobs)"
