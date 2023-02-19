@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # 'Sane' defaults
@@ -14,9 +14,6 @@ FEATURES="-multilib-strict"
 # on glibc system you cannot turn it off
 USE="iconv"
 
-# build gcc with parallelization support
-USE="${USE} openmp"
-
 # Turn off acl to help with bootstrapping - it isn't as helpful for prefix as it
 # can be for a non-prefix install
 USE="${USE} -acl"
@@ -31,4 +28,3 @@ USE="${USE} -acl"
 # break a random amount of packages, that don't break (or just not
 # enough) for non-Prefix installs.
 LDFLAGS="-Wl,-O1"
-
