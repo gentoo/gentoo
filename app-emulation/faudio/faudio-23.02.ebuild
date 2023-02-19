@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake flag-o-matic
 
-DESCRIPTION="FAudio - Accuracy-focused XAudio reimplementation for open platforms"
+DESCRIPTION="Accuracy-focused XAudio reimplementation for open platforms"
 HOMEPAGE="https://fna-xna.github.io/"
 SRC_URI="https://github.com/FNA-XNA/FAudio/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/FAudio-${PV}"
