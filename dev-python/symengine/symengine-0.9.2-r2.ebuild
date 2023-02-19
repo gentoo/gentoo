@@ -10,11 +10,15 @@ inherit distutils-r1
 
 MY_P=${PN}.py-${PV}
 DESCRIPTION="Python wrappers to the symengine C++ library"
-HOMEPAGE="https://github.com/symengine/symengine.py/"
+HOMEPAGE="
+	https://github.com/symengine/symengine.py/
+	https://pypi.org/project/symengine/
+"
 SRC_URI="
 	https://github.com/symengine/symengine.py/archive/v${PV}.tar.gz
-		-> ${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+		-> ${MY_P}.tar.gz
+"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
@@ -29,11 +33,13 @@ BDEPEND="
 "
 # See bug #786582 for symengine constraint
 # See also https://github.com/symengine/symengine.py/blob/master/symengine_version.txt
-RDEPEND="
+DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=sci-libs/symengine-$(ver_cut 1-2):=
 "
-DEPEND="${RDEPEND}"
+RDEPEND="
+	${DEPEND}
+"
 
 # the C library installs the same docs
 DOCS=()
@@ -48,9 +54,4 @@ distutils_enable_tests pytest
 python_test() {
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	epytest
-}
-
-python_install() {
-	distutils-r1_python_install
-	python_optimize
 }
