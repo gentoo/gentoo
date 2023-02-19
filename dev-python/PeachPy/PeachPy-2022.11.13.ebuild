@@ -4,10 +4,10 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
-CommitId=257881e0a7ce985c1cf96653db1264bf09adf510
+CommitId=349e8f836142b2ed0efeb6bb99b1b715d87202e9
 
 DESCRIPTION="Portable Efficient Assembly Code-generator in Higher-level Python"
 HOMEPAGE="https://pypi.org/project/PeachPy/"
@@ -27,5 +27,3 @@ DEPEND="${RDEPEND}"
 BDEPEND=""
 
 S="${WORKDIR}"/${PN}-${CommitId}
-
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
