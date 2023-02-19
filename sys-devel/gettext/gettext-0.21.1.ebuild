@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: Keep version bumps in sync with dev-libs/libintl.
@@ -6,7 +6,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/gettext.asc
-inherit java-pkg-opt-2 libtool multilib-minimal verify-sig
+inherit java-pkg-opt-2 libtool multilib-minimal verify-sig toolchain-funcs
 
 DESCRIPTION="GNU locale utilities"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
@@ -70,7 +70,12 @@ PATCHES=(
 
 QA_SONAME_NO_SYMLINK=".*/preloadable_libintl.so"
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
 pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	java-pkg-opt-2_pkg_setup
 }
 
