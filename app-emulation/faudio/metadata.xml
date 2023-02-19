@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>wine@gentoo.org</email>
-		<name>Wine</name>
-		<description>
-			This package must be kept in sync with repo/proj/wine repository.
-			Any changes need to be run past the maintainer to ensure the two repositories are kept in sync.
-		</description>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 FAudio, is an XAudio reimplementation that focuses solely on developing fully accurate DirectX Audio runtime libraries
 for the FNA project, including XAudio2, X3DAudio, XAPO, and XACT3.
