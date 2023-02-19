@@ -599,16 +599,6 @@ _tc-has-openmp() {
 	return ${ret}
 }
 
-# @FUNCTION: tc-has-openmp
-# @USAGE: [toolchain prefix]
-# @DEPRECATED: tc-check-openmp
-# @DESCRIPTION:
-# See if the toolchain supports OpenMP.  This function is deprecated and will be
-# removed on 2023-01-01.
-tc-has-openmp() {
-	_tc-has-openmp "$@"
-}
-
 # @FUNCTION: tc-check-openmp
 # @DESCRIPTION:
 # Test for OpenMP support with the current compiler and error out with
