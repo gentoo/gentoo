@@ -7,10 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_REQ_USE="tk?"
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1 virtualx
-
-MY_PN="PyOpenGL"
-MY_P="${MY_PN}-${PV}"
+inherit distutils-r1 pypi virtualx
 
 DESCRIPTION="Python OpenGL bindings"
 HOMEPAGE="
@@ -19,11 +16,11 @@ HOMEPAGE="
 	https://pypi.org/project/PyOpenGL/
 "
 SRC_URI="
-	mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz
+	$(pypi_sdist_url --no-normalize PyOpenGL)
 	https://github.com/mcfletch/pyopengl/commit/2d2457b4d565bce1c58b76b427e1f9027e8b4bcc.patch
 		-> ${P}-glut-font-egl.patch
 "
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/PyOpenGL-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
