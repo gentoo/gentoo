@@ -35,7 +35,6 @@ VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/tomcat-connectors.a
 JAVA_RESOURCE_DIRS="../resources"
 JAVA_SRC_DIR="../java"
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
-JAVA_TEST_RESOURCE_DIRS=".libs"
 JAVA_TEST_SRC_DIR="../test"
 
 PATCHES=(
@@ -78,7 +77,7 @@ src_test() {
 
 src_install() {
 	java-pkg-simple_src_install
-	java-pkg_doso .libs/*.so
+	java-pkg_doso .libs/*.so*
 	dodoc -r ../docs
 	! use static-libs && find "${D}" -name '*.la' -delete || die
 }
