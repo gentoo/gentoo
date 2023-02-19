@@ -12,13 +12,14 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${PV}.tar.gz
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="doc +ocamlopt"
 
 RDEPEND="
 	dev-ml/camlp-streams:=
 	dev-ml/rresult:=
 	dev-ml/bos:=
+	dev-ml/pcre-ocaml:=
 "
 
 src_prepare() {
