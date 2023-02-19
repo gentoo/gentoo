@@ -128,6 +128,9 @@ src_prepare() {
 	sed -e "/HIP_CLANG_INCLUDE_SEARCH_PATHS/s,\${_IMPORT_PREFIX}.*/include,${CLANG_RESOURCE_DIR}/include," -i hip-lang-config.cmake.in || die
 	popd || die
 	sed -e "/HIP_CLANG_INCLUDE_SEARCH_PATHS/s,\${HIP_CLANG_ROOT}.*/include,${CLANG_RESOURCE_DIR}/include," -i hip-config.cmake.in || die
+
+	pushd ${CLR_S} || die
+	eapply "${FILESDIR}/rocclr-5.3.3-fix-include.patch"
 }
 
 src_configure() {
