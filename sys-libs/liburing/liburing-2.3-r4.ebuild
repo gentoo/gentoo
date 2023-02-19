@@ -13,6 +13,7 @@ if [[ "${PV}" == *9999 ]] ; then
 else
 	SRC_URI="https://git.kernel.dk/cgit/${PN}/snapshot/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	QA_PKGCONFIG_VERSION=${PV}
 fi
 LICENSE="MIT"
 SLOT="0/2" # liburing.so major version
@@ -34,12 +35,6 @@ PATCHES=(
 
 src_prepare() {
 	default
-
-	if [[ "${PV}" != *9999 ]] ; then
-		# Make sure pkgconfig files contain the correct version
-		# bug #809095 and #833895
-		sed -i "/^Version:/s@[[:digit:]\.]\+@${PV}@" ${PN}.spec || die
-	fi
 
 	if ! use examples; then
 		sed -e '/examples/d' Makefile -i || die
