@@ -22,7 +22,7 @@ SLOT="0/${PV}"
 IUSE="test"
 
 # Need to audit licenses of the binaries used for testing
-RESTRICT="!test? ( test )"
+RESTRICT="test? ( fetch ) !test? ( test )"
 
 RDEPEND="
 	sys-apps/file
