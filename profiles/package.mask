@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-02-19)
+# Incompatible with Python 3.11.  Last commit in 2017, archived in 2020.
+# No revdeps.
+# Removal on 2023-03-21.  Bug #895342.
+dev-python/flask-script
+
 # Sam James <sam@gentoo.org> (2023-02-18)
 # Last release in 2018, needs porting to Python 3.11, and no reverse
 # dependencies. Removal on 2023-03-18. bug #895174.
