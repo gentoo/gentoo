@@ -33,6 +33,8 @@ all_ruby_prepare() {
 		-e 's/git ls-files -z/find * -print0/' \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
-	mkdir rfcs || die
-	cp "${DISTDIR}/rfc3454.txt" rfcs/ || die
+	if use test ; then
+		mkdir rfcs || die
+		cp "${DISTDIR}/rfc3454.txt" rfcs/ || die
+	fi
 }
