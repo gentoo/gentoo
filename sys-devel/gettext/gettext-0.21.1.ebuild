@@ -23,7 +23,7 @@ fi
 # so put that license behind USE=cxx.
 LICENSE="GPL-3+ cxx? ( LGPL-2.1+ )"
 SLOT="0"
-IUSE="acl cvs +cxx doc emacs git java ncurses nls openmp static-libs"
+IUSE="acl +cxx doc emacs git java ncurses nls openmp static-libs"
 
 # only runtime goes multilib
 # Note: The version of libxml2 corresponds to the version bundled via gnulib.
@@ -40,11 +40,9 @@ DEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	ncurses? ( sys-libs/ncurses:0= )
 	java? ( virtual/jdk:1.8 )"
 RDEPEND="${DEPEND}
-	!git? ( cvs? ( dev-vcs/cvs ) )
 	git? ( dev-vcs/git )
 	java? ( virtual/jre:1.8 )"
 BDEPEND="
-	!git? ( cvs? ( dev-vcs/cvs ) )
 	git? ( dev-vcs/git )
 	verify-sig? ( sec-keys/openpgp-keys-gettext )"
 PDEPEND="emacs? ( app-emacs/po-mode )"
@@ -119,12 +117,12 @@ multilib_src_configure() {
 		--without-included-libxml
 
 		--disable-csharp
+		--without-cvs
 
 		$(use_enable acl)
 		$(use_enable cxx c++)
 		$(use_enable cxx libasprintf)
 		$(use_with git)
-		$(usex git --without-cvs $(use_with cvs))
 		$(multilib_native_use_enable java)
 		$(use_enable ncurses curses)
 		$(use_enable nls)
