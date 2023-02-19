@@ -757,6 +757,13 @@ tc-arch() {
 	tc-ninja_magic_to_arch portage "$@"
 }
 
+# @FUNCTION: tc-endian
+# @USAGE: [toolchain prefix]
+# @RETURN: 'big' or 'little' corresponding to the passed (or host) endianness
+# @DESCRIPTION:
+# Accepts 'host' as an argument which defaults to CTARGET and falls back to CHOST
+# if unspecified.  Returns 'big' or 'little' depending on whether 'host' is
+# big or little endian.
 tc-endian() {
 	local host=$1
 	[[ -z ${host} ]] && host=${CTARGET:-${CHOST}}
