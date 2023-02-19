@@ -31,7 +31,7 @@ else
 		LIBABIGAIL_DOCS_USEFLAG="doc"
 	fi
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv"
 fi
 
 LICENSE="Apache-2.0-with-LLVM-exceptions"
