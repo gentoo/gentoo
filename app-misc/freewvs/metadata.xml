@@ -4,4 +4,7 @@
 	<maintainer type="person">
 		<email>hanno@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">freewvs</remote-id>
+	</upstream>
 </pkgmetadata>
