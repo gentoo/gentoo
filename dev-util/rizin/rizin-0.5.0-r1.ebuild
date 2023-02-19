@@ -25,14 +25,15 @@ IUSE="test"
 RESTRICT="test? ( fetch ) !test? ( test )"
 
 RDEPEND="
-	sys-apps/file
 	app-arch/lz4:0=
+	app-arch/xz-utils
 	dev-libs/capstone:0=
-	dev-libs/libuv:0=
+	dev-libs/libmspack
 	dev-libs/libzip:0=
 	dev-libs/openssl:0=
 	>=dev-libs/tree-sitter-0.19.0
 	dev-libs/xxhash
+	sys-apps/file
 	sys-libs/zlib:0=
 "
 DEPEND="${RDEPEND}"
@@ -67,13 +68,15 @@ src_configure() {
 	local emesonargs=(
 		-Dcli=enabled
 		-Duse_sys_capstone=enabled
-		-Duse_sys_magic=enabled
+		-Duse_sys_libmspack=enabled
 		-Duse_sys_libzip=enabled
-		-Duse_sys_zlib=enabled
 		-Duse_sys_lz4=enabled
-		-Duse_sys_xxhash=enabled
+		-Duse_sys_lzma=enabled
+		-Duse_sys_magic=enabled
 		-Duse_sys_openssl=enabled
 		-Duse_sys_tree_sitter=enabled
+		-Duse_sys_xxhash=enabled
+		-Duse_sys_zlib=enabled
 
 		$(meson_use test enable_tests)
 		$(meson_use test enable_rz_test)
