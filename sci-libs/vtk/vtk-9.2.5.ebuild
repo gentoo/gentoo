@@ -163,6 +163,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.2.2-link-with-glut-library-for-freeglut.patch
 	"${FILESDIR}"/${PN}-9.2.5-Add-include-cstdint-to-compile-with-gcc-13.patch
 	"${FILESDIR}"/${PN}-9.2.5-Add-include-cstdint-for-gcc-13.patch
+	"${FILESDIR}"/${PN}-9.2.5-Fix-compilation-error-with-CUDA-12.patch
 )
 
 DOCS=( CONTRIBUTING.md README.md )
