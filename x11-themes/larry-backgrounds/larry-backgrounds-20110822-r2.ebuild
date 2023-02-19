@@ -1,11 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=8
+
+web_home="https://www.gentoo.org/assets/img/wallpaper"
 
 DESCRIPTION="Wallpapers featuring Gentoo mascot Larry the cow"
 HOMEPAGE="https://www.gentoo.org/main/en/graphics.xml#wallpapers"
-web_home='https://www.gentoo.org/assets/img/wallpaper'
 SRC_URI="
 	${web_home}/abducted/gentoo-abducted-800x600.png
 	${web_home}/abducted/gentoo-abducted-1024x768.png
@@ -45,15 +46,12 @@ SRC_URI="
 	${web_home}/gentoo-larry-bg/gentoo-larry-bg-1600x1200.png
 	${web_home}/gentoo-larry-bg/gentoo-larry-bg-1680x1050.png
 	${web_home}/gentoo-larry-bg/gentoo-larry-bg-1920x1080.png
-	${web_home}/gentoo-larry-bg/gentoo-larry-bg-1920x1200.png
-"
+	${web_home}/gentoo-larry-bg/gentoo-larry-bg-1920x1200.png"
+S="${WORKDIR}"
 
 LICENSE="CC-BY-SA-2.5"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
-S="${WORKDIR}"
-
 RESTRICT="mirror"  # TODO make a tarball, instead?
 
 src_unpack() { :; }
@@ -77,6 +75,7 @@ src_install() {
 	dosym ../../${share_home}/gentoo-cow-gdm-remake-1600x1200.png ${backdrops}/gentoo-cow-gdm-remake-4:3.png
 	dosym ../../${share_home}/gentoo-cow-gdm-remake-1280x1024.png ${backdrops}/gentoo-cow-gdm-remake-5:4.png
 	dosym ../../${share_home}/gentoo-cow-gdm-remake-1680x1050.png ${backdrops}/gentoo-cow-gdm-remake-8:5.png
+	local ratio
 	for ratio in 4-3 5-4 16-9 16-10 ; do
 		dosym ../../${share_home}/gentoo-larry-bg-${ratio}.svg ${backdrops}/gentoo-larry-bg-${ratio/-/:}.svg
 	done
