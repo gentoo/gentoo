@@ -1,7 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
+
 inherit toolchain-funcs
 
 DESCRIPTION="yeahconsole turns an xterm or rxvt-unicode into a game-like console"
@@ -11,26 +12,17 @@ SRC_URI="http://phrat.de/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ~riscv x86"
-RDEPEND="
-	x11-libs/libX11
-"
+
+RDEPEND="x11-libs/libX11"
 DEPEND="
 	${RDEPEND}
-	x11-base/xorg-proto
-"
-PATCHES=(
-	"${FILESDIR}"/${P}-make.patch
-)
+	x11-base/xorg-proto"
+BDEPEND="virtual/pkgconfig"
 
-src_compile() {
-	tc-export CC
-	emake
-}
+PATCHES=( "${FILESDIR}"/${P}-make.patch )
 
-src_install() {
-	dodir /usr/bin
-	emake PREFIX="${D}"/usr install
-	dodoc README
+src_configure() {
+	tc-export CC PKG_CONFIG
 }
 
 pkg_postinst() {
