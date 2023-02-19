@@ -89,15 +89,10 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		tests/functional/test_inspect.py::test_inspect_basic
 		tests/functional/test_install.py::test_double_install_fail
-		tests/functional/test_list.py::test_multiple_exclude_and_normalization
 		# Internet
 		tests/functional/test_install.py::test_install_dry_run
-		tests/functional/test_install.py::test_install_editable_with_prefix_setup_cfg
-		tests/functional/test_install.py::test_editable_install__local_dir_no_setup_py_with_pyproject
 		tests/functional/test_install.py::test_editable_install__local_dir_setup_requires_with_pyproject
 		tests/functional/test_install.py::test_install_8559_wheel_package_present
-		# git: fatal: transport 'file' not allowed
-		tests/functional/test_install_vcs_git.py::test_check_submodule_addition
 		# TODO
 		tests/unit/test_network_auth.py::test_keyring_cli_get_password
 		tests/unit/test_network_auth.py::test_keyring_cli_set_password
