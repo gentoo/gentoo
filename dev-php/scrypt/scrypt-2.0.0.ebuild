@@ -4,17 +4,15 @@
 EAPI=8
 
 PHP_EXT_ECONF_ARGS="--enable-scrypt"
-USE_PHP="php8-0 php8-1 php8-2"
-EGIT_REPO_URI="https://github.com/DomBlack/php-scrypt.git"
+USE_PHP="php7-4 php8-0 php8-1 php8-2"
 
-inherit git-r3 php-ext-pecl-r3
+inherit php-ext-pecl-r3
 
-DESCRIPTION="A PHP wrapper fo the scrypt hashing algorithm"
-SRC_URI=""
+DESCRIPTION="A PHP wrapper for the scrypt hashing algorithm"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-util/re2c"
