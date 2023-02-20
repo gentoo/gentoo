@@ -68,7 +68,7 @@ RDEPEND="
 			x11-libs/libXtst
 			xinerama? ( x11-libs/libXinerama )
 		)
-		ffmpeg? ( media-video/ffmpeg[encode,x264] )
+		ffmpeg? ( media-video/ffmpeg[encode] )
 	)
 	smartcard? ( sys-apps/pcsc-lite )
 	systemd? ( sys-apps/systemd:0= )
