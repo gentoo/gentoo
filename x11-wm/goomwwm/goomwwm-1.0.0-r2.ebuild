@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
@@ -17,28 +17,20 @@ IUSE="debug"
 RDEPEND="
 	x11-libs/libXft
 	x11-libs/libX11
-	x11-libs/libXinerama
-"
+	x11-libs/libXinerama"
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
-	x11-base/xorg-proto
-"
+	x11-base/xorg-proto"
+BDEPEND="virtual/pkgconfig"
 
-src_prepare() {
-	default
-	sed -i -e 's|$(LDADD) $(LDFLAGS)|$(LDFLAGS) $(LDADD)|g' Makefile || die
-}
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
 src_configure() {
-	use debug && append-cflags -DDEBUG
-}
-
-src_compile() {
-	emake CC="$(tc-getCC)" proto normal
+	tc-export CC PKG_CONFIG
+	use debug && append-cppflags -DDEBUG
 }
 
 src_install() {
-	dobin ${PN}
-	doman ${PN}.1
+	dobin goomwwm
+	doman goomwwm.1
 }
