@@ -18,6 +18,7 @@ RESTRICT="mirror bindist strip"
 
 RDEPEND="!games-engines/zoom
 	>=app-accessibility/at-spi2-core-2.46.0:2
+	app-crypt/mit-krb5
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/nspr
@@ -50,6 +51,8 @@ RDEPEND="!games-engines/zoom
 	x11-libs/pango
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
+	x11-libs/xcb-util-renderutil
+	x11-libs/xcb-util-wm
 	opencl? ( virtual/opencl )
 	pulseaudio? ( media-libs/libpulse )
 	wayland? ( dev-libs/wayland )
@@ -125,7 +128,7 @@ src_install() {
 	fi
 
 	if ! use wayland; then
-		# soname dependency on libwayland-client.so.0
+		# Soname dependency on libwayland-client.so.0
 		rm "${ED}"/opt/zoom/cef/libGLESv2.so || die
 	fi
 
@@ -133,11 +136,17 @@ src_install() {
 		doins -r Qt
 		find Qt -type f '(' -name '*.so' -o -name '*.so.*' ')' \
 			-printf '/opt/zoom/%p\0' | xargs -0 -r fperms 0755 || die
-		(	# Remove libs and plugins with unresolved soname dependencies
+		(	# Remove libs and plugins with unresolved soname dependencies.
+			# Why does the upstream package contain such garbage? :-(
 			cd "${ED}"/opt/zoom/Qt || die
-			rm -r qml/Qt/labs/lottieqt qml/QtQuick/Scene2D qml/QtQuick/Scene3D \
-				qml/QtQml/RemoteObjects	plugins/platforms/libqeglfs.so \
-				plugins/egldeviceintegrations || die
+			rm -r plugins/audio plugins/egldeviceintegrations \
+				plugins/platforms/libqeglfs.so \
+				plugins/platforms/libqlinuxfb.so \
+				plugins/platformthemes/libqgtk3.so \
+				qml/Qt/labs/lottieqt qml/QtQml/RemoteObjects \
+				qml/QtQuick/LocalStorage qml/QtQuick/Particles.2 \
+				qml/QtQuick/Scene2D qml/QtQuick/Scene3D \
+				qml/QtQuick/XmlListModel || die
 			use wayland || rm -r lib/libQt5Wayland*.so* plugins/wayland* \
 				plugins/platforms/libqwayland*.so qml/QtWayland || die
 		)
