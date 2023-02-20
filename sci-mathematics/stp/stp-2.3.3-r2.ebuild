@@ -41,8 +41,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-python/lit )"
 
 PATCHES=(
-	"${FILESDIR}"/stp-CMakeLists.txt-fix_cflags.patch
-	"${FILESDIR}"/stp-stp.py-library_path.patch
+	"${FILESDIR}"/${P}-CMakeLists.txt-fix_cflags.patch
+	"${FILESDIR}"/${P}-stp.py-library_path.patch
 )
 
 pkg_setup() {
