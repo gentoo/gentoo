@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-02-20)
+# Unused Java libraries. Removal on 2023-03-22.
+dev-java/jboss-modules
+dev-java/sac
+
 # Michał Górny <mgorny@gentoo.org> (2023-02-20)
 # No declared Python 3.11 support.  Multiple failing tests (probably due
 # to being online tests).  Last release in 2021, upstream CI is all red.
