@@ -105,6 +105,7 @@ src_prepare() {
 
 	pushd ${CLR_S} || die
 	eapply "${FILESDIR}/rocclr-${PV}-fix-include.patch"
+	eapply "${FILESDIR}/rocclr-5.3.3-gcc13.patch"
 }
 
 src_configure() {
