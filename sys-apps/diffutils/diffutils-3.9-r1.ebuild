@@ -37,6 +37,13 @@ PATCHES=(
 	"${FILESDIR}"/${P}-diff-D-option-regression.patch
 )
 
+src_prepare() {
+	default
+
+	# Needed because of ${P}-diff-D-option-regression.patch
+	touch man/diff.1 || die
+}
+
 src_configure() {
 	use static && append-ldflags -static
 
