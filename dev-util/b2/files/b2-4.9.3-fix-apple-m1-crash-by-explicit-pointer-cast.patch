@@ -1,0 +1,55 @@
+https://github.com/bfgroup/b2/issues/152
+https://github.com/bfgroup/b2/pull/214
+https://bugs.gentoo.org/895524
+
+From 62dc6ff74a0b9717b4a8dd61ce06770e6fb7c177 Mon Sep 17 00:00:00 2001
+From: Yifeng Li <tomli@tomli.me>
+Date: Mon, 20 Feb 2023 09:52:32 +0000
+Subject: [PATCH] Fix #152 crash on Apple M1 by casting 0 to (OBJECT *)
+ explicitly.
+
+Currently, when the NULL-terminated variadic function call_rule()
+is invoked, the value "0" is passed as the last argument to act
+as a terminator. However, this is an integer value, which is
+incompatible with the pointer data type expected by call_rule().
+
+This is undefined behavior in C, correct operation is not
+guaranteed. In fact, it causes b2 to crash on Apple M1 when GCC
+is used - the loop is not terminated when it should, instead, it
+keeps running, creating the following error:
+
+> lol_add failed due to reached limit of 19 elements
+
+In some cases, it can even corrupt the internal state of the program,
+creating an infinite loop.
+
+This commit fixes the problem by explicitly casting the value 0 to
+the correct pointer type (OBJECT *).
+
+Signed-off-by: Yifeng Li <tomli@tomli.me>
+---
+ src/engine/modules/property-set.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/engine/modules/property-set.cpp b/src/engine/modules/property-set.cpp
+index 6e190a7639..b0d3c2dab8 100644
+--- src/engine/modules/property-set.cpp
++++ src/engine/modules/property-set.cpp
+@@ -162,7 +162,7 @@ LIST * property_set_create( FRAME * frame, int flags )
+         OBJECT * rulename = object_new( "new" );
+         OBJECT * varname = object_new( "self.raw" );
+         LIST * val = call_rule( rulename, frame,
+-            list_new( object_new( "property-set" ) ), 0 );
++            list_new( object_new( "property-set" ) ), (OBJECT *) 0 );
+         LISTITER iter, end;
+         object_free( rulename );
+         pos->value = object_copy( list_front( val ) );
+@@ -183,7 +183,7 @@ LIST * property_set_create( FRAME * frame, int flags )
+                 import_module( imports, frame->module );
+                 rulename = object_new( "errors.error" );
+                 call_rule( rulename, frame,
+-                    list_new( object_new( message->value ) ), 0 );
++                    list_new( object_new( message->value ) ), (OBJECT *) 0 );
+                 /* unreachable */
+                 string_free( message );
+                 list_free( imports );
