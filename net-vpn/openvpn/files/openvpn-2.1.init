@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 VPNDIR=${VPNDIR:-/etc/openvpn}
@@ -126,7 +126,8 @@ stop() {
 
 	ebegin "Stopping ${SVCNAME}"
 	start-stop-daemon --stop --quiet \
-		--exec /usr/sbin/openvpn --pidfile "${VPNPID}"
+		--exec /usr/sbin/openvpn --pidfile "${VPNPID}" \
+		-- --config "${VPNCONF}"
 	eend $?
 }
 
