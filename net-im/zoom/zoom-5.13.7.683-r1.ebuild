@@ -151,7 +151,8 @@ src_install() {
 		fi
 	fi
 
-	make_wrapper zoom /opt/zoom{/zoom,} /opt/zoom:/opt/zoom/cef
+	make_wrapper zoom /opt/zoom/zoom /opt/zoom \
+		/opt/zoom:/opt/zoom/Qt/lib:/opt/zoom/cef
 	make_desktop_entry "zoom %U" Zoom videoconference-zoom \
 		"Network;VideoConference;" \
 		"MimeType=$(printf '%s;' \
