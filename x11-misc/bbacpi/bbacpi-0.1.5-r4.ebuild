@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -23,7 +23,6 @@ RDEPEND="
 	${DEPEND}
 	media-fonts/font-adobe-100dpi"
 
-DOCS=( AUTHORS ChangeLog NEWS README data/README.bbacpi )
 PATCHES=(
 	"${FILESDIR}"/${P}-noextraquals.diff
 	"${FILESDIR}"/${P}-overflows.diff
@@ -31,11 +30,12 @@ PATCHES=(
 
 src_prepare() {
 	default
-	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_install() {
 	default
-	rm "${ED%/}"/usr/share/bbtools/README.bbacpi || die
+	dodoc data/README.bbacpi
+
+	rm "${ED}"/usr/share/bbtools/README.bbacpi || die
 }
