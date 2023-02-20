@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="ipv6(+),sqlite,ssl"
 
 inherit toolchain-funcs python-single-r1 qmake-utils xdg-utils
