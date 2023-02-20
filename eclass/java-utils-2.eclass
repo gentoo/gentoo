@@ -2554,15 +2554,6 @@ java-pkg_expand_dir_() {
 	popd >/dev/null 2>&1 || die
 }
 
-# @FUNCTION: java-pkg_func-exists
-# @INTERNAL
-# @DESCRIPTION:
-# Does the indicated function exist?
-# @RETURN: 0 - function is declared, 1 - function is undeclared
-java-pkg_func-exists() {
-	declare -F ${1} > /dev/null
-}
-
 # @FUNCTION: java-pkg_setup-vm
 # @INTERNAL
 # @DESCRIPTION:
@@ -2925,6 +2916,7 @@ is-java-strict() {
 }
 
 # @FUNCTION: java-pkg_clean
+# @USAGE: <dir>
 # @DESCRIPTION:
 # Java package cleaner function. This will remove all *.class and *.jar
 # files, except those specified by expressions in JAVA_PKG_NO_CLEAN.
