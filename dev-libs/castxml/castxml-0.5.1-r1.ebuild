@@ -38,7 +38,7 @@ llvm_check_deps() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCastXML_INSTALL_DOC_DIR="share/doc/${P}"
+		-DCastXML_INSTALL_DOC_DIR="share/doc/${PF}"
 		-DCastXML_INSTALL_MAN_DIR="share/man"
 		-DSPHINX_MAN="$(usex man)"
 		-DSPHINX_HTML=OFF
