@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,7 @@ BDEPEND=">=dev-util/rocm-cmake-${PV}
 PATCHES=(
 	"${FILESDIR}/${PN}-5.1.3-remove-clinfo.patch"
 	"${FILESDIR}/${PN}-3.5.0-do-not-install-libopencl.patch"
+	"${FILESDIR}/${PN}-5.3.3-gcc13.patch"
 )
 
 S="${WORKDIR}/ROCm-OpenCL-Runtime-rocm-${PV}"
@@ -51,6 +52,8 @@ src_prepare() {
 	# Bug #753377
 	# patch re-enables accidentally disabled gfx800 family
 	eapply "${FILESDIR}/${PN}-5.0.2-enable-gfx800.patch"
+	eapply "${FILESDIR}/rocclr-5.3.3-fix-include.patch"
+	eapply "${FILESDIR}/rocclr-5.3.3-gcc13.patch"
 	popd || die
 }
 

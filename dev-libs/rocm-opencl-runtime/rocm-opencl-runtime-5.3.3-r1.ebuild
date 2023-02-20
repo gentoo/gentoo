@@ -30,6 +30,8 @@ BDEPEND=">=dev-util/rocm-cmake-${PV}
 S="${WORKDIR}/ROCm-OpenCL-Runtime-rocm-${PV}"
 S1="${WORKDIR}/ROCclr-rocm-${PV}"
 
+PATCHES=( "${FILESDIR}/${PN}-5.3.3-gcc13.patch" )
+
 src_prepare() {
 	cmake_src_prepare
 
@@ -38,6 +40,7 @@ src_prepare() {
 	# patch re-enables accidentally disabled gfx800 family
 	eapply "${FILESDIR}/${PN}-5.0.2-enable-gfx800.patch"
 	eapply "${FILESDIR}/rocclr-${PV}-fix-include.patch"
+	eapply "${FILESDIR}/rocclr-5.3.3-gcc13.patch"
 	popd || die
 }
 
