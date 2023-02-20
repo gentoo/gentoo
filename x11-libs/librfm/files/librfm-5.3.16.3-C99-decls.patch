@@ -1,0 +1,42 @@
+--- a/modules/settings-module.i
++++ b/modules/settings-module.i
+@@ -36,7 +36,7 @@
+ #define SHRED_OPTIONS rfm_void(RFM_MODULE_DIR, "callbacks","get_shred_options")
+ */
+ 
+-static GtkWidget *rfm_check_button_new(){
++static GtkWidget *rfm_check_button_new(void){
+ 	return gtk_check_button_new ();
+ }
+ static void
+@@ -374,7 +374,7 @@
+ }
+ 
+ 
+-static gchar **get_program_options(i){
++static gchar **get_program_options(gint i){
+     if (i >= RFM_OPTIONS) return NULL;
+     environ_t *environ_v = rfm_get_environ();
+     return environ_v[i].env_options;
+--- a/primary/primary-icons.i
++++ b/primary/primary-icons.i
+@@ -181,7 +181,7 @@
+ 	
+ 
+ static void
+-init_lite_hash () {
++init_lite_hash (void) {
+     // g_once init
+     static gsize initialized = 0;
+     if (g_once_init_enter (&initialized)){
+--- a/primary/primary.c
++++ b/primary/primary.c
+@@ -1405,7 +1405,7 @@
+ }
+ 
+ static 
+-gint get_paste_length(){
++gint get_paste_length(void){
+     gint fd = shm_open (PASTE_SHM_NAME, O_RDONLY, S_IRUSR | S_IWUSR);
+     if(fd < 0){
+ 	return 0;
