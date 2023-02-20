@@ -1,0 +1,219 @@
+From e24fe02265186b1649e3813a51eff11cd2e1cc21 Mon Sep 17 00:00:00 2001
+From: Damian Johnson <atagar@torproject.org>
+Date: Thu, 30 Jan 2020 15:49:36 -0800
+Subject: [PATCH] Add an --exclude-test argument
+
+Implementing a great suggestion from teor for an --exclude-test argument...
+
+  https://github.com/torproject/stem/issues/53
+
+This can be used to skip both modules...
+
+  % run_tests.py --unit --exclude-test interpreter.commands
+  [ runs all the tests except the interpreter.commands module ]
+
+... and individual tests...
+
+  % run_tests.py --unit --test interpreter.commands --exclude-test interpreter.commands.test_events --verbose
+  [ only runs interpreter.commands tests, but skips test_events ]
+---
+ run_tests.py      | 58 +++++++++++++++++++++++++++++++++++------------
+ test/arguments.py |  5 +++-
+ test/settings.cfg |  7 +++++-
+ 3 files changed, 54 insertions(+), 16 deletions(-)
+
+diff --git a/run_tests.py b/run_tests.py
+index a3a90d04..490be50b 100755
+--- a/run_tests.py
++++ b/run_tests.py
+@@ -7,6 +7,7 @@ Runs unit and integration tests. For usage information run this with '--help'.
+ """
+ 
+ import errno
++import io
+ import importlib
+ import logging
+ import multiprocessing
+@@ -115,40 +116,57 @@ def log_traceback(sig, frame):
+     os._exit(-1)
+ 
+ 
+-def get_unit_tests(module_prefixes = None):
++def get_unit_tests(module_prefixes, exclude):
+   """
+   Provides the classes for our unit tests.
+ 
+   :param list module_prefixes: only provide the test if the module starts with
+     any of these substrings
++  :param list exclude: test modules explicitly excluded
+ 
+   :returns: an **iterator** for our unit tests
+   """
+ 
+-  return _get_tests(CONFIG['test.unit_tests'].splitlines(), module_prefixes)
++  return _get_tests(CONFIG['test.unit_tests'].splitlines(), module_prefixes, exclude)
+ 
+ 
+-def get_integ_tests(module_prefixes = None):
++def get_integ_tests(module_prefixes, exclude):
+   """
+   Provides the classes for our integration tests.
+ 
+   :param list module_prefixes: only provide the test if the module starts with
+     any of these substrings
++  :param list exclude: test modules explicitly excluded
+ 
+   :returns: an **iterator** for our integration tests
+   """
+ 
+-  return _get_tests(CONFIG['test.integ_tests'].splitlines(), module_prefixes)
++  return _get_tests(CONFIG['test.integ_tests'].splitlines(), module_prefixes, exclude)
+ 
+ 
+-def _get_tests(modules, module_prefixes):
++def _get_tests(modules, module_prefixes, exclude):
+   for import_name in modules:
++    cropped_name = test.arguments.crop_module_name(import_name)
++    cropped_name = cropped_name.rsplit('.', 1)[0]  # exclude the class name
++
++    if exclude:
++      # Check if '--exclude-test' says we should skip this whole module. The
++      # argument can also skip individual tests, but that must be handled
++      # elsewhere.
++
++      skip = False
++
++      for exclude_prefix in exclude:
++        if cropped_name.startswith(exclude_prefix):
++          skip = True
++          break
++
++      if skip:
++        continue
++
+     if not module_prefixes:
+       yield import_name
+     else:
+-      cropped_name = test.arguments.crop_module_name(import_name)
+-      cropped_name = cropped_name.rsplit('.', 1)[0]  # exclude the class name
+-
+       for prefix in module_prefixes:
+         if cropped_name.startswith(prefix):
+           yield import_name
+@@ -277,8 +295,8 @@ def main():
+     test.output.print_divider('UNIT TESTS', True)
+     error_tracker.set_category('UNIT TEST')
+ 
+-    for test_class in get_unit_tests(args.specific_test):
+-      run_result = _run_test(args, test_class, output_filters)
++    for test_class in get_unit_tests(args.specific_test, args.exclude_test):
++      run_result = _run_test(args, test_class, args.exclude_test, output_filters)
+       test.output.print_logging(logging_buffer)
+       skipped_tests += len(getattr(run_result, 'skipped', []))
+ 
+@@ -296,8 +314,8 @@ def main():
+ 
+         println('Running tests...\n', STATUS)
+ 
+-        for test_class in get_integ_tests(args.specific_test):
+-          run_result = _run_test(args, test_class, output_filters)
++        for test_class in get_integ_tests(args.specific_test, args.exclude_test):
++          run_result = _run_test(args, test_class, args.exclude_test, output_filters)
+           test.output.print_logging(logging_buffer)
+           skipped_tests += len(getattr(run_result, 'skipped', []))
+ 
+@@ -401,7 +419,7 @@ def _print_static_issues(static_check_issues):
+       println()
+ 
+ 
+-def _run_test(args, test_class, output_filters):
++def _run_test(args, test_class, exclude, output_filters):
+   # When logging to a file we don't have stdout's test delimiters to correlate
+   # logs with the test that generated them.
+ 
+@@ -442,7 +460,19 @@ def _run_test(args, test_class, output_filters):
+     traceback.print_exc(exc)
+     return None
+ 
+-  test_results = StringIO()
++  # check if we should skip any individual tests within this module
++
++  if exclude:
++    cropped_name = test.arguments.crop_module_name(test_class)
++    cropped_name = cropped_name.rsplit('.', 1)[0]  # exclude the class name
++
++    for prefix in exclude:
++      if prefix.startswith(cropped_name):
++        test_name = prefix.split('.')[-1]
++
++        suite._tests = list(filter(lambda test: test.id().split('.')[-1] != test_name, suite._tests))
++
++  test_results = io.StringIO()
+   run_result = stem.util.test_tools.TimedTestRunner(test_results, verbosity = 2).run(suite)
+ 
+   if args.verbose:
+diff --git a/test/arguments.py b/test/arguments.py
+index a871b4e5..4a31aa48 100644
+--- a/test/arguments.py
++++ b/test/arguments.py
+@@ -27,6 +27,7 @@ DEFAULT_ARGS = {
+   'run_unit': False,
+   'run_integ': False,
+   'specific_test': [],
++  'exclude_test': [],
+   'logging_runlevel': None,
+   'logging_path': None,
+   'tor_path': 'tor',
+@@ -38,7 +39,7 @@ DEFAULT_ARGS = {
+ }
+ 
+ OPT = 'auit:l:qvh'
+-OPT_EXPANDED = ['all', 'unit', 'integ', 'targets=', 'test=', 'log=', 'log-file=', 'tor=', 'quiet', 'verbose', 'help']
++OPT_EXPANDED = ['all', 'unit', 'integ', 'targets=', 'test=', 'exclude-test=', 'log=', 'log-file=', 'tor=', 'quiet', 'verbose', 'help']
+ 
+ 
+ def parse(argv):
+@@ -105,6 +106,8 @@ def parse(argv):
+       args['attribute_targets'] = attribute_targets
+     elif opt == '--test':
+       args['specific_test'].append(crop_module_name(arg))
++    elif opt == '--exclude-test':
++      args['exclude_test'].append(crop_module_name(arg))
+     elif opt in ('-l', '--log'):
+       arg = arg.upper()
+ 
+diff --git a/test/settings.cfg b/test/settings.cfg
+index 2c18110f..97286543 100644
+--- a/test/settings.cfg
++++ b/test/settings.cfg
+@@ -67,7 +67,6 @@ msg.help
+ |  -a, --all             runs unit, integ, and style checks (same as '-ui')
+ |  -u, --unit            runs unit tests
+ |  -i, --integ           runs integration tests
+-|      --test TEST_NAME  only run tests with this in the module name
+ |
+ |  -t, --target TARGET   comma separated list of integ targets (see below)
+ |      --tor PATH        custom tor binary to run testing against
+@@ -76,6 +75,9 @@ msg.help
+ |                          TRACE, DEBUG, INFO, NOTICE, WARN, ERROR
+ |  --log-file PATH       logs to this file, otherwise logging is to stdout
+ |
++|  --test TEST_NAME           only run this test or or test module
++|  --exclude-test TEST_NAME   skip this test or test module
++|
+ |  -q, --quiet           only present failures
+ |  -v, --verbose         provides additional test output
+ |  -h, --help            presents this help
+@@ -91,6 +93,9 @@ msg.help
+ |   run_tests.py --integ --test test.integ.util
+ |     Only run integration tests for the util modules.
+ |
++|   run_tests.py --unit --test interpreter.commands --exclude-test interpreter.commands.test_events --verbose
++|     Only run interpreter.commands tests, but skip test_events.
++|
+ |  Integration targets:
+ |
+ 
+-- 
+2.39.2
+
