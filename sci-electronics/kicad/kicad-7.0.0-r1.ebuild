@@ -143,10 +143,11 @@ src_install() {
 	cmake_src_install
 	python_optimize
 
+	dodoc doxygen/eagle-plugin-notes.txt
+
 	if use doc ; then
-		dodoc uncrustify.cfg
-		cd Documentation || die
-		dodoc -r *.txt kicad_doxygen_logo.png notes_about_pcbnew_new_file_format.odt doxygen/.
+		cd doxygen || die
+		dodoc -r out/html/.
 	fi
 }
 
