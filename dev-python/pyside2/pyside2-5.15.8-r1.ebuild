@@ -37,7 +37,7 @@ S="${WORKDIR}/${MY_P}/sources/pyside2"
 # x11extras (for X)
 LICENSE="|| ( GPL-2 GPL-3+ LGPL-3 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="
 	3d charts +concurrent datavis designer gles2-only +gui help location
 	multimedia +network positioning +printsupport qml quick script scripttools
@@ -113,7 +113,7 @@ RDEPEND="${PYTHON_DEPS}
 	svg? ( =dev-qt/qtsvg-${QT_PV} )
 	testlib? ( =dev-qt/qttest-${QT_PV} )
 	webchannel? ( =dev-qt/qtwebchannel-${QT_PV}[qml] )
-	webengine? ( =dev-qt/qtwebengine-${QT_PV}[widgets?] )
+	webengine? ( =dev-qt/qtwebengine-${QT_PV}[alsa,widgets?] )
 	websockets? ( =dev-qt/qtwebsockets-${QT_PV}[qml?] )
 	widgets? ( =dev-qt/qtwidgets-${QT_PV}[gles2-only=] )
 	x11extras? ( =dev-qt/qtx11extras-${QT_PV} )
