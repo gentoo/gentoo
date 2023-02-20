@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -20,14 +20,10 @@ RDEPEND="
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:2
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-makefile.patch
-)
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
 src_configure() {
 	tc-export CC PKG_CONFIG
