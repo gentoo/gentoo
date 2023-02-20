@@ -1,13 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
 DESCRIPTION="Vertex theme for GTK+ based desktops"
 HOMEPAGE="https://github.com/horst3180/vertex-theme"
 SRC_URI="https://github.com/horst3180/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
@@ -17,11 +18,8 @@ RDEPEND="
 	x11-themes/gnome-themes-standard
 	x11-themes/gtk-engines-murrine
 	cinnamon? ( >=x11-libs/gtk+-3.22:3 )
-	gnome-shell? ( >=x11-libs/gtk+-3.22:3 )
-"
-DEPEND="
-	virtual/pkgconfig
-"
+	gnome-shell? ( >=x11-libs/gtk+-3.22:3 )"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	# Do not let configure try to figure out gtk+:3 version installed
