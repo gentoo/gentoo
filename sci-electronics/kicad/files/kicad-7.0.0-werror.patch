@@ -1,0 +1,21 @@
+From 04fc6081bd3d6575d00589f71150ab796778a9c9 Mon Sep 17 00:00:00 2001
+From: Matthew Smith <matthew@gentoo.org>
+Date: Mon, 20 Feb 2023 17:53:50 +0000
+Subject: [PATCH] build: Remove Werror flag from clipper2
+
+Bug: https://bugs.gentoo.org/895014
+
+--- a/thirdparty/clipper2/CMakeLists.txt
++++ b/thirdparty/clipper2/CMakeLists.txt
+@@ -27,7 +27,7 @@ target_compile_definitions(clipper2 PUBLIC USINGZ)
+ if (MSVC)
+   target_compile_options(clipper2 PRIVATE /W4 /WX)
+ else()
+-  target_compile_options(clipper2 PRIVATE -Wall -Wextra -Wpedantic -Werror)
++  target_compile_options(clipper2 PRIVATE -Wall -Wextra -Wpedantic)
+   target_link_libraries(clipper2 PUBLIC -lm)
+ endif()
+ 
+-- 
+2.39.2
+
