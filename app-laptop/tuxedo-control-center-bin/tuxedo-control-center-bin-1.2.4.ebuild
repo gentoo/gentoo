@@ -13,7 +13,7 @@ SRC_URI="https://rpm.tuxedocomputers.com/opensuse/15.4/x86_64/${MY_PN}_${PV}.rpm
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 RESTRICT="strip splitdebug"
 
