@@ -110,6 +110,7 @@ src_install() {
 	if use tracepath ; then
 		dosym tracepath /usr/bin/tracepath4
 		dosym tracepath /usr/bin/tracepath6
+		dosym tracepath.8 /usr/share/man/man8/tracepath4.8
 		dosym tracepath.8 /usr/share/man/man8/tracepath6.8
 	fi
 
