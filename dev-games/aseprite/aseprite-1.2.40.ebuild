@@ -77,6 +77,9 @@ PATCHES=(
 )
 
 src_prepare() {
+	# Remove extra \r on ends, #895504
+	sed -i -e 's/\r$//' \
+		third_party/IXWebSocket/ixwebsocket/IXWebSocketSendData.h || die
 	cmake_src_prepare
 	# Skia: remove custom optimizations
 	sed -i -e 's:"\/\/gn\/skia\:optimize",::g' \
