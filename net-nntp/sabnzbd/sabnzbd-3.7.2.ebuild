@@ -42,6 +42,8 @@ DEPEND="
 		dev-python/portend[${PYTHON_USEDEP}]
 		dev-python/puremagic[${PYTHON_USEDEP}]
 		~dev-python/sabyenc-5.4.4[${PYTHON_USEDEP}]
+		dev-python/tavalidate[${PYTHON_USEDEP}]
+		>=dev-python/tavern-2[${PYTHON_USEDEP}]
 	')
 "
 RDEPEND="
@@ -71,6 +73,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-tavern-2.patch
+)
+
 src_test() {
 	local EPYTEST_IGNORE=(
 		# network sandbox
@@ -79,8 +85,6 @@ src_test() {
 		tests/test_urlgrabber.py
 		tests/test_utils/test_happyeyeballs.py
 		tests/test_utils/test_internetspeed.py
-		# requires tavern
-		tests/test_functional_api.py
 	)
 	local EPYTEST_DESELECT=(
 		# network sandbox
@@ -106,6 +110,8 @@ src_test() {
 		'tests/test_functional_misc.py::TestDaemonizing::test_daemonizing'
 	)
 
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local -x PYTEST_PLUGINS=tavern._core.pytest
 	epytest -s
 }
 
