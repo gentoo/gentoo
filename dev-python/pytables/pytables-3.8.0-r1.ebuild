@@ -22,7 +22,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ia64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~ia64 ~riscv ~x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
