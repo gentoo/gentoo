@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 inherit toolchain-funcs distutils-r1
 
@@ -53,7 +53,8 @@ src_compile() {
 
 python_compile() {
 	rm -f build/.timestamp || die
-	emake PYTHON=${EPYTHON}
+	emake PYTHON=${EPYTHON} src/_router.c src/_database.cc || die
+	distutils-r1_python_compile
 }
 
 src_test() {
@@ -80,9 +81,4 @@ src_install() {
 		newdoc README.txt README_python.txt
 		popd > /dev/null || die
 	fi
-}
-
-python_install() {
-	esetup.py install
-	python_optimize
 }

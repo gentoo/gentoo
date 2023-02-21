@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0_beta3-headless-header.patch
 	"${FILESDIR}"/${PN}-4.0_beta8-scons.patch
 	"${FILESDIR}"/${PN}-4.0_rc2-musl.patch
+	"${FILESDIR}"/${PN}-4.0_rc2-gcc13.patch
 )
 
 src_prepare() {

@@ -14,6 +14,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">mhinz/neovim-remote</remote-id>
 		<remote-id type="pypi">neovim-remote</remote-id>
 	</upstream>
 </pkgmetadata>
