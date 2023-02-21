@@ -1,0 +1,53 @@
+Define fgetspent_r if not already defined. (GNU extension, therefore not in musl).
+
+https://git.alpinelinux.org/aports/tree/community/accountsservice/musl-fgetspent_r.patch (copied the function from here).
+diff -u b/src/daemon.c b/src/daemon.c
+--- b/src/daemon.c
++++ b/src/daemon.c
+@@ -32,7 +32,7 @@
+ #include <pwd.h>
+ #ifdef HAVE_SHADOW_H
+ #include <shadow.h>
+-#endif
++#endif // HAVE_SHADOW_H
+ #include <unistd.h>
+ #include <errno.h>
+ #include <sys/types.h>
+@@ -51,6 +51,25 @@
+ #include "user.h"
+ #include "accounts-user-generated.h"
+ 
++#ifndef HAVE_FGETSPENT_R
++static int fgetspent_r(FILE *fp, struct spwd *spbuf, char *buf, size_t buflen, struct spwd **spbufp) {
++       struct spwd *shadow_entry = fgetspent(fp);
++       if(!shadow_entry)
++               return -1;
++       size_t namplen = strlen(shadow_entry->sp_namp);
++       size_t pwdplen = strlen(shadow_entry->sp_pwdp);
++
++       if(namplen + pwdplen + 2 > buflen)
++               return -1;
++
++       *spbufp = memcpy(spbuf, shadow_entry, sizeof(struct spwd));
++       spbuf->sp_namp = strncpy(buf, shadow_entry->sp_namp, namplen + 1);
++       spbuf->sp_pwdp = strncpy(buf + namplen + 1, shadow_entry->sp_pwdp, pwdplen + 1);
++
++       return 0;
++}
++#endif // HAVE_FGETSPENT_R
++
+ #define PATH_PASSWD "/etc/passwd"
+ #define PATH_SHADOW "/etc/shadow"
+ #define PATH_GROUP "/etc/group"
+only in patch2:
+unchanged:
+--- a/meson.build
++++ b/meson.build
+@@ -71,6 +71,7 @@ check_functions = [
+   'getusershell',
+   'setutxdb',
+   'fgetpwent',
++  'fgetspent_r'
+ ]
+ 
+ foreach func: check_functions
