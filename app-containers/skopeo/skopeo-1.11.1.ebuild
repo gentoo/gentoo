@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-COMMIT=ee60474d5a4d99745aac9855797ad4b26510d786
+COMMIT=fb1ade6d9e9b501e35b09538c9533fac5dd604b6
 inherit go-module
 
 DESCRIPTION="Command line utility foroperations on container images and image repositories"
