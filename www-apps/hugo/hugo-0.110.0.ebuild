@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 IUSE="doc +sass test"
 
 BDEPEND="
