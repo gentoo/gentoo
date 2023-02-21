@@ -44,7 +44,6 @@ DOCS=( BUG-REPORT ChangeLog MORE.STUFF NEWS PROBLEMS PROJECTS README TODO )
 PATCHES=(
 	# bug #16108, bug #17580, bug #121502
 	"${FILESDIR}"/${PN}-1.19.2-man-unicode-dashes.patch
-	"${FILESDIR}"/${PN}-1.23.0_rc2-skip-broken-diffutils-test.patch
 )
 
 src_prepare() {
