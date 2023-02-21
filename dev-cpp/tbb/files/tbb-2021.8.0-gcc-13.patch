@@ -1,0 +1,26 @@
+https://github.com/oneapi-src/oneTBB/pull/1031
+
+From 363bf59bef2649b4d427788522da27c12f984a9a Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 21 Feb 2023 09:36:33 +0000
+Subject: [PATCH] test: common: include <cstdlib> for abort() (fix build with
+ GCC 13)
+
+GCC 13 (as usual for new compiler releases) shuffles around some
+internal includes and so <cstdint> etc is no longer transitively included.
+
+See https://www.gnu.org/software/gcc/gcc-13/porting_to.html.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/test/common/utils_assert.h
++++ b/test/common/utils_assert.h
+@@ -20,6 +20,8 @@
+ #include "config.h"
+ #include "utils_report.h"
+ 
++#include <cstdlib>
++
+ #define REPORT_FATAL_ERROR REPORT
+ 
+ namespace utils {
+
