@@ -3,21 +3,26 @@
 
 EAPI=8
 
-OC_H=119fe41a83bc455a24a11ecc9b78e7b13fcfcc45
-GT_H=2ad076167a676e3ed62f90b754b30fac5caa1f88
+OC_COMMIT=119fe41a83bc455a24a11ecc9b78e7b13fcfcc45
+GT_COMMIT=2ad076167a676e3ed62f90b754b30fac5caa1f88
 
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit flag-o-matic python-single-r1 cmake
 
 DESCRIPTION="Simple Theorem Prover, an efficient SMT solver for bitvectors"
 HOMEPAGE="https://stp.github.io/
 	https://github.com/stp/stp/"
-SRC_URI="https://github.com/stp/stp/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="
+	https://github.com/stp/stp/archive/${PV}.tar.gz
+		-> ${P}.tar.gz
 	test? (
-		https://github.com/stp/OutputCheck/archive/${OC_H}.tar.gz -> ${P}_OutputCheck.tar.gz
-		https://github.com/stp/googletest/archive/${GT_H}.tar.gz -> ${P}_gtest.tar.gz
-	)"
+		https://github.com/stp/OutputCheck/archive/${OC_COMMIT}.tar.gz
+			-> ${P}_OutputCheck.tar.gz
+		https://github.com/stp/googletest/archive/${GT_COMMIT}.tar.gz
+			-> ${P}_gtest.tar.gz
+	)
+"
 
 LICENSE="GPL-2+ MIT"
 SLOT="0/${PV}"
@@ -38,15 +43,16 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="test? ( dev-python/lit )"
+BDEPEND="
+	sys-apps/help2man
+	test? ( dev-python/lit )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-CMakeLists.txt-fix_cflags.patch
 	"${FILESDIR}"/${P}-cstdint.patch
 	"${FILESDIR}"/${P}-stp.py-library_path.patch
 )
-
-#include <cstdint>
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -85,7 +91,7 @@ src_configure() {
 		CMAKE_BUILD_TYPE=Release
 	fi
 
-	local mycmakeargs=(
+	local -a mycmakeargs=(
 		-DTEST_C_API=OFF  # C API test fail
 		-DNOCRYPTOMINISAT=$(usex cryptominisat 'OFF' 'ON')  # double negation
 		-DENABLE_PYTHON_INTERFACE=$(usex python)
