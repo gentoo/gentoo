@@ -26,7 +26,7 @@ IUSE="ssl"
 RDEPEND="
 	app-crypt/ccid
 	dev-python/click[${PYTHON_USEDEP}]
-	<dev-python/cryptography-39[${PYTHON_USEDEP}]
+	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/fido2:0/0.9[${PYTHON_USEDEP}]
 	dev-python/pyscard[${PYTHON_USEDEP}]
 	ssl? ( >=dev-python/pyopenssl-0.15.1[${PYTHON_USEDEP}] )"
