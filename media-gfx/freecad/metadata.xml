@@ -33,10 +33,6 @@
 			The Python modules are available, without their GUI parts though,
 			if this is unset.
 		</flag>
-		<flag name="headless">
-			Build FreeCAD without a GUI, usable for server-side instances.
-			The Python modules are still available, without their GUI parts though.
-		</flag>
 		<flag name="idf">
 			Build the IDF module to provide file exchange capabilities with
 			IDF files
