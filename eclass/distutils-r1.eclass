@@ -1980,6 +1980,36 @@ distutils-r1_src_test() {
 	return ${ret}
 }
 
+# @FUNCTION: _distutils-r1_strip_namespace_packages
+# @USAGE: <sitedir>
+# @INTERNAL
+# @DESCRIPTION:
+# Find and remove setuptools-style namespaces in the specified
+# directory.
+_distutils-r1_strip_namespace_packages() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local sitedir=${1}
+	local f ns had_any=
+	while IFS= read -r -d '' f; do
+		while read -r ns; do
+			einfo "Stripping pkg_resources-style namespace ${ns}"
+			had_any=1
+		done < "${f}"
+
+		rm "${f}" || die
+	done < <(
+		# NB: this deliberately does not include .egg-info, in order
+		# to limit this to PEP517 mode.
+		find "${sitedir}" -path '*.dist-info/namespace_packages.txt' -print0
+	)
+
+	# If we had any namespace packages, remove .pth files as well.
+	if [[ ${had_any} ]]; then
+		find "${sitedir}" -name '*-nspkg.pth' -delete || die
+	fi
+}
+
 # @FUNCTION: _distutils-r1_post_python_install
 # @INTERNAL
 # @DESCRIPTION:
@@ -1990,6 +2020,8 @@ _distutils-r1_post_python_install() {
 
 	local sitedir=${D%/}$(python_get_sitedir)
 	if [[ -d ${sitedir} ]]; then
+		_distutils-r1_strip_namespace_packages "${sitedir}"
+
 		local forbidden_package_names=(
 			examples test tests
 			.pytest_cache .hypothesis _trial_temp
