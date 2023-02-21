@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
 inherit distutils-r1
 
+MY_P=python-zstandard-${PV}
 DESCRIPTION="Zstandard Bindings for Python"
 HOMEPAGE="
 	https://github.com/indygreg/python-zstandard/
@@ -15,8 +16,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/indygreg/python-zstandard/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 SLOT="0"
 LICENSE="BSD"
