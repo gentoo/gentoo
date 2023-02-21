@@ -11,6 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
+		<remote-id type="github">rdegges/pelican-minify</remote-id>
 		<remote-id type="pypi">pelican-minify</remote-id>
 	</upstream>
 </pkgmetadata>
