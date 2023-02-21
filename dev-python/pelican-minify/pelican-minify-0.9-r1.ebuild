@@ -17,4 +17,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	>=dev-python/joblib-0.9[${PYTHON_USEDEP}]
 	>=app-text/htmlmin-0.1.5[${PYTHON_USEDEP}]
-	>=app-text/pelican-3.1.1[${PYTHON_USEDEP}]"
+	>=app-text/pelican-3.1.1[${PYTHON_USEDEP}]
+"
+
+distutils_enable_tests unittest
