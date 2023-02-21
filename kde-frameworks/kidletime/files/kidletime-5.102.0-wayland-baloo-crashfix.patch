@@ -1,0 +1,56 @@
+From a0da010b8c4c97792543d24f6597ba1c1b3ceaef Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Thu, 16 Feb 2023 12:16:03 +0100
+Subject: [PATCH] wayland: Guard wayland object destructors
+
+Kidletime is a singleton and the client API works by supplying ints to add
+or remove timeouts. When not all timeouts are removed before program exits,
+trying to destroy the wayland objects will crash since the lifetime of the
+wayland connection is tied to the QGuiApplication.
+BUG:465801
+FIXED-IN:5.104
+
+
+(cherry picked from commit 53779a8d8fb177762d0435634c8ca45b0a47f1db)
+---
+ src/plugins/wayland/poller.cpp | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/src/plugins/wayland/poller.cpp b/src/plugins/wayland/poller.cpp
+index 918766b..9c1d7ad 100644
+--- a/src/plugins/wayland/poller.cpp
++++ b/src/plugins/wayland/poller.cpp
+@@ -50,7 +50,9 @@ public:
+ 
+     ~IdleTimeoutKwin()
+     {
+-        release();
++        if (qGuiApp) {
++            release();
++        }
+     }
+ 
+ protected:
+@@ -74,7 +76,9 @@ public:
+ 
+     ~IdleTimeoutExt()
+     {
+-        destroy();
++        if (qGuiApp) {
++            destroy();
++        }
+     }
+ 
+ protected:
+@@ -120,7 +124,7 @@ public:
+     }
+     ~IdleManagerExt()
+     {
+-        if (isActive()) {
++        if (qGuiApp && isActive()) {
+             destroy();
+         }
+     }
+-- 
+GitLab
+
