@@ -7,7 +7,7 @@
         Allows to reload changes on the fly without
         needing to restart wayfire.
     </longdescription>
-	<upstream>
-		<remote-id type="github">WayfireWM/wcm</remote-id>
-	</upstream>
+    <upstream>
+        <remote-id type="github">WayfireWM/wcm</remote-id>
+    </upstream>
 </pkgmetadata>

@@ -8,7 +8,7 @@
         make changes in the configuration and reload them on
         the fly.
     </longdescription>
-	<upstream>
-		<remote-id type="github">WayfireWM/wf-config</remote-id>
-	</upstream>
+    <upstream>
+        <remote-id type="github">WayfireWM/wf-config</remote-id>
+    </upstream>
 </pkgmetadata>
