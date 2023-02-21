@@ -5,4 +5,7 @@
 	<upstream>
 		<remote-id type="sourceforge">slim.berlios</remote-id>
 	</upstream>
+	<upstream>
+		<remote-id type="sourceforge">slim-fork</remote-id>
+	</upstream>
 </pkgmetadata>
