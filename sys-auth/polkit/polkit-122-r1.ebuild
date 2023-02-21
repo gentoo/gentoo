@@ -59,7 +59,7 @@ DEPEND="
 	dev-libs/expat
 	daemon? (
 		duktape? ( dev-lang/duktape:= )
-		!duktape? ( dev-lang/spidermonkey:102[-debug] )
+		!duktape? ( dev-lang/spidermonkey:102=[-debug] )
 	)
 	pam? (
 		sys-auth/pambase
