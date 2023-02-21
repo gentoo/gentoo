@@ -74,6 +74,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.2.35_laf_fixes.patch"
 	"${FILESDIR}/${PN}-1.2.40_musl_pthreads.patch"
 	"${FILESDIR}/${PN}-1.2.40_ixwebsocket-gcc13.patch"
+	"${FILESDIR}/${PN}-1.2.40_laf-gcc13.patch"
 )
 
 src_prepare() {
