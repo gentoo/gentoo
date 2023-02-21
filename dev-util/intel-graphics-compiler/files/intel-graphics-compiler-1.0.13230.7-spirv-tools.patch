@@ -1,0 +1,26 @@
+From 8068732355d18464a9fcb6846c225929349b450c Mon Sep 17 00:00:00 2001
+From: Jakub Czarnecki <jakub.czarnecki@intel.com>
+Date: Thu, 26 Jan 2023 11:35:03 +0000
+Subject: [PATCH]  Preinstalled SPIRV-Tools CMakeFile - target fix
+
+Added checking if SPIRV-Tools isn't already set as target before adding
+it as a custom target to avoid errors.
+---
+ external/SPIRV-Tools/CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/external/SPIRV-Tools/CMakeLists.txt b/external/SPIRV-Tools/CMakeLists.txt
+index 9afa5746c4d..3b768c1b772 100644
+--- a/external/SPIRV-Tools/CMakeLists.txt
++++ b/external/SPIRV-Tools/CMakeLists.txt
+@@ -33,7 +33,9 @@ if(IGC_OPTION__SPIRV_TOOLS_MODE STREQUAL PREBUILDS_MODE_NAME)
+  set(IGC_BUILD__SPIRV-Tools_DIR "${SPIRV-Tools_ROOT_DIR}")
+ 
+  set(INCLUDE_DIRS_LIST "${SPIRV-Tools_ROOT_DIR}/include" "${SPIRV-Headers_INCLUDE_DIR}")
+- add_custom_target(SPIRV-Tools)
++ if(NOT TARGET SPIRV-Tools)
++  add_custom_target(SPIRV-Tools)
++ endif()
+  set_target_properties(SPIRV-Tools PROPERTIES INCLUDE_DIRECTORIES "${INCLUDE_DIRS_LIST}")
+  set(IGC_BUILD__PROJ__SPIRV-Tools SPIRV-Tools)
+ 
