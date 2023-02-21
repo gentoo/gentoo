@@ -26,7 +26,7 @@ RDEPEND="x11-libs/libXmu
 	x11-libs/libXft
 	x11-libs/libXrandr
 	media-libs/libpng:0=
-	virtual/jpeg:=
+	media-libs/libjpeg-turbo
 	x11-apps/sessreg
 	pam? ( sys-libs/pam )"
 DEPEND="${RDEPEND}
