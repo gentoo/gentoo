@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,11 +18,12 @@ RDEPEND="
 	>=dev-libs/glib-2.66.0:2
 	dev-libs/libffi:=
 	>=dev-libs/gobject-introspection-1.66.1:=
-	>=dev-lang/spidermonkey-102.2.0:102
+	>=dev-lang/spidermonkey-102.2.0:102=
 	cairo? ( x11-libs/cairo[X,glib] )
 	readline? ( sys-libs/readline:0= )
 "
 DEPEND="${RDEPEND}
+	cairo? ( x11-base/xorg-proto )
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 )
 	test? (
 		sys-apps/dbus
