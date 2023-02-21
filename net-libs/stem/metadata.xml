@@ -4,5 +4,6 @@
   <!-- maintainer-needed -->
   <upstream>
     <remote-id type="pypi">stem</remote-id>
+    <remote-id type="github">torproject/stem</remote-id>
   </upstream>
 </pkgmetadata>
