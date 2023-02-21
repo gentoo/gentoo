@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Curtail (previously ImCompressor) is an useful image compressor, supporting
+    PNG, JPEG and WebP file types. It support both lossless and lossy
+    compression modes with an option to whether keep or not metadata of images.
+    It is inspired by Trimage and Image-Optimizer.
+  </longdescription>
+  <upstream>
+    <changelog>https://raw.githubusercontent.com/Huluti/Curtail/master/CHANGELOG.md</changelog>
+    <bugs-to>https://github.com/Huluti/Curtail/issues/</bugs-to>
+    <remote-id type="github">Huluti/Curtail</remote-id>
+  </upstream>
+</pkgmetadata>
