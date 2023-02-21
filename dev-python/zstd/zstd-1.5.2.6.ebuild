@@ -24,7 +24,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	!<dev-python/python-zstandard-0.15.2-r1[${PYTHON_USEDEP}]
+	!<dev-python/zstandard-0.15.2-r1[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests unittest

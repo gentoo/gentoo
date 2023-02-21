@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,7 +50,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/cython[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/python-zstandard[${PYTHON_USEDEP}]
+		dev-python/zstandard[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	')
 	media-libs/freetype:=[brotli]

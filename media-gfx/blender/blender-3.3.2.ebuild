@@ -50,7 +50,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/cython[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/python-zstandard[${PYTHON_USEDEP}]
+		dev-python/zstandard[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	')
 	media-libs/freetype:=[brotli]

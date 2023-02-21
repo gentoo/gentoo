@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/python-zstandard[${PYTHON_USEDEP}]
+		dev-python/zstandard[${PYTHON_USEDEP}]
 	)
 "
 

@@ -21,7 +21,7 @@ BDEPEND="
 		dev-python/lz4[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		dev-python/python-zstandard[${PYTHON_USEDEP}]
+		dev-python/zstandard[${PYTHON_USEDEP}]
 		dev-python/python-snappy[${PYTHON_USEDEP}]
 	)"
 
@@ -40,5 +40,5 @@ python_test() {
 pkg_postinst() {
 	optfeature "LZ4 compression/decompression support" dev-python/lz4
 	optfeature "Snappy compression support" dev-python/python-snappy
-	optfeature "ZSTD compression/decompression support" dev-python/python-zstandard
+	optfeature "ZSTD compression/decompression support" dev-python/zstandard
 }
