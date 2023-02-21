@@ -29,6 +29,7 @@ DOCS=( ChangeLog.md README.md )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.11.2-gcc13.patch
+	"${FILESDIR}"/${PN}-3.11.2-gcc13-2.patch
 )
 
 src_prepare() {
