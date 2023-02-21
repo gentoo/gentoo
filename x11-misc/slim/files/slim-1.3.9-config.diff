@@ -1,0 +1,49 @@
+Customize the configuration file to suit Gentoo practice
+===================================================================
+--- a/slim.conf
++++ b/slim.conf
+@@ -21,7 +21,7 @@
+ 
+ # Activate numlock when slim starts. Valid values: on|off
+ # Default is to not change it
+-# numlock             on
++numlock             on
+ 
+ # Hide the mouse cursor (note: does not work with some WMs).
+ # Valid values: true|false
+@@ -36,7 +36,8 @@
+ # to adjust the command according to your preferred shell,
+ # i.e. for freebsd use:
+ # login_cmd           exec /bin/sh - ~/.xinitrc %session
+-login_cmd           exec /bin/bash -login ~/.xinitrc %session
++# login_cmd           exec /bin/bash -login ~/.xinitrc %session
++login_cmd           exec /bin/bash -login /usr/share/slim/Xsession %session
+ 
+ # Commands executed when starting and exiting a session.
+ # They can be used for registering a X11 session with
+@@ -66,12 +67,12 @@
+ # %session is the Exec= value -- note that this may provide a full
+ # path to the session executable!
+-#sessiondir     /usr/share/xsessions
++sessiondir	/usr/share/xsessions
+ 
+ 
+-# Executed when pressing F11 (requires imagemagick)
++# Executed when pressing F11 (requires media-gfx/imagemagick for import)
+ screenshot_cmd      import -window root /slim.png
+-# Alternative using scrot.
++# Alternative is media-gfx/scrot. See Gentoo bug 252241 for more info.
+ #screenshot_cmd      scrot /root/slim.png
+ 
+ # welcome message. Available variables: %host, %domain
+ welcome_msg         Welcome to %host
+@@ -111,8 +111,8 @@
+ # randomly choose from
+ current_theme       default
+ 
+-# Lock file
++# Lock file, /etc/init.d/xdm expects slim.pid
+ lockfile            /run/slim.pid
+ 
+ # Log file
+ logfile             /var/log/slim.log
