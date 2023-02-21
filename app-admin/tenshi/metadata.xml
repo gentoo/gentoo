@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="f-secure-foundry/tenshi"></remote-id>
+		<remote-id type="github">f-secure-foundry/tenshi</remote-id>
 	</upstream>
 </pkgmetadata>

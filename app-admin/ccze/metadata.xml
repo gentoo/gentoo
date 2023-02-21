@@ -9,7 +9,4 @@
 		on resources. Also, being extensible via plug-ins is an important
 		feature too. 
 	</longdescription>
-	<upstream>
-		<remote-id type="github">madhouse/ccze</remote-id>
-	</upstream>
 </pkgmetadata>
