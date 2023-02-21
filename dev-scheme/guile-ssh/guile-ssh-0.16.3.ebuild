@@ -23,7 +23,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
-PATCHES=( "${FILESDIR}"/${PN}-0.16.2-tests.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.16.0-musl.patch
+	"${FILESDIR}"/${PN}-0.16.2-tests.patch
+)
 
 # guile generates ELF files without use of C or machine code
 # It's a portage's false positive. bug #677600
