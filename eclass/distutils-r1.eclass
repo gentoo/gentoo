@@ -1331,7 +1331,7 @@ distutils_pep517_install() {
 					"${EPYTHON}" - "${DISTUTILS_ARGS[@]}" <<-EOF || die
 						import json
 						import sys
-						print(json.dumps({"--global-option": sys.argv[1:]}))
+						print(json.dumps({"--build-option": sys.argv[1:]}))
 					EOF
 				)
 			fi
