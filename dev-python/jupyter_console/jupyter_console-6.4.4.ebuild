@@ -20,7 +20,7 @@ RDEPEND="
 	dev-python/ipython[${PYTHON_USEDEP}]
 	dev-python/ipykernel[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_client-7.0.0[${PYTHON_USEDEP}]
-	<dev-python/prompt_toolkit-3.1.0[${PYTHON_USEDEP}]
+	<dev-python/prompt-toolkit-3.1.0[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]"
 # util-linux provides script(1)
 BDEPEND="
