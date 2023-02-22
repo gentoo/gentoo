@@ -28,7 +28,7 @@ RDEPEND="
 	sys-libs/zlib
 	brotli? ( app-arch/brotli:= )
 	bzip2? ( app-arch/bzip2 )
-	idn? ( net-dns/libidn:= )
+	idn? ( net-dns/libidn2:= )
 	nls? ( virtual/libintl )
 	ssl? (
 		!gnutls? (
