@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,6 +19,8 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iproute2"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="atm berkdb bpf caps elf +iptables libbsd minimal nfs selinux split-usr"
+# Needs root
+RESTRICT="test"
 
 # We could make libmnl optional, but it's tiny, so eh
 RDEPEND="
@@ -165,6 +167,10 @@ src_configure() {
 
 src_compile() {
 	emake V=1 NETNS_RUN_DIR=/run/netns
+}
+
+src_test() {
+	emake check
 }
 
 src_install() {
