@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools toolchain-funcs udev flag-o-matic
+inherit autotools udev flag-o-matic
 
 MY_PN=${PN}
 MY_PV=${PV/\./-}
@@ -31,9 +31,9 @@ RDEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
 	gtk? ( x11-libs/gtk+:2
 		x11-libs/cairo
-		x11-libs/gdk-pixbuf
+		x11-libs/gdk-pixbuf:2
 		x11-libs/pango
-		dev-libs/glib:= )"
+		dev-libs/glib:2 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 # Upstream has still not migrated to the libusb-1 line.
@@ -80,4 +80,12 @@ src_install() {
 	#	dobin spectool_hildon
 	#	dosbin usbcontrol
 	#fi
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }
