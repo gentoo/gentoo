@@ -1,0 +1,64 @@
+https://github.com/curl/curl/commit/821f6e2a89de8aec1c7da3c0f381b92b2b801efc
+From: Stefan Eissing <stefan@eissing.org>
+Date: Thu, 9 Feb 2023 16:07:34 +0100
+Subject: [PATCH] CURLOPT_PIPEWAIT: allow waited reuse also for subsequent
+ connections
+
+note: Dropped test portion of patch; not shipped in source tarball!
+
+As tested in test_02_07, when firing off 200 urls with --parallel, 199
+wait for the first connection to be established. if that is multiuse,
+urls are added up to its capacity.
+
+The first url over capacity opens another connection. But subsequent
+urls found the same situation and open a connection too. They should
+have waited for the second connection to actually connect and make its
+capacity known.
+
+This change fixes that by
+
+- setting `connkeep()` early in the HTTP setup handler. as otherwise
+  a new connection is marked as closeit by default and not considered
+  for multiuse at all
+- checking the "connected" status for a candidate always and continuing
+  to PIPEWAIT if no alternative is found.
+
+pytest:
+- removed "skip" from test_02_07
+- added test_02_07b to check that http/1.1 continues to work as before
+
+Closes #10456
+--- a/lib/http.c
++++ b/lib/http.c
+@@ -233,6 +233,7 @@ static CURLcode http_setup_conn(struct Curl_easy *data,
+ 
+   Curl_mime_initpart(&http->form);
+   data->req.p.http = http;
++  connkeep(conn, "HTTP default");
+ 
+   if((data->state.httpwant == CURL_HTTP_VERSION_3)
+      || (data->state.httpwant == CURL_HTTP_VERSION_3ONLY)) {
+--- a/lib/url.c
++++ b/lib/url.c
+@@ -1170,14 +1170,14 @@ ConnectionExists(struct Curl_easy *data,
+             continue;
+           }
+         }
++      }
+ 
+-        if(!Curl_conn_is_connected(check, FIRSTSOCKET)) {
+-          foundPendingCandidate = TRUE;
+-          /* Don't pick a connection that hasn't connected yet */
+-          infof(data, "Connection #%ld isn't open enough, can't reuse",
+-                check->connection_id);
+-          continue;
+-        }
++      if(!Curl_conn_is_connected(check, FIRSTSOCKET)) {
++        foundPendingCandidate = TRUE;
++        /* Don't pick a connection that hasn't connected yet */
++        infof(data, "Connection #%ld isn't open enough, can't reuse",
++              check->connection_id);
++        continue;
+       }
+ 
+ #ifdef USE_UNIX_SOCKETS
