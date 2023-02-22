@@ -17,9 +17,8 @@ SLOT="0"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
-# imagemagick[-openmp] is needed wrt bug 547922 and upstream
-# https://github.com/Imagick/imagick#openmp
-RDEPEND=">=media-gfx/imagemagick-6.2.4:=[-openmp]"
+
+RDEPEND=">=media-gfx/imagemagick-6.2.4"
 DEPEND="${RDEPEND}
 	test? ( >=media-gfx/imagemagick-6.2.4:=[hdri,jpeg,png,svg,truetype,xml] )"
 
