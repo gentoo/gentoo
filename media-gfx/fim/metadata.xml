@@ -9,4 +9,7 @@
 		<flag name="pcx">Enable PCX file support</flag>
 		<flag name="xfig">Enable FIG file support via <pkg>media-gfx/xfig</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="savannah-nongnu">fbi-improved</remote-id>
+	</upstream>
 </pkgmetadata>
