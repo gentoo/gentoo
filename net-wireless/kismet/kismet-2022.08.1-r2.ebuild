@@ -43,7 +43,6 @@ CDEPEND="
 	networkmanager? ( net-misc/networkmanager )
 	dev-libs/glib:2
 	dev-libs/elfutils
-	dev-libs/openssl:=
 	sys-libs/zlib:=
 	dev-db/sqlite:3
 	net-libs/libwebsockets:=[client,lejp]
@@ -84,6 +83,10 @@ DEPEND="${CDEPEND}
 "
 BDEPEND="virtual/pkgconfig"
 
+# https://bugs.gentoo.org/872608
+# drop after 2022.08*
+PATCHES=( "${FILESDIR}/${P}-sandbox-fix.patch" )
+
 src_prepare() {
 	#sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
 	#	conf/kismet_logging.conf || die
@@ -112,12 +115,16 @@ src_prepare() {
 	if [ "${PV}" = "9999" ]; then
 		eautoreconf
 	fi
+	# drop after 2022.08*
+	# VERSION was incorrectly removed in 4e490cf0b49a287e964df9c5e5c4067f6918909e upstream
+	# https://github.com/kismetwireless/kismet/issues/427
+	# https://bugs.gentoo.org/864298
+	echo "${PV}" > VERSION
 }
 
 src_configure() {
 	econf \
 		$(use_enable libusb libusb) \
-		$(use_enable libusb wifi-coconut) \
 		$(use_enable pcre) \
 		$(use_enable lm-sensors lmsensors) \
 		$(use_enable networkmanager libnm) \
