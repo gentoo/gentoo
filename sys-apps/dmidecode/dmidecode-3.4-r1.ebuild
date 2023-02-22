@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86 ~x86-solaris"
+KEYWORDS="-* ~alpha amd64 arm arm64 ~ia64 ~loong ~mips ppc ppc64 ~riscv x86 ~x86-solaris"
 IUSE="selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-dmidecode )"
@@ -30,7 +30,7 @@ src_prepare() {
 
 src_compile() {
 	emake \
-		CFLAGS="${CFLAGS} ${CPPFLAGS}" \
+		CFLAGS="-D_FILE_OFFSET_BITS=64 ${CFLAGS} ${CPPFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		CC="$(tc-getCC)"
 }
