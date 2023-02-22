@@ -7,5 +7,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">sstp-client</remote-id>
+		<remote-id type="gnome-gitlab">GNOME/network-manager-sstp</remote-id>
 	</upstream>
 </pkgmetadata>
