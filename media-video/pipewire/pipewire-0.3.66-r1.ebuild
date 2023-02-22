@@ -161,10 +161,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
 )
 
-# limitsdfile related code taken from =sys-auth/realtime-base-0.1
-# with changes as necessary.
-limitsdfile=40-${PN}.conf
-
 python_check_deps() {
 	python_has_version "dev-python/docutils[${PYTHON_USEDEP}]"
 }
@@ -174,21 +170,6 @@ src_prepare() {
 
 	# Used for upstream backports
 	[[ -d "${FILESDIR}"/${PV} ]] && eapply "${FILESDIR}"/${PV}
-
-	einfo "Generating ${limitsdfile}"
-	cat > ${limitsdfile} <<- EOF || die
-		# Start of ${limitsdfile} from ${P}
-
-		@audio	-	memlock 256
-
-		$(use system-service && {
-			echo @pipewire - rtprio 95
-			echo @pipewire - nice -19
-			echo @pipewire - memlock 4194304
-		})
-
-		# End of ${limitsdfile} from ${P}
-	EOF
 }
 
 multilib_src_configure() {
@@ -289,9 +270,6 @@ multilib_src_install() {
 multilib_src_install_all() {
 	einstalldocs
 
-	insinto /etc/security/limits.d
-	doins ${limitsdfile}
-
 	if use pipewire-alsa; then
 		dodir /etc/alsa/conf.d
 
@@ -341,98 +319,140 @@ pkg_postrm() {
 	udev_reload
 }
 
+pkg_preinst() {
+	HAD_SOUND_SERVER=0
+	HAD_SYSTEM_SERVICE=0
+
+	if has_version "media-video/pipewire[sound-server(-)]" ; then
+		HAD_SOUND_SERVER=0
+	fi
+
+	if has_version "media-video/pipewire[system-service(-)]" ; then
+		HAD_SYSTEM_SERVICE=1
+	fi
+}
+
 pkg_postinst() {
 	udev_reload
-	use system-service && tmpfiles_process pipewire.conf
 
-	elog ">=pipewire-0.3.66 uses the 'pipewire' group to manage permissions"
-	elog "and limits needed to function smoothly."
-	elog "1. Please make sure your user is in the 'pipewire' group for correct"
-	elog "PAM limits behavior! You can add your account with:"
-	elog " usermod -aG pipewire <youruser>"
-	elog "2. It is recommended that you remove your user from the 'audio' group"
-	elog "as it can interfere with fast user switching:"
-	elog " usermod -rG audio <youruser>"
+	use system-service && tmpfiles_process pipewire.conf
 
 	local ver
 	for ver in ${REPLACING_VERSIONS} ; do
-		if ver_test ${ver} -le 0.3.53-r1 && ! use sound-server ; then
+		if ver_test ${ver} -le 0.3.66-r1 ; then
+			elog ">=pipewire-0.3.66 uses the 'pipewire' group to manage permissions"
+			elog "and limits needed to function smoothly."
+			elog "1. Please make sure your user is in the 'pipewire' group for correct"
+			elog "PAM limits behavior! You can add your account with:"
+			elog " usermod -aG pipewire <youruser>"
+			elog
+			elog "2. It is recommended that you remove your user from the 'audio' group"
+			elog "as it can interfere with fast user switching:"
+			elog " usermod -rG audio <youruser>"
+			elog
+
+			if ! use jack-sdk ; then
+				elog
+				elog "JACK emulation is incomplete and not all programs will work. PipeWire's"
+				elog "alternative libraries have been installed to a non-default location."
+				elog "To use them, put pw-jack <application> before every JACK application."
+				elog "When using pw-jack, do not run jackd/jackdbus. However, a virtual/jack"
+				elog "provider is still needed to compile the JACK applications themselves."
+				elog
+			fi
+
+			if use systemd ; then
+				ewarn
+				ewarn "PipeWire daemon startup has been moved to a launcher script!"
+				ewarn "Make sure that ${EROOT}/etc/pipewire/pipewire.conf either does not exist or no"
+				ewarn "longer is set to start a session manager or PulseAudio compatibility daemon (all"
+				ewarn "lines similar to '{ path = /usr/bin/pipewire*' should be commented out)"
+				ewarn
+				ewarn "Those manually starting /usr/bin/pipewire via .xinitrc or similar _must_ from"
+				ewarn "now on start ${EROOT}/usr/bin/gentoo-pipewire-launcher instead! It is highly"
+				ewarn "advised that a D-Bus user session is set up before starting the script."
+				ewarn
+			fi
+
+			if use sound-server && ( has_version 'media-sound/pulseaudio[daemon]' || has_version 'media-sound/pulseaudio-daemon' ) ; then
+				elog
+				elog "This ebuild auto-enables PulseAudio replacement. Because of that, users"
+				elog "are recommended to edit pulseaudio client configuration files:"
+				elog "${EROOT}/etc/pulse/client.conf and ${EROOT}/etc/pulse/client.conf.d/enable-autospawn.conf"
+				elog "if it exists, and disable autospawning of the original daemon by setting:"
+				elog
+				elog "  autospawn = no"
+				elog
+				elog "Please note that the semicolon (;) must _NOT_ be at the beginning of the line!"
+				elog
+				elog "Alternatively, if replacing PulseAudio daemon is not desired, edit"
+				elog "${EROOT}/usr/bin/gentoo-pipewire-launcher by commenting out the relevant"
+				elog "command:"
+				elog
+				elog "#${EROOT}/usr/bin/pipewire -c pipewire-pulse.conf &"
+				elog
+			fi
+
+			if has_version 'net-misc/ofono' ; then
+				ewarn "Native backend has become default. Please disable oFono via:"
+				if systemd_is_booted ; then
+					ewarn "systemctl disable ofono"
+				else
+					ewarn "rc-update delete ofono"
+				fi
+			fi
+		fi
+	done
+
+	if [[ ${HAD_SOUND_SERVER} -eq 0 || -z ${REPLACING_VERSIONS} ]] ; then
+		# TODO: We could drop most of this if we set up systemd presets?
+		if use sound-server && use systemd ; then
+			elog
+			elog "When switching from PulseAudio, you may need to disable PulseAudio:"
+			elog
+			elog "  systemctl --user disable pulseaudio.service pulseaudio.socket"
+			elog
+			elog "To use PipeWire, the user units must be manually enabled"
+			elog "by running this command as each user you use for desktop activities:"
+			elog
+			elog "  systemctl --user enable pipewire.socket pipewire-pulse.socket"
+			elog
+			elog "A reboot is recommended to avoid interferences from still running"
+			elog "PulseAudio daemon."
+			elog
+			elog "Both new users and those upgrading need to enable WirePlumber"
+			elog "for relevant users:"
+			elog
+			elog "  systemctl --user disable pipewire-media-session.service"
+			elog "  systemctl --user --force enable wireplumber.service"
+			elog
+			elog "Root user may replace --user with --global to change system default"
+			elog "configuration for all of the above commands."
+			elog
+		fi
+
+		if ! use sound-server ; then
+			ewarn
 			ewarn "USE=sound-server is disabled! If you want PipeWire to provide"
 			ewarn "your sound, please enable it. See the wiki at"
 			ewarn "https://wiki.gentoo.org/wiki/PipeWire#Replacing_PulseAudio"
 			ewarn "for more details."
-
-			break
+			ewarn
 		fi
-	done
-
-	if ! use jack-sdk; then
-		elog "JACK emulation is incomplete and not all programs will work. PipeWire's"
-		elog "alternative libraries have been installed to a non-default location."
-		elog "To use them, put pw-jack <application> before every JACK application."
-		elog "When using pw-jack, do not run jackd/jackdbus. However, a virtual/jack"
-		elog "provider is still needed to compile the JACK applications themselves."
-		elog
 	fi
 
-	if use systemd; then
-		elog "When switching from PulseAudio, you may need to disable PulseAudio:"
-		elog
-		elog "  systemctl --user disable pulseaudio.service pulseaudio.socket"
-		elog
-		elog "To use PipeWire, the user units must be manually enabled"
-		elog "by running this command as each user you use for desktop activities:"
-		elog
-		elog "  systemctl --user enable pipewire.socket pipewire-pulse.socket"
-		elog
-		elog "A reboot is recommended to avoid interferences from still running"
-		elog "PulseAudio daemon."
-		elog
-		elog "Both new users and those upgrading need to enable WirePlumber"
-		elog "for relevant users:"
-		elog
-		elog "  systemctl --user disable pipewire-media-session.service"
-		elog "  systemctl --user --force enable wireplumber.service"
-		elog
-		elog "Root user may replace --user with --global to change system default"
-		elog "configuration for all of the above commands."
-	else
-		ewarn "PipeWire daemon startup has been moved to a launcher script!"
-		ewarn "Make sure that ${EROOT}/etc/pipewire/pipewire.conf either does not exist or no"
-		ewarn "longer is set to start a session manager or PulseAudio compatibility daemon (all"
-		ewarn "lines similar to '{ path = /usr/bin/pipewire*' should be commented out)"
+	if use system-service && [[ ${HAD_SYSTEM_SERVICE} -eq 0 || -z ${REPLACING_VERSIONS} ]] ; then
 		ewarn
-		ewarn "Those manually starting /usr/bin/pipewire via .xinitrc or similar _must_ from"
-		ewarn "now on start ${EROOT}/usr/bin/gentoo-pipewire-launcher instead! It is highly"
-		ewarn "advised that a D-Bus user session is set up before starting the script."
+		ewarn "You have enabled the system-service USE flag, which installs"
+		ewarn "the system-wide systemd units that enable PipeWire to run as a system"
+		ewarn "service. This is more than likely NOT what you want. You are strongly"
+		ewarn "advised not to enable this mode and instead stick with systemd user"
+		ewarn "units. The default configuration files will likely not work out of the"
+		ewarn "box, and you are on your own with configuration."
 		ewarn
-
-		if use sound-server && ( has_version 'media-sound/pulseaudio[daemon]' || has_version 'media-sound/pulseaudio-daemon' ) ; then
-			elog "This ebuild auto-enables PulseAudio replacement. Because of that, users"
-			elog "are recommended to edit pulseaudio client configuration files:"
-			elog "${EROOT}/etc/pulse/client.conf and ${EROOT}/etc/pulse/client.conf.d/enable-autospawn.conf"
-			elog "if it exists, and disable autospawning of the original daemon by setting:"
-			elog
-			elog "  autospawn = no"
-			elog
-			elog "Please note that the semicolon (;) must _NOT_ be at the beginning of the line!"
-			elog
-			elog "Alternatively, if replacing PulseAudio daemon is not desired, edit"
-			elog "${EROOT}/usr/bin/gentoo-pipewire-launcher by commenting out the relevant"
-			elog "command:"
-			elog
-			elog "#${EROOT}/usr/bin/pipewire -c pipewire-pulse.conf &"
-			elog
-		fi
-		elog "NOTE:"
-		elog "Starting with PipeWire-0.3.30, this package is no longer installing its config"
-		elog "into ${EROOT}/etc/pipewire by default. In case you need to change"
-		elog "its config, please start by copying default config from ${EROOT}/usr/share/pipewire"
-		elog "and just override the sections you want to change."
 	fi
-	elog
 
-	elog "For latest tips and tricks, troubleshooting information and documentation"
+	elog "For latest tips and tricks, troubleshooting information, and documentation"
 	elog "in general, please refer to https://wiki.gentoo.org/wiki/PipeWire"
 	elog
 
@@ -441,26 +461,5 @@ pkg_postinst() {
 
 	if use sound-server && ! use pipewire-alsa; then
 		optfeature "ALSA plugin to use PulseAudio interface for output" "media-plugins/alsa-plugins[pulseaudio]"
-	fi
-
-	if has_version 'net-misc/ofono' ; then
-		ewarn "Native backend has become default. Please disable oFono via:"
-		if systemd_is_booted ; then
-			ewarn "systemctl disable ofono"
-		else
-			ewarn "rc-update delete ofono"
-		fi
-		ewarn
-	fi
-
-	if use system-service; then
-		ewarn
-		ewarn "WARNING: you have enabled the system-service USE flag, which installs"
-		ewarn "the system-wide systemd units that enable PipeWire to run as a system"
-		ewarn "service. This is more than likely NOT what you want. You are strongly"
-		ewarn "advised not to enable this mode and instead stick with systemd user"
-		ewarn "units. The default configuration files will likely not work out of"
-		ewarn "box, and you are on your own with configuration."
-		ewarn
 	fi
 }
