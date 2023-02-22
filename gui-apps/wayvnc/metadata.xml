@@ -14,7 +14,4 @@
       <flag name="gbm">enable GPU-side screencopy (experimental)</flag>
       <flag name="tracing">Trace kernel and memory calls</flag>
      </use>
-	 <upstream>
-	 	<remote-id type="github">any1/wayvnc</remote-id>
-	 </upstream>
 </pkgmetadata>

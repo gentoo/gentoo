@@ -19,7 +19,4 @@
 		capable of navigating speeds that leave GUI tainted idolaters agape
 		with fear and wonder.
 	</longdescription>
-	<upstream>
-		<remote-id type="gitlab">surfraw/Surfraw</remote-id>
-	</upstream>
 </pkgmetadata>

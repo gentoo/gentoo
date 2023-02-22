@@ -3,7 +3,4 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<stabilize-allarches/>
-	<upstream>
-		<remote-id type="sourceforge">aoo-extensions</remote-id>
-	</upstream>
 </pkgmetadata>

@@ -3,7 +3,4 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<stabilize-allarches/>
-	<upstream>
-		<remote-id type="github">marcoagpinto/aoo-mozilla-en-dict</remote-id>
-	</upstream>
 </pkgmetadata>
