@@ -47,6 +47,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.8.0-python.patch"
+	"${FILESDIR}/${PN}-1.8.1-fix-intmax-error.patch"
 )
 
 hpx_memory_requirement() {
