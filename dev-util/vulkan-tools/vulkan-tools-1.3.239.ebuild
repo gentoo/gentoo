@@ -62,6 +62,7 @@ multilib_src_configure() {
 		-DCMAKE_SKIP_RPATH=ON
 		-DBUILD_VULKANINFO=ON
 		-DBUILD_CUBE=$(usex cube)
+		-DBUILD_WERROR=OFF
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
