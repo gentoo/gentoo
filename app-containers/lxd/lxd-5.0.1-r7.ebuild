@@ -23,7 +23,7 @@ DEPEND="acct-group/lxd
 	dev-db/sqlite:3
 	dev-libs/dqlite:=
 	dev-libs/lzo
-	dev-libs/raft[lz4]
+	dev-libs/raft:=[lz4]
 	>=dev-util/xdelta-3.0[lzma(+)]
 	net-dns/dnsmasq[dhcp]
 	sys-libs/libcap
