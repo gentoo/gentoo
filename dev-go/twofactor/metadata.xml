@@ -2,4 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	</pkgmetadata>
+	<upstream>
+		<remote-id type="github">gokyle/twofactor</remote-id>
+	</upstream>
+</pkgmetadata>
