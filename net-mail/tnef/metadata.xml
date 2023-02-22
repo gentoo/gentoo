@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">tnef</remote-id>
+		<remote-id type="github">verdammelt/tnef</remote-id>
 	</upstream>
 </pkgmetadata>
