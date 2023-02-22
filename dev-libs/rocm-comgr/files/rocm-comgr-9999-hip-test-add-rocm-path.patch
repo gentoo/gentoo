@@ -1,0 +1,12 @@
+Index: comgr/test/CMakeLists.txt
+===================================================================
+--- comgr.orig/test/CMakeLists.txt
++++ comgr/test/CMakeLists.txt
+@@ -40,6 +40,7 @@ macro(add_test_input_bitcode name input
+   add_custom_command(
+     OUTPUT "${output}"
+     COMMAND "$<TARGET_FILE:clang>" -c --offload-arch=gfx906 -emit-llvm -fgpu-rdc
++	--rocm-path=@GENTOO_PORTAGE_EPREFIX@/usr --rocm-device-lib-path=@GENTOO_PORTAGE_EPREFIX@/usr/lib/amdgcn/bitcode
+     --gpu-bundle-output ${ARGN} "${CMAKE_CURRENT_SOURCE_DIR}/${input}"
+     -o "${output}"
+     VERBATIM
