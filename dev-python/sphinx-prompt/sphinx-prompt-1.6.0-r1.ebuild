@@ -23,7 +23,13 @@ RDEPEND="
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# https://github.com/sbrunner/sphinx-prompt/pull/330
-	sed -E -i -e "/^version =/s:([0-9.]+):${PV}:" pyproject.toml || die
+	# for Version: https://github.com/sbrunner/sphinx-prompt/pull/330
+	# for Sphinx dep: https://github.com/sbrunner/sphinx-prompt/issues/174
+	# and poetry-plugin-tweak-dependencies-version usage.
+	sed -E -i \
+		-e "/^version =/s:([0-9.]+):${PV}:" \
+		-e "/^Sphinx =/s:([0-9.]+):>=5:" \
+		pyproject.toml || die
+
 	distutils-r1_python_prepare_all
 }
