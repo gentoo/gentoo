@@ -7,6 +7,6 @@
 		detects a new entry it'll emit only that new entry.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">folkertvanheusden/rsstail</remote-id>
+		<remote-id type="github">flok99/rsstail</remote-id>
 	</upstream>
 </pkgmetadata>
