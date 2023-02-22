@@ -290,7 +290,7 @@ else
 	"
 	S="${WORKDIR}"/coreutils-${PV}
 
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
 LICENSE="MIT"
@@ -316,5 +316,11 @@ src_compile() {
 }
 
 src_install() {
-	emake V=1 PREFIX="/usr" PROG_PREFIX="uu-" DESTDIR="${D}" MANDIR="/share/man/man1" install
+	emake V=1 PROFILE=release \
+		PREFIX="/usr" \
+		PROG_PREFIX="uu-" \
+		MULTICALL=y \
+		DESTDIR="${D}" \
+		MANDIR="/share/man/man1" \
+		install
 }
