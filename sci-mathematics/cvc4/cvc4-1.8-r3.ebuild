@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR=emake
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit cmake python-any-r1
 
 DESCRIPTION="Automatic theorem prover for satisfiability modulo theories (SMT) problems"
