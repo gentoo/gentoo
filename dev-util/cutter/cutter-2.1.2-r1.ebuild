@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	>=dev-util/rizin-0.4.0:=
+	=dev-util/rizin-0.4.1:=
 	graphviz? ( media-gfx/graphviz )"
 RDEPEND="${DEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
