@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+    <!-- maintainer-needed -->
     <longdescription>
         Basic desktop environment for use with wayfire
         which showcases all its plugins and desktop
         effects. Integrates with other wayland
         applications to provide a full desktop environment
     </longdescription>
-    <!-- maintainer-needed -->
-    </pkgmetadata>
+    <upstream>
+        <remote-id type="github">WayfireWM/wf-shell</remote-id>
+    </upstream>
+</pkgmetadata>
