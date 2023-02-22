@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<longdescription lang="en">
+		Netavark is a rust based network stack for containers. It is
+		being designed to work with Podman but is also applicable for
+		other OCI container management applications.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">containers/netavark</remote-id>
+	</upstream>
+</pkgmetadata>
