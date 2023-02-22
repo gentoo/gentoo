@@ -77,7 +77,9 @@ fi
 
 # Detect target arch
 machine=""
+submachine=""
 chost_machine=${CHOST%%-*}
+[[ ${CC} == *clang* ]] && submachine="-clang"
 case ${system} in
 linux)
 	case ${chost_machine}:${ABI} in
@@ -95,7 +97,7 @@ linux)
 	#	hppa64*)      machine=parisc64;;
 		hppa*)        machine="generic32 -DB_ENDIAN";;
 		i[0-9]86*|\
-		x86_64*:x86)  machine=x86;;
+		x86_64*:x86)  machine=x86${submachine};;
 		ia64*)        machine=ia64;;
 		loongarch64*) machine="loongarch64 -DL_ENDIAN" system=linux64;;
 		m68*)         machine="latomic -DB_ENDIAN";;
@@ -125,7 +127,7 @@ linux)
 		s390x*)       machine=s390x system=linux64;;
 		s390*)        machine="generic32 -DB_ENDIAN";;
 		x86_64*:x32)  machine=x32;;
-		x86_64*)      machine=x86_64;;
+		x86_64*)      machine=x86_64${submachine};;
 	esac
 	;;
 BSD)
