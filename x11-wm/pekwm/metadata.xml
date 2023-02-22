@@ -14,4 +14,7 @@
 		<flag name="contrib">Install optional extras in the documentation directory</flag>
 		<flag name="themes">Install additional themes</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">pekdon/pekwm</remote-id>
+	</upstream>
 </pkgmetadata>
