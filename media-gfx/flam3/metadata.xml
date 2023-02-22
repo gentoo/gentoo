@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="google-code">flam3</remote-id>
+		<remote-id type="github">scottdraves/flam3</remote-id>
 	</upstream>
 </pkgmetadata>
