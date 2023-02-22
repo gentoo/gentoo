@@ -27,11 +27,9 @@ SLOT="0"
 # in the generated library. Easily hit with non-standard compiler flags
 RESTRICT="test"
 
-COMMON_DEPEND="~dev-util/spirv-headers-${PV}"
-DEPEND="${COMMON_DEPEND}"
+DEPEND="~dev-util/spirv-headers-${PV}"
 RDEPEND=""
-BDEPEND="${PYTHON_DEPS}
-	${COMMON_DEPEND}"
+BDEPEND="${PYTHON_DEPS}"
 
 multilib_src_configure() {
 	local mycmakeargs=(
