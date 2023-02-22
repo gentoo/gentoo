@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 inherit cmake udev
 
@@ -14,7 +14,7 @@ IUSE="+bluez static-libs +ubertooth1-firmware +udev"
 DEPEND="bluez? ( net-wireless/bluez:= )
 	>=net-libs/libbtbb-${PV}:=[static-libs?]
 	static-libs? ( dev-libs/libusb[static-libs] )
-	virtual/libusb:1="
+	virtual/libusb:1"
 RDEPEND="${DEPEND}
 	udev? ( virtual/udev )"
 
@@ -66,4 +66,12 @@ src_install() {
 
 	elog "Everyone can read from the ubertooth, but to talk to it"
 	elog "your user needs to be in the usb group."
+}
+
+pkg_postinst() {
+	use udev && udev_reload
+}
+
+pkg_postrm() {
+	use udev && udev_reload
 }
