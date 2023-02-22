@@ -30,7 +30,7 @@ src_prepare() {
 
 src_compile() {
 	emake \
-		CFLAGS="${CFLAGS} ${CPPFLAGS}" \
+		CFLAGS="-D_FILE_OFFSET_BITS=64 ${CFLAGS} ${CPPFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		CC="$(tc-getCC)"
 }
