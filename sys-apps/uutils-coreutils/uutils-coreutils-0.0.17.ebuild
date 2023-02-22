@@ -290,7 +290,7 @@ else
 	"
 	S="${WORKDIR}"/coreutils-${PV}
 
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
 LICENSE="MIT"
