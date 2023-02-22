@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{9..11} pypy3 )
 PYTHON_REQ_USE='ncurses,sqlite(-)'
 DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Utility to monitor real time Tor status information"
 HOMEPAGE="https://nyx.torproject.org"
@@ -15,7 +15,6 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.torproject.org/nyx.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
 fi
 
