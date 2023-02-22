@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">unhide</remote-id>
+		<remote-id type="github">YJesus/Unhide</remote-id>
 	</upstream>
 </pkgmetadata>
