@@ -85,6 +85,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PV}-0001-Remove-test_completion.patch"
 	"${FILESDIR}/${PV}-sphinx-6.patch"
+	"${FILESDIR}/${PV}-mediafile-test.patch"
+	"${FILESDIR}/${PV}-unicode-test.patch"
 )
 
 DOCS=( README.rst docs/changelog.rst )
