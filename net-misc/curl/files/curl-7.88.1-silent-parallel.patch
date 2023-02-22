@@ -1,0 +1,20 @@
+https://github.com/curl/curl/commit/475207c1c834ecf203dc4f3bc1917ae87628b6d0
+From: Daniel Stenberg <daniel@haxx.se>
+Date: Tue, 21 Feb 2023 11:38:03 +0100
+Subject: [PATCH] tool_progress: shut off progress meter for --silent in
+ parallel
+
+Reported-by: finkjsc on github
+Fixes #10573
+Closes #10579
+--- a/src/tool_progress.c
++++ b/src/tool_progress.c
+@@ -173,7 +173,7 @@ bool progress_meter(struct GlobalConfig *global,
+   struct timeval now;
+   long diff;
+ 
+-  if(global->noprogress)
++  if(global->noprogress || global->silent)
+     return FALSE;
+ 
+   now = tvnow();
