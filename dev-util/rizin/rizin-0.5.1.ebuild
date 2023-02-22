@@ -41,7 +41,6 @@ BDEPEND="${PYTHON_DEPS}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.4.0-never-rebuild-parser.patch"
-	"${FILESDIR}/${PN}-0.5.0-capstone-include-path.patch"
 )
 
 S="${WORKDIR}/${PN}-v${PV}"
