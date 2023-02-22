@@ -28,12 +28,12 @@
 # equivalent.
 #
 # @EXAMPLE:
-# @CODE@
+# @CODE
 # inherit pypi
 #
 # SRC_URI="$(pypi_sdist_url "${PN^}" "${PV}")"
 # S=${WORKDIR}/${P^}
-# @CODE@
+# @CODE
 
 case ${EAPI} in
 	7|8) ;;
