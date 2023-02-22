@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 ADA_COMPAT=( gnat_2021 gcc_12 gcc_12_2_0 )
 inherit ada multiprocessing python-single-r1
 
@@ -32,6 +32,8 @@ DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
 QA_EXECSTACK=usr/lib/gnatcoll_readline.*/libgnatcoll_readline.*
+
+PATCHES=( "${FILESDIR}"/${P}-py_3_11.patch )
 
 pkg_setup() {
 	python-single-r1_pkg_setup
