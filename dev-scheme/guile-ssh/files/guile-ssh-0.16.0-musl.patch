@@ -1,7 +1,5 @@
-diff --git a/libguile-ssh/log.c b/libguile-ssh/log.c_
-index e0c7ac9..820871c 100644
 --- a/libguile-ssh/log.c
-+++ b/libguile-ssh/log.c_
++++ b/libguile-ssh/log.c
 @@ -29,7 +29,6 @@
  #include <stdio.h>              /* DEBUG */
  #include <unistd.h>             /* DEBUG */
