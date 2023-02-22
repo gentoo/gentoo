@@ -12,4 +12,7 @@
     Screen(1)フロントエンドです。対話的メニューで
     プロセス管理を安くなります。
   </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">screenie</remote-id>
+  </upstream>
 </pkgmetadata>
