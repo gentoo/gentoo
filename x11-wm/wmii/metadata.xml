@@ -11,6 +11,6 @@
     system.
   </longdescription>
   <upstream>
-    <remote-id type="github">0intro/wmii</remote-id>
+  	<remote-id type="github">0intro/wmii</remote-id>
   </upstream>
 </pkgmetadata>
