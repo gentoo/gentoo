@@ -3,7 +3,7 @@
 
 EAPI=7
 
-ADA_COMPAT=( gnat_2021 gcc_12_2_0 )
+ADA_COMPAT=( gnat_2021 gcc_12 gcc_12_2_0 )
 inherit ada multiprocessing
 
 MYPN=gprbuild
