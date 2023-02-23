@@ -37,7 +37,7 @@ RDEPEND="
 		media-sound/pulseaudio
 	)
 	wayland? (
-		=dev-python/pywlroots-0.15.24[${PYTHON_USEDEP}]
+		~dev-python/pywlroots-0.15*[${PYTHON_USEDEP}]
 	)
 "
 BDEPEND="
