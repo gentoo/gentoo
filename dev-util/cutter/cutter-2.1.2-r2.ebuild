@@ -26,7 +26,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
-	=dev-util/rizin-0.4.1:=
+	~dev-util/rizin-0.4.1:=
 	graphviz? ( media-gfx/graphviz )"
 RDEPEND="${DEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
