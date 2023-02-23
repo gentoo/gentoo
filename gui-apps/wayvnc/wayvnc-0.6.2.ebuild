@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,27 +18,34 @@ fi
 
 LICENSE="ISC"
 SLOT="0"
-IUSE="gbm tracing"
+IUSE="gbm pam test tracing"
 
 RDEPEND="
-	dev-libs/aml
+	>=dev-libs/aml-0.3
+	dev-libs/jansson:=
 	dev-libs/wayland
-	gui-libs/neatvnc[tracing?]
+	>=gui-libs/neatvnc-0.6[tracing?]
 	media-libs/mesa:=[egl(+),gles2,gbm(+)?]
 	x11-libs/libxkbcommon
 	x11-libs/pixman
+	pam? ( sys-libs/pam )
 	tracing? ( dev-util/systemtap )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	virtual/pkgconfig
+	app-text/scdoc
 	dev-libs/wayland-protocols
+	virtual/pkgconfig
 "
+
+RESTRICT="!test? ( test )"
 
 src_configure() {
 	local emesonargs=(
+		$(meson_feature pam)
 		$(meson_feature gbm screencopy-dmabuf)
 		$(meson_use tracing systemtap)
+		$(meson_use test tests)
 	)
 	meson_src_configure
 }
