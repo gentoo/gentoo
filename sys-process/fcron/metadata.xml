@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>alexey+gentoo@asokolov.org</email>
+		<name>Alexey Sokolov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="debug">
 			Enable debug code and output. Since version 3.0.5 this will no
@@ -21,7 +28,7 @@
 			Set up fcron to respect /etc/crontab and /etc/cron.d. If this
 			flag is disabled, /etc/cron.d and /etc/crontab will be ignored,
 			but /etc/cron.{hourly,daily,weekly,monthly} will still be
-			respected.
+			respected. Also this creates /usr/bin/crontab symlink.
 		</flag>
 	</use>
 	<upstream>

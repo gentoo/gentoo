@@ -4,7 +4,7 @@
 EAPI=7
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/thomasdickey.asc
-inherit flag-o-matic toolchain-funcs multilib-minimal preserve-libs usr-ldscript verify-sig
+inherit flag-o-matic toolchain-funcs multilib multilib-minimal preserve-libs usr-ldscript verify-sig
 
 MY_PV="${PV:0:3}"
 MY_P="${PN}-${MY_PV}"
@@ -141,6 +141,11 @@ src_configure() {
 
 	# bug #214642
 	BUILD_CPPFLAGS+=" -D_GNU_SOURCE"
+
+	# bug #852665
+	if [[ ${CHOST} == *-cygwin* ]]; then
+	  BUILD_CPPFLAGS+=" -DBUILDING_NCURSES"
+	fi
 
 	# Build the various variants of ncurses -- narrow, wide, and threaded. #510440
 	# Order matters here -- we want unicode/thread versions to come last so that the
@@ -288,17 +293,7 @@ do_configure() {
 src_compile() {
 	# See comments in src_configure.
 	if ! has_version -b "~sys-libs/${P}:0" ; then
-		# We could possibly merge these two branches but opting to be
-		# conservative when merging some of the Prefix changes.
-
-		if [[ ${CHOST} == *-cygwin* ]] && ! multilib_is_native_abi ; then
-			# We make 'tic$(x)' here, for Cygwin having x=".exe".
-			BUILD_DIR="${WORKDIR}" \
-				 do_compile cross -C progs all PROGS='tic$(x)'
-		else
-			BUILD_DIR="${WORKDIR}" \
-				 do_compile cross -C progs tic
-		fi
+		BUILD_DIR="${WORKDIR}" do_compile cross -C progs tic$(get_exeext)
 	fi
 
 	multilib-minimal_src_compile

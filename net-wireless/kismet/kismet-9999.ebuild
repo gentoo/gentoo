@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit autotools python-single-r1 udev systemd
 
@@ -40,13 +40,12 @@ CDEPEND="
 	${PYTHON_DEPS}
 	acct-user/kismet
 	acct-group/kismet
-	networkmanager? ( net-misc/networkmanager:= )
-	dev-libs/glib:=
-	dev-libs/elfutils:=
+	networkmanager? ( net-misc/networkmanager )
+	dev-libs/glib:2
+	dev-libs/elfutils
 	dev-libs/openssl:=
 	sys-libs/zlib:=
-	dev-db/sqlite:=
-	net-libs/libmicrohttpd:=
+	dev-db/sqlite:3
 	net-libs/libwebsockets:=[client,lejp]
 	kernel_linux? ( sys-libs/libcap
 			dev-libs/libnl:3
@@ -59,7 +58,6 @@ CDEPEND="
 		dev-python/protobuf-python[${PYTHON_USEDEP}]
 		dev-python/websockets[${PYTHON_USEDEP}]
 	')
-	sys-libs/ncurses:=
 	lm-sensors? ( sys-apps/lm-sensors:= )
 	pcre? ( dev-libs/libpcre )
 	suid? ( sys-libs/libcap )
@@ -77,15 +75,18 @@ RDEPEND="${CDEPEND}
 	)
 	selinux? ( sec-policy/selinux-kismet )
 "
+#switched back to bundled libfmt-8
+#https://bugs.gentoo.org/895252
+#<dev-libs/libfmt-9
 DEPEND="${CDEPEND}
 	dev-libs/boost
-	<dev-libs/libfmt-9
+	sys-libs/libcap
 "
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
-		conf/kismet_logging.conf || die
+	#sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
+	#	conf/kismet_logging.conf || die
 
 	#this was added to quiet macosx builds but it makes gcc builds noisier
 	sed -i -e 's#-Wno-unknown-warning-option ##g' Makefile.inc.in || die
@@ -93,7 +94,9 @@ src_prepare() {
 	#sed -i -e 's#root#kismet#g' packaging/systemd/kismet.service.in
 
 	rm -r boost || die
-	rm -r fmt || die
+	#switched back to bundled libfmt-8
+	#https://bugs.gentoo.org/895252
+	#rm -r fmt || die
 
 	#dev-libs/jsoncpp
 	#rm -r json || die
@@ -107,15 +110,8 @@ src_prepare() {
 	eapply_user
 
 	if [ "${PV}" = "9999" ]; then
-		sed -i -e 's|@mangrp@|root|g' Makefile.inc.in || die
 		eautoreconf
-	else
-		sed -i -e 's|@mangrp@|root|g' Makefile.inc || die
 	fi
-	# VERSION was incorrectly removed in 4e490cf0b49a287e964df9c5e5c4067f6918909e upstream
-	# https://github.com/kismetwireless/kismet/issues/427
-	# https://bugs.gentoo.org/864298
-	echo "${PV}" > VERSION
 }
 
 src_configure() {

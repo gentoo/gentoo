@@ -16,4 +16,7 @@
 		DLLs in the child at the same address as in the parent.  This is caused
 		by DLLs which have conflicting base addresses.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">haubi/cygwin-rebase</remote-id>
+	</upstream>
 </pkgmetadata>

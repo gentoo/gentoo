@@ -25,38 +25,77 @@ HOMEPAGE="https://www.haskell.org/ghc/"
 arch_binaries=""
 
 BIN_PV=${PV}
-# sorted!
-#arch_binaries="$arch_binaries alpha? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-alpha.tbz2 )"
-#arch_binaries="$arch_binaries arm? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-armv7a-hardfloat-linux-gnueabi.tbz2 )"
-arch_binaries="$arch_binaries arm64? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-aarch64-unknown-linux-gnu.tar.gz )"
-arch_binaries="$arch_binaries amd64? ( https://eidetic.codes/ghc-bin-${PV}-x86_64-pc-linux-gnu-r1.tbz2 )"
-#arch_binaries="$arch_binaries ia64?  ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
-#arch_binaries="$arch_binaries ppc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc.tbz2 )"
-arch_binaries="$arch_binaries ppc64? (
+
+# Differentiate glibc/musl
+
+#glibc_binaries="$glibc_binaries alpha? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-alpha.tbz2 )"
+glibc_binaries="$glibc_binaries amd64? ( https://eidetic.codes/ghc-bin-${PV}-x86_64-pc-linux-gnu-r1.tbz2 )"
+#glibc_binaries="$glibc_binaries arm? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-armv7a-hardfloat-linux-gnueabi.tbz2 )"
+glibc_binaries="$glibc_binaries arm64? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-aarch64-unknown-linux-gnu.tar.gz )"
+#glibc_binaries="$glibc_binaries ia64?  ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
+#glibc_binaries="$glibc_binaries ppc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc.tbz2 )"
+#glibc_binaries="$glibc_binaries ppc64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc64.tbz2 )"
+glibc_binaries="$glibc_binaries ppc64? (
 	big-endian? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-powerpc64-unknown-linux-gnu.tar.gz )
 	!big-endian? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-powerpc64le-unknown-linux-gnu.tar.gz )
 )"
-arch_binaries="$arch_binaries riscv? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-riscv64-unknown-linux-gnu.tar.gz )"
-#arch_binaries="$arch_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
-arch_binaries="$arch_binaries x86? ( https://eidetic.codes/ghc-bin-${PV}-i686-pc-linux-gnu.tbz2 )"
+glibc_binaries="$glibc_binaries riscv? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-riscv64-unknown-linux-gnu.tar.gz )"
+#glibc_binaries="$glibc_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
+glibc_binaries="$glibc_binaries x86? ( https://eidetic.codes/ghc-bin-${PV}-i686-pc-linux-gnu.tbz2 )"
+
+#musl_binaries="$musl_binaries alpha? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-alpha.tbz2 )"
+#musl_binaries="$musl_binaries amd64? ( https://eidetic.codes/ghc-bin-${PV}-x86_64-pc-linux-musl.tbz2 )"
+#musl_binaries="$musl_binaries arm? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-armv7a-hardfloat-linux-musl.tbz2 )"
+#musl_binaries="$musl_binaries arm64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-aarch64-unknown-linux-musl.tbz2 )"
+#musl_binaries="$musl_binaries ia64?  ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
+#musl_binaries="$musl_binaries ppc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc.tbz2 )"
+#musl_binaries="$musl_binaries ppc64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc64.tbz2 )"
+#musl_binaries="$musl_binaries ppc64? ( !big-endian? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-powerpc64le-unknown-linux-musl.tar.gz ) )"
+#musl_binaries="$musl_binaries riscv? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-riscv64-unknown-linux-musl.tar.gz )"
+#musl_binaries="$musl_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
+#musl_binaries="$musl_binaries x86? ( https://eidetic.codes/ghc-bin-${PV}-i686-pc-linux-musl.tbz2 )"
+
+[[ -n $glibc_binaries ]] && arch_binaries="$arch_binaries elibc_glibc? ( $glibc_binaries )"
+[[ -n $musl_binaries ]] && arch_binaries="$arch_binaries elibc_musl? ( $musl_binaries )"
 
 # various ports:
 #arch_binaries="$arch_binaries x86-fbsd? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-x86-fbsd.tbz2 )"
 
 # 0 - yet
 yet_binary() {
-	case "${ARCH}" in
-		#alpha) return 0 ;;
-		arm64) return 0 ;;
-		#arm) return 0 ;;
-		amd64) return 0 ;;
-		#ia64) return 0 ;;
-		#ppc) return 0 ;;
-		ppc64) return 0 ;;
-		riscv) return 0 ;;
-		#sparc) return 0 ;;
-		x86) return 0 ;;
-		*) return 1 ;;
+	case "${ELIBC}" in
+		glibc)
+			case "${ARCH}" in
+				#alpha) return 0 ;;
+				arm64) return 0 ;;
+				#arm) return 0 ;;
+				amd64) return 0 ;;
+				#ia64) return 0 ;;
+				#ppc) return 0 ;;
+				ppc64) return 0 ;;
+				riscv) return 0 ;;
+				#sparc) return 0 ;;
+				x86) return 0 ;;
+				*) return 1 ;;
+			esac
+			;;
+		musl)
+			case "${ARCH}" in
+				#alpha) return 0 ;;
+				#arm64) return 0 ;;
+				#arm) return 0 ;;
+				#amd64) return 0 ;;
+				#ia64) return 0 ;;
+				#ppc) return 0 ;;
+				#ppc64)
+				#	use big-endian || return 0
+				#	;;
+				#riscv) return 0 ;;
+				#sparc) return 0 ;;
+				#x86) return 0 ;;
+				*) return 1 ;;
+			esac
+			;;
 	esac
 }
 
@@ -424,6 +463,11 @@ src_unpack() {
 }
 
 src_prepare() {
+	# Force the use of C.utf8 locale
+	# <https://github.com/gentoo-haskell/gentoo-haskell/issues/1287>
+	# <https://github.com/gentoo-haskell/gentoo-haskell/issues/1289>
+	export LC_ALL=C.utf8
+
 	ghc_setup_cflags
 
 	# ghc-9.0.2 release anomaly

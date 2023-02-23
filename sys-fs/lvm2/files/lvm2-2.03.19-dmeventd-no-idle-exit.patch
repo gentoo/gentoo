@@ -1,0 +1,73 @@
+From ab3ae0a22dfbe20e2d17e7dc60e0f76184ec098c Mon Sep 17 00:00:00 2001
+From: "Robin H. Johnson" <robbat2@gentoo.org>
+Date: Wed, 24 Jul 2019 11:22:32 +0200
+Subject: [PATCH] dmeventd configurable idle exit time
+
+dmeventd nominally exits after 1 hour of idle time. There are use cases for
+this, esp. with socket activation, but also cases where users don't expect
+dmeventd to exit.
+
+Provide a tuning knob via environment variable, DMEVENTD_IDLE_EXIT_TIMEOUT,
+that can be -1 to not exit, or a configurable time for different idle exit.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+Fixes: https://bugs.gentoo.org/682556
+---
+ daemons/dmeventd/dmeventd.c | 16 ++++++++++++++--
+ man/dmeventd.8_main         |  4 ++++
+ 2 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/daemons/dmeventd/dmeventd.c b/daemons/dmeventd/dmeventd.c
+index 33859ef414..ac0b9743fc 100644
+--- a/daemons/dmeventd/dmeventd.c
++++ b/daemons/dmeventd/dmeventd.c
+@@ -2169,6 +2169,18 @@
+ 		.server_path = DM_EVENT_FIFO_SERVER
+ 	};
+ 	time_t now, idle_exit_timeout = DMEVENTD_IDLE_EXIT_TIMEOUT;
++
++	/* Provide a basic way to config the idle timeout */
++	char* idle_exit_timeout_env = getenv("DMEVENTD_IDLE_EXIT_TIMEOUT") ? : NULL;
++	if(NULL != idle_exit_timeout_env) {
++		char* endptr;
++		idle_exit_timeout = strtol(idle_exit_timeout_env, &endptr, 10);
++		if (errno == ERANGE || *endptr != '\0') {
++			fprintf(stderr, "DMEVENTD_IDLE_EXIT_TIMEOUT: bad time input\n");
++			exit(EXIT_FAILURE);
++		}
++	}
++
+ 	opterr = 0;
+ 	optind = 0;
+ 
+@@ -2265,7 +2277,7 @@
+ 		_process_initial_registrations();
+ 
+ 	for (;;) {
+-		if (_idle_since) {
++		if (_idle_since || _exit_now) {
+ 			if (_exit_now) {
+ 				if (_exit_now == DM_SCHEDULED_EXIT)
+ 					break; /* Only prints shutdown message */
+@@ -2274,7 +2286,7 @@
+ 					 (long) (time(NULL) - _idle_since));
+ 				break;
+ 			}
+-			if (idle_exit_timeout) {
++			if (idle_exit_timeout && idle_exit_timeout > 0) {
+ 				now = time(NULL);
+ 				if (now < _idle_since)
+ 					_idle_since = now; /* clock change? */
+--- a/man/dmeventd.8_main
++++ b/man/dmeventd.8_main
+@@ -169,6 +169,10 @@
+ Variable is set by thin and vdo plugin to prohibit recursive interaction
+ with dmeventd by any executed lvm2 command from
+ a thin_command, vdo_command environment.
++.TP
++.B DMEVENTD_IDLE_EXIT_TIMEOUT
++Configure the dmeventd idle exit timeout behavior, value in seconds. Default
++is 3600 (1 hour). -1 means do not exit.
+ .
+ .SH SEE ALSO
+ .

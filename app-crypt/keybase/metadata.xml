@@ -13,6 +13,9 @@
 		The official Keybase secure messaging, file-sharing, and key directory
 		client for Linux.
 	</longdescription>
+	<use>
+		<flag name="fuse">Enable app-crypt/kbfs support</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">keybase/client</remote-id>
 	</upstream>

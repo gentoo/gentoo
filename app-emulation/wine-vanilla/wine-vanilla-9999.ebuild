@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ IUSE="
 	+X +abi_x86_32 +abi_x86_64 +alsa capi crossdev-mingw cups dos
 	llvm-libunwind debug custom-cflags +fontconfig +gecko gphoto2
 	+gstreamer kerberos +mingw +mono netapi nls odbc opencl +opengl
-	osmesa pcap perl pulseaudio samba scanner +sdl selinux +ssl
+	osmesa pcap perl pulseaudio samba scanner +sdl selinux smartcard +ssl
 	+truetype udev udisks +unwind usb v4l +vulkan +xcomposite xinerama"
 REQUIRED_USE="
 	X? ( truetype )
@@ -85,6 +85,7 @@ WINE_COMMON_DEPEND="
 	pcap? ( net-libs/libpcap[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-libs/libpulse[${MULTILIB_USEDEP}] )
 	scanner? ( media-gfx/sane-backends[${MULTILIB_USEDEP}] )
+	smartcard? ( sys-apps/pcsc-lite[${MULTILIB_USEDEP}] )
 	udev? ( virtual/libudev:=[${MULTILIB_USEDEP}] )
 	unwind? (
 		llvm-libunwind? ( sys-libs/llvm-libunwind[${MULTILIB_USEDEP}] )
@@ -200,6 +201,7 @@ src_configure() {
 		$(use_with pulseaudio pulse)
 		$(use_with scanner sane)
 		$(use_with sdl)
+		$(use_with smartcard pcsclite)
 		$(use_with ssl gnutls)
 		$(use_with truetype freetype)
 		$(use_with udev)

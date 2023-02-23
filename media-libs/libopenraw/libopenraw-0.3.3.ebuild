@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,7 +45,7 @@ SRC_URI+=" $(cargo_crate_uris)"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0/9"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="gtk test"
 RESTRICT="!test? ( test )"
 

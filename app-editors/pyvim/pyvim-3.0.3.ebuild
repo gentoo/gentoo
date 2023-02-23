@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="
 	dev-python/docopt[${PYTHON_USEDEP}]
-	dev-python/prompt_toolkit[${PYTHON_USEDEP}]
+	dev-python/prompt-toolkit[${PYTHON_USEDEP}]
 	dev-python/pyflakes[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]

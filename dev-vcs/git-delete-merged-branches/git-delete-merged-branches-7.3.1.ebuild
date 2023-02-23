@@ -19,7 +19,7 @@ IUSE="full-name-executable test"
 
 COMMON_DEPEND="
 	>=dev-python/colorama-0.4.3[${PYTHON_USEDEP}]
-	>=dev-python/prompt_toolkit-3.0.18[${PYTHON_USEDEP}]
+	>=dev-python/prompt-toolkit-3.0.18[${PYTHON_USEDEP}]
 "
 DEPEND="${COMMON_DEPEND}
 	test? ( dev-python/parameterized[${PYTHON_USEDEP}] )

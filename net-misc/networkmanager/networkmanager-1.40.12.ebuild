@@ -130,31 +130,6 @@ python_check_deps() {
 	fi
 }
 
-sysfs_deprecated_check() {
-	ebegin "Checking for SYSFS_DEPRECATED support"
-
-	if { linux_chkconfig_present SYSFS_DEPRECATED_V2; }; then
-		eerror "Please disable SYSFS_DEPRECATED_V2 support in your kernel config and recompile your kernel"
-		eerror "or NetworkManager will not work correctly."
-		eerror "See https://bugs.gentoo.org/333639 for more info."
-		die "CONFIG_SYSFS_DEPRECATED_V2 support detected!"
-	fi
-	eend $?
-}
-
-pkg_pretend() {
-	if use kernel_linux; then
-		get_version
-		if linux_config_exists; then
-			sysfs_deprecated_check
-		else
-			ewarn "Was unable to determine your kernel .config"
-			ewarn "Please note that if CONFIG_SYSFS_DEPRECATED_V2 is set in your kernel .config, NetworkManager will not work correctly."
-			ewarn "See https://bugs.gentoo.org/333639 for more info."
-		fi
-	fi
-}
-
 pkg_setup() {
 	if use connection-sharing; then
 		if kernel_is lt 5 1; then

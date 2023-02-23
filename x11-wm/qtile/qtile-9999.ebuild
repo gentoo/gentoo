@@ -16,13 +16,15 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/qtile/qtile.git"
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="pulseaudio wayland"
 
+# See bug #895722 and https://github.com/qtile/qtile/pull/3985 regarding
+# pywlroots-0.15 dep.
 RDEPEND="
 	>=dev-python/cairocffi-0.9.0[${PYTHON_USEDEP}]
 	>=dev-python/cffi-1.1.0[${PYTHON_USEDEP}]
@@ -37,7 +39,7 @@ RDEPEND="
 		media-sound/pulseaudio
 	)
 	wayland? (
-		dev-python/pywlroots[${PYTHON_USEDEP}]
+		=dev-python/pywlroots-0.15*[${PYTHON_USEDEP}]
 	)
 "
 BDEPEND="
@@ -83,7 +85,7 @@ python_test() {
 	# Force usage of built module
 	rm -rf "${S}"/libqtile || die
 
-	# TODO: remove "-p no:xdist" when https://github.com/qtile/qtile/issues/1634 will be resolved.
+	# TODO: remove "-p no:xdist" for next release when https://github.com/qtile/qtile/issues/1634 will be resolved.
 	epytest -p no:xdist --backend=x11 $(usev wayland '--backend=wayland') || die "Tests failed with ${EPYTHON}"
 }
 

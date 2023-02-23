@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="google-code">phpvirtualbox</remote-id>
+		<remote-id type="github">phpvirtualbox/phpvirtualbox</remote-id>
 		<remote-id type="sourceforge">phpvirtualbox</remote-id>
 	</upstream>
 </pkgmetadata>

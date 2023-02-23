@@ -1,0 +1,74 @@
+https://bugs.gentoo.org/892549
+https://github.com/gentoo/binutils-gdb/pull/4
+
+From 1601840f9f2397edd56177871527a198a14277bd Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 11 Feb 2023 15:15:20 +0000
+Subject: [PATCH 1/2] ldelf.c: Always consider -L arguments when handling
+ DT_NEEDED
+
+This is for consistency with other linkers, including gold. Without
+this, we typically rely on ld.so.conf to find libraries such as
+libstdc++.so.6, while other linkers do not use this file at all.
+--- a/ld/ldelf.c
++++ b/ld/ldelf.c
+@@ -1090,8 +1090,8 @@ ldelf_handle_dt_needed (struct elf_link_hash_table *htab,
+ 	 linker will search.  That means that we want to use
+ 	 rpath_link, rpath, then the environment variable
+ 	 LD_LIBRARY_PATH (native only), then the DT_RPATH/DT_RUNPATH
+-	 entries (native only), then the linker script LIB_SEARCH_DIRS.
+-	 We do not search using the -L arguments.
++	 entries (native only), then the linker script LIB_SEARCH_DIRS,
++	 then the -L arguments.
+ 
+ 	 We search twice.  The first time, we skip objects which may
+ 	 introduce version mismatches.  The second time, we force
+@@ -1165,11 +1165,7 @@ ldelf_handle_dt_needed (struct elf_link_hash_table *htab,
+ 	  len = strlen (l->name);
+ 	  for (search = search_head; search != NULL; search = search->next)
+ 	    {
+-	      char *filename;
+-
+-	      if (search->cmdline)
+-		continue;
+-	      filename = (char *) xmalloc (strlen (search->name) + len + 2);
++	      char *filename = (char *) xmalloc (strlen (search->name) + len + 2);
+ 	      sprintf (filename, "%s/%s", search->name, l->name);
+ 	      nn.name = filename;
+ 	      if (ldelf_try_needed (&nn, force, is_linux))
+
+From 8afc65c8d8c0fff2f686ddd8eb9023c7ebabcca9 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 11 Feb 2023 15:18:58 +0000
+Subject: [PATCH 2/2] ldelf.c: Do not search for libraries using ld.so.conf
+
+Other linkers do not do this. It is problematic for Gentoo Linux,
+because crossdev installs libraries such as libstdc++.so.6 outside of
+the sysroot.
+--- a/ld/ld.texi
++++ b/ld/ld.texi
+@@ -2355,7 +2355,9 @@ For a linker for a Linux system, if the file @file{/etc/ld.so.conf}
+ exists, the list of directories found in that file.  Note: the path
+ to this file is prefixed with the @code{sysroot} value, if that is
+ defined, and then any @code{prefix} string if the linker was
+-configured with the @command{--prefix=<path>} option.
++configured with the @command{--prefix=<path>} option. This has feature has
++been disabled on Gentoo Linux to make it consistent with the other
++linkers, which do not do this.
+ @item
+ For a native linker on a FreeBSD system, any directories specified by
+ the @code{_PATH_ELF_HINTS} macro defined in the @file{elf-hints.h}
+--- a/ld/ldelf.c
++++ b/ld/ldelf.c
+@@ -1156,10 +1156,6 @@ ldelf_handle_dt_needed (struct elf_link_hash_table *htab,
+ 	      if (is_freebsd
+ 		  && ldelf_check_ld_elf_hints (l, force, elfsize))
+ 		break;
+-
+-	      if (is_linux
+-		  && ldelf_check_ld_so_conf (l, force, elfsize, prefix))
+-		break;
+ 	    }
+ 
+ 	  len = strlen (l->name);
+

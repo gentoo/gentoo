@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~x86"
 IUSE="examples"
 
 # https://github.com/kennethreitz-archive/clint/pull/180

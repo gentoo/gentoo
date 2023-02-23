@@ -1,0 +1,15 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -241,2 +241,3 @@
+ opts.Add("CC", "C compiler")
++opts.Add("AR", "Archiver")
+ opts.Add("LINK", "Linker")
+@@ -569,8 +570,2 @@
+                 env.Append(CCFLAGS=["-g2"])
+-        else:
+-            if methods.using_clang(env) and not methods.is_vanilla_clang(env):
+-                # Apple Clang, its linker doesn't like -s.
+-                env.Append(LINKFLAGS=["-Wl,-S", "-Wl,-x", "-Wl,-dead_strip"])
+-            else:
+-                env.Append(LINKFLAGS=["-s"])
+ 

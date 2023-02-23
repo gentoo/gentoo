@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.47.0-disable-shellext_conf.patch
 	"${FILESDIR}"/${PN}-3.52.2-slibtool.patch
 	"${FILESDIR}"/${PN}-3.60.1-desktop.patch
+	"${FILESDIR}"/${PN}-3.63.1-wxversion.patch
 )
 
 src_prepare() {

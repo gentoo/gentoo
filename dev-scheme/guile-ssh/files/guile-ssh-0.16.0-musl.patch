@@ -1,0 +1,10 @@
+--- a/libguile-ssh/log.c
++++ b/libguile-ssh/log.c
+@@ -29,7 +29,6 @@
+ #include <stdio.h>              /* DEBUG */
+ #include <unistd.h>             /* DEBUG */
+ 
+-#include <execinfo.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ 
