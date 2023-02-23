@@ -117,7 +117,7 @@ CONFIG_CHECK="~BLK_DEV_BSG ~DEVTMPFS ~!IDE ~INOTIFY_USER ~!SYSFS_DEPRECATED
 	~!SYSFS_DEPRECATED_V2 ~SIGNALFD ~EPOLL ~FHANDLE ~NET ~UNIX"
 
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != buildonly ]]; then
+	if [[ ${MERGE_TYPE} != buildonly ]] && use udev; then
 		linux-info_pkg_setup
 	fi
 }
