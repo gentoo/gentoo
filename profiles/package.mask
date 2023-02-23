@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2023-02-23)
+# Masked for testing. Apparently not all incompatibilities with
+# sexpdata-0.0.4 have been resolved.
+~app-portage/gs-elpa-0.2.2
+
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-02-23)
 # No revdeps left. Bug #745234
 # Removal in 30 days.
