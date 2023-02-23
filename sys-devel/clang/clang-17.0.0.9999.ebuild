@@ -277,6 +277,9 @@ multilib_src_configure() {
 
 		# disable using CUDA to autodetect GPU, just build for all
 		-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=ON
+		# disable linking to HSA to avoid automagic dep,
+		# load it dynamically instead
+		-DCMAKE_DISABLE_FIND_PACKAGE_hsa-runtime64=ON
 
 		-DCLANG_DEFAULT_PIE_ON_LINUX=$(usex pie)
 
