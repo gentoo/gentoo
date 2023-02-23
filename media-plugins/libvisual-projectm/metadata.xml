@@ -10,6 +10,7 @@
 		<name>Sebastian Pipping</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">projectM-visualizer/frontend-libvisual-plug-in</remote-id>
 		<remote-id type="sourceforge">projectm</remote-id>
 	</upstream>
 </pkgmetadata>
