@@ -47,7 +47,6 @@ src_prepare() {
 src_compile() {
 	for shell in bash zsh; do
 		./scala-cli install-completions \
-					--home "${T}" \
 					--shell ${shell} \
 					--env \
 					--output "${S}" \
