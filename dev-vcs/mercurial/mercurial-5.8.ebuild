@@ -143,7 +143,7 @@ IUSE="+chg emacs gpg test tk rust"
 BDEPEND="rust? ( ${RUST_DEPEND} )"
 RDEPEND="
 	app-misc/ca-certificates
-	dev-python/python-zstandard[${PYTHON_USEDEP}]
+	dev-python/zstandard[${PYTHON_USEDEP}]
 	gpg? ( app-crypt/gnupg )
 	tk? ( dev-lang/tk )"
 

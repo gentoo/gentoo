@@ -6,4 +6,7 @@
 		Also known as "pthreads-win32", POSIX Threads for Windows implements a large
 		subset of the threads related API from the Single Unix Specification Version 3.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">pthreads4w</remote-id>
+	</upstream>
 </pkgmetadata>

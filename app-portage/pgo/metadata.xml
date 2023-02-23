@@ -11,4 +11,7 @@
 		a list of outdated packages, or bugs related to the packages they are
 		maintaining.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">arzano/pgo</remote-id>
+	</upstream>
 </pkgmetadata>

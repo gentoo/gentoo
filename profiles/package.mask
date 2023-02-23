@@ -33,6 +33,31 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2023-02-23)
+# Deprecated upstream. Use the progressive web app instead.
+# Removal on 2023-03-26. Bug 880425.
+net-im/teams
+
+# Ulrich Müller <ulm@gentoo.org> (2023-02-23)
+# Masked for testing. Apparently not all incompatibilities with
+# sexpdata-0.0.4 have been resolved.
+~app-portage/gs-elpa-0.2.2
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-02-23)
+# No revdeps left. Bug #745234
+# Removal in 30 days.
+dev-libs/qtcompress
+
+# Alfredo Tupone <tupone@gentoo.org> (2023-02-22)
+# Masked for removal in 30 days.
+# Not maintained (2021), no rev dep
+dev-python/quex
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-02-20)
+# Unused Java libraries. Removal on 2023-03-22.
+dev-java/jboss-modules
+dev-java/sac
+
 # Michał Górny <mgorny@gentoo.org> (2023-02-20)
 # No declared Python 3.11 support.  Multiple failing tests (probably due
 # to being online tests).  Last release in 2021, upstream CI is all red.

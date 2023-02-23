@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mitmproxy/mitmproxy/archive/${PV}.tar.gz -> ${P}.gh.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 
 RDEPEND="
 	>=app-arch/brotli-1.0.0[python,${PYTHON_USEDEP}]
@@ -35,7 +35,7 @@ RDEPEND="
 	>=dev-python/pyopenssl-22.1[${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-2.4.2[${PYTHON_USEDEP}]
 	>=dev-python/pyperclip-1.6.0[${PYTHON_USEDEP}]
-	>=dev-python/python-zstandard-0.11.0[${PYTHON_USEDEP}]
+	>=dev-python/zstandard-0.11.0[${PYTHON_USEDEP}]
 	>=dev-python/ruamel-yaml-0.16[${PYTHON_USEDEP}]
 	>=dev-python/sortedcontainers-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/tornado-6.1[${PYTHON_USEDEP}]

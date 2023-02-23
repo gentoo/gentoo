@@ -1,0 +1,11 @@
+--- a/udev/69-dm-lvm.rules.in
++++ b/udev/69-dm-lvm.rules.in
+@@ -76,7 +76,7 @@
+ # it's better suited to appearing in the journal.
+ 
+ IMPORT{program}="(LVM_EXEC)/lvm pvscan --cache --listvg --checkcomplete --vgonline --autoactivation event --udevoutput --journal=output $env{DEVNAME}"
+-ENV{LVM_VG_NAME_COMPLETE}=="?*", RUN+="(SYSTEMDRUN) --no-block --property DefaultDependencies=no --unit lvm-activate-$env{LVM_VG_NAME_COMPLETE} (LVM_EXEC)/lvm vgchange -aay --autoactivation event $env{LVM_VG_NAME_COMPLETE}"
++ENV{LVM_VG_NAME_COMPLETE}=="?*", RUN+="(LVM_EXEC)/lvm vgchange -aay --nohints --autoactivation event $env{LVM_VG_NAME_COMPLETE}"
+ GOTO="lvm_end"
+ 
+ LABEL="lvm_end"

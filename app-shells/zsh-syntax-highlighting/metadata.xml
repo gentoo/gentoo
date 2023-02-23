@@ -3,4 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">zsh-users/zsh-syntax-highlighting</remote-id>
+	</upstream>
 </pkgmetadata>

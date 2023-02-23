@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..10} )
-WX_GTK_VER="3.0-gtk3"
+WX_GTK_VER="3.2-gtk3"
 
 inherit check-reqs cmake optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
 
@@ -50,7 +50,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[context,nls,python,${PYTHON_USEDEP}]
-		dev-python/wxpython:4.0[${PYTHON_USEDEP}]
+		~dev-python/wxpython-4.2.0:*[${PYTHON_USEDEP}]
 	')
 	${PYTHON_DEPS}
 	ngspice? (
@@ -73,6 +73,10 @@ if [[ ${PV} == 9999 ]] ; then
 fi
 
 CHECKREQS_DISK_BUILD="900M"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.0.0-werror.patch
+)
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -97,6 +101,7 @@ src_configure() {
 		-DKICAD_DOCS="${EPREFIX}/usr/share/doc/${PN}-doc-${PV}"
 
 		-DKICAD_SCRIPTING_WXPYTHON=ON
+		-DKICAD_USE_EGL=ON
 
 		-DKICAD_BUILD_I18N="$(usex nls)"
 		-DKICAD_I18N_UNIX_STRICT_PATH="$(usex nls)"
@@ -137,10 +142,11 @@ src_install() {
 	cmake_src_install
 	python_optimize
 
+	dodoc doxygen/eagle-plugin-notes.txt
+
 	if use doc ; then
-		dodoc uncrustify.cfg
-		cd Documentation || die
-		dodoc -r *.txt kicad_doxygen_logo.png notes_about_pcbnew_new_file_format.odt doxygen/.
+		cd doxygen || die
+		dodoc -r out/html/.
 	fi
 }
 

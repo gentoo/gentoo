@@ -1,0 +1,41 @@
+used to work due to inconsistent mediafile implementation, but with
+https://github.com/beetbox/mediafile/pull/64 (in mediafile >= 0.11.0)
+list fields are None if non-existent, not the empty list
+
+Upstream-PR: https://github.com/beetbox/beets/pull/4593
+
+diff --git a/test/test_embedart.py b/test/test_embedart.py
+index 6b6d616..bc550a8 100644
+--- a/test/test_embedart.py
++++ b/test/test_embedart.py
+@@ -81,7 +81,7 @@ class EmbedartCliTest(_common.TestCase, TestHelper):
+         self.run_command('embedart', '-f', self.small_artpath)
+         mediafile = MediaFile(syspath(item.path))
+         # make sure that images array is empty (nothing embedded)
+-        self.assertEqual(len(mediafile.images), 0)
++        self.assertFalse(mediafile.images)
+ 
+     def test_embed_art_from_file(self):
+         self._setup_data()
+@@ -202,7 +202,7 @@ class EmbedartCliTest(_common.TestCase, TestHelper):
+         self.io.addinput('y')
+         self.run_command('clearart')
+         mediafile = MediaFile(syspath(item.path))
+-        self.assertEqual(len(mediafile.images), 0)
++        self.assertFalse(mediafile.images)
+ 
+     def test_clear_art_with_no_input(self):
+         self._setup_data()
+diff --git a/test/test_zero.py b/test/test_zero.py
+index c4c1769..b48367b 100644
+--- a/test/test_zero.py
++++ b/test/test_zero.py
+@@ -103,7 +103,7 @@ class ZeroPluginTest(unittest.TestCase, TestHelper):
+         item.write()
+ 
+         mf = MediaFile(syspath(path))
+-        self.assertEqual(0, len(mf.images))
++        self.assertFalse(mf.images)
+ 
+     def test_auto_false(self):
+         self.config['zero']['fields'] = ['year']

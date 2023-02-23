@@ -156,5 +156,7 @@ python_test() {
 	)
 
 	rm -rf qiskit || die
-	epytest -p xdist -n "$(makeopts_jobs)"
+	# Run the Python test suite rather than everything under test/ which
+	# includes the 'randomized' suite. Upstream run that in a separate CI job.
+	epytest -p xdist -n "$(makeopts_jobs)" test/python
 }

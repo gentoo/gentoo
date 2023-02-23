@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..10} )
 inherit cmake llvm.org multilib-minimal pax-utils python-any-r1 \
-	toolchain-funcs
+	toolchain-funcs flag-o-matic
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
@@ -321,12 +321,13 @@ get_distribution_components() {
 }
 
 multilib_src_configure() {
+	tc-is-gcc && filter-lto # GCC miscompiles LLVM, bug #873670
+
 	local ffi_cflags ffi_ldflags
 	if use libffi; then
 		ffi_cflags=$($(tc-getPKG_CONFIG) --cflags-only-I libffi)
 		ffi_ldflags=$($(tc-getPKG_CONFIG) --libs-only-L libffi)
 	fi
-
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
 		# disable appending VCS revision to the version to improve

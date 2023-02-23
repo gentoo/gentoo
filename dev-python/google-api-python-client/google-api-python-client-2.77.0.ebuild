@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
 	>=dev-python/httplib2-0.15[${PYTHON_USEDEP}]

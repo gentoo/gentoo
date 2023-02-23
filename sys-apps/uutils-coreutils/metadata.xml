@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>lu_zero@gentoo.org</email>
+		<name>Luca Barbato</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
+	<longdescription>
+		Standard GNU file utilities (chmod, cp, dd, dir, ls, ...), text utilities (sort, tr, head, wc, ...), and shell utilities (whoami, who, ...), written in Rust
+	</longdescription>
+	<upstream>
+		<remote-id type="github">uutils/coreutils</remote-id>
+	</upstream>
+</pkgmetadata>

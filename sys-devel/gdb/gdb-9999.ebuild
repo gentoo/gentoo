@@ -147,7 +147,7 @@ src_configure() {
 		--with-bugurl='https://bugs.gentoo.org/'
 		--disable-werror
 		# Disable modules that are in a combined binutils/gdb tree. bug #490566
-		--disable-{binutils,etc,gas,gold,gprof,ld}
+		--disable-{binutils,etc,gas,gold,gprof,gprofng,ld}
 
 		# avoid automagic dependency on (currently prefix) systems
 		# systems with debuginfod library, bug #754753

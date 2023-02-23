@@ -15,7 +15,8 @@ fi
 
 QA_PKGCONFIG_VERSION=$(ver_cut 1)
 
-inherit bash-completion-r1 flag-o-matic meson-multilib python-any-r1 toolchain-funcs udev usr-ldscript
+inherit bash-completion-r1 flag-o-matic linux-info meson-multilib python-any-r1
+inherit toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Utilities split out from systemd for OpenRC users"
 HOMEPAGE="https://systemd.io/"
@@ -111,6 +112,15 @@ python_check_deps() {
 
 QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
 QA_FLAGS_IGNORED="usr/lib/systemd/boot/efi/.*"
+
+CONFIG_CHECK="~BLK_DEV_BSG ~DEVTMPFS ~!IDE ~INOTIFY_USER ~!SYSFS_DEPRECATED
+	~!SYSFS_DEPRECATED_V2 ~SIGNALFD ~EPOLL ~FHANDLE ~NET ~UNIX"
+
+pkg_setup() {
+	if [[ ${MERGE_TYPE} != buildonly ]] && use udev; then
+		linux-info_pkg_setup
+	fi
+}
 
 src_prepare() {
 	local PATCHES=(

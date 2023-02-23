@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{3,4} )
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit autotools lua-single perl-module python-single-r1 toolchain-funcs
 

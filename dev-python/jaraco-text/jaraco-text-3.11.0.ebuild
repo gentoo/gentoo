@@ -25,9 +25,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv 
 RDEPEND="
 	>=dev-python/jaraco-context-4.1.1-r1[${PYTHON_USEDEP}]
 	>=dev-python/jaraco-functools-3.5.0-r1[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/importlib_resources-5.4.0-r3[${PYTHON_USEDEP}]
-	' 3.8)
 "
 # needed only for CLI tool, make it PDEPEND to reduce pain in setuptools
 # bootstrap
@@ -41,7 +38,7 @@ BDEPEND="
 		${PDEPEND}
 		$(python_gen_cond_dep '
 			dev-python/pathlib2[${PYTHON_USEDEP}]
-		' 3.8 3.9)
+		' 3.9)
 	)
 "
 

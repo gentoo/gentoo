@@ -96,7 +96,7 @@ LICENSE="|| ( Apache-2.0 BSD ) PSF-2"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD-2 BSD MIT Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 sparc ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	>=dev-libs/openssl-1.0.2o-r6:0=

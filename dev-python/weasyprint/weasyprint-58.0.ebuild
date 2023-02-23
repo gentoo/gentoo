@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=flit
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Visual rendering engine for HTML and CSS that can export to PDF"
 HOMEPAGE="
@@ -14,7 +14,6 @@ HOMEPAGE="
 	https://github.com/Kozea/WeasyPrint/
 	https://pypi.org/project/weasyprint/
 "
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

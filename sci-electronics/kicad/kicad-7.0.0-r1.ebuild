@@ -77,6 +77,8 @@ CHECKREQS_DISK_BUILD="900M"
 PATCHES=(
 	# https://bugs.gentoo.org/895188
 	"${FILESDIR}"/${PN}-7.0.0-wxwidgets-version.patch
+
+	"${FILESDIR}"/${PN}-7.0.0-werror.patch
 )
 
 pkg_setup() {
@@ -143,10 +145,11 @@ src_install() {
 	cmake_src_install
 	python_optimize
 
+	dodoc doxygen/eagle-plugin-notes.txt
+
 	if use doc ; then
-		dodoc uncrustify.cfg
-		cd Documentation || die
-		dodoc -r *.txt kicad_doxygen_logo.png notes_about_pcbnew_new_file_format.odt doxygen/.
+		cd doxygen || die
+		dodoc -r out/html/.
 	fi
 }
 

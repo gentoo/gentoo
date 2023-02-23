@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+    <!-- maintainer-needed -->
     <longdescription>
         Library for creating and parsing the configuration
         file for the WayfireWM while also allowing you to
         make changes in the configuration and reload them on
         the fly.
     </longdescription>
-    <!-- maintainer-needed -->
-    </pkgmetadata>
+    <upstream>
+        <remote-id type="github">WayfireWM/wf-config</remote-id>
+    </upstream>
+</pkgmetadata>

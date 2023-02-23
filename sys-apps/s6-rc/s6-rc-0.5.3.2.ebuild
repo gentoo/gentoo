@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -48,4 +48,15 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
+}
+
+pkg_postinst() {
+	for ver in ${REPLACING_VERSIONS}; do
+		if ver_test "${ver}" -ge "0.5.4.0"; then
+			elog "Location of helper utilities was changed from /usr/libexec to /lib/s6 in"
+			elog "version 0.5.4.0. It is necessary to recompile and update s6-rc database and"
+			elog "restart s6rc-oneshot-runner service because you are downgrading from newer"
+			elog "version."
+		fi
+	done
 }
