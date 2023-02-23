@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-02-23)
+# No revdeps left. Bug #745234
+# Removal in 30 days.
+dev-libs/qtcompress
+
 # Alfredo Tupone <tupone@gentoo.org> (2023-02-22)
 # Masked for removal in 30 days.
 # Not maintained (2021), no rev dep
@@ -178,11 +183,6 @@ net-misc/gsutil
 # Removal on 2023-03-04.  Bug #888239.
 dev-python/citeproc-py
 dev-python/duecredit
-
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2023-02-02)
-# No revdeps left. Bug #745234
-# Removal in 30 days.
-dev-libs/qtcompress
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-01)
 # dev-python/blockdiag still requires dev-python/nose.  There was a PR
