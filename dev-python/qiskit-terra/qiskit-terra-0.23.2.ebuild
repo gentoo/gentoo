@@ -169,5 +169,6 @@ python_test() {
 	rm -rf qiskit || die
 	# Run the Python test suite rather than everything under test/ which
 	# includes the 'randomized' suite. Upstream run that in a separate CI job.
-	epytest -p timeout -p xdist -n "$(makeopts_jobs)" --timeout 500 test/python
+	# Note: use -p timeout --timeout 500 if debugging hanging tests.
+	epytest -p xdist -n "$(makeopts_jobs)" test/python
 }
