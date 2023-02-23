@@ -39,5 +39,8 @@ src_prepare() {
 }
 
 python_test() {
+	# we need to set PYTHONPATH explicitly since the test runs installed
+	# pylint (i.e. starts outside the test venv)
+	local -x PYTHONPATH=${S}:${PYTHONPATH}
 	bash test/test.sh || die "Test failed with ${EPYTHON}"
 }
