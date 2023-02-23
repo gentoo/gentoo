@@ -323,7 +323,7 @@ get_distribution_components() {
 }
 
 multilib_src_configure() {
-	tcc-is-gcc && filter-lto # GCC miscompiles LLVM, bug #873670
+	tc-is-gcc && filter-lto # GCC miscompiles LLVM, bug #873670
 
 	local ffi_cflags ffi_ldflags
 	if use libffi; then
