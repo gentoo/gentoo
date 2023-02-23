@@ -20,16 +20,9 @@ LICENSE="ISC"
 SLOT="0"
 IUSE="examples"
 
-DEPEND="elibc_musl? ( sys-libs/queue-standalone )"
-
-src_prepare() {
-	default
-
-	# The bundled copy includes cdefs which breaks on musl and
-	# this header is already available on glibc.
-	# bug #828806
-	rm include/sys/queue.h || die
-}
+PATCHES=(
+	"${FILESDIR}/aml-sys-queue-cdefs.patch"
+)
 
 src_configure() {
 	local emesonargs=(
