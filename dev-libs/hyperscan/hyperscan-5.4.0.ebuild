@@ -55,3 +55,11 @@ src_configure() {
 src_test() {
 	"${BUILD_DIR}"/bin/unit-hyperscan || die
 }
+
+pkg_postinst() {
+	if has_version 'mail-filter/rspamd'; then
+		elog "There is known issue with mail-filter/rspamd when hyperscan version changes."
+		elog "Known workaround is to remove hyperscan databases ${EROOT}/var/lib/rspamd/*.hs*"
+		elog "See https://github.com/rspamd/rspamd/issues/4409 for more information."
+	fi
+}
