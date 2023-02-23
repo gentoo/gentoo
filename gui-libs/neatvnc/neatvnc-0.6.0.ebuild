@@ -23,7 +23,7 @@ REQUIRED_USE="h264? ( gbm )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/aml
+	>=dev-libs/aml-0.3
 	sys-libs/zlib
 	x11-libs/pixman
 	gbm? ( media-libs/mesa )
