@@ -359,7 +359,7 @@ BDEPEND="
 
 # rust does not use *FLAGS from make.conf, silence portage warning
 # update with proper path to binaries this crate installs, omit leading /
-QA_FLAGS_IGNORED="usr/bin/ruff usr/lib*/libruff.so"
+QA_FLAGS_IGNORED="usr/bin/ruff usr/lib.*/libruff.so"
 
 # haven't been able to figure out how to get tests working yet
 RESTRICT=test
