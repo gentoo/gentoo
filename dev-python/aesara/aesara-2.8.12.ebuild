@@ -52,8 +52,6 @@ src_prepare() {
 	# do not claim "bin" package (sic!)
 	rm bin/__init__.py || die
 	distutils-r1_src_prepare
-
-	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 }
 
 python_test() {
