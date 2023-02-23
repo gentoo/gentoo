@@ -56,6 +56,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-lua-pkgconfig-pt2.patch"
 	"${FILESDIR}/${P}-define-P-macro-in-libvbr.patch"
 	"${FILESDIR}/${P}-fix-libmilter-search.patch"
+	"${FILESDIR}/${P}-snprintf-include.patch"
+	"${FILESDIR}/${P}-c-std.patch"
 )
 
 pkg_setup() {
