@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-02-24)
+# Unmaintained.  Does not build against the current version
+# of app-text/htmltidy.  Last upstream commit in 2013.
+# Removal on 2023-03-26.  Bug #806480.
+net-misc/cbugzilla
+
 # Matt Turner <mattst88@gentoo.org> (2023-02-23)
 # Added by proxied maintainer who then quit (twice) and deleted the github repo
 # SRC_URI pointed at.
