@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-24)
+# Outdated package with non-trivial bump.  Needs update to follow modern
+# Python packaging standards.  No revdeps.
+# Removal on 2023-03-26.  Bug #890385.
+dev-python/hiredis
+
+# Michał Górny <mgorny@gentoo.org> (2023-02-24)
 # Unmaintained with multiple build failures reported.  The current
 # Gentoo version is from 2015, and is a few releases behind upstream.
 # Removal on 2023-03-26.  Bug #894626.
