@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_IN_SOURCE_BUILD=1
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 flag-o-matic
 
@@ -23,8 +23,6 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
