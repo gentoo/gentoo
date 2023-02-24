@@ -104,7 +104,7 @@ src_prepare() {
 	# fix for parallel install
 	sed -i "/^if ENABLE_PYTHON2/,/^endif/d" bindings/pygobject/Makefile.am || die
 	# require user interaction
-	sed -i "/^TESTS += ibus-\(compose\|keypress\)/d" src/tests/Makefile.am || die
+	sed -i "/^TESTS_C += ibus-\(compose\|keypress\)/d" src/tests/Makefile.am || die
 
 	sed -i "/^bash_completion/d" tools/Makefile.am || die
 
