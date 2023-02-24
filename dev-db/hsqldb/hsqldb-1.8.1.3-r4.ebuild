@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-mac
 CDEPEND="
 	acct-group/hsqldb
 	acct-user/hsqldb
-	dev-java/tomcat-servlet-api:4.0"
+	dev-java/jakarta-servlet-api:4"
 RDEPEND="${CDEPEND}
 	virtual/jre:1.8"
 DEPEND="${CDEPEND}
@@ -77,7 +77,7 @@ JAVA_ANT_REWRITE_CLASSPATH="yes"
 EANT_BUILD_XML="build/build.xml"
 EANT_BUILD_TARGET="jar jarclient jarsqltool jarutil"
 EANT_DOC_TARGET="javadocdev"
-EANT_GENTOO_CLASSPATH="tomcat-servlet-api-4.0"
+EANT_GENTOO_CLASSPATH="jakarta-servlet-api-4"
 
 src_test() {
 	java-pkg_jar-from --into lib junit
