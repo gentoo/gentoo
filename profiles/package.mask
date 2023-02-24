@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-24)
+# Unmaintained with multiple build failures reported.  The current
+# Gentoo version is from 2015, and is a few releases behind upstream.
+# Removal on 2023-03-26.  Bug #894626.
+dev-lang/regina-rexx
+
+# Michał Górny <mgorny@gentoo.org> (2023-02-24)
 # Unmaintained with reported bugs.  Last release in 2004.
 # Removal on 2023-03-26.  Bug #740480.
 media-tv/nvtv
