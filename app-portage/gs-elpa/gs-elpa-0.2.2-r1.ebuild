@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9,10} )
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1
 
