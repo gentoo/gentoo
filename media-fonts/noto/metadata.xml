@@ -10,6 +10,9 @@
 		<name>Pacho Ramos</name>
 	</maintainer>
 	<use>
-		<flag name="extra">Install full upstream font set</flag>
+		<flag name="extra">Install full upstream font set including condensed, semi-bold, extra-light variants</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">notofonts/notofonts.github.io</remote-id>
+	</upstream>
 </pkgmetadata>
