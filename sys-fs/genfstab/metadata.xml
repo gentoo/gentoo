@@ -25,6 +25,6 @@
 		l'installazione iniziale e la configurazione di un sistema operativo.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">scardracs/genfstab</remote-id>
+		<remote-id type="github">archlinux/arch-install-scripts</remote-id>
 	</upstream>
 </pkgmetadata>
