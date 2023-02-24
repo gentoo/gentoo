@@ -11,7 +11,7 @@ SRC_URI="http://www.libpng.org/pub/png/src/${P}.tar.gz"
 
 LICENSE="HPND GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="sys-libs/zlib"
 DEPEND="${RDEPEND}"
