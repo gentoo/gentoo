@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,9 +20,8 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="elogind +icons systemd"
 
-DEPEND="
+RDEPEND="
 	dev-libs/wayland
-	dev-util/wayland-scanner
 	x11-libs/pango
 	x11-libs/cairo
 	|| (
@@ -36,13 +35,14 @@ DEPEND="
 		x11-libs/gdk-pixbuf
 	)
 "
-RDEPEND="
-	${DEPEND}
+DEPEND="
+	${RDEPEND}
 	>=dev-libs/wayland-protocols-1.21
 "
 BDEPEND="
-	virtual/pkgconfig
 	app-text/scdoc
+	dev-util/wayland-scanner
+	virtual/pkgconfig
 "
 
 src_configure() {
