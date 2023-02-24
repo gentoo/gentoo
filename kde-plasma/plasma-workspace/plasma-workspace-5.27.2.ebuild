@@ -127,7 +127,6 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/plasma-wayland-protocols-1.6.0
 	>=dev-libs/wayland-protocols-1.31
 	>=dev-qt/qtconcurrent-${QTMIN}:5
-	>=dev-util/wayland-scanner-1.19.0
 	x11-base/xorg-proto
 	fontconfig? ( x11-libs/libXrender )
 "
@@ -154,6 +153,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 BDEPEND="
 	>=dev-qt/qtwaylandscanner-${QTMIN}:5
+	>=dev-util/wayland-scanner-1.19.0
 	>=kde-frameworks/kcmutils-${KFMIN}:5
 	virtual/pkgconfig
 "
