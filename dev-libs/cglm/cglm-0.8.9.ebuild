@@ -10,7 +10,7 @@ SRC_URI="https://github.com/recp/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
