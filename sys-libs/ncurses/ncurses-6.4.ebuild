@@ -242,7 +242,6 @@ do_configure() {
 		$(use_enable kernel_Winnt term-driver)
 		--disable-termcap
 		--enable-symlinks
-		--with-rcs-ids
 		--with-manpage-format=normal
 		--enable-const
 		--enable-colorfgbg
