@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Utilities for TIPC (Transparent Inter-Process Communication)"
-HOMEPAGE="http://tipc.sourceforge.net"
+HOMEPAGE="https://tipc.sourceforge.net"
 SRC_URI="mirror://sourceforge/tipc/${P/-/_}.tgz"
 S="${WORKDIR}"/${PN}
 
