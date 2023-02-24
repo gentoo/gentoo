@@ -1,0 +1,64 @@
+diff --git a/meson.build b/meson.build
+index 41f7e93..faf6e0d 100644
+--- a/meson.build
++++ b/meson.build
+@@ -14,7 +14,7 @@ if host_machine.system() == 'darwin'
+     gsl_shell_defines += '-DDARWIN_MACOSX'
+ endif
+ 
+-gsl_shell_link_args = []
++gsl_shell_link_args = ['-laggplatformX11']
+ cc = meson.get_compiler('c')
+ if cc.get_id() == 'gcc' and get_option('buildtype') == 'release'
+     gsl_shell_link_args += ['-static-libgcc', '-static-libstdc++']
+@@ -25,19 +25,18 @@ cpp_utils_include = include_directories('src/cpp-utils')
+ 
+ threads_dep  = dependency('threads')
+ freetype_dep = dependency('freetype2')
+-fox_dep      = dependency('fox')
+-libagg_dep = dependency('libagg', fallback: ['libagg', 'libagg_dep'])
++fox_dep      = dependency('fox17')
++libagg_dep = dependency('libagg', 'libaggplatformX11', fallback: ['libagg', 'libagg_dep'])
++libX11_dep = dependency('X11')
+ 
+-luajit_proj = subproject('luajit', default_options: ['default_library=static', 'app=false', 'portable=true', 'shortfnsyn=true'])
+-luajit_dep = luajit_proj.get_variable('lua_dep')
++luajit_dep = dependency('luajit')
+ 
+ libgsl_options = ['default_library=static', 'blas=' + get_option('blas')]
+ foreach module_name : ['siman', 'wavelet', 'sparse', 'ode', 'monte', 'integ', 'min', 'fit']
+     libgsl_options += module_name + '=false'
+ endforeach
+ 
+-libgsl_proj = subproject('gsl', default_options: libgsl_options)
+-libgsl_dep = libgsl_proj.get_variable('libgsl_dep').as_link_whole()
++libgsl_dep = dependency('gsl')
+ 
+ gsl_shell_bindir = 'bin'
+ gsl_shell_datadir = 'share/gsl-shell'
+diff --git a/src/console/meson.build b/src/console/meson.build
+index 2f5a3dc..3dfe7a5 100644
+--- a/src/console/meson.build
++++ b/src/console/meson.build
+@@ -1,7 +1,7 @@
+ # Readline not supported with meson build.
+ 
+ executable('gsl-shell', 'gsl-shell-jit.c',
+-    dependencies: [libgsl_dep, libagg_dep, threads_dep, freetype_dep, luajit_dep],
++    dependencies: [libX11_dep, libgsl_dep, libagg_dep, threads_dep, freetype_dep, luajit_dep],
+     include_directories: gsl_shell_include,
+     cpp_args: gsl_shell_defines,
+     link_with: [libluagsl, libaggplot, libgdt],
+diff --git a/src/fox-gui/meson.build b/src/fox-gui/meson.build
+index 8f55259..fecefd7 100644
+--- a/src/fox-gui/meson.build
++++ b/src/fox-gui/meson.build
+@@ -13,7 +13,7 @@ foxgui_sources = [
+ 
+ executable('gsl-shell-gui',
+     foxgui_sources,
+-    dependencies: [libgsl_dep, libagg_dep, threads_dep, freetype_dep, luajit_dep, fox_dep],
++    dependencies: [libX11_dep, libgsl_dep, libagg_dep, threads_dep, freetype_dep, luajit_dep, fox_dep],
+     include_directories: [gsl_shell_include, cpp_utils_include],
+     cpp_args: gsl_shell_defines + fox_gui_defines,
+     link_with: [libluagsl, libaggplot, libgdt],
