@@ -290,7 +290,7 @@ src_configure() {
 		-Dx11=$(usex X)
 		-Dxml=$(usex xml)
 		-Dxrootd=$(usex xrootd)
-		${EXTRA_ECONF}
+		"${EXTRA_ECONF}"
 	)
 
 	cmake_src_configure
