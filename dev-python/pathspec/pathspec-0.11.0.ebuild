@@ -6,14 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=flit
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Utility library for gitignore style pattern matching of file paths"
 HOMEPAGE="
 	https://github.com/cpburnz/python-pathspec/
 	https://pypi.org/project/pathspec/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
