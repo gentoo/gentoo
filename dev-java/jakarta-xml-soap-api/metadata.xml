@@ -6,6 +6,6 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">eclipse-ee4j/saaj-api</remote-id>
+		<remote-id type="github">jakartaee/saaj-api</remote-id>
 	</upstream>
 </pkgmetadata>

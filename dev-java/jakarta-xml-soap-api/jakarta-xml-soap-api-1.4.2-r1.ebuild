@@ -1,19 +1,17 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-# This version provides module java.xml.soap and package javax.xml.soap
-MAVEN_ID="jakarta.xml.soap:jakarta.xml.soap-api:1.4.2"
-
 JAVA_PKG_IUSE="doc source test"
 JAVA_TESTING_FRAMEWORKS="junit-4"
+MAVEN_ID="jakarta.xml.soap:jakarta.xml.soap-api:1.4.2"
 
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="SOAP with Attachments API for Java (SAAJ) API (Eclipse Project for JAX-WS)"
 HOMEPAGE="https://projects.eclipse.org/projects/ee4j.jaxws"
-SRC_URI="https://github.com/eclipse-ee4j/saaj-api/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jakartaee/saaj-api/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 # EDL-1.0 equivalent to BSD
 # - 'SPDX-License-Identifier: BSD-3-Clause' in source files' headers
