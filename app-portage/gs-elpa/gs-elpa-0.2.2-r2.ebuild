@@ -16,7 +16,7 @@ LICENSE="GPL-2" # v2 only
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-RDEPEND="app-portage/g-sorcery[${PYTHON_USEDEP}]
+RDEPEND=">=app-portage/g-sorcery-0.2.3[${PYTHON_USEDEP}]
 	>=dev-python/sexpdata-0.0.4[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}"
 
