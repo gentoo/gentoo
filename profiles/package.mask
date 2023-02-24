@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-24)
+# Fails to build with setuptools-67.2.0.  Release from Aug 2020.
+# Upstream has made a number of releases since.  No revdeps.
+# Removal on 2023-03-26.  Bug #892347.
+dev-python/pygame_sdl2
+
+# Michał Górny <mgorny@gentoo.org> (2023-02-24)
 # Fails to build with setuptools-67.2.0.  The current version is from
 # Jan 2021, upstream had a few releases in 2022.  Multiple other bugs..
 # Removal on 2023-03-26.  Bug #891757.
