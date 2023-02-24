@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # Note: On each bump, update dep bounds on each version from configure.ac!
-RDEPEND=">=dev-libs/libgpg-error-1.17"
+# We need >= 1.28 for gpgrt_malloc
+RDEPEND=">=dev-libs/libgpg-error-1.28"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
