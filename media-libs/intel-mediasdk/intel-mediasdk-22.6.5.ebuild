@@ -30,7 +30,7 @@ IUSE="dri test +tools wayland X"
 # Test not working at the moment
 #RESTRICT="!test? ( test )"
 RESTRICT="test"
-# Most of these flags only have an effect on the tools
+# # Most of these flags only have an effect on the tools
 REQUIRED_USE="
 	dri? ( X )
 	wayland? ( tools )
@@ -39,22 +39,29 @@ REQUIRED_USE="
 
 # x11-libs/libdrm[video_cards_intel] for intel_bufmgr.h in samples
 # bug #805224
-DEPEND="
+RDEPEND="
 	x11-libs/libpciaccess
 	>=media-libs/libva-intel-media-driver-${PV}
 	media-libs/libva[X?,wayland?]
 	x11-libs/libdrm[video_cards_intel]
 	wayland? (
 		dev-libs/wayland
-		dev-util/wayland-scanner
-		dev-libs/wayland-protocols
 	)
 	X? (
 		x11-libs/libX11
 		x11-libs/libxcb
 	)
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	wayland? (
+		dev-libs/wayland-protocols
+	)
+"
+BDEPEND="
+	wayland? (
+		dev-util/wayland-scanner
+	)
+"
 
 src_configure() {
 	local mycmakeargs=(
