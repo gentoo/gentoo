@@ -4,12 +4,12 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
 DESCRIPTION="A module for working with NMR data in Python"
-HOMEPAGE="https://nmrglue.com/"
+HOMEPAGE="https://www.nmrglue.com/"
 SRC_URI="https://github.com/jjhelmus/nmrglue/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
