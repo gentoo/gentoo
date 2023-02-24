@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://gitlab.com/free-astro/${PN}.git"
 else
 	SRC_URI="https://gitlab.com/free-astro/siril/-/archive/${PV/_/-}/${PN}-${PV/_/-}.tar.bz2"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
 
@@ -50,6 +50,9 @@ BDEPEND="x11-base/xorg-proto"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-docfiles.patch"
+	"${FILESDIR}/${PN}-$(ver_cut 1-2)-htmesh.patch"
+	"${FILESDIR}/${PN}-$(ver_cut 1-2)-execinfo.patch"
+	"${FILESDIR}/${PN}-$(ver_cut 1-2)-prototypes.patch"
 )
 
 DOCS=( README.md NEWS ChangeLog AUTHORS )

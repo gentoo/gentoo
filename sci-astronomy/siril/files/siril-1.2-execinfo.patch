@@ -1,0 +1,46 @@
+From 6f959a02d27fb507cda1898a3aa785766e77d404 Mon Sep 17 00:00:00 2001
+From: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date: Mon, 27 Feb 2023 17:34:43 +0100
+Subject: [PATCH] fix HAVE_EXECINFO_H logic
+Bug: https://bugs.gentoo.org/898108
+Upstream: https://gitlab.com/free-astro/siril/-/merge_requests/442
+
+---
+ src/core/signals.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/core/signals.c b/src/core/signals.c
+index 42b369d6..d4745909 100644
+--- a/src/core/signals.c
++++ b/src/core/signals.c
+@@ -55,13 +55,7 @@ static void signal_handled(int s) {
+ 			g_printf(ANSI_COLOR_RED"%s"ANSI_COLOR_RESET"\n", visit);
+ 		}
+ 
+-#if (!defined _WIN32 && defined HAVE_EXECINFO_H)
+-		void *stack[STACK_DEPTH];
+-
+-		size_t size = backtrace(stack, sizeof(stack) / sizeof(void*));
+-
+-		backtrace_symbols_fd(stack, size, fileno((FILE*) stdout));
+-#else
++#ifdef _WIN32
+ 		unsigned int i;
+ 		void *stack[STACK_DEPTH];
+ 		unsigned short size;
+@@ -84,6 +78,12 @@ static void signal_handled(int s) {
+ 		}
+ 
+ 		free(symbol);
++#elif HAVE_EXECINFO_H
++		void *stack[STACK_DEPTH];
++
++		size_t size = backtrace(stack, sizeof(stack) / sizeof(void*));
++
++		backtrace_symbols_fd(stack, size, fileno((FILE*) stdout));
+ #endif
+ 	}
+ 	undo_flush();
+-- 
+2.39.2
+

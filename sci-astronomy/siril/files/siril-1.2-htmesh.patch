@@ -1,0 +1,57 @@
+From 915d01b7e94ff0a597685976838ab707917428db Mon Sep 17 00:00:00 2001
+From: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date: Fri, 24 Feb 2023 19:00:52 +0100
+Subject: [PATCH] Don't install bundled htmesh static library system wide.
+Upstream: https://gitlab.com/free-astro/siril/-/merge_requests/438
+
+---
+ subprojects/htmesh/CMakeLists.txt | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/subprojects/htmesh/CMakeLists.txt b/subprojects/htmesh/CMakeLists.txt
+index 5c197a9e..189acd3e 100644
+--- a/subprojects/htmesh/CMakeLists.txt
++++ b/subprojects/htmesh/CMakeLists.txt
+@@ -49,9 +49,10 @@ set_target_properties(htmesh PROPERTIES
+     VERSION 1.0.0
+     SOVERSION 1)
+ 
+-if (NOT ANDROID)
+-    install(TARGETS htmesh ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
+-endif ()
++# It is not necessary to install the static library as we just link against it.
++#if (NOT ANDROID)
++#    install(TARGETS htmesh ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
++#endif ()
+ 
+ # If you wish to compile the HTMesh perl wrapper, uncomment this, rebuild and copy the library into /usr/lib/, because we will use it as a shared object. See README in the perl wrapper directory (kstars/kstars/data/tools/HTMesh-*) for more details.
+ #set_property(TARGET htmesh PROPERTY POSITION_INDEPENDENT_CODE YES)
+-- 
+2.39.2
+
+From 42a12b852f4146aa104350587c456a35501a9707 Mon Sep 17 00:00:00 2001
+From: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date: Fri, 24 Feb 2023 18:40:26 +0100
+Subject: [PATCH] Fix typo in htmesh build configuration
+Upstream: https://gitlab.com/free-astro/siril/-/merge_requests/437
+
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 886f3697..1ed39a98 100644
+--- a/meson.build
++++ b/meson.build
+@@ -270,7 +270,7 @@ endif
+   htmesh_dep = sub_proj.dependency('htmesh')
+   htmesh_inc = sub_proj.include_directories('htmesh')
+ else
+-  siril_cpp_flag += '-DHAVE_LIBRTPROCESS'
++  siril_cpp_flag += '-DHAVE_HTMESH'
+ endif
+ 
+ ## Optional dependencies
+-- 
+2.39.2
+
