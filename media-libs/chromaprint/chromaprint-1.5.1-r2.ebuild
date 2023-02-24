@@ -15,7 +15,7 @@ SRC_URI="https://github.com/acoustid/${PN}/releases/download/v${PV}/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0/1"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="test tools"
 RESTRICT="!test? ( test )"
 
