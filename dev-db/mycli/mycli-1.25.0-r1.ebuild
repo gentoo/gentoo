@@ -7,7 +7,7 @@ DISTUTILS_SINGLE_IMPL=yes
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..10} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="CLI for MySQL Database with auto-completion and syntax highlighting"
 HOMEPAGE="
@@ -15,15 +15,19 @@ HOMEPAGE="
 	https://github.com/dbcli/mycli/
 	https://pypi.org/project/mycli/
 "
-EGIT_REPO_URI="https://github.com/dbcli/mycli.git"
+SRC_URI="
+	https://github.com/dbcli/mycli/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="ssh"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-python/cli_helpers-2.0.1[${PYTHON_USEDEP}]
+		>=dev-python/cli_helpers-2.2.1[${PYTHON_USEDEP}]
 		>=dev-python/click-7.0[${PYTHON_USEDEP}]
 		>=dev-python/configobj-5.0.6[${PYTHON_USEDEP}]
 		>=dev-python/cryptography-1.0.0[${PYTHON_USEDEP}]
