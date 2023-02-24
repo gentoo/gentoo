@@ -5,6 +5,10 @@
 		<email>peeweep@0x0.ee</email>
 		<name>jinqiang zhang</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>cat@catcream.org</email>
+		<name>Alfred Persson</name>
+	</maintainer>
 	<maintainer type="person" proxied="proxy">
 		<email>mattst88@gentoo.org</email>
 		<name>Matt Turner</name>
