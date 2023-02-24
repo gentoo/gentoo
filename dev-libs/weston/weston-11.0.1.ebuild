@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,7 +42,6 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/libinput-0.8.0
 	>=dev-libs/wayland-1.20.0
-	>=dev-libs/wayland-protocols-1.24
 	lcms? ( >=media-libs/lcms-2.9:2 )
 	media-libs/libpng:0=
 	webp? ( media-libs/libwebp:0= )
@@ -85,7 +84,9 @@ RDEPEND="
 		x11-libs/libXcursor
 	)
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	>=dev-libs/wayland-protocols-1.24
+"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
