@@ -26,7 +26,7 @@ KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 BDEPEND="
 	test? (
 		dev-python/commentjson[${PYTHON_USEDEP}]
-		dev-python/packaging[${PYTHON_USEDEP}]
+		<dev-python/packaging-22[${PYTHON_USEDEP}]
 	)
 "
 
