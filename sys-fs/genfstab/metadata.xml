@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person" proxied="yes">
-		<email>scardracs-gentoo@proton.me</email>
-		<name>Marco Scardovi</name>
+		<email>peeweep@0x0.ee</email>
+		<name>jinqiang zhang</name>
 	</maintainer>
 	<maintainer type="person" proxied="proxy">
 		<email>mattst88@gentoo.org</email>
