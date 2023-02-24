@@ -16,7 +16,7 @@ SRC_URI="https://github.com/zamaudio/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="jack opengl"
 
 DEPEND="media-libs/ladspa-sdk
