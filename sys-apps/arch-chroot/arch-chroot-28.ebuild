@@ -11,7 +11,7 @@ SRC_URI="https://github.com/archlinux/arch-install-scripts/archive/refs/tags/v${
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="app-text/asciidoc"
 
