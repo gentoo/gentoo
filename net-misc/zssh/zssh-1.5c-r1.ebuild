@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit toolchain-funcs
 
-DESCRIPTION="An ssh wrapper enabling zmodem up/download in ssh"
-HOMEPAGE="http://zssh.sourceforge.net/"
+DESCRIPTION="SSH wrapper enabling zmodem up/download in ssh"
+HOMEPAGE="https://zssh.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
