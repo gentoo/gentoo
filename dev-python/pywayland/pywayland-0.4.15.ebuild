@@ -26,9 +26,10 @@ RDEPEND="
 	dev-libs/wayland
 	virtual/python-cffi[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}"
-BDEPEND="dev-libs/wayland-protocols
-	dev-util/wayland-scanner"
+DEPEND="${RDEPEND}
+	dev-libs/wayland-protocols
+"
+BDEPEND="dev-util/wayland-scanner"
 
 distutils_enable_tests pytest
 
