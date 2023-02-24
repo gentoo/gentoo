@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ CP_DEPEND="
 	dev-java/glassfish-persistence:0
 	dev-java/osgi-core-api:0
 	dev-java/osgi-foundation:0
-	dev-java/tomcat-servlet-api:4.0"
+	dev-java/jakarta-servlet-api:4"
 
 DEPEND="${CP_DEPEND}
 	>=virtual/jdk-1.8:*"
