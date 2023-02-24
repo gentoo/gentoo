@@ -33,10 +33,6 @@ BDEPEND="
 	app-text/scdoc
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-fix-min-meson-version.patch"
-)
-
 src_prepare() {
 	default
 	vala_setup
