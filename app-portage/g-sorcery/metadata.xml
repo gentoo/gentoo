@@ -8,4 +8,7 @@
 		<email>layman@gentoo.org</email>
 		<name>Gentoo Layman team</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="gentoo">proj/g-sorcery</remote-id>
+	</upstream>
 </pkgmetadata>

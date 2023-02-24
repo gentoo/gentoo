@@ -8,8 +8,7 @@ PYTHON_COMPAT=( python3_{9,10} )
 inherit distutils-r1 prefix
 
 DESCRIPTION="framework for ebuild generators"
-HOMEPAGE="https://gitweb.gentoo.org/proj/g-sorcery.git
-	https://github.com/jauhien/g-sorcery"
+HOMEPAGE="https://gitweb.gentoo.org/proj/g-sorcery.git"
 SRC_URI="https://gitweb.gentoo.org/proj/g-sorcery.git/snapshot/${P}.tar.gz"
 
 LICENSE="GPL-2" # v2 only
