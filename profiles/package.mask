@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2023-02-23)
+# Added by proxied maintainer who then quit (twice) and deleted the github repo
+# SRC_URI pointed at.
+# Removal on 2023-03-23.
+sys-fs/genfstab
+
 # Mike Gilbert <floppym@gentoo.org> (2023-02-23)
 # Deprecated upstream. Use the progressive web app instead.
 # Removal on 2023-03-26. Bug 880425.
