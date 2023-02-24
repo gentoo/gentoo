@@ -14,7 +14,7 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~loong ~ppc ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~loong ~ppc ~riscv ~x86"
 IUSE="libnotify +thunar wayland X"
 REQUIRED_USE="|| ( wayland X )"
 
