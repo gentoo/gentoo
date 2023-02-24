@@ -8,7 +8,8 @@ PYTHON_REQ_USE="sqlite"
 
 inherit optfeature python-single-r1 systemd
 
-MY_PV="${PV/_rc/RC}"
+MY_PV="${PV/_alpha/Alpha}"
+MY_PV="${MY_PV/_rc/RC}"
 MY_PV="${MY_PV//_pre*}"
 
 MY_P="${PN/sab/SAB}-${MY_PV}"
@@ -21,7 +22,6 @@ S="${WORKDIR}/${MY_P}"
 # Sabnzbd is GPL-2 but bundles software with the following licenses.
 LICENSE="GPL-2 BSD LGPL-2 MIT BSD-1"
 SLOT="0"
-KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -41,7 +41,7 @@ DEPEND="
 		dev-python/notify2[${PYTHON_USEDEP}]
 		dev-python/portend[${PYTHON_USEDEP}]
 		dev-python/puremagic[${PYTHON_USEDEP}]
-		~dev-python/sabctools-5.4.4[${PYTHON_USEDEP}]
+		~dev-python/sabctools-6.1.0[${PYTHON_USEDEP}]
 		dev-python/tavalidate[${PYTHON_USEDEP}]
 		>=dev-python/tavern-2[${PYTHON_USEDEP}]
 	')
@@ -73,10 +73,6 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-tavern-2.patch
-)
-
 src_test() {
 	local EPYTEST_IGNORE=(
 		# network sandbox
@@ -90,6 +86,8 @@ src_test() {
 		# network sandbox
 		'tests/test_cfg.py::TestValidators::test_validate_host'
 		'tests/test_consistency.py::TestWiki'
+		# Doesn't work, complains mocker missing even when pytest-mock installed
+		'tests/test_dirscanner.py::TestDirScanner'
 		# Just plain fails
 		'tests/test_newsunpack.py::TestPar2Repair::test_basic'
 		# Chromedriver tests don't want to behave in portage

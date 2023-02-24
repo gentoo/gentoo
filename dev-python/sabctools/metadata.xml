@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">sabnzbd/sabyenc</remote-id>
-		<remote-id type="pypi">sabyenc</remote-id>
+		<remote-id type="github">sabnzbd/sabctools</remote-id>
+		<remote-id type="pypi">sabctools</remote-id>
 	</upstream>
 </pkgmetadata>
