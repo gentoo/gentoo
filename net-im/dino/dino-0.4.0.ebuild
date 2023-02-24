@@ -58,10 +58,12 @@ BDEPEND="
 src_configure() {
 	vala_setup
 
+	# TODO: Make videocalls (rtp) optional and not completely disable it
 	local disabled_plugins=(
 		$(usex gpg "" "openpgp")
 		$(usex omemo "" "omemo")
 		$(usex http  "" "http-files")
+		"rtp"
 	)
 	local enabled_plugins=(
 		$(usex notification-sound "notification-sound" "")
