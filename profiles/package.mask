@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-24)
+# Unmaintained with multiple reported bugs.  Last release is a RC
+# from 2017, upstream recommends using trunk.
+# Removal on 2023-03-26.  Bug #855548.
+media-gfx/fim
+
+# Michał Górny <mgorny@gentoo.org> (2023-02-24)
 # Unmaintained with reported build failure.  The last release is a beta
 # from 2019, the package had only marginal activity in 2020 and 2021.
 # Removal on 2023-03-26.  Bug #732194.
