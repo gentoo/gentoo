@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Perl implementation of DMARC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="minimal"
 
 PERL_RM_FILES=(
