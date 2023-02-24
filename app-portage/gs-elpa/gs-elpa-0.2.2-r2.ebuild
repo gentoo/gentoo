@@ -8,8 +8,7 @@ PYTHON_COMPAT=( python3_{9,10} )
 inherit distutils-r1
 
 DESCRIPTION="g-sorcery backend for elisp packages"
-HOMEPAGE="https://gitweb.gentoo.org/proj/gs-elpa.git
-	https://github.com/jauhien/gs-elpa"
+HOMEPAGE="https://gitweb.gentoo.org/proj/gs-elpa.git"
 SRC_URI="https://gitweb.gentoo.org/proj/gs-elpa.git/snapshot/${P}.tar.gz"
 
 LICENSE="GPL-2" # v2 only
