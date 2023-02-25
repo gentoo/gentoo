@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,6 @@ DEPEND="
 	ncurses? ( sys-libs/ncurses:= )
 	wayland? (
 		dev-libs/wayland
-		dev-libs/wayland-protocols
 		x11-libs/cairo
 		x11-libs/pango
 		x11-libs/libxcb
@@ -40,7 +39,11 @@ DEPEND="
 		x11-libs/libXinerama
 	)
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	wayland? (
+		dev-libs/wayland-protocols
+	)
+"
 BDEPEND="doc? ( app-doc/doxygen )"
 
 src_compile() {
