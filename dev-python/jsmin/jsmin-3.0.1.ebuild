@@ -11,7 +11,7 @@ DESCRIPTION="JavaScript minifier"
 HOMEPAGE="https://pypi.org/project/jsmin/ https://github.com/tikitu/jsmin/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-KEYWORDS="amd64 ~ppc ~riscv x86"
+KEYWORDS="amd64 ~arm ~ppc ~riscv x86"
 LICENSE="MIT"
 SLOT="0"
 
