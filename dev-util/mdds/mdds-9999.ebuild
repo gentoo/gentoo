@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,10 +16,12 @@ DESCRIPTION="Collection of multi-dimensional data structure and indexing algorit
 HOMEPAGE="https://gitlab.com/mdds/mdds"
 
 LICENSE="MIT"
-SLOT="1/2.0" # Check API version on version bumps!
+SLOT="1/2.1" # Check API version on version bumps!
 IUSE="doc openmp valgrind test"
 RESTRICT="!test? ( test )"
 
+DEPEND="dev-libs/boost:="
+RDEPEND="${DEPEND}"
 BDEPEND="
 	doc? (
 		app-doc/doxygen
@@ -27,8 +29,6 @@ BDEPEND="
 	)
 	valgrind? ( dev-util/valgrind )
 "
-DEPEND="dev-libs/boost:="
-RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}-1.5.0-buildsystem.patch" )
 
