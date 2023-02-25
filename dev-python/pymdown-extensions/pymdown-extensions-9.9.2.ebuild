@@ -30,7 +30,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~riscv x86"
+KEYWORDS="amd64 ~arm ~ppc ~riscv x86"
 
 RDEPEND="
 	>=dev-python/markdown-3.2[${PYTHON_USEDEP}]
