@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-02-25)
+# Fails tests, last upstream commit 2021, does not work with
+# python3.11. No reverse dependencies.
+# Removal on 2023-03-27. Bug 896898 and 888444
+dev-python/trio-asyncio
+
 # Michał Górny <mgorny@gentoo.org> (2023-02-25)
 # Unmaintained.  The Gentoo version is from 2018 and needs bumping.
 # It has a build failure reported.
