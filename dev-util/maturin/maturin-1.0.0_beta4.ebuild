@@ -5,24 +5,14 @@ EAPI=8
 
 CRATES="
 	adler-1.0.2
-	aes-0.7.5
 	ahash-0.3.8
 	ahash-0.7.6
 	aho-corasick-0.7.20
 	anyhow-1.0.69
-	async-broadcast-0.5.1
-	async-executor-1.5.0
-	async-io-1.12.0
-	async-lock-2.6.0
-	async-recursion-1.0.2
-	async-task-4.3.0
-	async-trait-0.1.64
 	autocfg-1.1.0
 	base64-0.13.1
 	bitflags-1.3.2
 	block-buffer-0.10.3
-	block-modes-0.8.1
-	block-padding-0.2.1
 	bstr-1.3.0
 	bumpalo-3.12.0
 	byteorder-1.4.3
@@ -45,7 +35,6 @@ CRATES="
 	cfg-if-1.0.0
 	charset-0.1.3
 	chumsky-0.8.0
-	cipher-0.3.0
 	clap-4.0.32
 	clap_complete-4.0.7
 	clap_complete_command-0.4.0
@@ -55,7 +44,6 @@ CRATES="
 	cli-table-0.4.7
 	concolor-0.0.11
 	concolor-query-0.1.0
-	concurrent-queue-2.1.0
 	configparser-3.0.2
 	console-0.15.5
 	const-random-0.1.15
@@ -73,7 +61,6 @@ CRATES="
 	crypto-common-0.1.6
 	ctor-0.1.26
 	data-encoding-2.3.3
-	derivative-2.2.0
 	dialoguer-0.10.3
 	diff-0.1.13
 	digest-0.10.6
@@ -90,11 +77,8 @@ CRATES="
 	encoding-index-tradchinese-1.20141219.5
 	encoding_index_tests-0.1.4
 	encoding_rs-0.8.32
-	enumflags2-0.7.5
-	enumflags2_derive-0.7.4
 	errno-0.2.8
 	errno-dragonfly-0.1.2
-	event-listener-2.5.3
 	fastrand-1.9.0
 	fat-macho-0.4.6
 	filetime-0.2.19
@@ -104,13 +88,6 @@ CRATES="
 	foreign-types-shared-0.1.1
 	form_urlencoded-1.1.0
 	fs-err-2.9.0
-	futures-core-0.3.26
-	futures-io-0.3.26
-	futures-lite-1.12.0
-	futures-macro-0.3.26
-	futures-sink-0.3.26
-	futures-task-0.3.26
-	futures-util-0.3.26
 	generic-array-0.14.6
 	getrandom-0.2.8
 	glob-0.3.1
@@ -119,9 +96,6 @@ CRATES="
 	hashbrown-0.12.3
 	heck-0.4.1
 	hermit-abi-0.2.6
-	hex-0.4.3
-	hkdf-0.12.3
-	hmac-0.12.1
 	home-0.5.4
 	humantime-2.1.0
 	humantime-serde-1.1.1
@@ -140,7 +114,7 @@ CRATES="
 	lazy_static-1.4.0
 	lddtree-0.3.2
 	libc-0.2.139
-	linux-keyutils-0.2.2
+	linux-keyutils-0.2.3
 	linux-raw-sys-0.1.4
 	lock_api-0.4.9
 	log-0.4.17
@@ -148,7 +122,6 @@ CRATES="
 	mailparse-0.13.8
 	matchers-0.1.0
 	memchr-2.5.0
-	memoffset-0.6.5
 	memoffset-0.7.1
 	mime-0.3.16
 	mime_guess-2.0.4
@@ -158,48 +131,34 @@ CRATES="
 	msi-0.5.0
 	multipart-0.18.0
 	native-tls-0.2.11
-	nix-0.25.1
 	nom-7.1.3
 	normalize-line-endings-0.3.0
 	normpath-1.0.1
 	nu-ansi-term-0.46.0
-	num-0.4.0
-	num-bigint-0.4.3
-	num-complex-0.4.3
-	num-integer-0.1.45
-	num-iter-0.1.43
-	num-rational-0.4.1
-	num-traits-0.2.15
 	num_cpus-1.15.0
 	number_prefix-0.4.0
 	once_cell-1.17.1
-	opaque-debug-0.3.0
 	openssl-0.10.45
 	openssl-macros-0.1.0
 	openssl-probe-0.1.5
 	openssl-src-111.25.0+1.1.1t
 	openssl-sys-0.9.80
-	ordered-stream-0.1.4
 	os_pipe-1.1.2
 	os_str_bytes-6.4.1
 	output_vt100-0.1.3
 	overload-0.1.1
-	parking-2.0.0
 	parking_lot-0.12.1
 	parking_lot_core-0.9.6
 	path-slash-0.2.1
 	pep440-0.2.0
 	percent-encoding-2.2.0
 	pin-project-lite-0.2.9
-	pin-utils-0.1.0
 	pkg-config-0.3.26
 	plain-0.2.3
 	platform-info-1.0.2
-	polling-2.5.2
 	portable-atomic-0.3.19
 	ppv-lite86-0.2.17
 	pretty_assertions-1.3.0
-	proc-macro-crate-1.2.1
 	proc-macro-error-1.0.4
 	proc-macro-error-attr-1.0.4
 	proc-macro-hack-0.5.20+deprecated
@@ -233,33 +192,27 @@ CRATES="
 	scroll-0.11.0
 	scroll_derive-0.11.0
 	sct-0.7.0
-	secret-service-3.0.1
 	security-framework-2.8.2
 	security-framework-sys-2.8.0
 	semver-1.0.16
 	serde-1.0.152
 	serde_derive-1.0.152
 	serde_json-1.0.93
-	serde_repr-0.1.10
 	serde_spanned-0.6.1
-	sha1-0.10.5
 	sha2-0.10.6
 	sharded-slab-0.1.4
 	shell-escape-0.1.5
 	shell-words-1.1.0
 	shlex-1.1.0
 	similar-2.2.1
-	slab-0.4.8
 	smallvec-1.10.0
 	smawk-0.3.1
 	snapbox-0.4.4
 	snapbox-macros-0.3.1
-	socket2-0.4.7
 	socks-0.3.4
 	spin-0.5.2
 	static_assertions-1.1.0
 	strsim-0.10.0
-	subtle-2.4.1
 	syn-1.0.109
 	tar-0.4.38
 	target-lexicon-0.12.6
@@ -289,7 +242,6 @@ CRATES="
 	trycmd-0.14.11
 	twox-hash-1.6.3
 	typenum-1.16.0
-	uds_windows-1.0.2
 	unicase-2.6.0
 	unicode-bidi-0.3.10
 	unicode-ident-1.0.6
@@ -305,7 +257,6 @@ CRATES="
 	version_check-0.9.4
 	versions-4.1.0
 	wait-timeout-0.2.0
-	waker-fn-1.1.0
 	walkdir-2.3.2
 	wasi-0.11.0+wasi-snapshot-preview1
 	wasm-bindgen-0.2.84
@@ -316,7 +267,6 @@ CRATES="
 	web-sys-0.3.61
 	webpki-0.22.0
 	webpki-roots-0.22.6
-	wepoll-ffi-0.1.2
 	which-4.4.0
 	winapi-0.3.9
 	winapi-i686-pc-windows-gnu-0.4.0
@@ -330,17 +280,12 @@ CRATES="
 	windows_x86_64_gnu-0.42.1
 	windows_x86_64_gnullvm-0.42.1
 	windows_x86_64_msvc-0.42.1
-	winnow-0.3.0
+	winnow-0.3.3
 	xattr-0.2.3
 	xwin-0.2.10
 	yansi-0.5.1
-	zbus-3.9.0
-	zbus_macros-3.9.0
-	zbus_names-2.5.0
 	zeroize-1.5.7
-	zip-0.6.4
-	zvariant-3.11.0
-	zvariant_derive-3.11.0"
+	zip-0.6.4"
 # additional crates used by test-crates/* test packages,
 # `grep test-crates tests/run.rs` to see which are needed
 CRATES_TEST="
