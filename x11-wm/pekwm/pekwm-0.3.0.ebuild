@@ -20,16 +20,17 @@ KEYWORDS="~amd64 ~mips ~ppc ~x86"
 IUSE="debug +jpeg pango +png truetype xinerama +xpm"
 
 RDEPEND="
-	png? ( media-libs/libpng:0 )
-	jpeg? ( media-libs/libjpeg-turbo )
-	xpm? ( x11-libs/libXpm )
 	x11-libs/libX11
 	x11-libs/libXext
+	jpeg? ( media-libs/libjpeg-turbo:= )
+	pango? ( x11-libs/pango x11-libs/cairo[X] )
+	png? ( media-libs/libpng:0= )
 	truetype? ( x11-libs/libXft )
 	xinerama? ( x11-libs/libXinerama )
-	pango? ( x11-libs/pango x11-libs/cairo[X] )"
+	xpm? ( x11-libs/libXpm )"
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig"
 
 src_configure() {
