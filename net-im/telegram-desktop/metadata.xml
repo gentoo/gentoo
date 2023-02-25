@@ -11,7 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="enchant">Use the <pkg>app-text/aspell</pkg> spell-checking backend instead of <pkg>app-text/hunspell</pkg></flag>
-		<flag name="hunspell">Enable the <pkg>app-text/hunspell</pkg> spell-checking backend (deprecated)</flag>
+		<flag name="hunspell">Enable the <pkg>app-text/hunspell</pkg> spell-checking backend (old flag)</flag>
 		<flag name="fonts">Use builtin patched copy of open-sans fonts (overrides fontconfig)</flag>
 		<flag name="qt6">Build with Qt6 support</flag>
 		<flag name="qt6-imageformats">Add support for HEIF, AVIF and JpegXL by bundling kde-frameworks/kimageformats</flag>
