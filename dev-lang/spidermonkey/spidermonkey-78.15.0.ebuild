@@ -5,11 +5,11 @@ EAPI="7"
 
 # Patch version
 FIREFOX_PATCHSET="firefox-78esr-patches-19.tar.xz"
-SPIDERMONKEY_PATCHSET="spidermonkey-78-patches-04.tar.xz"
+SPIDERMONKEY_PATCHSET="spidermonkey-78-patches-05.tar.xz"
 
 LLVM_MAX_SLOT=14
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="ssl"
 
 WANT_AUTOCONF="2.1"
@@ -52,7 +52,7 @@ fi
 
 PATCH_URIS=(
 	https://dev.gentoo.org/~{whissi,polynomial-c,axs}/mozilla/patchsets/${FIREFOX_PATCHSET}
-	https://dev.gentoo.org/~{whissi,polynomial-c,axs}/mozilla/patchsets/${SPIDERMONKEY_PATCHSET}
+	https://dev.gentoo.org/~juippis/mozilla/patchsets/${SPIDERMONKEY_PATCHSET}
 )
 
 SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}.source.tar.xz
