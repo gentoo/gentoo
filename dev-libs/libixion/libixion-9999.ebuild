@@ -10,7 +10,7 @@ DESCRIPTION="General purpose formula parser & interpreter"
 HOMEPAGE="https://gitlab.com/ixion/ixion"
 
 if [[ ${PV} == *9999* ]]; then
-	MDDS_SLOT="1/9999"
+	MDDS_SLOT="1/2.1"
 	EGIT_REPO_URI="https://gitlab.com/ixion/ixion.git"
 	inherit git-r3 autotools
 else
