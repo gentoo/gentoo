@@ -1,17 +1,18 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10} )
+# note: version >=2.5.0 switches from python to lua
+PYTHON_COMPAT=( python3_{9..11} )
+inherit cmake flag-o-matic python-single-r1 xdg
 
-inherit python-single-r1 xdg cmake
+MY_P="Commander-Genius-v${PV}"
 
-MY_PN="Commander-Genius"
-MY_P="${MY_PN}-v${PV}"
 DESCRIPTION="Open Source Commander Keen clone (needs original game files)"
-HOMEPAGE="https://clonekeenplus.sourceforge.io"
-SRC_URI="https://gitlab.com/Dringgstein/${MY_PN}/-/archive/v${PV}/${MY_P}.tar.bz2"
+HOMEPAGE="https://clonekeenplus.sourceforge.io/"
+SRC_URI="https://gitlab.com/Dringgstein/Commander-Genius/-/archive/v${PV}/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,50 +29,48 @@ RDEPEND="
 	sys-libs/zlib[minizip]
 	downloader? ( net-misc/curl )
 	opengl? ( virtual/opengl )
-	python? ( ${PYTHON_DEPS} )
-"
-
+	python? ( ${PYTHON_DEPS} )"
 DEPEND="
 	${RDEPEND}
-	dev-libs/boost
-"
-
-BDEPEND="virtual/pkgconfig"
+	dev-libs/boost"
+BDEPEND="python? ( ${PYTHON_DEPS} )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.1-build.patch
 	"${FILESDIR}"/${PN}-2.3.1-paths.patch
 )
 
-S="${WORKDIR}/${MY_P}"
-
-SHAREDIR="/usr/share"
-GAMESDIR="${SHAREDIR}/${PN}/games"
-DOCS=()
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
 
 src_configure() {
+	filter-lto #858530
+
 	local mycmakeargs=(
-		-DAPPDIR="${EPREFIX}/usr/bin"
-		-DGAMES_SHAREDIR="${EPREFIX}${SHAREDIR}"
-		-DDOCDIR="${EPREFIX}/usr/share/doc/${PF}"
+		-DAPPDIR="${EPREFIX}"/usr/bin
+		-DDOCDIR="${EPREFIX}"/usr/share/doc/${PF}
+		-DGAMES_SHAREDIR="${EPREFIX}"/usr/share
 		-DDOWNLOADER=$(usex downloader)
 		-DUSE_OPENGL=$(usex opengl)
 		-DUSE_PYTHON3=$(usex python)
-		-DUSE_SDL2=ON
-		-DUSE_SDL_TTF=ON # Crashes when disabled.
+		-DUSE_SDL2=yes
+		-DUSE_SDL_TTF=yes # crashes when disabled
+		$(usev python -DPython3_EXECUTABLE="${PYTHON}")
 	)
 
 	cmake_src_configure
 }
 
 src_install() {
+	local DOCS=() # skip .in template file, can drop this on bump
 	cmake_src_install
 
-	# The normal executable name is weird.
+	# default executable name is weird
 	dosym CGeniusExe /usr/bin/${PN}
 
-	# Game data can be manually installed here.
-	keepdir "${GAMESDIR}"
+	# game data can be manually installed here
+	keepdir /usr/share/${PN}/games
 }
 
 pkg_postinst() {
