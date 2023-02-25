@@ -5,4 +5,7 @@
 		<email>arthurzam@gentoo.org</email>
 		<name>Arthur Zamarin</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">google/crc32c</remote-id>
+	</upstream>
 </pkgmetadata>
