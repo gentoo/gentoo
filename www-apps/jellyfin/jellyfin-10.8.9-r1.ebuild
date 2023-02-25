@@ -22,7 +22,9 @@ RESTRICT="mirror test"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm64"
-DEPEND="acct-user/jellyfin"
+DEPEND="acct-user/jellyfin
+	media-libs/fontconfig
+	sys-libs/zlib"
 RDEPEND="${DEPEND}
 	dev-libs/icu
 	media-video/ffmpeg[vpx,x264]
