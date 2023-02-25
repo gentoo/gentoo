@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT Apache-2.0 CC0-1.0 public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 RESTRICT="test" # needs coveralls
 
 DEPEND=">=dev-python/docutils-0.13[${PYTHON_USEDEP}]" # needs rst2man to build manpage
