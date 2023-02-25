@@ -71,7 +71,6 @@ src_configure() {
 		-DLLDB_ENABLE_LUA=OFF
 		-DLLDB_ENABLE_LZMA=$(usex lzma)
 		-DLLDB_ENABLE_LIBXML2=$(usex xml)
-		-DLLDB_USE_SYSTEM_SIX=1
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
 
 		-DLLDB_INCLUDE_TESTS=$(usex test)
