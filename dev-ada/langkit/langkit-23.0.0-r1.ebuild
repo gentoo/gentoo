@@ -1,10 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_10 )
-ADA_COMPAT=( gnat_2021 gcc_12_2_0 )
+PYTHON_COMPAT=( python3_{10..11} )
+ADA_COMPAT=( gnat_2021 gcc_12 gcc_12_2_0 )
 
 DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1 ada multiprocessing
@@ -35,7 +35,10 @@ RDEPEND="${PYTHON_DEPS}
 	dev-ada/e3-core[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-py311.patch
+)
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
