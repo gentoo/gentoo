@@ -20,7 +20,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/hugsy/gef"
 else
 	SRC_URI="https://github.com/hugsy/gef/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~ppc x86"
+	KEYWORDS="amd64 ~arm ~ppc x86"
 fi
 
 LICENSE="MIT"
