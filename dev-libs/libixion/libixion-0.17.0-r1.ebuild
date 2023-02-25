@@ -20,7 +20,7 @@ else
 fi
 
 LICENSE="MIT"
-SLOT="0/0.18" # based on SONAME of libixion.so
+SLOT="0/0.17" # based on SONAME of libixion.so
 IUSE="debug python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
