@@ -4,21 +4,19 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-
 inherit autotools python-single-r1
 
 DESCRIPTION="Standalone file import filter library for spreadsheet documents"
 HOMEPAGE="https://gitlab.com/orcus/orcus/blob/master/README.md"
 
 if [[ ${PV} == *9999* ]]; then
-	MDDS_SLOT="1/2.0"
+	MDDS_SLOT="1/2.1"
 	EGIT_REPO_URI="https://gitlab.com/orcus/orcus.git"
 	inherit git-r3
 else
 	MDDS_SLOT="1/2.0"
 	SRC_URI="https://kohei.us/files/orcus/src/${P}.tar.xz"
-	# Unkeyworded while libreoffice has no release making use of this slot
-	# KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="MIT"
@@ -52,7 +50,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--disable-static
 		--disable-werror
 		$(use_enable python)
 		$(use_enable spreadsheet-model)
