@@ -13,7 +13,7 @@ SRC_URI="https://github.com/clarketm/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~riscv x86"
+KEYWORDS="amd64 ~arm ~ppc ~riscv x86"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs/source dev-python/alabaster dev-python/recommonmark
