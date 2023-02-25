@@ -124,6 +124,7 @@ RDEPEND="${LUA_DEPS}
 	xpresent? ( x11-libs/libXpresent )
 	zeroconf? ( net-dns/avahi )"
 DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )
 	wayland? ( dev-libs/wayland-protocols )"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
