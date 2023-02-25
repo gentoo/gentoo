@@ -20,10 +20,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 # Dependencies being checked by Meson
-COMMON_DEPEND="
+DEPEND="
 	dev-libs/glib:2
 	dev-libs/gobject-introspection
-	net-libs/libsoup:2.4[introspection]
+	net-libs/libsoup:3.0[introspection]
 	x11-libs/gtk+:3[introspection]
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
@@ -32,7 +32,6 @@ COMMON_DEPEND="
 "
 
 BDEPEND="
-	${COMMON_DEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 	test? (
@@ -42,7 +41,7 @@ BDEPEND="
 "
 
 RDEPEND="
-	${COMMON_DEPEND}
+	${DEPEND}
 	media-plugins/gst-plugins-pulse
 	app-crypt/libsecret[introspection]
 	dev-libs/totem-pl-parser[introspection]
