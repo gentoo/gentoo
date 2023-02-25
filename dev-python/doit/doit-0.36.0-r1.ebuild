@@ -5,12 +5,15 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
+
 inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="Automation tool"
-HOMEPAGE="https://pydoit.org/
+HOMEPAGE="
+	https://pydoit.org/
+	https://github.com/pydoit/doit/
 	https://pypi.org/project/doit/
-	https://github.com/pydoit/doit"
+"
 SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -31,7 +34,9 @@ BDEPEND="
 		dev-python/pyflakes[${PYTHON_USEDEP}]
 	)
 "
-PDEPEND=">=dev-python/doit-py-0.4.0[${PYTHON_USEDEP}]"
+PDEPEND="
+	>=dev-python/doit-py-0.4.0[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx doc \
