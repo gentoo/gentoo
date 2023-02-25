@@ -20,14 +20,15 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="+man jpeg"
 
-DEPEND="
+RDEPEND="
 	dev-libs/wayland
-	>=dev-libs/wayland-protocols-1.14
 	media-libs/libpng
 	x11-libs/pixman
 	jpeg? ( media-libs/libjpeg-turbo )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	>=dev-libs/wayland-protocols-1.14
+"
 BDEPEND="man? ( app-text/scdoc )"
 
 src_configure() {
@@ -45,5 +46,5 @@ src_install() {
 
 	newbashcomp contrib/completions/bash/grim.bash grim
 	insinto /usr/share/fish/vendor_completions.d/
-	doins contrib/completions/fish/grim.fish
+	doins contrib/completions/grim.fish
 }
