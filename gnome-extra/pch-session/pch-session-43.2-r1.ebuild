@@ -27,7 +27,6 @@ RDEPEND="
 	>=gnome-extra/gnome-tweaks-40.10
 
 	>=gnome-extra/gnome-clocks-43.0
-	>=gnome-extra/seahorse-nautilus-3.11.92_p20220906
 	>=media-fonts/fonts-meta-2
 	x11-themes/papirus-icon-theme
 

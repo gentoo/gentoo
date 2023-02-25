@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,6 @@ RDEPEND="
 	>=gnome-extra/gnome-tweaks-40.10
 
 	gnome-extra/gnome-clocks
-	gnome-extra/seahorse-nautilus
 	>=media-fonts/fonts-meta-2
 
 	bluetooth? ( >=gnome-extra/gnome-shell-extension-bluetooth-quick-connect-29 )
