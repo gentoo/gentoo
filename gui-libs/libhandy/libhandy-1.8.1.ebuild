@@ -25,7 +25,8 @@ RDEPEND="
 	glade? ( dev-util/glade:3.10= )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="
 	dev-libs/libxml2:2
 	dev-util/glib-utils
