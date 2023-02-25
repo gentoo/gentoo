@@ -27,7 +27,7 @@ SRC_URI="https://github.com/timvink/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~riscv x86"
+KEYWORDS="amd64 ~arm ~ppc ~riscv x86"
 
 # Tests are broken outside of upstream git repo
 RESTRICT="test"
