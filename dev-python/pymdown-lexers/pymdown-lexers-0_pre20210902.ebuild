@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~riscv x86"
+KEYWORDS="amd64 ~arm ~ppc ~riscv x86"
 
 RDEPEND="
 	>=dev-python/pygments-2.0.1[${PYTHON_USEDEP}]
