@@ -10,29 +10,33 @@ CRATES="
 	ahash-0.7.6
 	aho-corasick-0.7.20
 	anyhow-1.0.69
+	async-broadcast-0.5.1
+	async-executor-1.5.0
 	async-io-1.12.0
 	async-lock-2.6.0
+	async-recursion-1.0.2
+	async-task-4.3.0
+	async-trait-0.1.64
 	autocfg-1.1.0
 	base64-0.13.1
 	bitflags-1.3.2
 	block-buffer-0.10.3
-	block-buffer-0.9.0
 	block-modes-0.8.1
 	block-padding-0.2.1
-	bstr-1.2.0
+	bstr-1.3.0
 	bumpalo-3.12.0
 	byteorder-1.4.3
 	bytes-1.4.0
-	bytesize-1.1.0
+	bytesize-1.2.0
 	bzip2-0.4.4
 	bzip2-sys-0.1.11+1.0.8
 	cab-0.4.1
-	camino-1.1.2
-	cargo-config2-0.1.4
+	camino-1.1.3
+	cargo-config2-0.1.5
 	cargo-options-0.6.0
 	cargo-platform-0.1.2
 	cargo-xwin-0.14.0
-	cargo-zigbuild-0.16.0
+	cargo-zigbuild-0.16.1
 	cargo_metadata-0.15.3
 	cbindgen-0.24.3
 	cc-1.0.79
@@ -67,14 +71,12 @@ CRATES="
 	crossbeam-utils-0.8.14
 	crunchy-0.2.2
 	crypto-common-0.1.6
-	crypto-mac-0.11.1
 	ctor-0.1.26
 	data-encoding-2.3.3
 	derivative-2.2.0
 	dialoguer-0.10.3
 	diff-0.1.13
 	digest-0.10.6
-	digest-0.9.0
 	dirs-4.0.0
 	dirs-sys-0.3.7
 	dunce-1.0.3
@@ -88,8 +90,8 @@ CRATES="
 	encoding-index-tradchinese-1.20141219.5
 	encoding_index_tests-0.1.4
 	encoding_rs-0.8.32
-	enumflags2-0.6.4
-	enumflags2_derive-0.6.4
+	enumflags2-0.7.5
+	enumflags2_derive-0.7.4
 	errno-0.2.8
 	errno-dragonfly-0.1.2
 	event-listener-2.5.3
@@ -102,10 +104,7 @@ CRATES="
 	foreign-types-shared-0.1.1
 	form_urlencoded-1.1.0
 	fs-err-2.9.0
-	futures-0.3.26
-	futures-channel-0.3.26
 	futures-core-0.3.26
-	futures-executor-0.3.26
 	futures-io-0.3.26
 	futures-lite-1.12.0
 	futures-macro-0.3.26
@@ -120,8 +119,9 @@ CRATES="
 	hashbrown-0.12.3
 	heck-0.4.1
 	hermit-abi-0.2.6
-	hkdf-0.11.0
-	hmac-0.11.0
+	hex-0.4.3
+	hkdf-0.12.3
+	hmac-0.12.1
 	home-0.5.4
 	humantime-2.1.0
 	humantime-serde-1.1.1
@@ -136,10 +136,11 @@ CRATES="
 	itertools-0.10.5
 	itoa-1.0.5
 	js-sys-0.3.61
-	keyring-1.2.1
+	keyring-2.0.1
 	lazy_static-1.4.0
 	lddtree-0.3.2
 	libc-0.2.139
+	linux-keyutils-0.2.2
 	linux-raw-sys-0.1.4
 	lock_api-0.4.9
 	log-0.4.17
@@ -157,10 +158,8 @@ CRATES="
 	msi-0.5.0
 	multipart-0.18.0
 	native-tls-0.2.11
-	nb-connect-1.2.0
-	nix-0.22.3
+	nix-0.25.1
 	nom-7.1.3
-	nom8-0.2.0
 	normalize-line-endings-0.3.0
 	normpath-1.0.1
 	nu-ansi-term-0.46.0
@@ -180,6 +179,7 @@ CRATES="
 	openssl-probe-0.1.5
 	openssl-src-111.25.0+1.1.1t
 	openssl-sys-0.9.80
+	ordered-stream-0.1.4
 	os_pipe-1.1.2
 	os_str_bytes-6.4.1
 	output_vt100-0.1.3
@@ -199,7 +199,6 @@ CRATES="
 	portable-atomic-0.3.19
 	ppv-lite86-0.2.17
 	pretty_assertions-1.3.0
-	proc-macro-crate-0.1.5
 	proc-macro-crate-1.2.1
 	proc-macro-error-1.0.4
 	proc-macro-error-attr-1.0.4
@@ -230,12 +229,11 @@ CRATES="
 	ryu-1.0.12
 	same-file-1.0.6
 	schannel-0.1.21
-	scoped-tls-1.0.1
 	scopeguard-1.1.0
 	scroll-0.11.0
 	scroll_derive-0.11.0
 	sct-0.7.0
-	secret-service-2.0.2
+	secret-service-3.0.1
 	security-framework-2.8.2
 	security-framework-sys-2.8.0
 	semver-1.0.16
@@ -244,14 +242,14 @@ CRATES="
 	serde_json-1.0.93
 	serde_repr-0.1.10
 	serde_spanned-0.6.1
+	sha1-0.10.5
 	sha2-0.10.6
-	sha2-0.9.9
 	sharded-slab-0.1.4
 	shell-escape-0.1.5
 	shell-words-1.1.0
 	shlex-1.1.0
 	similar-2.2.1
-	slab-0.4.7
+	slab-0.4.8
 	smallvec-1.10.0
 	smawk-0.3.1
 	snapbox-0.4.4
@@ -262,7 +260,7 @@ CRATES="
 	static_assertions-1.1.0
 	strsim-0.10.0
 	subtle-2.4.1
-	syn-1.0.107
+	syn-1.0.109
 	tar-0.4.38
 	target-lexicon-0.12.6
 	tempfile-3.3.0
@@ -272,16 +270,16 @@ CRATES="
 	thiserror-1.0.38
 	thiserror-impl-1.0.38
 	thread_local-1.1.7
-	time-0.3.18
+	time-0.3.20
 	time-core-0.1.0
-	time-macros-0.2.6
+	time-macros-0.2.8
 	tiny-keccak-2.0.2
 	tinyvec-1.6.0
 	tinyvec_macros-0.1.1
 	toml-0.5.11
 	toml-0.7.2
 	toml_datetime-0.6.1
-	toml_edit-0.19.3
+	toml_edit-0.19.4
 	tracing-0.1.37
 	tracing-attributes-0.1.23
 	tracing-core-0.1.30
@@ -291,6 +289,7 @@ CRATES="
 	trycmd-0.14.11
 	twox-hash-1.6.3
 	typenum-1.16.0
+	uds_windows-1.0.2
 	unicase-2.6.0
 	unicode-bidi-0.3.10
 	unicode-ident-1.0.6
@@ -331,15 +330,17 @@ CRATES="
 	windows_x86_64_gnu-0.42.1
 	windows_x86_64_gnullvm-0.42.1
 	windows_x86_64_msvc-0.42.1
+	winnow-0.3.0
 	xattr-0.2.3
 	xwin-0.2.10
 	yansi-0.5.1
-	zbus-1.9.3
-	zbus_macros-1.9.3
+	zbus-3.9.0
+	zbus_macros-3.9.0
+	zbus_names-2.5.0
 	zeroize-1.5.7
 	zip-0.6.4
-	zvariant-2.10.0
-	zvariant_derive-2.10.0"
+	zvariant-3.11.0
+	zvariant_derive-3.11.0"
 # additional crates used by test-crates/* test packages,
 # `grep test-crates tests/run.rs` to see which are needed
 CRATES_TEST="
@@ -348,6 +349,7 @@ CRATES_TEST="
 	askama_escape-0.10.3
 	askama_shared-0.12.2
 	bincode-1.3.3
+	camino-1.1.2
 	cc-1.0.73
 	cc-1.0.74
 	indoc-1.0.7
@@ -372,6 +374,7 @@ CRATES_TEST="
 	siphasher-0.3.10
 	syn-1.0.102
 	syn-1.0.103
+	syn-1.0.107
 	target-lexicon-0.12.4
 	unicode-ident-1.0.5
 	uniffi-0.23.0
