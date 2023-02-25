@@ -30,6 +30,7 @@
 	</use>
 	<upstream>
 		<remote-id type="github">swaywm/wlroots</remote-id>
+		<remote-id type="freedesktop-gitlab">wlroots/wlroots</remote-id>
 		<maintainer status="active">
 			<email>sir@cmpwn.com</email>
 			<name>Drew DeVault</name>
