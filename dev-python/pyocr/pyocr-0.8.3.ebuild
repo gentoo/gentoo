@@ -34,4 +34,9 @@ RDEPEND+="
 	tesseract? ( app-text/tesseract )
 "
 
-export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+src_prepare() {
+	# workaround setuptools failing due to version being None
+	# https://gitlab.gnome.org/World/OpenPaperwork/pyocr/-/issues/127
+	sed -i -e '/version=version/d' setup.py || die
+	distutils-r1_src_prepare
+}
