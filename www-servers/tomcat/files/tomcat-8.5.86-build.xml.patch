@@ -1,0 +1,113 @@
+diff --git a/build.xml b/build.xml
+index d407be0..7c69a1b 100644
+--- a/build.xml
++++ b/build.xml
+@@ -1148,9 +1148,9 @@
+ 
+   <target name="deploy" depends="package,build-docs,build-tomcat-jdbc,compile-webapp-examples"
+           description="Default. Builds a working Tomcat instance">
+-
++<!-- not needed for us
+     <copy tofile="${tomcat.build}/bin/commons-daemon.jar" file="${commons-daemon.jar}" />
+-
++-->
+     <!-- Copy scripts -->
+     <copy todir="${tomcat.build}/bin">
+       <fileset dir="bin">
+@@ -1210,7 +1210,9 @@
+         <exclude name="${jdt.jar.filename}"/>
+       </fileset>
+     </delete>
++<!-- we provide jdt jar externally
+     <copy file="${jdt.jar}" todir="${tomcat.build}/lib"/>
++-->
+ 
+     <!-- Add sources for examples -->
+     <antcall target="examples-sources" />
+@@ -1719,7 +1721,7 @@
+   <target name="extras-webservices-prepare"
+           depends="extras-prepare"
+           description="Prepare to build web services extras package">
+-
++<!-- we provide jaxrpc
+     <antcall target="downloadfile">
+       <param name="sourcefile" value="${jaxrpc-lib.loc}"/>
+       <param name="destfile" value="${jaxrpc-lib.jar}"/>
+@@ -1728,7 +1730,8 @@
+       <param name="checksum.algorithm" value="${jaxrpc-lib.checksum.algorithm}"/>
+       <param name="checksum.value" value="${jaxrpc-lib.checksum.value}"/>
+     </antcall>
+-
++-->
++<!-- we provide wsdl4j
+     <antcall target="downloadfile">
+       <param name="sourcefile" value="${wsdl4j-lib.loc}"/>
+       <param name="destfile" value="${wsdl4j-lib.jar}"/>
+@@ -1737,11 +1740,13 @@
+       <param name="checksum.algorithm" value="${wsdl4j-lib.checksum.algorithm}"/>
+       <param name="checksum.value" value="${wsdl4j-lib.checksum.value}"/>
+     </antcall>
+-
++-->
++<!-- ignored above
+     <copy file="${jaxrpc-lib.jar}"
+           tofile="${tomcat.extras}/webservices/jaxrpc.jar" />
+     <copy file="${wsdl4j-lib.jar}"
+           tofile="${tomcat.extras}/webservices/wsdl4j.jar" />
++-->
+   </target>
+ 
+   <target name="extras-webservices"
+@@ -1850,11 +1855,12 @@
+     </copy>
+ 
+     <!-- Source bundles for native components -->
++<!-- we provide tomcat native as another package and we don't need commons-daemon
+     <copy tofile="${tomcat.dist}/bin/tomcat-native.tar.gz"
+             file="${tomcat-native.tar.gz}" />
+     <copy tofile="${tomcat.dist}/bin/commons-daemon-native.tar.gz"
+             file="${commons-daemon.native.src.tgz}" />
+-
++-->
+     <!-- platform README files -->
+     <echo append="false" file="${tomcat.dist}/bin/x64/README">
+ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
+@@ -2020,8 +2026,10 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
+       <link href="../elapi"/>
+       <link href="../websocketapi"/>
+       <link href="../jaspicapi"/>
++<!-- net is not accessed from emerge
+       <link href="https://docs.oracle.com/javase/7/docs/api/"/>
+       <link href="https://docs.oracle.com/javaee/7/api/"/>
++-->
+       <packageset dir="${tomcat.dist}/src/java/">
+         <include name="org/**"/>
+         <exclude name="org/apache/el/parser/**"/>
+@@ -2933,6 +2941,7 @@ asf.ldap.username=${release.asfusername}
+           description="Download components necessary to compile" >
+ 
+     <!-- Download Commons Daemon -->
++<!-- not needed
+     <antcall target="downloadgz-2">
+       <param name="sourcefile.1" value="${commons-daemon.bin.loc.1}"/>
+       <param name="sourcefile.2" value="${commons-daemon.bin.loc.2}"/>
+@@ -2941,8 +2950,9 @@ asf.ldap.username=${release.asfusername}
+       <param name="checksum.algorithm" value="${commons-daemon.bin.checksum.algorithm}"/>
+       <param name="checksum.value" value="${commons-daemon.bin.checksum.value}"/>
+     </antcall>
+-
++-->
+     <!-- Download JDT (Eclipse compiler) -->
++<!-- we provide JDT
+     <antcall target="downloadfile-2">
+       <param name="sourcefile.1" value="${jdt.loc.1}"/>
+       <param name="sourcefile.2" value="${jdt.loc.2}"/>
+@@ -2952,7 +2962,7 @@ asf.ldap.username=${release.asfusername}
+       <param name="checksum.algorithm" value="${jdt.checksum.algorithm}"/>
+       <param name="checksum.value" value="${jdt.checksum.value}"/>
+     </antcall>
+-
++-->
+   </target>
+ 
+   <target name="download-test-compile"
