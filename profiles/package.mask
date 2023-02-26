@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2023-02-25)
+# Packages are unmaintained and archived upstream.
+# Removal on 2023-03-27. Bug #897748
+gnome-extra/seahorse-nautilus
+x11-libs/libcryptui
+
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-02-25)
 # Fails tests, last upstream commit 2021, does not work with
 # python3.11. No reverse dependencies.
