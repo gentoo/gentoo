@@ -7,7 +7,7 @@ LUA_COMPAT=( lua5-1 luajit )
 
 inherit lua-single toolchain-funcs flag-o-matic
 
-DESCRIPTION="Spreadsheet Calculator Improvised -- An ncurses spreadsheet program for terminal"
+DESCRIPTION="Ncurses based, vim-like spreadsheet calculator"
 HOMEPAGE="https://github.com/andmarti1424/sc-im"
 SRC_URI="https://github.com/andmarti1424/sc-im/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P}/src"
