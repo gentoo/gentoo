@@ -5,8 +5,8 @@ EAPI=8
 
 inherit cmake plocale
 
-DESCRIPTION="Libxlsxwriter is a C library for creating Excel XLSX files"
-HOMEPAGE="https://libxlsxwriter.github.io/"
+DESCRIPTION="C library for creating Excel XLSX files"
+HOMEPAGE="https://libxlsxwriter.github.io/ https://github.com/jmcnamara/libxlsxwriter"
 SRC_URI="https://github.com/jmcnamara/libxlsxwriter/archive/RELEASE_${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-RELEASE_${PV}"
 
