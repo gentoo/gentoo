@@ -5,18 +5,16 @@ EAPI="7"
 
 inherit toolchain-funcs
 
-MY_PN="${PN/netkit/bsd}"
-MY_PN="${MY_PN/rd/r}"
 DESCRIPTION="Netkit - fingerd and finger client"
 HOMEPAGE="https://wiki.linuxfoundation.org/networking/netkit"
-SRC_URI="mirror://debian/pool/main/b/${MY_PN}/${MY_PN}_${PV}.orig.tar.bz2"
+SRC_URI="http://ftp.linux.org.uk/pub/linux/Networking/finger/bsd-finger-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
-S=${WORKDIR}/${MY_PN}-${PV}
+S=${WORKDIR}/bsd-finger-${PV}
 
 PATCHES=(
 	"${FILESDIR}"/netkit-fingerd-0.17-includes.patch
