@@ -14,7 +14,7 @@ DESCRIPTION="KDE Plasma applet for NetworkManager"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="openconnect teamd"
+IUSE="mobile openconnect teamd"
 
 DEPEND="
 	>=app-crypt/qca-2.3.0:2[qt5(+)]
@@ -70,6 +70,14 @@ src_prepare() {
 	if ! use openconnect; then
 		sed -e "s/^pkg_check_modules.*openconnect/#&/" -i CMakeLists.txt || die
 	fi
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_MOBILE=$(usex mobile "True" "False")
+	)
+
+	ecm_src_configure
 }
 
 pkg_postinst() {
