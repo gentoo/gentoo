@@ -47,14 +47,14 @@ DEPEND="${COMMON_DEP}
 BDEPEND="verify-sig? ( ~sec-keys/openpgp-keys-apache-tomcat-${PV}:${PV} )"
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/tomcat-${PV}.apache.org.asc"
 
+PATCHES=( "${FILESDIR}/${PN}-8.5.86-build.xml.patch" )
+
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	default
 
 	find -name '*.jar' -type f -delete -print || die
-
-	eapply "${FILESDIR}/${PN}-8.5.86-build.xml.patch"
 
 	# For use of catalina.sh in netbeans
 	sed -i -e "/^# ----- Execute The Requested Command/ a\

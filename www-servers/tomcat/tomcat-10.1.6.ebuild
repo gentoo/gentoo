@@ -51,6 +51,8 @@ DEPEND="${COMMON_DEP}
 BDEPEND="verify-sig? ( ~sec-keys/openpgp-keys-apache-tomcat-${PV}:${PV} )"
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}/usr/share/openpgp-keys/tomcat-${PV}.apache.org.asc"
 
+PATCHES=( "${FILESDIR}/${PN}-10.1.6-build.xml.patch" )
+
 S=${WORKDIR}/${MY_P}
 
 BND_HOME="${S}/tomcat-build-libs/bnd"
@@ -74,8 +76,6 @@ src_prepare() {
 	default
 
 	find -name '*.jar' -type f -delete -print || die
-
-	eapply "${FILESDIR}/${PN}-10.1.6-build.xml.patch"
 
 	local vm_version="$(java-config -g PROVIDES_VERSION)"
 

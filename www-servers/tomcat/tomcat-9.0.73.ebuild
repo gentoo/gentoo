@@ -57,6 +57,7 @@ S=${WORKDIR}/${MY_P}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-9.0.50-insufficient-ecj.patch"
+	"${FILESDIR}/${PN}-9.0.72-build.xml.patch"
 )
 
 BND_HOME="${S}/tomcat-build-libs/bnd"
@@ -80,8 +81,6 @@ src_prepare() {
 	default
 
 	find -name '*.jar' -type f -delete -print || die
-
-	eapply "${FILESDIR}/${PN}-9.0.72-build.xml.patch"
 
 	# For use of catalina.sh in netbeans
 	sed -i -e "/^# ----- Execute The Requested Command/ a\
