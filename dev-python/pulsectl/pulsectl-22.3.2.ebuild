@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{9..10} )
+PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
 inherit distutils-r1 pypi
 
@@ -18,6 +18,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="media-sound/pulseaudio"
+RDEPEND="
+	media-sound/pulseaudio
+"
 
 distutils_enable_tests unittest
