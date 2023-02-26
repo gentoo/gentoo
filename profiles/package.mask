@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2023-02-26)
+# Installs headers, libs, and pkgconfig as "git2-experimental",
+# which breaks reverse dependencies. Bug #897880
+=dev-libs/libgit2-1.6.1
+
 # Matt Turner <mattst88@gentoo.org> (2023-02-25)
 # Packages are unmaintained and archived upstream.
 # Removal on 2023-03-27. Bug #897748
