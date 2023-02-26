@@ -5,12 +5,12 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..10} )
+PYPI_NO_NORMALIZE=1
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Testing utility classes and functions for Sphinx extensions"
 HOMEPAGE="https://github.com/sphinx-doc/sphinx-testing"
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
