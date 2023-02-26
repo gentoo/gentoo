@@ -4,16 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="WebSocket client for python with hybi13 support"
 HOMEPAGE="
 	https://github.com/websocket-client/websocket-client/
 	https://pypi.org/project/websocket-client/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
