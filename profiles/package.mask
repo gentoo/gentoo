@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-02-25)
+# Major update.  Multiple packages are known to be broken.
+# Masked for further testing.
+>=dev-python/cython-3
+
 # Ulrich Müller <ulm@gentoo.org> (2023-02-26)
 # Installs headers, libs, and pkgconfig as "git2-experimental",
 # which breaks reverse dependencies. Bug #897880
