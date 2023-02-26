@@ -13,6 +13,7 @@
 		<flag name="alias">Enable plugin for alias control</flag>
 		<flag name="buflist">Enable buflist plugin</flag>
 		<flag name="charset">Enable encoding conversions</flag>
+		<flag name="enchant">Enable spell checker plugin via Enchant instead of GNU Aspell</flag>
 		<flag name="exec">Enable exec plugin</flag>
 		<flag name="fset">Enable fast set plugin</flag>
 		<flag name="fifo">Enable FIFO support (sh pipes)</flag>
