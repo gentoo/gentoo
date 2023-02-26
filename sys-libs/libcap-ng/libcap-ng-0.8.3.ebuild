@@ -5,7 +5,7 @@ EAPI=7
 
 # Keep an eye on Fedora's packaging (https://src.fedoraproject.org/rpms/libcap-ng/tree/rawhide) for patches
 # Same maintainer in Fedora as upstream
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools flag-o-matic python-r1
 
 DESCRIPTION="POSIX 1003.1e capabilities"
