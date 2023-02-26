@@ -253,7 +253,7 @@ src_install() {
 
 	# Find generated shell completion files. btm.bash can be present in multiple dirs if we build
 	# additional features, so grab the first match only.
-	local BUILD_DIR="$(dirname $(find target -name btm.bash -print -quit))"
+	local BUILD_DIR="$(dirname $(find target -name btm.bash -print -quit || die) || die)"
 
 	newbashcomp "${BUILD_DIR}"/btm.bash btm
 
