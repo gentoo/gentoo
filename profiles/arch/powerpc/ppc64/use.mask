@@ -1,4 +1,4 @@
-# Copyright 2008-2022 Gentoo Authors
+# Copyright 2008-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ### THIS FILE IS ONLY FOR PACKAGES MASKED ON BOTH 64-BIT AND 32-BIT USERLAND!!!
@@ -32,9 +32,6 @@ battery
 
 # Unmask the flag for Playstation 3
 -ps3
-
-# mask custom-cpuopts and cpudetection on ppc64 for mplayer - bug #234629
-cpudetection
 
 # Michał Górny <mgorny@gentoo.org> (2013-05-04)
 # Unmask systemd since it is keyworded here.

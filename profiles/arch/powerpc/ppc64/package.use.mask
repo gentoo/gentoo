@@ -205,3 +205,6 @@ x11-misc/rss-glx quesoglc
 # Joseph Jezak <josejx@gentoo.org> (2010-02-12)
 # Mask unstable pidgin deps until we can mark them stable (farsight2)
 net-im/pidgin gstreamer
+
+# mask custom-cpuopts and cpudetection on ppc64 for mplayer - bug #234629
+media-video/mplayer cpudetection
