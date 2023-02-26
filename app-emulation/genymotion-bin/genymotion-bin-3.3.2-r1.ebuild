@@ -42,7 +42,7 @@ RDEPEND="app-arch/lz4
 	x11-libs/libxcb
 	x11-libs/libXext
 	x11-libs/libXi
-	x11-libs/libxkbcommon
+	x11-libs/libxkbcommon[X]
 	x11-libs/libXmu
 	x11-libs/xcb-util
 	x11-libs/xcb-util-image
