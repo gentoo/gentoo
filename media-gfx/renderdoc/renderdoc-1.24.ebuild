@@ -40,7 +40,7 @@ SRC_URI="
 # swig: GPL-3+ BSD BSD-2
 LICENSE="BSD BSD-2 CC-BY-3.0 GPL-3+ MIT OFL-1.1 public-domain ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="pyside2 qt5"
 REQUIRED_USE="doc? ( qt5 ) pyside2? ( qt5 ) qt5? ( ${PYTHON_REQUIRED_USE} )"
 
