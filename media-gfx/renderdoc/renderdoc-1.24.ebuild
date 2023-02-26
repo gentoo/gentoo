@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ AUTOTOOLS_AUTO_DEPEND="no"
 DOCS_BUILDER="sphinx"
 DOCS_DIR="docs"
 # For Python 3.11, see https://github.com/baldurk/renderdoc/issues/2730
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools cmake flag-o-matic optfeature python-single-r1 docs qmake-utils verify-sig xdg
 
 DESCRIPTION="A stand-alone graphics debugging tool"
