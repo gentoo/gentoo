@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools gnome2-utils python-r1 xdg
 
 DESCRIPTION="Chinese Cangjie and Quick engines for IBus"
