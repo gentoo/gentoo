@@ -14,7 +14,7 @@ SRC_URI="https://github.com/zlib-ng/minizip-ng/archive/refs/tags/${PV}.tar.gz ->
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="compat openssl test zstd"
 RESTRICT="!test? ( test )"
 
