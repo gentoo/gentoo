@@ -5,7 +5,7 @@ EAPI=8
 
 NEED_EMACS=26.1
 DISTUTILS_USE_PEP517=no
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit elisp distutils-r1
 
@@ -34,7 +34,7 @@ BDEPEND="
 	test? ( app-emacs/buttercup )
 "
 
-DOCS=( Changelog.org Extensions.org README.org screenshots )
+BYTECOMPFLAGS="-L . -L src/elisp"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.9.5-tests.patch
 	"${FILESDIR}"/${PN}-async-scripts.patch
@@ -42,7 +42,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-tests.patch
 )
 
-BYTECOMPFLAGS="-L . -L src/elisp"
+DOCS=( Changelog.org Extensions.org README.org screenshots )
 SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
@@ -59,6 +59,7 @@ python_compile() {
 
 src_compile() {
 	distutils-r1_src_compile
+
 	elisp-compile src/elisp/*.el
 }
 
