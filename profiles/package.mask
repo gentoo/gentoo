@@ -326,14 +326,6 @@ dev-ruby/ruby_gntp
 # Removal on 2023-02-27.
 app-admin/bastille
 
-# Ionen Wolkens <ionen@gentoo.org> (2023-01-28)
-# Recently broke at runtime, and its relationship with evolving
-# swig+python is likely to keep breaking this further without an
-# active upstream (no activty since 2018) to keep up with changes.
-# Removal: 2023-02-27. Bug #892323
-games-rpg/adonthell
-games-rpg/wastesedge
-
 # Florian Schmaus <flow@gentoo.org> (2023-01-27)
 # Previous dependencies of dev-lang/clojure, now part of the clojure
 # ebuild and no longer needed.
