@@ -42,8 +42,8 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
-BDEPEND="virtual/pkgconfig
-	app-alternatives/yacc"
+BDEPEND="app-alternatives/yacc
+	virtual/pkgconfig"
 
 pkg_setup() {
 	CONFLICTING=$(usex tmux "tmux " "")$(usex wayland "wayland " "")$(usex X "X" "")
