@@ -77,9 +77,9 @@ CRATES="
 "
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
-inherit cargo distutils-r1 multiprocessing
+inherit cargo distutils-r1 multiprocessing optfeature
 
 DESCRIPTION="Terra is the foundation on which Qiskit is built"
 HOMEPAGE="
@@ -115,7 +115,6 @@ RDEPEND="
 	>=dev-python/python-dateutil-2.8.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/symengine-0.8[${PYTHON_USEDEP}]
-	>=dev-python/tweedledum-1.1[${PYTHON_USEDEP}]
 	visualization? (
 		>=dev-python/matplotlib-3.3[${PYTHON_USEDEP}]
 		>=dev-python/ipywidgets-7.3.0[${PYTHON_USEDEP}]
@@ -171,4 +170,8 @@ python_test() {
 	# includes the 'randomized' suite. Upstream run that in a separate CI job.
 	# Note: use -p timeout --timeout 500 if debugging hanging tests.
 	epytest -p xdist -n "$(makeopts_jobs)" test/python
+}
+
+pkg_postinst() {
+	optfeature "qiskit.circuit.classicalfunction support" dev-python/tweedledum
 }
