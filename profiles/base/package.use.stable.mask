@@ -91,12 +91,6 @@ dev-libs/glib sysprof
 # bug #769923
 dev-embedded/urjtag ftd2xx
 
-# Sam James <sam@gentoo.org> (2021-01-27)
-# Experimental feature which may not be as secure
-# as on OpenBSD (where proper kernel support exists).
-# bug #726994
-app-admin/doas persist
-
 # Sam James <sam@gentoo.org> (2021-01-09)
 # relapack is experimental, please be careful with use
 # bug #764206
