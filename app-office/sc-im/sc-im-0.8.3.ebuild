@@ -20,7 +20,6 @@ REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 DEPEND="
 	sys-libs/ncurses:=
-
 	lua? (
 		${LUA_DEPS}
 	)
