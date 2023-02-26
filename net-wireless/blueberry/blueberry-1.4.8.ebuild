@@ -14,10 +14,10 @@ SRC_URI="https://github.com/linuxmint/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
+	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
@@ -27,12 +27,10 @@ RDEPEND="${PYTHON_DEPS}
 	>=net-wireless/gnome-bluetooth-3.14:2[introspection]
 	net-wireless/bluez[obex]
 	net-wireless/bluez-tools
-	|| (
-		>=sys-apps/util-linux-2.31_rc1
-		net-wireless/rfkill
-	)
+	>=sys-apps/util-linux-2.31_rc1
 	x11-libs/libnotify[introspection]
-	x11-misc/wmctrl"
+	x11-misc/wmctrl
+"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
