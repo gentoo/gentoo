@@ -1,4 +1,4 @@
-# Copyright 2004-2022 Gentoo Authors
+# Copyright 2004-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-simple.eclass
@@ -417,6 +417,7 @@ java-pkg-simple_src_compile() {
 	# package
 	local jar_args
 	if [[ -e ${classes}/META-INF/MANIFEST.MF ]]; then
+		sed '/Created-By: /Id' -i ${classes}/META-INF/MANIFEST.MF
 		jar_args="cfm ${JAVA_JAR_FILENAME} ${classes}/META-INF/MANIFEST.MF"
 	else
 		jar_args="cf ${JAVA_JAR_FILENAME}"
