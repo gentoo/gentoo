@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~loong ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv x86"
 IUSE="curl gd gtk jpeg png python test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
