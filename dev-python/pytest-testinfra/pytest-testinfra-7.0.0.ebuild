@@ -42,11 +42,11 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
-	local -x EPYTEST_IGNORE=()
+	local -x EPYTEST_DESELECT=()
 
 	# This is the only test which actually fails if salt cannot be imported
 	if [[ ${EPYTHON} == python3.11 ]]; then
-		EPYTEST_IGNORE+=(
+		EPYTEST_DESELECT+=(
 			test/test_backends.py::test_backend_importables
 		)
 	fi
