@@ -6,7 +6,7 @@ EAPI=8
 # Note: ideally bump with sys-apps/cracklib-words
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1 libtool multilib-minimal usr-ldscript
 
 MY_P=${P/_}
