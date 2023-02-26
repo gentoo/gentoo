@@ -8,7 +8,7 @@ EAPI=8
 
 COMMIT=388c8f753cfb99b4f82acbdff26bbe27189d2299
 NEED_EMACS=25
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit elisp readme.gentoo-r1 python-single-r1
 
