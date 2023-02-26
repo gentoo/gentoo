@@ -160,21 +160,13 @@ src_configure() {
 		# But the check does not quite work on i686: bug #760926.
 		$(use_enable cet)
 
-		# We need to set both configure options, --with-sysroot and --libdir,
-		# to fix cross build issues that happen when configuring gmp.
-		# We explicitly need --libdir. Having only --with-sysroot without
-		# --libdir would not fix the build issues.
-		# For some reason, it is not enough to set only --with-sysroot,
-		# also not enough to pass --with-gmp-xxx options.
-		--with-sysroot="${ESYSROOT}"
-		--libdir="${ESYSROOT}/usr/$(get_libdir)"
+		# Helps when cross-compiling. Not to be confused with --with-sysroot.
+		--with-build-sysroot="${ESYSROOT}"
 	)
 
-	local sysroot="${EPREFIX}/usr/${CTARGET}"
-
 	is_cross && myconf+=(
-		--with-sysroot="${sysroot}"
-		--includedir="${sysroot}/usr/include"
+		--with-sysroot="\${prefix}/${CTARGET}"
+		--includedir="\${prefix}/include/${CTARGET}"
 		--with-gdb-datadir="\${datadir}/gdb/${CTARGET}"
 	)
 
@@ -211,6 +203,13 @@ src_configure() {
 		$(use_with xxhash)
 		$(use_with guile)
 		$(use_with zstd)
+
+		# Find libraries using the toolchain sysroot rather than the configured
+		# prefix. Needed when cross-compiling.
+		#
+		# Check which libraries to apply this to with:
+		# "${S}"/gdb/configure --help | grep without-lib | sort
+		--without-lib{babeltrace,expat,gmp,iconv,ipt,lzma,mpfr,xxhash}-prefix
 	)
 
 	if use sparc-solaris || use x86-solaris ; then
