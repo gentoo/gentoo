@@ -49,5 +49,6 @@ src_test() {
 
 src_install() {
 	default
+	python_optimize "${D}"/usr/share/libsigrokdecode/decoders
 	find "${D}" -name '*.la' -type f -delete || die
 }
