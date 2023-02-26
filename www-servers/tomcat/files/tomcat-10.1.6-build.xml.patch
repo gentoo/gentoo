@@ -1,0 +1,122 @@
+diff --git a/build.xml b/build.xml
+index bea41a8..08ef1db 100644
+--- a/build.xml
++++ b/build.xml
+@@ -1457,9 +1457,9 @@
+ 
+   <target name="deploy" depends="package,build-docs,build-tomcat-jdbc,compile-webapp-examples"
+           description="Default. Builds a working Tomcat instance">
+-
++<!-- not needed for us
+     <copy tofile="${tomcat.build}/bin/commons-daemon.jar" file="${commons-daemon.jar}" />
+-
++-->
+     <!-- Copy scripts -->
+     <copy todir="${tomcat.build}/bin">
+       <fileset dir="bin">
+@@ -1519,8 +1519,9 @@
+         <exclude name="${jdt.jar.filename}"/>
+       </fileset>
+     </delete>
++<!-- we provide jdt jar externally
+     <copy file="${jdt.jar}" todir="${tomcat.build}/lib"/>
+-
++-->
+     <!-- Delete all other versions of Tomcat Migration Tool for Jakarta EE and copy the current one -->
+     <local name="migration.jar.filename" />
+     <basename property="migration.jar.filename" file="${migration-lib.jar}"/>
+@@ -1530,8 +1531,9 @@
+         <exclude name="${migration-lib.jar.filename}"/>
+       </fileset>
+     </delete>
++<!-- we provide migration tool externally
+     <copy file="${migration-lib.jar}" todir="${tomcat.build}/lib"/>
+-
++-->
+     <!-- Delete all other versions of OpenSSL support for Tomcat and copy the current one -->
+     <!-- After module release
+     <local name="openssl-lib.jar.filename" />
+@@ -2213,11 +2215,12 @@
+     </copy>
+ 
+     <!-- Source bundles for native components -->
++<!-- we provide tomcat native as another package and we don't need commons-daemon
+     <copy tofile="${tomcat.dist}/bin/tomcat-native.tar.gz"
+             file="${tomcat-native.tar.gz}" />
+     <copy tofile="${tomcat.dist}/bin/commons-daemon-native.tar.gz"
+             file="${commons-daemon.native.src.tgz}" />
+-
++-->
+     <!-- platform README files -->
+     <echo append="false" file="${tomcat.dist}/bin/x64/README">
+ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
+@@ -2378,8 +2381,10 @@ Apache Tomcat ${version} native binaries for Win64 AMD64/EMT64 platform.
+       <link href="../elapi"/>
+       <link href="../websocketapi"/>
+       <link href="../jaspicapi"/>
++<!-- net is not accessed from emerge
+       <link href="https://docs.oracle.com/en/java/javase/11/docs/api/"/>
+       <link href="https://jakarta.ee/specifications/platform/10/apidocs/"/>
++-->
+       <packageset dir="${tomcat.dist}/src/java/">
+         <include name="org/**"/>
+         <exclude name="org/apache/el/parser/**"/>
+@@ -3300,6 +3305,7 @@ asf.ldap.username=${release.asfusername}
+           depends="setup-bnd">
+ 
+     <!-- Download Commons Daemon -->
++<!-- not needed
+     <antcall target="downloadgz-2">
+       <param name="sourcefile.1" value="${commons-daemon.bin.loc.1}"/>
+       <param name="sourcefile.2" value="${commons-daemon.bin.loc.2}"/>
+@@ -3308,8 +3314,9 @@ asf.ldap.username=${release.asfusername}
+       <param name="checksum.algorithm" value="${commons-daemon.bin.checksum.algorithm}"/>
+       <param name="checksum.value" value="${commons-daemon.bin.checksum.value}"/>
+     </antcall>
+-
++-->
+     <!-- Download JDT (Eclipse compiler) -->
++<!-- we provide JDT
+     <antcall target="downloadfile-2">
+       <param name="sourcefile.1" value="${jdt.loc.1}"/>
+       <param name="sourcefile.2" value="${jdt.loc.2}"/>
+@@ -3319,8 +3326,9 @@ asf.ldap.username=${release.asfusername}
+       <param name="checksum.algorithm" value="${jdt.checksum.algorithm}"/>
+       <param name="checksum.value" value="${jdt.checksum.value}"/>
+     </antcall>
+-
++-->
+     <!-- Download WS API -->
++<!-- we provide jaxrpc
+     <antcall target="downloadfile">
+       <param name="sourcefile" value="${jaxrpc-lib.loc}"/>
+       <param name="destfile" value="${jaxrpc-lib.jar}"/>
+@@ -3329,6 +3337,8 @@ asf.ldap.username=${release.asfusername}
+       <param name="checksum.algorithm" value="${jaxrpc-lib.checksum.algorithm}"/>
+       <param name="checksum.value" value="${jaxrpc-lib.checksum.value}"/>
+     </antcall>
++-->
++<!-- we provide wsdl4j
+     <antcall target="downloadfile">
+       <param name="sourcefile" value="${wsdl4j-lib.loc}"/>
+       <param name="destfile" value="${wsdl4j-lib.jar}"/>
+@@ -3337,8 +3347,9 @@ asf.ldap.username=${release.asfusername}
+       <param name="checksum.algorithm" value="${wsdl4j-lib.checksum.algorithm}"/>
+       <param name="checksum.value" value="${wsdl4j-lib.checksum.value}"/>
+     </antcall>
+-
++-->
+     <!-- Tomcat Migration Tool for Jakarta EE -->
++<!-- we provide migration tool
+     <antcall target="downloadfile">
+       <param name="sourcefile" value="${migration-lib.loc}"/>
+       <param name="destfile" value="${migration-lib.jar}"/>
+@@ -3347,7 +3358,7 @@ asf.ldap.username=${release.asfusername}
+       <param name="checksum.algorithm" value="${migration-lib.checksum.algorithm}"/>
+       <param name="checksum.value" value="${migration-lib.checksum.value}"/>
+     </antcall>
+-
++-->
+   </target>
+ 
+   <target name="download-test-compile"
