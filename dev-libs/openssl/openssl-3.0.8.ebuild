@@ -103,7 +103,6 @@ src_prepare() {
 	# that gets blown away anyways by the Configure script in src_configure
 	rm -f Makefile
 
-
 	if ! use vanilla ; then
 		PATCHES+=(
 			# Add patches which are Gentoo-specific customisations here
