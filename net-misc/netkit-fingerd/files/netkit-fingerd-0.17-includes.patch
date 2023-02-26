@@ -1,6 +1,18 @@
---- bsd-finger-0.17/finger/lprint.c~	Tue Sep 14 12:51:11 1999
-+++ bsd-finger-0.17/finger/lprint.c	Sun Apr 29 21:49:04 2001
-@@ -48,7 +48,7 @@
+https://bugs.gentoo.org/897822
+
+Add missing fcntl.h.
+Change sys/time.h to time.h.
+
+--- a/finger/lprint.c
++++ b/finger/lprint.c
+@@ -42,13 +42,14 @@
+ 
+ #include <stdio.h>
+ #include <ctype.h>
++#include <fcntl.h>
+ #include <paths.h>
+ #include <string.h>
+ #include <unistd.h>
  #include <sys/types.h>
  #include <sys/file.h>
  #include <sys/stat.h>
@@ -9,8 +21,8 @@
  #include "finger.h"
  
  static void lprint(PERSON *pn);
---- bsd-finger-0.17/finger/sprint.c~	Sun Dec 12 19:59:33 1999
-+++ bsd-finger-0.17/finger/sprint.c	Sun Apr 29 21:49:22 2001
+--- a/finger/sprint.c
++++ b/finger/sprint.c
 @@ -40,7 +40,7 @@
  #endif /* not lint */
  
