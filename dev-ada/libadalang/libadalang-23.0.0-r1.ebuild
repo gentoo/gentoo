@@ -1,10 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_10 )
-ADA_COMPAT=( gnat_2021 gcc_12_2_0 )
+PYTHON_COMPAT=( python3_{10..11} )
+ADA_COMPAT=( gnat_2021 gcc_12 gcc_12_2_0 )
 
 inherit ada python-single-r1 multiprocessing
 
@@ -42,6 +42,8 @@ BDEPEND="test? (
 		dev-ada/e3-testsuite
 		<dev-lang/ocaml-4.14
 	)"
+
+PATCHES=( "${FILESDIR}"/${P}-test.patch )
 
 pkg_setup() {
 	python-single-r1_pkg_setup
