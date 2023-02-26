@@ -117,9 +117,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# Don't use libsoup-gnome (bug #565924)
-	export HAVE_LIBSOUP_GNOME=no
-
 	local myeconfargs=(
 		--disable-bsfilter-plugin
 		--disable-generic-umpc
