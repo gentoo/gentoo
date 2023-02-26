@@ -27,7 +27,12 @@ RDEPEND="
 	${DEPEND}
 	gui? (
 		${PYTHON_DEPS}
-		x11-libs/gtksourceview:3.0
+		gnome-base/librsvg:2[introspection]
+		sys-auth/polkit[introspection]
+		x11-libs/gdk-pixbuf[introspection]
+		x11-libs/gtk+:3[introspection]
+		x11-libs/gtksourceview:3.0[introspection]
+		x11-libs/pango[introspection]
 		$(python_gen_cond_dep '
 			dev-python/colorlog[${PYTHON_USEDEP}]
 			dev-python/pygobject:3[${PYTHON_USEDEP}]
@@ -76,6 +81,9 @@ PATCHES=(
 
 src_prepare() {
 	default
+	# Force the GUI to run with the correct PYTHON_SINGLE_TARGET
+	sed -i "/const char \*commands/s/python3/${EPYTHON}/" \
+		lib/cmdline.c || die
 	if use test && use x86; then
 		# Skip part of a test until this is fixed:
 		# https://github.com/sahib/rmlint/issues/522
