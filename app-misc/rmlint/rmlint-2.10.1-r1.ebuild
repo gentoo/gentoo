@@ -1,11 +1,11 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
-inherit gnome2-utils python-single-r1 scons-utils toolchain-funcs xdg-utils
+inherit gnome2-utils python-single-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="Extremely fast tool to remove duplicates and other lint from your filesystem"
 HOMEPAGE="https://rmlint.readthedocs.io/"
@@ -70,6 +70,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.10.1-x86-fix-size.patch"
 	# https://github.com/sahib/rmlint/pull/526
 	"${FILESDIR}/${PN}-2.10.1-fix-cc.patch"
+	# https://github.com/sahib/rmlint/issues/608#issuecomment-1406811107
+	"${FILESDIR}/${PN}-2.10.1-fix-gui-install.patch"
 )
 
 src_prepare() {
