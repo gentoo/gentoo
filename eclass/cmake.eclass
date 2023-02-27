@@ -595,9 +595,9 @@ cmake_src_configure() {
 		-DCMAKE_TOOLCHAIN_FILE="${toolchain_file}"
 	)
 
-	if [[ -n ${MYCMAKEARGS} ]] ; then
-		cmakeargs+=( "${MYCMAKEARGS}" )
-	fi
+	# Handle quoted whitespace
+	eval "local -a MYCMAKEARGS=( ${MYCMAKEARGS} )"
+	cmakeargs+=( "${MYCMAKEARGS[@]}" )
 
 	if [[ -n "${CMAKE_EXTRA_CACHE_FILE}" ]] ; then
 		cmakeargs+=( -C "${CMAKE_EXTRA_CACHE_FILE}" )
