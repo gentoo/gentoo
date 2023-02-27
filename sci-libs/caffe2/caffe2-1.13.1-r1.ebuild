@@ -54,6 +54,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-cpp/eigen
+	cuda? ( dev-libs/cutlass )
 	dev-libs/psimd
 	dev-libs/FP16
 	dev-libs/FXdiv
