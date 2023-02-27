@@ -66,14 +66,6 @@ pkg_pretend() {
 			ewarn "https://github.com/Zygo/bees/blob/master/docs/btrfs-kernel.md"
 			ewarn
 		fi
-		if kernel_is -ge 5 4 0; then
-			ewarn "With kernel version 5.4 or later, the kernel may hang when multiple threads"
-			ewarn "are running LOGICAL_INO and dedupe ioctl. This is not exclusively triggered"
-			ewarn "by bees but also other software running such operations, bees will just more"
-			ewarn "likely trigger this bug. You can work around this issue by reducing the"
-			ewarn "thread count of bees to 1."
-			ewarn
-		fi
 
 		elog "Bees recommends running the latest current kernel for performance and"
 		elog "reliability reasons, see README.md."
