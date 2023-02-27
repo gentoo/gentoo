@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit flag-o-matic
-
 MY_PN="MoarVM"
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/${MY_PN}/${MY_PN}.git"
