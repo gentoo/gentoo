@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit python-single-r1 cmake flag-o-matic
+inherit python-single-r1 cmake cuda flag-o-matic
 
 MYPN=pytorch
 MYP=${MYPN}-${PV}
@@ -148,7 +148,13 @@ src_configure() {
 		-DLIBSHM_INSTALL_LIB_SUBDIR="${EPREFIX}"/usr/$(get_libdir)
 	)
 
-	use cuda && addpredict "/dev/nvidiactl" # bug 867706
+	if use cuda; then
+		addpredict "/dev/nvidiactl" # bug 867706
+
+		mycmakeargs+=(
+			-DCMAKE_CUDA_FLAGS="$(cuda_gccdir -f | tr -d \")"
+		)
+	fi
 	cmake_src_configure
 }
 
