@@ -44,6 +44,9 @@ src_configure() {
 		-DBUILD_DEPRECATED=$(usex deprecated)
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_TESTING=$(usex test)
+
+		# Breaks cross, will default to OFF in next release.
+		-DTEST_FORTRAN_COMPILER=OFF
 	)
 
 	cmake_src_configure
