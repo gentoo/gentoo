@@ -1,0 +1,75 @@
+Backported upstream commit 0ddab3516217ac2067b6e980f5b2a6b2ac1be3fa
+
+--- a/tests/lexer_test.py
++++ b/tests/lexer_test.py
+@@ -86,41 +86,41 @@ def test_ansible_output_lexer():
+ 
+ <span class="k">TASK</span> <span class="p">[</span><span class="l">paused</span><span class="p">]</span> <span class="nv">************************************************************************************************************************************</span>
+ <span class="w">Sunday 11 November 2018  20:16:48 +0100 (0:00:00.041)       0:07:59.637 *******</span>
+-<span class="gd">--- before</span><span class="w"></span>
+-<span class="gi">+++ after</span><span class="w"></span>
+-<span class="gu">@@ -1,5 +1,5 @@</span><span class="w"></span>
+-<span class="w"> </span>{<span class="w"></span>
+-<span class="gd">-  &quot;exists&quot;: false,</span><span class="w"></span>
+-<span class="gd">-  &quot;paused&quot;: false,</span><span class="w"></span>
+-<span class="gd">-  &quot;running&quot;: false</span><span class="w"></span>
+-<span class="gi">+  &quot;exists&quot;: true,</span><span class="w"></span>
+-<span class="gi">+  &quot;paused&quot;: true,</span><span class="w"></span>
+-<span class="gi">+  &quot;running&quot;: true</span><span class="w"></span>
+-<span class="w"> </span>}<span class="w"></span>
++<span class="gd">--- before</span>
++<span class="gi">+++ after</span>
++<span class="gu">@@ -1,5 +1,5 @@</span>
++<span class="w"> </span>{
++<span class="gd">-  &quot;exists&quot;: false,</span>
++<span class="gd">-  &quot;paused&quot;: false,</span>
++<span class="gd">-  &quot;running&quot;: false</span>
++<span class="gi">+  &quot;exists&quot;: true,</span>
++<span class="gi">+  &quot;paused&quot;: true,</span>
++<span class="gi">+  &quot;running&quot;: true</span>
++<span class="w"> </span>}
+ <span class="w">\ No newline at end of file</span>
+ 
+ <span class="k">changed</span><span class="p">:</span> <span class="p">[</span><span class="nv">localhost</span><span class="p">]</span>
+ 
+ <span class="k">TASK</span> <span class="p">[</span><span class="l">volumes (more volumes)</span><span class="p">]</span> <span class="nv">********************************************************************************************************************</span>
+ <span class="w">Sunday 11 November 2018  20:19:25 +0100 (0:00:00.607)       0:10:36.974 *******</span>
+-<span class="gd">--- before</span><span class="w"></span>
+-<span class="gi">+++ after</span><span class="w"></span>
+-<span class="gu">@@ -1,11 +1,11 @@</span><span class="w"></span>
+-<span class="w"> </span>{<span class="w"></span>
+-<span class="w"> </span>  &quot;expected_binds&quot;: [<span class="w"></span>
+-<span class="gd">-    &quot;/tmp:/tmp:rw&quot;,</span><span class="w"></span>
+-<span class="gd">-    &quot;/:/whatever:rw,z&quot;</span><span class="w"></span>
+-<span class="gi">+    &quot;/tmp:/somewhereelse:ro,Z&quot;,</span><span class="w"></span>
+-<span class="gi">+    &quot;/tmp:/tmp:rw&quot;</span><span class="w"></span>
+-<span class="w"> </span>  ],<span class="w"></span>
+-<span class="w"> </span>  &quot;expected_volumes&quot;: {<span class="w"></span>
+-<span class="gd">-    &quot;/tmp&quot;: {},</span><span class="w"></span>
+-<span class="gd">-    &quot;/whatever&quot;: {}</span><span class="w"></span>
+-<span class="gi">+    &quot;/somewhereelse&quot;: {},</span><span class="w"></span>
+-<span class="gi">+    &quot;/tmp&quot;: {}</span><span class="w"></span>
+-<span class="w"> </span>  },<span class="w"></span>
+-<span class="w"> </span>  &quot;running&quot;: true<span class="w"></span>
+-<span class="w"> </span>}<span class="w"></span>
++<span class="gd">--- before</span>
++<span class="gi">+++ after</span>
++<span class="gu">@@ -1,11 +1,11 @@</span>
++<span class="w"> </span>{
++<span class="w"> </span>  &quot;expected_binds&quot;: [
++<span class="gd">-    &quot;/tmp:/tmp:rw&quot;,</span>
++<span class="gd">-    &quot;/:/whatever:rw,z&quot;</span>
++<span class="gi">+    &quot;/tmp:/somewhereelse:ro,Z&quot;,</span>
++<span class="gi">+    &quot;/tmp:/tmp:rw&quot;</span>
++<span class="w"> </span>  ],
++<span class="w"> </span>  &quot;expected_volumes&quot;: {
++<span class="gd">-    &quot;/tmp&quot;: {},</span>
++<span class="gd">-    &quot;/whatever&quot;: {}</span>
++<span class="gi">+    &quot;/somewhereelse&quot;: {},</span>
++<span class="gi">+    &quot;/tmp&quot;: {}</span>
++<span class="w"> </span>  },
++<span class="w"> </span>  &quot;running&quot;: true
++<span class="w"> </span>}
+ <span class="w">\ No newline at end of file</span>
+ 
+ <span class="k">changed</span><span class="p">:</span> <span class="p">[</span><span class="nv">localhost</span><span class="p">]</span>
