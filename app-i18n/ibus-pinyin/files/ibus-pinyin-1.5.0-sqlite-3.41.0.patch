@@ -1,0 +1,37 @@
+https://github.com/ibus/ibus-pinyin/pull/12
+
+From ffe471c94e951ca0a78f8fd69c60db4a65e1cb95 Mon Sep 17 00:00:00 2001
+From: jinqiang zhang <peeweep@0x0.ee>
+Date: Mon, 27 Feb 2023 03:48:53 +0000
+Subject: [PATCH] Fix sqlite 3.41.0 build failed
+
+As sqlite 3.41.0 release note say:
+
+ The double-quoted string misfeature is now disabled by default for CLI
+ builds. Legacy use cases can reenable the misfeature at run-time using
+ the ".dbconfig dqs_dml on" and ".dbconfig dqs_ddl on" commands.
+
+We should change this double quote to single quote
+
+Ref: https://bugs.gentoo.org/896366
+Signed-off-by: jinqiang zhang <peeweep@0x0.ee>
+---
+ data/db/english/english.awk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/db/english/english.awk b/data/db/english/english.awk
+index 1828d2c..16b58a7 100644
+--- a/data/db/english/english.awk
++++ b/data/db/english/english.awk
+@@ -16,7 +16,7 @@ BEGIN {
+ }
+ 
+     # Insert data into english table
+-    {   printf "INSERT INTO english (word, freq) VALUES (\"%s\", \"%f\");\n", $1, $2}
++    {   printf "INSERT INTO english (word, freq) VALUES (\'%s\', %f);\n", $1, $2}
+ 
+     #quit sqlite3
+ END {
+-- 
+2.39.2
+

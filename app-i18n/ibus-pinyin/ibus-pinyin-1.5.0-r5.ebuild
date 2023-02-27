@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-boost.patch
 	"${FILESDIR}"/${P}-content-type-method.patch
 	"${FILESDIR}"/${P}-python3.patch
+	"${FILESDIR}"/${P}-sqlite-3.41.0.patch
 )
 
 pkg_setup() {
