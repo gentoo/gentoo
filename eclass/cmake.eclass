@@ -489,7 +489,7 @@ cmake_src_configure() {
 			# When cross-compiling with a sysroot (e.g. with crossdev's emerge wrappers)
 			# we need to tell cmake to use libs/headers from the sysroot but programs from / only.
 			cat >> "${toolchain_file}" <<- _EOF_ || die
-				set(CMAKE_FIND_ROOT_PATH "${SYSROOT}")
+				set(CMAKE_SYSROOT "${ESYSROOT}")
 				set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 				set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 				set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
