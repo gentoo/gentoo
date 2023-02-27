@@ -23,16 +23,16 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( java moar )"
 
 CDEPEND="java? (
-		dev-java/asm:4
+		dev-java/asm:9
 		dev-java/jna:4
 	)
 	moar? ( ~dev-lang/moarvm-${PV}[clang=] )"
 RDEPEND="${CDEPEND}
-	java? ( >=virtual/jre-1.9 )"
+	java? ( >=virtual/jre-11 )"
 DEPEND="${CDEPEND}"
 BDEPEND="${CDEPEND}
 	clang? ( sys-devel/clang )
-	java? ( >=virtual/jdk-1.9 )
+	java? ( >=virtual/jdk-11 )
 	dev-lang/perl"
 
 pkg_pretend() {
@@ -69,7 +69,7 @@ nqp_compile() {
 	if [[ "${MULTIBUILD_VARIANT}" = jvm ]]; then
 		emake -j1 \
 			-C "${BUILD_DIR}" \
-			JAVAC="$(java-pkg_get-javac) $(java-pkg_javac-args)"
+			JAVAC="$(java-pkg_get-javac)"
 	elif [[ "${MULTIBUILD_VARIANT}" = moar ]]; then
 		emake -j1 \
 			-C "${BUILD_DIR}"

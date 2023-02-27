@@ -23,16 +23,16 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( java moar )"
 
 CDEPEND="java? (
-		dev-java/asm:4
+		dev-java/asm:9
 		dev-java/jna:4
 	)
 	moar? ( ~dev-lang/moarvm-${PV}[clang=] )"
 RDEPEND="${CDEPEND}
-	java? ( >=virtual/jre-1.8 )"
+	java? ( >=virtual/jre-11 )"
 DEPEND="${CDEPEND}"
 BDEPEND="${CDEPEND}
 	clang? ( sys-devel/clang )
-	java? ( >=virtual/jdk-1.8 )
+	java? ( >=virtual/jdk-11 )
 	dev-lang/perl"
 
 pkg_pretend() {
@@ -42,16 +42,6 @@ pkg_pretend() {
 		ewarn "dev-lang/nqp and dev-lang/rakudo, then do a new installation."
 		ewarn "(see Bug #584394)"
 	fi
-}
-
-java_prepare() {
-	# Don't clean stage0 jars.
-	einfo "Cleaning upstream jars"
-	java-pkg_clean 3rdparty/
-
-	# Don't use jars we just deleted.
-	sed -i -r 's/(:3rdparty[^:]*)+/:${THIRDPARTY_JARS}/g' \
-		src/vm/jvm/runners/nqp-j || die
 }
 
 src_prepare() {
@@ -79,8 +69,7 @@ nqp_compile() {
 	if [[ "${MULTIBUILD_VARIANT}" = jvm ]]; then
 		emake -j1 \
 			-C "${BUILD_DIR}" \
-			THIRDPARTY_JARS=$(java-pkg_getjars --with-dependencies asm-4,jline,jna-4) \
-			JAVAC="$(java-pkg_get-javac) $(java-pkg_javac-args)"
+			JAVAC="$(java-pkg_get-javac)"
 	elif [[ "${MULTIBUILD_VARIANT}" = moar ]]; then
 		emake -j1 \
 			-C "${BUILD_DIR}"
