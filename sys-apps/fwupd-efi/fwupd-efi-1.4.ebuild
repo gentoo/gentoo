@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit meson python-any-r1
+inherit meson python-any-r1 toolchain-funcs
 
 DESCRIPTION="EFI executable for fwupd"
 HOMEPAGE="https://fwupd.org"
@@ -31,6 +31,10 @@ DEPEND="sys-boot/gnu-efi"
 
 RDEPEND="!<sys-apps/fwupd-1.6.0"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4-efi_ld_override.patch	# Bug #892339
+)
+
 python_check_deps() {
 	python_has_version "dev-python/pefile[${PYTHON_USEDEP}]"
 }
@@ -43,6 +47,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
+		-Defi-ld="$(tc-getLD)"
 		-Defi-libdir="${EPREFIX}"/usr/$(get_libdir)
 		-Defi_sbat_distro_id="gentoo"
 		-Defi_sbat_distro_summary="Gentoo GNU/Linux"
