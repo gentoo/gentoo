@@ -1,6 +1,7 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
 # dev-cpp/glog fails tests, needs checknig
 media-libs/opencv glog contribsfm
@@ -141,6 +142,7 @@ app-office/libreoffice clang
 #
 # - sys-libs/libcxx: will work once https://reviews.llvm.org/D139297 lands
 # - sys-devel/lld: port is still under review
+dev-util/lldb test
 sys-devel/clang-common default-libcxx default-lld
 sys-devel/clang-runtime libcxx
 
