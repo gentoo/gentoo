@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfredo Tupone <tupone@gentoo.org> (2023-02-27)
+# Uses dev-util/nvidia-cuda-toolkit
+dev-libs/cutlass
+
 # Sam James <sam@gentoo.org> (2023-01-02)
 # Uses error.h, bug #888956
 =sys-libs/liburing-2.3
