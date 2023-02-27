@@ -88,7 +88,7 @@ RDEPEND="
 	app-arch/bzip2[${MULTILIB_USEDEP}]
 	dev-libs/protobuf:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
-	cuda? ( dev-util/nvidia-cuda-toolkit:0= )
+	cuda? ( <dev-util/nvidia-cuda-toolkit-12:= )
 	contribhdf? ( sci-libs/hdf5:= )
 	contribfreetype? (
 		media-libs/freetype:2[${MULTILIB_USEDEP}]
