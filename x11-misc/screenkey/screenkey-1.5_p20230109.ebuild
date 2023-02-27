@@ -25,7 +25,7 @@ else
 			-> ${P}.tar.bz2"
 		S="${WORKDIR}"/${PN}-v${PV}
 	fi
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="GPL-3+"
