@@ -6,19 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_P=${P/_p/.post}
 DESCRIPTION="Python library to work with pdf files based on qpdf"
 HOMEPAGE="
 	https://github.com/pikepdf/pikepdf/
 	https://pypi.org/project/pikepdf/
 "
-SRC_URI="
-	https://github.com/${PN}/${PN}/archive/v${PV/_p/.post}.tar.gz
-		-> ${P}.gh.tar.gz
-"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="MPL-2.0"
 SLOT="0"
