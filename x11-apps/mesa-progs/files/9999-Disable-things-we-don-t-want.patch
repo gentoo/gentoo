@@ -1,4 +1,4 @@
-From aeb01fb49314017aa70b63531f728e61c983d4b9 Mon Sep 17 00:00:00 2001
+From f687e1297c9a26b219fc8b5a1faa6c1e3d1d6d16 Mon Sep 17 00:00:00 2001
 From: Matt Turner <mattst88@gmail.com>
 Date: Fri, 27 Jan 2023 06:40:05 -0800
 Subject: [PATCH] Disable things we don't want
@@ -6,36 +6,38 @@ Subject: [PATCH] Disable things we don't want
 v2: Enable libglad to satisfy egl dependencies
 v3: Enable most of libutil to fix undefined references in es2gears
 ---
- meson.build                   | 11 +++--------
+ meson.build                   | 13 +++----------
  src/egl/opengl/meson.build    | 33 --------------------------------
  src/egl/opengles2/meson.build |  5 -----
  src/meson.build               |  2 --
  src/util/gl_wrap.h            |  2 --
  src/util/meson.build          |  7 +------
  src/xdemos/meson.build        | 36 -----------------------------------
- 7 files changed, 4 insertions(+), 92 deletions(-)
+ 7 files changed, 4 insertions(+), 94 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index f93a731d..245d1655 100644
+index 6ad6ea7a..1c46da4f 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -81,14 +81,7 @@ endif
+@@ -87,16 +87,7 @@ endif
  
  dep_threads = dependency('threads')
  
--dep_glu = dependency('glu', required : dep_x11.found())
--if not dep_glu.found()
+-dep_glu = dependency('glu', required : false)
+-# GLU is part of OpenGL.Framework
+-if not dep_glu.found() and host_machine.system() != 'darwin'
 -  _glu_name = 'GLU'
 -  if host_machine.system() == 'windows'
 -    _glu_name = 'glu32'
 -  endif
--  dep_glu = cc.find_library(_glu_name, has_headers: 'GL/glu.h')
+-  dep_glu = cc.find_library(_glu_name, has_headers: 'GL/glu.h',
+-    required : dep_x11.found())
 -endif
 +dep_glu = disabler()
  
  # GBM is needed for EGL on KMS
  dep_gbm = dependency('gbm', required : false, disabler : true)
-@@ -127,6 +120,8 @@ else
+@@ -135,6 +126,8 @@ else
    dep_glut = dependency('', required : false)
  endif
  
