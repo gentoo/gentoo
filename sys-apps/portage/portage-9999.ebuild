@@ -151,10 +151,6 @@ python_prepare_all() {
 				-e "s|^\(sync-uri = \).*|\\1rsync://rsync.prefix.bitzolder.nl/gentoo-portage-prefix|" \
 				-i cnf/repos.conf || die "sed failed"
 		fi
-
-		einfo "Adding FEATURES=force-prefix to make.globals ..."
-		echo -e '\nFEATURES="${FEATURES} force-prefix"' >> cnf/make.globals \
-			|| die "failed to append to make.globals"
 	fi
 
 	cd "${S}/cnf" || die
