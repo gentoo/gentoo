@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/sbin/unitd"
+pidfile="/run/nginx-unit.pid"
+user=${NXT_USER:-nginx-unit}
+group=${NXT_GROUP:-nginx-unit}
+
+depend() {
+	use dns logger netmount
+}
+
+start_pre() {
+	checkpath -d /var/lib/nginx-unit -o ${user}:${group} -m 0770
+}
