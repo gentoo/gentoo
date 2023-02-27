@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=no
@@ -36,7 +36,7 @@ RDEPEND="
 	x11-misc/xdg-utils
 	berkdb? ( $(python_gen_cond_dep '
 		dev-python/bsddb3[${PYTHON_USEDEP}]
-	' python3_{8,9}) )
+	' python3_9) )
 	geo? ( >=sci-geosciences/osm-gps-map-1.1.0 )
 	spell? ( app-text/gtkspell:3[introspection] )
 	rcs? ( dev-vcs/rcs )
