@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Java"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 CP_DEPEND="
 	dev-java/commons-cli:1
