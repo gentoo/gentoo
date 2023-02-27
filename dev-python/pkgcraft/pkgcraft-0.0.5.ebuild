@@ -18,14 +18,15 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/pkgcraft/pkgcraft-python"
 	inherit git-r3
 
-	PKGCRAFT_VERSION_MIN="9999"
 	PKGCRAFT_VERSION_MAX="9999"
+	PKGCRAFT_VERSION_MIN="9999"
 else
 	SRC_URI="https://github.com/pkgcraft/pkgcraft-python/releases/download/v${PV}/${P/-python}.tar.gz"
 	S="${WORKDIR}"/${P/-python}
 
 	KEYWORDS="~amd64"
 
+	PKGCRAFT_VERSION_MAX="9999"
 	PKGCRAFT_VERSION_MIN="0.0.6"
 fi
 
@@ -34,6 +35,7 @@ SLOT="0"
 IUSE="+examples"
 
 RDEPEND="
+	<sys-libs/pkgcraft-${PKGCRAFT_VERSION_MAX}
 	>=sys-libs/pkgcraft-${PKGCRAFT_VERSION_MIN}:=
 "
 DEPEND="${RDEPEND}"
