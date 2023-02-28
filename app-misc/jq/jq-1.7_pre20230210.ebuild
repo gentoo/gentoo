@@ -52,8 +52,12 @@ src_prepare() {
 	# exists; save the cycles by nuking it.
 	sed -e '/modules\/oniguruma/d' -i Makefile.am || die
 	rm -rf "${S}"/modules/oniguruma || die
+	sed -i "s/^jq_version: .*/jq_version: \"${PV}\"/" docs/site.yml || die
 
 	default
+
+	sed -i "s/\[jq_version\]/[${PV}]/" configure.ac || die
+
 	eautoreconf
 }
 
