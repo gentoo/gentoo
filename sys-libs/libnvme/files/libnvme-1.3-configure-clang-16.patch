@@ -1,0 +1,32 @@
+https://github.com/linux-nvme/libnvme/commit/ddfb3ba036f9df2737c165b27f9b458dd83a7df8
+
+From ddfb3ba036f9df2737c165b27f9b458dd83a7df8 Mon Sep 17 00:00:00 2001
+From: Tomas Bzatek <tbzatek@redhat.com>
+Date: Tue, 31 Jan 2023 23:27:53 +0100
+Subject: [PATCH] build: Fix nss code snippet includes
+
+With hardened distribution CFLAGS the meson code snippet wouldn't compile:
+
+Compiler stderr:
+  .build/meson-private/tmpy2z1t5q4/testfile.c: In function 'main':
+  .build/meson-private/tmpy2z1t5q4/testfile.c:2:30: error: storage size of 'hints' isn't known
+      2 |              struct addrinfo hints, *result;
+        |                              ^~~~~
+  .build/meson-private/tmpy2z1t5q4/testfile.c:3:21: warning: implicit declaration of function 'getaddrinfo' [-Wimplicit-function-declaration]
+      3 |              return getaddrinfo(argv[1], argv[2], &hints, &result);
+        |                     ^~~~~~~~~~~
+--- a/meson.build
++++ b/meson.build
+@@ -199,7 +199,10 @@ conf.set10(
+ conf.set(
+     'HAVE_LIBNSS',
+     cc.links(
+-      '''int main(int argc, char **argv) {
++      '''#include <sys/types.h>
++         #include <sys/socket.h>
++         #include <netdb.h>
++         int main(int argc, char **argv) {
+              struct addrinfo hints, *result;
+              return getaddrinfo(argv[1], argv[2], &hints, &result);
+       }
+

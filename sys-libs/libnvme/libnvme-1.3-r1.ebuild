@@ -32,6 +32,10 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-configure-clang-16.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		-Dpython=false
