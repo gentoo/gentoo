@@ -30,6 +30,9 @@ RDEPEND="
 	media-libs/chromaprint[tools]
 "
 
-PATCHES=( "${FILESDIR}"/${P}-meson-install.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-narrowing.patch
+	"${FILESDIR}"/${P}-meson-install.patch
+)
 
 DOCS=( README.md )
