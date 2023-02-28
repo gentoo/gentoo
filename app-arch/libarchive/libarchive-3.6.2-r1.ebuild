@@ -126,4 +126,7 @@ multilib_src_install() {
 
 	# Libs.private: should be used from libarchive.pc instead
 	find "${ED}" -type f -name "*.la" -delete || die
+	# https://github.com/libarchive/libarchive/issues/1766
+	sed -e '/Requires\.private/s:iconv::' \
+		-i "${ED}/usr/$(get_libdir)/pkgconfig/libarchive.pc" || die
 }

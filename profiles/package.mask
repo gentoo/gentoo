@@ -461,11 +461,6 @@ net-p2p/vuze-coreplugins
 # This version currently is not compatible with kernel build (yet)
 ~dev-util/bindgen-0.63.0
 
-# Sam James <sam@gentoo.org> (2022-12-09)
-# Breaks compilation of reverse dependencies with broken pkgconfig (pc) file
-# bug #885075, https://github.com/libarchive/libarchive/issues/1766
-=app-arch/libarchive-3.6.2
-
 # Stephan Hartmann <sultan@gentoo.org> (2023-01-15)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
