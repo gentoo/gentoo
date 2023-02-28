@@ -51,6 +51,7 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.04.62-gentoo-system-users.patch
+	"${FILESDIR}"/${P}-configure-clang16.patch
 )
 
 python_check_deps() {

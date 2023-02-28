@@ -1,0 +1,33 @@
+https://gitlab.freedesktop.org/accountsservice/accountsservice/-/commit/453f893e3c38c209ae9dff47bca74ccb33a5bd34
+
+From 453f893e3c38c209ae9dff47bca74ccb33a5bd34 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 28 Feb 2023 02:31:50 +0000
+Subject: [PATCH] meson.build: fix -Wimplicit-function-declaration in configure
+ tests for printf
+
+<stdio.h> needs to be included for printf. Newer compilers like Clang 16 make
+implicit function declarations an error by default which can cause misleading
+or incorrect configure test results.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/meson.build
++++ b/meson.build
+@@ -79,6 +79,7 @@ endforeach
+ 
+ if cc.has_header_symbol('utmpx.h', 'WTMPX_FILENAME', prefix: '#define _GNU_SOURCE')
+   code = '''#define _GNU_SOURCE
++  #include <stdio.h>
+   #include <utmpx.h>
+   int main (int argc, char **argv) {
+     printf ("%s\n", WTMPX_FILENAME);
+@@ -91,6 +92,7 @@ if cc.has_header_symbol('utmpx.h', 'WTMPX_FILENAME', prefix: '#define _GNU_SOURC
+   config_h.set('PATH_WTMP', 'WTMPX_FILENAME')
+ elif cc.has_header_symbol('paths.h', '_PATH_WTMPX')
+   code = '''#include <paths.h>
++  #include <stdio.h>
+   int main (int argc, char **argv) {
+     printf ("%s\n", _PATH_WTMPX);
+     return 0;
+-- 
+GitLab
