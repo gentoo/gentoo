@@ -1,15 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/bcl.asc
-inherit verify-sig
+
+inherit autotools verify-sig
 
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
 HOMEPAGE="https://www.gnu.org/software/parted/"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
-	verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )"
+SRC_URI="
+	mirror://gnu/${PN}/${P}.tar.xz
+	verify-sig? ( mirror://gnu/${PN}/${P}.tar.xz.sig )
+"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -46,6 +49,7 @@ PATCHES=(
 
 src_prepare() {
 	default
+	eautoconf
 
 	touch doc/pt_BR/Makefile.in || die
 }
