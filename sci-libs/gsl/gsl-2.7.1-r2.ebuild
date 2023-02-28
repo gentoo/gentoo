@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic toolchain-funcs
 
@@ -22,20 +22,22 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${WORKDIR}"/${PN}-2.7-cblas.patch
+	"${FILESDIR}"/${PN}-2.7.1-configure-clang16.patch
 )
 
 src_prepare() {
-	filter-flags -ffast-math
-
 	default
 
 	if use deprecated; then
 		sed -i -e "/GSL_DISABLE_DEPRECATED/,+2d" configure.ac || die
 	fi
+
 	eautoreconf
 }
 
 src_configure() {
+	filter-flags -ffast-math
+
 	if use cblas-external; then
 		export CBLAS_LIBS="$($(tc-getPKG_CONFIG) --libs cblas)"
 		export CBLAS_CFLAGS="$($(tc-getPKG_CONFIG) --cflags cblas)"
