@@ -33,7 +33,7 @@ RDEPEND="
 	<dev-python/mypy_extensions-0.5.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.8 3.9 3.10)
+	' pypy3 python3_{8..10})
 "
 BDEPEND="
 	test? (
