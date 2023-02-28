@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/flameshot-org/flameshot/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="Apache-2.0 Free-Art-1.3 GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 DEPEND="
 	dev-qt/qtcore:5
