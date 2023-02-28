@@ -47,6 +47,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.4-posix-printf.patch
 )
 
+# false positive
+QA_CONFIG_IMPL_DECL_SKIP="MIN"
+
 src_prepare() {
 	default
 	eautoconf
