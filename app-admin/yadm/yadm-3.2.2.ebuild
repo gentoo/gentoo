@@ -18,8 +18,8 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	app-shells/bash
 	app-crypt/gnupg
+	app-shells/bash
 	dev-vcs/git
 "
 
