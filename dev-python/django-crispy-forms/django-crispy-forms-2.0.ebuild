@@ -17,7 +17,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="test" #Some tests are failing
+RESTRICT="test" #Missing crispy_bootstrap3
 
 RDEPEND="dev-python/django[${PYTHON_USEDEP}]"
 BDEPEND="test? (
