@@ -375,8 +375,17 @@ src_test() {
 		# bytecomp-tests--dest-mountpoint
 		%lisp/emacs-lisp/bytecomp-tests.el
 
-		# Reason: inconsistent years in files
+		# Reason: inconsistent years in files?
+		# test-correct-notice
+		# test-end-chop
 		%lisp/emacs-lisp/copyright-tests.el
+
+		# The following tests fail with USE=jit #874681
+		# ert-test-record-backtrace
+		# loadhist-tests-file-dependents
+		# loadhist-tests-file-provides
+		%lisp/emacs-lisp/ert-tests.el
+		%lisp/loadhist-tests.el
 	)
 
 	# See test/README for possible options
