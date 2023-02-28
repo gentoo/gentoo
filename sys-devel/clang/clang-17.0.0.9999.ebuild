@@ -270,6 +270,10 @@ multilib_src_configure() {
 
 		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 
+		# these are not propagated reliably, so redefine them
+		-DLLVM_ENABLE_EH=ON
+		-DLLVM_ENABLE_RTTI=ON
+
 		-DCMAKE_DISABLE_FIND_PACKAGE_LibXml2=$(usex !xml)
 		# libgomp support fails to find headers without explicit -I
 		# furthermore, it provides only syntax checking
