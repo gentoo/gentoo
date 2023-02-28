@@ -125,7 +125,7 @@ src_install() {
 	keepdir /usr/lib/${PN}/scripts
 	keepdir /var/lib/${PN}
 	newinitd "${T}"/${PN}.initd2 ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	newconfd "${T}"/${PN}.confd ${PN}
 }
 
 pkg_postinst() {
