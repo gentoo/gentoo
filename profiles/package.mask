@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-02-28)
+# Unmaintained.  Last (keep-alive) commit in 2019.  Suffers from bitrot.
+# Removal on 2023-03-30.  Bug #885713.
+net-im/ekg2
+
 # Mike Pagano <mpagano@gentoo.org> (2023-02-27)
 # Mask =www-servers/nginx-unit-1.29.0-r1 for testing
 =www-servers/nginx-unit-1.29.0-r1
