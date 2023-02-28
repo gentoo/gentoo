@@ -1,0 +1,22 @@
+--- a/src/external/rawspeed/cmake/Modules/cpu-cache-line-size.cmake
++++ b/src/external/rawspeed/cmake/Modules/cpu-cache-line-size.cmake
+@@ -2,7 +2,7 @@
+ 
+ unset(RAWSPEED_CACHELINESIZE)
+ 
+-if(BINARY_PACKAGE_BUILD)
++if(BINARY_PACKAGE_BUILD OR RAWSPEED_MUSL_SYSTEM)
+   message(STATUS "Performing binary package build, using hardcoded value.")
+ else()
+   try_run(RAWSPEED_CACHELINESIZE_EXITCODE RAWSPEED_CACHELINESIZE_COMPILED
+--- a/src/external/rawspeed/cmake/Modules/cpu-page-size.cpp
++++ b/src/external/rawspeed/cmake/Modules/cpu-page-size.cpp
+@@ -4,7 +4,7 @@
+ #include <unistd.h> // for _POSIX_C_SOURCE, sysconf, _SC_PAGESIZE
+ #endif
+ 
+-#if (defined(_POSIX_C_SOURCE) && _POSIX_C_SOURCE >= 1) || defined(__APPLE__)
++#if defined(_SC_PAGESIZE)
+ 
+ int main() {
+   long val = ::sysconf(_SC_PAGESIZE);

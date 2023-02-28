@@ -98,6 +98,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.2_cmake-march-autodetection.patch
 	"${FILESDIR}"/${PN}-3.4.0_jsonschema-automagic.patch
 	"${FILESDIR}"/${PN}-3.4.1_libxcf-cmake.patch
+	"${FILESDIR}"/${PN}-4.2.1_cmake-musl.patch
 )
 
 S="${WORKDIR}/${P/_/~}"
@@ -140,6 +141,7 @@ src_configure() {
 		-DDONT_USE_INTERNAL_LUA=ON
 		-DRAWSPEED_ENABLE_LTO=$(usex lto)
 		-DRAWSPEED_ENABLE_WERROR=OFF
+		-DRAWSPEED_MUSL_SYSTEM=$(usex elibc_musl)
 		-DTESTBUILD_OPENCL_PROGRAMS=OFF
 		-DUSE_AVIF=$(usex avif)
 		-DUSE_CAMERA_SUPPORT=$(usex gphoto2)
