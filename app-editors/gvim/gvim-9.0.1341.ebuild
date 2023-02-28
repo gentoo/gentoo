@@ -70,7 +70,8 @@ RDEPEND="
 	sound? ( media-libs/libcanberra )
 	tcl? ( dev-lang/tcl:0= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 # configure runs the Lua interpreter
 BDEPEND="
 	sys-devel/autoconf
