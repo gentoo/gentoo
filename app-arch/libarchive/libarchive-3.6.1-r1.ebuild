@@ -1,8 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit multilib-minimal toolchain-funcs verify-sig
+
+inherit autotools multilib-minimal toolchain-funcs verify-sig
 
 DESCRIPTION="Multi-format archive and compression library"
 HOMEPAGE="https://www.libarchive.org/"
@@ -50,6 +51,13 @@ PATCHES=(
 	# https://github.com/libarchive/libarchive/pull/1759
 	"${FILESDIR}"/${P}-CVE-2022-36227.patch
 )
+
+src_prepare() {
+	# regenerate configure script to fix implicit includes
+	# https://bugs.gentoo.org/898360
+	eautoconf
+	default
+}
 
 multilib_src_configure() {
 	export ac_cv_header_ext2fs_ext2_fs_h=$(usex e2fsprogs) #354923
