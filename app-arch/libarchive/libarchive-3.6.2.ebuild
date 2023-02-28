@@ -1,11 +1,14 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 inherit multilib-minimal toolchain-funcs verify-sig
 
 DESCRIPTION="Multi-format archive and compression library"
-HOMEPAGE="https://www.libarchive.org/"
+HOMEPAGE="
+	https://www.libarchive.org/
+	https://github.com/libarchive/libarchive/
+"
 SRC_URI="
 	https://www.libarchive.de/downloads/${P}.tar.xz
 	verify-sig? ( https://www.libarchive.de/downloads/${P}.tar.xz.asc )
