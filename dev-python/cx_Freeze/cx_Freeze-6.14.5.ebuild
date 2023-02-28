@@ -55,3 +55,7 @@ EPYTEST_DESELECT=(
 	# new setuptools?
 	tests/test_command_bdist_rpm.py::test_bdist_rpm
 )
+EPYTEST_IGNORE=(
+	# windows-specific test
+	tests/test_winversioninfo.py
+)
