@@ -363,6 +363,24 @@ pkg_postinst() {
 	elog "If you have configuration files in ${EPREFIX}/etc/texmf to merge,"
 	elog "please update them and run ${EPREFIX}/usr/sbin/texmf-update."
 	elog
+
+	local display_migration_hint=false
+	if [[ -n ${REPLACING_VERSIONS} ]]; then
+		local new_texlive_ver=$(ver_cut 1)
+		local replaced_version
+		for replaced_version in ${REPLACING_VERSIONS}; do
+			replaced_version=$(ver_cut 1 ${replaced_version})
+			if (( replaced_version < new_texlive_version )); then
+				display_migration_hint=true
+				break
+			fi
+		done
+	fi
+
+	if ! ${display_migration_hint}; then
+		return
+	fi
+
 	ewarn "If you are migrating from an older TeX distribution"
 	ewarn "Please make sure you have read:"
 	ewarn "https://wiki.gentoo.org/wiki/Project:TeX/Tex_Live_Migration_Guide"
