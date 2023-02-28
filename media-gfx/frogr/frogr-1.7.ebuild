@@ -30,11 +30,6 @@ BDEPEND="
 "
 # TODO add a useflag for enable-video or header-bar???
 
-PATCHES=(
-	"${FILESDIR}/frogr-1.5-warning-level.patch"
-	"${FILESDIR}/frogr-1.5-meson-0.61-build.patch"
-)
-
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_icon_cache_update
