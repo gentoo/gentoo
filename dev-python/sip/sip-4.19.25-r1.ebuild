@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..10} pypy3 )
 inherit python-r1 toolchain-funcs
 
 DESCRIPTION="Python bindings generator for C/C++ libraries"
