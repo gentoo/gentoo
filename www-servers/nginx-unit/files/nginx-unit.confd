@@ -1,11 +1,10 @@
 # /etc/conf.d/nginx-unit
 
 # non-privileged processes to run as specified user
-#NXT_USER="nobody"
+#NXT_USER="nginx-unit"
 
 # non-privileged processes to run as specified group
-# default: user's primary group
-#NXT_GROUP=""
+#NXT_GROUP="nginx-unit"
 
 # Address of the Control API Socket
 #NXT_CONTROL="unix:/run/nginx-unit.sock"
