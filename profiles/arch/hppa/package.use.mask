@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Hans de Graaff <graaff@gentoo.org> (2023-02-27)
+# Depends on virtual/rust
+dev-lang/ruby jit
+
 # Sam James <sam@gentoo.org> (2022-12-26)
 # Unkeyworded dependencies
 dev-util/diffoscope opendocument pascal pdf R
