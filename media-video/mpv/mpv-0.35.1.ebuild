@@ -147,11 +147,6 @@ src_configure() {
 		fi
 	fi
 
-	if use raspberry-pi; then
-		append-cflags -I"${ESYSROOT}"/opt/vc/include
-		append-ldflags -L"${ESYSROOT}"/opt/vc/lib
-	fi
-
 	mpv_feature_multi() {
 		local use set
 		for use in ${1} ${2}; do
