@@ -181,3 +181,9 @@ ADA_TARGET="gnat_2021"
 # Default targets for lua{,-single}.eclass
 LUA_SINGLE_TARGET="lua5-1"
 LUA_TARGETS="lua5-1"
+
+# Sam James <sam@gentoo.org> (2023-02-28)
+# Reduce -Wimplicit-function-declaration noise from autoconf. Any compilers
+# we care about should match these anyway. See https://wiki.gentoo.org/wiki/Modern_C_porting.
+ac_cv_c_undeclared_builtin_options="none needed"
+gl_cv_compiler_check_decl_option="-Werror=implicit-function-declaration"
