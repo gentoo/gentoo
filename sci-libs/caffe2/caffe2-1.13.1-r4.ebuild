@@ -17,12 +17,13 @@ SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cuda distributed ffmpeg mpi nnpack +numpy opencl opencv openmp qnnpack xnnpack"
+IUSE="cuda distributed ffmpeg mpi nnpack +numpy opencl opencv openmp qnnpack tensorpipe xnnpack"
 RESTRICT="test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	ffmpeg? ( opencv )
 	mpi? ( distributed )
+	tensorpipe? ( distributed )
 " # ?? ( cuda rocm )
 
 # CUDA 12 not supported yet: https://github.com/pytorch/pytorch/issues/91122
@@ -52,6 +53,7 @@ RDEPEND="
 	opencl? ( virtual/opencl )
 	opencv? ( media-libs/opencv:= )
 	qnnpack? ( sci-libs/QNNPACK )
+	tensorpipe? ( sci-libs/tensorpipe )
 	xnnpack? ( sci-libs/XNNPACK )
 "
 DEPEND="
@@ -77,6 +79,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.13.0-install-dirs.patch
 	"${FILESDIR}"/${PN}-1.12.0-glog-0.6.0.patch
 	"${FILESDIR}"/${PN}-1.12.0-clang.patch
+	"${FILESDIR}"/${P}-tensorpipe.patch
 )
 
 src_prepare() {
@@ -127,6 +130,7 @@ src_configure() {
 		-DUSE_QNNPACK=$(usex qnnpack)
 		-DUSE_XNNPACK=$(usex xnnpack)
 		-DUSE_SYSTEM_XNNPACK=$(usex xnnpack)
+		-DUSE_TENSORPIPE=$(usex tensorpipe)
 		-DUSE_PYTORCH_QNNPACK=OFF
 		-DUSE_NUMPY=$(usex numpy)
 		-DUSE_OPENCL=$(usex opencl)
@@ -147,7 +151,6 @@ src_configure() {
 		-DUSE_SYSTEM_GLOO=ON
 		-DUSE_SYSTEM_ONNX=ON
 		-DUSE_SYSTEM_SLEEF=ON
-		-DUSE_TENSORPIPE=OFF
 
 		-Wno-dev
 		-DTORCH_INSTALL_LIB_DIR="${EPREFIX}"/usr/$(get_libdir)
