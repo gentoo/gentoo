@@ -59,14 +59,12 @@ src_prepare() {
 	default
 	eautoreconf
 
-	cp "${FILESDIR}"/connman.initd2 "${FILESDIR}"/connman.confd "${T}"
+	cp "${FILESDIR}"/connman.initd2 "${T}"
 	if use iwd; then
 		sed -i \
 			-e "s/need dbus/need dbus iwd/" \
+			-e '/start-stop-daemon --start/ s/ -- / -- --wifi=iwd_agent /' \
 			"${T}"/connman.initd2 || die
-		sed -i \
-			-e 's/CONNMAN_OPTS=""/CONNMAN_OPTS="--wifi=iwd_agent"/' \
-			"${T}"/connman.confd || die
 		sed -i \
 			-e "/^ExecStart/ s/$/ --wifi=iwd_agent/" \
 			src/connman.service.in || die
@@ -125,7 +123,7 @@ src_install() {
 	keepdir /usr/lib/${PN}/scripts
 	keepdir /var/lib/${PN}
 	newinitd "${T}"/${PN}.initd2 ${PN}
-	newconfd "${T}"/${PN}.confd ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 }
 
 pkg_postinst() {
