@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2023-02-28)
+# Bash and therefore ebuild syntax highlight seems broken. 
+# Bug #898446.
+=app-editors/gvim-9.0.1341
+=app-editors/vim-9.0.1341
+=app-editors/vim-core-9.0.1341
+
 # Mike Pagano <mpagano@gentoo.org> (2023-02-27)
 # Mask =www-servers/nginx-unit-1.29.0-r1 for testing
 =www-servers/nginx-unit-1.29.0-r1
