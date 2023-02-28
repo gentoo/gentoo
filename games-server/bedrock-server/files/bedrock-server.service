@@ -1,0 +1,22 @@
+[Unit]
+Description=Bedrock Server (World: %I)
+After=network.target
+
+[Service]
+User=bedrock
+Group=bedrock
+WorkingDirectory=-/var/lib/bedrock-server/%I
+PIDFile=/run/bedrock-server.%I.pid
+ExecStartPre=!/bin/mkdir -p /var/lib/bedrock-server/%I
+ExecStartPre=!/bin/cp -n /opt/bedrock-server/allowlist.json /var/lib/bedrock-server/%I/
+ExecStartPre=!/bin/cp -n /opt/bedrock-server/permissions.json /var/lib/bedrock-server/%I/
+ExecStartPre=!/bin/cp -n /opt/bedrock-server/server.properties /var/lib/bedrock-server/%I/
+ExecStartPre=!/bin/ln -sf /opt/bedrock-server/behavior_packs /var/lib/bedrock-server/%I/
+ExecStartPre=!/bin/ln -sf /opt/bedrock-server/definitions /var/lib/bedrock-server/%I/
+ExecStartPre=!/bin/ln -sf /opt/bedrock-server/resource_packs /var/lib/bedrock-server/%I/
+ExecStartPre=!/bin/ln -sf /opt/bedrock-server/structures /var/lib/bedrock-server/%I/
+ExecStartPre=!/bin/chown -R bedrock:bedrock /var/lib/bedrock-server/%I
+ExecStart=/bin/sh -c '/usr/bin/dtach -N $(mktemp -u) /opt/bin/bedrock-server'
+
+[Install]
+WantedBy=multi-user.target
