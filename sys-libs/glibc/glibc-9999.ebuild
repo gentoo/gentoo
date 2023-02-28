@@ -442,6 +442,9 @@ setup_flags() {
 	# #492892
 	filter-flags -frecord-gcc-switches
 
+	# #898098
+	filter-flags -fno-builtin
+
 	# #829583
 	filter-lfs-flags
 
