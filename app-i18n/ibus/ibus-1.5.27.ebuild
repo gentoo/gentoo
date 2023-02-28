@@ -76,6 +76,7 @@ BDEPEND="
 		app-i18n/unicode-emoji
 	)
 	nls? ( sys-devel/gettext )
+	test? ( x11-apps/setxkbmap )
 	unicode? ( app-i18n/unicode-data )"
 
 src_prepare() {
