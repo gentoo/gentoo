@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..11} pypy3 )
 inherit python-r1 qmake-utils
 
 DESCRIPTION="Python bindings for the Qt framework"
