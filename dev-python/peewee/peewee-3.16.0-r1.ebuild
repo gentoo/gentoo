@@ -25,6 +25,12 @@ KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
+DEPEND="
+	dev-db/sqlite
+"
+RDEPEND="
+	${DEPEND}
+"
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 "
