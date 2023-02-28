@@ -48,6 +48,13 @@ BDEPEND="
 	verify-sig? ( >=sec-keys/openpgp-keys-libarchive-20221209 )
 "
 
+# false positives (checks for libc-defined hash functions)
+QA_CONFIG_IMPL_DECL_SKIP=(
+	SHA256_Init SHA256_Update SHA256_Final
+	SHA384_Init SHA384_Update SHA384_Final
+	SHA512_Init SHA512_Update SHA512_Final
+)
+
 multilib_src_configure() {
 	export ac_cv_header_ext2fs_ext2_fs_h=$(usex e2fsprogs) #354923
 
