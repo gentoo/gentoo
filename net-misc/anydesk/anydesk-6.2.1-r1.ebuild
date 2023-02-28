@@ -14,7 +14,6 @@ SRC_URI="https://download.anydesk.com/linux/${P}-amd64.tar.gz
 LICENSE="AnyDesk-TOS BSD BSD-2 openssl ZLIB"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="sound"
 
 # x11-libs/gtkglext is required and cannot be mitigated: https://bugs.gentoo.org/868255
 RDEPEND="
@@ -40,7 +39,6 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/pango
-	sound? ( media-libs/libcanberra[gtk2] )
 "
 BDEPEND="dev-util/patchelf"
 
@@ -91,10 +89,11 @@ pkg_postinst() {
 		elog
 	fi
 
-	optfeature_header "AnyDesk uses additional tools to query information about the host:"
+	optfeature_header "AnyDesk additional tools:"
 	optfeature "lsb_release" sys-apps/lsb-release
 	optfeature "lspci" sys-apps/pciutils
 	optfeature "lsusb" sys-apps/usbutils
+	optfeature "sound support" media-libs/libcanberra[gtk2]
 }
 
 pkg_postrm() {
