@@ -7,7 +7,7 @@ EAPI=8
 # but only in a wheel format.
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..11} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Python language binding for Selenium Remote Control"
