@@ -1,0 +1,29 @@
+From eca90b6049a9ce42ec6868f64abcab403c9f4190 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 28 Feb 2023 03:10:26 +0000
+Subject: [PATCH] install-qa-check.d/90config-impl-decl: prefix warning with
+ 'QA Notice'
+
+... so tinderboxes can pick it up more easily.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/bin/install-qa-check.d/90config-impl-decl
++++ b/bin/install-qa-check.d/90config-impl-decl
+@@ -92,12 +92,13 @@ config_impl_decl_check() {
+ 	# Drop out early if no impl decls found (all the arrays are the same size)
+ 	[[ ${#files[@]} -eq 0 ]] && return
+ 
+-	eqawarn 'Found the following implicit function declarations in configure logs:'
++	eqawarn 'QA Notice: Found the following implicit function declarations in configure logs:'
+ 	for l in "${!files[@]}"; do
+ 		eqawarn "  ${files[l]}:${lines[l]} - ${funcs[l]}"
+ 		eqatag 'config.log-impl-decl' "line=${lines[l]}" "func=${funcs[l]}" "${files[l]}"
+ 	done
+ 	eqawarn 'Check that no features were accidentally disabled.'
++	eqawarn 'See https://wiki.gentoo.org/wiki/Modern_C_porting.'
+ }
+ 
+ config_impl_decl_check
+-- 
+2.39.2
+
