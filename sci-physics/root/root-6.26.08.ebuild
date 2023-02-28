@@ -139,9 +139,9 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 
 	elog "There are extra options on packages not available in Gentoo."
-	elog "You can use the environment variable EXTRA_ECONF to enable"
+	elog "You can use the environment variable MYCMAKEARGS to enable"
 	elog "these packages. For example, for Vdt you would set:"
-	elog "EXTRA_ECONF=\"-Dbuiltin_vdt=ON -Dvdt=ON\""
+	elog "MYCMAKEARGS=\"-Dbuiltin_vdt=ON -Dvdt=ON\""
 }
 
 src_prepare() {
@@ -290,7 +290,6 @@ src_configure() {
 		-Dx11=$(usex X)
 		-Dxml=$(usex xml)
 		-Dxrootd=$(usex xrootd)
-		"${EXTRA_ECONF}"
 	)
 
 	cmake_src_configure
