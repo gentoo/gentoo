@@ -6,11 +6,6 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<upstream>
-		<maintainer status="active">
-			<email>mgorny@gentoo.org</email>
-			<name>Michał Górny</name>
-		</maintainer>
-		<bugs-to>https://github.com/mgorny/libtinynotify/issues/</bugs-to>
-		<remote-id type="github">mgorny/libtinynotify</remote-id>
+		<remote-id type="github">projg2/libtinynotify</remote-id>
 	</upstream>
 </pkgmetadata>
