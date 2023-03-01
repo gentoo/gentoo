@@ -3,6 +3,10 @@
 
 # Conrad Kostecki <conikost@gentoo.org> (2023-03-01)
 # Binary package, which is compiled against glibc
+sys-block/arcconf
+
+# Conrad Kostecki <conikost@gentoo.org> (2023-03-01)
+# Binary package, which is compiled against glibc
 sys-apps/smcipmitool
 
 # Alfredo Tupone <tupone@gentoo.org> (2023-02-27)
