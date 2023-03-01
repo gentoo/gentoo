@@ -44,6 +44,7 @@ HTML_DOCS=()
 
 src_prepare() {
 	sed -i -e "/^DOCDIR/ s/${PN}$/${PF}/" Makefile || die
+	sed -i -e "/^Icon/ s/\.png$//" fotoxx.desktop || die
 	default
 }
 
