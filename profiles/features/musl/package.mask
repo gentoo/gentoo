@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Conrad Kostecki <conikost@gentoo.org> (2023-03-01)
+# Binary package, which is compiled against glibc
+sys-apps/smcipmitool
+
 # Alfredo Tupone <tupone@gentoo.org> (2023-02-27)
 # Uses dev-util/nvidia-cuda-toolkit
 dev-libs/cutlass
