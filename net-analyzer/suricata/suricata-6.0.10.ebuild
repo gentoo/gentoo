@@ -119,6 +119,7 @@ src_configure() {
 	if use debug; then
 		myeconfargs+=( $(use_enable debug) )
 		# so we can get a backtrace according to "reporting bugs" on upstream web site
+		QA_FLAGS_IGNORED="usr/bin/${PN}"
 		CFLAGS="-ggdb -O0" econf ${myeconfargs[@]}
 	else
 		econf ${myeconfargs[@]}
