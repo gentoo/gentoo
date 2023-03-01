@@ -322,12 +322,6 @@ dev-python/aiohttp-jinja2
 # Commands trigger an assertion and crashes, bug #892487
 =sys-fs/lvm2-2.03.18
 
-# Bernd Waibel <waebbl-gentoo@posteo.net> (2023-01-28)
-# Possible security issues, obsolete. Use OpenEXR-3 / Imath instead.
-# No revdeps and consumers left in ::gentoo
-# Removal in 30 days. Bug #892375
-media-libs/ilmbase
-
 # Hans de Graaff <graaff@gentoo.org> (2023-01-28)
 # No upstream releases since 2010. No longer maintained
 # upstream. ruby27-only package. Masked for removal on 2023-02-27.
