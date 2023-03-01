@@ -41,7 +41,7 @@ REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 "
 
 BDEPEND="
-	hdx? ( >=media-plugins/hdx-realtime-media-engine-2.9.500.2802-r1 )
+	hdx? ( media-plugins/hdx-realtime-media-engine )
 "
 
 RDEPEND="
@@ -88,7 +88,7 @@ RDEPEND="
 	x11-libs/libXt
 	x11-libs/pango
 	${BDEPEND}
-	!hdx? ( !<media-plugins/hdx-realtime-media-engine-2.9.500.2802-r1 )
+	!hdx? ( !media-plugins/hdx-realtime-media-engine )
 "
 DEPENDS=""
 
