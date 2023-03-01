@@ -49,6 +49,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gnupg-2.4.patch
+	"${FILESDIR}"/${P}-musl-stdout.patch
 )
 
 src_prepare() {
