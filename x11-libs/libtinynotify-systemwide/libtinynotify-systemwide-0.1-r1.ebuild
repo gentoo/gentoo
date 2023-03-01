@@ -10,18 +10,20 @@ SRC_URI="https://github.com/projg2/libtinynotify-systemwide/releases/download/${
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc"
 
-RDEPEND="
+DEPEND="
 	sys-process/procps:=
-	x11-libs/libtinynotify:="
-DEPEND="${RDEPEND}"
+	x11-libs/libtinynotify:=
+"
+RDEPEND="
+	${DEPEND}
+"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( dev-util/gtk-doc )"
+"
 
 src_configure() {
-	econf $(use_enable doc gtk-doc)
+	econf --disable-gtk-doc
 }
 
 src_install() {
