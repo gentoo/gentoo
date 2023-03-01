@@ -29,6 +29,7 @@ DEPEND="${CDEPEND}"
 BDEPEND="
 	dev-libs/libxslt
 	dev-util/gdbus-codegen
+	dev-util/glib-utils
 	sys-devel/gettext
 	virtual/pkgconfig
 	doc? (
