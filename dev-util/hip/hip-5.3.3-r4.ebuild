@@ -78,6 +78,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-5.1.3-rocm-path.patch"
 	eapply "${FILESDIR}/${PN}-5.1.3-fno-stack-protector.patch"
 	eapply "${FILESDIR}/${PN}-5.3.3-correct-ldflag.patch"
+	eapply "${FILESDIR}/${PN}-5.4.3-hipcc-hip-version.patch"
 	eapply "${FILESDIR}/0001-SWDEV-344620-hipcc-fails-to-parse-version-of-clang-i.patch"
 	eapply "${FILESDIR}/0002-SWDEV-355608-Remove-clang-include-path-2996.patch"
 	eapply "${FILESDIR}/0003-SWDEV-352878-Removed-relative-path-based-CLANG-inclu.patch"
