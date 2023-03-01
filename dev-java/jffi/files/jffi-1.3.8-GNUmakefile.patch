@@ -1,8 +1,19 @@
-diff --git a/jni/GNUmakefile b/jni/GNUmakefile
-index cfe570a..c8bbb51 100755
+Bug: #898142
 --- a/jni/GNUmakefile
 +++ b/jni/GNUmakefile
-@@ -278,7 +278,7 @@ debug:
+@@ -67,9 +67,11 @@ OFLAGS = -O2 $(JFLAGS)
+ WERROR = -Werror
+ ifneq ($(OS),darwin)
+ ifneq ($(OS),aix)
++ifneq ($(OS),linux)
+   WFLAGS += -Wundef $(WERROR)
+ endif
+ endif
++endif
+ WFLAGS += -W -Wall -Wno-unused -Wno-parentheses -Wno-unused-parameter
+ PICFLAGS = -fPIC
+ SOFLAGS = # Filled in for each OS specifically
+@@ -278,7 +280,7 @@ debug:
  	@echo "OBJS=$(OBJS)"
  
  $(LIBJFFI):  $(OBJS) $(LIBFFI_LIBS)
@@ -11,7 +22,7 @@ index cfe570a..c8bbb51 100755
  	$(STRIP) $@
  ifeq ($(OS), darwin)
  	codesign -s - $@
-@@ -287,10 +287,14 @@ endif
+@@ -287,10 +289,14 @@ endif
  $(BUILD_DIR)/%.o : $(SRC_DIR)/%.c $(wildcard $(JFFI_SRC_DIR)/*.h)
  	@mkdir -p $(@D)
  	@$(CCACHE) $(CC) $(CFLAGS) -c $< -o $@
