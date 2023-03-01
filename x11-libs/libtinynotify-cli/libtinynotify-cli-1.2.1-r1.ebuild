@@ -6,8 +6,8 @@ EAPI=8
 MY_P="tinynotify-send-${PV}"
 
 DESCRIPTION="Common CLI routines for tinynotify-send & sw-notify-send"
-HOMEPAGE="https://github.com/mgorny/tinynotify-send/"
-SRC_URI="https://github.com/mgorny/tinynotify-send/releases/download/${MY_P}/${MY_P}.tar.bz2"
+HOMEPAGE="https://github.com/projg2/tinynotify-send/"
+SRC_URI="https://github.com/projg2/tinynotify-send/releases/download/${MY_P}/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
