@@ -1,0 +1,40 @@
+lib/amdgcn/bitcode is not among the default bitcode dirs of clang
+Add --rocm-device-lib-path to the clang argument
+Excerpt from https://salsa.debian.org/rocm-team/rocm-device-libs/-/blob/d2014eed680ccce5f9bd61ff4fc28a89682575f3/debian/patches/cmake-amdgcn-bitcode.patch
+==============================================
+Index: rocm-device-libs-9999/test/compile/RunConstantFoldTest.cmake
+===================================================================
+--- rocm-device-libs-9999.orig/test/compile/RunConstantFoldTest.cmake
++++ rocm-device-libs-9999/test/compile/RunConstantFoldTest.cmake
+@@ -16,6 +16,7 @@ execute_process(COMMAND
+   -target amdgcn-amd-amdhsa -mcpu=${TEST_CPU}
+   -Xclang -finclude-default-header
+   --rocm-path=${BINARY_DIR}
++  --rocm-device-lib-path=${AMDGCN_BITCODES}
+   -mllvm -amdgpu-simplify-libcall=0
+   -o ${OUTPUT_FILE} ${INPUT_FILE}
+   RESULT_VARIABLE CLANG_RESULT
+Index: rocm-device-libs-9999/test/compile/CMakeLists.txt
+===================================================================
+--- rocm-device-libs-9999.orig/test/compile/CMakeLists.txt
++++ rocm-device-libs-9999/test/compile/CMakeLists.txt
+@@ -30,6 +30,7 @@ function(add_compile_test test_name func
+      -DFILECHECK_BIN=${FILECHECK_BIN}
+      -DOUTPUT_FILE=output.${name}.${test_cpu}.s
+      -DINPUT_FILE=${CMAKE_CURRENT_SOURCE_DIR}/${func_name}.cl
++	 -DAMDGCN_BITCODES=${PROJECT_BINARY_DIR}/lib/amdgcn/bitcode
+      -DTEST_CPU=${test_cpu}
+      -DEXTRA_CHECK_PREFIX=${extra_check_prefixes}
+      -P ${script})
+Index: rocm-device-libs-9999/test/compile/RunCompileTest.cmake
+===================================================================
+--- rocm-device-libs-9999.orig/test/compile/RunCompileTest.cmake
++++ rocm-device-libs-9999/test/compile/RunCompileTest.cmake
+@@ -16,6 +16,7 @@ execute_process(COMMAND
+   -target amdgcn-amd-amdhsa -mcpu=${TEST_CPU}
+   -Xclang -finclude-default-header
+   --rocm-path=${BINARY_DIR}
++  --rocm-device-lib-path=${AMDGCN_BITCODES}
+   -mllvm -amdgpu-simplify-libcall=0
+   -o ${OUTPUT_FILE} ${INPUT_FILE}
+   RESULT_VARIABLE CLANG_RESULT

@@ -1,0 +1,31 @@
+llvm and rocm-device-libs must change the dot7 to dot10 feature
+synchronously. For using llvm-16, revert dot10 feature for
+rocm-device-libs 
+Reference: https://reviews.llvm.org/D142507
+Reference: https://github.com/RadeonOpenCompute/ROCm/issues/1880#issuecomment-1425621551
+From 7b2c138cc80867cbbdf9e99ba2b318080d6293d2 Mon Sep 17 00:00:00 2001
+From: Selene <selene@selene.ga>
+Date: Fri, 10 Feb 2023 23:13:03 +0800
+Subject: [PATCH] Revert "Split dot7 feature"
+
+This reverts commit 8dc779e19cbf2ccfd3307b60f7db57cf4203a5be.
+---
+ ockl/src/dots.cl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ockl/src/dots.cl b/ockl/src/dots.cl
+index 480941b..b88f694 100644
+--- a/ockl/src/dots.cl
++++ b/ockl/src/dots.cl
+@@ -11,7 +11,7 @@
+ 
+ #pragma OPENCL EXTENSION cl_khr_fp16 : enable
+ 
+-__attribute__((target("dot10-insts"), const)) static float amdgcn_fdot2(half2 a, half2 b, float c, bool s)
++__attribute__((target("dot7-insts"), const)) static float amdgcn_fdot2(half2 a, half2 b, float c, bool s)
+ { if (s) return __builtin_amdgcn_fdot2(a, b, c, true);
+   else   return __builtin_amdgcn_fdot2(a, b, c, false); }
+ 
+-- 
+2.39.1
+
