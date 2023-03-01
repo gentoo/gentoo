@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Conrad Kostecki <conikost@gentoo.org> (2023-03-01)
+# sys-block/arcconf is masked on musl
+net-analyzer/nagios-plugin-check_raid aacraid
+
 # Sam James <sam@gentoo.org> (2023-02-17)
 # dev-lisp/sbcl is masked on musl
 sci-mathematics/fricas sbcl
