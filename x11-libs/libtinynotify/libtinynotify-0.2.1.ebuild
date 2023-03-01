@@ -10,7 +10,7 @@ SRC_URI="https://github.com/projg2/libtinynotify/releases/download/${P}/${P}.tar
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug static-libs"
+IUSE="debug"
 
 RDEPEND="sys-apps/dbus:0="
 DEPEND="${RDEPEND}"
@@ -21,7 +21,6 @@ DOCS=( README )
 src_configure() {
 	local myconf=(
 		$(use_enable debug)
-		$(use_enable static-libs static)
 	)
 
 	econf "${myconf[@]}"
