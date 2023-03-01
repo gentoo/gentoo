@@ -320,6 +320,8 @@ pkg_postinst() {
 		elog "on X11 or Wayland, you have to re-create these shortcuts on your own."
 	fi
 
-	optfeature_header "Optional runtime features:"
+	optfeature_header "Optional programs for extra features:"
+	optfeature "desktop notifications" x11-libs/libnotify
 	optfeature "encrypted chat support" net-libs/libotr
+	optfeature "fallback mouse cursor theme e.g. on WMs" gnome-base/gsettings-desktop-schemas
 }
