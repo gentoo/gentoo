@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
@@ -16,6 +16,8 @@ HOMEPAGE="
 SRC_URI="
 	https://github.com/Delgan/loguru/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
+	https://github.com/Delgan/loguru/commit/4fe21f66991abeb1905e24c3bc3c634543d959a2.patch
+		-> ${P}-py311-repr-tests.patch
 "
 
 LICENSE="MIT"
@@ -29,7 +31,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/0.6.0-typos.patch"
+	"${FILESDIR}/${PV}-typos.patch"
+	"${FILESDIR}/${PV}-py311-fix.patch"
+	"${DISTDIR}/${P}-py311-repr-tests.patch"
 )
 
 # filesystem buffering tests may fail
