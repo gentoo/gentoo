@@ -4,10 +4,11 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 # see scripts/download_import_cldr.py
 CLDR_PV=42.0
@@ -17,8 +18,7 @@ HOMEPAGE="
 	https://pypi.org/project/Babel/
 	https://github.com/python-babel/babel/
 "
-SRC_URI="
-	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+SRC_URI+="
 	https://unicode.org/Public/cldr/${CLDR_PV%.*}/cldr-common-${CLDR_PV}.zip
 "
 
