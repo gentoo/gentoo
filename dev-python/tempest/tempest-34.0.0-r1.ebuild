@@ -38,6 +38,7 @@ RDEPEND="
 	>=dev-python/urllib3-1.21.1[${PYTHON_USEDEP}]
 	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/defusedxml-0.7.1[${PYTHON_USEDEP}]
+	>=dev-python/fasteners-0.16.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	>dev-python/pbr-2.1.0[${PYTHON_USEDEP}]
