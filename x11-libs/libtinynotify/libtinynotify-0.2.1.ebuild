@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="A lightweight implementation of Desktop Notification Spec"
 HOMEPAGE="https://github.com/projg2/libtinynotify/"
@@ -12,8 +12,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-RDEPEND="sys-apps/dbus:0="
-DEPEND="${RDEPEND}"
+DEPEND="sys-apps/dbus:0="
+RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 DOCS=( README )
