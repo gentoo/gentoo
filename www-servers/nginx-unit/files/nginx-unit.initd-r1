@@ -4,13 +4,22 @@
 
 command="/usr/sbin/unitd"
 pidfile="/run/nginx-unit.pid"
-user=${NXT_USER:-nginx-unit}
-group=${NXT_GROUP:-nginx-unit}
+NXT_USER=${NXT_USER:-nginx-unit}
+NXT_GROUP=${NXT_GROUP:-nginx-unit}
+NXT_CONTROL=${NXT_CONTROL:-unix:/run/nginx-unit.sock}
+NXT_PID=${NXT_PID:-/run/nginx-unit.pid}
+NXT_LOG=${NXT_LOG:-/var/log/nginx-unit}
+NXT_MODULES=${NXT_LOG:-/usr/lib64/nginx-unit}
+NXT_STATE=${NXT_STATE:-/var/lib/nginx-unit}
+NXT_TMP=${NXT_TMP:-/usr/tmp}
+
+command_args=" --user ${NXT_USER} --group ${NXT_GROUP} --control ${NXT_CONTROL} --pid ${NXT_PID} --log ${NXT_LOG} --modules ${NXT_MODULES} --state ${NXT_STATE} --tmp ${NXT_TMP}"
 
 depend() {
 	use dns logger netmount
 }
 
 start_pre() {
-	checkpath -d /var/lib/nginx-unit -o ${user}:${group} -m 0770
+    checkpath -d /var/lib/nginx-unit -o root:root -m 0770
 }
+

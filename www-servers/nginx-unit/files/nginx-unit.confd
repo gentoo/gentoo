@@ -18,7 +18,6 @@
 # Modules directory name
 #NXT_MODULES="/usr/lib64/nginx-unit"
 
-
 # State directory name
 #NXT_STATE="/var/lib/nginx-unit"
 
