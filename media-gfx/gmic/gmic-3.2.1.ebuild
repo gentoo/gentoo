@@ -105,7 +105,8 @@ gmic_emake() {
 }
 
 src_compile() {
-	gmic_emake lib libc
+	gmic_emake lib
+	gmic_emake libc
 	use cli && gmic_emake cli_shared
 	use gimp && gmic_emake gimp_shared
 	use qt5 && gmic_emake gmic_qt_shared
