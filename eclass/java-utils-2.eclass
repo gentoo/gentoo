@@ -1892,7 +1892,11 @@ etestng() {
 	debug-print-function ${FUNCNAME} $*
 
 	local runner=org.testng.TestNG
-	local cp=$(java-pkg_getjars --with-dependencies testng)
+	if [[ ${PN} != testng ]]; then
+		local cp=$(java-pkg_getjars --with-dependencies testng)
+	else
+		local cp=testng.jar
+	fi
 	local tests
 
 	if [[ ${1} = -cp || ${1} = -classpath ]]; then
