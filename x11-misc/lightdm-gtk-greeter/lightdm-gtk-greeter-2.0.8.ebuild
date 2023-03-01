@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit autotools xdg-utils
 DESCRIPTION="LightDM GTK+ Greeter"
 HOMEPAGE="https://github.com/Xubuntu/lightdm-gtk-greeter"
 SRC_URI="https://github.com/Xubuntu/${PN}/releases/download/${P}/${P}.tar.gz
-	branding? ( https://dev.gentoo.org/~polynomial-c/dist/lightdm-gentoo-patch-2.tar.gz )"
+	branding? ( https://dev.gentoo.org/~marecki/dists/x11-misc/lightdm-gtk-greeter/lightdm-gentoo-patch-2.tar.gz )"
 
 LICENSE="GPL-3 LGPL-3
 	branding? ( CC-BY-3.0 )"
