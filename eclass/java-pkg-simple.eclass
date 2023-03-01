@@ -46,7 +46,8 @@ if has test ${JAVA_PKG_IUSE}; then
 				test_deps+=" amd64? ( dev-util/pkgdiff
 					dev-util/japi-compliance-checker )";;
 			testng)
-				test_deps+=" dev-java/testng:0";;
+				[[ ${PN} != testng ]] && \
+					test_deps+=" dev-java/testng:0";;
 		esac
 	done
 	[[ ${test_deps} ]] && DEPEND="test? ( ${test_deps} )"
