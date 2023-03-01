@@ -80,6 +80,8 @@ RDEPEND+="
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/python.org.asc
 
 QA_PKGCONFIG_VERSION=${PYVER}
+# false positives -- functions specific to *BSD
+QA_CONFIG_IMPL_DECL_SKIP=( chflags lchflags )
 
 pkg_setup() {
 	if use berkdb; then
@@ -187,6 +189,9 @@ src_configure() {
 		# Python on glibc upgrade, remove it proactively to give
 		# a chance for users rebuilding python before glibc
 		ac_cv_header_stropts_h=no
+		# Test program has missing includes.  This doesn't change
+		# the result but it's cleaner to force it.
+		ac_cv_broken_poll=no
 
 		--with-fpectl
 		--enable-shared
