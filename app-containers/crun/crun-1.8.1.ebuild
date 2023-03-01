@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
 IUSE="+bpf +caps criu +seccomp selinux systemd static-libs"
 
 DEPEND="
+	dev-libs/libgcrypt:=
 	dev-libs/yajl:=
 	sys-kernel/linux-headers
 	caps? ( sys-libs/libcap )
