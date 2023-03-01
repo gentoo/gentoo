@@ -36,6 +36,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	>=dev-qt/qtwaylandscanner-${QTMIN}:5
+	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
 
