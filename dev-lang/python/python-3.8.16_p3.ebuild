@@ -83,6 +83,8 @@ RDEPEND+="
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/python.org.asc
 
 QA_PKGCONFIG_VERSION=${PYVER}
+# false positives -- functions specific to *BSD
+QA_CONFIG_IMPL_DECL_SKIP=( chflags lchflags )
 
 src_unpack() {
 	if use verify-sig; then

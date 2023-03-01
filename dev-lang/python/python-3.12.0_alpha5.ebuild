@@ -97,6 +97,8 @@ VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/python.org.asc
 CHECKREQS_DISK_BUILD=5500M
 
 QA_PKGCONFIG_VERSION=${PYVER}
+# false positives -- functions specific to *BSD
+QA_CONFIG_IMPL_DECL_SKIP=( chflags lchflags )
 
 pkg_pretend() {
 	use test && check-reqs_pkg_pretend
