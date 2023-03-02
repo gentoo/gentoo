@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,6 +38,9 @@ RDEPEND="${DEPEND}
 	!<app-i18n/man-pages-de-2.12-r1
 	!<app-i18n/man-pages-pl-0.7-r1
 "
+
+# https://bugs.gentoo.org/898830
+QA_CONFIG_IMPL_DECL_SKIP=( makedev )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.11-sysctl-manpage.patch # 565304
