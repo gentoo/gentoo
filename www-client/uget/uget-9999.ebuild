@@ -1,13 +1,13 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools git-r3 xdg
 
 DESCRIPTION="Download manager using gtk+ and libcurl"
 HOMEPAGE="http://www.ugetdm.com"
-EGIT_REPO_URI="git://git.code.sf.net/p/urlget/uget2"
+EGIT_REPO_URI="https://git.code.sf.net/p/urlget/uget2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -24,15 +24,21 @@ RDEPEND="
 		dev-libs/libgcrypt:0
 	)
 	aria2? ( net-misc/aria2[xmlrpc] )
-	appindicator? ( dev-libs/libappindicator:3 )
+	appindicator? ( dev-libs/libayatana-appindicator )
 	gstreamer? ( media-libs/gstreamer:1.0 )
 	openssl? ( dev-libs/openssl:= )
-	libnotify? ( x11-libs/libnotify )"
+	libnotify? ( x11-libs/libnotify )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/intltool
 	virtual/pkgconfig
 	sys-devel/gettext"
+
+PATCHES=(
+	# https://github.com/ugetdm/uget/issues/49
+	"${FILESDIR}"/${PN}-2.2.1-ayatana.patch
+)
 
 src_prepare() {
 	default
