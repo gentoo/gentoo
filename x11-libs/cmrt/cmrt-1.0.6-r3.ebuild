@@ -20,6 +20,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-musl-fix.patch"
+)
+
 src_prepare() {
 	default
 	eautoreconf
