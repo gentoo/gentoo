@@ -80,6 +80,9 @@ src_prepare() {
 	# remove GIT dependency
 	sed -e "/find_package(Git/d" -i cmake/Dependencies.cmake || die
 
+	# Fix install path
+	sed -i -e "s.set(CMAKE_INSTALL_LIBDIR.#set(CMAKE_INSTALL_LIBDIR." CMakeLists.txt || die
+
 	# use python interpreter specifyied by python-any-r1
 	sed -e "/COMMAND ..\/common\/rocsparse_gentest.py/s,COMMAND ,COMMAND ${EPYTHON} ," -i clients/tests/CMakeLists.txt || die
 
