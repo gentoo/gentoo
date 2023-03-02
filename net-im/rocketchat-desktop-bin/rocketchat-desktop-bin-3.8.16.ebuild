@@ -84,7 +84,7 @@ src_install() {
 	local DESTDIR="/opt/Rocket.Chat"
 
 	# https://github.com/RocketChat/Rocket.Chat.Electron/issues/2536
-	dosym ../../usr/lib64/libayatana-appindicator3.so "${DESTDIR}"/libappindicator3.so || die
+	dosym ../../usr/lib64/libayatana-appindicator3.so "${DESTDIR}"/libappindicator3.so
 
 	pushd "opt/Rocket.Chat" || die
 
