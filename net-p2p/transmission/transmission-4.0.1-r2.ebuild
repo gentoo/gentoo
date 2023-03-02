@@ -35,8 +35,8 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? (
 		gtk? ( sys-devel/gettext )
-		qt5? ( dev-qt/linguist-tools:5 )
 	)
+	qt5? ( dev-qt/linguist-tools:5 )
 "
 COMMON_DEPEND="
 	>=dev-libs/libevent-2.1.0:=[threads(+)]
