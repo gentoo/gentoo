@@ -28,3 +28,8 @@ RDEPEND=">=dev-haskell/aeson-1.4.0:=[profile?] <dev-haskell/aeson-2.2:=[profile?
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-3.0.0.0
 "
+
+src_install() {
+	haskell-cabal_src_install
+	doman "${FILESDIR}/${PN}.1"
+}
