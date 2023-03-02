@@ -26,7 +26,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
 BDEPEND="
-	dev-python/cython[${PYTHON_USEDEP}]
+	<dev-python/cython-2.99[${PYTHON_USEDEP}]
 "
 
 PATCHES=(
