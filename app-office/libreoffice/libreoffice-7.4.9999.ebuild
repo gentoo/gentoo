@@ -163,7 +163,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/openjpeg:=
 	media-libs/tiff:=
 	media-libs/zxing-cpp:=
-	>=net-libs/neon-0.31.1:=
 	net-misc/curl
 	sci-mathematics/lpsolve:=
 	sys-libs/zlib
@@ -499,7 +498,6 @@ src_configure() {
 		--with-system-ucpp
 		--with-tls=nss
 		--with-vendor="Gentoo Foundation"
-		--with-webdav="neon"
 		--with-x
 		--without-fonts
 		--without-myspell-dicts
