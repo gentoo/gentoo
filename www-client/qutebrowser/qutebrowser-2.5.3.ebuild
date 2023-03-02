@@ -128,6 +128,9 @@ python_install_all() {
 	fperms -x /usr/share/${PN}/{scripts/cycle-inputs.js,userscripts/README.md}
 	python_fix_shebang "${ED}"/usr/share/${PN}
 
+	insinto /etc/apparmor.d
+	doins -r misc/apparmor/.
+
 	einstalldocs
 }
 
