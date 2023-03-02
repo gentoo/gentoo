@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,8 +43,10 @@ src_install() {
 pkg_preinst() {
 	if has_version '<app-eselect/eselect-wine-2'; then
 		# keep copy of still-set 'active' to auto-select same slots
-		[[ ! -e ${EROOT}/etc/eselect/wine/active ]] ||
+		if [[ -e ${EROOT}/etc/eselect/wine/active &&
+			! -e ${EROOT}/etc/eselect/wine/eselect-wine-migration ]]; then
 			cp "${EROOT}"/etc/eselect/wine/{active,eselect-wine-migration} || die
+		fi
 
 		# managed differently, need cleanup
 		eselect wine unset --all || die
