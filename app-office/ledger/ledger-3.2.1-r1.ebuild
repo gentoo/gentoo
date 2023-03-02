@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_{9,10,11} )
 CMAKE_REMOVE_MODULES_LIST=( FindPython Support )
 inherit bash-completion-r1 check-reqs cmake python-single-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~riscv x86"
 IUSE="debug doc python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
