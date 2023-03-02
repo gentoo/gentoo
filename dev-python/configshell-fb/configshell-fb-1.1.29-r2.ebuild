@@ -39,6 +39,14 @@ PATCHES=(
 	"${DISTDIR}/${P}-replace-getargspec-2.patch"
 )
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# We can relax pyparsing version restriction,
+	# see https://github.com/open-iscsi/configshell-fb/pull/69
+	sed -i '/pyparsing/s:,<3.0::' setup.py || die
+}
+
 python_test() {
 	"${EPYTHON}" examples/myshell || die "Test failed with ${EPYTHON}"
 }
