@@ -51,7 +51,7 @@ EPYTEST_DESELECT=(
 # distutils_enable_sphinx docs \
 # 	dev-python/sphinx-autodoc-typehints \
 # 	dev-python/furo \
-# 	dev-python/myst_parser \
+# 	dev-python/myst-parser \
 # 	dev-python/sphinxcontrib-apidoc
 distutils_enable_tests pytest
 

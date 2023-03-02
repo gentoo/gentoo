@@ -24,7 +24,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 BDEPEND="
 	test? (
-		dev-python/myst_parser[${PYTHON_USEDEP}]
+		dev-python/myst-parser[${PYTHON_USEDEP}]
 		dev-python/seedir[${PYTHON_USEDEP}]
 		dev-python/testfixtures[${PYTHON_USEDEP}]
 	)

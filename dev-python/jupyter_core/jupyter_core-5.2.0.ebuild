@@ -31,7 +31,7 @@ BDEPEND="
 "
 
 distutils_enable_sphinx docs \
-	dev-python/myst_parser \
+	dev-python/myst-parser \
 	dev-python/sphinx-autodoc-typehints \
 	dev-python/sphinxcontrib-github-alt \
 	dev-python/sphinxcontrib-spelling \

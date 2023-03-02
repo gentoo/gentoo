@@ -76,7 +76,7 @@ distutils_enable_tests pytest
 # distutils_enable_sphinx docs/source \
 # 	dev-python/numpydoc \
 # 	dev-python/sphinx-rtd-theme \
-# 	dev-python/myst_parser
+# 	dev-python/myst-parser
 
 python_prepare_all() {
 	export ZMQ_DRAFT_API=$(usex drafts '1' '0')

@@ -51,6 +51,6 @@ EPYTEST_DESELECT=(
 
 distutils_enable_sphinx docs \
 	dev-python/ansible-pygments \
-	dev-python/myst_parser \
+	dev-python/myst-parser \
 	dev-python/sphinx_ansible_theme
 distutils_enable_tests pytest

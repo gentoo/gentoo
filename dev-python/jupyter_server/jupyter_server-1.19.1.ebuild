@@ -46,7 +46,7 @@ BDEPEND="
 
 distutils_enable_sphinx docs/source \
 	dev-python/pydata-sphinx-theme \
-	dev-python/myst_parser \
+	dev-python/myst-parser \
 	dev-python/ipython \
 	dev-python/sphinxemoji \
 	dev-python/sphinxcontrib-github-alt \

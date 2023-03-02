@@ -36,7 +36,7 @@ DOCS=( CONTRIBUTORS.txt RELEASE.txt )
 
 distutils_enable_tests pytest
 # There is a programmable error in your configuration file:
-#distutils_enable_sphinx doc/source dev-python/numpydoc dev-python/myst_parser
+#distutils_enable_sphinx doc/source dev-python/numpydoc dev-python/myst-parser
 
 python_test() {
 	# This needs to be run in the install dir

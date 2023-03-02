@@ -32,7 +32,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		${RDEPEND}
-		dev-python/myst_parser[${PYTHON_USEDEP}]
+		dev-python/myst-parser[${PYTHON_USEDEP}]
 	)
 "
 

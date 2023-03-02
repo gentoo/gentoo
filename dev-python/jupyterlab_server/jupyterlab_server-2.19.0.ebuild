@@ -51,7 +51,7 @@ BDEPEND="
 
 distutils_enable_tests pytest
 # TODO: package autodoc_traits
-#distutils_enable_sphinx docs/source dev-python/pydata-sphinx-theme dev-python/myst_parser
+#distutils_enable_sphinx docs/source dev-python/pydata-sphinx-theme dev-python/myst-parser
 
 python_test() {
 	local EPYTEST_IGNORE=(

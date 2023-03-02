@@ -28,7 +28,7 @@ RDEPEND="
 	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/dominate[${PYTHON_USEDEP}]
-	dev-python/myst_parser[${PYTHON_USEDEP}]
+	dev-python/myst-parser[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	sci-mathematics/coq-serapi

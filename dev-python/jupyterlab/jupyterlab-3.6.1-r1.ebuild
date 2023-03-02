@@ -75,7 +75,7 @@ EPYTEST_IGNORE=(
 
 distutils_enable_tests pytest
 # TODO: package sphinx_copybutton
-#distutils_enable_sphinx docs/source dev-python/sphinx-rtd-theme dev-python/myst_parser
+#distutils_enable_sphinx docs/source dev-python/sphinx-rtd-theme dev-python/myst-parser
 
 python_install_all() {
 	distutils-r1_python_install_all

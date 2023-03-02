@@ -59,7 +59,7 @@ distutils_enable_sphinx docs/source \
 	dev-python/sphinx-rtd-theme \
 	dev-python/nbsphinx \
 	dev-python/sphinxcontrib-github-alt \
-	dev-python/myst_parser \
+	dev-python/myst-parser \
 	dev-python/ipython_genutils
 
 python_test() {

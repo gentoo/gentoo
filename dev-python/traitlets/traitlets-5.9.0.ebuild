@@ -27,7 +27,7 @@ BDEPEND="
 "
 
 distutils_enable_sphinx docs/source \
-	dev-python/myst_parser \
+	dev-python/myst-parser \
 	dev-python/pydata-sphinx-theme
 distutils_enable_tests pytest
 
