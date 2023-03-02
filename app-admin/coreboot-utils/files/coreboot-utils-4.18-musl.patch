@@ -3,6 +3,8 @@ Date:   Wed Dec 14 17:28:13 2022 +0100
 
     musl: clumpsy buildfixes
 
+    https://review.coreboot.org/c/coreboot/+/73358
+
 diff --git a/src/arch/x86/include/arch/mmio.h b/src/arch/x86/include/arch/mmio.h
 index c2aa0fb910..b2a37a03dd 100644
 --- a/src/arch/x86/include/arch/mmio.h
