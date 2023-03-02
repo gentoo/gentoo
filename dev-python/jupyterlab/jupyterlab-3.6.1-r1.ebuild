@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=jupyter
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="JupyterLab computational environment"
 HOMEPAGE="
@@ -14,7 +14,6 @@ HOMEPAGE="
 	https://github.com/jupyterlab/jupyterlab/
 	https://pypi.org/project/jupyterlab/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD MIT GPL-3 Apache-2.0"
 SLOT="0"
