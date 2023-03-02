@@ -16,10 +16,10 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm libsamplerate mp3 musepack nls notify +nullout opus oss pulseaudio sc68 shellexec +supereq threads vorbis wavpack"
+IUSE="aac alsa cdda converter cover dts ffmpeg flac +hotkeys lastfm libretro libsamplerate mp3 musepack nls notify +nullout opus oss pulseaudio pipewire sc68 shellexec +supereq threads vorbis wavpack"
 
 REQUIRED_USE="
-	|| ( alsa oss pulseaudio nullout )
+	|| ( alsa oss pulseaudio pipewire nullout )
 "
 
 DEPEND="
@@ -51,6 +51,7 @@ DEPEND="
 	)
 	opus? ( media-libs/opusfile )
 	pulseaudio? ( media-sound/pulseaudio )
+	pipewire? ( media-video/pipewire )
 	vorbis? ( media-libs/libvorbis )
 	wavpack? ( media-sound/wavpack )
 	dev-libs/libdispatch:=
@@ -167,10 +168,12 @@ src_configure () {
 		"$(use_enable nullout)"
 		"$(use_enable opus)"
 		"$(use_enable pulseaudio pulse)"
+		"$(use_enable pipewire)"
 		"$(use_enable sc68)"
 		"$(use_enable shellexec)"
 		"$(use_enable shellexec shellexecui)"
 		"$(use_enable lastfm lfm)"
+		"$(use_enable libretro)"
 		"$(use_enable libsamplerate src)"
 		"$(use_enable wavpack)"
 
