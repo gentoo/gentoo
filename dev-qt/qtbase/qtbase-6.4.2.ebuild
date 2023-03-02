@@ -102,6 +102,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/qtbase-6-march.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_ARCHDATADIR=${QT6_ARCHDATADIR}

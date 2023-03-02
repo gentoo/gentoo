@@ -1,0 +1,46 @@
+https://bugreports.qt.io/browse/QTBUG-111698
+https://bugs.gentoo.org/898644
+
+From 5fe96c901cd1ecd3e53acedeb97efd38b6af49a4 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 1 Mar 2023 21:31:22 -0500
+Subject: [PATCH] Don't error on partial support for x86-64 v3/v4
+
+Bug: https://bugs.gentoo.org/898644
+---
+ src/corelib/global/qsimd_p.h | 12 ++----------
+ 1 file changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/src/corelib/global/qsimd_p.h b/src/corelib/global/qsimd_p.h
+index 1d12902a0a..1449d75d5c 100644
+--- a/src/corelib/global/qsimd_p.h
++++ b/src/corelib/global/qsimd_p.h
+@@ -227,11 +227,7 @@ asm(
+ // macOS's fat binaries support the "x86_64h" sub-architecture and the GNU libc
+ // ELF loader also supports a "haswell/" subdir (e.g., /usr/lib/haswell).
+ #  define ARCH_HASWELL_MACROS       (__AVX2__ + __BMI2__ + __FMA__ + __LZCNT__)
+-#  if ARCH_HASWELL_MACROS != 0
+-#    if ARCH_HASWELL_MACROS != 4
+-#      error "Please enable all x86-64-v3 extensions; you probably want to use -march=haswell or -march=x86-64-v3 instead of -mavx2"
+-#    endif
+-static_assert(ARCH_HASWELL_MACROS, "Undeclared identifiers indicate which features are missing.");
++#  if ARCH_HASWELL_MACROS == 4
+ #    define __haswell__       1
+ #  endif
+ #  undef ARCH_HASWELL_MACROS
+@@ -243,11 +239,7 @@ static_assert(ARCH_HASWELL_MACROS, "Undeclared identifiers indicate which featur
+ // with AVX512 support and it includes all of these too.
+ //
+ #  define ARCH_SKX_MACROS           (__AVX512F__ + __AVX512BW__ + __AVX512CD__ + __AVX512DQ__ + __AVX512VL__)
+-#  if ARCH_SKX_MACROS != 0
+-#    if ARCH_SKX_MACROS != 5
+-#      error "Please enable all x86-64-v4 extensions; you probably want to use -march=skylake-avx512 or -march=x86-64-v4 instead of -mavx512f"
+-#    endif
+-static_assert(ARCH_SKX_MACROS, "Undeclared identifiers indicate which features are missing.");
++#  if ARCH_SKX_MACROS == 5
+ #    define __skylake_avx512__  1
+ #  endif
+ #  undef ARCH_SKX_MACROS
+-- 
+2.39.2
+
