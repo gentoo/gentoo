@@ -37,6 +37,7 @@ BDEPEND="
 		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
 		dev-python/requests-mock[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
+		>=dev-python/rich-10.0[${PYTHON_USEDEP}]
 		dev-python/timeout-decorator[${PYTHON_USEDEP}]
 		>=dev-python/ujson-5.4[${PYTHON_USEDEP}]
 	)
