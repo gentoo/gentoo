@@ -55,6 +55,9 @@ BDEPEND+="
 	)
 "
 
+# https://bugs.gentoo.org/898676
+QA_CONFIG_IMPL_DECL_SKIP=( makedev )
+
 PATCHES=(
 	"${FILESDIR}/file-5.43-seccomp-fstatat64-musl.patch" #789336, not upstream yet
 	"${FILESDIR}/file-5.43-portage-sandbox.patch" #889046
