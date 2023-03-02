@@ -4,7 +4,7 @@
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-inherit multilib toolchain-funcs wrapper wxwidgets xdg
+inherit multilib toolchain-funcs wrapper xdg
 
 DESCRIPTION="Port of 7-Zip archiver for Unix"
 HOMEPAGE="https://github.com/p7zip-project/p7zip"
@@ -14,10 +14,8 @@ SRC_URI="https://github.com/p7zip-project/p7zip/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="LGPL-2.1 rar? ( unRAR )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
-IUSE="abi_x86_x32 doc kde +pch rar static wxwidgets"
-REQUIRED_USE="kde? ( wxwidgets )"
+IUSE="abi_x86_x32 doc +pch rar static"
 
-RDEPEND="wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	abi_x86_x32? ( >=dev-lang/yasm-1.2.0-r1 )
@@ -75,19 +73,10 @@ src_prepare() {
 	if use static; then
 		sed -i -e '/^LOCAL_LIBS=/s/LOCAL_LIBS=/&-static /' makefile.machine || die
 	fi
-
-	if use kde || use wxwidgets; then
-		setup-wxwidgets unicode
-		einfo "Preparing dependency list"
-		emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" depend
-	fi
 }
 
 src_compile() {
 	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" all3
-	if use kde || use wxwidgets; then
-		emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" -- 7zG
-	fi
 }
 
 src_test() {
@@ -99,26 +88,6 @@ src_install() {
 	make_wrapper 7zr /usr/$(get_libdir)/p7zip/7zr
 	make_wrapper 7za /usr/$(get_libdir)/p7zip/7za
 	make_wrapper 7z /usr/$(get_libdir)/p7zip/7z
-
-	if use kde || use wxwidgets; then
-		make_wrapper 7zG /usr/$(get_libdir)/p7zip/7zG
-
-		dobin GUI/p7zipForFilemanager
-		exeinto /usr/$(get_libdir)/p7zip
-		doexe bin/7zG
-
-		insinto /usr/$(get_libdir)/p7zip
-		doins -r GUI/Lang
-
-		insinto /usr/share/icons/hicolor/16x16/apps/
-		newins GUI/p7zip_16_ok.png p7zip.png
-
-		if use kde; then
-			rm GUI/kde4/p7zip_compress.desktop || die
-			insinto /usr/share/kservices5/ServiceMenus
-			doins GUI/kde4/*.desktop
-		fi
-	fi
 
 	dobin contrib/gzip-like_CLI_wrapper_for_7z/p7zip
 	doman contrib/gzip-like_CLI_wrapper_for_7z/man1/p7zip.1
