@@ -28,7 +28,7 @@ RESTRICT="test"
 
 DEPEND="media-libs/rtmidi[alsa?,jack?]"
 RDEPEND="${DEPEND}"
-BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
+BDEPEND="<dev-python/cython-2.99[${PYTHON_USEDEP}]
 	virtual/pkgconfig"
 
 PATCHES=(
