@@ -24,7 +24,8 @@ HOMEPAGE="https://transmissionbt.com/"
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
-IUSE="appindicator cli debug gtk nls mbedtls qt5 systemd test"
+IUSE="appindicator cli debug gtk nls mbedtls qt5 qt6 systemd test"
+REQUIRED_USE="?? ( qt5 qt6 )"
 RESTRICT="!test? ( test )"
 
 ACCT_DEPEND="
@@ -37,6 +38,7 @@ BDEPEND="
 		gtk? ( sys-devel/gettext )
 	)
 	qt5? ( dev-qt/linguist-tools:5 )
+	qt6? ( dev-qt/qttools:6[linguist] )
 "
 COMMON_DEPEND="
 	>=dev-libs/libevent-2.1.0:=[threads(+)]
@@ -61,6 +63,10 @@ COMMON_DEPEND="
 		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
 	)
+	qt6? (
+		dev-qt/qtbase:6[dbus,gui,network,widgets]
+		dev-qt/qtsvg:6
+	)
 	systemd? ( >=sys-apps/systemd-209:= )
 "
 DEPEND="${COMMON_DEPEND}
@@ -75,7 +81,6 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
 
 		-DENABLE_GTK=$(usex gtk ON OFF)
-		-DENABLE_QT=$(usex qt5 ON OFF)
 		-DENABLE_MAC=OFF
 		-DREBUILD_WEB=OFF
 		-DENABLE_CLI=$(usex cli ON OFF)
@@ -93,13 +98,20 @@ src_configure() {
 		-DUSE_SYSTEM_UTP=OFF
 		-DUSE_SYSTEM_B64=OFF
 		-DUSE_SYSTEM_PSL=ON
-		-DUSE_QT_VERSION=5
 
 		-DWITH_CRYPTO=$(usex mbedtls mbedtls openssl)
 		-DWITH_INOTIFY=ON
 		-DWITH_APPINDICATOR=$(usex appindicator ON OFF)
 		-DWITH_SYSTEMD=$(usex systemd ON OFF)
 	)
+
+	if use qt6; then
+		mycmakeargs+=( -DENABLE_QT=ON -DUSE_QT_VERSION=6 )
+	elif use qt5; then
+		mycmakeargs+=( -DENABLE_QT=ON -DUSE_QT_VERSION=5 )
+	else
+		mycmakeargs+=( -DENABLE_QT=OFF )
+	fi
 
 	# Disable assertions by default, bug 893870.
 	use debug || append-cppflags -DNDEBUG
