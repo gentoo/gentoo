@@ -1,0 +1,11 @@
+--- a/Source/Drivers/PSLink/PS1200Device.cpp_org	2022-11-19 18:40:24.772505998 -0000
++++ b/Source/Drivers/PSLink/PS1200Device.cpp	2022-11-19 18:41:46.388543221 -0000
+@@ -43,7 +43,7 @@
+ 	// On all platforms other than Windows, prefer BULK
+ 	nRetVal = SetUsbAltInterface(0);
+ 	XN_IS_STATUS_OK_LOG_ERROR("Switch to ISO", nRetVal);
+-#elif (XN_PLATFORM == XN_PLATFORM_LINUX_X86 || XN_PLATFORM == XN_PLATFORM_LINUX_ARM || XN_PLATFORM == XN_PLATFORM_MACOSX || XN_PLATFORM == XN_PLATFORM_ANDROID_ARM)
++#elif (XN_PLATFORM == XN_PLATFORM_LINUX_X86 || XN_PLATFORM == XN_PLATFORM_LINUX_ARM || XN_PLATFORM == XN_PLATFORM_LINUX_AARCH64 || XN_PLATFORM == XN_PLATFORM_LINUX_PPC || XN_PLATFORM == XN_PLATFORM_MACOSX || XN_PLATFORM == XN_PLATFORM_ANDROID_ARM)
+ 	// On all platforms other than Windows, prefer BULK
+ 	nRetVal = SetUsbAltInterface(1);
+ 	XN_IS_STATUS_OK_LOG_ERROR("Switch to BULK", nRetVal);

@@ -1,0 +1,19 @@
+--- a/src/IVtkDraw/IVtkDraw_Interactor.cxx_orig	2022-12-21 22:20:13.343761869 +0000
++++ a/src/IVtkDraw/IVtkDraw_Interactor.cxx	2022-12-21 22:21:18.055780427 +0000
+@@ -27,6 +27,16 @@
+ #undef AllValues
+ #endif
+ 
++// Prevent naming collisions between X11
++// and VTK versions 9.2.0 and above.
++// X11 is included through glx
++#ifdef Status
++#undef Status
++#endif
++#ifdef Success
++#undef Success
++#endif
++
+ #include <vtkXRenderWindowInteractor.h>
+ #include <vtkXOpenGLRenderWindow.h>
+ #endif

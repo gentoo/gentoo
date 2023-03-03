@@ -1,0 +1,393 @@
+diff --git a/Include/Linux-Aarch64/OniPlatformLinux-Aarch64.h b/Include/Linux-Aarch64/OniPlatformLinux-Aarch64.h
+new file mode 100644
+index 0000000..f777e5f
+--- /dev/null
++++ b/Include/Linux-Aarch64/OniPlatformLinux-Aarch64.h
+@@ -0,0 +1,45 @@
++/*****************************************************************************
++*                                                                            *
++*  OpenNI 2.x Alpha                                                          *
++*  Copyright (C) 2012 PrimeSense Ltd.                                        *
++*                                                                            *
++*  This file is part of OpenNI.                                              *
++*                                                                            *
++*  Licensed under the Apache License, Version 2.0 (the "License");           *
++*  you may not use this file except in compliance with the License.          *
++*  You may obtain a copy of the License at                                   *
++*                                                                            *
++*      http://www.apache.org/licenses/LICENSE-2.0                            *
++*                                                                            *
++*  Unless required by applicable law or agreed to in writing, software       *
++*  distributed under the License is distributed on an "AS IS" BASIS,         *
++*  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  *
++*  See the License for the specific language governing permissions and       *
++*  limitations under the License.                                            *
++*                                                                            *
++*****************************************************************************/
++#ifndef _ONI_PLATFORM_LINUX_AARCH64_H_
++#define _ONI_PLATFORM_LINUX_AARCH64_H_
++
++// Start with Linux-x86, and override what's different
++#include "../Linux-x86/OniPlatformLinux-x86.h"
++
++//---------------------------------------------------------------------------
++// Platform Basic Definition
++//---------------------------------------------------------------------------
++#undef ONI_PLATFORM
++#undef ONI_PLATFORM_STRING
++#define ONI_PLATFORM ONI_PLATFORM_LINUX_AARCH64
++#define ONI_PLATFORM_STRING "Linux-Aarch64"
++
++//---------------------------------------------------------------------------
++// Platform Capabilities
++//---------------------------------------------------------------------------
++#undef ONI_PLATFORM_ENDIAN_TYPE
++#ifdef __ARM_BIG_ENDIAN
++#define ONI_PLATFORM_ENDIAN_TYPE ONI_PLATFORM_IS_BIG_ENDIAN
++#else
++#define ONI_PLATFORM_ENDIAN_TYPE ONI_PLATFORM_IS_LITTLE_ENDIAN
++#endif
++
++#endif //_ONI_PLATFORM_LINUX_AARCH64_H_
+diff --git a/Include/Linux-Ppc/OniPlatformLinux-Ppc.h b/Include/Linux-Ppc/OniPlatformLinux-Ppc.h
+new file mode 100644
+index 0000000..690740b
+--- /dev/null
++++ b/Include/Linux-Ppc/OniPlatformLinux-Ppc.h
+@@ -0,0 +1,46 @@
++/*****************************************************************************
++*                                                                            *
++*  OpenNI 2.x Alpha                                                          *
++*  Copyright (C) 2012 PrimeSense Ltd.                                        *
++*                                                                            *
++*  This file is part of OpenNI.                                              *
++*                                                                            *
++*  Licensed under the Apache License, Version 2.0 (the "License");           *
++*  you may not use this file except in compliance with the License.          *
++*  You may obtain a copy of the License at                                   *
++*                                                                            *
++*      http://www.apache.org/licenses/LICENSE-2.0                            *
++*                                                                            *
++*  Unless required by applicable law or agreed to in writing, software       *
++*  distributed under the License is distributed on an "AS IS" BASIS,         *
++*  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  *
++*  See the License for the specific language governing permissions and       *
++*  limitations under the License.                                            *
++*                                                                            *
++*****************************************************************************/
++#ifndef _ONI_PLATFORM_LINUX_PPC_H_
++#define _ONI_PLATFORM_LINUX_PPC_H_
++
++// Start with Linux-x86, and override what's different
++#include "../Linux-x86/OniPlatformLinux-x86.h"
++
++//---------------------------------------------------------------------------
++// Platform Basic Definition
++//---------------------------------------------------------------------------
++#undef ONI_PLATFORM
++#undef ONI_PLATFORM_STRING
++#define ONI_PLATFORM ONI_PLATFORM_LINUX_PPC
++#define ONI_PLATFORM_STRING "Linux-Ppc"
++
++//---------------------------------------------------------------------------
++// Platform Capabilities
++//---------------------------------------------------------------------------
++#undef ONI_PLATFORM_ENDIAN_TYPE
++#ifdef __LITTLE_ENDIAN__
++#define ONI_PLATFORM_ENDIAN_TYPE ONI_PLATFORM_IS_LITTLE_ENDIAN
++#else
++#define ONI_PLATFORM_ENDIAN_TYPE ONI_PLATFORM_IS_BIG_ENDIAN
++#endif
++
++#endif //_ONI_PLATFORM_LINUX_PPC_H_
++
+diff --git a/Include/OniPlatform.h b/Include/OniPlatform.h
+index 2384188..a0cfd32 100644
+--- a/Include/OniPlatform.h
++++ b/Include/OniPlatform.h
+@@ -27,6 +27,8 @@
+ #define ONI_PLATFORM_LINUX_ARM 3
+ #define ONI_PLATFORM_MACOSX 4
+ #define ONI_PLATFORM_ANDROID_ARM 5
++#define ONI_PLATFORM_LINUX_AARCH64 6
++#define ONI_PLATFORM_LINUX_PPC 7
+ 
+ #if (defined _WIN32)
+ #	ifndef RC_INVOKED
+@@ -39,8 +41,12 @@
+ #	include "Android-Arm/OniPlatformAndroid-Arm.h"
+ #elif (__linux__ && (i386 || __x86_64__))
+ #	include "Linux-x86/OniPlatformLinux-x86.h"
++#elif (__linux__ && __aarch64__)
++#	include "Linux-Aarch64/OniPlatformLinux-Aarch64.h"
+ #elif (__linux__ && __arm__)
+ #	include "Linux-Arm/OniPlatformLinux-Arm.h"
++#elif (__linux__ && __powerpc__)
++#	include "Linux-Ppc/OniPlatformLinux-Ppc.h"
+ #elif _ARC
+ #	include "ARC/OniPlaformARC.h"
+ #elif (__APPLE__)
+diff --git a/Source/Drivers/PS1080/Sensor/XnDeviceSensorInit.h b/Source/Drivers/PS1080/Sensor/XnDeviceSensorInit.h
+index 27b5c8b..bb4e9e0 100644
+--- a/Source/Drivers/PS1080/Sensor/XnDeviceSensorInit.h
++++ b/Source/Drivers/PS1080/Sensor/XnDeviceSensorInit.h
+@@ -57,7 +57,7 @@
+ 
+ 	#define XN_SENSOR_USB_MISC_BUFFER_SIZE	0x1000
+ 	#define XN_SENSOR_USB_MISC_BUFFERS		1
+-#elif (XN_PLATFORM == XN_PLATFORM_LINUX_X86 || XN_PLATFORM == XN_PLATFORM_LINUX_ARM || XN_PLATFORM == XN_PLATFORM_MACOSX || XN_PLATFORM == XN_PLATFORM_ANDROID_ARM)
++#elif (XN_PLATFORM == XN_PLATFORM_LINUX_X86 || XN_PLATFORM == XN_PLATFORM_LINUX_ARM || XN_PLATFORM == XN_PLATFORM_LINUX_AARCH64 || XN_PLATFORM == XN_PLATFORM_LINUX_PPC || XN_PLATFORM == XN_PLATFORM_MACOSX || XN_PLATFORM == XN_PLATFORM_ANDROID_ARM)
+ 	#define XN_SENSOR_USB_IMAGE_BUFFER_SIZE_MULTIPLIER_ISO				32
+ 	#define XN_SENSOR_USB_IMAGE_BUFFER_SIZE_MULTIPLIER_BULK				40
+ 	#define XN_SENSOR_USB_IMAGE_BUFFER_SIZE_MULTIPLIER_LOWBAND_ISO		16
+diff --git a/Source/Drivers/PSLink/LinkProtoLib/XnClientUSBInDataEndpoint.cpp b/Source/Drivers/PSLink/LinkProtoLib/XnClientUSBInDataEndpoint.cpp
+index d61b559..35ae726 100644
+--- a/Source/Drivers/PSLink/LinkProtoLib/XnClientUSBInDataEndpoint.cpp
++++ b/Source/Drivers/PSLink/LinkProtoLib/XnClientUSBInDataEndpoint.cpp
+@@ -36,7 +36,7 @@ namespace xn
+ 	const XnUInt32 ClientUSBInDataEndpoint::READ_THREAD_BUFFER_NUM_PACKETS_BULK = 120;
+ 	const XnUInt32 ClientUSBInDataEndpoint::READ_THREAD_NUM_BUFFERS_BULK = 8;
+ 	const XnUInt32 ClientUSBInDataEndpoint::READ_THREAD_TIMEOUT_BULK = 1000;
+-#elif (XN_PLATFORM == XN_PLATFORM_LINUX_X86 || XN_PLATFORM == XN_PLATFORM_LINUX_ARM || XN_PLATFORM == XN_PLATFORM_MACOSX || XN_PLATFORM == XN_PLATFORM_ANDROID_ARM)
++#elif (XN_PLATFORM == XN_PLATFORM_LINUX_X86 || XN_PLATFORM == XN_PLATFORM_LINUX_ARM || XN_PLATFORM == XN_PLATFORM_LINUX_AARCH64 || XN_PLATFORM == XN_PLATFORM_LINUX_PPC || XN_PLATFORM == XN_PLATFORM_MACOSX || XN_PLATFORM == XN_PLATFORM_ANDROID_ARM)
+ 	const XnUInt32 ClientUSBInDataEndpoint::READ_THREAD_BUFFER_NUM_PACKETS_ISO = 32;
+ 	const XnUInt32 ClientUSBInDataEndpoint::READ_THREAD_NUM_BUFFERS_ISO = 16;
+ 	const XnUInt32 ClientUSBInDataEndpoint::READ_THREAD_TIMEOUT_ISO = 100;
+diff --git a/Source/Tools/NiViewer/NiViewer.cpp b/Source/Tools/NiViewer/NiViewer.cpp
+index df7dde5..cdd54cc 100644
+--- a/Source/Tools/NiViewer/NiViewer.cpp
++++ b/Source/Tools/NiViewer/NiViewer.cpp
+@@ -68,7 +68,7 @@
+ #if (ONI_PLATFORM == ONI_PLATFORM_WIN32)
+ 	#include <conio.h>
+ 	#include <direct.h>	
+-#elif (ONI_PLATFORM == ONI_PLATFORM_LINUX_X86 || ONI_PLATFORM == ONI_PLATFORM_LINUX_ARM || ONI_PLATFORM == ONI_PLATFORM_MACOSX)
++#elif (ONI_PLATFORM == ONI_PLATFORM_LINUX_X86 || ONI_PLATFORM == ONI_PLATFORM_LINUX_ARM || ONI_PLATFORM == ONI_PLATFORM_LINUX_AARCH64 || ONI_PLATFORM == ONI_PLATFORM_LINUX_PPC || ONI_PLATFORM == ONI_PLATFORM_MACOSX)
+ 	#define _getch() getchar()
+ #endif
+ 
+diff --git a/ThirdParty/PSCommon/BuildSystem/CommonDefs.mak b/ThirdParty/PSCommon/BuildSystem/CommonDefs.mak
+index dd88b04..ebd6fc4 100644
+--- a/ThirdParty/PSCommon/BuildSystem/CommonDefs.mak
++++ b/ThirdParty/PSCommon/BuildSystem/CommonDefs.mak
+@@ -18,6 +18,12 @@ else ifneq (,$(findstring i386,$(MACHINE)))
+ 	HOST_PLATFORM = x86
+ else ifneq (,$(findstring arm,$(MACHINE)))
+ 	HOST_PLATFORM = Arm
++else ifneq (,$(findstring aarch64,$(MACHINE)))
++	HOST_PLATFORM = Aarch64
++else ifneq (,$(findstring ppc64,$(MACHINE)))
++	HOST_PLATFORM = Ppc64
++else ifneq (,$(findstring ppc64,$(MACHINE)))
++	HOST_PLATFORM = Ppc
+ else
+ 	DUMMY:=$(error Can't determine host platform)
+ endif
+diff --git a/ThirdParty/PSCommon/BuildSystem/Platform.Aarch64 b/ThirdParty/PSCommon/BuildSystem/Platform.Aarch64
+new file mode 100644
+index 0000000..c471458
+--- /dev/null
++++ b/ThirdParty/PSCommon/BuildSystem/Platform.Aarch64
+@@ -0,0 +1,14 @@
++ifeq "$(CFG)" "Release"
++
++    # Hardware specifying flags
++    CFLAGS += -march=armv8-a -mtune=cortex-a72
++
++    # Optimization level, minus currently buggy optimizing methods (which break bit-exact)
++    CFLAGS += -O3 -fno-tree-pre -fno-strict-aliasing
++
++    # More optimization flags
++    CFLAGS += -ftree-vectorize -ffast-math -funsafe-math-optimizations #-fsingle-precision-constant
++
++    DEFINES += XN_NEON
++    CFLAGS += -flax-vector-conversions
++endif
+diff --git a/ThirdParty/PSCommon/BuildSystem/Platform.Ppc b/ThirdParty/PSCommon/BuildSystem/Platform.Ppc
+new file mode 100644
+index 0000000..1648cce
+--- /dev/null
++++ b/ThirdParty/PSCommon/BuildSystem/Platform.Ppc
+@@ -0,0 +1,2 @@
++# some defaults
++export GLUT_SUPPORTED=1
+diff --git a/ThirdParty/PSCommon/BuildSystem/Platform.Ppc64 b/ThirdParty/PSCommon/BuildSystem/Platform.Ppc64
+new file mode 100644
+index 0000000..32c4aeb
+--- /dev/null
++++ b/ThirdParty/PSCommon/BuildSystem/Platform.Ppc64
+@@ -0,0 +1,5 @@
++# take this file's dir
++COMMON_MAK_DIR = $(dir $(lastword $(MAKEFILE_LIST)))
++
++# everything is the same as in Ppc
++include $(COMMON_MAK_DIR)Platform.Ppc
+diff --git a/ThirdParty/PSCommon/XnLib/Include/Linux-Aarch64/XnPlatformLinux-Aarch64.h b/ThirdParty/PSCommon/XnLib/Include/Linux-Aarch64/XnPlatformLinux-Aarch64.h
+new file mode 100644
+index 0000000..87a3f66
+--- /dev/null
++++ b/ThirdParty/PSCommon/XnLib/Include/Linux-Aarch64/XnPlatformLinux-Aarch64.h
+@@ -0,0 +1,46 @@
++/*****************************************************************************
++*                                                                            *
++*  PrimeSense PSCommon Library                                               *
++*  Copyright (C) 2012 PrimeSense Ltd.                                        *
++*                                                                            *
++*  This file is part of PSCommon.                                            *
++*                                                                            *
++*  Licensed under the Apache License, Version 2.0 (the "License");           *
++*  you may not use this file except in compliance with the License.          *
++*  You may obtain a copy of the License at                                   *
++*                                                                            *
++*      http://www.apache.org/licenses/LICENSE-2.0                            *
++*                                                                            *
++*  Unless required by applicable law or agreed to in writing, software       *
++*  distributed under the License is distributed on an "AS IS" BASIS,         *
++*  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  *
++*  See the License for the specific language governing permissions and       *
++*  limitations under the License.                                            *
++*                                                                            *
++*****************************************************************************/
++#ifndef _XN_PLATFORM_LINUX_AARCH64_H_
++#define _XN_PLATFORM_LINUX_AARCH64_H_
++
++// Start with Linux-x86, and override what's different
++#include "../Linux-x86/XnPlatformLinux-x86.h"
++
++//---------------------------------------------------------------------------
++// Platform Basic Definition
++//---------------------------------------------------------------------------
++#undef XN_PLATFORM
++#undef XN_PLATFORM_STRING
++#define XN_PLATFORM XN_PLATFORM_LINUX_AARCH64
++#define XN_PLATFORM_STRING "Linux-Aarch64"
++
++//---------------------------------------------------------------------------
++// Platform Capabilities
++//---------------------------------------------------------------------------
++#undef XN_PLATFORM_ENDIAN_TYPE
++#ifdef __ARM_BIG_ENDIAN
++#define XN_PLATFORM_ENDIAN_TYPE XN_PLATFORM_IS_BIG_ENDIAN
++#else
++#define XN_PLATFORM_ENDIAN_TYPE XN_PLATFORM_IS_LITTLE_ENDIAN
++#endif
++
++#endif //_XN_PLATFORM_LINUX_AARCH64_H_
++
+diff --git a/ThirdParty/PSCommon/XnLib/Include/Linux-Ppc/XnPlatformLinux-Ppc.h b/ThirdParty/PSCommon/XnLib/Include/Linux-Ppc/XnPlatformLinux-Ppc.h
+new file mode 100644
+index 0000000..91f9517
+--- /dev/null
++++ b/ThirdParty/PSCommon/XnLib/Include/Linux-Ppc/XnPlatformLinux-Ppc.h
+@@ -0,0 +1,46 @@
++/*****************************************************************************
++*                                                                            *
++*  PrimeSense PSCommon Library                                               *
++*  Copyright (C) 2012 PrimeSense Ltd.                                        *
++*                                                                            *
++*  This file is part of PSCommon.                                            *
++*                                                                            *
++*  Licensed under the Apache License, Version 2.0 (the "License");           *
++*  you may not use this file except in compliance with the License.          *
++*  You may obtain a copy of the License at                                   *
++*                                                                            *
++*      http://www.apache.org/licenses/LICENSE-2.0                            *
++*                                                                            *
++*  Unless required by applicable law or agreed to in writing, software       *
++*  distributed under the License is distributed on an "AS IS" BASIS,         *
++*  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  *
++*  See the License for the specific language governing permissions and       *
++*  limitations under the License.                                            *
++*                                                                            *
++*****************************************************************************/
++#ifndef _XN_PLATFORM_LINUX_PPC_H_
++#define _XN_PLATFORM_LINUX_PPC_H_
++
++// Start with Linux-x86, and override what's different
++#include "../Linux-x86/XnPlatformLinux-x86.h"
++
++//---------------------------------------------------------------------------
++// Platform Basic Definition
++//---------------------------------------------------------------------------
++#undef XN_PLATFORM
++#undef XN_PLATFORM_STRING
++#define XN_PLATFORM XN_PLATFORM_LINUX_PPC
++#define XN_PLATFORM_STRING "Linux-Ppc"
++
++//---------------------------------------------------------------------------
++// Platform Capabilities
++//---------------------------------------------------------------------------
++#undef XN_PLATFORM_ENDIAN_TYPE
++#ifdef __LITTLE_ENDIAN__
++#define XN_PLATFORM_ENDIAN_TYPE XN_PLATFORM_IS_LITTLE_ENDIAN
++#else
++#define XN_PLATFORM_ENDIAN_TYPE XN_PLATFORM_IS_BIG_ENDIAN
++#endif
++
++#endif //_XN_PLATFORM_LINUX_PPC_H_
++
+diff --git a/ThirdParty/PSCommon/XnLib/Include/XnOS.h b/ThirdParty/PSCommon/XnLib/Include/XnOS.h
+index 3e41060..9f78851 100644
+--- a/ThirdParty/PSCommon/XnLib/Include/XnOS.h
++++ b/ThirdParty/PSCommon/XnLib/Include/XnOS.h
+@@ -43,7 +43,7 @@
+ //---------------------------------------------------------------------------
+ #if (XN_PLATFORM == XN_PLATFORM_WIN32)
+ 	#include "Win32/XnOSWin32.h"
+-#elif (XN_PLATFORM == XN_PLATFORM_LINUX_X86 || XN_PLATFORM == XN_PLATFORM_LINUX_ARM || XN_PLATFORM == XN_PLATFORM_ANDROID_ARM)
++#elif (XN_PLATFORM == XN_PLATFORM_LINUX_X86 || XN_PLATFORM == XN_PLATFORM_LINUX_ARM || XN_PLATFORM == XN_PLATFORM_LINUX_AARCH64 || XN_PLATFORM == XN_PLATFORM_LINUX_PPC || XN_PLATFORM == XN_PLATFORM_ANDROID_ARM)
+ 	#include "Linux-x86/XnOSLinux-x86.h"
+ #elif (XN_PLATFORM == XN_PLATFORM_MACOSX)
+         #include "MacOSX/XnOSMacOSX.h"
+diff --git a/ThirdParty/PSCommon/XnLib/Include/XnPlatform.h b/ThirdParty/PSCommon/XnLib/Include/XnPlatform.h
+index 07e8192..3578a28 100644
+--- a/ThirdParty/PSCommon/XnLib/Include/XnPlatform.h
++++ b/ThirdParty/PSCommon/XnLib/Include/XnPlatform.h
+@@ -31,6 +31,8 @@
+ #define XN_PLATFORM_LINUX_ARM 7
+ #define XN_PLATFORM_MACOSX 8
+ #define XN_PLATFORM_ANDROID_ARM 9
++#define XN_PLATFORM_LINUX_AARCH64 10
++#define XN_PLATFORM_LINUX_PPC 11
+ 
+ #define XN_PLATFORM_IS_LITTLE_ENDIAN 1
+ #define XN_PLATFORM_IS_BIG_ENDIAN    2
+@@ -51,8 +53,12 @@
+ #include "Android-Arm/XnPlatformAndroid-Arm.h"
+ #elif (__linux__ && (i386 || __x86_64__))
+ #include "Linux-x86/XnPlatformLinux-x86.h"
++#elif (__linux__ && __aarch64__)
++#include "Linux-Aarch64/XnPlatformLinux-Aarch64.h"
+ #elif (__linux__ && __arm__)
+ #include "Linux-Arm/XnPlatformLinux-Arm.h"
++#elif (__linux__ && __powerpc__)
++#include "Linux-Ppc/XnPlatformLinux-Ppc.h"
+ #elif _ARC
+ #include "ARC/XnPlaformARC.h"
+ #elif (__APPLE__)
+diff --git a/ThirdParty/PSCommon/XnLib/Include/XnUSBDevice.h b/ThirdParty/PSCommon/XnLib/Include/XnUSBDevice.h
+index 94c729b..bf089af 100644
+--- a/ThirdParty/PSCommon/XnLib/Include/XnUSBDevice.h
++++ b/ThirdParty/PSCommon/XnLib/Include/XnUSBDevice.h
+@@ -47,7 +47,7 @@
+ 	#define USB_DT_DEVICE_SIZE 0
+ 	#define USB_DT_DEVICE 0
+ 
+-#elif (XN_PLATFORM == XN_PLATFORM_LINUX_X86 || XN_PLATFORM == XN_PLATFORM_LINUX_ARM)
++#elif (XN_PLATFORM == XN_PLATFORM_LINUX_X86 || XN_PLATFORM == XN_PLATFORM_LINUX_ARM || XN_PLATFORM == XN_PLATFORM_LINUX_AARCH64 || XN_PLATFORM == XN_PLATFORM_LINUX_PPC)
+ 	#include <linux/usb/ch9.h>
+ 	typedef struct usb_endpoint_descriptor XnUSBEndpointDescriptor;
+ 	typedef struct usb_interface_descriptor XnUSBInterfaceDescriptor;
+diff --git a/ThirdParty/PSCommon/XnLib/Source/Linux/XnLinuxUSB.cpp b/ThirdParty/PSCommon/XnLib/Source/Linux/XnLinuxUSB.cpp
+index b886f82..1a1235a 100644
+--- a/ThirdParty/PSCommon/XnLib/Source/Linux/XnLinuxUSB.cpp
++++ b/ThirdParty/PSCommon/XnLib/Source/Linux/XnLinuxUSB.cpp
+@@ -36,7 +36,7 @@
+ #include <XnOSCpp.h>
+ #include <XnList.h>
+ 
+-#if (XN_PLATFORM == XN_PLATFORM_LINUX_X86 || XN_PLATFORM == XN_PLATFORM_LINUX_ARM)
++#if (XN_PLATFORM == XN_PLATFORM_LINUX_X86 || XN_PLATFORM == XN_PLATFORM_LINUX_ARM || XN_PLATFORM == XN_PLATFORM_LINUX_AARCH64 || XN_PLATFORM_LINUX_PPC)
+ #include <libudev.h>
+ #define XN_USE_UDEV
+ #endif

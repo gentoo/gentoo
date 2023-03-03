@@ -14,7 +14,7 @@ inherit ${SCM} cmake cuda
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="~amd64 ~arm ~arm64"
 	SRC_URI="https://github.com/PointCloudLibrary/pcl/archive/${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${P}"
 fi
