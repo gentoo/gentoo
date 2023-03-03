@@ -1,5 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# matoro <matoro_gentoo@matoro.tk> (2023-03-03)
+# virtual/jdk isn't keyworded here
+media-libs/rubberband jni
 
 # Conrad Kostecki <conikost@gentoo.org> (2022-11-01)
 # Mask tests, as not all needed deps are available on this arch.
