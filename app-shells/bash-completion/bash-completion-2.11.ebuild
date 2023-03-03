@@ -89,20 +89,25 @@ src_prepare() {
 		eapply "${WORKDIR}/${BASHCOMP_P}/bash-completion-blacklist-support.patch"
 	fi
 
-	# redhat-specific, we strip these completions
-	rm test/t/test_if{down,up}.py || die
-	# not available for icedtea
-	rm test/t/test_javaws.py || die
-
 	eapply_user
 }
 
 src_test() {
+	local EPYTEST_DESELECT=(
+		# redhat-specific, we strip these completions
+		test/t/test_if{down,up}.py
+		# not available for icedtea
+		test/t/test_javaws.py
+	)
+
 	# portage's HOME override breaks tests
-	local myhome=$(unset HOME; echo ~)
-	local -x SANDBOX_PREDICT=${SANDBOX_PREDICT}
-	addpredict "${myhome}"
-	emake check HOME="${myhome}" PYTESTFLAGS="-vv" NETWORK=none
+	local -x HOME=$(unset HOME; echo ~)
+	addpredict "${HOME}"
+	# used in pytest tests
+	local -x NETWORK=none
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	emake -C completions check
+	epytest
 }
 
 src_install() {
