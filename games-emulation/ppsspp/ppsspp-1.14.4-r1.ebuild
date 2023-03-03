@@ -22,7 +22,7 @@ RDEPEND="
 	app-arch/snappy:=
 	app-arch/zstd:=
 	dev-libs/libzip:=
-	dev-util/glslang:=
+	dev-util/glslang:0/1
 	media-libs/glew:=
 	media-libs/libpng:=
 	media-libs/libsdl2[joystick]
@@ -51,7 +51,7 @@ pkg_setup() {
 }
 
 src_configure() {
-	local mycmakeargs=(
+	local -a mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
 		-DHEADLESS=false
 		-DUSE_DISCORD=$(usex discord)
