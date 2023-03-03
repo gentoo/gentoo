@@ -5,15 +5,16 @@
 
 EAPI=8
 
-inherit autotools git-r3 multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="HTTP/2 C Library"
 HOMEPAGE="https://nghttp2.org/"
-EGIT_REPO_URI="https://github.com/nghttp2/nghttp2.git"
+SRC_URI="https://github.com/nghttp2/nghttp2/releases/download/v${PV}/${P}.tar.xz
+	https://dev.gentoo.org/~voyageur/distfiles/${PN}-1.51.0-pthread.patch"
 
 LICENSE="MIT"
 SLOT="0/1.14" # <C++>.<C> SONAMEs
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="cxx debug hpack-tools jemalloc static-libs systemd test utils xml"
 
 RESTRICT="!test? ( test )"
@@ -39,6 +40,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( >=dev-util/cunit-2.1[${MULTILIB_USEDEP}] )"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${DISTDIR}"/${PN}-1.51.0-pthread.patch
+	)
 
 src_prepare() {
 	default
