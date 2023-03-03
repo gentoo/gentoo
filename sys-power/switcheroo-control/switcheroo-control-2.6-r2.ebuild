@@ -61,9 +61,9 @@ src_install() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "You to enable the service:"
+		elog "You need to enable the service:"
 		if systemd_is_booted; then
-			elog "# systemctl enable switcheroo-control"
+			elog "# systemctl enable ${PN}"
 		else
 			elog "# rc-update add ${PN} default"
 		fi
