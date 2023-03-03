@@ -5,13 +5,17 @@ EAPI=7
 
 BASHCOMP_P=bashcomp-2.0.3
 PYTHON_COMPAT=( python3_{9..11} )
+
 inherit python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
 SRC_URI="
 	https://github.com/scop/bash-completion/releases/download/${PV}/${P}.tar.xz
-	eselect? ( https://github.com/mgorny/bashcomp2/releases/download/v${BASHCOMP_P#*-}/${BASHCOMP_P}.tar.gz )"
+	eselect? (
+		https://github.com/mgorny/bashcomp2/releases/download/v${BASHCOMP_P#*-}/${BASHCOMP_P}.tar.gz
+	)
+"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -20,9 +24,11 @@ IUSE="+eselect test"
 RESTRICT="!test? ( test )"
 
 # completion collision with net-fs/mc
-RDEPEND=">=app-shells/bash-4.3_p30-r1:0
+RDEPEND="
+	>=app-shells/bash-4.3_p30-r1:0
 	sys-apps/miscfiles
-	!!net-fs/mc"
+	!!net-fs/mc
+"
 DEPEND="
 	test? (
 		${RDEPEND}
@@ -30,8 +36,11 @@ DEPEND="
 			dev-python/pexpect[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
 		')
-	)"
-PDEPEND=">=app-shells/gentoo-bashcomp-20140911"
+	)
+"
+PDEPEND="
+	>=app-shells/gentoo-bashcomp-20140911
+"
 
 strip_completions() {
 	# Remove unwanted completions.
@@ -76,8 +85,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	use eselect &&
+	if use eselect; then
 		eapply "${WORKDIR}/${BASHCOMP_P}/bash-completion-blacklist-support.patch"
+	fi
 
 	# redhat-specific, we strip these completions
 	rm test/t/test_if{down,up}.py || die

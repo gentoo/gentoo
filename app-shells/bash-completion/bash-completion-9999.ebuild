@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{9..11} )
+
 inherit autotools git-r3 python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
@@ -17,9 +18,11 @@ IUSE="+eselect test"
 RESTRICT="!test? ( test )"
 
 # completion collision with net-fs/mc
-RDEPEND=">=app-shells/bash-4.3_p30-r1:0
+RDEPEND="
+	>=app-shells/bash-4.3_p30-r1:0
 	sys-apps/miscfiles
-	!!net-fs/mc"
+	!!net-fs/mc
+"
 DEPEND="
 	test? (
 		${RDEPEND}
@@ -27,8 +30,11 @@ DEPEND="
 			dev-python/pexpect[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
 		')
-	)"
-PDEPEND=">=app-shells/gentoo-bashcomp-20140911"
+	)
+"
+PDEPEND="
+	>=app-shells/gentoo-bashcomp-20140911
+"
 
 strip_completions() {
 	# Remove unwanted completions.
@@ -116,9 +122,10 @@ src_install() {
 	dodoc AUTHORS CHANGES CONTRIBUTING.md README.md
 
 	# install the eselect module
-	use eselect &&
+	if use eselect; then
 		emake -C "${WORKDIR}"/bashcomp2 DESTDIR="${D}" \
 			PREFIX="${EPREFIX}/usr" install
+	fi
 }
 
 pkg_postinst() {
