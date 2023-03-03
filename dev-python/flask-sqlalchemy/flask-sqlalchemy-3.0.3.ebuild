@@ -12,7 +12,7 @@ MY_PN="Flask-SQLAlchemy"
 DESCRIPTION="SQLAlchemy support for Flask applications"
 HOMEPAGE="
 	https://github.com/pallets-eco/flask-sqlalchemy/
-	https://pypi.org/project/flask-sqlalchemy/
+	https://pypi.org/project/Flask-SQLAlchemy/
 "
 SRC_URI="$(pypi_sdist_url --no-normalize "${MY_PN}")"
 S="${WORKDIR}/${MY_PN}-${PV}"
