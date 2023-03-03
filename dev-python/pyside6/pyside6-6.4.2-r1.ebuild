@@ -87,7 +87,7 @@ RDEPEND="${PYTHON_DEPS}
 		x11-libs/libxkbcommon
 	)
 	help? ( =dev-qt/qttools-${QT_PV}[assistant] )
-	multimedia? ( =dev-qt/qtmultimedia-${QT_PV}[qml(+)?,gles2-only(-)=,widgets(+)?] )
+	multimedia? ( =dev-qt/qtmultimedia-${QT_PV} )
 	network-auth? ( =dev-qt/qtnetworkauth-${QT_PV} )
 	positioning? ( =dev-qt/qtpositioning-${QT_PV} )
 	printsupport? ( =dev-qt/qtbase-${QT_PV}[gui,widgets] )
