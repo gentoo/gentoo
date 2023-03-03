@@ -90,6 +90,14 @@ fi
 # various failures (bugs #630042 and #682320)
 RESTRICT="test"
 
+# platform-specific checks (bug #898450):
+# - acl()     -- Solaris
+# - statacl() -- AIX
+QA_CONFIG_IMPL_DECL_SKIP=(
+	'acl'
+	'statacl'
+)
+
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug 82186.
 	unset LANG LC_ALL
