@@ -37,7 +37,7 @@ RDEPEND="$(python_gen_cond_dep '
 	selinux? ( sys-libs/libselinux[python,${PYTHON_USEDEP}] )
 ')"
 BDEPEND="$(python_gen_cond_dep '
-	>=dev-python/setuptools_scm-3.5.0[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-3.5.0[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm_git_archive-1.1[${PYTHON_USEDEP}]
 	doc? (
 		app-admin/ansible-core[${PYTHON_USEDEP}]

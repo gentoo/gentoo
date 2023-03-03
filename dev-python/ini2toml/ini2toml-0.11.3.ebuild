@@ -27,7 +27,7 @@ RDEPEND="
 	>=dev-python/tomli-w-0.4.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/configupdater[${PYTHON_USEDEP}]
 		>=dev-python/pyproject-fmt-0.4.0[${PYTHON_USEDEP}]

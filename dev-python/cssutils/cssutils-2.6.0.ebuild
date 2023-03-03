@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc x86"
 
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/cssselect[${PYTHON_USEDEP}]
 		>=dev-python/jaraco-test-5.1[${PYTHON_USEDEP}]

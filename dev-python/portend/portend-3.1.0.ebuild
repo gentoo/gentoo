@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-python/tempora-1.8[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

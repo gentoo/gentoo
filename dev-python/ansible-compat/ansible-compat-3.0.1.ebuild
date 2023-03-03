@@ -27,7 +27,7 @@ RDEPEND="
 	>=dev-python/subprocess-tee-0.4.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-python/setuptools_scm-7.0.0[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-7.0.0[${PYTHON_USEDEP}]
 	test? (
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]

@@ -21,7 +21,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
+DEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]"
 RDEPEND="dev-libs/openssl:0"
 
 # Tests require a local ACME server to be set up.

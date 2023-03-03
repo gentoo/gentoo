@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
-	>=dev-python/setuptools_scm-6.2[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-6.2[${PYTHON_USEDEP}]
 	test? (
 		dev-python/freezegun[${PYTHON_USEDEP}]
 	)

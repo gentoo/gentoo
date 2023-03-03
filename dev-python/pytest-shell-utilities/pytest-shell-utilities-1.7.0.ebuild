@@ -31,7 +31,7 @@ RDEPEND="
 	dev-python/pytest-skip-markers[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-subtests[${PYTHON_USEDEP}]
 	)

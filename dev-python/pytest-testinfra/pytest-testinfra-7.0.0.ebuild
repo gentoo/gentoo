@@ -27,7 +27,7 @@ RDEPEND="
 # (which e.g. happens when dash is used as /bin/sh)
 # https://github.com/pytest-dev/pytest-testinfra/issues/668
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		app-admin/ansible
 		$(python_gen_cond_dep '

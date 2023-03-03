@@ -36,7 +36,7 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-python/pybind11-2.10.1[${PYTHON_USEDEP}]
-	>=dev-python/setuptools_scm-7.0.5[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-7.0.5[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/attrs-20.2.0[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-6.36[${PYTHON_USEDEP}]

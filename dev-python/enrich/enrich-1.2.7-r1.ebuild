@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~riscv ~x86"
 
 RDEPEND="dev-python/rich[${PYTHON_USEDEP}]"
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest-mock[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest

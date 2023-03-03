@@ -24,7 +24,7 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 "
 
 PATCHES=(

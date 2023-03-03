@@ -18,7 +18,7 @@ IUSE="examples"
 # Tests use a tox environment and separate steps for test env preparation
 RESTRICT="test"
 
-DEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
+DEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	>=net-libs/librsync-1.0:0="
 RDEPEND="dev-python/pylibacl[${PYTHON_USEDEP}]
 	dev-python/pyxattr[${PYTHON_USEDEP}]

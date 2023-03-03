@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/path[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 "
 
 src_prepare() {

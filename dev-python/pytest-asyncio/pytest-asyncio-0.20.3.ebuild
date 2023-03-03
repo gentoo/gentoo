@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-python/pytest-5.4.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/flaky[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-3.64[${PYTHON_USEDEP}]

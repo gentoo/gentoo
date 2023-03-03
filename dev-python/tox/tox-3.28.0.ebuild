@@ -36,7 +36,7 @@ RDEPEND="
 	' 3.8 3.9 3.10)
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/flaky-3.4.0[${PYTHON_USEDEP}]
 		>=dev-python/freezegun-0.3.11[${PYTHON_USEDEP}]

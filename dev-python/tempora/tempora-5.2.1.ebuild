@@ -20,7 +20,7 @@ RDEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/pytest-freezegun[${PYTHON_USEDEP}]

@@ -21,7 +21,7 @@ KEYWORDS="amd64 arm arm64 ~riscv x86"
 
 BDEPEND="
 	>=dev-python/setuptools-61[${PYTHON_USEDEP}]
-	>=dev-python/setuptools_scm-6.4[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-6.4[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

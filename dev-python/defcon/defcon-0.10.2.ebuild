@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-python/fonttools-4.34.4[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/fs[${PYTHON_USEDEP}]
 	)

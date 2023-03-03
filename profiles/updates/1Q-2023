@@ -15,3 +15,4 @@ move dev-python/python-zstandard dev-python/zstandard
 move dev-python/prompt_toolkit dev-python/prompt-toolkit
 move sys-apps/uutils sys-apps/uutils-coreutils
 move dev-python/myst_parser dev-python/myst-parser
+move dev-python/setuptools_scm dev-python/setuptools-scm

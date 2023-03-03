@@ -20,7 +20,7 @@ IUSE=""
 
 RDEPEND=">=dev-python/six-1.7.3[${PYTHON_USEDEP}]"
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
 "
 

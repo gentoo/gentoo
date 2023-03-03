@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-python/setuptools_scm-3.4.1[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-3.4.1[${PYTHON_USEDEP}]
 	test? (
 		dev-python/path[${PYTHON_USEDEP}]
 	)

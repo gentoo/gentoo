@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-1.15.0[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

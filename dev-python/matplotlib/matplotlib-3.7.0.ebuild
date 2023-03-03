@@ -90,7 +90,7 @@ RDEPEND="
 
 BDEPEND="
 	${RDEPEND}
-	>=dev-python/setuptools_scm-7[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-7[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? (
 		>=app-text/dvipng-1.15-r1

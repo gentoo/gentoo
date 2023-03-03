@@ -32,7 +32,7 @@ RDEPEND="
 # failures.  to avoid them, we must ensure that one of the backends
 # preferred to it is available (i.e. xclip or xsel).
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		|| (

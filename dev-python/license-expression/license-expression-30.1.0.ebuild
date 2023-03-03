@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-python/boolean-py-4.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-python/setuptools_scm-4[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-4[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

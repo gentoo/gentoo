@@ -31,7 +31,7 @@ RDEPEND="
 	>=dev-python/wcmatch-7.0[${PYTHON_USEDEP}]
 	>=dev-util/yamllint-1.25.0[${PYTHON_USEDEP}]"
 BDEPEND="
-	>=dev-python/setuptools_scm-3.5.0[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-3.5.0[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm_git_archive-1.0[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/flaky-3.7.0[${PYTHON_USEDEP}]

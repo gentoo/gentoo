@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/tornado[${PYTHON_USEDEP}]
 	)

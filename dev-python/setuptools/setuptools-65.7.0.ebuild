@@ -69,7 +69,7 @@ BDEPEND="
 "
 PDEPEND="
 	>=dev-python/certifi-2016.9.26[${PYTHON_USEDEP}]
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 "
 
 DOCS=( {CHANGES,README}.rst )

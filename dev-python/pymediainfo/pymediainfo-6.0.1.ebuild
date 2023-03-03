@@ -24,7 +24,7 @@ RDEPEND="
 "
 # tests/test_pymediainfo.py::MediaInfoURLTest::test_parse_url requires libmediainfo with curl support
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		media-libs/libmediainfo[curl]
 	)

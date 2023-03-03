@@ -29,7 +29,7 @@ RDEPEND="
 	>=dev-python/django-3.2[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/django-cache-url[${PYTHON_USEDEP}]
 		dev-python/dj-database-url[${PYTHON_USEDEP}]

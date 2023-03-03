@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
-	>=dev-python/setuptools_scm-6.4.0[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-6.4.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (

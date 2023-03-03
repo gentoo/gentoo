@@ -27,7 +27,7 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	doc? ( sys-apps/texinfo )
 	test? ( dev-python/mock[${PYTHON_USEDEP}] )
 "

@@ -36,7 +36,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/setuptools_scm[${PYTHON_USEDEP}]
+		dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	)
 	doc? (
 		dev-python/sphinx-autoapi

@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-python/tzlocal-4[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/tornado[${PYTHON_USEDEP}]

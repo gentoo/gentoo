@@ -27,7 +27,7 @@ RDEPEND="
 "
 # note: most of the test dependencies are optional
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/bottleneck[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]

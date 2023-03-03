@@ -36,7 +36,7 @@ RDEPEND="
 	>=dev-python/urllib3-1.26.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/build[${PYTHON_USEDEP}]
 		dev-python/jaraco-envs[${PYTHON_USEDEP}]

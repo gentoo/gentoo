@@ -34,7 +34,7 @@ RDEPEND="
 	>=dev-util/yamllint-1.26.3[${PYTHON_USEDEP}]
 	dev-vcs/git"
 BDEPEND="
-	>=dev-python/setuptools_scm-7.0.5[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-7.0.5[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		>=dev-python/pytest-plus-0.2[${PYTHON_USEDEP}]

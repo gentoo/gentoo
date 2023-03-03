@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-python/pydantic-1.9.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-python/setuptools_scm-3.4.1[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-3.4.1[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

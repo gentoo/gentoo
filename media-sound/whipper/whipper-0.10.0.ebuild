@@ -29,7 +29,7 @@ RDEPEND="
 	media-libs/mutagen[${PYTHON_USEDEP}]
 	media-sound/sox[flac]"
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? ( dev-python/twisted[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests unittest

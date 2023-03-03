@@ -41,7 +41,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/setuptools_scm[${PYTHON_USEDEP}]
+		dev-python/setuptools-scm[${PYTHON_USEDEP}]
 		dev-python/cython[${PYTHON_USEDEP}]
 	')
 	test? (

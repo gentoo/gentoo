@@ -29,7 +29,7 @@ RDEPEND="
 # coverage is used somehow magically in virtualenv, maybe it actually
 # tests something useful
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/flaky[${PYTHON_USEDEP}]

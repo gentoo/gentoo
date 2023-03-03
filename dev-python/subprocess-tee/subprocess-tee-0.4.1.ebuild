@@ -23,7 +23,7 @@ REQUIRED_USE="test-full? ( test )"
 
 # ansible-molecule is invoked as an executable so no need for PYTHON_USEDEP
 BDEPEND="
-	>=dev-python/setuptools_scm-7.0.0[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-7.0.0[${PYTHON_USEDEP}]
 	test? (
 		dev-python/enrich[${PYTHON_USEDEP}]
 		test-full? ( app-admin/ansible-molecule )

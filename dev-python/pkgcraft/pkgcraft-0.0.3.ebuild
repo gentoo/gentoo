@@ -39,7 +39,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-python/cython
-	dev-python/setuptools_scm
+	dev-python/setuptools-scm
 	virtual/pkgconfig
 "
 

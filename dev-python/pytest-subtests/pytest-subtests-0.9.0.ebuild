@@ -26,7 +26,7 @@ RDEPEND="
 "
 # pytest-xdist is used to test compatibility
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)

@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="amd64 ~riscv x86"
 
 BDEPEND="
-	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-1.15.0[${PYTHON_USEDEP}]
 	test? (
 		dev-python/more-itertools[${PYTHON_USEDEP}]
 	)

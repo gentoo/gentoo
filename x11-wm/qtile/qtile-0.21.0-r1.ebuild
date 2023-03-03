@@ -21,7 +21,7 @@ RDEPEND=">=dev-python/cairocffi-0.9.0[${PYTHON_USEDEP}]
 	dev-python/dbus-next[${PYTHON_USEDEP}]
 	dev-python/pygobject[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
 	>=dev-python/xcffib-0.10.1[${PYTHON_USEDEP}]
 	media-sound/pulseaudio

@@ -35,7 +35,7 @@ RDEPEND="
 	)
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/routes[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]

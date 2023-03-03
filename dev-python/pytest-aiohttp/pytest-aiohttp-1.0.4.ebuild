@@ -25,7 +25,7 @@ RDEPEND="
 	>=dev-python/pytest-asyncio-0.17.2[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	>=dev-python/setuptools_scm-6.2[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-6.2[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

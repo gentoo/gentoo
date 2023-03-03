@@ -16,6 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=dev-python/requests-2.11.1[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest

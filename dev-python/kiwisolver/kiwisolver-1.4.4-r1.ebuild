@@ -32,7 +32,7 @@ RDEPEND="
 "
 BDEPEND="
 	${COMMON_DEPEND}
-	>=dev-python/setuptools_scm-3.4.3[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-scm-3.4.3[${PYTHON_USEDEP}]
 "
 
 PATCHES=(

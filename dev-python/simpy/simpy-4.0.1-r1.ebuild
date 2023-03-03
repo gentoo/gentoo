@@ -18,7 +18,7 @@ SLOT="0"
 LICENSE="LGPL-2.1"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
-BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]"
 
 # Could not import extension sphinx.builders.epub3 (exception: cannot import
 # name 'StandaloneHTMLBuilder' from partially initialized module

@@ -27,7 +27,7 @@ RDEPEND="
 	dev-python/jaraco-functools[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/jaraco-context[${PYTHON_USEDEP}]
 		dev-python/jaraco-text[${PYTHON_USEDEP}]

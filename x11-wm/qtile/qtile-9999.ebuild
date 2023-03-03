@@ -43,7 +43,7 @@ RDEPEND="
 	)
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		media-gfx/imagemagick[X]
 		x11-base/xorg-server[xephyr]

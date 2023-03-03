@@ -30,7 +30,7 @@ RDEPEND="app-crypt/tpm2-tss:=[fapi=]
 DEPEND="${RDEPEND}
 	test? ( app-crypt/swtpm )"
 
-BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
+BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	dev-python/pkgconfig[${PYTHON_USEDEP}]"
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
