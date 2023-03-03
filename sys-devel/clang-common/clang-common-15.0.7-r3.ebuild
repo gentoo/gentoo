@@ -20,8 +20,8 @@ PDEPEND="
 	sys-devel/clang:*
 	default-compiler-rt? (
 		sys-devel/clang-runtime[compiler-rt]
-		llvm-libunwind? ( sys-libs/llvm-libunwind )
-		!llvm-libunwind? ( sys-libs/libunwind )
+		llvm-libunwind? ( sys-libs/llvm-libunwind[static-libs] )
+		!llvm-libunwind? ( sys-libs/libunwind[static-libs] )
 	)
 	!default-compiler-rt? ( sys-devel/gcc )
 	default-libcxx? ( >=sys-libs/libcxx-${PV} )
