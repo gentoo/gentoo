@@ -14,7 +14,7 @@ SRC_URI="https://repo1.maven.org/maven2/javax/servlet/jsp/jsp-api/${PV}/jsp-api-
 
 LICENSE="CDDL GPL-2-with-classpath-exception"
 SLOT="2.0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 CP_DEPEND="dev-java/javax-servlet-api:2.5"
 
