@@ -14,7 +14,7 @@ SRC_URI="https://github.com/javaee/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 CDEPEND="
 	dev-java/javax-jsp-api:2.0
