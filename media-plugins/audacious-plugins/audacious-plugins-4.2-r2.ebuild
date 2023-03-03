@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -56,7 +56,7 @@ DEPEND="
 	x11-libs/gdk-pixbuf:2
 	aac? ( >=media-libs/faad2-2.7 )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
-	ampache? ( =media-libs/ampache_browser-1* )
+	ampache? ( =media-libs/ampache_browser-1*:= )
 	bs2b? ( media-libs/libbs2b )
 	cdda? (
 		dev-libs/libcdio:=
