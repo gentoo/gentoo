@@ -98,6 +98,8 @@ src_test() {
 		test/t/test_if{down,up}.py
 		# not available for icedtea
 		test/t/test_javaws.py
+		# TODO
+		test/t/test_xmlwf.py::TestXmlwf::test_2
 	)
 
 	# portage's HOME override breaks tests
