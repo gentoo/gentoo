@@ -15,3 +15,7 @@ net-misc/openssh pam
 # Benda Xu <heroxbd@gentoo.org> (2019-01-26)
 # native-extensions requires >=linux=4.6 for __NR_copy_file_range
 sys-apps/portage native-extensions
+
+# Bart Oldeman <bart.oldeman@calculquebec.ca> (2022-03-02)
+# getentropy requires >=linux=3.17 for __NR_getrandom
+dev-libs/libgcrypt getentropy
