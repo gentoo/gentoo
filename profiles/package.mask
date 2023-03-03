@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2023-03-03)
+# No commits from maintainer in more than two years. Downloads are broken for
+# 18 months (bug #809551), depends on deprecated gconf (bug #873856)
+# Removal on 2023-04-03. Bug #873856
+app-office/upwork
+
 # Michał Górny <mgorny@gentoo.org> (2023-02-28)
 # Unmaintained.  Last (keep-alive) commit in 2019.  Suffers from bitrot.
 # Removal on 2023-03-30.  Bug #885713.
