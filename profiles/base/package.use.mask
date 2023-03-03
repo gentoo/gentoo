@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (2023-03-03)
+# Depends on deprecated gnome-base/gconf and gtk+:2
+sys-power/apcupsd gnome
+
 # Michał Górny <mgorny@gentoo.org> (2023-02-20)
 # dev-python/colorspacious is masked for removal.
 <dev-python/matplotlib-3.7.1 doc
