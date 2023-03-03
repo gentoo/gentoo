@@ -6,7 +6,7 @@ EAPI=8
 # Please don't add pypy support before testing if it's actually supported. The
 # old compat matrix is no longer accessible as of 2021-02-13 but stated back
 # in 2020-07-05 that PyQt5 was explicitly not supported.
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 optfeature qmake-utils virtualx xdg
 
