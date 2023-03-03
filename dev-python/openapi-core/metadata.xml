@@ -5,7 +5,7 @@
 		<email>python@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">p1c2u/openapi-core</remote-id>
+		<remote-id type="github">python-openapi/openapi-core</remote-id>
 		<remote-id type="pypi">openapi-core</remote-id>
 	</upstream>
 	<stabilize-allarches/>
