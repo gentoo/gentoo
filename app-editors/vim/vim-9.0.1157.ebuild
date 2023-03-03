@@ -75,6 +75,14 @@ if [[ ${PV} != 9999* ]]; then
 	)
 fi
 
+# platform-specific checks (bug #898452):
+# - acl()     -- Solaris
+# - statacl() -- AIX
+QA_CONFIG_IMPL_DECL_SKIP=(
+	'acl'
+	'statacl'
+)
+
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug #82186.
 	unset LANG LC_ALL
