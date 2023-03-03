@@ -4,7 +4,7 @@
 EAPI=7
 
 BASHCOMP_P=bashcomp-2.0.3
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit bash-completion-r1 python-any-r1 user-info
 
 DESCRIPTION="Programmable Completion for bash"
