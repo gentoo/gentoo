@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="Flightradar24"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 
 RDEPEND="
 	net-wireless/dump1090
