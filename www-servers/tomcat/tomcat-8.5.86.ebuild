@@ -146,12 +146,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Ebuilds of Tomcat support running multiple instances. If you used prior version"
-	elog "of Tomcat (<7.0.32), you have to migrate your existing instance to work with new Tomcat."
-	elog "You can find more information at https://wiki.gentoo.org/wiki/Apache_Tomcat"
-
-	elog "To manage Tomcat instances, run:"
-	elog "  ${EPREFIX}/usr/share/${PN}-${SLOT}/gentoo/tomcat-instance-manager.bash --help"
+	einfo "Ebuilds of Tomcat support running multiple instances. To manage Tomcat instances, run:"
+	einfo "  ${EPREFIX}/usr/share/${PN}-${SLOT}/gentoo/tomcat-instance-manager.bash --help"
 
 	einfo "Please read https://wiki.gentoo.org/wiki/Apache_Tomcat and"
 	einfo "https://wiki.gentoo.org/wiki/Project:Java/Tomcat_6_Guide for more information."
