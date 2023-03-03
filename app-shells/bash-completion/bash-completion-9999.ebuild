@@ -79,10 +79,10 @@ pkg_setup() {
 }
 
 src_unpack() {
-	use eselect && git-r3_fetch https://github.com/mgorny/bashcomp2
+	use eselect && git-r3_fetch https://github.com/projg2/bashcomp2
 	git-r3_fetch
 
-	use eselect && git-r3_checkout https://github.com/mgorny/bashcomp2 \
+	use eselect && git-r3_checkout https://github.com/projg2/bashcomp2 \
 		"${WORKDIR}"/bashcomp2
 	git-r3_checkout
 }

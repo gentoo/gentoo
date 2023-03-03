@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/scop/bash-completion"
 SRC_URI="
 	https://github.com/scop/bash-completion/releases/download/${PV}/${P}.tar.xz
 	eselect? (
-		https://github.com/mgorny/bashcomp2/releases/download/v${BASHCOMP_P#*-}/${BASHCOMP_P}.tar.gz
+		https://github.com/projg2/bashcomp2/releases/download/v${BASHCOMP_P#*-}/${BASHCOMP_P}.tar.gz
 	)
 "
 
