@@ -29,7 +29,7 @@ RDEPEND="
 	sys-apps/miscfiles
 	!!net-fs/mc
 "
-DEPEND="
+BDEPEND="
 	test? (
 		${RDEPEND}
 		$(python_gen_any_dep '
