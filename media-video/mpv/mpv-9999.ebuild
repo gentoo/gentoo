@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
 PYTHON_COMPAT=( python3_{9..11} )
-inherit edo flag-o-matic lua-single meson optfeature pax-utils python-single-r1 xdg
+inherit flag-o-matic lua-single meson optfeature pax-utils python-single-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -241,29 +241,6 @@ src_configure() {
 	)
 
 	meson_src_configure
-}
-
-src_test() {
-	# https://github.com/mpv-player/mpv/blob/master/DOCS/man/options.rst#debugging
-	local tests=($("${BUILD_DIR}"/mpv --no-config --unittest=help | tail -n +2; assert))
-	(( ${#tests[@]} )) || die "failed to gather any tests"
-
-	local skip=(
-		all-simple
-
-		# fails on non-issue minor inconsistencies (bug #888639)
-		img_format
-		repack_sws
-	)
-
-	local test
-	for test in "${tests[@]}"; do
-		[[ ${test} == @($(IFS='|'; echo "${skip[*]}")) ]] ||
-			edo "${BUILD_DIR}"/mpv -v --no-config --unittest="${test}"
-	done
-
-	# currently only does basic libmpv testing, do in addition to --unittest
-	meson_src_test
 }
 
 src_install() {
