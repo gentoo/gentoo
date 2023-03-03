@@ -17,4 +17,7 @@ It has however some limitations:
 
 It is the successor of Pyinsane2 but shares no code with it.
   </longdescription>
+  <upstream>
+    <remote-id type="gnome-gitlab">World/OpenPaperwork/libinsane</remote-id>
+  </upstream>
 </pkgmetadata>
