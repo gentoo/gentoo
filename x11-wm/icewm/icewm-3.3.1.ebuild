@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -63,7 +63,7 @@ RDEPEND="
 		)
 		!imlib? (
 			media-libs/libpng:0=
-			media-libs/libjpeg-turbo
+			media-libs/libjpeg-turbo:=
 		)
 	)
 	xinerama? ( x11-libs/libXinerama )
@@ -131,11 +131,6 @@ src_configure() {
 	fi
 
 	econf "${myconf[@]}"
-
-	sed \
-		-e "s:/icewm-\$(VERSION)::" \
-		-e "s:ungif:gif:" \
-		-i src/Makefile || die
 }
 
 src_install() {
