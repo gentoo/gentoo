@@ -64,8 +64,8 @@ strip_completions() {
 }
 
 python_check_deps() {
-	has_version "dev-python/pexpect[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/pexpect[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
