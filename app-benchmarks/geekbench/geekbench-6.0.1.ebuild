@@ -3,13 +3,11 @@
 
 EAPI=8
 
-EGIT_COMMIT="k9ea2vqm"
-
 DESCRIPTION="A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows"
 HOMEPAGE="https://www.geekbench.com/"
 SRC_URI="
-	amd64? ( https://cdn.geekbench.com/${EGIT_COMMIT}/Geekbench-${PV}-Linux.tar.gz )
-	arm64? ( https://cdn.geekbench.com/${EGIT_COMMIT}/Geekbench-${PV}-LinuxARMPreview.tar.gz )
+	amd64? ( https://cdn.geekbench.com/Geekbench-${PV}-Linux.tar.gz )
+	arm64? ( https://cdn.geekbench.com/Geekbench-${PV}-LinuxARMPreview.tar.gz )
 "
 S="${WORKDIR}"
 
