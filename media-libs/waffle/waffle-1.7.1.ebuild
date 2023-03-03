@@ -58,8 +58,17 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	meson_src_install
+}
 
-	! use doc && rm -rf \
-		"${D}"/usr/share/doc/waffle1 \
-		"${D}"/usr/share/man/man{3,7}
+multilib_src_install_all() {
+	einstalldocs
+
+	rm -r \
+		"${ED}"/usr/share/doc/${P} \
+		"${ED}"/usr/share/doc/waffle1/release-notes || die
+	mv "${ED}"/usr/share/doc/{waffle1,${P}} || die
+	if ! use doc; then
+		rm -rf \
+			"${ED}"/usr/share/man/man{3,7} || die
+	fi
 }
