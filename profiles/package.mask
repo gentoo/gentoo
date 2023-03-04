@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolić <jsmolic@gentoo.org> (2023-03-04)
+# Depends on deprecated dev-python/nose, no python3.11
+# support, unmaintained upstream. Bugs #896468, #878685,
+# #865269, #825062
+# Removal on 2023-04-04.
+app-admin/gixy
+
 # Matt Turner <mattst88@gentoo.org> (2023-03-04)
 # Test applications that don't really have any business being packaged.
 # Removal on 2023-04-04.
