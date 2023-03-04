@@ -2,11 +2,11 @@ This removes ldflag -L"/usr/lib" and -Wl,-rpath=/usr/lib:/usr/lib which
 causes `ld: skipping incompatible /usr/lib/libm.so when searching for -lm`
 Reference: https://github.com/justxi/rocm/issues/8#issuecomment-1166193820
 ===================================================================
-Index: HIP-rocm-5.3.3/bin/hipcc.pl
+Index: HIP-rocm-5.4.3/bin/hipcc.pl
 ===================================================================
---- HIP-rocm-5.3.3.orig/bin/hipcc.pl
-+++ HIP-rocm-5.3.3/bin/hipcc.pl
-@@ -711,9 +711,9 @@ if ($HIP_PLATFORM eq "amd") {
+--- HIP-rocm-5.4.3.orig/bin/hipcc.pl
++++ HIP-rocm-5.4.3/bin/hipcc.pl
+@@ -724,9 +724,9 @@ if ($HIP_PLATFORM eq "amd") {
  
      if (not $isWindows  and not $compileOnly) {
        if ($linkType eq 0) {
@@ -14,7 +14,7 @@ Index: HIP-rocm-5.3.3/bin/hipcc.pl
 +        $toolArgs = " -lamdhip64 -lhsa-runtime64 -ldl -lnuma " . ${toolArgs};
        } else {
 -        $toolArgs = ${toolArgs} . " -Wl,-rpath=$HIP_LIB_PATH:$ROCM_PATH/lib -lamdhip64 ";
-+        $toolArgs = ${toolArgs} . " -Wl,--enable-new-dtags -lamdhip64 ";
++        $toolArgs = ${toolArgs} . " -lamdhip64 ";
        }
        # To support __fp16 and _Float16, explicitly link with compiler-rt
        $HIP_CLANG_BUILTIN_LIB="$HIP_CLANG_PATH/../lib/clang/$HIP_CLANG_VERSION/lib/$HIP_CLANG_TARGET/libclang_rt.builtins.a";
