@@ -122,6 +122,7 @@ BDEPEND="
 	nls? ( sys-devel/gettext )"
 IDEPEND=">=app-eselect/eselect-wine-2"
 
+QA_CONFIG_IMPL_DECL_SKIP=( res_getservers )
 QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
 
 PATCHES=(
