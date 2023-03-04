@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="BSD rpi-eeprom"
 SLOT="0"
-KEYWORDS="~arm ~arm64"
+KEYWORDS="~arm arm64"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="sys-apps/help2man"
