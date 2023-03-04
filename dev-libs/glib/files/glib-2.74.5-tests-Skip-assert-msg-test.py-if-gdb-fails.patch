@@ -1,0 +1,33 @@
+From 19a8df9d8bff279a55b0fa3bb7ba4fbf7fcbefa8 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Thu, 2 Mar 2023 00:13:22 -0500
+Subject: [PATCH] tests: Skip assert-msg-test.py if gdb fails
+
+Similar to commit 6e44151bf74d, skip the test if gdb is unable to read
+/proc/PID/mem, which gdb does as a fallback if ptrace is unavailable.
+
+This allows the test to skip when run under Gentoo's sandbox.
+---
+ glib/tests/assert-msg-test.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/glib/tests/assert-msg-test.py b/glib/tests/assert-msg-test.py
+index 4936fa083..33aa2249e 100755
+--- a/glib/tests/assert-msg-test.py
++++ b/glib/tests/assert-msg-test.py
+@@ -158,9 +158,9 @@ class TestAssertMessage(unittest.TestCase):
+ 
+             # Some CI environments disable ptrace (as they’re running in a
+             # container). If so, skip the test as there’s nothing we can do.
+-            if (
+-                result.info.returncode != 0
+-                and "ptrace: Operation not permitted" in result.err
++            if result.info.returncode != 0 and (
++                "ptrace: Operation not permitted" in result.err
++                or "warning: opening /proc/PID/mem file for lwp" in result.err
+             ):
+                 self.skipTest("GDB is not functional due to ptrace being disabled")
+ 
+-- 
+2.39.2
+
