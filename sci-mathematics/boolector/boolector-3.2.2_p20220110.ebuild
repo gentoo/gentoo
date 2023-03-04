@@ -3,7 +3,8 @@
 
 EAPI=8
 
-H=13a8a06d561041cafcaf5458e404c1ec354b2841
+[[ ${PV} == *_p20220110 ]] && COMMIT=13a8a06d561041cafcaf5458e404c1ec354b2841
+
 PYTHON_COMPAT=( python3_{9..11} )
 
 inherit python-single-r1 cmake
@@ -12,13 +13,13 @@ DESCRIPTION="Fast SMT solver for bit-vectors, arrays and uninterpreted functions
 HOMEPAGE="https://boolector.github.io/
 	https://github.com/Boolector/boolector/"
 
-if [[ "${PV}" == *9999* ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Boolector/${PN}.git"
 else
-	SRC_URI="https://github.com/Boolector/${PN}/archive/${H}.tar.gz
+	SRC_URI="https://github.com/Boolector/${PN}/archive/${COMMIT}.tar.gz
 		-> ${P}.tar.gz"
-	S="${WORKDIR}"/${PN}-${H}
+	S="${WORKDIR}"/${PN}-${COMMIT}
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -47,7 +48,7 @@ pkg_setup() {
 }
 
 src_configure() {
-	local mycmakeargs=(
+	local -a mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-DBtor2Tools_LIBRARIES=/usr/$(get_libdir)/libbtor2parser.so
 		-DUSE_PYTHON2=OFF
