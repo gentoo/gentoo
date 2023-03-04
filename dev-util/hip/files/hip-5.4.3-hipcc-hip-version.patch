@@ -1,0 +1,40 @@
+Edit from:
+https://salsa.debian.org/rocm-team/rocm-hipamd/-/blob/759b0773bd848ff9471fa8cdecd9ee21010bc29c/debian/patches/0013-hipcc-hip-version.patch
+`--hip-version` is required for correclty including __clang_hip_runtime_wrapper.h
+=================================================================================
+Description: enforce --hip-version option within hipcc call.
+ This change is needed since the normal mechanism in ROCm relies on
+ reading a .hipVersion hidden configuration file which has no proper
+ equivalent in a FHS compliant tree, as of ROCm 5.0.
+Author: Cordell Bloor <cgmb-deb@slerp.xyz>
+Bug: https://github.com/ROCm-Developer-Tools/HIP/pull/2937
+Forwarded: not-needed
+Reviewed-by: Étienne Mollier <emollier@debian.org>
+Last-Update: 2022-07-04
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/bin/hipcc.pl
++++ b/bin/hipcc.pl
+@@ -105,6 +105,9 @@
+ $HIP_VERSION    =   $hipvars::HIP_VERSION;
+ $HSA_PATH       =   $hipvars::HSA_PATH;
+ $HIP_ROCCLR_HOME =   $hipvars::HIP_ROCCLR_HOME;
++$HIP_VERSION_MAJOR = $hipvars::HIP_VERSION_MAJOR;
++$HIP_VERSION_MINOR = $hipvars::HIP_VERSION_MINOR;
++$HIP_VERSION_PATCH = $hipvars::HIP_VERSION_PATCH;
+ 
+ if ($HIP_PLATFORM eq "amd") {
+   # If using ROCclr runtime, need to find HIP_ROCCLR_HOME
+@@ -205,6 +208,12 @@
+         $HIPCFLAGS .= " -isystem $HSA_PATH/include";
+     }
+ 
++    # Gentoo: there is no FHS compliant location for .hipVersion where clang will still be
++    # able to find it, so .hipVersion has been omitted and the hip version is passed explicitly
++    $HIPCXXFLAGS .= " --hip-version=$HIP_VERSION_MAJOR.$HIP_VERSION_MINOR.$HIP_VERSION_PATCH";
++    $HIPCFLAGS .= " --hip-version=$HIP_VERSION_MAJOR.$HIP_VERSION_MINOR.$HIP_VERSION_PATCH";
++    $HIPLDFLAGS .= " --hip-version=$HIP_VERSION_MAJOR.$HIP_VERSION_MINOR.$HIP_VERSION_PATCH";
++
+ } elsif ($HIP_PLATFORM eq "nvidia") {
+     $CUDA_PATH=$ENV{'CUDA_PATH'} // '/usr/local/cuda';
+     $HIP_INCLUDE_PATH = "$HIP_PATH/include";
