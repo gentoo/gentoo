@@ -1,0 +1,36 @@
+
+From https://github.com/xdp-project/xdp-tools/commit/a7df567634af77381832a2212c5f5099b07734f3
+
+From a7df567634af77381832a2212c5f5099b07734f3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Toke=20H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
+Date: Sat, 4 Mar 2023 20:07:39 +0100
+Subject: [PATCH] configure: Fix function detection for btf__type_cnt()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The configure check for btf__type_cnt() swapped two arguments in the
+check_libbpf_function() call in the configure script, leading to the check
+failing if LIBBPF_CFLAGS is non-empty. Make sure the arguments are in the
+right order, and also pass a proper NULL parameter in the check instead of
+a 0.
+
+Reported-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+Signed-off-by: Toke Høiland-Jørgensen <toke@redhat.com>
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index 016c5bbd..62c2f883 100755
+--- a/configure
++++ b/configure
+@@ -272,7 +272,7 @@ check_libbpf_functions()
+ 
+     check_libbpf_function "perf_buffer__consume" "(NULL)" "" "$LIBBPF_CFLAGS" "$LIBBPF_LDLIBS"
+     check_libbpf_function "btf__load_from_kernel_by_id" "(0)" "" "$LIBBPF_CFLAGS" "$LIBBPF_LDLIBS"
+-    check_libbpf_function "btf__type_cnt" "(0)" "$LIBBPF_CFLAGS" "" "$LIBBPF_LDLIBS"
++    check_libbpf_function "btf__type_cnt" "(NULL)" "" "$LIBBPF_CFLAGS" "$LIBBPF_LDLIBS"
+     check_libbpf_function "bpf_object__next_map" "(NULL, NULL)" "" "$LIBBPF_CFLAGS" "$LIBBPF_LDLIBS"
+     check_libbpf_function "bpf_object__next_program" "(NULL, NULL)" "" "$LIBBPF_CFLAGS" "$LIBBPF_LDLIBS"
+     check_libbpf_function "bpf_program__insn_cnt" "(NULL)" "" "$LIBBPF_CFLAGS" "$LIBBPF_LDLIBS"
