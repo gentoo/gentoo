@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="gtk selinux systemd"
 
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/glib:2
 	>=app-emulation/spice-protocol-0.14.0
 	media-libs/alsa-lib
@@ -27,7 +27,9 @@ DEPEND="
 	x11-libs/libXinerama
 	gtk? ( x11-libs/gtk+:3 )
 	systemd? ( sys-apps/systemd )"
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	x11-base/xorg-proto"
+RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-vdagent )"
 BDEPEND="virtual/pkgconfig"
 
