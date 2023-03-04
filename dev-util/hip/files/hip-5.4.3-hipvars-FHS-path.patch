@@ -1,0 +1,23 @@
+llvm/clang and cuda path need to be corrected according to Gentoo locations,
+and llvm/clang path should be determined by ebuild
+===================================================================
+--- HIP-rocm-5.4.3.orig/bin/hipvars.pm
++++ HIP-rocm-5.4.3/bin/hipvars.pm
+@@ -81,14 +81,14 @@ if (-e "$HIP_PATH/../bin/rocm_agent_enum
+ } else {
+     $ROCM_PATH=$ENV{'ROCM_PATH'} // "/opt/rocm";
+ }
+-$CUDA_PATH=$ENV{'CUDA_PATH'} // '/usr/local/cuda';
+-$HSA_PATH=$ENV{'HSA_PATH'} // "$ROCM_PATH/hsa";
++$CUDA_PATH=$ENV{'CUDA_PATH'} // '/opt/cuda';
++$HSA_PATH=$ENV{'HSA_PATH'} // "$ROCM_PATH";
+ 
+ # Windows has a different structure, all binaries are inside hip/bin
+ if ($isWindows) {
+     $HIP_CLANG_PATH=$ENV{'HIP_CLANG_PATH'} // "$HIP_PATH/bin";
+ } else {
+-    $HIP_CLANG_PATH=$ENV{'HIP_CLANG_PATH'} // "$ROCM_PATH/llvm/bin";
++    $HIP_CLANG_PATH=$ENV{'HIP_CLANG_PATH'} // "@CLANG_PATH@";
+ }
+ # HIP_ROCCLR_HOME is used by Windows builds
+ $HIP_ROCCLR_HOME=$ENV{'HIP_ROCCLR_HOME'};
