@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2023-03-04)
+# Test applications that don't really have any business being packaged.
+# Removal on 2023-04-04.
+x11-apps/xdbedizzy
+x11-apps/xf86dga
+
+# Matt Turner <mattst88@gentoo.org> (2023-03-04)
 # Long deprecated, GNOME 2-era packages.
 # Removal on 2023-04-04. Bug #873841
 gnome-base/gconf
