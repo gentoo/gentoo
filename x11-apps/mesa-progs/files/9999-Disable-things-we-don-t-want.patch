@@ -1,4 +1,4 @@
-From f687e1297c9a26b219fc8b5a1faa6c1e3d1d6d16 Mon Sep 17 00:00:00 2001
+From 04603e5b169edbbe9a6d7dc6a00906c1382b141a Mon Sep 17 00:00:00 2001
 From: Matt Turner <mattst88@gmail.com>
 Date: Fri, 27 Jan 2023 06:40:05 -0800
 Subject: [PATCH] Disable things we don't want
@@ -16,7 +16,7 @@ v3: Enable most of libutil to fix undefined references in es2gears
  7 files changed, 4 insertions(+), 94 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index 6ad6ea7a..1c46da4f 100644
+index 29e5b41e..93a56b5f 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -87,16 +87,7 @@ endif
@@ -35,9 +35,9 @@ index 6ad6ea7a..1c46da4f 100644
 -endif
 +dep_glu = disabler()
  
- # GBM is needed for EGL on KMS
- dep_gbm = dependency('gbm', required : false, disabler : true)
-@@ -135,6 +126,8 @@ else
+ dep_glx = dependency('glx', required: false, disabler : true)
+ if not dep_glx.found() and host_machine.system() == 'darwin'
+@@ -144,6 +135,8 @@ else
    dep_glut = dependency('', required : false)
  endif
  
@@ -47,7 +47,7 @@ index 6ad6ea7a..1c46da4f 100644
                                          dependencies: [dep_glut],
                                          prefix : '#include <GL/freeglut.h>')
 diff --git a/src/egl/opengl/meson.build b/src/egl/opengl/meson.build
-index 434adf21..e4b0c83a 100644
+index a613eb43..1c91ae1b 100644
 --- a/src/egl/opengl/meson.build
 +++ b/src/egl/opengl/meson.build
 @@ -25,38 +25,12 @@ executable(
@@ -90,7 +90,7 @@ index 434adf21..e4b0c83a 100644
  executable(
    'eglinfo', 'eglinfo.c',
 @@ -64,10 +38,3 @@ executable(
-   include_directories: [inc_glad, '../../xdemos'],
+   include_directories: [inc_glad],
    install: true
  )
 -
@@ -142,13 +142,13 @@ index b2ff9c8f..f482df5e 100644
  
  #ifndef GLAPIENTRY
 diff --git a/src/util/meson.build b/src/util/meson.build
-index ddcd4834..72e9480d 100644
+index b4fe614f..e56b456e 100644
 --- a/src/util/meson.build
 +++ b/src/util/meson.build
-@@ -21,17 +21,12 @@
- inc_util = include_directories('.')
+@@ -22,17 +22,12 @@ inc_util = include_directories('.')
  
  files_libutil = files(
+   'glinfo_common.c',
 -  'readtex.c',
    'showbuffer.c',
    'trackball.c',
@@ -165,11 +165,11 @@ index ddcd4834..72e9480d 100644
  _libutil = static_library(
    'util',
 diff --git a/src/xdemos/meson.build b/src/xdemos/meson.build
-index d6d5d5d5..ce26699f 100644
+index a569fde5..40007616 100644
 --- a/src/xdemos/meson.build
 +++ b/src/xdemos/meson.build
 @@ -21,25 +21,7 @@
- glx_deps = [dep_gl, dep_x11, dep_m]
+ glx_deps = [dep_gl, dep_glx, dep_x11, dep_m]
  
  progs = [
 -  'glsync',
