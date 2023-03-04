@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cdda debug +gstreamer ipod moodbar mtp pulseaudio +udisks vlc"
+IUSE="cdda debug +gstreamer icu ipod moodbar mtp pulseaudio +udisks vlc"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -47,6 +47,7 @@ COMMON_DEPEND="
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 	)
+	icu? ( dev-libs/icu:= )
 	ipod? ( media-libs/libgpod )
 	moodbar? ( sci-libs/fftw:3.0 )
 	mtp? ( media-libs/libmtp )
@@ -92,6 +93,7 @@ src_configure() {
 		-DLINGUAS="$(plocale_get_locales)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DENABLE_GSTREAMER="$(usex gstreamer)"
+		-DUSE_ICU="$(usex icu)"
 		-DENABLE_LIBGPOD="$(usex ipod)"
 		-DENABLE_LIBMTP="$(usex mtp)"
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
