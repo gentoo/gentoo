@@ -15,6 +15,6 @@ S="${WORKDIR}"/${P/-/_}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="dev-python/urllib3[${PYTHON_USEDEP}]"
