@@ -18,7 +18,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/hhatto/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	inherit pypi
 	KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
