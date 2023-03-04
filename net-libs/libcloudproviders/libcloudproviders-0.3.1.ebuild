@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome.org meson vala
+inherit gnome.org meson-multilib vala
 
 DESCRIPTION="DBus API that allows cloud storage sync clients to expose their services"
 HOMEPAGE="https://gitlab.gnome.org/World/libcloudproviders"
@@ -15,7 +15,8 @@ REQUIRED_USE="vala? ( introspection )"
 
 KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
-DEPEND=">=dev-libs/glib-2.51.2:2
+DEPEND="
+	>=dev-libs/glib-2.51.2:2[${MULTILIB_USEDEP}]
 	introspection? ( dev-libs/gobject-introspection )"
 RDEPEND="${DEPEND}"
 BDEPEND="
@@ -31,16 +32,16 @@ src_prepare() {
 	use vala && vala_setup
 }
 
-src_configure() {
+multilib_src_configure() {
 	local emesonargs=(
-		$(meson_use gtk-doc enable-gtk-doc)
+		$(meson_native_use_bool gtk-doc enable-gtk-doc)
 		-Dinstalled-tests=false
-		$(meson_use introspection)
-		$(meson_use vala vapigen)
+		$(meson_native_use_bool introspection)
+		$(meson_native_use_bool vala vapigen)
 	)
 	meson_src_configure
 }
 
-src_install() {
+multilib_src_install() {
 	meson_src_install
 }
