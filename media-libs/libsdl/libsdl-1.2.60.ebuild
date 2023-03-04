@@ -11,7 +11,7 @@ SRC_URI="https://github.com/libsdl-org/sdl12-compat/archive/refs/tags/release-${
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 # IUSE dropped from real SDL1: aalib custom-cflags dga fbcon libcaca nas oss pulseaudio static-libs tslib xinerama xv
 IUSE="alsa +joystick opengl +sound test +video X"
 REQUIRED_USE="test? ( joystick opengl sound video )"
