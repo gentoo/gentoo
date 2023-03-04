@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Daniel Pielmeier <billie@gentoo.org> (2023-03-04)
+# For docs, app-text/pandoc is required. For details see:
+# Bug #737612
+app-admin/conky doc
+
 # Arsen Arsenović <arsen@gentoo.org> (2023-01-27)
 # Pulls in large amounts of unstable dependencies, blocking
 # stabilization of other packages.
