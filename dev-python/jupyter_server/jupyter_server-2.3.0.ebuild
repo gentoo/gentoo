@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~sparc"
+KEYWORDS="~amd64 ~arm ~hppa ~sparc"
 
 RDEPEND="
 	>=dev-python/anyio-3.1.0[${PYTHON_USEDEP}]
