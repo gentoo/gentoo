@@ -13,7 +13,7 @@ DESCRIPTION="Module for click to enable registering CLI commands via setuptools 
 HOMEPAGE="https://github.com/click-contrib/click-plugins"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 SLOT="0"
 
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]"
