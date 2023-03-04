@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Hans de Graaff <graaff@gentoo.org> (2023-03-04)
+# The JIT compiler in ruby requires rust
+dev-lang/ruby jit
+
 # Sam James <sam@gentoo.org> (2022-12-26)
 # Needs dev-python/mkdocs-redirects->dev-python/twine which is masked on wd40
 dev-util/gef doc
