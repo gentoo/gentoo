@@ -25,7 +25,7 @@ distutils_enable_tests unittest
 
 src_prepare() {
 	# patch cflag manipulations out
-	sed -i -e 's:global_flags[.]append.*:pass:' setup.py || die
+	sed -i -e 's:global_compile_args[.]append.*:pass:' setup.py || die
 	distutils-r1_src_prepare
 }
 
