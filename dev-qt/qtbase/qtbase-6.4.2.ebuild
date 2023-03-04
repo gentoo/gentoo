@@ -48,7 +48,7 @@ DEPEND="
 	dev-libs/double-conversion:=
 	dev-libs/glib:2
 	dev-libs/libpcre2:=[pcre16,unicode]
-	dev-util/gtk-update-icon-cache
+	gui? ( dev-util/gtk-update-icon-cache )
 	media-libs/fontconfig
 	>=media-libs/freetype-2.6.1:2
 	>=media-libs/harfbuzz-1.6.0:=
@@ -58,8 +58,10 @@ DEPEND="
 	brotli? ( app-arch/brotli:= )
 	evdev? ( sys-libs/mtdev )
 	freetds? ( dev-db/freetds )
-	gles2-only? ( media-libs/libglvnd )
-	!gles2-only? ( media-libs/libglvnd[X] )
+	opengl? (
+		gles2-only? ( media-libs/libglvnd )
+		!gles2-only? ( media-libs/libglvnd[X] )
+	)
 	gssapi? ( virtual/krb5 )
 	gtk? (
 		x11-libs/gtk+:3
