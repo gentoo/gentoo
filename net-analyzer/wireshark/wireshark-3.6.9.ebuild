@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{9..10} )
 
 inherit fcaps flag-o-matic lua-single python-any-r1 qmake-utils xdg cmake
 
-DESCRIPTION="A network protocol analyzer formerly known as ethereal"
+DESCRIPTION="Network protocol analyzer (sniffer)"
 HOMEPAGE="https://www.wireshark.org/"
 
 if [[ ${PV} == *9999* ]] ; then
