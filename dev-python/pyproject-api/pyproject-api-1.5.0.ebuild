@@ -40,3 +40,8 @@ BDEPEND="
 distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+EPYTEST_DESELECT=(
+	# requires Python 2 installed
+	tests/test_frontend.py::test_can_build_on_python_2
+)
