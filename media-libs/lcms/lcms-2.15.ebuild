@@ -24,6 +24,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.15-meson-big-endian.patch
+	"${FILESDIR}"/${PN}-2.15-meson-samples.patch
+	"${FILESDIR}"/${PN}-2.15-meson-psicc-man-page.patch
+)
+
 multilib_src_configure() {
 	local emesonargs=(
 		-Ddefault_library=$(multilib_native_usex static-libs both shared)
