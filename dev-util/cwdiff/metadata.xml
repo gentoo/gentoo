@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>junghans@gentoo.org</email>
-		<name>Christoph Junghans</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="mercurial">install hg wdiff alias for <pkg>dev-vcs/mercurial</pkg></flag>
 	</use>
