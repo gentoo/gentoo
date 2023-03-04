@@ -22,7 +22,6 @@ RDEPEND="
 	app-arch/snappy:=
 	app-arch/zstd:=
 	dev-libs/libzip:=
-	dev-util/glslang:0/1
 	media-libs/glew:=
 	media-libs/libpng:=
 	media-libs/libsdl2[joystick]
@@ -52,13 +51,14 @@ pkg_setup() {
 
 src_configure() {
 	local -a mycmakeargs=(
+		-DBUILD_SHARED_LIBS=OFF
 		-DCMAKE_SKIP_RPATH=ON
 		-DHEADLESS=false
-		-DUSE_DISCORD=$(usex discord)
 		-DUSE_SYSTEM_FFMPEG=ON
 		-DUSE_SYSTEM_LIBZIP=ON
 		-DUSE_SYSTEM_SNAPPY=ON
 		-DUSE_SYSTEM_ZSTD=ON
+		-DUSE_DISCORD=$(usex discord)
 		-DUSING_QT_UI=$(usex qt5)
 	)
 	cmake_src_configure
