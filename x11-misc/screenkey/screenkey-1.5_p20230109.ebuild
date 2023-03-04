@@ -16,10 +16,10 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.com/screenkey/${PN}.git"
 else
 	if [[ ${PV} == *_p20230109 ]] ; then
-		H=7bdba66574244061c6e1934c4f204d02d570f182
-		SRC_URI="https://gitlab.com/${PN}/${PN}/-/archive/${H}/${PN}-${H}.tar.bz2
+		COMMIT=7bdba66574244061c6e1934c4f204d02d570f182
+		SRC_URI="https://gitlab.com/${PN}/${PN}/-/archive/${COMMIT}/${PN}-${COMMIT}.tar.bz2
 			-> ${P}.tar.bz2"
-		S="${WORKDIR}"/${PN}-${H}
+		S="${WORKDIR}"/${PN}-${COMMIT}
 	else
 		SRC_URI="https://gitlab.com/${PN}/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2
 			-> ${P}.tar.bz2"
