@@ -53,7 +53,7 @@ DOCS_CONFIG_NAME=doxy.cfg
 
 pkg_setup() {
 	# Ignore QA FLAGS check for library compiled from assembly sources
-	QA_FLAGS_IGNORED="/usr/$(get_libdir)/libhiprtc-builtins.so.$(ver_cut 1-2)"
+	QA_FLAGS_IGNORED="/usr/$(get_libdir)/libhiprtc-builtins.so.*"
 }
 
 src_prepare() {
