@@ -1,0 +1,15 @@
+explicitly specify `--rocm-path=/usr` because clang does not list 
+it among the default paths
+===================================================================
+Index: HIP-rocm-9999/bin/hipcc.pl
+===================================================================
+--- HIP-rocm-9999.orig/bin/hipcc.pl
++++ HIP-rocm-9999/bin/hipcc.pl
+@@ -553,6 +553,7 @@ if ($HIP_PLATFORM eq "amd") {
+ 
+     if ($hasHIP) {
+         if (defined $DEVICE_LIB_PATH) {
++            $HIPCXXFLAGS .= " --rocm-path=\"$ROCM_PATH\"";
+             $HIPCXXFLAGS .= " --hip-device-lib-path=\"$DEVICE_LIB_PATH\"";
+         }
+     }
