@@ -1,0 +1,15 @@
+Add an option to determine whether to configure and build tests or not, which
+saves cmake configuration time when not testing
+===================================================================
+--- hipamd-rocm-5.4.3.orig/CMakeLists.txt
++++ hipamd-rocm-5.4.3/CMakeLists.txt
+@@ -440,7 +440,8 @@ endif()
+ # Testing steps
+ #############################
+ # HIT is not compatible with Windows
+-if(NOT WIN32)
++option(BUILD_TESTS "Build test binaries" ON)
++if(NOT WIN32 AND BUILD_TESTS)
+ set(HIP_ROOT_DIR ${CMAKE_CURRENT_BINARY_DIR})
+ set(HIP_SRC_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+ if(HIP_PLATFORM STREQUAL "nvidia")

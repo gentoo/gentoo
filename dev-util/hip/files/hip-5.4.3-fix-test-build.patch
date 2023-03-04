@@ -1,0 +1,23 @@
+hip tests are designed to build after installation. Append `-I` option so
+compiler can find the correct header before install.
+===================================================================
+--- HIP.orig/tests/hit/HIT.cmake
++++ HIP/tests/hit/HIT.cmake
+@@ -71,7 +71,7 @@ macro(PARSE_BUILD_COMMAND _target _sourc
+     set(${_target})
+     set(${_sources})
+     if(DEFINED OFFLOAD_ARCH_STR)
+-        set(${_hipcc_options} "${OFFLOAD_ARCH_STR}")
++		set(${_hipcc_options} "${OFFLOAD_ARCH_STR}" "-I${PROJECT_BINARY_DIR}/include")
+     else()
+         set(${_hipcc_options})
+     endif()
+@@ -413,7 +413,7 @@ macro(HIT_ADD_FILES _config _dir _label
+                         set_target_properties(${target} PROPERTIES OUTPUT_NAME ${_target_r} RUNTIME_OUTPUT_DIRECTORY "." LINK_DEPENDS "${HIP_LIB_FILES}" PREFIX "" SUFFIX "")
+                 else()
+                     # message(STATUS "add_custom_target*: target= ${target}  _buildcmd= ${_buildcmd}")
+-                    add_custom_target(${target} COMMAND sh -c "${_buildcmd} -L${CMAKE_CURRENT_SOURCE_DIR}/build/lib -isystem ${CMAKE_CURRENT_SOURCE_DIR}/include")
++                    add_custom_target(${target} COMMAND sh -c "${_buildcmd} -L${CMAKE_CURRENT_SOURCE_DIR}/build/lib -isystem ${CMAKE_CURRENT_SOURCE_DIR}/include -I${PROJECT_BINARY_DIR}/include")
+                 endif()
+                 add_dependencies(${_parent} ${target})
+                 foreach(_dependency ${_depends})

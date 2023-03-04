@@ -21,7 +21,8 @@ KEYWORDS="~amd64"
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 
-IUSE="debug"
+IUSE="debug test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-util/rocminfo-5
@@ -35,11 +36,11 @@ RDEPEND="${DEPEND}
 	>=dev-libs/roct-thunk-interface-5"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.0.1-DisableTest.patch"
 	"${FILESDIR}/${PN}-5.0.1-hip_vector_types.patch"
 	"${FILESDIR}/${PN}-5.0.2-set-build-id.patch"
 	"${FILESDIR}/${PN}-5.3.3-remove-cmake-doxygen-commands.patch"
 	"${FILESDIR}/${PN}-5.3.3-disable-Werror.patch"
+	"${FILESDIR}/${PN}-5.4.3-make-test-switchable.patch"
 	"${FILESDIR}/0001-SWDEV-352878-LLVM-pkg-search-directly-using-find_dep.patch"
 )
 
@@ -78,6 +79,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-5.4.3-clang-version.patch"
 	eapply "${FILESDIR}/${PN}-5.4.3-clang-include.patch"
 	eapply "${FILESDIR}/${PN}-5.4.3-hipcc-hip-version.patch"
+	eapply "${FILESDIR}/${PN}-5.4.3-fix-test-build.patch"
 	eapply "${FILESDIR}/0003-SWDEV-352878-Removed-relative-path-based-CLANG-inclu.patch"
 
 	# Setting HSA_PATH to "/usr" results in setting "-isystem /usr/include"
@@ -106,6 +108,10 @@ src_prepare() {
 	EOF
 	sed	-e "s,@CLANG_PATH@,${LLVM_PREFIX}/bin," -i bin/hipvars.pm || die
 
+	# Remove problematic test which leaks processes, see
+	# https://github.com/ROCm-Developer-Tools/HIP/issues/2457
+	rm tests/src/ipc/hipMultiProcIpcMem.cpp || die
+
 	pushd ${CLR_S} || die
 	eapply "${FILESDIR}/rocclr-5.3.3-gcc13.patch"
 }
@@ -132,6 +138,8 @@ src_configure() {
 		-DROCCLR_PATH=${CLR_S}
 		-DHIP_COMMON_DIR=${HIP_S}
 		-DAMD_OPENCL_PATH=${OCL_S}
+		-DBUILD_TESTS=$(usex test ON OFF)
+		-DHIP_CATCH_TEST=$(usex test ON OFF)
 	)
 
 	cmake_src_configure
@@ -140,6 +148,31 @@ src_configure() {
 src_compile() {
 	HIP_PATH=${HIP_S} docs_compile
 	cmake_src_compile
+	# Compile test binaries; when linking, `-lamdhip64` is used, thus need
+	# LIBRARY_PATH pointing to libamdhip64.so located at ${BUILD_DIR}/lib
+	use test && LIBRARY_PATH="${BUILD_DIR}/lib" cmake_src_compile build_tests
+}
+
+# Copied from rocm.eclass. This ebuild does not need amdgpu_targets
+# USE_EXPANDS, so it should not inherit rocm.eclass; it only uses the
+# check_amdgpu function in src_test. Rename it to check-amdgpu to avoid
+# pkgcheck warning.
+check-amdgpu() {
+	for device in /dev/kfd /dev/dri/render*; do
+		addwrite ${device}
+		if [[ ! -r ${device} || ! -w ${device} ]]; then
+			eerror "Cannot read or write ${device}!"
+			eerror "Make sure it is present and check the permission."
+			ewarn "By default render group have access to it. Check if portage user is in render group."
+			die "${device} inaccessible"
+		fi
+	done
+}
+
+src_test() {
+	check-amdgpu
+	# -j1 to avoid multi process on one GPU which causes coillision
+	MAKEOPTS="-j1" LD_LIBRARY_PATH="${BUILD_DIR}/lib" cmake_src_test
 }
 
 src_install() {
