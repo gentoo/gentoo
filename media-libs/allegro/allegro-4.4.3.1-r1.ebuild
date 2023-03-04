@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,9 +17,9 @@ IUSE="alsa doc fbcon jack jpeg opengl oss png svga vga vorbis X"
 RDEPEND="
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
-	jpeg? ( virtual/jpeg:0[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
-	svga? ( media-libs/svgalib[${MULTILIB_USEDEP}] )
+	svga? ( media-libs/svgalib )
 	vorbis? ( media-libs/libvorbis[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]
