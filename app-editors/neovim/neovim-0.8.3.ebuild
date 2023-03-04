@@ -62,7 +62,7 @@ RDEPEND="
 	${DEPEND}
 	app-eselect/eselect-vi
 "
-BDEPEND="
+BDEPEND+="
 	test? (
 		$(lua_gen_cond_dep 'dev-lua/busted[${LUA_USEDEP}]')
 	)
