@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <upstream>
+    <changelog>https://github.com/doublep/eldev/releases/</changelog>
+    <bugs-to>https://github.com/doublep/eldev/issues/</bugs-to>
+    <remote-id type="github">doublep/eldev</remote-id>
+  </upstream>
+  <longdescription>
+    Eldev (Elisp Development Tool) is an Emacs-based build tool, targeted
+    solely at Elisp projects. It is an alternative to Cask. Unlike Cask, Eldev
+    itself is fully written in Elisp and its configuration files are also Elisp
+    programs. If you are familiar with Java world, Cask can be seen as a
+    parallel to Maven — it uses project description, while Eldev is sort of a
+    parallel to Gradle — its configuration is a program on its own.
+  </longdescription>
+</pkgmetadata>
