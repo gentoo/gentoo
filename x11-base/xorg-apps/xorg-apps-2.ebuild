@@ -44,7 +44,6 @@ RDEPEND="
 	x11-apps/xcmsdb
 	x11-apps/xconsole
 	x11-apps/xcursorgen
-	x11-apps/xdbedizzy
 	x11-apps/xditview
 	x11-apps/xdm
 	x11-apps/xdpyinfo
@@ -52,7 +51,6 @@ RDEPEND="
 	x11-apps/xedit
 	x11-apps/xev
 	x11-apps/xeyes
-	x11-apps/xf86dga
 	x11-apps/xfd
 	x11-apps/xfontsel
 	x11-apps/xgamma
