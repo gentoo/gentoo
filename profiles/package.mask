@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2023-03-04)
+# Long deprecated, GNOME 2-era packages.
+# Removal on 2023-04-04. Bug #873841
+gnome-base/gconf
+gnome-extra/gconf-editor
+
 # Matt Turner <mattst88@gentoo.org> (2023-03-03)
 # No commits from maintainer in more than two years. Downloads are broken for
 # 18 months (bug #809551), depends on deprecated gconf (bug #873856)
