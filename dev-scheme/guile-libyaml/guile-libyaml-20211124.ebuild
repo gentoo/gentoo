@@ -1,14 +1,15 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-H=2bdacb72a65ab63264b2edc9dac9692df7ec9b3e
+[[ ${PV} == 20211124 ]] && COMMIT=2bdacb72a65ab63264b2edc9dac9692df7ec9b3e
 
 DESCRIPTION="Simple yaml module for Guile using the ffi-helper from nyacc"
 HOMEPAGE="https://github.com/mwette/guile-libyaml/"
-SRC_URI="https://github.com/mwette/${PN}/archive/${H}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${H}"
+SRC_URI="https://github.com/mwette/${PN}/archive/${COMMIT}.tar.gz
+	-> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="LGPL-3+"
 SLOT="0"
