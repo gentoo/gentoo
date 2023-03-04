@@ -1,0 +1,14 @@
+This fixes compilation errors
+https://github.com/ROCmSoftwarePlatform/rocFFT/pull/398
+=======================================================
+--- a/library/src/device/kernels/memory_gfx.h
++++ b/library/src/device/kernels/memory_gfx.h
+@@ -50,6 +50,8 @@
+ #define BUFFER_RESOURCE_3RD_DWORD -1
+ #endif
+ 
++#include <cstdint>
++
+ /// Controls AMD gfx arch cache operations
+ struct CacheOperation
+ {
