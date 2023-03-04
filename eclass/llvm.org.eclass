@@ -93,6 +93,9 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 				17.0.0_pre20230225)
 					EGIT_COMMIT=b0676fb0fb0a44a4a1c4ec1f0270fef1f1842817
 					;;
+				17.0.0_pre20230304)
+					EGIT_COMMIT=2708869801ae00f4681f6b2d9d69b25b3fce26b6
+					;;
 				*)
 					die "Unknown snapshot: ${PV}"
 					;;
