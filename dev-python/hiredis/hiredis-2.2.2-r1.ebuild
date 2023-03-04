@@ -3,12 +3,14 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517="setuptools"
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
+
 inherit distutils-r1
 
 DESCRIPTION="Python extension that wraps hiredis"
 HOMEPAGE="https://github.com/redis/hiredis-py/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/redis/hiredis-py/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -18,9 +20,18 @@ IUSE="system-libs"
 DEPEND="system-libs? ( >=dev-libs/hiredis-1.0.0:= )"
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}"/${PN}-py-${PV}
+
+distutils_enable_tests pytest
+
 src_prepare() {
 	use system-libs && PATCHES+=(
 		"${FILESDIR}"/${P}-system-libs.patch
 	)
 	default
+}
+
+python_test() {
+	cd tests
+	epytest --import-mode=append
 }
