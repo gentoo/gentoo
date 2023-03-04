@@ -298,11 +298,6 @@ dev-python/sphinxcontrib-blockdiag
 # Removal on 2023-03-03.  Bug #892854.
 dev-python/berkeleydb
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-02-01)
-# >=5.1 series uses vanilla llvm/clang instead of forked versions.
-# Removal on 2023-03-02
-dev-util/rocm-clang-ocl
-
 # Michał Górny <mgorny@gentoo.org> (2023-01-31)
 # No tests, no activity since Aug 2020, no reverse dependencies.
 # Removal on 2023-03-02.  Bug #892744.
