@@ -37,7 +37,7 @@ S="${WORKDIR}/VTK-${PV}"
 
 LICENSE="BSD LGPL-2"
 SLOT="0/${MY_PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 # TODO: Like to simplifiy these. Mostly the flags related to Groups.
 IUSE="all-modules boost cuda debug doc examples ffmpeg freetype gdal imaging
 	java las +logging mpi mysql odbc openmp openvdb pdal postgres python qt5
