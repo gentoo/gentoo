@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,11 @@ BDEPEND=">=sys-devel/clang-10.0.0"
 QA_PREBUILT="usr/lib/bpf/*.o"
 
 MAKEOPTS+=" V=1"
+
+PATCHES=(
+	"${FILESDIR}"/1.3.1-disable-stack-protector.patch
+	"${FILESDIR}"/1.3.1-fix-btf__type_cnt-detection.patch
+)
 
 src_configure() {
 	export PRODUCTION=1
