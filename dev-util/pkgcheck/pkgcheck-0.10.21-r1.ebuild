@@ -55,6 +55,10 @@ BDEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.10.21-fix-scm.patch"
+)
+
 SITEFILE="50${PN}-gentoo.el"
 
 distutils_enable_tests pytest

@@ -1,0 +1,37 @@
+diff --git a/src/pkgcheck/checks/python.py b/src/pkgcheck/checks/python.py
+index 291a56b4..19b87ef5 100644
+--- a/src/pkgcheck/checks/python.py
++++ b/src/pkgcheck/checks/python.py
+@@ -234,16 +234,16 @@ class PythonAnyMismatchedDepHasVersionCheck(results.VersionResult, results.Warni
+ 
+ 
+ class PythonMissingSCMDependency(results.VersionResult, results.Warning):
+-    """Package is missing BDEPEND on setuptools_scm or alike.
++    """Package is missing BDEPEND on setuptools-scm or alike.
+ 
+     Packages which define ``SETUPTOOLS_SCM_PRETEND_VERSION`` should BDEPEND
+-    on ``dev-python/setuptools_scm`` or a similar package [#]_.
++    on ``dev-python/setuptools-scm`` or a similar package [#]_.
+ 
+     .. [#] https://projects.gentoo.org/python/guide/distutils.html#setuptools-scm-flit-scm-hatch-vcs-and-snapshots
+     """
+ 
+     desc = (
+-        "defines SETUPTOOLS_SCM_PRETEND_VERSION but is missing BDEPEND on setuptools_scm or alike"
++        "defines SETUPTOOLS_SCM_PRETEND_VERSION but is missing BDEPEND on setuptools-scm or alike"
+     )
+ 
+ 
+@@ -291,8 +291,10 @@ class PythonCheck(Check):
+ 
+     setuptools_scm = frozenset(
+         {
+-            "dev-python/setuptools_scm",
+-            "dev-python/flit_scm",
++            "dev-python/setuptools-scm",
++            "dev-python/setuptools_scm",  # legacy old name
++            "dev-python/flit-scm",
++            "dev-python/flit_scm",  # legacy old name
+             "dev-python/hatch-vcs",
+         }
+     )
