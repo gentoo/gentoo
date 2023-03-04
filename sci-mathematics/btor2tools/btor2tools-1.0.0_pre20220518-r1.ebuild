@@ -3,20 +3,20 @@
 
 EAPI=8
 
-H=b8456dda4780789e882f5791eb486f295ade4da4
+[[ ${PV} == *_pre20220518 ]] && COMMIT=b8456dda4780789e882f5791eb486f295ade4da4
 
 inherit cmake
 
 DESCRIPTION="Generic parser and tools for the BTOR2 format"
 HOMEPAGE="https://github.com/Boolector/btor2tools/"
 
-if [[ "${PV}" == *9999* ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Boolector/${PN}.git"
 else
-	SRC_URI="https://github.com/Boolector/${PN}/archive/${H}.tar.gz
+	SRC_URI="https://github.com/Boolector/${PN}/archive/${COMMIT}.tar.gz
 		-> ${P}.tar.gz"
-	S="${WORKDIR}"/${PN}-${H}
+	S="${WORKDIR}"/${PN}-${COMMIT}
 	KEYWORDS="~amd64 ~x86"
 fi
 
