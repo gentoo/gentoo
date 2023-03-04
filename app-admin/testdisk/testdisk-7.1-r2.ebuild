@@ -11,7 +11,7 @@ SRC_URI="https://www.cgsecurity.org/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv x86"
 IUSE="ewf jpeg ntfs gui reiserfs static zlib"
 
 REQUIRED_USE="static? ( !gui )"
