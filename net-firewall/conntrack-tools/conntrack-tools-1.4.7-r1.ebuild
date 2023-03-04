@@ -13,7 +13,7 @@ SRC_URI="https://www.netfilter.org/projects/conntrack-tools/files/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ppc64 ~riscv x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ppc ppc64 ~riscv x86"
 IUSE="doc +cthelper +cttimeout systemd"
 
 RDEPEND="
