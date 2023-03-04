@@ -1,0 +1,21 @@
+https://git.sesse.net/?p=plocate;a=commitdiff;h=a81eb2f2369de18d2376e266b36d2f32fff7600f
+https://bugs.gentoo.org/899550
+
+From a81eb2f2369de18d2376e266b36d2f32fff7600f Mon Sep 17 00:00:00 2001
+From: "Steinar H. Gunderson" <steinar+git@gunderson.no>
+Date: Wed, 8 Feb 2023 22:46:51 +0100
+Subject: [PATCH] Add missing <inttypes.h> #include.
+
+Reported by sudhanshu goswami.
+--- a/updatedb.cpp
++++ b/updatedb.cpp
+@@ -39,6 +39,7 @@ any later version.
+ #include <fcntl.h>
+ #include <getopt.h>
+ #include <grp.h>
++#include <inttypes.h>
+ #include <iosfwd>
+ #include <math.h>
+ #include <memory>
+-- 
+2.39.2

@@ -26,6 +26,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.15-meson-use-feature-option-for-libiouring.patch
+	"${FILESDIR}"/${P}-missing-include.patch
 )
 
 pkg_setup() {
