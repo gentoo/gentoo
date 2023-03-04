@@ -6,7 +6,6 @@
     <name>Patrick Lauer</name>
   </maintainer>
   <use>
-    <flag name="clang">Use Clang to compile the MoarVM backend</flag>
     <flag name="moar">Use the MoarVM as backend</flag>
   </use>
 </pkgmetadata>
