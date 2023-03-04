@@ -12,7 +12,7 @@ S="${WORKDIR}"/${PN}-trayer-${PV}
 
 LICENSE="MIT GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	x11-libs/gdk-pixbuf:2
