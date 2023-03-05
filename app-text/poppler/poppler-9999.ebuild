@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake toolchain-funcs xdg-utils
+inherit cmake flag-o-matic toolchain-funcs xdg-utils
 
 if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
@@ -92,6 +92,8 @@ src_prepare() {
 
 src_configure() {
 	xdg_environment_reset
+	append-lfs-flags # bug #898506
+
 	local mycmakeargs=(
 		-DBUILD_GTK_TESTS=OFF
 		-DBUILD_QT5_TESTS=OFF
