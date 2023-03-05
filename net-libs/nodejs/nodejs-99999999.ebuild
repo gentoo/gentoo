@@ -48,10 +48,6 @@ BDEPEND="${PYTHON_DEPS}
 	pax-kernel? ( sys-apps/elfix )"
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-12.22.5-shared_c-ares_nameser_h.patch
-)
-
 # These are measured on a loong machine with -ggdb on, and only checked
 # if debugging flags are present in CFLAGS.
 #
