@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -147,8 +147,14 @@ src_install() {
 
 pkg_preinst() {
 	# move Info dir file to correct name
-	if [[ -d "${D}"/usr/share/info ]]; then
-		mv "${D}"/usr/share/info/emacs-${SLOT}/dir{.orig,} || die
+	local infodir="${ED}/usr/share/info/emacs-${SLOT}"
+	if [[ -f ${infodir}/dir.orig ]]; then
+		mv "${infodir}"/dir{.orig,} || die
+	elif [[ -d ${infodir} ]]; then
+		# this can happen when preinst is run twice, e.g. when
+		# installing a binpkg that was created with quickpkg #899648
+		ewarn "Unexpected \"dir\" file in ${infodir} - preinst run twice?"
+		[[ ${MERGE_TYPE} == binary && -f ${infodir}/dir ]] || die
 	fi
 }
 

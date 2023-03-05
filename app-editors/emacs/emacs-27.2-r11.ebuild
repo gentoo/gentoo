@@ -414,8 +414,14 @@ src_install() {
 
 pkg_preinst() {
 	# move Info dir file to correct name
-	if [[ -d ${ED}/usr/share/info ]]; then
-		mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{.orig,} || die
+	local infodir="${ED}/usr/share/info/${EMACS_SUFFIX}"
+	if [[ -f ${infodir}/dir.orig ]]; then
+		mv "${infodir}"/dir{.orig,} || die
+	elif [[ -d ${infodir} ]]; then
+		# this can happen when preinst is run twice, e.g. when
+		# installing a binpkg that was created with quickpkg #899648
+		ewarn "Unexpected \"dir\" file in ${infodir} - preinst run twice?"
+		[[ ${MERGE_TYPE} == binary && -f ${infodir}/dir ]] || die
 	fi
 }
 
