@@ -39,13 +39,6 @@ src_prepare() {
 	distutils-r1_src_prepare
 }
 
-src_test() {
-	# workaround new readline defaults
-	echo "set enable-bracketed-paste off" > "${T}"/inputrc || die
-	local -x INPUTRC="${T}"/inputrc
-	distutils-r1_src_test
-}
-
 python_test() {
 	"${EPYTHON}" test/test.py -v || die
 }
