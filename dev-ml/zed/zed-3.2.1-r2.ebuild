@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND="
+	>=dev-ml/dune-3
 	dev-ml/react:=
 	dev-ml/result:=
 	dev-ml/uchar:=
