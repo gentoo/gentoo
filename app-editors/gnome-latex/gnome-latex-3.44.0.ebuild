@@ -45,6 +45,5 @@ BDEPEND="
 src_configure() {
 	gnome2_src_configure \
 		$(use_enable introspection) \
-		--enable-dconf_migration \
-		--enable-vala=no
+		--enable-dconf_migration
 }
