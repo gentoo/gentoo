@@ -51,7 +51,10 @@ BDEPEND="
 	app-crypt/gcr:0[vala]
 "
 
-PATCHES=( "${FILESDIR}"/0.30.16-optional-wayland.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-gphoto2-Add-missing-cheader-attributes-of-delegate-s.patch
+	"${FILESDIR}"/0.30.16-optional-wayland.patch
+)
 
 src_prepare() {
 	default

@@ -1,0 +1,57 @@
+From cd82759231e5ece2fa0dea40397c9051d15fd5c2 Mon Sep 17 00:00:00 2001
+From: Rico Tzschichholz <ricotz@ubuntu.com>
+Date: Sun, 5 Feb 2023 20:44:49 +0100
+Subject: [PATCH] gphoto2: Add missing cheader attributes of delegate symbols
+
+---
+ vapi/libgphoto2.vapi | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/vapi/libgphoto2.vapi b/vapi/libgphoto2.vapi
+index e9387b29..67cb2098 100644
+--- a/vapi/libgphoto2.vapi
++++ b/vapi/libgphoto2.vapi
+@@ -340,19 +340,40 @@ namespace GPhoto {
+         public void set_message_func([CCode (delegate_target_pos=3.1)] ContextMessageFunc messageFunc);
+     }
+     
++    [CCode (
++        cheader_filename="gphoto2/gphoto2-context.h"
++    )]
+     public delegate void ContextIdleFunc(Context context);
+     
++    [CCode (
++        cheader_filename="gphoto2/gphoto2-context.h"
++    )]
+     public delegate void ContextErrorFunc(Context context, string text);
+     
++    [CCode (
++        cheader_filename="gphoto2/gphoto2-context.h"
++    )]
+     public delegate void ContextStatusFunc(Context context, string text);
+     
++    [CCode (
++        cheader_filename="gphoto2/gphoto2-context.h"
++    )]
+     public delegate void ContextMessageFunc(Context context, string text);
+     
+     // TODO: Support for va_args in Vala, esp. for delegates?
++    [CCode (
++        cheader_filename="gphoto2/gphoto2-context.h"
++    )]
+     public delegate uint ContextProgressStartFunc(Context context, float target, string text);
+     
++    [CCode (
++        cheader_filename="gphoto2/gphoto2-context.h"
++    )]
+     public delegate void ContextProgressUpdateFunc(Context context, uint id, float current);
+     
++    [CCode (
++        cheader_filename="gphoto2/gphoto2-context.h"
++    )]
+     public delegate void ContextProgressStopFunc(Context context, uint id);
+     
+     [CCode (
+-- 
+2.39.2
+
