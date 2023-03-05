@@ -59,7 +59,7 @@ src_configure() {
 }
 
 src_test() {
-	virtx meson_src_test
+	virtx dbus-run-session meson test -C "${BUILD_DIR}" || die 'tests failed'
 }
 
 pkg_postinst() {
