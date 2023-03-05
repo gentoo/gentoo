@@ -130,6 +130,11 @@ src_prepare() {
 	sed -i -e "/${rpath_pattern}/d" meson.build || die
 }
 
+src_configure() {
+	python_setup
+	meson-multilib_src_configure
+}
+
 multilib_src_configure() {
 	local emesonargs=(
 		$(meson_use split-usr)

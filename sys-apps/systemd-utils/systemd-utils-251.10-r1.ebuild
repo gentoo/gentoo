@@ -159,6 +159,11 @@ src_configure() {
 	multilib-minimal_src_configure
 }
 
+src_configure() {
+	python_setup
+	meson-multilib_src_configure
+}
+
 multilib_src_configure() {
 	local emesonargs=(
 		$(meson_use split-usr)
