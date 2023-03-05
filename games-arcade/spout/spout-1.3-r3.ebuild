@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop readme.gentoo-r1
+inherit autotools desktop readme.gentoo-r1
 
 MY_P="spout-unix-${PV}"
 
@@ -24,6 +24,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fno-common.patch
 	"${FILESDIR}"/${PN}-1.3-Fix-implicit-function-declarations.patch
 )
+
+src_prepare() {
+	default
+
+	eautoreconf
+}
 
 src_install() {
 	dobin spout
