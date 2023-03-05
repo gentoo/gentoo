@@ -20,7 +20,10 @@ DEPEND="
 	virtual/libelf
 "
 RDEPEND="${DEPEND}"
-BDEPEND=">=sys-devel/clang-11.0.0"
+BDEPEND="
+	sys-apps/grep[pcre]
+	>=sys-devel/clang-11.0.0
+"
 
 # Not prebuilt -- we build them -- but they're not ordinary ELF objects either.
 QA_PREBUILT="usr/lib/bpf/*.o"
