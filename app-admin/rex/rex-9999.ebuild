@@ -81,6 +81,7 @@ RDEPEND="
 	dev-perl/libwww-perl
 	dev-perl/YAML
 	virtual/perl-version
+	virtual/perl-Term-ANSIColor
 "
 # NB: would add test? !minimal? Test-mysqld, but I can't get that to work
 BDEPEND="
@@ -99,7 +100,9 @@ BDEPEND="
 		dev-perl/Test-Exception
 		dev-perl/Test-Output
 		dev-perl/Test-UseAllModules
+		dev-perl/Test-Warnings
 		virtual/perl-autodie
+		virtual/perl-Module-Load-Conditional
 	)
 "
 
