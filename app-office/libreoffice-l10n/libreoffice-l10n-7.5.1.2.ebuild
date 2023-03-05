@@ -17,7 +17,7 @@ BASE_SRC_URI_STABLE="https://download.documentfoundation.org/${PN/-l10n/}/stable
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~riscv"
 IUSE="offlinehelp"
 
 #
