@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 # Needed for docs, bug #835755
 PYTHON_REQ_USE="xml(+)"
 inherit cmake flag-o-matic python-any-r1
