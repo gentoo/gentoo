@@ -6,11 +6,11 @@ EAPI=8
 inherit bash-completion-r1 meson
 
 DESCRIPTION="Grab images from a Wayland compositor"
-HOMEPAGE="https://github.com/emersion/grim"
+HOMEPAGE="https://sr.ht/~emersion/grim"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/emersion/${PN}.git"
+	EGIT_REPO_URI="https://git.sr.ht/~emersion/${PN}"
 else
 	SRC_URI="https://github.com/emersion/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
