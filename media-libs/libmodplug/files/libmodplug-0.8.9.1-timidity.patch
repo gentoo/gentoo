@@ -1,0 +1,13 @@
+diff --git a/src/load_pat.cpp b/src/load_pat.cpp
+index fe78731..a52dec6 100644
+--- a/src/load_pat.cpp
++++ b/src/load_pat.cpp
+@@ -56,7 +56,7 @@
+ #else
+ #define DIRDELIM		'/'
+ #define TIMIDITYCFG	"/etc/timidity.cfg" /*"/usr/share/timidity/timidity.cfg"*/
+-#define PATHFORPAT	"/usr/share/timidity/instruments"
++#define PATHFORPAT	"/usr/share/timidity/current"
+ #endif
+ 
+ #define PAT_ENV_PATH2CFG			"MMPAT_PATH_TO_CFG"
