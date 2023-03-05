@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,6 +26,7 @@ DEPEND="
 	>=dev-libs/wayland-1.21.0
 	>=dev-libs/wayland-protocols-1.28
 	media-libs/mesa[egl(+),gles2]
+	media-libs/libdisplay-info:=
 	hwdata? ( sys-apps/hwdata:= )
 	seatd? ( sys-auth/seatd:= )
 	udev? ( virtual/libudev )
