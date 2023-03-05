@@ -46,6 +46,7 @@ multilib_src_configure() {
 		$(meson_use test tests)
 		-Duseroot=false
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
+		-Dinitscriptdir="${EPREFIX}/etc/init.d"
 	)
 	meson_src_configure
 }
