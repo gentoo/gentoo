@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,15 +10,15 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit subversion
 else
 	SRC_URI="
-		mirror://sourceforge/sdcc/${PN}-src-${PV}.tar.bz2
-		doc? ( mirror://sourceforge/sdcc/${PN}-doc-${PV}.tar.bz2 )
+		https://downloads.sourceforge.net/project/${PN}/sdcc/${PV}/${PN}-src-${PV}.tar.bz2
+		doc? ( https://downloads.sourceforge.net/project/${PN}/sdcc-doc/${PV}/${PN}-doc-${PV}.tar.bz2 )
 	"
 
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Small device C compiler (for various microprocessors)"
-HOMEPAGE="http://sdcc.sourceforge.net/"
+HOMEPAGE="https://sdcc.sourceforge.net/"
 
 LICENSE="
 	GPL-2 ZLIB
@@ -45,24 +45,15 @@ SDCC_PORTS="
 "
 IUSE="
 	${SDCC_PORTS}
-	+boehm-gc device-lib doc non-free packihx +sdbinutils sdcdb +sdcpp ucsim
-"
-
-for port in ${SDCC_PORTS}; do
-REQUIRED_USE="${REQUIRED_USE}
-	${port}? ( sdbinutils )
-"
-done
-REQUIRED_USE="${REQUIRED_USE}
-	|| ( ${SDCC_PORTS} )
+	+boehm-gc device-lib doc non-free packihx sdcdb +sdcpp ucsim
 "
 
 RDEPEND="
 	dev-libs/boost:=
+	sys-libs/zlib:=
 	pic14? ( >=dev-embedded/gputils-0.13.7 )
 	pic16? ( >=dev-embedded/gputils-0.13.7 )
 	boehm-gc? ( dev-libs/boehm-gc:= )
-	sdbinutils? ( sys-libs/zlib:= )
 	sdcdb? ( sys-libs/readline:0= )
 	ucsim? ( sys-libs/ncurses:= )
 "
@@ -106,13 +97,13 @@ src_configure() {
 	local myeconfargs=(
 		ac_cv_prog_STRIP=true
 		--without-ccache
+		--enable-sdbinutils
 
 		$(use_enable ucsim)
 		$(use_enable device-lib)
 		$(use_enable packihx)
 		$(use_enable sdcpp)
 		$(use_enable sdcdb)
-		$(use_enable sdbinutils)
 		$(use_enable non-free)
 		$(use_enable boehm-gc libgc)
 
@@ -158,7 +149,7 @@ src_compile() {
 src_install() {
 	default
 	dodoc doc/*.txt
-	find "${D}" -type d -name .deps -exec rm -vrf {} + || die
+	find "${ED}" -type d -name .deps -exec rm -vr {} + || die
 
 	if use doc && [[ ${PV} != "9999" ]]; then
 		cd "${WORKDIR}"/doc
