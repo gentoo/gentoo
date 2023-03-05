@@ -60,7 +60,7 @@ src_test() {
 src_install() {
 	meson_src_install
 	if use gtk-doc; then
-		mkdir -p "${ED}"/usr/share/gtk-doc/ || die
-		mv "${ED}"/usr/share/doc/libshumate-1.0 "${ED}"/usr/share/gtk-doc/libshumate-1.0 || die
+		mkdir -p "${ED}"/usr/share/gtk-doc/html || die
+		mv "${ED}"/usr/share/doc/libshumate-1.0 "${ED}"/usr/share/gtk-doc/html/libshumate-1.0 || die
 	fi
 }
