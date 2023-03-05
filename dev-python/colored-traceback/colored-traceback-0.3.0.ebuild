@@ -14,6 +14,6 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND="dev-python/pygments[${PYTHON_USEDEP}]"
