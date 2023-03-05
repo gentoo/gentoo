@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-anonymous-ssl.patch # https://github.com/LibVNC/x11vnc/pull/85
 	"${FILESDIR}"/${P}-fno-common.patch
 	"${FILESDIR}"/${P}-CVE-2020-29074.patch
+	"${FILESDIR}"/${P}-implicit-function-declaration.patch
 )
 
 src_prepare() {
