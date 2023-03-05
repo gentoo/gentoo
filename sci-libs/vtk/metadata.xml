@@ -20,14 +20,10 @@
     <flag name="freetype">Build support for font rendering</flag>
     <flag name="gdal">Support for gdal formated data</flag>
     <flag name="imaging">Building Imaging modules</flag>
-    <flag name="json">Support for json formatted data</flag>
-    <flag name="kits">Build kits in addition to modules</flag>
     <flag name="las">Build support for LiDAR files</flag>
     <flag name="logging">Build the logging module</flag>
-    <flag name="offscreen">Offscreen rendering through OSMesa</flag>
     <flag name="openvdb">Build support to handle VDB data files</flag>
     <flag name="pdal">Build support to handle point cloud data files</flag>
-    <flag name="pegtl">Use pegtl to build parsers</flag>
     <flag name="qt6">Use Qt6 packages instead of Qt5</flag>
     <flag name="rendering">Building Redering modules</flag>
     <flag name="sdl">Enable SDL2 support for rendering modules</flag>
