@@ -1,13 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="X Window block dropping game in 3 Dimension"
 HOMEPAGE="http://perso.univ-lyon1.fr/thierry.excoffier/XBL/"
 SRC_URI="http://perso.univ-lyon1.fr/thierry.excoffier/XBL/xbl-${PV}.tar.gz"
+S="${WORKDIR}/xbl-${PV}"
 
 LICENSE="GPL-1"
 SLOT="0"
@@ -19,10 +20,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/xbl-${PV}"
-
 PATCHES=(
 	"${FILESDIR}"/${P}-font.patch
+	"${FILESDIR}"/${P}-configure-clang16.patch
 )
 
 src_prepare() {

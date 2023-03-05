@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/899012
+--- a/configure.in
++++ b/configure.in
+@@ -127,6 +127,7 @@ dnl AC_TRY_COMPILE("Prototypes",,extern int y(int z);y(5);}y(z)int z;{,CFLA="$CF
+ 
+ AC_TEST_PROGRAM([
+ #include <sys/time.h>
++#include <time.h>
+ int main()
+ {
+ fd_set i,j,k ;
+@@ -151,6 +152,7 @@ AC_TEST_PROGRAM([
+ #include <signal.h>
+ #include <stdio.h>
+ #include <sys/time.h>
++#include <unistd.h>
+ 
+ volatile int c = 0 ;
+ void fct(i) int i ; { c++ ; signal(SIGALRM, fct) ; }
