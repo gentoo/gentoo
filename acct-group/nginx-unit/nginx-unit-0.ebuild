@@ -7,4 +7,4 @@ inherit acct-group
 
 DESCRIPTION="A group for www-servers/nginx-unit"
 
-ACCT_GROUP_ID="526"
+ACCT_GROUP_ID="527"
