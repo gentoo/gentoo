@@ -1,0 +1,43 @@
+Fix quotes for compatibilty with sqlite3.41+
+https://bugs.gentoo.org/898478
+
+From b7f58280a3f1e20e01471fa53509007c0e96ad02 Mon Sep 17 00:00:00 2001
+From: graham <graham@ulsterit.com>
+Date: Sat, 4 Mar 2023 15:55:03 +0000
+Subject: [PATCH] change double quotes to single quotes to meet SQL standard
+ for strings, compatible with sqlite 3.41
+
+---
+ data/english.awk | 2 +-
+ data/table.awk   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/data/english.awk b/data/english.awk
+index c5dc0aa..bed156d 100644
+--- a/data/english.awk
++++ b/data/english.awk
+@@ -16,7 +16,7 @@ BEGIN {
+ }
+ 
+     # Insert data into english table
+-    {   printf "INSERT INTO english (word, freq) VALUES (\"%s\", %f);\n", $1, $2}
++    {   printf "INSERT INTO english (word, freq) VALUES ('%s', %f);\n", $1, $2}
+ 
+     #quit sqlite3
+ END {
+diff --git a/data/table.awk b/data/table.awk
+index 700529c..c097ec2 100644
+--- a/data/table.awk
++++ b/data/table.awk
+@@ -21,7 +21,7 @@ BEGIN {
+ 
+ # Insert data into phrases table
+ NF == 4 {
+-    printf "INSERT INTO phrases (id, tabkeys, phrase) VALUES (%d, \"%s\", \"%s\");\n", id, $3, $1;
++    printf "INSERT INTO phrases (id, tabkeys, phrase) VALUES (%d, '%s', '%s');\n", id, $3, $1;
+     id++;
+ }
+ 
+-- 
+2.39.2
+
