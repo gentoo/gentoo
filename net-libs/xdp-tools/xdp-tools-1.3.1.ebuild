@@ -9,16 +9,18 @@ SRC_URI="https://github.com/xdp-project/${PN}/archive/refs/tags/v${PV}.tar.gz ->
 
 LICENSE="GPL-2 LGPL-2.1 BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-
+KEYWORDS="~amd64 ~x86"
 IUSE="+tools"
 
-DEPEND="dev-libs/libbpf:=
-	sys-libs/zlib
+DEPEND="
+	dev-libs/libbpf:=
+	dev-util/bpftool
 	net-libs/libpcap
-	virtual/libelf"
+	sys-libs/zlib
+	virtual/libelf
+"
 RDEPEND="${DEPEND}"
-BDEPEND=">=sys-devel/clang-10.0.0"
+BDEPEND=">=sys-devel/clang-11.0.0"
 
 # Not prebuilt -- we build them -- but they're not ordinary ELF objects either.
 QA_PREBUILT="usr/lib/bpf/*.o"
@@ -37,6 +39,8 @@ src_configure() {
 	default
 }
 
+src_test() { :; }
+
 src_install() {
 	export PREFIX="${EPREFIX}/usr"
 	export LIBDIR="${PREFIX}/$(get_libdir)"
@@ -53,5 +57,3 @@ src_install() {
 	# These are ELF objects but BPF ones.
 	dostrip -x /usr/lib/bpf
 }
-
-src_test() { :; }
