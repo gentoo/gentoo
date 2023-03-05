@@ -30,6 +30,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/argcomplete-2.0.5-test-install.patch
+)
+
 src_prepare() {
 	sed -i -e 's:timeout=5:timeout=30:' test/test.py || die
 	distutils-r1_src_prepare

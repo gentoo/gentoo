@@ -1,0 +1,26 @@
+https://github.com/kislyuk/argcomplete/pull/406
+
+From e6682b3e3e0c7882a3b93df2f0e466ef001d37e4 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 5 Mar 2023 08:14:10 +0000
+Subject: [PATCH] setup.py: exclude test.* subpackages from find_packages too
+
+Otherwise, test.test_package will be picked up when installing via
+PEP517.
+
+Bug: https://bugs.gentoo.org/899628
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/setup.py
++++ b/setup.py
+@@ -33,7 +33,7 @@ setup(
+         ':python_version == "3.6"': importlib_backport_requires,
+         ':python_version == "3.7"': importlib_backport_requires,
+     },
+-    packages=find_packages(exclude=["test"]),
++    packages=find_packages(exclude=["test", "test.*"]),
+     scripts=glob.glob("scripts/*"),
+     package_data={"argcomplete": ["bash_completion.d/python-argcomplete"]},
+     zip_safe=False,
+-- 
+2.39.2
+
