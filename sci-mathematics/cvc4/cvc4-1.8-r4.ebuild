@@ -33,6 +33,7 @@ S="${WORKDIR}"/${PN^^}-archived-${PV}
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-toml.patch
+	"${FILESDIR}"/${P}-bash-5.2-fix.patch
 )
 
 python_check_deps() {
