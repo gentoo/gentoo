@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop
+inherit autotools desktop
 
 DESCRIPTION="Launch opengl games with custom graphic settings"
 HOMEPAGE="http://www.rillion.net/gamepick/index.html"
@@ -19,9 +19,13 @@ BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
+
 	sed -i \
 		-e 's/-O2//' \
 		src/Makefile.in || die
+
+	# Clang 16, bug #898998
+	eautoreconf
 }
 
 src_install() {
