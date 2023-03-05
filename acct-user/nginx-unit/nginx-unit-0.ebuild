@@ -5,7 +5,7 @@ EAPI=8
 
 inherit acct-user
 
-ACCT_USER_ID="526"
+ACCT_USER_ID="527"
 ACCT_USER_GROUPS=( "nginx-unit" )
 ACCT_USER_HOME="/var/lib/nginx-unit"
 
