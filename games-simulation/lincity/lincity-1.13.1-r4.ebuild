@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit desktop
+inherit autotools desktop
 
 DESCRIPTION="City simulation game for X"
 HOMEPAGE="http://lincity.sourceforge.net/"
@@ -29,6 +29,13 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc-10.patch
 	"${FILESDIR}"/${P}-Fix-prototypes-and-implicit-function-declarations.patch
 )
+
+src_prepare() {
+	default
+
+	# Clang 16, bug #899020
+	eautoreconf
+}
 
 src_configure() {
 	local econfargs=(
