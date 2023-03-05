@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-python/numpy-1.20.0[${PYTHON_USEDEP}]
 	dev-python/rich[${PYTHON_USEDEP}]
 	hdf5? ( dev-python/h5py[${PYTHON_USEDEP}] )
-	netcdf? ( dev-python/netcdf4-python[${PYTHON_USEDEP}] )
+	netcdf? ( dev-python/netcdf4[${PYTHON_USEDEP}] )
 "
 BDEPEND="
 	test? ( dev-python/h5py[${PYTHON_USEDEP}] )
