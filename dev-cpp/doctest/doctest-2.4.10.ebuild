@@ -15,6 +15,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+src_prepare() {
+	sed -i '/-Werror/d' scripts/cmake/common.cmake || die
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DDOCTEST_WITH_TESTS=$(usex test)
