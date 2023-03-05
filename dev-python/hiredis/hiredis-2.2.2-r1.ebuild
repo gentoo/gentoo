@@ -15,21 +15,18 @@ SRC_URI="https://github.com/redis/hiredis-py/archive/refs/tags/v${PV}.tar.gz -> 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="system-libs"
+IUSE=""
 
-DEPEND="system-libs? ( >=dev-libs/hiredis-1.0.0:= )"
+DEPEND=">=dev-libs/hiredis-1.0.0:="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${PN}-py-${PV}
 
-distutils_enable_tests pytest
+PATCHES=(
+	"${FILESDIR}"/${P}-system-libs.patch
+)
 
-src_prepare() {
-	use system-libs && PATCHES+=(
-		"${FILESDIR}"/${P}-system-libs.patch
-	)
-	default
-}
+distutils_enable_tests pytest
 
 python_test() {
 	cd tests
