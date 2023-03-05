@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit toolchain-funcs prefix
+inherit autotools toolchain-funcs prefix
 
 DESCRIPTION="2.5D tetris like game"
 HOMEPAGE="http://xnc.jinr.ru/xwelltris/"
@@ -26,6 +26,8 @@ PATCHES=(
 	# Look in ${EPREFIX}/var/lib/xwelltris for score file
 	"${FILESDIR}"/${PN}-1.0.1-scorefile-dir.patch
 	"${FILESDIR}"/${PN}-1.0.1-gcc-11.patch
+	"${FILESDIR}"/${PN}-1.0.1-c++17.patch
+	"${FILESDIR}"/${PN}-1.0.1-configure-autoconf-2.72.patch
 )
 
 src_prepare() {
@@ -41,6 +43,9 @@ src_prepare() {
 
 	# Ensure we look in ${EPREFIX}/var/lib/${PN} for score file
 	eprefixify src/commonfuncs.cxx
+
+	# Needed for autotools-2.72 patch + clang 16 (bug #899014)
+	eautoreconf
 }
 
 src_configure() {
