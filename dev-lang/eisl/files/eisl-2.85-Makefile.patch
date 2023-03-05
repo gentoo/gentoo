@@ -1,0 +1,23 @@
+--- a/makefile
++++ b/makefile
+@@ -65,7 +65,7 @@ ifeq ($(DEBUG),1)
+ 		LDFLAGS += -fsanitize=undefined
+ 	endif
+ else
+-	CFLAGS += -O3 -flto -DNDEBUG=1 -DWITHOUT_NANA=1
++	CFLAGS += -DNDEBUG=1 -DWITHOUT_NANA=1
+ 	SRC_CII += cii/src/mem.c
+ endif
+ OBJ_CII := $(SRC_CII:.c=.o)
+@@ -83,11 +83,9 @@ ifeq  ($(shell uname -n),raspberrypi)
+ 	CFLAGS += -D__rpi__
+ endif
+ ifneq ($(DEBUG),1)
+-	LDFLAGS += -flto
+ 	ifeq  ($(shell uname),Darwin)
+ 		LDFLAGS += -Wl,-S,-x
+ 	else
+-		LDFLAGS += -s
+ 	endif
+ endif
+ PREFIX := /usr/local
