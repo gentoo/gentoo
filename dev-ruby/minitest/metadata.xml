@@ -6,6 +6,7 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">seattlerb/minitest</remote-id>
+    <remote-id type="github">minitest/minitest</remote-id>
+    <remote-id type="rubygems">minitest</remote-id>
   </upstream>
 </pkgmetadata>
