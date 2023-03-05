@@ -46,11 +46,17 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--localstatedir="${EPREFIX}/var" \
-		$(use_enable client) \
-		$(use_enable debug) \
+	# This export makes compilation and test phases verbose
+	export VERBOSE=1
+
+	local myargs=(
+		--localstatedir="${EPREFIX}/var"
+		$(use_enable client)
+		$(use_enable debug)
 		$(use_enable libssh)
+	)
+
+	econf "${myargs[@]}"
 }
 
 src_install() {
