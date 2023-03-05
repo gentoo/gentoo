@@ -1,9 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-DESCRIPTION="city simulation game"
+inherit autotools
+
+DESCRIPTION="City simulation game"
 HOMEPAGE="https://savannah.nongnu.org/projects/senken/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
@@ -16,13 +18,17 @@ RDEPEND="
 	>=media-libs/libsdl-1.2.4
 	media-libs/sdl-image
 	x11-libs/gtk+:2
-	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+	nls? ( virtual/libintl )
+"
+DEPEND="
+	${RDEPEND}
+	nls? ( sys-devel/gettext )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-as-needed.patch
 	"${FILESDIR}"/${P}-warnings.patch
+	"${FILESDIR}"/${P}-implicit-function-decl.patch
 )
 
 src_prepare() {
@@ -31,7 +37,12 @@ src_prepare() {
 	sed -i \
 		-e "s:/usr/local/share:/usr/share:" \
 		lib/utils.h || die
+
+	# Clang 16, bug #899022
+	sed -i -e "s:configure.in:configure.ac:" Makefile.in || die
+	eautoconf
 }
+
 src_configure() {
 	econf $(use_enable nls)
 }
