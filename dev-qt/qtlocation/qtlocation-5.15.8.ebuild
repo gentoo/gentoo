@@ -39,6 +39,8 @@ QT5_TARGET_SUBDIRS=(
 	src/plugins/geoservices
 )
 
+PATCHES=( "${FILESDIR}/${P}-mapboxgl-gcc13.patch" ) # bug 885431
+
 src_configure() {
 	# src/plugins/geoservices requires files that are only generated when
 	# qmake is run in the root directory. Bug 633776.
