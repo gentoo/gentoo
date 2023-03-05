@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ SRC_URI="https://gitlab.com/scarabeusiv/${PN}/uploads/79f08e39c676f15ed8a59335f6
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc ~ppc64 x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc ~ppc64 ~riscv x86 ~amd64-linux"
 
 src_configure() {
 	econf \
