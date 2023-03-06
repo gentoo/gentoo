@@ -31,6 +31,7 @@ RDEPEND="
 	dev-python/tomlkit[${PYTHON_USEDEP}]
 "
 BDEPEND="
+	${RDEPEND}
 	test? (
 		dev-python/build[${PYTHON_USEDEP}]
 		dev-python/pep517[${PYTHON_USEDEP}]
