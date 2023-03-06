@@ -18,7 +18,7 @@ SRC_URI="
 		-> ${P}.gh.tar.gz
 "
 
-LICENSE="OSL-2.0"
+LICENSE="PSF-2.4"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 
