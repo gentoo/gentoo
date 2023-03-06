@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Automatic open port forwarder using UPnP"
-HOMEPAGE="https://github.com/mgorny/autoupnp/"
-SRC_URI="https://github.com/mgorny/autoupnp/releases/download/v${PV}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/projg2/autoupnp/"
+SRC_URI="https://github.com/projg2/autoupnp/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
