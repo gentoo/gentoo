@@ -27,23 +27,23 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests nose
+distutils_enable_tests unittest
 
 python_test() {
 	local pidfile="${TMPDIR}/memcached.pid"
 
-	memcached -d -P "$pidfile" || die "failed to start memcached"
+	memcached -d -P "${pidfile}" || die "failed to start memcached"
 
-	nosetests -v || die "Tests fail with ${EPYTHON}"
+	eunittest || die "Tests fail with ${EPYTHON}"
 
-	kill "$(<"$pidfile")" || die "failed to kill memcached"
+	kill "$(<"${pidfile}")" || die "failed to kill memcached"
 	local elapsed=0
-	while [[ -f "$pidfile" ]]; do
-		if [[ $elapsed -ge 30 ]]; then
-			kill -KILL "$(<"$pidfile")" || die "failed to kill -KILL memcached"
+	while [[ -f ${pidfile} ]]; do
+		if [[ $(( elapsed++ )) -ge 30 ]]; then
+			kill -KILL "$(<"${pidfile}")" ||
+				die "failed to kill -KILL memcached"
 			die "memcached failed to stop after 30 seconds"
 		fi
 		sleep 1
-		let elapsed++
 	done
 }
