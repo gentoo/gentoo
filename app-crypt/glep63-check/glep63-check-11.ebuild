@@ -9,9 +9,9 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="GLEP 63 compliance checker for OpenPGP keys"
-HOMEPAGE="https://github.com/mgorny/glep63-check/"
+HOMEPAGE="https://github.com/projg2/glep63-check/"
 SRC_URI="
-	https://github.com/mgorny/glep63-check/archive/v${PV}.tar.gz
+	https://github.com/projg2/glep63-check/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 LICENSE="BSD-2"
