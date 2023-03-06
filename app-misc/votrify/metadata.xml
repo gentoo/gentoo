@@ -7,6 +7,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">mgorny/votrify</remote-id>
+		<remote-id type="github">projg2/votrify</remote-id>
 	</upstream>
 </pkgmetadata>
