@@ -36,6 +36,7 @@
 # Guillermo Joandet <gjoandet@gmail.com> (2023-03-11)
 # In preparation for GNOME 44
 >=dev-libs/gjs-1.75
+>=dev-python/pygobject-3.43
 >=gnome-base/gnome-session-44_rc
 >=gnome-base/gnome-settings-daemon-44_rc
 >=gnome-base/gnome-shell-44_rc
