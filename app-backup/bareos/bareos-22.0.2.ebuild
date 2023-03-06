@@ -403,6 +403,14 @@ pkg_postinst() {
 		einfo " emerge --config app-backup/bareos"
 		einfo
 		einfo "to do this"
+		einfo
+		einfo "For major upgrades you may need to run:"
+		einfo
+		einfo "  su postgres -c '/usr/libexec/bareos/update_bareos_tables'"
+		einfo
+		einfo "Please see release notes for details."
+		einfo "( https://docs.bareos.org/Appendix/ReleaseNotes.html )"
+		einfo
 	fi
 }
 
