@@ -11,6 +11,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">mgorny/unittest-or-fail</remote-id>
+		<remote-id type="github">projg2/unittest-or-fail</remote-id>
 	</upstream>
 </pkgmetadata>
