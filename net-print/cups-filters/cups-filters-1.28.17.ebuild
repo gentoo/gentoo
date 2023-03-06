@@ -56,6 +56,7 @@ src_configure() {
 	# probably.)
 	# Bug #626800
 	append-cxxflags -std=c++11
+	append-lfs-flags
 
 	local myeconfargs=(
 		--enable-imagefilters
