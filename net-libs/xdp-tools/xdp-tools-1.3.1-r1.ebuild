@@ -36,6 +36,9 @@ PATCHES=(
 )
 
 src_configure() {
+	export PREFIX="${EPREFIX}/usr"
+	export LIBDIR="${PREFIX}/$(get_libdir)"
+	export BPF_OBJECT_DIR="${PREFIX}/lib/bpf"
 	export PRODUCTION=1
 	export DYNAMIC_LIBXDP=1
 	export FORCE_SYSTEM_LIBBPF=1
@@ -45,9 +48,6 @@ src_configure() {
 src_test() { :; }
 
 src_install() {
-	export PREFIX="${EPREFIX}/usr"
-	export LIBDIR="${PREFIX}/$(get_libdir)"
-	export BPF_OBJECT_DIR="${PREFIX}/lib/bpf"
 	default
 
 	# To remove the scripts/testing files that are installed.
