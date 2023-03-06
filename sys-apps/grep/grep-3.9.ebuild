@@ -30,18 +30,33 @@ IUSE="+egrep-fgrep nls pcre static"
 # We lack dev-libs/libsigsegv[static-libs] for now
 REQUIRED_USE="static? ( !sparc )"
 
-LIB_DEPEND="pcre? ( >=dev-libs/libpcre2-7.8-r1[static-libs(+)] )
-	sparc? ( dev-libs/libsigsegv )"
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
+LIB_DEPEND="
+	pcre? ( >=dev-libs/libpcre2-7.8-r1[static-libs(+)] )
+	sparc? ( dev-libs/libsigsegv )
+"
+RDEPEND="
+	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	nls? ( virtual/libintl )
-	virtual/libiconv"
-DEPEND="${RDEPEND}
-	static? ( ${LIB_DEPEND} )"
-BDEPEND="virtual/pkgconfig
+	virtual/libiconv
+"
+DEPEND="
+	${RDEPEND}
+	static? ( ${LIB_DEPEND} )
+"
+BDEPEND="
+	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	verify-sig? ( sec-keys/openpgp-keys-grep )"
+	verify-sig? ( sec-keys/openpgp-keys-grep )
+"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# Either gnulib FPs or fixed in newer autoconf, not worth autoreconf here for now?
+	MIN
+	alignof
+	static_assert
+)
 
 src_prepare() {
 	default
