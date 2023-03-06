@@ -51,6 +51,7 @@ IUSE="
 "
 REQUIRED_USE="
 	dns-over-tls? ( || ( gnutls openssl ) )
+	fido2? ( openssl )
 	homed? ( cryptsetup pam openssl )
 	importd? ( curl lzma || ( gcrypt openssl ) )
 	pwquality? ( homed )
