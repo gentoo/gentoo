@@ -526,6 +526,7 @@ cmake_src_configure() {
 		set(CMAKE_USER_MAKE_RULES_OVERRIDE "${build_rules}" CACHE FILEPATH "Gentoo override rules")
 		set(CMAKE_INSTALL_DOCDIR "${EPREFIX}/usr/share/doc/${PF}" CACHE PATH "")
 		set(BUILD_SHARED_LIBS ON CACHE BOOL "")
+		set(Python3_FIND_UNVERSIONED_NAMES FIRST CACHE STRING "")
 	_EOF_
 
 	if [[ -n ${_ECM_ECLASS} ]]; then
