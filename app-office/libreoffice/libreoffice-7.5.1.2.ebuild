@@ -102,7 +102,7 @@ LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 
 [[ ${MY_PV} == *9999* ]] || \
-KEYWORDS=""
+KEYWORDS="~riscv"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
