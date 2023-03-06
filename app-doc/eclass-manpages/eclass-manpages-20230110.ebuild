@@ -4,12 +4,12 @@
 EAPI=8
 
 # Instructions to make a dist tarball:
-# git clone https://github.com/mgorny/eclass-to-manpage.git
+# git clone https://github.com/projg2/eclass-to-manpage.git
 # cd eclass-to-manpage
 # make dist ECLASSDIR=~/g/eclass/
 
 DESCRIPTION="Collection of Gentoo eclass manpages"
-HOMEPAGE="https://github.com/mgorny/eclass-to-manpage"
+HOMEPAGE="https://github.com/projg2/eclass-to-manpage"
 SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
