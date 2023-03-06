@@ -8,7 +8,10 @@ PYTHON_COMPAT=( python3_9 )
 inherit distutils-r1 xdg-utils
 
 DESCRIPTION="A frontend for Mupen64Plus"
-HOMEPAGE="http://m64py.sourceforge.net/"
+HOMEPAGE="
+	https://m64py.sourceforge.net/
+	https://github.com/mupen64plus/mupen64plus-ui-python/
+"
 SRC_URI="https://downloads.sourceforge.net/project/m64py/${P}/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3 public-domain GPL-2 BSD CC-BY-SA-3.0"

@@ -13,7 +13,7 @@ MY_P=mupen64plus-ui-python-${EGIT_COMMIT}
 
 DESCRIPTION="A frontend for Mupen64Plus"
 HOMEPAGE="
-	http://m64py.sourceforge.net/
+	https://m64py.sourceforge.net/
 	https://github.com/mupen64plus/mupen64plus-ui-python/
 "
 SRC_URI="
