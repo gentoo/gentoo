@@ -9,9 +9,9 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="Python extension module to (re)mount /boot"
-HOMEPAGE="https://github.com/mgorny/pymountboot/"
+HOMEPAGE="https://github.com/projg2/pymountboot/"
 SRC_URI="
-	https://github.com/mgorny/pymountboot/archive/v${PV}.tar.gz
+	https://github.com/projg2/pymountboot/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 LICENSE="BSD"
