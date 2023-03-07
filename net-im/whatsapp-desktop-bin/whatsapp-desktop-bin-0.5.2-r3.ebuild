@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ RDEPEND="
 		( app-accessibility/at-spi2-atk dev-libs/atk )
 	)
 	dev-libs/expat
-	dev-libs/libappindicator
+	dev-libs/libayatana-appindicator
 	dev-libs/nspr
 	dev-libs/nss
 	media-fonts/noto-emoji
@@ -88,6 +88,8 @@ src_install() {
 	domenu usr/share/applications/whatsapp.desktop
 
 	local DESTDIR="/opt/whatsapp-desktop"
+	dosym "../../usr/lib64/libayatana-appindicator3.so" "${DESTDIR}/libappindicator3.so"
+
 	pushd "opt/whatsapp-desktop" || die
 
 	exeinto "${DESTDIR}"
