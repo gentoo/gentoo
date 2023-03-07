@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,6 +23,10 @@ IUSE="cpu_flags_arm_neon test"
 DEPEND="test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )"
 
 RESTRICT="!test? ( test )"
+
+PATCHES=(
+	"${FILESDIR}"/0001-fix-compile-for-armv7-targets-with-vfp4-and-lower.patch
+)
 
 multilib_src_configure() {
 	local mycmakeargs=(
