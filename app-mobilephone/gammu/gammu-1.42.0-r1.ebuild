@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,8 +35,11 @@ RDEPEND="
 	${COMMON_DEPEND}
 	dev-util/dialog
 "
-PATCHES=( "${FILESDIR}/${P}-CMP0110-policy.patch"
-	"${FILESDIR}/${P}-gammu-detect.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-CMP0110-policy.patch"
+	"${FILESDIR}/${P}-gammu-detect.patch"
+	"${FILESDIR}/${P}-fortify-source-3.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
