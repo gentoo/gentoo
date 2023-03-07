@@ -1,0 +1,44 @@
+https://github.com/kdave/btrfs-progs/issues/589
+https://github.com/kdave/btrfs-progs/pull/591
+
+From c7e7e2568b073b6a501eef515f3a4b6402a71211 Mon Sep 17 00:00:00 2001
+From: Tino Mai <mai.tino@gmail.com>
+Date: Sun, 5 Mar 2023 18:15:52 +0100
+Subject: [PATCH] btrfs-progs: crypto: fix SSE2/SSE4.1 implementation of BLAKE2
+
+--- a/crypto/blake2b-round.h
++++ b/crypto/blake2b-round.h
+@@ -136,12 +136,6 @@
+ 
+ #endif
+ 
+-#if defined(HAVE_SSE41)
+-#include "blake2b-load-sse41.h"
+-#else
+-#include "blake2b-load-sse2.h"
+-#endif
+-
+ #define ROUND(r) \
+   LOAD_MSG_ ##r ##_1(b0, b1); \
+   G1(row1l,row2l,row3l,row4l,row1h,row2h,row3h,row4h,b0,b1); \
+--- a/crypto/blake2b-sse2.c
++++ b/crypto/blake2b-sse2.c
+@@ -30,6 +30,7 @@
+ #include <x86intrin.h>
+ #endif
+ 
++#include "blake2b-load-sse2.h"
+ #include "blake2b-round.h"
+ 
+ static const uint64_t blake2b_IV[8] =
+--- a/crypto/blake2b-sse41.c
++++ b/crypto/blake2b-sse41.c
+@@ -34,6 +34,7 @@
+ #include <x86intrin.h>
+ #endif
+ 
++#include "blake2b-load-sse41.h"
+ #include "blake2b-round.h"
+ 
+ static const uint64_t blake2b_IV[8] =
+
