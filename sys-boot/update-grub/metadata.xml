@@ -7,4 +7,5 @@
 	</maintainer>
 	<longdescription>
 		update-grub is a stub which provides a convenient way to update your GRUB or GRUB2 configuration. This utility originated in and is taken directly from Debian.
+	</longdescription>
 </pkgmetadata>

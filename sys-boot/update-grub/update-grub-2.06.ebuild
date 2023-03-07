@@ -18,13 +18,11 @@ SLOT="0"
 
 # Use the same architecture keywords as sys-boot/grub
 
-KEYWORDS="~amd64 ~x86 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 S=${WORKDIR}
 
 DEPEND="
-	app-shells/bash
 	sys-boot/grub
-	sys-apps/coreutils
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
@@ -35,13 +33,12 @@ src_unpack() {
 	unpack_deb grub2-common_2.06-8_amd64.deb
 }
 src_install() {
-	dodir "/usr/sbin"
 	exeinto "/usr/sbin"
 	doexe "${S}/usr/sbin/update-grub"
 	dosym "/usr/sbin/update-grub" "/usr/sbin/update-grub2"
 }
 pkg_postinst() {
 	elog "update-grub has been installed to /usr/sbin."
-	elog "\n\nSome systems may not have /usr/sbin in their PATH; if this is the case for your system, you may want to do so."
-	elog "\n\nAfter updating PATH, remember to run . /etc/profile in your shell."
+	elog "\nSome systems may not have /usr/sbin in their PATH; if this is the case for your system, you may want to do so."
+	elog "\nAfter updating PATH, remember to run . /etc/profile in your shell."
 }
