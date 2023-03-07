@@ -17,7 +17,11 @@ KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
 IUSE="envtools"
 
 RDEPEND="dev-libs/openssl:="
-DEPEND="${RDEPEND}"
+DEPEND="
+	sys-apps/util-linux
+	net-libs/gnutls
+	"${RDEPEND}"
+"
 BDEPEND="
 	dev-lang/swig
 	sys-devel/bison
@@ -31,6 +35,7 @@ src_prepare() {
 		scripts/kconfig/{g,m,n,q}conf-cfg.sh \
 		scripts/kconfig/Makefile \
 		tools/Makefile || die
+	sed -i -e 's/cross_tools: tools/& envtools /' "${S}/Makefile"
 }
 
 src_configure() {
@@ -42,14 +47,24 @@ src_compile() {
 	# Unset a few KBUILD variables. Bug #540476
 	unset KBUILD_OUTPUT KBUILD_SRC
 
-	local myemakeargs=(
-		V=1
-		AR="${AR}"
-		CC="${CC}"
-		HOSTCC="${BUILD_CC}"
-		HOSTCFLAGS="${BUILD_CFLAGS} ${BUILD_CPPFLAGS}"' $(HOSTCPPFLAGS)'
-		HOSTLDFLAGS="${BUILD_LDFLAGS}"
-	)
+	if [[ ${CBUILD} != ${CHOST} ]] ; then
+		local myemakeargs=(
+			V=1
+			CROSS_COMPILE="${CHOST}"-
+			CROSS_BUILD=y
+		)
+		local maketarget=$(usex envtools envtools cross_tools)
+	else
+		local myemakeargs=(
+			V=1
+			AR="${AR}"
+			CC="${CC}"
+			HOSTCC="${BUILD_CC}"
+			HOSTCFLAGS="${CFLAGS} ${CPPFLAGS}"' $(HOSTCPPFLAGS)'
+			HOSTLDFLAGS="${LDFLAGS}"
+		)
+		local maketarget=$(usex envtools envtools tools-all)
+	fi
 
 	emake "${myemakeargs[@]}" tools-only_defconfig
 
@@ -58,7 +73,7 @@ src_compile() {
 		HOSTSTRIP=: \
 		STRIP=: \
 		CONFIG_ENV_OVERWRITE=y \
-		$(usex envtools envtools tools-all)
+		"${maketarget}"
 }
 
 src_test() { :; }
@@ -67,7 +82,7 @@ src_install() {
 	cd tools || die
 
 	if ! use envtools; then
-		dobin bmp_logo dumpimage fdtgrep gen_eth_addr img2srec mkenvimage mkimage
+		dobin dumpimage fdtgrep img2srec mkenvimage mkimage
 	fi
 
 	dobin env/fw_printenv
