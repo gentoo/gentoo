@@ -1,16 +1,17 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_9 )
 
-inherit flag-o-matic java-pkg-opt-2 java-ant-2 python-any-r1 qmake-utils readme.gentoo-r1 systemd user-info
+inherit eutils flag-o-matic python-any-r1 qmake-utils readme.gentoo-r1 systemd user-info
+
+MY_COMMIT="5824c588db24b4e71a7d94e829e6419f71089297"
 
 DESCRIPTION="Open Source DVR and media center hub"
 HOMEPAGE="https://www.mythtv.org https://github.com/MythTV/mythtv"
 if [[ $(ver_cut 3) == "p" ]] ; then
-	MY_COMMIT="5824c588db24b4e71a7d94e829e6419f71089297"
 	SRC_URI="https://github.com/MythTV/mythtv/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 	# mythtv and mythplugins are separate builds in the github MythTV project
 	S="${WORKDIR}/mythtv-${MY_COMMIT}/mythtv"
@@ -24,20 +25,20 @@ LICENSE="GPL-2+"
 SLOT="0"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
-IUSE_VIDEO_CAPTURE_DEVICES="v4l ieee1394 hdhomerun vbox ceton"
-IUSE="alsa asi autostart cdda cdr cec cpu_flags_ppc_altivec debug dvd dvb exif fftw jack java
+IUSE_VIDEO_CAPTURE_DEVICES="v4l ivtv ieee1394 hdpvr hdhomerun vbox ceton"
+IUSE="alsa asi autostart bluray cdda cdr cec cpu_flags_ppc_altivec debug dvd dvb egl exif fftw jack java
 	+lame lcd libass lirc nvdec +opengl oss perl pulseaudio python raw systemd vaapi vdpau vpx
 	+wrapper x264 x265 +xml xmltv +xvid +X zeroconf
 	${IUSE_INPUT_DEVICES} ${IUSE_VIDEO_CAPTURE_DEVICES}"
 
 REQUIRED_USE="
+	bluray? ( xml )
 	cdr? ( cdda )
 "
 RDEPEND="
 	acct-user/mythtv
 	dev-libs/glib:2
 	dev-libs/lzo
-	dev-libs/libzip:=
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5[jpeg]
@@ -51,10 +52,9 @@ RDEPEND="
 	media-fonts/liberation-fonts
 	media-fonts/tex-gyre
 	media-gfx/exiv2:=
+	<media-libs/dav1d-1.0.0:=
 	media-libs/freetype:2
-	media-libs/libbluray:=[java?]
 	media-libs/libsamplerate
-	media-libs/libsoundtouch
 	media-libs/taglib
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
@@ -63,12 +63,18 @@ RDEPEND="
 		x11-apps/xset
 		x11-wm/evilwm
 	)
+	bluray? (
+		dev-libs/libcdio:=
+		media-libs/libbluray:=[java?]
+		sys-fs/udisks:2
+	)
 	cec? ( dev-libs/libcec )
 	dvd? (
 		dev-libs/libcdio:=
 		media-libs/libdvdcss
 		sys-fs/udisks:2
 	)
+	egl? ( media-libs/mesa[egl(+)] )
 	fftw? ( sci-libs/fftw:3.0=[threads] )
 	hdhomerun? ( media-libs/libhdhomerun )
 	ieee1394? (
@@ -77,6 +83,7 @@ RDEPEND="
 		sys-libs/libraw1394
 	)
 	jack? ( virtual/jack )
+	java? ( dev-java/ant-core )
 	lame? ( media-sound/lame )
 	lcd? ( app-misc/lcdproc )
 	libass? ( media-libs/libass:= )
@@ -85,7 +92,7 @@ RDEPEND="
 	opengl? ( dev-qt/qtopengl:5 )
 	pulseaudio? ( media-sound/pulseaudio )
 	systemd? ( sys-apps/systemd:= )
-	vaapi? ( media-libs/libva:=[opengl] )
+	vaapi? ( media-libs/libva:= )
 	vdpau? ( x11-libs/libvdpau )
 	vpx? ( media-libs/libvpx:= )
 	x264? (	media-libs/x264:= )
@@ -151,6 +158,7 @@ python_check_deps() {
 }
 
 PATCHES=(
+	"${FILESDIR}/${PN}-30.0_p20190808-respect_LDFLAGS.patch"
 )
 
 DISABLE_AUTOFORMATTING="yes"
@@ -242,9 +250,8 @@ src_configure() {
 	# We need to do this so that features of that CPU will be better used
 	# If they contain an unknown CPU it will not hurt since ffmpeg's configure
 	# will just ignore it.
-	local i
 	for i in $(get-flag march) $(get-flag mcpu) $(get-flag mtune) ; do
-		[[ "${i}" == "native" ]] && i="host" # bug #273421
+		[ "${i}" = "native" ] && i="host" # bug #273421
 		myconf+=(--cpu="${i}")
 		break
 	done
@@ -253,7 +260,6 @@ src_configure() {
 	# Sound Output Support
 	myconf+=(
 		$(use_enable oss audio-oss)
-
 		$(use_enable alsa audio-alsa)
 		$(use_enable jack audio-jack)
 		$(use_enable pulseaudio audio-pulseoutput)
@@ -269,6 +275,8 @@ src_configure() {
 		$(use_enable vbox)
 		$(use_enable ceton)
 		$(use_enable v4l v4l2)
+		$(use_enable ivtv)
+		$(use_enable hdpvr)
 		$(use_enable dvb)
 		$(use_enable asi)
 	)
@@ -276,9 +284,10 @@ src_configure() {
 	# Video Output Support
 	myconf+=(
 		$(use_enable X x11)
+		$(use_enable X xrandr)
 	)
 
-	# Hardware accelerators
+	# Hardware accellerators
 	myconf+=(
 		$(use_enable nvdec)
 		$(use_enable vaapi)
@@ -330,6 +339,8 @@ src_configure() {
 		myconf+=(--cross-prefix="${CHOST}"-)
 	fi
 
+	myconf+=($(use_enable bluray libbluray_external))
+
 	# econf sets these options that are not handled by configure:
 	# --build --host --infodir --localstatedir --sysconfdir
 
@@ -344,13 +355,13 @@ src_configure() {
 		--extra-cxxflags="${CXXFLAGS}" \
 		--extra-ldflags="${LDFLAGS}" \
 		--qmake=$(qt5_get_bindir)/qmake \
-		"${myconf[@]}" || die "Fail doing ./configure ${myconf[@]}"
+		"${myconf[@]}"
 }
 
 src_install() {
 	emake STRIP="true" INSTALL_ROOT="${D}" install
 	use python && python_optimize  # does all packages by default
-	dodoc AUTHORS README
+	dodoc AUTHORS UPGRADING README
 	readme.gentoo_create_doc
 
 	insinto /usr/share/mythtv/database
@@ -361,6 +372,8 @@ src_install() {
 	if use systemd; then
 		systemd_newunit "${FILESDIR}"/mythbackend.service-28 mythbackend.service
 	fi
+
+	dodoc keys.txt
 
 	keepdir /etc/mythtv
 	fowners -R mythtv /etc/mythtv
@@ -410,6 +423,10 @@ src_install() {
 
 pkg_postinst() {
 	readme.gentoo_print_elog
+}
+
+pkg_info() {
+	return
 }
 
 pkg_config() {
