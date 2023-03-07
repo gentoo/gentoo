@@ -47,6 +47,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/3.38.0-optional-vapi.patch
+	"${FILESDIR}"/3.41.1-implicit-func-decl.patch
 )
 
 pkg_setup() {
