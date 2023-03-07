@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # EAPI Version
@@ -7,10 +7,11 @@ EAPI="8"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GENPATCHREV="3"				# Tarball revision for patches
+GITDATE="20180128"			# Date of diff between kernel.org and lmo GIT
+GENPATCHREV="4"				# Tarball revision for patches
 
 # Directories
-S="${WORKDIR}/linux-${OKV}"
+S="${WORKDIR}/linux-${OKV}-${GITDATE}"
 MIPS_PATCHES="${WORKDIR}/mips-patches"
 
 # Kernel-2 Vars
@@ -18,7 +19,7 @@ K_SECURITY_UNSUPPORTED="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
-K_BASE_VER="4.18"
+K_BASE_VER="4.13"
 K_FROM_GIT="yes"
 ETYPE="sources"
 
@@ -54,9 +55,13 @@ SV_IP28=""				# 	    DO_IP28 == "no", 			   IP28
 SV_IP30=""				# 	    DO_IP30 == "no", 			   IP30
 SV_IP32=""				# 	    DO_IP32 == "no", 			   IP32
 
-DESCRIPTION="Kernel.org sources for MIPS-based machines"
+DESCRIPTION="Linux-Mips GIT sources for MIPS-based machines, dated ${GITDATE}"
 SRC_URI="${KERNEL_URI}
+	https://dev.gentoo.org/~kumba/distfiles/mipsgit-${BASE_KV}${KVE}-${GITDATE}.diff.xz
 	https://dev.gentoo.org/~kumba/distfiles/${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
+
+UNIPATCH_STRICTORDER="yes"
+UNIPATCH_LIST="${DISTDIR}/mipsgit-${BASE_KV}${KVE}-${GITDATE}.diff.xz"
 
 #//------------------------------------------------------------------------------
 
@@ -335,7 +340,7 @@ src_unpack() {
 	S="${new}"
 
 	# Set the EXTRAVERSION to linux-VERSION-mipsgit-GITDATE
-	EXTRAVERSION="${EXTRAVERSION}-gentoo-mips"
+	EXTRAVERSION="${EXTRAVERSION}-mipsgit-${GITDATE}"
 	unpack_set_extraversion
 }
 

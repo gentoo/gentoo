@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # EAPI Version
@@ -7,11 +7,10 @@ EAPI="8"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GITDATE="20180128"			# Date of diff between kernel.org and lmo GIT
-GENPATCHREV="3"				# Tarball revision for patches
+GENPATCHREV="8"				# Tarball revision for patches
 
 # Directories
-S="${WORKDIR}/linux-${OKV}-${GITDATE}"
+S="${WORKDIR}/linux-${OKV}"
 MIPS_PATCHES="${WORKDIR}/mips-patches"
 
 # Kernel-2 Vars
@@ -19,7 +18,7 @@ K_SECURITY_UNSUPPORTED="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
-K_BASE_VER="4.13"
+K_BASE_VER="5.3"
 K_FROM_GIT="yes"
 ETYPE="sources"
 
@@ -29,7 +28,7 @@ detect_version
 
 # Version Data
 F_KV="${PVR}"
-BASE_KV="$(ver_cut 1-2).0"
+BASE_KV="$(ver_cut 1-2)"
 [[ "${EXTRAVERSION}" = -rc* ]] && KVE="${EXTRAVERSION}"
 
 # Portage Vars
@@ -44,24 +43,20 @@ P_EXCLUDE=""
 # Machine Support Control Variables
 DO_IP22="test"				# If "yes", enable IP22 support		(SGI Indy, Indigo2 R4x00)
 DO_IP27="yes"				# 		   IP27 support		(SGI Origin)
-DO_IP28="test"				# 		   IP28 support		(SGI Indigo2 Impact R10000)
+DO_IP28="no"				# 		   IP28 support		(SGI Indigo2 Impact R10000)
 DO_IP30="yes"				# 		   IP30 support		(SGI Octane)
 DO_IP32="yes"				# 		   IP32 support		(SGI O2, R5000/RM5200 Only)
 
 # Machine Stable Version Variables
 SV_IP22=""				# If set && DO_IP22 == "no", indicates last "good" IP22 version
 SV_IP27=""				# 	    DO_IP27 == "no", 			   IP27
-SV_IP28=""				# 	    DO_IP28 == "no", 			   IP28
+SV_IP28="4.19.x"			# 	    DO_IP28 == "no", 			   IP28
 SV_IP30=""				# 	    DO_IP30 == "no", 			   IP30
 SV_IP32=""				# 	    DO_IP32 == "no", 			   IP32
 
-DESCRIPTION="Linux-Mips GIT sources for MIPS-based machines, dated ${GITDATE}"
+DESCRIPTION="Kernel.org sources for MIPS-based machines"
 SRC_URI="${KERNEL_URI}
-	https://dev.gentoo.org/~kumba/distfiles/mipsgit-${BASE_KV}${KVE}-${GITDATE}.diff.xz
 	https://dev.gentoo.org/~kumba/distfiles/${PN}-${BASE_KV}-patches-v${GENPATCHREV}.tar.xz"
-
-UNIPATCH_STRICTORDER="yes"
-UNIPATCH_LIST="${DISTDIR}/mipsgit-${BASE_KV}${KVE}-${GITDATE}.diff.xz"
 
 #//------------------------------------------------------------------------------
 
@@ -202,8 +197,8 @@ show_ip22_info() {
 	einfo "R4600.  If you have to run an R4x00 processor, then try to use an R4400."
 	einfo ""
 	einfo "Some Notes:"
-	einfo "\t- Supported graphics card right now is Newport (XL)."
-	einfo "\t- A driver for Extreme (XZ) does not exist at present."
+	einfo "\t- The only supported graphics card right is Newport (XL)."
+	einfo "\t- There is no driver for Extreme (XZ)."
 	echo -e ""
 }
 
@@ -233,54 +228,51 @@ show_ip30_info() {
 	eerror "\t- Octane is limited to a maximum of 2GB of memory right now due to a"
 	eerror "\t\040\040hardware quirk in the BRIDGE PCI chip that limits BRIDGE DMA"
 	eerror "\t\040\040addresses to 31-bits when converted into physical addresses."
-	eerror "\t\040\040Patches that attempt to fix the issue are highly welcome."
 	echo -e ""
 	ewarn "Things that might work, but have problems, or are unknown:"
-	ewarn "\t- CONFIG_TRANSPARENT_HUGEPAGE should work now, but there may still be"
-	ewarn "\t\040\040intermittent issues.  Additionally, CONFIG_HUGETLBFS must also be"
-	ewarn "\t\040\040selected for hugepages to work.  If use of this feature continues"
-	ewarn "\t\040\040to trigger random Instruction Bus Errors (IBEs), then it is best to"
-	ewarn "\t\040\040disable the functionality and perform a cold reset of the machine"
-	ewarn "\t\040\040after powering it down for at least 30 seconds."
 	ewarn "\t- Serial support on the Octane uses a very basic UART driver that drives"
 	ewarn "\t\040\040the 16550A chip on the IOC3 directly.  It does not use interrupts,"
 	ewarn "\t\040\040only a polling routine on a timer, which makes it slow and CPU-"
 	ewarn "\t\040\040intensive.  The baud rate is limited to no more than 38.4kbps on"
 	ewarn "\t\040\040this driver.  Patches for getting the Altix IOC3 serial driver to"
 	ewarn "\t\040\040work (which uses DMA and supports faster baud rates) are welcome."
-	ewarn "\t- UHCI Cards are known to have issues, but should still function."
-	ewarn "\t\040\040This issue primarily manifests itself when using pl2303 USB->Serial"
-	ewarn "\t\040\040adapters."
 	ewarn "\t- MENET boards appear to have the four ethernet ports detected, however"
 	ewarn "\t\040\040the six serial ports don't appear to get picked up by the IOC3"
 	ewarn "\t\040\040UART driver.  The NIC part number is also not read correctly"
-	ewarn "\t\040\040from the four Number-In-a-Cans.  Additional testing would be"
-	ewarn "\t\040\040appreciated and patches welcome."
+	ewarn "\t\040\040from the four Number-In-a-Cans."
 	ewarn "\t- Other XIO-based devices, like various Impact addons, remain untested"
-	ewarn "\t\040\040and are not guaranteed to work.  This applies to various digital"
-	ewarn "\t\040\040video conversion boards as well."
+	ewarn "\t\040\040and are not guaranteed to work."
+	ewarn "\t- Upon rebooting, Octane may not return to the PROM.  Holding down the"
+	ewarn "\t\040\040reset button for up to ten seconds, releasing, then pressing it"
+	ewarn "\t\040\040again for one or two seconds may trigger the system to return"
+	ewarn "\t\040\040to the PROM.  Please wait at least five seconds after each attempt"
+	ewarn "\t\040\040to see if the machine responds.  As a last resort, unplugging the"
+	ewarn "\t\040\040power cord for 30 seconds will also work, but be aware the power"
+	ewarn "\t\040\040supplies on these systems will not appreciate this due to their"
+	ewarn "\t\040\040relative old age."
 	echo -e ""
 	einfo "Things that DO work:"
-	einfo "\t- SMP works again, celebrate!"
-	einfo "\t- Impact (MGRAS) console only."
-	einfo "\t- VPro (Odyssey) console only (no X driver exists yet)."
-	einfo "\t- PCI Card Cages should work for many devices, except certain types like"
-	einfo "\t\040\040PCI-to-PCI bridges (USB hubs, USB flash card readers for example)."
+	einfo "\t- SMP support."
+	einfo "\t- Impact (MGRAS), console only."
+	einfo "\t- VPro (Odyssey), console only."
+	einfo "\t- PCI card cages (showbox) should work for many devices, except certain"
+	einfo "\t\040\040types such as PCI-to-PCI bridges (USB hubs, USB flash card readers)."
 	einfo "\t- SCSI, RTC, basic PCI, IOC3 Ethernet, keyboard, and mouse.  Please"
 	einfo "\t\040\040report any problems with these devices."
+	einfo "\t- SGI AceNIC/Tigon II gigabit cards will work in the PCI card cage/shoebox."
 	echo -e ""
 }
 
 show_ip32_info() {
 	echo -e ""
 	einfo "IP32 systems function well, however there are some notes:"
-	einfo "\t- A sound driver now exists for IP32.  Celebrate!"
+	einfo "\t- A sound driver now exists for IP32."
 	einfo "\t- Framebuffer console is limited to 4MB.  Anything greater"
-	einfo "\t\040\040specified when building the kernel will likely oops"
-	einfo "\t\040\040or panic the kernel."
-	einfo "\t- X support is limited to the generic fbdev driver.  No X"
-	einfo "\t\040\040gbefb driver exists for O2 yet.  Feel free to submit"
-	einfo "\t\040\040patches!"
+	einfo "\t\040\040specified when building the kernel will oops or"
+	einfo "\t\040\040panic the kernel."
+	echo -e ""
+	eerror "IP32 Systems may be unstable and prone to lockups under a 5.4.x LTS kernel."
+	eerror "The cause is unknown at this time."
 	echo -e ""
 
 	einfo "To Build 64bit kernels for SGI O2 (IP32) or SGI Indy/Indigo2 R4x00 (IP22)"
@@ -340,7 +332,7 @@ src_unpack() {
 	S="${new}"
 
 	# Set the EXTRAVERSION to linux-VERSION-mipsgit-GITDATE
-	EXTRAVERSION="${EXTRAVERSION}-mipsgit-${GITDATE}"
+	EXTRAVERSION="${EXTRAVERSION}-gentoo-mips"
 	unpack_set_extraversion
 }
 
