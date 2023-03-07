@@ -12,7 +12,7 @@ SRC_URI="https://github.com/AntiMicroX/${PN}/archive/${PV}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc"
 # Tests fail to build
 # https://github.com/AntiMicroX/antimicrox/issues/530
