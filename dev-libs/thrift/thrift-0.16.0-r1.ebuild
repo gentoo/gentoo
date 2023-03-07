@@ -27,6 +27,7 @@ BDEPEND=""
 REQUIRED_USE="
 	test? ( ssl )
 "
+MAKEOPTS+=" -j1"
 
 PATCHES=(
 	"${FILESDIR}/thrift-0.16.0-network-tests.patch"
