@@ -4,6 +4,14 @@
 # Unmask the flag which corresponds to ARCH.
 -mips
 
+# matoro <matoro_gentoo@matoro.tk> (2023-03-07)
+# GPU-related USE flags.  While hardware with PCIe host
+# capabilities exists, mask these by default to reduce burden
+# on maintainers of GPU-related packages.  Can be unmasked
+# in the future upon user request.
+vulkan
+vaapi
+
 # matoro <matoro_gentoo@matoro.tk> (2023-03-03)
 # app-crypt/tpm2-tss is not keyworded here
 tpm
