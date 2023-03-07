@@ -17,3 +17,4 @@ move sys-apps/uutils sys-apps/uutils-coreutils
 move dev-python/myst_parser dev-python/myst-parser
 move dev-python/setuptools_scm dev-python/setuptools-scm
 move dev-python/netcdf4-python dev-python/netcdf4
+move dev-python/jupyterlab_server dev-python/jupyterlab-server

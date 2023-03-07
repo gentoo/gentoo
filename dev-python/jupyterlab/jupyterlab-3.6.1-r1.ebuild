@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/ipython[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/jupyter_core[${PYTHON_USEDEP}]
-	>=dev-python/jupyterlab_server-2.19[${PYTHON_USEDEP}]
+	>=dev-python/jupyterlab-server-2.19[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_server-1.16[${PYTHON_USEDEP}]
 	~dev-python/jupyter_ydoc-0.2.2[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_server_ydoc-0.6.0[${PYTHON_USEDEP}]
@@ -40,7 +40,6 @@ BDEPEND="
 	test? (
 		dev-python/check-manifest[${PYTHON_USEDEP}]
 		dev-python/ipykernel[${PYTHON_USEDEP}]
-		dev-python/jupyterlab_server[${PYTHON_USEDEP}]
 		dev-python/openapi-core[${PYTHON_USEDEP}]
 		dev-python/openapi-spec-validator[${PYTHON_USEDEP}]
 		dev-python/pytest-console-scripts[${PYTHON_USEDEP}]
