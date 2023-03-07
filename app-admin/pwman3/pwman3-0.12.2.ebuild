@@ -5,6 +5,8 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="sqlite"
+DISTUTILS_USE_PEP517=setuptools
+
 inherit distutils-r1 optfeature
 
 DESCRIPTION="A lightweight password-manager with multiple database backends"
