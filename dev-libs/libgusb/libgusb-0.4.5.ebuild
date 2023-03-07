@@ -16,7 +16,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-IUSE="gtk-doc +introspection test +vala"
+IUSE="gtk-doc +introspection test udev +vala"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
 	vala? ( introspection )
@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.44.0:2[${MULTILIB_USEDEP}]
-	virtual/libusb:1[udev,${MULTILIB_USEDEP}]
+	virtual/libusb:1[udev?,${MULTILIB_USEDEP}]
 	>=dev-libs/json-glib-1.1.1[${MULTILIB_USEDEP},introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 	sys-apps/hwdata
