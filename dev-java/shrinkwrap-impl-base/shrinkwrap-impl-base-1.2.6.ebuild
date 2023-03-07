@@ -16,7 +16,7 @@ S="${WORKDIR}/shrinkwrap-${PV}/impl-base"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 CP_DEPEND="
 	dev-java/jakarta-activation:1
