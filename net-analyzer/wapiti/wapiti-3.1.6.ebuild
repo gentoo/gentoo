@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 # No 3.11 in loguru
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='xml(+)'
 
 inherit distutils-r1
