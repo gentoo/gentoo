@@ -1,3 +1,5 @@
+https://bugs.gentoo.org/900152
+
 It doesn't make sense to default XOPEN_SOURCE and subsequently DEFAULT_SOURCE
 as DEFAULT_SOURCE is asking for no extensions. Anyway, just ask for GNU_SOURCE
 as it'll placate both musl and glibc for all of strptime/timegm/getpass and
