@@ -32,7 +32,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/libatomic_ops
 	>=media-libs/libsndfile-1.0.20[${MULTILIB_USEDEP}]
-	virtual/libc
 	asyncns? ( >=net-libs/libasyncns-0.1[${MULTILIB_USEDEP}] )
 	dbus? ( >=sys-apps/dbus-1.4.12[${MULTILIB_USEDEP}] )
 	elibc_mingw? ( dev-libs/libpcre:3 )
