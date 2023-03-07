@@ -81,7 +81,7 @@ RDEPEND="
 		media-libs/freetype:2
 	)
 	v4l? ( media-libs/libv4l )
-	vaapi? ( media-libs/libva:=[opengl,X] )
+	vaapi? ( media-libs/libva:=[X] )
 	vcd? (
 		>=media-video/vcdimager-0.7.23
 		dev-libs/libcdio:=[-minimal]
