@@ -1,0 +1,22 @@
+# fix implicit function declaration in configure.ac
+# Bug 899844
+diff --git a/configure.ac b/configure.ac
+index c3ebffb..29abf94 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -664,6 +664,7 @@ AC_TRY_RUN([
+ #define AUTOCONF_TEST 1
+ #include <sys/ioctl.h>
+ #include "confdefs.h"
++#include <stdlib.h>
+ int cmp(const struct dirent **a, const struct dirent **b){return 0;}
+ int main(){
+     char c[2];
+@@ -684,6 +685,7 @@ AC_TRY_RUN([
+ #define AUTOCONF_TEST 1
+ #include <sys/socket.h>
+ #include "confdefs.h"
++#include <stdlib.h>
+ int main(){
+     socklen_t tmp;
+     exit(0);
