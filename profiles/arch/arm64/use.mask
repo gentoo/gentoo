@@ -77,11 +77,6 @@ smi
 # Unmask systemd since it is keyworded here.
 -systemd
 
-# Mart Raudsepp <leio@gentoo.org> (2017-01-28)
-# dev-util/valgrind not tested on arm64 yet
-# Upstream seems to have architecture support, however
-valgrind
-
 # Markus Meier <maekke@gentoo.org> (2010-08-22)
 # net-wireless/wimax not tested
 wimax
