@@ -47,7 +47,7 @@ src_prepare() {
 
 src_compile() {
 	# Uses removed 'register' keyword, bug #894180
-	append-flags -std=c++14
+	append-cxxflags -std=c++14
 
 	emake \
 		PREFIX="${EPREFIX}/usr" \
