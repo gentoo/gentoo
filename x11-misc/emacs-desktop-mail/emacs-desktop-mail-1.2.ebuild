@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,8 +29,12 @@ src_install() {
 
 	# The Desktop Entry Specification does not allow field codes like %u
 	# inside a quoted argument, therefore we need a shell wrapper.
-	# We want to pass a literal '"(message-mailto \"$1\")"' in the -c
-	# command, but in the desktop entry '"', '\', and '$' must be escaped
+	# We pass the following commands to it, in order to backslash-escape
+	# any special characters '\' and '"' that occur in %u:
+	#   u=${1//\\/\\\\}
+	#   u=${u//\"/\\\"}
+	#   exec emacsclient --eval "(message-mailto \"$u\")"
+	# However, in the desktop entry '"', '\', and '$' must be escaped
 	# as '\\"', '\\\\', and '\\$', respectively. Yet another level of
 	# backslash escapes is needed for '\' and '$' in the here-document.
 	newmenu - emacsclient-mail.desktop <<-EOF
@@ -38,8 +42,11 @@ src_install() {
 		Type=Application
 		Name=Emacsclient (mail)
 		NoDisplay=true
-		Exec=${EPREFIX}/bin/bash -c "exec ${EPREFIX}/usr/bin/emacsclient \
---eval \\\\"(message-mailto \\\\\\\\\\\\"\\\\\$1\\\\\\\\\\\\")\\\\"" bash %u
+		Exec=${EPREFIX}/bin/bash -c \
+"u=\\\\\${1//\\\\\\\\\\\\\\\\/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\}; \
+u=\\\\\${u//\\\\\\\\\\\\"/\\\\\\\\\\\\\\\\\\\\\\\\\\\\"}; \
+exec ${EPREFIX}/usr/bin/emacsclient \
+--eval \\\\"(message-mailto \\\\\\\\\\\\"\\\\\$u\\\\\\\\\\\\")\\\\"" bash %u
 		Terminal=false
 		MimeType=x-scheme-handler/mailto;
 	EOF
