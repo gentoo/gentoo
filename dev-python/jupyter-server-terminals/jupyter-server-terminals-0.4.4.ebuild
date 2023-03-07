@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~s390 ~sparc"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~s390 ~sparc"
 
 RDEPEND="
 	dev-python/terminado[${PYTHON_USEDEP}]
