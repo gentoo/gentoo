@@ -34,6 +34,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc-13.patch
+	"${FILESDIR}"/${P}-qemu-user.patch
 )
 
 src_prepare() {
