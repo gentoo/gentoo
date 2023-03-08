@@ -1,8 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -sparc
+
+# matoro <matoro_gentoo@matoro.tk> (2023-03-07)
+# dev-db/mariadb fails tests disastrously.
+mariadb
 
 # Sam James <sam@gentoo.org> (2022-07-21)
 # Untested.
