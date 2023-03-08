@@ -46,7 +46,8 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
-BDEPEND="x11-base/xorg-proto"
+BDEPEND="dev-util/cmake
+	x11-base/xorg-proto"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-docfiles.patch"
