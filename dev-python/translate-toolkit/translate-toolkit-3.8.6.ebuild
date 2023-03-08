@@ -73,6 +73,8 @@ python_test() {
 		)
 	fi
 
+	# translate/storage/test_mo.py needs 'pocompile'
+	distutils_install_for_testing
 	epytest
 }
 
