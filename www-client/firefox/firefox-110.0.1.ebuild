@@ -76,7 +76,7 @@ REQUIRED_USE="|| ( X wayland )
 	wifi? ( dbus )"
 
 # Firefox-only REQUIRED_USE flags
-REQUIRED_USE+=" screencast? ( wayland )"
+REQUIRED_USE+=" screencast? ( X wayland )"
 
 FF_ONLY_DEPEND="!www-client/firefox:0
 	!www-client/firefox:esr
