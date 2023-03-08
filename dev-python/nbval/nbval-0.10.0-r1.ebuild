@@ -44,3 +44,7 @@ distutils_enable_sphinx docs/source \
 	dev-python/numpy \
 	dev-python/nbsphinx \
 	dev-python/matplotlib
+
+python_test() {
+	PYTHONPATH=. epytest # 895258
+}
