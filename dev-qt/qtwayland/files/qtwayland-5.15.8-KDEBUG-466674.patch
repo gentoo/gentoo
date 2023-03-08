@@ -1,0 +1,33 @@
+From 5049ff99ea2687919a2246332511a2753c72d3cd Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Mon, 6 Mar 2023 01:11:45 +0100
+Subject: [PATCH] client: Do not cast placeholder screens to QWaylandScreen
+
+It's wrong to C-cast an object to a class that isn't theirs. Check if it
+is a placeholder first.
+
+Pick-to: 5.15 6.2 6.5
+Change-Id: I45d3c423422ae6638a033fb0f4cfefc7cd4460f0
+Reviewed-by: Eskil Abrahamsen Blomfeldt <eskil.abrahamsen-blomfeldt@qt.io>
+Reviewed-by: David Edmundson <davidedmundson@kde.org>
+(cherry picked from commit a53f022393a1276dbf8eccbae04cb0bd6cea0160)
+---
+ src/client/qwaylandnativeinterface.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/client/qwaylandnativeinterface.cpp b/src/client/qwaylandnativeinterface.cpp
+index bf54a1a00..9763c3123 100644
+--- a/src/client/qwaylandnativeinterface.cpp
++++ b/src/client/qwaylandnativeinterface.cpp
+@@ -139,7 +139,7 @@ void *QWaylandNativeInterface::nativeResourceForScreen(const QByteArray &resourc
+ {
+     QByteArray lowerCaseResource = resourceString.toLower();
+ 
+-    if (lowerCaseResource == "output")
++    if (lowerCaseResource == "output" && !screen->handle()->isPlaceholder())
+         return ((QWaylandScreen *) screen->handle())->output();
+ 
+     return nullptr;
+-- 
+GitLab
+
