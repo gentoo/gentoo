@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit flag-o-matic
+
 DESCRIPTION="The libxdp library and various tools for use with XDP"
 HOMEPAGE="https://github.com/xdp-project/xdp-tools"
 SRC_URI="https://github.com/xdp-project/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -33,6 +35,8 @@ MAKEOPTS+=" V=1"
 PATCHES=(
 	"${FILESDIR}"/1.3.1-disable-stack-protector.patch
 	"${FILESDIR}"/1.3.1-fix-btf__type_cnt-detection.patch
+	"${FILESDIR}"/1.3.1-no-Werror.patch
+	"${FILESDIR}"/1.3.1-xdpdump-clang.patch
 )
 
 src_configure() {
@@ -42,6 +46,10 @@ src_configure() {
 	export PRODUCTION=1
 	export DYNAMIC_LIBXDP=1
 	export FORCE_SYSTEM_LIBBPF=1
+
+	# bug 861587
+	filter-lto
+
 	default
 }
 
@@ -59,4 +67,21 @@ src_install() {
 
 	# These are ELF objects but BPF ones.
 	dostrip -x /usr/lib/bpf
+}
+
+pkg_postinst() {
+	elog
+	elog "Many BPF utilities need access to a mounted bpffs virtual file system."
+	elog "Either mount it manually like this:"
+	elog
+	elog "  mount bpffs /sys/fs/bpf -t bpf -o nosuid,nodev,noexec,relatime,mode=700"
+	elog
+	elog "or add the following line to your /etc/fstab to always mount it at boot time:"
+	elog
+	elog "  bpffs  /sys/fs/bpf  bpf  nosuid,nodev,noexec,relatime,mode=700  0 0"
+	elog
+	elog "You can verify that bpffs is mounted with:"
+	elog
+	elog "  mount | grep /sys/fs/bpf"
+	elog
 }
