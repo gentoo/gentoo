@@ -117,6 +117,11 @@ src_configure() {
 src_install() {
 	meson_src_install
 
+	# Upstream requires libflashrom.a to be present at build time because the classic CLI
+	# executable uses internal symbols from that library. Therefore, we let it be built
+	# but keep it out of the installed tree.
+	find "${ED}" -name '*.a' -delete || die
+
 	if use tools; then
 		dosbin "${BUILD_DIR}"/util/ich_descriptors_tool/ich_descriptors_tool
 	fi
