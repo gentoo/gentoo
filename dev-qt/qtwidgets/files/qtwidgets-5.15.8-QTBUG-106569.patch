@@ -1,0 +1,47 @@
+From 9a42df40228d246260cdcd40d2d582a2684439e4 Mon Sep 17 00:00:00 2001
+From: Volker Hilsheimer <volker.hilsheimer@qt.io>
+Date: Fri, 10 Feb 2023 14:49:51 +0100
+Subject: [PATCH] QAbstractItemView: don't access invalid indexes on copy-key
+
+When pressing the copy key the view tried to access the model's data for
+the currentIndex() without checking whether the index is valid. This
+resulted in debug output to the console, and might break models that
+didn't check incoming indexes for validity (or asserted validity).
+
+Fix this by checking whether the currentIndex() is valid before reading
+the model's data for that index.
+
+Fixes: QTBUG-106569
+Pick-to: 6.5 6.4 6.2 5.15
+Change-Id: Ide75fbdfdbd1451ab6d48f07b22136553c5b2468
+Reviewed-by: Richard Moe Gustavsen <richard.gustavsen@qt.io>
+(cherry picked from commit 3a0c33da3d913431391c5b7f4f0e93ea9d2221dc)
+---
+ src/widgets/itemviews/qabstractitemview.cpp | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/src/widgets/itemviews/qabstractitemview.cpp b/src/widgets/itemviews/qabstractitemview.cpp
+index 5e65c59796..774b78dc4f 100644
+--- a/src/widgets/itemviews/qabstractitemview.cpp
++++ b/src/widgets/itemviews/qabstractitemview.cpp
+@@ -2338,11 +2338,12 @@ void QAbstractItemView::keyPressEvent(QKeyEvent *event)
+ 
+ #if !defined(QT_NO_CLIPBOARD) && !defined(QT_NO_SHORTCUT)
+     if (event == QKeySequence::Copy) {
+-        QVariant variant;
+-        if (d->model)
+-            variant = d->model->data(currentIndex(), Qt::DisplayRole);
+-        if (variant.canConvert<QString>())
+-            QGuiApplication::clipboard()->setText(variant.toString());
++        const QModelIndex index = currentIndex();
++        if (index.isValid() && d->model) {
++            const QVariant variant = d->model->data(index, Qt::DisplayRole);
++            if (variant.canConvert<QString>())
++                QGuiApplication::clipboard()->setText(variant.toString());
++        }
+         event->accept();
+     }
+ #endif
+-- 
+GitLab
+
