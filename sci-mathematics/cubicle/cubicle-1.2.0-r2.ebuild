@@ -14,10 +14,10 @@ SRC_URI="https://github.com/cubicle-model-checker/${PN}/archive/${PV}.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="emacs examples ocamlopt"
+IUSE="emacs examples"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.09.0:=[ocamlopt=]
+	>=dev-lang/ocaml-4.09.0:=[ocamlopt]
 	dev-ml/num:=
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
