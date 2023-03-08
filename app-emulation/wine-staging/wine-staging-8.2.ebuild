@@ -132,7 +132,10 @@ BDEPEND="
 	nls? ( sys-devel/gettext )"
 IDEPEND=">=app-eselect/eselect-wine-2"
 
-QA_CONFIG_IMPL_DECL_SKIP=( res_getservers )
+QA_CONFIG_IMPL_DECL_SKIP=(
+	__clear_cache # unused on amd64+x86 (bug #900334)
+	res_getservers # false positive
+)
 QA_FLAGS_IGNORED="usr/lib/.*/wine/.*-unix/odbc32.so" # has no compiled objects
 QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
 
