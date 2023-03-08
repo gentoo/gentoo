@@ -104,7 +104,10 @@ BDEPEND="
 	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )"
 IDEPEND=">=app-eselect/eselect-wine-2"
 
-QA_CONFIG_IMPL_DECL_SKIP=( res_getservers )
+QA_CONFIG_IMPL_DECL_SKIP=(
+	__clear_cache # unused on amd64+x86 (bug #900332)
+	res_getservers # false positive
+)
 QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
 
 PATCHES=(
