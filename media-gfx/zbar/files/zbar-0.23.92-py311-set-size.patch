@@ -1,0 +1,30 @@
+Upstream-PR: https://github.com/mchehab/zbar/pull/231
+
+diff --git a/python/enum.c b/python/enum.c
+index ba22ba63..4644509e 100644
+--- a/python/enum.c
++++ b/python/enum.c
+@@ -50,7 +50,11 @@ static zbarEnumItem *enumitem_new(PyTypeObject *type, PyObject *args,
+ 
+     /* we assume the "fast path" for a single-digit ints (see longobject.c) */
+     /* this also holds if we get a small_int preallocated long */
++#if PY_VERSION_HEX >= 0x030900A4
++    Py_SET_SIZE(&self->val, Py_SIZE(longval));
++#else
+     Py_SIZE(&self->val) = Py_SIZE(longval);
++#endif
+     self->val.ob_digit[0] = longval->ob_digit[0];
+     Py_DECREF(longval);
+ #else
+@@ -129,7 +133,11 @@ zbarEnumItem *zbarEnumItem_New(PyObject *byname, PyObject *byvalue, int val,
+ 
+     /* we assume the "fast path" for a single-digit ints (see longobject.c) */
+     /* this also holds if we get a small_int preallocated long */
++#if PY_VERSION_HEX >= 0x030900A4
++    Py_SET_SIZE(&self->val, Py_SIZE(longval));
++#else
+     Py_SIZE(&self->val) = Py_SIZE(longval);
++#endif
+     self->val.ob_digit[0] = longval->ob_digit[0];
+     Py_DECREF(longval);
+ 
