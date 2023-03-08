@@ -20,13 +20,13 @@ RDEPEND="acct-group/syncthing
 	tools? ( >=acct-user/stdiscosrv-1
 		>=acct-user/strelaysrv-1 )
 	selinux? ( sec-policy/selinux-syncthing )"
-BDEPEND="<dev-lang/go-1.20"
 
 DOCS=( README.md AUTHORS CONTRIBUTING.md )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.4-TestIssue5063_timeout.patch
 	"${FILESDIR}"/${PN}-1.18.4-tool_users.patch
+	"${FILESDIR}"/${PN}-1.23.2-tests_race.patch
 )
 
 src_prepare() {
