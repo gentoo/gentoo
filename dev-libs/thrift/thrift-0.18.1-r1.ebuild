@@ -17,19 +17,24 @@ IUSE="libevent lua +ssl test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-libs/boost:=
+	dev-libs/boost:=[nls]
 	dev-libs/openssl:=
-	libevent? ( dev-libs/libevent )
+	sys-libs/zlib:=
+	libevent? ( dev-libs/libevent:= )
 "
 RDEPEND="${DEPEND}"
-BDEPEND=""
+BDEPEND="
+	sys-devel/flex
+	sys-devel/bison
+"
 
 REQUIRED_USE="
-	test? ( ssl )
+	test? ( ssl libevent )
 "
 
 PATCHES=(
 	"${FILESDIR}/thrift-0.16.0-network-tests.patch"
+	"${FILESDIR}/thrift-0.18.1-tests.patch"
 )
 
 src_configure() {
@@ -47,4 +52,8 @@ src_configure() {
 		-Wno-dev
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	MAKEOPTS="-j1" cmake_src_test
 }

@@ -24,7 +24,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="wayland X"
 
-RDEPEND="~dev-util/spirv-tools-99999999:=[${MULTILIB_USEDEP}]"
+RDEPEND="~dev-util/spirv-tools-${PV}:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-cpp/robin-hood-hashing-3.11.5
@@ -37,8 +37,8 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES="${FILESDIR}/${PN}-1.3.239-Build-shared-libs.patch
-${FILESDIR}/${PN}-1.3.239-Export-symbols.patch
+PATCHES="${FILESDIR}/${P}-Build-shared-libs.patch
+	${FILESDIR}/${P}-Export-symbols.patch
 "
 
 multilib_src_configure() {

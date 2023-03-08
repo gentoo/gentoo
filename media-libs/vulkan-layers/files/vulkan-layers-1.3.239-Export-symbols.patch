@@ -1,0 +1,13 @@
+diff --git a/layers/CMakeLists.txt b/layers/CMakeLists.txt
+index 640ac8471..043d313fd 100644
+--- a/layers/CMakeLists.txt
++++ b/layers/CMakeLists.txt
+@@ -24,7 +24,7 @@
+ add_compile_definitions(XXH_NO_LONG_LONG)
+ 
+ add_library(VkLayer_utils SHARED)
+-target_sources(VkLayer_utils PRIVATE
++target_sources(VkLayer_utils PUBLIC
+     generated/vk_format_utils.h
+     generated/vk_format_utils.cpp
+     generated/vk_validation_error_messages.h
