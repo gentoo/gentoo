@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_10 )
+PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_USE_PEP517=setuptools
 
