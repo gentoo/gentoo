@@ -53,8 +53,6 @@ python_test() {
 		# Fails with network-sandbox (and even with it off but w/ softer fail)
 		'tests/xliff_conformance/test_xliff_conformance.py::test_open_office_to_xliff'
 		'tests/xliff_conformance/test_xliff_conformance.py::test_po_to_xliff'
-		# Apparently a change in line wrapping x_x
-		translate/storage/test_cpo.py::TestCPOFile::test_wrap_gettext
 	)
 	local EPYTEST_IGNORE=(
 		# unpackaged fluent.*
