@@ -1,8 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Skeleton command:
-# java-ebuilder --generate-ebuild --workdir . --pom hamcrest-2.2.pom --download-uri https://github.com/hamcrest/JavaHamcrest/archive/v2.2.tar.gz --slot 0 --keywords "~amd64" --ebuild hamcrest-2.2.ebuild
 
 EAPI=8
 
@@ -13,8 +10,9 @@ JAVA_TESTING_FRAMEWORKS="junit-4"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Core API and libraries of hamcrest matcher framework."
-HOMEPAGE="http://hamcrest.org/JavaHamcrest/"
+HOMEPAGE="https://hamcrest.org/JavaHamcrest/"
 SRC_URI="https://github.com/${PN}/JavaHamcrest/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/JavaHamcrest-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
@@ -32,8 +30,7 @@ PATCHES=( "${FILESDIR}"/hamcrest-2.2-java-11.patch )
 
 DOCS=( {CHANGES,README}.md )
 
-S="${WORKDIR}/JavaHamcrest-${PV}"
-
+JAVA_AUTOMATIC_MODULE_NAME="org.hamcrest"
 JAVA_SRC_DIR="hamcrest/src/main/java"
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_SRC_DIR="hamcrest/src/test/java"
@@ -41,9 +38,4 @@ JAVA_TEST_SRC_DIR="hamcrest/src/test/java"
 src_prepare() {
 	default
 	java-pkg-2_src_prepare
-}
-
-src_install() {
-	default # https://bugs.gentoo.org/789582
-	java-pkg-simple_src_install
 }
