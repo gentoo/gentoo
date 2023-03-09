@@ -30,6 +30,10 @@ BDEPEND="
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/yoranheling.asc
 
+PATCHES=(
+	"${FILESDIR}/${P}-makefile-add-zig-variable.patch"
+)
+
 # see https://github.com/ziglang/zig/issues/3382
 # For now, Zig doesn't support CFLAGS/LDFLAGS/etc.
 QA_FLAGS_IGNORED="usr/bin/ncdu"
@@ -120,9 +124,9 @@ src_unpack() {
 	default
 }
 
-src_compile() {
-	ezig build -Drelease-fast
-	edo pod2man --center "ncdu manual" --release "ncdu-${PV}" ncdu.pod >ncdu.1
+src_configure() {
+	zig-set_EZIG
+	export ZIG=${EZIG}
 }
 
 src_test() {
