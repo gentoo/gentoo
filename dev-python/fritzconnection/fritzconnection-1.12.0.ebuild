@@ -43,9 +43,3 @@ EPYTEST_DESELECT=(
 	# flaky (relies on time.sleep(0.01) magically being sufficient)
 	fritzconnection/tests/test_fritzmonitor.py::test_terminate_thread_on_failed_reconnection
 )
-
-src_prepare() {
-	# upstream is pinning for py3.6 compat x_x
-	sed -i -e 's:,<[0-9.]*::' setup.py || die
-	distutils-r1_src_prepare
-}
