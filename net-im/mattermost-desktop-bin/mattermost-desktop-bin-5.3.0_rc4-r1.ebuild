@@ -87,7 +87,8 @@ src_install() {
 
 	dosym -r "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
 
-	make_desktop_entry "${MY_PN}" Mattermost "${MY_PN}"
+	make_desktop_entry "${MY_PN} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto" \
+		Mattermost "${MY_PN}"
 
 	einstalldocs
 }
