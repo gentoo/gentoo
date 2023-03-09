@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">jbig2dec</remote-id>
+    <remote-id type="github">ArtifexSoftware/jbig2dec</remote-id>
   </upstream>
 </pkgmetadata>
