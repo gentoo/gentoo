@@ -97,9 +97,9 @@ get_zig_target() {
 
 pkg_setup() {
 	llvm_pkg_setup
-	ewarn "This version requires 10G of memory for building compiler."
-	ewarn "If you don't have enough memory, you can wait until 0.11.0 release"
-	ewarn "or (if you are risky) use 9999 version (currently requires only 4GB)"
+	elog "This version requires 10G of memory for building compiler."
+	elog "If you don't have enough memory, you can wait until 0.11.0 release"
+	elog "or (if you are risky) use 9999 version (currently requires only 4GB)"
 	check-reqs_pkg_setup
 }
 
