@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: perl-module.eclass
@@ -21,11 +21,11 @@
 
 case ${EAPI} in
 	7)
-		inherit multiprocessing perl-functions
+		inherit multiprocessing perl-functions toolchain-funcs
 		PERL_EXPF="src_prepare src_configure src_compile src_test src_install"
 		;;
 	8)
-		inherit multiprocessing perl-functions readme.gentoo-r1
+		inherit multiprocessing perl-functions readme.gentoo-r1 toolchain-funcs
 		PERL_EXPF="src_prepare src_configure src_compile src_test src_install"
 		;;
 	*)
@@ -208,6 +208,10 @@ perl-module_src_prepare() {
 # This function is to be called during the ebuild src_configure() phase.
 perl-module_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	# Perl runs LD with LDFLAGS
+	export CCLD=$(tc-getCC)
+	unset LD
 
 	perl_check_env
 
