@@ -110,7 +110,7 @@ src_configure() {
 			--enable-lite-exit \
 			--enable-newlib-global-atexit \
 			--enable-newlib-nano-formatted-io \
-			${myconf}
+			"${myconf[@]}"
 	fi
 }
 
