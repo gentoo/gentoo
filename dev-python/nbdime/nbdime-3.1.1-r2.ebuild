@@ -17,6 +17,8 @@ HOMEPAGE="
 SRC_URI+="
 	https://github.com/jupyter/nbdime/commit/0e1cdaa77f57aa7f609d5ef7da26a52814c7ff74.patch
 		-> ${P}-jupyter_server2.patch
+	https://github.com/jupyter/nbdime/commit/f67a809262b45ed0eaedc840b0e5d979eaa6965d.patch
+		-> ${P}-py3.11.patch
 "
 
 LICENSE="BSD"
@@ -53,6 +55,7 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${DISTDIR}"/${P}-jupyter_server2.patch
+	"${DISTDIR}"/${P}-py3.11.patch
 )
 
 EPYTEST_DESELECT=(
@@ -73,6 +76,7 @@ EPYTEST_DESELECT=(
 
 src_prepare() {
 	edos2unix \
+		setupbase.py \
 		nbdime/tests/conftest.py \
 		nbdime/tests/test_cli_apps.py \
 		nbdime/tests/test_web.py \
