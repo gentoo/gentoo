@@ -3,14 +3,15 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..10} )
-
+PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools python-any-r1
 
 DESCRIPTION="A decoder implementation of the JBIG2 image compression format"
 HOMEPAGE="https://jbig2dec.com/"
-SRC_URI="https://github.com/ArtifexSoftware/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	test? ( http://jbig2dec.sourceforge.net/ubc/jb2streams.zip )"
+SRC_URI="
+	https://github.com/ArtifexSoftware/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	test? ( http://jbig2dec.sourceforge.net/ubc/jb2streams.zip )
+"
 
 LICENSE="AGPL-3"
 SLOT="0/$(ver_cut 1-2)" #698428
@@ -24,8 +25,7 @@ BDEPEND="
 		${PYTHON_DEPS}
 	)
 "
-
-RDEPEND="png? ( media-libs/libpng:0= )"
+RDEPEND="png? ( media-libs/libpng:= )"
 DEPEND="${RDEPEND}"
 
 DOCS=( CHANGES README )
@@ -51,7 +51,6 @@ src_prepare() {
 		|| die "failed to modify autogen.sh"
 
 	./autogen.sh || die
-
 	eautoreconf
 }
 
