@@ -23,7 +23,8 @@ RDEPEND="
 	>=x11-libs/gtk+-3.16:3[introspection]
 	x11-libs/gdk-pixbuf:2
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	x11-base/xorg-proto"
 BDEPEND="
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.7
