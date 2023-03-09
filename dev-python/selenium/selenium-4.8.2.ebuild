@@ -8,11 +8,21 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 pypi
 
+# upstream sometimes tags it as ${P}, sometimes as ${P}-python, sigh
+TEST_TAG=${P}-python
+TEST_P=selenium-${TEST_TAG}
+
 DESCRIPTION="Python language binding for Selenium Remote Control"
 HOMEPAGE="
 	https://www.seleniumhq.org/
 	https://github.com/SeleniumHQ/selenium/tree/trunk/py/
 	https://pypi.org/project/selenium/
+"
+SRC_URI+="
+	test? (
+		https://github.com/SeleniumHQ/selenium/archive/${TEST_TAG}.tar.gz
+			-> ${TEST_P}.gh.tar.gz
+	)
 "
 
 KEYWORDS="~amd64"
@@ -28,3 +38,21 @@ RDEPEND="
 	<dev-python/urllib3-2[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.26[${PYTHON_USEDEP}]
 "
+
+distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# TODO: we may need extra setup or deps
+		test/selenium
+
+		# expects vanilla certifi
+		test/unit/selenium/webdriver/remote/remote_connection_tests.py::test_get_connection_manager_for_certs_and_timeout
+	)
+
+	cd "${WORKDIR}/${TEST_P}/py" || die
+	rm -rf selenium || die
+	# https://github.com/SeleniumHQ/selenium/blob/selenium-4.8.2-python/py/test/runner/run_pytest.py#L20-L24
+	# seriously?
+	epytest -o "python_files=*_tests.py test_*.py"
+}
