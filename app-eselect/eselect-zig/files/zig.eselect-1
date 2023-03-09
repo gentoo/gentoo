@@ -1,5 +1,5 @@
 # -*-eselect-*-  vim: ft=eselect
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 DESCRIPTION="Manage Zig versions"
@@ -85,9 +85,48 @@ describe_set_options() {
 do_set() {
 	[[ -z $1 ]] && die -q "You need to specify a target"
 	[[ $# -gt 1 ]] && die -q "Too many parameters"
+	test_usr_bin_writeable
 
 	if [[ -L "${EROOT}/usr/bin/zig" ]]; then
 		remove_symlinks || die -q "Couldn't remove symlink"
 	fi
 	set_symlinks "$1" || die -q "Couldn't set a new symlink"
+}
+
+
+### update action ###
+
+describe_update() {
+    echo "Automatically update the zig symlink"
+}
+
+describe_update_options() {
+    echo "ifunset: Do not override currently set version"
+}
+
+do_update() {
+    [[ -z $1 || $1 == ifunset ]] || die -q "Usage error"
+    [[ $# -gt 1 ]] && die -q "Too many parameters"
+	test_usr_bin_writeable
+
+    if [[ -L ${EROOT}/usr/bin/zig ]]; then
+        if [[ $1 == ifunset && -e ${EROOT}/usr/bin/zig ]]; then
+            return
+        fi
+        remove_symlink
+    elif [[ -e ${EROOT}/usr/bin/zig ]]; then
+        die -q "${EROOT}/usr/bin/zig exists but is not a symlink"
+    fi
+
+    local targets=( $(find_targets) )
+    if [[ ${#targets[@]} -gt 0 ]]; then
+        set_symlinks "${targets[${#targets[@]}-1]}"
+    fi
+}
+
+
+### helper functions ###
+
+test_usr_bin_writeable() {
+    [[ -w ${EROOT}/usr/bin ]] || die -q "${EROOT}/usr/bin not writeable by current user. Are you root?"
 }
