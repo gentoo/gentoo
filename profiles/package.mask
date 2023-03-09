@@ -99,12 +99,6 @@ x11-libs/libcryptui
 # Removal on 2023-03-27. Bug 896898 and 888444
 dev-python/trio-asyncio
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-25)
-# Unmaintained.  The Gentoo version is from 2018 and needs bumping.
-# It has a build failure reported.
-# Removal on 2023-03-27.  Bug #649234.
-media-gfx/frogr
-
 # Michał Górny <mgorny@gentoo.org> (2023-02-24)
 # Unmaintained with multiple reported bugs.  Last release is a RC
 # from 2017, upstream recommends using trunk.
