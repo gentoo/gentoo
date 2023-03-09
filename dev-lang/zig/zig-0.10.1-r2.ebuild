@@ -40,7 +40,7 @@ IDEPEND="app-eselect/eselect-zig"
 
 # see https://github.com/ziglang/zig/issues/3382
 # For now, Zig Build System doesn't support enviromental CFLAGS/LDFLAGS/etc.
-QA_FLAGS_IGNORED="usr/bin/zig"
+QA_FLAGS_IGNORED="usr/.*/zig/${PV}/bin/zig"
 
 # see https://ziglang.org/download/0.10.0/release-notes.html#Self-Hosted-Compiler
 # 0.10.0 release - ~9.6 GiB, since we use compiler written in C++ for bootstrapping
