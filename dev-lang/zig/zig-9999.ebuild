@@ -35,8 +35,9 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
-	app-eselect/eselect-zig
 "
+
+IDEPEND="app-eselect/eselect-zig"
 
 # see https://github.com/ziglang/zig/issues/3382
 # For now, Zig Build System doesn't support enviromental CFLAGS/LDFLAGS/etc.
