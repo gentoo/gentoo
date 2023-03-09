@@ -137,3 +137,11 @@ src_install() {
 	mv lib2/ lib/ || die
 	dosym -r "/usr/$(get_libdir)/zig/${PV}/bin/zig" "/usr/bin/zig-${PV}"
 }
+
+pkg_postinst() {
+	eselect zig update ifunset
+}
+
+pkg_postrm() {
+	eselect zig update ifunset
+}

@@ -155,6 +155,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	eselect zig update ifunset
+
 	elog "0.10.1 release uses self-hosted compiler by default and fixes some bugs from 0.10.0"
 	elog "But your code still can be un-compilable since some features still not implemented or bugs not fixed"
 	elog "Upstream recommends:"
@@ -162,4 +164,8 @@ pkg_postinst() {
 	elog " * Waiting for release 0.11.0 with old compiler removed (these changes are already merged in 9999)"
 	elog "Also see: https://ziglang.org/download/0.10.0/release-notes.html#Self-Hosted-Compiler"
 	elog "and https://ziglang.org/download/0.10.0/release-notes.html#How-to-Upgrade"
+}
+
+pkg_postrm() {
+	eselect zig update ifunset
 }
