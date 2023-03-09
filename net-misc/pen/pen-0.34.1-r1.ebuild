@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
+inherit autotools
 
 DESCRIPTION="TCP Load Balancing Port Forwarder"
 HOMEPAGE="http://siag.nu/pen/"
@@ -14,9 +16,16 @@ IUSE="geoip ssl"
 
 RDEPEND="
 	geoip? ( dev-libs/geoip )
-	ssl? ( dev-libs/openssl:0= )
+	ssl? ( dev-libs/openssl:= )
 "
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	default
+
+	# Clang 16, bug #900304
+	eautoreconf
+}
 
 src_configure() {
 	econf --with-docdir=/usr/share/doc/${PF} \
