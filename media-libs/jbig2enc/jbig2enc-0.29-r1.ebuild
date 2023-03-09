@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -16,6 +16,10 @@ IUSE="gif jpeg png tiff webp"
 
 RDEPEND="media-libs/leptonica[gif?,jpeg?,png?,tiff?,webp?]"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-leptonica-1.83.patch
+)
 
 src_prepare() {
 	default
