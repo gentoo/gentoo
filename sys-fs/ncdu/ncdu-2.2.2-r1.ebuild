@@ -16,13 +16,13 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-EZIG_MIN="0.10.0"
-EZIG_MAX_EXCLUSIVE="0.11.0"
+EZIG_MIN="0.10"
+EZIG_MAX_EXCLUSIVE="0.11"
 
 DEPEND="sys-libs/ncurses:=[unicode(+)]"
 RDEPEND="${DEPEND}"
 BDEPEND="
-	|| ( dev-lang/zig:0.10 dev-lang/zig-bin:0.10 )
+	|| ( dev-lang/zig:${EZIG_MIN} dev-lang/zig-bin:${EZIG_MIN} )
 	virtual/pkgconfig
 	dev-lang/perl
 	verify-sig? ( sec-keys/openpgp-keys-yorhel )
