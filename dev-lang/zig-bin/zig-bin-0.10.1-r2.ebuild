@@ -17,7 +17,7 @@ SLOT="$(ver_cut 1-2)"
 KEYWORDS="-* ~amd64 ~arm ~arm64 ~riscv ~x86"
 IUSE="doc"
 
-RDEPEND="app-eselect/eselect-zig"
+IDEPEND="app-eselect/eselect-zig"
 # Zig provides its standard library in source form "/opt/zig-bin-{PV}/lib/",
 # and all other Zig libraries are meant to be consumed in source form,
 # because they can use compile-time mechanics (and it is easier for distributions to patch them)
