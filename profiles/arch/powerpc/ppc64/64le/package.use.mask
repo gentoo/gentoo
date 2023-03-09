@@ -69,3 +69,7 @@ media-video/vlc -libplacebo
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
 # works on ppc64le
 media-libs/mesa -llvm -video_cards_radeonsi
+
+# Craig Andrews <candrews@gentoo.org> (2023-03-09)
+# media-libs/libplacebo is keyworded here
+media-video/ffmepg -libplacebo

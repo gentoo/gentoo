@@ -444,3 +444,7 @@ media-sound/mpg123 cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext
 # saves people from needlessly installing nasm
 # Refs bug #93279
 media-sound/lame cpu_flags_x86_mmx
+
+# Craig Andrews <candrews@gentoo.org> (2023-03-09)
+# media-libs/libplacebo is keyworded here
+media-video/ffmepg -libplacebo
