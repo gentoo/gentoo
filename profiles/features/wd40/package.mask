@@ -57,6 +57,7 @@ dev-python/python-sshpubkeys
 dev-python/requests-kerberos
 dev-python/requests-oauthlib
 dev-python/secretstorage
+dev-python/selenium
 dev-python/service_identity
 dev-python/setuptools-rust
 dev-python/spur
