@@ -9,5 +9,6 @@
 	<flag name="jni">Enables building of Java Native Interface library</flag>
 	<flag name="programs">Builds also executable applications</flag>
 	<flag name="vamp">Enables vamp plugins support (Audio analysing plugins)</flag>
+	<flag name="lv2">Add support for Ladspa V2</flag>
 </use>
 </pkgmetadata>
