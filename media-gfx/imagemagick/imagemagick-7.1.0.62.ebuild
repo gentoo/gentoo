@@ -23,7 +23,9 @@ DESCRIPTION="A collection of tools and libraries for many image formats"
 HOMEPAGE="https://www.imagemagick.org/"
 
 LICENSE="imagemagick"
-SLOT="0/7.1.0-43"
+# Please check this on bumps, SONAME is often not updated! Use abidiff on old/new.
+# If ABI is broken, change the bit after the '-'.
+SLOT="0/$(ver_cut 1-3)-43"
 IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl +png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zip zlib"
 
 REQUIRED_USE="corefonts? ( truetype )
