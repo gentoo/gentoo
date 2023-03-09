@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,10 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="A makefile framework for writing simple makefiles for complex tasks"
 HOMEPAGE="https://trac.netlabs.org/kbuild/wiki"
-SRC_URI="https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${P}-src.tar.xz"
+SRC_URI="
+	https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${P}-src.tar.xz
+	https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-0.1.9998.3499-fix-clang.patch.bz2
+"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -32,6 +35,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.1.9998.3499-implicit-function-declaration.patch"
 	"${FILESDIR}/${PN}-0.1.9998.3499-int-conversion.patch"
 	"${FILESDIR}/${PN}-0.1.9998.3499-fix-CC.patch"
+
+	"${WORKDIR}/${PN}-0.1.9998.3499-fix-clang.patch"
 )
 
 pkg_setup() {
