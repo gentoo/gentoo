@@ -8,6 +8,6 @@
     <flag name="s3">Enable support for Amazon S3</flag>
   </use>
   <upstream>
-    <remote-id type="github">simsong/AFFLIBv3</remote-id>
+    <remote-id type="github">sshock/AFFLIBv3</remote-id>
   </upstream>
 </pkgmetadata>
