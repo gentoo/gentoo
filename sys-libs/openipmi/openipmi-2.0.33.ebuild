@@ -3,8 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
-
+PYTHON_COMPAT=( python3_{9..11} )
 inherit autotools python-single-r1
 
 MY_PN="OpenIPMI"
@@ -29,7 +28,8 @@ RDEPEND="
 	snmp? ( net-analyzer/net-snmp )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
-	tcl? ( dev-lang/tcl:= )"
+	tcl? ( dev-lang/tcl:= )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-lang/swig-1.3.21
@@ -38,7 +38,6 @@ BDEPEND="
 
 # Gui is broken!
 #		python? ( tcl? ( tk? ( dev-lang/tk dev-tcltk/tix ) ) )"
-
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
