@@ -113,7 +113,7 @@ do_update() {
         if [[ $1 == ifunset && -e ${EROOT}/usr/bin/zig ]]; then
             return
         fi
-        remove_symlink
+        remove_symlinks
     elif [[ -e ${EROOT}/usr/bin/zig ]]; then
         die -q "${EROOT}/usr/bin/zig exists but is not a symlink"
     fi
