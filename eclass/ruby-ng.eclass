@@ -728,7 +728,7 @@ ruby-ng_rspec() {
 			;;
 	esac
 
-	${RUBY} -S rspec-${version} ${rspec_params} ${files} || die "rspec failed"
+	${RUBY} -S rspec-${version} ${rspec_params} ${files} || die -n "rspec failed"
 }
 
 # @FUNCTION: ruby-ng_cucumber
@@ -761,7 +761,7 @@ ruby-ng_cucumber() {
 			;;
 	esac
 
-	CUCUMBER_PUBLISH_QUIET=true ${RUBY} -S cucumber ${cucumber_params} "$@" || die "cucumber failed"
+	CUCUMBER_PUBLISH_QUIET=true ${RUBY} -S cucumber ${cucumber_params} "$@" || die -n "cucumber failed"
 }
 
 # @FUNCTION: ruby-ng_testrb-2
