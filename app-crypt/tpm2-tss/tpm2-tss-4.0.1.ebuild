@@ -22,6 +22,7 @@ REQUIRED_USE="^^ ( mbedtls openssl )
 
 RDEPEND="acct-group/tss
 	acct-user/tss
+	sys-apps/util-linux:=[${MULTILIB_USEDEP}]
 	fapi? ( dev-libs/json-c:=[${MULTILIB_USEDEP}]
 		>=net-misc/curl-7.80.0[${MULTILIB_USEDEP}] )
 	mbedtls? ( net-libs/mbedtls:=[${MULTILIB_USEDEP}] )
