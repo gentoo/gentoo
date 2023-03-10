@@ -24,7 +24,6 @@ SRC_URI+="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="webtools"
 
 RDEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
@@ -36,7 +35,6 @@ RDEPEND="
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/tornado[${PYTHON_USEDEP}]
-	webtools? ( net-libs/nodejs[npm] )
 "
 BDEPEND="
 	test? (
@@ -86,7 +84,7 @@ src_prepare() {
 }
 
 python_configure_all() {
-	use webtools || DISTUTILS_ARGS=( --skip-npm )
+	DISTUTILS_ARGS=( --skip-npm )
 }
 
 src_test() {
