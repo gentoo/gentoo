@@ -22,6 +22,7 @@ RDEPEND="
 	>=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/GitPython-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.3.1[${PYTHON_USEDEP}]
+	dev-python/rich[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.20.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
