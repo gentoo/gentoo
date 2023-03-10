@@ -39,8 +39,6 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libxslt/xsltconfig.h
 )
 
-DOCS=( AUTHORS FEATURES NEWS README TODO )
-
 src_prepare() {
 	default
 
