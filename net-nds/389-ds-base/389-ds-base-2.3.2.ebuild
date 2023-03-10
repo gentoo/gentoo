@@ -187,6 +187,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-db-gentoo.patch"
+	"${FILESDIR}/${PN}-2.3.2-setuptools-67-packaging-23.patch"
 )
 
 distutils_enable_tests pytest
