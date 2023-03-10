@@ -75,7 +75,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/"${SLOT}"/010*.patch
 
 	if use elibc_musl ; then
-		eapply "${FILESDIR}"/3.1/901-musl-*.patch
+		eapply "${FILESDIR}"/${SLOT}/901-musl-*.patch
 	fi
 
 	einfo "Unbundling gems..."
