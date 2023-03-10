@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="BSD-with-disclosure"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~riscv ~sparc"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~sparc"
 
 RDEPEND="
 	dev-python/accessible-pygments[${PYTHON_USEDEP}]
