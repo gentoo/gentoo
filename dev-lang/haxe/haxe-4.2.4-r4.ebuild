@@ -44,6 +44,7 @@ BDEPEND="
 	dev-ml/findlib
 "
 
+RESTRICT="strip"
 QA_FLAGS_IGNORED="usr/bin/haxelib"
 QA_PRESTRIPPED="usr/bin/haxelib"
 
