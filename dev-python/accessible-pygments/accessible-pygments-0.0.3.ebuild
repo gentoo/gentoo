@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~riscv ~sparc"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~sparc"
 
 RDEPEND="
 	>=dev-python/pygments-1.5[${PYTHON_USEDEP}]
