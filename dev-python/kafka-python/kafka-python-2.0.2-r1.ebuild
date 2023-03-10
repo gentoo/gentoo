@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 optfeature
 
@@ -34,6 +34,10 @@ BDEPEND="
 		dev-python/python-snappy[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-py311-test-fixes.patch"
+)
 
 distutils_enable_tests pytest
 
