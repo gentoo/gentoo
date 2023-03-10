@@ -106,7 +106,6 @@ python_test() {
 		test/terra/backends/aer_simulator/test_fusion.py::TestGateFusion::test_parallel_fusion_diagonal
 	)
 
-
 	# From tox.ini/tests.yml in CI
 	# Needed to suppress a warning in jupyter-core 5.x by eagerly migrating to
 	# a new internal interface that will be the default in jupyter-core 6.x.
@@ -114,7 +113,7 @@ python_test() {
 	local -x JUPYTER_PLATFORM_DIRS=1
 
 	rm -rf qiskit_aer || die
-	epytest -s #-n "$(makeopts_jobs)" -s
+	epytest -n "$(makeopts_jobs)" -s
 }
 
 pkg_postinst() {
