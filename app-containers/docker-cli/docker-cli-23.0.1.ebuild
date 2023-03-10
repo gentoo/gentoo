@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-GIT_COMMIT=715524332f
+GIT_COMMIT=a5ee5b1dfc
 EGO_PN="github.com/docker/cli"
 MY_PV=${PV/_/-}
 inherit bash-completion-r1  golang-vcs-snapshot
