@@ -169,6 +169,8 @@ src_install() {
 pkg_preinst() {
 	local stderr
 
+	# There's a history of regressions with nftables upgrades. Add a safety
+	# check to help us spot them earlier.
 	if [[ -d /sys/module/nf_tables ]] && [[ -x /sbin/nft ]] && [[ -z ${ROOT} ]]; then
 		# Check the current loaded ruleset, if any, using the newly
 		# built instance of nft(8).
