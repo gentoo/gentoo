@@ -33,6 +33,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Guillermo Joandet <gjoandet@gmail.com> (2023-03-11)
+# In preparation for GNOME 44
+>=dev-libs/gjs-1.75
+>=gnome-base/gnome-session-44_rc
+>=gnome-base/gnome-settings-daemon-44_rc
+>=gnome-base/gnome-shell-44_rc
+>=gnome-extra/gnome-shell-extensions-44_rc
+>=net-libs/glib-networking-2.76_beta
+>=x11-wm/mutter-44_rc
+
 # Hans de Graaff <graaff@gentoo.org> (2023-03-11)
 # Mask ruby27-only dev-ruby/sass-rails:5.0 for removal. Use a newer
 # sass-rails slot or consider migrating to sassc-rails.  Masked for
