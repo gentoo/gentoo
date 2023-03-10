@@ -111,6 +111,7 @@ BDEPEND="
 		sys-apps/grep
 		app-alternatives/awk
 	)
+	test? ( dev-lang/perl )
 "
 COMMON_DEPEND="
 	gd? ( media-libs/gd:2= )
@@ -119,6 +120,7 @@ COMMON_DEPEND="
 		caps? ( sys-libs/libcap )
 	) )
 	perl? ( dev-lang/perl )
+	test? ( dev-lang/perl )
 	suid? ( caps? ( sys-libs/libcap ) )
 	selinux? ( sys-libs/libselinux )
 	systemtap? ( dev-util/systemtap )
@@ -1015,7 +1017,8 @@ glibc_do_configure() {
 		# up a Perl from outside the prefix instead. configure will fail to
 		# execute Perl during configure if we're cross-compiling a prefix, but
 		# it will just disable mtrace in that case.
-		ac_cv_path_PERL="$(usex perl "${EPREFIX}"/usr/bin/perl no)"
+		# Note: mtrace is needed by the test suite.
+		ac_cv_path_PERL="$(usex perl "${EPREFIX}"/usr/bin/perl $(usex test "${EPREFIX}"/usr/bin/perl no))"
 
 		# locale data is arch-independent
 		# https://bugs.gentoo.org/753740
