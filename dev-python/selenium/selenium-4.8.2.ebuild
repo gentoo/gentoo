@@ -38,6 +38,11 @@ RDEPEND="
 	<dev-python/urllib3-2[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.26[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	test? (
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
+	)
+"
 
 distutils_enable_tests pytest
 
