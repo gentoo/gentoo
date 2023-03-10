@@ -392,7 +392,7 @@ multilib_src_configure() {
 
 	if use vulkan; then
 		vulkan_enable video_cards_freedreno freedreno
-		vulkan_enable video_cards_intel intel
+		vulkan_enable video_cards_intel intel intel_hasvk
 		vulkan_enable video_cards_d3d12 microsoft-experimental
 		vulkan_enable video_cards_radeonsi amd
 		vulkan_enable video_cards_v3d broadcom
