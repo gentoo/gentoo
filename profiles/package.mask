@@ -33,6 +33,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Guillermo Joandet <gjoandet@gmail.com> (2023-03-10)
+# BETA , preparation for Gnome 44
+>=dev-libs/gjs-1.75.90
+>=dev-libs/gjs-1.75.90
+>=dev-libs/glib-2.75.4
+>=dev-util/glib-utils-2.75.4
+>=dev-util/gdbus-codegen-2.75.4
+>=net-libs/glib-networking-2.76_beta
+>=dev-libs/gobject-introspection-common-1.75.6
+>=dev-libs/gobject-introspection-1.75.6
+>=gnome-base/gnome-shell-44_rc
+>=gnome-extra/gnome-shell-extensions-44_rc
+>=x11-wm/mutter-44_rc
+>=gnome-base/gnome-session-44_rc
+>=gnome-base/gnome-settings-daemon-44_rc
+
 # Mike Pagano <mpagano@gentoo.org> (2023-03-10)
 # Mask =sys-kernel/gentoo-sources-5.15.99 since it does
 # not include 5.15.99 and is misleading
