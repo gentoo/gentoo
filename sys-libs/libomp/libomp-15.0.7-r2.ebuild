@@ -24,7 +24,7 @@ RDEPEND="
 		virtual/libelf:=[${MULTILIB_USEDEP}]
 		dev-libs/libffi:=[${MULTILIB_USEDEP}]
 		~sys-devel/llvm-${PV}[${MULTILIB_USEDEP}]
-		llvm_targets_AMDGPU? ( dev-libs/rocr-runtime:0/5.3 )
+		llvm_targets_AMDGPU? ( dev-libs/rocr-runtime:= )
 	)
 "
 # tests:
