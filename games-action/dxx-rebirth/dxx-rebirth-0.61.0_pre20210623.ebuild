@@ -162,6 +162,10 @@ BDEPEND="virtual/pkgconfig"
 # and therefore requires a rebuild when changed.
 #IUSE_RUNTIME="flac l10n_de midi mp3 opl3-musicpack sc55-musicpack vorbis"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-12.patch
+)
+
 dxx_scons() {
 	# Always build profile `m`.  If use editor, also build profile `e`.
 	# Set most variables in the default anonymous profile.  Only
