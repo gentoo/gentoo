@@ -1,10 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="libpcap-based tool to collect network traffic data and emit it as NetFlow flows"
-HOMEPAGE="http://fprobe.sourceforge.net"
+HOMEPAGE="https://fprobe.sourceforge.net"
 SRC_URI="mirror://sourceforge/fprobe/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -19,6 +21,13 @@ PATCHES=(
 	"${FILESDIR}"/fprobe-1.1-pidfile-sanity.patch
 	"${FILESDIR}"/fprobe-1.1-setgroups.patch
 )
+
+src_prepare() {
+	default
+
+	# Clang 16, bug #899924
+	eautoreconf
+}
 
 src_configure() {
 	econf \
