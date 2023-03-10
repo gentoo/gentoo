@@ -706,7 +706,7 @@ ruby-ng_rspec() {
 	fi
 
 	if [[ "${DEPEND}${BDEPEND}" != *"dev-ruby/rspec"* ]]; then
-		ewarn "Missing test dependency dev-ruby/rspec"
+		eqawarn "Missing test dependency dev-ruby/rspec"
 	fi
 
 	local rspec_params=
