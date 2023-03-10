@@ -1,7 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit autotools
 
 DESCRIPTION="a dockapp that lets you easily track time spent on different projects"
 HOMEPAGE="https://www.dockapps.net/wmwork"
@@ -21,3 +23,8 @@ S="${WORKDIR}/${P}/src"
 
 DOCS=( ../{CHANGES,README} )
 PATCHES=( "${FILESDIR}"/${P}-gcc-10.patch )
+
+src_prepare() {
+	default
+	eautoreconf
+}
