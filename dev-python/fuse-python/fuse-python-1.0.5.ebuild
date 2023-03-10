@@ -13,7 +13,7 @@ DESCRIPTION="Python FUSE bindings"
 HOMEPAGE="https://github.com/libfuse/python-fuse"
 SRC_URI="
 	https://github.com/libfuse/python-fuse/archive/v${PV}.tar.gz
-		-> ${MY_P}.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
 S="${WORKDIR}/${MY_P}"
 
