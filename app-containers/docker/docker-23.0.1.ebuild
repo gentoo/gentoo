@@ -279,7 +279,7 @@ src_install() {
 
 	udev_dorules contrib/udev/*.rules
 
-	dodoc AUTHORS CONTRIBUTING.md CHANGELOG.md NOTICE README.md
+	dodoc AUTHORS CONTRIBUTING.md NOTICE README.md
 	dodoc -r docs/*
 
 	# note: intentionally not using "doins" so that we preserve +x bits
