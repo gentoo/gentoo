@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Communication package providing the X, Y, and ZMODEM file transfer protocols"
 HOMEPAGE="https://www.ohse.de/uwe/software/lrzsz.html"
@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-automake-1.13.patch
 	"${FILESDIR}"/${P}-gettext-0.20.patch
 	"${FILESDIR}"/${P}-AR.patch
+	"${FILESDIR}"/${P}-configure-clang16.patch
 )
 
 DOCS=( AUTHORS COMPATABILITY ChangeLog NEWS \
@@ -43,7 +44,6 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
-	append-flags -Wstrict-prototypes
 
 	econf $(use_enable nls)
 }
