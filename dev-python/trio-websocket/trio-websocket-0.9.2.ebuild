@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~riscv ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/async_generator-1.10[${PYTHON_USEDEP}]
