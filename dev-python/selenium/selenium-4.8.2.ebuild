@@ -25,7 +25,7 @@ SRC_URI+="
 	)
 "
 
-KEYWORDS="~amd64 ~sparc"
+KEYWORDS="~amd64 ~ppc ~sparc"
 LICENSE="Apache-2.0"
 SLOT="0"
 
