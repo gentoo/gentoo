@@ -80,6 +80,7 @@ src_configure() {
 		$(meson_use doc docbook)
 		-Dconsolekit=false
 		-Dman=true
+		-Dsystemduserunitdir=${EROOT}/etc/systemd/user
 	)
 	meson_src_configure
 }
