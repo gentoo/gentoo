@@ -44,7 +44,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
 		-DBUILD_PROJSYNC=$(usex curl)
-		-DBUILD_BENCHMARKS=OFF
 		-DENABLE_CURL=$(usex curl)
 		-DENABLE_TIFF=$(usex tiff)
 	)
