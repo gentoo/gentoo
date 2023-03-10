@@ -14,12 +14,16 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="pulseaudio"
 
 DEPEND="
 	dev-libs/glib:2
 	dev-libs/gobject-introspection
 	dev-libs/json-glib
-	dev-libs/libgee:=
+	pulseaudio? (
+		dev-libs/libgee:=
+		media-libs/libpulse
+	)
 	dev-libs/wayland
 	>=gui-libs/gtk-layer-shell-0.7.0[introspection]
 	gui-libs/libhandy:1
@@ -34,6 +38,7 @@ BDEPEND="
 "
 
 src_prepare() {
+	! use pulseaudio && local PATCHES=( "${FILESDIR}"/${P}-pulsefree.patch )
 	default
 	vala_setup
 }

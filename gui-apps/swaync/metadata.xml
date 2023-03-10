@@ -13,6 +13,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="pulseaudio">Enable audio slider (requires libpulse)</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">ErikReider/SwayNotificationCenter</remote-id>
 		<bugs-to>https://github.com/ErikReider/SwayNotificationCenter/issues</bugs-to>
