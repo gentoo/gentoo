@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,12 @@ RESTRICT="test"
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DUNITTEST=$(usex test)
+		# tries to look for octave during configure phase if unit
+		# tests are turned on and bails out during configure if it
+		# cannot find it.  since we have test dependency disabled
+		# for now, don't flip this configure flag
+		# -DUNITTEST=$(usex test) # reenable once tests wired up
+		-DUNITTEST=no
 		-DINSTALL_EXAMPLES=$(usex examples)
 	)
 
