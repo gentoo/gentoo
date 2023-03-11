@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..11} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -28,7 +28,9 @@ RDEPEND="
 BDEPEND="
 	test? (
 		${RDEPEND}
-		>=dev-python/pycurl-7.19.3.1[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/pycurl-7.19.3.1[${PYTHON_USEDEP}]
+		' 'python*')
 	)
 "
 
