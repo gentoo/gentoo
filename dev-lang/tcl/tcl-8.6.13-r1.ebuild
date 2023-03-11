@@ -31,6 +31,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.6.13-tclConfig-TCL_PACKAGE_PATH-braces.patch # Bug 892029
 )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	stat64 # used to test for Large File Support
+)
+
 src_prepare() {
 	find \
 		"${SPARENT}"/compat/* \
