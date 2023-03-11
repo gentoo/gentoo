@@ -92,13 +92,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Allow openssl to be cross-compiled
-	cp "${FILESDIR}"/gentoo.config-1.0.4 gentoo.config || die
-	chmod a+rx gentoo.config || die
-
-	# Keep this in sync with app-misc/c_rehash
-	SSL_CNF_DIR="/etc/ssl"
-
 	# Make sure we only ever touch Makefile.org and avoid patching a file
 	# that gets blown away anyways by the Configure script in src_configure
 	rm -f Makefile
@@ -115,6 +108,13 @@ src_prepare() {
 		einfo "Disabling test '80-test_ssl_new.t' which is known to fail with FEATURES=network-sandbox ..."
 		rm test/recipes/80-test_ssl_new.t || die
 	fi
+
+	multilib_copy_sources
+}
+
+src_configure() {
+	# Keep this in sync with app-misc/c_rehash
+	SSL_CNF_DIR="/etc/ssl"
 
 	# Quiet out unknown driver argument warnings since openssl
 	# doesn't have well-split CFLAGS and we're making it even worse
@@ -134,14 +134,6 @@ src_prepare() {
 
 	append-flags $(test-flags-CC -Wa,--noexecstack)
 
-	local sslout=$(./gentoo.config)
-	einfo "Using configuration: ${sslout:-(openssl knows best)}"
-	edo perl Configure ${sslout} --test-sanity
-
-	multilib_copy_sources
-}
-
-multilib_src_configure() {
 	# bug #197996
 	unset APPS
 	# bug #312551
@@ -151,6 +143,10 @@ multilib_src_configure() {
 
 	tc-export AR CC CXX RANLIB RC
 
+	multilib-minimal_src_configure
+}
+
+multilib_src_configure() {
 	use_ssl() { usex $1 "enable-${2:-$1}" "no-${2:-$1}" " ${*:3}" ; }
 
 	local krb5=$(has_version app-crypt/mit-krb5 && echo "MIT" || echo "Heimdal")
@@ -167,7 +163,7 @@ multilib_src_configure() {
 	#       ec_nistp_64_gcc_128="enable-ec_nistp_64_gcc_128"
 	#fi
 
-	local sslout=$(./gentoo.config)
+	local sslout=$(bash "${FILESDIR}/gentoo.config-1.0.4")
 	einfo "Using configuration: ${sslout:-(openssl knows best)}"
 
 	# https://github.com/openssl/openssl/blob/master/INSTALL.md#enable-and-disable-features
