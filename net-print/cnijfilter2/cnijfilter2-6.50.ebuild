@@ -21,14 +21,6 @@ DEPEND="virtual/libusb:1
 	net-print/cups"
 RDEPEND="${DEPEND}"
 
-QA_FLAGS_IGNORED=(
-	/usr/lib64/libcnbpnet30.so.1.0.0
-	/usr/lib64/libcnbpcnclapicom2.so.5.0.0
-	/usr/lib64/libcnnet2.so.1.2.5
-	/usr/lib64/libcnbpnet20.so.1.0.0
-	/usr/bin/cnijlgmon3
-)
-
 S="${WORKDIR}"/${MY_P}
 
 PATCHES=(
@@ -36,6 +28,16 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.80-cflags.patch
 	"${FILESDIR}"/${PN}-5.80-fno-common.patch
 )
+
+pkg_setup()  {
+	QA_PREBUILT="
+		/usr/$(get_libdir)/libcnbpnet30.so.1.0.0
+		/usr/$(get_libdir)/libcnbpcnclapicom2.so.5.0.0
+		/usr/$(get_libdir)/libcnnet2.so.1.2.5
+		/usr/$(get_libdir)/libcnbpnet20.so.1.0.0
+		/usr/bin/cnijlgmon3
+	"
+}
 
 src_prepare() {
 	default
