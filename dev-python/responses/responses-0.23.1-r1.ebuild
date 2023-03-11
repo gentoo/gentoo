@@ -6,16 +6,12 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Utility for mocking out the Python Requests library"
 HOMEPAGE="
 	https://pypi.org/project/responses/
 	https://github.com/getsentry/responses/
-"
-SRC_URI="
-	https://github.com/getsentry/responses/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
 "
 
 LICENSE="Apache-2.0"
