@@ -28,7 +28,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		app-text/pytextile[${PYTHON_USEDEP}]
+		dev-python/textile[${PYTHON_USEDEP}]
 		dev-python/docutils[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
 		dev-python/pymdown-extensions[${PYTHON_USEDEP}]
