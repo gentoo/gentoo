@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,8 +24,6 @@ LICENSE="Boost-1.0"
 SLOT="1"
 IUSE="test"
 RESTRICT="!test? ( test )"
-
-RDEPEND="!<dev-cpp/catch-1.12.2:0"
 
 src_configure() {
 	local mycmakeargs=(
