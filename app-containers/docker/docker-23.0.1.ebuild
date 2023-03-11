@@ -125,12 +125,12 @@ pkg_setup() {
 	fi
 
 	CONFIG_CHECK+="
-	~!LEGASY_SYSCALL_NATIVE
-	~LEGASY_SYSCALL_emulate
-	~!LEGASY_SYSCALL_none
+	~!LEGACY_VSYSCALL_NATIVE
+	~LEGACY_VSYSCALL_EMULATE
+	~!LEGACY_VSYSCALL_NONE
 	"
-	WARNING_LEGASY_SYSCALL_NONE="CONFIG_LEGASY_SYSCALL_NONE enabled: \
-		Containers with <=glibc 2.13 will not work"
+	WARNING_LEGACY_SYSCALL_NONE="CONFIG_LEGACY_VSYSCALL_NONE enabled: \
+		Containers with <=glibc-2.13 will not work"
 
 	if kernel_is le 4 5; then
 		CONFIG_CHECK+="
