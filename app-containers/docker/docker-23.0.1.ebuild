@@ -253,14 +253,6 @@ src_compile() {
 		fi
 	done
 
-	if use hardened; then
-		sed -i "s/EXTLDFLAGS_STATIC='/&-fno-PIC /" hack/make.sh || die
-		grep -q -- '-fno-PIC' hack/make.sh || die 'hardened sed failed'
-		sed  "s/LDFLAGS_STATIC_DOCKER='/&-extldflags -fno-PIC /" \
-			-i hack/make/dynbinary-daemon || die
-		grep -q -- '-fno-PIC' hack/make/dynbinary-daemon || die 'hardened sed failed'
-	fi
-
 	# build daemon
 	./hack/make.sh dynbinary || die 'dynbinary failed'
 }
