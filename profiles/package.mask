@@ -285,12 +285,6 @@ dev-java/osgi-annotation-versioning
 dev-java/commons-text
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-03)
-# Dead upstream, no active maintainer, no reverse dependencies,
-# build issues.
-# Removal on 2023-03-05.  Bug #892918.
-x11-themes/gtk-engines-nodoka
-
-# Michał Górny <mgorny@gentoo.org> (2023-02-03)
 # The package has been archived upstream.  It is broken with all Python
 # versions supported by Gentoo, and it is broken with django-2.
 # The other listed packages are its reverse dependencies.
