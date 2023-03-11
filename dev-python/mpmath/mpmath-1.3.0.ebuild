@@ -14,7 +14,10 @@ HOMEPAGE="
 	https://github.com/mpmath/mpmath/
 	https://pypi.org/project/mpmath/
 "
-SRC_URI="https://github.com/mpmath/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/mpmath/mpmath/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD"
 SLOT="0"
