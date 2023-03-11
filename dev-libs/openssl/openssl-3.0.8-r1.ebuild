@@ -222,6 +222,8 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install_sw
 	if use fips; then
 		emake DESTDIR="${D}" install_fips
+		# Regen this in pkg_preinst, bug 900625
+		rm "${ED}${SSL_CNF_DIR}"/fipsmodule.cnf || die
 	fi
 
 	if multilib_is_native_abi; then
@@ -255,6 +257,17 @@ multilib_src_install_all() {
 
 	diropts -m0700
 	keepdir ${SSL_CNF_DIR}/private
+}
+
+pkg_preinst() {
+	if use fips; then
+		# Regen fipsmodule.cnf, bug 900625
+		ebegin "Running openssl fipsinstall"
+		"${ED}/usr/bin/openssl" fipsinstall -quiet \
+			-out "${ED}${SSL_CNF_DIR}/fipsmodule.cnf" \
+			-module "${ED}/usr/$(get_libdir)/ossl-modules/fips.so"
+		eend $?
+	fi
 }
 
 pkg_postinst() {
