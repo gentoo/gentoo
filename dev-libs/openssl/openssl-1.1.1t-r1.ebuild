@@ -75,13 +75,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Allow openssl to be cross-compiled
-	cp "${FILESDIR}"/gentoo.config-1.0.4 gentoo.config || die
-	chmod a+rx gentoo.config || die
-
-	# Keep this in sync with app-misc/c_rehash
-	SSL_CNF_DIR="/etc/ssl"
-
 	# Make sure we only ever touch Makefile.org and avoid patching a file
 	# that gets blown away anyways by the Configure script in src_configure
 	rm -f Makefile
@@ -99,25 +92,6 @@ src_prepare() {
 		rm test/recipes/80-test_ssl_new.t || die
 	fi
 
-	# Quiet out unknown driver argument warnings since openssl
-	# doesn't have well-split CFLAGS and we're making it even worse
-	# and 'make depend' uses -Werror for added fun (bug #417795 again)
-	tc-is-clang && append-flags -Qunused-arguments
-
-	# We really, really need to build OpenSSL w/ strict aliasing disabled.
-	# It's filled with violations and it *will* result in miscompiled
-	# code. This has been in the ebuild for > 10 years but even in 2022,
-	# it's still relevant:
-	# - https://github.com/llvm/llvm-project/issues/55255
-	# - https://github.com/openssl/openssl/issues/18225
-	# - https://github.com/openssl/openssl/issues/18663#issuecomment-1181478057
-	# Don't remove the no strict aliasing bits below!
-	filter-flags -fstrict-aliasing
-	append-flags -fno-strict-aliasing
-
-	append-cppflags -DOPENSSL_NO_BUF_FREELISTS
-
-	append-flags $(test-flags-CC -Wa,--noexecstack)
 
 	# Remove test target when FEATURES=test isn't set
 	if ! use test ; then
@@ -140,19 +114,34 @@ src_prepare() {
 			Configurations/10-main.conf || die
 	fi
 
-	local sslout=$(./gentoo.config)
-	einfo "Using configuration: ${sslout:-(openssl knows best)}"
-	local config="perl Configure"
-	[[ -z ${sslout} ]] && config="sh config -v"
-
 	# The config script does stupid stuff to prompt the user.  Kill it.
 	sed -i '/stty -icanon min 0 time 50; read waste/d' config || die
-	edo ${config} ${sslout} --test-sanity
-
-	multilib_copy_sources
 }
 
-multilib_src_configure() {
+src_configure() {
+	# Keep this in sync with app-misc/c_rehash
+	SSL_CNF_DIR="/etc/ssl"
+
+	# Quiet out unknown driver argument warnings since openssl
+	# doesn't have well-split CFLAGS and we're making it even worse
+	# and 'make depend' uses -Werror for added fun (bug #417795 again)
+	tc-is-clang && append-flags -Qunused-arguments
+
+	# We really, really need to build OpenSSL w/ strict aliasing disabled.
+	# It's filled with violations and it *will* result in miscompiled
+	# code. This has been in the ebuild for > 10 years but even in 2022,
+	# it's still relevant:
+	# - https://github.com/llvm/llvm-project/issues/55255
+	# - https://github.com/openssl/openssl/issues/18225
+	# - https://github.com/openssl/openssl/issues/18663#issuecomment-1181478057
+	# Don't remove the no strict aliasing bits below!
+	filter-flags -fstrict-aliasing
+	append-flags -fno-strict-aliasing
+
+	append-cppflags -DOPENSSL_NO_BUF_FREELISTS
+
+	append-flags $(test-flags-CC -Wa,--noexecstack)
+
 	# bug #197996
 	unset APPS
 	# bug #312551
@@ -162,6 +151,10 @@ multilib_src_configure() {
 
 	tc-export AR CC CXX RANLIB RC
 
+	multilib-minimal_src_configure
+}
+
+multilib_src_configure() {
 	use_ssl() { usex $1 "enable-${2:-$1}" "no-${2:-$1}" " ${*:3}" ; }
 
 	local krb5=$(has_version app-crypt/mit-krb5 && echo "MIT" || echo "Heimdal")
@@ -178,10 +171,10 @@ multilib_src_configure() {
 	#	ec_nistp_64_gcc_128="enable-ec_nistp_64_gcc_128"
 	#fi
 
-	local sslout=$(./gentoo.config)
+	local sslout=$(bash "${FILESDIR}/gentoo.config-1.0.4")
 	einfo "Use configuration ${sslout:-(openssl knows best)}"
-	local config="perl Configure"
-	[[ -z ${sslout} ]] && config="sh config -v"
+	local config=( perl "${S}/Configure" )
+	[[ -z ${sslout} ]] && config=( sh "${S}/config" -v )
 
 	# "disable-deprecated" option breaks too many consumers.
 	# Don't set it without thorough revdeps testing.
@@ -219,7 +212,7 @@ multilib_src_configure() {
 		threads
 	)
 
-	edo ${config} "${myeconfargs[@]}"
+	edo "${config[@]}" "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
