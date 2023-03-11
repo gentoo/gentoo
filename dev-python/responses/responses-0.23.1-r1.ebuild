@@ -43,6 +43,12 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	# remove unnecessary RDEP on type stubs
+	sed -i -e '/types-/d' setup.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	epytest -p no:localserver
 }
