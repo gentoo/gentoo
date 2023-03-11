@@ -6,16 +6,12 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A pluggable API specification generator"
 HOMEPAGE="
 	https://github.com/marshmallow-code/apispec/
 	https://pypi.org/project/apispec/
-"
-SRC_URI="
-	https://github.com/marshmallow-code/apispec/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"
