@@ -416,12 +416,6 @@ dev-ruby/railties:5.2
 dev-ruby/arel
 =www-apps/redmine-4.2.9
 
-# Alfredo Tupone <tupone@gentoo.org> (2023-01-18)
-# Masked for removal in 30 days.
-# Not maintained (2006), no rev dep, bugs
-# (bug #891283)
-dev-tcltk/tclperl
-
 # David Seifert <soap@gentoo.org> (2023-01-14)
 # Py3.8 only backports
 dev-python/backports-tempfile
