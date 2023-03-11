@@ -10,11 +10,11 @@ inherit distutils-r1
 
 DESCRIPTION="OpenAPI schema validation for Python"
 HOMEPAGE="
-	https://github.com/p1c2u/openapi-schema-validator/
+	https://github.com/python-openapi/openapi-schema-validator/
 	https://pypi.org/project/openapi-schema-validator/
 "
 SRC_URI="
-	https://github.com/p1c2u/openapi-schema-validator/archive/${PV}.tar.gz
+	https://github.com/python-openapi/openapi-schema-validator/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
