@@ -9,7 +9,7 @@ RUBY_FAKEGEM_EXTRADOC="README.rdoc NEWS"
 inherit ruby-fakegem
 
 DESCRIPTION="A pkg-config implementation by Ruby"
-HOMEPAGE="https://github.com/rcairo/pkg-config"
+HOMEPAGE="https://github.com/ruby-gnome/pkg-config"
 LICENSE="|| ( LGPL-2 LGPL-2.1 LGPL-3 )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
