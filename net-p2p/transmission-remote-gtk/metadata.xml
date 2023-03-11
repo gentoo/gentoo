@@ -5,6 +5,10 @@
 		<email>leio@gentoo.org</email>
 		<name>Mart Raudsepp</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+	</maintainer>
 	<use>
 		<flag name="libproxy">Use <pkg>net-libs/libproxy</pkg> for 
 			getting the HTTP/HTTPS/SOCKS proxy configuration.</flag>
