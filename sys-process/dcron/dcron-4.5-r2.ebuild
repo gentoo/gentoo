@@ -1,28 +1,29 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit cron toolchain-funcs systemd
 
 DESCRIPTION="A cute little cron from Matt Dillon"
-HOMEPAGE="http://www.jimpryor.net/linux/dcron.html http://apollo.backplane.com/FreeSrc/"
+HOMEPAGE="
+	http://www.jimpryor.net/linux/dcron.html
+	http://apollo.backplane.com/FreeSrc/"
 SRC_URI="http://www.jimpryor.net/linux/releases/${P}.tar.gz"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
-DOCS=( CHANGELOG README extra/run-cron extra/root.crontab "${FILESDIR}"/crontab )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.5-ldflags.patch
+	"${FILESDIR}"/${PN}-4.5-pidfile.patch
+)
 
-PATCHES=( "${FILESDIR}"/${PN}-4.5-ldflags.patch "${FILESDIR}"/${PN}-4.5-pidfile.patch )
-
-src_prepare() {
-	default
-
+src_configure() {
 	tc-export CC
 
-	cat <<-EOF > config
+	cat > config <<-EOF || die
 		PREFIX = /usr
 		CRONTAB_GROUP = cron
 	EOF
@@ -30,6 +31,7 @@ src_prepare() {
 
 src_install() {
 	default
+	dodoc extra/run-cron extra/root.crontab "${FILESDIR}"/crontab
 
 	docrondir
 	docron crond -m0700 -o root -g wheel
