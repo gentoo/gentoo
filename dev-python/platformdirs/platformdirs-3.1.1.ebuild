@@ -6,16 +6,12 @@ EAPI=8
 DISTUTILS_USE_PEP517=flit
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A small Python module for determining appropriate platform-specific dirs"
 HOMEPAGE="
 	https://pypi.org/project/platformdirs/
 	https://github.com/platformdirs/platformdirs/
-"
-SRC_URI="
-	https://github.com/platformdirs/platformdirs/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
 "
 
 LICENSE="MIT"
