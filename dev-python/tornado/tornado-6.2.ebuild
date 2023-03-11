@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python web framework and asynchronous networking library"
 HOMEPAGE="
@@ -15,7 +15,6 @@ HOMEPAGE="
 	https://github.com/tornadoweb/tornado/
 	https://pypi.org/project/tornado/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
