@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-USE_RUBY="ruby24 ruby25 ruby26 ruby27"
+USE_RUBY="ruby27 ruby30 ruby31"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC="doc:all"
 RUBY_FAKEGEM_EXTRAINSTALL="locales"
