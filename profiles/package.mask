@@ -47,6 +47,7 @@ dev-ruby/net-http-persistent:3
 
 # Guillermo Joandet <gjoandet@gmail.com> (2023-03-11)
 # In preparation for GNOME 44
+>=app-text/evince-44_rc
 >=dev-libs/gjs-1.75
 >=dev-python/pygobject-3.43
 >=gnome-base/gnome-session-44_rc
