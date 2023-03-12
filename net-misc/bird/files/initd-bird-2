@@ -5,13 +5,12 @@
 
 extra_started_commands="reload"
 
-pidfile="/run/${RC_SVCNAME}.pid"
+pidfile="/run/${RC_SVCNAME}/${RC_SVCNAME}.pid"
 command="/usr/sbin/${RC_SVCNAME}"
 retry=15
-start_stop_daemon_args="--make-pidfile"
 
 CONF_FILE="/etc/${RC_SVCNAME}.conf"
-SOCK="/run/${RC_SVCNAME}.ctl"
+SOCK="/run/${RC_SVCNAME}/${RC_SVCNAME}.ctl"
 
 if [ ${BIRD_GROUP} ]; then
 	BIRD_OPTS="${BIRD_OPTS} -g ${BIRD_GROUP}"
@@ -22,10 +21,9 @@ fi
 
 client_args="-s ${SOCK}"
 command_args="${client_args} -c ${CONF_FILE} -P ${pidfile} ${BIRD_OPTS}"
-client_args="${client_args} -r"
 
 depend() {
-	need net
+	use net
 	use logger
 }
 
@@ -52,8 +50,12 @@ reload() {
 	eend $?
 }
 
+start_pre() {
+	checkpath -d -m 0755 -o bird:bird "/run/${RC_SVCNAME}"
+}
+
 start_post() {
-	checkpath -f -m 0655 -o bird:bird "${pidfile}"
+	ln -sf "${SOCK}" /run
 }
 
 stop_pre() {
