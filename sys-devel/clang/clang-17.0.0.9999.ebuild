@@ -51,9 +51,7 @@ LLVM_COMPONENTS=(
 )
 LLVM_MANPAGES=1
 LLVM_TEST_COMPONENTS=(
-	llvm/lib/Testing
 	llvm/utils
-	third-party
 )
 LLVM_USE_TARGETS=llvm
 llvm.org_set_globals
