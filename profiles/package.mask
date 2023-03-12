@@ -165,6 +165,7 @@ dev-ruby/net-http-persistent:3
 >=gnome-base/gnome-shell-44_rc
 >=gnome-base/librsvg-2.55.90
 >=gnome-base/nautilus-44_rc
+>=gnome-extra/evolution-data-server-3.48
 >=gnome-extra/gnome-boxes-44_rc
 >=gnome-extra/gnome-calculator-44_rc
 >=gnome-extra/gnome-calendar-44_rc
