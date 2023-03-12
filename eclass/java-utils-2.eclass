@@ -2390,7 +2390,7 @@ java-pkg_init-compiler_() {
 
 }
 
-# @FUNCTION: init_paths_
+# @FUNCTION: java-pkg_init_paths_
 # @INTERNAL
 # @DESCRIPTION:
 # Initializes some variables that will be used. These variables are mostly used
