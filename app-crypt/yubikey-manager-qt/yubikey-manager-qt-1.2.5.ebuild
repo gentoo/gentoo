@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit qmake-utils python-single-r1 desktop
+inherit qmake-utils python-single-r1 desktop xdg
 
 DESCRIPTION="Cross-platform application for configuring any YubiKey over all USB transports"
 HOMEPAGE="https://developers.yubico.com/yubikey-manager-qt/ https://github.com/Yubico/yubikey-manager-qt"
