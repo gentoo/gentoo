@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-03-12)
+# Mask ruby27-only slot for removal. Use a newer slot instead.
+# Masked for removal on 2023-04-12.
+dev-ruby/net-http-persistent:3
+
 # Guillermo Joandet <gjoandet@gmail.com> (2023-03-11)
 # In preparation for GNOME 44
 >=dev-libs/gjs-1.75
