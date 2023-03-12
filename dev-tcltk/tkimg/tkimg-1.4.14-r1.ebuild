@@ -37,6 +37,12 @@ S="${WORKDIR}/${MYP}"
 
 PATCHES=( "${WORKDIR}"/patchset-1 )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	stat64 # used to test for Large File Support
+	glBegin # used to test for openGL support
+	glutMainLoop # used to test for glut support
+)
+
 src_prepare() {
 	edos2unix \
 		libjpeg/jpegtclDecls.h \
