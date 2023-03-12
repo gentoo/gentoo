@@ -82,6 +82,46 @@ dev-ruby/net-http-persistent:3
 >=sys-apps/gnome-disk-utility-44_rc
 >=sys-apps/xdg-desktop-portal-gnome-44_rc
 >=x11-wm/mutter-44_rc
+>=app-editors/ghex-44_rc
+>=gnome-base/gdm-44_rc
+>=gnome-base/gnome-control-center-44_rc
+>=gui-libs/libadwaita-1.3_rc
+>=gui-apps/gnome-console-44_beta
+>=mail-client/evolution-3.47.3
+>=gnome-extra/evolution-data-server-3.47.3
+>=gnome-extra/evolution-ews-3.47.3
+>=app-text/evince-44_rc
+>=gnome-base/nautilus-44_rc
+>=net-libs/webkit-gtk-2.39.90:6
+>=www-client/epiphany-44_rc
+>=gnome-extra/gnome-characters-44_rc
+>=gnome-extra/gnome-calculator-44_rc
+>=gnome-extra/gnome-software-44_rc
+>=gnome-extra/gnome-boxes-44_rc
+>=sys-apps/xdg-desktop-portal-gnome-44_rc
+>=app-editors/gnome-text-editor-44_rc
+>=games-puzzle/atomix-44_rc
+>=gnome-extra/gnome-clocks-44_rc
+>=gnome-extra/gnome-system-monitor-44_rc
+>=sys-apps/gnome-disk-utility-44_rc
+>=sys-apps/baobab-44_rc
+>=net-misc/gnome-connections-44_rc
+>=net-misc/gnome-remote-desktop-44_rc
+>=media-gfx/gnome-font-viewer-44_rc
+>=gnome-extra/gnome-user-docs-44_rc
+>=gnome-extra/gnome-weather-44_rc
+>=sci-geosciences/gnome-maps-44_rc
+>=media-sound/gnome-music-44_rc
+>=gnome-extra/gnome-calendar-44_rc
+>=gnome-extra/gnome-contacts-44_rc
+>=app-misc/tracker-3.5.0_rc
+>=app-misc/tracker-miners-3.5.0_rc
+>=gui-libs/vte-0.70.3
+>=x11-libs/vte-0.70.3
+>=gui-libs/vte-common-0.70.3
+
+
+
 
 # Hans de Graaff <graaff@gentoo.org> (2023-03-11)
 # Mask ruby27-only dev-ruby/sass-rails:5.0 for removal. Use a newer
