@@ -11,7 +11,7 @@ inherit systemd flag-o-matic prefix toolchain-funcs \
 
 HOMEPAGE="https://mariadb.org/"
 SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
-	https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.11.1-patches-01.tar.xz"
+	https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.11.2-patches-01.tar.xz"
 
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2 LGPL-2.1+"
