@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit virtualx
+inherit virtualx autotools
 
 BASE_URI_ITCLTK="mirror://sourceforge/incrtcl/%5BIncr%20Tcl_Tk%5D-4-source"
 ITCL_VER=4.1.1
@@ -27,11 +27,17 @@ DEPEND="
 	>=dev-tcltk/itk-${ITK_VER}"
 RDEPEND="${DEPEND}"
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	stat64 # used to test for Large File Support
+)
+
 src_prepare() {
 	default
 	sed \
 		-e "/^\(LIB\|SCRIPT\)_INSTALL_DIR =/s|lib|$(get_libdir)|" \
 		-i Makefile.in || die
+
+	eautoreconf
 
 	# Bug 115470
 	rm doc/panedwindow.n
