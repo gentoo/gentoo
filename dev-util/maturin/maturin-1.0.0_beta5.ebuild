@@ -12,7 +12,7 @@ CRATES="
 	autocfg-1.1.0
 	base64-0.13.1
 	bitflags-1.3.2
-	block-buffer-0.10.3
+	block-buffer-0.10.4
 	bstr-1.3.0
 	bumpalo-3.12.0
 	byteorder-1.4.3
@@ -21,12 +21,12 @@ CRATES="
 	bzip2-0.4.4
 	bzip2-sys-0.1.11+1.0.8
 	cab-0.4.1
-	camino-1.1.3
-	cargo-config2-0.1.5
+	camino-1.1.4
+	cargo-config2-0.1.6
 	cargo-options-0.6.0
 	cargo-platform-0.1.2
-	cargo-xwin-0.14.0
-	cargo-zigbuild-0.16.1
+	cargo-xwin-0.14.1
+	cargo-zigbuild-0.16.3
 	cargo_metadata-0.15.3
 	cbindgen-0.24.3
 	cc-1.0.79
@@ -53,10 +53,10 @@ CRATES="
 	core-foundation-sys-0.8.3
 	cpufeatures-0.2.5
 	crc32fast-1.3.2
-	crossbeam-channel-0.5.6
-	crossbeam-deque-0.8.2
-	crossbeam-epoch-0.9.13
-	crossbeam-utils-0.8.14
+	crossbeam-channel-0.5.7
+	crossbeam-deque-0.8.3
+	crossbeam-epoch-0.9.14
+	crossbeam-utils-0.8.15
 	crunchy-0.2.2
 	crypto-common-0.1.6
 	ctor-0.1.26
@@ -69,13 +69,6 @@ CRATES="
 	dunce-1.0.3
 	either-1.8.1
 	encode_unicode-0.3.6
-	encoding-0.2.33
-	encoding-index-japanese-1.20141219.5
-	encoding-index-korean-1.20141219.5
-	encoding-index-simpchinese-1.20141219.5
-	encoding-index-singlebyte-1.20141219.5
-	encoding-index-tradchinese-1.20141219.5
-	encoding_index_tests-0.1.4
 	encoding_rs-0.8.32
 	errno-0.2.8
 	errno-dragonfly-0.1.2
@@ -92,7 +85,7 @@ CRATES="
 	getrandom-0.2.8
 	glob-0.3.1
 	globset-0.4.10
-	goblin-0.6.0
+	goblin-0.6.1
 	hashbrown-0.12.3
 	heck-0.4.1
 	hermit-abi-0.2.6
@@ -103,17 +96,17 @@ CRATES="
 	ignore-0.4.20
 	indexmap-1.9.2
 	indicatif-0.17.3
-	indoc-2.0.0
+	indoc-2.0.1
 	instant-0.1.12
 	io-lifetimes-1.0.4
 	is-terminal-0.4.2
 	itertools-0.10.5
-	itoa-1.0.5
+	itoa-1.0.6
 	js-sys-0.3.61
 	keyring-2.0.1
 	lazy_static-1.4.0
 	lddtree-0.3.2
-	libc-0.2.139
+	libc-0.2.140
 	linux-keyutils-0.2.3
 	linux-raw-sys-0.1.4
 	lock_api-0.4.9
@@ -122,13 +115,13 @@ CRATES="
 	mailparse-0.13.8
 	matchers-0.1.0
 	memchr-2.5.0
-	memoffset-0.7.1
+	memoffset-0.8.0
 	mime-0.3.16
 	mime_guess-2.0.4
-	minijinja-0.30.4
+	minijinja-0.30.6
 	minimal-lexical-0.2.1
 	miniz_oxide-0.6.2
-	msi-0.5.0
+	msi-0.5.1
 	multipart-0.18.0
 	native-tls-0.2.11
 	nom-7.1.3
@@ -141,7 +134,7 @@ CRATES="
 	openssl-0.10.45
 	openssl-macros-0.1.0
 	openssl-probe-0.1.5
-	openssl-src-111.25.0+1.1.1t
+	openssl-src-111.25.1+1.1.1t
 	openssl-sys-0.9.80
 	os_pipe-1.1.2
 	os_str_bytes-6.4.1
@@ -170,22 +163,21 @@ CRATES="
 	rand-0.8.5
 	rand_chacha-0.3.1
 	rand_core-0.6.4
-	rayon-1.6.1
-	rayon-core-1.10.2
+	rayon-1.7.0
+	rayon-core-1.11.0
 	redox_syscall-0.2.16
 	redox_users-0.4.3
 	regex-1.7.1
 	regex-automata-0.1.10
 	regex-syntax-0.6.28
-	remove_dir_all-0.5.3
 	rfc2047-decoder-0.2.1
 	ring-0.16.20
 	rustc_version-0.4.0
 	rustix-0.36.7
 	rustls-0.20.8
 	rustls-pemfile-1.0.1
-	rustversion-1.0.11
-	ryu-1.0.12
+	rustversion-1.0.12
+	ryu-1.0.13
 	same-file-1.0.6
 	schannel-0.1.21
 	scopeguard-1.1.0
@@ -195,9 +187,9 @@ CRATES="
 	security-framework-2.8.2
 	security-framework-sys-2.8.0
 	semver-1.0.16
-	serde-1.0.152
-	serde_derive-1.0.152
-	serde_json-1.0.93
+	serde-1.0.155
+	serde_derive-1.0.155
+	serde_json-1.0.94
 	serde_spanned-0.6.1
 	sha2-0.10.6
 	sharded-slab-0.1.4
@@ -216,12 +208,12 @@ CRATES="
 	syn-1.0.109
 	tar-0.4.38
 	target-lexicon-0.12.6
-	tempfile-3.3.0
+	tempfile-3.4.0
 	termcolor-1.2.0
 	terminal_size-0.2.3
 	textwrap-0.16.0
-	thiserror-1.0.38
-	thiserror-impl-1.0.38
+	thiserror-1.0.39
+	thiserror-impl-1.0.39
 	thread_local-1.1.7
 	time-0.3.20
 	time-core-0.1.0
@@ -243,8 +235,8 @@ CRATES="
 	twox-hash-1.6.3
 	typenum-1.16.0
 	unicase-2.6.0
-	unicode-bidi-0.3.10
-	unicode-ident-1.0.6
+	unicode-bidi-0.3.11
+	unicode-ident-1.0.8
 	unicode-linebreak-0.1.4
 	unicode-normalization-0.1.22
 	unicode-width-0.1.10
@@ -282,7 +274,7 @@ CRATES="
 	windows_x86_64_msvc-0.42.1
 	winnow-0.3.3
 	xattr-0.2.3
-	xwin-0.2.10
+	xwin-0.2.11
 	yansi-0.5.1
 	zeroize-1.5.7
 	zip-0.6.4"
@@ -297,10 +289,11 @@ CRATES_TEST="
 	camino-1.1.2
 	cc-1.0.73
 	cc-1.0.74
+	goblin-0.6.0
 	indoc-1.0.7
+	itoa-1.0.5
 	libc-0.2.134
 	libc-0.2.137
-	memoffset-0.8.0
 	once_cell-1.15.0
 	once_cell-1.16.0
 	once_cell-1.17.0
@@ -316,12 +309,19 @@ CRATES_TEST="
 	pyo3-macros-backend-0.18.1
 	python3-dll-a-0.2.6
 	quote-1.0.21
+	ryu-1.0.12
+	serde-1.0.152
+	serde_derive-1.0.152
+	serde_json-1.0.93
 	siphasher-0.3.10
 	syn-1.0.102
 	syn-1.0.103
 	syn-1.0.107
 	target-lexicon-0.12.4
+	thiserror-1.0.38
+	thiserror-impl-1.0.38
 	unicode-ident-1.0.5
+	unicode-ident-1.0.6
 	uniffi-0.23.0
 	uniffi_bindgen-0.23.0
 	uniffi_build-0.23.0
