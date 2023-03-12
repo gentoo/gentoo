@@ -48,7 +48,7 @@ src_configure() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export EGO_BUILD_FLAGS="$(usev sass "-tags extended")"
+	export MY_BUILD_FLAGS="$(usev sass "-tags extended")"
 
 	default
 }
@@ -56,7 +56,7 @@ src_configure() {
 src_compile() {
 	mkdir -pv bin || die
 	ego build -ldflags "-X github.com/gohugoio/hugo/common/hugo.vendorInfo=gentoo:${PVR}" \
-		-o "${S}/bin/hugo"
+		${MY_BUILD_FLAGS} -o "${S}/bin/hugo"
 
 	bin/hugo gen man --dir man || die
 
@@ -71,7 +71,7 @@ src_compile() {
 }
 
 src_test() {
-	ego test "./..."
+	ego test "./..." ${MY_BUILD_FLAGS}
 }
 
 src_install() {
