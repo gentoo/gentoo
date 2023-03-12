@@ -138,14 +138,14 @@ src_install() {
 }
 
 pkg_postrm() {
-	if use gtk || use qt5; then
+	if use gtk || use qt5 || use qt6; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi
 }
 
 pkg_postinst() {
-	if use gtk || use qt5; then
+	if use gtk || use qt5 || use qt6; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi
