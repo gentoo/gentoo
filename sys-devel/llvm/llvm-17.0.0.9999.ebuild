@@ -67,8 +67,7 @@ PDEPEND="
 	binutils-plugin? ( >=sys-devel/llvmgold-${LLVM_MAJOR} )
 "
 
-LLVM_COMPONENTS=( llvm cmake )
-LLVM_TEST_COMPONENTS=( third-party )
+LLVM_COMPONENTS=( llvm cmake third-party )
 LLVM_MANPAGES=1
 LLVM_USE_TARGETS=provide
 llvm.org_set_globals
@@ -126,6 +125,9 @@ check_distribution_components() {
 						;;
 					# TableGen lib + deps
 					LLVMDemangle|LLVMSupport|LLVMTableGen)
+						;;
+					# testing libraries
+					LLVMTestingAnnotations|LLVMTestingSupport)
 						;;
 					# static libs
 					LLVM*)
@@ -203,6 +205,12 @@ get_distribution_components() {
 		LLVMDemangle
 		LLVMSupport
 		LLVMTableGen
+
+		# testing libraries
+		llvm_gtest
+		llvm_gtest_main
+		LLVMTestingAnnotations
+		LLVMTestingSupport
 	)
 
 	if multilib_is_native_abi; then
@@ -350,8 +358,9 @@ multilib_src_configure() {
 		-DLLVM_TARGETS_TO_BUILD=""
 		-DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 		-DLLVM_INCLUDE_BENCHMARKS=OFF
-		-DLLVM_INCLUDE_TESTS=$(usex test)
+		-DLLVM_INCLUDE_TESTS=ON
 		-DLLVM_BUILD_TESTS=$(usex test)
+		-DLLVM_INSTALL_GTEST=ON
 
 		-DLLVM_ENABLE_FFI=$(usex libffi)
 		-DLLVM_ENABLE_LIBEDIT=$(usex libedit)
