@@ -1,0 +1,110 @@
+--- a/generic/Arc.c	2023-03-12 16:09:32.174198907 +0100
++++ b/generic/Arc.c	2023-03-12 16:10:45.138024965 +0100
+@@ -350,7 +350,8 @@
+ {
+   ZnPoint       *p_list, p, p2, o, o2;
+   ZnReal        width, height, d;
+-  int           num_p, i, quality;
++  unsigned int  num_p;
++  int           i, quality;
+   ZnTransfo     *t = ((ZnItem) arc)->wi->current_transfo;
+   
+   if (!arc->render_shape) {
+@@ -1026,7 +1027,8 @@
+ UpdateRenderShapeX(ArcItem      arc)
+ {
+   ZnReal        ox, oy, width_2, height_2;
+-  int           i, num_p;
++  int           i;
++  unsigned int  num_p;
+   ZnPoint       *p_list;
+   
+   if (!arc->render_shape) {
+--- a/generic/Curve.c	2023-03-12 16:13:23.544477181 +0100
++++ b/generic/Curve.c	2023-03-12 16:17:20.023675722 +0100
+@@ -1207,7 +1207,8 @@
+    * if last point join first point suppress markers at end points.
+    */
+   if (ISSET(cv->flags, MARKER_OK)) {
+-    unsigned int h_width, h_height, width, height;
++    unsigned int h_width, h_height;
++    int          width, height;
+     int          tmp_x, tmp_y;
+ 
+     ZnSizeOfImage(cv->marker, &width, &height);
+--- a/generic/Item.c	2023-03-12 16:32:15.783502590 +0100
++++ b/generic/Item.c	2023-03-12 16:37:06.944877639 +0100
+@@ -350,7 +350,8 @@
+       {
+         ZnList   new_grad_list = NULL;
+         ZnGradient       **grads;
+-        unsigned int num_grads, j, k;
++        int          num_grads;
++        unsigned int j, k;
+         Tcl_Obj  **elems;
+             
+         if (Tcl_ListObjGetElements(wi->interp, args[i+1],
+@@ -467,7 +468,8 @@
+       {
+         ZnList   new_pat_list = NULL;
+         ZnImage  *pats;
+-        unsigned int num_pats, j, k;
++        int      num_pats;
++        unsigned int j, k;
+         Tcl_Obj  **elems;
+         ZnBool   is_bmap = True;
+         
+--- a/generic/Attrs.c	2023-03-12 16:52:59.616742607 +0100
++++ b/generic/Attrs.c	2023-03-12 16:53:29.010275580 +0100
+@@ -170,7 +170,8 @@
+             Tcl_Obj     *name,
+             ZnBorder    *border)
+ {
+-  unsigned int j, len, largc;
++  unsigned int j, len;
++  int          largc;
+   Tcl_Obj      **largv;
+   char         *str;
+ 
+--- a/generic/PostScript.c	2023-03-12 17:11:26.721797681 +0100
++++ b/generic/PostScript.c	2023-03-12 17:12:08.943156663 +0100
+@@ -1796,7 +1796,7 @@
+                   int               h)
+ {
+   int              result;
+-  XImage           *ximage;
++  XImage           *ximage = NULL;
+   Tk_PhotoHandle   tkphoto;
+   
+   if (((TkPostscriptInfo *) ps_info)->prepass) {
+--- a/generic/Draw.c	2023-03-12 17:14:07.814350198 +0100
++++ b/generic/Draw.c	2023-03-12 17:15:16.429306397 +0100
+@@ -1271,7 +1271,7 @@
+       glEnd();
+     }
+     else {
+-      int       num_cpoints;
++      unsigned int num_cpoints;
+       ZnReal    lw_2 = line_width / 2.0;
+       ZnPoint   *cpoints = ZnGetCirclePoints(3, ZN_CIRCLE_COARSE,
+                                              0.0, 2*M_PI, &num_cpoints, NULL);
+@@ -2000,7 +2000,7 @@
+   Tcl_UniChar   c;
+ 
+   while (len) {
+-    clen = Tcl_UtfToUniChar(string, &c);
++    clen = Tcl_UtfToUniChar((const char *)string, &c);
+ 
+     ZnRenderGlyph(tfi, c);
+ 
+--- a/generic/Text.c	2023-03-12 17:16:54.897807077 +0100
++++ b/generic/Text.c	2023-03-12 17:21:09.423924386 +0100
+@@ -1105,7 +1105,7 @@
+   int           font_height;  
+   int           underline_thickness, underline_pos=0, overstrike_pos=0;
+   int           sel_first_line=-1, sel_last_line=-1, cursor_line=-1;
+-  int           sel_start_offset=0, sel_stop_offset=0, cursor_offset=0;
++  unsigned int  sel_start_offset=0, sel_stop_offset=0, cursor_offset=0;
+ 
+   if (!text->text_info) {
+     return;

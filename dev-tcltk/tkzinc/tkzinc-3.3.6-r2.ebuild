@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-ldflags.patch
 	"${FILESDIR}"/${PN}-3.3.4-latex.patch
 	"${FILESDIR}"/${P}-clang.patch
+	"${FILESDIR}"/${P}-gcc13.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
