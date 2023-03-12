@@ -1,0 +1,12 @@
+diff -ruN qemu-9999.orig/configure qemu-9999/configure
+--- qemu-9999.orig/configure	2023-03-12 01:26:15.488133462 +0100
++++ qemu-9999/configure	2023-03-12 01:29:19.355724020 +0100
+@@ -1068,7 +1068,7 @@
+     fi
+ fi
+ 
+-if ! has "$make"
++if ! has $make
+ then
+     error_exit "GNU make ($make) not found"
+ fi
