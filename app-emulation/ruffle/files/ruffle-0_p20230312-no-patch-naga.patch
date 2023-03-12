@@ -1,0 +1,6 @@
+Stop cargo from attempting to update it, we're already unpacking same revision.
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -74,2 +73,0 @@
+-[patch.crates-io]
+-naga = { git = "https://github.com/gfx-rs/naga", rev = "1be8024" }
