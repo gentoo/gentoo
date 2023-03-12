@@ -15,4 +15,7 @@
   and tcsh were incorporated into zsh; many original features were
   added.
   </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">zsh</remote-id>
+  </upstream>
 </pkgmetadata>
