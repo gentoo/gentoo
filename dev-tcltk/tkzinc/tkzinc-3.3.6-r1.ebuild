@@ -29,6 +29,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-clang.patch
 )
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	stat64 # used to test for Large File Support
+)
+
 HTML_DOCS='doc/*png doc/*html doc/*css'
 
 src_prepare() {
