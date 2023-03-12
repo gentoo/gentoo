@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -74,6 +74,10 @@ src_install() {
 	)
 
 	emake "${myemakeargs[@]}" install
+
+	insinto /usr/share/zsh/site-functions
+	newins contrib/_dunst.zshcomp _dunst
+	newins contrib/_dunstctl.zshcomp _dunstctl
 
 	systemd_newuserunit dunst.systemd.service.in dunst.service
 }
