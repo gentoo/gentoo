@@ -96,6 +96,8 @@ src_prepare() {
 	default
 	use go && ( sed -e 's/GOFLAGS=-ldflags="-s -w"/GOFLAGS=/' \
 		-i bin/FvwmPrompt/Makefile.am || die )
+	# Patch configure to allow later go versions
+	sed -e 's/1.19\*)$/1.19*|1.20*|1.21*)/' -i configure.ac || die
 
 	eautoreconf
 }
