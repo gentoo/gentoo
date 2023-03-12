@@ -23,3 +23,7 @@ src_install() {
 	newbin exstage4.sh exstage4
 	einstalldocs
 }
+
+src_test() {
+	bats -r tests/* || die
+}
