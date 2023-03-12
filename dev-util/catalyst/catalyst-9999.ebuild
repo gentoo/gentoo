@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ fi
 PYTHON_COMPAT=( python3_{9..10} )
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 linux-info optfeature ${SRC_ECLASS}
+inherit distutils-r1 linux-info optfeature tmpfiles ${SRC_ECLASS}
 
 DESCRIPTION="Release metatool used for creating releases based on Gentoo Linux"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
@@ -100,6 +100,13 @@ python_install_all() {
 	if use doc; then
 		dodoc files/HOWTO.html files/docbook-xsl.css
 	fi
+}
+
+src_install() {
+	distutils-r1_src_install
+
+	echo 'd /var/tmp/catalyst 0755 root root' > "${T}"/catalyst-tmpdir.conf
+	dotmpfiles "${T}"/catalyst-tmpdir.conf
 }
 
 pkg_postinst() {
