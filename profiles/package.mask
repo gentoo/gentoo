@@ -531,7 +531,7 @@ dev-qt/qtwebsockets:6
 # James Beddek <telans@posteo.de> (2022-01-19)
 # FFmpeg 5.0 ABI/API changes break many packages.
 # Masking for tracker/tinderbox. Bug #831437
-=media-video/ffmpeg-5*
+>=media-video/ffmpeg-5
 >=media-sound/spek-0.8.5
 
 # Brian Evans <grknight@gentoo.org> (2022-01-07)
