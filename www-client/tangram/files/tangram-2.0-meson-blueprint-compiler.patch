@@ -1,0 +1,11 @@
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -5,7 +5,7 @@ blueprint_compiler = find_program(
+   # Flatpak
+   '/app/bin/blueprint-compiler',
+   # host
+-  '../blueprint-compiler/blueprint-compiler.py'
++  'blueprint-compiler'
+ )
+ 
+ gjspack = find_program('../troll/gjspack/bin/gjspack')
