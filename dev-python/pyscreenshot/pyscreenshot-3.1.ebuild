@@ -37,6 +37,7 @@ BDEPEND="
 		dev-python/pyvirtualdisplay[${PYTHON_USEDEP}]
 		media-gfx/imagemagick
 		media-gfx/pqiv
+		media-gfx/scrot
 		x11-apps/xdpyinfo
 	)
 "
