@@ -15,7 +15,7 @@ SRC_URI="https://github.com/emacs-compat/${PN}/archive/${PV}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 
 BDEPEND="sys-apps/texinfo"
 
