@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    Blueprint helps you build user interfaces in GTK quickly and declaratively.
+    It has modern IDE features like code completion and hover documentation,
+    and the compiler points out mistakes early on so you can focus on making
+    your app look amazing.
+  </longdescription>
+  <upstream>
+    <changelog>https://gitlab.gnome.org/jwestman/blueprint-compiler/-/raw/main/NEWS.md</changelog>
+    <doc>https://jwestman.pages.gitlab.gnome.org/blueprint-compiler/</doc>
+    <bugs-to>https://github.com/jwestman/blueprint-compiler/issues</bugs-to>
+    <remote-id type="gnome-gitlab">jwestman/blueprint-compiler</remote-id>
+  </upstream>
+</pkgmetadata>
