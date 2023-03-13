@@ -10,7 +10,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~loong"
 IUSE="
 	default-compiler-rt default-libcxx default-lld llvm-libunwind
 	hardened stricter
@@ -90,11 +90,10 @@ src_install() {
 	EOF
 
 	# Baseline hardening (bug #851111)
-	# (-fstack-clash-protection is omitted because of a possible Clang bug,
-	# see bug #892537 and bug #865339.)
 	newins - gentoo-hardened.cfg <<-EOF
 		# Some of these options are added unconditionally, regardless of
 		# USE=hardened, for parity with sys-devel/gcc.
+		-fstack-clash-protection
 		-fstack-protector-strong
 		-fPIE
 		-include "${EPREFIX}/usr/include/gentoo/fortify.h"
@@ -107,11 +106,20 @@ src_install() {
 	# without optimization and that would at the very least be very noisy
 	# during builds and at worst trigger many -Werror builds.
 	cat >> "${ED}/usr/include/gentoo/fortify.h" <<- EOF || die
-		#ifndef _FORTIFY_SOURCE
-			#if defined(__OPTIMIZE__) && __OPTIMIZE__ > 0
-				#define _FORTIFY_SOURCE ${fortify_level}
-			#endif
-		#endif
+	#ifndef _FORTIFY_SOURCE
+	# if defined(__has_feature)
+	#  define __GENTOO_HAS_FEATURE(x) __has_feature(x)
+	# else
+	#  define __GENTOO_HAS_FEATURE(x) 0
+	# endif
+	#
+	# if defined(__OPTIMIZE__) && __OPTIMIZE__ > 0
+	#  if !defined(__SANITIZE_ADDRESS__) && !__GENTOO_HAS_FEATURE(address_sanitizer) && !__GENTOO_HAS_FEATURE(memory_sanitizer)
+	#   define _FORTIFY_SOURCE ${fortify_level}
+	#  endif
+	# endif
+	# undef __GENTOO_HAS_FEATURE
+	#endif
 	EOF
 
 	if use hardened ; then
@@ -134,6 +142,12 @@ src_install() {
 			-Werror=implicit-function-declaration
 			-Werror=implicit-int
 			-Werror=incompatible-function-pointer-types
+
+			# constructs banned by C2x
+			-Werror=deprecated-non-prototype
+
+			# deprecated but large blast radius
+			#-Werror=strict-prototypes
 		EOF
 
 		cat >> "${ED}/etc/clang/gentoo-common.cfg" <<-EOF || die
