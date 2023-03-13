@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -105,10 +105,10 @@ src_configure() {
 	# Allow users to explicitly avoid flag sanitization via
 	# USE=custom-cflags.
 	if ! use custom-cflags; then
-	# Over-zealous CFLAGS can often cause problems.  What may work for one
-	# person may not work for another.  To avoid a large influx of bugs
-	# relating to failed builds, we strip most CFLAGS out to ensure as few
-	# problems as possible.
+		# Over-zealous CFLAGS can often cause problems.  What may work for one
+		# person may not work for another.  To avoid a large influx of bugs
+		# relating to failed builds, we strip most CFLAGS out to ensure as few
+		# problems as possible.
 		strip-flags
 	else
 		# While allowing the user to set their own CFLAGS with this option
@@ -195,22 +195,8 @@ src_install() {
 		dobin "${T}"/iconv
 		echo 'LDPATH="include ld.so.conf.d/*.conf"' > "${T}"/00musl || die
 		doenvd "${T}"/00musl
-	fi
-
-	if is_crosscompile ; then
-		into /usr/${CTARGET}
-		dolib.a libssp_nonshared.a
-	else
 		dolib.a libssp_nonshared.a
 	fi
-}
-
-pkg_preinst() {
-	# nothing to do if just installing headers
-	just_headers && return
-
-	# prepare /etc/ld.so.conf.d/ for files
-	mkdir -p "${EROOT}"/etc/ld.so.conf.d
 }
 
 pkg_postinst() {
