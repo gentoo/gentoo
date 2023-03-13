@@ -31,7 +31,8 @@ RDEPEND="
 
 BDEPEND="
 	test? (
-		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pillow[xcb,${PYTHON_USEDEP}]
+		dev-python/pygame[${PYTHON_USEDEP}]
 		dev-python/python-xlib[${PYTHON_USEDEP}]
 		dev-python/pyvirtualdisplay[${PYTHON_USEDEP}]
 		media-gfx/imagemagick
