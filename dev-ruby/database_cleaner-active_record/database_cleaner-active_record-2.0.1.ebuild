@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-USE_RUBY="ruby26 ruby27 ruby30"
+USE_RUBY="ruby27 ruby30"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -23,6 +23,6 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 ruby_add_rdepend "
-	|| ( dev-ruby/activerecord:6.1 dev-ruby/activerecord:6.0 dev-ruby/activerecord:5.2 )
+	|| ( dev-ruby/activerecord:6.1 dev-ruby/activerecord:6.0 )
 	dev-ruby/database_cleaner-core:2.0
 "
