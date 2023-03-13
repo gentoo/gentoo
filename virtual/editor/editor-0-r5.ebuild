@@ -22,6 +22,7 @@ RDEPEND="|| (
 	app-editors/emact
 	app-editors/ersatz-emacs
 	app-editors/fe
+	app-editors/helix
 	app-editors/jasspa-microemacs
 	app-editors/jed
 	app-editors/joe
