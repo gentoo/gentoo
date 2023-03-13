@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ BDEPEND="
 		sys-devel/bc
 		kernel_linux? ( sys-process/procps )
 	)
-	verify-sig? ( >=sec-keys/openpgp-keys-openssl-20221101 )"
+	verify-sig? ( >=sec-keys/openpgp-keys-openssl-20230207 )"
 PDEPEND="app-misc/ca-certificates"
 
 # force upgrade to prevent broken login, bug #696950
