@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~xgqt/distfiles/repackaged/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~x86"
+KEYWORDS="~alpha amd64 ppc x86"
 
 DOCS=( README TODO )
 ELISP_REMOVE="${PN}-pkg.el"
