@@ -1,0 +1,32 @@
+From eeb0b18565e6e644524fedb511a1658b502836cf Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Tue, 14 Feb 2023 19:09:47 +0000
+Subject: [PATCH] IWYU: missing PlatformKeyboardHook include in ozone_platform.cc
+
+libstdc++ implementation of std::unique_ptr requires full declaration
+of the contained type for converting from nullptr. Add the required
+include in OzonePlatform for PlatformKeyboardHook.
+
+This fixes this build error with GCC and libstdc++:
+    /usr/include/c++/12/bits/unique_ptr.h:93:23: error: invalid application of ‘sizeof’ to incomplete type ‘ui::PlatformKeyboardHook’
+
+Bug: 957519
+Change-Id: I20429925dd00108cf684548b0260ebb053a8ada2
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4239869
+Reviewed-by: Robert Kroeger <rjkroege@chromium.org>
+Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+Cr-Commit-Position: refs/heads/main@{#1105184}
+---
+
+diff --git a/ui/ozone/public/ozone_platform.cc b/ui/ozone/public/ozone_platform.cc
+index 81f8070..6c4ce21 100644
+--- a/ui/ozone/public/ozone_platform.cc
++++ b/ui/ozone/public/ozone_platform.cc
+@@ -15,6 +15,7 @@
+ #include "ui/ozone/platform_object.h"
+ #include "ui/ozone/platform_selection.h"
+ #include "ui/ozone/public/platform_global_shortcut_listener.h"
++#include "ui/ozone/public/platform_keyboard_hook.h"
+ #include "ui/ozone/public/platform_menu_utils.h"
+ #include "ui/ozone/public/platform_screen.h"
+ #include "ui/ozone/public/platform_user_input_monitor.h"
