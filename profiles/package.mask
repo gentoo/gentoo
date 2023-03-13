@@ -67,6 +67,7 @@ dev-ruby/net-http-persistent:3
 >=net-misc/gnome-connections-44_rc
 >=net-misc/gnome-remote-desktop-44_rc
 >=sci-geosciences/gnome-maps-44_rc
+>=sys-apps/baobab-44_rc
 >=sys-apps/gnome-disk-utility-44_rc
 >=sys-apps/xdg-desktop-portal-gnome-44_rc
 >=x11-wm/mutter-44_rc
