@@ -59,6 +59,15 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0-objdump.patch
 )
 
+src_unpack() {
+	# Avoid aborting on the doc tarball
+	if use verify-sig ; then
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
+	fi
+
+	default
+}
+
 src_prepare() {
 	cmake_src_prepare
 
