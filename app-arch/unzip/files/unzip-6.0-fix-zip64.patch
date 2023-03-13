@@ -1,0 +1,24 @@
+From: https://sourceforge.net/p/infozip/bugs/42/
+From: https://sourceforge.net/p/infozip/bugs/_discuss/thread/58bf3629/0ed8/attachment/unzip610b-zerototaldisk.patch
+diff -rU8 unzip610b/process.c unzip610b.hack/process.c
+--- unzip610b/process.c	2010-10-31 21:00:00.000000000 +0800
++++ unzip610b.hack/process.c	2013-02-05 21:28:15.000000000 +0800
+@@ -1277,17 +1277,17 @@
+     ecrec64_start_offset = (zusz_t)makeint64(&byterecL[OFFSET_START_EOCDR64]);
+     ecloc64_total_disks = (zuvl_t)makelong(&byterecL[NUM_THIS_DISK_LOC64]);
+ 
+     /* Check for consistency */
+ #ifdef TEST
+     fprintf(stdout,"\nnumber of disks (ECR) %u, (ECLOC64) %lu\n",
+             G.ecrec.number_this_disk, ecloc64_total_disks); fflush(stdout);
+ #endif
+-    if ((G.ecrec.number_this_disk != 0xFFFF) &&
++    if ((G.ecrec.number_this_disk != 0xFFFF) && ecloc64_total_disks &&
+         (G.ecrec.number_this_disk != ecloc64_total_disks - 1)) {
+       /* Note: For some unknown reason, the developers at PKWARE decided to
+          store the "zip64 total disks" value as a counter starting from 1,
+          whereas all other "split/span volume" related fields use 0-based
+          volume numbers. Sigh... */
+       /* When the total number of disks as found in the traditional ecrec
+          is not 0xFFFF, the disk numbers in ecrec and ecloc64 must match.
+          When this is not the case, the found ecrec64 locator cannot be valid.
