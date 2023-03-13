@@ -3,6 +3,8 @@
 
 EAPI=8
 
+NEED_EMACS=27.1
+
 inherit elisp
 
 DESCRIPTION="Modern style for your GNU Emacs Org buffers"
@@ -13,6 +15,9 @@ SRC_URI="https://github.com/minad/${PN}/archive/${PV}.tar.gz
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+
+RDEPEND=">=app-emacs/compat-29.1.4.0"
+BDEPEND="${RDEPEND}"
 
 DOCS=( README.org example.org )
 SITEFILE="50${PN}-gentoo.el"
