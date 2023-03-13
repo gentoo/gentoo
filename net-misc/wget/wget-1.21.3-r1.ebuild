@@ -54,7 +54,7 @@ BDEPEND="
 		dev-perl/HTTP-Message
 		dev-perl/IO-Socket-SSL
 	)
-	verify-sig? ( sec-keys/openpgp-keys-wget )
+	verify-sig? ( >=sec-keys/openpgp-keys-wget-20230313 )
 "
 
 DOCS=( AUTHORS MAILING-LIST NEWS README )
