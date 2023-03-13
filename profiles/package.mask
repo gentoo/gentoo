@@ -62,6 +62,7 @@ dev-ruby/net-http-persistent:3
 >=gui-apps/gnome-console-44_beta
 >=gui-libs/libadwaita-1.3_rc
 >=net-libs/glib-networking-2.76_beta
+>=sys-apps/xdg-desktop-portal-gnome-44_rc
 >=x11-wm/mutter-44_rc
 
 # Hans de Graaff <graaff@gentoo.org> (2023-03-11)
