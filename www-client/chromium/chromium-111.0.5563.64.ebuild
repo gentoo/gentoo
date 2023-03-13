@@ -24,7 +24,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 	pgo? ( https://github.com/elkablo/chromium-profiler/releases/download/v0.2/chromium-profiler-0.2.tar )"
 
 LICENSE="BSD"
-SLOT="0/dev"
+SLOT="0/stable"
 KEYWORDS="~amd64 ~arm64"
 IUSE="+X component-build cups cpu_flags_arm_neon debug gtk4 +hangouts headless kerberos libcxx lto +official pax-kernel pgo pic +proprietary-codecs pulseaudio qt5 screencast selinux +suid +system-av1 +system-ffmpeg +system-harfbuzz +system-icu +system-png vaapi wayland widevine"
 REQUIRED_USE="
