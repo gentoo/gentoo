@@ -5,9 +5,13 @@ EAPI=8
 
 inherit autotools toolchain-funcs
 
+# Check this on bumps, get latest commit from the relevant branch (e.g. 5.6-stable)
+# See bug #894152 and https://github.com/ntop/ntopng/issues/7203
+NTOPNG_DIST_COMMIT="90d81ad0281eb6eb582a683ac321a3959abb1269"
 DESCRIPTION="Network traffic analyzer with web interface"
 HOMEPAGE="https://www.ntop.org/"
 SRC_URI="https://github.com/ntop/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" https://github.com/ntop/ntopng-dist/archive/${NTOPNG_DIST_COMMIT}.tar.gz -> ${P}-web-${NTOPNG_DIST_COMMIT}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -76,6 +80,9 @@ src_install() {
 	insinto "${SHARE_NTOPNG_DIR}"
 	doins -r httpdocs
 	doins -r scripts
+
+	insinto "${SHARE_NTOPNG_DIR}"/httpdocs
+	doins -r "${WORKDIR}"/ntopng-dist-${NTOPNG_DIST_COMMIT}/.
 
 	insinto "${SHARE_NTOPNG_DIR}/third-party"
 	doins -r third-party/i18n.lua-master
