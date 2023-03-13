@@ -65,7 +65,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit multiprocessing
+inherit multiprocessing toolchain-funcs
 
 if [[ -z ${_GO_MODULE} ]]; then
 
