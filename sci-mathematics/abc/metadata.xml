@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+  <longdescription>
+    ABC is a growing software system for synthesis and verification of binary
+    sequential logic circuits appearing in synchronous hardware designs. ABC
+    combines scalable logic optimization based on And-Inverter Graphs (AIGs),
+    optimal-delay DAG-based technology mapping for look-up tables and standard
+    cells, and innovative algorithms for sequential synthesis and verification.
+  </longdescription>
+  <upstream>
+    <bugs-to>https://github.com/berkeley-abc/abc/issues/</bugs-to>
+    <remote-id type="github">berkeley-abc/abc</remote-id>
+  </upstream>
+</pkgmetadata>
