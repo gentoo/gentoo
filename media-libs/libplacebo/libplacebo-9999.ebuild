@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://code.videolan.org/videolan/libplacebo.git"
 	inherit git-r3
 else
-	GLAD_PV=2.0.1 # verify bug #881999 before bumping
+	GLAD_PV=2.0.4
 	SRC_URI="
 		https://code.videolan.org/videolan/libplacebo/-/archive/v${PV}/libplacebo-v${PV}.tar.gz
 		opengl? ( https://github.com/Dav1dde/glad/archive/refs/tags/v${GLAD_PV}.tar.gz -> ${PN}-glad-${GLAD_PV}.tar.gz )"
@@ -43,9 +43,7 @@ DEPEND="
 	${RDEPEND}
 	dev-util/vulkan-headers"
 BDEPEND="
-	$(python_gen_any_dep '
-		dev-python/jinja[${PYTHON_USEDEP}]
-		dev-python/setuptools[${PYTHON_USEDEP}]')
+	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
 	virtual/pkgconfig"
 
 PATCHES=(
@@ -54,9 +52,7 @@ PATCHES=(
 )
 
 python_check_deps() {
-	# note: setuptools can be removed when using >=glad-2.0.2
-	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]" &&
-	python_has_version "dev-python/setuptools[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]"
 }
 
 src_unpack() {
@@ -85,6 +81,7 @@ multilib_src_configure() {
 		-Ddemos=false #851927
 		$(meson_use test tests)
 		$(meson_feature lcms)
+		-Dlibdovi=disabled # TODO: package libdovi, ask if you need this
 		$(meson_feature opengl)
 		$(meson_feature opengl gl-proc-addr)
 		$(meson_feature shaderc)
