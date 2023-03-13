@@ -61,6 +61,7 @@ dev-ruby/net-http-persistent:3
 >=gnome-extra/gnome-shell-extensions-44_rc
 >=gnome-extra/gnome-software-44_rc
 >=gnome-extra/gnome-system-monitor-44_rc
+>=gnome-extra/gnome-user-docs-44_rc
 >=gui-apps/gnome-console-44_beta
 >=gui-libs/libadwaita-1.3_rc
 >=media-gfx/gnome-font-viewer-44_rc
