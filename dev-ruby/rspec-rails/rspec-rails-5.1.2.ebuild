@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27 ruby30"
+USE_RUBY="ruby27 ruby30"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -24,9 +24,9 @@ KEYWORDS="~amd64"
 IUSE=""
 
 ruby_add_rdepend "
-	|| ( dev-ruby/activesupport:6.1 dev-ruby/activesupport:6.0 dev-ruby/activesupport:5.2 )
-	|| ( dev-ruby/actionpack:6.1 dev-ruby/actionpack:6.0 dev-ruby/actionpack:5.2 )
-	|| ( dev-ruby/railties:6.1 dev-ruby/railties:6.0 dev-ruby/railties:5.2 )
+	|| ( dev-ruby/activesupport:6.1 dev-ruby/activesupport:6.0 )
+	|| ( dev-ruby/actionpack:6.1 dev-ruby/actionpack:6.0 )
+	|| ( dev-ruby/railties:6.1 dev-ruby/railties:6.0 )
 	>=dev-ruby/rspec-3.10:3"
 
 # Depend on the package being already installed for tests, because
