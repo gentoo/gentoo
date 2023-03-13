@@ -118,6 +118,7 @@ src_prepare() {
 src_configure() {
 	# Unsupported upstream, bug #884841
 	filter-lto
+	append-lfs-flags
 
 	local FONTPATH
 	for path in \
