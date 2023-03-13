@@ -35,10 +35,15 @@ BDEPEND="
 "
 
 python_check_deps() {
-	use test || return 0
 	python_has_version "dev-python/python-libevdev[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/pyudev[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/pytest[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	if use test; then
+		python-any-r1_pkg_setup
+	fi
 }
 
 src_prepare() {
