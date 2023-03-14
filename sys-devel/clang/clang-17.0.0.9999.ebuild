@@ -193,6 +193,7 @@ get_distribution_components() {
 			c-index-test
 			clang
 			clang-format
+			clang-linker-wrapper
 			clang-offload-bundler
 			clang-offload-packager
 			clang-refactor
