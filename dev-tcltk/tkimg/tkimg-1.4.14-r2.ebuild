@@ -35,7 +35,10 @@ RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MYP}"
 
-PATCHES=( "${WORKDIR}"/patchset-1 )
+PATCHES=(
+	"${WORKDIR}"/patchset-1
+	"${FILESDIR}"/${P}-gcc11.patch
+)
 
 QA_CONFIG_IMPL_DECL_SKIP=(
 	stat64 # used to test for Large File Support
@@ -49,6 +52,9 @@ src_prepare() {
 		zlib/zlibtclDecls.h \
 		libpng/pngtclDecls.h \
 		libtiff/tifftclDecls.h
+
+	# libtiff unbundle is problematic
+	rm ../patchset-1/tkimg-1.4.12-tiff.patch || die
 
 	default
 
@@ -67,6 +73,15 @@ src_prepare() {
 
 	eprefixify */*.h
 	tc-export AR
+}
+
+src_configure() {
+	default
+
+	sed -i \
+		-e "/PACKAGE_/d" \
+		libtiff/libtiff/tif_config.h \
+		|| die
 }
 
 src_test() {
