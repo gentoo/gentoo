@@ -114,8 +114,13 @@ pkg_setup() {
 
 	CONFIG_CHECK+="
 		~CGROUP_PIDS
-		~MEMCG_SWAP
 	"
+
+	if kernel_is lt 6 1; then
+		CONFIG_CHECK+="
+			~MEMCG_SWAP
+			"
+	fi
 
 	if kernel_is le 5 8; then
 		CONFIG_CHECK+="
@@ -124,10 +129,16 @@ pkg_setup() {
 	fi
 
 	CONFIG_CHECK+="
-	~!LEGACY_VSYSCALL_NATIVE
-	~LEGACY_VSYSCALL_EMULATE
-	~!LEGACY_VSYSCALL_NONE
-	"
+		~!LEGACY_VSYSCALL_NATIVE
+		"
+	if kernel_is lt 5 19; then
+		CONFIG_CHECK+="
+			~LEGACY_VSYSCALL_EMULATE
+			"
+	fi
+	CONFIG_CHECK+="
+		~!LEGACY_VSYSCALL_NONE
+		"
 	WARNING_LEGACY_SYSCALL_NONE="CONFIG_LEGACY_VSYSCALL_NONE enabled: \
 		Containers with <=glibc-2.13 will not work"
 
@@ -155,9 +166,19 @@ pkg_setup() {
 		~IP_VS_PROTO_TCP
 		~IP_VS_PROTO_UDP
 		~IP_VS_RR
-		~SECURITY_SELINUX
-		~SECURITY_APPARMOR
-	"
+		"
+
+	if use selinux; then
+		CONFIG_CHECK+="
+			~SECURITY_SELINUX
+			"
+	fi
+
+	if use apparmor; then
+		CONFIG_CHECK+="
+			~SECURITY_APPARMOR
+			"
+	fi
 
 	# if ! is_set EXT4_USE_FOR_EXT2; then
 	#	check_flags EXT3_FS EXT3_FS_XATTR EXT3_FS_POSIX_ACL EXT3_FS_SECURITY
