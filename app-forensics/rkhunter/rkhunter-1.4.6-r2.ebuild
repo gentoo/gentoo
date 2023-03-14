@@ -8,6 +8,7 @@ inherit bash-completion-r1
 DESCRIPTION="Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers"
 HOMEPAGE="http://rkhunter.sf.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-grep-3.8.patch.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,7 +26,7 @@ S="${WORKDIR}/${P}/files"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.4.6-conf.patch"
 	"${FILESDIR}/${PN}-1.4.6-no-insecure-web.patch"
-	"${FILESDIR}/${PN}-1.4.6-grep-3.8.patch"
+	"${WORKDIR}/${PN}-1.4.6-grep-3.8.patch"
 )
 
 src_install() {
