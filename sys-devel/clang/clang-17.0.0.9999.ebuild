@@ -279,7 +279,7 @@ multilib_src_configure() {
 		-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
 
 		# disable using CUDA to autodetect GPU, just build for all
-		-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=ON
+		-DCMAKE_DISABLE_FIND_PACKAGE_CUDAToolkit=ON
 		# disable linking to HSA to avoid automagic dep,
 		# load it dynamically instead
 		-DCMAKE_DISABLE_FIND_PACKAGE_hsa-runtime64=ON
