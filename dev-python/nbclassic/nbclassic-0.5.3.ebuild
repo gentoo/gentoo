@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="~amd64 ~ppc ~riscv"
 
 RDEPEND="
 	dev-python/argon2-cffi[${PYTHON_USEDEP}]
