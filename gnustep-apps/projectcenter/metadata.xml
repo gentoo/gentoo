@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>gnustep@gentoo.org</email>
-	<name>Gentoo GNUstep Project</name>
-</maintainer> 
-<longdescription>
-ProjectCenter is GNUstep's integrated developement environment (IDE). It is based in part on NeXT's original Project Builder. It assists you in starting new projects and lets you manage your project files using a intuitive and well ordered graphical user interface.
-</longdescription>
+	<maintainer type="project">
+		<email>gnustep@gentoo.org</email>
+		<name>Gentoo GNUstep Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">gnustep/apps-projectcenter</remote-id>
+	</upstream>
 </pkgmetadata>
