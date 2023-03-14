@@ -39,8 +39,6 @@ JENKINS_ARGS=""
 #
 JENKINS_USER=jenkins
 
-
-
 #
 # Pid File 
 #
