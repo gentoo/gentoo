@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2023-03-14)
+# Requires virtual/pandoc.
+dev-python/nbclassic doc
+
 # Florian Schmaus <flow@gentoo.org> (2022-11-23)
 # avoid larger deptree, bug #882593
 dev-python/bracex doc

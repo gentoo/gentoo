@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Michał Górny <mgorny@gentoo.org> (2023-03-14)
+# Requires virtual/pandoc.
+dev-python/nbclassic doc
+
 # Hans de Graaff <graaff@gentoo.org> (2023-02-27)
 # Depends on virtual/rust
 dev-lang/ruby jit
