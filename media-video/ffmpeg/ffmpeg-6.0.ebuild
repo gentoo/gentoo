@@ -336,6 +336,7 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
+	"${FILESDIR}/${P}-DECLARE_ALIGNED.patch"
 )
 
 MULTILIB_WRAPPED_HEADERS=(
