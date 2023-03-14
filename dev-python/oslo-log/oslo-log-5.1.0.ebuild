@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="OpenStack logging config library, configuration for all openstack projects"
 HOMEPAGE="
@@ -14,8 +14,8 @@ HOMEPAGE="
 	https://github.com/openstack/oslo.log/
 	https://pypi.org/project/oslo.log/
 "
-SRC_URI="mirror://pypi/o/oslo.log/oslo.log-${PV}.tar.gz"
-S="${WORKDIR}/oslo.log-${PV}"
+SRC_URI="$(pypi_sdist_url --no-normalize "${PN/-/.}")"
+S=${WORKDIR}/${P/-/.}
 
 LICENSE="Apache-2.0"
 SLOT="0"
