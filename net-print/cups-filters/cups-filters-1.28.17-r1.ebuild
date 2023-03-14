@@ -51,6 +51,10 @@ BDEPEND="
 	test? ( media-fonts/dejavu )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.28.17-c++17.patch
+)
+
 src_configure() {
 	# Bug #898156
 	append-cxxflags -std=c++17
