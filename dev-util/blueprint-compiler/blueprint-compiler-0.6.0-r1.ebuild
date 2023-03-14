@@ -26,7 +26,12 @@ IUSE="doc test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
-RDEPEND="${PYTHON_DEPS}"
+RDEPEND="
+	${PYTHON_DEPS}
+	$(python_gen_cond_dep '
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
+	')
+"
 BDEPEND="
 	${RDEPEND}
 	doc? (
@@ -37,9 +42,6 @@ BDEPEND="
 	)
 	test? (
 		gui-libs/gtk:4[introspection]
-		$(python_gen_cond_dep '
-			dev-python/pygobject:3[${PYTHON_USEDEP}]
-		')
 	)
 "
 
