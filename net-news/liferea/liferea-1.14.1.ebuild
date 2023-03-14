@@ -38,9 +38,6 @@ BDEPEND="dev-util/intltool
 
 src_prepare() {
 	default
-
-	sed -i -e 's#$(datadir)/appdata#$(datadir)/metainfo#g' \
-		Makefile.am || die
 	eautoreconf
 }
 
