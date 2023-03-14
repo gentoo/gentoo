@@ -71,6 +71,14 @@ get_audio() {
 	fi
 }
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use test && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use test && tc-check-openmp
+}
+
 src_unpack() {
 	for file in ${A}; do
 		case "${file}" in
