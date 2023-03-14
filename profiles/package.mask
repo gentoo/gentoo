@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2023-03-14)
+# Masked for removal in 30 days.
+# Bug #895824, no rev dep 
+dev-tcltk/tkzinc
+
 # David Seifert <soap@gentoo.org> (2023-03-12)
 # Qt-based application is EOL, Yubico has switched to a Flutter-based
 # Googleware framework. Switch to app-crypt/yubioath-flutter-bin or use
