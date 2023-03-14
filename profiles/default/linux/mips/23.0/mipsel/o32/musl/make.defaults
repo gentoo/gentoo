@@ -1,6 +1,9 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 CHOST="mipsel-gentoo-linux-musl"
 CHOST_o32="${CHOST}"
 LIBDIR_o32="lib"
+
+# Disable sandbox because its currently broken on mipsel-musl
+FEATURES="-sandbox"
