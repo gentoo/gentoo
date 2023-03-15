@@ -32,7 +32,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	nls? ( >=sys-devel/gettext-0.12.1-r2 )
-	verify-sig? ( sec-keys/openpgp-keys-bcl )
+	verify-sig? ( >=sec-keys/openpgp-keys-bcl-20230315 )
 	virtual/pkgconfig
 "
 
