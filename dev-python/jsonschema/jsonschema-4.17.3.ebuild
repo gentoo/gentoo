@@ -6,14 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="An implementation of JSON-Schema validation for Python"
 HOMEPAGE="
 	https://pypi.org/project/jsonschema/
 	https://github.com/python-jsonschema/jsonschema/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
