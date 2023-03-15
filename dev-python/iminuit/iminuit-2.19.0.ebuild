@@ -8,11 +8,10 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 # forced implicitly
 CMAKE_MAKEFILE_GENERATOR=emake
-inherit cmake distutils-r1 virtualx
+inherit cmake distutils-r1 virtualx pypi
 
 DESCRIPTION="Minuit numerical function minimization in Python"
 HOMEPAGE="https://github.com/scikit-hep/iminuit/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT LGPL-2.1"
