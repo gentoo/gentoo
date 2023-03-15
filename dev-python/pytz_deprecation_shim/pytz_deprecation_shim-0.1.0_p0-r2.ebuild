@@ -6,17 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
-
-MY_P=${P/_p/.post}
+inherit distutils-r1 pypi
 
 DESCRIPTION="Shims to make deprecation of pytz easier"
 HOMEPAGE="
 	https://github.com/pganssle/pytz-deprecation-shim/
 	https://pypi.org/project/pytz-deprecation-shim/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
