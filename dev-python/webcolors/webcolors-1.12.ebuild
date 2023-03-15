@@ -6,14 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Color names and value formats defined by the HTML and CSS specifications"
 HOMEPAGE="
 	https://github.com/ubernostrum/webcolors/
 	https://pypi.org/project/webcolors/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
