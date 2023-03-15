@@ -6,14 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python module to propose a modern general-purpose parsing library for Python"
 HOMEPAGE="
 	https://github.com/lark-parser/lark/
 	https://pypi.org/project/lark/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/lark/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
