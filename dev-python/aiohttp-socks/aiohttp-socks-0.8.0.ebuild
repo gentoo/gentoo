@@ -28,9 +28,12 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+		dev-python/trustme[${PYTHON_USEDEP}]
+		dev-python/attrs[${PYTHON_USEDEP}]
 		dev-python/yarl[${PYTHON_USEDEP}]
+		dev-python/flask[${PYTHON_USEDEP}]
+		dev-python/tiny-proxy[${PYTHON_USEDEP}]
 	)
 "
 
