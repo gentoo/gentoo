@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A pure-Python implementation of the HTTP/2 priority tree"
 HOMEPAGE="
@@ -14,7 +14,6 @@ HOMEPAGE="
 	https://github.com/python-hyper/priority/
 	https://pypi.org/project/priority/
 "
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
