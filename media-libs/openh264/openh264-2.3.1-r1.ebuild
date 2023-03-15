@@ -19,20 +19,27 @@ LICENSE="BSD"
 #  https://github.com/cisco/openh264/issues/3459 )
 SLOT="0/7"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ppc ppc64 ~riscv sparc x86"
-IUSE="cpu_flags_arm_neon cpu_flags_x86_avx2 +plugin utils"
+IUSE="cpu_flags_arm_neon cpu_flags_x86_avx2 +plugin test utils"
 
-RESTRICT="bindist test"
+RESTRICT="bindist !test? ( test )"
 
 BDEPEND="
 	abi_x86_32? ( dev-lang/nasm )
-	abi_x86_64? ( dev-lang/nasm )"
+	abi_x86_64? ( dev-lang/nasm )
+	test? ( dev-cpp/gtest[${MULTILIB_USEDEP}] )"
 
 DOCS=( LICENSE CONTRIBUTORS README.md )
 
-PATCHES=( "${FILESDIR}"/openh264-2.3.0-pkgconfig-pathfix.patch )
+PATCHES=(
+	"${FILESDIR}"/openh264-2.3.0-pkgconfig-pathfix.patch
+	"${FILESDIR}"/${PN}-2.3.1-pr3630.patch
+)
 
 src_prepare() {
 	default
+
+	ln -svf "/dev/null" "build/gtest-targets.mk" || die
+	sed -i -e 's/$(LIBPREFIX)gtest.$(LIBSUFFIX)//g' Makefile || die
 
 	sed -i -e 's/ | generate-version//g' Makefile || die
 	sed -e 's|$FULL_VERSION|""|g' codec/common/inc/version_gen.h.template > \
@@ -53,6 +60,7 @@ emakecmd() {
 		SHAREDLIB_DIR="${EPREFIX}/usr/$(get_libdir)" \
 		INCLUDES_DIR="${EPREFIX}/usr/include/${PN}" \
 		HAVE_AVX2=$(usex cpu_flags_x86_avx2 Yes No) \
+		HAVE_GTEST=$(usex test Yes No) \
 		ARCH="$(tc-arch)" \
 		$@
 }
@@ -69,6 +77,10 @@ multilib_src_compile() {
 
 	emakecmd ${myopts}
 	use plugin && emakecmd ${myopts} plugin
+}
+
+multilib_src_test() {
+	emakecmd test
 }
 
 multilib_src_install() {
