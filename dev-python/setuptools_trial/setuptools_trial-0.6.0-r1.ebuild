@@ -4,11 +4,10 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..10} )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Setuptools plugin that makes unit tests execute with trial instead of pyunit"
 HOMEPAGE="https://github.com/rutsky/setuptools-trial https://pypi.org/project/setuptools_trial/"
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
