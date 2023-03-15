@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1 multiprocessing optfeature
+inherit distutils-r1 multiprocessing optfeature pypi
 
 DESCRIPTION="Statistical computations and models for use with SciPy"
 HOMEPAGE="
@@ -14,7 +14,6 @@ HOMEPAGE="
 	https://github.com/statsmodels/statsmodels/
 	https://pypi.org/project/statsmodels/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
