@@ -6,14 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python 3 bindings for libfuse 3 with asynchronous API"
 HOMEPAGE="
 	https://github.com/libfuse/pyfuse3/
 	https://pypi.org/project/pyfuse3/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
