@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 optfeature
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Interactive Parallel Computing with IPython"
 HOMEPAGE="
@@ -15,7 +15,6 @@ HOMEPAGE="
 	https://github.com/ipython/ipyparallel/
 	https://pypi.org/project/ipyparallel/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
