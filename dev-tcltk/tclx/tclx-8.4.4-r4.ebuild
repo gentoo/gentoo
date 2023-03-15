@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-configure-clang16.patch
 	"${FILESDIR}"/${P}-configure-clang16-deux.patch
 	"${FILESDIR}"/${P}-gcc11.patch
+	"${FILESDIR}"/${P}-musl.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
