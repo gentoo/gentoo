@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -128,11 +128,13 @@ src_configure() {
 		FONTPATH="${FONTPATH}${FONTPATH:+:}${EPREFIX}${path}"
 	done
 
-	PKGCONFIG=$(type -P $(tc-getPKG_CONFIG)) \
 	# Do not add --enable-dynamic here, it's not supported fully upstream
 	# https://bugs.ghostscript.com/show_bug.cgi?id=705895
 	# bug #884707
-	econf \
+	#
+	# leptonica and tesseract are bundled but modified upstream, like in
+	# mujs/mupdf.
+	PKGCONFIG=$(type -P $(tc-getPKG_CONFIG)) econf \
 		--enable-freetype \
 		--enable-fontconfig \
 		--enable-openjpeg \
