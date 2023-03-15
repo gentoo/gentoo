@@ -5,13 +5,12 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Generate source code for Python classes from a JSON schema"
 HOMEPAGE="
 	https://pypi.org/project/jschema-to-python/
 	https://github.com/microsoft/jschema-to-python/"
-SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
