@@ -7,14 +7,13 @@ EAPI=7
 DISTUTILS_USE_PEP517=flit
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Internationalized Domain Names in Applications (IDNA)"
 HOMEPAGE="
 	https://github.com/kjd/idna/
 	https://pypi.org/project/idna/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
