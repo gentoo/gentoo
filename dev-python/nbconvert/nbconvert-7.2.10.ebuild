@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv"
+KEYWORDS="~amd64 ~ia64 ~ppc ~riscv"
 
 RDEPEND="
 	dev-python/beautifulsoup4[${PYTHON_USEDEP}]
