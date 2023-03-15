@@ -5,11 +5,10 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..10} )
-inherit cuda distutils-r1
+inherit cuda distutils-r1 pypi
 
 DESCRIPTION="Python wrapper for NVIDIA CUDA"
 HOMEPAGE="https://mathema.tician.de/software/pycuda/ https://pypi.org/project/pycuda/"
-SRC_URI="mirror://pypi/${P::1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
