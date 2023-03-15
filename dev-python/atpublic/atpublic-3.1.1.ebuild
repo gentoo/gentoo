@@ -6,14 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=pdm
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A decorator to populate __all__ and the module globals"
 HOMEPAGE="
 	https://gitlab.com/warsaw/public/
 	https://pypi.org/project/atpublic/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
