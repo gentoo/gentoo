@@ -9,14 +9,13 @@ DISTUTILS_USE_PEP517=flit
 # new entry_point API not yet included in cpython release
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Read metadata from Python packages"
 HOMEPAGE="
 	https://github.com/python/importlib_metadata/
 	https://pypi.org/project/importlib-metadata/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
