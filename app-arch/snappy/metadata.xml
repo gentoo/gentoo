@@ -14,6 +14,7 @@
 		other compression library; instead, it aims for very high speeds and
 		reasonable compression.</longdescription>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:google:snappy</remote-id>
 		<remote-id type="github">google/snappy</remote-id>
 	</upstream>
 </pkgmetadata>
