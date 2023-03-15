@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for finding the memory usage of Perl variables"
 
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
