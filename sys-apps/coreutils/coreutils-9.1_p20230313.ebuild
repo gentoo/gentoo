@@ -66,7 +66,7 @@ BDEPEND="
 		dev-util/strace
 		${PYTHON_DEPS}
 	)
-	verify-sig? ( >=sec-keys/openpgp-keys-coreutils-20230313 )
+	verify-sig? ( sec-keys/openpgp-keys-coreutils )
 "
 RDEPEND+="
 	hostname? ( !sys-apps/net-tools[hostname] )

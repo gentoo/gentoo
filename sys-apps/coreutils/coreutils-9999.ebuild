@@ -21,7 +21,7 @@ if [[ ${PV} == 9999 ]] ; then
 elif [[ ${PV} == *_p* ]] ; then
 	# Note: could put this in devspace, but if it's gone, we don't want
 	# it in tree anyway. It's just for testing.
-	MY_SNAPSHOT="$(ver_cut 1-2).193-54bec"
+	MY_SNAPSHOT="$(ver_cut 1-2).198-e68b1"
 	SRC_URI="https://www.pixelbeat.org/cu/coreutils-${MY_SNAPSHOT}.tar.xz -> ${P}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://www.pixelbeat.org/cu/coreutils-${MY_SNAPSHOT}.tar.xz.sig -> ${P}.tar.xz.sig )"
 	S="${WORKDIR}"/${PN}-${MY_SNAPSHOT}
@@ -41,14 +41,18 @@ SLOT="0"
 IUSE="acl caps gmp hostname kill multicall nls +openssl selinux +split-usr static test vanilla xattr"
 RESTRICT="!test? ( test )"
 
-LIB_DEPEND="acl? ( sys-apps/acl[static-libs] )
+LIB_DEPEND="
+	acl? ( sys-apps/acl[static-libs] )
 	caps? ( sys-libs/libcap )
 	gmp? ( dev-libs/gmp:=[static-libs] )
 	openssl? ( dev-libs/openssl:=[static-libs] )
-	xattr? ( sys-apps/attr[static-libs] )"
-RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs]} )
+	xattr? ( sys-apps/attr[static-libs] )
+"
+RDEPEND="
+	!static? ( ${LIB_DEPEND//\[static-libs]} )
 	selinux? ( sys-libs/libselinux )
-	nls? ( virtual/libintl )"
+	nls? ( virtual/libintl )
+"
 DEPEND="
 	${RDEPEND}
 	static? ( ${LIB_DEPEND} )
@@ -96,8 +100,9 @@ src_unpack() {
 	elif use verify-sig ; then
 		# Needed for downloaded patch (which is unsigned, which is fine)
 		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.sig}
-		default
 	fi
+
+	default
 }
 
 src_prepare() {
@@ -211,9 +216,8 @@ src_test() {
 	addwrite /dev/full
 	#export RUN_EXPENSIVE_TESTS="yes"
 	#export FETISH_GROUPS="portage wheel"
-	env PATH="${T}/mount-wrappers:${PATH}" emake -k check \
-		gl_public_submodule_commit= \
-		VERBOSE=yes
+	env PATH="${T}/mount-wrappers:${PATH}" gl_public_submodule_commit= \
+		emake -k check VERBOSE=yes
 }
 
 src_install() {
