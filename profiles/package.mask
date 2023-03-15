@@ -119,6 +119,13 @@ dev-ruby/net-http-persistent:3
 >=gui-libs/vte-0.70.3
 >=x11-libs/vte-0.70.3
 >=gui-libs/vte-common-0.70.3
+>=dev-util/gnome-builder-44_rc
+>=gui-libs/libpanel-1.1.2
+>=dev-libs/jsonrpc-gli-3.43.0
+>=gui-libs/gtksourceview-5.7.2
+>=gui-libs/libpanel-1.1.2
+>=dev-libs/libdex-0.1.1
+
 
 
 
