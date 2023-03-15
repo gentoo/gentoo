@@ -328,7 +328,7 @@ pkg_preinst() {
 	HAD_SYSTEM_SERVICE=0
 
 	if has_version "media-video/pipewire[sound-server(-)]" ; then
-		HAD_SOUND_SERVER=0
+		HAD_SOUND_SERVER=1
 	fi
 
 	if has_version "media-video/pipewire[system-service(-)]" ; then
