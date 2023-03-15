@@ -6,14 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1 optfeature
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Password hashing framework supporting over 20 schemes"
 HOMEPAGE="
 	https://foss.heptapod.net/python-libs/passlib/-/wikis/home
 	https://pypi.org/project/passlib/
 "
-SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
