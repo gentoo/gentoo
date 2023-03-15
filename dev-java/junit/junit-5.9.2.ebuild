@@ -22,7 +22,7 @@ S="${WORKDIR}/junit5-r${PV}"
 
 LICENSE="EPL-2.0"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 CP_DEPEND="
 	dev-java/apiguardian-api:0
