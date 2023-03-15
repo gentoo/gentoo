@@ -6,11 +6,10 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..10} )
 DISTUTILS_USE_PEP517=flit
 
-inherit distutils-r1 virtualx
+inherit distutils-r1 virtualx pypi
 
 DESCRIPTION="An object-oriented GUI library for pyglet"
 HOMEPAGE="https://glooey.readthedocs.io/en/latest/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64"
