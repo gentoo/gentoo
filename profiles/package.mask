@@ -126,6 +126,7 @@ dev-ruby/net-http-persistent:3
 >=gui-libs/libpanel-1.1.2
 >=dev-libs/libdex-0.1.1
 >=gnome-base/librsvg-2.55.1:2
+>=media-gfx/eog-44_beta
 
 
 
