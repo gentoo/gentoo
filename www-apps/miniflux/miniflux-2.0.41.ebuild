@@ -12,7 +12,7 @@ SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ppc64 ~riscv"
 
 RESTRICT="test" # requires network access
 
