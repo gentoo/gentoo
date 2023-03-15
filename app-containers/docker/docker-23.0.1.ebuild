@@ -139,7 +139,7 @@ pkg_setup() {
 	CONFIG_CHECK+="
 		~!LEGACY_VSYSCALL_NONE
 		"
-	WARNING_LEGACY_SYSCALL_NONE="CONFIG_LEGACY_VSYSCALL_NONE enabled: \
+	WARNING_LEGACY_VSYSCALL_NONE="CONFIG_LEGACY_VSYSCALL_NONE enabled: \
 		Containers with <=glibc-2.13 will not work"
 
 	if kernel_is le 4 5; then
