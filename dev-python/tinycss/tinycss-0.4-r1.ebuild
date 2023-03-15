@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A complete yet simple CSS parser for Python"
 HOMEPAGE="
@@ -14,7 +14,6 @@ HOMEPAGE="
 	https://pypi.org/project/tinycss/
 	https://tinycss.readthedocs.io/en/latest/
 "
-SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
