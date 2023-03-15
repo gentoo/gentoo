@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	test? (
 		sci-libs/hdf5
-		sci-libs/netcdf[hdf5,tools]
+		sci-libs/netcdf[hdf5,tools(+)]
 		dev-python/cftime[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)"
