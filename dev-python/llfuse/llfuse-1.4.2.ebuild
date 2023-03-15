@@ -6,14 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python bindings for the low-level FUSE API"
 HOMEPAGE="
 	https://github.com/python-llfuse/python-llfuse/
 	https://pypi.org/project/llfuse/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
