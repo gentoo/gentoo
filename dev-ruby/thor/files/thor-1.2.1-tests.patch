@@ -1,0 +1,211 @@
+https://github.com/rails/thor/issues/817
+https://github.com/rails/thor/commit/0def4cfba5bf470f76877eb3b8a8895f0018e574
+https://github.com/rails/thor/commit/46d1422902e1c66b31fae79be7dca79ff8b2e81b
+
+From 0def4cfba5bf470f76877eb3b8a8895f0018e574 Mon Sep 17 00:00:00 2001
+From: Tim Diggins <tim@red56.uk>
+Date: Fri, 4 Mar 2022 12:16:58 +0000
+Subject: [PATCH] fix expectations for ruby 3 treatment of hash arg
+
+--- a/spec/line_editor_spec.rb
++++ b/spec/line_editor_spec.rb
+@@ -13,7 +13,7 @@
+   describe ".readline" do
+     it "uses the Readline line editor" do
+       editor = double("Readline")
+-      expect(Thor::LineEditor::Readline).to receive(:new).with("Enter your name ", :default => "Brian").and_return(editor)
++      expect(Thor::LineEditor::Readline).to receive(:new).with("Enter your name ", {:default => "Brian"}).and_return(editor)
+       expect(editor).to receive(:readline).and_return("George")
+       expect(Thor::LineEditor.readline("Enter your name ", :default => "Brian")).to eq("George")
+     end
+@@ -35,7 +35,7 @@
+   describe ".readline" do
+     it "uses the Basic line editor" do
+       editor = double("Basic")
+-      expect(Thor::LineEditor::Basic).to receive(:new).with("Enter your name ", :default => "Brian").and_return(editor)
++      expect(Thor::LineEditor::Basic).to receive(:new).with("Enter your name ", {:default => "Brian"}).and_return(editor)
+       expect(editor).to receive(:readline).and_return("George")
+       expect(Thor::LineEditor.readline("Enter your name ", :default => "Brian")).to eq("George")
+     end
+--- a/spec/shell/basic_spec.rb
++++ b/spec/shell/basic_spec.rb
+@@ -70,80 +70,80 @@ def shell
+ 
+     it "prints a message to the user with the available options, expects case-sensitive matching, and determines the correctness of the answer" do
+       flavors = %w(strawberry chocolate vanilla)
+-      expect(Thor::LineEditor).to receive(:readline).with('What\'s your favorite Neopolitan flavor? [strawberry, chocolate, vanilla] ', :limited_to => flavors).and_return("chocolate")
++      expect(Thor::LineEditor).to receive(:readline).with('What\'s your favorite Neopolitan flavor? [strawberry, chocolate, vanilla] ', {:limited_to => flavors}).and_return("chocolate")
+       expect(shell.ask('What\'s your favorite Neopolitan flavor?', :limited_to => flavors)).to eq("chocolate")
+     end
+ 
+     it "prints a message to the user with the available options, expects case-sensitive matching, and reasks the question after an incorrect response" do
+       flavors = %w(strawberry chocolate vanilla)
+       expect($stdout).to receive(:print).with("Your response must be one of: [strawberry, chocolate, vanilla]. Please try again.\n")
+-      expect(Thor::LineEditor).to receive(:readline).with('What\'s your favorite Neopolitan flavor? [strawberry, chocolate, vanilla] ', :limited_to => flavors).and_return("moose tracks", "chocolate")
++      expect(Thor::LineEditor).to receive(:readline).with('What\'s your favorite Neopolitan flavor? [strawberry, chocolate, vanilla] ', {:limited_to => flavors}).and_return("moose tracks", "chocolate")
+       expect(shell.ask('What\'s your favorite Neopolitan flavor?', :limited_to => flavors)).to eq("chocolate")
+     end
+ 
+     it "prints a message to the user with the available options, expects case-sensitive matching, and reasks the question after a case-insensitive match" do
+       flavors = %w(strawberry chocolate vanilla)
+       expect($stdout).to receive(:print).with("Your response must be one of: [strawberry, chocolate, vanilla]. Please try again.\n")
+-      expect(Thor::LineEditor).to receive(:readline).with('What\'s your favorite Neopolitan flavor? [strawberry, chocolate, vanilla] ', :limited_to => flavors).and_return("cHoCoLaTe", "chocolate")
++      expect(Thor::LineEditor).to receive(:readline).with('What\'s your favorite Neopolitan flavor? [strawberry, chocolate, vanilla] ', {:limited_to => flavors}).and_return("cHoCoLaTe", "chocolate")
+       expect(shell.ask('What\'s your favorite Neopolitan flavor?', :limited_to => flavors)).to eq("chocolate")
+     end
+ 
+     it "prints a message to the user with the available options, expects case-insensitive matching, and determines the correctness of the answer" do
+       flavors = %w(strawberry chocolate vanilla)
+-      expect(Thor::LineEditor).to receive(:readline).with('What\'s your favorite Neopolitan flavor? [strawberry, chocolate, vanilla] ', :limited_to => flavors, :case_insensitive => true).and_return("CHOCOLATE")
++      expect(Thor::LineEditor).to receive(:readline).with('What\'s your favorite Neopolitan flavor? [strawberry, chocolate, vanilla] ', {:limited_to => flavors, :case_insensitive => true}).and_return("CHOCOLATE")
+       expect(shell.ask('What\'s your favorite Neopolitan flavor?', :limited_to => flavors, :case_insensitive => true)).to eq("chocolate")
+     end
+ 
+     it "prints a message to the user with the available options, expects case-insensitive matching, and reasks the question after an incorrect response" do
+       flavors = %w(strawberry chocolate vanilla)
+       expect($stdout).to receive(:print).with("Your response must be one of: [strawberry, chocolate, vanilla]. Please try again.\n")
+-      expect(Thor::LineEditor).to receive(:readline).with('What\'s your favorite Neopolitan flavor? [strawberry, chocolate, vanilla] ', :limited_to => flavors, :case_insensitive => true).and_return("moose tracks", "chocolate")
++      expect(Thor::LineEditor).to receive(:readline).with('What\'s your favorite Neopolitan flavor? [strawberry, chocolate, vanilla] ', {:limited_to => flavors, :case_insensitive => true}).and_return("moose tracks", "chocolate")
+       expect(shell.ask('What\'s your favorite Neopolitan flavor?', :limited_to => flavors, :case_insensitive => true)).to eq("chocolate")
+     end
+ 
+     it "prints a message to the user containing a default and sets the default if only enter is pressed" do
+-      expect(Thor::LineEditor).to receive(:readline).with('What\'s your favorite Neopolitan flavor? (vanilla) ', :default => "vanilla").and_return("")
++      expect(Thor::LineEditor).to receive(:readline).with('What\'s your favorite Neopolitan flavor? (vanilla) ', {:default => "vanilla"}).and_return("")
+       expect(shell.ask('What\'s your favorite Neopolitan flavor?', :default => "vanilla")).to eq("vanilla")
+     end
+ 
+     it "prints a message to the user with the available options and reasks the question after an incorrect response and then returns the default" do
+       flavors = %w(strawberry chocolate vanilla)
+       expect($stdout).to receive(:print).with("Your response must be one of: [strawberry, chocolate, vanilla]. Please try again.\n")
+-      expect(Thor::LineEditor).to receive(:readline).with('What\'s your favorite Neopolitan flavor? [strawberry, chocolate, vanilla] (vanilla) ', :default => "vanilla", :limited_to => flavors).and_return("moose tracks", "")
++      expect(Thor::LineEditor).to receive(:readline).with('What\'s your favorite Neopolitan flavor? [strawberry, chocolate, vanilla] (vanilla) ', {:default => "vanilla", :limited_to => flavors}).and_return("moose tracks", "")
+       expect(shell.ask("What's your favorite Neopolitan flavor?", :default => "vanilla", :limited_to => flavors)).to eq("vanilla")
+     end
+   end
+ 
+   describe "#yes?" do
+     it "asks the user and returns true if the user replies yes" do
+-      expect(Thor::LineEditor).to receive(:readline).with("Should I overwrite it? ", :add_to_history => false).and_return("y")
++      expect(Thor::LineEditor).to receive(:readline).with("Should I overwrite it? ", {:add_to_history => false}).and_return("y")
+       expect(shell.yes?("Should I overwrite it?")).to be true
+     end
+ 
+     it "asks the user and returns false if the user replies no" do
+-      expect(Thor::LineEditor).to receive(:readline).with("Should I overwrite it? ", :add_to_history => false).and_return("n")
++      expect(Thor::LineEditor).to receive(:readline).with("Should I overwrite it? ", {:add_to_history => false}).and_return("n")
+       expect(shell.yes?("Should I overwrite it?")).not_to be true
+     end
+ 
+     it "asks the user and returns false if the user replies with an answer other than yes or no" do
+-      expect(Thor::LineEditor).to receive(:readline).with("Should I overwrite it? ", :add_to_history => false).and_return("foobar")
++      expect(Thor::LineEditor).to receive(:readline).with("Should I overwrite it? ", {:add_to_history => false}).and_return("foobar")
+       expect(shell.yes?("Should I overwrite it?")).to be false
+     end
+   end
+ 
+   describe "#no?" do
+     it "asks the user and returns true if the user replies no" do
+-      expect(Thor::LineEditor).to receive(:readline).with("Should I overwrite it? ", :add_to_history => false).and_return("n")
++      expect(Thor::LineEditor).to receive(:readline).with("Should I overwrite it? ", {:add_to_history => false}).and_return("n")
+       expect(shell.no?("Should I overwrite it?")).to be true
+     end
+ 
+     it "asks the user and returns false if the user replies yes" do
+-      expect(Thor::LineEditor).to receive(:readline).with("Should I overwrite it? ", :add_to_history => false).and_return("Yes")
++      expect(Thor::LineEditor).to receive(:readline).with("Should I overwrite it? ", {:add_to_history => false}).and_return("Yes")
+       expect(shell.no?("Should I overwrite it?")).to be false
+     end
+ 
+     it "asks the user and returns false if the user replies with an answer other than yes or no" do
+-      expect(Thor::LineEditor).to receive(:readline).with("Should I overwrite it? ", :add_to_history => false).and_return("foobar")
++      expect(Thor::LineEditor).to receive(:readline).with("Should I overwrite it? ", {:add_to_history => false}).and_return("foobar")
+       expect(shell.no?("Should I overwrite it?")).to be false
+     end
+   end
+@@ -431,13 +431,13 @@ def  #456  Lanç...
+       expect(content).to eq(<<-TABLE)
+ Name  Number         Color
+ Erik  1234567890123  green
+-TABLE
++      TABLE
+     end
+   end
+ 
+   describe "#file_collision" do
+     it "shows a menu with options" do
+-      expect(Thor::LineEditor).to receive(:readline).with('Overwrite foo? (enter "h" for help) [Ynaqh] ', :add_to_history => false).and_return("n")
++      expect(Thor::LineEditor).to receive(:readline).with('Overwrite foo? (enter "h" for help) [Ynaqh] ', {:add_to_history => false}).and_return("n")
+       shell.file_collision("foo")
+     end
+ 
+@@ -478,7 +478,7 @@ def  #456  Lanç...
+     end
+ 
+     it "always returns true if the user chooses always" do
+-      expect(Thor::LineEditor).to receive(:readline).with('Overwrite foo? (enter "h" for help) [Ynaqh] ', :add_to_history => false).and_return("a")
++      expect(Thor::LineEditor).to receive(:readline).with('Overwrite foo? (enter "h" for help) [Ynaqh] ', {:add_to_history => false}).and_return("a")
+ 
+       expect(shell.file_collision("foo")).to be true
+ 
+@@ -488,7 +488,7 @@ def  #456  Lanç...
+ 
+     describe "when a block is given" do
+       it "displays diff and merge options to the user" do
+-        expect(Thor::LineEditor).to receive(:readline).with('Overwrite foo? (enter "h" for help) [Ynaqdhm] ', :add_to_history => false).and_return("s")
++        expect(Thor::LineEditor).to receive(:readline).with('Overwrite foo? (enter "h" for help) [Ynaqdhm] ', {:add_to_history => false}).and_return("s")
+         shell.file_collision("foo") {}
+       end
+ 
+From 46d1422902e1c66b31fae79be7dca79ff8b2e81b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?David=20Rodr=C3=ADguez?= <deivid.rodriguez@riseup.net>
+Date: Wed, 15 Jun 2022 19:35:27 +0200
+Subject: [PATCH] Reimplement did_you_mean suggestions to keep behaviour
+ accross rubies
+
+Ruby 3.2 will introduce `Exception#detailed_message` and `did_you_mean`
+has been already updated in Ruby 3.2 to use that.
+
+The new behaviour means not changing the original `Exception#message`.
+That means it is hard to get the previous error output, because
+`Exception#detailed_message` includes not only `did_you_mean`
+decorations, but also additional information like the exception class.
+
+To fix this, I bring the old did_you_mean behavior into Thor, so that
+the above changes do not affect us.
+--- a/lib/thor/error.rb
++++ b/lib/thor/error.rb
+@@ -11,7 +11,15 @@ def initialize(dictionary)
+                     end
+                   end
+ 
+-                  DidYouMean::Correctable
++                  Module.new do
++                    def to_s
++                      super + DidYouMean.formatter.message_for(corrections)
++                    end
++
++                    def corrections
++                      @corrections ||= self.class.const_get(:SpellChecker).new(self).corrections
++                    end
++                  end
+                 end
+ 
+   # Thor::Error is raised when it's caused by wrong usage of thor classes. Those
+@@ -100,16 +108,4 @@ class RequiredArgumentMissingError < InvocationError
+ 
+   class MalformattedArgumentError < InvocationError
+   end
+-
+-  if Correctable
+-    if DidYouMean.respond_to?(:correct_error)
+-      DidYouMean.correct_error(Thor::UndefinedCommandError, UndefinedCommandError::SpellChecker)
+-      DidYouMean.correct_error(Thor::UnknownArgumentError, UnknownArgumentError::SpellChecker)
+-    else
+-      DidYouMean::SPELL_CHECKERS.merge!(
+-        'Thor::UndefinedCommandError' => UndefinedCommandError::SpellChecker,
+-        'Thor::UnknownArgumentError' => UnknownArgumentError::SpellChecker
+-      )
+-    end
+-  end
+ end
