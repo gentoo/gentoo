@@ -97,7 +97,7 @@ RDEPEND="${DEPEND}
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/bcrypt[${PYTHON_USEDEP}]
 	dev-python/bleach[${PYTHON_USEDEP}]
-	dev-python/canonicaljson[${PYTHON_USEDEP}]
+	<dev-python/canonicaljson-2[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/frozendict[${PYTHON_USEDEP}]
 	dev-python/ijson[${PYTHON_USEDEP}]
