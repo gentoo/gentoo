@@ -5,14 +5,13 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Dictdiffer is a library that helps you to diff and patch dictionaries"
 HOMEPAGE="
 	https://github.com/inveniosoftware/dictdiffer/
 	https://pypi.org/project/dictdiffer/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
