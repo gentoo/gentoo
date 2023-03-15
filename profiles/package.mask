@@ -73,6 +73,7 @@ dev-ruby/net-http-persistent:3
 >=gnome-extra/gnome-weather-44_rc
 >=gui-apps/gnome-console-44_beta
 >=gui-libs/libadwaita-1.3_rc
+>=media-gfx/eog-44_beta
 >=media-gfx/gnome-font-viewer-44_rc
 >=net-libs/glib-networking-2.76_beta
 >=net-misc/gnome-connections-44_rc
