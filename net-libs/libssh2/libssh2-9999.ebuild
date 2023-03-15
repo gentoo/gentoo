@@ -1,8 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit git-r3 cmake-multilib
+EAPI=8
+
+inherit cmake-multilib git-r3
 
 DESCRIPTION="Library implementing the SSH2 protocol"
 HOMEPAGE="https://www.libssh2.org"
@@ -25,9 +26,7 @@ RDEPEND="
 	)
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
-DEPEND="
-	${RDEPEND}
-"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.0-mansyntax_sh.patch
