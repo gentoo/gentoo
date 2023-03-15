@@ -6,14 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=flit
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Execute the first function that matches the given arguments"
 HOMEPAGE="
 	https://github.com/kalekundert/signature_dispatch/
 	https://pypi.org/project/signature-dispatch/
 "
-SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
