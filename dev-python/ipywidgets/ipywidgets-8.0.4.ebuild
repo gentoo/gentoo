@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="IPython HTML widgets for Jupyter"
 HOMEPAGE="
@@ -15,7 +15,6 @@ HOMEPAGE="
 	https://github.com/jupyter-widgets/ipywidgets/
 	https://pypi.org/project/ipywidgets/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
