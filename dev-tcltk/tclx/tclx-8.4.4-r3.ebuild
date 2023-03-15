@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.4-ldflags.patch
 	"${FILESDIR}"/${P}-configure-clang16.patch
 	"${FILESDIR}"/${P}-configure-clang16-deux.patch
+	"${FILESDIR}"/${P}-gcc11.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
