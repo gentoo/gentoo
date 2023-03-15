@@ -5,11 +5,10 @@ EAPI=7
 PYTHON_COMPAT=( python3_{9..10} )
 DISTUTILS_USE_SETUPTOOLS=bdepend
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Celery Sphinx Theme and Utilities"
 HOMEPAGE="https://pypi.org/project/sphinx_celery/ https://github.com/celery/sphinx_celery"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
