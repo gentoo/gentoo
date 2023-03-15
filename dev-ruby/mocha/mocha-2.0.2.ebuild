@@ -27,7 +27,7 @@ ruby_add_bdepend "
 	test? ( >=dev-ruby/test-unit-2.5.1-r1 dev-ruby/introspection )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-ruby32.patch
+	"${FILESDIR}"/${PN}-1.16.0-ruby32.patch
 )
 
 all_ruby_prepare() {
