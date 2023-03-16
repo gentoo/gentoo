@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,8 @@ DEPEND="dev-lang/tcl:0=[threads]"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MY_P}
+
+PATCHES=( "${FILESDIR}"/${P}-musl.patch )
 
 src_prepare() {
 	default

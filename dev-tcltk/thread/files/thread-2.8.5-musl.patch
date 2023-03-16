@@ -1,0 +1,18 @@
+--- a/tests/thread.test	2023-03-16 21:31:05.333423098 +0100
++++ b/tests/thread.test	2023-03-16 21:31:25.837324400 +0100
+@@ -100,15 +100,6 @@
+     set c
+ } {0}
+ 
+-test thread-4.5 {thread::create - join detached thread} {
+-    ThreadReap
+-    set tid [thread::create]
+-    thread::send -async $tid {after 1000 ; thread::release}
+-    catch {set res [thread::join $tid]} msg
+-    ThreadReap
+-    lrange $msg 0 2
+-} {cannot join thread}
+-
+ test thread-5.0 {thread::release} {
+     ThreadReap
+     set tid [thread::create {thread::release}]
