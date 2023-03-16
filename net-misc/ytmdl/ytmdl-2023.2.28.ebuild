@@ -6,11 +6,10 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r1 pypi
 
 DESCRIPTION="Simple app to get songs from youtube in mp3 format"
 HOMEPAGE="https://ytmdl.deepjyoti30.dev/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
