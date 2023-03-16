@@ -12,8 +12,8 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/${PN}/borg.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+	inherit pypi
 fi
 
 DESCRIPTION="Deduplicating backup program with compression and authenticated encryption"
