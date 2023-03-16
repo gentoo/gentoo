@@ -14,6 +14,7 @@ net-analyzer/gsad
 # Requires qtwebengine
 sci-electronics/eagle
 sci-geosciences/gpsbabel
+sci-geosciences/qgis
 sci-geosciences/viking
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-09-09)
