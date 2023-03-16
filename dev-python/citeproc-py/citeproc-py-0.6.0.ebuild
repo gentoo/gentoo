@@ -3,20 +3,22 @@
 
 EAPI=8
 
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..10} )
 
 # Keep synced with tests/citeproc-test.py
 TEST_SUITE_COMMIT="c3db429ab7c6b9b9ccaaa6d3c6bb9e503f0d7b11"
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Yet another Python CSL Processor"
 HOMEPAGE="https://pypi.org/project/citeproc-py/"
-SRC_URI="
-	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+SRC_URI+="
 	test? (
-		https://github.com/citation-style-language/test-suite/archive/${TEST_SUITE_COMMIT}.tar.gz -> ${PN}-test-suite-${TEST_SUITE_COMMIT}.tar.gz
-	)"
+		https://github.com/citation-style-language/test-suite/archive/${TEST_SUITE_COMMIT}.tar.gz
+			-> ${PN}-test-suite-${TEST_SUITE_COMMIT}.tar.gz
+	)
+"
 
 LICENSE="BSD-2"
 SLOT="0"
