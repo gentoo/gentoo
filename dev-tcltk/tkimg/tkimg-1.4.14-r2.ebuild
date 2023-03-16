@@ -51,6 +51,8 @@ src_prepare() {
 		libjpeg/jpegtclDecls.h \
 		zlib/zlibtclDecls.h \
 		libpng/pngtclDecls.h \
+		tiff/tiffZip.c \
+		tiff/tiffPixar.c \
 		libtiff/tifftclDecls.h
 
 	# libtiff unbundle is problematic
