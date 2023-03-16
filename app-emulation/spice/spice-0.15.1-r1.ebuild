@@ -12,7 +12,7 @@ SRC_URI="https://www.spice-space.org/download/releases/spice-server/${P}.tar.bz2
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv x86"
 IUSE="gstreamer lz4 sasl smartcard static-libs test"
 
 RESTRICT="!test? ( test )"
