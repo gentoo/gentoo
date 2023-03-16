@@ -42,9 +42,10 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests setup.py
+distutils_enable_tests unittest
 
-#src_test() {
-	# https://github.com/ietf-tools/xml2rfc/issues/561
-#	emake tests-no-network
-#}
+src_prepare() {
+	default
+	# Disable broken PdfWriterTests.
+	sed -i 's/ PdfWriterTests(unittest.TestCase):/ PdfWriterTests:/' test.py || die
+}
