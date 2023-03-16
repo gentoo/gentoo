@@ -4,11 +4,10 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{9..10} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Read, write and analyze MD trajectories with only a few lines of Python code"
 HOMEPAGE="https://mdtraj.org"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2.1+"
