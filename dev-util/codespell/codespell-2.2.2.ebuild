@@ -6,11 +6,10 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Check text files for common misspellings"
 HOMEPAGE="https://pypi.org/project/codespell https://github.com/codespell-project/codespell"
-SRC_URI="mirror://pypi/${P::1}/${PN}/${P}.tar.gz"
 
 # Code licensed under GPL-2, dictionary licensed under CC-BY-SA-3.0
 LICENSE="GPL-2 CC-BY-SA-3.0"
