@@ -1,0 +1,26 @@
+diff -uNr a/nss/hosts.c b/nss/hosts.c
+--- a/nss/hosts.c	2021-11-15 13:40:49.000000000 -0600
++++ b/nss/hosts.c	2022-07-27 09:54:50.000000000 -0500
+@@ -49,6 +49,9 @@
+   *h_errnop = NO_RECOVERY;                                                  \
+   return NSS_STATUS_UNAVAIL;
+ 
++#ifndef NETDB_INTERNAL
++#define NETDB_INTERNAL -1
++#endif
+ #undef ERROR_OUT_BUFERROR
+ #define ERROR_OUT_BUFERROR(fp)                                              \
+   *errnop = ERANGE;                                                         \
+diff -uNr a/nss/networks.c b/nss/networks.c
+--- a/nss/networks.c	2021-01-15 11:21:18.000000000 -0600
++++ b/nss/networks.c	2022-07-27 09:54:22.000000000 -0500
+@@ -49,6 +49,9 @@
+   *h_errnop = NO_RECOVERY;                                                  \
+   return NSS_STATUS_UNAVAIL;
+ 
++#ifndef NETDB_INTERNAL
++#define NETDB_INTERNAL -1
++#endif
+ #undef ERROR_OUT_BUFERROR
+ #define ERROR_OUT_BUFERROR(fp)                                              \
+   *errnop = ERANGE;                                                         \
