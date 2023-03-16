@@ -6,14 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Py3k port of sgmllib"
 HOMEPAGE="
 	https://pypi.org/project/sgmllib3k/
 "
-SRC_URI="
-	mirror://pypi/${PN::1}/${PN}/${P}.tar.gz
+SRC_URI+="
 	test? (
 		https://dev.gentoo.org/~arthurzam/distfiles/dev-python/${PN}/test_sgmllib.py.gz
 	)
