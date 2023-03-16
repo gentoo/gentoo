@@ -420,10 +420,6 @@ dev-libs/hiredis test
 # DOSBox + OpenGLide is untested on this arch.
 games-emulation/dosbox glide
 
-# Michał Górny <mgorny@gentoo.org> (2016-11-18)
-# libomp does not support SPARC, #600148.
-sys-devel/clang-runtime openmp
-
 # Christian Ruppert <idl0r@gentoo.org> (2016-10-14)
 # dnstap USE masked due to missing keywords
 net-dns/bind dnstap

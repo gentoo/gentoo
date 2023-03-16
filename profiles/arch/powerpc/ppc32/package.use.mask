@@ -195,17 +195,9 @@ net-analyzer/wireshark bcg729
 # Incomplete support, bug #605878.
 net-vpn/tor seccomp
 
-# Michał Górny <mgorny@gentoo.org> (2017-03-23)
-# Most of clang runtimes are not supported here
-sys-devel/clang-runtime openmp sanitize
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-13)
 # Dropping ppc from sci-libs/armadillo, bug 555896
 sci-libs/gdal armadillo
-
-# Michał Górny <mgorny@gentoo.org> (2016-11-18)
-# libomp does not support 32-bit PPC, #600148.
-sys-devel/clang-runtime openmp
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2016-08-01)
 # kde-frameworks/*:5 not keyworded.

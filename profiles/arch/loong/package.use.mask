@@ -143,11 +143,9 @@ app-office/libreoffice clang
 # LLVM toolchain now partially usable on loong, mask the remaining pieces
 # pending test/bugfixes/porting.
 #
-# - sys-libs/libcxx: will work once https://reviews.llvm.org/D139297 lands
 # - sys-devel/lld: port is still under review
 dev-util/lldb test
-sys-devel/clang-common default-libcxx default-lld
-sys-devel/clang-runtime libcxx
+sys-devel/clang-common default-lld
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-11-18)
 # net-libs/webkit-gtk is not available on loong yet.
