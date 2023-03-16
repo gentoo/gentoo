@@ -4,13 +4,10 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{9..10} )
 
-inherit distutils-r1
-MY_P=${P/_/}
+inherit distutils-r1 pypi
 
 DESCRIPTION="Issue-tracking system with command-line, web, and e-mail interfaces"
 HOMEPAGE="http://roundup.sourceforge.net https://pypi.org/project/roundup/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT ZPL"
 SLOT="0"
