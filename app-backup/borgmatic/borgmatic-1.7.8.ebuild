@@ -7,11 +7,10 @@ PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1 systemd
+inherit distutils-r1 systemd pypi
 
 DESCRIPTION="Automatically create, prune and verify backups with borgbackup"
 HOMEPAGE="https://torsion.org/borgmatic/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
