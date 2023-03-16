@@ -6,11 +6,10 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Functional testing framework for command line applications"
 HOMEPAGE="https://bitheap.org/cram/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
