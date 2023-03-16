@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}-py/${PN}.git"
 else
-	SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
+	inherit pypi
 	KEYWORDS="~amd64 ~x86"
 fi
 
