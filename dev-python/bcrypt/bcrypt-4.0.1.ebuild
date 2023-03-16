@@ -58,15 +58,14 @@ CRATES="
 	zeroize-1.5.7
 "
 
-inherit cargo distutils-r1
+inherit cargo distutils-r1 pypi
 
 DESCRIPTION="Modern password hashing for software and servers"
 HOMEPAGE="
 	https://github.com/pyca/bcrypt/
 	https://pypi.org/project/bcrypt/
 "
-SRC_URI="
-	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+SRC_URI+="
 	$(cargo_crate_uris)
 "
 
