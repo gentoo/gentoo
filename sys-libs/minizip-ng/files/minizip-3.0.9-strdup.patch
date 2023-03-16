@@ -1,0 +1,37 @@
+https://github.com/zlib-ng/minizip-ng/pull/682
+
+From 5aaa8bf0c348a27d9a7a0d82d4af26748278828c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 16 Mar 2023 23:35:34 +0000
+Subject: [PATCH] CMake: set newer POSIX_C_SOURCE
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Enable POSIX 2008 as it's needed for strdup(), otherwise we get:
+```
+/var/tmp/portage/sys-libs/minizip-ng-3.0.9/work/minizip-ng-3.0.9/mz_os.c: In function ‘mz_dir_make’:
+/var/tmp/portage/sys-libs/minizip-ng-3.0.9/work/minizip-ng-3.0.9/mz_os.c:286:19: error: implicit declaration of function ‘strdup’ [-Werror=implicit-function-declaration]
+  286 |     current_dir = strdup(path);
+      |                   ^~~~~~
+```
+
+The man page for strdup says:
+```
+strdup():
+	_XOPEN_SOURCE >= 500
+	|| /* Since glibc 2.12: */ _POSIX_C_SOURCE >= 200809L
+	|| /* glibc <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
+```
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -455,7 +455,7 @@ endif()
+ 
+ # Unix specific
+ if(UNIX)
+-    list(APPEND STDLIB_DEF -D_POSIX_C_SOURCE=200112L)
++    list(APPEND STDLIB_DEF -D_POSIX_C_SOURCE=200809L)
+     list(APPEND MINIZIP_SRC mz_os_posix.c mz_strm_os_posix.c)
+ 
+     if(MZ_PKCRYPT OR MZ_WZAES OR MZ_SIGNING)
+
