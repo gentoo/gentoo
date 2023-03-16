@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-03-16)
+# Breaks building C++ consumers. See bug #901211 and bug #901035.
+# Please upgrade to glib-2.76.0-r1.
+=dev-libs/glib-2.76.0
+
 # Alfredo Tupone <tupone@gentoo.org> (2023-03-14)
 # Masked for removal in 30 days.
 # Bug #895824, no rev dep 
