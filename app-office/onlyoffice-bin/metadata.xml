@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>parona@protonmail.com</email>
+		<name>Alfred Wingate</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>pacho@gentoo.org</email>
+		<name>Pacho Ramos</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">ONLYOFFICE/DesktopEditors</remote-id>
+	</upstream>
+</pkgmetadata>
