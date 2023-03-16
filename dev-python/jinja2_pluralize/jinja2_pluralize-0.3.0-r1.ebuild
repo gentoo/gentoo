@@ -14,7 +14,6 @@ HOMEPAGE="
 	https://pypi.org/project/jinja2_pluralize/
 "
 
-
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
