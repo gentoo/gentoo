@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{9..11} pypy3 )
 PYTHON_REQ_USE='ncurses,sqlite(-)'
 DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1 pypi
+inherit distutils-r1
 
 DESCRIPTION="Utility to monitor real time Tor status information"
 HOMEPAGE="https://nyx.torproject.org"
@@ -16,6 +16,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
+	inherit pypi
 fi
 
 LICENSE="GPL-3"
