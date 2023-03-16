@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-rel${PV}"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~ppc ~ppc64 ~x86"
 IUSE="doc +ocamlopt"
 
 RDEPEND="dev-ml/camlp-streams:="
