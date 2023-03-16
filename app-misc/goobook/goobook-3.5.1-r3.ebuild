@@ -4,11 +4,10 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_10 )
-inherit distutils-r1 readme.gentoo-r1
+inherit distutils-r1 readme.gentoo-r1 pypi
 
 DESCRIPTION="Access your Google contacts from the command line"
 HOMEPAGE="https://gitlab.com/goobook/goobook"
-SRC_URI="mirror://pypi/g/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
