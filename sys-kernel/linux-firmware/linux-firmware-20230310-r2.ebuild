@@ -65,22 +65,18 @@ QA_PREBUILT="*"
 
 pkg_setup() {
 	if use compress-xz || use compress-zstd ; then
-		if ! linux_config_exists; then
-			eerror "Unable to check your kernel for compressed firmware support"
-		else
-			local CONFIG_CHECK
+		local CONFIG_CHECK
 
-			if kernel_is -ge 5 19; then
-				use compress-xz && CONFIG_CHECK="~FW_LOADER_COMPRESS_XZ"
-				use compress-zstd && CONFIG_CHECK="~FW_LOADER_COMPRESS_ZSTD"
-			else
-				use compress-xz && CONFIG_CHECK="~FW_LOADER_COMPRESS"
-				if use compress-zstd; then
-					eerror "You kernel does not support ZSTD-compressed firmware files"
-				fi
+		if kernel_is -ge 5 19; then
+			use compress-xz && CONFIG_CHECK="~FW_LOADER_COMPRESS_XZ"
+			use compress-zstd && CONFIG_CHECK="~FW_LOADER_COMPRESS_ZSTD"
+		else
+			use compress-xz && CONFIG_CHECK="~FW_LOADER_COMPRESS"
+			if use compress-zstd; then
+				eerror "Kernels <5.19 do not support ZSTD-compressed firmware files"
 			fi
-			linux-info_pkg_setup
 		fi
+		linux-info_pkg_setup
 	fi
 }
 
