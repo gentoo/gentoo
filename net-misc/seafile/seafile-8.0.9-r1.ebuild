@@ -6,17 +6,19 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 
 # Upstream is moving tags repeatedly, then we use commit hash.
-RELEASE_COMMIT="740763934a097577b92f0446cd73b555ca86b436"
+# (Please file a bug upstream if this happens!)
+#RELEASE_COMMIT="6bd36a957573eda6a53f3d1bc538dbfc001aa9fd"
 
 inherit autotools python-single-r1 vala
 
 DESCRIPTION="File syncing and sharing software with file encryption and group sharing"
 HOMEPAGE="https://www.seafile.com/ https://github.com/haiwen/seafile/"
-SRC_URI="https://github.com/haiwen/${PN}/archive/${RELEASE_COMMIT}.tar.gz -> ${P}.tar.gz"
+#SRC_URI="https://github.com/haiwen/${PN}/archive/${RELEASE_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/haiwen/seafile/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
