@@ -6,12 +6,16 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Read DBF Files with Python"
 HOMEPAGE="https://github.com/olemb/dbfread https://pypi.org/project/dbfread/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
-	test? ( https://github.com/olemb/dbfread/archive/refs/tags/${PV}.tar.gz -> ${P}-src.tar.gz )"
+SRC_URI+="
+	test? (
+		https://github.com/olemb/dbfread/archive/refs/tags/${PV}.tar.gz
+			-> ${P}-src.tar.gz
+	)
+"
 
 LICENSE="MIT"
 SLOT="0"
