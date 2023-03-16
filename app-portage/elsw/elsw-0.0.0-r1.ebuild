@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/xgqt/python-${PN}.git"
 else
 	inherit pypi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="GPL-2+"
