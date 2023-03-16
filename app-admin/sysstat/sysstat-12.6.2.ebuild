@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ~ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="dcron debug nls lm-sensors lto selinux systemd"
 
 BDEPEND="
