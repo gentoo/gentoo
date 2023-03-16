@@ -400,8 +400,6 @@ xfce-base/xfwm4 xpresent
 # Michał Górny <mgorny@gentoo.org> (2017-03-23)
 # Most of clang runtimes are not supported here
 sys-devel/clang-runtime openmp sanitize
-sys-libs/libcxx libunwind
-sys-libs/libcxxabi libunwind
 
 # Pacho Ramos <pacho@gentoo.org> (2017-02-04)
 # Missing keywords, bug #599572
