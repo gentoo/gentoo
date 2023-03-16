@@ -434,7 +434,7 @@ src_compile() {
 	cargo_src_compile
 
 	if use grammar; then
-		target/release/hx --grammar build || die
+		target/$(usex debug debug release)/hx --grammar build || die
 	fi
 }
 
