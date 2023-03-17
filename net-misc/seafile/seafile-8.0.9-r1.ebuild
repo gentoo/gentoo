@@ -14,6 +14,7 @@ inherit autotools python-single-r1 vala
 DESCRIPTION="File syncing and sharing software with file encryption and group sharing"
 HOMEPAGE="https://www.seafile.com/ https://github.com/haiwen/seafile/"
 #SRC_URI="https://github.com/haiwen/${PN}/archive/${RELEASE_COMMIT}.tar.gz -> ${P}.tar.gz"
+#S="${WORKDIR}/${PN}-${RELEASE_COMMIT}"
 SRC_URI="https://github.com/haiwen/seafile/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
@@ -38,8 +39,6 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}
 	$(vala_depend)"
-
-S="${WORKDIR}/${PN}-${RELEASE_COMMIT}"
 
 pkg_setup() {
 	python-single-r1_pkg_setup
