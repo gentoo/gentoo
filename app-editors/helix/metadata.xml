@@ -5,6 +5,14 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>freijon@pm.me</email>
+		<name>Jonas Frei</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="grammar">Build and install grammar language files</flag>
 	</use>
