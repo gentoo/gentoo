@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: eapi8-dosym.eclass
@@ -6,7 +6,7 @@
 # PMS team <pms@gentoo.org>
 # @AUTHOR:
 # Ulrich Müller <ulm@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Testing implementation of EAPI 8 dosym -r option
 # @DESCRIPTION:
 # A stand-alone implementation of the dosym command aimed for EAPI 8.
@@ -17,8 +17,8 @@
 # https://bugs.gentoo.org/708360
 
 case ${EAPI} in
-	5|6|7) ;;
-	*) die "${ECLASS}: EAPI=${EAPI:-0} not supported" ;;
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @FUNCTION: _dosym8_canonicalize
