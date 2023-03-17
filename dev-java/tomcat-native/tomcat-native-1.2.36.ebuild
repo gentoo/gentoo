@@ -9,7 +9,7 @@ DESCRIPTION="Allows Tomcat to use certain native resources for better performanc
 HOMEPAGE="https://tomcat.apache.org/native-doc/"
 SRC_URI="mirror://apache/tomcat/tomcat-connectors/native/${PV}/source/${P}-src.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="static-libs test"
