@@ -1,0 +1,10 @@
+diff --git a/src/neorados/CMakeLists.txt b/src/neorados/CMakeLists.txt
+index 3c7aee7c6fe..bda666ea95b 100644
+--- a/src/neorados/CMakeLists.txt
++++ b/src/neorados/CMakeLists.txt
+@@ -41,4 +41,4 @@ target_link_libraries(libneorados PRIVATE
+ # install(TARGETS libneorados DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ add_library(neorados_cls_fifo STATIC cls/fifo.cc)
+ target_link_libraries(neorados_cls_fifo PRIVATE
+-	libneorados ceph-common fmt::fmt)
++	libneorados ceph-common fmt::fmt Boost::context)
