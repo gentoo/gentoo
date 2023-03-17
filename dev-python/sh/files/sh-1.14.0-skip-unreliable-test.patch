@@ -1,8 +1,0 @@
-diff --git a/test.py b/test.py
-index a4b9915..fb2ffdd 100644
---- a/test.py
-+++ b/test.py
-@@ -2799,2 +2799,3 @@ print("cool")
-     @requires_progs("lsof")
-+    @unittest.skip("Test seems to be unreliable")
-     def test_no_fd_leak(self):
