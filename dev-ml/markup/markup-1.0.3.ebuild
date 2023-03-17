@@ -13,7 +13,7 @@ S="${WORKDIR}"/${PN}.ml-${PV}
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
