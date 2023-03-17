@@ -28,7 +28,8 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS pkg_setup
+if [[ -z ${_ADA_ECLASS} ]]; then
+_ADA_ECLASS=1
 
 # @ECLASS_VARIABLE: ADA_DEPS
 # @OUTPUT_VARIABLE
@@ -523,3 +524,7 @@ ada_pkg_setup() {
 
 	[[ ${MERGE_TYPE} != binary ]] && ada_setup
 }
+
+fi
+
+EXPORT_FUNCTIONS pkg_setup

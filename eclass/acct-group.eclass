@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: acct-group.eclass
@@ -36,9 +36,9 @@
 if [[ -z ${_ACCT_GROUP_ECLASS} ]]; then
 _ACCT_GROUP_ECLASS=1
 
-case ${EAPI:-0} in
+case ${EAPI} in
 	7|8) ;;
-	*) die "EAPI=${EAPI:-0} not supported";;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit user-info
@@ -83,7 +83,6 @@ S=${WORKDIR}
 
 
 # << Phase functions >>
-EXPORT_FUNCTIONS pkg_pretend src_install pkg_preinst
 
 # @FUNCTION: acct-group_pkg_pretend
 # @DESCRIPTION:
@@ -184,3 +183,5 @@ acct-group_pkg_preinst() {
 }
 
 fi
+
+EXPORT_FUNCTIONS pkg_pretend src_install pkg_preinst

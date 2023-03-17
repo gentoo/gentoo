@@ -35,7 +35,7 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_PYTHON_R1_ECLASS} ]]; then
+if [[ -z ${_PYTHON_R1_ECLASS} ]]; then
 _PYTHON_R1_ECLASS=1
 
 if [[ ${_PYTHON_SINGLE_R1_ECLASS} ]]; then
@@ -616,7 +616,7 @@ _python_multibuild_wrapper() {
 python_foreach_impl() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if [[ ${_DISTUTILS_R1} ]]; then
+	if [[ ${_DISTUTILS_R1_ECLASS} ]]; then
 		if has "${EBUILD_PHASE}" prepare configure compile test install &&
 			[[ ! ${_DISTUTILS_CALLING_FOREACH_IMPL} &&
 				! ${_DISTUTILS_FOREACH_IMPL_WARNED} ]]

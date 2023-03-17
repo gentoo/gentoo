@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cvs.eclass
@@ -13,13 +13,13 @@
 # cvs_src_unpack. If you find that you need to call the cvs_* functions
 # directly, I'd be interested to hear about it.
 
-if [[ -z ${_CVS_ECLASS} ]]; then
-_CVS_ECLASS=1
-
 case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ -z ${_CVS_ECLASS} ]]; then
+_CVS_ECLASS=1
 
 # TODO:
 
@@ -536,6 +536,6 @@ cvs_src_unpack() {
 	einfo "CVS module ${ECVS_MODULE} is now in ${WORKDIR}"
 }
 
-EXPORT_FUNCTIONS src_unpack
-
 fi
+
+EXPORT_FUNCTIONS src_unpack

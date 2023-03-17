@@ -1,4 +1,4 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qt6-build.eclass
@@ -10,14 +10,16 @@
 # This eclass contains various functions that are used when building Qt6.
 # Requires EAPI 8.
 
-if [[ ${CATEGORY} != dev-qt ]]; then
-	die "qt6-build.eclass is only to be used for building Qt 6"
-fi
-
 case ${EAPI} in
-	8)	: ;;
-	*)	die "qt6-build.eclass: unsupported EAPI=${EAPI:-0}" ;;
+	8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ -z ${_QT6_BUILD_ECLASS} ]]; then
+_QT6_BUILD_ECLASS=1
+
+[[ ${CATEGORY} != dev-qt ]] &&
+	die "${ECLASS} is only to be used for building Qt 6"
 
 # @ECLASS_VARIABLE: QT6_MODULE
 # @PRE_INHERIT
@@ -99,8 +101,6 @@ BDEPEND="
 #	DEPEND+=" test? ( ~dev-qt/qttest-${PV} )"
 #fi
 
-EXPORT_FUNCTIONS src_prepare src_configure
-
 ######  Phase functions  ######
 
 # @FUNCTION: qt6-build_src_prepare
@@ -166,3 +166,7 @@ qt6_prepare_env() {
 		QT6_QMLDIR QT6_DATADIR QT6_DOCDIR QT6_TRANSLATIONDIR \
 		QT6_EXAMPLESDIR QT6_TESTSDIR QT6_SYSCONFDIR
 }
+
+fi
+
+EXPORT_FUNCTIONS src_prepare src_configure

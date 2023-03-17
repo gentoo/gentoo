@@ -1,4 +1,4 @@
-# Copyright 2002-2022 Gentoo Authors
+# Copyright 2002-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp.eclass
@@ -68,9 +68,6 @@ case ${EAPI} in
 	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
-	pkg_{setup,postinst,postrm}
 
 RDEPEND=">=app-editors/emacs-${NEED_EMACS}:*"
 BDEPEND="${RDEPEND}"
@@ -189,3 +186,6 @@ elisp_pkg_postinst() {
 elisp_pkg_postrm() {
 	elisp-site-regen
 }
+
+EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
+	pkg_{setup,postinst,postrm}

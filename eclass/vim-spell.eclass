@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vim-spell.eclass
@@ -63,12 +63,10 @@
 # spell files. It's best to let upstream know if you've generated spell files
 # for another language rather than keeping them Gentoo-specific.
 
-case ${EAPI:-0} in
-	[67]) ;;
+case ${EAPI} in
+	6|7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-EXPORT_FUNCTIONS src_install pkg_postinst
 
 if [[ -z ${_VIM_SPELL_ECLASS} ]] ; then
 _VIM_SPELL_ECLASS=1
@@ -157,3 +155,5 @@ vim-spell_pkg_postinst() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_install pkg_postinst

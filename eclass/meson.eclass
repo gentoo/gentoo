@@ -1,4 +1,4 @@
-# Copyright 2017-2022 Gentoo Authors
+# Copyright 2017-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
@@ -43,8 +43,6 @@ if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
 inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
-
-EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 
 BDEPEND=">=dev-util/meson-0.62.2
 	${NINJA_DEPEND}
@@ -449,3 +447,5 @@ meson_src_install() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_configure src_compile src_test src_install

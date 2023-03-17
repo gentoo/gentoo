@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: font-ebdftopcf.eclass
@@ -14,10 +14,8 @@
 
 case ${EAPI} in
 	7) ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-EXPORT_FUNCTIONS src_compile
 
 if [[ -z ${_FONT_EBDFTOPCF_ECLASS} ]]; then
 _FONT_EBDFTOPCF_ECLASS=1
@@ -57,3 +55,5 @@ font-ebdftopcf_src_compile() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_compile

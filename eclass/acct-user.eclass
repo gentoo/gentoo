@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: acct-user.eclass
@@ -44,9 +44,9 @@
 if [[ -z ${_ACCT_USER_ECLASS} ]]; then
 _ACCT_USER_ECLASS=1
 
-case ${EAPI:-0} in
+case ${EAPI} in
 	7|8) ;;
-	*) die "EAPI=${EAPI:-0} not supported";;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit user-info
@@ -212,8 +212,6 @@ eislocked() {
 }
 
 # << Phase functions >>
-EXPORT_FUNCTIONS pkg_pretend src_install pkg_preinst pkg_postinst \
-	pkg_prerm
 
 # @FUNCTION: acct-user_pkg_pretend
 # @DESCRIPTION:
@@ -490,3 +488,5 @@ acct-user_pkg_prerm() {
 }
 
 fi
+
+EXPORT_FUNCTIONS pkg_pretend src_install pkg_preinst pkg_postinst pkg_prerm

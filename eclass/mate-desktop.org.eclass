@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mate-desktop.org.eclass
@@ -12,11 +12,13 @@
 # Provide a default SRC_URI and EGIT_REPO_URI for MATE packages as well as
 # exporting some useful values like the MATE_BRANCH
 
-# EAPIs < 7 are banned.
-case "${EAPI:-0}" in
+case ${EAPI} in
 	7) ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ -z ${_MATE_DESKTOP_ORG_ECLASS} ]]; then
+_MATE_DESKTOP_ORG_ECLASS=1
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -57,3 +59,5 @@ fi
 
 # Set HOMEPAGE for all ebuilds
 HOMEPAGE="https://mate-desktop.org"
+
+fi

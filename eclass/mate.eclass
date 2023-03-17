@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mate.eclass
@@ -15,11 +15,13 @@
 # MATE framework. Occassionally acts as a wrapper to gnome2 due to the
 # fact that MATE is a GNOME fork. For additional functions, see gnome2-utils.eclass.
 
-# Check EAPI only
-case "${EAPI:-0}" in
+case ${EAPI} in
 	7) ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ -z ${_MATE_ECLASS} ]]; then
+_MATE_ECLASS=1
 
 # Inherit happens below after declaration of GNOME2_LA_PUNT
 
@@ -156,5 +158,7 @@ mate_pkg_postinst() {
 mate_pkg_postrm() {
 	gnome2_pkg_postrm "$@"
 }
+
+fi
 
 EXPORT_FUNCTIONS src_prepare src_configure src_install pkg_preinst pkg_postinst pkg_postrm

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xorg-3.eclass
@@ -21,6 +21,14 @@
 # DESCRIPTION, KEYWORDS and RDEPEND/DEPEND. If your package is hosted
 # with the other X packages, you don't need to set SRC_URI. Pretty much
 # everything else should be automatic.
+
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_XORG_3_ECLASS} ]]; then
+_XORG_3_ECLASS=1
 
 GIT_ECLASS=""
 if [[ ${PV} == *9999* ]]; then
@@ -54,19 +62,7 @@ inherit autotools libtool multilib toolchain-funcs flag-o-matic \
 	${FONT_ECLASS} ${GIT_ECLASS}
 unset FONT_ECLASS GIT_ECLASS
 
-if [[ ${XORG_MULTILIB} == yes ]]; then
-	inherit multilib-minimal
-fi
-
-case "${EAPI:-0}" in
-	[7-8]) ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
-esac
-
-# exports must be ALWAYS after inherit
-EXPORT_FUNCTIONS src_prepare src_configure src_unpack src_compile src_install pkg_postinst pkg_postrm
-
-IUSE=""
+[[ ${XORG_MULTILIB} == yes ]] && inherit multilib-minimal
 
 # @ECLASS_VARIABLE: XORG_EAUTORECONF
 # @PRE_INHERIT
@@ -546,3 +542,7 @@ create_fonts_dir() {
 				-- "${EROOT}/usr/share/fonts/${FONT_DIR}"
 	eend $?
 }
+
+fi
+
+EXPORT_FUNCTIONS src_prepare src_configure src_unpack src_compile src_install pkg_postinst pkg_postrm

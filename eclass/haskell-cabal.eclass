@@ -41,15 +41,16 @@
 #                  is fixed.
 
 case ${EAPI} in
-	# eutils is for eqawarn
-	6|7) inherit eutils ;;
-	8) ;;
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit ghc-package multilib toolchain-funcs
+if [[ -z ${_HASKELL_CABAL_ECLASS} ]]; then
+_HASKELL_CABAL_ECLASS=1
 
-EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_install pkg_postinst pkg_postrm
+[[ ${EAPI} == 6 ]] && inherit eqawarn
+
+inherit ghc-package multilib toolchain-funcs
 
 # @ECLASS_VARIABLE: CABAL_EXTRA_CONFIGURE_FLAGS
 # @USER_VARIABLE
@@ -910,3 +911,7 @@ replace-hcflags() {
 
 	return 0
 }
+
+fi
+
+EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_test src_install pkg_postinst pkg_postrm
