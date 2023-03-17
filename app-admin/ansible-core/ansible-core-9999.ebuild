@@ -5,6 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_USE_SETUPTOOLS=bdepend
+PYPI_NO_NORMALIZE=1
 
 inherit distutils-r1
 
@@ -16,13 +17,12 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ansible/ansible.git"
 	EGIT_BRANCH="devel"
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	inherit pypi
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="test"
 RESTRICT="test"
 
 RDEPEND="
@@ -35,27 +35,20 @@ RDEPEND="
 	dev-python/netaddr[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	>=dev-python/resolvelib-0.5.3[${PYTHON_USEDEP}]
-	<dev-python/resolvelib-0.6.0[${PYTHON_USEDEP}]
+	<dev-python/resolvelib-0.9.0[${PYTHON_USEDEP}]
 	net-misc/sshpass
 	virtual/ssh
 "
-DEPEND="
+BDEPEND="
 	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
 	test? (
-		${RDEPEND}
-		dev-python/bcrypt[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
-		>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]
-		dev-python/passlib[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}]
-		dev-vcs/git
+		dev-python/botocore[${PYTHON_USEDEP}]
+		dev-python/pytz[${PYTHON_USEDEP}]
 	)"
+
+distutils_enable_tests pytest
 
 python_compile() {
 	export ANSIBLE_SKIP_CONFLICT_CHECK=1
 	distutils-r1_python_compile
-}
-
-python_test() {
-	nosetests -d -w test/units -v --with-coverage --cover-package=ansible --cover-branches || die
 }
