@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-rel$(ver_rs 1- '')"
 
 LICENSE="LGPL-2.1"
 SLOT="1/${PV}"
-KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="+ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-4.07:=[ocamlopt?]
