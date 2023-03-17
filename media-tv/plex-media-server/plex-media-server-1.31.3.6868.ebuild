@@ -3,9 +3,9 @@
 
 EAPI=8
 
-inherit readme.gentoo-r1 systemd unpacker
+inherit readme.gentoo-r1 systemd unpacker pax-utils
 
-MY_PV="${PV}-819d3678c"
+MY_PV="${PV}-28fc46b27"
 MY_URI="https://downloads.plex.tv/plex-media-server-new"
 
 DESCRIPTION="Free media library that is intended for use with a plex client"
@@ -13,19 +13,25 @@ HOMEPAGE="https://www.plex.tv/"
 SRC_URI="
 	amd64? ( ${MY_URI}/${MY_PV}/debian/plexmediaserver_${MY_PV}_amd64.deb )
 	arm64? ( ${MY_URI}/${MY_PV}/debian/plexmediaserver_${MY_PV}_arm64.deb )
-	x86? ( ${MY_URI}/${MY_PV}/debian/plexmediaserver_${MY_PV}_i386.deb )"
+	x86? ( ${MY_URI}/${MY_PV}/debian/plexmediaserver_${MY_PV}_i386.deb )
+"
 S="${WORKDIR}"
 
 LICENSE="Plex"
 SLOT="0"
-KEYWORDS="-* amd64 ~arm64 ~x86"
-RESTRICT="mirror bindist"
+KEYWORDS="-* ~amd64 ~arm64 ~x86"
+RESTRICT="bindist"
 
 DEPEND="
 	acct-group/plex
 	acct-user/plex"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}.service.patch"
+)
+
+QA_DESKTOP_FILE="usr/share/applications/plexmediamanager.desktop"
 QA_PREBUILT="*"
 QA_MULTILIB_PATHS=(
 	"usr/lib/plexmediaserver/lib/.*"
@@ -33,16 +39,14 @@ QA_MULTILIB_PATHS=(
 	"usr/lib/plexmediaserver/Resources/Python/lib/python2.7/lib-dynload/_hashlib.so"
 )
 
+BINS_TO_PAX_MARK=(
+	"${ED}/usr/lib/plexmediaserver/Plex Script Host"
+	"${ED}/usr/lib/plexmediaserver/Plex Media Scanner"
+)
+
 src_install() {
 	# Remove Debian specific files
 	rm -r "usr/share/doc" || die
-
-	# Add startup wrapper
-	dosbin "${FILESDIR}/start_pms"
-
-	# Add user config file
-	mkdir -p "${ED}/etc/default" || die
-	cp usr/lib/plexmediaserver/lib/plexmediaserver.default "${ED}"/etc/default/plexmediaserver || die
 
 	# Copy main files over to image and preserve permissions so it is portable
 	cp -rp usr/ "${ED}" || die
@@ -54,10 +58,18 @@ src_install() {
 	keepdir /var/lib/plexmediaserver
 	fowners plex:plex /var/lib/plexmediaserver
 
-	newinitd usr/lib/plexmediaserver/lib/plexmediaserver.init "${PN}"
+	# Install the OpenRC init/conf files
+	newinitd "${FILESDIR}/${PN}.init.d" ${PN}
+	newconfd "${FILESDIR}/${PN}.conf.d" ${PN}
 
-	systemd_dounit "${ED}"/usr/lib/plexmediaserver/lib/plexmediaserver.service
-	keepdir /var/lib/plexmediaserver
+	# Install systemd service file
+	systemd_newunit "${ED}"/usr/lib/plexmediaserver/lib/plexmediaserver.service "${PN}.service"
+
+	# Add pax markings to some binaries so that they work on hardened setup
+	local f
+	for f in "${BINS_TO_PAX_MARK[@]}"; do
+		pax-mark m "${f}"
+	done
 
 	# Adds the precompiled plex libraries to the revdep-rebuild's mask list
 	# so it doesn't try to rebuild libraries that can't be rebuilt.
