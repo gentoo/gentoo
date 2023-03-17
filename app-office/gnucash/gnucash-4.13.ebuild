@@ -101,6 +101,7 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-3.8-exclude-license.patch"
 	"${FILESDIR}/${PN}-4.12-drop-broken-test.patch"
+	"${FILESDIR}/${PN}-4.13-no-werror.patch"
 
 	# This is only to prevent webkit2gtk-4 from being selected.
 	# https://bugs.gentoo.org/893676
