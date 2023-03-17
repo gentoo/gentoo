@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: subversion.eclass
@@ -6,27 +6,25 @@
 # Akinori Hattori <hattya@gentoo.org>
 # @AUTHOR:
 # Original Author: Akinori Hattori <hattya@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Fetch software sources from subversion repositories
 # @DESCRIPTION:
 # The subversion eclass provides functions to fetch software sources
 # from subversion repositories.
 
 case ${EAPI} in
-	6|7|8) inherit estack ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} is not supported" ;;
+	7|8) inherit estack ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ -z ${_SUBVERSION_ECLASS} ]]; then
+_SUBVERSION_ECLASS=1
 
 PROPERTIES+=" live"
 
-DEPEND="
+BDEPEND="
 	dev-vcs/subversion[http(+)]
 	net-misc/rsync"
-
-case ${EAPI} in
-	6) ;;
-	*) BDEPEND="${DEPEND}"; DEPEND="" ;;
-esac
 
 # @ECLASS_VARIABLE: ESVN_STORE_DIR
 # @USER_VARIABLE
@@ -177,7 +175,7 @@ subversion_fetch() {
 		die "${ECLASS}: ESVN_REPO_URI (or specified URI) is empty."
 	fi
 
-	[[ -n "${ESVN_REVISION}" ]] && revision="${ESVN_REVISION}"
+	[[ -n ${ESVN_REVISION} ]] && revision="${ESVN_REVISION}"
 
 	# check for the scheme
 	local scheme="${repo_uri%%:*}"
@@ -196,7 +194,7 @@ subversion_fetch() {
 	addread "/etc/subversion"
 	addwrite "${ESVN_STORE_DIR}"
 
-	if [[ -n "${ESVN_UMASK}" ]]; then
+	if [[ -n ${ESVN_UMASK} ]]; then
 		eumask_push "${ESVN_UMASK}"
 	fi
 
@@ -210,9 +208,9 @@ subversion_fetch() {
 	local wc_path="$(subversion__get_wc_path "${repo_uri}")"
 	local options="${ESVN_OPTIONS} --config-dir ${ESVN_STORE_DIR}/.subversion"
 
-	[[ -n "${revision}" ]] && options="${options} -r ${revision}"
+	[[ -n ${revision} ]] && options="${options} -r ${revision}"
 
-	if [[ "${ESVN_OPTIONS}" = *-r* ]]; then
+	if [[ ${ESVN_OPTIONS} == *-r* ]]; then
 		ewarn "\${ESVN_OPTIONS} contains -r, this usage is unsupported. Please"
 		ewarn "see \${ESVN_REPO_URI}"
 	fi
@@ -237,7 +235,7 @@ subversion_fetch() {
 
 		mkdir -m 775 -p "${ESVN_PROJECT}" || die "${ECLASS}: can't mkdir ${ESVN_PROJECT}."
 		cd "${ESVN_PROJECT}" || die "${ECLASS}: can't chdir to ${ESVN_PROJECT}"
-		if [[ -n "${ESVN_USER}" ]]; then
+		if [[ -n ${ESVN_USER} ]]; then
 			${ESVN_FETCH_CMD} ${options} --username "${ESVN_USER}" --password "${ESVN_PASSWORD}" "${repo_uri}" || die "${ECLASS}: can't fetch to ${wc_path} from ${repo_uri}."
 		else
 			${ESVN_FETCH_CMD} ${options} "${repo_uri}" || die "${ECLASS}: can't fetch to ${wc_path} from ${repo_uri}."
@@ -276,13 +274,13 @@ subversion_fetch() {
 				einfo "     new UUID: $(subversion__svn_info "${repo_uri}" "Repository UUID")"
 				einfo "     repository: ${repo_uri}${revision:+@}${revision}"
 
-				rm -fr "${ESVN_PROJECT}" || die
+				rm -rf "${ESVN_PROJECT}" || die
 
 				debug-print "${FUNCNAME}: ${ESVN_FETCH_CMD} ${options} ${repo_uri}"
 
 				mkdir -m 775 -p "${ESVN_PROJECT}" || die "${ECLASS}: can't mkdir ${ESVN_PROJECT}."
 				cd "${ESVN_PROJECT}" || die "${ECLASS}: can't chdir to ${ESVN_PROJECT}"
-				if [[ -n "${ESVN_USER}" ]]; then
+				if [[ -n ${ESVN_USER} ]]; then
 					${ESVN_FETCH_CMD} ${options} --username "${ESVN_USER}" --password "${ESVN_PASSWORD}" "${repo_uri}" || die "${ECLASS}: can't fetch to ${wc_path} from ${repo_uri}."
 				else
 					${ESVN_FETCH_CMD} ${options} "${repo_uri}" || die "${ECLASS}: can't fetch to ${wc_path} from ${repo_uri}."
@@ -295,7 +293,7 @@ subversion_fetch() {
 				debug-print "${FUNCNAME}: ${ESVN_SWITCH_CMD} ${options} ${repo_uri}"
 
 				cd "${wc_path}" || die "${ECLASS}: can't chdir to ${wc_path}"
-				if [[ -n "${ESVN_USER}" ]]; then
+				if [[ -n ${ESVN_USER} ]]; then
 					${ESVN_SWITCH_CMD} ${options} --username "${ESVN_USER}" --password "${ESVN_PASSWORD}" ${repo_uri} || die "${ECLASS}: can't update ${wc_path} from ${repo_uri}."
 				else
 					${ESVN_SWITCH_CMD} ${options} ${repo_uri} || die "${ECLASS}: can't update ${wc_path} from ${repo_uri}."
@@ -308,7 +306,7 @@ subversion_fetch() {
 				debug-print "${FUNCNAME}: ${ESVN_UPDATE_CMD} ${options}"
 
 				cd "${wc_path}" || die "${ECLASS}: can't chdir to ${wc_path}"
-				if [[ -n "${ESVN_USER}" ]]; then
+				if [[ -n ${ESVN_USER} ]]; then
 					${ESVN_UPDATE_CMD} ${options} --username "${ESVN_USER}" --password "${ESVN_PASSWORD}" || die "${ECLASS}: can't update ${wc_path} from ${repo_uri}."
 				else
 					${ESVN_UPDATE_CMD} ${options} || die "${ECLASS}: can't update ${wc_path} from ${repo_uri}."
@@ -320,7 +318,7 @@ subversion_fetch() {
 		fi
 	fi
 
-	if [[ -n "${ESVN_UMASK}" ]]; then
+	if [[ -n ${ESVN_UMASK} ]]; then
 		eumask_pop
 	fi
 
@@ -384,7 +382,7 @@ subversion_src_unpack() {
 subversion_pkg_preinst() {
 	local pkgdate=$(date "+%Y%m%d %H:%M:%S")
 	if [[ -n ${ESCM_LOGDIR} ]]; then
-		local dir="${EROOT%/}${ESCM_LOGDIR}/${CATEGORY}"
+		local dir="${EROOT}${ESCM_LOGDIR}/${CATEGORY}"
 		if [[ ! -d ${dir} ]]; then
 			mkdir -p "${dir}" || eerror "Failed to create '${dir}' for logging svn revision"
 		fi
@@ -450,7 +448,7 @@ subversion__get_peg_revision() {
 
 	debug-print "${FUNCNAME}: repo_uri = ${repo_uri}"
 	# repo_uri has peg revision?
-	if [[ ${repo_uri} = *@* ]]; then
+	if [[ ${repo_uri} == *@* ]]; then
 		peg_rev="${repo_uri##*@}"
 		debug-print "${FUNCNAME}: peg_rev = ${peg_rev}"
 	else
@@ -459,5 +457,7 @@ subversion__get_peg_revision() {
 
 	echo "${peg_rev}"
 }
+
+fi
 
 EXPORT_FUNCTIONS src_unpack pkg_preinst
