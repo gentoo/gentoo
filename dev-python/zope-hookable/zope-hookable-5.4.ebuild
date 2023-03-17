@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Efficient creation of 'hookable' objects"
 HOMEPAGE="
@@ -17,6 +17,7 @@ SRC_URI="
 	https://github.com/zopefoundation/zope.hookable/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
+SRC_URI="$(pypi_sdist_url --no-normalize "${PN/-/.}")"
 S=${WORKDIR}/${P/-/.}
 
 LICENSE="ZPL"
