@@ -17,7 +17,7 @@ OPAM_INSTALLER="${S}/_build/install/default/bin/opam-installer"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt"
 
 PATCHES=( "${WORKDIR}"/opam-2.1.0-dose3-6.patch )
