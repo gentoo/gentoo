@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,11 @@ HOMEPAGE="
 	https://docs.xfce.org/apps/screensaver/start
 	https://gitlab.xfce.org/apps/xfce4-screensaver/
 "
-SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="
+	https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2
+	https://gitlab.xfce.org/apps/xfce4-screensaver/-/commit/7aeced1f6fb39fd8887fc441b4ff491ba5bfcf35.patch
+		-> ${P}-mem.patch
+"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
@@ -18,7 +22,7 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~loong ppc ~ppc64 ~riscv x86"
 IUSE="elogind +locking opengl pam systemd"
 
 # Xrandr: optional but automagic
-RDEPEND="
+DEPEND="
 	>=dev-libs/dbus-glib-0.30
 	>=dev-libs/glib-2.50:2
 	>=x11-libs/gtk+-3.22:3
@@ -41,12 +45,19 @@ RDEPEND="
 	opengl? ( virtual/opengl )
 	systemd? ( sys-apps/systemd:= )
 "
-DEPEND="${RDEPEND}"
+RDEPEND="
+	${DEPEND}
+"
 BDEPEND="
 	dev-util/glib-utils
 	dev-util/intltool
 	sys-apps/dbus
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
+
+PATCHES=(
+	"${DISTDIR}/${P}-mem.patch"
+)
 
 src_configure() {
 	local myconf=(
