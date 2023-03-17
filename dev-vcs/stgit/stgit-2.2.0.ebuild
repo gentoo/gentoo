@@ -175,7 +175,7 @@ CRATES="
 	xattr-0.2.3
 "
 
-inherit cargo
+inherit cargo flag-o-matic
 
 DESCRIPTION="Manage a stack of patches using GIT as a backend"
 HOMEPAGE="https://stacked-git.github.io"
@@ -195,6 +195,10 @@ RDEPEND=""
 # rust does not use *FLAGS from make.conf, silence portage warning
 # update with proper path to binaries this crate installs, omit leading /
 QA_FLAGS_IGNORED="usr/bin/${PN}"
+
+src_configure() {
+	filter-lto #bug 897692
+}
 
 src_compile() {
 	cargo_src_compile
