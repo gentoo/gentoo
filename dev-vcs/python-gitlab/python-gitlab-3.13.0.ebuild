@@ -4,6 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{9,10,11} )
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 inherit distutils-r1
 
 DESCRIPTION="Python command line interface to gitlab API"
@@ -13,7 +14,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/python-gitlab/python-gitlab"
 	inherit git-r3
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	inherit pypi
 	KEYWORDS="~amd64"
 fi
 
