@@ -6,7 +6,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Original Author: Aaron Walker <ka0ttic@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Some functions for cron
 # @DESCRIPTION:
 # Purpose: The main motivation for this eclass was to simplify
@@ -18,7 +18,7 @@
 # chosen based on the most common setting among cron ebuilds.
 
 case ${EAPI} in
-	6|7|8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
