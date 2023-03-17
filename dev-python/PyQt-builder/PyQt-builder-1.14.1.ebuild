@@ -3,19 +3,18 @@
 
 EAPI=8
 
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="The PEP 517 compliant PyQt build system"
 HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt-builder/ https://pypi.org/project/PyQt-builder/"
 
-MY_P=${PN}-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
+	MY_P=${PN}-${PV/_pre/.dev}
 	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
-else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
+	S=${WORKDIR}/${MY_P}
 fi
-S=${WORKDIR}/${MY_P}
 
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
 SLOT="0"
