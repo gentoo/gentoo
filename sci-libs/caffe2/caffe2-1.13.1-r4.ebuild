@@ -178,7 +178,7 @@ src_install() {
 	mv "${ED}"/usr/lib/python*/site-packages/caffe2 python/ || die
 	mv "${ED}"/usr/include/torch python/torch/include || die
 	cp torch/version.py python/torch/ || die
-	rm -r "${ED}"/var/tmp || die
+	rm -rf "${ED}"/var/tmp || die
 	python_domodule python/caffe2
 	python_domodule python/torch
 }
