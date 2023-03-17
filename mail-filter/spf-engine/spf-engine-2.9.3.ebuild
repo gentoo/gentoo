@@ -3,6 +3,7 @@
 
 EAPI=8
 
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_9 python3_10 )
 
 # The built-in ipaddress module handles the parsing of IP addresses. If
@@ -11,11 +12,10 @@ PYTHON_COMPAT=( python3_9 python3_10 )
 # other words, it's completely broken.
 PYTHON_REQ_USE="ipv6(+)"
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Policy daemon and milter for Postfix SPF verification"
 HOMEPAGE="https://launchpad.net/spf-engine"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
