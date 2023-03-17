@@ -4,18 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_10 )
-inherit readme.gentoo-r1 systemd distutils-r1
-
-MY_V="${PV/_p/.post}"
-MY_P="${PN}-${MY_V}"
+inherit readme.gentoo-r1 systemd distutils-r1 pypi
 
 DESCRIPTION="BuildBot Worker (slave) Daemon"
 HOMEPAGE="https://buildbot.net/
 	https://github.com/buildbot/buildbot
 	https://pypi.org/project/buildbot-worker/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
