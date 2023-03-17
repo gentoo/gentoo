@@ -1,9 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-info.eclass
 # @MAINTAINER:
 # kernel@gentoo.org
+# @SUPPORTED_EAPIS: 6 7 8
 # @AUTHOR:
 # Original author: John Mylchreest <johnm@gentoo.org>
 # @BLURB: eclass used for accessing kernel related information
@@ -25,6 +26,14 @@
 # linux-info_get_any_version
 # get_version
 # get_running_version
+
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_LINUX_INFO_ECLASS} ]]; then
+_LINUX_INFO_ECLASS=1
 
 # A Couple of env vars are available to effect usage of this eclass
 # These are as follows:
@@ -151,9 +160,7 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 
 # And to ensure all the weirdness with crosscompile
 inherit toolchain-funcs
-[[ ${EAPI:-0} == [0123456] ]] && inherit eapi7-ver
-
-EXPORT_FUNCTIONS pkg_setup
+[[ ${EAPI} == 6 ]] && inherit eapi7-ver
 
 # bug #75034
 case ${ARCH} in
@@ -231,7 +238,6 @@ getfilevar() {
 		# We use nonfatal because we want the caller to take care of things #373151
 		# Pass need-config= to make to avoid config check in kernel Makefile.
 		# Pass dot-config=0 to avoid the config check in kernels prior to 5.4.
-		[[ ${EAPI:-0} == [0123] ]] && nonfatal() { "$@"; }
 		echo -e "e:\\n\\t@echo \$(${1})\\ninclude ${basefname}" | \
 			nonfatal emake -C "${basedname}" --no-print-directory M="${T}" \
 			dot-config=0 need-config= need-compiler= \
@@ -1009,3 +1015,7 @@ kernel_get_makefile() {
 	[[ -s ${KV_DIR}/Makefile ]] && KERNEL_MAKEFILE="${KV_DIR}/Makefile" && return
 
 }
+
+fi
+
+EXPORT_FUNCTIONS pkg_setup
