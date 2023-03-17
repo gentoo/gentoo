@@ -168,10 +168,6 @@ dev-ruby/ddmemoize
 x11-drivers/nvidia-drivers:0/390
 
 # Matt Turner <mattst88@gentoo.org> (2023-03-30)
-# Masked for testing and migration of consumers
-net-libs/libdmapsharing:4.0
-
-# Matt Turner <mattst88@gentoo.org> (2023-03-30)
 # gnome-online-miners and libzapojit are archived upstream. All three packages
 # are stuck on libsoup-2.4. gnome-photos is the only reverse dependency of
 # gnome-online-miners, and it works without it.
@@ -484,10 +480,12 @@ dev-python/pkgutil_resolve_name
 ~dev-util/bindgen-0.63.0
 
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
-# Packages or their dependencies have not been ported to libsoup:3.0, while
-# other non-slotted dependencies have been.
+# Masked for testing and migration of consumers
 media-gfx/gnome-photos
+>=media-libs/grilo-0.3.15-r1
+>=media-plugins/grilo-plugins-0.3.16
 media-sound/gnome-music
+net-libs/libdmapsharing:4.0
 
 # Jaco Kroon <jaco@uls.co.za> (2022-11-05)
 # Some potentially breaking changes here, please check the UPGRADE.txt file.
