@@ -40,7 +40,6 @@ DEPEND="
 	app-arch/bzip2:=
 	app-arch/lz4:=
 	app-arch/snappy:=
-	|| ( >=app-arch/snappy-1.1.9-r1 <app-arch/snappy-1.1.9 )
 	app-arch/zstd:=
 	app-shells/bash:0
 	app-misc/jq:=
