@@ -5,14 +5,14 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9,10,11} )
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 PATCHES=( "${FILESDIR}/${P}-remove-obsolete-bugtrack_url.diff" )
 
 DESCRIPTION="python interface to Clamd (Clamav daemon)"
 HOMEPAGE="https://xael.org/pages/pyclamd-en.html"
-SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
