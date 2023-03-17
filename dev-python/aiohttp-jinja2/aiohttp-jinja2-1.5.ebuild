@@ -3,12 +3,12 @@
 
 EAPI=8
 
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..10} pypy3 )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="jinja2 template renderer for aiohttp.web"
 HOMEPAGE="https://github.com/aio-libs/aiohttp-jinja2"
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
