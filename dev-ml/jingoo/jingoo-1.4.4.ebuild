@@ -12,7 +12,7 @@ SRC_URI="https://github.com/tategakibunko/${PN}/archive/v${PV}.tar.gz
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
