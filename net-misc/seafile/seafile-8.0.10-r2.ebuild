@@ -31,6 +31,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/glib:2
 	dev-libs/jansson:=
 	dev-libs/libevent:=
+	net-libs/libwebsockets:=
 	net-libs/libsearpc[${PYTHON_SINGLE_USEDEP}]
 	net-misc/curl
 	sys-apps/util-linux
