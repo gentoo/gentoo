@@ -7,6 +7,7 @@
   </maintainer>
   <use>
     <flag name="playlist">Enable support for playlists through <pkg>dev-libs/totem-pl-parser</pkg></flag>
+    <flag name="soup3">Enable libsoup3 <pkg>net-libs/libsoup</pkg></flag>
   </use>
   <longdescription lang="en">
     Grilo is a framework that provides access to various sources of multimedia
