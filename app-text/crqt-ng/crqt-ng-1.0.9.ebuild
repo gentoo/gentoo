@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/coolreader-ng/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="+gif +svg +chm +harfbuzz +libunibreak +fribidi +zstd +libutf8proc"
 
 CDEPEND=">=app-text/crengine-ng-0.9.7[png,jpeg,fontconfig,gif=,svg=,chm=,harfbuzz=,fribidi=,zstd=,libutf8proc=]
