@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/trousers/${PN}/${P}.tar.gz"
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~m68k ~s390 x86"
+KEYWORDS="amd64 ~arm arm64 ~m68k ~s390 x86"
 IUSE="nls pkcs11 debug"
 
 DEPEND=">=app-crypt/trousers-0.3.15-r1
