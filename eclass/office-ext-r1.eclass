@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: office-ext-r1.eclass
@@ -6,18 +6,18 @@
 # The office team <office@gentoo.org>
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
-# @SUPPORTED_EAPIS: 5 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Eclass for installing libreoffice extensions
 # @DESCRIPTION:
 # Eclass for easing maintenance of libreoffice extensions.
 
-case "${EAPI:-0}" in
-	5) inherit eutils multilib ;;
-	7) inherit eutils ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+case ${EAPI} in
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_unpack src_install
+if [[ -z ${_OFFICE_EXT_R1_ECLASS} ]]; then
+_OFFICE_EXT_R1_ECLASS=1
 
 # @ECLASS_VARIABLE: OFFICE_REQ_USE
 # @PRE_INHERIT
@@ -112,7 +112,7 @@ office-ext-r1_src_unpack() {
 	for i in ${OFFICE_EXTENSIONS[@]}; do
 		# Unpack the extensions where required and add case for oxt
 		# which should be most common case for the extensions.
-		if [[ -f "${OFFICE_EXTENSIONS_LOCATION}/${i}" ]] ; then
+		if [[ -f ${OFFICE_EXTENSIONS_LOCATION}/${i} ]] ; then
 			case ${i} in
 				*.oxt)
 					mkdir -p "${WORKDIR}/${i}/" || die
@@ -142,9 +142,13 @@ office-ext-r1_src_install() {
 			for j in ${OFFICE_EXTENSIONS[@]}; do
 				pushd "${WORKDIR}/${j}/" > /dev/null || die
 				insinto /usr/$(get_libdir)/${i}/share/extensions/${j/.oxt/}
-				doins -r *
+				doins -r .
 				popd > /dev/null || die
 			done
 		fi
 	done
 }
+
+fi
+
+EXPORT_FUNCTIONS src_unpack src_install
