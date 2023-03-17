@@ -19,6 +19,10 @@ IUSE=""
 DEPEND="dev-lang/tcl:0=[threads]"
 RDEPEND="${DEPEND}"
 
+QA_CONFIG_IMPL_DECL_SKIP=(
+	stat64 # used to test for Large File Support
+)
+
 S="${WORKDIR}"/${MY_P}
 
 PATCHES=( "${FILESDIR}"/${P}-musl.patch )
