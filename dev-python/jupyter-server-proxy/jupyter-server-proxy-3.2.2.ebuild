@@ -4,12 +4,12 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Jupyter notebook server extension to proxy web services"
 HOMEPAGE="https://github.com/jupyterhub/jupyter-server-proxy"
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 # The GitHub tarball includes the tests, but does not have the js stuff we need
 
 LICENSE="BSD"
