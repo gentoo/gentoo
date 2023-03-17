@@ -3,13 +3,13 @@
 
 EAPI=8
 
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="More descriptive parametrized-test IDs for py.test"
 HOMEPAGE="https://github.com/man-group/pytest-plugins https://pypi.org/project/pytest-verbose-parametrize/"
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
