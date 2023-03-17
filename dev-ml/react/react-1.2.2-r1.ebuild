@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/dbuenzli/react.git"
 else
 	SRC_URI="http://erratique.ch/software/react/releases/${P}.tbz"
-	KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv x86"
 fi
 
 LICENSE="BSD"
