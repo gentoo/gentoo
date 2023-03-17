@@ -220,7 +220,7 @@ sys-libs/ncurses stack-realign
 
 # Michał Górny <mgorny@gentoo.org> (2022-05-25)
 # dev-python/sphinxcontrib-openapi is masked for removal.
-dev-python/jupyter_server doc
+dev-python/jupyter-server doc
 
 # Joonas Niilola <juippis@gentoo.org> (2022-05-03)
 # system-python-libs is HIGHLY EXPERIMENTAL according to upstream, and

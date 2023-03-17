@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/aiohttp[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_server-1.0[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-server-1.0[${PYTHON_USEDEP}]
 	>=dev-python/simpervisor-0.4[${PYTHON_USEDEP}]
 "
 BDEPEND="dev-python/jupyter_packaging[${PYTHON_USEDEP}]"

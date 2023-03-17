@@ -21,7 +21,7 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-python/entrypoints[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_server-1.1.2[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-server-1.1.2[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

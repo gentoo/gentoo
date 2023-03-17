@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/jupyter_core[${PYTHON_USEDEP}]
 	>=dev-python/jupyterlab-server-2.10[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_server-1.16[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-server-1.16[${PYTHON_USEDEP}]
 	>=dev-python/nbclassic-0.2[${PYTHON_USEDEP}]
 	<dev-python/notebook-7[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]

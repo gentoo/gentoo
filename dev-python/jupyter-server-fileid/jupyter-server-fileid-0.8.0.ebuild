@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	dev-python/jupyter_server[${PYTHON_USEDEP}]
+	dev-python/jupyter-server[${PYTHON_USEDEP}]
 	~dev-python/jupyter_events-0.5.0[${PYTHON_USEDEP}]
 "
 

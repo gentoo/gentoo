@@ -24,7 +24,7 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/jupyter_core[${PYTHON_USEDEP}]
 	>=dev-python/jupyterlab-server-2.19[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_server-1.16[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-server-1.16[${PYTHON_USEDEP}]
 	~dev-python/jupyter_ydoc-0.2.2[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-server-ydoc-0.6.0[${PYTHON_USEDEP}]
 	<dev-python/jupyter-server-ydoc-0.7.0[${PYTHON_USEDEP}]

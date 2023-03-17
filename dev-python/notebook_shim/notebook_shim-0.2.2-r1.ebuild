@@ -19,8 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~riscv ~x86"
 
 RDEPEND="
-	<dev-python/jupyter_server-3[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_server-1.8[${PYTHON_USEDEP}]
+	<dev-python/jupyter-server-3[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-server-1.8[${PYTHON_USEDEP}]
 "
 
 BDEPEND="

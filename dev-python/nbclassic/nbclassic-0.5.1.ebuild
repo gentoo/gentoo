@@ -27,7 +27,7 @@ RDEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_client-6.1.1[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_core-4.6.1[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_server-1.17.0[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-server-1.17.0[${PYTHON_USEDEP}]
 	>=dev-python/nbconvert-5[${PYTHON_USEDEP}]
 	dev-python/nbformat[${PYTHON_USEDEP}]
 	>=dev-python/nest_asyncio-1.5[${PYTHON_USEDEP}]

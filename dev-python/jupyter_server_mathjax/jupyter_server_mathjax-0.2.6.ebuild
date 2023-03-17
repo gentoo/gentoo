@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
-	>=dev-python/jupyter_server-1.1[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-server-1.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/jupyter_packaging[${PYTHON_USEDEP}]
