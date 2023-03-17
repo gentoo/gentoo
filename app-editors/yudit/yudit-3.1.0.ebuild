@@ -9,7 +9,7 @@ SRC_URI="https://yudit.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="x11-libs/libX11"
 DEPEND="${RDEPEND}"
