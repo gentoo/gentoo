@@ -6,6 +6,7 @@ EAPI=8
 # Note: ideally bump with sys-apps/cracklib-words
 
 DISTUTILS_OPTIONAL=1
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1 libtool multilib-minimal usr-ldscript
 
@@ -31,19 +32,14 @@ DEPEND="
 "
 BDEPEND="
 	nls? ( sys-devel/gettext )
-	python? (
-		dev-python/setuptools[${PYTHON_USEDEP}]
-	)
+	python? ( ${DISTUTILS_DEPS} )
 "
 
-do_python() {
-	multilib_is_native_abi || return 0
-	use python || return 0
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.9.10-python-inc.patch
+)
 
-	pushd python > /dev/null || die
-	distutils-r1_src_${EBUILD_PHASE}
-	popd > /dev/null || die
-}
+distutils_enable_tests unittest
 
 pkg_setup() {
 	# Workaround bug #195017
@@ -57,10 +53,12 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# bug ##269003
+	# bug #269003
 	elibtoolize
 
-	do_python
+	if use python ; then
+		distutils-r1_src_prepare
+	fi
 }
 
 multilib_src_configure() {
@@ -81,18 +79,28 @@ multilib_src_configure() {
 multilib_src_compile() {
 	default
 
-	do_python
+	if multilib_is_native_abi && use python ; then
+		local -x CFLAGS="${CFLAGS} -DLOCALEDIR='\"${EPREFIX}/usr/share/locale\"' -DDEFAULT_CRACKLIB_DICT=\'${EPREFIX}/usr/lib/cracklib_dict\'"
+		cd python || die
+		distutils-r1_src_compile
+	fi
 }
 
 multilib_src_test() {
 	default
 
-	# Make sure we load the freshly built library
-	LD_LIBRARY_PATH="${BUILD_DIR}/lib/.libs:${LD_LIBRARY_PATH}" do_python
+	if multilib_is_native_abi && use python ; then
+		distutils-r1_src_test
+	fi
 }
 
 python_test() {
-	${EPYTHON} -m unittest test_cracklib || die "Tests fail with ${EPYTHON}"
+	cd "${S}"/python || die
+
+	# Make sure we load the freshly built library
+	local -x LD_LIBRARY_PATH="${BUILD_DIR/-${EPYTHON/./_}}/lib/.libs:${BUILD_DIR}/lib:${LD_LIBRARY_PATH}"
+
+	eunittest
 }
 
 multilib_src_install() {
@@ -101,7 +109,10 @@ multilib_src_install() {
 	# Move shared libs to /
 	gen_usr_ldscript -a crack
 
-	do_python
+	if multilib_is_native_abi && use python ; then
+		cd python || die
+		distutils-r1_src_install
+	fi
 }
 
 multilib_src_install_all() {
