@@ -5,6 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_USE_SETUPTOOLS=bdepend
+PYPI_NO_NORMALIZE=1
 
 inherit distutils-r1
 
@@ -16,7 +17,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ansible/ansible.git"
 	EGIT_BRANCH="devel"
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	inherit pypi
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
 fi
 
