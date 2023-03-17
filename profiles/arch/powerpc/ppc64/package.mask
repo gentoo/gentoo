@@ -52,6 +52,7 @@ sci-mathematics/geogebra-bin
 # does not work on big-endian ppc64
 # next releases remove that assumption and mask will be lifted
 app-containers/docker
+app-containers/docker-buildx
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
 # openjfx:11 does not work on ppc64be
