@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fortran-2.eclass
@@ -26,18 +26,15 @@
 #
 # FORTRAN_NEED_OPENMP=1
 
-inherit toolchain-funcs
-
-case ${EAPI:-0} in
-	# not used in the eclass, but left for backward compatibility with legacy users
-	5|6) inherit eutils ;;
-	7|8) ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS pkg_setup
+if [[ -z ${_FORTRAN_2_ECLASS} ]]; then
+_FORTRAN_2_ECLASS=1
 
-if [[ ! ${_FORTRAN_2_CLASS} ]]; then
+inherit toolchain-funcs
 
 # @ECLASS_VARIABLE: FORTRAN_NEED_OPENMP
 # @DESCRIPTION:
@@ -293,5 +290,6 @@ fortran-2_pkg_setup() {
 	fi
 }
 
-_FORTRAN_2_ECLASS=1
 fi
+
+EXPORT_FUNCTIONS pkg_setup

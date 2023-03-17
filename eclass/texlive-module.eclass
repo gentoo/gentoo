@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: texlive-module.eclass
@@ -71,14 +71,15 @@
 # Information to display about the package.
 # e.g. for enabling/disabling a feature
 
+case ${EAPI} in
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 if [[ -z ${_TEXLIVE_MODULE_ECLASS} ]]; then
 _TEXLIVE_MODULE_ECLASS=1
 
-case ${EAPI:-0} in
-	[0-6])	die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
-	7)	inherit texlive-common ;;
-	*)	die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
-esac
+inherit texlive-common
 
 HOMEPAGE="http://www.tug.org/texlive/"
 
@@ -447,6 +448,6 @@ texlive-module_pkg_postrm() {
 	etexmf-update
 }
 
-EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_postinst pkg_postrm
-
 fi
+
+EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_postinst pkg_postrm

@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: sgml-catalog-r1.eclass
@@ -12,14 +12,13 @@
 # This eclass regenerates /etc/sgml/catalog as necessary for the DocBook
 # tooling. This is done via exported pkg_postinst and pkg_postrm phases.
 
-case ${EAPI:-0} in
+case ${EAPI} in
 	7) ;;
-	*) die "Unsupported EAPI=${EAPI} for ${ECLASS}";;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS pkg_postinst pkg_postrm
-
-if [[ ! ${_SGML_CATALOG_R1} ]]; then
+if [[ -z ${_SGML_CATALOG_R1_ECLASS} ]]; then
+_SGML_CATALOG_R1_ECLASS=1
 
 if [[ ${CATEGORY}/${PN} != app-text/sgml-common ]]; then
 	RDEPEND=">=app-text/sgml-common-0.6.3-r7"
@@ -64,5 +63,6 @@ sgml-catalog-r1_pkg_postrm() {
 	sgml-catalog-r1_update_env
 }
 
-_SGML_CATALOG_R1=1
 fi
+
+EXPORT_FUNCTIONS pkg_postinst pkg_postrm

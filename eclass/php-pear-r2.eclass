@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-pear-r2.eclass
@@ -14,20 +14,16 @@
 # Note that this eclass doesn't handle dependencies of PEAR packages
 # on purpose; please use (R)DEPEND to define them correctly!
 
-EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm
-
-case "${EAPI:-0}" in
-	6|7)
-		;;
-	8)
-		IDEPEND=">=dev-php/pear-1.8.1"
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} for ${ECLASS}"
-		;;
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
+if [[ -z ${_PHP_PEAR_R2_ECLASS} ]]; then
+_PHP_PEAR_R2_ECLASS=1
+
 RDEPEND=">=dev-php/pear-1.8.1"
+[[ ${EAPI} != [67] ]] && IDEPEND=">=dev-php/pear-1.8.1"
 
 # @ECLASS_VARIABLE: PHP_PEAR_PKG_NAME
 # @DESCRIPTION:
@@ -129,3 +125,7 @@ php-pear-r2_pkg_postrm() {
 	# Uninstall known dependency
 	"${EROOT%/}/usr/bin/peardev" uninstall -nrO "${PHP_PEAR_DOMAIN}/${PHP_PEAR_PKG_NAME}"
 }
+
+fi
+
+EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm

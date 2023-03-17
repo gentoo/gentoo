@@ -15,8 +15,8 @@
 #  - merge rpm unpacking
 #  - support partial unpacks?
 
-case ${EAPI:-0} in
-	[678]) ;;
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -642,6 +642,6 @@ unpacker_src_uri_depends() {
 	echo "${deps[*]}"
 }
 
-EXPORT_FUNCTIONS src_unpack
-
 fi
+
+EXPORT_FUNCTIONS src_unpack

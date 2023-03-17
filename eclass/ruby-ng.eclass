@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-ng.eclass
@@ -67,25 +67,18 @@
 # passed to "grep -E" to remove reporting of these shared objects.
 
 case ${EAPI} in
-	6)
-		inherit eqawarn estack toolchain-funcs
-		;;
-	*)
-		inherit estack
-		;;
-esac
-
-inherit multilib ruby-utils
-
-EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test src_install pkg_setup
-
-# S is no longer automatically assigned when it doesn't exist.
-S="${WORKDIR}"
-
-case ${EAPI} in
 	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ -z ${_RUBY_NG_ECLASS} ]]; then
+_RUBY_NG_ECLASS=1
+
+[[ ${EAPI} == 6 ]] && inherit eqawarn toolchain-funcs
+inherit estack multilib ruby-utils
+
+# S is no longer automatically assigned when it doesn't exist.
+S="${WORKDIR}"
 
 # @FUNCTION: ruby_implementation_depend
 # @USAGE: target [comparator [version]]
@@ -799,3 +792,7 @@ ruby-ng_testrb-2() {
 
 	${RUBY} -S testrb-2 ${testrb_params} "$@" || die "testrb-2 failed"
 }
+
+fi
+
+EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test src_install pkg_setup

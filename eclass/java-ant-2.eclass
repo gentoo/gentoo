@@ -15,17 +15,15 @@
 # manual manipulation of build.xml files. Should be inherited after java-pkg-2
 # or java-pkg-opt-2 eclass.
 
-inherit java-utils-2 multilib
-
-case ${EAPI:-0} in
-	[678]) ;;
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_configure
-
 if [[ -z ${_JAVA_ANT_2_ECLASS} ]] ; then
 _JAVA_ANT_2_ECLASS=1
+
+inherit java-utils-2 multilib
 
 # This eclass provides functionality for Java packages which use
 # ant to build. In particular, it will attempt to fix build.xml files, so that
@@ -439,3 +437,5 @@ java-ant_rewrite-bootclasspath() {
 }
 
 fi
+
+EXPORT_FUNCTIONS src_configure

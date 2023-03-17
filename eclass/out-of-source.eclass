@@ -34,10 +34,10 @@
 
 case ${EAPI} in
 	7|8);;
-	*) die "EAPI ${EAPI:-0} unsupported (too old)";;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_OUT_OF_SOURCE_ECLASS} ]]; then
+if [[ -z ${_OUT_OF_SOURCE_ECLASS} ]]; then
 _OUT_OF_SOURCE_ECLASS=1
 
 # @ECLASS_VARIABLE: BUILD_DIR

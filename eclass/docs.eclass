@@ -146,7 +146,7 @@ esac
 # will initialize a dummy git repository before compiling. A dependency
 # on dev-vcs/git is automatically added.
 
-if [[ ! ${_DOCS_ECLASS} ]]; then
+if [[ -z ${_DOCS_ECLASS} ]]; then
 _DOCS_ECLASS=1
 
 # For the python based DOCS_BUILDERS we need to inherit any python eclass
@@ -424,7 +424,7 @@ BDEPEND+=" doc? ( ${DOCS_DEPEND} )"
 # then put the compile function in the specific
 # python function, else docs_compile should be manually
 # added to src_compile
-if [[ ${_DISTUTILS_R1} && ( ${DOCS_BUILDER}="mkdocs" || ${DOCS_BUILDER}="sphinx" ) ]]; then
+if [[ ${_DISTUTILS_R1_ECLASS} && ( ${DOCS_BUILDER}="mkdocs" || ${DOCS_BUILDER}="sphinx" ) ]]; then
 	python_compile_all() { docs_compile; }
 fi
 

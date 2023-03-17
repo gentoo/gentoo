@@ -20,7 +20,7 @@
 
 case ${EAPI} in
 	7|8) ;;
-	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_CMAKE_ECLASS} ]]; then

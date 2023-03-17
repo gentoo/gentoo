@@ -1,4 +1,4 @@
-# Copyright 2007-2022 Gentoo Authors
+# Copyright 2007-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ant-tasks.eclass
@@ -18,13 +18,14 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
+if [[ -z ${_ANT_TASKS_ECLASS} ]]; then
+_ANT_TASKS_ECLASS=1
+
 # we set ant-core dep ourselves, restricted
 JAVA_ANT_DISABLE_ANT_CORE_DEP=true
 # rewriting build.xml for are the testcases has no reason atm
 JAVA_PKG_BSFIX_ALL=no
 inherit java-pkg-2 java-ant-2
-
-EXPORT_FUNCTIONS src_unpack src_compile src_install
 
 # @ECLASS_VARIABLE: ANT_TASK_JDKVER
 # @PRE_INHERIT
@@ -164,3 +165,7 @@ ant-tasks_src_install() {
 	dodir /usr/share/ant/lib
 	dosym /usr/share/${PN}/lib/${PN}.jar /usr/share/ant/lib/${PN}.jar
 }
+
+fi
+
+EXPORT_FUNCTIONS src_unpack src_compile src_install

@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua.eclass
@@ -52,20 +52,18 @@
 # @CODE
 
 case ${EAPI} in
-	7|8)
-		;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_LUA_R0} ]]; then
+if [[ -z ${_LUA_ECLASS} ]]; then
+_LUA_ECLASS=1
 
-if [[ ${_LUA_SINGLE_R0} ]]; then
+if [[ ${_LUA_SINGLE_ECLASS} ]]; then
 	die 'lua.eclass cannot be used with lua-single.eclass.'
 fi
 
 inherit multibuild lua-utils
-
-fi
 
 # @ECLASS_VARIABLE: LUA_COMPAT
 # @REQUIRED
@@ -197,8 +195,6 @@ fi
 # lua_targets_lua5-1(-)?,lua_targets_lua5-3(-)?
 # @CODE
 
-if [[ ! ${_LUA_R0} ]]; then
-
 # @FUNCTION: _lua_validate_useflags
 # @INTERNAL
 # @DESCRIPTION:
@@ -314,9 +310,6 @@ lua_foreach_impl() {
 	multibuild_foreach_variant _lua_multibuild_wrapper "${@}"
 }
 
-_LUA_R0=1
-fi
-
 # @FUNCTION: _lua_set_globals
 # @INTERNAL
 # @DESCRIPTION:
@@ -375,3 +368,5 @@ _lua_set_globals() {
 
 _lua_set_globals
 unset -f _lua_set_globals
+
+fi

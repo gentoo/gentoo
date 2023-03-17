@@ -11,14 +11,16 @@
 # @DESCRIPTION:
 # This eclass contains various functions that are used when building Qt5.
 
-if [[ ${CATEGORY} != dev-qt ]]; then
-	die "${ECLASS} is only to be used for building Qt 5"
-fi
-
 case ${EAPI} in
 	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+if [[ -z ${_QT5_BUILD_ECLASS} ]]; then
+_QT5_BUILD_ECLASS=1
+
+[[ ${CATEGORY} != dev-qt ]] &&
+	die "${ECLASS} is only to be used for building Qt 5"
 
 # @ECLASS_VARIABLE: QT5_BUILD_TYPE
 # @DESCRIPTION:
@@ -170,8 +172,6 @@ if [[ ${PN} != qttest ]]; then
 fi
 
 ######  Phase functions  ######
-
-EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test pkg_postinst pkg_postrm
 
 # @FUNCTION: qt5-build_src_prepare
 # @DESCRIPTION:
@@ -971,3 +971,7 @@ qt5_regenerate_global_configs() {
 		ewarn "${qmodule_pri} or ${qmodule_pri_orig} does not exist or is not a regular file"
 	fi
 }
+
+fi
+
+EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install src_test pkg_postinst pkg_postrm
