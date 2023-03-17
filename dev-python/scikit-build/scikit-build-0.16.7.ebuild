@@ -17,7 +17,7 @@ HOMEPAGE="
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	dev-python/distro[${PYTHON_USEDEP}]
