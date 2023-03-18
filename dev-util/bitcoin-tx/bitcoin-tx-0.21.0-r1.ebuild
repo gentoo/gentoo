@@ -62,6 +62,8 @@ src_prepare() {
 		eapply "${knots_patchdir}/${KNOTS_P}.ts.patch"
 	fi
 
+	eapply "${FILESDIR}/0.21.0-compat-libsecp256k1-0.1_pre20210628.patch"
+
 	eapply_user
 
 	echo '#!/bin/true' >share/genbuild.sh || die

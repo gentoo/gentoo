@@ -117,7 +117,12 @@ src_prepare() {
 		eapply "${knots_patchdir}/${KNOTS_P}_p5-ts.patch"
 	fi
 
+	eapply "${FILESDIR}/22.0-compat-libsecp256k1-0.1_pre20210628.patch"
+
 	default
+
+	# fix Bashism (see cf7292597e18ffca06b0fbf8bcd545aec387e380)
+	sed -e 's/==/=/g' -i configure.ac || die
 
 	eautoreconf
 	rm -r src/leveldb src/secp256k1 || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -85,6 +85,7 @@ src_prepare() {
 		eapply "${knots_patchdir}/${KNOTS_P}.ts.patch"
 	fi
 
+	eapply "${FILESDIR}/0.21.0-compat-libsecp256k1-0.1_pre20210628.patch"
 	eapply "${FILESDIR}/${PN}-0.20.1-boost-1.77-compat.patch"
 
 	default
