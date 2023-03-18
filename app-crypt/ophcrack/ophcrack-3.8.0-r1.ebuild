@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop toolchain-funcs qmake-utils
+inherit autotools desktop qmake-utils xdg
 
 DESCRIPTION="A time-memory-trade-off-cracker"
 HOMEPAGE="https://ophcrack.sourceforge.io/"
@@ -12,15 +12,17 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.bz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug qt5 +tables"
+IUSE="gui +tables"
 
 DEPEND="
-	dev-libs/openssl:0=
+	dev-libs/openssl:=
 	dev-libs/expat
 	net-libs/netwib
-	qt5? (
+	gui? (
 		dev-qt/qtcharts:5
+		dev-qt/qtcore:5
 		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
 	)"
 RDEPEND="
 	${DEPEND}
@@ -29,22 +31,25 @@ BDEPEND="
 	app-arch/unzip
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/ophcrack-ar.patch )
+PATCHES=( "${FILESDIR}"/${P}-buildsystem.patch )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
-	tc-export AR
-
 	# bug #765229
-	export PATH="$(qt5_get_bindir):${PATH}"
+	use gui && export PATH="$(qt5_get_bindir):${PATH}"
 
-	econf \
-		$(use_enable debug) \
-		$(use_enable qt5 gui)
+	econf $(use_enable gui)
 }
 
 src_install() {
 	default
 
-	newicon src/gui/pixmaps/os.xpm ophcrack.xpm
-	make_desktop_entry "${PN}" OphCrack ophcrack
+	if use gui; then
+		newicon src/gui/pixmaps/os.xpm ophcrack.xpm
+		make_desktop_entry "${PN}" OphCrack ophcrack
+	fi
 }
