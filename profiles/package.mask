@@ -280,11 +280,6 @@ dev-python/pytest-flake8
 acct-user/jabber
 acct-group/jabber
 
-# Michał Górny <mgorny@gentoo.org> (2023-01-31)
-# The test suite is broken (async tests don't run).  No revdeps.
-# Removal on 2023-03-02.  Bug #892742.
-dev-python/aiohttp-jinja2
-
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
 =app-text/discount-3*
