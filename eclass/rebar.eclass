@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rebar.eclass
@@ -24,7 +24,8 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_prepare src_compile src_test src_install
+if [[ -z ${_REBAR_ECLASS} ]]; then
+_REBAR_ECLASS=1
 
 RDEPEND="dev-lang/erlang:="
 DEPEND="${RDEPEND}"
@@ -256,3 +257,7 @@ rebar_src_install() {
 
 	einstalldocs
 }
+
+fi
+
+EXPORT_FUNCTIONS src_prepare src_compile src_test src_install

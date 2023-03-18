@@ -1,27 +1,26 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: git-r3.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Eclass for fetching and unpacking git repositories.
 # @DESCRIPTION:
 # Third generation eclass for easing maintenance of live ebuilds using
 # git as remote repository.
 
-case ${EAPI:-0} in
-	5|6|7|8) ;;
+case ${EAPI} in
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_unpack
-
-if [[ ! ${_GIT_R3} ]]; then
+if [[ -z ${_GIT_R3_ECLASS} ]]; then
+_GIT_R3_ECLASS=1
 
 PROPERTIES+=" live"
 
-if [[ ${EAPI} != [56] ]]; then
+if [[ ${EAPI} != 6 ]]; then
 	BDEPEND=">=dev-vcs/git-1.8.2.1[curl]"
 else
 	DEPEND=">=dev-vcs/git-1.8.2.1[curl]"
@@ -559,49 +558,46 @@ git-r3_fetch() {
 	local commit_id=${2:-${EGIT_COMMIT}}
 	local commit_date=${4:-${EGIT_COMMIT_DATE}}
 
-	# support new override API for EAPI 6+
-	if [[ ${EAPI} != 5 ]]; then
-		# get the name and do some more processing:
-		# 1) kill .git suffix,
-		# 2) underscore (remaining) non-variable characters,
-		# 3) add preceding underscore if it starts with a digit,
-		# 4) uppercase.
-		local override_name=${GIT_DIR##*/}
-		override_name=${override_name%.git}
-		override_name=${override_name//[^a-zA-Z0-9_]/_}
-		override_name=${override_name^^}
+	# get the name and do some more processing:
+	# 1) kill .git suffix,
+	# 2) underscore (remaining) non-variable characters,
+	# 3) add preceding underscore if it starts with a digit,
+	# 4) uppercase.
+	local override_name=${GIT_DIR##*/}
+	override_name=${override_name%.git}
+	override_name=${override_name//[^a-zA-Z0-9_]/_}
+	override_name=${override_name^^}
 
-		local varmap=(
-			REPO:repos
-			BRANCH:branch_name
-			COMMIT:commit_id
-			COMMIT_DATE:commit_date
-		)
+	local varmap=(
+		REPO:repos
+		BRANCH:branch_name
+		COMMIT:commit_id
+		COMMIT_DATE:commit_date
+	)
 
-		local localvar livevar live_warn= override_vars=()
-		for localvar in "${varmap[@]}"; do
-			livevar=EGIT_OVERRIDE_${localvar%:*}_${override_name}
-			localvar=${localvar#*:}
-			override_vars+=( "${livevar}" )
+	local localvar livevar live_warn= override_vars=()
+	for localvar in "${varmap[@]}"; do
+		livevar=EGIT_OVERRIDE_${localvar%:*}_${override_name}
+		localvar=${localvar#*:}
+		override_vars+=( "${livevar}" )
 
-			if [[ -n ${!livevar} ]]; then
-				[[ ${localvar} == repos ]] && repos=()
-				live_warn=1
-				ewarn "Using ${livevar}=${!livevar}"
-				declare "${localvar}=${!livevar}"
-			fi
-		done
-
-		if [[ ${live_warn} ]]; then
-			ewarn "No support will be provided."
-		else
-			einfo "To override fetched repository properties, use:"
-			local x
-			for x in "${override_vars[@]}"; do
-				einfo "  ${x}"
-			done
-			einfo
+		if [[ -n ${!livevar} ]]; then
+			[[ ${localvar} == repos ]] && repos=()
+			live_warn=1
+			ewarn "Using ${livevar}=${!livevar}"
+			declare "${localvar}=${!livevar}"
 		fi
+	done
+
+	if [[ ${live_warn} ]]; then
+		ewarn "No support will be provided."
+	else
+		einfo "To override fetched repository properties, use:"
+		local x
+		for x in "${override_vars[@]}"; do
+			einfo "  ${x}"
+		done
+		einfo
 	fi
 
 	# set final variables after applying overrides
@@ -1079,5 +1075,6 @@ git-r3_pkg_needrebuild() {
 # 'export' locally until this gets into EAPI
 pkg_needrebuild() { git-r3_pkg_needrebuild; }
 
-_GIT_R3=1
 fi
+
+EXPORT_FUNCTIONS src_unpack

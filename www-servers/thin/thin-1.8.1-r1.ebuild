@@ -44,7 +44,7 @@ all_ruby_prepare() {
 	rm tasks/spec.rake || die
 
 	# Fix rspec version to allow newer 2.x versions
-	sed -i -e '/gem "rspec"/ s/1.2.9/2.0/ ; 2igem "rack", "<3"' spec/spec_helper.rb || die
+	sed -i -e '/gem "rspec"/ s/1.2.9/3.0/ ; 2igem "rack", "<3"' spec/spec_helper.rb || die
 
 	# Avoid CLEAN since it may not be available and we don't need it.
 	sed -i -e '/CLEAN/ s:^:#:' tasks/*.rake || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vdr-plugin-2.eclass
@@ -9,7 +9,7 @@
 # Joerg Bornkessel <hd_brummy@gentoo.org>
 # Christian Ruppert <idl0r@gentoo.org>
 # (undisclosed contributors)
-# @SUPPORTED_EAPIS: 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: common vdr plugin ebuild functions
 # @DESCRIPTION:
 # Eclass for easing maintenance of vdr plugin ebuilds
@@ -60,29 +60,16 @@
 # PO_SUBDIR="bla foo/bla"
 # @CODE
 
-# Applying your own local/user patches:
-# This is done by using the
-# (EAPI = 5) epatch_user() function of the eutils.eclass,
-# (EAPI = 6,7) eapply_user function integrated in EAPI = 6.
-# Simply add your patches into one of these directories:
-# /etc/portage/patches/<CATEGORY>/<PF|P|PN>/
-# Quote: where the first of these three directories to exist will be the one to
-# use, ignoring any more general directories which might exist as well.
-#
-# For more details about it please take a look at the eutils.class.
-
-[[ ${EAPI} == [5] ]] && inherit multilib
-[[ ${EAPI} == [56] ]] && inherit eutils
-inherit flag-o-matic strip-linguas toolchain-funcs unpacker
-
 case ${EAPI} in
-	5|6|7|8)
-	;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported"
-	;;
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_compile src_install pkg_postinst pkg_postrm pkg_config
+if [[ -z ${_VDR_PLUGIN_2_ECLASS} ]]; then
+_VDR_PLUGIN_2_ECLASS=1
+
+[[ ${EAPI} == 6 ]] && inherit eutils
+inherit flag-o-matic strip-linguas toolchain-funcs unpacker
 
 # Name of the plugin stripped from all vdrplugin-, vdr- and -cvs pre- and postfixes
 VDRPLUGIN="${PN/#vdrplugin-/}"
@@ -96,12 +83,16 @@ S="${WORKDIR}/${VDRPLUGIN}-${PV}"
 
 # depend on headers for DVB-driver and vdr-scripts
 case ${EAPI} in
-	5|6)	DEPEND="media-tv/gentoo-vdr-scripts
-				virtual/linuxtv-dvb-headers
-				virtual/pkgconfig" ;;
-	*)		BDEPEND="virtual/pkgconfig"
-			DEPEND="media-tv/gentoo-vdr-scripts
-				virtual/linuxtv-dvb-headers" ;;
+	6)
+		DEPEND="media-tv/gentoo-vdr-scripts
+			virtual/linuxtv-dvb-headers
+			virtual/pkgconfig"
+		;;
+	*)
+		BDEPEND="virtual/pkgconfig"
+		DEPEND="media-tv/gentoo-vdr-scripts
+			virtual/linuxtv-dvb-headers"
+		;;
 esac
 RDEPEND="media-tv/gentoo-vdr-scripts
 	app-eselect/eselect-vdr"
@@ -467,11 +458,7 @@ vdr-plugin-2_src_util() {
 			;;
 		add_local_patch)
 			cd "${S}" || die "Could not change to plugin-source-directory (src_util)"
-			if [[ ${EAPI} != [5] ]]; then
-				eapply_user
-			else
-				epatch_user
-			fi
+			eapply_user
 			;;
 		patchmakefile)
 			cd "${S}" || die "Could not change to plugin-source-directory (src_util)"
@@ -514,8 +501,7 @@ vdr-plugin-2_src_prepare() {
 		die "vdr-plugin-2_src_prepare not called!"
 	fi
 
-	[[ ${EAPI} == [5] ]] && [[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
-	[[ ${EAPI} != [5] ]] && [[ ${PATCHES[@]} ]] && eapply "${PATCHES[@]}"
+	[[ -n ${PATCHES[@]} ]] && eapply "${PATCHES[@]}"
 
 	debug-print "$FUNCNAME: applying user patches"
 
@@ -626,14 +612,7 @@ vdr-plugin-2_src_install() {
 	vdr_create_header_checksum_file ${vdr_plugin_list}
 	vdr_create_plugindb_file ${vdr_plugin_list}
 
-	if [[ ${EAPI} != [45] ]]; then
-		einstalldocs
-	else
-		local docfile
-			for docfile in README* HISTORY CHANGELOG; do
-				[[ -f ${docfile} ]] && dodoc ${docfile}
-			done
-	fi
+	einstalldocs
 
 	# if VDR_CONFD_FILE is empty and ${FILESDIR}/confd exists take it
 	[[ -z ${VDR_CONFD_FILE} ]] && [[ -e ${FILESDIR}/confd ]] && VDR_CONFD_FILE=${FILESDIR}/confd
@@ -668,3 +647,7 @@ vdr-plugin-2_pkg_postrm() {
 vdr-plugin-2_pkg_config() {
 :
 }
+
+fi
+
+EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_compile src_install pkg_postinst pkg_postrm pkg_config

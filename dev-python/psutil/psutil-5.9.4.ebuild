@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 TEST_PATCH=psutil-5.9.3-tests-r1.patch
 DESCRIPTION="Retrieve information on running processes and system utilization"
@@ -14,8 +14,7 @@ HOMEPAGE="
 	https://github.com/giampaolo/psutil/
 	https://pypi.org/project/psutil/
 "
-SRC_URI="
-	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+SRC_URI+="
 	https://dev.gentoo.org/~mgorny/dist/${TEST_PATCH}.xz
 "
 

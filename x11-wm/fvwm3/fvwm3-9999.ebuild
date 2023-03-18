@@ -22,14 +22,21 @@ fi
 LICENSE="GPL-2+ FVWM
 	go? ( Apache-2.0 BSD MIT )"
 SLOT="0"
-IUSE="bidi debug doc go netpbm nls perl readline stroke svg tk vanilla lock"
+IUSE="bidi debug doc +go netpbm nls perl readline stroke svg tk lock"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}"
 
 DOCS=( NEWS )
 
 if [[ ${PV} == 9999 ]]; then
-	DOCS+=( dev-docs/COMMANDS dev-docs/DEVELOPERS.md dev-docs/INSTALL.md dev-docs/PARSING.md dev-docs/TODO.md dev-docs/NEW-COMMANDS.md )
+	DOCS+=(
+		dev-docs/COMMANDS
+		dev-docs/DEVELOPERS.md
+		dev-docs/INSTALL.md
+		dev-docs/PARSING.md
+		dev-docs/TODO.md
+		dev-docs/NEW-COMMANDS.md
+	)
 fi
 
 BDEPEND="
@@ -72,7 +79,6 @@ RDEPEND="${PYTHON_DEPS}
 			>=dev-perl/X11-Protocol-0.56
 		)
 	)
-	media-libs/libpng:=
 	readline? (
 		sys-libs/ncurses:=
 		sys-libs/readline:=
@@ -86,21 +92,10 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto"
 
-PATCHES=(
-	"${FILESDIR}/${P}-translucent-menus.patch"
-)
-
-if [[ ${PV} == 9999 ]]; then
-	PATCHES+=(
-		"${FILESDIR}/${P}-goflags.patch"
-	)
-fi
-
 src_prepare() {
 	default
-	if use doc; then
-		eapply "${FILESDIR}/${P}-htmldoc.patch"
-	fi
+	use go && ( sed -e 's/GOFLAGS=-ldflags="-s -w"/GOFLAGS=/' \
+		-i bin/FvwmPrompt/Makefile.am || die )
 
 	eautoreconf
 }
@@ -133,13 +128,13 @@ src_configure() {
 
 	use readline && myconf+=( --without-termcap-library )
 
-	econf ${myconf[@]}
+	econf "${myconf[@]}"
 }
 
 src_compile() {
 	PREFIX="${EPREFIX}/usr" emake AR="$(tc-getAR)"
 	if [[ ${PV} == *9999 ]]; then
-		use doc && emake -C doc html
+		use doc && emake -C doc
 	fi
 }
 
@@ -148,17 +143,10 @@ src_install() {
 
 	dodir /etc/X11/Sessions
 	echo "/usr/bin/fvwm3" > "${ED}/etc/X11/Sessions/${PN}" || die
-	fperms a+x /etc/X11/Sessions/${PN} || die
+	fperms a+x "/etc/X11/Sessions/${PN}" || die
 
 	python_scriptinto "/usr/bin"
 	python_doscript "${ED}/usr/bin/FvwmCommand" "${ED}/usr/bin/fvwm-menu-desktop"
-	if use doc; then
-		if [[ ${PV} == *9999 ]]; then
-			HTML_DOCS=( doc/*.html )
-		else
-			HTML_DOCS=( doc/html/*.html )
-		fi
-	fi
 	einstalldocs
 
 	make_session_desktop fvwm3 /usr/bin/fvwm3
@@ -168,9 +156,9 @@ pkg_postinst() {
 	if use go; then
 		ewarn "FvwmPrompt has been installed, it provides the functionality of both FvwmCommand and FvwmConsole."
 		ewarn "For compatibility with the existing fvwm2 configurations, the ebuild will install a FvwmCommand wrapper script."
-		ewarn "If you need FvwmConsole, install ${PN} with USE=\"-go\", but FvwmPrompt and FvwmCommnd will not be installed."
+		ewarn "If you need FvwmConsole, install ${PN} with USE=\"-go\", but FvwmPrompt and FvwmCommand will not be installed."
 	else
-		ewarn "Fvwmconsole has been installed, but FvwmCommand and FvwmPrompt are no longer included in this ebuild."
+		ewarn "FvwmConsole has been installed, but FvwmCommand and FvwmPrompt are no longer included in this ebuild."
 		ewarn "If you need FvwmPrompt or FvwmCommand, install ${PN} with USE=\"go\"."
 		ewarn "In that case, FvwmPrompt will replace FvwmConsole and provide the same functionality in a more flexible way."
 	fi

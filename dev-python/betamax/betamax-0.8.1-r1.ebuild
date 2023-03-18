@@ -6,14 +6,13 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="python-requests HTTP exchanges recorder"
 HOMEPAGE="
 	https://github.com/betamaxpy/betamax/
 	https://pypi.org/project/betamax/
 "
-SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

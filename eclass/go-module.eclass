@@ -65,11 +65,10 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
+if [[ -z ${_GO_MODULE_ECLASS} ]]; then
+_GO_MODULE_ECLASS=1
+
 inherit multiprocessing toolchain-funcs
-
-if [[ -z ${_GO_MODULE} ]]; then
-
-_GO_MODULE=1
 
 if [[ ! ${GO_OPTIONAL} ]]; then
 	BDEPEND=">=dev-lang/go-1.18"
@@ -79,8 +78,6 @@ if [[ ! ${GO_OPTIONAL} ]]; then
 	# Added here rather than to each affected package, so it can be cleaned up just
 	# once when pkgcheck is improved.
 	BDEPEND+=" app-arch/unzip"
-
-	EXPORT_FUNCTIONS src_unpack
 fi
 
 # Force go to build in module mode.
@@ -525,4 +522,8 @@ _go-module_gomod_encode() {
 	echo "${input}"
 }
 
+fi
+
+if [[ ! ${GO_OPTIONAL} ]]; then
+	EXPORT_FUNCTIONS src_unpack
 fi

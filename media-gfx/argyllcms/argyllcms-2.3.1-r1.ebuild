@@ -36,6 +36,11 @@ BDEPEND="app-arch/unzip
 
 S="${WORKDIR}/${MY_P}"
 
+src_prepare() {
+	default
+	sed -e "s/static eset/static int eset/" -i spectro/i1d3.c || die
+}
+
 src_compile() {
 	# Make it respect LDFLAGS
 	echo "LINKFLAGS += ${LDFLAGS} ;" >> Jamtop

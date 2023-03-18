@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vim-plugin.eclass
@@ -13,14 +13,16 @@
 # documentation, for which we make a special case via vim-doc.eclass.
 
 case ${EAPI} in
-	6|7) ;;
-	8) _DEFINE_VIM_PLUGIN_SRC_PREPARE=true ;;
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_VIM_PLUGIN_ECLASS} ]]; then
+if [[ -z ${_VIM_PLUGIN_ECLASS} ]]; then
+_VIM_PLUGIN_ECLASS=1
 
 inherit vim-doc
+
+[[ ${EAPI} != [67] ]] && _DEFINE_VIM_PLUGIN_SRC_PREPARE=true
 
 # @ECLASS_VARIABLE: VIM_PLUGIN_VIM_VERSION
 # @DESCRIPTION:
@@ -230,13 +232,9 @@ display_vim_plugin_help() {
 	fi
 }
 
-_VIM_PLUGIN_ECLASS=1
 fi
 
-EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm
-
 # src_prepare is only exported in EAPI >= 8
-case ${EAPI} in
-	6|7) ;;
-	*) EXPORT_FUNCTIONS src_prepare ;;
-esac
+[[ ${_DEFINE_VIM_PLUGIN_SRC_PREPARE} ]] && EXPORT_FUNCTIONS src_prepare
+
+EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm

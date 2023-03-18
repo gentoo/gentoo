@@ -7,11 +7,10 @@ PYTHON_COMPAT=( python3_10 )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A CalDAV based calendar"
 HOMEPAGE="https://lostpackets.de/khal/ https://github.com/pimutils/khal"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

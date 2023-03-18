@@ -3,15 +3,16 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 LUA_COMPAT=( lua5-{3..4} )
 
 inherit check-reqs bash-completion-r1 cmake flag-o-matic lua-single \
 		python-r1 udev readme.gentoo-r1 toolchain-funcs systemd tmpfiles
 
+XSIMD_HASH="aeec9c872c8b475dedd7781336710f2dd2666cb2"
 SRC_URI="
 	https://download.ceph.com/tarballs/${P}.tar.gz
-	parquet? ( https://github.com/xtensor-stack/xsimd/archive/aeec9c872c8b475dedd7781336710f2dd2666cb2.tar.gz -> ceph-xsimd-${PV}.tar.gz )
+	parquet? ( https://github.com/xtensor-stack/xsimd/archive/${XSIMD_HASH}.tar.gz -> ceph-xsimd-${PV}.tar.gz )
 "
 KEYWORDS="~amd64 ~arm64"
 
@@ -221,6 +222,8 @@ PATCHES=(
 	"${FILESDIR}/ceph-17.2.5-suppress-cmake-warning.patch"
 	"${FILESDIR}/ceph-17.2.5-gcc13.patch"
 	"${FILESDIR}/ceph-17.2.5-boost-1.81.patch"
+	# https://bugs.gentoo.org/901403
+	"${FILESDIR}/ceph-17.2.5-link-boost-context.patch"
 )
 
 check-reqs_export_vars() {

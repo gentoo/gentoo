@@ -13,7 +13,7 @@ HOMEPAGE="https://git-repair.branchable.com/"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 ~x86"
 
 GHC_BOOTSTRAP_PACKAGES=(
 	async

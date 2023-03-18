@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 
 SLOT="0/${PV}"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 PATCHES=(
 	"${FILESDIR}/ounit2.patch"
 	"${FILESDIR}/${PN}-1.1.0-cc.patch"

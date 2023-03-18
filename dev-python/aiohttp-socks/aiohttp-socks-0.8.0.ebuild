@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
 	>=dev-python/aiohttp-2.3.2[${PYTHON_USEDEP}]
@@ -28,9 +28,12 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+		dev-python/trustme[${PYTHON_USEDEP}]
+		dev-python/attrs[${PYTHON_USEDEP}]
 		dev-python/yarl[${PYTHON_USEDEP}]
+		dev-python/flask[${PYTHON_USEDEP}]
+		dev-python/tiny-proxy[${PYTHON_USEDEP}]
 	)
 "
 

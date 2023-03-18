@@ -63,11 +63,6 @@ dev-libs/cyrus-sasl berkdb
 dev-python/QtPy pyside2 webengine
 dev-python/QtPy test
 
-# Jakov Smolić <jsmolic@gentoo.org> (2022-06-07)
-# riscv has no sanitizers unmasked for the time being, so
-# mask to prevent emerge from erroring out by default
-sys-devel/clang-runtime sanitize
-
 # Marek Szuba <marecki@gentoo.org> (2022-04-30)
 # net-wireless/sdrplay contains prebuilt binaries, currently available
 # upstream only for amd64/x86 and arm

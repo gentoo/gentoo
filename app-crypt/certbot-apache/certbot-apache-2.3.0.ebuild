@@ -23,7 +23,7 @@ else
 			-> ${PARENT_P}.gh.tar.gz
 	"
 	# Only for amd64, arm64 and x86 because of dev-python/python-augeas
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 DESCRIPTION="Apache plugin for Certbot (Let’s Encrypt client)"

@@ -10,6 +10,11 @@
 # @SUPPORTED_EAPIS: 7 8
 # @BLURB: common functions and variables for cargo builds
 
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
@@ -17,15 +22,11 @@ _CARGO_ECLASS=1
 # https://github.com/rust-lang/cargo/blob/master/CHANGELOG.md
 RUST_DEPEND="virtual/rust"
 
-case "${EAPI:-0}" in
-	0|1|2|3|4|5|6)
-		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
-		;;
+case ${EAPI} in
 	7)
 		# 1.37 added 'cargo vendor' subcommand and net.offline config knob
 		RUST_DEPEND=">=virtual/rust-1.37.0"
 		;;
-
 	8)
 		# 1.39 added --workspace
 		# 1.46 added --target dir
@@ -40,17 +41,11 @@ case "${EAPI:-0}" in
 			die "CRATES variable not defined"
 		fi
 		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
 esac
 
 inherit multiprocessing toolchain-funcs
 
-if [[ ! ${CARGO_OPTIONAL} ]]; then
-	BDEPEND="${RUST_DEPEND}"
-	EXPORT_FUNCTIONS src_unpack src_configure src_compile src_install src_test
-fi
+[[ ! ${CARGO_OPTIONAL} ]] && BDEPEND="${RUST_DEPEND}"
 
 IUSE="${IUSE} debug"
 
@@ -548,4 +543,8 @@ cargo_src_test() {
 	"${@}" || die "cargo test failed"
 }
 
+fi
+
+if [[ ! ${CARGO_OPTIONAL} ]]; then
+	EXPORT_FUNCTIONS src_unpack src_configure src_compile src_install src_test
 fi

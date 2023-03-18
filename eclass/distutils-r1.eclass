@@ -44,9 +44,9 @@
 # For more information, please see the Python Guide:
 # https://projects.gentoo.org/python/guide/
 
-case ${EAPI:-0} in
+case ${EAPI} in
 	7|8) ;;
-	*) die "EAPI=${EAPI:-0} not supported";;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @ECLASS_VARIABLE: DISTUTILS_OPTIONAL
@@ -169,7 +169,8 @@ esac
 #     ${DISTUTILS_DEPS}"
 # @CODE
 
-if [[ ! ${_DISTUTILS_R1} ]]; then
+if [[ -z ${_DISTUTILS_R1_ECLASS} ]]; then
+_DISTUTILS_R1_ECLASS=1
 
 inherit multibuild multilib multiprocessing ninja-utils toolchain-funcs
 
@@ -178,14 +179,6 @@ if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 else
 	inherit python-single-r1
 fi
-
-fi
-
-if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
-	EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
-fi
-
-if [[ ! ${_DISTUTILS_R1} ]]; then
 
 _distutils_set_globals() {
 	local rdep bdep
@@ -2107,5 +2100,8 @@ distutils-r1_src_install() {
 	return ${ret}
 }
 
-_DISTUTILS_R1=1
+fi
+
+if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
+	EXPORT_FUNCTIONS src_prepare src_configure src_compile src_test src_install
 fi

@@ -21,6 +21,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
 
 src_prepare() {
+	rm -rf "${S}"/icons/CVS || die
 	default
 	eautoreconf
 }

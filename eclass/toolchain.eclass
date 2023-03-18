@@ -12,17 +12,17 @@
 # instead.
 
 case ${EAPI} in
-	7) inherit eutils ;;
-	8) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_TOOLCHAIN_ECLASS} ]]; then
+if [[ -z ${_TOOLCHAIN_ECLASS} ]]; then
 _TOOLCHAIN_ECLASS=1
 
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
 
+[[ ${EAPI} == 7 ]] && inherit eutils
 inherit edo flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
 
 tc_is_live() {
@@ -2828,9 +2828,6 @@ toolchain_death_notice() {
 
 fi
 
-EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
-	src_compile src_test src_install pkg_postinst pkg_postrm
-
 # Note [implicitly enabled flags]
 # -------------------------------
 # Usually configure-based packages handle explicit feature requests
@@ -2848,3 +2845,5 @@ EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
 # Thus safer way to enable/disable the feature is to rely on implicit
 # enabled-by-default state:
 #    econf $(usex foo '' --disable-foo)
+
+EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install pkg_postinst pkg_postrm

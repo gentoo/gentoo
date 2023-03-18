@@ -13,11 +13,11 @@ if [[ ${CTARGET} = ${CHOST} ]] ; then
 	fi
 fi
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit python-any-r1
 inherit autotools bash-completion-r1 flag-o-matic ghc-package
 inherit multiprocessing pax-utils toolchain-funcs prefix
-inherit check-reqs llvm
+inherit check-reqs llvm unpacker
 DESCRIPTION="The Glasgow Haskell Compiler"
 HOMEPAGE="https://www.haskell.org/ghc/"
 
@@ -25,23 +25,23 @@ HOMEPAGE="https://www.haskell.org/ghc/"
 arch_binaries=""
 
 BIN_PV=${PV}
+[[ $PR != r0 ]] && BIN_REV=${PR}
 
 # Differentiate glibc/musl
 
 #glibc_binaries="$glibc_binaries alpha? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-alpha.tbz2 )"
-glibc_binaries="$glibc_binaries amd64? ( https://eidetic.codes/ghc-bin-${PV}-x86_64-pc-linux-gnu-r4.tbz2 )"
+glibc_binaries+=" amd64? ( https://eidetic.codes/${PN}-bin-${PVR}-x86_64-pc-linux-gnu.gpkg.tar )"
 #glibc_binaries="$glibc_binaries arm? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-armv7a-hardfloat-linux-gnueabi.tbz2 )"
-#glibc_binaries="$glibc_binaries arm64? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-aarch64-unknown-linux-gnu.tar.gz )"
+glibc_binaries="$glibc_binaries arm64? ( https://github.com/matoro/ghc/releases/download/${PVR}/ghc-bin-${PV}-aarch64-unknown-linux-gnu-r4.tar.gz )"
 #glibc_binaries="$glibc_binaries ia64?  ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
 #glibc_binaries="$glibc_binaries ppc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc.tbz2 )"
-#glibc_binaries="$glibc_binaries ppc64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc64.tbz2 )"
-#glibc_binaries="$glibc_binaries ppc64? (
-#	big-endian? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-powerpc64-unknown-linux-gnu.tar.gz )
-#	!big-endian? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-powerpc64le-unknown-linux-gnu.tar.gz )
-#)"
-#glibc_binaries="$glibc_binaries riscv? ( https://github.com/matoro/ghc/releases/download/${PV}/ghc-bin-${PV}-riscv64-unknown-linux-gnu.tar.gz )"
+glibc_binaries="$glibc_binaries ppc64? (
+	big-endian? ( https://github.com/matoro/ghc/releases/download/${PVR}/ghc-bin-${PV}-powerpc64-unknown-linux-gnu-r4.tar.gz )
+	!big-endian? ( https://github.com/matoro/ghc/releases/download/${PVR}/ghc-bin-${PV}-powerpc64le-unknown-linux-gnu-r4.tar.gz )
+)"
+glibc_binaries="$glibc_binaries riscv? ( https://github.com/matoro/ghc/releases/download/${PVR}/ghc-bin-${PV}-riscv64-unknown-linux-gnu-r4.tar.gz )"
 #glibc_binaries="$glibc_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
-glibc_binaries="$glibc_binaries x86? ( https://eidetic.codes/ghc-bin-${PV}-i686-pc-linux-gnu-r4.tbz2 )"
+glibc_binaries+=" x86? ( https://eidetic.codes/${PN}-bin-${PVR}-i686-pc-linux-gnu.gpkg.tar )"
 
 #musl_binaries="$musl_binaries alpha? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-alpha.tbz2 )"
 #musl_binaries="$musl_binaries amd64? ( https://eidetic.codes/ghc-bin-${PV}-x86_64-pc-linux-musl.tbz2 )"
@@ -55,8 +55,8 @@ glibc_binaries="$glibc_binaries x86? ( https://eidetic.codes/ghc-bin-${PV}-i686-
 #musl_binaries="$musl_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
 #musl_binaries="$musl_binaries x86? ( https://eidetic.codes/ghc-bin-${PV}-i686-pc-linux-musl.tbz2 )"
 
-[[ -n $glibc_binaries ]] && arch_binaries="$arch_binaries elibc_glibc? ( $glibc_binaries )"
-[[ -n $musl_binaries ]] && arch_binaries="$arch_binaries elibc_musl? ( $musl_binaries )"
+[[ -n $glibc_binaries ]] && arch_binaries+=" elibc_glibc? ( $glibc_binaries )"
+[[ -n $musl_binaries ]] && arch_binaries+=" elibc_musl? ( $musl_binaries )"
 
 # various ports:
 #arch_binaries="$arch_binaries x86-fbsd? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-x86-fbsd.tbz2 )"
@@ -67,13 +67,13 @@ yet_binary() {
 		glibc)
 			case "${ARCH}" in
 				#alpha) return 0 ;;
-				#arm64) return 0 ;;
+				arm64) return 0 ;;
 				#arm) return 0 ;;
 				amd64) return 0 ;;
 				#ia64) return 0 ;;
 				#ppc) return 0 ;;
-				#ppc64) return 0 ;;
-				#riscv) return 0 ;;
+				ppc64) return 0 ;;
+				riscv) return 0 ;;
 				#sparc) return 0 ;;
 				x86) return 0 ;;
 				*) return 1 ;;
@@ -96,6 +96,7 @@ yet_binary() {
 				*) return 1 ;;
 			esac
 			;;
+		*) return 1 ;;
 	esac
 }
 
@@ -120,7 +121,7 @@ BUMP_LIBRARIES=(
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="big-endian +doc elfutils ghcbootstrap ghcmakebinary +gmp llvm numa profile test unregisterised"
 IUSE+=" binary"
 RESTRICT="!test? ( test )"
@@ -460,7 +461,7 @@ src_unpack() {
 	case ${CHOST} in
 		*-darwin* | *-solaris*)  ONLYA=${GHC_P}-src.tar.xz  ;;
 	esac
-	unpack ${ONLYA}
+	unpacker ${ONLYA}
 }
 
 src_prepare() {
@@ -476,16 +477,24 @@ src_prepare() {
 	# https://src.fedoraproject.org/rpms/ghc9.0/blob/rawhide/f/ghc9.0.spec#_327
 	rm -rf "libraries/containers/containers/dist-install" || die
 
-	if ! use ghcbootstrap && [[ ${CHOST} != *-darwin* && ${CHOST} != *-solaris* ]]; then
-		# Modify the wrapper script from the binary tarball to use GHC_PERSISTENT_FLAGS.
-		# See bug #313635.
-		sed -i -e "s|\"\$topdir\"|\"\$topdir\" ${GHC_PERSISTENT_FLAGS}|" \
-			"${WORKDIR}/usr/bin/ghc-${BIN_PV}"
+	if ! use ghcbootstrap; then
+		# The switch to gpkg binaries means that they are unpacked in the wrong
+		# location. They are now unnpacked in the $orig_bindir and need to be
+		# moved so that usr/ is in $WORKDIR.
+		local orig_bindir="${WORKDIR}/${PN}-${BIN_PV}${BIN_REV:+-${BIN_REV}}"
+		mv -v "${orig_bindir}/image/usr" "${WORKDIR}" || die
 
-		# allow hardened users use vanilla binary to bootstrap ghc
-		# ghci uses mmap with rwx protection at it implements dynamic
-		# linking on it's own (bug #299709)
-		pax-mark -m "${WORKDIR}/usr/$(get_libdir)/${PN}-${BIN_PV}/bin/ghc"
+		if [[ ${CHOST} != *-darwin* && ${CHOST} != *-solaris* ]]; then
+			# Modify the wrapper script from the binary tarball to use GHC_PERSISTENT_FLAGS.
+			# See bug #313635.
+			sed -i -e "s|\"\$topdir\"|\"\$topdir\" ${GHC_PERSISTENT_FLAGS}|" \
+				"${WORKDIR}/usr/bin/ghc-${BIN_PV}"
+
+			# allow hardened users use vanilla binary to bootstrap ghc
+			# ghci uses mmap with rwx protection at it implements dynamic
+			# linking on it's own (bug #299709)
+			pax-mark -m "${WORKDIR}/usr/$(get_libdir)/${PN}-${BIN_PV}/bin/ghc"
+		fi
 	fi
 
 	use llvm && ! use ghcbootstrap && llvmize "${WORKDIR}/usr/bin"

@@ -4,16 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517="setuptools"
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="MkDocs i18n plugin"
 HOMEPAGE="
 	https://gitlab.com/mkdocs-i18n/mkdocs-i18n/-/tree/main
 	https://pypi.org/project/mkdocs-i18n/
 "
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"

@@ -29,7 +29,7 @@ RDEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/GitPython[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
-	dev-python/jupyter_server[${PYTHON_USEDEP}]
+	dev-python/jupyter-server[${PYTHON_USEDEP}]
 	dev-python/jupyter_server_mathjax[${PYTHON_USEDEP}]
 	dev-python/nbformat[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]

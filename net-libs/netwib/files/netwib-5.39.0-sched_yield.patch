@@ -1,0 +1,85 @@
+--- a/genemake
++++ b/genemake
+@@ -1598,21 +1598,6 @@
+ fi
+ 
+ #---
+-NETWIBDEF_HAVEFUNC_PTHREAD_YIELD=0
+-if [ $NETWIBDEF_HAVEINCL_PTHREAD = 1 ] ; then
+-  cat > `checkcompilfile` <<EOF
+-   #include <pthread.h>
+-   int main(void)
+-   { pthread_yield();
+-     return(0);
+-   }
+-EOF
+-  checkcompilstd "pthread_yield" "" "" ""
+-  NETWIBDEF_HAVEFUNC_PTHREAD_YIELD=`checkcompilyes`
+-  checkceclean
+-fi
+-
+-#---
+ NETWIBDEF_HAVEFUNC_SCHED_YIELD=0
+ if [ $NETWIBDEF_HAVEINCL_SCHED = 1 ] ; then
+   cat > `checkcompilfile` <<EOF
+@@ -2042,7 +2027,6 @@
+ echo "#define NETWIBDEF_HAVEFUNC_PTHREAD_MUTEX_TIMEDLOCK $NETWIBDEF_HAVEFUNC_PTHREAD_MUTEX_TIMEDLOCK" >> $deffile
+ echo "#define NETWIBDEF_HAVEFUNC_PTHREAD_RWLOCK_TIMEDRDLOCK $NETWIBDEF_HAVEFUNC_PTHREAD_RWLOCK_TIMEDRDLOCK" >> $deffile
+ echo "#define NETWIBDEF_HAVEFUNC_PTHREAD_RWLOCK_TIMEDWRLOCK $NETWIBDEF_HAVEFUNC_PTHREAD_RWLOCK_TIMEDWRLOCK" >> $deffile
+-echo "#define NETWIBDEF_HAVEFUNC_PTHREAD_YIELD $NETWIBDEF_HAVEFUNC_PTHREAD_YIELD" >> $deffile
+ echo "#define NETWIBDEF_HAVEFUNC_SCHED_YIELD $NETWIBDEF_HAVEFUNC_SCHED_YIELD" >> $deffile
+ echo "#define NETWIBDEF_HAVEFUNC_GETPWNAM_R $NETWIBDEF_HAVEFUNC_GETPWNAM_R" >> $deffile
+ echo "#define NETWIBDEF_HAVEFUNC_GETGRNAM_R $NETWIBDEF_HAVEFUNC_GETGRNAM_R" >> $deffile
+@@ -2205,7 +2189,6 @@
+     HAVEFUNC_PTHREAD_MUTEX_TIMEDLOCK) echo $NETWIBDEF_HAVEFUNC_PTHREAD_MUTEX_TIMEDLOCK ;;
+     HAVEFUNC_PTHREAD_RWLOCK_TIMEDRDLOCK) echo $NETWIBDEF_HAVEFUNC_PTHREAD_RWLOCK_TIMEDRDLOCK ;;
+     HAVEFUNC_PTHREAD_RWLOCK_TIMEDWRLOCK) echo $NETWIBDEF_HAVEFUNC_PTHREAD_RWLOCK_TIMEDWRLOCK ;;
+-    HAVEFUNC_PTHREAD_YIELD) echo $NETWIBDEF_HAVEFUNC_PTHREAD_YIELD ;;
+     HAVEFUNC_SCHED_YIELD) echo $NETWIBDEF_HAVEFUNC_SCHED_YIELD ;;
+     HAVEFUNC_GETPWNAM_R) echo $NETWIBDEF_HAVEFUNC_GETPWNAM_R ;;
+     HAVEFUNC_GETGRNAM_R) echo $NETWIBDEF_HAVEFUNC_GETGRNAM_R ;;
+--- a/netwib/def_windows.h
++++ b/netwib/def_windows.h
+@@ -100,7 +100,6 @@
+ #define NETWIBDEF_HAVEFUNC_PTHREAD_MUTEX_TIMEDLOCK 0
+ #define NETWIBDEF_HAVEFUNC_PTHREAD_RWLOCK_TIMEDRDLOCK 0
+ #define NETWIBDEF_HAVEFUNC_PTHREAD_RWLOCK_TIMEDWRLOCK 0
+-#define NETWIBDEF_HAVEFUNC_PTHREAD_YIELD 0
+ #define NETWIBDEF_HAVEFUNC_SCHED_YIELD 0
+ #define NETWIBDEF_HAVEFUNC_GETPWNAM_R 0
+ #define NETWIBDEF_HAVEFUNC_GETGRNAM_R 0
+--- a/netwib/inc/missing.h
++++ b/netwib/inc/missing.h
+@@ -3,7 +3,6 @@
+ #if 0
+ /* Some systems have the function in their library, but
+    prototypes are missing. Those one can be used instead. */
+- int pthread_yield(void);
+  int getpagesize(void);
+  int usleep(unsigned int useconds);
+  int getpwnam_r(const char *name,
+--- a/netwib/sys/internal.c
++++ b/netwib/sys/internal.c
+@@ -221,8 +221,6 @@
+               NETWIBDEF_HAVEFUNC_PTHREAD_RWLOCK_TIMEDRDLOCK);
+   netwib_co_i("NETWIBDEF_HAVEFUNC_PTHREAD_RWLOCK_TIMEDWRLOCK",
+               NETWIBDEF_HAVEFUNC_PTHREAD_RWLOCK_TIMEDWRLOCK);
+-  netwib_co_i("NETWIBDEF_HAVEFUNC_PTHREAD_YIELD",
+-              NETWIBDEF_HAVEFUNC_PTHREAD_YIELD);
+   netwib_co_i("NETWIBDEF_HAVEFUNC_SCHED_YIELD",
+               NETWIBDEF_HAVEFUNC_SCHED_YIELD);
+   netwib_co_i("NETWIBDEF_HAVEFUNC_GETPWNAM_R",
+--- a/netwib/sys/priv/pause.c
++++ b/netwib/sys/priv/pause.c
+@@ -6,10 +6,7 @@
+ {
+ 
+ #if defined NETWIBDEF_SYSNAME_Unix
+- #if NETWIBDEF_HAVEFUNC_PTHREAD_YIELD == 1
+-  pthread_yield();
+-  return(NETWIB_ERR_OK);
+- #elif NETWIBDEF_HAVEFUNC_SCHED_YIELD == 1
++ #if NETWIBDEF_HAVEFUNC_SCHED_YIELD == 1
+   sched_yield();
+   return(NETWIB_ERR_OK);
+  #endif

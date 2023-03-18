@@ -7,14 +7,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=standalone
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Rapid fuzzy string matching in Python using various string metrics"
 HOMEPAGE="
 	https://github.com/maxbachmann/RapidFuzz/
 	https://pypi.org/project/rapidfuzz/
 "
-SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -5,6 +5,9 @@
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
+   <use>
+    <flag name="gnome-online-accounts">Enable <pkg>net-libs/gnome-online-accounts</pkg> based Google authentication support</flag>
+  </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/gnome-contacts</remote-id>
   </upstream>

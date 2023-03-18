@@ -3,12 +3,12 @@
 
 EAPI=8
 
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..10} pypy3 )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="plugin core for use by pytest-cov, nose-cov and nose2-cov"
 HOMEPAGE="https://github.com/schlamar/cov-core"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

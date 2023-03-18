@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: netsurf.eclass
@@ -9,9 +9,9 @@
 # @DESCRIPTION:
 # Handle settings build environment for netsurf build system
 
-case "${EAPI:-0}" in
+case ${EAPI} in
     7) ;;
-    *) die "EAPI=${EAPI} is not supported" ;;
+    *) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit toolchain-funcs

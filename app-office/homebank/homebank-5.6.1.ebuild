@@ -12,7 +12,7 @@ SRC_URI="http://homebank.free.fr/public/sources/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+ofx"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 
 RDEPEND=">=dev-libs/glib-2.39:2
 	>=net-libs/libsoup-2.26:2.4

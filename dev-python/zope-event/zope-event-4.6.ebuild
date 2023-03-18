@@ -6,17 +6,15 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_PN=${PN/-/.}
-MY_P=${MY_PN}-${PV}
 DESCRIPTION="Event publishing / dispatch, used by Zope Component Architecture"
 HOMEPAGE="
 	https://pypi.org/project/zope.event/
 	https://github.com/zopefoundation/zope.event/
 "
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="$(pypi_sdist_url --no-normalize "${PN/-/.}")"
+S=${WORKDIR}/${P/-/.}
 
 LICENSE="ZPL"
 SLOT="0"

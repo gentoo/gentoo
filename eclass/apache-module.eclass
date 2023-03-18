@@ -1,18 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: apache-module.eclass
 # @MAINTAINER:
 # apache-bugs@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Provides a common set of functions for apache modules
 # @DESCRIPTION:
 # This eclass handles apache modules in a sane way.
 #
 # To make use of this eclass simply call one of the need/want_apache functions
 # described in depend.apache.eclass. Make sure you use the need/want_apache call
-# after you have defined DEPEND and RDEPEND. Also note that you can not rely on
-# the automatic RDEPEND=DEPEND that portage does if you use this eclass.
+# after you have defined DEPEND and RDEPEND.
 #
 # See Bug 107127 for more information.
 #
@@ -46,8 +45,8 @@
 # @CODE
 
 case ${EAPI} in
-	[5-7]) ;;
-	*)     die "EAPI=${EAPI:-0} is not supported" ;;
+	6|7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_APACHE_MODULE_ECLASS} ]]; then

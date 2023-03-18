@@ -33,6 +33,51 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2023-03-18)
+# Upstream disappeared, last release over 20 years ago, only Gentoo
+# still carries this, breaks with modern C under Clang, no revdeps.
+# Removal on 2023-04-17. Bug #875683.
+net-analyzer/bigeye
+
+# David Seifert <soap@gentoo.org> (2023-03-18)
+# Upstream disappeared, last release over 15 years ago, only Gentoo
+# still carries this, breaks with modern C under Clang, no revdeps.
+# Removal on 2023-04-17. Bug #875020.
+net-analyzer/traceroute-nanog
+
+# David Seifert <soap@gentoo.org> (2023-03-18)
+# Last release over 7.5 years ago, only Gentoo still carries this,
+# breaks with modern C under Clang, no revdeps.
+# Removal on 2023-04-17. Bug #871711.
+media-plugins/vdr-remotetimers
+
+# David Seifert <soap@gentoo.org> (2023-03-18)
+# Upstream disappeared, release is over 14 years old, only Gentoo still
+# carries this, breaks with modern C under Clang, no revdeps.
+# Removal on 2023-04-17. Bug #862438.
+sci-chemistry/prekin
+
+# David Seifert <soap@gentoo.org> (2023-03-18)
+# Unmaintained in Gentoo, last upstream commit 7 years ago, breaks with
+# modern C under Clang, no revdeps. Bug #741078, #874648, #883303.
+# Removal on 2023-04-17.
+net-wireless/spectools
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-18)
+# Ancient out-of-date package. No proper upstream release since 2011.
+# No reverse dependencies. Masked for removal on 2023-04-18.
+dev-ruby/six
+
+# Sam James <sam@gentoo.org> (2023-03-16)
+# Breaks building C++ consumers. See bug #901211 and bug #901035.
+# Please upgrade to glib-2.76.0-r1.
+=dev-libs/glib-2.76.0
+
+# Alfredo Tupone <tupone@gentoo.org> (2023-03-14)
+# Masked for removal in 30 days.
+# Bug #895824, no rev dep 
+dev-tcltk/tkzinc
+
 # David Seifert <soap@gentoo.org> (2023-03-12)
 # Qt-based application is EOL, Yubico has switched to a Flutter-based
 # Googleware framework. Switch to app-crypt/yubioath-flutter-bin or use
@@ -47,25 +92,35 @@ dev-ruby/net-http-persistent:3
 
 # Guillermo Joandet <gjoandet@gmail.com> (2023-03-11)
 # In preparation for GNOME 44
+>=app-editors/gnome-text-editor-44_rc
 >=app-text/evince-44_rc
 >=dev-libs/gjs-1.75
 >=dev-python/pygobject-3.43
 >=gnome-base/gnome-session-44_rc
 >=gnome-base/gnome-settings-daemon-44_rc
 >=gnome-base/gnome-shell-44_rc
+>=gnome-base/librsvg-2.55.90
 >=gnome-base/nautilus-44_rc
 >=gnome-extra/gnome-boxes-44_rc
 >=gnome-extra/gnome-calculator-44_rc
+>=gnome-extra/gnome-calendar-44_rc
 >=gnome-extra/gnome-characters-44_rc
 >=gnome-extra/gnome-clocks-44_rc
+>=gnome-extra/gnome-contacts-44_rc
 >=gnome-extra/gnome-shell-extensions-44_rc
 >=gnome-extra/gnome-software-44_rc
 >=gnome-extra/gnome-system-monitor-44_rc
+>=gnome-extra/gnome-user-docs-44_rc
+>=gnome-extra/gnome-weather-44_rc
 >=gui-apps/gnome-console-44_beta
 >=gui-libs/libadwaita-1.3_rc
+>=media-gfx/eog-44_beta
+>=media-gfx/gnome-font-viewer-44_rc
 >=net-libs/glib-networking-2.76_beta
 >=net-misc/gnome-connections-44_rc
 >=net-misc/gnome-remote-desktop-44_rc
+>=sci-geosciences/gnome-maps-44_rc
+>=sys-apps/baobab-44_rc
 >=sys-apps/gnome-disk-utility-44_rc
 >=sys-apps/xdg-desktop-portal-gnome-44_rc
 >=x11-wm/mutter-44_rc
@@ -238,18 +293,6 @@ app-eselect/eselect-opencascade
 # Removal on 2023-03-21.  Bug #895342.
 dev-python/flask-script
 
-# Sam James <sam@gentoo.org> (2023-02-18)
-# Last release in 2018, needs porting to Python 3.11, and no reverse
-# dependencies. Removal on 2023-03-18. bug #895174.
-dev-python/setuptools_trial
-
-# Sam James <sam@gentoo.org> (2023-02-18)
-# Backport to Python 3.5(!) hence irrelevant for newer versions of Python
-# where os.scandir() and os.walk() improvements were integrated in the stdlib.
-# Incompatible with Python 3.11. No reverse dependencies.
-# Removal on 2023-03-18. bug #895198
-dev-python/scandir
-
 # Michał Górny <mgorny@gentoo.org> (2023-02-17)
 # Merged into dev-python/pytest-cov in 2020.  No revdeps left.
 # Removal on 2023-03-19.  Bug #895120.
@@ -261,100 +304,11 @@ dev-python/cov-core
 # Removal on 2023-03-19.  Bug #865931.
 dev-python/pytest-flake8
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-15)
-# A number of test failures, and the test phase does not fail correctly.
-# Last release in 2019.  No revdeps.
-# Removal on 2023-03-17.  Bug #894606.
-dev-python/urlgrabber
-
-# Michał Górny <mgorny@gentoo.org> (2023-02-15)
-# Unmaintained.  Broken with current version of dev-python/pyglet.
-# No upstream activity since Sep 2021.  No revdeps.
-# Removal on 2023-03-17.  Bug #887973.
-dev-python/glooey
-
-# Alfredo Tupone <tupone@gentoo.org> (2023-02-14)
-# Masked for removal in 30 days.
-# Not maintained (2020), no rev dep
-dev-ml/ppxfind
-
-# Michał Górny <mgorny@gentoo.org> (2023-02-14)
-# Unmaintained and archived.  Invalid version number causes total mayhem
-# when installed alongside new dev-python/packaging.
-# Removal on 2023-03-16.  Bug #894222.
-net-p2p/bittornado
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-02-10)
-# Unused Java libraries. Removal on 2023-03-12.
-dev-java/jcip-annotations
-dev-java/jformatstring
-dev-java/jta
-dev-java/pdf-renderer
-
-# Florian Schmaus <flow@gentoo.org> (2023-02-10)
-# Previous dependencies of ejabberd, now no longer needed.
-# Removal on 2023-03-10.
-dev-erlang/iconv
-dev-erlang/p1_xmlrpc
-dev-erlang/riak_pb
-
 # Florian Schmaus <flow@gentoo.org> (2023-02-09)
 # Leftovers from net-im/jabber-base. Unused and obsolete.
 # Removal on 2023-03-09.
 acct-user/jabber
 acct-group/jabber
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-02-07)
-# Unused Java libraries. Removal on 2023-03-08.
-# jspeex had last upstream activities in 2005.
-dev-java/jspeex
-dev-java/osgi-annotation-versioning
-dev-java/commons-text
-
-# Michał Górny <mgorny@gentoo.org> (2023-02-03)
-# The package has been archived upstream.  It is broken with all Python
-# versions supported by Gentoo, and it is broken with django-2.
-# The other listed packages are its reverse dependencies.
-# Removal on 2023-03-05.  Bug #718972.
-app-misc/gcalcli
-app-misc/goobook
-dev-python/gcs-oauth2-boto-plugin
-dev-python/google-apitools
-dev-python/google-reauth-python
-dev-python/oauth2client
-net-misc/gsutil
-
-# Michał Górny <mgorny@gentoo.org> (2023-02-02)
-# dev-python/citeproc-py requires dev-python/nose and is not maintained
-# upstream.  Its only revdep, dev-python/duecredit has no reverse
-# dependencies left.
-# Removal on 2023-03-04.  Bug #888239.
-dev-python/citeproc-py
-dev-python/duecredit
-
-# Michał Górny <mgorny@gentoo.org> (2023-02-01)
-# dev-python/blockdiag still requires dev-python/nose.  There was a PR
-# made to switch to pytest in Feb 2020 but it's not progressing at all.
-# It was needed only for dev-python/aiohttp[doc].
-# Removal on 2023-03-03.  Bug #888233.
-dev-python/blockdiag
-dev-python/sphinxcontrib-blockdiag
-
-# Michał Górny <mgorny@gentoo.org> (2023-02-01)
-# Requires legacy setuptools backend.  Hacky build system.  The only
-# revdep is dev-python/rdflib where it is entirely optional.
-# Removal on 2023-03-03.  Bug #892854.
-dev-python/berkeleydb
-
-# Michał Górny <mgorny@gentoo.org> (2023-01-31)
-# No tests, no activity since Aug 2020, no reverse dependencies.
-# Removal on 2023-03-02.  Bug #892744.
-dev-python/alagitpull
-
-# Michał Górny <mgorny@gentoo.org> (2023-01-31)
-# The test suite is broken (async tests don't run).  No revdeps.
-# Removal on 2023-03-02.  Bug #892742.
-dev-python/aiohttp-jinja2
 
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
@@ -364,54 +318,10 @@ dev-python/aiohttp-jinja2
 # Commands trigger an assertion and crashes, bug #892487
 =sys-fs/lvm2-2.03.18
 
-# Mike Gilbert <floppym@gentoo.org> (2023-01-28)
-# No upstream releases since 2008.
-# No Gentoo maintainer since 2009.
-# Installs files in the wrong places (bug #455542)
-# and with the wrong mode (bug #892325).
-# Removal on 2023-02-27.
-app-admin/bastille
-
-# Florian Schmaus <flow@gentoo.org> (2023-01-27)
-# Previous dependencies of dev-lang/clojure, now part of the clojure
-# ebuild and no longer needed.
-# Removal on 2023-02-27.
-dev-java/core-specs-alpha
-dev-java/spec-alpha
-
-# Michał Górny <mgorny@gentoo.org> (2023-01-26)
-# Unmaintained.  Last release in 2003.  The package fails to install
-# since Aug 2021 and while a fix would be trivial, there does not seem
-# to have been any interest in it during that period.
-# Removal on 2023-02-25.  Bug #806384.
-www-misc/wsmake
-
-# Michał Górny <mgorny@gentoo.org> (2023-01-25)
-# Unmaintained.  Multiple build failure bugs reported.  This version
-# predates 2008.
-# Removal on 2023-02-24.  Bug #837611.
-sys-cluster/wulfware
-
 # Sam James <sam@gentoo.org> (2023-01-23)
 # Please upgrade to >=app-eselect/eselect-wxwidgets-20230114-r1 as -r0 may
 # lead to build failures.
 =app-eselect/eselect-wxwidgets-20230114
-
-# Michał Górny <mgorny@gentoo.org> (2023-01-21)
-# Packages that are incompatible with ffmpeg-5.
-#
-# media-libs/libextractor: no Gentoo maintainer, ver from 2019, bug #834382
-# media-libs/qtav: no Gentoo maintainer, no porting progress, bug #834386
-# media-plugins/vdr-vaapidevice: no activity since 2019, bug #834390
-# media-sound/potamus: last rel. 2018, one commit in 2020, bug #834396
-# media-video/ffmpeg2theora: no activity since 2016, bug #834403
-#
-# Removal on 2023-02-20.
-media-libs/libextractor
-media-libs/qtav
-media-plugins/vdr-vaapidevice
-media-sound/potamus
-media-video/ffmpeg2theora
 
 # David Seifert <soap@gentoo.org> (2023-01-14)
 # Py3.8 only backports
@@ -423,13 +333,6 @@ dev-python/pkgutil_resolve_name
 # Sam James <sam@gentoo.org> (2023-01-05)
 # Breaks reverse dependencies: bug #889694, bug #888579.
 =sys-fs/btrfs-progs-6.1.1
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-12-29)
-# Upstream is dead, last activity in Nov 2017. Does not
-# work with newer log4j, bug #857663. Use net-p2p/biglybt
-# instead. Removal on 2023-02-28.
-net-p2p/vuze
-net-p2p/vuze-coreplugins
 
 # Sam James <sam@gentoo.org> (2022-12-27)
 # Regression in listing subvolumes (no UUIDs), bug #888549

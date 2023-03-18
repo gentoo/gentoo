@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC="yard"
@@ -20,7 +20,7 @@ inherit ruby-fakegem
 DESCRIPTION="Documentation generation tool for the Ruby programming language"
 HOMEPAGE="https://yardoc.org/"
 
-# The gem lakes the gemspec file needed to pass tests.
+# The gem lacks the gemspec file needed to pass tests.
 SRC_URI="https://github.com/lsegal/yard/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"

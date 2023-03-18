@@ -29,7 +29,7 @@ else
 		SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.bz2"
 	fi
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv ~sparc x86"
 fi
 
 DESCRIPTION="Multimedia processing graphs"
@@ -70,6 +70,7 @@ BDEPEND="
 	virtual/pkgconfig
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')
+	dbus? ( dev-util/gdbus-codegen )
 	doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
@@ -328,7 +329,7 @@ pkg_preinst() {
 	HAD_SYSTEM_SERVICE=0
 
 	if has_version "media-video/pipewire[sound-server(-)]" ; then
-		HAD_SOUND_SERVER=0
+		HAD_SOUND_SERVER=1
 	fi
 
 	if has_version "media-video/pipewire[system-service(-)]" ; then

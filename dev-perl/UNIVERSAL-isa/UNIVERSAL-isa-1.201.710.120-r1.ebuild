@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Attempt to recover from people calling UNIVERSAL::isa as a function"
 
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ~ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	virtual/perl-Scalar-List-Utils

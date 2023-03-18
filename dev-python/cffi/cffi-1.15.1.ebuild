@@ -9,14 +9,13 @@ DISTUTILS_USE_PEP517=setuptools
 # pypy bundles a modified version of cffi. Use python_gen_cond_dep instead.
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r1 toolchain-funcs pypi
 
 DESCRIPTION="Foreign Function Interface for Python calling C code"
 HOMEPAGE="
 	https://cffi.readthedocs.io/
 	https://pypi.org/project/cffi/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"

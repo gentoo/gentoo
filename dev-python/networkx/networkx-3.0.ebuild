@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_FULLY_TESTED=( python3_{9..11} )
 PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" )
 
-inherit distutils-r1 optfeature multiprocessing virtualx
+inherit distutils-r1 optfeature multiprocessing virtualx pypi
 
 DESCRIPTION="Python tools to manipulate graphs and complex networks"
 HOMEPAGE="
@@ -15,7 +15,6 @@ HOMEPAGE="
 	https://github.com/networkx/networkx/
 	https://pypi.org/project/networkx/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -8,7 +8,7 @@ PYTHON_TESTED=( python3_{9..11} )
 PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Inject some useful and sensible default behaviors into setuptools"
 HOMEPAGE="
@@ -16,7 +16,6 @@ HOMEPAGE="
 	https://github.com/openstack/pbr/
 	https://pypi.org/project/pbr/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"

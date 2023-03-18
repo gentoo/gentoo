@@ -26,8 +26,8 @@ RDEPEND="
 	>=dev-python/jsonschema-3.0.1[${PYTHON_USEDEP}]
 	>=dev-python/packaging-21.3[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.28[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_server-1.21[${PYTHON_USEDEP}]
-	<dev-python/jupyter_server-3[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-server-1.21[${PYTHON_USEDEP}]
+	<dev-python/jupyter-server-3[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/importlib_metadata-4.8.3[${PYTHON_USEDEP}]
 	' 3.8 3.9)
@@ -36,7 +36,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/ipykernel[${PYTHON_USEDEP}]
-		dev-python/jupyter_server[${PYTHON_USEDEP}]
+		dev-python/jupyter-server[${PYTHON_USEDEP}]
 		<dev-python/openapi-core-0.17[${PYTHON_USEDEP}]
 		>=dev-python/openapi-core-0.16.1[${PYTHON_USEDEP}]
 		<dev-python/openapi-spec-validator-0.6[${PYTHON_USEDEP}]

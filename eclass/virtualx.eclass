@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: virtualx.eclass
@@ -11,10 +11,10 @@
 
 case ${EAPI} in
 	6|7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} is not supported." ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-if [[ ! ${_VIRTUALX_ECLASS} ]]; then
+if [[ -z ${_VIRTUALX_ECLASS} ]]; then
 _VIRTUALX_ECLASS=1
 
 # @ECLASS_VARIABLE: VIRTUALX_REQUIRED

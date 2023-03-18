@@ -45,7 +45,7 @@ SRC_URI="
 		$(bootstrap_uri riscv ${RISCV_XPAK})
 		$(bootstrap_uri x86 ${X86_XPAK})
 	)
-	riscv? ( https://dev.gentoo.org/~arthurzam/distfiles/dev-java/openjdk/openjdk-11.0.14-riscv.patch.xz )
+	riscv? ( https://dev.gentoo.org/~arthurzam/distfiles/dev-java/openjdk/openjdk-11.0.18-riscv.patch.xz )
 "
 
 LICENSE="GPL-2-with-classpath-exception"
@@ -153,7 +153,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	use riscv && eapply "${WORKDIR}"/openjdk-11.0.14-riscv.patch
+	use riscv && eapply "${WORKDIR}"/openjdk-11.0.18-riscv.patch
 	default
 	chmod +x configure || die
 }

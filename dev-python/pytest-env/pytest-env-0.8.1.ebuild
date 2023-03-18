@@ -5,12 +5,10 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="py.test plugin that allows you to add environment variables"
 HOMEPAGE="https://github.com/pytest-dev/pytest-env"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P/-/_}.tar.gz"
-S="${WORKDIR}/${P/-/_}"
 
 LICENSE="MIT"
 SLOT="0"

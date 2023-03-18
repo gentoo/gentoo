@@ -400,8 +400,6 @@ xfce-base/xfwm4 xpresent
 # Michał Górny <mgorny@gentoo.org> (2017-03-23)
 # Most of clang runtimes are not supported here
 sys-devel/clang-runtime openmp sanitize
-sys-libs/libcxx libunwind
-sys-libs/libcxxabi libunwind
 
 # Pacho Ramos <pacho@gentoo.org> (2017-02-04)
 # Missing keywords, bug #599572
@@ -419,10 +417,6 @@ dev-libs/hiredis test
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
 # DOSBox + OpenGLide is untested on this arch.
 games-emulation/dosbox glide
-
-# Michał Górny <mgorny@gentoo.org> (2016-11-18)
-# libomp does not support SPARC, #600148.
-sys-devel/clang-runtime openmp
 
 # Christian Ruppert <idl0r@gentoo.org> (2016-10-14)
 # dnstap USE masked due to missing keywords

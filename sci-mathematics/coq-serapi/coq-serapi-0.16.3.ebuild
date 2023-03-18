@@ -3,7 +3,8 @@
 
 EAPI=8
 
-COQV=8.16.0
+COQ_MIN_V=8.16.0
+COQ_MAX_V=8.17.0
 
 inherit elisp-common dune
 
@@ -13,7 +14,7 @@ HOMEPAGE="https://github.com/ejgallego/coq-serapi/"
 # The tarball in SRC_URI is comprised of <supported coq>+<package version>
 SRC_URI="https://github.com/ejgallego/${PN}/archive/${COQV}+${PV}.tar.gz
 	-> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${COQV}-${PV}
+S="${WORKDIR}"/${PN}-${COQ_MIN_V}-${PV}
 
 LICENSE="GPL-3+"
 SLOT="0/${PV}"
@@ -22,7 +23,7 @@ IUSE="emacs +ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=sci-mathematics/coq-${COQV}:= <sci-mathematics/coq-8.17:=
+	>=sci-mathematics/coq-${COQ_MIN_V}:= <sci-mathematics/coq-${COQ_MAX_V}:=
 	>=dev-ml/ppx_sexp_conv-0.13.0:=
 	dev-ml/cmdliner:=
 	dev-ml/ppx_compare:=

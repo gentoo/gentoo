@@ -3,13 +3,13 @@
 
 EAPI=8
 
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1 optfeature
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Multi-Language Server WebSocket proxy for Jupyter Notebook/Lab"
 HOMEPAGE="https://github.com/krassowski/jupyterlab-lsp"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -21,7 +21,7 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-python/entrypoints[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_server-1.1.2[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-server-1.1.2[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

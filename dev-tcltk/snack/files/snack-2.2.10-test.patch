@@ -117,3 +117,33 @@
  test dbpower-1.3 {dBPowerSpectrum command, -end and -skip options} {
    set s [snack::sound snd -load ex1.wav]
    set tcl_precision 5
+--- a/tests/filter.test	2023-03-17 22:53:35.463977748 +0100
++++ b/tests/filter.test	2023-03-17 22:55:40.931996456 +0100
+@@ -362,27 +362,6 @@
+   set res
+ } {16000 16000 10026 -6287 Lin16 1 RAW 0}
+ 
+-test filter-7.1 {iir filter, applied to sound} {
+-  set s [snack::sound snd -load ex1.wav]
+-  set f [snack::filter iir -numerator "0.99 -0.99" -denominator "1 -0.99"]
+-  $s filter $f -continuedrain 0
+-  set res [$s info]
+-  $f destroy
+-  $s destroy
+-  set res
+-} {15820 16000 13222 -9615 Lin16 1 WAV 44}
+-
+-test filter-7.2 {iir filter, applied to stereo sound} {
+-  set s [snack::sound snd -load ex1.wav]
+-  $s convert -channels 2
+-  set f [snack::filter iir -numerator "0.99 -0.99" -denominator "1 -0.99"]
+-  $s filter $f -continuedrain 0
+-  set res [$s info]
+-  $f destroy
+-  $s destroy
+-  set res
+-} {15820 16000 13222 -9616 Lin16 2 WAV 44}
+-
+ test filter-8.1 {fade filter, applied to sound} {
+   set s [snack::sound snd -rate 4000]
+   $s length 4

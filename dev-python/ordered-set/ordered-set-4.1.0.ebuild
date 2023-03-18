@@ -5,13 +5,13 @@
 EAPI=7
 
 DISTUTILS_USE_PEP517=flit
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A mutable set that remembers the order of its entries"
 HOMEPAGE="https://github.com/rspeer/ordered-set"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

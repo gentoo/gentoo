@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: bzr.eclass
@@ -21,14 +21,12 @@
 
 case ${EAPI} in
 	7|8) ;;
-	*) die "${ECLASS}: EAPI ${EAPI:-0} is not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 PROPERTIES+=" live"
 
 BDEPEND="dev-vcs/breezy"
-
-EXPORT_FUNCTIONS src_unpack
 
 # @ECLASS_VARIABLE: EBZR_STORE_DIR
 # @USER_VARIABLE
@@ -255,3 +253,5 @@ bzr_fetch() {
 bzr_src_unpack() {
 	bzr_fetch
 }
+
+EXPORT_FUNCTIONS src_unpack

@@ -3,19 +3,18 @@
 
 EAPI=8
 
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} )
-inherit python-r1 qmake-utils
+inherit pypi python-r1 qmake-utils
 
 DESCRIPTION="Python bindings for the Qt framework"
 HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt/ https://pypi.org/project/PyQt5/"
 
-MY_P=${PN}-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
+	MY_P=${PN}-${PV/_pre/.dev}
 	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
-else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
+	S=${WORKDIR}/${MY_P}
 fi
-S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3"
 SLOT="0"

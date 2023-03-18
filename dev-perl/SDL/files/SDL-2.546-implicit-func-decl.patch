@@ -1,0 +1,40 @@
+https://github.com/PerlGameDev/SDL/pull/299
+
+From 90d7056288282df9febf04acce6712f4071e4103 Mon Sep 17 00:00:00 2001
+From: Ryan Schmidt <git@ryandesign.com>
+Date: Wed, 26 Jan 2022 02:55:04 -0600
+Subject: [PATCH] Fix implicit declaration of _calc_offset
+
+--- a/src/SDLx/Surface.xs
++++ b/src/SDLx/Surface.xs
+@@ -16,6 +16,14 @@
+ #include <SDL_gfxPrimitives.h>
+ #endif
+ 
++int _calc_offset ( SDL_Surface* surface, int x, int y )
++{
++    int offset;
++    offset  = (surface->pitch * y) / surface->format->BytesPerPixel;
++    offset += x;
++    return offset;
++}
++
+ SV * get_pixel32 (SDL_Surface *surface, int x, int y)
+ {
+     /* Convert the pixels to 32 bit  */
+@@ -52,14 +60,6 @@ SV * construct_p_matrix ( SDL_Surface *surface )
+     return newRV_noinc((SV *)matrix);
+ }
+ 
+-int _calc_offset ( SDL_Surface* surface, int x, int y )
+-{
+-    int offset;
+-    offset  = (surface->pitch * y) / surface->format->BytesPerPixel;
+-    offset += x;
+-    return offset;
+-}
+-
+ unsigned int _get_pixel(SDL_Surface * surface, int offset)
+ {
+     unsigned int value;
+

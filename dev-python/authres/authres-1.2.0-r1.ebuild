@@ -6,14 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Parse and generate Authentication-Results headers"
 HOMEPAGE="
 	https://launchpad.net/authentication-results-python/
 	https://pypi.org/project/authres/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 KEYWORDS="amd64 arm64 x86"

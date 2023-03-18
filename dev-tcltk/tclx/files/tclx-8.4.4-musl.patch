@@ -1,0 +1,25 @@
+--- a/configure.in	2023-03-15 22:00:11.725506240 +0100
++++ b/configure.in	2023-03-15 22:00:29.230246904 +0100
+@@ -253,6 +253,7 @@
+     
+     AC_CHECK_FUNC(inet_aton, , [AC_DEFINE(NO_INET_ATON)])
+     AC_CHECK_FUNC(gethostname, , [AC_DEFINE(NO_GETHOSTNAME)])
++    AC_CHECK_FUNCS([rresvport])
+     
+     #-------------------------------------------------------------------------
+     # Check for additional libraries the Tcl/Tk does not check for.
+--- a/unix/tclXunixSock.c	2023-03-15 22:02:32.255424538 +0100
++++ b/unix/tclXunixSock.c	2023-03-15 22:03:35.094493443 +0100
+@@ -194,10 +194,12 @@
+      * Allocate a reserved port if requested.
+      */
+     if (getReserved) {
++#ifdef HAVE_RRESVPORT
+         int port;
+         if (rresvport (&port) < 0)
+             goto unixError;
+         local.sin_port = port;
++#endif
+     }
+ 
+     /*

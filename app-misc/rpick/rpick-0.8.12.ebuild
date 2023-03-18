@@ -114,7 +114,7 @@ SRC_URI="$(cargo_crate_uris)"
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 GPL-3 MIT Unicode-DFS-2016 Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 
 QA_FLAGS_IGNORED="usr/bin/rpick"
 

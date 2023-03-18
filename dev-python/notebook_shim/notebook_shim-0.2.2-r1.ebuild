@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=hatchling
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A shim layer for notebook traits and config"
 HOMEPAGE="
@@ -13,15 +13,14 @@ HOMEPAGE="
 	https://github.com/jupyter/notebook_shim/
 	https://pypi.org/project/notebook-shim/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~riscv ~x86"
 
 RDEPEND="
-	<dev-python/jupyter_server-3[${PYTHON_USEDEP}]
-	>=dev-python/jupyter_server-1.8[${PYTHON_USEDEP}]
+	<dev-python/jupyter-server-3[${PYTHON_USEDEP}]
+	>=dev-python/jupyter-server-1.8[${PYTHON_USEDEP}]
 "
 
 BDEPEND="

@@ -7,7 +7,7 @@ DESCRIPTION="Virtual for pandoc"
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 
 BDEPEND=""
 RDEPEND="|| ( app-text/pandoc-bin[pandoc-symlink] app-text/pandoc )"

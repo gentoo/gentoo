@@ -8,11 +8,10 @@ PYTHON_COMPAT=( pypy3 python3_{9..11} )
 # xml.etree.ElementTree module required.
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1 systemd
+inherit distutils-r1 systemd pypi
 
 DESCRIPTION="A system for controlling process state under UNIX"
 HOMEPAGE="http://supervisord.org/ https://pypi.org/project/supervisor/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="repoze ZPL BSD HPND GPL-2"
 SLOT="0"

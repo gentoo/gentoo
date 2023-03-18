@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -333,6 +333,7 @@ PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
 	"${FILESDIR}"/${PN}-5.0-backport-ranlib-build-fix.patch
 	"${FILESDIR}"/${P}-clang-14-ff_seek_frame_binary-crash.patch
+	"${FILESDIR}"/${PN}-4.4.3-get_cabac_inline_x86-32-bit.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(

@@ -11,7 +11,7 @@ DESCRIPTION="Generate fast XS accessors without runtime compilation"
 # License note: perl 5-or-newer
 # https://bugs.gentoo.org/718946#c6
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~ppc-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~ppc-macos ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

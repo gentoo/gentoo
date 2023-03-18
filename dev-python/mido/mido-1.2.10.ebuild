@@ -6,14 +6,13 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=setuptools
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="MIDI Objects, a library for working with MIDI messages and ports"
 HOMEPAGE="
 	https://pypi.org/project/mido/
 	https://github.com/mido/mido
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

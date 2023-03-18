@@ -126,7 +126,7 @@ RDEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	app-arch/tar
+	>=app-arch/tar-1.34-r2
 	>=dev-lang/yasm-0.6.2
 	dev-libs/libIDL
 	dev-util/glslang

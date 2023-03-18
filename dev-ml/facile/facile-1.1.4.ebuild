@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Emmanuel-PLF/${PN}/releases/download/${PV}/${P}.tbz"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 arm64 ~ppc ~ppc64 ~x86"
 IUSE="+ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"

@@ -6,19 +6,15 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_P=${P/-/.}
 DESCRIPTION="Zope support for i18nmessageid (tagging source of i18n strings)"
 HOMEPAGE="
 	https://pypi.org/project/zope.i18nmessageid/
 	https://github.com/zopefoundation/zope.i18nmessageid/
 "
-SRC_URI="
-	https://github.com/zopefoundation/zope.i18nmessageid/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
-"
-S=${WORKDIR}/${MY_P}
+SRC_URI="$(pypi_sdist_url --no-normalize "${PN/-/.}")"
+S=${WORKDIR}/${P/-/.}
 
 LICENSE="ZPL"
 SLOT="0"

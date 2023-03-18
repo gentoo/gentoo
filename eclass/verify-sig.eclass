@@ -45,9 +45,8 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-EXPORT_FUNCTIONS src_unpack
-
-if [[ ! ${_VERIFY_SIG_ECLASS} ]]; then
+if [[ -z ${_VERIFY_SIG_ECLASS} ]]; then
+_VERIFY_SIG_ECLASS=1
 
 IUSE="verify-sig"
 
@@ -390,5 +389,6 @@ verify-sig_src_unpack() {
 	default_src_unpack
 }
 
-_VERIFY_SIG_ECLASS=1
 fi
+
+EXPORT_FUNCTIONS src_unpack

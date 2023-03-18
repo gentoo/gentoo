@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/895088
+https://github.com/debauchee/barrier/pull/1886
+
+From d376d23d534e053a160c32ee1170d237a2f3d6bd Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Thu, 26 Jan 2023 09:25:59 -0500
+Subject: [PATCH] Add missing #include directives needed for GCC 13
+
+---
+ src/lib/base/String.h         | 1 +
+ src/lib/net/FingerprintData.h | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/lib/base/String.h b/src/lib/base/String.h
+index 9c5a53bac4..fa37f8f0dc 100644
+--- a/src/lib/base/String.h
++++ b/src/lib/base/String.h
+@@ -18,6 +18,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include "common/common.h"
+ #include "common/stdstring.h"
+ 
+diff --git a/src/lib/net/FingerprintData.h b/src/lib/net/FingerprintData.h
+index 938a69538d..522a481353 100644
+--- a/src/lib/net/FingerprintData.h
++++ b/src/lib/net/FingerprintData.h
+@@ -18,6 +18,7 @@
+ #ifndef BARRIER_LIB_NET_FINGERPRINT_DATA_H
+ #define BARRIER_LIB_NET_FINGERPRINT_DATA_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+

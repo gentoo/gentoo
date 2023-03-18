@@ -1,0 +1,132 @@
+https://github.com/curl/curl/pull/10705
+From: Matt Jolly <Matt.Jolly@footclan.ninja>
+Date: Wed, 8 Mar 2023 02:16:45 +1100
+Subject: [PATCH] Refuse to resolve the .onion TLD.
+
+RFC 7686 states that:
+
+> Applications that do not implement the Tor
+> protocol SHOULD generate an error upon the use of .onion and
+> SHOULD NOT perform a DNS lookup.
+
+Let's do that.
+
+See curl/curl#543
+https://www.rfc-editor.org/rfc/rfc7686#section-2
+--- a/lib/hostip.c
++++ b/lib/hostip.c
+@@ -652,6 +652,14 @@ enum resolve_t Curl_resolv(struct Curl_easy *data,
+   CURLcode result;
+   enum resolve_t rc = CURLRESOLV_ERROR; /* default to failure */
+   struct connectdata *conn = data->conn;
++  /* We should intentionally error and not resolve .onion TLDs */
++  size_t hostname_len = strlen(hostname);
++  if(hostname_len >= 7 &&
++  (curl_strequal(&hostname[hostname_len-6], ".onion") ||
++  curl_strequal(&hostname[hostname_len-7], ".onion."))) {
++    failf(data, "Not resolving .onion address (RFC 7686)");
++    return CURLRESOLV_ERROR;
++  }
+   *entry = NULL;
+ #ifndef CURL_DISABLE_DOH
+   conn->bits.doh = FALSE; /* default is not */
+--- a/tests/data/Makefile.inc
++++ b/tests/data/Makefile.inc
+@@ -186,8 +186,8 @@ test1432 test1433 test1434 test1435 test1436 test1437 test1438 test1439 \
+ test1440 test1441 test1442 test1443 test1444 test1445 test1446 test1447 \
+ test1448 test1449 test1450 test1451 test1452 test1453 test1454 test1455 \
+ test1456 test1457 test1458 test1459 test1460 test1461 test1462 test1463 \
+-test1464 test1465 test1466 test1467 test1468 test1469 \
+-\
++test1464 test1465 test1466 test1467 test1468 test1469 test1471 \
++test1472 \
+ test1500 test1501 test1502 test1503 test1504 test1505 test1506 test1507 \
+ test1508 test1509 test1510 test1511 test1512 test1513 test1514 test1515 \
+ test1516 test1517 test1518 test1519 test1520 test1521 test1522 test1523 \
+--- /dev/null
++++ b/tests/data/test1471
+@@ -0,0 +1,39 @@
++<testcase>
++<info>
++<keywords>
++Onion
++Tor
++FAILURE
++</keywords>
++</info>
++#
++# Server-side
++<reply>
++</reply>
++
++#
++# Client-side
++<client>
++<server>
++none
++</server>
++<name>
++Fail to resolve .onion TLD
++</name>
++<command>
++red.onion
++</command>
++</client>
++
++#
++# Verify data after the test has been "shot"
++<verify>
++# Couldn't resolve host name
++<errorcode>
++6
++</errorcode>
++<stderr mode="text">
++curl: (6) Not resolving .onion address (RFC 7686)
++</stderr>
++</verify>
++</testcase>
+--- /dev/null
++++ b/tests/data/test1472
+@@ -0,0 +1,39 @@
++<testcase>
++<info>
++<keywords>
++Onion
++Tor
++FAILURE
++</keywords>
++</info>
++#
++# Server-side
++<reply>
++</reply>
++
++#
++# Client-side
++<client>
++<server>
++none
++</server>
++<name>
++Fail to resolve .onion. TLD
++</name>
++<command>
++tasty.onion.
++</command>
++</client>
++
++#
++# Verify data after the test has been "shot"
++<verify>
++# Couldn't resolve host name
++<errorcode>
++6
++</errorcode>
++<stderr mode="text">
++curl: (6) Not resolving .onion address (RFC 7686)
++</stderr>
++</verify>
++</testcase>
+-- 
+2.39.2
+

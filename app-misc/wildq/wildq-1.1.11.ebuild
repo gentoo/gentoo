@@ -5,11 +5,10 @@ EAPI=7
 PYTHON_COMPAT=( python3_{9..10} )
 DISTUTILS_USE_SETUPTOOLS=bdepend
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Command-line TOML/JSON/INI/YAML/XML processor using jq c bindings"
 HOMEPAGE="https://pypi.org/project/wildq/ https://github.com/ahmet2mir/wildq"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"

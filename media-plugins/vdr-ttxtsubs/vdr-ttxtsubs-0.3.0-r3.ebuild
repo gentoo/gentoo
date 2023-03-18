@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/vdr-projects/vdr-plugin-ttxtsubs"
 SRC_URI="https://github.com/vdr-projects/vdr-plugin-ttxtsubs/archive/refs/tags/v${PV}.tar.gz -> ${P}.tgz"
 S="${WORKDIR}/vdr-plugin-ttxtsubs-${PV}"
 
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 SLOT="0"
 LICENSE="GPL-2+"
 IUSE=""

@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 optfeature
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Interactive Parallel Computing with IPython"
 HOMEPAGE="
@@ -15,7 +15,6 @@ HOMEPAGE="
 	https://github.com/ipython/ipyparallel/
 	https://pypi.org/project/ipyparallel/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -28,7 +27,7 @@ RDEPEND="
 	>=dev-python/traitlets-4.3[${PYTHON_USEDEP}]
 	>=dev-python/ipython-4[${PYTHON_USEDEP}]
 	dev-python/jupyter_client[${PYTHON_USEDEP}]
-	dev-python/jupyter_server[${PYTHON_USEDEP}]
+	dev-python/jupyter-server[${PYTHON_USEDEP}]
 	>=dev-python/ipykernel-4.4[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.1[${PYTHON_USEDEP}]

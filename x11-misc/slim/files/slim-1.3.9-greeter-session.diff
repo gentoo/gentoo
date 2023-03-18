@@ -1,0 +1,12 @@
+Fix bug #727544 by telling elogind that we're a greeter
+===================================================================
+--- a/app.cpp
++++ b/app.cpp
+@@ -290,6 +290,7 @@
+ 		pam.start("slim");
+ 		pam.set_item(PAM::Authenticator::TTY, DisplayName);
+ 		pam.set_item(PAM::Authenticator::Requestor, "root");
++		pam.setenv("XDG_SESSION_CLASS", "greeter");
+ 	}
+ 	catch(PAM::Exception& e){
+ 		logStream << APPNAME << ": " << e << endl;

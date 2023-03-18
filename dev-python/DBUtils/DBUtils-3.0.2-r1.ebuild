@@ -4,9 +4,10 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Database connections for multi-threaded environments"
 HOMEPAGE="
@@ -14,7 +15,6 @@ HOMEPAGE="
 	https://github.com/WebwareForPython/DBUtils/
 	https://pypi.org/project/DBUtils/
 "
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

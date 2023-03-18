@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">sphinx-contrib/jquery</remote-id>
-		<remote-id type="pypi">sphinxcontrib.jquery</remote-id>
+		<remote-id type="pypi">sphinxcontrib-jquery</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -34,7 +34,8 @@ IUSE="
 	llvm-libunwind debug custom-cflags +fontconfig +gecko gphoto2
 	+gstreamer kerberos +mingw +mono netapi nls opencl +opengl osmesa
 	pcap perl pulseaudio samba scanner +sdl selinux smartcard +ssl
-	+truetype udev udisks +unwind usb v4l +vulkan +xcomposite xinerama"
+	+truetype udev udisks +unwind usb v4l +vulkan wayland +xcomposite
+	xinerama"
 REQUIRED_USE="
 	X? ( truetype )
 	crossdev-mingw? ( mingw )" # bug #551124 for truetype
@@ -93,7 +94,8 @@ WINE_COMMON_DEPEND="
 		llvm-libunwind? ( sys-libs/llvm-libunwind[${MULTILIB_USEDEP}] )
 		!llvm-libunwind? ( sys-libs/libunwind:=[${MULTILIB_USEDEP}] )
 	)
-	usb? ( dev-libs/libusb:1[${MULTILIB_USEDEP}] )"
+	usb? ( dev-libs/libusb:1[${MULTILIB_USEDEP}] )
+	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )"
 RDEPEND="
 	${WINE_COMMON_DEPEND}
 	app-emulation/wine-desktop-common
@@ -250,6 +252,7 @@ src_configure() {
 		$(use_with usb)
 		$(use_with v4l v4l2)
 		$(use_with vulkan)
+		$(use_with wayland)
 		$(use_with xcomposite)
 		$(use_with xinerama)
 	)

@@ -35,7 +35,7 @@ BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		sci-libs/netcdf[tools]
+		sci-libs/netcdf[tools(+)]
 	)
 "
 

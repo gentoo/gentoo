@@ -20,3 +20,4 @@ move dev-python/netcdf4-python dev-python/netcdf4
 move dev-python/jupyterlab_server dev-python/jupyterlab-server
 move dev-python/jupyter_server_ydoc dev-python/jupyter-server-ydoc
 move app-text/pytextile dev-python/textile
+move dev-python/jupyter_server dev-python/jupyter-server

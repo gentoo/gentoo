@@ -30,12 +30,9 @@
 # llvm.org_set_globals
 # @CODE
 
-case "${EAPI:-0}" in
-	7|8)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} for ${ECLASS}"
-		;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # == version substrings ==
@@ -66,7 +63,7 @@ _LLVM_MASTER_MAJOR=17
 # @INTERNAL
 # @DESCRIPTION:
 # The newest release of LLVM for which manpages were generated.
-_LLVM_NEWEST_MANPAGE_RELEASE=15.0.7
+_LLVM_NEWEST_MANPAGE_RELEASE=16.0.0
 
 # @ECLASS_VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
@@ -81,20 +78,11 @@ if [[ -z ${_LLVM_SOURCE_TYPE+1} ]]; then
 			_LLVM_SOURCE_TYPE=snapshot
 
 			case ${PV} in
-				17.0.0_pre20230203)
-					EGIT_COMMIT=08c915fa76ef91efa16df0676ed69e4fb360989f
-					;;
-				17.0.0_pre20230211)
-					EGIT_COMMIT=22fb66eb94b643c858c2beecbcfac438a7fa29ed
-					;;
-				17.0.0_pre20230218)
-					EGIT_COMMIT=5e262d58c42668c78d932fab6bf75cf8c3b9d07e
-					;;
-				17.0.0_pre20230225)
-					EGIT_COMMIT=b0676fb0fb0a44a4a1c4ec1f0270fef1f1842817
-					;;
 				17.0.0_pre20230304)
 					EGIT_COMMIT=2708869801ae00f4681f6b2d9d69b25b3fce26b6
+					;;
+				17.0.0_pre20230314)
+					EGIT_COMMIT=4bf004e07e2b9d6e04e3f33e1b02628c679de664
 					;;
 				*)
 					die "Unknown snapshot: ${PV}"
@@ -334,8 +322,6 @@ llvm.org_set_globals() {
 
 # == phase functions ==
 
-EXPORT_FUNCTIONS src_unpack src_prepare
-
 # @FUNCTION: llvm.org_src_unpack
 # @DESCRIPTION:
 # Unpack or checkout requested LLVM components.
@@ -458,7 +444,7 @@ get_lit_flags() {
 # Return true (0) if this LLVM version features prebuilt manpage
 # tarball, false (1) otherwise.
 llvm_manpage_dist_available() {
-	[[ ${_LLVM_SOURCE_TYPE} == tar ]] &&
+	[[ ${_LLVM_SOURCE_TYPE} == tar && ${PV} != *_rc* ]] &&
 		ver_test "${PV}" -le "${_LLVM_NEWEST_MANPAGE_RELEASE}"
 }
 
@@ -481,3 +467,5 @@ llvm_install_manpages() {
 		doins "${WORKDIR}/llvm-${PV}-manpages/${LLVM_COMPONENTS[0]}"/*.1
 	fi
 }
+
+EXPORT_FUNCTIONS src_unpack src_prepare

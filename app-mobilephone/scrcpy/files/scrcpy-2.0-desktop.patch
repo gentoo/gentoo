@@ -1,0 +1,41 @@
+From 6706f3ce7f70a3ba5d09279be9c78d358af31e88 Mon Sep 17 00:00:00 2001
+From: Bernard Cafarelli <bernard.cafarelli@gmail.com>
+Date: Tue, 14 Mar 2023 21:48:23 +0100
+Subject: [PATCH] Fix linux desktop files validation
+
+Follow quoting rules from:
+https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#exec-variables
+Also use /bin/sh for scrpy-console
+
+Fixes #3633 <https://github.com/Genymobile/scrcpy/issues/3633>
+---
+ app/data/scrcpy-console.desktop | 2 +-
+ app/data/scrcpy.desktop         | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/app/data/scrcpy-console.desktop b/app/data/scrcpy-console.desktop
+index 47a63ec99..db3d9014c 100644
+--- a/app/data/scrcpy-console.desktop
++++ b/app/data/scrcpy-console.desktop
+@@ -5,7 +5,7 @@ Comment=Display and control your Android device
+ # For some users, the PATH or ADB environment variables are set from the shell
+ # startup file, like .bashrc or .zshrc… Run an interactive shell to get
+ # environment correctly initialized.
+-Exec=/bin/bash --norc --noprofile -i -c '"$SHELL" -i -c scrcpy || read -p "Press any key to quit..."'
++Exec=/bin/sh --norc --noprofile -i -c "\"\\$SHELL\" -i -c scrcpy || read -p 'Press any key to quit...'"
+ Icon=scrcpy
+ Terminal=true
+ Type=Application
+diff --git a/app/data/scrcpy.desktop b/app/data/scrcpy.desktop
+index 082b75e0f..1be86a2ba 100644
+--- a/app/data/scrcpy.desktop
++++ b/app/data/scrcpy.desktop
+@@ -5,7 +5,7 @@ Comment=Display and control your Android device
+ # For some users, the PATH or ADB environment variables are set from the shell
+ # startup file, like .bashrc or .zshrc… Run an interactive shell to get
+ # environment correctly initialized.
+-Exec=/bin/sh -c '"$SHELL" -i -c scrcpy'
++Exec=/bin/sh -c "\"\\$SHELL\" -i -c scrcpy"
+ Icon=scrcpy
+ Terminal=false
+ Type=Application
