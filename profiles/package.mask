@@ -309,7 +309,6 @@ dev-python/pkgutil_resolve_name
 # work with newer log4j, bug #857663. Use net-p2p/biglybt
 # instead. Removal on 2023-02-28.
 net-p2p/vuze
-net-p2p/vuze-coreplugins
 
 # Sam James <sam@gentoo.org> (2022-12-27)
 # Regression in listing subvolumes (no UUIDs), bug #888549
