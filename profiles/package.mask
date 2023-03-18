@@ -293,7 +293,6 @@ acct-group/jabber
 # ebuild and no longer needed.
 # Removal on 2023-02-27.
 dev-java/core-specs-alpha
-dev-java/spec-alpha
 
 # Michał Górny <mgorny@gentoo.org> (2023-01-26)
 # Unmaintained.  Last release in 2003.  The package fails to install
