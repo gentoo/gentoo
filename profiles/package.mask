@@ -192,6 +192,7 @@ dev-ruby/net-http-persistent:3
 >=sys-apps/baobab-44_rc
 >=sys-apps/gnome-disk-utility-44_rc
 >=sys-apps/xdg-desktop-portal-gnome-44_rc
+>=www-client/epiphany-44
 >=x11-wm/mutter-44_rc
 
 # Hans de Graaff <graaff@gentoo.org> (2023-03-11)
