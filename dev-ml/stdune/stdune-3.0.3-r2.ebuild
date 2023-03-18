@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,8 +7,7 @@ inherit dune multiprocessing
 
 DESCRIPTION="Dune's unstable standard library"
 HOMEPAGE="https://github.com/ocaml/dune"
-SRC_URI="https://github.com/ocaml/dune/archive/${PV}.tar.gz
-	-> dune-${PV}.tar.gz"
+SRC_URI="https://github.com/ocaml/dune/archive/${PV}.tar.gz -> dune-${PV}.tar.gz"
 S="${WORKDIR}/dune-${PV}"
 
 LICENSE="Apache-2.0"
@@ -23,11 +22,15 @@ DEPEND="
 	~dev-ml/dyn-${PV}:=[ocamlopt?]
 	~dev-ml/ordering-${PV}:=[ocamlopt?]
 	>=dev-ml/csexp-1.5:=[ocamlopt?]
+	!<dev-ml/dune-private-libs-3
 "
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	:
+	./configure \
+		--libdir="$(ocamlc -where)" \
+		--mandir="/usr/share/man" \
+		|| die
 }
 
 src_compile() {

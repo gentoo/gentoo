@@ -23,6 +23,7 @@ DEPEND="
 	~dev-ml/dyn-${PV}:=[ocamlopt?]
 	~dev-ml/ordering-${PV}:=[ocamlopt?]
 	>=dev-ml/csexp-1.5:=[ocamlopt?]
+	!<dev-ml/dune-private-libs-3
 "
 RDEPEND="${DEPEND}"
 
