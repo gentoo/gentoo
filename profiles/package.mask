@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-03-18)
+# Upstream disappeared, release is over 14 years old, only Gentoo still
+# carries this, breaks with modern C under Clang, no revdeps.
+# Removal on 2023-04-17. Bug #862438.
+sci-chemistry/prekin
+
+# David Seifert <soap@gentoo.org> (2023-03-18)
 # Unmaintained in Gentoo, last upstream commit 7 years ago, breaks with
 # modern C under Clang, no revdeps. Bug #741078, #874648, #883303.
 # Removal on 2023-04-17.
