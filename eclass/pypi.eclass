@@ -50,6 +50,19 @@ _PYPI_ECLASS=1
 # When set to a non-empty value, disables project name normalization
 # for the default SRC_URI and S values.
 
+# @ECLASS_VARIABLE: PYPI_PN
+# @PRE_INHERIT
+# @DESCRIPTION:
+# The PyPI project name.  This should be overriden scarcely, generally
+# when upstream project name does not conform to Gentoo naming rules,
+# e.g. when it contains dots or uppercase letters.
+#
+# Example use:
+# @CODE
+# PYPI_PN=${PN/-/.}
+# @CODE
+: ${PYPI_PN:=${PN}}
+
 # @FUNCTION: pypi_normalize_name
 # @USAGE: <name>
 # @DESCRIPTION:
@@ -99,9 +112,9 @@ pypi_translate_version() {
 # generated using build systems that did not follow PEP 625
 # (i.e. the sdist name contains uppercase letters, hyphens or dots).
 #
-# If <package> is unspecified, it defaults to ${PN}.  The package name
-# is normalized according to the specification unless `--no-normalize`
-# is passed.
+# If <package> is unspecified, it defaults to ${PYPI_PN}.  The package
+# name is normalized according to the specification unless
+# `--no-normalize` is passed.
 #
 # If <version> is unspecified, it defaults to ${PV} translated
 # via pypi_translate_version.  If it is specified, then it is used
@@ -121,7 +134,7 @@ pypi_sdist_url() {
 		die "Usage: ${FUNCNAME} [--no-normalize] <project> [<version> [<suffix>]]"
 	fi
 
-	local project=${1-"${PN}"}
+	local project=${1-"${PYPI_PN}"}
 	local version=${2-"$(pypi_translate_version "${PV}")"}
 	local suffix=${3-.tar.gz}
 	local fn_project=${project}
@@ -135,8 +148,8 @@ pypi_sdist_url() {
 # @DESCRIPTION:
 # Output the wheel filename for the specified project/version tuple.
 #
-# If <package> is unspecified, it defaults to ${PN}.  The package name
-# is normalized according to the wheel specification.
+# If <package> is unspecified, it defaults to ${PYPI_PN}.  The package
+# name is normalized according to the wheel specification.
 #
 # If <version> is unspecified, it defaults to ${PV} translated
 # via pypi_translate_version.  If it is specified, then it is used
@@ -154,7 +167,7 @@ pypi_wheel_name() {
 		die "Usage: ${FUNCNAME} <project> [<version> [<python-tag> [<abi-platform-tag>]]]"
 	fi
 
-	local project=$(pypi_normalize_name "${1-"${PN}"}")
+	local project=$(pypi_normalize_name "${1-"${PYPI_PN}"}")
 	local version=${2-"$(pypi_translate_version "${PV}")"}
 	local pytag=${3-py3}
 	local abitag=${4-none-any}
@@ -172,7 +185,7 @@ pypi_wheel_name() {
 # the wheel contents will be unpacked straight into ${WORKDIR}.
 # You need to add a BDEPEND on app-arch/unzip.
 #
-# If <package> is unspecified, it defaults to ${PN}.
+# If <package> is unspecified, it defaults to ${PYPI_PN}.
 #
 # If <version> is unspecified, it defaults to ${PV} translated
 # via pypi_translate_version.  If it is specified, then it is used
@@ -197,7 +210,7 @@ pypi_wheel_url() {
 	fi
 
 	local filename=$(pypi_wheel_name "${@}")
-	local project=${1-"${PN}"}
+	local project=${1-"${PYPI_PN}"}
 	local version=${2-"$(pypi_translate_version "${PV}")"}
 	local pytag=${3-py3}
 	printf "https://files.pythonhosted.org/packages/%s" \
@@ -210,10 +223,10 @@ pypi_wheel_url() {
 
 if [[ ${PYPI_NO_NORMALIZE} ]]; then
 	SRC_URI="$(pypi_sdist_url --no-normalize)"
-	S="${WORKDIR}/${PN}-$(pypi_translate_version "${PV}")"
+	S="${WORKDIR}/${PYPI_PN}-$(pypi_translate_version "${PV}")"
 else
 	SRC_URI="$(pypi_sdist_url)"
-	S="${WORKDIR}/$(pypi_normalize_name "${PN}")-$(pypi_translate_version "${PV}")"
+	S="${WORKDIR}/$(pypi_normalize_name "${PYPI_PN}")-$(pypi_translate_version "${PV}")"
 fi
 
 fi

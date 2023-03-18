@@ -5,7 +5,8 @@
 EAPI=8
 source tests-common.sh || exit
 
-PN=Foo.Bar
+PN=foo-bar
+PYPI_PN=Foo.Bar
 PV=1.2.3_beta2
 WORKDIR='<WORKDIR>'
 
