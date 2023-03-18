@@ -287,7 +287,6 @@ acct-group/jabber
 # Removal on 2023-03-05.  Bug #718972.
 app-misc/gcalcli
 app-misc/goobook
-dev-python/gcs-oauth2-boto-plugin
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-02)
 # dev-python/citeproc-py requires dev-python/nose and is not maintained
