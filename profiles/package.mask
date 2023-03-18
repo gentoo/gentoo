@@ -286,7 +286,6 @@ acct-group/jabber
 # It was needed only for dev-python/aiohttp[doc].
 # Removal on 2023-03-03.  Bug #888233.
 dev-python/blockdiag
-dev-python/sphinxcontrib-blockdiag
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-01)
 # Requires legacy setuptools backend.  Hacky build system.  The only
