@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-fakegem.eclass
@@ -552,7 +552,7 @@ each_fakegem_test() {
 
 	case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		rake)
-			MT_NO_PLUGINS=true ${RUBY} --disable=did_you_mean -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
+			MT_NO_PLUGINS=true ${RUBY} --disable=did_you_mean -S rake ${RUBY_FAKEGEM_TASK_TEST} || die -n "tests failed"
 			;;
 		rspec)
 			RSPEC_VERSION=2 ruby-ng_rspec
