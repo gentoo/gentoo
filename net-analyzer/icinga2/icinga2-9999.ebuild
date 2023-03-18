@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ HOMEPAGE="https://icinga.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="console jumbo-build lto mail mariadb minimal +mysql nano-syntax +plugins postgres systemd +vim-syntax"
+IUSE="console jumbo-build lto mail mariadb minimal +mysql +plugins postgres systemd"
 
 # Add accounts to DEPEND because of fowners in src_install
 DEPEND="
@@ -120,16 +120,12 @@ src_install() {
 	fperms ug+rwX,o-rwx /var/spool/icinga2
 	fperms ug+rwX,o-rwx /var/log/icinga2
 
-	if use vim-syntax; then
-		insinto /usr/share/vim/vimfiles
-		doins -r "${WORKDIR}"/${P}/tools/syntax/vim/ftdetect
-		doins -r "${WORKDIR}"/${P}/tools/syntax/vim/syntax
-	fi
+	insinto /usr/share/vim/vimfiles
+	doins -r "${WORKDIR}"/${P}/tools/syntax/vim/ftdetect
+	doins -r "${WORKDIR}"/${P}/tools/syntax/vim/syntax
 
-	if use nano-syntax; then
-		insinto /usr/share/nano
-		doins "${WORKDIR}"/${P}/tools/syntax/nano/icinga2.nanorc
-	fi
+	insinto /usr/share/nano
+	doins "${WORKDIR}"/${P}/tools/syntax/nano/icinga2.nanorc
 }
 
 pkg_postinst() {
