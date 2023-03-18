@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-03-18)
+# Upstream disappeared, last release over 15 years ago, only Gentoo
+# still carries this, breaks with modern C under Clang, no revdeps.
+# Removal on 2023-04-17. Bug #875020.
+net-analyzer/traceroute-nanog
+
+# David Seifert <soap@gentoo.org> (2023-03-18)
 # Last release over 7.5 years ago, only Gentoo still carries this,
 # breaks with modern C under Clang, no revdeps.
 # Removal on 2023-04-17. Bug #871711.
