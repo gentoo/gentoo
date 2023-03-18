@@ -280,12 +280,6 @@ dev-python/pytest-flake8
 acct-user/jabber
 acct-group/jabber
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-01)
-# Requires legacy setuptools backend.  Hacky build system.  The only
-# revdep is dev-python/rdflib where it is entirely optional.
-# Removal on 2023-03-03.  Bug #892854.
-dev-python/berkeleydb
-
 # Michał Górny <mgorny@gentoo.org> (2023-01-31)
 # No tests, no activity since Aug 2020, no reverse dependencies.
 # Removal on 2023-03-02.  Bug #892744.
