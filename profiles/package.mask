@@ -275,12 +275,6 @@ dev-python/cov-core
 dev-python/pytest-flake8
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-15)
-# A number of test failures, and the test phase does not fail correctly.
-# Last release in 2019.  No revdeps.
-# Removal on 2023-03-17.  Bug #894606.
-dev-python/urlgrabber
-
-# Michał Górny <mgorny@gentoo.org> (2023-02-15)
 # Unmaintained.  Broken with current version of dev-python/pyglet.
 # No upstream activity since Sep 2021.  No revdeps.
 # Removal on 2023-03-17.  Bug #887973.
