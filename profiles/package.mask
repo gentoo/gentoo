@@ -281,11 +281,6 @@ acct-user/jabber
 acct-group/jabber
 
 # Michał Górny <mgorny@gentoo.org> (2023-01-31)
-# No tests, no activity since Aug 2020, no reverse dependencies.
-# Removal on 2023-03-02.  Bug #892744.
-dev-python/alagitpull
-
-# Michał Górny <mgorny@gentoo.org> (2023-01-31)
 # The test suite is broken (async tests don't run).  No revdeps.
 # Removal on 2023-03-02.  Bug #892742.
 dev-python/aiohttp-jinja2
