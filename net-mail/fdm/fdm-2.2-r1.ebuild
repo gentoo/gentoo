@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit autotools
+
 DESCRIPTION="Fetch, filter and deliver mail"
 HOMEPAGE="https://github.com/nicm/fdm"
 SRC_URI="https://github.com/nicm/fdm/releases/download/${PV}/${P}.tar.gz"
@@ -25,11 +27,17 @@ RDEPEND="
 
 DOCS=( CHANGES README TODO MANUAL )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2-configure-strlcpy.patch
+)
+
 src_prepare() {
 	default
 
 	# Change user '_fdm' to 'fdm'
 	sed -e 's/_fdm/fdm/g' -i fdm.h || die
+
+	eautoreconf
 }
 
 src_configure() {
