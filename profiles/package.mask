@@ -290,7 +290,6 @@ app-misc/goobook
 dev-python/gcs-oauth2-boto-plugin
 dev-python/google-apitools
 dev-python/google-reauth-python
-dev-python/oauth2client
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-02)
 # dev-python/citeproc-py requires dev-python/nose and is not maintained
