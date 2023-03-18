@@ -20,7 +20,7 @@ SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RUBY_S="rails-${PV}/${PN}"
