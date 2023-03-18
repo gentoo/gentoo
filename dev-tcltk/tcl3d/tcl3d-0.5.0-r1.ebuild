@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
@@ -51,6 +51,7 @@ src_configure() {
 	sed -i \
 		-e 's:^\(TCLMAJOR\) *=\(.*\)$:\1 = '${_TCL_V[0]}':' \
 		-e 's:^\(TCLMINOR\) *=\(.*\)$:\1 = '${_TCL_V[1]}':' \
+		-e "s:lib64:$(get_libdir):" \
 		config_Linux* || die
 
 	# Fix libSDL link
