@@ -1,10 +1,3 @@
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -1,4 +1,3 @@
- SUBDIRS = getopt src tools doc
- 
--docdir = $(prefix)/doc/portfwd
- doc_DATA = COPYING README CREDITS TODO
 --- a/configure.in
 +++ b/configure.in
 @@ -8,6 +8,7 @@ dnl Checks for programs.
@@ -14,7 +7,7 @@
 +AM_PROG_AR
  AM_PROG_LEX
  AC_PROG_RANLIB
- 
+
 @@ -45,6 +46,7 @@ dnl )
  dnl Checks for MSG_PROXY symbol
  AC_TRY_RUN(
@@ -23,6 +16,13 @@
  #include <sys/socket.h>
  int main()
  {
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,4 +1,3 @@
+ SUBDIRS = getopt src tools doc
+ 
+-docdir = $(prefix)/doc/portfwd
+ doc_DATA = COPYING README CREDITS TODO
 --- a/doc/Makefile.am
 +++ b/doc/Makefile.am
 @@ -3,5 +3,4 @@
@@ -58,19 +58,20 @@
     to intersperse the options with the other arguments.
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
-@@ -1,5 +1,5 @@
+@@ -1,6 +1,4 @@
 -CFLAGS   = -Wall -ggdb -O3 -DPORTFWD_CONF=\"$(sysconfdir)/portfwd.cfg\"
 -CXXFLAGS = $(CFLAGS)
-+CFLAGS   = @CFLAGS@ -Wall -DPORTFWD_CONF=\"$(sysconfdir)/portfwd.cfg\"
-+CPPFLAGS = @CXXFLAGS@ -Wall -DPORTFWD_CONF=\"$(sysconfdir)/portfwd.cfg\"
- INCLUDES = -I$(top_srcdir)/src
+-INCLUDES = -I$(top_srcdir)/src
++AM_CPPFLAGS = -DPORTFWD_CONF=\"$(sysconfdir)/portfwd.cfg\" -I$(top_srcdir)/src
  
  sbin_PROGRAMS = portfwd
+ portfwd_SOURCES = addr.cc from_addr.cc host_map.cc portfwd.cc \
 --- a/tools/Makefile.am
 +++ b/tools/Makefile.am
-@@ -1,4 +1,4 @@
+@@ -1,5 +1,4 @@
 -CXXFLAGS = -Wall -g -O3
-+CPPFLAGS = @CXXFLAGS@ -Wall -DPORTFWD_CONF=\"$(sysconfdir)/portfwd.cfg\"
- INCLUDES = -I$(top_srcdir)/src
+-INCLUDES = -I$(top_srcdir)/src
++AM_CPPFLAGS = -DPORTFWD_CONF=\"$(sysconfdir)/portfwd.cfg\" -I$(top_srcdir)/src
  
  noinst_PROGRAMS = t_vector udp_rcv udp_snd
+ 
