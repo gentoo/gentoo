@@ -4,6 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..10} )
+FORTRAN_NEEDED="test"
 
 inherit python-r1 cmake fortran-2
 
