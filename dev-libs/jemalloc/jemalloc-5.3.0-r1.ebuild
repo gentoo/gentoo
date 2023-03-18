@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -18,6 +18,7 @@ HTML_DOCS=( doc/jemalloc.html )
 PATCHES=(
 	"${FILESDIR}/${PN}-5.3.0-gentoo-fixups.patch"
 	"${FILESDIR}/${PN}-5.3.0-backport-pr-2312.patch"
+	"${FILESDIR}/${PN}-5.3.0-backport-pr-2338.patch"
 )
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/jemalloc/jemalloc.h )
