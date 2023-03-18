@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake systemd
+inherit cmake
 
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
