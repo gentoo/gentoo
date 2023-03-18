@@ -304,12 +304,6 @@ dev-python/pkgutil_resolve_name
 # Breaks reverse dependencies: bug #889694, bug #888579.
 =sys-fs/btrfs-progs-6.1.1
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2022-12-29)
-# Upstream is dead, last activity in Nov 2017. Does not
-# work with newer log4j, bug #857663. Use net-p2p/biglybt
-# instead. Removal on 2023-02-28.
-net-p2p/vuze
-
 # Sam James <sam@gentoo.org> (2022-12-27)
 # Regression in listing subvolumes (no UUIDs), bug #888549
 # https://github.com/kdave/btrfs-progs/issues/562
