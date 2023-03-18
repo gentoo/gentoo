@@ -286,7 +286,6 @@ acct-group/jabber
 # dependencies left.
 # Removal on 2023-03-04.  Bug #888239.
 dev-python/citeproc-py
-dev-python/duecredit
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-01)
 # dev-python/blockdiag still requires dev-python/nose.  There was a PR
