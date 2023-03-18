@@ -274,12 +274,6 @@ dev-python/cov-core
 # Removal on 2023-03-19.  Bug #865931.
 dev-python/pytest-flake8
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-15)
-# Unmaintained.  Broken with current version of dev-python/pyglet.
-# No upstream activity since Sep 2021.  No revdeps.
-# Removal on 2023-03-17.  Bug #887973.
-dev-python/glooey
-
 # Alfredo Tupone <tupone@gentoo.org> (2023-02-14)
 # Masked for removal in 30 days.
 # Not maintained (2020), no rev dep
