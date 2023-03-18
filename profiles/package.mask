@@ -288,12 +288,6 @@ acct-group/jabber
 # Commands trigger an assertion and crashes, bug #892487
 =sys-fs/lvm2-2.03.18
 
-# Michał Górny <mgorny@gentoo.org> (2023-01-25)
-# Unmaintained.  Multiple build failure bugs reported.  This version
-# predates 2008.
-# Removal on 2023-02-24.  Bug #837611.
-sys-cluster/wulfware
-
 # Sam James <sam@gentoo.org> (2023-01-23)
 # Please upgrade to >=app-eselect/eselect-wxwidgets-20230114-r1 as -r0 may
 # lead to build failures.
