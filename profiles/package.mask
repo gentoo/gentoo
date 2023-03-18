@@ -274,10 +274,6 @@ dev-python/cov-core
 # Removal on 2023-03-19.  Bug #865931.
 dev-python/pytest-flake8
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-02-10)
-# Unused Java libraries. Removal on 2023-03-12.
-dev-java/jcip-annotations
-
 # Florian Schmaus <flow@gentoo.org> (2023-02-10)
 # Previous dependencies of ejabberd, now no longer needed.
 # Removal on 2023-03-10.
