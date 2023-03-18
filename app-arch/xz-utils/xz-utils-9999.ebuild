@@ -111,7 +111,10 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	find "${ED}" -type f -name '*.la' -delete || die
-	rm "${ED}"/usr/share/doc/${PF}/COPYING* || die
+
+	if use doc ; then
+		rm "${ED}"/usr/share/doc/${PF}/COPYING* || die
+	fi
 }
 
 pkg_preinst() {
