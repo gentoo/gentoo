@@ -20,12 +20,15 @@ KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
 IUSE="augeas diff doc emacs ldap rrdtool selinux shadow sqlite vim-syntax"
 RESTRICT="test"
 
+# <dev-ruby/concurrent-ruby-1.2 for bug #900206
+# - https://tickets.puppetlabs.com/browse/PUP-11722 (workaround, pinning)
+# - https://tickets.puppetlabs.com/browse/PUP-11723 (bug for fixing the pinning)
 ruby_add_rdepend "
 	dev-ruby/hiera
 	dev-ruby/json:=
 	dev-ruby/semantic_puppet
 	>=dev-ruby/facter-3.0.0
-	dev-ruby/concurrent-ruby
+	<dev-ruby/concurrent-ruby-1.2
 	augeas? ( dev-ruby/ruby-augeas )
 	diff? ( dev-ruby/diff-lcs )
 	doc? ( dev-ruby/rdoc )
