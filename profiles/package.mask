@@ -274,12 +274,6 @@ dev-python/cov-core
 # Removal on 2023-03-19.  Bug #865931.
 dev-python/pytest-flake8
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-14)
-# Unmaintained and archived.  Invalid version number causes total mayhem
-# when installed alongside new dev-python/packaging.
-# Removal on 2023-03-16.  Bug #894222.
-net-p2p/bittornado
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-02-10)
 # Unused Java libraries. Removal on 2023-03-12.
 dev-java/jcip-annotations
