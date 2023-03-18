@@ -281,13 +281,6 @@ acct-user/jabber
 acct-group/jabber
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-01)
-# dev-python/blockdiag still requires dev-python/nose.  There was a PR
-# made to switch to pytest in Feb 2020 but it's not progressing at all.
-# It was needed only for dev-python/aiohttp[doc].
-# Removal on 2023-03-03.  Bug #888233.
-dev-python/blockdiag
-
-# Michał Górny <mgorny@gentoo.org> (2023-02-01)
 # Requires legacy setuptools backend.  Hacky build system.  The only
 # revdep is dev-python/rdflib where it is entirely optional.
 # Removal on 2023-03-03.  Bug #892854.
