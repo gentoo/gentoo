@@ -274,11 +274,6 @@ dev-python/cov-core
 # Removal on 2023-03-19.  Bug #865931.
 dev-python/pytest-flake8
 
-# Alfredo Tupone <tupone@gentoo.org> (2023-02-14)
-# Masked for removal in 30 days.
-# Not maintained (2020), no rev dep
-dev-ml/ppxfind
-
 # Michał Górny <mgorny@gentoo.org> (2023-02-14)
 # Unmaintained and archived.  Invalid version number causes total mayhem
 # when installed alongside new dev-python/packaging.
