@@ -131,6 +131,12 @@ python_install_all() {
 	einstalldocs
 }
 
+pkg_preinst() {
+	xdg_pkg_preinst
+
+	has_version "${CATEGORY}/${PN}[qt6]" && QUTEBROWSER_HAD_QT6=
+}
+
 pkg_postinst() {
 	xdg_pkg_postinst
 
@@ -138,5 +144,14 @@ pkg_postinst() {
 		elog "Note that optional scripts in ${EROOT}/usr/share/${PN}/{user,}scripts"
 		elog "have additional dependencies not covered by this ebuild, for example"
 		elog "view_in_mpv needs media-video/mpv[lua] and net-misc/yt-dlp."
+	fi
+
+	if [[ -v QUTEBROWSER_HAD_QT6 ]]; then
+		ewarn "This is a downgrade from Qt6-based ${PN} to Qt5-based, and this"
+		ewarn "older version of ${PN} will /not/ warn on startup that this is"
+		ewarn "going to destroy some browsing data (e.g. cookies) when older chromium"
+		ewarn "version tries to use the newer ~/.local/share/${PN}/webengine."
+		ewarn
+		ewarn "It is recommended to backup in case or go back to Qt6."
 	fi
 }
