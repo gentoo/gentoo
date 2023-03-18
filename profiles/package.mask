@@ -288,13 +288,6 @@ acct-group/jabber
 # Commands trigger an assertion and crashes, bug #892487
 =sys-fs/lvm2-2.03.18
 
-# Michał Górny <mgorny@gentoo.org> (2023-01-26)
-# Unmaintained.  Last release in 2003.  The package fails to install
-# since Aug 2021 and while a fix would be trivial, there does not seem
-# to have been any interest in it during that period.
-# Removal on 2023-02-25.  Bug #806384.
-www-misc/wsmake
-
 # Michał Górny <mgorny@gentoo.org> (2023-01-25)
 # Unmaintained.  Multiple build failure bugs reported.  This version
 # predates 2008.
