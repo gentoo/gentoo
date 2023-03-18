@@ -277,7 +277,6 @@ dev-python/pytest-flake8
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-02-10)
 # Unused Java libraries. Removal on 2023-03-12.
 dev-java/jcip-annotations
-dev-java/jformatstring
 
 # Florian Schmaus <flow@gentoo.org> (2023-02-10)
 # Previous dependencies of ejabberd, now no longer needed.
