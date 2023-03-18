@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmail toolchain-funcs
+inherit qmail
 
 DESCRIPTION="Collection of tools for managing UNIX services"
 HOMEPAGE="https://cr.yp.to/ucspi-tcp.html"
@@ -21,7 +21,6 @@ IUSE="ipv6 qmail-spp selinux"
 RESTRICT="test"
 
 RDEPEND="
-	!app-doc/ucspi-tcp-man
 	selinux? ( sec-policy/selinux-ucspitcp )"
 
 src_prepare() {
@@ -45,15 +44,6 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PV}-implicit-int.patch
 
 	eapply_user
-}
-
-src_configure() {
-	qmail_set_cc
-	# The AR/RANLIB logic probably should get moved to the qmail eclass.
-	# See also the patch above for generating the "makelib" script.
-	tc-export AR RANLIB
-
-	echo "${EPREFIX}/usr/" > conf-home || die
 }
 
 src_install() {
