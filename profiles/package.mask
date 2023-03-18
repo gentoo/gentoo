@@ -288,14 +288,6 @@ acct-group/jabber
 # Commands trigger an assertion and crashes, bug #892487
 =sys-fs/lvm2-2.03.18
 
-# Mike Gilbert <floppym@gentoo.org> (2023-01-28)
-# No upstream releases since 2008.
-# No Gentoo maintainer since 2009.
-# Installs files in the wrong places (bug #455542)
-# and with the wrong mode (bug #892325).
-# Removal on 2023-02-27.
-app-admin/bastille
-
 # Florian Schmaus <flow@gentoo.org> (2023-01-27)
 # Previous dependencies of dev-lang/clojure, now part of the clojure
 # ebuild and no longer needed.
