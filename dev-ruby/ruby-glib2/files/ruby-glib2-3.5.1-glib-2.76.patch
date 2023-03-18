@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/900921
+https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=270087
+https://cgit.freebsd.org/ports/commit/?id=9a23b33ce95593af78f9b973c1fba4fa8835cc25
+
+--- a/ext/glib2/rbglib_bookmarkfile.c
++++ b/ext/glib2/rbglib_bookmarkfile.c
+@@ -35,6 +35,7 @@ bookmarkfile_copy(const GBookmarkFile* file)
+     return (GBookmarkFile*)file;
+ }
+ 
++#if !GLIB_CHECK_VERSION(2, 76, 0)
+ static GType
+ g_bookmark_file_get_type(void)
+ {
+@@ -48,6 +49,7 @@ g_bookmark_file_get_type(void)
+ /************************************************/
+ 
+ #define G_TYPE_BOOKMARK_FILE (g_bookmark_file_get_type())
++#endif
+ 
+ #define RG_TARGET_NAMESPACE cBookmarkFile
+ #define _SELF(self) ((GBookmarkFile*)(RVAL2BOXED(self, G_TYPE_BOOKMARK_FILE)))
+
