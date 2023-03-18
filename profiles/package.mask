@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-03-18)
+# Ancient out-of-date package. No proper upstream release since 2011.
+# No reverse dependencies. Masked for removal on 2023-04-18.
+dev-ruby/six
+
 # Sam James <sam@gentoo.org> (2023-03-16)
 # Breaks building C++ consumers. See bug #901211 and bug #901035.
 # Please upgrade to glib-2.76.0-r1.
