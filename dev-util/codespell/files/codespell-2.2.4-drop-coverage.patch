@@ -1,0 +1,17 @@
+From c032b3e7c251343826c1f199b7a1e4c097f79314 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 18 Mar 2023 16:45:57 +0100
+Subject: [PATCH] drop coverage
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -151,4 +151,4 @@ good-names=["F","r","i","n"]
+ # include-naming-hint=yes
+ 
+ [tool.pytest.ini_options]
+-addopts = "--cov=codespell_lib -rs --cov-report= --tb=short --junit-xml=junit-results.xml"
++addopts = "-rs --tb=short --junit-xml=junit-results.xml"
+-- 
+2.40.0
+
