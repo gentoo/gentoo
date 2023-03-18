@@ -280,13 +280,6 @@ dev-python/pytest-flake8
 acct-user/jabber
 acct-group/jabber
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-03)
-# The package has been archived upstream.  It is broken with all Python
-# versions supported by Gentoo, and it is broken with django-2.
-# The other listed packages are its reverse dependencies.
-# Removal on 2023-03-05.  Bug #718972.
-app-misc/gcalcli
-
 # Michał Górny <mgorny@gentoo.org> (2023-02-02)
 # dev-python/citeproc-py requires dev-python/nose and is not maintained
 # upstream.  Its only revdep, dev-python/duecredit has no reverse
