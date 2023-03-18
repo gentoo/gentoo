@@ -444,7 +444,7 @@ get_lit_flags() {
 # Return true (0) if this LLVM version features prebuilt manpage
 # tarball, false (1) otherwise.
 llvm_manpage_dist_available() {
-	[[ ${_LLVM_SOURCE_TYPE} == tar ]] &&
+	[[ ${_LLVM_SOURCE_TYPE} == tar && ${PV} != *_rc* ]] &&
 		ver_test "${PV}" -le "${_LLVM_NEWEST_MANPAGE_RELEASE}"
 }
 
