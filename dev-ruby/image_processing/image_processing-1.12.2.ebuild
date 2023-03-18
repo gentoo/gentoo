@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE=""
 
-DEPEND+=" test? ( media-gfx/imagemagick[jpeg,png,tiff] )"
+DEPEND+=" test? ( media-gfx/imagemagick[jpeg,png,tiff,xml] )"
 
 ruby_add_rdepend "
 	>=dev-ruby/mini_magick-4.9.5:0
