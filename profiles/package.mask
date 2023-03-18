@@ -306,7 +306,6 @@ acct-group/jabber
 media-libs/libextractor
 media-libs/qtav
 media-plugins/vdr-vaapidevice
-media-sound/potamus
 
 # David Seifert <soap@gentoo.org> (2023-01-14)
 # Py3.8 only backports
