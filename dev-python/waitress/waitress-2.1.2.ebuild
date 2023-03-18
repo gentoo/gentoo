@@ -21,6 +21,11 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ppc ppc64 ~riscv ~s390 
 
 distutils_enable_tests pytest
 
+EPYTEST_DESELECT=(
+	# fails on some systems, https://bugs.gentoo.org/782031
+	tests/test_wasyncore.py::DispatcherWithSendTests::test_send
+)
+
 src_prepare() {
 	sed -i -e 's:--cov::' setup.cfg || die
 	distutils-r1_src_prepare
