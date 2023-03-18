@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2023-03-18)
+# Unmaintained in Gentoo, last upstream commit 7 years ago, breaks with
+# modern C under Clang, no revdeps. Bug #741078, #874648, #883303.
+# Removal on 2023-04-17.
+net-wireless/spectools
+
 # Hans de Graaff <graaff@gentoo.org> (2023-03-18)
 # Ancient out-of-date package. No proper upstream release since 2011.
 # No reverse dependencies. Masked for removal on 2023-04-18.
