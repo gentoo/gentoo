@@ -64,6 +64,10 @@ RDEPEND="${COMMON_DEPEND}
 	upower? ( sys-power/upower )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-ldflags.patch"
+)
+
 src_prepare() {
 	ecm_src_prepare
 	export PYTHON_INCLUDE_DIRS="$(python_get_includedir)" \
