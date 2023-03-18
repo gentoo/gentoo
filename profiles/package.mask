@@ -264,11 +264,6 @@ app-eselect/eselect-opencascade
 dev-python/flask-script
 
 # Sam James <sam@gentoo.org> (2023-02-18)
-# Last release in 2018, needs porting to Python 3.11, and no reverse
-# dependencies. Removal on 2023-03-18. bug #895174.
-dev-python/setuptools_trial
-
-# Sam James <sam@gentoo.org> (2023-02-18)
 # Backport to Python 3.5(!) hence irrelevant for newer versions of Python
 # where os.scandir() and os.walk() improvements were integrated in the stdlib.
 # Incompatible with Python 3.11. No reverse dependencies.
