@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-03-18)
+# Last release over 7.5 years ago, only Gentoo still carries this,
+# breaks with modern C under Clang, no revdeps.
+# Removal on 2023-04-17. Bug #871711.
+media-plugins/vdr-remotetimers
+
+# David Seifert <soap@gentoo.org> (2023-03-18)
 # Upstream disappeared, release is over 14 years old, only Gentoo still
 # carries this, breaks with modern C under Clang, no revdeps.
 # Removal on 2023-04-17. Bug #862438.
