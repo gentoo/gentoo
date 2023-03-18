@@ -49,7 +49,6 @@ all_ruby_prepare() {
 
 	# Avoid test that only works with bundled pg
 	sed -i -e '/tells about the libpq library path/askip "gentoo"' spec/pg_spec.rb || die
-
 }
 
 each_ruby_test() {
