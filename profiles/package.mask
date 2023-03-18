@@ -293,18 +293,6 @@ acct-group/jabber
 # lead to build failures.
 =app-eselect/eselect-wxwidgets-20230114
 
-# Michał Górny <mgorny@gentoo.org> (2023-01-21)
-# Packages that are incompatible with ffmpeg-5.
-#
-# media-libs/libextractor: no Gentoo maintainer, ver from 2019, bug #834382
-# media-libs/qtav: no Gentoo maintainer, no porting progress, bug #834386
-# media-plugins/vdr-vaapidevice: no activity since 2019, bug #834390
-# media-sound/potamus: last rel. 2018, one commit in 2020, bug #834396
-# media-video/ffmpeg2theora: no activity since 2016, bug #834403
-#
-# Removal on 2023-02-20.
-media-libs/libextractor
-
 # David Seifert <soap@gentoo.org> (2023-01-14)
 # Py3.8 only backports
 dev-python/backports-tempfile
