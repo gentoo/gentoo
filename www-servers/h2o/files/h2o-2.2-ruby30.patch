@@ -1,0 +1,63 @@
+--- a/deps/mruby/Rakefile
++++ b/deps/mruby/Rakefile
+@@ -37,15 +37,15 @@
+ task :default => :all
+ 
+ bin_path = ENV['INSTALL_DIR'] || "#{MRUBY_ROOT}/bin"
+-FileUtils.mkdir_p bin_path, { :verbose => $verbose }
++FileUtils.mkdir_p bin_path, :verbose => $verbose
+ 
+ depfiles = MRuby.targets['host'].bins.map do |bin|
+   install_path = MRuby.targets['host'].exefile("#{bin_path}/#{bin}")
+   source_path = MRuby.targets['host'].exefile("#{MRuby.targets['host'].build_dir}/bin/#{bin}")
+ 
+   file install_path => source_path do |t|
+-    FileUtils.rm_f t.name, { :verbose => $verbose }
+-    FileUtils.cp t.prerequisites.first, t.name, { :verbose => $verbose }
++    FileUtils.rm_f t.name, :verbose => $verbose
++    FileUtils.cp t.prerequisites.first, t.name, :verbose => $verbose
+   end
+ 
+   install_path
+@@ -78,8 +78,8 @@
+         install_path = MRuby.targets['host'].exefile("#{bin_path}/#{bin}")
+ 
+         file install_path => exec do |t|
+-          FileUtils.rm_f t.name, { :verbose => $verbose }
+-          FileUtils.cp t.prerequisites.first, t.name, { :verbose => $verbose }
++          FileUtils.rm_f t.name, :verbose => $verbose
++          FileUtils.cp t.prerequisites.first, t.name, :verbose => $verbose
+         end
+         depfiles += [ install_path ]
+       elsif target == MRuby.targets['host-debug']
+@@ -87,8 +87,8 @@
+           install_path = MRuby.targets['host-debug'].exefile("#{bin_path}/#{bin}")
+ 
+           file install_path => exec do |t|
+-            FileUtils.rm_f t.name, { :verbose => $verbose }
+-            FileUtils.cp t.prerequisites.first, t.name, { :verbose => $verbose }
++            FileUtils.rm_f t.name, :verbose => $verbose
++            FileUtils.cp t.prerequisites.first, t.name, :verbose => $verbose
+           end
+           depfiles += [ install_path ]
+         end
+@@ -127,16 +127,16 @@
+ desc "clean all built and in-repo installed artifacts"
+ task :clean do
+   MRuby.each_target do |t|
+-    FileUtils.rm_rf t.build_dir, { :verbose => $verbose }
++    FileUtils.rm_rf t.build_dir, :verbose => $verbose
+   end
+-  FileUtils.rm_f depfiles, { :verbose => $verbose }
++  FileUtils.rm_f depfiles, :verbose => $verbose
+   puts "Cleaned up target build folder"
+ end
+ 
+ desc "clean everything!"
+ task :deep_clean => ["clean"] do
+   MRuby.each_target do |t|
+-    FileUtils.rm_rf t.gem_clone_dir, { :verbose => $verbose }
++    FileUtils.rm_rf t.gem_clone_dir, :verbose => $verbose
+   end
+   puts "Cleaned up mrbgems build folder"
+ end
