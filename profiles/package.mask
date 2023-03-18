@@ -274,11 +274,6 @@ dev-python/cov-core
 # Removal on 2023-03-19.  Bug #865931.
 dev-python/pytest-flake8
 
-# Florian Schmaus <flow@gentoo.org> (2023-02-10)
-# Previous dependencies of ejabberd, now no longer needed.
-# Removal on 2023-03-10.
-dev-erlang/iconv
-
 # Florian Schmaus <flow@gentoo.org> (2023-02-09)
 # Leftovers from net-im/jabber-base. Unused and obsolete.
 # Removal on 2023-03-09.
@@ -290,7 +285,6 @@ acct-group/jabber
 # jspeex had last upstream activities in 2005.
 dev-java/jspeex
 dev-java/osgi-annotation-versioning
-dev-java/commons-text
 
 # Michał Górny <mgorny@gentoo.org> (2023-02-03)
 # The package has been archived upstream.  It is broken with all Python
