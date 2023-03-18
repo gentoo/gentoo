@@ -280,11 +280,6 @@ dev-python/pytest-flake8
 acct-user/jabber
 acct-group/jabber
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-02-07)
-# Unused Java libraries. Removal on 2023-03-08.
-# jspeex had last upstream activities in 2005.
-dev-java/jspeex
-
 # Michał Górny <mgorny@gentoo.org> (2023-02-03)
 # The package has been archived upstream.  It is broken with all Python
 # versions supported by Gentoo, and it is broken with django-2.
