@@ -13,7 +13,7 @@ case "${PV}" in
 		;;
 	*)
 		SRC_URI="https://github.com/hroptatyr/dateutils/releases/download/v${PV}/${P}.tar.xz"
-		KEYWORDS="amd64 x86"
+		KEYWORDS="~amd64 ~x86"
 esac
 
 LICENSE="BSD"
