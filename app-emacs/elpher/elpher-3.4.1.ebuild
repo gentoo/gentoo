@@ -3,7 +3,7 @@
 
 EAPI=8
 
-COMMIT=bf0dd36
+[[ ${PV} == 3.4.1 ]] && COMMIT=bf0dd36
 NEED_EMACS=27.1
 
 inherit elisp
@@ -11,7 +11,7 @@ inherit elisp
 DESCRIPTION="Practical and friendly Gopher and Gemini client for GNU Emacs"
 HOMEPAGE="https://thelambdalab.xyz/elpher/"
 SRC_URI="https://thelambdalab.xyz/gitweb/index.cgi?p=${PN}.git;a=snapshot;h=${COMMIT};sf=tgz
-			-> ${P}.tar.gz"
+	-> ${P}.tar.gz"
 S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
