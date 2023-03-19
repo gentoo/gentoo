@@ -16,6 +16,10 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
+GHC_BOOTSTRAP_PACKAGES=(
+	cabal-doctest
+)
+
 RDEPEND=">=dev-haskell/async-2.0:=
 	>=dev-haskell/base16-bytestring-0.1.1:=
 	>=dev-haskell/base64-bytestring-1.0:=
