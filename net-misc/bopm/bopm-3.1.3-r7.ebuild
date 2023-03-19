@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~x86"
 
 RDEPEND="acct-user/opm"
+BDEPEND="acct-user/opm"
+BDEPEND="sys-devel/autoconf-archive"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-remove-njabl.patch
@@ -29,6 +31,8 @@ src_prepare() {
 
 	mv configure.{in,ac} || die
 	mv src/libopm/configure.{in,ac} || die
+	mkdir src/libopm/m4 || die
+	cp "${BROOT}"/usr/share/aclocal/ax_func_snprintf.m4 src/libopm/m4/ax_func_snprintf.m4 || die
 
 	default
 	cp bopm.conf{.sample,} || die
@@ -37,7 +41,8 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --localstatedir="${EPREFIX}"/var/log/${PN}
+	# We need --enable-static to build libopm.a. We don't install it so it's fine.
+	econf --localstatedir="${EPREFIX}"/var/log/${PN} --enable-static
 }
 
 src_install() {
