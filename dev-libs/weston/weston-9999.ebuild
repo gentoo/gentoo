@@ -66,8 +66,8 @@ RDEPEND="
 	)
 	systemd? ( sys-apps/systemd )
 	vnc? (
-		=dev-libs/aml-0.2*
-		=gui-libs/neatvnc-0.5*
+		=dev-libs/aml-0.3*
+		=gui-libs/neatvnc-0.6*
 		sys-libs/pam
 	)
 	webp? ( media-libs/libwebp:0= )
