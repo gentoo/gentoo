@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2023-03-19)
+# Unmaintained, last release 18 years ago, assortment of QA issues,
+# upstream gone, fails with modern C, no revdeps remaining.
+# Removal on 2023-04-18. Bug #833484, #833536, #833944, #883757.
+dev-perl/PerlMol
+
 # Hans de Graaff <graaff@gentoo.org> (2023-03-19)
 # This version of cucumber-core is not compatible with the other
 # cucumber dependencies. Please downgrade cucumber-core.
