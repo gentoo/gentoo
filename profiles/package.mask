@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-03-19)
+# Last release over 7.5 years ago, repo link broken and redirects to
+# homepage, build system is a mess, fails with modern C.
+# Removal on 2023-04-18. Bug #802729, #862414, #876993, #880577.
+x11-wm/subtle
+
+# David Seifert <soap@gentoo.org> (2023-03-19)
 # Last release over 5 years ago, fails with modern C, no revdeps in
 # tree.
 # Removal on 2023-04-18. Bug #884407.
