@@ -23,7 +23,7 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux"
 IUSE="doc"
 
-USE_RUBY="ruby27" ruby_add_bdepend "
+USE_RUBY="ruby27 ruby30 ruby31" ruby_add_bdepend "
 	test? (
 		dev-ruby/childlabor
 		dev-ruby/webmock
@@ -64,7 +64,7 @@ all_ruby_prepare() {
 
 each_ruby_test() {
 	case ${RUBY} in
-		*ruby30|*ruby31|*ruby32)
+		*ruby32)
 			einfo "Skipping tests due to circular dependencies"
 			;;
 		*)
