@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/ur1katz/casttube"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="dev-python/requests[${PYTHON_USEDEP}]"
 
