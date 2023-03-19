@@ -141,8 +141,8 @@ pkg_postinst() {
 	for ver in ${REPLACING_VERSIONS}; do
 		if ver_test "${ver}" -eq "3.4"; then
 			elog "rspamd-3.4 is known to segfault when it is updated from older version due"
-			elog "to a page-alignment of hyperscan .unser files. The issue is patched in this"
-			elog "ebuild revision rspamd-3.4-r1. All possibly broken .unser files will be"
+			elog "to a page-alignment of hyperscan .unser files. The issue was patched in"
+			elog "rspamd-3.4-r1 ebuild revision. All possibly broken .unser files will be"
 			elog "automaticaly removed. See https://github.com/rspamd/rspamd/issues/4329 for"
 			elog "more information."
 
