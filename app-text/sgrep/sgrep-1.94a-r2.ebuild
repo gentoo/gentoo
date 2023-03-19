@@ -1,7 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit autotools
 
 DESCRIPTION="Use structural criteria to grep and index text, SGML, XML and HTML and filter"
 HOMEPAGE="https://www.cs.helsinki.fi/u/jjaakkol/sgrep.html"
@@ -19,6 +21,9 @@ src_prepare() {
 	default
 
 	sed -i "s:/usr/lib:${EPREFIX}/etc:g" sgrep.1 || die
+
+	# Clang 16, bug #900533
+	eautoreconf
 }
 
 src_configure() {
