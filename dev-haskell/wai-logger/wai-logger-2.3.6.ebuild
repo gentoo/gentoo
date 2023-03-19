@@ -17,6 +17,10 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
+GHC_BOOTSTRAP_PACKAGES=(
+	cabal-doctest
+)
+
 RESTRICT=test # does not specify full dependencies
 
 RDEPEND="dev-haskell/byteorder:=[profile?]
