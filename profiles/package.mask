@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2023-03-19)
+# Apache NIH make, long abandoned upstream, forked reboot went nowhere.
+# Last release over 2 years ago, fails with modern C and no revdeps in
+# tree. Removal on 2023-04-18. Bug #880401.
+dev-util/dmake
+
 # Hans de Graaff <graaff@gentoo.org> (2023-03-19)
 # ruby27-only package without reverse dependencies. No recent activity
 # upstream and last supported ruby version is 2.5. Masked for removal on
