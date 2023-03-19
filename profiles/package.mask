@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-03-19)
+# Upstream disappeared, last release over 8 years ago, fails with modern
+# C, no revdeps in tree.
+# Removal on 2023-04-18. Bug #713784, #895686.
+dev-ruby/sigar
+
+# David Seifert <soap@gentoo.org> (2023-03-19)
 # Apache NIH make, long abandoned upstream, forked reboot went nowhere.
 # Last release over 2 years ago, fails with modern C and no revdeps in
 # tree. Removal on 2023-04-18. Bug #880401.
