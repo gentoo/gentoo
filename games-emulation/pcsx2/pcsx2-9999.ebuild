@@ -80,7 +80,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.3351-unbundle.patch
 	"${FILESDIR}"/${PN}-1.7.3468-cubeb-automagic.patch
 	"${FILESDIR}"/${PN}-1.7.3773-lto.patch
-	"${FILESDIR}"/${PN}-1.7.3803-rapidyaml-0.5.0.patch
 )
 
 src_unpack() {
@@ -189,8 +188,7 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r "${BUILD_DIR}"/bin/resources
 
-	dodoc README.md bin/docs/{Debugger.pdf,GameIndex.pdf,PCSX2_FAQ.pdf,debugger.txt}
-	newman bin/docs/PCSX2.1 ${PN}.1
+	dodoc README.md bin/docs/{Debugger.pdf,GameIndex.pdf,debugger.txt}
 
 	newicon bin/resources/icons/AppIconLarge.png ${PN}.png
 	make_desktop_entry ${PN} ${PN^^}
