@@ -91,6 +91,7 @@ src_configure() {
 		-DRUNDIR=/var/run/rspamd
 		-DDBDIR=/var/lib/rspamd
 		-DLOGDIR=/var/log/rspamd
+		-DLIBDIR="/usr/$(get_libdir)/rspamd"
 
 		-DSYSTEM_DOCTEST=ON
 		-DSYSTEM_FMT=ON
