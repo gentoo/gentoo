@@ -1,0 +1,20 @@
+https://gitlab.gnome.org/GNOME/libsoup/-/commit/146f1c96f741fb9ab62d74d99585b2e859f6cb5f
+
+From 146f1c96f741fb9ab62d74d99585b2e859f6cb5f Mon Sep 17 00:00:00 2001
+From: Patrick Griffis <pgriffis@igalia.com>
+Date: Fri, 17 Mar 2023 19:10:40 -0500
+Subject: [PATCH] Fix strict-prototype warning
+
+--- a/libsoup/http2/soup-body-input-stream-http2.c
++++ b/libsoup/http2/soup-body-input-stream-http2.c
+@@ -72,7 +72,7 @@ static guint signals [LAST_SIGNAL] = { 0 };
+  * Returns: a new #GInputStream
+  */
+ GInputStream *
+-soup_body_input_stream_http2_new ()
++soup_body_input_stream_http2_new (void)
+ {
+         return G_INPUT_STREAM (g_object_new (SOUP_TYPE_BODY_INPUT_STREAM_HTTP2, NULL));
+ }
+-- 
+GitLab

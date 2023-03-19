@@ -54,6 +54,10 @@ BDEPEND="
 PATCHES=(
 	# Disable apache tests until they are usable on Gentoo, bug #326957
 	"${FILESDIR}"/disable-apache-tests.patch
+	# Upstream patch to fix HTTP/2 on platforms w/ unsigned char
+	"${FILESDIR}"/unsigned-char-http2.patch
+	# Upstream patch to fix -Wstrict-prototypes
+	"${FILESDIR}"/strict-prototypes.patch
 )
 
 src_prepare() {
