@@ -137,6 +137,16 @@ qt_feature() {
 	echo "-DQT_FEATURE_${2:-$1}=$(usex $1 ON OFF)"
 }
 
+# @FUNCTION: qt6_symlink_binary_to_path
+# @USAGE: <target binary name> [suffix]
+# @DESCRIPTION:
+# Symlink a given binary from QT6_BINDIR to QT6_PREFIX/bin, with optional suffix
+qt6_symlink_binary_to_path() {
+    [[ $# -ge 1 ]] || die "${FUNCNAME}() requires at least one argument"
+
+    dosym -r "${QT6_BINDIR}"/${1} /usr/bin/${1}${2}
+}
+
 ######  Internal functions  ######
 
 # @FUNCTION: qt6_prepare_env
