@@ -246,7 +246,7 @@ src_install() {
 	qt6-build_src_install
 
 	# bug 601472
-	if [[ ! -f ${D}${QT6_LIBDIR}/libQt6WebEngine.so ]]; then
+	if [[ ! -f ${D}${QT6_LIBDIR}/libQt6WebEngineCore.so ]]; then
 		die "${CATEGORY}/${PF} failed to build anything. Please report to https://bugs.gentoo.org/"
 	fi
 }
