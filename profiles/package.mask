@@ -362,12 +362,6 @@ dev-python/flask-script
 # Removal on 2023-03-19.  Bug #895120.
 dev-python/cov-core
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-17)
-# Broken against the current package versions in ::gentoo.  Upstream
-# inactive.  No revdeps.
-# Removal on 2023-03-19.  Bug #865931.
-dev-python/pytest-flake8
-
 # Florian Schmaus <flow@gentoo.org> (2023-02-09)
 # Leftovers from net-im/jabber-base. Unused and obsolete.
 # Removal on 2023-03-09.
