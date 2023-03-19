@@ -22,8 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/pyyaml
-	<dev-ada/gnatcoll-bindings-2021
-	>=dev-ada/gnatcoll-bindings-23.0.0[${ADA_USEDEP},gmp,iconv]
+	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv]
 	dev-ada/gnatcoll-bindings[shared,static-libs?,static-pic?]
 	${ADA_DEPS}
 	${PYTHON_DEPS}
