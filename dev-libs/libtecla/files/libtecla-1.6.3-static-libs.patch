@@ -1,5 +1,5 @@
---- libtecla/configure.in.orig	2016-04-13 11:12:15.000000000 +0300
-+++ libtecla/configure.in	2016-04-13 11:43:05.632287268 +0300
+--- a/configure.in
++++ b/configure.in
 @@ -426,6 +426,9 @@
  AC_ARG_WITH(file-system, AC_HELP_STRING([--with-file-system], [Does the target have a filesystem (default=yes)]),
   AC_DEFINE(WITHOUT_FILE_SYSTEM), )
