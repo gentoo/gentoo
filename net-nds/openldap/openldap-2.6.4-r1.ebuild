@@ -3,6 +3,9 @@
 
 EAPI=7
 
+# Re cleanups:
+# 2.5.x is an LTS release so we want to keep it for a while.
+
 inherit autotools flag-o-matic multilib multilib-minimal preserve-libs ssl-cert toolchain-funcs systemd tmpfiles
 
 MY_PV="$(ver_rs 1-2 _)"
