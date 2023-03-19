@@ -101,6 +101,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
+	"${FILESDIR}"/${P}-Wenum-constexpr-conversion-clang16.patch
 )
 
 pkg_setup() {
