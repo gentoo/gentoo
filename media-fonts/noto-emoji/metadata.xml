@@ -6,7 +6,6 @@
 		<name>Pacho Ramos</name>
 	</maintainer>
 	<use>
-		<flag name="buildfont">Build Noto Emoji font with supplied images</flag>
 		<flag name="icons">Install Noto Emoji icon theme</flag>
 	</use>
 	<upstream>
