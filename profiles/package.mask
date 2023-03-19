@@ -39,6 +39,12 @@
 =dev-util/cucumber-core-11.1.0
 
 # David Seifert <soap@gentoo.org> (2023-03-19)
+# Upstream disappeared, last release over 8.5 years ago, unmaintained,
+# laundry list of QA issues, fails with modern C, no revdeps remaining.
+# Removal on 2023-04-18. Bug #683166, #814658, #834966, #898262.
+sci-libs/xdrfile
+
+# David Seifert <soap@gentoo.org> (2023-03-19)
 # Last release over 7.5 years ago, repo link broken and redirects to
 # homepage, build system is a mess, fails with modern C.
 # Removal on 2023-04-18. Bug #802729, #862414, #876993, #880577.
