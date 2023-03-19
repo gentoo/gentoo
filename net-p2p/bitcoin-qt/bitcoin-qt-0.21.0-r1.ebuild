@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,8 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/boost:=
-	>dev-libs/libsecp256k1-0.1_pre20200911:=[recovery,schnorr]
+	>dev-libs/libsecp256k1-0.1_pre20200911:0/0[recovery,schnorr]
+	!>=dev-libs/libsecp256k1-0.1_pre20210628
 	>=dev-libs/univalue-1.0.4:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
