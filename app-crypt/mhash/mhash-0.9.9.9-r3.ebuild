@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -39,6 +39,10 @@ src_prepare() {
 		-e 's/--netscape//' \
 		"${S}"/doc/Makefile.in || die
 
+	sed \
+		-e "s:@VERSION@:${PV}:" \
+		"${FILESDIR}"/${PN}.pc > ${PN}.pc || die
+
 	# Refresh bundled libtool (ltmain.sh)
 	# (elibtoolize is not sufficient)
 	# bug #668666
@@ -57,5 +61,7 @@ src_compile() {
 
 src_install() {
 	default
+	insinto /usr/$(get_libdir)/pkgconfig
+	doins ${PN}.pc
 	find "${ED}" -name '*.la' -delete || die
 }
