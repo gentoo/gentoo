@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/any1/neatvnc.git"
 else
 	SRC_URI="https://github.com/any1/neatvnc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~ppc ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~loong ~riscv ~x86"
 fi
 
 LICENSE="ISC"
@@ -23,7 +23,7 @@ REQUIRED_USE="h264? ( gbm )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/aml
+	=dev-libs/aml-0.3*
 	sys-libs/zlib
 	x11-libs/pixman
 	gbm? ( media-libs/mesa )
