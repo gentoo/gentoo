@@ -5,7 +5,7 @@ EAPI=8
 
 # Upstream often give "recommended patches" at https://www.nongnu.org/dmidecode/
 # Check regularly after releases!
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="DMI (Desktop Management Interface) table related utilities"
 HOMEPAGE="https://www.nongnu.org/dmidecode/"
@@ -29,8 +29,10 @@ src_prepare() {
 }
 
 src_compile() {
+	append-lfs-flags
+
 	emake \
-		CFLAGS="-D_FILE_OFFSET_BITS=64 ${CFLAGS} ${CPPFLAGS}" \
+		CFLAGS="${CFLAGS} ${CPPFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		CC="$(tc-getCC)"
 }
