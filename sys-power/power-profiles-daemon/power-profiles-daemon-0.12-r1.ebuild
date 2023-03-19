@@ -59,7 +59,6 @@ src_configure() {
 src_install() {
 	meson_src_install
 	python_fix_shebang "${D}"/usr/bin/powerprofilesctl
-
 	newinitd "${FILESDIR}/power-profiles-daemon.initd" power-profiles-daemon
 }
 
@@ -68,6 +67,8 @@ pkg_postinst() {
 		if systemd_is_booted; then
 			elog "You need to enable the service:"
 			elog "# systemctl enable ${PN}"
+		else
+			elog "# rc-update add ${PN} default"
 		fi
 	fi
 }
