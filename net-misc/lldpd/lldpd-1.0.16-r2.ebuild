@@ -44,6 +44,10 @@ REQUIRED_USE="
 # tests need root
 RESTRICT+=" test"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.16-configure-clang16.patch
+)
+
 src_prepare() {
 	default
 
