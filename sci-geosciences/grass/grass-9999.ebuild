@@ -52,7 +52,6 @@ RDEPEND="
 	sys-libs/gdbm:=
 	sys-libs/ncurses:=
 	sci-libs/proj:=
-	sci-libs/xdrfile
 	sys-libs/zlib
 	media-libs/libglvnd
 	media-libs/glu

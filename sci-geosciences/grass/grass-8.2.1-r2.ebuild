@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE="sqlite"  # bug 572440
 
 inherit desktop python-single-r1 toolchain-funcs xdg
@@ -30,13 +30,13 @@ else
 	MY_P="${P/_rc/RC}"
 	SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="amd64 ~x86"
+		KEYWORDS="~amd64 ~x86"
 	fi
 
 	S="${WORKDIR}/${MY_P}"
 fi
 
-IUSE="blas cxx fftw geos lapack las mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite threads tiff truetype X zstd"
+IUSE="blas bzip2 cxx fftw geos lapack las mysql netcdf nls odbc opencl opengl openmp pdal png postgres readline sqlite threads tiff truetype X zstd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	opengl? ( X )"
@@ -52,7 +52,6 @@ RDEPEND="
 	sys-libs/gdbm:=
 	sys-libs/ncurses:=
 	sci-libs/proj:=
-	sci-libs/xdrfile
 	sys-libs/zlib
 	media-libs/libglvnd
 	media-libs/glu
@@ -60,6 +59,7 @@ RDEPEND="
 		virtual/cblas[eselect-ldso(+)]
 		virtual/blas[eselect-ldso(+)]
 	)
+	bzip2? ( app-arch/bzip2:= )
 	fftw? ( sci-libs/fftw:3.0= )
 	geos? ( sci-libs/geos:= )
 	lapack? ( virtual/lapack[eselect-ldso(+)] )
@@ -77,7 +77,7 @@ RDEPEND="
 	tiff? ( media-libs/tiff:= )
 	truetype? ( media-libs/freetype:2 )
 	X? (
-		dev-python/wxpython:4.0
+		>=dev-python/wxpython-4.1:4.0
 		x11-libs/cairo[X]
 		x11-libs/libICE
 		x11-libs/libSM
@@ -188,6 +188,7 @@ src_configure() {
 		$(use_with threads pthread)
 		$(use_with openmp)
 		$(use_with opencl)
+		$(use_with bzip2 bzlib)
 		$(use_with pdal pdal "${EPREFIX}"/usr/bin/pdal-config)
 		$(use_with las liblas "${EPREFIX}"/usr/bin/liblas-config)
 		$(use_with netcdf netcdf "${EPREFIX}"/usr/bin/nc-config)
