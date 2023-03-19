@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-03-19)
+# This version of cucumber-core is not compatible with the other
+# cucumber dependencies. Please downgrade cucumber-core.
+=dev-util/cucumber-core-11.1.0
+
 # David Seifert <soap@gentoo.org> (2023-03-19)
 # Last release over 7.5 years ago, repo link broken and redirects to
 # homepage, build system is a mess, fails with modern C.
