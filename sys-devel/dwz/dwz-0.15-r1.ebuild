@@ -17,7 +17,10 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/elfutils"
+RDEPEND="
+	dev-libs/elfutils
+	dev-libs/xxhash
+"
 DEPEND="${RDEPEND}"
 BDEPEND="test? (
 	dev-libs/elfutils[utils]
@@ -39,5 +42,5 @@ src_test() {
 }
 
 src_install() {
-	emake CFLAGS="${CFLAGS}" srcdir="${S}" install
+	emake DESTDIR="${D}" CFLAGS="${CFLAGS}" srcdir="${S}" install
 }
