@@ -4,7 +4,7 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source"
-MAVEN_ID="com.biglybt:biglybt-core:3.3.0.0"
+MAVEN_PROVIDES="com.biglybt:biglybt-core:3.3.0.0 com.biglybt:biglybt-ui:3.3.0.0"
 
 inherit java-pkg-2 java-pkg-simple
 
