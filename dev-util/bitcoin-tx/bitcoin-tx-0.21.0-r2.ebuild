@@ -23,7 +23,8 @@ IUSE="knots"
 
 DEPEND="
 	dev-libs/boost:=
-	~dev-libs/libsecp256k1-0.1_pre20201028:=[recovery,schnorr]
+	>dev-libs/libsecp256k1-0.1_pre20200911:0/0[recovery,schnorr]
+	!>=dev-libs/libsecp256k1-0.1_pre20210628
 	>=dev-libs/univalue-1.0.4:=
 "
 RDEPEND="${DEPEND}"
