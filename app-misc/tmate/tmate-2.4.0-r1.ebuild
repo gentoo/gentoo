@@ -10,7 +10,7 @@ HOMEPAGE="https://tmate.io/"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv ~x86"
 IUSE="debug"
 
 SRC_URI="https://github.com/tmate-io/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
