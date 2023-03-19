@@ -19,6 +19,13 @@ IUSE="+assistant +benchmark +dbus debug doc +gitlfs +magicmime +pairing +torrent
 
 REQUIRED_USE="webapp? ( assistant )"
 
+GHC_BOOTSTRAP_PACKAGES=(
+	async
+	filepath-bytestring
+	split
+	unix-compat
+)
+
 RDEPEND="dev-haskell/aeson:=
 	>=dev-haskell/ansi-terminal-0.9:=
 	dev-haskell/async:=
