@@ -431,15 +431,21 @@ x11-libs/colord-gtk doc
 # Mask the experimental targets in release ebuilds.
 # Note to self: remember to move still-applicable masks to the newer
 # version when master is bumped.
-<dev-ml/llvm-ocaml-16 llvm_targets_ARC llvm_targets_CSKY
-<sys-devel/clang-16 llvm_targets_ARC llvm_targets_CSKY
-<sys-devel/llvm-16 llvm_targets_ARC llvm_targets_CSKY
-<dev-ml/llvm-ocaml-16 llvm_targets_DirectX llvm_targets_LoongArch
-<sys-devel/clang-16 llvm_targets_DirectX llvm_targets_LoongArch
-<sys-devel/llvm-16 llvm_targets_DirectX llvm_targets_LoongArch
-<dev-ml/llvm-ocaml-16 llvm_targets_M68k llvm_targets_SPIRV
-<sys-devel/clang-16 llvm_targets_M68k llvm_targets_SPIRV
-<sys-devel/llvm-16 llvm_targets_M68k llvm_targets_SPIRV
+<dev-ml/llvm-ocaml-16 llvm_targets_LoongArch
+<sys-devel/clang-16 llvm_targets_LoongArch
+<sys-devel/llvm-16 llvm_targets_LoongArch
+<dev-ml/llvm-ocaml-17 llvm_targets_ARC llvm_targets_CSKY
+<sys-devel/clang-17 llvm_targets_ARC llvm_targets_CSKY
+<sys-devel/llvm-17 llvm_targets_ARC llvm_targets_CSKY
+<dev-ml/llvm-ocaml-17 llvm_targets_DirectX
+<sys-devel/clang-17 llvm_targets_DirectX
+<sys-devel/llvm-17 llvm_targets_DirectX
+<dev-ml/llvm-ocaml-17 llvm_targets_M68k llvm_targets_SPIRV
+<sys-devel/clang-17 llvm_targets_M68k llvm_targets_SPIRV
+<sys-devel/llvm-17 llvm_targets_M68k llvm_targets_SPIRV
+<dev-ml/llvm-ocaml-17 llvm_targets_Xtensa
+<sys-devel/clang-17 llvm_targets_Xtensa
+<sys-devel/llvm-17 llvm_targets_Xtensa
 
 # Marek Szuba <marecki@gentoo.org> (2020-11-30)
 # Vendored therecipe/qt violates network sandbox + uses external binary
