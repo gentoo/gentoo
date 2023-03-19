@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-ar.patch
 	"${FILESDIR}"/${PN}-1.1.0-clang-16-register.patch
 	"${FILESDIR}"/${PN}-1.1.0-configure-clang16.patch
+	"${FILESDIR}"/${PN}-1.1.0-configure-bashisms.patch
 )
 
 ECONF_SOURCE="${S}"
