@@ -4,6 +4,7 @@
 # @ECLASS: db.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Internal eclass used by sys-libs/db ebuilds
 
 case ${EAPI} in
