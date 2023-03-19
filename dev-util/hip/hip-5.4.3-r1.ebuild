@@ -80,6 +80,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-5.4.3-hipcc-hip-version.patch"
 	eapply "${FILESDIR}/${PN}-5.4.3-hipvars-FHS-path.patch"
 	eapply "${FILESDIR}/0003-SWDEV-352878-Removed-relative-path-based-CLANG-inclu.patch"
+	eapply "${FILESDIR}/${PN}-5.4.3-fix-HIP_CLANG_PATH-detection.patch"
 
 	# Setting HSA_PATH to "/usr" results in setting "-isystem /usr/include"
 	# which makes "stdlib.h" not found when using "#include_next" in header files;
