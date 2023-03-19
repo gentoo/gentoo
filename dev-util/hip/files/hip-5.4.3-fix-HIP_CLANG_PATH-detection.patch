@@ -1,0 +1,26 @@
+From 03a7fd2937c146142fa95d22a0ee10df40442788 Mon Sep 17 00:00:00 2001
+From: Yiyang Wu <xgreenlandforwyy@gmail.com>
+Date: Sun, 19 Mar 2023 22:32:01 +0800
+Subject: [PATCH] FindHIP.cmake: fix HIP_CLANG_PATH detection via
+ HIP_CLANG_INSTALL_DIR
+
+---
+ cmake/FindHIP.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/FindHIP.cmake b/cmake/FindHIP.cmake
+index 109c9f65..5dc4c632 100644
+--- a/cmake/FindHIP.cmake
++++ b/cmake/FindHIP.cmake
+@@ -255,7 +255,7 @@ elseif("${HIP_COMPILER}" STREQUAL "clang")
+     if("x${HIP_CLANG_PATH}" STREQUAL "x")
+       # IF HIP_CLANG_INSTALL_DIR is Found
+       if( HIP_CLANG_INSTALL_DIR )
+-        set(HIP_CLANG_PATH ${HIP_CLANG_INSTALL_DIR})
++        set(HIP_CLANG_PATH "${HIP_CLANG_INSTALL_DIR}/bin")
+       else() # IF HIP_CLANG_INSTALL_DIR is not found
+         if(DEFINED ENV{HIP_CLANG_PATH})
+             set(HIP_CLANG_PATH $ENV{HIP_CLANG_PATH})
+-- 
+2.40.0
+
