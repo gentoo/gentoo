@@ -1,6 +1,7 @@
-diff -uNr a/mpcenc/keyboard.c b/mpcenc/keyboard.c
---- a/mpcenc/keyboard.c	2006-12-19 13:39:02.000000000 -0600
-+++ b/mpcenc/keyboard.c	2021-06-03 13:54:01.000000000 -0500
+Bug: https://bugs.gentoo.org/712978
+
+--- a/mpcenc/keyboard.c
++++ b/mpcenc/keyboard.c
 @@ -84,6 +84,8 @@
  #  define echo_on()   (void)0
  # endif
@@ -10,9 +11,8 @@ diff -uNr a/mpcenc/keyboard.c b/mpcenc/keyboard.c
  int
  WaitKey ( void )
  {
-diff -uNr a/mpcenc/mpcenc.h b/mpcenc/mpcenc.h
---- a/mpcenc/mpcenc.h	2009-02-23 12:15:46.000000000 -0600
-+++ b/mpcenc/mpcenc.h	2021-06-03 14:00:30.000000000 -0500
+--- a/mpcenc/mpcenc.h
++++ b/mpcenc/mpcenc.h
 @@ -50,7 +50,7 @@
  # include <unistd.h>
  #endif
