@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,9 +21,9 @@ SLOT="0"
 IUSE="gbm tracing"
 
 RDEPEND="
-	dev-libs/aml
+	=dev-libs/aml-0.3*
 	dev-libs/wayland
-	gui-libs/neatvnc[tracing?]
+	=gui-libs/neatvnc-0.6*[tracing?]
 	media-libs/mesa:=[egl(+),gles2,gbm(+)?]
 	x11-libs/libxkbcommon
 	x11-libs/pixman
