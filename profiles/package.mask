@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Obsolete slot using an older version of faraday. Use the newer slot
+# instead. Masked for removal on 2023-04-19.
+dev-ruby/elasticsearch:6
+dev-ruby/elasticsearch-api:6
+dev-ruby/elasticsearch-transport:6
+
 # Hans de Graaff <graaff@gentoo.org> (2023-03-19)
 # Last upstream activity 5 years ago, no longer works with modern
 # Cucumber. Masked for removal on 2023-04-19.
@@ -80,7 +86,7 @@ dev-ruby/six
 
 # Alfredo Tupone <tupone@gentoo.org> (2023-03-14)
 # Masked for removal in 30 days.
-# Bug #895824, no rev dep 
+# Bug #895824, no rev dep
 dev-tcltk/tkzinc
 
 # David Seifert <soap@gentoo.org> (2023-03-12)
