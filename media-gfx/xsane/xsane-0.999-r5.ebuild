@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,8 +18,10 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="nls jpeg png tiff gimp lcms ocr"
 
-RDEPEND="
+DEPEND="
+	dev-libs/glib:2
 	media-gfx/sane-backends
+	sys-libs/zlib
 	x11-libs/gtk+:2
 	x11-misc/xdg-utils
 	jpeg? ( media-libs/libjpeg-turbo:= )
@@ -28,26 +30,30 @@ RDEPEND="
 	gimp? ( media-gfx/gimp:0/2 )
 	lcms? ( media-libs/lcms:2 )
 "
+RDEPEND="${DEPEND}"
 PDEPEND="ocr? ( app-text/gocr )"
-DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	# Apply multiple fixes from different distributions
+	"${WORKDIR}"/${PN}-0.998-patches-3
+	# Add support for lcms-2 (from Fedora)
+	"${FILESDIR}"/${PN}-0.999-lcms2.patch
+	# See bug #885311 and bug #899806
+	"${FILESDIR}"/${PN}-0.999-configure-clang16.patch
+)
 
 src_prepare() {
 	default
 
-	strip-linguas -i po/ #609672
+	# bug #609672
+	strip-linguas -i po/
 
-	# Apply multiple fixes from different distributions
-	eapply "${WORKDIR}/${PN}-0.998-patches-3"/
-
-	# Fix compability with libpng15 wrt #377363
+	# Fix compability with libpng15 (bug #377363)
 	sed -i -e 's:png_ptr->jmpbuf:png_jmpbuf(png_ptr):' src/xsane-save.c || die
 
 	# Fix AR calling directly (bug #442606)
 	sed -i -e 's:ar r:$(AR) r:' lib/Makefile.in || die
-
-	# Add support for lcms-2 (from Fedora)
-	eapply "${FILESDIR}/${PN}-0.999-lcms2.patch"
 
 	AT_M4DIR="m4" eautoreconf
 }
