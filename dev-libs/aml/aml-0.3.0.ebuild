@@ -22,12 +22,16 @@ IUSE="examples"
 
 DEPEND="elibc_musl? ( sys-libs/queue-standalone )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-queue.patch
+)
+
 src_prepare() {
 	default
 
-	# The bundled copy includes cdefs which breaks on musl and
-	# this header is already available on glibc.
-	# bug #828806
+	# The bundled copy includes cdefs which breaks on musl and this header is
+	# already available on glibc. See bug #828806 and
+	# https://github.com/any1/aml/issues/11.
 	rm include/sys/queue.h || die
 }
 
