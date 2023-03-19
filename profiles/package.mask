@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2023-03-19)
+# Last release over 10 years ago, fails with modern C, no revdeps in
+# tree.
+# Removal on 2023-04-18. Bug #587222, #884409.
+dev-ruby/tidy-ext
+
+# David Seifert <soap@gentoo.org> (2023-03-19)
 # Upstream disappeared, last release over 8 years ago, fails with modern
 # C, no revdeps in tree.
 # Removal on 2023-04-18. Bug #713784, #895686.
