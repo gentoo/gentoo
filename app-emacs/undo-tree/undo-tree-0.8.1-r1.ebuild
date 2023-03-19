@@ -9,15 +9,16 @@ inherit readme.gentoo-r1 elisp
 
 DESCRIPTION="Undo trees and visualization"
 HOMEPAGE="http://www.dr-qubit.org/undo-tree.html"
-SRC_URI="https://dev.gentoo.org/~xgqt/distfiles/repackaged/${P}.tar.xz"
+SRC_URI="https://gitlab.com/tsc25/${PN}/-/archive/release/${PV}/${PN}-release-${PV}.tar.gz"
+S="${WORKDIR}"/${PN}-release-${PV}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
-DEPEND="app-emacs/queue"
-RDEPEND="${DEPEND}"
+RDEPEND="app-emacs/queue"
+BDEPEND="${RDEPEND}"
 
+SITEFILE="50${PN}-gentoo.el"
 DOC_CONTENTS="To enable undo trees globally, place '(global-undo-tree-mode)'
 	in your .emacs file."
-SITEFILE="50${PN}-gentoo.el"
