@@ -24,7 +24,9 @@ IUSE=""
 RDEPEND+=" >=dev-db/sqlite-3.39.4:3"
 DEPEND+=" >=dev-db/sqlite-3.39.4:3"
 
+# TODO: drop the mini_portile2 dep after 1.6.1
 ruby_add_bdepend "
+	dev-ruby/mini_portile2:2.8
 	doc? ( dev-ruby/rdoc dev-ruby/redcloth )
 	test? ( dev-ruby/minitest:5 )"
 
@@ -36,7 +38,7 @@ all_ruby_compile() {
 	all_fakegem_compile
 
 	if use doc; then
-		rdoc --title "${P} Dcoumentation" -o doc --main README.rdoc lib *.rdoc ext/*/*.c || die
+		rdoc --title "${P} Documentation" -o doc --main README.rdoc lib *.rdoc ext/*/*.c || die
 		rm -f doc/js/*.gz || die
 	fi
 }
