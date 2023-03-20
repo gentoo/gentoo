@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,10 @@ RUBY_S="llhttp-${MY_PV}/ffi"
 
 ruby_add_rdepend "=dev-ruby/ffi-compiler-1*"
 
-ruby_add_bdepend "test? ( dev-ruby/async-io )"
+ruby_add_bdepend "test? (
+	dev-ruby/async-io
+	dev-ruby/rspec:3
+)"
 
 all_ruby_prepare() {
 	sed -i -e 's/gem "rake-compiler"//g' "Gemfile" || die
