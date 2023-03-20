@@ -100,6 +100,7 @@ src_compile() {
 	export -n GOCACHE GOPATH XDG_CACHE_HOME
 	GOBIN="${S}/bin" \
 		emake all \
+			PREFIX="${EPREFIX}/usr" \
 			GIT_BRANCH=master \
 			GIT_BRANCH_CLEAN=master \
 			COMMIT_NO="${git_commit}" \
