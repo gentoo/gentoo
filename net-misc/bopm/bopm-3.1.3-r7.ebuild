@@ -14,8 +14,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~x86"
 
 RDEPEND="acct-user/opm"
-BDEPEND="acct-user/opm"
-BDEPEND="sys-devel/autoconf-archive"
+BDEPEND="
+	acct-user/opm
+	sys-devel/autoconf-archive
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-remove-njabl.patch
