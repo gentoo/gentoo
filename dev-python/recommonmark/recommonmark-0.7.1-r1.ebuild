@@ -26,4 +26,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.6.0-sphinx3-2.patch"
 )
 
+# These tests are sensitive to Sphinx formatting changes and they will never
+# get fixed because upstream has archived the project in favor of myst_parser.
+# Bug #866009
+EPYTEST_DESELECT=(
+	"tests/test_sphinx.py::GenericTests::test_headings"
+	"tests/test_sphinx.py::CustomExtensionTests::test_integration"
+)
+
 distutils_enable_tests pytest
