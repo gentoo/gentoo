@@ -54,7 +54,6 @@ multilib_src_configure() {
 		$(meson_feature X xcb)
 		$(meson_feature X xlib)
 		-Dxlib-xcb=disabled
-		-Dxml=disabled
 		-Dzlib=enabled
 
 		$(meson_feature test tests)
