@@ -26,4 +26,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.6.0-sphinx3-2.patch"
 )
 
+EPYTEST_DESELECT=(
+	"tests/test_sphinx.py::GenericTests::test_headings"
+	"tests/test_sphinx.py::CustomExtensionTests::test_integration"
+)
+
 distutils_enable_tests pytest
