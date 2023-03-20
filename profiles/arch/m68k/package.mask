@@ -1,13 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # matoro <matoro_gentoo@matoro.tk> (2022-03-20)
 # Broken on big-endian (#861710)
 # https://github.com/trendmicro/tlsh/issues/131
 dev-libs/tlsh
-dev-python/tlsh
-dev-util/diffoscope
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-22)
-# criu does not work on ppc64be and ppc32
-sys-process/criu
