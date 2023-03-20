@@ -18,15 +18,15 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${MY_P}.tar.gz
+	https://github.com/SCons/scons/pull/4322.patch
+		-> ${P}-mergeflags.patch
+	https://github.com/SCons/scons/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
 	doc? (
 		https://www.scons.org/doc/${PV}/PDF/${PN}-user.pdf
 			-> ${P}-user.pdf
 		https://www.scons.org/doc/${PV}/HTML/${PN}-user.html
 			-> ${P}-user.html
-	)
-	test? (
-		https://github.com/SCons/scons/archive/${PV}.tar.gz
-			-> ${P}.gh.tar.gz
 	)
 "
 
@@ -46,16 +46,16 @@ BDEPEND="
 src_unpack() {
 	# use the git directory structure, then unpack the pypi tarball
 	# on top of it to make our life easier
-	if use test; then
-		unpack "${P}.gh.tar.gz"
-	else
-		mkdir -p "${P}" || die
-	fi
-
+	unpack "${P}.gh.tar.gz"
 	tar -C "${P}" --strip-components=1 -xzf "${DISTDIR}/${MY_P}.tar.gz" || die
 }
 
 src_prepare() {
+	local PATCHES=(
+		# https://bugs.gentoo.org/900971
+		"${DISTDIR}/${P}-mergeflags.patch"
+	)
+
 	distutils-r1_src_prepare
 
 	# TODO: rebase the patches <4.5.1-r2 is gone
