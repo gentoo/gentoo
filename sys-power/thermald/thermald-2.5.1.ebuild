@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools out-of-source systemd
+inherit autotools linux-info out-of-source systemd
 
 DESCRIPTION="Thermal daemon for Intel architectures"
 HOMEPAGE="https://github.com/intel/thermal_daemon"
@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/thermal_daemon-${PV}
 DOCS=( thermal_daemon_usage.txt README.txt )
+
+CONFIG_CHECK="~PERF_EVENTS_INTEL_RAPL ~X86_INTEL_PSTATE ~INTEL_POWERCLAMP ~INT340X_THERMAL ~ACPI_THERMAL_REL ~INT3406_THERMAL"
 
 src_prepare() {
 	sed -i -e "/group=/s/power/wheel/g" \
