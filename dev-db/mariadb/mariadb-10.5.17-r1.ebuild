@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI="7"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
@@ -10,7 +10,7 @@ inherit systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
 # Patch version
-PATCH_SET="https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.5.19-patches-01.tar.xz"
+PATCH_SET="https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.5.17-patches-01.tar.xz"
 
 SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
 	${PATCH_SET}"
@@ -27,11 +27,14 @@ IUSE="+backup bindist columnstore cracklib debug extraengine galera innodb-lz4
 
 RESTRICT="!bindist? ( bindist ) !test? ( test )"
 
-REQUIRED_USE="jdbc? ( extraengine server !static )
+REQUIRED_USE="
+	jdbc? ( extraengine server !static )
 	?? ( tcmalloc jemalloc )
-	static? ( yassl !pam )"
+	static? ( yassl !pam )
+	test? ( extraengine perl server xml )
+"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -60,7 +63,7 @@ COMMON_DEPEND="
 		app-arch/xz-utils
 		backup? ( app-arch/libarchive:0= )
 		columnstore? (
-			app-arch/snappy
+			app-arch/snappy:=
 			dev-libs/boost:=
 			dev-libs/libxml2:2=
 		)
@@ -71,7 +74,7 @@ COMMON_DEPEND="
 		)
 		innodb-lz4? ( app-arch/lz4 )
 		innodb-lzo? ( dev-libs/lzo )
-		innodb-snappy? ( app-arch/snappy )
+		innodb-snappy? ( app-arch/snappy:= )
 		mroonga? ( app-text/groonga-normalizer-mysql >=app-text/groonga-7.0.4 )
 		numa? ( sys-process/numactl )
 		oqgraph? (
@@ -86,7 +89,7 @@ COMMON_DEPEND="
 	tcmalloc? ( dev-util/google-perftools:0= )
 	yassl? ( net-libs/gnutls:0= )
 	!yassl? (
-		<dev-libs/openssl-3:=
+		>=dev-libs/openssl-1.0.0:0=
 	)
 "
 BDEPEND="app-alternatives/yacc"
@@ -108,10 +111,6 @@ RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb:10.6
 	!dev-db/mariadb:10.7
 	!dev-db/mariadb:10.8
-	!dev-db/mariadb:10.9
-	!dev-db/mariadb:10.10
-	!dev-db/mariadb:10.11
-	!dev-db/mariadb:11.0
 	!<virtual/mysql-5.6-r11
 	!<virtual/libmysqlclient-18-r1
 	selinux? ( sec-policy/selinux-mysql )
@@ -211,8 +210,6 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}"/mariadb-patches
-	eapply "${FILESDIR}"/${PN}-10.6.11-gssapi.patch
-	eapply "${FILESDIR}"/${PN}-10.6.12-gcc-13.patch
 
 	eapply_user
 

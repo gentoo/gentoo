@@ -63,7 +63,7 @@ COMMON_DEPEND="
 		app-arch/xz-utils
 		backup? ( app-arch/libarchive:0= )
 		columnstore? (
-			app-arch/snappy
+			app-arch/snappy:=
 			dev-libs/boost:=
 			dev-libs/libxml2:2=
 		)
@@ -74,7 +74,7 @@ COMMON_DEPEND="
 		)
 		innodb-lz4? ( app-arch/lz4 )
 		innodb-lzo? ( dev-libs/lzo )
-		innodb-snappy? ( app-arch/snappy )
+		innodb-snappy? ( app-arch/snappy:= )
 		mroonga? ( app-text/groonga-normalizer-mysql >=app-text/groonga-7.0.4 )
 		numa? ( sys-process/numactl )
 		oqgraph? (

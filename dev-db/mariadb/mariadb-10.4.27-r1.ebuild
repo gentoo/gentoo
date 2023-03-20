@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI="7"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
@@ -9,26 +9,33 @@ JAVA_PKG_OPT_USE="jdbc"
 inherit systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
-HOMEPAGE="https://mariadb.org/"
-SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
-	https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.6.12-patches-01.tar.xz"
+# Patch version
+PATCH_SET="https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.4.26-patches-01.tar.xz"
 
+SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
+	${PATCH_SET}"
+
+HOMEPAGE="https://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="$(ver_cut 1-2)/${SUBSLOT:-0}"
-IUSE="+backup bindist columnstore cracklib debug extraengine galera innodb-lz4
+IUSE="+backup bindist cracklib debug extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
-	sst-rsync sst-mariabackup static systemd systemtap s3 tcmalloc
-	test xml yassl"
+	sst-rsync sst-mariabackup static systemd systemtap tcmalloc
+	test tokudb xml yassl"
 
 RESTRICT="!bindist? ( bindist ) !test? ( test )"
 
-REQUIRED_USE="jdbc? ( extraengine server !static )
+REQUIRED_USE="
+	jdbc? ( extraengine server !static )
+	server? ( tokudb? ( jemalloc !tcmalloc ) )
 	?? ( tcmalloc jemalloc )
-	static? ( yassl !pam )"
+	static? ( yassl !pam )
+	test? ( extraengine perl server xml )
+"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -37,31 +44,27 @@ S="${WORKDIR}/mysql"
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
 COMMON_DEPEND="
-	>=dev-libs/libpcre2-10.34:=
+	kernel_linux? (
+		sys-process/procps:0=
+		dev-libs/libaio:0=
+	)
 	>=sys-apps/texinfo-4.7-r1
-	sys-libs/ncurses:0=
+	jemalloc? ( dev-libs/jemalloc:0= )
+	tcmalloc? ( dev-util/google-perftools:0= )
+	systemtap? ( >=dev-util/systemtap-1.3:0= )
 	>=sys-libs/zlib-1.2.3:0=
-	virtual/libcrypt:=
+	kerberos? ( virtual/krb5 )
+	yassl? ( net-libs/gnutls:0= )
+	!yassl? (
+		<dev-libs/openssl-3:=
+	)
+	sys-libs/ncurses:0=
 	!bindist? (
 		sys-libs/binutils-libs:0=
 		>=sys-libs/readline-4.1:0=
 	)
-	jemalloc? ( dev-libs/jemalloc:0= )
-	kerberos? ( virtual/krb5 )
-	kernel_linux? (
-		dev-libs/libaio:0=
-		sys-libs/liburing:=
-		sys-process/procps:0=
-	)
 	server? (
-		app-arch/bzip2
-		app-arch/xz-utils
 		backup? ( app-arch/libarchive:0= )
-		columnstore? (
-			app-arch/snappy
-			dev-libs/boost:=
-			dev-libs/libxml2:2=
-		)
 		cracklib? ( sys-libs/cracklib:0= )
 		extraengine? (
 			odbc? ( dev-db/unixODBC:0= )
@@ -69,7 +72,7 @@ COMMON_DEPEND="
 		)
 		innodb-lz4? ( app-arch/lz4 )
 		innodb-lzo? ( dev-libs/lzo )
-		innodb-snappy? ( app-arch/snappy )
+		innodb-snappy? ( app-arch/snappy:= )
 		mroonga? ( app-text/groonga-normalizer-mysql >=app-text/groonga-7.0.4 )
 		numa? ( sys-process/numactl )
 		oqgraph? (
@@ -77,45 +80,34 @@ COMMON_DEPEND="
 			dev-libs/judy:0=
 		)
 		pam? ( sys-libs/pam:0= )
-		s3? ( net-misc/curl )
 		systemd? ( sys-apps/systemd:= )
+		tokudb? ( app-arch/snappy:= )
 	)
-	systemtap? ( >=dev-util/systemtap-1.3:0= )
-	tcmalloc? ( dev-util/google-perftools:0= )
-	yassl? ( net-libs/gnutls:0= )
-	!yassl? (
-		>=dev-libs/openssl-1.0.0:0=
-	)
+	>=dev-libs/libpcre-8.41-r1:3=
+	virtual/libcrypt:=
 "
 BDEPEND="app-alternatives/yacc"
-DEPEND="${COMMON_DEPEND}
+DEPEND="static? ( sys-libs/ncurses[static-libs] )
 	server? (
 		extraengine? ( jdbc? ( >=virtual/jdk-1.8 ) )
 		test? ( acct-group/mysql acct-user/mysql )
 	)
-	static? ( sys-libs/ncurses[static-libs] )
-"
-RDEPEND="${COMMON_DEPEND}
+	${COMMON_DEPEND}"
+RDEPEND="selinux? ( sec-policy/selinux-mysql )
 	!dev-db/mysql !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
 	!dev-db/mariadb:0
 	!dev-db/mariadb:5.5
 	!dev-db/mariadb:10.1
 	!dev-db/mariadb:10.2
 	!dev-db/mariadb:10.3
-	!dev-db/mariadb:10.4
 	!dev-db/mariadb:10.5
+	!dev-db/mariadb:10.6
 	!dev-db/mariadb:10.7
 	!dev-db/mariadb:10.8
-	!dev-db/mariadb:10.9
-	!dev-db/mariadb:10.10
-	!dev-db/mariadb:10.11
-	!dev-db/mariadb:11.0
 	!<virtual/mysql-5.6-r11
 	!<virtual/libmysqlclient-18-r1
-	selinux? ( sec-policy/selinux-mysql )
+	${COMMON_DEPEND}
 	server? (
-		columnstore? ( dev-db/mariadb-connector-c )
-		extraengine? ( jdbc? ( >=virtual/jre-1.8 ) )
 		galera? (
 			sys-apps/iproute2
 			=sys-cluster/galera-26*
@@ -123,6 +115,7 @@ RDEPEND="${COMMON_DEPEND}
 			sst-mariabackup? ( net-misc/socat[ssl] )
 		)
 		!prefix? ( dev-db/mysql-init-scripts acct-group/mysql acct-user/mysql )
+		extraengine? ( jdbc? ( >=virtual/jre-1.8 ) )
 	)
 "
 # For other stuff to bring us in
@@ -209,9 +202,6 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}"/mariadb-patches
-	eapply "${FILESDIR}"/${PN}-10.6.11-gssapi.patch
-	eapply "${FILESDIR}"/${PN}-10.6.11-include.patch
-	eapply "${FILESDIR}"/${PN}-10.6.12-gcc-13.patch
 
 	eapply_user
 
@@ -223,10 +213,15 @@ src_prepare() {
 	}
 
 	if use jemalloc; then
-		echo "TARGET_LINK_LIBRARIES(mariadbd LINK_PUBLIC jemalloc)" >> "${S}/sql/CMakeLists.txt"
+		echo "TARGET_LINK_LIBRARIES(mysqld LINK_PUBLIC jemalloc)" >> "${S}/sql/CMakeLists.txt"
 	elif use tcmalloc; then
-		echo "TARGET_LINK_LIBRARIES(mariadbd LINK_PUBLIC tcmalloc)" >> "${S}/sql/CMakeLists.txt"
+		echo "TARGET_LINK_LIBRARIES(mysqld LINK_PUBLIC tcmalloc)" >> "${S}/sql/CMakeLists.txt"
 	fi
+
+	# Don't build bundled xz-utils for tokudb
+	echo > "${S}/storage/tokudb/PerconaFT/cmake_modules/TokuThirdParty.cmake" || die
+	sed -i -e 's/ build_lzma//' -e 's/ build_snappy//' "${S}/storage/tokudb/PerconaFT/ft/CMakeLists.txt" || die
+	sed -i -e 's/add_dependencies\(tokuportability_static_conv build_jemalloc\)//' "${S}/storage/tokudb/PerconaFT/portability/CMakeLists.txt" || die
 
 	local plugin
 	local server_plugins=( handler_socket auth_socket feedback metadata_lock_info
@@ -375,13 +370,13 @@ src_configure() {
 			-DWITH_PCRE=system
 			-DPLUGIN_OQGRAPH=$(usex oqgraph DYNAMIC NO)
 			-DPLUGIN_SPHINX=$(usex sphinx YES NO)
+			-DPLUGIN_TOKUDB=$(usex tokudb YES NO)
 			-DPLUGIN_AUTH_PAM=$(usex pam YES NO)
 			-DPLUGIN_AWS_KEY_MANAGEMENT=NO
 			-DPLUGIN_CRACKLIB_PASSWORD_CHECK=$(usex cracklib YES NO)
+			-DPLUGIN_CASSANDRA=NO
 			-DPLUGIN_SEQUENCE=$(usex extraengine YES NO)
 			-DPLUGIN_SPIDER=$(usex extraengine YES NO)
-			-DPLUGIN_S3=$(usex s3 YES NO)
-			-DPLUGIN_COLUMNSTORE=$(usex columnstore YES NO)
 			-DCONNECT_WITH_MYSQL=1
 			-DCONNECT_WITH_LIBXML2=$(usex xml)
 			-DCONNECT_WITH_ODBC=$(usex odbc)
@@ -403,6 +398,9 @@ src_configure() {
 			-DWITH_NUMA=$(usex numa ON OFF)
 		)
 
+		# Workaround for MDEV-14524
+		use tokudb && mycmakeargs+=( -DTOKUDB_OK=1 )
+
 		if use test ; then
 			# This is needed for the new client lib which tests a real, open server
 			mycmakeargs+=( -DSKIP_TESTS=ON )
@@ -420,8 +418,8 @@ src_configure() {
 
 		elif ! use latin1 ; then
 			mycmakeargs+=(
-				-DDEFAULT_CHARSET=utf8mb4
-				-DDEFAULT_COLLATION=utf8mb4_unicode_520_ci
+				-DDEFAULT_CHARSET=utf8
+				-DDEFAULT_COLLATION=utf8_general_ci
 			)
 		else
 			mycmakeargs+=(
@@ -475,7 +473,7 @@ src_compile() {
 }
 
 # Official test instructions:
-# USE='extraengine perl server' \
+# USE='extraengine perl server xml' \
 # FEATURES='test userpriv' \
 # ebuild mariadb-X.X.XX.ebuild \
 # digest clean package
@@ -553,10 +551,8 @@ src_test() {
 	disabled_tests+=( "compat/oracle.plugin;0;Needs example plugin which Gentoo disables" )
 	disabled_tests+=( "innodb_gis.1;25095;Known rounding error with latest AMD processors" )
 	disabled_tests+=( "innodb_gis.gis;25095;Known rounding error with latest AMD processors" )
-	disabled_tests+=( "main.gis;25095;Known rounding error with latest AMD processors" )
 	disabled_tests+=( "main.explain_non_select;0;Sporadically failing test" )
 	disabled_tests+=( "main.func_time;0;Dependent on time test was written" )
-	disabled_tests+=( "main.mysql_upgrade;27044;Sporadically failing test" )
 	disabled_tests+=( "main.plugin_auth;0;Needs client libraries built" )
 	disabled_tests+=( "main.selectivity_no_engine;26320;Sporadically failing test" )
 	disabled_tests+=( "main.stat_tables;0;Sporadically failing test" )
@@ -564,13 +560,10 @@ src_test() {
 	disabled_tests+=( "main.upgrade_MDEV-19650;25096;Known to be broken" )
 	disabled_tests+=( "mariabackup.*;0;Broken test suite" )
 	disabled_tests+=( "perfschema.nesting;23458;Known to be broken" )
-	disabled_tests+=( "perfschema.prepared_statements;0;Broken test suite" )
-	disabled_tests+=( "perfschema.privilege_table_io;27045;Sporadically failing test" )
 	disabled_tests+=( "plugins.auth_ed25519;0;Needs client libraries built" )
 	disabled_tests+=( "plugins.cracklib_password_check;0;False positive due to varying policies" )
 	disabled_tests+=( "plugins.two_password_validations;0;False positive due to varying policies" )
 	disabled_tests+=( "roles.acl_statistics;0;False positive due to a user count mismatch caused by previous test" )
-	disabled_tests+=( "spider.*;0;Fails with network sandbox" )
 	disabled_tests+=( "sys_vars.wsrep_on_without_provider;25625;Known to be broken" )
 
 	if ! use latin1 ; then
@@ -595,7 +588,7 @@ src_test() {
 
 	# run mysql-test tests
 	pushd "${TESTDIR}" &>/dev/null || die
-	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test-list="${T}/disabled.def"
+	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
 	retstatus_tests=$?
 
 	popd &>/dev/null || die
@@ -692,20 +685,14 @@ src_install() {
 		fi
 	fi
 
-	# Conflicting files
-	conflicting_files=()
-
-	# We prefer my_print_defaults from dev-db/mysql-connector-c
-	conflicting_files=( "${ED}/usr/share/man/man1/my_print_defaults.1" )
-
 	# Remove bundled mytop in favor of dev-db/mytop
-	conflicting_files+=( "${ED}/usr/bin/mytop" )
-	conflicting_files+=( "${ED}/usr/share/man/man1/mytop.1" )
-
-	local conflicting_file
-	for conflicting_file in "${conflicting_files[@]}" ; do
-		if [[ -e "${conflicting_file}" ]] ; then
-			rm -v "${conflicting_file}" || die
+	local mytop_file
+	for mytop_file in \
+		"${ED}/usr/bin/mytop" \
+		"${ED}/usr/share/man/man1/mytop.1" \
+	; do
+		if [[ -e "${mytop_file}" ]] ; then
+			rm -v "${mytop_file}" || die
 		fi
 	done
 

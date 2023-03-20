@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
@@ -9,13 +9,10 @@ JAVA_PKG_OPT_USE="jdbc"
 inherit systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
-# Patch version
-PATCH_SET="https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.5.17-patches-01.tar.xz"
-
-SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
-	${PATCH_SET}"
-
 HOMEPAGE="https://mariadb.org/"
+SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
+	https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.11.1-patches-01.tar.xz"
+
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="$(ver_cut 1-2)/${SUBSLOT:-0}"
@@ -27,14 +24,12 @@ IUSE="+backup bindist columnstore cracklib debug extraengine galera innodb-lz4
 
 RESTRICT="!bindist? ( bindist ) !test? ( test )"
 
-REQUIRED_USE="
-	jdbc? ( extraengine server !static )
+REQUIRED_USE="jdbc? ( extraengine server !static )
 	?? ( tcmalloc jemalloc )
-	static? ( yassl !pam )
-	test? ( extraengine perl server xml )
-"
+	static? ( yassl !pam )"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
+#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS=""
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -43,6 +38,7 @@ S="${WORKDIR}/mysql"
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
 COMMON_DEPEND="
+	dev-libs/libfmt:=
 	>=dev-libs/libpcre2-10.34:=
 	>=sys-apps/texinfo-4.7-r1
 	sys-libs/ncurses:0=
@@ -55,15 +51,16 @@ COMMON_DEPEND="
 	jemalloc? ( dev-libs/jemalloc:0= )
 	kerberos? ( virtual/krb5 )
 	kernel_linux? (
-		sys-process/procps:0=
 		dev-libs/libaio:0=
+		sys-libs/liburing:=
+		sys-process/procps:0=
 	)
 	server? (
 		app-arch/bzip2
 		app-arch/xz-utils
 		backup? ( app-arch/libarchive:0= )
 		columnstore? (
-			app-arch/snappy
+			app-arch/snappy:=
 			dev-libs/boost:=
 			dev-libs/libxml2:2=
 		)
@@ -74,7 +71,7 @@ COMMON_DEPEND="
 		)
 		innodb-lz4? ( app-arch/lz4 )
 		innodb-lzo? ( dev-libs/lzo )
-		innodb-snappy? ( app-arch/snappy )
+		innodb-snappy? ( app-arch/snappy:+ )
 		mroonga? ( app-text/groonga-normalizer-mysql >=app-text/groonga-7.0.4 )
 		numa? ( sys-process/numactl )
 		oqgraph? (
@@ -101,18 +98,16 @@ DEPEND="${COMMON_DEPEND}
 	static? ( sys-libs/ncurses[static-libs] )
 "
 RDEPEND="${COMMON_DEPEND}
-	!dev-db/mysql !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
-	!dev-db/mariadb:0
-	!dev-db/mariadb:5.5
-	!dev-db/mariadb:10.1
-	!dev-db/mariadb:10.2
+	!dev-db/mysql !dev-db/percona-server
 	!dev-db/mariadb:10.3
 	!dev-db/mariadb:10.4
+	!dev-db/mariadb:10.5
 	!dev-db/mariadb:10.6
 	!dev-db/mariadb:10.7
 	!dev-db/mariadb:10.8
-	!<virtual/mysql-5.6-r11
-	!<virtual/libmysqlclient-18-r1
+	!dev-db/mariadb:10.9
+	!dev-db/mariadb:10.10
+	!dev-db/mariadb:11.0
 	selinux? ( sec-policy/selinux-mysql )
 	server? (
 		columnstore? ( dev-db/mariadb-connector-c )
@@ -210,6 +205,9 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}"/mariadb-patches
+	eapply "${FILESDIR}"/${PN}-10.6.11-gssapi.patch
+	eapply "${FILESDIR}"/${PN}-10.6.11-include.patch
+	eapply "${FILESDIR}"/${PN}-10.6.12-gcc-13.patch
 
 	eapply_user
 
@@ -376,7 +374,6 @@ src_configure() {
 			-DPLUGIN_AUTH_PAM=$(usex pam YES NO)
 			-DPLUGIN_AWS_KEY_MANAGEMENT=NO
 			-DPLUGIN_CRACKLIB_PASSWORD_CHECK=$(usex cracklib YES NO)
-			-DPLUGIN_CASSANDRA=NO
 			-DPLUGIN_SEQUENCE=$(usex extraengine YES NO)
 			-DPLUGIN_SPIDER=$(usex extraengine YES NO)
 			-DPLUGIN_S3=$(usex s3 YES NO)
@@ -419,8 +416,8 @@ src_configure() {
 
 		elif ! use latin1 ; then
 			mycmakeargs+=(
-				-DDEFAULT_CHARSET=utf8
-				-DDEFAULT_COLLATION=utf8_general_ci
+				-DDEFAULT_CHARSET=utf8mb4
+				-DDEFAULT_COLLATION=utf8mb4_unicode_520_ci
 			)
 		else
 			mycmakeargs+=(
@@ -552,8 +549,10 @@ src_test() {
 	disabled_tests+=( "compat/oracle.plugin;0;Needs example plugin which Gentoo disables" )
 	disabled_tests+=( "innodb_gis.1;25095;Known rounding error with latest AMD processors" )
 	disabled_tests+=( "innodb_gis.gis;25095;Known rounding error with latest AMD processors" )
+	disabled_tests+=( "main.gis;25095;Known rounding error with latest AMD processors" )
 	disabled_tests+=( "main.explain_non_select;0;Sporadically failing test" )
 	disabled_tests+=( "main.func_time;0;Dependent on time test was written" )
+	disabled_tests+=( "main.mysql_upgrade;27044;Sporadically failing test" )
 	disabled_tests+=( "main.plugin_auth;0;Needs client libraries built" )
 	disabled_tests+=( "main.selectivity_no_engine;26320;Sporadically failing test" )
 	disabled_tests+=( "main.stat_tables;0;Sporadically failing test" )
@@ -561,10 +560,13 @@ src_test() {
 	disabled_tests+=( "main.upgrade_MDEV-19650;25096;Known to be broken" )
 	disabled_tests+=( "mariabackup.*;0;Broken test suite" )
 	disabled_tests+=( "perfschema.nesting;23458;Known to be broken" )
+	disabled_tests+=( "perfschema.prepared_statements;0;Broken test suite" )
+	disabled_tests+=( "perfschema.privilege_table_io;27045;Sporadically failing test" )
 	disabled_tests+=( "plugins.auth_ed25519;0;Needs client libraries built" )
 	disabled_tests+=( "plugins.cracklib_password_check;0;False positive due to varying policies" )
 	disabled_tests+=( "plugins.two_password_validations;0;False positive due to varying policies" )
 	disabled_tests+=( "roles.acl_statistics;0;False positive due to a user count mismatch caused by previous test" )
+	disabled_tests+=( "spider.*;0;Fails with network sandbox" )
 	disabled_tests+=( "sys_vars.wsrep_on_without_provider;25625;Known to be broken" )
 
 	if ! use latin1 ; then

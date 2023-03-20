@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
@@ -9,13 +9,10 @@ JAVA_PKG_OPT_USE="jdbc"
 inherit systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
-# Patch version
-PATCH_SET="https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.6.10-patches-01.tar.xz"
-
-SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
-	${PATCH_SET[@]}"
-
 HOMEPAGE="https://mariadb.org/"
+SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
+	https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.6.10-patches-01.tar.xz"
+
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="$(ver_cut 1-2)/${SUBSLOT:-0}"
@@ -34,7 +31,7 @@ REQUIRED_USE="
 	test? ( extraengine perl server xml )
 "
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -55,15 +52,16 @@ COMMON_DEPEND="
 	jemalloc? ( dev-libs/jemalloc:0= )
 	kerberos? ( virtual/krb5 )
 	kernel_linux? (
-		sys-process/procps:0=
 		dev-libs/libaio:0=
+		sys-libs/liburing:=
+		sys-process/procps:0=
 	)
 	server? (
 		app-arch/bzip2
 		app-arch/xz-utils
 		backup? ( app-arch/libarchive:0= )
 		columnstore? (
-			app-arch/snappy
+			app-arch/snappy:=
 			dev-libs/boost:=
 			dev-libs/libxml2:2=
 		)
@@ -74,7 +72,7 @@ COMMON_DEPEND="
 		)
 		innodb-lz4? ( app-arch/lz4 )
 		innodb-lzo? ( dev-libs/lzo )
-		innodb-snappy? ( app-arch/snappy )
+		innodb-snappy? ( app-arch/snappy:= )
 		mroonga? ( app-text/groonga-normalizer-mysql >=app-text/groonga-7.0.4 )
 		numa? ( sys-process/numactl )
 		oqgraph? (
@@ -210,6 +208,9 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${WORKDIR}"/mariadb-patches
+	eapply "${FILESDIR}"/${PN}-10.6.11-gssapi.patch
+	eapply "${FILESDIR}"/${PN}-10.6.11-include.patch
+	eapply "${FILESDIR}"/${PN}-10.6.11-gcc-13.patch
 
 	eapply_user
 

@@ -11,7 +11,7 @@ inherit systemd flag-o-matic prefix toolchain-funcs \
 
 HOMEPAGE="https://mariadb.org/"
 SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
-	https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.6.10-patches-01.tar.xz"
+	https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.6.12-patches-01.tar.xz"
 
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2 LGPL-2.1+"
@@ -24,12 +24,9 @@ IUSE="+backup bindist columnstore cracklib debug extraengine galera innodb-lz4
 
 RESTRICT="!bindist? ( bindist ) !test? ( test )"
 
-REQUIRED_USE="
-	jdbc? ( extraengine server !static )
+REQUIRED_USE="jdbc? ( extraengine server !static )
 	?? ( tcmalloc jemalloc )
-	static? ( yassl !pam )
-	test? ( extraengine perl server xml )
-"
+	static? ( yassl !pam )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 
@@ -61,7 +58,7 @@ COMMON_DEPEND="
 		app-arch/xz-utils
 		backup? ( app-arch/libarchive:0= )
 		columnstore? (
-			app-arch/snappy
+			app-arch/snappy:=
 			dev-libs/boost:=
 			dev-libs/libxml2:2=
 		)
@@ -72,7 +69,7 @@ COMMON_DEPEND="
 		)
 		innodb-lz4? ( app-arch/lz4 )
 		innodb-lzo? ( dev-libs/lzo )
-		innodb-snappy? ( app-arch/snappy )
+		innodb-snappy? ( app-arch/snappy:= )
 		mroonga? ( app-text/groonga-normalizer-mysql >=app-text/groonga-7.0.4 )
 		numa? ( sys-process/numactl )
 		oqgraph? (
@@ -109,6 +106,10 @@ RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb:10.5
 	!dev-db/mariadb:10.7
 	!dev-db/mariadb:10.8
+	!dev-db/mariadb:10.9
+	!dev-db/mariadb:10.10
+	!dev-db/mariadb:10.11
+	!dev-db/mariadb:11.0
 	!<virtual/mysql-5.6-r11
 	!<virtual/libmysqlclient-18-r1
 	selinux? ( sec-policy/selinux-mysql )
@@ -210,7 +211,7 @@ src_prepare() {
 	eapply "${WORKDIR}"/mariadb-patches
 	eapply "${FILESDIR}"/${PN}-10.6.11-gssapi.patch
 	eapply "${FILESDIR}"/${PN}-10.6.11-include.patch
-	eapply "${FILESDIR}"/${PN}-10.6.11-gcc-13.patch
+	eapply "${FILESDIR}"/${PN}-10.6.12-gcc-13.patch
 
 	eapply_user
 

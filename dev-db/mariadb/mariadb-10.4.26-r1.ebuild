@@ -72,7 +72,7 @@ COMMON_DEPEND="
 		)
 		innodb-lz4? ( app-arch/lz4 )
 		innodb-lzo? ( dev-libs/lzo )
-		innodb-snappy? ( app-arch/snappy )
+		innodb-snappy? ( app-arch/snappy:= )
 		mroonga? ( app-text/groonga-normalizer-mysql >=app-text/groonga-7.0.4 )
 		numa? ( sys-process/numactl )
 		oqgraph? (
@@ -81,7 +81,7 @@ COMMON_DEPEND="
 		)
 		pam? ( sys-libs/pam:0= )
 		systemd? ( sys-apps/systemd:= )
-		tokudb? ( app-arch/snappy )
+		tokudb? ( app-arch/snappy:= )
 	)
 	>=dev-libs/libpcre-8.41-r1:3=
 	virtual/libcrypt:=
