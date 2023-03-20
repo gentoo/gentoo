@@ -91,7 +91,7 @@ IUSE="source"
 PKGEXT=tar.xz
 
 # Now where should we get these files?
-TEXLIVE_DEVS=${TEXLIVE_DEVS:- zlogene dilfridge }
+TEXLIVE_DEVS=${TEXLIVE_DEVS:- zlogene dilfridge sam }
 
 # We do not need anything from SYSROOT:
 #   Everything is built from the texlive install in /
