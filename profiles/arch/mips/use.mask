@@ -11,6 +11,7 @@
 # in the future upon user request.
 vulkan
 vaapi
+frei0r
 
 # matoro <matoro_gentoo@matoro.tk> (2023-03-03)
 # app-crypt/tpm2-tss is not keyworded here
