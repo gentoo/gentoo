@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,19 +7,19 @@ inherit texlive-common
 
 DESCRIPTION="DVI-to-PostScript translator"
 HOMEPAGE="http://tug.org/texlive/"
-SRC_URI="https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz"
+SRC_URI="https://dev.gentoo.org/~{zlogene,sam}/distfiles/texlive/texlive-${PV#*_p}-source.tar.xz"
 
 TL_VERSION=2021
 EXTRA_TL_MODULES="dvips"
 EXTRA_TL_DOC_MODULES="dvips.doc"
 
 for i in ${EXTRA_TL_MODULES} ; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~{zlogene,sam}/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
 done
 
 SRC_URI="${SRC_URI} doc? ( "
 for i in ${EXTRA_TL_DOC_MODULES} ; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~{zlogene,sam}/distfiles/texlive/tl-${i}-${TL_VERSION}.tar.xz"
 done
 SRC_URI="${SRC_URI} ) "
 
