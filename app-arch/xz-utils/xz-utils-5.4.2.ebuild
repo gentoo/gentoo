@@ -53,6 +53,10 @@ if [[ ${PV} != 9999 ]] ; then
 	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-lassecollin-20230213 )"
 fi
 
+PATCHES=(
+	"${FILESDIR}"/${P}-Wsign-conversion.patch
+)
+
 src_prepare() {
 	default
 
