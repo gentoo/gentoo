@@ -38,7 +38,6 @@ COMMON_DEPEND="
 	truetype? ( x11-libs/libXft >=media-libs/freetype-2 )
 	wayland? (
 		dev-libs/wayland
-		dev-libs/wayland-protocols
 		x11-libs/pango
 	)
 	wifi? ( net-wireless/wireless-tools )
@@ -66,6 +65,9 @@ RDEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
+	wayland? (
+		dev-libs/wayland-protocols
+	)
 "
 BDEPEND="
 	doc? (
