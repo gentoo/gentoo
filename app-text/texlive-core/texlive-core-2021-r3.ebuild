@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,9 +17,9 @@ HOMEPAGE="https://tug.org/texlive/"
 SLOT="0"
 LICENSE="GPL-2 LPPL-1.3c TeX"
 
-SRC_URI="https://dev.gentoo.org/~zlogene/distfiles/texlive/${MY_P}.tar.xz
-	https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-tlpdb-${PV}.tar.xz
-	https://dev.gentoo.org/~zlogene/distfiles/texlive/${PN}-patches-${PV}-${PATCHLEVEL}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~{zlogene,sam}/distfiles/texlive/${MY_P}.tar.xz
+	https://dev.gentoo.org/~{zlogene,sam}/distfiles/texlive/texlive-tlpdb-${PV}.tar.xz
+	https://dev.gentoo.org/~{zlogene,sam}/distfiles/texlive/${PN}-patches-${PV}-${PATCHLEVEL}.tar.xz"
 
 # We ship binextra collection alongside
 TL_CORE_BINEXTRA_MODULES="
@@ -62,17 +62,17 @@ TL_CORE_EXTRA_DOC_MODULES="gsftopk.doc texlive.infra.doc texlive-scripts.doc ${T
 TL_CORE_EXTRA_SRC_MODULES="${TL_CORE_BINEXTRA_SRC_MODULES}"
 
 for i in ${TL_CORE_EXTRA_MODULES}; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${PV}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~{zlogene,sam}/distfiles/texlive/tl-${i}-${PV}.tar.xz"
 done
 
 SRC_URI="${SRC_URI} doc? ( "
 for i in ${TL_CORE_EXTRA_DOC_MODULES}; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${PV}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~{zlogene,sam}/distfiles/texlive/tl-${i}-${PV}.tar.xz"
 done
 SRC_URI="${SRC_URI} )"
 SRC_URI="${SRC_URI} source? ( "
 for i in ${TL_CORE_EXTRA_SRC_MODULES}; do
-	SRC_URI="${SRC_URI} https://dev.gentoo.org/~zlogene/distfiles/texlive/tl-${i}-${PV}.tar.xz"
+	SRC_URI="${SRC_URI} https://dev.gentoo.org/~{zlogene,sam}/distfiles/texlive/tl-${i}-${PV}.tar.xz"
 done
 SRC_URI="${SRC_URI} )"
 
