@@ -79,7 +79,7 @@ RDEPEND="
 	sbc? ( media-libs/sbc )
 	sdjournal? ( sys-apps/systemd:= )
 	smi? ( net-libs/libsmi )
-	snappy? ( app-arch/snappy )
+	snappy? ( app-arch/snappy:= )
 	spandsp? ( media-libs/spandsp:= )
 	sshdump? ( >=net-libs/libssh-0.6:= )
 	ssl? ( >=net-libs/gnutls-3.5.8:= )
