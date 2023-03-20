@@ -38,10 +38,11 @@ src_install() {
 	doins -r public conf
 
 	dobin bin/grafana-cli
+	dobin bin/grafana
 	dobin bin/grafana-server
 
 	newconfd "${FILESDIR}"/grafana-r1.confd grafana
-	newinitd "${FILESDIR}"/grafana.initd grafana
+	newinitd "${FILESDIR}"/grafana.initd2 grafana
 	systemd_newunit "${FILESDIR}"/grafana.service grafana.service
 
 	keepdir /var/{lib,log}/grafana
