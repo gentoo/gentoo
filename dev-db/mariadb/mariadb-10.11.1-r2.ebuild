@@ -71,7 +71,7 @@ COMMON_DEPEND="
 		)
 		innodb-lz4? ( app-arch/lz4 )
 		innodb-lzo? ( dev-libs/lzo )
-		innodb-snappy? ( app-arch/snappy:+ )
+		innodb-snappy? ( app-arch/snappy:= )
 		mroonga? ( app-text/groonga-normalizer-mysql >=app-text/groonga-7.0.4 )
 		numa? ( sys-process/numactl )
 		oqgraph? (
