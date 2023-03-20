@@ -1,20 +1,19 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+EAPI=8
 
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit ruby-fakegem
 
 DESCRIPTION="Ruby method to unindent strings"
 HOMEPAGE="https://github.com/mynyml/unindent"
-LICENSE="MIT"
 
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+LICENSE="MIT"
 SLOT="0"
-IUSE=""
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 ruby_add_bdepend "test? ( dev-ruby/nanotest )"
 
