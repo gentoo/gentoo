@@ -5,14 +5,13 @@ EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
 MAVEN_ID="commons-logging:commons-logging:1.3.0"
-# Not yet supported, see https://bugs.gentoo.org/839681
-# JAVA_TESTING_FRAMEWORKS="junit-vintage"
+JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Thin adapter allowing configurable bridging to other well known logging systems"
 HOMEPAGE="https://commons.apache.org/proper/commons-logging/"
-MY_COMMIT="058cf5ee350cd83d1ab28b000ad6be903ca160c5"
+MY_COMMIT="d376d3128663e53de4af948e161291e7ec0c6ec1"
 SRC_URI="https://github.com/apache/${PN}/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
@@ -52,7 +51,6 @@ src_prepare() {
 
 	if use !log4j; then
 		rm src/main/java/org/apache/commons/logging/impl/Log4JLogger.java || die
-		rm -r src/test/java/org/apache/commons/logging/log4j || die
 	fi
 }
 
@@ -84,19 +82,41 @@ src_compile() {
 	popd > /dev/null || die
 }
 
-# https://github.com/apache/commons-logging/blob/058cf5ee350cd83d1ab28b000ad6be903ca160c5/pom.xml#L396-L407
-# src_test() {
-# 	JAVA_TEST_EXTRA_ARGS=(
-# 		-Dtestclasses="commons-logging-tests.jar"
-# 		-Dcommons-logging="commons-logging.jar"
-# 		-Dcommons-logging-api="commons-logging-api.jar"
-# 		-Dcommons-logging-adapters="commons-logging-adapters.jar"
-# 	)
-# 	JAVA_TEST_RESOURCE_DIRS="src/test/resources"
-# 	JAVA_TEST_SRC_DIR="src/test/java"
-# 	if use log4j; then
-# 		JAVA_TEST_EXTRA_ARGS+=" -Dlog4j12=$(java-pkg_getjars log4j-12-api-2,log4j-core-2)"
-# 	fi
-# 	JAVA_TEST_EXTRA_ARGS+=" -Dservlet-api=$(java-pkg_getjars javax-servlet-api-2.5)"
-# 	java-pkg-simple_src_test
-# }
+https://github.com/apache/commons-logging/blob/058cf5ee350cd83d1ab28b000ad6be903ca160c5/pom.xml#L396-L407
+src_test() {
+	# Do not run Log4j tests because these tests use an Appender to verify
+	# logging correctness.  The log4j-12-api bridge no longer supports using an
+	# Appender for verifications since the methods for adding an Appender in
+	# the bridge "are largely no-ops".  This means an Appender's state would
+	# never be changed by log4j-12-api after new messages are logged.  The test
+	# cases, however, expect changes to the Appender's state in such an event,
+	# so they would fail with log4j-12-api.
+	# https://logging.apache.org/log4j/log4j-2.8/log4j-1.2-api/index.html
+	rm src/test/java/org/apache/commons/logging/pathable/ParentFirstTestCase.java || die # Log4JLogger
+	rm src/test/java/org/apache/commons/logging/pathable/ChildFirstTestCase.java || die # Log4JLogger
+	rm -r src/test/java/org/apache/commons/logging/log4j || die
+
+	JAVA_TEST_EXCLUDES=(
+		org.apache.commons.logging.security.SecurityForbiddenTestCase # 2 tests 1 failing
+		org.apache.commons.logging.jdk14.TestHandler # No runnable methods
+	)
+	JAVA_TEST_EXTRA_ARGS=(
+		-Dservlet-api="$(java-pkg_getjars javax-servlet-api-2.5)"
+		-Dcommons-logging="commons-logging.jar"
+		-Dcommons-logging-api="commons-logging-api.jar"
+		-Dcommons-logging-adapters="commons-logging-adapters.jar"
+		-Dtestclasses="target/test-classes"
+	)
+	if use log4j; then
+		JAVA_TEST_EXTRA_ARGS+=" -Dlog4j12=$(java-pkg_getjars log4j-12-api-2,log4j-core-2)"
+	fi
+	JAVA_TEST_GENTOO_CLASSPATH="junit-4"
+	JAVA_TEST_RESOURCE_DIRS="src/test/resources"
+	JAVA_TEST_SRC_DIR="src/test/java"
+	java-pkg-simple_src_test
+}
+
+src_install() {
+	java-pkg-simple_src_install
+	java-pkg_dojar commons-logging-api.jar commons-logging-adapters.jar
+}
