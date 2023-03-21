@@ -106,6 +106,7 @@ src_install() {
 	# without optimization and that would at the very least be very noisy
 	# during builds and at worst trigger many -Werror builds.
 	cat >> "${ED}/usr/include/gentoo/fortify.h" <<- EOF || die
+	#pragma clang system_header
 	#ifndef _FORTIFY_SOURCE
 	# if defined(__has_feature)
 	#  define __GENTOO_HAS_FEATURE(x) __has_feature(x)
