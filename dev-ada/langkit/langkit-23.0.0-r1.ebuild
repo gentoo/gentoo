@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..11} )
-ADA_COMPAT=( gnat_2021 gcc_12 gcc_12_2_0 )
+ADA_COMPAT=( gnat_2021 gcc_12 )
 
 DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1 ada multiprocessing
