@@ -16,7 +16,7 @@ S="${WORKDIR}/jaxb-ri-${PV}-RI/jaxb-ri/runtime/impl"
 
 LICENSE="EPL-1.0"
 SLOT="2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 CP_DEPEND="
 	dev-java/fastinfoset:0
