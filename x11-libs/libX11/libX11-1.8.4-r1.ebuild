@@ -33,6 +33,7 @@ src_configure() {
 		$(use_enable doc specs)
 		--enable-ipv6
 		--without-fop
+		--with-keysymdefdir="${ESYSROOT}/usr/include/X11"
 		CPP="$(tc-getPROG CPP cpp)"
 	)
 	xorg-3_src_configure
