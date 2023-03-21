@@ -139,7 +139,6 @@ RDEPEND="${COMMON_DEPEND}
 	app-alternatives/awk
 	sys-apps/gentoo-functions
 	!<app-misc/pax-utils-${MIN_PAX_UTILS_VER}
-	!<net-misc/openssh-8.1_p1-r2
 "
 
 RESTRICT="!test? ( test )"
