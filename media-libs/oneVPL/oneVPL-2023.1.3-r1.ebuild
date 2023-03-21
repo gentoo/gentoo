@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake optfeature
+inherit cmake-multilib optfeature
 
 DESCRIPTION="oneAPI Video Processing Library, dispatcher, tools, and examples"
 HOMEPAGE="https://github.com/oneapi-src/oneVPL"
@@ -13,34 +13,37 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="dri drm examples experimental +tools test vaapi wayland X"
+IUSE="dri drm examples experimental tools test vaapi wayland X"
 RESTRICT="!test? ( test )"
-# Most of these flags only have an effect on the tools
+# Tools fails to compile on 32-bit
 REQUIRED_USE="
 	dri? ( X drm )
-	drm? ( tools )
-	X? ( tools vaapi )
-	wayland? ( tools drm )
-	vaapi? ( tools )
+	X? ( vaapi )
+	wayland? ( drm )
+	abi_x86_32? ( !tools )
+	abi_x86_x32? ( !tools )
 "
 
-BDEPEND="virtual/pkgconfig"
-DEPEND="
-	x11-libs/libpciaccess
-	vaapi? ( media-libs/libva[X?,wayland?,drm(+)?] )
-	drm? ( x11-libs/libdrm )
+RDEPEND="
+	x11-libs/libpciaccess[${MULTILIB_USEDEP}]
+	vaapi? ( media-libs/libva[X?,wayland?,drm(+)?,${MULTILIB_USEDEP}] )
+	drm? ( x11-libs/libdrm[${MULTILIB_USEDEP}] )
 	wayland? (
-		dev-libs/wayland
-		dev-libs/wayland-protocols
+		dev-libs/wayland[${MULTILIB_USEDEP}]
 	)
 	X? (
-		x11-libs/libX11
-		x11-libs/libxcb
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libxcb[${MULTILIB_USEDEP}]
 	)
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	wayland? (
+		dev-libs/wayland-protocols
+	)
+"
+BDEPEND="virtual/pkgconfig"
 
-src_configure() {
+multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_DISPATCHER=ON
@@ -65,7 +68,7 @@ src_configure() {
 	cmake_src_configure
 }
 
-src_install() {
+multilib_src_install() {
 	cmake_src_install
 	# Remove these license files
 	rm -r "${ED}/usr/share/vpl/licensing" || die
