@@ -82,7 +82,6 @@ src_compile() {
 	popd > /dev/null || die
 }
 
-https://github.com/apache/commons-logging/blob/058cf5ee350cd83d1ab28b000ad6be903ca160c5/pom.xml#L396-L407
 src_test() {
 	# Do not run Log4j tests because these tests use an Appender to verify
 	# logging correctness.  The log4j-12-api bridge no longer supports using an
