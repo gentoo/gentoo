@@ -6,15 +6,18 @@ EAPI=8
 DISTUTILS_USE_PEP517=flit
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Remove outdated built kernels"
 HOMEPAGE="https://github.com/projg2/eclean-kernel/"
-EGIT_REPO_URI="https://github.com/projg2/eclean-kernel.git"
+SRC_URI="
+	https://github.com/projg2/eclean-kernel/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="lz4 lzo zstd"
 
 RDEPEND="
