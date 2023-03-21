@@ -25,7 +25,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake GIT=${GIT_COMMIT} VERSION=v${PV} build
+	emake GIT_REV=${GIT_COMMIT} VERSION=v${PV} build
 }
 
 src_install() {
