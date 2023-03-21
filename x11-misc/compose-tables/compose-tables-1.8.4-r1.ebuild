@@ -27,6 +27,7 @@ XORG_CONFIGURE_OPTIONS=(
 	--without-fop
 	--disable-specs
 	--disable-xkb
+	--with-keysymdefdir="${ESYSROOT}/usr/include/X11"
 )
 
 src_compile() {
