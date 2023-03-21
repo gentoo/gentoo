@@ -15,7 +15,7 @@ S="${WORKDIR}/jaxb-ri-${PV}-RI/jaxb-ri/txw/runtime"
 
 LICENSE="EPL-1.0"
 SLOT="2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
