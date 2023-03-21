@@ -254,25 +254,6 @@ llvm_check_deps() {
 }
 
 pre_build_checks() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		[[ ${EBUILD_PHASE_FUNC} == pkg_setup ]] && ( use lto || use pgo ) && llvm_pkg_setup
-
-		local -x CPP="$(tc-getCXX) -E"
-		if tc-is-gcc && ! ver_test "$(gcc-version)" -ge 10.4; then
-			die "At least gcc 10.4 is required"
-		fi
-		if use pgo && tc-is-cross-compiler; then
-			die "The pgo USE flag cannot be used when cross-compiling"
-		fi
-		if needs_clang || tc-is-clang; then
-			tc-is-cross-compiler && CPP=${CBUILD}-clang++ || CPP=${CHOST}-clang++
-			CPP+=" -E"
-			if ! ver_test "$(clang-major-version)" -ge 13; then
-				die "At least clang 13 is required"
-			fi
-		fi
-	fi
-
 	# Check build requirements, bug #541816 and bug #471810 .
 	CHECKREQS_MEMORY="4G"
 	CHECKREQS_DISK_BUILD="12G"
@@ -306,7 +287,31 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+	if use lto || use pgo; then
+		llvm_pkg_setup
+	fi
+
 	pre_build_checks
+
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		local -x CPP="$(tc-getCXX) -E"
+		if tc-is-gcc && ! ver_test "$(gcc-version)" -ge 10.4; then
+			die "At least gcc 10.4 is required"
+		fi
+		if use pgo && tc-is-cross-compiler; then
+			die "The pgo USE flag cannot be used when cross-compiling"
+		fi
+		if needs_clang && ! tc-is-clang; then
+			if tc-is-cross-compiler; then
+				CPP="${CBUILD}-clang++ -E"
+			else
+				CPP="${CHOST}-clang++ -E"
+			fi
+			if ! ver_test "$(clang-major-version)" -ge 13; then
+				die "At least clang 13 is required"
+			fi
+		fi
+	fi
 
 	chromium_suid_sandbox_check_kernel_config
 
