@@ -1090,6 +1090,14 @@ toolchain_src_configure() {
 		confgcc+=( --enable-libstdcxx-time )
 	fi
 
+	# This only controls whether the compiler *supports* LTO, not whether
+	# it's *built using* LTO. Hence we do it without a USE flag.
+	if tc_version_is_at_least 4.6 ; then
+		confgcc+=( --enable-lto )
+	elif tc_version_is_at_least 4.5 ; then
+		confgcc+=( --disable-lto )
+	fi
+
 	# Build compiler itself using LTO
 	if tc_version_is_at_least 9.1 && _tc_use_if_iuse lto ; then
 		build_config_targets+=( bootstrap-lto )
@@ -1487,14 +1495,6 @@ toolchain_src_configure() {
 
 	if in_iuse zstd ; then
 		confgcc+=( $(use_with zstd) )
-	fi
-
-	# This only controls whether the compiler *supports* LTO, not whether
-	# it's *built using* LTO. Hence we do it without a USE flag.
-	if tc_version_is_at_least 4.6 ; then
-		confgcc+=( --enable-lto )
-	elif tc_version_is_at_least 4.5 ; then
-		confgcc+=( --disable-lto )
 	fi
 
 	# graphite was added in 4.4 but we only support it in 6.5+ due to external
