@@ -1164,6 +1164,10 @@ toolchain_src_configure() {
 			avr)
 				confgcc+=( --enable-shared --disable-threads )
 				;;
+			nvptx*)
+				# "LTO is not supported for this target"
+				confgcc+=( --disable-lto )
+				;;
 		esac
 
 		if [[ -n ${needed_libc} ]] ; then
