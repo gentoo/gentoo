@@ -10,7 +10,19 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://aomedia.googlesource.com/aom"
 else
-	SRC_URI="https://storage.googleapis.com/aom-releases/${P}.tar.gz"
+	# To update test data tarball, follow these steps:
+	# 1.  Clone the upstream repo and check out the relevant tag,
+	#	  or download the release tarball
+	# 2.  Regular cmake configure (options don't matter here):
+	#     cd build && cmake ..
+	# 3.  Set LIBAOM_TEST_DATA_PATH to the directory you want and
+	#     run the "make testdata" target:
+	#     LIBAOM_TEST_DATA_PATH=../libaom-1.2.3-testdata make testdata
+	#     This will download the test data from the internet.
+	# 4.  Create a tarball out of that directory.
+	#     cd .. && tar cvzf libaom-1.2.3-testdata.tar.gz libaom-1.2.3-testdata
+	SRC_URI="https://storage.googleapis.com/aom-releases/${P}.tar.gz
+		test? ( https://dev.gentoo.org/~ionen/distfiles/${P}-testdata.tar.gz )"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
@@ -23,8 +35,7 @@ IUSE="doc +examples test"
 IUSE="${IUSE} cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3"
 IUSE="${IUSE} cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2"
 IUSE="${IUSE} cpu_flags_arm_neon"
-# Tests need more wiring up
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	cpu_flags_x86_sse2? ( cpu_flags_x86_mmx )
@@ -97,7 +108,7 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	"${BUILD_DIR}"/test_libaom || die
+	LIBAOM_TEST_DATA_PATH="${WORKDIR}/${P}-testdata" "${BUILD_DIR}"/test_libaom || die
 }
 
 multilib_src_install() {
