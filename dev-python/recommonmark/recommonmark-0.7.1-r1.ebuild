@@ -8,8 +8,15 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="Python docutils-compatibility bridge to CommonMark"
-HOMEPAGE="https://recommonmark.readthedocs.io/"
-SRC_URI="https://github.com/rtfd/recommonmark/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="
+	https://recommonmark.readthedocs.io/
+	https://github.com/readthedocs/recommonmark/
+	https://pypi.org/project/recommonmark/
+"
+SRC_URI="
+	https://github.com/readthedocs/recommonmark/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+"
 
 LICENSE="MIT"
 SLOT="0"
