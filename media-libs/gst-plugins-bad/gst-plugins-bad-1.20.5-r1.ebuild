@@ -34,7 +34,7 @@ RDEPEND="
 
 	orc? ( >=dev-lang/orc-0.4.17[${MULTILIB_USEDEP}] )
 
-	qsv? ( media-libs/oneVPL[wayland?,X?] )
+	qsv? ( media-libs/oneVPL[wayland?,X?,${MULTILIB_USEDEP}] )
 "
 
 DEPEND="${RDEPEND}"
@@ -70,8 +70,7 @@ multilib_src_configure() {
 		$(meson_feature wayland)
 	)
 
-	# Quick Sync Video is amd64 native only
-	if use qsv && multilib_is_native_abi; then
+	if use qsv; then
 		emesonargs+=(
 			-Dmsdk=enabled
 			-Dmfx_api=oneVPL
