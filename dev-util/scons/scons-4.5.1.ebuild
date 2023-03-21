@@ -18,15 +18,15 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${MY_P}.tar.gz
-	https://github.com/SCons/scons/pull/4322.patch
-		-> ${P}-mergeflags.patch
-	https://github.com/SCons/scons/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
 	doc? (
 		https://www.scons.org/doc/${PV}/PDF/${PN}-user.pdf
 			-> ${P}-user.pdf
 		https://www.scons.org/doc/${PV}/HTML/${PN}-user.html
 			-> ${P}-user.html
+	)
+	test? (
+		https://github.com/SCons/scons/archive/${PV}.tar.gz
+			-> ${P}.gh.tar.gz
 	)
 "
 S="${WORKDIR}/${P}/src"
@@ -45,9 +45,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	# https://bugs.gentoo.org/900971
-	"${DISTDIR}/${P}-mergeflags.patch"
-
 	# support env passthrough for Gentoo ebuilds
 	"${FILESDIR}"/scons-4.1.0-env-passthrough.patch
 	# respect CC, CXX, C*FLAGS, LDFLAGS by default
@@ -57,7 +54,12 @@ PATCHES=(
 src_unpack() {
 	# use the git directory structure, but put pregenerated release
 	# inside src/ subdirectory to make our life easier
-	unpack "${P}.gh.tar.gz"
+	if use test; then
+		unpack "${P}.gh.tar.gz"
+	else
+		mkdir -p "${P}"/src || die
+	fi
+
 	tar -C "${P}"/src --strip-components=1 -xzf "${DISTDIR}/${MY_P}.tar.gz" || die
 }
 
