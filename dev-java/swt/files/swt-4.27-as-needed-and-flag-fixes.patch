@@ -1,5 +1,3 @@
-diff --git a/make_linux.mak b/make_linux.mak
-index 65c168f..c3a059a 100644
 --- a/make_linux.mak
 +++ b/make_linux.mak
 @@ -98,7 +98,7 @@ ATK_OBJECTS = swt.o atk.o atk_structs.o atk_custom.o atk_stats.o
