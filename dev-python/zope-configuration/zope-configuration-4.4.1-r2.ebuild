@@ -4,6 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN/-/.}
 PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 pypi
@@ -14,8 +16,6 @@ HOMEPAGE="
 	https://github.com/zopefoundation/zope.configuration/
 	https://zopeconfiguration.readthedocs.io/en/latest/
 "
-SRC_URI="$(pypi_sdist_url --no-normalize "${PN/-/.}")"
-S=${WORKDIR}/${P/-/.}
 
 LICENSE="ZPL"
 SLOT="0"
