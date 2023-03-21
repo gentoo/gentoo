@@ -5,7 +5,7 @@ EAPI=8
 
 CMAKE_BUILD_TYPE="Release"
 
-inherit cmake
+inherit cmake-multilib
 
 DESCRIPTION="Intel Graphics Memory Management Library"
 HOMEPAGE="https://github.com/intel/gmmlib"
@@ -24,7 +24,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-22.1.1_custom_cflags.patch
 )
 
-src_configure() {
+multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING="$(usex test)"
 		-DBUILD_TYPE="Release"
