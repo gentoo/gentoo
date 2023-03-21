@@ -23,7 +23,6 @@ else
 fi
 
 RDEPEND="
-	app-text/gspell[vala]
 	dev-db/sqlite:3
 	dev-libs/glib:2
 	dev-libs/icu:=
