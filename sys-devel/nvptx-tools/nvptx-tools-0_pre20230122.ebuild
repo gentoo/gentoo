@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,6 +12,8 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	MY_COMMIT="93e00909ceb9cbbc104f0fcba56c0361ffb3ca4b"
 	SRC_URI="https://github.com/MentorEmbedded/nvptx-tools/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}"/${PN}-${MY_COMMIT}
+
 	KEYWORDS="~amd64"
 fi
 
