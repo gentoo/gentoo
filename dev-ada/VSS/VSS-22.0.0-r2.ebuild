@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_12_2_0 gcc_12 )
+ADA_COMPAT=( gnat_2021 gcc_12 )
 inherit ada multiprocessing
 
 DESCRIPTION="A high level string and text processing library"
@@ -18,14 +18,10 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
-RDEPEND="${ADA_DEPS}
-	dev-ada/xmlada[${ADA_USEDEP}]"
+RDEPEND="${ADA_DEPS}"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]
-	test? (
-		app-i18n/unicode-data
-		dev-ada/xmlada[${ADA_USEDEP}]
-	)"
+	test? ( app-i18n/unicode-data )"
 
 src_prepare() {
 	mkdir data
@@ -39,6 +35,5 @@ src_compile() {
 
 src_test() {
 	emake -j1 GPRBUILD_FLAGS="-p -j$(makeopts_jobs) -v" build_tests
-	#emake check_text check_json # these are failing here
-	emake check_regexp check_html
+	emake check_text check_json
 }
