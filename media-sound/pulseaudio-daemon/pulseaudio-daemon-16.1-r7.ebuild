@@ -111,7 +111,6 @@ COMMON_DEPEND="
 		>=x11-libs/libXtst-1.0.99.2
 	)
 	zeroconf? ( >=net-dns/avahi-0.6.12[dbus] )
-	!<media-sound/pulseaudio-15.0-r100
 "
 
 # pulseaudio ships a bundle xmltoman, which uses XML::Parser
