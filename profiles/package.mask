@@ -361,15 +361,6 @@ acct-group/jabber
 # Breaks too many revdeps for now
 =app-text/discount-3*
 
-# Sam James <sam@gentoo.org> (2023-01-29)
-# Commands trigger an assertion and crashes, bug #892487
-=sys-fs/lvm2-2.03.18
-
-# Sam James <sam@gentoo.org> (2023-01-23)
-# Please upgrade to >=app-eselect/eselect-wxwidgets-20230114-r1 as -r0 may
-# lead to build failures.
-=app-eselect/eselect-wxwidgets-20230114
-
 # David Seifert <soap@gentoo.org> (2023-01-14)
 # Py3.8 only backports
 dev-python/backports-tempfile
