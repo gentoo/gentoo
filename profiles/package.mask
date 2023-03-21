@@ -612,3 +612,4 @@ www-plugins/chrome-binary-plugins:unstable
 dev-util/mingw64-runtime
 sys-libs/newlib
 dev-embedded/avr-libc
+sys-devel/nvptx-tools
