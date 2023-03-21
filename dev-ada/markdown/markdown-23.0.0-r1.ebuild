@@ -1,9 +1,9 @@
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-ADA_COMPAT=( gnat_2021 gcc_12_2_0 gcc_12 )
+ADA_COMPAT=( gnat_2021 gcc_12 )
 inherit ada
 
 DESCRIPTION="Provides a markdown parser written in Ada"
