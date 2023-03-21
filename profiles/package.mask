@@ -351,12 +351,6 @@ dev-python/pandas-datareader
 # Removal on 2023-03-22.  Bug #888241.
 dev-python/colorspacious
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-19)
-# Incompatible with Python 3.11.  Last commit in 2017, archived in 2020.
-# No revdeps.
-# Removal on 2023-03-21.  Bug #895342.
-dev-python/flask-script
-
 # Florian Schmaus <flow@gentoo.org> (2023-02-09)
 # Leftovers from net-im/jabber-base. Unused and obsolete.
 # Removal on 2023-03-09.
