@@ -164,6 +164,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc-12.patch
+	"${FILESDIR}"/${P}-gcc-12-editor.patch
 )
 
 dxx_scons() {
