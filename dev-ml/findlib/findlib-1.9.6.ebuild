@@ -52,6 +52,9 @@ src_install() {
 		docinto html
 		dodoc -r ref-html guide-html
 	fi
+
+	# See bug #803275 and bug #833604
+	rm -f "${ED}/usr/$(get_libdir)/ocaml/labltk/META" || die
 }
 
 check_stublibs() {
