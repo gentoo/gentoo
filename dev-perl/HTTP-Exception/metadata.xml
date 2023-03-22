@@ -15,5 +15,6 @@
     <remote-id type="cpan-module">HTTP::Exception::5XX</remote-id>
     <remote-id type="cpan-module">HTTP::Exception::Base</remote-id>
     <remote-id type="cpan-module">HTTP::Exception::Loader</remote-id>
+    <remote-id type="github">tmueller/http_exception</remote-id>
   </upstream>
 </pkgmetadata>
