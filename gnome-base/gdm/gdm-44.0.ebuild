@@ -19,14 +19,15 @@ LICENSE="
 
 SLOT="0"
 
-IUSE="accessibility audit bluetooth-sound branding fprint plymouth selinux systemd tcpd test wayland"
+IUSE="accessibility audit bluetooth-sound branding elogind fprint plymouth selinux systemd tcpd test wayland"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="^^ ( systemd )"
+REQUIRED_USE="^^ ( elogind systemd )"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 # dconf, dbus and g-s-d are needed at install time for dconf update
-# keyutils is automagic dep that makes autologin unlock login keyring when all the passwords match (disk encryption, user pw and login keyring)
+# keyutils is automagic dep that makes autologin unlock login keyring
+# when all the passwords match (disk encryption, user pw and login keyring)
 # dbus-run-session used at runtime
 COMMON_DEPEND="
 	virtual/udev
@@ -46,6 +47,7 @@ COMMON_DEPEND="
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 
 	systemd? ( >=sys-apps/systemd-186:0=[pam] )
+	elogind? ( >=sys-auth/elogind-239.3[pam] )
 
 	plymouth? ( sys-boot/plymouth )
 	audit? ( sys-process/audit )
@@ -96,9 +98,10 @@ DOC_CONTENTS="
 	To make GDM start at boot with systemd, run:\n
 	# systemctl enable gdm.service\n
 	\n
-	To make GDM start at boot with OpenRC, edit /etc/conf.d to have
-	DISPLAYMANAGER=\"gdm\" and enable the xdm service:\n
-	# rc-update add xdm
+	To make GDM start at boot with OpenRC, edit
+	/etc/conf.d/display-manager to have
+	DISPLAYMANAGER=\"gdm\" and enable the display-manager service:\n
+	# rc-update add display-manager
 	\n
 	For passwordless login to unlock your keyring, you need to install
 	sys-auth/pambase with USE=gnome-keyring and set an empty password
@@ -108,9 +111,13 @@ DOC_CONTENTS="
 	for smartcard support
 "
 
+PATCHES=(
+	# Add elogind support
+	"${FILESDIR}/${PN}-44.0-meson-allow-building-with-elogind.patch"
+)
+
 src_prepare() {
 	default
-
 	# Show logo when branding is enabled
 	use branding && eapply "${FILESDIR}/${PN}-3.30.3-logo.patch"
 }
@@ -130,6 +137,7 @@ src_configure() {
 		-Dgroup=gdm
 		-Dipv6=true
 		$(meson_feature audit libaudit)
+		-Dlogind-provider=$(usex systemd systemd elogind)
 		-Dpam-mod-dir=$(getpam_mod_dir)
 		$(meson_feature plymouth)
 		-Drun-dir=/run/gdm
@@ -143,11 +151,19 @@ src_configure() {
 		-Dxdmcp=enabled
 	)
 
-	emesonargs+=(
+	if use elogind; then
+		emesonargs+=(
+			-Dinitial-vt=7 # TODO: Revisit together with startDM.sh and other xinit talks; also ignores plymouth possibility
+			-Dsystemdsystemunitdir=no
+			-Dsystemduserunitdir=no
+		)
+	else
+		emesonargs+=(
 			-Dinitial-vt=1
 			-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
 			-Dsystemduserunitdir="$(systemd_get_userunitdir)"
-	)
+		)
+	fi
 
 	meson_src_configure
 }
