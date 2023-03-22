@@ -14,27 +14,22 @@ HOMEPAGE="https://netfilter.org/projects/nftables/"
 if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://git.netfilter.org/${PN}"
-
-	BDEPEND="
-		sys-devel/bison
-		sys-devel/flex
-	"
+	BDEPEND="sys-devel/bison"
 else
-	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.xz
-		verify-sig? ( https://netfilter.org/projects/nftables/files/${P}.tar.xz.sig )"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
+	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2
+		verify-sig? ( https://netfilter.org/projects/nftables/files/${P}.tar.bz2.sig )"
+	KEYWORDS="amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 fi
 
-# See COPYING: new code is GPL-2+, existing code is GPL-2
-LICENSE="GPL-2 GPL-2+"
+LICENSE="GPL-2"
 SLOT="0/1"
 IUSE="debug doc +gmp json libedit +modern-kernel python +readline static-libs test xtables"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=net-libs/libmnl-1.0.4:=
-	>=net-libs/libnftnl-1.2.5:=
+	>=net-libs/libmnl-1.0.4:0=
+	>=net-libs/libnftnl-1.2.3:0=
 	gmp? ( dev-libs/gmp:= )
 	json? ( dev-libs/jansson:= )
 	python? ( ${PYTHON_DEPS} )
@@ -45,6 +40,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BDEPEND+="
+	sys-devel/flex
 	virtual/pkgconfig
 	doc? (
 		app-text/asciidoc

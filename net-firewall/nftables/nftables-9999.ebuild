@@ -14,16 +14,12 @@ HOMEPAGE="https://netfilter.org/projects/nftables/"
 if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://git.netfilter.org/${PN}"
-
-	BDEPEND="
-		sys-devel/bison
-		sys-devel/flex
-	"
+	BDEPEND="sys-devel/bison"
 else
 	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.xz
 		verify-sig? ( https://netfilter.org/projects/nftables/files/${P}.tar.xz.sig )"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
+	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-netfilter )"
 fi
 
 # See COPYING: new code is GPL-2+, existing code is GPL-2
@@ -45,6 +41,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BDEPEND+="
+	sys-devel/flex
 	virtual/pkgconfig
 	doc? (
 		app-text/asciidoc
