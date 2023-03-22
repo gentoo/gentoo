@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -98,8 +98,7 @@ pkg_setup() {
 	selection of a DRM device even if unused, e.g. CONFIG_DRM_AMDGPU=m or
 	DRM_I915=y, DRM_NOUVEAU=m also acceptable if a module and not built-in."
 	local ERROR_X86_KERNEL_IBT="CONFIG_X86_KERNEL_IBT: is set, be warned the modules may not load.
-	If run into problems, either unset or pass ibt=off to the kernel.
-	https://github.com/NVIDIA/open-gpu-kernel-modules/issues/256"
+	If run into problems, either unset or try to pass ibt=off to the kernel."
 
 	kernel_is -ge 5 8 && CONFIG_CHECK+=" X86_PAT" #817764
 
