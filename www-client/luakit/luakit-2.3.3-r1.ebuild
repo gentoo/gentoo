@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-db/sqlite:3
 	dev-libs/glib:2
-	net-libs/webkit-gtk:4.1=
+	net-libs/webkit-gtk:4=
 	x11-libs/gtk+:3
 	${LUA_DEPS}
 	$(lua_gen_cond_dep '
