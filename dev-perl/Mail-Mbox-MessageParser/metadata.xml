@@ -14,5 +14,6 @@
     <remote-id type="cpan-module">Mail::Mbox::MessageParser::MetaInfo</remote-id>
     <remote-id type="cpan-module">Mail::Mbox::MessageParser::Perl</remote-id>
     <remote-id type="sourceforge">m-m-msgparser</remote-id>
+    <remote-id type="github">coppit/mail-mbox-messageparser</remote-id>
   </upstream>
 </pkgmetadata>
