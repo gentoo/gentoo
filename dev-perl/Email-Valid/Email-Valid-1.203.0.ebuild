@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,3 +32,7 @@ BDEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.960.0
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.203.0-fix-tests.patch
+)
