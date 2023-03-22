@@ -7,7 +7,7 @@ inherit autotools elisp-common readme.gentoo-r1 toolchain-funcs
 
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs.git"
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs.git https://github.com/emacs-mirror/emacs.git"
 	EGIT_BRANCH="master"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
 	S="${EGIT_CHECKOUT_DIR}"

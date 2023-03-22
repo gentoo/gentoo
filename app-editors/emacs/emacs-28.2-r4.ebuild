@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools elisp-common readme.gentoo-r1 toolchain-funcs
 
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs.git"
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs.git https://github.com/emacs-mirror/emacs.git"
 	EGIT_BRANCH="emacs-28"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
 	S="${EGIT_CHECKOUT_DIR}"
