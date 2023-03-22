@@ -334,11 +334,6 @@ dev-libs/qtcompress
 # Not maintained (2021), no rev dep
 dev-python/quex
 
-# Florian Schmaus <flow@gentoo.org> (2023-02-09)
-# Leftovers from net-im/jabber-base. Unused and obsolete.
-# Removal on 2023-03-09.
-acct-group/jabber
-
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
 =app-text/discount-3*
