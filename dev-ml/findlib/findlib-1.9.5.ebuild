@@ -54,7 +54,7 @@ src_install() {
 	fi
 
 	# See bug #803275 and bug #833604
-	rm -f "${ED}/usr/$(get_libdir)/ocaml/labltk/META" || die
+	rm -f "${ED}"/usr/$(get_libdir)/ocaml/{ocamlbuild,labltk}/META || die
 }
 
 check_stublibs() {
