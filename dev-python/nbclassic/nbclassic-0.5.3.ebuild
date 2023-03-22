@@ -26,7 +26,6 @@ RDEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_client-6.1.1[${PYTHON_USEDEP}]
 	>=dev-python/jupyter_core-4.6.1[${PYTHON_USEDEP}]
-	>=dev-python/nbconvert-5[${PYTHON_USEDEP}]
 	dev-python/nbformat[${PYTHON_USEDEP}]
 	>=dev-python/nest_asyncio-1.5[${PYTHON_USEDEP}]
 	>=dev-python/notebook_shim-0.1.0[${PYTHON_USEDEP}]
@@ -37,6 +36,9 @@ RDEPEND="
 	>=dev-python/traitlets-4.2.1[${PYTHON_USEDEP}]
 
 	<dev-python/notebook-7[${PYTHON_USEDEP}]
+"
+PDEPEND="
+	>=dev-python/nbconvert-5[${PYTHON_USEDEP}]
 "
 
 # dev-python/nbval is missing impls
