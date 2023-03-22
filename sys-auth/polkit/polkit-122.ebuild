@@ -145,7 +145,7 @@ src_install() {
 	fi
 
 	diropts -m 0700 -o polkitd
-	keepdir /usr/share/polkit-1/rules.d
+	use prefix || keepdir /usr/share/polkit-1/rules.d
 }
 
 pkg_postinst() {
