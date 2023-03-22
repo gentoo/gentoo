@@ -11,5 +11,6 @@
   <upstream>
     <remote-id type="cpan">File-Slurper</remote-id>
     <remote-id type="cpan-module">File::Slurper</remote-id>
+    <remote-id type="github">Leont/file-slurp-sane</remote-id>
   </upstream>
 </pkgmetadata>
