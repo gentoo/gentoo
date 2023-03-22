@@ -154,6 +154,9 @@ python_test() {
 
 		# DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('mpl_toolkits')`.
 		test/python/test_version.py::TestVersion::test_qiskit_version
+		# DeprecationWarning: It is deprecated to return a value that is not None from a test case
+		# (<bound method BackendTestCase.test_configuration of <test.python.basicaer.test_statevector_simulator.StatevectorS...
+		test/python/basicaer/test_statevector_simulator.py::StatevectorSimulatorTest::test_configuration
 
 		# AssertionError: DeprecationWarning not triggered
 		test/python/pulse/test_block.py::TestBlockOperation::test_execute_block
