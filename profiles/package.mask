@@ -346,12 +346,6 @@ dev-java/sac
 # Removal on 2023-03-22.  Bug #895614.
 dev-python/pandas-datareader
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-20)
-# Uses dev-python/nose, no py3.11 support.  Last upstream commit
-# in 2019.  Used only for dev-python/matplotlib[doc].
-# Removal on 2023-03-22.  Bug #888241.
-dev-python/colorspacious
-
 # Florian Schmaus <flow@gentoo.org> (2023-02-09)
 # Leftovers from net-im/jabber-base. Unused and obsolete.
 # Removal on 2023-03-09.
