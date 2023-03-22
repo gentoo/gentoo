@@ -15,10 +15,7 @@ IUSE="debug curl exif test xinerama inotify"
 RESTRICT="test" # Tests are broken.
 
 COMMON_DEPEND="
-	|| (
-		>=media-libs/imlib2-1.11.0[X,text]
-		<media-libs/imlib2-1.11.0[X]
-	)
+	media-libs/imlib2[X,text(+)]
 	>=media-libs/libpng-1.2:0=
 	x11-libs/libX11
 	curl? ( net-misc/curl )
