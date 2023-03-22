@@ -11,7 +11,7 @@ RUBY_FAKEGEM_RECIPE_TEST="none"
 inherit ruby-fakegem
 
 DESCRIPTION="Strategies for cleaning databases"
-HOMEPAGE="https://github.com/bmabey/database_cleaner"
+HOMEPAGE="https://github.com/DatabaseCleaner/database_cleaner"
 
 LICENSE="MIT"
 SLOT="0"
