@@ -35,7 +35,7 @@ BDEPEND="
 # See also https://github.com/symengine/symengine.py/blob/master/symengine_version.txt
 DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
-	>=sci-libs/symengine-$(ver_cut 1-2):=
+	=sci-libs/symengine-$(ver_cut 1-2)*
 "
 RDEPEND="
 	${DEPEND}
