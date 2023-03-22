@@ -144,11 +144,17 @@ src_install() {
 		dodoc src/examples/{*.c,*.policy*}
 	fi
 
-	diropts -m 0700 -o polkitd
-	keepdir /usr/share/polkit-1/rules.d
+	if use daemon; then
+		if [[ ${EUID} == 0 ]]; then
+			diropts -m 0700 -o polkitd
+		fi
+		keepdir /etc/polkit-1/rules.d
+	fi
 }
 
 pkg_postinst() {
-	chmod 0700 "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
-	chown polkitd "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
+	if use daemon && [[ ${EUID} == 0 ]]; then
+		chmod 0700 "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
+		chown polkitd "${EROOT}"/{etc,usr/share}/polkit-1/rules.d
+	fi
 }
