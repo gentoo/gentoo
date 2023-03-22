@@ -15,7 +15,7 @@ else
 fi
 
 QTMIN=6.7.2
-inherit cmake linux-info optfeature pam systemd tmpfiles
+inherit cmake linux-info pam systemd tmpfiles
 
 DESCRIPTION="Simple Desktop Display Manager"
 HOMEPAGE="https://github.com/sddm/sddm"
@@ -23,7 +23,7 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PAM_TAR}.tar.xz"
 
 LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
-IUSE="+elogind systemd test +X"
+IUSE="+elogind systemd test"
 
 REQUIRED_USE="^^ ( elogind systemd )"
 RESTRICT="!test? ( test )"
@@ -43,7 +43,7 @@ DEPEND="
 	systemd? ( sys-apps/systemd:=[pam] )
 "
 RDEPEND="${DEPEND}
-	X? ( x11-base/xorg-server )
+	gui-apps/sddm-gentoo-config
 	!systemd? ( gui-libs/display-manager-init )
 "
 BDEPEND="
@@ -71,14 +71,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	touch 01gentoo.conf || die
-
-cat <<-EOF >> 01gentoo.conf
-[General]
-# Remove qtvirtualkeyboard as InputMethod default
-InputMethod=
-EOF
-
 	cmake_src_prepare
 
 	if ! use test; then
@@ -117,9 +109,6 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	insinto /etc/sddm.conf.d/
-	doins "${S}"/01gentoo.conf
-
 	# with systemd logs are sent to journald, so no point to bother in that case
 	if ! use systemd; then
 		insinto /etc/logrotate.d
@@ -151,9 +140,6 @@ pkg_postinst() {
 		elog "  Nvidia GPU owners in particular should pay attention"
 		elog "  to the troubleshooting section."
 	fi
-
-	optfeature "Weston DisplayServer support (EXPERIMENTAL)" "dev-libs/weston[kiosk]"
-	optfeature "KWin DisplayServer support (EXPERIMENTAL)" "kde-plasma/kwin"
 
 	systemd_reenable sddm.service
 }
