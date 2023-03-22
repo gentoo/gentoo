@@ -1,0 +1,54 @@
+From 38c54b3ff58972fa16810740fc43933620b6dc0d Mon Sep 17 00:00:00 2001
+From: Axel Spoerl <axel.spoerl@qt.io>
+Date: Wed, 27 Jul 2022 15:17:03 +0200
+Subject: [PATCH] Add nullptr guard in
+ QStyleSheetStyle::drawPrimitive(PE_PanelLineEdit)
+
+Drawing PE_PanelLineEdit in QStyleSheetStyle with the default argument
+widget = nullptr causes a segfault.
+
+drawPrimitive tries to fall back to a container widget's render rule
+and therefore calls containerWidget() - which crashes when called with
+nullptr.
+
+Container widget fallback is pointless when drawPrimitive() is called
+with widget == nullptr. This patch skips it in that case.
+
+Fixes: QTBUG-104917
+Pick-to: 6.4 6.3 6.2
+Change-Id: I09e57dccfebb81a308944c233846d5b9ef58819e
+Reviewed-by: Volker Hilsheimer <volker.hilsheimer@qt.io>
+(cherry picked from commit effc8be3ce848770a093d51d5651908c375e83f8)
+---
+ src/widgets/styles/qstylesheetstyle.cpp | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/src/widgets/styles/qstylesheetstyle.cpp b/src/widgets/styles/qstylesheetstyle.cpp
+index 9fcb8ba522..50fdee0f69 100644
+--- a/src/widgets/styles/qstylesheetstyle.cpp
++++ b/src/widgets/styles/qstylesheetstyle.cpp
+@@ -4449,12 +4449,15 @@ void QStyleSheetStyle::drawPrimitive(PrimitiveElement pe, const QStyleOption *op
+ 
+     case PE_PanelLineEdit:
+         if (const QStyleOptionFrame *frm = qstyleoption_cast<const QStyleOptionFrame *>(opt)) {
+-            QWidget *container = containerWidget(w);
+-            if (container != w) {
+-                QRenderRule containerRule = renderRule(container, opt);
+-                if (!containerRule.hasNativeBorder() || !containerRule.baseStyleCanDraw())
+-                    return;
+-                rule = containerRule;
++            // Fall back to container widget's render rule
++            if (w) {
++                QWidget *container = containerWidget(w);
++                if (container != w) {
++                    QRenderRule containerRule = renderRule(container, opt);
++                    if (!containerRule.hasNativeBorder() || !containerRule.baseStyleCanDraw())
++                        return;
++                    rule = containerRule;
++                }
+             }
+ 
+             if (rule.hasNativeBorder()) {
+-- 
+2.40.0
+
