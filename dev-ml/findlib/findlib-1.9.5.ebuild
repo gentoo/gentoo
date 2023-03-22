@@ -58,18 +58,16 @@ src_install() {
 }
 
 check_stublibs() {
-	local ocaml_stdlib=`ocamlc -where`
+	local ocaml_stdlib=$(ocamlc -where)
 	local ldconf="${ocaml_stdlib}/ld.conf"
 
-	if [ ! -e ${ldconf} ]
-	then
-		echo "${ocaml_stdlib}" > ${ldconf}
-		echo "${ocaml_stdlib}/stublibs" >> ${ldconf}
+	if [[ ! -e ${ldconf} ]] ; then
+		echo "${ocaml_stdlib}" > ${ldconf} || die
+		echo "${ocaml_stdlib}/stublibs" >> ${ldconf} || die
 	fi
 
-	if [ -z `grep -e ${stublibs} ${ldconf}` ]
-	then
-		echo ${stublibs} >> ${ldconf}
+	if ! grep -qe ${stublibs} ${ldconf} ; then
+		echo ${stublibs} >> ${ldconf} || die
 	fi
 }
 
