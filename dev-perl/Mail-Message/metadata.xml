@@ -57,5 +57,6 @@
     <remote-id type="cpan-module">Mail::Message::TransferEnc::QuotedPrint</remote-id>
     <remote-id type="cpan-module">Mail::Message::TransferEnc::SevenBit</remote-id>
     <remote-id type="cpan-module">Mail::Reporter</remote-id>
+    <remote-id type="github">markov2/perl5-Mail-Message</remote-id>
   </upstream>
 </pkgmetadata>
