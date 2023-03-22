@@ -19,10 +19,13 @@ fi
 
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0"
 SLOT="0"
+IUSE="fuse"
 
 RDEPEND="
 	app-crypt/gnupg
-	sys-fs/fuse:0=
+	fuse? (
+		~app-crypt/kbfs-${PV}
+	)
 "
 
 src_unpack() {
