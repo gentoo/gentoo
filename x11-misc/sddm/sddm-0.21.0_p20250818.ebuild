@@ -48,7 +48,6 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="
 	dev-python/docutils
-	>=dev-build/cmake-3.25.0
 	>=dev-qt/qttools-${QTMIN}[linguist]
 	kde-frameworks/extra-cmake-modules:0
 	virtual/pkgconfig
