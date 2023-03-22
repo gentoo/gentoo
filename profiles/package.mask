@@ -339,13 +339,6 @@ dev-python/quex
 dev-java/jboss-modules
 dev-java/sac
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-20)
-# No declared Python 3.11 support.  Multiple failing tests (probably due
-# to being online tests).  Last release in 2021, upstream CI is all red.
-# No revdeps.
-# Removal on 2023-03-22.  Bug #895614.
-dev-python/pandas-datareader
-
 # Florian Schmaus <flow@gentoo.org> (2023-02-09)
 # Leftovers from net-im/jabber-base. Unused and obsolete.
 # Removal on 2023-03-09.
