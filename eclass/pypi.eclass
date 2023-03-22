@@ -16,7 +16,7 @@
 # the eclass), and the version is translated using
 # pypi_translate_version.
 #
-# If necessary, SRC_URI and S can be overriden by the ebuild.  Two
+# If necessary, SRC_URI and S can be overridden by the ebuild.  Two
 # helper functions, pypi_sdist_url and pypi_wheel_url are provided
 # to generate URLs to artifacts of specified type, with customizable
 # URL components.  Additionally, pypi_wheel_name can be used to generate
