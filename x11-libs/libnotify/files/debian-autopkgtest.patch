@@ -1,0 +1,86 @@
+This patch adapts the debian autopkgtest program and specifies it as a meson test
+instead of an external shell script.  The actual in-tree test suite is compile-only
+(does not actually run).
+
+See: https://salsa.debian.org/gnome-team/libnotify/-/blob/debian/master/debian/tests/build
+See: https://bugs.gentoo.org/868606
+
+diff --git a/tests/meson.build b/tests/meson.build
+index 3efc1a3..028e645 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -26,3 +26,10 @@ foreach tprog: test_progs
+     dependencies: [libnotify_dep, tests_deps],
+   )
+ endforeach
++
++# https://salsa.debian.org/gnome-team/libnotify/-/blob/debian/master/debian/tests/build
++test('Debian autopkgtest',
++  executable('test-debian-runtime', ['test-debian-runtime.c'],
++    dependencies: [libnotify_dep, tests_deps]),
++  env: ['G_MESSAGES_DEBUG=all']
++)
+diff --git a/tests/test-debian-runtime.c b/tests/test-debian-runtime.c
+new file mode 100644
+index 0000000..30225f3
+--- /dev/null
++++ b/tests/test-debian-runtime.c
+@@ -0,0 +1,58 @@
++/*
++This program copied from the Debian autopkgtest suite
++https://salsa.debian.org/gnome-team/libnotify/-/blob/debian/master/debian/tests/build
++
++(C) 2013 Vibhav Pant
++(C) 2022 Marco Trevisan
++Author: Vibhav Pant <vibhavp@ubuntu.com>
++Author: Marco Trevisan <marco@ubuntu.com>
++*/
++
++#include <libnotify/notify.h>
++
++int main(void)
++{
++	NotifyNotification *notify;
++	GError *error = NULL;
++	GList *caps;
++	int id, prev_id;
++
++	g_assert_true(notify_init("autopkgtest"));
++	g_assert_true(notify_is_initted());
++
++	caps = notify_get_server_caps();
++	g_assert_cmpuint(g_list_length(caps), >, 0);
++	g_assert_true(g_list_find_custom(caps, "body",
++					 (GCompareFunc) g_ascii_strcasecmp));
++	g_clear_list(&caps, g_free);
++
++	notify = notify_notification_new("autopkgtest",
++					 "Testing libnotify",
++					 NULL);
++	notify_notification_set_urgency(notify, NOTIFY_URGENCY_NORMAL);
++
++	notify_notification_set_timeout(notify, 500);
++	g_object_get(G_OBJECT(notify), "id", &id, NULL);
++	g_assert_cmpint(id, ==, 0);
++
++	notify_notification_show(notify, &error);
++	g_assert_no_error(error);
++
++	g_object_get(G_OBJECT(notify), "id", &id, NULL);
++	g_assert_cmpint(id, >, 0);
++	g_object_unref(notify);
++
++	prev_id = id;
++	notify = notify_notification_new("autopkgtest2",
++					 "Testing libnotify2",
++					 NULL);
++
++	notify_notification_show(notify, &error);
++	g_object_get(G_OBJECT(notify), "id", &id, NULL);
++	g_assert_no_error(error);
++	g_assert_cmpint(id, !=, prev_id);
++	g_object_unref(notify);
++
++	notify_uninit();
++	return 0;
++}

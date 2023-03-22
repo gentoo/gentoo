@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit gnome.org meson-multilib xdg-utils
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
+inherit gnome.org meson-multilib xdg-utils virtualx python-any-r1
 
 DESCRIPTION="A library for sending desktop notifications"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libnotify"
@@ -28,10 +29,24 @@ BDEPEND="
 	dev-libs/libxslt
 	gtk-doc? ( dev-util/gtk-doc
 		app-text/docbook-xml-dtd:4.1.2 )
-	test? ( x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
+	test? (
+		x11-libs/gtk+:3[${MULTILIB_USEDEP}]
+		sys-apps/dbus[X]
+		$(python_gen_any_dep 'dev-python/python-dbusmock[${PYTHON_USEDEP}]')
+	)
 "
 IDEPEND="app-eselect/eselect-notify-send"
 PDEPEND="virtual/notification-daemon"
+
+PATCHES=( "${FILESDIR}/debian-autopkgtest.patch" )
+
+python_check_deps() {
+	python_has_version -b "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	default
@@ -46,6 +61,21 @@ multilib_src_configure() {
 		-Ddocbook_docs=disabled
 	)
 	meson_src_configure
+}
+
+run_tests() {
+	"${EPYTHON}" -m dbusmock -t notification_daemon &
+	while ! dbus-send --session --print-reply \
+		--dest=org.freedesktop.Notifications \
+		/org/freedesktop/Notifications \
+		org.freedesktop.Notifications.GetCapabilities; do
+		sleep 0.5
+	done
+	meson_src_test || die
+}
+
+multilib_src_test() {
+	virtx run_tests
 }
 
 multilib_src_install() {
