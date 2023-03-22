@@ -15,7 +15,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="assets public views"
 inherit ruby-fakegem
 
 DESCRIPTION="Generates a HTML report of your SimpleCov ruby code coverage results"
-HOMEPAGE="https://github.com/simplecov-ruby/simplecov"
+HOMEPAGE="https://github.com/simplecov-ruby/simplecov-html"
 LICENSE="MIT"
 
 KEYWORDS="~amd64 ~riscv"
