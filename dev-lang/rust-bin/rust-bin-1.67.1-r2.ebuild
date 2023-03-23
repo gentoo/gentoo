@@ -32,6 +32,7 @@ RDEPEND="
 		<dev-libs/openssl-3
 	)
 	sys-apps/lsb-release
+	sys-devel/gcc:*
 "
 
 BDEPEND="
