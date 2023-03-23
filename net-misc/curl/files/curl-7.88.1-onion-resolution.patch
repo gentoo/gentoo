@@ -1,4 +1,6 @@
+https://bugs.gentoo.org/887287
 https://github.com/curl/curl/pull/10705
+
 From: Matt Jolly <Matt.Jolly@footclan.ninja>
 Date: Wed, 8 Mar 2023 02:16:45 +1100
 Subject: [PATCH] Refuse to resolve the .onion TLD.
