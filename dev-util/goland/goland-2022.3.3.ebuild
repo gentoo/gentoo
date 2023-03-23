@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,12 +7,13 @@ inherit desktop wrapper
 
 DESCRIPTION="Golang IDE by JetBrains"
 HOMEPAGE="https://www.jetbrains.com/go"
-SRC_URI="https://download.jetbrains.com/go/${P}.tar.gz"
+SRC_URI="
+	amd64? ( https://download.jetbrains.com/go/${P}.tar.gz )
+	arm64? ( https://download.jetbrains.com/go/${P}-aarch64.tar.gz )
+"
 
 SLOT="0"
-# JetBrains supports officially only x86_64 even though some 32bit binaries are
-# provided. See https://www.jetbrains.com/go/download/#section=linux
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 LICENSE="|| ( JetBrains-business JetBrains-classroom JetBrains-educational JetBrains-individual )
 	Apache-2.0
@@ -48,9 +49,10 @@ src_install() {
 
 	insinto "${dir}"
 	doins -r *
-	fperms 755 "${dir}"/bin/{${PN}.sh,fsnotifier}
-	fperms 755 "${dir}"/jbr/bin/{jaotc,java,javac,jdb,jfr,jhsdb,jjs,jrunscript,keytool,pack200,rmid,rmiregistry,serialver,unpack200}
-	fperms 755 "${dir}"/plugins/go/lib/dlv/linux/dlv
+	fperms 755 "${dir}"/bin/{format.sh,goland.sh,inspect.sh,ltedit.sh,remote-dev-server.sh,restart.py,fsnotifier,repair}
+	fperms 755 "${dir}"/jbr/bin/{java,javac,javadoc,jcmd,jdb,jfr,jhsdb,jinfo,jmap,jps,jrunscript,jstack,jstat,keytool,rmiregistry,serialver}
+	fperms 755 "${dir}"/jbr/lib/{chrome-sandbox,jcef_helper,jexec,jspawnhelper}
+	fperms 755 "${dir}"/plugins/go-plugin/lib/dlv/linux/dlv
 
 	make_wrapper "${PN}" "${dir}/bin/${PN}.sh"
 	newicon "bin/${PN}.png" "${PN}.png"
