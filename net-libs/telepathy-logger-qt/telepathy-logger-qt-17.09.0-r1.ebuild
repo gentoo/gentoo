@@ -30,3 +30,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}"
+
+src_configure() {
+	local mycmakeargs=(
+		-DPython3_EXECUTABLE="${PYTHON}"
+	)
+	ecm_src_configure
+}
