@@ -116,7 +116,7 @@ fi
 # @ECLASS_VARIABLE: JAVA_ENCODING
 # @DESCRIPTION:
 # The character encoding used in the source files.
-: ${JAVA_ENCODING:=UTF-8}
+: "${JAVA_ENCODING:=UTF-8}"
 
 # @ECLASS_VARIABLE: JAVAC_ARGS
 # @DEFAULT_UNSET
@@ -148,7 +148,7 @@ fi
 # @ECLASS_VARIABLE: JAVA_JAR_FILENAME
 # @DESCRIPTION:
 # The name of the jar file to create and install.
-: ${JAVA_JAR_FILENAME:=${PN}.jar}
+: "${JAVA_JAR_FILENAME:=${PN}.jar}"
 
 # @ECLASS_VARIABLE: JAVA_BINJAR_FILENAME
 # @DEFAULT_UNSET
@@ -161,7 +161,7 @@ fi
 # If ${JAVA_MAIN_CLASS} is set, we will create a launcher to
 # execute the jar, and ${JAVA_LAUNCHER_FILENAME} will be the
 # name of the script.
-: ${JAVA_LAUNCHER_FILENAME:=${PN}-${SLOT}}
+: "${JAVA_LAUNCHER_FILENAME:=${PN}-${SLOT}}"
 
 # @ECLASS_VARIABLE: JAVA_TESTING_FRAMEWORKS
 # @DEFAULT_UNSET
