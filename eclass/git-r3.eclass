@@ -62,7 +62,7 @@ fi
 # unavailable calls like 'git describe' will not reference prior tags.
 # No purging of old references is done. This mode is intended mostly for
 # embedded systems with limited disk space.
-: ${EGIT_CLONE_TYPE:=single}
+: "${EGIT_CLONE_TYPE:=single}"
 
 # @ECLASS_VARIABLE: EGIT_MIN_CLONE_TYPE
 # @DESCRIPTION:
@@ -79,7 +79,7 @@ fi
 # or a similar remote is used that does not support shallow clones
 # and fetching tags along with commits. Please use sparingly, and to fix
 # fatal errors rather than 'non-pretty versions'.
-: ${EGIT_MIN_CLONE_TYPE:=shallow}
+: "${EGIT_MIN_CLONE_TYPE:=shallow}"
 
 # @ECLASS_VARIABLE: EGIT3_STORE_DIR
 # @USER_VARIABLE
@@ -317,7 +317,7 @@ _git-r3_set_gitdir() {
 	repo_name=${repo_name//\//_}
 
 	local distdir=${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}
-	: ${EGIT3_STORE_DIR:=${distdir}/git3-src}
+	: "${EGIT3_STORE_DIR:=${distdir}/git3-src}"
 
 	GIT_DIR=${EGIT3_STORE_DIR}/${repo_name}
 
