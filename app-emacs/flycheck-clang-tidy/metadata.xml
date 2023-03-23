@@ -10,7 +10,7 @@
     <name>Gentoo GNU Emacs project</name>
   </maintainer>
   <upstream>
-    <bugs-to>https://gitlab.com/ch1bo/flycheck-clang-tidy/issues/</bugs-to>
-    <remote-id type="gitlab">ch1bo/flycheck-clang-tidy</remote-id>
+    <bugs-to>https://github.com/ch1bo/flycheck-clang-tidy/issues/</bugs-to>
+    <remote-id type="github">ch1bo/flycheck-clang-tidy</remote-id>
   </upstream>
 </pkgmetadata>
