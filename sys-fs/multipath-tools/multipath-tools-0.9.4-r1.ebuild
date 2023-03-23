@@ -48,6 +48,8 @@ myemake() {
 		libudevdir="${EPREFIX}$(get_udevdir)"
 		GENTOO_CFLAGS="${CFLAGS}"
 		GENTOO_CPPFLAGS="${CPPFLAGS}"
+		FORTIFY_OPT=
+		OPTFLAGS=
 		FAKEVAR=1
 		V=1
 	)
