@@ -14,7 +14,7 @@ SRC_URI="https://github.com/emacs-lsp/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar
 S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
