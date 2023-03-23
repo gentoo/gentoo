@@ -1,3 +1,6 @@
+https://github.com/LibVNC/libvncserver/commit/b686f379c34114cf938fe88291f58014337558f6
+https://bugs.gentoo.org/893608
+
 From b686f379c34114cf938fe88291f58014337558f6 Mon Sep 17 00:00:00 2001
 From: Gaurav Ujjwal <gujjwal00@gmail.com>
 Date: Mon, 23 Jan 2023 00:03:03 +0530
@@ -6,12 +9,6 @@ Subject: [PATCH] common/crypto_openssl: pad DH key buffers with leading zeros
 
 Re: https://github.com/LibVNC/libvncserver/issues/493
 Re: https://github.com/bk138/multivnc/issues/202
----
- common/crypto_openssl.c | 18 ++++++++++++++++--
- 1 file changed, 16 insertions(+), 2 deletions(-)
-
-diff --git a/common/crypto_openssl.c b/common/crypto_openssl.c
-index 50e8073a..dc1ee093 100644
 --- a/common/crypto_openssl.c
 +++ b/common/crypto_openssl.c
 @@ -156,6 +156,15 @@ int encrypt_aes128ecb(void *out, int *out_len, const unsigned char key[16], cons
