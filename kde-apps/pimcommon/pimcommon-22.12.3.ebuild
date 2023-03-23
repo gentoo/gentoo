@@ -54,7 +54,7 @@ DEPEND="${RDEPEND}"
 src_test() {
 	# bugs 641730, 661330
 	local myctestargs=(
-		-E "(autocorrectiontest|pimcommon-translator-translatortest)"
+		-E "(autocorrectiontest|pimcommon-translator-translatorwidgettest)"
 	)
 
 	ecm_src_test
