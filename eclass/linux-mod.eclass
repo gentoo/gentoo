@@ -38,7 +38,7 @@
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
 # "/usr/src/linux"
-: ${KERNEL_DIR:=/usr/src/linux}
+: "${KERNEL_DIR:=/usr/src/linux}"
 
 # @ECLASS_VARIABLE: ECONF_PARAMS
 # @DEFAULT_UNSET
@@ -54,7 +54,7 @@
 # @ECLASS_VARIABLE: BUILD_TARGETS
 # @DESCRIPTION:
 # It's a string with the build targets to pass to make. The default value is "clean module"
-: ${BUILD_TARGETS:=clean module}
+: "${BUILD_TARGETS:=clean module}"
 
 # @ECLASS_VARIABLE: MODULE_NAMES
 # @DEFAULT_UNSET
@@ -177,7 +177,7 @@ RDEPEND="
 		)
 	${MODULES_OPTIONAL_USE:+)}"
 DEPEND="${RDEPEND}
-    ${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (}
+	${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (}
 	kernel_linux? ( virtual/linux-sources virtual/libelf )
 	${MODULES_OPTIONAL_USE:+)}"
 
