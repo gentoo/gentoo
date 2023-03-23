@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>sam@gentoo.org</email>
-		<description>Sam James</description>
+		<name>Sam James</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>gnu-emacs@gentoo.org</email>
