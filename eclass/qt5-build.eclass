@@ -51,7 +51,7 @@ readonly QT5_BUILD_TYPE
 # @DESCRIPTION:
 # The upstream name of the module this package belongs to. Used for
 # SRC_URI and EGIT_REPO_URI. Must be set before inheriting the eclass.
-: ${QT5_MODULE:=${PN}}
+: "${QT5_MODULE:=${PN}}"
 
 # @ECLASS_VARIABLE: QT5_PV
 # @DESCRIPTION:
@@ -100,7 +100,7 @@ readonly QT5_PV
 # For proper description see virtualx.eclass man page.
 # Here we redefine default value to be manual, if your package needs virtualx
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
-: ${VIRTUALX_REQUIRED:=manual}
+: "${VIRTUALX_REQUIRED:=manual}"
 
 inherit estack flag-o-matic toolchain-funcs virtualx
 
@@ -140,7 +140,7 @@ fi
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # Build directory for out-of-source builds.
-: ${QT5_BUILD_DIR:=${S}_build}
+: "${QT5_BUILD_DIR:=${S}_build}"
 
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
 
