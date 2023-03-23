@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2023-03-22)
+# Multiple vulnerabilities, unmaintained and broken in Gentoo, removal
+# on 2023-04-22. Bug #782037, #850547.
+net-fs/minio
+
 # David Seifert <soap@gentoo.org> (2023-03-19)
 # Unmaintained, last release 18 years ago, assortment of QA issues,
 # upstream gone, fails with modern C, no revdeps remaining.
