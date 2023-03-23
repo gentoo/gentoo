@@ -421,7 +421,7 @@ _unpacker_get_decompressor() {
 			type -P lbzip2 || type -P pbzip2 || type -P bzip2
 		)}
 		local bzuncmd=${PORTAGE_BUNZIP2_COMMAND:-${bzcmd} -d}
-		: ${UNPACKER_BZ2:=${bzuncmd}}
+		: "${UNPACKER_BZ2:=${bzuncmd}}"
 		echo "${UNPACKER_BZ2} -c"
 		;;
 	*.z|*.gz|*.tgz)
@@ -444,7 +444,7 @@ _unpacker_get_decompressor() {
 			done
 		}
 
-		: ${UNPACKER_LZIP:=$(find_lz_unpacker)}
+		: "${UNPACKER_LZIP:=$(find_lz_unpacker)}"
 		echo "${UNPACKER_LZIP} -dc" ;;
 	*.zst)
 		echo "zstd -dc" ;;
