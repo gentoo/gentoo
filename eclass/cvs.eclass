@@ -37,13 +37,13 @@ _CVS_ECLASS=1
 # @DESCRIPTION:
 # Set the default compression level.  Has no effect when ECVS_CVS_COMMAND
 # is defined by ebuild/user.
-: ${ECVS_CVS_COMPRESS:=-z1}
+: "${ECVS_CVS_COMPRESS:=-z1}"
 
 # @ECLASS_VARIABLE: ECVS_CVS_OPTIONS
 # @DESCRIPTION:
 # Additional options to the cvs commands.  Has no effect when ECVS_CVS_COMMAND
 # is defined by ebuild/user.
-: ${ECVS_CVS_OPTIONS:=-q -f}
+: "${ECVS_CVS_OPTIONS:=-q -f}"
 
 # @ECLASS_VARIABLE: ECVS_CVS_COMMAND
 # @DESCRIPTION:
@@ -53,13 +53,13 @@ _CVS_ECLASS=1
 # on the cvs connection.  The default of "cvs -q -f -z4" means to be
 # quiet, to disregard the ~/.cvsrc config file and to use maximum
 # compression.
-: ${ECVS_CVS_COMMAND:=cvs ${ECVS_CVS_OPTIONS} ${ECVS_CVS_COMPRESS}}
+: "${ECVS_CVS_COMMAND:=cvs ${ECVS_CVS_OPTIONS} ${ECVS_CVS_COMPRESS}}"
 
 # @ECLASS_VARIABLE: ECVS_UP_OPTS
 # @DESCRIPTION:
 # CVS options given after the cvs update command. Don't remove "-dP" or things
 # won't work.
-: ${ECVS_UP_OPTS:=-dP}
+: "${ECVS_UP_OPTS:=-dP}"
 
 # @ECLASS_VARIABLE: ECVS_CO_OPTS
 # @DEFAULT_UNSET
@@ -72,7 +72,7 @@ _CVS_ECLASS=1
 # Set this variable to a non-empty value to disable the automatic updating of
 # a CVS source tree. This is intended to be set outside the cvs source
 # tree by users.
-: ${ECVS_OFFLINE:=${EVCS_OFFLINE}}
+: "${ECVS_OFFLINE:=${EVCS_OFFLINE}}"
 
 # @ECLASS_VARIABLE: ECVS_LOCAL
 # @DEFAULT_UNSET
@@ -97,7 +97,7 @@ _CVS_ECLASS=1
 # @ECLASS_VARIABLE: ECVS_TOP_DIR
 # @DESCRIPTION:
 # The directory under which CVS modules are checked out.
-: ${ECVS_TOP_DIR:="${PORTAGE_ACTUAL_DISTDIR-${DISTDIR}}/cvs-src"}
+: "${ECVS_TOP_DIR:="${PORTAGE_ACTUAL_DISTDIR-${DISTDIR}}/cvs-src"}"
 
 # @ECLASS_VARIABLE: ECVS_SERVER
 # @DESCRIPTION:
@@ -110,7 +110,7 @@ _CVS_ECLASS=1
 #
 # Set this to "offline" to disable fetching (i.e. to assume the module
 # is already checked out in ECVS_TOP_DIR).
-: ${ECVS_SERVER:="offline"}
+: "${ECVS_SERVER:="offline"}"
 
 # @ECLASS_VARIABLE: ECVS_MODULE
 # @REQUIRED
@@ -152,12 +152,12 @@ _CVS_ECLASS=1
 #  e.g.
 #   "cvs -danoncvs@savannah.gnu.org:/cvsroot/backbone co System"
 #   ( from gnustep-apps/textedit )
-: ${ECVS_AUTH:="pserver"}
+: "${ECVS_AUTH:="pserver"}"
 
 # @ECLASS_VARIABLE: ECVS_USER
 # @DESCRIPTION:
 # Username to use for authentication on the remote server.
-: ${ECVS_USER:="anonymous"}
+: "${ECVS_USER:="anonymous"}"
 
 # @ECLASS_VARIABLE: ECVS_PASS
 # @DEFAULT_UNSET
@@ -423,7 +423,7 @@ EOF
 			# Make sure DISPLAY is set (SSH will not use SSH_ASKPASS
 			# if DISPLAY is not set)
 
-			: ${DISPLAY:="DISPLAY"}
+			: "${DISPLAY:="DISPLAY"}"
 			export DISPLAY
 
 			# Create a dummy executable to echo ${ECVS_PASS}
