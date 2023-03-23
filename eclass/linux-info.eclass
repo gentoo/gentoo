@@ -45,7 +45,7 @@ _LINUX_INFO_ECLASS=1
 # @DESCRIPTION:
 # Do not error out in check_extra_config if CONFIG settings are not met.
 # This is a user flag and should under _no circumstances_ be set in the ebuild.
-: ${CHECKCONFIG_DONOTHING:=""}
+: "${CHECKCONFIG_DONOTHING:=""}"
 
 # @ECLASS_VARIABLE: KERNEL_DIR
 # @DESCRIPTION:
@@ -105,7 +105,7 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # the following names, in order: GNUmakefile, makefile and Makefile. Set this variable to the
 # proper Makefile name or the eclass will search in this order for it.
 # See https://www.gnu.org/software/make/manual/make.html
-: ${KERNEL_MAKEFILE:=""}
+: "${KERNEL_MAKEFILE:=""}"
 
 # @ECLASS_VARIABLE: KV_FULL
 # @OUTPUT_VARIABLE
@@ -156,7 +156,7 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # Do not check for kernel sources or a running kernel version.
 # Main use-case is for chroots.
 # This is a user flag and should under _no circumstances_ be set in the ebuild.
-: ${SKIP_KERNEL_CHECK:=""}
+: "${SKIP_KERNEL_CHECK:=""}"
 
 # And to ensure all the weirdness with crosscompile
 inherit toolchain-funcs
@@ -679,7 +679,7 @@ get_running_version() {
 	KV_MINOR=$(ver_cut 2 ${kv_full})
 	KV_PATCH=$(ver_cut 3 ${kv_full})
 	KV_EXTRA="${KV_FULL#${KV_MAJOR}.${KV_MINOR}${KV_PATCH:+.${KV_PATCH}}}"
-	: ${KV_PATCH:=0}
+	: "${KV_PATCH:=0}"
 
 	return 0
 }
