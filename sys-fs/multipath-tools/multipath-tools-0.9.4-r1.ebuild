@@ -39,12 +39,12 @@ PATCHES=(
 myemake() {
 	local myemakeargs=(
 		prefix="${EPREFIX}"
+		usr_prefix="${EPREFIX}/usr"
 		LIB="$(get_libdir)"
 		RUN=run
 		plugindir="${EPREFIX}/$(get_libdir)/multipath"
 		unitdir="$(systemd_get_systemunitdir)"
-		libudevdir="${EPREFIX}/$(get_udevdir)"
-		pkgconfdir="${EPREFIX}/usr/$(get_libdir)/pkgconfig"
+		libudevdir="${EPREFIX}$(get_udevdir)"
 		GENTOO_CFLAGS="${CFLAGS}"
 		GENTOO_CPPFLAGS="${CPPFLAGS}"
 		FAKEVAR=1
@@ -78,10 +78,6 @@ src_install() {
 
 	myemake DESTDIR="${ED}" install
 
-	rmdir "${ED}"/usr/include
-	rmdir "${ED}"/usr/share
-	mv "${ED}"/include "${ED}"/usr/include || die
-	mv "${ED}"/share "${ED}"/usr/share || die
 	einstalldocs
 
 	newinitd "${FILESDIR}"/multipathd-r1.rc multipathd
