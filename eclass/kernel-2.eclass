@@ -299,13 +299,13 @@ if [[ ${CTARGET} == ${CHOST} && ${CATEGORY/cross-} != ${CATEGORY} ]]; then
 fi
 
 HOMEPAGE="https://www.kernel.org/ https://wiki.gentoo.org/wiki/Kernel ${HOMEPAGE}"
-: ${LICENSE:="GPL-2"}
+: "${LICENSE:="GPL-2"}"
 
 # No need to run scanelf/strip on kernel sources/headers (bug #134453).
 RESTRICT="binchecks strip"
 
 # set LINUX_HOSTCFLAGS if not already set
-: ${LINUX_HOSTCFLAGS:="-Wall -Wstrict-prototypes -Os -fomit-frame-pointer -I${S}/include"}
+: "${LINUX_HOSTCFLAGS:="-Wall -Wstrict-prototypes -Os -fomit-frame-pointer -I${S}/include"}"
 
 
 # @FUNCTION: debug-print-kernel2-variables
