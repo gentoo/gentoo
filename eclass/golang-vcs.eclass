@@ -67,7 +67,7 @@ _golang-vcs_env_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local distdir=${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}
-	: ${EGO_STORE_DIR:=${distdir}/go-src}
+	: "${EGO_STORE_DIR:=${distdir}/go-src}"
 
 	[[ -n ${EVCS_UMASK} ]] && eumask_push $EVCS_UMASK
 
