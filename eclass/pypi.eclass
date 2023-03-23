@@ -61,7 +61,7 @@ _PYPI_ECLASS=1
 # @CODE
 # PYPI_PN=${PN/-/.}
 # @CODE
-: ${PYPI_PN:=${PN}}
+: "${PYPI_PN:=${PN}}"
 
 # @FUNCTION: pypi_normalize_name
 # @USAGE: <name>
