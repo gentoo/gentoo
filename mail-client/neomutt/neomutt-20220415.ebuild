@@ -31,7 +31,7 @@ CDEPEND="
 	app-misc/mime-types
 	berkdb? (
 		|| (
-			sys-libs/db:6.2
+			sys-libs/db:6.0
 			sys-libs/db:5.3
 			sys-libs/db:4.8
 		)
