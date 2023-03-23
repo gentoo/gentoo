@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic linux-info systemd tmpfiles toolchain-funcs udev
+inherit linux-info systemd tmpfiles toolchain-funcs udev
 
 DESCRIPTION="Device mapper target autoconfig"
 HOMEPAGE="http://christophe.varoqui.free.fr/"
@@ -34,6 +34,7 @@ CONFIG_CHECK="~DM_MULTIPATH"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.4-test-fix.patch
+	"${FILESDIR}"/${PN}-0.9.4-remove-Werror.patch
 )
 
 myemake() {
@@ -63,9 +64,6 @@ src_prepare() {
 
 src_compile() {
 	tc-export CC
-
-	append-flags -Wno-error
-
 	myemake
 }
 
