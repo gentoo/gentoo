@@ -1,5 +1,3 @@
-diff --git a/src/hints/HintsToPot.cpp b/src/hints/HintsToPot.cpp
-index 7c8029c..d75f8c5 100644
 --- a/src/hints/HintsToPot.cpp
 +++ b/src/hints/HintsToPot.cpp
 @@ -1,6 +1,7 @@
@@ -19,8 +17,6 @@ index 7c8029c..d75f8c5 100644
  	for (const auto& element : data)
  	{
  		//Example of .pot element 
-diff --git a/src/libslic3r/Preset.cpp b/src/libslic3r/Preset.cpp
-index 4664cff..41dd374 100644
 --- a/src/libslic3r/Preset.cpp
 +++ b/src/libslic3r/Preset.cpp
 @@ -25,6 +25,7 @@
@@ -40,8 +36,6 @@ index 4664cff..41dd374 100644
      boost::property_tree::read_ini(ifs, tree);
      return VendorProfile::from_ini(tree, path, load_all);
  }
-diff --git a/src/slic3r/GUI/DesktopIntegrationDialog.cpp b/src/slic3r/GUI/DesktopIntegrationDialog.cpp
-index 81c681b..7f99a50 100644
 --- a/src/slic3r/GUI/DesktopIntegrationDialog.cpp
 +++ b/src/slic3r/GUI/DesktopIntegrationDialog.cpp
 @@ -10,6 +10,7 @@
@@ -59,8 +53,6 @@ index 81c681b..7f99a50 100644
 -#endif // __linux__
 \ No newline at end of file
 +#endif // __linux__
-diff --git a/src/slic3r/GUI/GUI_App.cpp b/src/slic3r/GUI/GUI_App.cpp
-index 5bc770b..d566e91 100644
 --- a/src/slic3r/GUI/GUI_App.cpp
 +++ b/src/slic3r/GUI/GUI_App.cpp
 @@ -13,6 +13,7 @@
@@ -71,8 +63,6 @@ index 5bc770b..d566e91 100644
  #include <boost/algorithm/string/predicate.hpp>
  #include <boost/algorithm/string.hpp>
  #include <boost/format.hpp>
-diff --git a/src/slic3r/GUI/HintNotification.cpp b/src/slic3r/GUI/HintNotification.cpp
-index 14ebbc6..2de896c 100644
 --- a/src/slic3r/GUI/HintNotification.cpp
 +++ b/src/slic3r/GUI/HintNotification.cpp
 @@ -15,6 +15,7 @@
