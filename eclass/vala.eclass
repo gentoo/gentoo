@@ -167,7 +167,7 @@ vala_setup() {
 			fi
 		done
 	done
-	: ${PKG_CONFIG_PATH:="${EPREFIX}/usr/$(get_libdir)/pkgconfig:${EPREFIX}/usr/share/pkgconfig"}
+	: "${PKG_CONFIG_PATH:="${EPREFIX}/usr/$(get_libdir)/pkgconfig:${EPREFIX}/usr/share/pkgconfig"}"
 	export PKG_CONFIG_PATH="${T}/pkgconfig:${PKG_CONFIG_PATH}"
 }
 
