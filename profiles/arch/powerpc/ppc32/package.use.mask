@@ -117,6 +117,7 @@ dev-python/diskcache test
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
 media-libs/gd avif heif
+www-client/links avif
 
 # Sam James <sam@gentoo.org> (2021-02-28)
 # compiler-rt* has no support for ppc32 (yet?)
