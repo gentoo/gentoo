@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: waf-utils.eclass
@@ -30,7 +30,7 @@ inherit multilib toolchain-funcs multiprocessing
 # @DESCRIPTION:
 # Set to OFF to disable verbose messages during compilation
 # this is _not_ meant to be set in ebuilds
-: ${WAF_VERBOSE:=ON}
+: "${WAF_VERBOSE:=ON}"
 
 # @ECLASS_VARIABLE: WAF_BINARY
 # @DESCRIPTION:
@@ -77,7 +77,7 @@ waf-utils_src_configure() {
 
 	[[ ${fail} ]] && die "Invalid use of waf-utils.eclass"
 
-	: ${WAF_BINARY:="${S}/waf"}
+	: "${WAF_BINARY:="${S}/waf"}"
 
 	local conf_args=()
 
