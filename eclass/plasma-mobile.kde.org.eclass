@@ -29,7 +29,7 @@ _PLASMA_MOBILE_KDE_ORG_ECLASS=1
 # @PRE_INHERIT
 # @DESCRIPTION:
 # For proper description see kde.org.eclass manpage.
-: ${KDE_ORG_CATEGORY:=plasma-mobile}
+: "${KDE_ORG_CATEGORY:=plasma-mobile}"
 
 inherit kde.org
 
