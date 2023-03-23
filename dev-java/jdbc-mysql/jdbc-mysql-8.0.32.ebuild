@@ -3,10 +3,10 @@
 
 EAPI=8
 
-JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="com.mysql:mysql-connector-j:8.0.32"
 # Tests disabled, see bug #902723
-# JAVA_TESTING_FRAMEWORKS="junit-4"
+JAVA_PKG_IUSE="doc source"
+MAVEN_ID="com.mysql:mysql-connector-j:8.0.32"
+JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple
 
