@@ -58,7 +58,7 @@ BDEPEND=">=dev-util/meson-0.62.2
 # @ECLASS_VARIABLE: EMESON_BUILDTYPE
 # @DESCRIPTION:
 # The buildtype value to pass to meson setup.
-: ${EMESON_BUILDTYPE=plain}
+: "${EMESON_BUILDTYPE=plain}"
 
 # @ECLASS_VARIABLE: EMESON_SOURCE
 # @DEFAULT_UNSET
@@ -289,21 +289,21 @@ meson_src_configure() {
 	local BUILD_PKG_CONFIG_PATH=${BUILD_PKG_CONFIG_PATH}
 
 	if tc-is-cross-compiler; then
-		: ${BUILD_CFLAGS:=-O1 -pipe}
-		: ${BUILD_CXXFLAGS:=-O1 -pipe}
-		: ${BUILD_FCFLAGS:=-O1 -pipe}
-		: ${BUILD_OBJCFLAGS:=-O1 -pipe}
-		: ${BUILD_OBJCXXFLAGS:=-O1 -pipe}
+		: "${BUILD_CFLAGS:=-O1 -pipe}"
+		: "${BUILD_CXXFLAGS:=-O1 -pipe}"
+		: "${BUILD_FCFLAGS:=-O1 -pipe}"
+		: "${BUILD_OBJCFLAGS:=-O1 -pipe}"
+		: "${BUILD_OBJCXXFLAGS:=-O1 -pipe}"
 	else
-		: ${BUILD_CFLAGS:=${CFLAGS}}
-		: ${BUILD_CPPFLAGS:=${CPPFLAGS}}
-		: ${BUILD_CXXFLAGS:=${CXXFLAGS}}
-		: ${BUILD_FCFLAGS:=${FCFLAGS}}
-		: ${BUILD_LDFLAGS:=${LDFLAGS}}
-		: ${BUILD_OBJCFLAGS:=${OBJCFLAGS}}
-		: ${BUILD_OBJCXXFLAGS:=${OBJCXXFLAGS}}
-		: ${BUILD_PKG_CONFIG_LIBDIR:=${PKG_CONFIG_LIBDIR}}
-		: ${BUILD_PKG_CONFIG_PATH:=${PKG_CONFIG_PATH}}
+		: "${BUILD_CFLAGS:=${CFLAGS}}"
+		: "${BUILD_CPPFLAGS:=${CPPFLAGS}}"
+		: "${BUILD_CXXFLAGS:=${CXXFLAGS}}"
+		: "${BUILD_FCFLAGS:=${FCFLAGS}}"
+		: "${BUILD_LDFLAGS:=${LDFLAGS}}"
+		: "${BUILD_OBJCFLAGS:=${OBJCFLAGS}}"
+		: "${BUILD_OBJCXXFLAGS:=${OBJCXXFLAGS}}"
+		: "${BUILD_PKG_CONFIG_LIBDIR:=${PKG_CONFIG_LIBDIR}}"
+		: "${BUILD_PKG_CONFIG_PATH:=${PKG_CONFIG_PATH}}"
 	fi
 
 	local mesonargs=(
