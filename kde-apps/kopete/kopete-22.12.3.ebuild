@@ -135,6 +135,13 @@ DEPEND="${COMMON_DEPEND}
 "
 #	jingle? ( dev-libs/jsoncpp )
 
+src_prepare() {
+	ecm_src_prepare
+
+	# breaks with oscar disabled, bug 901487
+	cmake_run_in tests/protocols cmake_comment_add_subdirectory oscar
+}
+
 src_configure() {
 	local x x2
 	# Handle common stuff
