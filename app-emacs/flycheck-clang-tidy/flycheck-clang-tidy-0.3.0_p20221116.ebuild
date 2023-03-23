@@ -3,7 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=24
 inherit elisp
 
 DESCRIPTION="Flycheck syntax checker using clang-tidy"

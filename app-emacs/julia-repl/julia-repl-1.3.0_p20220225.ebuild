@@ -4,7 +4,6 @@
 EAPI=8
 
 COMMIT=6c1d63511fb2b3b3f2e342eff6a375d78be6c12c
-NEED_EMACS=25.1
 
 inherit optfeature elisp
 

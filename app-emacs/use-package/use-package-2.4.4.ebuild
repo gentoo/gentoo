@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTICE: This package provides all "use-package" Emacs Lisp libraries except
@@ -6,7 +6,6 @@
 
 EAPI=8
 
-NEED_EMACS=24.3
 
 inherit elisp
 

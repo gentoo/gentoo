@@ -3,7 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=25.1
 
 inherit elisp readme.gentoo-r1
 

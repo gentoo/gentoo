@@ -4,7 +4,6 @@
 EAPI=8
 
 COMMIT=977b14a7c1295ebf2aad2f807d3f8e7c27aeb47f
-NEED_EMACS=24.4
 
 inherit elisp
 
