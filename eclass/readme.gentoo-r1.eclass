@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: readme.gentoo-r1.eclass
@@ -45,7 +45,7 @@ esac
 # @ECLASS_VARIABLE: README_GENTOO_SUFFIX
 # @DESCRIPTION:
 # If you want to specify a suffix for README.gentoo file please export it.
-: ${README_GENTOO_SUFFIX:=""}
+: "${README_GENTOO_SUFFIX:=""}"
 
 # @FUNCTION: readme.gentoo_create_doc
 # @DESCRIPTION:
