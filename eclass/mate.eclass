@@ -63,7 +63,7 @@ mate_py_cond_func_wrap() {
 # - true: will always run eautoreconf
 # - false: will default to automatic detect
 # - If it is not set, it will default to false
-: ${MATE_FORCE_AUTORECONF:="false"}
+: "${MATE_FORCE_AUTORECONF:="false"}"
 
 # @FUNCTION: ematedocize
 # @DESCRIPTION:
