@@ -45,7 +45,7 @@ BDEPEND="dev-vcs/mercurial"
 #
 # EHG_REVISION is passed as a value for --updaterev parameter, so it can be more
 # than just a revision, please consult `hg help revisions' for more details.
-: ${EHG_REVISION:="default"}
+: "${EHG_REVISION:="default"}"
 
 # @ECLASS_VARIABLE: EHG_STORE_DIR
 # @USER_VARIABLE
@@ -70,7 +70,7 @@ BDEPEND="dev-vcs/mercurial"
 # @ECLASS_VARIABLE: EHG_QUIET
 # @DESCRIPTION:
 # Suppress some extra noise from mercurial, set it to 'ON' to be quiet.
-: ${EHG_QUIET:="OFF"}
+: "${EHG_QUIET:="OFF"}"
 [[ "${EHG_QUIET}" == "ON" ]] && EHG_QUIET_CMD_OPT="--quiet"
 
 # @ECLASS_VARIABLE: EHG_CONFIG
