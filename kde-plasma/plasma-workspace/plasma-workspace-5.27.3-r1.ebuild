@@ -164,6 +164,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.22.5-krunner-cwd-at-home.patch" # TODO upstream: KDE-bug 432975, bug 767478
 	"${FILESDIR}/${P}-dashboard-skip-task-switcher.patch" # KDE-bug 465303
 	"${FILESDIR}/${P}-nightcolor-fix-timing-strings.patch"
+	"${FILESDIR}/${P}-cmake.patch" # bug 902797
 )
 
 src_prepare() {
