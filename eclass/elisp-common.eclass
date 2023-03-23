@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp-common.eclass
@@ -206,7 +206,7 @@ BYTECOMPFLAGS="-L ."
 # @ECLASS_VARIABLE: NEED_EMACS
 # @DESCRIPTION:
 # The minimum Emacs version required for the package.
-: ${NEED_EMACS:=23.1}
+: "${NEED_EMACS:=25.3}"
 
 # @ECLASS_VARIABLE: _ELISP_EMACS_VERSION
 # @INTERNAL
