@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-ext-source-r3.eclass
@@ -81,7 +81,7 @@ esac
 # @CODE
 # PHP_INI_NAME="40-foo"
 # @CODE
-: ${PHP_INI_NAME:=${PHP_EXT_NAME}}
+: "${PHP_INI_NAME:=${PHP_EXT_NAME}}"
 
 # @ECLASS_VARIABLE: PHP_EXT_NEEDED_USE
 # @PRE_INHERIT
