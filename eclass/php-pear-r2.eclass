@@ -29,12 +29,12 @@ RDEPEND=">=dev-php/pear-1.8.1"
 # @DESCRIPTION:
 # Set this if the PEAR package name differs from ${PN/PEAR-/}
 # (generally shouldn't be the case).
-: ${PHP_PEAR_PKG_NAME:=${PN/PEAR-/}}
+: "${PHP_PEAR_PKG_NAME:=${PN/PEAR-/}}"
 
 # @ECLASS_VARIABLE: PEAR_PV
 # @DESCRIPTION:
 # Set in ebuild if the ${PV} breaks SRC_URI for alpha/beta/rc versions
-: ${PEAR_PV:=${PV}}
+: "${PEAR_PV:=${PV}}"
 
 # @ECLASS_VARIABLE: PEAR-P
 # @INTERNAL
@@ -46,7 +46,7 @@ PEAR_P="${PHP_PEAR_PKG_NAME}-${PEAR_PV}"
 # @DESCRIPTION:
 # Set in ebuild to the domain name of the channel if not pear.php.net
 # When the domain is not pear.php.net, setting the SRC_URI is required
-: ${PHP_PEAR_DOMAIN:=pear.php.net}
+: "${PHP_PEAR_DOMAIN:=pear.php.net}"
 
 # @ECLASS_VARIABLE: PHP_PEAR_CHANNEL
 # @DEFAULT_UNSET
@@ -60,7 +60,7 @@ if [[ "${PHP_PEAR_DOMAIN}" == "pear.php.net" ]] ; then
 	SRC_URI="https://pear.php.net/get/${PEAR_P}.tgz"
 fi
 
-: ${HOMEPAGE:=https://${PHP_PEAR_DOMAIN}/package/${PHP_PEAR_PKG_NAME}}
+: "${HOMEPAGE:=https://${PHP_PEAR_DOMAIN}/package/${PHP_PEAR_PKG_NAME}}"
 
 S="${WORKDIR}/${PEAR_P}"
 
