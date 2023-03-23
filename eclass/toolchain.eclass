@@ -53,9 +53,9 @@ if [[ ${CTARGET} = ${CHOST} ]] ; then
 		export CTARGET=${CATEGORY#cross-}
 	fi
 fi
-: ${TARGET_ABI:=${ABI}}
-: ${TARGET_MULTILIB_ABIS:=${MULTILIB_ABIS}}
-: ${TARGET_DEFAULT_ABI:=${DEFAULT_ABI}}
+: "${TARGET_ABI:=${ABI}}"
+: "${TARGET_MULTILIB_ABIS:=${MULTILIB_ABIS}}"
+: "${TARGET_DEFAULT_ABI:=${DEFAULT_ABI}}"
 
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
@@ -400,17 +400,17 @@ PDEPEND=">=sys-devel/gcc-config-2.3"
 # Used to override compression used for for patchsets.
 # Default is xz for EAPI 8+ and bz2 for older EAPIs.
 if [[ ${EAPI} == 8 ]] ; then
-	: ${TOOLCHAIN_PATCH_SUFFIX:=xz}
+	: "${TOOLCHAIN_PATCH_SUFFIX:=xz}"
 else
 	# Older EAPIs
-	: ${TOOLCHAIN_PATCH_SUFFIX:=bz2}
+	: "${TOOLCHAIN_PATCH_SUFFIX:=bz2}"
 fi
 
 # @ECLASS_VARIABLE: TOOLCHAIN_SET_S
 # @DESCRIPTION:
 # Used to override value of S for snapshots and such. Mainly useful
 # if needing to set GCC_TARBALL_SRC_URI.
-: ${TOOLCHAIN_SET_S:=yes}
+: "${TOOLCHAIN_SET_S:=yes}"
 
 # Set the source directory depending on whether we're using
 # a live git tree, snapshot, or release tarball.
@@ -1311,7 +1311,7 @@ toolchain_src_configure() {
 			[[ ${arm_arch} == armv7? ]] && arm_arch=${arm_arch/7/7-}
 			# See if this is a valid --with-arch flag
 			if (srcdir=${S}/gcc target=${CTARGET} with_arch=${arm_arch};
-			    . "${srcdir}"/config.gcc) &>/dev/null
+				. "${srcdir}"/config.gcc) &>/dev/null
 			then
 				confgcc+=( --with-arch=${arm_arch} )
 			fi
@@ -1964,7 +1964,7 @@ gcc_do_make() {
 			LIBPATH="${LIBPATH}" \
 			BOOT_CFLAGS="${BOOT_CFLAGS}"
 		popd > /dev/null || die
-        fi
+	fi
 
 	einfo "Compiling ${PN} (${GCC_MAKE_TARGET})..."
 
