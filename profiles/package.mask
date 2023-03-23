@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-03-23)
+# Unused Java libraries. Removal on 2023-04-22.
+dev-java/tomcat-jsp-api
+dev-java/tomcat-el-api
+dev-java/glassfish-xmlrpc-api
+
 # David Seifert <soap@gentoo.org> (2023-03-19)
 # Unmaintained, last release 18 years ago, assortment of QA issues,
 # upstream gone, fails with modern C, no revdeps remaining.
