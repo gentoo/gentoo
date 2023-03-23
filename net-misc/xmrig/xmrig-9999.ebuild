@@ -33,7 +33,6 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.12.2-nonotls.patch
-	"${FILESDIR}"/${PN}-6.18.1-gcc-13.patch
 )
 
 src_prepare() {
