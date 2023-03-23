@@ -5,8 +5,6 @@
 
 EAPI=8
 
-NEED_EMACS=24.4
-
 inherit elisp
 
 DESCRIPTION="Browse and import bibliographic references with Emacs"

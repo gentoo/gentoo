@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=25.1
-
 inherit elisp
 
 DESCRIPTION="Highlight uncommitted changes, jump between and revert them selectively"

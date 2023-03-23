@@ -6,8 +6,6 @@
 
 EAPI=8
 
-NEED_EMACS=24.3
-
 inherit elisp
 
 DESCRIPTION="Declaration macro for simplifying your Emacs configuration"

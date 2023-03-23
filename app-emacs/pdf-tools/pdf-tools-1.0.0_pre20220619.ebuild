@@ -4,7 +4,6 @@
 EAPI=8
 
 COMMIT=fe42da60ad68e806af1677210249caccd7b99451
-NEED_EMACS=25.1  # Needs Emacs >=25.1 because of the "let-alist" function.
 
 inherit autotools elisp
 

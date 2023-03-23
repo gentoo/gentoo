@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=24
-
 inherit readme.gentoo-r1 elisp
 
 DESCRIPTION="Undo trees and visualization"

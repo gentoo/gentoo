@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=24.4
-
 inherit elisp
 
 DESCRIPTION="Deferred and Concurrent - simple asynchronous functions for Emacs Lisp"

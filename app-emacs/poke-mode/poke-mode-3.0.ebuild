@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=25
-
 inherit elisp
 
 DESCRIPTION="Major mode for editing Poke programs"

@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=24.4
-
 inherit elisp readme.gentoo-r1
 
 DESCRIPTION="Filladapt enhances the behavior of Emacs' fill functions"

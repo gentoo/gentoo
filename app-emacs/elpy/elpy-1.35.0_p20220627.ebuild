@@ -9,8 +9,6 @@ DISTUTILS_SINGLE_IMPL=ON
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 
-NEED_EMACS=24.4
-
 inherit distutils-r1 elisp
 
 DESCRIPTION="Emacs Python Development Environment"
