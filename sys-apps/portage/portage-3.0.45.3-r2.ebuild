@@ -104,7 +104,7 @@ python_prepare_all() {
 			die "failed to patch create_depgraph_params.py"
 
 		einfo "Enabling additional FEATURES for gentoo-dev..."
-		echo 'FEATURES="${FEATURES} ipc-sandbox network-sandbox strict-keepdir"' \
+		echo 'FEATURES="${FEATURES} ipc-sandbox network-sandbox strict-keepdir warn-on-large-env"' \
 			>> cnf/make.globals || die
 	fi
 
