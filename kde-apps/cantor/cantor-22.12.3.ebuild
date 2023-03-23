@@ -98,7 +98,6 @@ src_configure() {
 		-DLUAJIT_INCLUDEDIR="${EPREFIX}/$(lua_get_include_dir)"
 		-DLUAJIT_LIBDIR="${EPREFIX}/$(lua_get_cmod_dir)"
 	)
-	use python && mycmakeargs+=( -DPython3_EXECUTABLE="${PYTHON}" )
 	ecm_src_configure
 }
 
