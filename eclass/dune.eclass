@@ -27,7 +27,7 @@ _DUNE_ECLASS=1
 # @DESCRIPTION:
 # Sets the actual Dune package name, if different from Gentoo package name.
 # Set before inheriting the eclass.
-: ${DUNE_PKG_NAME:=${PN}}
+: "${DUNE_PKG_NAME:=${PN}}"
 
 inherit edo multiprocessing
 
