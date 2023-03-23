@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mozextension.eclass
@@ -21,7 +21,7 @@ _MOZEXTENSION_ECLASS=1
 # to be overridden from the default app-global extensions path.
 # Default is empty, which installs to predetermined hard-coded
 # paths specified in the eclass.
-: ${MOZEXTENSION_TARGET:=""}
+: "${MOZEXTENSION_TARGET:=""}"
 
 BDEPEND="app-arch/unzip"
 
