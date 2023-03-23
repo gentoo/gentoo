@@ -34,7 +34,7 @@ RDEPEND="${DEPEND}"
 src_test() {
 	# bug 624584 - needs internet connection
 	local myctestargs=(
-		-E "(gravatar-gravatarresolvurljobtest)"
+		-E "(gravatarresolvurljobtest)"
 	)
 	ecm_src_test
 }
