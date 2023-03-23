@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x64-macos"
-RESTRICT="test" # test requires cask and ert-runner which are not packaged yet
+RESTRICT="test" # TODO: wire up now that cask and ert-runner are packaged
 
 RDEPEND=">=app-emacs/dash-2.12.1
 	>=app-emacs/pkg-info-0.4"
