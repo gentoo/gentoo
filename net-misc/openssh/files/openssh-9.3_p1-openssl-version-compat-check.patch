@@ -1,5 +1,4 @@
-diff --git a/openbsd-compat/openssl-compat.c b/openbsd-compat/openssl-compat.c
-index 033f35763..efc387fa7 100644
+https://bugzilla.mindrot.org/show_bug.cgi?id=3548
 --- a/openbsd-compat/openssl-compat.c
 +++ b/openbsd-compat/openssl-compat.c
 @@ -48,19 +48,25 @@ ssh_compatible_openssl(long headerver, long libver)
@@ -37,8 +36,6 @@ index 033f35763..efc387fa7 100644
  	if ( (headerver & mask) == (libver & mask) && lfix >= hfix)
  		return 1;
  	return 0;
-diff --git a/openbsd-compat/regress/opensslvertest.c b/openbsd-compat/regress/opensslvertest.c
-index d50066609..60a8a4e6c 100644
 --- a/openbsd-compat/regress/opensslvertest.c
 +++ b/openbsd-compat/regress/opensslvertest.c
 @@ -31,7 +31,7 @@ struct version_test {
