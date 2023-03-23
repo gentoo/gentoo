@@ -26,7 +26,7 @@ _VIRTUALX_ECLASS=1
 # Any other value is taken as useflag desired to be in control of
 # the dependency (eg. VIRTUALX_REQUIRED="kde" will add the dependency
 # into "kde? ( )" and add kde into IUSE.
-: ${VIRTUALX_REQUIRED:=test}
+: "${VIRTUALX_REQUIRED:=test}"
 
 # @ECLASS_VARIABLE: VIRTUALX_DEPEND
 # @OUTPUT_VARIABLE
