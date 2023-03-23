@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,6 +44,9 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	sed -e "/QHG_LOCATION/s|qhelpgenerator|$(qt5_get_bindir)/&|" \
+		-i {lib/plugins/,lib/SignOn/,}doc/doxy.conf || die
 
 	# install docs to correct location
 	sed -e "s|share/doc/\$\${PROJECT_NAME}|share/doc/${PF}|" \
