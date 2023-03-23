@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome2-utils.eclass
@@ -29,29 +29,29 @@ esac
 # @INTERNAL
 # @DESCRIPTION:
 # Path to gconftool-2
-: ${GCONFTOOL_BIN:="/usr/bin/gconftool-2"}
+: "${GCONFTOOL_BIN:="/usr/bin/gconftool-2"}"
 
 # @ECLASS_VARIABLE: SCROLLKEEPER_DIR
 # @INTERNAL
 # @DESCRIPTION:
 # Directory where scrollkeeper-update should do its work
-: ${SCROLLKEEPER_DIR:="/var/lib/scrollkeeper"}
+: "${SCROLLKEEPER_DIR:="/var/lib/scrollkeeper"}"
 
 # @ECLASS_VARIABLE: SCROLLKEEPER_UPDATE_BIN
 # @INTERNAL
 # @DESCRIPTION:
 # Path to scrollkeeper-update
-: ${SCROLLKEEPER_UPDATE_BIN:="/usr/bin/scrollkeeper-update"}
+: "${SCROLLKEEPER_UPDATE_BIN:="/usr/bin/scrollkeeper-update"}"
 
 # @ECLASS_VARIABLE: GLIB_COMPILE_RESOURCES
 # @DESCRIPTION:
 # Path to glib-compile-resources
-: ${GLIB_COMPILE_RESOURCES:="/usr/bin/glib-compile-resources"}
+: "${GLIB_COMPILE_RESOURCES:="/usr/bin/glib-compile-resources"}"
 
 # @ECLASS_VARIABLE: GLIB_COMPILE_SCHEMAS
 # @DESCRIPTION:
 # Path to glib-compile-schemas
-: ${GLIB_COMPILE_SCHEMAS:="/usr/bin/glib-compile-schemas"}
+: "${GLIB_COMPILE_SCHEMAS:="/usr/bin/glib-compile-schemas"}"
 
 # @ECLASS_VARIABLE: GNOME2_ECLASS_SCHEMAS
 # @INTERNAL
