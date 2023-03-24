@@ -4,6 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN^}
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
 inherit distutils-r1
@@ -14,15 +16,12 @@ HOMEPAGE="
 	https://github.com/pallets/flask/
 	https://pypi.org/project/Flask/
 "
-MY_PN="Flask"
-MY_P="${MY_PN}-${PV}"
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/mitsuhiko/flask.git"
 	inherit git-r3
 else
-	SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
+	inherit pypi
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="BSD"
