@@ -7,11 +7,10 @@ EAPI=8
 # old compat matrix is no longer accessible as of 2021-02-13 but stated back
 # in 2020-07-05 that PyQt5 was explicitly not supported.
 PYTHON_COMPAT=( python3_{9..11} )
+PYPI_NO_NORMALIZE=1
+PYPI_PN="ReText"
 
 inherit distutils-r1 optfeature qmake-utils virtualx xdg
-
-MY_PN="ReText"
-MY_P="${MY_PN}-${PV/_/~}"
 
 DESCRIPTION="Simple editor for Markdown and reStructuredText"
 HOMEPAGE="https://github.com/retext-project/retext https://github.com/retext-project/retext/wiki"
@@ -20,9 +19,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/retext-project/retext.git"
 else
-	SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-	S="${WORKDIR}/${MY_P}"
-
+	inherit pypi
 	KEYWORDS="~amd64"
 fi
 
