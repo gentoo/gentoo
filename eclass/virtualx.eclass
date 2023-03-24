@@ -22,7 +22,7 @@ _VIRTUALX_ECLASS=1
 # @DESCRIPTION:
 # Variable specifying the dependency on xorg-server and xhost.
 # Possible special values are "always" and "manual", which specify
-# the dependency to be set unconditionaly or not at all.
+# the dependency to be set unconditionally or not at all.
 # Any other value is taken as useflag desired to be in control of
 # the dependency (eg. VIRTUALX_REQUIRED="kde" will add the dependency
 # into "kde? ( )" and add kde into IUSE.
