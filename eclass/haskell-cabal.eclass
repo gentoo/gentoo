@@ -26,11 +26,11 @@
 #   nocabaldep --  don't add dependency on cabal.
 #                  only used for packages that _must_ not pull the dependency
 #                  on cabal, but still use this eclass (e.g. haskell-updater).
-#   ghcdeps    --  constraint dependency on package to ghc onces
+#   ghcdeps    --  constraint dependency on package to ghc once
 #                  only used for packages that use libghc internally and _must_
 #                  not pull upper versions
 #   test-suite --  add support for cabal test-suites (introduced in Cabal-1.8)
-#   rebuild-after-doc-workaround -- enable doctest test failue workaround.
+#   rebuild-after-doc-workaround -- enable doctest test failure workaround.
 #                  Symptom: when `./setup haddock` is run in a `build-type: Custom`
 #                  package it might cause cause the test-suite to fail with
 #                  errors like:
@@ -516,7 +516,7 @@ cabal-configure() {
 	cabalconf+=(--verbose)
 
 	# We build shared version of our Cabal where ghc ships it's shared
-	# version of it. We will link ./setup as dynamic binary againt Cabal later.
+	# version of it. We will link ./setup as dynamic binary against Cabal later.
 	[[ ${CATEGORY}/${PN} == "dev-haskell/cabal" ]] && \
 		$(ghc-supports-shared-libraries) && \
 			cabalconf+=(--enable-shared)
@@ -882,8 +882,8 @@ cabal_chdeps() {
 
 # @FUNCTION: cabal-constraint
 # @DESCRIPTION:
-# Allowes to set contraint to the libraries that are
-# used by specified package
+# Allows to set constraints to the libraries that are used by the
+# specified package.
 cabal-constraint() {
 	while read p v ; do
 		echo "--constraint \"$p == $v\""
