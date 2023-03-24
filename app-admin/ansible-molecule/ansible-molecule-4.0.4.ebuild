@@ -6,15 +6,12 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..11} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
+PYPI_PN="molecule"
 
-inherit distutils-r1 optfeature
-
-MY_PN="${PN#ansible-}"
-MY_P="${MY_PN}-${PV}"
+inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="A toolkit designed to aid in the development and testing of Ansible roles"
 HOMEPAGE="https://pypi.org/project/molecule/ https://github.com/ansible-community/molecule/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -55,8 +52,6 @@ BDEPEND="$(python_gen_cond_dep '
 		dev-util/yamllint
 	)
 ')"
-
-S="${WORKDIR}"/${MY_P}
 
 # test_role.py doesn't play nicely with FEATURES=usersandbox. As for test_command.py:
 #  - quite a few of these tests use the network;
