@@ -34,11 +34,10 @@ RDEPEND="
 	>=dev-python/terminado-0.8.3[${PYTHON_USEDEP}]
 	>=dev-python/tornado-6.1[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-4.2.1[${PYTHON_USEDEP}]
-
-	<dev-python/notebook-7[${PYTHON_USEDEP}]
 "
 PDEPEND="
 	>=dev-python/nbconvert-5[${PYTHON_USEDEP}]
+        <dev-python/notebook-7[${PYTHON_USEDEP}]
 "
 
 # dev-python/nbval is missing impls
