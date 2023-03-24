@@ -174,7 +174,7 @@ selinux-policy-2_src_prepare() {
 		done
 	fi
 
-	# Apply the additional patches refered to by the module ebuild.
+	# Apply the additional patches referred to by the module ebuild.
 	# But first some magic to differentiate between bash arrays and strings
 	if [[ "$(declare -p POLICY_PATCH 2>/dev/null 2>&1)" == "declare -a"* ]]; then
 		[[ -n ${POLICY_PATCH[*]} ]] && eapply -d "${S}/refpolicy/policy/modules" -- "${POLICY_PATCH[@]}"
@@ -303,7 +303,7 @@ selinux-policy-2_pkg_postinst() {
 				ewarn "If it is the last SELinux module package being installed however,"
 				ewarn "then it is advised to look at the error above and take appropriate"
 				ewarn "action since the new SELinux policies are not loaded until the"
-				ewarn "command finished succesfully."
+				ewarn "command finished successfully."
 				ewarn ""
 				ewarn "To reload, run the following command from within /usr/share/selinux/${i}:"
 				ewarn "  semodule ${COMMAND_base} -i \$(ls *.pp | grep -v base.pp)"
@@ -311,10 +311,10 @@ selinux-policy-2_pkg_postinst() {
 				ewarn "  semodule ${COMMAND_base} -i \$(ls *.pp | grep -v base.pp | grep -v unconfined.pp)"
 				ewarn "depending on if you need the unconfined domain loaded as well or not."
 			else
-				einfo "SELinux modules reloaded succesfully."
+				einfo "SELinux modules reloaded successfully."
 			fi
 		else
-			einfo "SELinux modules loaded succesfully."
+			einfo "SELinux modules loaded successfully."
 		fi
 		COMMAND="";
 	done
@@ -360,7 +360,7 @@ selinux-policy-2_pkg_postrm() {
 			if [[ $? -ne 0 ]]; then
 				ewarn "SELinux module unload failed.";
 			else
-				einfo "SELinux modules unloaded succesfully."
+				einfo "SELinux modules unloaded successfully."
 			fi
 		done
 	fi
