@@ -52,7 +52,7 @@ all_ruby_prepare() {
 	sed -i -e '/should have :puma registered/,/^    end/ s:^:#:' spec/capybara_spec.rb || die
 
 	# Update spec to catch the right error code. This seems to have
-	# changed recently accross ruby versions.
+	# changed recently across ruby versions.
 	sed -i -e '/raise_error/ s/EOFError/Net::ReadTimeout/' spec/server_spec.rb || die
 }
 
