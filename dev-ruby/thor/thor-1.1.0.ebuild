@@ -1,4 +1,4 @@
-# Copyright 2000-2021 Gentoo Authors
+# Copyright 2000-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ RUBY_FAKEGEM_GEMSPEC="thor.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A scripting framework that replaces rake and sake"
+DESCRIPTION="Simple and efficient tool for building self-documenting command line utilities"
 HOMEPAGE="http://whatisthor.com/"
 
 SRC_URI="https://github.com/erikhuda/${PN}/archive/v${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
