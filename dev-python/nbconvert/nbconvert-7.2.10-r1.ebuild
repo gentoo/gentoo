@@ -40,7 +40,6 @@ RDEPEND="
 	>=dev-python/traitlets-5.1.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/nbclassic[${PYTHON_USEDEP}]
 	test? (
 		dev-python/ipykernel[${PYTHON_USEDEP}]
 		>=dev-python/ipywidgets-7[${PYTHON_USEDEP}]
@@ -56,14 +55,6 @@ src_prepare() {
 	sed -e 's:css = .*:raise PermissionError("You shall not fetch!"):' \
 		-i hatch_build.py || die
 	distutils-r1_src_prepare
-}
-
-python_configure() {
-	local src=$(
-		"${EPYTHON}" -c "import nbclassic as m; print(*m.__path__)" || die
-	)
-	cp "${src}/static/style/style.min.css" \
-		share/templates/classic/static/style.css || die
 }
 
 src_test() {
