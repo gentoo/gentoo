@@ -4,13 +4,12 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
+PYPI_PN="pyaml"
 
-MY_P=pyaml-${PV}
+inherit distutils-r1 pypi
+
 DESCRIPTION="PyYAML-based module to produce pretty and readable YAML-serialized data"
 HOMEPAGE="https://github.com/mk-fg/pretty-yaml"
-SRC_URI="mirror://pypi/${PN:0:1}/${MY_P%-*}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="WTFPL-2"
 SLOT="0"
