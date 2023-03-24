@@ -85,8 +85,8 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # e.g.: ERROR_MTRR="MTRR exists in the .config but shouldn't!!"
 #
 # CONFIG_CHECK="CFG" with ERROR_<CFG>="Error Message" will die
-# CONFIG_CHECK="~CFG" with ERROR_<CFG>="Error Message" calls eerror without dieing
-# CONFIG_CHECK="~CFG" with WARNING_<CFG>="Warning Message" calls ewarn without dieing
+# CONFIG_CHECK="~CFG" with ERROR_<CFG>="Error Message" calls eerror without dying
+# CONFIG_CHECK="~CFG" with WARNING_<CFG>="Warning Message" calls ewarn without dying
 
 
 # @ECLASS_VARIABLE: KBUILD_OUTPUT
@@ -290,7 +290,7 @@ _LINUX_CONFIG_EXISTS_DONE=
 # @FUNCTION: linux_config_qa_check
 # @INTERNAL
 # @DESCRIPTION:
-# Helper funciton which returns an error before the function argument is run if no config exists
+# Helper function which returns an error before the function argument is run if no config exists
 linux_config_qa_check() {
 	local f="$1"
 
