@@ -86,7 +86,7 @@ esac
 
 # @FUNCTION: gnome2_environment_reset
 # @DESCRIPTION:
-# Reset various variables inherited from root's evironment to a reasonable
+# Reset various variables inherited from root's environment to a reasonable
 # default for ebuilds to help avoid access violations and test failures.
 gnome2_environment_reset() {
 	xdg_environment_reset
