@@ -1,0 +1,36 @@
+From 74c99d3afda09d9a715c84150f0bb9afe4003c33 Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Thu, 23 Mar 2023 09:37:27 +0100
+Subject: [PATCH] Display connector name instead of type name when serial
+ number is identical
+
+Displays the name of the connector ("DP-1") instead of just
+typeName ("DisplayPort"). When two identical outputs are connected
+to the same connector type it doesn't help differntiating.
+Furthermore it matches what will be shown by the output locator
+effect.
+BUG:466046
+FIXED-IN:5.27.4
+
+
+(cherry picked from commit 21155f81fee953d5b5e1bab92565b85ef99a0260)
+---
+ common/utils.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/common/utils.cpp b/common/utils.cpp
+index 7aaa926..a9eb80c 100644
+--- a/common/utils.cpp
++++ b/common/utils.cpp
+@@ -35,7 +35,7 @@ QString Utils::outputName(const KScreen::Output *output, bool shouldShowSerialNu
+             name += output->edid()->serial() + QLatin1Char(' ');
+         }
+         if (shouldShowConnector) {
+-            name += output->typeName();
++            name += output->name();
+         }
+         if (!name.trimmed().isEmpty()) {
+             return name;
+-- 
+2.40.0
+
