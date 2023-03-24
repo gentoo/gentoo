@@ -4,19 +4,17 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN="PyTrie"
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_PN="PyTrie"
-MY_P="${MY_PN}-${PV}"
 DESCRIPTION="A pure Python implementation of the trie data structure"
 HOMEPAGE="
 	https://github.com/gsakkis/pytrie/
 	https://pypi.org/project/PyTrie/
 "
-SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
