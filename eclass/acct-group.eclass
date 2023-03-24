@@ -61,7 +61,7 @@ readonly ACCT_GROUP_NAME
 # @REQUIRED
 # @DESCRIPTION:
 # Preferred GID for the new group.  This variable is obligatory, and its
-# value must be unique across all group packages.  This can be overriden
+# value must be unique across all group packages.  This can be overridden
 # in make.conf through ACCT_GROUP_<UPPERCASE_USERNAME>_ID variable.
 #
 # Overlays should set this to -1 to dynamically allocate GID.  Using -1
