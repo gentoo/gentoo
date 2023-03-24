@@ -4,19 +4,18 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN^}
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_P=${P^}
 DESCRIPTION="Threading and multiprocessing eye-candy"
 HOMEPAGE="
 	https://pebble.readthedocs.io/
 	https://github.com/noxdafox/pebble/
 	https://pypi.org/project/Pebble/
 "
-SRC_URI="mirror://pypi/${MY_P::1}/${PN^}/${MY_P}.tar.gz"
-S=${WORKDIR}/${P^}
 
 LICENSE="LGPL-3+"
 SLOT="0"
