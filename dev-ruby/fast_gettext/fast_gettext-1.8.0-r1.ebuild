@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 inherit ruby-fakegem
 
-DESCRIPTION="GetText but 3.5x faster, 560x less memory, clean namespace and threadsave!"
+DESCRIPTION="GetText but 3.5x faster, 560x less memory, clean namespace and threadsafe!"
 HOMEPAGE="https://github.com/grosser/fast_gettext"
 SRC_URI="https://github.com/grosser/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
