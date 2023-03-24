@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH="${BROOT}"/usr/share/openpgp-keys/elfutils.gpg
-inherit flag-o-matic multilib-minimal verify-sig
+inherit autotools flag-o-matic multilib-minimal verify-sig
 
 DESCRIPTION="Libraries/utilities to handle ELF objects (drop in replacement for libelf)"
 HOMEPAGE="https://sourceware.org/elfutils/"
@@ -44,6 +44,7 @@ BDEPEND="
 
 PATCHES=(
 	"${WORKDIR}"/${PN}-0.187-patches/
+	"${FILESDIR}"/${P}-configure-bashisms.patch
 )
 
 src_unpack() {
@@ -61,6 +62,9 @@ src_prepare() {
 	if use elibc_musl; then
 		eapply "${WORKDIR}"/${PN}-0.187-patches/musl/
 	fi
+
+	# Only here for ${P}-configure-bashisms.patch, delete on next bump!
+	eautoreconf
 
 	if ! use static-libs; then
 		sed -i -e '/^lib_LIBRARIES/s:=.*:=:' -e '/^%.os/s:%.o$::' lib{asm,dw,elf}/Makefile.in || die
