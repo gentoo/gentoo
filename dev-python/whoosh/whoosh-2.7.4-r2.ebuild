@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN^}
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Fast, pure-Python full text indexing, search and spell checking library"
 HOMEPAGE="https://pypi.org/project/Whoosh/"
-SRC_URI="mirror://pypi/W/${PN^}/${P^}.tar.gz"
-S="${WORKDIR}/${P^}"
 
 LICENSE="BSD-2"
 SLOT="0"
