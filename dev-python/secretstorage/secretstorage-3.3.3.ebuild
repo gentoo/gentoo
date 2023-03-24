@@ -4,19 +4,17 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN="SecretStorage"
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
-inherit distutils-r1
-
-MY_PN="SecretStorage"
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python bindings to FreeDesktop.org Secret Service API"
 HOMEPAGE="
 	https://github.com/mitya57/secretstorage/
 	https://pypi.org/project/SecretStorage/
 "
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
