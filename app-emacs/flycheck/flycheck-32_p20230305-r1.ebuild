@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~ppc64"
 IUSE="test"
 # Tests fail for now, need more investigation
 RESTRICT="!test? ( test ) test"
