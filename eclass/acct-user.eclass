@@ -69,7 +69,7 @@ readonly ACCT_USER_NAME
 # @REQUIRED
 # @DESCRIPTION:
 # Preferred UID for the new user.  This variable is obligatory, and its
-# value must be unique across all user packages.  This can be overriden
+# value must be unique across all user packages.  This can be overridden
 # in make.conf through ACCT_USER_<UPPERCASE_USERNAME>_ID variable.
 #
 # Overlays should set this to -1 to dynamically allocate UID.  Using -1
@@ -99,7 +99,7 @@ readonly ACCT_USER_NAME
 # @ECLASS_VARIABLE: ACCT_USER_SHELL
 # @DESCRIPTION:
 # The shell to use for the user.  If not specified, a 'nologin' variant
-# for the system is used.  This can be overriden in make.conf through
+# for the system is used.  This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_SHELL variable.
 : "${ACCT_USER_SHELL:=/sbin/nologin}"
 
@@ -108,7 +108,7 @@ readonly ACCT_USER_NAME
 # The home directory for the user.  If not specified, /dev/null is used.
 # The directory will be created with appropriate permissions if it does
 # not exist.  When updating, existing home directory will not be moved.
-# This can be overriden in make.conf through
+# This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_HOME variable.
 : "${ACCT_USER_HOME:=/dev/null}"
 
@@ -117,13 +117,13 @@ readonly ACCT_USER_NAME
 # @DESCRIPTION:
 # The ownership to use for the home directory, in chown ([user][:group])
 # syntax.  Defaults to the newly created user, and its primary group.
-# This can be overriden in make.conf through
+# This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_HOME_OWNER variable.
 
 # @ECLASS_VARIABLE: ACCT_USER_HOME_PERMS
 # @DESCRIPTION:
 # The permissions to use for the home directory, in chmod (octal
-# or verbose) form.  This can be overriden in make.conf through
+# or verbose) form.  This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_HOME_PERMS variable.
 : "${ACCT_USER_HOME_PERMS:=0755}"
 
@@ -134,7 +134,7 @@ readonly ACCT_USER_NAME
 # array.  The first group specified is the user's primary group, while
 # the remaining groups (if any) become supplementary groups.
 #
-# This can be overriden in make.conf through
+# This can be overridden in make.conf through
 # ACCT_USER_<UPPERCASE_USERNAME>_GROUPS variable, or appended to
 # via ACCT_USER_<UPPERCASE_USERNAME>_GROUPS_ADD.  Please note that
 # due to technical limitations, the override variables are not arrays
