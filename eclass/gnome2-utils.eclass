@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome2-utils.eclass
@@ -86,7 +86,7 @@ esac
 
 # @FUNCTION: gnome2_environment_reset
 # @DESCRIPTION:
-# Reset various variables inherited from root's evironment to a reasonable
+# Reset various variables inherited from root's environment to a reasonable
 # default for ebuilds to help avoid access violations and test failures.
 gnome2_environment_reset() {
 	xdg_environment_reset
