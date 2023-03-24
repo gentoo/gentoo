@@ -35,8 +35,8 @@ SITEFILE="50${PN}-gentoo-r1.el"
 DOCS=( README.md )
 
 src_compile() {
-        elisp_src_compile
-        elisp-make-autoload-file
+	elisp_src_compile
+	elisp-make-autoload-file
 }
 
 src_test() {
