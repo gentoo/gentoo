@@ -10,16 +10,14 @@ EAPI=8
 DISTUTILS_USE_PEP517=standalone
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Clean customisable Sphinx documentation theme"
 HOMEPAGE="
 	https://pypi.org/project/furo/
 	https://github.com/pradyunsg/furo/
 "
-SRC_URI="
-	https://files.pythonhosted.org/packages/py3/${PN::1}/${PN}/${P}-py3-none-any.whl
-"
+SRC_URI="$(pypi_wheel_url)"
 S=${WORKDIR}
 
 LICENSE="MIT"
