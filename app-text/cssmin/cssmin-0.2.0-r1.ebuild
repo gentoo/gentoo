@@ -11,4 +11,4 @@ HOMEPAGE="https://pypi.org/project/cssmin/ https://github.com/zacharyvoase/cssmi
 
 LICENSE="MIT BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
