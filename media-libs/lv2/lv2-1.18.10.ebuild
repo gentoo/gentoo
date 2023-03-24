@@ -30,7 +30,7 @@ CDEPEND="
 	plugins? (
 		media-libs/libsamplerate
 		media-libs/libsndfile
-		x11-libs/gtk+:2
+		x11-libs/gtk+:2[${MULTILIB_USEDEP}]
 	)
 "
 DEPEND="
