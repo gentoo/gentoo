@@ -3,17 +3,15 @@
 
 EAPI=8
 
-MY_PN="Flask-Sphinx-Themes"
-MY_P="${MY_PN}-${PV}"
-
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN="Flask-Sphinx-Themes"
 PYTHON_COMPAT=( pypy3 python3_{9..11} )
-inherit distutils-r1
+
+inherit distutils-r1 pypi
 
 DESCRIPTION="Sphinx Themes for Flask related projects and Flask itself"
 HOMEPAGE="https://github.com/pallets/flask-sphinx-themes https://pypi.org/project/Flask-Sphinx-Themes/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
