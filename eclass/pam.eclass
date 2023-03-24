@@ -143,7 +143,7 @@ dopammod() {
 # Install pam module file <old name> as <new name> in the pam
 # modules' dir for current implementation
 newpammod() {
-	[[ $# -ne 2 ]] && die "newpammod requires two arguements"
+	[[ $# -ne 2 ]] && die "newpammod requires two arguments"
 
 	if has pam ${IUSE} && ! use pam; then
 		return 0;
@@ -159,7 +159,7 @@ newpammod() {
 # This function creates a pamd file which mimics system-auth file
 # for the given levels in the /etc/pam.d directory.
 pamd_mimic_system() {
-	[[ $# -lt 2 ]] && die "pamd_mimic_system requires at least two argments"
+	[[ $# -lt 2 ]] && die "pamd_mimic_system requires at least two arguments"
 	pamd_mimic system-auth "$@"
 }
 
@@ -169,7 +169,7 @@ pamd_mimic_system() {
 # This function creates a pamd file which mimics the given stack
 # for the given levels in the /etc/pam.d directory.
 pamd_mimic() {
-	[[ $# -lt 3 ]] && die "pamd_mimic requires at least three argments"
+	[[ $# -lt 3 ]] && die "pamd_mimic requires at least three arguments"
 
 	if has pam ${IUSE} && ! use pam; then
 		return 0;
