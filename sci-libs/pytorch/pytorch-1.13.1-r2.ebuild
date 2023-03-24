@@ -39,6 +39,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-global-dlopen.patch \
 		"${FILESDIR}"/pytorch-1.7.1-torch_shm_manager.patch \
 		"${FILESDIR}"/${PN}-1.13.0-setup.patch \
+		"${FILESDIR}"/${P}-emptyso.patch \
 
 	# Set build dir for pytorch's setup
 	sed -i \
