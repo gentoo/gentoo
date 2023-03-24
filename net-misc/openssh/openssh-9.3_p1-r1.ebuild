@@ -241,39 +241,46 @@ tweak_ssh_configs() {
 		LANGUAGE LC_ADDRESS LC_IDENTIFICATION LC_MEASUREMENT LC_NAME LC_PAPER LC_TELEPHONE
 	)
 
-	# First the server config.
-	cat <<-EOF >> "${ED}"/etc/ssh/sshd_config
-
-	# Allow client to pass locale environment variables. #367017
-	AcceptEnv ${locale_vars[*]}
-
-	# Allow client to pass COLORTERM to match TERM. #658540
-	AcceptEnv COLORTERM
+	dodir /etc/ssh/ssh_config.d /etc/ssh/sshd_config.d
+	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config || die
+	Include "${EPREFIX}/etc/ssh/ssh_config.d/*.conf"
+	EOF
+	cat <<-EOF >> "${ED}"/etc/ssh/sshd_config || die
+	Include "${EPREFIX}/etc/ssh/sshd_config.d/*.conf"
 	EOF
 
-	# Then the client config.
-	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config
-
-	# Send locale environment variables. #367017
+	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config.d/90gentoo.conf || die
+	# Send locale environment variables (bug #367017)
 	SendEnv ${locale_vars[*]}
 
-	# Send COLORTERM to match TERM. #658540
+	# Send COLORTERM to match TERM (bug #658540)
 	SendEnv COLORTERM
 	EOF
 
+	cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/90gentoo.conf || die
+	# Allow client to pass locale environment variables (bug #367017)
+	AcceptEnv ${locale_vars[*]}
+
+	# Allow client to pass COLORTERM to match TERM (bug #658540)
+	AcceptEnv COLORTERM
+	EOF
+
 	if use pam ; then
-		sed -i \
-			-e "/^#UsePAM /s:.*:UsePAM yes:" \
-			-e "/^#PasswordAuthentication /s:.*:PasswordAuthentication no:" \
-			-e "/^#PrintMotd /s:.*:PrintMotd no:" \
-			-e "/^#PrintLastLog /s:.*:PrintLastLog no:" \
-			"${ED}"/etc/ssh/sshd_config || die
+		cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/90gentoo-pam.conf || die
+		UsePAM yes
+		# This interferes with PAM.
+		PasswordAuthentication no
+		# PAM can do its own handling of MOTD.
+		PrintMotd no
+		PrintLastLog no
+		EOF
 	fi
 
 	if use livecd ; then
-		sed -i \
-			-e '/^#PermitRootLogin/c# Allow root login with password on livecds.\nPermitRootLogin Yes' \
-			"${ED}"/etc/ssh/sshd_config || die
+		cat <<-EOF >> "${ED}"/etc/ssh/sshd_config.d/90gentoo-livecd.conf || die
+		# Allow root login with password on livecds.
+		PermitRootLogin Yes
+		EOF
 	fi
 }
 
