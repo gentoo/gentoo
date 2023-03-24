@@ -1,6 +1,9 @@
 This is https://github.com/loongarch64/userspace-rcu/pull/2, yet to be
 upstreamed but already reviewed and accepted by the LoongArch porting
 community.
+
+(and https://github.com/urcu/userspace-rcu/pull/11)
+
 From 213197eea1a711da2f7cc0c04cdf33acb1b3c50e Mon Sep 17 00:00:00 2001
 From: Wang Jing <wangjing@loongson.cn>
 Date: Tue, 8 Jun 2021 19:44:49 +0800
