@@ -39,7 +39,7 @@ _NINJA_UTILS_ECLASS=1
 # @ECLASS_VARIABLE: NINJA_DEPEND
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
-# Contains a set of build-time depenendencies based on the NINJA setting.
+# Contains a set of build-time dependencies based on the NINJA setting.
 
 # @ECLASS_VARIABLE: NINJAOPTS
 # @DEFAULT_UNSET
