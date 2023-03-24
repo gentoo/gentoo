@@ -4,15 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN="ZConfig"
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_P="ZConfig-${PV}"
 DESCRIPTION="Configuration library supporting a hierarchical schema-driven model"
 HOMEPAGE="https://pypi.org/project/ZConfig/"
-SRC_URI="mirror://pypi/${MY_P:0:1}/ZConfig/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="ZPL"
 SLOT="0"
