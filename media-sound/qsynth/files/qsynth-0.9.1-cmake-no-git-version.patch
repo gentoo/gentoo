@@ -1,5 +1,3 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 47ea36f..0194f32 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -8,6 +8,7 @@ project(qsynth
