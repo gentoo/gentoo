@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md CHANGES"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A builder to facilitate programatic generation of XML markup"
+DESCRIPTION="A builder to facilitate programmatic generation of XML markup"
 HOMEPAGE="http://onestepback.org/"
 
 LICENSE="MIT"
