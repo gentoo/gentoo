@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+PGObject contains the base routines for object management using discoverable stored procedures in PostgreSQL databases. This module contains only common functionality and support structures, and low-level API's. Most developers will want to use more functional modules which add to these functions.
+
+The overall approach here is to provide the basics for a toolkit that other modules can extend. This is thus intended to be a component for building integration between PostgreSQL user defined functions and Perl objects.
+
+Because decisions such as state handling are largely outside of the scope of this module, this module itself does not do any significant state handling. Database handles (using DBD::Pg 2.0 or later) must be passed in on every call. This decision was made in order to allow for diversity in this area, with the idea that wrapper classes would be written to implement this.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">PGObject</remote-id>
+    <remote-id type="cpan-module">PGObject</remote-id>
+    <remote-id type="cpan-module">PGObject::Type::Registry</remote-id>
+  </upstream>
+</pkgmetadata>

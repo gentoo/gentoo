@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+This is a Pod::Coverage subclass (actually, a subclass of Pod::Coverage::CountParents) that allows the POD itself to declare certain symbol names trusted.
+
+Here is a sample Perl module:
+
+package Foo::Bar;
+
+=head1 NAME
+
+Foo::Bar - a bar at which fooes like to drink
+
+=head1 METHODS
+
+=head2 fee
+
+returns the bar tab
+
+=cut
+
+sub fee { ... }
+
+=head2 fie
+
+scoffs at bar tab
+
+=cut
+
+sub fie { ... }
+
+sub foo { ... }
+
+=begin Pod::Coverage
+
+  foo
+
+=end Pod::Coverage
+
+=cut
+This file would report full coverage, because any non-empty lines inside a block of POD targeted to Pod::Coverage are treated as trustme patterns. Leading and trailing whitespace is stripped and the remainder is treated as a regular expression anchored at both ends.
+
+Remember, anywhere you could use =begin and =end as above, you could instead write:
+
+=for Pod::Coverage foo
+In some cases, you may wish to make the entire file trusted. The special pattern *EVERYTHING* may be provided to do just this.
+
+Keep in mind that Pod::Coverage::TrustPod sets up exceptions using the "trust" mechanism rather than the "privacy" mechanism in Pod::Coverage. This is unlikely ever to matter to you, but it's true.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">Pod::Coverage::TrustPod</remote-id>
+    <remote-id type="cpan-module">Pod::Coverage::TrustPod</remote-id>
+  </upstream>
+</pkgmetadata>

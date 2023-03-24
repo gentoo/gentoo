@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+    <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+  The goal here is simply to provide recursive versions of mkdir() and rmdir() with as little code and overhead as possible.
+
+This module is in no way meant to derogate File::Path and is in no way an endorsement to go out and replace all use of File::Path with File::Path::Tiny.
+
+File::Path is very good at what it does but there's simply a lot happening that we can do without much of the time.</longdescription>
+  <upstream>
+    <remote-id type="cpan">File::Path::Tiny</remote-id>
+    <remote-id type="cpan-module">File::Path::Tiny</remote-id>
+  </upstream>
+</pkgmetadata>

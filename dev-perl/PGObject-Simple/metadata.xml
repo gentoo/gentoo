@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+PGObject::Simple a top-half object system for PGObject which is simple and inspired by (and a subset functionally speaking of) the simple stored procedure object method system of LedgerSMB 1.3. The framework discovers stored procedure APIs and dispatches to them and can therefore be a base for application-specific object models and much more.
+
+PGObject::Simple is designed to be light-weight and yet robust glue between your object model and the RDBMS's stored procedures. It works by looking up the stored procedure arguments, stripping them of the conventional prefix 'in_', and mapping what is left to object property names. Properties can be overridden by passing in a hashrefs in the args named argument. Named arguments there will be used in place of object properties.
+
+This system is quite flexible, perhaps too much so, and it relies on the database encapsulating its own logic behind self-documenting stored procedures using consistent conventions. No function which is expected to be discovered can be overloaded, and all arguments must be named for their object properties. For this reason the use of this module fundamentally changes the contract of the stored procedure from that of a fixed number of arguments in fixed types contract to one where the name must be unique and the stored procedures must be coded to the application's interface. This inverts the way we typically think about stored procedures and makes them much more application friendly.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">PGObject::Simple</remote-id>
+    <remote-id type="cpan-module">PGObject::Simple</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+Plack::Request::WithEncoding is a subclass of Plack::Request that supports encoded requests. It overrides many Plack::Request attributes to return decoded values. This feature allows a single application to seamlessly handle a wide variety of different language code sets. Applications that must be able to handle many different translations at once will find this extension able to quickly solve that problem.
+
+The target attributes to be encoded are described at "SPECIFICATION OF THE ENCODING METHOD".
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">Plack::Request::WithEncoding</remote-id>
+    <remote-id type="cpan-module">Plack::Request::WithEncoding</remote-id>
+  </upstream>
+</pkgmetadata>

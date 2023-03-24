@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+    <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Data::DPath</remote-id>
+    <remote-id type="cpan-module">Data::DPath</remote-id>
+    <remote-id type="cpan-module">Data::DPath::Attrs</remote-id>
+    <remote-id type="cpan-module">Data::DPath::Context</remote-id>
+    <remote-id type="cpan-module">Data::DPath::Filters</remote-id>
+    <remote-id type="cpan-module">Data::DPath::Path</remote-id>
+    <remote-id type="cpan-module">Data::DPath::Point</remote-id>
+    <remote-id type="cpan-module">Data::DPath::Step</remote-id>
+  </upstream>
+</pkgmetadata>

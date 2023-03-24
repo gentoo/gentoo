@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+This module provides a basic wrapper around Perl strings, mapping them to BYTEA database columns.
+
+PGObject::Type::ByteString objects have no traditional properties, however dereferencing them will yield the raw string they contain.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">PGObject::Type::ByteString</remote-id>
+    <remote-id type="cpan-module">PGObject::Type::ByteString</remote-id>
+  </upstream>
+</pkgmetadata>

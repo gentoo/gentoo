@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+This module provides one function, equals (not exported by default).
+
+You should pass this function two strings of the same length. Just like perl's eq, it will return true if they are string-wise identical and false otherwise. However, comparing any two differing strings of the same length will take a fixed amount of time. If the lengths of the strings are different, equals will return false right away.
+
+NOTE: This does byte-wise comparison of the underlying string storage, meaning that comparing strings with non-ASCII data with different states of the internal UTF-8 flag is not reliable. You should always encode your data to bytes before comparing.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">String::Compare::ConstantTime</remote-id>
+    <remote-id type="cpan-module">String::Compare::ConstantTime</remote-id>
+  </upstream>
+</pkgmetadata>

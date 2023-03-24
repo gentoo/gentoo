@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+Number::Tolerant creates a number-like object whose value refers to a range of possible values, each equally acceptable. It overloads comparison operations to reflect this.
+
+I use this module to simplify the comparison of measurement results to specified tolerances.
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">Number::Tolerant</remote-id>
+    <remote-id type="cpan-module">Number::Tolerant</remote-id>
+    <remote-id type="cpan-module">Number::Tolerant::Constant</remote-id>
+    <remote-id type="cpan-module">Number::Tolerant::Type</remote-id>
+    <remote-id type="cpan-module">Number::Tolerant::Type::constant</remote-id>
+    <remote-id type="cpan-module">Number::Tolerant::Type::infinite</remote-id>
+    <remote-id type="cpan-module">Number::Tolerant::Type::less_than</remote-id>
+    <remote-id type="cpan-module">Number::Tolerant::Type::more_than</remote-id>
+    <remote-id type="cpan-module">Number::Tolerant::Type::offset</remote-id>
+    <remote-id type="cpan-module">Number::Tolerant::Type::or_less</remote-id>
+    <remote-id type="cpan-module">Number::Tolerant::Type::or_more</remote-id>
+    <remote-id type="cpan-module">Number::Tolerant::Type::plus_or_minus</remote-id>
+    <remote-id type="cpan-module">Number::Tolerant::Type::plus_or_minus_pct</remote-id>
+    <remote-id type="cpan-module">Number::Tolerant::Type::to</remote-id>
+    <remote-id type="cpan-module">Number::Tolerant::Union</remote-id>
+  </upstream>
+</pkgmetadata>

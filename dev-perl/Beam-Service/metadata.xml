@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+    <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+This role adds extra functionality to an object that is going to be used as a service in a Beam::Wire container. While any object can be configured with Beam::Wire, consuming the Beam::Service role allows an object to know its own name and to access the container it was configured in to fetch other objects that it needs.</longdescription>
+  <upstream>
+    <remote-id type="cpan">Beam::Service</remote-id>
+    <remote-id type="cpan-module">Beam::Service</remote-id>
+  </upstream>
+</pkgmetadata>

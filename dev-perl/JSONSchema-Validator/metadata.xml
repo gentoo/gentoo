@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+    <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">JSONSchema::Validator</remote-id>
+    <remote-id type="cpan-module">JSONSchema::Validator</remote-id>
+    <remote-id type="cpan-module">JSONSchema::Validator::Constraints::Draft4</remote-id>
+    <remote-id type="cpan-module">JSONSchema::Validator::Constraints::Draft6</remote-id>
+    <remote-id type="cpan-module">JSONSchema::Validator::Constraints::Draft7</remote-id>
+    <remote-id type="cpan-module">JSONSchema::Validator::Constraints::OAS30</remote-id>
+    <remote-id type="cpan-module">JSONSchema::Validator::Draft4</remote-id>
+    <remote-id type="cpan-module">JSONSchema::Validator::Draft6</remote-id>
+    <remote-id type="cpan-module">JSONSchema::Validator::Draft7</remote-id>
+    <remote-id type="cpan-module">JSONSchema::Validator::Error</remote-id>
+    <remote-id type="cpan-module">JSONSchema::Validator::Format</remote-id>
+    <remote-id type="cpan-module">JSONSchema::Validator::JSONPointer</remote-id>
+    <remote-id type="cpan-module">JSONSchema::Validator::OAS30</remote-id>
+    <remote-id type="cpan-module">JSONSchema::Validator::URIResolver</remote-id>
+    <remote-id type="cpan-module">JSONSchema::Validator::Util</remote-id>
+  </upstream>
+  <longdescription lang="en">OpenAPI specification and JSON Schema Draft4/Draft6/Draft7 validators with minimum dependencies.
+
+This supports specifications from Drafts 4, 6, and 7, as well as the OAS30 spec.</longdescription>
+</pkgmetadata>

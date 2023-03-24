@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+This is a simple module that factory classes can use to generate new types of objects on the fly, providing a consistent interface to common groups of objects.
+
+Factory classes are used when you have different implementations for the same set of tasks but may not know in advance what implementations you will be using. Configuration files are a good example of this. There are four basic operations you would want to do with any configuration: read the file in, lookup a value, set a value, write the file out. There are also many different types of configuration files, and you may want users to be able to provide an implementation for their own home-grown configuration format.
+
+With a factory class this is easy. To create the factory class, just subclass Class::Factory and create an interface for your configuration serializer. Class::Factory even provides a simple constructor for yo
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">Class::Factory</remote-id>
+    <remote-id type="cpan-module">Class::Factory</remote-id>
+  </upstream>
+</pkgmetadata>

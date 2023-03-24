@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+Module::Build::Pluggable adds pluggability for Module::Build.
+
+HOW CAN I WRITE MY OWN PLUGIN?
+Module::Build::Pluggable call HOOK_prepare on preparing arguments for Module::Build->new, HOOK_configure on configuration step, and HOOK_build on build step.
+
+That's all.
+
+And if you want a help, you can use Module::Build::Pluggable::Base as base class.</longdescription>
+  <upstream>
+    <remote-id type="cpan">Module::Build::Pluggable</remote-id>
+    <remote-id type="cpan-module">Module::Build::Pluggable</remote-id>
+    <remote-id type="cpan-module">Module::Build::Pluggable::Base</remote-id>
+    <remote-id type="cpan-module">Module::Build::Pluggable::GithubMeta</remote-id>
+    <remote-id type="cpan-module">Module::Build::Pluggable::Repository</remote-id>
+    <remote-id type="cpan-module">Module::Build::Pluggable::Util</remote-id>
+  </upstream>
+</pkgmetadata>

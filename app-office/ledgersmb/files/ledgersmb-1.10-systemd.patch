@@ -1,0 +1,13 @@
+diff --git a/doc/conf/systemd/ledgersmb_starman.service b/doc/conf/systemd/ledgersmb_starman.service
+index 66a44573a..77c0a3389 100644
+--- a/doc/conf/systemd/ledgersmb_starman.service
++++ b/doc/conf/systemd/ledgersmb_starman.service
+@@ -7,7 +7,7 @@ Description=LedgerSMB Starman
+ After=network.target
+ 
+ [Service]
+-WorkingDirectory=WORKING_DIR
++WorkingDirectory=/usr/share/ledgersmb-1.10/
+ 
+ # In case you installed dependencies into a 'local::lib'
+ # make sure you set the PERL5LIB environment variable

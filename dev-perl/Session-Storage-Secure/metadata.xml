@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>chris.travers@gmail.com</email>
+    <name>Chris Travers</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+This module implements a secure way to encode session data. It is primarily intended for storing session data in browser cookies, but could be used with other backend storage where security of stored session data is important.
+
+Features include:
+
+Data serialization and compression using Sereal
+
+Data encryption using AES with a unique derived key per encoded session
+
+Enforced expiration timestamp (optional)
+
+Integrity protected with a message authentication code (MAC)
+
+The storage protocol used in this module is based heavily on A Secure Cookie Protocol by Alex Liu and others. Liu proposes a session cookie value as follows:
+</longdescription>
+  <upstream>
+    <remote-id type="cpan">Session::Storage::Secure</remote-id>
+    <remote-id type="cpan-module">Session::Storage::Secure</remote-id>
+  </upstream>
+</pkgmetadata>
