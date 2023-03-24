@@ -37,7 +37,7 @@ RDEPEND="
 "
 PDEPEND="
 	>=dev-python/nbconvert-5[${PYTHON_USEDEP}]
-        <dev-python/notebook-7[${PYTHON_USEDEP}]
+	<dev-python/notebook-7[${PYTHON_USEDEP}]
 "
 
 # dev-python/nbval is missing impls
