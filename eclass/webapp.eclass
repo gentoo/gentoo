@@ -389,7 +389,7 @@ webapp_pkg_setup() {
 	# webapp_src_install() within the same shell process
 	touch "${T}/${SETUP_CHECK_FILE}"
 
-	# special case - some ebuilds *do* need to overwride the SLOT
+	# special case - some ebuilds *do* need to override the SLOT
 	if [[ "${SLOT}+" != "${PVR}+" && "${WEBAPP_MANUAL_SLOT}" != "yes" ]]; then
 		die "Set WEBAPP_MANUAL_SLOT=\"yes\" if you need to SLOT manually"
 	fi
