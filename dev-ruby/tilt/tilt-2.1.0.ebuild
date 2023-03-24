@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~
 
 # Block on some of the potential test dependencies. These dependencies
 # are optional for the test suite, and we don't want to depend on all of
-# them to faciliate keywording and stabling.
+# them to facilitate keywording and stabling.
 ruby_add_bdepend "test? (
 	dev-ruby/erubi
 	dev-ruby/nokogiri
