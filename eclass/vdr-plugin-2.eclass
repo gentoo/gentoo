@@ -403,7 +403,7 @@ vdr-plugin-2_pkg_setup() {
 
 	VDR_RC_DIR="/usr/share/vdr/rcscript"
 
-	# Pathes to includes
+	# Paths to includes
 	VDR_INCLUDE_DIR="/usr/include/vdr"
 	DVB_INCLUDE_DIR="/usr/include"
 
