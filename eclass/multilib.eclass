@@ -47,7 +47,7 @@ has_multilib_profile() {
 # ex:
 # CFLAGS=$(get_abi_var CFLAGS sparc32) # CFLAGS=-m32
 #
-# Note that the prefered method is to set CC="$(tc-getCC) $(get_abi_CFLAGS)"
+# Note that the preferred method is to set CC="$(tc-getCC) $(get_abi_CFLAGS)"
 # This will hopefully be added to portage soon...
 #
 # If <ABI> is not specified, ${ABI} is used.
