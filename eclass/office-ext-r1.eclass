@@ -29,7 +29,7 @@ _OFFICE_EXT_R1_ECLASS=1
 # OFFICE_REQ_USE="java,jemalloc(-)?"
 # @CODE
 if [[ ${OFFICE_REQ_USE} ]]; then
-	# Append the brackets for the depend bellow
+	# Append the brackets for the depend below
 	OFFICE_REQ_USE="[${OFFICE_REQ_USE}]"
 fi
 
