@@ -32,7 +32,7 @@ QMAIL_SPP_S="${WORKDIR}"/qmail-spp-${QMAIL_SPP_PV}
 # @FUNCTION: is_prime
 # @USAGE: <number>
 # @DESCRIPTION:
-# Checks wether a number is a valid prime number for queue split
+# Checks whether a number is a valid prime number for queue split
 is_prime() {
 	local number=${1} i
 
