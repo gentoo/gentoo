@@ -56,7 +56,7 @@
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # A space separated list of links to add for BINSCRIPTS.
-# The systax is: foo:bar to create a symlink bar -> foo.
+# The syntax is: foo:bar to create a symlink bar -> foo.
 
 # @ECLASS_VARIABLE: TL_PV
 # @INTERNAL
@@ -321,7 +321,7 @@ texlive-module_src_compile() {
 			BuildLanguageDat)
 				einfo "Language file $parameter already generated.";;
 			*)
-				die "No rule to proccess ${command}. Please file a bug."
+				die "No rule to process ${command}. Please file a bug."
 		esac
 	done
 
