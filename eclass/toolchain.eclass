@@ -1349,7 +1349,7 @@ toolchain_src_configure() {
 			;;
 
 		amd64)
-			# drop the older/ABI checks once this get's merged into some
+			# drop the older/ABI checks once this gets merged into some
 			# version of gcc upstream
 			if tc_version_is_at_least 4.8 && has x32 $(get_all_abis TARGET) ; then
 				confgcc+=( --with-abi=$(gcc-abi-map ${TARGET_DEFAULT_ABI}) )
@@ -2419,7 +2419,7 @@ create_gcc_env_entry() {
 	local gcc_envd_file="${ED}${gcc_envd_base}"
 	if [[ -z $1 ]] ; then
 		# I'm leaving the following commented out to remind me that it
-		# was an insanely -bad- idea. Stuff broke. GCC_SPECS isnt unset
+		# was an insanely -bad- idea. Stuff broke. GCC_SPECS isn't unset
 		# on chroot or in non-toolchain.eclass gcc ebuilds!
 		#gcc_specs_file="${LIBPATH}/specs"
 		gcc_specs_file=""
@@ -2593,14 +2593,14 @@ do_gcc_config() {
 			ewarn "The currently selected specs-specific gcc config,"
 			ewarn "${current_specs}, doesn't exist anymore. This is usually"
 			ewarn "due to enabling/disabling hardened or switching to a version"
-			ewarn "of gcc that doesnt create multiple specs files. The default"
+			ewarn "of gcc that doesn't create multiple specs files. The default"
 			ewarn "config will be used, and the previous preference forgotten."
 			use_specs=""
 		fi
 
 		target="${CTARGET}-${GCC_CONFIG_VER}${use_specs}"
 	else
-		# The curent target is invalid.  Attempt to switch to a valid one.
+		# The current target is invalid.  Attempt to switch to a valid one.
 		# Blindly pick the latest version. bug #529608
 		# TODO: Should update gcc-config to accept `-l ${CTARGET}` rather than
 		# doing a partial grep like this.
@@ -2653,7 +2653,7 @@ should_we_gcc_config() {
 #---->> support and misc functions <<----
 
 # This is to make sure we don't accidentally try to enable support for a
-# language that doesnt exist. GCC 3.4 supports f77, while 4.0 supports f95, etc.
+# language that doesn't exist. GCC 3.4 supports f77, while 4.0 supports f95, etc.
 #
 # Also add a hook so special ebuilds (kgcc64) can control which languages
 # exactly get enabled
