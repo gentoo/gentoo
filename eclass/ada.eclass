@@ -108,7 +108,7 @@ readonly _ADA_ALL_IMPLS
 #
 # Returns 0 if the implementation is valid and supported. If it is
 # unsupported, returns 1 -- and the caller should ignore the entry.
-# If it is invalid, dies with an appopriate error messages.
+# If it is invalid, dies with an appropriate error message.
 _ada_impl_supported() {
 	debug-print-function ${FUNCNAME} "${@}"
 
