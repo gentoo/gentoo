@@ -325,7 +325,7 @@ eaclocal_amflags() {
 # @FUNCTION: eaclocal
 # @DESCRIPTION:
 # These functions runs the autotools using autotools_run_tool with the
-# specified parametes. The name of the tool run is the same of the function
+# specified parameters. The name of the tool run is the same of the function
 # without e prefix.
 # They also force installing the support files for safety.
 # Respects AT_M4DIR for additional directories to search for macros.
