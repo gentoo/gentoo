@@ -21,11 +21,23 @@
 	Mac OS X.
 </longdescription>
 <use>
+	<flag name="egl">
+		Build using EGL instead of GLX
+	</flag>
+	<flag name="experimental">
+		Enable experimental features
+	</flag>
 	<flag name="gamepad">
 		Add support for gamepads through <pkg>dev-qt/qtgamepad</pkg>
 	</flag>
-	<flag name="headless">
-		Build a binary without GUI
+	<flag name="gui">
+		Enable or disable building of the GUI
+	</flag>
+	<flag name="hidapi">
+		Build in support for HID-Class devices using <pkg>dev-libs/hidapi</pkg>
+	</flag>
+	<flag name="mimalloc">
+		Build using <pkg>dev-libs/mimalloc</pkg> as memory allocator
 	</flag>
 	<flag name="spacenav">
 		Add support for space navigator devices through
