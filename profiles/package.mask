@@ -169,47 +169,6 @@ app-crypt/yubioath-desktop
 # Masked for removal on 2023-04-12.
 dev-ruby/net-http-persistent:3
 
-# Guillermo Joandet <gjoandet@gmail.com> (2023-03-11)
-# In preparation for GNOME 44
->=app-editors/gnome-text-editor-44_rc
->=app-text/evince-44_rc
->=dev-libs/gjs-1.75
->=dev-python/pygobject-3.43
->=dev-util/gnome-builder-44
->=gnome-base/gnome-session-44_rc
->=gnome-base/gnome-settings-daemon-44_rc
->=gnome-base/gnome-shell-44_rc
->=gnome-base/librsvg-2.55.90
->=gnome-base/nautilus-44_rc
->=gnome-extra/evolution-data-server-3.48
->=gnome-extra/evolution-ews-3.48
->=gnome-extra/gnome-boxes-44_rc
->=gnome-extra/gnome-calculator-44_rc
->=gnome-extra/gnome-calendar-44_rc
->=gnome-extra/gnome-characters-44_rc
->=gnome-extra/gnome-clocks-44_rc
->=gnome-extra/gnome-contacts-44_rc
->=gnome-extra/gnome-shell-extensions-44_rc
->=gnome-extra/gnome-software-44_rc
->=gnome-extra/gnome-system-monitor-44_rc
->=gnome-extra/gnome-user-docs-44_rc
->=gnome-extra/gnome-weather-44_rc
->=gui-apps/gnome-console-44_beta
->=gui-libs/libadwaita-1.3_rc
->=mail-client/evolution-3.48
->=media-gfx/eog-44_beta
->=media-gfx/gnome-font-viewer-44_rc
->=net-libs/glib-networking-2.76_beta
->=net-libs/webkit-gtk-2.40.0
->=net-misc/gnome-connections-44_rc
->=net-misc/gnome-remote-desktop-44_rc
->=sci-geosciences/gnome-maps-44_rc
->=sys-apps/baobab-44_rc
->=sys-apps/gnome-disk-utility-44_rc
->=sys-apps/xdg-desktop-portal-gnome-44_rc
->=www-client/epiphany-44
->=x11-wm/mutter-44_rc
-
 # Hans de Graaff <graaff@gentoo.org> (2023-03-11)
 # Mask ruby27-only dev-ruby/sass-rails:5.0 for removal. Use a newer
 # sass-rails slot or consider migrating to sassc-rails.  Masked for
