@@ -344,7 +344,7 @@ java-vm_sandbox-predict() {
 	[[ -z "${1}" ]] && die "${FUNCNAME} takes at least one argument"
 
 	local path path_arr=("$@")
-	# subshell this to prevent IFS bleeding out dependant on bash version.
+	# subshell this to prevent IFS bleeding out dependent on bash version.
 	# could use local, which *should* work, but that requires a lot of testing.
 	path=$(IFS=":"; echo "${path_arr[*]}")
 	dodir /etc/sandbox.d
