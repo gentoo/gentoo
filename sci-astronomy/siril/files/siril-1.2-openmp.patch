@@ -1,0 +1,19 @@
+From: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date: Fri, 24 Mar 2023 18:24:26 +0100
+Subject: [PATCH] Add ifdef around openmp function
+Bug: https://bugs.gentoo.org/902833
+Upstream: https://gitlab.com/free-astro/siril/-/merge_requests/482
+
+--- a/src/algos/quantize.c
++++ b/src/algos/quantize.c
+@@ -1396,8 +1396,10 @@ row of the image.
+ #pragma omp parallel num_threads(threads) if (threads>1)
+ #endif
+ 	{
++#ifdef _OPENMP
+ 		if (threads > 1 && omp_get_num_threads() != threads)
+ 			siril_debug_print("actual number of threads: %d of %d requested (level %d)\n", omp_get_num_threads(), threads, omp_get_level());
++#endif
+ 		float *rowpix, v1;
+ 		double mean, stdev;
+ 		float *differences;

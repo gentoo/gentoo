@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-$(ver_cut 1-2)-htmesh.patch"
 	"${FILESDIR}/${PN}-$(ver_cut 1-2)-execinfo.patch"
 	"${FILESDIR}/${PN}-$(ver_cut 1-2)-prototypes.patch"
+	"${FILESDIR}/${PN}-$(ver_cut 1-2)-openmp.patch"
 )
 
 DOCS=( README.md NEWS ChangeLog AUTHORS )
