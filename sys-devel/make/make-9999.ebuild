@@ -25,14 +25,17 @@ SLOT="0"
 IUSE="guile nls static"
 
 DEPEND="guile? ( >=dev-scheme/guile-1.8:= )"
-BDEPEND="nls? ( sys-devel/gettext )
-	verify-sig? ( sec-keys/openpgp-keys-make )"
-RDEPEND="${DEPEND}
-	nls? ( virtual/libintl )"
+RDEPEND="
+	${DEPEND}
+	nls? ( virtual/libintl )
+"
+BDEPEND="
+	nls? ( sys-devel/gettext )
+	verify-sig? ( sec-keys/openpgp-keys-make )
+"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.82-darwin-library_search-dylib.patch
-	"${FILESDIR}"/${PN}-4.2-default-cxx.patch
+	"${FILESDIR}"/${PN}-4.4-default-cxx.patch
 )
 
 src_unpack() {
