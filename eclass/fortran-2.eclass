@@ -107,7 +107,7 @@ fortran_int64_abi_fflags() {
 	elif [[ ${_FC} == ifort ]]; then
 		echo "-integer-size 64"
 	else
-		die "Compiler flag for 64bit interger for ${_FC} unknown"
+		die "Compiler flag for 64bit integer for ${_FC} unknown"
 	fi
 }
 
