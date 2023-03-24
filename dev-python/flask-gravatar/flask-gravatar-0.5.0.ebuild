@@ -3,16 +3,14 @@
 
 EAPI=7
 
-MY_PN="Flask-Gravatar"
-MY_P=${MY_PN}-${PV}
-
 PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
+PYPI_NO_NORMALIZE=1
+PYPI_PN="Flask-Gravatar"
+
+inherit distutils-r1 pypi
 
 DESCRIPTION="Small extension for Flask to make usage of Gravatar service easy"
 HOMEPAGE="https://github.com/zzzsochi/Flask-Gravatar/"
-SRC_URI="mirror://pypi/F/${MY_PN}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
