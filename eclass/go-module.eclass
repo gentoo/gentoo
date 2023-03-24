@@ -343,10 +343,11 @@ go-module_setup_proxy() {
 
 # @FUNCTION: go-module_src_unpack
 # @DESCRIPTION:
-# If EGO_SUM is set, unpack the base tarball(s) and set up the
-#   local go proxy. Also warn that this usage is deprecated.
-# - Otherwise, if EGO_VENDOR is set, bail out.
-# - Otherwise do a normal unpack.
+# Sets up GOFLAGS for the system and then unpacks based on the following rules:
+# 1. If EGO_SUM is set, unpack the base tarball(s) and set up the
+#    local go proxy.  This mode is deprecated.
+# 2. Otherwise, if EGO_VENDOR is set, bail out, as this functionality was removed.
+# 3. Otherwise, call 'ego mod verify' and then do a normal unpack.
 go-module_src_unpack() {
 	if use amd64 || use arm || use arm64 ||
 		( use ppc64 && [[ $(tc-endian) == "little" ]] ) || use s390 || use x86; then
