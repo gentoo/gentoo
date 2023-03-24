@@ -53,7 +53,7 @@ _PYPI_ECLASS=1
 # @ECLASS_VARIABLE: PYPI_PN
 # @PRE_INHERIT
 # @DESCRIPTION:
-# The PyPI project name.  This should be overriden scarcely, generally
+# The PyPI project name.  This should be overridden scarcely, generally
 # when upstream project name does not conform to Gentoo naming rules,
 # e.g. when it contains dots or uppercase letters.
 #
