@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="ruby on rails is a web-application and persistance framework"
+DESCRIPTION="ruby on rails is a web-application and persistence framework"
 HOMEPAGE="https://rubyonrails.org"
 
 LICENSE="MIT"
