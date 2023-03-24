@@ -457,7 +457,7 @@ each_ruby_configure() {
 # @FUNCTION: all_fakegem_compile
 # @DESCRIPTION:
 # Build documentation for the package if indicated by the doc USE flag
-# and if there is a documetation task defined.
+# and if there is a documentation task defined.
 all_fakegem_compile() {
 	debug-print-function ${FUNCNAME} "${@}"
 
