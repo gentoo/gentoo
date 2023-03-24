@@ -137,7 +137,7 @@ unpack_pdv() {
 		istar=0
 	fi
 
-	#for some reason gzip dies with this ... dd cant provide buffer fast enough ?
+	# For some reason gzip dies with this ... dd can't provide buffer fast enough ?
 	#dd if=${src} ibs=${metaskip} count=1 \
 	#	| dd ibs=${tailskip} skip=1 \
 	#	| gzip -dc \
@@ -239,7 +239,7 @@ unpack_makeself() {
 	case ${exe} in
 		tail)	exe=( tail -n +${skip} "${src}" );;
 		dd)		exe=( dd ibs=${skip} skip=1 if="${src}" );;
-		*)		die "makeself cant handle exe '${exe}'"
+		*)		die "makeself can't handle exe '${exe}'"
 	esac
 
 	# lets grab the first few bytes of the file to figure out what kind of archive it is
