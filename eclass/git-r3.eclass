@@ -115,7 +115,7 @@ fi
 # read the manpage for git-clone(1).
 #
 # URIs should be using https:// whenever possible. http:// and git://
-# URIs are completely unsecured and their use (even if only as
+# URIs are completely insecure and their use (even if only as
 # a fallback) renders the ebuild completely vulnerable to MITM attacks.
 #
 # Can be a whitespace-separated list or an array.
@@ -533,7 +533,7 @@ git-r3_fetch() {
 	local r
 	for r in "${repos[@]}"; do
 		if [[ ${r} == git:* || ${r} == http:* ]]; then
-			ewarn "git-r3: ${r%%:*} protocol is completely unsecure and may render the ebuild"
+			ewarn "git-r3: ${r%%:*} protocol is completely insecure and may render the ebuild"
 			ewarn "easily susceptible to MITM attacks (even if used only as fallback). Please"
 			ewarn "use https instead."
 			ewarn "[URI: ${r}]"
@@ -769,7 +769,7 @@ git-r3_fetch() {
 	[[ ${success} ]] || die "Unable to fetch from any of EGIT_REPO_URI"
 
 	# submodules can reference commits in any branch
-	# always use the 'mirror' mode to accomodate that, bug #503332
+	# always use the 'mirror' mode to accommodate that, bug #503332
 	local EGIT_CLONE_TYPE=mirror
 
 	# recursively fetch submodules
