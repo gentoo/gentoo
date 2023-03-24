@@ -7,15 +7,28 @@ NEED_EMACS="24.3"
 
 inherit edo elisp
 
-COMMIT="5f2ef177cb21ae8b73714575802beef04abd0f5e"
 DESCRIPTION="Modern on-the-fly syntax checking extension for GNU Emacs"
-HOMEPAGE="https://www.flycheck.org/"
-SRC_URI="https://github.com/flycheck/flycheck/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${COMMIT}"
+HOMEPAGE="https://www.flycheck.org/
+	https://github.com/flycheck/flycheck/"
+
+if [[ ${PV} == *9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+else
+	if [[ ${PV} == *_p20230305 ]] ; then
+		COMMIT=5f2ef177cb21ae8b73714575802beef04abd0f5e
+		SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT}.tar.gz
+			-> ${P}.tar.gz"
+		S="${WORKDIR}"/${PN}-${COMMIT}
+	else
+		SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz
+			-> ${P}.tar.gz"
+	fi
+	KEYWORDS="~amd64 ~arm ~ppc64"
+fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64"
 IUSE="test"
 # Tests fail for now, need more investigation
 RESTRICT="!test? ( test ) test"
