@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mozcoreconf-v6.eclass
@@ -82,7 +82,7 @@ moz_pkgsetup() {
 	export HOST_CXX="$(tc-getBUILD_CXX)"
 	tc-export CC CXX LD PKG_CONFIG AR RANLIB
 
-	# Ensure that we have a sane build enviroment
+	# Ensure that we have a sane build environment
 	export MOZILLA_CLIENT=1
 	export BUILD_OPT=1
 	export NO_STATIC_LIB=1
