@@ -4,20 +4,17 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+PYPI_NO_NORMALIZE=1
+PYPI_PN="Flask-Compress"
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit distutils-r1
-
-MY_PN="Flask-Compress"
-MY_P="${MY_PN}-${PV}"
+inherit distutils-r1 pypi
 
 DESCRIPTION="Compress responses in your Flask app with gzip"
 HOMEPAGE="
 	https://github.com/colour-science/flask-compress/
 	https://pypi.org/project/Flask-Compress/
 "
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
