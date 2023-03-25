@@ -24,7 +24,7 @@ else
 		SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz
 			-> ${P}.tar.gz"
 	fi
-	KEYWORDS="~amd64 ~arm ~ppc64"
+	KEYWORDS="~amd64 ~arm ~ppc64 ~riscv"
 fi
 
 LICENSE="GPL-3+"
