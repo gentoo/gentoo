@@ -45,11 +45,12 @@ DOCS=( CHANGELOG.md CONTRIBUTING.md README.md )
 # and while some of them do include "skip if not found" logic, most of them do not.
 # The latter consistently fail with
 #     Calling "git rev-parse" fails with "fatal: not a git repository (or any of the parent directories): .git".
-# including with the sandbox disabled and when run manually with tox.
+# including with the sandbox disabled.
 EPYTEST_DESELECT=(
 	tests/languages/
 	tests/repository_test.py
 	tests/main_test.py::test_all_cmds
+	tests/main_test.py::test_hook_stage_migration
 	tests/main_test.py::test_try_repo
 )
 
