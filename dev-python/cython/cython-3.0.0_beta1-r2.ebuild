@@ -25,12 +25,9 @@ S=${WORKDIR}/${MY_P}
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
-IUSE="emacs test"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	emacs? ( >=app-editors/emacs-23.1:* )
-"
 BDEPEND="
 	${RDEPEND}
 	test? (
@@ -46,8 +43,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.29.23-pythran-parallel-install.patch"
 )
 
-SITEFILE=50cython-gentoo.el
-
 distutils_enable_sphinx docs \
 	dev-python/jinja \
 	dev-python/sphinx-issues \
@@ -58,10 +53,6 @@ python_compile() {
 	local -x PYTHONPATH=
 
 	distutils-r1_python_compile
-}
-
-python_compile_all() {
-	use emacs && elisp-compile Tools/cython-mode.el
 }
 
 python_test() {
@@ -80,17 +71,4 @@ python_test() {
 python_install_all() {
 	local DOCS=( CHANGES.rst README.rst ToDo.txt USAGE.txt )
 	distutils-r1_python_install_all
-
-	if use emacs; then
-		elisp-install ${PN} Tools/cython-mode.*
-		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
-	fi
-}
-
-pkg_postinst() {
-	use emacs && elisp-site-regen
-}
-
-pkg_postrm() {
-	use emacs && elisp-site-regen
 }
