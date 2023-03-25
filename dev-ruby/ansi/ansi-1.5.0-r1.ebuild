@@ -1,8 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+
+USE_RUBY="ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -20,3 +21,7 @@ IUSE=""
 
 # Tests cause circular dependencies with dev-ruby/qed & dev-ruby/rubytest
 RESTRICT="test"
+
+each_ruby_test() {
+	${RUBY} -S rubytest -Ilib -Itest test/ || die 'tests failed'
+}
