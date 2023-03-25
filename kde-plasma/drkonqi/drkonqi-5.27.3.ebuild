@@ -6,7 +6,7 @@ EAPI=8
 KFMIN=5.102.0
 PVCUT=$(ver_cut 1-3)
 QTMIN=5.15.7
-inherit ecm plasma.kde.org
+inherit ecm plasma.kde.org systemd
 
 DESCRIPTION="Plasma crash handler, gives the user feedback if a program crashed"
 SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${PN}-5.27.1-revert-add-sentry-support.patch.xz"
@@ -57,4 +57,13 @@ src_test() {
 		-E "(connectiontest)"
 	)
 	ecm_src_test
+}
+
+pkg_postinst() {
+	if [[ -z ${REPLACING_VERSIONS} ]] && systemd_is_booted ; then
+		elog "For systemd, steps are needed for integration with systemd-coredumpd."
+		elog "As root, run the following:"
+		elog "1. systemctl enable drkonqi-coredump-processor@.service"
+		elog "2. systemctl --user enable --now --global drkonqi-coredump-launcher.socket"
+	fi
 }
