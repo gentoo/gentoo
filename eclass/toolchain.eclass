@@ -537,12 +537,18 @@ get_gcc_src_uri() {
 		# Pull gcc tarball from another location. Frequently used by gnat-gpl.
 		GCC_SRC_URI="${GCC_TARBALL_SRC_URI}"
 	elif [[ -n ${SNAPSHOT} ]] ; then
-		GCC_SRC_URI="https://gcc.gnu.org/pub/gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT}.tar.xz"
+		GCC_SRC_URI="mirror://gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT}.tar.xz"
 	else
 		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
-			GCC_SRC_URI="mirror://gnu/gcc/gcc-${GCC_PV}/gcc-${GCC_RELEASE_VER}.tar.xz"
+			GCC_SRC_URI="
+				mirror://gcc/gcc-${GCC_PV}/gcc-${GCC_RELEASE_VER}.tar.xz
+				mirror://gnu/gcc/gcc-${GCC_PV}/gcc-${GCC_RELEASE_VER}.tar.xz
+			"
 		else
-			GCC_SRC_URI="mirror://gnu/gcc/gcc-${GCC_PV}/gcc-${GCC_RELEASE_VER}.tar.bz2"
+			GCC_SRC_URI="
+				mirror://gcc/gcc-${GCC_PV}/gcc-${GCC_RELEASE_VER}.tar.bz2
+				mirror://gnu/gcc/gcc-${GCC_PV}/gcc-${GCC_RELEASE_VER}.tar.bz2
+			"
 		fi
 	fi
 
