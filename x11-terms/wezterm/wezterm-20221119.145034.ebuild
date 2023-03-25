@@ -625,7 +625,7 @@ DEPEND="
 	media-libs/mesa
 	sys-apps/dbus
 	x11-libs/libX11
-	x11-libs/libxkbcommon[X,wayland=]
+	x11-libs/libxkbcommon[X,wayland?]
 	x11-libs/xcb-util
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
