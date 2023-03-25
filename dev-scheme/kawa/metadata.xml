@@ -25,6 +25,7 @@
     <flag name="xqtests">Support XQuery Test Suite</flag>
   </use>
   <upstream>
+    <remote-id type="gitlab">kashell/Kawa</remote-id>
     <remote-id type="savannah">kawa</remote-id>
   </upstream>
 </pkgmetadata>
