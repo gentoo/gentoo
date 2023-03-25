@@ -41,10 +41,12 @@ BDEPEND="
 "
 
 python_configure() {
-	meson_src_configure \
-		$(meson_feature cairo pycairo) \
-		$(meson_use test tests) \
+	local emesonargs=(
+		$(meson_feature cairo pycairo)
+		$(meson_use test tests)
 		-Dpython="${EPYTHON}"
+	)
+	meson_src_configure
 }
 
 python_compile() {
