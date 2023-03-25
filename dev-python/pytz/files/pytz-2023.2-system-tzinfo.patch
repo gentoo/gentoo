@@ -1,6 +1,8 @@
 Inspired by the Fedora patch:
 https://src.fedoraproject.org/rpms/pytz/blob/rawhide/f/pytz-zoneinfo.patch
 
+_allzones() is based on code in gen_tzinfo.py in upstream repo.
+
 diff --git a/pytz/__init__.py b/pytz/__init__.py
 index f89d0eb..d00f3bb 100644
 --- a/pytz/__init__.py
@@ -9,7 +11,7 @@ index f89d0eb..d00f3bb 100644
          return s.encode('ASCII')
  
  
-+def allzones():
++def _allzones():
 +    for dirpath, dirnames, filenames in os.walk(_PYTZ_TZDATADIR):
 +        for f in filenames:
 +            p = os.path.join(dirpath, f)
@@ -18,7 +20,7 @@ index f89d0eb..d00f3bb 100644
 +
 +
 +_PYTZ_TZDATADIR = os.environ.get('PYTZ_TZDATADIR', '/usr/share/zoneinfo')
-+_all_timezones_unchecked = LazyList(x for x in allzones())
++_all_timezones_unchecked = LazyList(x for x in _allzones())
 +all_timezones = _all_timezones_unchecked
 +all_timezones_set = LazySet(all_timezones)
 +
