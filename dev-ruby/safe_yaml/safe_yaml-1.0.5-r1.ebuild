@@ -3,6 +3,8 @@
 
 EAPI=7
 
+# Broken with ruby30: https://github.com/dtao/safe_yaml/issues/100
+# Broken with newer psych: https://github.com/dtao/safe_yaml/pull/101
 USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
