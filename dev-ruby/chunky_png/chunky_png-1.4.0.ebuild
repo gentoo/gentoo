@@ -3,6 +3,7 @@
 
 EAPI=7
 
+# Can't do ruby32 until https://github.com/wvanbergen/chunky_png/pull/169 is merged
 USE_RUBY="ruby26 ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
