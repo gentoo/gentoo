@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{9..11} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="ANSI Color formatting for output in terminal"
 HOMEPAGE="
@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://pypi.org/project/termcolor/
 "
 # rename is for avoiding conflict with dev-cpp/termcolor
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz -> python-${P}.tar.gz"
+SRC_URI="$(pypi_sdist_url) -> python-${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
