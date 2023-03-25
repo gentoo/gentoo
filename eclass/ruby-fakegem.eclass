@@ -193,7 +193,10 @@ case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		RESTRICT+=" !test? ( test )"
 		ruby_add_bdepend "test? ( dev-util/cucumber )"
 		;;
+	none)
+		;;
 	*)
+		eqawarn "Unknown test recipe '${RUBY_FAKEGEM_RECIPE_TEST}' specified, using 'none'"
 		RUBY_FAKEGEM_RECIPE_TEST="none"
 		;;
 esac
