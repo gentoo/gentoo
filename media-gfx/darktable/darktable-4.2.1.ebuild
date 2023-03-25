@@ -31,7 +31,7 @@ else
 			)
 		)"
 
-	KEYWORDS="~amd64 ~arm64 -x86"
+	KEYWORDS="amd64 ~arm64 -x86"
 	LANGS=" cs de es fi fr he hu it ja nl pl pt-BR ru sl sq tr uk zh-CN zh-TW"
 fi
 
