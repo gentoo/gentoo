@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_RECIPE_TEST="none"
 inherit ruby-fakegem
 
 DESCRIPTION="Parse YAML safely, alternative implementation of YAML.load"
-HOMEPAGE="https://dtao.github.com/safe_yaml"
+HOMEPAGE="https://github.com/dtao/safe_yaml"
 
 LICENSE="MIT"
 SLOT="0"
