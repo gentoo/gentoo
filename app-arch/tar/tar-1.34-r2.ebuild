@@ -38,8 +38,13 @@ PDEPEND="
 "
 
 src_configure() {
+	# -fanalyzer doesn't make sense for us in ebuilds, as it's for static analysis
+	export gl_cv_warn_c__fanalyzer=no
+
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin
+		# Avoid -Werror
+		--disable-gcc-warnings
 		--enable-backup-scripts
 		--libexecdir="${EPREFIX}"/usr/sbin
 		$(use_with acl posix-acls)
