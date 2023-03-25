@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGES.txt README.rdoc"
 
@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 ruby_add_bdepend "
 	doc? ( || ( dev-ruby/net-ssh:7 dev-ruby/net-ssh:6 ) )
 	test? (
-		dev-ruby/mocha
+		dev-ruby/mocha:1.0
 	)"
 
 ruby_add_rdepend "|| ( dev-ruby/net-ssh:7 dev-ruby/net-ssh:6 )"
