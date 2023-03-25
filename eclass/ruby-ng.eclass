@@ -757,6 +757,31 @@ ruby-ng_cucumber() {
 	CUCUMBER_PUBLISH_QUIET=true ${RUBY} -S cucumber ${cucumber_params} "$@" || die -n "cucumber failed"
 }
 
+# @FUNCTION: ruby-ng_sus
+# @DESCRIPTION:
+# This is simply a wrapper around the sus-parallel command (executed by $RUBY})
+# which also respects TEST_VERBOSE and NOCOLOR environment variables.
+ruby-ng_sus() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	if [[ "${DEPEND}${BDEPEND}" != *"dev-ruby/sus"* ]]; then
+		ewarn "Missing test dependency dev-ruby/sus"
+	fi
+
+	local sus_params=
+
+	# sus has a --verbose argument but it does not seem to impact the output (yet?)
+	case ${TEST_VERBOSE} in
+		1|yes|true)
+			sus_params+=" --verbose"
+			;;
+		*)
+			;;
+	esac
+
+	${RUBY} -S sus-parallel ${sus_params} "$@" || die -n "sus failed"
+}
+
 # @FUNCTION: ruby-ng_testrb-2
 # @DESCRIPTION:
 # This is simply a replacement for the testrb command that load the test

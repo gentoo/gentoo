@@ -44,6 +44,7 @@ RUBY_FAKEGEM_TASK_DOC="${RUBY_FAKEGEM_TASK_DOC-rdoc}"
 #  - rspec3 (calls ruby-ng_rspec, adds dev-ruby/rspec:3 to the dependencies)
 #  - cucumber (calls ruby-ng_cucumber, adds dev-util/cucumber to the
 #    dependencies)
+#  - sus (calls ruby-ng_sus, adds dev-ruby/sus to the dependencies)
 #  - none
 RUBY_FAKEGEM_RECIPE_TEST="${RUBY_FAKEGEM_RECIPE_TEST-rake}"
 
@@ -192,6 +193,11 @@ case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		IUSE+=" test"
 		RESTRICT+=" !test? ( test )"
 		ruby_add_bdepend "test? ( dev-util/cucumber )"
+		;;
+	sus)
+		IUSE+=" test"
+		RESTRICT+=" !test? ( test )"
+		ruby_add_bdepend "test? ( dev-ruby/sus )"
 		;;
 	none)
 		;;
@@ -565,6 +571,9 @@ each_fakegem_test() {
 			;;
 		cucumber)
 			ruby-ng_cucumber
+			;;
+		sus)
+			ruby-ng_sus
 			;;
 		none)
 			ewarn "each_fakegem_test called, but \${RUBY_FAKEGEM_RECIPE_TEST} is 'none'"
