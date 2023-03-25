@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libbsd
-	dev-libs/libpcre
+	dev-libs/libpcre2
 	dev-libs/openssl:=
 	net-libs/libnet:1.1
 	>=net-libs/libpcap-0.8.1
