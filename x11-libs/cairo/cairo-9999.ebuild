@@ -18,8 +18,8 @@ DESCRIPTION="A vector graphics library with cross-device output support"
 HOMEPAGE="https://www.cairographics.org/ https://gitlab.freedesktop.org/cairo/cairo"
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
-IUSE="X aqua debug +glib gtk-doc test"
-RESTRICT="!test? ( test ) test" # Requires poppler-glib, which isn't available in multilib
+IUSE="X aqua debug +glib gtk-doc"
+RESTRICT="test" # Test suite has many failures. Requires poppler-glib, which isn't available in multilib
 
 RDEPEND="
 	>=dev-libs/lzo-2.06-r1:2[${MULTILIB_USEDEP}]
@@ -56,7 +56,7 @@ multilib_src_configure() {
 		-Dxlib-xcb=disabled
 		-Dzlib=enabled
 
-		$(meson_feature test tests)
+		-Dtests=disabled
 
 		-Dgtk2-utils=disabled
 
