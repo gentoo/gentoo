@@ -31,7 +31,7 @@ RDEPEND="
 	sys-libs/zlib
 	geoip? ( dev-libs/geoip )
 	gtk? (
-		>=dev-libs/atk-1.2.4
+		>=app-accessibility/at-spi2-core-2.46.0
 		>=dev-libs/glib-2.2.2:2
 		media-libs/freetype
 		x11-libs/cairo
