@@ -18,8 +18,10 @@ DESCRIPTION="A vector graphics library with cross-device output support"
 HOMEPAGE="https://www.cairographics.org/ https://gitlab.freedesktop.org/cairo/cairo"
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
-IUSE="X aqua debug +glib gtk-doc"
-RESTRICT="test" # Test suite has many failures. Requires poppler-glib, which isn't available in multilib
+IUSE="X aqua debug +glib gtk-doc test"
+# Tests need more wiring up like e.g. https://gitlab.freedesktop.org/cairo/cairo/-/blob/master/.gitlab-ci.yml
+# any2ppm tests seem to hang for now.
+RESTRICT="test !test? ( test )"
 
 RDEPEND="
 	>=dev-libs/lzo-2.06-r1:2[${MULTILIB_USEDEP}]
@@ -37,6 +39,11 @@ RDEPEND="
 		>=x11-libs/libxcb-1.9.1:=[${MULTILIB_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
+	test? (
+		app-text/ghostscript-gpl
+		app-text/poppler[cairo]
+		gnome-base/librsvg
+	)
 	X? ( x11-base/xorg-proto )"
 BDEPEND="virtual/pkgconfig"
 
@@ -61,7 +68,8 @@ multilib_src_configure() {
 		-Dxml=disabled
 		-Dzlib=enabled
 
-		-Dtests=disabled
+		# Requires poppler-glib (poppler[cairo]) which isn't available in multilib
+		$(meson_native_use_feature test tests)
 
 		-Dgtk2-utils=disabled
 
@@ -73,6 +81,10 @@ multilib_src_configure() {
 	)
 
 	meson_src_configure
+}
+
+multilib_src_test() {
+	multilib_is_native_abi && meson_src_test
 }
 
 multilib_src_install_all() {
