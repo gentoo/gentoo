@@ -16,7 +16,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~sparc x86"
 IUSE="24-bit-color 256-color blink fading-colors +font-styles gdk-pixbuf iso14755 +mousewheel
-	perl startup-notification unicode3 xft"
+	perl startup-notification unicode3 wide-glyphs xft"
 
 RDEPEND=">=sys-libs/ncurses-5.7-r6:=
 	dev-libs/libptytty
@@ -35,6 +35,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch
 	"${FILESDIR}"/${PN}-9.21-xsubpp.patch
+	"${FILESDIR}"/${PN}-9.31-enable-wide-glyphs.patch
 )
 DOCS=(
 	Changes
@@ -75,6 +76,7 @@ src_configure() {
 		$(use_enable perl)
 		$(use_enable startup-notification)
 		$(use_enable unicode3)
+		$(use_enable wide-glyphs)
 		$(use_enable xft)
 	)
 	if use 24-bit-color; then
