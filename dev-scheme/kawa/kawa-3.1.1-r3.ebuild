@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN^}-${PV}
 
 LICENSE="MIT public-domain jemacs? ( GPL-2 ) krl? ( GPL-2 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="+awt +frontend jemacs krl +sax servlets +swing +xml"
 RESTRICT="test"  # fails
 
