@@ -24,8 +24,7 @@ RDEPEND="
 	dev-libs/libpcre2:=
 	aspell? ( app-text/aspell )
 	hunspell? ( app-text/hunspell )
-	python? ( ${PYTHON_DEPS} )
-	!sci-mathematics/minisat"
+	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/swig:0
