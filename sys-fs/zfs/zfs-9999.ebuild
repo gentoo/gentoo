@@ -1,6 +1,12 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+#!/bin/bash
+
+# Adding Portage related postinst warnings
+ewarn "This package may require a rebuild after upgrading Portage."
+ewarn "Please refer to the Portage documentation for further information."
+
 EAPI=8
 
 DISTUTILS_OPTIONAL=1
