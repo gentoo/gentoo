@@ -54,7 +54,9 @@ src_install() {
 	fi
 
 	# See bug #803275 and bug #833604
-	rm -f "${ED}"/usr/$(get_libdir)/ocaml/{ocamlbuild,labltk}/META || die
+	for x in camlp4 dbm graphics labltk num num-top ocamlbuild; do
+		rm -rf "${ED}"/usr/$(get_libdir)/ocaml/${x} || die
+	done
 }
 
 check_stublibs() {
