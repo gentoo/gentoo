@@ -288,12 +288,6 @@ dev-lang/regina-rexx
 # Removal on 2023-03-26.  Bug #740480.
 media-tv/nvtv
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-24)
-# Fails to build with setuptools-67.2.0.  The current version is from
-# Jan 2021, upstream had a few releases in 2022.  Multiple other bugs..
-# Removal on 2023-03-26.  Bug #891757.
-dev-lang/hy
-
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
 =app-text/discount-3*
