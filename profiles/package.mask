@@ -259,12 +259,6 @@ x11-libs/libcryptui
 # Removal on 2023-03-27. Bug 896898 and 888444
 dev-python/trio-asyncio
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-24)
-# Unmaintained with multiple reported bugs.  Last release is a RC
-# from 2017, upstream recommends using trunk.
-# Removal on 2023-03-26.  Bug #855548.
-media-gfx/fim
-
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
 =app-text/discount-3*
