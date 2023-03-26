@@ -265,12 +265,6 @@ dev-python/trio-asyncio
 # Removal on 2023-03-26.  Bug #855548.
 media-gfx/fim
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-24)
-# Unmaintained with reported build failure.  The last release is a beta
-# from 2019, the package had only marginal activity in 2020 and 2021.
-# Removal on 2023-03-26.  Bug #732194.
-app-editors/notepadqq
-
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
 =app-text/discount-3*
