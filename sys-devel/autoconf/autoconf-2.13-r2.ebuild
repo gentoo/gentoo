@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,6 +32,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-test-fixes.patch #146592
 	"${FILESDIR}"/${PN}-2.13-perl-5.26.patch
 )
+
+TC_AUTOCONF_BREAK_INFOS=yes
 
 src_configure() {
 	# make sure configure is newer than configure.in
