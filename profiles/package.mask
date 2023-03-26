@@ -271,12 +271,6 @@ media-gfx/fim
 # Removal on 2023-03-26.  Bug #732194.
 app-editors/notepadqq
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-24)
-# Unmaintained.  Fails to build with current sys-libs/ncurses.  Homepage
-# gone, last release in 2002.
-# Removal on 2023-03-26.  Bug #776832.
-app-text/reed
-
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
 =app-text/discount-3*
