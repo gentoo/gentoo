@@ -6,7 +6,7 @@ EAPI=8
 NEED_EMACS=29
 inherit elisp
 
-DESCRIPTION="Automatic installation, usage, and fallback for tree-sitter major modes in Emacs 29"
+DESCRIPTION="Automatic installation, usage, fallback for tree-sitter modes in Emacs 29"
 HOMEPAGE="https://github.com/renzmann/treesit-auto"
 
 if [[ ${PV} == *_p* ]] ; then
