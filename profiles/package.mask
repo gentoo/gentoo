@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-04-10)
+# Ruby 2.7 reached EOL upstream on April 1st. Mask this version and any
+# remaining ruby27-only packages for removal on 2023-05-10.
+dev-lang/ruby:2.7
+=dev-ruby/bundler-2.1.4
+=dev-ruby/did_you_mean-1.4.0
+=dev-ruby/rubygems-3.1.6
+=dev-ruby/contracts-0.16.1
+
 # Michał Górny <mgorny@gentoo.org> (2023-04-10)
 # Last release in 2016, carries a few patches already.  No revdeps.
 # dev-python/cbor2 is a more modern replacement.
