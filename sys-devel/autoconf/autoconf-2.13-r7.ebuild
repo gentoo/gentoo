@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,6 +34,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-K-R-decls-clang.patch
 	"${FILESDIR}"/${P}-Clang-16-fixes-for-various-tests.patch
 )
+
+TC_AUTOCONF_BREAK_INFOS=yes
 
 src_configure() {
 	# make sure configure is newer than configure.in
