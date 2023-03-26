@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Arsen Arsenović <arsen@gentoo.org> (2024-08-02)
+# Guile rework masks.  Mask all packages or package versions that are
+# being bumped as part of the Guile reslotting process.
+# Masked until the whole Guile ecosystem is updated.
+dev-scheme/guile:2.2
+dev-scheme/guile:3.0
+
 # Eli Schwartz <eschwartz@gentoo.org> (2024-08-15)
 # Abandoned upstream since 2011, unmaintained in gentoo since 2017. Tons of
 # patches, breaks again with GCC 14. Severe QA issues, automagic dependencies,

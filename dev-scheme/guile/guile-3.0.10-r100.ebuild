@@ -3,13 +3,12 @@
 
 EAPI=8
 
-MAJOR="3.0"
 DESCRIPTION="GNU Ubiquitous Intelligent Language for Extensions"
 HOMEPAGE="https://www.gnu.org/software/guile/"
 SRC_URI="mirror://gnu/guile/${P}.tar.xz"
 
 LICENSE="LGPL-3+"
-SLOT="12/3.0-1" # libguile-2.2.so.1 => 2.2-1
+SLOT="$(ver_cut 1-2)"  # See (guile)Parallel Installations.
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos"
 
 IUSE="debug debug-malloc +deprecated +jit +networking +nls +regex +threads" # upstream recommended +networking +nls
@@ -25,6 +24,7 @@ RDEPEND="
 	sys-libs/ncurses:=
 	sys-libs/readline:=
 	virtual/libcrypt:=
+	!dev-scheme/guile:12
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -41,11 +41,19 @@ DOCS=( ABOUT-NLS AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README THANKS )
 
 PATCHES=( "${FILESDIR}"/${PN}-2.2.3-gentoo-sandbox.patch )
 
+# Where to install data files.
+GUILE_DATA="${PREFIX}/usr/share/guile-data/${SLOT}"
+GUILE_PCDIR="/usr/share/guile-data/${SLOT}/pkgconfig"
+
 src_configure() {
 	# see bug #676468
 	mv prebuilt/32-bit-big-endian{,.broken} || die
 
 	local -a myconf=(
+		--program-suffix="-${SLOT}"
+		--infodir="${GUILE_DATA}/info"
+		--with-pkgconfigdir="${GUILE_PCDIR}"
+
 		--disable-error-on-warning
 		--disable-rpath
 		--disable-lto
@@ -74,8 +82,10 @@ src_install() {
 	dodir /usr/share/gdb/auto-load/$(get_libdir)
 	mv "${ED}"/usr/$(get_libdir)/libguile-*-gdb.scm "${ED}"/usr/share/gdb/auto-load/$(get_libdir) || die
 
-	# necessary for registering slib, see bug #206896
-	keepdir /usr/share/guile/site
-
+	mv "${ED}"/usr/share/aclocal/guile{,-"${SLOT}"}.m4 || die
 	find "${ED}" -name '*.la' -delete || die
+
+	newenvd - "50guile${SLOT}" <<-EOF
+	PKG_CONFIG_PATH="${GUILE_PCDIR}"
+	EOF
 }
