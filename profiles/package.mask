@@ -294,12 +294,6 @@ media-tv/nvtv
 # Removal on 2023-03-26.  Bug #891757.
 dev-lang/hy
 
-# Michał Górny <mgorny@gentoo.org> (2023-02-24)
-# Unmaintained.  Does not build against the current version
-# of app-text/htmltidy.  Last upstream commit in 2013.
-# Removal on 2023-03-26.  Bug #806480.
-net-misc/cbugzilla
-
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
 =app-text/discount-3*
