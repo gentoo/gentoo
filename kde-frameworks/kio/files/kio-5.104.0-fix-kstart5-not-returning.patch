@@ -1,0 +1,78 @@
+From fea052ba369e474a092516a4717556b52ff92e00 Mon Sep 17 00:00:00 2001
+From: Thenujan Sandramohan <sthenujan2002@gmail.com>
+Date: Fri, 24 Mar 2023 22:33:19 +0000
+Subject: [PATCH] CommandLauncher: call emitResult() as soon as process has
+ started
+
+This MR makes `emitResult` get called as soon as the process has started instead of when the process has ended. It also changes `emitDelayedError` as a protected member of `KProcessRunner` to make it invokable by `ForkingProcessRunner`. It also removes `processFinished` signal as it's not used anymore.
+
+BUG: 466359
+---
+ src/gui/commandlauncherjob.cpp | 2 --
+ src/gui/kprocessrunner.cpp     | 3 +--
+ src/gui/kprocessrunner_p.h     | 7 +------
+ 3 files changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/src/gui/commandlauncherjob.cpp b/src/gui/commandlauncherjob.cpp
+index c82a8ef56e..06deede116 100644
+--- a/src/gui/commandlauncherjob.cpp
++++ b/src/gui/commandlauncherjob.cpp
+@@ -143,8 +143,6 @@ void KIO::CommandLauncherJob::start()
+     });
+     connect(d->m_processRunner, &KProcessRunner::processStarted, this, [this](qint64 pid) {
+         d->m_pid = pid;
+-    });
+-    connect(d->m_processRunner, &KProcessRunner::processFinished, this, [this]() {
+         emitResult();
+     });
+ }
+diff --git a/src/gui/kprocessrunner.cpp b/src/gui/kprocessrunner.cpp
+index 232b0e4caa..b97079c240 100644
+--- a/src/gui/kprocessrunner.cpp
++++ b/src/gui/kprocessrunner.cpp
+@@ -472,9 +472,8 @@ void ForkingProcessRunner::slotProcessExited(int exitCode, QProcess::ExitStatus
+     if (exitCode == 9009) {
+ #endif
+         const QStringList args = m_cmd.split(QLatin1Char(' '));
+-        Q_EMIT error(xi18nc("@info", "The command <command>%1</command> could not be found.", args[0]));
++        emitDelayedError(xi18nc("@info", "The command <command>%1</command> could not be found.", args[0]));
+     }
+-    Q_EMIT processFinished();
+ }
+ 
+ // This code is also used in klauncher (and KRun).
+diff --git a/src/gui/kprocessrunner_p.h b/src/gui/kprocessrunner_p.h
+index 84973547c6..65df04b073 100644
+--- a/src/gui/kprocessrunner_p.h
++++ b/src/gui/kprocessrunner_p.h
+@@ -120,11 +120,6 @@ Q_SIGNALS:
+      */
+     void processStarted(qint64 pid);
+ 
+-    /**
+-     * @brief emitted when the process was finished
+-     */
+-    void processFinished();
+-
+     /**
+      * Notifies about having received the token were waiting for.
+      *
+@@ -142,6 +137,7 @@ protected:
+     QString name() const;
+     QString maybeAliasedName(const QString &pattern) const;
+     static QString escapeUnitName(const QString &input);
++    void emitDelayedError(const QString &errorMsg);
+ 
+     std::unique_ptr<KProcess> m_process;
+     QString m_executable; // can be a full path
+@@ -157,7 +153,6 @@ protected:
+     KStartupInfoId m_startupId;
+ 
+ private:
+-    void emitDelayedError(const QString &errorMsg);
+     void initFromDesktopName(const QString &desktopName,
+                              const QString &execName,
+                              const QString &iconName,
+-- 
+GitLab
+
