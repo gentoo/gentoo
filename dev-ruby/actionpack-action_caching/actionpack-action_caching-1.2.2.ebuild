@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ IUSE=""
 ruby_add_rdepend ">=dev-ruby/actionpack-4.0.0:*"
 
 ruby_add_bdepend "test? ( >=dev-ruby/activerecord-4.0.0
-	|| ( dev-ruby/railties:6.1 dev-ruby/railties:6.0 dev-ruby/railties:5.2 )
+	|| ( dev-ruby/railties:6.1 dev-ruby/railties:6.0 )
 	dev-ruby/mocha )"
 
 all_ruby_prepare() {
