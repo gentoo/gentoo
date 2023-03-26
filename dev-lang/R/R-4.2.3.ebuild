@@ -76,7 +76,8 @@ PATCHES=(
 	"${FILESDIR}"/R-3.6.2-no-gzip-doc.patch
 	"${FILESDIR}"/R-4.2.2-browser-pdf-prefs.patch
 	"${FILESDIR}"/R-4.2.2-isspace-without-readline.patch
-	"${FILESDIR}/"R-4.2.2-parallel-rmath-h-install.patch
+	"${FILESDIR}"/R-4.2.2-parallel-rmath-h-install.patch
+	"${FILESDIR}"/R-4.2.3-curl-8.patch
 )
 
 pkg_pretend() {
