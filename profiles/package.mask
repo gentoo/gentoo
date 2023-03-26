@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-03-26)
+# Mask ruby27-only version of puppet for removal. Please upgrade to
+# puppetserver 7 and either puppet-agent 7 or puppet 7.
+# Masked for removal on 2023-04-26.
+=app-admin/puppet-5*
+
 # Sam James <sam@gentoo.org> (2023-03-24)
 # Please upgrade to make-4.4.1 as make-4.4 has a bunch of issues.
 =sys-devel/make-4.4
