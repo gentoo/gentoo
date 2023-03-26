@@ -3,8 +3,6 @@
 
 EAPI=8
 
-NEED_EMACS=25.1
-
 inherit elisp
 
 MY_COMMIT="bf7efbbbfeb4540822c5deca3be5d71c4232f62f"

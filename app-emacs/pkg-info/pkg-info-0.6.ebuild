@@ -1,9 +1,7 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-NEED_EMACS="24.1"
 
 inherit elisp
 
