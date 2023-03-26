@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,7 +54,10 @@ BDEPEND="
 	doc? ( app-doc/doxygen )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-8.1.0-cmake.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-8.1.0-cmake.patch"
+	"${FILESDIR}/${PN}-8.1.0-cmake-webengine.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
