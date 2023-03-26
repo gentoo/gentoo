@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -43,9 +43,4 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" install install-META
 	dodoc CHANGES.md README.md
-
-	if has_version ">=dev-ml/findlib-1.9" ; then
-		# See bug #803275
-		rm "${ED}/usr/$(get_libdir)/ocaml/camlp4/META" || die
-	fi
 }
