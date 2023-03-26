@@ -4,7 +4,7 @@
 EAPI=8
 
 if [[ ${PV} != *9999* ]]; then
-	QT5_KDEPATCHSET_REV=5
+	QT5_KDEPATCHSET_REV=6
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
@@ -46,11 +46,6 @@ QT5_GENTOO_CONFIG=(
 
 QT5_GENTOO_PRIVATE_CONFIG=(
 	:widgets
-)
-
-PATCHES=(
-	"${FILESDIR}/${P}-QTBUG-106569.patch"
-	"${FILESDIR}/${P}-QTBUG-104917.patch" # KDE-bug 467373
 )
 
 src_configure() {
