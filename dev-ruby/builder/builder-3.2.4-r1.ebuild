@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md CHANGES"
 inherit ruby-fakegem
 
 DESCRIPTION="A builder to facilitate programmatic generation of XML markup"
-HOMEPAGE="http://onestepback.org/"
+HOMEPAGE="https://onestepback.org/"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
@@ -28,8 +28,9 @@ all_ruby_prepare() {
 
 each_ruby_prepare() {
 	case ${RUBY} in
-		*ruby30|*ruby31)
-			sed -i -e '/test_late_included_module_in_kernel_is_ok/askip "broken due to different ruby behavior"' test/test_blankslate.rb || die
+		*ruby30|*ruby31|*ruby32)
+			sed -e '/test_late_included_module_in_kernel_is_ok/askip "broken due to different ruby behavior"' \
+				-i test/test_blankslate.rb || die
 			;;
 	esac
 }
