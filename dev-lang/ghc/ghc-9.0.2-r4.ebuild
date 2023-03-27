@@ -32,14 +32,14 @@ BIN_PV=${PV}
 #glibc_binaries="$glibc_binaries alpha? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-alpha.tbz2 )"
 glibc_binaries+=" amd64? ( https://eidetic.codes/${PN}-bin-${PVR}-x86_64-pc-linux-gnu.gpkg.tar )"
 #glibc_binaries="$glibc_binaries arm? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-armv7a-hardfloat-linux-gnueabi.tbz2 )"
-glibc_binaries="$glibc_binaries arm64? ( https://github.com/matoro/ghc/releases/download/${PVR}/ghc-bin-${PV}-aarch64-unknown-linux-gnu-r4.tar.gz )"
+glibc_binaries="$glibc_binaries arm64? ( https://github.com/matoro/ghc/releases/download/${PVR}/ghc-bin-${PVR}-aarch64-unknown-linux-gnu.tar.gz )"
 #glibc_binaries="$glibc_binaries ia64?  ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
 #glibc_binaries="$glibc_binaries ppc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc.tbz2 )"
 glibc_binaries="$glibc_binaries ppc64? (
-	big-endian? ( https://github.com/matoro/ghc/releases/download/${PVR}/ghc-bin-${PV}-powerpc64-unknown-linux-gnu-r4.tar.gz )
-	!big-endian? ( https://github.com/matoro/ghc/releases/download/${PVR}/ghc-bin-${PV}-powerpc64le-unknown-linux-gnu-r4.tar.gz )
+	big-endian? ( https://github.com/matoro/ghc/releases/download/${PVR}/ghc-bin-${PVR}-powerpc64-unknown-linux-gnu.tar.gz )
+	!big-endian? ( https://github.com/matoro/ghc/releases/download/${PVR}/ghc-bin-${PVR}-powerpc64le-unknown-linux-gnu.tar.gz )
 )"
-glibc_binaries="$glibc_binaries riscv? ( https://github.com/matoro/ghc/releases/download/${PVR}/ghc-bin-${PV}-riscv64-unknown-linux-gnu-r4.tar.gz )"
+glibc_binaries="$glibc_binaries riscv? ( https://github.com/matoro/ghc/releases/download/${PVR}/ghc-bin-${PVR}-riscv64-unknown-linux-gnu.tar.gz )"
 #glibc_binaries="$glibc_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
 glibc_binaries+=" x86? ( https://eidetic.codes/${PN}-bin-${PVR}-i686-pc-linux-gnu.gpkg.tar )"
 
