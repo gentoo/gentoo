@@ -251,12 +251,6 @@ sys-power/dptfxtract
 gnome-extra/seahorse-nautilus
 x11-libs/libcryptui
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-02-25)
-# Fails tests, last upstream commit 2021, does not work with
-# python3.11. No reverse dependencies.
-# Removal on 2023-03-27. Bug 896898 and 888444
-dev-python/trio-asyncio
-
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
 =app-text/discount-3*
