@@ -7,17 +7,14 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 PYTHON_REQ_USE='xml(+)'
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
-MY_PV=${PV//.0/.}
-MY_P=${PN}-${MY_PV}
 DESCRIPTION="Converts profiling output to dot graphs"
-HOMEPAGE="https://github.com/jrfonseca/gprof2dot"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
+HOMEPAGE="
+	https://github.com/jrfonseca/gprof2dot/
+	https://pypi.org/project/gprof2dot/
+"
 
 LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-
-S="${WORKDIR}"/${MY_P}
