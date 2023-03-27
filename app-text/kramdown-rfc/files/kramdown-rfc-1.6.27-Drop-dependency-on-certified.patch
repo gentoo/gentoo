@@ -1,0 +1,31 @@
+From 8e7bd5a8b95e06568af75f3268529434ea989b2b Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Mon, 27 Mar 2023 11:18:37 +0200
+Subject: [PATCH] Drop dependency on certified
+
+--- a/kramdown-rfc2629.gemspec
++++ b/kramdown-rfc2629.gemspec
+@@ -6,7 +6,6 @@ spec = Gem::Specification.new do |s|
+ "kramdown" markdown parser.  Mostly useful for RFC writers.}
+   s.add_dependency('kramdown', '~> 2.4.0')
+   s.add_dependency('kramdown-parser-gfm', '~> 1.1')
+-  s.add_dependency('certified', '~> 1.0')
+   s.add_dependency('json_pure', '~> 2.0')
+   s.add_dependency('unicode-name', '~> 1.0')
+   s.add_dependency('unicode-blocks', '~> 1.0')
+--- a/lib/kramdown-rfc/command.rb
++++ b/lib/kramdown-rfc/command.rb
+@@ -134,9 +134,7 @@ def do_the_tls_dance
+       warn "** Configuration problem with OpenSSL certificate store."
+       warn "**   You may want to examine #{OpenSSL::X509::DEFAULT_CERT_FILE}"
+       warn "**    and #{OpenSSL::X509::DEFAULT_CERT_DIR}."
+-      warn "**   Activating suboptimal workaround."
+-      warn "**   Occasionally run `certified-update` to maintain that workaround."
+-      require 'certified'
++      exit 1
+     end
+   end
+ end
+-- 
+2.39.2
+
