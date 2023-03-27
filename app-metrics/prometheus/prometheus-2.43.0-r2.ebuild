@@ -38,7 +38,7 @@ src_prepare() {
 		-e "s/{{.Revision}}/${GIT_COMMIT}/" \
 		-e "s/{{.Version}}/${PV}/" \
 		.promu.yml || die
-	cp -a -n "${WORKDIR}"/web/ui web || die
+	cp -a -u "${WORKDIR}"/web/ui web || die "cp failed"
 }
 
 src_compile() {
