@@ -1,18 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby26 ruby27 ruby30"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 inherit ruby-ng
 
 DESCRIPTION="A Romaji <-> Kana conversion library for Ruby"
 HOMEPAGE="http://0xcc.net/ruby-romkan/"
 SRC_URI="http://0xcc.net/ruby-romkan/${P}.tar.gz"
+
 LICENSE="Ruby-BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
 
 DOCS="ChangeLog *.rd"
 
