@@ -58,6 +58,7 @@ src_configure() {
 	vala_setup
 
 	# TODO: Make videocalls (rtp) optional and not completely disable it
+	# This
 	local disabled_plugins=(
 		$(usex gpg "" "openpgp")
 		$(usex omemo "" "omemo")
