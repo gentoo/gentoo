@@ -56,6 +56,7 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/43.0-optional-gstreamer.patch # Allow controlling audio-video-properties build
+	"${FILESDIR}"/44.0-build-fix.patch
 )
 
 src_prepare() {

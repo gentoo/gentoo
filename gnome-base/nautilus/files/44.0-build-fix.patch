@@ -1,0 +1,217 @@
+From 8845d6756ef7501c79086cfbf6f61d0cdc1479da Mon Sep 17 00:00:00 2001
+From: Ondrej Holy <oholy@redhat.com>
+Date: Fri, 17 Mar 2023 10:41:43 +0100
+Subject: [PATCH 1/5] column: Remove extra newline from documentation comment
+
+Currently, the `Nautilus: "@name" parameter unexpected at this location`
+warning is shown during build. This is caused by the extra newline character
+in the documentation comment for the `nautilus_column_new` function. Let's
+remove this extra newline character to get rid of that warning.
+---
+ libnautilus-extension/nautilus-column.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/libnautilus-extension/nautilus-column.h b/libnautilus-extension/nautilus-column.h
+index abcc4510d6..5aba20c77b 100644
+--- a/libnautilus-extension/nautilus-column.h
++++ b/libnautilus-extension/nautilus-column.h
+@@ -49,7 +49,6 @@ G_DECLARE_FINAL_TYPE (NautilusColumn, nautilus_column, NAUTILUS, COLUMN, GObject
+ 
+ /**
+  * nautilus_column_new:
+- *
+  * @name: (not nullable): identifier of the column
+  * @attribute: (not nullable): the file attribute to be displayed in the column
+  * @label: (not nullable): the user-visible label for the column
+-- 
+GitLab
+
+
+From e68586485898ed61471c66e1d6fd10af0c9faa4c Mon Sep 17 00:00:00 2001
+From: Ondrej Holy <oholy@redhat.com>
+Date: Fri, 17 Mar 2023 10:49:25 +0100
+Subject: [PATCH 2/5] properties-window: Use return value from g_string_free
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Currently, the `ignoring return value of â€˜g_string_free_and_stealâ€™
+declared with attribute â€˜warn_unused_resultâ€™` warning is shown during
+build. This is because the `str` struct member is used instead of a
+return value from the `g_string_free` function. Let's update the code
+to use the return value in order to avoid this warning.
+---
+ src/nautilus-properties-window.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/src/nautilus-properties-window.c b/src/nautilus-properties-window.c
+index e9e24264f2..171cb626ea 100644
+--- a/src/nautilus-properties-window.c
++++ b/src/nautilus-properties-window.c
+@@ -3748,7 +3748,6 @@ get_pending_key (GList *file_list)
+     GList *uris = NULL;
+     GList *l;
+     GString *key;
+-    char *ret;
+ 
+     uris = NULL;
+     for (l = file_list; l != NULL; l = l->next)
+@@ -3766,10 +3765,7 @@ get_pending_key (GList *file_list)
+ 
+     g_list_free_full (uris, g_free);
+ 
+-    ret = key->str;
+-    g_string_free (key, FALSE);
+-
+-    return ret;
++    return g_string_free (key, FALSE);
+ }
+ 
+ static StartupData *
+-- 
+GitLab
+
+
+From 46aad293105a5537f7a9017d2fdf125c3aa3cf73 Mon Sep 17 00:00:00 2001
+From: Ondrej Holy <oholy@redhat.com>
+Date: Fri, 17 Mar 2023 12:44:51 +0100
+Subject: [PATCH 3/5] pathbar: Initialize drag action
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The `â€˜actionâ€™ may be used uninitialized` warning is shown during build
+currently. It can really happen that uninitialized value is used when
+dropping something else then `GDK_TYPE_FILE_LIST` on the pathbar. Let's
+initialize the action to prevent this.
+---
+ src/nautilus-pathbar.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/src/nautilus-pathbar.c b/src/nautilus-pathbar.c
+index 1b6ea6a477..7e19e2448c 100644
+--- a/src/nautilus-pathbar.c
++++ b/src/nautilus-pathbar.c
+@@ -746,7 +746,7 @@ on_drag_motion (GtkDropTarget *target,
+                 gpointer       user_data)
+ {
+     ButtonData *button_data = user_data;
+-    GdkDragAction action;
++    GdkDragAction action = 0;
+     const GValue *value;
+     graphene_point_t start;
+ 
+@@ -759,12 +759,7 @@ on_drag_motion (GtkDropTarget *target,
+     if (G_VALUE_HOLDS (value, GDK_TYPE_FILE_LIST))
+     {
+         GSList *items = g_value_get_boxed (value);
+-
+-        if (items == NULL)
+-        {
+-            action = 0;
+-        }
+-        else
++        if (items != NULL)
+         {
+             action = nautilus_dnd_get_preferred_action (button_data->file, items->data);
+         }
+-- 
+GitLab
+
+
+From 187b52eb4f993c0ae02f17758c7521ce331e7706 Mon Sep 17 00:00:00 2001
+From: Ondrej Holy <oholy@redhat.com>
+Date: Fri, 17 Mar 2023 12:53:10 +0100
+Subject: [PATCH 4/5] window: Initialize drag action for tab bar
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The `â€˜actionâ€™ may be used uninitialized` warning is shown during build
+currently. It can really happen that uninitialized value is used when
+dropping something else then the `GDK_TYPE_FILE_LIST` and `G_TYPE_STRING`
+on the tab bar. Let's initialize the action to prevent this.
+---
+ src/nautilus-window.c | 26 ++++++++++----------------
+ 1 file changed, 10 insertions(+), 16 deletions(-)
+
+diff --git a/src/nautilus-window.c b/src/nautilus-window.c
+index 30299b19db..9424f154d7 100644
+--- a/src/nautilus-window.c
++++ b/src/nautilus-window.c
+@@ -1476,29 +1476,23 @@ extra_drag_value_cb (AdwTabBar    *self,
+ {
+     NautilusWindowSlot *slot = NAUTILUS_WINDOW_SLOT (adw_tab_page_get_child (page));
+     g_autoptr (NautilusFile) file = nautilus_file_get (nautilus_window_slot_get_location (slot));
+-    GdkDragAction action;
++    GdkDragAction action = 0;
+ 
+-    if (value == NULL)
++    if (value != NULL)
+     {
+-        action = 0;
+-    }
+-    else if (G_VALUE_HOLDS (value, GDK_TYPE_FILE_LIST))
+-    {
+-        GSList *file_list = g_value_get_boxed (value);
+-
+-        if (file_list == NULL)
++        if (G_VALUE_HOLDS (value, GDK_TYPE_FILE_LIST))
+         {
+-            action = 0;
++            GSList *file_list = g_value_get_boxed (value);
++            if (file_list != NULL)
++            {
++                action = nautilus_dnd_get_preferred_action (file, G_FILE (file_list->data));
++            }
+         }
+-        else
++        else if (G_VALUE_HOLDS (value, G_TYPE_STRING))
+         {
+-            action = nautilus_dnd_get_preferred_action (file, G_FILE (file_list->data));
++            action = GDK_ACTION_COPY;
+         }
+     }
+-    else if (G_VALUE_HOLDS (value, G_TYPE_STRING))
+-    {
+-        action = GDK_ACTION_COPY;
+-    }
+ 
+     /* We set the preferred action on the drop from the results of this function,
+      * but since we don't have access to the GtkDropTarget, we can't get the preferred
+-- 
+GitLab
+
+
+From ef9cd0bc0375a7a1cda73a5522e68e7dc2fdae98 Mon Sep 17 00:00:00 2001
+From: Ondrej Holy <oholy@redhat.com>
+Date: Fri, 17 Mar 2023 13:09:24 +0100
+Subject: [PATCH 5/5] search-hit: Remove redundant code
+
+The `Deprecated pre-processor symbol: replace with "G_ADD_PRIVATE"`
+warning is shown during build currently. This is caused by the usage
+of the `G_TYPE_INSTANCE_GET_PRIVATE` macro. However, the statement with
+this macro doesn't have any effect. This looks to be an oversight in
+the commit 335eabec. Let's drop the whole statement to get rid of this
+warning.
+---
+ src/nautilus-search-hit.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/nautilus-search-hit.c b/src/nautilus-search-hit.c
+index 6efaa5613b..98ac14261e 100644
+--- a/src/nautilus-search-hit.c
++++ b/src/nautilus-search-hit.c
+@@ -464,9 +464,6 @@ nautilus_search_hit_class_init (NautilusSearchHitClass *class)
+ static void
+ nautilus_search_hit_init (NautilusSearchHit *hit)
+ {
+-    hit = G_TYPE_INSTANCE_GET_PRIVATE (hit,
+-                                       NAUTILUS_TYPE_SEARCH_HIT,
+-                                       NautilusSearchHit);
+ }
+ 
+ NautilusSearchHit *
+-- 
+GitLab
+
