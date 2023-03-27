@@ -37,6 +37,8 @@
 # The upstream tzinfo maintainers recommend using 2023a for now because of the
 # disruption regarding Lebanon's DST change. See https://lore.kernel.org/distributions/87cz4u2gmj.fsf@gentoo.org/T/#u.
 =sys-libs/timezone-data-2023b
+=dev-python/pytz-2023.2-r1
+=dev-perl/DateTime-TimeZone-2.580.0
 
 # Michał Górny <mgorny@gentoo.org> (2023-03-26)
 # No py3.11.  Last release in 2014.  No revdeps.
