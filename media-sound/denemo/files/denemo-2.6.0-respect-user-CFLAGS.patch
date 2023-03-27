@@ -1,0 +1,22 @@
+From c4eff03fb11d7085035892a688ed5d29e2faefe9 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Mon, 27 Mar 2023 19:44:28 +0200
+Subject: [PATCH] respect user CFLAGS
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+--- a/configure.ac
++++ b/configure.ac
+@@ -42,8 +42,8 @@ AC_ARG_ENABLE(
+   [
+     if test "x$enableval" != "xno"; then
+       build_debug=yes
+-      CFLAGS="-O0 -DDEBUG -g -Wall -Wextra -Wno-deprecated-declarations -Wno-sign-compare"
+-      CXXFLAGS="-O0 -DDEBUG -g -Wall -Wextra -Wno-deprecated-declarations -Wno-sign-compare"
++      CFLAGS="$CFLAGS -DDEBUG -g -Wall -Wextra -Wno-deprecated-declarations -Wno-sign-compare"
++      CXXFLAGS="$CFLAGS -DDEBUG -g -Wall -Wextra -Wno-deprecated-declarations -Wno-sign-compare"
+     fi
+   ])
+ 
+-- 
+2.40.0
+
