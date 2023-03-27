@@ -14,9 +14,8 @@ SLOT="0"
 KEYWORDS="amd64"
 
 src_compile() {
-	ego build ./cmd/src -ldflags "
-		-X github.com/sourcegraph/src-cli/internal/version.BuildTag=${PV}
-		"
+	ego build ./cmd/src
+#		-X github.com/sourcegraph/src-cli/internal/version.BuildTag=${PV}
 }
 
 src_install() {
