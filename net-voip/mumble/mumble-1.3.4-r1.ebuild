@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit desktop multilib-build python-any-r1 qmake-utils xdg
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
