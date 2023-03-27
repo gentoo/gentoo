@@ -10,7 +10,7 @@ HOMEPAGE="https://dino.im"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+gpg +http +omemo +notification-sound test"
+IUSE="+gpg +http +omemo +notification-sound +rtp test"
 RESTRICT="!test? ( test )"
 
 MY_REPO_URI="https://github.com/dino/dino"
@@ -62,7 +62,7 @@ src_configure() {
 		$(usex gpg "" "openpgp")
 		$(usex omemo "" "omemo")
 		$(usex http  "" "http-files")
-		"rtp"
+		$(usex rtp  "" "rtp")
 	)
 	local enabled_plugins=(
 		$(usex notification-sound "notification-sound" "")
