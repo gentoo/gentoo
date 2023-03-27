@@ -114,6 +114,7 @@ PATCHES=(
 	"${WORKDIR}/${PN}-5.15.3_p20220406-patchset" # bug 698988 (py2--), pipewire-3
 	"${FILESDIR}/${PN}-5.15.8_p20230106-v8-opcode-constexpr.patch" # bug 889042
 	"${FILESDIR}/${PN}-5.15.8_p20230106-widevine.patch" # bug 888783
+	"${FILESDIR}/${PN}-5.15.8_p20230112-gcc13.patch" # bug 889724, bug 895196, bug 898902, bug 898634
 )
 
 qtwebengine_check-reqs() {
