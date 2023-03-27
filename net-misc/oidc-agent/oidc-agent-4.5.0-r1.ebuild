@@ -28,6 +28,7 @@ BDEPEND="test? ( dev-libs/check )"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-4.4.0_deps-automagic.patch
 	"${FILESDIR}"/${PN}-4.4.0_install-perms.patch
 	"${FILESDIR}"/${PN}-4.5.0_webkit41.patch
 )
@@ -40,7 +41,6 @@ src_prepare() {
 
 src_compile() {
 	local -x USE_CJSON_SO=1
-	local -x USE_LIST_SO=0
 	use elibc_musl && local -x USE_ARGP_SO=1
 	emake -j1 create_obj_dir_structure create_picobj_dir_structure # Bug #880157
 	emake
