@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27"
+USE_RUBY="ruby27 ruby30"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -29,7 +29,11 @@ ruby_add_bdepend "test? (
 
 all_ruby_prepare() {
 	sed -i -e '/pry-/ s:^:#:' spec/spec_helper.rb || die
-	sed -e '/rake/ s/~>/>=/' -e '/appraisal/ s:^:#:' -e '/database_cleaner/ s/1.8/1.7/' -i arel-helpers.gemspec || die
+	sed -e '/rake/ s/~>/>=/' \
+		-e '/appraisal/ s:^:#:' \
+		-e '/database_cleaner/ s/1.8/2.0/' \
+		-e '/sqlite/ s/~>/>=/' \
+		-i arel-helpers.gemspec || die
 }
 
 each_ruby_test() {
