@@ -4,11 +4,12 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_10 )
-inherit python-r1
+inherit python-r1 pypi
 
 DESCRIPTION="TensorFlow's Visualization Toolkit"
 HOMEPAGE="https://www.tensorflow.org/"
-SRC_URI="https://files.pythonhosted.org/packages/py3/${PN::1}/${PN}/${P}-py3-none-any.whl -> ${P}.zip"
+SRC_URI="$(pypi_wheel_url --unpack)"
+S=${WORKDIR}
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -30,12 +31,15 @@ RDEPEND="
 	>=dev-python/setuptools-41[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
-	>=dev-python/scipy-1.4.1[${PYTHON_USEDEP}]"
-BDEPEND="app-arch/unzip
-	${PYTHON_DEPS}"
-PDEPEND="sci-libs/tensorflow[python,${PYTHON_USEDEP}]"
-
-S="${WORKDIR}"
+	>=dev-python/scipy-1.4.1[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	app-arch/unzip
+	${PYTHON_DEPS}
+"
+PDEPEND="
+	sci-libs/tensorflow[python,${PYTHON_USEDEP}]
+"
 
 src_prepare() {
 	eapply_user
