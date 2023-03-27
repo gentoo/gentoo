@@ -4,7 +4,8 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-JAVA_TESTING_FRAMEWORKS="junit"
+JAVA_TESTING_FRAMEWORKS="junit-4"
+MAVEN_ID="xom:xom:${PV}"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -29,16 +30,20 @@ DEPEND="
 	dev-java/junit:0
 	>=virtual/jdk-1.8:*"
 
+PATCHES=( "${FILESDIR}/xom-1.3.7-disable-invalid-test.patch" )
+
 JAVA_AUTOMATIC_MODULE_NAME="nu.xom"
 JAVA_MAIN_CLASS="nu.xom.Info"
 JAVA_RESOURCE_DIRS="src/main/resources"
 JAVA_SRC_DIR="src/main/java"
 
-JAVA_TEST_GENTOO_CLASSPATH="junit"
+JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_SRC_DIR="src/test/java"
 
 src_prepare() {
 	java-pkg-2_src_prepare
+	java-pkg_clean
+	default
 
 	# removing directories based on build.xml
 	rm -rv XOM/src/nu/xom/benchmarks/ || die
@@ -58,4 +63,37 @@ src_prepare() {
 		cp --parents -R ${file} "${WORKDIR}/${JAVA_RESOURCE_DIRS}" || die
 	done
 	popd
+}
+
+src_test() {
+	# These tests need to run separately, otherwise fail
+	# Should pass with "OK (126 tests)"
+	JAVA_TEST_RUN_ONLY=(
+		nu.xom.tests.AttributesTest
+		nu.xom.tests.DocumentTest
+		nu.xom.tests.ElementTest
+		nu.xom.tests.NodesTest
+		nu.xom.tests.ParentNodeTest
+	)
+	java-pkg-simple_src_test
+
+	JAVA_TEST_RUN_ONLY=()
+	pushd src/test/java > /dev/null || die
+		# Exclude EBCDICTest.java
+		# https://github.com/elharo/xom/blob/v1.3.8/src/nu/xom/tests/EBCDICTest.java#L71-L73
+		# And exclude those tests already run before
+		local JAVA_TEST_RUN_ONLY=$(find * \
+			-type f \
+			-name "*Test.java" \
+			! -name 'EBCDICTest.java' \
+			! -name 'AttributesTest.java' \
+			! -name 'DocumentTest.java' \
+			! -name 'ElementTest.java' \
+			! -name 'NodesTest.java' \
+			! -name 'ParentNodeTest.java' \
+			)
+		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
+		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//\//.}"
+	popd > /dev/null || die
+	java-pkg-simple_src_test
 }
