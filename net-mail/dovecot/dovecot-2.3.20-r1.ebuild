@@ -175,6 +175,9 @@ src_compile() {
 }
 
 src_test() {
+	# bug #340791 and bug #807178
+	local -x NOVALGRIND=true
+
 	default
 	if use sieve || use managesieve; then
 		cd "../dovecot-${major_minor}-pigeonhole-${sieve_version}" || die "cd failed"
