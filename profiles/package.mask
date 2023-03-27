@@ -39,13 +39,6 @@
 dev-python/collective-checkdocs
 
 # Hans de Graaff <graaff@gentoo.org> (2023-03-26)
-# Mask ruby27-only packages related to hiera-eyaml. These require a now
-# masked version of puppet and other obsolete ruby27-only test
-# dependencies. Masked for removal on 2023-04-26.
-dev-ruby/hiera-eyaml
-dev-ruby/hiera-eyaml-gpg
-
-# Hans de Graaff <graaff@gentoo.org> (2023-03-26)
 # Mask ruby27-only version of puppet for removal. Please upgrade to
 # puppetserver 7 and either puppet-agent 7 or puppet 7.
 # Masked for removal on 2023-04-26.
