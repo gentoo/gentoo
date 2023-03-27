@@ -128,6 +128,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-43.0-Disable-anonymous-file-test.patch
+	"${FILESDIR}"/${PN}-44.0-no-screencast-build.patch
 )
 
 python_check_deps() {
