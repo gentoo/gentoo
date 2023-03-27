@@ -213,6 +213,7 @@ src_prepare() {
 	eapply "${WORKDIR}"/mariadb-patches
 	eapply "${FILESDIR}"/${PN}-10.6.11-gssapi.patch
 	eapply "${FILESDIR}"/${PN}-10.6.12-gcc-13.patch
+	eapply "${FILESDIR}"/${PN}-10.5.17-gcc-13.patch
 
 	eapply_user
 
