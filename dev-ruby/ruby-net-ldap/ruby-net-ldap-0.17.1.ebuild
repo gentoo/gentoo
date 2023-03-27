@@ -3,6 +3,7 @@
 
 EAPI=8
 
+# Tests fail with >=ruby31: https://github.com/ruby-ldap/ruby-net-ldap/issues/409
 USE_RUBY="ruby27 ruby30"
 
 RUBY_FAKEGEM_TASK_TEST="test spec"
