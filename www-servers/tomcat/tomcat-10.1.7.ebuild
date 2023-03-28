@@ -32,7 +32,6 @@ RESTRICT="test" # can we run them on a production system?
 ECJ_SLOT="4.26"
 
 COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
-	dev-java/jax-rpc-api:0
 	>=dev-java/jakartaee-migration-1.0.5:0
 	dev-java/wsdl4j:0"
 RDEPEND="${COMMON_DEP}
@@ -42,6 +41,7 @@ RDEPEND="${COMMON_DEP}
 DEPEND="${COMMON_DEP}
 	app-admin/pwgen
 	dev-java/ant-core
+	dev-java/jax-rpc-api:0
 	>=virtual/jdk-11:*
 	test? (
 		dev-java/ant-junit:0
