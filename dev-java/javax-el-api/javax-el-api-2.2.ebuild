@@ -15,7 +15,7 @@ SRC_URI="https://repo1.maven.org/maven2/javax/el/el-api/${PV}/el-api-${PV}-sourc
 # https://repo1.maven.org/maven2/javax/el/el-api/2.2/el-api-2.2.pom
 LICENSE="CDDL GPL-2"
 SLOT="2.2"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-1.8:*"
