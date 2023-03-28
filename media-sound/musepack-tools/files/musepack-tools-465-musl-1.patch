@@ -1,0 +1,35 @@
+Bug: https://bugs.gentoo.org/712978
+Upstream patch: svn log --diff -r492 http://svn.musepack.net/libmpc/trunk
+------------------------------------------------------------------------
+r492 | r2d | 2016-02-14 16:12:08 -0600 (Sun, 14 Feb 2016) | 16 lines
+
+apply patch from buildroot:
+https://git.busybox.net/buildroot/tree/package/musepack/0003-include-fpu-control-with-glibc-only.patch
+Include <fpu_control.h> only on glibc systems
+
+The <fpu_control.h> header provides _FPU_*() macros, which the
+Init_FPU() function uses only on i386, and only when they are
+defined. Since <fpu_control.h> is not available, this causes a build
+failure with C libraries such as musl. By simply including
+<fpu_control.h> explicitly on glibc systems, we avoid the build
+failure, since mpcenc.c already conditionally uses the <fpu_control.h>
+macros only if they are defined.
+
+Signed-off-by: Bernd Kuhls <bernd.kuhls@t-online.de>
+[Thomas: better commit log.]
+Signed-off-by: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>
+
+
+--- a/mpcenc/mpcenc.h
++++ b/mpcenc/mpcenc.h
+@@ -49,7 +49,7 @@
+ # include <unistd.h>
+ #endif
+ 
+-#if   defined __linux__
++#if   defined __GLIBC__
+ #  include <fpu_control.h>
+ #elif defined __FreeBSD__
+ # include <machine/floatingpoint.h>
+
+------------------------------------------------------------------------
