@@ -43,7 +43,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/xz-utils
 	app-arch/zstd:=
-	>=dev-cpp/rapidyaml-0.5:=
+	dev-cpp/rapidyaml:=
 	dev-libs/libaio
 	dev-libs/libchdr
 	dev-libs/libfmt:=
@@ -129,7 +129,7 @@ src_prepare() {
 		-i pcsx2/Frontend/CommonHost.cpp || die
 
 	if [[ ${PV} != 9999 ]]; then
-		sed -e '/set(PCSX2_GIT_TAG "")/s/""/"v'${PV}'"/' \
+		sed -e '/set(PCSX2_GIT_TAG "")/s/""/"v'${PV}-gentoo'"/' \
 			-i cmake/Pcsx2Utils.cmake || die
 
 		# delete all 3rdparty/* except known-used ones in non-live
