@@ -21,7 +21,7 @@ SLOT="0"
 # imlib2[X] needed for imlib_create_image_from_drawable, bug #835582
 RDEPEND="
 	dev-libs/libbsd
-	media-libs/imlib2[X]
+	media-libs/imlib2[X,filters(+)]
 	x11-libs/libXext
 	x11-libs/libX11
 	x11-libs/libXcomposite
