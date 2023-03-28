@@ -15,7 +15,7 @@ SRC_URI="https://github.com/pat/combustion/archive/refs/tags/v${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 ruby_add_rdepend "
 	>=dev-ruby/activesupport-3.0.0:*
