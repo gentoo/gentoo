@@ -1,6 +1,10 @@
 # Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Hans de Graaff <graaff@gentoo.org> (2023-03-28)
+# dev-ruby/stringex is not marked stable here yet
+dev-ruby/kramdown unicode
+
 # Sam James <sam@gentoo.org> (2022-09-12)
 # dev-lang/rust lacks wiring up to use our custom rust-bin bootstrap
 # tarball, so force system-bootstrap instead (i.e. force using rust-bin
