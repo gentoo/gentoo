@@ -252,11 +252,6 @@ sys-power/dptfxtract
 # Masked for further testing.
 >=dev-python/cython-3
 
-# Matt Turner <mattst88@gentoo.org> (2023-02-25)
-# Packages are unmaintained and archived upstream.
-# Removal on 2023-03-27. Bug #897748
-gnome-extra/seahorse-nautilus
-
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
 =app-text/discount-3*
