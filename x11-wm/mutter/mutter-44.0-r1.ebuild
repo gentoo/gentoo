@@ -145,9 +145,21 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
+		# Mutter X11 renderer only supports gles2 and GLX, thus do NOT pass
+		#
+		#   -Dopengl_libname=libOpenGL.so.0
+		#
+		# while we build the x11 renderer, as we currently enable gles2 only
+		# with USE=wayland and x11 renderer wouldn't find the needed GLX symbols
+		# in a configuration where wayland is disabled, as libOpenGL doesn't
+		# include them.
+		#
+		# See
+		# - https://bugs.gentoo.org/835786
+		# - https://forums.gentoo.org/viewtopic-p-8695669.html
+
 		--buildtype $(usex debug debug plain)
 		-Dopengl=true
-		-Dopengl_libname=libOpenGL
 		$(meson_use wayland gles2)
 		#gles2_libname
 		-Degl=true
