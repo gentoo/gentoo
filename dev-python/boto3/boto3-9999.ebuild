@@ -43,8 +43,6 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs/source \
-	'dev-python/guzzle_sphinx_theme'
 distutils_enable_tests pytest
 
 python_prepare_all() {
