@@ -153,6 +153,10 @@ src_test() {
 	go_cross_compile && return 0
 
 	cd src
+
+	# https://github.com/golang/go/issues/42005
+	rm cmd/link/internal/ld/fallocate_test.go || true
+
 	PATH="${GOBIN}:${PATH}" \
 	./run.bash -no-rebuild || die "tests failed"
 	cd ..
