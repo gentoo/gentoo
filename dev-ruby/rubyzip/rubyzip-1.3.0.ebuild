@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ SRC_URI="https://github.com/rubyzip/rubyzip/archive/v${PV}.tar.gz -> ${P}-git.tg
 
 LICENSE="Ruby-BSD"
 SLOT="1"
-KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND=""
