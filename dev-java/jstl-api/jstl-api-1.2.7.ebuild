@@ -15,7 +15,7 @@ S="${WORKDIR}/tags-${PV}-RELEASE"
 
 LICENSE="EPL-2.0 GPL-2-with-classpath-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 
 CP_DEPEND="
 	dev-java/javax-el-api:2.2
