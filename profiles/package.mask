@@ -34,6 +34,14 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-03-28)
+# No upstream activity since Jan 2019.  The current version fails
+# to build.  Multiple other bugs reported.
+# Removal on 2023-04-27.  Bug #902069.
+acct-group/shellinaboxd
+acct-user/shellinaboxd
+www-misc/shellinabox
+
+# Michał Górny <mgorny@gentoo.org> (2023-03-28)
 # Unmaintained.  The current Gentoo version is from 2017 and has
 # multiple build failures reported.
 # Removal on 2023-04-27.  Bug #721816.
