@@ -1,0 +1,30 @@
+Bug: https://bugs.gentoo.org/712978
+Upstream patch: svn log --diff -r493 http://svn.musepack.net/libmpc/trunk
+------------------------------------------------------------------------
+r493 | r2d | 2016-02-14 16:15:07 -0600 (Sun, 14 Feb 2016) | 12 lines
+
+apply patch from buildroot :
+https://git.busybox.net/buildroot/tree/package/musepack/0004-missing-sys-select.patch
+Add missing <sys/select.h> include
+
+This header is needed when types like fd_set are used. This fixes a
+build issue occuring on the musl C library.
+
+Signed-off-by: Bernd Kuhls <bernd.kuhls@t-online.de>
+[Thomas: better commit log.]
+Signed-off-by: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>
+
+
+
+--- a/mpcenc/mpcenc.h
++++ b/mpcenc/mpcenc.h
+@@ -33,6 +33,7 @@
+ //// portable system includes //////////////////////////////////////
+ #include <stddef.h>
+ #include <math.h>
++#include <sys/select.h>
+ 
+ //// system dependent system includes //////////////////////////////
+ // low level I/O, where are prototypes and constants?
+
+------------------------------------------------------------------------
