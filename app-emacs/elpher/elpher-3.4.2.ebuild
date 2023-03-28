@@ -3,22 +3,33 @@
 
 EAPI=8
 
-[[ ${PV} == 3.4.2 ]] && COMMIT=f117f2f
 NEED_EMACS=27.1
 
 inherit elisp
 
 DESCRIPTION="Practical and friendly Gopher and Gemini client for GNU Emacs"
 HOMEPAGE="https://thelambdalab.xyz/elpher/"
-SRC_URI="https://thelambdalab.xyz/gitweb/index.cgi?p=${PN}.git;a=snapshot;h=${COMMIT};sf=tgz
-	-> ${P}.tar.gz"
-S="${WORKDIR}"/${PN}-${COMMIT}
+
+if [[ ${PV} == *9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="git://thelambdalab.xyz/${PN}.git"
+else
+	if [[ ${PV} == 3.4.2 ]] ; then
+		COMMIT=f117f2f
+		SRC_URI="https://thelambdalab.xyz/gitweb/index.cgi?p=${PN}.git;a=snapshot;h=${COMMIT};sf=tgz
+			-> ${P}.tar.gz"
+		S="${WORKDIR}"/${PN}-${COMMIT}
+	else
+		die "could not generate SRC_URI"
+	fi
+	KEYWORDS="amd64 x86"
+fi
 
 LICENSE="GPL-3+"
-KEYWORDS="amd64 x86"
 SLOT="0"
 
-DOCS=( ISSUES.org README )
 ELISP_REMOVE="elpher-pkg.el"
+
+DOCS=( ISSUES.org README )
 ELISP_TEXINFO="${PN}.texi"
 SITEFILE="50${PN}-gentoo.el"
