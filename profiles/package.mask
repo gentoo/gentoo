@@ -256,7 +256,6 @@ sys-power/dptfxtract
 # Packages are unmaintained and archived upstream.
 # Removal on 2023-03-27. Bug #897748
 gnome-extra/seahorse-nautilus
-x11-libs/libcryptui
 
 # Ben Kohler <bkohler@gentoo.org> (2023-01-30)
 # Breaks too many revdeps for now
