@@ -23,6 +23,7 @@ RDEPEND="
 
 DEPEND="
 	test? (
+		dev-python/poetry[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-3.9[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-3.1[${PYTHON_USEDEP}]
 	)
