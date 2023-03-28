@@ -30,7 +30,7 @@ DESCRIPTION="Used to create autoconfiguration files"
 HOMEPAGE="https://www.gnu.org/software/autoconf/autoconf.html"
 
 LICENSE="GPL-3+"
-SLOT="${PV/_*}"
+SLOT="$(ver_cut 1-2)"
 IUSE="emacs"
 
 BDEPEND="
@@ -47,6 +47,15 @@ RDEPEND="
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
 src_prepare() {
+	if [[ ${PV} == *9999 ]] ; then
+		# Avoid the "dirty" suffix in the git version by generating it
+		# before we run later stages which might modify source files.
+		local ver=$(./build-aux/git-version-gen .tarball-version)
+		echo "${ver}" > .tarball-version || die
+
+		autoreconf -f -i || die
+	fi
+
 	# usr/bin/libtool is provided by binutils-apple, need gnu libtool
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		PATCHES+=( "${FILESDIR}"/${PN}-2.71-darwin.patch )
@@ -54,13 +63,6 @@ src_prepare() {
 
 	# Save timestamp to avoid later makeinfo call
 	touch -r doc/{,old_}autoconf.texi || die
-
-	local pdir
-	for pdir in "${WORKDIR}"/{upstream_,}patches ; do
-		if [[ -d "${pdir}" ]] ; then
-			eapply ${pdir}
-		fi
-	done
 
 	toolchain-autoconf_src_prepare
 
