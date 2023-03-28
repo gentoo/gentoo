@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 RDEPEND="
 	app-emulation/qemu
 	dev-vcs/git
