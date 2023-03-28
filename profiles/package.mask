@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2023-03-28)
+# Unfetchable, the homepage is gone.  Last updated in 2020.
+# Removal on 2023-04-27.  Bug #831304.
+net-analyzer/netio
+
+# Michał Górny <mgorny@gentoo.org> (2023-03-28)
 # Unfetchable due to untrusted TLS certificate.  The game doesn't seem
 # to work anyway (displays blank window).
 # Removal on 2023-04-27.  Bug #835858.
