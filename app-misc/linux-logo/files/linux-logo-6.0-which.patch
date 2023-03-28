@@ -1,0 +1,29 @@
+--- a/configure
++++ b/configure
+@@ -28,13 +28,13 @@
+ fi
+ 
+ OS=`uname`
+-INSTALL=`which install`
++INSTALL=`command -v install`
+ 
+ if [ -z "$PREFIX" ]; then
+    PREFIX=/usr/local
+ fi
+ 
+-which xgettext
++command -v xgettext
+ XGETTEXT_MISSING=$?
+ 
+ if [ $XGETTEXT_MISSING -eq 0 ]; then
+--- a/libsysinfo-0.3.0/configure
++++ b/libsysinfo-0.3.0/configure
+@@ -13,7 +13,7 @@
+    
+ OS=`uname`
+ PREFIX=/usr/local
+-INSTALL=`which install`
++INSTALL=`command -v install`
+ 
+ LIBSYSINFO_INCLUDE="-I.."
+ LFLAGS=""
