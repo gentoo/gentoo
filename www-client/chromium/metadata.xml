@@ -6,7 +6,6 @@
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
 	<use>
-		<flag name="js-type-check">Enable JavaScript type-checking for Chrome's web technology-based UI. Requires Java.</flag>
 		<flag name="component-build">Split build into more shared libraries to speed up linking. Mostly intended for debugging and development, NOT RECOMMENDED for general use.</flag>
 		<flag name="debug">Enable DCHECK feature with severity configurable at runtime. Mostly intended for debugging and development, NOT RECOMMENDED for general use.</flag>
 		<flag name="gtk4">Build with GTK4 headers.</flag>
