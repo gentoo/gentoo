@@ -29,5 +29,6 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-fno-common.patch
-	"${FILESDIR}"/${P}-musl.patch
+	"${FILESDIR}"/${P}-musl-1.patch
+	"${FILESDIR}"/${P}-musl-2.patch
 )
