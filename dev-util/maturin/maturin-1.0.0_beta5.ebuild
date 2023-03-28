@@ -422,14 +422,12 @@ python_compile_all() {
 }
 
 python_test() {
+	local -x COLUMNS=100 # what tests/cmd was generated for
 	local -x MATURIN_TEST_PYTHON=${EPYTHON}
 	local -x PIP_CONFIG_FILE=${T}/pip.conf
 	local -x VIRTUALENV_SYSTEM_SITE_PACKAGES=1
 
 	local skip=(
-		--skip locked_doesnt_build_without_cargo_lock
-		# relies on 80-chars terminal output but ignores exported COLUMNS=80
-		--skip cli_tests
 		# avoid need for wasm over a single hello world test
 		--skip integration_wasm_hello_world
 		# fragile depending on rust version, also wants libpypy*-c.so for pypy
