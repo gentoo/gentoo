@@ -6,7 +6,8 @@ EAPI=7
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
 PYTHON_COMPAT=( python3_{9..11} )
-USE_RUBY="ruby27 ruby26"
+# ruby32 needs https://github.com/apache/subversion/commit/36e916ddaec4a5b1e64adee34337582f152805c5
+USE_RUBY="ruby27 ruby30 ruby31"
 
 inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2 libtool multilib perl-module prefix python-any-r1 ruby-single xdg-utils
 
