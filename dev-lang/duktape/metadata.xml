@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>sam@gentoo.org</email>
-		<name>Sam James</name>
-	</maintainer>
-	<upstream>
-		<remote-id type="github">svaarala/duktape</remote-id>
-	</upstream>
+  <maintainer type="person">
+	<email>sam@gentoo.org</email>
+	<name>Sam James</name>
+  </maintainer>
+  <upstream>
+	<remote-id type="github">svaarala/duktape</remote-id>
+  </upstream>
+  <use>
+	<flag name="cli">Enable the interactive command line REPL</flag>
+  </use>
 </pkgmetadata>

@@ -1,0 +1,36 @@
+diff --git a/dist-files/Makefile.cmdline b/dist-files/Makefile.cmdline
+index 0b020510..fc2be5f8 100644
+--- a/Makefile.cmdline
++++ b/Makefile.cmdline
+@@ -8,10 +8,7 @@ DUKTAPE_SOURCES = src/duktape.c
+ CMDLINE_SOURCES = \
+ 	examples/cmdline/duk_cmdline.c
+ 
+-CC ?= gcc
+-CC := $(CC)
+-CCOPTS = -Os -pedantic -std=c99 -Wall -fstrict-aliasing -fomit-frame-pointer
+-CCOPTS += -I./examples/cmdline -I./src   # duktape.h and duk_config.h must be in include path
++CCOPTS = -I./examples/cmdline -I./src   # duktape.h and duk_config.h must be in include path
+ CCLIBS = -lm
+ 
+ # Enable print() and alert() for command line using an optional extra module.
+@@ -32,9 +29,8 @@ CMDLINE_SOURCES += extras/module-duktape/duk_module_duktape.c
+ 
+ # If you want linenoise, you can enable these.  At the moment linenoise
+ # will cause some harmless compilation warnings.
+-#CCOPTS += -DDUK_CMDLINE_FANCY -I./linenoise
+-#CMDLINE_SOURCES += linenoise/linenoise.c
+-#duk: linenoise
++CCOPTS += -DDUK_CMDLINE_FANCY
++CCLIBS += -llinenoise
+ 
+ # Use the tools/configure.py utility to modify Duktape default configuration:
+ # http://duktape.org/guide.html#compiling
+@@ -42,7 +38,3 @@ CMDLINE_SOURCES += extras/module-duktape/duk_module_duktape.c
+ 
+ duk: $(DUKTAPE_SOURCES) $(CMDLINE_SOURCES)
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $(DEFINES) $(CCOPTS) $(DUKTAPE_SOURCES) $(CMDLINE_SOURCES) $(CCLIBS)
+-
+-linenoise/linenoise.c: linenoise
+-linenoise:
+-	git clone https://github.com/antirez/linenoise.git
