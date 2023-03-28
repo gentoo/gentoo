@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="rubygems">test-unit</remote-id>
+    <remote-id type="github">test-unit/test-unit</remote-id>
   </upstream>
 </pkgmetadata>
