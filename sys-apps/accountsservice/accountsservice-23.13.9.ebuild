@@ -61,6 +61,11 @@ python_check_deps() {
 }
 
 src_configure() {
+	# No option to disable tests
+	if ! use test; then
+		sed -e "/subdir('tests')/d" -i meson.build || die
+	fi
+
 	local emesonargs=(
 		--localstatedir="${EPREFIX}/var"
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
