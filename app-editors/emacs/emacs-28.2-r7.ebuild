@@ -32,13 +32,8 @@ else
 		SRC_URI="https://alpha.gnu.org/gnu/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
 	fi
 	# Patchset from proj/emacs-patches.git
-	SRC_URI+=" https://dev.gentoo.org/~ulm/emacs/${PN}-28.2-patches-2.tar.xz"
-	#PATCHES=("${WORKDIR}/patch")
-	PATCHES=(
-		"${WORKDIR}/patch/01_all_libseccomp.patch"
-		# 02_all_etags.patch already applied upstream
-		"${WORKDIR}/patch/03_all_webkit-4.1.patch"
-	)
+	SRC_URI+=" https://dev.gentoo.org/~ulm/emacs/${P}-patches-3.tar.xz"
+	PATCHES=("${WORKDIR}/patch")
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
@@ -374,18 +369,6 @@ src_test() {
 		#
 		# bytecomp-tests--dest-mountpoint
 		%lisp/emacs-lisp/bytecomp-tests.el
-
-		# Reason: inconsistent years in files?
-		# test-correct-notice
-		# test-end-chop
-		%lisp/emacs-lisp/copyright-tests.el
-
-		# The following tests fail with USE=jit #874681
-		# ert-test-record-backtrace
-		# loadhist-tests-file-dependents
-		# loadhist-tests-file-provides
-		%lisp/emacs-lisp/ert-tests.el
-		%lisp/loadhist-tests.el
 	)
 
 	# See test/README for possible options
@@ -468,7 +451,8 @@ src_install() {
 	X	   (while (and (cdr q) (not (string-match re (cadr q))))
 	X	     (setq q (cdr q)))
 	X	   (setcdr q (cons dir (delete dir (cdr q))))
-	X	   (setq Info-directory-list (prune-directory-list (cdr p)))))))
+	X	   (setenv "INFOPATH"
+	X		   (string-join (prune-directory-list (cdr p)) ":"))))))
 	EOF
 	elisp-site-file-install "${T}/${SITEFILE}" || die
 

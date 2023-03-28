@@ -8,7 +8,7 @@ inherit autotools elisp-common readme.gentoo-r1 toolchain-funcs
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs.git"
-	EGIT_BRANCH="master"
+	EGIT_BRANCH="emacs-28"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
 	S="${EGIT_CHECKOUT_DIR}"
 	SLOT="${PV%%.*}-vcs"
@@ -31,6 +31,14 @@ else
 	elif [[ ${PV//[0-9]} != "." ]]; then
 		SRC_URI="https://alpha.gnu.org/gnu/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
 	fi
+	# Patchset from proj/emacs-patches.git
+	SRC_URI+=" https://dev.gentoo.org/~ulm/emacs/${PN}-28.2-patches-2.tar.xz"
+	#PATCHES=("${WORKDIR}/patch")
+	PATCHES=(
+		"${WORKDIR}/patch/01_all_libseccomp.patch"
+		# 02_all_etags.patch already applied upstream
+		"${WORKDIR}/patch/03_all_webkit-4.1.patch"
+	)
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
@@ -40,57 +48,7 @@ DESCRIPTION="The extensible, customizable, self-documenting real-time display ed
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source sqlite ssl svg systemd +threads tiff toolkit-scroll-bars tree-sitter webp wide-int +X Xaw3d xft +xpm xwidgets zlib"
-
-X_DEPEND="x11-libs/libICE
-	x11-libs/libSM
-	x11-libs/libX11
-	x11-libs/libXext
-	x11-libs/libXfixes
-	x11-libs/libXinerama
-	x11-libs/libXrandr
-	x11-libs/libxcb
-	x11-misc/xbitmaps
-	xpm? ( x11-libs/libXpm )
-	xft? (
-		media-libs/fontconfig
-		media-libs/freetype
-		x11-libs/libXft
-		x11-libs/libXrender
-		cairo? ( >=x11-libs/cairo-1.12.18[X] )
-		harfbuzz? ( media-libs/harfbuzz:0= )
-		m17n-lib? (
-			>=dev-libs/libotf-0.9.4
-			>=dev-libs/m17n-lib-1.5.1
-		)
-	)
-	gtk? (
-		x11-libs/gtk+:3
-		xwidgets? (
-			net-libs/webkit-gtk:4.1=
-			x11-libs/libXcomposite
-		)
-	)
-	!gtk? (
-		motif? (
-			>=x11-libs/motif-2.3:0
-			x11-libs/libXpm
-			x11-libs/libXmu
-			x11-libs/libXt
-		)
-		!motif? (
-			Xaw3d? (
-				x11-libs/libXaw3d
-				x11-libs/libXmu
-				x11-libs/libXt
-			)
-			!Xaw3d? ( athena? (
-				x11-libs/libXaw
-				x11-libs/libXmu
-				x11-libs/libXt
-			) )
-		)
-	)"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
 
 RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	sys-libs/ncurses:0=
@@ -112,43 +70,70 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	mailutils? ( net-mail/mailutils[clients] )
 	!mailutils? ( acct-group/mail net-libs/liblockfile )
 	selinux? ( sys-libs/libselinux )
-	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
-	tree-sitter? ( dev-libs/tree-sitter )
 	zlib? ( sys-libs/zlib )
-	gui? (
+	gui? ( !aqua? (
+		x11-libs/libICE
+		x11-libs/libSM
+		x11-libs/libX11
+		x11-libs/libXext
+		x11-libs/libXfixes
+		x11-libs/libXinerama
+		x11-libs/libXrandr
+		x11-libs/libxcb
+		x11-misc/xbitmaps
+		gsettings? ( >=dev-libs/glib-2.28.6 )
 		gif? ( media-libs/giflib:0= )
 		jpeg? ( media-libs/libjpeg-turbo:0= )
 		png? ( >=media-libs/libpng-1.4:0= )
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff:= )
-		webp? ( media-libs/libwebp:0= )
+		xpm? ( x11-libs/libXpm )
 		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= )
-		!aqua? (
-			gsettings? ( >=dev-libs/glib-2.28.6 )
-			gtk? ( !X? (
-				media-libs/fontconfig
-				media-libs/freetype
-				>=x11-libs/cairo-1.12.18
-				x11-libs/gtk+:3
-				harfbuzz? ( media-libs/harfbuzz:0= )
-				m17n-lib? (
-					>=dev-libs/libotf-0.9.4
-					>=dev-libs/m17n-lib-1.5.1
-				)
-				xwidgets? ( net-libs/webkit-gtk:4.1= )
-			) )
-			!gtk? ( ${X_DEPEND} )
-			X? ( ${X_DEPEND} )
+		xft? (
+			media-libs/fontconfig
+			media-libs/freetype
+			x11-libs/libXft
+			x11-libs/libXrender
+			cairo? ( >=x11-libs/cairo-1.12.18[X] )
+			harfbuzz? ( media-libs/harfbuzz:0= )
+			m17n-lib? (
+				>=dev-libs/libotf-0.9.4
+				>=dev-libs/m17n-lib-1.5.1
+			)
 		)
-	)"
+		gtk? (
+			x11-libs/gtk+:3
+			xwidgets? (
+				net-libs/webkit-gtk:4.1=
+				x11-libs/libXcomposite
+			)
+		)
+		!gtk? (
+			motif? (
+				>=x11-libs/motif-2.3:0
+				x11-libs/libXpm
+				x11-libs/libXmu
+				x11-libs/libXt
+			)
+			!motif? (
+				Xaw3d? (
+					x11-libs/libXaw3d
+					x11-libs/libXmu
+					x11-libs/libXt
+				)
+				!Xaw3d? ( athena? (
+					x11-libs/libXaw
+					x11-libs/libXmu
+					x11-libs/libXt
+				) )
+			)
+		)
+	) )"
 
 DEPEND="${RDEPEND}
-	gui? ( !aqua? (
-		!gtk? ( x11-base/xorg-proto )
-		X? ( x11-base/xorg-proto )
-	) )"
+	gui? ( !aqua? ( x11-base/xorg-proto ) )"
 
 BDEPEND="sys-apps/texinfo
 	virtual/pkgconfig
@@ -174,6 +159,7 @@ src_prepare() {
 	fi
 
 	if use jit; then
+		export NATIVE_FULL_AOT=1
 		find lisp -type f -name "*.elc" -delete || die
 
 		# These files ignore LDFLAGS. We assign the variable here, because
@@ -192,11 +178,6 @@ src_prepare() {
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
 
-	# libseccomp is detected by configure but doesn't appear to have any
-	# effect on the installed image. Suppress it by supplying pkg-config
-	# with a wrong library name.
-	sed -i -e "/CHECK_MODULES/s/libseccomp/DiSaBlE&/" configure.ac || die
-
 	AT_M4DIR=m4 eautoreconf
 }
 
@@ -214,17 +195,6 @@ src_configure() {
 		myconf+=" --with-sound=$(usex sound oss)"
 	fi
 
-	# Emacs supports these window systems:
-	# X11, pure GTK (without X11), or Nextstep (Aqua/Cocoa).
-	# General GUI support is enabled by the "gui" USE flag, then
-	# the window system is selected as follows:
-	#   "aqua" -> Nextstep
-	#   "gtk -X" -> pure GTK
-	#   otherwise -> X11
-	# For X11 there is the further choice of toolkits GTK, Motif,
-	# Athena (Lucid), or no toolkit. They are enabled (in order of
-	# preference) with the "gtk", "motif", "Xaw3d", and "athena" flags.
-
 	if use jit; then
 		use zlib || ewarn \
 			"USE flag \"jit\" overrides \"-zlib\"; enabling zlib support."
@@ -235,28 +205,23 @@ src_configure() {
 
 	if ! use gui; then
 		einfo "Configuring to build without window system support"
-		myconf+=" --without-x --without-pgtk --without-ns"
+		myconf+=" --without-x --without-ns"
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Macintosh Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"
-		myconf+=" --without-x --without-pgtk"
-	elif use gtk && ! use X; then
-		einfo "Configuring to build with pure GTK (without X11) support"
-		myconf+=" --with-pgtk --without-x --without-ns"
-		myconf+=" --with-toolkit-scroll-bars" #836392
-		myconf+=" --without-gconf"
-		myconf+=" $(use_with gsettings)"
-		myconf+=" $(use_with harfbuzz)"
-		myconf+=" $(use_with m17n-lib libotf)"
-		myconf+=" $(use_with m17n-lib m17n-flt)"
-		myconf+=" $(use_with xwidgets)"
+		myconf+=" --without-x"
 	else
-		# X11
-		myconf+=" --with-x --without-pgtk --without-ns"
+		myconf+=" --with-x --without-ns"
 		myconf+=" --without-gconf"
 		myconf+=" $(use_with gsettings)"
 		myconf+=" $(use_with toolkit-scroll-bars)"
+		myconf+=" $(use_with gif)"
+		myconf+=" $(use_with jpeg)"
+		myconf+=" $(use_with png)"
+		myconf+=" $(use_with svg rsvg)"
+		myconf+=" $(use_with tiff)"
 		myconf+=" $(use_with xpm)"
+		myconf+=" $(use_with imagemagick)"
 
 		if use xft; then
 			myconf+=" --with-xft"
@@ -310,17 +275,6 @@ src_configure() {
 			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 	fi
 
-	if use gui; then
-		# Common flags recognised for all GUIs
-		myconf+=" $(use_with gif)"
-		myconf+=" $(use_with jpeg)"
-		myconf+=" $(use_with png)"
-		myconf+=" $(use_with svg rsvg)"
-		myconf+=" $(use_with tiff)"
-		myconf+=" $(use_with webp)"
-		myconf+=" $(use_with imagemagick)"
-	fi
-
 	if tc-is-cross-compiler; then
 		# Configure a CBUILD directory when cross-compiling to make tools
 		mkdir "${S}-build" && pushd "${S}-build" >/dev/null || die
@@ -352,18 +306,16 @@ src_configure() {
 		$(use_with games gameuser ":gamestat") \
 		$(use_with gmp libgmp) \
 		$(use_with gpm) \
-		$(use_with jit native-compilation aot) \
+		$(use_with jit native-compilation) \
 		$(use_with json) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with lcms lcms2) \
 		$(use_with libxml2 xml2) \
 		$(use_with mailutils) \
 		$(use_with selinux) \
-		$(use_with sqlite sqlite3) \
 		$(use_with ssl gnutls) \
 		$(use_with systemd libsystemd) \
 		$(use_with threads) \
-		$(use_with tree-sitter) \
 		$(use_with wide-int) \
 		${myconf}
 }
@@ -395,6 +347,12 @@ src_test() {
 		# mml-secure-sign-verify-1
 		%lisp/gnus/mml-sec-tests.el
 
+		# Reason: race condition
+		# Looks like it should be fixed in 29.x at least:
+		# https://debbugs.gnu.org/cgi/bugreport.cgi?bug=55706
+		# files-tests-file-name-non-special-file-in-directory-p
+		%lisp/files-tests.el
+
 		# Reason: permission denied on /nonexistent
 		# (vc-*-bzr only fails if breezy is installed, as they
 		# try to access cache dirs under /nonexistent)
@@ -416,6 +374,18 @@ src_test() {
 		#
 		# bytecomp-tests--dest-mountpoint
 		%lisp/emacs-lisp/bytecomp-tests.el
+
+		# Reason: inconsistent years in files?
+		# test-correct-notice
+		# test-end-chop
+		%lisp/emacs-lisp/copyright-tests.el
+
+		# The following tests fail with USE=jit #874681
+		# ert-test-record-backtrace
+		# loadhist-tests-file-dependents
+		# loadhist-tests-file-provides
+		%lisp/emacs-lisp/ert-tests.el
+		%lisp/loadhist-tests.el
 	)
 
 	# See test/README for possible options
