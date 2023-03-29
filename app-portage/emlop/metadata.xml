@@ -9,9 +9,7 @@
    <email>proxy-maint@gentoo.org</email>
    <name>Proxy Maintainers</name>
 </maintainer>
-<use>
-   <flag name="fish-completion">
-      Enable fish completion support.
-   </flag>
-</use>
+<upstream>
+  <remote-id type="github">vincentdephily/emlop</remote-id>
+</upstream>
 </pkgmetadata>
