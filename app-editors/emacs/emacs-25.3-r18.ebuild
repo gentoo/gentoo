@@ -11,11 +11,13 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.xz
 	https://dev.gentoo.org/~ulm/emacs/${P}-patches-5.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-SLOT="26"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif gpm gsettings gtk gui gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
+SLOT="25"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif gpm gsettings gtk gui gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm zlib"
 
-RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
+RDEPEND="acct-group/mail
+	app-emacs/emacs-common[games?,gui(-)?]
+	net-libs/liblockfile
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
@@ -24,13 +26,9 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	kerberos? ( virtual/krb5 )
-	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
-	mailutils? ( net-mail/mailutils[clients] )
-	!mailutils? ( acct-group/mail net-libs/liblockfile )
 	selinux? ( sys-libs/libselinux )
 	ssl? ( net-libs/gnutls:0= )
-	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
 	gui? ( !aqua? (
 		x11-libs/libICE
@@ -61,13 +59,7 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 				>=dev-libs/m17n-lib-1.5.1
 			)
 		)
-		gtk? (
-			x11-libs/gtk+:3
-			xwidgets? (
-				net-libs/webkit-gtk:4.1=
-				x11-libs/libXcomposite
-			)
-		)
+		gtk? ( x11-libs/gtk+:3 )
 		!gtk? (
 			motif? (
 				>=x11-libs/motif-2.3:0
@@ -113,9 +105,11 @@ src_prepare() {
 	default
 
 	# Fix filename reference in redirected man page
-	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
+	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
+		|| die "unable to sed ctags.1"
 
 	AT_M4DIR=m4 eautoreconf
+	touch src/stamp-h.in || die
 }
 
 src_configure() {
@@ -127,6 +121,9 @@ src_configure() {
 	else
 		replace-flags "-O[3-9]" -O2
 	fi
+
+	# Don't trigger a floating point exception for NaNs on alpha
+	use alpha && append-flags -mieee
 
 	local myconf
 
@@ -186,7 +183,8 @@ src_configure() {
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
+			myconf+=" --with-x-toolkit=gtk3"
+			myconf+=" --without-xwidgets"
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -205,33 +203,25 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
-		! use gtk && use xwidgets && ewarn \
-			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 	fi
 
 	econf \
 		--program-suffix="-${EMACS_SUFFIX}" \
-		--includedir="${EPREFIX}"/usr/include/${EMACS_SUFFIX} \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--localstatedir="${EPREFIX}"/var \
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
+		--with-gameuser=":gamestat" \
 		--without-compress-install \
 		--without-hesiod \
-		--without-pop \
 		--with-file-notification=$(usev inotify || usev gfile || echo no) \
 		$(use_enable acl) \
 		$(use_with dbus) \
 		$(use_with dynamic-loading modules) \
-		$(use_with games gameuser ":gamestat") \
 		$(use_with gpm) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
-		$(use_with lcms lcms2) \
 		$(use_with libxml2 xml2) \
-		$(use_with mailutils) \
 		$(use_with selinux) \
 		$(use_with ssl gnutls) \
-		$(use_with systemd libsystemd) \
-		$(use_with threads) \
 		$(use_with wide-int) \
 		$(use_with zlib) \
 		${myconf}
@@ -245,24 +235,22 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" NO_BIN_LINK=t BLESSMAIL_TARGET= install
 
-	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} || die
-	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 || die
-	mv "${ED}"/usr/share/metainfo/{emacs-,}${EMACS_SUFFIX}.appdata.xml || die
+	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} \
+		|| die "moving emacs executable failed"
+	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 \
+		|| die "moving emacs man page failed"
 
 	# dissuade Portage from removing our dir file #257260
 	touch "${ED}"/usr/share/info/${EMACS_SUFFIX}/.keepinfodir
 	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir
 
 	# movemail must be setgid mail
-	if ! use mailutils; then
-		fowners root:mail /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
-		fperms 2751 /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
-	fi
+	fowners root:mail /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
+	fperms 2751 /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
 
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
-	rm -rf "${ED}"/usr/share/{applications,icons} || die
-	rm -rf "${ED}/usr/$(get_libdir)" || die
+	rm -rf "${ED}"/usr/share/{appdata,applications,icons} || die
 	rm -rf "${ED}"/var || die
 
 	# remove unused <version>/site-lisp dir
@@ -270,15 +258,6 @@ src_install() {
 
 	# remove COPYING file (except for etc/COPYING used by describe-copying)
 	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING || die
-
-	if use systemd; then
-		insinto /usr/lib/systemd/user
-		sed -e "/^##/d" \
-			-e "/^ExecStart/s,emacs,${EPREFIX}/usr/bin/${EMACS_SUFFIX}," \
-			-e "/^ExecStop/s,emacsclient,${EPREFIX}/usr/bin/&-${EMACS_SUFFIX}," \
-			etc/emacs.service | newins - ${EMACS_SUFFIX}.service
-		assert
-	fi
 
 	if use gzip-el; then
 		# compress .el files when a corresponding .elc exists
@@ -314,8 +293,7 @@ src_install() {
 	X	   (while (and (cdr q) (not (string-match re (cadr q))))
 	X	     (setq q (cdr q)))
 	X	   (setcdr q (cons dir (delete dir (cdr q))))
-	X	   (setenv "INFOPATH"
-	X		   (string-join (prune-directory-list (cdr p)) ":"))))))
+	X	   (setenv "INFOPATH" (mapconcat 'identity (cdr p) ":"))))))
 	EOF
 	elisp-site-file-install "${T}/${SITEFILE}" || die
 
