@@ -88,7 +88,8 @@ all_ruby_prepare() {
 	sed -i -e '/test_filter_\(with_proper_indentation\|error\)/askip "haml 6"' test/filters/test_haml.rb || die
 
 	# Avoid non-fatal failing tests due to specifics in the environment
-	sed -i -e '124askip "ordering issues"' -e '168askip "ordering issues"' spec/nanoc/data_sources/filesystem_spec.rb || die
+	sed -e '124askip "ordering issues"' -e '168askip "ordering issues"' \
+		-i spec/nanoc/data_sources/filesystem_spec.rb || die
 }
 
 each_ruby_test() {
