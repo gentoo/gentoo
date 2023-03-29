@@ -62,10 +62,6 @@ plymouth
 # sys-fs/dmraid has not been tested on HPPA
 dmraid
 
-# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
-# Unmask as this profile is big endian.
--big-endian
-
 # Jeroen Roovers <jer@gentoo.org> (2016-01-31)
 # USE=xwidgets requires net-libs/webkit-gtk
 xwidgets

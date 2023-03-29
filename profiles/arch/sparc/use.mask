@@ -60,10 +60,6 @@ luajittex
 fortune
 physfs
 
-# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
-# Unmask as this profile is big endian.
--big-endian
-
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # keyworded on sparc
 -ecls
