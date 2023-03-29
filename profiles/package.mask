@@ -34,6 +34,12 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2023-03-29)
+# Stuck on ruby27, low activity upstream, needs someone who actively uses it to
+# test it properly as automated tests require an API key.
+# Removal on 2023-04-28.  Bug #903542.
+dev-ruby/flickraw
+
+# Sam James <sam@gentoo.org> (2023-03-29)
 # Only supports imminently-EOL ruby27, depends on obsolete QtScript instead
 # of QML. Support for other languages was removed long ago, e.g. python support
 # is stuck on python2-only. Kross itself is on the chopping block too:
