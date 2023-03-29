@@ -10,6 +10,8 @@
 			<pkg>dev-libs/keybinder</pkg>.</flag>
 		<flag name="libcanberra">Enable sound event support using
 			<pkg>media-libs/libcanberra</pkg></flag>
+		<flag name="libxfce4windowing">Enable experimental support for raising media
+			player windows using <pkg>xfce-base/libxfce4windowing</pkg>.</flag>
 		<flag name="wnck">Enable experimental support for raising media
 			player windows using <pkg>x11-libs/libwnck</pkg>.</flag>
 	</use>
