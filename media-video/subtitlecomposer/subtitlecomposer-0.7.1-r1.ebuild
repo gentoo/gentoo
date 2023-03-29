@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_TEST="forceoptional"
 KFMIN=5.82.0
-QTMIN=5.15.2
+QTMIN=5.15.5
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
@@ -17,10 +17,11 @@ SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="unicode"
 
 DEPEND="
+	>=dev-qt/qtdeclarative-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=kde-frameworks/kcodecs-${KFMIN}:5
@@ -30,7 +31,6 @@ DEPEND="
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
-	>=kde-frameworks/kross-${KFMIN}:5
 	>=kde-frameworks/ktextwidgets-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
@@ -49,6 +49,7 @@ PATCHES=(
 	"${WORKDIR}/${PATCHSET}/${P}-tests-optional.patch"
 	"${WORKDIR}/${PATCHSET}/${P}-gles-support.patch" # bug 820035
 	"${WORKDIR}/${PATCHSET}/${P}-ffmpeg-5.patch" # bug 834416
+	"${WORKDIR}/${PATCHSET}/${P}-replace-kross-w-qjsengine.patch" # bug 755956
 )
 
 src_configure() {
@@ -58,11 +59,4 @@ src_configure() {
 	)
 
 	ecm_src_configure
-}
-
-pkg_postinst() {
-	ecm_pkg_postinst
-
-	elog "Some example scripts provided by ${PN} require dev-lang/ruby"
-	elog "or dev-lang/python to be installed."
 }
