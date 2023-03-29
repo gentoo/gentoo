@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2023-03-29)
+# Depends on last-rited kde-apps/kross-interpreters.
+kde-apps/kdesdk-meta ruby
+
 # Sam James <sam@gentoo.org> (2023-03-15)
 # Signing key is expired on Savannah. The same key is renewed elsewhere
 # and the signature is valid, but it's easier to disable verify-sig here
