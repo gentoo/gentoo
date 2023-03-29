@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-03-29)
+# Only supports imminently-EOL ruby27.
+# Removal on 2023-04-28.  Bug #903499.
+net-misc/mikutter
+
 # Hans de Graaff <graaff@gentoo.org> (2023-03-29)
 # ruby27-only package. app-text/ronn-ng is a drop-in replacement.
 # Masked for removal on 2023-04-29.
