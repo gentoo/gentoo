@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 PYTHON_COMPAT=( python3_{9,10,11} )
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/JFreegman/toxic/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+audio-notify debug games llvm notification png python qrcode +sound +video +X"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	video? ( sound X ) "
@@ -101,7 +101,9 @@ src_configure() {
 	if ! use X; then
 		export DISABLE_X11=1
 	fi
-	export USER_CFLAGS="${CFLAGS}"
+	#include strings.h fixes undefined reference to strcasecmp()
+	#defining _GNU_SOURCE fixes undefined reference to strcasestr()
+	export USER_CFLAGS="${CFLAGS} -include strings.h -D _GNU_SOURCE"
 	export USER_LDFLAGS="${LDFLAGS}"
 	#set install directory to /usr.
 	sed -i -e "s,/usr/local,${EPREFIX}/usr,g" cfg/global_vars.mk || die "Failed to set install directory!"
