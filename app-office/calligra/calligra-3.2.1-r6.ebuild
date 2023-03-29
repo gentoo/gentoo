@@ -17,7 +17,7 @@ if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	PATCHSET="${P}-patchset-1"
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz
 		https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}.tar.xz"
-	KEYWORDS="amd64 ~ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
 fi
 
 CAL_FTS=( karbon sheets stage words )
@@ -64,7 +64,6 @@ COMMON_DEPEND="
 	>=kde-frameworks/knotifications-${KFMIN}:5
 	>=kde-frameworks/knotifyconfig-${KFMIN}:5
 	>=kde-frameworks/kparts-${KFMIN}:5
-	>=kde-frameworks/kross-${KFMIN}:5
 	>=kde-frameworks/ktextwidgets-${KFMIN}:5
 	>=kde-frameworks/kwallet-${KFMIN}:5
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
@@ -125,6 +124,7 @@ PATCHES=(
 	"${WORKDIR}"/${PATCHSET}/${P}-poppler-22.03.0-{1,2}.patch
 	"${WORKDIR}"/${PATCHSET}/${P}-poppler-22.04.0.patch
 	"${WORKDIR}"/${PATCHSET}/${P}-clang-16-c++17.patch
+	"${WORKDIR}"/${PATCHSET}/${P}-kross-optional.patch # bug 903532
 )
 
 pkg_pretend() {
@@ -164,6 +164,7 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Cauchy=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_KF5CalendarCore=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_KF5KHtml=ON
+		-DCMAKE_DISABLE_FIND_PACKAGE_KF5Kross=ON
 		-DPRODUCTSET="${myproducts[*]}"
 		$(cmake_use_find_package activities KF5Activities)
 		$(cmake_use_find_package charts KChart)
