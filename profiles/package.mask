@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-03-29)
+# ruby27-only slot of rspec. Please use rspec:3 instead. Masked for
+# removal on 2023-04-28.
+dev-ruby/rspec:2
+dev-ruby/rspec-core:2
+dev-ruby/rspec-expectations:2
+dev-ruby/rspec-mocks:2
+
 # Sam James <sam@gentoo.org> (2023-03-29)
 # Stuck on ruby27, low activity upstream, needs someone who actively uses it to
 # test it properly as automated tests require an API key.
