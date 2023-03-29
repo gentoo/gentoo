@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-03-29)
+# ruby27-only package without tests and without maintainer. Upstream
+# releases new versions in an unversioned zip file. This needs a
+# dedicated maintainer that can test this package.
+# Masked for removal on 2023-04-29.
+app-admin/ec2-ami-tools
+
 # Sam James <sam@gentoo.org> (2023-03-29)
 # Regressions in solving ability affecting e.g. igraph:
 # https://github.com/opencollab/arpack-ng/issues/401
