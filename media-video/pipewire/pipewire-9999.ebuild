@@ -351,8 +351,10 @@ pkg_postinst() {
 			elog "PAM limits behavior! You can add your account with:"
 			elog " usermod -aG pipewire <youruser>"
 			elog
-			elog "2. It is recommended that you remove your user from the 'audio' group"
-			elog "as it can interfere with fast user switching:"
+			elog "2. For the best experience with realtime scheduling, it is"
+			elog "recommended that you remove your user from the 'audio' group"
+			elog "as it can interfere with fast user switching, unless you rely on"
+			elog "the audio group for device access control or ACLs."
 			elog " usermod -rG audio <youruser>"
 			elog
 
