@@ -9,7 +9,7 @@ RUBY_GNOME2_NEED_VIRTX=yes
 inherit ruby-ng-gnome2
 
 DESCRIPTION="Ruby Gtk2 bindings"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv ~x86"
 IUSE=""
 
 DEPEND+=" dev-libs/glib
