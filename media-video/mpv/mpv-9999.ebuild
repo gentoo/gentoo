@@ -204,6 +204,7 @@ src_configure() {
 		$(meson_feature jpeg)
 		$(meson_feature libcaca caca)
 		$(meson_feature libplacebo)
+		$(meson_feature libplacebo libplacebo-next)
 		$(meson_feature mmal rpi-mmal)
 		$(meson_feature sdl sdl2-video)
 		$(meson_feature sixel)
