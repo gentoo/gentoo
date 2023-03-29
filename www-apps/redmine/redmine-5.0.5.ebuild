@@ -41,7 +41,7 @@ ruby_add_bdepend "
 	>=dev-ruby/rails-6.1.7.2:6.1
 	>=dev-ruby/rbpdf-1.21.0
 	>=dev-ruby/request_store-1.5.0:0
-	ruby_targets_ruby27? ( dev-ruby/rexml )
+	dev-ruby/rexml
 	>=dev-ruby/roadie-rails-3.0.0:3
 	>=dev-ruby/rotp-5.0.0
 	>=dev-ruby/rouge-3.28.0
