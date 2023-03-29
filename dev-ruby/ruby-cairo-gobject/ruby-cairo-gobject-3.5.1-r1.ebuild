@@ -14,4 +14,5 @@ DEPEND+=" x11-libs/cairo"
 RDEPEND+=" x11-libs/cairo"
 
 ruby_add_rdepend "dev-ruby/rcairo
+	~dev-ruby/ruby-gobject-introspection-${PV}
 	~dev-ruby/ruby-glib2-${PV}"
