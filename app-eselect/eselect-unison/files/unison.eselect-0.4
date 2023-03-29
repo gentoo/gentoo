@@ -64,7 +64,7 @@ describe_show() {
 do_show() {
 	[[ -z "${@}" ]] || die -q "Too many parameters"
 
-	write_list_start "Current unison verson:"
+	write_list_start "Current unison version:"
 	if [[ -L "${EROOT}/usr/bin/unison" ]] ; then
 		write_kv_list_entry "$(identify_target)" ""
 	elif [[ -e "${EROOT}/usr/bin/unison" ]] ; then
