@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ IUSE=""
 
 PATCHES=( "${FILESDIR}/${P}-test-ordering.patch" )
 
-ruby_add_bdepend "doc? ( app-text/ronn )"
+ruby_add_bdepend "doc? ( || ( app-text/ronn-ng app-text/ronn ) )"
 
 all_ruby_prepare() {
 	# Fix for renamed .ron files
