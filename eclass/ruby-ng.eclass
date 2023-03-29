@@ -103,16 +103,21 @@ ruby_implementation_depend() {
 # Return a list of valid implementations in USE_RUBY, skipping the old
 # implementations that are no longer supported.
 _ruby_get_all_impls() {
-	local i
+	local i found_valid_impl
 	for i in ${USE_RUBY}; do
 		case ${i} in
 			# removed implementations
 			ruby19|ruby20|ruby21|ruby22|ruby23|ruby24|ruby25|ruby26|jruby)
 				;;
 			*)
+				found_valid_impl=1
 				echo ${i};;
 		esac
 	done
+
+	if [[ -z ${found_valid_impl} ]] ; then
+		die "No supported implementation in USE_RUBY."
+	fi
 }
 
 # @FUNCTION: ruby_samelib
