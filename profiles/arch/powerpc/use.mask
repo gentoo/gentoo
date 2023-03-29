@@ -34,10 +34,6 @@ fortune
 nagios-game
 physfs
 
-# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
-# Unmask as this profile is big endian.
--big-endian
-
 # Matt Turner <mattst88@gentoo.org> (2017-03-24)
 # virtual/opencl is not keyworded
 opencl

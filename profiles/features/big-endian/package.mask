@@ -5,3 +5,5 @@
 # Broken on big-endian (#861710)
 # https://github.com/trendmicro/tlsh/issues/131
 dev-libs/tlsh
+dev-python/tlsh
+dev-util/diffoscope

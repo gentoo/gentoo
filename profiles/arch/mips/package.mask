@@ -1,11 +1,6 @@
 # Copyright 2006-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# matoro <matoro_gentoo@matoro.tk> (2022-03-20)
-# Broken on big-endian (#861710)
-# https://github.com/trendmicro/tlsh/issues/131
-dev-libs/tlsh
-
 # Mask pam_ldap and nss_ldap - openldap dep missing.
 sys-auth/pam_ldap
 sys-auth/nss_ldap
