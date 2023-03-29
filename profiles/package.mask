@@ -34,6 +34,11 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2023-03-29)
+# ruby27-only package. app-text/ronn-ng is a drop-in replacement.
+# Masked for removal on 2023-04-29.
+app-text/ronn
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-29)
 # ruby27-only package without tests and without maintainer. Upstream
 # releases new versions in an unversioned zip file. This needs a
 # dedicated maintainer that can test this package.
