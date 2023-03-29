@@ -28,10 +28,6 @@
 # works on ppc64le
 -vaapi
 
-# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
-# Remask as this profile is little endian.
-big-endian
-
 # Chris Gianelloni <wolf31o2@gentoo.org> (2008-02-13)
 # Mask multilib, since we cannot use it.
 multilib

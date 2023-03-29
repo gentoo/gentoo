@@ -1,7 +1,0 @@
-# Copyright 2023 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# matoro <matoro_gentoo@matoro.tk> (2022-03-20)
-# Broken on big-endian (#861710)
-# https://github.com/trendmicro/tlsh/issues/131
--dev-libs/tlsh
