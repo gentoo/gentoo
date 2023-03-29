@@ -36,8 +36,8 @@ RDEPEND="
 		>=dev-python/pyelftools-0.27[${PYTHON_USEDEP}]
 		<dev-python/pyelftools-1[${PYTHON_USEDEP}]
 		=dev-python/marshmallow-3*[${PYTHON_USEDEP}]
-		=dev-python/starlette-0.21*[${PYTHON_USEDEP}]
-		=dev-python/uvicorn-0.19*[${PYTHON_USEDEP}]
+		>=dev-python/starlette-0.21[${PYTHON_USEDEP}]
+		>=dev-python/uvicorn-0.19[${PYTHON_USEDEP}]
 		dev-python/wsproto[${PYTHON_USEDEP}]
 	')
 	virtual/udev"
@@ -82,17 +82,21 @@ EPYTEST_DESELECT=(
 
 distutils_enable_tests pytest
 
-src_prepare() {
-	# Allow newer versions of zeroconf, Bug #831181.
-	# Also wsproto.
-	# ... and semantic_version, bug #853247.
+python_prepare_all() {
+	# Allow newer versions of:
+	# - zeroconf, bug #831181.
+	# - wsproto
+	# - semantic_version, bug #853247
+	# - starlette & uvicorn, bug #888427
 	sed \
 		-e '/zeroconf/s/<[0-9.*]*//' \
 		-e '/wsproto/s/==.*/"/' \
 		-e '/semantic_version/s/==[0-9.*]*//' \
+		-e '/starlette/s/==.*/"/' \
+		-e '/uvicorn/s/==.*/"/' \
 		-i setup.py || die
 
-	default
+	distutils-r1_python_prepare_all
 }
 
 python_test() {
