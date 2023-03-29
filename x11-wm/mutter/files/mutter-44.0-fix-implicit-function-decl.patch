@@ -1,0 +1,31 @@
+Date: Wed, 29 Mar 2023 20:47:46 +0200
+Subject: [PATCH] fix implict function declaration
+
+Clang16 will not allow implicit function declarations by default.
+The header file containing the declaration of meta_remote_access_controller_new is
+only included in meta-backend.c when HAVE_REMOTE_DESKTOP is defined. Therefore
+the call of that function should also be behind that #ifdef.
+
+Upstream PR: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2943
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+--- a/src/backends/meta-backend.c
++++ b/src/backends/meta-backend.c
+@@ -557,12 +557,12 @@ meta_backend_real_post_init (MetaBackend *backend)
+                         input_settings);
+     }
+ 
+-  priv->remote_access_controller =
+-    meta_remote_access_controller_new ();
+   priv->dbus_session_watcher =
+     g_object_new (META_TYPE_DBUS_SESSION_WATCHER, NULL);
+ 
+ #ifdef HAVE_REMOTE_DESKTOP
++  priv->remote_access_controller =
++    meta_remote_access_controller_new ();
+   priv->screen_cast = meta_screen_cast_new (backend);
+   meta_remote_access_controller_add (
+     priv->remote_access_controller,
+-- 
+2.40.0
+
