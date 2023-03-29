@@ -19,6 +19,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 s
 IUSE="afs +berkdb caps gdbm hdb-ldap +lmdb otp selinux ssl static-libs test X"
 RESTRICT="!test? ( test )"
 
+# 717740
+REQUIRED_USE="otp? ( berkdb )"
+
 CDEPEND="
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	ssl? (
