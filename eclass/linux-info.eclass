@@ -4,9 +4,9 @@
 # @ECLASS: linux-info.eclass
 # @MAINTAINER:
 # kernel@gentoo.org
-# @SUPPORTED_EAPIS: 6 7 8
 # @AUTHOR:
 # Original author: John Mylchreest <johnm@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: eclass used for accessing kernel related information
 # @DESCRIPTION:
 # This eclass is used as a central eclass for accessing kernel
