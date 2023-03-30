@@ -346,15 +346,16 @@ pkg_postinst() {
 	for ver in ${REPLACING_VERSIONS} ; do
 		if ver_test ${ver} -le 0.3.66-r1 ; then
 			elog ">=pipewire-0.3.66 uses the 'pipewire' group to manage permissions"
-			elog "and limits needed to function smoothly."
-			elog "1. Please make sure your user is in the 'pipewire' group for correct"
-			elog "PAM limits behavior! You can add your account with:"
+			elog "and limits needed to function smoothly:"
+			elog
+			elog "1. Please make sure your user is in the 'pipewire' group for"
+			elog "the best experience with realtime scheduling (PAM limits behavior)!"
+			elog "You can add your account with:"
 			elog " usermod -aG pipewire <youruser>"
 			elog
-			elog "2. For the best experience with realtime scheduling, it is"
-			elog "recommended that you remove your user from the 'audio' group"
-			elog "as it can interfere with fast user switching, unless you rely on"
-			elog "the audio group for device access control or ACLs."
+			elog "2. For the best experience with fast user switching, it is recommended"
+			elog "that you remove your user from the 'audio' group unless you rely on the"
+			elog "audio group for device access control or ACLs.:"
 			elog " usermod -rG audio <youruser>"
 			elog
 
