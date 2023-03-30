@@ -11,7 +11,7 @@ DESCRIPTION="A remote security scanner for Linux - agent component"
 HOMEPAGE="https://www.tenable.com/"
 SRC_URI="https://www.tenable.com/downloads/api/v2/pages/${PN/-bin/s}/files/${MY_P}.x86_64.rpm"
 
-LICENSE="GPL-2 Nessus-EULA"
+LICENSE="GPL-2 Tenable-Master-Agreement"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
