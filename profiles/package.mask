@@ -38,6 +38,10 @@
 =dev-util/spirv-llvm-translator-16.0.0
 
 # Matt Turner <mattst88@gentoo.org> (2023-03-30)
+# Masked for testing and migration of consumers
+net-libs/libdmapsharing:4.0
+
+# Matt Turner <mattst88@gentoo.org> (2023-03-30)
 # gnome-online-miners and libzapojit are archived upstream. All three packages
 # are stuck on libsoup-2.4. gnome-photos is the only reverse dependency of
 # gnome-online-miners, and it works without it.
