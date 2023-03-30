@@ -1,6 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
+# Needs x11-drivers/nvidia-drivers which is no longer available here.
+media-tv/mythtv nvdec
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
 # Successful build of dev-qt/qtwebengine depends on 64-bit host
 # Bug #893234
@@ -396,10 +400,6 @@ dev-libs/boost -context
 # dev-scheme/racket keyworded for amd64 (masked in base)
 app-editors/vim -racket
 app-editors/gvim -racket
-
-# Kacper Kowalik <xarthisius@gentoo.org> (2013-08-09)
-# Works on x86
-sys-apps/hwloc -gl -nvml
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-11-03)
 # Unmask here, as it's masked in base.
