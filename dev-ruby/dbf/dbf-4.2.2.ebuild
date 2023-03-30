@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -12,8 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="a small fast library for reading dBase, xBase, Clipper and FoxPro
-database files"
+DESCRIPTION="Small fast library for reading dBase, xBase, Clipper, FoxPro databases"
 HOMEPAGE="https://github.com/infused/dbf"
 
 LICENSE="MIT"
