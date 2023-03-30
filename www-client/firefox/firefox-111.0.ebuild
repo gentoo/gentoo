@@ -797,6 +797,10 @@ src_configure() {
 		mozconfig_add_options_ac '' --enable-sandbox
 	fi
 
+	# Enable JIT on riscv64 explicitly
+	# Can be removed once upstream enable it by default in the future.
+	use riscv && mozconfig_add_options_ac 'Enable JIT for RISC-V 64' --enable-jit
+
 	if [[ -s "${S}/api-google.key" ]] ; then
 		local key_origin="Gentoo default"
 		if [[ $(cat "${S}/api-google.key" | md5sum | awk '{ print $1 }') != 709560c02f94b41f9ad2c49207be6c54 ]] ; then
