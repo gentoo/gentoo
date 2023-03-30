@@ -25,7 +25,7 @@ REQUIRED_USE="client? ( ${ROCM_REQUIRED_USE} )"
 RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-cpp/msgpack-cxx
+	>=dev-cpp/msgpack-cxx-6.0.0
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
 	dev-util/hip
@@ -34,12 +34,13 @@ RDEPEND="${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-4.3.0-output-commands.patch
-		  "${FILESDIR}"/${PN}-5.4.2-gfx1031.patch
-		  "${FILESDIR}"/${PN}-5.4.2-fix-arch-parse.patch
-		  "${FILESDIR}"/${PN}-5.4.2-use-ninja.patch
-		  "${FILESDIR}"/0001-Change-cmake-name-for-msgpack-5-release.patch
-	  )
+PATCHES=(
+	"${FILESDIR}"/${PN}-change-cmake-name-for-msgpack-cxx-6-release.patch
+	"${FILESDIR}"/${PN}-4.3.0-output-commands.patch
+	"${FILESDIR}"/${PN}-5.4.2-gfx1031.patch
+	"${FILESDIR}"/${PN}-5.4.2-fix-arch-parse.patch
+	"${FILESDIR}"/${PN}-5.4.2-use-ninja.patch
+)
 
 CMAKE_USE_DIR="${S}/${PN}/Source"
 
