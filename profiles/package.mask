@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-03-30)
+# Ships a Certificate Authority bundle from 2014. Not needed on Gentoo
+# since we use ca-certificates. Masked for removal on 2023-04-30.
+dev-ruby/certified
+
+# Hans de Graaff <graaff@gentoo.org> (2023-03-30)
 # ruby27-only package. Last release 5 years ago. Does not build with
 # modern C compilers. classifier-reborn depends on this package, and is
 # itself a dependency for the now-masked jekyll. Masked for removal on
