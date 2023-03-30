@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="A GPG backend for hiera-eyaml"
-HOMEPAGE="https://github.com/sihil/hiera-eyaml-gpg"
+HOMEPAGE="https://github.com/voxpupuli/hiera-eyaml-gpg"
 
 LICENSE="MIT"
 SLOT="0"
