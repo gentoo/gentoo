@@ -53,5 +53,5 @@ all_ruby_prepare() {
 
 each_ruby_test() {
 	sed -i -e "s:@GENTOO_RUBY@:${RUBY}:" spec/coverage_for_eval_spec.rb || die
-	RSPEC_VERSION=3 ruby-ng_rspec spec/ || die
+	RUBYLIB="${S}/lib" RSPEC_VERSION=3 ruby-ng_rspec spec/ || die
 }
