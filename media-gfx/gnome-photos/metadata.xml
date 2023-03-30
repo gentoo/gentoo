@@ -5,9 +5,6 @@
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
-  <use>
-    <flag name="flickr">Ensure runtime Flickr support</flag>
-  </use>
   <longdescription lang="en">
     Access, organize and share your photos on GNOME. A simple and elegant
     replacement for using a file manager to deal with photos. Enhance, crop
