@@ -16,3 +16,9 @@ KEYWORDS="~amd64 ~x86"
 BDEPEND="test? ( dev-python/jsonschema[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests unittest
+
+src_prepare() {
+	distutils-r1_src_prepare
+	# https://github.com/wolverdude/GenSON/pull/70
+	sed -i -e 's@TEST_URI@test://@' test/test_builder.py || die
+}
