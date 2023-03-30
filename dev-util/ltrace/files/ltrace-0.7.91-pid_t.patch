@@ -1,0 +1,10 @@
+--- a/proc.h
++++ b/proc.h
+@@ -27,6 +27,7 @@
+ 
+ #include <sys/time.h>
+ #include <stdint.h>
++#include <unistd.h> /* pid_t */
+ 
+ #if defined(HAVE_LIBDW)
+ # include <elfutils/libdwfl.h>

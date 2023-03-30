@@ -1,0 +1,77 @@
+Patches imported from the Debian patch set 6.4 for ltrace-0.7.3:
+ - 01-avoid-libstdc++ (adapted to account for the absence of configure),
+ - 03-alpha-debug.h
+ - 05-sparc-ftbfs
+ - 06-unexpected-breakpoint
+The other two have since been merged upstream.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -126,6 +126,15 @@
+ 	libstdcxx_LIBS=""])
+ AC_SUBST(libstdcxx_LIBS)
+ 
++if test "x$liberty_LIBS" != "x"
++then
++  libsupcxx_LIBS=""
++  libstdcxx_LIBS=""
++elif test "x$libsupcxx_LIBS" != "x"
++then
++  libstdcxx_LIBS=""
++fi
++
+ 
+ dnl Check security_get_boolean_active availability.
+ AC_CHECK_HEADERS(selinux/selinux.h)
+--- a/handle_event.c
++++ b/handle_event.c
+@@ -740,9 +740,12 @@
+ 
+ 	if ((sbp = address2bpstruct(leader, brk_addr)) != NULL)
+ 		breakpoint_on_hit(sbp, event->proc);
+-	else if (event->proc->state != STATE_IGNORED)
++	else if (event->proc->state != STATE_IGNORED) {
+ 		output_line(event->proc,
+ 			    "unexpected breakpoint at %p", brk_addr);
++		continue_process(event->proc->pid);
++		return;
++	}
+ 
+ 	/* breakpoint_on_hit may delete its own breakpoint, so we have
+ 	 * to look it up again.  */
+--- a/sysdeps/linux-gnu/alpha/trace.c
++++ b/sysdeps/linux-gnu/alpha/trace.c
+@@ -29,7 +29,6 @@
+ 
+ #include "proc.h"
+ #include "common.h"
+-#include "debug.h"
+ 
+ #if (!defined(PTRACE_PEEKUSER) && defined(PTRACE_PEEKUSR))
+ # define PTRACE_PEEKUSER PTRACE_PEEKUSR
+--- a/sysdeps/linux-gnu/sparc/plt.c
++++ b/sysdeps/linux-gnu/sparc/plt.c
+@@ -19,8 +19,9 @@
+  */
+ 
+ #include <gelf.h>
++
+ #include "proc.h"
+-#include "common.h"
++#include "library.h"
+ 
+ GElf_Addr
+ arch_plt_sym_val(struct ltelf *lte, size_t ndx, GElf_Rela * rela) {
+--- a/sysdeps/linux-gnu/sparc/trace.c
++++ b/sysdeps/linux-gnu/sparc/trace.c
+@@ -26,8 +26,10 @@
+ #include <sys/wait.h>
+ #include <signal.h>
+ #include <string.h>
++
+ #include "ptrace.h"
+ #include "proc.h"
++#include "backend.h"
+ #include "common.h"
+ 
+ void
