@@ -20,18 +20,11 @@ KEYWORDS="-* ~amd64"
 
 RESTRICT="mirror strip"
 
-QA_PREBUILT="opt/nessus/bin/nasl
-	opt/nessus/bin/ndbg
-	opt/nessus/bin/nessus-mkrand
-	opt/nessus/bin/openssl
-	opt/nessus/lib/nessus/fips.so
-	opt/nessus/lib/nessus/legacy.so
-	opt/nessus/lib/nessus/libjemalloc.so.2
-	opt/nessus/lib/nessus/libnessus-glibc-fix.so
+QA_PREBUILT="opt/nessus/bin/*
+	opt/nessus/lib/nessus/*.so
 	opt/nessus/lib/nessus/iconv/*.so
-	opt/nessus/sbin/nessus-service
-	opt/nessus/sbin/nessuscli
-	opt/nessus/sbin/nessusd"
+	opt/nessus/lib/nessus/libjemalloc.so.*
+	opt/nessus/sbin/*"
 
 S="${WORKDIR}"
 
