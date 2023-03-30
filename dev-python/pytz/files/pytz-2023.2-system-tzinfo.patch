@@ -7,7 +7,7 @@ diff --git a/pytz/__init__.py b/pytz/__init__.py
 index f89d0eb..d00f3bb 100644
 --- a/pytz/__init__.py
 +++ b/pytz/__init__.py
-@@ -75,6 +75,20 @@ else:  # Python 2.x
+@@ -75,6 +75,21 @@ else:  # Python 2.x
          return s.encode('ASCII')
  
  
@@ -15,8 +15,9 @@ index f89d0eb..d00f3bb 100644
 +    for dirpath, dirnames, filenames in os.walk(_PYTZ_TZDATADIR):
 +        for f in filenames:
 +            p = os.path.join(dirpath, f)
-+            if open(p, 'rb').read(4) == b'TZif':
-+                yield os.path.relpath(p, _PYTZ_TZDATADIR)
++            with open(p, 'rb') as tzfile:
++                if tzfile.read(4) == b'TZif':
++                    yield os.path.relpath(p, _PYTZ_TZDATADIR)
 +
 +
 +_PYTZ_TZDATADIR = os.environ.get('PYTZ_TZDATADIR', '/usr/share/zoneinfo')
