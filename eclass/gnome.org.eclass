@@ -57,6 +57,13 @@ else
 	: "${GNOME_ORG_RELEASE:=$(ver_cut 1-2)}"
 fi
 
+# @ECLASS_VARIABLE: GNOME_ORG_PV
+# @DESCRIPTION:
+# PV in the GNOME version scheme format.
+# The package version in the format used upstream by GNOME projects.
+# See https://discourse.gnome.org/t/new-gnome-versioning-scheme/4235
+: "${GNOME_ORG_PV:=$(ver_rs 1- .)}"
+
 SRC_URI="mirror://gnome/sources/${GNOME_ORG_MODULE}/${GNOME_ORG_RELEASE}/${GNOME_ORG_MODULE}-${PV}.tar.${GNOME_TARBALL_SUFFIX}"
 
 S="${WORKDIR}/${GNOME_ORG_MODULE}-${PV}"
