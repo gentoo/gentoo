@@ -5,10 +5,10 @@ EAPI=8
 
 inherit multilib-minimal
 
-WXSUBVERSION=${PV}-gtk3				# 3.2.1-gtk3
-WXVERSION=${PV}							# 3.2.1
+WXSUBVERSION="${PV}-gtk3"				# 3.2.1-gtk3
+WXVERSION="$(ver_cut 1-3)"				# 3.2.1
 # Make sure that this matches the number of components in ${PV}
-WXRELEASE=${WXVERSION%.*.*}-gtk3		# 3.2-gtk3
+WXRELEASE="$(ver_cut 1-2)-gtk3"			# 3.2-gtk3
 WXRELEASE_NODOT=${WXRELEASE//./}		# 32-gtk3
 
 DESCRIPTION="GTK version of wxWidgets, a cross-platform C++ GUI toolkit"
