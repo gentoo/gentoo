@@ -19,16 +19,16 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="
 	acct-group/android
 	app-arch/gzip
-	app-arch/unzip
 	app-arch/tar
+	app-arch/unzip
 "
 
 RDEPEND="
-	dev-java/swt:3.7[cairo]
 	>=dev-java/ant-core-1.6.5
+	>=virtual/jdk-1.8:*
+	dev-java/swt:3.7[cairo]
 	sys-libs/ncurses-compat:5[abi_x86_32(-)]
 	sys-libs/zlib[abi_x86_32(-)]
-	virtual/jdk
 "
 
 ANDROID_SDK_DIR="/opt/${PN}"
@@ -67,7 +67,7 @@ src_install() {
 	echo "PATH=\"${EPREFIX}${ANDROID_SDK_DIR}/tools:${EPREFIX}${ANDROID_SDK_DIR}/platform-tools\"" > "${T}/80${PN}" || die
 
 	SWT_PATH=
-	SWT_VERSIONS="4.10 3.8 3.7"
+	SWT_VERSIONS="4.27 3.7.2"
 	for version in $SWT_VERSIONS; do
 		# redirecting stderr to /dev/null
 		# not sure if this is best, but avoids misleading error messages
