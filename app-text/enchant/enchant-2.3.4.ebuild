@@ -28,7 +28,10 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	test? ( >=dev-libs/unittest++-2.0.0-r2 )
 "
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	sys-apps/groff
+	virtual/pkgconfig
+"
 
 src_configure() {
 	local myconf=(
