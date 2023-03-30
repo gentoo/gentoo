@@ -142,6 +142,7 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 	gnome2_src_prepare
+	eapply "${FILESDIR}"/2.38.5-gcc-13.patch
 }
 
 src_configure() {
