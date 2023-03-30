@@ -9,7 +9,10 @@ MY_P="Nessus-${PV}-es8"
 
 DESCRIPTION="A remote security scanner for Linux"
 HOMEPAGE="https://www.tenable.com/"
-SRC_URI="https://www.tenable.com/downloads/api/v2/pages/${PN%-bin}/files/${MY_P}.x86_64.rpm"
+SRC_URI="
+	amd64? ( https://www.tenable.com/downloads/api/v2/pages/${PN%-bin}/files/${MY_P}.x86_64.rpm )
+	arm64? ( https://www.tenable.com/downloads/api/v2/pages/${PN%-bin}/files/${MY_P}.aarch64.rpm )
+"
 
 LICENSE="GPL-2 Tenable-Master-Agreement"
 SLOT="0"
