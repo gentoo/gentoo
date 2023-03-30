@@ -62,6 +62,9 @@ src_prepare() {
 	default
 	xdg_environment_reset
 
+	# Disable -Werror
+	sed -e '/-Werror=/d' -i meson.build ||  die
+
 	if use previewer; then
 		DOC_CONTENTS="nautilus uses gnome-extra/sushi to preview media files.
 			To activate the previewer, select a file and press space; to
