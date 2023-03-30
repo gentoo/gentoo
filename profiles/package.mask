@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2023-03-30)
+# gnome-online-miners and libzapojit are archived upstream. All three packages
+# are stuck on libsoup-2.4. gnome-photos is the only reverse dependency of
+# gnome-online-miners, and it works without it.
+# Removal on 2023-04-30.
+net-libs/libgfbgraph
+net-libs/libzapojit
+net-misc/gnome-online-miners
+
 # Hans de Graaff <graaff@gentoo.org> (2023-03-30)
 # Deprecated upstream and ruby27-only. Masked for removal on 2023-04-30.
 dev-ruby/elasticsearch-extensions
@@ -389,8 +398,6 @@ dev-python/pkgutil_resolve_name
 # other non-slotted dependencies have been.
 media-gfx/gnome-photos
 media-sound/gnome-music
-net-libs/libzapojit
-net-misc/gnome-online-miners
 
 # Jaco Kroon <jaco@uls.co.za> (2022-11-05)
 # Some potentially breaking changes here, please check the UPGRADE.txt file.
