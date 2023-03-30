@@ -47,17 +47,17 @@ fi
 # Leave unset if package name matches module name.
 : "${GNOME_ORG_MODULE:=$PN}"
 
-# @ECLASS_VARIABLE: GNOME_ORG_PVP
+# @ECLASS_VARIABLE: GNOME_ORG_RELEASE
 # @INTERNAL
 # @DESCRIPTION:
 # Components of the version number that correspond to a 6 month release.
 if ver_test -ge 40.0; then
-	: "${GNOME_ORG_PVP:=$(ver_cut 1)}"
+	: "${GNOME_ORG_RELEASE:=$(ver_cut 1)}"
 else
-	: "${GNOME_ORG_PVP:=$(ver_cut 1-2)}"
+	: "${GNOME_ORG_RELEASE:=$(ver_cut 1-2)}"
 fi
 
-SRC_URI="mirror://gnome/sources/${GNOME_ORG_MODULE}/${GNOME_ORG_PVP}/${GNOME_ORG_MODULE}-${PV}.tar.${GNOME_TARBALL_SUFFIX}"
+SRC_URI="mirror://gnome/sources/${GNOME_ORG_MODULE}/${GNOME_ORG_RELEASE}/${GNOME_ORG_MODULE}-${PV}.tar.${GNOME_TARBALL_SUFFIX}"
 
 S="${WORKDIR}/${GNOME_ORG_MODULE}-${PV}"
 
