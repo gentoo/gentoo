@@ -196,7 +196,7 @@ multilib_src_install_all() {
 	newdoc base/readme.txt base_readme.txt
 	newdoc gtk/readme.txt gtk_readme.txt
 
-	use doc && HTML_DOCS=( "${WORKDIR}"/wxWidgets-${WXVERSION}-docs-html/. )
+	use doc && HTML_DOCS=( "${WORKDIR}"/wxWidgets-${PV}-docs-html/. )
 	einstalldocs
 
 	# Unversioned links
