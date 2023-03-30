@@ -9,13 +9,13 @@ MY_P="Nessus-${PV}-es8"
 
 DESCRIPTION="A remote security scanner for Linux"
 HOMEPAGE="https://www.tenable.com/"
-SRC_URI="${MY_P}.x86_64.rpm"
+SRC_URI="https://www.tenable.com/downloads/api/v2/pages/${PN%-bin}/files/${MY_P}.x86_64.rpm"
 
 LICENSE="GPL-2 Nessus-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
-RESTRICT="mirror fetch strip"
+RESTRICT="mirror strip"
 
 QA_PREBUILT="opt/nessus/bin/nasl
 	opt/nessus/bin/ndbg
@@ -31,11 +31,6 @@ QA_PREBUILT="opt/nessus/bin/nasl
 	opt/nessus/sbin/nessusd"
 
 S="${WORKDIR}"
-
-pkg_nofetch() {
-	einfo "Please download ${A} from ${HOMEPAGE}downloads/nessus"
-	einfo "The archive should then be placed into your DISTDIR directory."
-}
 
 src_install() {
 	# Using doins -r would strip executable bits from all binaries
