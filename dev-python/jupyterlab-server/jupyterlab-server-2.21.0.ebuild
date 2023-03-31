@@ -41,7 +41,7 @@ BDEPEND="
 		>=dev-python/openapi-core-0.16.1[${PYTHON_USEDEP}]
 		<dev-python/openapi-spec-validator-0.6[${PYTHON_USEDEP}]
 		>=dev-python/openapi-spec-validator-0.5.1[${PYTHON_USEDEP}]
-		dev-python/pytest_jupyter[${PYTHON_USEDEP}]
+		dev-python/pytest-jupyter[${PYTHON_USEDEP}]
 		dev-python/pytest-tornasync[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/ruamel-yaml[${PYTHON_USEDEP}]

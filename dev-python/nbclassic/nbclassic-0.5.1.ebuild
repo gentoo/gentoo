@@ -44,7 +44,7 @@ RDEPEND="
 # dev-python/nbval is missing impls
 BDEPEND="
 	test? (
-		dev-python/pytest_jupyter[${PYTHON_USEDEP}]
+		dev-python/pytest-jupyter[${PYTHON_USEDEP}]
 		dev-python/pytest-tornasync[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/requests-unixsocket[${PYTHON_USEDEP}]

@@ -26,7 +26,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/jupyter-server[${PYTHON_USEDEP}]
-		dev-python/pytest_jupyter[${PYTHON_USEDEP}]
+		dev-python/pytest-jupyter[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)
 "

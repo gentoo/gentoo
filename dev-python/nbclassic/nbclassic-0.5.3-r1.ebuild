@@ -44,7 +44,7 @@ PDEPEND="
 BDEPEND="
 	test? (
 		dev-python/jupyter-server-terminals[${PYTHON_USEDEP}]
-		dev-python/pytest_jupyter[${PYTHON_USEDEP}]
+		dev-python/pytest-jupyter[${PYTHON_USEDEP}]
 		dev-python/pytest-tornasync[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/requests-unixsocket[${PYTHON_USEDEP}]

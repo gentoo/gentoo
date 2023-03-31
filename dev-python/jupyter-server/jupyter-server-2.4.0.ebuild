@@ -43,7 +43,7 @@ BDEPEND="
 	test? (
 		dev-python/ipykernel[${PYTHON_USEDEP}]
 		dev-python/pytest-console-scripts[${PYTHON_USEDEP}]
-		dev-python/pytest_jupyter[${PYTHON_USEDEP}]
+		dev-python/pytest-jupyter[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/pytest-tornasync[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]

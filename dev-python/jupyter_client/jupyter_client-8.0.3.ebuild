@@ -34,7 +34,7 @@ BDEPEND="
 	test? (
 		>=dev-python/ipykernel-6.14[${PYTHON_USEDEP}]
 		>=dev-python/pytest-asyncio-0.18[${PYTHON_USEDEP}]
-		>=dev-python/pytest_jupyter-0.4.1[${PYTHON_USEDEP}]
+		>=dev-python/pytest-jupyter-0.4.1[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 	)
 "
