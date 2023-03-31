@@ -16,9 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 IUSE="nls"
 
-# wxGTK version cap is due to Bug #895982
 RDEPEND=">=dev-libs/chmlib-0.36
-	<x11-libs/wxGTK-3.2.2.1:${WX_GTK_VER}[X]
+	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
