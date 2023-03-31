@@ -38,7 +38,7 @@ BDEPEND="
 "
 
 src_prepare() {
-	! use pulseaudio && local PATCHES=( "${FILESDIR}"/${P}-pulsefree.patch )
+	! use pulseaudio && eapply "${FILESDIR}"/${P}-pulsefree.patch
 	default
 	vala_setup
 }
