@@ -13,7 +13,7 @@ SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )
 LICENSE="icaclient"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="l10n_de l10n_es l10n_fr l10n_ja l10n_zh-CN hdx"
+IUSE="l10n_de l10n_es l10n_fr l10n_ja l10n_zh-CN hdx usb"
 RESTRICT="mirror strip fetch"
 
 ICAROOT="/opt/Citrix/ICAClient"
@@ -96,6 +96,7 @@ RDEPEND="
 	x11-libs/pango
 	${BDEPEND}
 	!hdx? ( !media-plugins/hdx-realtime-media-engine )
+	usb? ( sys-apps/systemd-utils )
 "
 DEPENDS=""
 
@@ -129,6 +130,14 @@ src_prepare() {
 	rm lib/UIDialogLibWebKit.so || die
 
 	cp nls/en/module.ini . || die
+	if use usb; then
+		# inspired by debian usb support package postinst
+		sed -i -e 's/^[ \t]*VirtualDriver[ \t]*=.*$/&, GenericUSB/' module.ini || die
+		sed -i -e '/\[ICA 3.0\]/a\GenericUSB=on' module.ini || true
+		echo "[GenericUSB]" >> module.ini || true
+		echo "DriverName=VDGUSB.DLL" >> module.ini
+	fi
+
 	if use hdx; then
 		"${BROOT}${ICAROOT}"/rtme/RTMEconfig -install -ignoremm || die
 		mv new_module.ini module.ini || die
@@ -141,8 +150,19 @@ src_install() {
 
 	dodir "${ICAROOT}"
 
+	keepdir /etc/icaclient
+
+	insinto "${ICAROOT}"
 	exeinto "${ICAROOT}"
 	doexe *.DLL libproxy.so wfica AuthManagerDaemon PrimaryAuthManager selfservice ServiceRecord
+	if use usb; then
+		doexe usb/ctxusb usb/ctxusbd usb/ctx_usb_isactive
+		doins usb/*.DLL
+		insinto /etc/icaclient
+		doins usb/usb.conf
+		dosym ../../../etc/icaclient/usb.conf "${ICAROOT}"/usb.conf
+		insinto "${ICAROOT}"
+	fi
 
 	exeinto "${ICAROOT}"/lib
 	doexe lib/*.so
@@ -152,11 +172,10 @@ src_install() {
 		doins nls/en.UTF-8/eula.txt
 	done
 
-	insinto "${ICAROOT}"
-	doins -r usb
-
 	insinto "${ICAROOT}"/config
 	doins config/*
+	mv "${ED}/${ICAROOT}"/config/module.ini "${ED}"/etc/icaclient/ || die
+	dosym ../../../../etc/icaclient/module.ini "${ICAROOT}"/config/module.ini
 	for tmpl in {appsrv,wfclient}.template ; do
 		newins nls/en/${tmpl} ${tmpl/template/ini}
 	done
@@ -274,6 +293,12 @@ pkg_postinst() {
 			ewarn "to use media-plugins/hdx-realtime-media-engine. Which does"
 			ewarn "not need to be explicitly installed anymore."
 		fi
+	fi
+
+	if use usb; then
+		einfo
+		einfo "Add users of ${CATEGORY}/${PN} to group 'usb' for redirect to work"
+		einfo
 	fi
 }
 
