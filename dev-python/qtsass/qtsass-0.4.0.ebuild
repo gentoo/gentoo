@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	>=dev-python/libsass-python-0.22.0[${PYTHON_USEDEP}]
+	>=dev-python/libsass-0.22.0[${PYTHON_USEDEP}]
 "
 
 BDEPEND="

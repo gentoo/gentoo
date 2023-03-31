@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="
-	dev-python/libsass-python[${PYTHON_USEDEP}]
+	dev-python/libsass[${PYTHON_USEDEP}]
 "
 
 BDEPEND="
