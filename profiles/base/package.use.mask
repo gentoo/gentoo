@@ -695,10 +695,6 @@ sys-boot/refind custom-cflags
 # Does not build
 sci-libs/linux-gpib php
 
-# Michał Górny <mgorny@gentoo.org> (2017-05-15)
-# Mask ruby20-only compatible packages
-~media-libs/libcaca-0.99_beta19 ruby
-
 # Mike Gilbert <floppym@gentoo.org> (2017-02-16)
 # Multiple test failures.
 sys-boot/grub:2 test
