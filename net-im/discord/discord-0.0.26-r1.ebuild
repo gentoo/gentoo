@@ -116,6 +116,10 @@ src_install() {
 	fowners root "${DESTDIR}/chrome-sandbox"
 	fperms 4711 "${DESTDIR}/chrome-sandbox"
 
+	# Crashpad is included in the package once in a while and when it does, it must be installed.
+	# See #903616 and #890595
+	[[ -x chrome_crashpad_handler ]] && doins chrome_crashpad_handler
+
 	dosym "${DESTDIR}/${MY_PN^}" "/usr/bin/${MY_PN}"
 }
 
