@@ -109,7 +109,7 @@ src_install() {
 	insinto "${DESTDIR}"
 	doins chrome_100_percent.pak chrome_200_percent.pak icudtl.dat resources.pak snapshot_blob.bin v8_context_snapshot.bin
 	insopts -m0755
-	doins -r locales resources swiftshader
+	doins -r locales resources
 
 	# Chrome-sandbox requires the setuid bit to be specifically set.
 	# see https://github.com/electron/electron/issues/17972
