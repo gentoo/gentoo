@@ -8,6 +8,7 @@ DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1
 
+MY_P=libsass-python-${PV}
 DESCRIPTION="A straightforward binding of libsass for Python"
 HOMEPAGE="
 	https://github.com/sass/libsass-python/
@@ -15,8 +16,9 @@ HOMEPAGE="
 "
 SRC_URI="
 	https://github.com/sass/libsass-python/archive/${PV}.tar.gz
-		-> ${P}.gh.tar.gz
+		-> ${MY_P}.gh.tar.gz
 "
+S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
