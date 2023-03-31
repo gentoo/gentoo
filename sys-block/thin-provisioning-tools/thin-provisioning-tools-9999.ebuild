@@ -32,9 +32,9 @@ src_unpack() {
 }
 
 src_compile() {
-	emake V=
+	emake V= STRIP=true
 }
 
 src_install() {
-	emake V= DESTDIR="${D}" DATADIR="${ED}/usr/share" install
+	emake V= DESTDIR="${D}" DATADIR="${ED}/usr/share" STRIP=true install
 }
