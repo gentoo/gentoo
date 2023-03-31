@@ -9,7 +9,7 @@ MY_P=${P/_/.}
 DESCRIPTION="A library that creates colored ASCII-art graphics"
 HOMEPAGE="http://libcaca.zoy.org/"
 SRC_URI="http://libcaca.zoy.org/files/${PN}/${MY_P}.tar.gz"
-S="${WORKDIR}/all/${MY_P}"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 ISC LGPL-2.1 WTFPL-2"
 SLOT="0"
