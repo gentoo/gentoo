@@ -10,6 +10,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">sass/libsass-python</remote-id>
 		<remote-id type="pypi">libsass</remote-id>
 	</upstream>
 </pkgmetadata>
