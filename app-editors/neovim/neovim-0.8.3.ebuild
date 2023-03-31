@@ -71,6 +71,7 @@ BDEPEND+="
 PATCHES=(
 	"${FILESDIR}/${PN}-0.8-cmake_lua_version.patch"
 	"${FILESDIR}/${PN}-0.8-cmake-darwin.patch"
+	"${FILESDIR}/${PN}-0.8-msgpack-6.0.0-fix.patch"
 )
 
 if [[ ${PV} != 9999 ]]; then
