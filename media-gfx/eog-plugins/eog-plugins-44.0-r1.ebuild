@@ -11,9 +11,9 @@ HOMEPAGE="https://wiki.gnome.org/Apps/EyeOfGnome/Plugins https://gitlab.gnome.or
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
-IUSE="+exif map picasa +python test"
+IUSE="+exif map +python test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	map? ( exif )
@@ -22,15 +22,14 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=dev-libs/glib-2.53.4:2
-	>=dev-libs/libpeas-1.14.1:=
-	>=media-gfx/eog-41.0
+	>=dev-libs/libpeas-1.14.1
+	>=media-gfx/eog-41.0:1
 	exif? ( >=media-libs/libexif-0.6.16 )
 	map? (
 		media-libs/libchamplain:0.12[gtk]
 		>=media-libs/clutter-1.9.4:1.0
 		>=media-libs/clutter-gtk-1.1.2:1.0
 	)
-	picasa? ( >=dev-libs/libgdata-0.9.1:= )
 	python? (
 		${PYTHON_DEPS}
 		dev-libs/glib[dbus]
@@ -64,7 +63,7 @@ src_configure() {
 		-Dplugin_light-theme=true
 		$(meson_use map plugin_map)
 		$(meson_use python plugin_maximize-windows)
-		$(meson_use picasa plugin_postasa)
+		-Dplugin_postasa=false
 		-Dplugin_postr=false
 		$(meson_use python plugin_pythonconsole)
 		-Dplugin_send-by-mail=true
