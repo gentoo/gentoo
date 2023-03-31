@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2023-03-31)
+# Has suspicious test suite warnings with >=ruby31, no activity upstream, and
+# no reverse dependencies in Gentoo.
+# Removal on 2023-04-30.
+dev-ruby/ddmemoize
+
 # Michał Górny <mgorny@gentoo.org> (2023-03-30)
 # Fails to build, bug #903017.
 =dev-util/spirv-llvm-translator-16.0.0
