@@ -9,4 +9,10 @@ ACCT_USER_ID="81"
 ACCT_USER_GROUPS=( "apache" )
 ACCT_USER_HOME="/var/www"
 
+IUSE="icingaweb2"
+
 acct-user_add_deps
+
+pkg_setup() {
+	use icingaweb2 && ACCT_USER_GROUPS+=( "icingacmd" "icingaweb2" )
+}
