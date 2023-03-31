@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="hugepages +json"
 
 RDEPEND="
-	=sys-libs/libnvme-1.4*:=
+	=sys-libs/libnvme-1.4*:=[json?]
 	hugepages? ( sys-libs/libhugetlbfs:= )
 	json? ( dev-libs/json-c:= )
 	sys-libs/zlib:=
