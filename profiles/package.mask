@@ -33,6 +33,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-03-31)
+# Packages with non-functional tests and no py3.11 support.  They were
+# only needed for media-fonts/noto-emoji[buildfont], and that variant
+# was removed, so they have no revdeps now.
+# Removal on 2023-04-30.  Bug #719882.
+dev-python/booleanOperations
+dev-python/defcon
+dev-python/nototools
+
 # Sam James <sam@gentoo.org> (2023-03-31)
 # Has suspicious test suite warnings with >=ruby31, no activity upstream, and
 # no reverse dependencies in Gentoo.
