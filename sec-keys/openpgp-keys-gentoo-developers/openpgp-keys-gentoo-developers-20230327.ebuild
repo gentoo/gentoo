@@ -29,6 +29,7 @@ BDEPEND+="
 	sec-keys/openpgp-keys-gentoo-auth
 	test? (
 		app-crypt/gnupg
+		sys-apps/grep[pcre]
 	)
 "
 
