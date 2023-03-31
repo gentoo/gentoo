@@ -1,0 +1,44 @@
+Upstream commit: https://github.com/intel/bmap-tools/commit/a1ca1172f259f32ff9eb0469567be1a9085cca88
+Related Gentoo bug: https://bugs.gentoo.org/833258
+
+From a1ca1172f259f32ff9eb0469567be1a9085cca88 Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@debian.org>
+Date: Thu, 28 Oct 2021 11:03:09 +0100
+Subject: [PATCH] tests: Use unittest.mock from Python standard library if
+ possible
+
+This avoids an unnecessary external dependency when using Python >= 3.3.
+
+Signed-off-by: Simon McVittie <smcv@debian.org>
+---
+ requirements-test.txt      | 2 +-
+ tests/test_bmap_helpers.py | 5 ++++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/requirements-test.txt b/requirements-test.txt
+index 1cc6bbb..cea340a 100644
+--- a/requirements-test.txt
++++ b/requirements-test.txt
+@@ -1,4 +1,4 @@
+ six
+ nose
+ backports.tempfile
+-mock
+\ No newline at end of file
++mock ; python_version < '3.3'
+diff --git a/tests/test_bmap_helpers.py b/tests/test_bmap_helpers.py
+index 1617957..47b3862 100644
+--- a/tests/test_bmap_helpers.py
++++ b/tests/test_bmap_helpers.py
+@@ -21,7 +21,10 @@
+ import os
+ import sys
+ import tempfile
+-from mock import patch, mock
++try:
++    from unittest.mock import patch, mock
++except ImportError:     # for Python < 3.3
++    from mock import patch, mock
+ from backports import tempfile as btempfile
+ from bmaptools import BmapHelpers
+ 
