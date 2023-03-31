@@ -214,6 +214,7 @@ src_test() {
 		| grep "^fpr" \
 		| sed -n 's/^fpr:::::::::\([[:alnum:]]\+\):/\1/p')
 
+	local key
 	for key in ${keys[@]} ; do
 		nonfatal edo gpg "${mygpgargs[@]}" --batch --yes --delete-secret-keys ${key}
 	done
