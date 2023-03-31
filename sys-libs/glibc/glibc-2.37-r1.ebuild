@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # Bumping notes: https://wiki.gentoo.org/wiki/Project:Toolchain/sys-libs/glibc
 # Please read & adapt the page as necessary if obsolete.
@@ -99,17 +99,16 @@ fi
 # Lastly, let's avoid some openssh nastiness, bug 708224, as
 # convenience to our users.
 
-# gzip, grep, awk are needed by locale-gen, bug 740750
-
 BDEPEND="
 	${PYTHON_DEPS}
 	>=app-misc/pax-utils-${MIN_PAX_UTILS_VER}
 	sys-devel/bison
 	doc? ( sys-apps/texinfo )
-	!compile-locales? (
+	compile-locales? (
 		app-arch/gzip
 		sys-apps/grep
 		app-alternatives/awk
+		sys-apps/gentoo-functions
 	)
 	test? ( dev-lang/perl )
 "
@@ -126,13 +125,9 @@ COMMON_DEPEND="
 	systemtap? ( dev-util/systemtap )
 "
 DEPEND="${COMMON_DEPEND}
-	compile-locales? (
-		app-arch/gzip
-		sys-apps/grep
-		app-alternatives/awk
-	)
 	test? ( >=net-dns/libidn2-2.3.0 )
 "
+# gzip, grep, awk are needed by locale-gen, bug 740750
 RDEPEND="${COMMON_DEPEND}
 	app-arch/gzip
 	sys-apps/grep
@@ -140,6 +135,15 @@ RDEPEND="${COMMON_DEPEND}
 	sys-apps/gentoo-functions
 	!<app-misc/pax-utils-${MIN_PAX_UTILS_VER}
 	!<net-misc/openssh-8.1_p1-r2
+"
+
+IDEPEND="
+	!compile-locales? (
+		app-arch/gzip
+		sys-apps/grep
+		app-alternatives/awk
+		sys-apps/gentoo-functions
+	)
 "
 
 RESTRICT="!test? ( test )"
