@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~riscv ~sparc ~x86"
 
 RDEPEND="
 	dev-python/exceptiongroup[${PYTHON_USEDEP}]
