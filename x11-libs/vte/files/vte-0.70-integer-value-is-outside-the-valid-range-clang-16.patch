@@ -1,0 +1,47 @@
+# From 9400d41660e6c27b672f9c77855d736581f499bf Mon Sep 17 00:00:00 2001
+# From: Khem Raj <raj.khem@gmail.com>
+# Date: Thu, 2 Mar 2023 22:57:00 +0100
+# Subject: [PATCH] pty: Do not typecast to GSpawnFlags
+#
+# GSpawnFlags is enum with max value 1 << 15 which means it fits into
+# a short, however here we are oring VTE_SPAWN_* as well which have
+# higher values (by design).  This fixes a compile error on clang 16
+# with the -Wenum-constexpr-conversion flag.
+#
+# Fixes: https://gitlab.gnome.org/GNOME/vte/-/issues/2618
+# (cherry picked from commit 9b41cd1014299d01111b64b705f013e28398821a)
+#
+# Also refer: https://gitlab.gnome.org/GNOME/vte/-/commit/9400d41660e6c27b672f9c77855d736581f499bf.patch
+--- a/src/vtepty.cc
++++ b/src/vtepty.cc
+@@ -574,18 +574,18 @@ catch (...)
+ static constexpr inline auto
+ all_spawn_flags() noexcept
+ {
+-        return GSpawnFlags(G_SPAWN_LEAVE_DESCRIPTORS_OPEN |
+-                           G_SPAWN_DO_NOT_REAP_CHILD |
+-                           G_SPAWN_SEARCH_PATH |
+-                           G_SPAWN_STDOUT_TO_DEV_NULL |
+-                           G_SPAWN_STDERR_TO_DEV_NULL |
+-                           G_SPAWN_CHILD_INHERITS_STDIN |
+-                           G_SPAWN_FILE_AND_ARGV_ZERO |
+-                           G_SPAWN_SEARCH_PATH_FROM_ENVP |
+-                           G_SPAWN_CLOEXEC_PIPES |
+-                           VTE_SPAWN_NO_PARENT_ENVV |
+-                           VTE_SPAWN_NO_SYSTEMD_SCOPE |
+-                           VTE_SPAWN_REQUIRE_SYSTEMD_SCOPE);
++        return (G_SPAWN_LEAVE_DESCRIPTORS_OPEN |
++                G_SPAWN_DO_NOT_REAP_CHILD |
++                G_SPAWN_SEARCH_PATH |
++                G_SPAWN_STDOUT_TO_DEV_NULL |
++                G_SPAWN_STDERR_TO_DEV_NULL |
++                G_SPAWN_CHILD_INHERITS_STDIN |
++                G_SPAWN_FILE_AND_ARGV_ZERO |
++                G_SPAWN_SEARCH_PATH_FROM_ENVP |
++                G_SPAWN_CLOEXEC_PIPES |
++                VTE_SPAWN_NO_PARENT_ENVV |
++                VTE_SPAWN_NO_SYSTEMD_SCOPE |
++                VTE_SPAWN_REQUIRE_SYSTEMD_SCOPE);
+ }
+
+ static constexpr inline auto
