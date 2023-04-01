@@ -7,9 +7,9 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1
 
-DESCRIPTION="Bootstrap3 template pack for django-crispy-forms"
+DESCRIPTION="Bootstrap4 template pack for django-crispy-forms"
 HOMEPAGE="
-	https://pypi.org/project/crispy-bootstrap3/
+	https://pypi.org/project/crispy-bootstrap4/
 "
 SRC_URI="https://github.com/django-crispy-forms/${PN}/archive/refs/tags/${PV}.tar.gz
 	-> ${P}.gh.tar.gz"
