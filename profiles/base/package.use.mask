@@ -764,10 +764,6 @@ app-admin/clsync cluster mhash
 # https://github.com/groonga/groonga/issues/6 (Japanese)
 app-text/groonga lzo zlib
 
-# Jeroen Roovers <jer@gentoo.org> (2014-11-18)
-# Requires dev-lang/lua-5.2 (bug #253269)
-net-analyzer/nmap system-lua
-
 # Mike Frysinger <vapier@gentoo.org> (2014-10-21)
 # Most targets do not support ASAN/etc... #504200.
 sys-devel/gcc sanitize
