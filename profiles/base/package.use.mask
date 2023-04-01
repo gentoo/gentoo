@@ -769,7 +769,7 @@ games-strategy/freeciv system-lua
 app-admin/clsync cluster mhash
 
 # Brian Evans <grknight@gentoo.org> (2014-11-29)
-# Strongly recommened by upstream to disable lzo and zlib due to memory leaks
+# Strongly recommended by upstream to disable lzo and zlib due to memory leaks
 # https://github.com/groonga/groonga/issues/6 (Japanese)
 app-text/groonga lzo zlib
 
