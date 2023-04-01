@@ -22,6 +22,13 @@ src_prepare() {
 	default
 	export ocamlfind_destdir="${EPREFIX}/usr/$(get_libdir)/ocaml"
 	export stublibs="${ocamlfind_destdir}/stublibs"
+	sed -i \
+		-e "/dbm/d" \
+		-e "/graphics/d" \
+		-e "/ocamlbuild/d" \
+		-e "/check_library num/d" \
+		configure \
+		|| die
 }
 
 src_configure() {
@@ -54,7 +61,7 @@ src_install() {
 	fi
 
 	# See bug #803275 and bug #833604
-	for x in camlp4 dbm graphics labltk num num-top ocamlbuild; do
+	for x in camlp4 labltk; do
 		rm -rf "${ED}"/usr/$(get_libdir)/ocaml/${x} || die
 	done
 }
