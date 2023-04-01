@@ -1,0 +1,36 @@
+# Build fails with New clang 16.0 compiler because it finds a new error -Wenum-constexpr-conversion
+# Upstream issue: https://gitlab.gnome.org/GNOME/vte/-/issues/2618
+# Patch authored by Khem Raj
+--- a/src/vtepty.cc
++++ b/src/vtepty.cc
+@@ -574,18 +574,18 @@ catch (...)
+ static constexpr inline auto
+ all_spawn_flags() noexcept
+ {
+-        return GSpawnFlags(G_SPAWN_LEAVE_DESCRIPTORS_OPEN |
+-                           G_SPAWN_DO_NOT_REAP_CHILD |
+-                           G_SPAWN_SEARCH_PATH |
+-                           G_SPAWN_STDOUT_TO_DEV_NULL |
+-                           G_SPAWN_STDERR_TO_DEV_NULL |
+-                           G_SPAWN_CHILD_INHERITS_STDIN |
+-                           G_SPAWN_FILE_AND_ARGV_ZERO |
+-                           G_SPAWN_SEARCH_PATH_FROM_ENVP |
+-                           G_SPAWN_CLOEXEC_PIPES |
+-                           VTE_SPAWN_NO_PARENT_ENVV |
+-                           VTE_SPAWN_NO_SYSTEMD_SCOPE |
+-                           VTE_SPAWN_REQUIRE_SYSTEMD_SCOPE);
++        return (G_SPAWN_LEAVE_DESCRIPTORS_OPEN |
++                G_SPAWN_DO_NOT_REAP_CHILD |
++                G_SPAWN_SEARCH_PATH |
++                G_SPAWN_STDOUT_TO_DEV_NULL |
++                G_SPAWN_STDERR_TO_DEV_NULL |
++                G_SPAWN_CHILD_INHERITS_STDIN |
++                G_SPAWN_FILE_AND_ARGV_ZERO |
++                G_SPAWN_SEARCH_PATH_FROM_ENVP |
++                G_SPAWN_CLOEXEC_PIPES |
++                VTE_SPAWN_NO_PARENT_ENVV |
++                VTE_SPAWN_NO_SYSTEMD_SCOPE |
++                VTE_SPAWN_REQUIRE_SYSTEMD_SCOPE);
+ }
+
+ static constexpr inline auto
