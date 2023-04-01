@@ -759,10 +759,6 @@ dev-java/icedtea cacao jamvm
 # dev-lang/python[berkdb] fails with recent multilib sys-libs/db (bug 519584).
 dev-lang/python berkdb
 
-# Lars Wendler <polynomial-c@gentoo.org> (2015-03-19)
-# >=games-strategy/freeciv-2.5.0 requires >=dev-lang/lua-5.2
-games-strategy/freeciv system-lua
-
 # Andrew Savchenko <bircoph@gentoo.org> (2015-02-11)
 # Cluster code is still under development, only base functionality
 # is implemented. Masking for testing and evaluation.
