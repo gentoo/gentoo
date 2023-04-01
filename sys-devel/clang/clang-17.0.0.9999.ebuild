@@ -273,7 +273,6 @@ multilib_src_configure() {
 		-DLLVM_ENABLE_EH=ON
 		-DLLVM_ENABLE_RTTI=ON
 
-		-DCMAKE_DISABLE_FIND_PACKAGE_LibXml2=$(usex !xml)
 		# libgomp support fails to find headers without explicit -I
 		# furthermore, it provides only syntax checking
 		-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
@@ -286,8 +285,10 @@ multilib_src_configure() {
 
 		-DCLANG_DEFAULT_PIE_ON_LINUX=$(usex pie)
 
+		-DCLANG_ENABLE_LIBXML2=$(usex xml)
 		-DCLANG_ENABLE_ARCMT=$(usex static-analyzer)
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
+		# TODO: CLANG_ENABLE_HLSL?
 
 		-DPython3_EXECUTABLE="${PYTHON}"
 	)
