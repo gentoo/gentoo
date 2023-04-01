@@ -20,13 +20,17 @@ LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA BSD public-domain rc"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
 KEYWORDS=""
 IUSE="
-	+binutils-plugin debug doc exegesis libedit +libffi ncurses test xar
-	xml z3 zstd
+	+binutils-plugin debug debuginfod doc exegesis libedit +libffi
+	ncurses test xar xml z3 zstd
 "
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	sys-libs/zlib:0=[${MULTILIB_USEDEP}]
+	debuginfod? (
+		net-misc/curl:=
+		dev-cpp/cpp-httplib:=
+	)
 	exegesis? ( dev-libs/libpfm:= )
 	libedit? ( dev-libs/libedit:0=[${MULTILIB_USEDEP}] )
 	libffi? ( >=dev-libs/libffi-3.0.13-r1:0=[${MULTILIB_USEDEP}] )
@@ -245,7 +249,6 @@ get_distribution_components() {
 			llvm-cxxfilt
 			llvm-cxxmap
 			llvm-debuginfo-analyzer
-			llvm-debuginfod
 			llvm-debuginfod-find
 			llvm-diff
 			llvm-dis
@@ -326,6 +329,9 @@ get_distribution_components() {
 		use binutils-plugin && out+=(
 			LLVMgold
 		)
+		use debuginfod && out+=(
+			llvm-debuginfod
+		)
 	fi
 
 	printf "%s${sep}" "${out[@]}"
@@ -372,6 +378,8 @@ multilib_src_configure() {
 		-DLLVM_ENABLE_RTTI=ON
 		-DLLVM_ENABLE_Z3_SOLVER=$(usex z3)
 		-DLLVM_ENABLE_ZSTD=$(usex zstd)
+		-DLLVM_ENABLE_CURL=$(usex debuginfod)
+		-DLLVM_ENABLE_HTTPLIB=$(usex debuginfod)
 
 		-DLLVM_HOST_TRIPLE="${CHOST}"
 
