@@ -96,6 +96,18 @@ src_prepare() {
 	# We drop support for jython due to bug #825486.
 	rm batik-script/src/main/java/org/apache/batik/script/jpython/JPythonInterpreter.java || die
 	rm batik-script/src/main/java/org/apache/batik/script/jpython/JPythonInterpreterFactory.java || die
+
+	cat > "batik-squiggle-${SLOT}.desktop" <<-EOF || die
+		[Desktop Entry]
+		Name=Squiggle
+		Comment=SVG browser
+		Exec=batik-squiggle-${SLOT}
+		Icon=init
+		Terminal=false
+		Type=Application
+		Categories=Graphics;VectorGraphics;
+		MimeType=image/svg+xml
+	EOF
 }
 
 src_compile() {
@@ -181,8 +193,10 @@ src_test() {
 
 src_install() {
 	einstalldocs
-	domenu "${FILESDIR}"/batik-squiggle.desktop
-	doicon batik-svgbrowser/src/main/resources/org/apache/batik/apps/svgbrowser/resources/init.svg
+	domenu "batik-squiggle-${SLOT}.desktop"
+	newicon -s scalable \
+		batik-svgbrowser/src/main/resources/org/apache/batik/apps/svgbrowser/resources/init.svg \
+		squiggle-${SLOT}.svg
 
 	for module in "${BATIK_MODULES[@]}"; do
 		JAVA_MAIN_CLASS=$( sed -n 's:.*<mainClass>\(.*\)</mainClass>:\1:p' "${module}/pom.xml" )
