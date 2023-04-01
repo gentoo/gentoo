@@ -40,9 +40,11 @@ RDEPEND="dev-libs/libpcre2:=[static-libs?,${MULTILIB_USEDEP}]
 	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
-	python? ( >=dev-lang/swig-2.0.9 )
+	python? (
+		>=dev-lang/swig-2.0.9
+		dev-python/pip[${PYTHON_USEDEP}]
+)
 	ruby? ( >=dev-lang/swig-2.0.9 )"
-IDEPEND="python? ( dev-python/pip[${PYTHON_USEDEP}] )"
 
 src_prepare() {
 	eapply_user
