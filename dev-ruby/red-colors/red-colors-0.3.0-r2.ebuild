@@ -18,3 +18,5 @@ IUSE=""
 SLOT="0"
 LICENSE="MIT"
 KEYWORDS="amd64 ~ppc ~riscv ~x86"
+
+ruby_add_rdepend "dev-ruby/matrix"
