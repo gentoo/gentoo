@@ -132,9 +132,11 @@ kde-apps/kross-interpreters
 net-misc/mikutter
 
 # Hans de Graaff <graaff@gentoo.org> (2023-03-29)
-# ruby27-only package. app-text/ronn-ng is a drop-in replacement.
-# Masked for removal on 2023-04-29.
+# ruby27-only package. app-text/ronn-ng is a drop-in replacement.  it is
+# also the only consumer of dev-ruby/hpricot which has a ruby30 target
+# but is not actually compatible. Masked for removal on 2023-04-29.
 app-text/ronn
+dev-ruby/hpricot
 
 # Hans de Graaff <graaff@gentoo.org> (2023-03-29)
 # ruby27-only package without tests and without maintainer. Upstream
