@@ -360,6 +360,11 @@ sys-kernel/dracut test
 # Dependency requires sys-apps/systemd. Will only be unmasked in systemd target.
 kde-plasma/plasma-meta firewall
 
+# Tobias Klausmann <klausman@gentoo.org> (2021-04-16)
+# Newer (>=4.4.0) versions of Quodlibet have a different library structure, so
+# puddletag needs to be updated to handle that.
+media-sound/puddletag quodlibet
+
 # Joonas Niilola <juippis@gentoo.org> (2021-04-12)
 # Creates +130 GB worth of bindings, possibly Gentoo-related.
 # Upstream issue: https://phab.enlightenment.org/T8924
@@ -466,6 +471,10 @@ net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
 # Highly experimental, may cause breakages when updating. Use with
 # caution!
 dev-libs/efl efl-one
+
+# Ross Charles Campbell <rossbridger.cc@gmail.com> (2020-09-21)
+# Since >=dev-games/ogre-1.11.2 is masked, mask contribovis USE.
+media-libs/opencv contribovis
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # The respective dependencies are masked for removal.
@@ -835,6 +844,10 @@ sci-libs/mathgl octave
 # Mask pdnsd's Linux-specific USE flags.
 net-dns/pdnsd urandom
 
+# Alexis Ballier <aballier@gentoo.org> (2011-02-16)
+# Win32 specific useflag for vlc. Can be used for cross-compiling.
+media-video/vlc directx
+
 # Tomas Touceda <chiiph@gentoo.org> (2010-04-13)
 # Masked because libsvm module is broken with this release on every arch.
 dev-lisp/clisp svm
@@ -843,16 +856,3 @@ dev-lisp/clisp svm
 # Don't use system-wide mode unless you *really* know what you're doing.
 # Keep it masked here so that I don't need to manage two versions every time.
 media-sound/pulseaudio-daemon system-wide
-
-# Alexis Ballier <aballier@gentoo.org> (2011-02-16)
-# Win32 specific useflag for vlc. Can be used for cross-compiling.
-media-video/vlc directx
-
-# Ross Charles Campbell <rossbridger.cc@gmail.com> (2020-09-21)
-# Since >=dev-games/ogre-1.11.2 is masked, mask contribovis USE.
-media-libs/opencv contribovis
-
-# Tobias Klausmann <klausman@gentoo.org> (2021-04-16)
-# Newer (>=4.4.0) versions of Quodlibet have a different library structure, so
-# puddletag needs to be updated to handle that.
-media-sound/puddletag quodlibet

@@ -53,6 +53,13 @@ dev-java/openjdk:17 system-bootstrap
 >=sys-devel/llvm-14 llvm_targets_VE
 >=sys-devel/llvm-16 llvm_targets_LoongArch
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
+# Upstream plans to drop libcrypt.so.1/crypt.h from glibc
+# distribution and rely on external providers like libxcrypt.
+# Here we are following that path too.
+<sys-libs/glibc-2.33-r2 crypt
+sys-libs/libxcrypt system compat
+
 # Sam James <sam@gentoo.org> (2021-03-08)
 # Broken without USE=unicode
 # Needs to link with libiconv, bug #774507
@@ -130,13 +137,6 @@ sys-libs/libcxx libcxxabi
 # to avoid initramfs, he needs to use a custom .config and unforce
 # the flag.
 sys-kernel/vanilla-kernel initramfs
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
-# Upstream plans to drop libcrypt.so.1/crypt.h from glibc
-# distribution and rely on external providers like libxcrypt.
-# Here we are following that path too.
-<sys-libs/glibc-2.33-r2 crypt
-sys-libs/libxcrypt system compat
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd, so force USE=guile2

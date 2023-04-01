@@ -71,21 +71,21 @@ kernel_Darwin
 kernel_SunOS
 kernel_Winnt
 
-# Diego Pettenò <flameeyes@gentoo.org> (2006-12-30)
-# These are specific of Mac OS X
-aqua
-coreaudio
-
 # Jeremy Olexa <darkside@gentoo.org>
 # The prefix USE flags should never be used on non prefix profiles
 prefix
 prefix-guest
 prefix-stack
 
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
+# netlink is a Linux-specific interface
+netlink
+
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-18)
 # Prelude is being masked for removal
 prelude
 
-# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
-# netlink is a Linux-specific interface
-netlink
+# Diego Pettenò <flameeyes@gentoo.org> (2006-12-30)
+# These are specific to Mac OS X
+aqua
+coreaudio
