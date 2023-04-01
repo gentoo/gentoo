@@ -70,7 +70,8 @@ all_ruby_prepare() {
 
 	# Avoid a spec that depends on dev-ruby/rspec to lessen circular
 	# dependencies, bug 662328
-	sed -i -e '/loads mocks and expectations when the constants are referenced/askip "gentoo: bug 662328"' spec/rspec/core_spec.rb || die
+	sed -e '/loads mocks and expectations when the constants are referenced/askip "gentoo: bug 662328"' \
+		-i spec/rspec/core_spec.rb || die
 
 	# Avoid a spec depending on specifics on local networks
 	# This fails when localhost resolves to ::1 which may be a
