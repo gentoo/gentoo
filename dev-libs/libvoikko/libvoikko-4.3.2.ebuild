@@ -31,6 +31,8 @@ BDEPEND="virtual/pkgconfig
 
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/voikko.asc
 
+PATCHES=( "${FILESDIR}"/libvoikko-4.3.2-disable-wall-werror.patch )
+
 src_configure() {
 	local myconf=(
 		--prefix=/usr
