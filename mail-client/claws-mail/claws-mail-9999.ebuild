@@ -87,7 +87,7 @@ COMMONDEPEND="
 	startup-notification? ( x11-libs/startup-notification )
 	svg? ( >=gnome-base/librsvg-2.40.5 )
 	valgrind? ( dev-util/valgrind )
-	webkit? ( net-libs/webkit-gtk:4 )
+	webkit? ( net-libs/webkit-gtk:4.1 )
 "
 
 DEPEND="${COMMONDEPEND}
@@ -112,6 +112,8 @@ PATCHES=(
 
 src_prepare() {
 	default
+	sed -e "s/webkit2gtk-4.0/webkit2gtk-4.1/" -i configure.ac || die
+
 	eautoreconf
 }
 
