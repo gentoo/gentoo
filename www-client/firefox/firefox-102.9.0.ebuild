@@ -915,6 +915,10 @@ src_configure() {
 		fi
 	fi
 
+        if use elibc_musl && use arm64 ; then
+               	mozconfig_add_options_ac 'elf-hack is broken when using musl/arm64' --disable-elf-hack
+        fi
+
 	# Additional ARCH support
 	case "${ARCH}" in
 		arm)
