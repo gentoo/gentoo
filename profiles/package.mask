@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2023-04-02)
+# Archived upstream since two years, meant to be used with Rails
+# 5.2. Continued as Turbo as part of the hotwire project in Rails.
+# Masked for removal on 2023-05-02
+dev-ruby/turbolinks
+dev-ruby/turbolinks-source
+
 # Michał Górny <mgorny@gentoo.org> (2023-03-31)
 # Packages with non-functional tests and no py3.11 support.  They were
 # only needed for media-fonts/noto-emoji[buildfont], and that variant
