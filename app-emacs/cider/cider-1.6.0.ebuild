@@ -14,7 +14,7 @@ SRC_URI="https://github.com/clojure-emacs/${PN}/archive/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
