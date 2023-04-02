@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-WX_GTK_VER="3.0-gtk3"
+WX_GTK_VER="3.2-gtk3"
 
 inherit autotools flag-o-matic subversion wxwidgets xdg
 
@@ -22,16 +22,25 @@ IUSE="contrib debug"
 BDEPEND="virtual/pkgconfig"
 
 RDEPEND="app-arch/zip
+	dev-libs/glib:2
 	>=dev-libs/tinyxml-2.6.2-r3
 	>=dev-util/astyle-3.1-r2:0/3.1
+	x11-libs/gtk+:3
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	contrib? (
 		app-admin/gamin
-		app-text/hunspell
+		app-arch/bzip2
+		app-text/hunspell:=
 		dev-libs/boost:=
+		dev-libs/libgamin
+		media-libs/fontconfig
+		sys-libs/zlib
 	)"
 
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+"
 
 PATCHES=( "${FILESDIR}/${P}-nodebug.diff" )
 
@@ -51,12 +60,15 @@ src_configure() {
 
 	setup-wxwidgets
 
-	econf \
-		--disable-pch \
-		--disable-static \
-		$(use_with contrib boost-libdir "${ESYSROOT}/usr/$(get_libdir)") \
-		$(use_enable debug) \
+	local myeconfargs=(
+		--disable-pch
+		--disable-static
+		$(use_enable debug)
+		$(use_with contrib boost-libdir "${ESYSROOT}/usr/$(get_libdir)")
 		$(use_with contrib contrib-plugins all)
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
