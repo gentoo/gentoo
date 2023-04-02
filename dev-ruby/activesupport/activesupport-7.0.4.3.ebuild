@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.rdoc"
 
@@ -44,6 +44,10 @@ ruby_add_bdepend "test? (
 	dev-ruby/mocha
 	<dev-ruby/minitest-5.16:5
 	)"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.0.4.3-ruby32.patch
+)
 
 all_ruby_prepare() {
 	# Set the secure permissions that tests expect.
