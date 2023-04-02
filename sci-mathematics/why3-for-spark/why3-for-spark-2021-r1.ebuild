@@ -52,6 +52,7 @@ S="${WORKDIR}"/${MYP}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2020-gentoo.patch
 	"${FILESDIR}"/${P}-flags.patch
+	"${FILESDIR}"/${P}-make.patch #Bug #883167
 	"${FILESDIR}"/${PN}-2020-bibtex.patch
 )
 
