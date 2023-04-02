@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# It really is ruby31 only, see:
+# https://github.com/socketry/async/issues/141
+# https://github.com/socketry/async/issues/136
 USE_RUBY="ruby31"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
