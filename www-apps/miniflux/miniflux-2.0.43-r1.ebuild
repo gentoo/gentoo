@@ -35,7 +35,7 @@ src_install() {
 
 	newconfd "${FILESDIR}/${PN}.confd" ${PN}
 
-	newinitd "${FILESDIR}/${PN}.initd" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r1" ${PN}
 	systemd_dounit "${FILESDIR}/${PN}.service"
 
 	fowners miniflux:root /etc/${PN}.conf
