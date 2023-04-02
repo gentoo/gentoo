@@ -16,7 +16,6 @@
 		<flag name="nping">Install the nping utility</flag>
 		<flag name="nse">Include support for the Nmap Scripting Engine (NSE)</flag>
 		<flag name="symlink">Install symlink to nc</flag>
-		<flag name="system-lua">Use <pkg>dev-lang/lua</pkg> instead of the bundled liblua</flag>
 		<flag name="zenmap">Install the GTK+ based nmap GUI, zenmap</flag>
 	</use>
 	<upstream>
