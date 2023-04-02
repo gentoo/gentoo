@@ -26,6 +26,7 @@ RDEPEND="dev-python/pylibacl[${PYTHON_USEDEP}]
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0.3-no-docs.patch"
+	"${FILESDIR}/${P}-py311.patch"
 )
 
 python_install_all() {
