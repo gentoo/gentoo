@@ -1,0 +1,12 @@
+diff -ruN armadillo-12.0.1.orig/tests2/Makefile armadillo-12.0.1/tests2/Makefile
+--- armadillo-12.0.1.orig/tests2/Makefile	2016-06-16 18:26:01.000000000 +0200
++++ armadillo-12.0.1/tests2/Makefile	2023-04-02 16:32:47.256287438 +0200
+@@ -4,7 +4,7 @@
+ #LIB_FLAGS = -lopenblas -llapack 
+ 
+ #CXX_FLAGS = -std=c++11 -Wshadow -Wall -pedantic -O0
+-CXX_FLAGS = -std=c++11 -Wshadow -Wall -pedantic -Og
++#CXX_FLAGS = -std=c++11 -Wshadow -Wall -pedantic -Og
+ #CXX_FLAGS = -std=c++11 -Wshadow -Wall -pedantic -Og -fopenmp
+ #CXX_FLAGS = -std=c++11 -Wshadow -Wall -pedantic -Og -DARMA_DONT_USE_WRAPPER
+ #CXX_FLAGS = -std=c++11 -Wshadow -Wall -pedantic -Og -fsanitize=address -fsanitize=leak -fsanitize=undefined -fsanitize=bounds -fsanitize=bounds-strict -g
