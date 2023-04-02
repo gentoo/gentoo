@@ -23,6 +23,10 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux"
 IUSE="doc"
 
+# For initial target porting (new rubies), we can make these test deps
+# conditional with:
+# 1. USE_RUBY="<old rubies>" ruby_add_bdepend ...
+# 2. skip logic in each_ruby_test
 USE_RUBY="ruby27 ruby30 ruby31" ruby_add_bdepend "
 	test? (
 		dev-ruby/childlabor

@@ -23,11 +23,16 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux"
 IUSE="doc"
 
-USE_RUBY="ruby26 ruby27" ruby_add_bdepend "
+# For initial target porting (new rubies), we can make these test deps
+# conditional with:
+# 1. USE_RUBY="<old rubies>" ruby_add_bdepend ...
+# 2. skip logic in each_ruby_test
+ruby_add_bdepend "
 	test? (
 		dev-ruby/childlabor
 		dev-ruby/webmock
-	)"
+	)
+"
 
 RDEPEND+=" !<dev-ruby/thor-0.20.3-r1:0"
 
