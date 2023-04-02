@@ -22,7 +22,7 @@ SLOT="0"
 QA_PKGCONFIG_VERSION="${PV}.0"
 LICENSE="GPL-3"
 
-IUSE="+appindicator archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
+IUSE="+appindicator archive bogofilter calendar clamav dbus debug doc gdata +gnutls +imap ipv6 ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification pdf perl +pgp rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
 	appindicator? ( notification )
 	libcanberra? ( notification )
@@ -54,7 +54,6 @@ COMMONDEPEND="
 		sys-apps/dbus
 	)
 	gdata? ( >=dev-libs/libgdata-0.17.2 )
-	dillo? ( www-client/dillo )
 	gnutls? ( >=net-libs/gnutls-3.0 )
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7:= )
@@ -125,6 +124,7 @@ src_configure() {
 
 	local myeconfargs=(
 		--disable-bsfilter-plugin
+		--disable-dillo-plugin
 		--disable-generic-umpc
 		--disable-jpilot #735118
 		--enable-acpi_notifier-plugin
@@ -143,7 +143,6 @@ src_configure() {
 		$(use_enable clamav clamd-plugin)
 		$(use_enable dbus)
 		$(use_enable debug crash-dialog)
-		$(use_enable dillo dillo-plugin)
 		$(use_enable doc manual)
 		$(use_enable gdata gdata-plugin)
 		$(use_enable gnutls)
