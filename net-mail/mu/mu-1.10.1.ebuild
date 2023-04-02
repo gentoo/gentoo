@@ -28,10 +28,6 @@ BDEPEND="
 
 SITEFILE="70mu-gentoo-autoload.el"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.8.13-add-cstdint-inc.patch
-)
-
 src_prepare() {
 	default
 
