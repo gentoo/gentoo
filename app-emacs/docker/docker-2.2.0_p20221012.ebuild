@@ -16,7 +16,7 @@ S="${WORKDIR}"/${PN}.el-${COMMIT}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=app-emacs/transient-0.3.7_p20220918
