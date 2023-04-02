@@ -17,7 +17,7 @@ SRC_URI="https://github.com/socketry/io-event/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( >=dev-ruby/sus-0.6:0 )"
