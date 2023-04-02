@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGES README.md"
 
@@ -19,19 +20,28 @@ HOMEPAGE="https://slim-template.github.io/"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc"
 
-ruby_add_rdepend ">=dev-ruby/tilt-2.0.6:* =dev-ruby/tilt-2.0*:*
-	>=dev-ruby/temple-0.7.6:0.7"
-
-ruby_add_bdepend "doc? ( dev-ruby/yard dev-ruby/redcarpet )"
-
-ruby_add_bdepend "test? ( dev-ruby/redcarpet dev-ruby/sassc )"
+ruby_add_rdepend "
+	>=dev-ruby/tilt-2.0.6:*
+	>=dev-ruby/temple-0.7.6:0.7
+"
+ruby_add_bdepend "
+	doc? (
+		dev-ruby/yard
+		dev-ruby/redcarpet
+	)
+	test? (
+		dev-ruby/minitest:5
+		dev-ruby/kramdown:2
+		dev-ruby/redcarpet
+		dev-ruby/sassc
+		>=dev-ruby/test-unit-3.5
+	)
+"
 
 all_ruby_prepare() {
-	eapply "${FILESDIR}/${P}-temple.patch"
-
 	sed -i -e '/bundler/I s:^:#:' Rakefile || die
 
 	# This sinatra code expects tests to be installed but we strip those.
