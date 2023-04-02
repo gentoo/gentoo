@@ -17,8 +17,12 @@ SRC_URI="https://github.com/django-crispy-forms/${PN}/archive/refs/tags/${PV}.ta
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
 
 RDEPEND="dev-python/django-crispy-forms[${PYTHON_USEDEP}]"
+BDEPEND="test? (
+	dev-python/pytest-django[${PYTHON_USEDEP}]
+)"
 
 distutils_enable_tests pytest
 
