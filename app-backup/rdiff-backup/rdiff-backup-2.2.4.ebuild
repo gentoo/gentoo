@@ -17,11 +17,12 @@ KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-lin
 # Tests use a tox environment and separate steps for test env preparation
 RESTRICT="test"
 
-DEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]
-	>=net-libs/librsync-1.0:0="
 RDEPEND="dev-python/pylibacl[${PYTHON_USEDEP}]
 	dev-python/pyxattr[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 	>=net-libs/librsync-1.0:0="
+DEPEND="${RDEPEND}
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]"
 
 src_prepare() {
 	sed -e "s#share/doc/${PN}#share/doc/${PF}#" -i setup.py || die
