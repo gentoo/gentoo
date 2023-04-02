@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/politza/tablist/"
 SRC_URI="https://github.com/politza/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 
 DOCS=( README.md )
