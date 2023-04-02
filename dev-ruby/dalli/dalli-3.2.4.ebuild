@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_TASK_TEST="MT_NO_PLUGINS=true test"
@@ -25,6 +26,7 @@ IUSE=""
 DEPEND+="${DEPEND} test? ( >=net-misc/memcached-1.5.4[ssl(-)] )"
 
 ruby_add_bdepend "test? (
+		dev-ruby/connection_pool
 		dev-ruby/minitest:5
 		dev-ruby/rack
 )"
