@@ -20,7 +20,7 @@ COMMON_DEPEND="
 	aspell? ( app-text/aspell )
 	hunspell? ( >=app-text/hunspell-1.2.1:0= )
 	nuspell? ( >=app-text/nuspell-5.1.0:0= )
-	voikko? ( dev-libs/libvoikko )
+	voikko? ( dev-libs/libvoikko:= )
 "
 RDEPEND="${COMMON_DEPEND}
 	!<app-text/enchant-1.6.1-r2:0
