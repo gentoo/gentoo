@@ -82,7 +82,7 @@ BDEPEND="
 
 pkg_pretend() {
 	if use gdk-pixbuf && use imlib ; then
-		einfo 'Confilcting USE flags have been enabled:'
+		einfo 'Conflicting USE flags have been enabled:'
 		einfo '"gdk-pixbuf" and "imlib" exclude each other!'
 		einfo 'Using "gdk-pixbuf".'
 	fi
