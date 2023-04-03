@@ -4,7 +4,7 @@
  #                                                                  #
  ####################################################################
  
-+.NOTPARALLEL: notparallel
++.NOTPARALLEL:
 +
  VERBOSEMAKE ?= @enable_verbose_make@
  
