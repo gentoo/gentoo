@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,7 @@ HOMEPAGE="http://stardict-4.sourceforge.net/
 SRC_URI="https://dev.gentoo.org/~bircoph/distfiles/${P}.tar.xz
 	pronounce? ( https://${PN}-3.googlecode.com/files/WyabdcRealPeopleTTS.tar.bz2 )
 	qqwry? ( mirror://gentoo/QQWry.Dat.bz2 )"
+S="${WORKDIR}"/${P}
 
 LICENSE="CPL-1.0 GPL-3 LGPL-2"
 SLOT="0"
