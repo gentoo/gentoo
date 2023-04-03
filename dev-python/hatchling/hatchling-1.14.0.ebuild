@@ -24,7 +24,7 @@ S=${WORKDIR}/${MY_P}/backend
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64"
 
 # deps are listed in backend/src/hatchling/ouroboros.py
 RDEPEND="
