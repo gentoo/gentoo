@@ -355,11 +355,6 @@ x11-plugins/purple-hangouts
 # Removal on 2023-04-04.
 app-admin/gixy
 
-# Matt Turner <mattst88@gentoo.org> (2023-03-04)
-# Test applications that don't really have any business being packaged.
-# Removal on 2023-04-04.
-x11-apps/xdbedizzy
-
 # Mike Pagano <mpagano@gentoo.org> (2023-02-27)
 # Mask =www-servers/nginx-unit-1.29.0-r1 for testing
 =www-servers/nginx-unit-1.29.0-r1
