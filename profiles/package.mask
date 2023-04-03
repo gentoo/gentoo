@@ -178,12 +178,6 @@ www-misc/shellinabox
 # Removal on 2023-04-27.  Bug #721816.
 app-editors/le
 
-# Michał Górny <mgorny@gentoo.org> (2023-03-28)
-# No py3.11 support, package already patched for 3.10.  Last release
-# in 2018.  No revdeps.
-# Removal on 2023-04-27.  Bug #894604.
-dev-python/picobox
-
 # Sam James <sam@gentoo.org> (2023-03-27)
 # The upstream tzinfo maintainers recommend using 2023a for now because of the
 # disruption regarding Lebanon's DST change. See https://lore.kernel.org/distributions/87cz4u2gmj.fsf@gentoo.org/T/#u.
