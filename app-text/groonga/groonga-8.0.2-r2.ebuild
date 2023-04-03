@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,7 @@ DEPEND="
 	libevent? ( dev-libs/libevent:0= )
 	lzo? ( dev-libs/lzo )
 	mecab? ( >=app-text/mecab-0.80 )
-	msgpack? ( dev-libs/msgpack )
+	msgpack? ( dev-libs/msgpack:= )
 	sphinx? ( >=dev-python/sphinx-1.0.1 )
 	zeromq? ( net-libs/zeromq:0= )
 	zlib? ( sys-libs/zlib:0= )
