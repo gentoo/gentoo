@@ -361,11 +361,6 @@ app-admin/gixy
 x11-apps/xdbedizzy
 x11-apps/xf86dga
 
-# Matt Turner <mattst88@gentoo.org> (2023-03-04)
-# Long deprecated, GNOME 2-era packages.
-# Removal on 2023-04-04. Bug #873841
-gnome-base/gconf
-
 # Mike Pagano <mpagano@gentoo.org> (2023-02-27)
 # Mask =www-servers/nginx-unit-1.29.0-r1 for testing
 =www-servers/nginx-unit-1.29.0-r1
