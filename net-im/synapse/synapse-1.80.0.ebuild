@@ -199,10 +199,10 @@ pkg_postinst() {
 		einfo
 	else
 		einfo
-		einfo "Please refer to upgrade notes if any special steps are required"
-		einfo "to upgrade from the version you currently have installed:"
-		einfo
-		einfo "  https://github.com/matrix-org/synapse/blob/develop/docs/upgrade.md"
+		elog "Please refer to upgrade notes if any special steps are required"
+		elog "to upgrade from the version you currently have installed:"
+		elog
+		elog "  https://github.com/matrix-org/synapse/blob/develop/docs/upgrade.md"
 		einfo
 	fi
 }
