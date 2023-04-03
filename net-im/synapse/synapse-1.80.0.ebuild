@@ -144,6 +144,7 @@ QA_FLAGS_IGNORED="usr/lib/python3.*/site-packages/synapse/synapse_rust.abi3.so"
 
 src_test() {
 	if use postgres; then
+		einfo "Preparing postgres test instance"
 		initdb --pgdata="${T}/pgsql" || die
 		pg_ctl --wait --pgdata="${T}/pgsql" start \
 			--options="-h '' -k '${T}'" || die
@@ -158,15 +159,19 @@ src_test() {
 	# synapse_rust.abi3.so.
 	rm -rf synapse || die
 
-	distutils-r1_src_test
+	nonfatal distutils-r1_src_test
+	local ret=${?}
 
 	if use postgres; then
+		einfo "Stopping postgres test instance"
 		pg_ctl --wait --pgdata="${T}/pgsql" stop || die
 	fi
+
+	[[ ${ret} -ne 0 ]] && die
 }
 
 python_test() {
-	"${EPYTHON}" -m twisted.trial -j "$(makeopts_jobs)" tests || die "Tests failed with ${EPYTHON}"
+	"${EPYTHON}" -m twisted.trial -j "$(makeopts_jobs)" tests
 }
 
 src_install() {
