@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit readme.gentoo-r1 rpm systemd pax-utils
 
 DESCRIPTION="IBM Spectrum Protect (former Tivoli Storage Manager) Backup/Archive Client, API"
-HOMEPAGE="https://www.ibm.com/us-en/marketplace/data-protection-and-recovery"
+HOMEPAGE="https://www.ibm.com/docs/en/spectrum-protect"
 
 MY_PV_MAJOR=$(ver_cut 1)
 MY_PV_MINOR=$(ver_cut 2)
