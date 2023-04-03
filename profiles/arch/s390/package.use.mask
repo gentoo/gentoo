@@ -20,6 +20,7 @@ dev-ruby/stringex test
 # heif: media-libs/libheif not keyworded here
 # jpegxl: libjxl not keyworded here
 media-libs/imlib2 eps heif jpegxl
+media-gfx/imagemagick jpegxl
 
 # Sam James <sam@gentoo.org> (2022-04-26)
 # Avoid unkeyworded dependencies
