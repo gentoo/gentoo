@@ -9,6 +9,7 @@
 # Jeremy Maitin-Shepard <jbms@attbi.com>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
+# Maciej Barć <xgqt@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
 # @PROVIDES: elisp-common
 # @BLURB: Eclass for Emacs Lisp packages
@@ -142,6 +143,19 @@ elisp_src_compile() {
 	fi
 }
 
+# @FUNCTION: elisp_src_test
+# @DESCRIPTION:
+# Call "elisp-test" to test the package if "elisp-enable-tests" was called
+# beforehand, otherwise execute the default test function - "src_test".
+
+elisp_src_test() {
+	if [[ ${_ELISP_TEST_FUNCTION} ]]; then
+		elisp-test
+	else
+		default_src_test
+	fi
+}
+
 # @FUNCTION: elisp_src_install
 # @DESCRIPTION:
 # Call elisp-install to install all Emacs Lisp (*.el and *.elc) files.
@@ -187,5 +201,5 @@ elisp_pkg_postrm() {
 	elisp-site-regen
 }
 
-EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
+EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,test,install} \
 	pkg_{setup,postinst,postrm}
