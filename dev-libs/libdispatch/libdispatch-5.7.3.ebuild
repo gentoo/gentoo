@@ -15,6 +15,9 @@ SRC_URI="https://github.com/apple/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.g
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+IUSE="test"
+
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	!gnustep-base/libobjc2
@@ -49,5 +52,6 @@ src_configure () {
 	export HOST_CXX="$(tc-getBUILD_CXX)"
 	tc-export CC CXX LD AR NM OBJDUMP RANLIB PKG_CONFIG
 
+	local mycmakeargs=( -DBUILD_TESTING=$(usex test) )
 	cmake_src_configure
 }
