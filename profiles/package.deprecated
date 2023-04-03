@@ -125,7 +125,6 @@ dev-cpp/gtkmm:2.4
 dev-libs/libcroco
 dev-libs/libIDL
 dev-libs/libunique:1
-gnome-base/gconf
 gnome-base/libglade
 gnome-base/libgnomecanvas
 media-libs/libart_lgpl
