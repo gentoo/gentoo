@@ -367,12 +367,6 @@ x11-apps/xf86dga
 gnome-base/gconf
 gnome-extra/gconf-editor
 
-# Matt Turner <mattst88@gentoo.org> (2023-03-03)
-# No commits from maintainer in more than two years. Downloads are broken for
-# 18 months (bug #809551), depends on deprecated gconf (bug #873856)
-# Removal on 2023-04-03. Bug #873856
-app-office/upwork
-
 # Mike Pagano <mpagano@gentoo.org> (2023-02-27)
 # Mask =www-servers/nginx-unit-1.29.0-r1 for testing
 =www-servers/nginx-unit-1.29.0-r1
