@@ -111,8 +111,8 @@ src_configure() {
 	is_crosscompile && sysroot=/usr/${CTARGET}
 	./configure \
 		--target=${CTARGET} \
-		--prefix=${EPREFIX}${sysroot}/usr \
-		--syslibdir=${EPREFIX}${sysroot}/lib \
+		--prefix="${EPREFIX}${sysroot}/usr" \
+		--syslibdir="${EPREFIX}${sysroot}/lib" \
 		--disable-gcc-wrapper || die
 }
 
@@ -144,7 +144,7 @@ src_install() {
 	local sysroot
 	is_crosscompile && sysroot=/usr/${CTARGET}
 	local ldso=$(basename "${ED}"${sysroot}/lib/ld-musl-*)
-	dosym ${EPREFIX}${sysroot}/lib/${ldso} ${sysroot}/usr/bin/ldd
+	dosym "${EPREFIX}${sysroot}/lib/${ldso}" ${sysroot}/usr/bin/ldd
 
 	if ! use crypt ; then
 		# Allow sys-libs/libxcrypt[system] to provide it instead
