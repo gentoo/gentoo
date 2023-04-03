@@ -37,6 +37,11 @@
 			Build cycles renderer (requires <pkg>media-libs/openimageio</pkg> and
 			<pkg>dev-libs/boost</pkg>).
 		</flag>
+		<flag name="cycles-bin-kernels">
+			Precompile the cycles render kernels for the CUDA/HIP/OneAPI backends, if they are enabled, at compile time.
+			This makes it so that the user doesn't have to wait for the kernels to compile when they are used for the first time in Blender.
+			If this option is not on, they will be built as needed at runtime.
+		</flag>
 		<flag name="dds">
 			Adds DDS textures support to Blender.
 		</flag>

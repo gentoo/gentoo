@@ -26,7 +26,7 @@ fi
 SLOT="${PV%.*}"
 LICENSE="|| ( GPL-3 BL )"
 IUSE="+bullet +dds +fluid +openexr +tbb \
-	alembic collada +color-management cuda +cycles \
+	alembic collada +color-management cuda +cycles cycles-bin-kernels \
 	debug doc +embree +ffmpeg +fftw +gmp jack jemalloc jpeg2k \
 	man +nanovdb ndof nls openal +oidn +openimageio +openmp +opensubdiv \
 	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile \
@@ -237,6 +237,7 @@ src_configure() {
 		-DWITH_CODEC_SNDFILE=$(usex sndfile)
 		-DWITH_CXX_GUARDEDALLOC=$(usex debug)
 		-DWITH_CYCLES=$(usex cycles)
+		-DWITH_CYCLES_CUDA_BINARIES=$(usex cycles-bin-kernels)
 		-DWITH_CYCLES_DEVICE_CUDA=$(usex cuda TRUE FALSE)
 		-DWITH_CYCLES_DEVICE_OPTIX=$(usex optix)
 		-DWITH_CYCLES_EMBREE=$(usex embree)
