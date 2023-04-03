@@ -17,6 +17,9 @@
   from Pyrex sources, makes it a fast, yet extremely easy to use tool
   for interactively save and retrieve large amounts of data.
   </longdescription>
+  <use>
+    <flag name="cpudetection">Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)</flag>
+  </use>
   <upstream>
     <remote-id type="github">PyTables/PyTables</remote-id>
     <remote-id type="pypi">tables</remote-id>

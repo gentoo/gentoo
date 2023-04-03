@@ -1,0 +1,66 @@
+https://github.com/PyTables/PyTables/pull/1013
+
+From 557f8c22b772506bfbb9e7eb4d60c0cf2125998b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 3 Apr 2023 02:07:47 +0100
+Subject: [PATCH] Handle py-cpuinfo not being installed
+
+Fallback gracefully if py-cpuinfo isn't installed. We already handle this in
+setup.py but we need to avoid calling it in leaf.py too.
+
+py-cpuinfo isn't available on all platforms and PyTables is needed to run
+the test suite for some software, so we need to be able to run PyTables
+in places where py-cpuinfo isn't yet ported.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/tables/leaf.py
++++ b/tables/leaf.py
+@@ -4,7 +4,10 @@
+ import math
+ 
+ import numpy as np
+-import cpuinfo
++try:
++    import cpuinfo
++except ImportError:
++    missing_cpuinfo = True
+ 
+ from .flavor import (check_flavor, internal_flavor, toarray,
+                      alias_map as flavor_alias_map)
+@@ -336,20 +339,21 @@ def _calc_chunkshape(self, expectedrows, rowsize, itemsize):
+             # Use a decent default value for chunksize
+             chunksize *= 16
+             # Now, go explore the L3 size and try to find a smarter chunksize
+-            cpu_info = cpuinfo.get_cpu_info()
+-            if 'l3_cache_size' in cpu_info:
+-                # In general, is a good idea to set the chunksize equal to L3
+-                l3_cache_size = cpu_info['l3_cache_size']
+-                # cpuinfo sometimes returns cache sizes as strings (like,
+-                # "4096 KB"), so refuse the temptation to guess and use the
+-                # value only when it is an actual int.
+-                # Also, sometimes cpuinfo does not return a correct L3 size;
+-                # so in general, enforcing L3 > L2 is a good sanity check.
+-                l2_cache_size = cpu_info.get('l2_cache_size', "Not found")
+-                if (type(l3_cache_size) is int and
+-                    type(l2_cache_size) is int and
+-                    l3_cache_size > l2_cache_size):
+-                    chunksize = l3_cache_size
++            if not missing_cpuinfo:
++                cpu_info = cpuinfo.get_cpu_info()
++                if 'l3_cache_size' in cpu_info:
++                    # In general, is a good idea to set the chunksize equal to L3
++                    l3_cache_size = cpu_info['l3_cache_size']
++                    # cpuinfo sometimes returns cache sizes as strings (like,
++                    # "4096 KB"), so refuse the temptation to guess and use the
++                    # value only when it is an actual int.
++                    # Also, sometimes cpuinfo does not return a correct L3 size;
++                    # so in general, enforcing L3 > L2 is a good sanity check.
++                    l2_cache_size = cpu_info.get('l2_cache_size', "Not found")
++                    if (type(l3_cache_size) is int and
++                        type(l2_cache_size) is int and
++                        l3_cache_size > l2_cache_size):
++                        chunksize = l3_cache_size
+             # In Blosc2, the chunksize cannot be larger than 2 GB - BLOSC2_MAX_BUFFERSIZE
+             if chunksize > 2**31 - 32:
+                 chunksize = 2**31 - 32
+
