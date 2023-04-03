@@ -13,7 +13,7 @@ SRC_URI="https://github.com/TheTumultuousUnicornOfDarkness/${MY_PN}/archive/v${P
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="+cpu force-libstatgrab +gpu +gui +ncurses +nls opencl +pci test vulkan"
+IUSE="+cpu force-libstatgrab +gpu gui +ncurses +nls opencl +pci test vulkan"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
