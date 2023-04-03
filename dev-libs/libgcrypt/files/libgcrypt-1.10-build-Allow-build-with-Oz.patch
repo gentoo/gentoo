@@ -1,0 +1,50 @@
+https://bugs.gentoo.org/902765
+https://dev.gnupg.org/T6432
+https://dev.gnupg.org/rC7edf1abb9a0d892a80cbf7ab42f64b2720671ee9
+
+From 7edf1abb9a0d892a80cbf7ab42f64b2720671ee9 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Mon, 3 Apr 2023 14:00:15 +0900
+Subject: [PATCH] build: Allow build with -Oz.
+
+* cipher/Makefile.am [ENABLE_O_FLAG_MUNGING]: Support -Oz.
+* random/Makefile.am [ENABLE_O_FLAG_MUNGING]: Support -Oz.
+
+--
+
+GnuPG-bug-id: 6432
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+---
+ cipher/Makefile.am | 2 +-
+ random/Makefile.am | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cipher/Makefile.am b/cipher/Makefile.am
+index cf1fbe85..e67b1ee2 100644
+--- a/cipher/Makefile.am
++++ b/cipher/Makefile.am
+@@ -165,7 +165,7 @@ gost-s-box$(EXEEXT_FOR_BUILD): gost-s-box.c
+ 
+ 
+ if ENABLE_O_FLAG_MUNGING
+-o_flag_munging = sed -e 's/-O\([2-9sg][2-9sg]*\)/-O1/' -e 's/-Ofast/-O1/g'
++o_flag_munging = sed -e 's/-O\([2-9sgz][2-9sgz]*\)/-O1/' -e 's/-Ofast/-O1/g'
+ else
+ o_flag_munging = cat
+ endif
+diff --git a/random/Makefile.am b/random/Makefile.am
+index af978570..0c935a05 100644
+--- a/random/Makefile.am
++++ b/random/Makefile.am
+@@ -56,7 +56,7 @@ jitterentropy-base.c jitterentropy.h jitterentropy-base-user.h
+ 
+ # The rndjent module needs to be compiled without optimization.  */
+ if ENABLE_O_FLAG_MUNGING
+-o_flag_munging = sed -e 's/-O\([1-9sg][1-9sg]*\)/-O0/g' -e 's/-Ofast/-O0/g'
++o_flag_munging = sed -e 's/-O\([1-9sgz][1-9sgz]*\)/-O0/g' -e 's/-Ofast/-O0/g'
+ else
+ o_flag_munging = cat
+ endif
+-- 
+2.40.0
+
