@@ -92,7 +92,12 @@ qmail_set_cc() {
 
 	echo "${cc} ${CFLAGS} ${CPPFLAGS}"  > ./conf-cc || die 'Patching conf-cc failed.'
 	echo "${ld} ${LDFLAGS}" > ./conf-ld || die 'Patching conf-ld failed.'
-	sed -e "s#'ar #'$(tc-getAR) #" -e "s#'ranlib #'$(tc-getRANLIB) #" -i make-makelib.sh || die
+
+	# This function is used also by sys-apps/ucspi-tcp and sys-process/daemontools-encore
+	# but they don't have make-makelib.sh script, see bugs #902009 and #902019
+	if [[ -f make-makelib.sh ]]; then
+		sed -e "s#'ar #'$(tc-getAR) #" -e "s#'ranlib #'$(tc-getRANLIB) #" -i make-makelib.sh || die
+	fi
 }
 
 genqmail_src_unpack() {
