@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">dlundquist/sniproxy</remote-id>
+	</upstream>
 	<use>
 		<flag name="dns">
 			Enable DNS resolver via <pkg>net-libs/udns</pkg>
