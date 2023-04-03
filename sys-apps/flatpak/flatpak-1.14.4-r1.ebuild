@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{9,10,11} )
 
-inherit linux-info python-any-r1
+inherit linux-info python-any-r1 systemd
 
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz"
 DESCRIPTION="Linux application sandboxing and distribution framework"
@@ -105,4 +105,8 @@ src_install() {
 	find "${ED}" -name '*.la' -delete || die
 	# resolve conflict with acct-user/flatpak for #856706
 	rm -rf "${ED}/usr/lib/sysusers.d"
+
+	if use systemd; then
+	   systemd_dounit "${FILESDIR}"/flatpak-update.{service,timer}
+	fi
 }
