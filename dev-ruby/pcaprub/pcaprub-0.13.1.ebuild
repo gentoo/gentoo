@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30"
+USE_RUBY="ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_EXTRADOC="FAQ.rdoc README.rdoc USAGE.rdoc"
 RUBY_FAKEGEM_EXTENSIONS=(ext/pcaprub_c/extconf.rb)
@@ -23,6 +23,7 @@ RDEPEND+="net-libs/libpcap"
 ruby_add_bdepend "
 	test? (
 		>=dev-ruby/rake-compiler-0.6.0
+		dev-ruby/shoulda-context
 	)
 "
 
