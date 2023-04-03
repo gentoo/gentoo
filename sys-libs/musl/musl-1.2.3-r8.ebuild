@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs prefix
+inherit eapi8-dosym flag-o-matic toolchain-funcs prefix
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.musl-libc.org/musl"
 	inherit git-r3
@@ -141,10 +141,10 @@ src_install() {
 	just_headers && return 0
 
 	# musl provides ldd via a sym link to its ld.so
-	local sysroot
+	local sysroot=
 	is_crosscompile && sysroot=/usr/${CTARGET}
-	local ldso=$(basename "${ED}"${sysroot}/lib/ld-musl-*)
-	dosym "${EPREFIX}${sysroot}/lib/${ldso}" ${sysroot}/usr/bin/ldd
+	local ldso=$(basename "${ED}${sysroot}"/lib/ld-musl-*)
+	dosym8 -r "${sysroot}/lib/${ldso}" "${sysroot}/usr/bin/ldd"
 
 	if ! use crypt ; then
 		# Allow sys-libs/libxcrypt[system] to provide it instead
