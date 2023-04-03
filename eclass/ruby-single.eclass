@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-single.eclass
@@ -72,10 +72,13 @@ _ruby_single_implementations_depend() {
 	local depend
 	for _ruby_implementation in ${RUBY_TARGETS_PREFERENCE}; do
 		if [[ ${USE_RUBY} =~ ${_ruby_implementation} ]]; then
-			depend="${depend} $(_ruby_implementation_depend $_ruby_implementation)"
+			depend+=" ("
+			depend+=" $(_ruby_implementation_depend $_ruby_implementation)"
+			depend+=" virtual/rubygems[ruby_targets_${_ruby_implementation}(-)]"
+			depend+=" )"
 		fi
 	done
-	echo "|| ( ${depend} ) virtual/rubygems"
+	echo "|| ( ${depend} )"
 }
 
 _ruby_single_set_globals() {
