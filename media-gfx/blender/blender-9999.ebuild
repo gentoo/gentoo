@@ -28,7 +28,7 @@ LICENSE="|| ( GPL-3 BL )"
 IUSE="+bullet +dds +fluid +openexr +tbb \
 	alembic collada +color-management cuda +cycles cycles-bin-kernels \
 	debug doc +embree +ffmpeg +fftw +gmp jack jemalloc jpeg2k \
-	man +nanovdb ndof nls openal +oidn +openmp +opensubdiv \
+	man +nanovdb ndof nls openal +oidn +openmp +openpgl +opensubdiv \
 	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl \
 	+sndfile test +tiff valgrind wayland X"
 RESTRICT="!test? ( test )"
@@ -86,6 +86,7 @@ RDEPEND="${PYTHON_DEPS}
 		>=dev-libs/imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
 	)
+	openpgl? ( media-libs/openpgl )
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0 )
 	openvdb? (
 		>=media-gfx/openvdb-9.0.0:=[nanovdb?]
@@ -242,6 +243,7 @@ src_configure() {
 		-DWITH_CYCLES_DEVICE_OPTIX=$(usex optix)
 		-DWITH_CYCLES_EMBREE=$(usex embree)
 		-DWITH_CYCLES_OSL=$(usex osl)
+		-DWITH_CYCLES_PATH_GUIDING=$(usex openpgl)
 		-DWITH_CYCLES_STANDALONE=OFF
 		-DWITH_CYCLES_STANDALONE_GUI=OFF
 		-DWITH_DOC_MANPAGE=$(usex man)
