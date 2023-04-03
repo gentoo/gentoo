@@ -19,11 +19,12 @@ DESCRIPTION="A template language aiming to reduce the syntax to the essential pa
 HOMEPAGE="https://slim-template.github.io/"
 
 LICENSE="MIT"
-SLOT="$(ver_cut 1)"
+SLOT="4"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc"
 
 ruby_add_rdepend "
+	!dev-ruby/slim:5
 	>=dev-ruby/tilt-2.0.6:*
 	>=dev-ruby/temple-0.7.6:0.7
 "

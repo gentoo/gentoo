@@ -22,8 +22,11 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86"
 IUSE="doc"
 
-ruby_add_rdepend ">=dev-ruby/tilt-2.0.6:* =dev-ruby/tilt-2.0*:*
-	>=dev-ruby/temple-0.7.6:0.7"
+ruby_add_rdepend "
+	!dev-ruby/slim:5
+	>=dev-ruby/tilt-2.0.6:* =dev-ruby/tilt-2.0*:*
+	>=dev-ruby/temple-0.7.6:0.7
+"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard dev-ruby/redcarpet )"
 
