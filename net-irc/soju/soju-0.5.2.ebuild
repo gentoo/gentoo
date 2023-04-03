@@ -47,8 +47,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "${PN} requires a user database for authenticating bouncer users,"
-	elog "please create a user using:"
-	elog "# sojuctl -config ${EROOT}/etc/soju/config create-user <username> [-admin]"
-	elog "then set ${EROOT}/var/lib/soju/main.db owner and group to soju:soju."
+	elog "${PN} requires a user database for authenticating clients."
+	elog "As the soju user, create a database using:"
+	elog "$ sojuctl -config ${EROOT}/etc/soju/config create-user <username> [-admin]"
 }
