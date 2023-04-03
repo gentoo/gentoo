@@ -348,13 +348,6 @@ dev-ruby/sass-rails:5.0
 # Bug #900412, removal on 2023-04-08.
 x11-plugins/purple-hangouts
 
-# Jakov Smolić <jsmolic@gentoo.org> (2023-03-04)
-# Depends on deprecated dev-python/nose, no python3.11
-# support, unmaintained upstream. Bugs #896468, #878685,
-# #865269, #825062
-# Removal on 2023-04-04.
-app-admin/gixy
-
 # Mike Pagano <mpagano@gentoo.org> (2023-02-27)
 # Mask =www-servers/nginx-unit-1.29.0-r1 for testing
 =www-servers/nginx-unit-1.29.0-r1
