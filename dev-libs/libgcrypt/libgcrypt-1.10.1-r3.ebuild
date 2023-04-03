@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.1-fix-no-asm-hppa.patch
 	"${FILESDIR}"/${PN}-1.9.4-no-fgrep-libgcrypt-config.patch
 	"${FILESDIR}"/${PN}-1.10.1-configure-clang16.patch
+	"${FILESDIR}"/libgcrypt-1.10-build-Allow-build-with-Oz.patch
 )
 
 MULTILIB_CHOST_TOOLS=(
