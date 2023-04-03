@@ -25,6 +25,7 @@
 		<flag name="gpu">Use the <pkg>media-libs/glfw</pkg> library for GPU info</flag>
 		<flag name="pci">Use the <pkg>sys-apps/pciutils</pkg> library for PCI info</flag>
 		<flag name="opencl">Use the <pkg>virtual/opencl</pkg> library</flag>
+		<flag name="vulkan">Enable vulkan support</flag>
 	</use>
 	<use lang="fr">
 		<flag name="bandwidth">Intégrer bandwidth</flag>
