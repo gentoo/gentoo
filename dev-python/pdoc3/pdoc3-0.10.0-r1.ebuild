@@ -13,7 +13,7 @@ HOMEPAGE="https://pdoc3.github.io/pdoc/"
 
 SLOT="0"
 LICENSE="AGPL-3+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-python/mako[${PYTHON_USEDEP}]
