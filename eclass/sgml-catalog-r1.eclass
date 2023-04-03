@@ -35,7 +35,7 @@ sgml-catalog-r1_update_catalog() {
 
 	if [[ ${#cats[@]} -gt 0 ]]; then
 		ebegin "Updating ${EROOT}/etc/sgml/catalog"
-		printf 'CATALOG "%s"\n' "${cats[@]}" > "${T}"/catalog &&
+		printf 'CATALOG "%s"\n' "${cats[@]#${ROOT}}" > "${T}"/catalog &&
 		mv "${T}"/catalog "${EROOT}"/etc/sgml/catalog
 		eend "${?}"
 	else
