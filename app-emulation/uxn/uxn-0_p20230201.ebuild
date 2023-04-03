@@ -18,7 +18,7 @@ else
 	SRC_URI="https://git.sr.ht/~rabbits/uxn/archive/${COMMIT}.tar.gz
 		-> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${COMMIT}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="MIT"
