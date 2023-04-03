@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -82,4 +82,14 @@ src_install() {
 	dosym "../..${installation_directory}/API/C/lib/libziAPI-linux64.so" "usr/$(get_libdir)/libziAPI-linux64.so"
 
 	udev_dorules Installer/udev/55-zhinst.rules
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	udev_reload
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	udev_reload
 }
