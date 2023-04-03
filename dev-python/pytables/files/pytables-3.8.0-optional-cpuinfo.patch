@@ -1,6 +1,6 @@
 https://github.com/PyTables/PyTables/pull/1013
 
-From 557f8c22b772506bfbb9e7eb4d60c0cf2125998b Mon Sep 17 00:00:00 2001
+From 9d2487eb53af940de3b5c79200c9f4c2b90f51f2 Mon Sep 17 00:00:00 2001
 From: Sam James <sam@gentoo.org>
 Date: Mon, 3 Apr 2023 02:07:47 +0100
 Subject: [PATCH] Handle py-cpuinfo not being installed
@@ -15,19 +15,20 @@ in places where py-cpuinfo isn't yet ported.
 Signed-off-by: Sam James <sam@gentoo.org>
 --- a/tables/leaf.py
 +++ b/tables/leaf.py
-@@ -4,7 +4,10 @@
+@@ -4,7 +4,11 @@ import warnings
  import math
  
  import numpy as np
 -import cpuinfo
 +try:
 +    import cpuinfo
++    missing_cpuinfo = False
 +except ImportError:
 +    missing_cpuinfo = True
  
  from .flavor import (check_flavor, internal_flavor, toarray,
                       alias_map as flavor_alias_map)
-@@ -336,20 +339,21 @@ def _calc_chunkshape(self, expectedrows, rowsize, itemsize):
+@@ -336,20 +340,21 @@ class Leaf(Node):
              # Use a decent default value for chunksize
              chunksize *= 16
              # Now, go explore the L3 size and try to find a smarter chunksize
@@ -63,4 +64,6 @@ Signed-off-by: Sam James <sam@gentoo.org>
              # In Blosc2, the chunksize cannot be larger than 2 GB - BLOSC2_MAX_BUFFERSIZE
              if chunksize > 2**31 - 32:
                  chunksize = 2**31 - 32
+-- 
+2.40.0
 
