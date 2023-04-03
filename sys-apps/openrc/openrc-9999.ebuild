@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -57,8 +57,8 @@ PDEPEND="netifrc? ( net-misc/netifrc )"
 
 src_configure() {
 	local emesonargs=(
-	$(meson_feature audit)
-	"-Dbranding=\"Gentoo Linux\""
+		$(meson_feature audit)
+		"-Dbranding=\"Gentoo Linux\""
 		$(meson_use newnet)
 		-Dos=Linux
 		$(meson_use pam)
