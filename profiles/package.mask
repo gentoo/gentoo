@@ -365,7 +365,6 @@ x11-apps/xf86dga
 # Long deprecated, GNOME 2-era packages.
 # Removal on 2023-04-04. Bug #873841
 gnome-base/gconf
-gnome-extra/gconf-editor
 
 # Mike Pagano <mpagano@gentoo.org> (2023-02-27)
 # Mask =www-servers/nginx-unit-1.29.0-r1 for testing
