@@ -19,7 +19,13 @@ LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64"
 
-ruby_add_bdepend "test? ( dev-ruby/sus-fixtures-async )"
+ruby_add_bdepend "
+	test? (
+		dev-ruby/async-io
+		dev-ruby/async-process
+		dev-ruby/sus-fixtures-async
+	)
+"
 
 all_ruby_prepare() {
 	sed -i -e 's:_relative ": "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
