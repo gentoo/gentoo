@@ -1,7 +1,7 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit flag-o-matic autotools
 
 DESCRIPTION="Mail delivery agent/filter"
@@ -12,23 +12,24 @@ HOMEPAGE="https://www.courier-mta.org/maildrop/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~ppc ppc64 ~s390 sparc x86"
-IUSE="berkdb debug dovecot fam gdbm ldap mysql postgres static-libs authlib +tools trashquota"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+IUSE="berkdb debug dovecot gdbm ldap mysql postgres static-libs authlib +tools trashquota"
 
 CDEPEND="!mail-mta/courier
 	net-mail/mailbase
-	dev-libs/libpcre
-	net-dns/libidn:0=
+	dev-libs/libpcre2
+	net-dns/libidn2:=
 	>=net-libs/courier-unicode-2.0:=
 	gdbm?     ( >=sys-libs/gdbm-1.8.0:= )
 	mysql?    ( net-libs/courier-authlib )
 	postgres? ( net-libs/courier-authlib )
 	ldap?     ( net-libs/courier-authlib )
 	authlib?  ( net-libs/courier-authlib )
-	fam?      ( virtual/fam )
 	!gdbm? (
 		berkdb? ( >=sys-libs/db-3:= )
 	)
+	gdbm? ( net-mail/courier-imap[gdbm?,berkdb?] )
+	berkdb? ( net-mail/courier-imap[gdbm?,berkdb?] )
 	tools? (
 		!mail-mta/netqmail
 		!net-mail/courier-imap
@@ -46,14 +47,15 @@ REQUIRED_USE="
 
 S=${WORKDIR}/${P%%_pre}
 
+PATCHES=(
+	"${FILESDIR}"/${P}-testsuite.patch
+	"${FILESDIR}"/${PN}-3.0.2-makedat.patch
+)
+
 src_prepare() {
 	# Prefer gdbm over berkdb
 	if use gdbm ; then
 		use berkdb && elog "Both gdbm and berkdb selected. Using gdbm."
-	fi
-
-	if ! use fam ; then
-		eapply -p0 "${FILESDIR}"/${PN}-disable-fam.patch
 	fi
 
 	# no need to error out if no default - it will be given to econf anyway
@@ -61,14 +63,12 @@ src_prepare() {
 		's~AC_MSG_ERROR(Cannot determine default mailbox)~SPOOLDIR="./.maildir"~' \
 		"${S}"/libs/maildrop/configure.ac || die "sed failed"
 
-	eapply "${FILESDIR}"/${PN}-3.0.0-testsuite.patch
-	eapply_user
+	default
 	eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
-		$(use_enable fam)
 		--with-devel
 		--disable-tempdir
 		--enable-syslog=1
