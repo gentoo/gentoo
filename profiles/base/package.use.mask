@@ -17,10 +17,6 @@ kde-apps/kdesdk-meta ruby
 # which is how it appears now. See bug #900895.
 ~net-misc/wget-1.21.3 verify-sig
 
-# Matt Turner <mattst88@gentoo.org> (2023-03-03)
-# Depends on deprecated gnome-base/gconf and gtk+:2
-sys-power/apcupsd gnome
-
 # Michał Górny <mgorny@gentoo.org> (2023-02-20)
 # dev-python/colorspacious is masked for removal.
 <dev-python/matplotlib-3.7.1 doc
