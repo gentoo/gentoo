@@ -28,15 +28,15 @@ LICENSE="|| ( GPL-3 BL )"
 IUSE="+bullet +dds +fluid +openexr +tbb \
 	alembic collada +color-management cuda +cycles cycles-bin-kernels \
 	debug doc +embree +ffmpeg +fftw +gmp jack jemalloc jpeg2k \
-	man +nanovdb ndof nls openal +oidn +openimageio +openmp +opensubdiv \
-	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl +sndfile \
-	test +tiff valgrind wayland X"
+	man +nanovdb ndof nls openal +oidn +openmp +opensubdiv \
+	+openvdb optix +osl +pdf +potrace +pugixml pulseaudio sdl \
+	+sndfile test +tiff valgrind wayland X"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alembic? ( openexr )
 	cuda? ( cycles )
-	cycles? ( openexr tiff openimageio )
+	cycles? ( openexr tiff )
 	fluid? ( tbb )
 	openvdb? ( tbb )
 	optix? ( cuda )
@@ -59,6 +59,7 @@ RDEPEND="${PYTHON_DEPS}
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libsamplerate
+	>=media-libs/openimageio-2.4.6.0:=
 	sys-libs/zlib:=
 	virtual/glu
 	virtual/libintl
@@ -81,7 +82,6 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
 	oidn? ( >=media-libs/oidn-1.4.1 )
-	openimageio? ( >=media-libs/openimageio-2.4.6.0:= )
 	openexr? (
 		>=dev-libs/imath-3.1.4-r2:=
 		>=media-libs/openexr-3:0=
@@ -273,7 +273,6 @@ src_configure() {
 		-DWITH_OPENCOLLADA=$(usex collada)
 		-DWITH_OPENCOLORIO=$(usex color-management)
 		-DWITH_OPENIMAGEDENOISE=$(usex oidn)
-		-DWITH_OPENIMAGEIO=$(usex openimageio)
 		-DWITH_OPENMP=$(usex openmp)
 		-DWITH_OPENSUBDIV=$(usex opensubdiv)
 		-DWITH_OPENVDB=$(usex openvdb)
