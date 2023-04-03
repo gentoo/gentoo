@@ -16,6 +16,7 @@ LICENSE="Boost-1.0"
 # Need the -c as a one-off (can drop on next soname bump) as the library rename
 # from libmsgpackc.so.2 -> libmsgpack-c.so.2 is effectively an ABI break and
 # has all the same problems a new SONAME would have.
+# See https://github.com/msgpack/msgpack-c/pull/1053.
 SLOT="0/2-c"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc examples test"
