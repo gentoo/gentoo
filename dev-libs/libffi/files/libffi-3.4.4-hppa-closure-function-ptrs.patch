@@ -1,0 +1,170 @@
+https://github.com/libffi/libffi/commit/e58e22b22386ed0e0a95e97eb8eed016e3f01b02
+
+From e58e22b22386ed0e0a95e97eb8eed016e3f01b02 Mon Sep 17 00:00:00 2001
+From: Anthony Green <green@moxielogic.com>
+Date: Thu, 2 Feb 2023 07:02:53 -0500
+Subject: [PATCH] From Dave Anglin:
+
+A couple of years ago the 32-bit hppa targets were converted from using a trampoline executed on the stack to the function descriptor technique used by ia64. This is more efficient and avoids having to have an executable stack. However, function pointers on 32-bit need the PLABEL bit set in the pointer. It distinguishes between pointers that point directly to the executable code and pointer that point to a function descriptor. We need the later for libffi. But as a result, it is not possible to convert using casts data pointers to function pointers.
+
+The solution at the time was to set the PLABEL bit in hppa closure pointers using FFI_CLOSURE_PTR. However, I realized recently that this was a bad choice. Packages like python-cffi allocate their own closure pointers, so this isn't going to work well there.
+
+A better solution is to leave closure pointers unchanged and only set the PLABEL bit in pointers used to point to executable code.
+
+The attached patch drops the FFI_CLOSURE_PTR and FFI_RESTORE_PTR defines. This allows some cleanup in the hppa closure routines. The FFI_FN define is now used to set the PLABEL bit on hppa. ffi_closure_alloc is modified to set the PLABEL bit in the value set in *code.
+
+I also added a FFI_CL define to convert a function pointer to a closure pointer. It is only used in one test case.
+--- a/include/ffi.h.in
++++ b/include/ffi.h.in
+@@ -361,14 +361,6 @@ typedef struct {
+ FFI_API void *ffi_closure_alloc (size_t size, void **code);
+ FFI_API void ffi_closure_free (void *);
+ 
+-#if defined(PA_LINUX) || defined(PA_HPUX)
+-#define FFI_CLOSURE_PTR(X) ((void *)((unsigned int)(X) | 2))
+-#define FFI_RESTORE_PTR(X) ((void *)((unsigned int)(X) & ~3))
+-#else
+-#define FFI_CLOSURE_PTR(X) (X)
+-#define FFI_RESTORE_PTR(X) (X)
+-#endif
+-
+ FFI_API ffi_status
+ ffi_prep_closure (ffi_closure*,
+ 		  ffi_cif *,
+@@ -515,8 +507,14 @@ FFI_API
+ ffi_status ffi_get_struct_offsets (ffi_abi abi, ffi_type *struct_type,
+ 				   size_t *offsets);
+ 
+-/* Useful for eliminating compiler warnings.  */
++/* Convert between closure and function pointers.  */
++#if defined(PA_LINUX) || defined(PA_HPUX)
++#define FFI_FN(f) ((void (*)(void))((unsigned int)(f) | 2))
++#define FFI_CL(f) ((void *)((unsigned int)(f) & ~3))
++#else
+ #define FFI_FN(f) ((void (*)(void))f)
++#define FFI_CL(f) ((void *)(f))
++#endif
+ 
+ /* ---- Definitions shared with assembly code ---------------------------- */
+ 
+--- a/src/closures.c
++++ b/src/closures.c
+@@ -993,23 +993,23 @@ ffi_closure_alloc (size_t size, void **code)
+   if (!code)
+     return NULL;
+ 
+-  ptr = FFI_CLOSURE_PTR (dlmalloc (size));
++  ptr = dlmalloc (size);
+ 
+   if (ptr)
+     {
+       msegmentptr seg = segment_holding (gm, ptr);
+ 
+-      *code = add_segment_exec_offset (ptr, seg);
++      *code = FFI_FN (add_segment_exec_offset (ptr, seg));
+       if (!ffi_tramp_is_supported ())
+         return ptr;
+ 
+       ftramp = ffi_tramp_alloc (0);
+       if (ftramp == NULL)
+       {
+-        dlfree (FFI_RESTORE_PTR (ptr));
++        dlfree (ptr);
+         return NULL;
+       }
+-      *code = ffi_tramp_get_addr (ftramp);
++      *code = FFI_FN (ffi_tramp_get_addr (ftramp));
+       ((ffi_closure *) ptr)->ftramp = ftramp;
+     }
+ 
+@@ -1050,7 +1050,7 @@ ffi_closure_free (void *ptr)
+   if (ffi_tramp_is_supported ())
+     ffi_tramp_free (((ffi_closure *) ptr)->ftramp);
+ 
+-  dlfree (FFI_RESTORE_PTR (ptr));
++  dlfree (ptr);
+ }
+ 
+ int
+@@ -1070,16 +1070,20 @@ ffi_tramp_is_present (void *ptr)
+ void *
+ ffi_closure_alloc (size_t size, void **code)
+ {
++  void *c;
++
+   if (!code)
+     return NULL;
+ 
+-  return *code = FFI_CLOSURE_PTR (malloc (size));
++  c = malloc (size);
++  *code = FFI_FN (c);
++  return c;
+ }
+ 
+ void
+ ffi_closure_free (void *ptr)
+ {
+-  free (FFI_RESTORE_PTR (ptr));
++  free (ptr);
+ }
+ 
+ void *
+--- a/src/pa/ffi.c
++++ b/src/pa/ffi.c
+@@ -445,7 +445,6 @@ ffi_status ffi_closure_inner_pa32(ffi_closure *closure, UINT32 *stack)
+   int i, avn;
+   unsigned int slot = FIRST_ARG_SLOT;
+   register UINT32 r28 asm("r28");
+-  ffi_closure *c = (ffi_closure *)FFI_RESTORE_PTR (closure);
+ 
+   cif = closure->cif;
+ 
+@@ -548,7 +547,7 @@ ffi_status ffi_closure_inner_pa32(ffi_closure *closure, UINT32 *stack)
+     }
+ 
+   /* Invoke the closure.  */
+-  (c->fun) (cif, rvalue, avalue, c->user_data);
++  (closure->fun) (cif, rvalue, avalue, closure->user_data);
+ 
+   debug(3, "after calling function, ret[0] = %08x, ret[1] = %08x\n", u.ret[0],
+ 	u.ret[1]);
+@@ -649,8 +648,6 @@ ffi_prep_closure_loc (ffi_closure* closure,
+ 		      void *user_data,
+ 		      void *codeloc)
+ {
+-  ffi_closure *c = (ffi_closure *)FFI_RESTORE_PTR (closure);
+-
+   /* The layout of a function descriptor.  A function pointer with the PLABEL
+      bit set points to a function descriptor.  */
+   struct pa32_fd
+@@ -676,14 +673,14 @@ ffi_prep_closure_loc (ffi_closure* closure,
+   fd = (struct pa32_fd *)((UINT32)ffi_closure_pa32 & ~3);
+ 
+   /* Setup trampoline.  */
+-  tramp = (struct ffi_pa32_trampoline_struct *)c->tramp;
++  tramp = (struct ffi_pa32_trampoline_struct *)closure->tramp;
+   tramp->code_pointer = fd->code_pointer;
+   tramp->fake_gp = (UINT32)codeloc & ~3;
+   tramp->real_gp = fd->gp;
+ 
+-  c->cif  = cif;
+-  c->user_data = user_data;
+-  c->fun  = fun;
++  closure->cif  = cif;
++  closure->user_data = user_data;
++  closure->fun  = fun;
+ 
+   return FFI_OK;
+ }
+--- a/testsuite/libffi.closures/closure_loc_fn0.c
++++ b/testsuite/libffi.closures/closure_loc_fn0.c
+@@ -85,7 +85,7 @@ int main (void)
+ 
+ #ifndef FFI_EXEC_STATIC_TRAMP
+   /* With static trampolines, the codeloc does not point to closure */
+-  CHECK(memcmp(pcl, codeloc, sizeof(*pcl)) == 0);
++  CHECK(memcmp(pcl, FFI_CL(codeloc), sizeof(*pcl)) == 0);
+ #endif
+ 
+   res = (*((closure_loc_test_type0)codeloc))
+
