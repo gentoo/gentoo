@@ -14,8 +14,9 @@ if [[ ${PV} = *9999* ]] ; then
 	# Subversion is needed for downloading unit test files
 	inherit git-r3 subversion
 	EGIT_REPO_URI="https://projects.blender.org/blender/blender.git"
+	ADDONS_EGIT_REPO_URI="https://projects.blender.org/blender/blender-addons.git"
 else
-	SRC_URI="https://projects.blender.org/blender/blender/archive/v${PV}.tar.gz"
+	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
 	# Update these between major releases.
 	TEST_TARBALL_VERSION="$(ver_cut 1-2).0"
 	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.xz )"
@@ -168,10 +169,16 @@ pkg_setup() {
 src_unpack() {
 	if [[ ${PV} = *9999* ]] ; then
 		git-r3_src_unpack
+
+		git-r3_fetch ${ADDONS_EGIT_REPO_URI}
+		git-r3_checkout ${ADDONS_EGIT_REPO_URI} ${S}/scripts/addons
+
 		if use test; then
 			TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/tests
 			subversion_fetch ${TESTS_SVN_URL} ../lib/tests
 		fi
+		ASSETS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets
+		subversion_fetch ${ASSETS_SVN_URL} ../lib/assets
 	else
 		default
 		if use test; then
