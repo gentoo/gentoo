@@ -31,7 +31,7 @@ RDEPEND="
 	>=dev-python/rich-12.0.0[${PYTHON_USEDEP}]
 	>=dev-python/ruamel-yaml-0.17.21[${PYTHON_USEDEP}]
 	>=dev-python/wcmatch-8.3.2[${PYTHON_USEDEP}]
-	>=dev-util/yamllint-1.26.3[${PYTHON_USEDEP}]
+	>=dev-util/yamllint-1.30.0[${PYTHON_USEDEP}]
 	dev-vcs/git"
 BDEPEND="
 	>=dev-python/setuptools-scm-7.0.5[${PYTHON_USEDEP}]
