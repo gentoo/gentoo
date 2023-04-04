@@ -10,6 +10,7 @@ SRC_URI="https://github.com/smarty-php/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="doc examples"
 
 # PHP unicode support is detected at runtime, and the cached templates
 # that smarty generates depend on it. If, later on, PHP is reinstalled
@@ -18,13 +19,22 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 # functions. See bug #532618.
 RDEPEND="dev-lang/php:*[unicode]"
 
+src_prepare() {
+	default
+
+	# Prepare the docs and examples for easy dodocing.
+	rm docs/_config.yml || die
+	mv -v demo examples || die
+}
+
 src_install() {
 	insinto "/usr/share/php/${PN}"
 	doins -r libs/*
 
-	# The smarty docs and examples aren't part of the tarball,
-	# https://github.com/smarty-php/smarty/issues/799
 	local DOCS=( CHANGELOG.md README.md SECURITY.md )
+
+	use doc && dodoc -r docs/*
+	use examples && dodoc -r examples
 	einstalldocs
 }
 
