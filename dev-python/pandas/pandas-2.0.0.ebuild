@@ -71,7 +71,7 @@ COMMON_DEPEND="
 	>=dev-python/python-dateutil-2.8.2[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2020.1[${PYTHON_USEDEP}]
 "
-DEPEND="
+BDEPEND="
 	${COMMON_DEPEND}
 	>=dev-python/cython-0.29.33[${PYTHON_USEDEP}]
 	>=dev-python/versioneer-0.28[${PYTHON_USEDEP}]
