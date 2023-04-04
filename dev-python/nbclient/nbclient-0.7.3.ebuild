@@ -31,6 +31,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/ipykernel[${PYTHON_USEDEP}]
 		dev-python/ipywidgets[${PYTHON_USEDEP}]
