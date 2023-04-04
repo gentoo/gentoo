@@ -13,20 +13,11 @@ SRC_URI="https://github.com/sergeyklay/${PN}/archive/${PV}.tar.gz
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-BDEPEND="
-	test? (
-		app-emacs/buttercup
-		app-emacs/undercover
-	)
-"
+BDEPEND="test? ( app-emacs/undercover )"
 
 DOCS=( NEWS README.org )
 ELISP_TEXINFO="bnf-mode.texi"
 SITEFILE="50${PN}-gentoo.el"
 
-src_test() {
-	buttercup -L . -L test --traceback full || die
-}
+elisp-enable-tests buttercup test
