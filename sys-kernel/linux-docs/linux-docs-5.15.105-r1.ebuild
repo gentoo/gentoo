@@ -5,8 +5,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9,10,11} )
 inherit linux-info python-any-r1 toolchain-funcs
 
-MY_PV="$(ver_cut 1-2)"
-MY_P=linux-${MY_PV}
+MY_P=linux-${PV}
 
 S=${WORKDIR}/${MY_P}
 
@@ -26,10 +25,6 @@ BDEPEND="${PYTHON_DEPS}
 	>=dev-python/sphinx-6
 	dev-python/sphinx-rtd-theme
 	media-libs/fontconfig"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-sphinx-6.0.patch"
-)
 
 src_prepare() {
 	default
