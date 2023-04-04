@@ -16,13 +16,10 @@ KEYWORDS="~amd64 ~x86"
 
 SITEFILE="50${PN}-gentoo.el"
 
+elisp-enable-tests ert "${S}" -l typescript-mode-tests.el
+
 src_compile() {
 	elisp-compile ${PN}.el
-}
-
-src_test() {
-	${EMACS} ${EMACSFLAGS} -L . -l typescript-mode-tests.el \
-			 -f ert-run-tests-batch-and-exit || die
 }
 
 src_install() {
