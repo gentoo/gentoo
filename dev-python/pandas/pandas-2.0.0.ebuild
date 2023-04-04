@@ -74,6 +74,7 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	>=dev-python/cython-0.29.33[${PYTHON_USEDEP}]
+	>=dev-python/versioneer-0.28[${PYTHON_USEDEP}]
 	doc? (
 		${VIRTUALX_DEPEND}
 		app-text/pandoc
