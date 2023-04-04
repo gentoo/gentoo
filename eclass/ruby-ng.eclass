@@ -419,6 +419,13 @@ _ruby_each_implementation() {
 		use ruby_targets_${_ruby_implementation} || continue
 
 		RUBY=$(ruby_implementation_command ${_ruby_implementation})
+
+		if [[ -z ${RUBY} ]]; then
+			eerror "Failed to determine a path for \${RUBY} for USE=ruby_targets_${_ruby_implementation}:"
+			eerror " ruby_implementation_command returned an empty RUBY for ${_ruby_implementation}"
+			die "Could not find RUBY for ${_ruby_implementation}. Is $(_ruby_implementation_depend ${_ruby_implementation}) installed?"
+		fi
+
 		invoked=yes
 
 		if [[ -n "$1" ]]; then
