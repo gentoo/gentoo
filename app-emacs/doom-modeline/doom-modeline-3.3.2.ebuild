@@ -25,15 +25,9 @@ RDEPEND="
 "
 BDEPEND="${RDEPEND}"
 
+elisp-enable-tests ert test
+
 src_compile() {
 	elisp_src_compile
 	elisp-make-autoload-file
-}
-
-src_test() {
-	${EMACS} ${EMACSFLAGS} ${BYTECOMPFLAGS}     \
-		-L . -L test                            \
-		-l test/${PN}-core-test.el              \
-		-l test/${PN}-env-test.el               \
-		-f ert-run-tests-batch-and-exit || die "tests failed"
 }
