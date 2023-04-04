@@ -11,7 +11,7 @@ SRC_URI="https://github.com/martinrotter/${PN}/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="|| ( LGPL-3 GPL-2+ ) AGPL-3+ BSD GPL-3+ MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="mysql qt6 +sqlite webengine"
 REQUIRED_USE="|| ( mysql sqlite )"
 
