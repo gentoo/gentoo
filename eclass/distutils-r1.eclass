@@ -241,14 +241,8 @@ _distutils_set_globals() {
 				'
 				;;
 			setuptools)
-				# || ( ... ) dep is a workaround for bug #892525
-				# It can be removed once >=67.2.0 is stable and replaced with
-				# a simple >=67.2.0 dep.
 				bdep+='
-					|| (
-						>=dev-python/setuptools-67.2.0[${PYTHON_USEDEP}]
-						<dev-python/setuptools-65.7.1[${PYTHON_USEDEP}]
-					)
+					>=dev-python/setuptools-67.2.0[${PYTHON_USEDEP}]
 					>=dev-python/wheel-0.38.4[${PYTHON_USEDEP}]
 				'
 				;;
