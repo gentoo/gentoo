@@ -1,4 +1,4 @@
-# Copyright 2019-2022 Gentoo Authors
+# Copyright 2019-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,6 @@ RDEPEND="
 	media-libs/libsdl2[sound,video]
 	net-libs/libpcap
 	net-libs/libslirp
-	opengl? ( media-libs/libepoxy )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="kde-frameworks/extra-cmake-modules:5"
