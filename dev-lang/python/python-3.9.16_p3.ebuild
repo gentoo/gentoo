@@ -188,6 +188,10 @@ src_configure() {
 			-x test_multiprocessing_fork
 			-x test_socket
 			-x test_xmlrpc
+
+			# Hangs (actually runs indefinitely executing itself w/ many cpython builds)
+			# bug #900429
+			-x test_tools
 		)
 
 		if has_version "app-arch/rpm" ; then
