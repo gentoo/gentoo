@@ -24,6 +24,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.6.0-fix-dup-upstream-connections.patch
+)
+
 src_compile() {
 	GOFLAGS+=" -tags=moderncsqlite"
 	use pam && GOFLAGS+=" -tags=pam"
