@@ -39,6 +39,7 @@ distutils_enable_tests pytest
 PATCHES=(
 	"${FILESDIR}"/cffi-1.14.0-darwin-no-brew.patch
 	"${FILESDIR}"/${P}-hppa.patch
+	"${FILESDIR}"/${P}-python3.11-tests.patch
 )
 
 src_prepare() {
