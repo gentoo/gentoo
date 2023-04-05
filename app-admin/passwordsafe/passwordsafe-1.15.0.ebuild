@@ -1,11 +1,11 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit cmake desktop flag-o-matic optfeature wxwidgets xdg
+inherit cmake desktop optfeature wxwidgets xdg
 
 MY_PV="${PV/_beta/BETA}"
 DESCRIPTION="Password manager with wxGTK based frontend"
@@ -39,12 +39,8 @@ S="${WORKDIR}/pwsafe-${MY_PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.15.0-gcc12-time.patch
+	"${FILESDIR}"/${PN}-1.15.0-gtest-no-gnu++11.patch
 )
-
-pkg_pretend() {
-	einfo "Checking for -std=c++11 support in compiler"
-	test-flags-CXX -std=c++11 > /dev/null || die
-}
 
 src_configure() {
 	setup-wxwidgets
