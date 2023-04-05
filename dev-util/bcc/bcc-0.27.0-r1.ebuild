@@ -47,6 +47,7 @@ DEPEND="
 	)
 "
 BDEPEND="
+	app-arch/zip
 	virtual/pkgconfig
 "
 
