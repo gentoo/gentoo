@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="doc cpu_flags_x86_mmx"
 
 DEPEND=">=media-libs/libsdl2-2.0.1-r1[video,${MULTILIB_USEDEP}]"
