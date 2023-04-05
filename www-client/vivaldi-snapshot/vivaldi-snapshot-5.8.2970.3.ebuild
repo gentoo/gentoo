@@ -84,7 +84,7 @@ CHROMIUM_LANGS="
 	zh-TW
 "
 
-inherit chromium-2 desktop unpacker xdg
+inherit chromium-2 desktop linux-info unpacker xdg
 
 VIVALDI_PN="${PN/%vivaldi/vivaldi-stable}"
 VIVALDI_HOME="opt/${PN}"
@@ -145,6 +145,7 @@ RDEPEND="
 "
 
 QA_PREBUILT="*"
+CONFIG_CHECK="~CPU_FREQ"
 S="${WORKDIR}"
 
 src_unpack() {
