@@ -22,7 +22,7 @@ KEYWORDS="~amd64"
 RDEPEND="
 	dev-python/ipython[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	dev-python/jupyter_core[${PYTHON_USEDEP}]
+	dev-python/jupyter-core[${PYTHON_USEDEP}]
 	>=dev-python/jupyterlab-server-2.19[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-server-1.16[${PYTHON_USEDEP}]
 	<dev-python/jupyter-server-3[${PYTHON_USEDEP}]
