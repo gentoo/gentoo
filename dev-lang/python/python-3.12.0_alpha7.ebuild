@@ -162,8 +162,13 @@ src_configure() {
 			-m test
 			"-j$(makeopts_jobs)"
 			--pgo-extended
-			-x test_gdb
 			-u-network
+
+			# We use a timeout because of how often we've had hang issues
+			# here. It also matches the default upstream PROFILE_TASK.
+			--timeout 1200
+
+			-x test_gdb
 
 			# All of these seem to occasionally hang for PGO inconsistently
 			# They'll even hang here but be fine in src_test sometimes.
