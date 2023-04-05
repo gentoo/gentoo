@@ -13,7 +13,6 @@ SRC_URI+=" https://github.com/alfredfo/${PN}-deps/raw/master/${P}-deps.tar.xz"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
-IUSE="sqlite"
 
 BDEPEND="
 	app-text/scdoc
@@ -21,12 +20,11 @@ BDEPEND="
 RDEPEND="
 	acct-user/soju
 	acct-group/soju
-	sqlite? ( dev-db/sqlite:3 )
 "
 DEPEND="${RDEPEND}"
 
 src_compile() {
-	GOFLAGS+=" -tags=$(usex sqlite libsqlite3 nosqlite)"
+	GOFLAGS+=" -tags=moderncsqlite"
 
 	ego build ${GOFLAGS} ./cmd/soju
 	ego build ${GOFLAGS} ./cmd/sojudb
