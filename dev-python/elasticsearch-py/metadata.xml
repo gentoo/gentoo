@@ -13,7 +13,4 @@
 		<remote-id type="github">elastic/elasticsearch-py</remote-id>
 		<remote-id type="pypi">elasticsearch7</remote-id>
 	</upstream>
-	<use>
-		<flag name="async">Add async support</flag>
-	</use>
 </pkgmetadata>
