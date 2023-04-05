@@ -398,6 +398,9 @@ src_configure() {
 	filter-lto # TODO: cleanup after bug #893658
 
 	local cargoargs=(
+		# TODO: try switching to `--profile gentoo` then should be able to
+		# remove all `use debug` checks and --release in tests, but needs:
+		# https://github.com/gentoo/gentoo/pull/29510
 		$(usev debug '--profile dev')
 		--no-default-features
 		# like release.yml + native-tls for better platform support than rustls
