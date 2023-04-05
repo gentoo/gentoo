@@ -12,10 +12,10 @@ inherit distutils-r1
 DESCRIPTION="Python code static checker"
 HOMEPAGE="
 	https://pypi.org/project/pylint/
-	https://github.com/PyCQA/pylint/
+	https://github.com/pylint-dev/pylint/
 "
 SRC_URI="
-	https://github.com/pycqa/pylint/archive/v${PV}.tar.gz
+	https://github.com/pylint-dev/pylint/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
@@ -24,7 +24,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="examples"
 
-# Make sure to check https://github.com/PyCQA/pylint/blob/main/pyproject.toml#L34 on bumps
+# Make sure to check https://github.com/pylint-dev/pylint/blob/main/pyproject.toml#L34 on bumps
 # Adjust dep bounds!
 RDEPEND="
 	<dev-python/astroid-2.17[${PYTHON_USEDEP}]
