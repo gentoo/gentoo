@@ -10,6 +10,7 @@ command_user="tss:tss"
 pidfile="/var/run/${RC_SVCNAME}.pid"
 
 depend() {
+	need dbus
 	use logger
 	after coldplug
 }
