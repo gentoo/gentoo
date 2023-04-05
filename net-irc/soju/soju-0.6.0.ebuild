@@ -13,6 +13,7 @@ SRC_URI+=" https://github.com/alfredfo/${PN}-deps/raw/master/${P}-deps.tar.xz"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
+IUSE="pam"
 
 BDEPEND="
 	app-text/scdoc
@@ -25,6 +26,7 @@ DEPEND="${RDEPEND}"
 
 src_compile() {
 	GOFLAGS+=" -tags=moderncsqlite"
+	use pam && GOFLAGS+=" -tags=pam"
 
 	ego build ${GOFLAGS} ./cmd/soju
 	ego build ${GOFLAGS} ./cmd/sojudb
