@@ -5,15 +5,15 @@ EAPI=8
 
 CRATES="
 	adler-1.0.2
-	ahash-0.3.8
 	ahash-0.7.6
 	aho-corasick-0.7.20
-	anyhow-1.0.69
+	anyhow-1.0.70
 	autocfg-1.1.0
 	base64-0.13.1
+	base64-0.21.0
 	bitflags-1.3.2
 	block-buffer-0.10.4
-	bstr-1.3.0
+	bstr-1.4.0
 	bumpalo-3.12.0
 	byteorder-1.4.3
 	bytes-1.4.0
@@ -25,8 +25,8 @@ CRATES="
 	cargo-config2-0.1.6
 	cargo-options-0.6.0
 	cargo-platform-0.1.2
-	cargo-xwin-0.14.1
-	cargo-zigbuild-0.16.3
+	cargo-xwin-0.14.2
+	cargo-zigbuild-0.16.5
 	cargo_metadata-0.15.3
 	cbindgen-0.24.3
 	cc-1.0.79
@@ -34,20 +34,19 @@ CRATES="
 	cfg-expr-0.14.0
 	cfg-if-1.0.0
 	charset-0.1.3
-	chumsky-0.8.0
-	clap-4.0.32
-	clap_complete-4.0.7
-	clap_complete_command-0.4.0
-	clap_complete_fig-4.0.2
-	clap_derive-4.0.21
-	clap_lex-0.3.0
+	chumsky-0.9.2
+	clap-4.1.10
+	clap_complete-4.1.6
+	clap_complete_command-0.5.1
+	clap_complete_fig-4.1.2
+	clap_complete_nushell-0.1.10
+	clap_derive-4.1.9
+	clap_lex-0.3.3
 	cli-table-0.4.7
 	concolor-0.0.11
 	concolor-query-0.1.0
 	configparser-3.0.2
 	console-0.15.5
-	const-random-0.1.15
-	const-random-macro-0.1.15
 	content_inspector-0.2.4
 	core-foundation-0.9.3
 	core-foundation-sys-0.8.3
@@ -57,7 +56,6 @@ CRATES="
 	crossbeam-deque-0.8.3
 	crossbeam-epoch-0.9.14
 	crossbeam-utils-0.8.15
-	crunchy-0.2.2
 	crypto-common-0.1.6
 	ctor-0.1.26
 	data-encoding-2.3.3
@@ -81,7 +79,7 @@ CRATES="
 	foreign-types-shared-0.1.1
 	form_urlencoded-1.1.0
 	fs-err-2.9.0
-	generic-array-0.14.6
+	generic-array-0.14.7
 	getrandom-0.2.8
 	glob-0.3.1
 	globset-0.4.10
@@ -94,7 +92,7 @@ CRATES="
 	humantime-serde-1.1.1
 	idna-0.3.0
 	ignore-0.4.20
-	indexmap-1.9.2
+	indexmap-1.9.3
 	indicatif-0.17.3
 	indoc-2.0.1
 	instant-0.1.12
@@ -116,9 +114,9 @@ CRATES="
 	matchers-0.1.0
 	memchr-2.5.0
 	memoffset-0.8.0
-	mime-0.3.16
+	mime-0.3.17
 	mime_guess-2.0.4
-	minijinja-0.30.6
+	minijinja-0.31.0
 	minimal-lexical-0.2.1
 	miniz_oxide-0.6.2
 	msi-0.5.1
@@ -131,19 +129,20 @@ CRATES="
 	num_cpus-1.15.0
 	number_prefix-0.4.0
 	once_cell-1.17.1
-	openssl-0.10.45
+	openssl-0.10.48
 	openssl-macros-0.1.0
 	openssl-probe-0.1.5
 	openssl-src-111.25.1+1.1.1t
-	openssl-sys-0.9.80
+	openssl-sys-0.9.83
 	os_pipe-1.1.2
-	os_str_bytes-6.4.1
+	os_str_bytes-6.5.0
 	output_vt100-0.1.3
 	overload-0.1.1
 	parking_lot-0.12.1
 	parking_lot_core-0.9.6
 	path-slash-0.2.1
-	pep440-0.2.0
+	pep440_rs-0.3.3
+	pep508_rs-0.1.1
 	percent-encoding-2.2.0
 	pin-project-lite-0.2.9
 	pkg-config-0.3.26
@@ -154,11 +153,11 @@ CRATES="
 	pretty_assertions-1.3.0
 	proc-macro-error-1.0.4
 	proc-macro-error-attr-1.0.4
-	proc-macro-hack-0.5.20+deprecated
-	proc-macro2-1.0.51
-	pyproject-toml-0.3.3
+	proc-macro2-1.0.54
+	psm-0.1.21
+	pyproject-toml-0.5.1
 	python-pkginfo-0.5.5
-	quote-1.0.23
+	quote-1.0.26
 	quoted_printable-0.4.7
 	rand-0.8.5
 	rand_chacha-0.3.1
@@ -167,15 +166,15 @@ CRATES="
 	rayon-core-1.11.0
 	redox_syscall-0.2.16
 	redox_users-0.4.3
-	regex-1.7.1
+	regex-1.7.3
 	regex-automata-0.1.10
-	regex-syntax-0.6.28
-	rfc2047-decoder-0.2.1
+	regex-syntax-0.6.29
+	rfc2047-decoder-0.2.2
 	ring-0.16.20
 	rustc_version-0.4.0
 	rustix-0.36.7
 	rustls-0.20.8
-	rustls-pemfile-1.0.1
+	rustls-pemfile-1.0.2
 	rustversion-1.0.12
 	ryu-1.0.13
 	same-file-1.0.6
@@ -186,10 +185,10 @@ CRATES="
 	sct-0.7.0
 	security-framework-2.8.2
 	security-framework-sys-2.8.0
-	semver-1.0.16
+	semver-1.0.17
 	serde-1.0.155
 	serde_derive-1.0.155
-	serde_json-1.0.94
+	serde_json-1.0.95
 	serde_spanned-0.6.1
 	sha2-0.10.6
 	sharded-slab-0.1.4
@@ -203,6 +202,7 @@ CRATES="
 	snapbox-macros-0.3.1
 	socks-0.3.4
 	spin-0.5.2
+	stacker-0.1.15
 	static_assertions-1.1.0
 	strsim-0.10.0
 	syn-1.0.109
@@ -218,13 +218,12 @@ CRATES="
 	time-0.3.20
 	time-core-0.1.0
 	time-macros-0.2.8
-	tiny-keccak-2.0.2
 	tinyvec-1.6.0
 	tinyvec_macros-0.1.1
 	toml-0.5.11
-	toml-0.7.2
+	toml-0.7.3
 	toml_datetime-0.6.1
-	toml_edit-0.19.4
+	toml_edit-0.19.8
 	tracing-0.1.37
 	tracing-attributes-0.1.23
 	tracing-core-0.1.30
@@ -235,7 +234,7 @@ CRATES="
 	twox-hash-1.6.3
 	typenum-1.16.0
 	unicase-2.6.0
-	unicode-bidi-0.3.11
+	unicode-bidi-0.3.13
 	unicode-ident-1.0.8
 	unicode-linebreak-0.1.4
 	unicode-normalization-0.1.22
@@ -249,7 +248,7 @@ CRATES="
 	version_check-0.9.4
 	versions-4.1.0
 	wait-timeout-0.2.0
-	walkdir-2.3.2
+	walkdir-2.3.3
 	wasi-0.11.0+wasi-snapshot-preview1
 	wasm-bindgen-0.2.84
 	wasm-bindgen-backend-0.2.84
@@ -260,27 +259,29 @@ CRATES="
 	webpki-0.22.0
 	webpki-roots-0.22.6
 	which-4.4.0
+	wild-2.1.0
 	winapi-0.3.9
 	winapi-i686-pc-windows-gnu-0.4.0
 	winapi-util-0.1.5
 	winapi-x86_64-pc-windows-gnu-0.4.0
 	windows-sys-0.42.0
-	windows_aarch64_gnullvm-0.42.1
-	windows_aarch64_msvc-0.42.1
-	windows_i686_gnu-0.42.1
-	windows_i686_msvc-0.42.1
-	windows_x86_64_gnu-0.42.1
-	windows_x86_64_gnullvm-0.42.1
-	windows_x86_64_msvc-0.42.1
-	winnow-0.3.3
+	windows_aarch64_gnullvm-0.42.2
+	windows_aarch64_msvc-0.42.2
+	windows_i686_gnu-0.42.2
+	windows_i686_msvc-0.42.2
+	windows_x86_64_gnu-0.42.2
+	windows_x86_64_gnullvm-0.42.2
+	windows_x86_64_msvc-0.42.2
+	winnow-0.4.1
 	xattr-0.2.3
-	xwin-0.2.11
+	xwin-0.2.12
 	yansi-0.5.1
 	zeroize-1.5.7
 	zip-0.6.4"
 # additional crates used by test-crates/* test packages,
 # `grep test-crates tests/run.rs` to see which are needed
 CRATES_TEST="
+	anyhow-1.0.69
 	askama-0.11.1
 	askama_derive-0.11.2
 	askama_escape-0.10.3
@@ -294,6 +295,7 @@ CRATES_TEST="
 	itoa-1.0.5
 	libc-0.2.134
 	libc-0.2.137
+	mime-0.3.16
 	once_cell-1.15.0
 	once_cell-1.16.0
 	once_cell-1.17.0
@@ -302,6 +304,7 @@ CRATES_TEST="
 	paste-1.0.11
 	proc-macro2-1.0.46
 	proc-macro2-1.0.47
+	proc-macro2-1.0.51
 	pyo3-0.18.1
 	pyo3-build-config-0.18.1
 	pyo3-ffi-0.18.1
@@ -309,7 +312,9 @@ CRATES_TEST="
 	pyo3-macros-backend-0.18.1
 	python3-dll-a-0.2.6
 	quote-1.0.21
+	quote-1.0.23
 	ryu-1.0.12
+	semver-1.0.16
 	serde-1.0.152
 	serde_derive-1.0.152
 	serde_json-1.0.93
@@ -368,7 +373,7 @@ SLOT="0"
 IUSE="doc +ssl test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="$(python_gen_cond_dep 'dev-python/tomli[${PYTHON_USEDEP}]' 3.{9,10})"
+RDEPEND="$(python_gen_cond_dep 'dev-python/tomli[${PYTHON_USEDEP}]' 3.{9..10})"
 DEPEND="ssl? ( dev-libs/openssl:= )"
 BDEPEND="
 	dev-python/setuptools-rust[${PYTHON_USEDEP}]
