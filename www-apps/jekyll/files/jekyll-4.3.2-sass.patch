@@ -1,0 +1,100 @@
+From 572c86ec130f62722332f85051a8eef5f15deb7b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=E3=81=AA=E3=81=A4=E3=81=8D?= <i@ntk.me>
+Date: Thu, 22 Dec 2022 06:51:02 -0800
+Subject: [PATCH] Update sass related tests for jekyll-sass-converter 3.x
+ (#9223)
+
+Merge pull request 9223
+---
+ features/rendering.feature       | 2 +-
+ features/theme.feature           | 4 ++--
+ test/test_filters.rb             | 4 ++--
+ test/test_sass.rb                | 4 +++-
+ test/test_theme_assets_reader.rb | 2 +-
+ 5 files changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/features/rendering.feature b/features/rendering.feature
+index 2b504a07555..c06e06524f5 100644
+--- a/features/rendering.feature
++++ b/features/rendering.feature
+@@ -168,7 +168,7 @@ Feature: Rendering
+     When I run jekyll build
+     Then I should get a zero exit status
+     And the _site directory should exist
+-    And I should see ".foo-bar { color: red; }\n\n\/\*# sourceMappingURL=index.css.map \*\/" in "_site/index.css"
++    And I should see ".foo-bar {\n  color: red;\n}\n\n\/\*# sourceMappingURL=index.css.map \*\/" in "_site/index.css"
+ 
+   Scenario: Not render liquid in CoffeeScript without explicitly including jekyll-coffeescript
+     Given I have an "index.coffee" page with animal "cicada" that contains "hey='for {{page.animal}}'"
+diff --git a/features/theme.feature b/features/theme.feature
+index 75ff5c69cb3..ec63b21271d 100644
+--- a/features/theme.feature
++++ b/features/theme.feature
+@@ -19,7 +19,7 @@ Feature: Writing themes
+     When I run jekyll build
+     Then I should get a zero exit status
+     And the _site directory should exist
+-    And I should see ".sample { color: red; }\n\n\/\*# sourceMappingURL=style.css.map \*\/" in "_site/assets/style.css"
++    And I should see ".sample {\n  color: red;\n}\n\n\/\*# sourceMappingURL=style.css.map \*\/" in "_site/assets/style.css"
+ 
+   Scenario: Overriding a theme with SCSS
+     Given I have a configuration file with "theme" set to "test-theme"
+@@ -28,7 +28,7 @@ Feature: Writing themes
+     When I run jekyll build
+     Then I should get a zero exit status
+     And the _site directory should exist
+-    And I should see ".sample { color: black; }\n\n\/\*# sourceMappingURL=style.css.map \*\/" in "_site/assets/style.css"
++    And I should see ".sample {\n  color: black;\n}\n\n\/\*# sourceMappingURL=style.css.map \*\/" in "_site/assets/style.css"
+ 
+   Scenario: A theme with an include
+     Given I have a configuration file with "theme" set to "test-theme"
+diff --git a/test/test_filters.rb b/test/test_filters.rb
+index 176e5ed6d49..ea82fc5b5e3 100644
+--- a/test/test_filters.rb
++++ b/test/test_filters.rb
+@@ -143,7 +143,7 @@ def select; end
+ 
+     should "sassify with simple string" do
+       assert_equal(
+-        "p { color: #123456; }\n",
++        "p {\n  color: #123456;\n}",
+         @filter.sassify(<<~SASS)
+           $blue: #123456
+           p
+@@ -154,7 +154,7 @@ def select; end
+ 
+     should "scssify with simple string" do
+       assert_equal(
+-        "p { color: #123456; }\n",
++        "p {\n  color: #123456;\n}",
+         @filter.scssify("$blue:#123456; p{color: $blue}")
+       )
+     end
+diff --git a/test/test_sass.rb b/test/test_sass.rb
+index 372cdedbbf8..3d930d00ad7 100644
+--- a/test/test_sass.rb
++++ b/test/test_sass.rb
+@@ -15,7 +15,9 @@ class TestSass < JekyllUnitTest
+ 
+     should "import SCSS partial" do
+       result = <<~CSS
+-        .half { width: 50%; }
++        .half {
++          width: 50%;
++        }
+ 
+         /*# sourceMappingURL=main.css.map */
+       CSS
+diff --git a/test/test_theme_assets_reader.rb b/test/test_theme_assets_reader.rb
+index f45503e7dbb..635cec35618 100644
+--- a/test/test_theme_assets_reader.rb
++++ b/test/test_theme_assets_reader.rb
+@@ -38,7 +38,7 @@ def refute_file_with_relative_path(haystack, relative_path)
+       file = @site.pages.find { |f| f.relative_path == "assets/style.scss" }
+       refute_nil file
+       assert_equal @site.in_dest_dir("assets/style.css"), file.destination(@site.dest)
+-      assert_includes file.output, ".sample { color: black; }"
++      assert_includes file.output, ".sample {\n  color: black;\n}"
+     end
+ 
+     should "not overwrite site content with the same relative path" do
