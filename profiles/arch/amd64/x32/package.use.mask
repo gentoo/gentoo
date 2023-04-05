@@ -3,7 +3,7 @@
 
 # Sam James <sam@gentoo.org> (2023-04-05)
 # x11-drivers/nvidia-drivers is not available for x32
-sys-apps/hwloc video_cards_nvidia
+sys-apps/hwloc nvml
 
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-26)
 # Dependency media-libs/intel-hybrid-codec-driver does not work on x32
