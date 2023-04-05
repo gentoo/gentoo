@@ -26,7 +26,7 @@ RDEPEND="
 	dev-python/nbconvert[${PYTHON_USEDEP}]
 	dev-python/ipykernel[${PYTHON_USEDEP}]
 	dev-python/ipywidgets[${PYTHON_USEDEP}]"
-PDEPEND=">=dev-python/jupyter_core-4.2.0[${PYTHON_USEDEP}]"
+PDEPEND=">=dev-python/jupyter-core-4.2.0[${PYTHON_USEDEP}]"
 
 distutils_enable_sphinx docs/source dev-python/sphinx-rtd-theme
 

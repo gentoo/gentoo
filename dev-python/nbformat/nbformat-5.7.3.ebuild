@@ -24,7 +24,7 @@ RDEPEND="
 	dev-python/fastjsonschema[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-2.6[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-5.1[${PYTHON_USEDEP}]
-	dev-python/jupyter_core[${PYTHON_USEDEP}]
+	dev-python/jupyter-core[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (

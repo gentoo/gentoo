@@ -19,7 +19,7 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
-	dev-python/jupyter_core[${PYTHON_USEDEP}]
+	dev-python/jupyter-core[${PYTHON_USEDEP}]
 	dev-python/nbformat[${PYTHON_USEDEP}]
 	>=dev-python/notebook-4.3[${PYTHON_USEDEP}]
 	dev-python/qdarkstyle[${PYTHON_USEDEP}]
