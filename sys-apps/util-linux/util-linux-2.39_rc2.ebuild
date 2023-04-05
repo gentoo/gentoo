@@ -24,9 +24,6 @@ else
 
 	SRC_URI="https://www.kernel.org/pub/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://www.kernel.org/pub/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.sign )"
-
-	# Drop on next release, it's just here for ${P}-test-build.patch
-	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-autotools-regenerate.patch.xz"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -93,11 +90,6 @@ fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} ) su? ( pam )"
 RESTRICT="!test? ( test )"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-test-build.patch
-	"${WORKDIR}"/${P}-autotools-regenerate.patch
-)
 
 pkg_pretend() {
 	if use su && ! use suid ; then
