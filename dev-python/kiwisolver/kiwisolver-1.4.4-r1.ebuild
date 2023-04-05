@@ -36,7 +36,7 @@ BDEPEND="
 "
 
 PATCHES=(
- "${FILESDIR}/${PN}-1.4.4-pypy3-tests.patch"
+	"${FILESDIR}/${PN}-1.4.4-pypy3-tests.patch"
 )
 
 distutils_enable_tests pytest
