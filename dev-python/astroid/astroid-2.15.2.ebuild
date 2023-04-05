@@ -10,11 +10,11 @@ inherit distutils-r1
 
 DESCRIPTION="Abstract Syntax Tree for logilab packages"
 HOMEPAGE="
-	https://github.com/PyCQA/astroid/
+	https://github.com/pylint-dev/astroid/
 	https://pypi.org/project/astroid/
 "
 SRC_URI="
-	https://github.com/PyCQA/astroid/archive/v${PV}.tar.gz
+	https://github.com/pylint-dev/astroid/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
