@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Memory efficient serialization library"
 HOMEPAGE="
-	https://google.github.io/flatbuffers/
+	https://flatbuffers.dev/
 	https://github.com/google/flatbuffers/
 "
 SRC_URI="
