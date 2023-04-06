@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,7 +40,7 @@ ruby_add_bdepend "
 		~dev-ruby/railties-${PV}
 		>=dev-ruby/sqlite3-1.4.0
 		dev-ruby/mocha
-		<dev-ruby/minitest-5.16:5
+		<dev-ruby/minitest-5.16:*
 	)"
 
 DEPEND+=" test? ( >=dev-db/sqlite-3.12.1 )"
