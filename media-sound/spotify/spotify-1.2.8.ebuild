@@ -35,11 +35,7 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	!pulseaudio? ( media-sound/apulse )
 	local-playback? ( media-video/ffmpeg:0/56.58.58 )
-	x11-libs/gtk+:3
-	|| (
-		>=app-accessibility/at-spi2-core-2.46.0:2
-		( app-accessibility/at-spi2-atk dev-libs/atk )
-	)
+	x11-libs/gtk+:3 || ( >=app-accessibility/at-spi2-core-2.46.0:2 )
 	x11-libs/libxkbcommon
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
