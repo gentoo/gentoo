@@ -1,10 +1,6 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2023-04-06)
-# sys-apps/keyutils not stable here, because of test failures. bug #636252
-app-crypt/mit-krb5 keyutils
-
 # matoro <matoro_gentoo@matoro.tk> (2023-03-07)
 # Needs dev-db/mariadb for tests, see entry in use.mask
 dev-python/pymysql test
