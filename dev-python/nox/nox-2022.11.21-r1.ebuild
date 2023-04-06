@@ -23,7 +23,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	<dev-python/argcomplete-3.0[${PYTHON_USEDEP}]
 	>=dev-python/argcomplete-1.9.4[${PYTHON_USEDEP}]
 	<dev-python/colorlog-7.0.0[${PYTHON_USEDEP}]
 	>=dev-python/colorlog-2.6.1[${PYTHON_USEDEP}]
@@ -43,5 +42,7 @@ src_prepare() {
 	# https://github.com/wntrblm/nox/issues/673
 	rm nox/tox_to_nox.* tests/test_tox_to_nox.py || die
 	sed -i -e '/tox-to-nox/d' pyproject.toml || die
+	# remove upper bounds from dependencies
+	sed -i -e 's:<[0-9.]*,::' pyproject.toml || die
 	distutils-r1_src_prepare
 }
