@@ -250,7 +250,7 @@ multilib_src_install_all() {
 	# machine-id symlink from pkg_postinst()
 	keepdir /var/lib/dbus
 	# Let the init script create the /var/run/dbus directory
-	rm -rf "${ED}"/var/run
+	rm -rf "${ED}"/{,var/}run
 
 	# bug #761763
 	rm -rf "${ED}"/usr/lib/sysusers.d
