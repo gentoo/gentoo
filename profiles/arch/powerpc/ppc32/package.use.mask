@@ -1,10 +1,6 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2023-04-06)
-# sys-apps/keyutils not stable here, because of test failures. bug #636252
-app-crypt/mit-krb5 keyutils
-
 # Sam James <sam@gentoo.org> (2023-01-05)
 # dev-python/pythran fails tests on ppc32 right now, bug #880263
 dev-python/scipy fortran pythran
