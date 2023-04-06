@@ -325,7 +325,7 @@ unpack_deb() {
 			$(tc-getBUILD_AR) p "${deb}" "${f}" | ${decomp:-cat}
 			assert "unpacking ${f} from ${deb} failed"
 		fi
-	} | tar --no-same-owner -x
+	} | tar --no-same-owner -xf -
 	assert "unpacking ${deb} failed"
 }
 
