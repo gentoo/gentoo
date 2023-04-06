@@ -5,7 +5,7 @@ EAPI=8
 inherit go-module systemd tmpfiles
 
 # make sure this gets updated for every bump
-GIT_COMMIT=456e34824406b57e26b4dec29e9038edc2ac0396
+GIT_COMMIT=dcfb4b66
 
 DESCRIPTION="The official GitLab Runner, written in Go"
 HOMEPAGE="https://gitlab.com/gitlab-org/gitlab-runner"
@@ -24,13 +24,13 @@ BDEPEND="dev-go/gox"
 
 DOCS=( docs CHANGELOG.md README.md config.toml.example )
 
-S="${WORKDIR}/${PN}-${GIT_COMMIT}"
+S="${WORKDIR}/${PN}-v${PV}"
 
 src_compile() {
 	emake \
 		BUILT="$(date -u '+%Y-%m-%dT%H:%M:%S%:z')" \
 		GOX="${EPREFIX}/usr/bin/gox" \
-		REVISION=${GIT_COMMIT:0:8} \
+		REVISION=${GIT_COMMIT} \
 		VERSION=${PV} \
 		runner-bin-host
 }

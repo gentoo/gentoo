@@ -55,6 +55,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# https://gitlab.xfce.org/xfce/xfce4-panel/-/issues/729
+	"${FILESDIR}"/${P}-no-wayland.patch
+)
+
 src_configure() {
 	local myconf=(
 		$(use_enable introspection)
