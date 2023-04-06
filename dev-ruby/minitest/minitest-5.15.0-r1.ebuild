@@ -13,9 +13,11 @@ DESCRIPTION="minitest/unit is a small and fast replacement for ruby's huge and s
 HOMEPAGE="https://github.com/seattlerb/minitest"
 
 LICENSE="MIT"
-SLOT="5"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+SLOT="5.15"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc test"
+
+RDEPEND="!~dev-ruby/minitest-5.15.0:5"
 
 each_ruby_test() {
 	MT_NO_PLUGINS=true ${RUBY} -Ilib:test:. -e "Dir['**/test_*.rb'].each{|f| require f}" || die "Tests failed"
