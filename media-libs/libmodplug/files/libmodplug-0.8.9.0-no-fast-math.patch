@@ -1,6 +1,5 @@
-diff -uNr a/configure.ac b/configure.ac
---- a/configure.ac	2017-07-26 22:39:07.461198820 +0100
-+++ b/configure.ac	2017-07-26 22:39:53.284622741 +0100
+--- a/configure.ac
++++ b/configure.ac
 @@ -31,7 +31,7 @@
  AC_CHECK_HEADERS([inttypes.h stdint.h malloc.h])
  AC_CHECK_FUNCS(setenv sinf)
