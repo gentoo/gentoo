@@ -44,7 +44,7 @@ ruby_add_bdepend "
 		~dev-ruby/railties-${PV}
 		dev-ruby/selenium-webdriver:4
 		www-servers/puma
-		<dev-ruby/minitest-5.16:5
+		<dev-ruby/minitest-5.16:*
 	)"
 
 all_ruby_prepare() {
