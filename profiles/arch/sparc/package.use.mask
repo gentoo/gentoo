@@ -3,7 +3,13 @@
 
 # Sam James <sam@gentoo.org> (2024-01-05)
 # sys-apps/keyutils not stable here, because of test failures. bug #636252
+app-benchmarks/stress-ng keyutils
 app-crypt/mit-krb5 keyutils
+app-emulation/qemu keyutils
+net-fs/samba ads
+net-fs/cifs-utils ads creds pam
+sys-auth/sssd keyutils
+sys-libs/libnvme keyutils
 
 # Sam James <sam@gentoo.org> (2024-01-02)
 # dev-libs/capstone not keyworded here
