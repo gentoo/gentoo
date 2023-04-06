@@ -202,7 +202,7 @@ case ${RUBY_FAKEGEM_RECIPE_TEST} in
 	none)
 		;;
 	*)
-		eqawarn "Unknown test recipe '${RUBY_FAKEGEM_RECIPE_TEST}' specified, using 'none'"
+		eqawarn "${CATEGORY}/${PF}: Unknown test recipe '${RUBY_FAKEGEM_RECIPE_TEST}' specified, using 'none'"
 		RUBY_FAKEGEM_RECIPE_TEST="none"
 		;;
 esac
