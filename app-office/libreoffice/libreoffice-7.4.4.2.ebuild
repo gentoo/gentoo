@@ -407,6 +407,9 @@ src_configure() {
 		NM=llvm-nm
 		RANLIB=llvm-ranlib
 		LDFLAGS+=" -fuse-ld=lld"
+
+		# Not implemented by Clang, bug #903889
+		filter-flags -Wlto-type-mismatch -Werror=lto-type-mismatch
 	else
 		# Force gcc
 		einfo "Enforcing the use of gcc due to USE=-clang ..."
