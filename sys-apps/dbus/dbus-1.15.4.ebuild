@@ -57,6 +57,7 @@ DEPEND="${COMMON_DEPEND}
 		${PYTHON_DEPS}
 		>=dev-libs/glib-2.40:2
 	)
+	X? ( x11-base/xorg-proto )
 "
 RDEPEND="${COMMON_DEPEND}
 	acct-user/messagebus
