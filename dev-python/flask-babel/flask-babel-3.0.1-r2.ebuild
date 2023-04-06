@@ -43,5 +43,7 @@ distutils_enable_tests pytest
 src_prepare() {
 	# https://github.com/python-babel/flask-babel/pull/215
 	sed -i -e 's:^include:exclude:' pyproject.toml || die
+	# https://github.com/python-babel/flask-babel/pull/225
+	sed -i -e '/pytz/s:\^:>=:' pyproject.toml || die
 	distutils-r1_src_prepare
 }
