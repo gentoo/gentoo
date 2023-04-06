@@ -23,7 +23,7 @@ RDEPEND=">=dev-python/pytest-6.4.2[${PYTHON_USEDEP}]"
 
 BDEPEND="
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)
 "
 
