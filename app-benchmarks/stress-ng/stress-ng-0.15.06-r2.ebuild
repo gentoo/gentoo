@@ -12,14 +12,13 @@ SRC_URI="https://github.com/ColinIanKing/${PN}/archive/refs/tags/V${PV}.tar.gz -
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc64 ~riscv ~sparc ~x86"
-IUSE="apparmor jpeg sctp"
+IUSE="apparmor keyutils jpeg sctp"
 
 DEPEND="
 	dev-libs/libaio
 	dev-libs/libbsd
 	dev-libs/libgcrypt:0=
 	sys-apps/attr
-	sys-apps/keyutils:=
 	sys-libs/libcap
 	sys-libs/zlib
 	virtual/libcrypt:=
@@ -28,6 +27,7 @@ DEPEND="
 		sys-libs/libapparmor
 	)
 	jpeg? ( media-libs/libjpeg-turbo:= )
+	keyutils? ( sys-apps/keyutils:= )
 	sctp? ( net-misc/lksctp-tools )
 "
 
@@ -50,6 +50,7 @@ src_compile() {
 	local myemakeopts=(
 		HAVE_APPARMOR="$(usex apparmor 1 0)"
 		HAVE_LIB_JPEG="$(usex jpeg 1 0)"
+		HAVE_KEYUTILS_H="$(usex keyutils 1 0)"
 		HAVE_LIB_SCTP="$(usex sctp 1 0)"
 		VERBOSE="1"
 	)
