@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    AnsiWeather is a Shell script for displaying the current weather conditions
+    in your terminal, with support for ANSI colors and Unicode symbols.
+  </longdescription>
+  <upstream>
+    <changelog>https://raw.githubusercontent.com/fcambus/ansiweather/master/ChangeLog</changelog>
+    <bugs-to>https://github.com/fcambus/ansiweather/issues</bugs-to>
+    <remote-id type="github">fcambus/ansiweather</remote-id>
+  </upstream>
+</pkgmetadata>
