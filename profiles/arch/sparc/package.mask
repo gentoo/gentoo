@@ -1,10 +1,6 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2023-04-06)
-# sys-apps/keyutils has many test failures here, bug #636252
-sys-apps/keyutils
-
 # matoro <matoro_gentoo@matoro.tk> (2023-03-07)
 # Fails tests disastrously.  Present evidence of passing test suite
 # before removing, please.
