@@ -54,7 +54,7 @@ ruby_add_bdepend "
 all_ruby_prepare() {
 		# Remove items from the common Gemfile that we don't need for this
 		# test run. This also requires handling some gemspecs.
-		sed -e "/\(system_timer\|sdoc\|w3c_validators\|pg\|execjs\|jquery-rails\|'mysql'\|journey\|ruby-prof\|stackprof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|redcarpet\|bcrypt\|uglifier\|aws-sdk-s3\|aws-sdk-sns\|google-cloud-storage\|azure-storage\|blade\|bootsnap\|hiredis\|qunit-selenium\|chromedriver-helper\|redis\|rb-inotify\|stackprof\|websocket-client-simple\|libxml-ruby\|sass-rails\|capybara\|rack-cache\|selenium\|dalli\|listen\|connection_pool\|puma\|mysql2\|webdrivers\|webpacker\|rexml\|webmock\|propshaft\|sprockets-export\|rack-test\)/ s:^:#:" \
+		sed -e "/\(system_timer\|sdoc\|w3c_validators\|pg\|execjs\|jquery-rails\|'mysql'\|journey\|ruby-prof\|stackprof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|redcarpet\|bcrypt\|uglifier\|aws-sdk-s3\|aws-sdk-sns\|google-cloud-storage\|azure-storage\|blade\|bootsnap\|hiredis\|qunit-selenium\|chromedriver-helper\|redis\|rb-inotify\|stackprof\|websocket-client-simple\|libxml-ruby\|sass-rails\|capybara\|rack-cache\|selenium\|dalli\|listen\|connection_pool\|puma\|mysql2\|webdrivers\|webpacker\|rexml\|webmock\|propshaft\|sprockets-export\|rack-test\|terser\)/ s:^:#:" \
 			-e '/stimulus-rails/,/tailwindcss-rails/ s:^:#:' \
 			-e '/group :\(doc\|job\|rubocop\|test\)/,/^end/ s:^:#:' \
 			-i ../Gemfile || die
