@@ -42,6 +42,8 @@ BDEPEND="
 src_prepare() {
 	# Remove test dependent on unpackaged before_after
 	sed -e 's/test_lock/_&/' -i tests/test_extras.py || die
+	# Remove upper bounds on dependencies
+	sed -i -e 's:,<[0-9]*::' setup.py || die
 	distutils-r1_src_prepare
 }
 
