@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2023-04-06)
+# Last release over 7 years ago, abandoned upstream, still depends on
+# dead 0.1-legacy samtools slot. No revdeps in tree.
+# Removal on 2023-05-06. Bug #862288.
+dev-perl/Bio-SamTools
+sci-biology/samtools:0.1-legacy
+
 # Florian Schmaus <flow@gentoo.org> (2023-04-05)
 # Packages that became orphaned leaf packages with the removal of
 # app-admin/abrt. See
