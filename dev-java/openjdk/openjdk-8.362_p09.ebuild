@@ -132,6 +132,12 @@ src_configure() {
 	# Strip some flags users may set, but should not. #818502
 	filter-flags -fexceptions
 
+	# Strip lto related flags, no support in this version.
+	# https://bugs.gentoo.org/833097
+	# https://bugs.gentoo.org/833098
+	filter-flags '-flto*'
+	filter-flags -fdevirtualize-at-ltrans
+
 	tc-export_build_env CC CXX PKG_CONFIG STRIP
 
 	local myconf=(
