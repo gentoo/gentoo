@@ -24,7 +24,7 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
-IUSE="acl doc +netlink nfsv4 nls +man python samba selinux subid sudo systemd systemtap test"
+IUSE="acl doc +netlink keyutils nfsv4 nls +man python samba selinux subid sudo systemd systemtap test"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( sudo )"
@@ -44,7 +44,6 @@ DEPEND="
 	>=net-dns/c-ares-1.10.0-r1:=[${MULTILIB_USEDEP}]
 	>=net-nds/openldap-2.4.30:=[sasl,experimental]
 	>=sys-apps/dbus-1.6
-	>=sys-apps/keyutils-1.5:=
 	>=sys-libs/pam-0-r1[${MULTILIB_USEDEP}]
 	>=sys-libs/talloc-2.0.7
 	>=sys-libs/tdb-1.2.9
@@ -52,6 +51,7 @@ DEPEND="
 	>=sys-libs/ldb-1.1.17-r1:=
 	virtual/libintl
 	acl? ( net-fs/cifs-utils[acl] )
+	keyutils? ( >=sys-apps/keyutils-1.5:= )
 	netlink? ( dev-libs/libnl:3 )
 	nfsv4? ( >=net-fs/nfs-utils-2.3.1-r2 )
 	nls? ( >=sys-devel/gettext-0.18 )
@@ -171,6 +171,9 @@ src_configure() {
 
 multilib_src_configure() {
 	local myconf=()
+
+	export ac_cv_header_keyutils_h=$(usex keyutils)
+	export ac_cv_lib_keyutils_add_key=$(usex keyutils)
 
 	myconf+=(
 		--libexecdir="${EPREFIX}"/usr/libexec
