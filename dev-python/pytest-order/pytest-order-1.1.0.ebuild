@@ -21,6 +21,12 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=dev-python/pytest-6.4.2[${PYTHON_USEDEP}]"
 
+BDEPEND="
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+	)
+"
+
 EPYTEST_DESELECT=(
 	# Appears to fail due to extra warning in pytest 7
 	"tests/test_dependency.py::test_order_dependencies_no_auto_mark"
