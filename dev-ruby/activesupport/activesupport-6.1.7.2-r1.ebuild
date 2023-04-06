@@ -19,7 +19,7 @@ SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE=""
 
 RUBY_S="rails-${PV}/${PN}"
@@ -28,7 +28,7 @@ ruby_add_rdepend "
 	>=dev-ruby/concurrent-ruby-1.0.2:1
 	>=dev-ruby/i18n-1.6:1
 	dev-ruby/tzinfo:2
-	>=dev-ruby/minitest-5.1:5
+<dev-ruby/minitest-5.16:*
 	>=dev-ruby/zeitwerk-2.3:2
 "
 
@@ -43,7 +43,6 @@ ruby_add_bdepend "test? (
 	dev-ruby/rack
 	dev-ruby/rexml
 	dev-ruby/mocha
-	<dev-ruby/minitest-5.16:5
 	)"
 
 all_ruby_prepare() {
@@ -58,6 +57,8 @@ all_ruby_prepare() {
 		-e '5igem "builder"; gem "rack"' ../Gemfile || die
 	rm ../Gemfile.lock || die
 #	sed -i -e '1igem "tzinfo", "~> 1.1"' test/abstract_unit.rb || die
+
+	sed -i -e '/minitest.*>= 5.1/s:.*:&, "< 5.16":' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Avoid test that depends on timezone
 	sed -i -e '/test_implicit_coercion/,/^  end/ s:^:#:' test/core_ext/duration_test.rb || die

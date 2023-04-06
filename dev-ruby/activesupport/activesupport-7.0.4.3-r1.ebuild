@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.rdoc"
 
@@ -19,7 +19,7 @@ SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE=""
 
 RUBY_S="rails-${PV}/${PN}"
@@ -28,8 +28,7 @@ ruby_add_rdepend "
 	>=dev-ruby/concurrent-ruby-1.0.2:1
 	>=dev-ruby/i18n-1.6:1
 	dev-ruby/tzinfo:2
-	>=dev-ruby/minitest-5.1:5
-	>=dev-ruby/zeitwerk-2.3:2
+	<dev-ruby/minitest-5.16:*
 "
 
 # memcache-client, nokogiri, builder, and redis are not strictly needed,
@@ -43,8 +42,11 @@ ruby_add_bdepend "test? (
 	dev-ruby/rack
 	dev-ruby/rexml
 	dev-ruby/mocha
-	<dev-ruby/minitest-5.16:5
 	)"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.0.4.3-ruby32.patch
+)
 
 all_ruby_prepare() {
 	# Set the secure permissions that tests expect.
@@ -52,12 +54,14 @@ all_ruby_prepare() {
 
 	# Remove items from the common Gemfile that we don't need for this
 	# test run. This also requires handling some gemspecs.
-	sed -i -e "/\(system_timer\|pg\|execjs\|jquery-rails\|mysql\|journey\|ruby-prof\|stackprof\|benchmark-ips\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|bcrypt\|uglifier\|minitest\|sprockets\|stackprof\|rack-cache\|sqlite\|websocket-client-simple\|\libxml-ruby\|bootsnap\|aws-sdk\|webmock\|capybara\|sass-rails\|selenium-webdriver\|webpacker\|webrick\|rack-test\)/ s:^:#:" \
-		-e '/group :\(doc\|rubocop\|job\|cable\|storage\|ujs\|test\) do/,/^end/ s:^:#:' \
+	sed -i -e "/\(system_timer\|pg\|execjs\|jquery-rails\|mysql\|journey\|ruby-prof\|stackprof\|benchmark-ips\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|bcrypt\|uglifier\|minitest\|sprockets\|stackprof\|rack-cache\|sqlite\|websocket-client-simple\|\libxml-ruby\|bootsnap\|aws-sdk\|webmock\|capybara\|sass-rails\|selenium-webdriver\|webpacker\|webrick\|propshaft\|rack-test\|terser\)/ s:^:#:" \
+		-e '/stimulus-rails/,/tailwindcss-rails/ s:^:#:' \
+		-e '/group :\(doc\|rubocop\|job\|cable\|storage\|ujs\|test\|view\) do/,/^end/ s:^:#:' \
 		-e 's/gemspec/gemspec path: "activesupport"/' \
 		-e '5igem "builder"; gem "rack"' ../Gemfile || die
 	rm ../Gemfile.lock || die
-#	sed -i -e '1igem "tzinfo", "~> 1.1"' test/abstract_unit.rb || die
+
+	sed -i -e '/minitest.*>= 5.1/s:.*:&, "< 5.16":' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Avoid test that depends on timezone
 	sed -i -e '/test_implicit_coercion/,/^  end/ s:^:#:' test/core_ext/duration_test.rb || die

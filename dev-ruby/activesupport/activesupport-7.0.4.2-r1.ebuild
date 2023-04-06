@@ -28,7 +28,7 @@ ruby_add_rdepend "
 	>=dev-ruby/concurrent-ruby-1.0.2:1
 	>=dev-ruby/i18n-1.6:1
 	dev-ruby/tzinfo:2
-	>=dev-ruby/minitest-5.1:5
+	<dev-ruby/minitest-5.16:*
 "
 
 # memcache-client, nokogiri, builder, and redis are not strictly needed,
@@ -42,7 +42,6 @@ ruby_add_bdepend "test? (
 	dev-ruby/rack
 	dev-ruby/rexml
 	dev-ruby/mocha
-	<dev-ruby/minitest-5.16:5
 	)"
 
 all_ruby_prepare() {
@@ -57,6 +56,8 @@ all_ruby_prepare() {
 		-e 's/gemspec/gemspec path: "activesupport"/' \
 		-e '5igem "builder"; gem "rack"' ../Gemfile || die
 	rm ../Gemfile.lock || die
+
+	sed -i -e '/minitest.*>= 5.1/s:.*:&, "< 5.16":' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Avoid test that depends on timezone
 	sed -i -e '/test_implicit_coercion/,/^  end/ s:^:#:' test/core_ext/duration_test.rb || die
