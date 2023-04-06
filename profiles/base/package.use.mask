@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2023-04-05)
+# Currently broken on 11
+# https://bugs.gentoo.org/833097
+# https://bugs.gentoo.org/833098
+dev-java/openjdk:11 lto
+
 # Sam James <sam@gentoo.org> (2023-03-29)
 # Depends on last-rited kde-apps/kross-interpreters.
 kde-apps/kdesdk-meta ruby
