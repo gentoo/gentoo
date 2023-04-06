@@ -54,7 +54,7 @@ RDEPEND="
 	opencv? ( media-libs/opencv:= )
 	qnnpack? ( sci-libs/QNNPACK )
 	tensorpipe? ( sci-libs/tensorpipe )
-	xnnpack? ( sci-libs/XNNPACK )
+	xnnpack? ( >=sci-libs/XNNPACK-2022.12.22 )
 "
 DEPEND="
 	${RDEPEND}
