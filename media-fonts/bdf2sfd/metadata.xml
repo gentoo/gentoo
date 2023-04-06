@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>xgqt@gentoo.org</email>
+    <name>Maciej Barć</name>
+  </maintainer>
+  <longdescription>
+    bdf2sfd is a BDF to SFD converter, allowing to vectorize bitmap fonts. It
+    works by converting each pixel of a glyph to a polygon, which produces
+    large and unoptimized SFD files that should be post-processed using
+    FontForge. There are several reasons why it might be desirable to convert
+    bitmap fonts to OpenType or TrueType versions. This allow for example to
+    use them as Web fonts, or simply to keep using them in some terminal
+    emulators, since Pango 1.44 dropped support for bitmap fonts. It was
+    originally created to generate OpenType versions of Spleen, and is released
+    in the hope it can be useful to convert other fonts as well.
+  </longdescription>
+  <upstream>
+    <changelog>https://raw.githubusercontent.com/fcambus/bdf2sfd/master/ChangeLog</changelog>
+    <bugs-to>https://github.com/fcambus/bdf2sfd/issues</bugs-to>
+    <remote-id type="github">fcambus/bdf2sfd</remote-id>
+  </upstream>
+</pkgmetadata>
