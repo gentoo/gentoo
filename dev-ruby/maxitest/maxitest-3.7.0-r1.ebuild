@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_EXTRADOC="Readme.md"
 
@@ -18,10 +18,10 @@ SRC_URI="https://github.com/grosser/maxitest/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-ruby_add_rdepend "<dev-ruby/minitest-5.17:5"
+ruby_add_rdepend "<dev-ruby/minitest-5.15:*"
 
 ruby_add_bdepend "test? ( dev-ruby/bundler )"
 
@@ -35,7 +35,6 @@ all_ruby_prepare() {
 
 	sed -e '/shows short backtraces/askip "fails on ruby27"' \
 		-e '/fails when not used/askip "fails with newer maxitest by design"' \
-		-e '/shows version/askip "fails due to missing require for version"' \
 		-i spec/maxitest_spec.rb || die
 }
 
@@ -47,5 +46,5 @@ each_ruby_prepare() {
 }
 
 each_ruby_test() {
-	PATH="${S}/bin:${PATH}" RUBYLIB="${S}/lib" RSPEC_VERSION=3 ruby-ng_rspec spec
+	PATH="${S}/bin:${PATH}" RSPEC_VERSION=3 ruby-ng_rspec spec
 }

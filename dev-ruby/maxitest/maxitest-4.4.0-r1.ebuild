@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31 ruby32"
+USE_RUBY="ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_EXTRADOC="Readme.md"
 
@@ -21,7 +21,7 @@ SLOT="1"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-ruby_add_rdepend "<dev-ruby/minitest-5.18:5"
+ruby_add_rdepend "<dev-ruby/minitest-5.18:*"
 
 ruby_add_bdepend "test? ( dev-ruby/bundler )"
 
