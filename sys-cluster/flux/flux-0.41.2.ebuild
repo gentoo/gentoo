@@ -21,7 +21,7 @@ RESTRICT+=" test"
 S="${WORKDIR}/flux2-${PV}"
 
 src_compile() {
-	mv "${WORKDIR}"/manifests cmd/"${PN}"
+	mv "${WORKDIR}"/manifests cmd/"${PN}" || die
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
 		ego build -ldflags="-s -w -X main.VERSION=${PV}" -o ./bin/${PN} ./cmd/${PN}
 }
