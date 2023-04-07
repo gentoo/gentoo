@@ -5,6 +5,7 @@
 		<email>graaff@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">aslakhellesoy/cucumber</remote-id>
+		<remote-id type="github">cucumber/common</remote-id>
+		<remote-id type="github">cucumber/cucumber-ruby</remote-id>
 	</upstream>
 </pkgmetadata>
