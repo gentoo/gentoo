@@ -42,6 +42,7 @@ RDEPEND+="
 "
 BDEPEND="
 	>=dev-python/flit_core-3.8[${PYTHON_USEDEP}]
+	>=dev-python/snakeoil-0.10.4[${PYTHON_USEDEP}]
 	test? (
 		x11-misc/xdg-utils
 	)
