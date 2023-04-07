@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/toland/patron"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64"
 IUSE=""
 
 DEPEND+=" net-misc/curl"
