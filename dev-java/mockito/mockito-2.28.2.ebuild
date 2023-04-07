@@ -37,6 +37,7 @@ RDEPEND="
 	${CP_DEPEND}
 "
 
+# see https://bugs.gentoo.org/903897
 PATCHES=( "${FILESDIR}/mockito-2.28.2-skip-failing-tests.patch" )
 
 JAVA_AUTOMATIC_MODULE_NAME="org.mockito"
