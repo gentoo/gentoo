@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 inherit ruby-ng-gnome2
 
@@ -15,6 +15,13 @@ DEPEND+=" dev-libs/glib
 RDEPEND+=" dev-libs/glib"
 ruby_add_rdepend "~dev-ruby/ruby-glib2-${PV}
 	~dev-ruby/ruby-gobject-introspection-${PV}"
+
+all_ruby_prepare() {
+	ruby-ng-gnome2_all_ruby_prepare
+
+	# Avoid test requiring network access
+	rm -f test/test-resolver.rb || die
+}
 
 each_ruby_test() {
 	XDG_RUNTIME_DIR=${T} dbus-launch ${RUBY} test/run-test.rb || die
