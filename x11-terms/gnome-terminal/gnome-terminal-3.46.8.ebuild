@@ -14,7 +14,7 @@ IUSE="debug +gnome-shell +nautilus vanilla"
 
 # Upstream is hostile and refuses to upload tarballs.
 SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.bz2"
-SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${PN}-3.46.2-cntr-ntfy-autottl-ts.patch.xz )"
+SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${PN}-3.46.8-cntr-ntfy-autottl-ts.patch.xz )"
 
 KEYWORDS="amd64 ~arm arm64 ~ia64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
@@ -59,7 +59,7 @@ src_prepare() {
 		# Automatic title updating based on currently running foreground process
 		# https://src.fedoraproject.org/rpms/gnome-terminal/raw/f31/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
 		# Depends on vte[-vanilla] for OSC 777 and the preexec/precmd/etc patches in VTE
-		eapply "${WORKDIR}"/${PN}-3.46.2-cntr-ntfy-autottl-ts.patch
+		eapply "${WORKDIR}"/${PN}-3.46.8-cntr-ntfy-autottl-ts.patch
 	fi
 	default
 }
