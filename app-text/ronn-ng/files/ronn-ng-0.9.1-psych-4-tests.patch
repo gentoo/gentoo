@@ -1,0 +1,40 @@
+https://github.com/apjanke/ronn-ng/commit/e194bf62b1d0c0828cc83405e60dc5ece829e62f
+
+From e194bf62b1d0c0828cc83405e60dc5ece829e62f Mon Sep 17 00:00:00 2001
+From: Andrew Janke <andrew@apjanke.net>
+Date: Fri, 6 Jan 2023 07:25:48 -0500
+Subject: [PATCH] Workaround for Psych 4.0+ in tests
+
+Psych 4.0, shipped with Ruby 3.1, switched to a "safe load" by default, and requires you to explicitly set allowed classes. But previous Psych versions didn't support this kwarg, so the call needs to be made differently depending on which version of Psych/Ruby this is running under.
+
+Co-authored-by: Takuya Noguchi <takninnovationresearch@gmail.com>
+---
+ test/test_ronn_document.rb  | 7 ++++++-
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/test/test_ronn_document.rb b/test/test_ronn_document.rb
+index 75788dc..cd573fe 100644
+--- a/test/test_ronn_document.rb
++++ b/test/test_ronn_document.rb
+@@ -137,6 +137,11 @@ def canonicalize(text)
+ 
+     test 'converting to yaml' do
+       require 'yaml'
++      actual = begin
++        YAML.load(@doc.to_yaml, permitted_classes: [Time])
++      rescue ArgumentError # Remove this line when Ruby 3.0.x support is dropped
++        YAML.load(@doc.to_yaml)
++      end
+       assert_equal({
+                      'section'      => '1',
+                      'name'         => 'hello',
+@@ -146,7 +151,7 @@ def canonicalize(text)
+                      'toc'          => [['NAME', 'NAME']],
+                      'organization' => nil,
+                      'manual'       => nil
+-                   }, YAML.load(@doc.to_yaml))
++                   }, actual)
+     end
+ 
+     test 'converting to json' do
+
