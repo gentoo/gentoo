@@ -43,10 +43,11 @@ RDEPEND="
 	>=media-libs/libvpx-1.8:=
 	media-libs/opus
 	media-libs/speex
+	>=media-libs/svt-av1-1.4.1
 	media-libs/x264:=
 	media-libs/zimg
 	media-sound/lame
-	>=media-video/ffmpeg-4.2.1:0=[postproc,fdk?]
+	>=media-video/ffmpeg-5.1:=[postproc,fdk?]
 	sys-libs/zlib
 	fdk? ( media-libs/fdk-aac:= )
 	gstreamer? (
