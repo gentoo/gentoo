@@ -10,7 +10,7 @@ RUBY_FAKEGEM_RECIPE_DOC="yard"
 inherit ruby-fakegem
 
 DESCRIPTION="Provides Haml generators for Rails 4"
-HOMEPAGE="https://github.com/indirect/haml-rails"
+HOMEPAGE="https://github.com/haml/haml-rails"
 
 LICENSE="MIT"
 SLOT="2"
