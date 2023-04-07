@@ -17,7 +17,7 @@ HOMEPAGE="https://capistranorb.com/"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc ~ppc64"
 IUSE=""
 
 ruby_add_rdepend "
