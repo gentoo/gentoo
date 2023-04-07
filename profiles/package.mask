@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2023-04-07)
+# No Python 3.11 support and the ebuild is not running the test suite.
+# Still uses deprecated dev-python/toml (upstream).  No revdeps.
+# Removal on 2023-05-07.  Bug #878655.
+app-misc/wildq
+
 # David Seifert <soap@gentoo.org> (2023-04-06)
 # Last release over 7 years ago, abandoned upstream, still depends on
 # dead 0.1-legacy samtools slot. No revdeps in tree.
