@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="app"
 inherit ruby-fakegem
 
 DESCRIPTION="The jQuery UI assets for the Rails 3.2+ asset pipeline"
-HOMEPAGE="https://github.com/joliss/jquery-ui-rails"
+HOMEPAGE="https://github.com/jquery-ui-rails/jquery-ui-rails"
 
 LICENSE="MIT"
 SLOT="6"
