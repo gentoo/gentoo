@@ -50,6 +50,9 @@ ${MY_LANG_PV}TIVsm-msg.${lang#*:}.x86_64.rpm )"
 done
 unset lang
 
+BDEPEND="
+	app-arch/xz-utils[extra-filters]
+"
 DEPEND="
 	acct-group/tsm
 "
