@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/emacs-dashboard/emacs-dashboard/"
 
 if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI=".git"
+	EGIT_REPO_URI="https://github.com/emacs-dashboard/emacs-${PN}.git"
 else
 	if [[ ${PV} == *pre20230401 ]] ; then
 		COMMIT=0f970d298931f9de7b511086728af140bf44a642
