@@ -21,4 +21,7 @@ IUSE="test"
 
 all_ruby_prepare() {
 	sed -i -e "s:_relative ': './:" ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# Increase timeout for test to help out slow arches
+	sed -i -e '/EnvUtil.timeout(10) do/s:10:60:' test/webrick/test_ssl_server.rb || die
 }
