@@ -28,6 +28,7 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_FFTW=ON
+		-DBUILD_QUAD=ON
 		-DBUILD_TESTS=$(usex test ON OFF)
 	)
 
