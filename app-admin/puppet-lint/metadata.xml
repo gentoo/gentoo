@@ -9,4 +9,7 @@
 	<email>ruby@gentoo.org</email>
 	<name>Gentoo Ruby Project</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">rodjek/puppet-lint</remote-id>
+</upstream>
 </pkgmetadata>
