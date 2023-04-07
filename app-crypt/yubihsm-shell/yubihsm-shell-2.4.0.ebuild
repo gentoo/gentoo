@@ -8,10 +8,12 @@ inherit cmake
 DESCRIPTION="Components used to interact with the YubiHSM 2"
 HOMEPAGE="https://developers.yubico.com/yubihsm-shell/"
 SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.gz"
+PATCHES=( "${FILESDIR}"/${P}-remove-hardcoded-compiler-opts.patch )
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
+RESTRICT="test"
 
 DEPEND="
 	dev-libs/openssl:=
