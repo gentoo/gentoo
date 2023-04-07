@@ -22,6 +22,7 @@ BDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-riscv.patch
 )
 
 src_configure() {
