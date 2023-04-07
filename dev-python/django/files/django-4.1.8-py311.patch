@@ -1,0 +1,16 @@
+https://code.djangoproject.com/ticket/34118#comment:11
+https://github.com/python/cpython/issues/102549
+https://github.com/django/django/commit/38e63c9e61152682f3ff982c85a73793ab6d3267
+
+Skip the test for now until upstream adapt it to the fix backported to Python 3.11 too.
+--- a/tests/model_enums/tests.py
++++ b/tests/model_enums/tests.py
+@@ -310,7 +310,7 @@ class CustomChoicesTests(SimpleTestCase):
+             class Timezone(datetime.timezone, models.Choices):
+                 pass
+ 
+-    def test_uuid_unsupported(self):
++    def _test_uuid_unsupported(self):
+         msg = "UUID objects are immutable"
+         with self.assertRaisesMessage(TypeError, msg):
+ 
