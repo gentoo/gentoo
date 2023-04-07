@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby26 ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_TASK_TEST="MOCHA_NO_DOCS=true test:units"
 
@@ -24,6 +24,10 @@ ruby_add_bdepend "
 	test? ( >=dev-ruby/test-unit-2.5.1-r1 dev-ruby/introspection )"
 
 ruby_add_rdepend "dev-ruby/metaclass" #metaclass ~> 0.0.1
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.16.0-ruby32.patch
+)
 
 all_ruby_prepare() {
 	sed -i -e '/[Bb]undler/ s:^:#:' -e '1iload "lib/mocha/version.rb"' Rakefile || die
