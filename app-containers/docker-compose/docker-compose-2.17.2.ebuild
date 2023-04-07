@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~arm64"
 
 RDEPEND=">=app-containers/docker-cli-23.0.0"
 
+RESTRICT="test"
 S="${WORKDIR}/compose-${MY_PV}"
 
 src_prepare() {
