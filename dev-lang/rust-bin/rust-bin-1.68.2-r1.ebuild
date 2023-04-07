@@ -27,10 +27,7 @@ DEPEND=""
 
 RDEPEND="
 	>=app-eselect/eselect-rust-20190311
-	|| (
-		dev-libs/openssl-compat:1.1.1
-		<dev-libs/openssl-3
-	)
+	dev-libs/openssl
 	sys-apps/lsb-release
 	sys-devel/gcc:*
 "
