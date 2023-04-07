@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 521ef93..a637866 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -114,12 +114,6 @@ set(NVIM_API_LEVEL 11)         # Bump this after any API change.
+ set(NVIM_API_LEVEL_COMPAT 0)  # Adjust this after a _breaking_ API change.
+ set(NVIM_API_PRERELEASE false)
+ 
+-# Default to -O2 on release builds.
+-if(CMAKE_C_FLAGS_RELEASE MATCHES "-O3")
+-  message(STATUS "Replacing -O3 in CMAKE_C_FLAGS_RELEASE with -O2")
+-  string(REPLACE "-O3" "-O2" CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
+-endif()
+-
+ # Build-type: RelWithDebInfo
+ 
+ # /Og means something different in MSVC
