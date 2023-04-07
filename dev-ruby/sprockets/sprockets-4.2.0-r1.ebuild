@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -22,7 +22,7 @@ IUSE=""
 
 ruby_add_rdepend "
 	dev-ruby/concurrent-ruby:1
-	>=dev-ruby/rack-2.2.4:2.2
+	>=dev-ruby/rack-2.2.4:3.0
 "
 
 ruby_add_bdepend "test? (
