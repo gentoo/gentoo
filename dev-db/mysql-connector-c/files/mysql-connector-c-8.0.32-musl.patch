@@ -1,0 +1,25 @@
+https://github.com/mysql/mysql-server/pull/454
+
+From c875f049cb3571da1b9b5bcae50caccc5ee47cfb Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Fri, 7 Apr 2023 12:47:51 -0700
+Subject: [PATCH] sql/memory: Fix the musl build
+
+_SC_LEVEL1_DCACHE_LINESIZE is not specific to linux, but to glibc.
+---
+ sql/memory/aligned_atomic.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sql/memory/aligned_atomic.h b/sql/memory/aligned_atomic.h
+index d13d45b9deea..bd19c0cf4d6f 100644
+--- a/sql/memory/aligned_atomic.h
++++ b/sql/memory/aligned_atomic.h
+@@ -76,7 +76,7 @@ static inline size_t _cache_line_size() {
+   return line_size;
+ }
+ 
+-#elif defined(__linux__)
++#elif defined(__GLIBC__)
+ static inline size_t _cache_line_size() {
+   long size = sysconf(_SC_LEVEL1_DCACHE_LINESIZE);
+   if (size == -1) return 64;
