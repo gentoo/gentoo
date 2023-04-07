@@ -56,6 +56,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0-bashcomp.patch
+	"${FILESDIR}"/${PN}-4.1.8-py311.patch
 )
 
 distutils_enable_sphinx docs --no-autodoc
