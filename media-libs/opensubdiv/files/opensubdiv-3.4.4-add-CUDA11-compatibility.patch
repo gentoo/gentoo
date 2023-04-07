@@ -1,9 +1,6 @@
-From: "Alexander Golubev" <fatzer2@gmail.com>
-
-Set correct default minimal -arch for CUDA 9 and 11
---- OpenSubdiv-3_4_4/CMakeLists.txt     2021-11-07 02:01:07.899484952 +0300
-+++ OpenSubdiv-3_4_4/CMakeLists.txt.new 2021-11-07 02:01:23.402764409 +0300
-@@ -587,8 +587,12 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -590,8 +590,14 @@ if(CUDA_FOUND)
          if (NOT DEFINED OSD_CUDA_NVCC_FLAGS)
              if (CUDA_VERSION_MAJOR LESS 6)
                  set( OSD_CUDA_NVCC_FLAGS --gpu-architecture compute_11 )
@@ -12,8 +9,10 @@ Set correct default minimal -arch for CUDA 9 and 11
                  set( OSD_CUDA_NVCC_FLAGS --gpu-architecture compute_20 )
 +            elseif (CUDA_VERSION_MAJOR LESS 11)
 +                set( OSD_CUDA_NVCC_FLAGS --gpu-architecture compute_30 )
-+            else()
++            elseif (CUDA_VERSION_MAJOR LESS 12)
 +                set( OSD_CUDA_NVCC_FLAGS --gpu-architecture compute_35 )
++            else()
++                set( OSD_CUDA_NVCC_FLAGS --gpu-architecture compute_50 )
              endif()
          endif()
      endif()

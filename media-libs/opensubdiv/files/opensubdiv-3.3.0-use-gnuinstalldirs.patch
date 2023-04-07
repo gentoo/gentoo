@@ -1,6 +1,5 @@
-diff -purN a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2017-07-25 21:58:09.000000000 +0100
-+++ b/CMakeLists.txt	2017-08-15 14:51:36.771044414 +0100
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -23,6 +23,7 @@
  #
  
