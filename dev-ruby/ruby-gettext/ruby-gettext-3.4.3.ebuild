@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby26 ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 
 RUBY_FAKEGEM_NAME="${PN/ruby-/}"
 RUBY_FAKEGEM_VERSION="${PV%_*}"
@@ -54,6 +54,10 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
+	# Borrowed from Fedora
+	local -x LANG=C.UTF-8
+	local -x LANGUAGE=ja_JP.utf8
+
 	# Upstream tries to daisy-chain rake calls but they fail badly
 	# with our setup, so run it manually.
 	${RUBY} test/run-test.rb || die "tests failed"
