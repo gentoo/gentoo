@@ -28,8 +28,7 @@ IUSE="test"
 BDEPEND="
 	test? ( >=dev-lang/go-1.20 )
 "
-DEPEND="app-containers/docker"
-RDEPEND="${DEPEND}"
+RDEPEND="app-containers/docker-cli"
 
 src_compile() {
 	local _buildx_r='github.com/docker/buildx'
@@ -37,10 +36,10 @@ src_compile() {
 	if [[ ${PV} == 9999 ]]; then
 		version="$(git rev-parse --short HEAD)"
 	fi
-	ego build -mod=vendor -o docker-buildx \
-		-ldflags "-linkmode=external \
-		-X $_buildx_r/version.Version=${version} \
-		-X $_buildx_r/version.Revision=$(date -u +%FT%T%z) \
+	ego build -o docker-buildx \
+		-ldflags "-linkmode=external
+		-X $_buildx_r/version.Version=${version}
+		-X $_buildx_r/version.Revision=$(date -u +%FT%T%z)
 		-X $_buildx_r/version.Package=$_buildx_r" \
 		./cmd/buildx
 }
