@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby27 ruby30 ruby31"
+USE_RUBY="ruby27 ruby30 ruby31 ruby32"
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
@@ -40,10 +40,10 @@ each_ruby_prepare() {
 		-e '/rubocop/d' \
 		Gemfile || die
 
-	# appraisals, rubocop: useless for us test deps
+	# appraisal, rubocop: useless for us test deps
 	# mysql2, pg,: optional runtime deps
 	sed -i \
-		-e '/appraisals/d' \
+		-e '/appraisal/d' \
 		-e '/mysql2/d' \
 		-e '/pg/d' \
 		-e '/rubocop/d' \
