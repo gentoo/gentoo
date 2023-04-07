@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/jschaf/powershell.el/"
 
 if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI=".git"
+	EGIT_REPO_URI="https://github.com/jschaf/${PN}.el.git"
 else
 	if [[ ${PV} == *_pre20220805 ]] ; then
 		COMMIT=f2da15857e430206e215a3c65289b4058ae3c976
