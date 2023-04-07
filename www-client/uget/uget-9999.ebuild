@@ -38,6 +38,7 @@ BDEPEND="
 PATCHES=(
 	# https://github.com/ugetdm/uget/issues/49
 	"${FILESDIR}"/${PN}-2.2.1-ayatana.patch
+	"${FILESDIR}"/${PN}-2.2.3-broken-curl-check.patch
 )
 
 src_prepare() {
