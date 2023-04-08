@@ -9,7 +9,7 @@ DESCRIPTION="Instant terminal sharing"
 HOMEPAGE="https://tmate.io/"
 SRC_URI="https://github.com/tmate-io/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="ISC"
+LICENSE="ISC BSD BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="debug"
