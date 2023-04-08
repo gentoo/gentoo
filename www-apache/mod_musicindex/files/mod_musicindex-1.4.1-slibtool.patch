@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/778566
+
+commit 7455f156499c1980193f0c7a4e25b1040ba99104
+Author: orbea <orbea@riseup.net>
+Date:   Sat Apr 8 12:31:47 2023 -0700
+
+    build: Don't overwrite the default install target
+    
+    Autotools is capable of creating a working install target without any
+    help from apache's apxs which results in calling apache's libtool
+    implementation instead of GNU libtool or slibtool.
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 4815507..7a63571 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -69,11 +69,3 @@ noinst_HEADERS = \
+ 	playlist-mp4.h \
+ 	playlist-vorbis.h \
+ 	sort.h
+-
+-install: $(lib_LTLIBRARIES)
+-	$(mkinstalldirs) "$(DESTDIR)$(libdir)"
+-if BUILD_FOR_APACHE2
+-	$(APXS) -S LIBEXECDIR="$(DESTDIR)$(libdir)" -i -n musicindex mod_musicindex.la
+-else
+-	$(APXS) -S LIBEXECDIR="$(DESTDIR)$(libdir)" -i -n musicindex .libs/mod_musicindex.so
+-endif
