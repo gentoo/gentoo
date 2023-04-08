@@ -1,0 +1,11 @@
+diff -ruN xboing.orig/include/file.h xboing/include/file.h
+--- xboing.orig/include/file.h	1996-11-22 02:28:34.000000000 +0100
++++ xboing/include/file.h	2023-04-08 20:27:45.157804561 +0200
+@@ -52,6 +52,7 @@
+ 
+ #include <stdio.h>
+ #include <time.h>
++#include <sys/types.h>
+ 
+ /*
+  *  Constants and macros:
