@@ -18,22 +18,22 @@ inherit ruby-fakegem toolchain-funcs
 
 DESCRIPTION="Ruby extension for programmatically loading dynamic libraries"
 HOMEPAGE="https://wiki.github.com/ffi/ffi"
-
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${PN}-git-${PV}.tgz"
 
-IUSE=""
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-PATCHES=(
-	"${FILESDIR}/backport-pr-962.patch"
-	"${FILESDIR}/pr-957-sparc.patch" # submitted upstream as https://github.com/ffi/ffi/pull/957
-)
 
 RDEPEND+=" dev-libs/libffi:="
 DEPEND+=" dev-libs/libffi:="
 
 ruby_add_bdepend "dev-ruby/rake"
+
+PATCHES=(
+	"${FILESDIR}/backport-pr-962.patch"
+	"${FILESDIR}/pr-957-sparc.patch" # submitted upstream as https://github.com/ffi/ffi/pull/957
+	"${FILESDIR}/fix-regenerate-types-conf.patch"
+)
 
 all_ruby_prepare() {
 	sed -i -e '/tasks/ s:^:#:' \
