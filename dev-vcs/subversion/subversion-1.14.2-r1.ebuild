@@ -78,7 +78,6 @@ BDEPEND="
 	virtual/pkgconfig
 	!!<sys-apps/sandbox-1.6
 	doc? ( app-doc/doxygen )
-	kwallet? ( kde-frameworks/kdelibs4support:5 )
 	nls? ( sys-devel/gettext )
 	perl? ( dev-lang/swig )
 	ruby? ( dev-lang/swig )
@@ -185,7 +184,6 @@ src_configure() {
 		$(use_with gnome-keyring)
 		$(use_enable java javahl)
 		$(use_with java jdk "${JAVA_HOME}")
-		$(use_with kwallet)
 		$(use_enable nls)
 		$(use_enable plaintext-password-storage)
 		$(use_with sasl)
@@ -198,6 +196,12 @@ src_configure() {
 		--disable-static
 		--enable-svnxx
 	)
+
+	if use kwallet ; then
+		myconf+=( "--with-kwallet=/usr/include/:/usr/$(get_libdir)/" )
+	else
+		myconf+=( --without-kwallet )
+	fi
 
 	if use perl || use ruby; then
 		myconf+=( --with-swig )
