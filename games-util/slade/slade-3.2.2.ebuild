@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LUA_COMPAT=( lua5-{1..3} )
-WX_GTK_VER="3.0-gtk3"
+WX_GTK_VER="3.2-gtk3"
 
 inherit cmake lua-single wxwidgets
 
@@ -46,7 +46,6 @@ BDEPEND="
 S="${WORKDIR}/${PN^^}-${MY_PV}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.2.0-bundled-libs.patch
 	"${FILESDIR}"/${PN}-3.2.0_beta2-fluidsynth-driver.patch
 	"${FILESDIR}"/${PN}-3.2.2-wayland.patch
 )
