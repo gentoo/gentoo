@@ -5,8 +5,4 @@
 		<email>python@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
-	<upstream>
-		<remote-id type="pypi">pip</remote-id>
-		<remote-id type="pypi">setuptools</remote-id>
-	</upstream>
 </pkgmetadata>
