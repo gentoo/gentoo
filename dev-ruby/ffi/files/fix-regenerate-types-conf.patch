@@ -1,0 +1,23 @@
+https://github.com/ffi/ffi/commit/19348fe09e1aeb08424abdf331c3497159139f20
+
+From 19348fe09e1aeb08424abdf331c3497159139f20 Mon Sep 17 00:00:00 2001
+From: matoro <matoro@users.noreply.github.com>
+Date: Tue, 14 Mar 2023 21:03:33 -0400
+Subject: [PATCH] Update gen/Rakefile for Ruby 3 compat
+
+Ruby 3 changed the 'mode' argument from an option hash to keyword
+argument.  This change is backwards-compatible with Ruby 2.
+
+See: https://github.com/ruby/fileutils/commit/482de6d397742526d1111576e2791f9b7051e3c0
+--- a/gen/Rakefile
++++ b/gen/Rakefile
+@@ -9,7 +9,7 @@ logfile = File.join(File.dirname(__FILE__), 'log')
+ 
+ file types_conf do |task|
+   options = {}
+-  FileUtils.mkdir_p(File.dirname(task.name), { :mode => 0755 })
++  FileUtils.mkdir_p(File.dirname(task.name), mode: 0755)
+   File.open(task.name, File::CREAT|File::TRUNC|File::RDWR, 0644) do |f|
+     f.puts FFI::TypesGenerator.generate(options)
+   end
+
