@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit apache-module
+inherit apache-module autotools
 
 DESCRIPTION="mod_musicindex allows nice displaying of directories containing music files"
 HOMEPAGE="http://hacks.slashdirt.org/sw/musicindex/"
@@ -30,10 +30,19 @@ APACHE2_MOD_CONF="50_${PN}"
 APACHE2_MOD_DEFINE="MUSICINDEX"
 DOCS=( AUTHORS BUGS ChangeLog README UPGRADING )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-slibtool.patch #778566
+)
+
 need_apache2
 
 pkg_setup() {
 	_init_apache2_late
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {
@@ -62,4 +71,6 @@ src_install() {
 	newins "${DISTDIR}/${P}_valid-rss.png" valid-rss.png
 	newins "${DISTDIR}/${P}_valid-xhtml11" valid-xhtml11
 	newins "${DISTDIR}/${P}_vcss" vcss
+
+	find "${ED}" -type f -name "*.la" -delete || die
 }
