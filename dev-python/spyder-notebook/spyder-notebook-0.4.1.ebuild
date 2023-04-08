@@ -37,7 +37,7 @@ BDEPEND="
 	)
 "
 
-DOCS=( "README.md" "RELEASE.md" "CHANGELOG.md" "doc/example.gif" )
+DOCS=( "README.md" "CHANGELOG.md" )
 
 distutils_enable_tests pytest
 
