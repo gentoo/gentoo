@@ -33,6 +33,12 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2023-04-08)
+# i3-gaps has been meregd into upstream i3. Use x11-wm/i3 instead.
+# See also: https://github.com/i3/i3/issues/3724
+# Removal on 2023-05-08.
+x11-wm/i3-gaps
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-04-09)
 # Numerous vulnerabilities, bug #825486.
 # Nothing depends on it. Removal on 2023-05-09
