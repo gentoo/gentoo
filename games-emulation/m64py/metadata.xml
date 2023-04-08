@@ -10,6 +10,7 @@
 		<flag name="rar">Ensure support for .rar archives.</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">mupen64plus/mupen64plus-ui-python</remote-id>
 		<remote-id type="sourceforge">m64py</remote-id>
 	</upstream>
 </pkgmetadata>
