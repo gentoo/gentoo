@@ -29,7 +29,7 @@ dev-python/libcloud
 dev-python/moto
 dev-python/mkdocs-redirects
 dev-python/mkdocs-material
-dev-python/mkdocs_pymdownx_material_extras
+dev-python/mkdocs-pymdownx-material-extras
 dev-python/mkdocs-git-authors-plugin
 dev-python/mkdocs-i18n
 dev-python/mkdocs-material-extensions

@@ -11,7 +11,7 @@ DOCS_DEPEND="
 	dev-python/mkdocs-git-revision-date-localized-plugin
 	dev-python/mkdocs-material
 	dev-python/mkdocs-minify-plugin
-	dev-python/mkdocs_pymdownx_material_extras
+	dev-python/mkdocs-pymdownx-material-extras
 	dev-python/pyspelling
 "
 

@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=hatchling
 
 DOCS_BUILDER="mkdocs"
 DOCS_DEPEND="
-	>=dev-python/mkdocs_pymdownx_material_extras-2.0
+	>=dev-python/mkdocs-pymdownx-material-extras-2.0
 	dev-python/mkdocs-material
 	dev-python/mkdocs-git-revision-date-localized-plugin
 	dev-python/mkdocs-minify-plugin
