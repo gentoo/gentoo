@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-USE_RUBY="ruby26 ruby27"
+USE_RUBY="ruby30 ruby31"
 
 inherit desktop ruby-ng
 
@@ -18,7 +18,7 @@ if [ "${PV}" = "9999" ]; then
 else
 	SRC_URI="http://mikutter.hachune.net/bin/${P}.tar.gz
 		https://raw.githubusercontent.com/toshia/twitter_api_keys/${PLUGIN_HASH}/twitter_api_keys.rb"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~riscv"
 fi
 
 DESCRIPTION="Simple, powerful and moeful twitter client"
@@ -34,25 +34,26 @@ RDEPEND="
 	media-sound/alsa-utils"
 
 ruby_add_rdepend "=dev-ruby/addressable-2.8*
-	>=dev-ruby/delayer-1.1.2
+	>=dev-ruby/delayer-1.2.1
 	!>=dev-ruby/delayer-2.0
 	>=dev-ruby/delayer-deferred-2.2.0
 	!>=dev-ruby/delayer-deferred-3.0
-	>=dev-ruby/diva-1.0.2
-	!>=dev-ruby/diva-2.0
+	>=dev-ruby/diva-2.0.1
+	!>=dev-ruby/diva-3.0
 	dev-ruby/httpclient
 	dev-ruby/json:2
 	>=dev-ruby/memoist-0.16.2
 	!>=dev-ruby/memoist-0.17
 	dev-ruby/moneta
 	dev-ruby/nokogiri
-	>=dev-ruby/oauth-0.5.4
-	>=dev-ruby/pluggaloid-1.5.0
+	>=dev-ruby/oauth-0.5.8
+	>=dev-ruby/pluggaloid-1.7.0
 	!>=dev-ruby/pluggaloid-2.0
+	=dev-ruby/prime-0.1.2*
 	dev-ruby/rcairo
-	>=dev-ruby/ruby-gettext-3.3.5
-	!>=dev-ruby/ruby-gettext-3.4
-	=dev-ruby/ruby-gtk2-3.4*
+	>=dev-ruby/ruby-gettext-3.4
+	!>=dev-ruby/ruby-gettext-3.5
+	dev-ruby/ruby-gtk3
 	>=dev-ruby/typed-array-0.1.2
 	!>=dev-ruby/typed-array-0.2
 	dev-ruby/twitter-text
