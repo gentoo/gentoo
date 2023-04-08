@@ -12,7 +12,7 @@ SRC_URI="https://github.com/sasagawa888/eisl/archive/v${PV}.tar.gz
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 RESTRICT="test"  # Tests run cppcheck (and fail)
 
 DOCS=( README{,-ja}.md documents )
