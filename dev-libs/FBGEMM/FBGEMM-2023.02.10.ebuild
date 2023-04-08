@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 inherit python-any-r1 flag-o-matic cmake
 
-CommitId=7d59e803359eb323598e572700db27de467b705a
+CommitId=03b2046676707da64504e898490ab46104d4682a
 
 DESCRIPTION="Facebook GEneral Matrix Multiplication"
 HOMEPAGE="https://github.com/pytorch/FBGEMM"
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/pytorch/${PN}/archive/${CommitId}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
+IUSE="doc test"
 
 DEPEND="
 	>=dev-libs/asmjit-2022.07.02
@@ -25,15 +25,29 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	test? ( dev-cpp/gtest )
+	doc? (
+		$(python_gen_any_dep '
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+			dev-python/breathe[${PYTHON_USEDEP}]
+		')
+	)
 	${PYTHON_DEPS}
 "
 RESTRICT="!test? ( test )"
 
 S="${WORKDIR}"/${PN}-${CommitId}
 
+python_check_deps() {
+	python_has_version \
+		"dev-python/sphinx[${PYTHON_USEDEP}]" \
+		"dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]" \
+		"dev-python/breathe[${PYTHON_USEDEP}]"
+}
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-2022.01.13-gentoo.patch
-	"${FILESDIR}"/${P}-gcc13.patch
+	"${FILESDIR}"/${PN}-2022.07.16-gcc13.patch
 )
 
 src_prepare() {
@@ -53,6 +67,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DFBGEMM_LIBRARY_TYPE=shared
 		-DFBGEMM_BUILD_BENCHMARKS=OFF
+		-DFBGEMM_BUILD_DOCS=$(usex doc ON OFF)
 		-DFBGEMM_BUILD_TESTS=$(usex test ON OFF)
 	)
 	cmake_src_configure
