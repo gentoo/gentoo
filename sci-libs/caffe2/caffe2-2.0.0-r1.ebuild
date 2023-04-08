@@ -17,7 +17,7 @@ SRC_URI="https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cuda distributed ffmpeg mpi nnpack +numpy opencl opencv openmp qnnpack tensorpipe xnnpack"
+IUSE="cuda distributed fbgemm ffmpeg mpi nnpack +numpy opencl opencv openmp qnnpack tensorpipe xnnpack"
 RESTRICT="test"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -44,6 +44,7 @@ RDEPEND="
 		dev-libs/cudnn-frontend:0/8
 		<dev-util/nvidia-cuda-toolkit-12:=[profiler]
 	)
+	fbgemm? ( dev-libs/FBGEMM )
 	ffmpeg? ( media-video/ffmpeg:= )
 	mpi? ( sys-cluster/openmpi )
 	nnpack? ( sci-libs/NNPACK )
@@ -115,7 +116,7 @@ src_configure() {
 		-DUSE_DISTRIBUTED=$(usex distributed)
 		-DUSE_MPI=$(usex mpi)
 		-DUSE_FAKELOWP=OFF
-		-DUSE_FBGEMM=OFF # TODO
+		-DUSE_FBGEMM=$(usex fbgemm)
 		-DUSE_FFMPEG=$(usex ffmpeg)
 		-DUSE_GFLAGS=ON
 		-DUSE_GLOG=ON
