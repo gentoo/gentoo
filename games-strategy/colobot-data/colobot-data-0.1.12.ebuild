@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_9 )
+PYTHON_COMPAT=( python3_{9..11} )
 inherit cmake python-any-r1
 
 MY_P=colobot-gold-${PV}-alpha
