@@ -13,7 +13,7 @@ HOMEPAGE="http://people.csail.mit.edu/hubert/pyaudio/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # Tests work if you have the correct HW device(s) to test. 0.2.11-r1.
 RESTRICT="test"
