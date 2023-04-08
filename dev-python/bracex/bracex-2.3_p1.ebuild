@@ -15,20 +15,13 @@ DOCS_DEPEND="
 	dev-python/pyspelling
 "
 
-inherit distutils-r1 docs
-
-MY_PV="${PV%_p1}.post1"
+inherit distutils-r1 docs pypi
 
 DESCRIPTION="Bash style brace expansion for Python"
 HOMEPAGE="
 	https://github.com/facelessuser/bracex/
 	https://pypi.org/project/bracex/
 "
-SRC_URI="
-	https://github.com/facelessuser/${PN}/archive/${MY_PV}.tar.gz
-		-> ${P}.tar.gz
-"
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="MIT"
 SLOT="0"
