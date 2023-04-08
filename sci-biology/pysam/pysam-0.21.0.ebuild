@@ -31,6 +31,12 @@ distutils_enable_tests pytest
 
 DISTUTILS_IN_SOURCE_BUILD=1
 
+PATCHES=(
+	# backport
+	# https://github.com/pysam-developers/pysam/commit/17bb13dcfdb56ac238458dcef23fe01893a892e9
+	"${FILESDIR}"/${P}-cython-3.patch
+)
+
 EPYTEST_DESELECT=(
 	# only work with bundled htslib
 	'tests/tabix_test.py::TestRemoteFileHTTP'
