@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python3_{9..11} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="A Python module for making simple text/console-mode user interfaces"
-HOMEPAGE="http://pythondialog.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pythondialog/${PV}/python3-${P}.tar.bz2"
+HOMEPAGE="https://pythondialog.sourceforge.io/"
+SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/python3-${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"
