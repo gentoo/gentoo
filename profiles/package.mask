@@ -33,6 +33,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2023-04-09)
+# Archived upstream, better alternatives available, try:
+# - net-im/whatsapp-desktop-bin (another electron based approach)
+# - net-im/whatsie (a simple yet configurable Qt based app)
+# - net-im/whatsapp-for-linux::guru (a simple app using webkit2gtk)
+# Removal on 2023-05-09
+net-im/wazzapp-bin
+
 # Matthew Thode <prometheanfire@gentoo.org> (2023-04-08)
 # upstream has been dead for nearly five years
 # Removal on 2023-05-07
