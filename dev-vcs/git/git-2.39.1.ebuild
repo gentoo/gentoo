@@ -173,7 +173,7 @@ exportmakeopts() {
 
 		$(usex perl 'INSTALLDIRS=vendor NO_PERL_CPAN_FALLBACKS=YesPlease' NO_PERL=YesPlease)
 
-		$(usev elibc_musl NO_REGEX=YesPlease)
+		$(usev elibc_musl NO_REGEX=NeedsStartEnd)
 		$(usev !cvs NO_CVS=YesPlease)
 		$(usev !iconv NO_ICONV=YesPlease)
 		$(usev !nls NO_GETTEXT=YesPlease)
