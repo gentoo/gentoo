@@ -1,0 +1,36 @@
+From 58313fac8188163c9445bb9a212405412258ef5e Mon Sep 17 00:00:00 2001
+From: Aleix Pol Gonzalez <aleixpol@kde.org>
+Date: Wed, 5 Apr 2023 16:36:48 +0000
+Subject: [PATCH] screencast: Don't try to screencast nullptr
+
+For some reason we were received an output that was null. Account for it
+by notifying and outputing some more information in hopes of fixing it
+soon.
+
+CCBUG: 467622
+---
+ src/waylandintegration.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/waylandintegration.cpp b/src/waylandintegration.cpp
+index c929b030..be6e19f7 100644
+--- a/src/waylandintegration.cpp
++++ b/src/waylandintegration.cpp
+@@ -282,6 +282,14 @@ WaylandIntegration::Stream WaylandIntegration::WaylandIntegrationPrivate::startS
+ WaylandIntegration::Stream WaylandIntegration::WaylandIntegrationPrivate::startStreamingOutput(quint32 outputName, Screencasting::CursorMode mode)
+ {
+     auto output = m_outputMap.value(outputName).output();
++    if (!output) {
++        qCWarning(XdgDesktopPortalKdeWaylandIntegration) << "Cannot stream, output not found" << outputName << m_outputMap.keys();
++        auto notification = new KNotification(QStringLiteral("screencastfailure"), KNotification::CloseOnTimeout);
++        notification->setTitle(i18n("Failed to start screencasting"));
++        notification->setIconName(QStringLiteral("dialog-error"));
++        notification->sendEvent();
++        return {};
++    }
+     m_streamedScreenPosition = output->globalPosition();
+     return startStreaming(m_screencasting->createOutputStream(output.data(), mode),
+                           {
+-- 
+GitLab
+
