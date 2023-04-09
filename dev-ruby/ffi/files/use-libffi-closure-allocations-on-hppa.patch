@@ -1,0 +1,21 @@
+https://github.com/ffi/ffi/pull/1017
+
+From 587822fa8d21292d39400d2276ca49d37a752135 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 9 Apr 2023 02:17:23 +0100
+Subject: [PATCH 1/2] Use libffi closure allocations on hppa
+
+We currently do this for Apple arm64, but we need to do it for hppa too.
+--- a/ext/ffi_c/extconf.rb
++++ b/ext/ffi_c/extconf.rb
+@@ -61,6 +61,7 @@ if RUBY_ENGINE == 'ruby' || RUBY_ENGINE == 'rbx'
+   append_ldflags "-pthread"
+ 
+   ffi_alloc_default = RbConfig::CONFIG['host_os'] =~ /darwin/i && RbConfig::CONFIG['host'] =~ /arm|aarch64/i
++  ffi_alloc_default = ffi_alloc_default || RbConfig::CONFIG['host'] =~ /hppa/i
+   if enable_config('libffi-alloc', ffi_alloc_default)
+     $defs << "-DUSE_FFI_ALLOC"
+   end
+-- 
+2.40.0
+
