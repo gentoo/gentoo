@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		=dev-python/aiofiles-22.1*[${PYTHON_USEDEP}]
+		>=dev-python/aiofiles-22.1[${PYTHON_USEDEP}]
 		dev-python/ajsonrpc[${PYTHON_USEDEP}]
 		<dev-python/bottle-0.13[${PYTHON_USEDEP}]
 		=dev-python/click-8*[${PYTHON_USEDEP}]
