@@ -1,0 +1,34 @@
+From 282cb301f5961d6519bb5a295155f25f96421c85 Mon Sep 17 00:00:00 2001
+From: Kai Li <likai@kylinos.cn>
+Date: Wed, 5 Apr 2023 10:51:31 +0800
+Subject: [PATCH] Some GPUs will report a virtual edid even there is no monitor
+ connected to the VGA/HDMI port, when a monitor is plugged in, the edid will
+ be updated. The old pattern is not working for some GPUs, because the edid is
+ already in the cache with wrong data.
+
+So we clear edid when output changed, to make libkscreen to get the latest
+edid and improve hardware compatibility.
+
+Signed-off-by: likai <likai@kylinos.cn>
+
+
+(cherry picked from commit f34ec78318aca50511ae062cd218ef20627132a6)
+---
+ backends/xrandr/xrandroutput.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/backends/xrandr/xrandroutput.cpp b/backends/xrandr/xrandroutput.cpp
+index 2fce87a5..5a43b6f8 100644
+--- a/backends/xrandr/xrandroutput.cpp
++++ b/backends/xrandr/xrandroutput.cpp
+@@ -177,6 +177,7 @@ void XRandROutput::update(xcb_randr_crtc_t crtc, xcb_randr_mode_t mode, xcb_rand
+         }
+ 
+         m_hotplugModeUpdate = XRandR::hasProperty(m_id, "hotplug_mode_update");
++        m_edid.clear();
+     }
+ 
+     // A monitor has been enabled or disabled
+-- 
+GitLab
+
