@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python3_10 )
+PYTHON_COMPAT=( python3_{10..11} )
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 inherit readme.gentoo-r1 git-r3 systemd distutils-r1
 

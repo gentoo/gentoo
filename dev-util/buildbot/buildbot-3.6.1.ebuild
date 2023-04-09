@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python3_10 )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit readme.gentoo-r1 systemd distutils-r1 pypi
 
 DESCRIPTION="BuildBot build automation system"
