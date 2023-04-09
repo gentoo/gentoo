@@ -1,0 +1,49 @@
+https://github.com/socketry/async/commit/8f590415c08943372e0227f01d3c32e92dbcbed0
+https://github.com/socketry/async/issues/218
+
+From 8f590415c08943372e0227f01d3c32e92dbcbed0 Mon Sep 17 00:00:00 2001
+From: Samuel Williams <samuel.williams@oriontransfer.co.nz>
+Date: Sun, 12 Mar 2023 20:33:48 +1300
+Subject: [PATCH] Improve robustness of test, fixes #218.
+
+--- a/spec/async/semaphore_spec.rb
++++ b/spec/async/semaphore_spec.rb
+@@ -62,7 +62,7 @@
+ 			3.times.map do |i|
+ 				semaphore.async do |task|
+ 					order << i
+-					task.sleep(0.1)
++					task.yield
+ 					order << i
+ 				end
+ 			end.collect(&:result)
+@@ -72,17 +72,22 @@
+ 		
+ 		it 'allows tasks to execute concurrently' do
+ 			semaphore = Async::Semaphore.new(3)
+-			order = []
++			concurrency = 0
++			latch = Async::Condition.new
+ 			
+ 			3.times.map do |i|
+ 				semaphore.async do |task|
+-					order << i
+-					task.sleep(0.1)
+-					order << i
++					concurrency += 1
++					
++					if concurrency == 3
++						latch.signal
++					else
++						latch.wait
++					end
+ 				end
+-			end.collect(&:result)
++			end.each(&:wait)
+ 			
+-			expect(order).to be == [0, 1, 2, 0, 1, 2]
++			expect(concurrency).to be == 3
+ 		end
+ 	end
+ 	
+
