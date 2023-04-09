@@ -1,0 +1,67 @@
+From 49a595aaed62ce08cf6e173fa85165b1e847802d Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Fri, 7 Apr 2023 21:41:39 +0800
+Subject: [PATCH 1/2] gtk3: remove invalid icon size property
+
+'-gtk-icon-size' is not a valid property name
+---
+ src/gtk3/widgets/_dialogs.scss | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/src/gtk3/widgets/_dialogs.scss b/src/gtk3/widgets/_dialogs.scss
+index 3056fc8..4eb1082 100644
+--- a/src/gtk3/widgets/_dialogs.scss
++++ b/src/gtk3/widgets/_dialogs.scss
+@@ -57,13 +57,3 @@ filechooser {
+ 		border-bottom: 1px solid gtk("@borders");
+ 	}
+ }
+-
+-// Icon sizes
+-
+-.normal-icons {
+-  -gtk-icon-size: 16px;
+-}
+-
+-.large-icons {
+-  -gtk-icon-size: 32px;
+-}
+-- 
+2.40.0
+
+
+From bfe2ce620d395c943bb13a646295948b5bffbcc3 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Fri, 7 Apr 2023 22:02:11 +0800
+Subject: [PATCH 2/2] gtk3: restore old icon size for titlebutton
+
+`background-size` results in different sizes on X11 and Wayland.
+
+BUG: 468203
+FIXED-IN: 5.27.5
+---
+ src/gtk3/widgets/_window_decorations.scss | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/gtk3/widgets/_window_decorations.scss b/src/gtk3/widgets/_window_decorations.scss
+index aef28ca..6568e6b 100644
+--- a/src/gtk3/widgets/_window_decorations.scss
++++ b/src/gtk3/widgets/_window_decorations.scss
+@@ -74,11 +74,11 @@ window {
+ 	.titlebar {
+ 		&.default-decoration button.titlebutton {
+ 			padding: 1px;
+-			min-height: 24px;
+-			min-width: 24px;
++			min-height: 18px;
++			min-width: 18px;
+ 			margin: 0;
+ 		}
+-		$titlebutton-size: 24px 24px;
++		$titlebutton-size: 18px 18px;
+ 		button.titlebutton {
+ 			&:hover,
+ 			&:active,
+-- 
+2.40.0
+
