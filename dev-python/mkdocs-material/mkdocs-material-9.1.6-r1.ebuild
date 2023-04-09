@@ -30,11 +30,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~riscv ~x86"
 
 RDEPEND="
+	>=dev-python/colorama-0.4[${PYTHON_USEDEP}]
 	>=dev-python/jinja-3.0.2[${PYTHON_USEDEP}]
 	>=dev-python/markdown-3.2[${PYTHON_USEDEP}]
 	>=dev-python/mkdocs-1.4.2[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.14[${PYTHON_USEDEP}]
 	>=dev-python/pymdown-extensions-9.9.1[${PYTHON_USEDEP}]
+	>=dev-python/regex-2022.4.24[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.26[${PYTHON_USEDEP}]
 "
 
 # mkdocs-material-extensions depends on mkdocs-material creating a circular dep
