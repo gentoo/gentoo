@@ -34,6 +34,8 @@ BDEPEND="
 	test? ( dev-python/lit )
 "
 
+PATCHES=( "${FILESDIR}/${PN}-16.0.0-llvm-link-llvm-dylib.patch" )
+
 src_prepare() {
 	append-flags -fPIC
 	cmake_src_prepare
