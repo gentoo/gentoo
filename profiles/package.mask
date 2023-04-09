@@ -126,10 +126,6 @@ dev-ruby/ddmemoize
 # [2] https://wiki.gentoo.org/wiki/Nouveau
 x11-drivers/nvidia-drivers:0/390
 
-# Michał Górny <mgorny@gentoo.org> (2023-03-30)
-# Fails to build, bug #903017.
-=dev-util/spirv-llvm-translator-16.0.0
-
 # Matt Turner <mattst88@gentoo.org> (2023-03-30)
 # Masked for testing and migration of consumers
 net-libs/libdmapsharing:4.0
