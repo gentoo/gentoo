@@ -1,0 +1,37 @@
+From e9384150d8e41dd9c869f5f502e02c70a5c6f002 Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Sat, 8 Apr 2023 00:33:24 +0800
+Subject: [PATCH] kcm: notify changes in kcmfonts when global scale changes
+
+Otherwise kde-gtk-config will use the old font DPI value.
+
+CCBUG: 468203
+---
+ kcm/kcm.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kcm/kcm.cpp b/kcm/kcm.cpp
+index 6d96625d..f292699c 100644
+--- a/kcm/kcm.cpp
++++ b/kcm/kcm.cpp
+@@ -438,7 +438,7 @@ void KCMKScreen::exportGlobalScale()
+                 loadProc.waitForFinished();
+             }
+         }
+-        fontConfigGroup.writeEntry("forceFontDPI", 0);
++        fontConfigGroup.writeEntry("forceFontDPI", 0, KConfig::Notify);
+     } else {
+         const int scaleDpi = qRound(globalScale() * 96.0);
+         QProcess proc;
+@@ -448,7 +448,7 @@ void KCMKScreen::exportGlobalScale()
+             proc.closeWriteChannel();
+             proc.waitForFinished();
+         }
+-        fontConfigGroup.writeEntry("forceFontDPI", scaleDpi);
++        fontConfigGroup.writeEntry("forceFontDPI", scaleDpi, KConfig::Notify);
+     }
+ 
+     Q_EMIT globalScaleWritten();
+-- 
+GitLab
+
