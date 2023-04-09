@@ -25,6 +25,10 @@ LICENSE="GPL-3"
 SLOT="0"
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/resolvelib.patch"
+)
+
 RDEPEND="
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
