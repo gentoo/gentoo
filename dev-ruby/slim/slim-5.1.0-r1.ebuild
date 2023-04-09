@@ -28,6 +28,7 @@ ruby_add_rdepend "
 	>=dev-ruby/tilt-2.0.6:*
 	>=dev-ruby/temple-0.7.6:0.7
 "
+# sass tests are currently disabled: https://github.com/slim-template/slim/commit/bd9d4601cd8142aa9fdbc0d87c9f9132a9a56cda
 ruby_add_bdepend "
 	doc? (
 		dev-ruby/yard
@@ -37,7 +38,6 @@ ruby_add_bdepend "
 		dev-ruby/minitest:5
 		dev-ruby/kramdown:2
 		dev-ruby/redcarpet
-		dev-ruby/sassc
 		>=dev-ruby/test-unit-3.5
 	)
 "
