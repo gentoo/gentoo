@@ -71,6 +71,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
+	"${FILESDIR}/waybar-0.9.17-wireplumber.patch"
 	"${FILESDIR}/systemd-0.9.17.patch"
 )
 
