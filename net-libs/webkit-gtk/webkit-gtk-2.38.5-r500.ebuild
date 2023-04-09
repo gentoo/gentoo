@@ -187,14 +187,19 @@ src_configure() {
 	# Ruby situation is a bit complicated. See bug 513888
 	local rubyimpl
 	local ruby_interpreter=""
+	local RUBY
 	for rubyimpl in ${USE_RUBY}; do
 		if has_version -b "virtual/rubygems[ruby_targets_${rubyimpl}]"; then
-			ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ${rubyimpl})"
+			RUBY="$(type -P ${rubyimpl})"
+			ruby_interpreter="-DRUBY_EXECUTABLE=${RUBY}"
 		fi
 	done
 	# This will rarely occur. Only a couple of corner cases could lead us to
 	# that failure. See bug 513888
-	[[ -z $ruby_interpreter ]] && die "No suitable ruby interpreter found"
+	[[ -z ${ruby_interpreter} ]] && die "No suitable ruby interpreter found"
+	# JavaScriptCore/Scripts/postprocess-asm invokes another Ruby script directly
+	# so it doesn't respect RUBY_EXECUTABLE, bug #771744.
+	sed -i -e "s:#!/usr/bin/env ruby:#!${RUBY}:" $(grep -rl "/usr/bin/env ruby" Source/JavaScriptCore || die) || die
 
 	# TODO: Check Web Audio support
 	# should somehow let user select between them?
