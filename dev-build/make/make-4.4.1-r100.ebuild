@@ -66,6 +66,10 @@ src_prepare() {
 	if [[ ${PV} == 9999 ]] ; then
 		eautoreconf
 	fi
+
+	if use guile; then
+		guile-single_src_prepare
+	fi
 }
 
 pkg_setup() {
@@ -94,4 +98,5 @@ src_install() {
 
 	dosym gmake /usr/bin/make
 	dosym gmake.1 /usr/share/man/man1/make.1
+	guile_unstrip_ccache
 }
