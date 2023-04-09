@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit autotools python-any-r1 toolchain-funcs xdg
 
@@ -22,9 +22,9 @@ HOMEPAGE="https://handbrake.fr/ https://github.com/HandBrake/HandBrake"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+fdk gstreamer gtk libav-aac numa nvenc x265"
+IUSE="+fdk gstreamer gtk numa nvenc x265" # TODO: qsv vce
 
-REQUIRED_USE="^^ ( fdk libav-aac )"
+REQUIRED_USE="numa? ( x265 )"
 
 RDEPEND="
 	app-arch/xz-utils
@@ -71,7 +71,10 @@ RDEPEND="
 		x11-libs/libnotify
 		x11-libs/pango
 	)
-	nvenc? ( media-libs/nv-codec-headers )
+	nvenc? (
+		media-libs/nv-codec-headers
+		media-video/ffmpeg[nvenc]
+	)
 	x265? ( >=media-libs/x265-3.2:0=[10bit,12bit,numa?] )
 "
 DEPEND="${RDEPEND}"
@@ -88,14 +91,11 @@ PATCHES=(
 	# It may work this way; if not, we should try to mimic the duplication.
 	"${FILESDIR}/${PN}-9999-remove-dvdnav-dup.patch"
 
-	# Remove faac dependency; TODO: figure out if we need to do this at all.
-	"${FILESDIR}/${PN}-9999-remove-faac-dependency.patch"
-
 	# Detect system tools - bug 738110
 	"${FILESDIR}/${PN}-9999-system-tools.patch"
 
 	# Use whichever python is set by portage
-	"${FILESDIR}/${PN}-1.3.0-dont-search-for-python.patch"
+	"${FILESDIR}/${PN}-9999-dont-search-for-python.patch"
 
 	# Fix x265 linkage... again again #730034
 	"${FILESDIR}/${PN}-1.3.3-x265-link.patch"
@@ -123,16 +123,17 @@ src_configure() {
 		--force
 		--verbose
 		--prefix="${EPREFIX}/usr"
-		--disable-gtk-update-checks
 		--disable-flatpak
-		--disable-gtk4
-		$(use_enable libav-aac ffmpeg-aac)
-		$(use_enable fdk fdk-aac)
 		$(usex !gtk --disable-gtk)
+		--disable-gtk4
 		$(usex !gstreamer --disable-gst)
-		$(use_enable numa)
-		$(use_enable nvenc)
 		$(use_enable x265)
+		$(use_enable numa)
+		$(use_enable fdk fdk-aac)
+		--enable-ffmpeg-aac # Forced on
+		$(use_enable nvenc)
+		# TODO: $(use_enable qsv)
+		# TODO: $(use_enable vce)
 	)
 
 	./configure "${myconfargs[@]}" || die "Configure failed."
