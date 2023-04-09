@@ -29,6 +29,10 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${PN}-${RELEASE_COMMIT}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-clang16.patch #870544
+)
+
 src_prepare() {
 	default
 	sed -i -e "s/(DESTDIR)//" ${PN}.pc.in || die
