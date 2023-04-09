@@ -50,9 +50,6 @@ all_ruby_prepare() {
 
 	# Disable coverage
 	sed -i -e 's/require_relative ".\/support\/simplecov"//g' "spec/spec_helper.rb" || die
-
-	# Submitted upstream as https://github.com/httprb/http/pull/719
-	sed -i -e '4i require "cgi"' "spec/lib/http/client_spec.rb" || die
 }
 
 each_ruby_test() {
