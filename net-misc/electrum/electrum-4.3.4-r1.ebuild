@@ -63,6 +63,9 @@ src_prepare() {
 	# make qdarkstyle dep optional
 	sed -i -e '/qdarkstyle/d' contrib/requirements/requirements.txt || die
 
+	# remove upper bounds from deps
+	sed -i -e 's:,<[0-9.]*::' contrib/requirements/requirements.txt || die
+
 	local bestgui
 	if use qt5; then
 		bestgui=qt
