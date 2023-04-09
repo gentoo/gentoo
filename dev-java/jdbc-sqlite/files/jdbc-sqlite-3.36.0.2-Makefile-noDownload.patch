@@ -1,0 +1,21 @@
+# sqlite-amalgamation is part of SRC_URI.
+--- a/Makefile
++++ b/Makefile
+@@ -26,17 +26,6 @@ SQLITE_INCLUDE := $(shell dirname "$(SQLITE_HEADER)")
+ 
+ CCFLAGS:= -I$(SQLITE_OUT) -I$(SQLITE_INCLUDE) $(CCFLAGS)
+ 
+-$(SQLITE_ARCHIVE):
+-	@mkdir -p $(@D)
+-	curl -L --max-redirs 0 -f -o$@ https://www.sqlite.org/2021/$(SQLITE_AMAL_PREFIX).zip || \
+-	curl -L --max-redirs 0 -f -o$@ https://www.sqlite.org/2020/$(SQLITE_AMAL_PREFIX).zip || \
+-	curl -L --max-redirs 0 -f -o$@ https://www.sqlite.org/$(SQLITE_AMAL_PREFIX).zip || \
+-	curl -L --max-redirs 0 -f -o$@ https://www.sqlite.org/$(SQLITE_OLD_AMAL_PREFIX).zip
+-
+-$(SQLITE_UNPACKED): $(SQLITE_ARCHIVE)
+-	unzip -qo $< -d $(TARGET)/tmp.$(version)
+-	(mv $(TARGET)/tmp.$(version)/$(SQLITE_AMAL_PREFIX) $(TARGET) && rmdir $(TARGET)/tmp.$(version)) || mv $(TARGET)/tmp.$(version)/ $(TARGET)/$(SQLITE_AMAL_PREFIX)
+-	touch $@
+ 
+ 
+ $(TARGET)/common-lib/org/sqlite/%.class: src/main/java/org/sqlite/%.java
