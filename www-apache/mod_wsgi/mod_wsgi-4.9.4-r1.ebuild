@@ -10,7 +10,7 @@ inherit apache-module python-single-r1
 
 DESCRIPTION="An Apache2 module for running Python WSGI applications"
 HOMEPAGE="https://github.com/GrahamDumpleton/mod_wsgi"
-SRC_URI="https://github.com/GrahamDumpleton/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/GrahamDumpleton/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
