@@ -34,6 +34,13 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2023-04-10)
+# DMX support was dropped from the Xserver in v21.1.0 and had been broken for
+# 14 years previous to its removal. See
+# https://cgit.freedesktop.org/xorg/xserver/commit/?id=b3b81c8c2090cd49410960a021baf0d27fdd2ab3
+# Removal on 2023-05-10
+x11-libs/libdmx
+
+# Matt Turner <mattst88@gentoo.org> (2023-04-10)
 # speedo support was dropped from libXfont ~14 years ago. See
 # https://www.x.org/wiki/DeprecatedInX11R7/
 # https://gitlab.freedesktop.org/xorg/lib/libxfont/-/commit/85b66b8a7f3095f10437c8ecb3dcbfe68c9cfced
