@@ -227,6 +227,8 @@ src_install() {
 		doman "${ED}"/usr/man/man3/Sys::Guestfs.3pm
 		rm -rf "${ED}"/usr/man || die
 	fi
+
+	use python && python_optimize
 }
 
 pkg_postinst() {
