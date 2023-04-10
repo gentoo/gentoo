@@ -178,6 +178,8 @@ src_configure() {
 		--enable-pthread \
 		--disable-rpath \
 		--without-baseruby \
+		--with-compress-debug-sections=no \
+		--enable-mkmf-verbose \
 		--with-out-ext="${modules}" \
 		$(use_with jemalloc jemalloc) \
 		$(use_enable jit jit-support) \
