@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="a client for MPD which submits your tracks to last.fm"
-HOMEPAGE="https://cmende.github.com/scmpc/"
+HOMEPAGE="https://cmende.github.io/scmpc/"
 SRC_URI="https://dev.gentoo.org/~angelos/${P}.tar.bz2"
 
 LICENSE="GPL-2"
