@@ -11,4 +11,7 @@
 		includes support for detached signatures, and thorough documentation
 		on the design and implementation, including usage guidelines.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">thoughtpolice/hs-ed25519</remote-id>
+	</upstream>
 </pkgmetadata>
