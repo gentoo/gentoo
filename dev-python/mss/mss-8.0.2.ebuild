@@ -42,6 +42,11 @@ EPYTEST_IGNORE=(
 	mss/tests/test_setup.py
 )
 
+EPYTEST_DESELECT=(
+	# unreliable `lsof -U | grep ...` tests
+	mss/tests/test_leaks.py
+)
+
 src_prepare() {
 	sed -i -e '/--cov/d' setup.cfg || die
 	distutils-r1_src_prepare
