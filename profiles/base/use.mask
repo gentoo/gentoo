@@ -1,8 +1,12 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
+
+# Hans de Graaff <graaff@gentoo.org> (2023-04-10)
+# Ruby 2.7 is masked for removal.
+ruby_targets_ruby27
 
 # Sam James <sam@gentoo.org> (2022-08-02)
 # Masked for testing. The split of some packages may still
