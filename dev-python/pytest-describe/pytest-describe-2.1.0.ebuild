@@ -24,12 +24,6 @@ RDEPEND="
 	>=dev-python/pytest-2.6.0[${PYTHON_USEDEP}]
 "
 
-BDEPEND="
-	test? (
-		dev-python/py[${PYTHON_USEDEP}]
-	)
-"
-
 distutils_enable_tests pytest
 
 python_test() {
