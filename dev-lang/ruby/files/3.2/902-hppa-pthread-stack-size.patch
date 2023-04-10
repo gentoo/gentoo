@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/701494
+
+From 40ccf3b91071d3603335b0b7095613ef1843f9e1 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Fri, 7 Apr 2023 11:46:12 +0100
+Subject: [PATCH] thread_pthread: Grow main_stack if required (fixes tests on
+ HPPA)
+
+On HPPA, test_insns.rb fails (along with various Ruby gems) with
+'stack level too deep (SystemStackError)'. This turns out to be because HPPA
+defaults to a small(er) stack.
+
+With this change, most of Ruby's test suite now passes on HPPA.
+
+Thanks to both Dave and Helge for the investigation and coming up with the
+patch.
+
+Bug: https://bugs.gentoo.org/701494
+Bug: https://bugs.debian.org/881773
+Bug: https://bugs.debian.org/881772 (for PPC64)
+Bug: https://github.com/rack/rack/issues/1640
+Thanks-to: John David Anglin <dave.anglin@bell.net>
+Thanks-to: Helge Deller <deller@gmx.de>
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/thread_pthread.c
++++ b/thread_pthread.c
+@@ -858,8 +858,22 @@ size_t pthread_get_stacksize_np(pthread_t);
+ #   define MAINSTACKADDR_AVAILABLE 0
+ # endif
+ #endif
+-#if MAINSTACKADDR_AVAILABLE && !defined(get_main_stack)
+-# define get_main_stack(addr, size) get_stack(addr, size)
++#if MAINSTACKADDR_AVAILABLE
++static int get_stack(void **, size_t *);
++static int
++get_main_stack(void **addr, size_t *size)
++{
++    int ret = get_stack(addr, size);
++
++#ifdef __hppa__
++    /* On some architectures, the initial stack size may be too small, but fortunately,
++       it's growable. Bump it up to the minimum needed if it is too small. */
++    if (*size < RUBY_VM_THREAD_VM_STACK_SIZE)
++        *size = RUBY_VM_THREAD_VM_STACK_SIZE;
++#endif
++
++    return ret;
++}
+ #endif
+ 
+ #ifdef STACKADDR_AVAILABLE
+-- 
+2.40.0
+
