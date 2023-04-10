@@ -5,4 +5,7 @@
 	<email>vim@gentoo.org</email>
 	<name>Gentoo Vim Project</name>
 </maintainer>
+<upstream>
+	<remote-id type="github">vim-voom/VOoM</remote-id>
+</upstream>
 </pkgmetadata>
