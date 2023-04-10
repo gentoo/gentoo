@@ -8,7 +8,7 @@ inherit meson optfeature xdg
 MY_COMMIT="5122896d812a2db0fd2c536f047ac340fd1d12e5"
 
 DESCRIPTION="A simple image viewer based on EFL"
-HOMEPAGE="https://github.com/vtorri/entice"
+HOMEPAGE="https://git.enlightenment.org/vtorri/entice https://github.com/vtorri/entice"
 SRC_URI="https://github.com/vtorri/entice/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
