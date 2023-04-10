@@ -31,7 +31,7 @@ RDEPEND="lua_single_target_luajit? ( ${LUA_DEPS} )
 	dev-libs/jsoncpp:=
 	sys-libs/zlib
 	client? (
-		>=dev-games/irrlicht-mt-1.9.0.10
+		~dev-games/irrlicht-mt-1.9.0.10
 		media-libs/freetype:2
 		media-libs/libpng:0=
 		media-libs/libjpeg-turbo
@@ -53,7 +53,7 @@ RDEPEND="lua_single_target_luajit? ( ${LUA_DEPS} )
 	server? (
 		acct-group/minetest
 		acct-user/minetest
-		>=dev-games/irrlicht-mt-headers-1.9.0.10
+		~dev-games/irrlicht-mt-headers-1.9.0.10
 	)
 	spatial? ( sci-libs/libspatialindex:= )"
 DEPEND="${RDEPEND}"
