@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Runs a command as a Unix daemon"
-HOMEPAGE="https://bmc.github.com/daemonize/"
+HOMEPAGE="http://software.clapper.org/daemonize/"
 SRC_URI="https://github.com/bmc/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
