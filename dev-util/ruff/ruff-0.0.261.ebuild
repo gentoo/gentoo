@@ -20,7 +20,6 @@ CRATES="
 	autocfg-1.1.0
 	base64-0.13.1
 	bincode-1.3.3
-	bisection-0.1.0
 	bit-set-0.5.3
 	bit-vec-0.6.3
 	bitflags-1.3.2
@@ -166,6 +165,7 @@ CRATES="
 	peg-0.8.1
 	peg-macros-0.8.1
 	peg-runtime-0.8.1
+	pep440_rs-0.3.1
 	percent-encoding-2.2.0
 	pest-2.5.5
 	pest_derive-2.5.5
@@ -271,6 +271,7 @@ CRATES="
 	tracing-attributes-0.1.23
 	tracing-core-0.1.30
 	twox-hash-1.6.3
+	typed-arena-2.0.2
 	typenum-1.16.0
 	ucd-trie-0.1.5
 	unic-char-property-0.9.0
@@ -309,6 +310,7 @@ CRATES="
 	webpki-roots-0.22.6
 	which-4.4.0
 	widestring-0.5.1
+	wild-2.1.0
 	winapi-0.3.9
 	winapi-i686-pc-windows-gnu-0.4.0
 	winapi-util-0.1.5
@@ -369,7 +371,7 @@ BDEPEND="
 
 # rust does not use *FLAGS from make.conf, silence portage warning
 # update with proper path to binaries this crate installs, omit leading /
-QA_FLAGS_IGNORED="usr/bin/ruff.* usr/lib.*/libruff.*.so"
+QA_FLAGS_IGNORED="usr/bin/.* usr/lib.*/libruff.*.so"
 
 # haven't been able to figure out how to get tests working yet
 RESTRICT=test
