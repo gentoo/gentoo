@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-gmtime.patch"
 	"${FILESDIR}/${P}-musl-pthread.patch"
 	"${FILESDIR}/${P}-libcxx.patch"
+	"${FILESDIR}/${P}-fix-binary-function.patch"
 )
 
 src_prepare() {
