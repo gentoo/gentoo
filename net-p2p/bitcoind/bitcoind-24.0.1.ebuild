@@ -62,6 +62,7 @@ DOCS=(
 
 PATCHES=(
 	"${FILESDIR}"/24.0.1-syslibs.patch
+	"${FILESDIR}"/24.0.1-gcc13.patch
 )
 
 pkg_pretend() {
