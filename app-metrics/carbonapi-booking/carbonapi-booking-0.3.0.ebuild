@@ -21,6 +21,16 @@ RDEPEND="${DEPEND}
 	acct-user/carbon"
 BDEPEND=""
 
+src_prepare() {
+	export VERSION="gentoo-${PVR}"
+
+	# bug 904051: disable data-race detection, conflicts with
+	# go-module's -buildmode=pie
+	sed -i -e 's/ -race / /' Makefile || die
+
+	eapply_user
+}
+
 src_install() {
 	insinto /etc/carbonapi
 	doins -r "${S}"/config/*
