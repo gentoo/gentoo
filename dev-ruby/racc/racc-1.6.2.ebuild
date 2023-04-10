@@ -36,10 +36,18 @@ all_ruby_prepare() {
 
 	# Avoid depending on rake-compiler since we don't use it to compile
 	# the extension.
-	sed -i -e '/rake-compiler/ s:^:#:' -e '/extensiontask/ s:^:#:' Rakefile
-	sed -i -e '/ExtensionTask/,/^  end/ s:^:#:' Rakefile
-	# Which means we need to generate the parser file here
-	rake lib/racc/parser-text.rb || die
+	sed -i -e '/rake-compiler/ s:^:#:' -e '/extensiontask/ s:^:#:' Rakefile || die
+	sed -i -e '/ExtensionTask/,/^  end/ s:^:#:' Rakefile || die
+
+	# ...which means we need to generate the parser file here
+	for ruby in ${USE_RUBY} ; do
+		if use ruby_targets_${ruby} ; then
+			if has_version -b "virtual/rubygems[ruby_targets_${ruby}(-)]" && has_version -b "dev-ruby/rake[ruby_targets_${ruby}(-)]" ; then
+				${ruby} -S rake lib/racc/parser-text.rb || die
+				break
+			fi
+		fi
+	done
 
 	sed -i -e 's:_relative ": "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
