@@ -99,6 +99,7 @@ src_configure() {
 		-DENABLE_SOUND=$(usex sound)
 		-DENABLE_SYSTEM_GMP=1
 		-DENABLE_SYSTEM_JSONCPP=1
+		-DENABLE_UPDATE_CHECKER=no
 		-DRUN_IN_PLACE=0
 	)
 
@@ -138,4 +139,13 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
+
+	elog "Since 5.7.0-r2 new ${PN} configurations no longer check if newer versions are available upstream,"
+	elog "a feature unnecessary when ${PN} is installed using distro packages."
+	elog "To disable this check for existing configurations open the file ~/.minetest/minetest.conf"
+	elog "in a text editor while ${PN} is not running, locate the keyword 'update_last_checked',"
+	elog "and change that line to say:"
+	elog
+	elog "	update_last_checked = disabled"
+	elog
 }
