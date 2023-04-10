@@ -12,4 +12,7 @@
 		human-readable versions of 'Show' instances, which can be quite handy for
 		debugging Haskell programs.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">yav/pretty-show</remote-id>
+	</upstream>
 </pkgmetadata>
