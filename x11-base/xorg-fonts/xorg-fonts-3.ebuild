@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,6 @@ RDEPEND="
 	media-fonts/font-bh-lucidatypewriter-75dpi
 	media-fonts/font-bitstream-100dpi
 	media-fonts/font-bitstream-75dpi
-	media-fonts/font-bitstream-speedo
 	media-fonts/font-bitstream-type1
 	media-fonts/font-cronyx-cyrillic
 	media-fonts/font-cursor-misc
