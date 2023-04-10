@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Photos"
 LICENSE="GPL-3+ LGPL-2+ CC0-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="test upnp-av"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -36,11 +36,8 @@ DEPEND="
 "
 # >=dev-libs/libgdata-0.17.13:0=[gnome-online-accounts] # Upstream left this commented in meson.build. Probably comes back with the next version
 
-# but out of all the grilo-plugins, only upnp-av gets used, which has a USE flag here,
-# so don't pull it always, but only if USE flag is enabled.
 # tracker-miners gschema used at runtime.
 RDEPEND="${DEPEND}
-	upnp-av? ( >=media-plugins/grilo-plugins-0.3.16:0.3[upnp-av] )
 	app-misc/tracker-miners:3
 "
 BDEPEND="
