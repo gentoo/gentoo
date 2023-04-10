@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="cache"
 inherit ruby-fakegem
 
 DESCRIPTION="A modern, pretty RDoc template"
-HOMEPAGE="https://fauna.github.com/fauna/allison/files/README.html"
+HOMEPAGE="https://github.com/evan/allison"
 
 LICENSE="AFL-3.0"
 SLOT="0"
