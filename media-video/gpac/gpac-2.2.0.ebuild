@@ -66,6 +66,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-configure.patch"
 	"${FILESDIR}/${PN}-1.0.0-zlib-compile.patch"
 	"${FILESDIR}/${PN}-2.2.0-ffmpeg6.patch"
+	"${FILESDIR}/${PN}-2.2.0-ffmpeg6-deux.patch"
 )
 
 DOCS=(
