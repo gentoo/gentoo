@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="History.txt README.rdoc examples/*"
 inherit ruby-fakegem
 
 DESCRIPTION="Rubytter is a simple twitter library"
-HOMEPAGE="https://wiki.github.com/jugyo/rubytter"
+HOMEPAGE="https://github.com/jugyo/rubytter"
 
 LICENSE="MIT"
 SLOT="0"
