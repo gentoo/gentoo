@@ -19,7 +19,8 @@ depend() {
 
 start_pre() {
 	mkdir -p "${pidfile%/*}"
-	chown ${user}:${group} "${pidfile%/*}"
+	mkdir -p /var/log/carbonapi
+	chown ${user}:${group} "${pidfile%/*}" /var/log/carbonapi
 }
 
 stop_post() {
