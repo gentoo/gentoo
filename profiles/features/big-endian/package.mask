@@ -1,17 +1,20 @@
 # Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# matoro <matoro_gentoo@matoro.tk> (2022-04-07)
+# matoro <matoro_gentoo@matoro.tk> (2023-04-10)
+# Explicit no-support for BE (#801238)
+media-libs/libldac
+media-plugins/gst-plugins-ldac
+
+# matoro <matoro_gentoo@matoro.tk> (2023-04-07)
 # Fails tests on BE (#896138)
 # https://github.com/cisco/openh264/issues/3634
 media-libs/openh264
-# revdeps
 media-libs/tg_owt
 
-# matoro <matoro_gentoo@matoro.tk> (2022-03-20)
+# matoro <matoro_gentoo@matoro.tk> (2023-03-20)
 # Broken on big-endian (#861710)
 # https://github.com/trendmicro/tlsh/issues/131
 dev-libs/tlsh
-# revdeps
 dev-python/tlsh
 dev-util/diffoscope

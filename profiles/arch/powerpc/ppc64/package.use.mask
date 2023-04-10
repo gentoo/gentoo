@@ -39,10 +39,6 @@ dev-util/kdevelop reviewboard
 # Go doesn't support pie on ppc64, bug #818529
 net-dns/dnscrypt-proxy pie
 
-# Sam James <sam@gentoo.org> (2021-09-23)
-# Needs media-libs/libldac which builds on ppc64le, but not be
-media-video/pipewire -bluetooth
-
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
 # media-plugins/zam-plugins not keyworded here
 media-sound/easyeffects zamaudio
