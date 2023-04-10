@@ -45,12 +45,12 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 BUNDLED_GEMS="
-	>=dev-ruby/minitest-5.13.0[ruby_targets_ruby27]
-	>=dev-ruby/net-telnet-0.2.0[ruby_targets_ruby27]
-	>=dev-ruby/power_assert-1.1.7[ruby_targets_ruby27]
-	>=dev-ruby/rake-13.0.1[ruby_targets_ruby27]
-	>=dev-ruby/test-unit-3.3.4[ruby_targets_ruby27]
-	>=dev-ruby/xmlrpc-0.3.0[ruby_targets_ruby27]
+	>=dev-ruby/minitest-5.13.0[ruby_targets_ruby27(-)]
+	>=dev-ruby/net-telnet-0.2.0[ruby_targets_ruby27(-)]
+	>=dev-ruby/power_assert-1.1.7[ruby_targets_ruby27(-)]
+	>=dev-ruby/rake-13.0.1[ruby_targets_ruby27(-)]
+	>=dev-ruby/test-unit-3.3.4[ruby_targets_ruby27(-)]
+	>=dev-ruby/xmlrpc-0.3.0[ruby_targets_ruby27(-)]
 "
 
 PDEPEND="
