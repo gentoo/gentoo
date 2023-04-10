@@ -1069,9 +1069,12 @@ toolchain_src_configure() {
 	# Use the default ("release") checking because upstream usually neglects
 	# to test "disabled" so it has a history of breaking. bug #317217
 	if in_iuse debug ; then
-		# The "release" keyword is new to 4.0. bug #551636
-		local off=$(tc_version_is_at_least 4.0 && echo release || echo no)
-		confgcc+=( --enable-checking="${GCC_CHECKS_LIST:-$(usex debug yes ${off})}" )
+		# Non-released versions get extra checks, follow configure.ac's default to for those.
+		if ! grep -q "experimental" gcc/DEV-PHASE ; then
+			# The "release" keyword is new to 4.0. bug #551636
+			local off=$(tc_version_is_at_least 4.0 && echo release || echo no)
+			confgcc+=( --enable-checking="${GCC_CHECKS_LIST:-$(usex debug yes ${off})}" )
+		fi
 	fi
 
 	# Branding
