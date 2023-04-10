@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake-multilib
 
 DESCRIPTION="Small event-driven (SAX-style) JSON parser"
-HOMEPAGE="https://lloyd.github.com/yajl"
+HOMEPAGE="https://lloyd.github.io/yajl/"
 SRC_URI="https://github.com/lloyd/yajl/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/lloyd-yajl-66cb08c"
 
