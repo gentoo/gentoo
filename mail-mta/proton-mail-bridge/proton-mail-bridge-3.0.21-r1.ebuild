@@ -49,7 +49,7 @@ src_install() {
 	exeinto /usr/bin
 	newexe bridge ${PN}
 
-	systemd_douserunit "${FILESDIR}"/${PN}.service
+	systemd_newuserunit "${FILESDIR}"/${PN}.service-r1 ${PN}.service
 
 	einstalldocs
 }
