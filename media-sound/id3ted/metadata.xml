@@ -5,4 +5,7 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">xyb3rt/id3ted</remote-id>
+	</upstream>
 </pkgmetadata>
