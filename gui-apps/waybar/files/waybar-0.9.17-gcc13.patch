@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/900729
+https://github.com/Alexays/Waybar/commit/ca9d237b00b4d01f341b0d7bc938afb10a4f8cad
+
+From ca9d237b00b4d01f341b0d7bc938afb10a4f8cad Mon Sep 17 00:00:00 2001
+From: Aleksei Bavshin <alebastr89@gmail.com>
+Date: Mon, 16 Jan 2023 10:27:21 -0800
+Subject: [PATCH] fix(sway): add missing includes for GCC 13
+
+See also: https://gcc.gnu.org/gcc-13/porting_to.html
+--- a/include/modules/sway/ipc/client.hpp
++++ b/include/modules/sway/ipc/client.hpp
+@@ -8,6 +8,7 @@
+ #include <cstring>
+ #include <memory>
+ #include <mutex>
++#include <string>
+ 
+ #include "ipc.hpp"
+ #include "util/sleeper_thread.hpp"
+--- a/src/modules/sway/ipc/client.cpp
++++ b/src/modules/sway/ipc/client.cpp
+@@ -2,6 +2,8 @@
+ 
+ #include <fcntl.h>
+ 
++#include <stdexcept>
++
+ namespace waybar::modules::sway {
+ 
+ Ipc::Ipc() {
+
