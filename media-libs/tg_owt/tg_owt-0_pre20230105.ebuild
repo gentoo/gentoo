@@ -64,6 +64,10 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/tg_owt-0_pre20230105-gcc-13-cstdint.patch"
+)
+
 src_unpack() {
 	unpack "${P}.tar.gz"
 	unpack "libyuv-${LIBYUV_COMMIT}.tar.bz2"
